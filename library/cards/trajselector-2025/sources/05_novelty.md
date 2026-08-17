@@ -1,0 +1,3 @@
+TrajSelector changes the interface between sampler and verifier. Instead of retokenizing the generated trace for a standalone 7B PRM, it exposes the sampler's own step-boundary hidden states to a 0.6B score model. It also specifies a complete selection contract: literal step segmentation, three-class weak-supervision loss, right-probability step scores, arithmetic-mean trajectory pooling, and argmax selection.
+
+The contribution is not a new source of verified step labels. It is a compact latent-state process verifier and a recipe for learning it from final-answer outcomes. The offline OpenThoughts experiment further suggests a connection from test-time trajectory ranking to reasoning-data selection, but the paper describes that use as preliminary.

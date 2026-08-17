@@ -1,0 +1,3 @@
+Conventional code DPO labels whole candidate programs as chosen or rejected according to test pass rates, even when a failing program differs only in a small error region. Applying preference gradients to the entire block treats many identical correct tokens as differences and weakens learning of error-location–repair relationships.
+
+The paper proposes Target-DPO and constructs CodeFlow by iteratively generating, locating failure regions, and revising code until tests pass. Changes between adjacent versions form fine-grained preferences, and training emphasizes tokens associated with the actual repair.

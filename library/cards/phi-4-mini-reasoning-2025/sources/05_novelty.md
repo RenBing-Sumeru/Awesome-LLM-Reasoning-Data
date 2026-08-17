@@ -1,0 +1,6 @@
+The individual ingredients are established: long-CoT distillation, rejection sampling, DPO, GRPO-style RLVR, and answer checking all predate this report. The report's direction signal is their staged coordination for a 3.8B model and the explicit reuse of rejected rollouts as preference negatives. It also links concrete data operations to stages: full-set packed mid-training, a harder compact SFT subset, high-school-or-harder correct/incorrect DPO pairs, then fresh answer-rewarded RL groups.
+
+A second contribution is diagnostic rather than algorithmic. The paper records small-model RL failure surfaces—12K-20K within-group response-length variation, uniform-reward groups, and temperature mismatch—and associates each with a data or sampling intervention. This makes the report more useful to a disclosure ledger than a result-only model announcement.
+
+What is not new or established must remain explicit. Benchmark gains do not validate source rights, trace correctness, verifier reliability, or contamination control. The paper does not release a reusable dataset, preference manifest, reward implementation, or end-to-end training stack, and the later official source-description mismatch weakens item-level provenance claims.
+

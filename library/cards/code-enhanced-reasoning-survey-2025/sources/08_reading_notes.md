@@ -1,0 +1,3 @@
+Read the code-to-reasoning and reasoning-to-code sides separately, then connect them through the execution environment. For every cited method, ask what artifact is executed, what feedback comes back, and whether that feedback tests the intended task. This keeps “uses code” from becoming an overly broad description.
+
+Also note whether execution happens once or supports revision, because feedback only helps if it can influence a later step. Record the assumptions carried by the artifact and the limits of the test. These notes make comparisons between prompting, debugging, and tool-using systems more precise without claiming that their settings are interchangeable.

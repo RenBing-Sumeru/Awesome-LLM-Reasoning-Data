@@ -1,0 +1,1 @@
+A chain-of-thought demonstration can influence a model through its intermediate reasoning, not only its final answer. It makes written reasoning a prompting resource, but those steps are not automatically faithful, verifiable reasoning or ready-made training labels.

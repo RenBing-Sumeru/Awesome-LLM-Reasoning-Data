@@ -1,0 +1,1 @@
+HierSVA-DS 基于 BaseJump STL 构建 342 个模块，附层级元数据，深度覆盖 0–9；另含 28 组深层 module–bug pair、自然语言规格和 bug variants。记录包括 RTL、层级/参数信息、参考 SVA、规格、变异和工具输出。HierSVA-B 从 syntax、proof success、vacuity、specification faithfulness、mutation coverage、formal core coverage 六轴评测断言。数据许可遵循 Solderpad Hardware License v2.1。

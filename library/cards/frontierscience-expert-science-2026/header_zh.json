@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FrontierScience 以奥赛和博士级科学任务及细粒度 rubric，测量专家科学推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "专家级科学任务与过程 rubric 基准",
+  "best_for_ch": "需要评估科学推理、科研子任务或专家 Judge 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Miles Wang, Robi Lin, Kat Hu, Joy Jiao, Neil Chowdhury, Ethan Chang, Tejal Patwardhan",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:46:24Z"
+}

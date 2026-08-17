@@ -1,0 +1,6 @@
+- Table 1 的跨模态总数是 3,916：文本 3,717、语音 95、视频 104；同一论文另写的 3,713 个文本数据集必须保留为未解决差异。
+- 数据对象是 collection/dataset/可分离变体级元数据，不是逐记录 provenance，也不是 reasoning trace 语料。
+- 区分 dataset license 与 upstream source/model term；审计用最严格来源类别做聚合，而不是作法律判决。
+- 阅读限制比例时先确认分母：dataset count 与 token/hour quantity 不同，collection-level 文本标签还继承最严格 constituent。
+- 固定 repository revision `ce6662deccf011574427b6f112df479d261960b8`；v1.1.0 早于论文，README 仍描述旧文本范围，且未发现 paper-time manifest。
+- 仍为 unknown 的信息包括逐字段标注覆盖/一致性、冻结证据快照、修正语义，以及逐记录来源、同意、转换、license 与 overlap lineage。

@@ -1,0 +1,7 @@
+VerlTool的贡献是在rollout生成与工具执行之间建立统一的agentic RL边界：VeRL Workflow负责生成policy action并更新actor，状态化Tool Server则异步执行action，并把observation返回到对应trajectory。识别到的stop token用于划分每次action；server端plugin依次解析action、加载或更新环境、执行动作，并在结束时删除每条trajectory的状态（论文§3.3）。
+
+由此形成的反馈对象把交错的action-observation episode与领域特定标量结果结合起来。数学和检索使用答案匹配；SQL使用execution accuracy；视觉推理组合答案准确性、curiosity与重复调用shaping；deep search在发生任意tool call时增加`0.1`；SWE只有在正常终止且全部verification test通过时才给reward 1。tool validity和`done`只表示调用是否有效及环境是否终止，论文并未证明它们是step-correctness label。同样，mask observation token可以避免把off-policy环境文本纳入action loss，却不能认证observation本身正确（论文§§3.2–3.3；附录A）。
+
+这是一个mixed programmatic/environmental feedback contract：交互监督附着在state/action与完整episode上，而任务标量被RL消费。框架能够观察tool request、tool response、环境终止和任务特定终局检查；但只凭这些字段，无法判断中间推理在语义上是否可靠、检索snippet是否忠实，或额外调用在策略上是否必要。
+
+该工作的方向信号是覆盖六个差异很大的agent领域的可复用接口与recipe，而不是新的静态corpus或通用verifier。相较任务专属tool loop，VerlTool集中管理状态化执行，并让受工具阻塞的trajectory独立调度；相较trajectory dataset发布，它在训练时在线生成episode，却没有发布论文版本对应的六域replay collection。这一区别决定了该条目的复用与审计方式。

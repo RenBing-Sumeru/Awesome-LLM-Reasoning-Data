@@ -1,0 +1,3 @@
+- Read sections 2.4 and 3 together: the post-training objective is only interpretable alongside the stated SFT and long-CoT construction path.
+- Treat the reward contract as partially specified: binary correctness and length penalty are described, but the reward model, rule implementation, thresholds, and calibration are unknown.
+- Treat the MIT repository and weights as release facts only; they do not resolve data provenance, training reproducibility, agent replayability, or benchmark-leakage questions.

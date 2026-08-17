@@ -1,0 +1,3 @@
+The report is notable for presenting verifiable STEM, code, and logic data together with non-verifiable assistant data under one long-CoT RL narrative, while naming multiple verifier and reward interfaces. Its disclosed 400k SFT composition makes the boundary between verifiable and non-verifiable supervision more inspectable than a performance-only announcement.
+
+Its novelty for this atlas is not a claim of a fully reproducible recipe. Instead, it is a useful example of how a frontier report can reveal operational data and feedback structure while withholding the artifacts needed to audit provenance, rights, selection behavior, and training reproducibility.

@@ -1,0 +1,156 @@
+id: open-data-arena-2025
+title: 'OpenDataArena: A Fair and Open Arena for Benchmarking Post-Training Dataset Value'
+year: 2025
+venue: arXiv
+authors:
+- Mengzhang Cai
+- Xin Gao
+- Yu Li
+- Honglin Lin
+- Zheng Liu
+- Zhuoshi Pan
+- Qizhi Pei
+- Xiaoran Shang
+- Mengyuan Sun
+- Zinan Tang
+- Xiaoyang Wang
+- Zhanping Zhong
+- Yun Zhu
+- Dahua Lin
+- Conghui He
+- Lijun Wu
+source_role:
+- benchmark
+- infrastructure
+- scaling_study
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- post_training_data
+- general_instruction
+- mathematics
+- code
+- science
+- reasoning
+training_use:
+- sft
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.14051
+  arxiv: https://arxiv.org/abs/2512.14051
+  code: https://github.com/OpenDataArena/OpenDataArena-Tool
+  data: https://huggingface.co/OpenDataArena/datasets
+  project: https://opendataarena.github.io/
+  huggingface: https://huggingface.co/OpenDataArena/datasets
+  doi: https://doi.org/10.48550/arXiv.2512.14051
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: More than 120 public post-training SFT datasets selected for community impact, recency after 2023, SFT suitability,
+    manageable size, safety review, and format standardization
+  trace_author: Original dataset authors or generators; OpenDataArena normalizes records and trains controlled comparison
+    models rather than authoring one homogeneous trace corpus
+  answer_format: Unified instruction-response records, dataset-level lineage and intrinsic scores, standardized fine-tuning
+    configurations, model checkpoints/results, and downstream benchmark measurements
+  process_fields:
+  - dataset_id
+  - source_dataset
+  - domain
+  - normalized_record
+  - lineage_relation
+  - intrinsic_scores
+  - base_model
+  - training_config
+  - benchmark
+  - evaluation_result
+  environment_or_substrate: Standardized LLaMA-Factory SFT and OpenCompass evaluation pipeline over Llama3.1-8B, Qwen2.5-7B,
+    and Qwen3-8B
+  verifier_or_reward: Code benchmark execution/default tools; non-code answer extraction and judging with xVerify or Omni-Judge;
+    intrinsic scoring combines specialized models, LLM-as-judge, and heuristics
+  terminal_predicate: A dataset's value is proxied by downstream performance of a controlled fine-tuned model plus multi-dimensional
+    quality and lineage diagnostics
+recipe_metadata:
+  base_model: Llama3.1-8B, Qwen2.5-7B, and Qwen3-8B in the paper release
+  teacher: Dataset-specific and heterogeneous; exact per-record teacher provenance is not uniformly available
+  generator: Dataset-specific; OpenDataArena evaluates existing datasets through controlled SFT runs
+  filtering_rule: Select impactful recent SFT-suitable datasets under size constraints; review safety; standardize formats;
+    score records/datasets across model-based, LLM-judge, and heuristic axes
+  sampling_protocol: Dataset ingestion and normalization -> controlled single-dataset fine-tuning -> evaluation on 22+ benchmarks
+    -> intrinsic scoring -> lineage analysis -> leaderboard/visualization
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper reports 600+ training runs, 10000+ evaluation runs, 40M processed data points, and over 120 training
+    datasets; exact per-judge decoding budgets vary by component
+  optimizer_or_scaffold: Fixed LLaMA-Factory hyperparameters and LoRA configurations per model family, followed by OpenCompass
+    and specialized evaluation harnesses
+audit:
+  source_mixture: Public general-dialog, mathematics, coding, science, reasoning, and mixed-domain post-training datasets,
+    including inherited, mixed, and distilled families
+  split: Each selected dataset is used for controlled SFT; evaluation spans 22+ general, math, code, and reasoning benchmarks;
+    exact record-level train/evaluation overlap varies by upstream dataset
+  decontamination: Lineage analysis identifies genealogy/redundancy and can surface contamination risk, but a complete semantic
+    record-level decontamination guarantee is not established
+  license: MIT for OpenDataArena-Tool; every evaluated upstream dataset, released scored dataset, model, and benchmark retains
+    artifact-specific terms
+  lineage: Upstream dataset/source relations -> normalized SFT records -> fixed-model training run -> benchmark outputs and
+    intrinsic scores -> leaderboard and lineage explorer
+  known_failure_modes:
+  - Controlled hyperparameters may favor some datasets or model families and are not necessarily optimal for each dataset.
+  - Downstream benchmark score is a proxy for dataset value and can inherit benchmark contamination, saturation, and verifier
+    bias.
+  - LLM-as-judge and learned scorers can be biased, correlated, or version-dependent.
+  - Lineage relationships do not by themselves prove record-level derivation or licensing compatibility.
+  - The platform and Hugging Face collections are continuously updated, while the repository shows no formal GitHub release;
+    exact reported snapshots require pinning.
+  - Upstream datasets have heterogeneous provenance, teacher models, licenses, and decontamination quality.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v1, paper-linked project, MIT toolkit, and official Hugging Face organization checked 2026-07-12.
+    The project page now redirects to arena.opendatalab.org.cn.
+inclusion_reason: Provides an open, controlled recipe for comparing post-training dataset value, exposing training configurations,
+  intrinsic scoring, benchmark outcomes, and dataset genealogy.
+related: []
+tags:
+- opendataarena
+- data-value
+- post-training-data
+- data-lineage
+- dataset-scoring
+- controlled-sft
+- benchmark
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Benchmarks more than 120 post-training datasets through controlled SFT runs, 22+ downstream benchmarks,
+  multi-axis scoring, and lineage analysis.
+why_it_matters: Turns dataset selection into an auditable controlled experiment while making scorer, benchmark, lineage, and
+  upstream-license risks visible.
+card: null
+needs:
+- 'needs_snapshot: pin the paper-era code, configuration, leaderboard, scored-data, and model revisions with checksums'
+- 'needs_audit: publish complete record-level overlap and semantic contamination results for every evaluated dataset'
+- 'needs_lineage: distinguish documented derivation from inferred similarity for every genealogy edge'
+- 'needs_license: provide an artifact-level reuse matrix for upstream datasets, derived scores, checkpoints, and benchmarks'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper-linked project, MIT code, and official Hugging Face datasets are live; continuously updated artifacts are not
+    frozen to the paper's exact run.

@@ -1,0 +1,3 @@
+A model developer who needs repeated, low-cost comparison can run AlignEval on a candidate judge: provide the released instruction-response-label triples, choose the preferred response, and output agreement/rank, optionally with IFEval. Success is agreement that tracks an independent alignment ranking, while checking oracle-family bias.
+
+A benchmark designer can reuse the construction recipe: collect strong-oracle pairwise labels, swap order, discard inconsistent pairs, then freeze reusable tasks. Do not use the benchmark alone for models suspected of judge-specific overfitting or for alignment properties outside its instruction-preference scope.

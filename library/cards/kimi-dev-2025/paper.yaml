@@ -1,0 +1,231 @@
+id: kimi-dev-2025
+title: 'Kimi-Dev: Agentless Training as Skill Prior for SWE-Agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zonghan Yang
+- Shengjie Wang
+- Kelin Fu
+- Wenyang He
+- Weimin Xiong
+- Yibo Liu
+- Yibo Miao
+- Bofei Gao
+- Yejie Wang
+- Yingwei Ma
+- Yanhao Li
+- Yue Liu
+- Zhenxing Hu
+- Kaitai Zhang
+- Shuyi Wang
+- Huarong Chen
+- Flood Sung
+- Yang Liu
+- Yang Gao
+- Zhilin Yang
+- Tianyu Liu
+source_role:
+- model_report
+- data_release
+- verifier_reward
+- agent_environment
+- construction_recipe
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_issue_resolution
+- bug_fixing
+- test_generation
+- code_editing
+- repository_navigation
+- agentic_coding
+- python
+training_use:
+- sft
+- distillation
+- rlvr
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.23045
+  arxiv: https://arxiv.org/abs/2509.23045
+  code: https://github.com/MoonshotAI/Kimi-Dev
+  data: https://github.com/MoonshotAI/Kimi-Dev/tree/master/resources
+  project: https://moonshotai.github.io/Kimi-Dev/
+  huggingface: https://huggingface.co/moonshotai/Kimi-Dev-72B
+  doi: https://doi.org/10.48550/arXiv.2509.23045
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mid-training mines merged GitHub pull requests from repositories with at least five stars and removes repositories
+    overlapping SWE-bench. Cold-start and RL use SWE-Gym, SWE-bench-extra, and R2E-Gym tasks; agent adaptation uses a reported
+    5,016 public SWE-smith trajectories.
+  trace_author: Qwen2.5-72B-Instruct, lightly tuned on 2,000 DeepSeek-R1 trajectories, writes exact-localization reasoning.
+    Synthetic agent interactions simulate file-tool observations without shell execution. DeepSeek-R1 20250120 produces BugFixer/TestWriter
+    cold-start traces; Kimi-Dev generates RL rollouts.
+  answer_format: Training objects include issue/PR context paired with SEARCH/REPLACE patches, commit packs, localization
+    rationales, simulated file-tool conversations, BugFixer patches, TestWriter tests, Docker execution outcomes, binary rewards,
+    and agent trajectories.
+  process_fields:
+  - repository
+  - base_commit
+  - issue_text
+  - pull_request_title
+  - discussion
+  - changed_files
+  - patch
+  - search_replace_blocks
+  - localization_reasoning
+  - opened_files
+  - simulated_observation
+  - reflection
+  - task_role
+  - generated_test
+  - rollout
+  - unit_test_result
+  - binary_reward
+  - positive_replay_status
+  - agent_message
+  - tool_call
+  - tool_observation
+  environment_or_substrate: The main RL substrate snapshots a repository at a task revision and runs generated patches or
+    tests in Docker sandboxes on an internal Kubernetes platform. The paper reports more than 10,000 concurrent sandboxes
+    and more than 25,000 images, but releases no paper-run image manifest, digests, reset/network policy, or proprietary image
+    builder.
+  verifier_or_reward: BugFixer receives reward 1 only when all available ground-truth unit tests pass. TestWriter receives
+    reward 1 only when its test fails on the buggy repository and passes after the ground-truth fix. There is no format or
+    process reward.
+  terminal_predicate: A rollout is scored by the corresponding full available task test condition. Timeout, infrastructure-error,
+    flaky-test, retry, partial-credit, exploit-detection, and failed-rollout archival rules are undisclosed.
+recipe_metadata:
+  base_model: Mid-training starts from Qwen2.5-72B-Base. The reported schedule exposes about 150B tokens, followed by DeepSeek-R1
+    cold-start SFT and Agentless RL; an additional agent-trajectory adaptation study bridges the skill prior to SWE-Agent
+    interaction.
+  teacher: DeepSeek-R1 supplies 2,000 localization seed trajectories and cold-start BugFixer/TestWriter trajectories. Qwen2.5-72B-Instruct
+    generates localization reasoning. Claude 3.7 Sonnet authored the reported public SWE-smith agent trajectories.
+  generator: Qwen2.5-72B-Instruct generates exact localization; a simulated non-executing tool process generates synthetic
+    interactions; DeepSeek-R1 20250120 generates cold-start traces; Kimi-Dev generates multi-rollout RL outputs.
+  filtering_rule: GitHub sources require merged PRs and repositories with at least five stars; natural diffs restrict Python-centric
+    files and patch size; localization traces require exact modified-file match; synthetic interactions require at least one
+    correct localized file. RL initially keeps 1,200 tasks with pass@16 above zero and periodically retests 500 previously
+    unsolved tasks.
+  sampling_protocol: Mid-training uses batch 256, 32K maximum length, and cosine learning rate 2e-5 to 2e-6 after about 3B
+    warmup tokens. Each RL iteration has five training steps and samples 1,024 problems with 10 rollouts each; the prompt
+    pool changes every 20 iterations and later training replays recent positives.
+  rollout_count: 10,240 rollouts per reported RL iteration. The total iteration count, total rollouts, cold-start sample count,
+    and failure-retention count are unknown.
+  temperature: Agent-adaptation evaluation uses temperature 0 for pass@1 and temperature 1 for pass@2/pass@3. Test-time self-play
+    uses temperature 0 for the first patch/test and temperature 1 for the remaining 39. Training rollout temperature is unknown.
+  inference_budget: Main Agentless RL uses 64K context. Agent adaptation trains at 64K and evaluates up to 128K or 100 turns.
+    Test-time self-play samples 40 patches and 40 tests per issue.
+  optimizer_or_scaffold: Mid-training uses next-token prediction over about 150B token exposures. RL uses the Kimi k1.5 REINFORCE-like
+    policy-gradient formulation with an average multi-rollout reward baseline; other optimizer, clipping, KL, and compute
+    details are unknown.
+audit:
+  source_mixture: About 90B pre-upsampling tokens comprise 50B natural diffs, 20B PR commit packs, 10B exact-localization
+    reasoning, and 10B synthetic agent interactions; the 20B synthetic components are upsampled four times to yield about
+    150B exposures. Cold-start and RL mixture counts are incomplete.
+  split: 'The Docker development pool totals 9,873 tasks: 2,356 SWE-Gym, 3,846 SWE-bench-extra, and 3,671 R2E-Gym-Lite. Exact
+    task IDs, repository revisions, train/validation partitions, and the immutable 5,016-trajectory adaptation split are not
+    released.'
+  decontamination: The report excludes repositories overlapping SWE-bench from GitHub mid-training, but gives no repository
+    list, matching normalization, fork/mirror handling, semantic-clone audit, base-model exposure audit, or equivalent cold-start/RL/teacher-output
+    analysis.
+  license: The repository and released weights are MIT subject to the Qwen2.5-72B license; public SWE-smith trajectories are
+    labeled MIT. These labels do not resolve rights or attribution for GitHub issues, PRs, commits, tests, dependencies, or
+    teacher-generated derivatives.
+  lineage: Stage-level lineage is described, but immutable source revision -> filtered record -> generated trace -> Docker
+    image/test result -> reward -> replay decision -> checkpoint identifiers are absent.
+  known_failure_modes:
+  - Passing all available task tests is a binary observable, not proof of semantic correctness.
+  - Generated tests and patches from one model family can create correlated self-play bias.
+  - The 200-trajectory skill-prior adaptation point degrades, which the authors attribute to possible mode collapse.
+  - Initial pass@16 filtering and late positive replay bias training toward already-solvable successes.
+  - Synthetic mid-training interactions use simulated observations and cannot certify executable repository behavior.
+  - Missing image digests, dependency locks, runtime policies, and flaky-test rules prevent exact Docker reproduction.
+  - Repository-level SWE-bench exclusion does not address forks, mirrors, semantic clones, base-model exposure, or task-derived
+    teacher traces.
+  - The reported 5,016 SWE-smith rows lack an immutable revision, while the current mutable release has a different row count.
+  - Failed rollout retention and infrastructure-failure treatment are unknown.
+  - Removing contributor signatures and GitHub IDs reduces attribution and provenance.
+  citation_status: verified
+  confidence: high
+  notes: Verified from the official arXiv report, Moonshot project, official repository/resources, and official Hugging Face
+    release. Evaluation JSONL files are not represented as the training corpus, and the benchmark harness is not represented
+    as the unreleased paper-run environment.
+inclusion_reason: Kimi-Dev provides an unusually concrete bridge from patch-centered skill-prior data to Docker-verified repository
+  RL and later agent adaptation, while exposing major environment, split, lineage, licensing, and release-completeness gaps.
+related:
+- swe-gym-2024
+- swe-smith-2025
+- swe-bench-2024
+tags:
+- kimi-dev
+- moonshot-ai
+- software-engineering
+- repository-editing
+- agentless
+- skill-prior
+- swe-agent
+- github-pull-requests
+- synthetic-trajectories
+- docker
+- binary-reward
+- rlvr
+- bugfixer
+- testwriter
+- test-time-self-play
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Kimi-Dev turns GitHub patch and simulated file-tool data into an Agentless skill prior, then applies full-test-suite
+  binary RLVR and a reported 5,016-trajectory agent bridge, but withholds the training corpus, Docker provenance, exact splits,
+  failures, and adapted checkpoint.
+why_it_matters: It separates patch skill acquisition from environment-grounded RL and agent adaptation, making the paper useful
+  both as a construction recipe and as an audit case for executable software-engineering data.
+card: null
+needs:
+- 'needs_data: immutable GitHub records, cold-start samples, RL prompts/rollouts/failures/replay decisions, exact 5,016 agent
+  trajectories, and split manifests'
+- 'needs_metadata: task revisions, generation prompts, decoding, iteration count, optimizer/compute, stopping rules, and checkpoint
+  hashes'
+- 'needs_verifier: test identities, Docker image digests, dependency locks, timeout/network/reset/flaky/retry/exploit policies,
+  and infrastructure-error handling'
+- 'needs_audit: fork/mirror/semantic leakage, base-model and teacher exposure, success-selection bias, generated-test correlation,
+  and contributor attribution'
+- 'needs_license: record-level source licenses, Qwen compatibility, teacher-output terms, attribution, consent, and takedown
+  policy'
+- 'needs_code: training pipeline, image builder, paper-run environment manifests, lineage export, and adapted SWE-Agent checkpoint'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, repository, project, evaluation resources, and Agentless checkpoint are confirmed. Training data,
+    reproducible Docker images, failed rollouts, and the separately adapted checkpoint are not claimed as released.

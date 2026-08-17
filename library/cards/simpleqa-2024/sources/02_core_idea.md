@@ -1,0 +1,5 @@
+The core contribution is a compact factuality benchmark where each item is designed to have one stable answer and each model response is graded as correct, incorrect, or not attempted. The mechanism is to narrow the task until the grader contract becomes inspectable: short question, reference answer, predicted answer, three-way label, and aggregate metrics that distinguish accuracy from abstention.
+
+Compared with TriviaQA and Natural Questions, the change is not open-domain QA scale; it is adversarial difficulty for stronger models and explicit abstention accounting. Compared with TruthfulQA, FreshQA, LongFact, or FActScore, the change is not broad truthfulness coverage; it is a short-answer factuality surface with simpler row-level grading.
+
+The direction label is benchmark/evaluation surface with a judge-style verifier. The feedback contract is benchmark-local: a response passes if it fully contains the reference answer and adds no contradiction, fails if it contradicts the reference answer, and is treated as not attempted when it avoids contradiction but does not supply the needed answer.

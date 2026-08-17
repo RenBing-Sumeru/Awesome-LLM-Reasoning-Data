@@ -1,0 +1,1 @@
+APPS 可作为 coding-challenge competence 的经典可执行 benchmark 参考。复用时应保留 problem ID、split、难度、题面、约束、可见样例、候选代码、语言/runtime、超时、测试结果和聚合规则。对 atlas 来说，它是 programmatic-verifier feedback 的基线，也提醒公开代码 benchmark 必须做污染控制。只有保留同一执行契约和失败标签时，才适合拿来设计 reward。

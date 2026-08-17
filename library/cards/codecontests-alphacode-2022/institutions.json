@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "DeepMind"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2203.07814",
+    "https://arxiv.org/pdf/2203.07814",
+    "https://github.com/google-deepmind/code_contests",
+    "https://deepmind.google/blog/competitive-programming-with-alphacode/"
+  ],
+  "verification_note": "Official Science/arXiv and DeepMind sources verify the team-level DeepMind affiliation, Science publication, and CodeContests artifacts; no per-author affiliation table was found."
+}

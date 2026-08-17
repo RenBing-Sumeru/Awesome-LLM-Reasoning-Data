@@ -1,0 +1,1 @@
+这篇论文问的是：模型明明能回答组成问题所需的子问题，为什么仍会在最终组合答案上失败。一手来源是 Findings of EMNLP 2023 论文，辅以 arXiv 预印本、官方 self-ask 仓库和官方 Bamboogle 数据集页。对本卡最重要的评测面是 Bamboogle：125 道 adversarial compositional QA 问题，设计目标是让 Google 直接搜索也不容易命中，并要求组合多个事实。它属于 answer-level 组合推理 benchmark；不是训练配方，也不是带形式化 verifier 的证明环境。

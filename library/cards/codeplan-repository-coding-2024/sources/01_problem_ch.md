@@ -1,0 +1,1 @@
+一手来源包括 arXiv:2309.12499、aka.ms/CodePlan 短链接和 microsoft/CodePlan 仓库。论文针对仓库级编码：一次变更请求可能影响多个文件、声明、调用点和测试。本卡收录边界是 planning 与 repository-edit evaluation surface，不是 live 交互式 coding-agent benchmark。公开数据对象是仓库编辑包，含 source 仓库状态、target 标准编辑、CodePlan 和 baseline 的 predicted repo、block-level diff 工件、metrics.json 和评测脚本。

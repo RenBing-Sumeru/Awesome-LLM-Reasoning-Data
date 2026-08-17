@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "New York University",
+    "Cohere",
+    "Anthropic PBC"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2311.12022",
+    "https://arxiv.org/pdf/2311.12022"
+  ],
+  "verification_note": "Official checked sources show no conference venue."
+}

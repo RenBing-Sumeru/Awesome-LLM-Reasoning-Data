@@ -1,0 +1,19 @@
+{
+  "title": "SETA: Scaling Environments for Terminal Agents",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2607.10891",
+    "data": "https://huggingface.co/datasets/camel-ai/seta-env-release",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T09:48:18Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 SETA-Env，含4,567个终端环境，均含指令、Dockerfile、参考解和tests，下载量高",
+    "updated_at": "2026-07-19T09:48:18Z"
+  }
+}

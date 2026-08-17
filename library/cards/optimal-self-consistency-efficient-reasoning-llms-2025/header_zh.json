@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Blend-ASC 在全局样本预算下按答案计数置信度把下一次 CoT 采样分给最不确定的问题，最后以经验众数输出答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Austin Feng；Marius Alonso；Ambroise Odonnat；Vasilii Feofanov；Ievgen Redko",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,120 @@
+id: codeelo-2025
+title: 'CodeElo: Benchmarking Competition-level Code Generation of LLMs with Human-comparable Elo Ratings'
+year: 2025
+venue: arXiv preprint
+authors:
+- Shanghaoran Quan
+- Jiaxi Yang
+- Bowen Yu
+- Bo Zheng
+- Dayiheng Liu
+- An Yang
+- Xuancheng Ren
+- Bofei Gao
+- Yibo Miao
+- Yunlong Feng
+- Zekun Wang
+- Jian Yang
+- Zeyu Cui
+- Yang Fan
+- Yichang Zhang
+- Binyuan Hui
+- Junyang Lin
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- competitive-programming
+- live-hidden-contamination-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2501.01257
+  arxiv: https://arxiv.org/abs/2501.01257
+  doi: https://doi.org/10.48550/arXiv.2501.01257
+  code: https://github.com/QwenLM/CodeElo
+  data: https://huggingface.co/datasets/Qwen/CodeElo
+  project: https://codeelo-bench.github.io/
+  huggingface: https://huggingface.co/datasets/Qwen/CodeElo
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors construct or curate recent Codeforces problems submitted to official judge; exact artifact,
+    split, and license details require source review.
+  trace_author: Official benchmark authors or task curators; exact annotator/generator details require source review.
+  answer_format: benchmark records expose recent Codeforces problems submitted to official judge, along with prompt/task metadata
+    and an evaluation target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: recent Codeforces problems submitted to official judge
+  verifier_or_reward: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+  terminal_predicate: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate recent Codeforces problems submitted to official judge; exact artifact,
+    split, and license details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: live_hidden_contamination_audit
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2501.01257;
+    https://arxiv.org/html/2501.01257; https://codeelo-bench.github.io/; https://github.com/QwenLM/CodeElo; https://huggingface.co/datasets/Qwen/CodeElo'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2501.01257'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official paper gives only group affiliation; no per-author affiliation mapping found. Artifact/license/split/scoring
+    details remain review targets.
+inclusion_reason: Official platform judging plus recent tasks are strong leakage controls.
+related: []
+tags:
+- benchmark
+- live_hidden_contamination_audit
+- competitive-programming
+why_it_matters: Official platform judging plus recent tasks are strong leakage controls.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CodeElo exposes recent Codeforces problems submitted to official judge as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official paper gives only group affiliation; no per-author affiliation mapping found.
+category_ids:
+- benchmarks_evaluation_surfaces

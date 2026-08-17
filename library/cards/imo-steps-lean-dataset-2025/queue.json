@@ -1,0 +1,19 @@
+{
+  "title": "A Lean Dataset for International Math Olympiad: Small Steps towards Writing Math Proofs for Hard Problems",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=CrKMqRAhBo",
+    "data": "https://huggingface.co/datasets/roozbeh-yz/IMO-Steps",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T14:21:03Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "国际奥赛题的 Lean 证明拆分为可单独验证的引理与完整证明",
+    "updated_at": "2026-07-18T14:21:03Z"
+  }
+}

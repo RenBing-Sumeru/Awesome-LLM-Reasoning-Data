@@ -1,0 +1,20 @@
+{
+  "title": "Aligning Agents via Planning: A Benchmark for Trajectory-Level Reward Modeling",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1062/",
+    "data": "https://huggingface.co/datasets/wyy1112/Plan-RewardBench",
+    "code": "https://github.com/wyy-1112/Plan-RewardBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:51:10Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "规划轨迹偏好覆盖恢复和安全，可训练通用代理RM",
+    "updated_at": "2026-07-16T12:51:10Z"
+  }
+}

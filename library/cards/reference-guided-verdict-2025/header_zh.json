@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以参考答案引导多个 LLM judge 多数投票，评估自由问答回答与人工判决的一致性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "有参考答案的多 LLM judge 自由问答评测研究",
+  "best_for_ch": "需要为开放式问答建立可校准、多裁判自动评测的研究者。",
+  "confidence_ch": "高：WiNLP 2025 正式论文、作者机构与实验边界已核验；未找到官方代码或数据发布。",
+  "authors_ch": "Sher Badshah, Hassan Sajjad",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该方法把后续推理轮次分配给未解决问题，并用语义相近的成功测试时示例改变其生成条件。","reading_priority_ch":"可读","paper_type_ch":"自适应测试时计算分配与演化上下文学习研究","best_for_ch":"研究测试集级计算分配与检索条件化测试时扩展的读者。","confidence_ch":"高","authors_ch":"Bowen Zuo、Dongruo Zhou、Yinglun Zhu（机构：加州大学河滨分校、印第安纳大学布卢明顿分校）","category_ids":["scaling_rlvr_test_time_compute"]}

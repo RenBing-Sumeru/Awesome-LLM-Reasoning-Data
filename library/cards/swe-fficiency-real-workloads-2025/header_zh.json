@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-fficiency 用 498 个真实工作负载任务衡量智能体能否在通过单测的同时达到或逼近专家性能加速。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序验证的仓库级性能优化基准",
+  "best_for_ch": "需要以正确性测试和可复现运行时共同评测代码智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jeffrey Jian Ma, Milad Hashemi, Amir Yazdanbakhsh, Kevin Swersky, Ofir Press, Enhui Li, Vijay Janapa Reddi, Parthasarathy Ranganathan",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+Djuhera et al. (2025), “When Data is the Algorithm: A Systematic Study and Curation of Preference Optimization Datasets,” arXiv:2511.10985. Primary paper: https://arxiv.org/abs/2511.10985. The authors’ released annotations, metadata, and UltraMix are the authoritative artifacts for row-level curation provenance; cite their version when reproducing the 30% size comparison.

@@ -1,0 +1,95 @@
+id: complex-if-expert-rubrics-rlvr-2026
+title: 'Complex-IF and Beyond: Expert Rubrics for RLVR'
+year: 2026
+venue: GEM 2026 Workshop
+authors:
+- Sushant Mehta
+- Liudas Panavas
+- Eleanor Fleming
+- Paul Mains
+- Edwin Chen
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- llm_judge
+- rubric_evaluation
+training_use:
+- evaluation
+- sft
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.gem-main.61/
+  arxiv: https://arxiv.org/abs/2606.09118
+  code: null
+  data: https://huggingface.co/datasets/surgeai/ComplexConstraints
+  project: null
+  huggingface: https://huggingface.co/datasets/surgeai/ComplexConstraints
+  doi: null
+  venue: https://aclanthology.org/2026.gem-main.61/
+  openreview: null
+  acl: https://aclanthology.org/2026.gem-main.61/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official release; see the linked primary paper or data card.
+  trace_author: Human experts, annotators, or the official release pipeline.
+  answer_format: Complex instruction prompts paired with 10–40 expert-authored atomic rubric criteria.
+  process_fields:
+  - prompt
+  - rubric
+  - response
+  - label_or_verdict
+  environment_or_substrate: Rubric-based LLM evaluation
+  verifier_or_reward: Expert rubrics with iteratively calibrated LLM judges; scores are used as RL rewards.
+  terminal_predicate: The released judgment label or rubric verdict is available for evaluation or training.
+recipe_metadata:
+  base_model: See official release.
+  teacher: Human experts or official annotators.
+  generator: Official release pipeline.
+  filtering_rule: See official paper or data card.
+  sampling_protocol: See official paper or data card.
+  rollout_count: null
+  temperature: null
+  inference_budget: See official paper or data card.
+  optimizer_or_scaffold: Evaluation or post-training use described in the official release.
+audit:
+  source_mixture: Official primary paper/data release and linked official artifacts.
+  split: See official release.
+  decontamination: Public benchmark or training records should be held out where applicable.
+  license: See official artifact page.
+  lineage: https://huggingface.co/datasets/surgeai/ComplexConstraints
+  known_failure_modes:
+  - Rubric creation is expensive and a calibrated judge can still be optimized rather than the intended task.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL Anthology paper and Surge AI Hugging Face dataset were checked; the paper lists Surge AI as affiliation.
+inclusion_reason: The release provides rubric- or judgment-grounded records that can train, evaluate, or audit LLM-based evaluators.
+related: []
+tags:
+- rubric
+- llm_judge
+- evaluation
+one_line_summary: Complex-IF pairs difficult instructions with expert atomic rubrics to support both evaluation and rubric-reward
+  RLVR.
+why_it_matters: It exposes rubric-grounded evaluation signals and their audit boundary.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology paper and Surge AI Hugging Face dataset were checked; the paper lists Surge AI as affiliation.
+category_ids:
+- judgment_rubric_domain_expert_data

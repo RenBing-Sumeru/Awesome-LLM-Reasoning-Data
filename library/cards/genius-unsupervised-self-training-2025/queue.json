@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "无标签步骤级偏好构建，有明确匹配pipeline",
+    "updated_at": "2026-07-15T07:47:11Z"
+  },
+  "updated_at": "2026-07-15T07:47:11Z"
+}

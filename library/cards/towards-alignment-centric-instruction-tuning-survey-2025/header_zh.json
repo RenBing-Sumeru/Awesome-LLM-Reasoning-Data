@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该综述从数据来源、调优策略和评测协议梳理大语言模型指令微调的对齐逻辑。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "2025 年指令微调与对齐综述预印本",
+  "best_for_ch": "关于专家示范、教师蒸馏与自我改进数据的指令微调综述。",
+  "confidence_ch": "中",
+  "authors_ch": "Xudong Han、Junjie Yang、Tianyang Wang 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

@@ -1,0 +1,28 @@
+id: vlm-test-time-scaling-2026
+title: 'On Test-Time Scaling for Vision-Language Models'
+year: 2026
+venue: arXiv preprint
+authors: [Fawaz Sammani, Tzoulio Chamiti, Nikos Deligiannis]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, full_episode]
+domains: [multimodal-reasoning, mathematical-reasoning, visual-question-answering]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2606.28864, arxiv: https://arxiv.org/abs/2606.28864, venue: null, code: null, data: null, project: null, huggingface: null, doi: null}
+data_object: {prompt_source: 'MMStar, RealWorldQA, HallusionBench, WeMath, LogicVista, and A-OKVQA.', trace_author: 'Thirteen instruction-tuned Qwen-VL, InternVL, and Molmo2 models generate prompted reasoning traces.', answer_format: 'Image, question, think prompt, reasoning chain or sampled chains, optional aggregation or refinement, extracted answer, accuracy, and runtime.', process_fields: [image, question, think_prompt, reasoning_chain, samples, aggregation, final_answer, accuracy, runtime], environment_or_substrate: 'Vision-language inference over perception and visual reasoning benchmarks.', verifier_or_reward: 'Official benchmark accuracy plus measured runtime on NVIDIA H200 GPUs.', terminal_predicate: 'The extracted answer is scored as correct by the corresponding benchmark.'}
+recipe_metadata: {base_model: 'Thirteen Qwen2.5-VL, Qwen3-VL, InternVL3.5, and Molmo2 instruction-tuned models from 2B to 72B.', teacher: 'Not applicable; all methods are prompting, sampling, aggregation, or refinement at inference time.', generator: 'LVLMs generate zero-shot answers and reasoning chains under nine scaling strategies.', filtering_rule: 'No training-data curation; methods are compared by accuracy and runtime across model size and benchmark.', sampling_protocol: 'Compare baseline, CoT, structured CoT, plan-and-solve, self-consistency, self-aggregation, self-refinement, describe-answer, compositional CoT, and prompt repetition.', rollout_count: 'Self-consistency and self-aggregation use multiple chains; exact counts are in the official supplementary protocol.', temperature: 'See official supplementary generation settings.', inference_budget: 'Maximum output length is 1,024 tokens; multi-pass methods add complete inference calls.', optimizer_or_scaffold: 'Training-free prompt, sampling, aggregation, and refinement policies with compute-accuracy Pareto analysis.'}
+audit: {source_mixture: 'Official arXiv paper.', split: 'Six public multimodal benchmarks; no new train-test split is constructed.', decontamination: 'No universal contamination audit is claimed.', license: 'Check every evaluated model and benchmark license independently.', lineage: 'https://arxiv.org/abs/2606.28864', known_failure_modes: [perception-overthinking, visual-attention-decay, instruction-following-variation, model-family-dependence, latency-cost], citation_status: verified, confidence: high, notes: 'Official arXiv PDF checked on 2026-07-20. The paper lists Vrije Universiteit Brussel and imec affiliations.'}
+inclusion_reason: 'It directly tests how additional inference-time reasoning, sampling, and refinement computation changes accuracy and runtime for vision-language models.'
+related: []
+tags: [test-time-scaling, vision-language-models, self-consistency, overthinking, multimodal-reasoning]
+status: verified
+one_line_summary: 'A broad LVLM study finds that standard test-time scaling can strongly help capable small models but can hurt perception tasks when extra reasoning makes models lose visual focus.'
+reading_priority: recommended
+paper_type: Multimodal test-time scaling benchmark and analysis
+best_for: Readers allocating inference budget across vision-language model sizes and reasoning strategies.
+confidence: high
+why_it_matters: 'It extends test-time scaling evaluation beyond text-only reasoning and identifies when extra computation improves visual reasoning versus induces overthinking.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv paper checked; no separate official code or data artifact is listed in the paper.'}
+category_ids: [scaling_rlvr_test_time_compute]

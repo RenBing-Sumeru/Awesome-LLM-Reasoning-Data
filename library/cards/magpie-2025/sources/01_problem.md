@@ -1,0 +1,5 @@
+Open-weight instruction models expose weights but usually not the private alignment data that taught them to answer diverse user requests. Human-written or seed-expansion pipelines are costly and bounded by predefined prompts, so public instruction corpora can remain smaller and less diverse than proprietary mixtures.
+
+Magpie turns the aligned model itself into a data source: it supplies only the model's pre-query chat-template prefix, lets the model invent a user instruction, and then samples the corresponding response. The direct output is an openly released instruction-response record for SFT, with optional filtering, multi-turn, preference, domain, and multilingual extensions.
+
+L4 facts: Primary sources are arXiv 2406.08464 and the ICLR 2025 OpenReview record linked by DBLP; the decision boundary is released instruction-response demonstrations rather than a model-only alignment method; the atlas object is a UUID plus role-tagged conversation; the official non-gated Parquet release, schema, real row, scale, filters, license, code, training consumer, and evidence boundaries were checked on 2026-07-14.

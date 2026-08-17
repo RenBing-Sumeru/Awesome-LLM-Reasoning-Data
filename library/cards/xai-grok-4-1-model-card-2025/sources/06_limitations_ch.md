@@ -1,0 +1,6 @@
+- 宽泛来源类别没有比例、manifest、consent/rights、retention、revision、source provenance 或明确 production-data boundary。
+- 被命名反馈类型没有 reward definition、grader identity、calibration、threshold、error behavior、coverage 或优化权重；benchmark/refusal 分数不是 reward quality 的证明。
+- filter training 使用 synthetic/production data，但 filter generator、mixture、label、selection、version、audit trail 及其与主模型训练关系均未知。
+- 内部 refusal/filter/jailbreak set 和 separate-model grader 缺少 prompt、label、instance、version、log。
+- 早期仅英文评估错误使历史直接比较失效。移除 safeguard 的 dual-use 结果与采用 production prompt/filter 的部署结果回答不同问题，却没有可复现 harness。
+- 公告的 live-traffic rollout 与 production-query evaluation 带来 privacy、consent、retention、selection-bias、train/evaluation-separation 问题；来源未解决它们。这是 curator audit inference，不是对 misuse 的指控。

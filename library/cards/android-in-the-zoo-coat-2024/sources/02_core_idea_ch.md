@@ -1,0 +1,1 @@
+核心贡献是 Chain-of-Action-Thought（CoAT）和 AitZ 数据集。CoAT 改变了动作预测的上下文对象：不是只给历史动作或自由形式 CoT，而是把每一步拆成屏幕观察、动作思考、下一动作描述和预期动作结果。数据面包含 18,643 个 screen-action pair 和 2,500+ 指令，均带 CoAT 标注。反馈契约是动作预测评测，包括仓库表格中的 format hit rate 与 action-type accuracy；标注本身可作为过程监督标签。最近对比是 AITW、Chain-of-Thought prompting、Chain-of-Actions prompting，以及后来的 AMEX 等更丰富移动 GUI 数据。

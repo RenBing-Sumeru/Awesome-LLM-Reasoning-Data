@@ -1,0 +1,7 @@
+权威论文记录是 2026 年 4 月 17 日修订的 arXiv:2601.05808v2；没有核验到正式会议或期刊 venue，因此仍记为 arXiv preprint。证据冻结还覆盖官方 RUC-NLPIR/EnvScaler repository 的 commit 87e667397abacf274858c0964796beb8f984aafe，以及四个官方 Hugging Face dataset revision。EnvScaler 处理的具体瓶颈是：可执行、有状态的工具环境和 outcome check 编写成本高，导致 agent post-training 中的环境多样性可能落后于模型和 rollout 规模。
+
+论文把 environment scale 变成数据构造变量。pipeline 从 API-Bank 与 ToolACE 中有状态、领域特定的任务开始，归纳环境描述、去除近重复、生成 executable Python world、反复检查、合成带初始化状态的 scenario 与 terminal-state check function，随后收集 SFT trajectory 或开展 online RL。因此，最终对象不是单一的“agent dataset”，而是 environment code、scenario、trajectory 与 feedback program 相互关联的 bundle。
+
+已核验公开 bundle 包含四种不同对象：191 条 executable environment row；跨 140 个环境、没有 check function 的 4,684 条 SFT scenario；带 executable checklist function 的 2,550 条 RL scenario；以及由 Qwen3-30B-A3B-Thinking-2507 生成、声称共 9,022 条的 SFT trajectory。4,684 与 2,550 两个 scenario 发布合计 7,234 条。runtime code 可以序列化包含 observation、action、reward、termination 与 truncation 的更丰富 episode，但没有发布 RL rollout corpus 或完整 paper-run replay archive。
+
+本 Card 归入 environment_agent_trajectory_data，因为 environment state、tool schema、agent action、observation、terminal check、scalar reward 和 trajectory 都是训练接口的重要组成。证据支持 SFT、RLVR-style outcome training 与 agent training；不支持 preference learning、reward-model training、process supervision，也不支持把 EnvScaler 当作 evaluation dataset。accepted metadata 仍为 partial 和 L3_summary_ready。双语正文达到 L4 阅读深度，但不提升 workflow state，并保留 loader、replay、verifier、security、rights 与 version 缺口。

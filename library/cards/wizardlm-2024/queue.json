@@ -1,0 +1,25 @@
+{
+  "title": "WizardLM: Empowering large pre-trained language models to follow complex instructions",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2304.12244",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "reason_to_include": "通过prompt evolution来生成instruction following data",
+  "decision_reason": "通过prompt evolution来生成instruction following data",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T08:29:53Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过prompt evolution来生成instruction following data",
+    "updated_at": "2026-07-11T08:29:53Z"
+  }
+}

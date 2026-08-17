@@ -1,0 +1,18 @@
+{
+  "title": "GALA: Geometric Data Selection with Strategic Prospecting for Large Language Model Self-Training",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.500/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:18:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将代表性样本选择、可验证轨迹构造和批次质量验证串成自训练的数据消费链路",
+    "updated_at": "2026-07-15T15:18:31Z"
+  }
+}

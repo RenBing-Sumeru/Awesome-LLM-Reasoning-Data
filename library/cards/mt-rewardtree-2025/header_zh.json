@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MT-RewardTree 以 top-2 同前缀 token 分支和每节点三次 COMETKiwi 评分 rollout 构造 8,652 组偏好对及 1,200 组 benchmark，但公开数据只保留筛选后的 chosen/rejected，而不含原始搜索树。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "机器翻译搜索偏好数据、过程奖励模型与评测基准",
+  "best_for_ch": "研究 token 级搜索数据、PRM、偏好学习、测试时对齐及 learned-metric 审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhaopeng Feng、Jiahan Ren、Jiayuan Su、Jiamei Zheng、Hongwei Wang、Zuozhu Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

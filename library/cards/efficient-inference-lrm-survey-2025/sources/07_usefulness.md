@@ -1,0 +1,1 @@
+Use this survey when choosing how a reasoning system should meet a budget. First decide whether intermediate steps must be inspectable. Then compare explicit shortening, latent approaches, and adaptive allocation with the same answer-quality floor. This prevents an engineering choice from silently changing what the system is able to show or justify.

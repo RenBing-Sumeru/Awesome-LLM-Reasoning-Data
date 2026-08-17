@@ -1,0 +1,1 @@
+Prior reasoning-reward benchmarks usually test pairwise ranking or step-error localization. Libra instead evaluates pointwise correctness of complete outputs from advanced reasoning models and reuses the same verifiable-judging contract for benchmark construction and thinking-oriented generative-RM training.

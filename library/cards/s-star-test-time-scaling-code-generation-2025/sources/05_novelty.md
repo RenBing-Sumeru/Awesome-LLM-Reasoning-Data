@@ -1,0 +1,1 @@
+S* combines parallel exploration across initial samples with sequential extension through execution-grounded debugging. Its selector differs from plain generated-test voting: distinguishing inputs are generated adaptively for candidate pairs, and actual execution results enter the comparison instead of asking the model to predict outputs unaided.

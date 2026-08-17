@@ -1,0 +1,3 @@
+Prior work establishes that contamination can inflate benchmarks or estimates its effect without training-data access. This paper instead retrains controlled models to map the joint dependence on repetition, data scale, and model size, then studies natural forgetting rather than only memorization.
+
+Its novelty is the claim that data scaling can eliminate even heavily repeated early contamination and that cumulative weight decay offers a usable bound. It does not show that unknown web-scale data is clean, nor that every benchmark exposure is forgotten; verify recency, repetition, and optimizer schedule before reuse.

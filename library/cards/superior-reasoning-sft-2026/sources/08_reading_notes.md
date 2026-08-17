@@ -1,0 +1,5 @@
+- Positioning: Distribution-aligned sequence distillation selects and stages 435K teacher traces to reduce this mismatch before training a 4B reasoning student.
+- Data object: uuid, input problem, reasoning output, domain, and generation metadata.
+- Author and selector: gpt-oss-120b generates temperature-stratified long reasoning sequences; selection uses sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication.
+- Evidence anchor: The 4B student is trained with roughly 435K-448K samples and reaches results competitive with several reported 32B-scale models, an order of magnitude larger.
+- Reuse decision: suitable for 4B long-CoT SFT distillation; first audit teacher-answer agreement can hide invalid derivations, and temperature stages may be tuned to the chosen 4B student.

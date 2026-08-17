@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "University of Alberta",
+    "University of Tokyo",
+    "UIUC",
+    "Huazhong University of Science and Technology"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-17T08:07:09Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.04531",
+    "https://github.com/LLM4SoftwareTesting/TestEval",
+    "https://github.com/LLM4SoftwareTesting/TestEval"
+  ],
+  "verification_note": "Institution names follow card-local verified source metadata; check final PDF for publication-grade affiliation details."
+}

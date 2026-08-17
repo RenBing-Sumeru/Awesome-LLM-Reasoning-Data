@@ -1,0 +1,5 @@
+- Distinguish a current-step correctness label from an MC estimate of future final-answer reachability.
+- Record the reported 6--8 responses per query, eight continuations per step, and critic-consensus rule, but do not infer unreleased decoding settings or final corpus composition.
+- Treat the reported 40-percent and 1.5M retention examples as pool-specific disclosures, not a complete final-data manifest.
+- Evaluate PRM claims with both Best-of-N and ProcessBench-style step-error localization; the paper documents why either alone is insufficient.
+- Public PRM weights and a per-step scoring interface do not release the queries, traces, labels, calibration, rejected data, or source rights.

@@ -1,0 +1,3 @@
+The proposal has two complementary controls. Bounded Adaptive Confidence Decoding, or BACD, changes how much denoising is performed according to model confidence, aiming to avoid unnecessary iterations while bounding error accumulation. Think Coarse, Critic Fine, or TCCF, uses large blocks while exploring a reasoning path and smaller blocks while revising it.
+
+Progressive Block Size Extension makes the large-block regime usable by reducing the degradation that otherwise appears when block length grows. The result is not a selector over many completed answers. It is a test-time policy inside the diffusion decoder, where the produced record is a sequence of reasoning blocks whose resolution and denoising budget vary over the trajectory.

@@ -1,0 +1,1 @@
+The framework relies on creators to disclose facts accurately and to maintain the document. It predates current LLM-specific concerns such as web-scale provenance, synthetic-data recursion, and benchmark contamination, so those fields require explicit modern additions.

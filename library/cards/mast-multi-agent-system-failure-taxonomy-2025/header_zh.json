@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MAST-Data 将人工归纳的 14 类多智能体失效分类扩展到逾 1,600 条执行轨迹，支持协作过程诊断与 judge 评测。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要依据统一失效分类分析、训练或评测多智能体协作轨迹诊断器的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mert Cemri、Melissa Z. Pan、Shuyi Yang、Lakshya A. Agrawal、Bhavya Chopra、Rishabh Tiwari、Kurt Keutzer、Aditya Parameswaran、Dan Klein、Kannan Ramchandran、Matei Zaharia、Joseph E. Gonzalez、Ion Stoica",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:10:47Z"
+}

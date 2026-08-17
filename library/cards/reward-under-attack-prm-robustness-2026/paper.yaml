@@ -1,0 +1,109 @@
+id: reward-under-attack-prm-robustness-2026
+title: 'Reward Under Attack: Analyzing the Robustness and Hackability of Process Reward Models'
+year: 2026
+venue: ICML 2026
+authors:
+- Rishabh Tiwari
+- Aditya Tomar
+- Udbhav Bamba
+- Monishwaran Maheswaran
+- Heng Yang
+- Michael W. Mahoney
+- Kurt Keutzer
+- Amir Gholami
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- mathematical-reasoning
+- process-reward-modeling
+- robustness
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2603.06621
+  arxiv: https://arxiv.org/abs/2603.06621
+  code: https://github.com/SqueezeAILab/reward-under-attack
+  data: https://github.com/SqueezeAILab/reward-under-attack
+  project: https://github.com/SqueezeAILab/reward-under-attack
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2603.06621
+  venue: https://proceedings.mlr.press/v306/tiwari26a.html
+  openreview: https://openreview.net/forum?id=phHnze3Nfm
+  acl: null
+  pmlr: https://proceedings.mlr.press/v306/tiwari26a.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: AIME reasoning trajectories and ProcessBench-derived controlled perturbations.
+  trace_author: Benchmark construction scripts, adversarial token optimization, and RL policies.
+  answer_format: Reasoning trajectory pairs with controlled perturbation type, PRM reward, and outcome comparison.
+  process_fields:
+  - problem
+  - trajectory
+  - perturbation_type
+  - reward
+  - ground_truth_accuracy
+  environment_or_substrate: Mathematical reasoning trajectories scored by process reward models.
+  verifier_or_reward: PRM scores are stress-tested against semantic perturbations, gradient attacks, and RL reward hacking.
+  terminal_predicate: A robust PRM should distinguish invalid reasoning from fluent but corrupted trajectories.
+recipe_metadata:
+  base_model: State-of-the-art PRMs and policies evaluated in the ICML paper.
+  teacher: Controlled perturbation rules, adversarial optimization, and outcome accuracy.
+  generator: Static perturbations, discrete token attacks, and RL-trained reward-hacking policies.
+  filtering_rule: Diagnostic tiers quantify reward sensitivity and divergence from ground-truth accuracy.
+  sampling_protocol: Pin repository commit, PRM checkpoint, and attack/RL configuration before comparison.
+  inference_budget: Attack optimization and RL rollout budget materially affect observed exploitability.
+  optimizer_or_scaffold: 'Three-tier diagnostic framework: static perturbation, adversarial optimization, and RL-induced reward
+    hacking.'
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Reasoning trajectories, controlled perturbations, PRM scores, adversarial attacks, and RL outcomes.
+  split: Use the repository's released PRM-BiasBench configuration and pin its revision.
+  decontamination: Do not tune a PRM on the public attacks and then report the same attacks as held-out robustness.
+  license: Check the repository license and individual source-data terms before reuse.
+  lineage: ICML 2026 paper, SqueezeAILab author repository, and PRM-BiasBench release.
+  known_failure_modes:
+  - Robustness conclusions depend on the evaluated PRMs and attack families.
+  - A benchmark attack suite cannot establish safety against all future reward-hacking strategies.
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, ICML 2026 acceptance and proceedings record, affiliation block, and the official SqueezeAILab
+    code-and-data repository.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Reward Under Attack releases PRM-BiasBench and a three-tier audit showing that process rewards can be optimized
+  on invalid mathematical reasoning.
+why_it_matters: It turns PRM robustness from an assumed property into an executable diagnostic before using a reward as a
+  training signal.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, ICML 2026 acceptance and proceedings record, affiliation block, and the official SqueezeAILab
+    code-and-data repository.
+category_ids:
+- preference_reward_feedback_data
+- process_trace_supervision_data

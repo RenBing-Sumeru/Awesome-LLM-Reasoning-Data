@@ -1,0 +1,4 @@
+The official arXiv PDF directly establishes the MATH source, Wolfram Alpha verifier, binary v/F signals, K=3 expansion, hybrid equations, filtering rules, generative rationale target, approximately 40K instances, Qwen2.5-7B-Instruct PRM base, and N=8 temperature-1 reward-guided decoding. Appendix B includes generation and verification prompt templates; Appendix C reports training infrastructure and hyperparameters.
+
+ProcessBench and reward-guided search results support utility under the reported model and candidate distribution. They do not independently validate all 40K records, the Wolfram Alpha query translation, filtered failures, or tree replay. No official artifact was verified, so even paper-stated row structure and counts cannot be checked against files. The paper's phrase “verified samples” should be read as tool-conditioned verification, not expert proof of each natural-language step.
+

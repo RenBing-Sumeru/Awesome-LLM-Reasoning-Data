@@ -1,0 +1,243 @@
+id: tau2-bench-2025
+title: '$\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment'
+year: 2025
+venue: ICML 2026
+authors:
+- Victor Barres
+- Honghua Dong
+- Soham Ray
+- Xujie Si
+- Karthik Narasimhan
+source_role:
+- benchmark
+- agent_environment
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- conversational_agents
+- customer_service
+- tool_use
+- environment_interaction
+- telecom
+- airline
+- retail
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/pdf?id=OC2z7iSQKa
+  arxiv: https://arxiv.org/abs/2506.07982
+  code: https://github.com/sierra-research/tau2-bench
+  data: https://github.com/sierra-research/tau2-bench/tree/v0.1.0/data/tau2
+  project: https://sierra.ai/resources/research/tau-squared-bench
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.07982
+  venue: https://openreview.net/forum?id=OC2z7iSQKa
+  openreview: https://openreview.net/forum?id=OC2z7iSQKa
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/sierra-research/tau2-bench/blob/v0.1.0/README.md#citation
+  release: https://github.com/sierra-research/tau2-bench/tree/v0.1.0
+  leaderboard: https://taubench.com/
+data_object:
+  object_type: Versioned customer-service task specifications, executable dual-control environments, and model-generated evaluation
+    episodes with component checks and terminal scalar reward.
+  prompt_source: The new telecom domain is built from 15 manually refined atomic subtask groups for service, mobile-data,
+    and MMS issues. Airline and retail are verified inherited tau-bench domains. Exact source ancestry for every inherited
+    task and the identities of LLMs used to draft domain materials are undisclosed.
+  trace_author: The evaluated agent model and a GPT-4.1-2025-04-14 function-calling user simulator jointly generate episodes
+    through the orchestrator; released v0.1.0 result files are evaluation trajectories, not human demonstrations.
+  task_record:
+  - task id
+  - description and purpose
+  - user persona and structured scenario instructions
+  - known and unknown user information
+  - support ticket
+  - initialization data and agent/user initialization actions
+  - optional message history
+  - reference actions with requestor identity
+  - environment assertions
+  - communication checks
+  - natural-language assertions
+  - reward basis
+  episode_fields:
+  - simulation id
+  - task id and embedded task specification
+  - ordered assistant, user, and tool messages
+  - tool-call name, arguments, requestor, and tool observation
+  - turn index and timestamps
+  - model token usage and cost
+  - termination reason
+  - reward components and final scalar reward
+  - trial and seed
+  answer_format: A multi-turn Tool-Agent-User episode in which the agent and simulated user alternate natural-language messages
+    or single tool calls over shared mutable state until a stop/transfer/out-of-scope or guard termination.
+  process_fields:
+  - global agent and user state
+  - action
+  - observation
+  - state transition
+  - message history
+  - environment assertion result
+  - action-match result
+  - communication result
+  - natural-language assertion result
+  - scalar reward
+  - termination reason
+  observation: Each player observes messages from the other player or outputs/errors from its available tools; the full release
+    trajectory records assistant, user, and tool messages.
+  verifier_or_reward: A task selects components from DB equivalence, environment/status assertions, required communication,
+    natural-language assertions, and action matching. Selected components are multiplied into a binary-like scalar reward.
+    Reported telecom tasks primarily use deterministic environment assertions, with an ACTION gate for some expected-failure/transfer
+    cases.
+  reward: The released `RewardInfo` stores final reward, DB match, per-assertion, per-action, communication, and NL-assertion
+    checks, selected reward basis, and component breakdown.
+  terminal_predicate: Conversation termination and task success are distinct. The user simulator can emit STOP, TRANSFER,
+    or OUT-OF-SCOPE and the runner has maximum-step/error guards; success is the product of the task-selected verifier components
+    over final state and/or trajectory.
+  provenance: LLM-assisted domain code/policy drafting and manual refinement -> atomic initialization/solution/assertion functions
+    -> seeded compositional task generation -> sampled evaluation task -> agent/user/tool episode -> component checks and
+    scalar reward.
+  environment_or_substrate: A LiteLLM-backed orchestrator implementing a Dec-POMDP-style shared world with separate agent
+    CRM and user-phone state, domain policies, typed tools, mock databases, and unit-tested environment code.
+  release_shape: Official v0.1.0 includes airline, retail, telecom, and mock task/environment data; 2,285 full and 114 sampled
+    telecom task records; evaluator and generator code; policies/databases; and 26 final JSON result files with full trajectories
+    for reported model/domain/ablation combinations.
+recipe_metadata:
+  base_model: Not a training recipe. Evaluated agents are gpt-4.1-mini-2025-04-14, gpt-4.1-2025-04-14, o4-mini-2025-04-16,
+    and claude-3-7-sonnet-20250219.
+  teacher: unknown
+  generator: An undisclosed LLM drafts PRDs, schemas, implementations, tests, and policies; authors manually refine them.
+    Telecom tasks are then generated compositionally from initialization, solution, and assertion functions. Episodes are
+    generated by each evaluated agent paired with the GPT-4.1 user simulator.
+  prompt_task_source: Telecom technical-support intents and manually refined atomic subtask groups; verified airline and retail
+    tasks inherited from tau-bench. Per-task upstream source lineage is incomplete.
+  sampling_protocol: The telecom generator keeps composite tasks with at least two subtasks, bins by intent, number of subtasks,
+    and persona, and samples at most three per bin. The released experiment runs each selected task four times.
+  temperature: 0.0
+  rollout_count: 4
+  inference_budget: Paper reports four trials per task. Inspected v0.1.0 result metadata uses max_steps=200 and max_errors=10;
+    a one-trial run over all domains is reported to cost about USD 40 for the specified API setup.
+  search_or_scaffold: Turn-based function-calling orchestration over separate agent/user tool spaces and mutable databases;
+    Default, No-User, Oracle Plan, and workflow-policy ablations are provided for telecom.
+  filtering_rule: Task correctness is checked by applying initialization and solution functions, verifying final assertions,
+    and verifying that the task is not solved before all solution functions are applied. The evaluation subset is balanced
+    by intent/subtask-count/persona bins through seeded random sampling.
+  selection_threshold: At most three telecom tasks per intent × subtask-count × persona bin; default generator seed 42. This
+    is evaluation-set sampling, not trajectory selection for training.
+  optimizer_or_training_scaffold: null
+  user_simulator: gpt-4.1-2025-04-14 with temperature 0, constrained to one message or requested tool call per turn and grounded
+    in tool-observable state.
+audit:
+  source_mixture: Verified inherited airline/retail task suites plus a new LLM-assisted, manually refined, programmatically
+    composed telecom domain over mock CRM and phone state; released trajectories come from four evaluated agent models and
+    a GPT-4.1 user simulator.
+  split: v0.1.0 exposes evaluation task files but no train/dev/test split manifest. The paper reports 50 airline, 115 retail,
+    and 114 sampled telecom tasks, while v0.1.0 contains 50 airline, 114 retail, and 114 telecom rows. Train/test splits were
+    added only in v0.2.1.
+  decontamination: unknown
+  benchmark_overlap: No systematic prompt/model-pretraining overlap audit is disclosed. Public tasks, policies, evaluator
+    code, and reference actions create future exposure and benchmark-specific optimization risk.
+  lineage: Official v0.1.0 exposes task definitions, mock state, policies, evaluator code, run configs, messages, tool calls,
+    reward components, trials, and seeds. It does not fully disclose per-task inherited-source ancestry, domain-drafting model/prompt
+    lineage, external provider revision, or all third-party rights.
+  license: The paper is CC BY 4.0 through arXiv and the repository root is MIT. No separate dataset/trajectory card clarifies
+    whether the MIT grant fully covers bundled generated model outputs, inherited tau-bench materials, and all third-party/model-provider
+    terms.
+  release_version: Initial official tag v0.1.0 (2025-06-12, tag commit shown as 37199f3) is the closest release to the paper
+    and should be the default reproduction freeze.
+  version_drift: The living repository now presents tau3-bench. v0.1.3 removed default NL-assertion checks; v0.2.1 added Gym
+    and train/test splits; v1.0.0 refactored the framework, added voice/knowledge modes, and records extensive airline/retail
+    task fixes. Current telecom `tasks.json` contains all 2,285 tasks with `base=114`; v0.1.0 stored the sampled 114 directly
+    in `tasks.json`.
+  verifier_or_judge_failure_modes:
+  - Environment assertions and action gates may omit semantically important requirements or encode benchmark-specific shortcuts.
+  - Natural-language assertions, where enabled, depend on an LLM judge; v0.1.3 later disabled their default use because of
+    issues.
+  - The user simulator can introduce false failures through premature termination, missing constraints, invented details,
+    tool misuse, or turn-structure violations.
+  - Paper Table 2 reports three telecom critical user-simulator errors out of 50 despite a contradictory caption/summary phrase
+    claiming none.
+  - Public task, policy, reference-action, and evaluator sources permit contamination or direct benchmark gaming.
+  - Task/evaluator fixes and split changes make unpinned scores and replay results non-comparable.
+  successful_and_failed_sample_retention: The inspected official GPT-4.1 telecom-default file retains all 456 task-trial episodes,
+    including 156 reward-1 and 300 reward-0 runs. v0.1.0 has 26 final result JSON files, but completeness beyond published
+    configurations is not claimed.
+  privacy_or_consent: Customer, account, and device data are mocked. Recruitment, compensation, and consent documentation
+    for the two-annotator user-simulator audit is not disclosed.
+  citation_status: verified
+  confidence: high
+  notes: Use 2025 as first-publication year and ICML 2026 as archival venue. Treat v0.1.0 as the paper-era freeze. Do not
+    infer agent-training use from the later Gym interface or treat the current tau3 main branch as identical to the paper
+    benchmark.
+  remaining_unknowns:
+  - exact LLM identities, prompts, and rejection counts used to draft the PRD, schemas, code, tests, and policies
+  - complete inherited-task source lineage and paper-vs-v0.1.0 retail-count reconciliation
+  - dedicated decontamination and future benchmark-exposure controls
+  - separate rights statement for task JSON, generated trajectories, inherited materials, and provider outputs
+  - immutable external API/provider behavior needed to replay closed-model trajectories
+  - annotator recruitment, compensation, agreement statistics, and consent details
+  - independent calibration and adversarial audit of NL assertions and task-specific predicates
+inclusion_reason: 'tau2-bench makes the environment-feedback boundary unusually inspectable: released task state, user and
+  agent actions, tool observations, assertion/action checks, scalar outcomes, and both successful and failed episodes expose
+  how coordination failures become evaluable reasoning data.'
+related:
+- agent-change-bench-2025
+- the-agent-company-2024
+tags:
+- environment-agent-trajectory-data
+- agent-benchmark
+- dual-control
+- tool-use
+- user-simulator
+- compositional-task-generation
+- programmatic-verification
+- trajectory-release
+- version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: tau2-bench releases a dual-control telecom environment with 114 sampled tasks from 2,285 generated compositions,
+  state/action-grounded rewards, and full success/failure evaluation trajectories, but exact reuse requires a paper-era version
+  pin.
+why_it_matters: It turns agent-user coordination into an auditable data object—task state, messages, both parties’ tool actions,
+  observations, verifier components, reward, and termination—while showing why public environments still need version, rights,
+  simulator, and contamination review before trajectories become post-training data.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: ArXiv, ICML/OpenReview archival PDF, Sierra project page, official repository, v0.1.0 tag, task/full-task JSON, generator/evaluator/simulation
+    code, root license, released trajectories, tags, and changelog were inspected. Release completeness and rights remain
+    partial.
+curation_level: L3_summary_ready
+needs:
+- 'needs_version_pin: use v0.1.0 or record an explicit later tag, task split, evaluator revision, model/provider versions,
+  and run configuration'
+- 'needs_license: publish a dataset/trajectory-specific rights statement covering inherited tasks, generated model outputs,
+  and provider terms'
+- 'needs_decontamination: disclose prompt/pretraining overlap checks and a policy for future public-benchmark exposure'
+- 'needs_lineage: reconcile paper/release retail count and expose per-task inherited-source and LLM-drafting provenance'
+- 'needs_replay: pin external API/provider behavior or provide open-model reference runs and immutable environment manifests'
+- 'needs_verifier_audit: calibrate NL assertions and test environment/action predicates for false positives, false negatives,
+  and shortcut solutions'
+- 'needs_annotation_metadata: disclose annotator protocol, agreement, recruitment, compensation, and consent'
+card: null

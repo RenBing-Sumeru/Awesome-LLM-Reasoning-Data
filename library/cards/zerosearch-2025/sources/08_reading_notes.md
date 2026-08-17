@@ -1,0 +1,3 @@
+- Check the official paper before relying on any unlinked artifact.
+- Separate the stated trace construction method from a released trace corpus.
+- Treat the recorded audit risk as a reuse constraint.

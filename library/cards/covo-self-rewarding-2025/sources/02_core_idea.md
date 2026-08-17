@@ -1,0 +1,7 @@
+The core signal is built from current-policy likelihoods rather than correctness judgments. A trajectory is split at predefined boundaries such as newlines. For every intermediate prefix and every distinct final answer in the 16-sample group, CoVo computes a length-normalized negative log-likelihood of producing that answer from that prefix. These values form a states-by-candidate-answers distance matrix.
+
+Two trajectory statistics summarize the matrix. **Consistency** is the fraction of states for which the closest candidate answer is the trajectory's own final answer. **Volatility** is the normalized position of the last state whose closest candidate is not its own final answer. Trajectories are then grouped by exact extracted final answer. To reduce sensitivity to individual outliers, the reported vector aggregation maps each trajectory to a vector whose magnitude is consistency and whose angle is determined by volatility, sums the vectors within an answer group, and uses the normalized resultant magnitude as the intrinsic group reward.
+
+An optional curiosity term rewards low-probability state transitions, with a KL-based penalty intended to prevent extremely unlikely tokens from dominating. The total scalar reward combines the intrinsic and curiosity terms and is consumed by Reinforce++.
+
+This is a programmatic self-reward mechanism, not an external verifier. Math-Verify appears in the paper only to score benchmark answers against ground truth during evaluation; it is not used to produce CoVo's training reward.

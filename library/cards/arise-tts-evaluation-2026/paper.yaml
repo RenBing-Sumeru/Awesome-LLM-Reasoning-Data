@@ -1,0 +1,101 @@
+id: arise-tts-evaluation-2026
+title: 'ARISE: An Adaptive Resolution-Aware Metric for Test-Time Scaling Evaluation in Large Reasoning Models'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Zhangyue Yin
+- Qiushi Sun
+- Zhiyuan Zeng
+- Zhiyuan Yu
+- Qipeng Guo
+- Xuanjing Huang
+- Xipeng Qiu
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+- code-generation
+- agentic-tasks
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.289/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.289/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.289
+data_object:
+  prompt_source: Mathematics, code-generation, and agentic-task evaluations reported in the paper.
+  trace_author: Evaluated large reasoning models.
+  answer_format: Per-sample outcomes and token consumption across scaling iterations.
+  process_fields:
+  - model
+  - sample
+  - scaling_iteration
+  - correctness
+  - token_count
+  - arise_score
+  environment_or_substrate: Repeated inference-time scaling evaluation.
+  verifier_or_reward: Task-specific evaluation outcomes.
+  terminal_predicate: Correctness at each scaling iteration.
+recipe_metadata:
+  base_model: Contemporary large reasoning models evaluated in the paper.
+  teacher: null
+  generator: Model inference at successive compute levels.
+  filtering_rule: ARISE aggregates adjacent per-sample correctness transitions weighted by relative token use.
+  sampling_protocol: Adaptive sampling based on observed accuracy and token-consumption variance.
+  rollout_count: null
+  temperature: null
+  inference_budget: Dynamic evaluation trials and token budgets.
+  optimizer_or_scaffold: Adaptive Resolution-aware Inference Scaling Evaluation metric.
+audit:
+  source_mixture: Official Findings of ACL 2026 paper and ACL Anthology record.
+  split: See primary paper for task splits.
+  decontamination: Not separately claimed.
+  license: Verify model and benchmark terms before reuse.
+  lineage: https://aclanthology.org/2026.findings-acl.289/
+  known_failure_modes:
+  - metric_dependence
+  - outcome_noise
+  - sampling_cost
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue, DOI, affiliations, metric definition, and experimental scope checked against the official
+    ACL PDF on 2026-07-20.
+inclusion_reason: It makes accuracy changes and token costs at individual scaling steps explicit in the evaluation of inference-time
+  compute.
+related: []
+tags:
+- test-time-compute
+- evaluation
+- scaling-efficiency
+- token-cost
+- reasoning
+status: verified
+one_line_summary: ARISE evaluates test-time scaling by rewarding per-sample improvements and penalizing accuracy regressions
+  that consume more tokens.
+reading_priority: useful
+paper_type: Test-time scaling evaluation-metric study
+best_for: Readers comparing reasoning models’ quality-cost scaling behavior.
+confidence: high
+why_it_matters: It prevents a model from appearing efficient when it spends extra tokens to turn correct answers into errors.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL record checked; no official code or data artifact link identified on the primary record.
+category_ids:
+- scaling_rlvr_test_time_compute

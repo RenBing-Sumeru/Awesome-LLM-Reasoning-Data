@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布约四千对用于上下文奖励建模，优选回答遵循给定证据而非依靠文体吸引力",
+    "updated_at": "2026-07-14T06:37:33Z"
+  },
+  "updated_at": "2026-07-14T06:37:33Z"
+}

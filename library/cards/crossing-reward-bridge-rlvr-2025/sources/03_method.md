@@ -1,0 +1,3 @@
+For prompts paired with reference answers, the policy generates exploration responses. A fixed large model judges whether each response agrees with its reference, and the retained prompt-reference-response-judgement tuples are used to fine-tune a 7B generative reward model.
+
+During reinforcement learning, the reward can be the verifier's sampled binary judgement or the probability associated with its positive judgement token. The paper applies this framework to mathematical and multi-subject free-form data, separating the construction of reward-model records from the final policy-training evaluation.

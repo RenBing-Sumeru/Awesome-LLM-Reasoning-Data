@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "CHERRL 通过注入可控的 LLM judge 偏差，复现并定位基于量规强化学习中的奖励投机。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "奖励投机审计与检测环境论文",
+  "best_for_ch": "需要审计量规奖励、LLM judge 偏差或训练轨迹异常的研究者。",
+  "confidence_ch": "高：论文全文、官方 arXiv 与公开代码均已核验。",
+  "authors_ch": "Xuekang Wang, Zhuoyuan Hao, Shuo Hou, Hao Peng, Juanzi Li, Xiaozhi Wang",
+  "category_ids": ["audit_failure_contamination_verifier_attacks"],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

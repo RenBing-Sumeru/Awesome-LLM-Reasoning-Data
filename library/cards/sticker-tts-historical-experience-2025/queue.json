@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T10:15:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用可校正的历史线索减少重复推理采样",
+    "updated_at": "2026-07-20T10:15:31Z"
+  }
+}

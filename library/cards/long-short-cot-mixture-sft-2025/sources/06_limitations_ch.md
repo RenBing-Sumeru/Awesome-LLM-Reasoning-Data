@@ -1,0 +1,6 @@
+- **未验证的改写。** prompt 要求不得添加信息并保留答案，但没有自动或人工审计来检查这些性质。短轨迹可能引入错误步骤、遗漏必要限定，或保留上游的错误答案。这是基于已述反馈契约的 curator inference。
+- **溯源与发布缺口。** 公开的 1,984 行 split 没有不可变的长/短链接、16 个被排除输入的标识、被拒绝输出、来源 ID、rewriter revision、采样日志或混合清单。当前数据集/模型页标为 MIT，但论文没有解决上游 s1K-1.1/DeepSeek-R1 轨迹的权限、同意或问题来源。
+- **可复现性缺口。** 附录 C 给出若干 SFT 超参数，却没有 epoch 数、完整 LlamaFactory 配置、模型 revision、rewriter 解码、随机种子或评测解码。所链接的 GitHub 仓库与 model card 均标为 under development，未提供可验证训练流水线。
+- **实验边界。** 结果覆盖一个 Qwen2.5-32B-Instruct 学生模型、1,000 条上游示例以及 MATH500、AIME24 和 GPQA。作者明确没有研究更大规模或长/短混合比例。故 benchmark 增益不能证明数据质量或普遍迁移能力。
+- **效率主张存在混杂。** balanced-mode 评测既使用 mixture SFT 又改变推理 prompt。不能安全地把报告的长度/准确率权衡仅归因于短轨迹；尚无分离数据与 prompt 效应的析因研究。
+- **污染情况 unknown。** 论文未报告去污染或 benchmark-overlap 程序。由于来源问题清单未披露，无法仅靠发布物检查污染。

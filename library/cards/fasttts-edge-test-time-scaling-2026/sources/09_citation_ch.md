@@ -1,0 +1,1 @@
+Chen, Hao Mark、Zhiwen Mo、Guanxi Lu、Shuang Liang、Lingxiao Ma、Wayne Luk、Hongxiang Fan. 2026. 《FastTTS: Accelerating Test-Time Scaling for Edge LLM Reasoning》. 第 31 届 ACM 编程语言与操作系统体系结构支持国际会议第 2 卷（ASPLOS 2026）。DOI：https://doi.org/10.1145/3779212.3790161。官方一手论文稿件见：https://arxiv.org/abs/2509.00195。

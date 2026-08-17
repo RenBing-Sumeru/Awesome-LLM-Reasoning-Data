@@ -1,0 +1,5 @@
+- Use the FSE 2026 accepted title and nine-author list as the paper identity; treat the older long SWE-Factory title and Yingtian Zou citation surface as version drift, and do not invent an ACM DOI.
+- The construction contract is environment-level gold-patch fail-to-pass, not step supervision: four agents produce Docker/test recipes, and the parser checks nonzero-before/zero-after exit codes.
+- Keep all counts distinct: 2,441 source issues, 671 released SweSetupBench tasks, 2,877 constructed and 2,809 prepared training environments, 2,809 messages-only trajectories, and 430 Gym rows.
+- Read the ablations and parser audit with the headline result: 337/671 at $0.047, zero binary-resource successes without download repair, 2/18/5 valid tasks without execution feedback, and 16 parser false negatives among 1,201 usable pairs.
+- Before reuse, resolve the missing Appendix, row lineage, image digests/SBOMs, model cards and licenses, upstream GitHub rights, contamination checks, security controls, and the paper/config version drift.

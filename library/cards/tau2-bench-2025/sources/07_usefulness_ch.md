@@ -1,0 +1,9 @@
+对指定的 `environment_agent_trajectory_data` track，tau2-bench 最适合作为固定版本的 evaluation 与 audit substrate。研究者可以把结构化 task 与初始 shared state 连接到两个 actor 的 message、tool call 与 observation、final state、各 verifier component 结果、scalar reward、termination reason 和 trial seed，从而在 planning、information gathering、agent action、user action、communication、tool execution、simulator behavior 与 evaluator mismatch 之间定位失败来源。
+
+telecom 构造 pipeline 是一套可操作的 benchmark recipe。atomic initialization/solution/assertion function、compatibility constraint、可执行 necessity check、persona assignment 与带 seed 的 bin sampling 展示了如何把 stateful support workflow 转化为大量可审计任务组合，而不必逐条编写 prompt。更完整的复用还应记录 drafting model 与 prompt、被拒组合、逐任务 review decision、准确 inherited lineage 与不可变 release manifest。
+
+反馈契约适合 verifier 研究。研究者可以修改 final state 或 action order，测试 environment assertion 是否接受 shortcut；比较带 action gate 与仅 assertion 的任务；用重复调用或替代 judge 重跑 natural-language assertion；并结合盲评 human label 估计 false positive 与 false negative。user-simulator trace 还可用于审计过早停止、遗漏约束、编造细节与无效 tool call。由于后续 release 改变了默认 assertion 行为，此类研究必须固定 evaluator revision。
+
+保留的 reward-1 与 reward-0 trajectory 支持 failure-retention audit、episode-schema analysis 与 replay tooling。已检查的 456-run telecom-default 文件允许按 outcome 比较 action sequence、message exchange、tool observation、termination 与 verifier component。这些仍属于 evaluation analysis。论文不支持把记录转换为 SFT demonstration、preference pair、PRM 或 reward-model data、process supervision 或 agent-RL rollout；缺少明确权利、split、去污染、lineage、simulator calibration 与外部 replay dependency 也进一步阻断这些用途。
+
+安全复用等级是**仅限 evaluation 与 audit**，使用 `v0.1.0` 或其他明确命名的 tag，并同时固定 task split、evaluator version、model/provider version 与 run configuration。当前 tau3 main branch 以及后续 Gym/train-test 功能是有用的后继 artifact，但不能与论文 benchmark 互换。benchmark score 应用于比较固定配置，而不能用于认证 trajectory quality。

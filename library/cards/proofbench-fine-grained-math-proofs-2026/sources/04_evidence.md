@@ -1,0 +1,1 @@
+ProofGrader achieves an MAE of 0.926 against expert scores. In best-of-16 selection it reaches 4.14/7, above 2.48 for a binary evaluator, closing about 78% of the gap to the human oracle at 4.62. Partial credit and marking schemes improve search, but do not replace experts for novel proofs.

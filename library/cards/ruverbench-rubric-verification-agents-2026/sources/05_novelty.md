@@ -1,0 +1,1 @@
+Most judge benchmarks evaluate short-text preference or answer correctness, while agent benchmarks often treat LLM scores as gold. RuVerBench makes rubric compliance in long reports and code a separate meta-task and manipulates batching and voting systematically. The novelty is evaluating the verifier itself rather than adding another agent task suite.

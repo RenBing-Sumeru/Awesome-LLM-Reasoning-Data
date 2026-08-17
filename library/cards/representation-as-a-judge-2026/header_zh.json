@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "INSPECTOR 以小语言模型的隐藏表示预测评测分数，避免依赖生成式 LLM judge。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "表示探测式 LLM judge 与推理数据过滤研究",
+  "best_for_ch": "需要低成本、可解释地评估推理回答或过滤噪声轨迹的研究者。",
+  "confidence_ch": "高：ICLR 2026 正式论文、官方代码与 Hugging Face release 已核验。",
+  "authors_ch": "Zhuochun Li, Yong Zhang, Ming Li, Yuelyu Ji, Yiming Zeng, Ning Cheng, Yun Zhu, Yanmeng Wang, Shaojun Wang, Jing Xiao, Daqing He",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

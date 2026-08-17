@@ -1,0 +1,6 @@
+- Read the environment foundation and task-instantiation phases as separate lineage layers.
+- Require a task to bind initial state, intent, executable reference path, expected final state, and verifier.
+- Distinguish procedural code-test outcomes, simulator dialogue feedback, and terminal database reward.
+- Check whether off-reference valid actions have state support; a passing reference chain alone is insufficient for RL.
+- Ask for both successful and failed rollouts, plus generation/debug failures, rather than a success-only corpus.
+- Treat reset, replay, licensing, privacy, and harmful-domain prevention as release requirements, not implied properties of a virtual sandbox.

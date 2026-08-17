@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Google DeepMind",
+    "Google"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.03679",
+    "https://github.com/google-research/google-research/tree/master/android_control"
+  ],
+  "verification_note": "arXiv and Google Research repository verify formal title, authors, Google/DeepMind institutions, and NeurIPS Datasets and Benchmarks status."
+}

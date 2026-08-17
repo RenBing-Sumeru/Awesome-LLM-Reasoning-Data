@@ -1,0 +1,5 @@
+SWE-Gym connects three feedback layers. First, semi-manually configured repository containers and expert-written unit tests define a programmatic environmental terminal predicate. Second, successful agent episodes become rejection-sampling SFT data. Third, balanced successful and failed episodes train outcome reward models whose success probabilities rank multiple candidate trajectories with Best@k.
+
+OpenHands provides a general CodeActAgent trajectory with terminal and file-editing actions; MoatlessTools provides a constrained multi-stage workflow. Both learn by filtered behavior cloning rather than online RL. The accepted `training_use` values therefore remain SFT, reward modeling, agent training, and test-time compute; RLVR is not added.
+
+The construction makes failures useful when they are retained. The 491-row SFT export is success-only, while a separate sampled release preserves the same 491 successes plus 5,564 failures. A different 2,636-row verifier mixture is exactly balanced at 1,318 success and 1,318 failure.

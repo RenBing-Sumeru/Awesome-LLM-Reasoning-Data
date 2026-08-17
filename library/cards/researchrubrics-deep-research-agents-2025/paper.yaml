@@ -1,0 +1,110 @@
+id: researchrubrics-deep-research-agents-2025
+title: 'ResearchRubrics: A Benchmark of Prompts and Rubrics For Evaluating Deep Research Agents'
+year: 2025
+venue: ICLR 2026
+authors:
+- Manasi Sharma
+- Chen Bo Calvin Zhang
+- Chaithanya Bandi
+- Clinton J. Wang
+- Ankit Aich
+- Huy Nghiem
+- Tahseen Rabbani
+- Ye Htet
+- Brian Jang
+- Sumana Basu
+- Aishwarya Balwani
+- Denis Peskoff
+- Marcos Ayestaran
+- Sean M. Hendryx
+- Brad Kenstler
+- Bing Liu
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- deep_research
+- factuality
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.07685
+  arxiv: https://arxiv.org/abs/2511.07685
+  code: https://scale.com/research/researchrubrics
+  data: https://huggingface.co/datasets/ScaleAI/researchrubrics
+  project: https://scale.com/research/researchrubrics
+  huggingface: https://huggingface.co/datasets/ScaleAI/researchrubrics
+  doi: https://doi.org/10.48550/arXiv.2511.07685
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Realistic deep-research requests across nine task domains.
+  trace_author: Three-expert authoring, revision, and review of prompts and rubrics.
+  answer_format: Prompt, weighted rubric criteria, criterion type, and ternary compliance verdict.
+  process_fields:
+  - prompt
+  - rubric
+  - weight
+  - criterion_type
+  - verdict
+  - complexity
+  environment_or_substrate: Open-ended multi-document deep research.
+  verifier_or_reward: Expert-authored weighted rubrics with model and human evaluation protocols.
+  terminal_predicate: A research answer satisfies mandatory and optional rubric requirements.
+recipe_metadata:
+  base_model: Commercial deep-research agents and LLM judges.
+  teacher: Human task designers and rubric reviewers.
+  generator: Three-stage expert writing and review pipeline.
+  filtering_rule: Retain clear, realistic prompts and reviewed fine-grained criteria.
+  sampling_protocol: 101 prompts and 2,593 rubric criteria.
+  rollout_count: null
+  temperature: null
+  inference_budget: Record benchmark release, web access date, agent configuration, and judge.
+  optimizer_or_scaffold: Ternary criterion scoring with weighted normalization.
+audit:
+  source_mixture: Official arXiv paper, Scale project page, and ScaleAI Hugging Face release.
+  split: Consult the official dataset release for current split details.
+  decontamination: Dynamic-web tasks require date-stamped retrieval and may overlap with web-trained models.
+  license: Consult the official Hugging Face dataset card for current terms.
+  lineage: https://huggingface.co/datasets/ScaleAI/researchrubrics
+  known_failure_modes:
+  - LLM judge agreement varies by rubric design and dynamic evidence may change.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, Scale author affiliations, ICLR status, project, and data release checked.
+inclusion_reason: ResearchRubrics releases human-authored rubrics for evaluating open-ended deep-research agents.
+related: []
+tags:
+- deep_research
+- rubric
+- llm_judge
+- benchmark
+one_line_summary: ResearchRubrics pairs realistic research prompts with human-written criteria for granular agent evaluation.
+why_it_matters: It evaluates justification and synthesis rather than only short factual retrieval.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and Scale release pages checked.
+category_ids:
+- judgment_rubric_domain_expert_data

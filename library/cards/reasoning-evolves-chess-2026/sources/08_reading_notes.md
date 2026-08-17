@@ -1,0 +1,4 @@
+- Inspect which data family supplies each trace and whether it is teacher-written or programmatic.
+- Separate chess-engine filtering and targets from gpt-oss-120b faithfulness judging.
+- Check the disclosed Predict Move top-30% rule against undisclosed thresholds and generation settings.
+- Treat position lineage, overlap controls, and the rejected teacher pool as unresolved audit gaps.

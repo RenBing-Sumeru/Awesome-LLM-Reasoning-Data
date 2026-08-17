@@ -1,0 +1,1 @@
+The work makes difficulty a changing policy-relative quantity and couples targeted sampling with explicit rollout-group replay. It therefore treats online RL data allocation and reuse as first-class construction decisions.

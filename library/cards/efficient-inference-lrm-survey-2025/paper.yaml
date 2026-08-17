@@ -1,0 +1,110 @@
+id: efficient-inference-lrm-survey-2025
+title: 'Efficient Inference for Large Reasoning Models: A Survey'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yue Liu
+- Jiaying Wu
+- Yufei He
+- Hongcheng Gao
+- Hongyu Chen
+- Baolong Bi
+- Jiaheng Zhang
+- Zhiqi Huang
+- Bryan Hooi
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- chain-of-thought
+- inference-efficiency
+- reasoning-data
+- test-time-compute
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2503.23077
+  arxiv: https://arxiv.org/abs/2503.23077
+  code: https://github.com/yueliu1999/Awesome-Efficient-Inference-for-LRMs
+  data: null
+  project: https://github.com/yueliu1999/Awesome-Efficient-Inference-for-LRMs
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.23077
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed complex reasoning inputs and explicit reasoning sequences.
+  trace_author: Primary studies summarized by the survey; no new trace set is released.
+  answer_format: A taxonomy of explicit compact and implicit latent reasoning methods for efficient inference.
+  process_fields:
+  - reasoning representation
+  - token budget
+  - memory use
+  - latency
+  - task quality
+  - efficiency method
+  environment_or_substrate: Large reasoning models that use extended deliberation at inference time.
+  verifier_or_reward: Reviews task-specific quality and efficiency evaluations; no shared verifier is released.
+  terminal_predicate: A task result judged together with resource use.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Reviewed work varies by method.
+  generator: Literature synthesis, taxonomy, and empirical comparison.
+  filtering_rule: Distinguishes explicit compact reasoning from implicit latent reasoning and discusses model merging and
+    new architectures.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new optimizer or inference engine.
+audit:
+  source_mixture: Official arXiv record and linked resource repository.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion for reviewed benchmarks.
+  license: Check primary resources before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2503.23077'
+  known_failure_modes:
+  - Token reductions can remove needed reasoning
+  - Latent methods can reduce process inspectability
+  citation_status: verified
+  confidence: high
+  notes: The official abstract defines explicit compact and implicit latent chain-of-thought as its two main categories.
+inclusion_reason: A 2025 survey from NUS and collaborators that directly compares reasoning representation, test-time cost,
+  and quality.
+related: []
+tags:
+- foundations-and-primers
+- efficient-inference
+- large-reasoning-models
+- nus
+- survey
+why_it_matters: It separates reducing visible tokens from preserving the information needed for correct reasoning.
+one_line_summary: An NUS-led survey of efficient inference methods for long reasoning models.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers optimizing long reasoning traces under memory, latency, or token budgets.
+confidence: high
+status: verified
+needs:
+- 'unknown: fair comparisons across quality, latency, memory, and trace interpretability'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv abstract and linked resource were checked.
+category_ids:
+- foundations_and_primers

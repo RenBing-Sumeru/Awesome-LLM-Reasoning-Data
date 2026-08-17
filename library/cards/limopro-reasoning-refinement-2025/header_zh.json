@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"LIMOPro 从训练推理轨迹中剪去低重要性的功能性步骤，使模型在测试时以更少词元保持或提高准确率。","reading_priority_ch":"必读","paper_type_ch":"高效测试时推理数据与扩展研究","best_for_ch":"希望改善准确率—延迟权衡、但不愿粗暴压缩逻辑解题主线的读者。","confidence_ch":"高","authors_ch":"Yang Xiao、Jiashuo Wang、Ruifeng Yuan、Chunpu Xu、Kaishuai Xu、Wenjie Li、Pengfei Liu（机构：香港理工大学、上海交通大学、SII）","category_ids":["scaling_rlvr_test_time_compute"]}

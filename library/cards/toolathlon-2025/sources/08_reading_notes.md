@@ -1,0 +1,6 @@
+- Start with Paper §§2–3 and Table 2: the object is 108 executable fuzzy tasks over 32 MCP-server/application surfaces and 604 MCP tools, not a static prompt set.
+- Keep the supervision boundary explicit: logs contain state-action-tool events, but correctness is one deterministic terminal `pass`; no step-level reward or process label is disclosed.
+- Read Paper Table 3 and §5 together: 38.6% is the paper-snapshot top mean Pass@1, while 15%–35% overlong-output incidence shows scaffold behavior is part of the measurement.
+- Treat Toolathlon-Verified (2026-06-30) as a materially revised release, not a silent replacement for the paper; pin repo `3b647e6` and HF `01deb37` when auditing current artifacts.
+- Read alongside MCP-AgentBench, τ2-bench, and TheAgentCompany to compare MCP breadth, stateful interaction, and long-horizon multi-application evaluation contracts.
+- Before reuse, resolve licensing, inspect the gated archives and decontamination files, test evaluator false positives/negatives, and obey the official do-not-train policy.

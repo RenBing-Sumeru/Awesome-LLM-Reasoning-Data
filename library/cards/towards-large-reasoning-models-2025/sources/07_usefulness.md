@@ -1,0 +1,1 @@
+The survey is most closely connected to work on demonstrations and reasoning traces, process supervision, verifier-guided reinforcement learning, and search-based or agentic trajectories. Its terminology provides a common description for systems that combine those elements.

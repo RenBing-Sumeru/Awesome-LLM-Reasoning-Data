@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"论文论证：当正确推理具有异质性时，验证器引导的强化学习或搜索比模仿专家轨迹更能扩展测试时计算。","reading_priority_ch":"必读","paper_type_ch":"理论与实证测试时扩展研究","best_for_ch":"需要决定应投资验证器，还是只收集合成推理轨迹的读者。","confidence_ch":"高","authors_ch":"Amrith Setlur、Aviral Kumar（卡内基梅隆大学）；Nived Rajaraman、Sergey Levine（加州大学伯克利分校）","category_ids":["scaling_rlvr_test_time_compute"]}

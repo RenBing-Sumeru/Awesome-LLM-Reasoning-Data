@@ -1,0 +1,1 @@
+Alon Jacovi et al. "The FACTS Grounding Leaderboard: Benchmarking LLMs' Ability to Ground Responses to Long-Form Input." arXiv:2501.03200, 2025. Paper: https://arxiv.org/abs/2501.03200. Official Kaggle benchmark: https://www.kaggle.com/facts-leaderboard.

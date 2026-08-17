@@ -1,0 +1,3 @@
+For an evaluation owner selecting an LLM judge, take a representative prompt–candidate set, run original and permuted orders repeatedly, and report RS, PC, and PF by task. The output is a judge audit table that can decide whether to randomize order, aggregate multiple calls, or exclude a judge from a task slice.
+
+For benchmark maintainers, use inter-judge agreement to identify easy and contentious items before curating a test set. Do not use this protocol as an answer-correctness verifier or assume its thresholds transfer to generation tasks, new prompt templates, or larger list-wise rankings without a local calibration study.

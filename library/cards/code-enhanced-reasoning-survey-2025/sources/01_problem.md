@@ -1,0 +1,3 @@
+Language-only reasoning can be hard to check and may leave a complex goal insufficiently decomposed. This EMNLP 2025 survey asks how code can provide structured, executable intermediate work and how stronger reasoning can improve code intelligence. It synthesizes existing research; it does not release a new model or code dataset.
+
+The reader should distinguish this question from ordinary code completion. The issue is whether an executable representation makes a reasoning step inspectable or testable, and whether the returned feedback actually concerns the intended goal. This boundary prevents a passing program or a plausible explanation from being treated as sufficient evidence by itself.

@@ -1,0 +1,3 @@
+Frontier reasoning reports can expose impressive RL outcomes while withholding the actual prompts, training records, reward data, code, and source manifests needed to inspect how those outcomes were obtained. The relevant question for this Card is therefore not whether Kimi k1.5 reports strong results, but which data and feedback interfaces it makes auditable.
+
+Kimi k1.5 describes a multimodal pipeline spanning pretraining, vanilla SFT, long-CoT warmup SFT, RL, and long2short compression. It gives concrete mechanisms for prompts, verifiers, reward models, generated coding tests, and rollout infrastructure, yet its model and data artifacts remain proprietary. This Card records that partial disclosure boundary.

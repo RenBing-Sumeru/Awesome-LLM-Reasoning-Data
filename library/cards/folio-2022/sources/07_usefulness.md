@@ -1,0 +1,1 @@
+Use FOLIO as a schema for formalizable reasoning benchmarks. Preserve premise set id, natural-language statements, FOL translation, gold label, inference-engine verdict, split, and prompt format. It is useful for checking whether a reasoning dataset has an audit path beyond annotator agreement.

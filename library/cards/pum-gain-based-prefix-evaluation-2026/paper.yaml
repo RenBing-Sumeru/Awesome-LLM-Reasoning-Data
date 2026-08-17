@@ -1,0 +1,100 @@
+id: pum-gain-based-prefix-evaluation-2026
+title: 'From Correctness to Utility: Gain-Based Prefix Evaluation for LLM Reasoning'
+year: 2026
+venue: arXiv 2026
+authors:
+- Yuhang Zhou
+- Yixin Cao
+- Guangnan Ye
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- reward-modeling
+- search
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2606.07190
+  arxiv: https://arxiv.org/abs/2606.07190
+  code: https://zhiqix.github.io/pum-project-page
+  data: https://huggingface.co/datasets/zhiqix/PUM-MATH
+  project: https://zhiqix.github.io/pum-project-page
+  huggingface: https://huggingface.co/datasets/zhiqix/PUM-MATH
+  doi: https://doi.org/10.48550/arXiv.2606.07190
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical problems and candidate reasoning trajectories.
+  trace_author: Reasoning-trajectory generators and lightweight student continuation models.
+  answer_format: Pairwise mathematical reasoning prefixes with gain-derived preference labels.
+  process_fields:
+  - problem
+  - prefix_a
+  - prefix_b
+  - prefix_gain
+  - preference_label
+  environment_or_substrate: Mathematical reasoning completions.
+  verifier_or_reward: Verified solve-rate difference for student continuations conditioned on a prefix.
+  terminal_predicate: A continuation reaches a verified correct solution.
+recipe_metadata:
+  base_model: Lightweight student models; see the official paper for exact configurations.
+  teacher: Verified continuation outcomes rather than human step labels.
+  generator: Trajectory-prefix extraction plus with-prefix and without-prefix student continuations.
+  filtering_rule: Keep stable pairwise comparisons ranked by solve-rate gain.
+  sampling_protocol: Evaluate multiple continuations for prefixes as reported in the paper.
+  inference_budget: Pin continuation count, student-model revision, and search configuration.
+  optimizer_or_scaffold: Pairwise ranking objective for the Prefix Utility Model.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematical trajectory prefixes and student-model continuation outcomes.
+  split: The official release exposes PUM-MATH; pin the downloaded revision before reuse.
+  decontamination: Not disclosed in the candidate release material.
+  license: Not confirmed from the currently checked official release page.
+  lineage: arXiv paper, author project page, and author Hugging Face data/model releases.
+  known_failure_modes:
+  - Gain estimates depend on the selected lightweight student models and continuation budget.
+  - A prefix that helps those students may not rank utility identically for a different policy.
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv primary paper, author project page, author profile, and the zhiqix/PUM-MATH dataset release.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: PUM-MATH turns the improvement a reasoning prefix gives lightweight student solvers into 282,346 pairwise
+  preference records for prefix utility modeling.
+why_it_matters: It labels prefixes by downstream solving utility rather than treating local step correctness as the target
+  signal.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv primary paper, author project page, author profile, and the zhiqix/PUM-MATH dataset release.
+category_ids:
+- preference_reward_feedback_data

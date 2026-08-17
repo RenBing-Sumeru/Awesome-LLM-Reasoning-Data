@@ -1,0 +1,6 @@
+- canonical venue是NeurIPS 2025 Datasets and Benchmarks Track；更早的ICML 2025 Workshop on Computer Use Agents版本不是本卡采用的正式出版记录。
+- 数量必须按构造口径读取：21个attacker goal × 2个同站点benign goal × 2种task-related注入格式 = 84个主任务，另有37个utility任务；发布只有21条base attack记录，并非84条canonical rollout。
+- `ASR-intermediate`与`ASR-end-to-end`是不同契约：GPT-4o逐action判断且任一positive即可把episode标为compromised，按goal定制的DOM/log规则则评估伤害是否完成。
+- 固定exfiltration evaluator只检查agent action中的预期URL文本，不确认攻击者服务器收件；intermediate judge的parser报错会默认`not_compromised`。
+- 阅读时优先看论文§3.2–§3.4的构造与指标、表2的model/scaffold结果、表3–4的prompt/defense消融、§4.2的能力confounding，以及固定evaluator文件中的实现语义。
+- WASP仅应用于evaluation/audit：没有canonical rollout corpus、tag或release；仓库于2026年7月1日归档，Croissant的`sha256`值`main`也不是content digest。

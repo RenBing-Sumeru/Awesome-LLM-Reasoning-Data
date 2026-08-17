@@ -1,0 +1,1 @@
+APEX-Agents 的标签依赖 rubric 覆盖范围和 judge model 行为。二元 criterion 可能丢掉部分有用性，model judge 也可能受格式、隐含假设或 artifact 解析影响。HF dataset card 明确写明仅限 model evaluation，并禁止训练、微调、参数拟合、抓取和 scraping，因此不能当作普通 reasoning data 复用。金融和法律世界是模拟材料，官方也声明不能作为专业建议。分数会随 judge、工具、world assets 和模型 reasoning 设置漂移。

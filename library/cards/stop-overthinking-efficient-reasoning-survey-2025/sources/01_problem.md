@@ -1,0 +1,1 @@
+Long chain-of-thought can improve difficult reasoning, yet it often produces repeated or unnecessary text. This survey asks how a system can spend less computation without removing the steps that make hard answers correct. Its objects are prompts, reasoning traces, final answers, and efficiency measurements. The lesson is to distinguish genuine deliberation from visible length.

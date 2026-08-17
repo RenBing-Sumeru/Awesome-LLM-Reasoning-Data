@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以植入捷径和确定性监控，将智能体奖励投机从事后判断转为可规模化测量。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体奖励投机与确定性环境审计论文",
+  "best_for_ch": "需要评测智能体奖励投机、环境漏洞或自动化对齐风险的研究者。",
+  "confidence_ch": "高：arXiv 原文、作者机构与公开代码项目已完成核验。",
+  "authors_ch": "Amit Roth, Ankur Samanta, Matan Halevy, Yoav Levine, Yonathan Efroni",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T03:30:00Z"
+}

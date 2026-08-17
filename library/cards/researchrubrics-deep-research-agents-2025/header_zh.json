@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ResearchRubrics 用人类撰写并复核的细粒度准则，衡量深度研究 Agent 的事实依据、推理与表达。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "深度研究 Agent 的人类 rubric 评测基准",
+  "best_for_ch": "需要评估多文档研究、长报告 Judge 或证据支撑推理的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Manasi Sharma, Chen Bo Calvin Zhang, Chaithanya Bandi, Clinton J. Wang, Ankit Aich, Huy Nghiem, Tahseen Rabbani, Ye Htet, Brian Jang, Sumana Basu, Aishwarya Balwani, Denis Peskoff, Marcos Ayestaran, Sean M. Hendryx, Brad Kenstler, Bing Liu",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

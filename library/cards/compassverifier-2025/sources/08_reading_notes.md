@@ -1,0 +1,5 @@
+- Read Figure 1 with §3.2: easy consensus is removed from the benchmark, moderate consensus becomes training data, and residual disputes receive human labels.
+- Use Tables 3–6 to understand the released object: 2,817 rows, 14 represented source groups, four domains, seven answer types, and A/B/C counts of 1,092/1,526/199.
+- Keep ternary and binary results separate; the RL experiment maps both Incorrect and Invalid to reward 0.
+- In Appendix A.8, prefer Table 13's 24,294 error-driven samples because it reconciles the 96,832 total; retain the prose's 224,294 as unresolved.
+- Verify the release boundary before reuse: the test benchmark and three models are public, while training rows, rationales, votes, filtering lineage, construction code, and a repository license file are absent.

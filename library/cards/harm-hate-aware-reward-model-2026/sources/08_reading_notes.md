@@ -1,0 +1,5 @@
+- Positioning: HARM audits a reward-model failure in hate-speech explanations: safety-oriented scores can punish explanatory fidelity.
+- Method: SBIC-Explain varies available human context across three tiers; HARM reweights interpretable reward attributes with a gated expert head.
+- Artifact: SBIC-Explain contains 370,788 LLM-generated NLEs; the authors provide code, while data terms require verification.
+- Evidence: for Tier 3 over Tier 2, HARM MOE-Off reaches 0.79 versus 0.28 for ArmoRM.
+- Reuse decision: use for human-supervised explanation auditing; first inspect licensing and test stereotype amplification on the target policy.

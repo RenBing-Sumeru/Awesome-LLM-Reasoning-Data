@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-16T09:58:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以可信英语锚点和跨语言一致性构造多语言 DPO 偏好对",
+    "updated_at": "2026-07-16T09:58:02Z"
+  }
+}

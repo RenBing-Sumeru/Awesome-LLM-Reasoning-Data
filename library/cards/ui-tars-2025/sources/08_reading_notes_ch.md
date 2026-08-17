@@ -1,0 +1,6 @@
+- 阅读第 4.2–4.4 节了解感知、动作、教程与思维构造；第 4.5 节了解在线飞轮和反思数据；第 4.6 节了解约 50B token 的持续预训练、退火训练与纠错/错误 DPO 三阶段；第 5 节及第 5.3 节核对 OSWorld/AndroidWorld 与 System-1/System-2 Best-of-N 证据。
+- 统一 action schema 覆盖桌面/移动端，同时含 `Finished()` 与安全升级 `CallUser()`；评测把后者判为 infeasible。
+- 区分 action-conditioned reflection 与 thought bootstrapping：前者看到目标 action，后者不看并按动作正确性选候选。
+- 在线飞轮使用数百台 VM、heuristic、VLM 分数和 first-error 人工 review，但不发布数量、阈值、环境或轨迹。
+- System 1/2 的 Best-of-N 1/16/64 是评测时算力与选择，不是已披露训练 reward 或 sampler。
+- 仓库 URL 由论文链接，但内容、许可证与发布物未审计；数据与 Hugging Face 产物保持 null。相关 Card：`ui-tars-2-2025`。

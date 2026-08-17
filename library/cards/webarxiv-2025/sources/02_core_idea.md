@@ -1,0 +1,7 @@
+The one-sentence contribution is: WebArXiv turns arXiv into a time-invariant web-agent benchmark by selecting stable tasks, verifying unique answers, and evaluating agents through browser interaction traces and strict final-answer matching.
+
+The core mechanism has two parts. First, the benchmark construction process drafts candidate tasks in five arXiv-specific categories, filters semantically similar items with all-mpnet-base-v2 plus manual inspection, and retains 55 tasks per category. Second, the paper studies a failure mode named Rigid History Reflection, where agents use a fixed recent-history window without deciding which prior observation is actually useful.
+
+The feedback contract is outcome-centered with trajectory context. Agents receive a task, interact with web pages through screenshots and actions, and produce a final answer. Correctness is determined by comparison with a gold answer, while annotators also inspect full action trajectories and label outcomes as correct, incorrect, or partial correct.
+
+The closest comparisons are WebVoyager and other live-web benchmarks for real browser interaction, Mind2Web and WebArena for more static or simulated web settings, and specialized agents such as SeeAct, LiteWebAgent, and OpenWebAgent. WebArXiv changes the evaluation contract by favoring stable arXiv content and machine-verifiable final answers over live content whose labels may drift.

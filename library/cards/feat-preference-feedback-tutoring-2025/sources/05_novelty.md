@@ -1,0 +1,3 @@
+The closest contrast is collecting expensive human teacher feedback or using low-cost synthetic feedback as a single source. FEAT makes the collection mixture itself a controlled data object: DM, DG, and DA differ by provenance, and DA explicitly injects 5–10% DM into DG. The resulting direction signal is that a small higher-quality feedback slice can be studied as part of a scalable tutoring-feedback recipe.
+
+The work does not introduce a universal teaching verifier or establish that generated feedback substitutes for teachers. Its novelty is the released comparative feedback construction and its cost-quality experiment, not the mere use of LLMs to write tutoring text.

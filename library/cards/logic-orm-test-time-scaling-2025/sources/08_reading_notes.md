@@ -1,0 +1,5 @@
+- Read Section 2 with Appendix Table 2: the feedback pipeline is gold-label equality, followed by a GPT-4o filter for wrong Echo traces, followed by a learned Qwen2.5 scalar ORM; these are three different contracts.
+- Keep the release counts straight: 10,009 CoT rows; 19,105 combined Echo-CoT rows; exactly 9,096 additional Echo rows, all reward 0; the combined file does not natively label their origin.
+- Treat reported Best-of-N improvements as model- and budget-specific evaluation evidence, not as proof that the public traces are logically valid, licensed, decontaminated, or complete.
+- Reproduction blockers are the missing raw Echo candidates and filter decisions, missing ProverQA/JustLogic files, absent scored rollout pools and rejected candidates, no stable split manifest, and no dataset-specific license.
+- Resolve rather than hide two conflicts: JustLogic Table 4 prints 49,197 although its class counts sum to 69,197, and the paper/shell specify three epochs while the trainer hard-codes two.

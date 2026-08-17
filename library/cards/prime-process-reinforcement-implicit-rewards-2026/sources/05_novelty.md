@@ -1,0 +1,3 @@
+Prior PRM methods generally collect human step labels or estimate the success probability of each reasoning prefix through repeated continuations, then train a fixed process reward model offline. In online RL, these approaches require repeated annotation or substantially more rollouts and cannot efficiently follow changes in the policy distribution. Implicit PRMs had already shown that response-level labels could yield token-level rewards, but they were mainly used for inference-time ranking rather than online policy training.
+
+This changes the PRM’s data requirements, update timing, and integration into RL; PPO, RLOO, rule-based verification, and language-model probability ratios are not themselves new components.

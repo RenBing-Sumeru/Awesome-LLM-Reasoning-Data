@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ProBench以a11y converter生成的动作证据和最终截图交给Gemini 2.5 Pro终局judge评测217项双语移动GUI任务，但该证据不是过程监督，且无官方代码、任务、环境或轨迹发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "双语移动GUI智能体过程感知终局评测基准",
+  "best_for_ch": "研究移动GUI智能体评测、action evidence、a11y解析与MLLM judge审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Leyang Yang, Ziwei Wang, Xiaoxuan Tang, Sheng Zhou, Dajun Chen, Wei Jiang, Yong Li",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

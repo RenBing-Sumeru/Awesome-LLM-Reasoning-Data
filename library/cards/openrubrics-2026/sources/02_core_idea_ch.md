@@ -1,0 +1,1 @@
+OpenRubrics 包含 35.7K 个指令的 prompt-rubric 记录和带 rubric 的偏好记录。对比式 rubric 生成（CRG）比较 chosen/rejected 回答，产出两类互补条件：描述显式要求的硬规则与描述隐含质量的原则。生成的 rubric 只有在帮助恢复已知偏好标签时才保留，偏好一致性因此成为接受门槛。论文公开 Hugging Face 数据集和模型权重。它把不透明的直接比较改成两步：先由 prompt 形成评价准则，再据准则判别回答对。

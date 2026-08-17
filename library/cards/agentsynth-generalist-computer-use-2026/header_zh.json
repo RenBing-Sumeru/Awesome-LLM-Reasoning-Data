@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentSynth 将可解的简单子任务链式组合为难度可控的长程计算机使用任务，并公开相应执行轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "通用计算机使用智能体的任务合成与长程轨迹数据集论文",
+  "best_for_ch": "需要可控任务难度、真实桌面操作轨迹和低成本合成机制的计算机使用智能体研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jingxu Xie, Dylan Xu, Xuandong Zhao, Dawn Song",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

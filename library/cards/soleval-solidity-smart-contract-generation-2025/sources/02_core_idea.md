@@ -1,0 +1,3 @@
+The final EMNLP version of SolEval contains 1,507 samples from 28 real Solidity repositories across six application domains. An early arXiv snapshot reported 1,125 samples from nine repositories, and these scales must not be mixed. Each instance provides repository context, a contract fragment or function to generate, a reference implementation, and executable project assets.
+
+Pass@k measures whether Foundry tests pass, Gas@k compares execution cost among correct candidates, and Vul@k counts security findings from Slither. The data serves as a benchmark and is also used by the authors for Qwen-7B SFT. Its central value is that each candidate receives functional, security, and resource feedback.

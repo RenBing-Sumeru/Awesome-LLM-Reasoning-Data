@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Odysseys 公开 200 个长程实时网页任务、1,225 条 rubric 和 200 份 OSWorld 配置及评分脚本，但没有公开来源浏览历史、完整模型轨迹、人工标签或可确定重放的网页状态。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长程实时网页智能体评测基准与 rubric 数据发布",
+  "best_for_ch": "研究长程 computer-use、细粒度轨迹评估、LLM judge、实时网页重放与环境审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Lawrence Keunho Jang、Jing Yu Koh、Daniel Fried、Ruslan Salakhutdinov",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

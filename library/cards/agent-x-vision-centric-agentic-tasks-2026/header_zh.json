@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Agent-X 提供 828 个经人工复核的多模态工具使用任务，以逐步轨迹分别评测局部决策、整链推理和最终成功。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要评测视觉智能体在真实多步任务中如何选择工具、组织过程并完成任务的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tajamul Ashraf、Amal Saqib、Hanan Gani、Muhra AlMahri、Yuhao Li、Noor Ahsan、Umair Nawaz、Jean Lahoud、Hisham Cholakkal、Mubarak Shah、Philip H. S. Torr、Fahad Shahbaz Khan、Rao Muhammad Anwer、Salman Khan",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

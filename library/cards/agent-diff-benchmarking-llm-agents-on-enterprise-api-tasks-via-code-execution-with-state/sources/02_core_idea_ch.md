@@ -1,0 +1,1 @@
+Agent-Diff Bench 当前包含 224 个任务，覆盖 Slack、Linear、Box 和 Google Calendar 四类企业服务；沙箱实现 108 个 API endpoints，并按 80/20 划分训练与测试。每题包含初始数据库模板、自然语言请求、可调用接口和期望状态断言。数据对象是“初始状态—agent 代码/API 调用—最终状态差分—断言结果”，既可用于 benchmark，也可作为 RL 环境和 outcome reward。

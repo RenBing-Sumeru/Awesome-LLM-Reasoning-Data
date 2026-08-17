@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T13:57:53Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "构建了 33 个由行业专家制作的虚拟工作项目和 480 个投行、咨询、公司法任务，只适合专业领域测评",
+    "updated_at": "2026-07-13T13:57:53Z"
+  }
+}

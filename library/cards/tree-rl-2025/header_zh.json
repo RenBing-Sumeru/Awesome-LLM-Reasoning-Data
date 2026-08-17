@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TreeRL 将熵引导的 on-policy 搜索树中叶节点的终点正确性转化为重加权逐步奖励；公开仓库发布了输入提示与代码，但未核验发布运行时树语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "基于熵引导树搜索的 on-policy 强化学习与过程监督配方",
+  "best_for_ch": "需要审计推理搜索轨迹、过程奖励、终点 verifier 与训练预算归因的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhenyu Hou, Ziniu Hu, Yujiang Li, Rui Lu, Jie Tang, Yuxiao Dong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,1 @@
+Jie Huang、Kevin Chen-Chuan Chang，《Towards Reasoning in Large Language Models: A Survey》，*Findings of the Association for Computational Linguistics: ACL 2023*，第 1049–1065 页。https://aclanthology.org/2023.findings-acl.67/

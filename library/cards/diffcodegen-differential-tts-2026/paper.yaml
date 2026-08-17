@@ -1,0 +1,28 @@
+id: diffcodegen-differential-tts-2026
+title: 'Code Generation by Differential Test Time Scaling'
+year: 2026
+venue: arXiv preprint
+authors: [Yifeng He, Ethan Wang, Jicheng Wang, Xuanxin Ouyang, Hao Chen]
+source_role: [scaling_study]
+verification_contract: [programmatic]
+supervision_granularity: [full_episode]
+domains: [software-engineering, code-generation]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2605.20473, arxiv: https://arxiv.org/abs/2605.20473, venue: null, code: null, data: null, project: null, huggingface: null, doi: null}
+data_object: {prompt_source: 'Natural-language code-generation tasks evaluated on LiveCodeBench.', trace_author: 'Any code LLM generates multiple candidate programs through sampling, beam search, or prompt perturbation.', answer_format: 'Programming prompt, candidate programs, fuzzed inputs, candidate execution outputs, behavior clusters, selected medoid, and benchmark pass result.', process_fields: [prompt, candidates, generation_strategy, fuzz_inputs, coverage, execution_outputs, behavior_distance, cluster, selected_candidate], environment_or_substrate: 'Coverage-guided fuzzing and dynamic execution of generated programs or library functions.', verifier_or_reward: 'A pseudo-oracle based on behavioral consensus across candidates; official evaluation uses benchmark tests for pass@1.', terminal_predicate: 'The selected program passes the hidden LiveCodeBench evaluation tests.'}
+recipe_metadata: {base_model: 'Four open-weight and proprietary code LLMs; exact model list is reported in the official paper.', teacher: 'Not applicable for candidate selection; an optional single LLM call can generate a fuzz driver for library functions.', generator: 'Candidates are produced by stochastic sampling, beam search, or 18 semantic-preserving prompt perturbations.', filtering_rule: 'Coverage-guided fuzzing generates valid inputs, candidates are clustered by dynamic behavior, and the medoid of the largest cluster is returned.', sampling_protocol: 'Temperature 0.7 and nucleus p 0.95 for repeated sampling; alternatives are beam search and prompt perturbations.', rollout_count: 'Varies by differential-generation method and candidate count in the paper.', temperature: '0.7 for stochastic sampling.', inference_budget: 'Initial candidate generation plus no LLM calls for standard selection; library fuzz-driver generation may use one additional model call.', optimizer_or_scaffold: 'AFL++ or py-afl for script fuzzing, libFuzzer or Atheris for library fuzzing, then distance-based behavior clustering.'}
+audit: {source_mixture: 'Official arXiv paper.', split: 'LiveCodeBench evaluation; exact task and split protocol is described in the paper.', decontamination: 'The method does not rely on public task tests for selection, but benchmark contamination is not formally audited.', license: 'Validate the fuzzer, framework, model, and benchmark licenses before reuse.', lineage: 'https://arxiv.org/abs/2605.20473', known_failure_modes: [shared-candidate-bug, invalid-fuzz-input, fuzz-driver-failure, insufficient-coverage, asynchronous-environment-cost], citation_status: verified, confidence: high, notes: 'Official arXiv PDF checked on 2026-07-21. The paper lists University of California Davis, Wuhan University, and The University of Hong Kong affiliations.'}
+inclusion_reason: 'It allocates test-time compute to diverse code sampling and program execution, replacing extra LLM verification calls with coverage-guided behavioral selection.'
+related: []
+tags: [test-time-scaling, code-generation, differential-testing, fuzzing, candidate-selection]
+status: verified
+one_line_summary: 'DiffCodeGen uses coverage-guided differential testing to select among diverse code candidates with almost no extra LLM-token cost beyond candidate generation.'
+reading_priority: essential
+paper_type: Efficient code-generation test-time scaling study
+best_for: Readers deploying code assistants without public tests who need a practical, execution-based alternative to reward-model reranking.
+confidence: high
+why_it_matters: 'It turns the behavioral agreement of independently generated programs into an inexpensive verifier and shifts test-time budget from model calls to executable analysis.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official arXiv paper checked; the paper states that implementation is open sourced but no verified public repository URL is provided in the primary source.'}
+category_ids: [scaling_rlvr_test_time_compute]

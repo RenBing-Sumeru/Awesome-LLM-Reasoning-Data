@@ -1,0 +1,19 @@
+{
+  "title": "SedarEval: Automated Evaluation using Self-Adaptive Rubrics",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-emnlp.984/",
+    "data": "https://github.com/wwn1233/sedareval",
+    "code": "https://github.com/wwn1233/sedareval",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:56:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布 1,000 个中文开放题及每题自适应评分细则和人工评分，但时间较早",
+    "updated_at": "2026-07-25T10:56:02Z"
+  }
+}

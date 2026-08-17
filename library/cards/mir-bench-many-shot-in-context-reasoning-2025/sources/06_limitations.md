@@ -1,0 +1,3 @@
+1. **Non-unique rules:** Even many finite input-output pairs may correspond to multiple functions. The authors filter obvious ambiguity but cannot prove that every hidden rule is unique. Reuse should add extrapolative queries and inspect equivalence classes of candidate functions.  
+2. **Source boundary:** Tasks come from Python functions in coding benchmarks. Diverse data formats do not make them representative of natural-language, visual, or real-environment pattern learning.  
+3. **Context implementation:** Results at 2,048 shots depend on tokenization, API truncation, internal summarization, and model context length. Actual input token counts and out-of-context rates must be reported rather than comparing only by shot count.

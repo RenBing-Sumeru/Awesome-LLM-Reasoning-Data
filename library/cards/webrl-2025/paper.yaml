@@ -1,0 +1,206 @@
+id: webrl-2025
+title: 'WebRL: Training LLM Web Agents via Self-Evolving Online Curriculum Reinforcement Learning'
+year: 2025
+venue: ICLR 2025
+authors:
+- Zehan Qi
+- Xiao Liu
+- Iat Long Iong
+- Hanyu Lai
+- Xueqiao Sun
+- Wenyi Zhao
+- Yu Yang
+- Xinyue Yang
+- Jiadai Sun
+- Shuntian Yao
+- Tianjie Zhang
+- Wei Xu
+- Jie Tang
+- Yuxiao Dong
+source_role:
+- agent_environment
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- web_agents
+- browser_interaction
+- reinforcement_learning
+training_use:
+- sft
+- reward_modeling
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://openreview.net/forum?id=oVKEAFjEqv
+  arxiv: https://arxiv.org/abs/2411.02337
+  code: https://github.com/THUDM/WebRL/tree/fa8439ef1ea6ea2b327ee4162c8beaa309c53626
+  data: https://github.com/THUDM/WebRL/blob/fa8439ef1ea6ea2b327ee4162c8beaa309c53626/scripts/webarena_lite_sft.pt
+  project: null
+  huggingface: https://huggingface.co/zai-org/webrl-glm-4-9b/tree/dcc5fbea4b03cbc8448d781c5b2bc4dedbd7d5fb
+  model_llama_8b: https://huggingface.co/zai-org/webrl-llama-3.1-8b/tree/ecf885177f180678afd617bcb71873e5bf9767f8
+  model_llama_70b: https://huggingface.co/zai-org/webrl-llama-3.1-70b/tree/466fd5b9674fef14d15eff2a8e636b9338d8dfeb
+  reward_model: https://huggingface.co/zai-org/webrl-orm-llama-3.1-8b/tree/0dc1d3ea1d9b29e087ec276053637c1e335a9876
+  environment: https://github.com/THUDM/VisualAgentBench/tree/9055fc299c366ef34700d1710215fb60a0d8c35e/VAB-WebArena-Lite
+  doi: null
+  venue: https://openreview.net/forum?id=oVKEAFjEqv
+  openreview: https://openreview.net/forum?id=oVKEAFjEqv
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The seed corpus is the 1,186-sample WebArena-Lite training set, where each sample has an instruction, an
+    oracle trajectory, and a reward function. In each of 8 online phases, failed instructions seed GPT-4o-2024-05-13 generation
+    and 500 filtered new instructions are selected.
+  trace_author: Human-labeled WebArena-Lite demonstrations initialize SFT; the current actor produces online browser rollouts;
+    GPT-4o generates curriculum instructions from failed-task seeds.
+  observation: At each step the policy receives the task instruction, prior action history, and simplified current-page HTML
+    with element IDs.
+  action: The policy emits one textual browser action such as Click, Hover, Type, Search, Press, Scroll, Select dropdown option,
+    New tab, Tab focus, Close tab, Goto, Go back, Go forward, or Exit, optionally with element and note comments.
+  processed_record: The released processing code constructs step records with observation, next_observation, task, reward,
+    done, action, and trajectory_reward; later processing can add mc_return and actor-confidence rank_score.
+  released_object: The repository releases scripts/webarena_lite_sft.pt, a PyTorch-serialized SFT/experience artifact, but
+    not an immutable corpus containing all 8-phase generated instructions, raw trajectories, ORM labels, failure sets, replay
+    selections, and seeds.
+  environment_or_substrate: WebArena-Lite across Reddit, GitLab, CMS, OpenStreetMap, and OneStopShop; WebRL delegates interaction/reset
+    setup to the external VAB-WebArena-Lite implementation rather than vendoring a pinned training environment.
+  verifier_or_reward: Original WebArena-Lite tasks use their reward functions for labels. Generated online tasks use a learned
+    Llama-3.1-8B outcome reward model that compares YES and NO probabilities from the instruction, complete action history,
+    and only the final-state HTML, producing binary 1/0 reward.
+  terminal_predicate: An episode ends on task completion or after maximum interaction horizon T. For generated tasks, semantic
+    success is the ORM binary decision; the paper and release do not publish a task-specific executable predicate for every
+    generated instruction.
+recipe_metadata:
+  base_model: WebRL trains Llama-3.1-8B, Llama-3.1-70B, and GLM-4-9B actors; the critic starts from the SFT actor with a randomly
+    initialized value head.
+  teacher: unknown for the human-labeled WebArena-Lite demonstrations; GPT-4o-2024-05-13 is the disclosed curriculum-task
+    generator, not the trajectory teacher.
+  generator: GPT-4o-2024-05-13 samples task rewrites from up to 10 failed instructions per website; the actor then rolls out
+    on retained tasks in WebArena-Lite.
+  filtering_rule: Generated instructions pass a critic difficulty window of 0.05 to 0.75 and a GPT-4o feasibility filter.
+    Replay keeps only successful historical trajectories, then retains action records whose actor probability is above 0.5
+    and at most 0.95; replay volume is capped at twice the current interaction-data size.
+  sampling_protocol: The paper runs 8 curriculum phases and selects 500 new instructions per phase. The repository task generator
+    uses random seed 42, 2 generation turns, GPT-4o temperature 1, and top_p 1, but exact end-to-end seeds and rollout multiplicity
+    are not disclosed.
+  rollout_count: 8 phases with 500 retained new instructions per phase; exact rollout count per instruction, retry policy,
+    and total retained episode count are unknown.
+  temperature: 1 for policy rollouts in Table 5 and 1 for the released GPT-4o task-generation call; other decoding parameters
+    are not fully disclosed.
+  inference_budget: The curriculum budget is 8 phases by 500 retained instructions; the per-episode maximum horizon T and
+    total browser/environment compute are not disclosed.
+  optimizer_or_scaffold: SFT initialization followed by off-policy actor-critic updates with a KL constraint to the previous-phase
+    policy, a binary outcome-trained value network, GAE with lambda 0.5, and actor-confidence-filtered successful-experience
+    replay.
+  training_hyperparameters: WebRL uses actor/critic learning rates 1e-6, batch size 128, discount factor 0.9, 1 actor epoch,
+    1 critic epoch, and rollout temperature 1. ORM training uses learning rate 5e-6, batch size 128, 4 epochs, and cutoff
+    length 16,384.
+audit:
+  source_mixture: 1,186 WebArena-Lite human-labeled training samples; actor rollouts on generated instructions; GPT-4o task
+    generation and feasibility judgments; environment reward-function labels for ORM construction; learned ORM labels for
+    online tasks; successful historical experiences selected for replay.
+  split: The paper uses the WebArena-Lite training set for SFT/ORM construction and 165 WebArena-Lite test cases for evaluation.
+    Generated-task and replay manifests are not released, so task-template, entity, and trajectory overlap cannot be independently
+    audited.
+  decontamination: No model-pretraining decontamination or trajectory-level overlap audit is disclosed. The task-generation
+    prompt intentionally reuses variable values from failed seed instructions, increasing the need for a released lineage/overlap
+    manifest.
+  benchmark_overlap: Training and evaluation use separate named WebArena-Lite partitions but the same five sites and task
+    substrate; the exact generated-task-to-test similarity policy is unknown.
+  license: The WebRL repository has no root license and GitHub reports no repository license. The released Hugging Face checkpoints
+    declare license=other; the SFT .pt file and generated/online data have no verified standalone reuse license. The nested
+    LLaMA-Factory license and the external VisualAgentBench Apache-2.0 license do not license the whole WebRL release.
+  lineage: WebArena-Lite demonstration and reward-function data -> SFT actor -> failed-instruction set -> GPT-4o task generation
+    -> critic/GPT-4o filtering -> actor rollout -> ORM binary label -> actor/critic update; successful rollouts enter replay
+    after actor-confidence filtering, while failed instructions seed later phases.
+  release_version: Code verified at Git commit fa8439ef1ea6ea2b327ee4162c8beaa309c53626 (2025-06-06). Model revisions are
+    pinned in artifacts. GitHub lists no tagged releases.
+  successful_and_failed_sample_retention: Current-phase actor/critic training consumes labeled rollouts, but only successful
+    trajectories are added to the replay buffer; failed trajectories are not replayed, while their instructions are retained
+    as curriculum seeds. The full success/failure corpus is not publicly released.
+  verifier_failure_modes:
+  - The ORM sees only the final HTML plus action history, so it can miss hidden environment state, side effects, or task-specific
+    conditions absent from the last page.
+  - A YES/NO learned judge can produce false positives or false negatives; approximately 80% reported accuracy does not establish
+    reliable per-domain calibration.
+  - Training the ORM on rollouts from WebRL and baselines can couple reward errors to the policies later optimized against
+    it.
+  - Copying the terminal binary score to all steps and excluding failed histories from replay can miscredit or discard locally
+    correct actions.
+  environment_replay: The code expects external VAB-WebArena-Lite interaction traces and site setup. Exact historical environment/container
+    versions, credentials/state snapshots, reset sequence, browser versions, task manifests, and rollout seeds are not pinned,
+    so full replay is not verified.
+  privacy: The benchmark uses self-hosted web applications, but trajectories can contain account state, usernames, page HTML,
+    and action histories. No public privacy review, redaction policy, or takedown process for released/generated traces was
+    verified.
+  security: The released SFT artifact is a .pt file consumed with torch.load and should be treated as an untrusted serialized
+    object until inspected in isolation. Browser automation and task generation should run with sandboxing, restricted network
+    access, non-production accounts, and separately scoped API credentials.
+  known_failure_modes:
+  - The paper reports a late-phase decline on Map and a slight GitLab decline, showing cross-site interference despite overall
+    improvement.
+  - Task-generation randomness raises variance; curriculum-enabled methods have higher standard deviation than fixed-task
+    counterparts.
+  - Including failed trajectories in replay slows and destabilizes improvement because terminal-zero labels can assign negative
+    advantage to correct intermediate actions.
+  - The released gen_task.py retains placeholder model paths and API configuration, and the interaction stack is external,
+    so the code is not a turnkey replay package.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR/OpenReview, arXiv v3 full text, current THUDM repository, external VAB-WebArena-Lite stack, three actor
+    checkpoints, ORM checkpoint, and the released SFT artifact were checked. Method evidence is strong; corpus completeness
+    and reuse rights remain partial.
+inclusion_reason: WebRL is a concrete closed-loop browser-agent data recipe in which environment trajectories, a learned terminal
+  judge, failure-conditioned task generation, and selective successful-experience replay jointly define the training signal.
+related: []
+tags:
+- webrl
+- web-agent
+- webarena-lite
+- online-rl
+- outcome-reward-model
+- experience-replay
+- curriculum
+- trajectory-data
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebRL trains browser agents over 8 curriculum phases using failure-derived GPT-4o tasks, binary ORM-labeled
+  rollouts, KL-constrained updates, and confidence-filtered successful replay, while releasing only a partial data corpus.
+why_it_matters: It exposes how interactive agent trajectories become post-training records and shows that task generation,
+  terminal reward modeling, and replay selection are inseparable parts of the feedback contract; it also illustrates why model/code
+  release does not imply an auditable trajectory release.
+card: null
+needs:
+- 'needs_release: immutable manifests for generated instructions, raw and processed trajectories, ORM labels, failed attempts,
+  replay selections, and experiment seeds'
+- 'needs_license: explicit repository, SFT artifact, generated-task, trajectory, ORM-data, and checkpoint reuse terms'
+- 'needs_split: generated-task lineage and similarity/overlap analysis against the 165 evaluation tasks'
+- 'needs_replay: pinned historical WebArena-Lite/browser/site snapshots, task configs, reset procedure, maximum horizon, and
+  exact rollout commands'
+- 'needs_verifier_audit: per-site ORM confusion matrices, calibration, adversarial tests, and false-positive/false-negative
+  analysis'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  full_release_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, code, SFT artifact, three actor checkpoints, ORM checkpoint, and external interaction stack are verified
+    and revision-pinned. Complete online curriculum data and usable licensing are not verified.

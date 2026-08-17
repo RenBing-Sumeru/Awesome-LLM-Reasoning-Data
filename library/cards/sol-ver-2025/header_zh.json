@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Sol-Ver 让同一个 Llama 3.1 8B 同时生成代码与单元测试，以执行一致性构造 SFT 正例和 DPO 胜负对；其价值在闭环配方，而非未发布语料的直接复用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码与测试联合自博弈数据构建",
+  "best_for_ch": "研究可执行反馈、代码自博弈、测试生成和合成偏好数据的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zi Lin、Sheng Shen、Ilia Kulikov、Jingbo Shang、Jason Weston、Yixin Nie",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

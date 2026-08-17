@@ -1,0 +1,23 @@
+{
+  "title": "WOMD-Reasoning: A Large-Scale Dataset for Interaction Reasoning in Driving",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v267/li25l.html",
+    "arxiv": null,
+    "code": "https://github.com/yhli123/WOMD-Reasoning",
+    "data": "https://waymo.com/open/download/",
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "instruction_demonstration_rationale_data",
+    "environment_agent_trajectory_data"
+  ],
+  "reason_to_include": "大规模运动轨迹，是agent在自动驾驶领域的应用",
+  "updated_at": "2026-07-11T10:19:36Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "大规模运动轨迹，是agent在自动驾驶领域的应用",
+    "updated_at": "2026-07-11T10:19:36Z"
+  }
+}

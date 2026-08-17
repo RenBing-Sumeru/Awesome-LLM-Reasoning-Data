@@ -1,0 +1,18 @@
+{
+  "title": "Chunks as Arms: Multi-Armed Bandit-Guided Sampling for Long-Context LLM Preference Optimization",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.161/",
+    "code": "https://github.com/NEUIR/LongMab-PO",
+    "data": "https://github.com/NEUIR/LongMab-PO"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:51:32Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它用老虎机搜索上下文证据来构造可验证的长上下文 DPO 回答对，数据构造链条完整",
+    "updated_at": "2026-07-15T14:51:32Z"
+  }
+}

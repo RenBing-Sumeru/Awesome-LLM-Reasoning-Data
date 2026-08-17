@@ -1,0 +1,4 @@
+- Treat the model card as a disclosure source: it establishes broad training stages and interfaces, not an open post-training corpus or reward recipe.
+- Separate Apache-2.0 weights, tokenizer, reference inference, and tool environments from the undisclosed training, feedback, and safety data.
+- Record Harmony's analysis, commentary, and final channels as a public interface, while keeping their training trace distribution and selection policy unknown.
+- Do not infer a calibrated verifier, reproducible RL algorithm, data license, split, or decontamination result from reported evaluations.

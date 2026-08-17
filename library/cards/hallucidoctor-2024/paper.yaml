@@ -1,0 +1,130 @@
+id: hallucidoctor-2024
+title: 'HalluciDoctor: Mitigating Hallucinatory Toxicity in Visual Instruction Data'
+year: 2024
+venue: CVPR 2024
+authors:
+- Qifan Yu
+- Juncheng Li
+- Longhui Wei
+- Liang Pang
+- Wentao Ye
+- Bosheng Qin
+- Siliang Tang
+- Qi Tian
+- Yueting Zhuang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2024/html/Yu_HalluciDoctor_Mitigating_Hallucinatory_Toxicity_in_Visual_Instruction_Data_CVPR_2024_paper.html
+  arxiv: https://arxiv.org/abs/2311.13614
+  code: https://github.com/Yuqifan1117/HalluciDoctor
+  data: https://drive.google.com/file/d/1M0dZwF6nPuZMLeAH44VhFj0RCS4KxL5D/view?usp=sharing
+  project: https://github.com/Yuqifan1117/HalluciDoctor
+  huggingface: null
+  doi: https://doi.org/10.1109/CVPR52733.2024.01230
+  venue: https://openaccess.thecvf.com/content/CVPR2024/html/Yu_HalluciDoctor_Mitigating_Hallucinatory_Toxicity_in_Visual_Instruction_Data_CVPR_2024_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2024/html/Yu_HalluciDoctor_Mitigating_Hallucinatory_Toxicity_in_Visual_Instruction_Data_CVPR_2024_paper.html
+  bibtex: null
+data_object:
+  prompt_source: existing visual instruction data audited for object and relation hallucinations
+  trace_author: multimodal teacher diagnoses unsupported content and rewrites affected answers
+  answer_format: image, original instruction-response, hallucination diagnosis, and corrected response
+  process_fields:
+  - image
+  - original instruction-response
+  - hallucination diagnosis
+  - and corrected response
+  environment_or_substrate: JSON conversations plus source image references
+  verifier_or_reward: image-grounded object checks plus POPE/CHAIR-style hallucination evaluation
+  terminal_predicate: Retain a record only when image-grounded object checks plus POPE/CHAIR-style hallucination evaluation
+    accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: multimodal teacher diagnoses unsupported content and rewrites affected answers
+  generator: HalluciDoctor diagnoses toxic records, identifies unsupported spans, rewrites them against image evidence, and
+    releases corrected conversations for retraining.
+  filtering_rule: image-grounded object checks plus POPE/CHAIR-style hallucination evaluation
+  sampling_protocol: existing visual instruction data audited for object and relation hallucinations
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: cleaned visual instruction SFT
+audit:
+  source_mixture: existing visual instruction data audited for object and relation hallucinations
+  split: 'Official release scale: about 50,000 diagnosis-and-rewrite visual instruction records; storage: JSON conversations
+    plus source image references.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: repository release terms; corrected records retain LLaVA and source-image conditions
+  lineage: existing visual instruction data audited for object and relation hallucinations -> multimodal teacher diagnoses
+    unsupported content and rewrites affected answers -> image-grounded object checks plus POPE/CHAIR-style hallucination
+    evaluation -> cleaned visual instruction SFT.
+  known_failure_modes:
+  - The diagnosing teacher can miss subtle visual errors
+  - corrected prose may inherit one style
+  - source-image and LLaVA terms constrain redistribution.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 36 citations; this is not a Google Scholar count.'
+inclusion_reason: 'HalluciDoctor corrected visual instructions is a public Track 01 training object: image, original instruction-response,
+  hallucination diagnosis, and corrected response; it is consumed by cleaned visual instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- hallucination-aware-visual-data-repair
+status: verified
+one_line_summary: HalluciDoctor diagnoses and rewrites roughly 50K visual conversations whose answers contain unsupported
+  image claims.
+why_it_matters: treating hallucination as a repairable property of training records rather than only a decoding failure
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: auditing and repairing a visual SFT mixture before training
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: hallucination-aware visual data repair
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Zhejiang University, Huawei Cloud, Institute of Computing Technology,
+      Chinese Academy of Sciences.
+    venue: 'The official venue URL confirms formal publication at CVPR 2024: https://openaccess.thecvf.com/content/CVPR2024/html/Yu_HalluciDoctor_Mitigating_Hallucinatory_Toxicity_in_Visual_Instruction_Data_CVPR_2024_paper.html'
+    impact: OpenAlex reported 36 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON conversations plus source image references records at https://drive.google.com/file/d/1M0dZwF6nPuZMLeAH44VhFj0RCS4KxL5D/view?usp=sharing
+      with terms recorded as: repository release terms; corrected records retain LLaVA and source-image conditions.'
+  selection_eligible: true
+  year_impact_threshold: 3

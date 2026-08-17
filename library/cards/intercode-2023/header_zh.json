@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "InterCode 标准化带执行反馈的交互式编码智能体环境。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "NeurIPS 2023 Datasets and Benchmarks 的 interactive coding benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "John Yang 等（Department of Computer Science, Princeton University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T09:20:04Z"
+}

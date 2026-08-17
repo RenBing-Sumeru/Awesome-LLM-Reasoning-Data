@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T10:23:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "给出解答采样与生成式验证之间的计算最优分配规律",
+    "updated_at": "2026-07-20T10:23:52Z"
+  }
+}

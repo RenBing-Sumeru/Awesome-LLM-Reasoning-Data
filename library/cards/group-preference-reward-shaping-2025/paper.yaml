@@ -1,0 +1,94 @@
+id: group-preference-reward-shaping-2025
+title: Reinforcement Learning for Large Language Models via Group Preference Reward Shaping
+year: 2025
+venue: EMNLP 2025
+authors:
+- Huaisheng Zhu
+- Siyuan Xu
+- Hangfan Zhang
+- Teng Xiao
+- Zhimeng Guo
+- Shijie Zhou
+- Shuyue Hu
+- Vasant G. Honavar
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1085/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.emnlp-main.1085/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1085/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary page and public artifact URL recorded on 2026-07-19. Accepted reward-shaping work included for scrutiny
+    of group reward signals and failure modes.
+inclusion_reason: Reward-shaping method for auditing robustness to noisy preference reward models.
+related: []
+tags:
+- audit
+- round3
+status: verified
+one_line_summary: GPRS replaces raw reward optimization with within-group preference shaping to reduce reward-model sensitivity.
+why_it_matters: It exposes how the form of a reward signal can affect post-training stability and downstream alignment claims.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

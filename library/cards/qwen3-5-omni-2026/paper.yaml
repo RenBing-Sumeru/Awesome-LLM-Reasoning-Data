@@ -1,0 +1,111 @@
+id: qwen3-5-omni-2026
+title: Qwen3.5-Omni Technical Report
+year: 2026
+venue: arXiv preprint
+authors:
+- Qwen Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- multimodal
+- audio
+training_use:
+- sft
+- distillation
+- preference_learning
+- rlvr
+- agent_training
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.15804
+  arxiv: https://arxiv.org/abs/2604.15804
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.15804
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: []
+  environment_or_substrate: Hybrid Attention Mixture-of-Experts Thinker and Talker architecture for text, vision, audio, and
+    video; no post-training environment is disclosed in the abstract.
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The report states a 256K context length, over ten hours of audio understanding, and 400 seconds of 720P
+    video at 1 FPS. These capability limits do not disclose a reasoning-rollout budget.
+  optimizer_or_scaffold: ARIA dynamically aligns text and speech units to address streaming-speech instability; this is an
+    architecture/method disclosure rather than a released post-training scaffold.
+audit:
+  source_mixture: The official abstract reports a massive dataset of heterogeneous text-vision pairs and more than 100 million
+    hours of audio-visual content, without named source inventories, mixture weights, rights, or item manifests.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Aggregate corpus categories to model are disclosed only at high level. Per-source, preprocessing, train/validation,
+    post-training, and checkpoint lineage are undisclosed.
+  known_failure_modes:
+  - The volume and modality description does not establish data provenance, consent, rights, or reproducibility.
+  - The abstract does not disclose SFT/RL prompts, traces, reward/verifier design, selection, rollouts, or post-training filters.
+  - Results across 215 audio and audio-visual subtasks are evaluation claims, not released data or feedback artifacts.
+  - ARIA and the 256K context length do not identify training data or a thinking-budget contract.
+  citation_status: verified
+  confidence: low
+  notes: The official arXiv abstract was the authoritative source available for this entry on 2026-07-14; no official code,
+    data, or model-release link is recorded here without separate verification.
+inclusion_reason: A current official omni-modal report with a rare aggregate disclosure of audio-visual scale, retained as
+  a ledger record precisely because the source, post-training, and audit detail remains unavailable.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- qwen
+- omnimodal
+- audio-visual
+- aria
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3.5-Omni reports aggregate text-vision and 100M-plus-hour audio-visual training scale plus ARIA, but
+  its official abstract leaves post-training data, feedback, and audit artifacts undisclosed.
+why_it_matters: The entry records the meaningful aggregate disclosure without treating it as a reproducible dataset, reward
+  system, or reasoning-training recipe.
+card: null
+needs:
+- 'needs_metadata: disclose pre-training and post-training stages, prompts, traces, filters, teachers, and decoding/rollout
+  settings'
+- 'needs_data: publish source inventories, data schemas, mixture, preprocessing, rights, and item-level lineage'
+- 'needs_reward: document any SFT/RL feedback or verifier contract'
+- 'needs_audit: publish splits, decontamination, evaluation-data separation, and release/licensing terms'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: low
+  notes: The official paper link, title, year, author group, and aggregate corpus claim are verified. No non-paper artifact
+    has been verified.

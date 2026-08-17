@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LogicORM 公开 10,009 条 FOLIO CoT 轨迹及含 19,105 条记录的 Echo 增强集，以二元结果标签训练 Qwen2.5 ORM，并在测试时对多次采样的演绎逻辑解答执行 Best-of-N 重排。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Outcome Reward Model 数据发布与 Best-of-N 测试时扩展研究",
+  "best_for_ch": "研究多候选推理、结果奖励建模、hard-negative 构造、verifier 审计与测试时算力分配的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Ramya Keerthy Thatikonda、Wray Buntine、Ehsan Shareghi",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

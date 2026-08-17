@@ -1,0 +1,141 @@
+id: microsoft-mai-ds-r1-2025
+title: Introducing MAI-DS-R1
+year: 2025
+venue: Microsoft Azure AI Foundry technical release
+authors:
+- Microsoft
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- general
+- safety
+training_use:
+- sft
+- distillation
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-mai-ds-r1/4405076
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: https://huggingface.co/microsoft/MAI-DS-R1
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: About 350K internally developed blocked-topic examples are constructed by collecting/filtering query keywords
+    and converting them into questions, then translating questions into multiple languages. A separate 110K safety/non-compliance
+    component comes from Tulu3 SFT (CoCoNot, WildJailbreak, and WildGuardMix). Exact prompts, selected record IDs, language
+    allocation, and source provenance are unknown.
+  trace_author: For the ~350K component, answers and respective Chain of Thought are bootstrapped with DeepSeek R1 and internal
+    models. Internal model identities, versions, prompt templates, selection, editing, and record-level generator mapping
+    are unknown.
+  answer_format: Question, bootstrapped answer, and respective CoT are disclosed at a high level. The exact record schema,
+    whether all records include CoT, safety-label fields, and publicly inspectable examples are unknown.
+  process_fields:
+  - query_keyword
+  - question
+  - answer
+  - chain_of_thought
+  environment_or_substrate: unknown
+  verifier_or_reward: No post-training reward model, verifier, preference-pair construction, RL stage, reward aggregation,
+    calibration, or outcome predicate is disclosed.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: DeepSeek-R1 (671B), as stated in the official Microsoft model card.
+  teacher: DeepSeek R1 and unspecified internal models bootstrap answers and CoT for the ~350K blocked-topic component.
+  generator: Keyword collection/filtering, question expansion, multilingual translation, and answer/CoT bootstrapping are
+    disclosed. Generator models and implementation details for each operation are unknown except for DeepSeek R1 and unnamed
+    internal models used for bootstrapping.
+  filtering_rule: Microsoft reports collecting and filtering query keywords before question expansion. Criteria, thresholds,
+    human review, deduplication, yields, and safety-selection process are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Microsoft describes the model as post-trained/fine-tuned for responsiveness and harm protection.
+    Objective, loss, optimizer, schedule, batch size, RL use, and checkpoint selection are unknown.
+audit:
+  source_mixture: Official Microsoft sources disclose about 350K internally developed multilingual examples plus 110K Tulu3
+    safety/non-compliance examples. The data summary says publicly available datasets were used and synthetic AI-generated
+    data was used, but it does not provide source weights, manifests, exact record IDs, or a complete provenance map.
+  split: unknown
+  decontamination: unknown
+  license: The released MAI-DS-R1 model card lists an MIT model licence. Microsoft does not publish a complete training-data
+    licence/provenance or redistribution mapping; the data summary supplies general legal-compliance statements only.
+  lineage: 'Report-level lineage is disclosed: DeepSeek-R1 base model; keyword-derived multilingual questions; DeepSeek R1/internal-model
+    bootstrapped answers and CoT; plus selected Tulu3 safety/non-compliance examples. Item-level lineage, internal-teacher
+    versions, transformations, and checkpoint mapping are unknown.'
+  known_failure_modes:
+  - The release does not expose the 350K records, bootstrapped CoT, internal-teacher identities, filtering criteria, or any
+    train/dev/test split, preventing independent data or trace provenance audit.
+  - No training reward/verifier, preference, RL, calibration, or rollout details are disclosed; safety/responsiveness evaluation
+    metrics cannot establish a reusable feedback contract.
+  - Microsoft warns that MAI-DS-R1 can retain biases from training data and DeepSeek-R1, hallucinate, remain vulnerable to
+    adversarial prompts, or generate unsafe/biased/harmful content in some conditions.
+  - The published rights statements do not provide source-level licence, consent, provenance, or opt-out information for internally
+    developed multilingual material.
+  citation_status: verified
+  confidence: high
+  notes: Evidence is limited to Microsoft's official Azure AI Foundry Blog release and official `microsoft` Hugging Face model/data-summary
+    card. The record treats only explicitly disclosed construction facts as known; it does not infer a reward, verifier, split,
+    data release, or teacher detail.
+inclusion_reason: A Microsoft open-weight frontier post-training report that discloses a concrete 350K keyword-to-multilingual-question-to-bootstrapped-CoT
+  construction path and a 110K named safety-data addition, while making the missing provenance and feedback-contract details
+  auditable.
+related:
+- deepseek-r1-2025
+tags:
+- microsoft
+- mai-ds-r1
+- deepseek-r1
+- frontier-report
+- data-disclosure-ledger
+- safety-alignment
+- multilingual
+- chain-of-thought
+- post-training
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Microsoft's MAI-DS-R1 release reports about 350K keyword-derived multilingual questions with DeepSeek-R1/internal-model
+  bootstrapped answers and CoT plus 110K named Tulu3 safety examples, but not the underlying records, feedback contract, splits,
+  or source-level rights.
+why_it_matters: 'It is a concrete disclosure-limited example of a major company''s post-training intervention: the reported
+  construction stages and counts are useful, but the unreleased traces, internal teachers, reward details, and provenance
+  block independent replication or safety-data audit.'
+card: null
+needs:
+- 'needs_data: released or inspectable record schema, source manifests, selected Tulu3 IDs, language allocation, keyword/question
+  corpus, bootstrapped answers/CoT, and transformations'
+- 'needs_metadata: internal-teacher identities/versions, prompting, filtering criteria/yields, human review, optimizer, schedules,
+  checkpoint selection, and inference policy'
+- 'needs_verifier: any reward/preference/RL contract, output acceptance rules, calibration, and error analysis'
+- 'needs_audit: train/dev/test splits, deduplication/decontamination, item-level lineage, raw evaluation artifacts, and reproducible
+  metric implementations'
+- 'needs_license: complete source-level rights, licences, consent/opt-out treatment, and redistribution mapping for internal
+  and selected public records'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Directly read Microsoft's release and official Microsoft Hugging Face model plus data summary. No unverified ancillary
+    link is recorded.

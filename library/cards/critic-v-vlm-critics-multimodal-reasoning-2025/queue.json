@@ -1,0 +1,19 @@
+{
+  "title": "Critic-V: VLM Critics Help Catch VLM Errors in Multimodal Reasoning",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Critic-V_VLM_Critics_Help_Catch_VLM_Errors_in_Multimodal_Reasoning_CVPR_2025_paper.html",
+    "data": "https://github.com/kyrieLei/Critic-V",
+    "code": "https://github.com/kyrieLei/Critic-V",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:20:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 Critic-V：29,012对多模态批评偏好记录",
+    "updated_at": "2026-07-18T12:20:42Z"
+  }
+}

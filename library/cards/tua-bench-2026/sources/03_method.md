@@ -1,0 +1,5 @@
+Inputs are terminal task prompts, deterministic setup scripts, files or web/application resources, installed command-line tools, and a terminal-use agent scaffold. Outputs are commands, logs, intermediate files, final artifacts, environment state, and verifier scores.
+
+The authors start from an initial pool of 394 candidate tasks and curate 120 final tasks by removing or revising ambiguous, overly simple, or inconsistent tasks. The final set covers everyday digital work such as document editing, email management, web information seeking, and media processing, plus expert workflows in biology, medical physics, architectural engineering, and mechanical engineering. Each task runs in a real terminal environment and is manually checked.
+
+The verifier is task-specific execution-based scoring: files, command outputs, simulations, generated artifacts, or state changes are compared against expected conditions. Reproduction must pin the repository commit, task list, container/runtime image, installed software, network/live-web policy, scorer scripts, agent scaffold, reasoning-effort setting, timeout, and artifact paths.

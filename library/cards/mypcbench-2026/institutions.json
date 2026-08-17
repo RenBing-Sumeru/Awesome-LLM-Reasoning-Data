@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Carnegie Mellon University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2606.16748",
+    "https://mypcbench.com/",
+    "https://github.com/ljang0/MyPCBench",
+    "https://huggingface.co/datasets/ljang0/MyPCBench"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF dataset verify authors, CMU institution, and artifacts."
+}

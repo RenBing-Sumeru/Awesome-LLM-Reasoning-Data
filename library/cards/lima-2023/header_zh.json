@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LIMA 用 1,000 条精选指令—回答记录检验：能力较强的基础模型学习助手风格时，数据质量是否比数据规模更关键。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "小数据监督对齐与数据质量研究",
+  "best_for_ch": "适合设计或审计小规模精选 instruction-tuning 数据集的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chunting Zhou, Pengfei Liu, Puxin Xu, Srini Iyer, Jiao Sun, Yuning Mao, Xuezhe Ma, Avia Efrat, Ping Yu, Lili Yu, Susan Zhang, Gargi Ghosh, Mike Lewis, Luke Zettlemoyer, Omer Levy",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

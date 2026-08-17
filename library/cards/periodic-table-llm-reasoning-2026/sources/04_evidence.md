@@ -1,0 +1,1 @@
+The official abstract specifies the more-than-300-paper scope, the listed reasoning paradigms, method dimensions, and four named failure patterns. Its arXiv record confirms the title, authors, June 2026 submission date, and preprint status. These are coverage signals, not validation of individual cited results.

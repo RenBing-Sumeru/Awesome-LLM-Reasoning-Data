@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Harness-Bench 衡量 harness 选择如何改变真实智能体工作流中的模型表现。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv / Diagnostic Benchmark 2026 的 agent workflow harness benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yilun Yao 等（Peking University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:18:36Z"
+}

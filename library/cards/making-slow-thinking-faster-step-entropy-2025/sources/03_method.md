@@ -1,0 +1,4 @@
+The reported prompt mixture combines 40K DeepScaleR and 90K OpenR1-Math problems. DeepSeek-R1-Distill-Qwen-7B generates complete reasoning trajectories. The method segments the `think` reasoning content at double newlines, computes length-normalized step entropy, masks the lowest 80% of steps with `[SKIP]`, and removes sequences longer than 4,096 tokens; the paper reports 70K remaining SFT examples.
+
+Stage 1 uses three SFT epochs with DeepSpeed Stage 2 and LoRA. Stage 2 uses a random 10K-example subset for GRPO, with group size 14, DeepSpeed Stage 3, LoRA, and AdamW. Its reward combines final-answer correctness, skip ratio, skip-number, and response-length terms. The author-linked repository supplies scripts for full-CoT generation, masking, SFT, and GRPO, but the inspected release does not provide the paper-matched generated rows, entropy values, masks, or retained/rejected rollout ledger.
+

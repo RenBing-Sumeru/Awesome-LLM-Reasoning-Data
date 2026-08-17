@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "sft数据构造",
+    "updated_at": "2026-07-12T13:23:40Z"
+  },
+  "updated_at": "2026-07-12T13:23:40Z"
+}

@@ -1,0 +1,148 @@
+id: rise-self-verification-2025
+title: 'Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Xiaoyuan Liu
+- Tian Liang
+- Zhiwei He
+- Jiahao Xu
+- Wenxuan Wang
+- Pinjia He
+- Zhaopeng Tu
+- Haitao Mi
+- Dong Yu
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+- full_episode
+domains:
+- mathematics
+training_use:
+- rlvr
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/bd3d106d8e9789ce4fd40e1edafe71d5-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2505.13445
+  code: https://github.com/xyliu-cs/RISE
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.13445
+  venue: https://neurips.cc/virtual/2025/poster/116768
+  openreview: https://openreview.net/forum?id=gA3fFAEXNT
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/xyliu-cs/RISE
+data_object:
+  prompt_source: MATH-Hard Levels 3–5, reported as 8,523 problems for all listed SFT, Zero-RL, and RISE runs; item manifests
+    and source-rights detail are not disclosed in the paper.
+  trace_author: The current Qwen2.5 policy generates on-policy chain-of-thought solutions, then generates a natural-language
+    critique and score for selected problem-solution pairs.
+  answer_format: Problem, chain-of-thought solution, and boxed final answer; the verification prompt requests a critique plus
+    a boxed rating.
+  process_fields:
+  - problem
+  - ground_truth_answer
+  - solution_rollout
+  - solution_outcome_reward
+  - verification_prompt
+  - verification_critique
+  - verification_score
+  - verification_reward
+  environment_or_substrate: Online PPO RLVR loop mixing solution and self-verification trajectories.
+  verifier_or_reward: Rule-based outcome feedback checks mathematical final-answer match and boxed-answer format. A verification
+    response is rewarded only when its extracted final score matches that outcome reward; its prose critique has no separately
+    disclosed validity check. Parser implementation, coverage, and error rates are unknown.
+  terminal_predicate: Solution outcome is determined by the stated math-match/format rule; verification outcome is score agreement
+    with that rule-derived label. Exact extraction/parser edge cases and false-accept coverage are unknown.
+recipe_metadata:
+  base_model: Qwen2.5 1.5B, 3B, and 7B base models in the paper experiments; later repository examples also support Qwen3-series
+    training.
+  teacher: null
+  generator: Current policy produces solution rollouts and then self-verification rollouts from a fixed prompt template.
+  filtering_rule: No separately released acceptance/filtering pipeline is established; solution and verification trajectories
+    receive outcome rewards within PPO.
+  sampling_protocol: 'Paper: MATH-Hard Levels 3–5; train batch 1,024, mini-batch 128, temperature 1.0, 8 solution rollouts
+    per problem, default verification batch 128. Exact item IDs, sampling seeds, selection policy for verification triples,
+    and released split manifests are unknown.'
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: Maximum response length 3,000 tokens; paper reports test-time comparisons at k=4 and k=8. Complete decoding/test-time
+    configuration is unknown.
+  optimizer_or_scaffold: PPO with GAE over a concatenated solution-and-verification batch; disclosed settings include actor
+    clip 0.2, critic clip 0.5, no KL penalty, and 12 RL epochs. Complete learning-rate/configuration record and exact versioned
+    script-to-paper mapping remain unknown.
+audit:
+  source_mixture: MATH-Hard Levels 3–5 is named as the paper training source; the checked implementation expects local MATH_Hard.jsonl
+    and MATH_val.jsonl. Underlying item lineage and rights are not disclosed here.
+  split: Paper reports 8,523 MATH-Hard Level 3–5 training problems. The repository names local MATH_Hard and MATH_val inputs
+    but does not, in the checked evidence, supply item manifests or establish paper-run split identity.
+  decontamination: unknown
+  license: RISE code is MIT licensed; training data, on-policy traces, self-verification traces, and trained checkpoints have
+    no verified release license.
+  lineage: MATH-Hard problem and ground-truth answer → on-policy solution rollout → rule-based outcome label → templated verification
+    prompt → self-verification rollout and score reward → joint PPO update. Item-level lineage, rejected rollouts, and released
+    manifests are unavailable.
+  known_failure_modes:
+  - Self-verification prose is not independently validated; score agreement is not evidence that a critique locates the right
+    error
+  - Outcome feedback depends on undisclosed parser/normalization coverage and may not capture reasoning validity
+  - No verified public training-data payload, item manifest, or trained checkpoint
+  - No disclosed decontamination or leakage audit for training/evaluation overlap
+  - Exact reward implementation, verifier error analysis, complete hyperparameters, prompts-to-code mapping, seeds, and verification-triple
+    selection are incomplete
+  - Math outcome supervision may not transfer to domains without programmatically checkable answers
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v1, NeurIPS 2025 poster/proceedings, author-linked implementation, code license, and local-input preprocessor
+    were checked. This records a partial RLVR-recipe disclosure, not released verified critique data.
+inclusion_reason: An accepted NeurIPS RLVR recipe that makes the outcome-verifier-to-self-score feedback bridge explicit while
+  exposing the distinction between score supervision and unvalidated critique text.
+related: []
+tags:
+- rise
+- self-verification
+- rlvr
+- outcome-verifier
+- online-rl
+- ppo
+- mathematical-reasoning
+- critique
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: RISE jointly trains Qwen2.5 reasoning and self-verification trajectories with rule-based math outcome rewards,
+  while only the verification score—not the prose critique—is checked against correctness.
+why_it_matters: It is a concrete RLVR recipe with accepted venue and code, but its public disclosure still leaves data manifests,
+  verifier coverage, leakage checks, and complete reproducibility details unresolved.
+card: null
+needs:
+- 'needs_data: MATH-Hard item manifest/rights and released paper-run training inputs'
+- 'needs_model: trained RISE checkpoints and exact evaluation artifacts'
+- 'needs_metadata: complete versioned hyperparameters, seeds, prompt/config mapping, verification-triple selection, and parser
+  implementation'
+- 'needs_audit: verifier false-accept/false-reject analysis, decontamination, leakage, rejected-rollout logs, and split manifests'
+- 'needs_license: rights for training prompts, generated trajectories, and checkpoints'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper, accepted NeurIPS record, author-linked code, and code license verified; data/model releases and audit
+    completeness are not established.

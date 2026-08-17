@@ -1,0 +1,1 @@
+CharXiv 可作为真实多模态评测记录的 schema 参考：每条样本都应保留图片来源、问题类型、参考答案、判分结果和 judge 配置。它适合比较读图 prompt、视觉推理模型和污染防护策略。纳入 atlas 时应保留 chart source、split、prompt、模型回答、evaluator verdict、evaluator 版本/日期。分析失败时不要把描述类和推理类混成一个标签。

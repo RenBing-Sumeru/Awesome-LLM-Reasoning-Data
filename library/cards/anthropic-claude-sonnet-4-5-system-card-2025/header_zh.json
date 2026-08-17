@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude Sonnet 4.5 的系统卡披露了宽泛来源类别、RLHF/RLAIF、安全管线变更、reward-hacking 压力测试和 white-box evaluation-awareness 审计，但没有公开相关训练数据、奖励函数、模型内部或可复现制品。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型系统卡与数据披露台账",
+  "best_for_ch": "需要审查前沿模型报告中训练数据与奖励契约的披露边界，以及 reward hacking、监控和 white-box 安全审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

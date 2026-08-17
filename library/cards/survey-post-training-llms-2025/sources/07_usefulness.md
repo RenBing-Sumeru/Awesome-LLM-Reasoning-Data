@@ -1,0 +1,1 @@
+The survey organizes LLM post-training into fine-tuning, alignment, reasoning, efficiency, and integration or adaptation. It describes the techniques and datasets associated with those paradigms, including instruction data, preference signals, rewards, verifiers, and evaluation settings. It does not introduce one shared dataset or post-training recipe.

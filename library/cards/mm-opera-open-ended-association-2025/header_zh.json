@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MM-OPERA 以开放式图文联想任务和过程感知裁判，评估视觉语言模型的发散与收敛关联推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量表数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zimeng Huang、Jinxin Ke、Xiaoxuan Fan、Yufeng Yang、Yang Liu、Liu Zhonghan、Zedi Wang、Junteng Dai、Haoyi Jiang、Yuyu Zhou、Keze Wang、Ziliang Chen",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

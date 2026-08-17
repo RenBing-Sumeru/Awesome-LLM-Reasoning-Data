@@ -1,0 +1,118 @@
+id: efficient-llm-training-data-centric-survey-2025
+title: 'A Survey on Efficient Large Language Model Training: From Data-centric Perspectives'
+year: 2025
+venue: ACL 2025 (Long Papers)
+authors:
+- Junyu Luo
+- Bohan Wu
+- Xiao Luo
+- Zhiping Xiao
+- Yiqiao Jin
+- Rong-Cheng Tu
+- Nan Yin
+- Yifan Wang
+- Jingyang Yuan
+- Wei Ju
+- Ming Zhang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- post-training
+- data-centric-training
+- instruction-tuning
+- reasoning-data
+training_use:
+- unknown
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1493/
+  arxiv: null
+  code: null
+  data: null
+  project: https://github.com/luo-junyu/Awesome-Data-Efficient-LLM
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1493
+  venue: https://aclanthology.org/2025.acl-long.1493/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1493/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A literature taxonomy of data selection, quality enhancement, synthetic-data generation, distillation/compression,
+    and self-evolving data ecosystems.
+  trace_author: The surveyed primary works; this paper does not release a new trace corpus.
+  answer_format: A structured survey taxonomy and representative-method synthesis.
+  process_fields:
+  - data selection
+  - data quality enhancement
+  - synthetic data generation
+  - data distillation and compression
+  - self-evolving data ecosystems
+  environment_or_substrate: Data-efficient post-training of large language models.
+  verifier_or_reward: The survey compares methods with differing feedback contracts; it does not introduce one verifier or
+    reward.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: No single base model; the work surveys post-training literature.
+  teacher: Human annotators and model-based teachers appear in the surveyed methods; no single teacher is used by the survey.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract groups methods into five data-centric categories.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Not a training recipe; it organizes data-efficiency methods used by primary works.
+audit:
+  source_mixture: Official ACL Anthology record, PDF, and author-maintained paper-list repository linked from the official
+    abstract.
+  split: Not applicable to a survey.
+  decontamination: No paper-specific contamination conclusion is claimed; follow each surveyed release to its primary audit
+    evidence.
+  license: No dataset is released by this survey. The linked paper list is a separate project artifact.
+  lineage: 'Primary source: https://aclanthology.org/2025.acl-long.1493/'
+  known_failure_modes:
+  - Taxonomy labels do not substitute for provenance, license, or split evidence for an individual release.
+  - Data efficiency can reflect model, compute, filtering, or evaluation choices rather than data alone.
+  - The survey cannot establish whether a cited dataset remains uncontaminated in later model training.
+  citation_status: verified
+  confidence: high
+  notes: The ACL abstract explicitly identifies five data-centric categories and frames data-efficient post-training as its
+    scope.
+inclusion_reason: An official 2025 map of data-centric post-training that routes readers from Track0 to instruction data,
+  synthetic demonstrations, distillation, and data-quality or audit work.
+related: []
+tags:
+- foundations-and-primers
+- data-centric-training
+- post-training-survey
+- data-quality
+- acl-2025
+why_it_matters: It gives Track0 readers a vocabulary for separating a better dataset from a better sampler, teacher, filter,
+  or training budget.
+one_line_summary: A 2025 ACL survey that treats data selection, quality, synthesis, compression, and self-evolution as distinct
+  levers in efficient post-training.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers who need a data-centric route from general post-training into construction, quality, distillation, and audit
+  tracks.
+confidence: high
+status: verified
+needs:
+- 'unknown: per-paper licenses, splits, and contamination evidence for the surveyed primary releases'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, DOI, and author-maintained paper-list link were reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧭 Post-training surveys

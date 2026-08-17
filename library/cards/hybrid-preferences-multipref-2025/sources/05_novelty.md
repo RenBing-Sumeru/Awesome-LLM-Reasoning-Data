@@ -1,0 +1,1 @@
+The closest alternative chooses humans, an LM, or a random mixture at dataset level. HyPER changes the selection unit to an instance or feature group and optimizes it against predicted downstream reward-model performance. Using both feedback sources is not new; retaining matched labels in MultiPref makes the allocation decision inspectable.

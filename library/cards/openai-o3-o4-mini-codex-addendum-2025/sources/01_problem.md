@@ -1,0 +1,4 @@
+Codex is a cloud coding agent powered by codex-1, which OpenAI describes as a version of o3 optimized for software engineering. The May 16, 2025 addendum says codex-1 was trained with reinforcement learning on real-world coding tasks across varied environments. It is intended to edit files, run commands and tests, cite terminal/file evidence, and return an inspectable diff.
+
+For a reasoning-data atlas, those product capabilities do not define the training corpus. An auditable account would identify task and repository sources, revision-pinned environments, actions and observations, test or grader signals, accepted and rejected trajectories, reward aggregation, and safety-data lineage. The addendum exposes several safety-training objects and one reward direction, but it does not release the main coding-task records, training schema, model weights, reward implementation, or environment snapshots.
+

@@ -1,0 +1,3 @@
+Prior GUI grounding benchmarks often focus on general web, mobile, or simpler desktop interfaces. ScreenSpot-Pro changes the surface by using professional high-resolution software where targets can be small, dense, visually specialized, or embedded in complex panels.
+
+The quality signal is expert target annotation, professional application coverage, public data, public leaderboard, bilingual instruction variant, and analysis of why search-region reduction improves grounding. What is not new is bounding-box localization itself. Before reuse, inspect software screenshot redistribution rights, Hugging Face dataset license, code license, target-box coordinate convention, resolution scaling, language split, and public benchmark contamination.

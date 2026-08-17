@@ -1,0 +1,1 @@
+Prompt-based learning changes a task input into text that a pre-trained language model can complete. This survey asks how that transformation should be designed and compared. For reasoning data, the important object is not merely a question: it is the question plus template, demonstrations, answer mapping, and model context that define what behavior is elicited.

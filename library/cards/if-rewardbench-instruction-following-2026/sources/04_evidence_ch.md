@@ -1,0 +1,1 @@
+作者在多类开源与闭源 judge 上进行对比，发现不少在传统 RewardBench 上表现强的模型无法稳定恢复多回答排序，尤其容易忽略局部约束或把语言质量误当成遵循程度。IF-RewardBench 分数与这些 judge 用于下游指令优化时的实际收益呈更强正相关，说明 listwise preference graph 比孤立 pair 更接近训练用途。证据支持 benchmark 的外部有效性，但相关性仍不是因果证明，且下游实验覆盖的优化算法与模型范围有限。

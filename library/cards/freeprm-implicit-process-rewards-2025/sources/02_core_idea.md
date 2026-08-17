@@ -1,0 +1,3 @@
+The key distinction is a third buffer probability between wrong and right. A correct final answer makes every step tentatively positive and an incorrect final answer makes every step tentatively negative, but the buffer absorbs probability mass when that inherited label is ambiguous or likely wrong.
+
+The model does not simply add a neutral class. A random buffer factor prevents the trivial solution in which every step becomes entirely uncertain, and the final step receives a larger loss weight because it has the strongest connection to the terminal outcome. Thus the record carries terminal supervision, local uncertainty, and step position together.

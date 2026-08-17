@@ -1,0 +1,1 @@
+论文报告当时 frontier systems 在 benchmark 上解出率低于 2%，支持其相对饱和数学集更难的说法。项目页后续报告 FrontierMath v2 于 2026-06-12 发布，并修正了 42% problems 的错误，这是 benchmark 维护风险的重要证据。逐样本证据是某版本问题的 accepted answer 或 verifier result，而不是公开题面本身。分数受访问政策、模型工具使用、答案归一化和 benchmark 版本约束。

@@ -1,0 +1,5 @@
+- Read the reported 120k environments as an undisclosed environment inventory, not as a released benchmark or corpus.
+- Separate teacher reverse-KL, ORM advantages, programmatic checks, LLM judges, and multimodal verification when tracing credit assignment.
+- Treat the MiMo-V2-Flash-Base, the specialist teachers, and the student rollout policy as distinct but incompletely identified components.
+- Record the SWE-Bench undeleted-commit incident as a concrete environment and reward-hacking risk.
+- Preserve the official citation mismatch: arXiv records 2026, while the Hugging Face citation block says 2025.

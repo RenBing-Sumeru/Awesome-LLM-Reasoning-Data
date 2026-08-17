@@ -1,0 +1,5 @@
+- **作者明确的负载边界。** memory-bound 前提适用于小中规模硬件/负载；同时处理数百或数千请求的大型服务器会转为 compute-bound，此时 token 数再次能够近似成本。附录 Table 4 也展示了请求数增加带来的延迟上升。（论文 §7；附录 A.4）
+- **作者明确的风险边界。** 论文警告 scaling 可能损害代表性不足领域的表现，并提高模型受 adversarial prompt 影响的概率；但实验只覆盖四个数学/科学 benchmark，没有直接测试这些风险。（论文 §8）
+- **发布与复现缺口。** 官方入口未链接作者专用代码/配置、原始候选分支、speculative-acceptance trace、prompt/run manifest、硬件描述、运行时版本或原始延迟日志，因此聚合计时曲线无法独立回放。论文的总体许可声明不能替代逐 artifact 的版本与许可记录。（基于 §9 和官方记录的 curator inference。）
+- **反馈失效。** majority voting 可能选中相关性很高的共同错误，confidence aggregation 也可能继承置信度失准；未披露的答案抽取、归一化和平票规则会造成 false positive 或 false negative。论文只报告聚合后的最终答案准确率，无法审计逐候选的 verifier gaming 或 selector error。（curator inference。）
+- **实验与污染限制。** Tables 1、3 报告三次重复，但随机种子、temperature、prompt 顺序和方差计算协议均为 unknown；论文也未讨论 decontamination。最优延迟配置依赖模型、任务、硬件、运行时和负载，不能视为可直接迁移的策略。greedy search 的步数还存在正文/表格不一致：§5.3 写 8–10 步，Table 2 的 s1.1-3B 行为 11 步。

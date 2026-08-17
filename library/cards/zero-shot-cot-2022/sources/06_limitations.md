@@ -1,0 +1,3 @@
+1. The effect depends on model and cue wording; a different API checkpoint or prompt can change accuracy. Reuse must report exact model, templates, decoding, and a cue-sensitivity comparison.
+2. Final-answer matching cannot detect plausible but invalid intermediate steps. Before converting traces to SFT data, sample-audit steps or add an independent process/final-answer verifier and retain rejection reasons.
+3. The two-call protocol adds latency and an answer-extraction failure point, so its gains are not cost-matched to direct zero-shot. Compare accuracy per token/call and log first-pass versus extraction failures separately.

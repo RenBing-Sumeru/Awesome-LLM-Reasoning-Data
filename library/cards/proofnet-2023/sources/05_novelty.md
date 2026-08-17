@@ -1,0 +1,5 @@
+The prior baseline is formal theorem-proving or math-library evaluation where tasks are already formal, plus autoformalization work with limited parallel informal/formal data. ProofNet changes the object: undergraduate textbook-style problems are packaged with natural-language proofs and Lean 3 theorem statements.
+
+The direction signal is the benchmark design, not the fact that Lean or theorem proving is new. It creates a reusable surface where model output can be checked for formal well-formedness and then audited for semantic faithfulness. It also separates concrete problem-solving statements from abstract mathlib declarations, which helps evaluate whether models can apply existing mathematical concepts to specific cases.
+
+What is not new: Lean, mathlib, human semantic judging, BLEU, in-context learning, prompt retrieval, and backtranslation are not themselves unique to ProofNet. Before reuse, inspect the Lean version, license, source-header dependencies, exact dataset revision, train/test contamination, and whether a Lean 4 port changes the statement semantics.

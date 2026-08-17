@@ -1,0 +1,1 @@
+The paper describes three distinct components of its alignment pipeline: labeler-written demonstrations, rankings of model outputs, and a reward model used during policy optimization. These records have different roles in supervised fine-tuning, reward-model fitting, and reinforcement-learning optimization. The paper does not treat them as interchangeable forms of supervision.

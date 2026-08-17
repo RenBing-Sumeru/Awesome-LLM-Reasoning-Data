@@ -1,0 +1,3 @@
+- For training an OCR-free assistant to answer and explain document questions, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of answer-filtered explanations may contain unsupported intermediate claims.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: known short answers, structure targets, and document benchmark metrics. Do not reuse the release when its licensing or source provenance cannot be preserved.

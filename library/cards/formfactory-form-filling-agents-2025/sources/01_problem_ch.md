@@ -1,0 +1,1 @@
+FormFactory 关注的问题是：如何用字段级状态检查评测多模态 agent 的交互式网页表单填写能力。主要来源是 arXiv:2506.01520、官方项目页和 GitHub 仓库。这里收录它是因为它提供 interactive form-filling environment，而不是静态截图理解数据集。一个任务包含表单页面、用户目标、截图或布局信息、目标字段值、agent 动作和后端 evaluator 输出。它对 atlas 的价值是给常见 web-agent 工作流提供字段级反馈契约。

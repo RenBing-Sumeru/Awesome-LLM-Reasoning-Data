@@ -1,0 +1,17 @@
+{
+  "title": "HalluGuard: Evidence-Grounded Small Reasoning Models to Mitigate Hallucinations in Retrieval-Augmented Generation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.835/",
+    "data": "https://huggingface.co/datasets/lrsbrgrn/HalluGuard-Preferences-76k"
+  },
+  "review_note": "L4 材料已准备，等待人工判定。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T11:36:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开7.67万组含幻觉分类、证据解释与推理的RAG偏好对",
+    "updated_at": "2026-07-15T11:36:50Z"
+  }
+}

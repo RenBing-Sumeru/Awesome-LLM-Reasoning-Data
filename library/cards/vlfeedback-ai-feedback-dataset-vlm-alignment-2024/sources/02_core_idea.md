@@ -1,0 +1,3 @@
+VLFeedback scales VLM alignment through GPT-4V feedback. It curates diverse instructions, samples at least four answers from a 12-model pool, and rates each response from 1 to 5 with rationale on three dimensions. DPO pairs use average aspect score and discard ties. The contract is auditable AI judgment with explanations. Compared with narrow visual-faithfulness sets, it adds helpfulness and ethics at scale; human agreement is evidence for, not a replacement of, human review.
+
+Official data: https://huggingface.co/datasets/MMInstruction/VLFeedback. Code: https://github.com/vlf-silkie/VLFeedback.

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态推理数据和sft数据配方，数据量充足",
+    "updated_at": "2026-07-13T12:56:00Z"
+  },
+  "updated_at": "2026-07-13T12:56:00Z"
+}

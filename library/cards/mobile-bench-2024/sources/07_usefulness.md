@@ -1,0 +1,5 @@
+Mobile-Bench is useful as a schema and harness reference for mobile-agent evaluation surfaces that mix tool/API calls with GUI actions. It can guide recipes that need to serialize user query, app list, API candidates, UI observation, action history, step budget, package/key-phrase/API CheckPoints, and separate metrics for process coverage and final completion.
+
+For atlas use, it is a good example of a trajectory surface where feedback is partly environmental and partly judge-based. The reusable design pattern is to expose objective intermediate predicates, keep action-level logs, and avoid collapsing all evidence into one final success label.
+
+The safest reuse is evaluation or audit. Before using it for training, store provenance, license, task split, evaluator version, phone image, installed app versions, prompt, model, and any GPT-4 judgment configuration. If a new benchmark borrows the design, it should preserve the distinction between CheckPoint-l1, CheckPoint-l2, PassRate, and average steps.

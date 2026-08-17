@@ -1,0 +1,2 @@
+1. **Primary limitation.** Rule rewards can encourage formatting or answer shortcuts, and stability is demonstrated for specific models and tasks. They should not be treated as independent human preference ground truth.
+2. **Curator audit risk.** Longer reasoning adds cost and does not by itself ensure faithful explanations. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

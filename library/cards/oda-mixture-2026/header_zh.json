@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ODA 用公开数据竞技场的来源级反馈选择、去重和去污染约 50 万条通用后训练记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "通用推理监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Gao, Xin、Wang, Xiaoyang、Zhu, Yun、Cai, Mengzhang、He, Conghui、Wu, Lijun",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

@@ -1,0 +1,195 @@
+id: verltool-holistic-agentic-rl-with-tool-use-2025
+title: 'VerlTool: Towards Holistic Agentic Reinforcement Learning with Tool Use'
+year: 2025
+venue: Transactions on Machine Learning Research (TMLR), 2026
+authors:
+- Dongfu Jiang
+- Yi Lu
+- Zhuofeng Li
+- Zhiheng Lyu
+- Ping Nie
+- Haozhe Wang
+- Alex Su
+- Hui Chen
+- Kai Zou
+- Chao Du
+- Tianyu Pang
+- Wenhu Chen
+source_role:
+- infrastructure
+- agent_environment
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- mathematics
+- information_retrieval
+- text_to_sql
+- multimodal_reasoning
+- deep_research
+- software_engineering
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://openreview.net/pdf?id=g2LCOW43Md
+  arxiv: https://arxiv.org/abs/2509.01055
+  code: https://github.com/TIGER-AI-Lab/verl-tool
+  data: null
+  project: null
+  huggingface: https://huggingface.co/VerlTool
+  doi: https://doi.org/10.48550/arXiv.2509.01055
+  venue: https://jmlr.org/tmlr/papers/
+  openreview: https://openreview.net/forum?id=g2LCOW43Md
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://jmlr.org/tmlr/papers/bib/g2LCOW43Md.bib
+data_object:
+  prompt_source: 'Heterogeneous domain tasks: DeepMath; retrieval QA over a 2018 Wikipedia FAISS index; SkyRL-SQL; Pixel-Reasoner;
+    a 1K SimpleDeepSearcher/Web-Sailor mixture; and R2E-Lite software-engineering tasks. Official HF repositories expose some
+    task prompts/reference answers and caches/databases, not one unified episode corpus.'
+  trace_author: The current policy generates on-policy, multi-turn actions while stateful domain tools return observations.
+    No static human-authored or teacher-authored six-domain trajectory set is claimed.
+  answer_format: A paper-level trajectory is tau={a0,o0,...,a_(n-1),o_(n-1),a_n}, interleaving model action tokens and tool-observation
+    tokens. The current Tool Server additionally returns per-action validity and done signals, but its post-paper schema is
+    not treated as a frozen paper serialization.
+  process_fields:
+  - trajectory_id
+  - prompt
+  - action
+  - observation
+  - environment_state
+  - valid
+  - done
+  - reward
+  - turn_index
+  - stop_reason
+  environment_or_substrate: A stateful Tool Server wraps Code Interpreter, FAISS search, a web-search API, image processing,
+    Bash terminal, SQL executor and MCP interfaces. Plugins parse actions, load/update/delete per-trajectory environments
+    and execute actions.
+  verifier_or_reward: 'Domain-specific programmatic/environmental rewards: math and search answer match; SQL execution accuracy;
+    visual accuracy plus curiosity/redundancy shaping; deep-search answer accuracy plus a 0.1 any-tool-call bonus; and SWE
+    reward 1 only for normal termination with all verification tests passing.'
+  terminal_predicate: Domain-specific completion plus task evaluation. In SWE, normal termination and all verification tests
+    are required; timeouts, exceptions and excessive length receive reward 0 and masked gradients. Tool Server `done` marks
+    environment termination, not necessarily semantic task correctness.
+  provenance: Domain prompt/task -> on-policy action -> stateful Tool Server execution -> observation/valid/done response
+    -> repeated multi-turn episode -> domain-specific scalar outcome -> GRPO/DAPO-style policy update. Observation tokens
+    are normally masked from the policy objective.
+recipe_metadata:
+  base_model: 'Task-specific: Qwen2.5-Math-7B, Qwen2.5-7B-Instruct for search, Qwen2.5-VL-7B-Instruct for visual reasoning,
+    and Qwen3-8B for deep search and SWE. SQL is ambiguous: Appendix A.3 says Qwen2.5-7B-Instruct, while Table 5/current recipe
+    says Qwen2.5-Coder-7B-Instruct.'
+  teacher: unknown
+  generator: Online policy rollouts interacting asynchronously with independently stateful tool environments.
+  prompt_task_source: DeepMath; retrieval QA with E5 plus a 2018 Wikipedia FAISS index; SkyRL-SQL; Pixel-Reasoner; 1K examples
+    mixed from SimpleDeepSearcher and Web-Sailor; R2E-Lite with the R2E-Gym scaffold.
+  sampling_protocol: Appendix Table 8 reports rollout batch sizes of 128/512/256/128/128/32 and samples per task of 16/16/5/8/16/8
+    for Math/Search/SQL/Visual/DeepSearch/SWE. Rollouts call tools independently under asynchronous trajectory scheduling.
+  temperature: Training temperature is 1.0 for Math, Search, SQL, DeepSearch and SWE, and 0.6 for VisualReasoner; evaluation
+    temperatures are task-specific.
+  top_p: 1.0 for all training recipes except VisualReasoner at 0.95.
+  rollout_count: 'Per-task rollout multiplicity is domain-specific: 16/16/5/8/16/8 in Appendix Table 8; the total number of
+    generated or retained episodes is unknown.'
+  inference_budget: Maximum training turns are 1/2/5/3/5/100 across Math/Search/SQL/Visual/DeepSearch/SWE, with task-specific
+    prompt, response, action and observation token limits in Appendix Table 8. SWE also uses 90-second interaction, 300-second
+    reward and 20-minute episode timeouts.
+  search_or_scaffold: VeRL Workflow handles rollouts and actor updates; a unified Tool Server decouples tool execution. Math
+    uses Python, search uses local FAISS, deep search uses SERPER-backed Google Search with caching, and SWE uses Kubernetes-hosted
+    R2E-Lite Docker environments.
+  filtering_rule: unknown
+  selection_threshold: unknown
+  optimizer_or_scaffold: GRPO is the common baseline and DAPO is also evaluated. Observation tokens are masked and the objective
+    is applied over action-token segments. Reported actor learning rate is 1e-6 except SWE at 2e-6.
+audit:
+  source_mixture: DeepMath, public retrieval-QA benchmarks and a 2018 Wikipedia index, SkyRL-SQL databases/questions, Pixel-Reasoner,
+    SimpleDeepSearcher, Web-Sailor, SERPER/Google snippets and caches, R2E-Lite repositories/tests, plus online policy-generated
+    interactions.
+  split: Per-domain train/evaluation sources and several HF split labels are disclosed, but no unified item-level manifest
+    connects paper runs, exact task revisions and retained episodes.
+  decontamination: unknown
+  benchmark_overlap: The paper names public training sources and public evaluation suites but does not provide a uniform cross-domain
+    deduplication or contamination audit. Search/web content and cached/live retrieval can drift.
+  license: The paper is CC BY 4.0 and the repository root is MIT. The official DeepSearch dataset has no verified license
+    tag; the SQL reproduction dataset declares MIT. Those labels do not establish a single license for all upstream datasets,
+    databases, web content, models, environments, submodules or derived trajectories.
+  lineage: Six heterogeneous task sources -> task-specific environment adapter and reward -> online action/observation episodes
+    -> scalar RL update. Official HF releases verified for DeepSearch and SQL contain prompts/reference objects and supporting
+    caches/databases, not rollout trajectories.
+  release_version: arXiv v3 is dated 2025-10-17. GitHub v0.1.0 (2025-11-10, commit a7dd6053b362df21e1a22b2424ee9d745bc4cfa3)
+    and v0.2.0 (2025-12-24, commit c25276abed645330be82796e60687fe4b4fb7f82) both postdate it. Current main was inspected
+    at 383d4b1539ba387f94c3a117d3edc06b467c09d1. The paper does not pin its training implementation to a commit or tag.
+  verifier_or_judge_failure_modes:
+  - Answer exact match can reject semantically correct alternative formats or aliases.
+  - SQL execution agreement on one database may admit a semantically wrong query with the same observed result.
+  - The DeepSearch 0.1 any-tool-call bonus and VisualReasoner curiosity term can incentivize unnecessary calls; neither is
+    step correctness supervision.
+  - SWE reward is sparse and sensitive to container state, dependency resolution, resource limits and test completeness.
+  - Online search depends on SERPER/API behavior, caches and changing web content; snippet-only and external-summarizer evaluation
+    are different execution conditions.
+  - Tool validity and done flags report call validity/termination, not correctness of intermediate reasoning or observations.
+  - Appendix A.3 and Table 5/current SQL recipe disagree on the SQL base-model family.
+  successful_and_failed_sample_retention: unknown; the paper specifies SWE reward/gradient handling for timeout, exception
+    and length failures but does not report a released manifest or retained/discarded counts for any domain.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: medium
+  notes: Identity, paper method, official repository, tagged releases and two relevant official HF task datasets were verified.
+    No unified six-domain trajectory corpus, episode counts, paper-era serialization, replay manifest or immutable paper-code
+    lock was found. Current-main implementation details are therefore corroborating evidence only, not a substitute for the
+    paper version.
+inclusion_reason: 'VerlTool directly defines the data and feedback boundary for multi-turn tool-use RL: interleaved policy
+  actions and tool observations, per-trajectory environment state, programmatic/environmental terminal rewards and an asynchronous
+  rollout scaffold across six domains. Its chief Atlas value is as an auditable construction/environment recipe, while the
+  missing unified rollout release is itself an important reuse caveat.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- agentic-rl
+- tool-use
+- multi-turn-trajectories
+- environment-feedback
+- rlvr
+- verl
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: VerlTool turns task prompts into on-policy, multi-turn action-observation episodes behind a stateful Tool
+  Server, but releases no paper-pinned six-domain trajectory corpus or replay manifest.
+why_it_matters: Its unified interface makes environment observations, validity/termination signals and terminal reward provenance
+  comparable across math, search, SQL, visual, deep-search and SWE agents. The absent episode release and post-paper code
+  drift sharply limit direct data reuse and exact replay.
+card: null
+needs:
+- 'needs_url: official versioned unified trajectory corpus; use null until released'
+- 'needs_metadata: per-domain generated/retained episode counts, success/failure/timeout retention and exact checkpoint-to-table
+  mapping'
+- 'needs_replay: paper commit/tag, verl submodule and dependency locks, model/data/index/database/container/API revisions,
+  seeds, caches and episode manifests'
+- 'needs_license: source-by-source rights for DeepSearch data/cache, upstream benchmarks/databases, web content, models, environments
+  and derived trajectories'
+- 'needs_split: item-level train/evaluation manifests, deduplication, contamination checks and cross-domain overlap audit'
+- 'needs_review: reconcile the SQL base-model discrepancy and verify any future complete SWE recipe'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: The official arXiv/OpenReview/TMLR records, repository, two tagged releases, HF organization and relevant DeepSearch/SQL
+    task repositories were verified. Artifact verification does not imply that a unified trajectory dataset exists; `artifacts.data`
+    remains null.

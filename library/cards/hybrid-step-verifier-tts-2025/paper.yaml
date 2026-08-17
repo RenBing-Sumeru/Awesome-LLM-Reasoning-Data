@@ -1,0 +1,28 @@
+id: hybrid-step-verifier-tts-2025
+title: "Step-level Verifier-guided Hybrid Test-Time Scaling for Large Language Models"
+year: 2025
+venue: EMNLP 2025
+authors: [Kaiyan Chang, Yonghao Shi, Chenglong Wang, Hang Zhou, Chi Hu, Xiaoqian Liu, Yingfeng Luo, Yuan Ge, Tong Xiao, JingBo Zhu]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [step_level, answer_level]
+domains: [reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [scaling_report]
+artifacts: {paper: https://aclanthology.org/2025.emnlp-main.931/, arxiv: https://arxiv.org/abs/2507.15512, venue: https://aclanthology.org/2025.emnlp-main.931/, code: https://github.com/Lucky-259/Hybrid_TTS, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2025.emnlp-main.931}
+data_object: {prompt_source: "Reasoning benchmarks evaluated in the paper.", trace_author: "Instruction-tuned language models evaluated by the study.", answer_format: "Stepwise reasoning traces, verifier signals, refinements, and final answers.", process_fields: [prompt, reasoning_step, verifier_score, refinement_action, candidate_answer], environment_or_substrate: "Training-free test-time scaling.", verifier_or_reward: "Process verification at the reasoning-step level.", terminal_predicate: "Benchmark answer correctness."}
+recipe_metadata: {base_model: "Five instruction-tuned LLMs spanning 3B to 14B parameters; see paper for model list.", teacher: null, generator: "Conditional step-level self-refinement plus parallel test-time strategies.", filtering_rule: "Process-verifier guidance determines targeted refinement at individual steps.", sampling_protocol: "Hybrid sequential and parallel inference; see paper for exact settings.", rollout_count: null, temperature: null, inference_budget: "Additional generation and verification during inference, without additional training.", optimizer_or_scaffold: "Step-level Verifier-guided Hybrid Test-Time Scaling."}
+audit: {source_mixture: "Official EMNLP paper, ACL Anthology record, and paper-linked public code repository.", split: "Official benchmark splits; see paper.", decontamination: "Not separately claimed in the primary source.", license: "Verify repository and benchmark licenses before reuse.", lineage: "https://aclanthology.org/2025.emnlp-main.931/", known_failure_modes: [verifier_miscalibration, refinement_cost, correlated_candidates], citation_status: verified, confidence: high, notes: "Title, authors, venue, DOI, affiliations, and code URL checked against the official paper and ACL record on 2026-07-20."}
+inclusion_reason: "It studies how a process verifier directs fine-grained sequential and parallel inference computation without additional model training."
+related: []
+tags: [test-time-compute, process-verifier, self-refinement, hybrid-scaling, reasoning]
+status: verified
+one_line_summary: "A process verifier decides where to refine reasoning steps and how to combine sequential and parallel inference-time scaling."
+reading_priority: essential
+paper_type: Training-free test-time scaling study
+best_for: Readers designing verifier-guided inference under a fixed deployment budget.
+confidence: high
+why_it_matters: "It makes the allocation of inference computation conditional on step-level process evidence rather than only final-answer ranking."
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ACL and arXiv records checked; code URL is linked in the official paper."}
+category_ids: [scaling_rlvr_test_time_compute]

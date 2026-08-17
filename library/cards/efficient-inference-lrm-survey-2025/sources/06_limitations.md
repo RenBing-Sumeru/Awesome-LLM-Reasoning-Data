@@ -1,0 +1,1 @@
+Efficiency has no single unit. Reducing visible tokens may raise hidden compute, and a lower latency result on one server may not transfer to another. Latent reasoning also makes error diagnosis harder. Before reuse, inspect the benchmark, budget definition, and cases where compression changed a correct answer into an incorrect one.

@@ -1,0 +1,3 @@
+This Deepchecks arXiv v1 paper was posted on 14 May 2026. It addresses a failure-diagnosis gap in AI-agent evaluation: outcome metrics say whether a trace succeeded, while monolithic LLM judges often fail to identify where and why long structured traces went wrong.
+
+The evaluation object is an OpenTelemetry-style hierarchical agent trace made of spans such as LLM calls and tool invocations. The feedback contract is span-level and trace-level diagnosis, then comparison to TRAIL annotations on GAIA and SWE-bench traces. The atlas boundary is agent trajectory evaluation and diagnostic scoring, not a new agent benchmark or training-data release.

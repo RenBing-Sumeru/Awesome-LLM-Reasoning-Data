@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Who&When Pro 报告 12,326 条跨 3 种模态与 26 个基准的受控失败轨迹，并提供责任智能体、决定性步骤和错误模式标签，但官方数据与评测代码尚未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态智能体失败归因基准与构造流程",
+  "best_for_ch": "研究智能体轨迹、失败归因、因果注入、评测器与多模态长上下文审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jiale Liu、Huajun Xi、Shaokun Zhang、Yifan Zeng、Tianwei Yue、Chi Wang、Jian Kang、Qingyun Wu、Huazheng Wang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

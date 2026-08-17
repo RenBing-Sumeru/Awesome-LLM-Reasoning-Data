@@ -1,0 +1,5 @@
+- Position: Private alignment mixtures and seed-bound public synthesis limit open instruction data; Magpie extracts both user instructions and answers from an aligned teacher's chat-template behavior.
+- Mechanism: The critical sequence is bare user-role prefix sampling, normal response sampling, then quality/reward/similarity/safety filtering; the prompt-source change is more distinctive than SFT itself.
+- Data/artifact: The original Air/Pro release has 4M conversations, while Magpie-Pro-300K-Filtered exposes three Parquet shards with uuid and conversations fields under Llama 3 terms; one 100K-row shard and a real two-turn record were parsed.
+- Evidence anchor: On the same Llama-3-8B consumer, 300K filtered Pro records score 25.08 AlpacaEval 2 LC and 18.9 Arena-Hard, versus 21.65 and 15.9 for 300K raw Pro; filtering helps here but no one filter wins every benchmark.
+- Reuse decision: Use it for scalable general SFT when a licensed aligned teacher is available; the largest risk is copying teacher bias or private-data memorization, so audit provenance, duplicates, length effects, and factual errors before training.

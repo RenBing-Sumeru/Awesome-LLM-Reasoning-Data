@@ -1,0 +1,5 @@
+The Claude Haiku 4.5 System Card documents how a small, fast hybrid-reasoning model is trained, post-trained, audited, and released for coding, computer use, tool use, and general assistant settings. For a reasoning-data atlas, its value lies less in benchmark breadth than in the explicit connections among source classes, preference labor, agentic reinforcement learning, reasoning-trace lineage, and post-training behavioral audits.
+
+The central problem is disclosure granularity. Anthropic names five broad training-source classes, RLHF and RLAIF, crowd-worker preference selection, prior-model reasoning text in supervised learning, and a context-awareness intervention for agentic RL. Yet it releases no quantitative mixture, record schema, reward model, preference corpus, global split, or item-level provenance.
+
+This Card therefore treats the system card as a disclosure ledger rather than a reproducibility package. Training signals, evaluation graders, deployment safeguards, and inference presentation mechanisms are kept separate.

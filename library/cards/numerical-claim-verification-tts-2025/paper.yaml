@@ -1,0 +1,98 @@
+id: numerical-claim-verification-tts-2025
+title: 'Think Right, Not More: Test-Time Scaling for Numerical Claim Verification'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Primakov Chungkham
+- Venktesh V
+- Vinay Setty
+- Avishek Anand
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- fact-checking
+- numerical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1322/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.1322/
+  code: https://github.com/VenkteshV/VerifierFC
+  data: https://github.com/VenkteshV/VerifierFC
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1322
+data_object:
+  prompt_source: Real-world numerical and compositional claim-verification tasks reported in the paper.
+  trace_author: Language models sampled with multiple reasoning paths.
+  answer_format: Claim, evidence, reasoning paths, verifier scores, and verdict.
+  process_fields:
+  - claim
+  - evidence
+  - reasoning_path
+  - predicted_verdict
+  - verifier_score
+  - complexity_level
+  environment_or_substrate: Retriever plus verifier-guided Best-of-N fact checking.
+  verifier_or_reward: VERIFIERFC process-based verifier.
+  terminal_predicate: Expert fact-checker verdict.
+recipe_metadata:
+  base_model: Models reported in the paper; see primary source.
+  teacher: null
+  generator: Multiple reasoning paths for a retrieved-evidence claim.
+  filtering_rule: Process verifier selects the highest-scored path; complexity controls whether TTS is used.
+  sampling_protocol: Best-of-N and adaptive Best-of-N; see paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Number of sampled reasoning paths allocated by predicted claim complexity.
+  optimizer_or_scaffold: VERIFIERFC and latent-representation complexity assignment.
+audit:
+  source_mixture: Official Findings of EMNLP 2025 paper and paper-linked VerifierFC code/data repository.
+  split: QuanTemp and ClaimDecomp evaluations reported in the paper.
+  decontamination: Not separately claimed.
+  license: Verify repository and dataset terms before reuse.
+  lineage: https://aclanthology.org/2025.findings-emnlp.1322/
+  known_failure_modes:
+  - retrieval_error
+  - complexity_misprediction
+  - verifier_bias
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue, DOI, affiliations, project link, and primary claims checked against official ACL PDF on 2026-07-20.
+inclusion_reason: It selectively allocates multi-path inference and verifier selection to complex claims, directly changing
+  the test-time compute policy.
+related: []
+tags:
+- test-time-compute
+- fact-checking
+- process-verifier
+- adaptive-budget
+- numerical-reasoning
+status: verified
+one_line_summary: VerifierFC uses claim complexity to decide when to sample multiple fact-checking paths and a process verifier
+  to select among them.
+reading_priority: useful
+paper_type: Adaptive verifier-guided test-time scaling study
+best_for: Readers allocating reasoning budgets for evidence-grounded, non-mathematical decisions.
+confidence: high
+why_it_matters: It shows that selective expansion can outperform uniform expansion when verification difficulty varies sharply
+  by instance.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and paper-linked public repository checked.
+category_ids:
+- scaling_rlvr_test_time_compute

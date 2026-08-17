@@ -1,0 +1,5 @@
+- Self-certainty 在每个 token 位置平均 KL(U||p)，因此需要完整词表分布，而不只是被采样 token 的 log probability。
+- 主实验以 temperature 0.6、top-p 0.9 生成 64 个候选，再用五次重复评估 N=4--64 的子集。
+- 纯 self-certainty 选择单个回答；固定答案的 Borda voting 用 (N-r+1)^p 把置信度排名和答案频率结合起来。
+- 高置信度可能对应错误，p 需要按任务调参；答案趋同时，self-consistency 可能优于纯 self-certainty。
+- 作者代码已公开，但原始候选、logit、分数清单、精确版本和仓库 license 仍未提供。

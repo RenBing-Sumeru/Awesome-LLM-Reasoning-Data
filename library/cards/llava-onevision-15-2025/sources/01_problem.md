@@ -1,0 +1,5 @@
+Open multimodal recipes often publish weights without the exact large instruction mixture, preventing controlled study of data balance and economical training.
+
+LLaVA-OneVision-1.5 releases a 22M instruction mixture and an efficient full training stack, separating the instruction stage from its 85M mid-training corpus and 67K RL set. The decision boundary is whether a serialized training record survives source-specific checks, mixture balancing, decontamination, and benchmark ablations; the central artifact is data consumed by full-model multimodal SFT before optional RL, not a model-only release.
+
+L4 facts: primary source arXiv:2509.23661; arXiv preprint; data object LLaVA-OneVision-1.5-Instruct-Data with 22M curated multimodal instruction samples; evaluation surface The 8B model beats Qwen2.5-VL-7B on 18 of 27 reported benchmarks, while the 4B model beats Qwen2.5-VL-3B on all 27 under the paper's evaluation setup.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

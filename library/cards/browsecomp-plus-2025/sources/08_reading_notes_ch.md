@@ -1,0 +1,5 @@
+- 明确保留 identity boundary：`browsecomp-plus-2025` 的 ID 使用首次 arXiv 年份，但 canonical metadata 采用 ACL 2026 的标题、venue、年份与 21 位作者；`browsecomp-2025` 仍是独立的 related parent entry。
+- 先看 released object：830 个 test query，不是 1,266 个；固定的 100,195-document corpus；人类 evidence/gold qrels；hard negative；index；可执行 client；以及仅有的四组可见完整 trajectory archive。
+- 把 verifier 理解为 mixed 且有版本：程序化 terminal、retrieval 与 document-ID citation check 和 LLM semantic-equivalence judge 同时存在。论文分数使用 GPT-4.1，当前代码默认使用 Qwen/Qwen3-32B，两者在数值上不能互换。
+- 复用前审计 partial release：trajectory row count 与 status distribution、exception failure、qrel false negative、可逆 canary protection、artifact revision、scraped-content rights、trajectory license、privacy handling 与准确 replay input 仍不完整或为 unknown。
+- 用途仅限 evaluation 与 audit。retriever 或 agent 的 score gain 不能证明 data quality，论文也没有建立 SFT、preference、reward-model、process-supervision、RLVR 或 agent-training use。

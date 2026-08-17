@@ -1,0 +1,1 @@
+Chen, Feng、Allan Raventós、Nan Cheng、Surya Ganguli 和 Shaul Druckmann。2025。《重新思考扩展测试时计算时的微调：限制置信度可改善数学推理》。第三十九届神经信息处理系统大会（NeurIPS 2025）。论文：https://arxiv.org/abs/2502.07154。会议论文集：https://proceedings.neurips.cc/paper_files/paper/2025/hash/e8f4eae0a41cab67fdead3aa6b77f083-Abstract-Conference.html。

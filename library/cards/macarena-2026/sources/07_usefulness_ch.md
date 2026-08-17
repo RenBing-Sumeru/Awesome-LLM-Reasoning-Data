@@ -1,0 +1,9 @@
+对`environment_agent_trajectory_data`而言，MacArena是一套收集GUI episode的具体schema与systems reference。可辩护的记录应绑定task ID/source revision、instruction、initialization、VM/app/hash manifest、screenshot或accessibility observation、normalized action、response与error、stop reason、最终evaluator配置/分数、reset状态、run index，以及每个输出的screenshot/log/video文件。由于`run_1`与`run_2`的reset条件不同，必须分别保留二者。
+
+对`benchmarks_evaluation_surfaces`而言，421个task JSON与final-state evaluator支持在macOS上对computer-use agent做execution-based comparison。复用时应固定已检查的repository/task/VM版本，用positive与negative fixture测试每个evaluator，修复已知Contacts/Session错配，并分别报告每次运行分数，而不是只报告最大值。49个custom evaluator也为系统化verifier audit提供了可处理的起点。
+
+runner可用于构建本地审计语料，包含成功与失败attempt的screenshot、action、0 per-step reward、response、exception、result与video。该语料应记录明确missingness并执行privacy/secret scan，且不能称为论文已发布trajectory。由于未发布规范化rollout corpus、split、decontamination audit、replay ledger或训练objective，本卡不把MacArena归类为agent training、SFT或RL用途。
+
+该benchmark还适合受控version-drift研究：固定task JSON，同时改变macOS/application版本、external resource、reset policy或VM snapshot，比较evaluator结果，以揭示false positive/negative和residual-state效应。OSWorld/MacArena排名反转可提示exposure-sensitive分析，但只有另行执行lineage与model-training audit才能检验污染。
+
+当前复用分类是**仅限evaluation与audit**。直接训练复用或production-agent validation仍受以下缺口阻挡：已修正并测试的evaluator、逐episode clean reset、构造provenance对齐、明确split/exposure政策、不可变rollout与replay manifest、privacy/security review及组件级权利说明。

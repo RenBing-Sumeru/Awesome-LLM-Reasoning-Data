@@ -1,0 +1,16 @@
+{
+  "title": "WebArbiter: A Principle-Guided Reasoning Process Reward Model for Web Agents",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.21872"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:22:48Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提供网页 Agent 的原则化过程偏好数据与 PRM 训练接口",
+    "updated_at": "2026-07-15T12:22:48Z"
+  }
+}

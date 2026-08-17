@@ -1,0 +1,117 @@
+id: sets-self-verification-self-correction-2025
+title: 'SETS: Leveraging Self-Verification and Self-Correction for Improved Test-Time Scaling'
+year: 2025
+venue: TMLR
+authors:
+- Jiefeng Chen
+- Jie Ren
+- Xinyun Chen
+- Chengrun Yang
+- Ruoxi Sun
+- Jinsung Yoon
+- Sercan Ö. Arık
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2501.19306
+  arxiv: https://arxiv.org/abs/2501.19306
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Evaluation prompts; no new training corpus, code, or verification-trace release was confirmed.
+  trace_author: unknown
+  answer_format: An initial set of m answers, self-verification outcomes, and up to n self-correction attempts; the final
+    answer is chosen by the paper's exact-mode scheme.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The feedback is model self-verification/self-correction, not an externally validated reward; the exact
+    verifier prompt and calibration should not be inferred.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: SETS scales inference by generating multiple candidate answers, asking the model to verify them, and correcting
+    candidates over bounded rounds.
+  filtering_rule: The feedback is model self-verification/self-correction, not an externally validated reward; the exact verifier
+    prompt and calibration should not be inferred.
+  sampling_protocol: Reported defaults include temperature 0.7 and variable m/n settings. The official TMLR record was verified;
+    no code/data/trace release was confirmed.
+  rollout_count: unknown
+  temperature: 0.7 in reported default settings
+  inference_budget: unknown
+  optimizer_or_scaffold: SETS scales inference by generating multiple candidate answers, asking the model to verify them,
+    and correcting candidates over bounded rounds.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Evaluation prompts; no new training corpus, code, or verification-trace release was confirmed. -> An initial set
+    of m answers, self-verification outcomes, and up to n self-correction attempts; the final answer is chosen by the paper's
+    exact-mode scheme. -> The feedback is model self-verification/self-correction, not an externally validated reward; the
+    exact verifier prompt and calibration should not be inferred. -> reported final selection or training use. Raw lineage
+    records are not established as released.
+  known_failure_modes:
+  - Self-verification can reinforce the model's own errors; exact voting, prompts, correction histories, and failure cases
+    are not released.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It is useful for separating test-time traces from training data and for documenting why self-judged correctness
+  needs evidence beyond final accuracy.
+related: []
+tags:
+- self-verification
+- self-correction
+- test-time-scaling
+- exact-mode
+- multi-sample
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: A training-free self-verification/self-correction loop with explicit repeated-answer and correction objects.
+why_it_matters: It is useful for separating test-time traces from training data and for documenting why self-judged correctness
+  needs evidence beyond final accuracy.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

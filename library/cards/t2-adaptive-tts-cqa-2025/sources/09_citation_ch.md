@@ -1,0 +1,1 @@
+Zhao, Zhengyi，Shubo Zhang，Zezhong Wang，Huimin Wang，Yutian Zhao，Bin Liang，Yefeng Zheng，Binyang Li，Kam-Fai Wong，Xian Wu。2025。《T2：面向上下文问答的自适应测试时扩展策略》。载于《2025 年自然语言处理实证方法会议论文集》，第 3731–3756 页，中国苏州。计算语言学协会。https://aclanthology.org/2025.emnlp-main.185/

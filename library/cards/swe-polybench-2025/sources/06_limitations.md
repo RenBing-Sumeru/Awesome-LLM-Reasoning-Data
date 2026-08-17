@@ -1,0 +1,9 @@
+The full, PB500, and Verified artifacts are test-only benchmark splits. The paper does not define training use, and the release contains gold patches; using them for training would contaminate later evaluation unless users create and disclose a separate protocol. No successful or failed agent trajectory corpus is released.
+
+Contamination remains open. Construction excludes repositories appearing in SWE-bench, but all tasks derive from public GitHub history and may have appeared in model pretraining. No temporal cutoff, near-duplicate search, semantic overlap analysis, or model-specific contamination test is reported.
+
+Replay is final-state replay, not episode replay. A fresh container starts from the base commit, then receives the test and candidate patches. GHCR tag v1.1 improves reproducibility, but image digests, dependency snapshots, network/random state, and a dataset-revision manifest are absent. Unit tests also miss maintainability, style, security, and semantically correct alternatives that use unexpected structures.
+
+Release metadata has drifted. The current Verified artifact has 382 rows (69/100/113/100), but copied card text still says 394 and the GitHub update contains stale intermediate counts. The repository has no formal Release. Dataset and code cards declare MIT, while source repositories are permissively licensed, yet per-record rights for code, issue/PR prose, contributor content, LLM annotations, and container dependencies are not reconciled.
+
+Public issue/PR text may contain personal data or secrets, and no dedicated consent, redaction, removal, or retention process is documented. The harness runs third-party repository code in Docker; the official documentation does not specify network isolation, least privilege, resource caps, or malicious-test defenses.

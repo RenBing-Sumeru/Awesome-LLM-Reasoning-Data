@@ -1,0 +1,221 @@
+id: swe-polybench-2025
+title: 'SWE-PolyBench: A multi-language benchmark for repository level evaluation of coding agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Muhammad Shihab Rashid
+- Christian Bock
+- Yuan Zhuang
+- Alexander Buchholz
+- Tim Esler
+- Simon Valentin
+- Luca Franceschi
+- Martin Wistuba
+- Prabhu Teja Sivaprasad
+- Woo Jung Kim
+- Anoop Deoras
+- Giovanni Zappella
+- Laurent Callot
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+domains:
+- software_engineering
+- repository_repair
+- code_agents
+- multilingual_programming
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.08703
+  paper_html: https://arxiv.org/html/2504.08703v3
+  paper_pdf: https://arxiv.org/pdf/2504.08703v3
+  arxiv: https://arxiv.org/abs/2504.08703
+  code: https://github.com/amazon-science/SWE-PolyBench
+  data: https://huggingface.co/datasets/AmazonScience/SWE-PolyBench
+  sampled_data: https://huggingface.co/datasets/AmazonScience/SWE-PolyBench_500
+  verified_data: https://huggingface.co/datasets/AmazonScience/SWE-PolyBench_Verified
+  project: https://amazon-science.github.io/SWE-PolyBench/
+  huggingface: https://huggingface.co/datasets/AmazonScience/SWE-PolyBench
+  doi: https://doi.org/10.48550/arXiv.2504.08703
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: English-language GitHub issue titles/bodies and pre-solution-PR comments from 21 implementation repositories
+    whose primary code language is Java, JavaScript, TypeScript, or Python. Tasks are collected from issue-closing PRs rather
+    than translated across natural languages.
+  trace_author: No canonical agent trajectory is released. Evaluated agents generate patches and any interaction traces outside
+    the benchmark table; the official harness consumes instance_id/model_patch predictions and locally emits test logs and
+    result JSON.
+  answer_format: A task row pairs repository/base_commit and problem_statement with gold code patch, test patch, F2P/P2P test
+    identifiers, test_command, instance Dockerfile, language, task category, hints, timestamps, and CST-derived change metadata.
+    A submission is JSONL with instance_id and model_patch.
+  process_fields:
+  - instance_id
+  - repo
+  - issue_numbers
+  - base_commit
+  - problem_statement
+  - hints_text
+  - created_at
+  - language
+  - patch
+  - test_patch
+  - Dockerfile
+  - test_command
+  - F2P
+  - P2P
+  - task_category
+  - modified_nodes
+  observation: The benchmark record does not contain step observations. During evaluation, the harness records raw test output
+    plus parsed passed_tests and failed_tests locally.
+  action_space: The scored action is a repository patch. Agents may use arbitrary internal tools, but SWE-PolyBench standardizes
+    only the final model_patch and does not standardize or release their intermediate actions.
+  environment_or_substrate: Each instance identifies a base commit and Dockerfile; the current harness pulls a public frozen
+    per-instance GHCR image tagged v1.1 when available, otherwise checks out the base commit and builds the image. It applies
+    the test patch and candidate code patch before running the task-specific test command.
+  verifier_or_reward: A patch is resolved only when every F2P test passes and no P2P test fails. The harness also computes
+    file-retrieval precision/recall and optional CST node-retrieval metrics against the gold patch, but these diagnostic metrics
+    do not replace the resolved predicate.
+  terminal_predicate: 'Programmatic binary resolved status after the task-specific test command: all F2P tests pass and zero
+    P2P tests fail. Patch-application and missing-log failures are retained locally as unresolved outcomes.'
+  provenance: GitHub repository and issue-closing PR -> base commit, issue text/comments, code patch and test patch -> manually
+    configured Docker environment -> pre/post-gold-patch test comparison -> F2P/P2P selection -> released test-only task row
+    -> candidate patch execution -> local passed/failed-test result and resolved label.
+recipe_metadata:
+  base_model: unknown
+  teacher: An unspecified LLM classifies task type and issue informativeness for analysis; it does not generate the repository
+    task, gold patch, or execution label.
+  generator: The authors mine issue-closing PRs from qualifying public GitHub repositories and separate each solution PR into
+    a non-test gold code patch and test patch.
+  prompt_task_source: Public GitHub issues and associated PRs; issue/discussion text is primarily English and is not machine-translated.
+  filtering_rule: Repositories must be implementation-focused, have at least 100 PRs, have activity within the preceding 12
+    months, use a permissive license, and use English primarily. PRs must close an issue and contribute tests. Runtime filtering
+    requires at least one F2P test and excludes tasks whose gold code patch creates new files tested by the test patch.
+  sampling_protocol: The full set contains 2,110 tasks. PB500 stratifies 500 tasks with 125 per programming language, 200
+    Bug Fix, 200 Feature, and 100 Refactoring tasks while preserving all repositories and the full-set repository distribution.
+    A later Verified release contains 382 test rows.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: No model-training optimizer is defined. The evaluation scaffold applies a submitted patch in a per-instance
+    container, runs tests, parses logs, stores per-instance JSON, and aggregates resolved and retrieval metrics.
+audit:
+  source_mixture: '2,110 tasks from 21 repositories: Java 165, JavaScript 1,017, TypeScript 729, and Python 199. Tasks cover
+    bug fixes, feature additions, and refactoring; source text is primarily English.'
+  split: 'All three official Hugging Face artifacts expose one test split: full 2,110, PB500 500, and current Verified 382.
+    PB500 is a stratified evaluation subset, not a train split. No train/dev split is released.'
+  decontamination: Repositories present in SWE-bench are excluded. The paper explicitly warns that public GitHub material
+    may already occur in model pretraining; it reports no broader contamination, temporal cutoff, near-duplicate, or memorization
+    audit.
+  benchmark_overlap: Repository-level overlap with SWE-bench is excluded during construction, but issue/template, dependency,
+    contributor, and semantic overlap with other public coding corpora is not measured.
+  license: 'Paper: CC BY-NC-ND 4.0. Official code repository and all three Hugging Face dataset cards declare MIT. Source
+    repositories were selected for permissive licenses, but no record-level license manifest reconciles repository code, issue/PR
+    prose, contributor rights, generated annotations, and container dependencies.'
+  lineage: Rows retain repo, issue/PR identifiers, base commit, gold/test patches, Dockerfile, test command, F2P/P2P tests,
+    and timestamps. The public release has no signed manifest tying a dataset revision to code commit, GHCR image digests,
+    annotations, leaderboard logs, and result hashes.
+  release_version: arXiv v3 was revised 2025-04-23. GitHub main has no formal Release. Current README documents GHCR per-instance
+    images tagged v1.1 and a 2025-09-18 Verified update. The Verified HF artifact has 382 rows (69 Java, 100 JavaScript, 113
+    Python, 100 TypeScript), while reused dataset-card prose still says 394 and the GitHub update text contains stale intermediate
+    counts.
+  successful_and_failed_sample_retention: The released task table contains gold-patch-testable tasks and excludes construction
+    failures, so it is not a corpus of successful and failed agent episodes. The evaluator locally stores every evaluated
+    instance's resolved/unresolved flag, patch/log availability, passed and failed tests, raw run log, and aggregate result;
+    official datasets do not publish a standardized corpus of those outcomes or agent trajectories.
+  reset_or_replay: Evaluation recreates a task from the pinned base commit in a fresh per-instance container, applies the
+    test patch and candidate patch, and reruns the test command. Public GHCR tags improve reset cost, but no digest manifest,
+    random/network state capture, or full agent-action replay contract is published; rerunning verifies the final patch, not
+    an interactive episode.
+  privacy_or_consent: The dataset republishes public issue/PR prose, comments before the solution PR, timestamps, repository
+    identifiers, and patches. No dedicated consent, author-removal, PII/secret scanning, retention, or takedown audit is documented
+    in the paper or dataset card.
+  security: The harness executes third-party repository build and test code inside Docker. Containers reduce host coupling,
+    but the inspected official documentation does not specify network isolation, least privilege, resource caps, dependency
+    provenance scanning, or protection against malicious task code.
+  known_failure_modes:
+  - Unit tests can miss semantic errors, style, maintainability, and security flaws, and can reject functionally correct structural
+    alternatives when tests assume particular names or locations.
+  - The paper reports no human verification of every original task; some issue descriptions may be ambiguous, incomplete,
+    or unsolvable from released context.
+  - Public GitHub provenance creates unresolved model-pretraining leakage despite excluding SWE-bench repositories.
+  - No standardized agent state/action/observation trajectory is released, so successful and failed reasoning paths cannot
+    be replayed or compared from the dataset alone.
+  - 'Multi-language adapters have environment compatibility failures: the paper reports 129 problematic SWE-agent instances,
+    only 111 producing predictions, with 18 treated as empty.'
+  - GHCR image tags, dataset revisions, and GitHub main are not connected by immutable digests or a formal release manifest.
+  - 'The Verified release has count drift: current rows total 382, while some official prose still says 394 and update text
+    contains inconsistent language counts.'
+  - LLM-generated task and issue-informativeness categories can be noisy and are not the execution verifier.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v3, Amazon Science project page, GitHub repository/code/license, all three Hugging Face artifacts,
+    and current evaluator scoring paths were checked on 2026-07-20. Benchmark runs and GHCR images were not independently
+    executed.
+  remaining_unknowns:
+  - Exact immutable Git commit, HF revisions, GHCR image digests, dependency locks, and task-to-image manifest for the reported
+    paper and current Verified release.
+  - Verified curation protocol, annotator instructions, adjudication, exclusion reasons, and reconciliation of stale 394/382
+    counts.
+  - Per-record source-license mapping, issue/PR contributor permission, dataset takedown process, privacy/secret filtering,
+    and container dependency rights.
+  - A released corpus of agent trajectories, model patches, local run logs, resolved/unresolved outcomes, and model/runtime
+    metadata.
+inclusion_reason: 'SWE-PolyBench makes multi-language repository repair an executable, environment-linked data object: each
+  issue is tied to a base commit, patches, per-instance container, test command, and explicit F2P/P2P success predicate, while
+  the absence of standardized trajectories and immutable release pins remains auditable.'
+related:
+- swe-bench-2024
+- swe-rebench-v2-2026
+- swe-world-2026
+tags:
+- environment-agent-trajectory-data
+- software-engineering
+- repository-repair
+- multi-language
+- docker
+- f2p-p2p
+- execution-based-evaluation
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line: SWE-PolyBench releases 2,110 four-language repository repair tasks with base commits, patches, containers, and F2P/P2P
+  tests, but not standardized agent trajectories.
+one_line_summary: SWE-PolyBench expands executable repository repair beyond Python with 2,110 tasks and a binary F2P/P2P verifier,
+  while release drift and absent agent trajectories limit replay auditability.
+why_it_matters: It provides a concrete multi-language environment and terminal predicate for evaluating coding agents, while
+  separating final-patch verification from the still-missing state/action/observation history needed for trajectory training.
+card: null
+needs:
+- 'needs_release_manifest: pin Git commit, HF revisions, GHCR v1.1 digests, dependency locks, annotations, and leaderboard
+  results'
+- 'needs_verified_reconciliation: document the 382-row curation protocol and correct stale 394/intermediate language counts'
+- 'needs_trajectory_release: standardize and publish successful/failed agent actions, observations, model patches, run logs,
+  seeds, and runtime metadata'
+- 'needs_contamination_audit: add temporal, pretraining, near-duplicate, and cross-benchmark overlap checks'
+- 'needs_governance: publish record-level license provenance, consent/takedown, privacy/secret screening, and container security
+  policy'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation, full/PB500/Verified data, MIT repository license, GHCR v1.1 documentation, and evaluator result semantics
+    were verified. The harness and images were not executed; no public standardized trajectory corpus was found.

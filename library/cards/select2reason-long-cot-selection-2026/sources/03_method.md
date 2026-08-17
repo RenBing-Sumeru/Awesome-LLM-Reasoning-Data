@@ -1,0 +1,3 @@
+The authors first use rollouts from the base model to estimate how difficult each question is for that model. A reward model is trained to predict this continuous difficulty signal, making it possible to score a large pool without performing the same rollout computation for every later decision.
+
+They next remove exact duplicate steps before measuring normalized trace length. A weighted combination of the difficulty rank and length rank produces the final ordering, and the highest-ranked portion is used for supervised fine-tuning. The selection mechanism is thus explicit and can be ablated against random or simpler subsets.

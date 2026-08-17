@@ -1,0 +1,19 @@
+{
+  "title": "SCAN: Self-Denoising Monte Carlo Annotation for Robust Process Reward Learning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2509.16548",
+    "data": "https://huggingface.co/datasets/dyyyyyyyy/SCAN-Pro",
+    "code": "https://github.com/yyDing1/SCAN-PRM",
+    "project": "https://scan-prm.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:41:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "近二十万自动标签专治蒙特卡洛噪声，训练价值和规模兼具",
+    "updated_at": "2026-07-16T11:41:38Z"
+  }
+}

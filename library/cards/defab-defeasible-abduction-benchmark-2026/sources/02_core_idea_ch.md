@@ -1,0 +1,1 @@
+核心贡献是 372,648+ 个具有形式 gold standard 的可验证溯因实例，覆盖 18 个知识来源和约 33.75M 条物化规则。构建时将 OpenCyc、YAGO、Wikidata 等 taxonomy 与 ConceptNet、UMLS 等行为属性图配对，生成三个层级：规则补全、违约解释和更复杂的 theory revision；同一逻辑实例渲染为四种表面形式以测试语言鲁棒性。验证器检查结论可派生、无关预期保持和假设最小。作者另发布 235 题 DeFAb-Hard 与 560 个 Lean 4/Mathlib CONJURE 实例；数据采用 MIT，可用于 benchmark、DPO 偏好对和 RLVR/GRPO 精确 reward。

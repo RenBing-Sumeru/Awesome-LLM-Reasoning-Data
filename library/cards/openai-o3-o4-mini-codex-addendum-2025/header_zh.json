@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI 的 Codex addendum 报告了现实编码任务上的 RL、合成安全管线和窄动作一致性目标，但未披露任务、奖励、来源和轨迹账本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "编码智能体系统卡补充报告",
+  "best_for_ch": "审计闭源编码智能体训练和安全披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,95 @@
+id: emperors-new-clothes-benchmarking
+title: The Emperor's New Clothes in Benchmarking? A Rigorous Examination of Mitigation Strategies for LLM Benchmark Data Contamination
+year: 2025
+venue: ICML 2025
+authors:
+- Yifan Sun
+- Han Wang
+- Dongbai Li
+- Gang Wang
+- Huan Zhang
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains: &id001
+- llm-evaluation
+- benchmark-contamination
+- benchmark-mitigation
+training_use:
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=TuvDxubEfE
+  arxiv: https://arxiv.org/abs/2503.16402
+  code: https://github.com/ASTRAL-Group/BDC-mitigation-assessment
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=TuvDxubEfE
+  openreview: https://openreview.net/forum?id=TuvDxubEfE
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The data surface is question-level evaluation behavior for original and mitigation-updated benchmark instances
+    under clean and deliberately contaminated models.
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: null
+  environment_or_substrate: null
+  verifier_or_reward: The paper tests whether an updated benchmark preserves the original measurement target while reducing
+    sensitivity to exposure to the original items.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single released training recipe.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: The official workflow applies a mitigation strategy, creates controlled contamination by fine-tuning
+    on the original benchmark, and derives fidelity and contamination-resistance from question-level evaluation vectors. The
+    paper reports 10 models, 5 benchmarks, 20 strategies, and two contamination scenarios.
+audit:
+  source_mixture: Official primary paper and only paper-linked official artifacts listed above.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Primary source: https://openreview.net/forum?id=TuvDxubEfE'
+  known_failure_modes:
+  - The evaluation is bounded by selected benchmarks, model versions, strategies, and controlled contamination recipes. Full
+    prompt and generation logs are not confirmed as a public release.
+  citation_status: verified
+  confidence: high
+  notes: Editorial routing and audit notes are distinguished from paper facts in the Card sections.
+inclusion_reason: 'Track0 routing value: This controlled study evaluates benchmark-contamination mitigations with separate
+  fidelity and contamination-resistance criteria.'
+related: []
+tags: *id001
+one_line: This controlled study evaluates benchmark-contamination mitigations with separate fidelity and contamination-resistance
+  criteria.
+one_line_summary: This controlled study evaluates benchmark-contamination mitigations with separate fidelity and contamination-resistance
+  criteria.
+why_it_matters: The paper tests whether an updated benchmark preserves the original measurement target while reducing sensitivity
+  to exposure to the original items. Use it to audit refresh claims, then route to Benchmarks and Evaluation Surfaces and
+  Audit, Failure, Contamination, and Verifier Attacks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source verified; optional facts remain null or unknown.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧯 Contamination / evaluation surveys

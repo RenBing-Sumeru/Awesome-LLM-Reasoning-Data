@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ExpertLongBench 用专家 rubric 与 CLEAR 清单框架核验长篇专业生成内容是否正确满足要求。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "专家级长文生成的 rubric 与结构化清单评测基准",
+  "best_for_ch": "研究长文本生成、专家 Judge 与清单式评测的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jie Ruan, Inderjeet Nair, Shuyang Cao, Amy Liu, Sheza Munir 等",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

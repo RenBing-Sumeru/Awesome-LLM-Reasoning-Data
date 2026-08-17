@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T08:54:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将复杂问题拆分并按难度动态分配词元预算，研究推理计算的效率—正确率权衡",
+    "updated_at": "2026-07-20T08:54:42Z"
+  }
+}

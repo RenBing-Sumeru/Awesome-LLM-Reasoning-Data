@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AgenTracer 通过 DeepSeek-R1 引导的纠错或故障注入与环境回放，把多智能体 episode 转成责任智能体/决定性步骤标签；但报告的 2,476 对数据中仅有 127 行 coding test 子集公开，许可与回放契约仍不完整。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "环境与智能体轨迹数据及失败归因方法",
+  "best_for_ch": "研究 agent failure attribution、process supervision、RLVR reward 与轨迹发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Guibin Zhang、Junhao Wang、Junjie Chen、Wangchunshu Zhou、Kun Wang、Shuicheng Yan",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

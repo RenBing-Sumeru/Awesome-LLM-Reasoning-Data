@@ -1,0 +1,5 @@
+- Separate the reported task counts from released task, revision, image, and trajectory artifacts; no such corpus release is pinned.
+- Model an executable task as repository state plus patch, tests, dependencies, container, verifier, and terminal rule.
+- Treat majority-consensus tests and Mini-SWE-agent verification as named mechanisms with unknown calibration and logs.
+- Read git and network protections as reward-hacking controls whose implementation and error rates remain undisclosed.
+- Keep Track 12's disclosure analysis separate from a Track 8 classification of the report as a reusable RL recipe.

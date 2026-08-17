@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T09:39:47Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "模型榜单会测 ref907",
+    "updated_at": "2026-07-15T09:39:47Z"
+  }
+}

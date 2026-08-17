@@ -1,0 +1,1 @@
+核心贡献是一套位置受控的长上下文诊断：答案不变，只移动支撑证据的位置。机制是把含答案文档或目标 key-value pair 放到指定位置，在固定上下文长度下让模型回答，再按答案正确性分位置统计。它最接近普通 retrieval QA 和 long-context QA，但那些设置通常没有把“相关信息在上下文中的位置”单独隔离出来。反馈契约是 answer-level correctness，而不是人工质量偏好；方向标签应是 benchmark / evaluation surface，用于审计位置偏差。

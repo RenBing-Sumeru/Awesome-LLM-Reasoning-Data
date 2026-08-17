@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "网页导航agent数据，报告2k数据",
+    "updated_at": "2026-07-28T03:37:38Z"
+  },
+  "updated_at": "2026-07-28T03:37:38Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

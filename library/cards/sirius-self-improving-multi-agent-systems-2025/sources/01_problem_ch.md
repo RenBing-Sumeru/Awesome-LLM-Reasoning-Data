@@ -1,0 +1,11 @@
+SiriuS 是 NeurIPS 2025 **Main Conference Track** 论文，收录于 *Advances in Neural Information Processing Systems 38*。正式 30 页 proceedings PDF 标明第 39 届 Conference on Neural Information Processing Systems 与 Stanford University；官方 proceedings 页面、正式 PDF、proceedings supplement、OpenReview 记录和 arXiv:2502.04780 共同构成权威论文边界。arXiv 记录从 2025 年 2 月 7 日提交的 v1 开始。发布审计则另行固定在 2025 年 12 月 1 日的 repository commit `16643cdc484b07d4d20419ba785a32a9845639b7`；它晚于正式 proceedings artifact，也没有 tag 将其标识为论文 snapshot。
+
+研究问题是 LLM 多智能体系统中的 credit 与训练数据获取。任务可以提供终局 correct/incorrect 或 game utility，却不会标注 Physicist、Mathematician、Summarizer、Context Analyst、Actor、Critic、Judgment 或 negotiation player 的哪条消息导致结果。SiriuS 把终局 outcome 当作粗粒度选择信号：成功交互被转换为 role-conditioned supervision；部分失败交互先由 privileged feedback 修复，只有重跑后的系统成功时才保留。
+
+因此，训练对象不是一条不可分解的 chat transcript。直接成功的 episode 中，每个参与角色各自产生一个 SFT record，把任务和 predecessor message 与该角色 output 配对。失败修复成功时，只有被重新生成的 selected role 和重跑的 downstream role 贡献记录。这是把 full-episode outcome supervision 传播到 role message 上；它不是经核验的 step-level reasoning、causal agent credit、preference pair，也不是 policy-gradient reinforcement learning。
+
+研究覆盖三类 setting。Problem solving 使用 College Physics、College Chemistry 与 PubMedQA role graph；Actor-Critic 把 answer generation、judgment 与 corrective feedback 分开；competitive experiment 使用 Resource Exchange、Seller-Buyer 和 multi-turn Ultimatum 环境，并由确定性的 role utility 计分。这种覆盖支持把论文视为 construction recipe，但 task score 并不能证明每条保留的 intermediate message 都正确。
+
+本 Card 只属于 **Data Construction & Open Release Recipes**。收录依据是 SiriuS 明确给出 benchmark/game input → multi-agent episode → terminal evaluation → success library 或 feedback repair → role-specific SFT → 下一轮迭代的流程。它不属于 open data release，因为论文运行的 experience library、完整 episode、失败尝试、critic feedback、role JSONL、reward、log 与 fine-tuned checkpoint 均未公开。它也不是 RLVR recipe：尽管 reward/verifier output 用于选择记录，优化方式仍是标准 role-specific SFT。
+
+L4 表示双语且有证据支撑的 review readiness，不代表可复现或可安全复用认证。已检查正式论文与 supplement、当前官方 repository code 与 MIT license、五行 sample input、split/count table 以及 release absence。精确 source ID、data revision、split seed、role-row count、retry limit、数值 `epsilon`、完整 SFT setting、model identifier、compute、derived-data license、decontamination 与 privacy/consent analysis 仍为 `unknown`。

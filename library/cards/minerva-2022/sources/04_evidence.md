@@ -1,0 +1,3 @@
+The paper and Google Research blog report strong 2022-era results such as Minerva 540B reaching about 50% on MATH with sampling/majority voting, and higher scores on GSM8K and MMLU-STEM than prior general models under the paper's setup. The evidence is aggregate benchmark performance plus inspected examples, not a row-level certificate that every rationale is correct.
+
+Instance-level trust comes only from the benchmark answer key, multiple-choice label, or grading rule used for that task. The evidence boundary is narrow: scores depend on public benchmark versions, prompt/scaffold choices, sampling budget, answer extraction, and whether the benchmark items were in or near training data.

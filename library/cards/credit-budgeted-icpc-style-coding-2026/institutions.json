@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Shanghai Jiao Tong University",
+    "Shanghai Innovation Institute"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2604.10182",
+    "https://arxiv.org/html/2604.10182v1",
+    "https://github.com/maple-zhou/USACOArena"
+  ],
+  "verification_note": "The candidate YAML URL pointed to arXiv:2606.11816, which resolves to WorldReasoner. The title-matched official source is arXiv:2604.10182; arXiv HTML verifies authors, Shanghai Jiao Tong University/Shanghai Innovation Institute affiliations, ICLR 2026 status, and the USACOArena repository link."
+}

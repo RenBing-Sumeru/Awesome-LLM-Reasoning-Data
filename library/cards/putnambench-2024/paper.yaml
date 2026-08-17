@@ -1,0 +1,118 @@
+id: putnambench-2024
+title: 'PutnamBench: Evaluating Neural Theorem-Provers on the Putnam Mathematical Competition'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Track / arXiv
+authors:
+- George Tsoukalas
+- Jasper Lee
+- John Jennings
+- Jimmy Xin
+- Michelle Ding
+- Michael Jennings
+- Amitayush Thakur
+- Swarat Chaudhuri
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-math
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2407.11214
+  arxiv: https://arxiv.org/abs/2407.11214
+  doi: https://doi.org/10.48550/arXiv.2407.11214
+  code: https://github.com/TrishulLab/PutnamBench
+  data: https://github.com/TrishulLab/PutnamBench
+  project: https://trishullab.github.io/PutnamBench/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official authors formalize William Lowell Putnam Mathematical Competition problems; arXiv v2 reports 1692
+    hand-constructed formalizations of 640 theorems, while the current project page/repository report 1724 language-level
+    formalizations from 1962-2025.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: each task is a theorem statement in Lean 4, Isabelle, or Coq; for factored-solution problems the benchmark
+    can require either proving a theorem with the answer supplied or finding the answer plus a proof.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: Lean 4, Isabelle, and Coq theorem-prover environments
+  verifier_or_reward: the corresponding proof assistant compiler/kernel checks whether a submitted formal proof closes the
+    theorem.
+  terminal_predicate: accepted formal proof in the selected proof assistant; aggregate leaderboard scores count solved theorem
+    instances under a pinned language, prompt/scaffold, attempt budget, and artifact revision.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors manually construct and maintain formal theorem statements, including multilingual and factored
+    versions for selected Putnam tasks.
+  filtering_rule: Use only source-backed construction claims; keep arXiv/project count drift, split policy, prompt/scaffold,
+    attempt budget, and benchmark revision in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official sources checked: https://arxiv.org/abs/2407.11214; https://trishullab.github.io/PutnamBench/;
+    https://github.com/TrishulLab/PutnamBench'
+  split: Current official pages describe a public benchmark and possible future validation/training split; score reuse should
+    pin repository revision, language subset, leaderboard date, and prompt/attempt policy.
+  decontamination: Authors state that no formal proofs have been written for the benchmark problems and ask contributors not
+    to publish proofs, but public theorem statements and future submitted proofs can still contaminate training corpora.
+  license: Official project/repository state Apache-2.0 for Lean 4 and Isabelle, MIT for Coq, and MAA permission for informal
+    problem statements.
+  lineage: 'Primary lead: https://arxiv.org/abs/2407.11214'
+  known_failure_modes:
+  - arXiv v2 and current project/repository expose different aggregate formalization counts; pin the source date and revision.
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv, project page, and TrishulLab/PutnamBench repository verify authors, UT Austin affiliation, NeurIPS 2024 Datasets
+    and Benchmarks status, and public Lean/Isabelle/Coq benchmark artifacts.
+inclusion_reason: Hard undergraduate competition math in multiple proof assistants.
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- formal-math
+one_line: PutnamBench exposes Putnam problems formalized in Lean, Isabelle, and Coq as an auditable evaluation surface.
+why_it_matters: Hard undergraduate competition math in multiple proof assistants.
+status: verified
+needs:
+- 'needs_audit: pin repository commit, language subset, prompt/scaffold policy, attempt budget, and leaderboard date before
+  score reuse'
+- 'needs_unknown: no stable hidden split or validation/training split is published in the checked official pages'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: PutnamBench exposes Putnam problems formalized in Lean, Isabelle, and Coq as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project page, and TrishulLab/PutnamBench repository verify authors, UT Austin affiliation, NeurIPS 2024 Datasets
+    and Benchmarks status, and public Lean/Isabelle/Coq benchmark artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces

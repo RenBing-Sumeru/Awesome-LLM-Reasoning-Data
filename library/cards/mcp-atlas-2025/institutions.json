@@ -1,0 +1,11 @@
+{
+  "institutions": [],
+  "has_more": false,
+  "no_institution": true,
+  "updated_at": "2026-07-16T08:00:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2602.00933",
+    "https://github.com/lastmile-ai/mcp-atlas"
+  ],
+  "verification_note": "Institution affiliations were not verified from the arXiv HTML available during this pass."
+}

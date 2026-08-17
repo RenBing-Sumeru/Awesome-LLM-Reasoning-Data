@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将 HelpSteer2 的多维评分补充为成对偏好数据，并比较评分监督与偏好监督对奖励模型训练的作用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "偏好与奖励反馈数据集或数据构建研究",
+  "best_for_ch": "需要构建、审计或复用偏好与奖励反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhilin Wang、Alexander Bukharin、Olivier Delalleau、Daniel Egert 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

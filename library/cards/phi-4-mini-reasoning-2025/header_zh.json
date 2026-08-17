@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Phi-4-Mini-Reasoning 报告了合成 CoT、Rollout DPO 与答案可验证 RL 的四阶段数学推理配方，但未发布完整数据、verifier 或审计资产。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "小模型推理技术报告与数据披露账本",
+  "best_for_ch": "审计数学推理蒸馏、偏好学习和 RLVR 披露边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Haoran Xu 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

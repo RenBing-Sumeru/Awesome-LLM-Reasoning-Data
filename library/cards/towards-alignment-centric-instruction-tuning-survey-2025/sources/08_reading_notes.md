@@ -1,0 +1,1 @@
+The essential distinction is provenance, not just text shape. Two identical-looking instruction-response pairs can have different audit obligations if one came from experts, one from a teacher model, and one from a self-improvement loop. Keep the collection mechanism, tuning method, and evaluation protocol together when routing an entry.

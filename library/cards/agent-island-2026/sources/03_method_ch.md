@@ -1,0 +1,11 @@
+**输入与采样。** engine 接收固定的社交策略 rules/config prompt，以及通过 OpenRouter 访问的 active model pool。每场游戏无放回抽取七个不同 model identifier，分配匿名 player label，并根据 game ID 对本地 player/order/tie 随机性设 seed。不同模型可以来自同一 provider。论文集覆盖 49 个 model identifier，但准确 provider checkpoint revision、decoding setting、retry policy 与 total simulation compute 均为 unknown。
+
+**第 1–5 轮：交互与淘汰。** 每名在场玩家可以选择 sidebar partner，进行交替 private message。随后所有 active player 作公开 advancement pitch，再私下投票淘汰另一名 active player 并给出 rationale。parser 抽取 sidebar 与 vote choice；环境 tally vote、均匀随机处理平局、淘汰一名玩家、广播相应结果并更新 memory。visibility-filtered history 使不同玩家获得不同的私密/公开 observation。log 保留有序 event、active/eliminated set、vote tally、parser metadata，以及 response/reasoning/usage 字段。
+
+**第 6 轮：terminal jury vote。** 两名幸存 finalist 进行 pitch。五名已淘汰玩家私下投票支持一名 finalist，并给出 rationale。获得最多已解析票数的 finalist 胜出；平局时均匀随机决胜。发布 schema 将其记为第 6 轮，而论文所称的五个 elimination round 是此前五轮。模型没有因获胜获得明确 reward，因此 terminal predicate 是 evaluation outcome，而不是已证实用于 RL 的 reward。
+
+**记录构造与筛选。** 每个 JSON 输出的顶层为 `game`、`players`、`stats` 与 `history`。game 字段描述 configuration、rules、phase、status 与 error；player 字段把匿名 ID 绑定到 model/config/memory metadata；round 字段暴露 state、tally、selected player 与 event；event 字段保留 prompt、content、role、visibility、可用时的 reasoning、parser/usage metadata 与 timestamp。论文分析只保留 completed 且 final round 含 parsed selected player 的游戏。incomplete game 与缺少 final selection 的游戏会被排除，但其数量、ID、log 与 rejection reason 均为 unknown。same-provider analysis 还要求 final vote 可解析，且两名 finalist 来自不同 provider。
+
+**Ranking 与分析。** 对每条保留游戏，ranking stage 丢弃大部分局内细节，只消费 participant set 与 winner。Bayesian Plackett-Luce 使用 Gamma(1,1) prior、2,000 次 Gibbs iteration、500 次 burn-in 与 seed 42，输出 posterior skill estimate 与 uncertainty。另一项独立的 log-derived analysis 检验 final juror 是否偏好同 provider 的 finalist。两个阶段都不验证中间 factual claim 或因果 reasoning。
+
+**冻结发布、复现与 live 延续。** Dataset version 1.0.0 用 manifest 绑定 999 个 game ID，SHA-256 为 `73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad`；dataset index 与 Croissant metadata 描述该发布，每条 log 都有直接下载 URL。匿名 replication ZIP 的 SHA-256 为 `5b2c7c5262a46c65b51b659b9c3c0b4edb7eb8cf443cb6d2a4489d2d673e8b2d`；它下载已发布 log，重新生成 posterior sample、analysis、macro、table、figure 与 excerpt，但不生成新游戏。engine 可固定到 commit `e0fa0ee3944f61c97f3d1e64bae8bbd0e9901742`，但冻结 log 没有把该 commit 绑定为准确 generator。live source 必须视为独立且带时间戳的 evaluation stream。实际展示的用途仅为 evaluation 与 audit。

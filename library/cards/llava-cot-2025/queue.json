@@ -1,0 +1,16 @@
+{
+  "title": "LLaVA-CoT: Let Vision Language Models Reason Step-by-Step",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2411.10440"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:11:15Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态推理数据",
+    "updated_at": "2026-07-14T12:11:15Z"
+  }
+}

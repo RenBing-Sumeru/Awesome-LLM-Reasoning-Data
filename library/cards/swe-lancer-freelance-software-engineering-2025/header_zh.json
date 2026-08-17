@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Lancer 以 1,400 余项真实自由职业软件任务评测智能体，独立工程任务由三重核验测试判分，管理任务对照原始经理选择。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "真实自由职业软件工程任务的可执行与决策评测基准",
+  "best_for_ch": "需要把代码执行结果和真实工程决策联系起来评测智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Samuel Miserendino, Michele Wang, Tejal Patwardhan, Johannes Heidecke",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

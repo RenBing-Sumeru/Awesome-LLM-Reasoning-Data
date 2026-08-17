@@ -1,0 +1,3 @@
+The contribution is to turn mined time-critical Apache fixes into a reproducible repair benchmark anchored by real project history. The core mechanism is: mine active Apache repositories and Jira reports, apply hot-fix criteria, manually validate candidates, and package a subset in the Bugs.jar style with branches, patches, tests, and metadata.
+
+The feedback contract is environmental: a candidate repair must build and satisfy the relevant project test behavior under the pinned repository branch and toolchain. Compared with Defects4J or Bugs.jar, the direction signal is the time-critical selection and release-pressure metadata; the compiler/test harness is not new.

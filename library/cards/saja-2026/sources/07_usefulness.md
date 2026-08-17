@@ -1,0 +1,3 @@
+For an API-based evaluation service with a small labeled audit set, reuse SAJA by defining a task-family rubric, collecting a few hundred human outcomes, extracting each feature vector once, and fitting a calibration head. The output is a score/class plus confidence; success is measured on a held-out human set and by the rate safely auto-accepted.
+
+Do not use it as a zero-label substitute for expert evaluation or assume a generic rubric captures highly specialized review criteria. If calibration labels, API version, or rubric parsing cannot be controlled, route the task to human review instead.

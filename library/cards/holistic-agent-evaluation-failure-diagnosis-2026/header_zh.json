@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该论文提出面向 AI 智能体的整体评测与失败诊断框架。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 AI agent holistic evaluation and diagnosis paper",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Netta Madvil 等（Deepchecks）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-15T07:21:01Z"
+}

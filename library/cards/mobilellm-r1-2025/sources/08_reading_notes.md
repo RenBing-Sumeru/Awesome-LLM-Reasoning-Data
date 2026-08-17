@@ -1,0 +1,5 @@
+- Read §§2-3 before the benchmark tables: the key object is the capability-probe and influence-driven mixture, not merely the 950M checkpoint.
+- Keep the 1.8T listed pool, approximately 2T rounded source claim, 4T pretraining exposure, and 4.2T pre-SFT exposure separate.
+- Positive estimated influence is a selection proxy, not a correctness verifier; the exact Ask-LLM and deduplication settings remain unknown.
+- Table 1 contains a trade-off: staged SFT improves reported MATH/GSM8K but trails joint training on LCBv6.
+- Audit Appendix Tables 4-7 against the pinned repository before reuse; the sampled corpus and core curation pipeline are not released, and the example pretraining script does not match Table 4.

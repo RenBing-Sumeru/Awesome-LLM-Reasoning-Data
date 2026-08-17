@@ -1,0 +1,3 @@
+Use FEAT to compare feedback-generation sources for English tutoring, train a feedback preference model, or audit the cost-quality effect of mixing data. Preserve the DM/DG/DA source label and explanatory feedback rather than combining all examples into one undifferentiated pool. Evaluate by learner task and error type, and verify whether a model’s preferred feedback is correct, specific, and actionable.
+
+For reuse, reproduce the 5–10% DM mixture against DG and 100% DM under a fixed budget. The resource is not appropriate as a sole basis for grading, individualized education plans, or claims about learning improvement, because the paper evaluates feedback quality rather than long-term student outcomes.

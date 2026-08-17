@@ -1,0 +1,5 @@
+- 先读 Figure 1 与 §3.1：关键对象是从通用 guideline 经任务准则和非求解结构到完整路径的 lineage，而不只是“synthetic CoT”。
+- 准确把握反馈边界：主筛选只检查最终答案；失败样本的答案用于 adaptation 与 structure generation，不会直接进入最终路径 prompt。
+- 用 Tables 2–4 判断效用与组件作用，同时检查 Table 3 的负向单元格；OOD 平均提升 6.1 个百分点并非每项都提升。
+- 批判性阅读 Appendix A.1 与 A.8.2：hint 位置实验对全部 GSM8K 样本加 hint，策略多样性则由 Mistral 自己标注和聚类。
+- 建议与 STaR、LMSI、Self-Discover 对读；仍未知官方代码/数据/checkpoint、源版本、逐样本 lineage、去污染、生成预算与衍生数据许可。

@@ -1,0 +1,18 @@
+{
+  "title": "MWPO: Enhancing LLMs Performance through Multi-Weight Preference Strength and Length Optimization",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.1057/",
+    "code": "https://github.com/AIR-hl/MWPO",
+    "data": "https://huggingface.co/datasets/HuggingFaceH4/ultrafeedback_binarized"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:09:20Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将偏好强度与长度偏差同时变成 DPO 的记录级权重",
+    "updated_at": "2026-07-16T07:09:20Z"
+  }
+}

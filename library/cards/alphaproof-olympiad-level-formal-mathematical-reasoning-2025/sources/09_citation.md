@@ -1,0 +1,1 @@
+Hubert, Thomas, Rishi Mehta, Laurent Sartran, et al. “Olympiad-level formal mathematical reasoning with reinforcement learning.” *Nature* 651, 607–613 (2026). Published online November 12, 2025. https://doi.org/10.1038/s41586-025-09833-y. [Official article](https://www.nature.com/articles/s41586-025-09833-y).

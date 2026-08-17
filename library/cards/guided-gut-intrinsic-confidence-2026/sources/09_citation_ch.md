@@ -1,0 +1,1 @@
+Ghasemabadi, Amirhosein、Keith G. Mills、Baochun Li 与 Di Niu。2026。《Guided by Gut: Efficient Test-Time Scaling with Reinforced Intrinsic Confidence》。第 64 届计算语言学协会年会论文集（第 1 卷：长论文），第 16251–16265 页。官方论文：https://aclanthology.org/2026.acl-long.739/。论文引用的训练数据：https://huggingface.co/datasets/GAIR/LIMO。

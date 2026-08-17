@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HoneyBee 报告了 248.0 万条由 Llama-4 Scout 构造的图文与纯文本 SFT 记录，覆盖 2.8 万张图像和 35 万个问题；公开版本以来源指针为主，当前仅部分物化，并受多层许可约束。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "视觉语言推理数据配方与开放数据发布",
+  "best_for_ch": "关注多模态 CoT、教师蒸馏、数据缩放实验、来源指针和许可审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Hritik Bansal、Devendra Singh Sachan、Kai-Wei Chang、Aditya Grover、Gargi Ghosh、Wen-tau Yih、Ramakanth Pasunuru",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

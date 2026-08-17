@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "InterMT 发布竞争性多轮图文交错对话的人工偏好标注，同时覆盖局部回合与完整交互轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据集论文",
+  "best_for_ch": "偏好学习、奖励建模与反馈审计研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Boyuan Chen、Donghai Hong、Jiaming Ji、Jiacheng Zheng、Bowen Dong、Jiayi Zhou、Kaile Wang、Juntao Dai、Xuyao Wang、Wenqi Chen、Qirui Zheng、Wenxin Li、Sirui Han、Yike Guo、Yaodong Yang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T08:20:54Z"
+}

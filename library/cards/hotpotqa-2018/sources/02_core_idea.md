@@ -1,0 +1,3 @@
+The contribution is a large QA benchmark where answering and evidence selection are scored together. The core mechanism asks crowd workers to form questions requiring two Wikipedia paragraphs, keeps the answer string, and annotates the sentences that support the answer.
+
+The feedback contract combines answer exact match/F1 with supporting-fact exact match/F1, with joint metrics reflecting whether both answer and evidence are correct. Closest comparisons are SQuAD-style reading comprehension and earlier multi-hop QA datasets; HotpotQA's direction label is evidence-anchored multi-hop evaluation.

@@ -1,0 +1,1 @@
+最终 benchmark 含 2,475 条指令，其中英文 1,243 条、中文 1,232 条，按 Easy/Medium/Hard 分为 653、744、1,078 条；中英文是独立构造而非互译。每个约束表示为 `Procedure–Relation–Value`，可定位 answer、paragraph、line、bullet、sentence、word、character 等层级。开放数据与验证器可用于指令遵循评测，也可作为规则奖励和 verifier 鲁棒性研究资源。

@@ -1,0 +1,1 @@
+ClassEval 可作为有状态代码生成评测 schema：保留 class skeleton、constructor、fields、method contracts、dependencies、tests、generated code、execution logs，以及 class/method verdict。它适合比较整类 prompt、逐步生成和修复策略。在 atlas 数据里，generation strategy 和 Pass@k budget 必须是一级字段，因为它们会改变分数含义。

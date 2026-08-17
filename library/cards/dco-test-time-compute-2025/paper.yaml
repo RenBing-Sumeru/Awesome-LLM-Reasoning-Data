@@ -1,0 +1,109 @@
+id: dco-test-time-compute-2025
+title: 'Rethinking Fine-Tuning when Scaling Test-Time Compute: Limiting Confidence Improves Mathematical Reasoning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Feng Chen
+- Allan Raventós
+- Nan Cheng
+- Surya Ganguli
+- Shaul Druckmann
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematical-reasoning
+- formal-reasoning
+training_use:
+- test_time_compute
+- sft
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.07154
+  arxiv: https://arxiv.org/abs/2502.07154
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/e8f4eae0a41cab67fdead3aa6b77f083-Abstract-Conference.html
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.07154
+data_object:
+  prompt_source: MATH problems and LeanDojo formal-theorem-proving tasks; MiniF2F and Mathlib are reported test surfaces.
+  trace_author: Fine-tuned language models and theorem-proving search policies.
+  answer_format: Direct answers, optional chain-of-thought answers, or proof tactics in a search tree.
+  process_fields:
+  - prompt
+  - completion
+  - confidence
+  - training_coverage_target
+  - test_pass_at_n
+  - sampled_candidate
+  - verifier_result
+  - proof_state
+  - task_outcome
+  environment_or_substrate: Mathematical-answer generation and Lean4 interactive proof search.
+  verifier_or_reward: Answer correctness and Lean proof-assistant validity.
+  terminal_predicate: At least one correct answer or completed verified proof within the pass@N budget.
+recipe_metadata:
+  base_model: Llama-3-8B-base for MATH experiments; Qwen2.5-Math-1.5B for LeanDojo experiments.
+  teacher: null
+  generator: Independent samples evaluated by pass@N; proof tactics sampled in an interactive search tree.
+  filtering_rule: Direct Coverage Optimization attenuates gradients for already highly confident examples.
+  sampling_protocol: Match the training coverage parameter to the intended test-time pass@N budget; the paper varies both.
+  rollout_count: Up to pass@4k in reported proof experiments.
+  temperature: null
+  inference_budget: Number of independent answer samples or proof-search samples, denoted N.
+  optimizer_or_scaffold: Direct Coverage Optimization (DCO), with a step-wise extension for theorem proving.
+audit:
+  source_mixture: Official NeurIPS 2025 proceedings, arXiv paper, and OpenReview conference PDF.
+  split: The paper says it uses 12,000 MATH training problems and the remaining 500 for testing in its direct-answer experiments;
+    see official paper for all task splits.
+  decontamination: The authors use Llama-3-8B-base rather than an instruction model in one MATH setup to reduce potential
+    post-training leakage; independently verify all benchmark provenance before reuse.
+  license: No official code or artifact license was verified.
+  lineage: 'Primary sources: https://arxiv.org/abs/2502.07154 and https://proceedings.neurips.cc/paper_files/paper/2025/hash/e8f4eae0a41cab67fdead3aa6b77f083-Abstract-Conference.html'
+  known_failure_modes:
+  - A DCO parameter optimized for one pass@N budget is not optimal for every N.
+  - The method assumes an efficient correctness verifier for pass@N evaluation.
+  - Confidence estimates for chain-of-thought answers require approximation.
+  - Test-time sampling can be computationally expensive.
+  citation_status: verified
+  confidence: high
+  notes: 'Official sources checked on 2026-07-20. First-page affiliations: Stanford University and University of Michigan.'
+inclusion_reason: It directly studies how the training objective must change when the deployed system spends more test-time
+  compute through pass@N sampling.
+related: []
+tags:
+- test-time-compute
+- pass-at-n
+- confidence
+- supervised-finetuning
+- theorem-proving
+- mathematical-reasoning
+status: verified
+one_line_summary: DCO aligns fine-tuning with a chosen pass@N test-time budget by limiting overconfidence and preserving useful
+  answer diversity.
+reading_priority: essential
+paper_type: Test-time-compute-aligned fine-tuning study
+best_for: Readers co-designing reasoning-model training objectives and pass@N or proof-search budgets.
+confidence: high
+why_it_matters: It demonstrates that a training loss optimized for one sample can reduce performance when the deployed system
+  relies on many samples.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS paper, arXiv version, authors, affiliations, and reported experimental details checked; no official
+    code link found.
+category_ids:
+- scaling_rlvr_test_time_compute

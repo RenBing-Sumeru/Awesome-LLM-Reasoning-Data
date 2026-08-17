@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "rStar-Coder 将竞赛编程种子扩展为合成题、多尺度测试和长推理解答，并以程序执行和跨解答一致性筛选；但公开配置与补充代码尚不能完整重建论文运行。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可验证代码推理数据发布与构造配方",
+  "best_for_ch": "构建或审计竞赛编程 SFT、蒸馏和 RLVR 数据，以及研究测试生成与一致性验证边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yifei Liu、Li Lyna Zhang、Yi Zhu、Bingcheng Dong、Xudong Zhou、Ning Shang、Fan Yang、Cheng Li、Mao Yang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

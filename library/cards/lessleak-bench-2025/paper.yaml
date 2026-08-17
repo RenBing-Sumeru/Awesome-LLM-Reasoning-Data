@@ -1,0 +1,100 @@
+id: lessleak-bench-2025
+title: 'LessLeak-Bench: A First Investigation of Data Leakage in LLMs Across 83 Software Engineering Benchmarks'
+year: 2025
+venue: arXiv
+authors:
+- Xin Zhou
+- Martin Weyssow
+- Ratnadira Widyasari
+- Ting Zhang
+- Junda He
+- Yunbo Lyu
+- Jianming Chang
+- Beiqi Zhang
+- Dan Huang
+- David Lo
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.06215
+  arxiv: https://arxiv.org/abs/2502.06215
+  code: null
+  data: https://huggingface.co/datasets/26PaperSubmission/lessleak-bench
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - The labels audit StarCoder's disclosed corpus and do not certify leakage status for other or closed models.
+  citation_status: verified
+  confidence: high
+  notes: 'Full paper and official Hugging Face release reviewed; formal venue was not found during verification.'
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2502.06215.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Audits benchmark contamination and supplies manually verified leakage records plus cleaned evaluation data.'
+related: []
+tags:
+- benchmark-contamination
+- data-leakage
+- audit
+status: verified
+one_line_summary: Measures and removes verified pre-training leakage across 83 software-engineering benchmarks.
+why_it_matters: It gives concrete evidence that benchmark contamination can inflate LLM evaluation and a release to mitigate it.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and public artifact release checked; L4 reading remains pending.
+category_ids:
+- audit_failure_contamination_verifier_attacks

@@ -1,0 +1,1 @@
+ATLAS 的核心贡献是从形式库“向上提升”数据，而不是等待自然语言题目再做翻译。经过十轮专家迭代，官方 ATLAS dataset 包含 117,145 条本科水平自然语言—Lean 平行语句；另发布 465 条研究生水平 MathQual 评测题。数据由 Mathlib 概念、教师生成、证明/逆否结构增强和验证筛选组成，用于训练自动形式化 translator，并支持 ProofNet、PutnamBench 与 MathQual 的可编译评测。

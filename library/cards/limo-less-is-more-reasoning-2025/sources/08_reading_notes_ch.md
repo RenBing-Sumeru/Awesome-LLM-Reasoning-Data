@@ -1,0 +1,6 @@
+- 使用正确 venue/version 组合：COLM 2025/arXiv v3 对应 800-row LIMO-v2；817-row LIMO v1 artifact 是 legacy。
+- 在 headline score 前先读论文第 3.1 和 6.3 节：它们定义四次 filter、1–3/32 区间、2,125-question pool、词法分数、base dependence 和 800 之后的 diminishing return。
+- 质量分数由 30% 长度、20% validation-like word、25% tentative expression 和 25% connective phrase 构成；它测量风格 proxy，不是 step correctness。
+- “800 examples”不包含数千万候选池、重复 difficulty attempt、三 teacher generation、人工检查和未披露 compute。
+- Clone GitHub 不能复现 v2：bundled data 是 817-row v1 文件，YAML 含 dataset placeholder，registry 也没有 LIMO entry。
+- 复用前固定 v2 HF revision，并解决构造代码、lineage、reject、n-gram 参数、最终 correctness checker，以及 MIT/Apache-2.0/上游权利不一致。

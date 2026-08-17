@@ -1,0 +1,1 @@
+The paper presents itself as the first survey of LLMs for NL2Code. Its contribution is not a new generator but a consolidated view of 27 models, their benchmark comparisons, and the claim that scale, data, and expert tuning should be considered together. Reuse its taxonomy to frame a comparison before interpreting leaderboard numbers.

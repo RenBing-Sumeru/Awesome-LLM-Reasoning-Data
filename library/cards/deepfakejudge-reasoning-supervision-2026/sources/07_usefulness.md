@@ -1,0 +1,2 @@
+The resource can train interpretable deepfake detectors, visual-rationale judges, pointwise reward models, and pairwise multimodal critics, and can compare models that classify correctly but explain incorrectly. Splits should be made by base image ID so paraphrased rationales for the same image do not appear on both sides. Evaluation should separately report detection accuracy, visual grounding, pointwise correlation, and pairwise agreement. For general visual judgment, the data schema can be reused, but domain cues and the human gold subset must be replaced.
+

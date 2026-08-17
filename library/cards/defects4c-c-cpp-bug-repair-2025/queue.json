@@ -1,0 +1,19 @@
+{
+  "title": "Defects4C: Benchmarking Large Language Model Repair Capability with C/C++ Bugs",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.11059",
+    "data": "https://github.com/defects4c/defects4c/tree/master/defectsc_tpl",
+    "code": "https://github.com/defects4c/defects4c",
+    "project": "https://sites.google.com/view/defects4c/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:07:14Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 Defects4C，含248个C/C++缺陷、102个漏洞及Docker复现测试",
+    "updated_at": "2026-07-18T12:07:14Z"
+  }
+}

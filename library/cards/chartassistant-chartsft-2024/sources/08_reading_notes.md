@@ -1,0 +1,5 @@
+- Positioning: ChartAssistant couples chart-to-table alignment with a released multitask ChartSFT conversation corpus.
+- Method handle: ChartAssistant aligns vision and language through chart-to-table pretraining, then applies ChartSFT multitask instructions spanning extraction, QA, summarization, and numerical reasoning.
+- Data handle: a large multi-task chart corpus covering basic and specialized chart types; official per-file counts are in the release manifest; each record contains chart image, task instruction, and chart-to-table, QA, extraction, or reasoning target.
+- Evidence anchor: The same ChartAssistant model improves over UniChart and ChartLlama across multiple chart tasks, with its largest advantage on zero-shot real-world charts; the two-stage comparison supports table alignment before SFT.
+- Reuse decision: best for building one assistant for chart extraction, QA, and reasoning; first audit synthetic chart templates may become shortcuts for task and answer format.

@@ -1,0 +1,126 @@
+id: androidworld-2024
+title: 'AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents'
+year: 2024
+venue: ICLR 2025 / arXiv v5
+authors:
+- Christopher Rawles
+- Sarah Clinckemaillie
+- Yifan Chang
+- Jonathan Waltz
+- Gabrielle Lau
+- Marybeth Fair
+- Alice Li
+- William Bishop
+- Wei Li
+- Folawiyo Campbell-Ajala
+- Daniel Toyama
+- Robert Berry
+- Divya Tyamagundlu
+- Timothy Lillicrap
+- Oriana Riva
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- android
+- dynamic-environment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2405.14573
+  arxiv: https://arxiv.org/abs/2405.14573
+  doi: https://doi.org/10.48550/arXiv.2405.14573
+  code: https://github.com/google-research/android_world
+  data: https://google-research.github.io/android_world/task_list.html
+  project: https://google-research.github.io/android_world/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official AndroidWorld task list
+  trace_author: Google/DeepMind authors and autonomous-agent runs
+  answer_format: Android tasks, emulator state, agent actions, task list, logs, and success predicates
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: Android emulator benchmark with dynamic apps and tasks
+  verifier_or_reward: AndroidWorld task validators and emulator-state checks
+  terminal_predicate: AndroidWorld task validators and emulator-state checks
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: AndroidWorld authors and task definitions
+  generator: AndroidWorld emulator harness and app/task setup
+  filtering_rule: pin Android image, app versions, task list, and evaluator code
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2405.14573; https://google-research.github.io/android_world/; https://github.com/google-research/android_world;
+    https://google-research.github.io/android_world/task_list.html
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2405.14573'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2025 status is reflected by the arXiv v5 conference-paper version; Docker support, Android/app versions, task
+    list version, and evaluator code need pinning.
+inclusion_reason: it is a major dynamic mobile-agent environment with executable tasks
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- android
+- dynamic-environment
+one_line: AndroidWorld provides dynamic Android emulator tasks for autonomous-agent evaluation.
+why_it_matters: it is a major dynamic mobile-agent environment with executable tasks
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AndroidWorld provides dynamic Android emulator tasks for autonomous-agent evaluation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv v5, project, GitHub, and task-list pages verify ICLR 2025 status, authors, Google/DeepMind institutions, and
+    executable AndroidWorld artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 49
+  primary_category_id: benchmarks_evaluation_surfaces

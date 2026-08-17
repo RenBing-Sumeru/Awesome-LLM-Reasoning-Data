@@ -1,0 +1,1 @@
+The official abstract explicitly identifies the four LLM-as-a-Judge vulnerabilities and gives the six-perspective framework. The arXiv record confirms the January 2026 submission, three authors, and preprint status. This supports the Card's scope claims, but does not prove any particular meta-judge is robust.

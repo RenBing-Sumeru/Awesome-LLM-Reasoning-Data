@@ -1,0 +1,1 @@
+The study measures benchmark leakage through changes in sample-embedding kernel structure before and after controlled benchmark fine-tuning. Its Kernel Divergence Score is a benchmark-level measurement under the paper's intervention design. The method does not reveal the unknown pretraining corpus of a deployed model.

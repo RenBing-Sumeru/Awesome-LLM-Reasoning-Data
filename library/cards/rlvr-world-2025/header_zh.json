@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RLVR-World 发布了代码、两个派生语言状态转移数据集和 RLVR 检查点；其文本、网页与视频世界模型分别采用精确状态/条目一致性或 L1 加 LPIPS 反馈，但上游数据血缘、权利、切分和审计工件仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态世界模型的 RLVR 训练配方、反馈契约与数据披露审计",
+  "best_for_ch": "关注可验证奖励、世界模型、智能体环境轨迹、数据血缘和后训练审计的研究者与工程人员",
+  "confidence_ch": "高",
+  "authors_ch": "Jialong Wu、Shaofeng Yin、Ningya Feng、Mingsheng Long",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-18T12:18:34Z"
+}

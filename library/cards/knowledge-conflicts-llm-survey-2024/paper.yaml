@@ -1,0 +1,106 @@
+id: knowledge-conflicts-llm-survey-2024
+title: 'Knowledge Conflicts for LLMs: A Survey'
+year: 2024
+venue: EMNLP 2024
+authors:
+- Rongwu Xu
+- Zehan Qi
+- Zhijiang Guo
+- Cunxiang Wang
+- Hongru Wang
+- Yue Zhang
+- Wei Xu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- knowledge-conflicts
+- robustness
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2024.emnlp-main.486/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.486
+  venue: https://aclanthology.org/2024.emnlp-main.486/
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.486/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed settings where contextual and parametric knowledge disagree.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A taxonomy of context-memory, inter-context, and intra-memory conflicts.
+  process_fields:
+  - query-context
+  - parametric-knowledge
+  - conflicting-evidence
+  - response
+  - robustness
+  environment_or_substrate: LLM applications with noisy, misleading, or conflicting information.
+  verifier_or_reward: The survey compares prior solutions and does not introduce one common verifier.
+  terminal_predicate: Correct handling is task-specific; no universal success rule is supplied.
+recipe_metadata:
+  base_model: No single base model; literature survey.
+  teacher: Surveyed works use varied data and supervision sources.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: The official abstract groups conflicts into context-memory, inter-context, and intra-memory categories.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes prior methods rather than a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.emnlp-main.486/'
+  known_failure_modes:
+  - Noisy context can override reliable knowledge
+  - Multiple contexts can disagree
+  - Internal knowledge can be inconsistent
+  citation_status: verified
+  confidence: high
+  notes: The official abstract names the three conflict categories and its focus on causes, behavior, and solutions.
+inclusion_reason: An EMNLP survey that gives readers a usable map of conflicting knowledge sources in LLM behavior.
+related: []
+tags:
+- foundations-and-primers
+- knowledge-conflicts
+- emnlp-2024
+- survey
+why_it_matters: It makes disagreement between a prompt and a model's learned knowledge explicit and comparable.
+one_line_summary: An EMNLP 2024 survey of conflicts between contextual and parametric knowledge in LLMs.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers studying factual robustness, retrieval-augmented systems, and conflicting evidence.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable evaluation protocols across knowledge-conflict settings'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata
+  abstract: null
+  venue: null
+  pages: null
+  and DOI were reviewed.: null
+category_ids:
+- foundations_and_primers

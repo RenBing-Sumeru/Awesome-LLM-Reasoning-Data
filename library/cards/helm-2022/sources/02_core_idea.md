@@ -1,0 +1,3 @@
+The contribution is a unified evaluation framework that evaluates many language models over standardized scenarios and multiple metrics rather than reducing evaluation to task accuracy. The original report covers 42 scenarios, 30 models, and 7 metric families, with later HELM releases evolving online.
+
+The core mechanism is to define scenario adapters, prompt/adapter settings, model adapters, and metric modules so every run carries enough provenance to compare or reproduce. The closest comparisons are single-task benchmarks and leaderboards; HELM's direction label is holistic, versioned evaluation surface with multi-metric reporting.

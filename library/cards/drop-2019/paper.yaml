@@ -1,0 +1,124 @@
+id: drop-2019
+title: 'DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning Over Paragraphs'
+year: 2019
+venue: NAACL 2019 / arXiv
+authors:
+- Dheeru Dua
+- Yizhong Wang
+- Pradeep Dasigi
+- Gabriel Stanovsky
+- Sameer Singh
+- Matt Gardner
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reading-comprehension
+- discrete-reasoning
+- qa
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1903.00161
+  arxiv: https://arxiv.org/abs/1903.00161
+  code: null
+  data: null
+  project: https://allenai.org/data/drop
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/N19-1246
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/N19-1246/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: DROP size is release-dependent; ACL/paper descriptions report about 55k questions, while common full-release
+    references often cite about 96k questions. Pin exact DROP artifact and split before reuse.
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'passage, question, answer spans or numeric answer, and annotation metadata; Benchmark size: 约 96K 个问题；不同
+    release/统计口径可能写成约 55K-96K，需 pin 版本。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'passage, question, answer spans or numeric answer, and annotation metadata; Benchmark size: 约
+    96K 个问题；不同 release/统计口径可能写成约 55K-96K，需 pin 版本。'
+  verifier_or_reward: exact match/F1 over spans and normalized numeric answers
+  terminal_predicate: exact match/F1 over spans and normalized numeric answers
+  benchmark_size: 约 96K 个问题；不同 release/统计口径可能写成约 55K-96K，需 pin 版本。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning Over
+    Paragraphs; exact curation details should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for DROP: A Reading Comprehension Benchmark Requiring
+    Discrete Reasoning Over Paragraphs.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/1903.00161'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Scale is explicitly version-sensitive: record the exact DROP release because reported
+    sizes vary from about 55k to about 96k questions depending on paper/release口径. Benchmark size: 约 96K 个问题；不同 release/统计口径可能写成约
+    55K-96K，需 pin 版本。'
+inclusion_reason: DROP tests paragraph-level reading comprehension that requires arithmetic, counting, sorting, and other
+  discrete operations.
+related: []
+tags:
+- benchmark
+- reading-comprehension
+- discrete-reasoning
+- qa
+one_line: DROP tests paragraph-level reading comprehension that requires arithmetic, counting, sorting, and other discrete
+  operations.
+why_it_matters: It supplies a reusable evaluation coordinate for reading-comprehension, discrete-reasoning work.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, dataset scale/version, and
+  license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: DROP tests paragraph-level reading comprehension that requires arithmetic, counting, sorting, and other
+  discrete operations.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

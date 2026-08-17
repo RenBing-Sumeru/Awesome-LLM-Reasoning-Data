@@ -1,0 +1,3 @@
+The contribution is to provide harder/professional LiveCodeBench variant referenced in model reports; exact task set needs audit. for coding, programming-contests under a reusable evaluation surface. The core mechanism is the pairing of task inputs and model outputs with the following feedback contract: unit tests or official judge.
+
+The data object or environment is programming contest/code generation harness. The closest comparisons are code-generation and executable-program benchmarks with unit-test or judge feedback. The direction label is benchmarks_evaluation_surfaces with a programmatic feedback contract. The main thing to preserve is not only the headline score, but the task object, evaluator, split/version, and artifact lineage.

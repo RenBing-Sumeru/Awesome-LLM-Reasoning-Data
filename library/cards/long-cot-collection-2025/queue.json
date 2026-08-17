@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "rollout_search_test_time_trace_data",
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "思维链迁移构建数据",
+    "updated_at": "2026-07-15T05:06:58Z"
+  },
+  "updated_at": "2026-07-15T05:06:58Z"
+}

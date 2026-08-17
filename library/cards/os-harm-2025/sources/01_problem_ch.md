@@ -1,0 +1,5 @@
+本卡的主要来源包括2025年10月29日修订的arXiv v2、NeurIPS 2025 Datasets and Benchmarks Track Spotlight官方记录，以及在commit `c0fa95e75bafb00ac05d2eb4ac5418b9913475ee`检查的作者仓库。OS-Harm针对一个具体缺口：计算机使用智能体完成桌面任务，并不等于它的state-action轨迹没有造成或尝试造成伤害。基准覆盖通用Ubuntu桌面工作流，而非只评测模拟tool call或浏览器导航；但它不研究安全训练、防御、adaptive attack或现实世界伤害发生率。
+
+论文报告150个任务，作者定义的三类harm各50个：deliberate user misuse、prompt injection attacks与model misbehavior。一个benchmark instance包含task ID、Ubuntu snapshot、自然语言指令、来源与VM setup配置、相关应用、可选的注入vector和goal，以及OSWorld evaluator记录。运行后得到多模态观测、模型reasoning与pyautogui action、环境日志、截图/视频，以及事后安全与任务完成判定。
+
+它属于`environment_agent_trajectory_data`，因为可审计单元是带state、observation、action和终止元数据的可重置VM episode；它也属于`benchmarks_evaluation_surfaces`，因为主要标签来自结构化semantic judge，而不是训练目标。本卡通过已核验的任务、episode、judge、人工标签与发布证据达到双语L4内容深度；但因Drive许可证、不可变manifest、保留策略和prompt-injection数量对账尚未解决，状态仍为`partial`，curation level也保留accepted metadata中的原值。

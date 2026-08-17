@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI 的 gpt-oss-safeguard 技术报告披露了按开发者提供的策略和内容进行分类的开放权重模型、推理链和高层次的人类判断策略标注脉络，但未公开训练记录、奖励细节或可复现审计材料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "开放权重安全推理模型技术报告与数据披露台账",
+  "best_for_ch": "需要区分开放权重、推理时策略分类接口与未公开后训练数据/反馈管线的安全、对齐和数据审计读者",
+  "confidence_ch": "中",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

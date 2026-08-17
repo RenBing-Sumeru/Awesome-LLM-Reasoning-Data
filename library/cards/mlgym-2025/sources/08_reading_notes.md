@@ -1,0 +1,5 @@
+- Start with Sections 4.1–4.5 and Appendix D to reconstruct task configuration, the single-command loop, `validate`/`submit`, container state, and trajectory fields.
+- Keep the feedback boundary explicit: evaluator metrics are stored in `info.score`, while current native Gym reward is 0 at every transition.
+- Do not merge counts: the final paper analyzes 624 trajectories from 12 models × 13 tasks × 4 seeds; audited public main contains 676 file pairs and an extra post-paper model grid.
+- Read Appendix B and the Best Attempt definition together; unlimited visible test-set validation is an adaptive optimization channel, not a clean held-out protocol.
+- Verify next a tagged manifest, 624-to-676 file mapping, OCI digests, replay determinism, split/decontamination controls, and source-by-source license/privacy/security terms.

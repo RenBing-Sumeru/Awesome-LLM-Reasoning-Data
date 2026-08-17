@@ -1,0 +1,3 @@
+One-sentence contribution: RepoBench: Benchmarking Repository-Level Code Auto-Completion Systems makes a repository context, target file or line, retrieved code context, language split, completion target, and static metric record. reusable by binding it to a concrete feedback contract.
+
+Core mechanism: The benchmark defines retrieval, completion, and pipeline tasks over Python and Java repositories with repository-level context. Feedback contract: RepoBench-R uses Accuracy@k for retrieval; RepoBench-C and RepoBench-P use Exact Match and Edit Similarity for code completion or pipeline evaluation. Closest comparisons are single-file code completion and executable repository repair benchmarks. Direction label: verifier-anchored software-agent evaluation.

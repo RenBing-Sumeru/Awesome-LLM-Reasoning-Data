@@ -1,0 +1,1 @@
+Earlier surveys commonly divided papers by technique names. This one makes stage and system boundary the first comparison. That matters because a trace collected for training, a trace sampled repeatedly at inference, and a multi-agent conversation may look similar in text while being different data objects with different reproducibility requirements.

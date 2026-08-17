@@ -1,0 +1,219 @@
+id: terminalworld-2026
+title: 'TerminalWorld: Benchmarking Agents on Real-World Terminal Tasks'
+year: 2026
+venue: arXiv preprint
+authors:
+- Zhaoyang Chu
+- Jiarui Hu
+- Xingyu Jiang
+- Pengyu Zou
+- Han Li
+- Chao Peng
+- Peter O'Hearn
+- Earl T. Barr
+- Mark Harman
+- Federica Sarro
+- He Ye
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+- agent_environment
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- terminal_agents
+- shell_and_cli
+- docker_environments
+- agent_trajectories
+- state_based_verification
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.22535
+  paper_pdf: https://arxiv.org/pdf/2605.22535
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2605.22535
+  code: https://github.com/EuniAI/TerminalWorld
+  data: https://huggingface.co/datasets/EuniAI/TerminalWorld
+  project: https://terminalworld.ai/
+  huggingface: https://huggingface.co/datasets/EuniAI/TerminalWorld
+  doi: https://doi.org/10.48550/arXiv.2605.22535
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 80,870 public asciinema terminal recordings were filtered to 9,492 candidates; an LLM then distilled goal-focused
+    task instructions without procedural hints and with explicit output-path requirements where needed.
+  trace_author: Public terminal users authored the source command traces. LLM-based synthesis converted accepted transcripts
+    into cleaned Bash reference solutions; evaluated agents generate new command trajectories, but those evaluation trajectories
+    are not the released dataset object.
+  answer_format: Each released task is an executable archive containing task.toml, instruction.md, solution/, tests/, and
+    environment/. The current top-level manifest exposes task_id, instruction, artifact_path, requires_docker, terminal_domain,
+    source_type, pii_status, and license.
+  process_fields:
+  - task_id
+  - instruction
+  - artifact_path
+  - requires_docker
+  - terminal_domain
+  - source_type
+  - pii_status
+  - license
+  - task_toml
+  - reference_solution
+  - state_based_tests
+  - docker_environment
+  - benchmark_canary
+  observation: During evaluation the agent observes terminal output, including stdout/stderr and effects of prior commands,
+    inside an isolated Docker task environment. The release does not define step-level correctness labels over those observations.
+  action_or_tool_call: Shell/terminal commands issued through one of the evaluated agent scaffolds under Harbor.
+  verifier_output: Programmatic state-based test results and a task-level resolved/failure outcome; harness or environment
+    errors are tracked separately from ordinary task failures.
+  reward: Evaluation-only terminal outcome feedback derived from whether the final environment state passes the task's state-based
+    test suite; no training reward dataset is documented.
+  environment_or_substrate: Dockerfile/docker-compose task environments executed through Harbor with network disabled. Legacy
+    Ubuntu, CentOS, and Debian images and mutable build/cache dependencies limit immutable replay.
+  verifier_or_reward: Per-task state-based tests generated from persistent pre/post conditions and validated against an all-passing
+    reference solution, a no-op, and truncated/ablated partial solutions.
+  terminal_predicate: A task is resolved when its final state satisfies the programmatic test suite. “Verified” means author
+    manual review of label correctness, not formal proof that the tests completely specify task semantics.
+  provenance: Public asciinema text transcript and metadata -> privacy/scope/value filtering -> synthesized instruction and
+    cleaned reference solution -> Docker environment reproduction -> state-based test generation and three-way validation
+    -> 1,530-task full release -> manually curated Verified-200 evaluation subset. The current manifest no longer exposes
+    the source_url described by the paper.
+recipe_metadata:
+  base_model: unknown
+  teacher: Public human terminal recordings provide source behavior; LLMs synthesize instructions, reference solutions, environments,
+    and tests. No model teacher is documented as producing training targets for a trained policy.
+  generator: The paper describes LLM-based instruction/solution/test generation and a coding agent for environment reproduction,
+    giving Claude-family examples. Exact production model snapshots and per-stage assignments are not pinned.
+  prompt_or_task_source: Public asciinema .txt terminal transcripts and recording metadata. Raw .cast recordings are not rehosted
+    according to Appendix A.
+  filtering_rule: Remove PII, credentials, malicious commands, TUI/GUI interactions, tasks not reproducible in Docker, inaccessible/proprietary/Windows
+    dependencies, short or trivial sessions, and low-quality recordings scored on state-action alignment, task complexity,
+    and signal clarity.
+  sampling_protocol: 80,870 recordings -> 9,492 filtered candidates -> 5,035 reproduced environments -> 1,530 tasks passing
+    reference/no-op/partial validation. Four experienced authors non-randomly selected and cross-reviewed 200 diverse, longer,
+    and nontrivial tasks for evaluation.
+  rollout_count: One pass@1-style attempt per task for each reported model-agent evaluation pairing; the exact aggregate number
+    of executed, failed, and retried sessions is not explicitly disclosed.
+  temperature: unknown
+  inference_budget: Exact production construction budget is unknown. Released scripts expose defaults such as 30 turns/USD
+    1.50 for environment building and 40 turns/USD 3.00 with up to five iterations for test refinement, but the paper does
+    not bind the release to those defaults.
+  search_or_scaffold: Harbor executes Docker tasks with six agent scaffolds in the paper evaluation. Environment and test
+    construction use a coding-agent loop plus build, replay, and validator feedback.
+  selection_threshold: Final admission requires all reference tests to pass, all tests to fail under no-op, and at least one
+    test to fail for every truncated/ablated partial solution. Earlier LLM quality thresholds and repair/discard budgets are
+    not fully pinned.
+  optimizer_or_scaffold: Evaluation scaffold only; the authors explicitly report no model training or fine-tuning. Optimizer
+    metadata is therefore not applicable, while exact Harbor/agent/package versions remain incompletely pinned.
+audit:
+  source_mixture: Public terminal recordings spanning command-line software development, system administration, containers,
+    security, networking, data/scientific work, and other terminal domains. The paper reports 18 categories, the stable repository
+    README 19, and the checked current manifest 20.
+  split: 'Hugging Face publishes test-only configs: full=1,530, verified=200, and sample=20. Verified-200 is manually selected
+    for diversity and complexity rather than randomly sampled; no train/validation split is released.'
+  decontamination: Every instruction includes a Harbor benchmark canary warning against training-corpus inclusion. No reproducible
+    item-level deduplication, training-corpus overlap, or downstream-benchmark decontamination procedure with thresholds is
+    disclosed.
+  benchmark_overlap: The paper reports that 91% of 1,280 unique commands are absent from Terminal-Bench, but this command-vocabulary
+    statistic is not a task-level overlap or contamination audit.
+  license: 'Unresolved official-source conflict: Hugging Face card metadata/prose says CC BY 4.0; the dataset LICENSE file
+    and all 1,530 checked manifest rows say CC-BY-NC-4.0; paper Appendix A limits use to strictly non-commercial academic
+    research. The GitHub code is separately Apache-2.0.'
+  lineage: Public recording -> filtered transcript -> synthesized instruction/reference solution -> reproduced Docker environment
+    -> generated state tests -> three-way executable validation -> full benchmark -> manually verified subset. The current
+    top-level manifest lacks the source_url hyperlinks claimed by the paper.
+  release_version: Paper arXiv:2605.22535v1; checked GitHub main commit 784698ba93735470ce1664bff2ec44bcd7b28e15; checked
+    HF main commit dda7c099cc076735aef28c03bf8d3624dc0564e1. No GitHub Release, semantic tag, or immutable task-archive manifest
+    binds these artifacts together.
+  successful_and_failed_sample_retention: The release keeps reference solutions and validated tasks, but rejected construction
+    candidates, repair histories, and complete successful/failed evaluation trajectories are not exposed in the current top-level
+    dataset manifest.
+  privacy_or_consent: Source recordings are public; authors filter PII, credentials, and malicious commands and do not rehost
+    raw .cast files. Regex/LLM filtering has residual risk, and record-level consent/licensing/right-to-be-forgotten evidence
+    is not included in the current manifest.
+  known_failure_modes:
+  - State-based tests may be incomplete or gameable; three-way validation does not formally prove semantic specification coverage.
+  - Harbor tmux races and container startup timeouts create non-task errors; reported model-level error rates are about 2.5%-5.5%.
+  - About 10% of tasks use end-of-life Ubuntu, CentOS, or Debian images, contributing to third-party-agent installation error
+    rates of 4.5%-21.5%.
+  - Cached images, force_build settings, mutable package mirrors, and unpinned base-image digests can change replay outcomes.
+  - Verified-200 is complexity/diversity selected, so its performance and domain distribution should not be generalized as
+    an unbiased estimate for all 1,530 tasks.
+  - Paper, README, and live manifest disagree on category count, showing schema/version drift.
+  - The current manifest omits source_url, weakening record-level provenance and source-removal auditability.
+  - Dataset license surfaces conflict, so unrestricted or commercial reuse is not safely established.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v1, full paper/appendices, project page, GitHub repository/code/license/branches/releases, and Hugging
+    Face card/configs/files/history/full manifest/license were checked. Confidence remains medium because mutable release
+    surfaces conflict and exact production configuration is not pinned.
+  remaining_unknowns:
+  - Exact production generator models, prompts, temperatures, seeds, overrides, retry logs, and per-stage budgets.
+  - Immutable hashes for every task archive, base image, dependency, and Harbor/agent package used in the paper evaluation.
+  - Effective dataset reuse terms and rights inherited from public source recordings.
+  - Record-level source hyperlinks or an auditable replacement after source_url removal.
+  - Detailed deduplication, contamination, and downstream benchmark-overlap procedure.
+  - Complete ledger of rejected/repaired tasks and released paper-evaluation trajectories.
+inclusion_reason: TerminalWorld turns public terminal demonstrations into 1,530 executable Docker tasks with reference solutions
+  and state-based terminal predicates, making the environment and verifier explicit enough to study real command-line agents
+  while exposing important replay, provenance, and licensing risks.
+related: []
+tags:
+- terminalworld
+- terminal-agents
+- docker
+- harbor
+- executable-benchmark
+- state-based-tests
+- agent-trajectories
+- programmatic-verification
+- public-terminal-recordings
+- evaluation-only
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: TerminalWorld converts public terminal recordings into 1,530 Docker-backed CLI tasks with reference solutions
+  and state-based tests, including a manually reviewed 200-task evaluation subset.
+why_it_matters: It provides a concrete environmental feedback contract for terminal agents and shows that successful behavior
+  can diverge sharply from a human command trace, while its mutable manifests, legacy images, removed source links, and conflicting
+  licenses demonstrate why executable benchmarks still need rigorous release audits.
+card: null
+needs:
+- 'needs_version_pin: reconcile the paper''s 18 categories, stable README''s 19, and current manifest''s 20, then bind paper,
+  code, task archives, and dataset rows to immutable hashes'
+- 'needs_license: resolve CC BY 4.0, CC BY-NC 4.0, and non-commercial-academic-only statements, including inherited source-recording
+  rights'
+- 'needs_lineage: restore or independently verify record-level source-recording links and deletion/right-to-be-forgotten handling
+  after source_url removal'
+- 'needs_replay: publish cold-build evidence with base-image/dependency digests, Harbor and agent versions, cache policy,
+  and representative EOL-image replay'
+- 'needs_recipe_metadata: pin exact production models, prompts, decoding, budgets, seeds, retries, repairs, and discard decisions'
+- 'needs_decontamination: document item/template deduplication, training-corpus overlap checks, benchmark overlap, and how
+  the canary should be audited'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper identity, authors, arXiv/DOI, project page, code repository, dataset repository, configs, schema, branch/commit
+    state, and release absence were verified. Artifact content is materially inconsistent across official surfaces, so the
+    entry remains partial and no Review decision is pre-populated.

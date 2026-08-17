@@ -1,0 +1,1 @@
+Do not treat MATH-500 as a new benchmark independent of MATH. Read the subset-selection note, the grader, and the evaluation budget before comparing numbers. Keep three metrics separate: single-sample accuracy, best-of-N or majority-vote accuracy, and verifier-reranked accuracy.

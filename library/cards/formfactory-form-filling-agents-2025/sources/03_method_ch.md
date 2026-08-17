@@ -1,0 +1,1 @@
+1. 输入：form templates、用户 profile/goal、gold field-value pairs、浏览器观察和 agent 动作。2. 流程：实例化任务，让 agent 查看并填写字段，提交或结束表单，再把后端状态与 gold annotations 比较。3. 输出：task instances、截图/布局、gold JSON、动作轨迹和 evaluator reports。4. 反馈：成功由后端 evaluator 的字段级匹配决定。5. 复用前要固定仓库 commit、form template 版本、浏览器运行时、evaluator 代码、生成 profile 和 MIT repo 条款。

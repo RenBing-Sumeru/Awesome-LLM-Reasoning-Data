@@ -1,0 +1,3 @@
+This is a literature synthesis, not a new verification model. It describes existing frameworks component by component, covering common retrieval, prompting, and fine-tuning approaches, and it lists publicly available English datasets for the task.
+
+The paper should therefore be read as a map of design choices, not as a recipe whose pieces were tested under one shared setup. Its unit of comparison is the pipeline: a claim enters, evidence is retrieved and represented, the model produces a judgment, and a task definition determines how that judgment is read. When following a cited method, consult the primary paper for its exact corpus, supervision, and decision format.

@@ -1,0 +1,296 @@
+id: opencua-2025
+title: 'OpenCUA: Open Foundations for Computer-Use Agents'
+year: 2025
+venue: NeurIPS 2025 Main Conference Track
+authors:
+- Xinyuan Wang
+- Bowen Wang
+- Dunjie Lu
+- Junlin Yang
+- Tianbao Xie
+- Junli Wang
+- Jiaqi Deng
+- Xiaole Guo
+- Yiheng Xu
+- Chen Henry Wu
+- Zhennan Shen
+- Zhuokai Li
+- Ryan Li
+- Xiaochuan Li
+- Junda Chen
+- Boyuan Zheng
+- Peihang Li
+- Fangyu Lei
+- Ruisheng Cao
+- Yeqiao Fu
+- Dongchan Shin
+- Martin Shin
+- Jiarui Hu
+- Yuyan Wang
+- Jixuan Chen
+- Yuxiao Ye
+- Danyang Zhang
+- Dikang Du
+- Hao Hu
+- Huarong Chen
+- Zaida Zhou
+- Haotian Yao
+- Ziwei Chen
+- Qizheng Gu
+- Yipu Wang
+- Heng Wang
+- Diyi Yang
+- Victor Zhong
+- Flood Sung
+- Y. Charles
+- Zhilin Yang
+- Tao Yu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- computer_use
+- multimodal_agents
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- frontier_pipeline
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/cc7ae529e945226b0d52ea4ac478c4f3-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2508.09123
+  code: https://github.com/xlang-ai/OpenCUA
+  data: https://huggingface.co/datasets/xlangai/AgentNet
+  project: https://opencua.xlang.ai/
+  huggingface: https://huggingface.co/collections/xlangai/opencua-open-foundations-for-computer-use-agents-6882014ebecdbbe46074a68d
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/cc7ae529e945226b0d52ea4ac478c4f3-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/28652-/bibtex
+data_object:
+  prompt_source: Human annotators demonstrate English-language desktop tasks on their own Windows, macOS, or Ubuntu systems.
+    The paper reports 22,625 accepted tasks covering more than 140 applications and 190 websites, and summarizes the combined
+    breadth as 200+ applications and websites. Exact per-record task-source URLs are not released.
+  task_object: An episode contains a natural-language instruction, an initial screenshot, and a sequence of screenshot observations
+    paired with PyAutoGUI-compatible actions until success or failure termination. AgentNetTool originally captures screen
+    video, mouse and keyboard events, and accessibility trees before reduction and alignment.
+  trace_author: Humans supply the executable demonstrations. Rule-based preprocessing reduces raw events and aligns screenshots
+    to actions. `claude-3-7-sonnet-20250219` then acts as reflector, generator, and summarizer to add post-hoc reflective
+    reasoning and trajectory-level labels; these rationales are not the demonstrators' own thoughts.
+  trajectory_object: Released JSONL trajectory rows include task and instruction fields, completion, alignment, efficiency,
+    and difficulty labels, task summaries, a domain, and a `traj` list. Each step carries an index, screenshot reference,
+    action code, observation, thought, action description, prior-step correctness and redundancy, reflection, step identifier,
+    and optional marks.
+  answer_format: The SFT target is the current assistant response containing reflective reasoning and an executable action,
+    conditioned on the task, up to three screenshots, and prior action history. The HF card states that loss is applied only
+    to the current assistant response. At inference, the default agent uses three images and L2 CoT.
+  process_fields:
+  - task_id
+  - instruction
+  - task_completed
+  - alignment_score
+  - efficiency_score
+  - task_difficulty
+  - reason
+  - natural_language_task
+  - actual_task
+  - domain
+  - traj.index
+  - traj.image
+  - traj.value.observation
+  - traj.value.thought
+  - traj.value.action
+  - traj.value.code
+  - traj.value.last_step_correct
+  - traj.value.last_step_redundant
+  - traj.value.reflection
+  - traj.step_id
+  - traj.marks
+  observation: Model input is screenshot-centered visual history plus task and prior actions. The collector also records accessibility
+    trees, but the released training schema and OpenCUA policy primarily use screenshots and normalized mouse or keyboard
+    actions.
+  reward_object: There is no learned RL reward or environment reward in the disclosed training recipe. Feedback objects are
+    human actions, Claude-generated correctness and redundancy judgments, trajectory scores, offline action-matching metrics,
+    and task-specific online benchmark success scripts.
+  environment_or_substrate: Demonstrations come from real personal desktop environments spanning three operating systems.
+    Evaluation uses the static AgentNetBench action matcher and the separately maintained OSWorld environment. Exact OS images,
+    application versions, websites, credentials, locale, and reset snapshots are not bundled with AgentNet.
+  verifier_or_reward: 'Mixed contract: humans provide demonstrations; a Claude reflector judges whether preceding steps are
+    correct or redundant; a summarizer scores completion, alignment, efficiency, and difficulty; AgentNetBench compares predicted
+    low-level actions with curated valid actions; OSWorld-Verified executes agents against task-specific environment checks.
+    None verifies every rationale step.'
+  terminal_predicate: Collected traces end with an appended `terminate(success)` or `terminate(failure)` action. Online OSWorld-Verified
+    uses its task-specific environment scripts, while offline AgentNetBench evaluates one-step action agreement and has no
+    end-to-end terminal-state proof.
+  provenance: Human task and raw desktop recording -> consented manual upload -> quality and privacy review -> action reduction
+    -> state-action matching -> terminal action insertion -> Claude reflection/generation/summarization -> removal of steps
+    marked incorrect or redundant for training -> mixture with grounding, public agent, and general SFT data -> supervised
+    training.
+recipe_metadata:
+  base_model: OpenCUA-7B and OpenCUA-32B are based on Qwen2.5-VL instruction models; the official OpenCUA-7B card names Qwen/Qwen2.5-VL-7B-Instruct.
+    The 72B system uses additional data and a larger recipe. Exact immutable base revisions for every reported model are unknown.
+  teacher: '`claude-3-7-sonnet-20250219` is the disclosed reflector, CoT generator, and summarizer. Human actions are the
+    execution targets. The 72B recipe additionally uses 8,000 Ubuntu rollouts generated by o3 with Jedi, so its result is
+    not evidence for AgentNet-only training.'
+  generator: AgentNetTool records demonstrations; Action Reduction compresses low-level events; State-Action Matching chooses
+    a visually distinct frame before mouse pre-movement; the three-stage Claude pipeline labels the previous action, writes
+    structured observation-thought-action text, and summarizes the whole trajectory.
+  prompt_task_source: Annotators devise and demonstrate practical English desktop tasks. Desired tasks are long and diverse;
+    demonstrations shorter than five steps are rejected. The exact task ideation prompts, source-page lineage, and task-family
+    quotas are unknown.
+  sampling_protocol: The collector accepts errors when they are identified. Each step's reflector sees before/after screenshots,
+    action code, and generated text; the generator also sees task goal, history, prior reflections, the target action code,
+    a red coordinate marker, and a zoomed crop. Incorrect or redundant steps are excluded from training.
+  rollout_count: AgentNet reports 22,625 accepted tasks, while Table 2 reports 41,428 trajectories used for OpenCUA-7B/32B
+    and 27,804 for Qwen2-7B/A3B. The mapping from accepted tasks to all training trajectory variants and repeated mixtures
+    is not fully disclosed.
+  temperature: unknown
+  inference_budget: Default agent context uses three screenshots. Reported OSWorld-Verified evaluation budgets include 15,
+    50, and 100 environment steps; the paper also reports Pass@N sampling. CoT-synthesis token limits, decoding parameters,
+    retry policy, and API rate or cost settings are unknown.
+  search_or_scaffold: Reflective generation uses L3 observation, L2 reflective reasoning, and L1 action. Training mixes these
+    levels and visual history; default inference emits L2. This is sequential policy generation, not an RL search tree or
+    verifier-guided best-of-N selection during training.
+  filtering_rule: Annotators and verifiers label task clarity, diversity, and complexity; private tasks are rejected; a two-stage
+    privacy review combines humans with GPT-4o and human confirmation; event-reduction rules merge redundant inputs; steps
+    labeled incorrect or redundant by the reflector are omitted from supervised training.
+  selection_threshold: Task quality uses rejected, ok, good, and excellent labels, but exact acceptance thresholds and inter-annotator
+    adjudication are not disclosed. Privacy labels are None, Low, Medium, and High, with human verification of model flags;
+    no calibrated false-positive or false-negative rates are reported.
+  optimizer_or_scaffold: Stage-2-only training uses sequence length 32,768, weight decay 0.1, batch 384 (512 in ablations),
+    and 96 A100 GPUs for reported Qwen2-VL runs. The 32B two-stage recipe uses 224 then 128 A100 GPUs; the 72B recipe uses
+    480 A100 GPUs. The HTML paper does not expose every learning-rate value, seed, checkpoint revision, or complete launch
+    configuration, and the official repository has no training code.
+  release_scale: The HF release contains `agentnet_win_mac_18k.jsonl`, `agentnet_ubuntu_5k.jsonl`, metadata JSONL, and split
+    image archives. Paper and HF task counts are rounded differently, and the HF viewer currently fails because trajectory
+    and metadata files have incompatible schemas.
+audit:
+  source_mixture: AgentNet contributes human Windows, macOS, and Ubuntu trajectories. Model training also mixes ShowUI and
+    UGround data, 189K accessibility-tree grounding boxes, Aguvis-style agent data, and Kimi general text/vision SFT. The
+    72B run adds 8K o3+Jedi Ubuntu rollouts. Exact record-level weights and immutable source revisions are not fully reported.
+  split: Windows/macOS collection is separated from Ubuntu and the authors state that the Ubuntu tasks do not overlap OSWorld
+    tasks. AgentNetBench uses 100 held-out Windows/macOS trajectories selected near task-cluster centroids and manually refined
+    with multiple valid actions. Immutable IDs, annotator grouping, app-family grouping, and a public split-generation seed
+    are unknown.
+  decontamination: The paper states no task overlap between the Ubuntu collection and OSWorld, but does not publish the comparison
+    manifest, semantic-matching threshold, or an audit for website/application template overlap, model pretraining contamination,
+    or the non-AgentNet sources in the training mixture.
+  benchmark_overlap: AgentNetBench is in-domain and drawn from held-out AgentNet trajectories. Its offline step accuracy correlates
+    with online 15-step success for the compared models, but this fitted correlation is not a decontamination result or evidence
+    of end-to-end success on unseen environments.
+  lineage: Real user task -> raw video/input/accessibility capture -> manual review and upload -> privacy and quality decisions
+    -> reduced PyAutoGUI action -> matched screenshot -> Claude reflection and CoT -> retained SFT step -> source-mixture
+    stage -> model checkpoint. Released rows do not expose every annotator, app version, privacy decision, raw-event mapping,
+    or upstream-source revision.
+  license: The official GitHub repository and HF dataset/model metadata declare MIT, and the repository explicitly says model,
+    dataset, tools, and code may be used for research, education, and commercial purposes subject to law and responsible use.
+    This declaration does not establish redistribution rights for third-party website or application UI content, fonts, icons,
+    or user-supplied material in screenshots.
+  release_version: arXiv v3 and the NeurIPS 2025 proceedings were reviewed. GitHub `main` was pinned to `dfc91ba89f700d10f26ec50362d308571482ab8b`
+    (2026-05-25); AgentNet to HF revision `d76ee50a63fad81cfdbe576416757d7c2091ed50`; OpenCUA-7B to HF revision `a2efb7d2b104d477a4a2666a357e79550a28aafc`.
+  version_drift: Current GitHub paths differ from several README links (`data/cot-generate` and `evaluation/agentnetbench`
+    are the live locations). The README still lists the training pipeline as unfinished. The HF dataset viewer fails on mixed
+    JSONL schemas, although the trajectory and metadata files remain downloadable.
+  experimental_evidence:
+    online_success: On 369 OSWorld-Verified tasks, OpenCUA-72B reports 39.0% success at 15 steps, 44.9% at 50, and 45.0% at
+      100; OpenCUA-32B reports 29.7%, 34.1%, and 34.8%. These are model-system results from a mixed-data recipe, not direct
+      data-quality measurements.
+    offline_actions: On AgentNetBench, OpenCUA-7B reports 79.0 coordinate, 62.0 content, 44.3 function, and 75.2 average Step
+      SR; OpenCUA-32B reports 81.9, 66.1, 55.7, and 79.1. Static first-action matching does not establish whole-task completion.
+    cot_ablation: A Qwen2-VL-7B ablation on 14K Windows/macOS plus 3K Ubuntu examples improves OSWorld-Verified success from
+      11.5% to 15.3% with reflective CoT. It supports a recipe contribution under one setup, not faithfulness of individual
+      rationales.
+  known_failure_modes:
+  - Reflective CoT is synthesized after the teacher sees the target action and the following screenshot, so it can encode
+    outcomes or rationalize a poor demonstration.
+  - The reflector and summarizer are model judges without published calibration against step-level expert labels; their errors
+    can determine which supervision is kept.
+  - Human trajectories may be inefficient, lack expert shortcuts, or reflect annotator selection bias; the paper explicitly
+    names these limitations.
+  - Static action matching can reject alternative valid actions or overstate readiness for interactive task completion.
+  - OS, application, website, screen-resolution, network, and CAPTCHA changes can break replay or shift coordinates.
+  - Screenshot and accessibility captures can contain personal or proprietary content despite consent and two-stage privacy
+    review.
+  - A broad MIT declaration does not resolve third-party UI, website, font, icon, or content rights at record level.
+  - The 72B result confounds AgentNet, external GUI/general data, a large two-stage recipe, and o3+Jedi rollouts.
+  - Missing training code and incomplete immutable environment snapshots prevent paper-exact reproduction.
+  - The current HF viewer schema error and README path drift increase the chance of loader or recipe mistakes.
+  successful_and_failed_sample_retention: Demonstrators may submit traces containing mistakes when those mistakes can be identified,
+    and the final episode has explicit success or failure termination. The released training rule omits steps judged incorrect
+    or redundant. A complete public manifest mapping every rejected task, raw failed attempt, judge decision, and retained
+    SFT row is unknown.
+  privacy_or_consent: All annotators reportedly signed consent. AgentNetTool keeps recordings local until manual upload, and
+    annotators review video, actions, and accessibility data. Private tasks are rejected; internal humans and GPT-4o perform
+    two-stage privacy screening with human confirmation. Per-record consent/redaction logs, detector prompts, error rates,
+    and deletion procedures are not released.
+  environment_replay: AgentNetTool, CoT-generation code, trajectory viewers, model inference, and AgentNetBench scoring code
+    are available. Original desktop images, installed-app versions, website states, credentials, locale, reset scripts, and
+    full training launcher are not a version-pinned replay package.
+  citation_status: verified
+  confidence: high
+  remaining_unknowns:
+  - immutable_task_split_and_record_level_lineage_manifest
+  - exact_task_source_urls_and_upstream_content_rights
+  - complete_privacy_detector_prompts_error_rates_and_redaction_logs
+  - annotator_level_quality_and_agreement_statistics
+  - cot_decoding_temperature_token_limits_retries_and_cost_manifest
+  - all_training_learning_rates_seeds_checkpoint_revisions_and_launch_code
+  - exact_mapping_between_22625_tasks_and_reported_training_trajectory_counts
+  - immutable_desktop_app_website_environment_and_reset_snapshots
+  notes: Official NeurIPS proceedings, full arXiv v3 including appendices, project page, GitHub tree/license/README, AgentNet
+    dataset card/files, and OpenCUA-7B model card were checked on 2026-07-21. Artifact verification confirms a substantial
+    release, not paper-exact training or environment replay and not stepwise rationale validity.
+inclusion_reason: 'OpenCUA exposes an unusually complete human-demonstration-to-training pipeline for computer-use data: cross-platform
+  collection, event reduction, state-action alignment, reflective trace synthesis, mixed supervision, open artifacts, and
+  explicit audit boundaries around privacy, replay, and post-hoc reasoning.'
+related:
+- android-control-2024
+- gui-360-2025
+tags:
+- opencua
+- agentnet
+- computer-use-agents
+- multimodal-trajectories
+- human-demonstrations
+- reflective-cot
+- state-action-alignment
+- agentnetbench
+- supervised-fine-tuning
+- release-version-drift
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: OpenCUA turns 22,625 human desktop tasks into aligned screenshot-action traces with Claude-generated reflective
+  supervision and releases the data, models, tools, and offline evaluator, while leaving full training and environment replay
+  incomplete.
+why_it_matters: For the Data Construction track, it makes collection, action reduction, visual-state matching, synthetic reflection,
+  filtering, source mixing, and deployment evaluation separable audit objects instead of treating model benchmark gains as
+  data quality.
+card: null
+needs:
+- 'needs_lineage: publish immutable task, raw-event, privacy, judge, and retained-row mappings'
+- 'needs_training_recipe: release the complete launcher, configs, seeds, checkpoint revisions, and decoding settings'
+- 'needs_replay: pin OS, app, website, locale, resolution, reset, and task-verifier environments'
+- 'needs_privacy_rights: publish redaction audits and clarify third-party UI and website content rights'
+- 'needs_release_qa: fix the mixed-schema HF viewer and reconcile README links with live repository paths'
+- 'needs_validation: independently measure reflector errors and rationale faithfulness'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, venue, affiliations, BibTeX, project, repository, dataset, model collection, CoT generator, inference,
+    and offline evaluator were verified. Keep status partial and L3 because training code and immutable environment replay
+    are incomplete and the live dataset viewer has a schema error.

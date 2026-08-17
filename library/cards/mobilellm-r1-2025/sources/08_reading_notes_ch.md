@@ -1,0 +1,5 @@
+- 应先读 §§2-3，再看 benchmark 表：核心对象是 capability probe 与 influence-driven mixture，而不只是 950M checkpoint。
+- 必须区分列出的 1.8T 来源池、约写为 2T 的来源规模、4T 预训练 exposure，以及 SFT 前 4.2T exposure。
+- positive estimated influence 是选择 proxy，不是正确性 verifier；准确的 Ask-LLM 与去重设置仍为未知。
+- Table 1 存在权衡：分阶段 SFT 提高了报告中的 MATH/GSM8K，但 LCBv6 低于联合训练。
+- 复用前应把附录 Tables 4-7 与固定提交的仓库逐项核对；抽样语料和核心筛选流水线未发布，示例预训练脚本也与 Table 4 不一致。

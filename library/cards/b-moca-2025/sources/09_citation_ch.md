@@ -1,0 +1,1 @@
+引用：Juyong Lee、Taywon Min、Minyong An、Dongyoon Hahm、Haeone Lee、Changyeon Kim、Kimin Lee，《Benchmarking Mobile Device Control Agents Across Diverse Configurations》，CoLLAs 2025；arXiv:2404.16660。论文/项目：https://arxiv.org/abs/2404.16660，https://b-moca.github.io/。官方 release 仓库：https://github.com/jylee425/b-moca/tree/release/ver.3。

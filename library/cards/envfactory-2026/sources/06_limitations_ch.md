@@ -1,0 +1,13 @@
+- 单位不一致：论文的 1,622 个 SFT conversation 和 953 个 RL conversation，不是 HF 发布中的 26,463 条 SFT-FILTERED、53,412 条 SFT-ALL 与 3,092 条 RL expanded row。没有公开 immutable conversation-to-row mapping。
+- release label 冲突：两个官方 SFT dataset card 的 prose scale description 与已检查 viewer count 互换，model card 仍把 filtered data 写成 53.4k。应固定 revision 并保留冲突，而不是选择一个方便的数字。
+- failure censoring：pipeline 选择 solved candidate、删除 redundant interaction，SFT conversion 还过滤即时 `Fail`/`Error` call。没有核验到 candidate-level accept/reject ledger、带标签 failed trajectory、recovery corpus 或 retained/dropped ID manifest；SFT-ALL 也不能重建这些决定。
+- reward false positive：trace coverage 不关心顺序、忽略 masked argument，而且只要求 reference call 被覆盖；extra call 只受 soft penalty。因此 reordered、redundant 或 harmful call 可能获得较高 reward。这是基于发布代码的 curator inference，不是已演示 exploit。
+- reward false negative 与 blind spot：exact final-state equality 可能拒绝序列化不同但语义有效的 outcome，而 final-state check 可能漏掉有害 intermediate side effect。used MCP-server config 之外的 reward behavior 没有确立。
+- environment validity：generated test 检查 synthesized interface 与 expected state change，而不是 production API fidelity。由 LLM 定义的 dependency edge、user-providable input、scenario 与 stop behavior 可能包含模型特定错误或 bias。
+- session isolation：可写的 stateful tool 需要 dedicated per-conversation connection。隔离错误可能造成 cross-session contamination；asynchronous session 可缓解 throughput，但不能取消 replay 要求。
+- split 与 contamination：public dataset 只暴露 `train`；当前代码的 95/5 RL split 没有绑定 paper run。没有 semantic decontamination 或 overlap audit 覆盖 source material、generated environment、trajectory、BFCL、MCP-Atlas、tau2-Bench 与 VitaBench。
+- version reproducibility：没有 manifest 绑定 paper v1、确切 source snapshot、main 与 VeRL commit、三个 HF revision、model/API revision、dependency version、environment list、seed、config 和 checkpoint hash。大多数 dependency 未固定。
+- recipe 冲突：论文报告 3 个 SFT epoch，并从 epoch 1 初始化 RL；repository config 与 HF model card 则写 1 个 epoch。仅凭公开 artifact 无法为所报告 checkpoint 确定精确 recipe。
+- rights 冲突：HF data/model card 与 VeRL fork 声明 Apache-2.0，main repository 没有检测到 license，论文则说 artifact 使用 restrictive license。source-document/API right 与 generated-derivative right 没有调和。
+- privacy 与 safety：没有核验到逐记录 privacy、consent、PII、redaction 或 source-rights audit。online-source 与 LLM construction 可能继承 bias；作者还指出 malicious financial 或 phishing automation 风险。synthetic state 本身不能证明敏感内容不存在。
+- evidence 边界：benchmark improvement 由作者报告，MCP-Atlas 只使用 30/36 个 server 与 291/500 个 task。它们不能确立 data quality、verifier robustness、generalization 或安全复用。

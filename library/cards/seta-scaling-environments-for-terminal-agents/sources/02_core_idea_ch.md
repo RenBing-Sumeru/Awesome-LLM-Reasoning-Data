@@ -1,0 +1,1 @@
+论文发布 SETA-Env，当前列表标注 4,567 个 Harbor 风格环境，摘要概括为 4,500+。每个环境包含 instruction、Dockerfile/资源、reference solution 和 tests，测试输出形成确定性终局 reward。SETA-Synth 负责来源转换，SETA-Evol 生成难度与多样性受控的变体；数据用于 GRPO 等 terminal RL。由于论文发布于 2026 年 7 月且数据仍新，规模、文件字段和许可应以具体 Hugging Face commit 为准。

@@ -1,0 +1,1 @@
+An open corpus is trustworthy not only because of its scale, but because each source can be traced. Common Pile treats provenance, licensing, and processing as part of the data itself; an open release does not mean every included source has identical reuse rights.

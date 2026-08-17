@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:06:57Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把未解决问题的后续计算与已解决问题的成功示例结合，探索“分配预算＋改变生成分布”的测试时扩展",
+    "updated_at": "2026-07-20T13:06:57Z"
+  }
+}

@@ -1,0 +1,3 @@
+The PMLR paper establishes the Bridge V2 source, synthetic comparison recipe, 20-million-comparison scale, verifier architecture, preference objective, and test-time proposal procedure. The official project now links a public implementation, a `monkey-verifier-7b` checkpoint, and an `action_preference_bridge` dataset. The dataset endpoint reports 22.5 GB but has no dataset card, and the model card is empty; release existence is confirmed, while schema and documentation completeness are not.
+
+Action-error scaling, SIMPLER success, real-robot OOD results, and data-scaling curves evaluate the method. They do not make RMSE a ground-truth measure of task success, safety, or semantic correctness, and they do not validate every synthetic comparison.

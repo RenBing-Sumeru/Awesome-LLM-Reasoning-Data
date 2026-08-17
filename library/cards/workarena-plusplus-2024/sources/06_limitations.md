@@ -1,0 +1,3 @@
+Correctness is only relative to the stated contract: ServiceNow/BrowserGym validators decide success from the composed task state; generated traces are artifacts for training or analysis, not the final verifier by themselves. Generated traces can be brittle or over-specialized to templates. Venue status should be labeled from sources: arXiv plus the official GitHub NeurIPS 2024 label, not an unverified proceedings claim.
+
+The paper should not be read as unrestricted real-world reliability. Public artifacts can become training data, service-backed environments can drift, and judge/evaluator implementations can change across releases.

@@ -1,0 +1,11 @@
+Source pipeline 从 RedPajama 开始。基于 action/UI/platform 词、200–5,000-word 长度与 tutorial-like URL 的 heuristic，把 20.8 billion entries 缩小到 68.8 million；论文在 285 个 manually labeled sample 上报告 92.69% recall（Paper §2.1.1）。GPT-4o-mini 标注 90,000 个 candidate，并对 human label 报告 88.5% F1。使用这些 label 的 95:5 split 训练 FastText，报告 validation F1 为 89.5%，并识别约 18.8 million 个 deduplicated tutorial candidate（Paper §2.1.2–2.1.3）。
+
+GPT-4o-mini 把选中 tutorial 标准化为 platform、target type/object/URL、task description、prerequisite、step instruction、step count 与 expected result。页面含多个候选 tutorial 时，extraction prompt 只要求提取第一个（Appendix G.3）。精确 RedPajama snapshot、page membership、deduplication key、FastText weight/label 与 source rights 均未发布。
+
+Trajectory generation 阶段，GPT-4o-2024-08-06 接收 structured tutorial，并通过 BrowserGym 操作 Chromium。它观察 screenshot 和 AXTree，选择 Playwright action；论文 collector 同步记录 reasoning、screenshot、DOM snapshot、coordinate、video、network/native trace 与 action history（Paper §2.2.1–2.2.2）。论文报告每个 interaction step 平均 8,027 tokens、每项 task 86,114 tokens，每条成功 trajectory 平均 12.1 steps；但未披露完整 step/time cap、temperature、seed、retry protocol、browser image 或 paper-run commit。
+
+GPT-4o evaluator 读取 task description 与完整 reasoning/action sequence，输出 trajectory-level 和 step-level analysis，定位 earliest failure，并给出 success/failure。Human review 覆盖 1,081 条 trajectory，其中 558 条有 detailed justification，报告 evaluator accuracy 为 84.0%（Paper §2.2.3，Table 2）。Appendix G.1 显示 prompt 较宽松：可接受 task 的大部分、两个 subtask 中的一个、缺少最终 save/post action，或超过八个正确 action。
+
+Headline funnel 为 23,430 个 standardized tutorial→10,398 条 retained trajectory，覆盖 127 个 website 与 11 个 category（Table 1；§4；Appendix I）。成功 episode 用于 Qwen2-VL 与 Qwen2.5 agent 的 SFT。官方 repository 包含 evaluation entry point 与 dependency，但 Data Preparation 和 Training 为空；tutorial miner、labeler、FastText pipeline、standardizer、replay collector、evaluator/filter、serializer 与 training implementation 均缺失。
+
+复现必须绑定 source snapshot/page rights、GPT prompt/version、FastText artifact、tutorial ID、browser/container/site state 与 replay date、完整 raw trajectory、evaluator decision、selected/rejected record、SFT subset ID、code/data/model revision、checkpoint 与 evaluation run。各 Git/HF head 可以分别固定，但没有 release-wide manifest 连接它们。

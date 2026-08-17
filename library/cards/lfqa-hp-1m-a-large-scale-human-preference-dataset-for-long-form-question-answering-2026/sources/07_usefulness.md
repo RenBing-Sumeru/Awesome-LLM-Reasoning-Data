@@ -1,0 +1,1 @@
+Use it to train or audit a long-form QA reward model with the provided source and expertise fields, then test on held-out sources or a seed-disjoint split. Success is pairwise agreement plus robustness to position and verbosity perturbations. Do not use the nine rubric scores as replacement training labels or assume upstream licenses are permissive.

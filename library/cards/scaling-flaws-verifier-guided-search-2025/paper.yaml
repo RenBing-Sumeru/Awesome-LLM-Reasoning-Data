@@ -1,0 +1,115 @@
+id: scaling-flaws-verifier-guided-search-2025
+title: Scaling Flaws of Verifier-Guided Search in Mathematical Reasoning
+year: 2025
+venue: arXiv preprint
+authors:
+- Fei Yu
+- Yingru Li
+- Benyou Wang
+source_role:
+- scaling_study
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- process_reward
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.00271
+  arxiv: https://arxiv.org/abs/2502.00271
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Math-reasoning evaluation problems; no versioned prompt or rollout release was verified.
+  trace_author: unknown
+  answer_format: Verifier-guided beam-search candidates, their outcome-verifier/process-reward scores, pruning decisions,
+    and selected final solutions.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Outcome verifiers and process reward models score candidates programmatically, but the paper studies
+    cases where their selections and pruning decisions are wrong.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: The audit scales beam-search configurations and diagnoses how verifier errors compound across selection and pruning,
+    separating apparent final-answer gains from search reliability.
+  filtering_rule: Outcome verifiers and process reward models score candidates programmatically, but the paper studies cases
+    where their selections and pruning decisions are wrong.
+  sampling_protocol: Reported tested settings show outcome-verifier selection failures of 77.1–88.6%; no public trace logs
+    or reproduction package was verified.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: The audit scales beam-search configurations and diagnoses how verifier errors compound across selection
+    and pruning, separating apparent final-answer gains from search reliability.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Math-reasoning evaluation problems; no versioned prompt or rollout release was verified. -> Verifier-guided beam-search
+    candidates, their outcome-verifier/process-reward scores, pruning decisions, and selected final solutions. -> Outcome
+    verifiers and process reward models score candidates programmatically, but the paper studies cases where their selections
+    and pruning decisions are wrong. -> reported final selection or training use. Raw lineage records are not established
+    as released.
+  known_failure_modes:
+  - Scores are imperfect proxies for correctness; selection and pruning can discard correct traces, and code/data/trace releases
+    were not confirmed.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It supplies a failure model for Track 5: rollout count alone is not trustworthy without auditable selection
+  and pruning histories.'
+related: []
+tags:
+- verifier-guided-search
+- beam-search
+- outcome-verifier
+- process-reward-model
+- audit
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: An audit of how imperfect outcome and process verifiers fail when their scores drive larger reasoning searches.
+why_it_matters: 'It supplies a failure model for Track 5: rollout count alone is not trustworthy without auditable selection
+  and pruning histories.'
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

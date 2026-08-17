@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "1,865条新偏好评测覆盖数学等任务，以相对偏好检验 RM，适合验证通用推理奖励的泛化。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多技能奖励模型评测与偏好数据基准论文",
+  "best_for_ch": "需要在不复用下游测试提示的前提下评估奖励模型并分析其与推理或 RLHF 后效关系的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Saumya Malik, Valentina Pyatkin, Sander Land, Jacob Morrison, Noah A. Smith, Hannaneh Hajishirzi, Nathan Lambert",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:18:22Z"
+}

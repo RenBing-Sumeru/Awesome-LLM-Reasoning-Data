@@ -1,0 +1,1 @@
+Wan, Yuxuan、Tianqing Fang、Zaitang Li、Yintong Huo、Wenxuan Wang、Haitao Mi、Dong Yu、Michael R. Lyu. 2026. 《Inference-Time Scaling of Verification: Self-Evolving Deep Research Agents via Test-Time Rubric-Guided Verification》. ACL 2026 Findings。官方论文稿件：https://arxiv.org/abs/2601.15808。论文链接的官方仓库：https://github.com/yxwan123/DeepVerifier 与 https://github.com/Tencent/CognitiveKernel-Pro。

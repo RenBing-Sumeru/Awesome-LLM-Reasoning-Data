@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "HAL 将九个异构 agent benchmark 统一为带任务 evaluator、成本与 Weave 调用轨迹的评测运行；但论文的 21,730 个 rollout、项目当前的 26,597 个 rollout 与 HF 当前 380 个加密 run archive 不能混为同一语料快照。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体评测基础设施、轨迹发布与行为审计研究",
+  "best_for_ch": "研究 environment/agent trajectory data、混合 evaluator、benchmark contamination、版本漂移与 replay 审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Sayash Kapoor、Benedikt Stroebl、Peter Kirgis、Nitya Nadgir、Zachary S Siegel、Boyi Wei、Tianci Xue、Ziru Chen、Felix Chen、Saiteja Utpala、Franck Ndzomga、Dheeraj Oruganty、Sophie Luskin、Kangheng Liu、Botao Yu、Amit Arora、Dongyoon Hahm、Harsh Trivedi、Huan Sun、Juyong Lee、Tengjun Jin、Yifan Mai、Yifei Zhou、Yuxuan Zhu、Rishi Bommasani、Daniel Kang、Dawn Song、Peter Henderson、Yu Su、Percy Liang、Arvind Narayanan",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

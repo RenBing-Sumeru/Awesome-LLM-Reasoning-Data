@@ -1,0 +1,5 @@
+Kimi k1.5 is explicitly proprietary and not open-sourced. The official GitHub repository contains the technical report, PDF, and images, not weights, code, data, reward-model artifacts, checkpoint manifests, or software releases. Consequently, report-level descriptions cannot be treated as a runnable recipe.
+
+The source mixture remains high level. The report names domains and filtering families but not raw source URLs, proportions, token counts, sample-level lineage, complete prompts, retention yields, model versions, or licenses. It gives no global train/validation/test split and no disclosed decontamination protocol or leakage results.
+
+The feedback contract also has risks. Final-answer correctness can reward invalid reasoning; the report removes some easy-to-hack prompts but acknowledges verifier limits. CoT RM accuracy comes from manual spot checks rather than a disclosed independent audit. Generated code tests can omit bugs despite agreement filtering, and partial rollouts change the relationship between on-policy and reused trajectory segments.

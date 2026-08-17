@@ -1,0 +1,123 @@
+id: spider-2018
+title: 'Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain Semantic Parsing and Text-to-SQL Task'
+year: 2018
+venue: EMNLP 2018 / arXiv
+authors:
+- Tao Yu
+- Rui Zhang
+- Kai Yang
+- Michihiro Yasunaga
+- Dongxu Wang
+- Zifan Li
+- James Ma
+- Irene Li
+- Qingning Yao
+- Shanelle Roman
+- Zilin Zhang
+- Dragomir Radev
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- text-to-sql
+- semantic-parsing
+- database-reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1809.08887
+  arxiv: https://arxiv.org/abs/1809.08887
+  code: https://github.com/taoyds/spider
+  data: https://yale-lily.github.io/spider
+  project: https://yale-lily.github.io/spider
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.1809.08887
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official Spider 1.0 benchmark authors and annotators curate the question-schema-SQL task surface.
+  trace_author: Spider paper reports 11 college-student annotators for the question-SQL records.
+  answer_format: natural-language question, database schema, SQL query, and execution/evaluation metadata
+  data_scale: 10,181 questions, 5,693 unique complex SQL queries, 200 databases, and 138 domains in the commonly cited Spider
+    release.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: natural-language question, database schema, SQL query, and execution/evaluation metadata
+  verifier_or_reward: exact-set SQL matching and execution accuracy under official evaluator
+  terminal_predicate: exact-set SQL matching and execution accuracy under official evaluator
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for cross-domain databases, natural-language questions, and complex SQL annotations.
+  filtering_rule: Use the official Spider 1.0 data package and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, metric choice, prompt/scaffold policy, and leaderboard/test-set
+    date before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for Spider: A Large-Scale Human-Labeled Dataset
+    for Complex and Cross-Domain Semantic Parsing and Text-to-SQL Task.'
+  split: Spider 1.0 uses train/dev/test splits over different databases; exact data zip, public/hidden test policy, and correction
+    date must be pinned before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official site states the Spider dataset follows CC BY-SA 4.0; GitHub code is Apache-2.0. Downstream redistribution
+    should still check the exact downloaded artifact.
+  lineage: 'Primary source: https://arxiv.org/abs/1809.08887'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: Pin Spider 1.0 data zip, post-release corrections, evaluator commit, metric choice, and public/hidden test policy
+    before L5/L6 promotion.
+inclusion_reason: Spider made cross-domain text-to-SQL evaluation difficult by separating database schemas across train and
+  test.
+related: []
+tags:
+- benchmark
+- text-to-sql
+- semantic-parsing
+- database-reasoning
+why_it_matters: It supplies a reusable evaluation coordinate for text-to-sql, semantic-parsing work.
+status: verified
+needs:
+- 'needs_audit: pin Spider evaluator version, database package, public/dev/test policy, and whether reporting uses exact-set
+  match or execution accuracy'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, CC BY-SA data terms, and
+  Apache-2.0 code terms'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Spider made cross-domain text-to-SQL evaluation difficult by separating database schemas across train and
+  test.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source, project page, and official GitHub recorded; exact data/evaluator artifact audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

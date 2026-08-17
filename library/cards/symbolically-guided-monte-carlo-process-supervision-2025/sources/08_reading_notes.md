@@ -1,0 +1,6 @@
+- Read §§3.1–3.2 and Appendix C first: Symbolic ReAct is structured text with Thought/Action/Observation steps, not an executable proof trace.
+- Keep the three object counts separate: 1,505 trajectories / 12,448 step labels, 15,412 accepted SFT rows, and 21,472 relative DPO pairs.
+- Interpret the label contract literally: one success among 10 continuations means answer reachability, not formal prefix correctness.
+- Use Table 1 with Appendix B, Table 5: filtering helps in the reported tasks, but SFT generally beats DPO and the Qwen LogicAsker filtering gain is small.
+- Read alongside TreeRL and A*-Thought to compare offline prefix completion, on-policy tree rewards, and validator-guided path selection; compare equal budgets and release boundaries.
+- Before reuse, verify the upstream licenses and decontamination, obtain or retrain/calibrate the PRM, repair the checked-in scripts, and retain raw candidates plus score vectors.

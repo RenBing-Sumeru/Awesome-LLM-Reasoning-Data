@@ -1,0 +1,169 @@
+id: reinforcement-learning-teachers-test-time-scaling-2025
+title: Reinforcement Learning Teachers of Test Time Scaling
+year: 2025
+venue: NeurIPS
+authors:
+- Edoardo Cetin
+- Tianyu Zhao
+- Yujin Tang
+source_role:
+- construction_recipe
+- verifier_reward
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- mathematics
+- coding
+- science
+- general-reasoning
+training_use:
+- sft
+- distillation
+- reward_modeling
+- rlvr
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a6b278218966499194491f55ccf8b75-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2506.08388
+  code: https://github.com/SakanaAI/RLT
+  data: null
+  project: https://sakana.ai/rlt/
+  huggingface: https://huggingface.co/collections/SakanaAI/reinforcement-learning-teachers
+  doi: https://doi.org/10.48550/arXiv.2506.08388
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a6b278218966499194491f55ccf8b75-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9a6b278218966499194491f55ccf8b75-Bibtex-Conference.html
+data_object:
+  prompt_source: 'The main corpus is Bespoke-Stratos-17k: 16,710 mathematics and coding question-solution pairs, with experiments
+    also using a random 1,000-pair subset. A separate countdown transfer experiment uses 16,000 automatically generated training
+    pairs and 1,000 test pairs. Exact released indices for the 1,000-pair main subset are unknown.'
+  trace_author: A Qwen2.5-7B-Instruct Reinforcement-Learned Teacher generates explanations while conditioned on both each
+    question and its known solution. The teacher receives a short supervised format warm-up before GRPO.
+  answer_format: The RLT prompt contains the question and known solution and asks for a tagged solution plus detailed explanation.
+    For student SFT, explanation tokens are extracted, placed in reasoning tags after the question, and followed by the known
+    solution.
+  process_fields:
+  - question
+  - known_solution
+  - optional_warmup_reasoning_trace
+  - generated_explanation
+  - solution_token_log_probabilities
+  - explanation_token_kl
+  - dense_reward
+  - format_penalty
+  environment_or_substrate: 'Offline language-model training: RLT-format SFT warm-up, GRPO teacher optimization, trace recollection,
+    and student SFT. A frozen Qwen2.5-7B-Instruct student evaluates explanations; there is no interactive external environment
+    in the main teacher-training loop.'
+  verifier_or_reward: 'The dense RLT reward combines two student-conditioned terms: mean/minimum log-probability over known
+    solution tokens after reading the explanation, and a KL-based term comparing how plausible explanation tokens are under
+    teacher conditioning versus the student''s question-only context. A -1 format penalty applies to malformed outputs. This
+    reward measures student learnability and continuation plausibility, not formal proof validity.'
+  terminal_predicate: A completion must follow the RLT format and receive a high relative dense reward within its GRPO group
+    by making the frozen student assign higher probability to the known solution while keeping explanation tokens plausible
+    from the student's context. No independent trace-correctness terminal checker is reported.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct initializes both the RLT and frozen reward student. Downstream distilled students use Qwen2.5-7B-Instruct
+    or Qwen2.5-32B-Instruct.
+  teacher: A 7B Reinforcement-Learned Teacher trained from Qwen2.5-7B-Instruct. The official Hugging Face collection releases
+    7B and 32B distilled students, not a clearly labeled teacher checkpoint.
+  generator: After format warm-up and GRPO, the RLT is given each question-solution pair and generates an explanation. The
+    raw explanation is transformed into the student's reasoning format and paired with the known solution; no language-model
+    postprocessing is applied to main RLT traces.
+  filtering_rule: Teacher training uses a format penalty and relative GRPO ranking from the two reward terms. The main 7B
+    distillation set uses raw RLT outputs without correctness rejection or stylistic postprocessing. For larger students,
+    the appendix describes collecting up to 16 traces per pair to avoid context-cropped examples, but the final selection
+    manifest is not released.
+  sampling_protocol: RLT GRPO uses group size 64, temperature 0.7, top-p 1.0, no top-k, min-p 0.0, repetition penalty 1.0,
+    and maximum generation context 16,384. Distillation trace collection uses temperature 0.7 and maximum context 32,764.
+  rollout_count: 64 completions per GRPO prompt group; up to 16 candidate traces per pair are described for the larger-student
+    context workaround. Total generated, discarded, and retained trace counts are not separately reported.
+  temperature: 0.7
+  inference_budget: Teacher-training generation is capped at 16,384 context tokens; offline distillation collection uses 32,764.
+    Student evaluation also uses 32,764. These settings are separate from training-set size and do not reveal total token
+    consumption.
+  optimizer_or_scaffold: A short RLT-format SFT warm-up precedes 125 GRPO steps with batch size 1,024, AdamW, constant learning
+    rate, group size 64, reference-model synchronization every 32 steps, and mixup 0.9. The paper reports one node with eight
+    H100 GPUs. Generated explanations then supervise student SFT.
+audit:
+  source_mixture: The main pipeline uses 16,710 Bespoke-Stratos-17k question-solution pairs and example traces for warm-up,
+    Qwen2.5-7B-Instruct as both teacher initialization and reward student, and regenerated RLT explanations for distillation.
+    Warm-up membership and generated-trace counts are not published as row-level manifests.
+  split: The full 16,710-pair set and a random 1,000-pair subset are reported, but exact subset indices and train-stage lineage
+    are unavailable. Main evaluation uses AIME 2024, MATH-500, and GPQA Diamond; the paper reports no comprehensive overlap
+    audit between upstream training sources and these benchmarks.
+  decontamination: unknown
+  license: The repository is Apache-2.0; the paper reports Apache-2.0 for Bespoke-Stratos-17k and Qwen2.5 models, and the
+    two official distilled-student model cards declare Apache-2.0. No separate generated-trace dataset or generated-trace
+    license was identified.
+  lineage: Bespoke question plus known solution -> RLT-format SFT warm-up -> Qwen2.5-7B GRPO with frozen-student dense reward
+    -> RLT explanation recollection -> explanation plus known solution student SFT -> official 7B and 32B distilled-student
+    checkpoints. Row-level trace, reward, checkpoint, and subset lineage is not released.
+  known_failure_modes:
+  - The reward is computed by one frozen Qwen2.5-7B-Instruct student and can favor explanations specific to that student's
+    token probabilities rather than generally valid pedagogy.
+  - Because the known solution is in the teacher's context, an explanation can rationalize or leak the answer rather than
+    independently derive it.
+  - Higher solution-token likelihood and lower explanation KL do not verify factual correctness of each reasoning step or
+    proof validity.
+  - 'The paper''s ablation shows reward imbalance matters: removing the explanation-token KL term produces repetitive, long
+    traces and much worse downstream results.'
+  - Long explanations can be cropped by student context limits; the larger-student workaround uses multiple candidates, but
+    candidate accounting and final per-row choices are unavailable.
+  - No official generated-trace dataset, per-example rewards, rejected traces, exact 1,000-pair indices, or clearly labeled
+    RLT teacher checkpoint was identified.
+  - The official repository has no release tag, so reproduction should pin code revision 86a3f5c78ff20b83cf6dc31d9e6b53003f4c1804
+    rather than assume mutable master is immutable.
+  - Decontamination and benchmark-overlap controls are not reported.
+  citation_status: verified
+  confidence: high
+  notes: The NeurIPS 2025 proceedings paper and appendices, arXiv v3, Sakana AI project page, official Apache-2.0 repository,
+    and official Hugging Face student collection were checked. Artifact verification covers code and distilled students, not
+    generated traces or the trained teacher.
+inclusion_reason: A NeurIPS 2025 construction recipe that turns known question-solution pairs into student-conditioned dense
+  rewards for training a small explanation teacher, then uses its raw traces for reasoning distillation and RL cold starts.
+related:
+- bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation-2025
+tags:
+- reasoning-distillation
+- teacher-traces
+- reinforcement-learned-teacher
+- student-conditioned-reward
+- grpo
+- cold-start-data
+- open-code
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: RLT trains a Qwen2.5-7B-Instruct teacher with dense frozen-student likelihood and explanation-KL feedback
+  to generate raw explanations from known question-solution pairs for downstream distillation.
+why_it_matters: It makes the teacher-conditioning and feedback contract unusually concrete, while showing that student-specific
+  rewards, answer-conditioned explanations, missing trace releases, and missing teacher weights remain central audit boundaries.
+card: null
+needs:
+- 'needs_data: release generated RLT explanations, rewards, accepted and discarded candidates, and row-level provenance under
+  explicit reuse terms'
+- 'needs_teacher_checkpoint: release or identify the trained 7B RLT teacher separately from the distilled 7B and 32B students'
+- 'needs_split: publish exact 1,000-pair subset indices and all training-stage memberships'
+- 'needs_decontamination: document source-to-evaluation overlap and contamination controls'
+- 'needs_reproducibility: tag code, pin all data/model revisions, and release complete run manifests and seeds'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official venue, arXiv v3, project page, code, license, and distilled-student model cards were verified. The paper
+    does not provide a reusable trace dataset, exact subset manifest, or clearly labeled RLT teacher checkpoint.

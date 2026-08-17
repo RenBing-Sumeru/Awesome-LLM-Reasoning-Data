@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MiroMind-M1 将 719K 长 CoT SFT、62K 可验证 RL 问题和长度渐进优化组成完整开放训练栈。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Xingxuan Li, Yao Xiao, Dianwen Ng, Hai Ye, Yue Deng, Xiang Lin, Bin Wang, Zhanfeng Mo, Chong Zhang, Yueyi Zhang, Zonglin Yang, Ruilin Li, Lei Lei, Shihao Xu, Han Zhao, Weiling Chen, Feng Ji, Lidong Bing",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

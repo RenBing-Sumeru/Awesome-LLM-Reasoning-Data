@@ -1,0 +1,28 @@
+id: multi-sequence-verifier-2026
+title: Parallel Test-Time Scaling with Multi-Sequence Verifiers
+year: 2026
+venue: arXiv preprint
+authors: [Yegon Kim, Seungyoo Lee, Chaeyun Jang, Hyungi Lee, Juho Lee]
+source_role: [verifier_reward, scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level]
+domains: [reasoning]
+training_use: [test_time_compute]
+construction_layer: [reward_verifier_layer, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2603.03417, arxiv: https://arxiv.org/abs/2603.03417, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2603.03417}
+data_object: {prompt_source: Reasoning tasks in the paper, trace_author: Parallel candidate generator, answer_format: Candidate set and joint verifier scores, process_fields: [prompt, candidates, joint_scores, stop_decision], environment_or_substrate: Parallel decoding, verifier_or_reward: Multi-Sequence Verifier, terminal_predicate: Benchmark correctness}
+recipe_metadata: {base_model: See paper, teacher: null, generator: Parallel decoding, filtering_rule: Joint candidate-set ranking, sampling_protocol: Parallel candidates, rollout_count: null, temperature: null, inference_budget: Candidate count and streaming latency, optimizer_or_scaffold: Multi-Sequence Verifier}
+audit: {source_mixture: Official arXiv paper, split: See source benchmarks, decontamination: Verify overlap, license: Verify sources, lineage: 'Primary source: https://arxiv.org/abs/2603.03417', known_failure_modes: [Candidate correlation, Calibration shift], citation_status: verified, confidence: high, notes: Primary arXiv source checked on 2026-07-20.}
+inclusion_reason: It makes set-level verifier calibration and parallel early stopping explicit test-time scaling variables.
+related: []
+tags: [test-time-compute, verifier, best-of-n, early-stopping]
+status: verified
+one_line_summary: MSV jointly scores parallel candidates to improve best-of-N selection and reduce latency through streaming early stopping.
+reading_priority: essential
+paper_type: Set-level verifier and parallel test-time scaling study
+best_for: Readers optimizing parallel candidate selection under a latency budget.
+confidence: high
+why_it_matters: It treats interactions among candidates as evidence for verifier scaling.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: Primary paper checked.}
+category_ids: [scaling_rlvr_test_time_compute]

@@ -1,0 +1,117 @@
+id: inductive-reasoning-survey-2026
+title: A Survey of Inductive Reasoning for Large Language Models
+year: 2026
+venue: ACL 2026 (Long Papers)
+authors:
+- Kedi Chen
+- Dezhao Ruan
+- Yuhao Dan
+- Yaoting Wang
+- Siyu Yan
+- Xuecheng Wu
+- Yinqi Zhang
+- Qin Chen
+- Jie Zhou
+- Liang He
+- Biqing Qi
+- Linyang Li
+- Qipeng Guo
+- Xiaoming Shi
+- Wei Zhang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- inductive-reasoning
+- reasoning-data
+- test-time-scaling
+- benchmarks
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1447/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1447
+  venue: https://aclanthology.org/2026.acl-long.1447/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1447/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed inductive-reasoning tasks and benchmarks.
+  trace_author: The surveyed primary works; the survey does not release a new trace collection.
+  answer_format: A taxonomy of post-training enhancement, test-time exploration, data augmentation, and benchmarks.
+  process_fields:
+  - observations
+  - candidate rule or hypothesis
+  - generalization task
+  - benchmark
+  - observation coverage
+  environment_or_substrate: Inductive reasoning in large language models.
+  verifier_or_reward: The survey compares diverse evaluation settings and does not provide one common verifier.
+  terminal_predicate: A task-specific generalization judgment; no universal predicate is supplied.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed works use varied data and feedback sources; the survey has no single teacher.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract groups improvement methods into post-training enhancement, test-time exploration,
+    and data augmentation.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes methods from the surveyed literature rather than a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.1447/'
+  known_failure_modes:
+  - Inductive tasks can have non-unique answers.
+  - Benchmark scores can depend on observation coverage and task construction.
+  - The surveyed interventions use different data, models, and inference budgets.
+  citation_status: verified
+  confidence: high
+  notes: The ACL abstract calls this the first comprehensive survey and names its three improvement categories and sandbox-based
+    evaluation proposal.
+inclusion_reason: An accepted ACL survey that explains how inductive reasoning connects training data, exploration at inference
+  time, and evaluation.
+related: []
+tags:
+- foundations-and-primers
+- inductive-reasoning
+- acl-2026
+- survey
+why_it_matters: It distinguishes learning a general rule from merely producing a plausible answer on a familiar pattern.
+one_line_summary: An ACL 2026 survey that organizes inductive reasoning methods by post-training, exploration, data augmentation,
+  and evaluation.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers comparing how data, post-training, and inference-time exploration affect generalization from examples.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable disclosure of data sources, inference budgets, and benchmark construction across the surveyed papers'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

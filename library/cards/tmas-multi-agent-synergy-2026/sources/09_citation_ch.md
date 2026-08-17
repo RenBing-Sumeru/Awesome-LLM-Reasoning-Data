@@ -1,0 +1,1 @@
+Wu, George、Nan Jing、Qing Yi、Chuan Hao、Ming Yang、Feng Chang、Yuan Wei、Jian Yang、Ran Tao 与 Bryan Dai。《TMAS: Scaling Test-Time Compute via Multi-Agent Synergy》。arXiv 预印本 arXiv:2605.10344，2026。https://arxiv.org/abs/2605.10344。官方代码和数据：https://github.com/IQuestLab/tmas。

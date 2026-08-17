@@ -1,0 +1,5 @@
+The contribution is not merely a larger multimodal answer dataset. It aligns three layers: a benchmark filtered to reveal when process rewards differ from output rewards, an image-conditioned MCTS construction procedure that turns terminal judgments into values for partial solutions, and a small discriminative PRM used in Best-of-N selection. This gives the release a trace-to-scalar feedback lineage that can be audited at the schema and method level.
+
+The paper also makes a narrower empirical claim: reward-model behavior does not follow ordinary VLLM capability monotonically, and averaging only the last few step rewards can outperform both an output-only score and averaging all steps in its tested settings. That is a useful hypothesis about step aggregation, not a universal rule; the paper reports task sensitivity and no released calibration study for the labels.
+
+Relative to a binary preference dataset, the public `value` field represents a continuous, search-derived target. The novelty has an audit boundary: full trees and terminal evidence are omitted, so the novel transformation cannot be replayed record by record from the public dataset alone.

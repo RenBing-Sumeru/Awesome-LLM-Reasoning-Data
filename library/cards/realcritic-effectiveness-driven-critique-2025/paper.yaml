@@ -1,0 +1,96 @@
+id: realcritic-effectiveness-driven-critique-2025
+title: 'RealCritic: Towards Effectiveness-Driven Evaluation of Language Model Critiques'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zhengyang Tang
+- Ziniu Li
+- Zhenyang Xiao
+- Tian Ding
+- Ruoyu Sun
+- Benyou Wang
+- Dayiheng Liu
+- Fei Huang
+- Tianyu Liu
+- Bowen Yu
+- Junyang Lin
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm-evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.14492
+  arxiv: https://arxiv.org/abs/2501.14492
+  code: https://github.com/tangzhy/RealCritic
+  data: https://github.com/tangzhy/RealCritic
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks and prompts documented by the paper and official release.
+  trace_author: Dataset authors, annotators, and evaluation pipeline as documented by the paper.
+  answer_format: Task input, candidate response, and task-specific judgment or rubric metadata.
+  process_fields:
+  - task
+  - response
+  - judgment or rubric
+  environment_or_substrate: The evaluation environment documented in the official release.
+  verifier_or_reward: Human/expert annotations, rubric-based judgment, or benchmark scoring documented by the paper.
+  terminal_predicate: A task-specific score or label under the released evaluation protocol.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: See the paper's documented construction procedure.
+  filtering_rule: See the paper and release documentation.
+  sampling_protocol: See the official release for splits and configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official paper page and the linked official data, code, or project resource.
+  split: Consult the official release.
+  decontamination: Assess public-task exposure before using a release as held-out evaluation.
+  license: Consult the official resource terms before reuse.
+  lineage: https://arxiv.org/abs/2501.14492
+  known_failure_modes:
+  - Rubric or judge quality can constrain the validity of resulting scores.
+  citation_status: verified
+  confidence: high
+  notes: Official title, authors, affiliation block, venue status, and available resource links were checked.
+inclusion_reason: 以批评能否促成正确修正为闭环标准，评估自批评、交叉批评与迭代批评。
+related: []
+tags:
+- llm-judge
+- rubric
+- evaluation
+one_line_summary: RealCritic evaluates critiques in a closed loop through whether they lead to effective corrections.
+why_it_matters: RealCritic evaluates critiques in a closed loop through whether they lead to effective corrections.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and available release links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

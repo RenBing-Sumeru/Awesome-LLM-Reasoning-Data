@@ -1,0 +1,1 @@
+Large reasoning models often improve answers by producing long chains of thought, but those chains consume tokens, memory, and time. This survey studies how to reduce that cost without confusing a shorter output with a better solution. Its core data objects are the prompt, reasoning representation, final answer, and a resource measurement.

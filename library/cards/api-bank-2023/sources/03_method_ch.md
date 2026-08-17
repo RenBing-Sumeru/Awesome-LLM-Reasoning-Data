@@ -1,0 +1,1 @@
+1. 输入是用户对话轮次、API 文档或 schema、可选历史，以及 API-Bank 的可运行环境。2. 模型先判断是否需要工具，检索相关 API，输出 API 名称和参数，接收环境返回，再继续生成直到可以回答用户。3. 输出包括 API call trace、自然语言回复、任务级正确性，以及 planning、retrieval、calling 错误类别。4. 反馈契约由人工标注评测对话和 API 执行系统共同给出，训练集则用于从 Alpaca 初始化的 Lynx 式监督微调。5. 复用要固定官方代码/数据版本、API schema、split、执行代码、scaffold、prompt、调用预算，并区分分数来自执行、标注匹配还是整段对话成功。

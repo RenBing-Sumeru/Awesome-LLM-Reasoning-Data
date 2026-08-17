@@ -1,0 +1,1 @@
+Suh, Hyewon、Chaojian Li、Cheng-Jhih Shih、Zheng Wang、Kejing Xia、Yonggan Fu 与 Yingyan Celine Lin。2026。《Think Hard Only When Needed: A Hybrid Best-of-N and Beam Search for Efficient Test-Time Compute》。计算语言学协会发现论文集：EACL 2026，第 6004–6017 页。官方论文：https://aclanthology.org/2026.findings-eacl.315/。

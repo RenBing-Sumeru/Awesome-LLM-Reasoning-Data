@@ -1,0 +1,5 @@
+- 训练池包含 1,819 个 medium/hard LeetCode prompts；它们经过针对指定测试集的 10-gram 重叠过滤，但更广范围的污染控制仍为 unknown。
+- 搜索节点存储 State、Action、Reward 与 Reflection；reward 来自 LLM self-evaluation。
+- 论文设置每次扩展三个子节点，并在结束信号或五轮后停止。
+- 公开数据采用 question-solution schema 与 CC-BY-NC-4.0 标记；代码仓库为 Apache-2.0。
+- Pass@1 与 GPT-4o 质量判断不能验证中间搜索步骤。

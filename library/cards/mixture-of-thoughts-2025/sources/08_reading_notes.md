@@ -1,0 +1,5 @@
+- Positioning: Mixture-of-Thoughts selects teachable prompts and packages teacher reasoning from several domains into a source-labeled conversation mixture.
+- Data object: 349,317 reasoning traces across mathematics, code, and science; each record exposes messages, token count, and source.
+- Author and selector: o3-mini and related reasoning teachers generate detailed demonstrations; retention uses prompt teachability, complexity and diversity selection, source-level checks, and downstream training evaluation.
+- Evidence anchor: Phi-4-reasoning, a 14B model trained on the curated demonstrations, outperforms substantially larger open-weight models across the paper's reasoning suite and approaches full DeepSeek-R1; model and data choices remain coupled.
+- Reuse decision: suitable for Phi-4-reasoning SFT; first audit the closed teacher prevents complete regeneration and may embed unverifiable reasoning errors and the aggregate release lacks one top-level license, so source-level reuse rights differ.

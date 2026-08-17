@@ -1,0 +1,168 @@
+id: trajfusion-2026
+title: 'Beyond Rejection Sampling: Trajectory Fusion for Scaling Mathematical Reasoning'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Jie Deng
+- Hanshuang Tong
+- Jun Li
+- Shining Liang
+- Ning Wu
+- Hongzhi Li
+- Yutao Xie
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.390/
+  arxiv: https://arxiv.org/abs/2602.04391
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.390
+  venue: https://aclanthology.org/2026.findings-acl.390/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.390/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-acl.390.bib
+data_object:
+  prompt_source: 15K construction uses GSM8K, MATH, and pre-2024 AIME problems; the 100K setting additionally uses DeepMath.
+    Exact source revisions, per-source retained counts, and the rule for separating source training questions from evaluation
+    questions are not disclosed.
+  trace_author: Qwen2.5-Math-7B-Instruct generates the main 4K-context candidate trajectories; DeepSeek-R1-Distill-Qwen-7B
+    generates the separate long-form 16K-context trajectories. Fixed reflection phrases are curator-authored templates, not
+    teacher-generated diagnoses.
+  answer_format: One fused assistant target places zero or more selected whole incorrect solutions and generic reflection
+    phrases before one verifier-accepted correct solution, inside a think-style reasoning span, followed by a boxed final
+    answer. If no informative error is selected, the target reduces to correct-only rejection-sampling fine-tuning.
+  process_fields:
+  - problem
+  - sampled candidate trajectory
+  - extracted final answer
+  - answer-level correctness label
+  - error-frequency score
+  - distinct-wrong-answer diversity score
+  - selected incorrect trajectory
+  - fixed reflection phrase
+  - selected correct trajectory
+  - boxed final answer
+  environment_or_substrate: Offline vLLM sampling followed by pattern-based answer extraction, OpenCompass mathematical verification,
+    error-group selection, sequence fusion, and ordinary causal-language-model SFT.
+  verifier_or_reward: The construction verifier extracts boxed or inline answers and applies the OpenCompass automatic math
+    verifier, using symbolic evaluation/exact-match criteria against the reference answer. It labels only terminal answer
+    correctness and does not validate intermediate reasoning.
+  terminal_predicate: A sampled trajectory is correct when its extracted final answer passes the OpenCompass verifier. A problem
+    is retained only if at least one of 16 samples is correct; malformed generations are removed before fusion.
+recipe_metadata:
+  base_model: LLaMA3-8B-base and DeepSeekMath-7B-base for the main experiments; Qwen2.5-Math-7B-base, extended to 32,768 tokens
+    with YaRN, for long-context experiments.
+  teacher: Qwen2.5-Math-7B-Instruct for the main 15K/100K construction; DeepSeek-R1-Distill-Qwen-7B for the long-form 100K
+    construction.
+  generator: Sample K=16 chain-of-thought trajectories per problem. Compute error frequency r(x) from the fraction of wrong
+    samples and diversity u(x) from distinct wrong final answers; choose up to kmax representatives from wrong-answer groups,
+    prioritizing frequent groups and selecting the shortest trace per group; interleave them with randomly sampled fixed reflection
+    phrases before one correct trajectory.
+  filtering_rule: Drop outputs with excessive repetition, mid-response language switching, no meaningful reasoning, or no
+    extractable boxed final answer. Exclude problems with no correct sample. Select k(x)=min(kmax, floor(alpha*r(x)*u(x)))
+    wrong traces; when no eligible error is selected, fall back to the correct-only RFT record. The paper studies kmax values
+    and finds kmax=4 strongest, but the operational alpha value is not disclosed.
+  sampling_protocol: For each prompt, sample 16 outputs with temperature 0.7 and top-p 0.95 through vLLM. Main-teacher generations
+    use a 4,096-token limit; the long-form teacher uses a 16K context. The choice among multiple correct trajectories and
+    random seed are not disclosed.
+  rollout_count: 16
+  temperature: 0.7
+  inference_budget: Construction-time budget is 16 sampled trajectories per problem, with 4,096 tokens in the main pipeline
+    and a 16K teacher context in the long-form pipeline. These are data-generation budgets, not test-time voting budgets.
+  optimizer_or_scaffold: Ordinary next-token negative-log-likelihood SFT with sequence packing in ms-swift and DeepSpeed ZeRO-1
+    on 8xA100-80GB in bf16. Batch size is 64; 15K runs train 5 epochs and 100K runs 3 epochs. Reported learning rate is 5e-5
+    for LLaMA3/DeepSeekMath and 2e-5 for Qwen2.5-Math; no architecture or objective modification is required.
+audit:
+  source_mixture: GSM8K, MATH, and AIME problems before 2024 for the 15K setting; DeepMath is added for 100K. Exact per-source
+    counts, immutable snapshots, source licenses, and the number of raw, malformed, excluded, or unselected candidates are
+    not reported.
+  split: The paper reports 15K and 100K retained training examples but does not publish the exact split manifest or source
+    revisions. Main evaluation uses GSM8K, MATH, CollegeMath, DeepMind Mathematics, OlympiadBench-Math, and TheoremQA; long-context
+    evaluation uses AIME24, AIME25, and MATH-500. Precise source-to-evaluation overlap controls are not disclosed.
+  decontamination: unknown
+  license: The ACL paper is CC BY 4.0. No TrajFusion code, constructed dataset, model, or dedicated project release and therefore
+    no artifact license was confirmed. GSM8K, MATH, AIME, DeepMath, teacher models, and base models retain separate upstream
+    terms that require independent audit.
+  lineage: Source math problem -> 16 teacher samples -> malformed-output removal -> answer extraction and terminal verification
+    -> retain only problems with at least one correct sample -> compute error frequency and wrong-final-answer diversity ->
+    group wrong traces by final answer -> choose shortest representatives from frequent groups -> insert generic reflection
+    templates -> append one correct trace -> fused SFT target. Raw candidates, rejects, and unselected errors are not confirmed
+    as preserved or released.
+  known_failure_modes:
+  - Terminal answer verification can accept invalid reasoning that lands on the correct answer and can reject equivalent answers
+    when extraction or symbolic normalization fails.
+  - The reflection phrases are generic templates and do not identify the first error, explain why a trajectory failed, or
+    verify that the subsequent correction addresses it.
+  - Diversity is measured by distinct wrong final answers rather than semantic or causal diversity of reasoning paths.
+  - Problems that are wrong in all 16 samples are excluded, so the hardest always-wrong region contributes no training record;
+    always-correct problems reduce to correct-only RFT.
+  - Selecting the shortest trajectory from each wrong-answer group can favor concise but spurious or low-information failures.
+  - Random reflection wording and undisclosed alpha, correct-trace selection, and seeds limit exact reproduction.
+  - Certainty templates such as emphatic declarations of correctness can teach confidence boilerplate without calibrated evidence.
+  - The 15K/100K counts describe fused retained examples, not released raw trajectories; the raw 16-way generations, rejects,
+    and excluded prompts are not publicly auditable.
+  - No official code, constructed data, model checkpoints, split manifest, source revisions, decontamination report, or data
+    license was confirmed.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL publication, arXiv 2602.04391, ACL PDF, appendix templates, DOI, and ACL BibTeX were checked on 2026-07-22.
+    Method evidence is strong; reusable artifacts and release-level audit evidence are absent.
+inclusion_reason: TrajFusion is a concrete construction recipe for recycling verified failures into fused SFT demonstrations,
+  with explicit sampling, filtering, adaptive error selection, reflection-template insertion, and correct-only fallback.
+related: []
+tags:
+- trajectory-fusion
+- rejection-sampling
+- incorrect-trajectories
+- reflection-prompts
+- error-diversity
+- mathematical-reasoning
+- answer-verification
+- synthetic-data
+- sft
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: TrajFusion samples 16 math solutions, selects representative verifier-rejected errors using frequency and
+  wrong-answer diversity, and fuses them with generic reflection prompts and one correct trace for standard SFT.
+why_it_matters: It gives a concrete alternative to discarding every wrong rollout, while making clear that terminal correctness,
+  generic reflection text, and an unreleased candidate pool leave substantial process-quality and lineage risks.
+card: null
+needs:
+- 'needs_release: publish code, constructed 15K/100K data, checkpoints, immutable versions, and checksums'
+- 'needs_raw_candidates: preserve or release the 16-way generations, malformed rejects, unselected errors, excluded no-correct
+  prompts, and selection decisions'
+- 'needs_metadata: disclose alpha, random seeds, correct-trace selection, per-source retained counts, exact source revisions,
+  and full split manifest'
+- 'needs_verifier_audit: report answer extraction failures, symbolic-equivalence errors, false accepts, and step-level reasoning
+  validity'
+- 'needs_license: declare a constructed-data/code license and audit all upstream dataset/model terms'
+- 'needs_decontamination: document overlap checks among source corpora and evaluation benchmarks'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ACL and arXiv records verified; no official TrajFusion code, data, project, Hugging Face artifact, or checkpoint
+    release was confirmed.

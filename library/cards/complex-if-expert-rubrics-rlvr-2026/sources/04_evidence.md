@@ -1,0 +1,1 @@
+Roughly 1,000 training examples improve a 4B model by 15.5% and a 235B model by 12.2%. After one enterprise RL epoch, transfer gains are 4.5 on BFCL, 7.4 on Tau2-Bench, and 6.8 on Tool-Decathlon. This supports transfer from expert rubrics, although data, judge, and RL recipe change together and gains cannot be attributed only to atomisation.

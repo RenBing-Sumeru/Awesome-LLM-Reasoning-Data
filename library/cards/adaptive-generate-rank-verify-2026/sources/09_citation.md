@@ -1,0 +1,1 @@
+Dughmi, Shaddin, Mahdi Haghifam, and Yusuf Hakan Kalayci. “Adaptive Generate-Rank-Verify: Inference-Time Search with Costly Verification.” arXiv preprint arXiv:2605.17609, 2026. https://arxiv.org/abs/2605.17609.

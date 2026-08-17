@@ -1,0 +1,1 @@
+用 CHIMERA 微调 Qwen3-4B 后，模型在 GPQA-Diamond、AIME 2024/2025/2026、HMMT25 和 Humanity’s Last Exam 等任务上接近或匹配远大于自身的 DeepSeek-R1 与 Qwen3-235B，并在多学科上保持泛化。该结果支持高覆盖紧凑数据的效率，但教师、基座和训练 token 与大模型不同，且模型交叉验证不是独立人工 ground truth。

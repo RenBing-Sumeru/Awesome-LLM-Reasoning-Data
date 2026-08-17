@@ -1,0 +1,3 @@
+核心贡献是一个包含 321 个任务的真实业务 spreadsheet workflow benchmark。它不是继续做论坛式短操作，而是要求 agent 构建、调试、套模板或可视化业务 workbook，任务可能包含许多 sheet、很长 instruction 和数百个需要修改的 cell。
+
+数据对象是按任务目录组织的 `dataset.json` 记录和 spreadsheet 文件，覆盖 Financial Modeling、Debugging、Template、Visualization 四类。反馈契约是混合的：Financial Modeling / Template / Debugging 用输出 workbook 和 gold workbook 比较，给 modified-cell 分数和 task-level accuracy；Visualization 用专家设计 checklist，再由 VLM 判断 Data Correctness 和 Format Compliance。最接近的对比对象是 SpreadsheetBench 2024、Office/desktop agent benchmark 和 SWE-agent 式环境 harness。方向标签是 business spreadsheet workflow evaluation with file-state and checklist feedback。

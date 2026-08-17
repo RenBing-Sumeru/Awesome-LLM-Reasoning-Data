@@ -1,0 +1,2 @@
+1. **Primary limitation.** The annotation policy and candidate models constrain what preferences are represented. Results should be reported by dimension and category rather than only as an average win rate.
+2. **Curator audit risk.** A single aggregate label can hide disagreement among dimensions, while dynamic weighting can amplify reward-model errors. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

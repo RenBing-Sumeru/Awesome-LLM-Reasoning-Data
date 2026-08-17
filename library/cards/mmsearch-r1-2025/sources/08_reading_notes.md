@@ -1,0 +1,5 @@
+- Separate FVQA prompt records, cached image-search results, and on-policy GRPO episodes.
+- Search-required/search-free labels are induced by eight rollouts from a particular policy.
+- Retrieved information is an environment observation and is masked from policy loss.
+- Exact-match plus format reward does not verify intermediate reasoning or retrieval relevance.
+- Pin web, tool, summarizer, dataset, and code revisions; benchmark gains are not data-quality proof.

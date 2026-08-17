@@ -1,0 +1,5 @@
+- Distinguish the 1,526-example BIG-Bench Mistake training split from unreleased SDV rollout trajectories.
+- Record every hesitation trigger and Yes/No log-probability; a keyword alone is not the completion predicate.
+- Audit fast-run correlation and the τ = 0.8 escalation decision before treating consensus as confidence.
+- Keep predicted error index, textual feedback, revised solution, and final correctness as separate fields.
+- Treat ProcessBench and AIME gains as pipeline evidence, not item-level trace-quality proof.

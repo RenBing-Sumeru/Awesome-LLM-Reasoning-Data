@@ -1,0 +1,3 @@
+UI-TARS unifies perception grounding, action prediction, thought generation, online interaction, error correction, and preference alignment in one native GUI-agent lineage. The notable data innovation is not merely more screenshots: first-error correction and continuation from the actual erroneous state create explicit recovery supervision, while DPO converts corrected-versus-erroneous actions into preference records.
+
+Compared with modular GUI agents, the model directly emits thought/action under a common schema from screenshots. Compared with the later UI-TARS-2 Card, this entry is the 2025 construction anchor; the follow-up is related lineage rather than duplicate coverage.

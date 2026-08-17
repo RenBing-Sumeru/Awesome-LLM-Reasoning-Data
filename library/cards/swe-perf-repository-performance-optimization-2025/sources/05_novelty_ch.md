@@ -1,0 +1,1 @@
+SWE-bench 以失败测试转为通过为成功，KernelBench 则评估孤立 GPU kernel 的正确性与速度。SWE-Perf 的变化是在完整仓库中保留真实性能 PR、相关测试和专家运行时间，要求 agent 同时保持正确性并缩短运行时间；还提供 oracle target function 与 realistic problem statement 两种输入，以区分已知定位和自主定位。它没有提出新的优化算法，而是把真实 repository performance patch 转成可重放评测对象，并把执行时间提升正式纳入 verifier contract。

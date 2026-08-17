@@ -1,0 +1,7 @@
+对`instruction_demonstration_rationale_data`而言,该发布提供覆盖事实描述、成对交互推理和汇总意图的驾驶问答,可用于motion-language模型的SFT或评测;前提是保留类别标签,并且不把生成回答与确定性验证事实混为一谈。
+
+对`environment_agent_trajectory_data`而言,可复用单元是场景关联记录:WOMD scene ID、原始与替换后的agent ID、当前/未来时间、地图与信号上下文、问题、答案及可选渲染帧。因果预测研究只能暴露当前和历史观测,并应单独标记由未来轨迹构造的答案。
+
+可审计复用包应固定WOMD archive与split manifest、仓库commit、translator与prompt哈希、Azure模型版本和解码设置、原始响应、parser结果、重试/拒绝历史、人工审核标签、修订历史与许可证lineage。视觉复用还应固定ScenarioNet、MetaDrive、相机配置、帧范围及是否包含未来帧。
+
+该数据可用于研究交通规则推理、交互解释、motion-language SFT、场景grounding错误、hindsight泄漏,以及离线标注与在线部署之间的差距。论文报告的模型与轨迹预测改进可以说明这些用途值得研究,但不能认证转换后数据集。

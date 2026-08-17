@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-smith 把 Python 仓库变成 Docker 化执行环境，并合成 5 万多条破坏测试的修复任务、轨迹和一个训练后的 SWE 智能体。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程环境与智能体训练数据构造管线",
+  "best_for_ch": "构建可执行 SWE-agent 任务、轨迹与训练环境的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "John Yang, Kilian Lieret, Carlos E. Jimenez, Alexander Wettig, Kabir Khandpur, Yanzhe Zhang, Binyuan Hui, Ofir Press, Ludwig Schmidt, Diyi Yang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-12T03:24:23Z"
+}

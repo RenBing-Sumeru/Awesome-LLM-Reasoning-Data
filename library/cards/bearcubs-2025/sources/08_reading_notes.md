@@ -1,0 +1,5 @@
+- Start with Paper Sections 3–4 and Appendix B: the complete internal object contains a question, short gold answer, category, viable human path, and visited links, but the public ZIP contains only 111 question strings keyed by ID.
+- Read the answer contract separately from trajectory analysis: manual entailment and the four-way GPT autorater score the final answer, not source authority, modality use, action validity, or path fidelity.
+- Keep the protocol asymmetry visible: computer-use agents generally receive 15 minutes, the OpenAI Chat GPT Agent product receives 45 minutes, and evaluations occurred in February/March, May, and July on a changing web.
+- Treat the autorater ZIP as partial: all four files were inspected and hashed, but it needs gated gold answers and an external GPT API and has no license, lockfile, retry fixture, or pinned offline outputs.
+- Reuse remains evaluation/audit only until gold, category/split, URL, provenance, complete human and agent episodes, replay state, licenses, and an immutable version manifest are available.

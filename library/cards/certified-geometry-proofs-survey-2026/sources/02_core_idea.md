@@ -1,0 +1,1 @@
+The central idea is to combine a flexible language model with a stricter symbolic backend. The paper organizes the literature by what the model does—parser, strategist, prover, or critic—what proof artifact it emits, and what backend checks it.

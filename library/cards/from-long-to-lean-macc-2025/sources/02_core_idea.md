@@ -1,0 +1,13 @@
+The core idea is to treat rationale compression as a one-dimensional sequential search rather than a single rewrite. The formal pipeline is
+\[
+x \rightarrow r_0 \rightarrow r_1 \rightarrow \cdots \rightarrow r_i \rightarrow r^*,
+\]
+where each \(r_i\) is generated from the immediately preceding rationale. This is not best-of-\(N\): the paper reports one initial trace and one dependent candidate per round, so later candidates inherit both content and errors from earlier ones.
+
+The compression prompt exposes three pieces of context: the original question, the preceding thought process, and the final answer. It asks the API model to simplify the thought process without adding information. GPT-4o-mini is the main compressor; GPT-3.5-turbo, GPT-4.1-nano, GPT-4.1-mini, GPT-4o, and DeepSeek-V3 appear in compressor studies. Because the answer label is supplied on every round, the resulting rationale can be optimized to explain a known endpoint. Apparent answer preservation cannot be interpreted as independent evidence that the compressed reasoning would have produced that answer without label access.
+
+MACC’s per-example feedback contract is only token-length monotonicity. It defines \(CR_i=|r_i|_{\mathrm{tok}}/|r_0|_{\mathrm{tok}}\) and stops at the first strict length rebound, retaining the preceding revision. The selector contains no per-round answer checker, semantic-equivalence judge, perplexity threshold, process verifier, or faithfulness score. Compressed-CoT perplexity and benchmark accuracy appear in configuration-level analysis and in the Performance Estimation Hypothesis, but they are not Algorithm 1’s stopping signal.
+
+The selected \(r^*\) is converted to an SFT example. The paper describes an input format containing `Q [EOS] &lt;compress&gt; [EOS]` and an output containing the compressed CoT plus answer. Some original CoTs are mixed into training without `&lt;compress&gt;`, but the fraction is undisclosed. For reasoning models, reasoning and answer processes are separated, compressed, and concatenated; the parser and boundary rules are not released. At deployment, the fine-tuned model generates concisely in one pass rather than calling the multi-round compressor again.
+
+The key audit distinction is between the conceptual object and the released object. Algorithm 1 outputs conceptual pairs \((x,r^*)\), while a robust trace corpus would retain the discarded rebound, all intermediate revisions, token counts, selected index, correctness evidence, and lineage. The official release provides neither version. It therefore supports study of the method design, not data-level reuse or direct reconstruction of the actual SFT corpus.

@@ -1,0 +1,1 @@
+GRPO training of Qwen3-8B on SETA-Env reaches a 12% pass rate on Terminal-Bench 2.0, reported as the best 8B RL-trained result. Under the same harness, DeepSeek-V4-Flash improves from 40% to 43% pass@1 and from 54% to 58% pass@5. These results support environment quality and scale, but the new release still lacks long-term reproduction and cross-platform stability evidence.

@@ -1,0 +1,7 @@
+- 拒绝采样只验证最终答案，不验证中间推理的正确性、必要性或忠实性。
+- Qwen2.5-32B-Instruct 判断非 exact-match 结果，引入模型判断错误与同族偏差。
+- 实验集中于数学，向代码、科学、agent 或开放式判断迁移尚不明确。
+- 1:4 比例与容量边界是测试模型上的经验结果，不应视为普适阈值。
+- 教师规模同时改变风格、token 分布、训练数据和对齐行为，pairwise correctness 不能消除全部混杂。
+- 官方项目连接 MIT 仓库与 UWNSL Hugging Face，但精确论文对应数据集、保留行 manifest、checkpoint revision 和生成配置仍需制品级确认。
+- 教师 revision、完整解码元数据、上游输出许可证及去污染均未报告。

@@ -1,0 +1,5 @@
+- Anchor paper claims to arXiv:2605.04312v1 and its frozen version-1.0.0 manifest: 999 completed games, 49 unique models, manifest SHA-256 `73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad`.
+- Keep the episode sequence exact: seven distinct models; five rounds of private sidebars, public pitches, private elimination votes/rationales, elimination and memory; then two finalist pitches and a jury vote by the five eliminated players.
+- Read the feedback contract as agent votes -> parser -> tally -> uniform random tie break -> terminal winner -> Bayesian Plackett-Luce posterior. It ranks winners with uncertainty but does not verify intermediate reasoning or objective correctness.
+- Separate the live audit from the paper: on 2026-07-20 the source held 1,270 games and 62 ranking rows, of which 59 passed the display filter; its timestamp was 2026-07-02 15:26:25.976235+00:00. Do not substitute an earlier live snapshot.
+- Reuse is evaluation/audit only. Data is CC BY 4.0, the pinned engine is MIT, and the anonymous replication ZIP has unknown license; exact generator/model bindings, failed-run ledger, compute, and decontamination remain missing.

@@ -1,0 +1,292 @@
+id: agent-reward-bench-2025
+title: 'AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories'
+year: 2025
+venue: Conference on Language Modeling (COLM) 2025
+authors:
+- Xing Han Lù
+- Amirhossein Kazemnejad
+- Nicholas Meade
+- Arkil Patel
+- Dongchan Shin
+- Alejandra Zambrano
+- Karolina Stańczak
+- Peter Shaw
+- Christopher J. Pal
+- Siva Reddy
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+- audit_failure
+verification_contract:
+- mixed
+- judgment_required
+- environmental
+supervision_granularity:
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- web_agents
+- browser_navigation
+- trajectory_evaluation
+- llm_judges
+- enterprise_web_workflows
+- real_world_web
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.08942
+  arxiv: https://arxiv.org/abs/2504.08942
+  paper_version: https://arxiv.org/abs/2504.08942v2
+  code: https://github.com/McGill-NLP/agent-reward-bench
+  code_revision: https://github.com/McGill-NLP/agent-reward-bench/tree/f838338886d723d40b586309465a38277803d9e6
+  code_tag: null
+  code_license: null
+  data: https://huggingface.co/datasets/McGill-NLP/agent-reward-bench
+  huggingface: https://huggingface.co/datasets/McGill-NLP/agent-reward-bench
+  data_revision: https://huggingface.co/datasets/McGill-NLP/agent-reward-bench/tree/b6d17e646009d6cb63d5dd7be78807b680693f61
+  data_license: null
+  data_terms: https://huggingface.co/datasets/McGill-NLP/agent-reward-bench/blob/b6d17e646009d6cb63d5dd7be78807b680693f61/README.md
+  project: https://agent-reward-bench.github.io/
+  demo: https://huggingface.co/spaces/McGill-NLP/agent-reward-bench-demo
+  leaderboard: https://huggingface.co/spaces/McGill-NLP/agent-reward-bench-leaderboard
+  doi: https://doi.org/10.48550/arXiv.2504.08942
+  venue: https://openreview.net/forum?id=fQcUZMPIvu
+  openreview: https://openreview.net/forum?id=fQcUZMPIvu
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.08942
+data_object:
+  object_type: Offline web-agent episodes paired with expert full-trajectory labels, original environment rewards, screenshots,
+    and automatic-evaluator outputs.
+  prompt_source: 351 task IDs sampled from AssistantBench, VisualWebArena, WebArena, WorkArena, and WorkArena++; the split
+    manifest assigns 51 tasks to dev and 300 to test.
+  task_record:
+  - benchmark
+  - task_id
+  - split_joined_from_data_splits_csv
+  - natural_language_goal
+  - source_agent_and_model
+  - experiment_name
+  trace_author: One of four LLM-based GenericAgent systems executes the task through AgentLab and BrowserGym. GPT-4o, Claude
+    3.7 Sonnet, and Qwen2.5-VL cover all five benchmarks; text-only Llama 3.3 excludes VisualWebArena.
+  trajectory_record:
+  - agent
+  - benchmark
+  - experiment
+  - goal
+  - model
+  - model_args
+  - package_version
+  - seed
+  - flags
+  - valid
+  - ordered_steps
+  - summary_info
+  step_fields:
+  - step_number
+  - url
+  - action
+  - agent_reasoning
+  - accessibility_tree_and_pruned_variants
+  - screenshot_path
+  - open_page_urls
+  - focused_element_and_bounding_boxes
+  - last_action_error
+  - timing_token_and_cost_statistics
+  observation: The offline record exposes URLs, accessibility-tree representations, action-linked screenshots, browser/action
+    errors, and other per-step state summaries; it does not serialize a replayable live website/database snapshot.
+  expert_annotation_record:
+  - annotator_name
+  - benchmark
+  - task_id
+  - model_name
+  - experiment_name
+  - trajectory_success_binary_or_unsure
+  - trajectory_side_effect_binary_or_unsure
+  - trajectory_optimality_four_level_or_unsure
+  - trajectory_looping_binary
+  judgment_record:
+  - judge_name_and_model
+  - judge_input_flags
+  - completion_arguments
+  - chat_messages
+  - provider_response_and_reasoning
+  - parsed_labels
+  - inference_cost
+  - source_trajectory_info
+  answer_format: Expert reference labels and evaluator predictions attach to the completed episode. Success, side effect,
+    and looping are binary apart from raw Unsure values; optimality is an ordinal 1–4 label and must not be described as binary.
+  process_fields:
+  - full_goal_action_reasoning_observation_sequence
+  - expert_success
+  - expert_side_effect
+  - expert_optimality
+  - expert_looping
+  - environment_cumulative_reward
+  - llm_judge_prediction_and_reasoning
+  verifier_or_reward: Expert labels are the reference contract. Twelve main LLM-judge configurations and a functional rule
+    evaluator are compared in the paper; the release contains 14 LLM configurations including two additional GPT-4o-mini input
+    ablations, plus the functional evaluator.
+  reward: The functional evaluator maps stored cumulative environment reward greater than 0.5 to success. Human and simplified-judge
+    outputs provide three binary dimensions plus four-level optimality; the paper evaluates success primarily with precision
+    and uses recall/F1 as auxiliary metrics.
+  terminal_predicate: Expert post-hoc judgment of whether the completed action sequence achieves the goal is the primary terminal
+    label. It is intentionally contrasted with task-specific environment rules and is not itself an executable replay predicate.
+  provenance: Upstream benchmark task -> AgentLab/BrowserGym rollout by one source LLM -> cleaned trajectory and screenshots
+    -> expert annotation (with selected double annotation and consensus discussion) -> LLM/rule judgment -> scoring against
+    the primary expert row.
+  environment_or_substrate: Eight web environments spanning self-hosted WebArena/VisualWebArena sites, ServiceNow WorkArena
+    tasks, and real websites reached through AssistantBench. Exact upstream commits, database snapshots, and live-site states
+    are not packaged.
+  release_shape: 'At HF revision b6d17e646009d6cb63d5dd7be78807b680693f61: 1,302 cleaned trajectory JSON files; 27,299 PNGs
+    across 1,302 episode screenshot directories; 19,530 judgment JSON files (15 evaluator configs × 1,302); and ten data/
+    manifest files including annotations and task splits.'
+recipe_metadata:
+  base_model: Source agents use gpt-4o-2024-11-20, Claude 3.7 Sonnet (endpoint snapshot unknown), meta-llama/Llama-3.3-70B-Instruct,
+    and Qwen/Qwen2.5-VL-72B-Instruct.
+  teacher: Six expert web-agent researchers provide reference judgments; the released CSV contains eight distinct annotator
+    identifiers, which is unreconciled.
+  generator: GenericAgent implementations orchestrated with AgentLab and BrowserGym.
+  prompt_task_source: 33 AssistantBench validation tasks, 100 VisualWebArena tasks, 100 WebArena tasks, 18 WorkArena tasks,
+    and 100 WorkArena++ Level-2 tasks. WA/VWA are sampled by domain × original evaluation-method subgroup; WorkArena categories
+    are approximately balanced.
+  sampling_protocol: 'One released rollout per eligible model-task combination: three multimodal models on 351 tasks plus
+    Llama 3.3 on 251 non-VWA tasks, minus two persistent Llama WebArena timeouts, for 1,302 trajectories.'
+  temperature: unknown as an aggregate source-agent setting; individual released trajectory JSONs carry model_args including
+    temperature. Simplified judge defaults are temperature 0.0, seed 0, and max completion 1,024 at the pinned code revision.
+  rollout_count: 1 released trajectory per eligible model-task combination; failed restart attempts for two timeout tasks
+    are not released.
+  inference_budget: Paper reports 40,000 maximum input tokens and 8,192 output tokens for source agents. Turn/time limits
+    and exact provider-side budgets are not fully pinned.
+  search_or_scaffold: AgentLab representation/preprocessing and BrowserGym action execution across benchmark environments;
+    record-level flags, seed, package_version, model_args, and step statistics are serialized.
+  filtering_rule: 'Task-level stratified sampling is disclosed. Llama is excluded from VWA and two repeatedly timing-out Llama
+    WebArena tasks are absent. No success-only trajectory filter is applied: the primary release retains 355 successful, 946
+    unsuccessful, and one unsure trajectory.'
+  selection_threshold: unknown
+  optimizer_or_training_scaffold: null
+  judge_protocol: Simplified judges consume goal plus action/reasoning history and optionally final screenshot and/or final
+    accessibility tree. AER and NNetNav implement alternative representations. Functional success uses cumulative reward >0.5.
+audit:
+  source_mixture: Five upstream benchmarks, four source LLMs, self-hosted and enterprise environments, and real websites.
+    The project gives aggregate/task-level lineage but no component-level rights manifest or immutable upstream revision map.
+  split: Task-level 51 dev / 300 test manifest yielding 196 dev / 1,106 test trajectories. HF's dataset viewer declares annotations
+    as one `full` split, so consumers must join data/splits.csv and normalize `.resized`/`.improved` task IDs.
+  decontamination: unknown
+  benchmark_overlap: Intentional reuse of public WebArena, VisualWebArena, WorkArena, and WorkArena++ tasks; AssistantBench
+    uses its validation set because its test set is private. No model-pretraining overlap or post-training contamination audit
+    is reported.
+  lineage: Task IDs, agent/model, experiment, flags, seed, package version, step traces, screenshots, annotations, judgments,
+    and split manifests are released. Missing lineage includes pinned upstream environment commits/images/databases, provider
+    snapshots for all models, and a formal adjudication log.
+  license: 'Code license unknown: GitHub exposes no license and contains no LICENSE/COPYING/NOTICE. Dataset has bespoke HF
+    Terms of Use rather than a standard license; research use is conditioned on fair-use law and third-party terms, and derivatives
+    must propagate the terms. Upstream benchmark/site/model-output rights are not closed.'
+  release_version: arXiv 2504.08942v2 (2025-10-06; PDF SHA-256 a5c5aeb2f76a69372a70155d765172dc8af2376ec63a4874460c05b28609c921);
+    GitHub f838338886d723d40b586309465a38277803d9e6 (no tag); HF b6d17e646009d6cb63d5dd7be78807b680693f61 (2025-04-21).
+  release_completeness: Filename inventory is complete for 1,302 cleaned episodes, 1,302 screenshot directories, and 15 evaluator
+    outputs per episode. Per-step screenshot-reference resolution and exhaustive judgment-response parsing were not rerun.
+  annotation_version_drift: Paper reports six experts and 3,906 binary annotations over success, side effect, and repetition,
+    while the pinned CSV contains 1,408 rows for 1,302 unique trajectories, eight annotator IDs, 106 double-annotated keys,
+    and a fourth ordinal optimality field. The paper's 89.3% success agreement was not exactly reproduced from an obvious
+    raw-CSV exact-match calculation; subset and adjudication details remain unclear.
+  verifier_or_judge_failure_modes:
+  - No overall LLM judge exceeds 70% success precision; false-positive trajectories would contaminate filtering or training.
+  - Functional rules have 55.9% success recall against experts and can reject semantically successful trajectories.
+  - Judges can trust misleading agent reasoning over actual browser state.
+  - Judges miss task details, misread action intent, and are sensitive to screenshot versus accessibility-tree representation.
+  - Side-effect positives are rare, producing very low precision and unstable conclusions for that label.
+  - Optimality is four-level, weakly documented in prose, and lacks a reported paper-level agreement statistic.
+  - Consensus discussion can improve label clarity but may align annotators without preserving independent disagreement.
+  successful_and_failed_sample_retention: 'yes at the primary-row level: 355 Successful, 946 Unsuccessful, and one Unsure
+    among 1,302 unique trajectories. The CSV also retains 106 secondary annotations. Failed agent attempts before a completed
+    rollout, including the two persistent timeouts, are not released.'
+  replay: 'Offline audit is supported by trajectories, accessibility trees, screenshots, seeds, flags, and summaries. Deterministic
+    environment replay is not established: real websites drift; upstream commits/database snapshots/containers are absent;
+    browsergym is only lower-bounded in requirements; and run_agent.py sets strict_reproducibility=False.'
+  security: The official README and environment scripts publish a concrete default environment reset-token example. This metadata
+    intentionally does not reproduce the value; users should rotate/remove defaults and keep credentials out of Cards and
+    logs.
+  privacy_or_consent: Expert recruitment/compensation and privacy review are undisclosed. AssistantBench trajectories/screenshots
+    reflect real websites and may contain third-party content; no released PII/consent audit was found.
+  citation_status: verified
+  confidence: high
+  notes: Paper identity, COLM venue, arXiv v2, project, code, HF release, file inventories, annotation/split hashes, representative
+    schemas, evaluator code, and release terms were checked. Partial status is driven by reuse/replay/audit gaps, not by citation
+    uncertainty.
+  remaining_unknowns:
+  - code license and standard dataset license
+  - component-level upstream environment and third-party content rights
+  - exact environment/container/database revisions and deterministic replay fixtures
+  - decontamination and public-task exposure policy for training reuse
+  - reconciliation of paper versus CSV annotator/count/optimality/agreement details
+  - exhaustive per-step screenshot linkage and judgment parse-success report
+  - annotator assignment, blindedness, compensation, and immutable adjudication records
+  - privacy and PII review for real-web records
+inclusion_reason: 'AgentRewardBench exposes the otherwise hidden feedback layer of web-agent evaluation: full episodes, expert
+  trajectory labels, official environment rewards, and multiple LLM judgments can be compared record by record, making it
+  valuable for evaluation and failure audit while its licensing and replay gaps remain explicit.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- browser-agent
+- trajectory-evaluation
+- llm-as-judge
+- expert-annotation
+- rule-based-evaluator
+- reward-audit
+- failed-trajectories
+- replay-risk
+- license-risk
+category_ids:
+- environment_agent_trajectory_data
+- preference_reward_feedback_data
+one_line_summary: AgentRewardBench releases 1,302 web-agent episodes with expert success, side-effect, optimality, and repetition
+  labels plus 15 automatic-evaluator outputs per episode, but it supports offline audit rather than licensed deterministic
+  replay.
+why_it_matters: It lets researchers measure false-positive and false-negative behavior in both LLM judges and task-specific
+  rules before those signals are used to select agent trajectories or report success, while preserving failed examples and
+  exposing release/replay risks.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  repository_verified: true
+  dataset_verified: true
+  artifact_inventory_verified: true
+  license_verified: false
+  replay_verified: false
+  decontamination_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official sources were pinned to arXiv v2, GitHub f838338886d723d40b586309465a38277803d9e6, and HF b6d17e646009d6cb63d5dd7be78807b680693f61.
+    Counts and representative schemas were checked directly; unresolved rights, replay, and annotation-version issues prevent
+    a fully verified reuse claim.
+curation_level: L3_summary_ready
+needs:
+- 'needs_license: add an explicit code license, a standard dataset license, and a component-level upstream/third-party rights
+  manifest'
+- 'needs_replay: pin AgentLab/BrowserGym and every environment commit, container, database/site snapshot, reset fixture, and
+  provider model snapshot'
+- 'needs_decontamination: disclose overlap/public-task exposure policy before any training reuse'
+- 'needs_annotation_reconciliation: explain 6 experts versus 8 CSV annotator IDs, 3,906 binary labels versus the released
+  optimality column, 106 duplicate keys, and the 89.3% agreement computation'
+- 'needs_manifest_validation: publish per-step screenshot-link and judgment-parse validation results'
+- 'needs_annotator_metadata: disclose assignment, blindedness, compensation, and adjudication-log policy'
+- 'needs_privacy_review: audit real-web trajectories/screenshots for third-party content and PII'
+- 'needs_security_hygiene: remove or rotate the published default reset-token example without reproducing it in documentation'
+card: null

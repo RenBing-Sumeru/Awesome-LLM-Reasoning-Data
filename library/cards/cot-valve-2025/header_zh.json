@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "CoT-Valve 使用 MixChain 中不同长度的推理链训练长度可压缩的 CoT，并把压缩与正确性筛选作为可审计的构造步骤。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xinyin Ma；Guangnian Wan；Runpeng Yu；Gongfan Fang；Xinchao Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PhysReason 用 1,200 道含图物理题同时评测答案与逐步推理，区分定理应用、过程理解、计算和条件分析四类失误。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要评测文本与图示结合的物理推理，并定位具体过程错误类型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinyu Zhang、Yuxuan Dong、Yanrui Wu、Jiaxing Huang、Chengyou Jia、Basura Fernando、Mike Zheng Shou、Lingling Zhang、Jun Liu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

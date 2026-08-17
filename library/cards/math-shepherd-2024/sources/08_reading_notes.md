@@ -1,0 +1,1 @@
+Read the label semantics before reading the score tables. The automatic label is a reachability estimate under sampled continuations, not a ground-truth step-validity label. Keep training-data construction, PRM evaluation, and solver inference budget separate when reusing the paper.

@@ -1,0 +1,1 @@
+Before relying on an LLM judge, label a small human audit set and report Scott's pi as well as ranking correlation. Stratify false positives for leniency, underspecification and answer-format failures, then vary prompt verbosity and reference ordering. Treat a judge as a measurement instrument that needs calibration, not as a substitute for ground truth.

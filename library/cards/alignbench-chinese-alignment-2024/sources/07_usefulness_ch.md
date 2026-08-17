@@ -1,0 +1,1 @@
+AlignBench 可作为中文助手的综合回归测试，也可借鉴其“query—reference—evidence—multi-dimensional score”格式构建新的 judge 数据。研究者应报告分类别与分维度结果，而不是只引用总分；知识题还应检查证据日期和引用正确性。若用于模型训练，必须另建训练集并保持测试隔离。对 Track 7 而言，它同时属于 human-verified judgment、grounding 与 LLM-as-a-judge 数据工作。

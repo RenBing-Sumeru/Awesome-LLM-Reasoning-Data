@@ -1,0 +1,1 @@
+Junlong Li, Shichao Sun, Weizhe Yuan, Run-Ze Fan, Hai Zhao, and Pengfei Liu. "Generative Judge for Evaluating Alignment." ICLR 2024; arXiv:2310.05470. Paper: https://arxiv.org/abs/2310.05470. Official code/model/data entry: https://github.com/GAIR-NLP/auto-j and https://huggingface.co/GAIR/autoj-13b.

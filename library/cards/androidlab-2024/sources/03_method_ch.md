@@ -1,0 +1,1 @@
+1. 输入是 Android 任务指令、预定义虚拟设备状态，以及 XML 压缩树或带 set-of-mark 编号的截图。2. 智能体每步观察当前手机状态，从共享 action space 中选择点击、滑动、输入、长按、Home、Back 或 Finish，并接收下一轮状态。3. 输出包括任务成功率、子目标成功率、动作冗余/合理性指标，以及可用于 instruction tuning 的 task、screen、XML、operation 记录。4. 验收由任务拆分出的页面子目标、UI tree 匹配和任务检查逻辑给出，不是主观偏好打分。5. 复用时必须固定仓库 commit、AVD 镜像、app 离线数据、任务 split、评测脚本、步数预算，以及使用 XML、SoM、ReAct 还是 SeeAct scaffold。

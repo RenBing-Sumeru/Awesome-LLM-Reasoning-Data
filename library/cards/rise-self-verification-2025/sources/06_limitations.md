@@ -1,0 +1,4 @@
+The paper and checked code do not provide a public, versioned paper-run data manifest, on-policy trajectory release, trained RISE checkpoint, or complete split and decontamination audit. The code is MIT licensed, but that license does not establish rights for MATH-Hard inputs, generated traces, or model weights.
+
+The rule-based verifier's exact implementation, normalization/parser edge cases, coverage, and false-positive/false-negative rates are not established by the checked sources. A self-verification score can agree with the outcome while its prose critique is wrong, superficial, or unhelpful. Complete hyperparameters, seeds, verification-triple selection, and exact prompt/configuration mapping are also incomplete. These constraints make the entry partial, not a fully reproducible data release.
+

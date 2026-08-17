@@ -1,0 +1,13 @@
+- No official data artifact is linked for the 25T-token pretraining corpus, original 500K SFT set, later 6M SFT set, 100K math problems, 30K code problems, tests, rewards, or policy trajectories.
+- Pretraining source identities, per-source token counts, extraction versions, quality taggers, thresholds, synthetic generators, teacher prompts, yields, and rights are unknown. URL and MinHash deduplication are explicitly scoped to webpage dumps, not proven corpus-wide.
+- SFT is described as open-source plus proprietary distilled data, but teachers, source records, licenses, decoding, rejects, and the relationship between the 500K and 6M versions are unknown.
+- RL sources mix open and proprietary collections. Task names, source revisions, answer corrections, licenses, split, and exact checkpoint-to-task membership are not released.
+- Model filters can misclassify proof, multiple-choice, impossible, incorrect, easy, or hard problems. The report does not publish prompts, model revisions, calibration, or rejected-task audits.
+- Math verification checks the endpoint and can be exploited; the authors report reward exploitation during later Base-to-RL math training. Answer extraction and false-accept rates are not disclosed.
+- Code tests can be incomplete, leaked, environment-sensitive, or weak. Test suites, difficulty groups, compiler/runtime images, timeouts, nondeterminism handling, and false-accept audits are absent.
+- Dynamic sampling changes the effective training distribution by removing pass-rate-zero and pass-rate-one prompts; the easy pool adds a second distribution. Per-step retained prompts and probabilities beyond the reported 10% pool draw are unavailable.
+- The explored language-mixing penalty failed to fully solve language mixing and introduced a new exploitation path. Whether and where that penalty appears in released checkpoints is unclear.
+- The official MiMo repository is not the full training implementation. The verified XiaomiMiMo vLLM fork supports inference; modified GRPO, preprocessing, online judge, reward code, Seamless Rollout Engine, and exact run configurations are not published there.
+- Decontamination is scoped and incompletely auditable: SFT reports 16-gram checks and RL math reports n-gram checks, but benchmark snapshots, normalization, matches, removals, code coverage, and pretraining checks are missing.
+- Repository Apache-2.0 and weight-page MIT labels do not license undisclosed training or evaluation data.
+- Benchmark scores, pass@k, repeated sampling, decoding settings, and systems speedups measure model or infrastructure behavior; they do not prove data quality, provenance, rights, or verifier correctness.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-PolyBench 为 2,110 个多语言仓库任务提供 Docker 环境与 F2P/P2P 测试，用可执行结果判定代码 agent 补丁是否真正修复问题。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多语言仓库级代码 agent benchmark 与可执行补丁评测数据",
+  "best_for_ch": "需要多语言仓库修复评测、F2P/P2P 测试或 Docker 化复现实验的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Muhammad Shihab Rashid, Christian Bock, Yuan Zhuang, Alexander Buchholz, Tim Esler, Simon Valentin, Luca Franceschi, Martin Wistuba, Prabhu Teja Sivaprasad, Woo Jung Kim, Anoop Deoras, Giovanni Zappella, Laurent Callot",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

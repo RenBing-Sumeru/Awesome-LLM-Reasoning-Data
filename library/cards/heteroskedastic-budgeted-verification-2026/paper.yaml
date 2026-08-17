@@ -1,0 +1,28 @@
+id: heteroskedastic-budgeted-verification-2026
+title: 'Heteroskedastic Signals in Budgeted LLM Verification: Structural Heterogeneity Limits Optimization Gains'
+year: 2026
+venue: arXiv preprint
+authors: [Jinlong Yang]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, full_episode]
+domains: [mathematical-reasoning, code]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2606.15841, arxiv: https://arxiv.org/abs/2606.15841, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2606.15841}
+data_object: {prompt_source: 'MBPP programming problems and MATH mathematical reasoning problems.', trace_author: 'Qwen3-8B, LLaMA3-8B, and GPT-4o-mini produce answers whose uncertainty signals and verification outcomes are logged.', answer_format: 'Each record combines token-level uncertainty proxies, an ex-ante cost proxy, a realized verification cost, an error label, a verification decision, and a budgeted hit-rate outcome.', process_fields: [prompt, answer, uncertainty_proxies, cost_proxy, realized_cost, error_label, allocation_decision, hit_rate], environment_or_substrate: 'Budgeted execution-based verification for MBPP and answer-matching verification for MATH.', verifier_or_reward: 'Unit-test feedback on MBPP and answer matching on MATH; policies are assessed by error hit rate under a fixed verification-cost budget.', terminal_predicate: 'A candidate is selected for costly verification only when its policy score passes the applicable budget-aware threshold.'}
+recipe_metadata: {base_model: 'Qwen3-8B, LLaMA3-8B, and GPT-4o-mini.', teacher: 'No teacher model; verified error labels provide online feedback to adaptive policies.', generator: 'The evaluated language model generates the candidate answer and token-level confidence signals.', filtering_rule: 'Compare global and cost-stratified policies that select candidates for verification under the same budget cap.', sampling_protocol: 'Evaluate 10 random seeds at verification-budget fractions of 10%, 20%, 30%, and 50%.', rollout_count: 'Not presented as multi-rollout generation; each allocation decision concerns whether to spend verification compute on an observed candidate.', temperature: 'Not specified in the paper.', inference_budget: 'A fraction beta of the total realized verification cost, with policies sharing the same cap.', optimizer_or_scaffold: 'Threshold, mirror-prox global adaptation, partially stratified mirror-prox adaptation, and cost-stratified thresholding.'}
+audit: {source_mixture: 'Official arXiv paper.', split: 'MBPP uses 500 examples and MATH uses 5,000 examples; main results report 10 seeds.', decontamination: 'Not separately claimed; benchmark contamination and the provenance of model outputs should be checked before reuse.', license: 'No standalone released dataset or code is claimed in the official paper; check benchmark and model terms before reuse.', lineage: 'https://arxiv.org/abs/2606.15841', known_failure_modes: [cost-proxy-mismatch, stratum-misalignment, benchmark-specific-verifier, uncertainty-miscalibration, offline-to-online-shift], citation_status: verified, confidence: high, notes: 'Official arXiv PDF checked on 2026-07-20. It lists Northwestern Polytechnical University and reports no official code or dataset release.'}
+inclusion_reason: 'It studies how finite test-time verification compute should be allocated and demonstrates that a globally shared uncertainty signal can misallocate that budget when its reliability changes across cost regimes.'
+related: []
+tags: [test-time-compute, budgeted-verification, uncertainty, adaptive-allocation, cost-stratification]
+status: verified
+one_line_summary: 'The paper shows that stratifying a limited verification budget by cost can outperform stronger globally shared adaptive policies when uncertainty signals are not comparable across strata.'
+reading_priority: recommended
+paper_type: Budgeted verification and test-time allocation analysis
+best_for: Readers diagnosing uncertainty-based verification routing or designing budget-aware test-time compute policies.
+confidence: high
+why_it_matters: 'It gives a negative result with a practical remedy: optimizing a stronger global allocator cannot fix feedback signals whose reliability differs systematically by cost regime.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv PDF checked; it provides the author affiliation, method, and experimental details. No official code or data link is stated.'}
+category_ids: [scaling_rlvr_test_time_compute]

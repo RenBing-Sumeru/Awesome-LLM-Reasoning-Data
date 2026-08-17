@@ -1,0 +1,111 @@
+id: rag-rewardbench-preference-alignment-2025
+title: 'RAG-RewardBench: Benchmarking Reward Models in Retrieval Augmented Generation for Preference Alignment'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Zhuoran Jin
+- Hongbang Yuan
+- Tianyi Men
+- Pengfei Cao
+- Yubo Chen
+- Jiexin Xu
+- Huaijun Li
+- Xiaojian Jiang
+- Kang Liu
+- Jun Zhao
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- retrieval-augmented-generation
+- preference-alignment
+- reward-modeling
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.877/
+  arxiv: https://arxiv.org/abs/2412.13746
+  code: https://github.com/jinzhuoran/RAG-RewardBench
+  data: https://huggingface.co/datasets/jinzhuoran/RAG-RewardBench
+  project: https://github.com/jinzhuoran/RAG-RewardBench
+  huggingface: https://huggingface.co/datasets/jinzhuoran/RAG-RewardBench
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.877
+  venue: https://aclanthology.org/2025.findings-acl.877/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.877/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Eighteen RAG subsets, six retrievers, and responses from 24 retrieval-augmented language models.
+  trace_author: RAG systems and LLM-as-judge preference annotation, with human-correlation analysis.
+  answer_format: Question, retrieved documents, response pair, preference label, and RAG scenario metadata.
+  process_fields:
+  - question
+  - documents
+  - chosen_response
+  - rejected_response
+  - scenario
+  - preference_label
+  environment_or_substrate: Retrieval-augmented question answering and reasoning.
+  verifier_or_reward: LLM-as-judge preference labels evaluate multi-hop reasoning, citations, abstention, and conflict robustness.
+  terminal_predicate: A reward model selects the preferred RAG response.
+recipe_metadata:
+  base_model: The paper evaluates 45 reward models and RALM systems.
+  teacher: LLM-as-judge annotations validated for correlation with human judgments.
+  generator: Multiple retrievers and RALMs generate candidate RAG responses.
+  filtering_rule: Scenario-focused construction and preference annotation produce the benchmark pairs.
+  sampling_protocol: Use the official 1,485-row dataset and code configuration.
+  inference_budget: Retriever, RALM, and judge choices affect benchmark results.
+  optimizer_or_scaffold: Reward-model evaluation and preference-aligned RAG training analysis.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: RAG task subsets, retrievers, RALM responses, documents, and preference labels.
+  split: The official dataset card reports 1,485 rows; pin its current revision before reuse.
+  decontamination: Public benchmark records should not be reused as training data for reported RAG-RewardBench evaluation.
+  license: Confirm the current dataset and upstream source licenses before reuse.
+  lineage: Findings of ACL 2025 paper, author repository, and jinzhuoran dataset release.
+  known_failure_modes:
+  - LLM-as-judge labels can preserve judge-specific preferences.
+  - The four RAG scenarios do not exhaust every retrieval failure mode.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL Anthology paper and affiliation block, author GitHub repository, and official Hugging Face dataset
+    card.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RAG-RewardBench provides 1,485 preference pairs for testing reward models on retrieval-specific reasoning,
+  citation, abstention, and conflict cases.
+why_it_matters: It makes RAG preference feedback inspectable at the document-and-response level rather than treating retrieval
+  as ordinary chat.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL Anthology paper and affiliation block, author GitHub repository, and official Hugging Face dataset
+    card.
+category_ids:
+- preference_reward_feedback_data
+- audit_failure_contamination_verifier_attacks

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LFQA-HP-1M 从公开偏好来源筛选并统一 1,326,356 条英语长篇问答人工两两偏好记录，并以九维质量量规审计可解释模型和 LLM 裁判。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长篇问答人工偏好数据集、量规评测与 LLM 裁判审计",
+  "best_for_ch": "需要构建或审计长篇问答奖励模型、两两偏好评测器、LLM-as-a-Judge，且能严格追溯上游公开数据许可与污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Rafid Ishrak Jahan、Fahmid Shahriar Iqbal、Sagnik Ray Choudhury（University of North Texas）",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T08:18:11Z"
+}

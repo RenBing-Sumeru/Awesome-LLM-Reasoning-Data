@@ -1,0 +1,129 @@
+id: osprey-pixel-instruct-2024
+title: 'Osprey: Pixel Understanding with Visual Instruction Tuning'
+year: 2024
+venue: CVPR 2024
+authors:
+- Yuqian Yuan
+- Wentong Li
+- Jian Liu
+- Dongqi Tang
+- Xinjie Luo
+- Chi Qin
+- Lei Zhang
+- Jianke Zhu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2024/html/Yuan_Osprey_Pixel_Understanding_with_Visual_Instruction_Tuning_CVPR_2024_paper.html
+  arxiv: https://arxiv.org/abs/2312.10032
+  code: https://github.com/CircleRadon/Osprey
+  data: https://huggingface.co/datasets/AntGroup-MI/Osprey-724K
+  project: https://github.com/CircleRadon/Osprey
+  huggingface: https://huggingface.co/datasets/AntGroup-MI/Osprey-724K
+  doi: https://doi.org/10.1109/CVPR52733.2024.02664
+  venue: https://openaccess.thecvf.com/content/CVPR2024/html/Yuan_Osprey_Pixel_Understanding_with_Visual_Instruction_Tuning_CVPR_2024_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2024/html/Yuan_Osprey_Pixel_Understanding_with_Visual_Instruction_Tuning_CVPR_2024_paper.html
+  bibtex: null
+data_object:
+  prompt_source: segmentation and region-description datasets converted to mask-conditioned conversations
+  trace_author: source labels plus language-model-generated region questions and descriptions
+  answer_format: image, mask or region, referring instruction, and grounded assistant response
+  process_fields:
+  - image
+  - mask or region
+  - referring instruction
+  - and grounded assistant response
+  environment_or_substrate: JSON conversations plus images and segmentation masks
+  verifier_or_reward: mask grounding, source labels, and pixel-level benchmark scoring
+  terminal_predicate: Retain a record only when mask grounding, source labels, and pixel-level benchmark scoring accepts it
+    and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: source labels plus language-model-generated region questions and descriptions
+  generator: Osprey encodes a selected segmentation mask as a visual prompt and pairs it with 724K conversations that ask
+    for recognition, detailed description, reasoning, and interaction about that precise region.
+  filtering_rule: mask grounding, source labels, and pixel-level benchmark scoring
+  sampling_protocol: segmentation and region-description datasets converted to mask-conditioned conversations
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: mask-aware visual instruction SFT
+audit:
+  source_mixture: segmentation and region-description datasets converted to mask-conditioned conversations
+  split: 'Official release scale: 724,000 pixel-grounded visual conversations; storage: JSON conversations plus images and
+    segmentation masks.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: dataset-card and repository terms; source segmentation datasets retain their licenses
+  lineage: segmentation and region-description datasets converted to mask-conditioned conversations -> source labels plus
+    language-model-generated region questions and descriptions -> mask grounding, source labels, and pixel-level benchmark
+    scoring -> mask-aware visual instruction SFT.
+  known_failure_modes:
+  - Generated questions may restate segmentation categories
+  - upstream masks contain annotation errors
+  - performance on unseen medical or satellite masks is not established.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 43 citations; this is not a Google Scholar count.'
+inclusion_reason: 'Osprey-724K is a public Track 01 training object: image, mask or region, referring instruction, and grounded
+  assistant response; it is consumed by mask-aware visual instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- pixel-grounded-visual-conversations
+status: verified
+one_line_summary: Osprey releases 724K conversations whose targets are conditioned on arbitrary pixel masks rather than coarse
+  boxes.
+why_it_matters: making arbitrary masks first-class fields in instruction-response records
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training an assistant to reason about an exact segmented object or part
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: pixel-grounded visual conversations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Zhejiang University, Ant Group, Microsoft, The Hong Kong Polytechnic
+      University.
+    venue: 'The official venue URL confirms formal publication at CVPR 2024: https://openaccess.thecvf.com/content/CVPR2024/html/Yuan_Osprey_Pixel_Understanding_with_Visual_Instruction_Tuning_CVPR_2024_paper.html'
+    impact: OpenAlex reported 43 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON conversations plus images and segmentation masks records at https://huggingface.co/datasets/AntGroup-MI/Osprey-724K
+      with terms recorded as: dataset-card and repository terms; source segmentation datasets retain their licenses.'
+  selection_eligible: true
+  year_impact_threshold: 3

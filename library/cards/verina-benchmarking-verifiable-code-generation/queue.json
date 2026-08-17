@@ -1,0 +1,19 @@
+{
+  "title": "VERINA: Benchmarking Verifiable Code Generation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.23135",
+    "data": "https://huggingface.co/datasets/sunblaze-ucb/verina",
+    "code": "https://github.com/sunblaze-ucb/verina",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T11:39:25Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 VERINA，含189个Lean编程任务，含代码、规格、证明和测试",
+    "updated_at": "2026-07-19T11:39:25Z"
+  }
+}

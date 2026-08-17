@@ -1,0 +1,1 @@
+RIFT retains eight self-generated mathematical candidates per problem, labels them with signed answer-correctness rewards, and fine-tunes on the full mixed-reward buffer using a stabilized positive/negative loss.

@@ -1,0 +1,3 @@
+The paper proves that its regret upper bound matches a minimax lower bound for the stated Pass@k setting. Under its assumptions, this makes Best-of-Majority minimax optimal and scaling-monotonic, whereas the analysis constructs cases in which majority voting and best-of-N do not improve monotonically with a larger sampling budget.
+
+Experiments on mathematics problems support the theoretical comparison: the reported curves show Best-of-Majority outperforming the two baselines as sampling is scaled. This is evidence about a particular selection contract with a reward model, not a claim that every verifier or every open-ended task will show the same curve.

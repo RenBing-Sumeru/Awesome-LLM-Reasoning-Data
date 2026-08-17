@@ -1,0 +1,5 @@
+Correctness is relative to the configured mobile environment and evaluator. A CheckPoint hit means that the logged action history contains the expected package, key phrase, or API event under the benchmark's matching rules; it does not guarantee that the user's real-world intent was fully satisfied. A PassRate success depends on GPT-4 judging the organized emulator state and is not a deterministic verifier.
+
+The benchmark is sensitive to app versions, login state, device seed data, emulator/runtime versions, Appium and ADB behavior, API availability, and maximum step budgets. The repository notes that required apps must be pre-installed and logged in, that test data may depend on contacts, SMS records, diary entries, memos, and photos, and that app versions can influence results.
+
+The released code is Apache-2.0, while the dataset is CC BY-NC-SA 4.0 according to the official repository. Commercial reuse, redistribution, and derivative benchmark releases need license review. The public tasks and action traces can contaminate future agents, so training use should be tracked separately from evaluation-only use.

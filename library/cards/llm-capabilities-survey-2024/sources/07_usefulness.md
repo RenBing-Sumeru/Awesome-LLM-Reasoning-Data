@@ -1,0 +1,1 @@
+Use it to make an application requirement list before comparing models. It is useful when a team needs to explain why a domain task needs particular abilities and why a broad benchmark may be insufficient as the sole selection signal.

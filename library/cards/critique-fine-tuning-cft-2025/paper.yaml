@@ -1,0 +1,102 @@
+id: critique-fine-tuning-cft-2025
+title: 'Critique Fine-Tuning: Learning to Critique is More Effective than Learning to Imitate'
+year: 2025
+venue: COLM 2025
+authors:
+- Yubo Wang
+- Xiang Yue
+- Wenhu Chen
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- stem-reasoning
+- critique
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2501.17703
+  arxiv: https://arxiv.org/abs/2501.17703
+  code: https://github.com/TIGER-AI-Lab/CritiqueFineTuning
+  data: https://huggingface.co/datasets/TIGER-Lab/WebInstruct-CFT
+  project: https://tiger-ai-lab.github.io/CritiqueFineTuning/
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/WebInstruct-CFT
+  doi: https://doi.org/10.48550/arXiv.2501.17703
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: WebInstruct questions across mathematics and other STEM-oriented domains.
+  trace_author: Noisy response generators and GPT-4o critique generation.
+  answer_format: Instruction, question-plus-noisy-response input, and detailed textual critique output.
+  process_fields:
+  - instruction
+  - input
+  - noisy_response
+  - critique
+  environment_or_substrate: Instruction-following and reasoning tasks.
+  verifier_or_reward: GPT-4o-generated critique rather than a scalar reward.
+  terminal_predicate: A critique explains whether and where the candidate response is flawed.
+recipe_metadata:
+  base_model: Qwen2.5, Qwen2.5-Math, and DeepSeek-Math backbones in reported experiments.
+  teacher: GPT-4o generates detailed critiques.
+  generator: WebInstruct-derived noisy responses paired with teacher critiques.
+  filtering_rule: Use released 600K, 50K, or 4K variants according to the intended training regime.
+  sampling_protocol: Pin the selected public configuration and revision.
+  inference_budget: Not applicable to static data construction; model and critique generation settings are documented by the
+    project.
+  optimizer_or_scaffold: Supervised critique fine-tuning.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: WebInstruct questions, noisy candidate responses, and GPT-4o critique outputs.
+  split: The official dataset card provides 600K, 50K, and 4K configurations.
+  decontamination: Not fully described on the dataset landing page.
+  license: Apache-2.0 on the official dataset card.
+  lineage: arXiv paper, TIGER-AI-Lab project and repository, and TIGER-Lab Hugging Face dataset.
+  known_failure_modes:
+  - Critiques can inherit teacher-model errors and style preferences.
+  - A critique dataset does not guarantee that a model can independently solve the underlying task.
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, official project/repository links exposed by the data card, and the WebInstruct-CFT dataset
+    card documenting its fields, variants, and Apache-2.0 license.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: WebInstruct-CFT teaches models to diagnose noisy solutions with GPT-4o-generated critiques instead of merely
+  imitating correct answers.
+why_it_matters: The release turns textual error analysis into a reusable training object rather than reducing feedback to
+  a correct-answer target.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, official project/repository links exposed by the data card, and the WebInstruct-CFT dataset
+    card documenting its fields, variants, and Apache-2.0 license.
+category_ids:
+- preference_reward_feedback_data

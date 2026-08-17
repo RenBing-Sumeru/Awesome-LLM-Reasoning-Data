@@ -1,0 +1,5 @@
+- 保留规模映射：1B/4B/12B/27B 使用 2T/4T/12T/14T tokens；后三者加入冻结的约 400M SigLIP encoder。
+- 预训练 target 是每 token 256 个 sampled teacher logits；teacher identity 与 query mode 仍未知。
+- 不要从“large IT teacher”或 BOND/WARM/WARP 引用推断 online/on-policy rollout；后训练 rollout count 未披露。
+- 把 weight-averaged human RM、code execution、math ground truth、safety RLHF 与 5,000-step QAT 保持为不同反馈/阶段主张。
+- 阅读 50-token prefix/suffix、10% edit-distance 与约 24x memorization 结果时，必须保留 private-sample 与 license 边界。

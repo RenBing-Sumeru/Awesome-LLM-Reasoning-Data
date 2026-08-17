@@ -1,0 +1,117 @@
+id: swe-bench-github-issues-2023
+title: 'SWE-bench: Can Language Models Resolve Real-World GitHub Issues?'
+year: 2023
+venue: ICLR 2024 Oral / arXiv
+authors:
+- Carlos E. Jimenez
+- John Yang
+- Alexander Wettig
+- Shunyu Yao
+- Kexin Pei
+- Ofir Press
+- Karthik Narasimhan
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- swe-agents
+- repository-repair
+- github-issues
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2310.06770
+  arxiv: https://arxiv.org/abs/2310.06770
+  doi: https://doi.org/10.48550/arXiv.2310.06770
+  code: https://github.com/SWE-bench/SWE-bench
+  data: https://huggingface.co/datasets/princeton-nlp/SWE-bench
+  project: https://www.swebench.com/
+  huggingface: https://huggingface.co/datasets/princeton-nlp/SWE-bench
+  venue: null
+  openreview: https://openreview.net/forum?id=VTF8yNQM66
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official SWE-bench paper, project, repository, and HF dataset
+  trace_author: SWE-bench authors and repository issue extraction pipeline
+  answer_format: GitHub issues, repository snapshots, patches, tests, Docker images, logs, and pass/fail outcomes
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: GitHub issue resolution with repository checkout, patches, tests, and Docker evaluation
+  verifier_or_reward: SWE-bench Docker harness and repository tests
+  terminal_predicate: SWE-bench Docker harness and repository tests
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: GitHub issue/test histories and benchmark task curation
+  generator: SWE-bench issue-to-test task construction
+  filtering_rule: distinguish full/test/Lite/Verified splits and pin Docker harness version
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2310.06770; https://www.swebench.com/; https://github.com/SWE-bench/SWE-bench; https://huggingface.co/datasets/princeton-nlp/SWE-bench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2310.06770'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: Paper and official artifacts verify 2,294 issue/PR repair problems from 12 Python repositories. Compare scores only
+    with pinned split, harness, runtime image, and evaluator version.
+inclusion_reason: it is the foundational executable repository repair benchmark
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- swe-agents
+- repository-repair
+- github-issues
+why_it_matters: it is the foundational executable repository repair benchmark
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SWE-bench turns real GitHub issues into executable repository repair tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Paper and official artifacts verify 2,294 issue/PR repair problems from 12 Python repositories. Compare scores only
+    with pinned split, harness, runtime image, and evaluator version.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 93
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,123 @@
+id: auto-l2s-2025
+title: 'AutoL2S: Auto Long-Short Reasoning for Efficient Large Language Models'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Feng Luo
+- Yu-Neng Chuang
+- Guanchu Wang
+- Hoang Anh Duy Le
+- Shaochen Zhong
+- Hongyi Liu
+- Jiayi Yuan
+- Yang Sui
+- Vladimir Braverman
+- Vipin Chaudhary
+- Xia Hu
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- mathematics
+- reasoning
+training_use:
+- distillation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.831/
+  arxiv: https://arxiv.org/abs/2505.22662
+  code: https://github.com/amandaluof/AutoL2S
+  data: null
+  project: null
+  huggingface: https://huggingface.co/amandaa/AutoL2S-7b
+  doi: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.831/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Bespoke-Stratos questions are paired with long and short reasoning traces; the checked official release evidence
+    does not establish a fully versioned paired raw-trace corpus.
+  trace_author: Qwen2.5-3B/7B-Instruct bases; Qwen2.5-Math-7B produces short CoT
+  answer_format: Correct long/short solutions, a shortest-correct selection, and an EASY control token; model release evidence
+    does not establish all raw preference pairs.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Correctness and shortest-correct filtering are stated, but the exact verifier, tie handling, and full
+    pairing procedure are not completely released.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Qwen2.5-3B/7B-Instruct bases; Qwen2.5-Math-7B produces short CoT
+  teacher: unknown
+  generator: AutoL2S creates long-to-short pairs, chooses correct concise traces, and trains a Qwen Math 7B model using a
+    GRPO-style objective with a difficulty-control token.
+  filtering_rule: Correctness and shortest-correct filtering are stated, but the exact verifier, tie handling, and full pairing
+    procedure are not completely released.
+  sampling_protocol: The official paper links code at amandaluof/AutoL2S. A named HF model exists, but the checked evidence
+    does not establish a fully released paired raw-trace corpus.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: AutoL2S creates long-to-short pairs, chooses correct concise traces, and trains a Qwen Math 7B model
+    using a GRPO-style objective with a difficulty-control token.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: Apache-2.0 for the named model
+  lineage: Bespoke-Stratos questions are paired with long and short reasoning traces; the checked official release evidence
+    does not establish a fully versioned paired raw-trace corpus. -> Correct long/short solutions, a shortest-correct selection,
+    and an EASY control token; model release evidence does not establish all raw preference pairs. -> Correctness and shortest-correct
+    filtering are stated, but the exact verifier, tie handling, and full pairing procedure are not completely released. ->
+    reported final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Conciseness filtering can remove useful reasoning; raw long/short alignments, correctness evidence, and data license/provenance
+    are incomplete.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It is a Track 5 bridge from expensive long rollouts to compact trainable traces, but the unreleased pair
+  corpus limits independent audit.
+related: []
+tags:
+- long-to-short
+- distillation
+- reasoning-compression
+- grpo
+- shortest-correct
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A long-to-short reasoning-distillation recipe that attempts to retain correct concise traces.
+why_it_matters: It is a Track 5 bridge from expensive long rollouts to compact trainable traces, but the unreleased pair corpus
+  limits independent audit.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

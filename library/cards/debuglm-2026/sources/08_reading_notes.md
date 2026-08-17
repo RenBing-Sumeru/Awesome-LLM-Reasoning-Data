@@ -1,0 +1,6 @@
+- Data object: instruction-response records plus source, mode, control, target, and stage labels; not a stateful debugging episode.
+- Feedback: known-source exact match for tracing, tag equality for refusal supervision, a model judge for free-form utility, and no reported execution feedback.
+- Terminal predicates: one response-and-tag endpoint for the main interface; all relevant tags across ten samples for multi-source evaluation; no episodic stop condition.
+- Failure and replay audit: no official per-failure records, transformed corpus, code, checkpoint, immutable source revisions, or full configuration were confirmed.
+- Interpretation: strong tracing or refusal scores evaluate the learned interface and must not be treated as proof of data quality, causal lineage, or open-release completeness.
+- Track use: the work supplies a provenance-aware construction recipe and an audit checklist, but not a replayable released dataset.

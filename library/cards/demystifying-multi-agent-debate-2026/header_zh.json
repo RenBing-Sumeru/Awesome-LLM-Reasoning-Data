@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DMAD 采样 10 个候选、挑出五个互异答案，训练五轮同质辩论来表达并使用 0 到 10 的置信度，奖励涵盖正确性、校准度、参与度与格式；开源了代码但未发布完整轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaochen Zhu、Caiqi Zhang、Yizhou Chi、Tom Stafford、Nigel Collier、Andreas Vlachos",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

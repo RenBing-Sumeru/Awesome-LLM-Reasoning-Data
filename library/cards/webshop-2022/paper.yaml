@@ -1,0 +1,115 @@
+id: webshop-2022
+title: 'WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents'
+year: 2022
+venue: NeurIPS 2022 / arXiv
+authors:
+- Shunyu Yao
+- Howard Chen
+- John Yang
+- Karthik Narasimhan
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- shopping-environment
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2207.01206
+  arxiv: https://arxiv.org/abs/2207.01206
+  doi: https://doi.org/10.48550/arXiv.2207.01206
+  code: https://github.com/princeton-nlp/WebShop
+  data: https://github.com/princeton-nlp/WebShop
+  project: https://webshop-pnlp.github.io/
+  huggingface: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2022/hash/82ad13ec01f9fe44c01cb91814fd7b8c-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors build a shopping simulator from product data and user instructions
+  trace_author: official authors, human demonstrations, and model interactions
+  answer_format: shopping instruction, search/browse action sequence, selected product, and reward
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: a simulated shopping website with products, user instructions, search, and purchase actions
+  verifier_or_reward: programmatic product, attribute, option, and price matching computes the shopping reward for the selected
+    item.
+  terminal_predicate: shopping reward assigned to the selected item under the simulator rules
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official WebShop authors and human demonstrators
+  generator: WebShop product/task construction and simulator pipeline
+  filtering_rule: check product data provenance, simulator setup, and reward formula before reuse
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2207.01206, WebShop project page, and princeton-nlp/WebShop repository
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2207.01206'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS, arXiv, project, and repository sources verify 1.18M products, 12,087 crowd-sourced instructions, 1,600+
+    human demonstrations, and programmatic shopping reward. Data/environment setup is provided through official project/repository
+    scripts rather than a standalone Hugging Face dataset.
+inclusion_reason: it is a classic controllable web shopping environment with rewards and demonstrations
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- shopping-environment
+one_line: WebShop provides a simulated shopping website for grounded language-agent interaction.
+why_it_matters: it is a classic controllable web shopping environment with rewards and demonstrations
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WebShop provides a simulated shopping website for grounded language-agent interaction.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: NeurIPS, arXiv, project, and repository sources verify 1.18M products, 12,087 crowd-sourced instructions, 1,600+
+    human demonstrations, and programmatic shopping reward. Data/environment setup is provided through official project/repository
+    scripts rather than a standalone Hugging Face dataset.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 34
+  primary_category_id: environment_agent_trajectory_data

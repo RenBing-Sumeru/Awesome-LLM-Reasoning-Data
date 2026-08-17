@@ -1,0 +1,4 @@
+The report combines a three-level safety policy with two different moderation interfaces: instruction-following whole-item assessment in Gen and token-wise monitoring in Stream. Its most relevant construction disclosure is not merely the released weights: it describes paired policy-conditioned prompt synthesis, cross-partition controversial-label construction, label distillation, and a dual-signal procedure for converting coarse response labels into Stream boundary labels.
+
+Within this atlas, the novelty is therefore a partially visible safety-data and feedback pipeline. It is not an open, provenance-complete safety dataset or a fully specified, policy-independent verifier. The report's separate guard-as-reward experiment is a useful application disclosure, not proof that every filtering or RL use of the released guard follows the reported contract.
+

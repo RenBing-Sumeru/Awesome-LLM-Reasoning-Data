@@ -1,0 +1,3 @@
+Correctness holds only relative to the benchmark version and repair validation available for a case. A repaired harness can remove an infrastructure flaw without proving that the task is semantically ideal or that all future agents should be scored under the repaired setting.
+
+The approach depends on failed-trajectory sampling, environment reproducibility, benchmark licenses, tool credentials, and evaluator stability. It can miss flaws that do not appear in sampled failures, and it can overfit repair operators to the four studied benchmarks. Public repaired cases also create contamination risk for future agents trained on benchmark artifacts.

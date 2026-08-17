@@ -1,0 +1,1 @@
+ASLEC corrects the confound in two ways: ASLEC-DROP removes first-token probabilities from the score, while ASLEC-CASL fits a causal linear adjustment. The corrected scores select model-specific 4K and 10K SFT subsets from multi-source, multi-model candidate pools.

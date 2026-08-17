@@ -1,0 +1,120 @@
+id: winogrande-2019
+title: 'WinoGrande: An Adversarial Winograd Schema Challenge at Scale'
+year: 2019
+venue: AAAI 2020 / arXiv
+authors:
+- Keisuke Sakaguchi
+- Ronan Le Bras
+- Chandra Bhagavatula
+- Yejin Choi
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- commonsense-reasoning
+- winograd-schema
+- adversarial-filtering
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1907.10641
+  arxiv: https://arxiv.org/abs/1907.10641
+  code: https://github.com/allenai/winogrande
+  data: https://storage.googleapis.com/ai2-mosaic/public/winogrande/winogrande_1.1.zip
+  project: https://winogrande.allenai.org/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.1907.10641
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Crowd-authored WSC-style twin sentences collected on AMT with WikiHow anchor-word prompts and author validation.
+  trace_author: AMT authors and independent validators, with filtering and release curation by the WinoGrande authors.
+  answer_format: sentence with one blank, option1, option2, and answer label for labeled splits; test labels are hidden for
+    leaderboard evaluation.
+  data_scale: paper reports 43,972 WinoGrande-all questions and 12,282 debiased questions; official version 1.1 release contains
+    train_xs/s/m/l/xl rows 160/640/2,558/10,234/40,398, train_debiased 9,248, dev 1,267, and test 1,767.
+  process_fields:
+  - qID
+  - sentence
+  - option1
+  - option2
+  - answer label where released
+  - split and release version
+  - prediction-file column order for XS/S/M/L/XL evaluations
+  environment_or_substrate: WinoGrande version 1.1 JSONL/LST benchmark files and hidden-label leaderboard test protocol.
+  verifier_or_reward: exact-match multiple-choice accuracy against released dev labels or hidden leaderboard labels; official
+    eval.py also computes normalized learning-curve AUC across train-size columns.
+  terminal_predicate: prediction is option 1 or option 2 and matches the official gold label for the evaluated split.
+  benchmark_size: 43,972 questions in the paper's WinoGrande-all count; version 1.1 public files expose 40,398 XL train rows,
+    1,267 dev rows, and 1,767 test rows.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: AMT validators and official gold labels.
+  generator: constrained AMT authoring with WikiHow anchor prompts, followed by validation and AFLite filtering.
+  filtering_rule: AFLite removes examples whose RoBERTa-derived embeddings make the gold option too predictable for an ensemble
+    of linear classifiers; this reduces, but does not eliminate, shortcut risk.
+  sampling_protocol: Pin WinoGrande version 1.1, train subset, dev/test route, prediction column order, evaluator script,
+    prompt or fine-tuning scaffold, and leaderboard date before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary evidence comes from arXiv:1907.10641, the official AllenAI project/leaderboard, the official GitHub
+    repository, and the version 1.1 release zip.
+  split: Version 1.1 exposes labeled train subsets and dev labels; test.jsonl has no labels and requires leaderboard submission.
+    Paper-reported counts and release-file counts differ in some fields, so score reuse must pin the artifact version.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official version 1.1 README states the dataset is licensed under CC BY 2.0; the GitHub README states the codebase
+    is Apache License 2.0 and the dataset is CC-BY.
+  lineage: arXiv paper, official project page, GitHub repository, and Google Cloud Storage version 1.1 release.
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: Version 1.1 release and paper counts should be kept separate when reproducing or comparing historical scores.
+inclusion_reason: WinoGrande scales Winograd-style commonsense pronoun resolution with adversarial filtering to reduce superficial
+  cues.
+related: []
+tags:
+- benchmark
+- commonsense-reasoning
+- winograd-schema
+- adversarial-filtering
+why_it_matters: It supplies a reusable evaluation coordinate for commonsense-reasoning, winograd-schema work.
+status: verified
+needs:
+- 'needs_audit: pin WinoGrande version, train subset, dev/test route, evaluator script, prompt/scaffold settings, leaderboard
+  date, and contamination policy before score reuse'
+- 'needs_audit: distinguish paper-reported counts from version 1.1 release-file counts before reproducing historical scores'
+one_line_summary: WinoGrande scales Winograd-style commonsense pronoun resolution with adversarial filtering to reduce superficial
+  cues.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Verified arXiv page, official GitHub README, official version 1.1 zip structure/counts, sample JSONL fields, eval.py,
+    data download URL, and license statements.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

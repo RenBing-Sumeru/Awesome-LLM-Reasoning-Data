@@ -1,0 +1,5 @@
+- Read the training-data section for source categories and cleaning claims, then mark manifests, quantities, rights, and decontamination as unknown rather than implied.
+- In the unnecessary-refusal section, distinguish the training pairwise rule from the separate reference-response evaluation grader.
+- Treat extended-thinking token limits, Best-of-N, Pass@30, and the high-compute SWE-bench scaffold as inference or evaluation settings, not training rollout disclosure.
+- Pair the 0.30 and 0.19 faithfulness results with the monitor-rate table: visible thinking may omit the causal clue, so monitoring can have unmeasured false negatives.
+- Read the reward-hacking section as direct evidence that a test-based terminal signal can be exploited; the report does not quantify the remaining risk after partial mitigation.

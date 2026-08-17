@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Orca 2 让 GPT-4 按任务生成不同策略的推理回答，并在 SFT 时擦除策略提示，使小模型同时学习怎样推理和何时采用哪种策略。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "教师推理策略蒸馏",
+  "best_for_ch": "适合为小模型设计 teacher 生成推理示范的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Arindam Mitra, Luciano Del Corro, Shweti Mahajan, Andres Codas, Clarisse Simoes, Sahaj Agarwal, Xuxi Chen, Anastasia Razdaibiedina, Erik Jones, Kriti Aggarwal, Hamid Palangi, Guoqing Zheng, Corby Rosset, Hamed Khanpour, Ahmed Awadallah",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

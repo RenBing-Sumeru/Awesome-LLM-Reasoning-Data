@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MobileWorldBench把移动智能体行为压缩为离线单步state/action/next-state预测，并以GPT-4o rubric和Yes/No准确率混合评测；MobileWorld另供SFT数据，但split、图像完整性、judge版本、许可与隐私仍有缺口。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "移动GUI单步语义世界模型数据集与离线混合反馈基准",
+  "best_for_ch": "研究移动智能体SFT数据、next-state预测、VLM judge与离线评测审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Shufan Li, Konstantinos Kallidromitis, Akash Gokul, Yusuke Kato, Kazuki Kozuka, Aditya Grover",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

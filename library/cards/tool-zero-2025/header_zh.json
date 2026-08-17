@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "Tool Zero 在离线 ToolACE/xLAM 函数调用记录上用 GG-GRPO 将整段 completion 的规则奖励从参考 token 重叠逐步收紧到 AST 等价；它展示了无 SFT 的 RLVR 配方，但专属代码、处理后语料与 checkpoint 均未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "函数调用 RLVR 配方与规则奖励研究",
+  "best_for_ch": "研究工具调用轨迹、程序化 verifier、GRPO 奖励设计与发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yirong Zeng, Xiao Ding, Yutai Hou, Yuxian Wang, Li Du, Juyi Dai, Qiuyang Ding, Duyu Tang, Dandan Tu, Weiwen Liu, Bing Qin, Ting Liu",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-21T14:15:05Z"
+}

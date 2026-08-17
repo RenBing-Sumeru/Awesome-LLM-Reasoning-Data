@@ -1,0 +1,129 @@
+id: pubmedqa-2019
+title: 'PubMedQA: A Dataset for Biomedical Research Question Answering'
+year: 2019
+venue: EMNLP-IJCNLP 2019 / arXiv
+authors:
+- Qiao Jin
+- Bhuwan Dhingra
+- Zhengping Liu
+- William W. Cohen
+- Xinghua Lu
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- biomedical-qa
+- yes-no-maybe
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/D19-1259/
+  arxiv: https://arxiv.org/abs/1909.06146
+  code: https://github.com/pubmedqa/pubmedqa
+  data: https://github.com/pubmedqa/pubmedqa/tree/master/data
+  project: https://pubmedqa.github.io
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/D19-1259
+  venue: https://aclanthology.org/D19-1259/
+  openreview: null
+  acl: https://aclanthology.org/D19-1259/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: PubMed articles whose titles are questions, plus automatically converted statement titles for PQA-A; structured
+    abstracts supply the context and conclusion-derived long answer.
+  trace_author: PubMed article authors write the original titles, abstracts, and conclusions; two qualified M.D. candidates
+    annotate PQA-L under different evidence conditions, with one using the long answer and one using only question plus context
+    before agreement or discussion sets the gold yes/no/maybe label.
+  answer_format: biomedical research question, context abstract without the conclusion, conclusion as long answer, and a yes/no/maybe
+    label keyed by PMID.
+  dataset_scale: PubMedQA has 1,000 expert-labeled PQA-L examples, about 61.2k unlabeled PQA-U examples, and about 211.3k
+    artificially generated PQA-A examples; pin which subset is used for evaluation.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: PubMed structured abstracts with conclusions removed from the model input in the reasoning-required
+    setting.
+  verifier_or_reward: official evaluation.py compares a JSON mapping from PMID to yes/no/maybe against data/test_ground_truth.json
+    for the held-out PQA-L test set and reports accuracy and macro-F1.
+  terminal_predicate: prediction exactly matches the gold yes/no/maybe label for the PMID; aggregate score is accuracy or
+    macro-F1, not a free-form biomedical correctness judgment.
+  benchmark_size: 1,000 expert-labeled PQA-L examples, 61.2k PQA-U examples, and 211.3k PQA-A examples.
+recipe_metadata:
+  base_model: Benchmark dataset, not a single model recipe; the paper reports BioBERT baselines using PQA-A, bootstrapped
+    PQA-U, and PQA-L.
+  teacher: PubMed article conclusions supply long-answer supervision; PQA-L yes/no/maybe labels are supplied by two qualified
+    M.D. candidates, one in the reasoning-free setting and one in the reasoning-required setting, with discussion when their
+    labels differ.
+  generator: PQA-A converts PubMed statement titles into questions and assigns yes/no labels from negation heuristics; PQA-U
+    is filtered from question-title articles by rule-based yes/no/maybe answerability.
+  filtering_rule: PQA-L removes non-answerable candidates and unresolved annotator disagreements; PQA-U removes wh-questions
+    and multi-entity selection questions; PQA-A uses POS/negation heuristics.
+  sampling_protocol: The official preprocessing script splits PQA-L into 500 cross-validation examples and 500 test examples;
+    the repository publishes test_ground_truth.json for the test labels. PQA-A has 200k train and 11.3k validation examples;
+    the GitHub README says there is no official PQA-U split code.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: ACL Anthology paper, arXiv copy, official project page, and official GitHub repository for data, evaluation,
+    and citation metadata.
+  split: Pin the official script-generated PQA-L cross-validation/test split, PQA-A train/validation split, and any local
+    PQA-U split because the official repository does not provide PQA-U split code.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: The official GitHub repository reports an MIT license; downstream reuse should still inspect PubMed/PubMed Central
+    source-text terms and any Google Drive artifact terms.
+  lineage: 'Primary sources: https://aclanthology.org/D19-1259/; https://arxiv.org/abs/1909.06146; https://github.com/pubmedqa/pubmedqa'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: Dataset scale, official scorer, project page, GitHub release, MIT repository license file, and ACL DOI are verified;
+    subset selection, PQA-U splitting, and PubMed source-text reuse terms remain the main reuse risks.
+inclusion_reason: PubMedQA evaluates biomedical reasoning over PubMed abstracts with yes/no/maybe answers, centered on the
+  1,000 expert-labeled PQA-L evaluation set.
+related: []
+tags:
+- benchmark
+- biomedical-qa
+- yes-no-maybe
+- domain-expert-benchmark
+why_it_matters: It supplies a reusable evaluation coordinate for biomedical-qa, yes-no-maybe work.
+status: verified
+needs:
+- 'needs_audit: pin PubMedQA subset/version, especially PQA-L versus PQA-U/PQA-A, split counts, scorer, and license'
+- 'needs_audit: inspect prompt/scaffold settings, leaderboard date, PubMed source-text terms, and PQA-U split policy before
+  score reuse'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: PubMedQA evaluates biomedical yes/no/maybe reasoning with 1,000 expert-labeled examples plus larger unlabeled
+  and artificial subsets.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: ACL Anthology, arXiv, official project page, and GitHub repository were verified; subset/split reuse details remain
+    in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

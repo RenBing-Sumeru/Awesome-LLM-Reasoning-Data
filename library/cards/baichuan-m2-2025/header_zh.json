@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Baichuan-M2 报告了以去标识医疗记录为基础的患者模拟器和动态临床 rubric，用于 SFT 与多阶段 GRPO；但未发布记录、trace、rubric、来源级权利、切分或直接确认的官方发布 artifact。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "医疗推理模型技术报告与反馈披露账本",
+  "best_for_ch": "需要审计医疗智能体模拟、动态 verifier 与临床数据权利边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Baichuan-M2 Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

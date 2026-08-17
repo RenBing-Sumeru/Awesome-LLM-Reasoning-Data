@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AppWorld 将 simulated apps, APIs, and state-based unit tests 做成可审计的评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ACL 2024 / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 benchmark、评分契约、污染风险、评测 harness 和后训练反馈可复用性的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Harsh Trivedi 等（Stony Brook University、Allen Institute for AI、Saarland University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T08:09:41Z"
+}

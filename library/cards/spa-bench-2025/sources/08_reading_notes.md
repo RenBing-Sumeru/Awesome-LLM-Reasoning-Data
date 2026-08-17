@@ -1,0 +1,5 @@
+- Read Sections 3.1–3.2 first for the 340-task composition, human reference process, 40 cross-app annotations, and GUI Odyssey source boundary.
+- Pair Sections 4–5 with Appendices C–E to reconstruct ADB execution, cycle-level snapshot reset, physical-device exceptions, OCR gating, GPT-4o prompts, and cross-app memory.
+- Keep release claims narrow: task CSVs, 40 subtask JSONs, and evaluation code are public; human screenshots, paper-run traces/results, calibration labels, and AVD snapshots are not.
+- Treat success, failure, rerun, and termination as separate fields; unexpected infrastructure errors are rerun without a public attempt ledger, while local `S`/`F`/`E` outputs are not a released corpus.
+- Verify next GUI Odyssey overlap, train/test contamination, app/device/account manifests, judge drift, third-party rights and PII, and safeguards for messages, posts, settings, and purchases.

@@ -1,0 +1,3 @@
+Automated alignment needs preference pairs, but simply prompting a model to be good or bad can yield pairs with the wrong ordering or rejected answers far outside the policy distribution. A correct but off-policy negative response receives little useful negative-gradient signal, while an on-policy but wrongly ordered pair can move the model in the wrong direction.
+
+The paper asks how to generate preference records that are simultaneously accurate and near on-policy without human labels or an external reward model. It separates data generation from final alignment: a policy-derived generator is first optimized to control the distributions of good and rejected responses, then its pairs train the policy through a standard preference objective.

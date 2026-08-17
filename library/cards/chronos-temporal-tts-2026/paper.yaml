@@ -1,0 +1,28 @@
+id: chronos-temporal-tts-2026
+title: "Chronos: Learning Temporal Dynamics of Reasoning Chains for Test-Time Scaling"
+year: 2026
+venue: Findings of ACL 2026
+authors: [Kai Zhang, Jiayi Liao, Chengpeng Li, Ziyuan Xie, Sihang Li, Xiang Wang]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, full_episode]
+domains: [mathematical-reasoning, scientific-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [scaling_report]
+artifacts: {paper: https://aclanthology.org/2026.findings-acl.1376/, arxiv: null, venue: https://aclanthology.org/2026.findings-acl.1376/, code: https://github.com/Hizkai/Chronos, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2026.findings-acl.1376}
+data_object: {prompt_source: "AIME, HMMT, and GPQA-Diamond tasks reported in the paper.", trace_author: "DeepSeek and Qwen reasoning models sampled at inference.", answer_format: "Reasoning trajectories, token-probability sequences, quality scores, and weighted answer votes.", process_fields: [prompt, trajectory, token_probability, temporal_signal, scorer_output, answer_vote], environment_or_substrate: "Parallel multi-trajectory inference.", verifier_or_reward: "Chronological trajectory scorer trained from final-answer correctness.", terminal_predicate: "Benchmark answer correctness."}
+recipe_metadata: {base_model: "DeepSeek-1.5B, Qwen3-4B, and DeepSeek-8B reported in the paper.", teacher: null, generator: "Parallel chain-of-thought sampling.", filtering_rule: "Keep the top scored fraction of trajectories before score-weighted voting.", sampling_protocol: "Up to 128 sampled trajectories per question in reported evaluation.", rollout_count: 128, temperature: null, inference_budget: "Parallel trajectories plus lightweight temporal scoring.", optimizer_or_scaffold: "Multi-scale convolutional chronological reasoning scorer."}
+audit: {source_mixture: "Official Findings of ACL 2026 paper and paper-linked public code repository.", split: "AIME 2000–2023 training; AIME25, HMMT25, and GPQA-Diamond evaluation as reported.", decontamination: "The paper states its training archive predates the AIME25 evaluation.", license: "Verify code, model, and benchmark terms before reuse.", lineage: "https://aclanthology.org/2026.findings-acl.1376/", known_failure_modes: [confidence_miscalibration, tail_window_choice, final_answer_labeling], citation_status: verified, confidence: high, notes: "Title, authors, institution, venue, code link, data split, and reported results checked against the official ACL PDF on 2026-07-20."}
+inclusion_reason: "It changes how parallel inference trajectories are scored and aggregated, using temporal token signals to allocate selection weight at test time."
+related: []
+tags: [test-time-compute, trajectory-scoring, weighted-voting, temporal-modeling, reasoning]
+status: verified
+one_line_summary: "Chronos scores the temporal evolution of token confidence in sampled reasoning paths before weighted answer aggregation."
+reading_priority: useful
+paper_type: Trajectory scoring and parallel test-time scaling study
+best_for: Readers improving candidate aggregation without adding a large process reward model.
+confidence: high
+why_it_matters: "It turns unequal trajectory quality into an explicit test-time weighting decision rather than treating every sampled answer equally."
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official ACL record and paper-linked public GitHub repository checked."}
+category_ids: [scaling_rlvr_test_time_compute]

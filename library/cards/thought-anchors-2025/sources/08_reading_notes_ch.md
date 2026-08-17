@@ -1,0 +1,5 @@
+- 应把第 2.1–3.3 节与附录 N 连起来视为一个干预契约：20 道中等难度 MATH 题产生正确和错误 base trace；每个句子使用 100 条 keep 与 100 条 remove/resample continuation 评估，forced-answer generation 则在每个位置另外使用 100 个 completion。
+- 反馈层必须分开：boxed-answer checking 与答案分布 accuracy/KL 是程序化的；all-MiniLM-L6-v2 的 0.8 threshold 用于筛选语义 counterfactual；GPT-4o 提供 function 与 dependency judgment；receiver head 与 attention suppression 是附加分析，不是 reward model。
+- 引用规模前应审计 nested release：论文 20 题、106 个筛选候选、九个原始 model/solution branch、20,997 个 file-index row、183 个 Parquet shard，以及每个 chunk 10–100 条 continuation array，分别描述不同单位。
+- 应保留负面证据：发布含 incorrect base-solution branch 与 `is_correct: false` continuation，但没有给出 invalid、malformed-answer、no-answer、incorrect 或 provider-error 的精确总数。
+- 应把论文标为提交到 ICLR 2026 且 under review 的 arXiv preprint，而非已接收论文；更广泛复用前，应固定 code/HF revision，并要求补充 provider/checkpoint/seed、source split、decontamination、count manifest 与上游权利信息。

@@ -1,0 +1,239 @@
+id: signal-in-steps-lalp-2026
+title: 'The Signal is in the Steps: Local Scoring for Reasoning Data Selection'
+year: 2026
+venue: ICML 2026
+authors:
+- Hoang Anh Just
+- Myeongseob Ko
+- Ruoxi Jia
+source_role:
+- construction_recipe
+- model_report
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical_reasoning
+- scientific_reasoning
+- code_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.03988
+  paper_pdf: https://arxiv.org/pdf/2510.03988
+  arxiv: https://arxiv.org/abs/2510.03988
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  models: null
+  logs: null
+  release: null
+  dataset_card: null
+  doi: https://doi.org/10.48550/arXiv.2510.03988
+  venue: https://icml.cc/virtual/2026/poster/65123
+  openreview: https://openreview.net/forum?id=GcB3a6IonG
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.03988
+data_object:
+  record_type: A prompt paired with multiple answer-correct, teacher-generated reasoning responses and one response-level
+    selection decision. LALP segments every candidate into logical steps, scores each step locally with the pretrained student,
+    averages those step scores, and retains the complete highest-scoring response as one SFT record.
+  prompt_source: The main long mixed-teacher study uses all 817 prompts from GAIR/LIMO. A controlled within-teacher check
+    uses 8,890 MATH level-3-to-5 prompts. A code extension uses 5,000 prompts drawn from OpenCodeReasoning and LeetCode, but
+    the paper does not disclose the mixture or split.
+  trace_author: Main mixed-teacher candidate responses come from DeepSeek-R1, QwQ-32B, and Qwen3-32B. Additional controlled
+    studies use Qwen2.5-72B-Instruct and Gemma-3-27B-IT.
+  candidate_contract: Every candidate's final answer matches the ground truth before selection. The paper does not document
+    the answer extractor, equivalence checker, rejection behavior, duplicate policy, or per-prompt candidate manifest.
+  segmentation: GLM-4.5-Air receives the problem and full solution and must return JSON sentence_groups containing all original
+    solution wording without skipping steps. No human agreement or segmentation-accuracy study is reported.
+  step_score: For step s_i, LocalLP is the token-average pretrained-student log probability conditioned on the prompt, tokens
+    already generated within s_i, and only the k immediately preceding steps.
+  response_score: LALP is the unweighted mean of LocalLP across steps, so every segmented reasoning move has equal weight
+    regardless of token count. The candidate with maximum LALP is selected.
+  process_fields:
+  - source_prompt
+  - ground_truth_answer
+  - teacher_identity
+  - full_candidate_response
+  - final_answer_match
+  - GLM_4_5_Air_sentence_groups
+  - per_step_token_log_probabilities
+  - per_step_LocalLP
+  - response_LALP
+  - selected_candidate
+  - pretrained_student_identity
+  - local_context_window
+  observation: The selector observes model-generated step boundaries and likelihoods from the pretrained student. It does
+    not observe proof validity, factual entailment, hidden execution state, or step-level correctness.
+  verifier_output: A final-answer match is assumed for candidate admission, but its implementation is undisclosed. GLM-4.5-Air
+    supplies step boundaries; the student supplies deterministic scalar likelihoods used for ranking.
+  reward: None for model training. LALP is a preprocessing selection score, not an RL reward or a process-reward label.
+  environment_or_substrate: Offline preprocessing with GLM-4.5-Air for step segmentation and the target pretrained student
+    for batched local likelihood scoring, followed by LLaMA-Factory SFT.
+  verifier_or_reward: 'Mixed contract: ground-truth final-answer matching is nominally programmatic, step boundaries require
+    LLM judgment, and student likelihoods rank admitted responses. LALP is not a correctness verifier.'
+  terminal_predicate: Select exactly the candidate response with highest mean local step score from the answer-correct pool
+    for each prompt.
+  provenance: Public prompt source -> teacher sampling -> undisclosed final-answer matching -> GLM-4.5-Air step segmentation
+    -> student-local likelihood scoring -> one selected whole response per prompt -> SFT -> benchmark evaluation.
+  release_surface: The paper links an anonymous repository, but the URL currently redirects to its file API and returns HTTP
+    401 to unauthenticated access. Repository contents, code, license text, selected data, candidate traces, configurations,
+    manifests, and checkpoints therefore cannot be verified.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B, Qwen2.5-7B-Instruct, Qwen2.5-32B-Instruct, and Llama-3.1-8B-Instruct are evaluated as students
+    in different experiments.
+  teacher: DeepSeek-R1, QwQ-32B, and Qwen3-32B form the main mixed-teacher pool; Qwen2.5-72B-Instruct and Gemma-3-27B-IT appear
+    in controlled within-teacher experiments.
+  generator: Teacher models generate full reasoning responses. GLM-4.5-Air does not rewrite them; it segments each response
+    while instructed to preserve all original wording.
+  prompt_task_source: GAIR/LIMO for the 817-prompt main math setting, filtered MATH levels 3-5 for the 8,890-prompt controlled
+    setting, and a 5,000-prompt OpenCodeReasoning and LeetCode pool for the code extension.
+  filtering_rule: Admit only candidates whose final answers match ground truth, segment each admitted response into logical
+    steps, compute LALP under the pretrained student, and retain the full highest-LALP response. Exact correctness, parse-failure,
+    empty-step, tie, and duplicate handling are not disclosed.
+  sampling_protocol: The paper's teacher-sampling table reports alternative settings of 1 or 16 samples, temperature 0.0 or
+    1.0, top-p 1.0 or 0.95, and top-k 1 or 40, but does not map every alternative unambiguously to each reported experiment.
+  rollout_count: The main selected SFT set has one retained response for each of 817 LIMO prompts. The exact main candidate
+    count per prompt is not disclosed in an auditable manifest. The within-teacher MATH study explicitly generates 16 responses
+    per prompt.
+  temperature: unknown
+  top_p: unknown
+  inference_budget: The evaluation table specifies maximum generation length 32,768. The teacher table prints a maximum-token
+    value of "42786+" without explaining it. Training and evaluation used four A100 GPUs; runtime, GPU memory, segmentation
+    cost, total tokens, and total compute are not reported.
+  search_or_scaffold: No tree search. Each candidate is split into p steps and requires p local scoring forward passes rather
+    than one GALP pass; steps across responses may be batched. Teacher ranking can be estimated from as few as 200 prompts
+    in the reported setting.
+  selection_threshold: 'No numeric threshold: argmax LALP within each answer-correct candidate set. Tie handling and confidence
+    calibration are unknown.'
+  seed_protocol: unknown
+  buffer_policy: Offline static selection; no online replay buffer is described.
+  reward_schedule: Not applicable. LALP is a fixed data-selection statistic.
+  optimizer_or_scaffold: LLaMA-Factory SFT with reported alternatives of batch size per device 1 or 2, gradient accumulation
+    8, learning rate 5e-6 or 1e-5, epochs 10 or 15, warmup ratio 0, and BF16. The table does not map every slash-delimited
+    alternative to each experiment.
+  local_context_window: The formal method conditions on k preceding steps. Teacher-ranking ablations test 5%, 25%, 50%, and
+    75% of available prefix steps; 5%-25% preserves the empirically correct teacher ordering. A downstream ablation tests
+    integer windows 1-6 and peaks near 4 for the 7B student and 5 for the 32B student, but the paper does not provide a complete
+    run-to-k mapping for every main table.
+audit:
+  source_mixture: The main recipe combines one public 817-prompt LIMO source with generated responses from three teacher families,
+    then makes a student-specific choice. Exact candidate counts, rejected outputs, teacher-specific sampling settings, answer-check
+    procedure, and row-level provenance are not released.
+  split: The main SFT set is formed from all 817 LIMO prompts. Evaluation uses MATH500, AIME 2025, AMC 2023, MINERVA, KAOYAN,
+    OlympiadBench, CN_MATH_2024, GPQA-Diamond, and LiveCodeBench v2. No immutable train-evaluation binding or row-level overlap
+    report is released.
+  decontamination: unknown
+  benchmark_overlap: No lexical, semantic, or provenance-based comparison is reported between LIMO, MATH, OpenCodeReasoning,
+    or LeetCode prompts and the evaluation suites, or between any benchmark and student or teacher pretraining data. This
+    paper performs no independent contamination audit of the models or training mixture.
+  license: GAIR/LIMO declares Apache-2.0, EleutherAI/hendrycks_math declares MIT, and the official GLM-4.5-Air model page
+    declares MIT. The paper-linked LALP anonymous repository currently returns HTTP 401, so no repository license or code
+    license could be verified. No license is supplied for selected responses, generated candidate traces, scores, or the derived
+    dataset, and the paper does not provide a teacher-output provenance or license ledger.
+  lineage: LIMO, MATH, or code prompts -> multiple teacher outputs -> answer-correct pool -> GLM-4.5-Air segmentation -> student-specific
+    LALP ranking -> complete selected responses -> LLaMA-Factory SFT -> public benchmark evaluation. Exact selected rows and
+    hashes are unavailable.
+  release_version: No immutable code snapshot, commit, tag, release, dependency lock, or container was publicly available.
+    On 2026-07-24, the anonymous repository URL redirected to its file API and returned HTTP 401, so repository contents,
+    branch metadata, and version state were not verifiable.
+  successful_and_failed_sample_retention: Neither the selected 817-response dataset nor unselected, rejected, segmentation-failed,
+    incorrectly answered, or tied candidates are released. Per-step likelihoods, boundaries, and selection decisions are also
+    absent.
+  privacy_or_consent: unknown
+  reuse_class: reading and audit reference only; blocked for direct data or code reuse
+  known_failure_modes:
+  - 'LALP cannot verify long-range consistency: an early wrong step may make later locally coherent steps score highly. The
+    paper explicitly suggests adding global coherence checks.'
+  - All candidates are assumed to have correct final answers, so the method neither verifies intermediate correctness nor
+    detects a correct answer reached through invalid reasoning.
+  - GLM-4.5-Air supplies unvalidated step boundaries. Split and merge choices change equal-step weighting, and segmentation
+    errors or style bias can change which complete response wins.
+  - Local likelihood measures familiarity to a particular pretrained student, not truth or causal training influence. It can
+    prefer familiar shortcuts and makes the resulting dataset student-specific.
+  - Small windows miss necessary long-range dependencies; large windows converge toward GALP and recover its teacher-ranking
+    reversal. The exact k used for every headline run is not completely specified.
+  - Equal weighting makes short segmented moves count as much as long, information-dense steps and creates sensitivity to
+    response formatting.
+  - The main prompt set contains only 817 public LIMO problems and the main teacher and student families are heavily Qwen-centered,
+    limiting claims of universal data quality.
+  - No row-level overlap, pretraining contamination, prompt deduplication, or answer-check audit is reported for the public
+    training and evaluation sets.
+  - No independent training reruns, random seeds, confidence intervals, or error bars are reported, so the stability of the
+    9.4-point headline gap is unknown.
+  - The paper's anonymous reproduction link currently returns HTTP 401, so its contents are unverifiable; no de-anonymized
+    repository, tagged release, selected dataset, model checkpoint, or run manifest was found.
+  - Appendix Table 8 appears to label both model blocks Qwen2.5-32B-Instruct despite presenting different selection mixtures,
+    creating a model-assignment ambiguity.
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, and ICML 2026 venue were verified against official surfaces. The ICML poster landing page links an
+    Oral presentation page, while an OpenReview author profile labels the paper ICML 2026 spotlight; the Card therefore uses
+    the neutral venue `ICML 2026` and makes no exclusion claim among presentation labels. The full 32-page arXiv v2 paper
+    and appendix were read and rendered. Scores and ablations are author-reported and were not independently reproduced.
+  remaining_unknowns:
+  - Exact answer-matching implementation, rejected-candidate ledger, duplicate policy, and main per-prompt candidate count
+  - Exact run-to-window, sampling, SFT, and evaluation hyperparameter mapping
+  - Embedding model and normalization or preprocessing used for trajectory and step coverage analysis
+  - Immutable code, selected responses, candidate traces, segmentations, scores, configurations, seeds, dependencies, checkpoints,
+    and logs
+  - Derived-output license and teacher-output provenance or license compatibility
+  - Row-level benchmark overlap, base-model pretraining contamination, privacy review, and consent provenance
+  - Independent reruns, variance, confidence intervals, checkpoint selection, runtime, and total compute
+inclusion_reason: 'LALP is a concrete step-aware response-selection recipe for reasoning distillation: it exposes why full-prefix
+  average likelihood can reward style and self-copying, then replaces it with equal-weight local step scores that choose complete
+  answer-correct traces for SFT.'
+related: []
+tags:
+- lalp
+- reasoning-data-selection
+- local-log-probability
+- mixed-teacher-distillation
+- step-segmentation
+- student-specific-curation
+- response-selection
+- release-incomplete
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: The method turns step-local student likelihood into an offline selector for mixed-teacher reasoning traces,
+  improving reported SFT results while releasing neither the selected corpus nor a currently usable implementation.
+why_it_matters: It distinguishes useful local reasoning transitions from global fluency and self-copying, but also shows that
+  a data-quality score can be student-specific, segmentation-sensitive, non-verifying, and difficult to audit without the
+  candidate and score ledger.
+card: null
+needs:
+- 'needs_code_release: publish the actual LALP implementation, segmenter prompt and parser, correctness filter, configs, dependency
+  lock, and an immutable commit or tag'
+- 'needs_data_release: publish candidate and selected responses with prompt and teacher IDs, step boundaries, per-step scores,
+  selection decisions, failures, and content hashes'
+- 'needs_license: declare licenses and provenance for generated teacher outputs, selected traces, score metadata, code, and
+  checkpoints'
+- 'needs_reproducibility: map every experiment to exact k, sampling, SFT, evaluation, seed, checkpoint-selection, hardware,
+  and runtime settings'
+- 'needs_audit: report segmentation agreement, answer-verification accuracy, tie and error handling, prompt deduplication,
+  benchmark overlap, and pretraining contamination'
+- 'needs_statistics: run independent training seeds and report variance or confidence intervals for teacher ranking and downstream
+  gains'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Official ICML, arXiv, OpenReview identity, and upstream dataset and model pages were checked. The paper-linked anonymous
+    repository currently returns HTTP 401, so no LALP code or repository content was verified and `artifacts.code` remains
+    null.

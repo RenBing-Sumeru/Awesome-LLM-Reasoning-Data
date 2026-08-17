@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MATH-500 是 verifier、PRM 和推理模型报告里常用的固定评测子集，用来降低整套 MATH 评测成本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Hunter Lightman 等（OpenAI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

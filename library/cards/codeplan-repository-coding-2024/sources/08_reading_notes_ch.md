@@ -1,0 +1,1 @@
+应把它读作仓库编辑规划论文和 replication package，不是 SWE-bench 的完整替代。关键边界是 source/target/pred 对比，而不是 executable acceptance。依赖图是决定编辑位置的 scaffold，不是证明所有受影响行为都被发现。阅读时要把 metrics.json 和 diff.html 一起看，因为汇总文本指标可能掩盖缺失的语义变化。

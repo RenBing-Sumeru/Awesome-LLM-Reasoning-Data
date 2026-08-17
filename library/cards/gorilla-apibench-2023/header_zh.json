@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Gorilla / APIBench 用文档驱动指令和 AST 匹配评测 LLM 的 API 调用能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "NeurIPS 2024 Main Conference Track / arXiv 的 API tool-use benchmark",
+  "best_for_ch": "研究 tool-use、agent trajectory、环境反馈契约和可复现评测的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Shishir G. Patil、Tianjun Zhang、Xin Wang、Joseph E. Gonzalez（UC Berkeley、Microsoft Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+Use it to compare a concrete allocation policy with a genuinely matched-budget baseline. Log realized work per input, intermediate evidence, final correctness, and average and tail latency; it is most useful when a system must choose how to spend a finite inference allowance.

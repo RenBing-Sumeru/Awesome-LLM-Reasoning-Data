@@ -1,0 +1,123 @@
+id: traceeval-2026
+title: An Execution-Verified Multi-Language Benchmark for Code Semantic Reasoning
+year: 2026
+venue: arXiv preprint
+authors:
+- Yikun Li
+- Jinfeng Jiang
+- Ting Zhang
+- Chengran Yang
+- Chenxing Zhong
+- Yin Yide
+- Leow Wen Bin
+- Eng Lieh Ouh
+- Lwin Khin Shar
+- David Lo
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-semantics
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+- sft
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.11006
+  arxiv: https://arxiv.org/abs/2605.11006
+  doi: https://doi.org/10.48550/arXiv.2605.11006
+  code: https://github.com/yikun-li/TraceEva
+  data: https://github.com/yikun-li/TraceEva
+  project: https://github.com/yikun-li/TraceEva
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: '10,583 real-world programs: 8,454 train and 2,129 test, from 1,600+ open-source repositories across Python,
+    JavaScript, and Java.'
+  prompt_source: open-source repositories converted into runtime call-graph recovery instances through LLM-assisted harness
+    generation and tracer validation
+  trace_author: official pipeline generates harnesses; language-specific tracers witness runtime caller-callee edges
+  answer_format: source program, prompt/task metadata, predicted call-graph edges, execution-witnessed reference edges, precision,
+    recall, and F1
+  process_fields:
+  - program source
+  - language
+  - split
+  - tracer-witnessed edges
+  - model-predicted edges
+  - precision
+  - recall
+  - F1
+  environment_or_substrate: Python, JavaScript, and Java execution harnesses with language-specific tracing
+  verifier_or_reward: execution tracers mechanically witness positive runtime call edges; normalized edge sets are scored
+    with precision/recall/F1
+  terminal_predicate: predicted normalized runtime edges match the execution-witnessed reference edge set
+recipe_metadata:
+  base_model: Not a single base-model recipe unless stated in the paper; use only the disclosed training/evaluation role.
+  teacher: Official task authors, generator, tracer, simulator, or judge described by the paper.
+  generator: open-source repositories converted into runtime call-graph recovery instances through LLM-assisted harness generation
+    and tracer validation
+  filtering_rule: Use only source-backed construction and validation claims; do not infer hidden filters.
+  sampling_protocol: Pin release revision, split, runtime, prompt/scaffold, judge/verifier, and evaluation budget before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: Python, JavaScript, and Java execution harnesses with language-specific tracing
+audit:
+  source_mixture: https://arxiv.org/abs/2605.11006; https://github.com/yikun-li/TraceEva; https://github.com/yikun-li/TraceEva;
+    https://github.com/yikun-li/TraceEva
+  split: pin exact public/hidden split or train/test revision before score reuse
+  decontamination: public tasks, traces, APIs, repositories, or generated environments can enter future training data
+  license: Official repository states code is Apache-2.0 and data is CC-BY-4.0; each program also retains upstream repository
+    license metadata in provenance.
+  lineage: 'Primary source: https://arxiv.org/abs/2605.11006'
+  known_failure_modes:
+  - runtime, tool, website, API, or dependency drift
+  - prompt/scaffold and budget sensitivity
+  - public-artifact contamination
+  - judge, tracer, verifier, or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: Source facts were regenerated from official paper/page artifacts; score reuse still requires pinned artifacts and
+    evaluator versions.
+inclusion_reason: TraceEval evaluates code semantic reasoning by asking models to recover runtime call structure whose positive
+  edges are witnessed by validation execution.
+related: []
+tags:
+- benchmark
+- code-semantics
+- code_executable_benchmark
+- evaluation-surface
+why_it_matters: TraceEval evaluates code semantic reasoning by asking models to recover runtime call structure whose positive
+  edges are witnessed by validation execution.
+status: verified
+needs:
+- 'needs_version_pin: pin repository/data revision, split, runtime, prompt/scaffold, and evaluator version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'
+one_line_summary: TraceEval evaluates code semantic reasoning by asking models to recover runtime call structure whose positive
+  edges are witnessed by validation execution.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: medium
+  notes: Official source links and card-local artifacts were verified for L4 source regeneration.
+category_ids:
+- benchmarks_evaluation_surfaces
+- programmatically_verifiable_outcome_data

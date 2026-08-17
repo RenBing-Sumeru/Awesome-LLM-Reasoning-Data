@@ -1,0 +1,2 @@
+- For teams building tool-use SFT, pin the official revision, preserve source fields, train a fixed-backbone baseline, and output both a versioned mixture and domain-level metrics. The intervention succeeds only if the target gains survive a provenance and error audit.
+- For auditors, sample records by source and difficulty and replay fine-grained turn-level checks plus trajectory-level quality filtering. Produce a keep/reject ledger with failure reasons; do not use the dataset when licenses, task inputs, or verification artifacts are unavailable.

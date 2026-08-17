@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HRM 同时判断单个步骤和连续步骤，并以节点压缩扩充过程监督数据来训练更稳健的奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程奖励模型与多步监督论文",
+  "best_for_ch": "研究 PRM 训练样本、步骤标签与推理过程奖励的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Teng Wang、Jiang Zhangyi、Zhenqi He、Hailei Gong、Shenyang Tong、Wenhan Yang、Zeyu Li、Yanan Zheng、Zifan He、Zewen Ye、Shengjie Ma、Jianping Zhang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:31:06Z"
+}

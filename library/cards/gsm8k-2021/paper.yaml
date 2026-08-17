@@ -1,0 +1,121 @@
+id: gsm8k-2021
+title: Training Verifiers to Solve Math Word Problems
+year: 2021
+venue: arXiv / OpenAI
+authors:
+- Karl Cobbe
+- Vineet Kosaraju
+- Mohammad Bavarian
+- Mark Chen
+- Heewoo Jun
+- Lukasz Kaiser
+- Matthias Plappert
+- Jerry Tworek
+- Jacob Hilton
+- Reiichiro Nakano
+- Christopher Hesse
+- John Schulman
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- grade-school-math
+- math-word-problems
+- verifier-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2110.14168
+  arxiv: https://arxiv.org/abs/2110.14168
+  code: https://github.com/openai/grade-school-math
+  data: https://github.com/openai/grade-school-math
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2110.14168
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 8,792 grade-school math word problems with step-by-step solution text and final numeric answers; standard
+    split is 7,473 train and 1,319 test examples
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: grade-school math word-problem benchmark
+  verifier_or_reward: final-answer exact match after answer extraction; verifier models can score sampled solutions for selection
+  terminal_predicate: extracted final answer equals the official numeric answer
+  benchmark_size: 约 8.5K 道小学数学应用题，常用划分为 7.5K train / 1K test。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Training Verifiers to Solve Math Word Problems; exact curation details should
+    be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Training Verifiers to Solve Math Word Problems.
+  split: Official GSM8K release has 7,473 train and 1,319 test problems; pin whether evaluation uses original answers, fixed
+    answer extraction, calculator-free prompts, or corrected variants such as GSM8K-Platinum.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official repository is MIT licensed and archived/read-only as of 2026-04-08; check repo state before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2110.14168'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: Official paper title is Training Verifiers to Solve Math Word Problems; GSM8K is the dataset. Scale is 8.5K examples,
+    commonly 7.5K train / 1K test in repo language, with 7,473/1,319 exact split in the release.
+inclusion_reason: GSM8K 提供简洁但高信号的小学数学文字题，是检验数学推理和 verifier/filtering 的基础坐标。
+related: []
+tags:
+- benchmark
+- grade-school-math
+- math-word-problems
+- verifier-evaluation
+why_it_matters: It is a canonical answer-verifiable math benchmark and verifier-selection reference point.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin original 7,473/1,319 split, answer extraction, calculator/tool policy, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: GSM8K provides 8,792 grade-school math word problems and uses final numeric answer checking while studying
+  verifier models.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

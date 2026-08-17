@@ -1,0 +1,3 @@
+For a speech team with paired clips or dialogue history, UniSRM supplies a reusable template: define task-specific dimensions, store explanations with scores, then compare a structured judge against held-out human preferences. The output is an auditable preference/score record and a candidate reward-model evaluation, checked by accuracy or correlation per task.
+
+It is most appropriate when audio, context, and annotation policies can be preserved. Do not reuse its binary acceptance logic for untested languages, accents, overlapping speakers, or latency-critical production ranking without measuring human agreement, per-dimension errors, and rollout cost on the new slice.

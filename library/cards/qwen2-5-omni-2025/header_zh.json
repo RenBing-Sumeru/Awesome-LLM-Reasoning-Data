@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen2.5-Omni 披露了多模态预训练类别及第二阶段 token 总量、ChatML 指令数据的模态构成，以及以 WER/标点停顿误差排序的 Talker DPO 接口；但未公开底层记录、奖励实现、数据来源或审计工件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿多模态模型技术报告与数据披露台账",
+  "best_for_ch": "需要核查多模态预训练、语音偏好优化和数据披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jin Xu 等 14 位作者",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

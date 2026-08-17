@@ -1,0 +1,2 @@
+Official Bespoke Labs artifacts include the Hugging Face dataset, release post, and Curator recipe. Authors report that replacing regex/SymPy math parsing with GPT-4o-mini increased retained correct solutions from 25% to 73%. This is a reported retention statistic, not a released confusion matrix, and comparison with Sky-T1 also changes the teacher from QwQ to DeepSeek-R1. The current HF viewer reports 16,710 rows and 126 MB.
+

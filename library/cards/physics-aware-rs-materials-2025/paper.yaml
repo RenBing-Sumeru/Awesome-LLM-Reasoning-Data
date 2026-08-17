@@ -1,0 +1,134 @@
+id: physics-aware-rs-materials-2025
+title: Aligning Reasoning LLMs for Materials Discovery with Physics-aware Rejection Sampling
+year: 2025
+venue: 'NeurIPS 2025 Workshop on AI for Science: The Reach and Limits of AI for Scientific Discovery (poster)'
+authors:
+- Lee Hyun
+- Sohee Yoon
+- Jinwoo Park
+- Sue In Chae
+- Seongeon Park
+- Jooyeon Ahn
+- Yebin Jung
+- Youjung Chung
+- Hogeun Chang
+- Sujin Park
+- Myeonginn Kang
+- Jina Kim
+- Ho-Gyeong Kim
+- Myeonghun Jeong
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- materials_science
+- scientific_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2509.00768
+  arxiv: https://arxiv.org/abs/2509.00768
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.00768
+  venue: https://neurips.cc/virtual/2025/loc/san-diego/126018
+  openreview: https://openreview.net/forum?id=6jCzeodTTw
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Internal 11k QD-LED device recipes, split 10k train / 1k test. Row schema, source provenance, wet-lab protocol,
+    identifiers, and licenses are undisclosed.
+  trace_author: Qwen3-235B-A22B synthesizes the main teacher traces; DeepSeek-R1-671B and Qwen3-235B-FP8 are analysed as alternative
+    teachers.
+  answer_format: A structured QD-LED device recipe, a natural-language reasoning trace, and JSON maximum external quantum
+    efficiency (EQE) prediction.
+  process_fields:
+  - device_recipe
+  - reasoning_trace
+  - predicted_eqe
+  - gate_outcomes
+  - candidate_order
+  environment_or_substrate: Offline teacher-trace sampling for recipe-to-EQE prediction; accepted traces supervise a Qwen3-32B
+    student. No executable environment, trace package, gate log, or checkpoint is released.
+  verifier_or_reward: PaRS applies range consistency, continuous error against wet-lab EQE, and an empirical recipe-specific
+    EQE envelope derived from highest film PLQY. It is a training-time selection contract, not a learned reward; exact thresholds
+    and outputs are unavailable.
+  terminal_predicate: Accept the first candidate satisfying all gates; otherwise halt for low within-batch error variance,
+    insufficient best-error improvement, or maximum budget, and discard the prompt if none passes.
+recipe_metadata:
+  base_model: Qwen3-32B student, fine-tuned for one epoch.
+  teacher: Qwen3-235B-A22B.
+  generator: Sequential mini-batch teacher sampling; accept the earliest passing candidate, otherwise increase temperature
+    subject to halting.
+  filtering_rule: Retain only a trace that passes range, near-ground-truth tolerance, and PLQY-derived envelope gates; discard
+    prompts without a passing candidate.
+  sampling_protocol: A 12-candidate comparison budget; Table 1 reports 6.4 generated candidates per prompt for PaRS and about
+    20% prompt discard. Exact mini-batch size, temperatures, thresholds, seeds, and candidate logs are unknown.
+  rollout_count: 12
+  temperature: unknown
+  inference_budget: Up to 12 teacher candidates per prompt; early acceptance/halting reduces realized sampling.
+  optimizer_or_scaffold: One-epoch AdamW SFT on A100 80GB GPUs; learning rate and remaining hyperparameters are not disclosed
+    in readable paper text.
+audit:
+  source_mixture: Internal QD-LED records and wet-lab EQE targets; provenance and measurement uncertainty are unknown.
+  split: 10k/1k reported; construction, leakage controls, and identifiers are unknown.
+  decontamination: unknown
+  license: unknown
+  lineage: Internal recipe -> Qwen3-235B-A22B candidates -> PaRS gates/halting -> one accepted trace or discard -> Qwen3-32B
+    SFT. All row-level mappings and rejected candidates are unavailable.
+  known_failure_modes:
+  - No prompts, traces, gate values, code, manifests, checkpoints, or candidate order are released.
+  - Physics-gate thresholds and wet-lab target uncertainty cannot be independently audited.
+  - Final EQE admissibility does not validate every natural-language rationale step.
+  - Reported gains mix teacher, gates, halting, and SFT, so causal attribution and cost replay are limited.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v2 verifies the paper, affiliations, method, and experiments. No author-linked executable/data artifact
+    was verified.
+  metadata_status: partial
+inclusion_reason: PaRS is a domain-specific rejection-sampling recipe that makes accepted-versus-discarded materials reasoning
+  traces, physics gates, and early halting central to SFT construction.
+related: []
+tags:
+- materials-discovery
+- qd-led
+- rejection-sampling
+- physics-aware
+- teacher-traces
+- sft-distillation
+- adaptive-halting
+status: partial
+why_it_matters: It demonstrates a physics-aware trace-selection contract beyond final-answer correctness, but unavailable
+  recipes, traces, gate logs, thresholds, and wet-lab provenance block independent reuse or audit.
+card: null
+needs:
+- 'needs_release: selected/rejected traces, prompts, candidate order, gate values, acceptance reasons, and manifests'
+- 'needs_code: executable PaRS gates, halting logic, thresholds, schedule, and evaluation scripts'
+- 'needs_data: QD-LED schema, IDs, provenance, measurement protocol, and licenses'
+- 'needs_audit: split/decontamination controls, target uncertainty, seeds, logs, and checkpoint lineage'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-23'
+  verified_by: card-repair-staging
+  confidence: high
+  notes: Verified against arXiv v2; NeurIPS/OpenReview pages were linked but browser verification was blocked. No executable
+    artifact was found on arXiv.
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: PaRS samples teacher QD-LED reasoning traces and keeps an early candidate only if range, wet-lab-error,
+  and PLQY-envelope gates pass before distilling Qwen3-32B.

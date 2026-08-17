@@ -1,0 +1,5 @@
+The contribution is the linked construction recipe rather than Prolog, execution filtering, or GRPO in isolation. Predicate suggestion precedes full synthesis; an evolving library supports reuse across problems; a fixed vocabulary of symbolic answer types is part of both generation and verification; and failed examples are not simply discarded but become a recovery set for SFT and GRPO.
+
+The predicate-aware reward adds program-level structural feedback without human preference labels or a learned process model. Correct output is combined with a singleton-warning penalty and suggested-predicate use. Its boundary is explicit: an incorrect program can earn 0.5, and no intermediate mathematical claim receives an independent label.
+
+For the Data Construction and Open Release track, the important design distinction is among source reasoning, reusable abstraction, executable artifact, terminal equivalence, and recovery provenance. Prolog-MATH makes these stages visible in the paper, but the public table collapses accepted results into six fields and does not release the rejected candidates or state of the predicate library.

@@ -1,0 +1,5 @@
+- 应同时固定发表与 artifact 版本：COLM 2025；arXiv:2504.08942v2；GitHub `f838338886d723d40b586309465a38277803d9e6`；Hugging Face `b6d17e646009d6cb63d5dd7be78807b680693f61`。
+- 必须区分 1,302 个唯一 episode 与 1,408 行 annotation。106 个 key 有双重标注；论文的 3,906 个 binary-label 计数没有包括 release 中的四级 optimality 字段。
+- 应分别阅读三类反馈：专家标签是参考；`functional` 以存储 reward `>0.5` 为阈值；LLM judge 则根据可配置的 trajectory representation 预测标签。
+- 89.3% success agreement 应视为作者报告结果；直接对 raw CSV 做显然的 exact-match 计算不能精确复现该值，optimality agreement 也未报告。
+- 1,302 个 cleaned episode、1,302 个 screenshot directory 与每个 episode 15 个 judgment 只应用于 evaluation 与 audit。许可证、上游权利、确定性 replay、去污染、隐私以及穷举 linkage/parsing check 仍未解决。

@@ -1,0 +1,5 @@
+The release does not provide task prompts, source manifests, repository contexts or revisions, tests, synthetic materials, trajectories, environment images, provisioners, reward formulae, or logs. The 20,000-environment claim cannot be reproduced or independently audited without access to those artifacts. Apache-2.0 applies to released weights, but source-level rights for code, pull-request context, tests, environments, and synthetic materials are unknown.
+
+No split, decontamination, overlap-control, test-validity, verifier-error, or reward-hacking protocol is publicly described. Automatically scaled tests may be invalid or fail to measure the intended behavior; without test contents and error analysis, execution success is not a complete validity guarantee. Reward shaping, thresholds, timeouts, partial completion, rollout settings, algorithms, and compute are also unknown.
+
+The model page's citation to arXiv:2505.09388 does not establish a Coder-specific paper. That Qwen3 Technical Report concerns distinct coverage and must remain separate from this official blog-based entry.

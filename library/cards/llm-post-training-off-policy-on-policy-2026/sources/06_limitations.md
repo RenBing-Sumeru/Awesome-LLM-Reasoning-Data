@@ -1,0 +1,1 @@
+The framework is deliberately high level. Hybrid pipelines can contain supplied demonstrations, generated rollouts, and learned filtering in one loop, so a binary provenance label can conceal important transitions. It also cannot replace source-level evidence about annotations, licenses, split construction, or contamination.

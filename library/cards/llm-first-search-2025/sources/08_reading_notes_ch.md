@@ -1,0 +1,5 @@
+- LFS 同时要求 LLM 给出 explore-or-continue 决策与标量价值，并把未选候选保存在 priority queue 中。
+- Countdown 和 Sudoku 提供程序化合法转移与二元终局 reward；模型 value 不是正确性验证器。
+- 实验使用 GPT-4o 和 o3-mini，每个游戏运行五次，temperature 0.0，`max_tokens=16384`，API timeout 为 300 秒。
+- 论文与代码对 Sudoku 的 o3-mini reasoning effort 描述不一致：论文称 low，仓库 agent 设置为 medium。
+- 代码、提示、输入和 pickle 轨迹 schema 已公开，但论文的原始结果树与分配日志未发布。

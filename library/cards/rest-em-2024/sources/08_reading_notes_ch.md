@@ -1,0 +1,5 @@
+- 记录：prompt、采样解答、二元 verifier 结果和自训练轮次。
+- 预算：MATH 每题 32 个候选，APPS 每题 64 个候选；最多保留十个正确输出。
+- 机制：每轮 SFT 后重新生成，使数据生产者随 policy 一起更新。
+- 证据：PaLM 2-L 在 MATH 和 APPS 上分别提高 6.34 与 6.4 个点，但 APPS 第二轮回退。
+- 复用：verifier precision、prompt 重用、留出停止、来源条款和生成成本都是必查项。

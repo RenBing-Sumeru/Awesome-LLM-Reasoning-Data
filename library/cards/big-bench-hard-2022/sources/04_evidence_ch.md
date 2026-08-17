@@ -1,0 +1,1 @@
+核心证据是 23 个 hard task 的子集，以及 direct prompting 与 chain-of-thought prompting 在这些发布任务上的比较。论文报告 CoT 在许多所选任务上显著提升，但仍有任务保持困难。逐样本证据仍然是抽取/归一化后的最终答案是否匹配 target；生成的 reasoning trace 是辅助文本，不是可检查证书。证据边界包括所选 BIG-bench 版本、prompt 示例、最终答案抽取、模型族和任务文件公开带来的污染风险。

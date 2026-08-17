@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AB-MCTS 在固定推理预算下，自适应选择生成新回答分支或沿既有回答进行反馈驱动修订，形成带外部评分的响应—修订树；公开代码可保存完整本地树和逐调用日志，但论文实验的原始树、全部回答、未选分支与 API 日志并未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "自适应分支测试时树搜索配方与推理计算扩展研究",
+  "best_for_ch": "研究测试时计算、搜索轨迹数据、外部反馈分配、响应修订谱系、预算归因与原始树发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yuichi Inoue、Kou Misaki、Yuki Imajuku、So Kuroki、Taishi Nakamura、Takuya Akiba",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-25T05:42:28Z"
+}

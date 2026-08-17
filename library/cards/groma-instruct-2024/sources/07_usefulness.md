@@ -1,0 +1,3 @@
+- For training a multimodal assistant that can discuss user-selected image regions, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of box-token alignment errors can be learned as confident grounded statements.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: region-box consistency, source annotations, and grounding benchmark scores. Do not reuse the release when its licensing or source provenance cannot be preserved.

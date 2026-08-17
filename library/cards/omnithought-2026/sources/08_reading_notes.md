@@ -1,0 +1,5 @@
+- Read Section 3 and Appendices A-C together: the release unit is a question with nested candidates, and answer acceptance is separate from `thought_correctness_verify`.
+- Use the pinned README count of 708,009 outer `train` rows; the datasets-server's 552,229 figure is a partial estimate. The exact nested CoT total remains unverified beyond the paper's “more than two million” claim.
+- Read Equations 1-2 before interpreting RV: final RV mixes QwQ-32B judgment and log-normalized token length at alpha=0.5; the released row does not expose both components.
+- Read Tables 2-4 with their data contracts: combined selection is a matched-problem SFT result, DPO encodes verbosity preference, and GRPO adds learned RV/CD rewards whose full rollout settings are missing.
+- Pin the ACL paper, main dataset, OmniThought-0528, and EasyDistill separately. The final ACL version adds DeepSeek-R1-0528/Qwen3 material, while the checked code is a partial scaffold rather than a frozen construction manifest.

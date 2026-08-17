@@ -1,0 +1,1 @@
+This is a literature synthesis. For each primary method, record the prompt distribution, rollout procedure, reward or verifier, policy update, filtering rule, and evaluation set. Then separate a change to supervision from a change to sampling or inference budget. This avoids assigning every gain to RL when the training data may have changed at the same time.

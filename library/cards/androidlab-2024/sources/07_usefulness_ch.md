@@ -1,0 +1,1 @@
+它适合作为移动端 agent 环境卡的 recipe：同一条记录里保留 task id、app、设备/镜像版本、观察模式、动作词表、每步 observation、模型动作、子目标状态、终止谓词、指标名称、prompt scaffold 和模型预算。对 atlas 最有用的地方是可以比较文本模型和多模态模型在同一动作契约下的差异，并检查 instruction tuning 提升的是实际手机控制还是输出格式适配。

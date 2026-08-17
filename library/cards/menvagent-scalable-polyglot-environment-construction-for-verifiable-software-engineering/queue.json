@@ -1,0 +1,19 @@
+{
+  "title": "MEnvAgent: Scalable Polyglot Environment Construction for Verifiable Software Engineering",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.22859",
+    "data": "https://github.com/ernie-research/MEnvAgent",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T10:26:20Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 MEnvBench，1000个覆盖十种语言的工程任务及Docker环境",
+    "updated_at": "2026-07-19T10:26:20Z"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ScienceAgentBench 将 scientific data-driven discovery tasks as runnable programs 做成可审计的评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2025 / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 benchmark、评分契约、污染风险、评测 harness 和后训练反馈可复用性的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Ziru Chen 等（Ohio State University、University of Wisconsin-Madison）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T10:25:00Z"
+}

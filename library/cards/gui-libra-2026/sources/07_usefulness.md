@@ -1,0 +1,3 @@
+- If you have GUI trajectories with screenshots and actions but weak rationales, reuse the augmentation, agreement, and coordinate-containment stages to produce reasoning-action SFT records; validate with held-out grounding accuracy and online task success.
+- If offline step rewards recognize only logged actions, reuse the KL-constrained RL ablation protocol and compare offline/online checkpoint correlation before scaling training.
+- Do not reuse the acceptance rule unchanged when the target environment lacks coordinates/targets or when valid actions cannot be sampled for false-negative auditing.

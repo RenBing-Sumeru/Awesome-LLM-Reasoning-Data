@@ -1,0 +1,117 @@
+id: enhancing-process-supervision-mcts-2025
+title: Enhancing Reasoning through Process Supervision with Monte Carlo Tree Search
+year: 2025
+venue: AAAI 2025 NeurMAD workshop (per arXiv comments)
+authors:
+- Shuangtao Li
+- Shuaihao Dong
+- Kexin Luan
+- Xinhan Di
+- Chaofan Ding
+source_role:
+- construction_recipe
+- process_supervision
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- process_supervision
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2501.01478
+  arxiv: https://arxiv.org/abs/2501.01478
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Math/reasoning problems; no public prompt or tree dataset was verified.
+  trace_author: unknown
+  answer_format: Each MCTS record contains a problem, partial solution, next step, and relative score; terminal answers receive
+    binary reward before score-weighted SFT with KL regularization.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Intermediate relative scores are process supervision; terminal binary reward is programmatic when answer
+    checking is available, yielding a mixed contract.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: The method grows MCTS reasoning trees, supervises partial/next-step choices with relative scores, and converts
+    weighted trajectories into iterative SFT data.
+  filtering_rule: Intermediate relative scores are process supervision; terminal binary reward is programmatic when answer
+    checking is available, yielding a mixed contract.
+  sampling_protocol: No official code, data, model, venue artifact, or tree/score release was confirmed beyond the arXiv paper
+    and its workshop comment.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: The method grows MCTS reasoning trees, supervises partial/next-step choices with relative scores,
+    and converts weighted trajectories into iterative SFT data.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Math/reasoning problems; no public prompt or tree dataset was verified. -> Each MCTS record contains a problem,
+    partial solution, next step, and relative score; terminal answers receive binary reward before score-weighted SFT with
+    KL regularization. -> Intermediate relative scores are process supervision; terminal binary reward is programmatic when
+    answer checking is available, yielding a mixed contract. -> reported final selection or training use. Raw lineage records
+    are not established as released.
+  known_failure_modes:
+  - Relative process scores may be noisy and model-dependent; missing search trees, score calibration, and executable judging
+    prevent audit or reuse.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It makes step-level supervision lineage explicit, while showing why final binary outcomes cannot validate
+  unshared intermediate relative scores.
+related: []
+tags:
+- mcts
+- process-supervision
+- relative-scores
+- sft
+- kl-regularization
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A process-supervision recipe that uses MCTS to create scored partial-reasoning examples.
+why_it_matters: It makes step-level supervision lineage explicit, while showing why final binary outcomes cannot validate
+  unshared intermediate relative scores.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

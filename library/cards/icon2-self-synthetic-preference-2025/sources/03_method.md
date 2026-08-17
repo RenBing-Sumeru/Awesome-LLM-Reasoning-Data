@@ -1,0 +1,3 @@
+The authors derive directions from 1,024 Alpaca instructions and contrastive prompts, then let the target SFT model create one million English instructions from pre-query templates. Each instruction receives its maximum mean-pooled layerwise consistency score across four criteria; the top 100,000 are retained, with 98,000 used for DPO and 2,000 for validation.
+
+For each retained instruction, positive steering uses gamma 0.1 and negative steering uses gamma minus 0.05 in layers 10 through 20, producing exactly two responses without a separate judge. Llama3-8B and Qwen2-7B are trained for one offline DPO epoch with beta 0.1 after UltraChat-200k supervised fine-tuning.

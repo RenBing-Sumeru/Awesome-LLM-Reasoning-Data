@@ -1,0 +1,3 @@
+1. Aggregate upstream public preference records. 2. Iteratively define long-form questions with five English-proficient annotators, then use Llama-4-Scout in batches of ten to retain only 100%-confidence LFQ predictions. 3. Map retained prompts back to answer pairs and standardize record fields. 4. On a sampled set, extract nine rubric scores and compare logistic-regression and LLM judges; these scores evaluate judges and do not replace human labels.
+
+The release is English-only and research-use terms require checking upstream licenses. Fix upstream revisions, LFQ prompt, Llama-4 version, and deduplication policy for reproduction.

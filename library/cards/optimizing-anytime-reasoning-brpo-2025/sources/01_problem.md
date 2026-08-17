@@ -1,0 +1,1 @@
+Standard RLVR usually rewards only the answer produced after a fixed maximum reasoning budget. A deployed model may instead be interrupted at many token lengths and still be expected to return its best available answer. Optimizing only the terminal trace gives no direct supervision for partial-thinking states and weakens credit assignment over long reasoning.

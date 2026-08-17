@@ -1,0 +1,104 @@
+id: xverify-efficient-answer-verifier-2025
+title: 'xVerify: Efficient Answer Verifier for Reasoning Model Evaluations'
+year: 2025
+venue: arXiv 2025
+authors:
+- Ding Chen
+- Qingchen Yu
+- Pengyuan Wang
+- Wentao Zhang
+- Bo Tang
+- Feiyu Xiong
+- Xinchi Li
+- Minchuan Yang
+- Zhiyu Li
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- reasoning-evaluation
+- answer-verification
+- reward-modeling
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2504.10481
+  arxiv: https://arxiv.org/abs/2504.10481
+  code: https://github.com/IAAR-Shanghai/xVerify
+  data: https://huggingface.co/datasets/IAAR-Shanghai/VAR
+  project: https://github.com/IAAR-Shanghai/xVerify
+  huggingface: https://huggingface.co/collections/IAAR-Shanghai/xverify-67e0f6f94c2dc334727da802
+  doi: https://doi.org/10.48550/arXiv.2504.10481
+  venue: null
+  openreview: https://openreview.net/forum?id=OmHv7TA7iS
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning evaluation datasets and challenging objective questions described in the paper.
+  trace_author: Multiple LLMs generate candidate answers; humans review labels in multiple rounds.
+  answer_format: Question, reference answer, long model response, and correctness annotation.
+  process_fields:
+  - question
+  - reference_answer
+  - response
+  - correctness_label
+  environment_or_substrate: Objective reasoning tasks including mathematics, multiple choice, classification, and short answers.
+  verifier_or_reward: xVerify learns answer equivalence against a reference answer.
+  terminal_predicate: The candidate answer is equivalent to the reference answer.
+recipe_metadata:
+  base_model: xVerify variants reported in the paper, from 0.5B to larger models.
+  teacher: Automatic initial labels followed by multi-round human review.
+  generator: Multiple reasoning models produce candidate answers.
+  filtering_rule: Multi-round review resolves or excludes unreliable labels.
+  sampling_protocol: Use the official VAR revision and the train/test/generalization partitions described by the paper.
+  inference_budget: Model size and answer-verification prompting are material evaluation controls.
+  optimizer_or_scaffold: Supervised verifier training; the paper also evaluates xVerify as an RL reward.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Objective reasoning questions, reference answers, multi-model responses, automatic labels, and human review.
+  split: VAR supports training and evaluation; pin the selected official dataset revision before reuse.
+  decontamination: Public evaluation records should be separated from any downstream test set.
+  license: Check the current VAR dataset card and repository before reuse.
+  lineage: arXiv paper, IAAR-Shanghai author repository, and IAAR-Shanghai VAR dataset release.
+  known_failure_modes:
+  - Reference-answer ambiguity can remain for underspecified questions.
+  - A correctness verifier does not establish validity of every intermediate reasoning step.
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, IAAR-Shanghai xVerify repository, IAAR-Shanghai VAR dataset, and project collection.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: xVerify trains lightweight answer-equivalence verifiers on VAR, a roughly 56K-record collection of long
+  reasoning answers with correctness labels.
+why_it_matters: The release makes answer-level feedback and its reference-based acceptance rule reusable for reasoning evaluation
+  and reward modeling.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, IAAR-Shanghai xVerify repository, IAAR-Shanghai VAR dataset, and project collection.
+category_ids:
+- preference_reward_feedback_data

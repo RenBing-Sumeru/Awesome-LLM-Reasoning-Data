@@ -1,0 +1,4 @@
+Relative to a release that says only “trained with RL,” Hunyuan-T1 discloses several useful system-level anchors: an exact post-training compute share, a two-axis curriculum, replay and policy reset, a ground-truth reasoning signal, and a separate self-reward-plus-reward-model preference stage. Together they show that the pipeline is not one homogeneous RL dataset or reward.
+
+The direction signal for the frontier-reports data-disclosure ledger is the separation of what is named from what is inspectable. The release names mechanisms more concretely than it defines data records. A later Hunyuan-TurboS report provides much richer post-training detail for a related model family, but that information cannot be copied into Hunyuan-T1 unless the report explicitly binds the stage or checkpoint. The Card's novelty is therefore an auditable disclosure boundary, not a claimed new algorithm or benchmark lead.
+

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Select2Reason 按题目难度和去重后的推理长度排序长 CoT 样本，以更小的 SFT 子集训练推理能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长链式推理 SFT 数据筛选论文",
+  "best_for_ch": "需要在有限 SFT 预算下选择长 CoT 训练样本的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Cehao Yang、Xueyuan Lin、Xiaojun Wu、Chengjin Xu、Xuhui Jiang、Honghao Liu、Hui Xiong、Jian Guo",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

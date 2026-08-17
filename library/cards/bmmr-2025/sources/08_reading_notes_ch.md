@@ -1,0 +1,6 @@
+- 区分三种对象：公开的 88,991 条 BMMR-Train 对话、公开的 20,458 道 BMMR-Eval 题，以及未公开的 14 万对 BMMR-Verifier 训练对象。
+- 数据质量控制与验证器构造都使用 32 次采样，但用途不同：前者在三级模型级联中估计答案一致率，后者构造带规则标签的推理轨迹。
+- Train viewer 只暴露 `id`、`conversations` 和 `image`；taxonomy、语言、来源、难度、筛选判定、轨迹作者与许可谱系都不是行级字段。
+- GitHub 公开代码只能复现结果评分，不能复现 BMMR-Verifier 过程评分；验证器 checkpoint、标签、rollout 和训练实现均缺失。
+- 把与 GPT-4o/人类的平均步骤级 91.46% 视为一致性证据，而不是经校准的准确率估计；1,000 条对比集及分歧记录没有发布。
+- 在治理场景复用前，应先协调最终论文的 CC-BY-4.0 声明与 Hub 的 MIT 标签，也应协调方法中报告的人工标注与 checklist 对 human-subject 问题填写的 “not applicable”。

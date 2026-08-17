@@ -1,0 +1,1 @@
+Dou, Alex ZH，Zhongwei Wan，Dongfei Cui，Xin Wang，Jing Xiong，Haokun Lin，Chaofan Tao，Shen Yan 与 Mi Zhang。《Enhancing Test-Time Scaling of Large Language Models with Hierarchical Retrieval-Augmented MCTS》。arXiv:2507.05557，2025。https://arxiv.org/abs/2507.05557。代码：https://github.com/SUSTechBruce/R2LLM。

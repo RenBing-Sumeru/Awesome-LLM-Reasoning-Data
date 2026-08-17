@@ -1,0 +1,5 @@
+- Read Section 3 with Algorithm 1: only correct samples enter `D_GEN`, all labeled samples enter `D_VER`, and the final DPO pairs are same-query correct-versus-incorrect Cartesian products.
+- Keep the budgets distinct: 3 training iterations × 16 candidates equals 48 candidates per query; main test metrics estimate Best-of-64 from 128 candidates; the large-k GSM8K plot uses 1,000 generations.
+- Treat GSM8K answer equality and MBPP test passing as terminal outcome labels, not validation of every rationale step or complete program semantics.
+- Read Sections 4.4-4.7 as boundaries: DPO beats the tested LoRA ORM, Best-of-k saturates at k of at least 16, and putting the verifier in the MBPP training loop yields no substantial gain.
+- Before reuse, account for the absent official code, buffers, pair manifest, checkpoints, hyperparameters, execution sandbox, split IDs, calibration, and decontamination audit.

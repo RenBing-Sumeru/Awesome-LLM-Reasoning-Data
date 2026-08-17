@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MiMo-VL 报告 2.4T token 四阶段预训练、长 CoT 推理数据与 MORL，但未披露数据来源、奖励契约、rollout 或审计细节。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿多模态模型技术报告与数据披露台账",
+  "best_for_ch": "审计长 CoT 预训练与混合在线 RL 披露边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaomi LLM-Core Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

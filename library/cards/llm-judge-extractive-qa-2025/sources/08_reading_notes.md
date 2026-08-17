@@ -1,0 +1,5 @@
+- Position: audits whether lexical QA metrics miss semantically correct answers.
+- Lever: judge only EM/F1 disagreements, then compare with human labels.
+- Artifact: repository includes prompts, data archives, predictions, and three judge outputs.
+- Evidence: Qwen judge correlation is 0.85 versus EM 0.22 and F1 0.40 on 1,288 labeled predictions.
+- Reuse: suited to contextual extractive QA; first audit ambiguous answer types and model sensitivity.

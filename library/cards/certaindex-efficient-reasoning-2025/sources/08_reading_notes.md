@@ -1,0 +1,1 @@
+Check how intermediate answers are extracted, how the metric is normalized, and how thresholds are selected without leaking test labels. Report accuracy together with token savings and latency for every early-exit threshold. The key audit question is whether stability predicts no future answer change, not merely a shorter trace.

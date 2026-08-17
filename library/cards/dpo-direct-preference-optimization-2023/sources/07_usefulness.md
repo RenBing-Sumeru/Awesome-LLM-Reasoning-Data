@@ -1,0 +1,1 @@
+Read DPO before comparing preference-data selectors: it defines the standard way many later papers consume chosen/rejected records. Use it when an offline pairwise dataset and a reference checkpoint are available and a simple, stable alignment baseline is needed.

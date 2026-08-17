@@ -1,0 +1,3 @@
+Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks studies how to turn OpenClaw-style agent harnesses for coding and repository tasks into reusable, comparable, and auditable agent environments or trajectory data. It belongs to the 06 track because the reusable object combines tasks, states, actions, execution feedback, harnesses, and success predicates rather than a single static answer.
+
+Primary source: https://arxiv.org/abs/2606.12344. Verified venue/status: arXiv preprint. The L4 boundary is to collect it as an environment, trajectory, or evaluation surface, not as a complete training recipe.

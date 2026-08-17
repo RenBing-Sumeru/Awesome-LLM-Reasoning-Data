@@ -1,0 +1,9 @@
+既有基线包括早期Phi的教师蒸馏与合成textbook-like数据、常规过滤网页/代码预训练、拒绝采样SFT及完整回答DPO。Phi-4的变化是把合成数据贯穿预训练与后训练，搜索课程mixture，并把oracle估计的局部成功率变化转化为token-level preference pair。
+
+在构造层面，报告贡献是一组方法组合，而不是单一generator。种子筛选、web rewrite、问答抽取、自我修订、instruction reversal、执行支持的代码验证和plurality filtering分别用于不同数据家族。报告还说明synthetic-only消融会损害事实召回，因此选择organic/synthetic混合，而不是声称合成数据可替代organic知识来源。
+
+Pivotal Token Search是最具体的后训练新意。标准DPO在差异较大的完整回答上把preference信号分散到许多token；Pivotal Token Search则在prefix附近采样continuation，调用结果oracle，递归定位造成较大成功率变化的token选择，并用只在该局部选择上不同的pair训练。这样无需另训process reward model，也能生成自动化token-local preference监督。
+
+必须明确哪些并非新贡献：SFT、DPO、合成生成、自我修订、多数投票、代码测试、答案检查、课程搜索和LLM judging都早于该报告。Pivotal Token Search也不能确立逐步数学真值；其信号是采样continuation下某个token对最终oracle成功率的估计影响。
+
+对`frontier_reports_data_disclosure_ledger`而言，披露组合也值得关注：来源类别、聚合token规模、三类后训练对象、pair数量、oracle角色、公开权重artifact和benchmark警告出现在同一官方报告中。但由于数据、提示、逐记录决策和重放资产缺失，该流程仍不是开放配方。

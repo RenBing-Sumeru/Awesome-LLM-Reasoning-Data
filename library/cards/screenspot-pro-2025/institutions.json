@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "National University of Singapore",
+    "East China Normal University",
+    "Hong Kong Baptist University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2504.07981",
+    "https://gui-agent.github.io/grounding-leaderboard/",
+    "https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding",
+    "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF dataset verify authors, institutions, and artifacts."
+}

@@ -1,0 +1,108 @@
+id: pae-autonomous-skill-discovery-internet-agents-2025
+title: 'Proposer-Agent-Evaluator (PAE): Autonomous Skill Discovery For Foundation Model Internet Agents'
+year: 2025
+venue: ICML 2025
+authors:
+- Yifei Zhou
+- Qianlan Yang
+- Kaixiang Lin
+- Min Bai
+- Xiong Zhou
+- Yu-Xiong Wang
+- Sergey Levine
+- Li Erran Li
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- web-agents
+- reinforcement-learning
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.mlr.press/v267/zhou25ah.html
+  arxiv: https://arxiv.org/abs/2412.13194
+  code: https://github.com/amazon-science/PAE
+  data: https://huggingface.co/datasets/yifeizhou/pae-data
+  project: https://yanqval.github.io/PAE/
+  huggingface: https://huggingface.co/datasets/yifeizhou/pae-data
+  doi: null
+  venue: https://proceedings.mlr.press/v267/zhou25ah.html
+  openreview: https://openreview.net/forum?id=uCkwqAG0uS
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/zhou25ah.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Website context, user demonstrations, and website names.
+  trace_author: PAE agent policy operating in real-world and self-hosted web environments.
+  answer_format: Tasks, screenshots, actions, trajectories, and outcome-evaluation signals.
+  process_fields:
+  - task
+  - screenshot
+  - action
+  - trajectory
+  - final_answer
+  - outcome_reward
+  environment_or_substrate: Vision-based web navigation in WebVoyager and WebArena settings.
+  verifier_or_reward: Autonomous VLM-based image outcome evaluator with binary success feedback.
+  terminal_predicate: The evaluator judges the final web state and response as successful.
+recipe_metadata:
+  base_model: Foundation VLM agents and configurations documented in the ICML paper and official repository.
+  teacher: Context-aware task proposer and VLM-based outcome evaluator.
+  generator: Autonomous task proposal followed by web-agent attempts and outcome evaluation.
+  filtering_rule: Use evaluator success signals as rewards for policy improvement and trajectory selection.
+  sampling_protocol: Propose tasks conditioned on website context and collect browser interactions in parallel environments.
+  inference_budget: Pin the gated official data revision and repository configuration for reproduction.
+  optimizer_or_scaffold: Supervised fine-tuning and distributed online reinforcement learning.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Autonomously proposed website tasks, web-agent trajectories, and outcome evaluations.
+  split: The author release is a 157 GB gated public dataset; access requires accepting its contact-sharing conditions.
+  decontamination: The work evaluates web-navigation generalization; reuse should separately assess website and benchmark
+    overlap.
+  license: CC-BY-4.0 on the official dataset page.
+  lineage: ICML 2025 PMLR paper, Amazon Science project repository, and author data release.
+  known_failure_modes:
+  - The binary evaluator can misjudge visually ambiguous outcomes.
+  - Live-web trajectories can change as websites evolve.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the ICML 2025 PMLR record, project site, official Amazon Science repository, and the author-owned
+    gated dataset page identifying the paper and code.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: PAE releases web-agent tasks and trajectories whose outcome rewards come from an autonomous VLM evaluator
+  after context-aware task proposal.
+why_it_matters: It connects task discovery, real web interaction, and outcome feedback in an openly released training workflow.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the ICML 2025 PMLR record, project site, official Amazon Science repository, and the author-owned
+    gated dataset page identifying the paper and code.
+category_ids:
+- process_trace_supervision_data

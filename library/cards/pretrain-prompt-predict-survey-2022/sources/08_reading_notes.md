@@ -1,0 +1,1 @@
+Read the notation and taxonomy first. For one prompt you use, write the raw input and the transformed string side by side, then mark every inserted token and every allowed answer. The practical memory aid is simple: prompt design is part of the data specification and part of the evaluation protocol.

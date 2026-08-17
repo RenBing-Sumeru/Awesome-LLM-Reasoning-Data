@@ -1,0 +1,1 @@
+Limitations and hidden assumptions: DPO does not repair weak or biased pair labels. The paper's objective choices, reference policy, data distribution, and evaluation setting remain part of the feedback contract.

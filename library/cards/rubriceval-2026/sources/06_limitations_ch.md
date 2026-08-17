@@ -1,0 +1,3 @@
+正确性只相对于 RAF label produced by base-裁判 agreement or meta-裁判 consensus, with sampled human validation; no mechanical 验证器 is provided. 成立。通过分数不自动证明鲁棒推理、安全行为、解释忠实，或能迁移到 benchmark 分布之外。
+
+隐藏假设包括：Paper reports 2,034 Easy and 1,452 Hard rubric-level 实例s; exact released split files cannot be pinned because no official artifact was found.；No official artifact license found beyond the arXiv paper; source benchmark redistribution and any future dataset license must be checked before reuse.；依赖或运行时漂移；裁判或评测器版本漂移；以及污染风险：Source benchmarks and rubric text may be public; contamination and overlap with model 训练 data require source-by-source 审计 before 榜单 claims。除非发布版本暴露训练输入、过滤规则和优化用途，否则这张卡不能被读成训练配方证据。

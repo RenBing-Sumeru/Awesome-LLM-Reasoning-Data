@@ -1,0 +1,1 @@
+核心贡献是面向专业、长程软件工作的 contamination-resistant benchmark，而不是新的训练集。完整 SWE-Bench Pro 含 1,865 个经人工核验的问题，来自 41 个活跃仓库：public set 对应 11 个开源仓库，held-out set 12 个仓库，commercial set 18 个合作公司的私有仓库；只有 public 的 731 题和执行资产开放。每条公开记录包含增强后的任务描述、base commit、gold/test patch、依赖、测试命令与容器化环境。验证以相关和回归测试是否通过为主，统一 agent scaffold 后报告 Pass@1，并保存失败轨迹用于错误聚类。

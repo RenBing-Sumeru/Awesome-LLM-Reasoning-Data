@@ -1,0 +1,5 @@
+- 必须区分数据单位：论文和 v2 精确含 146,746 条 task，v3 含 146,441 条 task row；声称的约 150K 条 trajectory 与 2.2M 张 screenshot/action trace 不是公开 artifact。
+- 建议把 Sections 4–6 与 prompt/code appendix 连读：proposer 输出 task 或 `N/A`，一次 Playwright exploration 对 refined task 进行 grounding，terminal LLM success judgment 筛出论文展示的 20K 中 10.5K 条 SFT set。
+- 不要把 82.6% 当成 environmental ground truth：它是 100 条人工标注 trajectory 上报告的最佳 accuracy；大规模 run 使用另一种 Qwen3-235B judge，且没有发布 calibration record 或 rationale。
+- 复用前应审计 privacy 与 side effect：PII removal 默认关闭，启用后只清理 processed text，不处理 raw HTML 或 screenshot；v3 还包含一条与 no-account policy 冲突的 registration task。
+- venue 是 arXiv preprint，OpenReview 只写“Submitted to ICLR 2026”，不是已接收的 ICLR 论文；可与 AgentTrek 配对阅读，比较 host-driven task proposal 与 tutorial-guided replay。

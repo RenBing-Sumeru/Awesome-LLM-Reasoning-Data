@@ -1,0 +1,5 @@
+- SETS samples m branches, self-verifies and corrects each for up to n rounds, then majority-votes final answers.
+- The online verifier is the same model plus a phrase-based parser; benchmark checkers are used only for evaluation.
+- Reported defaults use temperature 0.7, with n up to 10 and smaller m ranges for thinking models.
+- Scaling curves choose the best tested m/n configuration for each model, dataset, and token budget.
+- No official code or branch-level trace release was confirmed, so accuracy gains are not data-quality proof.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "EXP-Bench 从 51 篇 AI 论文构建 461 个可执行研究实验任务，要求智能体完成设计、实现、运行与结果分析。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "端到端 AI 研究实验的可执行智能体基准",
+  "best_for_ch": "需要评测智能体能否完成完整机器学习实验流程的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Patrick Tser Jern Kon, Qiuyi Ding, Jiachen Liu, Xinyi Zhu, Jingjia Peng, Jiarong Xing, Yibo Huang, Yiming Qiu, Jayanth Srinivasa, Myungjin Lee, Mosharaf Chowdhury, Matei Zaharia, Ang Chen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

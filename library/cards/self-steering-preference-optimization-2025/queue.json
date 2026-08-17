@@ -1,0 +1,18 @@
+{
+  "title": "Self-Steering Optimization: Autonomous Preference Optimization for Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.473/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:51:21Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它在生成偏好对时同时控制排序准确性与 on-policy 性质，直接改善后续偏好训练信号",
+    "updated_at": "2026-07-15T14:51:21Z"
+  }
+}

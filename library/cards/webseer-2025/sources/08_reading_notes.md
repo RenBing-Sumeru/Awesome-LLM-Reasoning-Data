@@ -1,0 +1,5 @@
+- Data object: a web-search episode with tool calls, observations, repeated answer submissions, textual score feedback, and reflection.
+- Cold-start data use an independent tool-using verifier and ground-truth consistency; fully unsuccessful instances are discarded.
+- SRRL uses Qwen2.5-14B, GRPO with DAPO clip-higher, 8 trajectories per prompt, and a submission-discounted answer reward.
+- Code, SFT data, RL data, and a 14B checkpoint are public; complete evaluation scripts and tagged releases are not.
+- Audit environment drift, verifier re-query selection, missing failed episodes, and the gap between benchmark scores and data quality.

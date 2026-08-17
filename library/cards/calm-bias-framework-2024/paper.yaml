@@ -1,0 +1,117 @@
+id: calm-bias-framework-2024
+title: Justice or Prejudice? Quantifying Biases in LLM-as-a-Judge
+year: 2024
+venue: arXiv preprint
+authors:
+- Jiayi Ye
+- Yanbo Wang
+- Yue Huang
+- Dongping Chen
+- Qihui Zhang
+- Nuno Moniz
+- Tian Gao
+- Werner Geyer
+- Chao Huang
+- Pin-Yu Chen
+- Nitesh V. Chawla
+- Xiangliang Zhang
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- meta-evaluation-fairness
+- benchmark-quality-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2410.02736
+  arxiv: https://arxiv.org/abs/2410.02736
+  doi: https://doi.org/10.48550/arXiv.2410.02736
+  code: https://github.com/Y0oMu/LLM-Judge-Bias-Dataset
+  data: https://github.com/Y0oMu/LLM-Judge-Bias-Dataset
+  project: https://llm-judge-bias.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors define 12 LLM-as-a-Judge bias types and create principle-guided perturbations for judge
+    prompts
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: original and perturbed judge prompt, targeted bias metadata, raw judge output, parsed score or preference,
+    and bias metric
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: LLM-as-a-Judge meta-evaluation with controlled prompt and response perturbations
+  verifier_or_reward: judge-model output is measured for instability under targeted perturbations; no external gold judge
+  terminal_predicate: bias metric derived from score shift, preference flip, or instability between original and perturbed
+    conditions
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official CALM framework applies automated, principle-guided modifications to evaluate 12 judge-bias categories
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_quality_audit
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2410.02736;
+    https://arxiv.org/html/2410.02736; https://llm-judge-bias.github.io/; https://github.com/Y0oMu/LLM-Judge-Bias-Dataset'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2410.02736'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official project page and arXiv source verify Notre Dame, independent researcher footnotes, UW, PKU, IBM Research,
+    and HKU affiliations. Minor source discrepancy remains for Jiayi Ye and Yanbo Wang regarding numeric affiliation plus
+    independent-researcher footnote. Artifact/license/split/scoring details remain review targets.
+inclusion_reason: Systematic bias taxonomy for judge reliability.
+related: []
+tags:
+- benchmark
+- benchmark_quality_audit
+- meta-evaluation-fairness
+one_line: CALM Bias Framework exposes LLM-as-judge bias perturbations as an auditable evaluation surface.
+why_it_matters: Systematic bias taxonomy for judge reliability.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CALM Bias Framework exposes LLM-as-judge bias perturbations as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official project page and arXiv source verify Notre Dame, independent researcher footnotes, UW, PKU, IBM Research,
+    and HKU affiliations. Minor source discrepancy remains for Jiayi Ye and Yanbo Wang regarding numeric affiliation plus
+    independent-researcher footnote.
+category_ids:
+- benchmarks_evaluation_surfaces

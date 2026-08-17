@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "OpenAI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-16T00:00:00Z",
+  "source_urls": [
+    "https://huggingface.co/datasets/openai/MMMLU",
+    "https://huggingface.co/datasets/openai/MMMLU/raw/main/README.md",
+    "https://github.com/openai/simple-evals",
+    "https://arxiv.org/abs/2009.03300"
+  ],
+  "verification_note": "OpenAI Hugging Face dataset card verifies locales, test split files, MIT license, professional human translation statement, and simple-evals link."
+}

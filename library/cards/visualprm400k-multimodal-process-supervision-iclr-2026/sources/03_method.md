@@ -1,0 +1,1 @@
+It trains or evaluates VLM-PRMs and compares data scale, visual-evidence binding, and process-reward gains. It produces or uses step labels, preferences, or rewards from problems, traces, and intermediate states; reproduction must check the generator, verifier, sampling budget, and filtering rules.

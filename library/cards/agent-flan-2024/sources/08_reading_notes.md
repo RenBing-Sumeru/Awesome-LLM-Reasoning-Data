@@ -1,0 +1,5 @@
+- Positioning: Agent-FLAN addresses format overfitting and inappropriate tool calls by redesigning 24,703 inherited demonstrations rather than collecting another undifferentiated corpus.
+- Method handle: conversational alignment, four-way capability decomposition, weighted sampling, and negative supervision are the key decisions; the last one governs when not to act.
+- Data handle: seven Apache-2.0 JSONL splits expose id and role/content/loss conversations spanning ReAct, CoT, transformed, and negative examples.
+- Evidence anchor: overall held-in/held-out score rises from reimplemented AgentTuning's 38.2 to 41.7, while negatives lift Agent-H from 84.5 to 89.1 without improving T-Eval.
+- Reuse decision: suitable for auditing agent-data representation and mixture design; remeasure loss curves and paraphrase negative cases before transferring weights.

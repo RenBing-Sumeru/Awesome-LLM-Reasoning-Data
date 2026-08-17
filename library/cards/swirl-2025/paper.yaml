@@ -1,0 +1,218 @@
+id: swirl-2025
+title: Synthetic Data Generation & Multi-Step RL for Reasoning & Tool Use
+year: 2025
+venue: COLM 2025
+authors:
+- Anna Goldie
+- Azalia Mirhoseini
+- Hao Zhou
+- Irene Cai
+- Christopher D. Manning
+source_role:
+- construction_recipe
+- process_supervision
+- verifier_reward
+- agent_environment
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- state_action_level
+- full_episode
+- scalar_reward
+- process_reward
+domains:
+- multi_hop_question_answering
+- mathematical_reasoning
+- tool_use
+- search
+- synthetic_data
+- reinforcement_learning
+training_use:
+- sft
+- process_supervision
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=oN9STRYQVa
+  arxiv: https://arxiv.org/abs/2504.04736
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.04736
+  venue: https://openreview.net/forum?id=oN9STRYQVa
+  openreview: https://openreview.net/forum?id=oN9STRYQVa
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Two paper-reported training pools: 10,000 non-Easy HotPotQA training questions seed 50,000 search-tool trajectories,
+    and all 7,500 GSM8K training questions seed 37,500 calculator trajectories. Exact seed IDs, revisions, and the HotPotQA
+    Easy-filter implementation are not released.'
+  trace_author: The Gemma 2 policy pi_theta generates the synthetic trajectories and is then finetuned by SWiRL; the main
+    experiments use Gemma 2 27B and Appendix B studies 2B/9B variants. Exact model revisions and decoding configurations are
+    unknown.
+  answer_format: A trajectory tau=(s1,a1,...,sK,aK) begins with the task prompt. Every later state contains the full preceding
+    context, model action, and applicable tool response. Each action may include chain-of-thought plus one tagged search/calculator
+    call, or the tagged final answer. A K-action trajectory is transformed into K action-ending prefix subtrajectories for
+    step-wise optimization.
+  process_fields:
+  - source_dataset
+  - source_question
+  - state_prefix
+  - action
+  - chain_of_thought
+  - tool_call
+  - tool_response
+  - final_answer
+  - process_filter_label
+  - outcome_filter_label
+  - step_reward
+  - terminal_reason
+  - trajectory
+  - subtrajectory
+  environment_or_substrate: Question answering uses tagged search queries, Gecko-1B 768-dimensional English embeddings, and
+    nearest-neighbor lookup over a vector database containing articles from the relevant split. Mathematics uses tagged expressions
+    executed by SymPy. Tool responses are collected during offline trajectory generation and preserved in later subtrajectory
+    prefixes.
+  verifier_or_reward: Stage-1 process filtering asks Gemini 1.5 Pro Thinking for binary GOOD/BAD judgments on the current
+    action given its preceding context and retains trajectories only when every action is judged reasonable. A separate outcome
+    filter uses golden-answer comparison. Stage-2 SWiRL instead uses Gemini 1.5 Pro as a generative reward model R(a|s) for
+    each action conditioned on its prefix, without golden answers; the reward prompt, scale, normalization, and exact model
+    snapshot are unknown. Evaluation uses GPT-4o for Table 1, Gemma 2 27B for most other tasks, and Gemini 1.5 Pro for GSM8K.
+  terminal_predicate: The episode ends when the model emits an <answer> tag; data generation caps trajectory length at 5 steps
+    for HotPotQA and 10 for GSM8K, while evaluation caps tool queries at 5 for QA and 10 for math. Handling of malformed tags,
+    tool exceptions, and other stop reasons is unknown.
+  provenance: HotPotQA-train or GSM8K-train question -> Gemma 2 multi-step tool rollout -> optional process/outcome filtering
+    -> full trajectory tau -> one prefix subtrajectory per action -> Gemini 1.5 Pro action reward -> offline step-wise policy-gradient
+    update. No released record-level manifest connects these stages.
+recipe_metadata:
+  base_model: Gemma 2; 27B is the main model, with 2B and 9B model-size ablations. Exact checkpoint revisions are unknown.
+  teacher: No separate teacher trajectory generator is reported. Gemini 1.5 Pro Thinking/Pro supplies process filtering and
+    step-wise reward judgments, not target trajectories.
+  generator: The same Gemma 2 policy pi_theta that is subsequently finetuned generates multi-step search or calculator trajectories
+    through iterative prompting and tool execution.
+  prompt_task_source: 10,000 non-Easy HotPotQA training questions and 7,500 GSM8K training questions. Appendix A provides
+    the search/calculator generation, process-filter, and outcome-evaluation prompt templates.
+  sampling_protocol: Five synthetic trajectories per seed question are reported (explicit for HotPotQA and implied by 37,500/7,500
+    for GSM8K). Exact decoding temperature, top-p, random seeds, batching, and malformed-output retry policy are unknown.
+  rollout_count: 5
+  temperature: unknown
+  top_p: unknown
+  inference_budget: 'Synthetic-data maximum trajectory length: 5 steps for HotPotQA and 10 for GSM8K. Evaluation permits up
+    to 5 search queries for QA and 10 calculator queries for math. Token limits and wall-clock/tool-call budgets are unknown.'
+  search_or_scaffold: 'Offline tool-augmented rollout collection followed by fixed-data RL: QA queries use a Gecko-1B vector
+    index; math expressions use SymPy; each collected trajectory is decomposed into action-prefix subtrajectories.'
+  filtering_rule: 'Four controlled variants are compared: no filtering; process-only (every step receives GOOD); outcome-only
+    (final answer matches the golden label); and their intersection. The best SWiRL condition is process-only and intentionally
+    retains both correct and incorrect final outcomes.'
+  selection_threshold: Process-only requires all action judgments in a trajectory to be GOOD. Outcome-only requires a YES
+    judgment against the golden answer. Exact post-filter counts and judge retry/tie policies are unknown.
+  optimizer_or_scaffold: Offline step-wise policy-gradient optimization of E[R(a|s)] over action-prefix states, using the
+    same policy-gradient algorithm as Gemma 2 human-feedback reward training. The exact algorithm, optimizer, learning rate,
+    batch sizes, epochs, KL/reference settings, seeds, hardware, and compute are unknown.
+audit:
+  source_mixture: HotPotQA and GSM8K training questions, Gemma 2-generated chain-of-thought/tool trajectories, vector-retrieved
+    split articles or SymPy outputs, Gemini 1.5 Pro process/reward judgments, golden-answer outcome judgments, and action-prefix
+    subtrajectory duplication.
+  split: Training sources are explicitly the HotPotQA training set and GSM8K training set. Evaluation covers HotPotQA, GSM8K,
+    CofCA, MuSiQue, and BeerQA, often on 300-item subsamples. Appendix F publishes the HotPotQA, CofCA, and MuSiQue evaluation
+    IDs, but exact dataset revisions, all split names, GSM8K/BeerQA IDs, and train/evaluation maps are unknown.
+  decontamination: unknown
+  benchmark_overlap: HotPotQA and GSM8K serve as both training-source tasks and evaluation surfaces; cross-task transfer is
+    also measured on CofCA, MuSiQue, and BeerQA. No lexical/semantic deduplication, pretraining-contamination audit, or retrieval-corpus
+    leakage analysis is disclosed.
+  license: The arXiv paper is linked to CC BY 4.0. No official SWiRL code, synthetic-data, reward-label, vector-index, or
+    checkpoint release was verified, so their licenses and the rights inherited from upstream datasets/retrieved text are
+    unknown.
+  lineage: Paper-reported source question -> tool-augmented Gemma 2 rollout -> process and/or outcome decision -> retained
+    full trajectory -> action-prefix subtrajectories -> Gemini reward -> policy update. Record-level IDs, tool outputs, filter
+    decisions, rewards, optimizer steps, and checkpoint lineage are not publicly connected.
+  release_version: Official COLM 2025 OpenReview conference paper (30 pages, appendices A-F) and arXiv v2 revised 2025-04-28.
+    No paper-specific code/data/model release version was verified.
+  verifier_or_judge_failure_modes:
+  - The process filter evaluates whether the current query is likely to help or whether an answer follows retrieved results;
+    it does not independently establish that the retrieved evidence is true, complete, current, or non-contaminated.
+  - Gemini 1.5 Pro participates in filtering, RL reward, GSM8K outcome evaluation, and the process-label analysis, creating
+    correlated-model measurement and reward-overoptimization risk.
+  - The precise stage-2 reward prompt, scalar mapping, normalization, and calibration are undisclosed, so a reproducer cannot
+    determine which behavior the optimizer actually maximizes.
+  - Process-only filtering intentionally retains incorrect terminal answers. This increases useful negative/outcome diversity
+    but can also reinforce a grounded-looking wrong answer when the process judge produces a false positive.
+  - 'Appendix D finds judge sensitivity to units: on 100 GSM8K judgments, Gemma 2 27B is overly permissive (15% FPR), while
+    GPT-4o is overly harsh (10% FNR); Gemini 1.5 Pro still has 4% FPR.'
+  - Converting every trajectory into one sample per action repeats long prefixes and gives longer trajectories more subtrajectory
+    records; the paper does not disclose weighting or deduplication that would control this curator-inferred bias.
+  - Offline stored tool responses improve throughput but hide environment/version drift unless vector corpora, indices, retrieval
+    outputs, and SymPy behavior are pinned and released.
+  - Results are reported from author experiments without a public implementation/checkpoint package or independent reproduction;
+    optimizer and decoding changes could confound the data/filtering attribution.
+  successful_and_failed_sample_retention: Process-only filtering retains trajectories with both correct and incorrect final
+    answers, while the other filter variants reject by process, outcome, or both. Exact retained/rejected counts, failed tool
+    calls, malformed traces, and a successful/failed sample manifest are unknown and unreleased.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: 'Bibliographic identity, COLM venue, method, appendices, prompts, data counts, filtering conditions, evaluation setup,
+    and reported results were verified from official records. Artifact confidence is low: no official SWiRL repository/data/model
+    release was found, so direct training reuse remains blocked.'
+inclusion_reason: 'SWiRL exposes a concrete post-training data transformation that is easy to lose in a title-only entry:
+  multi-step tool trajectories become action-ending prefix subtrajectories, receive model-based process selection and per-action
+  rewards, and enter offline policy-gradient training. It belongs as a training recipe and trajectory-feedback contract, not
+  as a benchmark.'
+related:
+- webrl-2025
+tags:
+- environment-agent-trajectory-data
+- training-usage-optimization-objectives
+- swirl
+- synthetic-trajectories
+- step-wise-rl
+- process-filtering
+- generative-reward-model
+- tool-use
+- offline-rl
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- training_usage_optimization_objectives
+one_line_summary: SWiRL trains Gemma 2 from fixed search/calculator trajectories by turning every action and its full prefix
+  into a reward-bearing RL sample; the recipe and prompts are public, but the trajectories, reward logs, implementation, and
+  checkpoints are not.
+why_it_matters: 'It makes the supervision boundary explicit: a full tool-use episode is the source object, yet optimization
+  consumes overlapping action-prefix subtrajectories with model-judged scalar feedback. That distinction is essential for
+  auditing sample weighting, process-label quality, incorrect-outcome retention, and replayability.'
+card: null
+needs:
+- 'needs_url: official SWiRL code/project repository, synthetic trajectory corpus, process/reward labels, vector indexes,
+  and Gemma checkpoints'
+- 'needs_metadata: repository README, licenses, release tags, dependency versions, configs, train/evaluation scripts, and
+  model cards'
+- 'needs_recipe: exact stage-2 reward prompt/scale, model revisions, generation decoding, optimizer, batch/epoch/KL settings,
+  hardware, compute, seeds, and checkpoint selection'
+- 'needs_replay: pinned source/corpus/index/tool versions, retrieval outputs, SymPy behavior, malformed/error handling, terminal
+  reasons, and record-level trajectory-to-update lineage'
+- 'needs_split: exact source/evaluation IDs and revisions, retained counts per filter, GSM8K/BeerQA evaluation IDs, deduplication,
+  overlap, and contamination audit'
+- 'needs_audit: successful/failed/rejected trace retention, process-judge calibration, alternative-judge robustness, reward
+  gaming, privacy/consent, and upstream data/text rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official COLM/OpenReview paper and appendices, arXiv v2/version history/license, and arXiv DOI were verified. No
+    paper-specific code, data, project, model, release, README, license, config, train script, or evaluation script was verified.

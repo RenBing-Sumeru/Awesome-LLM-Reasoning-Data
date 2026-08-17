@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MoB 从固定的候选池中估计奖励排序后 Best-of-m 分布的众数答案，并发布提示、生成结果、抽取答案、正确性与奖励分数以支持离线选择研究。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Amin Rakhsha、Kanika Madan、Tianyu Zhang、Amir-massoud Farahmand、Amir Khasahmadi",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

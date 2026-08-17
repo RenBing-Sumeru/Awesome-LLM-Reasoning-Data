@@ -1,0 +1,1 @@
+Prior-work baseline and change: The paper did not invent explanations, but it made the serialized reasoning trace operational in a prompting recipe. It does not prove that every generated trace is faithful.

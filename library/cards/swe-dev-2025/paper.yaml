@@ -1,0 +1,173 @@
+id: swe-dev-2025
+title: 'SWE-Dev: Building Software Engineering Agents with Training and Inference Scaling'
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: ACL 2025'
+authors:
+- Haoran Wang
+- Zhenyu Hou
+- Yao Wei
+- Jie Tang
+- Yuxiao Dong
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+- scaling_study
+verification_contract:
+- programmatic
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_level_code
+- agentic_reasoning
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.193/
+  arxiv: https://arxiv.org/abs/2506.07636
+  code: https://github.com/THUDM/SWE-Dev
+  data: https://huggingface.co/datasets/zai-org/SWE-Dev-train
+  project: null
+  huggingface: https://huggingface.co/zai-org/SWE-Dev-32B
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.193
+  venue: https://aclanthology.org/2025.findings-acl.193/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.193/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-acl.193.bib
+data_object:
+  prompt_source: The construction paper crawls PyPI packages with GitHub URLs, then repository issue/PR material and reference
+    patches. It retains 38,000 instances from 4,413 repositories after rule-based and LLM-assisted filtering; the paper does
+    not publish an immutable row-level source, issue, pull-request, commit, or rights manifest.
+  trace_author: Reported trajectories are generated with DeepSeek-V3 in the OpenHands ReAct-like scaffold. The official dataset
+    release stores a message list named input; exact generation parameters and the mapping between each released row and each
+    paper experiment are not disclosed.
+  answer_format: 'The current Hugging Face dataset exposes six columns in both sft and rft: input (role/content message list),
+    from, f2p_pass, f2p_count, reward, and instance_id. It does not itself document a normalized final-patch field, repository
+    snapshot, generated-test payload, execution log, or source provenance for every row.'
+  process_fields:
+  - input role/content messages
+  - from
+  - f2p_pass
+  - f2p_count
+  - reward
+  - instance_id
+  environment_or_substrate: The recipe evaluates generated tests in cloned Python repositories. The official code offers a
+    Dockerfile based on Ubuntu 22.04 and a non-Docker path; paper prompts specify Python 3.9, Ubuntu 22.04.5 LTS, and pytest,
+    but no row-level container digest or dependency lock was verified.
+  verifier_or_reward: 'The construction contract is fail-to-pass: a generated test should fail on unpatched code and pass
+    after the reference patch. For trajectory filtering, Llama-3.1-70B-Instruct compares a model patch with the reference
+    patch and assigns identical, mostly identical, partially identical, or different; only identical and mostly identical
+    trajectories are retained. The exact meaning of every public reward value is not documented in the dataset card.'
+  terminal_predicate: A correct test is intended to fail before and pass after the reference patch; a retained trajectory
+    also meets the LLM patch-comparison filter. Complete terminal logs and the release-row-to-filter decision are unknown.
+recipe_metadata:
+  base_model: Experiments use Qwen2.5-Coder, Llama-3.1, and GLM-4 series. The verified SWE-Dev-32B model card declares Qwen/Qwen2.5-Coder-32B-Instruct
+    as its base model.
+  teacher: DeepSeek-V3 generates reported trajectories. Llama-3.1-70B-Instruct performs the reported patch-comparison filter;
+    test-description/code models vary in Table 1.
+  generator: Repository context extraction -> Gherkin scenario generation -> pytest test-code generation -> optional traceback-based
+    revision -> execution validation -> OpenHands agent rollout.
+  filtering_rule: Remove instances with statements of 100 words or fewer, patches of at least 0.8 MB, or LLM-judged vagueness,
+    insufficient context/specificity, formatting problems, or redundancy. For trajectory filtering, retain only patch-comparison
+    judgments identical or mostly identical (about 65% of original trajectories). Exact per-release-row filter decisions are
+    not published.
+  sampling_protocol: The paper reports OpenHands with iteration=30 and max_tokens=32k for ordinary rollout experiments. Test
+    synthesis samples part of the retained task pool; seeds, decoding temperature, retry policy, trajectory count per task,
+    and a release-to-experiment manifest are unknown.
+  rollout_count: The paper reports about 17,000 unevaluated and 2,300 correct trajectories; the current official dataset contains
+    17,871 sft rows and 2,276 rft rows. Their precise correspondence is not documented.
+  temperature: unknown
+  inference_budget: Standard reported evaluation uses iteration=30 and max_tokens=32k. Iteration scaling evaluates 30, 45,
+    60, and 75 rounds with max_tokens=160k; no per-instance cost, timeout, or retry budget was disclosed.
+  optimizer_or_scaffold: OpenHands is the rollout scaffold. The paper reports SFT/RFT and compares KTO and OREO using OpenRLHF;
+    the public model card verifies a fine-tuned 32B model but does not provide a complete training configuration or data revision
+    pin.
+audit:
+  source_mixture: 240,000 PyPI packages with GitHub URLs -> 59,000 repositories after stars/PR filters -> 10,416 downloaded
+    repositories -> 88,000 extracted instances -> 38,000 retained instances from 4,413 repositories. Test synthesis uses 26,000
+    instances, yielding 2,097 generated fail-to-pass functions and 4,630 total tests after integrating existing tests. The
+    source mixture of the released training rows is not reconciled row by row.
+  split: The official dataset has sft (17,871 rows) and rft (2,276 rows), totalling 20,147 rows, but these are training-format
+    configurations rather than documented train/dev/test splits. No held-out validation split was verified.
+  decontamination: The paper evaluates on SWE-bench-Verified but does not report a corpus-level overlap, source-repository
+    overlap, issue/patch overlap, or model-pretraining contamination audit between construction data and that benchmark.
+  benchmark_overlap: Unknown. No released per-row source manifest permits an independent overlap audit against SWE-bench-Verified.
+  license: The official code repository is MIT and the SWE-Dev-32B model card declares MIT. The dataset API/card does not
+    declare a dataset license, and rights for crawled repositories, issues, pull requests, patches, tests, and generated traces
+    remain unknown.
+  lineage: PyPI package -> GitHub repository -> issue/PR and reference patch -> filtered task -> synthesized or existing test
+    -> fail-to-pass execution -> DeepSeek-V3/OpenHands trajectory -> patch-comparison decision -> public sft/rft-format row.
+    Immutable links for each arrow are unavailable.
+  release_version: Dataset API revision 5888e5864886590ead78a69b6e60490a0d89a594 and model API revision 6f8669b846e9e879a48460b33944ebf4ac6bee57
+    were observed on 2026-07-23. The code repository had no GitHub release; inspected main revision was 72917b610c3749c9e1236b29effd629f8aca6a99.
+    These mutable artifacts should be pinned again before reuse.
+  successful_failed_retention: The paper distinguishes about 17k unevaluated and 2.3k correct trajectories and filters a retained
+    high-quality subset, but it does not provide a complete attempt manifest or explain whether failed, timed-out, environment-broken,
+    and rejected attempts are all present in the dataset release.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Generated tests can overfit to the reference patch, misrepresent issue intent, or fail for setup reasons rather than the
+    targeted behavior.
+  - The LLM patch comparator can misclassify semantic equivalence; retaining only identical/mostly identical outputs can introduce
+    judge bias and discard useful counterexamples.
+  - Public rows lack complete repository snapshots, test bundles, image digests, logs, commands, and row-level source lineage,
+    so executable replay is incomplete.
+  - No disclosed overlap audit covers SWE-bench-Verified; benchmark performance does not establish data quality or non-contamination.
+  - Dataset license and upstream redistribution rights are unspecified; code/model MIT terms do not settle them.
+  - Paper counts and current release counts are similar but not reconciled through a manifest, so users should not assume
+    a particular row reproduces a reported result.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology proceedings, arXiv v2/full text and appendix, the author-maintained GitHub repository, Hugging Face
+    dataset viewer/API, and the 32B model API were checked on 2026-07-23. Release presence is verified; record-level replay
+    and rights are not.
+inclusion_reason: An official software-engineering-agent release and construction recipe combining repository tasks, synthesized
+  executable tests, OpenHands trajectories, and outcome-style filtering; its open audit gaps make it useful both as a training-recipe
+  reference and as a provenance/replay case study.
+related: []
+tags:
+- swe-dev
+- software-engineering-agents
+- executable-tests
+- fail-to-pass
+- agent-trajectories
+- openhands
+- trajectory-filtering
+- swe-bench-verified
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: SWE-Dev constructs repository repair tasks and fail-to-pass tests, releases 20,147 SFT/RFT-format OpenHands
+  records, and studies trajectory and iteration scaling, while row-level lineage and replay remain incomplete.
+why_it_matters: It makes an executable-feedback pipeline for software-agent post-training inspectable, but also shows why
+  released message traces, scores, and benchmark gains are insufficient without source, environment, and contamination evidence.
+card: null
+needs:
+- 'needs_snapshot: pin dataset/model revisions and a code tag or commit before any reuse'
+- 'needs_lineage: per-row repository, issue/PR, commit, patch, test, and rights manifest'
+- 'needs_replay: container digests, dependency locks, commands, logs, reset procedure, seeds, and release-to-experiment mapping'
+- 'needs_license: dataset license and upstream-source redistribution analysis'
+- 'needs_contamination_audit: source and model exposure analysis for SWE-bench-Verified and other held-out evaluations'
+- 'needs_reward_spec: public definitions for from, f2p fields, reward, and row-level filter decisions'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Official ACL, arXiv, GitHub, Hugging Face dataset, and model sources were cross-checked. Artifact availability and
+    metadata are verified; data rights, complete provenance, and replay remain partial.

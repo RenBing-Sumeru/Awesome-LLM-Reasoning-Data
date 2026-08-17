@@ -1,0 +1,12 @@
+- Release accounting is incomplete. The five stage-consumption totals, 39.49M-sample model-card inventory, and 8.15M-sample public artifact use different units and scopes; no row-to-stage reconciliation is supplied.
+- The public dataset's composition table and quantification section disagree on total size: 4,470.46 GB versus 4,301.82 GB.
+- Internal, private, crawled, and nonredistributable OCR sources remain only partially described. A public generation tool cannot reconstruct unavailable inputs, labels, or selection decisions.
+- Some released subsets contain annotations without media. Users must retrieve upstream assets and audit their terms, revisions, and attribution obligations independently.
+- Collection-level CC BY 4.0 and the ten CC BY-SA 4.0 Wikimedia exceptions do not replace record-level rights lineage. Model weights have a separate NVIDIA Open Model License.
+- Human, model, rule, parser, and compiler labels are mixed. Exact generator revisions, prompts, candidate counts, correctness filters, thresholds, rejected outputs, and false-accept measurements are mostly unknown.
+- Corpus-wide deduplication and benchmark decontamination are unknown. The report does not publish benchmark revisions, match thresholds, matches, or removal ledgers.
+- The 2025-11-05 dataset update fixed a reasoning subset, malformed reasoning-tag entries, instructions, and indexes. Reproducible audits therefore require immutable revision pins and file checksums.
+- NVPDFTex lives on an experimental branch and documents a valid LaTeX table case that its rules fail to interpret; parser coverage is not universal.
+- The model card reports scanning image datasets against known CSAM, but this narrow check does not establish broader safety, privacy, consent, or rights review.
+- Multilingual training sources and benchmark results do not by themselves establish supported-language coverage for every modality or use case.
+- Benchmark gains, stage ablations, EVS throughput, and quantization comparisons evaluate model behavior; they cannot prove data provenance, label quality, or legal compatibility.

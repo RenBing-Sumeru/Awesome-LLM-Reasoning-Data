@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "WASP以84个运行时生成的GitLab/Postmill prompt-injection任务审计web agent，并分离GPT-4o逐动作劫持判定与任务特定的端到端成功，但未发布canonical rollout且固定commit的exfil evaluator只检查action text中的URL片段。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Web agent prompt injection安全基准与评测契约审计",
+  "best_for_ch": "研究web agent安全、环境轨迹评测、LLM-as-judge与verifier失效模式的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Ivan Evtimov, Arman Zharmagambetov, Aaron Grattafiori, Chuan Guo, Kamalika Chaudhuri",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-21T10:30:14Z"
+}

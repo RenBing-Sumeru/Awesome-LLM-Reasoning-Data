@@ -1,0 +1,118 @@
+id: omniact-2024
+title: 'OmniACT: A Dataset and Benchmark for Enabling Multimodal Generalist Autonomous Agents for Desktop and Web'
+year: 2024
+venue: arXiv preprint
+authors:
+- Raghav Kapoor
+- Yash Parag Butala
+- Melisa Russak
+- Jing Yu Koh
+- Kiran Kamble
+- Waseem AlShikh
+- Ruslan Salakhutdinov
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- desktop-agents
+- web-agents
+- multimodal-actions
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2402.17553
+  arxiv: https://arxiv.org/abs/2402.17553
+  doi: https://doi.org/10.48550/arXiv.2402.17553
+  code: null
+  data: https://huggingface.co/datasets/Writer/omniact
+  project: null
+  huggingface: https://huggingface.co/datasets/Writer/omniact
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official OmniACT paper and HF dataset
+  trace_author: OmniACT authors and collected desktop/web action data
+  answer_format: desktop/web screenshots, natural-language tasks, action scripts, UI states, and benchmark records
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: desktop and web automation from screenshots to executable actions
+  verifier_or_reward: script/action execution checks and benchmark scoring over desktop/web tasks
+  terminal_predicate: script/action execution checks and benchmark scoring over desktop/web tasks
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: OmniACT data annotations and benchmark task design
+  generator: OmniACT multimodal action dataset pipeline
+  filtering_rule: pin HF dataset revision, license, split, and any code availability
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2402.17553; https://huggingface.co/datasets/Writer/omniact
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2402.17553'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: HF license/split/version and code availability need audit.
+inclusion_reason: it exposes screenshot-to-action desktop/web automation data for generalist agents
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- desktop-agents
+- web-agents
+- multimodal-actions
+one_line: OmniACT supplies multimodal desktop and web action data for generalist autonomous agents.
+why_it_matters: it exposes screenshot-to-action desktop/web automation data for generalist agents
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: OmniACT supplies multimodal desktop and web action data for generalist autonomous agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv and HF dataset verify title, authors, CMU/Writer.com institutions, and public data; no separate official code
+    URL was located.
+category_ids:
+- benchmarks_evaluation_surfaces
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 81
+  primary_category_id: environment_agent_trajectory_data

@@ -1,0 +1,1 @@
+核心贡献是首个面向 Triton operator 生成的综合开放 benchmark。真实通道保留 184 个开源实现及其调用方式，接口对齐通道则把 PyTorch 运算转为待生成 Triton kernel；仓库提供任务数据、评测脚本、LLM 输出和性能指标目录。每项先验证编译与输出正确，再在指定 GPU 上比较 Triton 与参考实现的 latency。由此，数据对象不仅是 prompt—code，而是 operator、输入、参考函数、候选实现、正确性状态和性能记录，可用于模型评测、SFT、反馈优化及跨硬件分析。

@@ -1,0 +1,1 @@
+Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. "Let's Verify Step by Step." arXiv:2305.20050, 2023. Paper: https://arxiv.org/abs/2305.20050. Official repository and MATH-500 split/grader: https://github.com/openai/prm800k.

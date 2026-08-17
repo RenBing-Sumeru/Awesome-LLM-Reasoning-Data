@@ -1,0 +1,3 @@
+The paper reports that the retrieval-augmented system outperforms its ICL-based and tree-search baselines on all three mathematical benchmarks. Its headline claim is up to a 16% relative improvement for Llama-3.1-8B, which is evidence that additional calls can be made more useful by conditioning search on retrieved structures rather than merely increasing rollout count.
+
+That evidence is bounded by the chosen retrieval corpora, process reward model, and benchmark domain. It demonstrates a concrete search-time allocation mechanism, not a general guarantee that external retrieval will improve every reasoning task or that its retrieved examples are contamination-free.

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TGPO 把重复 web-agent episode 合并成 trajectory tree，并生成四项 process reward 与 node-level chosen/rejected action pair；机制可用于研究离线 agent 训练，但未核验到代码、数据、模型、环境快照与许可证的公开发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Web agent 轨迹构造与偏好优化方法论文",
+  "best_for_ch": "研究 environment/agent trajectory data、process reward、偏好学习和 live-web 复现审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Ziyuan Chen、Zhenghui Zhao、Zhangye Han、Miancan Liu、Xianhang Ye、Yiqing Li、Hongbo Min、Jinkui Ren、Xiantao Zhang、Guitao Cao",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

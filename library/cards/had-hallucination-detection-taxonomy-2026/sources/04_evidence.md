@@ -1,0 +1,1 @@
+HAD generally outperforms existing baselines on in-domain and OOD tests and achieves state-of-the-art results on HaluEval, FactCHD, and FaithBench, showing transfer from about 90K synthetic examples to human and cross-dataset errors. HADTest supplies 2,248 human anchors. However, task formats and error density differ, so performance should still be reported per task.

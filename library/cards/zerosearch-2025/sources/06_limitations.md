@@ -1,0 +1,1 @@
+Audit risk: simulation distribution is not real web-search logging. This Card therefore does not claim release of raw rollouts, rejected candidates, reward logs, replay fixtures, or licences unless an official artifact establishes them.

@@ -1,0 +1,19 @@
+{
+  "title": "Benchmarking LLMs for Unit Test Generation from Real-World Functions",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2508.00408",
+    "data": "https://github.com/huangd1999/UnLeakedTestBench",
+    "code": "https://github.com/huangd1999/UnLeakedTestBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:01:59Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "UnLeakedTestBench 是由3,909个真实函数组成的单测生成benchmark",
+    "updated_at": "2026-07-19T12:01:59Z"
+  }
+}

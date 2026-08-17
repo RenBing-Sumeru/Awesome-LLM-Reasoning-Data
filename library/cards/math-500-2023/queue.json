@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T11:59:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ref4000+ 历史引用高，逐渐饱和",
+    "updated_at": "2026-07-16T11:59:06Z"
+  }
+}

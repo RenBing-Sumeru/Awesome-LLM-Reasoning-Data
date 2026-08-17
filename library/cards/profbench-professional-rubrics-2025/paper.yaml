@@ -1,0 +1,106 @@
+id: profbench-professional-rubrics-2025
+title: 'ProfBench: Multi-Domain Rubrics requiring Professional Knowledge to Answer and Judge'
+year: 2025
+venue: ICLR 2026
+authors:
+- Zhilin Wang
+- Jaehun Jung
+- Ximing Lu
+- Shizhe Diao
+- Ellie Evans
+- Jiaqi Zeng
+- Pavlo Molchanov
+- Yejin Choi
+- Jan Kautz
+- Yi Dong
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- professional_reasoning
+- science
+- finance
+- consulting
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.18941
+  arxiv: https://arxiv.org/abs/2510.18941
+  code: https://github.com/NVlabs/ProfBench
+  data: https://huggingface.co/datasets/nvidia/ProfBench
+  project: https://huggingface.co/spaces/nvidia/ProfBench
+  huggingface: https://huggingface.co/datasets/nvidia/ProfBench
+  doi: https://doi.org/10.48550/arXiv.2510.18941
+  venue: https://openreview.net/forum?id=VwNzKPqBxk
+  openreview: https://openreview.net/forum?id=VwNzKPqBxk
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Professional report-generation requests across four advanced domains.
+  trace_author: Domain experts write rubrics and annotate candidate responses.
+  answer_format: Prompt, grounding documents, response, rubric criteria, and human labels.
+  process_fields:
+  - prompt
+  - grounding_document
+  - response
+  - criterion
+  - label
+  environment_or_substrate: Professional long-form answer generation and judging.
+  verifier_or_reward: Human-expert criteria and calibrated LLM judges.
+  terminal_predicate: A response satisfies the professional rubric across content and reasoning requirements.
+recipe_metadata:
+  base_model: LLM report generators and LLM judges.
+  teacher: Physics PhDs, Chemistry PhDs, Finance MBAs, and Consulting MBAs.
+  generator: Collect professional prompts, documents, rubrics, and response annotations.
+  filtering_rule: Retain expert-reviewed prompt-rubric-response pairs.
+  sampling_protocol: More than 7,000 response-criterion pairs.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix the release, grounding documents, generator, and judge configuration.
+  optimizer_or_scaffold: Calibrated rubric-based LLM judging.
+audit:
+  source_mixture: Official arXiv paper, NVIDIA GitHub, Hugging Face dataset, and leaderboard space.
+  split: Consult the official data release for current split details.
+  decontamination: Professional documents and prompts may overlap with training material; bind evaluations to released resources.
+  license: Consult official code and dataset pages for current terms.
+  lineage: https://huggingface.co/datasets/nvidia/ProfBench
+  known_failure_modes:
+  - Judge bias and response length can affect rubric scoring.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, NVIDIA affiliation, code, data, and leaderboard checked.
+inclusion_reason: ProfBench releases expert supervision for both generating and judging professional long-form work.
+related: []
+tags:
+- rubric
+- professional_reasoning
+- llm_judge
+- reward_model
+one_line_summary: ProfBench pairs professional prompts and grounding documents with expert response-rubric supervision across
+  four domains.
+why_it_matters: It extends rubric-based evaluation beyond domains with easily verified answers.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and release pages checked.
+category_ids:
+- judgment_rubric_domain_expert_data

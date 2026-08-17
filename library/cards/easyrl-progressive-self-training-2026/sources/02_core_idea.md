@@ -1,0 +1,3 @@
+EasyRL first uses easy verified examples to make a warm-up policy, then uses that policy to assign the hard pool to uncertainty bands. Identical answers from repeated attempts are accepted as low-uncertainty pseudo-labels. Inconsistent answers receive an entropy test and, when sufficiently concentrated, a reflection-based resolution; highly uncertain examples are not discarded permanently but reserved for later rounds.
+
+The selected pseudo-labels are mixed with the original labels for another GRPO stage. The stronger policy then re-labels the deferred pool, so the records entering training become harder as its reliability improves. This turns pseudo-label selection, reflection, and deferral into a curriculum rather than a one-shot synthetic-data release.

@@ -1,0 +1,1 @@
+Multimodal PRMs are limited by the lack of large-scale, step-level visual reasoning supervision. VisualPRM400K asks how to build a 400K-scale dataset of multimodal process annotations that can support robust verifier training.

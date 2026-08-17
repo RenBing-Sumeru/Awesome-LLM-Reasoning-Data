@@ -1,0 +1,3 @@
+For each prompt, ORPO calculates the chosen response’s language-model likelihood and contrasts the odds of the chosen and rejected responses. A weighting coefficient controls the contribution of the odds-ratio term, allowing the method to remain close to SFT while using the negative answer as a direct training signal.
+
+The reported experiments examine models from 125M to 7B parameters, including Phi-2, Llama 2, and Mistral. The main alignment recipe fine-tunes on UltraFeedback and evaluates instruction following, chat quality, and length-controlled preference performance alongside analyses of the penalty weight.

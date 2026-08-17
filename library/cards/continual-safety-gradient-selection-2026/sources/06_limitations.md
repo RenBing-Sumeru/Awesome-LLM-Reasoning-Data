@@ -1,0 +1,1 @@
+The method adds per-sample gradient computation and is evaluated on particular model families, task streams, and safety benchmarks. It may trade away examples needed for a specialized task, and it does not replace a broader safety audit. The paper declares no official code or selected-data release.

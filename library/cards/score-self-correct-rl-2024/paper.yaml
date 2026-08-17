@@ -1,0 +1,163 @@
+id: score-self-correct-rl-2024
+title: Training Language Models to Self-Correct via Reinforcement Learning
+year: 2024
+venue: arXiv preprint
+authors:
+- Aviral Kumar
+- Vincent Zhuang
+- Rishabh Agarwal
+- Yi Su
+- John D Co-Reyes
+- Avi Singh
+- Kate Baumli
+- Shariq Iqbal
+- Colton Bishop
+- Rebecca Roelofs
+- Lei M Zhang
+- Kay McKinney
+- Disha Shrivastava
+- Cosmin Paduraru
+- George Tucker
+- Doina Precup
+- Feryal Behbahani
+- Aleksandra Faust
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- code
+training_use:
+- rlvr
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2409.12917
+  arxiv: https://arxiv.org/abs/2409.12917
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2409.12917
+data_object:
+  prompt_source: MATH training problems augmented with 4,500 problems from the original MATH test set for math training, and
+    MBPP for code training; the remaining MATH500 and HumanEval are evaluation sets
+  trace_author: 'The current policy generates both attempts online: an initial response, then a second response conditioned
+    on the first response and a fixed self-correction instruction'
+  answer_format: A two-turn episode containing the problem, first response, generic check-and-rewrite instruction, second
+    response, and an outcome reward for each attempt
+  process_fields:
+  - task_id
+  - prompt
+  - first_attempt
+  - self_correction_instruction
+  - second_attempt
+  - first_reward
+  - second_reward
+  - progress_bonus
+  - training_stage
+  - policy_checkpoint
+  environment_or_substrate: Two-turn on-policy multi-turn RL. At test time the second turn receives the first response and
+    a generic instruction but no correctness label, oracle critique, or test result.
+  verifier_or_reward: 'Binary programmatic outcome reward: MATH answers are checked against the ground-truth answer and code
+    is rewarded only when it passes all tests. Stage II shapes the second-turn reward with alpha * (r2 - r1).'
+  terminal_predicate: Per-attempt reward is 1 when the extracted MATH answer matches ground truth or the generated program
+    passes all test cases, and 0 otherwise; intermediate reasoning steps are not verified
+recipe_metadata:
+  base_model: Gemini 1.5 Flash for MATH and Gemini 1.0 Pro for code
+  teacher: No human or stronger-model correction teacher is used for SCoRe; ground-truth answers and test suites provide training
+    rewards
+  generator: The learner policy itself samples two-turn correction episodes under its current distribution
+  filtering_rule: No trace-level acceptance filter is specified for SCoRe online RL. Outcome checks supply rewards; separately
+    analyzed STaR baselines filter for wrong-to-right revisions.
+  sampling_protocol: Stage I samples online two-turn episodes while constraining the first-turn policy toward the base model
+    and optimizing the second turn. Stage II samples from the initialized policy and jointly optimizes both turns with progress-shaped
+    second-turn reward.
+  rollout_count: unknown per prompt; the paper reports batch size 512 and 3,000 training steps for MATH, and batch size 128
+    and 1,500 steps for MBPP
+  temperature: 1.0 during training; evaluation uses temperature 0 except inference-compute scaling, which uses 0.7
+  inference_budget: Main self-correction evaluation uses two sequential attempts. The scaling comparison allocates 2K total
+    samples as either 2K parallel attempts or K parallel attempts followed by one correction each.
+  optimizer_or_scaffold: REINFORCE policy gradients with KL penalties. Stage I optimizes second-turn reward while constraining
+    first-turn KL to the base model. Stage II jointly optimizes both turns and adds alpha * (r2 - r1) to the second-turn reward.
+    Reported alpha is 10; beta1 is 0.01; beta2 is 0.1 for MATH and 0.25 for MBPP.
+audit:
+  source_mixture: Math training uses MATH train plus 4,500 original MATH test problems; evaluation uses the remaining MATH500.
+    Code training uses MBPP and evaluation uses HumanEval, with MBPP-R as an offline repair evaluation.
+  split: 'Paper-specific split: MATH train plus 4,500 former test problems for training and the remaining 500 for MATH500
+    evaluation; MBPP trains and HumanEval evaluates. An immutable split manifest was not confirmed as released.'
+  decontamination: unknown; the paper specifies task splits but does not report a broader pretraining-contamination or prompt-overlap
+    audit
+  license: unknown for transformed traces and training artifacts; no official reusable trajectory release was confirmed
+  lineage: benchmark problem and oracle answer/tests -> current policy first attempt -> fixed self-correction instruction
+    -> current policy second attempt -> binary rewards r1 and r2 -> Stage I KL-constrained initialization or Stage II progress-shaped
+    REINFORCE update
+  known_failure_modes:
+  - Offline correction SFT can fail under distribution shift because the learner's first-turn errors differ from errors produced
+    by the collection policy
+  - SFT and naive multi-turn RL can collapse toward a strong first answer followed by superficial or no change
+  - Binary answer matching and unit tests verify terminal outcomes, not the correctness of intermediate reasoning
+  - A weak answer extractor or incomplete code tests can assign incorrect rewards
+  - The paper-specific reuse of 4,500 original MATH test problems must be preserved when interpreting or comparing MATH500
+    results
+  - Selecting RL checkpoints by highest training reward can couple reported results to the reward implementation
+  - Benchmark gains support the tested optimization recipe but do not establish that every generated correction trace is high
+    quality
+  - Official code, raw online trajectories, model weights, exact split manifest, random seeds, artifact license, and decontamination
+    report were not confirmed as released
+  citation_status: verified
+  confidence: high
+  notes: Method, verifier, split, prompts, hyperparameters, ablations, and affiliation were checked against arXiv:2409.12917v2.
+    Only the paper and arXiv BibTeX endpoint are recorded as reusable official artifacts; third-party reproductions are not
+    treated as official code.
+inclusion_reason: SCoRe defines an auditable two-turn on-policy correction episode whose terminal programmatic rewards, Stage
+  I distribution constraint, and Stage II progress bonus directly connect online trace collection to RLVR and test-time sequential
+  sampling.
+related: []
+tags:
+- score
+- self-correction
+- online-rl
+- multi-turn-traces
+- reward-shaping
+- rlvr
+- test-time-compute
+- behavior-collapse
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: SCoRe trains on the learner's own two-turn correction episodes, using a KL-constrained initialization followed
+  by progress-shaped multi-turn RL with programmatic outcome rewards.
+why_it_matters: It makes the collection-policy mismatch and correction-collapse problems explicit and gives this track a concrete
+  schema for on-policy attempts, per-turn rewards, and sequential test-time traces.
+card: null
+needs:
+- 'needs_trace_release: raw online two-turn episodes with prompts, both attempts, rewards, policy checkpoints, and sampling
+  metadata'
+- 'needs_reproducibility_protocol: official code, exact split manifest, seeds, answer extractor and test harness, and final-run
+  configuration'
+- 'needs_artifact_license: reuse terms for any transformed traces, checkpoints, or implementation'
+- 'needs_decontamination: broader benchmark and pretraining-overlap analysis'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv paper and BibTeX endpoint were checked. No official code, data, trajectory, checkpoint, or project
+    release was confirmed.

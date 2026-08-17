@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "ToolLLM 提出 ToolBench：覆盖 16,464 个真实 API 的工具使用数据集，并配套 ToolEval 与 ToolLLaMA 用于训练和评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2024 spotlight 的评测面 / 环境基准",
+  "best_for_ch": "关注工具使用数据构造、多工具调用轨迹、RapidAPI 漂移和自动评审耦合风险的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yujia Qin 等（Tsinghua University、ModelBest Inc.、Renmin University of China、Yale University、WeChat AI, Tencent Inc.、Zhihu Inc.）",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:17:48Z"
+}

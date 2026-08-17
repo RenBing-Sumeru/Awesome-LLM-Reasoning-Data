@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "JudgeLM 用 GPT-4 蒸馏的成对判决数据训练可本地部署的 LLM 裁判，并针对位置、知识与格式偏差设计干预。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "LLM 裁判训练与可靠性审计论文",
+  "best_for_ch": "需要构建或审计开放式回答评估器、并控制位置与参考答案依赖偏差的研究者。",
+  "confidence_ch": "高：ICLR 2025 正式论文、官方代码与模型页均已核验。",
+  "authors_ch": "Lianghui Zhu、Xinggang Wang、Xinlong Wang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T12:49:36Z"
+}

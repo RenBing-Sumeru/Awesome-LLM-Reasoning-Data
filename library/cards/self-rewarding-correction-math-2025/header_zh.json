@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "公开 31990 条经筛选的自评/纠正轨迹及 SFT 到 PPO/DPO 配方，但谱系、拒绝数和许可证不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学自纠正轨迹构造与强化学习配方",
+  "best_for_ch": "关注自评、自纠正、拒绝采样和多阶段后训练的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Xiong、Hanning Zhang、Chenlu Ye、Lichang Chen、Nan Jiang、Tong Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-22T00:00:00Z"
+}

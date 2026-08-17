@@ -1,0 +1,19 @@
+{
+  "title": "Rethinking Text-to-SQL: Dynamic Multi-turn SQL Interaction for Real-world Database Exploration",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1654/",
+    "data": "https://github.com/Aurora-slz/DySQL-Bench",
+    "code": "https://github.com/Aurora-slz/DySQL-Bench",
+    "project": "https://github.com/Aurora-slz/DySQL-Bench"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:19:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开Real-World-SQL-Bench，收录13个领域的1,072个多轮SQL任务",
+    "updated_at": "2026-07-19T12:19:11Z"
+  }
+}

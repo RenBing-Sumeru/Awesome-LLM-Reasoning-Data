@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "gpt-oss 披露了概括性的预训练、CoT-RL/工具接口、安全缓解措施以及 Apache-2.0 权重与工具参考实现，但未公开按来源划分的训练数据、奖励、rollout 或审计工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿开源权重模型卡与数据披露台账",
+  "best_for_ch": "需要辨析开放模型发布与未公开后训练数据、反馈机制及审计证据边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

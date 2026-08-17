@@ -1,0 +1,3 @@
+Most open reward data is concentrated in text or image tasks and represents preference as a fixed binary label. That leaves a practical gap for a model that must judge video, audio, 3D, and text under an explicitly stated user criterion. Omni-Reward targets this feedback-data boundary rather than proposing a reward architecture alone.
+
+The released object is a multimodal candidate comparison paired with a free-form preference condition. It belongs to Track 02 because the pair and its feedback are used to train reward models; Omni-RewardBench is a secondary evaluation surface, not the reason for inclusion.

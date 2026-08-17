@@ -1,0 +1,118 @@
+id: constrained-mcts-long-cot-2025
+title: 'CMCTS: A Constrained Monte Carlo Tree Search Framework for Mathematical Reasoning in Large Language Model'
+year: 2025
+venue: arXiv preprint
+authors:
+- Qingwen Lin
+- Boyan Xu
+- Guimin Hu
+- Zijian Li
+- Zhifeng Hao
+- Keli Zhang
+- Ruichu Cai
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+- trajectory_value
+domains:
+- mathematics
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2502.11169
+  arxiv: https://arxiv.org/abs/2502.11169
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning prompts processed by Qwen 7B; no prompt, tree, or process-reward release was verified.
+  trace_author: Qwen 7B
+  answer_format: MCTS actions are constrained reasoning steps; a process reward model supplies Q/V estimates for search over
+    long CoT.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: A process reward model scores candidate steps programmatically, but its training data, calibration,
+    and released weights are not established.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Qwen 7B
+  teacher: unknown
+  generator: C-MCTS constrains action expansion while using process-reward estimates to guide long chain-of-thought search
+    at inference time.
+  filtering_rule: A process reward model scores candidate steps programmatically, but its training data, calibration, and
+    released weights are not established.
+  sampling_protocol: The official arXiv v2 record lists seven authors. No code, data, model, tree, or process-reward artifact
+    was confirmed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: C-MCTS constrains action expansion while using process-reward estimates to guide long chain-of-thought
+    search at inference time.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Reasoning prompts processed by Qwen 7B; no prompt, tree, or process-reward release was verified. -> MCTS actions
+    are constrained reasoning steps; a process reward model supplies Q/V estimates for search over long CoT. -> A process
+    reward model scores candidate steps programmatically, but its training data, calibration, and released weights are not
+    established. -> reported final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Process-reward miscalibration can prune correct paths; missing code, data, trees, and process-reward artifacts make reproduction
+    fragile.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It is a useful test-time search object, but the unshared PRM configuration and search traces require further
+  verification before reuse.
+related: []
+tags:
+- constrained-mcts
+- long-cot
+- process-reward-model
+- qwen
+- test-time-search
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A constrained MCTS formulation for long CoT with process-reward-guided action values.
+why_it_matters: It is a useful test-time search object, but the unshared PRM configuration and search traces require further
+  verification before reuse.
+card: null
+needs:
+- needs_code
+- needs_process_reward_artifact
+- needs_tree_traces
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

@@ -1,0 +1,223 @@
+id: thinking-vs-doing-2025
+title: 'Thinking vs. Doing: Agents that Reason by Scaling Test-Time Interaction'
+year: 2025
+venue: arXiv preprint
+authors:
+- Junhong Shen
+- Hao Bai
+- Lunjun Zhang
+- Yifei Zhou
+- Amrith Setlur
+- Shengbang Tong
+- Diego Caples
+- Nan Jiang
+- Tong Zhang
+- Ameet Talwalkar
+- Aviral Kumar
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- web-agents
+- web-navigation
+- multimodal-agents
+training_use:
+- sft
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2506.07976
+  arxiv: https://arxiv.org/abs/2506.07976
+  code: https://github.com/test-time-interaction/TTI
+  data: https://github.com/test-time-interaction/TTI/tree/92ec04f5e4f2e4e40b99ecb1652191030a54a74a/tasks
+  project: https://test-time-interaction.github.io/
+  huggingface: https://huggingface.co/sjunhongs/tti_webvoyager
+  model: https://huggingface.co/sjunhongs/tti_webarena
+  doi: null
+  venue: https://openreview.net/forum?id=uhigrPHBm5
+  openreview: https://openreview.net/forum?id=uhigrPHBm5
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: On-policy multimodal web-agent episodes selected by terminal success and flattened into state/action behavior-cloning
+    samples; the public release contains task rows rather than the collected episodes.
+  prompt_source: The paper reports 128K synthetically generated WebVoyager tasks and 11K tasks for WebArena self-hosted domains.
+    The pinned release contains 128,072 WebVoyager train rows and 733 WebArena train rows, so paper and release scales must
+    be kept distinct.
+  trace_author: The current Gemma 3 12B policy generates its own chain-of-thought-bearing browser actions online; no external
+    teacher supplies the retained action targets.
+  episode_fields:
+  - task goal and URL
+  - current accessibility tree
+  - set-of-marks screenshot
+  - recent observation history
+  - full prior action history
+  - model thought and discrete browser action
+  - next observation
+  - per-step reward and done flag
+  - final answer and optional reference answer
+  - trajectory reward and Monte-Carlo return
+  - maximum interaction horizon
+  training_instance:
+    input: Per-step processed observation messages containing the current multimodal page state, task, and retained interaction
+      history.
+    target: The current policy's action text at that step, but only from an episode whose terminal trajectory reward is positive.
+    serialization: Runtime trajectories are saved locally as PyTorch `train_trajectories.pt`; `TrajectoryStepDataset` flattens
+      retained episodes to message/action samples. These trajectory files are not released.
+  answer_format: One of click, type, scroll, go back, Bing/search, or stop/ANSWER, preceded by the paper's chain-of-thought
+    prompt format.
+  process_fields:
+  - state and next state
+  - action
+  - environment observation
+  - done
+  - terminal success reward
+  - interaction horizon
+  observation: Task goal, URL, accessibility tree, and set-of-marks screenshot; observation history is truncated to the latest
+    three steps while all past actions remain available.
+  verifier_or_reward: WebArena uses task-specific ground-truth evaluators over final state. WebVoyager uses a prompted multimodal
+    success judge over the task, final response, and screenshots; the paper identifies Gemma 3 27B and reports 88.9% accuracy
+    against WebArena ground truth.
+  reward: Binary episode outcome, 1 for task success and 0 otherwise; it filters full trajectories and is not a step-correctness
+    label.
+  terminal_predicate: The agent emits stop/ANSWER or reaches the maximum horizon; a successful terminal state must also pass
+    the applicable WebArena evaluator or WebVoyager prompted judge.
+  provenance: Benchmark or synthetic task -> current-policy browser interaction -> terminal evaluator/judge -> positive-episode
+    filter -> per-step state/action BC examples -> updated policy.
+  environment_or_substrate: Self-hosted WebArena domains and live WebVoyager websites, using accessibility-tree plus screenshot
+    observations and browser actions.
+  release_shape: Five task JSONL files, training/evaluation code, prompts/configs, and two HF checkpoints are public. No collected
+    training/evaluation rollout corpus, screenshot bundle, replay manifest, or immutable environment snapshot is released.
+recipe_metadata:
+  base_model: google/gemma-3-12b-it
+  teacher: unknown
+  generator: The current Gemma 3 12B policy generates online trajectories; an exploratory task-generation agent proposes WebVoyager
+    tasks, but its exact model/checkpoint is not disclosed in the paper.
+  prompt_task_source: WebVoyager uses seed examples plus website exploration to propose grounded synthetic tasks; WebArena
+    uses its self-hosted domains and task/evaluator definitions. Per-record generation lineage is incomplete.
+  sampling_protocol: The paper reports sampling 512 tasks for rollout per iteration and updating from 512 successful on-policy
+    trajectories, with separate WebVoyager and WebArena agents.
+  temperature: unknown
+  rollout_count: 512 rollout tasks per iteration are reported; the total raw, successful, failed, and replay-buffer episode
+    counts are undisclosed.
+  inference_budget: Interaction curriculum increases from horizon 10 toward 30 and evaluation uses horizon 30. Released configs
+    set `max_new_tokens` to 1024; total token, wall-clock, and website-query budgets are not fully disclosed.
+  search_or_scaffold: A single multimodal policy acts in a six-action browser interface with CoT prompting. No external retrieval
+    or action verifier is used by the controlled Section 4 agent; TTI adds a replay buffer, success filter, and horizon scheduler.
+  filtering_rule: Retain non-empty episodes with `trajectory_reward > 0`; discard episodes ending in `ANSWER [N/A]`; then
+    flatten retained episodes into message/action examples. The default `top_p=1` length filter does not remove additional
+    successful episodes.
+  selection_threshold: Binary terminal success greater than zero.
+  optimizer_or_scaffold: Cross-entropy behavior cloning over retained state/action steps with AdamW and WarmupCosineLR. The
+    released trainer mixes linear recency and inverse-domain-frequency sampling weights at 0.5 each when subsampling replay
+    trajectories.
+  reported_hyperparameters: WebArena reports 10 iterations, 512 rollouts and 512 update trajectories per iteration, learning
+    rate 1e-6, batch size 4, gradient accumulation 2, four training GPUs, and evaluation horizon 30. WebVoyager reports 12
+    iterations, learning rate 4e-6, six GPUs, and otherwise the same core batch/rollout settings.
+audit:
+  source_mixture: Official arXiv v2/full appendix, project page, code/task repository at commit 92ec04f5e4f2e4e40b99ecb1652191030a54a74a,
+    two author-linked HF checkpoints, and non-archival workshop OpenReview records.
+  split: The paper's preliminary WebArena study states 62 random test tasks and 750 non-test training tasks. Full evaluation
+    uses 812 WebArena and 427 WebVoyager tasks; a 78-task WebVoyager subset tracks training progress. Exact clean split IDs
+    for the paper runs are not published as a manifest.
+  decontamination: The paper trains separate WebVoyager and WebArena agents to avoid mixing real-domain and self-hosted synthetic
+    environments, but no general lexical/semantic decontamination or task-deduplication procedure is disclosed.
+  benchmark_overlap: At the pinned release, all 733 WebArena train IDs/questions also appear in the 812-row test file, differing
+    in endpoint fields; the default release therefore does not encode a clean task split. WebVoyager train/test share 337
+    IDs but zero exact `(web_name, question)` pairs, so those ID collisions alone are not evidence of direct question contamination.
+  lineage: WebVoyager train has 128,072 rows, 104,756 unique `(web_name, question)` pairs, and only 3,184 unique IDs; IDs
+    are not record-unique. Task-generation model/configuration, rollout-to-task linkage, and per-checkpoint training manifests
+    are unknown.
+  license: The official GitHub repository has no root LICENSE, so code and task-data licenses are unknown. Both HF checkpoint
+    cards declare MIT, while upstream Gemma terms and rights in website screenshots/content require separate review. The OpenReview
+    manuscript record is CC BY 4.0 and does not license the other artifacts.
+  release_version: Repository inspected at 92ec04f5e4f2e4e40b99ecb1652191030a54a74a, the 2025-06-10 `release` commit; no GitHub
+    tag or release exists. HF checkpoint commits are 796f789b88d6bb9c91734fc35f731079ed281dee and 22391d77fbdfb4a6aef1a8e2856f2ebcb1a21296.
+  verifier_or_judge_failure_modes:
+  - Positive-only terminal filtering provides no credit assignment for which intermediate actions helped or hurt and can reinforce
+    spurious actions within successful episodes.
+  - The prompted WebVoyager judge can produce false positives or false negatives; 88.9% aggregate accuracy does not disclose
+    class balance, calibration, or adversarial robustness.
+  - The paper reports that repeated check-again prompting can turn correct answers into incorrect ones and that fixed long
+    horizons can cause aimless exploration.
+  - The paper observes over-reliance on Bing resets and limited final-step self-verification, including choosing a 2021 repository
+    for a task requiring 2022.
+  - Live websites, cookies, page changes, browser versions, and unavailable service endpoints make trajectories brittle to
+    replay.
+  - The paper names a Gemma 3 27B evaluator, while the released WebVoyager config pins only the 12B policy and the code calls
+    the same agent for evaluation; the paper evaluator is not reproducibly pinned.
+  successful_and_failed_sample_retention: Runtime code saves all collected episodes locally before training but filters training
+    to positive episodes. Neither the successful nor failed runtime trajectory files are publicly released, so failure retention
+    cannot be audited from artifacts.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: The paper and release diverge on material settings. Paper WebVoyager uses 12 iterations and six GPUs, whereas the
+    public script uses 15 iterations and four GPUs; paper WebArena lists four GPUs, while the public script names two CUDA
+    devices. These findings bound release reproducibility and do not prove the reported experiments used the public scripts
+    unchanged. SEA @ NeurIPS and ARLET workshop pages exist, but the SEA record is explicitly non-archival; venue remains
+    `arXiv preprint`.
+  remaining_unknowns:
+  - Exact task-generator model/checkpoint, decoding settings, prompts-to-record lineage, and rejection statistics
+  - Exact paper-run task split manifests and random seeds
+  - Gemma 3 27B evaluator checkpoint, decoding configuration, calibration, and paper-aligned invocation code
+  - Total raw, successful, failed, duplicate, and replay-buffer rollout counts
+  - Public rollout/screenshot corpus and deterministic replay manifest
+  - Code/task-data license and website-content reuse rights
+  - Fully pinned browser, WebArena image/database state, external website state, CUDA/runtime, and dependency lockfile
+  - Independent reproduction of Table 3 and Table 4
+inclusion_reason: 'TTI makes interaction horizon a post-training data-selection variable: terminal environment/judge feedback
+  selects successful on-policy web episodes whose state/action steps are behavior-cloned, while the incomplete rollout release
+  and split/config drift expose important trajectory-audit boundaries.'
+related:
+- webrl-2025
+- webagent-r1-2025
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- online-filtered-bc
+- interaction-scaling
+- horizon-curriculum
+- positive-trajectory-filtering
+- test-time-compute
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: TTI turns terminally successful multimodal web episodes into state/action behavior-cloning data under an
+  expanding interaction horizon, but its public release omits trajectories and does not reproduce a clean paper-aligned split/configuration.
+why_it_matters: It shows that the interaction budget changes which exploratory behaviors enter post-training data, and it
+  provides a concrete case where terminal feedback, positive-only selection, evaluator identity, split integrity, and replay
+  metadata must be audited together.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: arXiv v2, both workshop records, official project/repository, all five task JSONL files, method/evaluator/filtering
+    code, configs/scripts, repo license/release state, and both HF checkpoint repositories were inspected at pinned commits.
+curation_level: L3_summary_ready
+needs:
+- 'needs_split_audit: released WebArena train rows overlap the released full test file on all 733 train IDs/questions'
+- 'needs_rollout_release: collected successful and failed trajectory files, screenshots, and replay manifest are unavailable'
+- 'needs_evaluator_pin: the paper-specified Gemma 3 27B judge and paper-aligned invocation are not pinned in the public config'
+- 'needs_license: code/task-data licensing and third-party website-content rights are unclear'
+- 'needs_config_reconciliation: paper and release differ on iterations, GPU counts, and evaluator wiring'
+card: null

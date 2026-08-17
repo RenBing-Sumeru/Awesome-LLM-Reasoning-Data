@@ -1,0 +1,1 @@
+Qwen2.5-Coder-7B 在 SQLFlow 上微调后，Spider-dev 执行准确率从 73.4% 提升到 82.0%，BIRD-dev 从 50.9% 到 59.2%，EHRSQL 从 24.3% 到 56.1%。以 SQLFlow 为知识库的 masked alignment retrieval 在 BIRD-dev 达 61.0%、Spider-dev 达 83.5%。这些结果支持数据效用，但问题生成与 SQL 来自同一流水线，仍需检查语言自然度和 schema 泄漏。

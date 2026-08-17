@@ -1,0 +1,3 @@
+Collecting direct human preferences for open-ended assistants is expensive and slow, and annotators can still make mistakes on complex or unfamiliar comparisons. Replacing people with an LM reduces collection cost but can transfer the judge’s biases or miss judgments that people would make; selecting one source for every record can therefore waste a fixed human-label budget.
+
+Hybrid Preferences introduces HyPER, which routes each prompt–response comparison to humans or an LM and produces a mixed-label preference set for reward-model training. The paper evaluates whether that source-allocation decision improves the resulting reward model, rather than asking which source defines preference universally.

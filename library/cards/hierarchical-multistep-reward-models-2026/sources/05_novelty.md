@@ -1,0 +1,3 @@
+Most process reward models use an isolated step as their basic supervision unit, while automatic tree expansion is often pursued mainly to produce more individual labels. This leaves the model with little direct representation of how neighbouring steps alter the meaning of an earlier step.
+
+The contribution combines a hierarchical reward model with node compression so that one training collection contains both step-level and compressed consecutive-step records. The novelty lies in altering the process-supervision data and its training target, not merely in replacing the reinforcement-learning optimizer.

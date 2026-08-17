@@ -1,0 +1,3 @@
+Earlier preference-data work commonly asks which examples to annotate, which response pairs to form, or which fixed subset to filter before optimization. SamS changes the decision point: it repeatedly selects from an already available batch while the DPO policy changes. This makes the training consumer's current state an explicit input to preference-data use.
+
+The distinctive mechanism is not a new preference corpus or a replacement DPO loss. It is the combination of state-conditioned top-K scheduling, a reward that mixes future-batch loss reduction with pair-level margin and uncertainty, and a lagged update that avoids a separate reward-collection pass. The public implementation makes this distinction practical to inspect and reproduce.

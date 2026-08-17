@@ -1,0 +1,184 @@
+id: lookahead-tree-based-rollouts-2026
+title: Lookahead Tree-Based Rollouts for Enhanced Trajectory-Level Exploration in Reinforcement Learning with Verifiable Rewards
+year: 2026
+venue: ICLR 2026
+authors:
+- Shangyu Xing
+- Siyuan Wang
+- Chenyuan Yang
+- Xinyu Dai
+- Xiang Ren
+source_role:
+- construction_recipe
+- data_release
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- logical_reasoning
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=4nLvUk8edu
+  arxiv: https://arxiv.org/abs/2510.24302
+  code: https://github.com/starreeze/latr
+  data: https://huggingface.co/datasets/starreeze/latr-data
+  project: null
+  huggingface: https://huggingface.co/datasets/starreeze/latr-data
+  doi: https://doi.org/10.48550/arXiv.2510.24302
+  venue: https://iclr.cc/virtual/2026/poster/10011530
+  openreview: https://openreview.net/forum?id=4nLvUk8edu
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.24302
+data_object:
+  prompt_source: Countdown training/test tasks and DAPO-Math training plus a manually partitioned 1,024-item validation set;
+    MATH-500, AMC-2023, and Olympiad-Bench are external evaluation sets. The official processed release has countdown-base
+    and math-base train/test Parquet files, but exact source revisions, selection manifests, and released per-file row counts
+    are unknown.
+  trace_author: The current on-policy model generates LATR and stochastic trajectories during RL. Main experiments use Qwen2.5-3B
+    Base; Qwen2.5-7B and Qwen3-1.7B-Base appear in generalization experiments. Gemini-2.5-Pro rewrites non-integer-answer
+    math questions upstream but is not the online rollout policy or reward.
+  answer_format: 'Online samples are full reasoning completions ending in a task-specific final answer: Countdown uses an
+    expression in <answer> tags, while math uses an Answer: line. The public HF artifact contains processed prompt/reward
+    rows rather than generated completions or tree trajectories.'
+  process_fields:
+  - prompt
+  - token_probability_distribution
+  - branch_parent_and_birth_step
+  - lookahead_segment
+  - pruning_decision
+  - surviving_rollout
+  - final_answer
+  - terminal_scalar_reward
+  - group_relative_advantage
+  environment_or_substrate: A VeRL-0.5.0 online RL rollout worker builds a width-bounded dynamic tree, branches at probability-qualified
+    token alternatives, simulates continuations, prunes branches that remain too similar to their parents, then falls back
+    to stochastic generation. The released HF rows supply prompts and reward metadata; they do not preserve the runtime tree.
+  verifier_or_reward: Countdown uses 0.1 times format validity plus 0.9 times executable correctness, requiring every supplied
+    number exactly once and the target value. Math uses a binary terminal correctness reward after answer normalization to
+    integer-valued tasks. Rewards are compared within GRPO or DAPO groups; there are no step labels or learned process rewards.
+  terminal_predicate: Countdown succeeds when the extracted expression is valid, uses exactly the supplied numbers, and evaluates
+    to the target. Math succeeds when the extracted final answer exactly matches the transformed integer reference under the
+    paper's evaluation protocol.
+recipe_metadata:
+  base_model: Qwen2.5-3B Base for the main 500-step experiments; Qwen2.5-7B and Qwen3-1.7B-Base are additional generalization-study
+    models.
+  teacher: Gemini-2.5-Pro is used with a few-shot prompt to rewrite math questions whose original answers are non-integers
+    into integer-answer tasks. No teacher model generates the online LATR trajectories.
+  generator: 'Current-policy LATR: extend each active branch with its top token, branch to non-top tokens that pass absolute
+    and relative probability thresholds, simulate fixed lookahead windows, remove insufficiently divergent branches and descendants,
+    then complete surviving branches with stochastic sampling.'
+  filtering_rule: Paper-side main settings use absolute probability threshold 0.25, relative gap threshold 0.15, normalized
+    edit-distance threshold 0.4, and windows 20, 30, and 50. Released Countdown scripts match these thresholds; released Math
+    scripts instead use absolute 0.15, relative 0.25, disable edit-distance pruning, and enable suffix-match 0.2 plus ROUGE-L
+    0.5, so the paper-matching Math rule is unresolved.
+  sampling_protocol: Eight rollouts per prompt. The paper reports training temperature 1.0, top-k -1, top-p 1.0 and evaluation
+    temperature 0.6, top-k 20, top-p 0.95. Hybrid training reduces the LATR share toward stochastic sampling; the paper specifies
+    exponential decay, while released scripts use task-specific piecewise schedules.
+  rollout_count: 8
+  temperature: 1.0 for training rollouts; 0.6 for evaluation
+  inference_budget: Maximum completion length is 1,024 tokens for Countdown and 8,192 for math; tree width is bounded by eight
+    rollouts and released scripts consider at most two branching candidates per token. Raw token, branch, and pruning budgets
+    are not released per record.
+  optimizer_or_scaffold: GRPO or DAPO in VeRL 0.5.0 for 500 steps with AdamW, constant learning rate 1e-6, global batch/minibatch
+    size 256, and eight NVIDIA H200 GPUs. DAPO uses group filtering and an oversampled generation batch of 384.
+audit:
+  source_mixture: Countdown and DAPO-Math provide RL prompts; MATH-500, AMC-2023, and Olympiad-Bench are external evaluations.
+    HF publishes four processed Parquet files totaling 24,668,606 bytes and labels the release 100K<n<1M, but exact row counts,
+    source revisions, mixture manifests, and transformation yields are unknown.
+  split: Countdown uses a training split and official test split. DAPO-Math uses training data and a manually partitioned
+    1,024-sample validation set. HF exposes train and test files for both countdown-base and math-base; exact correspondence
+    to the paper partitions is not fully documented.
+  decontamination: unknown
+  license: The arXiv paper carries the arXiv non-exclusive distribution license. The pinned GitHub tree has no LICENSE/COPYING
+    file or license declaration, and the HF dataset card/API has no dataset license field or license file. Code, processed
+    rows, and upstream derivative-data reuse terms are therefore unknown.
+  lineage: Countdown/DAPO-Math source tasks, with Gemini-2.5-Pro rewriting for some math answers, become processed prompt/reward
+    rows; the current policy then generates hybrid LATR/stochastic rollout groups, programmatic terminal verifiers score them,
+    and GRPO or DAPO performs group-relative updates. Record-level source revisions, transformation logs, raw branches, pruned/rejected
+    paths, reward decisions, group membership, and checkpoint lineage are not released.
+  known_failure_modes:
+  - The public HF artifact is processed prompt/reward data, not the raw high-diversity rollout trees suggested by the dataset-card
+    prose.
+  - Paper and released Math scripts disagree on probability thresholds, similarity metrics, and hybrid-mixing schedules, blocking
+    exact paper-configuration reproduction.
+  - If pruning leaves fewer than eight branches, implementation padding can duplicate a surviving sequence; a nominal group
+    of eight is not necessarily eight distinct trajectories.
+  - Token edit-distance, suffix, or ROUGE similarity can mistake superficial lexical divergence for a different reasoning
+    strategy, or prune semantically distinct paths with similar token sequences.
+  - Explicit diversity optimization creates a train-test mismatch; the paper's own Table 4 shows lower Pass@1 for a trained
+    LATR model when decoded with LATR rather than stochastic sampling.
+  - Random or overly permissive branching can select low-probability trajectories, increase off-policy KL, destabilize training,
+    and exhaust the fixed rollout budget early.
+  - LATR is reported about 10% slower per step, uses approximately 130 GB peak memory on eight H200 GPUs, and lacks tree-specific
+    batching optimizations.
+  - Exact released row counts, source snapshots, transformation logs, decontamination, code/data licenses, and raw rollout/reward
+    artifacts are absent.
+  citation_status: verified
+  confidence: high
+  notes: Full 18-page ICLR/arXiv paper and appendices, official ICLR/OpenReview/arXiv records, GitHub commit 2adb0edf24cc9a9342ac021892897adcec1a2738,
+    and HF commit 082e3b599960ef8341d1f00be8ae474d994345cf were checked. The paper reports average Pass@1 gains of 4.2 percentage
+    points and 131% learning acceleration; these are author-reported, not independently reproduced.
+inclusion_reason: 'LATR is a direct search-trace construction recipe for RLVR: it makes branching, lookahead, pruning, rollout
+  budget, terminal verification, and group-relative training explicit, while its processed-only data release exposes a critical
+  boundary between generated online trees and reusable public rows.'
+related:
+- dapo-2025
+- tree-rl-2025
+- not-all-rollouts-useful-2025
+tags:
+- latr
+- rlvr
+- tree-based-rollouts
+- trajectory-diversity
+- lookahead-search
+- branch-and-prune
+- grpo
+- dapo
+- programmatic-verification
+- processed-prompt-release
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: LATR generates diverse on-policy RLVR rollout groups by probability-gated branching, lookahead simulation,
+  and similarity pruning, while its public data release contains processed Countdown and math prompt/reward rows rather than
+  the raw rollout trees.
+why_it_matters: It isolates rollout diversity as a training-data construction variable and reports faster, stronger GRPO/DAPO
+  learning, but also shows why raw branch lineage, verifier decisions, paper-matching configurations, and release licenses
+  are necessary to audit search-generated reasoning data.
+card: null
+needs:
+- 'needs_trace_release: publish raw branches, token probabilities, parent/birth metadata, lookahead segments, prune/keep decisions,
+  completed and rejected rollouts, rewards, and group membership'
+- 'needs_counts_manifest: report exact per-file row counts, source dataset revisions, selection rules, transformation yields,
+  and immutable record-level provenance'
+- 'needs_config_reconciliation: explain or correct the paper-versus-Math-script threshold, similarity-metric, and hybrid-mixing
+  discrepancies'
+- 'needs_license: add explicit code and dataset licenses and document upstream derivative-data rights'
+- 'needs_decontamination: document duplicate and benchmark-overlap checks'
+- 'needs_transformation_audit: release Gemini-2.5-Pro rewriting inputs, outputs, prompts, failures, and validation decisions'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ICLR/OpenReview/arXiv records, full paper and appendices, pinned GitHub implementation, HF card/API/file
+    layout, and checked processed-row schema were verified. Status remains partial because raw tree traces, exact release
+    counts and manifests, licenses, decontamination, and a paper-matching Math configuration are unresolved.

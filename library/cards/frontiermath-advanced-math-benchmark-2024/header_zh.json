@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FrontierMath 用专家原创、低污染的高等数学题和自动验证来测试 frontier model 的真实数学推理边界。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "arXiv preprint 的 benchmark / evaluation surface",
+  "best_for_ch": "研究高级数学评测、专家题库、自动 verifier、hidden/public split 与污染控制的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Elliot Glazer 等（Epoch AI、King's College London、MIT、University of Siegen 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T08:00:33Z"
+}

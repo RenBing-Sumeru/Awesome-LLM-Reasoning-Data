@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MMSearch-Plus发布单一train split中的311条图像问答与来源引用，并以SerpAPI/Gemini动态搜索和GPT-4o答案judge评测智能体；完整轨迹、框架、evaluator与SoM均未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态网页搜索智能体基准与数据发布",
+  "best_for_ch": "研究多模态浏览智能体、动态搜索环境、答案级judge、轨迹发布边界与污染审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xijia Tao, Yihua Teng, Xinxing Su, Xinyu Fu, Jihao Wu, Chaofan Tao, Ziru Liu, Haoli Bai, Rui Liu, Lingpeng Kong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

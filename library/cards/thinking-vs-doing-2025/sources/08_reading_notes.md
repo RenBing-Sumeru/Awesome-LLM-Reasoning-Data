@@ -1,0 +1,5 @@
+- Read Sections 3 and 5 plus Algorithm 1 first: the decisive mechanism is terminal-success selection followed by state-action cross-entropy, so the released recipe is filtered BC/online STaR rather than RLVR.
+- Keep the feedback paths separate: WebArena uses task-specific programmatic ground truth, whereas WebVoyager uses a prompted multimodal judge reported as Gemma 3 27B; neither provides step-correctness labels.
+- Audit paper and release as different objects: the repository publishes five task JSONL files, code/configs, and two checkpoints, but no rollout corpus, screenshots, or replay manifest.
+- Treat the released WebArena split as unsafe by default because all 733 train IDs/questions occur in the 812-row test file; this release finding does not prove the original paper run used that exact split.
+- Reconcile evaluator, iteration, and GPU settings before reproduction, and inspect the failure analyses on repeated checking, long-horizon wandering, Bing resets, and weak final-step self-verification.

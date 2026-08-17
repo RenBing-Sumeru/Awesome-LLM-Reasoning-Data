@@ -1,0 +1,5 @@
+- Read paper §§3–4 with `dataset/break_down_question.py` and `inference/_5_planned_local_weighted_model.py`: the released mechanism is prompt decomposition plus credit/schedule allocation, not execution of independently checked sub-solves.
+- Read paper §5 with `run/run_inf.py`: E3 uses aggregate task score and completion-token usage. Check exactly which tokens, model API, and task scorer enter each comparison.
+- Treat the pre-decomposed input files as evaluation scaffolding whose generation provenance is incomplete, not as a vetted training corpus.
+- Inspect `dataset/travelplanner_dataset.py` before interpreting TravelPlanner results: a secondary LLM performs JSON reconstruction before the evaluator.
+- Read alongside fixed-budget and test-time-compute work, but require per-item trace manifests and contamination controls before making data-quality or causal-attribution claims.

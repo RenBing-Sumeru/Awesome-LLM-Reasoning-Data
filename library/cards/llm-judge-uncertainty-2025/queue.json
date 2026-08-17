@@ -1,0 +1,17 @@
+{
+  "title": "Analyzing Uncertainty of LLM-as-a-Judge: Interval Evaluations with Conformal Prediction",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.569/",
+    "data": "https://github.com/BruceSheng1202/Analyzing-Uncertainty-of-LLM-as-a-Judge"
+  },
+  "review_note": "已完成正式论文精读：该工作用保形预测审计评分型 LLM judge 的区间覆盖与校准边界。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "为自动评测提供可校准的不确定性输出和明确复用边界，纳入正式池。",
+    "updated_at": "2026-07-20T13:15:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

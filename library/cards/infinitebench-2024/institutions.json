@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Department of Computer Science and Technology, Tsinghua University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:45:00Z",
+  "source_urls": [
+    "https://aclanthology.org/2024.acl-long.814/",
+    "https://arxiv.org/abs/2402.13718",
+    "https://github.com/OpenBMB/InfiniteBench",
+    "https://huggingface.co/datasets/xinrongzhang2022/InfiniteBench"
+  ],
+  "verification_note": "ACL Anthology, arXiv, GitHub, and Hugging Face sources verify ACL 2024 Long Papers status, Tsinghua affiliation, and public code/data artifacts."
+}

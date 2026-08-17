@@ -1,0 +1,19 @@
+{
+  "title": "SecRepoBench: Benchmarking Code Agents for Secure Code Completion in Real-World Repositories",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.21205",
+    "data": "https://huggingface.co/datasets/ai-sec-lab/SecRepoBench",
+    "code": "https://github.com/ai-sec-lab/SecRepoBench",
+    "project": "https://secrepobench.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:00:05Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "SecRepoBench 包含318个C/C++仓库级安全修复任务，以编译、开发者测试和OSS-Fuzz验证，是罕见的真实安全代码benchmark",
+    "updated_at": "2026-07-19T12:00:05Z"
+  }
+}

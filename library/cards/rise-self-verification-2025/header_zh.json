@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RISE 用规则化数学结果奖励联合训练 Qwen2.5 的解题轨迹与自验证轨迹；只有验证分数会与正确性标签核对，文字批评本身并未被独立验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "带官方实现的在线 RLVR 与自验证训练配方",
+  "best_for_ch": "需要区分结果验证器反馈、模型自我批评及其可复现性边界的推理后训练研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaoyuan Liu、Tian Liang、Zhiwei He、Jiahao Xu、Wenxuan Wang、Pinjia He、Zhaopeng Tu、Haitao Mi、Dong Yu",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T08:40:36Z"
+}

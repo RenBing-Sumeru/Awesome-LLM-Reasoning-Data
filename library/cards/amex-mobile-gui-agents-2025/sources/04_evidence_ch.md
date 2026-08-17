@@ -1,0 +1,1 @@
+官方来源报告 AMEX 含 104K+ 高分辨率截图、约 711K 元素级功能标注、约 3K 唯一指令，以及平均接近 13 步的动作链。项目页说明元素框经过人工过滤，GPT 生成的屏幕/元素描述经过人工检查；HF 数据卡能看到 instruction annotation、element annotation 和 screenshot 的样例目录，完整数据以大体积分片 zip 发布。这些证据说明数据发布和标注流程存在，但不等于每条动作链都有独立可复验保证。证据边界取决于公开 artifact revision、split、评测代码可用性，以及不同 benchmark 的动作空间转换。

@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"本文显示隐空间推理虽有尚未利用的通过率上界，却因奖励模型可分性弱而难以扩展，并以几何正则化测试改进测试时扩展的可能。","reading_priority_ch":"可读","paper_type_ch":"连续隐空间测试时扩展分析","best_for_ch":"希望把采样与验证器扩展从文本思维链迁移到潜在或连续推理表征的读者。","confidence_ch":"高","authors_ch":"Minghan Wang、Thuy-Trang Vu、Gholamreza Haffari（莫纳什大学）；Ehsan Shareghi（伦敦大学学院）","category_ids":["scaling_rlvr_test_time_compute"]}

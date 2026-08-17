@@ -1,0 +1,3 @@
+Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen-tau Yih, Pang Koh, Mohit Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi. 2023. "FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation." Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 12076-12100, Singapore. Association for Computational Linguistics. https://aclanthology.org/2023.emnlp-main.741/
+
+Official links: ACL Anthology paper https://aclanthology.org/2023.emnlp-main.741/ ; official implementation/package source https://github.com/shmsw25/FActScore ; PyPI package https://pypi.org/project/factscore/ .

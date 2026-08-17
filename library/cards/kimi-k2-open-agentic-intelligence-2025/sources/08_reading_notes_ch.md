@@ -1,0 +1,5 @@
+- 将 3,000+ 个真实 MCP 与 20,000+ 个合成工具数量视为汇总披露，而非已发布的工具清单或许可清单。
+- 区分 simulator feedback、真实 sandbox execution 与 LLM rubric judgment；它们具有不同的 verification 与迁移风险。
+- 记录已命名的 RLVR 与 self-critique 接口，但不要推断 critic calibration、prompt 文本、reward weights 或对 reward hacking 的抵抗力。
+- 在作出复用主张前，检查 GitHub PR/issue、unit-test 和 pre-training-derived 材料的来源、隐私、许可与污染证据。
+- 将 optimizer、训练规模、token-budget 和 benchmark 表述排除在此 Track 12 披露评估之外。

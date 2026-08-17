@@ -1,0 +1,143 @@
+id: swe-mera-2025
+title: 'SWE-MERA: A Dynamic Benchmark for Agenticly Evaluating Large Language Models on Software Engineering Tasks'
+year: 2025
+venue: EMNLP 2025 System Demonstrations
+authors:
+- Pavel Adamenko
+- Mikhail Ivanov
+- Aidar Valeev
+- Rodion Levichev
+- Pavel Zadorozhny
+- Ivan Lopatin
+- Dmitrii Babaev
+- Alena Fenogenova
+- Valentin Malykh
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+domains:
+- software_engineering
+- repository_repair
+- github_issues
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-demos.30/
+  arxiv: https://arxiv.org/abs/2507.11059
+  code: https://github.com/MERA-Evaluation/repotest
+  data: https://huggingface.co/datasets/MERA-evaluation/SWE-MERA
+  project: https://mera-evaluation.github.io/demo-swe-mera/
+  huggingface: https://huggingface.co/datasets/MERA-evaluation/SWE-MERA
+  doi: https://doi.org/10.18653/v1/2025.emnlp-demos.30
+  venue: https://aclanthology.org/2025.emnlp-demos.30/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-demos.30/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-demos.30/
+  code_revision: https://github.com/MERA-Evaluation/repotest/tree/c1079ff10b4f6fa6e74a8db5cb6121d8e0c2febc
+  data_revision: https://huggingface.co/datasets/MERA-evaluation/SWE-MERA/tree/4aa9e55379f335015496b73ec8fbcb4576f2f108
+data_object:
+  prompt_source: Public GitHub issue title/body/comments paired one-to-one with a closed issue and merged pull request.
+  trace_author: Original repository contributors supply the reference patch; evaluated agents create candidate patches and
+    optional externally linked execution trajectories, but no canonical action/observation trajectory corpus is released with
+    the dataset.
+  answer_format: Repository repair rows contain repository, instance ID, base commit, problem statement, hint text, reference
+    patch, test patch, FAIL_TO_PASS/PASS_TO_PASS identifiers, build/test commands, image name, timeouts, and metadata.
+  process_fields:
+  - repo
+  - instance_id
+  - base_commit
+  - patch
+  - test_patch
+  - problem_statement
+  - hint_text
+  - FAIL_TO_PASS
+  - PASS_TO_PASS
+  - command_build
+  - command_test
+  - command_test_small
+  - image_name
+  - timeout_build
+  - timeout_test
+  - meta
+  environment_or_substrate: Repository reset to base commit and executed through repotest in Docker or local/Conda mode using
+    row-level image, build, test, and timeout fields.
+  verifier_or_reward: The current pinned repotest evaluator applies the test patch and candidate patch, runs command_test_small,
+    and marks solved when every PASS_TO_PASS test appears in the passed set; it does not enforce FAIL_TO_PASS success.
+  terminal_predicate: At the current code revision, terminal success is PASS_TO_PASS preservation after clean patch application
+    and test execution; candidate success on FAIL_TO_PASS is not required by the public checker.
+recipe_metadata:
+  base_model: unknown
+  teacher: Qwen3-32B scores task quality; it is a filter, not a trajectory teacher.
+  generator: GitHub issue/PR mining, patch extraction, Docker build and end-to-end execution, followed by Qwen3-32B quality
+    filtering.
+  filtering_rule: Require active licensed Python repositories with at least 10 stars and 10 forks, one-to-one closed-issue/merged-PR
+    mapping, issue text of at least 25 characters, source and test changes, fewer than 15 source files, successful build/tests,
+    and removal of the bottom quartile on task correctness, test correctness, or test completeness.
+  sampling_protocol: The paper reports 728 samples and a 528-task Jan-June 2025 funnel endpoint; current HF revision exposes
+    about 6.82k rows across dev 10, lite 750, full 2,738, and multilang about 3.32k.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Paper Aider evaluation uses up to six independent attempts per issue, each with up to four reflections;
+    current dataset build/test timeouts are row fields.
+  optimizer_or_scaffold: Evaluation with modified Aider and repotest; no SFT, preference, or RL recipe is reported.
+audit:
+  source_mixture: Public repositories, GitHub issue/PR text and comments, base commits, reference/test patches, test identifiers,
+    Docker metadata, and Qwen3-32B filter judgments.
+  split: Current HF revision has dev (10), lite (750), full (2,738), and multilang (about 3.32k) splits. Their overlap, derivation,
+    language composition, and relationship to the paper's 728 samples and 528-task funnel are not fully documented.
+  decontamination: Recent task dates and continuous refresh reduce exposure time but do not eliminate contamination; no temporal
+    guarantee, pretraining audit, cross-split deduplication, or overlap analysis with SWE-bench and other benchmarks is disclosed.
+  license: Pinned HF metadata and repotest declare MIT. Row-level upstream repository licenses, issue/PR/comment rights, patch/test
+    reuse, attribution requirements, and compatibility are not provided as a rights matrix.
+  lineage: Repository -> one closed issue and one merged PR -> base commit/reference patch/test patch -> Docker build and
+    execution -> Qwen3-32B quality filter -> HF row and mutable split.
+  known_failure_modes:
+  - The public terminal evaluator is underconstrained relative to the intended FAIL_TO_PASS/PASS_TO_PASS repair contract because
+    it only enforces PASS_TO_PASS.
+  - Dynamic splits and mutable image tags lack a single versioned manifest with immutable OCI digests, dependency locks, and
+    cross-release correction history.
+  - Reference tests can reject alternative correct solutions or miss untested regressions, security, efficiency, readability,
+    and maintainability.
+  citation_status: verified
+  confidence: medium
+  notes: ACL paper, project, HF revision 4aa9e55, and repotest revision c1079ff were checked on 2026-07-20. Current release
+    counts are not paper-era counts, and the evaluator audit is revision-specific.
+inclusion_reason: 'Direct Track 6 inclusion: SWE-MERA exposes environment-linked repository-repair records, base-commit reset,
+  executable test feedback, dynamic release splits, and an auditable mismatch between intended and implemented terminal semantics.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- programmatically_verifiable_outcome_data
+one_line_summary: SWE-MERA releases refreshable repository-repair records with commits, patches, tests, commands, and environment
+  metadata, but its pinned public checker marks solved using PASS_TO_PASS only and does not enforce FAIL_TO_PASS.
+why_it_matters: It shows why dynamic task freshness, dataset versioning, container replay, and exact terminal semantics must
+  be audited independently of a benchmark's stated design.
+card: null
+needs:
+- 'needs_metadata: reconcile paper/current split counts, publish overlap and correction manifests, enforce FAIL_TO_PASS, pin
+  container images/dependencies, and document full rights/security/trajectory retention'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: main_agent
+  confidence: medium
+  notes: Official citation, authors, dataset schema/splits/revision, code revision, licenses, and current evaluator predicate
+    were verified; independent end-to-end replay and row-level rights were not.

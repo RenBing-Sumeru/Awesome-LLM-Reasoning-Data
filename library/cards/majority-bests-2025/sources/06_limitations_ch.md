@@ -1,0 +1,1 @@
+MoB 需要有限且可比较的离散答案；答案抽取或规范化会直接改变众数。如果 reward 排序后的 Best-of-m 分布众数错误，MoB 会更稳定地返回错误答案。reward 误排、reward hacking、校准差异和 tie handling 均是核心风险。常规 m=N bootstrap 对最大值统计量并不一致；论文依赖 m-out-of-N 的渐近条件与 reward-tail 假设。生成仍需每题 N 次模型调用，论文估计候选池消耗数千 H100 GPU-hours，但没有精确追踪 compute。发布物没有去污染报告或随机题目 seed；顶层 MIT 许可也不能自动解决上游 benchmark、模型输出和 reward 标注权利。

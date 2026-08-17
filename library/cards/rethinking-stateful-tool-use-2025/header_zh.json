@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DialogTool 将 SGD/MultiWOZ 转换为有状态 App/API 多轮对话，并在 VirtualMobile 中评测六项工具生命周期能力；官方数据、代码、完整模型轨迹、重放合同与 artifact 许可仍未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "有状态多轮工具使用基准、构造方法与虚拟环境",
+  "best_for_ch": "研究多轮工具状态、参数补全、环境反馈、错误传播、轨迹构造与 replay 审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Hongru Wang, Wenyu Huang, Yufei Wang, Yuanhao Xi, Jianqiao Lu, Huan Zhang, Nan Hu, Zeming Liu, Jeff Z. Pan, Kam-Fai Wong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-22T09:04:14Z"
+}

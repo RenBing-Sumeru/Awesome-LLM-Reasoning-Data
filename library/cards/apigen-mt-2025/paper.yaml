@@ -1,0 +1,269 @@
+id: apigen-mt-2025
+title: 'APIGen-MT: Agentic Pipeline for Multi-Turn Data Generation via Simulated Agent-Human Interplay'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Akshara Prabhakar
+- Zuxin Liu
+- Ming Zhu
+- Jianguo Zhang
+- Tulika Manoj Awalgaonkar
+- Shiyu Wang
+- Zhiwei Liu
+- Haolin Chen
+- Thai Hoang
+- Juan Carlos Niebles
+- Shelby Heinecke
+- Weiran Yao
+- Huan Wang
+- Silvio Savarese
+- Caiming Xiong
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- tool_use
+- function_calling
+- multi_turn_agents
+- environment_interaction
+- customer_service
+- retail
+- airline
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://papers.neurips.cc/paper_files/paper/2025/hash/5e3661f7fe4c8ac5652d62eb3d3c96ea-Abstract-Datasets_and_Benchmarks_Track.html
+  paper_pdf: https://proceedings.neurips.cc/paper_files/paper/2025/file/5e3661f7fe4c8ac5652d62eb3d3c96ea-Paper-Datasets_and_Benchmarks_Track.pdf
+  arxiv: https://arxiv.org/abs/2504.03601
+  code: null
+  data: https://huggingface.co/datasets/Salesforce/APIGen-MT-5k
+  data_file: https://huggingface.co/datasets/Salesforce/APIGen-MT-5k/blob/8f8a1d2fb8f871fc5221a0200dd3d329d01a6b53/apigen-mt_5k.json
+  project: https://apigen-mt.github.io/
+  project_repository: https://github.com/apigen-mt/apigen-mt.github.io
+  model_collection: https://huggingface.co/collections/Salesforce/xlam-2-67ef5be12949d8dcdae354c4
+  model_code: https://github.com/SalesforceAIResearch/xLAM
+  huggingface: https://huggingface.co/datasets/Salesforce/APIGen-MT-5k
+  doi: https://doi.org/10.48550/arXiv.2504.03601
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/5e3661f7fe4c8ac5652d62eb3d3c96ea-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: null
+  license: https://huggingface.co/datasets/Salesforce/APIGen-MT-5k/blob/abc4a517d67c541f85f6470cbd8fd3186b36830e/README.md
+data_object:
+  object_type: A success-filtered synthetic multi-turn tool-use trajectory for behavioral cloning, released as a ShareGPT-like
+    conversation with policy and tool-schema context but without the construction blueprint, verifier record, or replay state.
+  prompt_source: For the tau-bench case study, task contexts combine Retail/Airline executable APIs, domain policies/rules,
+    sampled domain data and metadata, PersonaHub personas, and few-shot examples. API-graph random walks and reverse task
+    recombination create multi-action blueprints. Per-row source attribution is not released.
+  trace_author: Phase 2 uses an LLM-simulated human and GPT-4o in function-calling mode as the test agent. GPT-4o and DeepSeek-V3
+    are used across generation, validation, and interplay, but exact stage and per-row assignments are unknown.
+  task_blueprint:
+  - generator thought
+  - user intent q
+  - ordered ground-truth actions a_gt
+  - expected outputs o_gt
+  - environment state diff_patch
+  - format and execution checks
+  - policy-test outcomes
+  - LLM committee scores and feedback
+  released_record:
+  - conversations with human messages
+  - function_call messages containing tool name and arguments
+  - observation messages containing tool results
+  - gpt assistant responses - system-level instruction containing domain policy
+  - tools containing function descriptions and JSON-like parameter schemas
+  answer_format: A multi-turn sequence whose assistant turns alternate free-text replies and structured function calls, interleaved
+    with human messages and tool observations.
+  state: The paper's simulator has latent mutable tau-bench environment state and records cumulative state changes for validation.
+    The public 5k JSON does not serialize an initial/reset state, final state, or state diff.
+  action_space: Assistant action is either a tool call or a response to the human; the public release serializes tool calls
+    separately from assistant text.
+  observation: The agent observes human follow-ups and structured tool outputs. The public release includes these messages
+    but not hidden evaluator state.
+  process_fields:
+  - ordered human/assistant/function-call/observation messages
+  - tool name and arguments
+  - tool result - domain policy system-level instruction
+  - tool schema
+  verifier_or_reward: Phase 1 combines format/JSON checks, executable API-name/argument/type checks, Python policy tests,
+    and majority-voted LLM rubric judgments. Phase 2 assigns binary success when the final environment state matches the blueprint's
+    ground-truth action effects and assistant responses match expected outputs.
+  verifier_output: Construction-time format/execution/policy failures, state diff, committee rubric scores/reflections, summarized
+    improvement feedback, and Phase-2 binary success are described in the paper but absent from the public trajectory rows.
+  reward: Binary full-episode success r=1 for trajectory retention; no reward field is present in the verified public row
+    schema.
+  terminal_predicate: The interaction ends when the simulated user concludes (the appendix prompt uses `###STOP###`) or a
+    predefined turn limit is reached; dataset retention additionally requires state- and output-based success. Exact turn
+    limits and terminal reasons are not released per row.
+  provenance: tau-bench APIs/policies/data plus persona/examples -> API-graph/context sampling -> model-generated blueprint
+    -> programmatic and LLM validation/refinement -> optional reverse recombination -> simulated human/GPT-4o/environment
+    rollout -> state/output success filter -> unique successful trajectories -> public 5k subset.
+  environment_or_substrate: Executable Python-function Retail and Airline environments derived from tau-bench. The public
+    release does not pin the tau-bench commit, database/reset state, API implementation, policy revision, or replay container.
+  release_shape: Official gated Hugging Face release with 5,000 rows in one 128 MB JSON file and one `train` split. It is
+    explicitly a subset of xLAM-2 training data, not the full paper-era training mixture.
+recipe_metadata:
+  base_model: Filtered behavioral cloning uses Llama 3.1/3.2 Instruct and Qwen 2.5 Instruct bases; xLAM-2-fc-r releases span
+    1B, 3B, 8B, 32B, and 70B. Exact base checkpoints/revisions per run are unknown.
+  teacher: GPT-4o and DeepSeek-V3 participate in generation, validation, and simulated interaction; exact teacher/judge/user
+    roles and per-row lineage are unknown.
+  generator: Phase 1 generates intent/action/output task blueprints from sampled environment context and iteratively revises
+    failures; Phase 2 generates conversational details through simulated human-agent-environment interaction.
+  prompt_task_source: tau-bench Retail and Airline APIs, policies, domain data/metadata, PersonaHub personas, and few-shot
+    examples. Appendix E releases representative prompts for task generation, alignment validation, feedback aggregation,
+    trajectory collection, and BoN human-response scoring.
+  sampling_protocol: Random walks over the API dependency graph; randomly varied context-sampler frequencies; reverse task
+    recombination; Phase-2 Best-of-N human-response sampling with self-critique (N=4); up to three trajectory attempts per
+    task; aggregate all unique successful runs.
+  temperature: unknown
+  rollout_count: Up to 3 task attempts; Best-of-N uses N=4 candidate human responses per simulated-user step.
+  inference_budget: Reflection-feedback maximum is 3 turns for Retail and 5 for Airline. Exact token limits, per-trajectory
+    turn limit, seeds, and decoding budgets are undisclosed.
+  search_or_scaffold: Two-phase blueprint-to-trajectory scaffold with API-graph random walks, multi-stage validation/reflection,
+    reverse task recombination, executable environment interaction, and success-only rejection sampling.
+  filtering_rule: Reject blueprints that fail format, execution, policy, LLM alignment, or final semantic review. In Phase
+    2 retain only unique trajectories with r=1 under final-state and expected-output matching; discard failures.
+  selection_threshold: Phase-1 semantic tasks require an average committee score above a predefined threshold, but the numeric
+    threshold is unknown.
+  optimizer_or_training_scaffold: Split each trajectory at every assistant response and predict only assistant tokens while
+    masking prompt/non-assistant messages; full fine-tuning with LLaMA-Factory, DeepSpeed ZeRO-3, FlashAttention 2, bfloat16,
+    AdamW, at most 3 epochs, on one NVIDIA H200 node.
+  training_mixture: APIGen-MT trajectories are jointly trained with APIGen function-calling data and other xLAM/ActionStudio
+    agentic data. Counts, weights, deduplication, and model-specific mixture maps are unknown.
+  user_simulator: An LLM reveals task details incrementally under the Appendix-E trajectory prompt. Candidate human replies
+    are scored 0-10 by a self-critique judge and the best of four is selected. Exact user-model endpoint/version is unknown.
+audit:
+  source_mixture: Synthetic blueprints and conversations grounded in tau-bench Retail/Airline APIs, policies, domain records,
+    PersonaHub personas, examples, and outputs/judgments from GPT-4o and DeepSeek-V3. The xLAM training mix additionally includes
+    APIGen and other agentic datasets. Per-row and mixture-weight provenance is unavailable.
+  split: The official APIGen-MT-5k card exposes exactly one 5,000-row `train` split. No development/test split, split seed,
+    task-family grouping, or public-to-private training-set mapping is disclosed.
+  decontamination: unknown
+  benchmark_overlap: No systematic prompt, semantic, API-schema, policy, or model-pretraining overlap audit is disclosed.
+    APIGen-MT construction and tau-bench evaluation share Retail/Airline environment APIs and policies; whether generated
+    tasks overlap evaluation intents is unknown. BFCL is treated as cross-domain, but no instance-level overlap check is reported.
+  lineage: Official sources establish the high-level blueprint/validation/simulation/filter chain and the public row schema.
+    They do not release row-level blueprints, model assignments, validator records, state diffs, attempt IDs, rejected runs,
+    or a complete mixture manifest.
+  license: The gated HF card declares CC-BY-NC-4.0 and separately says GPT-4-generated portions must not be used to develop
+    models that compete with OpenAI. Per-row restricted provenance, tau-bench/PersonaHub rights, provider-output terms, and
+    whether all upstream components are covered remain unclear.
+  release_version: No tag or named release. Freeze dataset documentation to commit abc4a517d67c541f85f6470cbd8fd3186b36830e
+    and data to commit 8f8a1d2fb8f871fc5221a0200dd3d329d01a6b53; `apigen-mt_5k.json` SHA-256 is 5225b54198c1d4d2ae9ff14ddd98341751677138efe64ded10dcb770276b5841.
+  paper_version: Official NeurIPS 2025 proceedings PDF is the archival source. arXiv v1 was submitted 2025-04-04 and v4, the
+    current arXiv revision, was posted 2025-07-19.
+  version_drift: The final proceedings report 5 read and 13 write APIs, while the project page says 15 read and 13 write APIs.
+    The public 5k is a subset, whereas Appendix B scales APIGen-MT data through 8k and the final models use an additional
+    mixed training corpus. The HF card's `Code` link is only the HTML/CSS/JS project-site repository; no APIGen-MT synthesis
+    implementation was verified.
+  replay: Not self-contained. Public rows lack environment reset state/database, blueprint and ground-truth actions/outputs,
+    state diff, validator outputs, reward, seed, terminal reason, exact API/policy revision, and executable environment pin.
+  verifier_or_judge_failure_modes:
+  - Format/execution checks can reject malformed calls but do not establish semantic task correctness.
+  - LLM committee voting and feedback can inherit model, prompt, correlated-error, and majority-vote bias; committee composition
+    and calibration are unknown.
+  - Policy unit tests and state/output matchers can have false positives, false negatives, or incomplete coverage; no adversarial
+    verifier audit is reported.
+  - Best-of-N self-critique stabilizes the simulated user but leaves stochasticity and may select judge-preferred rather than
+    human-realistic behavior.
+  - Success-only filtering hides invalid calls, recovery behavior, near misses, and the true failure distribution.
+  - Unpinned tau-bench state/API/policy versions make historical trajectories non-replayable and can cause schema drift.
+  successful_and_failed_sample_retention: Only r=1 trajectories are retained; each task is attempted up to three times and
+    all unique successes are aggregated. The paper explicitly says failed Phase-2 trajectories are discarded, and the public
+    release contains no failed-attempt corpus or rejection log.
+  privacy_or_consent: The authors state the work uses synthetic data and professional annotators on routine tasks with no
+    sensitive personal information collected. No per-record PII audit, source-level consent record, annotator agreement, or
+    complete annotation provenance was verified.
+  citation_status: verified
+  confidence: high
+  notes: Official paper/venue, project, gated data release, data-file hash, model collection, and related xLAM repository
+    were checked. Treat APIGen-MT-5k as a restricted, success-only SFT trajectory subset, not a replayable environment package
+    or full xLAM training corpus.
+  remaining_unknowns:
+  - exact dated generator, user-simulator, review-committee, and feedback-generator model endpoints and per-row assignments
+  - complete prompts/settings, temperatures, seeds, token budgets, retries, numeric judge threshold, and response-matcher
+    implementation
+  - full xLAM model-specific training mixtures, APIGen-MT counts, weights, deduplication, and public-subset mapping
+  - row-level blueprint, ground-truth, environment reset/final state, diff, reward, validator output, attempt, and terminal
+    metadata
+  - failed/rejected trajectories and rejection reasons
+  - semantic deduplication, train/evaluation overlap, model-pretraining contamination, and post-publication exposure policy
+  - immutable tau-bench/API/database/policy environment revision and replay container
+  - dataset-specific reconciliation of CC-BY-NC-4.0, GPT-4 output restrictions, upstream rights, and provider terms
+  - human annotator count, qualifications, assignment, agreement, adjudication, and detailed consent/privacy documentation
+inclusion_reason: 'APIGen-MT exposes an important environment-to-training-data recipe: sampled API/policy context becomes
+  a validated task blueprint, then a simulated human-agent tool episode, and finally a success-filtered SFT trajectory subset.
+  Its release also makes success-only selection, mixed-verifier dependence, incomplete lineage, and non-replayability concrete
+  audit targets.'
+related:
+- magnet-tool-use-2025
+- tau2-bench-2025
+tags:
+- apigen-mt
+- environment-agent-trajectory-data
+- multi-turn
+- tool-use
+- function-calling
+- synthetic-data
+- tau-bench
+- simulated-user
+- success-only-filtering
+- mixed-verification
+- partial-release
+category_ids:
+- environment_agent_trajectory_data
+- programmatically_verifiable_outcome_data
+one_line_summary: APIGen-MT releases 5,000 success-filtered Retail/Airline tool-use dialogues from a blueprint-and-simulation
+  pipeline, but omits failed runs, replay state, verifier logs, and the complete xLAM training mixture.
+why_it_matters: It connects API schemas, policies, latent environment state, mixed validation, simulated users, and assistant-token
+  behavioral cloning in one auditable construction chain, while showing why a conversation-only success subset cannot by itself
+  reproduce the environment or establish unrestricted training reuse.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified official NeurIPS proceedings/PDF, arXiv/project, HF card/tree/schema and immutable data-file pointer/hash,
+    project-site repository, xLAM repository, and xLAM-2 model collection. APIGen-MT generation code and a replayable release
+    were not verified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_code: publish and tag the APIGen-MT generation, validation, filtering, and evaluation implementation; the current
+  code link is project-site source only'
+- 'needs_version_pin: release an immutable bundle mapping paper, prompts, model endpoints, tau-bench environment/API/policy/database
+  revision, dataset, and every xLAM checkpoint'
+- 'needs_replay: publish reset/final states, blueprints, ground-truth actions/outputs, diffs, rewards, seeds, terminal reasons,
+  and executable replay instructions'
+- 'needs_failures: release failed and near-miss attempts, rejection reasons, validator outputs, committee votes, and blueprint-to-trajectory
+  lineage'
+- 'needs_mixture: disclose model-specific training counts, weights, deduplication, sampling, and mapping from APIGen-MT-5k
+  to experiments and xLAM releases'
+- 'needs_decontamination: report semantic/API/policy overlap checks for tau-bench, BFCL, source examples, and model pretraining'
+- 'needs_verifier_audit: calibrate LLM judges and state/output/policy checks for false positives, false negatives, correlated
+  errors, and gaming'
+- 'needs_license: reconcile CC-BY-NC-4.0, the GPT-4 competition restriction, tau-bench/PersonaHub rights, provider-output
+  terms, and per-row provenance'
+- 'needs_annotation_metadata: disclose human-review sampling, annotator count/qualification, agreement, adjudication, compensation,
+  consent, and privacy checks'
+card: null

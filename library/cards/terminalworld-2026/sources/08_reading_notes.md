@@ -1,0 +1,6 @@
+- Start with Paper §§3.1–3.4: the key object is the conversion from 80,870 public recordings to 1,530 executable Docker tasks, not a released corpus of model trajectories.
+- Keep the feedback boundary explicit: the episode contains shell actions and terminal observations, but correctness is a full-episode state-test outcome; no step-level correctness or training reward is released.
+- Read `AllPassing` / `Nop` / `Partial` as a verifier-sensitivity gate, not formal proof that tests are sound, complete, or ungameable.
+- Keep the three release surfaces separate: the paper has 18 categories, the stable README 19, and the checked current manifest 20; current records also omit the paper-described `source_url`.
+- Before any reuse, reconcile CC BY 4.0, CC BY-NC 4.0, and strictly non-commercial academic research; pin code/data/image/test versions and inspect cold replay on end-of-life images.
+- Read alongside Terminal-Bench to compare task sourcing and outcome verification, but do not treat the reported 91% command novelty as item-level decontamination.

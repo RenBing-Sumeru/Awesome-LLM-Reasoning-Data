@@ -1,0 +1,280 @@
+id: webserv-2025
+title: 'WEBSERV: A Full-Stack and RL-Ready Web Environment for Training Web Agents at Scale'
+year: 2025
+venue: arXiv preprint (expanded v2); earlier version presented at MTI-LLM @ NeurIPS 2025
+authors:
+- Yuxuan Lu
+- Ziyi Wang
+- Jing Huang
+- Hui Liu
+- Jiri Gesi
+- Yan Han
+- Shihan Fu
+- Tianqi Zheng
+- Xianfeng Tang
+- Chen Luo
+- Yisi Sang
+- Jin Lai
+- Dakuo Wang
+source_role:
+- agent_environment
+- infrastructure
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- web_agents
+- agent_trajectories
+- browser_interaction
+- environment_interaction
+- reinforcement_learning
+- ecommerce
+- content_management
+- software_development
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.16252
+  paper_pdf: https://arxiv.org/pdf/2510.16252v2
+  arxiv: https://arxiv.org/abs/2510.16252
+  code: https://anonymous.4open.science/r/webserv_anonymous-90EF/
+  code_snapshot: null
+  data: https://anonymous.4open.science/r/webserv_anonymous-90EF/
+  data_part_00: https://anonymous.4open.science/api/repo/webserv_anonymous-90EF/file/data/sft_training_part_00.jsonl
+  data_part_01: https://anonymous.4open.science/api/repo/webserv_anonymous-90EF/file/data/sft_training_part_01.jsonl
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.16252
+  venue: https://neurips.cc/virtual/2025/128012
+  openreview: https://openreview.net/forum?id=YHcHQY8TIY
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.16252
+  release: https://anonymous.4open.science/r/webserv_anonymous-90EF/
+data_object:
+  object_type: A full-stack browser/server RL environment plus a public SFT corpus of 726 Claude 4.5 Sonnet web-interaction
+    traces. The much larger Qwen on-policy RL rollout stream reported in the paper is not part of the public corpus.
+  prompt_source: WebArena tasks for Shopping, CMS/Shopping Admin, and GitLab. The paper evaluates the 110-task WebArena-Lite
+    subset; the repository also includes WebArena task JSONL/config files, but the exact task IDs and multiplicity used to
+    produce the 726 public SFT records are not retained as record-level fields.
+  trace_author: Claude 4.5 Sonnet generated the released SFT bootstrap trajectories. Qwen3-4B-thinking-2507 and Qwen3-30B-A3B-thinking-2507
+    generated on-policy RL rollouts during the reported training runs, but those rollout logs are not released.
+  record_schema:
+  - messages
+  - tools
+  - system objective and step_browser specification
+  - initial browser observation as user content
+  - assistant content
+  - assistant reasoning_content
+  - assistant tool_calls
+  - tool observations
+  answer_format: Each released JSONL record is an OpenAI-style multi-turn message sequence with one step_browser tool definition.
+    Assistant turns carry natural-language content, reasoning_content, and JSON arguments for browser actions; tool turns
+    carry URL/title and DOM-derived observation text.
+  process_fields:
+  - task objective embedded in the system-level instruction
+  - reasoning_content
+  - browser action name and arguments
+  - DOM-derived HTML observation
+  - URL and page title
+  - clickable semantic identifiers
+  - input and select state
+  - optional final answer in terminate action
+  observation: The text mode returns a stripped annotated HTML snapshot plus clickable, hoverable, input, and select state;
+    the optional VLM mode adds a screenshot. The released SFT records inspected here contain text observations.
+  verifier_or_reward: Repository evaluator code multiplies WebArena string, URL, and HTML-content checks; string evaluation
+    can use exact match, must-include, or configured LLM fuzzy/unachievable-task matching. Runtime reward is the task score
+    plus one flat -0.05 penalty if any malformed tool call or browser exception occurred; aborted runs receive only the accumulated
+    format penalty.
+  reward: A runtime scalar, typically 1.0 for a successful clean rollout and 0.0 for an unsuccessful clean rollout, with a
+    flat -0.05 format-error adjustment. Reward, result, and success fields are not included in the released SFT JSONL records.
+  terminal_predicate: The environment supports an explicit terminate action with an optional answer, after which WebArena
+    evaluators score answer/page state. The SFT converter selects source sessions with result.success=true and score>0, but
+    drops those labels; only 303 of the 726 released records end in an explicit terminate action, while 423 end with another
+    browser action and no following tool observation.
+  provenance: WebArena task/config -> isolated WebServ browser-server session -> Claude 4.5 Sonnet reasoning/action/observation
+    history -> source result/session files -> success, positive-score, and reasoning filters -> 726-message-sequence SFT release
+    -> three-epoch SFT checkpoint -> Qwen on-policy WebServ rollouts -> GRPO checkpoint at step 99.
+  environment_or_substrate: A Playwright browser interface paired with per-agent Incus clones of self-hosted WebArena Shopping,
+    Shopping Admin/CMS, and GitLab applications. ZFS/Btrfs block-level copy-on-write supports fast clone, reset, rollback,
+    and isolation; network-aware waiting attempts to stabilize SPA state transitions.
+  release_shape: The repository exposes two byte-split files, data/sft_training_part_00.jsonl and data/sft_training_part_01.jsonl,
+    totaling 133,351,959 bytes. Byte-concatenating them yields 726 valid JSONL records; part_01 begins in the middle of a
+    record, so neither part should be treated as an independent shard.
+  public_release_scope: 'Public: environment/training/evaluator code, WebArena task material, and 726 success-filtered Claude
+    SFT records. Not found: failed Claude trajectories, original result.json/session directories, record-level success/score
+    labels, Qwen on-policy RL rollout logs, RL checkpoints, model weights, or a Hugging Face dataset/model release.'
+recipe_metadata:
+  base_model: Qwen3-4B-thinking-2507 and Qwen3-30B-A3B-thinking-2507.
+  teacher: Claude 4.5 Sonnet for the SFT bootstrap trajectories.
+  generator: Claude 4.5 Sonnet generates bootstrap browser trajectories; the SFT-initialized Qwen policies then generate on-policy
+    rollouts inside WebServ for GRPO.
+  prompt_task_source: WebArena Shopping, Shopping Admin/CMS, and GitLab tasks; evaluation uses the corresponding 110-task
+    WebArena-Lite subset. Exact train/evaluation task-ID manifests for SFT and RL are unknown.
+  sft_epochs: 3
+  sampling_protocol: For RL, the paper reports 12 samples per prompt, rollout batch size 16, training batch size 12, over-sampling
+    batch size 32, temperature 1.0, and maximum response length 4096 tokens. The public runtime script requests 200 rollouts
+    per step.
+  rollout_count: 200 on-policy rollouts per RL step; both models are reported at step 99. Exact cumulative generated, retried,
+    discarded, and retained rollout counts are unknown, and no RL rollout corpus is publicly released.
+  temperature: 1.0 for RL rollouts; Claude SFT-generation temperature is unknown.
+  inference_budget: Maximum 512 parallel browser-server instances; 32 rollout workers; reported averages of 11 turns and 77k
+    tokens per trajectory; about 12 minutes per RL step. The code caps an episode at 200 turns and 128k total tokens, while
+    each generated response is capped at 4096 tokens.
+  compute: Four AWS r6id.16xlarge CPU hosts for Incus environments and 64 NVIDIA H200 GPUs across four actor nodes plus four
+    rollout nodes, each with eight GPUs. The system benchmark uses an AWS r6id.metal host with 128 vCPUs and 1024 GiB memory.
+  filtering_rule: Released SFT conversion keeps only source tasks with result.success=true, score>0 under the default threshold,
+    and at least one assistant reasoning block; failed, missing, zero-score, and no-reasoning sessions are skipped. RL dynamic
+    sampling retains prompt groups with nonzero reward standard deviation.
+  selection_threshold: 'SFT: success flag true, score strictly greater than 0.0, and reasoning present. RL: group reward standard
+    deviation must be nonzero. Counts of source/rejected SFT sessions and rejected RL groups are not published.'
+  optimizer_or_scaffold: Three-epoch SFT followed by GRPO with dynamic sampling; low-variance KL coefficient 0.001, entropy
+    coefficient 0.0, PPO clip epsilon 0.2 and high clip 0.28, Adam learning rate 1e-6 on a constant schedule, weight decay
+    0.01, beta1 0.9, and beta2 0.98. VeRL and Slime integration are described, while the released training tree vendors Slime.
+audit:
+  source_mixture: WebArena Shopping, Shopping Admin/CMS, and GitLab task/config material; Claude 4.5 Sonnet success-filtered
+    SFT traces; Qwen3 on-policy RL traces used during training but not released.
+  split: unknown
+  decontamination: unknown
+  benchmark_overlap: Training and evaluation both draw from named WebArena/WebArena-Lite task families. The paper and repository
+    do not provide an immutable train/evaluation task-ID split or a task/template overlap analysis.
+  lineage: Aggregate lineage is documented in paper sections 4.3 and repository conversion/training code, but the public SFT
+    records lack source task IDs, source batch/session IDs, result scores, model snapshot, decoding settings, and per-record
+    provenance.
+  license: The anonymous repository contains an MIT LICENSE for the software and associated documentation. It does not separately
+    state data terms for the two SFT files or reconcile rights for WebArena-derived task/observation content and Claude-generated
+    reasoning traces.
+  release_version: arXiv:2510.16252v2 dated 2026-05-17. The anonymous mirror reports lastUpdateDate 2026-05-11T19:17:04Z,
+    has no public source repository identity, tag, release, full commit hash, checksum manifest, or non-anonymous archival
+    DOI.
+  version_drift: 'The MTI-LLM/NeurIPS 2025 workshop record is an earlier eight-author paper titled ''WEBSERV: A Browser-Server
+    Environment for Efficient Training of Reinforcement Learning-based Web Agents at Scale''; arXiv v2 has the expanded title
+    and thirteen authors. The arXiv abstract page reports 55.5% for the 4B RL model, while the v2 PDF abstract, Table 5, and
+    body report 57.3%.'
+  verifier_or_judge_failure_modes:
+  - String, URL, and HTML checks can encode incomplete or brittle task rubrics and are multiplied, so one failing component
+    zeros the task score.
+  - Configured fuzzy-match and unachievable-task checks depend on an evaluator LLM whose exact endpoint, snapshot, prompt
+    execution, retries, and calibration are not pinned in the public release.
+  - The flat -0.05 format penalty records only whether any format/browser error occurred, not how many occurred or how severe
+    they were.
+  - DOM filtering and semantic-ID heuristics can omit useful content, misclassify clickability/hoverability, or change under
+    dynamic page behavior.
+  - Network-idle waiting cannot guarantee semantic page stability when background requests, timers, or long-lived connections
+    remain active.
+  - Incus base images, stopped-container states, credentials, proxy routing, ZFS/Btrfs versions, and browser/dependency snapshots
+    are not released as an immutable environment bundle.
+  - Text-only observations flatten layout and omit spatial grouping; real production websites were not evaluated at scale
+    because of legal and Terms-of-Service constraints.
+  - A single reported training run per setting and missing seeds/error bars leave optimization variance unquantified.
+  successful_and_failed_sample_retention: The public SFT converter explicitly drops failed and zero-score source sessions
+    and releases 726 success-filtered message sequences. It also drops source result/score/success metadata. Only 303 records
+    end with terminate; 423 end with a nonterminal browser action and lack its subsequent observation. Failed SFT sessions
+    and all reported Qwen on-policy RL rollouts are not present, so a complete labeled success/failure trajectory corpus is
+    unavailable.
+  privacy_or_consent: Experiments use self-hosted WebArena applications rather than live production websites. The public traces
+    include synthetic site/account content and model outputs; a record-level privacy/PII review and data-rights statement
+    are not provided.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v2/PDF/appendices, NeurIPS workshop page, OpenReview record, and the paper-linked anonymous repository
+    were checked. Repository README, LICENSE, evaluator, rollout generator, SFT converter, file inventory, and both SFT parts
+    were inspected; concatenation produced 726 valid records. No stable public GitHub/Hugging Face/model release was found.
+  remaining_unknowns:
+  - immutable public repository identity, full commit hash, tag/release, checksums, and long-term archival URL
+  - exact task-ID manifests and separation for Claude SFT generation, Qwen RL training, and WebArena-Lite evaluation
+  - Claude 4.5 Sonnet snapshot, prompt/API parameters, temperature, seeds, retries, total attempted sessions, and rejection
+    counts
+  - cumulative generated/retained RL rollout counts for each model and all success, failure, timeout, abort, and retry logs
+  - released model checkpoints or weights and their exact lineage to Table 5
+  - per-record SFT task IDs, source session IDs, success/score labels, terminal observations, and replay metadata
+  - immutable Incus/WebArena base images, container snapshots, browser/OS versions, proxy configuration, and deterministic
+    reset fixtures
+  - separate dataset/trajectory license and rights chain for WebArena-derived and Claude-generated content
+  - decontamination, benchmark-overlap, and training/evaluation leakage analysis
+  - reconciliation of the 55.5% arXiv abstract-page figure with the 57.3% v2 PDF result
+inclusion_reason: WebServ exposes browser observation design, deterministic action execution, environment isolation/reset,
+  verifier computation, success-filtered SFT traces, and on-policy rollout throughput as one auditable agent-training pipeline;
+  its release also makes the gap between paper-scale trajectory generation and actually retained public trajectories unusually
+  concrete.
+related:
+- webarena-2024
+- webagent-r1-2025
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- browser-interaction
+- webarena-lite
+- incus
+- container-isolation
+- resettable-environment
+- sft-trajectories
+- on-policy-rl
+- grpo
+- environmental-verifier
+- release-gap
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebServ releases 726 success-filtered Claude browser traces and the code for resettable Incus-backed GRPO
+  training, but not failed traces, record-level outcomes, Qwen RL rollouts, checkpoints, or a pinned environment bundle.
+why_it_matters: 'It connects trajectory quality to the full browser-server stack: compact observations, network-aware actions,
+  isolated resettable applications, executable WebArena rewards, and rollout throughput. It also demonstrates why reported
+  rollout volume must be audited separately from public data retention.'
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  model_release_verified: false
+  rl_rollout_release_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper and official venue identity were checked. The anonymous repository was inventoried (1,373 files), code and
+    license were inspected, and its two SFT byte parts were concatenated and parsed as 726 records. Artifact verification
+    does not imply immutable versioning, complete replay, failed-trajectory availability, or an RL rollout/model release.
+curation_level: L3_summary_ready
+needs:
+- 'needs_stable_release: publish a non-anonymous repository/archive with full commit hash, release tag, checksums, and persistent
+  data URLs'
+- 'needs_release_manifest: document the two byte-split SFT parts, concatenation procedure, record count, schema, and file
+  checksums'
+- 'needs_outcome_metadata: restore per-record task IDs, source session IDs, success/score labels, terminal state/observation,
+  model snapshot, and generation parameters'
+- 'needs_failure_retention: release failed, zero-score, timeout, abort, format-error, and retry trajectories or state an explicit
+  retention policy'
+- 'needs_rl_release: release or explicitly scope out Qwen on-policy rollout logs, reward records, checkpoints, and model weights
+  for both step-99 runs'
+- 'needs_split_and_decontamination: publish immutable SFT/RL/evaluation task manifests and WebArena/WebArena-Lite overlap
+  analysis'
+- 'needs_environment_manifest: pin Incus/WebArena images and snapshots, ZFS/Btrfs/OS/browser/dependency versions, proxy routing,
+  credentials setup, and reset/replay fixtures'
+- 'needs_license: state separate code, task, observation, SFT-trajectory, and model-output terms and upstream rights'
+- 'needs_reproducibility: provide seeds, Claude/Qwen snapshots, total attempts/rejections, evaluator-LLM configuration, training
+  variance, and error bars'
+- 'needs_result_reconciliation: reconcile 55.5% on the arXiv abstract page with 57.3% in the v2 PDF'
+card: null

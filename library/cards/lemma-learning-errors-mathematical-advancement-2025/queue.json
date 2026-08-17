@@ -1,0 +1,19 @@
+{
+  "title": "LEMMA: Learning from Errors for MatheMatical Advancement in LLMs",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.605/",
+    "data": "https://huggingface.co/datasets/panzs19/LEMMA",
+    "code": "https://github.com/pzs19/LEMMA",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:15:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布错误到修正的数学样本，可训练自我纠错",
+    "updated_at": "2026-07-17T12:15:19Z"
+  }
+}

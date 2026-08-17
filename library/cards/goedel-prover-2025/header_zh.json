@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Goedel-Prover 公开大规模自然语言与 Lean 陈述，以及通过编译器核验的 29,750 条完整证明。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放形式数学数据集、构造流程与证明器报告",
+  "best_for_ch": "适合构建 Lean 完整证明语料、自动形式化流程和验证器驱动的专家迭代。",
+  "confidence_ch": "高",
+  "authors_ch": "Yong Lin、Shange Tang、Bohan Lyu、Jiayun Wu、Hongzhou Lin、Kaiyu Yang、Jia Li、Mengzhou Xia、Danqi Chen、Sanjeev Arora、Chi Jin",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T15:45:00Z"
+}

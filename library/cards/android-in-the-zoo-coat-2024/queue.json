@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T09:27:09Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "数据规模较小",
+    "updated_at": "2026-07-13T09:27:09Z"
+  }
+}

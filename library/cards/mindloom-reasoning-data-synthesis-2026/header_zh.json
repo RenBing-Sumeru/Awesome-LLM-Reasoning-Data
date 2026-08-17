@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MindLoom 从已验证解答中提取可复用 thought mode，在兼容性与稀缺度控制下组合新题，并保留 9,230 条判定正确的 SFT 记录。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "组合式推理数据合成方法与数据集",
+  "best_for_ch": "适合用可复用推理变换生成 STEM SFT 数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Haiyang Shen, Taian Guo, Xuanzhong Chen, Mugeng Liu, Weichen Bi, Wenchun Jing, Sixiong Xie, Zhuofan Shi, Yudong Han, Chongyang Pan, Siqi Zhong, Jinsheng Huang, Ming Zhang, Yun Ma",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

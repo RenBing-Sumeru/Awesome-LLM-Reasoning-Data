@@ -1,0 +1,6 @@
+- 明确公开SFT单元：**3,085个turn-level example = 412条成功完整trajectory**；所有top-level reward均为1，failed demonstration缺失。
+- 区分RL task与rollout：官方JSONL有**2,198个task**，默认代码使用**2,102-task** parquet；两个文件都不包含policy trajectory。
+- 论文报告约**54K条online RL trajectory**，但尚未确认规范化公开语料或完整success/failure/abort/mask manifest。
+- 结合§4.3阅读reward代码：deterministic format/status rule作为full-trajectory VLM judge的gate，judge/infrastructure failure可被loss-mask，而非当作负policy example。
+- Judge-13K有train与500-example test file，但full count、class balance、privacy audit与license为unknown；Apache-2.0只适用于已确认的code/SFT/RL-task artifact。
+- live website与付费browser基础设施使精确replay不可用；比较前应固定site/date/region/cookie、browser image/service、judge、step budget、reward config、seed与masking。

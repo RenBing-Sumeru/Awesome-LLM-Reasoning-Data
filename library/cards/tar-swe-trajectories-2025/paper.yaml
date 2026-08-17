@@ -1,0 +1,183 @@
+id: tar-swe-trajectories-2025
+title: 'Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories'
+year: 2025
+venue: ASE 2025
+authors:
+- Islem Bouzenia
+- Michael Pradel
+source_role:
+- data_release
+- audit_failure
+- construction_recipe
+verification_contract:
+- mixed
+- judgment_required
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- software_engineering
+- automated_program_repair
+- repository_level_code
+- agent_trajectories
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://doi.org/10.1109/ASE63991.2025.00234
+  arxiv: https://arxiv.org/abs/2506.18824
+  code: https://github.com/sola-st/llm-agents-study
+  data: https://github.com/sola-st/llm-agents-study
+  project: https://cispa.de/en/research/publications/104312-understanding-software-engineering-agents-a-study-of-thought-action-result-trajectories
+  huggingface: null
+  doi: https://doi.org/10.1109/ASE63991.2025.00234
+  venue: https://conf.researchr.org/details/ase-2025/ase-2025-papers/40/Understanding-Software-Engineering-Agents-A-Study-of-Thought-Action-Result-Trajector
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'A 120-episode analysis sample: 40 RepairAgent bug-repair runs over Defects4J, 40 AutoCodeRover V1 issue-resolution
+    runs over SWE-bench Lite, and 40 OpenHands CodeAct runs over SWE-bench Lite. The paper reports random sampling with about
+    10 successful episodes per agent; the official repository lists 10 resolved and 30 unresolved instances per agent, but
+    does not disclose the random seed.'
+  trace_author: RepairAgent, AutoCodeRover V1, and OpenHands CodeAct generate the trajectories. The paper identifies GPT-3.5
+    for RepairAgent; the AutoCodeRover and OpenHands backbone models used for these logs are not disclosed in this paper.
+  answer_format: 'Per-instance software-agent episode material is released across parsed text views and CSV annotations rather
+    than one normalized row: ordered thought/action/result components, tool names and arguments, action categories, five adjacent-component
+    relationship families, iteration/token metrics, instance ID, and a resolved label. A standalone final-patch field and
+    replay manifest were not verified.'
+  process_fields:
+  - agent
+  - instance_id
+  - iteration
+  - thought
+  - action
+  - action_arguments
+  - result
+  - action_category
+  - thought_action_relation
+  - thought_thought_relation
+  - action_action_relation
+  - result_thought_relation
+  - result_action_relation
+  - n_iterations
+  - input_tokens
+  - output_tokens
+  - total_tokens
+  - is_resolved
+  environment_or_substrate: Defects4J for RepairAgent and SWE-bench Lite for AutoCodeRover/OpenHands, with agent-specific
+    code-editing, shell, search, and test tools. The release does not document pinned containers, source-repository commits,
+    dependency locks, or reset semantics sufficient for immutable replay.
+  verifier_or_reward: AutoCodeRover and OpenHands success is a patch passing SWE-bench tests. RepairAgent first requires a
+    Defects4J-plausible patch and then manual confirmation that it equals or is semantically equivalent to the developer patch.
+    Action and semantic-relation labels are human-coded analytical annotations, not a trained reward.
+  terminal_predicate: 'Binary episode success from the original agent evaluation: SWE-bench test-passing patch for AutoCodeRover/OpenHands;
+    Defects4J plausible-and-manually-correct patch for RepairAgent. Otherwise the episode is unresolved or ends at the agent
+    budget.'
+recipe_metadata:
+  base_model: RepairAgent uses GPT-3.5 according to the paper. The specific backbone models for the AutoCodeRover V1 and OpenHands
+    CodeAct trajectories are unknown in this study.
+  teacher: unknown
+  generator: RepairAgent main trajectories, AutoCodeRover V1 first-run trajectories, and OpenHands CodeAct issue-resolution
+    trajectories, each parsed into a common thought-action-result representation.
+  filtering_rule: Ignore RepairAgent mutation sub-trajectories; use AutoCodeRover V1 because later versions were unavailable
+    and select the first of its three runs; randomly retain 40 trajectories per agent with roughly 10 successes. Map known
+    tools to eight action classes, manually inspect remaining actions, and exclude the 8.3% that fit no class from subsequent
+    action analyses.
+  sampling_protocol: Random 40-per-agent subsampling from the original evaluation logs with proportional success sampling,
+    followed by tailored parsers, trajectory statistics, eight-way action coding, frequent 4-gram mining, and open coding
+    of five semantic-relation families. Seed and exact sampling-frame revision are unknown.
+  rollout_count: 120 trajectories containing 2,822 iterations/LLM interactions
+  temperature: unknown
+  inference_budget: RepairAgent caps trajectories at 40 iterations and OpenHands at 100; AutoCodeRover has a short retrieve-locate-fix
+    workflow. Exact decoding, retry, wall-clock, model, and per-run cost budgets are unknown.
+  optimizer_or_scaffold: No policy optimizer is used. The analytical scaffold consists of agent-specific parsers, trajectory/token
+    statistics, eight-way action categorization, fixed 4-gram sequence mining, and manual open coding of semantic relationships.
+audit:
+  source_mixture: 40 trajectories each from RepairAgent, AutoCodeRover V1, and OpenHands CodeAct; 80 SWE-bench Lite issue-resolution
+    episodes and 40 Defects4J repair episodes, with 10 resolved and 30 unresolved instances listed per agent in the release.
+  split: No train/dev/test split is defined; this is an analysis sample. The exact random seed and an immutable sampled-instance
+    manifest shared across every analysis file are not provided.
+  decontamination: unknown
+  benchmark_overlap: All AutoCodeRover/OpenHands tasks come from public SWE-bench Lite and all RepairAgent tasks from Defects4J.
+    The paper does not report model decontamination or public-benchmark exposure checks.
+  license: The official repository has a root MIT License. Dataset-specific terms and compatibility with rights in benchmark
+    issue text, source repositories, patches, LLM thoughts, and tool outputs are not separately documented.
+  lineage: Original agent evaluation log -> agent-specific selection (including RepairAgent main-only and AutoCodeRover V1
+    run 1) -> tailored parser -> thought-action-result views -> action categories and adjacent-component semantic labels ->
+    RQ1/RQ2/RQ3 statistics. Exact agent, benchmark, repository, and environment revisions are unknown.
+  release_version: Verified on GitHub main at visible latest commit 358870ec56aa38e9f221fd59c7078eb79b405cdf (2026-01-23).
+    No GitHub release was published and no immutable tag was verified; trajectory data was added after arXiv v2, so main is
+    a drifting artifact rather than an immutable paper snapshot.
+  successful_failed_retention: 'Both outcomes are represented: the repository lists 10 resolved and 30 unresolved instances
+    per agent. However, 8.3% of uncategorizable actions are excluded from subsequent action analyses, and completeness of
+    original raw logs is unknown.'
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Manual action and semantic-relation coding is subjective; the paper reports collaboration and partial agreement checks
+    but no complete double-coding protocol or numeric agreement statistic.
+  - Agent architectures, underlying models, task suites, terminal predicates, and iteration budgets differ, so cross-agent
+    performance or cost differences are not clean causal comparisons.
+  - Forty trajectories per agent can miss rare behaviors, and reported associations between motifs and success do not establish
+    causality.
+  - AutoCodeRover parsing is heuristic, and excluding 8.3% uncategorizable actions can bias action-pattern results toward
+    parser-friendly behavior.
+  - RepairAgent RQ1 instance IDs do not fully match the README and action-annotation instance lists; the official artifacts
+    do not explain which manifest underlies each paper result.
+  - No verified tagged release, checksums, machine-readable data card, pinned environments, source-repository commits, or
+    replay/reset manifest was verified.
+  - Public SWE-bench Lite and Defects4J tasks may have been exposed to the underlying models; no decontamination analysis
+    is reported.
+  - The repository README references analysis scripts under stats/, but that directory was not visible in the verified root
+    tree; full reproduction requires another immutable-clone check.
+  - A repository-level MIT license does not by itself settle upstream data and generated-trace rights for unrestricted training
+    reuse.
+  citation_status: verified
+  confidence: high
+  notes: Official ASE/arXiv records and the author-maintained code/data repository were checked. Citation and artifact existence
+    are verified; training reuse remains blocked by release/version, lineage, replay, rights, and manifest uncertainties.
+inclusion_reason: It exposes successful and failed software-engineering agent episodes as thought-action-result trajectories
+  with per-step action categories, semantic relationship labels, and heterogeneous terminal-success contracts, making it a
+  concrete environment/agent-trajectory audit resource.
+related: []
+tags:
+- software-engineering-agents
+- thought-action-result
+- trajectory-analysis
+- automated-program-repair
+- failure-analysis
+- manual-annotation
+- open-data
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Releases and analyzes 120 RepairAgent, AutoCodeRover, and OpenHands episodes as 2,822 thought-action-result
+  iterations with action and semantic-relation labels, while replay metadata and an immutable release remain incomplete.
+why_it_matters: The work makes agent behavior auditable below the final patch by separating tool feedback, human semantic
+  judgments, and episode success; it is evidence for evaluation and failure analysis, not evidence of a validated training
+  recipe.
+card: null
+needs:
+- 'needs_snapshot: tagged release, commit-pinned citation, checksums, and machine-readable schema/data card'
+- 'needs_manifest: reconcile RepairAgent RQ1, README, parsed-trajectory, and annotation instance lists'
+- 'needs_replay: agent/benchmark/repository commits, containers, dependencies, tool versions, resets, seeds, and raw logs'
+- 'needs_annotation_protocol: full guidelines, double-coded fraction, agreement statistic, adjudication log, and label revisions'
+- 'needs_license_audit: dataset-specific terms and upstream rights for issues, code, patches, thoughts, and tool outputs'
+- 'needs_decontamination: model exposure analysis for SWE-bench Lite and Defects4J'
+- 'needs_training_boundary: do not mark SFT, process supervision, reward modeling, RLVR, or agent training without new official
+  evidence'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against arXiv v2, the ASE 2025 venue record, official institutional publication pages, and the author-maintained
+    GitHub code/data repository. Direct clone/codeload timed out, so repository findings should be pinned and rechecked from
+    a full immutable clone before L4 promotion or training reuse.

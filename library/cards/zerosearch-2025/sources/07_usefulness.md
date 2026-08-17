@@ -1,0 +1,1 @@
+This work is useful for designing or auditing post-training reasoning data because it identifies a concrete trace object, feedback contract, and selection or compute-allocation decision that should be recorded for reuse.

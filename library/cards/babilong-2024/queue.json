@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:37:21Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "暂缓 长上下文测评能力 ref 264 star250 把推理事实分散在超长文本中，测试模型能否检索并组合信息",
+    "updated_at": "2026-07-14T19:37:21Z"
+  }
+}

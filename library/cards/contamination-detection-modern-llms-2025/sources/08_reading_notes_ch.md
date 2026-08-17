@@ -1,0 +1,6 @@
+- 先读 Section 4 与 Figure 1，把五种 data contract 分开；它们的输出不是可互换的污染标签。
+- 把 Section 5 的 oracle 理解为“已知新增暴露”对照。它不能证明 LLaMA-2 base checkpoint 干净，也不能确定总历史暴露。
+- 对照 before/after oracle table 时要看方向，不只看显著性：所有报告的 Min-K% 值都朝预期污染方向的反方向变化。
+- 复现 Local Order 或 Canonical Order 前先检查仓库。前者可能重复 true successor，后者使用 population-SD t statistic，而且两者都依赖缺失的顺序 artifact。
+- 明确 release boundary：公开的是 1,500 条处理后 `.txt` row 和 150 条 completion CSV row；oracle record、generated probe、output、checkpoint 与 log 均未公开。
+- 不要由“可公开访问”推断“可安全复用”。论文是 CC BY 4.0，但仓库代码/数据条款与逐来源 benchmark 权利均为 unknown。

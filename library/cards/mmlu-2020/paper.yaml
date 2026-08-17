@@ -1,0 +1,116 @@
+id: mmlu-2020
+title: Measuring Massive Multitask Language Understanding
+year: 2020
+venue: ICLR 2021 / arXiv
+authors:
+- Dan Hendrycks
+- Collin Burns
+- Steven Basart
+- Andy Zou
+- Mantas Mazeika
+- Dawn Song
+- Jacob Steinhardt
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- broad-academic
+- static-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2009.03300
+  arxiv: https://arxiv.org/abs/2009.03300
+  code: https://github.com/hendrycks/test
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2009.03300
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: '15,908 four-choice questions across 57 academic and professional subjects; common evaluation reports use
+    the 14,079-question test split, with dev/validation split details pinned separately; Benchmark size: 约 15,908 道题，覆盖 57
+    个学科/任务。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: '57-subject multiple-choice benchmark with 15,908 total questions and a 14,079-question test split;
+    Benchmark size: 约 15,908 道题，覆盖 57 个学科/任务。'
+  verifier_or_reward: answer-key exact match over multiple-choice options
+  terminal_predicate: answer-key exact match over multiple-choice options
+  benchmark_size: 约 15,908 道题，覆盖 57 个学科/任务。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Measuring Massive Multitask Language Understanding; exact curation details
+    should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Measuring Massive Multitask Language Understanding.
+  split: Original paper reports 5-shot dev examples, 1,540 validation questions, and 14,079 test questions out of 15,908 total;
+    pin whether a harness also includes auxiliary_train or other derived packaging.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2009.03300'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Baseline for MMLU-Pro, CMMLU, SuperGPQA, and many frontier-model reports. Scale is 57 subjects / 15,908 questions
+    in the original benchmark, but score reuse should pin the exact public package and split. Benchmark size: 约 15,908 道题，覆盖
+    57 个学科/任务。'
+inclusion_reason: MMLU 建立了覆盖 57 个学科的大规模多选题评测面，用来衡量模型在预训练知识、专业考试和跨学科推理上的基本能力。
+related: []
+tags:
+- benchmark
+- broad-academic
+- static-reasoning-benchmark
+why_it_matters: 它提供 约 15,908 道题，覆盖 57 个学科/任务。 的评测规模信息和 broad-academic 方向的可复用 benchmark 坐标。
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin MMLU package version, 14,079-question test split vs auxiliary_train packaging, evaluator implementation,
+  prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MMLU 建立了覆盖 57 个学科的大规模多选题评测面，用来衡量模型在预训练知识、专业考试和跨学科推理上的基本能力。
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

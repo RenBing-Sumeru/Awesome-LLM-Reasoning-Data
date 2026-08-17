@@ -1,0 +1,7 @@
+- **Judge 身份与决策漂移：** 论文 v3 附录 B.1 指定固定 judge 为 GPT-5.5，而当前 `docs/REPRODUCE.md` 称论文使用 Claude Opus 4.7；当前 setup 文档又描述 GPT-5.5 default。论文采用 0.8 的 PassRate threshold，但该复现文档写为 0.5。作者协调两处冲突并固定 model、prompt、provider 与 code revision 之前，报告分数无法从一份无歧义契约复现。
+- **Learned judge 保真度：** mixed judge 可能产生 false positive 或 false negative，继承语义与风格偏差，或随 model alias 与 prompt version 变化。未披露独立 calibration set、错误率、inter-rater reliability 或完整 adjudication policy。被评测智能体必须始终无法读取隐藏 anchors；任何 staging 泄漏都会使契约失效。
+- **Episode 与轨迹发布：** 公开画廊于 2026-07-08 宣布，晚于论文 v3，被描述为每个任务的最佳轨迹。尚未核实到包含全部成功、部分成功、失败和 hack-flagged episode 的不可变 manifest、完整可下载 record schema、license 与 retention policy。论文中的 failure analysis 本身不会让失败语料变得可复用。
+- **版本化回放：** 论文 canonical Hugging Face revision 与 VM SHA-256 已固定，但所检查的 GitHub 文档来自可变 `main`，且未披露对应论文表格的 code commit。当前 Hugging Face main 比论文 pin 更新。tool alias、截图、应用版本、模型 API、task-local service、prompt、threshold 与 runtime setting 都可能改变 episode 行为或 judge 输出。
+- **任务池与实验范围：** 该套件仅含英文 Linux 桌面任务，规模为 114，且只评测有限的 backbone-harness 组合。formal train/dev/test split、模型训练重叠分析和 decontamination protocol 均为 unknown。公开任务、来源与 grader 若被反复复用，会带来泄漏与 verifier-gaming 风险。
+- **Provenance、权利与 consent：** 论文报告 174 个公开 URL，并称发布了 machine-readable provenance index，但尚未核实精确路径和逐记录完整性。代码与任务声明为 MIT，runtime bundle 则保留上游条款。每个用户帖子、请求、捆绑资产、VM component 和画廊轨迹的权利与 consent 仍为 unknown；公开可访问不等于获准再分发。
+- **解释边界：** 最高 35.1% 与 41.2% 的报告 PassRate、interface ablation 和 reward-hacking 分析刻画的是所报告评测设置，不能认证任务正确性、judge calibration、数据质量、训练价值或通用 computer-use 能力。

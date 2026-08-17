@@ -1,0 +1,106 @@
+id: m-rewardbench-multilingual-settings-2025
+title: 'M-RewardBench: Evaluating Reward Models in Multilingual Settings'
+year: 2025
+venue: ACL 2025
+authors:
+- Srishti Gureja
+- Lester James V. Miranda
+- Shayekh Bin Islam
+- Rishabh Maheshwary
+- Drishti Sharma
+- Gusti Winata
+- Nathan Lambert
+- Sebastian Ruder
+- Sara Hooker
+- Marzieh Fadaee
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- multilingual
+- reward-modeling
+- reasoning-evaluation
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.3/
+  arxiv: https://arxiv.org/abs/2410.15522
+  code: https://github.com/for-ai/m-rewardbench
+  data: https://huggingface.co/datasets/C4AI-Community/multilingual-reward-bench
+  project: https://m-rewardbench.github.io/
+  huggingface: https://huggingface.co/datasets/C4AI-Community/multilingual-reward-bench
+  doi: https://doi.org/10.18653/v1/2025.acl-long.3
+  venue: https://aclanthology.org/2025.acl-long.3/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.3/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: RewardBench prompts translated and verified across 23 typologically diverse languages.
+  trace_author: Multilingual benchmark curators and human translation-quality reviewers.
+  answer_format: Prompt, chosen response, rejected response, language, capability subset, and preference label.
+  process_fields:
+  - prompt
+  - chosen
+  - rejected
+  - language
+  - subset
+  environment_or_substrate: Multilingual chat, safety, reasoning, and translation.
+  verifier_or_reward: Human review and quality rules validate same-language and cross-language preference pairs.
+  terminal_predicate: A reward model ranks the preferred response in the target language.
+recipe_metadata:
+  base_model: Open-source and multilingual reward models evaluated in the paper.
+  teacher: Translation workflow with manual filtering and verification.
+  generator: RewardBench is translated and organized into multilingual preference pairs.
+  filtering_rule: Translation quality checks and manual verification remove unreliable instances.
+  sampling_protocol: Pin the official dataset revision and language/subset configuration.
+  inference_budget: Reward-model prompt format and translation quality affect scores.
+  optimizer_or_scaffold: Official benchmark code evaluates language-wise reward ranking.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Translated RewardBench instances, multilingual responses, and reviewed preference pairs.
+  split: The benchmark has 2.87K instances across 23 languages; pin the dataset revision.
+  decontamination: Public benchmark instances should be kept separate from downstream evaluation after training.
+  license: Confirm the official dataset card and upstream RewardBench terms before reuse.
+  lineage: ACL 2025 paper, Cohere Labs Community repository, project page, and dataset release.
+  known_failure_modes:
+  - Translation artifacts can change the apparent preference.
+  - High-resource languages may be easier than low-resource languages for both translation and judging.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL paper and affiliation block, author repository, official project page, and dataset release.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: M-RewardBench translates and validates preference pairs across 23 languages to test whether reward models
+  preserve chat, safety, reasoning, and translation preferences.
+why_it_matters: It exposes language-specific feedback failures that an English-only reward benchmark cannot reveal.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL paper and affiliation block, author repository, official project page, and dataset release.
+category_ids:
+- preference_reward_feedback_data

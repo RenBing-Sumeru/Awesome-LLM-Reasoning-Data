@@ -1,0 +1,118 @@
+id: gorilla-apibench-2023
+title: 'Gorilla: Large Language Model Connected with Massive APIs'
+year: 2024
+venue: NeurIPS 2024 Main Conference Track / arXiv
+authors:
+- Shishir G. Patil
+- Tianjun Zhang
+- Xin Wang
+- Joseph E. Gonzalez
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- sft
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/e4c61f578ff07830f5c37378dd3ecb0d-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2305.15334
+  code: https://github.com/ShishirPatil/gorilla
+  data: https://github.com/ShishirPatil/gorilla
+  project: https://gorilla.cs.berkeley.edu
+  huggingface: null
+  doi: https://doi.org/10.52202/079017-4020
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/e4c61f578ff07830f5c37378dd3ecb0d-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: APIBench built from HuggingFace, TorchHub, and TensorHub/TensorFlow Hub API documentation
+  trace_author: Gorilla/APIBench authors and synthetic instruction generation pipeline
+  answer_format: instruction-API pairs with API metadata including name, call, arguments, domain, framework, requirements,
+    examples, performance, and description
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: documentation-grounded API call generation over APIBench
+  verifier_or_reward: AST subtree matching of generated API calls and arguments; hallucination when no database API matches
+  terminal_predicate: generated API call and arguments match the target API under AST-based evaluation
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: API documentation plus synthetic instruction-call generation described in the paper
+  generator: APIBench construction from machine-learning API documentation with synthetic instruction-API pairs
+  filtering_rule: pin API documentation snapshot, synthetic data provenance, AST evaluator, and hallucination definition
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: https://proceedings.neurips.cc/paper_files/paper/2024/hash/e4c61f578ff07830f5c37378dd3ecb0d-Abstract-Conference.html;
+    https://arxiv.org/abs/2305.15334; https://gorilla.cs.berkeley.edu/; https://github.com/ShishirPatil/gorilla
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: license for questions, traces, code, data, and generated tool records is unknown unless the linked artifact states
+    it
+  lineage: 'Primary venue source: https://proceedings.neurips.cc/paper_files/paper/2024/hash/e4c61f578ff07830f5c37378dd3ecb0d-Abstract-Conference.html'
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: NeurIPS proceedings verifies 2024 Main Conference Track status and DOI 10.52202/079017-4020. Paper reports 1,645
+    filtered API calls and 10 synthetic instruction-API pairs per API.
+inclusion_reason: 'Gorilla / APIBench exposes an agent/tool environment or trajectory-like data object with a concrete feedback
+  contract: Model outputs are judged by whether API calls and arguments match the requested API usage under retrieved documentation.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+why_it_matters: It is a foundational API tool-use benchmark with an explicit AST-based feedback contract.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: Gorilla / APIBench evaluates API-calling LLMs with documentation-grounded instructions and AST-based tool-call
+  matching.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: NeurIPS proceedings verifies main-conference status and DOI; arXiv/project/GitHub verify APIBench and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 4
+  candidate_title: Gorilla / APIBench
+  primary_category_id: benchmarks_evaluation_surfaces
+  processed_at: '2026-07-12'

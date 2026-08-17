@@ -1,0 +1,7 @@
+The core construction is a progressively narrower quality funnel. Broad multilingual pretraining supplies language coverage. MT continued pretraining uses language ID, deduplication, perplexity, QE, RegMix-style mixture search, and original-data replay. Roughly 3M stage-one pairs are judge-filtered, then about 268K higher-fidelity pairs receive many-shot vetting and human review of inconsistent repeated scores.
+
+Translation GRPO replaces a deterministic correctness check with a composite learned reward: XCOMET-XXL, DeepSeek-V3-0324 under a GEMBA-adapted rubric, terminology overlap derived from word alignment, and repetition penalty. Chimera then trains a weak-to-strong fusion policy over multiple Hunyuan-MT candidates using XCOMET, DeepSeek scoring, and repetition feedback.
+
+The documented test-time interface contains exactly six numbered candidate translations and asks for one refined answer. This is a concrete slow-thinking data object, but the six generation settings, candidate-selection policy, rollout volume, GRPO budget, and end-to-end inference cost are undisclosed.
+
+A separate CoT study reports that final-answer-only reward yields boilerplate reasoning, while rewarding both reasoning and translation improves the trace and output. Because no numerical table, reward definition, training set, or released-checkpoint linkage is provided, this supports only a qualitative process-supervision claim.

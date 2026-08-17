@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "每个 GRPO 训练步后，用规则接受的当前策略正例和助手生成的规则拒绝负例更新参考答案条件奖励模型；初始 65K 三元组经双重一致过滤为 58.7K。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "在线奖励模型刷新与策略—验证器协同优化配方",
+  "best_for_ch": "关注RLVR、奖励模型漂移、动态偏好对和reward hacking的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Haitao Hong、Yuchen Yan、Xingyu Wu、Guiyang Hou、Wenqi Zhang、Weiming Lu、Yongliang Shen、Jun Xiao",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-15T04:23:54Z"
+}

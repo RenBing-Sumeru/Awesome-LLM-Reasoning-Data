@@ -1,0 +1,194 @@
+id: policy-guided-tree-search-2025
+title: Policy Guided Tree Search for Enhanced LLM Reasoning
+year: 2025
+venue: ICML 2025
+authors:
+- Yang Li
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- scalar_reward
+- trajectory_value
+domains:
+- mathematics
+- commonsense_reasoning
+- logical_reasoning
+- planning
+training_use:
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://proceedings.mlr.press/v267/li25bv.html
+  arxiv: https://arxiv.org/abs/2502.06813
+  code: https://github.com/leao1995/llm_reasoning
+  data: https://github.com/leao1995/llm_reasoning/tree/master/data
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.06813
+  venue: https://proceedings.mlr.press/v267/li25bv.html
+  openreview: https://openreview.net/forum?id=NNWSNy4YB4
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/li25bv.html
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2502.06813
+data_object:
+  prompt_source: Policy training uses up to 1,000 examples from each benchmark's training partition. Evaluation covers GSM8K,
+    MATH500, AQUA, StrategyQA, PrOntoQA, GPQA, and Blocksworld. The paper reports original or benchmark-specific splits, but
+    does not release the exact sampled training IDs or a unified prompt manifest.
+  trace_author: LLaMA 3.1 8B or 70B generates sentence- or line-level reasoning steps. A separately learned GPS graph policy
+    chooses tree-navigation actions over the evolving tree; it does not generate the reasoning text itself.
+  answer_format: A problem is associated with a dynamically revealed tree of partial textual reasoning paths and a selected
+    terminal answer or plan. The audited runtime can retain the root tree and a policy trajectory, but the official release
+    does not include paper-result tree files.
+  process_fields:
+  - problem_and_reference_answer
+  - partial_reasoning_text
+  - parent_child_tree_topology
+  - current_node
+  - node_hidden_state_embedding
+  - edge_immediate_reward
+  - navigation_action
+  - action_cost
+  - selected_action_log_probability
+  - policy_value_prediction
+  - node_visit_count
+  - total_trajectory_reward
+  - terminal_or_budget_stop
+  environment_or_substrate: A Tree Search MDP treats the target LLM and its latent complete reasoning tree as the environment.
+    The policy observes the revealed tree, chooses expand, branch, backtrack, or, in the paper formulation, terminate, and
+    is constrained by per-task breadth, depth, and maximum-search-step limits.
+  verifier_or_reward: Experiments use target-model likelihood as intermediate step reward, action-specific search costs, and
+    task-specific terminal correctness during policy training/evaluation. The paper permits an outcome reward model or comparison
+    with ground truth at termination. These signals are mixed and do not independently certify every intermediate step.
+  terminal_predicate: The paper stops when the policy selects terminate or the maximum number of tree-search steps is exhausted.
+    At audited repository revision 32ce4537e904c34678cc993b6c5ad0d50c3484a4, PGTS instead stops when the generated task state
+    is terminal or max_search_steps is reached; the public action implementation has no explicit terminate action.
+recipe_metadata:
+  base_model: LLaMA 3.1 8B and LLaMA 3.1 70B
+  teacher: unknown
+  generator: The target LLM proposes up to the breadth limit of next reasoning steps. The audited implementation sorts newly
+    generated siblings by step log probability, while the learned GPS policy controls whether to continue, move to a sibling,
+    or backtrack within the revealed tree.
+  filtering_rule: Invalid navigation actions are masked by tree depth and sibling availability. Search follows one policy-selected
+    traversal and may aggregate four or eight complete chains by reward-weighted self-consistency. No public item-level manifest
+    labels generated siblings as accepted, rejected, or pruned.
+  sampling_protocol: Main experiments generate with temperature 0.6 and top-p 0.9, use breadth four, and define a reasoning
+    step as one sentence for most tasks. Policy actions are sampled categorically during PPO training. Random seeds, retry
+    behavior, and complete paper-exact task configurations are unknown.
+  rollout_count: Policy-training rollout count per update is unknown. Evaluation reports single PGTS traversals and self-consistency
+    variants over four or eight independently generated chains.
+  temperature: '0.6'
+  inference_budget: GSM8K, AQUA, StrategyQA, and PrOntoQA use breadth 4, depth 16, and at most 64 search steps; MATH500 uses
+    breadth 4, depth 64, and at most 256; the 4- and 8-step Blocksworld tasks use matching depths and at most 32. The GPQA
+    depth/step cap and per-example token, latency, and cost logs are unknown.
+  optimizer_or_scaffold: A two-layer GPS graph policy/value network is trained from random initialization with PPO. Reported
+    settings are clip range 0.2, discount 0.99, GAE lambda 0.95, and action costs 0.1/0.2/0.5/0.0 for expand/branch/backtrack/terminate.
+    Learning rate, batch size, update count, and paper-exact configuration files are unknown.
+audit:
+  source_mixture: Training/evaluation draws from GSM8K, MATH/MATH500, AQUA, StrategyQA, PrOntoQA, GPQA, and Blocksworld. The
+    repository bundles selected Blocksworld, MATH, and PrOntoQA task material and loads other datasets from upstream sources,
+    but provides no record-level source or policy-training sample manifest.
+  split: GSM8K and AQUA use their original splits; MATH's training split trains the policy and MATH500 is evaluated; StrategyQA
+    randomly reserves 1,000 examples for test and uses the remainder for policy training; PrOntoQA follows RAP splits; Blocksworld
+    uses split-v1 for training and split-v2 for testing. Exact IDs, StrategyQA sampling seed, GPQA policy-training details,
+    and question-level released split manifests are unknown.
+  decontamination: unknown
+  license: unknown. No root LICENSE or project-license declaration was found at repository revision 32ce4537e904c34678cc993b6c5ad0d50c3484a4,
+    and the repository does not provide a dataset card or upstream rights manifest.
+  lineage: Benchmark problem and reference answer -> target LLM samples candidate sentence-level steps -> likelihood/task
+    reward and action cost annotate edges -> GPS policy observes the revealed tree and chooses navigation actions -> PPO trains
+    policy/value heads from state-action-reward trajectories -> learned controller allocates test-time search -> selected
+    terminal chain or reward-weighted self-consistency answer. The public release preserves code and some task inputs, not
+    the generated lineage records.
+  known_failure_modes:
+  - Target-model likelihood is a fluency/probability signal, not a proof of step correctness, and can guide search toward
+    confident but invalid reasoning.
+  - Node embeddings and intermediate rewards come from the same target model, so controller features and reward errors can
+    be correlated.
+  - Action costs, depth, breadth, and maximum search steps jointly determine both accuracy and compute; aggregate token ratios
+    do not expose per-example budget attribution.
+  - The paper defines an explicit terminate action, but audited `pgts.py` implements only continue, branch, and depth-indexed
+    backtrack actions and terminates on task state or budget.
+  - Expansion generates and likelihood-sorts a full sibling set before the policy traverses it, so candidate generation/order
+    remains a hidden influence distinct from learned tree-navigation quality.
+  - The runtime root can retain generated-but-unvisited children and abandoned visited paths, but no raw paper-result trees,
+    replay buffers, or accepted/rejected/pruned branch manifests are released.
+  - Runtime trajectories retain only the selected navigation action's log probability and value prediction, not the full policy
+    distribution over selected and unselected actions.
+  - No trained PGTS checkpoint, paper-exact configuration set, raw output `.pth` files, or versioned release is available,
+    preventing an item-level audit of the reported policy and trees.
+  - Exact sampled training IDs, random seeds, decontamination, semantic duplication controls, code/data licensing, and upstream
+    reuse rights are undisclosed.
+  citation_status: verified
+  confidence: high
+  notes: The official PMLR record/PDF and appendices, arXiv/OpenReview identities, PMLR-linked repository, repository data
+    tree, and revision 32ce4537e904c34678cc993b6c5ad0d50c3484a4 implementation were checked on 2026-07-25. Citation and code
+    attribution are verified; trace/checkpoint/ config release completeness and paper-code alignment are partial.
+inclusion_reason: PGTS makes a learned search policy, revealed-tree state, navigation action, scalar reward/value signal,
+  and explicit inference budget first-class objects for LLM reasoning. Its runtime serialization path also makes the missing
+  public tree, rejected-branch, and policy-log release boundary directly auditable for this track.
+related:
+- llm-first-search-2025
+- rest-mcts-2024
+tags:
+- policy-guided-tree-search
+- learned-search-policy
+- tree-search
+- backtracking
+- ppo
+- graph-transformer
+- state-action-traces
+- scalar-reward
+- test-time-compute
+- raw-trees-not-released
+- paper-code-drift
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: PGTS trains a GPS graph policy with PPO to navigate LLaMA 3.1 reasoning trees through expand, branch, backtrack,
+  and paper-defined terminate decisions under explicit depth, breadth, and search-step budgets.
+why_it_matters: It exposes the learned controller's state-action-reward contract and the compute tradeoff behind test-time
+  tree search, while the absent raw trees, unchosen-action scores, checkpoints, and explicit code-level terminate action identify
+  the exact evidence still needed for reuse and audit.
+card: null
+needs:
+- 'needs_trace_release: publish versioned raw roots/trees, visited and generated-but-unvisited nodes, parent-child topology,
+  selected/backtracked paths, and terminal/stop reasons'
+- 'needs_policy_logs: publish full action logits/probabilities, selected actions, value predictions, scalar reward components,
+  and action costs per search step'
+- 'needs_branch_manifest: distinguish selected, rejected, abandoned, unvisited, and visualization-pruned branches with stable
+  node and record IDs'
+- 'needs_budget_logs: publish per-example breadth/depth/step caps, generated tokens, calls, latency, cost, retries, and self-consistency
+  aggregation budget'
+- 'needs_checkpoint_and_configs: release trained policy checkpoints and paper-exact model/task/PPO configuration files with
+  seeds'
+- 'needs_code_alignment: reconcile the paper''s D+2 action space and explicit terminate action with the public depth_limit+1
+  implementation'
+- 'needs_split_manifest: publish exact policy-training/evaluation item IDs, StrategyQA sampling seed, GPQA setup, and source
+  lineage'
+- 'needs_license: declare code/data licenses and document upstream benchmark and generated-output reuse rights'
+- 'needs_decontamination: document exact/semantic deduplication and benchmark-overlap checks'
+card_recommendation: 'High-priority core-only bilingual Card: center the TS-MDP state/action/reward schema, learned-policy
+  versus likelihood-ordering boundary, explicit search budgets, runtime tree persistence, missing released traces/checkpoints,
+  and the paper-code terminate-action mismatch.'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official citation records, full proceedings paper/appendices, official repository/data links, audited repository
+    revision, runtime node/trajectory fields, result serialization, split/budget disclosures, release absence, licensing metadata,
+    and target duplicate keys were checked. Status remains partial because raw trees, full policy scores, checkpoints, paper-exact
+    configs, branch manifests, license, and decontamination are unresolved.

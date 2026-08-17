@@ -1,0 +1,1 @@
+Planning domains have formal transition rules, but PRMs lack training data that expose whether each proposed action remains feasible. PDDL2PRM asks how to derive process-reward supervision from planning specifications for reasoning about multi-step plans.

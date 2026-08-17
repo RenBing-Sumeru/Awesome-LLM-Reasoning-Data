@@ -1,0 +1,3 @@
+Correctness is only correctness relative to official harness scoring; exact per-task mix of deterministic checks, execution checks, and judge logic should be pinned from the repository revision. A passing score does not automatically prove robust reasoning, safe behavior, faithful explanations, or transfer outside the benchmark's task distribution.
+
+Hidden assumptions include public split and any hidden/private split are needs_audit; needs_audit; dependency/runtime drift; judge or evaluator version drift; and contamination risk: public MCP task definitions and tool schemas can become training data after release. The card should not be read as evidence of a training recipe unless released artifacts expose training inputs, filtering rules, and optimization use.

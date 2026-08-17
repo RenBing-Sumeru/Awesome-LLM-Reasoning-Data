@@ -1,0 +1,4 @@
+Within the Frontier Reports and Data Disclosure Ledger, this card is useful for separating three layers that are often conflated: runnable model artifacts, a generic RL algorithm description, and the unreleased model-specific training ledger. It supports comparisons with other frontier reports by recording exactly which data, feedback, construction, and audit fields are disclosed or unknown.
+
+For post-training research, the release can motivate an audit schema but cannot populate a reusable dataset. A sufficient future record would preserve prompt sources, candidate responses and thinking traces, reward or verifier outputs, group identifiers, filtering and rejection reasons, GSPO settings, rollout logs, checkpoints, source rights, splits, decontamination results, and benchmark-overlap evidence. Deployment output limits should remain separate from training rollout budgets.
+

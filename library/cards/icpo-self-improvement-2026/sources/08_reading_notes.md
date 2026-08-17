@@ -1,0 +1,1 @@
+Trace every added computation unit to the decision it changes. Separate longer generation from selection, calibration, verification, and acceleration effects, then check that the comparison counts all of them; one isolated accuracy point is weaker evidence than a complete quality–cost curve.

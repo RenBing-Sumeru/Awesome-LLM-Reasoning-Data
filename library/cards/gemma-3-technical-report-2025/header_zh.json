@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Gemma 3 披露 1B/4B/12B/27B 的 2T–14T token 预训练、每 token 256 个 teacher logits、large-IT-teacher 蒸馏、human/code/math 混合 reward、QAT 与开放权重，但未公开 corpus、preference、RM、teacher、rollout 或 verifier。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放权重前沿模型技术报告与数据反馈台账",
+  "best_for_ch": "研究知识蒸馏、human-feedback RM、程序化奖励、QAT、记忆审计与开放权重许可边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Gemma Team（Google DeepMind）",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

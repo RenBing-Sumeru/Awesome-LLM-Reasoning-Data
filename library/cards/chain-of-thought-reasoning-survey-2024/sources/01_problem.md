@@ -1,0 +1,3 @@
+Chain-of-thought prompting has attracted attention because it can improve language-model performance on reasoning tasks, but the associated literature spans many methods and questions. This ACL 2024 paper systematically investigates that literature and organizes it for readers. It is a survey rather than a release of a new model or training set.
+
+The decision boundary is important: this paper helps a reader understand how prior work describes reasoning chains, but it does not establish that a visible chain is correct, faithful, or needed for every task. Read it when choosing among reported approaches or interpreting a claim about chain-of-thought, not when you need a ready-made training recipe or a common benchmark result.

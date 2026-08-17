@@ -1,0 +1,376 @@
+id: paperbench-2025
+title: 'PaperBench: Evaluating AI''s Ability to Replicate AI Research'
+year: 2025
+venue: ICML 2025 (PMLR 267)
+authors:
+- Giulio Starace
+- Oliver Jaffe
+- Dane Sherburn
+- James Aung
+- Jun Shern Chan
+- Leon Maksin
+- Rachel Dias
+- Evan Mays
+- Benjamin Kinsella
+- Wyatt Thompson
+- Johannes Heidecke
+- Amelia Glaese
+- Tejal Patwardhan
+source_role:
+- benchmark
+- agent_environment
+- verifier_reward
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- step_level
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- machine_learning_research
+- scientific_agents
+- code_agents
+- long_horizon_tasks
+- benchmark_evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/starace25a.html
+  paper_pdf: https://raw.githubusercontent.com/mlresearch/v267/main/assets/starace25a/starace25a.pdf
+  arxiv: https://arxiv.org/abs/2504.01848
+  code: https://github.com/openai/frontier-evals
+  data: https://github.com/openai/frontier-evals/tree/main/project/paperbench/data
+  project: https://openai.com/index/paperbench/
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.48550/arXiv.2504.01848
+  venue: https://proceedings.mlr.press/v267/starace25a.html
+  openreview: https://openreview.net/forum?id=xF5PuTLPbn
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/starace25a.html
+  cvf: null
+  bibtex: https://proceedings.mlr.press/v267/starace25a.html
+  paper_revision: https://proceedings.mlr.press/v267/starace25a.html
+  arxiv_revision: https://arxiv.org/abs/2504.01848v3
+  code_revision: https://github.com/openai/frontier-evals/tree/8ea5c659b5232d3c520c5ca2a018fe65dc5e1988/project/paperbench
+  task_data_revision: https://github.com/openai/frontier-evals/tree/8ea5c659b5232d3c520c5ca2a018fe65dc5e1988/project/paperbench/data
+  trajectories: null
+  model_results: null
+data_object:
+  unit_of_record: One benchmark instance is one selected ML paper paired with its PDF and Markdown, author clarification addendum,
+    optional judge-only addendum, replication assets, per-paper URL blacklist, config, and a weighted hierarchical rubric.
+    One evaluation run adds an agent interaction log, timestamped code-repository snapshots, a selected submission archive,
+    clean-container reproduction metadata and outputs, monitor result, and a leaf-by-leaf graded rubric. The 8,316 count is
+    the number of rubric leaves across 20 evaluation papers, not the number of agent trajectories.
+  prompt_source: Twenty ICML 2024 Spotlight and Oral papers were filtered for substantial empirical content, single-machine
+    feasibility, accessible dependencies, no closed-model dependency or new human-data collection, and from-scratch reproducibility.
+    The remaining pool was randomly sampled, then authors were contacted until 20 agreed to co-develop rubrics and addenda.
+  trace_author: The evaluated model plus scaffold produces its own long-horizon tool-use episode. Paper baselines use BasicAgent
+    or IterativeAgent with GPT-4o, o1, o3-mini, DeepSeek-R1, Claude 3.5 Sonnet, or Gemini 2.0 Flash. Complete paper-run episodes
+    and submissions are not released in the official repo.
+  task_record:
+  - paper_id_and_title
+  - paper_pdf_and_markdown
+  - author_addendum
+  - optional_judge_addendum
+  - replication_assets
+  - blacklist_urls
+  - hierarchical_weighted_rubric
+  - split_membership
+  rubric_record:
+  - node_id
+  - requirement
+  - sibling_relative_weight
+  - child_nodes
+  - leaf_requirement_type
+  - finegrained_task_category
+  context_or_state: An Ubuntu 24.04 agent container with one A10 GPU in the reported experiments, the paper and addendum,
+    a writable Git submission repository, shell/Python/ browser/file-reader tools, Internet access, and optional OpenAI/Hugging
+    Face credentials. The hidden rubric is not shown to the candidate.
+  trace_or_actions: A ReAct-style sequence of model messages and shell, Python, web-browser, and paginated-file-reader actions
+    that reads the paper, writes code, installs dependencies, runs experiments, troubleshoots, and produces snapshots. IterativeAgent
+    removes voluntary termination and repeatedly asks for the next step; BasicAgent may terminate early.
+  observation: Tool outputs, file contents, browser results, command results, model/API errors, and elapsed-time state available
+    to the agent; post-rollout records additionally include logs, monitor matches, reproduction logs, file listings, Git history/status,
+    timeout state, and judge explanations.
+  answer_format: A self-contained code repository rooted at `submission/` with a required `reproduce.sh`. Executing that script
+    should regenerate the paper's empirical evidence and leave results, plots, tables, and `reproduce.log` for grading.
+  answer_or_artifact: The latest or time-targeted submission snapshot and, after execution in a fresh reproduction container,
+    an archived executed submission containing source, script, log, and generated evidence.
+  process_labels:
+  - blacklist_monitor_violation
+  - reproduction_script_exists
+  - reproduction_timeout
+  - reproduction_metadata
+  - binary_leaf_score
+  - leaf_judge_explanation
+  - valid_score_flag
+  - weighted_parent_scores
+  - final_replication_score
+  verifier_output: SimpleJudge returns a binary score, explanation, and valid-score flag for every leaf; the release serializes
+    the graded task tree, scalar score, invalid leaf count, model configuration, timestamp, and token usage. A post-hoc URL
+    monitor can instead disqualify a run to zero before reproduction and judging.
+  reward: Post-hoc evaluation reward only. Each leaf is 0/1, parent scores are weighted averages of their children, the root
+    is the submission Replication Score, and the headline metric is the mean root score over 20 papers. The agent does not
+    receive rubric rewards during its rollout.
+  terminal_predicate: The scaffold terminates voluntarily or reaches its time/step limit; the latest snapshot is selected.
+    Missing snapshots or blacklist violations yield zero. A missing `reproduce.sh` forces Execution and Result Match leaves
+    to zero but can still leave Code Development credit; reproduction timeouts preserve and grade partial executed state when
+    available. Full replication means every weighted leaf requirement is satisfied.
+  provenance: ICML paper pool -> automated and manual suitability filtering -> random selection plus author participation
+    -> engineer-drafted, internally reviewed, author-approved rubric/addendum -> hidden-rubric agent rollout -> snapshot ->
+    blacklist-log monitor -> fresh-container reproduction -> per-leaf LLM judgment -> weighted score and run aggregation.
+  environment_or_substrate: 'Three isolated stages: agent rollout container, fresh reproduction container, and judge execution
+    context. The reported paper uses Ubuntu 24.04 and A10 GPUs for rollout/reproduction, permits Internet access, caps agent
+    work at 12 hours for main experiments and `reproduce.sh` at 12 hours, and grades reproduced artifacts with o3-mini-2025-01-31
+    at high reasoning effort.'
+  release_boundary: The repository releases the 20 evaluation task packages, three current dev paper packages, rubrics, addenda,
+    assets, blacklists, split files, Dockerfiles, orchestration/reproduction/judge/monitor code, and a five-example JudgeEval
+    with manual leaf labels. It does not release the 646 paper-result runs as a complete corpus of agent logs, snapshots,
+    submissions, executed artifacts, reproduction records, or per-leaf judge outputs.
+recipe_metadata:
+  base_model: Main BasicAgent baselines use gpt-4o-2024-08-06, o1-2024-12-17 (high), o3-mini-2025-01-31 (high), DeepSeek-R1
+    via OpenRouter, claude-3-5-sonnet- 20241022, and gemini-2.0-flash. IterativeAgent evaluates o1, o3-mini, and Claude 3.5
+    Sonnet; no trained PaperBench checkpoint is produced.
+  teacher: null
+  generator: Two research engineers draft each rubric; internal reviewers and one or more original paper authors iteratively
+    verify it and supply clarifications. The evaluated base model then generates the rollout and repository. SimpleJudge supplies
+    post-hoc grades, not trajectory demonstrations.
+  prompt_or_task_source: Selected ICML 2024 Spotlight/Oral papers, paper Markdown/PDF, original-author addenda, replication
+    assets, and benchmark instructions. The rubric and judge-only addendum are hidden from the candidate.
+  filtering_rule: Exclude papers with insufficient empirical engineering, multi-node compute, closed-source model dependencies,
+    new human-data requirements, primary focus on frameworks/tools, inadequate reproducibility detail, or inaccessible/ fast-changing
+    indispensable dependencies. A commercial/geographic affiliation filter is also applied before manual review.
+  selection_threshold:
+    benchmark_papers: 20
+    contacted_author_groups: 42
+    author_groups_agreeing: 20
+    evaluation_rubric_leaf_nodes: 8316
+    code_development_leaves: 3674
+    execution_leaves: 4076
+    result_match_leaves: 566
+  sampling_protocol: Authors report random selection from the filtered candidate pool, followed by manual paper review and
+    author recruitment. Main agent comparisons use three runs per model-paper pair where completed; exact random seed policy
+    and the full candidate/rejection manifest are not released.
+  rollout_count: The paper reports 646 runs across its results. Main BasicAgent aims at six models x 20 papers x three runs;
+    IterativeAgent evaluates three model/scaffold configurations, with extended runs and human baselines analyzed separately.
+    The run-level corpus is not public.
+  temperature: unknown
+  inference_budget: Main agent attempts are capped at 12 hours on one A10 GPU; an o1 IterativeAgent experiment extends to
+    36 hours. Main-paper reproduction is capped at 12 hours. The agent receives Internet access and, where needed, Hugging
+    Face and up to $1,000 in OpenAI API credit. Model token budgets and seeds are not fully stated.
+  search_or_scaffold: Inspect-AI-derived BasicAgent ReAct loop with bash, Python, browser, and file reader, orchestrated with
+    nanoeval; IterativeAgent removes early submission and enforces piecemeal progress. Current repository uses Alcatraz computer
+    runtimes and defaults to unproxied network access.
+  optimizer_or_training_scaffold: No optimizer or policy-training stage is demonstrated. PaperBench is a capability evaluation
+    and audit surface; using its hidden rubrics or judge scores for SFT/RL would be a new, unsupported protocol and would
+    contaminate the public benchmark.
+audit:
+  source_mixture: Twenty heterogeneous ICML 2024 papers across 12 topic areas, their full text, author clarifications, task-specific
+    assets and dependencies, engineer/author rubrics, agent-generated repositories, clean-container execution evidence, and
+    model-judge labels. Upstream datasets, pretrained models, APIs, and code rights vary by task and are not reconciled in
+    one manifest.
+  split: The released `all.txt` contains the 20 public evaluation papers. Current `dev.txt` contains semantic-self-consistency,
+    self-expansion, and self- composing-policies, whereas the ICML paper says two NeurIPS 2024 Workshop papers were released
+    as development data. `debug` and `testing` are subsets of the public evaluation set, and a separate internal held-out
+    set is mentioned but not described or released.
+  decontamination: Candidates cannot access listed author repositories or known online replications during a run, and agent
+    logs are searched post hoc for blacklist URLs. The authors explicitly acknowledge that model pretraining may contain original
+    paper/code information; no pretraining-contamination measurement, memorization probe, semantic overlap audit, or post-release
+    exposure policy is reported.
+  benchmark_overlap: PaperBench selects contemporary papers rather than importing CORE-Bench, MLE-bench, MLAgentBench, or
+    RE-Bench tasks, but no instance-, dependency-, or source-code-overlap audit is released. Public papers, rubrics, judge
+    code, and benchmark assets create direct future evaluation-contamination risk.
+  lineage: Public task folders and split files expose final paper IDs, source documents, addenda, rubrics, and blacklists.
+    Missing are the full filtered ICML candidate pool, model-filter prompts/outputs, exclusion decisions, random-selection
+    seed, author-contact/recruitment mapping, rubric revision/adjudication history, and immutable mapping from the 646 experiment
+    runs to artifacts.
+  license: '`frontier-evals` is MIT licensed, but that notice does not by itself establish uniform rights for bundled paper
+    PDFs/Markdown, author addenda, figures/assets, upstream datasets/models, agent outputs, or third-party repositories. The
+    JudgeEval README gives specific attribution/permission notes and says some submission tarballs cannot be redistributed
+    automatically, confirming that artifact rights require item-level review.'
+  release_version:
+    paper: ICML 2025 final, PMLR 267:56843-56873
+    arxiv: 2504.01848v3
+    repository_commit: 8ea5c659b5232d3c520c5ca2a018fe65dc5e1988
+    repository_commit_date: '2026-04-08'
+    paperbench_last_path_commit: e8aa3d9
+    github_release_tag: null
+  artifact_release_state: Task packages, current splits, evaluation code, container recipes, MIT license, and JudgeEval labels/examples
+    are public through Git/LFS. Full baseline/human run logs, snapshots, successful and failed submissions, executed artifacts,
+    grades, judge responses, disqualification records, and frozen container/model manifests are not published as a paper-bound
+    release.
+  released_objects:
+    evaluation_paper_packages: 20
+    current_dev_paper_packages: 3
+    evaluation_rubric_leaf_nodes: 8316
+    judge_eval_examples: 5
+    paper_experiment_runs_reported: 646
+    complete_paper_run_trajectories_released: false
+    complete_success_and_failure_submissions_released: false
+    paper_run_judge_outputs_released: false
+  environment_versioning:
+    agent_os: Ubuntu 24.04 container
+    reproduction_os: Ubuntu 24.04 fresh container
+    paper_gpu: single NVIDIA A10
+    base_image_digest: unknown
+    reproduction_image_digest: unknown
+    docker_tag: ubuntu:24.04, not digest-pinned
+    dependency_lock: uv.lock exists for harness; task-generated dependencies vary
+    reset_semantics: fresh reproduction container; rollout reset details are framework-dependent
+    judge_model: o3-mini-2025-01-31, reasoning effort high
+  successful_and_failed_sample_retention: The runtime is designed to store agent logs, status, metadata, timestamped submissions,
+    initial/final/intermediate snapshots, reproduction outputs, and grades. Missing submissions and monitor violations score
+    zero; reproduction or judge failures are counted in run-health fields. However `runs/` is ignored and the official repository
+    does not preserve the paper's complete successful, failed, timed-out, disqualified, and crashed run corpus for independent
+    audit.
+  replayability: Partial at best. A pinned code commit and `uv.lock` help reconstruct the harness, and reproduction starts
+    in a fresh container. Docker bases are tag- rather than digest-pinned; apt, `get.docker.com`, external datasets/APIs,
+    credentials, agent-installed packages, hardware, seeds, and nondeterministic judge calls can drift. The original snapshots/submissions/judge
+    outputs needed for record-and-replay are absent.
+  verifier_or_judge_failure_modes:
+  - SimpleJudge obtains only the top ten files after model-based relevance ranking when a submission exceeds context, so relevant
+    code or evidence can be omitted and create false negatives; file ranking is itself stochastic.
+  - Result Match judging relies on newly modified whitelisted plaintext outputs and timestamps, which can miss binary checkpoints/images
+    or reward crafted logs/tables that look plausible without scientifically valid replication.
+  - JudgeEval contains only five submissions and reports o3-mini F1 0.83; it does not rule out paper-specific error, adversarial
+    submissions, rubric loopholes, correlated leaf errors, or score drift under later judge models.
+  - The blacklist monitor only flags normalized URLs near `git clone`, `curl`, or `wget` strings in recorded logs, so browser
+    visits, Python HTTP clients, renamed mirrors, indirect package retrieval, omitted logs, and memorized code can evade the
+    control.
+  - Current reproduction salvaging may retry short runs under Python 3.11 and/or a new virtualenv; score comparability depends
+    on recording which retry won, and this current default is not the same as the paper's single documented fresh-container
+    protocol.
+  - Large result archives can be truncated by current upload limits, model/API nondeterminism changes leaf grades, and a weighted
+    average can award broad partial credit without successful end-to-end result reproduction.
+  - Public rubrics, addenda, and judge implementation allow later agents to tune directly to the evaluation contract even
+    though the runtime hides the rubric.
+  privacy_or_consent: Benchmark tasks are based on public research artifacts rather than a disclosed collection of personal
+    user data. Eight ML PhD participants provide the human baseline, but consent, compensation, IRB status, log retention,
+    and withdrawal procedures are not reported. Human or agent run logs are not released, and no corpus-level privacy/redaction/takedown
+    policy is published.
+  security: Reported agents receive unproxied Internet access, arbitrary shell/Python execution, package installation, an
+    A10 GPU, Hugging Face credentials, and up to $1,000 in OpenAI API credit. Current setup uploads an `agent.env` file into
+    the workspace and passes agent resource variables into reproduction. Secret isolation/redaction, network allowlists, egress
+    monitoring, malicious package/ asset controls, Docker privilege boundaries, and incident handling are not documented as
+    a benchmark-wide security policy.
+  experimental_evidence:
+    main_basicagent_best: Claude 3.5 Sonnet, 21.0% +/- 0.8 over the 20-paper benchmark.
+    iterativeagent_best_12h: o1-high, 24.4% +/- 0.7.
+    iterativeagent_o1_36h: 26.0% +/- 0.3.
+    code_dev_o1: 43.4% +/- 0.8.
+    human_subset: Best-of-three humans reach 41.4% on a three-paper subset after 48 hours versus o1 at 26.6%.
+    result_match_limit: Even the reported agent configurations score approximately 0-1.4% on Result Analysis leaves.
+    judge_eval: Five manually graded submissions; o3-mini-high SimpleJudge F1 0.83 at estimated $66 per paper.
+  known_failure_modes:
+  - BasicAgent models frequently terminate early while claiming completion or an unsolved blocker.
+  - Models can write multi-step plans without taking the tool actions needed to implement them.
+  - o3-mini frequently struggles with tool use in the reported experiments.
+  - Agent scores are much higher on Code Development than Execution or Result Match, so code volume does not imply reproduced
+    findings.
+  - Ten of 646 reported runs accessed blacklisted resources and were disqualified to zero.
+  - Pretraining contamination from public papers and original repositories can inflate future scores.
+  - The LLM judge is nondeterministic and not as accurate as expert human grading.
+  - The current public dev split has three papers although the ICML paper describes two released development papers.
+  - No complete paper-run trajectory/submission corpus supports training reuse or independent failure replay.
+  citation_status: verified
+  confidence: high
+  notes: Audited the ICML 2025/PMLR record, arXiv v3 full text and appendices, official OpenAI release page, repository at
+    `8ea5c659...`, PaperBench README, current task/dev split files, representative config/rubric/blacklist, JudgeEval README,
+    orchestration/reproduction/grading/monitor code, Dockerfiles, lock metadata, ignore rules, and MIT license on 2026-07-20.
+    Artifact verification establishes that tasks and evaluation code exist, not that paper-run trajectories, uniform rights,
+    or deterministic replay are available.
+  remaining_unknowns:
+  - Full ICML candidate pool, filter prompts/outputs, exclusion decisions, random seed, and author recruitment mapping.
+  - Rubric revision history, author sign-off records, inter-reviewer agreement, and node-level ambiguity/adjudication logs.
+  - Immutable mapping of all 646 paper runs to model/scaffold/seed, logs, snapshots, submissions, disqualifications, grades,
+    and judge outputs.
+  - Exact cause and change ledger for the paper's two-dev-paper claim versus the current three-item dev split.
+  - Base/reproduction OCI digests, apt/package snapshots, GPU/driver versions, per-task dependencies/data checksums, seeds,
+    and model API snapshots.
+  - Uniform license/provenance for bundled papers, Markdown, addenda, assets, third-party data/models, JudgeEval submissions,
+    and generated outputs.
+  - Model-pretraining contamination, benchmark overlap, public-exposure policy, and a hidden refresh/holdout protocol.
+  - Human-baseline consent/compensation/IRB/retention details and benchmark-wide privacy, secret, network, dependency, and
+    incident controls.
+inclusion_reason: PaperBench defines a high-value long-horizon research-agent episode around a hidden paper-replication task,
+  code repository, fresh-container execution, and 8,316 author-approved leaf criteria. Its three-stage feedback contract is
+  unusually granular, while absent trajectories, weak Result Match performance, judge/file-selection dependence, contamination,
+  rights, secret exposure, and replay gaps are central reuse boundaries for the Atlas.
+related:
+- mlgym-2025
+- hal-2025
+tags:
+- environment-agent-trajectory-data
+- ai-research-agents
+- paper-replication
+- code-agents
+- long-horizon-tasks
+- hierarchical-rubric
+- llm-as-judge
+- clean-container-reproduction
+- blacklist-monitor
+- partial-credit
+- contamination
+- trajectory-release-gap
+- replay-risk
+- security
+category_ids:
+- environment_agent_trajectory_data
+- judgment_rubric_domain_expert_data
+one_line_summary: PaperBench evaluates 20 from-scratch ML-paper replications with 8,316 weighted rubric leaves, fresh-container
+  execution, and an o3-mini judge, but releases no complete 646-run trajectory/submission corpus and remains exposed to judge,
+  contamination, rights, replay, and secret-handling risks.
+why_it_matters: 'It turns an open-ended research-replication episode into auditable Code Development, Execution, and Result
+  Match checkpoints and separates agent work from clean reproduction. That same design shows why public task/rubric packages
+  are evaluation assets, not automatically trajectory-training data: the actual rollouts are absent, result reproduction remains
+  near zero, and judge/replay/ contamination/security boundaries materially affect any claimed capability.'
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  code_verified: true
+  task_data_verified: true
+  evaluation_code_verified: true
+  artifact_verified: true
+  license_verified: true
+  trajectory_release_verified: false
+  paper_run_results_release_verified: false
+  replay_verified: false
+  complete_rights_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: The ICML/PMLR identity, full paper/appendix, task packages, splits, rubric schema, JudgeEval, pipeline code, Docker
+    recipes, and repository license were verified. This does not imply publication of paper-run trajectories/results, uniform
+    rights, contamination control, secret-safe execution, or deterministic end-to-end replay.
+curation_level: L3_summary_ready
+needs:
+- 'needs_trajectory_release: publish all successful, failed, timed-out, disqualified, and crashed runs with logs, snapshots,
+  submissions, executed artifacts, reproduction metadata, grades, and exclusions'
+- 'needs_release_manifest: bind the ICML paper to immutable task/rubric/split/JudgeEval files, checksums, repository tag,
+  and explain the two-versus-three dev split drift'
+- 'needs_replay: pin OCI digests, apt/dependency/data/GPU/driver/model/API versions, seeds, retry policy, credentials assumptions,
+  and record/replay tests'
+- 'needs_judge_audit: release all judge outputs, file rankings, invalid-score retries, calibration labels, adversarial tests,
+  and per-paper error analysis'
+- 'needs_split_and_contamination: document hidden holdout policy, pretraining memorization, paper/code/dependency overlap,
+  public exposure, and refresh rules'
+- 'needs_license_audit: reconcile rights for every paper, Markdown conversion, addendum, asset, upstream dataset/model, JudgeEval
+  submission, and generated output'
+- 'needs_lineage: publish the candidate/filter/rejection/randomization/recruitment ledger and rubric revision/sign-off history'
+- 'needs_privacy_security: document human-baseline consent/retention plus secret isolation, network egress, package/assets,
+  sandbox, logging/redaction, and incident controls'
+card: null

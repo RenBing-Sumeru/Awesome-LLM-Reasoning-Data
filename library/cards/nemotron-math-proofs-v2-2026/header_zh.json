@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "NVIDIA 发布了 82,737 条由 DeepSeek-V4-Pro 生成的 AoPS 来源证明、验证与元验证轨迹，但模型书写的判断不是形式化证书，来源权利与筛选细节仍不完整。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数学证明轨迹数据集发布",
+  "best_for_ch": "适合构建证明 SFT 数据、自然语言证明批评器或审计自验证轨迹的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "NVIDIA Corporation",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-15T04:14:43Z"
+}

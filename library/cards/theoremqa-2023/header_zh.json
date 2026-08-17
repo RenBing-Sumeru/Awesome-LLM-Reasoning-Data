@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TheoremQA 用专家构造的 theorem-grounded QA 检查模型能否调用数学与科学定理解决闭式问题。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "EMNLP 2023 / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 theorem-use QA、专家构造 benchmark、答案抽取/归一化和多领域推理评测边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wenhu Chen 等（University of Waterloo、University of California, Santa Barbara、University of California, Los Angeles）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:09:48Z"
+}

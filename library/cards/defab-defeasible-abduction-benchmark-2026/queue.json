@@ -1,0 +1,19 @@
+{
+  "title": "DeFAb: A Verifiable Benchmark for Defeasible Abduction in Foundation Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.18557",
+    "data": "https://huggingface.co/datasets/PatrickAllenCooper/DeFAb",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:42:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布37万可判定溯因实例，数据量大",
+    "updated_at": "2026-07-18T07:42:11Z"
+  }
+}

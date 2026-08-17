@@ -1,0 +1,5 @@
+- Positioning: MedSSR controls question synthesis with rare-disease knowledge, lets the policy produce pseudo-labels, and combines self-supervised with human-anchored reinforcement learning.
+- Data object: medical prompt, retrieved rare-disease knowledge, model-generated reasoning, answer, and reward metadata.
+- Author and selector: the policy model generates pseudo-label reasoning instead of relying only on a proprietary teacher; selection uses medical answer rewards, pseudo-label confidence, human-annotated real data, and two-stage RL.
+- Evidence anchor: Across Qwen3-8B and Llama-3.1-8B-Instruct, the method outperforms compared approaches on ten medical benchmarks and reports up to a 5.93% gain on rare-disease tasks.
+- Reuse decision: suitable for medical reasoning SFT and semi-supervised RL; first audit pseudo-labels can reinforce the policy's own diagnostic errors, and synthetic knowledge combinations may not represent clinical prevalence.

@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "连接完整构建链，三个不等价数据对象",
+    "updated_at": "2026-07-24T10:40:05Z"
+  },
+  "updated_at": "2026-07-24T10:40:05Z",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

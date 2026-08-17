@@ -1,0 +1,102 @@
+id: deepresearch-bench-ii-expert-reports-2026
+title: 'DeepResearch Bench II: Diagnosing Deep Research Agents via Rubrics from Expert Report'
+year: 2026
+venue: arXiv
+authors:
+- Ruizhe Li
+- Mingxuan Du
+- Benfeng Xu
+- Chiwei Zhu
+- Xiaorui Wang
+- Zhendong Mao
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- deep_research
+- web
+- cross_domain
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.08536
+  arxiv: https://arxiv.org/abs/2601.08536
+  code: https://github.com/imlrz/DeepResearch-Bench-II
+  data: https://huggingface.co/datasets/muset-ai/DeepResearch-Bench-II-Dataset
+  project: https://github.com/imlrz/DeepResearch-Bench-II
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2601.08536
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Grounded tasks from expert investigative reports
+  trace_author: LLM pipeline, human annotators, and domain experts
+  answer_format: Task, source article, atomic binary rubric, evidence, dimension, report score
+  process_fields:
+  - task
+  - source
+  - rubric
+  - evidence
+  - dimension
+  - score
+  environment_or_substrate: Open-web deep research and long-form reports
+  verifier_or_reward: Gemini-2.5-Pro LLM judge with binary rubrics
+  terminal_predicate: Report satisfies the task-specific grounded rubrics
+recipe_metadata:
+  base_model: Deep-research agents and LLMs
+  teacher: Expert-written investigative reports and domain experts
+  generator: Four-stage LLM-plus-human rubric construction
+  filtering_rule: Open-access source reports and expert review
+  sampling_protocol: 132 tasks, 22 domains, and 9,430 binary rubrics
+  rollout_count: null
+  temperature: null
+  inference_budget: 50 rubrics per judge pass
+  optimizer_or_scaffold: Information-recall, analysis, and presentation rubric evaluation
+audit:
+  source_mixture: Official arXiv paper and official GitHub release
+  split: Consult release
+  decontamination: Source articles can leak through web search; a blocked list is provided
+  license: Per-task source licenses in release
+  lineage: https://github.com/imlrz/DeepResearch-Bench-II
+  known_failure_modes:
+  - Blocking source articles through prompts cannot guarantee no exposure.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and project release checked.
+inclusion_reason: Expert-report-derived rubrics diagnose retrieval, analysis, and presentation in deep-research agents.
+related: []
+tags:
+- deep_research
+- web
+- rubric
+- llm_judge
+one_line_summary: DeepResearch Bench II scores deep-research reports with 9,430 expert-grounded binary rubrics across retrieval,
+  analysis, and presentation.
+why_it_matters: It grounds long-form research evaluation in verifiable expert evidence rather than ad hoc model criteria.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and project release checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,1 @@
+Agent-as-a-Judge 将评测从一次性答案判决改为主动搜集证据、逐条 requirement 检查 workspace。其主要数据贡献 DevAI 包含55个真实 AI 开发任务、365条分层 requirements 和125项较软的 preferences，requirements 构成带依赖的 DAG。judge 定位相关文件、读取产物、可选检索轨迹证据后给出满足或不满足的结论。作者公开 DevAI 数据集和实现，官方代码仓库采用 MIT 许可。

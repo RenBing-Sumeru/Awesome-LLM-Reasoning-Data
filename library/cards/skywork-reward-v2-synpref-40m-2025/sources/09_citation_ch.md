@@ -1,0 +1,1 @@
+Chris Yuhao Liu、Liang Zeng、Yuzhen Xiao、Jujie He 等（2025），《Skywork-Reward-V2: Scaling Preference Data Curation via Human-AI Synergy》，arXiv。主论文：https://arxiv.org/abs/2507.01352。数据或代码工件：本卡未把它声明为已核验的公开工件。本 L4 卡记录了复用前必须检查的论文特定反馈对象、构建逻辑、证据边界与审计项。

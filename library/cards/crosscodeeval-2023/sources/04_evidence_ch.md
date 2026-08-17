@@ -1,0 +1,1 @@
+论文和项目页报告：只给当前文件上下文时模型表现很弱；加入跨文件上下文后，CodeGen、SantaCoder、StarCoder、GPT-3.5-turbo 等模型在 code match 和 identifier match 上都有提升。最强证据不是某个单一 SOTA 分数，而是在同一批补全目标上比较三种上下文条件。逐样本证据仍是参考答案匹配：exact match、edit similarity 或标识符重合。证据边界要保留：聚合分数能证明任务依赖跨文件上下文和检索质量，但不能证明生成代码语义等价、能编译，或能在真实仓库运行。

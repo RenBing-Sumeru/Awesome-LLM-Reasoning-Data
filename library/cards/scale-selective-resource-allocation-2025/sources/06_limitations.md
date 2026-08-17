@@ -1,0 +1,5 @@
+- Eight-outline selection and 0–1 difficulty scores are model self-evaluations; they can be wrong, style-biased, or inconsistent across models and prompts.
+- Final-answer matching filters outcomes only. A passing answer can contain invalid steps, while an equivalent answer can be discarded if normalization is brittle.
+- `steps_scores` is released, but the actual System 1/System 2 decision, per-step token count, endpoint, revision, latency, and seed are not. Curator inference: this blocks direct auditing of the allocation-cost claim.
+- Rejected candidates and answer-mismatched traces are not present, so selection bias and failure modes cannot be measured from the public rows.
+- The paper's 800 SFT pairs are not mapped to the four 3,112-row files. Source versions, upstream rights, deduplication, and AIME/AMC contamination controls remain unknown.

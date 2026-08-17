@@ -1,0 +1,5 @@
+- **Position:** distinguish kinds of short CoT before deciding how compressed supervision affects post-training.
+- **Method handle:** deterministic chain, three CoT types, controlled scale/repetition/order, length-OOD SFT, exact-reward GRPO.
+- **Data/artifact handle:** official code generates up to 768K records; no fixed dataset or confirmed license is claimed.
+- **Evidence anchor:** Qwen2.5-3B RLVR moves Composed 2.52 to 67.80 and Implicit 3.23 to 89.34 on held-out long chains.
+- **Reuse decision:** use as an experimental design template, not direct evidence that natural-domain CoT should always be compressed.

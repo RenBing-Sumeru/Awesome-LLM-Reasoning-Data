@@ -1,0 +1,8 @@
+1. **Prepare prompts.** Use five-shot GSM8K and MATH prompts whose demonstrations mix prose, Python, and SymPy. For MATH, also build seven subject-specific prompts covering difficulty levels 1-5.
+2. **Mask reference computations.** Replace intermediate and final computed numbers in each source reference solution with symbols, preserving the derivation outline without exposing copyable answers; include this masked solution in a second prompt family.
+3. **Sample code-interpreter traces.** Ask Mixtral-8x7B-base for hundreds of candidates per problem at temperature 1.0 and top_p 0.95. Limit total I/O to 4,096 tokens, allow at most three code blocks and 512 tokens after each block, execute Python, and stop on errors or ten-second timeouts.
+4. **Grade and clean.** Extract the boxed answer and compare it with GSM8K/MATH ground truth. Merge default, subject, and masked generations, deduplicate pairs, remove multiple answer blocks or unmatched code delimiters, and trim content after the answer; publish failures separately.
+5. **Select balanced training data.** Round-robin over problems for fair sampling so easy problems with many correct candidates do not dominate. Prefer code-bearing MATH solutions and build a roughly 1.02M-example final SFT mixture.
+6. **Train and evaluate.** Fine-tune Mistral, CodeLlama, and Llama-2 models with NeMo, then evaluate greedy and self-consistency decoding on GSM8K, MATH, GSM-Hard, SVAMP, TabMWP, ASDiv, and MAWPS.
+
+Reproduction should pin source revisions, masked references, few-shot examples, Mixtral checkpoint, TensorRT-LLM/Python images, generation seeds, grader, deduplication, and problem-level sampling order.

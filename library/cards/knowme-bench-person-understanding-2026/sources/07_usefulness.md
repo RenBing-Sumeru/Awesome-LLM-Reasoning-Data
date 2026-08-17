@@ -1,0 +1,2 @@
+The dataset can evaluate long-term agent memory, person modeling, personalized assistants, and judges for evidence-grounded open answers. Its three tiers can separately train factual retrieval, event-evidence selection, and higher-level explanation generation, or supervise joint reward models over answer and evidence sets. Reuse should split data by narrative source to prevent leakage across fragments of the same person and report answer quality, evidence recall, and temporal consistency separately rather than treating one aggregate judge score as person understanding.
+

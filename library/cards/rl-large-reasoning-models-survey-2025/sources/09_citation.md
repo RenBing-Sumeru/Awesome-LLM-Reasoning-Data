@@ -1,0 +1,1 @@
+Kaiyan Zhang, Yuxin Zuo, Bingxiang He, Youbang Sun, Runze Liu, Che Jiang, Yuchen Fan, Kai Tian, Guoli Jia, Pengfei Li, and collaborators. 2025. A Survey of Reinforcement Learning for Large Reasoning Models. arXiv:2509.08827. https://arxiv.org/abs/2509.08827

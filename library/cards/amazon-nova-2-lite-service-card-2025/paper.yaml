@@ -1,0 +1,121 @@
+id: amazon-nova-2-lite-service-card-2025
+title: 'AWS AI Service Cards: Amazon Nova 2 Lite'
+year: 2025
+venue: AWS AI Service Card
+authors:
+- Amazon Web Services
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- multimodal
+- agentic_tool_use
+- coding
+- safety
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://docs.aws.amazon.com/pdfs/ai/responsible-ai/nova-2-lite/nova-2-lite.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html
+  huggingface: null
+  doi: null
+  venue: https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated licensed/proprietary, open-source, and public data categories; source identities, records, quantities,
+    mixtures, revisions, and rights are unknown.
+  trace_author: unknown
+  answer_format: Text, image, and video inputs produce text completions; training/evaluation schemas and traces are unknown.
+  process_fields:
+  - prompt
+  - completion
+  environment_or_substrate: Bedrock filters and may augment prompts, generates completions, filters outputs, and returns them;
+    training environments and rollout logs are unknown.
+  verifier_or_reward: SFT and RLHF are disclosed at high level; feedback sources, reward models/functions, calibration, and
+    objectives are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Proprietary transformer-based foundation model; architecture, checkpoints, and allocation are unknown.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: Curated sources and runtime privacy/profanity/safety filters are named; training filtering rules, thresholds,
+    and yields are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: 1M-token context and low/medium/high reasoning budgets are disclosed; numerical allocation and defaults
+    are unknown.
+  optimizer_or_scaffold: Pretraining, SFT, RLHF, and filters are named; optimizer, objectives, schedules, rollouts, and checkpoints
+    are unknown.
+audit:
+  source_mixture: High-level categories only; manifests, weights, counts, provenance, and rights map are unknown.
+  split: Public/proprietary datasets, human evaluation, and red teaming are named; memberships, splits, and sampling are unknown.
+  decontamination: unknown
+  license: Training-data and unreleased-artifact rights/licenses are unknown.
+  lineage: Stage-level categories through SFT/RLHF and runtime filtering only; no item-level lineage.
+  known_failure_modes:
+  - Records, reward contracts, and reproducibility artifacts are withheld.
+  - Proprietary safety datasets, labels, rubrics, and scoring are unreleased.
+  - Extended-thinking content is redacted.
+  - Decontamination and benchmark overlap are unknown.
+  citation_status: verified
+  confidence: high
+  notes: Official AWS Service Card and Bedrock model-card page only; partial disclosure, not a reusable release.
+inclusion_reason: Major-cloud-provider service card naming source classes, SFT/RLHF, runtime filtering, evaluation layers,
+  and proprietary safety-prompt counts while withholding audit-critical data and reward artifacts.
+related: []
+tags:
+- amazon
+- aws
+- nova-2-lite
+- service-card
+- frontier-report
+- data-disclosure-ledger
+- sft
+- rlhf
+- safety-evaluation
+- multimodal
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: AWS's Nova 2 Lite Service Card discloses high-level source categories, SFT/RLHF, filters, and evaluation
+  layers but withholds records, rewards, and reproducibility artifacts.
+why_it_matters: A cloud-provider frontier disclosure baseline that separates named post-training and safety interfaces from
+  unavailable provenance, feedback, reward, trace, and audit artifacts.
+card: null
+needs:
+- 'needs_data: manifests, records, quantities, revisions, and rights'
+- 'needs_verifier: RLHF feedback, rewards, calibration, and audit'
+- 'needs_metadata: filtering, sampling, rollouts, optimizer, and thinking budgets'
+- 'needs_audit: datasets, labels, rubrics, splits, decontamination, and logs'
+- 'needs_license: source-level rights and licenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official AWS Service Card PDF and Bedrock page checked; no non-official links.

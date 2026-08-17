@@ -1,0 +1,1 @@
+Yang, Xuqing, Yi Yuan, Shanzhe Lei, and Xuhong Wang. “Scaling with Confidence: Calibrating Confidence of LLMs for Adaptive Test Time Scaling.” arXiv preprint arXiv:2607.01612, 2026. https://arxiv.org/abs/2607.01612. ACL ARR 2026 submission: https://openreview.net/forum?id=ZYGTJlgzLk.

@@ -1,0 +1,5 @@
+- 事实陈述采用 PMLR 21 页正式论文；仓库 bundled PDF 是旧 18 页版本。
+- 区分 2,438 个主任务与 230 个 Lite 子集；README 的 234 属于未解决文档漂移。
+- 不要把 491 行 success-only SFT export 与包含 491 个成功、5,564 个失败的 sampled trajectory 混为一谈。
+- Verifier training 使用精确 1,318/1,318 平衡 mixture；outcome probability 用于 Best@k，不是 stepwise correctness。
+- 复用前协调逐工件 license，并把每个任务固定到 source、harness、trajectory、checkpoint 与 Docker digest，而不是可变 branch 或 `latest`。

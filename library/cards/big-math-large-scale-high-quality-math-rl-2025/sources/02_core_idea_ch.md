@@ -1,0 +1,1 @@
+核心贡献是面向 RL 需求而非一般预训练重新定义数学数据的接受标准。当前 Big-Math-RL-Verified 共 251,122 题，其中 Big-Math-Reformulated 为 47,010 题；记录包含 problem、answer、source、domain 和基于 Llama-3.1-8B 64 次 rollout 的 solve rate。数据覆盖十个来源，以 Parquet 发布，官方页标注 Apache-2.0，但访问文件需接受使用条件。它提供的是可验证提示池，而不是已验证的完整推理轨迹。

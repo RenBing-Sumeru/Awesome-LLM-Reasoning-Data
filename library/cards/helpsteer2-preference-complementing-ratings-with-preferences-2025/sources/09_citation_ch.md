@@ -1,0 +1,1 @@
+Zhilin Wang、Alexander Bukharin、Olivier Delalleau、Daniel Egert 等（2025），《HelpSteer2-Preference: Complementing Ratings with Preferences》，ICLR 2025。主论文：https://arxiv.org/abs/2410.01257。数据或代码工件：https://huggingface.co/datasets/nvidia/HelpSteer2。本 L4 卡记录了复用前必须检查的论文特定反馈对象、构建逻辑、证据边界与审计项。

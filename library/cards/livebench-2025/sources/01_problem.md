@@ -1,0 +1,3 @@
+Static LLM benchmarks lose diagnostic value after their public questions and answers enter training corpora, while open-ended LLM judges add another source of uncertainty. LiveBench asks how to compare models on hard tasks without treating a widely circulated test set as timeless evidence.
+
+The paper builds a dated benchmark that combines recent or newly generated questions, objective task-specific scoring, and periodic replacement. Its direct output is a versioned evaluation record—prompt, response, checker, score, category, and release—not post-training supervision. Primary source: https://arxiv.org/abs/2406.19314; venue: ICLR 2025 Spotlight.

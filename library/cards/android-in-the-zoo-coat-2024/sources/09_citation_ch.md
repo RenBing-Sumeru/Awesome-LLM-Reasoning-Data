@@ -1,0 +1,1 @@
+引用：Jiwen Zhang, Jihao Wu, Yihua Teng, Minghui Liao, Nuo Xu, Xiao Xiao, Zhongyu Wei, and Duyu Tang. 2024. “Android in the Zoo: Chain-of-Action-Thought for GUI Agents.” arXiv:2403.02713；官方仓库记录为 EMNLP 2024 Findings 接收。https://arxiv.org/abs/2403.02713 。官方代码/数据入口：https://github.com/IMNearth/CoAT 。

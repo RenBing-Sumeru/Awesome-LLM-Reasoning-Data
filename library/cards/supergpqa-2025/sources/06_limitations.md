@@ -1,0 +1,5 @@
+Correctness is only answer-key correctness for the released multiple-choice formulation. A model can guess the option, exploit formatting artifacts, or fail to provide valid reasoning while still receiving a correct score. Conversely, a valid free-form solution can be lost if the answer parser fails.
+
+The dataset is public and partly composite. The official README states that SuperGPQA is primarily newly created but includes limited transformed content from other datasets, under ODC-BY for the composite dataset while requiring compliance with the referenced datasets' own licenses. This makes redistribution, training use, and contamination claims more complicated than a single-license benchmark.
+
+Coverage is broad but uneven. STEM fields dominate the count, and the paper itself notes non-STEM representation is smaller. Evaluation comparisons also depend on prompt robustness, default prompt choice, zero-shot versus five-shot settings, model access, API changes, and released response records.

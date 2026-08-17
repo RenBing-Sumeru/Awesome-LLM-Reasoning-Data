@@ -1,0 +1,5 @@
+- Read Sections 2.2–2.4 as a trace specification: top-8 WildChat retrieval, UCB arm selection, reward update, and LLM-mediated evolution are separate events.
+- The main matched results use 64 random items per benchmark and 128 attempts; exact item IDs and seeds are not released.
+- MetaScale's decoding temperature, UCB β, evolution interval (k), and exact initial-pool size remain unknown.
+- Compare Tables 2 and 3: Arena-Hard ranking changes with style control, and the style-controlled confidence intervals overlap.
+- Benchmark gains evaluate a selector; they are not evidence that the hidden meta-thoughts, reward logs, or retrieved examples are high-quality reusable data.

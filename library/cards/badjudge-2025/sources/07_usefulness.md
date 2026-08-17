@@ -1,0 +1,3 @@
+A judge builder can use the repository to inject controlled triggers into its candidate–judge training pipeline, then report ASR, clean agreement, and score shifts before deployment. A safety or RAG team can repeat the guardrail or reranker case study using its own toxic prompts or document corpus, checking whether a trigger changes the terminal verdict. Use model merging only when compatible clean and suspect checkpoints share a base model; otherwise first audit data provenance and add separate detection or human review.
+
+A useful output is a release gate containing the assumed attacker capability, triggered ASR, clean metrics, and a documented fallback when the judge is uncertain or compromised.

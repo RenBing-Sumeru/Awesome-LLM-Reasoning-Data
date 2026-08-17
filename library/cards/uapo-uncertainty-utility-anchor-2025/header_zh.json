@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"UAPO 学习与提示相关的效用锚点，使成对和未配对的偏好记录都能在不确定性感知目标下被使用。","reading_priority_ch":"可读","paper_type_ch":"不确定性感知的离线偏好优化研究","best_for_ch":"希望复用不平衡或未配对偏好记录、而非因不满足 DPO 成对要求而丢弃它们的读者。","confidence_ch":"高","authors_ch":"Xiaobo Wang, Zixia Jia, Jiaqi Li, Qi Liu, Zilong Zheng","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T17:00:00Z"}

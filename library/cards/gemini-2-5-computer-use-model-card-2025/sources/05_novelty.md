@@ -1,0 +1,5 @@
+Computer-use agents and screenshot-action loops predate this model. The distinct disclosure is the combination of a Gemini 2.5 Pro specialization, a public normalized function-call interface, client-side actuation, whole-trajectory human voting, partial mobile environment pins, and a separate per-action safety service.
+
+For data research, the important object is the transition tuple rather than a chat transcript: goal, screenshot, history, action call, execution result, URL, next screenshot, safety decision, and terminal outcome. The report also makes clear that training feedback, evaluation judgment, and deployment gating are different contracts.
+
+What is not new or open is equally important. The report does not provide training trajectories, a reward, a verifier, an environment release, or a reproducible construction recipe. The reference repository is an inference harness, not training data. Safe reuse requires task manifests, demonstrations, failures, reward and safety labels, immutable environment snapshots, split/overlap audits, and checkpoint-to-API lineage.

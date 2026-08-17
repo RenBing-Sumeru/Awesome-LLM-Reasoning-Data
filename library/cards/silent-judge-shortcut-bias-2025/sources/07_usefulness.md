@@ -1,0 +1,1 @@
+Before deploying a pairwise judge, take fixed response pairs, swap source/date cues, and log VSR and cue mentions alongside ordinary agreement. Accept only if cue swaps do not materially move verdicts or explanations disclose them. Do not treat a zero-temperature result as a complete audit of prompt-injection, position, or length bias.

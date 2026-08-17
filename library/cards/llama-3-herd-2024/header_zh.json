@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Llama 3.1 披露 15.6T token、50/25/17/8 预训练配比，以及六轮 reward model、best-of-10–30 rejection sampling、SFT 与 DPO；它开放权重、推理工具和 Llama Guard 3，但不开放语料、偏好、RM、候选或 item-level lineage。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放权重基础模型谱系报告与数据披露账本",
+  "best_for_ch": "研究大规模预训练配比、合成后训练、DPO、reasoning/tool/safety 数据和开放权重审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Llama Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

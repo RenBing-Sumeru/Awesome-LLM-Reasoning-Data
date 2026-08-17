@@ -1,0 +1,3 @@
+The contribution is to provide programming benchmark surface; exact source and task count need audit. for coding, program-reasoning under a reusable evaluation surface. The core mechanism is the pairing of task inputs and model outputs with the following feedback contract: programmatic tests or exact answer checks.
+
+The data object or environment is programming evaluation harness. The closest comparisons are code-generation and executable-program benchmarks with unit-test or judge feedback. The direction label is benchmarks_evaluation_surfaces with a programmatic feedback contract. The main thing to preserve is not only the headline score, but the task object, evaluator, split/version, and artifact lineage.

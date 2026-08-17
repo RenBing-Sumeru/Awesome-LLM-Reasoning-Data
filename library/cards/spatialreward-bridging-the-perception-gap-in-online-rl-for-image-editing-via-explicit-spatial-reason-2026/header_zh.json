@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SpatialReward 将图像编辑要求锚定到预测的空间区域，用显式空间推理提供细粒度在线强化学习奖励。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "偏好或奖励反馈数据论文",
+  "best_for_ch": "研究偏好学习、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yancheng Long、Yankai Yang、Hongyang Wei、Wei Chen、Tianke Zhang 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T10:04:55Z"
+}

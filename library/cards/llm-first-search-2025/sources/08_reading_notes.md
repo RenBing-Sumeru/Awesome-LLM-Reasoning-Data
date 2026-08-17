@@ -1,0 +1,5 @@
+- LFS asks the LLM for both explore-or-continue decisions and scalar values, then keeps unchosen alternatives in a priority queue.
+- Countdown and Sudoku provide programmatic legal transitions and binary terminal rewards; model values are not correctness verifiers.
+- Experiments use GPT-4o and o3-mini, five runs per game, temperature 0.0, `max_tokens=16384`, and a 300-second API timeout.
+- Paper and code disagree on Sudoku o3-mini reasoning effort: the paper says low, while the repository agent sets medium.
+- Code, prompts, inputs, and a pickle trace schema are public, but the paper's raw result trees and allocation logs are not released.

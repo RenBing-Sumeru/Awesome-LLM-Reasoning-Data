@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebChain 发布 31,725 条人工核验的真实网页轨迹，包含 317,993 个视觉、结构与动作对齐的步骤，并以 gated 学术许可提供 grounding 与长程规划训练材料。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "真实网页人类轨迹数据集与 agent 训练配方",
+  "best_for_ch": "关注网页 agent、多模态轨迹、GUI grounding、长程规划，以及开放发布中许可、隐私与可重放性审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Sicheng Fan、Rui Wan、Yifei Leng、Gaoning Liang、Li Ling、Yanyi Shang、Dehan Kong",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

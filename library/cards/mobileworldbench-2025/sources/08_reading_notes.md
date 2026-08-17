@@ -1,0 +1,6 @@
+- Start with the object boundary: one static current screenshot plus one action predicts next-state text or a Yes/No fact; there is no complete episode, executable environment, reset, or terminal success.
+- Keep MobileWorldBench and MobileWorld separate: the former evaluates 250 generation transitions and 1,787 retained QA items, while the latter provides roughly 1.4M model-annotated items for SFT.
+- Audit image completeness before scoring: only **249/250** generation rows have both referenced screenshots in the pinned official snapshot.
+- Pin the judge: the paper specifies `gpt-4o-2024-08-06`, but the released scoring script defaults to `gpt-4o-mini` without explicit configuration.
+- Interpret mixed feedback correctly: generation uses GPT-4o accuracy/completeness/relevance scores; QA uses exact Yes/No accuracy and has 1,162 Yes versus 625 No labels.
+- Before reuse, verify split hashes, deduplication/decontamination, failed/no-change retention, Parquet manifests, licenses, privacy/consent, and third-party screenshot rights.

@@ -1,0 +1,3 @@
+UniSRM combines UniSRM-Data, UniSRM-Bench, and a Qwen2.5-Omni-7B-thinker reward model: a structured rationale decomposes the relevant speech dimensions before a task-specific preference decision or score is emitted. SFT learns the judge-produced traces, then RCR-GRPO rewards agreement between dimension-level reasoning and the final answer.
+
+The released repository states that checkpoints and data are public; the paper names the four evaluation tasks but does not state a single total record count or a final data license. Its central feedback object is an audio/context input, rubric-like dimension scores and explanations, and a human-verified target judgment.

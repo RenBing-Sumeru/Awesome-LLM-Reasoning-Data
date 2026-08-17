@@ -1,0 +1,2 @@
+v1 使用具备原生 function calling 的 Qwen2.5-3B-Instruct。多跳问答环境为 NousToolEnv，含一个 wikisearch 工具，检索描述为 3,600 万段落的 KILT Wikipedia 语料，使用 bge-large-en-v1.5 embedding 并返回前五个文档。Tool 是原子执行器；ToolEnv 协调 RL 状态、奖励和下一状态。v1 评估 PPO、GRPO、REINFORCE++、REINFORCE++Baseline 和 RLOO，并使用动作/损失掩码及 PPO 优势掩码，使策略更新选择智能体生成 token 而不是环境 token。报告没有给出采样 seed、记录标识、提示模板、rollout 数、推理设置、前五检索日志、保留/拒绝轨迹账本或运行时上下文快照。当前文档可描述 append/truncate/summarize/rewrite/augment 等上下文操作，但它们是后续框架能力，不能归因于 v1 运行。
+

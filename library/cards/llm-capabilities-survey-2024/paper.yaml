@@ -1,0 +1,113 @@
+id: llm-capabilities-survey-2024
+title: 'Fundamental Capabilities of Large Language Models and their Applications in Domain Scenarios: A Survey'
+year: 2024
+venue: ACL 2024 Long Papers
+authors:
+- Jiawei Li
+- Yizhe Yang
+- Yu Bai
+- Xiaofeng Zhou
+- Yinghao Li
+- Huashan Sun
+- Yuhang Liu
+- Xingpeng Si
+- Yuhao Ye
+- Yixiao Wu
+- Yiguan Lin
+- Bin Xu
+- Bowen Ren
+- Chong Feng
+- Yang Gao
+- Heyan Huang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- llm-capabilities
+- domain-applications
+- evaluation
+training_use:
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.acl-long.599/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.acl-long.599
+  venue: https://aclanthology.org/2024.acl-long.599/
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.599/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed domain-specific LLM application settings.
+  trace_author: Surveyed primary works; no new trace corpus is released.
+  answer_format: A map between fundamental capabilities, their collaboration, and domain scenarios.
+  process_fields:
+  - capability
+  - domain
+  - relative-importance
+  - application-evidence
+  environment_or_substrate: Domain-specific deployment of large language models.
+  verifier_or_reward: Existing benchmark evaluation is discussed as insufficient for fully reflecting real-world application
+    performance.
+  terminal_predicate: No universal success predicate is introduced; usefulness depends on the target domain.
+recipe_metadata:
+  base_model: No single model; literature survey.
+  teacher: Surveyed applications use varied data and feedback.
+  generator: Literature synthesis and capability-domain analysis.
+  filtering_rule: The official abstract connects fundamental capabilities with domain applications and their varying importance.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes a strategy for choosing robust backbone models, not a new training procedure.
+audit:
+  source_mixture: Official ACL Anthology metadata and abstract.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide result is stated.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.acl-long.599/'
+  known_failure_modes:
+  - benchmark scores may not reflect real deployment
+  - capability importance varies by domain
+  - survey coverage is time-bounded
+  citation_status: verified
+  confidence: high
+  notes: Official abstract reviewed.
+inclusion_reason: A peer-reviewed survey for relating broad LLM abilities to concrete application settings.
+related: []
+tags:
+- survey
+- llm-capabilities
+- domain-applications
+- evaluation
+- acl-2024
+one_line_summary: An ACL survey linking fundamental LLM capabilities to their roles in domain applications.
+why_it_matters: It gives readers a way to ask which ability is needed for an application instead of treating model strength
+  as one number.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers comparing LLM capabilities, domain requirements, and evaluation limits.
+confidence: high
+status: verified
+needs:
+- unknown
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology metadata, abstract, DOI, and venue reviewed.
+category_ids:
+- foundations_and_primers

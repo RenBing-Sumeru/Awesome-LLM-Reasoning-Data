@@ -1,0 +1,5 @@
+- MoB 复用同一个 N-output pool；它改变 selection，不改变 generation 或模型权重。
+- 实现闭式计算 bootstrap 答案分布，不保存实际抽样子集。
+- 发布 JSONL 包含 prompt、完整 generation、抽取答案、benchmark score 以及 ArmoRM/GRM/Skywork reward。
+- 主表使用 N=128；候选池每题最多含 512 个温度为 1 的输出。
+- 相对 BoN 的增益只评估 selector，不能证明 completion 质量、reward 有效性、去污染或数据权利。

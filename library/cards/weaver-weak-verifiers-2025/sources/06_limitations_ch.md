@@ -1,0 +1,9 @@
+- 条件独立是核心建模风险。不同 verifier 往往共享 base architecture、reward-model 训练数据、benchmark 暴露、prompt 与失败模式；两两矩拟合可能低估依赖关系，产生过度自信的后验分数。
+- 归一化、二值化和边际过滤受数据集约束。5th/95th percentile 变换和类别比例阈值会随 verifier revision、候选分布漂移或新领域变化；二值化还会丢弃分数幅度。1% 带标签开发样本虽小，但并非 label-free。
+- Weaver 必须在现有候选池中排序；如果没有生成正确回答，选择无法恢复正确答案。论文明确指出 AIMO 因正确生成过少而困难。
+- 可选 difficulty-cluster 分析用 ground-truth correctness 定义 query 难度，并在 held-out labels 上调阈值。它是 oracle 探索，不代表 unsupervised routing 已解决。
+- 蒸馏会把 Weaver 后验错误作为 soft supervision 传递下去。报告的 cross-encoder 结果只说明 studied splits 上的系统级保留率，不证明逐记录伪标签正确、新领域校准可靠或可安全用于 RLHF。
+- Proceedings 与 arXiv 材料在标题和 headline 平均值上存在版本差异（86.2% 对 87.7%，相关保留率表述还有 98.7% 对 98.2%）。复现必须锁定 paper、code、data 与 model revision。
+- 公开发布提高了可复现性，但仍不等于具有完整逐记录 lineage：每个表格结果能否连接到 generator run、verifier checkpoint、raw score、binary vote、拟合参数、posterior 和选中候选，仍需审计。
+- Decontamination 为 unknown。Benchmark prompt、候选 generator、reward model 与 judge 可能具有训练暴露重叠。虽然代码仓库为 MIT，但跨异构 benchmark、generation 与 model output 的逐记录上游许可和 attribution 仍为 unknown。
+- 评估集中在固定答案的推理与数学 benchmark。论文把代码、多模态 verification、data curation 和 RLHF 作为更广方向讨论，但没有验证 Weaver 在这些场景中是 programmatic verifier、multimodal judge 或安全的训练数据门控。

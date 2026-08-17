@@ -1,0 +1,6 @@
+- 优先阅读最终PMLR论文，而不只看早期arXiv版本：规范总数是**102 = 42个SRE + 50个CISO + 10个FinOps**，不是94。
+- 先读§§3.1–3.2和附录workflow；`M/E/T/D`四元组、部分观察、stop、success、provisioning、fault injection、evaluation与cleanup共同定义episode契约。
+- 分开各发布群体：论文102个；论文期访问策略11 public / 91 held；Lite 65个静态场景；Trajectories 35个SRE场景×3次运行。
+- 在文件层审计Trajectories：105个session log只对应90个output和90个judge；0分与不完整session都是证据，不能作为噪声静默删除。
+- 准确解释表4：在论文设置下，GPT-4o的diagnosis pass@1为13.81%，mitigation pass@1为11.43%；两者都不能证明数据质量。
+- 训练或重新评测前，应解决场景映射、replay/version固定、污染、judge漂移、隐私/secret处理，以及Apache-2.0与CC-BY-NC-4.0的边界。

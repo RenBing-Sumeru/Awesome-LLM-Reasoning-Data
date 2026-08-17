@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "公开约87.4万条多模态SFT对话与72,971条RL训练提示，训练时再在线采样16路回答并用规则/裁判正确性与格式奖励驱动GSPO，但rollout本身未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态推理数据发布与SFT-to-RL配方",
+  "best_for_ch": "视觉推理冷启动、RLVR、混合奖励与开放发布研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Kaichen Zhang、Keming Wu、Zuhao Yang、Bo Li、Kairui Hu、Bin Wang、Ziwei Liu、Xingxuan Li、Lidong Bing",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T12:54:12Z"
+}

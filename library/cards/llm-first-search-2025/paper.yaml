@@ -1,0 +1,146 @@
+id: llm-first-search-2025
+title: 'LLM-First Search: Self-Guided Exploration of the Solution Space'
+year: 2025
+venue: arXiv preprint
+authors:
+- Nathan Herr
+- Tim Rocktäschel
+- Roberta Raileanu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- scalar_reward
+domains:
+- reasoning
+- planning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.05213
+  arxiv: https://arxiv.org/abs/2506.05213
+  code: https://github.com/NathanHerr/LLM-First-Search
+  data: https://github.com/NathanHerr/LLM-First-Search/tree/main/data
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.05213
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.05213
+data_object:
+  prompt_source: Repository-bundled Countdown validation instances and Sudoku puzzle/solution files. The README says these
+    are the datasets used for the paper results, but a complete item-provenance and third-party-license manifest is not provided.
+  trace_author: GPT-4o or o3-mini, accessed through the OpenAI API, produces exploration decisions and action or node values
+    during search.
+  answer_format: A game-specific state/action search tree ending in a terminal or budget-stopped state. The implementation
+    can serialize per-run Explorer trees, final nodes, outcomes, token logs, timing, backtracks, and step metrics to pickle,
+    but paper-result pickles are not in the repository.
+  process_fields:
+  - initial_game_state
+  - available_actions
+  - current_state_action_path
+  - llm_explore_decision
+  - llm_action_or_node_value
+  - frontier_priority_queue
+  - selected_child_or_backtracked_node
+  - environment_transition
+  - token_usage
+  - metrics_log
+  - terminal_outcome
+  environment_or_substrate: Deterministic game-specific MDPs for Countdown arithmetic states and Sudoku board states, with
+    valid actions enumerated by code and previous states recoverable through a search tree.
+  verifier_or_reward: The LLM supplies exploration decisions and scalar action or state values. Programmatic Countdown and
+    Sudoku transition rules determine legal states and terminal success, yielding task reward 1 for success and 0 otherwise.
+  terminal_predicate: Task success, exhaustion of viable frontier paths or valid actions, total-token limit, or an unrecoverable
+    API/context failure.
+recipe_metadata:
+  base_model: GPT-4o and o3-mini through the OpenAI API.
+  teacher: unknown
+  generator: At each state, task-specific prompts ask the runtime LLM whether to leave the current path and to score available
+    actions or child nodes. The highest-valued option is followed, while unchosen alternatives remain in a value-sorted frontier
+    for possible backtracking.
+  filtering_rule: No post-training example filter is used. Search selects the highest LLM-valued child on the current path
+    or the highest-valued stored frontier node after an explore decision; malformed structured responses can trigger retries.
+  sampling_protocol: Each game is run five times at temperature 0.0. The paper uses GPT-4o and o3-mini; the public implementation
+    defaults to seed 0, but the paper does not report a pinned seed for every result.
+  rollout_count: Five runs per game and method.
+  temperature: '0.0'
+  inference_budget: Per-call max_tokens is 16384 and timeout is 300 seconds. README reproduction commands use total-token
+    limits of 1000000 for Countdown, 100000 for 4x4 Sudoku, and 500000 for 6x6 Sudoku.
+  optimizer_or_scaffold: Inference-only LLM-guided tree search with a value-sorted frontier; no training optimizer or learned
+    auxiliary reward model.
+audit:
+  source_mixture: The official repository bundles Countdown JSON files for lengths 3 through 8 and Sudoku pickle files across
+    several grid sizes and difficulties; the paper evaluates Countdown lengths 3, 5, and 7 plus 4x4 and 6x6 Sudoku.
+  split: Countdown uses repository validation files and Sudoku uses packaged puzzles/solutions. Exact evaluated item IDs,
+    full per-configuration sample counts, and a standalone split manifest are not reported in the paper.
+  decontamination: unknown
+  license: Repository source code is Apache-2.0. Separate rights and provenance for packaged task instances, solutions, generated
+    result pickles, and model outputs are not established.
+  lineage: Packaged task instance -> game-specific valid-action enumeration -> LLM child/action values -> highest-valued continuation
+    plus stored alternatives -> LLM explore-or-continue decision -> optional backtrack to highest-valued frontier node ->
+    deterministic environment transition -> terminal outcome or token stop -> optional pickle containing tree and runtime
+    metrics.
+  known_failure_modes:
+  - The same LLM both controls exploration and supplies values, so correlated or miscalibrated judgments can steer search
+    and rank alternatives incorrectly without an independent selector.
+  - LFS assumes deterministic transitions, enumerable actions, and the ability to revert to prior states; these assumptions
+    do not hold in many irreversible or partially observed environments.
+  - Explore decisions are task- and prompt-dependent, while the evaluated domains use substantial game-specific state formatting,
+    action generation, and instructions.
+  - Temperature 0.0 does not by itself guarantee identical hosted-model outputs, and the paper does not pin API snapshots
+    or every random seed.
+  - The paper states that o3-mini uses low reasoning effort; repository commit 3025bdaa uses low for Countdown but medium
+    for Sudoku, leaving the exact Sudoku reproduction setting inconsistent.
+  - The repository contains code and task inputs but no checked-in paper-result pickle files or raw LFS search traces; release
+    completeness cannot be audited at the item level.
+  - Evaluation is limited to GPT-4o, o3-mini, Countdown, and Sudoku, with five runs per game; benchmark results do not establish
+    general trace or value-label quality.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1 and official BibTeX were checked. The author-linked repository was inspected at commit 3025bdaa3add6f41388c1d5a6d354522489d312e,
+    including README, license, data inventory, LFS implementation, agents, and output schema.
+inclusion_reason: LFS defines a concrete test-time trace contract in which an LLM produces exploration decisions and scalar
+  values over reversible game-state trajectories while programmatic environments determine terminal success.
+related: []
+tags:
+- track5
+- llm-first-search
+- self-guided-search
+- test-time-search
+- search-traces
+- countdown
+- sudoku
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: LLM-First Search lets the runtime LLM decide when to backtrack and score candidate actions, while deterministic
+  Countdown and Sudoku environments supply legal transitions and terminal outcomes.
+why_it_matters: It exposes a test-time tree-search schema combining model-authored decisions, scalar values, frontier state,
+  environment checks, and token budgets, but does not release the paper's observed search traces.
+card: null
+needs:
+- needs_trace_release
+- needs_data_provenance
+- needs_budget_protocol
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv preprint, BibTeX, and author-linked GitHub repository checked. Code, prompts, packaged task inputs,
+    output schema, and Apache-2.0 repository license are visible; raw paper-result traces and a fully pinned reproduction
+    manifest are not released.

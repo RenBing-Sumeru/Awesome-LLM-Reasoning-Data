@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"CaTS 将自一致性得到的置信度蒸馏为可校准信号，用于在固定平均预算下动态停止或分配重复采样。","reading_priority_ch":"必读","paper_type_ch":"校准式自适应测试时扩展论文（ICLR 2026）","best_for_ch":"设计置信度引导采样或推理预算评测的研究者。","confidence_ch":"高","authors_ch":"Chengsong Huang、Langlin Huang、Jixuan Leng、Jiacheng Liu、Jiaxin Huang（机构以官方论文为准）","category_ids":["scaling_rlvr_test_time_compute"]}

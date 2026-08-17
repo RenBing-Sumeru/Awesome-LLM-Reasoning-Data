@@ -1,0 +1,114 @@
+id: webmall-2025
+title: WebMall - A Multi-Shop Benchmark for Evaluating Web Agents
+year: 2025
+venue: ACM SIGIR 2026 / arXiv preprint
+authors:
+- Ralph Peeters
+- Aaron Steiner
+- Luca Schwarz
+- Julian Yuya Caspary
+- Christian Bizer
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- shopping-environment
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.13024
+  arxiv: https://arxiv.org/abs/2508.13024
+  doi: null
+  code: https://github.com/wbsg-uni-mannheim/WebMall
+  data: https://github.com/wbsg-uni-mannheim/WebMall
+  project: https://wbsg-uni-mannheim.github.io/WebMall/
+  huggingface: null
+  venue: https://doi.org/10.1145/3805712.3808592
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors construct multi-shop e-commerce environments and tasks
+  trace_author: official benchmark authors and generated or collected task interactions
+  answer_format: shopping goal, shop observations, cross-shop actions, final product or answer, and score
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: multiple simulated shops with cross-shop browsing and shopping tasks
+  verifier_or_reward: gold offer-URL set matching with strict completion plus precision, recall, and F1 for partial completion.
+  terminal_predicate: task succeeds when returned offers, cart, or checkout state matches the required gold offer set without
+    irrelevant offers.
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official WebMall authors and validators
+  generator: WebMall shop/product data and task construction pipeline
+  filtering_rule: verify product data provenance, cross-shop task design, and evaluator code before reuse
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2508.13024, ACM DOI, WebMall project page, and wbsg-uni-mannheim/WebMall repository
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2508.13024'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: Official sources verify four simulated shops, 91 tasks, 11 task categories, 4,421 product offers, and gold offer-URL
+    matching. DOI was not retained because no primary DOI page was verified in this pass.
+inclusion_reason: it stresses multi-shop planning rather than single-store shopping
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- shopping-environment
+one_line: WebMall evaluates web agents on reproducible multi-shop comparison-shopping tasks.
+why_it_matters: it stresses multi-shop planning rather than single-store shopping
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WebMall evaluates web agents on reproducible multi-shop comparison-shopping tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official sources verify four simulated shops, 91 tasks, 11 task categories, 4,421 product offers, and gold offer-URL
+    matching. DOI was not retained because no primary DOI page was verified in this pass.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 36
+  primary_category_id: environment_agent_trajectory_data

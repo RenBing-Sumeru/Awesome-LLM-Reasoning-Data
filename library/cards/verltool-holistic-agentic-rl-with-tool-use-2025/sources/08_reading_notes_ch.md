@@ -1,0 +1,5 @@
+- 先读论文§§3.2–3.3：`tau={a0,o0,...,a_(n-1),o_(n-1),a_n}`、仅action优化、状态化Tool Server与异步trajectory调度共同定义了可复用接口。
+- 应把附录A.1–A.6与表8合并阅读。六个领域使用不同task source、reward、model、rollout multiplicity `16/16/5/8/16/8`和最大轮数`1/2/5/3/5/100`，并不存在单一全局recipe。
+- 必须区分validity、termination与correctness：`valid`和`done`是environment-control字段，语义success则由answer match、execution、shaped reward或verification test决定。
+- 表2–6只应作为作者报告的系统与任务证据，不能当作生成trajectory已形成高质量发布dataset的证据。1.97×时间结果与任务分数提升都不能建立lineage、license或replayability。
+- 后续发布需核验论文版本固定的code/environment bundle、六域episode manifest、成功/失败保留、精确SQL checkpoint身份、统一split/decontamination审计及逐来源license chain。

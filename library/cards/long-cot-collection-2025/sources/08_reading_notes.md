@@ -1,0 +1,6 @@
+- Read Sections 3 and Appendix A first for the seed triple, retrieval score, generated flow, expanded rationale, and source mixture; then read Appendix F beside Section 3.2.4 to see that the filter is a GPT-4o Yes/No judgment, not an independently calibrated process verifier.
+- Keep four objects separate: the 1K o1-derived seed demonstrations, the claimed 100K full-budget collection, the 50%/25% variants, and the separate 10K NuminaMath prompt set used for GRPO.
+- Interpret “76%” as the share predicted correct after the stated filter, not a human-verified precision estimate and not a 76% benchmark score.
+- Interpret “2–3×” as a ratio of reported RLVR performance *gains*, not final accuracy and not proof that each constructed rationale is high quality.
+- The paper and ACL record literally say `LINK`; do not substitute a similarly named organization, paper page, or third-party mirror for an official release.
+- The paper's most informative negative result is that a 25% outline budget can make rationales confusing; longer or shorter is not automatically better.

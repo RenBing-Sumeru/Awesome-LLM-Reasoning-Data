@@ -1,0 +1,5 @@
+- Read the three data branches separately: DeepSeek-Math-V2 proof text belongs to FineProofs-SFT, while FineProofs-RL contains 5,227 problems, rubrics, score arrays, and statistics but no proofs or grader assessments.
+- Keep the budgets distinct: nominally 128 offline Qwen3 attempts estimate difficulty; online GRPO uses 16 policy rollouts for each of 64 prompts, or 1,024 samples per batch; Reasoning Cache uses three training turns.
+- Inspect actual array lengths rather than assuming 128: 4,773 rows have 128 scores, 453 have 62-127, and one has 256; the release does not explain the exceptions.
+- Treat GPT-OSS-20B-medium as a learned rubric judge, not a formal verifier or process labeler; the paper documents human disagreement, and attempt-level inputs and assessments are not released.
+- Before reuse, pin code and Hugging Face revisions, keep the 5,227-row train release separate from the 128-row FineProofs-RL-test repository, and audit decontamination, upstream rights, filtering bias, and test-time token budgets.

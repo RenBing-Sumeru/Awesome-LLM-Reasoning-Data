@@ -1,0 +1,5 @@
+- Keep the chronology explicit: arXiv v1 was public in 2025, while the formal publication is ICASSP 2026; the assigned ID and year follow first public release.
+- Read Sections 2.1–2.3 with Figures 1–2: repeated episodes become a merged state tree, four process rewards rank divergent branches, and each node yields a weighted chosen/rejected action pair.
+- Keep the four signals separate: shortest-path subgoal progress, `-1` cycle penalty, undisclosed-VLM action effectiveness, and action-format validity do not have the same reliability or observability.
+- Keep the disclosed scale and budget exact: 300 Online-Mind2Web tasks from 136 websites plus 50 C-WebShop tasks; 2 epochs, 8 H20 GPUs, and learning rate `1e-5`. Neither task split nor trajectory/pair count is reported.
+- Treat Table 1 and Table 2 as author-reported system evidence, not proof of data quality; verify code, data, model, environment, split, terminal checks, VLM contract, licenses, and replay artifacts before reuse.

@@ -1,0 +1,1 @@
+对 Rollout, Search, and Test-Time Trace Data 类别而言，e3 提供了一个具体设计，可研究失败与成功回答分组、任务难度和 token 预算如何共同影响 RLVR 探索。复用者可以比较固定与耦合 curriculum，或只用正 advantage 与完整 GRPO，但应记录每条 completion、reward、归一化 advantage、截断标记、策略 checkpoint 及更新成员关系。公开 Parquet 在完成来源和权利审查后，可作为分阶段的提示-ground-truth 输入与聚合难度元数据，但不能被描述为已发布的在线 grouped rollout 语料。

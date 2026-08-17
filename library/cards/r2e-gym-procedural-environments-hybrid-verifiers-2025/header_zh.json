@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R2E-Gym 为开源权重 SWE 智能体构建程序化环境和混合验证器。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 procedural SWE environment benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Naman Jain 等（UC Berkeley）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T16:40:00Z"
+}

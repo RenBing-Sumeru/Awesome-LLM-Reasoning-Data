@@ -1,0 +1,3 @@
+FineVerify changes candidate selection from a global self-score into a collection of local checks. It first decomposes a question into sub-questions that a correct response must satisfy. Each sampled search trajectory is then verified against each sub-question, and the final score aggregates those aligned judgments rather than trusting answer frequency or a free-form assertion of confidence.
+
+This makes the verification trace itself part of the inference record: a candidate contains its search path, the decomposed requirements, the per-requirement checks, and the aggregate used for ranking. More test-time samples become valuable when at least one trajectory covers the required facts, while the fine-grained score gives the selector a way to identify that coverage.

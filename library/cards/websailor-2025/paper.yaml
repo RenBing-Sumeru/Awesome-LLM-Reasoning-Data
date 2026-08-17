@@ -1,0 +1,279 @@
+id: websailor-2025
+title: 'WebSailor: Navigating Super-human Reasoning for Web Agent'
+year: 2025
+venue: arXiv preprint
+authors:
+- Kuan Li
+- Zhongwang Zhang
+- Huifeng Yin
+- Liwen Zhang
+- Litu Ou
+- Jialong Wu
+- Wenbiao Yin
+- Baixuan Li
+- Zhengwei Tao
+- Xinyu Wang
+- Weizhou Shen
+- Junkai Zhang
+- Dingchu Zhang
+- Xixi Wu
+- Yong Jiang
+- Ming Yan
+- Pengjun Xie
+- Fei Huang
+- Jingren Zhou
+source_role:
+- construction_recipe
+- model_report
+- data_release
+- verifier_reward
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- information_seeking
+- web_search
+- question_answering
+training_use:
+- sft
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.02592
+  paper_pdf: https://arxiv.org/pdf/2507.02592
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2507.02592
+  code: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor
+  data: https://github.com/Alibaba-NLP/DeepResearch/blob/main/WebAgent/WebSailor/dataset/sailorfog-QA.jsonl
+  project: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor
+  huggingface: https://huggingface.co/collections/Alibaba-NLP/webagent
+  model_3b: https://huggingface.co/Alibaba-NLP/WebSailor-3B
+  model_7b: https://huggingface.co/Alibaba-NLP/WebSailor-7B
+  model_32b: https://huggingface.co/Alibaba-NLP/WebSailor-32B
+  doi: https://doi.org/10.48550/arXiv.2507.02592
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2507.02592
+  release: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor/dataset
+  repository_license: https://github.com/Alibaba-NLP/DeepResearch/blob/main/WebAgent/LICENSE
+data_object:
+  object_type: High-uncertainty web question-answer tasks plus successful expert ReAct action-observation traces whose thoughts
+    are reconstructed step by step for cold-start supervision; DUPO then produces live multi-turn web rollouts scored by a
+    mixed format/answer reward.
+  prompt_source: SailorFog-QA tasks are synthesized from subgraphs sampled from random-walk knowledge graphs seeded with rare
+    Wikidata entities and expanded with information retrieved from real websites; the resulting facts and relations are converted
+    to questions and deliberately obfuscated. Exact prompt templates, graph-size distribution, synthesis models, and total
+    QA count are unknown.
+  trace_author: An undisclosed expert open-source large reasoning model generates complete solutions. Only successful action-observation
+    sequences are retained; a separate undisclosed instruction-following LLM reconstructs concise short-CoT thoughts for each
+    action using the prior history, chosen action, and following observation. QwQ-32B is discussed as an example, not pinned
+    as the sole teacher.
+  task_record:
+  - synthesized question
+  - reference answer
+  - sampled-subgraph provenance, not publicly released
+  - obfuscated entity and relation constraints
+  episode_fields:
+  - question and reference answer
+  - tagged thought
+  - tagged tool-call name and arguments
+  - tagged search or visit observation
+  - repeated thought-action-observation turns
+  - tagged final answer
+  - format-validity component
+  - answer-correctness component
+  - scalar episode reward
+  answer_format: A tagged ReAct transcript with `<think>`, `<tool_call>`, `<tool_response>`, and final `<answer>` segments.
+    The public SailorFog-QA sample exposes only `question` and `answer`.
+  process_fields:
+  - reconstructed concise thought
+  - search or visit action
+  - action arguments
+  - environment observation
+  - web evidence URL or snippet inside observations
+  - final answer
+  - group-relative reward and advantage during DUPO
+  observation: Search returns the top ten titles, snippets, and URLs for each query. Visit uses Jina to fetch full pages and
+    Qwen-2.5-72B to summarize content for a supplied goal. Observation tokens remain in context but are masked from both supervised
+    and policy losses.
+  verifier_or_reward: Mixed contract. A programmatic format score checks required tags and ReAct ordering; an LLM judge decides
+    whether the final prediction matches the answer. DUPO removes groups whose eight answers are all correct or all incorrect
+    and computes group-relative advantages for nonzero-variance groups.
+  reward: Episode scalar `0.1 * R_format + 0.9 * R_answer`; the paper calls the combined reward rule-based even though `R_answer`
+    is supplied by an LLM judge.
+  terminal_predicate: A rollout terminates when the model emits a final answer. RFT retains only trajectories ending in a
+    correct answer, under 32k tokens, and with more than five tool calls; DUPO correctness is determined by answer equivalence
+    through the LLM judge.
+  provenance: Rare Wikidata entity -> random-walk web graph -> sampled subgraph -> generated and obfuscated QA -> expert ReAct
+    rollout -> correct action-observation trace -> per-step short-thought reconstruction -> three-stage RFT filtering -> RFT
+    cold start -> DUPO web rollouts and mixed reward.
+  environment_or_substrate: Qwen-Agent ReAct loop over Google Search and Jina-backed Visit, with Qwen-2.5-72B page summarization
+    and a maximum of 30 tool calls per episode. Live search results, page contents, API versions, and service snapshots are
+    not pinned.
+  release_shape: The paper reports just over 2,000 filtered RFT examples, but the official repository currently publishes
+    only a 20-record UTF-8 JSONL example file with `question` and `answer`, inference/evaluation code, and 3B/7B/32B checkpoints.
+    The README still says sampled trajectory data will be released soon; no successful or failed training-rollout bundle is
+    confirmed public.
+recipe_metadata:
+  base_model: Qwen-2.5-3B, Qwen-2.5-7B, Qwen-2.5-32B, and Qwen-2.5-72B are post-trained in the paper. Exact upstream revisions
+    are unknown; official WebSailor checkpoints were confirmed only for 3B, 7B, and 32B.
+  teacher: unknown
+  generator: Undisclosed models generate QAs, expert trajectories, and reconstructed thoughts. The paper names QwQ-32B as
+    an example expert LRM and specifies Qwen-2.5-72B only as the Visit summarizer, not as the trajectory-reconstruction model.
+  prompt_task_source: Rare Wikidata entities and features/relations gathered from real-world websites, composed through random-walk
+    graphs, subgraph sampling, and information obfuscation.
+  sampling_protocol: For RFT, expert rollouts are rejection-sampled and filtered for correct final answer, fewer than 32k
+    tokens, and more than five tool calls. For DUPO, eight rollouts per QA are sampled; all-correct cases are removed before
+    training, zero-variance groups are removed during training, and eligible same-batch cases are duplicated to refill slots.
+  temperature: DUPO rollout temperature 1.0 with top-p 1.0. Evaluation uses temperature 0.6 and top-p 0.95. RFT teacher/reconstruction
+    decoding settings are unknown.
+  rollout_count: 8 rollouts per QA group during DUPO; teacher rollout count and rejection-sampling yield are unknown.
+  inference_budget: At most 30 tool calls per ReAct episode and a 32k-token ceiling for retained RFT trajectories. The paper
+    says synchronous RL is limited to 50 steps, but wall-clock budget, token budget per tool response, retry policy, and seeds
+    are undisclosed.
+  search_or_scaffold: Qwen-Agent ReAct with Search and Visit. Search uses Google and returns top-10 results per query; Visit
+    uses Jina retrieval and Qwen-2.5-72B goal-conditioned summarization.
+  filtering_rule: RFT keeps correct-answer trajectories shorter than 32k tokens and requiring more than five tool calls. DUPO
+    excludes overly simple all-eight-correct cases before training and excludes all-correct or all-incorrect groups during
+    training.
+  selection_threshold: Just over 2,000 RFT examples survive filtering, but the exact count, candidate pool size, acceptance
+    rate, language mixture, duplicate policy, and per-filter rejection counts are unknown.
+  optimizer_or_training_scaffold: Megatron for RFT/SFT and verl for RL. SFT uses batch size 32, learning rate 5e-6 with minimum
+    1e-10, warmup plus cosine decay, and weight decay 0.1. RL uses batch size 128, mini-batch size 32, learning rate 1e-6,
+    group size 8, temperature 1.0, top-p 1.0, token-level policy-gradient loss, and asymmetric clipping inherited from DAPO.
+  user_simulator: null
+audit:
+  source_mixture: Synthetic QAs combine rare Wikidata seeds with information collected from real websites. The paper does
+    not disclose domain/language proportions, source-site inventory, per-record URLs, crawl dates, generator prompts, graph-size
+    settings, or rights filtering.
+  split: unknown
+  decontamination: unknown
+  benchmark_overlap: The paper evaluates on BrowseComp-en/zh, GAIA, XBench-DeepSearch, and SimpleQA and states that WebSailor
+    is trained on SailorFog-QA, but reports no exact-match, semantic-overlap, website-overlap, or temporal decontamination
+    audit. The public repository deliberately omits evaluation datasets except an example file to reduce test leakage.
+  lineage: Method-level lineage is documented from Wikidata/web graph construction through QA obfuscation, expert rollout,
+    thought reconstruction, filtering, RFT, and DUPO. Record-level graph nodes, source URLs, prompts, model snapshots, raw
+    expert outputs, reconstruction outputs, filter decisions, and rollout IDs are not released.
+  license: The arXiv paper links CC0 1.0. The official WebAgent repository is MIT, while the official 3B/7B/32B Hugging Face
+    model pages declare Apache-2.0. The 20-record QA sample has no separate dataset card or data-specific license, and rights
+    for underlying web-derived facts/text and unreleased trajectories remain unclear.
+  release_version: 'arXiv:2507.02592v1 (2025-07-03). Public QA sample inspected at GitHub path commit `ce278d31c0632bdd0710c451e0e4ca1d549d44d5`
+    (2025-09-16): 20 JSONL records, fields `question` and `answer`, SHA-256 `b9c5d12c2966e9fd874a7f1ed4e4fa733d341cf7f42d87e86ec2b8386167bb69`.'
+  version_drift: The paper points to `Alibaba-NLP/WebAgent`, which now redirects to the broader `Alibaba-NLP/DeepResearch`
+    repository. The official README labels the 20 QA records as examples and still promises future trajectory release. It
+    reports released 3B/7B/32B checkpoints but no confirmed 72B checkpoint, despite the paper evaluating 72B.
+  verifier_or_judge_failure_modes:
+  - The answer judge model, prompt, snapshot, calibration, repetition count, and tie handling are undisclosed, so correctness
+    rewards are not independently reproducible.
+  - The 0.9 answer weight can dominate format compliance and may reward a correct final answer reached through unsupported,
+    fabricated, or inefficient intermediate reasoning.
+  - 'Reference answers may be non-unique: the paper explicitly observes ambiguous SailorFog-QA questions with multiple valid
+    intersections.'
+  - Live Google/Jina retrieval and Qwen-2.5-72B summarization introduce temporal drift, retrieval failures, summarization
+    omissions, and non-replayable observations.
+  - Filtering only successful, shorter, and tool-heavy trajectories creates survivor, length, and complexity bias while discarding
+    informative failure and recovery behavior.
+  - Removing all-correct and all-incorrect DUPO groups focuses learning on intermediate-difficulty cases and leaves no learning
+    signal for uniformly failed tasks.
+  - Public questions without provenance or split manifests can leak into later training and make evaluation overlap difficult
+    to audit.
+  successful_and_failed_sample_retention: Paper-side RFT explicitly retains only successful trajectories and discards incorrect,
+    over-32k, and at-most-five-tool-call examples. DUPO generates correct and incorrect rollouts to compute group-relative
+    rewards, but the public repository does not expose either the 2k+ successful RFT trajectories or complete successful/failed
+    DUPO rollouts; preservation of rejected and failed samples is unknown.
+  privacy_or_consent: Tasks are synthesized from public-web information, but no privacy review, personal-data policy, consent
+    procedure, source exclusion list, robots-policy handling, or takedown process is disclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Paper identity, full text, appendix, arXiv metadata/license, official repository, README, source tree, 20-record
+    QA sample, repository license, and official 3B/7B/32B model pages were verified. The central training trajectories, complete
+    DUPO rollouts, synthesis code, judge configuration, and 72B checkpoint were not confirmed public.
+  remaining_unknowns:
+  - exact SailorFog-QA population, exact RFT count, language/domain mixture, and train/dev/test assignment
+  - QA generator, prompts, graph-size distribution, obfuscation rules, deduplication, and acceptance yield
+  - expert rollout model/revision, thought-reconstruction model/revision, prompts, temperatures, seeds, and rejected candidates
+  - answer-judge identity, prompt, snapshot, calibration, equivalence policy, and human agreement
+  - record-level Wikidata/web provenance, crawl timestamps, source URLs, and rights/privacy review
+  - decontamination against BrowseComp-en/zh, GAIA, XBench-DeepSearch, SimpleQA, and public web benchmarks
+  - immutable environment snapshots, Google/Jina API versions, Qwen-Agent/verl/Megatron commits, and replay fixtures
+  - complete successful/failed RFT and DUPO rollout retention, release date, schema, checksums, and license
+  - official WebSailor-72B checkpoint availability and licensing
+inclusion_reason: WebSailor is a high-value environment/trajectory-data case because it specifies the path from difficult
+  web-task synthesis through successful trace reconstruction and mixed-reward agentic RL, while the gap between its 2k+ paper
+  training set and its 20-QA public sample makes release-scale and failure-retention auditing essential.
+related:
+- webdancer-2025
+- websailor-v2-2025
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- information-seeking
+- synthetic-data
+- reconstructed-trajectories
+- rejection-sampling
+- agentic-rl
+- mixed-verifier
+- llm-as-judge
+- partial-release
+- version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebSailor trains web-search agents with just over 2,000 successful reconstructed ReAct trajectories and
+  DUPO's mixed format/answer reward, but officially releases only 20 QA examples—not the complete successful or failed trajectories.
+why_it_matters: It links task difficulty, expert trajectory reconstruction, observation-masked RFT, and live-environment RL
+  in one concrete post-training pipeline, while clearly showing why paper-reported dataset scale, public release scale, judge
+  reproducibility, and failed-rollout retention must be tracked separately.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: false
+  arxiv_metadata_verified: true
+  repository_files_verified: true
+  dataset_contents_verified: true
+  model_pages_verified: true
+  trajectory_release_verified: false
+  complete_rollout_retention_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper and public artifacts were inspected. Dataset-content verification applies only to the 20-record question/answer
+    example JSONL, not to the paper's 2k+ RFT trajectories or DUPO rollout population. No archival venue was confirmed.
+curation_level: L3_summary_ready
+needs:
+- 'needs_full_data_release: publish the exact SailorFog-QA population and 2k+ filtered RFT trajectories with stable IDs, schema,
+  checksums, and split manifests'
+- 'needs_failure_retention: state and release whether incorrect, overlength, short-tool-call, all-correct, all-incorrect,
+  timed-out, and tool-failed trajectories are preserved'
+- 'needs_provenance: release per-record Wikidata nodes, web-source URLs, crawl timestamps, graph/subgraph lineage, prompts,
+  generator snapshots, and filter decisions'
+- 'needs_judge_metadata: disclose answer-judge model, prompt, snapshot, equivalence policy, calibration, human agreement,
+  and retry/tie handling'
+- 'needs_decontamination: audit exact, semantic, source-site, and temporal overlap with evaluation benchmarks and public web-agent
+  datasets'
+- 'needs_replay: pin Qwen-Agent, verl, Megatron, Google/Jina interfaces, summary-model revision, dependency lock, seeds, budgets,
+  and record/replay fixtures'
+- 'needs_license: provide data- and trajectory-specific terms plus web-derived provenance/privacy/right-to-redistribute review'
+- 'needs_model_release: clarify whether the paper''s WebSailor-72B checkpoint will be released and pin all model/base-model
+  revisions'
+card: null

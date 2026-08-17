@@ -1,0 +1,5 @@
+- 先读 Sections 3.1–3.3，重点看 POMDP、action grammar、terminal predicate、reward normalization，以及环境反馈与 token supervision 的区别。
+- 将 Section 4 与 Appendices C、D、F 对照阅读：正文给出 7,249/6,548 的构造流程，附录补充 hyperparameter、基础设施、prompt、tool 和仅用于 RFT 收集的 one-shot example。
+- 不要混淆三个数字：7,249 个所选训练任务、6,548 条成功 RFT trajectory，以及上游后来出现的 6,542 行 `filtered` split 是不同对象。
+- 将 Section 5.2 视为数据版本问题来读：删除循环失败样本与静默启用 `top_k`/`min_p` 都改变了学习信号。
+- 后续优先核验精确 task/image manifest、reset/network 语义、所选 trajectory 与 reward、checkpoint/trainer 发布、全面污染检查，以及权利/隐私/安全控制。

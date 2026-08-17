@@ -1,0 +1,5 @@
+- Data object: candidate programs, fuzzed inputs, dynamic execution tuples, distances, clusters, and one medoid.
+- Coverage feedback guides input discovery; behavioral agreement guides selection.
+- The largest cluster is a heuristic pseudo-oracle, not a correctness certificate.
+- Library mode may still use an LLM to generate a fuzz driver.
+- Pin the official repository revision before claiming raw traces are available.

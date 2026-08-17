@@ -1,0 +1,3 @@
+The contribution is a broad Chinese evaluation suite with 13,948 multiple-choice questions across 52 subjects and a harder subset, C-Eval Hard. The core mechanism is exam-question curation plus standardized prompting and exact answer-key scoring.
+
+Compared with MMLU, AGIEval, and other exam benchmarks, C-Eval changes the language, subject coverage, and education/professional context while keeping a familiar multiple-choice feedback contract. The data object is answer-level, not trajectory-level: a model output is correct only if it matches the official option label. The direction label is multilingual static reasoning benchmark with domain breadth and answer-key verification.

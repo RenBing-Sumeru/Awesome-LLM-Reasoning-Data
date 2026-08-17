@@ -1,0 +1,4 @@
+The report is a partial training-disclosure ledger rather than a data release. It states a 4.1T-token model configuration and reports pre-training categories spanning cleaned raw-web and synthesized multimodal material. It also describes a roughly 2M-entry SFT mixture, a two-stage filtering pipeline, expected-answer-gated rejection sampling for reasoning tasks, and SFT followed by DPO.
+
+The relevant data objects differ by stage: multimodal QA, document HTML with coordinates, grounding annotations, video captions/timestamps, agent screenshots and actions, preference examples, and selected reasoning candidates. Feedback ranges from an expected-answer match to rule-based and model-based filters and preference training. The report does not release a common record schema, the underlying samples, the trained reward models, or the retained/rejected sets.
+

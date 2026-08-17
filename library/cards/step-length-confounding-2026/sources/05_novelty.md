@@ -1,0 +1,1 @@
+The work identifies a structural selection artifact rather than proposing another opaque quality score, then offers both a simple removal rule and a causal adjustment. Official code and data make the mechanism inspectable.

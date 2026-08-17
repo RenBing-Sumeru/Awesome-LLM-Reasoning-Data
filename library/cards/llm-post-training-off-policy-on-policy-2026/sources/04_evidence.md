@@ -1,0 +1,1 @@
+The official abstract explicitly identifies two regimes based on trajectory provenance and three recurring behavioral roles. It also lists the covered post-training families and reports a 38-page paper with one figure and eight tables on arXiv. Those details substantiate the scope of the survey, not the reliability of every cited data source or training claim.

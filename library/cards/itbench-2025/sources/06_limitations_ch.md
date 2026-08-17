@@ -1,0 +1,8 @@
+- **版本与lineage漂移：** 早期arXiv论文报告94个场景，最终PMLR论文报告102个；当前framework version 1.4.1又包含后续scenario、telemetry、schema与ground-truth修复，Lite/Trajectories还使用不同场景群体。论文实验commit以及最终论文42个SRE场景到后续35个SRE场景的映射均为unknown。
+- **重置与回放：** 论文记录provisioning、deployment、injection、evaluation、deletion和aggregation，这能提供运行隔离，却不能证明deterministic replay。Lite被有意设计为静态数据，并省略live observability、nondeterminism、interactive debugging、human-in-the-loop行为和active remediation。精确image、dependency lock、seed与确定性回放等价性均为unknown。
+- **反馈保真度：** 领域指标可能给出partial credit，却不能证明达到目标运维结果。后续Gemini semantic judge可能出现false positive、false negative或版本漂移。公开ground truth/evaluator允许verifier gaming，论文也没有报告独立的evaluator-error审计。
+- **发布完整性：** Trajectories card声称105个完整session，官方树却只有90对output/judge。15对文件为何缺失、作者把它们归为失败、中断还是损坏均为unknown。Hugging Face viewer还报告`payload.summary`存在schema不一致，因此需要直接解析raw file并做schema validation。
+- **split与污染：** 论文期11 public / 91 held的划分是评测访问策略，不是训练split。Lite的`scenarios`与Trajectories的`train`都是打包标签。官方未记录随机、泄漏受控partition、模型预训练重叠审计或正式decontamination protocol；用公开snapshot/trace训练会污染后续ITBench评测。
+- **安全与隐私：** 智能体可能输出破坏性命令，不可信评测基础设施也可能注入instruction或code。容器化智能体和自包含Kubernetes testbed能够降低风险，但不能替代least privilege、egress control、credential rotation及code/log scanning。runtime manifest可能包含cluster credential与service URL。incident anonymization、客户/用户consent、PII scanning和再分发review均为unknown。
+- **许可：** framework与ITBench-Lite采用Apache-2.0，ITBench-Trajectories采用CC-BY-NC-4.0。incident-derived evidence、CIS/FinOps输入、generated code、论文文本和upstream dependency的权利未统一；使用者必须分别应用组件条款，不能假设整个系列受同一许可覆盖。
+- **泛化：** 报告分数只覆盖作者构建的SRE、CISO和FinOps testbed及特定模型/工具设置。它们不能证明真实生产系统可靠性，不能证明在真实credential下安全，也不能认证后续发布是高质量训练数据。

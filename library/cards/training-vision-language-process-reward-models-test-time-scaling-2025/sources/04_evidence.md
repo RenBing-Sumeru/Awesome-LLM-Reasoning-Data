@@ -1,0 +1,3 @@
+The paper reports improved Best-of-N and tree-search performance across multimodal reasoning benchmarks and shows that label strategy, negative quality, and data diversity materially affect results.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of large-scale multimodal step supervision in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

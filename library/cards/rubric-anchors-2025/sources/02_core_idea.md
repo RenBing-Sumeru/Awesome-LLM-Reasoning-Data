@@ -1,0 +1,2 @@
+Rubicon uses a rubric-first loop. The reported feedback object is an instruction–rubric pair, a model response, critic scores, and an optimization reward. A rubric is formalized as dimensions with criterion descriptions, ordered score tiers mapped to numerical values, and weights; the framework then derives a multi-dimensional score and discusses scalar aggregation. The paper reports a bank of more than 10,000 rubrics, but does not release the complete bank or its record schema.
+

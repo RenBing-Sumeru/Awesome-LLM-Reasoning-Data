@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GUI-360° 发布约 574 GB 的 Windows Office 多模态 GUI/API 轨迹、独立保留的失败轨迹及四类 SFT-ready 数据，但未发布 TrajAgent/EvaAgent 采集栈、VM replay、judge prompt 或可执行 terminal checker。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Windows Office 智能体轨迹数据集、基准与构造报告",
+  "best_for_ch": "研究环境与智能体轨迹数据、GUI agent SFT、静态评测、failure retention 与 replay 审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jian Mu, Chaoyun Zhang, Chiming Ni, Lu Wang, Bo Qiao, Kartik Mathur, Qianhui Wu, Yuhang Xie, Xiaojun Ma, Mengyu Zhou, Si Qin, Liqun Li, Yu Kang, Minghua Ma, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-22T10:32:29Z"
+}

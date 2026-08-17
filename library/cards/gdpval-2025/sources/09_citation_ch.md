@@ -1,0 +1,1 @@
+引用：Tejal Patwardhan, Rachel Dias, Elizabeth Proehl, Grace Kim, Michele Wang, Olivia Watkins, Simón Posada Fishman 等. “GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks.” OpenAI research publication / arXiv, 2025. https://arxiv.org/abs/2510.04374 官方链接：https://openai.com/index/gdpval/ 和 https://evals.openai.com/gdpval 。

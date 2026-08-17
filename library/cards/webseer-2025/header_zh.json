@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebSeer 结合反思式拒绝采样与在线强化学习训练深度搜索代理，并链接数据、代码和模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Guanzhong He, Zhen Yang, Jinxin Liu, Bin Xu, Lei Hou, Juanzi Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-17T06:17:50Z"
+}

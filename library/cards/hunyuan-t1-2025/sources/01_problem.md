@@ -1,0 +1,4 @@
+Hunyuan-T1 was released by Tencent on March 21, 2025 as a deep-reasoning model built by large-scale post-training of the TurboS fast-thinking base, a Hybrid-Transformer-Mamba MoE model. For this atlas, the relevant question is not whether the model obtains high benchmark scores. It is what post-training data and feedback can actually be audited from the release.
+
+Tencent states that 96.7% of post-training compute was allocated to reinforcement learning for reasoning and human-preference alignment. The disclosed training surface consists only of broad “world science and reasoning problems” in mathematics, logical reasoning, science, and code. No dataset names, item counts, source manifest, record schema, model outputs, or reward logs are released. The authoritative source for Hunyuan-T1 itself is therefore an official release page and content repository, not a formal T1 technical paper or data/model release.
+

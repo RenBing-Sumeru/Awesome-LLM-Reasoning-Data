@@ -1,0 +1,5 @@
+- MCTS action 是特定代码评估视角的 subtask，并包含 null action。
+- 节点选择把 UCT 与 LLM 对当前 trajectory history 的自评结合。
+- reward 使用 GPT-4o 生成测试和重复 LLM 模拟执行，而非真实代码执行。
+- 主要设置为深度 9、八次 rollout、三个抽样测试和每测试七次模拟。
+- 论文承诺未来发布代码与 data-flywheel；当前未确认官方轨迹 artifact。

@@ -1,0 +1,1 @@
+Mistral AI。《Magistral》。arXiv:2506.10910，2025。[论文](https://arxiv.org/abs/2506.10910) · [官方 BibTeX](https://arxiv.org/bibtex/2506.10910) · [官方发布页](https://mistral.ai/news/magistral/) · [官方 Magistral Small 模型卡](https://huggingface.co/mistralai/Magistral-Small-2506)。

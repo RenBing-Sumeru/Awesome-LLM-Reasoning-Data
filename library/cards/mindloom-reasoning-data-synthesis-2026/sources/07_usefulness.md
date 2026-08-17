@@ -1,0 +1,3 @@
+- Use MindLoom when verified solutions are available but whole-problem mutation lacks diversity: extract a mode bank, retrieve compatible transformations, then compose.
+- Preserve source IDs and mode tuples so held-out benchmark lineage can be removed before SFT rather than after evaluation.
+- Audit source dominance, judge disagreement, and mode coverage; add programmatic verifiers where domain answers allow them.

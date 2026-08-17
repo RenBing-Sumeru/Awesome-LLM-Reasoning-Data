@@ -1,0 +1,5 @@
+The arXiv abstract states the benchmark contains 89 hard terminal-environment tasks, each with a unique environment, a human-written solution, and tests for verification. It also reports that frontier models and agents score below 65 percent, which supports the claim that the benchmark is not saturated at release time.
+
+The public repository independently supports the operational surface: it describes Terminal-Bench as a task dataset plus an execution harness connecting a language model to a terminal sandbox. It lists the task components as instruction, test script, and reference solution, and points to task gallery, docs, registry, and leaderboard submission guidance.
+
+The evidence is strongest for benchmark structure, task-level programmatic scoring, and availability of code/harness. Evidence is weaker for long-term comparability unless benchmark version, task release, harness version, package version, runtime image, and agent adapter are pinned. The repo also says the benchmark is in beta, so score reuse must avoid treating a moving task suite as a fixed measurement.

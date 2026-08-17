@@ -1,0 +1,1 @@
+核心贡献是一个由大型研究社区编写的 204 任务 benchmark suite，并配套通用任务格式和 evaluation harness。机制是收集多类型任务，用标准 prompt/evaluation API 跑模型，再聚合结果分析 scaling 行为和任务级差异。反馈契约按任务而变：multiple-choice accuracy、exact/regex/string match，或自定义程序化指标。最近对比对象包括 GLUE/SuperGLUE、MMLU、HELM 和更窄的推理 benchmark；方向标签是宽覆盖静态评测面。

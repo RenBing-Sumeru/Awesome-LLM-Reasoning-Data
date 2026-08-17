@@ -1,0 +1,106 @@
+id: image-grounded-cot-survey-2026
+title: 'Revealing the Seen, Imagining the Beyond: A Survey of Image-Grounded Chain-of-Thought Reasoning in Multimodal LLMs'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Qihua Dong
+- Yitian Zhang
+- Huimin Zeng
+- Yizhou Wang
+- Jianglin Lu
+- Kuo Yang
+- Yun Fu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- multimodal
+- chain-of-thought
+- reasoning-data
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.2087/
+  arxiv: null
+  code: https://github.com/dddraxxx/Awesome-Image-Grounded-CoT
+  data: null
+  project: https://github.com/dddraxxx/Awesome-Image-Grounded-CoT
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.2087
+  venue: https://aclanthology.org/2026.acl-long.2087/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.2087/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Multimodal questions requiring perception, spatial reasoning, imagined states, or planning.
+  trace_author: Primary studies summarized by the survey; no new trace corpus is released.
+  answer_format: Textual rationales interleaved with visual state updates.
+  process_fields:
+  - image evidence
+  - textual rationale
+  - visual state
+  - intermediate supervision
+  - final answer
+  - benchmark
+  environment_or_substrate: Multimodal large language models operating over images and text.
+  verifier_or_reward: Reviews task-specific reward and evaluation designs; no common verifier is supplied.
+  terminal_predicate: Correct multimodal answer together with support from an appropriate visual state.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Reviewed work varies by study.
+  generator: Literature synthesis and method-centered taxonomy.
+  filtering_rule: Separates prompting, supervised fine-tuning, and reinforcement learning approaches to image-grounded reasoning.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new optimizer is introduced.
+audit:
+  source_mixture: Official ACL Anthology record and linked paper list.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion for reviewed benchmarks.
+  license: Consult each primary resource before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.2087/'
+  known_failure_modes:
+  - Visual state can be plausible but unsupported
+  - Intermediate supervision can be costly or incomplete
+  citation_status: verified
+  confidence: high
+  notes: The official abstract defines image-grounded chain-of-thought and its prompting, fine-tuning, and RL taxonomy.
+inclusion_reason: A 2026 ACL long paper that directly connects multimodal intermediate reasoning, supervision format, benchmark
+  design, and data quality.
+related: []
+tags:
+- foundations-and-primers
+- multimodal
+- chain-of-thought
+- acl-2026
+- survey
+why_it_matters: It makes the intermediate visual state a first-class object when judging whether a multimodal explanation
+  is grounded.
+one_line_summary: An ACL survey of multimodal reasoning processes that alternate between text and visual state updates.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers building or evaluating image-grounded reasoning data for multimodal models.
+confidence: high
+status: verified
+needs:
+- 'unknown: common measures of faithfulness for visual intermediate states'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL page, abstract, venue, authors, DOI, and linked paper list were checked.
+category_ids:
+- foundations_and_primers

@@ -1,0 +1,1 @@
+HAD uses about 90K carefully synthesised training examples containing inputs, generated text, one of eleven hallucination types, erroneous spans, and correction targets. A separate human-annotated HADTest contains 2,248 high-quality examples. The released data and models support unified cross-NLG detection, localisation, and correction rather than binary classification alone.

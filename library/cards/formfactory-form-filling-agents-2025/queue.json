@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:28:04Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "表单填写能力测评 覆盖范围小，引用11，数据量也不多",
+    "updated_at": "2026-07-14T19:28:04Z"
+  }
+}

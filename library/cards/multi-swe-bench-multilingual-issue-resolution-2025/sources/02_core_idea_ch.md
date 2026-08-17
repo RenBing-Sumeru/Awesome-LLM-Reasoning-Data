@@ -1,0 +1,1 @@
+核心贡献是把 SWE-bench 的 fail-to-pass 判定扩展到七个非 Python 生态，并将自动执行与大规模专家复核结合。1,632 个 benchmark 实例来自 2,456 个候选，覆盖 Java、TypeScript、JavaScript、Go、Rust、C 和 C++；记录包含 issue、base commit、gold patch、test patch、Docker 环境、F2P/P2P 测试及运行日志。验证要求至少存在一个在 base 失败、应用 gold 后通过的测试，并排除 gold 引入回归的样本。Multi-SWE-RL 另提供 4,723 个结构化训练实例，可用于 SFT/RL；benchmark 本身主要用于可重复的跨语言 agent 评测。

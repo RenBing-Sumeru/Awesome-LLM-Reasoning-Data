@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SCOP 从当前策略刷新推理-批评-纠正 episode，并按采样修复成功率奖励批评，但官方仓库仍无实现与轨迹发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "On-policy 自我批评与纠正训练配方",
+  "best_for_ch": "研究批评数据漂移、过程奖励、self-play buffer 与数学 RLVR 的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Rong Bao、Donglei Yu、Kai Fan、Minpeng Liao",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

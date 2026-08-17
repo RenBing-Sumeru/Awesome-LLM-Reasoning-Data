@@ -1,0 +1,1 @@
+Austin Feng、Marius Alonso、Ambroise Odonnat、Vasilii Feofanov、Ievgen Redko。《Optimal Self-Consistency for Efficient Reasoning with Large Language Models》。Proceedings of the 43rd International Conference on Machine Learning，PMLR 306，2026。官方 arXiv：https://arxiv.org/abs/2511.12309 · DOI：https://doi.org/10.48550/arXiv.2511.12309。arXiv 记录注明论文已被 ICML 2026 接收；目前未确认官方代码或数据引用。

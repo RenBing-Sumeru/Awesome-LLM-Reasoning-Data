@@ -1,0 +1,4 @@
+Downloadable model weights answer only one part of a post-training audit. They show that a checkpoint can be inspected or run under its license, but they do not identify the prompts, reasoning traces, preference pairs, reward signals, filtering rules, data splits, or source rights that produced it. EXAONE Deep is a useful boundary case because LG AI Research releases three reasoning-model sizes for research while describing the training data only through aggregate counts and one output template.
+
+This Card therefore separates three claims. First, the 2.4B, 7.8B, and 32B model weights are officially available. Second, the report says training used 1.6M SFT instances, 20K DPO preference instances, and 10K Online-RL instances. Third, the actual records and feedback machinery are not released or sufficiently specified. The model release and its license must not be used as substitutes for training-data provenance or a reproducible RL contract.
+

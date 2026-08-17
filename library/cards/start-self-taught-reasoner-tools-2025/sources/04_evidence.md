@@ -1,0 +1,19 @@
+The strongest evidence concerns whether hint-driven selection changes the trained model under the authors' pipeline. All results below are author-reported and were not independently reproduced.
+
+| Experiment | Condition and reported result | Supported interpretation |
+|---|---|---|
+| Active-learning selection | Same-size selected data averages **69.0**, versus **67.6** without active selection and **65.2** for the base model (Table 7) | Selecting corrective cases helps under this training and evaluation setup; it does not validate the hidden checker |
+| Trajectory format | With the same training data, text-only RFT averages **65.2**, while START tool trajectories average **75.1** (Table 8) | Interleaved tool interaction contributes beyond merely reusing the selected problems |
+| Hint transition outcomes | Correct-to-wrong **10.4%**, correct-to-correct **89.6%**, wrong-to-correct **33.0%**, wrong-to-wrong **67.0%** (Table 5) | Hinting creates useful corrections but also introduces errors and leaves most initially wrong cases wrong |
+| Tool triggering | Hint-infer triggers Python in **100%** of tested cases for both base models, versus **0–3.3%** for direct or designed prompting (Appendix C, Table 11) | The intervention reliably elicits Python syntax; trigger rate does not establish usefulness, correctness, or safety |
+| Main math/science aggregate | START-32B-Preview averages **72.3** versus **63.7** for QwQ-32B-Preview; START-32B-R1 averages **78.7** versus **74.3** (Table 2) | The complete intervention, data, and SFT package improves the reported benchmark aggregate |
+| Coding by difficulty | The paper reports large medium-problem gains on LiveCodeBench but only a **+2.0 point** gain on hard problems (Section 3.6, Table 3) | Coding improvement is not uniform across difficulty |
+| Repeated hints | Additional hints plateau or reduce accuracy for some START settings, including GPQA and MATH500 (Section 3.7; Appendix B, Table 10) | Hint count is not a monotonic quality or test-time-compute knob |
+
+The transition table is especially valuable audit evidence. A 33.0% wrong-to-correct rate supplies the positive examples sought by Hint-RFT, but the 67.0% wrong-to-wrong rate shows that most initially wrong trajectories are not repaired. The 10.4% correct-to-wrong rate is a measured false-intervention cost: an initially successful behavior can be damaged by the hint. The paper does not publish denominators, benchmark composition, confidence intervals, or the underlying four trajectory groups.
+
+Table 7 supports an active-selection effect only within its disclosed conditions. It does not show that the final-answer checker has low false-positive or false-negative rates, because checker outputs, comparator rules, and rejected samples are unavailable. Table 8 more directly supports the value of the tool-interleaved serialization relative to a text-only condition on the same data, but it still combines Python execution, format, and follow-up reasoning.
+
+The main checkpoint scores show that the end-to-end package can improve benchmark accuracy under the paper's evaluation settings. They do not isolate the contribution of each `D_seed` or `D_START` record and do not certify trajectory correctness, unique-prompt coverage, license, decontamination, environment safety, or reproducibility. AIME and AMC results average 16 sampled answers while MATH500 uses one, so evaluation budgets also differ across benchmarks.
+
+The release evidence is negative but concrete: the official ACL and arXiv records expose the paper and checklist, while no author-linked code, data, START-0 or START checkpoint, environment, generation log, model card, dataset card, project page, or immutable release was verified. Consequently, the reported experiments are evidence about the paper's method, not evidence that another lab can inspect or reuse its training objects.

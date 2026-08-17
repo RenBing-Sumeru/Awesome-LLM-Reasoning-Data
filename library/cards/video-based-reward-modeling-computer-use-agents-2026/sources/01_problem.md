@@ -1,0 +1,3 @@
+Computer-use quality depends on mouse, keyboard, and UI transitions, which single screenshots or terminal success cannot capture. ExeVR-53k combines tasks, execution videos, timed actions, rewards, and step-level negatives.
+
+This gap directly determines whether execution-video rewards for computer-use agents can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on tasks, screen recordings, action timestamps, outcome rewards, and step-level negative examples and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in execution ranking and computer-use agent reinforcement.

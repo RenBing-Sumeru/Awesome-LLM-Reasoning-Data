@@ -1,0 +1,6 @@
+- Distinguish the generation graph from the public dataset: LeanNavigator searches tactic-labelled Mathlib4 state graphs, while Zenodo exposes only two-string `[state, proof/tactic text]` rows.
+- The search contract is explicit: FAISS retrieves 100 tactic templates, instantiation is capped at 200 tactics per state, breadth-first exploration stops after 30 minutes or 200,000 transitions per seed, and retained states are at distance at most eight from `ProofFinished`.
+- The chosen proof minimizes tactic count and then total tactic-string length. This certifies one short executable path, not uniqueness, semantic novelty, or optimal mathematical exposition.
+- The official notebook reports exactly 4,702,639 loaded examples, but no manifest checksum-binds its local input to the Zenodo archive. Keep this separate from the paper's rounded 4.7M and 1B-token claims.
+- The notebook's unseeded random 90/10 row split can leak related states across partitions after graph ancestry is removed; use source-theorem or graph-grouped splits instead.
+- Treat the notebook's Mathlib4 commit and Lean 4.9.0-rc2 as reconstruction clues, not release pins. Code licensing, bulk replay, complete lineage, exact/semantic overlap, and the paper-to-artifact snapshot remain unresolved.

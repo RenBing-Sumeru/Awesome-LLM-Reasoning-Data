@@ -1,0 +1,3 @@
+**Generation and pruning claim.** The pipeline produces 1,415 candidates from 165 seeds, then removes 80 shallow records to release 1,335 examples spanning 102 formulas with mean formula count 3.05. Only two numerical-instability failures are reported, showing that execution catches arithmetic/runtime failures at scale; this does not establish full physical correctness.
+
+**Semantic-audit claim.** An independent audit of high-complexity records finds roughly 4-15% text/code, signature, or formula-consistency issues across the four-to-six-formula strata. The important evidence is therefore not perfect correctness, but that residual errors are measurable and rise with structural complexity despite executable verification.

@@ -1,0 +1,5 @@
+- The release connects real search conversations, paired outputs, votes, and retrieval traces.
+- It contains 24,069 conversations and 12,652 votes, not 24K voted pairs.
+- More citations can win a vote without directly supporting a claim.
+- Prompt text is CC-BY-4.0; model output permissions differ by provider.
+- Check privacy, output terms, and vote selection before training.

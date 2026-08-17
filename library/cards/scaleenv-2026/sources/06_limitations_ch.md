@@ -1,0 +1,8 @@
+- **无可复用发布：** 16 个环境、2,560 个任务、测试、状态、rollout、奖励、checkpoint 与框架均未核实公开；现有材料只有论文/源码与摘录。
+- **切分审计不完整：** 训练域与 7 个基准评测域互斥，但没有生成任务级 dev/test 切分、item mapping、模板去重、预训练重叠或记忆审计。
+- **成功/失败保留：** 程序失败驱动 debug，GRPO 也需要混合奖励组，但候选/rollout 丢弃数、重试与持久成功/失败 trace 保留均未披露。
+- **Reset 与 replay：** 初始/终局数据库状态暗示任务可 reset，但没有发布 reset API、snapshot 格式、依赖锁、隔离测试、种子、用户 simulator 设置或 runtime image。
+- **并行细节缺口：** Rollout batch size 为 1,024 与 2,048，实际并发、worker 调度、硬件、吞吐、失败恢复和成本未知。
+- **Verifier 局限：** 3 类列匹配政策可能漏掉无效中间行为、隐藏副作用、不必要变更、等价序列化或错误模糊匹配。
+- **许可与隐私：** CC BY-NC-SA 4.0 覆盖论文而非生成工件。数据虽为合成，但未说明 PII pattern 过滤、记忆审计、来源检查或隐私评审。
+- **安全：** 论文认为 sandbox 比真实 API 更安全，也警告有害领域合成；却没有报告恶意领域 filter、能力边界、prompt injection 防御或 containment audit。

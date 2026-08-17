@@ -1,0 +1,1 @@
+The survey separates feedback records, reward models, learning strategies, benchmarks, and applications. It presents these as related but distinct elements of learning from rewards, so a preference pair, a learned reward, a decoding method, and a judge-based evaluation are not collapsed into one object.

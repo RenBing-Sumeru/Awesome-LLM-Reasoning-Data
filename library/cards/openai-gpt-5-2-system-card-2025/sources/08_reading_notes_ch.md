@@ -1,0 +1,5 @@
+- 与 `gpt-5-system-card-2025` 对读：三类来源与家族级 reasoning RL 是重复披露，不是 GPT-5.2 recipe。
+- 保留局部边界：prompt-injection eval 与训练重叠；cyber-safety non-overlapping；部分 biology 集合只有窄范围 held-out/uncontaminated 声明。
+- Policy/LLM grader、CoT monitor、hidden test、rubric 与 pass metric 留在评测层；产品 safeguards 留在部署层。
+- 每个 Preparedness 结果都必须绑定其 section-specific tool、environment、attempt count、time limit 与 terminal predicate。
+- CoT monitorability 证据日期为 2026 年 4 月 24 日；它不在 2025 年 12 月 11 日不可变 PDF 中。

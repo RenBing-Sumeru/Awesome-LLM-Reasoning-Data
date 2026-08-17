@@ -1,0 +1,1 @@
+Allowed evidence-backed uses are exactly rlvr; process_supervision. A reader may use this Card to decide whether the paper's trace, reward, selector, or environment recipe is comparable to another entry. It does not establish that unreleased artifacts, hidden prompts, or undisclosed data rights are reusable.

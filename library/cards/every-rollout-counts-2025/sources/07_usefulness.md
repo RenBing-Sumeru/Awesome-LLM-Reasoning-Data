@@ -1,0 +1,4 @@
+For `rollout_search_test_time_trace_data`, DORA provides a concrete logging contract for compute allocation over redundant traces. A reusable episode should preserve prompt and benchmark revision, policy/PRM/embedding revisions, every partial trajectory, token boundary, PRM score, embedding, cosine and affinity rows, temperatures, uniqueness and quality weights, pre/post-rounding allocation, continuation, completion, parsed answer, and weighted vote.
+
+Such logs enable counterfactual replay with another PRM or retriever, allocation-entropy and direction-coverage analysis, and inspection of whether rejected branches contained correct or informative reasoning. Reusers should validate score calibration and semantic grouping on their own domain and compare against matched-budget baselines. The official code makes implementation study possible; it does not substitute for released decision lineage.
+

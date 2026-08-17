@@ -1,0 +1,3 @@
+The key novelty is to make online experience selection answer an optimization question: does this experience's policy gradient align with the validation-return gradient for the declared objective? This is more specific than ranking prompts by generic difficulty, length, or uncertainty, because the same rollout can be useful for one objective and harmful for another.
+
+It also turns a validation set from a passive evaluation artifact into a consumer specification for data. The method filters records while the policy and its rollout distribution change, instead of fixing a selected dataset before RL begins. This creates an auditable link from alignment goal to experience score to policy update.

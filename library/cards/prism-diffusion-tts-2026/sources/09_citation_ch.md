@@ -1,0 +1,1 @@
+Bai, Jinbin、Yixuan Li、Yuchen Zhu、Yi Xin、Qingyu Shi、Aosong Feng、Xiaohong Liu、Molei Tao、Jianru Xue、Xiangtai Li 和 Ming-Hsuan Yang。2026。《Prism：通过分层搜索与自验证实现离散扩散语言模型的高效测试时扩展》。第 43 届国际机器学习大会（ICML 2026）。论文：https://arxiv.org/abs/2602.01842。官方记录：https://openreview.net/forum?id=QrC8OgQyOI。代码：https://github.com/viiika/Prism。

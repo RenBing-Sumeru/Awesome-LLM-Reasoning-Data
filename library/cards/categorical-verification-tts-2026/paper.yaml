@@ -1,0 +1,28 @@
+id: categorical-verification-tts-2026
+title: 'Adaptive Test-Time Compute Allocation via Learned Heuristics over Categorical Structure'
+year: 2026
+venue: arXiv preprint
+authors: [Shuhui Qu]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [step_level, full_episode]
+domains: [mathematical-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2602.03975, arxiv: https://arxiv.org/abs/2602.03975, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2602.03975}
+data_object: {prompt_source: 'MATH-500 and GSM8K test questions; verifier-labeled candidate lists from exploration on training problems.', trace_author: 'Llama 3.2 1B and 3B structured-move generator.', answer_format: 'Structured candidate moves, feasibility-gate outcomes, pre-verification scores, verifier labels, state-local budgets, and accepted traces.', process_fields: [state, constraint_context, candidate_move, gate_result, residual_score, uncertainty, verifier_call, verifier_label, accepted_move], environment_or_substrate: 'Intermediate-state structured reasoning with a verifier-call budget.', verifier_or_reward: 'Process reward model trained from Monte Carlo rollouts; deterministic gates handle explicit structural and constraint violations.', terminal_predicate: 'A correct final answer after accepted verified moves, or exhaustion of the verification budget.'}
+recipe_metadata: {base_model: 'Llama 3.2 1B and Llama 3.2 3B.', teacher: 'Verifier-labeled candidate lists collected from exploration runs.', generator: 'Structured move generator with optional retrieved operators.', filtering_rule: 'First reject deterministic interface violations, then rank survivors and verify the state-dependent top-k set.', sampling_protocol: 'At each state, generate or retrieve moves, gate them, score them with structural distance plus a learned residual, and allocate verifier calls from score uncertainty.', rollout_count: '64 samples per problem estimate difficulty in the reported protocol.', temperature: null, inference_budget: 'Verifier invocations are the primary cost; total generation-plus-verification calls are also reported.', optimizer_or_scaffold: 'Gated competition with state-conditional verification allocation.'}
+audit: {source_mixture: 'Official arXiv paper.', split: 'MATH-500 uses two-fold cross-validation on difficulty bins; GSM8K has 1,319 test problems.', decontamination: 'Check exploration logs, PRM training data, and benchmark overlap before reuse.', license: 'Check model, PRM, and benchmark terms before reuse.', lineage: 'https://arxiv.org/abs/2602.03975', known_failure_modes: [generator-proposal-failure, incomplete-constraints, verifier-false-positive, structured-interface-dependence, uncertainty-miscalibration], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. It lists Stanford University; no official code or data release was identified.'}
+inclusion_reason: 'It treats verifier calls as the scarce test-time resource and learns where intermediate reasoning states deserve them.'
+related: []
+tags: [test-time-compute, verifier-allocation, process-reward-model, search, structured-reasoning]
+status: verified
+one_line_summary: 'The method saves verifier calls by gating invalid moves, ranking viable moves, and allocating a local verification budget at each reasoning state.'
+reading_priority: useful
+paper_type: Selective verification and adaptive test-time allocation study
+best_for: Readers optimizing expensive verifier calls inside structured reasoning search.
+confidence: high
+why_it_matters: 'It moves compute allocation from whole-problem sample counts to the ambiguous intermediate decisions where verification has the most marginal value.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv PDF checked; no official implementation or data release identified.'}
+category_ids: [scaling_rlvr_test_time_compute]

@@ -1,0 +1,1 @@
+Zhao, James Xu、Hui Chen、Bryan Hooi 与 See-Kiong Ng。《FineVerify: Scaling Test-Time Compute with Fine-Grained Self-Verification for Agentic Search》。arXiv 预印本 arXiv:2606.00660，2026。https://arxiv.org/abs/2606.00660。官方代码和数据：https://github.com/XuZhao0/fineverify。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VaPR-30K 发布超过 3 万视觉推理 chosen/rejected 对，并以困难负例强化细粒度视觉—语言推理偏好学习。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "视觉语言偏好数据集与对齐方法",
+  "best_for_ch": "需要多模态 DPO、视觉推理偏好对或困难负例构造的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Rohan Wadhawan、Fabrice Y. Harel-Canada、Zi-Yi Dou、Suhaila Shakiah、Robinson Piramuthu、Nanyun Peng",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:19:40Z"
+}

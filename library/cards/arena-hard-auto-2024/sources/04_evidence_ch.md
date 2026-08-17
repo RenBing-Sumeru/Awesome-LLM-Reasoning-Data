@@ -1,0 +1,1 @@
+arXiv 摘要报告 Arena-Hard-Auto 由 BenchBuilder 筛出的 500 个困难 prompt 组成。论文配置下，它相对 MT-Bench 有 3 倍模型区分度、与人类偏好排名 98.6% 相关，并且评测成本约 20 美元。单条记录的证据是某个 prompt-answer pair 的 judge comparison，不是事实正确性证明。证据边界是 judge 模型、baseline、prompt 版本、style control、回答生成设置，以及用来验证的人类偏好参照。

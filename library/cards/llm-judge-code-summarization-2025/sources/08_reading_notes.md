@@ -1,0 +1,5 @@
+- Position: tests LLM judging for code correctness and summary quality.
+- Lever: compare prompts and judges against cleaned executable tests or triple human labels.
+- Artifact: a 1,163-summary public human-judgment dataset and replication package.
+- Evidence: GPT-4-turbo is best but accepts wrong code in 50% of reported cases.
+- Reuse: calibrate on target tasks; never treat an unvalidated judge as an oracle.

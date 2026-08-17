@@ -1,0 +1,4 @@
+- Keep the deployed prompt/completion flow separate from the undisclosed post-training record schema.
+- Treat `reasoningContent` and `[REDACTED]` as runtime interface facts, not released reasoning traces.
+- Keep SFT/RLHF labels separate from a disclosed preference, reward, or verifier contract.
+- Read the 6.4K and 8.5K safety sets as unreleased evaluation claims, not data-quality proof.

@@ -1,0 +1,6 @@
+- “经验”应读作形式提示→推理→Lean/搜索/Python 调用→响应→缓存 lemma→摘要/重启→终止 `+1/-1`；这些记录本身未发布。
+- Sketch Rubric 是混合契约：Lean 结构、未披露自然语言 lemma verifier 与 Long-CoT rubric；`+1` 要求≥3 个 lemma、`S_FL≥0`、`S_NL≥0.7`。
+- Agent 结果绑定 64K/28 calls 与 Pass@8×8；叶子绑定 Pass@3×3，Putnam 递归绑定 depth 4→8。
+- 记录算力上限：完整 Putnam/FATE/Combi 每题 10 H20-days，Putnam 2025 每题最多 40 H20-days。
+- Putnam-200 监控 1,200 个 step 并选择 step 1,055 后才报告完整 PutnamBench；没有 Putnam/FATE 去污染。
+- 官方 zip 含 11 个 Lean/Mathlib 4.22.0 成功证明；`VerifyStmt` 仅检查类型相等，训练与失败轨迹均未开放。

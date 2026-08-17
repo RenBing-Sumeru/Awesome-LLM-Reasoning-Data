@@ -1,0 +1,1 @@
+For data researchers, the paper is a concrete recipe to compare: state granularity, candidate source, label or preference construction, negative examples, and acceptance criteria. For model builders it can support PRM training, best-of-N reranking, tree search, and trace filtering. For evaluators, first-error localization and calibration matter more than answer accuracy alone.

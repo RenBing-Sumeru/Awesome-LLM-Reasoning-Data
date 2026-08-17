@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "聚合冻结 Transformer 各层的分数 token logit，以提升点式 LLM 评审与人工评分的一致性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测器、验证器、奖励或基准可靠性研究",
+  "best_for_ch": "需要核查推理数据与自动评测可靠性的研究者。",
+  "confidence_ch": "高：已逐页核对 NeurIPS 论文、作者机构与公开代码。",
+  "authors_ch": "Peng Lai, Jianjie Zheng, Sijie Cheng, Yun Chen, Peng Li, Yang Liu, Guanhua Chen",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

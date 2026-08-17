@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Google DeepMind",
+    "Google Research",
+    "Google Cloud",
+    "Kaggle"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2501.03200",
+    "https://arxiv.org/pdf/2501.03200"
+  ],
+  "verification_note": "PDF gives a symbol legend covering the listed Google/Kaggle units."
+}

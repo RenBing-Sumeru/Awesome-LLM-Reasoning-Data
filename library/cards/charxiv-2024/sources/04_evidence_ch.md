@@ -1,0 +1,1 @@
+论文报告了 2,323 个自然且多样的论文图表，并给出现有多模态模型与人类的明显差距：GPT-4o 为 47.1% accuracy，作者引用的最强开源模型为 29.2%，人类为 80.5%。逐样本证据不是总分，而是每个图表问题的核验答案和 evaluator 对模型回答的判定。官方 GitHub、项目页、Hugging Face 数据集和 OpenReview/NeurIPS 记录支撑其公开发布状态。证据边界包括 public benchmark 版本、prompt、judge 模型，以及总分不能自动证明每个图表解释都语义完整。

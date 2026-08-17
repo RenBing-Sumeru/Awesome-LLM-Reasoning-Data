@@ -1,0 +1,1 @@
+Liu 等（2024），《Skywork‑Reward: Bag of Tricks for Reward Modeling in LLMs》，arXiv:2410.18451。原文：https://arxiv.org/abs/2410.18451；官方发布：https://github.com/SkyworkAI/Skywork-Reward。复现 80K 混合前，应查阅发布/数据文档中的确切集合、检查点和当前许可。

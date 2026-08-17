@@ -1,0 +1,6 @@
+- 优先阅读 §§3.2-3.4：六种 A1-A6 action 定义 state/action 对象，semantic grouping 与 model likelihood 定义反馈契约。
+- 区分主要搜索预算与消融：4 个 rollout、深度 5、最多两个子问题、top-10 retrieval 是主要设置，8、12、16 个 rollout 是 scaling 条件。
+- 将仓库 `data/` 目录视为有限 benchmark 输入，不要把它当作论文运行 MCTS tree 或 trace 的发布。
+- 在假定完整性前检查 generator 和 discriminator writer：终点与逐 rollout JSON 省略结构化全节点 tree，持久化 correctness 字段也省略完整 selector score。
+- 把 retrieval 作为可变环境审计：论文的 Bing/LangChain 设置与公共 Cohere/Azure/FAISS 加 GPT-4o helper 路径不是固定等价实现。
+- 不要从可能的 trace schema 推断 training use；有证据的用途是 test-time compute 与 evaluation。

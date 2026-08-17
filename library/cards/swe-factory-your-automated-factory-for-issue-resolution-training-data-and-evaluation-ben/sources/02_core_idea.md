@@ -1,0 +1,3 @@
+SWE-Factory’s core contribution is a three-component data factory: SWE-Builder combines four specialized agents with environment memory; standardized exit codes replace project-specific test parsers; and reliable execution signals drive automated fail-to-pass validation. The official SWE-Factory-Gym additionally releases 2,809 trainable Python repair instances.
+
+Each task contains an issue, base and gold commits or patches, a container environment, test commands, and fail-to-pass/pass-to-pass results. Acceptance requires successful environment construction, a target failure at base, success after the gold fix, and no regression. These execution fields directly provide terminal rewards for agents and allow continued expansion from new repositories.

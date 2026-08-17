@@ -1,0 +1,11 @@
+The following combines author-disclosed boundaries with curator inferences grounded in the paper and inspected releases:
+
+- The headline counts conflict: `10,398 / 23,430` is 44.38%, not the 39.9% replay-success rate used in cost derivation, and another sentence says “nearly 5,000 verified trajectories.” The release adds 52,594 turns without a trajectory/subset mapping.
+- Success is a judgment label, not a strict terminal predicate. GPT-4o evaluator accuracy is reported as 84.0%, and the prompt permits several partial-completion shortcuts. False accepts and false rejects remain possible.
+- No failed-trajectory split, rejection ledger, evaluator output, failure reason, earliest-failure record, or retry history is public. Success-only retention hides the rejected distribution and can favor easier, stable, or judge-preferred sites.
+- Public data lacks trajectory/tutorial IDs, source URLs, sites, categories, timestamps, outcomes, screenshots/video, DOM/HTML, network/native Playwright traces, and mappings to 6,000/10,000 SFT subsets or the checkpoint. It is a text-turn export, not the full paper object.
+- The code repository supplies evaluation scaffolding, while Data Preparation and Training are empty and collection, filtering, replay, evaluation, serialization, and SFT pipelines are missing. There is no tag, release, root license, test suite, or paper-run manifest.
+- The dataset declares no license. Model Apache-2.0, manuscript CC BY-NC-ND 4.0, and project-footer CC BY-SA 4.0 do not license separate code/data, RedPajama tutorial text, live-site content, screenshots, or derived traces.
+- Source pages and live websites introduce copyright, attribution, terms-of-use, privacy, credential, session, and PII risks. No per-page rights manifest, consent/account policy, scanning, redaction, retention, takedown, or deletion procedure is disclosed.
+- Live sites and tutorials drift independently; Appendix H demonstrates an expired-tutorial failure. No replay timestamp, archived page, site snapshot, browser/container digest, dependency lock, or reset-state manifest supports exact replay.
+- No exact or semantic contamination audit is disclosed for RedPajama sources against WebArena, ScreenSpot, Mind2Web, or model pretraining. Describing WebArena as OOD does not replace a row/task overlap study.

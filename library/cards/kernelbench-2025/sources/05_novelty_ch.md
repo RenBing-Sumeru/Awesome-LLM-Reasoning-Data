@@ -1,0 +1,1 @@
+已有代码 benchmark 通常奖励功能正确，系统 benchmark 则多假设 kernel 由人或 autotuner 写出。KernelBench 把对象改成 LLM-authored GPU kernel，并在正确性之后把性能作为一等验收维度。方向信号是：推理评测可以包含可执行、受硬件调解的 reward，而不只是文本评分。质量信号来自公开 workload、harness、dataset、项目页和 leaderboard。不新的部分是 CUDA benchmarking、数值容差、随机测试和 kernel autotuning 本来就是系统领域常规做法。复用前要检查许可、workload 谱系、公开测试污染、hidden/eval split 策略、精确环境，以及目标硬件是否匹配报告的速度 claim。

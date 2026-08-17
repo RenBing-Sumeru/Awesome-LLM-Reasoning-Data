@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HalluCounterEval 发布合成与人工专家标注的问答响应，并保留幻觉二元标记、置信度和最优回答，适合黑盒模型输出质量监督。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据集与评测论文",
+  "best_for_ch": "需要细粒度事实性、安全性或评审反馈资源的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ashok Urlana、Gopichand Kanumolu、Charaka Vinayak Kumar、Bala Mallikarjunarao Garlapati、Rahul Mishra",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:18:28Z"
+}

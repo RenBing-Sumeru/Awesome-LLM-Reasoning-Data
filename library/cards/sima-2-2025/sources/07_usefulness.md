@@ -1,0 +1,3 @@
+SIMA 2 offers a practical embodied-data schema: versioned environment and saved state, RGB history, instruction provenance, dialogue/reasoning annotations, action chunks, verifier type/output, human preferences, terminal reason, and transformation lineage. Separating human intent-before-action data from post-hoc outcome annotation is especially important.
+
+For self-improvement, the report suggests logging task-generator prompts, task lineage, actor trajectory, independent reward evidence, 0–100 judge score, acceptance decision, experience-bank generation, and policy checkpoint. Independent or diversified judges, failed-trajectory retention, and executable environment snapshots would materially improve auditability.

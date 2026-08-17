@@ -1,0 +1,124 @@
+id: dynamic-early-exit-reasoning-2025
+title: Dynamic Early Exit in Reasoning Models
+year: 2025
+venue: ICLR 2026
+authors:
+- Chenxu Yang
+- Qingyi Si
+- Yongjie Duan
+- Zheliang Zhu
+- Chenyu Zhu
+- Qiaowei Li
+- Minghui Chen
+- Zheng Lin
+- Weiping Wang
+source_role:
+- scaling_study
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematics
+- science
+- code
+training_use:
+- test_time_compute
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2504.15895
+  arxiv: https://arxiv.org/abs/2504.15895
+  code: https://github.com/iie-ycx/DEER
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.15895
+  venue: https://openreview.net/forum?id=NpU7ZXafRi
+  openreview: https://openreview.net/forum?id=NpU7ZXafRi
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.15895
+data_object:
+  prompt_source: Ten named reasoning benchmarks used for evaluation; no standalone rollout corpus is released.
+  trace_author: The evaluated target model generates its own CoT, transition candidates, trial answers, token probabilities,
+    and exit decision online.
+  answer_format: Think-delimited CoT prefix plus transition event, induced boxed trial answer, token-level confidence, and
+    exit-or-continue action.
+  process_fields:
+  - transition_point
+  - trial_answer
+  - self_confidence
+  - exit_decision
+  - branch_state
+  environment_or_substrate: Hugging Face Transformers and vLLM decoding; the paper also describes branch-parallel decoding
+    with dynamic KV-cache pruning.
+  verifier_or_reward: Model-internal trial-answer token probabilities, optionally calibrated across prompts; this is self-confidence
+    rather than an external correctness verifier.
+  terminal_predicate: Exit when calibrated trial-answer confidence exceeds lambda; the reported default is 0.95, with an additional
+    end-of-thinking condition in the released Qwen3 implementation.
+recipe_metadata:
+  base_model: Eleven reported open reasoning models from DeepSeek-R1-Distill-Qwen, Qwen3, QwQ-32B, and DeepSeek-R1 families;
+    DEER trains no new policy.
+  teacher: unknown
+  generator: The target model's own online CoT and answer inductions.
+  filtering_rule: Linguistic action-transition markers or high-entropy step boundaries trigger trial branches; confidence
+    thresholding selects exit versus continuation.
+  sampling_protocol: Main correctness experiments use zero-shot CoT and greedy single-sample decoding; small AMC/AIME sets
+    are evaluated over repeated rounds.
+  rollout_count: One greedy sample per main correctness evaluation; four rounds are reported for AMC 2023, AIME 2024, and
+    AIME 2025, with additional repeated runs for confidence intervals.
+  temperature: Greedy decoding in main experiments; a Qwen3 supplementary setting uses top-p 0.95 and temperature 0.6.
+  inference_budget: Main experiments use a 16,384-token maximum; selected Qwen3 supplementary runs use 32,768 tokens.
+  optimizer_or_scaffold: Training-free inference wrapper with DEER, multi-prompt DEER-PRo, and a paper-described branch-parallel
+    acceleration variant.
+audit:
+  source_mixture: Raw CoTs, trial branches, confidence sequences, candidate events, and exit logs are not released as a versioned
+    corpus.
+  split: Benchmark-native evaluation splits; no derived trace split or replay manifest is published.
+  decontamination: unknown
+  license: The official code repository is MIT; no separate trace or data release license exists because no rollout corpus
+    is documented.
+  lineage: prompt -> online CoT prefix -> transition monitor -> induced trial answer -> model self-confidence -> exit or continuation
+    -> benchmark-scored final answer
+  known_failure_modes:
+  - model self-confidence can be miscalibrated and is not independent correctness verification
+  - linguistic transition markers and confidence thresholds can be model- and language-specific
+  - trial-answer branches add latency and memory overhead, especially for code outputs
+  - premature exit can preserve a confident wrong answer or truncate an unfaithful rationale
+  citation_status: verified
+  confidence: high
+  notes: Final ICLR/OpenReview and arXiv v3 metadata plus the official MIT repository were checked. The repository currently
+    releases mathematical-task Hugging Face/vLLM code, while code generation, branch-parallel acceleration, and versioned
+    rollout data remain unavailable.
+inclusion_reason: A model-internal trace selector that turns transition events, trial answers, and self-confidence into an
+  explicit test-time exit decision with concrete calibration and replay risks.
+related: []
+tags:
+- deer
+- early-exit
+- self-confidence
+- test-time-compute
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: DEER probes trial answers at reasoning transitions and exits when model self-confidence is high, while the
+  official repository releases only part of the paper's implementation and no reusable rollout corpus.
+why_it_matters: It makes adaptive trace truncation auditable as a sequence of transition detection, answer induction, confidence
+  estimation, and branch selection rather than treating reduced benchmark token counts as data-quality evidence.
+card: null
+needs:
+- needs_rollouts
+- needs_branch_parallel_code
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, ICLR venue, and MIT code repository verified; status, category, and L3 curation level are preserved.

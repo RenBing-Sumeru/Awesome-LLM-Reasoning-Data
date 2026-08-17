@@ -1,0 +1,1 @@
+LLM judges usually regenerate a verdict for every item. PAJAMA moves the reusable artifact to executable judging logic and uses weak supervision to combine programs. Program synthesis and weak supervision are not new separately; the change is treating programs as the judge representation. Inspect generated criteria for semantic omissions before reuse.

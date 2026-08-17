@@ -1,0 +1,5 @@
+The report constructs RL data from filtered text and image-text questions across STEM, coding, competition, and general reasoning. A prompt must be diverse, difficulty-balanced, and objectively evaluable. The disclosed data record is a problem with a ground-truth answer, sampled CoT and final answer, and a scalar reward; coding tasks also use selected test cases.
+
+Kimi k1.5 trains with a variant of online policy mirror descent, length penalties, curriculum and prioritized sampling, and partial rollouts. It uses a small verified long-CoT warmup set to prime planning, evaluation, reflection, and exploration. For shorter outputs, it derives DPO and RL data from long-CoT responses by preferring the shortest correct completion.
+
+The feedback is mixed rather than universally programmatic. It includes direct rules and code execution, a classic math reward model, a CoT math reward model, and final-answer-based rewards. The report itself identifies the possibility of reward hacking and filters some easy-to-guess answers, but it does not release the validators or their full error audits.

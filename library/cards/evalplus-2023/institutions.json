@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "University of Illinois Urbana-Champaign",
+    "Nanjing University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:55:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2305.01210",
+    "https://github.com/evalplus/evalplus",
+    "https://evalplus.github.io/",
+    "https://openreview.net/forum?id=1qvx610Cu7"
+  ],
+  "verification_note": "arXiv, official EvalPlus repository/site, and OpenReview lead verify authors, UIUC/Nanjing affiliations, NeurIPS 2023 status, and public Apache-2.0 evaluation package/tests."
+}

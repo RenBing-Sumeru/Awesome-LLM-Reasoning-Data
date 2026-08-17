@@ -1,0 +1,3 @@
+Use HotBugs.jar as a schema and evaluation surface for software-repair agents that need repository checkout, issue understanding, patch generation, build execution, and test feedback. It is also a checklist for constructing time-critical repair data: keep issue priority, issue timestamps, release proximity, branch ID, buggy/fixed commit, developer patch, tests, build tools, and failure output.
+
+For atlas use, it grounds environment trajectory data in a concrete verifier contract: an agent action becomes auditable when it is tied to a branch, patch, command, test result, and hot-fix provenance.

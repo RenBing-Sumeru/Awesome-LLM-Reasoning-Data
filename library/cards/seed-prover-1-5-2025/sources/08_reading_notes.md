@@ -1,0 +1,6 @@
+- Read “experience” as formal prompt → reasoning → Lean/search/Python calls → responses → cached lemmas → summary/restart → terminal `+1/-1`; the records themselves are not released.
+- Keep Sketch Rubric mixed: Lean structure, an undisclosed natural-language lemma verifier, and a Long-CoT rubric; `+1` requires ≥3 lemmas, `S_FL≥0`, and `S_NL≥0.7`.
+- Bind agent results to 64K/28 calls and Pass@8×8; bind leaves to Pass@3×3 and Putnam recursion to depth 4→8.
+- Record compute ceilings: 10 H20-days/problem for full Putnam/FATE/Combi and up to 40 H20-days/problem for Putnam 2025.
+- Putnam-200 monitored 1,200 steps and selected step 1,055 before full PutnamBench reporting; no Putnam/FATE decontamination is provided.
+- The official zip has 11 successful Lean/Mathlib 4.22.0 proofs; `VerifyStmt` checks type equality only, and no training or failed trajectories are open.

@@ -1,0 +1,4 @@
+- Read pp.14–17 for the LLM SFT, unified reward system, progressive PPO, UPO, and reward normalization.
+- Read pp.17–19 for VLM synthesis, rejection sampling, thinking/non-thinking fusion, and RLVR environments.
+- Treat the 2.3M SFT count as a reported training corpus, not a public dataset release.
+- Separate Apache-2.0 model/code licensing from the undisclosed rights of post-training records.

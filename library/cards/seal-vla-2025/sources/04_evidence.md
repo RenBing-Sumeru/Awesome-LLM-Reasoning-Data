@@ -1,0 +1,3 @@
+The paper and official release establish the annotation format, three LIBERO-R variants, episode/segment linkage, training switches, simulation-backed candidate generation, and VLM alignment check. The authors report manual review of generated reasoning annotations, which is direct process evidence, although the per-item review record and disagreement protocol are not public.
+
+LIBERO success rates, OOD comparisons, and runtime-scaling results evaluate the trained policy and steering procedure. They do not validate every annotation or VLM judgment. The official repository exposes code and data, but its README still lists pretrained checkpoints as forthcoming; the checkpoint release boundary should therefore remain unknown until separately verified.

@@ -1,0 +1,3 @@
+On the 500 physician-labeled answers, the strongest existing judge by accuracy was Qwen-80B at 77.60%, while MedGemma-27B reached 71.80%; the three surface-similarity metrics had only 14.88–25.40 Pearson correlation with expert labels (Table 1–2). Generator-stratified F1 also varied for every judge, supporting the claim that aggregate agreement conceals generator sensitivity.
+
+The controlled alignment comparison uses the same compact base model and held-out set: GRPO-Phi-3.5-mini reaches 71.40% accuracy and 57.06 F1, versus 47.00% and 52.59 for the base (Table 1). This supports improvement in this small French medical setting, not autonomous clinical use or invariance across languages and generators.

@@ -1,0 +1,5 @@
+Correctness is relative to the constructed TDG, checklist, app state, and LLM alignment policy. Completing the selected TDG path is not the same as proving that the agent satisfied a real user's latent preference, especially because the personas and preferences are synthetically generated from predefined templates.
+
+The paper's own limitations are important: 22 apps across 10 scenarios are still a small subset of the mobile ecosystem; personas are synthetic rather than collected from real users; the benchmark is primarily Android-oriented; and TDGs are manually constructed by domain experts. Artifact risk remains because the listed code/data link is an anonymous 4open.science status page, not a durable GitHub or dataset release at the time of checking.
+
+Scoring limitations include evaluator-model drift, ambiguous partial completion, alternative valid paths missing from the checklist, and UI state changes between screenshots. For high-stakes domains such as finance or health, the current benchmark should not be read as evidence of safe personalized phone automation.

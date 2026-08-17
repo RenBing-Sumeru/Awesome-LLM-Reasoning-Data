@@ -1,0 +1,234 @@
+id: envfactory-2026
+title: 'EnvFactory: Scaling Tool-Use Agents via Executable Environments Synthesis and Robust RL'
+year: 2026
+venue: arXiv preprint
+authors:
+- Minrui Xu
+- Zilin Wang
+- Mengyi Deng
+- Zhiwei Li
+- Zhicheng Yang
+- Xiao Zhu
+- Yinhong Liu
+- Boyu Zhu
+- Baiyu Huang
+- Chao Chen
+- Heyuan Deng
+- Fei Mi
+- Lifeng Shang
+- Xingshan Zeng
+- Zhijiang Guo
+source_role:
+- agent_environment
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- tool_use
+- agent_trajectories
+- mcp_environments
+- stateful_environments
+training_use:
+- sft
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2605.18703
+  arxiv: https://arxiv.org/abs/2605.18703
+  code: https://github.com/LARK-AI-Lab/EnvFactory
+  data: https://huggingface.co/collections/LARK-Lab/envfactory
+  project: https://lark-ai-lab.github.io/envfactory.github.io/
+  huggingface: https://huggingface.co/collections/LARK-Lab/envfactory
+  doi: https://doi.org/10.48550/arXiv.2605.18703
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: EnvGen searches authentic online resources for broadly useful tool ecosystems and turns source-grounded sketches
+    into MCP metadata; QueryGen samples dependency-feasible tool chains, constructs a user profile, narrative scenario, schema-conforming
+    initial database state, and natural multi-turn requests refined with implicit references, action compression, calibrated
+    ambiguity, and related goals.
+  trace_author: Kimi-K2-Thinking proposes, drafts, constructs, and verifies environments; Qwen3-30B-A3B-Thinking-2507 generates
+    SFT tool-use conversations with reasoning traces; DeepSeek-V3.2-Chat generates RL conversations. Sandboxed assistant and
+    simulated-user agents execute candidate interactions against the synthesized MCP environments, after which one solved
+    candidate is selected and simplified.
+  answer_format: Public SFT rows contain instruction, input, output, system, and history, with each accepted tool-call or
+    user-interaction step expanded into one training sample. Public RL rows contain a serialized dialogue prompt, data_source,
+    agent_name, ability, reference tool calls in reward_model.ground_truth, and MCP server names plus serialized initial and
+    target final database configurations in extra_info.mcp_factory_kwargs.
+  process_fields:
+  - source_research_note
+  - environment_metadata
+  - tool_schema
+  - executable_tool_code
+  - database_schema
+  - initial_database_state
+  - user_profile
+  - scenario
+  - dialogue_history
+  - user_query
+  - reasoning_trace
+  - tool_call
+  - tool_response
+  - masked_arguments
+  - reference_tool_calls
+  - final_database_state
+  - reward_components
+  - terminal_condition
+  environment_or_substrate: Stateful Python tool servers expose MCP interfaces over isolated synthetic databases. The repository
+    releases schema sketches/research notes, standardized metadata, executable tools, MCP registration, and intermediate generation
+    checkpoints; the environments imitate source-grounded functionality but are not the original production APIs.
+  verifier_or_reward: Released RL code combines binary coverage of the reference tool calls, exact final-state equality averaged
+    over used MCP servers, an extra-call length penalty, and a malformed-tool-call format penalty. Reference arguments marked
+    masked are ignored, and trace matching is order-insensitive. The default fixed trace/state mixture is 0.5/0.5 in the released
+    VeRL config.
+  terminal_predicate: Generation stops when the simulated user emits the stop condition or the maximum interaction-step budget
+    is reached. The public RL row is turn-level and does not expose an explicit terminal flag; its replay contract is prompt
+    plus environment identifiers, initial state, reference calls, and target final state.
+recipe_metadata:
+  base_model: Qwen3-1.7B, Qwen3-4B, and Qwen3-8B training backbones; official post-trained checkpoints are released for all
+    three sizes.
+  teacher: Qwen3-30B-A3B-Thinking-2507 supplies SFT conversations and reasoning traces. Kimi-K2-Thinking and DeepSeek-V3.2-Chat
+    are construction/generation agents rather than a single common distillation teacher.
+  generator: EnvGen uses Search, Code, and Test agents to propose, implement, test, diagnose, and revise environments. QueryGen
+    builds a semantic-plus-LLM-refined dependency graph, samples feasible tool chains, synthesizes/refines requests, runs
+    sandboxed assistant-user interactions, and selects a solved candidate.
+  filtering_rule: Candidate solutions are evaluated against their database-state changes; the best solving trajectory is selected,
+    redundant calls and unnecessary user interactions are removed, and correctness-insensitive arguments are masked. Current
+    SFT conversion also drops steps marked REMOVE and tool calls whose immediate response contains Fail or Error. Rejected
+    candidates are not exposed as a labeled public ledger.
+  sampling_protocol: Each sampled tool input must be optional, user-providable, or produced by an earlier sampled tool. Appendix
+    H sets recursive dependency depth to 3 and a 0.1 stochastic prior-tool override; sampled chains are partitioned into turns
+    containing 1-5 tools. The current repository presets set pass_k to 4, but an immutable binding to the paper run is not
+    published.
+  rollout_count: 8
+  temperature: unknown
+  inference_budget: Paper RL settings use a 16k maximum trajectory length and 4k maximum generation length. Current QueryGen
+    presets use 10 generation iterations and 15 solve iterations, but their exact binding to the released paper-run data is
+    unknown.
+  optimizer_or_scaffold: The paper reports full SFT in LlamaFactory at learning rate 1e-6, batch size 256, for 3 epochs, followed
+    by GRPO in VeRL at learning rate 1e-6, rollout size 8, batch size 256, and 10 epochs, initializing RL from the first SFT
+    epoch checkpoint. The current repository SFT config and HF model cards instead state 1 SFT epoch, so the exact checkpoint
+    recipe remains unresolved.
+audit:
+  source_mixture: The paper reports 85 verified MCP environments, 842 tools, seven domains, 1,622 SFT conversations, and 953
+    RL conversations. The official HF release expands these into 26,463 SFT-FILTERED rows, 53,412 SFT-ALL rows, and 3,092
+    RL rows. These row counts and the paper conversation counts are different units and lack a published immutable mapping.
+  split: The paper does not publish a split manifest. Current processing code specifies a conversation-level 95/5 RL train/validation
+    split with default seed 42, but each official HF dataset exposes only a train split; the two SFT releases expose no validation
+    or test split.
+  decontamination: unknown
+  benchmark_overlap: No semantic train/evaluation overlap analysis was verified across source resources, generated environment/tool
+    names, synthesized requests, and BFCL, MCP-Atlas, tau2-Bench, or VitaBench. MCP-Atlas results use only 30 of 36 servers
+    and 291 of 500 tasks because of connectivity constraints.
+  license: Official HF dataset and model cards declare Apache-2.0, and the author-linked VeRL fork is Apache-2.0. The main
+    EnvFactory repository has no detected license, while the paper says artifacts use restrictive licenses. Rights for copied
+    source descriptions, API documentation, MCP sketches, and generated derivatives are not reconciled.
+  lineage: Authentic-source research note -> environment sketch/metadata -> state schema and executable MCP code -> generated
+    tests and revision checkpoint -> dependency graph/tool chain -> profile, scenario, initial state, and refined requests
+    -> sandboxed candidate interactions -> selected/filtered conversation -> step-expanded SFT or turn-level RL row -> SFT
+    plus GRPO checkpoint. No record-level immutable manifest binds this lineage to exact source, code, HF, VeRL, and model
+    revisions.
+  release_version: Paper arXiv v1 is dated 2026-05-18. Main code was inspected at eff3b22d3fc26afa14165cfe208c2a4c9ecc39e3;
+    VeRL fork at dab0fcb68c46509ba3120eb8d35aa47e17bdb55f; HF revisions are 963ec0607c016b7fafbd81570987daaf8d571153 (RL),
+    ee97a07fd01fe5902ac7ac6358dbbfa5403cc683 (SFT-FILTERED), and 9beb86eab43f99bf635639e0f29360c8789e8840 (SFT-ALL). The main
+    repository has no tags or releases.
+  successful_and_failed_sample_retention: Public releases retain selected/processed samples. The paper generates multiple
+    candidates and selects a solved one; SFT conversion filters failed tool calls. No public candidate-level accept/reject
+    ledger, failure label, or complete failed-trajectory release was verified. The larger SFT-ALL release does not expose
+    fields sufficient to reconstruct those decisions.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Trace reward is order-insensitive subset/permutation coverage with masked arguments, so reordered or extra calls may satisfy
+    trace correctness; extra calls are only softly penalized.
+  - Exact final-state equality can miss harmful or inefficient intermediate actions and can reject semantically valid outcomes
+    whose serialized state differs.
+  - Selection and failed-call filtering remove negative evidence, limiting audits of generator failures, recovery behavior,
+    and reward false positives/negatives.
+  - HF dataset-card prose swaps the SFT-ALL and SFT-FILTERED scale descriptions relative to the actual 53,412 and 26,463 row
+    counts; model cards also call filtered data 53.4k.
+  - Paper, repository, and model-card SFT epoch statements conflict, and no immutable paper-run manifest binds data, environments,
+    reward code, dependencies, seeds, and checkpoints.
+  - Stateful write-capable MCP servers require per-conversation isolation and dedicated connections, creating throughput and
+    cross-session-contamination risks.
+  - Online-source and LLM-guided environment/query construction can inherit source/model bias and can enable unsafe automation
+    in sensitive domains; source rights and privacy controls are not documented record by record.
+  citation_status: verified
+  confidence: high
+  remaining_unknowns:
+  - Exact paper-run source snapshots, code/data/checkpoint revisions, environment list, seeds, and mixture weights
+  - Environment revision budget, dependency similarity threshold, paper-run candidate count, and generation temperatures
+  - Reconciled SFT row counts, filtering names, and conversation-to-row mapping
+  - Labeled rejected/failed candidate trajectories and selection decisions
+  - Main-code and upstream source/API redistribution rights
+  - Semantic contamination, benchmark overlap, privacy, consent, and PII audits
+  notes: Official arXiv v1, project/repository, repository files, author-linked VeRL fork, HF collection, three datasets,
+    and three model pages were checked on 2026-07-20. Citation, code, data, model, and project links are verified; paper-run
+    reproducibility and rights remain partial.
+inclusion_reason: 'EnvFactory is a direct environment-and-agent-trajectory entry: it publishes source-grounded stateful MCP
+  environments, concrete step/turn training records, environment states, reference actions, and executable feedback code,
+  while its release inconsistencies make version, failure-retention, and rights auditing materially instructive for post-training
+  data reuse.'
+related:
+- envscaler-2026
+- feedback-driven-tool-use-improvements-via-automated-build-environments-2025
+tags:
+- envfactory
+- tool-use
+- agentic-rl
+- mcp
+- executable-environments
+- agent-trajectories
+- trajectory-synthesis
+- stateful-environments
+- composite-reward
+- release-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: EnvFactory releases source-grounded stateful MCP sandboxes, step-expanded SFT records, and turn-level RL
+  records whose feedback mixes reference-call coverage with exact final-state checks, but the public artifacts lack an immutable
+  paper-run binding and rejected-trajectory ledger.
+why_it_matters: It makes executable state, tool dependencies, simulated-user interaction, reference calls, and final-state
+  feedback first-class post-training data, while exposing why row-unit reconciliation, reward semantics, source rights, failure
+  retention, and version pinning must be audited separately from benchmark gains.
+card: null
+needs:
+- 'needs_release_reconciliation: publish the conversation-to-row mapping and correct the swapped SFT-ALL/SFT-FILTERED card/model-card
+  counts'
+- 'needs_reproduction: publish an immutable paper-run manifest binding source snapshots, environment/tool versions, both repository
+  commits, HF revisions, model revisions, dependencies, seeds, configs, and checkpoint hashes'
+- 'needs_failure_ledger: release or characterize rejected candidates, failed tool calls, recovery traces, selection scores,
+  and retained/dropped IDs'
+- 'needs_license_audit: reconcile paper restrictive-license language, HF Apache-2.0 labels, missing main-code license, and
+  upstream source/API rights'
+- 'needs_split_audit: publish immutable conversation-level train/validation/test assignments and benchmark-overlap/decontamination
+  analysis'
+- 'needs_verifier_audit: test order-insensitive trace matching, masked arguments, extra-call penalties, intermediate side
+  effects, exact-state brittleness, and reward gaming'
+- 'needs_privacy_audit: document source-data privacy, consent, PII handling, redaction, and sensitive-domain safeguards'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, code, project, HF datasets/models/collection, DOI resolver, and author-linked VeRL reward implementation
+    were verified. Artifact existence is high-confidence; reuse remains partial because exact paper-run binding, split/decontamination,
+    failure retention, rights, privacy, and configuration reconciliation are unresolved.

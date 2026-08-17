@@ -1,0 +1,10 @@
+The paper's reconstructable pipeline is:
+
+1. **Inputs.** Collect TACO, APPS, CodeContests, and OpenR1 CodeForces questions, remove exact string duplicates, and retain 28,904 questions. Exclude the CodeContests and OpenR1 CodeForces test splits in the public release.
+2. **Contamination screen.** Retrieve each question's nearest evaluation neighbor at cosine similarity threshold 0.7 for LiveCodeBench, CodeContests, HumanEval, and MBPP. Llama-3.3-70B-Instruct and Qwen2.5-32B-Instruct judge the flagged pairs; manual inspection of 90 pairs (at most 0.3% of the question set) finds no paraphrase or semantic match.
+3. **Generation.** DeepSeek-R1 produces multiple solutions per question through SGLang, primarily in Python, using nucleus sampling with temperature 0.6, top-p 0.95, an injected reasoning-start tag, and maximum output length 16k. A parallel C++ branch supports an IOI ablation.
+4. **Selection.** Require a completed reasoning trace and final `python` or `cpp` code block, reject code blocks inside the reasoning trace, extract the final solution, and parse syntax with Tree-sitter. The main path does not execute every solution.
+5. **Outputs.** The paper obtains 736,712 Python and 355,792 C++ samples. The HF 1.0 release exposes `input`, `output`, extracted `solution`, and provenance fields; split_1 reconstructs APPS/TACO prompts through `dataset`, `split`, and `index`.
+6. **Training/evaluation.** Fine-tune Qwen2.5 base and instruct 7B, 14B, and 32B models for 3 epochs with AdamW, batch 256, maximum sequence 32,768, learning rate 5e-5, cosine decay, warmup ratio 0.1, BF16, packing, and tensor/context parallelism on H100-80GB GPUs. Evaluation uses temperature 0.6 and maximum generation 30,720.
+
+Reproduction must pin two recipes. The paper's OCR-1 generation uses 16k output, while current NVIDIA-NeMo/Skills commit `74b8649` recommends OCR-2, prepares about 34K questions, truncates prompts above 3,200 tokens, and sets 32 random seeds plus 28,768 generated tokens in `r1.yaml`. That current code is a useful scaffold, not a frozen manifest of the paper's original run.

@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "National University of Singapore",
+    "Wuhan University",
+    "Zhejiang University",
+    "Nanjing University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2506.01520",
+    "https://formfactory-ai.github.io/",
+    "https://github.com/formfactory-ai/formfactory"
+  ],
+  "verification_note": "arXiv, project, and GitHub verify authors, institutions, forms, gold JSON, screenshots, and evaluator artifacts."
+}

@@ -1,0 +1,7 @@
+DeepSeek-V3.2, GLM-4.7, GPT-5.1, and Qwen3-32B instantiate schema, database, code, test, debug, dependency, and task agents. ScaleEnv generates 16 foundations and 2,560 tasks. The scaling study holds 1,024 tasks fixed while varying training domains over 2, 4, 8, and 16; a separate stability check compares two non-overlapping 4-domain sets with 1,024 tasks.
+
+The synthesis loop is executable throughout. Database tests enforce integrity constraints. Tool tests use matched instances and expected state transitions. Seed chains are code, so earlier outputs feed later arguments. State construction executes the chain, injects distractors, derives the ground-truth final state, and then broadens the dependency subgraph. Unexpected errors invoke a debug agent until the sampled test passes.
+
+Qwen3-8B and Qwen3-32B are trained with Zero-RL GRPO for 48 steps. Qwen2.5-72B-Instruct simulates the user. Rollout batch sizes are 1,024 and 2,048 respectively, demonstrating large-batch collection, but the paper does not disclose group size per task, concurrency, worker count, hardware, uniform horizon, decoding, seeds, or the numerical learning rate in the rendered public text.
+
+For replay, a task needs its initial state, tool/database code and dependencies, simulator setting, agent checkpoint, full dialogue/tool trace, final-state checker, and random seeds. The conceptual task object supports reset to an initial database, yet no reset API, isolation guarantee, snapshot format, or runnable package is released.

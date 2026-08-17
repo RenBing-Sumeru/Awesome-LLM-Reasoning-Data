@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "NaturalThoughts 按规模、难度和推理策略多样性选择 DeepSeek-R1 轨迹，研究哪些示范最能把通用 STEM 推理迁移给小模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "通用推理轨迹选择与蒸馏研究",
+  "best_for_ch": "适合为通用 STEM SFT 选择 teacher 轨迹，或比较数据规模与策展效果的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yang Li, Youssef Emad, Karthik Padthe, Jack Lanchantin, Weizhe Yuan, Thao Nguyen, Jason Weston, Shang-Wen Li, Dong Wang, Ilia Kulikov, Xian Li",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

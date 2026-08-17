@@ -1,0 +1,167 @@
+id: flames-2025
+title: 'FLAMES: Improving LLM Math Reasoning via a Fine-Grained Analysis of the Data Synthesis Pipeline'
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: EMNLP 2025'
+authors:
+- Parker Seegmiller
+- Kartik Mehta
+- Soumya Saha
+- Chenyang Tao
+- Shereen Oraby
+- Arpit Gupta
+- Tagyoung Chung
+- Mohit Bansal
+- Nanyun Peng
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1346/
+  arxiv: https://arxiv.org/abs/2508.16514
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1346
+  venue: https://aclanthology.org/2025.findings-emnlp.1346/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.1346/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-emnlp.1346.bib
+data_object:
+  prompt_source: Most seeded agents use the GSM8K and MATH training splits, balanced 75K/75K in a standard 150K agent dataset.
+    Taxonomy-Based Key Concepts instead uses a curated topic taxonomy, and QFT generates after model fine-tuning rather than
+    from an example in the generation prompt. Exact seed-to-output IDs are unavailable.
+  trace_author: Qwen2.5-32B-Instruct generates synthetic problems and Qwen2.5-Math-7B-Instruct generates worked solutions.
+    Agent-specific intermediate objects include key concepts, edit suggestions, composed subproblems, statements, reverse
+    questions, and inserted distractors.
+  answer_format: A unique synthetic math problem paired with one teacher-generated worked solution and extracted final answer.
+    The problem may also carry agent-specific intermediate text, source-seed context, or an intentionally irrelevant detail.
+  process_fields:
+  - seed_dataset
+  - seed_problem
+  - synthesis_agent
+  - intermediate_agent_output
+  - synthetic_problem
+  - generated_solution
+  - extracted_answer
+  - deduplication_result
+  - decontamination_result
+  - quality_control_strategy
+  - mixture_component
+  environment_or_substrate: 'An offline five-step pipeline: synthesize problems, synthesize solutions, apply problem and optional
+    solution quality control, full-parameter SFT a student, and evaluate the selected checkpoint. No interactive execution
+    or symbolic math environment is used.'
+  verifier_or_reward: Every problem receives exact-match deduplication and a test-overlap filter that removes a synthetic
+    problem when it contains at least 95% of a test problem's 8-grams. Six solution-control experiments combine three-sample
+    self-consistency, a Qwen2.5-Math-7B-Instruct solvability judgment, InternLM2-7B-Reward ranking, or the first solution.
+    The final FLAMES recipe uses First and no independent solution verification.
+  terminal_predicate: For the released-in-paper FLAMES recipe, a record is retained after exact deduplication and 8-gram test-overlap
+    filtering and is paired with the first generated solution; mathematical correctness is not a required independent terminal
+    predicate.
+recipe_metadata:
+  base_model: DeepSeek-Math-7B is the controlled-study student. Transfer experiments use Qwen2.5-Math-7B, Qwen2.5-14B, Mathstral-7B,
+    and Mistral-7B-v0.3.
+  teacher: Qwen2.5-Math-7B-Instruct is the solution teacher; a controlled comparison replaces it with DeepSeek-Math-7B-RL.
+  generator: 'Twelve problem agents: Few-Shot, Paraphrasing, Key Concepts, Seeded Key Concepts, Suggester-Editor, IQC, Ask
+    Me Anything, Self-Verification, FOBAR, QFT, plus the new Taxonomy-Based Key Concepts and Distraction Insertion agents.'
+  filtering_rule: Exact problem deduplication and 95%-of-test-problem 8-gram overlap removal are always applied. The six quality-control
+    variants are Strict Self-Consistency, Majority Self-Consistency, Solvability+RM, Majority+First, Solvability+First, and
+    First. The final datasets use First, retaining coverage instead of applying solution verification.
+  sampling_protocol: Agent comparisons target 150K unique post-deduplication and post-decontamination problems per agent,
+    normally split 75K from GSM8K seeds and 75K from MATH seeds. FLAMES mixes 50% Suggester-Editor, 20% IQC, 20% Taxonomy-Based
+    Key Concepts, and 10% Distraction Insertion into Small (150K), Large (1M), and XL (1.5M). FOBAR and Self-Verification
+    cannot always reach 150K unique problems.
+  rollout_count: unknown
+  temperature: Problem and solution generation both use temperature 0.7, top-p 0.9, top-k 50, repetition penalty 1, and at
+    most 2,048 new tokens. Three solution samples are generated only for the quality-control comparison; the final First recipe
+    does not disclose a larger candidate pool.
+  inference_budget: Full-parameter SFT runs on one Amazon EC2 P4 instance with 8 A100 GPUs, DeepSpeed ZeRO-3, batch size 4,
+    five epochs, and ten saved checkpoints. Evaluation uses temperature 0 and at most 2,048 new tokens. Total synthesis GPU
+    hours, random seeds, and per-agent generation cost are unknown.
+  optimizer_or_scaffold: The framework fixes problem and solution generators, deduplication, decontamination, training, and
+    evaluation while varying one construction factor. SFT uses the SWIFT library with default hyperparameters; the paper does
+    not enumerate every optimizer default or learning-rate setting.
+audit:
+  source_mixture: The final mixture contains 50% Suggester-Editor, 20% IQC, 20% Taxonomy-Based Key Concepts, and 10% Distraction
+    Insertion. Seeded components draw from GSM8K and MATH training data; the taxonomy component combines cited math taxonomies.
+    Item-level component and seed attribution are not released.
+  split: GSM8K and MATH training splits seed generation. Evaluation uses GSM8K, MATH5K, CollegeMath, GSMPlus, and OlympiadBench.
+    The reported checkpoint is selected by the highest average score on GSM8K and MATH, so evaluation-set selection is coupled
+    to two reported metrics; no separate FLAMES train/dev manifest is released.
+  decontamination: The paper removes a synthetic problem when it reproduces at least 95% of the 8-grams of a GSM8K or MATH
+    test problem. This is a concrete lexical control but does not cover CollegeMath, GSMPlus, or OlympiadBench and does not
+    establish semantic or paraphrase decontamination.
+  license: The ACL paper is CC BY 4.0. No official downloadable FLAMES dataset or dataset license was verified, and the paper
+    license does not license the unposted synthetic records or consolidate upstream seed, taxonomy, teacher-output, and model
+    terms.
+  lineage: The report gives stage-level roles from seed or taxonomy through named agent, Qwen problem generation, Qwen solution
+    generation, exact deduplication, 8-gram filtering, mixture assignment, SFT, and evaluation. Seed IDs, prompts for every
+    inherited agent, accepted and rejected records, per-record mixture labels, and model-ready manifests are unavailable.
+  known_failure_modes:
+  - The final First strategy can retain incorrect teacher solutions because it performs no independent solution verification
+  - The solvability judge marked 30.2% of human-written MATH500 problems unsolvable and rejected 49.3% of level-5 items
+  - Self-consistency can preserve correlated teacher errors and removes hard or diverse problems
+  - The solution teacher has a larger observed effect than the problem generator in one 50K ablation
+  - 8-gram decontamination misses semantic paraphrases and does not cover every evaluation set
+  - Selecting checkpoints on reported GSM8K and MATH results can bias those metrics
+  - No official dataset, construction code, rejected-record log, or per-record lineage is released
+  - Only English mathematics is studied and seed or generator biases can propagate
+  citation_status: verified
+  confidence: high
+  notes: The Findings paper, ACL Anthology metadata and BibTeX, official arXiv text, appendix prompts, and Responsible NLP
+    Checklist were checked. The checklist says scientific artifacts were created, but the official paper pages provide no
+    author-controlled code, dataset, model, or project link.
+inclusion_reason: A controlled study of problem agents, solution-quality controls, teachers, mixtures, and student models
+  that turns its findings into three large synthetic-math dataset recipes while leaving the actual records and construction
+  implementation unreleased.
+related: []
+tags:
+- synthetic-math-data
+- problem-synthesis
+- data-filtering
+- self-consistency
+- data-mixture
+- teacher-distillation
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: FLAMES compares 12 math-problem agents and six quality-control strategies, then defines 150K, 1M, and 1.5M
+  mixtures that favor coverage and the first teacher solution; the data and construction code are not officially released.
+why_it_matters: It exposes a concrete coverage-versus-verification trade-off, exact mixture recipe, teacher sensitivity, lexical
+  decontamination rule, and a failure case where an LLM solvability filter rejects valid hard problems.
+card: null
+needs:
+- 'needs_data: release FLAMES Small, Large, and XL records with stable IDs, splits, component labels, seed lineage, and rejected
+  candidates'
+- 'needs_code: release all agent prompts, parsers, deduplication, decontamination, quality-control, mixture, SFT, and evaluation
+  code'
+- 'needs_license: document dataset and derivative-output licenses plus upstream seed, taxonomy, and model-use terms'
+- 'needs_metadata: disclose generation counts, yields, retry behavior, random seeds, optimizer defaults, compute cost, and
+  per-agent failure rates'
+- 'needs_audit: add independent correctness checks, semantic contamination analysis across all five benchmarks, and checkpoint-selection
+  sensitivity'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Publication and preprint links verified; no author-linked FLAMES dataset, construction repository, model checkpoint,
+    or project page was verified.

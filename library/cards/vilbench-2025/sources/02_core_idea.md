@@ -1,0 +1,5 @@
+The evaluation object draws 150 examples each from MMStar and MathVista, and 100 each from MathVerse, MMMU Pro, and RealWorldQA. It is selected from 5,848 source examples. The reported evaluation target is answer accuracy after reward-guided candidate selection, not a direct measure of annotation correctness.
+
+ViLReward-73K begins with 16,926 prompts from three visual-math sources and two visual-perception sources. The paper reports 25,829 instances from MAVIS-Geometry, 31,406 from GeoQA170K, 1,425 from CLEVR-Math, 9,241 from A-OKVQA, and 5,659 from ScienceQA. The released Viewer confirms 73,560 rows, a single train split, English metadata, and image, tabular, and text modalities.
+
+Each public record retains a question, relative image path, one process string, a floating-point value in the displayed range 0 to 1, and a coarse source label. It does not retain the upstream answer, an image binary inside the row, explicit step boundaries, tree IDs, visit counts, or a human explanation of why the value is correct. Image files are distributed separately according to the official repository instructions.

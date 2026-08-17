@@ -1,0 +1,1 @@
+For a QA team whose EM/F1 failures may include valid paraphrases, run the released judge on the false-EM subset, retain the verdict and rationale, and audit a human-labeled sample. The output is a corrected evaluation report and a disagreement queue. Do not directly adopt it when context, gold answers, or a suitable human audit set are unavailable.

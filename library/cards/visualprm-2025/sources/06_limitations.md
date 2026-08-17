@@ -1,0 +1,15 @@
+The positive target is permissive. With 16 continuations and threshold mc_i > 0, one accepted terminal answer marks a prefix positive. A flawed step can therefore receive a positive label if the continuation model repairs it, guesses correctly, or the terminal checker accepts an equivalent-looking answer. Conversely, a sound but hard prefix is negative when all 16 samples fail.
+
+Monte Carlo labels are model- and verifier-conditioned estimates, not direct expert judgments. The original generator checkpoints, prompts, temperature, seeds, answer-extraction rules, parser versions, and source-specific checker mapping are not fully disclosed. Current official code supplies several automatic checks, but it is later code without a paper-run tag and includes v1.1/InternVL3 workflows.
+
+Step granularity is unstable. Even merging reduces any solution above 12 steps to larger chunks, so a single label can cover multiple logical operations. This can hide a local error or mix an error with its correction. The public conversation format also discards the scalar mc_i and the 16 underlying completion records, preventing sensitivity analysis or relabeling of the original version.
+
+The class distribution is imbalanced: about 90% of VisualPRM400K steps are positive. VisualProcessBench reports that generic multimodal critics tend to over-predict positive labels, and the learned PRM can inherit a related bias. A reported macro F1 or Best-of-N gain does not certify calibration, subgroup performance, or per-source label reliability.
+
+Data identity and separation remain partial. The original repository has a train split but no published validation split, source-count manifest, duplicate ledger, or decontamination report. VisualProcessBench and downstream evaluations use well-known visual benchmarks, while training prompts come through MMPR v1.1; exact image/question overlap is unknown.
+
+Human benchmark annotation has its own gaps. The paper reports annotator education, labor, cost, per-split spot checking, and re-annotation, but not inter-annotator agreement, double-label coverage, adjudication history, or annotator-level error rates. The paper text lists Gemini-2.0-Flash as a solution generator, whereas the released rows and statistics allocate all 2,866 samples to four other model families.
+
+Licensing is only top-level. The paper is CC BY 4.0 and the public code/data/model cards are labeled MIT, but no record-level matrix ties every MMPR-derived image/question and benchmark-derived test item to its upstream license and attribution. A repository label alone does not establish that all embedded content can be redistributed under one license.
+
+Finally, neither construction-time continuation rollouts nor inference-time Best-of-N candidate sets are released. Researchers can train and run the scorer, but they cannot reconstruct every positive label, audit rejected alternatives, or attribute a reported gain among more sampling, a different candidate distribution, and a stronger selector from released logs alone.

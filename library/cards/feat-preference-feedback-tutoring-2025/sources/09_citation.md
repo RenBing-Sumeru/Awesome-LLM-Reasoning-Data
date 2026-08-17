@@ -1,0 +1,1 @@
+Hyein Seo, Taewook Hwang, Yohan Lee, and Sangkeun Jung. 2025. “FEAT: A Preference Feedback Dataset through a Cost-Effective Auto-Generation and Labeling Framework for English AI Tutoring.” ACL 2025, pages 575–589. Paper: https://aclanthology.org/2025.acl-short.45/ . Code and data: https://github.com/hyenee/FEAT .

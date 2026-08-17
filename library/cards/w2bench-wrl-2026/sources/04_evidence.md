@@ -1,0 +1,3 @@
+**Claim.** Requirement-level reward modelling improves writing. **Setup.** A 7B reward model is evaluated on WEval against judge prompting and existing reward models, then used in RL across several base models. **Result.** The authors' 7B reward model reaches 94.6 correlation, 97.3 instruction-level, and 78.0 prompt-level score; Qwen2.5-7B-Instruct rises from 57.0 to 64.4 on WritingBench.
+
+**Boundary.** The results support this requirement-dropout construction and these benchmarks. They do not isolate every contribution of teacher generation, filtering, reward training, and GRPO, nor establish coverage of all real writing requirements.

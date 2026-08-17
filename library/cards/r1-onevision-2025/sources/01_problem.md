@@ -1,0 +1,5 @@
+Multimodal models can describe images or imitate fixed reasoning templates, yet they often fail when a solution requires repeatedly extracting visual evidence and connecting it to deep textual reasoning. A fluent chain can therefore be wrong because its initial image description omitted a relation, while final-answer supervision hides that grounding failure.
+
+R1-Onevision converts each image into a formal textual representation, asks a language reasoner to produce a step-by-step solution, revisits the image through role-playing, and removes inaccurate or inconsistent steps. Its direct output is a public collection of more than 155K image-question-reasoning-answer demonstrations used for multimodal SFT before a separate RL stage.
+
+L4 facts: primary source https://arxiv.org/abs/2503.10615, first posted March 2025; no peer-reviewed venue confirmed; the decision boundary is whether a formalized and filtered visual CoT becomes an SFT target; atlas object is a multimodal demonstration with visual description, trace, answer, and filter evidence; collected for Track 01.

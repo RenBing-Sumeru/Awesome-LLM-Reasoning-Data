@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TraceEval 通过运行验证过的调用边，评测模型能否从源码恢复程序运行时调用结构。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的评测面 / 环境基准",
+  "best_for_ch": "关注代码语义评测、运行验证标签、调用图恢复和代码数据复用边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yikun Li 等（Singapore Management University、Monash University、Nanjing University of Science and Technology、GovTech Singapore）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:17:48Z"
+}

@@ -1,0 +1,5 @@
+Audio-language models lack a large openly documented instruction mixture spanning sound, music, speech, and reasoning instead of captioning alone.
+
+AudioSkills-XL expands multiple audio sources into 8M capability-labeled QA pairs and separates a 250K controlled-thought subset for reasoning-focused training. The decision boundary is whether a serialized training record survives language/audio filtering, source-specific checks, duration limits, and dataset ablations; the central artifact is data consumed by audio-language SFT and reasoning tuning, not a model-only release.
+
+L4 facts: primary source arXiv:2507.08128; arXiv preprint; data object AudioSkills-XL with 8M audio question-answer pairs, with related AF-Think containing 250K reasoning-prefixed pairs; evaluation surface Removing AudioSkills-XL produces the paper's largest reported ablation drop on several audio benchmarks; the final recipe uses 8M QA pairs and evaluates both short and long audio capabilities.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

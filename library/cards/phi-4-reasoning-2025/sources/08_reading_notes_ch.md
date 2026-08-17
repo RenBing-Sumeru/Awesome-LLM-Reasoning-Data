@@ -1,0 +1,3 @@
+- 区分 Phi-4-reasoning 与 Plus。
+- 将 o3-mini 视为已报告教师，而非已发布语料。
+- 保持奖励细节为 unknown。

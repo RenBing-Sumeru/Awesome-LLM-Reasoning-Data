@@ -1,0 +1,3 @@
+Real repair datasets such as Defects4J and SWE-bench establish the value of issue–patch–test records, but primarily cover Java or Python. Existing C/C++ vulnerability datasets often focus on classification, static detection, or isolated snippets. Defects4C extends an execution-based repair protocol to both ordinary defects and CVE-related vulnerabilities in real C/C++ projects.
+
+The change is not a new repair algorithm. It combines commit mining, function localization, Docker builds, and reproduction tests in one benchmark and evaluates correctness and security bugs side by side. Its contribution lies in language and defect-type coverage and a reproducible oracle.

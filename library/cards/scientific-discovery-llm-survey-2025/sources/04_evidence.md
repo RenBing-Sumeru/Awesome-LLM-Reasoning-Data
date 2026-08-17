@@ -1,0 +1,3 @@
+The paper's support is its systematic account of changing roles and capabilities, plus the explicit taxonomy grounded in the scientific method. It names robotic automation, self-improvement, and ethical governance as pivotal challenges and future directions. This is evidence for a conceptual landscape, not a controlled demonstration that a model is an autonomous scientist.
+
+Accordingly, the strongest claim supported here is descriptive: the surveyed literature can be organized around these role changes and unresolved challenges. It does not establish a single threshold at which autonomy has been achieved. For deployment decisions, look for task-level evidence such as reproducible experimental outcomes, the reliability of any tools, and a clear account of human review.

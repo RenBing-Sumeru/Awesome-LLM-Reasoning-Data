@@ -1,0 +1,3 @@
+Zhang, Andy K., Neil Perry, Riya Dulepet, Joey Ji, Celeste Menders, Justin W. Lin, Eliot Jones, Gashon Hussein, Samantha Liu, Donovan Jasper, Pura Peetathawatchai, Ari Glenn, Vikram Sivashankar, Daniel Zamoshchin, Leo Glikbarg, Derek Askaryar, Mike Yang, Teddy Zhang, Rishi Alluri, Nathan Tran, Rinnara Sangpisit, Polycarpos Yiorkadjis, Kenny Osele, Gautham Raghupathi, Dan Boneh, Daniel E. Ho, and Percy Liang. "Cybench: A Framework for Evaluating Cybersecurity Capabilities and Risks of Language Models." ICLR 2025 Oral / arXiv:2408.08926. https://openreview.net/forum?id=tc90LV0yRL
+
+Official sources: arXiv https://arxiv.org/abs/2408.08926 ; project page https://cybench.github.io/ ; code/data https://github.com/andyzorigin/cybench

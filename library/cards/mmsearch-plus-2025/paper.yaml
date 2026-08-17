@@ -1,0 +1,286 @@
+id: mmsearch-plus-2025
+title: 'MMSearch-Plus: Benchmarking Provenance-Aware Search for Multimodal Browsing Agents'
+year: 2025
+venue: ICLR 2026 Poster
+authors:
+- Xijia Tao
+- Yihua Teng
+- Xinxing Su
+- Xinyu Fu
+- Jihao Wu
+- Chaofan Tao
+- Ziru Liu
+- Haoli Bai
+- Rui Liu
+- Lingpeng Kong
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+domains:
+- multimodal_reasoning
+- web_browsing
+- agent_trajectories
+- environment_interaction
+- visual_question_answering
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.21475
+  paper_pdf: https://arxiv.org/pdf/2508.21475v3
+  arxiv: https://arxiv.org/abs/2508.21475
+  code: https://github.com/mmsearch-plus/MMSearch-Plus
+  data: https://huggingface.co/datasets/Cie1/MMSearch-Plus
+  project: https://mmsearch-plus.github.io/
+  huggingface: https://huggingface.co/datasets/Cie1/MMSearch-Plus
+  doi: https://doi.org/10.48550/arXiv.2508.21475
+  venue: https://openreview.net/forum?id=VGYgG2GH0d
+  openreview: https://openreview.net/forum?id=VGYgG2GH0d
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2508.21475
+  paper_revision: https://arxiv.org/abs/2508.21475v3
+  code_revision: https://github.com/mmsearch-plus/MMSearch-Plus/tree/fd8137d43677f88c1ed8c8c75b2a22587049950c
+  data_revision: https://huggingface.co/datasets/Cie1/MMSearch-Plus/tree/161a60d469b67cd14a0621ae2ab66d902df02df9
+  trajectories: null
+  evaluation_code: null
+  som_annotations: null
+data_object:
+  unit_of_record: One public benchmark row contains an image-grounded question, a sequence of acceptable short answers, one
+    to five images, `num_images`, a source reference (`video_url` or `arxiv_id`), primary category, difficulty label, and
+    subtask. An evaluation run additionally creates an unreleased dynamic episode of search/zoom actions, retrieved results,
+    summaries, hypotheses, and a final answer.
+  prompt_source: Human annotators select keyframes from publicly accessible video platforms or screenshots of figures/tables
+    from open-access arXiv papers. Search keywords are produced with LLM assistance plus manual curation.
+  trace_author: Evaluation-time MLLMs (o3, GPT-5, Gemini-2.5-Pro, and Qwen-2.5-VL-72B-Instruct in the paper) generate tool-use
+    episodes. Complete episodes are analyzed in the paper but are not released as a corpus.
+  record_fields:
+  - question
+  - answer
+  - num_images
+  - arxiv_id
+  - video_url
+  - category
+  - difficulty
+  - subtask
+  - img_1
+  - img_2
+  - img_3
+  - img_4
+  - img_5
+  context_or_state: Initial question and images plus a threaded, evaluation-time state containing tool calls, cropped views,
+    SerpAPI results, Gemini-produced webpage/image summaries, URLs/titles, and accumulated hypotheses. The public release
+    does not contain this state.
+  trace_or_actions: Text search, image search, indexed zoom/crop through human-authored SoM boxes, and final answer. Text-search
+    rounds may issue three to five queries; the paper caps combined search rounds/tool calls at 20, or 10 for Qwen in full-rollout
+    experiments.
+  observation: Ranked SerpAPI text/image candidates, thumbnails, page summaries, related-image summaries, and cropped sub-images.
+    Responses and cache snapshots are not included in the released dataset.
+  answer_format: A short natural-language answer, optionally citing retrieved webpage IDs in the agent prompt; the benchmark
+    stores a list of acceptable answer variants.
+  answer_or_artifact: Final predicted answer for scoring. The public artifact is the benchmark row, not a browser replay,
+    evidence bundle, or recorded agent trajectory.
+  process_labels: []
+  verifier_output:
+  - llm_judge_correct_or_incorrect
+  - optional_rule_based_match
+  - aggregate_accuracy
+  reward: No training reward is defined. Evaluation uses binary answer correctness under GPT-4o judgment against acceptable
+    answers; optional lightweight rule-based verification is mentioned but not released or specified.
+  terminal_predicate: The agent emits a final answer or reaches the search/tool-call budget. Final benchmark success is answer
+    correctness, not provenance completeness or a step-level proof that every retrieved claim is supported.
+  provenance: Public video/arXiv source -> manually selected keyframe or figure/table screenshot -> privacy masking where
+    applicable -> Spatial-Temporal Extrapolation question and acceptable answers -> closed-model no-search adversarial filtering
+    and possible image perturbation -> public HF row -> evaluation-time dynamic search episode -> GPT-4o answer judgment.
+  environment_or_substrate: Live/open-web search through SerpAPI with text search, image search, Gemini result summarization,
+    cached image-search returns, and optional SoM-indexed crop/search actions. The paper's framework implementation and frozen
+    search snapshots are not released.
+  release_boundary: HF releases 311 QA/image/source-reference rows in one split and a decryption helper. The official GitHub
+    revision contains only README and that helper; rollout framework code, evaluation script, SoM annotations, full trajectories,
+    search responses, caches, judge records, and deterministic replay manifests are unavailable.
+recipe_metadata:
+  base_model: Not applicable to benchmark construction. Evaluation models are o3 (2025-04-16), GPT-5, Gemini-2.5-Pro, and
+    Qwen-2.5-VL-72B-Instruct.
+  teacher: At least two closed-source MLLMs are used to test whether candidate questions can be answered without retrieval;
+    the exact per-item model pair, prompts, outputs, and decisions are not released.
+  generator: LLM-assisted keyword generation followed by human source selection, screenshot/keyframe extraction, question
+    writing, acceptable-answer annotation, difficulty labeling, SoM-box authoring, and adversarial review.
+  prompt_or_task_source: Public consumer videos and open-access arXiv papers treated as source events; mixture counts by source
+    type and a complete annotation log are undisclosed.
+  filtering_rule: Annotators test candidates on at least two closed MLLMs, remove or obfuscate questions answerable without
+    retrieval, blur/mask critical visual regions where needed, and discard items that remain trivial. Future refreshes are
+    promised when model knowledge makes items easier.
+  selection_threshold: Qualitative adversarial filtering is described, but no score threshold, agreement rule, rejection counts,
+    or item-level decision manifest is released.
+  sampling_protocol: 'Final benchmark: 311 tasks, 441 unique images, 279 unique questions, 306 unique answers, 8 primary categories,
+    and 43 secondary categories. Source sampling quotas and randomization are not disclosed.'
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Evaluation permits at most 20 combined search rounds/tool calls; Qwen full rollout is capped at 10 after
+    pilots. Human annotators browse for at least 10 and at most 20 minutes per task.
+  search_or_scaffold: A model-agnostic threaded agent loop over SerpAPI text/image search, Gemini page/result summaries, caching,
+    SoM-indexed zoom/crop, and a structured final answer prompt. The implementation and exact runtime lock are unavailable.
+  optimizer_or_scaffold: No optimizer or post-training scaffold is used. This work evaluates frozen models in a tool environment.
+audit:
+  source_mixture: Public consumer video-platform content and open-access arXiv papers across geography, sports, academic research,
+    film/TV, technology, games, vlogs, and music. Counts are disclosed by topical category, not by source platform, license
+    class, language, region, or collection date.
+  split: HF exposes one split named `train` containing all 311 examples. The paper also labels 94 easy and 217 hard tasks
+    and derives a 239-task MMSearch-Plus-lite subset by removing every item solved without search by any tested model. No
+    independent dev/test or hidden holdout is released; the `train` label must not be mistaken for evidence that authors trained
+    on the benchmark.
+  decontamination: Authors seek new/rare events, require screenshots not directly retrievable by Google image search, test
+    no-search solvability on at least two closed MLLMs, perturb or discard easy items, and publish encrypted text fields.
+    These checks reduce shortcuts but do not establish formal pretraining overlap, cross-benchmark deduplication, or future-model
+    contamination control.
+  benchmark_overlap: Authors state the benchmark is constructed from source events rather than remixed text-only corpora and
+    compare with MMSearch, BrowseComp-VL, and MM-BrowseComp. No item-level overlap report or public deduplication manifest
+    against those benchmarks or web indexes is released.
+  lineage: Rows preserve either `video_url` or `arxiv_id`, category, difficulty, subtask, images, question, and acceptable
+    answers. Raw source snapshots, annotator IDs, edit/filter decisions, redaction logs, SoM boxes, search evidence, and judge
+    records are not linked in a record-level lineage manifest.
+  license: The arXiv manuscript and current HF dataset card declare CC BY 4.0. The pinned official GitHub tree has no license
+    file. Video keyframes and arXiv figures/tables are third-party source material with heterogeneous rights; the paper says
+    it follows platform terms/licenses and preserves attribution, but no item-level rights manifest reconciles those sources
+    with the dataset-level license.
+  release_version:
+    paper: arXiv:2508.21475v3
+    paper_date: '2026-03-18'
+    venue: ICLR_2026_Poster
+    openreview: VGYgG2GH0d
+    code_revision: fd8137d43677f88c1ed8c8c75b2a22587049950c
+    data_revision: 161a60d469b67cd14a0621ae2ab66d902df02df9
+    decrypt_helper_revision: 436c84d3dd4e505d29f50dd69dc0708fc7efb47f
+    tagged_end_to_end_release: null
+  artifact_release_state: Paper, project page, 311-row HF benchmark, README, and decryption helper are public. The official
+    repository still lists agentic rollout framework code, evaluation script, and SoM annotations as ToDo; no complete successful/failed
+    trajectory corpus, search cache, judge log, or replay package was verified.
+  released_objects:
+    benchmark_rows: 311
+    hf_split_count: 1
+    trajectory_corpus_released: false
+    rollout_framework_released: false
+    evaluation_script_released: false
+    som_annotations_released: false
+    frozen_search_snapshot_released: false
+  successful_and_failed_sample_retention: The paper analyzes correct and incorrect evaluation episodes and prints selected
+    qualitative cases, but no full episode corpus is released. Therefore the public artifact does not preserve either all
+    successful rollouts or all failed attempts, nor item-level exclusion reasons from benchmark construction.
+  replayability: Deterministic replay is blocked by live SerpAPI results, unreleased search-result caches and Gemini summaries,
+    absent framework/evaluation code, missing SoM boxes, missing action-observation histories and seeds, and incompletely
+    pinned model/API and browser/runtime versions.
+  verifier_or_judge_failure_modes:
+  - GPT-4o judges short answers against acceptable variants, so semantic false positives/negatives remain possible; “complete
+    agreement” is reported for manual inspection without a disclosed validation-set size or judge-log release.
+  - Final answer accuracy does not verify citation correctness, provenance quality, or whether intermediate summaries faithfully
+    represent source pages.
+  - Gemini-generated webpage and related-image summaries can omit or distort key evidence before the evaluated agent sees
+    it.
+  - Dynamic web results, near-duplicate images, dead pages, regional ranking, and search-engine drift can change task difficulty
+    and final scores.
+  - SoM uses human-curated boxes and therefore measures reasoning with privileged localization; its gain does not establish
+    performance with automatic detection.
+  privacy_or_consent: Authors report masking faces and license plates, excluding minors/private spaces when feasible, retaining
+    source attribution, and offering takedown. Public redaction logs, annotator/subject consent records, and a verified takedown
+    URL are unavailable.
+  known_failure_modes:
+  - Tool-policy errors can skip necessary image search even when image-only retrieval succeeds.
+  - Qwen produced 421 invalid image-search calls across 45 of 311 tasks.
+  - For Gemini full rollout, 51.1% of errors were labeled no-relevant-information-found and 11.5% hallucination.
+  - Models can lock onto visually similar but wrong events or summarize a relevant page without the needed fact.
+  - Internal model knowledge changes over time, making the easy/hard boundary and no-search resistance unstable.
+  - The public canary-based XOR decryption is not a durable contamination barrier once the dataset is public.
+  - HF state.json references two obsolete shard names while the current release has five Arrow shards.
+  - Reported scores are author results; no independent reproduction with a pinned end-to-end environment was verified.
+  citation_status: verified
+  confidence: high
+  notes: Audited arXiv v3/full appendices, official ICLR/OpenReview record, project page, GitHub commit `fd8137...`, HF revision
+    `161a60d...`, schema, decryption helper, and stale `state.json` on 2026-07-20. Artifact verification applies only to the
+    benchmark rows and helper, not to the paper-defined agent framework, trajectories, SoM annotations, evaluator, or deterministic
+    replay.
+  remaining_unknowns:
+  - Per-source platform counts, collection dates, languages/regions, and item-level rights classification.
+  - Annotator counts, qualifications, compensation, agreement, and item-level annotation/edit history.
+  - Exact adversarial-filter model pair, prompts, outputs, rejection counts, and decision rules per item.
+  - Validation sample size and logs for GPT-4o/Gemini/manual judge agreement; optional rule verifier implementation.
+  - Released SoM boxes, agent framework, evaluation script, full search cache, and successful/failed trajectories.
+  - Pinned SerpAPI/Gemini/browser/runtime configuration, seeds, locale, search date, reset semantics, and replay manifest.
+  - Formal cross-benchmark deduplication, pretraining-overlap measurement, and future contamination protocol.
+  - Record-level redaction/privacy/takedown evidence and reconciliation of third-party media rights.
+inclusion_reason: MMSearch-Plus exposes a concrete image-grounded QA benchmark and defines a long-horizon multimodal search
+  environment in which state, crop/search actions, dynamic observations, and answer-level judgment interact; its missing framework,
+  trajectories, SoM boxes, and replay artifacts are essential audit boundaries for environment-and-agent-trajectory research.
+related:
+- browsecomp-2025
+- mmsearch-r1-2025
+tags:
+- multimodal-browsing
+- web-search-agent
+- visual-question-answering
+- spatial-temporal-extrapolation
+- set-of-mark
+- dynamic-web-environment
+- llm-as-judge
+- answer-level-evaluation
+- provenance-aware-search
+- release-gap
+- replay-risk
+- temporal-drift
+- contamination-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MMSearch-Plus releases 311 image-grounded QA rows and evaluates agents over SerpAPI/Gemini search with answer-level
+  GPT-4o judgment, but does not release the agent framework, SoM boxes, complete trajectories, or replay snapshots.
+why_it_matters: It makes weak visual cues, region-level crop/search decisions, noisy live-web retrieval, and provenance checking
+  part of the agent evaluation contract while showing why a public question/image table alone is insufficient for trajectory
+  reuse, verifier audit, or deterministic comparison.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  data_verified: true
+  code_repository_verified: true
+  artifact_verified: true
+  trajectory_release_verified: false
+  rollout_framework_verified: false
+  evaluation_code_verified: false
+  som_annotation_release_verified: false
+  replay_verified: false
+  paper_license_verified: true
+  dataset_license_verified: true
+  code_license_verified: false
+  complete_rights_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation, ICLR 2026 Poster status, paper/appendices, project, GitHub tree, and HF release were verified. `artifact_verified`
+    means the 311-row dataset and decryption helper exist; it does not imply release of trajectories, framework, SoM annotations,
+    evaluator, source snapshots, or an end-to-end replay bundle.
+curation_level: L3_summary_ready
+needs:
+- 'needs_agent_release: publish the model-agnostic rollout framework, exact prompts/configs, evaluator, and runtime lock'
+- 'needs_trajectory_release: publish complete successful and failed action-observation episodes with search results, summaries,
+  citations, final answers, and judge outputs'
+- 'needs_som_release: publish human-authored boxes, annotation guidance, quality checks, and task/image mapping'
+- 'needs_replay: pin SerpAPI/Gemini/browser versions, query date/locale, caches, source snapshots, seeds, reset semantics,
+  and run manifest'
+- 'needs_split_protocol: distinguish evaluation-only public rows from train/dev/test usage and document future refresh/version
+  policy'
+- 'needs_contamination_audit: release item-level no-search filtering, benchmark deduplication, and pretraining-overlap evidence'
+- 'needs_license_audit: reconcile dataset-level CC BY 4.0 with each video frame/arXiv figure and add a code license'
+- 'needs_privacy_audit: release redaction logs, consent/takedown details, and item-level provenance without exposing sensitive
+  data'
+card: null

@@ -1,0 +1,8 @@
+The reported pipeline has four separable layers.
+
+1. **Prompt sourcing.** Optimization uses instructions from the Open-Reasoner-Zero training set without their labels. The paper describes the mixture as including AIME through 2023, MATH, NuminaMath, Tulu 3 MATH, OpenR1-Math-220k, other open datasets, and programmatically synthesized tasks. The released records do not preserve per-example source identifiers.
+2. **Online construction.** The current policy samples 16 trajectories per prompt at temperature 1.0, top-p 1.0, with top-k disabled and a 4096-token maximum in the paper. It splits traces into states, extracts final answers, constructs the distance matrix, computes consistency and volatility, groups exact answers, and optionally adds curiosity.
+3. **Optimization.** Reinforce++ converts scalar rewards into normalized advantages and applies clipped policy updates. The paper reports learning rate 5e-7, initial KL coefficient 1e-4, rollout batch size 16, train batch size 32, one epoch, and experiments on eight A100-80GB GPUs.
+4. **Evaluation.** MATH-500, GSM8K, OlympiadBench, AMC 2023, MMLU-Pro, CommonsenseQA, and GPQA measure downstream behavior. Math-Verify checks evaluation answers at temperature 0; it remains outside the training reward.
+
+The public repository implements the recipe on OpenRLHF and exposes switches for answer-unanimity filtering, intrinsic reward variants, and curiosity. Its example Qwen script uses a 2048-token generation limit and leaves curiosity disabled unless the user enables it, so it is a runnable variant rather than an exact manifest of the paper's 4096-token configuration.

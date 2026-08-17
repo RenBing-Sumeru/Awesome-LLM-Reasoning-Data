@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "报告在类别级混合、阶段规模、验证器和基础设施方面相对详尽，但其官方发布仍是模型与推理发布，并非训练数据或复现发布",
+    "updated_at": "2026-07-15T13:53:55Z"
+  },
+  "updated_at": "2026-07-15T13:53:55Z"
+}

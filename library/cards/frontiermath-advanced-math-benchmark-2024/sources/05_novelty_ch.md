@@ -1,0 +1,1 @@
+已有数学 benchmark 往往公开、来自竞赛或更容易污染。FrontierMath 的变化是委托原创高等数学题并控制访问，同时追求答案验收。方向信号是：最高难数学评测必须同时记录 provenance、release policy 和 verifier coverage。answer-level 数学评分本身并不新。复用前要查题目错误、版本变化、hidden/public split、checker coverage，以及是否允许工具辅助解题。

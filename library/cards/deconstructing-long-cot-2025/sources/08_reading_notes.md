@@ -1,0 +1,4 @@
+- Separate the paper's 33K QwQ and 16K R1 experimental traces from the repository's differently scoped `20250209_deepseek_r1_math_26K.jsonl` processing input.
+- The entry filter is rule-based final-answer correctness; later segmentation, labels, clusters, and reconstruction rely on LLM judgments and similarity checks.
+- Maximal redundancy removal is not the same as deleting every erroneous branch: the latter hurts several reported scores and can remove later-corrected reasoning.
+- SODE documents a multi-stage recipe, but external inference is required and no completed optimized corpus, retained-row manifest, license, split, or decontamination report was verified.

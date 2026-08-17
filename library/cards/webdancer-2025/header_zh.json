@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "WebDancer 将 10 万条合成 web QA 转化为过滤后的 ReAct SFT 轨迹和由 LLM judge 评分的 on-policy rollout，但仅公开 200 条 QA 与 200 条冷启动轨迹样例。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Web Agent 轨迹构造与 Agent RL 配方",
+  "best_for_ch": "研究 web-agent 数据合成、轨迹 SFT、judge-based agent RL 与 live-web 复现审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jialong Wu, Baixuan Li, Runnan Fang, Wenbiao Yin, Liwen Zhang, Zhenglin Wang, Zhengwei Tao, Ding-Chu Zhang, Zekun Xi, Robert Tang, Yong Jiang, Pengjun Xie, Fei Huang, Jingren Zhou",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

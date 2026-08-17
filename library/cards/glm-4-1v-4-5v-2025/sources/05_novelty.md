@@ -1,0 +1,10 @@
+For reasoning-data curation, the strongest contribution is the disclosure of one unified but domain-dependent feedback layer. Instead of pretending that all multimodal tasks share one verifier, the report distinguishes symbolic tolerance, edit distance, IoU, action/function checks, exact matching, semantic judges, reward models, and format/style signals. It also documents the operational danger: a single weak reward channel can destabilize joint training.
+
+RLCS adds a dynamic data-selection view. The curriculum is not a fixed easy-to-hard ordering; it combines offline multi-model pass@k and expert labels with online rollout outcomes and subcategory performance, then changes sampling ratios at training-iteration granularity. Ratio-EMA sampling expansion further treats all-correct and all-incorrect rollout groups as unusable gradient regions and adjusts data generation accordingly.
+
+The ingredients are not individually new: large-scale multimodal pre-training, long-CoT SFT, GRPO, RLVR, RLHF, curriculum learning, online difficulty estimates, domain verifiers, and rejection based on reward have prior art. The novelty is the engineering composition across vision-language domains, along with the report's failure analyses and the combination of thinking/non-thinking behavior in GLM-4.5V.
+
+The work is not a released reasoning-data recipe in the strong sense. The report tells readers what kinds of records and selection signals exist, and the reward package implements many checking functions, but the prompts, records, difficulty labels, rollout groups, curriculum weights, accepted updates, and stage-wise lineage are not public. This is therefore a frontier disclosure report and partial construction recipe, not an open data corpus.
+
+The current arXiv report has expanded beyond the original GLM-4.1V release to cover GLM-4.5V and later GLM-4.6V results. Model cards retain release-specific figures and templates. Audits should pin the report, repository, and each model revision rather than assume all versions share identical data, conversation format, context length, or evaluation tables.
+

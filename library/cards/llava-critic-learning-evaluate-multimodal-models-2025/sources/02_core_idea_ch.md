@@ -1,0 +1,1 @@
+LLaVA-Critic 构建覆盖多任务、多准则的 critic instruction data，训练一个开源通用多模态评价器，使其既能输出评分与理由，也能进行成对比较，并把判断转为偏好学习奖励。LLaVA-Critic-113K 包含约 46K 幅图像和 113K 条 critic 指令实例，覆盖评分、成对偏好、评价理由及多种视觉任务。单条通常包含图像、问题或任务、一个或两个候选回答、评价准则、分数/偏好和 rationale；官方 Hugging Face 数据用于 critic SFT 与多模态偏好学习。

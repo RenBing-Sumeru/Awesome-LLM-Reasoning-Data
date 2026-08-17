@@ -1,0 +1,3 @@
+A team already using a reward model for Best-of-N can train a predictor on typical prompt–response samples, then deploy reward minus uncertainty and monitor peak-to-final degradation as N rises. A reasoning benchmark owner can test whether an apparent scaling gain is reward hacking by plotting true accuracy against N under reward-only and cautious selection. Do not use the method as a substitute for reward-model validation when no representative prompt distribution or independent quality check exists; tune λ on held-out conditions and retain a reward-only baseline.
+
+The required output is a calibrated selection policy plus a chart of true quality, uncertainty, and cost across candidate budgets.

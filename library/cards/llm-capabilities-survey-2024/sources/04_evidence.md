@@ -1,0 +1,1 @@
+The paper's stated evidence base is recent LLM work in domain applications. Its central empirical caution is that existing benchmark-based evaluation cannot effectively capture real-world application performance, so capability claims need to be read in their domain context.

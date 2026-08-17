@@ -1,0 +1,295 @@
+id: insta-internet-scale-agents-2025
+title: 'InSTA: Towards Internet-Scale Training For Agents'
+year: 2025
+venue: arXiv preprint; submitted to ICLR 2026 (no acceptance record found)
+authors:
+- Brandon Trabucco
+- Gunnar Sigurdsson
+- Robinson Piramuthu
+- Ruslan Salakhutdinov
+source_role:
+- construction_recipe
+- data_release
+- agent_environment
+- verifier_reward
+- model_report
+verification_contract:
+- environmental
+- judgment_required
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- web_agents
+- gui_agents
+- browser_automation
+- multimodal_reasoning
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.06776
+  paper_pdf: https://arxiv.org/pdf/2502.06776
+  arxiv: https://arxiv.org/abs/2502.06776
+  code: https://github.com/data-for-agents/insta
+  code_snapshot: https://github.com/data-for-agents/insta/tree/b2386fcf2cdb054bb0e422ed233fd2bee8877393
+  data: https://huggingface.co/datasets/data-for-agents/insta-150k-v3
+  data_snapshot: https://huggingface.co/datasets/data-for-agents/insta-150k-v3/tree/5a689ac657a24b0e55b1c0a0d690acfadd443c38
+  data_v2: https://huggingface.co/datasets/data-for-agents/insta-150k-v2
+  data_v2_snapshot: https://huggingface.co/datasets/data-for-agents/insta-150k-v2/tree/b62e25283471513e3497b973122cceb9b420e0e4
+  project: https://data-for-agents.github.io/
+  huggingface: https://huggingface.co/data-for-agents
+  model: null
+  release: null
+  doi: https://doi.org/10.48550/arXiv.2502.06776
+  venue: null
+  openreview: https://openreview.net/forum?id=zibL9wu2LI
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2502.06776
+data_object:
+  record_type: 'The public object is one task row for one live website: v2 stores `domain` and `task`, while v3 stores `website`,
+    `instruction`, `steps`, and `criteria`. The paper''s richer internal object is a Playwright episode with observations,
+    screenshots, raw HTML and DOM metadata, model reasoning, function calls, a proposer trace, and an LLM-judge rationale
+    with three scalar scores.'
+  prompt_source: Candidate domains come from the top 1,000,000 hosts in the Common Crawl PageRank file `cc-main-2024-apr-may-jun-host-ranks.txt.gz`.
+    Given only a URL, an LLM proposes an initial task or `N/A`; after one Playwright exploration trajectory, the proposer
+    writes a harder task grounded in current site content.
+  trace_author: Pretrained LLMs propose tasks, agents generate reasoning and Playwright calls, and LLM judges generate rationales
+    and scores. The scaled v2 experiment uses a fine-tuned Qwen3-1.7B for the roughly 150K rollout corpus and Qwen3-235B as
+    zero-shot judge. A separate 20K Qwen3-235B rollout pool supplies the demonstrated Qwen3-1.7B SFT experiment.
+  context_state:
+  - Common Crawl host and PageRank order
+  - current live website URL
+  - initial task or N/A safety decision
+  - compact Markdown observation derived from live HTML
+  - screenshot and DOM metadata in the run-local record
+  - five most recent observations and actions in model context
+  - current Playwright action history
+  - refined steps and success criteria when available
+  proposer_record: The initial phase records the domain, proposer response, and proposed task or `N/A`. The refinement phase
+    can record the domain, initial task, recent exploration observations and actions, optional judge response, proposer rationale,
+    refined task, steps, and criteria.
+  trajectory_record: Per step, the released code can preserve current URL, processed Markdown, raw HTML, screenshot or screenshot
+    path, DOM metadata, raw agent response, parsed response, and Playwright calls. Per episode it can preserve the task proposal
+    and judge JSON. The complete paper-run records are not public.
+  answer_format: Agents emit reasoning followed by a fenced JSON Playwright function call; the first such block is parsed,
+    and a stop call may include a final answer. Judges emit a rationale and JSON scores named `success`, `efficiency`, and
+    `self_correction`, each ranging from 0 to 1.
+  process_fields:
+  - website_or_domain
+  - common_crawl_rank
+  - initial_task_or_NA
+  - task_proposer_response
+  - refined_instruction
+  - steps
+  - success_criteria
+  - current_url_per_step
+  - processed_markdown_observation
+  - raw_html
+  - screenshot
+  - DOM_metadata
+  - agent_reasoning_response
+  - parsed_playwright_function_calls
+  - judge_reasoning_response
+  - judge_success
+  - judge_efficiency
+  - judge_self_correction
+  - terminal_or_error_status
+  observation: A live Chromium and Playwright browser returns URL, HTML-derived compact Markdown, screenshot, and DOM metadata
+    after each action. The public v2 and v3 task datasets do not include these observations.
+  verifier_output: The production success judge sees the task and recent trajectory and emits a rationale plus success, efficiency,
+    and self-correction scores. The proposer uses `N/A` as a safety decision. Feasibility is measured only in a separate human
+    study and is not an attached label for every public row.
+  reward: Judge success is the terminal selection signal. The 20K SFT study retains 10.5K trajectories for which Qwen3-235B
+    outputs `Judge(Success) = 1`; efficiency and self-correction are recorded but are not used by this filter.
+  environment_or_substrate: Live websites operated through a released Playwright and Chromium service with an HTML-to-Markdown
+    processor. This is a changing external environment, not an archived deterministic simulator.
+  verifier_or_reward: Learned LLM judgment follows environmental interaction. Human binary labels on 100 trajectories validate
+    judge accuracy but are not the production reward source. Arbitrary live-web tasks have no programmatic ground-truth terminal
+    predicate in this recipe.
+  terminal_predicate: A trajectory enters the demonstrated SFT set when the judge success score is exactly 1. An agent stop
+    action terminates interaction but is not independent evidence that the task was completed.
+  provenance: Common Crawl ranked host -> URL-only safety and task proposal -> live Playwright exploration -> grounded task
+    refinement -> public v2 or v3 task row -> LLM-agent rollout -> judge rationale and scores -> success filter -> Qwen3-1.7B
+    SFT. Only the task rows and recipe code are public.
+  release_surface: Official HF releases expose task rows only. The paper and project describe 150K trajectories, 2.2M screenshots,
+    2.2M action/reasoning traces, and 150K judge traces, but no official files for those records, failed rollouts, judge rationales,
+    or trained checkpoints were public at the cutoff.
+recipe_metadata:
+  base_model: The main demonstrated target is Qwen3-1.7B. The paper evaluates or uses Qwen3-235B-A22B, Llama-4-Maverick, Llama-3.1
+    or 3.3-70B, Gemini-2.5-Flash, Gemini-1.5-Pro, GPT-4.1-mini, and GPT-4o in agent, proposer, or judge roles. Static-transfer
+    studies use Flan-T5-Large for Mind2Web and Llama-3.1-8B-Instruct for WebLINX.
+  teacher: Qwen3-235B is both rollout teacher and success judge for the 20K SFT pool. Task generation compares Llama, GPT,
+    and Gemini proposers, but public rows are not bound to exact proposer endpoints, prompt revisions, or seeds.
+  generator: One LLM proposes and refines tasks, an LLM agent generates environment-grounded reasoning and Playwright actions,
+    and an LLM judge generates evaluation traces. The scaled v2 collection uses fine-tuned Qwen3-1.7B as agent and Qwen3-235B
+    as judge.
+  prompt_or_task_source: Top-ranked Common Crawl hosts plus current live-site content discovered in one exploration loop.
+    Tasks are synthetic but environmentally grounded.
+  filtering_rule: The initial proposer rejects unsuitable domains by emitting `N/A`. Prompts exclude harmful or mature content,
+    APIs and CDNs, accounts, logins, social or forum sites, purchases, posting, personal information, downloads, and web-state
+    modification. Demonstrated SFT trajectories are retained only when judge success equals 1.
+  sampling_protocol: Select the top one million Common Crawl hosts, propose one initial task per host, explore accepted sites
+    once with Playwright, and run one proposer feedback loop to produce a harder task. LLM sampling uses temperature 0.5,
+    top-p 1.0, and otherwise default chat-completion settings.
+  rollout_count: The exact paper and v2 task count is 146,746. The scaled reasoning experiment describes one trajectory per
+    roughly 150K task or site, averaging about 15 steps and yielding 2.2M screenshots and action traces. A separate SFT study
+    collects 20K Qwen3-235B trajectories and retains 10.5K.
+  temperature: 0.5
+  top_p: 1.0
+  inference_budget: At most 1,024 new tokens for task proposer, agent, and judge traces; 2,048 observation tokens; the latest
+    five steps in context; one proposer feedback loop; and at most 30 browser actions per site. The task-generation phases
+    each take 14 hours on two eight-GPU V100 machines. Scaled collection is reported as 1,200 V100 GPU-hours.
+  search_or_scaffold: One proposer-agent feedback loop grounds a harder task in a recent live trajectory. There is no tree
+    search. Dynamic LLM judgment replaces fixed answer keys that drift with the web.
+  selection_threshold: The safety gate is proposer output `N/A`; judge validation thresholds success above 0.5 for binary
+    accuracy, while SFT filtering retains only `Judge(Success) = 1`.
+  seed_protocol: unknown
+  buffer_policy: Public train and test splits separate websites. No immutable accepted/rejected rollout buffer, v2-to-v3 migration
+    ledger, or paper-run sample-order manifest is released.
+  reward_schedule: One terminal LLM-judge score vector is produced per episode. The reported SFT recipe uses only success-equals-one
+    filtering and does not optimize the judge online with reinforcement learning.
+  optimizer_or_scaffold: Full SFT of Qwen3-1.7B for one epoch with Adam, learning rate `5e-5`, batch size 32, BF16, maximum
+    sequence length 16,384, 1% linear warmup, and the five most recent steps in context. Static benchmarks mix 20% InSTA and
+    80% human data.
+audit:
+  source_mixture: Synthetic tasks derive from accepted sites among one million Common Crawl ranked hosts, then mix current
+    public web content and browser state with model outputs. Per-row rights, locale, capture time, and source metadata are
+    incomplete.
+  split: V2 revision `b62e25283471513e3497b973122cceb9b420e0e4` has 143,811 train and 2,935 test rows, exactly 146,746 total,
+    with websites separated across splits. V3 revision `5a689ac657a24b0e55b1c0a0d690acfadd443c38` has 143,508 train and 2,933
+    test rows, 146,441 total. No row-level migration manifest explains the 305-row reduction.
+  decontamination: unknown
+  benchmark_overlap: The paper reports website-disjoint InSTA splits and says the 15 WebVoyager sites are absent from the
+    20K training trajectories. It does not release semantic task or source-content overlap checks, screenshot overlap checks,
+    or proposer, agent, and judge pretraining-exposure audits for InSTA, WebVoyager, Mind2Web, or WebLINX.
+  license: Current code and v2/v3 HF cards are labeled MIT. Those grants do not establish rights for third-party web text,
+    raw HTML, images, screenshots, contact data, or derived trajectories. Per-row website terms, attribution, capture time,
+    consent, and takedown records are absent. The manuscript has the separate arXiv nonexclusive distribution license.
+  lineage: Common Crawl rank -> proposer decision -> live exploration -> grounded task -> v2/v3 task row -> LLM rollout ->
+    judge evaluation -> success filtering -> SFT checkpoint. Public lineage ends at the task row because rollout IDs, observations,
+    judge outputs, failures, selection decisions, and checkpoint mappings are absent.
+  release_version: ArXiv v2 was revised 2025-05-22. Code was checked at commit `b2386fcf2cdb054bb0e422ed233fd2bee8877393`
+    dated 2025-07-11; there are no tags or GitHub Releases. V2 and v3 dataset revisions are `b62e25283471513e3497b973122cceb9b420e0e4`
+    and `5a689ac657a24b0e55b1c0a0d690acfadd443c38`. These surfaces are not bound by one signed paper-run manifest.
+  successful_and_failed_sample_retention: Public task datasets have no outcome field. Successful and failed trajectories,
+    screenshots, HTML or DOM observations, actions, judge scores, raw rationales, parse errors, unsafe-site rejections, and
+    filtering decisions are not published as a fixed corpus. Code can generate local equivalents but cannot reconstruct exact
+    paper runs.
+  immutable_manifest: No signed manifest binds the Common Crawl input hash, accepted and rejected hosts, task rows, replay
+    timestamps, site state, browser and container, dependencies, model endpoints and checkpoints, prompts, seeds, trajectories,
+    judge decisions, SFT subsets, checkpoints, and tables.
+  privacy_or_consent: The paper recommends scrubadub, but current `BrowserConfig` defaults `remove_pii` to false. When enabled,
+    code scrubs processed text only; raw HTML and screenshots remain unchanged. No consent, credential scan, image redaction,
+    retention, access-control, deletion, or takedown audit is public.
+  known_failure_modes:
+  - Safety filtering reaches at most 97% accuracy on only 100 balanced curated sites and is not a corpus-wide purity guarantee.
+  - Human feasibility rates range from 75% to 89% on small samples, so public tasks can be impossible, stale, or unverifiable.
+  - Success-judge accuracy ranges from 78.0% to 82.6% on 100 human-labeled trajectories; false accepts and rejects directly
+    affect SFT selection.
+  - Learned judges replace programmatic terminal predicates, leaving judge bias, reward hacking, and verifier gaming risks.
+  - Websites drift, disappear, localize content, change DOMs, and invalidate tasks or criteria; public rows have no replay
+    timestamps or archived states.
+  - Live Playwright interaction can affect analytics, prices, product decisions, accounts, or web state; prompt restrictions
+    are not an action-level transaction sandbox.
+  - A v3 registration task with placeholder personal details conflicts with the stated no-account and no-personal-information
+    policy.
+  - PII removal is disabled by default and, when enabled, covers processed text rather than raw HTML and screenshots retained
+    by the pipeline.
+  - The paper claims 2.2M screenshots and action traces and 150K judge traces, but public releases contain task rows only.
+  - The project claims model release while the official HF organization exposes zero public models at the cutoff.
+  - MIT labels do not resolve third-party website copyright, terms, privacy, consent, attribution, or takedown obligations.
+  - The 150K label is rounded: v2 has 146,746 rows and current v3 has 146,441, with no immutable migration ledger.
+  - Paper versions, current code, and v3 data changed models, schemas, results, and counts; unpinned reuse can mix incompatible
+    states.
+  - No independent training reruns, seed-level variance, or complete judge calibration and error-slice records are released.
+  citation_status: verified
+  confidence: high
+  notes: Verified on 2026-07-24 against arXiv metadata and the complete v2 paper, official project links, OpenReview submission
+    status, current GitHub code and license state, official HF organization, and v2/v3 dataset cards, revisions, and viewers.
+    Artifact existence does not establish full trajectory release, model release, reproducibility, rights, or privacy clearance.
+  remaining_unknowns:
+  - Exact proposer model, prompt revision, decoding seed, and source timestamp for each public task
+  - Complete v2-to-v3 migration mapping and explanation of the 305-row reduction
+  - Public trajectory, screenshot, action, judge, failure, and rejection corpora
+  - Exact paper-run PII configuration and raw-HTML, screenshot, and credential redaction
+  - Per-site rights, attribution, consent, capture time, retention, and takedown metadata
+  - Immutable browser, container, dependency, model, prompt, config, seed, and run-to-result manifests
+  - Full safety, feasibility, and judge human-audit records and calibration data
+  - Official trained checkpoints promised by the paper and project
+  - Semantic benchmark overlap and upstream pretraining contamination
+  - Independent reruns and variance
+inclusion_reason: InSTA is an explicit recipe for turning internet-scale ranked hosts into grounded web-agent tasks and judge-filtered
+  trajectories. Its gap between claimed rollout scale and task-only release makes verifier error, real-world side effects,
+  website drift, PII handling, copyright, and versioned lineage central audit questions.
+related:
+- agenttrek-2025
+tags:
+- insta
+- insta-150k
+- web-agents
+- browser-automation
+- playwright
+- common-crawl
+- task-generation
+- trajectory-generation
+- llm-judge
+- success-filtering
+- qwen3
+- sft
+- live-environment-drift
+- failed-trajectory-gap
+- release-completeness
+- privacy-risk
+- copyright-risk
+- count-reconciliation
+status: partial
+one_line_summary: InSTA combines an LLM safety and task proposer, one live Playwright exploration loop, LLM-agent rollouts,
+  and LLM success judgment to construct internet-scale web-agent SFT data.
+why_it_matters: It demonstrates a scalable path from ranked websites to environment-grounded agent training while making release
+  completeness, learned-judge error, live-site drift, side effects, privacy defaults, source rights, and versioned count lineage
+  first-class data-quality concerns.
+card: null
+needs:
+- 'needs_release: publish the paper-run trajectories, 2.2M screenshots, 2.2M action/reasoning traces, 150K judge traces, success/failure
+  labels, parse errors, and accepted/rejected ledgers'
+- 'needs_lineage: bind task rows, source hosts and capture times, rollouts, judge decisions, training subsets, checkpoints,
+  and reported evaluations, including a v2-to-v3 migration manifest'
+- 'needs_models: release promised checkpoints with model cards, licenses, base-model lineage, training subsets, intended use,
+  and safety limits'
+- 'needs_privacy: document the paper-run remove_pii setting and scan or redact raw HTML, screenshots, URLs, metadata, action
+  arguments, and judge outputs, with deletion and takedown procedures'
+- 'needs_license: provide per-site attribution, terms and rights analysis, capture timestamps, consent and takedown status,
+  and licenses for web-derived task and trajectory objects'
+- 'needs_safety: enforce action-level protections against accounts, personal data, purchases, posts, downloads, and web-state
+  changes and audit policy-violating tasks'
+- 'needs_verifier_audit: release human safety, feasibility, and judge-validation items, instructions, agreement, confusion
+  matrices, calibration, slices, and error examples'
+- 'needs_reproducibility_pin: publish a tagged package with Common Crawl hash, browser and container locks, prompts, model
+  revisions, seeds, retries, configs, and run-to-table logs'
+- 'needs_decontamination: audit site, URL, task, semantic, screenshot, and upstream model-pretraining overlap with evaluations'
+- 'needs_statistics: report independent generation, judging, SFT, and live-evaluation reruns with seed-level variance and
+  complete compute accounting'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Identity, arXiv version, submission-only OpenReview status, project, code, task datasets, licenses, exact v2/v3 revisions
+    and counts, PII defaults, affiliations, and absence of public models and trajectory files were checked. This does not
+    verify unreleased trajectories, judge traces, failures, checkpoints, rights, privacy, or exact reproducibility.
+category_ids:
+- data_construction_open_release_recipes

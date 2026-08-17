@@ -1,0 +1,3 @@
+核心贡献是在 chart-understanding, visual-question-answering, logical-reasoning 上提供 9.6K human-written questions and 23.1K machine-generated questions reported by the paper; repository documents chart images, tables, splits, and annotations.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：answer-level match or normalized comparison to the gold text/numeric answer under the 评测 script。
+
+数据对象或环境是：static chart question-answering benchmark over chart images and underlying tables。最接近的对比对象是 document, chart, multimodal QA, and visual 评测 benchmarks。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 程序化。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

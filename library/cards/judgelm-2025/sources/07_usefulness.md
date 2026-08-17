@@ -1,0 +1,3 @@
+For an open-ended evaluation pipeline with task prompts and answer pairs, reuse the score-first judge format and swap augmentation to produce a local winner/tie label and optional explanation. Hold the base model, answer pool, and both answer orders fixed; verify success with human agreement and swap consistency.
+
+For reference-grounded QA, provide the checked reference and use the reference-support condition; for mixed availability, test reference drop. Do not use its acceptance rule as a factual verifier for high-stakes or multilingual tasks without local human calibration, because the released supervision is GPT-4-derived and primarily English open-ended data.

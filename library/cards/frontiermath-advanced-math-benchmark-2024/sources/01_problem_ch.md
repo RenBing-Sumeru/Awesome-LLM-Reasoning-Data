@@ -1,0 +1,1 @@
+FrontierMath 关注的问题是：frontier AI 系统能否解决由专家原创、低污染、通常有简洁可核验答案的高等数学问题。主要来源是 arXiv:2411.04872 和 Epoch AI 项目页。这里收录它是因为它是 controlled-access advanced-math benchmark，而不是公开训练语料或证明数据集。一个问题包含题面、领域/难度元数据、期望答案，以及可用的 answer-checking 或 verifier policy。它对 atlas 的价值是把专家原创、隐藏访问、答案验证和可复现性之间的张力显式化。

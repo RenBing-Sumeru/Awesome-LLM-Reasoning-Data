@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以偏好奖励结合事实性与指令遵循验证器，构造可审计的复合奖励代理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可验证信号增强的奖励建模与偏好优化论文",
+  "best_for_ch": "需要将人类偏好与可执行或可核验信号结合为可靠奖励的研究者。",
+  "confidence_ch": "高：已核对 ACL 正文、作者机构和官方代码；具体复现实验须固定 released checkpoint 与验证器版本。",
+  "authors_ch": "Hao Peng, Yunjia Qi, Xiaozhi Wang, Zijun Yao, Bin Xu, Lei Hou, Juanzi Li",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

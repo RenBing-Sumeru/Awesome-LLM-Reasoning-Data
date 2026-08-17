@@ -1,0 +1,6 @@
+- 先读图 2–3 与 §3–§4：核心对象是基于 JSON state 的 episode generator，而不是 leaderboard。
+- 解释 “dense reward” 前先看附录 G：它是终局 goal-check progress 加折扣，不是逐动作 reward trace。
+- 区分两组增益：完整 Test256 上 +12.8 个 SR 点；筛选后的 59-task signal subset 上，simulation +42.8 点、真机 +40.7 点。
+- Train160/Test256 只应理解为 template-level disjointness；semantic overlap、world-data overlap 与预训练污染仍未知。
+- 可与 AndroidWorld/AndroidLab 对照 emulator 路线，与 AppWorld 对照 state-based verification；当前 `mobilegym-rl` 需单独审计，因为 v0.1.0 晚于 arXiv v2。
+- 仍需公开：论文运行的精确 commit/data pin、采样 task ID 与 seed、完整成功/失败 rollout log、reward vector 和训练后 checkpoint。

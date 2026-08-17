@@ -1,0 +1,5 @@
+- Position: Hubble makes memorization risks experimentally measurable with known training interventions.
+- Mechanism: paired standard and perturbed models vary duplicate count, corpus size, and insertion time.
+- Artifact: the project releases models, perturbation datasets, and code; core models span 1B/8B parameters and 100B/500B tokens.
+- Evidence anchor: Figure 2 finds dilution at larger corpus size, and timing runs show later exposure is retained more strongly.
+- Reuse decision: use the known member labels for inference or unlearning evaluation; verify the exact dataset revision before comparison.

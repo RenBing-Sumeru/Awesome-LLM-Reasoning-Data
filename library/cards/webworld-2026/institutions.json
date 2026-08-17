@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Alibaba Group",
+    "Zhejiang University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2602.14721",
+    "https://arxiv.org/html/2602.14721"
+  ],
+  "verification_note": "arXiv verifies the corrected title, authors, and preprint status; no public code/data/project URL was verified."
+}

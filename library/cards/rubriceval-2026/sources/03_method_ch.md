@@ -1,0 +1,3 @@
+输入包括 instruction, response, rubric, binary_label, source_benchmark, rubric_category, easy_or_hard_subset, 裁判_rationale_or_arbitration_provenance，以及官方 发布版本暴露的任务 prompt、上下文、工具/环境状态、候选答案或模型轨迹。输出是能被官方 evaluator 接收的预测、回复、轨迹、artifact、标签或分数。
+
+流程可以读成：先收集或构造任务对象；让模型在指定输入面上作答或行动；按论文 scaffold 运行模型/agent；用 RAF label produced by base-裁判 agreement or meta-裁判 consensus, with sampled human validation; no mechanical 验证器 is provided. 打分；再按论文 metric 聚合。训练/评测用途是 评测, 审计，除非官方产物 明确披露优化配方。复现时必须固定 Paper reports 2,034 Easy and 1,452 Hard rubric-level 实例s; exact released split files cannot be pinned because no official artifact was found.、evaluator 实现、artifact revision、模型/scaffold 设置、prompt 格式、预算/timeout 和依赖环境。

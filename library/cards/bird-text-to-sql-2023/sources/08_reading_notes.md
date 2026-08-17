@@ -1,0 +1,1 @@
+Keep three axes separate: answer execution correctness, SQL efficiency, and evidence availability. Do not compare scores unless the database dump, evaluator, split, and evidence setting match. The benchmark title is sometimes shortened to BIRD, but the arXiv title is longer and includes the database-interface framing.

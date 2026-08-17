@@ -1,0 +1,3 @@
+# Evidence
+
+**Claim:** the ordered rationale target, rather than extra teacher text alone, is useful supervision. **Controlled setup:** Appendix Table 7 trains the same Llama-3.2-Vision backbone with the released data under multi-task targets, shuffled stage order, or the intended ordered CoT target. **Result:** the six-benchmark reasoning average is 57.7 for multi-task supervision, 58.2 for shuffled stages, and 63.1 for ordered LLaVA-CoT, with MMVet-R rising from 58.0/54.3 to 66.7. **Boundary:** this supports the reported target order and CoT formulation on one 11B backbone; teacher quality, source mixture, and inference choices remain coupled, and final-answer agreement does not validate each rationale step.

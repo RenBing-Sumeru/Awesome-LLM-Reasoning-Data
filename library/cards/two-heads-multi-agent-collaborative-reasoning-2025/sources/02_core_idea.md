@@ -1,0 +1,1 @@
+Core idea: Two Heads releases M500 and adapts multi-agent discussion depth with a CEO agent. The reusable trace object is Multi-agent discussions; exact schema requires dataset inspection.; its stated feedback contract is Formal M500 verifier/reward not established..

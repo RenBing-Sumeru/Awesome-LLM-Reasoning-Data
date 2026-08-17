@@ -1,0 +1,3 @@
+Correctness is only correctness relative to expert or rubric-guided judge scoring; exact public judge contract needs audit. A passing score does not automatically prove robust reasoning, safe behavior, faithful explanations, or transfer outside the benchmark's task distribution.
+
+Hidden assumptions include public/hidden split and downloadable task access need audit.; needs_audit; dependency/runtime drift; judge or evaluator version drift; and contamination risk: public examples and rubrics can leak into model training. The card should not be read as evidence of a training recipe unless released artifacts expose training inputs, filtering rules, and optimization use.

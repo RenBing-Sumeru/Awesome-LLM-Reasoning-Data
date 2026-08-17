@@ -1,0 +1,1 @@
+FaithBench covers source-grounded summarization, not general QA, long-context reasoning, or real production RAG. Its hard-case sampling changes the class distribution and makes model-size or global ranking conclusions fragile. Experts still disagree substantially on benign and questionable cases, and evidence links assist judgment rather than create objective truth.

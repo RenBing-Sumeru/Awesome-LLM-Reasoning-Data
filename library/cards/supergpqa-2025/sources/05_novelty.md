@@ -1,0 +1,5 @@
+The prior-work baseline is expert multiple-choice evaluation such as GPQA, MMLU-Pro, and discipline-specific math, medicine, law, and science datasets. SuperGPQA changes coverage and construction governance: it expands to 285 subfields, uses a three-stage annotation and inspection pipeline, and reports hierarchy-aware metrics.
+
+The direction signal is not just "more questions." The paper documents practical mechanisms for expert-domain benchmark construction: source screening by experts, transcription into a unified multiple-choice format, LLM-assisted detection of trivial or malformed items, plagiarism checks, and expert re-review of suspicious candidates.
+
+What is not new: multiple-choice QA, answer-key accuracy, using LLMs as filters, and public leaderboards all predate the paper. Before reuse, inspect the exact Hugging Face revision, referenced-dataset lineage, ODC-BY attribution obligations, third-party dataset licenses, answer parser, prompt variants, and any public/hidden split or leaderboard policy.

@@ -1,0 +1,2 @@
+1. **Training or data construction.** UnifiedReward can rerank multimodal outputs, filter training data, and generate DPO pairs. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** It should be calibrated separately by task and compared with human and task-specific rewards. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

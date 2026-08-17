@@ -1,0 +1,101 @@
+id: survey-on-evaluation-of-llm-based-agents-2025
+title: A Survey on Evaluation of LLM-based Agents
+year: 2025
+venue: Findings of ACL 2026
+authors:
+- Asaf Yehudai
+- Lilach Eden
+- Alan Li
+- Guy Uziel
+- Yilun Zhao
+- Roy Bar-Haim
+- Arman Cohan
+- Michal Shmueli-Scheuer
+source_role:
+- survey_background
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- agents
+- evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1330/
+  arxiv: https://arxiv.org/abs/2503.16416
+  code: https://github.com/Asaf-Yehudai/LLM-Agent-Evaluation-Survey
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1330
+  venue: https://aclanthology.org/2026.findings-acl.1330/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1330/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: Taxonomy, benchmark recommendations, framework comparison, and maintained literature index.
+  process_fields:
+  - task, environment, trajectory, evaluator, terminal predicate.
+  environment_or_substrate: LLM-agent evaluation literature and benchmark/framework documentation.
+  verifier_or_reward: environmental and benchmark evaluators summarized by the survey.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: unknown
+  known_failure_modes: []
+  citation_status: verified
+  confidence: high
+  notes: arXiv source and companion GitHub index reviewed; no standalone downloadable dataset was found.
+inclusion_reason: Maps agent evaluation by capability, application, benchmark dimension, and development framework for readers
+  designing or auditing interactive evaluations.
+related: []
+tags:
+- survey
+- agent-evaluation
+- tool-use
+status: verified
+card: null
+needs:
+- 'needs_metadata: repository coverage evolves; cite the reviewed arXiv version for fixed claims'
+one_line_summary: Surveys LLM-agent evaluation across core capabilities, application domains, benchmark dimensions, and development-time
+  evaluation frameworks.
+why_it_matters: It provides a structured way to distinguish evaluation data, environment dynamics, interfaces, metrics, and
+  safety before comparing agent benchmarks.
+curation_level: L4_deep_read
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: deep_read
+  confidence: high
+  notes: arXiv source bundle and the official companion GitHub repository were reviewed on 2026-07-19.
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

@@ -1,0 +1,1 @@
+引用：Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, John Schulman. “Training Verifiers to Solve Math Word Problems.” arXiv / OpenAI, 2021. https://arxiv.org/abs/2110.14168 官方链接：https://github.com/openai/grade-school-math 。

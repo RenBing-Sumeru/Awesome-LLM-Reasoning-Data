@@ -1,0 +1,3 @@
+Prompt injection and jailbreak work attacks an evaluator at inference, whereas BadJudge changes the training-data and model-supply chain shared by candidate and judge. Its specific change is to make the candidate generate a trigger that the poisoned judge has learned to reward, then separate threat severity by attacker access. The paper also tests the threat beyond pairwise preference, including safety and reranking. Model merging is not introduced here, but its use as a trigger-agnostic judge defense is the practical mitigation contribution.
+
+This framing makes the evaluation contract itself an attack surface, including instruction, response, reference, rubric, and verdict components.

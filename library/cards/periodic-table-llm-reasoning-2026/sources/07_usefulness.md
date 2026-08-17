@@ -1,0 +1,1 @@
+The survey provides a structured taxonomy of reasoning paradigms, methods, benchmarks, and failure modes across language, visual, temporal, code, retrieval, tool, and agentic settings. Its categories describe the landscape of reasoning research. They do not supply the construction details of an individual dataset, model, or benchmark release.

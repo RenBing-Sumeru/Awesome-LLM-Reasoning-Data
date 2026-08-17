@@ -1,0 +1,145 @@
+id: llava-cot-2025
+title: 'LLaVA-CoT: Let Vision Language Models Reason Step-by-Step'
+year: 2025
+venue: ICCV 2025
+authors:
+- Guowei Xu
+- Peng Jin
+- Ziang Wu
+- Hao Li
+- Yibing Song
+- Lichao Sun
+- Li Yuan
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- multimodal-reasoning
+- visual-question-answering
+- mathematics
+- science
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2411.10440
+  arxiv: https://arxiv.org/abs/2411.10440
+  code: https://github.com/PKU-YuanGroup/LLaVA-CoT
+  data: https://huggingface.co/datasets/Xkev/LLaVA-CoT-100k
+  project: https://github.com/PKU-YuanGroup/LLaVA-CoT
+  huggingface: https://huggingface.co/datasets/Xkev/LLaVA-CoT-100k
+  venue: https://openaccess.thecvf.com/content/ICCV2025/html/Xu_LLaVA-CoT_Let_Vision_Language_Models_Reason_Step-by-Step_ICCV_2025_paper.html
+  cvf: https://openaccess.thecvf.com/content/ICCV2025/html/Xu_LLaVA-CoT_Let_Vision_Language_Models_Reason_Step-by-Step_ICCV_2025_paper.html
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  bibtex: null
+data_object:
+  prompt_source: 99k image-question-answer pairs sampled from ten general and science-focused VQA datasets, led by ShareGPT4V,
+    ChartQA, A-OKVQA, AI2D, and GeoQA+.
+  trace_author: GPT-4o writes the summary, image-focused caption, step-by-step reasoning, and conclusion for each source question.
+  answer_format: An image and question paired with four tagged text spans named SUMMARY, CAPTION, REASONING, and CONCLUSION;
+    the conclusion must agree with the source answer.
+  process_fields:
+  - image reference and source dataset
+  - question and original standard answer
+  - tagged summary, caption, reasoning, and conclusion
+  - format-validity and answer-alignment decisions
+  environment_or_substrate: Static multimodal supervised records; SWIRES is a separate inference-time search over stage outputs.
+  verifier_or_reward: A format parser rejects missing stage tags, then a GPT-4o judge rejects refusals or conclusions that
+    differ meaningfully from the source answer.
+  terminal_predicate: Retain a generated record only when all four tagged spans are present and the conclusion is judged non-refusal
+    and semantically aligned with the standard answer.
+recipe_metadata:
+  base_model: Llama-3.2-11B-Vision-Instruct.
+  teacher: GPT-4o generates all four reasoning stages and judges answer alignment; InternLM-XComposer2.5-Reward is used only
+    for SWIRES experiments.
+  generator: Prompt GPT-4o with the image, question, and source answer and require four ordered tagged stages in one response.
+  filtering_rule: Enforce the exact tag structure, extract CONCLUSION, and reject refusals or conclusions that do not match
+    the standard answer in meaning.
+  sampling_protocol: Select 99k pairs from ten VQA sources; the paper does not report multiple generation rollouts per training
+    item.
+  rollout_count: 1
+  temperature: null
+  inference_budget: Dataset generation uses one structured GPT-4o response plus one answer-verification pass per candidate;
+    total tokens and cost are not reported.
+  optimizer_or_scaffold: Full-parameter SFT for three epochs on eight H100 GPUs with FSDP, context length 4096, train batch
+    size 4, mixed precision, and seed 42.
+audit:
+  source_mixture: 31.3k ShareGPT4V, 17.2k ChartQA, 16.1k A-OKVQA, 11.4k AI2D, 11.4k GeoQA+, 5.6k ScienceQA, 4.0k DocVQA, 1.0k
+    PISC, and 0.5k each from CLEVR and CLEVR-Math.
+  split: The paper reports 99k training pairs but does not disclose a dedicated reusable validation/test split for LLaVA-CoT-100k.
+  decontamination: Source benchmarks overlap the multimodal evaluation ecosystem; the paper does not report a semantic decontamination
+    algorithm or overlap counts for the released training set.
+  license: The official Hugging Face dataset metadata identifies Apache-2.0 and JSON records; users must also review the terms
+    of the ten upstream image/VQA sources.
+  lineage: Ten existing VQA sources provide image-question-answer seeds; GPT-4o adds ordered rationale spans and performs
+    answer-alignment filtering before Llama-3.2-Vision SFT.
+  known_failure_modes:
+  - Agreement with the source final answer cannot establish that the intermediate caption or rationale is faithful.
+  - A single GPT-4o family supplies both traces and semantic filtering, allowing correlated errors to survive.
+  - SWIRES can hallucinate or get lost when the image exceeds the model's visual understanding, as the authors state.
+  citation_status: verified
+  confidence: high
+  notes: Full 17-page arXiv paper, official ICCV 2025 CVF record, public repository, Apache-2.0 JSON dataset metadata, release
+    usage, and exact ablations were checked on 2026-07-14.
+inclusion_reason: LLaVA-CoT-100k serializes multimodal target behavior into four explicit rationale stages, publishes the
+  records, and shows how they are filtered and consumed by SFT.
+related: []
+tags:
+- multimodal-instruction-data
+- structured-rationale
+- visual-reasoning
+- teacher-distillation
+- test-time-search
+status: verified
+one_line_summary: LLaVA-CoT-100k turns 99k VQA pairs into four-stage summary-caption-reasoning-conclusion demonstrations for
+  multimodal SFT.
+why_it_matters: It exposes a compact, inspectable target schema for teaching a VLM to organize perception and reasoning before
+  answering.
+reading_priority: must read
+paper_type: multimodal rationale dataset and structured-reasoning model report
+best_for: Researchers building or auditing staged visual-reasoning SFT data.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv and CVF records, repository, dataset release, license tag, actual JSON format, and public usage signals
+    were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-established2
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: staged multimodal rationale demonstrations
+  selection_priority_score: 12
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 4
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block includes Peking University, Tsinghua University, Alibaba DAMO Academy, Lehigh
+      University, and the Rabbitpre AI and PKU Shenzhen AIGC Joint Lab.
+    venue: The official CVF Open Access record confirms ICCV 2025; no official oral, spotlight, or award distinction is claimed.
+    impact: On 2026-07-14 the official repository snapshot showed 2,132 stars and 82 forks, while the official Hugging Face
+      dataset reported 1,759 downloads and 105 likes, exceeding the 2025 early-adoption threshold.
+    artifact: The release provides paper, Apache-2.0 code, 99k JSON data records, model weights, training code, and SWIRES
+      implementation.
+  selection_eligible: true
+  year_impact_threshold: 2

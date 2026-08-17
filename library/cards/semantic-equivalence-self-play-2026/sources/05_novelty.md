@@ -1,0 +1,5 @@
+The recipe's useful novelty is not self-play alone. It couples two semantically meaningful but asymmetric machine contracts inside one curriculum: formal proof for positive equivalence and concrete execution for negative inequivalence. This avoids asking a learned judge to invent the label, while still using the judge's repeated error rate to rank difficulty.
+
+It also makes proof scarcity observable rather than hiding it behind aggregate benchmark scores. The SEQ/SINQ yield gap exposes a practical trade-off between high-fidelity positive supervision and scalable negative supervision. The three-part Alice dataset—challenging transformations, self-predicted difficulty, and verified proof traces—connects data construction to agent behavior at generation, calibration, and proof steps.
+
+Relative to the prior SINQ game, the added SEQ branch changes both the data object and verifier: an accepted positive pair carries a machine-checkable proof rather than merely a class label. OpInstruct-HSx supplies a runnable Haskell substrate, but the paper's substantive contribution is the mixed-verifier interaction recipe built on top of it.

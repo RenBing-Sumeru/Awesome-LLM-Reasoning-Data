@@ -1,0 +1,1 @@
+该发布可在不重新生成输出的情况下，用相同候选预算比较 BoN、self-consistency、Weighted BoN 与 MoB，并分析 selector 对 reward model 的敏感性或试验停止规则。可复用记录应保存 benchmark/doc_id、完整 prompt、generator 与解码设置、所有 completion、答案规范化、benchmark correctness、reward model 身份与版本、原始标量 reward、预算 N、m 或 adaptive rule、估计答案概率质量、tie 处理、选中索引和最终答案。generation_score 必须与 reward 分开，避免把 benchmark correctness 当成在线选择信号；复用仍取决于上游许可、污染检查与固定池边界。

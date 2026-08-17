@@ -1,0 +1,1 @@
+The central design choice is to make claim-level Legal Data Points the interface between a long legal answer and a reference-free judge. This targets a legal review workflow rather than merely applying a generic rubric to the entire response.

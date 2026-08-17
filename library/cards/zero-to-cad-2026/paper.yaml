@@ -1,0 +1,129 @@
+id: zero-to-cad-2026
+title: 'Zero-to-CAD: Agentic Synthesis of Interpretable CAD Programs at Million-Scale Without Real Data'
+year: 2026
+venue: arXiv preprint
+authors:
+- Mohammadmehdi Ataei
+- Farzaneh Askari
+- Kamal Rahimi Malekshan
+- Pradeep Kumar Jayaraman
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- executable-CAD-construction-demonstrations
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.24479
+  arxiv: https://arxiv.org/abs/2604.24479
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/ADSKAILab/Zero-To-CAD-1m
+  project: null
+  huggingface: https://huggingface.co/datasets/ADSKAILab/Zero-To-CAD-1m
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: an LLM-sampled catalog of mechanical-part descriptions without real construction histories
+  trace_author: tool-using agents generate CadQuery code, inspect errors, consult documentation, and repair candidates
+  answer_format: uuid, CadQuery file, topology counts, operation sequence, latencies, eight renders, STL, and STEP files
+  process_fields:
+  - uuid
+  - CadQuery file
+  - topology counts
+  - operation sequence
+  - latencies
+  - eight renders
+  - STL
+  - and STEP files
+  environment_or_substrate: programmatic mechanical CAD generation
+  verifier_or_reward: isolated code execution, topology checks, geometric validation, and export validation
+  terminal_predicate: isolated code execution, topology checks, geometric validation, and export validation
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: tool-using agents generate CadQuery code, inspect errors, consult documentation, and repair candidates
+  generator: Zero-to-CAD uses tool-using agents to synthesize, execute, repair, and validate nearly one million CadQuery construction
+    programs without real trajectories.
+  filtering_rule: isolated code execution, topology checks, geometric validation, and export validation
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: CAD program generation SFT and agent training
+audit:
+  source_mixture: an LLM-sampled catalog of mechanical-part descriptions without real construction histories
+  split: Official release at https://huggingface.co/datasets/ADSKAILab/Zero-To-CAD-1m; exact configs are described by the
+    dataset card.
+  decontamination: isolated code execution, topology checks, geometric validation, and export validation
+  license: Apache-2.0
+  lineage: an LLM-sampled catalog of mechanical-part descriptions without real construction histories -> tool-using agents
+    generate CadQuery code, inspect errors, consult documentation, and repair candidates -> isolated code execution, topology
+    checks, geometric validation, and export validation -> Zero-to-CAD 1M -> CAD program generation SFT and agent training
+  known_failure_modes:
+  - validator-passing geometry may be functionally meaningless
+  - and synthetic part descriptions underrepresent real designer constraints
+  citation_status: verified
+  confidence: high
+  notes: Full 20 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for CAD program generation SFT and agent training;
+  records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2604.24479
+- primary-link-checked
+status: verified
+one_line_summary: Zero-to-CAD uses tool-using agents to synthesize, execute, repair, and validate nearly one million CadQuery
+  construction programs without real trajectories.
+why_it_matters: Real CAD datasets expose final geometry but rarely the editable construction history needed to train interpretable
+  program-generating models.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: CAD program generation SFT and agent training
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: executable CAD construction demonstrations
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 6985 downloads and 126 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet metadata plus CadQuery source, operation JSON, images, STL, and
+      STEP assets records, field schema, scale, and Apache-2.0 terms.
+  selection_eligible: true
+  year_impact_threshold: 1

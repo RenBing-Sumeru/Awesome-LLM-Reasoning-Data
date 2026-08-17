@@ -1,0 +1,19 @@
+{
+  "title": "ToolHop: A Query-Driven Benchmark for Evaluating Large Language Models in Multi-Hop Tool Use",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.02506",
+    "data": "https://huggingface.co/datasets/bytedance-research/ToolHop",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T10:41:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 ToolHop，含995个问题和3,912个本地可执行工具",
+    "updated_at": "2026-07-19T10:41:19Z"
+  }
+}

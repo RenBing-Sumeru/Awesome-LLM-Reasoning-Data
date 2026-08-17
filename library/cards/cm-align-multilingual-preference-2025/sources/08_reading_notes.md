@@ -1,0 +1,1 @@
+Read the anchor-selection and task-specific consistency definitions before the final DPO results. For reproduction, record the prompt translations, response-sampling configuration, languages, anchor choice, task metric, pair-construction rule, and whether evaluation languages were excluded from construction.

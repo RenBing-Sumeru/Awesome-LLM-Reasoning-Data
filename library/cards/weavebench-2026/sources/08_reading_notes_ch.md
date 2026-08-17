@@ -1,0 +1,6 @@
+- 优先阅读论文第 3.1-3.4 节与附录 A-B：这些部分定义 P1-P3、C1-C4、任务/episode 对象、主动取证 judge 和标量聚合。
+- 精确保留规模：114 个英文任务、8 个工作领域、23 个子类；作者报告的 P1 覆盖为 114 个同时含 GUI/CLI atom、103 个含 non-anchor atom、50 个在两侧各至少有两个 atom。
+- 同时保留两组官方冲突：论文 v3 写 GPT-5.5 和 `τ = 0.8`，当前 `docs/REPRODUCE.md` 写 Claude Opus 4.7 和 threshold 0.5。
+- 复现应使用 Hugging Face revision `cd887bf5ee0e70faa4b250f2cd192bcc1de164ea`，而不是较新的已观察 main `fcb478b0bdee19a7f01c1d3c2f648e3ed91abafa`；还需取得精确 GitHub code/prompt/runtime pin。
+- 应把 35.1%、41.2%、33.3% 到 53.5% 的 grading ablation 和 35.2% reward-hacking 占比解释为特定设置下的证据，绝不能当作任务或数据质量证明。
+- 在 split/decontamination、judge calibration、逐记录权利、provenance-index 路径，以及完整成功/失败/hack-flagged 轨迹 retention 核实前，仅限 evaluation 与 audit 复用。

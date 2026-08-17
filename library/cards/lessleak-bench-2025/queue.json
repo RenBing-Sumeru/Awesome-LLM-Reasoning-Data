@@ -1,0 +1,17 @@
+{
+  "title": "LessLeak-Bench: A First Investigation of Data Leakage in LLMs Across 83 Software Engineering Benchmarks",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2502.06215",
+    "data": "https://huggingface.co/datasets/26PaperSubmission/lessleak-bench"
+  },
+  "review_note": "纳入正式池：跨 83 个软件工程基准量化泄漏，并公开人工核验记录和清理后的评测数据。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "纳入正式池：跨 83 个软件工程基准量化泄漏，并公开人工核验记录和清理后的评测数据。",
+    "updated_at": "2026-07-21T00:00:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+Read the paper and the platform as related but versioned objects. The important distinction is not only old versus new math problems; it is frozen benchmark versus live contest platform. Keep answer-key scores, proof judgments, raw logs, and leaderboard summaries separate.

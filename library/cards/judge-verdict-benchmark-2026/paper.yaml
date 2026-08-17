@@ -1,0 +1,91 @@
+id: judge-verdict-benchmark-2026
+title: "Judge's Verdict: A Comprehensive Analysis of LLM Judge Capability Through Human Agreement"
+year: 2025
+venue: arXiv preprint; under review at ICLR 2026
+authors:
+- Steve Han
+- Gilberto Titericz Junior
+- Tom Balough
+- Wenfei Zhou
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.09738
+  arxiv: https://arxiv.org/abs/2510.09738
+  code: https://github.com/nvidia/judges-verdict
+  data: https://huggingface.co/datasets/nvidia/judges-verdict
+  project: https://huggingface.co/spaces/nvidia/judges-verdict
+  huggingface: https://huggingface.co/datasets/nvidia/judges-verdict
+  doi: null
+  venue: https://openreview.net/forum?id=jVyUlri4Rw
+  openreview: https://openreview.net/forum?id=jVyUlri4Rw
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary page and public artifact URL recorded on 2026-07-19. Public submission materials define a benchmark
+    for factual judge reliability.
+inclusion_reason: 'The benchmark distinguishes correlation from chance-corrected human agreement and makes the reliability-versus-nuance trade-off of LLM judges explicit.'
+related: []
+tags:
+- audit
+- llm-as-a-judge
+- human-agreement
+status: verified
+one_line_summary: Public submission materials define a benchmark for factual judge reliability.
+why_it_matters: It adds a concrete reliability or failure-mode evaluation surface to Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

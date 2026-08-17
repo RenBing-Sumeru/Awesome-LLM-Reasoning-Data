@@ -1,0 +1,3 @@
+The official abstract reports consistent accuracy and robustness improvements across popular mathematical reasoning benchmarks and several base models. That is evidence for the narrow claim that a training-free, self-reflection-guided tree search can improve small-model reasoning under the tested budgets.
+
+The evidence should be read cautiously because the record is an ICLR 2026 submission rather than an accepted paper, and no released implementation permits inspection of the priority heuristic or prompts. The important comparison is not only final accuracy: a fair replication must match expansion count, generated tokens, and self-critique calls, since each is part of the test-time budget being claimed.

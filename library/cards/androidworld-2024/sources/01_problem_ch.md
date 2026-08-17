@@ -1,0 +1,1 @@
+AndroidWorld 是 ICLR 2025 / arXiv v5 的 Google Research 与 Google DeepMind Android 自主智能体动态评测环境。它要解决的不是截图问答，而是让 agent 在真实 Android 模拟器和 app 状态里执行操作，并由任务特定谓词判断是否完成。这里收录它是因为它提供了可执行移动端环境面：一个任务包含自然语言指令、emulator/app 状态、动作序列、观察日志和程序化成功/失败条件。它应被当作 evaluation surface，不应直接等同于可复用训练集。

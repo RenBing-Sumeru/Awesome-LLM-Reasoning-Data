@@ -1,0 +1,1 @@
+Self-judgment can reproduce and amplify a model’s own biases, especially when candidate diversity is low or the judging prompt is brittle. Iteration is expensive and offers no independent guarantee that improved self-agreement corresponds to better human-aligned behavior; external audits and held-out evaluations remain necessary.

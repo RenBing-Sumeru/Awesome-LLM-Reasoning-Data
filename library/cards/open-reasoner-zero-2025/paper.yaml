@@ -1,0 +1,273 @@
+id: open-reasoner-zero-2025
+title: 'Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model'
+year: 2025
+venue: NeurIPS 2025 (Main Conference Track)
+authors:
+- Jingcheng Hu
+- Yinmin Zhang
+- Qi Han
+- Daxin Jiang
+- Xiangyu Zhang
+- Heung-Yeung Shum
+source_role:
+- construction_recipe
+- verifier_reward
+- data_release
+- model_report
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- mathematical_reasoning
+- general_reasoning
+- logical_reasoning
+- coding
+- instruction_following
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/ed873d79e7c268c020c4b4db13a2812a-Paper-Conference.pdf
+  paper_pdf: https://proceedings.neurips.cc/paper_files/paper/2025/file/ed873d79e7c268c020c4b4db13a2812a-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2503.24290
+  code: https://github.com/Open-Reasoner-Zero/Open-Reasoner-Zero
+  code_pinned: https://github.com/Open-Reasoner-Zero/Open-Reasoner-Zero/tree/3fdd9a07b4fb01e06005e6e74fc56690cde8a341
+  data: https://github.com/Open-Reasoner-Zero/Open-Reasoner-Zero/tree/3fdd9a07b4fb01e06005e6e74fc56690cde8a341/data
+  project: https://yasminezhang.notion.site/Open-Reasoner-Zero-19e12cf72d418007b9cdebf44b0e7903
+  huggingface: https://huggingface.co/Open-Reasoner-Zero
+  models: https://huggingface.co/Open-Reasoner-Zero/Open-Reasoner-Zero-32B
+  critics: https://huggingface.co/Open-Reasoner-Zero/Open-Reasoner-Zero-Critic-32B
+  dataset_card: https://huggingface.co/datasets/Open-Reasoner-Zero/orz_math_57k_collection
+  logs: null
+  release: null
+  doi: https://doi.org/10.48550/arXiv.2503.24290
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/ed873d79e7c268c020c4b4db13a2812a-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2503.24290
+data_object:
+  record_type: The released corpus consists of prompt/reference-answer pairs, while the actual PPO training object is an online
+    sampled full-response trajectory with one terminal correctness reward, token-level critic values, and token-level GAE/PPO
+    advantages.
+  prompt_source: The original file is reported as collected from AIME through 2023, MATH, Numina-Math, and Tulu3 MATH. The
+    extended file is mainly cleaned from OpenR1-Math-220k. The paper additionally mentions AoPS and programmatically synthesized
+    general-reasoning tasks, but released rows have no source IDs.
+  trace_author: The current Qwen2.5 Base policy samples 64 responses per prompt during online RL. Main Reasoner-Zero runs
+    bypass SFT and distillation; upstream base-model pretraining remains external.
+  released_record:
+    format: JSON array
+    shape: A two-item conversation list with human.value as the problem and assistant.ground_truth.value as the reference
+      answer.
+    counts:
+      original_rows: 56878
+      extended_rows: 72444
+      hard_rows: 13451
+    exact_duplicate_rows:
+      original: 2503
+      extended: 24025
+      hard: 611
+    unique_prompt_counts:
+      original: 54375
+      extended: 48419
+      hard: 12840
+    omitted_fields:
+    - source_dataset_and_source_record_id
+    - per_record_license
+    - split_membership
+    - curation_decision_and_filter_score
+    - hard_mining_success_count
+    - sampled_response
+    - terminal_reward
+    - critic_values
+    - advantages
+    - checkpoint_and_training_step
+  online_trajectory:
+    prompt: reasoning problem wrapped by the released think/answer template
+    response: sampled token trajectory ending at a stop string or length limit
+    terminal_reward: binary mathematical-answer correctness
+    value_signal: separate critic value V(s_t) for every response-token state
+    advantage: R - V(s_t) because gamma=1 and lambda=1
+  answer_format: The prompt requests reasoning inside <think> tags and an answer inside <answer> tags. Released code further
+    requires a \boxed{...} expression inside the answer span.
+  process_fields:
+  - prompt_and_reference_answer
+  - response_tokens
+  - generation_stop_reason
+  - extracted_boxed_answer
+  - mathematical_equivalence_result
+  - binary_terminal_reward
+  - token_level_critic_values
+  - token_level_advantages
+  - old_and_current_policy_log_probabilities
+  - PPO_probability_ratio
+  observation: The checker observes generated text, extracts the last boxed expression inside answer tags, normalizes candidate
+    and reference, and evaluates mathematical equivalence. Generation also exposes a stop reason.
+  verifier_output: A Boolean correctness result that becomes terminal reward 1 or 0. No separate format reward, calibrated
+    verifier confidence, or step label is reported.
+  reward: A single terminal binary reward. All intermediate token rewards are zero. The critic is trained toward the terminal
+    reward at every response-token state; the policy uses normalized advantages in clipped PPO.
+  environment_or_substrate: Offline reasoning prompts with reference answers, a Python mathematical normalization/equivalence
+    checker, vLLM rollout, Ray orchestration, DeepSpeed distributed training, and a separate learned critic.
+  verifier_or_reward: Programmatic final-answer verification. The paper describes exact matching, while released code parses
+    a boxed answer and applies solution normalization plus mathematical equivalence logic.
+  terminal_predicate: The final response contains a parseable boxed expression within answer tags and the released checker
+    judges it equivalent to the reference.
+  provenance: public and synthesized prompt/reference sources -> undocumented collection, cleaning, and LLM difficulty filtering
+    -> released original/extended prompt files -> 64 policy rollouts per prompt -> programmatic terminal reward and critic
+    values -> PPO updates -> hard-prompt mining -> optional 32B annealing -> released policy and critic checkpoints
+  release_surface: Prompt/reference JSON files, code, configs, Dockerfile, evaluation files, policy checkpoints, and critic
+    checkpoints are public. Exact paper-run trajectories, failed responses, rewards, values, advantages, hard-mining attempts,
+    logs, and checkpoint bindings are not released.
+recipe_metadata:
+  base_model: Qwen2.5 Base at 0.5B, 1.5B, 7B, and 32B for the released ORZ family. Mixed-domain transfer also tests Llama-3.1-8B
+    Base.
+  teacher: None for the main Reasoner-Zero RL warm start; training begins directly from a pretrained base model. The separate
+    ORZ-R1-Distill-Qwen-14B transfer experiment starts from DeepSeek-R1-Distill-Qwen-14B.
+  generator: The current policy generates 64 online responses for each sampled prompt.
+  prompt_task_source: Curated public mathematics/reasoning collections plus reported programmatic synthesis. Item-level source
+    lineage is absent.
+  filtering_rule: Exclude prompts that the rule checker cannot reliably score, including proof-oriented tasks, and apply undisclosed
+    LLM-based difficulty filtering to remove extreme pass rates. The filtering model, prompt, thresholds, yields, and row-level
+    decisions are not disclosed.
+  sampling_protocol: At every generation step sample 128 unique prompts and generate 64 responses per prompt with temperature
+    1.0 and top-p 1.0. Apply one strictly on-policy policy update; process critic experience in 12 minibatches.
+  rollout_count: 64 responses per prompt; 128 prompts, or 8,192 trajectories, per generation iteration
+  temperature: 1.0
+  top_p: 1.0
+  inference_budget: Released configs set prompt_max_len=2048, generate_max_len=8000, and max_len=8192. The paper reports 1,100
+    first-stage 32B steps followed by 100 hard-data annealing steps. Exact wall time and GPU-hours are unknown.
+  search_or_scaffold: No tree search. Online grouped sampling feeds PPO; a learned critic supplies token values. The 32B annealing
+    curriculum selects hard prompts using 64-attempt empirical success.
+  selection_threshold: For the hard set, retain prompts with fewer than 4 correct answers among 64 attempts during the first
+    1,100 ORZ-32B steps.
+  seed_protocol: unknown
+  buffer_policy: Prompts are sampled from released/configured datasets. Exact paper-run sample order, replacement behavior,
+    shuffle seed, and binding between 57k, extended 72k, and the reported 129k mixture are not disclosed.
+  reward_schedule: Static binary terminal correctness reward with no additional format reward. The main stage uses constant
+    learning rates after 50-step warm-up; the 32B hard-data annealing stage linearly decays to 3e-7.
+  optimizer_or_scaffold: Vanilla clipped PPO with epsilon 0.2, GAE gamma=1 and lambda=1, batch-level advantage normalization,
+    separate policy and critic, AdamW betas [0.9,0.95], no weight decay, policy learning rate 1e-6, critic learning rate 5e-6,
+    one policy update, 12 critic minibatch updates, and zero effective KL and entropy regularization.
+audit:
+  source_mixture: Public AIME, MATH, Numina-Math, Tulu3 MATH, OpenR1-Math-220k, and AoPS sources plus reported programmatic
+    general-reasoning synthesis. The files expose neither record-level sources nor mixture proportions, and the mixed-domain
+    training set used for coding/puzzle/instruction-following results is not released.
+  split: Three named training-oriented JSON files and three bundled evaluation files exist, but no immutable paper-run manifest
+    binds a checkpoint to exact rows, data revisions, shuffle order, or random seed. Released runnable configs reference only
+    the original 57k file.
+  decontamination: unknown
+  benchmark_overlap: No author-reported item-level or semantic decontamination procedure was found. Curator exact-string audit
+    found six MATH500 prompts in the released extended 72k file, none in the configured original 57k file, and no exact AIME2024
+    or GPQA Diamond matches across the three released training files. Because the 129k/annealing paper-run binding is absent,
+    this is a release-surface warning rather than proof of contamination in a reported checkpoint.
+  license: Repository and Hugging Face dataset/model metadata declare MIT. Released rows have no source/license field, and
+    no rights analysis shows that one package-level MIT declaration supersedes or satisfies every upstream collection's license,
+    competition terms, forum terms, or attribution requirements.
+  lineage: Qwen2.5 Base -> curated prompt/reference mixture -> online 64-way rollouts -> programmatic answer reward plus learned
+    token-value critic -> PPO -> 13,451-row hard subset and 100-step 32B annealing -> public policies and critics. Exact row/rollout/checkpoint
+    hashes are unavailable.
+  release_version: Code/data were inspected at default-branch SHA 3fdd9a07b4fb01e06005e6e74fc56690cde8a341. GitHub has no
+    tags or Releases, and no author-designated immutable paper package was found.
+  successful_and_failed_sample_retention: Prompt/reference pairs and a hard-prompt subset are released. Successful and failed
+    policy responses, the 64 mining attempts, reward records, stop/truncation states, critic predictions, advantages, failed
+    GRPO trajectories, and local TensorBoard logs from reported runs are absent.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - 'The released files contain substantial exact prompt duplication: 2,503 duplicate rows in original 57k, 24,025 in extended
+    72k, and 611 in hard 13k after whitespace-normalized exact matching.'
+  - Six exact MATH500 prompts occur in the extended 72k release. Missing paper-run manifests prevent deciding whether affected
+    rows entered any reported checkpoint.
+  - Paper text describes exact answer matching, but code uses boxed-answer parsing, normalization, and mathematical equivalence;
+    verifier behavior is more complex than the prose contract.
+  - GRPO ablation responses collapse into repetition/truncation near step 240, but the failure trajectories and checkpoints
+    are not released.
+  - English-plus-Chinese data reduced stability/performance in the reported curation ablation; the underlying language labels
+    and filtered records are not released.
+  - The 32B hard-data annealing and mixed-domain experiments lack matching runnable configs/data in the repository; all published
+    PPO configs point to the original 57k file.
+  - README says 16 nodes for 32B while the released config declares 32 training nodes per group; exact hardware topology,
+    GPU-hours, wall time, and failed-run compute remain unresolved.
+  - '"One tenth of the training steps" is not a compute-normalized comparison and does not account for rollouts, critic training,
+    hardware, or token budgets.'
+  - Row-level source provenance and upstream license inheritance are absent, despite packaging data from several collections
+    and a public forum.
+  - No immutable release, exact dependency lock, training seed, run log manifest, paper-run trajectory corpus, or checkpoint-to-data
+    binding is available.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the NeurIPS proceedings record and all 24 final-PDF pages, arXiv, official repository/API at a pinned
+    SHA, complete bundled data files, key training/reward/config files, repository license, official Hugging Face organization,
+    three datasets, four policy sizes, four critic sizes, and the 14B transfer checkpoint.
+  remaining_unknowns:
+  - Exact paper-run row manifest, shuffle order, random seeds, checkpoints, and run-to-log mapping
+  - Complete 129k and hard-annealing runnable configuration and mixed-domain training data
+  - Full successful/failed rollouts, mining attempts, rewards, values, advantages, and truncation states
+  - LLM filtering model, prompt, thresholds, yields, and row-level decisions
+  - Upstream record provenance, licenses, attribution, privacy, and consent
+  - Semantic benchmark overlap and base-model pretraining contamination
+  - Exact hardware topology, wall time, GPU-hours, energy, and total failed-run compute
+inclusion_reason: ORZ is a high-value open RLVR construction recipe because it couples a released prompt/reference corpus
+  with 64-way online rollouts, a concrete mathematical-answer verifier, a separately released token-value critic, and scalable
+  PPO configs from 0.5B to 32B, while exposing important gaps between open code/checkpoints and unreleased paper-run trajectories.
+related:
+- deepseek-r1-2025
+- covo-self-rewarding-2025
+- difficulty-targeted-online-selection-2025
+tags:
+- open-reasoner-zero
+- reasoner-zero
+- rlvr
+- ppo
+- learned-critic
+- mathematical-verifier
+- hard-prompt-mining
+- open-data
+- open-models
+- release-audit
+- zero-setting-boundary
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Open-Reasoner-Zero starts PPO directly from Qwen2.5 Base, samples 64 responses per prompt, scores boxed
+  mathematical answers programmatically, and trains a token-value critic, while releasing prompts, code, and weights but withholding
+  exact run trajectories, failures, and immutable manifests.
+why_it_matters: 'It makes large-scale critic-based Reasoner-Zero training unusually concrete and accessible, yet shows why
+  an open recipe is not a fully auditable data release: source rights, duplication, benchmark overlap, annealing/mixed-domain
+  configs, compute, and exact rollout lineage remain unresolved.'
+card: null
+needs:
+- 'needs_deduplication: merge or retire the two legacy data/papers.yaml seeds for this same paper before canonical migration'
+- 'needs_trace_release: publish exact paper-run responses, rewards, critic values, advantages, mining attempts, rejected/failed
+  trajectories, and truncation states'
+- 'needs_reproducibility_pin: publish a tagged release with dependency lock, seeds, full 129k/annealing and mixed-domain configs/data,
+  checkpoint hashes, and run-to-log manifest'
+- 'needs_provenance: add record-level source IDs, transformations, licenses, attribution, privacy/consent fields, and duplicate-group
+  identifiers'
+- 'needs_decontamination: resolve the six exact MATH500 overlaps, publish semantic benchmark checks, and audit base-model
+  pretraining contamination'
+- 'needs_compute: reconcile the 16-node README and 32-node-group config and report topology, GPU-hours, wall time, energy,
+  and failed-run compute'
+- 'needs_verifier_audit: document paper/code answer-matching differences, parser failure cases, equivalence false positives,
+  and reward-hacking tests'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Formal NeurIPS 2025 acceptance, final paper/appendix, arXiv, official code/data, pinned repository state, licenses,
+    Hugging Face datasets, policy weights, and critic weights were checked. Artifact verification confirms their existence,
+    not complete paper-run reproducibility or upstream rights.

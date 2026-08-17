@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude 3.7 Sonnet 系统卡披露了宽泛来源类别、由分类器构造的适当无害性偏好、经强化学习训练的扩展思维及若干监控机制，但未公开底层记录、奖励、采样预算或可回放产物。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型系统卡与数据披露账本",
+  "best_for_ch": "需要审计闭源前沿模型后训练数据、反馈合同、推理预算和可复现性边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-bench Verified 是人工验证的 500 题仓库修复智能体 split。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "OpenAI / SWE-bench official verified split",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Neil Chowdhury 等（OpenAI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T08:14:21Z"
+}

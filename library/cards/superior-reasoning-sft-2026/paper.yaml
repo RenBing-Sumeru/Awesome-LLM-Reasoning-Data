@@ -1,0 +1,130 @@
+id: superior-reasoning-sft-2026
+title: Distribution-Aligned Sequence Distillation for Superior Long-CoT Reasoning
+year: 2026
+venue: arXiv preprint
+authors:
+- Yan, Shaotian
+- Liu, Kaiyuan
+- Shen, Chen
+- Wang, Bing
+- Fan, Sinan
+- Zhang, Jun
+- Wu, Yue
+- Wang, Zheng
+- Ye, Jieping
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- distribution-aligned-compact-long-CoT-distillation
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2601.09088
+  arxiv: https://arxiv.org/abs/2601.09088
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/Alibaba-Apsara/Superior-Reasoning-SFT-gpt-oss-120b
+  project: null
+  huggingface: https://huggingface.co/datasets/Alibaba-Apsara/Superior-Reasoning-SFT-gpt-oss-120b
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: curated multi-domain reasoning prompts
+  trace_author: gpt-oss-120b generates temperature-stratified long reasoning sequences
+  answer_format: uuid, input problem, reasoning output, domain, and generation metadata
+  process_fields:
+  - uuid
+  - input problem
+  - reasoning output
+  - domain
+  - and generation metadata
+  environment_or_substrate: English and Chinese mathematics, code, science, and general reasoning
+  verifier_or_reward: sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication
+  terminal_predicate: sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: gpt-oss-120b generates temperature-stratified long reasoning sequences
+  generator: Distribution-aligned sequence distillation selects and stages 435K teacher traces to reduce this mismatch before
+    training a 4B reasoning student.
+  filtering_rule: sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: 4B long-CoT SFT distillation
+audit:
+  source_mixture: curated multi-domain reasoning prompts
+  split: Official release at https://huggingface.co/datasets/Alibaba-Apsara/Superior-Reasoning-SFT-gpt-oss-120b; exact configs
+    are described by the dataset card.
+  decontamination: sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication
+  license: CC-BY-4.0
+  lineage: curated multi-domain reasoning prompts -> gpt-oss-120b generates temperature-stratified long reasoning sequences
+    -> sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication -> Superior-Reasoning-SFT-gpt-oss-120b
+    -> 4B long-CoT SFT distillation
+  known_failure_modes:
+  - teacher-answer agreement can hide invalid derivations
+  - and temperature stages may be tuned to the chosen 4B student
+  citation_status: verified
+  confidence: high
+  notes: Full 20 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for 4B long-CoT SFT distillation; records
+  name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2601.09088
+- primary-link-checked
+status: verified
+one_line_summary: Distribution-aligned sequence distillation selects and stages 435K teacher traces to reduce this mismatch
+  before training a 4B reasoning student.
+why_it_matters: Small reasoning models often imitate long traces token by token even when the teacher and student sequence
+  distributions are badly mismatched.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: 4B long-CoT SFT distillation
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: distribution-aligned compact long-CoT distillation
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 893 downloads and 349 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet records records, field schema, scale, and CC-BY-4.0 terms.
+  selection_eligible: true
+  year_impact_threshold: 1

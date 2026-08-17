@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Zebra-CoT 把文字思考与中间图像交错保存为 18.2 万条视觉推理轨迹，覆盖 18 个领域。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "视觉思维链监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Ang Li、Charles Wang、Deqing Fu、Kaiyu Yue、Zikui Cai、Wang Bill Zhu、Ollie Liu、Peng Guo、Willie Neiswanger、Furong Huang、Tom Goldstein、Micah Goldblum",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

@@ -1,0 +1,5 @@
+- Treat “multi-language” as four programming languages, not translated natural-language tasks: the source issue/PR text is primarily English.
+- Distinguish the 2,110-row full test split, the 500-row PB500 subset, and the current 382-row Verified artifact; PB500 and Verified are evaluation subsets, not training splits.
+- Read the task row and verifier together: base commit, Dockerfile, test command, F2P/P2P tests, and candidate patch define resolution; file/CST retrieval scores are diagnostics.
+- Do not infer an agent trajectory release. The harness stores local logs and success/failure results, but no standard state/action/observation corpus, immutable image-digest manifest, or public run bundle is released.
+- Record version drift explicitly: Verified currently has 69 Java, 100 JavaScript, 113 Python, and 100 TypeScript rows, totaling 382, while some official prose still says 394.

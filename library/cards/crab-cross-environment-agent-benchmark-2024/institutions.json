@@ -1,0 +1,24 @@
+{
+  "institutions": [
+    "KAUST",
+    "Eigent.AI",
+    "CAMEL-AI.org",
+    "The University of Tokyo",
+    "Carnegie Mellon University",
+    "Stanford University",
+    "Harvard University",
+    "Tsinghua University",
+    "Southern University of Science and Technology",
+    "University of Oxford",
+    "Northwestern University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.01511",
+    "https://crab.camel-ai.org/",
+    "https://github.com/camel-ai/crab"
+  ],
+  "verification_note": "arXiv, project, and CAMEL-AI repository verify authors, institutions, Findings of ACL 2025 status, and artifacts."
+}

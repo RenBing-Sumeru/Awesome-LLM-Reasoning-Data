@@ -1,0 +1,5 @@
+The prior-work baseline is school-level and contest-style math evaluation: GSM8K and MATH remain central, while newer visual math benchmarks often use multiple-choice or narrower topic distributions. U-MATH changes the surface by combining university-level coursework, open-ended answers, and a visual subset in one benchmark.
+
+The stronger novelty signal is mu-MATH. Instead of treating an LLM judge as an invisible scoring utility, the paper builds a separate meta-evaluation set to measure judge correctness on generated solutions. That makes the evaluation contract inspectable: score users can ask not only "which solver is best?" but also "which grader is reliable enough for these open-ended answers?"
+
+What is not new: U-MATH does not invent LLM-as-judge evaluation, university math as a domain, or visual math tasks. Its contribution is the combination of coverage, free-form advanced problems, visual coverage, and an explicit judge audit surface. Reuse checks should focus on data provenance, unpublished-problem claims, repository license, prompt stability, and whether later model training has contaminated the public release.

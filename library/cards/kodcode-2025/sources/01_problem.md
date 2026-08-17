@@ -1,0 +1,5 @@
+Human-curated code datasets provide trustworthy tasks but do not scale, while large synthetic collections often trade away domain diversity, problem difficulty, or executable correctness. A generated solution that passes tests written by the same model can still be wrong, and simple rejection sampling disproportionately removes hard questions.
+
+KodCode synthesizes twelve question families, repeatedly regenerates both solution and unit tests until they execute with full branch coverage, and converts verified triplets into multiple task styles. DeepSeek-R1 then writes three candidate reasoning responses per question, and paired tests select the SFT targets; the paper version contains 447K verified triplets.
+
+**L4 facts:** primary source Findings of ACL 2025, pages 6980-7008, https://aclanthology.org/2025.findings-acl.365/; open data KodCode-V1 and KodCode-V1-SFT-R1 are public Parquet releases under CC BY-NC 4.0; construction, schemas, execution contract, split/version differences, adoption, and benchmark evidence are verified.

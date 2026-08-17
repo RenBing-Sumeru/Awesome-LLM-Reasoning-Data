@@ -1,0 +1,135 @@
+id: magistral-2025
+title: Magistral
+year: 2025
+venue: arXiv preprint
+authors:
+- Mistral AI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- coding
+- multilingual_reasoning
+training_use:
+- sft
+- distillation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.10910
+  arxiv: https://arxiv.org/abs/2506.10910
+  code: null
+  data: null
+  project: https://mistral.ai/news/magistral/
+  huggingface: https://huggingface.co/mistralai/Magistral-Small-2506
+  doi: https://doi.org/10.48550/arXiv.2506.10910
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.10910
+data_object:
+  prompt_source: Medium RL uses filtered math problems of undisclosed provenance and code-contest problems gathered from unspecified
+    sources; Small cold-start SFT also uses selected OpenThoughts prompts, the OpenR1 code subset, Medium RL traces and Medium
+    generations, plus 10% general instruction data of undisclosed provenance.
+  trace_author: Online rollouts from the current Magistral policy; Magistral Medium also supplies verified RL traces and newly
+    generated responses for the Small cold start.
+  answer_format: A single tagged reasoning block followed by an answer section; math requires a boxed final expression and
+    code requires a language-labelled Markdown code block.
+  process_fields:
+  - system_prompt
+  - problem
+  - reasoning_trace
+  - final_answer_or_code
+  - format_reward
+  - correctness_reward
+  - length_penalty
+  - language_reward
+  environment_or_substrate: Asynchronous distributed online RL with trainers, generators and verifiers; C++ submissions are
+    compiled under C++20 and run against sampled tests.
+  verifier_or_reward: A hard format gate, rule-based parser and SymPy checks for math, compilation plus 20 sampled tests for
+    code, a soft length penalty, and fastText-based same-language reward shaping.
+  terminal_predicate: After passing the format gate, the final math expression must be rule-equivalent to the reference or
+    the code must compile and pass all 20 tests selected for its response group.
+recipe_metadata:
+  base_model: Magistral Medium starts from Mistral Medium 3 Instruct. The paper calls the 24B Small start Mistral Small 3
+    Instruct, while the official released-model card identifies Mistral Small 3.1 24B Instruct as its base.
+  teacher: Magistral Medium supplies Small cold-start traces and responses; exact prompt-to-trace mappings are unknown.
+  generator: The current policy generates online RL rollouts; Magistral Medium generates additional Small SFT responses.
+  filtering_rule: Math format and answer-validity filtering reduces 699k items to 501k, then two-stage difficulty and reference-disagreement
+    filtering reduces them to 38k. Code filtering and test repair/generation produce 35k problems. Small SFT selection thresholds
+    and final counts are unknown.
+  sampling_protocol: The math re-grader samples 16 responses per problem. Code verification samples 20 tests shared within
+    a response group. Small RL uses temperature 1.0; the full RL group size is unknown.
+  rollout_count: 16 responses per problem for second-stage math re-grading; online RL rollout group size and total rollout
+    count are unknown.
+  temperature: 1.0 for Small online RL; Medium training temperature is unknown.
+  inference_budget: Small RL uses a batch of 2048 sequences and a 32k maximum non-penalized completion length. Medium uses
+    staged length and batch schedules whose complete values are not disclosed in the rendered report.
+  optimizer_or_scaffold: Asynchronous GRPO without KL penalty; loss is normalized over generated tokens, advantages are normalized
+    per minibatch, the upper clipping threshold is adjusted between 0.26 and 0.28, and zero-advantage groups are removed.
+audit:
+  source_mixture: Filtered math and code-contest prompts for RL; selected OpenThoughts and OpenR1-code prompts, Medium-derived
+    traces, and 10% general instruction data for Small SFT. Source manifests, mixture weights, record-level provenance and
+    rights are incomplete.
+  split: unknown
+  decontamination: unknown
+  license: The official model repository licenses the released Magistral Small weights under Apache-2.0. No training-data
+    or generated-trace license is disclosed.
+  lineage: Filtered verifiable prompts -> pure online RL on Mistral Medium 3 Instruct -> Magistral Medium; selected correct
+    later-stage Medium traces plus Medium generations and general instruction data -> four-epoch SFT on the 24B Small checkpoint
+    -> online RL -> released Magistral Small weights.
+  known_failure_modes:
+  - Outcome verification does not establish that a reasoning trace is faithful or causally used.
+  - Twenty sampled tests can accept code that fails unselected cases, and majority-based test repair can preserve shared solution
+    errors.
+  - Parser and SymPy checks cover final-answer equivalence, not intermediate reasoning validity.
+  - fastText language classifications and translated prompts are not accompanied by calibration or translation-quality audits.
+  - Asynchronous in-flight generations may combine refreshed weights with a slightly stale key-value cache.
+  - No record-level source, split, decontamination, rejection-log or train-evaluation overlap audit is released.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv paper, official Mistral release page and official Magistral Small model card were checked. Benchmark results
+    are treated as model-evaluation evidence, not proof of training-data quality.
+inclusion_reason: A detailed frontier RL report that exposes prompt filtering, terminal feedback, optimizer and teacher-to-student
+  lineage while leaving the underlying training records and audit artifacts unreleased.
+related: []
+tags:
+- magistral
+- frontier-report
+- data-disclosure-ledger
+- grpo
+- rlvr
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Magistral reports filtered math/code RL and Medium-to-Small trace transfer, but releases only Small model
+  weights rather than the training corpus, traces, tests or reward logs.
+why_it_matters: It shows how to audit a technically detailed frontier RL disclosure without mistaking a model-weight release
+  or benchmark gain for a reusable data release.
+card: null
+needs:
+- 'needs_data: record-level sources, final mixtures, selected prompts and trace manifests'
+- 'needs_verifier: sampled tests, repaired-test audit, parser cases and classifier calibration'
+- 'needs_audit: splits, decontamination, rights, rejection logs and train-evaluation overlap'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, Mistral release page and Mistral AI Hugging Face model card checked.

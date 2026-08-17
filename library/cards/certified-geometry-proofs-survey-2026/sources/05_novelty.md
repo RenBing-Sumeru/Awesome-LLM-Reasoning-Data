@@ -1,0 +1,1 @@
+Its contribution is a three-axis vocabulary that lets readers compare heterogeneous geometry systems without reducing them to one score. It separates informal explanations, semi-formal step traces, and kernel-checked proofs, and makes the verification backend a first-class comparison point.

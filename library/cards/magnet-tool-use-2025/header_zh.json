@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MAGNET 从 API 依赖图合成多轮函数调用轨迹，并构造正负轨迹对用于 SFT 与 mDPO；但未发布轨迹、可执行环境或回放元数据，无法端到端审计该配方。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多轮函数调用轨迹合成、上下文蒸馏与偏好优化研究",
+  "best_for_ch": "研究工具调用 agent 数据构造、函数调用环境、轨迹偏好对与可复现性审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Fan Yin、Zifeng Wang、I-Hung Hsu、Jun Yan、Ke Jiang、Yanfei Chen、Jindong Gu、Long T. Le、Kai-Wei Chang、Chen-Yu Lee、Hamid Palangi、Tomas Pfister",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

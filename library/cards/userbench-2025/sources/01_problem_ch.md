@@ -1,0 +1,7 @@
+主要论文记录是 2025 年 7 月 29 日提交的 arXiv:2507.22034v1。NeurIPS 官方日程将 UserBench 列为 NeurIPS 2025 Workshop on Scaling Environments for Agents 的 poster；本卡片不会把该证据扩大为主会或 proceedings 发表。发布层面的结论固定到 2026 年 7 月 20 日核验的官方仓库 commit `80506d2ab484cab843e60a2401ff3e0290d05b87`。仓库没有 tag 或 GitHub Release，benchmark 数据是在 arXiv v1 之后加入的。
+
+UserBench 研究一个具体交互问题：旅行规划 agent 接收信息不足的请求，需要通过澄清发现隐含偏好，向 mock database 发起搜索，并在 flight、hotel、apartment、rental-car 与 restaurant 五类方面推荐 option ID。静态答案评分无法暴露 agent 是否问了有效问题、是否带齐约束搜索、是否跟踪已处理方面，或是否在信息不足时过早猜测。因此 UserBench 把环境及其反馈纳入 evaluation surface。
+
+可复用 release 是 task/environment specification，而不是完成轨迹语料。底层 JSON task 把 scenario ID 与初始请求绑定到 difficulty、travel dimension、显式与隐式偏好表达、结构化 search argument、correct/wrong/noise option record、correct ID，以及一个带理由的指定 `best_id`。Parquet 行再封装 system/user prompt message、split、environment name、ground-truth ID 与环境创建参数。运行时 episode 才会加入 agent `thought`、search/action/answer call、模拟用户或 database observation、conversation/action history、preference state、scalar reward 与 termination/truncation。没有核验到论文成功和失败运行的完整 episode archive。
+
+该对象属于 `environment_agent_trajectory_data`，因为 observation、tool action、environment response、state change、reward 与 terminal condition 共同定义可测量的推理过程。论文中的实际用途仅为 evaluation：命名为 train 的 split 和对未来 SFT/RL 支持的讨论只是预期用途，不能作为训练证据。现有证据足以按 L4 深度描述数据对象、构造流程、混合反馈契约、评测、发布与审计风险，但已接受的 `curation_level` 仍保持 `L3_summary_ready`。构造 prompt、judge 校准、跨 split 语义泄漏、数据专用权利声明与 replay manifest 仍为 unknown。

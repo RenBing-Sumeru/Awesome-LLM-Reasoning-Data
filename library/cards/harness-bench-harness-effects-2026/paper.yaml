@@ -1,0 +1,124 @@
+id: harness-bench-harness-effects-2026
+title: 'Harness-Bench: Measuring Harness Effects across Models in Realistic Agent Workflows'
+year: 2026
+venue: arXiv preprint / Diagnostic Benchmark 2026
+authors:
+- Yilun Yao
+- Xinyu Tan
+- Chao-Hsuan Liu
+- Yaoming Li
+- Zhengyang Wang
+- Wenhan Yu
+- Zhewen Tan
+- Yuxuan Tian
+- Guangxiang Zhao
+- Lin Sun
+- Xiangzheng Zhang
+- Tong Yang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- agent-harnesses
+- workflow-trajectories
+- benchmark-diagnosis
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.27922
+  arxiv: https://arxiv.org/abs/2605.27922
+  doi: https://doi.org/10.48550/arXiv.2605.27922
+  code: https://github.com/Qihoo360/harness-bench
+  data: https://github.com/Qihoo360/harness-bench
+  project: https://www.harness-bench.ai/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Harness-Bench paper, project page, and GitHub repository
+  trace_author: Harness-Bench authors and workflow trajectory collection
+  answer_format: 106 sandboxed offline tasks across 8 categories, with manifests, prompts, fixtures, oracle graders, final
+    artifacts, execution traces, usage statistics, validator outputs, and 5,194 execution trajectories
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: realistic agent workflows where harness choices change measured performance
+  verifier_or_reward: outcome, process, and security scoring via final artifacts, execution traces, usage and validator outputs,
+    deterministic oracles where possible, and LLM rubrics for diagnostics
+  terminal_predicate: task score under the pinned runner, oracle, rubric, environment, scaffold, timeout, and validator policy
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: task evaluators and harness configurations
+  generator: realistic agent workflow benchmark construction
+  filtering_rule: pin runner, oracle, rubric model, GitHub task release, timeout/retry policy, environment image, and leaderboard
+    version
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2605.27922; https://www.harness-bench.ai/; https://github.com/Qihoo360/harness-bench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2605.27922'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: arXiv verifies 106 sandboxed offline tasks, 8 categories, and 5,194 execution trajectories. Project calls it Diagnostic
+    Benchmark 2026; license remains artifact-level audit target.
+inclusion_reason: it makes harness effects a first-class object in trajectory evaluation
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- agent-harnesses
+- workflow-trajectories
+- benchmark-diagnosis
+why_it_matters: It makes harness configuration a first-class audit object for agent workflow evaluation.
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Harness-Bench studies how harness choices change measured agent workflow performance across realistic tasks
+  and models.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms Peking University/Qiyuan Tech affiliations, arXiv status, project page, and GitHub tasks.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 121
+  primary_category_id: benchmarks_evaluation_surfaces

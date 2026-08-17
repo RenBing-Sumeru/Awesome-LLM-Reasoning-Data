@@ -1,0 +1,3 @@
+Researchers building RAG systems can use the preference dataset to train a compact verifier that receives instructions, a retrieved document, and a generated claim, then outputs a groundedness label and evidence-based explanation. Success should be measured with balanced accuracy, false-positive and false-negative rates, and manual inspection of cited evidence.
+
+The data can also train a generative reward model or support ORPO comparisons between label-only and rationale-aware supervision. It is unsuitable when no reference document is available, when the task requires checking real-world truth beyond the document, or when hallucination decisions will be used autonomously in medical, legal, or other high-stakes settings.

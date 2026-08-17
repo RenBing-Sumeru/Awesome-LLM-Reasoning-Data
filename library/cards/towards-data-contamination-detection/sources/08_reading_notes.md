@@ -1,0 +1,1 @@
+The paper distinguishes a detector outcome from an oracle. Its comparison centers on detector choice, assumed model access, contamination introduced by answer augmentation during instruction tuning, and agreement between methods. The authors do not observe a model's full training corpus, so their findings concern the behavior of detection methods under the evaluated settings.

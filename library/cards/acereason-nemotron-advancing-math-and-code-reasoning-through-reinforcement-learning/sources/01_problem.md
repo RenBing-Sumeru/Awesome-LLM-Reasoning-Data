@@ -1,0 +1,3 @@
+Mathematical and code RLVR are often trained separately: mathematics uses answer parsing, while code uses executable tests. Naively mixing both domains can create interference from different reward scales, task difficulty, and policy distributions, whereas single-domain RL may damage the other capability. Public prompt filtering and reward contracts are also frequently underspecified.
+
+AceReason-Nemotron builds a verifiable mathematical prompt set and applies sequential reinforcement learning—mathematics first, code second—so one Qwen2.5-Coder base absorbs rule-based answer and execution-test feedback in stages.

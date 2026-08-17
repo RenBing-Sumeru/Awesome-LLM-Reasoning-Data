@@ -1,0 +1,8 @@
+- “User model”没有被命名；其 checkpoint、instruction、policy、权限、编辑策略、随机性及其与真实用户的关系均为 unknown。
+- 这项 RL 干预没有披露编码任务来源、代码仓库身份或版本、prompt、依赖状态、工具接口、文件编辑表示或权利记录。
+- 没有发布 rollout 或 training-record schema；observation、action、tool call、中间 patch、冲突、模型响应、被接受与拒绝的尝试及保留规则均为 unknown。
+- “Positive reinforcement”不是完整 feedback contract。Reward 大小、detector 或 judge、聚合、credit assignment、校准、假阳性和假阴性行为、覆盖范围及其与其他 objective 的交互均未披露。
+- RL 算法、optimizer、sampling、rollout budget、temperature、schedule、计算量、checkpoint 分配、split policy、decontamination 及来源到 checkpoint 的 lineage 均为 unknown。
+- Destructive-actions evaluation 测量干预后的结果，但其样例和评分实现没有发布，报告也没有把它映射到训练 reward。评测表现不能确立训练数据质量或 verifier 可靠性。
+- 除非被明确连接到训练，Codex CLI prompting、产品沙箱、monitoring、red teaming 及其他能力或安全评测都属于 prompting、部署或评估层，不能用来填补缺失的训练账本。
+- 系统卡只支持审计“披露了什么”，不支持独立复现、数据复用、权利评估，也不能把模型整体行为归因于这一项干预。

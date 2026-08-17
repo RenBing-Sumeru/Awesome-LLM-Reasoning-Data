@@ -1,0 +1,3 @@
+- Cross-model agreement verifies only an extracted final answer; correlated teacher errors, invalid intermediate reasoning, and malformed proofs can remain. Recheck samples with independent solvers and step audits.
+- The public record schema is minimal and does not expose source, teacher, synthesis branch, filter decision, or overlap result per row. Reconstruct provenance before source-aware splitting or rights review.
+- CC-BY-NC-4.0, OpenAI output terms, and upstream dataset terms constrain reuse. Do not treat public download access as permission for commercial training or unrestricted redistribution.

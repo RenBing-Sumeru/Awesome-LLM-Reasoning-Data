@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RHB以多步工具任务和自然捷径机会，测量语言模型 agent 的 reward hacking。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "奖励投机与评测可靠性基准",
+  "best_for_ch": "需要审计智能体奖励投机风险的研究者。",
+  "confidence_ch": "高：官方 arXiv 论文、接收状态与公开发布页均已核验。",
+  "authors_ch": "Kunvar Thaman",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

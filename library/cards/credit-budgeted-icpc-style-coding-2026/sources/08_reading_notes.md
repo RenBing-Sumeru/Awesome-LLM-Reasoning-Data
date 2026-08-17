@@ -1,0 +1,1 @@
+Do not reduce USACOArena to another coding leaderboard. The key variable is the credit ledger: tokens, local tests, retries, and time are part of the task outcome. Read problemset version and budget rules before comparing models. A swarm can solve more tasks while exhausting budget faster; that is a different claim from being more deployable.

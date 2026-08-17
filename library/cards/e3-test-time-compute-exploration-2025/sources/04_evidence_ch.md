@@ -1,0 +1,1 @@
+论文报告，在存在 verification-generation gap 的设置中，保留负梯度会提高回答多样性、验证尝试次数、长度及外推表现；只训练到 16k 时，耦合 curriculum 也能改善 32k 评测。消融实验与发布的 e3-1.7B checkpoint 支持该配方作为经验方法，但不能证明每条长轨迹都有效、静态 solution 字段来源正确，也不能证明公开数据足以重建在线反馈过程。工件核验确认了两个训练集、一个 60 条 HMMT/AIME 2025 测试集、代码、scorer、脚本、项目页与模型，同时确认未发布冻结的 grouped rollouts 和逐轨迹 advantage。

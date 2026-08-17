@@ -1,0 +1,11 @@
+- **没有 answer-level correctness contract。** OpenThoughts3 有意保留所有成功生成的 QwQ-32B response，不使用语义 verifier。错误推导、错误最终答案、虚构科学事实、不可执行代码，以及有说服力但不忠实的推理，都可能原样进入 SFT。Terminal predicate 是 API 成功完成，而不是任务成功。
+- **Verifier 结论具有条件性。** 最常引用的数学 no-filter 对比使用 63,200 个样本，而过滤条件使用 31,600 个，且没有控制 compute。代码 unit-test 与 GPT-judge 结果只覆盖特定 generator、prompt 和 benchmark。把它们推广为“answer verification 从不有效”，会与论文自身的 32B-versus-7B 规模结果矛盾。
+- **词法去污染不完整。** Indel/13-gram detector 在其构造 testbed 上已经出现 false negative 和 false positive，无法排除改写或语义重叠，也没有发布匹配/删除 manifest。多数 recipe 决策由八个重复使用的 benchmark 指导；四个 held-out benchmark 减轻但不能消除 benchmark-selection pressure。
+- **逐条 provenance 过于粗糙。** `source`、`domain` 和 `difficulty` 无法恢复上游 item ID、URL、revision、transformation、dedup group、selection decision、teacher request ID、seed 或去污染结果。这阻碍准确归因，也使按来源删除错误或污染样本变得困难。
+- **权利未解决。** HF dataset 标记为 Apache-2.0，但附录 Q 列出 CC BY、CC BY-SA、OpenAI Terms、educational-use 材料、一本无 license 的书，以及多本 all-rights-reserved organic-chemistry 书籍；没有逐条 rights manifest 对齐这些条款。Curator 结论：在法律审查与 provenance 修复前，直接训练分发或商业复用仍被阻断。
+- **失败与拒绝候选缺失。** 成功的 QwQ answer 被保留，但被删除的 prompt、失败或 content-filtered generation、被拒答案、dedup group 与去污染决策都未发布。研究者无法估计选择偏差、重建 false-reject rate，也无法利用信息丰富的失败样本训练。
+- **Final-run 重建不完整。** 代表性 C1 YAML 暴露了可能的解码参数，但准确的 120 万运行 manifest、random seed、逐来源数量、retry policy、接收/失败数量、container hash 和 checkpoint crosswalk 均未固定。仓库与数据集漂移可能改变复现结果。
+- **Security blocker。** 在已检查 repository SHA 中，三个官方 QwQ annotation YAML 包含 plaintext API credential。本卡没有复现该 secret。仓库在安全复用或 fork 前必须删除并轮换它，配置也必须改用 secret injection。
+- **Teacher-trait transfer。** Answer 与 reasoning 都由 QwQ-32B 生成并一起监督，因此 student 可能继承 teacher 的冗长、格式、无支持推理模式或领域偏差。这是 curator inference；发布没有逐条 faithfulness label，也没有 hidden teacher trait 对比。
+- **评测不能认证数据。** OpenThinker3-7B benchmark 分数同时受 source choice、规模、teacher、训练设置与评测影响。这些结果由作者报告，本卡未独立复现，也不能证明逐条正确性、privacy/consent、权利或部署鲁棒性。
+- **书目版本漂移。** ArXiv v2 列出 50 位作者，官方 ICLR 2026 Oral 页面列出 51 位并增加 Stutee Acharya。本卡采用正式接收页面，同时把差异保留为审计备注。

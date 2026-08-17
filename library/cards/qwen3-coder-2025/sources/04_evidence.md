@@ -1,0 +1,5 @@
+The official release page reports 7.5T pretraining tokens with 70 percent code, Qwen2.5-Coder cleaning and rewriting, execution-driven coding RL, and 20,000 parallel cloud environments for long-horizon Agent RL. The official QwenLM repository and Hugging Face model page are available. These sources verify the model release and the high-level disclosures, not a reusable post-training dataset or environment package.
+
+The stated feedback surfaces are execution from automatically scaled test cases for Code RL and multi-turn environment feedback for Agent RL. They support classifying the report as mixed execution and environment feedback. The release does not publish test cases, reward implementation, pass criteria, timeout policy, verifier error analysis, or environment logs, so the strength and calibration of the feedback cannot be independently established.
+
+No official release was identified for tasks, tests, images, trajectories, source manifests, splits, or audit records. The evidence therefore supports a partial data-disclosure status. It does not support linking arXiv:2505.09388 as a Coder-specific paper: that Qwen3 Technical Report is a distinct entry.

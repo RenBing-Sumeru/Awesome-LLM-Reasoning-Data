@@ -1,0 +1,111 @@
+id: ttt-discover-test-time-2026
+title: Learning to Discover at Test Time
+year: 2026
+venue: ICML 2026 Spotlight
+authors:
+- Mert Yuksekgonul
+- Daniel Koceja
+- Xinhao Li
+- Federico Bianchi
+- Jed McCaleb
+- Xiaolong Wang
+- Jan Kautz
+- Yejin Choi
+- James Zou
+- Carlos Guestrin
+- Yu Sun
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+- algorithm-design
+- gpu-kernel-engineering
+- scientific-discovery
+training_use:
+- test_time_compute
+- rlvr
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2601.16175
+  arxiv: https://arxiv.org/abs/2601.16175
+  venue: https://openreview.net/forum?id=96zNuQrH9Y
+  code: https://test-time-training.github.io/discover/
+  data: https://test-time-training.github.io/discover/
+  project: https://test-time-training.github.io/discover/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2601.16175
+data_object:
+  prompt_source: Problem-specific mathematical, GPU-kernel, algorithm-design, and biology tasks with continuous rewards.
+  trace_author: gpt-oss-120b is updated at test time from experience on the current problem.
+  answer_format: Problem, generated solution/program, continuous reward, search update, and best discovered solution.
+  process_fields:
+  - problem
+  - candidate_solution
+  - reward
+  - update
+  - search_iteration
+  - best_solution
+  environment_or_substrate: Problem-specific test-time reinforcement learning through the Tinker API.
+  verifier_or_reward: Continuous task rewards and organizer or expert review of reported solutions.
+  terminal_predicate: Return the highest-reward discovered solution for the individual problem.
+recipe_metadata:
+  base_model: OpenAI gpt-oss-120b.
+  teacher: null
+  generator: The same model is continually optimized and searched on the current test problem.
+  filtering_rule: Prioritize promising solutions under continuous reward rather than average-case generalization.
+  sampling_protocol: Generate related problem variants and use test-time RL updates to improve a single target problem.
+  rollout_count: Problem-dependent; see official project reports.
+  temperature: See released implementation.
+  inference_budget: A few hundred US dollars per problem in the reported Tinker runs.
+  optimizer_or_scaffold: Test-Time Training to Discover (TTT-Discover).
+audit:
+  source_mixture: Official arXiv paper and official project page.
+  split: Every attempted problem is reported across mathematics, kernels, algorithms, and biology.
+  decontamination: The work is problem-specific discovery rather than held-out generalization; expert or organizer review
+    is reported for solutions.
+  license: Verify project, model, API, and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2601.16175
+  known_failure_modes:
+  - reward-misspecification
+  - overfitting-to-task-metric
+  - expensive-test-time-training
+  - expert-review-gap
+  citation_status: verified
+  confidence: high
+  notes: Official paper and project PDF checked on 2026-07-21. The front page lists Stanford University, NVIDIA, Astera Institute,
+    UC San Diego, and Together AI; the project provides code and result-verification links.
+inclusion_reason: It scales inference by performing reinforcement learning on a single test problem, making test-time compute
+  an explicit problem-specific optimization budget.
+related: []
+tags:
+- test-time-compute
+- test-time-training
+- reinforcement-learning
+- discovery
+- continuous-reward
+status: verified
+one_line_summary: TTT-Discover uses problem-specific test-time reinforcement learning to search for one high-reward scientific
+  or engineering solution rather than merely sample from a frozen model.
+reading_priority: essential
+paper_type: Test-time reinforcement learning and discovery study
+best_for: Readers studying whether test-time compute can include learning updates, not only sampling or search.
+confidence: high
+why_it_matters: It expands the test-time scaling boundary from inference over frozen parameters to targeted optimization on
+  the active problem.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and project resources verified.
+category_ids:
+- scaling_rlvr_test_time_compute

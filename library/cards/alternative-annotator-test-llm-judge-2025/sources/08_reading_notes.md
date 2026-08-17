@@ -1,0 +1,1 @@
+Alt-test shows that an LLM replacing a human annotator is not an abstract yes-or-no claim. It depends on the task, prompt, and comparison standard. Similarity to human labels can support a conditional statistical conclusion, but it does not make the two sources identical everywhere.

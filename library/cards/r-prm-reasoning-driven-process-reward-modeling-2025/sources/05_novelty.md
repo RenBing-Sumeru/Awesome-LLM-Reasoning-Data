@@ -1,0 +1,3 @@
+Prior PRMs map steps to scores, and some generative verifiers use only SFT. R-PRM treats verifier reasoning as the training object and constructs preferences among those traces, applying DPO to the judging process rather than the answer.
+
+The substantive change is therefore not a generic SFT, DPO, BCE, or RL objective, but the construction of step labels, teacher-evaluation rationales, and verifier reasoning preference pairs as a learnable and auditable data object. By storing feedback evidence that would otherwise remain hidden in scripts or environment execution, the work allows later studies to replace labelers, filters, or negative-example sources independently.

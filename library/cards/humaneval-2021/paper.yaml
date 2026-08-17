@@ -1,0 +1,170 @@
+id: humaneval-2021
+title: Evaluating Large Language Models Trained on Code
+year: 2021
+venue: arXiv / OpenAI
+authors:
+- Mark Chen
+- Jerry Tworek
+- Heewoo Jun
+- Qiming Yuan
+- Henrique Ponde de Oliveira Pinto
+- Jared Kaplan
+- Harri Edwards
+- Yuri Burda
+- Nicholas Joseph
+- Greg Brockman
+- Alex Ray
+- Raul Puri
+- Gretchen Krueger
+- Michael Petrov
+- Heidy Khlaaf
+- Girish Sastry
+- Pamela Mishkin
+- Brooke Chan
+- Scott Gray
+- Nick Ryder
+- Mikhail Pavlov
+- Alethea Power
+- Lukasz Kaiser
+- Mohammad Bavarian
+- Clemens Winter
+- Philippe Tillet
+- Felipe Petroski Such
+- Dave Cummings
+- Matthias Plappert
+- Fotios Chantzis
+- Elizabeth Barnes
+- Ariel Herbert-Voss
+- William Hebgen Guss
+- Alex Nichol
+- Alex Paino
+- Nikolas Tezak
+- Jie Tang
+- Igor Babuschkin
+- Suchir Balaji
+- Shantanu Jain
+- William Saunders
+- Christopher Hesse
+- Andrew N. Carr
+- Jan Leike
+- Josh Achiam
+- Vedant Misra
+- Evan Morikawa
+- Alec Radford
+- Matthew Knight
+- Miles Brundage
+- Mira Murati
+- Katie Mayer
+- Peter Welinder
+- Bob McGrew
+- Dario Amodei
+- Sam McCandlish
+- Ilya Sutskever
+- Wojciech Zaremba
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- unit-test-benchmark
+- program-synthesis
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2107.03374
+  arxiv: https://arxiv.org/abs/2107.03374
+  code: https://github.com/openai/human-eval
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2107.03374
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 164 handwritten Python programming tasks in the common HumanEval release; pin repository commit and test
+    harness before score reuse.
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'function signature, docstring prompt, canonical solution, and unit tests; Benchmark size: 164 道手写 Python
+    函数补全题。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'function signature, docstring prompt, canonical solution, and unit tests; Benchmark size: 164
+    道手写 Python 函数补全题。'
+  verifier_or_reward: program execution against unit tests with pass@k aggregation
+  terminal_predicate: program execution against unit tests with pass@k aggregation
+  benchmark_size: 164 道手写 Python 函数补全题。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Evaluating Large Language Models Trained on Code; exact curation details should
+    be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Evaluating Large Language Models Trained on
+    Code.
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2107.03374'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Scale recorded as 164 tasks for the common HumanEval release; pin repository commit, prompt
+    format, dependency environment, and pass@k implementation before comparing scores. Benchmark size: 164 道手写 Python 函数补全题。'
+inclusion_reason: HumanEval 用小而精的函数合成任务和单元测试定义代码生成能力，是代码 benchmark 的基础坐标。
+related: []
+tags:
+- benchmark
+- code-generation
+- unit-test-benchmark
+- program-synthesis
+why_it_matters: 它提供 164 道手写 Python 函数补全题。 的评测规模信息和 code-generation 方向的可复用 benchmark 坐标。
+status: verified
+needs:
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, dataset scale/version, and
+  license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: HumanEval 用小而精的函数合成任务和单元测试定义代码生成能力，是代码 benchmark 的基础坐标。
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

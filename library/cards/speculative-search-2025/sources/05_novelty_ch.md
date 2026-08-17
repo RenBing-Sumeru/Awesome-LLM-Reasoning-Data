@@ -1,0 +1,1 @@
+该方法把 speculative execution 从纯 token 层面扩展为与树搜索对齐的两级接口：语义上变长的 thought 作为整体被起草和拒绝，被拒单元再由 token 级 speculative decoding 纠正。另一个区别性要素是基于历史的步级阈值，它旨在近似大模型的期望 PRM 质量，而不是拒绝固定比例或采用固定阈值。这不同于保持目标 token 分布的标准 speculative decoding，也不同于 TreeBon 的固定长度序列和预设拒绝比例。该工作的贡献是推理配方与选择契约，而不是新 PRM、已验证过程标签、轨迹数据集或最终答案正确性证明。

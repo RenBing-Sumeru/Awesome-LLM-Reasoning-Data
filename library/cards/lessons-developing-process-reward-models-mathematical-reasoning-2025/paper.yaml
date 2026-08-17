@@ -1,0 +1,149 @@
+id: lessons-developing-process-reward-models-mathematical-reasoning-2025
+title: The Lessons of Developing Process Reward Models in Mathematical Reasoning
+year: 2025
+venue: arXiv preprint
+authors:
+- Zhenru Zhang
+- Chujie Zheng
+- Yangzhen Wu
+- Beichen Zhang
+- Runji Lin
+- Bowen Yu
+- Dayiheng Liu
+- Jingren Zhou
+- Junyang Lin
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.07301
+  arxiv: https://arxiv.org/abs/2501.07301
+  code: null
+  data: null
+  project: null
+  huggingface: https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B
+  doi: https://doi.org/10.48550/arXiv.2501.07301
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Approximately 500K queries with golden answers and a later 860K query-response comparison pool are reported;
+    raw sources, licenses, proportions, and manifests are unknown.
+  trace_author: Qwen2-Math-Instruct and Qwen2.5-Math-Instruct 7B/72B generate mathematical responses; Qwen2.5-72B-Instruct
+    is the stated stepwise critic. Checkpoint revisions, decoding, and full attribution are incomplete.
+  answer_format: Math problem, double-newline-segmented reasoning steps, MC outcome signal, critic analysis/conclusion, consensus
+    label, and PRM per-step reward; released inference uses a special separator-token probability as a 0--1 score.
+  process_fields:
+  - query
+  - golden_answer
+  - candidate_response
+  - reasoning_step
+  - mc_completion_outcome
+  - mc_step_label
+  - critic_analysis
+  - critic_conclusion
+  - consensus_error_location
+  - retained_label
+  - step_reward
+  environment_or_substrate: Offline response generation, step segmentation, outcome-based Monte Carlo completion, LLM critique,
+    consensus filtering, PRM training, and response/step evaluation.
+  verifier_or_reward: Eight independent continuations per step are checked against golden final answers; a Qwen2.5-72B critic
+    assesses steps; consensus keeps aligned error locations. The PRM gives scalar step rewards. Matching implementation, calibration,
+    aggregation, and error rates are undisclosed.
+  terminal_predicate: An MC hard label is positive if any of eight continuations reaches the correct final answer; consensus
+    requires matching MC/critic error locations. Final thresholds, source yields, and rejected-record logs are unavailable.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B-Instruct and Qwen2.5-Math-72B-Instruct initialize the reported 7B and 72B PRMs.
+  teacher: Qwen2-Math-Instruct and Qwen2.5-Math-Instruct 7B/72B generate responses and MC continuations; Qwen2.5-72B-Instruct
+    is the critic. Exact versions and mappings are unknown.
+  generator: A reported approximately 500K-query pool uses mixed 7B/72B Qwen2-Math-Instruct and Qwen2.5-Math-Instruct outputs,
+    6--8 responses per query, and eight continuations per step; final-pool settings unknown.
+  filtering_rule: Keep samples only when MC estimation and the critic agree on error-step location. One 860K pool retains
+    about 40 percent and one 3M MC pool yields 1.5M survivors; complete manifests and rejection logs are unavailable.
+  sampling_protocol: Preliminary work uses 6--8 candidate responses per query and eight MC completions per step. Training
+    temperatures, top-p, seeds, deduplication, and final schedule are unknown.
+  rollout_count: 8
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: PRMs use end-of-step cross-entropy for hard binary labels and preliminary soft-label MSE. Optimizer,
+    learning rate, batch size, epochs, seeds, and final configuration are undisclosed.
+audit:
+  source_mixture: Reported pools include undisclosed golden-answer queries, generated responses, an 860K comparison pool,
+    a 3M MC experimental pool, and comparison baselines. Raw sources, weights, final accepted-set composition, and item records
+    are unknown.
+  split: A PRM800K comparison is deduplicated against its test set; train, validation, and test membership for the authors'
+    generated pools and released PRMs is unknown.
+  decontamination: Only PRM800K comparison-test deduplication is reported. Decontamination and overlap evidence for collected
+    queries, generated traces, MC completions, critic data, and released PRMs are unknown.
+  license: Official Qwen PRM model cards list the Qwen license; rights for queries, traces, completions, labels, critic outputs,
+    and training pools are unknown.
+  lineage: Query to policy response to segmented steps to MC continuations and labels to critic to consensus to PRM is partly
+    disclosed; item-level identities, sources, decisions, and release-to-training mapping are unavailable.
+  known_failure_modes:
+  - Monte Carlo future-answer reachability is not deterministic current-step correctness.
+  - Labels depend on completion-model quality.
+  - Critic consensus lacks released calibration and error audit.
+  - Consensus hides rejected-record representation effects.
+  - Best-of-N can inflate apparent process-reward quality.
+  - No source, split, rights, or item-lineage release exists.
+  citation_status: verified
+  confidence: medium
+  notes: Track 12 disclosure ledger of the released PRM interface and withheld data/audit artifacts; not a Track 8 scaling
+    claim.
+inclusion_reason: Qwen report and released PRMs disclose a concrete MC-plus-critic consensus process-reward contract while
+  leaving data provenance, calibration, and reproduction artifacts unresolved.
+related: []
+tags:
+- qwen
+- process-reward-model
+- process-supervision
+- mathematical-reasoning
+- mc-estimation
+- llm-as-a-judge
+- consensus-filtering
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen process-reward models use MC plus critic consensus step labels and release weights, but not their query,
+  trace, label, calibration, or audit corpus.
+why_it_matters: It distinguishes outcome reachability from step verification and makes the data/provenance boundary behind
+  published process-reward weights explicit.
+card: null
+needs:
+- 'needs_data: queries, traces, steps, MC completions, critic outputs, consensus labels, rejected samples, and lineage'
+- 'needs_metadata: sources/licenses, final mixture/counts, checkpoints, decoding, thresholds, yields, optimizer, schedule,
+  and seeds'
+- 'needs_verifier: answer matching, critic configuration, calibration, disagreement/error audit, and human validation'
+- 'needs_audit: splits, data and benchmark decontamination, best-of-n bias analysis, and representation effects'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official arXiv paper and Qwen PRM model page verified; weights and interface released but the training data, labels,
+    code, and audit artifacts are absent.

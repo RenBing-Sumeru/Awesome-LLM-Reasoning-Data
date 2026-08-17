@@ -1,0 +1,6 @@
+Within the frontier reports and data-disclosure ledger track, Hunyuan-T1 is a compact case for auditing closed industrial reasoning pipelines. It lets curators distinguish compute allocation from data volume, broad domain names from source manifests, “ground truth” from a specified verifier, and an official demo from a released model or dataset.
+
+For post-training comparisons, record two stages rather than collapsing them: reasoning RL with an unspecified ground-truth signal, and preference alignment with an early T1-preview evaluator plus a reward model. Record curriculum, replay, and policy reset as disclosed scaffolds, but keep their implementations and configurations unknown. The release supports `rlvr` and `preference_learning` use labels at a high level; it does not support open-data, open-weight, process-supervision, or fully reproducible-RL claims.
+
+A reuse effort would need independently sourced and licensed problems, explicit reference and verifier semantics, versioned rollout/evaluator checkpoints, replay and reset specifications, immutable stage manifests, reward calibration, and contamination checks. Until those artifacts appear, this Card is suitable for cross-report disclosure comparison and audit-question design, not for reconstructing the Hunyuan-T1 recipe.
+

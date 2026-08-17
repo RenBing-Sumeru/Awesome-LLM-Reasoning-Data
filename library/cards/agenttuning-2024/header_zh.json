@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentInstruct 将六类代理环境整理成 1,866 条按奖励筛选的多轮 ReAct 示范，用于与通用对话混合微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多环境代理示范数据集与监督微调研究",
+  "best_for_ch": "适合构建文本代理 SFT、审计思考—动作—观察记录和研究跨环境迁移的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Aohan Zeng, Mingdao Liu, Rui Lu, Bowen Wang, Xiao Liu, Yuxiao Dong, Jie Tang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:00:00Z"
+}

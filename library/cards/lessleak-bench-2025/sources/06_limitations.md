@@ -1,0 +1,1 @@
+The audit is anchored to StarCoder's disclosed corpus, so it cannot establish leakage rates for closed or different models. MinHash+LSH produces candidates rather than proof, and manual labels depend on policy and source versions. Before using the cleaned set, verify the target benchmark release and whether the target model's training lineage is comparable.

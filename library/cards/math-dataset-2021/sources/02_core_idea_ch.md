@@ -1,0 +1,1 @@
+核心贡献是一个 12,500 题竞赛数学数据集，常用划分为 7,500 train / 5,000 test，覆盖 7 个 subject 和 5 个 difficulty levels。机制是收集题目、完整解答和最终答案，并提供可用于模型最终答案评分的评测面。最接近的对照是 GSM8K 这类小学数学文字题和更小的数学 QA 集；MATH 更难、覆盖面更广、更接近竞赛题。反馈契约是归一化或符号等价后的最终答案正确性，因此方向标签是 benchmark / evaluation surface，而不是 reward modeling。

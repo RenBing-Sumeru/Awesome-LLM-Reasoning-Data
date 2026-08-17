@@ -1,0 +1,5 @@
+The prior baseline is GLUE: a multi-task English NLU leaderboard with private test labels and one aggregate metric. SuperGLUE changes the benchmark rather than the model. It replaces saturated or narrow tasks with harder tasks, keeps RTE and a revised WSC-style task from the GLUE family, adds task formats beyond sentence-pair classification, and formalizes human baselines and diagnostics.
+
+The quality signal is not just "new tasks"; it is the documented selection criterion that a task should have an automatic metric, be solvable by humans, and leave meaningful headroom over BERT-era systems. The paper also documents excluded tasks where BERT was already too close to or above conservative human baselines.
+
+What is not new: the included datasets, exact-match or F1 scoring, private-test leaderboards, and pretrained-model baselines all predate SuperGLUE. Before reuse, inspect upstream dataset licenses, data-use restrictions, scorer code, train/dev/test split versions, diagnostic-label semantics, and whether public benchmark exposure contaminates the evaluated model.

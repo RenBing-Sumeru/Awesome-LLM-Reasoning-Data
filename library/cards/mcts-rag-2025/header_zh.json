@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MCTS-RAG 用 UCT 引导的搜索交替执行六类推理与检索动作，但官方发布的是生成器代码和少量 benchmark 输入，而不是论文运行产生的树、检索状态、选择分数或逐样本预算日志。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "检索增强的测试时 MCTS 构造配方与扩展研究",
+  "best_for_ch": "研究搜索轨迹、adaptive retrieval、测试时计算与发布完整性审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yunhai Hu；Yilun Zhao；Chen Zhao；Arman Cohan",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

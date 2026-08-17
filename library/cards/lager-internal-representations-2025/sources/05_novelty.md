@@ -1,0 +1,1 @@
+Rather than prompting for reasoning or changing the evaluator's parameters, LAGER treats intermediate score-token logits as an ensemble of judgment signals. Its distinctive choice is to combine logits before the restricted softmax and expose a continuous expectation, showing that the last layer is not necessarily the best human-alignment readout.

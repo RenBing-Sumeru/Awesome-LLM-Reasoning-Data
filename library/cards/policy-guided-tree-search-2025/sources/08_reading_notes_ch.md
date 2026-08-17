@@ -1,0 +1,5 @@
+- 应把第 2.3.1–2.3.5 节、公式 2–5、Algorithm 1 与附录 E 连起来阅读：已揭示部分树状态、受约束导航动作、likelihood 塑形奖励加动作成本，以及 PPO policy/value 学习共同定义控制器轨迹。
+- 必须区分生成器与控制器。LLaMA 3.1 提出候选推理步骤并按 likelihood 排序；GPS 策略决定如何遍历已揭示树。不考虑候选生成与预算，就不能把报告增益单独归因于控制器。
+- 应把论文的显式 terminate 动作与审计代码视为两套不同契约。论文使用包含 terminate 的 \(D+2\) 个动作；`pgts.py` 暴露 `depth_limit + 1` 个 continue/branch/backtrack 动作，并在任务 terminal 或达到 `max_search_steps` 时停止。
+- MATH 上 16.25× 对 5.28×、GSM8K 上 13.33× 对 1.29× 的 MCTS/PGTS token 比率应解释为聚合计算证据，而不是逐条 trace 质量、延迟相等或等预算的证明。
+- 复用前应要求原始序列化树、完整动作分布、稳定分支标签、策略 checkpoint、论文精确配置、切分/来源清单、逐样本预算日志、去污染证据及明确代码/数据许可证。

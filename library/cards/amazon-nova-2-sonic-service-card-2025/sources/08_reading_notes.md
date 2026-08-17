@@ -1,0 +1,4 @@
+- Read the interaction-turn definition and runtime filter flow separately from the undisclosed training-record schema.
+- Treat licensed, proprietary, and public data as source classes, not a manifest or rights audit.
+- Keep SFT, RL, and RLHF stage names separate from a disclosed reward/verifier contract.
+- Treat safety percentages and benchmark results as evaluation claims, not training-data quality evidence.

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T12:52:26Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "没想好 构建一个拥有持久用户身份、跨应用关联个人数据和记忆任务的原生 iOS 模拟器环境",
+    "updated_at": "2026-07-14T12:52:26Z"
+  }
+}

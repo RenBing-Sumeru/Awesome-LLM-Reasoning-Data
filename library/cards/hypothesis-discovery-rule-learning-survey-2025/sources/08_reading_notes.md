@@ -1,0 +1,3 @@
+Read the three stages as a connected loop, not as three independent scores. For each cited method, identify the observations it receives, the form of its hypothesis, the predictions it must make, and the evidence used to test it. Then note whether the representation is formal or natural language, since this changes what validation can establish.
+
+Add two questions while following references: what would count against the proposed hypothesis, and is the reported result evaluated on generation, application, or validation? These notes reveal whether evidence closes the cycle or stops at a persuasive candidate. They also make it easier to compare studies without collapsing distinct representations and validation settings.

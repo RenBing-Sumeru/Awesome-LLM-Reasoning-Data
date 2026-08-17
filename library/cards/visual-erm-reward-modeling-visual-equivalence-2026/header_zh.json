@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VC-RewardBench 含 1,335 个图表、表格与 SVG 视觉等价性实例，以位置、类型、严重度反馈支持视觉代码推理奖励。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "视觉等价性奖励模型与基准",
+  "best_for_ch": "需要视觉到代码 RL 奖励、视觉差异判定或多模态候选修订反馈的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Ziyu Liu、Shengyuan Ding、Xinyu Fang、Xuanlang Dai、Penghui Yang、Jianze Liang、Jiaqi Wang、Kai Chen、Dahua Lin、Yuhang Zang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:30:06Z"
+}

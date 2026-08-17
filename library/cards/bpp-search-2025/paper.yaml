@@ -1,0 +1,216 @@
+id: bpp-search-2025
+title: 'BPP-Search: Enhancing Tree of Thought Reasoning for Mathematical Modeling Problem Solving'
+year: 2025
+venue: ACL 2025
+authors:
+- Teng Wang
+- Wing-Yin Yu
+- Zhenqi He
+- Zehua Liu
+- Hailei Gong
+- Han Wu
+- Xiongwei Han
+- Wei Shi
+- Ruifeng She
+- Fangzhou Zhu
+- Tao Zhong
+source_role:
+- data_release
+- process_supervision
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- pairwise_preference
+- process_reward
+domains:
+- operations_research
+- mathematical_modeling
+- optimization
+- industrial_decision_making
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- process_supervision
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.40/
+  arxiv: https://arxiv.org/abs/2411.17404
+  code: https://github.com/LLM4OR/StructuredOR
+  data: https://huggingface.co/datasets/LLM4OR/StructuredOR
+  project: null
+  huggingface: https://huggingface.co/datasets/LLM4OR/StructuredOR
+  doi: https://doi.org/10.18653/v1/2025.acl-long.40
+  venue: https://aclanthology.org/2025.acl-long.40/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.40/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.40.bib
+data_object:
+  prompt_source: 'StructuredOR contains 124 concrete operations-research questions derived from abstract mathematical models:
+    77 examples come from the prior framework and 47 from changed parameter distributions. GPT-4o produces distributions,
+    natural-language descriptions, and three equivalent rephrasings. The public revision has 86 train files and 38 test files,
+    but no item-level template, rephrasing, or augmentation provenance.'
+  trace_author: GPT-4o is the fixed policy model for the main BPP-Search experiments. GPT, Llama, and Qwen-family policy outputs
+    are also used to construct PRM data. Qwen2.5-Math-1.5B supplies both the learned PRM and the learned pairwise preference
+    model. The public StructuredOR rows contain none of these generated search traces.
+  answer_format: Each released JSON file contains `question`, a nested `label` with `set`, `parameter`, `variable`, `objective`,
+    and `constraint` lists, and a numeric `objective_value`. Runtime BPP-Search candidates are cumulative structured models
+    over Q -> SP -> V -> OC, but raw candidate paths are not released.
+  process_fields:
+  - question
+  - label.set
+  - label.parameter
+  - label.variable
+  - label.objective
+  - label.constraint
+  - objective_value
+  environment_or_substrate: A four-layer Tree-of-Thought substrate transforms a question into combined sets and parameters,
+    variables, then objective and constraints. Each node has at most three children; PRM-guided greedy or beam search retains
+    intermediate candidates, and pairwise preference ranking selects from the final queue. Tree topology, visited or pruned
+    nodes, and candidate queues are absent from the public data.
+  verifier_or_reward: Parser and modeling-tool execution plus Gurobi check generated concrete models for solvability and correctness,
+    while objective values label correct and incorrect paths. A Qwen2.5-Math-1.5B binary PRM supplies sigmoid scores for intermediate
+    nodes, and a separately fine-tuned pairwise classifier ranks final candidates. Public rows store only the reference objective
+    value, not checker outputs, PRM scores, pairwise scores, or verdict provenance.
+  terminal_predicate: Experimental path correctness is determined from consistency with the reference objective value; BPP-Search
+    returns the final candidate with the highest average pairwise-preference score. Exact numerical tolerance, feasibility
+    and constraint residual checks, and failure handling are unknown, and the release does not store per-example terminal
+    decisions.
+recipe_metadata:
+  base_model: GPT-4o is the fixed policy model in the main BPP-Search comparisons. Qwen2.5-Math-1.5B is full-parameter fine-tuned
+    separately as the PRM and pairwise preference classifier.
+  teacher: There is no single teacher. GPT-4o generates distributions, question prose, rephrasings, and main search candidates;
+    abstract-model ground truth and Gurobi provide structured and objective signals; manual review, GPT scoring, and rule-based
+    evaluation filter generated questions.
+  generator: GPT-4o plus simulation, string insertion, parser or modeling tools, and Gurobi produce final StructuredOR examples.
+    For search, GPT-4o expands a four-layer tree, the PRM scores intermediate candidates, beam search prunes the tree, and
+    the pairwise model ranks the final queue.
+  filtering_rule: Retain generated concrete problems that parse and solve correctly; filter rephrasings with manual review,
+    GPT scoring, and rules. For PRM data, treat objective-consistent paths and their cumulative prefixes as correct, propagate
+    incorrect labels from an identified wrong step, and add manually perturbed positives and negatives. Exact thresholds and
+    rejection counts are unknown.
+  sampling_protocol: The paper uses a four-layer tree with at most three children per node and reports greedy, epsilon-greedy,
+    random-greedy, and beam-search variants. Main BPP-Search ablations use beam widths 2 and 3. Generation temperature, top-p
+    or top-k, seeds, retry policy, and per-example stopping settings are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: A full height-4 tree with branching factor 3 requires 39 policy-model queries; branching factor 4 would
+    require 84. Reported BPP-Search width-2 and width-3 settings use 15 and 21 reasoning steps, respectively. These are experiment-level
+    settings; token, call, latency, and cost budgets are not released per record.
+  optimizer_or_scaffold: The PRM and pairwise preference model are trained by full-parameter supervised fine-tuning as binary
+    classifiers. Optimizer, learning rate, epochs, batch size, seeds, checkpoint revisions, and calibration procedure are
+    unknown.
+audit:
+  source_mixture: StructuredOR reports 77 examples from the prior abstract-model framework and 47 parameter-distribution augmentations.
+    It spans Agriculture (24), Logistics (20), Education (15), Sports (12), Military (12), Energy (12), Telecommunications
+    (11), Manufacturing (9), Health Services (5), and Finance (4). Public JSON rows do not identify source template, rephrasing
+    family, or augmentation lineage.
+  split: At HF revision 957517ba9b1b66ed0bf7c2da203d49c89c4aa0e5, 86 JSON files are under train and 38 under test. All 124
+    question strings are unique and no exact question string crosses the split, but split rationale, stable record IDs, template-family
+    separation, and semantic near-duplicate controls are unknown.
+  decontamination: No formal decontamination, semantic deduplication, template-family isolation, or benchmark-overlap procedure
+    is disclosed. The paper itself warns that changing only parameter values can create test leakage and overfitting.
+  license: The official GitHub repository carries an MIT license, but it contains only a README and LICENSE. The HF repository
+    has no dataset card metadata, license tag, or license file, so the dataset license is unknown. ACL paper licensing does
+    not establish code or data reuse rights.
+  lineage: Abstract models -> GPT-4o distributions -> simulated concrete parameters -> parser or modeling-tool instance ->
+    Gurobi solvability and correctness validation -> string-inserted question -> GPT-4o description and rephrasings -> manual,
+    GPT, and rule filtering -> final question, structured label, and objective-value JSON. Separately, policy-generated CoT
+    or ToT paths -> objective-value correctness and manual perturbations -> PRM and pairwise SFT -> PRM-guided beam tree ->
+    pairwise final selection. The release preserves only the final StructuredOR endpoint.
+  known_failure_modes:
+  - 'The public release is a final structured-example dataset, not a raw search-tree release: parent-child topology, visited,
+    pruned, and rejected branches, candidate queues, selector scores, terminal-verdict provenance, and per-example budgets
+    are absent.'
+  - The official GitHub repository contains no implementation, training code, parser, solver harness, prompt file, configuration,
+    or checkpoint.
+  - Objective-value agreement is used to assume a correct modeling process, but a matching objective does not by itself establish
+    that every intermediate definition or constraint is semantically correct.
+  - The PRM is trained as a binary classifier but used as a continuous score; the paper reports similar correct and incorrect
+    final candidates receiving similar scores and wider beams sometimes reducing accuracy.
+  - 'Search results are reported only on GPT-4o-solvable subsets: 30 of 38 StructuredOR, 72 of 211 MAMO-ComplexLP, and 143
+    of 289 NL4OPT problems.'
+  - The HF JSON objects have optional-key variation and the dataset viewer fails feature conversion; reusable consumers need
+    robust nested-schema handling.
+  - GPT-4o-generated rephrasings and parameter variants lack family IDs, making semantic leakage and source-lineage auditing
+    difficult despite no exact cross-split question overlap.
+  - Tree width and depth materially change policy, PRM, and pairwise call counts, while temperature, tokens, latency, cost,
+    retry behavior, and execution logs are undisclosed.
+  - PRM and preference training corpora, checkpoints, splits, hyperparameters, and error analyses are not released, blocking
+    reproduction of the selectors.
+  - The dataset license, upstream derivative-data rights, decontamination, and record-level generation or filter decisions
+    remain unknown.
+  citation_status: verified
+  confidence: high
+  notes: The full ACL paper and appendices, ACL and arXiv citation records, GitHub commit c1dc638318b617bd3da9dd18499c3f03e5432315,
+    and HF commit 957517ba9b1b66ed0bf7c2da203d49c89c4aa0e5 were checked on 2026-07-25. Every one of the 124 released JSON
+    files was parsed. Official citation and final dataset artifacts are verified, but BPP-Search implementation and raw search
+    or selector artifacts are not released.
+inclusion_reason: 'BPP-Search is a direct tree-search and selector study for mathematical-modeling reasoning: it exposes a
+  PRM-guided beam substrate, pairwise final-candidate selection, and explicit search budgets, while its final-only StructuredOR
+  release makes the missing raw-tree boundary especially important for this track.'
+related: []
+tags:
+- bpp-search
+- structuredor
+- tree-of-thought
+- beam-search
+- process-reward-model
+- pairwise-preference
+- operations-research
+- structured-modeling
+- final-example-release
+- raw-tree-not-released
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data
+one_line_summary: BPP-Search uses a learned process reward model to prune a mathematical-modeling tree and a pairwise classifier
+  to select the final candidate, while the public StructuredOR artifact contains 124 final structured examples rather than
+  the raw search trees.
+why_it_matters: It makes tree width, intermediate scoring, and final-candidate selection explicit data-construction variables,
+  but also demonstrates why a final question and label release cannot support audits of rejected branches, selector behavior,
+  verifier outputs, or inference-budget attribution.
+card: null
+needs:
+- 'needs_implementation: publish the BPP-Search, parser, solver-validation, training, and evaluation code with pinned configurations'
+- 'needs_trace_release: publish raw trees, node text and topology, visited, pruned, and rejected candidates, final queues,
+  PRM scores, pairwise scores, and terminal verdicts'
+- 'needs_selector_artifacts: release PRM and preference datasets, splits, checkpoints, prompts, hyperparameters, seeds, calibration,
+  and error analysis'
+- 'needs_budget_logs: provide per-example policy, PRM, and preference calls, width, tokens, latency, cost, retries, and stopping
+  decisions'
+- 'needs_manifest: add stable record IDs, source-template, rephrasing, and augmentation family IDs, split rationale, and record-level
+  generation or filter lineage'
+- 'needs_license: declare the StructuredOR dataset license and document upstream and generated-data reuse rights'
+- 'needs_decontamination: document semantic deduplication, family-level split isolation, and benchmark-overlap checks'
+- 'card_recommendation: create a recipe and release Card focused on runtime BPP-Search trees versus the final-only StructuredOR
+  public schema'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: ACL proceedings metadata and PDF, arXiv, DOI and BibTeX, official GitHub and HF revisions, the complete 124-file
+    release schema, counts, splits, exact-question overlap, and licensing metadata were checked. Status remains partial because
+    implementation, raw trees, selector artifacts, per-example budgets, dataset license, split lineage, and decontamination
+    are unresolved.

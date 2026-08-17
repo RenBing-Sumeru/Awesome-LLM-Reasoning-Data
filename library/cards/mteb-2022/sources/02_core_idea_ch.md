@@ -1,0 +1,3 @@
+核心贡献是在 embedding-评测, retrieval, semantic-similarity 上提供 original paper version reports 58 datasets across 112 languages and seven embedding task families; live MTEB versions must be pinned.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：任务特定 metrics such as nDCG, accuracy, F1, Spearman correlation, and clustering scores。
+
+数据对象或环境是：dataset adapters, embedding model outputs, 任务特定 labels, and aggregate 榜单 metrics; Benchmark size: 初版覆盖 8 类 embedding 任务、58 个数据集；后续 榜单 持续扩展。最接近的对比对象是 nearby benchmark and 评测-surface datasets that share the same feedback contract。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 混合。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

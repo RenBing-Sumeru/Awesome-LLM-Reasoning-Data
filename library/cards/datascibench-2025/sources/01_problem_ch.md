@@ -1,0 +1,1 @@
+DataSciBench 研究如何评测 LLM agent 的真实数据科学能力，尤其是 ground truth 和 metric 不总是简单可得、任务也不只是单一类型的情况。主要来源是 2025 年 2 月 19 日提交的 arXiv 论文，以及官方 THUDM GitHub 和 Hugging Face 数据链接。它属于 benchmark / executable metric surface，因为评分围绕数据科学任务、代码执行和指标函数；它不是普通表格问答集，也不是简单复刻 Kaggle 榜单。一个任务包含自然数据科学 prompt、任务类型、数据文件或上下文、生成代码/输出、GT、metric function 和程序化评分规则。对 atlas 的价值是明确的 Task-Function-Code 反馈契约。

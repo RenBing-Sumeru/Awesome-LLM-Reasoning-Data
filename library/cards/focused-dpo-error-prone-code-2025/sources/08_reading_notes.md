@@ -1,0 +1,1 @@
+Read the segment-correlation analysis before the loss: it is the evidence for treating the middle as special. Then inspect the construction criterion, because test ranking and shared context determine whether the identified point is meaningful. Finally compare the LiveCodeBench table with absolute scores as well as relative gains, especially in the small Hard subset.

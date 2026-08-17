@@ -1,0 +1,7 @@
+**Inputs and outputs.** A row contains a LIMOPro/LIMOPro v2 problem, conditions, question, reference answer, and sampling identifier. It returns `steps`, `steps_scores`, `steps_detail`, `steps_content`, optional `steps_summary`, `final_answer`, and `is_correct` (official dataset card, Data Format).
+
+**Pipeline.** Generate eight outlines; select one by self-evaluation; score each step in context; compare each score to a threshold; call the thinking or non-thinking endpoint; then pass prior sub-problems and solutions into the next prompt. The repository exposes threshold 0.5, eight outlines, top_k 20, and max_tokens 32768 as example settings. Paper experiments use temperature 0.6 and top-p 0.95; System 2 scaling varies 4096–32768 tokens.
+
+**Selection and use.** Training traces whose final answer differs from LIMOPro are discarded; the paper reports 800 retained QwQ-generated pairs for SFT of four instruct models. The Hugging Face release instead lists four files of 817, 800, 782, and 713 rows. The checked sources do not publish the exact 800-row manifest, candidate outlines, self-evaluation outputs, per-step routes, token counts, seeds, or retries.
+
+**Evaluation.** The paper evaluates AIME24, AIME25, and AMC23 with pass@1 accuracy from eight samples, Tpi (tokens per iteration/sub-problem), and total response tokens. These evaluation metrics are not a training reward and do not prove the quality of the released reasoning traces.

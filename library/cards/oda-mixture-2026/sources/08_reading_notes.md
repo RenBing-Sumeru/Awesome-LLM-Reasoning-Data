@@ -1,0 +1,5 @@
+- Positioning: ODA closes the loop by ranking source corpora in OpenDataArena, then deduplicating and decontaminating the best-performing 500K-record mixture.
+- Data object: id, source, instruction, and response.
+- Author and selector: existing open reasoning responses are retained or rewritten during mixture refinement; selection uses leaderboard-based source selection, deduplication, benchmark decontamination, and mixture ablations.
+- Evidence anchor: The paper compares 100K and 500K ODA mixtures and reports broad gains across math, code, and general reasoning, while the separate ODA-Math-460K targets AIME and HMMT.
+- Reuse decision: suitable for general-purpose reasoning SFT; first audit leaderboard selection can overfit the arena's model and task mix, and inherited response errors survive if not caught by source checks.

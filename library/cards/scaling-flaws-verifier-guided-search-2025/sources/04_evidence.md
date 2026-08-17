@@ -1,0 +1,1 @@
+Primary paper: [Scaling Flaws of Verifier-Guided Search in Mathematical Reasoning](https://arxiv.org/abs/2502.00271). Reported evidence: Reported tested settings show outcome-verifier selection failures of 77.1–88.6%; no public trace logs or reproduction package was verified. Official artifacts absent from the checked source are recorded as null, not guessed.

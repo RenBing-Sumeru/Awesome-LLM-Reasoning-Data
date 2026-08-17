@@ -1,0 +1,205 @@
+id: minimax-m1-2025
+title: 'MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention'
+year: 2025
+venue: arXiv preprint
+authors:
+- MiniMax
+source_role:
+- model_report
+- scaling_study
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematics
+- coding
+- software_engineering
+- general
+training_use:
+- sft
+- reward_modeling
+- rlvr
+- agent_training
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.13585
+  arxiv: https://arxiv.org/abs/2506.13585
+  code: https://github.com/MiniMax-AI/MiniMax-M1
+  data: null
+  project: https://www.minimax.io/news/minimaxm1
+  huggingface: https://huggingface.co/collections/MiniMaxAI/minimax-m1
+  doi: https://doi.org/10.48550/arXiv.2506.13585
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.13585
+data_object:
+  prompt_source: The report separates three stages. Continual pretraining uses 7.5T non-synthetic tokens from refined Web,
+    PDF, forum, textbook, book, code, STEM, and reasoning sources. Long-CoT SFT spans math, coding, STEM, writing, QA, and
+    multi-turn chat, with math and coding around 60 percent. RL uses nearly 50K math, approximately 53K SynLogic logic, 30K
+    competitive-programming, several thousand public-GitHub software-engineering, and 25K general-domain prompts; record-level
+    manifests are not released.
+  trace_author: Long-CoT SFT response authors or teachers are unknown. MiniMax-Text-01 generates missing competitive-programming
+    tests, an unidentified strong reasoning model supplies pass@10 difficulty estimates, and various unidentified internal
+    and external models generate reference answers for open-ended general RL.
+  answer_format: SFT targets are long reasoning responses. RL policy outputs are task responses or software-engineering interventions.
+    Software-engineering items contain a problem description, initial faulty code, and tests; general tasks use ground-truth
+    or selected reference answers for reward-model comparison. The actual training rows, rollout groups, and reward records
+    are not released.
+  process_fields:
+  - prompt or problem statement
+  - long reasoning response
+  - ground-truth or reference answer
+  - domain and source class
+  - pass-rate difficulty estimate
+  - rule, execution, or model reward
+  - problem description and initial faulty code for software engineering
+  - pre-defined or generated tests for software engineering
+  - output-length curriculum stage
+  environment_or_substrate: Most tasks are offline prompts with rule or model feedback. Software-engineering RL uses containerized
+    sandboxes built from public GitHub issues and pull requests, executing proposed interventions against pre-defined or newly
+    generated tests. Sandbox images, dependency locks, task manifests, and execution logs are not released.
+  verifier_or_reward: Math, logic, and competitive programming use final-correctness rules plus format rewards; logic has
+    task-specific SynLogic verifiers. Software engineering uses compilation, runtime, and test outcomes. Objective general
+    tasks use a five-grade Generative Reward Model comparison with ground truth; open-ended tasks use pairwise -1, 0, or 1
+    judgments against selected references; constrained instruction following combines rule and model rewards. Reward prompts,
+    checkpoints, calibrations, and per-rollout outputs are not released.
+  terminal_predicate: 'Task success is domain-specific: parseable correct final answer, task-specific logical correctness,
+    passing code tests, or software changes that pass all relevant tests without compilation, runtime, or regression failure.
+    Generation is truncated when 3,000 consecutive tokens each exceed probability 0.99. Moving from 40K toward 80K output
+    stages uses empirical perplexity convergence and the 99th output-length percentile; exact transition thresholds are unknown.'
+recipe_metadata:
+  base_model: MiniMax-M1 develops from MiniMax-Text-01, a 456B-parameter hybrid Mixture-of-Experts model with 45.9B parameters
+    active per token.
+  teacher: The Long-CoT SFT teacher is unknown. MiniMax-Text-01 generates missing programming tests; an unidentified strong
+    reasoning model estimates pass@10 difficulty; various unidentified internal and external models generate open-ended reference
+    answers.
+  generator: Continual pretraining extracts natural QA pairs and explicitly avoids synthetic data. SFT curates long reasoning
+    responses. RL combines public math and coding prompts, SynLogic task generators, public GitHub issue/PR environments,
+    MiniMax-Text-01-generated tests where needed, and internally tagged general prompts with model-generated reference answers.
+  filtering_rule: Math removes incomplete, malformed, multi-part, proof, binary, and unsuitable multiple-choice records; deduplicates
+    RL sources; separates SFT and RL; checks benchmark similarity; requires parseable answers; and keeps pass@10 strictly
+    between 0 and 0.9. Logic uses model-solvability bounds. Coding uses pass-rate difficulty filtering. The 80K phase removes
+    easy items, favors harder math/code, and downsamples repetitive synthetic reasoning. Exact survival ledgers and thresholds
+    outside the reported pass-rate ranges are unknown.
+  sampling_protocol: CISPO uses group-relative advantages, dynamic sampling, a length penalty, and 16 off-policy updates per
+    generation batch in the reported setup. Logic difficulty increases later in training. General-domain tasks are mixed after
+    rule-verifiable tasks through an undisclosed dynamic weighting schedule. Training rollout group size and decoding parameters
+    are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Official weights expose MiniMax-M1-40k and MiniMax-M1-80k maximum thinking budgets. RL output limits grow
+    through 40K, 48K, 56K, 64K, 72K, and 80K. Evaluation uses temperature 1.0 and top-p 0.95; AIME and GPQA use 32 samples,
+    while LiveCodeBench and FullStackBench use 16. These evaluation budgets are not training rollout disclosures.
+  optimizer_or_scaffold: CISPO clips importance-sampling weights rather than token updates, uses GRPO-style group-relative
+    advantage and token-level normalization, applies dynamic sampling and length penalty, and omits a KL term. The 80K phase
+    adds combined sample-level loss, token normalization, tighter gradient clipping, and staged window expansion. The report
+    gives selected optimizer and numerical-stability fixes but not a complete executable training configuration.
+audit:
+  source_mixture: 'Continual pretraining: 7.5T non-synthetic tokens, with STEM, code, books, and reasoning raised to 70 percent.
+    SFT: long reasoning samples across math, code, STEM, writing, QA, and multi-turn chat, with math/code around 60 percent
+    and total size unknown. RL: nearly 50K math, approximately 53K logic, 30K competitive programming, several thousand software-engineering,
+    and 25K general prompts; exact stage-wise weights, prompt IDs, and final retained counts are unknown.'
+  split: The math RL pipeline states strict separation from SFT and applies held-out benchmark filtering. No released train/validation
+    manifest, immutable item IDs, model-stage assignment, or complete source split exists. SWE-bench evaluation uses 486 of
+    500 verified tasks because 14 were incompatible with MiniMax infrastructure.
+  decontamination: Math RL uses n-gram and embedding similarity against commonly used math benchmark test sets and embedding
+    deduplication across RL sources. Exact benchmark versions, thresholds, matched items, removals, and comparable checks
+    for SFT, general RL, software engineering, continual pretraining, and other evaluation suites are unknown.
+  license: The current official GitHub repository and primary Hugging Face weight pages display Apache-2.0. No M1 training-data
+    artifact or source-level rights manifest is released; public competitions, coding sites, books, Web/PDF sources, and GitHub
+    records require separate provenance, attribution, and terms review.
+  lineage: MiniMax-Text-01 -> 7.5T continual pretraining -> undisclosed Long-CoT SFT mixture -> rule-verifiable RL on math,
+    logic, code, and software engineering -> gradual mixing of GenRM-scored general tasks -> 40K model -> harder-data filtering,
+    synthetic-data downsampling, and staged output expansion -> 80K model. Aggregate report descriptions are available, but
+    row-level sources, candidates, reward traces, rejection reasons, and run membership are not.
+  known_failure_modes:
+  - Open model weights and inference code do not provide the unreleased continual-pretraining, SFT, RL, or reward-model data.
+  - Broad source labels such as public competitions, coding sites, Web/PDF, books, and public GitHub repositories do not establish
+    record-level provenance or rights.
+  - The SFT total, response generators, filtering criteria, candidate counts, and retained-record ledger are unknown.
+  - Pass-rate filtering depends on unidentified model versions and can reshape the task distribution toward one model family's
+    notion of difficulty.
+  - MiniMax-Text-01-generated tests can encode incomplete or incorrect specifications; sandbox images, dependencies, generated
+    tests, flaky-test handling, and execution logs are unavailable.
+  - Final-answer and format rewards can accept an incorrect reasoning process with a correct endpoint or reject semantically
+    valid alternative formats.
+  - The paper documents GenRM length bias and online recalibration, but reward prompts, checkpoints, human benchmark records,
+    Swiss Round outputs, thresholds, and calibration results are unreleased.
+  - Dynamic mixing of rule-verifiable and model-scored tasks is not quantified by stage, so reward-source exposure cannot
+    be reconstructed.
+  - Long-output training encountered repetition and pattern collapse; heuristic truncation and stage-transition rules are
+    reported without complete event logs or thresholds.
+  - Training code, exact commits, complete configurations, rollout groups, per-component rewards, rejected responses, optimizer
+    state, and stage checkpoints are not released.
+  - Math-specific similarity checks do not establish corpus-wide decontamination or absence of overlap with code, software-engineering,
+    long-context, tool-use, and general benchmarks.
+  - Benchmark scores depend on sampling and scaffolds, including a 486-task SWE-bench subset, and do not prove training-data
+    quality, lineage, rights, verifier accuracy, or replayability.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v1, MiniMax project page, GitHub repository, Hugging Face collection, and primary 40K/80K weight pages
+    were checked on 2026-07-19. Weights and inference/deployment code are verified; no official M1 post-training dataset,
+    reward trace, sandbox bundle, or executable training pipeline was confirmed.
+inclusion_reason: MiniMax-M1 is a high-value frontier disclosure because it separates continual pretraining, Long-CoT SFT,
+  rule- and execution-verified RL, model-scored general RL, and a long-output curriculum while releasing the 40K and 80K weights;
+  it also leaves clear data, verifier, rights, and replay gaps for audit.
+related: []
+tags:
+- minimax-m1
+- frontier-report
+- data-disclosure-ledger
+- open-weights
+- long-cot
+- cispo
+- rlvr
+- execution-feedback
+- generative-reward-model
+- long-context
+- test-time-compute
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: MiniMax-M1 releases 40K and 80K model weights and reports separate continual-pretraining, Long-CoT SFT,
+  and mixed-feedback RL recipes, but not the training rows, reward traces, sandboxes, or training code needed for replay.
+why_it_matters: It is a useful frontier-report ledger for comparing what is disclosed about source mixtures, filtering, verifiers,
+  execution environments, curricula, weights, and evaluation against what remains unavailable.
+card: null
+needs:
+- 'needs_cpt_data: source manifests, licenses, filters, deduplication records, and mixture accounting for the 7.5T-token continual-pretraining
+  corpus'
+- 'needs_sft_data: Long-CoT row schema, total count, prompt sources, response generators, filtering decisions, and stage manifest'
+- 'needs_rl_data: prompt IDs, candidate outputs, rollout groups, per-component rewards, rejection decisions, dynamic mixture
+  weights, and stage assignments'
+- 'needs_environment: software repositories and revisions, container images, dependency locks, generated tests, flaky-test
+  policy, and execution logs'
+- 'needs_reward_model: GenRM prompts, checkpoints, human benchmark, Swiss Round records, thresholds, calibration, and length-bias
+  monitoring logs'
+- 'needs_training_code: exact CISPO implementation, commits, configs, optimizer state, and checkpoints for the 40K-to-80K
+  curriculum'
+- 'needs_decontamination: benchmark revisions, similarity thresholds, match/removal ledger, and checks beyond the math RL
+  pool'
+- 'needs_rights: record-level origin, attribution, license, and transformation chain for public and generated inputs'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, project announcement, GitHub repository, Hugging Face collection, and MiniMax-M1-40k and MiniMax-M1-80k
+    weight pages are live. The verified code is oriented to model definition, inference, and deployment; training data, reward
+    artifacts, sandboxes, and the end-to-end training pipeline are not released.

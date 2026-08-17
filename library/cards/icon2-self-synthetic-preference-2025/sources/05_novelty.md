@@ -1,0 +1,3 @@
+Most synthetic preference pipelines first sample a pool of answers and use a reward score or an LLM judge to label it. ICON2 instead uses a representation-derived preference direction twice: first to decide which prompts are fit for the target model, and then to produce the opposite response pair without ranking several stochastic outputs.
+
+This couples prompt selection, response writing, and the preference label under one model-local representation contract. The novelty is not merely steering generation; it changes what the downstream optimizer receives by storing a criterion-specific instruction and an intentionally constructed positive-negative contrast.

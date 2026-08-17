@@ -1,0 +1,2 @@
+Prefix guidance requires trusted expert demonstrations and may leak substantial solution structure. Pass rate, zero-pass triggers, active-set membership, and EMA weights depend on policy checkpoint, seed, epoch, and verifier. State tracking adds storage and implementation complexity. Decontamination and licenses are unknown, and the work is mainly mathematical. No official code, processed dataset, state manifest, rollout log, or immutable release is linked.
+

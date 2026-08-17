@@ -1,0 +1,228 @@
+id: openai-gpt-5-codex-system-card-2025
+title: 'Addendum to GPT-5 system card: GPT-5-Codex'
+year: 2025
+venue: OpenAI system-card addendum
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+domains:
+- software_engineering
+- coding_agents
+- cybersecurity
+- safety
+training_use:
+- agent_training
+- evaluation
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/pdf/97cc5669-7a25-4e63-b15f-5fd5bdc4d149/gpt-5-codex-system-card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/introducing-upgrades-to-codex/
+  huggingface: null
+  doi: null
+  venue: https://deploymentsafety.openai.com/gpt-5-codex
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Training is described at the task-family level: real-world software-engineering tasks in varied environments,
+    including building projects from scratch, adding features and tests, debugging, large-scale refactoring, and code review.
+    Safety training additionally uses inherited safety data from the OpenAI hosted chat product and codex-1 malware-policy
+    data, a synthetic pipeline producing malware-relevant prompts, code snippets, and environment configurations, and newly
+    created prompt-injection safety data for coding environments. Task and repository identities, counts, dates, mixture weights,
+    rights, and item records are unknown. Evaluation-only sources include SWE-bench Verified, refactor tasks from established
+    Python, Go, and OCaml repositories, recent commits from popular open-source repositories, mobile website preference tasks,
+    a policy-expert malware golden set, coding prompt-injection attacks, Production Benchmarks, StrongReject, CTFs, and Cyber
+    Range; these must not be relabeled as training data.'
+  trace_author: GPT-5-Codex acts in coding environments during reinforcement learning and product or evaluation episodes,
+    but the report does not identify rollout generators, retained trajectories, hidden-reasoning records, accepted and rejected
+    attempts, or item-level lineage. Code-review evaluation outputs are produced by GPT-5-Codex and judged by experienced
+    software engineers; product tasks may expose citations, terminal logs, diffs, screenshots, and test results. OpenAI employee-traffic
+    telemetry counts non-user-visible reasoning plus final output, but raw traffic traces are not released or claimed as training
+    data.
+  answer_format: Training target serialization is unknown. Disclosed model outputs include project code, feature and test
+    additions, bug fixes, large refactors, review comments, commands, file edits and diffs, safety refusals or defensive and
+    contextual answers, screenshots, citations, terminal logs, and test results. Evaluation records may pair recent commits
+    with review comments and engineer correctness or importance judgments, prompts with policy or golden-set outcomes, or
+    coding tasks with tests and terminal outcomes; complete schemas and examples are not released.
+  process_fields:
+  - software_engineering_task_prompt
+  - repository_or_project_context
+  - environment_state
+  - agent_command_or_tool_action
+  - code_or_file_edit
+  - test_execution_and_result
+  - pull_request_intent_and_diff
+  - code_review_comment
+  - human_correctness_or_importance_judgment
+  - safety_policy_response
+  - prompt_injection_attack_and_outcome
+  - terminal_artifact_or_task_outcome
+  environment_or_substrate: Training uses an unspecified variety of real-world coding environments; the synthetic malware
+    pipeline also creates environment configurations, but repository snapshots, container images, tools, permissions, network
+    state, observation schema, and replayability are unknown. Evaluation and product substrates include large established
+    repositories, recent popular open-source commits, Codex CLI, IDE, cloud, and GitHub, test execution, browser and screenshot
+    iteration, and long-running agent tasks. Cloud containers, Seatbelt, seccomp and landlock, network-denied defaults, workspace
+    restrictions, and per-project network controls are deployment safeguards and cannot be assumed to match training environments.
+  verifier_or_reward: 'Reinforcement learning is explicit, and desired behavior includes human-like code and pull-request
+    preferences, precise instruction following, code review, and iteratively running tests until passing. The report does
+    not disclose whether these are scalar rewards, preference pairs, separate graders, executable tests, or a mixed objective,
+    nor their weights or calibration. Evaluation contracts are separate: experienced engineers judge review comments for correctness
+    and importance; humans provide mobile-web preferences; internal policy experts curate a malware golden set; prompt-injection
+    attacks test whether malicious instructions are ignored; safety benchmarks measure refusal and robustness; and coding
+    tasks use tests and observed task completion. None is established as the complete training verifier.'
+  terminal_predicate: The general RL episode termination rule is unknown. The report says the model iteratively runs tests
+    until passing and describes test episodes exceeding seven hours, but does not establish a universal all-tests-pass terminal
+    predicate or maximum horizon. Evaluation and product episodes can end with a completed implementation, refactor, review,
+    safety response, ignored prompt injection, or reported test result.
+recipe_metadata:
+  base_model: GPT-5-Codex is described as a version of GPT-5 optimized for agentic coding. Architecture, parameter count,
+    exact base and final checkpoints, inherited GPT-5 stages, and allocation between general and Codex-specific training are
+    unknown.
+  teacher: unknown
+  generator: A synthetic pipeline generates malware-relevant prompts, code snippets, and environment configurations. The model
+    or program generating these records, generator prompts, seeds, decoding, human review, and versions are unknown. No generator
+    is identified for real-world software-engineering tasks or prompt-injection safety records.
+  filtering_rule: The malware pipeline includes edge cases and adversarial examples and targets refusal of high-risk requests,
+    defensive or contextual help, and calibrated dual-use handling. No admission rules, repository filters, solvability checks,
+    policy-label process, task deduplication, rejection reasons, yields, or retained and failed-example policy are disclosed
+    for the main coding or safety data.
+  sampling_protocol: Training sampling and task mixture are unknown. Evaluation sampling includes all 500 SWE-bench Verified
+    tasks after an infrastructure fix, refactor-style tasks from established repositories, recent commits from popular open-source
+    repositories for code review, and OpenAI employee-traffic top and bottom token-use deciles. Counts and selection rules
+    for refactor, review, preference, golden-set, prompt-injection, and traffic evaluations are mostly undisclosed.
+  rollout_count: Training rollout counts are unknown. The launch page reports that some test runs lasted more than seven hours,
+    but gives no number of episodes, horizon distribution, retries, branching, or group size.
+  temperature: unknown
+  inference_budget: Training budgets are unknown. At evaluation and product time, GPT-5-Codex dynamically varies effort with
+    task complexity, has been observed working for more than seven hours on large tasks, and shows different token use across
+    employee-traffic deciles. Codex CLI can compact conversation state, but this is a product scaffold disclosure rather than
+    evidence of a GPT-5-Codex training curriculum or fixed model budget.
+  optimizer_or_scaffold: OpenAI explicitly reports reinforcement learning on real-world coding tasks in varied environments
+    and additional safety training for malware and prompt injection. The RL algorithm, reward construction, preference representation,
+    executable-test use, objective weights, optimizer, batch and rollout schedule, replay, KL treatment, compute, checkpoint
+    selection, and stage accounting are unknown.
+audit:
+  source_mixture: The report names real-world software-engineering task families, human-style and PR-preference goals, inherited
+    malware safety data, synthetic malware scenarios, and new prompt-injection data, but gives no quantitative mixture. Base
+    GPT-5 broad source classes are inherited context and do not identify the Codex task corpus. Source manifests, repositories,
+    revisions, counts or tokens, dates, privacy and consent handling, and source-level rights are unknown.
+  split: No global training, development, and test split or membership ledger is disclosed. The malware golden set, coding
+    prompt-injection suite, SWE-bench, refactor tasks, recent-commit code-review evaluation, mobile-web preference evaluation,
+    Production Benchmarks, StrongReject, CTFs, and Cyber Range are described as evaluation objects, but their overlap with
+    the real-world training tasks and safety data is not reported.
+  decontamination: No repository-level, commit-level, benchmark, prompt-injection, or safety-data decontamination audit is
+    disclosed. Running all 500 SWE-bench Verified tasks fixes evaluation infrastructure coverage but does not establish train
+    and test independence. Recent open-source commits and established-repository refactor tasks lack disclosed cutoff dates,
+    hashes, or overlap checks.
+  license: The report, launch page, and Deployment Safety Hub are public, but no real-world coding task corpus, repository
+    snapshot, trajectory record, code-review labels, preference data, malware or prompt-injection dataset, evaluator implementation,
+    reward code, model weights, or replayable environment is released with a reuse license. Source-level rights are unknown.
+  lineage: Stage-level lineage connects GPT-5 to GPT-5-Codex, real-world software-engineering RL, additional human-style coding
+    data, inherited and synthetic malware safety training, and newly created prompt-injection safety data, followed by human,
+    executable, benchmark, traffic, and Preparedness evaluations plus deployment safeguards. Prompt-to-repository-to-environment-to-action
+    and test trajectory-to-feedback-to-reward-to-checkpoint lineage, dataset versions, record IDs, and checkpoint hashes are
+    unavailable.
+  known_failure_modes:
+  - The phrase PR preferences names a desired behavior but does not disclose pairwise preference records, a preference model,
+    label protocol, reward function, or preference-learning stage.
+  - Iteratively running tests until they pass is reported behavior, not proof that tests are the complete RL reward, that
+    all tasks have executable tests, or that passing tests guarantees semantic correctness.
+  - Real-world task families lack repository identities, revisions, environment images, task counts, source rights, retained
+    trajectories, failed attempts, and a reproducible sampling or filtering recipe.
+  - The synthetic malware pipeline is described as developed for codex-1; treating it as a newly constructed GPT-5-Codex release
+    or attributing GPT-5-Codex gains to it would overstate the delta.
+  - The new prompt-injection training data and coding-focused evaluation have no disclosed membership boundary, so training
+    and evaluation overlap and robustness to unseen attacks cannot be audited.
+  - Code-review evaluation uses recent open-source commits and experienced engineer judgments, but omits repository and commit
+    lists, sample counts, rubric details, agreement, raw comments, false positives, false negatives, and train and evaluation
+    overlap.
+  - SWE-bench, refactor, preference, seven-hour task, employee-traffic, safety, CTF, and Cyber Range results are evaluation
+    or observational evidence; they do not reveal the training corpus or isolate causal effects of RL data.
+  - The current Deployment Safety Hub marks GPT-5-Codex as no longer in production; aliases and product behavior may have
+    changed, so deployment claims require a date and should not be treated as current-model guarantees.
+  - Cloud and local sandboxing, configurable network access, user approvals, citations, terminal logs, and test reports are
+    product controls and evidence surfaces, not training examples or model-internal correctness guarantees.
+  - The later GPT-5.1 and GPT-5.2 Codex conflicting-edit reward, internal OpenAI PR hidden tests, compaction training, and
+    expanded Preparedness objects are absent here and must not be backported.
+  - No open data, model weights, reward implementation, global decontamination audit, source-license ledger, or item-level
+    checkpoint lineage is released.
+  citation_status: verified
+  confidence: high
+  notes: The official OpenAI index page, seven-page PDF, complete Deployment Safety Hub rendering, and launch page were read
+    directly on 2026-07-24. The Safety Hub currently marks the model as no longer in production. This entry focuses on GPT-5-Codex-specific
+    disclosure deltas over GPT-5 and codex-1 and prevents later GPT-5.1 and GPT-5.2 Codex rewards or internal PR evaluations
+    from being backported. Training signals, evaluation scoring, observational traffic evidence, and deployment safeguards
+    are kept separate.
+inclusion_reason: A frontier coding-agent report that discloses reinforcement learning on several real-world software-engineering
+  task families, code-review specialization, inherited synthetic malware safety data, and new coding-environment prompt-injection
+  data, while exposing human and executable evaluation contracts but withholding task records, rewards, splits, licenses,
+  and item-level lineage.
+related:
+- gpt-5-system-card-2025
+- openai-o3-o4-mini-codex-addendum-2025
+- openai-gpt-5-1-codex-max-system-card-2025
+- openai-gpt-5-2-codex-system-card-2025
+tags:
+- openai
+- gpt-5-codex
+- system-card
+- coding-agent
+- real-world-software-engineering
+- reinforcement-learning
+- code-review
+- pull-request-preferences
+- executable-tests
+- malware-safety
+- prompt-injection
+- human-evaluation
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: GPT-5-Codex discloses RL on real-world project building, feature and test work, debugging, refactoring,
+  and code review plus synthetic malware and new prompt-injection safety data, but not the task records, preference or reward
+  representation, trajectories, split, or reusable artifacts.
+why_it_matters: It is a useful coding-agent disclosure ledger because it names concrete training task families and separates
+  code-review training, experienced-engineer evaluation, executable tests, safety data, traffic observations, and product
+  sandboxing that could otherwise be conflated into an unsupported reward or dataset claim.
+card: null
+needs:
+- 'needs_data: task and repository manifests, revisions, environment snapshots, prompts, full successful and failed trajectories,
+  review examples, preference records, safety examples, counts, versions, provenance, rights, and stage membership'
+- 'needs_verifier: RL reward, test integration, PR-style and instruction-following signals, code-review correctness and importance
+  rubric, human-preference protocol, safety labels, aggregation, weights, calibration, and false-positive and false-negative
+  audits'
+- 'needs_metadata: exact checkpoints, architecture, generator identities, sampling, filtering, rollout counts and horizons,
+  temperatures, optimizer, schedules, compute, stage allocation, and stable deployment and version identifiers'
+- 'needs_audit: global train and evaluation membership, SWE-bench and repository or commit overlap, prompt-injection and malware
+  overlap, memorization, reward hacking, judge reliability, traffic sampling, scaffold attribution, and reproducibility'
+- 'needs_license: source-level rights and explicit reuse terms for coding tasks, repositories, trajectories, review and preference
+  labels, safety datasets, graders, tests, environments, and model checkpoints'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title and ID deduplication against the target V2 Card library found no match. The official index page, seven-page
+    PDF, Deployment Safety Hub rendering, and official launch page were verified. No arXiv, DOI, released code, data, model
+    weights, Hugging Face artifact, proceedings record, or official BibTeX is claimed.

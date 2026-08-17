@@ -1,0 +1,156 @@
+id: opencodeinterpreter-2024
+title: 'OpenCodeInterpreter: Integrating Code Generation with Execution and Refinement'
+year: 2024
+venue: Findings of ACL 2024
+authors:
+- Tianyu Zheng
+- Ge Zhang
+- Tianhao Shen
+- Xueling Liu
+- Bill Yuchen Lin
+- Jie Fu
+- Wenhu Chen
+- Xiang Yue
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- code-generation
+- software-engineering
+- debugging
+- feedback-driven-refinement
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-acl.762/
+  arxiv: https://arxiv.org/abs/2402.14658
+  venue: https://aclanthology.org/2024.findings-acl.762/
+  code: https://github.com/OpenCodeInterpreter/OpenCodeInterpreter
+  data: https://huggingface.co/datasets/m-a-p/Code-Feedback
+  project: https://opencodeinterpreter.github.io/
+  huggingface: https://huggingface.co/datasets/m-a-p/Code-Feedback
+  doi: https://doi.org/10.18653/v1/2024.findings-acl.762
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-acl.762/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-acl.762.bib
+data_object:
+  prompt_source: 287K queries aggregated from Magicoder-OSS-Instruct, Python-Code-ShareGPT, Magicoder-Evol-Instruct, and Evol-Instruct-Code,
+    plus LeetCode problems drawn through TACO.
+  trace_author: GPT-3.5 writes initial code, execution supplies outputs or diagnostics, and GPT-4 writes iterative corrections,
+    simulated user feedback, explanations, and LeetCode follow-ups.
+  answer_format: A static multi-turn conversation stored as an id and a messages array whose role/content turns contain coding
+    requests, assistant explanations and code, execution feedback, simulated user feedback, and revised responses.
+  process_fields:
+  - record identifier
+  - ordered role/content messages
+  - initial code-bearing response
+  - execution output or compiler diagnostic
+  - simulated feedback and revised response
+  environment_or_substrate: Python or compiler execution is used during interaction simulation and code correction; the published
+    artifact is serialized conversation data rather than a live environment.
+  verifier_or_reward: Execution results provide outcome feedback for revision, while GPT-4 decides when a solution appears
+    correct and synthesizes user feedback across ten categories; neither signal proves every final program semantically correct.
+  terminal_predicate: Stop interaction simulation when GPT-4 judges the solution correct or after three iterations, then serialize
+    the resulting dialogue; other construction branches pack related queries or solutions into multi-turn records.
+recipe_metadata:
+  base_model: CodeLlama 7B/13B/34B/70B, DeepSeek-Coder 6.7B/33B, and StarCoder2 7B are trained or evaluated as data consumers.
+  teacher: GPT-3.5 produces initial responses, GPT-4 refines them and simulates human feedback, and Qwen-72B-Chat filters
+    query complexity.
+  generator: Filter open code instructions, pack similar queries, simulate execution-and-feedback interactions, construct
+    explicit code-correction episodes, and add related LeetCode problems and follow-ups.
+  filtering_rule: Qwen-72B-Chat scores queries twice and retains complexity 4-5 seeds; interaction simulation keeps up to
+    three refinement cycles, while LeetCode records inherit TACO cleaning and GPT-4 explanation formatting.
+  sampling_protocol: From 287K aggregated queries, retain 156K challenging instructions; construct 16K single-turn packing
+    records, 51K interaction simulations, about 0.5K code corrections, 0.3K LeetCode similar-problem records, and 0.2K follow-ups.
+  rollout_count: 3
+  temperature: null
+  inference_budget: Interaction simulation permits at most three execution/refinement iterations; complete teacher token counts,
+    generation seeds, and monetary cost are not reported.
+  optimizer_or_scaffold: Fine-tune for three epochs at learning rate 2e-5, warm-up ratio 0.05, cosine schedule, and cutoff
+    4,096, mixing WizardCoder and Code-Feedback at a 2:1 ratio.
+audit:
+  source_mixture: 68K conversations and 192K turns, including 16K/33.5K single-turn packing records/turns, 51K/155.5K interaction
+    simulation records/turns, 0.5K/1.2K code correction, 0.3K/0.65K LeetCode similar-problem, and 0.2K/0.76K follow-up records/turns.
+  split: The official release exposes Code-Feedback.jsonl as the central conversation corpus and a separate CodeFeedback-Filtered-Instruction
+    seed dataset; the paper does not document a canonical train/validation/test split for Code-Feedback itself.
+  decontamination: Five-line overlap is 1.19% with HumanEval and 0.51% with MBPP, six-line overlap is 0.53% and 0%, and seven-line
+    overlap is 0%; generic fragments can remain and broader semantic overlap is not ruled out.
+  license: Code-Feedback and the repository declare Apache-2.0; upstream instruction datasets, TACO/LeetCode material, and
+    records produced with GPT-4-0613 or GPT-3.5-turbo-0613 still require source-term and provider-policy review.
+  lineage: Open code query or TACO problem leads to complexity filtering or related-item grouping, teacher response, optional
+    execution result, GPT-4 feedback/refinement, ordered messages, and the public static JSONL record.
+  known_failure_modes:
+  - Execution output can expose syntax or runtime failure without proving functional correctness, security, efficiency, or
+    instruction fidelity.
+  - GPT-generated corrections and simulated user feedback can preserve teacher artifacts, unsupported claims, or unsafe code
+    patterns.
+  - Replaying released code outside an isolated environment creates arbitrary-code, dependency, resource, and network risks.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper/PDF, DOI, repository, Apache-2.0 release, Hugging Face file and schema, filtered seed dataset,
+    affiliations, experimental tables, and adoption counters checked on 2026-07-14.
+inclusion_reason: Code-Feedback publicly releases 68K static multi-turn coding conversations with explanations, execution
+  diagnostics, simulated feedback, and revisions that are explicitly consumed by SFT, rather than only releasing an online
+  interpreter scaffold.
+related: []
+tags:
+- instruction-demonstration-rationale
+- code-feedback
+- execution-feedback
+- iterative-refinement
+- arxiv-2402.14658
+- primary-link-checked
+status: verified
+one_line_summary: OpenCodeInterpreter releases 68K multi-turn code conversations and 192K turns that combine explanations,
+  execution feedback, simulated user guidance, and revisions for SFT.
+why_it_matters: It turns normally transient code-execution and feedback loops into an inspectable training object while exposing
+  construction branches, scale, models, code, and data.
+reading_priority: must read
+paper_type: execution-feedback code demonstration dataset and SFT recipe
+best_for: Researchers training code models to revise programs from runtime diagnostics or auditing synthetic multi-turn feedback
+  data.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Findings ACL record, DOI, public Apache-2.0 JSONL schema, repository, data scale, construction methods, experimental
+    evidence, and current adoption were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-final5
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: execution-and-feedback code demonstrations
+  selection_priority_score: 12
+  selection_score_breakdown:
+    institution: 3
+    venue: 2
+    impact: 5
+    artifact: 2
+  selection_evidence:
+    institution: The official ACL paper lists Multimodal Art Projection Research Community, University of Waterloo, Allen
+      Institute for Artificial Intelligence, HKUST, and IN.AI Research.
+    venue: The ACL Anthology confirms a regular Findings of ACL 2024 paper on pages 12834-12859; no main-conference, oral,
+      award, or outstanding-paper distinction is claimed.
+    impact: The official repository had 1,732 stars and 215 forks, Code-Feedback had 4,423 downloads and 240 likes, and the
+      filtered instruction release had 16,002 downloads and 205 likes on 2026-07-14.
+    artifact: The Apache-2.0 repository publishes training, evaluation, and inference code, while the open dataset provides
+      a 413,476,947-byte JSONL corpus with directly inspected id/messages records.
+  selection_eligible: true
+  year_impact_threshold: 3

@@ -1,0 +1,1 @@
+ARES 可作为“可审计 evaluator 构造”配方：先定义组件准则，保存 query-context-answer 三元组，为每个准则训练或选择 judge，保留标注验证集，报告置信区间而不是只有点估计。复用 schema 应保存 corpus 版本、检索 passage ID、生成 answer、准则、judge prediction、验证标签来源、未标注样本量、PPI 配置和排序日期。它特别适合 atlas 中区分 evaluation-only feedback 与 reward-model training data 的条目。它也提供 RAG benchmark 污染检查清单：公开三元组、prompt 和验证标签都必须版本化。

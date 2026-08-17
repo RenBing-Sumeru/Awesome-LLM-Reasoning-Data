@@ -1,0 +1,6 @@
+- Read §3.2-3.3, §4, Appendix A, Appendix C-D, and Appendix G first to reconstruct task composition, screenshot/XML observations, normalized actions, XPath rules, termination labels, reset classes, and evaluation budget.
+- Keep the count boundary explicit: 1,080 evaluation cases = 770 distinct task specifications plus 310 Noise-Robust cases derived from Base tasks; it is not 1,080 independent prompts.
+- Interpret feedback as `environmental`, `full_episode`, and `scalar_reward`: full success requires all rule conditions and Complete, while Sub-SR is partial predicate coverage rather than step-level supervision.
+- Read Tables 12-13 before trusting automation: Auto-Eval has 5 false positives and 22 false negatives, and inverse resets exceed 90% human success but do not perfectly restore state.
+- Separate executable release from trajectory/environment release: task CSVs, evaluator code, and local trajectory writing are public; the paper's complete trajectories, APK bundle, device/account/server snapshot, and rejected attempts are not verified.
+- Before comparison or reuse, pin app/device versions, task/rule hashes, retry budget, noise events, model/API snapshot, reset outcome, parser behavior for the malformed Long-Tail CSV, and contamination status.

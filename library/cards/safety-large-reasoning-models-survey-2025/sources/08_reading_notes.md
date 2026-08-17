@@ -1,0 +1,3 @@
+Start with the taxonomy, then select one risk–attack–defense chain relevant to your use case. For each cited study, note the model, task, attack condition, defense, and measurement. This prevents broad safety labels from hiding the exact situation in which a result holds.
+
+Also record the assumed attacker capabilities and whether the study evaluates a defense against the same condition that defines the risk. These details are needed to compare results responsibly. Read the final discussion after building this record, using it to identify unanswered questions rather than to infer that every listed mitigation has been broadly validated.

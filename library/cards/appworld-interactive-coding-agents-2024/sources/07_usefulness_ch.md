@@ -1,0 +1,1 @@
+AppWorld 可作为状态化 tool/API-agent 评测的数据 schema 参考。复用时保留 task ID、app 集合、API 文档、初始数据库状态、隐藏用户上下文、agent 代码/动作、观察、最终数据库状态、直接成功测试、副作用测试和预算。它适合需要可执行反馈但又不想受 live service 漂移影响的 recipe。对 atlas 来说，它是把环境状态和 verifier 契约随 trajectory 一起保存的强例子。

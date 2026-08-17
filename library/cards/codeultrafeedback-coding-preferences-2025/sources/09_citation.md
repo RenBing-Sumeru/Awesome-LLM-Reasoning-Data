@@ -1,0 +1,1 @@
+Martin Weyssow, Aton Kamanda, Xin Zhou, and Houari Sahraoui. 2025. “CodeUltraFeedback: An LLM-as-a-Judge Dataset for Aligning Large Language Models to Coding Preferences.” ACM Transactions on Software Engineering and Methodology. Paper: https://arxiv.org/abs/2403.09032 . Dataset: https://huggingface.co/datasets/coseal/CodeUltraFeedback .

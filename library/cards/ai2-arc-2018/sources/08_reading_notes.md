@@ -1,0 +1,1 @@
+Keep ARC-Easy and ARC-Challenge separate. A score on the full ARC mix is not the same claim as a score on Challenge, and Challenge means "missed by specified shallow baselines" rather than universally hard. Treat answer accuracy as benchmark feedback, not row-level proof of reasoning.

@@ -1,0 +1,1 @@
+论文提出两个互补 benchmark：TaskAnything 从成熟数据集中整理 1,500 个查询，覆盖 15 类 any-to-any 模态组合，用于测模型本身的多模态理解与生成能力；JudgeAnything 则加入候选回答、人类偏好和详细 rubric，从成对比较与绝对打分两种协议评测 5 个先进 MLLM 的裁判能力。作者还发布 OmniArena，用统一接口持续评测 omni-model 与多模态 reward model。

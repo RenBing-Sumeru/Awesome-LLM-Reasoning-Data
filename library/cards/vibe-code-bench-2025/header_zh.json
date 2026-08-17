@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Vibe Code Bench 评测模型在完整开发环境中生成可用网页应用的能力，核心反馈来自交互式功能测试和工程审核准则。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "关注端到端代码生成、网页应用实现、功能测试和工程交付质量的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Vals AI",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:24:14Z"
+}

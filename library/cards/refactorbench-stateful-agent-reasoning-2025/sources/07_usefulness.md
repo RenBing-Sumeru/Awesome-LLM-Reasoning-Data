@@ -1,0 +1,3 @@
+1. **Coding-agent evaluation:** Run agents on pinned repository snapshots and report completion separately for lazy, base, descriptive, and composed tasks.  
+2. **Trajectory diagnosis:** Use AST tests and action logs to distinguish failure to locate files, overwriting previous edits, repeated operations, and omitted subtasks.  
+3. **State-mechanism validation:** Add task lists, file state, or structural summaries to an existing agent and compare with the baseline under the same model and step budget. For single-file function generation, RefactorBench’s repository and state overhead is unnecessary and it should not serve as a general code-correctness benchmark.

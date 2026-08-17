@@ -1,0 +1,1 @@
+一手来源是 arXiv:2604.10182，2026-04-11 提交，arXiv comment 标注 ICLR 2026 接收；官方配套仓库是 USACOArena。论文要问的是 autonomous coding agent 在每个生成 token、local test 和耗时秒数都消耗固定 credit budget 时如何评测。评测面是 ICPC/USACO 风格竞赛 episode，包含题面、提交、本地测试、judge 结果、时间、token/成本记账和最终报告。它应作为 cost-aware executable coding benchmark 收录，不是静态 accuracy-only 代码数据集。证据边界在 Hydro judging、发布 artifacts、公开 configs 和题目内容许可。

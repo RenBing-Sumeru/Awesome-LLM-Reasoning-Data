@@ -1,0 +1,3 @@
+This is a literature synthesis, not a training pipeline. It gathers newly emerged safety research on large reasoning models and organizes the material around risks, attacks, and defenses. The official abstract reports no shared dataset, verifier, reward model, code release, or evaluation budget, so those details remain properties of the cited primary work.
+
+For every cited system, record the model, task, threat condition, attack procedure, defense, and measurement. This produces a compact comparison record that follows the survey's taxonomy. It also separates the survey's organization from implementation details that differ between studies, including prompts, data, access assumptions, and the exact definition of a successful attack or mitigation.

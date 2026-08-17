@@ -1,0 +1,3 @@
+Fine-tuned LLM judges are promoted as open, reproducible substitutes for API evaluators, but their strong scores usually come from the same evaluation format and distribution used in fine-tuning. This can hide failures when a judge moves from pairwise choice to scoring, from preference to factuality or safety, or to superficially attractive wrong answers.
+
+The paper performs an empirical audit, not another judge proposal. It cross-evaluates four released judges across schemes and benchmarks, probes bias and aspect adaptation, and compares prompting and prediction heads. Its conditional conclusion is that native agreement does not establish general evaluation capability: the judge must be tested in its target setting.

@@ -1,0 +1,3 @@
+Correctness is bounded by each task's verifier and environment. A file-based scorer can miss alternative valid solutions or semantic quality outside the checked artifact, while a live-web or installed-software task can drift as services, packages, or command-line tools change.
+
+Scores depend on terminal scaffold, model version, reasoning effort, timeout, retry policy, setup determinism, and local software availability. Expert scientific tasks may require licensed or heavyweight tools whose redistribution terms need review. Public tasks can contaminate later training data, so benchmark use as a reward source requires separate license, split, and leakage controls.

@@ -1,0 +1,3 @@
+现有视觉RM多针对单一理解或生成任务，无法在图像、视频、pairwise和pointwise评价间共享知识。论文研究统一训练是否产生跨任务协同。
+
+UnifiedReward基于大规模人工偏好数据统一评价图像与视频理解/生成，同时支持pairwiseranking和pointwisescoring；再自动筛选模型输出构造DPO对。

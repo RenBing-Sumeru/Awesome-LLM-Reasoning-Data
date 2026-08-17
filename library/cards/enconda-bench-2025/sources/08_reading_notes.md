@@ -1,0 +1,5 @@
+- Start with the release boundary: 4,201 task rows and 9,471 error labels are public, but complete commands, observations, patches, logs, tests, and successful/failed terminal records are not.
+- Keep the dates separate: the ID/year is 2025 from arXiv v1; the verified formal venue is ICLR 2026 Poster; repository commit `86ab7858613b85f4a8316f3cda3c83086b8cf7c2` predates the final venue revision.
+- Read Sections 3.1-3.4 and Appendices A, C, and D for task construction, process and terminal feedback, the proposed trajectory-generation use, and the output prompt; use Table 3, Sections 4.2-4.5, and Figure 7 for results and failure patterns.
+- Do not collapse repository statistics: the paper says 323, while the release yields 320 JSONL names, 321 directories, and 329 revision rows; likewise, released level0 is not explained by the paper's levels 1-10.
+- Before replay, resolve the execution gitlink, reconcile GPT-4.1-mini versus `gpt-4o-mini`, lock image/packages/network/cache/reset state, retain failures, and audit split, overlap, licenses, and root/network execution security.

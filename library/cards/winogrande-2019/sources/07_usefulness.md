@@ -1,0 +1,5 @@
+WinoGrande is useful as a benchmark schema for commonsense pronoun resolution, as a training/evaluation resource for binary-choice reasoning models, and as a checklist for adversarially filtering human-authored data. It is especially useful when the analysis needs both row-level multiple-choice labels and a documented attempt to suppress shallow dataset artifacts.
+
+Reusable fields include `qID`, sentence text with blank, option strings, gold label where available, split name, release version, source URL, prediction column for train subset, scorer version, and whether the score is dev accuracy, hidden-test leaderboard accuracy, or learning-curve AUC. For transfer experiments, keep the target benchmark, sequential fine-tuning order, and whether the result is zero-shot or target-finetuned.
+
+As a construction recipe, the main reusable ideas are constrained crowd creativity, independent validation, local-context artifact checks, and embedding-based filtering before final split creation. As an evaluation surface, the main caution is that public examples can enter model pretraining corpora; modern claims need contamination checks or fresh held-out evaluation.

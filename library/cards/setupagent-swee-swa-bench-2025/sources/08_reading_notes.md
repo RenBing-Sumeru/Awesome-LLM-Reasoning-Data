@@ -1,0 +1,6 @@
+- Remember the released object: repository task rows plus setup/test metadata and Docker targets; no agent action/observation trajectory or reasoning trace is released.
+- Read §3.3 and Figures 1–4 for SetUpAgent's extraction, iterative repair, and validation phases; Appendix B contains the prompt templates.
+- Keep the two thresholds distinct: at least 95% parsed tests for accepting a setup, then all F2P and P2P tests for a model patch to be resolved.
+- Do not merge versions: arXiv v1 reports up to 40% lower success, while the ICML/PMLR final paper reports up to 60% after adding 100-instance rows.
+- Audit release drift before scoring: the paper reports SWA 535/44 and SWEE 885/366, whereas current Hub revisions expose 450 and 798 rows.
+- The public fork supports evaluation on non-default branches; SetUpAgent generation code, dataset licenses, immutable image manifests, and rejected setup records remain unavailable or unknown.

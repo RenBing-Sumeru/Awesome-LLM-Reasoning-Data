@@ -1,0 +1,3 @@
+Different studies may reward coverage, factual correctness, safety, or user preference differently, so abstention scores require their metric definitions. The survey does not establish one universally correct refusal threshold.
+
+The survey also cannot turn a value-sensitive choice into a context-free number. A refusal policy may be appropriate only for a particular user group, task, or consequence model. It summarizes a literature whose methods and benchmarks vary, rather than validating every policy in a common environment. Readers should therefore avoid transferring a threshold without checking the task, intended audience, and response options.

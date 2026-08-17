@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-18T11:25:22Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "端测",
+    "updated_at": "2026-07-18T11:25:22Z"
+  }
+}

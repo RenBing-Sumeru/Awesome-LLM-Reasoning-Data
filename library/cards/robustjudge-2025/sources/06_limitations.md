@@ -1,0 +1,3 @@
+Coverage is limited to the selected attacks, defenses, models, templates, and one deployment, so untested attacks or platforms can fail differently. Before adoption, add target-specific red teaming instead of treating the benchmark score as a universal security claim.
+
+The audit also depends on provider API behavior and versioned judge prompts. A reproduced result may change after an API or template update; pin versions, retain prompts, and rerun clean and attacked controls before interpreting a change as a defense effect. This is especially important when results inform a reward or safety gate.

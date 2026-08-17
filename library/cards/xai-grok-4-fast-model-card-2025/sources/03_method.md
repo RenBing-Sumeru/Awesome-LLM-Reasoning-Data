@@ -1,0 +1,7 @@
+The disclosed method has four bounded layers.
+
+1. **Data and filtering.** The model card lists four broad pretraining-source categories and says xAI applies de-duplication and classification for quality and safety. It does not give proportions, source manifests, prompt provenance, classifier definitions, thresholds, yields, rejected-item policy, or benchmark-overlap checks.
+2. **Post-training.** The card names supervised fine-tuning, human feedback, verifiable rewards, and model grading. The launch announcement says xAI used large-scale RL to increase intelligence density and trained the model end-to-end with tool-use RL. Objectives, reward definitions, graders, rollout policy, sampling, schedules, and data counts are undisclosed.
+3. **Safety measures and evaluation.** The card says an injected safety-policy system-level instruction and model-based input filters are deployed. It reports refusal, AgentHarm, AgentDojo, MASK, answer-sycophancy, internal soft-bias, WMDP, VCT, BioLP-Bench, CyBench, and MakeMeSay evaluations. The soft-bias evaluation uses an LLM judge; CyBench uses an agent harness with code execution and the Inspect evaluation framework.
+4. **Product/inference surface.** The announcement says reasoning and non-reasoning behavior use the same weights and are steered with system-level instructions. It names 2M-token context windows and configurable test-time compute for API users, not a reproducible training or evaluation sampling budget.
+

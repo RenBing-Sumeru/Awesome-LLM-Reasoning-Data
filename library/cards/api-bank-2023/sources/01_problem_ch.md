@@ -1,0 +1,1 @@
+API-Bank 是 EMNLP 2023 的 tool-augmented LLM benchmark 和数据集。它回答三个具体问题：LLM 是否会规划、检索并调用 API；能否用监督 tool-use 数据提升；失败主要发生在哪些环节。这里收录它，是因为它提供了可运行 API 系统和类轨迹数据，而不是只给静态问答。一个样本包含用户对话、可用 API schema、模型/API-call 决策、API 返回结果、assistant response，以及绑定到 API-Bank 系统的标签或执行检查。

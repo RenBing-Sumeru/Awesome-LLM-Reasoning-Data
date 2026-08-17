@@ -1,0 +1,5 @@
+- Read Definitions 1 and 4 with Sections II-B–II-F: the object is a thought-action-result episode, while tool observations, terminal success, action categories, and semantic relations are four different kinds of signal.
+- Keep the scale exact: 3 agents × 40 trajectories = 120 episodes and 2,822 iterations; the release lists about 10 resolved and 30 unresolved cases per agent.
+- Keep the taxonomies exact: eight action categories, five adjacent-component relation families, action 4-grams, and 8.3% uncategorized actions excluded from later action analysis.
+- Read the behavioral findings as associations, not causal proof or evidence of training-data quality; agent architectures, models, tasks, terminal predicates, and budgets differ.
+- Before reuse, resolve the RepairAgent manifest mismatch and verify a tagged snapshot, raw-log replay path, annotation agreement, dataset/upstream rights, and decontamination.

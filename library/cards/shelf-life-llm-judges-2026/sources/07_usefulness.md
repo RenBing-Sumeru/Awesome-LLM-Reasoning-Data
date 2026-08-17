@@ -1,0 +1,1 @@
+Before replacing a production judge, construct old/new generator and seen/unseen-question splits, report consistent accuracy and both direction shifts, then refresh only if the target shift improves. A fixed in-distribution score is not evidence of future-proofing.

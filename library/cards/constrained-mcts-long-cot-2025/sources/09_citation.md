@@ -1,0 +1,1 @@
+Qingwen Lin, Boyan Xu, Guimin Hu, Zijian Li, Zhifeng Hao, Keli Zhang, and Ruichu Cai. CMCTS: A Constrained Monte Carlo Tree Search Framework for Mathematical Reasoning in Large Language Model. arXiv preprint arXiv:2502.11169, 2025. https://arxiv.org/abs/2502.11169. Paper-linked repository: https://github.com/pass-lin/CMCTS.

@@ -1,0 +1,5 @@
+Use SciBench as a compact, public benchmark for college-level scientific reasoning with inspectable answer-level scoring. It is most useful for comparing prompt strategies, tool-assisted solving, model families, and numeric/scientific reasoning behavior on the same problem surface.
+
+For a reusable schema, preserve problem id, source/textbook, subject, problem text, reference solution, reference numeric or LaTeX answer, unit, image link when present, prompt setting, tool setting, model output, parsed answer, evaluator result, score tolerance, and error-attribution label if generated. Do not collapse correctness scores and diagnostic error labels into one field.
+
+For evaluation reporting, pair every score with a Git commit or branch, Hugging Face revision, model snapshot date, evaluator script version, prompt template, and tool policy. For training-data work, treat SciBench primarily as a held-out audit set; training on public instances should be disclosed and separated from later evaluation claims.

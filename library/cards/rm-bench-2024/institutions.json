@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "Fudan University",
+    "Tsinghua University",
+    "Hong Kong University of Science and Technology"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2410.16184",
+    "https://arxiv.org/html/2410.16184",
+    "https://github.com/THU-KEG/RM-Bench",
+    "https://huggingface.co/datasets/THU-KEG/RM-Bench",
+    "https://iclr.cc/virtual/2025/poster/29702",
+    "https://openreview.net/forum?id=QEHrmQPBdd"
+  ],
+  "verification_note": "Official arXiv, ICLR, OpenReview, GitHub, and Hugging Face sources verify authors, institutions, ICLR 2025 status, and artifacts."
+}

@@ -1,0 +1,1 @@
+LiveCodeBench 关注的问题是：旧代码 benchmark 已被污染且覆盖面偏窄时，如何评测代码 LLM。主要来源是 2024 年 arXiv 论文、官方项目页、GitHub 仓库和 Hugging Face 数据集。它的边界是代码评测与污染审计，不是编程教学数据，也不是后训练 recipe。一个记录是近期竞赛题或由其派生的场景，包含来源日期/出处、prompt、测试或期望输出、模型代码/答案和程序化分数。对 atlas 的价值在于它把 code generation、self-repair、code execution、test-output prediction 分成不同 evaluation surface，同时保留时间窗口。

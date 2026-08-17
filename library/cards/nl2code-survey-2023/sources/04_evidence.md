@@ -1,0 +1,1 @@
+The paper reports an intuitive comparison of existing models on HumanEval and uses the surveyed literature to discuss models, benchmarks, and metrics. HumanEval is useful because it tests generated programs with executable checks, but a single benchmark cannot cover every programming setting or every aspect of a user's intent.

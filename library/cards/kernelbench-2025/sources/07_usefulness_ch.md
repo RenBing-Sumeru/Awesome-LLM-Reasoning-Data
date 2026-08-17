@@ -1,0 +1,1 @@
+KernelBench 可作为 executable reward surface 的 recipe：成功同时要求语义等价和资源改进。复用时应保留 workload id、level、PyTorch reference code、prompt、生成代码、模型与采样参数、compile log、runtime log、correctness 结果、容差、timing policy、GPU/软件栈和 speedup。它适合评估代码 agent、搜索/scaffold 系统、verifier 设计，以及需要非文本反馈契约的 RL 或 rejection-sampling pipeline。

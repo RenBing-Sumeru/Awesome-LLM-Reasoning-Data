@@ -1,0 +1,128 @@
+id: datascience-instruct-2025
+title: 'DeepAnalyze: Agentic Large Language Models for Autonomous Data Science'
+year: 2025
+venue: arXiv preprint
+authors:
+- Shaolei Zhang
+- Ju Fan
+- Meihao Fan
+- Guoliang Li
+- Xiaoyong Du
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- end-to-end-data-science-agent-demonstrations
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2510.16872
+  arxiv: https://arxiv.org/abs/2510.16872
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/RUC-DataLab/DataScience-Instruct-500K
+  project: null
+  huggingface: https://huggingface.co/datasets/RUC-DataLab/DataScience-Instruct-500K
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: diverse tabular files, databases, documents, and analyst-style tasks
+  trace_author: an agentic synthesis pipeline writes plans, code, tool calls, observations, and reports
+  answer_format: record id, multi-turn messages, input/output token counts, and execution evaluation
+  process_fields:
+  - record id
+  - multi-turn messages
+  - input/output token counts
+  - and execution evaluation
+  environment_or_substrate: English data analysis, database work, visualization, and report writing
+  verifier_or_reward: sandbox execution, artifact inspection, and task-level evaluation metadata
+  terminal_predicate: sandbox execution, artifact inspection, and task-level evaluation metadata
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: an agentic synthesis pipeline writes plans, code, tool calls, observations, and reports
+  generator: DeepAnalyze synthesizes complete multi-turn analyst trajectories and packages 500K instruction records that interleave
+    planning, code execution, observations, and final reporting.
+  filtering_rule: sandbox execution, artifact inspection, and task-level evaluation metadata
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: agentic SFT for autonomous data analysis
+audit:
+  source_mixture: diverse tabular files, databases, documents, and analyst-style tasks
+  split: Official release at https://huggingface.co/datasets/RUC-DataLab/DataScience-Instruct-500K; exact configs are described
+    by the dataset card.
+  decontamination: sandbox execution, artifact inspection, and task-level evaluation metadata
+  license: MIT
+  lineage: diverse tabular files, databases, documents, and analyst-style tasks -> an agentic synthesis pipeline writes plans,
+    code, tool calls, observations, and reports -> sandbox execution, artifact inspection, and task-level evaluation metadata
+    -> DataScience-Instruct-500K -> agentic SFT for autonomous data analysis
+  known_failure_modes:
+  - successful code execution does not guarantee a correct analytical conclusion
+  - and synthetic files may underrepresent messy organizational data
+  citation_status: verified
+  confidence: high
+  notes: Full 23 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for agentic SFT for autonomous data analysis;
+  records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2510.16872
+- primary-link-checked
+status: verified
+one_line: DeepAnalyze synthesizes complete multi-turn analyst trajectories and packages 500K instruction records that interleave
+  planning, code execution, observations, and final reporting.
+one_line_summary: DeepAnalyze synthesizes complete multi-turn analyst trajectories and packages 500K instruction records that
+  interleave planning, code execution, observations, and final reporting.
+why_it_matters: Most data-science assistants are trained on isolated code snippets or question answering and therefore do
+  not learn the long workflow from raw files to an auditable analyst report.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: agentic SFT for autonomous data analysis
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: end-to-end data-science agent demonstrations
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 2
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 996 downloads and 76 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet conversation records with referenced data files records, field schema,
+      scale, and MIT terms.
+  selection_eligible: true
+  year_impact_threshold: 2

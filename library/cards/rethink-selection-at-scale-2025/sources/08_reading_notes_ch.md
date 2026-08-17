@@ -1,0 +1,5 @@
+- 以 Findings of EMNLP 2025 ACL record 作为 accepted venue，而不是更早的 ICLR submission；连读 Sections 3–5 与 Appendix A。
+- 区分六种 selector：LESS、IFD、SelectIT、cross-entropy 面向 quality；DiverseEvol 与 ZIP 面向 diversity；五个 random subset 是 control。
+- 把 10K 与 50K 视为已测试 selected-subset scale，不要把 title 推广到 external scorer、被省略的昂贵方法或 100K+ selection。
+- 对照 Table 4 的 proportional longest-within-cluster rule 与 `token_length/kmeans_sample.py`：公开脚本截断到 100 个 embedding 并选择 cluster center。
+- 与 `more-data-or-better-data-2025` 对读，并保持 selected IDs、seeds、contamination、code/data licenses、WildChat privacy lineage、checkpoints 与 immutable run manifest 为 unresolved。

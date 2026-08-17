@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "R3V 反复采样按最终答案标注的多模态 CoT，以最新正例、负例条件下的正例模仿和三候选答案选择进行训练，并在测试时复用选择能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态迭代自训练与测试时选择配方",
+  "best_for_ch": "关注多模态 rollout、自训练数据构造、候选选择、结果验证与 rationale 忠实性审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Kanzhi Cheng、Yantao Li、Fangzhi Xu、Jianbing Zhang、Hao Zhou、Yang Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

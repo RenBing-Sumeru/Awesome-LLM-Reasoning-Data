@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ReTraceQA 为 2,421 条常识推理轨迹提供专家首错与错误类别标注，揭示答案正确但过程错误的失真。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要审查小模型常识推理过程而非仅比较最终答案的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Francesco Maria Molfese, Luca Moroni, Ciro Porcaro, Simone Conia, Roberto Navigli",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

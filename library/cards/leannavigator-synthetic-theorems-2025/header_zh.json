@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LeanNavigator 用 LeanDojo 验证 Mathlib4 状态图中的 tactic 转移，并生成数百万条状态—证明监督；但 Zenodo 只发布扁平二元对，未保留图血缘、失败日志、验证记录或与发布绑定的环境快照。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "形式化证明搜索数据构造与开放发布",
+  "best_for_ch": "研究可执行证明搜索、形式推理 SFT 数据构造、图到扁平记录的血缘损失，以及 Lean 环境版本、split、许可和污染审计",
+  "confidence_ch": "中",
+  "authors_ch": "David S. Yin、Jing Gao",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

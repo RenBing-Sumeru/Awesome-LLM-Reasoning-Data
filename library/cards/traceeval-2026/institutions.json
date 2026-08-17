@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "Singapore Management University",
+    "Monash University",
+    "Nanjing University of Science and Technology",
+    "GovTech Singapore"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-17T07:17:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2605.11006",
+    "https://github.com/yikun-li/TraceEva",
+    "https://github.com/yikun-li/TraceEva",
+    "https://github.com/yikun-li/TraceEva"
+  ],
+  "verification_note": "Institution list follows official paper/card-local verified source metadata; long affiliation details should be checked from the PDF for publication-grade citation."
+}

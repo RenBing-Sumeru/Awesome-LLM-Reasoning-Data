@@ -1,0 +1,3 @@
+Start with the three dimensions, then read the discussion of multimodal reasoning pipelines before the five challenges. While reading a primary paper, write down the input modalities, the mathematical task, the benchmark, and the evaluation rule. That compact record makes later comparisons much more reliable.
+
+Also note which pipeline stage a paper claims to improve and whether its evaluation can distinguish that stage from the others. Compare only papers with sufficiently similar inputs and task requirements before ranking their results. This habit turns the survey's overview into a practical reading workflow and prevents a visually rich task from being treated as an ordinary text-only mathematics benchmark.

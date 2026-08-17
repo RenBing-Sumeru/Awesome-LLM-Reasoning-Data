@@ -1,0 +1,3 @@
+Across four source datasets and two downstream tasks, the paper reports that the 10 percent selected subsets outperform the five compared selection baselines using the same data budget. It further states that selected training exceeds full-data training in more than 67.5 percent of reported comparisons.
+
+On RewardBench, the method improves several difficult chat and safety splits, although it is not the best value in every dataset-split cell. The analyses report that selection remains effective across difficulty-calculation models, that 10 to 15 percent is usually strongest, and that length normalization is not essential to the trend.

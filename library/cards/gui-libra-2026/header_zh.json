@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GUI-Libra 将公开 GUI 轨迹整理为 81K 条动作对齐推理记录，并用 action-aware SFT 与保守 RL 处理逐步奖励存在歧义的问题。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "GUI 推理数据集与后训练配方",
+  "best_for_ch": "适合构造原生 GUI agent 推理与动作监督数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Rui Yang, Qianhui Wu, Zhaoyang Wang, Hanyang Chen, Ke Yang, Hao Cheng, Huaxiu Yao, Baolin Peng, Huan Zhang, Jianfeng Gao, Tong Zhang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

@@ -1,0 +1,5 @@
+- Positioning: LiteCoder scales terminal environments and collects 11,255 verified conversations that preserve the entire instruction-reasoning-command-observation sequence.
+- Data object: trajectory id and ordered human/assistant/tool conversation turns.
+- Author and selector: strong agents execute tasks and serialize reasoning, commands, and tool observations; selection uses environment success, replay validation, difficulty filtering, and trajectory quality checks.
+- Evidence anchor: The 32B variant reports 29.06%, 18.54%, and 34.00% pass@1 on three terminal benchmark settings; the paper also studies 4B-to-32B scaling.
+- Reuse decision: suitable for terminal-agent SFT from 4B to 32B; first audit successful trajectories omit many recovery failures, and benchmark environments simplify permissions, networking, and persistent state.

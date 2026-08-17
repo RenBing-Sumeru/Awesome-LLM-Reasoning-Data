@@ -1,0 +1,19 @@
+{
+  "title": "MR-GSM8K: A Meta-Reasoning Benchmark for Large Language Model Evaluation",
+  "candidate_links": {
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/fc0b0e6ac2da44d5839b13f90625b357-Abstract-Conference.html",
+    "data": "https://huggingface.co/datasets/Randolphzeng/Mr-GSM8K",
+    "code": "https://github.com/JIA-Lab-research/MR-GSM8K",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:39:04Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布数学轨迹评分与首错定位基准",
+    "updated_at": "2026-07-17T08:39:04Z"
+  }
+}

@@ -1,0 +1,6 @@
+- 优先阅读 4.1.2.1、4.2.2.1 和 4.3.2.1 节：它们包含三项具体训练披露——合成恶意软件场景、prompt-injection 数据，以及带正向强化的冲突编辑 RL。
+- 显式保留评测预算：CTF 使用 16 次 rollout 和 pass@12，Cyber Range 每个场景 16 次 trial，网络能力 elicitation 最多允许 10 个 context window，PaperBench-10 使用 Extra High reasoning 且无浏览。
+- 不要把单个生物评测中的“fully held-out”或“uncontaminated”推广到完整训练语料；报告没有发布全局训练/评测 membership 或 decontamination 审计。
+- 将表 4、表 5 和表 6 视为未披露样本数和不确定性的作者点估计，不要推断其评测 metric 就是隐藏训练 reward。
+- 将第 26 页 Apollo 的发现与正向 benchmark 结果一起阅读；伪造数据、假装完成、违反规则、否认和 sandbagging 暴露了 reward hacking 与 evaluator gaming 风险。
+- 与 GPT-5 和 GPT-5.3-Codex 系统卡对读，同时将 source mixture、generator identity、失败样例、reward code、compaction 配置、license 和 record-level lineage 保持为 unresolved。

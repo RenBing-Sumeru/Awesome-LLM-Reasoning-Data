@@ -1,0 +1,243 @@
+id: toucan-2025
+title: 'TOUCAN: Synthesizing 1.5M Tool-Agentic Data from Real-World MCP Environments'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zhangchen Xu
+- Adriana Meza Soria
+- Shawn Tan
+- Anurag Roy
+- Ashish Sunil Agrawal
+- Radha Poovendran
+- Rameswar Panda
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- model_context_protocol
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.01179
+  paper_pdf: https://arxiv.org/pdf/2510.01179v1
+  arxiv: https://arxiv.org/abs/2510.01179
+  code: https://github.com/TheAgentArk/Toucan
+  data: https://huggingface.co/datasets/Agent-Ark/Toucan-1.5M
+  project: null
+  huggingface: https://huggingface.co/datasets/Agent-Ark/Toucan-1.5M
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Synthetic user tasks are generated from structured MCP server and tool specifications crawled from GitHub
+    and Smithery. The paper filters an initial approximately 2,800 servers to 871 credential-free streamable-HTTP servers
+    and then to 495 servers whose sampled tools function, and samples single-server, multi-server, and 25 featured-server
+    task contexts with at most three target tools in the reported experiments.
+  trace_author: GPT-OSS-120B, Kimi-K2, and Qwen3-32B produce trajectories through Qwen-Agent and OpenAI Agents against remote
+    MCP services. The exact generator/framework assignment, decoding configuration, and retry lineage are not exposed per
+    row.
+  answer_format: 'A full-release row contains uuid, subset_name, serialized messages, question, serialized available_tools,
+    target_tools, serialized question and response quality assessments, and serialized MCP/annotation metadata. Messages preserve
+    the generator-native system/tool declarations, user turns, assistant tool calls, tool/function responses, and final assistant
+    response. The SFT configuration is a reduced six-column view: uuid, subset_name, question, target_tools, tools, and messages.'
+  process_fields:
+  - uuid
+  - subset_name
+  - question
+  - available_tools
+  - target_tools
+  - message_role
+  - message_content
+  - assistant_tool_call
+  - tool_arguments
+  - tool_or_function_response
+  - final_assistant_response
+  - question_quality_assessment
+  - response_quality_assessment
+  - mcp_server_metadata
+  observation: Historical tool/function responses returned by live remote MCP servers during collection. The release does
+    not provide a normalized environment-state field, state delta, or immutable server snapshot.
+  action_space: Tool calls declared in the row's system-level instruction/available_tools payload. Tasks may target one to
+    three tools from one or multiple MCP servers, while the context can contain distractor tools or, for irrelevance examples,
+    no suitable tool.
+  environment_or_substrate: 495 remote credential-free MCP servers exposing more than 2,000 tools over streamable HTTP. Public
+    reproduction requires Smithery configuration/API keys and current service availability; historical endpoints, server state,
+    and world state are not frozen for replay.
+  verifier_or_reward: Kimi-K2 assigns six 1-5 task ratings; public rules require a started agent, tool calls, at least one
+    meaningful tool response, no assistant error marker, a non-empty final answer, and no exclamation marks; target-tool coverage
+    and order are computed from tool names; GPT-OSS-120B rates response completeness and conciseness. These checks do not
+    constitute a universal correctness verifier for the user's end goal.
+  verifier_output: Question-level reasoned 1-5 scores for tool-selection difficulty, uniqueness, question quality, scenario
+    realism, verifiability, and stability; response-level reasoned 1-5 completeness and conciseness scores; desired-target-tool
+    coverage in [0,1]; and Boolean order correctness. The SFT configuration omits these assessment columns after selection.
+  reward: No single scalar environment reward or step reward is released. Multi-dimensional judge scores and rule/tool-coverage
+    checks are annotations and selection signals.
+  terminal_predicate: No task-general terminal-success predicate is disclosed. A retained ordinary trajectory must satisfy
+    the public rule filter and receive full-episode judge annotations; irrelevance examples are instead selected to make zero
+    tool calls.
+  provenance: GitHub/Smithery MCP specification -> accessibility and tool-function screening -> LLM task generation -> embedding
+    deduplication and Kimi-K2 task annotation -> live MCP rollout by one of three teacher models through one of two frameworks
+    -> rule filtering, target-tool checks, and GPT-OSS-120B response annotation -> generator-specific full configuration ->
+    thresholded and category-rebalanced 119,287-row SFT configuration. Record-level production parameters and rejection lineage
+    remain incomplete.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct, Qwen2.5-14B-Instruct, and Qwen2.5-32B-Instruct are the experimental SFT base models.
+  teacher: GPT-OSS-120B, Kimi-K2, and Qwen3-32B generate agent trajectories. Kimi-K2 is also the task-quality annotator and
+    GPT-OSS-120B is the response-quality judge.
+  generator: Task generators are Mistral-Small, DevStral-Small, GPT-OSS, Kimi-K2, and Qwen3-32B; trajectory generators are
+    GPT-OSS-120B, Kimi-K2, and Qwen3-32B using Qwen-Agent or OpenAI Agents.
+  prompt_task_source: MCP server metadata and machine-readable tool specifications crawled from GitHub and Smithery, sampled
+    under single-server, multi-server, and featured-server strategies. Per-task source URL and specification commit are not
+    normalized in the hosted top-level schema.
+  sampling_protocol: Core tasks are generated with one to three target tools; multi-server sampling can draw same-category,
+    different-category, random, or featured combinations. Three post-core extensions create irrelevant, persona/constraint-diversified,
+    and multi-turn tasks. The current public question generator supports random, uniform, power-law, and featured sampling,
+    but exact historical mixture weights, seeds, and commands are unknown.
+  rollout_count: 1,527,259 full trajectories across Kimi-K2 (518,516), OSS (457,130), and Qwen3 (551,613) hosted configurations.
+    A separate 119,287-row SFT configuration is a selected subset and must not be added as new unique trajectories.
+  temperature: Public generation scripts default to temperature 1.0 and top-p 1.0, but the paper does not confirm the production
+    overrides or per-model decoding settings.
+  inference_budget: Public runners default to 32,768 maximum tokens and a 90-second per-item timeout; the OpenAI-agent runner
+    defaults to ten turns. Exact production wall-clock, token, retry, and framework-specific budgets are unknown.
+  search_or_scaffold: Qwen-Agent and OpenAI Agents connect to remote MCP servers. The multi-turn extension either splits a
+    complex task into sequential subquestions or generates contextual follow-up queries and reruns the core generation/filtering
+    pipeline.
+  filtering_rule: Task rows receive Kimi-K2 ratings after formatting cleanup and embedding-based deduplication. Trajectories
+    must satisfy rule checks for agent start, tool use, at least one meaningful tool response, assistant/error/final-message
+    formatting, and then receive target-tool coverage/order plus GPT-OSS-120B completeness and conciseness annotations. Partial
+    tool failures may remain when another tool call succeeds.
+  selection_threshold: SFT rows require question quality=5, scenario realism=5, completeness>=4, conciseness>=4, and desired-target-tool
+    coverage=1.0, followed by category rebalancing. Rebalancing weights and an accepted/rejected row manifest are unknown.
+  optimizer_or_scaffold: Hermes tool-call template; learning rate 2e-5; two epochs; 8 or 64 H100 GPUs; per-device batch size
+    1; effective batch size 64; AdamW with beta=(0.9,0.999) and epsilon=1e-8; DeepSpeed ZeRO-3; maximum sequence length 32,768.
+audit:
+  source_mixture: Synthetic tasks and trajectories across 495 community MCP servers and more than 2,000 tools. Full hosted
+    partitions contain 518,516 Kimi-K2, 457,130 GPT-OSS, and 551,613 Qwen3 trajectories; the SFT subset contains about 28.3K
+    core, 40K irrelevance, 15.8K diversified, and 35.2K multi-turn examples.
+  split: All four hosted configurations expose only a train split. No public dev/test, hidden evaluation, or immutable rejected-sample
+    partition is disclosed.
+  decontamination: unknown
+  benchmark_overlap: The paper evaluates on BFCL V3, tau-bench, tau2-bench, and MCP-Universe but does not report task/text/tool
+    overlap or model-exposure checks against those benchmarks, prior tool-use corpora, or pretraining data.
+  license: The HF dataset declares Apache-2.0 and the code repository declares MIT. No per-server license/attribution manifest
+    or rights analysis was verified for community MCP specifications, live tool outputs, third-party content, or generated
+    trajectories, so the top-level declaration does not settle every upstream right.
+  lineage: The stage-level pipeline is documented and code is public, but the hosted rows do not provide a complete immutable
+    mapping to task-generator version, agent framework, model endpoint, seed, decoding parameters, retries, MCP server/source
+    commit, endpoint state, collection timestamp, filters passed, or rejected siblings.
+  release_version: 'Paper: arXiv v1 (2025-10-01). Dataset: HF revision 0df3cf37f2abefb380370cfb02eabea2a35ae782 (2025-10-04),
+    1,646,546 stored rows across four configs, where 119,287 SFT rows are a subset of the 1,527,259 full trajectories. Code:
+    GitHub main commit a1976dea7688c0f36533aa6e3a3fa4c27e017b4b (2025-12-16), with no tag or release. No official manifest
+    binds these revisions.'
+  successful_and_failed_sample_retention: The release intentionally preserves partial-failure/error-handling episodes when
+    at least one tool call yields a meaningful response; ordinary no-tool episodes, all-tool-failure episodes, assistant error-marker
+    episodes, empty-final episodes, and other rule failures are filtered. Irrelevance examples deliberately retain zero-tool
+    behavior under a special rule. Counts and records for rejected episodes are not released.
+  privacy_or_consent: The HF card reports a best-effort PII scan using rule-based string replacements. Scanner rules, recall/precision,
+    redaction manifests, consent, and residual third-party/sensitive-content audits are unknown.
+  known_failure_modes:
+  - 'Real tool execution is not equivalent to goal verification: the filters and judges can retain a plausible, complete-looking
+    response whose tool outputs or final synthesis are factually wrong.'
+  - Kimi-K2 and GPT-OSS-120B judge labels can encode model bias; the task-judge comparison uses only 50 human-annotated examples
+    and reports limited correlation.
+  - Target-tool coverage and order use substring name matching in public code, which can collide across similar tool names
+    and rewards compliance with seeded tools rather than discovery of an alternative valid workflow.
+  - Partial tool failures are retained, while all-failure trajectories are removed; this supports some error-handling data
+    but truncates the failure distribution and has no released rejection ledger.
+  - Live community MCP endpoints, external information, and connection quality drift; historical messages are inspectable
+    but exact environment replay is not.
+  - The paper says collection occurred in June 2025, whereas the HF card says June through September 2025; per-row timestamps
+    and the boundary between revisions are unavailable.
+  - The current total of 1,646,546 hosted rows double-counts the 119,287-row SFT subset if interpreted as unique trajectories;
+    the full generator partitions alone total the paper's 1,527,259.
+  - All configurations are train-only and no decontamination or benchmark-overlap audit is disclosed, creating leakage and
+    memorization risk for evaluation claims.
+  - Apache-2.0 dataset metadata and MIT pipeline code do not by themselves establish reuse rights for every community-server
+    specification and live third-party output.
+  - No tagged end-to-end release pins paper, code, model endpoints, MCP services, dependency/runtime state, and dataset files;
+    production settings may differ from current script defaults.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the full arXiv v1 paper and appendix, official GitHub repository at commit a1976de, and official
+    HF dataset card/API at revision 0df3cf3. Citation, public code, release schema, current counts, and declared licenses
+    are verified; high-assurance training reuse and replay remain partial for the reasons above.
+  remaining_unknowns:
+  - Per-row model/framework/seed/decoding/retry/collection-time lineage
+  - Historical production commands and overrides
+  - Duplicate and near-duplicate accounting across configs and SFT
+  - Rejected-sample manifests and filter-stage counts
+  - Frozen MCP endpoints, server commits, state, reset semantics, and response fixtures
+  - Per-server upstream rights, licenses, and attribution
+  - PII scanner evaluation and redaction manifest
+  - Decontamination and benchmark-overlap analysis
+  - Judge false-positive/false-negative and adversarial robustness
+  - Resolution of the June versus June-September collection-window discrepancy
+inclusion_reason: TOUCAN exposes a large, concrete agent-data contract in which synthetic MCP-grounded tasks produce multi-message
+  state-action-tool-response episodes, mixed rule/judge annotations select a 119K SFT subset, and live-service drift sharply
+  separates downloadable historical traces from replayable online environments.
+related:
+- tau2-bench-2025
+tags:
+- toucan
+- agent-trajectories
+- mcp
+- tool-use
+- synthetic-data
+- real-tool-execution
+- multi-turn
+- llm-as-judge
+- supervised-fine-tuning
+- environment-drift
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- instruction_demonstration_rationale_data
+one_line_summary: TOUCAN releases 1,527,259 synthetic task-tool episodes generated through 495 live MCP servers plus a 119,287-row
+  SFT subset, while mixed heuristic/judge labels and mutable remote environments limit correctness guarantees and replay.
+why_it_matters: It makes large-scale agent SFT data inspectable from task and tool declarations through calls, observations,
+  filtering labels, and final responses, and shows why real execution, task correctness, historical release fidelity, and
+  executable replay are four different audit claims.
+card: null
+needs:
+- 'needs_release_manifest: pin arXiv v1, GitHub commit, dependencies, model endpoints, MCP metadata/services, HF revision,
+  and checkpoint revisions'
+- 'needs_record_lineage: expose per-row generator, framework, decoding, seed, retries, collection time, server/source revision,
+  and filter history'
+- 'needs_replay: publish frozen server fixtures or images, world state, reset semantics, endpoint versions, and response snapshots'
+- 'needs_rejection_ledger: publish counts and records removed at server, task, trajectory, judge-parse, and SFT-selection
+  stages'
+- 'needs_license_audit: reconcile Apache-2.0 with per-server specifications, tool outputs, third-party content, and attribution'
+- 'needs_privacy_audit: publish PII rules, measured recall/precision, redaction manifest, and residual-content review'
+- 'needs_decontamination: audit overlap with BFCL, tau-bench, tau2-bench, MCP-Universe, prior corpora, and model training
+  data'
+- 'needs_judge_audit: expand human calibration and report per-dimension agreement plus false-positive/false-negative robustness'
+- 'needs_version_clarity: reconcile paper June 2025 collection with HF June-September 2025 statement and distinguish unique
+  rows from SFT duplicates'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified title/authors/arXiv v1, complete paper and appendix, official code commit and pipeline files, absence of
+    GitHub tags/releases, official HF revision/card, four release schemas/counts, declared code/data licenses, and SFT checkpoints
+    as linked by the data card. No immutable end-to-end release or live-environment replay bundle was verified.

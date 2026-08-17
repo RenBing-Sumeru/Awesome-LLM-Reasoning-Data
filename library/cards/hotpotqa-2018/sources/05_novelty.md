@@ -1,0 +1,3 @@
+The prior baseline was single-passage reading comprehension and multi-hop QA without strong evidence supervision. HotpotQA changes the benchmark object by pairing each answer with supporting-fact labels and by defining both distractor and full-wiki settings.
+
+The direction signal is auditable multi-hop reasoning: a system must retrieve or use the right facts, not only emit a plausible answer. What is not new: exact-match/F1 scoring, Wikipedia as source text, and crowd annotation. Reuse checks should cover dataset license, split, Wikipedia version, public-leakage risk, answer normalization, and whether supporting-fact labels are being used for training, evaluation, or reranking.

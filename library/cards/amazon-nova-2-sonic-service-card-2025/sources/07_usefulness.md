@@ -1,0 +1,3 @@
+Within `frontier_reports_data_disclosure_ledger`, this Card is useful for comparing speech-model disclosure against text-only and agent-system reports. It supplies a concrete checklist: interaction-turn fields, source classes, SFT/RL/RLHF labels, runtime filters, human evaluation, automated benchmarks, red teaming, and the missing record-level evidence behind each layer.
+
+Researchers can use it to frame requests for source manifests, rights, preference schemas, reward contracts, filter evaluation, train/test separation, and versioned evaluation artifacts. It is not sufficient for constructing compatible training data, reproducing alignment, or treating reported benchmark and safety results as proof of data quality.

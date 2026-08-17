@@ -1,0 +1,5 @@
+- Position: post-training can reactivate benchmark leakage that looks dormant after continued pre-training.
+- Mechanism: compare clean and five-copy-injected 25B-token continuations before and after matched SFT or GRPO.
+- Artifact: the paper and supplementary material are public; no separate official downloadable dataset was identified.
+- Evidence anchor: post-training leaked-task gaps exceed 2 points in nearly all reported settings and reach 4 points; Figure 5 separates SFT-local from GRPO-transfer effects.
+- Reuse decision: use it for lifecycle contamination audits; first build a clean counterfactual and a matched non-leaked benchmark.

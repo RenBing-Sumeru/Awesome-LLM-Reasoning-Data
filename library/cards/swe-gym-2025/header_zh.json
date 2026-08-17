@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-Gym 发布 2,438 个带仓库快照、容器环境和单元测试的 Python 工程任务，并把 491 条成功轨迹、5,564 条失败轨迹和 1,318/1,318 平衡 verifier 数据分开封装；但 Lite 数量、镜像 digest、轨迹谱系和各工件许可仍不一致。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程 agent 环境、轨迹数据与 outcome verifier 开放发布",
+  "best_for_ch": "研究 repository-level agent SFT、执行反馈、失败轨迹、outcome reward model、Best@k，以及容器、谱系、许可和版本漂移",
+  "confidence_ch": "高",
+  "authors_ch": "Jiayi Pan、Xingyao Wang、Graham Neubig、Navdeep Jaitly、Heng Ji、Alane Suhr、Yizhe Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

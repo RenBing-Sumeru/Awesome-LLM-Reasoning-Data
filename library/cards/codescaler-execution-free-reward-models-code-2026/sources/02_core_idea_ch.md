@@ -1,0 +1,1 @@
+CodeScaler 用已通过真实测试验证的 on-policy 代码生成构造成对偏好，训练能够直接读题目与代码、无需执行测试即可打分的代码奖励模型，并把它同时用于 RL 训练和推理时选择。官方 CodeScalerPair-51K 含 51,107 个英文代码偏好对，来自 Qwen3-8B-Base 在 DeepCoder 题目上的 GRPO on-policy rollout；通过全部测试的代码为 code_pos，任一测试失败的代码为 code_neg，并保留 question_content。公开集为论文增强前的 raw pair，Parquet 格式、MIT 许可。

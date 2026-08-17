@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TensorBench 在 199 个固定 Scorch 版本的功能新增与重构任务上，用全量 pytest 结果和轨迹审计评估 7 个编码智能体；但新功能测试由被测智能体自行编写，且论文声称发布的运行轨迹当前无法逐文件核验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行仓库级编码智能体基准与轨迹审计",
+  "best_for_ch": "研究 SWE 智能体评测、环境终止谓词、测试验证器可靠性和轨迹审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Bobby Yan，Fredrik Kjolstad",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

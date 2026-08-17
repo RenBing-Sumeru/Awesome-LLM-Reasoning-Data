@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T11:12:54Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "工具调用研究中较常用 ref200",
+    "updated_at": "2026-07-18T11:12:54Z"
+  }
+}

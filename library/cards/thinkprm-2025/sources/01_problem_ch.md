@@ -1,0 +1,7 @@
+本卡以arXiv v5论文、作者官方代码仓库与项目页、公开Hugging Face数据集和模型发布，以及OpenReview官方TMLR submissions列表为主要来源。OpenReview将这篇八位作者的工作列为2026年3月被Transactions on Machine Learning Research接收；arXiv记录其最初发表于2025年。
+
+Process reward model为部分解答评分，使Best-of-N或搜索能够优先保留更有希望的推理路径。传统判别式PRM把前缀直接映射为分数，通常需要数十万条步骤标签。通用LLM-as-a-Judge可以生成解释，但论文发现，未经验证器专门训练的推理模型经常出现无效标签、循环、overthinking和较弱的错误识别。
+
+ThinkPRM研究能否用一个小型、经过过滤的合成数据集，把现有推理模型转化为生成式过程验证器。公开数据对象是六字段训练行：PRM800K/MATH题目、模型生成的解答前缀、QwQ-32B-Preview验证CoT、解析后的前缀步骤、人工ground-truth步骤标签和整体前缀标签。推理时，验证器产生新的验证轨迹和标量正确性分数，用于排序或扩展候选路径。
+
+该工作适合`rollout_search_test_time_trace_data`，因为验证轨迹出现在Best-of-N和beam-search工作流内部，parallel或sequential re-verification会在不改变解答生成器的情况下改变保留的候选。数据仓虽新增MIT声明，但版权方占位符未填写且上游覆盖范围不清；代码许可、去污染、被拒绝生成、精确上游行ID、65K扩展和若干重建设置仍不可用或未核验，因此本卡保留L3/partial。

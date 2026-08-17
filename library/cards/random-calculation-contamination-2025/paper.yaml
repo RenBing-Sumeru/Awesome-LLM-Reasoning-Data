@@ -1,0 +1,145 @@
+id: random-calculation-contamination-2025
+title: Reasoning or Memorization? Unreliable Results of Reinforcement Learning Due to Data Contamination
+year: 2026
+venue: AAAI 2026
+authors:
+- Mingqi Wu
+- Zhihao Zhang
+- Qiaole Dong
+- Zhiheng Xi
+- Jun Zhao
+- Senjie Jin
+- Xiaoran Fan
+- Yuhao Zhou
+- Huijie Lv
+- Ming Zhang
+- Yanwei Fu
+- Qin Liu
+- Songyang Zhang
+- Qi Zhang
+source_role:
+- data_release
+- construction_recipe
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- arithmetic
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/download/40687/44648
+  arxiv: https://arxiv.org/abs/2507.10532
+  code: https://github.com/wumingqi/LLM-Math-Evaluation
+  data: https://github.com/wumingqi/LLM-Math-Evaluation/tree/main/random_calculation/result
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1609/aaai.v40i40.40687
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40687
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Procedurally generated LaTeX arithmetic expressions created after the evaluated model releases
+  trace_author: unknown
+  answer_format: A standardized instruction containing one LaTeX expression and a SymPy-derived numeric final answer; no gold
+    rationale is released
+  process_fields:
+  - id
+  - prompt
+  - answer
+  environment_or_substrate: A recursive Python arithmetic-expression generator using latex2sympy2 and SymPy numerical evaluation
+  verifier_or_reward: SymPy supplies the numeric reference; RLVR uses a continuous reward in [0,1] based on absolute and relative
+    numeric error
+  terminal_predicate: The expression evaluates to a real finite value and serialization to a float changes the computed value
+    by less than 0.001
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B for the primary RLVR experiments; Llama3.1-8B-Instruct for comparison
+  teacher: null
+  generator: A public Python program recursively combines bounded integer, fraction, square, and cube atoms with +, -, *,
+    and /
+  filtering_rule: Retain real finite evaluations that pass the implementation's 0.001 float-conversion check, shuffle, and
+    keep at most 1,000 examples for each operation-count level. The checked-in files contain no duplicate prompts, but the
+    public generator has no explicit deduplication step.
+  sampling_protocol: Generate 20 subsets indexed by 1-20 recursive binary operations, with 1,000 published prompt-answer examples
+    per level; the result directory also includes a 1,000-row 00_op_list.json base-expression file. Only the 5- and 10-operation
+    subsets are used in the reported RLVR study.
+  rollout_count: 16 samples per prompt during reported RLVR training; Avg@16 and Max@16 are also evaluation references
+  temperature: 1.0 for reported RLVR training; 0.7 for Avg@16 evaluation
+  inference_budget: 16 sampled responses for Avg@16 and Max@16 comparisons; the exact token budget is unknown
+  optimizer_or_scaffold: GRPO under the paper's TTRL-style setup, comparing correct continuous rewards with random, inverted,
+    and majority-voted-incorrect controls
+audit:
+  source_mixture: All released RandomCalculation items are procedural arithmetic expressions. MATH-500, AMC, AIME, MinervaMath,
+    and LiveMathBench are comparison evaluations, not ingredients in the released dataset.
+  split: The release contains twenty 1,000-example operation-count subsets plus a 1,000-row 0-operation/base-expression file.
+    For RLVR, the paper reports 700 train and 300 validation items for each of the 5- and 10-operation subsets, but does not
+    identify released split indices or split-generation code.
+  decontamination: Construction after the evaluated model releases reduces exact temporal leakage risk. The paper does not
+    report a corpus-level collision or structural-equivalence scan, so the procedure does not establish that every expression
+    pattern is absent from pretraining.
+  license: unknown
+  lineage: The author repository exposes the generator and generated JSON files. Released records contain id, prompt, and
+    answer, while the random seed, generator commit pin, split membership, and per-record derivation tree are not recorded.
+  known_failure_modes:
+  - No random seed is fixed, so rerunning the generator need not reproduce the checked-in files exactly
+  - The paper describes unique problems and the checked-in files have no duplicate prompts, but the released generator does
+    not explicitly deduplicate candidates
+  - The implementation's 0.001 check converts both the serialized answer and SymPy result to float, so it does not preserve
+    a high-precision reference for comparison
+  - Operation count is a syntax-tree measure and is not calibrated as human or model reasoning difficulty
+  - SymPy numerical evaluation, LaTeX parsing, and float serialization can introduce representation or precision effects
+  - Post-release generation limits verbatim leakage but does not rule out structurally equivalent examples or learned arithmetic
+    algorithms
+  - The paper documents 700/300 RLVR splits, but the public release does not identify their exact membership
+  - Partial-prompt reconstruction, answer recovery, response overlap, and KL divergence are behavioral contamination indicators,
+    not provenance proof
+  - No gold derivation is released, so the numeric verifier checks final answers rather than reasoning validity
+  citation_status: verified
+  confidence: high
+  notes: The official AAAI page lists the paper in AAAI 2026, volume 40 issue 40, pages 33944-33952, with DOI 10.1609/aaai.v40i40.40687.
+    Author repository commit 074a6e7e41bccbc029f7f4a4ae4b458034aa4b5b was inspected; it has no tagged release or declared
+    license.
+inclusion_reason: It provides an open procedural arithmetic release and controlled RLVR study for separating reward-aligned
+  learning on a lower-contamination task from apparent gains on familiar benchmarks.
+related: []
+tags:
+- randomcalculation
+- procedural-data
+- contamination
+- rlvr
+- grpo
+- structural-memorization
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: RandomCalculation releases 20 levels of procedurally generated arithmetic prompt-answer pairs and uses two
+  levels to test whether RLVR gains survive a lower-contamination control.
+why_it_matters: The work joins a reusable construction recipe, a programmatic answer contract, reward-control ablations, and
+  explicit contamination risks, while leaving seeds, exact splits, structural decontamination, and release licensing unresolved.
+card: null
+needs:
+- 'unknown: repository and dataset license'
+- 'unknown: random seed and exact regeneration determinism'
+- 'needs_metadata: released 700/300 split indices for 5-step and 10-step RLVR'
+- 'needs_audit: collision or structural-equivalence testing against accessible pretraining corpora'
+- 'needs_release: tagged immutable code/data version'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against the official AAAI article page and PDF, arXiv, the author repository, its generator, and the checked-in
+    RandomCalculation result directory.

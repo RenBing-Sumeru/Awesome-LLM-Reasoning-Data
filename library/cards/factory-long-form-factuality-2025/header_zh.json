@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FACTORY 将人工修订的困难长文本提示与 claim 级证据标注配对，用于可靠评估模型事实性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "人工核验的长文本事实性提示与证据评测集",
+  "best_for_ch": "需要构建或审计长文本事实性 Judge、证据检索和 claim 级评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mingda Chen, Yang Li, Xilun Chen, Adina Williams, Gargi Ghosh, Scott Yih",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

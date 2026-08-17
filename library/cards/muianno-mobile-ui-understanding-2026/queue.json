@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:09:01Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "数据构建有很多认为固定，不过严谨。 让 UI/UX 专家为1,000张真实 iOS 界面截图逐元素绘制边界框和36类语义标签。",
+    "updated_at": "2026-07-14T10:09:01Z"
+  }
+}

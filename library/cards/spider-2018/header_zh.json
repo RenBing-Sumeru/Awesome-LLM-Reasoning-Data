@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Spider 用 10,181 个问题、200 个数据库和跨 domain split 建立了经典 text-to-SQL 难题。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要 text-to-SQL schema 泛化、SQL scorer 和数据库版本审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tao Yu 等（Yale University, Salesforce Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T11:23:13Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RetrievalPRM 发布检索增强的步骤监督数据，使过程奖励模型能更可靠地判断陌生的数学推理模式。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "检索增强过程奖励建模与数学步骤监督论文",
+  "best_for_ch": "研究过程奖励模型的跨题型泛化与检索辅助步骤判定。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiachen Zhu、Congmin Zheng、Jianghao Lin、Kounianhua Du、Ying Wen 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:26:24Z"
+}

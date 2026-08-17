@@ -1,0 +1,1 @@
+Efficient training is not only about using less data; it changes data value through selection, enhancement, synthesis, distillation, and self-improvement. This survey maps those routes without implying that every route has equally mature data or reproducible resources.

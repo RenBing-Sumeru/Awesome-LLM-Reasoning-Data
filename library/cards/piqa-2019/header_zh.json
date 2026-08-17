@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PIQA 用二选一物理常识题评估模型能否判断日常物体交互中更可行的行动。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "AAAI 2020 / arXiv 的 physical commonsense benchmark / evaluation surface",
+  "best_for_ch": "关注物理常识、多选答案契约、文本 benchmark 饱和和数据污染风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yonatan Bisk 等（Carnegie Mellon University、University of Washington、Allen Institute for AI、Microsoft Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

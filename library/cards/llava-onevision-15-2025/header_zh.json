@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LLaVA-OneVision-1.5 公开 2200 万条多模态指令混合及完整训练框架，并把它与中期训练和强化学习数据分开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "可选强化学习之前的全模型多模态监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "An, Xiang、Xie, Yin、Yang, Kaicheng、Zhang, Wenkang、Zhao, Xiuwei、Cheng, Zheng、Wang, Yirui、Xu, Songcen、Chen, Changrui、Wu, Chunsheng、Huajie Tan、Li, Chunyuan、Jing Yang、Jie Yu、Xiyao Wang、Bin Qin、Yumeng Wang、Zizhen Yan、Ziyong Feng、Ziwei Liu、Bo Li、Jiankang Deng",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

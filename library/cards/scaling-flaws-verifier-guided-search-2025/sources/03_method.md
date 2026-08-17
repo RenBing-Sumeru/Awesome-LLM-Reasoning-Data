@@ -1,0 +1,1 @@
+Data boundary: Math-reasoning evaluation problems; no versioned prompt or rollout release was verified. Method boundary: The audit scales beam-search configurations and diagnoses how verifier errors compound across selection and pruning, separating apparent final-answer gains from search reliability.

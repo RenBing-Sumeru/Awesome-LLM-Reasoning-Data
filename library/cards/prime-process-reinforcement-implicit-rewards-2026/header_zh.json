@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "88,455 指令×8 响应的约 70 万记录，以隐式过程偏好训练 PRM，并用于数学、代码 RL。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "在线过程奖励强化学习与偏好数据发布论文",
+  "best_for_ch": "需要用响应级正确性标签训练隐式过程奖励模型，或复现数学和代码推理在线强化学习的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ganqu Cui, Lifan Yuan, Zefan Wang, Hanbin Wang, Yuchen Zhang, Jiacheng Chen, Wendi Li, Bingxiang He, Yuchen Fan, Tianyu Yu, Qixin Xu, Weize Chen, Jiarui Yuan, Huayu Chen, Kaiyan Zhang, Xingtai Lv, Shuo Wang, Yuan Yao, Xu Han, Hao Peng, Yu Cheng, Zhiyuan Liu, Maosong Sun, Bowen Zhou, Ning Ding",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:26:30Z"
+}

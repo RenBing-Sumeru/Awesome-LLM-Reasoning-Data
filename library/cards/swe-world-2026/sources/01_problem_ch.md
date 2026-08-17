@@ -1,0 +1,5 @@
+官方来源是 2026-02-03 提交的 arXiv v1，并有官方 `RUCAIBox/SWE-World` 仓库与 RUC-AIBOX 模型 collection。SWE-World 处理 repository agent 每次执行和测试交互都依赖 Docker 容器所带来的成本与吞吐瓶颈。它的核心对象是可用于训练的软件工程 agent 环境和反馈接口，而不是一个仅凭分数即可证明数据质量的新 leaderboard。它归入“环境与智能体轨迹数据”，因为 episode state、工具 action、observation 与 terminal predicate 正是被构造和消费的数据对象。
+
+必须区分四种相关对象。task 记为 (I=(R,b,d,U))：repository (R)、base commit (b)、problem statement (d) 和 validation tests (U)；Appendix A 还给出 `instance_id`、hints、F2P/P2P tests、`gold_patch` 与 `test_patch` 等字段。full episode 将该 task 与 thought/action/environment-feedback 三元组序列及最终提交 patch 连接起来。SWT example 更窄：它附着于单次代码执行 action，目标是结构化 `stdout`、`stderr` 与 `exit_code`。SWR example 位于终局：它把 final patch、测试上下文与生成的 test report、二值 reward 组合起来。因此，论文报告的 16,550 个 task、26K SWT / 21K SWR 监督样本和 5.7K policy-SFT trajectories 是不同数据对象上的不同计数，不能互换。（Paper §§3–5；Appendix A–C。）
+
+当前 L4 正文的证据边界并不等同于发布完整。论文、固定的代码快照、trajectory/SFT/RL demo record 和已发布模型权重均已核验，因此可以审查环境接口与构造 recipe；但尚未找到 16,550 个 task、26K/21K world-model corpus 或 5.7K policy trajectory 的完整官方发布。故本 Card 保持 `partial` 与已接受的 `L3_summary_ready` curation level，不把 demo 当成可复用完整语料。

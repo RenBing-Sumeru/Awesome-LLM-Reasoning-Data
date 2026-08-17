@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Seed-OSS 是官方模型发布而非正式论文，开放三组 Apache-2.0 36B 权重、12T-token 粗粒度数据台账与 thinking-budget 接口，但 synthetic teacher、Instruct 数据、reward model/PPO、全局去污染和训练数据权利均未开放。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放权重模型发布与数据披露台账",
+  "best_for_ch": "研究 synthetic instruction 消融、budget-conditioned reasoning、开放权重复现、agent 评测与安全后训练的读者",
+  "confidence_ch": "高",
+  "authors_ch": "ByteDance Seed Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

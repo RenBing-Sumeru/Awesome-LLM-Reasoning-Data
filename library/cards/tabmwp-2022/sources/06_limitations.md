@@ -1,0 +1,5 @@
+TabMWP's verifier is useful but shallow. Numeric normalization to two decimal places and option matching support benchmark scoring, but they can miss equivalent expressions, units, formatting edge cases, or generated answers that contain the right value in a nonstandard form. The paper itself notes answer-extraction failures in some case studies.
+
+The gold solutions are valuable for interpretability, but they should not be treated as step-level process labels without additional validation. They explain multi-step reasoning, yet the scoring contract checks the final answer. Training directly on solutions may teach style or shortcut patterns unless the final answer and table grounding are audited.
+
+The official README contains a licensing ambiguity: the code is presented with an MIT license file, while the README also states that the TabMWP dataset is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. Reuse should distinguish code license from dataset license and preserve the non-commercial/share-alike constraint unless the maintainers clarify otherwise.

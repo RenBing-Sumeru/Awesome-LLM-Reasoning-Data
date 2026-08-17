@@ -1,0 +1,17 @@
+{
+  "title": "1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.19633",
+    "data": "https://huggingface.co/datasets/a-m-team/AM-DeepSeek-R1-Distilled-1.4M"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T12:08:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "蒸馏sft数据",
+    "updated_at": "2026-07-27T12:08:58Z"
+  }
+}

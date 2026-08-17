@@ -1,0 +1,3 @@
+1. **Programmability boundary:** Only format requirements fully expressible as Python functions receive deterministic labels. Politeness, relevance, and semantic structure remain uncovered, so VFF scores cannot represent overall instruction following.  
+2. **Rule gaming:** A model may satisfy literal verifier conditions while producing irrelevant or low-quality content. Reuse should add content-correctness checks and search for verifier loopholes.  
+3. **Compositional distribution:** Training constraints come from a finite template inventory and random combinations, whereas real user formats are more open. Unseen constraint combinations and external tasks should be reserved for testing rather than randomly splitting all instances.

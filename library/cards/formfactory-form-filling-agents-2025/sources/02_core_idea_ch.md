@@ -1,0 +1,1 @@
+核心贡献是一套带受控网页表单和 gold field state 的 form-filling benchmark。项目页报告 20 个 web forms、1,250 个 task instances 和 13,800+ field-value pairs；仓库后续说明 40+ form templates，这些计数需要按版本分开。机制是把 agent 提交后的表单状态与 gold JSON 或后端字段匹配比较。最近对比是 WebArena 类浏览器任务、form-filling agents 和 GUI grounding benchmark。方向标签是带结构化终局状态的交互式网页表单评测。

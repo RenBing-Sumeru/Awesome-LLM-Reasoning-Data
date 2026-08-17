@@ -1,0 +1,3 @@
+With GPT-4.1 on GAIA, the baseline scores 55.76 while BoN reaches 63.03; step-wise BoN reaches 58.79, beam search 56.97, and the reported diverse tree search equals the baseline. The comparison supports the limited claim that parallel whole-trajectory sampling can help agents, but it also shows that deeper branching does not automatically convert more compute into better tool-use outcomes.
+
+Selective reflection at score below 2 reaches 56.36, exceeding both the 55.76 baseline and more frequent thresholds. For result merging, list-wise selection gives 63.03 for BoN versus 56.8 by voting and 59.39 by scoring; similar list-wise gains appear for beam and tree search. These experiments support the paper’s emphasis on timing reflection and comparing candidates jointly.

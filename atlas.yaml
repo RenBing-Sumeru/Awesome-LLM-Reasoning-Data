@@ -1,0 +1,45 @@
+# Which of the 14 tracks have had their card batch integrated into library/.
+#
+# A track listed here renders as live in the site navigator. Tracks absent from
+# the list render as "pending" even if a cross-tagged card already mentions them,
+# so the coverage stat stays honest as later batches arrive. When you receive a
+# new track's cards, drop them into library/cards/ and add its id below.
+#
+# All 14 tracks have now received their batch.
+integrated_tracks:
+  - foundations_and_primers
+  - instruction_demonstration_rationale_data
+  - preference_reward_feedback_data
+  - programmatically_verifiable_outcome_data
+  - process_trace_supervision_data
+  - rollout_search_test_time_trace_data
+  - environment_agent_trajectory_data
+  - judgment_rubric_domain_expert_data
+  - data_construction_open_release_recipes
+  - training_usage_optimization_objectives
+  - scaling_rlvr_test_time_compute
+  - benchmarks_evaluation_surfaces
+  - frontier_reports_data_disclosure_ledger
+  - audit_failure_contamination_verifier_attacks
+
+# Cards whose queue.json manual_annotation.search_status matches one of these are
+# kept out of the pool entirely: no entry, no detail file, no count.
+excluded_search_status:
+  - rejected
+
+# A card no curator ever ruled on is treated as unreviewed rather than approved.
+exclude_unreviewed: true
+
+# Entries whose surviving copy reads `promoted` but which another curator rejected
+# while working a different track. The strict verdict lives here so that every card
+# in library/ stays exactly as its batch delivered it. Regenerate the list with
+# `scripts/merge_batches.py`, which prints it under the same heading.
+excluded_ids:
+  - bmmr-2025
+  - infinitymath-2024
+  - spa-bench-2025
+
+# The curated data object, construction recipe, audit ledger, and gap list live in
+# every paper.yaml but are not published yet. While this is false they are neither
+# rendered nor written into site/assets/data/, so nothing leaks through the JSON.
+show_detail_blocks: false

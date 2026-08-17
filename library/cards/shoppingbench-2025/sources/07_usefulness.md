@@ -1,0 +1,5 @@
+Use ShoppingBench when studying shopping agents, web/tool-use evaluation, multi-step constraint satisfaction, or trajectory distillation from a stronger agent into a smaller model. It is useful because it exposes failures that simple product search hides: partial product relevance, same-shop constraints, coupon arithmetic, budget compliance, and long-tail knowledge gaps.
+
+Practical reuse starts with arXiv:2508.04266 and https://github.com/yjwjy/ShoppingBench. The README gives concrete setup steps: decompress product documents, initialize the environment/search engine, run rollout scripts for product/shop/voucher/web intents, and then run evaluation scripts. The repository also contains SFT and RL training entry points.
+
+Before using scores or trajectories, pin repository commit, product archive checksum, decompressed index, test files, split policy, external web-search provider, evaluator code, prompt/scaffold, model API versions, and random seeds. Treat product-data rights and release license as open issues until inspected directly.

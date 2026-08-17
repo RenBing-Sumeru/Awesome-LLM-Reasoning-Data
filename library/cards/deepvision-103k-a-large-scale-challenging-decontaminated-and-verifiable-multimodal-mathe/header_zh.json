@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepVision-103K 提供约 10.3 万道视觉多样、去污染且最终答案可规则验证的 K–12 数学题。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Haoxiang Sun, Lizhen Xu, Bing Zhao, Wotao Yin, Wei Wang, Boyu Yang, Rui Wang, Hu Wei",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

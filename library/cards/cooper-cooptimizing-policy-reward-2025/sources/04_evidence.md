@@ -1,0 +1,2 @@
+On VerifyBench, the paper reports Math-Verify precision of 96% (345/360) and recall of 63% (345/549). This supports its use as a conservative anchor, not as perfect ground truth. Table 3 reports Qwen2.5-1.5B average accuracy of 57.48 with rule reward and 58.02 with Cooper, an absolute gain of 0.54 points. The README highlights 3.09%, which is not transparently reconciled with the table; the Card preserves the table comparison. Static VerifyRM is reported to collapse near step 120 in the tested run.
+

@@ -1,0 +1,100 @@
+id: alternative-annotator-test-llm-judge-2025
+title: 'The Alternative Annotator Test for LLM-as-a-Judge: How to Statistically Justify Replacing Human Annotators with LLMs'
+year: 2025
+venue: ACL 2025
+authors:
+- Nitay Calderon
+- Roi Reichart
+- Rotem Dror
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm-as-a-judge
+- annotation-reliability
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.782/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.782
+  venue: https://aclanthology.org/2025.acl-long.782/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.782/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Ten language and vision-language datasets with examples annotated by multiple humans.
+  trace_author: Human annotators and six evaluated LLMs under four prompting techniques.
+  answer_format: Discrete, continuous, or free-text annotations together with statistical comparison results.
+  process_fields:
+  - item
+  - human annotations
+  - LLM annotation
+  - prompting condition
+  - alternative-annotator test result
+  environment_or_substrate: Annotation tasks with human reference subsets; the paper does not release a universal LLM judge.
+  verifier_or_reward: The proposed Alternative Annotator Test and Average Advantage Probability compare an LLM against human
+    annotators.
+  terminal_predicate: Passing the test supports replacement only for the studied task, LLM, prompt, and human-reference setup.
+recipe_metadata:
+  base_model: Six LLMs named in the official paper.
+  teacher: Human annotation subsets with at least three human annotators in the described procedure.
+  generator: LLM annotation under four prompting techniques.
+  filtering_rule: Use a modest human-annotated subset to evaluate an LLM annotator before applying it more broadly.
+  sampling_protocol: The paper specifies dataset/task, annotator composition, model, prompt technique, and statistical test.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Statistical audit method; no post-training optimizer is proposed.
+audit:
+  source_mixture: Official ACL Anthology paper and its DOI landing page.
+  split: Ten datasets; the proposed procedure uses a human-annotated subset before LLM substitution.
+  decontamination: Not a contamination study; document task and prompt transfer limits before reusing a judge decision.
+  license: ACL Anthology materials published after 2016 are licensed CC BY 4.0; dataset-specific licenses are unknown.
+  lineage: 'Primary source: https://aclanthology.org/2025.acl-long.782/'
+  known_failure_modes:
+  - A passing result does not validate a judge for other tasks or prompts.
+  - Closed and open models can differ materially.
+  - Cost, disagreement, and construct validity are not reduced to one correlation number.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract reports ten datasets, six LLMs, and four prompting techniques.
+inclusion_reason: An evaluation-foundation paper that provides a concrete audit question before LLM judge outputs are promoted
+  to training or benchmark labels.
+related: []
+tags:
+- foundations-and-primers
+- llm-as-a-judge
+- annotation-audit
+- ACL-2025
+one_line: Alt-test turns the claim that an LLM can replace human annotation into a task-specific statistical test.
+why_it_matters: It gives Track0 a bridge from rubric/judge outputs to explicit evidence requirements, rather than assuming
+  that model-human correlation alone licenses substitution.
+status: verified
+needs:
+- 'needs_review: validate the test assumptions against the intended annotation task'
+one_line_summary: Alt-test turns the claim that an LLM can replace human annotation into a task-specific statistical test.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology and DOI verified.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧯 Contamination / evaluation surveys

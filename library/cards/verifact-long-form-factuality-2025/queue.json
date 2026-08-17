@@ -1,0 +1,19 @@
+{
+  "title": "VeriFact: Enhancing Long-Form Factuality Evaluation with Refined Fact Extraction and Reference Facts",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.905/",
+    "data": "https://huggingface.co/datasets/launch/FactRBench",
+    "code": null,
+    "project": "https://huggingface.co/spaces/launch/factrbench"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:56:40Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布 FactRBench，将长回答拆为抽取事实与参考事实，支持同时衡量事实精度和遗漏率",
+    "updated_at": "2026-07-25T10:56:40Z"
+  }
+}

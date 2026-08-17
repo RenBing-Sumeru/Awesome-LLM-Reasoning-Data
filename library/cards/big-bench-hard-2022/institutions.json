@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Stanford University",
+    "Google Research"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2210.09261",
+    "https://arxiv.org/pdf/2210.09261",
+    "https://github.com/suzgunmirac/BIG-Bench-Hard"
+  ],
+  "verification_note": "Official arXiv/PDF and repository sources verify Stanford and Google Research affiliations and the released task subset."
+}

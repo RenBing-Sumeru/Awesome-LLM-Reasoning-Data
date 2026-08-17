@@ -1,0 +1,159 @@
+id: rationalyst-2025
+title: 'RATIONALYST: Pre-training Process-Supervision for Improving Reasoning'
+year: 2025
+venue: ACL
+authors:
+- Dongwei Jiang
+- Guoxuan Wang
+- Yining Lu
+- Andrew Wang
+- Jingyu Zhang
+- Chuyu Liu
+- Benjamin Van Durme
+- Daniel Khashabi
+source_role:
+- construction_recipe
+- process_supervision
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- mathematics
+- commonsense_reasoning
+- scientific_reasoning
+- logical_reasoning
+training_use:
+- sft
+- process_supervision
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1288/
+  arxiv: https://arxiv.org/abs/2410.01044
+  code: https://github.com/JHU-CLSP/Rationalyst/tree/be0b1cf5c3fd1a642e054065fb02db382885153e
+  data: https://huggingface.co/datasets/Dongwei/reasoning_world_model
+  project: https://github.com/JHU-CLSP/Rationalyst
+  huggingface: https://huggingface.co/Dongwei/Rationalyst_reasoning_datasets
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1288
+  venue: https://aclanthology.org/2025.acl-long.1288/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1288/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.1288.bib
+data_object:
+  prompt_source: GSM8K and ECQA training examples plus reasoning-like documents selected from Pile-CC, StackExchange, GitHub,
+    HackerNews, PubMed Central, and English Wikipedia.
+  trace_author: Llama-3-8B-Instruct inserts rationale targets during construction; the SFT-trained RATIONALYST generates trajectory-conditioned
+    rationales at inference, while Llama-3-8B-Instruct proposes candidate next steps.
+  answer_format: A construction record pairs preceding context with an inserted implicit rationale and following context.
+    The public dataset exposes the fields `preceeding`, `rationale`, and `following`, but does not expose source lineage or
+    filter scores.
+  process_fields:
+  - source_corpus
+  - preceding_context
+  - implicit_rationale
+  - following_context
+  - baseline_future_token_score
+  - rationale_conditioned_future_token_score
+  - threshold
+  - retention_decision
+  environment_or_substrate: Offline rationale insertion and predictive filtering followed by iterative test-time selection
+    among three candidate next reasoning steps for at most 15 iterations in the released inference script.
+  verifier_or_reward: Construction uses 0.9-decayed following-token log-probability improvement, with human-calibrated thresholds
+    for GSM8K/ECQA and threshold zero without rationale labels for Pile; inference uses rationale-conditioned candidate likelihood,
+    not answer correctness or environment execution.
+  terminal_predicate: Construction intends to retain a rationale when it makes the continuation sufficiently more probable,
+    although the paper's loss-difference sign and inequality are inconsistent. Inference stops on a dataset-specific answer
+    cue or the released 15-iteration cap.
+recipe_metadata:
+  base_model: Llama-3-8B-Instruct is the base for the rationale generator and the evaluated reasoning agent.
+  teacher: Llama-3-8B-Instruct supplies inserted rationale targets and continuation scores.
+  generator: Llama-3-8B-Instruct is prompted with demonstrations to insert `<BOT>...<EOT>` rationales without changing the
+    surrounding text; RATIONALYST later predicts a rationale from the current trajectory.
+  filtering_rule: Pile candidates first require MPNet cosine similarity at least 0.3. Rationales are then retained by intended
+    future-token predictiveness, with thresholds 1.2 for GSM8K, 0.5 for ECQA, and 0 for all six Pile subdomains. The paper
+    and code disagree on sign notation and describe the Pile length cap as words, tokens, and characters in different places.
+  sampling_protocol: The released extraction script uses Llama-3-8B-Instruct at temperature 0.0, seed 14, and maximum 3000
+    generated tokens. It is not an immutable record of the exact reported run and includes extra MATH/MMLU-Pro inputs beyond
+    the paper's reported final mixture.
+  rollout_count: null
+  temperature: 0.0
+  inference_budget: The released evaluation script samples three candidates per step at temperature 0.7 and seed 14, scores
+    them with 0.9-decayed conditioned log-probability, and caps search at 15 iterations.
+  optimizer_or_scaffold: RATIONALYST is trained by token-level cross-entropy on rationale targets with prompt tokens masked.
+    The released example job uses 20 epochs, per-device batch size 2, gradient accumulation 8, learning rate 2e-5, warmup
+    ratio 0.03, cosine scheduling, and two-GPU FSDP; the paper does not confirm this file as the exact reported-run configuration.
+audit:
+  source_mixture: 'Reported retained mixture: about 65K rationales from Pile-CC, StackExchange, GitHub, HackerNews, PubMed
+    Central, and English Wikipedia, plus about 14K from GSM8K and ECQA. Table 1 reports source-level candidate counts and
+    retention rates.'
+  split: GSM8K and ECQA training data supply task-grounded construction examples. Evaluation uses GSM8K test, MATH test, ECQA
+    validation, HellaSwag validation, ProofWriter depth-greater-than-5 test, ARC-Challenge test, and MMLU-Pro test.
+  decontamination: unknown
+  license: The ACL paper is CC BY 4.0. The HF model repository declares Apache-2.0, but the linked dataset has no dataset
+    card/license and the inspected GitHub revision has no LICENSE file; upstream source terms remain separate.
+  lineage: Source document or training example -> Llama-3-8B-Instruct rationale insertion -> 0.9-decayed continuation-score
+    filter -> reported 79K mixture -> rationale-generator SFT -> rationale-conditioned three-candidate step selection. A complete
+    per-row source manifest, retained IDs, hashes, and release reconciliation were not identified.
+  known_failure_modes:
+  - Future-text predictiveness can reward post-hoc, lexical, incomplete, or factually wrong rationales
+  - Pile thresholds are not calibrated against rationale labels, and Appendix H says most retained Pile rationales describe
+    preceding context rather than guide future reasoning
+  - The paper's filter loss-difference sign and retention inequality conflict with its prose and released log-probability
+    code
+  - The Pile length cap is described as 2000 words, 2000 tokens, and implemented as 2000 characters
+  - Table 2 and the official model card report ECQA 75.2, while Table 5 reports 76.2
+  - The public dataset has 15178 rows and three fields, which does not reconcile with the reported 79K mixture or source-level
+    retained counts
+  - Repository instructions reference absent filtering/parsing scripts and use cluster-specific paths
+  - Broad benchmark decontamination is unreported
+  - Dataset and code licensing are unknown
+  citation_status: verified
+  confidence: high
+  notes: Paper, appendix, ACL metadata, pinned repository code, HF dataset viewer, and HF model page were checked. Artifact
+    links are official, but the complete reported training mixture and exact run remain unverified.
+inclusion_reason: An ACL construction recipe that turns unlabeled continuation predictiveness into weak process supervision,
+  then reuses the learned rationale object for test-time step selection; it is especially informative about the gap between
+  a scalable proxy and auditable rationale validity.
+related: []
+tags:
+- implicit-rationales
+- process-supervision
+- self-supervised-data
+- the-pile
+- rationale-mining
+- future-token-prediction
+- step-selection
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- process_trace_supervision_data
+one_line_summary: Reports a 79K implicit-rationale mixture filtered by future-token predictiveness and trains an 8B process
+  supervisor, while the linked 15178-row dataset leaves the full release unreconciled.
+why_it_matters: It makes a weak, scalable verifier contract concrete and shows why predictive filtering, source lineage, release
+  completeness, and rationale validity must be audited separately.
+card: null
+needs:
+- 'needs_data: release or reconcile the complete reported 79K mixture'
+- 'needs_lineage: publish source IDs, retained indices, prompts, scores, thresholds, and hashes per row'
+- 'needs_code: supply the filtering and parsing scripts referenced by the README and an exact runnable environment'
+- 'needs_reproducibility: identify the exact training and inference configuration used for reported results'
+- 'needs_decontamination: document train-to-evaluation overlap checks'
+- 'needs_license: state code and generated-dataset terms separately from the model license'
+- 'needs_clarification: resolve the filter-sign, 2000-unit, and ECQA-score inconsistencies'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ACL/arXiv/DOI pages, pinned GitHub revision, HF dataset, and HF model were verified; full-corpus completeness
+    and exact reproducibility remain unresolved.

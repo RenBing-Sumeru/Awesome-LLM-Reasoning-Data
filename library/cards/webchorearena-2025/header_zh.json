@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "WebChoreArena 发布 532 个作者策划的 WebArena 任务及答案、URL、DOM 终端评测器，但未发布论文实验的完整轨迹、结果包或完全固定的环境镜像。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长程网页智能体任务与终端评测基准",
+  "best_for_ch": "研究网页智能体评测、长程记忆与计算任务、终端 verifier、环境重放和轨迹发布边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Atsuyuki Miyai、Zaiying Zhao、Kazuki Egashira、Atsuki Sato、Tatsumi Sunada、Shota Onohara、Hiromasa Yamanishi、Mashiro Toyooka、Kunato Nishina、Ryoma Maeda、Kiyoharu Aizawa、Toshihiko Yamasaki",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

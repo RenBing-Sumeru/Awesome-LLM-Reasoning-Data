@@ -1,0 +1,6 @@
+- The 371.6B-token total combines web, code, and synthetic objects with different provenance and verification contracts.
+- Web-Pro is not merely a smaller web split; it adds learned scoring and LLM rewriting.
+- Execution checks apply to the generated text-code subset, not to the entire corpus.
+- ODC-By describes the HF release and does not erase upstream copyright or source-license obligations.
+- Exact 13-gram removal is a narrow contamination control, not semantic decontamination.
+- Pin an immutable HF revision and reconcile row counts before reporting reproduction results.

@@ -1,0 +1,3 @@
+Across Llama-3.1-8B, Qwen3-8B-Base, and Pythia models, the paper reports up to 13.58% improvement over full-data training while using 50–64% of pairs. On Llama-3.1-8B DPO, LossDiff-IRM reports 83.97 single score and 87.08 win rate on AlpacaEval, above the listed MAP baseline's 79.99 and 80.88.
+
+The scalable proxy also takes about five minutes on Llama-3.2-1B versus roughly ten hours for exact influence in the stated comparison. These results support selection efficiency, but the validation set is itself a critical signal: the paper's noise analysis shows that corrupted validation preferences change the selection outcome.

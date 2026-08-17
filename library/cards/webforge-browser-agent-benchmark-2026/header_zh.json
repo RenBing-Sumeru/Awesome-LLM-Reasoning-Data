@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebForge 生成自包含浏览器环境和 WebForge-Bench 任务，用来在不依赖易漂移真实网站的情况下评测浏览器智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的评测面 / 环境基准",
+  "best_for_ch": "关注浏览器智能体、合成网页环境、可复现实验和环境轨迹审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Peng Yuan 等（Tencent BAC、Tsinghua University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:32:17Z"
+}

@@ -1,0 +1,1 @@
+论文的方向性信号并不在于单独提出 GRPO、iterative RAG、蒸馏或 LLM-as-judge，而在于把这些机制与 WebPuzzle 和实时搜索引擎结合，使搜索调用分配进入 RL episode 的优化对象。相对于带提示的 iterative RAG 与 SFT 基线，策略可以改变是否搜索以及搜索多深；相对于以往基于 Wiki 的搜索训练，环境有意暴露分散、含噪且相互冲突的开放网页证据。条件式额外搜索奖励只是早期支架，并非对更多调用一概奖励：只有当同组中无搜索 rollout 全部失败、而至少一个搜索 rollout 成功时才触发。即使作者提出的 Search Intensity Scaling 名称和更高 benchmark 得分不能单独证明数据质量或报告设置之外的因果性，这套方法仍可作为配方与轨迹 schema 复用。

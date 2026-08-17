@@ -1,0 +1,5 @@
+- Read the method and Appendix A together: the main text defines adaptive selection, while the appendix supplies the 16-sample setup, malformed-output rules, verifier, grouping, sequence format, and training resources.
+- Keep the object straight: one training row is a fused assistant sequence, not 16 separate labeled rows and not a chosen/rejected preference pair.
+- Interpret `u(x)` carefully: the construction uses the number of distinct wrong final answers; Shannon entropy appears in the sampling-distribution analysis, not as the stated selection statistic.
+- Treat the OpenCompass output as terminal feedback only. The construction never verifies each intermediate step or the factual fit of a reflection phrase.
+- The strongest evidence is the matched RFT comparison and the count/diversity ablations, but benchmark gains are not a data audit certificate. Before reuse, check the missing code, constructed data, checkpoints, raw candidates, artifact licenses, and split/decontamination records.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AceReason-Nemotron 用约 49K 可规则验证数学题和执行式代码任务研究顺序跨域 RL。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yang Chen, Zhuolin Yang, Zihan Liu, Chankyu Lee, Peng Xu, Mohammad Shoeybi, Bryan Catanzaro, Wei Ping",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

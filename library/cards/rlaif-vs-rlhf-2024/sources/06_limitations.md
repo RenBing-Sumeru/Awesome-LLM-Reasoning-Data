@@ -1,0 +1,1 @@
+AI labels inherit the labeler’s biases and may be prompt- or version-sensitive, while direct-RLAIF makes training dependent on repeated external reward queries. Reward hacking, cost, service changes, and a mismatch between AI judgments and target users can all weaken the apparent replacement of human feedback.

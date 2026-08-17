@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Renmin University of China",
+    "Tsinghua University",
+    "Zhipu.AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.14991",
+    "https://spreadsheetbench.github.io/",
+    "https://github.com/RUCKBReasoning/SpreadsheetBench",
+    "https://huggingface.co/datasets/KAKA22/SpreadsheetBench"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF dataset verify authors, institutions, venue, and artifacts."
+}

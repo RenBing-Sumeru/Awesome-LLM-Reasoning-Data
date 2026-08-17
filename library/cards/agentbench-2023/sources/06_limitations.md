@@ -1,0 +1,3 @@
+Correctness is only relative to the environment implementations and task-specific checkers. An environment success does not prove that the model followed the human-intended reasoning path, and a failure can reflect parsing, API drift, scaffolding, or budget limits rather than the base model alone. Some tasks depend on simulated or wrapped services whose behavior can diverge from live tools.
+
+The paper should not be read as a training dataset guarantee or as a stable leaderboard independent of release date. License status, split definitions, hidden tests, exact prompts, dependency versions, and model API snapshots must be audited before reuse. Public benchmark tasks can become future training data, so later score comparisons need contamination checks.

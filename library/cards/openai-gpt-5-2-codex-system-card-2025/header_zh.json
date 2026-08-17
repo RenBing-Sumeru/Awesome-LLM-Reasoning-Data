@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GPT-5.2-Codex 补充系统卡披露了一项编码智能体 RL 干预：user model 在 rollout 中制造冲突编辑，模型保留用户修改可获得正向强化；但训练记录、奖励实现和逐项 lineage 均未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿编码智能体系统卡补充报告与数据披露台账",
+  "best_for_ch": "需要区分编码智能体训练数据、隐藏测试评测、产品 sandbox 与安全部署证据的研究者和审计者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

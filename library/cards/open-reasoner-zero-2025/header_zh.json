@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Open-Reasoner-Zero 不经过 SFT 或蒸馏、直接从 Qwen2.5 Base 启动 PPO，按每题 64 条在线响应分配终局数学奖励并训练 token-value critic；但公开的是 prompt/参考答案、代码和权重，而不是论文运行的 rollout、失败轨迹、奖励或日志。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模基础模型 RLVR 配方与开放发布审计",
+  "best_for_ch": "研究 Reasoner-Zero、PPO 与 learned critic、终局数学 verifier、hard-prompt mining，以及开放 RL 配方中数据血缘、重复、污染和运行工件缺口",
+  "confidence_ch": "高",
+  "authors_ch": "Jingcheng Hu、Yinmin Zhang、Qi Han、Daxin Jiang、Xiangyu Zhang、Heung-Yeung Shum",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

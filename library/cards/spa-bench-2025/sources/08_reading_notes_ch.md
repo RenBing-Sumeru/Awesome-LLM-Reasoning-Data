@@ -1,0 +1,5 @@
+- 先读 Sections 3.1–3.2，掌握 340-task 构成、human reference 流程、40 个 cross-app annotation 与 GUI Odyssey 来源边界。
+- 将 Sections 4–5 与 Appendices C–E 对照，重建 ADB execution、cycle-level snapshot reset、physical-device exception、OCR gate、GPT-4o prompt 与 cross-app memory。
+- 严格限制 release claim：公开的是 task CSV、40 个 subtask JSON 与 evaluation code；human screenshot、paper-run trace/result、calibration label 与 AVD snapshot 均未公开。
+- 把 success、failure、rerun 与 termination 视为不同字段；意外 infrastructure error 会 rerun，但没有公开 attempt ledger，本地 `S`/`F`/`E` output 也不是已发布 corpus。
+- 后续核验 GUI Odyssey overlap、train/test contamination、app/device/account manifest、judge drift、third-party 权利与 PII，以及针对 message、post、setting 与 purchase 的 safeguard。

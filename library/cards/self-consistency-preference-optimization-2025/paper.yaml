@@ -1,0 +1,118 @@
+id: self-consistency-preference-optimization-2025
+title: Self-Consistency Preference Optimization
+year: 2025
+venue: ICML 2025
+authors:
+- Archiki Prasad
+- Weizhe Yuan
+- Richard Yuanzhe Pang
+- Jing Xu
+- Maryam Fazel-Zarandi
+- Mohit Bansal
+- Sainbayar Sukhbaatar
+- Jason E. Weston
+- Jane Yu
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- mathematics
+- reasoning
+training_use:
+- preference_learning
+- evaluation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://proceedings.mlr.press/v267/prasad25a.html
+  arxiv: https://arxiv.org/abs/2411.04109
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v267/prasad25a.html
+  openreview: https://openreview.net/forum?id=94G4eL3RWi
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/prasad25a.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning prompts sampled at training/evaluation time; no official preference-pair corpus was confirmed.
+  trace_author: unknown
+  answer_format: Eight or sixteen sampled answers grouped by their final-answer vote; group-frequency creates chosen/rejected
+    pairs for DPO.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Plurality/frequency is a programmatic preference proxy, not a ground-truth verifier, so consensus can
+    encode shared model error.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: SCPO samples answers, builds preference groups from self-consistency counts, and optimizes DPO using higher-vote
+    versus lower-vote answers.
+  filtering_rule: Plurality/frequency is a programmatic preference proxy, not a ground-truth verifier, so consensus can encode
+    shared model error.
+  sampling_protocol: The PMLR ICML 2025 record was verified. The paper discusses a transductive test experiment; no code,
+    pairs, or rollout logs were confirmed.
+  rollout_count: 8 or 16 sampled answers
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: SCPO samples answers, builds preference groups from self-consistency counts, and optimizes DPO using
+    higher-vote versus lower-vote answers.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Reasoning prompts sampled at training/evaluation time; no official preference-pair corpus was confirmed. -> Eight
+    or sixteen sampled answers grouped by their final-answer vote; group-frequency creates chosen/rejected pairs for DPO.
+    -> Plurality/frequency is a programmatic preference proxy, not a ground-truth verifier, so consensus can encode shared
+    model error. -> reported final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Majority answers may be wrong; preference construction may leak evaluation information in transductive settings; no raw
+    samples or pair-generation code are released.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It makes a key Track 5 conversion explicit—rollout counts become preference data—but requires raw samples
+  and split discipline to audit leakage.
+related: []
+tags:
+- self-consistency
+- preference-optimization
+- dpo
+- majority-vote
+- rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- training_usage_optimization_objectives
+one_line_summary: A DPO construction recipe that derives preference labels from repeated-answer self-consistency.
+why_it_matters: It makes a key Track 5 conversion explicit—rollout counts become preference data—but requires raw samples
+  and split discipline to audit leakage.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

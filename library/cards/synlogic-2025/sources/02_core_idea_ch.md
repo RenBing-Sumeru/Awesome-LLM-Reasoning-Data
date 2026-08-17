@@ -1,0 +1,9 @@
+SynLogic的核心单元是generator-verifier配对。作者选择35项任务概念,识别各任务的难度参数,把约束编码进生成代码,将实例形式化为自然语言,再把模型答案分派给对应verifier。33项任务由团队独立实现并生成;Zebra Puzzle与ARC-AGI记录直接采用现有开放资源。全部35个发布任务身份都有verifier映射,但当前仓库缺少一个公开issue所指出的Cipher题目生成器。
+
+难度由模型可解性校准,而不是只依赖一个人工等级。DeepSeek R1与OpenAI-o3-mini给出上界:选择其pass@10仍大于零的最高参数设置。未具名chat模型给出下界:选择通过率位于零到0.5之间的设置。这些模型是难度探针,不是已披露的轨迹教师。其精确checkpoint/endpoint、完整提示、seed和解码设置均为unknown。
+
+公开记录schema包含`data_source`、`prompt`、`ability`、`reward_model`与`extra_info`。`prompt`是由`role`和`content`组成的单message列表。`reward_model`公开`answer`、`solution`与`style`字段,但公开样例和issue讨论表明这些字段可能为空。官方训练指导要求从`extra_info.game_data_str`加载奖励所需状态;这是包含question、answer、difficulty和任务metadata等字段的序列化任务对象。不同任务的答案表示并不统一,有时会位于metadata内部。
+
+反馈契约是格式与正确性的乘积。论文只有在回答包含规定的think/answer结构、且最终答案通过任务verifier时才给奖励1。仓库参考实现更严格:回答必须以开头think标签起始、以结尾answer标签结束,四个标签各出现一次;完成答案抽取后还必须通过选定verifier。任一组成失败,最终奖励都是零。
+
+这属于答案级监督与二元标量reward,不是步骤监督。最终答案被接受不会给中间推理步骤加标签,程序接受也不能证明写出的推理忠实。发布的提示与verifier状态还省略了真正驱动GRPO的在线回答和奖励决策,因此反馈契约可检查,论文训练轨迹却只能部分审计。

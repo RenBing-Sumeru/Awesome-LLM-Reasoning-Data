@@ -1,0 +1,101 @@
+id: llm-compression-survey-2024
+title: A Survey on Model Compression for Large Language Models
+year: 2024
+venue: Transactions of the Association for Computational Linguistics
+authors:
+- Xunyu Zhu
+- Jian Li
+- Yong Liu
+- Can Ma
+- Weiping Wang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- model-compression
+- efficiency
+- llm-deployment
+training_use:
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2024.tacl-1.85/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1162/tacl_a_00704
+  venue: https://aclanthology.org/2024.tacl-1.85/
+  openreview: null
+  acl: https://aclanthology.org/2024.tacl-1.85/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed LLM deployment and resource-limited use settings.
+  trace_author: Surveyed primary works; no new training corpus is released.
+  answer_format: Taxonomy of quantization, pruning, knowledge distillation, benchmarks, and metrics.
+  process_fields:
+  - compression-method
+  - resource-cost
+  - benchmark
+  - evaluation-metric
+  environment_or_substrate: Practical LLM deployment under size and computational constraints.
+  verifier_or_reward: Benchmarking strategies and evaluation metrics are compared; no new verifier is introduced.
+  terminal_predicate: A compressed model must be assessed against the chosen efficiency and task-quality metrics.
+recipe_metadata:
+  base_model: No single model; literature survey.
+  teacher: Knowledge distillation is surveyed as a method family; no single teacher is used by the survey.
+  generator: Literature synthesis and method comparison.
+  filtering_rule: The official abstract covers quantization, pruning, knowledge distillation, benchmarks, and metrics.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes compression techniques rather than supplying a new optimizer.
+audit:
+  source_mixture: Official ACL Anthology metadata and abstract.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide result is stated.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.tacl-1.85/'
+  known_failure_modes:
+  - efficiency metrics can obscure task losses
+  - resource limits differ by deployment setting
+  - method comparisons depend on benchmarks
+  citation_status: verified
+  confidence: high
+  notes: Official abstract reviewed.
+inclusion_reason: A journal survey of the main ways to make LLMs smaller and cheaper to run while evaluating the trade-offs.
+related: []
+tags:
+- survey
+- compression
+- quantization
+- pruning
+- distillation
+- tacl-2024
+one_line_summary: A TACL survey of quantization, pruning, and distillation for practical LLM deployment.
+why_it_matters: It frames compression as a trade-off between resource use and task quality rather than a single speed-up claim.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers choosing or evaluating LLM compression methods for constrained deployment.
+confidence: high
+status: verified
+needs:
+- unknown
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology metadata, abstract, DOI, and journal venue reviewed.
+category_ids:
+- foundations_and_primers

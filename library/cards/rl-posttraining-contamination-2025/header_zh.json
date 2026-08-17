@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Self-Critique以初始与批评回复的熵轨迹相似度检测 RL 后训练数据污染。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "污染、验证器失效或奖励投机审计论文",
+  "best_for_ch": "需要审计基准污染、评估偏差或奖励投机风险的研究者。",
+  "confidence_ch": "高：官方来源与公开 artifact 链接已核验；细节待精读。",
+  "authors_ch": "Yongding Tao, Tian Wang, Yihong Dong, Huanyu Liu, Kechi Zhang, Xiaolong Hu, Ge Li",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

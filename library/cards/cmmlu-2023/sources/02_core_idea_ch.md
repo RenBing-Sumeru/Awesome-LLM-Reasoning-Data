@@ -1,0 +1,1 @@
+核心贡献是一个覆盖 67 个 topics 的中文综合 benchmark，范围从基础教育到高级专业水平，包含 STEM、人文、社科和中国特定知识。它相对翻译式英文任务的变化在于使用原生中文单项选择题，部分答案依赖本地语境。反馈契约是程序化 accuracy：解析模型选择的选项，并与唯一正确标签比较。最近对比对象是 MMLU 等广义 multitask exam，以及 C-Eval 这类中文基准。方向标签是 static multilingual reasoning benchmark，风险集中在文化语境和污染。

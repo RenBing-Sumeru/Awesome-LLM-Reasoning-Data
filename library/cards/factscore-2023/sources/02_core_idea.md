@@ -1,0 +1,5 @@
+The contribution is a metric and evaluation protocol: decompose a long response into atomic facts, judge whether each fact is supported by a reliable knowledge source, and report the supported-fact percentage as FActScore. This changes factuality evaluation from answer-level pass/fail to claim-level precision accounting.
+
+The core mechanism has two layers. Human FActScore uses annotators to identify atomic facts and mark support against the source. Automatic FActScore approximates that workflow with an atomic-fact generator, retrieval over the knowledge source, and a support judge. The public implementation exposes estimator choices, a length-penalty parameter, abstain detection hooks, cache/data directories, and custom knowledge-source registration.
+
+Closest comparisons are FEVER-style claim verification, QAGS-like factuality metrics, summary factuality evaluation, and later grounding benchmarks. The difference is that FActScore defines the row-level feedback object as an atomic fact inside a long answer, then keeps the final scalar score as an aggregate rather than the evidence itself.

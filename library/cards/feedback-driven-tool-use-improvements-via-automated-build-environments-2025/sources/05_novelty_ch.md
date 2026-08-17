@@ -1,0 +1,9 @@
+prior baseline 并不是不存在 tool-use training。FTRL 建立在已有的 tool-calling model、locally executable function、current-policy rollout、GRPO、Reinforce++ 与 tool-use benchmark 之上。因此，programmatic reward 和 multi-turn environment interaction 是需要审计的组成部分，不能据此提出无证据的“首次”主张。
+
+真正改变的是 construction-to-training interface。人工编写的 question/answer 被分解为面向特定 scenario 的隐藏 subanswer；GPT-4o 辅助合成 tool document 与 Python implementation；policy 与逐条定制的 function 交互；observation 以 deterministic 规则移除已解决 subanswer；最后把兼顾效率与完成度的 scalar 附着到 sampled response，用于 policy optimization。因此，data object 既不是静态 answer，也不是完整公开 episode，而是 executable task definition 加上 current policy 生成的临时 state/history prefix。
+
+feedback interface 具有较高可检查性。verifier 的 observable 是返回文本，progress state 是 remaining-subanswer mapping，tool-call reward 是 `2q/(p+1)`。因此 action、observation、state update 与 scalar reward 的连接足够明确，可以审计。其弱点也同样明确：verifier 检测的是携带目标 substring 的 progress，不是 semantic task completion；in-process Python execution 则把 trust boundary 扩展到每条公开 row。
+
+论文描述的五阶段 scenario/document/function/scaling/deployment recipe 是方法贡献，但 release 只提供 prompt 与完成后的 raw row，没有端到端 construction program、中间 generation 或 human review record。同样，使用 VeRL、GRPO、Reinforce++、Qwen model 或 temperature-based sampling 属于继承的 scaffold；当前 repository 的后续状态和 one-epoch script 属于 release engineering，不是新 learning algorithm 的证据。
+
+对 `environment_agent_trajectory_data` 而言，方向信号是同时公开 executable environment definition、显式 progress state 与 reward code，并把这些 definition 与 sampled trajectory 严格区分。quality signal 来自具体 schema、code-level verifier behavior、保留的 error observation，以及揭示 reward tradeoff 的 ablation，而不是最佳 benchmark score。复用前仍需核验 semantic calibration、adversarial substring behavior、sandbox、五阶段 lineage、包含 terminal output 的完整 trajectory retention、split/contamination control、immutable version、license 与 checkpoint-to-result replay。

@@ -1,0 +1,12 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "benchmark，尚未确认论文所报告rollout的规范化公开语料或不可变manifest",
+    "updated_at": "2026-07-22T10:13:28Z"
+  },
+  "updated_at": "2026-07-22T10:13:28Z",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

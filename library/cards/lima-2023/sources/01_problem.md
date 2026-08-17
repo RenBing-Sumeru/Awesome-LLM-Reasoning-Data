@@ -1,0 +1,3 @@
+Instruction tuning was commonly scaled by collecting ever more prompts and responses, even though a capable pretrained model might already know most task content. LIMA asks what supervised data is actually needed to turn that latent ability into a helpful assistant style, and whether curation quality can matter more than dataset size.
+
+The paper answers with a controlled small-data intervention: curate 1,000 instruction-response demonstrations, fine-tune LLaMA-65B only on that set, and compare its answers with assistants trained on much larger mixtures. The resulting object is a compact SFT dataset whose success is judged by human preference, not a per-example factual verifier. Primary source: https://arxiv.org/abs/2305.11206; venue: NeurIPS 2023.

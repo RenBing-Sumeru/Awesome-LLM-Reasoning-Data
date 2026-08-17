@@ -1,0 +1,5 @@
+JudgeDeceiver is a white-box, optimization-based prompt-injection attack for LLM-as-a-Judge: it learns a short suffix that makes an attacker-controlled candidate receive the desired verdict despite unknown clean alternatives. Unlike heuristic prompt injections and jailbreak objectives, it trains against shadow candidate sets and explicitly optimizes both the full verdict and the target position token; an adversarial perplexity term also makes common PPL filters less reliable. The paper releases implementation code, but does not present an official downloadable dataset.
+
+Its evaluation object is a candidate response together with the judge verdict, and its feedback contract is whether the requested option is generated consistently across positions. The contribution is an audit method and evidence, not a model trained to resist injection.
+
+The suffix is optimized separately for each target pair, so it should not be read as a claim that one string universally compromises every question or judge.

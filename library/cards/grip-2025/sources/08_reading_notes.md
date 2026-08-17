@@ -1,0 +1,6 @@
+- Read the official supplemental ZIP as a partial release: its README says approximately 25K, while the JSON contains exactly 24,957 four-field rows rather than the reported 2,123,345-pair corpus.
+- In Sections 3.1-3.3, separate the reusable graph recipe from unreleased state: concept nodes and relationship types are described, but the actual graph, cutoffs, branch counts, difficulty labels, and lineage are absent.
+- In Section 3.4, treat `0.85` plus unanimous voting as a model-judge selection contract, not formal or step-level mathematical verification; the weighted-score coefficients are undisclosed.
+- Read Tables 4-7 as both mechanism and failure evidence: implicit relationships expand supply, while average judge scores fall as hop distance grows.
+- Use Appendix E.2 narrowly: it reports MATH-test n-gram overlap only, not decontamination for every benchmark or semantic/solution-level leakage.
+- Do not infer data quality from benchmark gains; the partial release, 3 exact duplicate-question groups, missing license, and absent full pipeline still require independent audit.

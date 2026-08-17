@@ -1,0 +1,144 @@
+id: one-shot-rlvr-2025
+title: Reinforcement Learning for Reasoning in Large Language Models with One Training Example
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yiping Wang
+- Qing Yang
+- Zhiyuan Zeng
+- Liliang Ren
+- Liyuan Liu
+- Baolin Peng
+- Hao Cheng
+- Xuehai He
+- Kuan Wang
+- Jianfeng Gao
+- Weizhu Chen
+- Shuohang Wang
+- Simon Shaolei Du
+- Yelong Shen
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematical_reasoning
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.20571
+  arxiv: https://arxiv.org/abs/2504.20571
+  code: https://github.com/ypwang61/One-Shot-RLVR
+  data: https://huggingface.co/datasets/ypwang61/One-Shot-RLVR-Datasets
+  project: null
+  huggingface: https://huggingface.co/collections/ypwang61/one-shot-rlvr
+  doi: https://doi.org/10.48550/arXiv.2504.20571
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/b1ea3f93167c55f3fc2999b68a170ff3-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: One selected mathematical problem-answer pair from the released DSR-sub pool, duplicated until the training
+    batch size; DSR-sub contains 1,209 examples randomly selected from DeepScaleR-Preview-Dataset
+  trace_author: Current policy generates on-policy solution rollouts; no human or teacher trace is used as the RL target
+  answer_format: Math prompt, model response, ground-truth final answer, and a rule-style binary outcome reward
+  process_fields:
+  - prompt
+  - ground_truth
+  - reward_model
+  - data_source
+  - ability
+  - extra_info
+  - rollout
+  environment_or_substrate: Text-only mathematical reasoning rollout pipeline built on verl and vLLM
+  verifier_or_reward: 'Binary outcome reward: 1 only when the final answer matches the ground truth; format reward is a separate
+    baseline and not combined with outcome reward'
+  terminal_predicate: The rollout receives reward 1 iff its final outcome matches the released ground truth
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B by default; additional experiments use Qwen2.5-Math-7B, Llama-3.2-3B-Instruct, and DeepSeek-R1-Distill-Qwen-1.5B
+  teacher: unknown
+  generator: On-policy current-model rollouts
+  filtering_rule: Rank the 1,209-example DSR-sub pool by historical variance of per-epoch training accuracy after 500 full-pool
+    RLVR steps; the paper states this heuristic is not necessarily optimal
+  sampling_protocol: Duplicate one or few selected examples to batch size 128; sample eight responses per prompt
+  rollout_count: 8
+  temperature: 0.6
+  inference_budget: Default maximum prompt length 1,024 and response length 3,072; 8,192 response tokens for DeepSeek-R1-Distill-Qwen-1.5B
+  optimizer_or_scaffold: GRPO by default with policy-gradient, KL-divergence, and entropy terms; PPO is also evaluated
+audit:
+  source_mixture: The released one-shot dataset is derived from DSR-sub; the paper says DeepScaleR-Preview-Dataset has about
+    40K math problem-answer pairs sourced from AIME, AMC, Omni-MATH, Still, and other sources, while this work samples 1,209
+    into DSR-sub. The record-level upstream source manifest is not provided here.
+  split: Hugging Face release exposes pi1, pi2, pi13, pi1209, merged few-shot splits, and dsr_sub. The paper evaluates on
+    MATH500, AIME 2024/2025, AMC 2023, Minerva Math, OlympiadBench, and ARC, but does not provide a dedicated train-test overlap
+    audit for one-shot selection.
+  decontamination: The paper describes DeepScaleR upstream duplicate removal using RAG and Sentence-Transformers embeddings.
+    It does not document semantic decontamination, benchmark-overlap testing, or leakage controls specific to the selected
+    one-shot examples.
+  license: The author GitHub repository and released Hugging Face dataset state Apache-2.0; rights and licenses for upstream
+    source problems are not established by this Card.
+  lineage: Paper, source code, released dataset, model collection, and W&B records are author-linked. Exact version pinning
+    of upstream DeepScaleR data and a per-record origin/rights manifest remain unavailable.
+  known_failure_modes:
+  - Results are empirical and depend on the selected example, base model, training length, and exploration settings.
+  - A correct-looking one-shot result does not establish a universally transferable data-selection rule; the authors state
+    historical-variance selection is not necessarily optimal.
+  - The reported outcome reward is final-answer matching; parser, equivalence, and edge-case behavior need code-level audit
+    before reuse.
+  - No paper-specific leakage or semantic-overlap audit establishes that selected training problems are disjoint from every
+    evaluation surface.
+  - Long-CoT-distilled DeepSeek-R1-Distill-Qwen-1.5B shows a larger gap between few-shot and full-dataset RLVR, and one-shot
+    performance degrades after about 100 steps in the reported analysis.
+  citation_status: verified
+  confidence: medium
+  notes: Official NeurIPS proceedings, arXiv, and author-linked code/data/model releases were checked. This remains L3/partial
+    because exact verifier edge handling, source rights, provenance, and contamination controls are not fully disclosed.
+inclusion_reason: A NeurIPS 2025 RLVR recipe and release that makes a minimal one-example training object, binary feedback
+  contract, selection heuristic, code, data, and checkpoints inspectable while preserving its unresolved leakage and lineage
+  boundaries.
+related: []
+tags:
+- rlvr
+- one-shot-training
+- mathematical-reasoning
+- binary-outcome-reward
+- data-selection
+- grpo
+- ppo
+- entropy-exploration
+- neurips-2025
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- scaling_rlvr_test_time_compute
+one_line_summary: Shows that one selected and batch-duplicated math problem with binary answer-matching reward can substantially
+  improve several reasoning models under the reported RLVR settings.
+why_it_matters: Turns an often-hidden RLVR prompt-selection decision into a small released data object, revealing both a concrete
+  outcome-reward recipe and the missing provenance, equivalence-checking, and leakage controls needed to judge reuse.
+card: null
+needs:
+- 'needs_metadata: precise answer-parser and equivalence behavior'
+- 'needs_audit: source-level rights and per-record provenance for upstream math problems'
+- 'needs_audit: train-evaluation semantic overlap and contamination analysis'
+- 'needs_reproduction: pinned environment, dependencies, and complete evaluation configuration'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official NeurIPS and arXiv citation confirmed; author-linked GitHub repository, Hugging Face dataset and model collection
+    confirmed.

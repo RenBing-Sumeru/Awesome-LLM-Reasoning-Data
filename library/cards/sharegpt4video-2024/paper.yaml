@@ -1,0 +1,134 @@
+id: sharegpt4video-2024
+title: 'ShareGPT4Video: Improving Video Understanding and Generation with Better Captions'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks
+authors:
+- Lin Chen
+- Xilin Wei
+- Jinsong Li
+- Xiaoyi Dong
+- Pan Zhang
+- Yuhang Zang
+- Zehui Chen
+- Haodong Duan
+- Bin Lin
+- Zhenyu Tang
+- Li Yuan
+- Yu Qiao
+- Dahua Lin
+- Feng Zhao
+- Jiaqi Wang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://neurips.cc/virtual/2024/poster/97789
+  arxiv: https://arxiv.org/abs/2406.04325
+  code: https://github.com/ShareGPT4Omni/ShareGPT4Video
+  data: https://huggingface.co/datasets/ShareGPT4Video/ShareGPT4Video
+  project: https://sharegpt4video.github.io/
+  huggingface: https://huggingface.co/datasets/ShareGPT4Video/ShareGPT4Video
+  doi: https://doi.org/10.52202/079017-0614
+  venue: https://neurips.cc/virtual/2024/poster/97789
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: diverse public videos sampled for temporal coverage
+  trace_author: GPT-4V-assisted seed annotation followed by ShareCaptioner-Video
+  answer_format: video id or frames, temporal event timeline, and a long detailed caption or derived instruction response
+  process_fields:
+  - video id or frames
+  - temporal event timeline
+  - and a long detailed caption or derived instruction response
+  environment_or_substrate: JSON metadata and downloadable video/caption archives
+  verifier_or_reward: caption detail/temporal consistency review and downstream video benchmarks
+  terminal_predicate: Retain a record only when caption detail/temporal consistency review and downstream video benchmarks
+    accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: GPT-4V-assisted seed annotation followed by ShareCaptioner-Video
+  generator: ShareGPT4Video collects 40K detailed captions, trains a scalable video captioner, and packages temporal descriptions
+    that can supervise both understanding models and text-to-video systems.
+  filtering_rule: caption detail/temporal consistency review and downstream video benchmarks
+  sampling_protocol: diverse public videos sampled for temporal coverage
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: video-language pretraining and instruction SFT
+audit:
+  source_mixture: diverse public videos sampled for temporal coverage
+  split: 'Official release scale: 40,000 densely captioned videos in the public high-quality set; storage: JSON metadata and
+    downloadable video/caption archives.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official data-card terms; original video licenses remain applicable
+  lineage: diverse public videos sampled for temporal coverage -> GPT-4V-assisted seed annotation followed by ShareCaptioner-Video
+    -> caption detail/temporal consistency review and downstream video benchmarks -> video-language pretraining and instruction
+    SFT.
+  known_failure_modes:
+  - Copyright stays with source videos
+  - automatic descriptions can miss brief events
+  - fixed frame sampling underrepresents audio and high-frequency motion.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 39 citations; this is not a Google Scholar count.'
+inclusion_reason: 'ShareGPT4Video is a public Track 01 training object: video id or frames, temporal event timeline, and a
+  long detailed caption or derived instruction response; it is consumed by video-language pretraining and instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- dense-temporal-caption-demonstrations
+status: verified
+one_line_summary: ShareGPT4Video releases 40K long temporal captions and a captioner for scaling video-language supervision.
+why_it_matters: treating long temporally structured captions as the intermediate data engine for video instruction tuning
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: constructing temporal reasoning SFT records from public videos
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: dense temporal-caption demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include University of Science and Technology of China, The Chinese University
+      of Hong Kong, Peking University, Shanghai AI Laboratory.
+    venue: 'The official venue URL confirms formal publication at NeurIPS 2024 Datasets and Benchmarks: https://neurips.cc/virtual/2024/poster/97789'
+    impact: OpenAlex reported 39 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON metadata and downloadable video/caption archives records at https://huggingface.co/datasets/ShareGPT4Video/ShareGPT4Video
+      with terms recorded as: official data-card terms; original video licenses remain applicable.'
+  selection_eligible: true
+  year_impact_threshold: 3

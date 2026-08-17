@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "University College London"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T16:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2510.07529",
+    "https://solar.cs.ucl.ac.uk/os/hotfixbenchmark.html",
+    "https://github.com/carolhanna01/HotBugs-dot-jar"
+  ],
+  "verification_note": "核验确认 UCL 机构、arXiv 状态、项目页、GitHub 仓库和元数据表入口。"
+}

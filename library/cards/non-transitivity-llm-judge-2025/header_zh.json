@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "审计两两 LLM 判决的非传递性，并以锦标赛聚合降低排名对基线的敏感度。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "LLM 评测器可靠性与排名协议审计",
+  "best_for_ch": "需要核查推理数据与自动评测可靠性的研究者。",
+  "confidence_ch": "高：ICML 正式论文、作者、软件链接与核心结果均经官方来源核验。",
+  "authors_ch": "Yi Xu, Laura Ruis, Tim Rocktäschel, Robert Kirk",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

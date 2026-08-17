@@ -1,0 +1,121 @@
+id: androidlab-2024
+title: 'AndroidLab: Training and Systematic Benchmarking of Android Autonomous Agents'
+year: 2025
+venue: ACL 2025 Long Papers / arXiv
+authors:
+- Yifan Xu
+- Xiao Liu
+- Xueqiao Sun
+- Siyi Cheng
+- Hao Yu
+- Hanyu Lai
+- Shudan Zhang
+- Dan Zhang
+- Jie Tang
+- Yuxiao Dong
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- android
+- training-and-benchmarking
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.107/
+  arxiv: https://arxiv.org/abs/2410.24024
+  doi: https://doi.org/10.18653/v1/2025.acl-long.107
+  code: https://github.com/THUDM/Android-Lab
+  data: https://github.com/THUDM/Android-Lab/blob/main/docs/instruction_tuning.md
+  project: https://github.com/THUDM/Android-Lab
+  huggingface: null
+  venue: https://aclanthology.org/2025.acl-long.107/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.107/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official Android-Lab repository and instruction-tuning docs
+  trace_author: official authors, collected demonstrations, and agent rollouts
+  answer_format: Android tasks, instruction tuning records, screenshots, action traces, and benchmark results
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: Android agent training and systematic benchmark environment
+  verifier_or_reward: AndroidLab task evaluator and environment success checks
+  terminal_predicate: AndroidLab task evaluator and environment success checks
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: AndroidLab authors and instruction-tuning data
+  generator: AndroidLab benchmark and training-data construction
+  filtering_rule: pin repo commit, Android image, data license, and evaluator/task split
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://aclanthology.org/2025.acl-long.107/; https://arxiv.org/abs/2410.24024; https://github.com/THUDM/Android-Lab;
+    https://github.com/THUDM/Android-Lab/blob/main/docs/instruction_tuning.md
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://aclanthology.org/2025.acl-long.107/'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology verifies ACL 2025 Long Papers publication, pages 2144-2166, and DOI 10.18653/v1/2025.acl-long.107;
+    repo commit, Android image, dataset license, leaderboard snapshot, evaluator version, and task split still need pinning.
+inclusion_reason: it includes both training data and benchmark harness for Android agents
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- android
+- training-and-benchmarking
+one_line: AndroidLab combines Android-agent training data with a systematic benchmark harness.
+why_it_matters: it includes both training data and benchmark harness for Android agents
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AndroidLab combines Android-agent training data with a systematic benchmark harness.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: ACL Anthology, arXiv, and official GitHub docs verify ACL 2025 Long Papers status, authors, Tsinghua/Peking institutions,
+    repository, and instruction-tuning data entry.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 53
+  primary_category_id: environment_agent_trajectory_data

@@ -1,0 +1,1 @@
+The Card verifies corpus scale, source count, paper venue, and code availability, but not every source-level right, transformation, or data-quality claim. The paper is about pretraining text; its model comparisons do not directly measure downstream reasoning-data quality or safety.

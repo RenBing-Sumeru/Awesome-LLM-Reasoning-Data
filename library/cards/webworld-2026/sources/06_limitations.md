@@ -1,0 +1,3 @@
+Correctness is only relative to the stated contract: WebWorld-Bench uses LLM-judged Factuality Score and Web Turing Score; downstream task success provides extrinsic validation of synthesized trajectories. The simulator can hallucinate states, omit site policies, hide safety constraints, or overfit collected interactions. No official code/data/project URL was verified, so artifact reuse remains limited.
+
+The paper should not be read as unrestricted real-world reliability. Public artifacts can become training data, service-backed environments can drift, and judge/evaluator implementations can change across releases.

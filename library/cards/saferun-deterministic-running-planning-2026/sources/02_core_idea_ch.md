@@ -1,0 +1,1 @@
+主要贡献是 decoupled planning architecture 与 SafeRun-RunPlanning-Benchmark。每个样本描述跑者能力、目标、周数、可训练日、伤病或偏好，并给出需要满足的结构化约束。LLM 解析软需求，约束求解器对训练类型、距离、强度、休息和逐周变化进行硬验证；不可行时返回冲突而不是输出危险计划。数据可用于规划评测、约束生成 SFT 和安全 verifier 研究，但不应被视为临床处方。

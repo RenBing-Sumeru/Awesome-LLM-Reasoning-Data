@@ -1,0 +1,124 @@
+id: webgen-bench-2025
+title: 'WebGen-Bench: Evaluating LLMs on Generating Interactive and Functional Websites from Scratch'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zimu Lu
+- Yunqiao Yang
+- Houxing Ren
+- Haotian Hou
+- Han Xiao
+- Ke Wang
+- Weikang Shi
+- Aojun Zhou
+- Mingjie Zhan
+- Hongsheng Li
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- web-swe-agents
+- software-engineering-agent-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.03733
+  arxiv: https://arxiv.org/abs/2505.03733
+  doi: https://doi.org/10.48550/arXiv.2505.03733
+  code: https://github.com/mnluzimu/WebGen-Bench
+  data: https://huggingface.co/datasets/luzimu/WebGen-Bench
+  train_data: https://huggingface.co/datasets/luzimu/WebGen-Bench_train_data
+  project: null
+  huggingface: https://huggingface.co/datasets/luzimu/WebGen-Bench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'official WebGen-Bench/WebGen-Instruct construction pipeline: category analysis from freelance platforms,
+    Ph.D. student project brainstorming, GPT-4o instruction conversion, and benchmark decontamination'
+  trace_author: official benchmark authors, GPT-4o-generated instructions/tests, Ph.D. student reviewers, WebVoyager evaluator,
+    and generated Bolt.diy trajectories for training experiments
+  answer_format: website-generation instruction, test-case operation, expected result, generated website codebase, UI-agent
+    label, and optional appearance score
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: generated interactive websites executed in a browser and tested by WebVoyager-style UI-agent operations
+  verifier_or_reward: UI-agent browser execution labels YES/NO/PARTIAL, with GPT-4o appearance scores as a separate judge
+    signal
+  terminal_predicate: test-case success is computed from UI-agent YES/NO/PARTIAL labels, with PARTIAL receiving half credit
+recipe_metadata:
+  base_model: Not a training recipe; the work is an executable evaluation and audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: WebGen-Bench/WebGen-Instruct pipeline using category analysis, Ph.D. student project descriptions, GPT-4o instruction/test
+    generation, human review, and trajectory filtering
+  filtering_rule: Benchmark test cases are human-reviewed; WebGen-Instruct removes benchmark overlap using 5-gram Jaccard
+    and sentence-embedding similarity, then filters generated trajectories by appearance and relevance.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: website_generation_agent_benchmark
+audit:
+  source_mixture: https://arxiv.org/abs/2505.03733; https://arxiv.org/html/2505.03733; https://github.com/mnluzimu/WebGen-Bench;
+    https://huggingface.co/datasets/luzimu/WebGen-Bench
+  split: Official HF dataset exposes train and test loading examples; pin exact dataset revision, benchmark subset, generated-site
+    outputs, and evaluator configuration before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official Hugging Face dataset lists MIT; repository license should still be checked at the commit used for code
+    reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2505.03733'
+  known_failure_modes:
+  - UI-agent evaluator errors can mislabel generated websites.
+  - Generated website startup failures, dependency versions, prompt/scaffold settings, and browser environment can change
+    scores.
+  - Public benchmark tasks can contaminate future training data despite the paper's decontamination procedure for WebGen-Instruct.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, GitHub, and HF sources verify authors, CUHK MMLab institution line, code, MIT dataset license, 101
+    benchmark instructions, 647 test cases, and 6,667 WebGen-Instruct examples. Appendix Table 8 reports Total 667 despite
+    category counts summing to 647, so count-sensitive reuse should pin and recount the dataset revision; per-author affiliation
+    split and exact evaluator/runtime revisions remain review targets.
+inclusion_reason: Evaluates building interactive web apps from scratch.
+related: []
+tags:
+- benchmark
+- software_engineering_agent_benchmark
+- web-swe-agents
+why_it_matters: Evaluates building interactive web apps from scratch.
+status: verified
+needs:
+- 'needs_audit: pin code commit, HF dataset revision, generated-site outputs, UI-agent model/prompt, browser/runtime, and
+  dependency versions'
+one_line_summary: WebGen-Bench exposes website generation with browser-executed functional tests as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, GitHub, and HF sources verify authors, CUHK MMLab institution line, code, MIT dataset license, 101
+    benchmark instructions, 647 test cases, and 6,667 WebGen-Instruct examples. Appendix Table 8 reports Total 667 despite
+    category counts summing to 647, so count-sensitive reuse should pin and recount the dataset revision; per-author affiliation
+    split and exact evaluator/runtime revisions remain review targets.
+category_ids:
+- benchmarks_evaluation_surfaces

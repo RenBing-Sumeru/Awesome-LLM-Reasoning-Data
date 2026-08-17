@@ -1,0 +1,253 @@
+id: agent-island-2026
+title: 'Agent Island: A Saturation- and Contamination-Resistant Benchmark from Multiagent Games'
+year: 2026
+venue: arXiv preprint
+authors:
+- Connacher Murphy
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- multiagent_social_strategy
+- behavioral_analysis
+training_use:
+- evaluation
+- audit
+construction_layer:
+- self_play_anchor
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.04312
+  paper_pdf: https://arxiv.org/pdf/2605.04312v1
+  arxiv: https://arxiv.org/abs/2605.04312
+  code: https://github.com/connachermurphy/agent-island
+  code_snapshot: https://github.com/connachermurphy/agent-island/tree/e0fa0ee3944f61c97f3d1e64bae8bbd0e9901742
+  replication_code: https://storage.googleapis.com/agent-island/code/agent-island-replication-anonymous.zip?generation=1778013803303358
+  data: https://storage.googleapis.com/agent-island/dataset/agent-island-paper-dataset.json?generation=1778013926769406
+  dataset_manifest: https://storage.googleapis.com/agent-island/dataset/current_paper_games.json?generation=1778013927385888
+  dataset_card: https://storage.googleapis.com/agent-island/metadata/croissant.json?generation=1778013725204751
+  logs: https://storage.googleapis.com/agent-island/logs/
+  logs_browser: https://www.agentisland.ai/logs
+  live_rankings: https://storage.googleapis.com/agent-island/rankings/latest.json
+  project: https://www.agentisland.ai/
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.48550/arXiv.2605.04312
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2605.04312
+data_object:
+  object_type: A frozen evaluation corpus of complete multiagent social-strategy game episodes plus a continuously updated
+    live benchmark over the same game/log schema.
+  prompt_source: A fixed Agent Island rules prompt configures seven-player games. The first five rounds contain private sidebars,
+    public pitches, private elimination votes and rationales, elimination, and memory consolidation; round six contains finalist
+    pitches and votes from the five eliminated players.
+  trace_author: Seven randomly selected evaluated language-model agents jointly generate each episode. Raw logs map anonymized
+    player labels to model identifiers and preserve provider-exposed reasoning where available.
+  answer_format: One JSON file per game with top-level game configuration/status, player records, aggregate parser/usage statistics,
+    and a six-round history ending in a selected winner.
+  process_fields:
+  - game.id
+  - game.timestamp
+  - game.num_players
+  - game.num_rounds
+  - game.phases
+  - game.round_phase_overrides
+  - game.round_type_overrides
+  - game.phase_config
+  - game.rules_prompt
+  - game.status
+  - game.error
+  - players.<player_id>.player_id
+  - players.<player_id>.character_prompt
+  - players.<player_id>.model
+  - players.<player_id>.client_kwargs
+  - players.<player_id>.memory_strategy
+  - players.<player_id>.player_type
+  - stats.choice_parse_failures
+  - stats.reasoning_extraction_failures
+  - stats.responses
+  - stats.cost
+  - stats.usage
+  - history.<round>.round_index
+  - history.<round>.final_round
+  - history.<round>.active_player_ids
+  - history.<round>.eliminated_player_ids
+  - history.<round>.vote_tally
+  - history.<round>.selected_player
+  - history.<round>.events
+  - event.heading
+  - event.role
+  - event.prompt
+  - event.content
+  - event.visibility
+  - event.active_visibility
+  - event.reasoning
+  - event.metadata
+  - event.timestamp
+  observation: Each agent receives a visibility-filtered history containing narrator events, sidebar messages, public pitches,
+    vote prompts/results, elimination notifications, and its consolidated memory context. The released event object records
+    visibility rather than only a flattened public transcript.
+  action_space:
+  - select a sidebar partner
+  - send alternating private sidebar messages
+  - make a public advancement or finalist pitch
+  - submit a private elimination or winner vote
+  - supply a vote rationale
+  - consolidate memory
+  environment_or_substrate: Agent Island's configurable Python game engine, closed model APIs accessed through OpenRouter,
+    random player/order/tie draws seeded from the game ID, and a public GCS log/ranking surface.
+  verifier_or_reward: A parser extracts sidebar choices and votes; the environment tallies votes, breaks ties uniformly at
+    random, eliminates one player per early round, and names one final winner. A Bayesian Plackett-Luce model consumes each
+    player set and winner to estimate posterior skills and uncertainty. Intermediate claims, persuasion quality, and reasoning
+    correctness are not independently verified.
+  terminal_predicate: After five eliminations, the two remaining players pitch and the five eliminated players vote; the finalist
+    with the most parsed votes wins, with a uniform random tie break. Replication keeps only games whose status is completed
+    and whose final round has a parsed selected player.
+  provenance: Rules/config and seven sampled model IDs -> private/public model interactions and parser outputs -> five eliminations
+    -> final jury vote and winner -> structured JSON log -> frozen 999-ID paper manifest or later live bucket -> Plackett-Luce
+    ranking and behavioral vote analysis.
+recipe_metadata:
+  base_model: 'There is no single base model: the frozen paper dataset contains 49 evaluated model identifiers, and each game
+    samples seven distinct models without replacement; exact provider checkpoint revisions are unknown.'
+  teacher: unknown
+  generator: The evaluated language models are both subjects and episode generators; other agents' adaptive messages and votes
+    form the changing environment.
+  prompt_task_source: One low-stakes, Survivor-inspired social-strategy rules prompt rather than a static task bank. The exact
+    rules prompt is serialized in each inspected log.
+  filtering_rule: For the paper analysis, keep completed games with a parsed final winner. For same-provider preference, keep
+    final-round votes from games whose two finalists are from different providers and require parsed vote metadata.
+  sampling_protocol: Seven models are drawn without replacement per game; the same provider may appear multiple times, but
+    the same model cannot. Some low-performing, unreliable, or costly models were removed from the active pool over time,
+    while their prior games remain in the dataset.
+  rollout_count: 'Frozen paper manifest: 999 completed games. Live benchmark observed 2026-07-20: 1,270 games in the current
+    ranking source; this live count is not a paper result.'
+  temperature: unknown
+  inference_budget: Per-event and aggregate token/cost fields are present in logs, but decoding budgets, complete provider
+    settings, total generation compute, worker type, memory, and wall-clock time are not disclosed.
+  optimizer_or_scaffold: Bayesian Plackett-Luce Gibbs sampling uses Gamma(1,1) priors, 2,000 iterations, 500 burn-in iterations,
+    and seed 42. No policy optimizer or training scaffold is used.
+audit:
+  source_mixture: Synthetic interactions among 49 model identifiers in the frozen paper set, with model participation frequencies
+    affected by model availability, provider reliability, performance-based disabling, and compute cost.
+  split: No train/dev/test split is defined. Reproduction uses a frozen 999-game evaluation manifest; the live bucket is a
+    growing continuation and must not be substituted for the paper set.
+  decontamination: unknown
+  benchmark_overlap: Agent Island avoids a reusable static item bank by matching adaptive agents, but the fixed public rules
+    prompt, public engine, model APIs, and published logs remain visible. No model-pretraining or post-training overlap audit
+    is reported.
+  license: The arXiv paper and frozen game-log dataset metadata declare CC BY 4.0. The official game-engine repository is
+    MIT at the pinned commit. The downloadable anonymous replication ZIP contains no license file and explicitly says the
+    identifying repository license was excluded, so replication-code reuse terms are unknown.
+  lineage: Agent Island config/engine and model APIs -> seven-agent episode -> parser metadata/vote tallies -> completed winner-bearing
+    JSON -> 999-game manifest SHA-256 73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad -> Plackett-Luce posterior
+    and same-provider analysis. Exact engine commit and model snapshots are not bound per log.
+  release_version: 'Paper: arXiv v1 (2026-05-05). Frozen dataset: version 1.0.0; manifest object generation 1778013927385888
+    and SHA-256 73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad. Replication ZIP: GCS generation 1778013803303358
+    and SHA-256 5b2c7c5262a46c65b51b659b9c3c0b4edb7eb8cf443cb6d2a4489d2d673e8b2d. Engine: commit e0fa0ee3944f61c97f3d1e64bae8bbd0e9901742
+    with no tag/release. Live ranking source: mutable, timestamped 2026-07-02 15:26:25.976235+00:00 when audited.'
+  artifact_hashes:
+    frozen_dataset_index_sha256: b5f9e21035e3e9cdde8fb67c6ce40a81bd29d9381b909649ea522f174e433739
+    frozen_manifest_sha256: 73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad
+    croissant_sha256: ba196aa673ba92a33c3d4856651a8eb0967c36744b34147a6a19094ae81614e8
+    replication_zip_sha256: 5b2c7c5262a46c65b51b659b9c3c0b4edb7eb8cf443cb6d2a4489d2d673e8b2d
+    audited_live_rankings_sha256: 2e8a9e287fcd600663eac3acde171de1f120436d340fd16f845734ccbf82250c
+  successful_and_failed_sample_retention: The paper set retains 999 completed games with parsed final winners. Croissant metadata
+    says incomplete games, games without final selected players, and unparsed votes needed for vote analysis are excluded.
+    Counts, IDs, logs, and reasons for all excluded/failed attempts are unknown.
+  privacy_or_consent: Croissant metadata describes synthetic model-model interactions with no intentional human-subject or
+    personal-sensitive-data collection. Provider terms and any incidental model-generated sensitive content were not independently
+    audited.
+  live_snapshot: On 2026-07-20, direct retrieval of rankings/latest.json returned num_games=1270 and 62 ranking rows; the
+    official site code displays only games_played>=10, yielding 59 displayed models. The GCS log prefix contained exactly
+    1,270 downloadable JSON objects totaling 4,708,720,924 bytes. Earlier 1,030-game/48-model states are historical live snapshots,
+    not the current source and not paper results.
+  known_failure_modes:
+  - The Plackett-Luce model has no matchup effects, although the paper's same-provider analysis shows that opponent/provider
+    composition changes final votes.
+  - Vote and sidebar choices depend on parser extraction; parser failures can remove votes from analyses or block a game from
+    the frozen paper set.
+  - Uniform random tie breaks inject outcome variance that the winner-only model does not separately attribute.
+  - Only the per-game winner enters skill estimation; persuasive intermediate behavior, deceptive claims, rationales, and
+    near-wins are not directly scored.
+  - The low-stakes game gives models no explicit reward and may not predict behavior in higher-stakes or real-world interactions.
+  - The benchmark can still saturate if frontier models asymptote and repeatedly trade wins.
+  - Models were disabled over time for performance, reliability, or cost, creating a changing and nonuniform matchup schedule.
+  - Live ranks, normalization, model pool, and log count drift; citing the website without a retrieval date can silently change
+    the evaluated object.
+  - The frozen manifest does not bind exact engine commit, dependency environment, OpenRouter/provider settings, or immutable
+    model snapshots to every log.
+  - The replication ZIP reproduces analyses but has no included license and does not generate games; the engine repository
+    has no release tag linked to the paper dataset.
+  - Excluded failed/incomplete games and unparsed attempts are not exposed as an auditable rejection ledger.
+  citation_status: verified
+  confidence: high
+  notes: The full arXiv v1 paper/source and appendices, project site and current client bundle, GCS paper dataset/index/manifest/Croissant
+    metadata/replication ZIP/live rankings/log inventory, a frozen raw log, and the official engine repository/commit/license/tag/release
+    state were inspected. Paper analyses and 1,270 full logs were not independently rerun or exhaustively decoded.
+  remaining_unknowns:
+  - Exact model checkpoint/API revisions, decoding settings, and provider-side behavior for each frozen game.
+  - Exact game-engine commit, dependency lock, and runtime environment used for every paper log.
+  - Total simulation compute, worker configuration, memory, wall-clock time, and generation retry budget.
+  - Complete ledger of incomplete/failed games, parsing failures, dropped votes, and retention reasons.
+  - License for the anonymous replication-code ZIP.
+  - Any explicit decontamination or model-training-overlap audit beyond use of adaptive opponents.
+inclusion_reason: Agent Island exposes a concrete, downloadable full-episode multiagent data object whose feedback is produced
+  by adaptive agent votes, deterministic environmental aggregation, and Bayesian winner ranking; its frozen/live split also
+  makes version drift, parser selection, and matchup effects first-class audit concerns.
+related: []
+tags:
+- agent-island
+- multi-agent-benchmark
+- agent-trajectories
+- environment-interaction
+- social-strategy
+- full-episode-logs
+- bayesian-plackett-luce
+- behavioral-audit
+- live-benchmark
+- version-drift
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Agent Island releases a frozen CC BY 4.0 manifest of 999 seven-agent social-strategy episodes and ranks
+  winner outcomes with Bayesian Plackett-Luce, while its separate live leaderboard continues to drift.
+why_it_matters: It turns persuasion, alliances, elimination votes, rationales, parser outputs, and final jury decisions into
+  an auditable full-episode benchmark object, but also demonstrates why live counts, matchup effects, generator versions,
+  discarded runs, and training/evaluation boundaries must remain explicit.
+card: null
+needs:
+- 'needs_generator_binding: bind every frozen game to an engine commit, dependency lock, model/API snapshot, decoding configuration,
+  and game seed'
+- 'needs_failure_ledger: publish incomplete/failed/unparsed game IDs, raw logs where safe, counts, and selection reasons'
+- 'needs_compute_metadata: report simulation workers, memory, wall-clock time, total model calls/tokens/cost, and retry policy'
+- 'needs_replication_license: publish explicit reuse terms for the anonymous analysis-code ZIP'
+- 'needs_live_versioning: publish immutable manifests/hashes for each leaderboard update and clearly archive ranking snapshots'
+- 'needs_matchup_audit: evaluate schedule imbalance, provider/model interaction effects, and sensitivity to tie breaks and
+  winner-only scoring'
+- 'needs_decontamination: document fixed-prompt/log exposure and any downstream model-training overlap checks'
+- 'needs_card_upgrade: replace generic bilingual text with the verified episode schema, feedback contract, artifacts, static/live
+  boundary, and audit risks'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: arXiv v1 identity/full text/source/license, the project and live ranking source, all frozen GCS dataset artifacts
+    and hashes/generations, direct log downloads/schema, replication archive, and the official engine repository at a pinned
+    commit with MIT license were verified. Analysis reproduction, exhaustive log decoding, and exact generator/model binding
+    remain outstanding.

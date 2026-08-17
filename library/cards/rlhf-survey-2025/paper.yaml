@@ -1,0 +1,118 @@
+id: rlhf-survey-2025
+title: A Survey of Reinforcement Learning from Human Feedback
+year: 2025
+venue: TMLR 2025
+authors:
+- Timo Kaufmann
+- Paul Weng
+- Viktor Bengs
+- Eyke Hüllermeier
+source_role:
+- survey_background
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- large-language-models
+- field-surveys
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2312.14925
+  arxiv: https://arxiv.org/abs/2312.14925
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: https://openreview.net/forum?id=f7OkIurx4b
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Preference comparisons or ratings, learned reward functions, policy responses, and evaluation outcomes across
+    the RLHF pipeline.
+  trace_author: Humans provide demonstrations, interventions, corrections, comparisons, ratings, critiques, or language feedback;
+    proxies may supply AI feedback.
+  answer_format: Demonstrations, pairwise or ranked preferences, scalar ratings, corrections, critiques, and other domain-specific
+    feedback records.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Cross-domain RLHF systems in control, robotics, language models, games, and generative applications.
+  verifier_or_reward: Humans or preference proxies label outputs, reward models generalize those labels, and policy objectives
+    consume the learned signal.
+  terminal_predicate: Method-specific held-out preference, reward, policy, safety, or task evaluation; the survey defines
+    no universal success predicate.
+recipe_metadata:
+  base_model: Not applicable; this is a cross-domain survey rather than one model recipe.
+  teacher: Humans are the defining feedback source, with AI or proxy feedback covered as related variants.
+  generator: Decomposes RLHF into feedback acquisition, reward-model estimation, and policy optimization while comparing assumptions
+    and alternatives at each stage.
+  filtering_rule: Humans or preference proxies label outputs, reward models generalize those labels, and policy objectives
+    consume the learned signal.
+  sampling_protocol: Surveyed methods use passive, active, online, offline, and co-generative query schemes; no single protocol
+    is prescribed.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not applicable to a survey; query and rollout budgets are properties of each cited RLHF implementation.
+  optimizer_or_scaffold: Decomposes RLHF into feedback acquisition, reward-model estimation, and policy optimization while
+    comparing assumptions and alternatives at each stage.
+audit:
+  source_mixture: Preference comparisons or ratings, learned reward functions, policy responses, and evaluation outcomes across
+    the RLHF pipeline.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'field surveys lineage; closest comparisons: instructgpt-2022, direct-preference-optimization-2023.'
+  known_failure_modes:
+  - A survey cannot validate every implementation detail; preference distributions, annotator variation, and reward overoptimization
+    remain system-specific.
+  citation_status: verified
+  confidence: high
+  notes: Official TMLR OpenReview record and arXiv paper checked; affiliations are LMU/MCML Munich, Duke Kunshan University,
+    and DFKI.
+inclusion_reason: A formal map of RLHF from preference collection through reward learning and policy optimization.
+related:
+- instructgpt-2022
+- direct-preference-optimization-2023
+tags:
+- field-surveys
+- arxiv-2312.14925
+- primary-link-checked
+status: verified
+one_line_summary: This survey separates RLHF into feedback acquisition, reward learning, and policy learning across control,
+  robotics, and LLMs.
+why_it_matters: It reveals which data and assumptions support each stage instead of treating RLHF as one opaque operation.
+reading_priority: recommended
+paper_type: Cross-domain RLHF survey and audit framework
+best_for: Researchers locating feedback, reward-model, and policy assumptions before reading or designing a concrete RLHF
+  system.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official TMLR OpenReview record and arXiv paper were checked; no new dataset or code artifact is claimed.
+category_ids:
+- foundations_and_primers
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: foundations_and_primers
+  direction_label: field surveys
+  selection_priority_score: 12
+  selection_score_breakdown:
+    recency: 4
+    impact: 3
+    venue: 3
+    institution: 2

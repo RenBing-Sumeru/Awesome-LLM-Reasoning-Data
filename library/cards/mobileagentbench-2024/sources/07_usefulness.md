@@ -1,0 +1,5 @@
+MobileAgentBench is useful as an implementation reference for building a runnable mobile-agent benchmark rather than a paper-only task list. It suggests storing task instruction, initial emulator state, app/data prerequisites, observation channel, action interface, action trace, reset procedure, validator code, timeout or step budget, and per-task success result.
+
+For atlas work, its value is the harness contract: executable environment plus task-specific validators. This helps separate benchmark design from agent scaffolding and supports audit questions such as whether a failure came from perception, action formulation, app drift, validator weakness, or model planning.
+
+The safest direct use is evaluation and reproducibility testing. A derived recipe should keep provenance for the task suite, emulator image, app versions, dependencies, agent prompts, model identifiers, and scoring scripts. When used for training or agent tuning, public-task contamination and license constraints must be logged explicitly.

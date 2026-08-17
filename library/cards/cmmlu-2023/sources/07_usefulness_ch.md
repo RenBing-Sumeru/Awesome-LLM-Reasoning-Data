@@ -1,0 +1,1 @@
+CMMLU 可作为静态多语言 benchmark record 的 schema：保留 subject、question、choices、answer key、prompt mode、few-shot examples、model output、parsed option、correctness 和 harness version。它适合做中文基准覆盖、多语言污染检查，以及 direct-answer 与 CoT prompting 对比。在 atlas 中，中国特定子集分数要和 overall average 分开。

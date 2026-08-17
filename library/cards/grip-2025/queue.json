@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "图方法构造数学问题-解答对数据集，较为新颖",
+    "updated_at": "2026-07-12T14:22:00Z"
+  },
+  "updated_at": "2026-07-12T14:22:00Z"
+}

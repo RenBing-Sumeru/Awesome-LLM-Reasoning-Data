@@ -1,0 +1,4 @@
+The report gives a high-level, two-stage account: supervised learning on specialized data teaches screen perception and input control, then reinforcement learning supplies higher-level reasoning, error correction, and adaptation to unexpected events. It also says the training mixture includes select public data—mostly industry-standard machine-learning datasets and web crawls—and human-trainer-developed datasets showing how to solve computer tasks.
+
+That is a useful disclosure boundary, not a released data object. The report does not specify the individual task, observation, action, trace, reward, or terminal-outcome fields. Nor does it state the reinforcement-learning reward or verifier contract. Accordingly, this entry is a `model_report` for Track 12, with `partial` status and no claim of RLVR or of reusable agent trajectories.
+

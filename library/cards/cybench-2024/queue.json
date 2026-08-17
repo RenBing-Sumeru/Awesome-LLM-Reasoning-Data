@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:11:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "OpenAI 和 Anthropic 的安全研究或系统卡明确使用过 网络安全领域高 ref200+",
+    "updated_at": "2026-07-15T12:11:06Z"
+  }
+}

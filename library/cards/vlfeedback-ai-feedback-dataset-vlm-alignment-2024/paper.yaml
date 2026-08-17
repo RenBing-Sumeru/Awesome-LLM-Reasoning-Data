@@ -1,0 +1,112 @@
+id: vlfeedback-ai-feedback-dataset-vlm-alignment-2024
+title: 'VLFeedback: A Large-Scale AI Feedback Dataset for Large Vision-Language Models Alignment'
+year: 2024
+venue: EMNLP 2024
+authors:
+- Lei Li
+- Zhihui Xie
+- Mukai Li
+- Shunian Chen
+- Peiyi Wang
+- Liang Chen
+- Yazheng Yang
+- Benyou Wang
+- Lingpeng Kong
+- Qi Liu
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+- pairwise_preference
+domains:
+- vision-language
+- alignment
+- safety
+training_use:
+- reward_modeling
+- preference_learning
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.emnlp-main.358/
+  arxiv: null
+  code: https://github.com/vlf-silkie/VLFeedback
+  data: https://huggingface.co/datasets/MMInstruction/VLFeedback
+  project: https://vlf-silkie.github.io/
+  huggingface: https://huggingface.co/datasets/MMInstruction/VLFeedback
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.358
+  venue: https://aclanthology.org/2024.emnlp-main.358/
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.358/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated multimodal instructions from general, academic, robustness, domain-specific, and red-teaming sources.
+  trace_author: A pool of 12 LVLMs generates candidates; GPT-4V provides scores and rationales.
+  answer_format: Image, instruction, model responses, aspect scores, rationales, and derived preference pairs.
+  process_fields:
+  - image
+  - instruction
+  - responses
+  - helpfulness
+  - visual_faithfulness
+  - ethical_considerations
+  - rationale
+  environment_or_substrate: Image-conditioned vision-language generation.
+  verifier_or_reward: GPT-4V ratings on helpfulness, visual faithfulness, and ethical considerations.
+  terminal_predicate: A released multimodal instruction with scored candidate responses and rationale.
+recipe_metadata:
+  base_model: Qwen-VL-Chat 7B is the primary DPO base; 12 LVLMs generate candidates.
+  teacher: GPT-4V (gpt-4-vision-preview)
+  generator: 12-LVLM response pool
+  filtering_rule: At least four sampled model responses per instruction; ties discarded when deriving DPO pairs.
+  sampling_protocol: 82.4K instructions, 67K unique images, and 399.4K preference pairs reported in paper.
+  rollout_count: 4
+  temperature: See original implementations
+  inference_budget: unknown
+  optimizer_or_scaffold: DPO with average score over three feedback aspects
+audit:
+  source_mixture: Diverse image-instruction sources, 12-model candidate pool, and GPT-4V AI feedback.
+  split: Check official HF revision and files before reuse.
+  decontamination: Only source training splits were sampled; audit downstream benchmark overlap independently.
+  license: Verify HF card and source-image rights before reuse.
+  lineage: EMNLP 2024 paper, Silkie project, official GitHub, and MMInstruction/VLFeedback dataset.
+  known_failure_modes:
+  - GPT-4V visual misjudgment or conflicting rationale can create wrong labels
+  - AI feedback inherits judge bias
+  - Source-image rights require separate audit
+  citation_status: verified
+  confidence: high
+  notes: Verified against EMNLP PDF, official project, repository, and dataset page on 2026-07-14.
+inclusion_reason: Large public multimodal AI-feedback resource for VLM alignment with explicit scoring dimensions and human-agreement
+  check.
+related: []
+tags:
+- feedback-data
+- vision-language
+- reward-modeling
+- ai-feedback
+one_line_summary: VLFeedback releases GPT-4V-scored multimodal responses across helpfulness, visual faithfulness, and ethical
+  considerations for VLM preference training.
+why_it_matters: It exposes a scalable multimodal feedback contract while making judge agreement and failure modes inspectable.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: EMNLP PDF, official project, repository, and dataset review
+  confidence: high
+  notes: Title, authors, affiliations, data, code, and project verified.
+category_ids:
+- preference_reward_feedback_data

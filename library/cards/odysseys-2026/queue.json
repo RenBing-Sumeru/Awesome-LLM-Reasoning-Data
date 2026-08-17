@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "200 条任务记录和 1,225 个 rubric 检查点，数据仓库完备",
+    "updated_at": "2026-07-22T09:39:51Z"
+  },
+  "updated_at": "2026-07-22T09:39:51Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

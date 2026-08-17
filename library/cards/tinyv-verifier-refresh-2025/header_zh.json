@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TinyV 先让 Prime Verifier 检查答案，仅在其拒绝时调用 1.5B 学习式验证器；公开对象包括 159,136 条平衡 SFT 数据、7,009 条困难提示和 250 条 HardVerify-Math，但 638K 前体池、实验所用 5K 清单、双裁判账本与 held-out 验证器评测未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "验证器刷新、开放数据发布与 RLVR 奖励审计",
+  "best_for_ch": "研究数学答案等价、Prime 与 learned verifier 的分层奖励、假阴性修复、LLM-as-a-judge 数据构建，以及开放配方的谱系、许可、split 和实现漂移",
+  "confidence_ch": "高",
+  "authors_ch": "Zhangchen Xu、Yuetai Li、Fengqing Jiang、Bhaskar Ramasubramanian、Luyao Niu、Bill Yuchen Lin、Radha Poovendran",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

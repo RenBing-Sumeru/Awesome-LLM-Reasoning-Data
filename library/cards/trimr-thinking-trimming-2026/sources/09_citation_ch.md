@@ -1,0 +1,1 @@
+Lin, Weizhe，Xing Li，Zhiyuan Yang，Xiaojin Fu，Hui-Ling Zhen，Yaoyuan Wang，Xianzhi Yu，Wulong Liu，Xiaosong Li，Mingxuan Yuan。2026。《TrimR：面向高效测试时扩展的基于验证器、无需训练的思维裁剪》。载于国际学习表征会议。https://iclr.cc/virtual/2026/poster/10007390

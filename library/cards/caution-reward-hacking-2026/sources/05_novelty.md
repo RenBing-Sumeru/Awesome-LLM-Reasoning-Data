@@ -1,0 +1,3 @@
+Earlier mitigation either tries to make the reward model universally stronger or constrains the entire selected distribution near the base generator. Caution instead changes the selection score locally: it penalizes each response according to error in predicting reward-model representations, allowing slightly atypical candidates when their uncertainty is low. It adapts RND-style prediction error from an exploration bonus to an offline caution penalty. The novelty is this reward-aware, per-response pessimism, not merely using OOD detection or lower confidence bounds.
+
+Its practical distinction is that the predictor is trained offline and adds only parallel forward computations at selection time.

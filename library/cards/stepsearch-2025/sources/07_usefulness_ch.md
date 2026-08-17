@@ -1,0 +1,1 @@
+对 rollout、搜索与测试时轨迹数据这一分类，StepSearch 可作为数据 schema 和构造 recipe 的实例。若要形成可复用记录，应保存原始问题、分解后的子问题、候选查询、返回文档标识或快照、检索历史状态、information-gain 项、redundancy 项、总 step reward、格式与答案奖励、停止原因和最终答案。这类记录可用于 agent RL、过程奖励消融、verifier 校准、查询策略分析，以及全局监督与步级监督的比较。论文为 agent training 和测试时搜索研究提供了依据，但本 Card 不声称目前已经核验到可独立复用的 StepSearch 轨迹数据集。

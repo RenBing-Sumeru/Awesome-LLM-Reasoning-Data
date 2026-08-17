@@ -1,0 +1,1 @@
+The ACL abstract identifies two settings with particular value: detail-oriented reasoning and imagined-world reasoning. It also names efficiency, data quality, and generative capability as open challenges. Treat those as screening criteria when reading a primary result: ask which visual state is observed, which is generated, and how each one is checked against the task.

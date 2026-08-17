@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "在 PPO 阶段之间，用当前策略相对 SFT 行为策略的重要性权重重训奖励模型；278,496 条偏好记录与标签不变，改变的是有效训练分布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "离策略奖励模型校正与刷新配方",
+  "best_for_ch": "关注RLHF分布漂移、重要性加权、奖励模型刷新和离线偏好数据的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Johannes Ackermann、Takashi Ishida、Masashi Sugiyama",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T08:21:26Z"
+}

@@ -1,0 +1,3 @@
+# Novelty
+
+Earlier visual CoT data usually supplied free-form explanations, while visual-program systems executed tools at inference without turning their evidence into a compatible end-to-end training record. CogCoM changes the supervision object: each reasoning step names a visual manipulation, carries its concrete return, participates in an answer-terminating execution path, and is serialized into multi-turn VQA. The direction signal is this auditable bridge from LLM planning and visual-tool execution to reusable multimodal demonstrations, plus a matched data ablation. OCR, grounding, program decomposition, golden-answer filtering, and multi-turn VLM training are not individually new, and the paper does not prove that its six-operation vocabulary is complete.

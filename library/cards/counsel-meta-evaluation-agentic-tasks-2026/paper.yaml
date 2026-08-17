@@ -1,0 +1,109 @@
+id: counsel-meta-evaluation-agentic-tasks-2026
+title: 'Counsel: A Meta-Evaluation Dataset for Agentic Tasks'
+year: 2026
+venue: arXiv preprint
+authors:
+- Sashank Pisupati
+- Henry Broomfield
+- Eujeong Choi
+- Antonia Calvi
+- Charlie Wang
+- Roman Engeler
+- Max Bartolo
+- Patrick Lewis
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- agent-evaluation
+- meta-evaluation
+- process-critique
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2606.21627
+  arxiv: https://arxiv.org/abs/2606.21627
+  code: null
+  project: https://huggingface.co/datasets/AtlaAI/counsel
+  data: https://huggingface.co/datasets/AtlaAI/counsel
+  huggingface: https://huggingface.co/datasets/AtlaAI/counsel
+  venue: https://arxiv.org/abs/2606.21627
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: tau-bench customer-support and DA-Code coding-agent trajectories.
+  trace_author: Open-weight LLM judges generate process critiques; human annotators meta-evaluate each flagged error.
+  answer_format: Trajectory, judge critique, flagged error location, reasoning, and human meta-evaluation label.
+  process_fields:
+  - trajectory
+  - critique
+  - flagged_error
+  - error_location
+  - reasoning
+  - meta_label
+  environment_or_substrate: Customer-support and coding-agent benchmarks.
+  verifier_or_reward: Human meta-evaluators label critiques as spot on, correct location but poor reasoning, or should not
+    have flagged.
+  terminal_predicate: Human alignment of error location and critique reasoning.
+recipe_metadata:
+  base_model: See the official paper and released implementation for the generating and evaluated models.
+  teacher: Expert human annotators; the released labels are the supervision signal.
+  generator: Agent systems running the released benchmark tasks.
+  filtering_rule: Use the paper's trace-selection and annotation-adjudication protocol.
+  sampling_protocol: 225 trajectories with roughly 1.13K human meta-evaluation annotations.
+  inference_budget: Use the official evaluation configuration.
+  optimizer_or_scaffold: Trace-level diagnosis and process-supervision evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Task instances, agent execution traces, human process annotations, and benchmark metadata.
+  split: 225 trajectories with roughly 1.13K human meta-evaluation annotations.
+  decontamination: Do not train on released evaluation traces before reporting results on the same benchmark.
+  license: The official dataset is permissively licensed; consult its Hugging Face card for exact terms.
+  lineage: arXiv paper, first-page affiliation block, and official AtlaAI Counsel dataset card.
+  known_failure_modes:
+  - Two agent benchmarks limit coverage
+  - Meta-evaluation labels depend on the judge critique distribution
+  - Agreement on location exceeds agreement on reasoning
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, first-page affiliation block, and official AtlaAI Counsel dataset page.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- agent-trajectories
+- reasoning
+one_line_summary: Counsel meta-evaluates process-level agent critiques with human labels that separate correct locations,
+  sound reasoning, and false alarms.
+why_it_matters: It supervises whether a process critique is justified, rather than treating the judge's own flag as ground
+  truth.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, first-page affiliation block, and official AtlaAI Counsel dataset page.
+category_ids:
+- process_trace_supervision_data

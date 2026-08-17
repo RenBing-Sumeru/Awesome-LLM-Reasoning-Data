@@ -1,0 +1,4 @@
+For `rollout_search_test_time_trace_data`, GroundedPRM is a useful specification for a dual-signal record: keep the local tool query/response and the global trajectory outcome rather than collapsing both into one unexplained label. It can guide PRM dataset design, verifier-coverage studies, credit-assignment ablations, and reward-guided step selection.
+
+A reusable implementation should retain MATH source ID/split, policy checkpoint, every node/action, K/R/c/beta/gamma, visits, seeds, tool query/response/parser result, final answer extraction, local and aggregate rewards, filter reason, retained rationale, and code/environment revision. Accepted and rejected branches should be released together. Evaluation should report verifier agreement by step type and equal-budget selector comparisons.
+

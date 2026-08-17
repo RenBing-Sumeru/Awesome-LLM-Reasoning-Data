@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将 MQM 维度拆分、维度内辩论与最终综合结合，用于细粒度机器翻译评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "自动评审可靠性与 LLM-as-a-judge 评测论文",
+  "best_for_ch": "需要构建或审计机器翻译 LLM 评审器的研究者。",
+  "confidence_ch": "高：ACL 正式论文，代码、提示词和评测材料公开。",
+  "authors_ch": "Zhaopeng Feng, Jiayuan Su, Jiamei Zheng, Jiahan Ren, Yan Zhang, Jian Wu, Hongwei Wang, Zuozhu Liu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

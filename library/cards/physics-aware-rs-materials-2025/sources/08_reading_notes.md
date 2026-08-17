@@ -1,0 +1,5 @@
+- Read §3 and Appendix A together: acceptance gates, temperature increase, and halting jointly define the dataset.
+- The PLQY envelope constrains an EQE number; it does not certify causal reasoning prose.
+- Separate PaRS acceptance from the external DeepSeek-R1 judge used only for evaluation.
+- Treat the reported 6.4 candidates and 20% discard rate as aggregate author evidence, not released trace metadata.
+- Inspect wet-lab provenance and split overlap before any training use.

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "聚焦模型何时应拒答，补足仅看准确率的评测盲区。",
+    "updated_at": "2026-07-19T00:00:00Z"
+  },
+  "updated_at": "2026-07-18T13:26:52Z"
+}

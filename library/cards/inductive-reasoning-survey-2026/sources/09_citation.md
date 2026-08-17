@@ -1,0 +1,1 @@
+Kedi Chen, Dezhao Ruan, Yuhao Dan, Yaoting Wang, Siyu Yan, Xuecheng Wu, Yinqi Zhang, Qin Chen, Jie Zhou, Liang He, Biqing Qi, Linyang Li, Qipeng Guo, Xiaoming Shi, and Wei Zhang. 2026. A Survey of Inductive Reasoning for Large Language Models. Proceedings of ACL 2026 Long Papers, pages 31356–31382. https://aclanthology.org/2026.acl-long.1447/

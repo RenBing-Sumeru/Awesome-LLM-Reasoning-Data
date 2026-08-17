@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AWS 的 Nova 2 Lite 服务卡披露了高层来源类别、SFT/RLHF、过滤和评测层，但没有公开记录、奖励或可复现制品。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "云服务模型卡与数据披露台账",
+  "best_for_ch": "审查云端前沿模型的数据、反馈、运行时安全和审计边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Amazon Web Services",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

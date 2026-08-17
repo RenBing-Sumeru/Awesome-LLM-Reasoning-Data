@@ -1,0 +1,6 @@
+Table 2 fixes the scale and composition: 2.43 million Q&As over 52,000 training scenes and 0.51 million over 11,000 validation scenes, totaling 2.94 million Q&As over 63,000 scenes. Of these, 346,000 are interaction Q&As and 63,000 are ego-intention Q&As. The repository independently confirms the two archive names and the JSON field layout.
+
+Four people evaluated 1,610 Q&As by judging whether an answer included the correct answer. The paper reports 91.99% aggregate accuracy, 91.03% for interaction, and 87.50% for intention. It does not disclose a representative sampling design, inter-rater agreement, per-item labels, the size of the corrected subset, or whether evaluated rows are distributed with the release; these aggregate figures therefore cannot certify the other records.
+
+Motion-LLaVA is evaluated on 1,000 randomly selected validation Q&As using ROUGE, BLEU, METEOR, CIDEr, SPICE, GPT Score, and factual numerical metrics. It reports 56.2% accuracy within a 1.0-meter tolerance and median error 1.0 for factual answers. A downstream MultiPath++ experiment reports improvements when Motion-LLaVA interaction outputs are added. These results demonstrate studied uses and model behavior; they are not proof that each generated Q&A is correct, causally usable, uncontaminated, or safely licensed.
+

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ExpertLongBench 覆盖11项专业长文任务，用领域清单逐项验收输出，适合评估模型处理高要求长文交付的能力",
+    "updated_at": "2026-07-21T12:43:48Z"
+  },
+  "updated_at": "2026-07-21T12:43:48Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenResearcher 先建立离线证据库，再合成并筛选 9.7 万多条搜索、浏览与回答交错的长程研究轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "深度研究代理监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Li, Zhuofeng、Jiang, Dongfu、Ma, Xueguang、Zhang, Haoxiang、Nie, Ping、Zhang, Yuyu、Zou, Kai、Xie, Jianwen、Zhang, Yu、Chen, Wenhu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

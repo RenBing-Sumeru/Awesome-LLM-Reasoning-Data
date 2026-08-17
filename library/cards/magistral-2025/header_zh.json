@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Magistral 具体披露数学/代码筛选、结果奖励、异步 GRPO 和 Medium-to-Small 冷启动，但未发布来源清单、trace、完整测试和审计证据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型技术报告与数据披露账本",
+  "best_for_ch": "审计 RLVR、程序化验证和推理 trace 冷启动边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Mistral AI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

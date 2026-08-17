@@ -1,0 +1,118 @@
+id: theoremqa-2023
+title: 'TheoremQA: A Theorem-driven Question Answering Dataset'
+year: 2023
+venue: EMNLP 2023
+authors:
+- Wenhu Chen
+- Ming Yin
+- Max Ku
+- Pan Lu
+- Yixin Wan
+- Xueguang Ma
+- Jianyu Xu
+- Xinyi Wang
+- Tony Xia
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- math-science-theorem-use
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2305.12524
+  arxiv: https://arxiv.org/abs/2305.12524
+  doi: https://doi.org/10.18653/v1/2023.emnlp-main.489
+  code: https://github.com/TIGER-AI-Lab/TheoremQA
+  data: https://huggingface.co/datasets/TIGER-Lab/TheoremQA
+  project: https://github.com/TIGER-AI-Lab/TheoremQA
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/TheoremQA
+  venue: https://aclanthology.org/2023.emnlp-main.489/
+  openreview: null
+  acl: https://aclanthology.org/2023.emnlp-main.489/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GPT-4-assisted theorem enumeration refined by domain experts, followed by expert-sourced or expert-written
+    theorem-grounded questions from websites, books, and original authoring.
+  trace_author: Nine domain experts locate, modify, or create question-answer pairs; the benchmark does not release process
+    traces as supervision.
+  answer_format: 800 question-theorem-answer triples over 354 theorems, with final answers constrained to integer, float,
+    numeric list, boolean, or multiple-choice forms for automatic evaluation.
+  process_fields:
+  - theorem-grounded question
+  - associated theorem
+  - reference answer and answer type
+  - optional diagram input for 51 multimodal questions
+  - model output and extracted answer
+  environment_or_substrate: theorem-grounded QA across math, physics, EE, CS, and finance
+  verifier_or_reward: answer-level evaluator with extraction/normalization over constrained answer types
+  terminal_predicate: extracted final answer matches the reference answer under the official scoring rules
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: GPT-4 is used to propose candidate theorem inventories; domain experts perform theorem refinement and question
+    annotation.
+  generator: GPT-4-assisted theorem enumeration plus expert question sourcing, rewriting, and authoring.
+  filtering_rule: Discard or rewrite questions whose answers are difficult to evaluate automatically, and constrain retained
+    answers to numeric, boolean, or multiple-choice forms.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: domain_expert_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/pdf/2305.12524;
+    https://aclanthology.org/2023.emnlp-main.489/; https://github.com/TIGER-AI-Lab/TheoremQA'
+  split: Current artifact version, exact split policy, and inclusion of the 51 multimodal diagram questions should be pinned
+    before score reuse.
+  decontamination: Source questions were modified to mitigate contamination, but public benchmark records can leak into later
+    training data.
+  license: GitHub repository and Hugging Face dataset display MIT license; pin exact artifact revision before redistribution.
+  lineage: 'Primary lead: https://arxiv.org/abs/2305.12524'
+  known_failure_modes:
+  - Answer extraction can miss correct answers embedded in model reasoning text, making reported accuracy an approximate lower
+    bound.
+  - The constrained answer formats exclude formula, matrix, and figure outputs, which narrows theorem-use coverage.
+  - Scores can change with prompt format, Program-of-Thought tooling, evaluator version, dataset subset, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology, arXiv, GitHub, and Hugging Face sources verify EMNLP 2023 status, authors, Waterloo/UCSB/UCLA affiliations,
+    public dataset artifacts, 800 questions, 354 theorems, and expert-mediated construction.
+inclusion_reason: Tests theorem application rather than surface arithmetic.
+related: []
+tags:
+- benchmark
+- domain_expert_benchmark
+- math-science-theorem-use
+one_line: TheoremQA exposes theorem-grounded QA across math, physics, EE, CS, and finance as an auditable evaluation surface.
+why_it_matters: Tests theorem application rather than surface arithmetic.
+status: verified
+needs:
+- 'needs_audit: pin GitHub/Hugging Face artifact revision, split/version policy, evaluator implementation, prompt templates,
+  and multimodal subset handling'
+- 'needs_audit: pin split/version policy, evaluator implementation, prompt templates, and multimodal subset handling'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: TheoremQA exposes theorem-grounded QA across math, physics, EE, CS, and finance as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: ACL Anthology, arXiv, GitHub, and Hugging Face verify EMNLP 2023 status, authors, public artifacts, MIT license display,
+    800 questions, 354 theorems, and expert-mediated construction.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,109 @@
+id: visreason-visual-chain-of-thought-2026
+title: 'VisReason: A Large-Scale Dataset for Visual Chain-of-Thought Reasoning'
+year: 2026
+venue: ECCV 2026
+authors:
+- Lingxiao Li
+- Yifan Wang
+- Xinyan Gao
+- Chen Tang
+- Xiangyu Yue
+- Chenyu You
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- visual-chain-of-thought
+- multimodal-reasoning
+- spatial-grounding
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2511.17731
+  arxiv: https://arxiv.org/abs/2511.17731
+  code: null
+  project: https://lingxiao-li.github.io/visreason.github.io/
+  data: https://huggingface.co/datasets/Y-Research-Group/VisReason
+  huggingface: https://huggingface.co/datasets/Y-Research-Group/VisReason
+  venue: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Fine-grained recognition, document, text, and spatial visual tasks.
+  trace_author: Visual CoT generation follows a global-to-local multi-round workflow.
+  answer_format: Question, answer, image, bounding boxes, dataset metadata, multi-round region reasoning, and final reasoning.
+  process_fields:
+  - bboxs
+  - round1
+  - round2
+  - round3
+  - final_reasoning
+  - gt_in_final_crop_ratio
+  environment_or_substrate: Image region-of-interest selection, zooming, and verification.
+  verifier_or_reward: Region-grounding and final-answer evidence support multi-round visual reasoning supervision.
+  terminal_predicate: The final answer is visually grounded in the verified relevant region.
+recipe_metadata:
+  base_model: See the official project and data release for generation configurations.
+  teacher: Automated multi-round visual reasoning construction over source datasets.
+  generator: Global-to-local visual CoT with region selection and refinement.
+  filtering_rule: The released examples preserve answer-critical crop grounding and multi-round reasoning when available.
+  sampling_protocol: Read the full image, select a region of interest, refine/zoom where needed, and produce a visually grounded
+    final explanation.
+  inference_budget: The release supports variable multi-round depth; consult the project for details.
+  optimizer_or_scaffold: Visual CoT supervision for multimodal language models.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Multiple visual QA and grounding datasets with generated region-grounded process traces.
+  split: The release is organized by source dataset and train split; schemas vary across sources.
+  decontamination: Respect original source-dataset splits and do not train on evaluation images/questions.
+  license: The Hugging Face release lists a nonstandard license; consult the repository and upstream data sources.
+  lineage: ECCV 2026 project page, arXiv paper, and Y Research Group dataset release.
+  known_failure_modes:
+  - Dataset schemas differ across source domains
+  - Region selections may not reflect a model's true causal evidence
+  - Visual task coverage may not transfer to arbitrary images
+  citation_status: verified
+  confidence: high
+  notes: Verified the accepted ECCV 2026 project page, author affiliations, official project, arXiv paper, and the Y-Research-Group
+    dataset schema. No official code URL was resolved, so it is not asserted.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: 'VisReason supplies large-scale region-grounded visual CoT traces that teach a global-to-local routine:
+  inspect, localize, zoom, and verify before answering.'
+why_it_matters: Its traces bind intermediate reasoning to image regions, making visual process supervision more inspectable
+  than text-only rationales.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the accepted ECCV 2026 project page, author affiliations, official project, arXiv paper, and the Y-Research-Group
+    dataset schema. No official code URL was resolved, so it is not asserted.
+category_ids:
+- process_trace_supervision_data

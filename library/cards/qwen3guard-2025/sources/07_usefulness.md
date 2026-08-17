@@ -1,0 +1,4 @@
+For Track 12, this Card is useful because it makes a sharp distinction among three layers that are often collapsed: (1) a released moderation checkpoint and inference interface, (2) a partly disclosed supervised construction pipeline for that checkpoint, and (3) a demonstrated downstream use of the checkpoint for safety RL, filtering, or streaming intervention.
+
+Researchers can use the report to study policy-conditioned labels, controversial-case treatment, token-boundary labeling, or guard-based feedback design. Reusers should treat the 1.19M mixture as an undocumented data object rather than a downloadable dataset, and should validate policy fit, calibration, adversarial behavior, language fairness, tokenization compatibility, and downstream reward/filter effects in their own environment.
+

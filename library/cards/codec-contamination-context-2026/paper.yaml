@@ -1,0 +1,92 @@
+id: codec-contamination-context-2026
+title: Detecting Data Contamination in LLMs via In-Context Learning
+year: 2026
+venue: ICLR 2026 Poster
+authors:
+- Michał Zawalski
+- Meriem Boubdir
+- Klaudia Bałazy
+- Besmira Nushi
+- Pablo Ribalta
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=YlpaaYxx4t
+  arxiv: https://arxiv.org/abs/2510.27055
+  code: null
+  data: https://openreview.net/attachment?id=YlpaaYxx4t&name=supplementary_material
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=YlpaaYxx4t
+  openreview: https://openreview.net/forum?id=YlpaaYxx4t
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: high
+  notes: Official primary page and public artifact URL recorded on 2026-07-19. CoDeC measures the change induced by in-context
+    examples to identify memorized benchmark data.
+inclusion_reason: '以同分布上下文造成的置信度下降构造可解释污染分数，并在已知训练语料模型上以 99.9% 数据集级 AUC 区分已见与未见数据。'
+related: []
+tags:
+- track13
+- audit
+- round3
+status: verified
+one_line_summary: CoDeC measures the change induced by in-context examples to identify memorized benchmark data.
+why_it_matters: It adds a concrete reliability or failure-mode evaluation surface to Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

@@ -1,0 +1,1 @@
+Use FormFactory as a schema for form-filling agents. Preserve form id, template version, user goal/profile, field schema, gold values, screenshots/layout tree, action trace, submitted state, evaluator output, and failure reason. It is useful for auditing whether agents can map visual instructions into structured web state.

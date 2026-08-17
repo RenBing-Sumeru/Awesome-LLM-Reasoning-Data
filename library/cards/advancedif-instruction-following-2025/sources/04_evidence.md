@@ -1,0 +1,1 @@
+RIFL produces a 6.7-point absolute gain on AdvancedIF and remains strong on public instruction-following benchmarks. Ablations show contributions from rubric generation, the verifier, and reward shaping. This supports rubrics as evaluation and training signals, although gains combine data, verifier, and RL effects and cannot be attributed to one component.

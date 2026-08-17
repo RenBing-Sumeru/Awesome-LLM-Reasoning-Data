@@ -1,0 +1,5 @@
+- 区分三类发布状态：Magistral Medium 被描述为企业模型，Magistral Small 权重以 Apache-2.0 发布，而 Magistral 训练数据并未发布。
+- 数学复评的 16 个回答与代码的 20 个测试，都不等于未披露的 GRPO rollout 组大小。
+- 报告中的构造漏斗是数学 699k 到 501k 再到 38k，另有 35k 代码题；逐条来源仍为 unknown。
+- Medium 使用纯在线 RL，Small 则先用 Medium 派生 SFT 冷启动，再继续 RL。
+- benchmark 与消融提升只能说明训练后模型行为，不能证明提示、轨迹、测试或奖励质量。

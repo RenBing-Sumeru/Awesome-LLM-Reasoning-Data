@@ -1,0 +1,1 @@
+Use it when multiple student-model samples per prompt are affordable: score them, preserve semantic coverage, and compare the 10K subset with random and reference-based selectors under identical SFT. Do not treat answer divergence as a truth verifier.

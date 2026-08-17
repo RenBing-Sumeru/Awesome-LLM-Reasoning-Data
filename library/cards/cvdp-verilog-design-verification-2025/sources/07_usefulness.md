@@ -1,0 +1,3 @@
+1. **Hardware-model evaluation:** Run models separately on all 13 categories and report pass@1, execution failures, and judge metrics rather than only an aggregate score.  
+2. **Agent-system diagnosis:** In agentic repositories, record file browsing, tool calls, compilation errors, and repair attempts to distinguish planning from RTL ability.  
+3. **Training-task extraction:** Subsets with deterministic references and simulation checks can become SFT or RLVR data, but must be isolated from the official test split and decontaminated by project. If research concerns only simple module completion, CVDP’s broad categories should not be collapsed into one generic code-generation metric.

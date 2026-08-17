@@ -1,0 +1,160 @@
+id: swe-mirror-2025
+title: 'SWE-Mirror: Scaling Issue-Resolving Datasets by Mirroring Issues Across Repositories'
+year: 2025
+venue: arXiv preprint
+authors:
+- Junhao Wang
+- Daoguang Zan
+- Shulin Xin
+- Siyao Liu
+- Yurong Wu
+- Kai Shen
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- software_engineering
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2509.08724
+  arxiv: https://arxiv.org/abs/2509.08724
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.08724
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A source GitHub issue and merged pull request are abstracted and re-instantiated as a problem statement in
+    a functionally similar target repository with an existing Gym.
+  trace_author: Claude 3.7 Sonnet and Claude 4 Sonnet generate OpenHands or MOpenHands episodes on a 15,000-task subset; only
+    successful episodes are used in the reported 12,456-trajectory SFT mixture.
+  answer_format: Each mirrored task contains problem_statement, mirror.patch, hidden test.patch, inverse fix.patch, target
+    base_commit, and three execution logs; a training episode contains state/action/observation turns and a submitted patch.
+  process_fields:
+  - source issue and merged pull request
+  - abstract description
+  - target repository and base_commit
+  - problem_statement
+  - mirror.patch
+  - hidden test.patch
+  - inverse fix.patch
+  - Run.log
+  - Test.log
+  - Fix.log
+  - agent actions and observations
+  - submitted patch and terminal outcome
+  environment_or_substrate: Forty target repositories across Python, Rust, Go, and JavaScript reuse configured Gyms drawn
+    from SWE-Gym, SWE-rebench, and Multi-SWE-RL; full-suite runs are limited to five minutes and 1 GB during seed-Gym selection.
+  verifier_or_reward: The task pipeline checks patch applicability and full-suite transitions across the base-plus-mirror,
+    mirror-plus-test, and mirror-plus-test-plus-fix states; successful agent episodes must end with finish and pass at least
+    the tests repaired by the ground-truth patch.
+  terminal_predicate: A mirrored task is accepted only when tests are effective, the inverse fix repairs at least one failing
+    test, no specified regression transition occurs, and behavior is unambiguous; a rollout succeeds when it finishes and
+    its passed-test set covers the ground-truth repaired tests.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-Instruct-7B and Qwen2.5-Coder-Instruct-32B
+  teacher: GPT-4o-2024-0513 for problem abstraction; GPT-4.1 for task mirroring; Claude 3.7 Sonnet and Claude 4 Sonnet for
+    training trajectories
+  generator: Qwen3-32B proposes repository-search keywords; rule and LM filters select source pull requests; Test Agent creates
+    test.patch; Mirror Agent creates mirror.patch; its inverse becomes fix.patch; an LM writes problem_statement.
+  filtering_rule: Require linked, merged, closed pull requests that edit code and pass the LM high-quality/mirrorability screen;
+    then require patch applicability, permitted test-state transitions, at least one ANY-to-FAILED-to-PASSED test, no listed
+    regression transition, and no flaky or abnormal outcome.
+  sampling_protocol: For each target codebase, generate five keywords, retrieve the top 20 candidate repositories by stars
+    and issue counts, mirror accepted issues into a target Gym, deduplicate instances by distinct fail-to-pass tests and fix.patch
+    content, then run three teacher trials on 15,000 tasks.
+  rollout_count: Three trials per task on a 15,000-task subset; 6,431 successful SWE-Mirror trajectories plus 6,025 SWE-rebench
+    trajectories form the 12,456-episode post-training mixture.
+  temperature: 1.0 for trajectory collection; 0 for evaluation
+  inference_budget: At most 100 interaction rounds per trajectory and evaluation episode; training context 32,768 tokens,
+    main evaluation context 131,072 tokens with YaRN.
+  optimizer_or_scaffold: OpenHands for Python and MOpenHands for non-Python tasks with str-replace-editor, execute-bash, and
+    finish; SFT uses AdamW for at most three epochs, weight decay 0.01, warmup ratio 0.1, and peak learning rate 5e-5.
+audit:
+  source_mixture: '60,671 mirrored tasks in 40 target repositories: 46,820 Python, 7,183 Rust, 4,056 Go, and 2,612 JavaScript.
+    The SFT mixture combines 6,431 successful SWE-Mirror episodes with 6,025 successful SWE-rebench episodes.'
+  split: No conventional task or trajectory train/dev/test split, immutable manifest, or per-instance release schema was verified.
+    The paper identifies a 15,000-task trajectory-generation subset but does not disclose its sampling list.
+  decontamination: The paper does not report a task-level overlap audit against SWE-bench Verified or Multi-SWE-Bench-Flash,
+    nor a source-issue, repository, patch, or model-pretraining decontamination procedure.
+  license: The arXiv manuscript is marked CC BY 4.0. No official dataset or code artifact and no license manifest for source
+    repositories, issues, pull-request text, patches, tests, generated tasks, or trajectories was verified.
+  lineage: Source issue and merged pull request -> repository-agnostic abstraction -> target repository and Gym -> test.patch
+    -> mirror.patch -> inverse fix.patch and problem_statement -> three-state full-suite validation -> optional teacher rollout
+    -> successful-episode SFT mixture.
+  known_failure_modes:
+  - 'Execution tests can accept semantically narrow or mis-mirrored tasks: in the 184-task human audit, 21 were classified
+    inconsistent and 7 had no majority classification.'
+  - 'The LM pre-filter is imperfect: its balanced 100-issue audit reports 84.3% precision and 86.0% recall.'
+  - 'Mirroring yield is language-dependent: the audited 400-candidate sample reports 68.0% for Python, 52.0% for JavaScript,
+    36.0% for Go, and 28.0% for Rust, with compile/syntax failures concentrated in compiled languages.'
+  - The reported SFT corpus retains only successful episodes; Error Masking preserves erroneous turns inside those successes
+    but does not establish release or use of fully failed trajectories.
+  - The inverse of mirror.patch is the reference fix, so task diversity, solution uniqueness, and possible leakage from generated
+    tests or problem statements require instance-level inspection.
+  - Replay depends on exact repository commits, container images, dependencies, harness and parser versions, prompts, and
+    model endpoints; these were not verified in a public artifact.
+  - Benchmark gains demonstrate utility under the reported scaffold and budgets, not the correctness, realism, or legal reusability
+    of every task.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v1, full paper, appendix prompts, and the arXiv-issued DOI were checked on 2026-07-20. The paper claims a release,
+    but no official code, dataset, project, or model URL was verified, so artifact status remains unresolved.
+inclusion_reason: SWE-Mirror exposes a concrete environment-backed recipe for turning authentic cross-repository issue semantics
+  into executable software-repair tasks and successful agent trajectories, making its data object, test verifier, construction
+  pipeline, and replay risks directly relevant to environment and agent trajectory data.
+related: []
+tags:
+- environment-agent-trajectory-data
+- software-engineering
+- agent-trajectories
+- executable-tests
+- issue-mirroring
+status: needs_url
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: SWE-Mirror constructs 60,671 executable repair tasks by re-instantiating real GitHub issue semantics in
+  40 reusable repository Gyms, then reports an SFT mixture of 12,456 successful OpenHands trajectories.
+why_it_matters: It separates the costly repository Gym from the issue semantics being mirrored, providing a scalable programmatic
+  feedback surface for software-engineering agent training while exposing clear semantic-fidelity, contamination, release,
+  and replay risks.
+card: null
+needs:
+- 'needs_url: official code, dataset, model, and project releases'
+- 'needs_snapshot: exact task manifest, repository/base commits, container image digests, test harness and parser versions,
+  prompts, model endpoints, and dependency locks'
+- 'needs_split: task and trajectory split definitions, the 15,000-task sampling list, and task-to-trajectory mappings'
+- 'needs_decontamination: overlap audit against SWE-bench Verified, Multi-SWE-Bench-Flash, source repositories, issues, patches,
+  and model pretraining'
+- 'needs_outcome_audit: retention policy and counts for fully failed, timed-out, flaky, and infrastructure-error rollouts'
+- 'needs_license: component-level rights and redistribution terms for repositories, issues, pull requests, patches, tests,
+  generated tasks, and trajectories'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: medium
+  notes: Primary paper, appendix, arXiv metadata, DOI, and manuscript license verified; no official code/data/project/model
+    artifact URL was confirmed.

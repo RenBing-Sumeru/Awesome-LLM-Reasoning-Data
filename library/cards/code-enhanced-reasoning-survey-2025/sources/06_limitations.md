@@ -1,0 +1,3 @@
+Executable feedback is only as reliable as the environment and tests behind it. A program can satisfy a narrow test while missing the intended behavior, and a strong reasoning trace can still produce invalid code. The survey is a map of approaches, so details about data, tools, and evaluation remain in the cited primary papers.
+
+Code also introduces dependencies on an environment, available libraries, resource limits, and a way to interpret errors. These dependencies make results difficult to transfer without checking the original setting. Use the survey to identify the relevant failure point, then inspect the cited study for its specification, tests, and evaluation conditions.

@@ -1,0 +1,4 @@
+1. Select images. Input: public natural images and infographics. Operation: filter natural images with complexity and object signals. Output: semantically rich images; low-information images stop here.
+2. Generate SFT records. Input: selected images and task-specific prompts. Operation: GPT-4o writes open-ended questions and answers; chart answers combine complementary model outputs and receive human-expert review. Output: 205K visual instruction records.
+3. Create preference pairs. Input: an SFT answer and a LLaVA-NeXT baseline. Operation: sample alternatives at high temperature; an LLM judge selects the response most inconsistent with intent and context. Output: chosen/rejected records.
+4. Train and evaluate. Input: the released pairs. Operation: apply SFT then DPO and test held-out visual tasks. Check: use a fixed dataset revision, inspect image licenses, and compare training data with evaluation sets.

@@ -1,0 +1,1 @@
+Do not confuse AppAgent with AppWorld-style programmatic API unit tests or AndroidWorld-style stable benchmark releases. Its key claim is GUI-channel smartphone use with learned operation knowledge. Read the task examples and runtime assumptions before the headline success results, because environment drift is the main audit risk.

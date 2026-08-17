@@ -1,0 +1,3 @@
+AgentGym is useful as a schema for environment-backed agent data. A high-quality derived record should preserve environment id, scenario, task id, instruction, observation, valid actions, thought, action, environment feedback, reward/success, round index, terminal reason, trajectory source, filtering reason, split, maximum rounds, model/checkpoint, and artifact snapshot.
+
+For atlas maintenance, it is a strong example of separating evaluation objects from training objects. AgentEval records support benchmark comparison; AgentTraj/AgentTraj-L records support supervised trajectory reuse; AgentEvol-style runs support feedback-driven improvement claims. Those labels should remain separate in downstream cards.

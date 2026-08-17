@@ -1,0 +1,222 @@
+id: mt-rewardtree-2025
+title: 'MT-RewardTree: A Comprehensive Framework for Advancing LLM-Based Machine Translation via Reward Modeling'
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: EMNLP 2025'
+authors:
+- Zhaopeng Feng
+- Jiahan Ren
+- Jiayuan Su
+- Jiamei Zheng
+- Hongwei Wang
+- Zuozhu Liu
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+- process_supervision
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- pairwise_preference
+- scalar_reward
+- process_reward
+- trajectory_value
+domains:
+- machine_translation
+- multilingual_nlp
+- english
+- german
+- chinese
+- russian
+training_use:
+- preference_learning
+- reward_modeling
+- process_supervision
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.1007/
+  paper_pdf: https://aclanthology.org/2025.findings-emnlp.1007.pdf
+  arxiv: https://arxiv.org/abs/2503.12123
+  code: https://github.com/sabijun/MT_RewardTree
+  data: https://huggingface.co/collections/sabijun/mt-rewardtree-dataset
+  project: https://sabijun.github.io/MT_RewardTreePage/
+  huggingface: https://huggingface.co/sabijun
+  model: https://huggingface.co/collections/sabijun/mt-rewardtree-models
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.1007
+  venue: https://aclanthology.org/2025.findings-emnlp.1007/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.1007/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-emnlp.1007.bib
+data_object:
+  prompt_source: 'Source sentences come from WMT17-WMT20 test sets and FLORES development/test sets across six directions:
+    DE-EN, EN-DE, RU-EN, EN-RU, ZH-EN, and EN-ZH. Exact source versions and record IDs are not released.'
+  trace_author: TowerInstruct-7B-v0.2 generates sibling next-token candidates and complete translation rollouts at temperature
+    0.95.
+  answer_format: The prefixed release stores two translation completions that share an identical generated prefix and diverge
+    at a top-2 sibling token; the arbitrary release stores two translations not required to share that prefix. Each record
+    identifies a chosen and rejected completion with two scalar scores.
+  process_fields:
+  - instruction
+  - input
+  - chosen
+  - rejected
+  - chosen_score
+  - rejected_score
+  - shared_prefix_implicit_in_prefixed_pair
+  - sibling_token_preference
+  - benchmark_variant
+  environment_or_substrate: 'Offline token-level approximate MCTS over a deterministic translation MDP: select the current
+    prefix, expand its top-2 next tokens, sample three EOS-terminated rollouts per child, score them, and continue from the
+    higher-valued child.'
+  verifier_or_reward: COMETKiwi scores every completed rollout; the mean of three rollout scores is the node value used to
+    compare siblings. The released pair exposes chosen_score and rejected_score, but the release does not document whether
+    these are retained-rollout scores or averaged node values. DPO/KTO policy-reference log-ratios yield implicit per-token
+    process rewards.
+  terminal_predicate: A rollout terminates at EOS. One rollout from each superior/inferior sibling is retained only when the
+    COMETKiwi score gap lies between 0.04 and 0.4; the search cycle ends when EOS is selected.
+  provenance: WMT/FLORES source sentence -> TowerInstruct top-2 sibling expansion -> three complete rollouts per sibling ->
+    COMETKiwi node-value averaging -> higher/lower sibling comparison and score-gap filtering -> selected prefixed pair ->
+    8,652-pair training release or 1,200-pair MT-PRMBench; arbitrary variants are derived for sequence-level comparison.
+  release_schema: Training repositories expose instruction/input/chosen/rejected/chosen_score/rejected_score; benchmark repositories
+    expose instruction/chosen/rejected/chosen_score/rejected_score. All four repositories expose only a split named train.
+recipe_metadata:
+  base_model: TowerInstruct-7B-v0.2 generates the search data. LLaMA-3.2-3B-Instruct and Qwen-2.5-3B-Instruct are the reported
+    PRM backbones; Qwen2.5-14B-Instruct is used for the test-time alignment application.
+  teacher: unknown; COMETKiwi acts as the learned metric judge for construction rather than a trace teacher.
+  generator: Approximate token-level MCTS repeatedly expands the top-2 logits under a common prefix, evaluates three complete
+    translation rollouts per child, retains the higher-valued branch, and exports a selected sibling preference pair.
+  prompt_task_source: WMT17-WMT20 test sets plus FLORES development and test sets in six EN↔DE/RU/ZH directions.
+  filtering_rule: Assign the higher-scored sibling rollout as chosen and the lower-scored sibling rollout as rejected; retain
+    pairs only when the COMETKiwi score gap is between 0.04 and 0.4. Counts and records for discarded candidates are unknown.
+  sampling_protocol: TowerInstruct-7B-v0.2 at temperature 0.95; top-2 next-token siblings; three complete hypotheses sampled
+    per expanded node; repeat the selected branch until EOS.
+  rollout_count: 3 complete rollouts per expanded sibling node
+  temperature: 0.95
+  inference_budget: Top-2 candidate tokens and three full rollouts per child at every selected prefix until EOS. Maximum tokens,
+    number of search steps, retries, seeds, and total compute are unknown. Test-time alignment evaluates the PRM over a top-k
+    token window, but the concrete k is undisclosed.
+  optimizer_or_scaffold: Implicit PRMs are trained with DPO or KTO on higher/lower scored pairs with beta 0.1. Other optimizer
+    hyperparameters, batch size, epochs, seeds, and checkpoint revisions are unknown.
+audit:
+  source_mixture: 8,652 training pairs and 1,200 MT-PRMBench pairs (200 per translation direction) derived from WMT17-WMT20
+    test sets and FLORES development/test sets. Both prefixed and arbitrary HF training repositories expose 8,652 rows; both
+    benchmark repositories expose 1,200 rows.
+  split: The paper separates training pairs from MT-PRMBench, but each public HF repository exposes only one split named train.
+    No validation split or grouped-by-source-sentence policy is disclosed, and overlap/linkage between prefixed and arbitrary
+    variants is unknown.
+  decontamination: unknown
+  benchmark_overlap: Training and MT-PRMBench originate from the same upstream WMT/FLORES mixture and construction pipeline.
+    Record non-overlap is implied by the paper's train/benchmark allocation, but source-sentence grouping, duplicate control,
+    and overlap with downstream WMT23 evaluation are not documented.
+  license: All four HF dataset pages display Apache-2.0 metadata. The Qwen PRM page displays Apache-2.0, while the LLaMA PRM
+    has no model card or visible license. The ACL paper is CC BY 4.0 and the project website is CC BY-SA 4.0. GitHub code
+    licensing and compatibility with WMT/FLORES source rights and model-generated-output terms remain unknown.
+  lineage: Upstream WMT/FLORES sentence -> TowerInstruct search branch -> top-2 sibling tokens -> three EOS rollouts per sibling
+    -> COMETKiwi average node values -> selected superior/inferior pair -> train or benchmark repository -> DPO/KTO implicit
+    PRM -> reward evaluation or reward-guided test-time decoding. Record-level source, tree, rollout, and model-revision links
+    are absent.
+  release_version: HF collections were updated in March 2025, but no immutable cross-artifact manifest binds the final ACL
+    paper, GitHub code, four datasets, and two model repositories. GitHub contents/commit could not be retrieved in the current
+    environment.
+  raw_tree_retention: 'Not retained in the inspected public schemas: no tree_id, node_id, parent_id, explicit prefix/token
+    field, complete sibling set, per-node three-rollout set, averaged node value, discarded branch, or rejection manifest
+    is exposed. Only chosen/rejected translations and two scalar scores remain.'
+  known_failure_modes:
+  - COMETKiwi is both the construction judge and a recurring downstream metric, creating metric bias and partial circularity
+    rather than independent human preference evidence.
+  - Three-rollout Monte Carlo node values can be noisy; the paper reports narrow value clustering around 0.7-0.8 and weaker
+    direct value-supervision accuracy.
+  - Restricting expansion to the top-2 logits can exclude lower-probability tokens that lead to better translations.
+  - Retaining only the higher-valued branch and a filtered sibling pair hides raw trees, discarded candidates, rollout variance,
+    selector errors, and selection yield.
+  - The score-gap filter of 0.04-0.4 changes the preference distribution and may remove subtle or extreme cases.
+  - The benchmark inherits labels from the same generator/metric pipeline and upstream source mixture as training; grouped
+    overlap and decontamination are undisclosed.
+  - The arbitrary benchmark is materially harder and includes noisy partial translations; the paper reports lower average
+    sequence-level accuracy of 0.628-0.668.
+  - Test-time alignment evidence is limited to 500 high-resource WMT23 cases per reported setup and automatic COMET-family
+    metrics; no human evaluation or low-resource validation is reported.
+  - Gemini-2.0-Flash and COMET-family learned judges introduce prompt/model-version, calibration, language, and domain biases.
+  - Final ACL authorship differs from the project/preprint, which also lists Zhihang Tang; downstream citation metadata should
+    follow the final ACL record.
+  - The LLaMA PRM lacks a model card/license badge, and code/data/model revisions are not bound by an immutable manifest.
+  citation_status: verified
+  confidence: medium
+  notes: The final ACL record/PDF, project page, arXiv text, HF account, four dataset viewers, two model pages, and data/model
+    collections were checked. The 12-page ACL PDF and project-linked preprint contain no separately labeled appendix. GitHub
+    is officially linked but its files were unreachable, so code implementation and license remain unverified.
+  remaining_unknowns:
+  - Exact GitHub file inventory, commit, release tag, code license, and paper-code correspondence.
+  - Exact WMT/FLORES versions, source IDs, rights, and record-level provenance.
+  - Semantics of released chosen_score/rejected_score versus averaged MCTS node values.
+  - Raw trees, all node rollouts, discarded candidates, selection yields, and rejection reasons.
+  - Maximum generation length, top-p, seeds, retry policy, search depth distribution, and total compute.
+  - DPO/KTO optimizer details, data order, batch size, epochs, and checkpoint revisions.
+  - Grouped split, prefixed/arbitrary linkage, duplicate control, and decontamination.
+  - Pinned COMETKiwi/Gemini versions, judge prompts, calibration, and human validation.
+  - LLaMA PRM license and immutable cross-artifact revision manifest.
+inclusion_reason: MT-RewardTree releases token-level translation preference pairs and a benchmark built by top-2 sibling expansion,
+  three-rollout COMETKiwi node valuation, and branch selection, making the search-to-preference construction contract directly
+  relevant to rollout/search trace data.
+related: []
+tags:
+- mt-rewardtree
+- machine-translation
+- approximate-mcts
+- token-level-preference
+- sibling-preference
+- rollout-values
+- cometkiwi
+- process-reward-model
+- dpo
+- kto
+- reward-benchmark
+- test-time-alignment
+- raw-tree-missing
+- model-judge-risk
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: MT-RewardTree turns top-2 translation-token branches and three COMETKiwi-scored rollouts per node into 8,652
+  prefixed training pairs and a 1,200-pair benchmark, while releasing only selected pairs rather than the raw search trees.
+why_it_matters: It exposes a concrete recipe for converting token-level search and trajectory values into PRM preference supervision
+  and reward-guided decoding, while showing that metric dependence, hidden rejected rollouts, split ambiguity, and unresolved
+  source/model licensing can bound reuse.
+card: null
+card_recommendation: Recommended for an evidence-backed bilingual L4_chinese_review_ready Card centered on token-level approximate
+  MCTS, sibling preferences, released pair/benchmark schemas, and PRM/test-time use; preserve raw-tree absence, COMET-family
+  judge risk, split/lineage/license gaps, and final-ACL versus preprint authorship drift. Keep Review state new and do not
+  promote beyond L4 before human review.
+needs:
+- 'needs_code_audit: retrieve and pin the official GitHub tree, commit, license, and construction/training implementation'
+- 'needs_raw_search_release: publish tree/node IDs, explicit prefixes and sibling tokens, all three rollouts per node, averaged
+  values, discarded branches, and selection yields'
+- 'needs_score_semantics: document whether chosen_score/rejected_score are rollout scores, node averages, or another exported
+  quantity'
+- 'needs_split_audit: publish record IDs, exact split manifests, source-sentence grouping, prefixed/arbitrary linkage, duplicate
+  control, and decontamination'
+- 'needs_license_audit: reconcile Apache-2.0 dataset metadata with WMT/FLORES source rights and clarify the LLaMA PRM and
+  code licenses'
+- 'needs_replay_manifest: bind paper version, code commit, HF revisions, generator/PRM/COMETKiwi checkpoints, seeds, decoding
+  budgets, and hashes'
+- 'needs_judge_audit: report COMETKiwi/Gemini versions, prompts where applicable, calibration, language bias, and human agreement'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official ACL citation/PDF, project page, arXiv text, GitHub link identity, HF account/collections, all four dataset
+    schemas/counts/split/license surfaces, and both model pages were checked. The full papers contain no separate appendix.
+    GitHub files were unreachable, so code content and license are still an explicit unknown.

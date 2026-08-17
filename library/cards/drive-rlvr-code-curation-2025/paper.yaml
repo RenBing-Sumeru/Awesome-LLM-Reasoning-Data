@@ -1,0 +1,125 @@
+id: drive-rlvr-code-curation-2025
+title: 'DRIVE: Data Curation Best Practices for Reinforcement Learning with Verifiable Reward in Competitive Code Generation'
+year: 2025
+venue: arXiv
+authors:
+- Speed Zhu
+- Jianwei Cai
+- Guang Chen
+- Lulu Wu
+- Saiyong Yang
+- Wiggin Zhou
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- competitive_programming
+- code_generation
+training_use:
+- sft
+- distillation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2511.06307
+  arxiv: https://arxiv.org/abs/2511.06307
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2511.06307
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Unnamed open-source competitive-programming and general-code datasets; LiveCodeBench V6 and an internal pool
+    supply hard-focus prompts
+  trace_author: DeepSeek-R1-0528 distills SFT responses; current Qwen2.5-32B policy generates RL rollouts
+  answer_format: Programming statement with reasoning/code, executable tests, pass/fail reward, and difficulty or rollout-pass-rate
+    metadata
+  process_fields:
+  - prompt
+  - difficulty_label
+  - distilled_response
+  - rollout
+  - executable_test_cases
+  - testcase_reward
+  - pass_rate
+  - curriculum_phase
+  environment_or_substrate: Competitive-programming execution environment with testcase rewards
+  verifier_or_reward: Executable test-case correctness plus monitoring for repetition and truncation
+  terminal_predicate: Program passes available tests within execution constraints
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct; undisclosed internal large-scale MoE for scaling analysis
+  teacher: DeepSeek-R1-0528 for SFT distillation
+  generator: Current policy under GRPO
+  filtering_rule: SFT arena retains failed/hard samples and doubles hard exposure; Stage 1 uses broad 9K pool; Pre-GRPO carries
+    low-pass-rate LiveCode V6 cases into smaller phases
+  sampling_protocol: 'Stage 1: 8 rollouts/prompt and 24K combined length; Stage 2: large rollout budget inconsistently reported
+    as 64 or 80/prompt and 32K length'
+  rollout_count: null
+  temperature: null
+  inference_budget: Stage 1 24K total sequence; Stage 2 32K; temperature and execution budget undisclosed
+  optimizer_or_scaffold: Difficulty-oversampled SFT, GRPO entropy expansion, then three-phase Pre-GRPO hard-focus curriculum
+audit:
+  source_mixture: 1.27M unnamed open-source SFT prompts distilled then filtered to 470K; 9K unnamed RL prompts; 175 LiveCode
+    V6 problems; internal hard cases
+  split: LiveCode08-11 and V5 held out; V6 used in Stage 2 and reported as exposed evaluation; post-cutoff weekly contests
+    used for evaluation
+  decontamination: Post-cutoff contests reduce temporal leakage; source-level deduplication and semantic decontamination undisclosed
+  license: unknown
+  lineage: Teacher and aggregate counts disclosed; constituent datasets, record origins, filters, and internal pools undisclosed
+  known_failure_modes:
+  - No official code/data/model/prompt split
+  - 'Stage-2 rollout count conflicts: 80 in Section 3.2 versus 64 in abstract and experiments'
+  - LiveCode V6 is used in training and reported as exposed evaluation
+  - Easy samples dilute reward and very hard samples remain difficult
+  - Large rollout budgets are costly
+  - Public tests can permit false-positive solutions
+  - Internal MoE and hard-problem results are not reproducible
+  citation_status: verified
+  confidence: medium
+  notes: Verified against arXiv v1; preserve unresolved 64-versus-80 discrepancy.
+inclusion_reason: Gives a two-stage RLVR prompt-curation recipe contrasting broad entropy expansion with progressively retained
+  hard executable problems.
+related: []
+tags:
+- code-rlvr
+- competitive-programming
+- hard-example-mining
+- pre-grpo
+- executable-reward
+- curriculum-learning
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Combines a broad 9K-prompt entropy-expansion stage with a shrinking hard-focus Pre-GRPO curriculum for competitive-code
+  RLVR.
+why_it_matters: Makes prompt difficulty, rollout allocation, and curriculum order first-class data decisions while exposing
+  audit gaps.
+card: null
+needs:
+- 'needs_url: official code/model/data/project'
+- 'needs_source: constituent datasets and licenses'
+- 'needs_resolution: 64-versus-80 Stage-2 rollout count'
+- 'needs_metadata: sandbox limits, decoding, and prompt splits'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper verified; no author-linked implementation or dataset artifact.

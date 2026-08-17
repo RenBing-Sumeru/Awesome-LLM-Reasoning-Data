@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该研究在 Mistral 7B、DeepSeekMath 7B、GSM8K 与 MATH 上分析 OVM/PRM 引导搜索，指出随样本增多，错误排序和过早剪枝会使搜索劣于重复采样。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Fei Yu；Yingru Li；Benyou Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

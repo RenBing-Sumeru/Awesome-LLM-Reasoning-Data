@@ -1,0 +1,17 @@
+{
+  "title": "Autorubric: Unifying Rubric-based LLM Evaluation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.00077",
+    "data": "https://github.com/delip/autorubric"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-22T12:18:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开了 CHARM-100，100 个单轮聊天样本、六类标准与人工真值，并在 RiceChem、ResearcherBench 等任务验证",
+    "updated_at": "2026-07-22T12:18:00Z"
+  }
+}

@@ -1,0 +1,3 @@
+MiniMax-M2.5 targets long-horizon work agents whose outputs are testable software, grounded search answers, and professional Word, PowerPoint, or Excel deliverables. The official 2026 release describes hundreds of thousands of RL environments, including more than 200,000 software environments, but provides no independent paper or open environment corpus.
+
+For this atlas, the central object is an environment-grounded trajectory: task, scaffold, tools, reasoning/actions, observations, artifact, outcome/process feedback, completion time, and terminal result. The release is valuable as a frontier disclosure, not as a reusable training dataset.

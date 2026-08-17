@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepResearcher 在真实网页搜索与浏览环境中进行 GRPO，发布处理后的输入、代码和模型但未发布训练轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuxiang Zheng, Dayuan Fu, Xiangkun Hu, Xiaojie Cai, Lyumanshan Ye, Pengrui Lu, Pengfei Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-23T05:26:09Z"
+}

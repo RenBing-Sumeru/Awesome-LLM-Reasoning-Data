@@ -1,0 +1,3 @@
+ScaleWoB: Guiding GUI Agents with Coding Agents via Large-Scale Environmental Synthesis 定义了 web-gui-agents, environment-synthesis, coding-agent-generated-environments 的评测面：模型输出或智能体轨迹必须满足任务特定的反馈契约。主来源与产物是 paper: https://arxiv.org/abs/2605.25160; project: https://scalewob.github.io; code: https://github.com/ScaleWoB/ScaleWoB; data: https://github.com/ScaleWoB/ScaleWoB; doi: https://doi.org/10.48550/arXiv.2605.25160；本地元数据记录的年份/来源为 2026 / arXiv preprint。
+
+收录边界是 environment_agent_trajectory_data，来源角色为 benchmark, agent_environment，验证契约为 environmental, 混合。一个评测实例 里包含：generated environments, UI tasks, code artifacts, agent trajectories, and success predicates。除非官方产物另有训练数据说明，否则这张卡把它视为评测、审计，不是训练配方。它对 atlas 的价值在于把任务对象、输出和验证器/裁判/奖励/环境谓词 绑定起来，而不是只记录抽象能力结论。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Multi-SWE-bench 将专家审校的多语言仓库 issue、补丁与 Docker 测试环境打包，以可复现执行评测候选修复。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多语言仓库级 issue 修复 benchmark 与可执行评测数据",
+  "best_for_ch": "需要多语言代码 agent 评测、Docker 验证或 issue 修复 RL 数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Daoguang Zan, Zhirong Huang, Wei Liu, Hanwu Chen, Linhao Zhang, Shulin Xin, Lu Chen, Qi Liu, Xiaojian Zhong, Aoyan Li, Siyao Liu, Yongsheng Xiao, Liangqiang Chen, Yuyu Zhang, Jing Su, Tianyu Liu, Rui Long, Kai Shen, Liang Xiang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

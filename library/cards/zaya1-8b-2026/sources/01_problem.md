@@ -1,0 +1,3 @@
+ZAYA1-8B is a frontier reasoning-model report that discloses a long-CoT-heavy path from pretraining through supervised fine-tuning and several reinforcement-learning stages. For an auditable reasoning-data atlas, the central question is not whether an Apache-2.0 checkpoint can be downloaded, but whether the data, feedback, environments, and audit artifacts that produced it can be independently inspected.
+
+The report is comparatively informative about category-level mixtures, stage sizes, verifiers, and infrastructure. Its official release nevertheless remains a model-and-inference release rather than a training-data or reproduction release. This Card documents both the disclosed construction interfaces and the artifacts that remain unavailable.

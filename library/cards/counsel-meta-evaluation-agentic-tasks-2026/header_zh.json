@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Counsel 用人工元评测标签区分 agent judge 批评的定位正确性、推理质量与误报，为过程批评器校准提供监督。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要校准或训练智能体过程批评器，并分别评估错误位置与批评理由质量的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sashank Pisupati、Henry Broomfield、Eujeong Choi、Antonia Calvi、Charlie Wang、Roman Engeler、Max Bartolo、Patrick Lewis",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:18:51Z"
+}

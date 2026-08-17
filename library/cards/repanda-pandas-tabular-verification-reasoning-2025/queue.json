@@ -1,0 +1,19 @@
+{
+  "title": "RePanda: Pandas-powered Tabular Verification and Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.1549/",
+    "data": "https://huggingface.co/datasets/AtoosaChegini/PanTabFact",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T13:27:32Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将表格断言翻成可运行的pandas查询，8.8万条数据",
+    "updated_at": "2026-07-18T13:27:32Z"
+  }
+}

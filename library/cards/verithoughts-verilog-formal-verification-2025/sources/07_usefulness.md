@@ -1,0 +1,3 @@
+1. **HDL reasoning SFT:** Train on `Q–R–V` or `Q–R–V*` records and compare data recipes stratified by consistency labels.  
+2. **Formal-feedback RL:** Use equivalence results as terminal rewards for generating synthesizable and functionally equivalent RTL, while handling unknown verifier outcomes separately.  
+3. **Data-filtering research:** Compare consistent, inconsistent, long-reasoning, and complex-module subsets on VerilogEval instead of assuming that more formally passing data is always better. Equivalence checking is insufficient when the target includes timing, power, or physical-design quality.

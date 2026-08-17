@@ -1,0 +1,3 @@
+LLM benchmark scores can be inflated when training data contains a semantically equivalent paraphrase or structural transformation of a test item. Such variant contamination is not verbatim leakage, so perplexity, sampling consistency, edit distance, and embedding similarity can miss it while memorization masquerades as reasoning.
+
+The paper formalizes this setting and introduces DVD, a single-sample detector based on variance in a temperature-sampled local generation distribution. It also builds controlled variant-contamination benchmarks and fine-tunes models on variants to test the detector.

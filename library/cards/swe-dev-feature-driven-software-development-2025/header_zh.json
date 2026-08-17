@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Dev 提供 1.4 万个可运行的功能开发训练任务和 500 个测试任务，并以开发者编写的单测验证仓库级实现。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行功能开发数据集、软件工程 benchmark 与训练环境",
+  "best_for_ch": "需要仓库级功能开发任务、单测奖励或软件工程 agent 训练数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yaxin Du, Yuzhu Cai, Yifan Zhou, Cheng Wang, Yu Qian, Xianghe Pang, Qian Liu, Yue Hu, Siheng Chen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:31:10Z"
+}

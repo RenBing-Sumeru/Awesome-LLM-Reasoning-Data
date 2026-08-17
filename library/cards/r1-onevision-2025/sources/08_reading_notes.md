@@ -1,0 +1,5 @@
+- **Positioning:** The paper targets the gap between visual perception and long textual reasoning by making the cross-modal description and resulting trace part of the training record.
+- **Method handle:** Formalize the image, generate with DeepSeek-R1, revisit the image through role-playing, filter with GPT-4o, then run SFT and rule-based RL.
+- **Data handle:** R1-Onevision publicly exposes more than 155K demonstrations across four domain groups; the record joins image, question, description, reasoning, and answer, while dataset-specific redistribution rights remain unknown.
+- **Evidence anchor:** On Qwen2.5-VL-7B, base/SFT/SFT+RL MathVision scores are 25.4/26.3/29.9; the combined gain is not a data-only attribution.
+- **Reuse decision:** Use it to prototype image-grounded CoT supervision, but first audit description omissions, judge false positives, source rights, and benchmark overlap.

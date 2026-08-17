@@ -1,0 +1,3 @@
+On MATH, the full method reaches 55.2% accuracy with 44.8 verifier calls on average. Beam search reaches 51.8% with 64 calls, while 64-sample best-of-N and majority vote reach 42.4% and 44.6%. Thus the reported comparison improves on the strongest listed baseline by 3.4 points while using 30% fewer verifier calls.
+
+The ablation separates the claimed causes. Verifying all candidates without gates gives 45.0% at 64 calls; gates alone give 47.6% at 58 calls; adding structural scoring gives 51.8% at 54 calls; adding state-conditional allocation reaches 55.2% at 44.8 calls. This supports the paper’s specific claim that gating, ranking, and local uncertainty allocation contribute distinct efficiency gains.

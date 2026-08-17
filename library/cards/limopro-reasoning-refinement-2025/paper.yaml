@@ -1,0 +1,119 @@
+id: limopro-reasoning-refinement-2025
+title: 'LIMOPro: Reasoning Refinement for Efficient and Effective Test-time Scaling'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yang Xiao
+- Jiashuo Wang
+- Ruifeng Yuan
+- Chunpu Xu
+- Kaishuai Xu
+- Wenjie Li
+- Pengfei Liu
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.19187
+  arxiv: https://arxiv.org/abs/2505.19187
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/e64616e0bbe8ce04eb5acaceb6b9f65f-Abstract-Conference.html
+  code: https://github.com/GAIR-NLP/LIMOPro
+  data: https://huggingface.co/datasets/YangXiao-nlp/LIMOPro-Data-LIMO-P
+  project: null
+  huggingface: https://huggingface.co/YangXiao-nlp/LIMOPro-LIMO-P
+  doi: https://doi.org/10.48550/arXiv.2505.19187
+  bibtex: https://arxiv.org/bibtex/2505.19187
+data_object:
+  prompt_source: LIMO, LIMO-V2, and S1K reasoning datasets distilled respectively from DeepSeek-R1, QwQ, and Gemini Thinking.
+  trace_author: Source large reasoning models generate chain-of-thought traces; Claude 3.7 Sonnet segments and classifies
+    steps, and Qwen2.5-32B-Instruct computes answer perplexity.
+  answer_format: Question, segmented reasoning steps, step-type labels, leave-one-step-out perplexity importance values, pruned
+    trace, and final answer.
+  process_fields:
+  - question
+  - reasoning_chain
+  - step_boundaries
+  - step_type
+  - PIR_score
+  - retained_steps
+  - final_answer
+  environment_or_substrate: Offline construction of refined reasoning-supervision traces followed by test-time evaluation
+    of fine-tuned models.
+  verifier_or_reward: Perplexity-based Importance Refinement measures the change in answer confidence when a functional step
+    is removed; progressive steps are preserved.
+  terminal_predicate: The refined trace retains the original final answer while reducing selected low-importance functional
+    steps.
+recipe_metadata:
+  base_model: LIMO, LIMO-V2, and S1-derived fine-tuned reasoning models; Qwen2.5-32B-Instruct evaluates answer perplexity.
+  teacher: DeepSeek-R1, QwQ, and Gemini Thinking data sources; Claude 3.7 Sonnet performs trace segmentation and contextual
+    classification.
+  generator: Fine-tuned language models generate concise reasoning chains at test time.
+  filtering_rule: Keep all progressive reasoning; rank verification, multi-method validation, and error-correction steps by
+    PIR and prune low-importance steps at the chosen ratio.
+  sampling_protocol: Evaluate pass@1 and response-token cost over AIME, AMC, and GPQA Diamond under token budgets from 2k
+    to 24k.
+  rollout_count: Not stated as multi-rollout selection; each test-time response is evaluated for pass@1 and token use.
+  temperature: See official repository/configuration for exact inference settings.
+  inference_budget: Response-token budgets ranging from 2k to 24k in reported scaling curves.
+  optimizer_or_scaffold: PIR, based on answer perplexity with and without each candidate functional reasoning step.
+audit:
+  source_mixture: Official NeurIPS paper, official GitHub repository, and official Hugging Face model/data pages.
+  split: Training sources contain 1,000 S1K, 817 LIMO, and 800 LIMO-V2 examples; AIME24, AMC23, and GPQA Diamond are evaluation
+    benchmarks.
+  decontamination: No separate contamination audit is claimed; source-model and benchmark overlap should be checked before
+    reuse.
+  license: The model card states MIT for the project; validate each dataset, model, and benchmark license independently.
+  lineage: https://arxiv.org/abs/2505.19187
+  known_failure_modes:
+  - step-classification-error
+  - perplexity-model-mismatch
+  - over-pruning
+  - source-trace-bias
+  - benchmark-contamination
+  citation_status: verified
+  confidence: high
+  notes: Official paper PDF checked on 2026-07-20. It lists The Hong Kong Polytechnic University, Shanghai Jiao Tong University,
+    and SII; official linked project pages identify the LIMOPro code, models, and refined datasets.
+inclusion_reason: It changes the training traces used to produce inference-time reasoning so that future test-time computation
+  focuses on solution-progressing steps rather than redundant verification and correction text.
+related: []
+tags:
+- test-time-compute
+- reasoning-refinement
+- chain-of-thought
+- token-efficiency
+- perplexity
+status: verified
+one_line_summary: LIMOPro prunes low-importance functional reasoning steps from training traces, producing models that retain
+  or improve accuracy while spending fewer tokens at inference.
+reading_priority: essential
+paper_type: Efficient test-time reasoning data and scaling study
+best_for: Readers optimizing reasoning traces for a better accuracy-latency trade-off without indiscriminately compressing
+  the logical solution path.
+confidence: high
+why_it_matters: It ties data-side step pruning to measurable inference-time scaling behavior and separates essential reasoning
+  progress from redundant functional text.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS/arXiv paper, official GitHub code, and official Hugging Face artifact pages checked.
+category_ids:
+- scaling_rlvr_test_time_compute
+- rollout_search_test_time_trace_data

@@ -1,0 +1,190 @@
+id: docksmith-2026
+title: 'DockSmith: Scaling Reliable Coding Environments via an Agentic Docker Builder'
+year: 2026
+venue: ICML 2026
+authors:
+- Jiaran Zhang
+- Lu Ma
+- Yanhao Li
+- Fanqi Wan
+- Di Qi
+- Xin Wu
+- Zhewei Huang
+- Liangyu Chen
+- Yingwei Ma
+- Qi Han
+- Xiangyu Zhang
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- software_engineering
+- code_agents
+- docker_environment_construction
+- agent_trajectories
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://openreview.net/pdf?id=tRbgtWwmHB
+  arxiv: https://arxiv.org/abs/2602.00592
+  code: null
+  data: https://huggingface.co/datasets/8sj7df9k8m5x8/docker_building_training
+  model: https://huggingface.co/8sj7df9k8m5x8/DockSmith
+  project: null
+  huggingface: https://huggingface.co/collections/8sj7df9k8m5x8/docksmith
+  doi: https://doi.org/10.48550/arXiv.2602.00592
+  venue: https://openreview.net/forum?id=tRbgtWwmHB
+  openreview: https://openreview.net/forum?id=tRbgtWwmHB
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Merged GitHub pull requests from repositories with at least 500 stars and 200 forks, retained for substantive
+    code and test-related changes; brief PR descriptions may be LM-refined.
+  context_state: Repository files and version/issue context, retrieved dependency/build/CI/test information, current Dockerfile
+    and eval-script artifacts, prior execution logs, failure summaries, agent-invocation history, and retrieved successful
+    cross-task examples.
+  trace_author: Four undisclosed LLM-based agents for context retrieval, Dockerfile generation, eval-script handling, and
+    test analysis, coordinated by a loop detector and success memory.
+  action_format: Repository browsing requests, Dockerfile/eval-script edits, shell/build/test commands, diagnostic summaries,
+    and repair actions.
+  observation_format: Repository browsing results plus Docker build/test outputs and logs; failures are summarized for the
+    next repair iteration.
+  answer_format: Paper-level instances are multi-turn Docker-building trajectories. Public shard samples are per-agent lists
+    of chat messages with role, content, and loss_mask.
+  process_fields:
+  - role
+  - content
+  - loss_mask
+  - sample_id
+  - instance_id
+  - agent_type
+  - source_file
+  - num_assistants
+  environment_or_substrate: Docker-based repository build-and-test loop derived from SWE-Factory, operating over versioned
+    GitHub tasks; immutable image and runtime manifests are not released.
+  verifier_or_reward: Programmatic Docker build and repository test execution are used to identify verified-success trajectories;
+    GPT-5.1 judgment is used only for reported error-event analysis. No scalar training reward is reported.
+  terminal_predicate: Successful build and task-specific test execution; a representative trace terminates on OMNIGRIL_EXIT_CODE=0
+    with is_finish=true. The complete per-task machine-readable predicate manifest is unknown.
+  public_record_boundary: The release exposes 39,719 per-agent conversation fragments linked to 2,876 instance IDs, not a
+    normalized table of complete replayable episodes.
+recipe_metadata:
+  base_model: Qwen3-Coder-30B-A3B-Instruct
+  teacher: unknown
+  generator: Four LLM-based generation agents; model identities and versions are not disclosed.
+  prompt_task_source: Approximately 200,000 curated PR-derived instances before Docker rollout/verification; ten targeted
+    languages and more than 15,000 source repositories are reported.
+  sampling_protocol: Retain verified-success instances, enforce undisclosed per-language token caps, remove long/redundant
+    rollouts, bucket by Dockerfile complexity, and sample Easy:Medium:Hard at 1:2:2.
+  filtering_rule: Drop trajectories with repeated same-agent invocation, excessive turns, or unusually many messages; thresholds
+    are unknown. Failed terminal rollouts are not reported as SFT training examples.
+  complexity_score: 0.5 * nonempty Dockerfile lines + 5 * RUN instructions + 3 * distinct apt-get/apt packages.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Unknown; the Appendix reports a 50-step limit for one evaluation case but does not establish a universal
+    generation limit.
+  optimizer_or_scaffold: Supervised fine-tuning with global batch size 32, learning rate 1e-5, and two epochs; optimizer,
+    scheduler, seeds, and hardware are undisclosed.
+  sequence_length: 32K for Docker-only training and 64K for mixed Docker/SWE training.
+  joint_data: General SWE/coding trajectories from Nex Agent-SFT are token-mixed with Docker trajectories; exact released-model
+    mixture and token totals are unknown.
+audit:
+  source_mixture: GitHub repository/PR/test material, LM-refined problem statements, multi-agent Docker build/test conversations,
+    verified-success environment solutions, and Nex Agent-SFT trajectories for mixed-training experiments.
+  split: The public dataset exposes a single train split. No authored validation/test split, split seed, or instance-level
+    split manifest is documented.
+  decontamination: Repository-level deduplication against all evaluation benchmarks is reported; benchmark snapshots, hashes,
+    code, and semantic PR/issue overlap checks are unknown.
+  benchmark_overlap: Repository-level overlap is claimed removed, but task/PR/test semantic overlap and exact benchmark-version
+    overlap remain unknown.
+  license: The dataset card declares Apache-2.0. The model has no license tag/model card; upstream GitHub repository, PR,
+    test-patch, and generated-artifact rights are not audited in the official materials.
+  lineage: Eligible repository and merged test-backed PR -> optional LM problem refinement -> four-agent Docker build/test
+    rollout -> execution success selection -> redundancy filtering/language balancing/complexity curriculum -> SFT chat fragments;
+    immutable row-to-repository and paper-run manifests are incomplete.
+  release_version: Dataset content commit b847dad7371e172fedc44c1510b7619ee1a6f23b; current dataset revision 1d44cd3be604a339bcdad5e60844a23e4b1eeada;
+    model revision 1404f4daa0694c3ab2575f2dd8a7b6bbd40848e3; paper evidence uses ICML 2026 final plus arXiv v2.
+  release_scale: 39,719 public chat samples across 2,876 instance IDs in nine JSON shards plus nine index files, approximately
+    651 MB.
+  successful_and_failed_sample_retention: Only verified-success instances are retained before training curation; failed evaluation
+    trajectories are analyzed but are not documented as SFT examples.
+  viewer_status: Hugging Face Dataset Viewer fails with DatasetGenerationCastError because conversation shards and index shards
+    have incompatible schemas.
+  replay: 'Blocked for exact reconstruction: container/image digests, dependency locks, task/evaluator/test-patch hashes,
+    network/cache/timeouts/reset policies, host architecture, and episode assembly are not released.'
+  security_privacy: No secret scan, credential redaction, malicious-code isolation, network-egress policy, privacy/consent
+    analysis, or supply-chain threat model is disclosed.
+  known_failure_modes:
+  - Success-only training selection drops terminal failures and may bias the corpus toward already solvable repositories and
+    recovery paths.
+  - Eval-script and patch-protocol bugs can create false success/failure signals; the paper documents activation, patch, and
+    exit-code protocol error classes.
+  - Context Retrieval errors increase by 10.9%, and shell/environment resolution rates decline despite better runtime/logic
+    recovery.
+  - GPT-5.1-generated error labels may contain judge bias, correlated event labels, or rubric errors; no human agreement study
+    is reported.
+  - Unpinned containers, dependencies, network/cache state, and repository drift prevent deterministic replay.
+  - The broken Dataset Viewer and fragment-level public schema complicate episode reconstruction and automated validation.
+  - Paper author lists drift between arXiv v2 and the ICML final version.
+  citation_status: verified
+  confidence: medium
+  notes: Official ICML/OpenReview, arXiv v2, and paper-linked HF artifacts were checked. Experimental numbers are author-reported
+    and were not independently reproduced.
+inclusion_reason: 'DockSmith directly exposes environment-construction supervision: repository-grounded state, multi-agent
+  Docker/eval actions, execution feedback, success-only selection, and released SFT fragments. It is a core Track 6 entry
+  because environment reliability determines which software-agent trajectories can exist at all.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- docker-building
+- agent-trajectories
+- execution-grounded
+- supervised-fine-tuning
+- success-filtering
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: DockSmith converts test-backed GitHub pull requests into success-filtered, execution-grounded Docker-building
+  conversations for agent SFT and releases 39,719 per-agent chat fragments linked to 2,876 instances.
+why_it_matters: It makes environment construction itself a reusable supervision source and shows that success-filtered Docker
+  traces can transfer to broader software-agent tasks, while exposing important selection, replay, licensing, and security
+  audit gaps.
+card: null
+needs:
+- 'needs_metadata: generator model/version, prompts, decoding settings, loop/filter thresholds, language caps, bucket cutoffs,
+  exact episode/token counts, optimizer/scheduler, seeds, and released-model mixture'
+- 'needs_replay: row-to-task/episode manifest, repository and evaluator hashes, Docker image digests, dependency locks, network/cache/timeout/reset
+  policy, and deterministic episode assembler'
+- 'needs_audit: secret/credential scan, malicious-code isolation, privacy/consent, upstream license compatibility, and semantic
+  contamination analysis'
+- 'needs_release_fix: normalize sample/index configurations so the Dataset Viewer and standard loaders do not fail'
+- 'needs_model_license: publish a model card and explicit model license'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  paper_version: ICML 2026 final on OpenReview; arXiv v2 dated 2026-04-28 used for section/page/source evidence
+  dataset_revision: 1d44cd3be604a339bcdad5e60844a23e4b1eeada
+  dataset_content_commit: b847dad7371e172fedc44c1510b7619ee1a6f23b
+  model_revision: 1404f4daa0694c3ab2575f2dd8a7b6bbd40848e3
+  notes: Final-venue citation and paper-linked model/data artifacts verified. Release completeness and exact replay remain
+    partial; no code repository was confirmed.

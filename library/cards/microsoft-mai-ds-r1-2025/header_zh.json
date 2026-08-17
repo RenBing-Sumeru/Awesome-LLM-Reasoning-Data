@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Microsoft 的 MAI-DS-R1 发布披露约 350K 个关键词派生的多语问题及由 DeepSeek-R1/内部模型引导的答案与 CoT，加上 110K 个具名 Tulu3 安全样本；底层记录、反馈合约、切分和来源级权利未披露。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "模型发布说明与数据披露账本",
+  "best_for_ch": "需要审计大厂后训练数据构造、合成 CoT 与安全数据边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Microsoft",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-19T08:07:01Z"
+}

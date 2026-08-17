@@ -1,0 +1,67 @@
+id: reflective-generative-model-2026
+title: Test-Time Scaling with Reflective Generative Model
+year: 2026
+venue: ICLR 2026
+authors: [Zixiao Wang, Yuxin Wang, Xiaorui Wang, Mengting Xing, Jie Gao, Jianjun Xu, Guangcan Liu, Chenhui Jin, Zhuo Wang, Shengzhuo Zhang, Hongtao Xie]
+source_role: [scaling_study, verifier_reward]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, process_reward]
+domains: [mathematical-reasoning]
+training_use: [process_supervision, test_time_compute]
+construction_layer: [reward_verifier_layer, optimizer_scaffold]
+artifacts:
+  paper: https://arxiv.org/abs/2507.01951
+  arxiv: https://arxiv.org/abs/2507.01951
+  venue: https://iclr.cc/virtual/2026/poster/10006997
+  code: https://github.com/MetaStone-AI/MetaStone-S1
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.01951
+data_object:
+  prompt_source: Mathematical reasoning tasks including AIME24 and HMMT25.
+  trace_author: The policy model generates reasoning trajectories with controllable thinking length.
+  answer_format: Reasoning trajectory, outcome reward, self-supervised process score, and selected response.
+  process_fields: [prompt, trajectory, outcome_reward, process_score, thinking_length]
+  environment_or_substrate: Reflective generation with shared policy and process-reward backbone.
+  verifier_or_reward: Self-supervised process reward model learned from outcome reward.
+  terminal_predicate: Benchmark final-answer correctness.
+recipe_metadata:
+  base_model: QwQ-32B in a reported comparison.
+  teacher: Outcome reward supplies supervision for the self-supervised process reward model.
+  generator: Reflective generative model.
+  filtering_rule: Select high-quality trajectories using the learned process score.
+  sampling_protocol: Controllable reasoning length at inference; see paper for settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: Thinking length and a 50M-parameter scoring head.
+  optimizer_or_scaffold: Shared-backbone policy and self-supervised process reward model.
+audit:
+  source_mixture: Official ICLR 2026 poster, paper, and official repository.
+  split: Consult the paper for benchmark protocols.
+  decontamination: No dedicated audit stated; evaluate overlap before reuse.
+  license: Verify benchmark, base-model, and repository licenses separately.
+  lineage: 'Primary sources: https://arxiv.org/abs/2507.01951; https://iclr.cc/virtual/2026/poster/10006997'
+  known_failure_modes: [Outcome reward may not identify every flawed step, Shared scoring can inherit policy bias, Results depend on benchmark reward extraction]
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR record and linked code were checked on 2026-07-20.
+inclusion_reason: It makes process-level trajectory selection and verifier capacity explicit components of test-time scaling.
+related: []
+tags: [test-time-compute, process-reward-model, trajectory-selection, reasoning]
+status: verified
+one_line_summary: RGM shares a policy backbone with a self-supervised process scorer to select trajectories under controllable test-time reasoning length.
+reading_priority: essential
+paper_type: Reflective generation and process-verifier efficiency study
+best_for: Readers allocating inference budget between trajectory generation and process-level selection.
+confidence: high
+why_it_matters: It evaluates a small process-scoring head as an alternative to a separate large reward model for test-time scaling.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR record, arXiv paper, and linked official repository checked.
+category_ids: [scaling_rlvr_test_time_compute]

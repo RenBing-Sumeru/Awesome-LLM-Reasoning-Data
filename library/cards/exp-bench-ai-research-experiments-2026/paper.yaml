@@ -1,0 +1,114 @@
+id: exp-bench-ai-research-experiments-2026
+title: 'EXP-Bench: Can AI Conduct AI Research Experiments?'
+year: 2026
+venue: ICLR 2026
+authors:
+- Patrick Tser Jern Kon
+- Qiuyi Ding
+- Jiachen Liu
+- Xinyi Zhu
+- Jingjia Peng
+- Jiarong Xing
+- Yibo Huang
+- Yiming Qiu
+- Jayanth Srinivasa
+- Myungjin Lee
+- Mosharaf Chowdhury
+- Matei Zaharia
+- Ang Chen
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- step_level
+domains:
+- ai-research
+- machine-learning
+- agent-evaluation
+training_use:
+- evaluation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.24785
+  arxiv: https://arxiv.org/abs/2505.24785
+  code: https://github.com/Just-Curieous/Curie/tree/main/benchmark/exp_bench
+  data: https://huggingface.co/datasets/Just-Curieous/EXP-Bench
+  project: https://amberljc.github.io/blog/2025-05-11-exp-bench.html
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.24785
+  venue: https://iclr.cc/virtual/current/papers.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Influential peer-reviewed AI papers with open-source codebases.
+  trace_author: Semi-autonomous curation pipeline and benchmark task authors.
+  answer_format: Research question, method overview, incomplete starter code, experimental procedure, execution output, and
+    analysis.
+  process_fields:
+  - research question
+  - starter code
+  - hypothesis
+  - experiment design
+  - implementation
+  - execution logs
+  - result analysis
+  environment_or_substrate: Original or reconstructed research-code execution environments.
+  verifier_or_reward: Executable experiment outcomes and aspect-specific evaluation.
+  terminal_predicate: A submitted experiment is executable and satisfies the benchmark's end-to-end evaluation.
+recipe_metadata:
+  base_model: Benchmark evaluates LLM-based agents such as OpenHands and IterativeAgent.
+  teacher: Published research experiments and their open-source implementations.
+  generator: Semi-autonomous extraction of experiment procedures from papers and code.
+  filtering_rule: Select high-quality papers with public code and structured experiment details.
+  sampling_protocol: 461 tasks from 51 top-tier AI research papers.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin code revisions, hardware, datasets, and experiment configurations.
+  optimizer_or_scaffold: Step-by-step experiment procedure execution and evaluation.
+audit:
+  source_mixture: ICLR 2026 paper, arXiv record, official repository, and project page.
+  split: 461 tasks from 51 papers; see repository for task organization.
+  decontamination: Underlying papers and public code can overlap with model training data.
+  license: Check Curie repository and upstream paper/code licenses before reuse.
+  lineage: https://github.com/Just-Curieous/Curie/tree/main/benchmark/exp_bench
+  known_failure_modes:
+  - Complete experiment success depends on brittle software and compute environments.
+  - Step scores may not imply a valid end-to-end scientific conclusion.
+  - Tasks evaluate established experiments, not original scientific discovery.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper, repository, author affiliations, and ICLR 2026 publication record were checked.
+inclusion_reason: EXP-Bench releases executable research-experiment episodes with structured intermediate artifacts.
+related: []
+tags:
+- ai-research
+- experiments
+- agents
+- execution-verification
+- '2026'
+one_line_summary: EXP-Bench turns 51 AI papers into 461 executable research-experiment tasks requiring agents to design, implement,
+  run, and analyze experiments.
+why_it_matters: It evaluates research agents through runnable experimental artifacts rather than a prose account of a plan.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper, repository, author affiliations, and ICLR 2026 publication record were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

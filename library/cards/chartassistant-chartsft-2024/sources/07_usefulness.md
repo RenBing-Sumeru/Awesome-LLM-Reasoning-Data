@@ -1,0 +1,3 @@
+- For building one assistant for chart extraction, QA, and reasoning, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of synthetic chart templates may become shortcuts for task and answer format.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: table reconstruction checks, source answers, and chart benchmark scoring. Do not reuse the release when its licensing or source provenance cannot be preserved.

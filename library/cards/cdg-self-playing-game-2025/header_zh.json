@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "CDG 生成一次 Prover—Critic—修订回合，并把通过正确性阈值筛选的纠错、误导、修正与抗误导结果转成分角色训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "批评辨别自博弈数据与反馈训练配方",
+  "best_for_ch": "希望复用自博弈推理反馈数据、核查角色奖励与发布边界，或研究批评采纳与拒绝机制的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Pinzheng Wang、Juntao Li、Zecheng Tang、Haijia Gui、Min Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

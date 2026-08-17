@@ -1,0 +1,102 @@
+id: ji2s-joint-influence-selection-2025
+title: 'JI²S: Joint Influence-Aware Instruction Data Selection for Efficient Fine-Tuning'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Jingyu Wei
+- Bo Liu
+- Tianjiao Wan
+- Baoyun Peng
+- Xingkong Ma
+- Mengmeng Guo
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- general
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.26/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.26/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.26
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.26/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Approximately 52K Alpaca instruction-response pairs.
+  trace_author: Existing Alpaca generation; JI²S ranks rather than rewrites records.
+  answer_format: Instruction-response record with marginal and pairwise joint influence estimates.
+  process_fields:
+  - instruction
+  - response
+  - LoRA_gradient
+  - marginal_influence
+  - joint_influence
+  - combined_score
+  environment_or_substrate: LoRA supervised instruction fine-tuning with LIMA as proxy evaluation data.
+  verifier_or_reward: Proxy LIMA loss for selection; downstream benchmarks and GPT-4 comparison for evaluation.
+  terminal_predicate: Selected 1K subset improves stated instruction-following evaluations.
+recipe_metadata:
+  base_model: LLaMA2-7B, Mistral-7B-v0.1, and LLaMA2-13B.
+  teacher: LIMA human-curated proxy set rather than an online judge.
+  generator: LoRA warmup, gradient extraction, influence approximation, and top-K ranking.
+  filtering_rule: Rank by combined marginal and second-order joint influence; select 1K lowest-scoring examples.
+  sampling_protocol: 5% Alpaca LoRA warmup for four epochs; 8,192-dimensional random projection; main joint weight 0.1.
+  rollout_count: null
+  temperature: null
+  inference_budget: Final LoRA SFT on 1K selected records.
+  optimizer_or_scaffold: LoRA supervised fine-tuning.
+audit:
+  source_mixture: Alpaca candidates plus LIMA proxy evaluation set.
+  split: Open LLM Benchmarks, MT-Bench, and five GPT-4 pairwise evaluation sets.
+  decontamination: No dedicated contamination audit claimed; inspect Alpaca, LIMA, and evaluations.
+  license: Follow Alpaca, LIMA, models, and any code-release terms when a verifiable repository becomes available.
+  lineage: 'Primary source: https://aclanthology.org/2025.emnlp-main.26/'
+  known_failure_modes:
+  - Only pairwise interactions modeled.
+  - Proxy-set bias may shape selection.
+  - Influence calculation is approximate and costly.
+  - No verified code URL surfaced by official sources.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, affiliations, method, experiments, limitations, and official paper links checked on 2026-07-16.
+    Paper claims code availability but no verifiable repository URL was available from primary sources.
+inclusion_reason: It selects the exact instruction-response records consumed by SFT using a set-level influence criterion.
+related: []
+tags:
+- instruction-selection
+- joint-influence
+- lora
+- sft
+status: verified
+one_line_summary: JI²S selects a compact instruction-tuning subset by combining marginal and pairwise joint influence relative
+  to a human-preference proxy.
+reading_priority: recommended
+paper_type: Joint-influence instruction-data selection study
+best_for: Readers studying redundancy-aware selection for compact instruction fine-tuning.
+confidence: high
+why_it_matters: It makes interaction between records, not only individual quality, part of the SFT admission decision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; code claim could not be tied to a verifiable author URL.
+category_ids:
+- training_usage_optimization_objectives

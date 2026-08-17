@@ -1,0 +1,5 @@
+- 将 Figure 1 与 §§2.2-2.5 对照阅读：Lean 验收 formal artifact，LLM reviewer 只筛选 decomposition 是否看起来有用。
+- 将 Tables 2-4 与 Table 3 一起读；70% 的 Lean-IMO-Bench 结果和 Putnam 12/12 使用了搜索，而各成功 Putnam 题的成本为 46 至约 3,000 次 LLM call。
+- Table 5 是关键 negative result：在报告设置下，compiler-feedback revision 帮助 Gemini 3.1 Pro，却没有帮助 Goedel-Prover-V2-32B。
+- Table 6 与 Putnam A5 reviewer ablation 把 DAG memory、decomposition review 同普通 best-of-N sampling 区分开。
+- 复用前检查 pinned CSV 与 proof repository；benchmark 和成功证明已公开，但实现、环境锁、prompt、失败分支与 decontamination evidence 均未公开。

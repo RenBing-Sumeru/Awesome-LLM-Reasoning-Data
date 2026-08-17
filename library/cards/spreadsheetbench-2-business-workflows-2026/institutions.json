@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Renmin University of China",
+    "Aptura AI",
+    "Shortcut AI",
+    "AfterQuery"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2606.29955",
+    "https://spreadsheetbench.github.io/"
+  ],
+  "verification_note": "arXiv and project page verify title, authors, institutions, and artifact lead; exact GitHub/HF links should be pinned from project page."
+}

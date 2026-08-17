@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "RPM-MCTS 将检索相似度、沙盒反馈与 LLM 判断结合为代码规划树的过程信号。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuanyuan Lin, Xiangyu Ouyang, Teng Zhang, Kaixin Sui",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,225 @@
+id: nemotron-cascade-2025
+title: 'Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Boxin Wang
+- Chankyu Lee
+- Nayeon Lee
+- Sheng-Chieh Lin
+- Wenliang Dai
+- Yang Chen
+- Yangyi Chen
+- Zhuolin Yang
+- Zihan Liu
+- Mohammad Shoeybi
+- Bryan Catanzaro
+- Wei Ping
+source_role:
+- model_report
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- general_reasoning
+- mathematics
+- competitive_programming
+- software_engineering
+- instruction_following
+- tool_calling
+- science
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.13607
+  arxiv: https://arxiv.org/abs/2512.13607
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Nemotron-Cascade-RL-SWE
+  project: https://huggingface.co/collections/nvidia/nemotron-cascade
+  huggingface: https://huggingface.co/nvidia/Nemotron-Cascade-8B-Thinking
+  doi: https://doi.org/10.48550/arXiv.2512.13607
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2512.13607
+data_object:
+  prompt_source: 'SFT combines general-domain, math, code, science, tool-calling, and software-engineering prompts. Named
+    sources include AceReason-Nemotron-1.1 and its math/code mixtures, S1K, Llama-Nemotron post-training data, SWE-Bench-Train,
+    SWE-Fixer-Train, SWE-reBench, SWE-Smith, and public general-domain corpora. RL prompts are stage-specific: preference-data
+    subsets for RLHF, synthetic constraint prompts for IF-RL, filtered AceReason-Math-style problems for Math RL, unit-tested
+    competitive-programming tasks for Code RL, and difficult code-repair instances for SWE RL. Complete immutable per-record
+    source manifests are unknown.'
+  trace_author: DeepSeek-R1 generates Stage-1 math, code, and science reasoning responses; DeepSeek-R1-0528 generates longer
+    Stage-2 responses and SWE trajectories; DeepSeek-V3-0324 and DeepSeek-V3 generate general-domain thinking/non-thinking
+    responses; Qwen3-235B-A22B generates tool-calling responses. RL experience is generated on-policy by the current Nemotron-Cascade
+    checkpoint. Record-level model revisions, decoding seeds, and all rejected candidates are unknown.
+  answer_format: Released SFT artifacts contain domain-configured supervised conversations or task records; the SFT-SWE card
+    documents category, source, messages, generator, patch, and thinking fields. RL-Math releases problems and short answers.
+    RL-SWE exposes source, instance_id, prompt, golden_patch, and original_prompt. RL-RLHF exposes prompts and source/category
+    metadata, while RM-Training is described as preference-training data. These artifacts are training inputs, not a release
+    of complete policy rollout groups, component rewards, or optimizer states.
+  process_fields:
+  - prompt_or_conversation
+  - source_and_category
+  - generated_response_or_reasoning_trace
+  - generator
+  - expected_answer_or_golden_patch
+  - preference_pair
+  - verifier_or_reward_signal
+  - stage_and_mode_metadata
+  environment_or_substrate: Two-stage offline SFT is followed by strict on-policy GRPO in verl. Code RL executes generated
+    programs against tests through the AceReason Evaluation Toolkit. SWE SFT and RL use an Agentless-style localization/repair
+    surface, but SWE RL deliberately replaces Docker execution with an execution-free patch-similarity reward. Exact container
+    images, dependency locks, repository snapshots, and full rollout logs are unknown.
+  verifier_or_reward: RLHF uses Qwen2.5-CascadeRL-RM-72B, a scalar reward model trained with a Bradley-Terry objective on
+    about 82K preference pairs. IF-RL uses rule-based instruction-constraint verification with dynamic filtering. Math RL
+    extracts a boxed final answer and uses the AceMath rule-based verifier, plus a code-switching penalty. Code RL gives binary
+    reward only when generated code passes all tests. SWE RL combines Unidiff lexical similarity with Kimi-Dev-72B semantic
+    comparison to the human patch; it is an execution-free proxy rather than functional verification.
+  terminal_predicate: 'Stage-dependent: preference score for RLHF; satisfaction of stated constraints for IF-RL; extracted-answer
+    equality for Math RL; all provided tests passed for Code RL; and parseable, non-identity patch similarity to a human patch
+    for SWE RL. Universal correctness, process validity, and cross-stage acceptance thresholds are unknown.'
+recipe_metadata:
+  base_model: Nemotron-Cascade-8B and Nemotron-Cascade-8B-Thinking are post-trained from Qwen3-8B-Base; Nemotron-Cascade-14B-Thinking
+    is post-trained from Qwen3-14B-Base. The official collection also releases the 8B SFT, RLHF, IF-RL, Math-RL, and Code-RL
+    intermediate checkpoints; the final 8B checkpoint follows SWE RL.
+  teacher: DeepSeek-R1 is used for Stage-1 reasoning data; DeepSeek-R1-0528 is used for Stage-2 math/code/SWE data and difficulty
+    estimation; DeepSeek-V3 variants produce general-domain responses; Qwen3-235B-A22B produces tool-calling responses. Qwen2.5-32B-Instruct
+    filters some general generations, and Kimi-Dev-72B judges SWE patches. There is no single teacher shared across all stages.
+  generator: Stage 1 trains one epoch at 16K on general-domain data plus thinking-only math, code, and science traces. Stage
+    2 trains one epoch at 32K, recombining general data with longer reasoning traces, tool calling, instruction following,
+    and SWE localization/repair/test-generation records. Cascade RL then applies RLHF -> IF-RL -> Math RL -> Code RL -> SWE
+    RL, moving from general alignment to specialized domains.
+  filtering_rule: General SFT retains original high-quality answers, rejects verifiable-answer mismatches, and uses Qwen2.5-32B-Instruct
+    for auxiliary filtering where ground truth is absent. Math and code SFT use 9-gram benchmark filtering and length bounds.
+    SWE removes repositories in SWE-bench Verified, deduplicates by repository and base commit, and separates easier SFT from
+    harder RL instances by DeepSeek-R1-0528 patch-similarity success. Math RL removes unsuitable, noisy, trivial, and unsolved
+    items; Code RL removes special-judge, weak-test, duplicate, contaminated, trivial, and intractable tasks. Complete rejection
+    ledgers are unknown.
+  sampling_protocol: 'RL uses strict on-policy GRPO: each iteration samples from the current policy and performs one gradient
+    update, with group-normalized rewards, token-level loss, and no KL term. RLHF, IF-RL, Math RL, and Code RL use 8 responses
+    per prompt; SWE RL uses 16. Dynamic filtering and staged response/context-length curricula vary by domain.'
+  rollout_count: 'Stage-specific: 8 responses per prompt for RLHF, IF-RL, Math RL, and Code RL; 16 for SWE RL. Aggregate attempted,
+    discarded, and retained rollout counts are unknown.'
+  temperature: 'Stage-specific: 0.6 for RLHF and IF-RL; Math RL uses 1.0/1.0/0.8 for the 8B length stages and 1.2/1.1 for
+    14B; Code RL reports model-dependent settings around 0.8-1.2; SWE RL uses 1.0.'
+  inference_budget: 'Training response limits are stage-specific: RLHF 12K; IF-RL 8K or 16K; 8B Math RL 24K -> 32K -> 40K;
+    Code RL roughly 44K-56K by model; SWE RL outputs 16K with 16K -> 24K input-context extension for 8B and 32K input for
+    14B. Evaluation commonly uses temperature 0.6, top-p 0.95, and up to 64K generation; those evaluation settings are not
+    training rollout settings.'
+  optimizer_or_scaffold: SFT uses AdamW with two length stages. All Cascade RL stages use strict on-policy GRPO in verl, group-normalized
+    rewards, token-level loss, and no KL regularization; reward shaping and sequence-level loss are discussed as stabilization
+    alternatives for weaker reward models. Exact code commit, complete configuration files, hardware totals, seeds, and optimizer
+    states are unknown.
+audit:
+  source_mixture: The report gives domain- and stage-level source descriptions and claims a full training-data release. The
+    official collection visibly lists final weights, 8B intermediate checkpoints, the 72B reward model, Stage-1/Stage-2 SFT,
+    SFT-SWE, RL-Math, RL-SWE, RL-RLHF, and RM-Training artifacts. It does not visibly provide dedicated Code-RL or IF-RL datasets.
+    Official dataset cards report 5,436,618 Stage-1 and 7,797,730 Stage-2 samples, while current collection viewer counts
+    are lower; no official crosswalk reconciles paper counts, files, viewer rows, upsampling, or run membership.
+  split: The paper states that SFT and RL prompts are strictly disjoint. Released dataset repositories mainly expose train
+    splits or domain configurations, not immutable stage-to-run manifests. SWE SFT/RL difficulty partitions are described,
+    but exact record-to-checkpoint order, epoch, weight, and inclusion decisions are unknown.
+  decontamination: Math/code SFT and Math/Code RL use named 9-gram checks; Code RL also uses raw problem URL matching. SWE
+    excludes repositories present in SWE-bench Verified and deduplicates by repository plus base commit. Exact benchmark revisions,
+    matched records, thresholds beyond the stated rules, removal logs, and corpus-wide checks for general, instruction, safety,
+    and tool-calling data are unknown.
+  license: The checked NVIDIA dataset cards declare CC BY 4.0, while released model and reward-model weights use the NVIDIA
+    Open Model License. A blanket dataset license does not by itself resolve upstream attribution, repository-code rights,
+    generated-response model terms, or compatibility across every source record; a machine-readable rights chain is unknown.
+  lineage: Named public or synthetic prompt source -> domain-specific filtering/decontamination -> teacher response generation
+    for SFT -> two-stage SFT -> scalar-RM RLHF -> constraint-based IF-RL -> answer-verified Math RL -> execution-verified
+    Code RL -> execution-free patch-similarity SWE RL -> released final weights. The 8B intermediate checkpoints make stage
+    order inspectable, but per-record membership, rejected candidates, verifier outputs, policy rollouts, seeds, logs, and
+    optimizer/checkpoint hashes are incomplete.
+  known_failure_modes:
+  - The scalar reward model is an imperfect preference proxy; the paper explicitly notes that the highest RewardBench score
+    need not produce the best aligned policy, and out-of-distribution prompts can destabilize RLHF.
+  - The instruction verifier checks stated constraints rather than overall answer quality; the paper reports alignment degradation
+    under naive IF-RL and discusses reward-hacking risk.
+  - Math reward verifies an extracted endpoint and format/language conditions, not the validity of every reasoning step; extraction
+    failures and equivalent-answer handling can change rewards.
+  - Code reward is only as reliable as the supplied tests; incomplete tests can create false positives, while execution latency
+    shapes which problems remain feasible.
+  - SWE RL compares against a human patch without executing it. Lexical or judge similarity can undervalue alternative correct
+    patches, reward imitation of the reference, or miss repository-level regressions.
+  - Sequential domain training can still forget when reward objectives conflict; the paper acknowledges this case even though
+    its reported benchmark sequence is mostly stable.
+  - Collection membership does not prove exact use, snapshot, mixture weight, or stage membership. Dedicated IF-RL and Code-RL
+    prompt releases were not visible in the checked collection.
+  - Published dataset totals, current viewer counts, upsampling statements, and paper-level counts lack an immutable reconciliation
+    ledger.
+  - Released training inputs and intermediate weights do not include complete policy rollout groups, component rewards, log
+    probabilities, dynamic-filter decisions, seeds, logs, or optimizer states.
+  - Benchmark scores measure model behavior under specified evaluation settings; they do not prove data provenance, trace
+    correctness, verifier calibration, rights compatibility, or absence of contamination.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v2, NVIDIA collection, final and intermediate model cards, reward-model card, and the checked NVIDIA
+    dataset cards were verified on 2026-07-19. The release is substantial, but exact code, full stage-specific data coverage,
+    count reconciliation, and end-to-end lineage remain partial.
+inclusion_reason: A frontier report with unusually explicit stage-specific data and feedback contracts, official weights,
+  a reward model, intermediate checkpoints, and multiple datasets; it is also a useful audit case because the public collection
+  does not fully reconcile every described training stage or release count.
+related: []
+tags:
+- nvidia
+- nemotron-cascade
+- frontier-report
+- data-disclosure-ledger
+- cascade-rl
+- rlhf
+- rlvr
+- reward-model
+- instruction-following
+- math
+- code
+- software-engineering
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Nemotron-Cascade documents and partially releases a two-stage SFT plus RLHF -> IF-RL -> Math -> Code ->
+  SWE cascade, with stage-specific feedback ranging from a scalar RM to tests and patch-similarity judging, but complete data-to-run
+  lineage is unavailable.
+why_it_matters: It lets the frontier-report track audit weights, datasets, feedback contracts, intermediate checkpoints, and
+  benchmark results as separate evidence layers instead of treating a collection page as proof of full reproducibility.
+card: null
+needs:
+- 'needs_release_ledger: immutable manifests reconciling paper counts, dataset-card counts, viewer rows, upsampling, revisions,
+  and exact model-run membership'
+- 'needs_stage_data: dedicated IF-RL and Code-RL prompt manifests plus exact snapshots for every stage'
+- 'needs_rollouts: policy outputs, group assignments, component rewards, log probabilities, dynamic-filter decisions, rejected
+  trajectories, and seeds'
+- 'needs_verifier: versioned instruction checks, AceMath and code-test environments, Kimi judge prompts/outputs, calibration,
+  and false-accept/false-reject audits'
+- 'needs_code: exact verl commit, complete configs, dependency locks, container images, hardware/compute accounting, and optimizer
+  checkpoints'
+- 'needs_decontamination: benchmark revisions, match ledgers, removals, and corpus-wide checks beyond the named domains'
+- 'needs_rights: per-record upstream revision, attribution, license, repository-code rights, and generator-model terms'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv report, NVIDIA collection, three final model cards, 8B intermediate checkpoints, the 72B reward model,
+    and the listed NVIDIA dataset cards were checked; release completeness and exact run lineage remain partial.

@@ -1,0 +1,118 @@
+id: webworld-2026
+title: 'WebWorld: A Large-Scale World Model for Web Agent Training'
+year: 2026
+venue: arXiv preprint
+authors:
+- Zikai Xiao
+- Jianhong Tu
+- Chuhang Zou
+- Yuxin Zuo
+- Zhi Li
+- Peng Wang
+- Bowen Yu
+- Fei Huang
+- Junyang Lin
+- Zuozhu Liu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- world-models
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.14721
+  arxiv: https://arxiv.org/abs/2602.14721
+  doi: https://doi.org/10.48550/arXiv.2602.14721
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors propose a web world model for long-horizon web-agent tasks
+  trace_author: model-generated simulations and official authors
+  answer_format: web task, simulated observation/action transitions, final state, and outcome
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: a web world model for long-horizon web-agent simulation and planning
+  verifier_or_reward: WebWorld-Bench uses LLM-judged Factuality Score and Web Turing Score; downstream task success is extrinsic
+    validation.
+  terminal_predicate: predicted next state is judged for factual action-effect consistency and real-observation similarity
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official WebWorld authors and world-model training/evaluation sources
+  generator: WebWorld web world-model simulation pipeline
+  filtering_rule: do not treat simulated traces as ground truth without validating transition fidelity and data provenance
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2602.14721
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2602.14721'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies the corrected title, authors, 1M+ open-web trajectories, 8B/14B/32B model scales, 30+ turn simulation,
+    WebWorld-Bench metrics, 8,000 synthesized trajectories, and +9.2% WebArena downstream gain. No official public code/data/project
+    URL was verified.
+inclusion_reason: it explores world-model simulation as a route to long-horizon web environments
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- world-models
+why_it_matters: it explores world-model simulation as a route to long-horizon web environments
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WebWorld trains large web world models for web-agent simulation, synthetic trajectory generation, and search.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv verifies the corrected title, authors, 1M+ open-web trajectories, 8B/14B/32B model scales, 30+ turn simulation,
+    WebWorld-Bench metrics, 8,000 synthesized trajectories, and +9.2% WebArena downstream gain. No official public code/data/project
+    URL was verified.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 39
+  primary_category_id: benchmarks_evaluation_surfaces

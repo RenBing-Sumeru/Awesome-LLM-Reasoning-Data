@@ -1,0 +1,5 @@
+MMMU asks whether multimodal models can solve college-level expert problems that require both visual understanding and disciplinary reasoning. The primary source is Yue et al., "MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI," arXiv 2023 and CVPR 2024 Oral; the official project, GitHub, CVF paper page, and Hugging Face dataset publish the benchmark assets.
+
+The collection boundary is multimodal academic evaluation surface. It is not a training recipe, not a general visual-chat dataset, and not an interactive environment. A data object is a question with one or more images or diagrams, text prompt, answer choices or short-answer target, subject/subfield metadata, and split information.
+
+The feedback contract is answer-level scoring against the benchmark target after task-specific normalization. Its atlas value is that it extends MMLU-style broad academic evaluation from text-only questions to heterogeneous visual evidence such as charts, scientific diagrams, medical images, and design artifacts.

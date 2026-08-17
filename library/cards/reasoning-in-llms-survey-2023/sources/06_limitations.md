@@ -1,0 +1,3 @@
+- **Time-bounded coverage.** The map largely reflects literature available through 2022–2023 and misses later verifier, test-time compute, and reasoning-model developments; use the repository and newer primary work to update it.
+- **Taxonomy versus causality.** Placing methods in a category does not make their experiments comparable or identify why a score changed; inspect matched models, data, prompts, and protocols.
+- **Reasoning observability.** Correct answers and coherent chains do not prove faithful internal reasoning; require process checks or causal analysis when that distinction matters.

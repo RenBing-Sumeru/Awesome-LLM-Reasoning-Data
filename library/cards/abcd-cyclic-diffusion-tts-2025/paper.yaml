@@ -1,0 +1,99 @@
+id: abcd-cyclic-diffusion-tts-2025
+title: Adaptive Inference-Time Scaling via Cyclic Diffusion Search
+year: 2025
+venue: NeurIPS 2025 Poster
+authors:
+- Gyubin Lee
+- Truong Nhat Nguyen Bao
+- Jaesik Yoon
+- Dongwoo Lee
+- Minsu Kim
+- Yoshua Bengio
+- Sungjin Ahn
+source_role:
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.14036
+  arxiv: https://arxiv.org/abs/2505.14036
+  venue: https://openreview.net/forum?id=jkCH6iwFZm
+  code: https://lee-gyubin.github.io/ABCD_project_page/
+  data: null
+  project: https://lee-gyubin.github.io/ABCD_project_page/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.14036
+data_object:
+  prompt_source: Diffusion-model inference tasks including reasoning and generative objectives.
+  trace_author: A diffusion model is repeatedly denoised, re-noised, branched, and terminated by the ABCD controller.
+  answer_format: Input, diffusion state, cycle, branch decision, stopping decision, and final output.
+  process_fields:
+  - input
+  - diffusion_state
+  - cycle
+  - branch
+  - value
+  - stopping_decision
+  - output
+  environment_or_substrate: Adaptive bi-directional diffusion inference.
+  verifier_or_reward: Automatic exploration–exploitation balancing and task-specific evaluation.
+  terminal_predicate: Terminate a cyclic search trajectory when further denoising is not worth its cost.
+recipe_metadata:
+  base_model: Diffusion models in the reported experiments.
+  teacher: null
+  generator: The diffusion model under cyclic search.
+  filtering_rule: Allocate additional cycles only when the controller estimates useful exploration value.
+  sampling_protocol: Bi-directional diffusion cycles with adaptive branching and termination.
+  rollout_count: Budget dependent; see the official paper.
+  temperature: Not applicable to the diffusion schedule.
+  inference_budget: Denoising and re-noising cycles.
+  optimizer_or_scaffold: Adaptive Bi-directional Cyclic Diffusion (ABCD).
+audit:
+  source_mixture: Official NeurIPS/OpenReview PDF and official project page.
+  split: Multiple diffusion-model tasks reported by the authors.
+  decontamination: Task-specific objectives and evaluation data require separate audit.
+  license: Check model and project terms before reuse.
+  lineage: https://arxiv.org/abs/2505.14036
+  known_failure_modes:
+  - miscalibrated-stopping
+  - search-overhead
+  - diffusion-schedule-sensitivity
+  citation_status: verified
+  confidence: high
+  notes: 'Official paper checked on 2026-07-21. Affiliations: KAIST, SAP, Mila, Université de Montréal, and NYU.'
+inclusion_reason: It explicitly allocates inference computation through adaptive diffusion cycles, exploration, and stopping
+  decisions.
+related: []
+tags:
+- test-time-compute
+- diffusion
+- adaptive-search
+- stopping
+status: verified
+one_line_summary: ABCD uses cyclic diffusion search to adapt exploration depth and stopping time to the available inference
+  budget.
+reading_priority: recommended
+paper_type: Adaptive diffusion inference scaling study
+best_for: Readers studying budget allocation beyond autoregressive sampling.
+confidence: high
+why_it_matters: It makes denoising depth and search termination explicit test-time scaling decisions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official venue, paper, project, and affiliations verified.
+category_ids:
+- scaling_rlvr_test_time_compute

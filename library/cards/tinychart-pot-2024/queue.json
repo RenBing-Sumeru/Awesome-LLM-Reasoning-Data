@@ -1,0 +1,17 @@
+{
+  "title": "TinyChart: Efficient Chart Understanding with Visual Token Merging and Program-of-Thoughts Learning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.emnlp-main.112/",
+    "data": "https://huggingface.co/datasets/mPLUG/TinyChartData"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:45:49Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态数据",
+    "updated_at": "2026-07-27T08:45:49Z"
+  }
+}

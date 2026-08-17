@@ -1,0 +1,5 @@
+LLM “reasoning” results mix different interventions: training on worked solutions, eliciting latent behavior with prompts or examples, bootstrapping new traces, scoring answers on benchmarks, and interpreting fluent explanations. Without separating them, an inference-time prompt gain can be misreported as a trained reasoning capability or a faithful internal process.
+
+This survey builds a decision map of the field: fully supervised methods, prompting and in-context learning, hybrid methods that combine generation with further training, evaluation benchmarks, and findings about what observed behavior supports. It helps readers identify the actual prompt, rationale, answer, training record, and metric behind each reasoning claim.
+
+L4 facts: primary sources https://aclanthology.org/2023.findings-acl.67/ and https://arxiv.org/abs/2212.10403; Findings of ACL 2023; boundary: literature survey, not a new reasoning dataset or verifier; atlas value: routes training, elicitation, evaluation, and interpretation claims; companion paper list: https://github.com/jeffhj/LM-reasoning.

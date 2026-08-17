@@ -1,0 +1,6 @@
+- Read Paper §2.1 and Algorithm 1 first: purification is box-aligned scoring followed by consensus-failure mining, LLM correction proposals, and human verification—not simply a renamed AndroidControl split.
+- Keep the paper's terminal success rate separate from the released static `Step_Success_Rate`; inspect `src/eval/utils.py` and `src/eval/evaluate_actions_androidControl_vllm.py` before reproducing scores.
+- Table 2's Hard SR changes—61.2→71.7→76.5 for Qwen3-VL-235B and 57.6→69.1→75.3 for Magma-R1—show measurement sensitivity, not record-level certification.
+- The 2,400 samples used for Magma-R1 GRPO have no released ID/split manifest, so overlap with the evaluation surface is unknown.
+- Pin the dataset revision, scorer, and exact 3B checkpoint; do not substitute the later 4B material in the redirected model repository without reporting the change.
+- Treat license, privacy, live replay, human-review protocol, and rejected-candidate retention as unresolved reuse gates.

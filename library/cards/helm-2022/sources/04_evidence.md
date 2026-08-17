@@ -1,0 +1,3 @@
+The original HELM evidence is broad coverage: 30 models evaluated on 42 scenarios with 7 metric families, including both core scenarios and targeted scenarios. The paper's key claim is not one SOTA number; it is that model rankings and tradeoffs change when accuracy is reported alongside calibration, robustness, fairness, toxicity, bias, and efficiency.
+
+Row-level evidence is a stored model output scored by a metric module under a particular scenario and adapter configuration. The evidence boundary is the HELM release: model APIs, prompt templates, scenario versions, metric code, and online result tables can change, so old and current HELM numbers are not interchangeable without version tags.

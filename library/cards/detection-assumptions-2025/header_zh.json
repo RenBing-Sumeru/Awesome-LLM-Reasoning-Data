@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "从假设层面审计数据污染检测，揭示实例级 MIA 的适用边界。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "污染检测方法综述与假设审计",
+  "best_for_ch": "需要选择或解释 LLM 污染检测结果的评测研究者。",
+  "confidence_ch": "高：已核对 NAACL 正文、作者机构及正式论文页。",
+  "authors_ch": "Yujuan Velvin Fu, Özlem Uzuner, Meliha Yetisgen, Fei Xia",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

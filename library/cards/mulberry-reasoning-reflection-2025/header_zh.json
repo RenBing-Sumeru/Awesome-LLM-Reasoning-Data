@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Mulberry-260K 用四模型树搜索发布图像推理与反思示范，供多模态 SFT 使用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态推理与反思数据集及集体搜索配方",
+  "best_for_ch": "适合构建或审计图像推理、反思 SFT 数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Huanjin Yao, Jiaxing Huang, Wenhao Wu, Jingyi Zhang, Yibo Wang, Shunyu Liu, Yingjie Wang, Yuxin Song, Haocheng Feng, Li Shen, Dacheng Tao",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:20:00Z"
+}

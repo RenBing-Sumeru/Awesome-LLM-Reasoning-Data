@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:07:39Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统说明测试时计算如何作用于工具使用智能体，并表明选择性反思、列表式验证和多样轨迹比盲目加深搜索更有效",
+    "updated_at": "2026-07-20T13:07:39Z"
+  }
+}

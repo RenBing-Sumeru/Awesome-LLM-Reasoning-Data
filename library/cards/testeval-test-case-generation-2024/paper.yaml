@@ -1,0 +1,122 @@
+id: testeval-test-case-generation-2024
+title: 'TESTEVAL: Benchmarking Large Language Models for Test Case Generation'
+year: 2024
+venue: NAACL 2025 Findings / arXiv
+authors:
+- Wenhan Wang
+- Chenyuan Yang
+- Zhijie Wang
+- Yuheng Huang
+- Zhaoyang Chu
+- Da Song
+- Lingming Zhang
+- An Ran Chen
+- Lei Ma
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- test-generation
+- coverage-evaluation
+- code-semantics
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.04531
+  arxiv: https://arxiv.org/abs/2406.04531
+  doi: https://doi.org/10.48550/arXiv.2406.04531
+  code: https://github.com/LLM4SoftwareTesting/TestEval
+  data: https://github.com/LLM4SoftwareTesting/TestEval
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 210 Python programs from LeetCode and three task types; sixteen LLMs evaluated, according to arXiv.
+  prompt_source: LeetCode-derived Python programs and target coverage tasks
+  trace_author: models generate executable tests for target programs; authors provide benchmark tasks and pipeline
+  answer_format: program under test, target coverage objective, generated test inputs or test code, execution result, and
+    coverage metric
+  process_fields:
+  - program
+  - coverage objective
+  - generated test case
+  - execution result
+  - line/branch/path coverage
+  - score
+  environment_or_substrate: Python test-case generation benchmark with coverage instrumentation
+  verifier_or_reward: test execution plus coverage measurement for overall, targeted line/branch, and targeted path tasks
+  terminal_predicate: generated tests execute and cover the requested program elements or paths
+recipe_metadata:
+  base_model: Not a single model-training recipe unless stated by the paper; treat the record as evaluation/audit by default.
+  teacher: Official authors, annotators, tests, repositories, or benchmark construction pipeline described by the source.
+  generator: LeetCode-derived Python programs and target coverage tasks
+  filtering_rule: Use only source-backed construction and validation claims; keep unknown artifact details in audit.
+  sampling_protocol: Pin source version, split, runtime, scorer, prompt/scaffold, and release snapshot before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: Python test-case generation benchmark with coverage instrumentation
+audit:
+  source_mixture: https://arxiv.org/abs/2406.04531; https://github.com/LLM4SoftwareTesting/TestEval; https://github.com/LLM4SoftwareTesting/TestEval
+  split: pin exact train/dev/test or public/hidden split before score reuse
+  decontamination: public benchmark records, repositories, tests, questions, or traces can enter future training data
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2406.04531'
+  known_failure_modes:
+  - dependency/runtime drift
+  - prompt or scaffold sensitivity
+  - public-artifact contamination
+  - scorer/evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: LeetCode provenance, coverage instrumentation, path target construction, dependency versions, and repository license
+    must be pinned before reuse.
+inclusion_reason: TESTEVAL evaluates test-case generation on 210 Python programs with overall, targeted line/branch, and targeted
+  path coverage tasks.
+related: []
+tags:
+- agent_environment
+- benchmark
+- code-agents
+- coverage-evaluation
+- evaluation-surface
+- test-generation
+- trajectory_data
+one_line: TESTEVAL evaluates test-case generation on 210 Python programs with overall, targeted line/branch, and targeted
+  path coverage tasks.
+why_it_matters: TESTEVAL evaluates test-case generation on 210 Python programs with overall, targeted line/branch, and targeted
+  path coverage tasks.
+status: verified
+needs:
+- 'needs_version_pin: pin source artifact, split, runtime, prompt/scaffold, and scorer version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'
+one_line_summary: TESTEVAL evaluates test-case generation on 210 Python programs with overall, targeted line/branch, and targeted
+  path coverage tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official source metadata and card-local artifacts were checked for regeneration.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 109
+  primary_category_id: benchmarks_evaluation_surfaces

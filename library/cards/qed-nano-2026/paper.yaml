@@ -1,0 +1,204 @@
+id: qed-nano-2026
+title: 'QED-Nano: Teaching a Tiny Model to Prove Hard Theorems'
+year: 2026
+venue: arXiv preprint
+authors:
+- LM-Provers
+- Yuxiao Qu
+- Amrith Setlur
+- Jasper Dekoninck
+- Edward Beeching
+- Jia Li
+- Ian Wu
+- Lewis Tunstall
+- Aviral Kumar
+source_role:
+- model_report
+- data_release
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- olympiad_mathematics
+- natural_language_theorem_proving
+- long_horizon_reasoning
+- test_time_reasoning
+training_use:
+- sft
+- distillation
+- rlvr
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.04898
+  arxiv: https://arxiv.org/abs/2604.04898
+  code: https://github.com/CMU-AIRe/QED-Nano
+  data: https://huggingface.co/datasets/lm-provers/FineProofs-RL
+  project: https://huggingface.co/spaces/lm-provers/qed-nano-blogpost
+  huggingface: https://huggingface.co/collections/lm-provers/qed-nano
+  doi: https://doi.org/10.48550/arXiv.2604.04898
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2604.04898
+data_object:
+  prompt_source: 'FineProofs-RL draws text-only Olympiad-style proof problems from AI-MO/aops and AI-MO/olympiads after filtering
+    image-dependent, trivial, ill-posed, short, purely computational, easier-contest, 2025-competition, and benchmark-matched
+    items. The pinned release contains 5,227 unique problems: 3,794 labeled `aops` and 1,433 labeled `olympiads`.'
+  trace_author: Qwen3-4B-Thinking-2507 generates offline difficulty-estimation attempts; the current QED-Nano policy generates
+    online GRPO and Reasoning-Cache proof rollouts. A frozen Qwen3-4B-Instruct-2507 snapshot summarizes partial progress during
+    Reasoning-Cache training. DeepSeek-Math-V2 separately generates FineProofs-SFT proof traces for initialization.
+  answer_format: Training and evaluation use long natural-language proofs. A reusable FineProofs-RL row instead contains a
+    problem, coarse source, problem-level rubric, arrays of integer scores and normalized rewards, their count, mean, and
+    standard deviation. The corresponding proof text and grader assessment are not released.
+  process_fields:
+  - problem
+  - source
+  - rubrics
+  - scores
+  - rewards
+  - num_rewards
+  - reward_mean
+  - reward_std
+  environment_or_substrate: Natural-language theorem proving without Lean or an external formal proof tool. Standard RL samples
+    complete long proofs. Reasoning Cache alternates partial proof generation with a compact textual state summary, then conditions
+    the next rollout on the original problem and that summary.
+  verifier_or_reward: Gemini 3 Pro generates a 0-7 problem-specific grading scheme with checkpoints, zero-credit items, and
+    deductions. GPT-OSS-20B with medium reasoning grades a completed proof against that scheme. FineProofs-RL stores integer
+    scores and score/7 normalized rewards, but no proof-specific grader rationale.
+  terminal_predicate: A completed or truncated natural-language proof receives one rubric-based 0-7 outcome score from the
+    learned judge. This is not a formal proof-checker predicate, and the paper documents disagreement with human evaluation.
+recipe_metadata:
+  base_model: Qwen/Qwen3-4B-Thinking-2507
+  teacher: DeepSeek-Math-V2 supplies SFT traces; Gemini 3 Pro generates problem-specific rubrics; GPT-OSS-20B-medium supplies
+    proof grades; frozen Qwen3-4B-Instruct-2507 summarizes Reasoning-Cache state during training.
+  generator: DeepSeek-Math-V2 generates separate SFT proof targets. Qwen3-4B-Thinking-2507 generates the offline difficulty
+    population, and the evolving QED-Nano policy generates online proof rollouts from each selected prompt or Reasoning-Cache
+    state.
+  filtering_rule: Remove image-dependent, trivial, ill-posed, very short, purely computational, and easier-contest items;
+    apply GPT-5-Nano quality flags; exclude all 2025 competition problems; fuzzy-match against IMO-ProofBench and ProofBench;
+    and exactly deduplicate released problem text. For online RL, the paper removes problems with base-model pass@1 at least
+    0.7 and problems with no successful rollout. The dataset card additionally states reward mean at most 0.7 and reward standard
+    deviation above 0.08.
+  sampling_protocol: Precompute difficulty from nominally 128 independently graded Qwen3-4B-Thinking-2507 attempts per problem.
+    During online training, sample 16 proofs per problem for 64 prompts, yielding 1,024 samples, grade complete proofs with
+    GPT-OSS-20B-medium, and update with asynchronous streaming GRPO. Reasoning-Cache training uses three summarize-and-refine
+    cycles and subsamples state-conditioned rollouts for policy updates.
+  rollout_count: Offline annotation is nominally 128 attempts per problem. In the pinned FineProofs-RL release, 4,773 rows
+    have 128 scores, 453 have 62-127, and one has 256. Online GRPO uses 16 rollouts per problem. Reasoning-Cache training
+    uses three reasoning/summarization turns.
+  temperature: Actor temperature is 0.8; test sampling uses top-p 0.95 and top-k 20; the Reasoning-Cache summarizer uses temperature
+    0.7; and GPT-OSS-20B grading uses temperature 1.0 with medium reasoning, according to the pinned configs.
+  inference_budget: Released configs cap actor generations at 49,152 tokens, while the paper rounds the RL maximum response
+    length to about 50,000. The model card reports 150 optimization steps, 64 prompts and 1,024 rollouts per batch, 12 eight-H100
+    nodes across generator, trainer, and grader roles, four days, and 9,216 H100-hours. Test-time scaffold evaluation scales
+    to roughly two million tokens per problem.
+  optimizer_or_scaffold: Asynchronous streaming GRPO with at most five gradient steps of policy lag, entropy coefficient 0.0001,
+    no KL regularization, constant learning rate 1e-6, and rubric-based outcome rewards. Reasoning Cache adds three-turn textual-state
+    refinement during training; evaluation also covers Reasoning Cache, Self-Check, Nomos, RSA, and DeepSeekMath-style scaffolds.
+audit:
+  source_mixture: 'The pinned FineProofs-RL train release has 5,227 non-null rows: 3,794 coarse `aops` sources and 1,433 coarse
+    `olympiads` sources. It combines problem text, Gemini-generated rubrics, and GPT-OSS grades of Qwen3-4B-Thinking difficulty
+    attempts; the attempt text is absent.'
+  split: FineProofs-RL revision 61c9ade2e04ab4ee7e257434e0826cb9b737f63e exposes one 5,227-row `train` split. Code separately
+    loads FineProofs-RL-test revision f2f55ba4a125aa0cb2fde0e3e75df9ce8971774a, which exposes a 128-row `test` split in a
+    different dataset repository.
+  decontamination: The paper excludes all 2025 competition problems and applies fuzzy string matching against IMO-ProofBench
+    and ProofBench. The release card also reports exact deduplication. Match thresholds, candidate pairs, decisions, and row-level
+    source manifests are not released.
+  license: FineProofs-RL declares Apache 2.0; the official code and QED-Nano model card are also Apache-2.0, while the arXiv
+    paper is CC BY 4.0. The checked AI-MO/aops and AI-MO/olympiads cards do not expose clear repository-level license metadata,
+    so source-item and scraped-forum rights remain unresolved.
+  lineage: AI-MO sources -> prompt filtering and deduplication -> Gemini 3 Pro rubric -> nominal 128-attempt Qwen3 difficulty
+    population -> GPT-OSS-20B score arrays and statistics -> curriculum selection -> 16-rollout GRPO or three-turn Reasoning-Cache
+    training -> QED-Nano checkpoint -> optional high-budget test-time scaffold. A separate branch is DeepSeek-Math-V2 -> structurally
+    valid proof traces -> FineProofs-SFT -> QED-Nano-SFT initialization.
+  known_failure_modes:
+  - FineProofs-RL releases no rollout proof text, including failed attempts, so its score arrays cannot be audited against
+    mathematical content.
+  - Per-rollout GPT-OSS assessments, error lists, and expanded judge inputs are absent; a problem-level rubric is not proof-specific
+    feedback.
+  - 'The nominal 128-attempt count is not universal: 453 rows have 62-127 grades and one row has 256, with no disclosed explanation.'
+  - Removing zero-success and very easy prompts narrows the online training distribution and discards the hardest all-failure
+    population.
+  - GPT-OSS-20B is a learned judge rather than a proof checker; the paper reports occasional generosity and a substantial
+    error on IMO 2025 Q2.
+  - The FineProofs-RL card mentions DeepSeek-Math-V2 proof generation and SFT context, but its parquet has no proof, reasoning,
+    messages, or assessment fields. It is not a raw trace release.
+  - SFT causes length explosion, repetition, and meandering; early RL from a verbose checkpoint has around 60 percent overflow
+    or truncation.
+  - 'Test-time results are budget-sensitive: Table 2 reports about 2.05 million average tokens for RSA versus about 93.7 thousand
+    for a single turn.'
+  - Fuzzy-match logs, rejected-prompt manifests, per-row competition provenance, and upstream source licensing are unavailable.
+  - No immutable GitHub release tag exists; reuse should pin the checked code, dataset, test-dataset, and model revisions.
+  citation_status: verified
+  confidence: high
+  notes: Checked 2026-07-25 against the complete arXiv v1 paper and appendices, official pinned code/configs, official model
+    and collection, the pinned FineProofs-RL parquet/card, and the separate FineProofs-RL-test repository. Citation and artifact
+    ownership are verified; raw-rollout completeness, row-level rights, and judge-level auditability remain partial.
+inclusion_reason: 'QED-Nano connects offline rollout-population statistics, rubric-based outcome reward, curriculum selection,
+  online rollout groups, multi-turn Reasoning-Cache training, and high-budget test-time scaffolds. It is especially relevant
+  to this track because the release makes clear what is reusable: prompts, rubrics, and score arrays, but not the corresponding
+  proof trajectories or grader feedback.'
+related:
+- deepseekmath-v2-2025
+tags:
+- qed-nano
+- fineproofs-rl
+- olympiad-proof
+- natural-language-theorem-proving
+- rubric-reward
+- llm-judge
+- grpo
+- reasoning-cache
+- rollout-population
+- curriculum-filtering
+- test-time-scaling
+- missing-raw-rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- preference_reward_feedback_data
+- process_trace_supervision_data
+one_line_summary: QED-Nano couples 128-attempt difficulty statistics, 16-rollout rubric-reward GRPO, and three-turn Reasoning-Cache
+  training, while FineProofs-RL releases prompts, rubrics, and score arrays but not the proofs behind them.
+why_it_matters: The work makes rollout budgeting, curriculum selection, judgment-based proof rewards, and train/test-time
+  scaffold coupling explicit for a small open model. It also demonstrates that score populations can support prompt selection
+  and RL without constituting a reusable trace corpus.
+card: null
+card_recommendation: recommended
+needs:
+- 'needs_trace_release: publish raw difficulty and online-RL proof rollouts, including failed attempts, with stable IDs aligned
+  to scores'
+- 'needs_feedback_release: publish per-rollout GPT-OSS assessments, errors, expanded prompts, and judge metadata'
+- 'needs_metadata: explain non-128 and 256-count rows and expose row-level competition/source IDs'
+- 'needs_audit: release fuzzy-match candidates, thresholds, decisions, and accepted/rejected prompt manifests'
+- 'needs_license: document upstream AI-MO/AoPS/competition source-item rights and license compatibility'
+- 'needs_version_pin: preserve the checked code, dataset, test-dataset, and model revisions'
+- 'needs_venue: no peer-reviewed venue page was confirmed'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title and arXiv-ID deduplication was completed. Paper, appendix, code, configs, model, collection, main RL
+    dataset, separate test dataset, schema, counts, splits, license declarations, curriculum, rollout budgets, and absent
+    failed-attempt text were checked against official sources. Status remains partial because raw rollouts, grader feedback,
+    decontamination logs, row-level provenance, and source rights are incomplete.

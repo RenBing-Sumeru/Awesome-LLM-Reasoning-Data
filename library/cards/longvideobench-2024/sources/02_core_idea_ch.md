@@ -1,0 +1,1 @@
+核心贡献是一套长视频 multiple-choice QA benchmark，包含 interleaved video-language context 和 referred-context 标注。机制是收集长视频，构造需要特定时序证据才能回答的问题，给出候选选项，并用固定答案键给模型选择打分。数据对象是 video QA instance，不是逐帧 caption 数据，也不是自由视频摘要。反馈契约是 answer-level 多选 accuracy，证据字段可用于审计但不替代最终答案键。最接近的对照是短视频 QA 和以图像为中心的多模态 benchmark；LongVideoBench 改的是视频时长、时序定位和多模态证据要求。

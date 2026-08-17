@@ -1,0 +1,5 @@
+- Data object: joinable benchmark prompts, 15-model candidate CoTs, response correctness labels, 15-model verifier CoTs, and binary verdicts.
+- Construction: 64 generator samples per model-problem pair; verifier evaluation targets eight candidates balanced four correct/four incorrect when possible.
+- Feedback boundary: verifiers do not receive the gold answer, but the evaluation label uses answer checkers and reference-based LLM fallbacks.
+- TTS boundary: conditional pass rate measures uniform sampling from the retained pool, not Best-of-N selection.
+- Open boundary: code and traces are public, while exact release counts, immutable manifests, decontamination, upstream rights, and full version/compute metadata remain unresolved.

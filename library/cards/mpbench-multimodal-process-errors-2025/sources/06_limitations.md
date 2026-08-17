@@ -1,0 +1,1 @@
+First, mappings between image details and reasoning steps can admit several valid segmentations, so earliest-error agreement should be reported. Second, generated failures may reflect the habits of only a few MLLMs. Third, public images and trajectories can enter training, motivating hidden or dynamically generated future tests.

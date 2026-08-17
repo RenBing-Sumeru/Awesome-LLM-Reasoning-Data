@@ -1,0 +1,5 @@
+The contribution serializes verification and correction into one model's token space. An explicit control action makes “stop” and “refine” trainable continuations, while the second stage conditions a gold correction on the model's own failed prefix. Verification and repair are therefore connected by a concrete sequence schema rather than only by a retry instruction.
+
+Training is deliberately ordered: first learn when to stop, then learn how to continue after detecting failure. The pair schema changes with both outcome correctness and curriculum stage. This differs from generic retry prompting, which does not learn an error-conditioned gate, and from an external-verifier search loop, which delegates the gate to another system.
+
+The intrinsic design reduces inference dependencies but does not remove verification risk; it moves the decision into the same model that produced the original path. Its value should be assessed through calibration and right-to-wrong transitions, not through an assumption that self-confidence equals correctness.

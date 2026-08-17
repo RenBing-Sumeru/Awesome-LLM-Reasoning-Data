@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T11:54:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "御三家 模型常测",
+    "updated_at": "2026-07-15T11:54:09Z"
+  }
+}

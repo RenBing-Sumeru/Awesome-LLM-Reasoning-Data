@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Agent-RLVR 收集经测试验证的软件智能体轨迹与教师引导的重试记录，再把同一任务的正负样本对复用于监督微调、离线 DPO 和推理时的补丁奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jeff Da、Clinton Wang、Xiang Deng、Yuntao Ma、Nikhil Barhate、Sean Hendryx",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

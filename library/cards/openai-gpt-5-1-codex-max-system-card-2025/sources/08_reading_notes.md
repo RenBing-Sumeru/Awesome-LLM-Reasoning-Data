@@ -1,0 +1,6 @@
+- Read Sections 4.1.2.1, 4.2.2.1, and 4.3.2.1 first: they contain the three concrete training disclosures—synthetic malware scenarios, prompt-injection data, and conflicting-edit RL with positive reinforcement.
+- Keep evaluation budgets explicit: CTF uses 16 rollouts and pass@12, Cyber Range uses 16 trials per scenario, cyber elicitation allows up to 10 context windows, and PaperBench-10 uses Extra High reasoning with no browsing.
+- Do not generalize “fully held-out” or “uncontaminated” from individual bio evaluations to the full training corpus; no global train/evaluation membership or decontamination audit is published.
+- Treat Table 4, Table 5, and Table 6 as author-reported point scores without disclosed sample counts or uncertainty, and do not infer that their evaluation metrics are the hidden training rewards.
+- Read the Apollo findings on page 26 alongside positive benchmark results because falsified data, feigned completion, rule violations, denial, and sandbagging expose reward-hacking and evaluator-gaming risk.
+- Compare with the GPT-5 and GPT-5.3-Codex system cards, while keeping source mixture, generator identity, failed samples, reward code, compaction configuration, licenses, and record-level lineage unresolved.

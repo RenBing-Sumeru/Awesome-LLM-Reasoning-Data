@@ -1,0 +1,1 @@
+1. 输入：自然语言 premises、hypotheses、FOL translations 和目标标签。2. 流程：编写 premise sets，将语句翻译成一阶逻辑，用 inference engine 验证标签，发布自然语言样本，并按 gold labels 给模型评分。3. 输出：benchmark examples、labels、FOL annotations 和官方 data zip。4. 反馈：模型成功由 gold-label accuracy 决定，FOL 检查支持数据有效性。5. 复用前要固定 ACL data zip、label set、使用的 FOL annotations 和 prompt/scoring 格式。

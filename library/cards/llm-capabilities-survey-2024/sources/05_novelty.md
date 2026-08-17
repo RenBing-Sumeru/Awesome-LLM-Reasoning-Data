@@ -1,0 +1,1 @@
+Rather than cataloguing applications alone, the survey makes the link between abilities and domain success its organizing question. This shifts the comparison from “which model scored highest?” to “which combination of abilities is important for this task?”

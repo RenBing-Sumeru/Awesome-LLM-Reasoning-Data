@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"C3RL 先训练模型把口头置信度校准到真实正确率，再由 CAS 据此为不确定问题追加采样。","reading_priority_ch":"可读","paper_type_ch":"置信度校准驱动的自适应测试时扩展研究","best_for_ch":"研究如何用可靠不确定性分配推理采样预算的读者。","confidence_ch":"高","authors_ch":"Xuqing Yang（上海交通大学）；Yi Yuan（东南大学）；Shanzhe Lei、Xuhong Wang（上海人工智能实验室）","category_ids":["scaling_rlvr_test_time_compute"]}

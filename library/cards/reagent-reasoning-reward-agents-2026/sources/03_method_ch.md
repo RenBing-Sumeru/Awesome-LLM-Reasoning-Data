@@ -1,0 +1,1 @@
+流程先从多类任务收集 agent 轨迹，并对中间推理和工具决策生成评价。Agent-RRM 被训练为输出显式分析、指出主要缺陷或改进方向的聚焦 critique，以及总体分数。Reagent-C 把 critique 加入上下文以支持重新尝试；Reagent-R 将分数转成优化信号；Reagent-U 在 agentic RL 中同时融合文本与标量反馈。作者在十二个 benchmark 上训练和评测，并与稀疏结果奖励及三种集成方式比较。

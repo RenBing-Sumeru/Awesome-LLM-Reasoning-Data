@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "rStar-Math 通过四轮自演化，把带答案的数学题转化为经 Python 执行筛选的 MCTS 轨迹与按 Q-value 构造的步骤偏好；公开 SFT 和 PPM 扁平表，但未公开支撑审计的来源与搜索树 lineage。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学推理数据构造、过程偏好建模与开放数据发布",
+  "best_for_ch": "设计搜索生成的数学 SFT/过程偏好数据、复现 policy–verifier 共演化流程，或审计扁平发布造成 lineage 丢失的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Xinyu Guan、Li Lyna Zhang、Yifei Liu、Ning Shang、Youran Sun、Yi Zhu、Fan Yang、Mao Yang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

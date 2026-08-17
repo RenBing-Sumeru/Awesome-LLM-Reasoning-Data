@@ -1,0 +1,3 @@
+Correctness only holds relative to the stated contract: In unit-test mode, generated tests must fail on the original code and pass after the fix, with no failing tests after the fix; metrics include success rate and changed-line coverage. Reproduction-script mode is simpler and should not be conflated with default unit-test integration. Generated tests may overfit the patch or miss semantic coverage.
+
+The paper should not be read as unrestricted software-agent reliability. Public artifacts can become training data, Docker or dependency environments can drift, and evaluator implementations can change across releases.

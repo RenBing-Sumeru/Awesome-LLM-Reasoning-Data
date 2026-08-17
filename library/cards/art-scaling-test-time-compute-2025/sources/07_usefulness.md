@@ -1,0 +1,1 @@
+Use the paper when selecting an existing inference policy for a model fleet. Profile trace quality by difficulty before applying a one-size-fits-all sampling budget, and use the released code as a starting point for a matched comparison.

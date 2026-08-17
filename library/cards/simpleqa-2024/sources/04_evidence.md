@@ -1,0 +1,5 @@
+The paper reports 4,326 public questions. It estimates benchmark error at roughly 3% after a 1,000-example quality check: a third trainer answered sampled questions, cases flagged as incorrect were manually inspected, and remaining failures were attributed to ambiguous questions, contradictory sources, or multiple valid answers.
+
+The model table shows the benchmark was not saturated at release. GPT-4o reached 38.2% correct and 38.4 F-score; o1-preview reached 42.7% correct and 44.8 F-score; Claude-3.5 Sonnet reached 28.9% correct and 35.0 F-score, with substantially more non-attempts than GPT-4o. The paper also reports that correct-given-attempted and F-score expose different behaviors because abstention changes the denominator.
+
+The row-level evidence is the question, reference answer, supporting metadata URLs, trainer agreement process, model answer, and three-way grader label. The evidence boundary is that the released evaluator uses a prompted model classifier, not a symbolic verifier or live web check. Scores can move with grader model, prompt, evaluator commit, CSV snapshot, parsing rule, and model answer formatting.

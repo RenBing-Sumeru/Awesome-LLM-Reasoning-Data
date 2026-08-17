@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作以保形预测为评分型 LLM judge 输出覆盖率可检验的区间与中点分数。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "EMNLP 2025 的 LLM judge 不确定性量化与评测可靠性研究",
+  "best_for_ch": "需要为自动评测器报告校准不确定性、审计评分可靠性的研究者。",
+  "confidence_ch": "高：正式会议论文、代码、作者和机构均已核验。",
+  "authors_ch": "Huanxin Sheng, Xinyi Liu, Hangfeng He, Jieyu Zhao, Jian Kang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

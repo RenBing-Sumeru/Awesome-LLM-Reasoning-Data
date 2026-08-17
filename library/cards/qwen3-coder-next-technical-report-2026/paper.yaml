@@ -1,0 +1,166 @@
+id: qwen3-coder-next-technical-report-2026
+title: Qwen3-Coder-Next Technical Report
+year: 2026
+venue: arXiv preprint
+authors:
+- Ruisheng Cao
+- Mouxiang Chen
+- Jiawei Chen
+- Zeyu Cui
+- Yunlong Feng
+- Binyuan Hui
+- Yuheng Jing
+- Kaixin Li
+- Mingze Li
+- Junyang Lin
+- Zeyao Ma
+- Kashun Shum
+- Xuwu Wang
+- Jinxi Wei
+- Jiaxi Yang
+- Jiajun Zhang
+- Lei Zhang
+- Zongmeng Zhang
+- Wenting Zhao
+- Fan Zhou
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- software_engineering
+- coding
+- agentic_tool_use
+- web
+training_use:
+- sft
+- distillation
+- preference_learning
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.00729
+  arxiv: https://arxiv.org/abs/2603.00729
+  code: https://github.com/QwenLM/Qwen3-Coder
+  data: null
+  project: null
+  huggingface: https://huggingface.co/Qwen/Qwen3-Coder-Next
+  doi: https://doi.org/10.48550/arXiv.2603.00729
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GitHub issue-related pull requests and code, existing open-source software-engineering datasets, synthetic
+    bugs/issues in repositories, Common Crawl/domain web, proprietary SFT corpora, documentation QA, and generated coding-agent
+    tasks; source lists and rights are unknown.
+  trace_author: Multiple agent frameworks and Qwen3-Coder-480B-A35B-Instruct generate stated multi-turn trajectories; environment
+    building, test generation, and other component identities/configurations are incomplete.
+  answer_format: Issue/task description, repository context, code edits, tool calls/results, executable tests/verifier outputs,
+    pairwise rankings, and terminal completion rewards.
+  process_fields:
+  - buggy_repository_state
+  - fix
+  - test_patch
+  - docker_environment
+  - verification_script
+  - tool_trajectory
+  - environment_observation
+  - test_outcome
+  - pairwise_ranking
+  - completion_reward
+  - format_penalty
+  environment_or_substrate: Runnable Docker environments and verification scripts with MegaFlow rollout/evaluation on Kubernetes;
+    no official training-corpus task or image release is pinned.
+  verifier_or_reward: Execution scripts; synthesized unit tests retained by majority consensus; Mini-SWE-agent verification;
+    multidimensional pairwise judge; completion reward; unfinished-rollout and invalid-tool-format penalties. Exact thresholds
+    and calibration are unknown.
+  terminal_predicate: PR tasks must distinguish buggy from fixed execution states; synthetic changes must fail tests and be
+    resolved by reversion; agentic RL gives terminal completion reward. Production thresholds are undisclosed.
+recipe_metadata:
+  base_model: Qwen3-Next-80B-A3B-Base
+  teacher: Qwen3-Coder-480B-A35B-Instruct is named for several web/QA/trajectory operations; internal unit-test and environment
+    components are unspecified.
+  generator: Mine pull requests into buggy-state/fix/test triples, build environments, synthesize bugs/issues by rewriting
+    and perturbation, and generate trajectories with multiple agent frameworks.
+  filtering_rule: Remove downstream benchmark overlap; require buggy/fixed execution distinction; filter nonfunctional verifiers,
+    ambiguous tasks, inconsistent environments, misaligned tests, failed/malformed trajectories, and easy/noisy RL instances.
+  sampling_protocol: Candidate unit tests use majority consensus across independently generated solutions; mixture weights,
+    decoding, rollout allocation, and exact trajectory count are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Staged mid-training, SFT, domain-expert training, multi-expert distillation, single-turn execution
+    RL, and multi-turn agentic RL; objectives, coefficients, and schedules are undisclosed.
+audit:
+  source_mixture: The report names GitHub code/PRs, web, open SE datasets, synthetic tasks, proprietary corpora, documentation
+    QA, and verified trajectories. It reports about 600B repository-level mid-training tokens and 807,693 PR-derived instances
+    but no manifests, mixture weights, or per-source provenance.
+  split: SFT and RL prompts are said to be disjoint; public training splits and environment manifests are unknown.
+  decontamination: Downstream-benchmark overlap removal and evaluation remote/branch/tag removal are reported; methods, benchmark
+    list, thresholds, and residual-overlap results are unknown.
+  license: Qwen3-Coder-Next weights are Apache-2.0; rights for GitHub, web, proprietary, synthetic, and trajectory materials
+    are unknown.
+  lineage: Base and a principal trajectory teacher are named, but prompts, revisions, generated-data lineage, repository revisions,
+    and image digests are undisclosed.
+  known_failure_modes:
+  - Superficial or nonfunctional verification shortcuts
+  - Repository reward hacking through git or network recovery of hidden solutions
+  - Final completion not guaranteeing sound intermediate tool use
+  - Limited cross-scaffold transfer
+  - Unreleased tasks/environments/trajectories/audit logs
+  citation_status: verified
+  confidence: medium
+  notes: Track-12 disclosure ledger only; executable task scale and agentic RL claims are not a Track-8 recipe classification.
+inclusion_reason: A frontier coding-agent report that discloses executable task construction, environment feedback, filtering,
+  reward-hacking controls, and material unreleased audit boundaries.
+related: []
+tags:
+- qwen3-coder-next
+- frontier-report
+- data-disclosure-ledger
+- coding-agent
+- executable-environment
+- github-pr
+- agentic-training
+- rlvr
+- reward-hacking
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3-Coder-Next discloses executable coding-task synthesis and Docker-based verification with staged agentic
+  training, but not its training tasks, environments, trajectories, or audit records.
+why_it_matters: It separates released weights and inference code from partially disclosed task provenance, verification, data
+  rights, and reproducibility evidence.
+card: null
+needs:
+- 'needs_data: training tasks, trajectories, Docker images, verifier data, and rejected records'
+- 'needs_metadata: source inventories/licenses, repository revisions, mixture weights, prompts, filters, rewards, and rollout
+  settings'
+- 'needs_verifier: blocker rules, calibration, error analysis, and audit logs'
+- 'needs_audit: splits, decontamination procedure, residual-overlap results, and environment lineage'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official arXiv, QwenLM repository, and Qwen model release verified; no official training-task, environment, or trajectory
+    release located.

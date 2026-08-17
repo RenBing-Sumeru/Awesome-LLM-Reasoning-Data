@@ -1,0 +1,1 @@
+benchmark 的证据来自官方发布的 task/data/evaluation 仓库，以及论文报告的 20 个任务、8,062 道考试题集合。论文报告当时包括 GPT-4 在内的系统在若干考试式任务上仍低于平均人类表现，同时 chain-of-thought 和 few-shot prompting 会显著改变分数。行级证据是每道题的答案键和 scorer 输出；aggregate accuracy 不能证明模型推理过程正确。证据边界是静态公开数据、任务特定 answer parser、prompt 敏感性，以及题目可能进入预训练或 benchmark practice 的污染风险。

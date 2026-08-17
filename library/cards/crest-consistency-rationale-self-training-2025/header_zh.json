@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "按原题答案和选项级追问一致性评价每题 16 条自生成 rationale，再构造容错 SFT 与混合 DPO 数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "一致性驱动的 rationale 自训练配方",
+  "best_for_ch": "关注 rationale 筛选、自训练、偏好构造和同模型评估偏差的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Jaehyeok Lee、Keisuke Sakaguchi、JinYeong Bak",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

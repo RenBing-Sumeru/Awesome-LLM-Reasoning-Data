@@ -1,0 +1,1 @@
+已有基线通常是普通 preference 或 judge-alignment 数据，偏差多在评测后分析。OffsetBias 的变化是把偏差类别和去偏目标直接写进数据对象。方向信号是：reward/evaluator 数据应包含对抗式审计 case，而不只是高一致性标签。质量信号是官方代码与数据发布。LLM judge 和偏好标签本身并不新；可复用的新点是 bias-aware 构造。复用前要查 taxonomy 覆盖、标注规则、模型特定 prompt 效应，以及去偏是否误伤合理的风格敏感性。

@@ -1,0 +1,1 @@
+1. 收集两个模型对同一提示的成对回答，并让各模型评判该对回答。2. 聚合 GPT-4o-mini、Gemini-1.5-Flash、DeepSeek-V3 的判决作为 gold preference。3. 用 judge 自偏好减去 gold preference 计算 DBG；正值表示偏见。在 AlpacaEval、WMT19 de-en、TruthfulQA 各随机取样，共用 500 条、temperature 为 0，并交换位置和限制长度。复现需核验代码、提示词、模型版本和 gold judge 访问；成本与更强 gold judge 未披露或不可得。

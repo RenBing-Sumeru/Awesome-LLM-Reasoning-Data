@@ -1,0 +1,1 @@
+更早的大型数学蒸馏数据依赖专有 teacher，或只提供少得多的开放轨迹；直接把参考解放入 prompt 还会通过复制答案产生 shortcut。OpenMathInstruct-1 改变的可审计决策，是掩盖参考解中的计算值、扩大开放 teacher 采样、执行代码，并按题而不是按轨迹选择平衡子集。NeurIPS Datasets and Benchmarks 接收、MATH 93% 和 GSM8K 99.9% 的覆盖、公开错误记录与受控消融构成质量信号，但代码解释器轨迹和按最终答案拒绝本身并非新概念。真正的方向信号，是开放 teacher 配合 prompt 与选择工程可以逼近闭源 teacher 的数学蒸馏；复用仍需检查语义忠实性、来源重叠和逐题集中度。

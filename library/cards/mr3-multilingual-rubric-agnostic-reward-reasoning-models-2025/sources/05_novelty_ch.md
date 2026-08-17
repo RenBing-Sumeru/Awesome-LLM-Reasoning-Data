@@ -1,0 +1,3 @@
+新意是72语言的rubric-agnosticrewardreasoning及系统数据课程研究，而不是简单翻译英文偏好。
+
+英文LLMjudge的成功难以迁移到非英语，低资源语言缺少偏好、rubric与奖励推理数据。论文研究怎样的数据和课程能训练广覆盖多语RM。

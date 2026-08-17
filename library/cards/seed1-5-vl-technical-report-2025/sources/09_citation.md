@@ -1,0 +1,1 @@
+ByteDance Seed Team. "Seed1.5-VL Technical Report." arXiv:2505.07062, 2025. [Paper](https://arxiv.org/abs/2505.07062) · [Official BibTeX](https://arxiv.org/bibtex/2505.07062) · [Official project](https://seed.bytedance.com/en/tech/seed1_5_vl) · [Official cookbook repository](https://github.com/ByteDance-Seed/Seed1.5-VL).

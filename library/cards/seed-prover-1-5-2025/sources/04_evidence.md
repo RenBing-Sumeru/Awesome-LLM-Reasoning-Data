@@ -1,0 +1,5 @@
+Agent-only light Pass@8×8 reports 359/660 PutnamBench, 57/100 FATE-H, and 10/100 FATE-X. The full workflow at up to 10 H20-days/problem reports 580/660 PutnamBench, 80/100 FATE-H, 33/100 FATE-X, and 48/100 CombiBench; the paper itself notes substantial CombiBench formalization issues.
+
+Putnam-200 is used to monitor roughly 1,200 RL steps and select step 1,055, after which the paper reports the full 660-item PutnamBench, apparently containing that subset. The 580/660 result is therefore partly checkpoint-selection adapted rather than a pristine untouched test estimate. No Putnam/FATE membership decontamination is disclosed.
+
+For Putnam 2025, up to 40 H20-days/problem yields 11/12 within nine wall-clock hours. The official zip contains 11 non-A5 solutions, pins Lean/Mathlib 4.22.0, and has no textual `sorry`, `admit`, `axiom`, or `native_decide` in solution files; source was not independently compiled. `VerifyStmt.lean` checks declaration-type equality against a separately encoded statement, not equivalence to the English problem.

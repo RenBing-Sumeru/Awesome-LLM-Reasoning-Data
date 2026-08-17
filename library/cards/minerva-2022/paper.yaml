@@ -1,0 +1,128 @@
+id: minerva-2022
+title: Solving Quantitative Reasoning Problems with Language Models
+year: 2022
+venue: arXiv / Google Research
+authors:
+- Aitor Lewkowycz
+- Anders Andreassen
+- David Dohan
+- Ethan Dyer
+- Henryk Michalewski
+- Vinay V. Ramasesh
+- Ambrose Slone
+- Cem Anil
+- Imanol Schlag
+- Theo Gutman-Solo
+- Yuhuai Wu
+- Behnam Neyshabur
+- Guy Gur-Ari
+- Vedant Misra
+source_role:
+- model_report
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- quantitative-reasoning
+- math-evaluation
+- model-report
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2206.14858
+  arxiv: https://arxiv.org/abs/2206.14858
+  code: null
+  data: null
+  project: https://ai.googleblog.com/2022/06/minerva-solving-quantitative-reasoning.html
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2206.14858
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'math/science prompts, chain-of-thought style solutions, final answers, and benchmark scores; evaluation
+    spans MATH (~12.5K total / 5K test), GSM8K (1,319 test), MMLU-STEM subset, and 272 OCWCourses problems; Benchmark size:
+    不是单一新 benchmark；报告主要在 MATH、GSM8K、MMLU-STEM、OCW/科学题等集合上评测。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'quantitative-reasoning evaluation suite over MATH, GSM8K, MMLU-STEM, and a 272-problem OCWCourses
+    set; Benchmark size: 不是单一新 benchmark；报告主要在 MATH、GSM8K、MMLU-STEM、OCW/科学题等集合上评测。'
+  verifier_or_reward: benchmark-specific final-answer matching with prompting and sampling details
+  terminal_predicate: benchmark-specific final-answer matching with prompting and sampling details
+  benchmark_size: 不是单一新 benchmark；报告主要在 MATH、GSM8K、MMLU-STEM、OCW/科学题等集合上评测。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Solving Quantitative Reasoning Problems with Language Models; exact curation
+    details should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Solving Quantitative Reasoning Problems with
+    Language Models.
+  split: Paper reports MATH, GSM8K, MMLU-STEM, and 272 OCWCourses problems; pin the exact MMLU-STEM task list, prompt format,
+    sampling budget, and scorer before reusing the aggregate numbers.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2206.14858'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: 'Evaluation scale includes MATH, GSM8K, MMLU-STEM, and 272 OCWCourses problems; MMLU-STEM count depends on task list
+    and split packaging, so reviewers should pin exact artifact and scorer details before L5/L6 promotion. Benchmark size:
+    不是单一新 benchmark；报告主要在 MATH、GSM8K、MMLU-STEM、OCW/科学题等集合上评测。'
+inclusion_reason: Minerva 是早期量化推理模型报告，但它的重要性在于把数学/科学 benchmark 组合成推理评测谱系。
+related: []
+tags:
+- benchmark
+- quantitative-reasoning
+- math-evaluation
+- model-report
+one_line: Minerva 是早期量化推理模型报告，但它的重要性在于把数学/科学 benchmark 组合成推理评测谱系。
+why_it_matters: 它提供 不是单一新 benchmark；报告主要在 MATH、GSM8K、MMLU-STEM、OCW/科学题等集合上评测。 的评测规模信息和 quantitative-reasoning 方向的可复用 benchmark
+  坐标。
+status: verified
+needs:
+- 'needs_audit: pin MATH/GSM8K/MMLU-STEM/OCWCourses versions, especially the MMLU-STEM task list and 272-problem OCWCourses
+  set, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Minerva 是早期量化推理模型报告，但它的重要性在于把数学/科学 benchmark 组合成推理评测谱系。
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

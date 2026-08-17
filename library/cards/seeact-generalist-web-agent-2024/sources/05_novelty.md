@@ -1,0 +1,5 @@
+Prior work such as Mind2Web already framed web automation as instruction-following over real websites, often leaning on HTML or text representations. SeeAct changes the emphasis by testing frontier multimodal models as visual web agents and by showing that the missing piece is often action grounding, not simply page understanding or task planning. It also pushes evaluation from cached webpages toward live-web execution.
+
+The direction signal is strong for 2026 because many browser and GUI agents now fail at the boundary between semantic intent and low-level action coordinates, selectors, or UI elements. SeeAct gives curators a reusable question: does a benchmark expose the grounding contract, or does it hide grounding inside an opaque agent score?
+
+What is not new: it does not invent web automation, browser agents, or Mind2Web-style task traces from scratch. Before reuse, inspect whether screenshots, HTML, action labels, live-site dates, runner code, and success checks are all available and version-pinned. Also check whether reported gains come from the multimodal model, the grounding strategy, manual assistance, or the environment scaffold.

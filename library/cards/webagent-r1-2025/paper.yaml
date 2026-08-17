@@ -1,0 +1,152 @@
+id: webagent-r1-2025
+title: 'WebAgent-R1: Training Web Agents via End-to-End Multi-Turn Reinforcement Learning'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Zhepei Wei
+- Wenlin Yao
+- Yao Liu
+- Weizhi Zhang
+- Qin Lu
+- Liang Qiu
+- Changlong Yu
+- Puyang Xu
+- Chao Zhang
+- Bing Yin
+- Hyokun Yun
+- Lihong Li
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- web
+- agents
+training_use:
+- sft
+- rlvr
+- agent_training
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.401/
+  arxiv: https://arxiv.org/abs/2505.16421
+  code: https://github.com/weizhepei/WebAgent-R1
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.401
+  venue: https://aclanthology.org/2025.emnlp-main.401/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.401/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.401.bib
+data_object:
+  prompt_source: WebArena-Lite supplies 165 human-verified evaluation tasks, 647 remaining tasks used for online RL, and 1,186
+    valid behavior-cloning samples comprising 9,460 program-solver trajectories.
+  trace_author: Program-based solvers produced the fixed behavior-cloning trajectories; the current policy produces online
+    RL trajectories in independent browser instances; QwQ-32B generates explanatory long-CoT text only for the WebAgent-R1-CoT
+    ablation.
+  answer_format: Each turn consumes text-only HTML plus interaction history and emits one Python-style browser action, normally
+    wrapped in think and answer tags; an episode ends on success, an interaction limit, or exit.
+  process_fields:
+  - user_intent
+  - current_observation
+  - action_history
+  - thought_or_remarks
+  - next_action
+  - environment_transition
+  - trajectory
+  - binary_outcome_reward
+  environment_or_substrate: Self-hosted WebArena/WebArena-Lite over Reddit, GitLab, CMS, Map, and Shopping, with parallel
+    browser instances and instance-local context such as cookies.
+  verifier_or_reward: Default WebArena task-specific binary rules use string match, URL match, or program execution over the
+    final web state; M-GRPO converts grouped outcome rewards into relative advantages.
+  terminal_predicate: Task success, the maximum interaction count, or an explicit exit action; the default maximum interaction
+    count is not stated in the paper text.
+recipe_metadata:
+  base_model: Instruction-tuned Qwen2.5-3B and Llama3.1-8B; the Llama run is initialized from a public WebRL behavior-cloning
+    checkpoint for comparison.
+  teacher: QwQ-32B is used only to augment the behavior-cloning records with long-CoT explanations for WebAgent-R1-CoT.
+  generator: The current policy asynchronously samples independent online trajectories from the same task starting page across
+    parallel browser instances.
+  filtering_rule: No replay-buffer or trajectory-filtering stage is reported for online RL; sampled episodes receive the environment's
+    binary outcome reward, while the fixed BC warm-up uses program-solver demonstrations.
+  sampling_protocol: M-GRPO samples a group of trajectories per task; browser instances share the starting page but maintain
+    independent histories; rollout temperature and top-p are both 1.0; group size and random seeds are unknown.
+  rollout_count: The total number of online RL trajectories and the M-GRPO group size are unknown.
+  temperature: 1.0 for RL rollout temperature and top-p; SFT and evaluation decoding temperatures are not fully specified
+    in the paper text.
+  inference_budget: RL uses a 16,384-token maximum context and 1,024 maximum new tokens; the default interaction cap and the
+    exact interaction caps in the test-time-scaling sweep are not enumerated in the paper text.
+  optimizer_or_scaffold: Behavior-cloning SFT precedes full-parameter M-GRPO with dynamic context compression and asynchronous
+    rollouts; SFT uses learning rate 5e-5 and batch size 128, while RL uses learning rate 1e-6, batch size 16, KL coefficient
+    0.001, and clip ratio 0.2.
+audit:
+  source_mixture: Fixed public WebArena-Lite program-solver trajectories provide the warm-up data; the policy then generates
+    online state-action episodes on 647 WebArena-Lite training tasks.
+  split: 1,186 valid BC samples comprising 9,460 trajectories; 647 tasks for RL training; 165 separately human-verified tasks
+    for evaluation.
+  decontamination: unknown
+  license: The paper states that the 9,460 WebArena-Lite BC trajectories are released under Apache License 2.0, and the official
+    WebAgent-R1 code repository is Apache-2.0; no separate license or release was verified for the online RL trajectories
+    or checkpoints.
+  lineage: WebArena-Lite task and program-solver trace -> behavior-cloning SFT -> current-policy asynchronous browser episodes
+    -> built-in binary terminal reward -> grouped relative advantage -> M-GRPO policy update.
+  known_failure_modes:
+  - Sparse binary terminal rewards do not identify which intermediate actions were helpful or harmful.
+  - Rule-based string URL and program checks can miss semantic quality or reward unintended state changes.
+  - Dynamic web state cookies task ordering and environment snapshots can affect replayability.
+  - Dynamic context compression replaces earlier HTML observations and may remove evidence needed for later decisions.
+  - WebAgent-R1-Zero rarely obtains positive rewards and does not improve without the BC warm-up.
+  - Long-CoT augmentation improves its SFT initialization but yields a smaller RL gain in the reported ablation.
+  - Per-site gains are uneven even when the average success rate rises.
+  - Online trajectories checkpoints exact rollout counts group size seeds and decontamination evidence were not verified released.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology, arXiv v2, the complete official repository README, and the released code tree were checked on 2026-07-18.
+    The repository exposes environment, training, and evaluation code but no standalone online-rollout dataset, model checkpoint,
+    tagged release, or immutable environment snapshot was verified.
+inclusion_reason: WebAgent-R1 provides an auditable recipe for turning current-policy browser interactions and programmatic
+  terminal checks into multi-turn RL updates, and separately studies interaction count as a test-time budget.
+related: []
+tags:
+- webagent-r1
+- webarena-lite
+- multi-turn-rl
+- m-grpo
+- online-rollouts
+- rule-based-reward
+- test-time-scaling
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: WebAgent-R1 combines a 9,460-trajectory behavior-cloning warm-up with asynchronous current-policy WebArena
+  rollouts, M-GRPO, and binary terminal rewards, while the online trajectories and checkpoints remain unreleased.
+why_it_matters: It makes grouped browser episodes and interaction budgets explicit post-training objects, allowing the atlas
+  to separate BC data, online rollout generation, environmental verification, and test-time scaling.
+card: null
+needs:
+- needs_online_rollout_artifact
+- needs_checkpoint
+- needs_environment_snapshot
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ACL Anthology record, arXiv v2, repository README, license, and released environment/training/evaluation
+    code checked; no standalone online rollout dataset or checkpoint verified.

@@ -1,0 +1,3 @@
+Fixed best-of-N carries every sampled trajectory to completion, even when a prefix is likely wrong or likely to become a long latency outlier. External reward models can score completed traces, but repeated verifier calls add their own cost and usually provide only a scalar confidence rather than a prediction of both likely success and remaining work.
+
+ZIP-RC asks whether a model can expose enough real-time reward–cost information to make branching, pruning, and stopping decisions during the same decoding process. The desired controller must assess both the distribution of final reward and the distribution of remaining tokens, because a promising trajectory can still be too expensive while a low-confidence trajectory may be worthwhile if it will finish soon.

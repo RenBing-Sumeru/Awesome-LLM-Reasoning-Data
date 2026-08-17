@@ -1,0 +1,1 @@
+论文报告了 33 个模型的 Elo；其中 o1-mini 和 QwQ-32B-Preview 分别为 1578 和 1261，许多模型仍处在人类表现低位区间。论文还报告跨 54 场竞赛测试后总体平均 rating 的标准差约降到 50。样本级证据是 Codeforces 官方平台返回的 verdict，包括需要 hidden tests 或 special judge 的题。证据边界包括 virtual participation 规则、每题 8 次提交上限、竞赛集合、语言选择和平台可用性。

@@ -1,0 +1,1 @@
+核心贡献是一个同时覆盖多语言、多任务类型和结构化定位指标的仓库级 benchmark。2,110 个实例包括 Java 165、JavaScript 1,017、TypeScript 729 和 Python 199 条，任务分为 bug fix、feature 与 refactoring；每条包含 issue/PR 信息、base commit、gold patch、test patch、Dockerfile、测试命令、F2P/P2P 集及语法节点元数据。只有 gold patch 能使至少一个失败测试通过且不破坏保留测试的实例进入集合。SWE-PolyBench500 用分层抽样降低评测成本，完整 harness 可自动应用 agent patch、运行测试并输出 resolve rate 与定位指标。

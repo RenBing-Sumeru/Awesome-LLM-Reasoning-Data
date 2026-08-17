@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "No Free Labels 以金融专家的参考答案和正确性裁决揭示：没有人类依据时，LLM Judge 难以稳定判断正确性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "专家正确性裁决数据与 LLM-as-a-Judge 人类依据评测",
+  "best_for_ch": "需要验证自动评审器是否真正判断正确性、而非仅复现风格偏好的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Michael Krumdick, Charles Lovering, Varshini Reddy, Seth Ebner, Chris Tanner",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T13:00:52Z"
+}

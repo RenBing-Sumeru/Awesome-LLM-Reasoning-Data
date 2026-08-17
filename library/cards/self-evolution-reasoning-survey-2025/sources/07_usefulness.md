@@ -1,0 +1,1 @@
+Use this card to plan a small iterative data experiment. Before running it, decide what is kept from each round, who or what judges trace quality, and which fixed tasks remain untouched for comparison. That simple record makes it possible to tell whether a later model improved because of better reasoning data rather than because the evaluation became easier.

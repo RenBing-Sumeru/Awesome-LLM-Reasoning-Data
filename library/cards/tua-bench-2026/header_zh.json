@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TUA-Bench 用可执行任务评测通用终端使用智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 terminal-use agent benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shoufa Chen 等（Meta AI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T11:20:20Z"
+}

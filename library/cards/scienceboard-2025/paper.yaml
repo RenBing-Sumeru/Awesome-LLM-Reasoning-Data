@@ -1,0 +1,149 @@
+id: scienceboard-2025
+title: 'ScienceBoard: Evaluating Multimodal Autonomous Agents in Realistic Scientific Workflows'
+year: 2025
+venue: ICLR 2026
+authors:
+- Qiushi Sun
+- Zhoumianze Liu
+- Chang Ma
+- Zichen Ding
+- Fangzhi Xu
+- Zhangyue Yin
+- Haiteng Zhao
+- Zhenyu Wu
+- Kanzhi Cheng
+- Zhaoyang Liu
+- Jianing Wang
+- Qintong Li
+- Xiangru Tang
+- Tianbao Xie
+- Xiachong Feng
+- Xiang Li
+- Ben Kao
+- Wenhai Wang
+- Biqing Qi
+- Lingpeng Kong
+- Zhiyong Wu
+source_role:
+- agent_environment
+- benchmark
+- verifier_reward
+- data_release
+verification_contract:
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.19897
+  arxiv: https://arxiv.org/abs/2505.19897
+  code: https://github.com/OS-Copilot/ScienceBoard
+  data: https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj
+  project: https://qiushisun.github.io/ScienceBoard-Home/
+  huggingface: https://huggingface.co/OS-Copilot/ScienceBoard-Env
+  doi: https://doi.org/10.48550/arXiv.2505.19897
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.19897
+data_object:
+  prompt_source: Human-authored and cross-validated scientific workflow instructions derived from tutorials, handbooks, and
+    professional-software operations.
+  trace_author: Evaluated agents generate VM episodes with screenshots and/or accessibility-tree observations plus GUI, CLI,
+    answer, and API actions; five large trajectory archives are publicly listed, but their episode manifest and success/failure
+    coverage are undisclosed.
+  answer_format: Task JSON with initialization and evaluator configuration; run logs contain observation/action history, application
+    state, terminal signal, and evaluator result.
+  process_fields:
+  - task_instruction
+  - snapshot
+  - initializer
+  - observation
+  - action
+  - application_state
+  - evaluator
+  - terminal_status
+  environment_or_substrate: Ubuntu VMware VM based on OSWorld, preinstalled with scientific applications and state-exposure
+    plugins; a 17.1 GB VM.zip is released.
+  verifier_or_reward: Task-specific environment evaluators compare key workflow I/O and exposed internal application/VM state
+    using exact, range, numerical-tolerance, and file comparisons.
+  terminal_predicate: The agent emits DONE or FAIL or reaches the attempt limit, after which task-specific evaluator predicates
+    return task complete or task fail.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Five annotators learn software tutorials, author tasks, use an OpenAI chat model for format standardization,
+    cross-check executability/diversity/answer uniqueness, implement initializers/evaluators, and cross-validate each task
+    on separate VMs.
+  filtering_rule: Exclude tasks lacking diversity, executability, or a unique answer; every evaluator is tested by two randomly
+    selected annotators on separate VMs, including intentional attempts to deceive it.
+  sampling_protocol: '169 tasks across six domains: 38 GUI, 33 CLI, and 98 hybrid; difficulty counts are 91 easy, 48 medium,
+    28 hard, and 2 open problems.'
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Agent attempt limits are task/run configuration dependent; a single canonical budget is not disclosed
+    in the paper metadata or release index.
+  optimizer_or_scaffold: No training optimizer is used; ScienceBoard evaluates frozen computer-use agents in an OSWorld-derived
+    VM loop.
+audit:
+  source_mixture: Scientific-software tutorials and workflows, human-authored tasks, task assets, VM image, modified applications/plugins,
+    task JSONs, evaluators, and five mutable trajectory archives.
+  split: No official train/dev/test split is documented; all 169 tasks are presented as an evaluation benchmark. The Hugging
+    Face trajectory viewer exposes one train split, which is an archive/viewer convention rather than evidence of a training
+    split.
+  decontamination: unknown
+  license: The GitHub repository and ScienceBoard-Env page declare MIT; the trajectory dataset page does not visibly declare
+    a license, and rights for VMware, scientific applications, task assets, screenshots, and modified components require separate
+    audit.
+  lineage: Tutorial/workflow -> human task instruction -> OpenAI chat-model format standardization -> cross-check -> task
+    initializer/evaluator -> two-annotator VM validation -> agent VM episode -> internal-state evaluation -> selected trajectory
+    archives.
+  known_failure_modes:
+  - Accessibility-tree extraction, VM startup timing, application authentication, and environment performance can fail before
+    or during an episode.
+  - A mutable repository and unpinned VM/application/plugin revisions make exact reset and replay across releases uncertain.
+  - The five trajectory ZIPs lack a public record-level manifest tying every episode to task, model, observation setting,
+    evaluator result, and success/failure or incomplete status.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v3, official project, GitHub repository, 17.1 GB environment archive, and 9.42 GB trajectory repository were
+    checked on 2026-07-20. ICLR 2026 acceptance is announced by the official project/repository; no official venue page was
+    confirmed.
+inclusion_reason: Directly relevant Track 6 environment and trajectory-feedback surface with scientific VM episodes, multi-interface
+  action spaces, state-exposure plugins, task-specific environmental predicates, and released evaluation artifacts.
+related: []
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+- evaluation
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: ScienceBoard evaluates computer-use agents on 169 human-curated scientific workflows across six domains
+  using a released Ubuntu VM, task-specific internal-state evaluators, and partially documented trajectory archives.
+why_it_matters: It exposes professional scientific applications through GUI and CLI while validating workflow I/O and application-internal
+  state, making verifier design and environment reproducibility central audit objects.
+card: null
+needs:
+- 'needs_release: pin task/code/VM/plugin revisions and publish a record-level trajectory manifest with success, failure,
+  incomplete, evaluator, asset-rights, and reset/replay fields'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: main_agent
+  confidence: medium
+  notes: Primary paper v3, author list, arXiv DOI, official project/repository, VM archive, trajectory archive listing, and
+    declared repository/environment license were verified; replay and component rights remain unresolved.

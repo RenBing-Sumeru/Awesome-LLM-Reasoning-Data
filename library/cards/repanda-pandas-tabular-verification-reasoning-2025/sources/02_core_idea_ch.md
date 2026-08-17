@@ -1,0 +1,1 @@
+核心数据对象是“表格 + 自然语言断言/问题 + pandas_code + 执行结果”。PanTabFact 来源于 TabFact，官方数据卡显示规模在 10K–100K，字段包括 id、statement、label、table_caption、table_text、pandas_code 与 pandas_eval，JSON 发布且没有预定义 split；PanWiki 则把 WikiTableQuestions 映射为 pandas 查询。模型训练只是验证数据价值的手段，真正可复用的贡献是可执行查询及自动纠错流程。

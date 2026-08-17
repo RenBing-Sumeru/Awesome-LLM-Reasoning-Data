@@ -1,0 +1,1 @@
+Gan, Shuyu、James Mooney、Pan Hao、Renxiang Wang、Mingyi Hong、Qianwen Wang 与 Dongyeop Kang。2026。《Scaling Unverifiable Rewards: A Case Study on Visual Insights》。计算语言学协会发现论文集：ACL 2026，第 34537–34569 页。官方论文：https://aclanthology.org/2026.findings-acl.1724/。官方项目：https://minnesotanlp.github.io/insight-scaling-webpage。

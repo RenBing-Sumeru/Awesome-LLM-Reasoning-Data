@@ -1,0 +1,5 @@
+ProofNet is a 2023 arXiv benchmark for autoformalization and formal theorem proving in undergraduate mathematics. The primary paper, GitHub repository, and Hugging Face dataset all describe 371 examples, each pairing a natural-language theorem statement, a natural-language proof, and a Lean 3 formal theorem statement.
+
+The collection problem is not "general mathematical reasoning" in prose. Its decision boundary is a verifier-facing bridge from textbook-style undergraduate problems to formal theorem statements and proof tasks. A row is a theorem-level object: `id`, `nl_statement`, `nl_proof`, `formal_statement`, and a `src_header` needed to typecheck the Lean statement.
+
+This belongs in the atlas as a benchmark/evaluation surface because the decisive feedback contract is formal and auditable: Lean 3 typechecking can reject ill-formed statements, while semantic correctness of autoformalization in the paper is judged by human experts because equivalent Lean statements need not be definitionally equal. The reuse value is the paired informal/formal object plus the boundary between mechanical validity and human semantic equivalence.

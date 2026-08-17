@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "Mohamed bin Zayed University of Artificial Intelligence",
+    "Institute of Automation, Chinese Academy of Sciences",
+    "Alibaba Group",
+    "University of California, Los Angeles",
+    "City University of Hong Kong",
+    "Hong Kong University of Science and Technology (Guangzhou)",
+    "University of Strathclyde",
+    "Xiaohongshu Inc.",
+    "East China Normal University",
+    "Nanyang Technological University",
+    "South China University of Technology"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-19T00:00:00Z",
+  "review_note": "按 arXiv v6 论文首页作者隶属关系记录；不表示每位作者均属于全部机构。"
+}

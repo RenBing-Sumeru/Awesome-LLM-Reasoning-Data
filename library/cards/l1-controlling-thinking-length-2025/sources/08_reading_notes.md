@@ -1,0 +1,6 @@
+- Separate L1-Exact from L1-Max: one rewards proximity to a requested count, while the other uses a soft ceiling and permits early completion.
+- Distinguish the 40K DeepScaleR source problem-answer pool from on-policy LCPO rollouts; LCPO does not require gold intermediate traces.
+- Treat boxed-answer equivalence and token count as two programmatic feedback fields, neither of which verifies intermediate reasoning.
+- Read the reported approximately 3% math length deviation beside the 20-40% OOD deviation; budget control does not transfer uniformly.
+- The official release includes code, models, preprocessing, replication scripts, and some model outputs, but no verified complete GRPO rollout/reward ledger.
+- Benchmark gains measure the coupled trained system and must not be used as proof of rollout-data quality or freedom from contamination.

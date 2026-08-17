@@ -1,0 +1,22 @@
+{
+  "title": "Logics-STEM: Empowering LLM Reasoning via Failure-Driven Post-Training and Document Knowledge Enhancement",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.01562",
+    "arxiv": "https://arxiv.org/abs/2601.01562",
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "reason_to_include": "failure-driven STEM long-CoT SFT data",
+  "updated_at": "2026-07-12T13:57:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "sft数据合成",
+    "updated_at": "2026-07-12T13:57:27Z"
+  }
+}

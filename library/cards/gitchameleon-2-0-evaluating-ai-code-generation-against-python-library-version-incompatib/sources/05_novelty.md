@@ -1,0 +1,1 @@
+Prior work usually asks whether old code can be migrated to a new API. GitChameleon 2.0 instead asks whether a system can directly generate code for a specified version and makes compatibility an execution contract. The novelty is the version-conditioned task design and shared harness across tool settings, not a new code model or testing framework.

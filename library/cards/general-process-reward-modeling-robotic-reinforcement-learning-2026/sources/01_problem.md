@@ -1,0 +1,3 @@
+High-precision manipulation needs to know whether continuous states approach the goal; binary success provides no intermediate feedback. Robo-Dopamine constructs state-transition and progress-reward data.
+
+This gap directly determines whether robot progress process rewards can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on task goals, state transitions, actions, progress scores, and negative transitions and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in high-precision manipulation-trajectory selection and RL.

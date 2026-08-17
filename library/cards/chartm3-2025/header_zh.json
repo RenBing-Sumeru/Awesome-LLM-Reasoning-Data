@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ChartM3 报告以数据、渲染和分析代码驱动的图表推理构造流程，但未发布可核验的官方语料，执行、学习型 judge 与代码输出型推理仍须分开审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "图表推理数据构建与验证配方",
+  "best_for_ch": "关注可执行多模态数据生成、图表推理 SFT/RLVR 及奖励边界审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Duo Xu、Hao Cheng、Xin Lin、Zhen Xie、Hao Henry Wang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

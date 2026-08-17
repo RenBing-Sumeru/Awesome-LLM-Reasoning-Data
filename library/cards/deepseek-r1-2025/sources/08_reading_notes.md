@@ -1,0 +1,5 @@
+- Read the 600K, 200K, and 800K figures as reported stage counts, not as public datasets.
+- Separate R1-Zero rule accuracy/format feedback from later language reward, V3 judgment, and general reward models.
+- Public weights and dense distills do not disclose cold-start prompts, RL rollouts, source rights, or feedback calibration.
+- Do not use evaluation temperature, top-p, sample count, or token caps as evidence of training sampling settings.
+- Keep this report in Track 12: disclosure of an influential RL pipeline is not a Track 8 reusable-recipe claim.

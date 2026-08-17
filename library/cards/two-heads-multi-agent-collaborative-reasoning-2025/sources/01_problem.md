@@ -1,0 +1,1 @@
+Two Heads are Better Than One: Test-time Scaling of Multi-agent Collaborative Reasoning addresses the evidence-backed gap that two heads releases m500 and adapts multi-agent discussion depth with a ceo agent. The reported prompt or task source is M500 has 500 collaborative reasoning traces; task provenance unknown..

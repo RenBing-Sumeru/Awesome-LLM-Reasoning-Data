@@ -1,0 +1,5 @@
+- Read §§3.1–3.2 as a data-construction algorithm: the output is a selected trace paired with the original solution.
+- BIS is bidirectional because it uses both the question and the known solution; this also creates solution-conditioned construction and possible leakage if the recipe is misapplied.
+- A node contains a thought and its immediate neighbors, so A*-Thought performs span selection rather than arbitrary token deletion.
+- Separate validator acceptance from mathematical correctness, and note that the maximum-depth fallback may return an unaccepted path.
+- Compare the 31.31% training-token ratio and response-length reductions with accuracy, and audit s1K-1.1 provenance, contamination, license, and the missing rejection manifest before reuse.

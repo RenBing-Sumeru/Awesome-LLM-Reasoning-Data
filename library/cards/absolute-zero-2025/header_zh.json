@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Absolute Zero 让同一 policy 在线提出并求解 Python deduction、abduction 与 induction 任务，以执行结果和八次 solver 尝试构造 RLVR reward；其“zero data”仅指 RL 阶段无外部人工或蒸馏任务答案数据，完整 rollout 并未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "自生成程序任务、可执行验证与在线 RLVR 构造 recipe",
+  "best_for_ch": "研究 self-play curriculum、程序执行 verifier、无外部任务数据 RLVR，或审计自动生成任务中的安全、捷径与 lineage 风险的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Andrew Zhao、Yiran Wu、Yang Yue、Tong Wu、Quentin Xu、Matthieu Lin、Shenzhi Wang、Qingyun Wu、Zilong Zheng、Gao Huang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

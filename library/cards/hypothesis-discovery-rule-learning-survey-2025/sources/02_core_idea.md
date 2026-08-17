@@ -1,0 +1,3 @@
+The paper uses Peirce's three-part framework: abduction proposes an explanation, deduction applies it to obtain consequences, and induction tests or refines it with evidence. This turns “the model had an idea” into a fuller question: can the idea explain observations, make useful predictions, and survive validation?
+
+The three parts form a dependency rather than a checklist of unrelated skills. A hypothesis has practical value only when its implications can be derived and confronted with relevant evidence. The framework helps readers distinguish candidate generation from hypothesis use and from validation, so a strong result in one stage is not overread as success across the entire discovery cycle.

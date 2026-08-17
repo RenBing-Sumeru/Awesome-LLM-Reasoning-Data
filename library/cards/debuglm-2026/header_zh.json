@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DebugLM 用数据集级溯源与隔离标签增强 SFT/GRPO 记录，使模型能自报来源或针对来源选择性拒答。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "训练内溯源与修复配方",
+  "best_for_ch": "关注训练数据谱系、安全修复、模型自报和审计边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Wenjie Jacky Mo、Qin Liu、Xiaofei Wen、Wenxuan Zhou、Zhe Zhao、Muhao Chen",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T12:34:11Z"
+}

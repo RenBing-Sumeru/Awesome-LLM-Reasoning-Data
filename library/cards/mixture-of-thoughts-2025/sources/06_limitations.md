@@ -1,0 +1,3 @@
+1. When the closed teacher prevents complete regeneration and may embed unverifiable reasoning errors, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because the aggregate release lacks one top-level license, so source-level reuse rights differ, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve no aggregate license is declared; every upstream source term must be preserved and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

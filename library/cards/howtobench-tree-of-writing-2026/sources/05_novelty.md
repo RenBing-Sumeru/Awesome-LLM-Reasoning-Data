@@ -1,0 +1,2 @@
+Existing writing benchmarks mostly test explicit instruction following or ask an LLM to score fixed dimensions in one pass; they rarely specify how dimensions should be aggregated. HoWToBench contributes long, open-ended, professional genres, while ToW contributes a weighted tree-structured evaluation protocol. It exposes the path from local features to parent dimensions and the final score, reducing negotiation inconsistency in which a judge silently changes standards across calls. This makes it more auditable than a conventional rubric prompt.
+

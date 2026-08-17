@@ -1,0 +1,5 @@
+The one-sentence contribution is: Video-MMMU turns professional educational videos into a staged benchmark for measuring whether LMMs perceive, understand, and adapt knowledge from video.
+
+The core mechanism aligns questions with a learning progression. Perception questions test OCR and ASR-style extraction from visual or spoken content. Comprehension questions test concept understanding or applying the same solution strategy with changed variables. Adaptation questions require applying the video's concepts, formulas, or problem-solving methods to a new scenario, including case studies and exam-style problems.
+
+The feedback contract is answer-level correctness on human-annotated questions, with a proposed performance-gain metric that measures improvement after video viewing. The closest comparisons are MMMU and MMMU-Pro for college-level multimodal questions, Video-MME and other video QA benchmarks for temporal/video understanding, and educational-video tasks that test content recall without the same explicit adaptation track.

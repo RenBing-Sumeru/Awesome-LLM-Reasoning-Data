@@ -1,0 +1,20 @@
+{
+  "institutions": [
+    "IN.AI Research",
+    "University of Waterloo",
+    "The Ohio State University",
+    "Independent",
+    "Carnegie Mellon University",
+    "University of Victoria",
+    "Princeton University"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:20:16Z",
+  "source_urls": [
+    "https://openaccess.thecvf.com/content/CVPR2024/papers/Yue_MMMU_A_Massive_Multi-discipline_Multimodal_Understanding_and_Reasoning_Benchmark_for_CVPR_2024_paper.pdf",
+    "https://mmmu-benchmark.github.io/",
+    "https://huggingface.co/datasets/MMMU/MMMU"
+  ],
+  "verification_note": "Official CVF PDF verifies numeric affiliation mapping and CVPR 2024 status."
+}

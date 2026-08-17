@@ -1,0 +1,1 @@
+Practical use: Use as a scale-curriculum case study only with row-level lineage and filter rationale. Teams should preserve raw records alongside derived labels and compare the proposed recipe to a raw-data baseline under fixed training hyperparameters. Use a held-out human or independently verified set for threshold selection whenever possible.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebArXiv 构建时间不变的 arXiv 网页任务，提高 Web 智能体评测可复现性。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 time-invariant web-agent benchmark",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Zihao Sun 等（University of Technology Sydney）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T03:29:55Z"
+}

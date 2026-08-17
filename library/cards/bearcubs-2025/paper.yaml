@@ -1,0 +1,281 @@
+id: bearcubs-2025
+title: 'BEARCUBS: A benchmark for computer-using web agents'
+year: 2025
+venue: COLM 2025
+authors:
+- Yixiao Song
+- Katherine Thai
+- Chau Minh Pham
+- Yapei Chang
+- Mazin Nadaf
+- Mohit Iyyer
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- agent_trajectories
+- environment_interaction
+- web_agents
+- computer_use
+- live_web
+- multimodal_information_seeking
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=0JzWiigkUy
+  paper_pdf: https://openreview.net/pdf?id=0JzWiigkUy
+  arxiv: https://arxiv.org/abs/2503.07919
+  code: https://bear-cubs.github.io/bearcubs_autorater.zip
+  data: https://bear-cubs.github.io/BearCubs_20250310.json.zip
+  project: https://bear-cubs.github.io/
+  supplementary: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=0JzWiigkUy
+  openreview: https://openreview.net/forum?id=0JzWiigkUy
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: null
+data_object:
+  object_type: A live-web information-seeking benchmark item. The paper's complete internal item joins a question to one short
+    gold answer, a text-based or multimodal category, a human-validated viable browsing trajectory, and visited websites;
+    an evaluated run adds an agent answer, elapsed time, trajectory, and answer-level outcome. The public dataset archive
+    exposes only the question ID and question text.
+  prompt_source: Authors wrote 65 of the 111 retained questions; trained Upwork freelancers wrote the remainder. Items span
+    music, maps, videos, games, virtual tours, interactive databases, and multilingual websites, and must require publicly
+    accessible non-paywalled, no-login live-web evidence.
+  trace_author: Authors or freelancers supplied viable trajectories and visited links that at least two authors validated.
+    Evaluated agents generated their own trajectories through proprietary interfaces, which the authors manually screen-recorded
+    or copied. No full human or agent trajectory corpus is in the public question archive.
+  episode_fields:
+  - question_id
+  - question
+  - gold_answer
+  - text_or_multimodal_category
+  - viable_human_trajectory
+  - visited_websites
+  - agent_answer
+  - elapsed_time
+  - agent_trajectory
+  - answer_label
+  public_release_fields:
+  - question_id
+  - question
+  answer_format: One concise, unique, direct answer such as a number, word, price, or phrase. Lists and sets are excluded;
+    a model response must unambiguously entail the gold answer, and hedged or abstaining responses do not count as correct.
+  process_fields:
+  - live-web observations
+  - page visits
+  - pixel-mediated mouse and keyboard actions for computer-use agents
+  - critical interactions
+  - final answer or abstention
+  - elapsed time
+  - four-way answer label
+  - source attribution used in post-hoc audit
+  observation: Agents operate on the changing live web through their own product interfaces. Computer-use agents consume rendered
+    pixels and control a virtual mouse and keyboard; non-computer-use systems expose provider-specific search/reasoning summaries.
+    Page snapshots, screenshots, full URLs, DOM state, timestamps, and provider session metadata are not released as a complete
+    corpus.
+  verifier_or_reward: Published correctness is based on manual judgment that the returned answer directly and unambiguously
+    entails the gold answer. The released optional autorater prompts GPT-4o-2024-11-20 at temperature 0 to emit one of correct,
+    wrong, no_answer, or no_direct_answer; it does not inspect whether the agent used the intended source or interaction path.
+  reward: No training reward is defined. Evaluation reduces the four answer labels to accuracy when desired; wrong, no-answer/loop,
+    and uncertain/abstaining cases are incorrect for binary scoring.
+  terminal_predicate: A session stops when the agent answers or abstains, enters a no-progress dead loop, or asks for help
+    a second time after one directive to proceed without user intervention. The main computer-use limit is 15 minutes, except
+    45 minutes for the OpenAI Chat GPT Agent product. This protocol is described in prose and is not released as an executable
+    environment predicate.
+  provenance: author/freelancer-authored question, answer, viable path, and links -> author validation against four criteria
+    -> Deep Research workaround filtering for multimodal items -> text/multimodal benchmark -> manually executed live-web
+    agent run -> answer-level judgment -> aggregate accuracy, runtime, source-quality, and trajectory analysis.
+  environment_or_substrate: The unrestricted live public web through commercial agent web interfaces. No packaged browser
+    image, website snapshot, reset fixture, account state, dependency lock, API wrapper, or deterministic replay environment
+    is released.
+  release_shape: '`BearCubs_20250310.json.zip` contains one 25,550-byte JSON object with 111 non-contiguous string IDs ranging
+    from 1 to 129. Every value contains exactly one `question` field. Gold answers, category labels, URLs, trajectories, agent
+    outputs, timing, outcome labels, splits, provenance, and checksums are absent. The project page separately links only
+    three example trajectories for one displayed question.'
+recipe_metadata:
+  base_model: Not applicable as a training base model because BEARCUBS is an evaluation benchmark. Evaluated systems and baseline
+    model names are reported, but exact commercial-agent checkpoint revisions are unknown.
+  teacher: No model teacher supplies target trajectories. At least two authors validate each retained item; OpenAI Deep Research
+    is used as an adversarial filter to find text-only workarounds for proposed multimodal questions.
+  generator: Authors and trained Upwork freelancers create question, gold answer, viable trajectory, and visited links. Evaluated
+    agents generate their own run trajectories on the live web.
+  prompt_task_source: Human-authored information-seeking tasks grounded in public web sources and designed to require diverse
+    text and multimodal interactions. Record-level source, writer identity, collection date, and target-site version are not
+    released.
+  sampling_protocol: Retain items only after at least two authors verify the question, answer, path, links, and four validity
+    criteria. Freelancer acceptance was 58.2%. Thirteen proposed multimodal items were removed after text-only workarounds
+    were found. Candidate-pool size, per-domain quotas, randomization, and adjudication logs are unknown.
+  temperature: Temperature 0 for GPT-4o and DeepSeek R1 baselines and for the GPT-4o autorater. Decoding settings for the
+    seven commercial web agents are unknown.
+  rollout_count: The main tables contain one outcome per system for each of 111 questions, implying one retained main evaluation
+    run per agent-question; explicit retry/resampling policy is not stated. Appendix I separately reports four DeepSeek R1
+    stability trials. Full run logs and retry histories are not released.
+  inference_budget: Computer-use sessions use a 15-minute cap except 45 minutes for the OpenAI Chat GPT Agent product. Search-augmented
+    baselines retrieve up to 10 Google result titles/snippets. GPT-4o baseline max tokens is 518 and DeepSeek R1 max tokens
+    is 8,000. Commercial product token/tool budgets and total evaluation cost are unknown.
+  search_or_scaffold: Agents use their native live-web interfaces; computer-use systems receive a prompt to complete CAPTCHAs,
+    accept prompts, and minimize user intervention, followed by at most one directive to continue without help. Baseline search
+    augmentation uses Serper results. No common agent scaffold or browser instrumentation is released.
+  filtering_rule: Require a short unambiguous question, one concise uniquely gradable answer, resistance to Google Search,
+    public no-login/no-paywall accessibility, author-validated viable interaction, and no text-only workaround for multimodal
+    items.
+  selection_threshold: At least two author verifications plus satisfaction of all four criteria. Exact disagreement handling,
+    reviewer assignment, rejection taxonomy, freshness threshold, and replacement trigger are unknown.
+  optimizer_or_training_scaffold: None; the paper performs evaluation and error analysis, not agent training or post-training
+    optimization.
+audit:
+  source_mixture: Sixty-five retained items are author-written and 46 are from trained Upwork freelancers. The paper reports
+    56 text-based and 55 multimodal questions across 108 distinct top-level URLs, but the public JSON has no author, domain,
+    language, modality, URL, or source-provenance fields.
+  split: No train/dev/test split is defined. The paper reports text-based=56 and multimodal=55, while the public question
+    JSON omits category labels and therefore cannot reproduce those folds without an additional private manifest.
+  decontamination: Construction is adversarial to Google Search and uses Deep Research to remove multimodal items with text-only
+    workarounds; 13 such proposals were removed. The authors acknowledge that publishing questions still permits web/training
+    contamination and promise periodic replacement, but release no train-corpus overlap audit, immutable versions, replacement
+    log, freshness timestamps, or record-level contamination flags.
+  benchmark_overlap: The work compares BEARCUBS conceptually with WebArena, WebShop, Mind2Web, AssistantBench, BrowseComp
+    and other agent benchmarks, but reports no exact task/source overlap, near-duplicate, benchmark-family, or evaluated-model
+    training-data audit. Because question text is public and the substrate is the web, future exposure is an explicit risk.
+  lineage: Aggregate construction lineage is described, but D1 contains only question IDs/text. Missing record-level lineage
+    includes writer/source, creation and validation dates, gold-answer provenance, modality, viable steps, visited pages,
+    Deep Research filter outcome, replacement status, agent run IDs, model versions, and grader decision.
+  license: The OpenReview submission page displays CC BY-NC-SA 4.0 for the paper, but neither the question ZIP nor autorater
+    ZIP contains a license. The project page grants gold-answer access case-by-case for non-commercial research and prohibits
+    redistribution/open-sourcing. Dataset, code, question-source, web-content, model-output, and trajectory reuse rights therefore
+    remain unclear; the paper license must not be transferred to the artifacts.
+  release_version: The public question filename is `BearCubs_20250310.json`; the website says last updated 2025-07-15 and
+    HTTP headers for both archives show Last-Modified 2025-07-22. No semantic version, public repository/commit, tag, release,
+    changelog, manifest, or author checksum was verified. Audit retrieval SHA-256 values are questions ZIP `27AF179F8CF076DA2DEB52F61D631F66293FA11872D12458265E3AC10570F2B2`,
+    inner JSON `A3D20A6E92E4DF8504833BDBB58E5444D880D6157A6EB8B29C3CED78705E8D90`, and autorater ZIP `38B557ADD215E68A94C707EF8C0E25779A6C4A51D1BBC22A3B3B6475EF1F123F`.
+  version_drift: The dated question artifact predates the July 2025 website and arXiv v3 updates, yet no manifest links the
+    111 records to the final paper tables. IDs span 1–129 with 18 gaps, consistent with removals but not documented record-by-record.
+    Older arXiv abstract metadata reports Operator at 24.3%, while the final v3 paper and project leaderboard report 23.4%.
+    Main agent runs also occurred in February/March, May, and July against a changing web and changing products.
+  verifier_or_judge_failure_modes:
+  - Final-answer entailment does not verify that the intended page, source, modality, or interaction path was used; the paper
+    itself finds correct answers grounded in secondary or no sources.
+  - The single-short-answer design excludes no-answer, multiple-answer, and long-form tasks and can over-penalize valid alternatives
+    or formatting while hiding evidence quality.
+  - The GPT autorater depends on a dated external model/API and unpinned Python packages. Seed 1130 and temperature 0 do not
+    guarantee stable behavior after backend/model changes, and no offline expected-output fixture is included.
+  - The public autorater prompt embeds selected example gold answers even though the project generally describes gold answers
+    as non-public, creating a limited answer-exposure inconsistency.
+  - Live pages, videos, games, maps, search rankings, access controls and CAPTCHAs drift; no snapshots or deterministic replay
+    contract exist.
+  - Commercial agents expose trajectories at incompatible levels of detail, sometimes only top-level URLs, so step counts
+    and causal failure attribution are not directly comparable.
+  - The OpenAI Chat GPT Agent product receives a 45-minute limit while other computer-use agents receive 15 minutes, and agents
+    were run months apart; score differences therefore mix capability, product version, web state and compute budget.
+  - Manual browser execution and provider UIs lack pinned model revisions, seeds, action APIs and retry logs. Dead-loop and
+    no-progress judgments are prose-defined rather than executable.
+  - The final paper text disagrees internally on whether 37.5% or 38.5% of Deep Research's correct answers are secondary/ungrounded;
+    Table 9 counts 15 of 40, or 37.5%.
+  successful_and_failed_sample_retention: Paper tables retain aggregate counts for correct, wrong, uncertain/abstaining and
+    no-answer/loop outcomes, and the authors state they recorded run trajectories. The public release contains none of those
+    per-run records. Full successful paths, failed paths, loops, abstentions, screenshots, model outputs, timestamps, source
+    labels, retries and discarded runs are unavailable; W1 exposes only three example trajectories for one question.
+  privacy_or_consent: Freelancers were paid $4 per accepted construction item. The human study used volunteers for Arabic/Chinese
+    and paid Upwork annotators for Hindi/German/Finnish at $2.50 per question plus a $1 correct-answer bonus; English items
+    were attempted by annotators/authors who had not written or validated them. Consent, IRB/ethics review, demographics,
+    total labor, rejected-work compensation, privacy review, and rights for captured live-web content or proprietary-agent
+    outputs are not disclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Official COLM/OpenReview metadata, arXiv v3 full text and appendices, project page, public question archive, and
+    complete autorater archive were checked. Citation and the limited question/evaluator artifacts are verified; full gold
+    data, trajectories, model outputs, replay environment, artifact license, version history, and OpenReview supplementary
+    contents are not.
+  remaining_unknowns:
+  - full 111-item gold-answer, modality, URL, viable-trajectory, provenance, validation and replacement manifests
+  - human and model trajectory files, screenshots/HTML, outputs, timestamps, success/failure/loop records, retries and source-quality
+    labels
+  - live-web snapshots, browser/device state, account/network/CAPTCHA policy, reset semantics and executable terminal checks
+  - exact commercial-agent model/product revisions, decoding/tool budgets, seeds and UI configurations
+  - dataset, autorater-code, question-source, web-content, gold-answer and model-output licenses
+  - conventional deduplication, near-duplicate checks, benchmark overlap and model-training contamination audits
+  - immutable release versions, changelog, official manifest, repository commit/tag and author-published checksums
+  - autorater package/API versions, retry/error handling, expected-output fixtures and post-release judge-drift tests
+inclusion_reason: 'BEARCUBS makes live-web multimodal information seeking, a strict short-answer feedback contract, and trajectory/source-quality
+  failure analysis explicit. Its question-only public artifact and non-replayable substrate are equally important audit evidence:
+  the entry demonstrates why a benchmark that records trajectories internally must not be cataloged as an open trajectory
+  corpus.'
+related:
+- browsecomp-2025
+tags:
+- bearcubs
+- live-web
+- computer-use
+- multimodal-web-agent
+- information-seeking
+- answer-level-judgment
+- human-validated-trajectories
+- question-only-release
+- trajectory-release-gap
+- contamination-refresh
+- non-replayable-environment
+category_ids:
+- environment_agent_trajectory_data
+one_line: BEARCUBS evaluates computer-using agents on 111 live-web questions with private short answers and internally validated
+  browsing paths, while its public data ZIP exposes only question text and no replayable episodes.
+one_line_summary: BEARCUBS evaluates computer-using agents on 111 live-web questions with private short answers and internally
+  validated browsing paths, while its public data ZIP exposes only question text and no replayable episodes.
+why_it_matters: It pairs a difficult multimodal web surface with an explicit answer-level judgment rule and rich internal
+  failure analysis, while showing the audit gap between “trajectories were recorded” and “trajectory data is actually released
+  with replay, lineage, rights, and version metadata.”
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  artifact_verified: true
+  repository_files_verified: false
+  dataset_contents_verified: true
+  full_release_verified: false
+  gold_answers_verified: false
+  trajectory_release_verified: false
+  replay_environment_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Artifact verification means the 111-record question-only JSON and all four autorater files were inspected and hashed.
+    No official repository was linked or inferred; no full gold, URL, trajectory, model-output, split/provenance, replay,
+    license or version manifest was verified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_full_data: publish or document a governed manifest for gold answers, modality labels, visited URLs, viable human
+  trajectories, provenance and validation/replacement history'
+- 'needs_episode_release: release successful, failed, loop and abstention agent episodes with outputs, screenshots/HTML, timestamps,
+  source attribution, retries and run metadata'
+- 'needs_replay: pin browser/device state, web snapshots or replay fixtures, account/network/CAPTCHA policy, reset semantics
+  and executable terminal conditions'
+- 'needs_license: state separate licenses and upstream rights for questions, gold answers, autorater code, web captures, model
+  outputs and trajectories'
+- 'needs_version_manifest: publish semantic releases, changelog, official checksums, record-level additions/removals and a
+  repository commit or immutable archive mapping to the final paper'
+- 'needs_split_lineage: expose text/multimodal labels, source mixture, writer/validator provenance and record-level audit
+  fields'
+- 'needs_decontamination: publish duplicate/overlap checks, contamination flags, refresh criteria and old-to-new item mappings'
+- 'needs_protocol_pinning: disclose exact agent revisions, budgets, UI/API configuration, seeds/retries and reconcile unequal
+  time limits and evaluation dates'
+- 'needs_autorater_reproducibility: pin package/API versions, add requirements/lockfile, retry/error handling and expected-output
+  tests for judge drift'
+card: null
+card_recommendation: recommended_L4_candidate_as_evaluation_and_audit_reference; do not label it a public trajectory release
+  or training-ready dataset, and preserve the gold, episode, replay, license, split, contamination and version gaps.

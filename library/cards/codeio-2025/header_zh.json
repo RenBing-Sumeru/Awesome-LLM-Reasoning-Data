@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CODE I/O 把 454.9K 个可执行函数转化为 3.52M 条带程序校验与修订反馈的自然语言推理示范，并公开其中的 PythonEdu-Reasoning 子集。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "执行校验推理示范数据集与两阶段 SFT 配方",
+  "best_for_ch": "适合从可执行代码构造广域推理监督，或审计带反馈纠错轨迹的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Junlong Li、Daya Guo、Dejian Yang、Runxin Xu、Yu Wu、Junxian He",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T09:20:00Z"
+}

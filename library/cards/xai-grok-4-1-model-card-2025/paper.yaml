@@ -1,0 +1,145 @@
+id: xai-grok-4-1-model-card-2025
+title: Grok 4.1 Model Card
+year: 2025
+venue: xAI model card
+authors:
+- xAI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- general_reasoning
+- safety
+- agentic_tool_use
+training_use:
+- sft
+- rlvr
+- safety_alignment
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://data.x.ai/2025-11-17-grok-4-1-model-card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://x.ai/news/grok-4-1
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'The six-page model card names only four broad pretraining categories: publicly available Internet data,
+    third-party-produced data, data from users or contractors, and internally generated data. The report gives no source manifests,
+    proportions, prompt provenance, revisions, rights mapping, or production-data boundary.'
+  trace_author: xAI says Grok 4.1 was trained on demonstrations of appropriate benign and harmful-query responses, and that
+    Grok systematically applies adversarial attacks for filter training. Demonstration authorship, annotator protocol, generator
+    versions, thought-trace policy, and item lineage are unknown.
+  answer_format: A concrete evaluation record is described as a single-turn policy-violating request, Grok response, and separate-model
+    assisted-or-refused grade. Training record schemas, raw demonstrations, reward fields, evaluator outputs, and released
+    examples are unknown.
+  process_fields:
+  - single_turn_request
+  - model_response
+  - assisted_or_refused_grade
+  environment_or_substrate: Both Thinking and Non-Thinking configurations use a production system-message instruction for
+    evaluation. The card names AgentHarm and AgentDojo; the release announcement evaluates non-reasoning with web search tools.
+    Prompts, tools, versions, task instances, harnesses, containers, and replay logs are unknown.
+  verifier_or_reward: The card names human feedback, verifiable rewards, and model-based graders for SFT/RL. The announcement
+    says frontier agentic reasoning models act as reward models for non-verifiable signals. A separate model grades one refusal
+    evaluation. Reward definitions, model identities/versions, calibration, thresholds, aggregation, coverage, and errors
+    are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Grok 4.1 checkpoint lineage, architecture, initialization, data allocation, and checkpoint selection are unknown.
+  teacher: unknown
+  generator: Grok supplies adversarial attacks for filter training; generators for demonstrations, SFT/RL records, reward-model
+    data, and general training data are unknown.
+  filtering_rule: The card names de-duplication and classification, and input filters trained on mixed synthetic and production
+    data. Filter models, thresholds, ordering, yields, rejection records, and production-data governance are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: The announcement states that Non-Thinking uses no thinking tokens for an immediate response; numeric training
+    or evaluation budgets are unknown.
+  optimizer_or_scaffold: Targeted mid-training, SFT, and RL with human feedback, verifiable rewards, and model graders are
+    named. Objectives, reward mixing, optimizer, schedules, rollouts, samples, and RL infrastructure configuration are unknown.
+audit:
+  source_mixture: Four broad pretraining classes are disclosed with no weights, counts, manifests, revisions, source rights,
+    or item-level provenance. Production traffic is explicitly named for input-filter training and some evaluations; the report
+    does not say it trains the base/post-trained model.
+  split: unknown
+  decontamination: De-duplication is named but method, thresholds, efficacy, benchmark-overlap checks, and train/evaluation
+    membership are unknown.
+  license: Licenses, consent, retention, and reuse rights for Internet, third-party, user, contractor, internal, synthetic,
+    production, demonstration, and evaluation records are unknown.
+  lineage: The card gives high-level lineage from broad sources through filtering, targeted mid-training, SFT/RL feedback
+    families, and mitigation/evaluation; it does not give source-to-prompt-to-response-to-feedback-to-checkpoint records.
+  known_failure_modes:
+  - Broad source/feedback labels do not establish record provenance, data rights, production-data boundaries, or benchmark
+    overlap controls.
+  - Reward/verifier/grader definitions, identities, calibration, coverage, false positive/negative behavior, and optimization
+    weights are undisclosed.
+  - Internal refusal/filter/jailbreak evaluations and separate-model grades lack public prompts, labels, model versions, instances,
+    and logs.
+  - Earlier cards evaluated English prompts only because of a setting error; multilingual results are not directly comparable.
+  - Dual-use tests remove safeguards, while deployment evaluation uses a production system-message instruction and filters;
+    the deployment/evaluation configuration is unreleased.
+  - Live production traffic is used for silent-rollout pairwise evaluation and a sampled hallucination evaluation; use, consent,
+    retention, and separation from training are not documented.
+  citation_status: verified
+  confidence: medium
+  notes: Official xAI PDF and release announcement were checked on 2026-07-23. They substantiate partial disclosure and reported
+    evaluation results, not a reusable data, reward, filter, evaluator, code, or training-recipe release.
+  metadata_status: partial
+inclusion_reason: A frontier disclosure ledger for an xAI model card that names broad sources, filtering, targeted mid-training,
+  SFT/RL feedback families, safety training, production rollout/evaluation, and safeguards while leaving record-level contracts
+  and most recipe controls undisclosed.
+related:
+- xai-grok-4-model-card-2025
+tags:
+- xai
+- grok-4-1
+- model-card
+- frontier-report
+- data-disclosure-ledger
+- safety-training
+- model-based-reward
+- production-evaluation
+status: partial
+one_line_summary: Grok 4.1's official card names broad data categories and SFT/RL feedback families plus safety-filter training,
+  while its announcement adds model-based rewards and production-rollout evaluation; neither source releases reusable training
+  data or reward contracts.
+why_it_matters: 'It distinguishes a useful official disclosure ledger from evidence of reusable post-training data: the sources
+  support high-level pipeline and evaluation claims but leave provenance, rights, verifier details, production governance,
+  and reproducibility unknown.'
+card: null
+needs:
+- 'needs_data: source manifests, proportions, revisions, rights/consent, retention, production-data boundary, safety records,
+  and item-level lineage.'
+- 'needs_verifier: reward/grader/filter identities, data, protocols, calibration, thresholds, coverage, and error analysis.'
+- 'needs_metadata: generator versions, samples, rollouts, objectives, reward mixing, schedules, checkpoint choice, and budgets.'
+- 'needs_audit: splits, overlap/decontamination, deployment prompt/filter/harness pins, production-data governance, and evaluation
+  logs.'
+- 'needs_code: training, evaluator/reward, filter, mitigation, and evaluation implementations.'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_repair
+  confidence: high
+  notes: Official xAI Grok 4.1 Model Card PDF and official launch announcement were checked. No official data, code, reward/evaluator,
+    filter, model-weight, or reproducibility artifact was identified.
+category_ids:
+- frontier_reports_data_disclosure_ledger

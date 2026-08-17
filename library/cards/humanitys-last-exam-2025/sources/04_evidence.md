@@ -1,0 +1,3 @@
+Nature reports HLE as 2,500 questions across over a hundred subjects, with about 24% multiple-choice and the remainder exact-match, and about 14% multimodal. The paper reports low accuracy and poor calibration for frontier LLMs, with most models showing RMS calibration errors above 70%.
+
+Instance-level evidence is whether the released grader accepts a model answer against the reference answer for that dataset version. Evidence boundaries are important: scores depend on public/private split, grader or LLM-judge settings, exact-answer normalization, model prompting, tool access, and post-release corrections.

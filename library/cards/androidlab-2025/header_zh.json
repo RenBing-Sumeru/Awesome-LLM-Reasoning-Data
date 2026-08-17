@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AndroidLab 发布 726 条 Android SFT 轨迹及含混合终态反馈的 138 任务 AVD 基准，但数据划分、失败轨迹、数据权利与不可变回放条件仍未解决。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Android agent 环境、轨迹数据发布与系统评测",
+  "best_for_ch": "研究移动 GUI agent 轨迹构造、SFT、环境 verifier、可回放评测与发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yifan Xu, Xiao Liu, Xueqiao Sun, Siyi Cheng, Hao Yu, Hanyu Lai, Shudan Zhang, Dan Zhang, Jie Tang, Yuxiao Dong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

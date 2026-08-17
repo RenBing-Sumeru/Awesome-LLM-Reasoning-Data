@@ -1,0 +1,194 @@
+id: agentrl-2025
+title: 'AgentRL: Scaling Agentic Reinforcement Learning with a Multi-Turn, Multi-Task Framework'
+year: 2025
+venue: arXiv preprint
+authors:
+- Hanchen Zhang
+- Xiao Liu
+- Bowen Lv
+- Xueqiao Sun
+- Bohao Jing
+- Iat Long Iong
+- Zhenyu Hou
+- Zehan Qi
+- Hanyu Lai
+- Yifan Xu
+- Rui Lu
+- Hongning Wang
+- Jie Tang
+- Yuxiao Dong
+source_role:
+- construction_recipe
+- data_release
+- verifier_reward
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_training
+- tool_use
+- operating_system
+- database
+- knowledge_graph
+- text_games
+- web_navigation
+training_use:
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.04206
+  arxiv: https://arxiv.org/abs/2510.04206
+  code: https://github.com/THUDM/AgentRL
+  data: https://github.com/THUDM/AgentBench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.04206
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Training uses a refined AgentBench Function Calling (AgentBench-FC) across ALFWorld, DB, Knowledge Graph,
+    OS, and WebShop. ALFWorld and WebShop directly adopt their existing training datasets; OS, Knowledge Graph, and DB use
+    Self-Instruct instances sampled and filtered with o3 and Claude Sonnet 4; DB additionally uses BIRD training samples.
+    The paper does not publish a record-level source manifest or a complete static AgentRL training-trajectory release.
+  trace_author: Current and stale-policy rollout engines generate multi-turn trajectories online while interacting with containerized
+    task environments. The paper reports model-generated Self-Instruct task instances for OS, Knowledge Graph, and DB, but
+    not a downloadable ledger of all synthetic prompts, filters, trajectories, observations, or rewards.
+  answer_format: OpenAI Function Calling format. A task worker constructs system/user prompts, parses and executes agent responses,
+    injects observations and reward history, and keeps a multi-turn session until completion or abnormal termination.
+  process_fields:
+  - task_index
+  - system_prompt
+  - user_prompt
+  - tool_definition
+  - tool_call
+  - action
+  - observation
+  - environment_state
+  - reward
+  - termination_signal
+  - trajectory
+  environment_or_substrate: AgentRL uses an asynchronous training framework plus a containerized AgentBench-FC deployment.
+    A controller manages task workers and sessions; each TaskWorker serves a task through FastAPI. The repository describes
+    HTTP and gRPC transports and Docker-backed environments; AgentBench FC names ALFWorld, DB, Knowledge Graph, OS, and WebShop.
+  verifier_or_reward: AgentBench-FC task workers evaluate agent performance. The paper normalizes task rewards to [0,1]; when
+    a task has no intrinsic reward it gives 1 for a correct response and 0 otherwise. It uses a trajectory-level binary correctness
+    score for multi-task training and applies -0.2 for trajectories exceeding maximum interaction rounds or response length,
+    as well as for abnormal terminations. Exact task-specific evaluators and their released decision traces vary by environment
+    and are not documented as one immutable reward ledger.
+  terminal_predicate: A task worker terminates the session after task completion or according to its lifecycle/timeout policies.
+    The paper distinguishes correct full trajectories from those that exceed interaction/length limits and abnormal terminations;
+    per-task predicates and terminal records are not released as a consolidated manifest.
+recipe_metadata:
+  base_model: Qwen2.5-3B/7B/14B/32B-Instruct and GLM-4-9B-0414 in the reported experiments. Qwen runs begin RL directly without
+    warm-up SFT; GLM-4-9B uses a limited cold-start SFT set to learn Function Calling before RL.
+  teacher: o3 and Claude Sonnet 4 are used to sample and filter Self-Instruct training instances for OS, Knowledge Graph,
+    and DB. Their exact prompts, versions, generated candidates, selection decisions, and rights are not released in the inspected
+    artifacts.
+  generator: Asynchronous current-policy rollouts; cross-policy sampling randomly chooses each trajectory action from a pool
+    of current and stale-policy engines. The static task-instance generator is direct upstream datasets for ALFWorld/WebShop
+    and Self-Instruct for OS/KG/DB.
+  filtering_rule: The paper says high-performance APIs sample and filter Self-Instruct instances for OS, Knowledge Graph,
+    and DB. It replicates smaller task datasets so each task is approximately the size of the largest dataset, then sequentially
+    cycles datasets to interleave samples. Exact filter prompts, thresholds, retained IDs, replication counts, and source-version
+    pins are unknown.
+  sampling_protocol: Training covers five tasks with uniformized sampling through replication/interleaving. The reported GRPO
+    run samples eight trajectories per rollout at temperature 0.8; multiple models can contribute action steps through cross-policy
+    sampling. Training reports over 1,000 steps in the mixed setting.
+  rollout_count: 8
+  temperature: 0.8
+  inference_budget: Maximum interaction rounds and response length are enforced and receive a -0.2 penalty when exceeded,
+    but their numeric values are not specified in the inspected paper sections. The repository's task example shows a 20-round
+    interaction loop; it is illustrative and not treated as the paper's universal budget.
+  optimizer_or_scaffold: GRPO baseline with asynchronous coroutine rollout/training, dynamic batches, task advantage normalization,
+    cross-policy sampling, task-worker/controller infrastructure, SGLang inference, and FSDP training. The framework limits
+    the data queue and moves trajectories to training each step to limit staleness.
+audit:
+  source_mixture: The paper names five AgentBench-FC task environments and describes direct adoption (ALFWorld/WebShop), Self-Instruct
+    via o3 and Claude Sonnet 4 (OS/KG/DB), and BIRD augmentation (DB). It gives no complete task-instance counts, source ratios
+    after replication, retained/rejected IDs, teacher call logs, or hash-pinned mixture manifest.
+  split: The AgentBench repository says it provides test results and its older v0.2 release has Dev/Test splits, but the AgentRL
+    paper does not publish a record-level train/dev/test mapping for the refined five-task FC training mixture. The latest
+    AgentBench FC repository should not be assumed to be an immutable reproduction of the paper's exact training inputs.
+  decontamination: No dedicated semantic overlap, benchmark-contamination, teacher-data leakage, or train/evaluation provenance
+    audit was verified for the adapted AgentBench data, ALFWorld/WebShop inputs, Self-Instruct inputs, BIRD augmentation,
+    or online rollouts.
+  license: AgentRL code is MIT. The linked AgentBench repository is Apache-2.0 and its README identifies AgentBench and verl
+    as incorporated open-source components. These code licenses do not establish rights for all upstream task data, Docker
+    images, Freebase copy, BIRD data, teacher-generated instances, or online trajectories.
+  lineage: Named AgentBench-FC/upstream task inputs plus Self-Instruct/BIRD augmentation -> online environment rollouts (current/stale
+    policies) -> asynchronous GRPO with task advantage normalization -> reported checkpoints/results. Per-record origins,
+    prompt/filter decisions, tool observations, reward events, rollout-to-update mapping, and checkpoint hashes remain incomplete.
+  known_failure_modes:
+  - A trajectory-level binary reward and abnormal-termination penalty do not establish that each intermediate tool action,
+    observation, or final answer is semantically correct.
+  - Async rollout/training and stale-engine cross-policy sampling create policy/version alignment and reproducibility risks
+    unless queue state, engine versions, seeds, and rollout-to-update mapping are retained.
+  - Self-Instruct generation/filtering with proprietary APIs is reported but its prompts, output candidates, selection criteria,
+    model snapshots, and licensing are not released.
+  - Task reward functions and environment images vary across OS, DB, Knowledge Graph, ALFWorld, and WebShop; no unified immutable
+    decision/telemetry ledger was verified.
+  - Current AgentBench FC provides deployable task code, but its evolving main branch is not evidence of the exact paper-era
+    container images, task splits, or training data.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper, THUDM AgentRL repository/license, and the THUDM AgentBench repository/license linked by AgentRL
+    were inspected on 2026-07-16. Framework and environment disclosure is strong; complete data, trajectory, split, and feedback-event
+    disclosure is partial.
+inclusion_reason: A 2025 multi-turn, multi-task agentic-RL framework from THUDM/Z.ai that makes the environment-feedback and
+  asynchronous rollout contract unusually explicit, while exposing precisely why framework code and task repositories are
+  not equivalent to a complete reproducible training-data ledger.
+related: []
+tags:
+- agentic-rl
+- multi-turn
+- multi-task
+- environment-feedback
+- function-calling
+- grpo
+- asynchronous-training
+- agentbench
+- data-disclosure-ledger
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Releases an MIT asynchronous GRPO framework and links an Apache-2.0 AgentBench-FC environment stack for
+  five agent tasks, while the paper-level synthetic inputs, online trajectories, evaluator events and immutable mixture/split
+  ledger remain incomplete.
+why_it_matters: AgentRL makes the interface between policy rollouts and task-environment feedback inspectable at the framework
+  level, but demonstrates that runnable agent infrastructure alone cannot establish training-data provenance, reward validity,
+  evaluation separation, or reproducibility of a published RL run.
+card: null
+needs:
+- 'needs_release: immutable paper-era AgentBench-FC task/data/container manifests, task-instance counts, source ratios, split
+  files and version hashes'
+- 'needs_audit: per-record origin and rights for direct, BIRD and Self-Instruct inputs; teacher prompts/versions, generated
+  candidates and filter decisions'
+- 'needs_audit: rollout/observation/reward/termination traces, queue and policy-version state, update-to-trajectory lineage
+  and exact checkpoints'
+- 'needs_audit: dedicated semantic train/evaluation overlap and benchmark-contamination analysis across all five task environments'
+- 'needs_verifier: task-specific reward-function specifications, evaluator decision logs, robustness tests and reward-hacking
+  analysis'
+- 'needs_reproduction: pinned Docker/environment images, Freebase/BIRD and task-data revisions, dependency locks, seeds and
+  deployment telemetry'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv and THUDM AgentRL/AgentBench repositories and licenses were verified. The public artifacts verify
+    reusable framework/environment code, not a complete paper-run trajectory or reward-event release.

@@ -1,0 +1,1 @@
+Bias studies usually measure whether a label changes a verdict. This paper also tests whether the judge admits that label in its rationale, turning shortcut bias into an explanation-faithfulness audit. Pairwise labels and VSR are not new; the added decision contract is verdict sensitivity plus acknowledgment.

@@ -1,0 +1,6 @@
+Candidate datasets are selected for community impact, release after 2023, direct SFT suitability, manageable scale, and safety, then standardized into common instruction-response formats. The paper-era controlled runs use Llama3.1-8B, Qwen2.5-7B, and Qwen3-8B with fixed model-family LoRA and optimization settings. Each dataset is ingested and normalized, trained separately, and evaluated through OpenCompass plus specialized harnesses.
+
+Verification is explicitly mixed. Code benchmarks retain execution or their default evaluation tools. Non-code outputs may require answer extraction or judgments from xVerify and Omni-Judge. Intrinsic assessment separately combines specialized scoring models, LLM-as-judge components, and heuristic rules for question and question-answer quality. Dataset genealogy represents inheritance, mixture, distillation, and redundancy, but an inferred relation is not automatically record-level provenance.
+
+The platform is living infrastructure. Its project, toolkit, Hugging Face collections, leaderboards, scores, and checkpoints can change after the paper. Reproduction therefore requires a pinned toolkit commit, exact configs, dataset/model revisions, raw evaluation results, and checksums rather than only the live URLs.
+

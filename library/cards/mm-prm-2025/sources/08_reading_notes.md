@@ -1,0 +1,5 @@
+- Keep four signals separate: reference-answer match, binary rollout judgment, node Monte Carlo value, and the learned PRM's per-step Yes probability.
+- A node label measures continuation success under MM-Policy and the Qwen2.5-72B-Instruct judge; it is not a direct human verdict on local logical validity.
+- The verified releases are MM-K12 seeds, recipe code, and an 8B checkpoint; the paper-run trees and 747,779 sampled PRM records are absent.
+- Check selection effects from root filtering, MC-zero termination, short-path removal, deduplication, and positive-path downsampling before reusing regenerated labels.
+- Treat Best-of-N gains as selector evidence only; candidate coverage, aggregation, judge calibration, provenance, split mapping, and paper/script mismatches remain audit boundaries.

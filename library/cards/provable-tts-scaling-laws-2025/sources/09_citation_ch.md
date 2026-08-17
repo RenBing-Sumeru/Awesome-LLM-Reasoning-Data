@@ -1,0 +1,1 @@
+Chen, Yanxi、Xuchen Pan、Yaliang Li、Bolin Ding 和 Jingren Zhou。2025。《大语言模型测试时计算的可证明标度律》。第 38 卷《神经信息处理系统进展》（NeurIPS 2025）。论文：https://arxiv.org/abs/2411.19477。官方记录：https://papers.neurips.cc/paper_files/paper/2025/hash/f3f607e4c13bd1cb8885de44b4ec45b7-Abstract-Conference.html。

@@ -1,0 +1,145 @@
+id: toollm-toolbench-2023
+title: 'ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs'
+year: 2023
+venue: ICLR 2024 spotlight
+authors:
+- Yujia Qin
+- Shihao Liang
+- Yining Ye
+- Kunlun Zhu
+- Lan Yan
+- Yaxi Lu
+- Yankai Lin
+- Xin Cong
+- Xiangru Tang
+- Bill Qian
+- Sihan Zhao
+- Lauren Hong
+- Runchu Tian
+- Ruobing Xie
+- Jie Zhou
+- Mark Gerstein
+- Dahai Li
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- sft
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2307.16789
+  arxiv: https://arxiv.org/abs/2307.16789
+  code: https://github.com/OpenBMB/ToolBench
+  data: https://github.com/OpenBMB/ToolBench
+  project: https://openbmb.github.io/ToolBench/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2307.16789
+  venue: https://openreview.net/forum?id=dHng2O0Jjr
+  openreview: https://openreview.net/forum?id=dHng2O0Jjr
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 16,464 RESTful APIs spanning 49 categories; the existing card records 126,486 instruction-solution-path pairs
+    from official sources.
+  prompt_source: RapidAPI documentation filtered by the authors, with closed-chat-model-generated single-tool and multi-tool
+    user instructions
+  trace_author: closed-chat-model family searches solution paths through API calls; ToolLLaMA is trained on the resulting
+    ToolBench data
+  answer_format: user instruction, selected APIs, tool-call chain, API observations, final answer or failure, and ToolEval
+    judgment
+  process_fields:
+  - API schema
+  - user instruction
+  - retrieved tool
+  - tool call
+  - API observation
+  - solution path
+  - final answer
+  - ToolEval score
+  environment_or_substrate: RapidAPI tool bank, API retriever, DFSDT solution-path search, and ToolEval judging
+  verifier_or_reward: ToolEval uses closed-model judgments of pass rate and win rate over full tool-use trajectories
+  terminal_predicate: the tool-call chain satisfies the user instruction or wins against a comparison trajectory under ToolEval
+recipe_metadata:
+  base_model: Not a single base-model recipe unless stated in the paper; use only the disclosed training/evaluation role.
+  teacher: Official task authors, generator, tracer, simulator, or judge described by the paper.
+  generator: RapidAPI documentation filtered by the authors, with closed-chat-model-generated single-tool and multi-tool user
+    instructions
+  filtering_rule: Use only source-backed construction and validation claims; do not infer hidden filters.
+  sampling_protocol: Pin release revision, split, runtime, prompt/scaffold, judge/verifier, and evaluation budget before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: RapidAPI tool bank, API retriever, DFSDT solution-path search, and ToolEval judging
+audit:
+  source_mixture: https://arxiv.org/abs/2307.16789; https://openbmb.github.io/ToolBench/; https://github.com/OpenBMB/ToolBench;
+    https://github.com/OpenBMB/ToolBench
+  split: pin exact public/hidden split or train/test revision before score reuse
+  decontamination: public tasks, traces, APIs, repositories, or generated environments can enter future training data
+  license: license for questions, traces, code, data, RapidAPI-derived metadata, and generated tool records remains an artifact-level
+    unknown unless confirmed from the current repository
+  lineage: 'Primary source: https://arxiv.org/abs/2307.16789'
+  known_failure_modes:
+  - runtime, tool, website, API, or dependency drift
+  - prompt/scaffold and budget sensitivity
+  - public-artifact contamination
+  - judge, tracer, verifier, or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: Source facts were regenerated from official paper/page artifacts; score reuse still requires pinned artifacts and
+    evaluator versions.
+inclusion_reason: ToolLLM introduces ToolBench, a large tool-use dataset over 16,464 real-world APIs, plus ToolEval and ToolLLaMA
+  for training and evaluating API-using models.
+related: []
+tags:
+- agent-environment
+- benchmark
+- evaluation-surface
+- tool-use
+- trajectory-data
+why_it_matters: ToolLLM introduces ToolBench, a large tool-use dataset over 16,464 real-world APIs, plus ToolEval and ToolLLaMA
+  for training and evaluating API-using models.
+status: verified
+needs:
+- 'needs_version_pin: pin repository/data revision, split, runtime, prompt/scaffold, and evaluator version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'
+one_line_summary: ToolLLM introduces ToolBench, a large tool-use dataset over 16,464 real-world APIs, plus ToolEval and ToolLLaMA
+  for training and evaluating API-using models.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: medium
+  notes: Official source links and card-local artifacts were verified for L4 source regeneration.
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 1
+  candidate_title: ToolLLM / ToolBench
+  primary_category_id: environment_agent_trajectory_data
+  processed_at: '2026-07-12'

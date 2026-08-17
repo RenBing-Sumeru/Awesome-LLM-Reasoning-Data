@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "28.5GB 公开训练集；百万级偏好对经自训练生成“反馈—比较—结论—A/B”监督，用于奖励推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "自训练生成式基础奖励模型与奖励推理数据论文",
+  "best_for_ch": "需要将无理由偏好数据和无标注数据扩展为带比较理由的奖励模型训练语料的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chenglong Wang, Yongyu Mu, Hang Zhou, Yifu Huo, Ziming Zhu, Jiali Zeng, Murun Yang, Bei Li, Tong Xiao, Xiaoyang Hao, Chunliang Zhang, Fandong Meng, Jingbo Zhu",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:29:07Z"
+}

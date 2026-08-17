@@ -1,0 +1,4 @@
+For data builders, the arena provides a template for separating source normalization, controlled training, downstream utility, intrinsic assessment, and lineage rather than collapsing them into one quality score. It can support dataset triage, mixture design, benchmark redundancy analysis, scorer audits, and studies of how dataset rankings change across base models.
+
+Reuse should start by pinning a dated snapshot and reading every evaluator's contract. Builders should preserve upstream dataset IDs and licenses, distinguish documented genealogy from inferred similarity, and avoid transferring the 7B–8B SFT ranking to RL, preference optimization, larger models, or different hyperparameters without new evidence. Auditors can test scorer disagreement, benchmark overlap, ranking sensitivity, and whether each released derived artifact has compatible terms.
+

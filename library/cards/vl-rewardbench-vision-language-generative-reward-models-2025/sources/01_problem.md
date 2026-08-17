@@ -1,0 +1,3 @@
+Existing multimodal reward models are often evaluated on preferences from conventional visual question answering, with labels automatically produced by another AI. Such samples may be too easy or inherit judge bias and do not reveal whether models can detect hallucinations, basic perception failures, or complex multimodal reasoning errors.
+
+VL-RewardBench uses AI-assisted hard-example selection followed by human verification to curate 1,250 high-quality image–text preference instances spanning general multimodal queries, visual hallucination, and complex reasoning, and evaluates vision-language generative reward models with pairwise accuracy.

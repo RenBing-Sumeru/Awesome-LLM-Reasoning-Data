@@ -1,0 +1,3 @@
+可信证据来自官方任务发布、数据 schema 和评分契约，而不是仅看榜单数字。本地已审计规模是：本地元数据尚未完整固定规模，定量复用前必须回到官方发布版本核验。行级证据是一条记录，包含 finance question, relevant filing or retrieval context, agent tool trajectory, final answer, gold answer or rubric-backed scoring result、模型输出或轨迹，以及来自 expert-authored answer and official evaluator; exact v2 rubric and 裁判设置需要钉住页面和版本 的验证或裁判结果。
+
+聚合分数只能在官方设置内解释。证据边界包括：public/private and v2 任务切分 are 待审计；待审计；SEC facts are public but questions, answers, and current 榜单 prompts can leak after release。补充审计备注：arXiv reports 537 expert-authored questions and o3 at 46.8 percent accuracy in the original benchmark; v2 surface should be compared only after pinning the Vals page version。如果使用 裁判或 rubric，裁判提示、模型和版本是证据的一部分；如果使用程序化检查，检查器和运行时是证据的一部分。

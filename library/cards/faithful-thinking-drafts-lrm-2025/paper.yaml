@@ -1,0 +1,108 @@
+id: faithful-thinking-drafts-lrm-2025
+title: Measuring the Faithfulness of Thinking Drafts in Large Reasoning Models
+year: 2025
+venue: arXiv preprint
+authors:
+- Zidi Xiong
+- Shan Chen
+- Zhenting Qi
+- Himabindu Lakkaraju
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- reasoning-faithfulness
+- counterfactual-intervention
+- process-traces
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2505.13774
+  arxiv: https://arxiv.org/abs/2505.13774
+  code: https://github.com/polaris-73/faithful-thinking-draft
+  project: null
+  data: https://huggingface.co/datasets/polaris-73/faithful-thinking-draft
+  huggingface: https://huggingface.co/datasets/polaris-73/faithful-thinking-draft
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2505.13774
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GPQA Diamond, MMLU global facts, and MMLU college mathematics questions.
+  trace_author: DeepSeek-R1, Qwen3-32B, and evaluated reasoning models supply thinking drafts and continuations.
+  answer_format: Question, options, thinking draft, perturbed thinking step or conclusion, intervention type, and resulting
+    answer fields.
+  process_fields:
+  - thinking_draft
+  - intervention_step
+  - intervention_type
+  - alter_conclusion
+  - draft_conclusion
+  - answer
+  environment_or_substrate: Controlled counterfactual interventions on textual reasoning drafts.
+  verifier_or_reward: GPT-4o-mini decomposes and classifies draft steps; counterfactual response behavior defines the faithfulness
+    measures.
+  terminal_predicate: Whether reasoning continuations and answers respond consistently to the controlled draft intervention.
+recipe_metadata:
+  base_model: Six open-source large reasoning models across distilled and RLVR-trained families.
+  teacher: GPT-4o-mini for step decomposition and behavior classification.
+  generator: Thinking-draft collection and counterfactual step/conclusion perturbations.
+  filtering_rule: Use targeted interventions whose expected logical effects can be externally checked.
+  sampling_protocol: Six dataset subsets contain Qwen3-32B and DeepSeek reasoning drafts across GPQA and MMLU tasks.
+  inference_budget: Greedy decoding uses temperature 0; consult code for exact calls.
+  optimizer_or_scaffold: Counterfactual intervention evaluation framework.
+  rollout_count: null
+  temperature: 0
+audit:
+  source_mixture: Reasoning-model drafts, benchmark questions, counterfactual insertions, and evaluator classifications.
+  split: The official dataset provides six test subsets; inspect the data card for current row counts and fields.
+  decontamination: Evaluation prompts and perturbations should be kept separate from any fine-tuning corpus.
+  license: Consult the official Hugging Face and GitHub releases for terms.
+  lineage: arXiv manuscript plus linked Polaris GitHub and Hugging Face resources.
+  known_failure_modes:
+  - Counterfactual interventions probe selected dependencies
+  - LLM step decomposition can be imperfect
+  - Faithfulness and answer correctness need not coincide
+  citation_status: verified
+  confidence: high
+  notes: Verified the title, Harvard affiliations, data schema, official code, and dataset from the arXiv HTML paper and linked
+    release pages.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: A counterfactual benchmark tests whether reasoning-model thinking drafts causally guide both subsequent
+  steps and final answers.
+why_it_matters: It turns vague claims about visible reasoning into controlled, reusable tests of intra-draft and draft-to-answer
+  dependence.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the title, Harvard affiliations, data schema, official code, and dataset from the arXiv HTML paper and linked
+    release pages.
+category_ids:
+- process_trace_supervision_data

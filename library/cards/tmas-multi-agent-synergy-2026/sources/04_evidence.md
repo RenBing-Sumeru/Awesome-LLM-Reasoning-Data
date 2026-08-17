@@ -1,0 +1,3 @@
+The front-page result on IMO-AnswerBench reports that TMAS raises Qwen3-30B-A3B-Thinking-2507 pass@1 from 64.9 to 77.2. With Hybrid-RL, the reported Qwen3-4B-Thinking-2507 result rises from 53.5 to 73.5. These are direct evidence for the paper's claim that structured multi-agent iteration can improve the quality of a fixed reasoning backbone under added test-time work.
+
+The paper also reports stronger iterative scaling and stability than its test-time baselines. The comparison should nevertheless be read as a joint system result: gains may reflect the number of agents, verifier calls, memory context, and RL training together. Reuse should therefore report all of those costs rather than attribute the full change to memory reuse alone.

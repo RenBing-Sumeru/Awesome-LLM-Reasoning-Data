@@ -1,0 +1,1 @@
+论文和官方仓库给出的关键证据是：AndroidLab benchmark 有 9 个 app 上的 138 个任务，并使用预定义 Android 虚拟设备；Android Instruct 采集规模为 10.5k traces 和 94.3k steps，其中 6,208 个来自 benchmark app 的步骤用于微调实验。论文报告六个开源 LLM/LMM 微调后平均成功率分别从 4.59% 到 21.50%、从 1.93% 到 13.28%。单条样本的决定性证据不是总分，而是执行轨迹是否通过所有子目标和 UI 状态检查；这些数字只在固定 app 快照、AVD、prompt mode、scaffold 和 evaluator 版本下成立。

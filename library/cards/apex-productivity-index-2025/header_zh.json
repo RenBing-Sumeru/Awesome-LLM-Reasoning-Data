@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "APEX 以资深从业者设计的任务、材料和 rubric，检验模型能否完成金融、法律、咨询和医疗中的高价值专业工作。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "专业知识工作的人类专家 rubric 评测基准",
+  "best_for_ch": "研究专业任务评测、LLM Judge 与经济价值导向能力测量的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bertie Vidgen, Abby Fennelly, Evan Pinnix, Julien Benchek, Daniyal Khan 等",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

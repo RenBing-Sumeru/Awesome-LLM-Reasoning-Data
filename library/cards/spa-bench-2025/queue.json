@@ -1,0 +1,12 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "spotlight，中英任务数据和benchmark",
+    "updated_at": "2026-07-22T03:07:54Z"
+  },
+  "updated_at": "2026-07-22T03:07:54Z",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

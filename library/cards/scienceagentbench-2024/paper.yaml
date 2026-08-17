@@ -1,0 +1,135 @@
+id: scienceagentbench-2024
+title: 'ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery'
+year: 2024
+venue: ICLR 2025 / arXiv
+authors:
+- Ziru Chen
+- Shijie Chen
+- Yuting Ning
+- Qianheng Zhang
+- Boshi Wang
+- Botao Yu
+- Yifei Li
+- Zeyi Liao
+- Chen Wei
+- Zitong Lu
+- Vishal Dey
+- Mingyi Xue
+- Frazier N. Baker
+- Benjamin Burns
+- Daniel Adu-Ampratwum
+- Xuhui Huang
+- Xia Ning
+- Song Gao
+- Yu Su
+- Huan Sun
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- scientific-agents
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2410.05080
+  arxiv: https://arxiv.org/abs/2410.05080
+  doi: https://doi.org/10.48550/arXiv.2410.05080
+  code: https://github.com/OSU-NLP-Group/ScienceAgentBench
+  data: https://huggingface.co/datasets/osunlp/ScienceAgentBench
+  project: https://osu-nlp-group.github.io/ScienceAgentBench/
+  huggingface: https://huggingface.co/datasets/osunlp/ScienceAgentBench
+  venue: https://openreview.net/forum?id=6z4YKr0GK6
+  openreview: https://openreview.net/forum?id=6z4YKr0GK6
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official authors adapt data-driven scientific discovery tasks from 44 peer-reviewed publications across four
+    disciplines, with public annotation inputs on Hugging Face and controlled full benchmark artifacts for scoring.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose scientific task inputs, optional expert knowledge, generated self-contained Python
+    programs, execution artifacts, evaluation logs, costs, and rubric/programmatic scores.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: controlled scientific task archive with datasets, eval_programs, gold_programs, scoring_rubrics,
+    and direct or Dockerized execution harnesses.
+  verifier_or_reward: programmatic execution, task-specific scoring rubrics, gold/evaluation programs, cost metrics, and GPT-4o
+    judging for some visualization outputs determine success.
+  terminal_predicate: generated code must run under the pinned benchmark harness and satisfy the task evaluator or rubric.
+recipe_metadata:
+  base_model: Not a training recipe; the work is an executable evaluation and audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors extract and validate 102 tasks from 44 peer-reviewed publications with annotators and nine subject-matter
+    experts.
+  filtering_rule: Use the 2026-04-30 verified split and benchmark_verified.zip for new evaluations; do not redistribute unzipped
+    scoring assets.
+  sampling_protocol: Pin verified split revision, benchmark archive, evaluator revision, prompt/scaffold policy, number of
+    attempts, expert-knowledge flag, and leaderboard/date before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, venue, artifact, split, and license metadata: https://arxiv.org/abs/2410.05080;
+    https://arxiv.org/html/2410.05080; https://osu-nlp-group.github.io/ScienceAgentBench/; https://github.com/OSU-NLP-Group/ScienceAgentBench;
+    https://huggingface.co/datasets/osunlp/ScienceAgentBench. OpenReview is retained as a venue link but was not used as body
+    evidence in the 2026-07-15 regeneration because direct inspection was blocked by browser verification.'
+  split: Public Hugging Face sheet provides annotation/input fields; full scoring assets are controlled. The README announces
+    a 2026-04-30 verified split to mitigate false negatives, so score reuse must pin verified split and benchmark_verified.zip.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: README states most tasks are CC BY 4.0, code is MIT, and tasks adapted from rasterio/matminer retain original licenses;
+    unzipped benchmark data must not be redistributed online.
+  lineage: 'Primary lead: https://arxiv.org/abs/2410.05080'
+  known_failure_modes:
+  - Original versus verified split, controlled archive contents, judge/evaluator implementation, prompt/scaffold settings,
+    and task-level licenses can affect reuse.
+  - Scores can change with generated-code recovery, Docker/direct evaluation mode, dependency environment, model/API snapshot,
+    number of attempts, or GPT-4o visualization judge.
+  - Evaluation-only artifacts should not be reused as training reward without preserving held-out scoring assets and documenting
+    contamination risk.
+  citation_status: verified
+  confidence: high
+  notes: arXiv, project, GitHub, and Hugging Face sources verify ICLR 2025 status, department-level OSU/UW-Madison affiliations,
+    public artifact leads, Dockerized evaluation, mixed license notes, and the 2026-04-30 verified split; full benchmark redistribution
+    has access limits. OpenReview remains linked but was not directly inspected in the 2026-07-15 source regeneration.
+inclusion_reason: Scientific coding workflow with contamination mitigation and expert validation lead.
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- scientific-agents
+one_line: ScienceAgentBench exposes scientific data-driven discovery tasks as runnable programs as an auditable evaluation
+  surface.
+why_it_matters: Scientific coding workflow with contamination mitigation and expert validation lead.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ScienceAgentBench exposes scientific data-driven discovery tasks as runnable programs as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, GitHub, and Hugging Face sources verify ICLR 2025 status, department-level OSU/UW-Madison affiliations,
+    public artifact leads, Dockerized evaluation, mixed license notes, and the 2026-04-30 verified split; full benchmark redistribution
+    has access limits. OpenReview remains linked but was not directly inspected in the 2026-07-15 source regeneration.
+category_ids:
+- benchmarks_evaluation_surfaces

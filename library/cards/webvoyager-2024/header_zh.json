@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebVoyager 在真实网页浏览任务上评测多模态智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ACL 2024 main / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hongliang He 等（Zhejiang University、Tencent AI Lab、Westlake University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T12:59:20Z"
+}

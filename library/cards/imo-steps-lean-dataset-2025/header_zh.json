@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "IMO-Steps 将国际奥赛题的 Lean 证明拆分为可单独验证的引理与完整证明，便于诊断证明器的局部失败。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "国际奥赛 Lean 分步证明数据集",
+  "best_for_ch": "需要以中间引理分析 Lean 证明能力或训练形式化证明模型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Roozbeh Yousefzadeh, Xuenan Cao, Azim Ospanov",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

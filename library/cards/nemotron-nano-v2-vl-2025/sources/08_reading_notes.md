@@ -1,0 +1,6 @@
+- Keep four ledgers separate: five-stage paper consumption, 39.49M-sample model-card inventory, 8.15M-sample public release, and benchmark evaluation.
+- The report uses supervised fine-tuning throughout the five principal stages; it does not disclose a universal reward or verifier contract for the training rows.
+- Stage 1 adds broad multimodal capability but is associated with coding and long-context regressions; Stages 3 and 4 are targeted recovery stages.
+- Released labels combine existing annotations, humans, named model families, rules, parsers, and compiler-derived OCR ground truth. Generator revisions and acceptance details are incomplete.
+- The public dataset has 51 subdatasets, mixed media availability, a license exception for ten Wikimedia subsets, and an unresolved total-size discrepancy.
+- NVPDFTex is a real released pipeline, but its experimental status and documented parser failure make coverage limits auditable.

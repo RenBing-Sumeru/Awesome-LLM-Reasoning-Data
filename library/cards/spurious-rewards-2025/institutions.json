@@ -1,0 +1,11 @@
+{
+  "institutions": [
+    "University of Washington",
+    "Allen Institute for Artificial Intelligence",
+    "University of California, Berkeley"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-18T00:00:00Z",
+  "review_note": "按 arXiv v2 论文首页的作者隶属关系记录；不表示逐位作者均属于每一家机构。"
+}

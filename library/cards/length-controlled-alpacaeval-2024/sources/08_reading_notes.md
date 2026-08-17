@@ -1,0 +1,3 @@
+Read the paper as a metric-debiasing paper, not as the original AlpacaEval dataset paper. Keep three claims separate: raw AlpacaEval win rate, length-controlled win rate, and external correlation with Chatbot Arena or human preferences.
+
+The practical reading order is: first understand the length-bias failure mode, then the counterfactual GLM adjustment, then the leaderboard/correlation evidence, and finally the limitations of using an automatic judge. Downstream uses should never collapse "LC win rate improved" into "the model is correct"; it means this specific automatic evaluator is less dominated by output length under the reported setup.

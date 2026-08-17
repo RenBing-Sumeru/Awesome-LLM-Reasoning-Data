@@ -1,0 +1,1 @@
+Repeated generation can amplify a systematic error, and a filter that prefers familiar answers can reduce diversity. Reported gains may also hide changes in test distribution, compute, or teacher strength. The paper organizes these risks but cannot supply one quality rule that fits every reasoning domain.

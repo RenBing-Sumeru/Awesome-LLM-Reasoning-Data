@@ -1,0 +1,3 @@
+Planning and decomposition can improve difficult code generation, but a planning-before-trial policy charges every task for a planner even when direct generation would already pass. This makes a small model with an elaborate planning pipeline more expensive than a much larger model used directly, while Best-of-N alone can spend samples on candidates that fail for structural reasons.
+
+PaT asks when planning is actually worth its test-time cost. It uses executable feedback as the boundary: try direct programs first, run them against a test set, and invoke planning only when every direct candidate fails. The paper therefore studies allocation between direct generation, verification, and recursive decomposition rather than treating planning as a universal preamble.

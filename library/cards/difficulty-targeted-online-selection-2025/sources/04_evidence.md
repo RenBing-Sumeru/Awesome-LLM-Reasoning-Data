@@ -1,0 +1,1 @@
+Across six main model-dataset combinations, reported data reductions are 26.25%, 49.85%, 23.30%, 35.10%, 61.65%, and 48.03% while matching the paper's target performance criteria. The repository exposes partial DeepScaleR assets, including 10,240-row files and predictor objects, but not immutable artifacts for every experiment.

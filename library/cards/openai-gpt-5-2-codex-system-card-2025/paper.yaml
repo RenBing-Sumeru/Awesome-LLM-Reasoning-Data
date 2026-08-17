@@ -1,0 +1,189 @@
+id: openai-gpt-5-2-codex-system-card-2025
+title: 'Addendum to GPT-5.2 System Card: GPT-5.2-Codex'
+year: 2025
+venue: OpenAI system-card addendum
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- coding_agents
+- cybersecurity
+- safety
+- biosecurity
+- ai_self_improvement
+training_use:
+- agent_training
+- evaluation
+- safety_alignment
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/pdf/ac7c37ae-7f4c-4442-b741-2eabdeaf77e0/oai_5_2_Codex.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://deploymentsafety.openai.com/gpt-5-2-codex
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: For destructive-action RL, task prompts, repository sources, and source mixture are unknown; the report only
+    says a user model made conflicting edits over the course of rollouts. Separately, the OpenAI PR evaluation uses tasks
+    from internal pull requests with human-written prompts, tests, and hints. Those evaluation artifacts are not claimed as
+    training data.
+  trace_author: During destructive-action RL, GPT-5.2-Codex acts in a coding workspace while a separate user model makes conflicting
+    edits. In the OpenAI PR evaluation, an OpenAI-hosted chat agent uses command-line tools and Python to modify a pre-PR
+    codebase. User-model identity, complete action traces, retention, selection, and item-level lineage are unknown.
+  answer_format: The report describes codebase file modifications, preservation or reversion of user-produced edits, safety
+    responses, and full-episode evaluation outcomes. It does not disclose a serialized training-record schema, patch representation,
+    tool-call schema, retained state, or released examples.
+  process_fields:
+  - task_prompt
+  - repository_or_workspace_state
+  - user_model_conflicting_edit
+  - agent_command_or_tool_action
+  - file_modification_or_patch
+  - preservation_or_reversion_of_user_change
+  - positive_reinforcement_signal
+  - evaluation_test_or_environment_outcome
+  environment_or_substrate: The destructive-action training intervention implies a mutable coding workspace in which a user
+    model can introduce edits during an RL rollout, but repositories, tools, versions, sandbox, observation schema, and replayability
+    are unknown. Evaluation-only environments include pre-PR OpenAI repositories with command-line/Python access and hidden
+    unit tests, cyber sandboxes and emulated networks, GPU-backed MLE-bench tasks, and containers with internal code and run
+    artifacts. Product sandboxes are deployment controls, not established training substrates.
+  verifier_or_reward: For destructive-action RL, the only disclosed training feedback is positive reinforcement when GPT-5.2-Codex
+    does not revert the user's changes; the preservation detector, reward magnitude, aggregation, weighting, calibration,
+    and interaction with other rewards are unknown. Evaluation contracts separately include policy graders and `not_unsafe`,
+    a destructive-action evaluation, hidden unit tests for internal PR tasks, environment pass/fail and hidden flags, benchmark
+    medal thresholds, hierarchical rubrics, and pass@1.
+  terminal_predicate: The training episode's termination rule is unknown; preservation of user-produced edits is an episode-level
+    positive-reinforcement condition, not a disclosed terminal predicate. In the OpenAI PR evaluation, a rollout succeeds
+    if all task-specific hidden tests pass.
+recipe_metadata:
+  base_model: GPT-5.2-Codex is described as a version of GPT-5.2 optimized for agentic coding. Architecture, parameter count,
+    checkpoint identity, pretraining corpus, and post-training-stage allocation are unknown.
+  teacher: unknown
+  generator: A separate 'user model' generates conflicting edits during destructive-action RL rollouts. Its checkpoint, prompts,
+    policy, sampling, edit taxonomy, and coverage are unknown.
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: Training rollout counts are unknown. Evaluation-only disclosures include 16 rollouts per professional CTF
+    exercise, 3 rollouts per CVE-Bench task, 16 trials per Cyber Range scenario, and multiple third-party cyber runs; these
+    must not be interpreted as training sampling.
+  temperature: unknown
+  inference_budget: Context compaction is described as improving long-horizon work across context windows. External cyber
+    elicitation used auto-compaction, xhigh reasoning, and up to 1,000 turns; MLE-bench provided 24 hours with some experiments
+    up to 100 hours; PaperBench used Extra High reasoning and no browsing. These are model/evaluation disclosures, not a training
+    rollout budget or a complete production inference policy.
+  optimizer_or_scaffold: The report explicitly places the conflicting-edit intervention during RL and states that preserving
+    user changes receives positive reinforcement. It also names cyber safety training. The RL algorithm, optimizer, objective
+    mixture, reward normalization, batch sizes, schedules, compute, checkpoint selection, and compaction-training scaffold
+    are unknown.
+audit:
+  source_mixture: No training-source manifest, coding-task or repository inventory, sample/token count, mixture weight, date
+    range, source-level right, privacy/consent record, or revision pin is disclosed. Production and synthetic data named in
+    Table 3 are evaluation strata and cannot be substituted for training-source disclosure.
+  split: The report says the cyber policy-compliance evaluation data do not overlap training. Some named bio evaluations are
+    held out or described as uncontaminated. It does not disclose a global training/dev/test split, OpenAI PR membership boundary,
+    destructive-action split, or complete item membership.
+  decontamination: No global training-corpus, code-repository, or benchmark-overlap audit is disclosed. Narrow held-out, non-overlap,
+    anti-cheating, or uncontaminated claims apply only to named evaluations.
+  license: The official report is publicly accessible, but no training dataset, conflicting-edit rollout corpus, internal
+    PR tasks, human-written prompts/tests/hints, hidden unit tests, reward implementation, model weights, or evaluation suite
+    is released with a reuse license. Source-level rights are unknown.
+  lineage: 'The report supports a narrow stage-level lineage: a user model introduces conflicting edits during RL rollouts,
+    GPT-5.2-Codex acts in the workspace, and preserving user changes receives positive reinforcement. Prompt-to-repository-to-state/action-trajectory-to-reward-to-checkpoint
+    lineage, record IDs, dataset versions, and checkpoint hashes are unknown.'
+  known_failure_modes:
+  - The conflicting-edit intervention does not disclose task sources, repositories, trajectory records, episode lengths, user-model
+    identity, counts, rights, or coverage, so it cannot support a reusable coding-agent dataset claim.
+  - 'Positive reinforcement for preserving edits is not a complete verifier contract: the detector or grader, reward scale,
+    aggregation, calibration, false positives/negatives, and susceptibility to superficial preservation strategies are unknown.'
+  - Human-written prompts, unit tests, hints, pre-PR branches, and hidden tests belong to the OpenAI PR evaluation; treating
+    them as training data or as the destructive-action RL reward would cross an unsupported train/eval boundary.
+  - Product sandboxing, network controls, deployment monitoring, and Preparedness classifications are safety/deployment evidence
+    and must not be attributed to post-training data or reward design.
+  - The report's general long-horizon/context-compaction claim does not establish the turn length, token length, or horizon
+    of the conflicting-edit RL trajectories.
+  - Most internal evaluations do not release prompts, repository states, tests, raw rollouts, graders, complete task membership,
+    or uncertainty, preventing independent reproduction and overlap auditing.
+  - Benchmark and safety scores reflect model, scaffold, inference budget, grader, and deployment choices; they do not establish
+    training-data quality or isolate the causal effect of the disclosed RL intervention.
+  - No global source-license ledger, train/evaluation decontamination, reward-hacking audit, or item-level checkpoint lineage
+    is supplied.
+  citation_status: verified
+  confidence: high
+  notes: The complete official Deployment Safety Hub card and 22-page PDF were read directly on 2026-07-24. This Track 12
+    entry preserves the boundary among the narrow destructive-action RL disclosure, internal evaluation objects, product safeguards,
+    and capability results. It does not infer RLVR, an open data release, or a reproducible training recipe from hidden unit
+    tests or benchmark outcomes.
+inclusion_reason: A frontier coding-agent system-card addendum that explicitly discloses an RL rollout intervention in which
+  a user model makes conflicting edits and preservation earns positive reinforcement, while also documenting executable internal
+  PR evaluation episodes and leaving the task corpus, reward implementation, split, license, and record-level lineage hidden.
+related:
+- gpt-5-system-card-2025
+- openai-gpt-5-1-codex-max-system-card-2025
+- openai-gpt-5-3-codex-system-card-2026
+tags:
+- openai
+- gpt-5-2-codex
+- system-card
+- coding-agent
+- context-compaction
+- destructive-action
+- conflicting-edits
+- reinforcement-learning
+- hidden-unit-tests
+- internal-pr-evaluation
+- safety-training
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: The GPT-5.2-Codex addendum discloses RL rollouts where a user model makes conflicting edits and preserving
+  them earns positive reinforcement, while separately documenting internal PR evaluations with human-written prompts/tests/hints
+  and hidden unit tests but withholding the underlying training records and reward implementation.
+why_it_matters: It is a high-value frontier disclosure ledger because it exposes one concrete state-changing coding-agent
+  RL intervention and multiple executable evaluation contracts while making the train/eval boundary, missing lineage, and
+  non-reproducibility explicit.
+card: null
+needs:
+- 'needs_data: destructive-action task and repository sources, prompts, user-model edits, complete successful and failed trajectories,
+  retained-record schema, counts, versions, provenance, rights, and splits'
+- 'needs_verifier: edit-preservation detector or grader, reward function and magnitude, aggregation, weights, calibration,
+  thresholds, false-positive/negative audits, and interaction with other objectives'
+- 'needs_metadata: user-model identity, conflict-generation policy, RL algorithm, optimizer, sampling, rollout budget and
+  length, temperature, filtering, schedules, checkpoints, compute, and compaction configuration'
+- 'needs_audit: global train/evaluation membership, OpenAI PR and benchmark overlap, code-repository decontamination, memorization,
+  reward hacking, grader gaming, scaffold attribution, and reproducibility'
+- 'needs_license: source-level rights and explicit reuse terms for training tasks, repositories, trajectories, internal PR
+  prompts/tests/hints, hidden unit tests, graders, and model checkpoints'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title and ID deduplication against the target V2 Card library found no match. The official Deployment Safety
+    Hub HTML and linked 22-page PDF were verified; no arXiv, DOI, code, data, model-weight, venue record, or official BibTeX
+    artifact is claimed.

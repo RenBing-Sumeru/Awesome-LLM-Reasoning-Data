@@ -1,0 +1,141 @@
+id: rl-large-reasoning-models-survey-2025
+title: A Survey of Reinforcement Learning for Large Reasoning Models
+year: 2025
+venue: arXiv preprint
+authors:
+- Kaiyan Zhang
+- Yuxin Zuo
+- Bingxiang He
+- Youbang Sun
+- Runze Liu
+- Che Jiang
+- Yuchen Fan
+- Kai Tian
+- Guoli Jia
+- Pengfei Li
+- Yu Fu
+- Xingtai Lv
+- Yuchen Zhang
+- Sihang Zeng
+- Shang Qu
+- Haozhan Li
+- Shijie Wang
+- Yuru Wang
+- Xinwei Long
+- Fangfu Liu
+- Xiang Xu
+- Jiaze Ma
+- Xuekai Zhu
+- Ermo Hua
+- Yihao Liu
+- Zonglin Li
+- Huayu Chen
+- Xiaoye Qu
+- Yafu Li
+- Weize Chen
+- Zhenzhao Yuan
+- Junqi Gao
+- Dong Li
+- Zhiyuan Ma
+- Ganqu Cui
+- Zhiyuan Liu
+- Biqing Qi
+- Ning Ding
+- Bowen Zhou
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- reinforcement-learning
+- reasoning-data
+- reward-models
+- verifiers
+training_use:
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2509.08827
+  arxiv: https://arxiv.org/abs/2509.08827
+  code: https://github.com/TsinghuaC3I/Awesome-RL-for-LRMs
+  data: null
+  project: https://github.com/TsinghuaC3I/Awesome-RL-for-LRMs
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.08827
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning tasks, reward signals, training data, and RL trajectories.
+  trace_author: Primary studies covered by the survey; no new dataset is released.
+  answer_format: A review of RL foundations, training resources, scaling problems, and applications for reasoning models.
+  process_fields:
+  - prompt
+  - rollout
+  - reward or verifier
+  - optimization rule
+  - reasoning trace
+  - evaluation task
+  environment_or_substrate: Reinforcement-learning post-training of language and reasoning models.
+  verifier_or_reward: Reviews rule-based and model-based rewards, verifiers, and feedback sources.
+  terminal_predicate: Task-specific reward or verification outcome in the primary studies.
+recipe_metadata:
+  base_model: No single model; a literature survey.
+  teacher: Reviewed work uses human, model, and programmatic feedback.
+  generator: Literature synthesis and research taxonomy.
+  filtering_rule: Covers RL foundations, core problems, training resources, and downstream applications after DeepSeek-R1.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes PPO, GRPO, and related RL designs rather than a new optimizer.
+audit:
+  source_mixture: Official arXiv record and TsinghuaC3I resource repository.
+  split: Not applicable to a survey.
+  decontamination: No uniform conclusion for reviewed training data or benchmarks.
+  license: Check primary resources before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2509.08827'
+  known_failure_modes:
+  - Reward and verifier errors can misdirect learning
+  - Results depend on rollout budget and training-data construction
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly includes foundational components, core problems, training resources, and downstream
+    applications.
+inclusion_reason: A 2025 TsinghuaC3I survey directly connecting reasoning data, rewards, verifiers, RL post-training, and
+  large reasoning models.
+related: []
+tags:
+- foundations-and-primers
+- reinforcement-learning
+- reasoning-data
+- tginghua
+- survey
+why_it_matters: It makes reward construction, rollouts, optimization, and evaluation visible as separate data decisions.
+one_line_summary: A TsinghuaC3I survey of the reinforcement-learning machinery that turns language models into reasoning models.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers selecting reasoning training data, verifier signals, or RL post-training designs.
+confidence: high
+status: verified
+needs:
+- 'unknown: shared comparisons across rewards, verifiers, rollout budgets, and RL algorithms'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv title, abstract, and TsinghuaC3I repository were checked.
+category_ids:
+- foundations_and_primers

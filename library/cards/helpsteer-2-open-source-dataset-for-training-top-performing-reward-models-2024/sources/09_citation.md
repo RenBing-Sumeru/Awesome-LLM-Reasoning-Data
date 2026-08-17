@@ -1,0 +1,1 @@
+Wang et al. (2024), “HelpSteer 2: Open-source dataset for training top-performing reward models,” arXiv:2406.08673. Paper: https://arxiv.org/abs/2406.08673. Data: https://huggingface.co/datasets/nvidia/HelpSteer2. Code: https://github.com/NVIDIA/NeMo-Aligner.

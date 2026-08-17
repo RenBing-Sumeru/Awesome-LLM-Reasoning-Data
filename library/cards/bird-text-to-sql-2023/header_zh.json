@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BIRD 用 12,751 个 text-to-SQL pairs、95 个大数据库和约 33.4GB 内容扩展 database-grounded 评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要大数据库 text-to-SQL、execution accuracy 和 valid-efficiency scorer 审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jinyang Li 等（The University of Hong Kong, Alibaba Group）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:52:20Z"
+}

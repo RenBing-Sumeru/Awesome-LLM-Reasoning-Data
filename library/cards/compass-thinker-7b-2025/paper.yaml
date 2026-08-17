@@ -1,0 +1,131 @@
+id: compass-thinker-7b-2025
+title: Compass-Thinker-7B Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Anxiang Zeng
+- Haibo Zhang
+- Kaixiang Mo
+- Long Zhang
+- Shuman Liu
+- Yanhui Huang
+- Yawen Liu
+- Yuepeng Sheng
+- Yuwei Huang
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+training_use:
+- rlvr
+construction_layer:
+- frontier_pipeline
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2508.08909
+  arxiv: https://arxiv.org/abs/2508.08909
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2508.08909
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A 30K-prompt mixture collected from multiple open-source mathematics datasets, explicitly including NuminaMATH;
+    the complete source inventory and proportions are undisclosed.
+  trace_author: The current policy samples a group of responses for each prompt during online RL.
+  answer_format: Mathematical reasoning response ending in a predicted answer; exact extraction and normalization syntax are
+    undisclosed.
+  process_fields:
+  - prompt
+  - verifiable_ground_truth
+  - sampled_response_group
+  - binary_correctness_reward
+  - difficulty_level
+  environment_or_substrate: A custom mathematical verification program developed after the authors found performance problems
+    and bugs in Math-Verify.
+  verifier_or_reward: Rule-based comparison of the predicted final answer with verifiable ground truth, producing an outcome
+    reward; the exact equivalence and parser implementation is unreleased.
+  terminal_predicate: The custom verifier recognizes the response and judges its final answer correct against the ground truth.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B
+  teacher: Llama-8B is used to grade previously ungraded prompts into difficulty levels 1–5; the exact checkpoint is undisclosed.
+  generator: The current policy model generates online RL response groups.
+  filtering_rule: Require verifiable ground truth; remove prompts containing inaccessible web or image links; use the custom
+    verifier to remove unrecognized or failed-verification data; during dynamic sampling discard response groups with accuracy
+    0 or 1.
+  sampling_protocol: Group sampling under the old policy with temperature 1.0 and top-p 1.0; response-group size is undisclosed.
+    Difficulty levels 1–5 are assigned from Llama-8B accuracy percentiles and different stage distributions are used for curriculum
+    RL.
+  rollout_count: null
+  temperature: 1.0
+  inference_budget: Maximum sequence length 4096 tokens.
+  optimizer_or_scaffold: verl implementation of a GRPO variant with no KL loss, dynamic sampling, and a higher upper clipping
+    bound; training batch 128, actor minibatch 32, 16 gradient updates per iteration, and learning rate 1e-6.
+audit:
+  source_mixture: 30K verifiable mathematics prompts from multiple open-source datasets, including NuminaMATH; full source
+    list, counts, mixture weights, and rights are not disclosed.
+  split: unknown
+  decontamination: unknown
+  license: The arXiv manuscript is available under its arXiv-displayed license, but no license is verified for the unreleased
+    training mixture, model, verifier, or code.
+  lineage: Open-source math prompts are cleaned, checked by a custom verifier, graded into five Llama-8B accuracy-percentile
+    levels, arranged into stage-specific difficulty distributions, and used for online GRPO from Qwen2.5-Math-7B. Item-level
+    lineage and stage assignments are unavailable.
+  known_failure_modes:
+  - The custom verifier is central to both filtering and reward but its parser, equivalence rules, code, and error rate are
+    not released.
+  - Llama-8B difficulty labels depend on an unspecified checkpoint and sampling procedure, so the five-level curriculum cannot
+    be reconstructed exactly.
+  - The group size, clipping bounds, per-stage mixtures, stage duration, split, and decontamination procedure are undisclosed.
+  - AIME 2024 accuracy demonstrates model performance but does not establish corpus provenance, verifier robustness, or recipe
+    reproducibility.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v2 checked on 2026-07-17; no official model, code, verifier, or dataset release was verified.
+inclusion_reason: A compact-model RLVR report with concrete base model, 30K-prompt construction, five-level difficulty labeling,
+  custom mathematical verification, GRPO modifications, and training hyperparameters, but no released artifacts.
+related: []
+tags:
+- frontier-report
+- construction-recipe
+- qwen2-5-math-7b
+- mathematics
+- rlvr
+- grpo
+- rule-based-reward
+- curriculum-learning
+- custom-verifier
+status: verified
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- programmatically_verifiable_outcome_data
+one_line_summary: Compass-Thinker-7B applies a no-KL, dynamically sampled GRPO variant to Qwen2.5-Math-7B using 30K verified
+  math prompts graded into five Llama-8B difficulty levels and checked by a custom final-answer verifier.
+why_it_matters: It exposes a concrete low-cost RLVR recipe and curriculum interface while illustrating how an unreleased verifier
+  and incomplete source lineage can remain the main reproducibility bottlenecks.
+card: null
+needs:
+- 'needs_url: official model, data, verifier, code, and project releases'
+- 'needs_metadata: full source mixture, Llama-8B checkpoint, grading sample count, group size, clip bounds, stage assignments,
+  and stage durations'
+- 'needs_audit: licenses, splits, decontamination, item lineage, and verifier error analysis'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper identity and detailed recipe are verified from arXiv v2; no non-paper release is verified.

@@ -1,0 +1,9 @@
+本卡以官方NeurIPS 2025/OpenReview条目、arXiv v4论文、MiniMax-AI GitHub仓库和MiniMaxAI Hugging Face数据集为主要来源。该论文以NeurIPS 2025 poster形式接收,arXiv编号为2505.19641,公开仓库明确标为官方实现。
+
+可验证奖励强化学习长期集中于数学与代码,因为这些领域可使用答案检查器、单元测试和相对直接的二元结果。SynLogic处理的是更具体的构造缺口:如何建立一个数量与难度可控、且最终答案可由任务专用规则检查的广泛逻辑推理提示池。该工作并未声称一个通用verifier可以覆盖所有逻辑任务,而是为Sudoku、Cryptarithm、Dyck Language、ARC-AGI、Zebra Puzzle等任务分别人工编码生成器、parser、约束和verifier。
+
+公开数据对象是可交给verifier的提示记录,不是完成后的示范。Hugging Face提供Easy与Hard两种配置,字段包括任务身份、单条user-role提示message、能力标签、reward-model字段,以及`extra_info.game_data_str`中的序列化任务状态。RL期间,policy对每个提示在线生成16个回答;这些被接受和拒绝的回答、奖励结果与训练步骤决策均未发布。因此,公开对象支持重新运行verifier和开展新的RL,但不能还原论文的精确rollout语料。
+
+配置身份属于判断边界。SynLogic-Hard覆盖全部35项任务。SynLogic-Easy移除了8项在降低难度后仍保持7B训练准确率为零的任务,因此只覆盖27项。当前发布含15,837条Easy训练记录与270条验证记录,以及32,840条Hard训练记录与350条验证记录。"SynLogic有35项任务"描述的是框架和Hard配置,不是Easy训练表面。
+
+该工作同时适合`programmatically_verifiable_outcome_data`与`data_construction_open_release_recipes`:它发布规则检查的答案记录和可执行构造/奖励接口。其L4价值来自明确的数据对象、任务专用反馈契约、难度校准、优化设置与发布审计。Benchmark增益可以说明该配方值得研究,但不能认证逐记录质量、verifier可靠性、来源谱系或去污染安全。

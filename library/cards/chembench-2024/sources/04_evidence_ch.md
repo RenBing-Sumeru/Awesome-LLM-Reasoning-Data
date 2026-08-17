@@ -1,0 +1,1 @@
+arXiv 摘要报告了 2,700+ 个 curated question-answer pairs、对主流开源和闭源 LLM 的评测，以及“最佳模型在该研究中平均超过最佳人类化学家”的发现。同一来源也强调模型在某些基础任务上仍会失败，并给出过度自信预测，这是最重要的审计信号。官方 GitHub README 验证了可复用路径：`ChemBenchmark.from_huggingface`、模型 `PrompterBuilder`、`benchmark.bench` 和 `save_topic_reports`。逐样本证据是被官方 metric 评分的回答，而不是“superhuman”这个总体标签。

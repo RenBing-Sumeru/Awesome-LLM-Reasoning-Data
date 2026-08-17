@@ -1,0 +1,3 @@
+Use TheoremQA as an evaluation surface for theorem application rather than theorem proving. It is valuable when comparing whether models can map a problem to the relevant theorem and compute the resulting answer across multiple technical domains.
+
+A reusable record should preserve question ID, domain, associated theorem, answer type, reference answer, optional diagram, prompt, tool policy, model output, extracted final answer, evaluator version, and correctness. Keep theorem-use QA separate from formal proof generation and from process-supervision data; the benchmark supplies answer-level feedback, not step labels.

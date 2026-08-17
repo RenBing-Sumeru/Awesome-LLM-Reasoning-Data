@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VeriContest 为 946 道竞赛编程题配套 Rust 代码、Verus 规格与证明以及正负测试，用于评测端到端可验证代码生成。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rust/Verus 形式化可验证代码生成 benchmark",
+  "best_for_ch": "需要 Verus 证明、规格生成或可验证程序合成评测数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zichen Xie, Mrigank Pawagi, Yuxin Liu, Aaditi Rai, Lize Shao, John Berberian Jr., Sicong Che, Wenxi Wang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T12:36:23Z"
+}

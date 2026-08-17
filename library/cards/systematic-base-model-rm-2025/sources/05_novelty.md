@@ -1,0 +1,1 @@
+Common practice fixes a popular base, often Llama-3.x, then compares RM recipes. This paper makes base identity the controlled variable, measures top-k coverage rather than correlation alone, and separates training-stage effects. Its novelty is the audit of variables that can alter RM conclusions, not a new preference loss or regressor.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepResearch-9K 提供按搜索深度分级的 9,000 个深度研究问题、可验证答案及带推理链的多轮检索轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "深度研究智能体的分级检索轨迹、答案验证与训练框架论文",
+  "best_for_ch": "需要长程搜索、证据整合与难度可控过程轨迹来训练或评测深度研究智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tongzhou Wu, Yuhao Wang, Xinyu Ma, Xiuqiang He, Shuaiqiang Wang, Dawei Yin, Xiangyu Zhao",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

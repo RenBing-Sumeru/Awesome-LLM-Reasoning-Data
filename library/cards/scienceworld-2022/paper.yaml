@@ -1,0 +1,114 @@
+id: scienceworld-2022
+title: 'ScienceWorld: Is your Agent Smarter than a 5th Grader?'
+year: 2022
+venue: EMNLP 2022 main proceedings / arXiv
+authors:
+- Ruoyao Wang
+- Peter Jansen
+- Marc-Alexandre Côté
+- Prithviraj Ammanabrolu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- text-game-environments
+- science-tasks
+- embodied-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2203.07540
+  arxiv: https://arxiv.org/abs/2203.07540
+  doi: https://doi.org/10.18653/v1/2022.emnlp-main.775
+  code: https://github.com/allenai/ScienceWorld
+  data: https://github.com/allenai/ScienceWorld
+  project: https://sciworld.apps.allenai.org
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2022.emnlp-main.775/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ScienceWorld paper, ACL entry, GitHub repository, and demo/project
+  trace_author: ScienceWorld authors and simulator/task construction
+  answer_format: science tasks, text-game states, actions, gold paths, simulator code, and task scores
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: interactive science text-game environments for agents
+  verifier_or_reward: ScienceWorld simulator predicates, task scoring, and gold-path checks
+  terminal_predicate: ScienceWorld simulator predicates, task scoring, and gold-path checks
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: science curriculum tasks, simulator rules, and gold paths
+  generator: ScienceWorld environment and benchmark task design
+  filtering_rule: pin package/repo version, Java/Scala/Python environment, and preset differences
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2203.07540; https://aclanthology.org/2022.emnlp-main.775/; https://github.com/allenai/ScienceWorld;
+    https://sciworld.apps.allenai.org
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2203.07540'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: pin package/repo version and Java/Scala/Python environment; compare paper easy preset with current README warning
+inclusion_reason: it is a canonical interactive environment with state, action, and task-score feedback
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- text-game-environments
+- science-tasks
+- embodied-agents
+one_line: ScienceWorld provides an interactive science environment for language agents.
+why_it_matters: it is a canonical interactive environment with state, action, and task-score feedback
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ScienceWorld provides an interactive science environment for language agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms EMNLP 2022 status, University of Arizona/Microsoft Research Montréal/AI2 affiliations,
+    and public simulator repository.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 125
+  primary_category_id: environment_agent_trajectory_data

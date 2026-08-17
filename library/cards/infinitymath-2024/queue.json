@@ -1,0 +1,18 @@
+{
+  "title": "InfinityMath: A Scalable Instruction Tuning Dataset in Programmatic Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://dl.acm.org/doi/10.1145/3627673.3679122",
+    "data": "https://huggingface.co/datasets/BAAI/InfinityMATH",
+    "code": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:52:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "code增强的math reasoning数据",
+    "updated_at": "2026-07-14T13:52:19Z"
+  }
+}

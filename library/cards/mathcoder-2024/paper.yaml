@@ -1,0 +1,158 @@
+id: mathcoder-2024
+title: 'MathCoder: Seamless Code Integration in LLMs for Enhanced Mathematical Reasoning'
+year: 2024
+venue: ICLR 2024
+authors:
+- Ke Wang
+- Houxing Ren
+- Aojun Zhou
+- Zimu Lu
+- Sichun Luo
+- Weikang Shi
+- Renrui Zhang
+- Linqi Song
+- Mingjie Zhan
+- Hongsheng Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- reasoning-data
+- mathematics
+- code
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=z8TW0ttBPp
+  arxiv: https://arxiv.org/abs/2310.03731
+  venue: https://openreview.net/forum?id=z8TW0ttBPp
+  code: https://github.com/mathllm/MathCoder
+  data: https://huggingface.co/datasets/MathLLMs/MathCodeInstruct
+  project: https://github.com/mathllm/MathCoder
+  huggingface: https://huggingface.co/datasets/MathLLMs/MathCodeInstruct
+  doi: null
+  openreview: https://openreview.net/forum?id=z8TW0ttBPp
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://openreview.net/forum?id=z8TW0ttBPp
+data_object:
+  prompt_source: GSM8K and MATH training problems seed the first stage; GPT-4 also interpolates new problems whose difficulty
+    should fall between paired GSM8K and MATH examples.
+  trace_author: GPT-4 writes the 49k seed LCE solutions, while a CodeLlama-34B MathCoder-Initial model writes three candidate
+    LCE solutions for each interpolated problem.
+  answer_format: A system instruction and user math problem followed by assistant content blocks that interleave natural-language
+    reasoning, Python code, execution output, continued reasoning, and a final answer.
+  process_fields:
+  - messages.role
+  - messages.content.type
+  - messages.content.content
+  environment_or_substrate: Python execution in a persistent Jupyter Notebook provides results that are appended between reasoning
+    blocks; the public release serializes the resulting trajectory as nested JSON messages.
+  verifier_or_reward: Seed solutions must end in the GSM8K or MATH ground-truth answer. Interpolated problems retain solutions
+    only when three MathCoder-Initial generations agree on the answer; GPT-4 separately judges relative problem difficulty.
+  terminal_predicate: Finish when the LCE sequence reaches a final answer after at most 32 generated blocks; retain seed traces
+    on ground-truth answer match and interpolated traces on three-answer agreement.
+recipe_metadata:
+  base_model: Llama-2 7B/13B/70B and CodeLlama 7B/13B/34B are the reported SFT consumers.
+  teacher: GPT-4 authors seed LCE traces and interpolated questions; MathCoder-Initial, obtained by fine-tuning CodeLlama-34B
+    on seed traces, authors interpolated-question solutions.
+  generator: Generate LCE blocks in the order natural-language reasoning, Python code when needed, execution output, and continued
+    reasoning; special tokens identify text, code, execution, block end, and message end.
+  filtering_rule: Require seed final answers to match source ground truth; for questions without ground truth, generate three
+    solutions and keep only groups whose final answers all agree.
+  sampling_protocol: Build 49k GPT-4-annotated GSM8K/MATH records, then add 31k self-distilled records from GPT-4-interpolated
+    questions for a reported 80k-record mixture.
+  rollout_count: 80000
+  temperature: null
+  inference_budget: At most 32 LCE blocks and 512 new tokens per block are reported for model inference; GPT-4 sampling temperature,
+    generation retries, total tokens, and construction cost are not disclosed.
+  optimizer_or_scaffold: Fine-tune for three epochs with learning rate 2e-5, context length 2048, batch size 128, cosine scheduling,
+    50 warmup steps, DeepSpeed ZeRO-3, flash attention, and 8 to 32 A800-80GB GPUs depending on model size.
+audit:
+  source_mixture: The reported mixture contains 49k ground-truth-filtered GPT-4 LCE solutions for GSM8K and MATH training
+    problems plus 31k answer-consistent MathCoder-Initial LCE solutions for GPT-4-interpolated problems.
+  split: The public non-gated release exposes one `train_80k.jsonl` file. Hugging Face metadata reports about 243.4 MB of
+    stored data; a checked 256 KiB range contained 82 complete JSONL records with nested system, user, and assistant messages.
+  decontamination: The paper uses official GSM8K/MATH training splits and evaluates out of domain, but reports no semantic
+    deduplication or explicit train-test contamination scan for interpolated questions.
+  license: The MathCodeInstruct dataset and MathCoder code repository declare Apache-2.0. Records do not expose per-item source
+    or interpolation provenance, so downstream redistribution still requires reviewing GSM8K, MATH, and generated-data terms.
+  lineage: 'instruction / demonstration / rationale data; closest comparisons: MAmmoTH/MathInstruct, WizardMath, RFT, Program-of-Thoughts,
+    PAL, and GPT-4 Code Interpreter trajectories.'
+  known_failure_modes:
+  - Three generated answers can agree on the same wrong result, so self-consistency is weaker than ground-truth or formal
+    verification.
+  - Public records contain executable Python and must be sandboxed; serialized execution outputs are evidence from construction,
+    not a guarantee that reruns remain deterministic or safe.
+  - The public schema omits per-record source, seed/interpolation label, teacher identity, and filter outcome, limiting mixture
+    and provenance audits.
+  citation_status: verified
+  confidence: high
+  notes: Official OpenReview forum z8TW0ttBPp and the author repository confirm ICLR 2024 acceptance. The paper PDF, affiliation
+    block, 49k/31k construction stages, LCE special-token contract, filtering rules, ablations, Apache-2.0 repository, public
+    dataset metadata, 256 KiB of the actual JSONL file, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: MathCoder centrally constructs and releases step-level mathematical trajectories in which reasoning, executable
+  code, execution feedback, and continued reasoning form one supervised target.
+related:
+- mammoth-mathinstruct-2024
+tags:
+- instruction-demonstration-rationale
+- mathematical-reasoning
+- code-execution
+- self-distillation
+- arxiv-2310.03731
+- primary-link-checked
+status: verified
+one_line_summary: MathCoder turns math problems into open trajectories that alternate reasoning, executable Python, execution
+  feedback, and continued reasoning, then trains models to consume that contract.
+why_it_matters: It makes execution feedback a serialized post-training data object and tests which gains come from interpolated
+  problems, live execution, and loss placement.
+reading_priority: must read
+paper_type: executable mathematical reasoning-data construction study
+best_for: Readers building tool-interleaved math SFT data or auditing code execution, self-consistency, and trajectory provenance.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: ICLR acceptance, official paper, dataset file and license, real nested trajectory records, code license, construction
+    counts, filters, and consumer experiments checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: executable mathematical reasoning trajectories
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block confirms the Chinese University of Hong Kong MMLab, Shanghai Artificial Intelligence
+      Laboratory, and City University of Hong Kong, established institutions with sustained machine-learning and mathematical-reasoning
+      research.
+    venue: The official OpenReview forum and author repository identify the work as accepted to ICLR 2024; no official oral,
+      spotlight, or award distinction was found.
+    impact: On 2026-07-14 the official repository reported 339 stars and 26 forks, MathCodeInstruct reported 6,293 downloads
+      and 25 likes, and OpenAlex reported 4 citations, jointly clearing the 2024 impact threshold without relying on author
+      claims alone.
+    artifact: The authors publish a non-gated Apache-2.0 80k JSONL dataset with real text/code/execution records, Apache-2.0
+      training and evaluation code, model outputs, and six consumer checkpoints.
+  selection_eligible: true
+  year_impact_threshold: 3

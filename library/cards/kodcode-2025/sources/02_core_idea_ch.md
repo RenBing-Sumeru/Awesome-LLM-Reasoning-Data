@@ -1,0 +1,5 @@
+KodCode 把编程示范写成带生成试验、覆盖率、难度和 lineage 的问题、答案、测试记录，再为 SFT 加入经测试验收的 DeepSeek-R1 推理回答。GPT-4o 最多重新生成十组答案与测试，使高难问题不会因首次失败就被删除；程序执行和 100% 分支覆盖决定是否接受。因此本 Card 属于指令、示范与理由数据，虽然相同测试也可用于 RLVR。
+
+Google Scholar 引用数：89（查询于 2026-07-27；https://scholar.google.com/scholar_lookup?title=KodCode%3A+A+Diverse%2C+Challenging%2C+and+Verifiable+Synthetic+Dataset+for+Coding&author=Zhangchen+Xu&hl=en）
+
+开源数据：有。数据集名称：KodCode-V1 与 KodCode-V1-SFT-R1。官方地址：https://huggingface.co/datasets/KodCode/KodCode-V1 和 https://huggingface.co/datasets/KodCode/KodCode-V1-SFT-R1。规模：论文 V1 有 447K 条三元组；当前 V1.1 公开 484,097 条 train 与 3,335 条 caution，R1-SFT 公开 268,211 条已验证 train、210,787 条 incorrect 与 4,439 条 caution。记录形式：版本、style、subset、问题 ID、问题、标准答案、测试与函数元数据、GPT 试验/通过/难度字段、R1 试验/通过/答案字段、对话、lineage 元数据、benchmark 相似度与 caution 原因。文件/存储格式：分片 Parquet。领域/语言：英文 Python 任务，覆盖十二类从基础函数到竞赛编程与包文档的内容。构造与筛选：多种 generator 写题，GPT-4o 写答案和测试，pytest/stdio 执行与分支覆盖验收，测试再拒绝失败的 R1 回答。许可/访问限制：公开且无需审批，采用 CC BY-NC 4.0；代码为 Apache-2.0，上游 seed 条款仍需复核。预期用途：SFT 与以测试为 reward 的 RL。

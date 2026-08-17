@@ -1,0 +1,110 @@
+id: gateau-long-context-selection-2025
+title: 'GATEAU: Selecting Influential Samples for Long Context Alignment'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Shuzheng Si
+- Haozhe Zhao
+- Gang Chen
+- Yunshui Li
+- Kangyang Luo
+- Chuancheng Lv
+- Kaikai An
+- Fanchao Qi
+- Baobao Chang
+- Maosong Sun
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- long-context
+- instruction-tuning
+- reasoning
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.375/
+  arxiv: https://arxiv.org/abs/2410.15633
+  venue: https://aclanthology.org/2025.emnlp-main.375/
+  code: https://github.com/S1s-Z/GATEAU
+  data: https://github.com/S1s-Z/GATEAU
+  project: https://github.com/S1s-Z/GATEAU
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.375
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.375/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LongAlign 10K synthetic long instruction-following examples; ShareGPT is mixed for short instruction behavior.
+  trace_author: LongAlign uses long documents from nine sources and Claude 2.1 generated answers.
+  answer_format: Long context, instruction, reference response, HMG score, CAM score, and final selection score.
+  process_fields:
+  - context
+  - instruction
+  - response
+  - homologous_perplexity_gap
+  - segment_importance
+  - attention_score
+  - selection_score
+  environment_or_substrate: Long-context supervised fine-tuning.
+  verifier_or_reward: LongBench, LongBench-Chat, and GPT-4 MT-Bench evaluation.
+  terminal_predicate: Selected long subset improves long-context instruction following and understanding.
+recipe_metadata:
+  base_model: LLaMA-2-7B-base-4K/64K homologous pair; final LLaMA-2-7B-base-64K, plus 13B and other-scale analyses.
+  teacher: Homologous context-window models and long-context attention measurements.
+  generator: HMG plus CAM ranking of existing synthetic long samples.
+  filtering_rule: Select top 10%, 30%, or 50% by weighted normalized HMG and CAM score.
+  sampling_protocol: Segment length 128 for CAM; selected long data mixed with ShareGPT short instructions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Selection requires two long-context scoring procedures; reported HMG/CAM selection times are 64 and 48
+    GPU hours.
+  optimizer_or_scaffold: Supervised fine-tuning.
+audit:
+  source_mixture: LongAlign synthetic long data plus ShareGPT short instructions.
+  split: LongBench, LongBench-Chat, and MT-Bench in real-world and limited-short-data settings.
+  decontamination: No dedicated contamination audit claimed; inspect LongAlign source documents and benchmarks.
+  license: Verify official repository, LongAlign, ShareGPT, source documents, and model terms before reuse.
+  lineage: 'Primary sources: https://aclanthology.org/2025.emnlp-main.375/; https://github.com/S1s-Z/GATEAU'
+  known_failure_modes:
+  - Requires homologous short- and long-window checkpoints.
+  - Attention measurement and long scoring are costly.
+  - Central source pool is synthetic LongAlign.
+  - Selected ratio and mixture quality are sensitive.
+  citation_status: verified
+  confidence: high
+  notes: Full EMNLP paper, affiliations, method, experiments, limitations, and official code/data repository link checked
+    on 2026-07-16.
+inclusion_reason: It selects the long instruction-response records consumed by SFT according to evidence of long-range dependency
+  use.
+related: []
+tags:
+- long-context
+- data-selection
+- sft
+- attention
+status: verified
+one_line_summary: GATEAU selects long SFT records using context-window perplexity gaps and attention-relevance alignment.
+reading_priority: essential
+paper_type: Long-context instruction-data selection study
+best_for: Readers curating long instruction data that must teach genuine long-range dependency use.
+confidence: high
+why_it_matters: It turns long-range dependence into an explicit criterion for which records are admitted to long-context SFT.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP paper and repository declared in the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

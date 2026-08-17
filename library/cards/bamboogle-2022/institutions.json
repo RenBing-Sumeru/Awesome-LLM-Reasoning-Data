@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "University of Washington",
+    "MosaicML",
+    "Meta AI",
+    "Allen Institute for Artificial Intelligence"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-13T00:00:00Z",
+  "source_urls": [
+    "https://aclanthology.org/2023.findings-emnlp.378/",
+    "https://arxiv.org/abs/2210.03350",
+    "https://github.com/ofirpress/self-ask",
+    "https://ofir.io/The-Bamboogle-Dataset/",
+    "https://doi.org/10.48550/arXiv.2210.03350"
+  ],
+  "verification_note": "ACL Anthology/arXiv publication metadata and the official paper identify the author set and publication venue; institution names are kept in English. Exact per-author affiliation mapping should be verified before L6."
+}

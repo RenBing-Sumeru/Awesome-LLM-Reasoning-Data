@@ -1,0 +1,17 @@
+{
+  "title": "SrDetection: Self-Referential Leakage Detection for Code Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/volumes/2026.findings-acl/",
+    "data": "https://github.com/SMinL/SrDetectionCode"
+  },
+  "review_note": "已按 ACL 2026 原文完成双语精读卡片；用于代码基准泄漏审计。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "受控测试床显示其在灰盒和黑盒代码泄漏检测中稳定优于强基线，且公开实现可复核。",
+    "updated_at": "2026-07-20T03:30:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

@@ -1,0 +1,167 @@
+id: mathgenie-2024
+title: 'MathGenie: Generating Synthetic Data with Question Back-translation for Enhancing Mathematical Reasoning of LLMs'
+year: 2024
+venue: ACL 2024
+authors:
+- Zimu Lu
+- Aojun Zhou
+- Houxing Ren
+- Ke Wang
+- Weikang Shi
+- Junting Pan
+- Mingjie Zhan
+- Hongsheng Li
+source_role:
+- model_report
+- data_release
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- programmatic
+- environmental
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- grade-school-math
+- competition-math
+- code-execution
+training_use:
+- sft
+- distillation
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2024.acl-long.151/
+  arxiv: https://arxiv.org/abs/2402.16352
+  venue: https://aclanthology.org/2024.acl-long.151/
+  code: https://github.com/MathGenie/MathGenie
+  data: https://huggingface.co/datasets/MathGenie/MathGenieData
+  project: https://mathgenie.github.io/
+  huggingface: https://huggingface.co/datasets/MathGenie/MathGenieData
+  doi: https://doi.org/10.18653/v1/2024.acl-long.151
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.151/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.acl-long.151.bib
+data_object:
+  prompt_source: 15K human-annotated GSM8K and MATH question-solution pairs for augmentation, plus GPT-4 Code Interpreter
+    seeds for code-integrated solving and verification.
+  trace_author: GPT-4 Code Interpreter writes 81K seed code-integrated solutions and 30K verification rationales; Llama-2-70B
+    augmentation, back-translation, and solution-verification models create and select 170K new pairs.
+  answer_format: Nested messages contain system, user, and assistant roles; each content list carries typed text, code, and
+    execution items, ending with a natural-language or compact final answer.
+  process_fields:
+  - system and user text
+  - assistant natural-language reasoning
+  - executable code and recorded execution outputs
+  - terminal answer text
+  - verification rationale records in the same release
+  environment_or_substrate: Solution augmentation, solution-to-question back-translation, Python execution, answer-consistency
+    filtering, code-integrated self-verification, SFT, and five-benchmark evaluation.
+  verifier_or_reward: Mcode generates code-integrated verification rationales and labels candidate solutions correct or wrong
+    after an initial answer-consistency filter; retained labels are model judgments, not kernel proofs.
+  terminal_predicate: Reject a generated question when candidate solutions disagree on the answer, then retain only question-solution
+    pairs that Mcode verifies as correct with a code-integrated rationale.
+recipe_metadata:
+  base_model: Llama-2, CodeLlama, Llemma, Mistral, Mixtral, and InternLM2 consumers from 7B to 70B are full-fine-tuned on
+    MathGenieData.
+  teacher: GPT-4 Code Interpreter creates seed solutions and verification rationales; Llama-2-70B derivatives serve as solution
+    augmenter, question back-translator, solver, and verifier.
+  generator: Iteratively transform seed solutions, back-translate each augmented solution into a constrained question, generate
+    code-integrated solutions, and write verification rationales.
+  filtering_rule: Remove questions whose candidate solutions produce inconsistent answers, then discard solutions that Mcode's
+    code-integrated verification judges wrong.
+  sampling_protocol: Iterative solution augmentation unions outputs from successive rounds; final AugData contains 110K GSM8K-derived
+    and 60K MATH-derived pairs.
+  rollout_count: null
+  temperature: null
+  inference_budget: Several specialized 70B-model passes per augmented item, plus code execution and a verification-rationale
+    pass; the paper does not consolidate total generation cost.
+  optimizer_or_scaffold: AdamW full-parameter SFT, batch 64, cosine schedule, 50 warmup steps, context length 4,096; up to
+    32 A800 80GB GPUs for 34B and 70B consumers.
+audit:
+  source_mixture: 'Official release: 81K GPT-4 code-integrated solutions, 30K GPT-4 code-integrated verification rationales,
+    and 170K pipeline-augmented pairs, for about 281K records; AugData is 110K GSM8K-derived plus 60K MATH-derived.'
+  split: One anonymous, non-gated 810,337,193-byte JSONL file, `data/mathgenie_train.jsonl`, in the official Hugging Face
+    dataset.
+  decontamination: The paper uses GSM8K and MATH train data and tests on their held-out sets plus three external sets, but
+    reports no broad semantic overlap scan for back-translated questions.
+  license: Apache-2.0 on the official dataset and code repositories; GSM8K, MATH, OpenOrca, Alpaca-GPT4, GPT-4 outputs, and
+    base-model terms still require lineage-aware review.
+  lineage: seed solution -> iterative solution augmentation -> Llama-2 question back-translation -> candidate code-integrated
+    solution -> answer-consistency filter -> model-written verification rationale -> accept/reject judgment -> typed JSONL
+    demonstration -> SFT consumer.
+  known_failure_modes:
+  - The verifier's average precision is 82.6%, and MATH precision is 64.5%, so false-positive solutions remain possible.
+  - Executable Python and recorded outputs require sandboxing and replay before reuse.
+  - The public minimal messages schema does not expose source ID, augmentation round, generator revision, or verification
+    score per record.
+  citation_status: verified
+  confidence: high
+  notes: ACL main proceedings and DOI, full paper, official Apache-2.0 dataset and repository, non-gated file, anonymous byte-range
+    reads of actual records, nested typed schema, scale, ablations, OpenAlex citations, and current adoption checked on 2026-07-14.
+inclusion_reason: MathGenie releases reusable problem-solution and verification-rationale demonstrations and directly tests
+  solution-first back-translation, iterative augmentation, filtering, and scale.
+related:
+- mathcoder-2024
+- metamathqa-2024
+- mumath-2024
+tags:
+- instruction-demonstration-rationale
+- math-reasoning
+- question-back-translation
+- code-integrated-solutions
+- verification-rationales
+- arxiv-2402.16352
+- primary-link-checked
+status: verified
+one_line_summary: MathGenieData combines 81K code-integrated solutions, 30K verification rationales, and 170K back-translated
+  math pairs in typed execution-aware records.
+why_it_matters: It makes solution-first question synthesis and rationale-bearing quality filtering independently inspectable
+  in an openly readable math corpus.
+reading_priority: must read
+paper_type: solution-back-translation math dataset and verification-filtering study
+best_for: Researchers synthesizing math questions from solutions or auditing code-integrated demonstrations and model-written
+  verification rationales.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: ACL record, public JSONL actual records, schema, component counts, Apache-2.0 terms, code, construction contract,
+    consumers, controlled results, and impact checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-math
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: solution-first back-translated mathematical demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper lists CUHK's MMLab, Shanghai Artificial Intelligence Laboratory, and CPII under InnoHK.
+    venue: ACL Anthology records the work as an ACL 2024 main-conference long paper, DOI 10.18653/v1/2024.acl-long.151.
+    impact: OpenAlex work W4402684157 reported 13 citations on 2026-07-13; the official GitHub repository had 14 stars and
+      1 fork, and the official dataset had 33 downloads and 2 likes on 2026-07-14.
+    artifact: The official Apache-2.0 release provides a non-gated 810MB JSONL, anonymous actual records, code, project documentation,
+      models, exact component counts, and evaluation scripts.
+  selection_eligible: true
+  year_impact_threshold: 3

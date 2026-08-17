@@ -1,0 +1,17 @@
+{
+  "title": "OpenMobile: Building Open Mobile Agents with Task and Trajectory Synthesis",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2604.15093",
+    "data": "https://huggingface.co/datasets/cckevinn/OpenMobile-Data"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:41:57Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布移动任务、截图轨迹与错误恢复信号",
+    "updated_at": "2026-07-17T08:41:57Z"
+  }
+}

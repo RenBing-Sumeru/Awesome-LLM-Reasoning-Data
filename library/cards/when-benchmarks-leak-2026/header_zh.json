@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以参考模型引导的有界嵌入扰动，在不改题目或参数的前提下抑制污染捷径。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理时基准去污染与评测可靠性研究",
+  "best_for_ch": "需要在保留原始基准的前提下审计泄露分数与干净效用的研究者。",
+  "confidence_ch": "高：官方 ACL 原文、作者与机构已核验；未见官方代码或独立数据集发布。",
+  "authors_ch": "Chai Jianzhe, Yu Zhe, Jun Sakuma",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

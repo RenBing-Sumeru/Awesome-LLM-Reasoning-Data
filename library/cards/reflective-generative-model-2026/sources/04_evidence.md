@@ -1,0 +1,3 @@
+The paper evaluates 1.5B, 7B, and 32B variants on AIME, LiveCodeBench, and C-Eval, and reports that the reflective variants improve on their corresponding policy-only baselines. For the 32B model, the reported high-effort setting reaches 85.2 on AIME24 and 73.6 on AIME25, while the paper compares it with listed open and closed models.
+
+It also plots performance against total reasoning computation and reports diminishing improvement beyond much longer reasoning lengths. These are results from the authors’ training and evaluation setup; they do not independently verify the claimed comparison with every proprietary system or establish that outcome-derived step scores are correct on every trajectory.

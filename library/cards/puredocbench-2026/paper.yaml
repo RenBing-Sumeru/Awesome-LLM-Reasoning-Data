@@ -1,0 +1,129 @@
+id: puredocbench-2026
+title: 'How Far Is Document Parsing from Solved? PureDocBench: A Source-Traceable Benchmark across Clean, Degraded, and Real-World
+  Settings'
+year: 2026
+venue: arXiv preprint
+authors:
+- Zhiheng Li
+- Zongyang Ma
+- Jiaxian Chen
+- Jianing Zhang
+- Zhaolong Su
+- Yutong Zhang
+- Zhiyin Yu
+- Ruiqi Liu
+- Xiaolei Lv
+- Bo Li
+- Jun Gao
+- Ziqi Zhang
+- Chunfeng Yuan
+- Bing Li
+- Weiming Hu
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- document-benchmark-audit
+- benchmark-quality-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.07492
+  arxiv: https://arxiv.org/abs/2605.07492
+  doi: https://doi.org/10.48550/arXiv.2605.07492
+  code: https://github.com/zhihengli-casia/puredocbench
+  data: https://huggingface.co/datasets/zhihengli-casia/puredocbench
+  project: https://zhihengli-casia.github.io/PureDocBench/review/gt_case_compare_all_fixed7/index.html?cb=puredocbench_2026_06_14_clean_ui
+  huggingface: https://huggingface.co/datasets/zhihengli-casia/puredocbench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors generate or curate HTML/CSS document sources, render them into clean images, and derive
+    GT annotations from the same structured source before applying digital and real-degradation tracks.
+  trace_author: Official PureDocBench authors and maintainers; accepted GT correction patches are visually checked against
+    the clean image and source HTML before release updates.
+  answer_format: document-page parsing record with source-traceable HTML/CSS, rendered image track, GT text/formula/table/layout
+    and reading-order structures, model prediction, and metric outputs.
+  dataset_scale: 1,475 official pages, 4,425 official images, 10 top-level domains, 66 fine-grained subcategories, and three
+    image tracks named clean, digital-degraded, and real-degraded.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: document parsing over clean rendered pages, digitally degraded images, and real-degraded images.
+  verifier_or_reward: official scoring CLI compares predictions with GT structures using TextEdit, FormulaCDM, TableTEDS,
+    ROEdit, per-track Overall, and Avg3 across clean, digital-degraded, and real-degraded tracks.
+  terminal_predicate: a system succeeds only relative to the official GT, manifest, track, prediction export format, and metric
+    implementation; aggregate scores do not certify semantic correctness outside those structures.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: HTML/CSS source structures and official GT extraction supply labels; GT review patches are accepted only after
+    visual/source verification by maintainers.
+  generator: Official pipeline renders source HTML/CSS to images, applies degradation profiles, validates release manifests,
+    and packages image/GT/source artifacts on Hugging Face.
+  filtering_rule: Use source-traceable GT, release manifest validation, SHA256 archive checks, and GT correction workflow;
+    keep uncertain annotation cases separate from accepted GT updates.
+  sampling_protocol: Pin release ID, manifest CSV, image track, scoring CLI revision, model inference config, prediction export
+    format, and leaderboard date before comparing systems.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_quality_audit
+audit:
+  source_mixture: 'Official sources checked for paper, code, data, release, GT review, and license metadata: https://arxiv.org/abs/2605.07492;
+    https://arxiv.org/html/2605.07492; https://github.com/zhihengli-casia/puredocbench; https://huggingface.co/datasets/zhihengli-casia/puredocbench'
+  split: Pin release ID puredocbench-2026-06-14 or later, release manifest candidate_1475, GT correction version, image track,
+    and whether the full HF image release or a sample repository checkout is being used.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official GitHub README reports dataset assets under CC BY 4.0 and code under MIT; model weights are not redistributed.
+  lineage: 'Primary lead: https://arxiv.org/abs/2605.07492'
+  known_failure_modes:
+  - public release, GT correction version, evaluator implementation, image-rendering/degradation pipeline, and license can
+    affect reuse.
+  - Scores can change with prediction export format, model pre/post-processing, image resolution, track, metric revision,
+    or dependency environment.
+  - Source-traceable GT reduces annotation noise but does not guarantee that every rendered document matches real-world document
+    distributions or that table/formula semantics are fully captured.
+  citation_status: verified
+  confidence: medium
+  notes: Official GitHub README verifies counts, tracks, metrics, release ID, GT review workflow, Hugging Face release pointer,
+    and CC BY 4.0/MIT licensing; arXiv remains the paper citation source.
+inclusion_reason: Explicit benchmark audit angle, but source status needs confirmation.
+related: []
+tags:
+- benchmark
+- benchmark_quality_audit
+- document-benchmark-audit
+one_line: PureDocBench exposes source-traceable synthetic/real-degraded document parsing as an auditable evaluation surface.
+why_it_matters: Explicit benchmark audit angle, but source status needs confirmation.
+status: verified
+needs:
+- 'needs_audit: pin release ID, GT correction version, manifest CSV, scoring CLI revision, model inference config, image track,
+  and leaderboard date'
+- 'needs_audit: inspect whether model training data already included public PureDocBench pages or rendered images'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: PureDocBench exposes source-traceable synthetic/real-degraded document parsing as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv, GitHub, project/review page, and Hugging Face dataset pointer were verified; release/version-specific
+    scoring details remain in audit needs.
+category_ids:
+- benchmarks_evaluation_surfaces

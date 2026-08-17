@@ -1,0 +1,231 @@
+id: qwen3-vl-2025
+title: Qwen3-VL Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Shuai Bai
+- Yuxuan Cai
+- Ruizhe Chen
+- Keqin Chen
+- Xionghui Chen
+- Zesen Cheng
+- Lianghao Deng
+- Wei Ding
+- Chang Gao
+- Chunjiang Ge
+- Wenbin Ge
+- Zhifang Guo
+- Qidong Huang
+- Jie Huang
+- Fei Huang
+- Binyuan Hui
+- Shutong Jiang
+- Zhaohai Li
+- Mingsheng Li
+- Mei Li
+- Kaixin Li
+- Zicheng Lin
+- Junyang Lin
+- Xuejing Liu
+- Jiawei Liu
+- Chenglong Liu
+- Yang Liu
+- Dayiheng Liu
+- Shixuan Liu
+- Dunjie Lu
+- Ruilin Luo
+- Chenxu Lv
+- Rui Men
+- Lingchen Meng
+- Xuancheng Ren
+- Xingzhang Ren
+- Sibo Song
+- Yuchong Sun
+- Jun Tang
+- Jianhong Tu
+- Jianqiang Wan
+- Peng Wang
+- Pengfei Wang
+- Qiuyue Wang
+- Yuxuan Wang
+- Tianbao Xie
+- Yiheng Xu
+- Haiyang Xu
+- Jin Xu
+- Zhibo Yang
+- Mingkun Yang
+- Jianxin Yang
+- An Yang
+- Bowen Yu
+- Fei Zhang
+- Hang Zhang
+- Xi Zhang
+- Bo Zheng
+- Humen Zhong
+- Jingren Zhou
+- Fan Zhou
+- Jing Zhou
+- Yuanzhi Zhu
+- Ke Zhu
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- multimodal
+- visual_reasoning
+training_use:
+- sft
+- distillation
+- rlvr
+- preference_learning
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.21631
+  arxiv: https://arxiv.org/abs/2511.21631
+  code: https://github.com/QwenLM/Qwen3-VL
+  data: null
+  project: https://github.com/QwenLM/Qwen3-VL
+  huggingface: https://huggingface.co/collections/Qwen/qwen3-vl
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SFT selects/synthesizes open-source and web samples; Long-CoT cold start mixes text and multimodal queries;
+    Reasoning RL uses open and proprietary sources with manual annotation; General RL includes SFT task families plus targeted
+    failure prompts. Full source inventories and mixture weights are not disclosed.
+  trace_author: Standard and CoT SFT responses are curated/synthesized with undisclosed stage-specific models. Off-policy
+    distillation uses combined teacher outputs; on-policy distillation uses student sequences aligned to teacher logits. RL
+    trajectories are sampled from Qwen3-VL policies.
+  answer_format: Standard responses for non-thinking models; explicit CoT for thinking models; long-document/video examples;
+    teacher response records; on-policy student sequences plus teacher logits; RL query/response/reward records; multimodal
+    function-calling and search trajectories are described in pre-training/data construction but not released as a post-training
+    dataset.
+  process_fields:
+  - prompt
+  - modality/context
+  - standard_or_cot_response
+  - teacher_response
+  - student_on_policy_sequence
+  - teacher_logits
+  - task_family
+  - rule_or_executor_result
+  - model_judge_score
+  - format_constraint
+  - rollout_pass_rate
+  environment_or_substrate: Text, image, video, documents, grounding tasks, and agent/function-calling/search settings. The
+    official report describes online image/text search trajectories and simulated function calling, but no replayable post-training
+    environment or episode release is provided.
+  verifier_or_reward: Reasoning RL uses deterministic rules or code executors. General RL combines rule-based rewards with
+    Qwen2.5-VL-72B-Instruct or Qwen3 model judges and targeted penalties for language mixing, repetition, and formatting errors.
+  terminal_predicate: Reasoning tasks terminate with rule/executor-verified solutions. General RL may use ground-truth references,
+    instruction/format constraints, or judge scores; exact per-task predicates, weights, calibration, and service revisions
+    are undisclosed.
+recipe_metadata:
+  base_model: Qwen3-VL is initialized from its multimodal pre-training pipeline and released as dense 2B/4B/8B/32B and MoE
+    30B-A3B/235B-A22B Instruct and Thinking variants; checkpoint-level post-training lineage is incomplete.
+  teacher: Strong-to-weak distillation uses powerful teacher models, but complete identities and stage assignments are unknown.
+    General RL explicitly names Qwen2.5-VL-72B-Instruct or Qwen3 as model judges.
+  generator: SFT synthesis/curation, off-policy teacher response distillation, on-policy student sequence generation with
+    KL-to-teacher logits, and policy rollouts for RL.
+  filtering_rule: SFT query filtering removes unverifiable, empty, ambiguous, or low-value web queries; response filters remove
+    repetition, incompleteness, bad format, off-topic/harmful content, and use Qwen2.5-VL-derived reward models. Long-CoT
+    filtering selects hard items, removes image-solvable-without-image cases, incorrect finals, repetition, language mixing,
+    and guessing. Reasoning RL discards multimodal queries with 0/16 success, removes weak data sources, then during training
+    removes queries with pass rate above 90%.
+  sampling_protocol: 'SFT: two 32K epochs followed by one mixed 32K/256K epoch. Distillation: off-policy teacher responses
+    then on-policy student sequences with KL logit alignment. Reasoning RL: approximately 30K mixed text/multimodal queries;
+    16 responses per query and predefined task ratios; SAPO optimization. General RL: multi-task hybrid rewards and targeted
+    failure-prompt data.'
+  rollout_count: 16
+  temperature: null
+  inference_budget: Training samples 16 responses per Reasoning-RL query. Native context is 256K; repository 1M-context expansion
+    and decoding defaults are inference capabilities, not disclosed training rollout budgets.
+  optimizer_or_scaffold: SFT, strong-to-weak distillation, SAPO Reasoning RL, and separate General RL. Exact SFT/RL steps,
+    batch sizes, learning rates, KL/reward weights, rollout temperatures, and infrastructure are undisclosed.
+audit:
+  source_mixture: 'SFT reports approximately 1.2M samples: one-third text-only and two-thirds image-text/video-text, multilingual
+    and single-/multi-turn. Long-CoT uses approximately 1:1 vision-language/text queries but no count. Reasoning RL reports
+    approximately 30K text and multimodal queries. Full source and per-checkpoint mixtures remain unknown.'
+  split: unknown; no released SFT/RL train/validation manifest or item-level checkpoint mapping.
+  decontamination: unknown; the report discusses filtering and evaluation but does not publish source-to-benchmark overlap
+    results or removal ledgers.
+  license: The official repository is Apache-2.0 and released checkpoints have their own cards. These licenses do not establish
+    rights for undisclosed open/web/proprietary training records, teacher outputs, or judge services.
+  lineage: open/web/proprietary prompt -> SFT standard/CoT response and 32K-to-256K curriculum -> off-policy teacher response
+    -> on-policy student sequence plus teacher logits -> 16-rollout Reasoning RL or hybrid-reward General RL -> released Instruct/Thinking
+    checkpoint; item-level lineage is not published
+  known_failure_modes:
+  - The 0/16 multimodal filter and >90% pass-rate filter remove both impossible and easy queries, conditioning RL on a model-dependent
+    solvability band.
+  - Source removal after preliminary RL experiments introduces an improvement-potential selection criterion whose rejected
+    sources and yields are not disclosed.
+  - Qwen2.5-VL-derived filters and Qwen2.5-VL-72B/Qwen3 judges can share family biases with the trained policy and are not
+    independently calibrated in the report.
+  - Long-CoT difficulty heuristics favor low pass rates or longer responses and may select verbosity or hard-but-ambiguous
+    items.
+  - No SFT/RL corpus, rollout ledger, teacher-logit artifact, rejected-response set, reward configuration, decontamination
+    report, or checkpoint lineage manifest is released.
+  - Model/checkpoint availability and benchmark breadth are not evidence that the undisclosed post-training data are reusable,
+    licensed end to end, or record-level verified.
+  citation_status: verified
+  confidence: high
+  notes: 'Official arXiv §§4.1-4.4 provide concrete post-training evidence absent from the prior metadata: 1.2M SFT mixture,
+    32K/256K curriculum, query/response filters, Long-CoT balance and visual-necessity test, two distillation modes, about
+    30K RL queries, 16-rollout filtering, >90% easy threshold, SAPO, and hybrid General-RL rewards.'
+inclusion_reason: Official multimodal frontier report and release record retained to distinguish architecture/checkpoint disclosure
+  from the absent post-training data, feedback, and audit ledger.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- qwen
+- multimodal
+- long-context
+- open-code
+- open-checkpoint
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3-VL discloses a 1.2M-sample multimodal SFT mixture and roughly 30K-query, 16-rollout Reasoning-RL recipe
+  with separate rule and judge rewards, but releases no post-training corpus, rollout ledger, reward configuration, or item-level
+  checkpoint lineage.
+why_it_matters: As a frontier disclosure, it distinguishes standard/CoT SFT, long-context curriculum, teacher-response and
+  logit distillation, programmatically verified reasoning RL, and judge-based General RL—while keeping hidden sources and
+  feedback services visibly unresolved.
+card: null
+needs:
+- 'needs_data: release stage-specific SFT, Long-CoT, distillation, Reasoning-RL, General-RL, and targeted-failure schemas
+  or auditable manifests'
+- 'needs_reward: publish per-task verifiers, executor versions, judge prompts/models, weights, calibration, and reward-hacking
+  audits'
+- 'needs_rollout_ledger: retain all 16 responses, pass rates, filter decisions, rejected queries, and SAPO sampling settings'
+- 'needs_lineage: map sources, teacher outputs/logits, stage transformations, and revisions to each released checkpoint'
+- 'needs_audit: source rights, proprietary boundaries, splits, decontamination, benchmark overlap, and rejected-source yields'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper identity, authors, code repository, official model collection, and repository license are verified. Post-training
+    data and feedback claims are not verified.

@@ -1,0 +1,189 @@
+id: openmmreasoner-2025
+title: 'OpenMMReasoner: Pushing the Frontiers for Multimodal Reasoning with an Open and General Recipe'
+year: 2026
+venue: CVPR 2026
+authors:
+- Kaichen Zhang
+- Keming Wu
+- Zuhao Yang
+- Bo Li
+- Kairui Hu
+- Bin Wang
+- Ziwei Liu
+- Xingxuan Li
+- Lidong Bing
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- multimodal
+- visual_reasoning
+- mathematics
+- science
+- general_reasoning
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.16334
+  arxiv: https://arxiv.org/abs/2511.16334
+  code: https://github.com/EvolvingLMMs-Lab/OpenMMReasoner
+  data: https://huggingface.co/collections/lmms-lab/openmmreasoner
+  project: https://evolvinglmms-lab.github.io/OpenMMReasoner/
+  huggingface: https://huggingface.co/collections/lmms-lab/openmmreasoner
+  doi: https://doi.org/10.48550/arXiv.2511.16334
+  venue: https://openaccess.thecvf.com/content/CVPR2026/supplemental/Zhang_OpenMMReasoner_Pushing_the_CVPR_2026_supplemental.pdf
+  cvf: https://openaccess.thecvf.com/content/CVPR2026/supplemental/Zhang_OpenMMReasoner_Pushing_the_CVPR_2026_supplemental.pdf
+data_object:
+  prompt_source: The SFT release has five configurations derived from OpenVLThinker, WeMath, LLaVA-CoT, MiroMind-M1, and MMR1.
+    The RL release has seven training configurations derived from AlgoPuzzleVQA, MMK12, ThinkLite-VL, TQA, ViRL, and two WeMath
+    subsets, plus a separate validation configuration; record-level upstream rights and a complete source-to-row ledger are
+    unknown.
+  trace_author: Qwen3-VL-235B-Instruct generates the paper's repeatedly sampled general-reasoning SFT traces; some final SFT
+    rows come from named upstream corpora. During RL, the current OpenMMReasoner policy generates fresh online responses.
+    The exact teacher and policy checkpoint revisions are unknown.
+  answer_format: SFT rows contain an id and a three-message multimodal conversation whose assistant text uses think and answer
+    tags. RL training rows contain prompt messages, embedded images, a ground-truth-bearing reward_model object, tokens, and
+    avg_reward plus source-specific metadata; they do not contain the online policy responses used for GSPO.
+  process_fields:
+  - id
+  - messages
+  - prompt
+  - images
+  - data_source
+  - ability
+  - reward_model.ground_truth
+  - reward_model.style
+  - tokens
+  - avg_reward
+  - options
+  - solution
+  - extra_info
+  environment_or_substrate: Qwen2.5-VL-7B-Instruct is first trained by packed SFT with LMMs-Engine. The resulting OpenMMReasoner-ColdStart
+    policy is then optimized online with verl, vLLM, and GSPO using 16 sampled responses per prompt in the released example.
+  verifier_or_reward: For SFT distillation, the paper retains final answers that pass a rule-based validator and a learned
+    judge, while the exact claimed step-by-step validation procedure is unknown. For RL, code first applies answer extraction,
+    exact or multiple-choice matching, and math_verify; when enabled, the default Qwen3-235B-A22B-Instruct-2507 judge is a
+    fallback. Accuracy is mixed with a format reward at weights 0.9 and 0.1.
+  terminal_predicate: An SFT candidate is retained after format and final-answer verification, but rejected-candidate logs
+    are not released. An online RL response receives 0.9 times answer correctness plus 0.1 times format compliance; this scalar
+    is a terminal training reward, not a step-validity label.
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B-Instruct
+  teacher: Qwen3-VL-235B-Instruct is the selected SFT teacher; exact endpoint and immutable revision are unknown. The released
+    reward setup separately names Qwen3-235B-A22B-Instruct-2507 as the default learned judge.
+  generator: The selected teacher samples up to eight verified SFT traces per source question for the general-reasoning core.
+    The current policy samples online responses during GSPO; these responses are not part of the released RL-74K rows.
+  filtering_rule: General SFT traces pass format and final-answer checks, after which the final recipe keeps the 583K verified
+    general set without the tested length or difficulty filters and mixes math corpora. RL prompts undergo answer extraction
+    and verification plus image/text embedding deduplication; the paper-run similarity threshold and complete removal ledger
+    are unknown.
+  sampling_protocol: Approximately 103K raw general questions -> teacher selection -> about 59K verified one-sample traces
+    -> eight-way answer sampling -> about 583K verified general traces -> mix image and text mathematics -> 874K SFT rows
+    -> cold-start model. Separately, source RL questions -> answer verification -> image/text deduplication -> roughly 73K
+    currently released training prompts -> 16 online rollouts per prompt -> mixed terminal reward -> GSPO.
+  rollout_count: 16
+  temperature: 1.0
+  inference_budget: The paper reports a 4,096-token prompt cap, up to 28,696 new tokens per RL response, global batch size
+    128, 1,232 RL steps, and training until reward saturation. SFT uses 61,440-token online packing and 4,300 steps. Hardware
+    hours, generation seeds, and total rollout tokens are unknown.
+  optimizer_or_scaffold: LMMs-Engine packed SFT followed by verl/vLLM online RL; the selected policy loss is GSPO with a DAPO-style
+    reward manager and overlength handling in the released launch script.
+audit:
+  source_mixture: 'The SFT Hub release exposes five train configurations: OpenVLThinker-sft-iter3 (22.2K), WeMath (6.94K),
+    llava_cot (554K), m1_sft (92K), and mmr1 (199K), totaling about 874K rows. The RL Hub release exposes seven train configurations
+    totaling about 73K rows plus a 1,724-row validation configuration. The paper and launch script describe an eight-source
+    RL train mixture including PuzzleVQA, but the checked official collection has no PuzzleVQA train configuration.'
+  split: Every SFT configuration has only a train split. Seven RL configurations have train splits; the eighth configuration
+    is validation with a val split and a different schema. The mapping between paper-run files, current Hub configurations,
+    and benchmark evaluation records is incomplete.
+  decontamination: The paper reports answer verification and image/text similarity deduplication within the RL source mixture,
+    and the repository releases an embedding-based cross-source deduplicator. Exact and semantic overlap checks against SFT
+    sources and evaluation benchmarks, removed-row IDs, paper-run thresholds, and contamination rates are unknown.
+  license: The GitHub repository declares Apache-2.0 and RL-74K declares CC-BY-NC-4.0. The checked SFT-874K page has no top-level
+    dataset license. Record-level upstream licenses, image rights, teacher-output terms, and a redistribution matrix are unknown.
+  lineage: Named SFT questions and existing traces -> Qwen3-VL teacher sampling -> format and final-answer verification ->
+    583K general traces -> MMR1 and MiroMind-M1 mixing -> SFT-874K -> OpenMMReasoner-ColdStart. Named RL question sources
+    -> answer verification -> image/text deduplication -> released prompt/reward-metadata rows -> online current-policy rollouts
+    -> rule or learned-judge fallback reward plus format reward -> GSPO -> OpenMMReasoner-RL.
+  known_failure_modes:
+  - SFT assistant traces are released, but the teacher revision, per-row teacher identity, generation seed, verification outcome,
+    and rejected alternatives are not.
+  - The paper calls the SFT process step-by-step validation, yet the operational description specifies final-answer rule and
+    learned-judge checks; per-step labels or validation logs are not released.
+  - RL-74K is prompt and reward-metadata data, not a corpus of the 16 online rollout responses used for policy updates.
+  - The public RL collection combines about 73K train rows with 1,724 validation rows, while the paper and launch script refer
+    to eight training files including PuzzleVQA; exact paper-run-to-release mapping is unresolved.
+  - Public RL rows include tokens and, for train subsets, avg_reward, but the model revision, rollout count, sampling seed,
+    and run that produced avg_reward are unknown; per-rollout responses and scores are absent.
+  - Rule matching and math_verify can reject semantically valid answers or accept parser artifacts, while the learned fallback
+    judge is model-, instruction-, and version-dependent and is not reported with calibration data.
+  - Terminal answer correctness and format compliance do not establish that intermediate multimodal reasoning is faithful
+    or visually grounded.
+  - The final launch script samples 16 responses, but those online trajectories, judge calls, group rewards, discarded responses,
+    and update-level logs are not released as a reusable dataset.
+  - The release has no immutable GitHub release; code, datasets, and model repositories can change independently.
+  - The study centers on Qwen2.5-VL-Instruct and images; video, audio, other base families, and the upper bound under further
+    scaling remain untested by the paper.
+  citation_status: verified
+  confidence: high
+  notes: Checked arXiv v4, the official CVPR 2026 supplemental file, project page, Apache-2.0 GitHub repository at main commit
+    67441eb8f3ef102afd4b74e83b58739a442e8d83, official Hugging Face collection, both datasets and their live schemas, and
+    both model pages on 2026-07-19. Citation and artifact existence are verified; release completeness is partial.
+  metadata_status: partial
+inclusion_reason: Exposes a large multimodal SFT mixture, a distinct RL prompt and reward-metadata release, two checkpoints,
+  and code linking teacher distillation, mixed terminal rewards, and online GSPO, while leaving the rollout and decision lineage
+  partially unreleased.
+related: []
+tags:
+- openmmreasoner
+- multimodal-reasoning
+- visual-reasoning
+- cold-start-sft
+- online-rollouts
+- gspo
+- mixed-reward
+- llm-judge
+- partial-lineage
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Separates an open 874K multimodal SFT conversation mixture from roughly 73K released RL training prompts
+  and unreleased 16-way online GSPO rollouts, with mixed rule, learned-judge, and format rewards.
+why_it_matters: It makes a two-stage multimodal reasoning recipe inspectable and shows why released prompts, generated trajectories,
+  terminal rewards, and policy updates must remain distinct audit objects.
+card: null
+needs:
+- 'needs_snapshot: immutable paper-run code, data, model, and configuration revisions with checksums'
+- 'needs_rollouts: online policy responses, per-rollout rewards, judge calls, group assignments, and update logs'
+- 'needs_lineage: row-level source, teacher, generation, verification, deduplication, and rejection decisions'
+- 'needs_release_mapping: reconciliation of the seven released RL train configurations plus validation with the eight-file
+  paper and launch-script mixture including PuzzleVQA'
+- 'needs_metadata: provenance of tokens and avg_reward, paper-run deduplication threshold, exact teacher endpoint, seeds,
+  and rejection counts'
+- 'needs_license: SFT-874K top-level license and record-level upstream text, image, and teacher-output rights'
+- 'needs_decontamination: train-evaluation overlap audit and removed-row ledger'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, CVF supplemental evidence, project, repository, two datasets, live schemas, and two checkpoints are
+    available. The online rollout corpus, complete SFT verification ledger, immutable run manifest, and exact RL paper-run
+    release mapping are not available.

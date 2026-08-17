@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ReasonRAG 发布 RAG-ProGuide：由 MCTS 和最短路径奖励估计构造的 1.3 万个过程级偏好对，用于训练智能检索策略。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能检索增强生成的过程奖励、偏好优化与监督数据论文",
+  "best_for_ch": "训练或评测查询生成、证据抽取和答案生成的过程级检索策略。",
+  "confidence_ch": "高",
+  "authors_ch": "Wenlin Zhang、Xiangyang Li、Kuicai Dong 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:19:41Z"
+}

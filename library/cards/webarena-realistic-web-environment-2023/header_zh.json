@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "WebArena 把自建真实网站上带功能性检查的浏览器任务做成可审计的评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2024",
+  "best_for_ch": "关注 benchmark、评分契约、污染风险、评测 harness 和后训练反馈可复用性的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shuyan Zhou 等（Carnegie Mellon University、Inspired Cognition）",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:42:05Z"
+}

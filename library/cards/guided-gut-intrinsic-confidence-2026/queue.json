@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-21T08:53:21Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以校准后的内部置信度替代外部验证器，直接降低树搜索的显存与推理成本",
+    "updated_at": "2026-07-21T08:53:21Z"
+  }
+}

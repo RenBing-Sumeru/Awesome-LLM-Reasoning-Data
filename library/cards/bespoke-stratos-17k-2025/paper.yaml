@@ -1,0 +1,127 @@
+id: bespoke-stratos-17k-2025
+title: Bespoke-Stratos-17k
+year: 2025
+venue: Dataset release
+authors:
+- Bespoke Labs
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- code_reasoning
+- science
+- puzzles
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation
+  arxiv: null
+  code: https://github.com/bespokelabsai/curator/tree/main/examples/bespoke-stratos-data-generation
+  data: https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k
+  project: https://bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation
+  huggingface: https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Approximately 10.5k NuminaMath math/olympiads/amc_aime prompts, 2.5k APPS prompts, 3k TACO prompts, and 1k
+    STILL-2 science/puzzle prompts before or around rejection/combination
+  trace_author: DeepSeek-R1
+  answer_format: One fixed instruction prompt plus a two-message user/assistant conversation containing the question and an
+    unreformatted long reasoning trace with final answer
+  process_fields:
+  - system
+  - conversations
+  - user_prompt
+  - assistant_reasoning_and_answer
+  environment_or_substrate: Bespoke Curator port of the Sky-T1 data-generation and rejection-sampling pipeline
+  verifier_or_reward: GPT-4o-mini judges math solution correctness; code solutions are filtered against executable tests with
+    Ray-assisted verification
+  terminal_predicate: Retain a generated trace when the domain-specific verifier accepts its solution
+recipe_metadata:
+  base_model: null
+  teacher: DeepSeek-R1
+  generator: DeepSeek-R1 queried through Bespoke Curator
+  filtering_rule: Reject incorrect solutions; GPT-4o-mini parses/judges math answers, while APPS/TACO code is tested by execution
+  sampling_protocol: Replicates Sky-T1 source mixture and rejection sampling with teacher and math-filter substitutions; combines
+    retained NuminaMath, APPS, TACO, and STILL-2 records
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Bespoke Curator fault-tolerant batch generation; authors report about 1.5 hours and $800
+audit:
+  source_mixture: Curator recipe documents about 10.5k NuminaMath, 2.5k APPS, 3k TACO, and 1k STILL-2 source samples; dataset
+    card summarizes these as roughly 10k math, 5k coding, and 1k science/puzzle. Current release has 16,710 retained rows,
+    so source counts are approximate and not a per-row manifest.
+  split: Single train split with 16,710 rows; no validation/test split is published in the dataset artifact. APPS is generated
+    from its test split and TACO from train and test according to the recipe commands.
+  decontamination: unknown
+  license: Dataset card declares Apache-2.0. Compatibility and attribution obligations of NuminaMath, APPS, TACO, STILL-2,
+    and generated DeepSeek-R1 outputs require source-by-source review; no per-record license field is exposed.
+  lineage: Official card and recipe establish Sky-T1-derived construction and name the four source families, but the release
+    schema exposes only system and conversations; source dataset, source ID/split, verifier outcome, teacher request parameters,
+    and revision lineage are absent per record.
+  known_failure_modes:
+  - DeepSeek-R1 replaces QwQ as teacher, so changes cannot be attributed solely to pipeline improvements
+  - GPT-4o-mini math filtering is model-judged and may retain incorrect but plausible traces or reject unusual correct ones
+  - The reported retention increase from 25% to 73% compares parsing approaches and may reflect changed teacher outputs as
+    well as verifier behavior
+  - Code execution depends on test coverage, sandbox behavior, timeouts, and successful parsing
+  - Unreformatted teacher traces may contain hidden contradictions, verbosity, or answer leakage despite a correct final answer
+  - Only accepted examples are released; rejected traces, verifier scores, failure reasons, and failed API calls are absent
+  - Single train split and missing source IDs make benchmark overlap and contamination auditing difficult
+  - Dataset-level Apache-2.0 labeling does not by itself resolve all upstream data and model-output terms
+  citation_status: verified
+  confidence: high
+  notes: This is a dataset/blog artifact, not a paper; paper and arXiv links are intentionally null. Current HF viewer reports
+    16,710 rows and 126 MB. A pinned observed dataset revision is 145488971fbaa3e0caa4b77264fc593e4c822952; the repository
+    has subsequent/current history, so consumers should pin a revision.
+inclusion_reason: A widely reused open reasoning-distillation release with a documented Sky-T1-derived recipe, explicit teacher
+  substitution, and mixed model/programmatic rejection sampling.
+related:
+- sky-t1-data-17k
+tags:
+- bespoke-stratos
+- deepseek-r1-distillation
+- sky-t1-lineage
+- rejection-sampling
+- long-cot
+- mixed-verification
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Replaces Sky-T1's QwQ teacher with DeepSeek-R1 and releases 16,710 accepted math, code, science, and puzzle
+  conversations after GPT-4o-mini and execution-based filtering.
+why_it_matters: It is a compact, influential reasoning-distillation mixture whose open recipe also exposes teacher substitution,
+  verifier correlation, source-lineage, and rejected-trace audit gaps.
+card: null
+needs:
+- 'unknown: generation temperature, rollout count, seed, and token budget'
+- 'unknown: decontamination and benchmark-overlap controls'
+- 'needs_metadata: per-record source dataset, source ID/split, and license lineage'
+- 'needs_release: rejected traces, verifier outputs, failure reasons, and failed calls'
+- 'needs_audit: upstream license/model-output compatibility beyond the dataset-level Apache-2.0 tag'
+- 'needs_revision: immutable recommended HF revision or release tag'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against the official Bespoke Labs HF dataset card, official project post and Curator recipe, plus NovaSky
+    Sky-T1 project/data sources.

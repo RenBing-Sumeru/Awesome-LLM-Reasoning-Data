@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Microsoft Cognitive Services Research"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://aclanthology.org/2023.emnlp-main.153/",
+    "https://arxiv.org/abs/2303.16634",
+    "https://arxiv.org/e-print/2303.16634",
+    "https://github.com/nlpyang/geval"
+  ],
+  "verification_note": "ACL Anthology verifies EMNLP 2023 main-conference status and DOI; official arXiv source verifies the shared Microsoft Cognitive Services Research affiliation block and GitHub verifies code."
+}

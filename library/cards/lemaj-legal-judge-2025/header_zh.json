@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将法律回答拆为主张级数据点，以无参考评审同法律专家判断对齐。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测器、验证器、奖励或基准可靠性研究",
+  "best_for_ch": "需要审计法律回答自动评审可靠性的研究者。",
+  "confidence_ch": "中：正式发表论文；专有评测数据限制独立复现。",
+  "authors_ch": "Joseph Enguehard, Morgane Van Ermengem, Kate Atkinson, Sujeong Cha, Arijit Ghosh Chowdhury, Prashanth Kallur Ramaswamy, Jeremy Roghair, Hannah R Marlowe, Carina Suzana Negreanu, Kitty Boxall, Diana Mincu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

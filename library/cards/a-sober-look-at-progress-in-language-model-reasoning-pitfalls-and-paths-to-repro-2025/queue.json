@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统拆解推理进步的复现陷阱与证据标准，适合作为解读能力宣称时的审计基线。",
+    "updated_at": "2026-07-19T00:00:00Z"
+  },
+  "updated_at": "2026-07-19T00:00:00Z"
+}

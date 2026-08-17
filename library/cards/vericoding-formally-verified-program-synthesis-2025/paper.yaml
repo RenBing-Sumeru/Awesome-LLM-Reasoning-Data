@@ -1,0 +1,113 @@
+id: vericoding-formally-verified-program-synthesis-2025
+title: 'A benchmark for vericoding: formally verified program synthesis'
+year: 2025
+venue: Dafny 2026 at POPL 2026
+authors:
+- Sergiu Bursuc
+- Theodore Ehrenborg
+- Shaowei Lin
+- Lacramioara Astefanoaei
+- Ionel Emilian Chiosa
+- Jure Kukovec
+- Alok Singh
+- Oliver Butterley
+- Adem Bizid
+- Quinn Dougherty
+- Miranda Zhao
+- Max Tan
+- Max Tegmark
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-mathematics
+- code-generation
+- lean4
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.22908
+  arxiv: https://arxiv.org/abs/2509.22908
+  code: https://github.com/Beneficial-AI-Foundation/vericoding-benchmark
+  data: https://huggingface.co/datasets/beneficial-ai-foundation/vericoding
+  project: null
+  huggingface: https://huggingface.co/datasets/beneficial-ai-foundation/vericoding
+  doi: https://doi.org/10.48550/arXiv.2509.22908
+  venue: https://popl26.sigplan.org/details/dafny-2026-papers/13/A-benchmark-for-vericoding-formally-verified-program-synthesis
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public formal-verification datasets and newly authored specifications.
+  trace_author: Benchmark curators and source task authors.
+  answer_format: Dafny, Verus/Rust, or Lean specification files with code and proof holes.
+  process_fields:
+  - language
+  - specification
+  - code holes
+  - proof holes
+  - source id
+  - validation result
+  environment_or_substrate: Dafny, Verus/Rust, and Lean verification toolchains.
+  verifier_or_reward: Language compiler and formal verification engine.
+  terminal_predicate: The completed file passes validation checks and is accepted by its formal verifier without bypasses.
+recipe_metadata:
+  base_model: Off-the-shelf LLMs are evaluated; no teacher model is required for the benchmark.
+  teacher: Formal verifiers and validation rules against proof-bypass patterns.
+  generator: Assembly and normalization of formal specifications across three ecosystems.
+  filtering_rule: Keep tasks with runnable specification files while separately recording files that fail compilation for
+    repair research.
+  sampling_protocol: 12,504 tasks include 3,029 Dafny, 2,334 Verus/Rust, and 7,141 Lean files; consult the repository for
+    splits.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin toolchain versions and verification timeout for reproducible scores.
+  optimizer_or_scaffold: Iterative generate-validate-verify-repair loop with compiler diagnostics.
+audit:
+  source_mixture: Official arXiv paper, Beneficial AI Foundation repository, Hugging Face dataset, and POPL Dafny track record.
+  split: 12,504 specifications, 6,174 marked new unseen problems; use repository metadata for source-level splits.
+  decontamination: Audit source benchmark overlap and public-specification exposure before treating scores as unseen generalization.
+  license: Benchmark code and data are MIT, but upstream source licenses differ and must be retained.
+  lineage: https://github.com/Beneficial-AI-Foundation/vericoding-benchmark
+  known_failure_modes:
+  - Formal verification only guarantees properties expressed in the specification.
+  - Some retained files intentionally fail compilation for repair studies.
+  - Public source datasets create potential training contamination.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, repository, data release, affiliations, and Dafny 2026 POPL presentation record were checked.
+inclusion_reason: Vericoding provides executable formal-verifier outcomes for code-and-proof completion across Dafny, Verus,
+  and Lean.
+related: []
+tags:
+- formal-verification
+- dafny
+- verus
+- lean4
+- '2025'
+one_line_summary: Vericoding aggregates 12,504 Dafny, Verus, and Lean specifications whose generated code and proofs can be
+  replayed against formal verifiers.
+why_it_matters: It makes successful program synthesis a proof-checking outcome across multiple formal ecosystems.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, repository, data release, affiliations, and Dafny 2026 POPL presentation record were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

@@ -1,0 +1,3 @@
+The official `MLR_structured_trajectory` release contains 12,039 structured trajectories totaling about 360 MB across MATH, AIME24, GPQA, and BoardgameQA. Each record stores the prompt, full reasoning, final response, correctness, and a `steps` list. Every step includes a `cognitive_mode`, `subgoal`, `summary`, `outcome`, and source text, supporting hierarchical supervision, planner–executor training, and trajectory diagnosis.
+
+The four configurations preserve task provenance and model outputs, while a unified `steps` list maps raw long traces into trainable hierarchical states. The official Parquet release can be used directly for structured SFT.

@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:07:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把验证器调用作为稀缺测试时资源，在中间推理状态按不确定性选择最值得验证的候选",
+    "updated_at": "2026-07-20T13:07:19Z"
+  }
+}

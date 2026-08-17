@@ -1,0 +1,1 @@
+一手来源包括 Science 2022、arXiv:2203.07814、DeepMind AlphaCode 页面和 google-deepmind/code_contests 仓库。这篇要回答的问题是语言模型能否解决需要算法推理的未见竞赛编程题，而不是只把提示翻译成短函数。本卡收录的是 CodeContests 作为带题面、测试和人类提交的程序化评测/训练面。数据对象是 ContestProblem 记录，含题目元数据、输入输出测试、正确/错误提交、语言字段和 split。

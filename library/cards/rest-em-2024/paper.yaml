@@ -1,0 +1,152 @@
+id: rest-em-2024
+title: 'Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models'
+year: 2024
+venue: TMLR 2024
+authors:
+- Avi Singh
+- John D. Co-Reyes
+- Rishabh Agarwal
+- Ankesh Anand
+- Piyush Patil
+- Xavier Garcia
+- Peter J. Liu
+- James Harrison
+- Jaehoon Lee
+- Kelvin Xu
+- Aaron Parisi
+- Abhishek Kumar
+- Alex Alemi
+- Alex Rizkowsky
+- Azade Nova
+- Ben Adlam
+- Bernd Bohnet
+- Gamaleldin Elsayed
+- Hanie Sedghi
+- Igor Mordatch
+- Isabelle Simpson
+- Izzeddin Gur
+- Jasper Snoek
+- Jeffrey Pennington
+- Jiri Hron
+- Kathleen Kenealy
+- Kevin Swersky
+- Kshiteej Mahajan
+- Laura Culp
+- Lechao Xiao
+- Maxwell L. Bileschi
+- Noah Constant
+- Roman Novak
+- Rosanne Liu
+- Tris Warkentin
+- Yundi Qian
+- Yamini Bansal
+- Ethan Dyer
+- Behnam Neyshabur
+- Jascha Sohl-Dickstein
+- Noah Fiedel
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- large-language-models
+- self-training-demonstrations
+training_use:
+- sft
+- distillation
+construction_layer:
+- self_play_anchor
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2312.06585
+  arxiv: https://arxiv.org/abs/2312.06585
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 7,500 MATH training problems and 2,342 APPS Introductory training problems.
+  trace_author: The current PaLM 2 policy generates candidate mathematical solutions or code programs.
+  answer_format: A problem paired with a sampled reasoning solution or program that passes the task's binary checker.
+  process_fields:
+  - problem
+  - sampled solution or program
+  - binary correctness result
+  - self-training iteration
+  environment_or_substrate: Static MATH answer checking and executable APPS test cases used during iterative self-training.
+  verifier_or_reward: Exact final-answer checks for MATH and unit-test execution for APPS provide binary rewards.
+  terminal_predicate: Retain at most ten verified-correct samples per problem, fine-tune the policy, and repeat until validation
+    gains stop.
+recipe_metadata:
+  base_model: PaLM 2-S, PaLM 2-S* (Codey), and PaLM 2-L.
+  teacher: Self-generated data from the current policy; no separate stronger teacher is required.
+  generator: Alternate an E-step that samples and verifies solutions with an M-step that fine-tunes on accepted samples.
+  filtering_rule: Keep only solutions with correct MATH final answers or programs passing all APPS tests; cap retained solutions
+    at ten per problem.
+  sampling_protocol: Sample 32 solutions per MATH problem and 64 per APPS problem with top-k 40 and temperature 0.7.
+  rollout_count: 64
+  temperature: 0.7
+  inference_budget: 32 candidates per MATH problem and 64 per APPS problem in each self-training iteration.
+  optimizer_or_scaffold: Expectation-maximization-like iterative supervised fine-tuning.
+audit:
+  source_mixture: MATH and APPS prompts, self-generated candidate solutions, binary verifier results, and accepted demonstrations.
+  split: The paper uses the official MATH and APPS Introductory train/test splits; no generated training set is released.
+  decontamination: Reusing benchmark training prompts risks task-specific overfitting, especially across repeated iterations.
+  license: No official ReST-EM generated dataset or code release was confirmed; source-dataset terms must be checked separately.
+  lineage: 'self-training demonstrations lineage; closest comparisons: star-2022, v-star-2024.'
+  known_failure_modes:
+  - Verifier false positives become training targets, repeated rounds overfit small prompt sets, and performance can regress
+    after the first APPS iteration.
+  citation_status: verified
+  confidence: high
+  notes: TMLR April 2024 publication line, author affiliations, MATH/APPS sizes, sampling configuration, verifier rules, and
+    experiment tables checked from the paper PDF.
+inclusion_reason: ReST-EM repeatedly converts a policy's verified solutions into new demonstrations, exposing both the gain
+  and overfitting boundary of iterative self-training.
+related:
+- star-2022
+- v-star-2024
+tags:
+- self-training-demonstrations
+- arxiv-2312.06585
+- primary-link-checked
+status: verified
+one_line_summary: ReST-EM samples math solutions or programs from the current policy, keeps only outputs that pass binary
+  checks, and repeats SFT to turn verified self-generation into training data.
+why_it_matters: It provides a simple iterative recipe and shows exactly where verifier quality and repeated-prompt overfitting
+  limit self-training.
+reading_priority: recommended
+paper_type: verifier-filtered iterative self-training
+best_for: Readers building self-training loops for mathematics or code with executable binary feedback.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official TMLR paper and PDF metadata checked; no generated dataset or code artifact was confirmed.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: self-training demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    recency: 3
+    impact: 3
+    venue: 3
+    institution: 2

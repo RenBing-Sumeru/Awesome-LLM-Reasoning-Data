@@ -1,0 +1,111 @@
+id: survey-of-reasoning-large-language-models-2025
+title: 'From System 1 to System 2: A Survey of Reasoning Large Language Models'
+year: 2025
+venue: IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2025
+authors:
+- Zhong-Zhi Li
+- Duzhen Zhang
+- Ming-Liang Zhang
+- Jiaxin Zhang
+- Zengyan Liu
+- Yuxuan Yao
+- Haotian Xu
+- Junhao Zheng
+- Pei-Jie Wang
+- Xiuyi Chen
+- Yingying Zhang
+- Fei Yin
+- Jiahua Dong
+- Zhiwei Li
+- Bao-Long Bi
+- Ling-Rui Mei
+- Junfeng Fang
+- Xiao Liang
+- Zhijiang Guo
+- Le Song
+- Cheng-Lin Liu
+source_role:
+- survey_background
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- survey
+training_use:
+- audit
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://doi.org/10.1109/TPAMI.2025.3637037
+  arxiv: https://arxiv.org/abs/2502.17419
+  code: https://github.com/zzli2022/Awesome-System2-Reasoning-LLM
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1109/TPAMI.2025.3637037
+  venue: https://doi.org/10.1109/TPAMI.2025.3637037
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: Taxonomy, benchmark map, performance tables, and maintained literature index.
+  process_fields: []
+  environment_or_substrate: Literature survey plus a maintained public GitHub index.
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: unknown
+  known_failure_modes: []
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv source and companion GitHub index reviewed; no standalone downloadable dataset was found.
+inclusion_reason: Maps System-2-style reasoning methods, benchmarks, evaluation metrics, and open research gaps for readers
+  selecting reasoning-data and evaluation work.
+related: []
+tags:
+- survey
+- reasoning-llms
+- foundation-models
+status: verified
+card: null
+needs:
+- 'needs_metadata: survey coverage changes with the companion repository; cite the reviewed arXiv version for a fixed snapshot'
+one_line_summary: Surveys the transition from fast System 1-style LLM behavior to deliberate reasoning LLMs, organizing construction
+  methods, benchmarks, metrics, and open challenges.
+why_it_matters: It supplies a cross-method map before readers choose a reasoning-data recipe, a verifier, or an evaluation
+  benchmark.
+curation_level: L4_deep_read
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: deep_read
+  confidence: high
+  notes: arXiv v6 and the official companion GitHub repository were reviewed on 2026-07-19.
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

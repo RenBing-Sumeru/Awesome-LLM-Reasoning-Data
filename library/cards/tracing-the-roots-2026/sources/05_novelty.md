@@ -1,0 +1,9 @@
+The prior-work baseline is fragmented provenance documentation, audits of individual datasets or source rights, sample-level overlap scans, and instance-attribution methods. These approaches can describe one release or detect local similarity, but they do not directly model the evolutionary dependencies among many post-training datasets.
+
+The concrete change is the unit of analysis and how it enters construction. The paper represents public source claims as a directed dataset graph with typed, evidence-bearing edges; recursively expands that graph with role-specialized agents; and then treats leaf status and downstream out-degree as source-selection signals. It also uses paths to identify where exact benchmark matches may have propagated, instead of reporting only a target dataset's aggregate overlap.
+
+The new reasoning-data object is therefore not merely another instruction mixture. It is a dataset-level lineage record that can drive a review queue, source-mix exclusion, targeted content checks, and provenance-based sampling. This matters for the construction/open-release track because it makes ancestry a first-class decision variable before records are merged.
+
+Several components are established rather than novel: web and paper retrieval, LLM extraction, DFS, exact hashing, MinHash, embeddings, Vendi Score, and Centroid Distance. The 570K corpus is primarily an engineering composition of 31 upstream datasets, not a newly verified answer-generation process. The paper also does not establish per-record lineage or a new correctness verifier.
+
+Before reuse, inspect whether edge relations are explicit or inferred, how low-confidence cases were adjudicated, whether the graph and 31-source manifest match a stable paper-time release, how licenses propagate, and whether literal-match findings survive semantic-overlap checks. Those checks determine whether the graph is an audit instrument or only a useful hypothesis generator.

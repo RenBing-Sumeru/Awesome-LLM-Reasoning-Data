@@ -1,0 +1,3 @@
+Experiment 1: Table 5 reports 85.91% held-out training-subset evaluation accuracy for transformed-data Qwen2.5-VL and 84.97% for transformed-data MedGemma after LoRA fine-tuning; Table 6 shows Qwen fine-tuning raising normal-set ROUGE-L from 0.193 to 0.690 and BERT-F1 from 0.875 to 0.954 at the reported checkpoint.
+
+Experiment 2: Aspect-wise Qwen3 adjudication gives overall mean accuracies of about 90% for fine-tuned Qwen2.5-VL and 87% for fine-tuned MedGemma, versus roughly 30-45% for their base checkpoints. Transformed-data variants change key normal-versus-transformed metrics by only about 0.001-0.002, while the paper also notes that some level-2 categories outperform level 1 because merged questions can reduce ambiguity.

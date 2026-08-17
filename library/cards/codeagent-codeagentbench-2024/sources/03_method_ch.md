@@ -1,0 +1,1 @@
+1. 输入：带 Sphinx 风格文档、目标函数/类、仓库文件、依赖提示和 sandbox 运行环境的仓库任务。2. 构造：作者选择 5 个 GitHub 主题，筛选使用 pytest/unittest 与 Sphinx 的 Python 项目，并用约 600 人时整理 101 个任务。3. 智能体循环：模型可按 ReAct、Tool-Planning、OpenAIFunc 或规则策略调用检索、符号导航、实现辅助和测试工具。4. 输出：代码修改和任务结果。5. 复现边界：验收是 sandbox 中的自包含测试；复用必须固定仓库快照、依赖版本、prompt/工具策略、timeout 和未暴露测试。

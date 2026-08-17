@@ -1,0 +1,1 @@
+《HelpSteer2-Preference: Complementing Ratings with Preferences》把偏好与奖励反馈视为数据构建问题。其数据对象是“HelpSteer2 的成对偏好标注”。要解决的边界是：同一批评分数据究竟更适合回归式奖励模型还是 Bradley–Terry 偏好模型，常因数据不匹配而无法比较。 因而来源、标注者或教师身份以及数据切分不是实现细节，而是结论的一部分。

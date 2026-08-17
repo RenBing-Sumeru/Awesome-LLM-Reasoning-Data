@@ -1,0 +1,1 @@
+SWE-Perf 已使用真实性能 PR，但提供 target function/oracle 设置，侧重“修改指定区域是否加速”；传统 SWE-bench 则是 fail-to-pass 修复。SWE-fficiency 的变化是评测完整 investigative workflow：只给慢 workload，让 agent 自己 profiling、定位相关文件和测试，再进行 pass-to-pass 优化；并用模型相对同题专家的 SR，而非简单 runtime 或二值通过率。它未提出新优化器，而是改变信息暴露、任务流程和指标，使轻微加速与专家级修复被明确区分。

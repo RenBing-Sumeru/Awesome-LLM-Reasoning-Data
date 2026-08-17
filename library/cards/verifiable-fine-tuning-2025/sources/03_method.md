@@ -1,0 +1,2 @@
+Leaves contain input, target, `source_id`, `license_id`, `proc_digest`, and `policy_tags`. Public or private sampling supplies membership witnesses; fixed-point PEFT forward/backward and AdamW transitions form step proofs, epoch quota certificates, and a recursive final proof. Experiments describe one epoch, batch 64, LoRA ranks 4/8/16, and AdamW, but the learning rate and base model are unknown.
+

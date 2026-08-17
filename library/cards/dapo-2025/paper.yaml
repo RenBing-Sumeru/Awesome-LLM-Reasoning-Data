@@ -1,0 +1,191 @@
+id: dapo-2025
+title: 'DAPO: An Open-Source LLM Reinforcement Learning System at Scale'
+year: 2025
+venue: arXiv
+authors:
+- Qiying Yu
+- Zheng Zhang
+- Ruofei Zhu
+- Yufeng Yuan
+- Xiaochen Zuo
+- Yu Yue
+- Weinan Dai
+- Tiantian Fan
+- Gaohong Liu
+- Lingjun Liu
+- Xin Liu
+- Haibin Lin
+- Zhiqi Lin
+- Bole Ma
+- Guangming Sheng
+- Yuxuan Tong
+- Chi Zhang
+- Mofan Zhang
+- Wang Zhang
+- Hang Zhu
+- Jinhua Zhu
+- Jiaze Chen
+- Jiangjie Chen
+- Chengyi Wang
+- Hongli Yu
+- Yuxuan Song
+- Xiangpeng Wei
+- Hao Zhou
+- Jingjing Liu
+- Wei-Ying Ma
+- Ya-Qin Zhang
+- Lin Yan
+- Mu Qiao
+- Yonghui Wu
+- Mingxuan Wang
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+- infrastructure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- math
+- rlvr
+- reasoning
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- optimizer_scaffold
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.14476
+  arxiv: https://arxiv.org/abs/2503.14476
+  code: https://github.com/BytedTsinghua-SIA/DAPO
+  data: https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k
+  project: https://dapo-sia.github.io/
+  huggingface: https://huggingface.co/collections/BytedTsinghua-SIA/dapo
+  doi: https://doi.org/10.48550/arXiv.2503.14476
+  openreview: https://openreview.net/forum?id=2a36EMSSTp
+  bibtex: https://arxiv.org/bibtex/2503.14476
+data_object:
+  prompt_source: The paper says DAPO-Math-17K was built from web pages and official competition homepages using web scraping
+    and manual annotation, followed by selection and LLM-assisted transformation to integer-answer tasks; no item-level source
+    manifest is released.
+  trace_author: An undisclosed LLM rewrites selected source problems during dataset transformation. During RL, the current
+    Qwen2.5-32B policy samples online responses; those rollouts and transformation traces are not part of the released dataset.
+  answer_format: Each intended dataset item is a processed math prompt paired with an integer ground-truth answer. The current
+    Hugging Face rows expose data_source, a one-message prompt, ability, reward_model with ground_truth and style, and extra_info
+    with a UUID-like index.
+  process_fields:
+  - 'released: data_source'
+  - 'released: prompt as role/content messages'
+  - 'released: ability'
+  - 'released: reward_model.ground_truth and reward_model.style'
+  - 'released: extra_info.index'
+  - 'online only: 16 policy responses per prompt in the paper run'
+  - 'online only: extracted-answer correctness, shaped reward, response length, and token-level policy loss'
+  - 'online only: dynamic-sampling group eligibility'
+  environment_or_substrate: A verl-based synchronous online RL system samples long mathematical responses from Qwen2.5-32B,
+    evaluates final answers with a rule, dynamically fills an update batch with non-degenerate prompt groups, and applies
+    token-level policy-gradient updates.
+  verifier_or_reward: The paper defines outcome reward as +1 when is_equivalent(prediction, ground truth) and -1 otherwise,
+    then adds length-aware Soft Overlong Punishment near the generation cap. The exact training-time is_equivalent implementation
+    and its error analysis are not disclosed in the paper.
+  terminal_predicate: A response is correct when its extracted final answer is judged equivalent to the integer ground truth.
+    A prompt group reaches the update buffer only when at least one but not all of its 16 responses are correct.
+recipe_metadata:
+  base_model: Qwen2.5-32B base model
+  teacher: No rationale teacher is reported. Dataset transformation uses an LLM whose identity and version are not disclosed;
+    source answers plus manual annotation supply the target integers.
+  generator: The online Qwen2.5-32B policy samples 16 responses per selected prompt in the reported run.
+  filtering_rule: Dynamic Sampling oversamples prompt groups and excludes groups with accuracy 0 or 1 before optimization.
+    Dataset construction selects and rewrites problems into integer-answer form; selection thresholds and acceptance yield
+    are not reported.
+  sampling_protocol: 'Paper run: prompt batch 512, 16 responses per prompt, training mini-batch 512, and 16 gradient updates
+    per rollout step. Training decoding temperature and top-p are not stated in the paper. The separately maintained official
+    reproduction recipe uses temperature 1.0 and top-p 1.0, so those values are artifact-version-specific rather than proof
+    of the paper run.'
+  rollout_count: 16
+  temperature: unknown
+  inference_budget: Training generation is capped at 20,480 tokens, with an expected maximum of 16,384 and a 4,096-token soft-punishment
+    interval. AIME evaluation repeats the set 32 times with temperature 1.0 and top-p 0.7.
+  optimizer_or_scaffold: DAPO removes the KL term, uses GRPO-style group-normalized advantages, Clip-Higher with epsilon_low
+    0.2 and epsilon_high 0.28, Token-Level Policy Gradient Loss, Dynamic Sampling, and Soft Overlong Punishment. The paper
+    reports AdamW at constant 1e-6 with 20 rollout-step linear warm-up.
+audit:
+  source_mixture: Web-scraped problems and official competition-homepage problems, with manual annotation and LLM-assisted
+    integer-answer transformation. Source URLs, per-item provenance, mixture weights, transformation prompts, generator identity,
+    and acceptance statistics are not released.
+  split: The paper describes 17K prompts and uses AIME 2024 separately for validation. At Hugging Face revision 65877096c24ffa7abc4e4fa5edb95cf3413a5674,
+    Dataset Viewer exposes one train split with 1,791,700 rows; row 0 recurs at offsets 17,917 and 179,170, consistent with
+    repeated blocks. A deduplicated intended training manifest is not officially pinned.
+  decontamination: unknown
+  license: The Hugging Face dataset metadata declares Apache-2.0. The underlying web and competition items have no released
+    item-level licenses or redistribution-rights manifest.
+  lineage: Source problem and answer -> selection/manual annotation -> LLM rewrite to an integer target -> released prompt/ground-truth
+    row -> 16 online policy rollouts -> rule and length rewards -> dynamic group filtering -> token-level policy update. Original
+    text, transformation trace, rejected rewrites, rejected rollout groups, and row-to-source mapping are unavailable.
+  known_failure_modes:
+  - Integer-target rewriting can alter task semantics or introduce an incorrect transformed target; Appendix A gives an example
+    but no measured transformation error rate.
+  - Final-answer outcome reward does not verify intermediate reasoning and can suffer extraction or equivalence false positives
+    and false negatives.
+  - Soft Overlong Punishment mixes correctness with response length and can penalize a potentially valid but long trajectory.
+  - Dynamic Sampling removes all-correct and all-wrong groups from updates, creating a policy-dependent effective prompt distribution
+    and discarding useful failure/easiness evidence.
+  - The current public train split's repeated blocks can multiply epochs and distort sampling unless a revision and deduplication
+    policy are fixed.
+  - No disclosed decontamination result establishes separation between web/competition training sources and AIME 2024 or other
+    target evaluations.
+  - The official DAPO repository's current README points to a removed verl branch for training scripts; exact reproduction
+    requires the separately pinned verl-recipe commit and environment.
+  citation_status: verified
+  confidence: high
+  notes: Paper claims are grounded in arXiv v2 (20 May 2025). Artifact checks on 2026-07-21 pinned DAPO repository commit
+    33fe3176f0bb212588e84fc8ccf50dd554975144, DAPO-Math-17k revision 65877096c24ffa7abc4e4fa5edb95cf3413a5674, and verl-recipe
+    commit 230ee612279d552a4f34ecbfab931c213abd514d; the reproduction table points to verl commit 4f80e465c2ec79ab9c3c30ec74b9745de61d0490.
+  metadata_status: carded
+inclusion_reason: 'DAPO is a concrete Data Construction and Open Release recipe: it connects prompt sourcing and integer-answer
+  transformation to rule rewards, online rollout selection, and the optimizer, while its current release also exposes consequential
+  lineage and duplication risks.'
+related: []
+tags:
+- curated-card
+- primary-link-checked
+- artifact-verified
+- rlvr
+- math
+- open-release
+- dynamic-sampling
+- rule-reward
+status: verified
+needs:
+- 'needs_release: publish or pin the intended deduplicated 17K manifest, split semantics, immutable revision, and row-to-source
+  lineage'
+- 'needs_verifier: pin the exact training-time answer extractor/equivalence implementation and report false-positive and false-negative
+  tests'
+- 'needs_audit: disclose source licenses, transformation acceptance/error audit, decontamination, and benchmark-overlap results'
+- 'needs_repro: bind the paper run to exact code, container, hardware, random seeds, and rollout logs rather than a moving
+  recipe'
+one_line_summary: DAPO couples a 17K integer-answer math prompt recipe with rule-scored online rollouts, dynamic group filtering,
+  token-level loss, and length shaping, but the current public split and source lineage require audit before reuse.
+why_it_matters: 'For the Data Construction and Open Release track, DAPO shows that the effective RLVR dataset is not only
+  the prompt file: answer transformation, verifier behavior, rollout multiplicity, prompt-group filtering, sequence-length
+  shaping, and release version jointly decide which tokens receive gradient.'
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Verified arXiv v2, official project and DAPO repositories, official Hugging Face dataset/collection and Dataset Viewer
+    schema, official model page, official arXiv BibTeX, and current official verl-recipe. OpenReview content was challenge-gated
+    during this audit, so venue remains the accepted canonical arXiv value.
+curation_level: L4_chinese_review_ready
+category_ids:
+- data_construction_open_release_recipes
+- programmatically_verifiable_outcome_data

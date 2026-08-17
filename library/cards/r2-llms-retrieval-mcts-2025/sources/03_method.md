@@ -1,0 +1,3 @@
+The reported pipeline extracts conceptual units with DeepSeek-70B, uses them to retrieve coarse reference examples, and then runs hierarchical augmented MCTS with a policy model. At fine resolution it retrieves analogous steps from mathematical reference data and lets a process reward model score the resulting node with that additional context.
+
+The authors evaluate Llama-3.1-8B and Qwen2-7B on MATH500, GSM8K, and OlympiadBench-TO. The operative training consumer is not an offline finetuning loss: it is the test-time controller that repeatedly chooses retrieval, expansion, scoring, and back-propagation actions under an inference budget.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "InstructGPT 将示范、人工排序、奖励建模与策略优化拆分为一条可追溯的指令遵循对齐数据链路。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基础方法与数据/评测路线图",
+  "best_for_ch": "关于示范、人工排序、奖励建模与 PPO 的经典研究。",
+  "confidence_ch": "高",
+  "authors_ch": "Long Ouyang、Jeff Wu、Xu Jiang、Diogo Almeida、Carroll L. Wainwright、Pamela Mishkin、Chong Zhang、Sandhini Agarwal、Katarina Slama、Alex Ray、John Schulman、Jacob Hilton、Fraser Kelton、Luke Miller、Maddie Simens、Amanda Askell、Peter Welinder、Paul Christiano、Jan Leike、Ryan Lowe",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

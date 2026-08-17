@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-rebench V2 发布 32,079 个跨 20 种语言的预构建可执行仓库修复环境及 126,300 个 PR 衍生训练任务，并公开测试终态反馈与自动构造配方，但不可变回放、污染、权利与失败记录仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程任务数据发布、构造配方与可执行智能体环境",
+  "best_for_ch": "研究仓库智能体训练、RLVR、软件工程环境构造与测试型 verifier 审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Ibragim Badertdinov, Maksim Nekrashevich, Anton Shevtsov, Alexander Golubev",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "data_construction_open_release_recipes"
+  ]
+}

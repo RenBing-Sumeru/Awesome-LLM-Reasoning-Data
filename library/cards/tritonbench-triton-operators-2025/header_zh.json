@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TritonBench 覆盖 184 个真实 Triton 算子，并用 GPU 执行正确性与性能剖析共同评测生成代码。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Triton GPU 算子生成的双重程序化评测基准",
+  "best_for_ch": "需要评测 Triton 代码生成、性能优化或 GPU 算子正确性的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jianling Li, Shangzhan Li, Zhenye Gao, Qi Shi, Yuxuan Li, Zefan Wang, Jiacheng Huang, Haojie Wang, Jianrong Wang, Xu Han, Zhiyuan Liu, Maosong Sun",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

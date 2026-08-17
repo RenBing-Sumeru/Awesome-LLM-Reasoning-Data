@@ -1,0 +1,17 @@
+{
+  "title": "Can LLM-as-a-Judge Reliably Verify Rubrics in Agentic Scenarios?",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.29920",
+    "data": "https://github.com/THU-KEG/RuVerBench"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T08:52:35Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "Benchmark，含2458 个实例，将agent报告和代码与单项 rubric、人工合规标签配对，评测裁判可靠性",
+    "updated_at": "2026-07-24T08:52:35Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "RSR 在目标学生模型下权衡 token rank 与 surprisal，从每题 33 条教师轨迹中选择一条；它衡量适配性而非正确性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "学生条件化轨迹选择与开放数据发布",
+  "best_for_ch": "研究推理蒸馏、数据选择、多教师轨迹和决策谱系审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuming Yang、Mingyoung Lai、Wanxu Zhao、Xiaoran Fan、Zhiheng Xi、Mingqi Wu、Chiyue Huang、Jun Zhao、Haijun Lv、Jian Tong、Yunhua Zhou、Yicheng Zou、Qipeng Guo、Tao Gui、Qi Zhang、Xuanjing Huang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

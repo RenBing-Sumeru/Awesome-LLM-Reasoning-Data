@@ -1,0 +1,167 @@
+id: qwen3guard-2025
+title: Qwen3Guard Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Qwen Team
+source_role:
+- model_report
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- scalar_reward
+domains:
+- safety
+- content_moderation
+- reasoning
+- multilingual
+training_use:
+- sft
+- safety_alignment
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.14276
+  arxiv: https://arxiv.org/abs/2510.14276
+  code: https://github.com/QwenLM/Qwen3Guard
+  data: https://huggingface.co/datasets/Qwen/Qwen3GuardTest
+  project: https://qwenlm.github.io/blog/qwen3guard/
+  huggingface: https://huggingface.co/collections/Qwen/qwen3guard
+  doi: https://doi.org/10.48550/arXiv.2510.14276
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.14276
+data_object:
+  prompt_source: Generative Qwen3Guard reports over 1.19M positive/negative prompt and response samples, both human-annotated
+    and synthetic. It describes Self-Instruct, category seed prompts, keyword-guided prompt synthesis, paired safe/unsafe
+    examples, and translation to 15 additional languages; source corpora, seed membership, prompts, per-source counts, rights,
+    and manifests are unknown.
+  trace_author: Responses include human-authored and model-generated material. The report names base models such as Qwen2.5-72B-Base
+    for unsafe responses and outputs from QwQ, Qwen3, DeepSeek-R1, and DeepSeek distills for reasoning content. Qwen2.5-72B-Instruct
+    and Qwen3-235B-A22B produce preliminary labels; Qwen3-32B supports label distillation. Item-level authorship, mapping,
+    retention, and licenses are unknown.
+  answer_format: Gen receives moderation instructions, policy/categories, dialogue context, and target content, then outputs
+    risk and category; response classification also outputs refusal. Stream trains query-level risk/category and per-response-token
+    risk/category labels with a derived boundary token. The complete released training-record schema is unknown.
+  process_fields:
+  - moderation_instruction
+  - safety_policy
+  - dialogue_context
+  - risk_level
+  - safety_category
+  - refusal_label
+  - response_tokens
+  - boundary_token
+  environment_or_substrate: Gen is instruction-following SFT on instruction-tuned Qwen3. Stream attaches query and response
+    classification heads to Qwen3 and derives token labels from prefix rollouts, Generative Qwen3Guard judgments, and Qwen3-235B-A22B
+    LLM-as-judge verification. Exact rollout ensemble, environments, versions, and tokenization pins are unknown.
+  verifier_or_reward: For Gen annotation, multiple Qwen models generate preliminary labels and voting selects safety/category/refusal
+    labels; strict/loose models and Qwen3-32B refine controversial/noisy labels. For Stream token labels, Generative Qwen3Guard
+    scores rollout completions and Qwen3-235B-A22B verifies flagged prefixes. A separate GSPO demonstration uses Qwen3Guard-4B-Gen
+    as a safety reward judge; calibration, prompts, thresholds, error audits, and reusable reward implementation are incomplete.
+  terminal_predicate: For Stream label construction, a token becomes the boundary only when rollout assessment and the LLM
+    judge both identify unsafe content; all subsequent tokens receive the original sample-level unsafe/controversial label.
+    Gen SFT acceptance and the full downstream reward terminal predicate are otherwise unknown.
+recipe_metadata:
+  base_model: Generative Qwen3Guard is built from instruction-tuned Qwen3; Stream Qwen3Guard uses pre-trained Qwen3 as backbone.
+    Exact checkpoint IDs and per-size stage lineage are incomplete.
+  teacher: Qwen2.5-72B-Instruct and Qwen3-235B-A22B are named for preliminary auto labels; Qwen3-32B is named for label distillation.
+    Qwen3-235B-A22B is the Stream LLM judge. Their exact prompts, versions, and item mappings are unknown.
+  generator: LLMs generate Self-Instruct prompts and preliminary labels; Qwen2.5-72B-Base is an example unsafe-response generator.
+    For the separate safety-RL demonstration, Qwen3-4B generates eight responses per WildJailbreak prompt. Full generator
+    allocation and settings are unknown.
+  filtering_rule: No full core-guard training retention rule is released. The separate safety-RL demonstration removes prompt
+    groups whose eight Qwen3-4B outputs are all uniformly safe or uniformly unsafe; it yields 13.7k thinking and 6.7k non-thinking
+    samples. This reported application filter is not assumed for the 1.19M guard-training corpus.
+  sampling_protocol: The report describes policy-guided generation, paired examples, multilingual translation, data reweighting,
+    voting, and disjoint-partition refinement. Sampling temperatures, seeds, per-source rates, draw counts, and core-training
+    retention yields are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Stream uses per-token classification and a debouncing rule in evaluation; the report does not disclose
+    complete training/inference compute budgets, rollouts per prefix, or latency hardware configuration.
+  optimizer_or_scaffold: Gen uses vanilla SFT; Stream jointly trains query/response heads with cross-entropy and conditional
+    category loss. A distinct application experiment trains Qwen3-4B with GSPO using Qwen3Guard reward signals. Optimizer
+    hyperparameters, schedules, batches, weights, and the full release training scaffold are unknown.
+audit:
+  source_mixture: The report discloses more than 1.19M human-annotated and synthetic prompt/response samples and aggregate
+    language proportions, plus construction roles. It does not release a source manifest, seed sets, item counts by source/category,
+    full safety-policy versions, label records, prompts, source rights, or immutable dataset revisions. Qwen3GuardTest is
+    a released evaluation dataset, not the training corpus.
+  split: Disjoint A/B partitions are used for controversial-label building and distillation. Public benchmark/test datasets
+    and one released Qwen3GuardTest evaluation dataset are named, but train/validation/test memberships, construction, overlap
+    controls, and immutable split manifests are incomplete.
+  decontamination: unknown
+  license: Qwen3Guard model releases identify Apache-2.0. Rights and licenses for human-authored data, seed prompts, synthetic
+    sources, translations, labels, reasoning responses, rollouts, and evaluation inputs are unknown.
+  lineage: Official sources establish Qwen3 base/instruction-tuned models to Gen SFT and Stream heads, with Qwen-model label/refinement
+    roles and separate downstream GSPO/CARE demonstrations. Sample-to-generator-to-label-to-checkpoint mappings and revision
+    pins are unavailable.
+  known_failure_modes:
+  - The report says adversarial paraphrasing, obfuscation, or context manipulation may bypass the guard.
+  - Safety labels can reflect source-dataset cultural assumptions and produce unfair multilingual or demographic moderation
+    outcomes.
+  - Partial-context Stream classification can have higher false positives or false negatives, especially out of distribution
+    or in low-resource languages.
+  - Safety-policy versions, record provenance, labeler prompts/votes, calibration, error audit, retention, and rights are
+    not sufficient for independent reconstruction.
+  - The separately demonstrated safety-RL filter/reward setup should not be conflated with the guard's own SFT/token-label
+    training contract.
+  citation_status: verified
+  confidence: high
+  notes: Track 12 disclosure-ledger entry. It records disclosed guard training and deployment interfaces while preserving
+    record-level provenance, calibration, release, and downstream-reproduction gaps.
+inclusion_reason: Official Qwen report and releases disclose a safety-classification data object, Gen SFT and Stream token-label
+  construction, model artifacts, and a bounded safety-RL use case. The same sources leave important data, verifier, and audit
+  contracts undisclosed, making it a high-value Track 12 ledger entry.
+related:
+- qwen3-2025
+tags:
+- qwen
+- qwen3guard
+- frontier-report
+- data-disclosure-ledger
+- safety-classification
+- guardrail
+- token-level-classification
+- sft
+- rlaif
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3Guard discloses a 1.19M-scale human/synthetic safety-classification mixture, Gen SFT and Stream token-label
+  construction, and a separate safety-RL use case, while withholding record provenance, full label/reward calibration, and
+  reproducible training artifacts.
+why_it_matters: It lets the atlas distinguish a released guard model and partly described safety-data/feedback pipeline from
+  a reusable, fully audited filtering or RL-reward recipe.
+card: null
+needs:
+- 'needs_data: record-level prompt/response corpus, source manifests, seed sets, item counts, labels, translations, and immutable
+  revisions'
+- 'needs_verifier: safety-policy versions, labeler/judge prompts, vote/threshold settings, calibration, error analysis, and
+  category/refusal audits'
+- 'needs_metadata: base checkpoint IDs, generator allocation, filters, sampling, Stream rollout ensemble/counts, optimizer,
+  schedules, and compute'
+- 'needs_audit: split memberships, decontamination, source rights, item-to-checkpoint lineage, and reproducible evaluation/training
+  environment'
+- 'needs_code: complete data-construction and training implementation'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv technical report, Qwen release repository/post, official Qwen model collection/model card, and the
+    report-linked Qwen evaluation dataset were checked. Training data and full post-training artifacts are not released.

@@ -1,0 +1,1 @@
+A Setter generates `(problem, reference solution)`, a verifier returns a validity bit, and a Solver's empirical failure estimates difficulty. Setter reward is `validity × (1 − Solver accuracy)`, so invalid records receive zero reward and never enter Solver training. Hard integral verification and soft general-math judgment are explicitly separate contracts.

@@ -1,0 +1,1 @@
+Yutong Wang、Pengliang Ji、Chaoqun Yang、Kaixin Li、Ming Hu、Jiaoyang Li、Guillaume Sartoretti。《MCTS-Judge: Test-Time Scaling in LLM-as-a-Judge for Code Correctness Evaluation》。arXiv:2502.12468，version 2，2026。官方记录：https://arxiv.org/abs/2502.12468。由于尚未确认归档 venue、官方代码仓库或数据发布，此处引用以 arXiv 记录为临时版本。

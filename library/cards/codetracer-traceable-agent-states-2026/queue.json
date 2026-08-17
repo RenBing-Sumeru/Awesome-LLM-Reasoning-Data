@@ -1,0 +1,19 @@
+{
+  "title": "CodeTracer: Towards Traceable Agent States",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2604.11641",
+    "data": "https://huggingface.co/datasets/NJU-LINK/CodeTraceBench",
+    "code": "https://github.com/NJU-LINK/CodeTracer",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T14:22:49Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "四千多条代码代理轨迹含人工步骤核验",
+    "updated_at": "2026-07-16T14:22:49Z"
+  }
+}

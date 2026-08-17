@@ -1,0 +1,1 @@
+Do not treat the 1-5 score as a ground-truth scalar reward without the rubric and judge transcript. The benchmark evaluates generated text under instance criteria; it does not prove that a judge is calibrated across capabilities. Read the dataset card and task documentation before comparing leaderboard numbers, because score meaning is task-local.

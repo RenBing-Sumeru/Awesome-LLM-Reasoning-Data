@@ -1,0 +1,1 @@
+可把 CriticBench 作为反馈记录 schema：任务、domain、source dataset、original response、critique、corrected response、critique target、self/other 关系、评分规则和最终指标。它适合评估 critic model、reward-model candidate、self-correction pipeline 和 judge calibration。atlas 复用时要保留反馈是 explanatory、corrective、preference-like 还是 scalar-scored，因为这些契约支持的下游用途不同。

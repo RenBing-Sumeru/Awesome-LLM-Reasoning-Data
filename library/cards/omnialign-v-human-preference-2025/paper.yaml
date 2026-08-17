@@ -1,0 +1,122 @@
+id: omnialign-v-human-preference-2025
+title: 'OmniAlign-V: Towards Enhanced Alignment of MLLMs with Human Preference'
+year: 2025
+venue: ACL 2025
+authors:
+- Xiangyu Zhao
+- Shengyuan Ding
+- Zicheng Zhang
+- Haian Huang
+- Maosong Cao
+- Weiyun Wang
+- Jiaqi Wang
+- Xinyu Fang
+- Wenhai Wang
+- Guangtao Zhai
+- Haodong Duan
+- Hua Yang
+- Kai Chen
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- multimodal-alignment
+- vision-language
+- preference-learning
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.18411
+  arxiv: https://arxiv.org/abs/2502.18411
+  code: https://github.com/PhoenixZ810/OmniAlign-V
+  data: https://huggingface.co/datasets/PhoenixZ/OmniAlign-V-DPO
+  project: https://phoenixz810.github.io/OmniAlign-V/
+  huggingface: https://huggingface.co/datasets/PhoenixZ/OmniAlign-V-DPO
+  doi: https://doi.org/10.48550/arXiv.2502.18411
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Semantically rich natural and infographic images, paired with open-ended visual questions.
+  trace_author: GPT-4o generation with post-refinement; rejected answers are sampled from a LLaVA-NeXT baseline.
+  answer_format: Image, prompt, chosen answer, and rejected answer in JSON records for DPO.
+  process_fields:
+  - id
+  - image
+  - prompt
+  - chosen
+  - rejected
+  environment_or_substrate: Image-text conversational tasks spanning knowledge, inference, creation, and infographic understanding.
+  verifier_or_reward: An LLM judge selects the response that most departs from the original intent and context as the negative
+    answer; human experts review chart-answer merges.
+  terminal_predicate: A retained positive-negative response pair attached to an image and open-ended prompt.
+recipe_metadata:
+  base_model: LLaVA-NeXT and InternVL2 variants in the reported training experiments.
+  teacher: GPT-4o for question-answer generation and an LLM judge for DPO negative selection.
+  generator: A LLaVA-NeXT baseline trained on LLaVA-NeXT-778K for rejected-answer sampling.
+  filtering_rule: Keep semantically rich images; select a high-temperature response judged to diverge most from the source
+    answer's intent and context.
+  sampling_protocol: The official DPO release states 150K positive-negative pairs; the paper describes 205K SFT samples and
+    252 MM-AlignBench examples.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: SFT followed by Direct Preference Optimization.
+audit:
+  source_mixture: Curated natural and infographic image sources, GPT-4o-generated question-answer pairs, model-sampled negative
+    answers, LLM judgment, and limited human expert review for infographic refinement.
+  split: The official DPO page exposes a repository-level release; split policy should be checked against the pinned revision
+    before reuse.
+  decontamination: The paper uses public image corpora and standard VQA benchmarks; downstream users should audit image and
+    prompt overlap with evaluation sets.
+  license: The Hugging Face page exposes the release but license terms and rights for underlying images require verification
+    before redistribution.
+  lineage: Official arXiv paper, official GitHub repository, and official PhoenixZ Hugging Face DPO release were checked on
+    2026-07-14.
+  known_failure_modes:
+  - LLM-selected negatives can encode judge and generator blind spots
+  - Image-source rights and benchmark overlap require downstream audit
+  - Pairwise choices may reward answer style rather than visual grounding
+  citation_status: verified
+  confidence: high
+  notes: Formal title, authors, PDF affiliations, data schema and 150K-pair claim were verified from the paper and official
+    data page. The project repository calls the work ACL 2025; no proceedings record was used as the primary paper source.
+inclusion_reason: Officially released multimodal chosen-rejected records make preference feedback directly reusable for DPO-oriented
+  MLLM alignment.
+related: []
+tags:
+- multimodal
+- preference-pairs
+- dpo
+- human-alignment
+- vision-language
+one_line_summary: OmniAlign-V-DPO releases 150K image-grounded chosen-rejected pairs built from OmniAlign-V answers and model-sampled
+  negative responses for MLLM preference optimization.
+why_it_matters: 'It makes the preference contract explicit for multimodal alignment: a detailed image-grounded answer is positive,
+  while an intent-divergent sampled response is negative.'
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: arXiv HTML/PDF metadata, official GitHub repository, and official Hugging Face dataset page
+  confidence: high
+  notes: Paper title, author affiliations, code/data links, JSON schema, and reported DPO-pair count were checked.
+category_ids:
+- preference_reward_feedback_data

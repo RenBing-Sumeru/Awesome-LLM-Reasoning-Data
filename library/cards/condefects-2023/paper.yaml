@@ -1,0 +1,112 @@
+id: condefects-2023
+title: 'ConDefects: A New Dataset to Address the Data Leakage Concern for LLM-based Fault Localization and Program Repair'
+year: 2023
+venue: arXiv preprint
+authors:
+- Yonghao Wu
+- Zheng Li
+- Jie M. Zhang
+- Yong Liu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- program-repair
+- fault-localization
+- data-leakage
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2310.16253
+  arxiv: https://arxiv.org/abs/2310.16253
+  doi: null
+  code: https://github.com/appmlk/ConDefects
+  data: https://github.com/appmlk/ConDefects
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ConDefects paper and GitHub repository
+  trace_author: ConDefects authors and AtCoder data construction pipeline
+  answer_format: contest programs, defects, locations, repair targets, Java/Python data, and evaluation scripts
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: AtCoder-derived fault localization and program repair tasks
+  verifier_or_reward: program tests and fault-localization/repair evaluation
+  terminal_predicate: program tests and fault-localization/repair evaluation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: contest submissions and defect annotations
+  generator: ConDefects data construction to reduce leakage
+  filtering_rule: check Java/Python data, time-window tooling, and redistribution terms
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2310.16253; https://github.com/appmlk/ConDefects; https://www.youtube.com/watch?v=22j15Hj5ONk
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2310.16253'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: AtCoder single-statement repair scope; check Java/Python data and time-window tooling
+inclusion_reason: it highlights contamination control for repair and localization benchmarks
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- program-repair
+- fault-localization
+- data-leakage
+one_line: ConDefects provides post-cutoff-style fault localization and repair data to reduce leakage.
+why_it_matters: it highlights contamination control for repair and localization benchmarks
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ConDefects provides post-cutoff-style fault localization and repair data to reduce leakage.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms title, authors, BUCT/KCL affiliations, arXiv status, and GitHub artifact.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 117
+  primary_category_id: environment_agent_trajectory_data

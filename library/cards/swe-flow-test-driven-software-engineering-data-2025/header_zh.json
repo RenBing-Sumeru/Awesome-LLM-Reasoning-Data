@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Flow 将单元测试和运行时依赖图转化为可执行、增量式的软件开发任务。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "带阶段测试验证的测试驱动软件工程数据",
+  "best_for_ch": "研究过程监督、TDD 代理和软件工程执行奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lei Zhang, Jiaxi Yang, Min Yang, Jian Yang, Mouxiang Chen, Jiajun Zhang, Zeyu Cui, Binyuan Hui, Junyang Lin",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:59:51Z"
+}

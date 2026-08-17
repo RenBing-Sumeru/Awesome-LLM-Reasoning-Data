@@ -1,0 +1,119 @@
+id: game-rl-verifiable-game-data-2025
+title: 'Game-RL: Synthesizing Multimodal Verifiable Game Data to Boost VLMs'' General Reasoning'
+year: 2025
+venue: ICLR 2026
+authors:
+- Jingqi Tong
+- Jixin Tang
+- Hangcheng Li
+- Yurong Mou
+- Ming Zhang
+- Jun Zhao
+- Yanbo Wen
+- Fan Song
+- Jiahao Zhan
+- Yuyang Lu
+- Chaoran Tao
+- Zhiyuan Guo
+- Jizhou Yu
+- Tianhao Cheng
+- Zhiheng Xi
+- Changhao Jiang
+- Zhangyue Yin
+- Yining Zheng
+- Weifeng Ge
+- Guanhua Chen
+- Tao Gui
+- Xipeng Qiu
+- Qi Zhang
+- Xuanjing Huang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- vision-language
+- verifiable-data
+- game-reasoning
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2505.13886
+  arxiv: https://arxiv.org/abs/2505.13886
+  code: https://github.com/tongjingqi/Game-RL
+  data: https://huggingface.co/datasets/OpenMOSS-Team/GameQA-140K
+  project: null
+  huggingface: https://huggingface.co/datasets/OpenMOSS-Team/GameQA-140K
+  doi: https://doi.org/10.48550/arXiv.2505.13886
+  venue: https://openreview.net/forum?id=e4FqU4SyHL
+  openreview: https://openreview.net/forum?id=e4FqU4SyHL
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: States and objectives from 30 games with programmatically specified task types.
+  trace_author: Game-RL synthesis pipeline and game environments.
+  answer_format: Game image, question, step-by-step rationale, answer, and verifiable task metadata.
+  process_fields:
+  - image
+  - question
+  - rationale
+  - answer
+  - game
+  - task_type
+  environment_or_substrate: Programmatic game environments.
+  verifier_or_reward: Game code and task-specific rules verify answers and intermediate task outcomes.
+  terminal_predicate: The response satisfies the game-defined answer or state predicate.
+recipe_metadata:
+  base_model: Vision-language models trained and evaluated in the Game-RL study.
+  teacher: Game mechanics and synthesis templates create task instances.
+  generator: The pipeline renders game states and pairs them with questions, reasoning, and answers.
+  filtering_rule: Programmatic verification retains records consistent with game rules.
+  sampling_protocol: Pin the GameQA-140K revision and keep games or task types separated for evaluation.
+  inference_budget: Generation and verification cost depend on game simulation and rendering.
+  optimizer_or_scaffold: The paper trains VLMs with synthesized verifiable data and evaluates general reasoning.
+audit:
+  source_mixture: Rendered game states, programmatically generated tasks, rationales, and verified answers.
+  split: GameQA-140K covers 30 games and 158 task categories.
+  decontamination: Public game assets and task templates can leak into evaluation; isolate held-out games and templates.
+  license: Official repository license is Apache-2.0; check upstream game-asset terms before redistribution.
+  lineage: ICLR 2026 OpenReview record, official Game-RL repository, and GameQA-140K release.
+  known_failure_modes:
+  - Synthetic game tasks may not represent natural visual interaction.
+  - A code-verifiable answer does not itself establish that every free-form rationale is faithful.
+  citation_status: verified
+  confidence: high
+  notes: Verified arXiv paper, ICLR 2026 OpenReview record, official repository, GameQA-140K release, and affiliation block
+    reported with the paper.
+inclusion_reason: The release provides public multimodal records with programmatically verifiable answers and feedback signals
+  for reasoning research.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Game-RL synthesizes image-grounded game tasks whose answers can be checked by game code, yielding 140K multimodal
+  reasoning records.
+why_it_matters: It replaces uncheckable visual rationales with a game-state feedback contract.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified arXiv paper, ICLR 2026 OpenReview record, official repository, GameQA-140K release, and affiliation block
+    reported with the paper.
+category_ids:
+- preference_reward_feedback_data

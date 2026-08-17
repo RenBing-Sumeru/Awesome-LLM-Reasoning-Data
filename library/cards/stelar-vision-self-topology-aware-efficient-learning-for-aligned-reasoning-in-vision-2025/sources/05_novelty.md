@@ -1,0 +1,3 @@
+Chain-of-thought training normally supplies one linear solution structure for every problem. Tree-of-Thought and Graph-of-Thought expose alternative structures, but they are commonly used as manually specified inference procedures rather than as instance-level supervision for vision-language model post-training.
+
+STELAR-VISION changes the data object: each visual question is paired with multiple topology-conditioned responses, response-level correctness, and topology-level effectiveness. The novelty is not chain, tree, graph reasoning, SFT, or SimPO individually, but automatically generating and comparing these structures so the model can learn which topology fits each visual problem.

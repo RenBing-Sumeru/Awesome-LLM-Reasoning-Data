@@ -1,0 +1,6 @@
+The report names three broad source classes—public data, proprietary partnership data, and custom in-house datasets—for pre-training and post-training. It also reports rigorous filtering, reduced processing of personal information, and use of the Moderation API plus safety classifiers to prevent harmful or sensitive content. Dataset names, manifests, weights, counts, dates, versions, rights, filter rules, thresholds, error rates, rejected examples, and yields are not provided.
+
+OpenAI reports SFT, RLHF, and new supervision techniques, including scalable alignment data derived from smaller models. It also says GPT-4.5 inherited earlier refusal-behavior training and moderation-model use, and that instruction-hierarchy behavior was trained on collected system/user-message conflicts. The smaller-model identities, generated record types, conflict examples, label protocol, human/model proportions, preference units, reward model, verifier, objective, optimizer, schedules, rollouts, sampling, and checkpoints are unknown.
+
+The card describes evaluations, not a training environment: examples include an autograder for refusal metrics, a headless Kali Linux environment with 16 rollouts per Cyber CTF challenge and pass@12, and hidden tests plus human-written prompts/tests/hints for an OpenAI PR evaluation. These do not establish post-training rewards or verifiers.
+

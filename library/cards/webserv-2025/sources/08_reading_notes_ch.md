@@ -1,0 +1,6 @@
+- 先读 3.1–3.4 节与附录 A–B；它们比摘要更精确地定义产生数据的 state/action interface 与 reset substrate。
+- 将 4.3.1 节与公开发布分开理解：“每步 200 条 rollout”和“step 99”描述论文实验中的生成规模，不是已公开 rollout 数量；同时保留 workshop/arXiv 的标题与作者差异，以及 55.5% 对 57.3% 的版本差异。
+- 把 4.3.2 节、附录 C、generate.py 和 evaluator.py 一起读：Claude 4.5 Sonnet 提供 3-epoch SFT 启动数据，两个 Qwen3 模型接受带 dynamic filtering 的 GRPO，reward 是 task score 加一次性 -0.05 格式/浏览器错误惩罚。
+- 公开 SFT 的选择规则以 converter 为准：仅保留 success=true、score>0 且含 reasoning 的 session，失败记录会被跳过；发布的 messages/tools 又不含 success、score、reward、result 或 task ID，因此它们是 trajectory，不是可自证的 outcome record。
+- 解析前必须按字节顺序拼接 sft_training_part_00.jsonl 与 part_01，后者不是独立 JSONL shard。726 条中 303 条以 terminate 结束、423 条以其他浏览动作结束，不能仅凭序列化结果推断 terminal success。
+- 从 L3 晋升前，需要稳定发布、task/split manifest、明确数据权利、失败与 RL rollout 保留、outcome metadata、模型 checkpoint，以及 immutable environment/replay bundle。

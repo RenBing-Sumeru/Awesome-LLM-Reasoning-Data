@@ -1,0 +1,1 @@
+Use this work when designing a pipeline in which a model must supply preference labels after an initial seed stage. It helps identify the records that must be versioned—policy checkpoint, generation prompt, judge prompt, candidate set, and preference output—so that an iterative feedback loop remains auditable.

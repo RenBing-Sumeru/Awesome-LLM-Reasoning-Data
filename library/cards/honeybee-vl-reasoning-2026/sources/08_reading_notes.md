@@ -1,0 +1,6 @@
+- Read Table 4 before repeating the rounded headline: it reports 2.480M total records, split into 1.440M vision-language and 1.040M text-only. Keep its 28K-image and 350K-question diversity counts separate from repeated-trace row counts.
+- The answer contracts differ: existing ViRL questions use known answers to filter 16 traces, whereas generated questions use a three-of-four proxy over four same-teacher traces. Caption-and-solve concatenates an independently generated caption and solution.
+- The schema preserves pointers: `q_source` and `q_id` may be present while `question` or `image_path` is null. Reconstruction can require OpenThoughts3 or ViRL and their licenses.
+- The checked Hub conversion is partial: 1,360,000 materialized rows and 2,463,128 estimated rows. Do not substitute this estimate for the paper count.
+- pHash covers exact validation-image matches only. Benchmark gains and the 80% GPT-5.1-mini faithfulness judgment of HoneyBee-8B MathVista outputs do not certify individual released records or exclude semantic contamination.
+- The archived repository publishes evaluation scripts and PLM configs, not the generation pipeline, a formal release, or trained HoneyBee checkpoints; the rights surface combines CC-BY-NC, Llama 4 terms, and upstream terms.

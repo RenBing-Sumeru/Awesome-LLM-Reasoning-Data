@@ -1,0 +1,3 @@
+SWE-bench constructs real repository bug-fix tasks from issues and repair pull requests, testing whether models restore existing behavior. FEA-Bench retains executable environments and fail-to-pass/pass-to-pass oracles but changes task selection to feature addition: a pull request must introduce a new component and modify existing repository code that interacts with it.
+
+The novelty is therefore not a new test harness but feature-specific data selection and intent auditing, forcing both code completion and repository editing. It fills a task-type gap rather than proposing a new coding agent or training objective.

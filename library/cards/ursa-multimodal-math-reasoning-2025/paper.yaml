@@ -1,0 +1,163 @@
+id: ursa-multimodal-math-reasoning-2025
+title: Unlocking Multimodal Mathematical Reasoning via Process Reward Model
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Ruilin Luo
+- Zhuofan Zheng
+- Lei Wang
+- Yifan Wang
+- Xinzhe Ni
+- Zicheng Lin
+- Songtao Jiang
+- Yiyao Yu
+- Chufan Shi
+- Ruihang Chu
+- Jin Zeng
+- Yujiu Yang
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- multimodal_reasoning
+- visual_mathematics
+training_use:
+- sft
+- process_supervision
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/4757e472d97ca980c24a487622f7ff00-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2501.04686
+  code: https://github.com/URSA-MATH/URSA-MATH
+  data: https://huggingface.co/datasets/URSA-MATH/DualMath-1.1M
+  project: https://ursa-math.github.io/
+  huggingface: https://huggingface.co/URSA-MATH
+  doi: https://doi.org/10.48550/arXiv.2501.04686
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/4757e472d97ca980c24a487622f7ff00-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Stage I draws 1.43M source examples from MathV360K, MultiMath, MAVIS, Geo170K, and VarsityTutors. URSA-Alignment-860K
+    is sourced from MultiMath, MAVIS, and Geo170K. The checked Hub releases expose one train split each: 1,019,059 MMathCoT
+    rows, 1,100,779 DualMath rows, and 863,534 alignment rows. A row-level mapping to upstream item IDs, images, licenses,
+    and paper subsets is not disclosed.'
+  trace_author: Gemini-1.5-Flash-002 synthesizes or rewrites Stage-I CoT. URSA-8B generates approximately 553K incorrect solutions
+    for BEL. MIE uses the paper's external model G to caption, alter a visual condition, and continue an erroneous trace;
+    its exact deployed revision and prompts must be checked from the paper appendix.
+  answer_format: The released MMathCoT and DualMath tables each have image_url, instruction, and output string fields. MMathCoT
+    output is a stepwise solution and final answer. DualMath encodes stepwise binary labels in the output text using special
+    tokens; a checked first row contains <neg> markers. The tables store relative image paths rather than image binaries,
+    and DualMath's repository exposes only README.md and train.jsonl, so image resolvability is not established by that release
+    alone.
+  process_fields:
+  - image_url
+  - instruction containing image-grounded problem
+  - stepwise output trace
+  - embedded special-token step label
+  - final answer text
+  - synthesis route (BEL or MIE) is not present as a verified public column
+  environment_or_substrate: Offline CoT synthesis and dual-view process-label construction feed an URSA-8B process reward
+    model. Online PS-GRPO samples eight rollouts per prompt and uses a detected PRM-score drop to modify an otherwise binary
+    outcome reward. The public repository provides inference and scoring code, but no verified Stage-II construction or Stage-III
+    training implementation.
+  verifier_or_reward: BEL labels a prefix by the fraction of N continuations reaching a correct final answer, then locates
+    the first error by binary search. MIE deliberately inserts a visual misinterpretation and labels subsequent steps negative.
+    URSA-8B-RM is trained as a binary step classifier. PS-GRPO gives outcome- correct rollouts reward 1 absent a sufficiently
+    large relative adjacent-step PRM decrease, reward 1-gamma when a drop is detected, and 0 otherwise.
+  terminal_predicate: BEL's terminal outcome is correct-answer reachability under sampled rollouts. The exact answer checker,
+    rollout count for BEL, prompts, seeds, and per-row terminal verdicts are not released in the checked artifacts.
+recipe_metadata:
+  base_model: URSA uses SAM-B plus SigLIP-L as hybrid vision encoder and Qwen2.5-Math- Instruct as language backbone, with
+    a two-layer MLP connector. URSA-8B-RM is trained from URSA-8B.
+  teacher: Gemini-1.5-Flash-002 is reported for CoT synthesis; the model identity and version for every MIE generation and
+    automated filtering decision are unknown.
+  generator: CoT expansion, rewriting, and format unification generate MMathCoT; URSA-8B generates BEL error traces; MIE creates
+    visual-condition corruptions and continuations; URSA-8B generates online PS-GRPO rollouts.
+  filtering_rule: MMathCoT removes synthetic solutions that change the original answer, question it, or add assumptions to
+    force it. The exact row-level rejection log and the selection rule for the 15K PS-GRPO prompts are not released.
+  sampling_protocol: Stage III selects 15K MMathCoT examples. It uses 2 epochs, learning rate 2e-6, temperature 1.0, eight
+    rollouts per prompt, prompt/output maxima 6048/3072, bf16, batch size 512, and KL coefficient 0.003.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: The reported Stage-III run uses 15K prompts and approximately 18 hours. BEL rollout count and total Stage-II
+    synthesis budget are not disclosed.
+  optimizer_or_scaffold: PS-GRPO applies GRPO to the modified outcome reward. The reported main values are gamma=0.5 and rho=0.3;
+    the public repository's top level contains data, inference, models, outputs, and vendored vLLM, but no verified PS-GRPO
+    trainer or immutable paper-run config.
+audit:
+  source_mixture: Paper-level sources and approximate Stage-II yields are disclosed, but the public release lacks an upstream-item
+    manifest and a per-row BEL/MIE route. Hub viewer confirms three-column train tables, not full lineage.
+  split: All three checked Hub datasets expose a single train split. The paper's 15K RL subset and benchmark-evaluation splits
+    cannot be reconstructed from a release manifest.
+  decontamination: unknown
+  license: The checked Hub cards tag MMathCoT-1M and DualMath-1.1M GPL-3.0 and URSA_Alignment_860K MIT; the GitHub repository
+    and model cards state Apache-2.0. Compatibility with upstream questions, images, and generated derivatives remains unaudited.
+  lineage: Upstream image-question material -> Gemini CoT expansion/rewriting/unification -> MMathCoT -> URSA-8B -> BEL rollout
+    reachability labels plus MIE visual corruptions -> DualMath -> URSA-8B-RM -> eight PS-GRPO rollouts -> PRM drop detection
+    -> modified outcome reward. Released rows omit route, rollouts, judges, rejection decisions, and reward logs.
+  known_failure_modes:
+  - BEL values estimate continuation success under a finite rollout policy, not independent local-step truth.
+  - MIE can create unnatural or ambiguous image-text corruptions; labeling every later step negative can mislabel a valid
+    recovery.
+  - Direct scalar process-reward optimization produced reward hacking and shorter responses in the paper's variants.
+  - A PRM drop is a learned warning, not proof that a preceding step is wrong; gamma and rho trade false penalties against
+    weak differentiation.
+  - Relative image paths and absent image archives in DualMath prevent treating the text table as a self-contained multimodal
+    release.
+  - Single train splits, missing lineage, decontamination, rejection logs, seeds, and Stage-II/III code limit replication
+    and audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official NeurIPS proceedings PDF and supplement, arXiv v6, URSA-MATH GitHub repository and Apache-2.0 license, Hub
+    dataset/model APIs, and Dataset Viewer splits, rows, sizes, and fields were checked on 2026-07-23. Benchmark outcomes
+    are treated as system evidence, not proof of synthetic-trace or label quality.
+inclusion_reason: URSA is a published multimodal process-supervision stack that exposes a useful distinction among image-grounded
+  CoT, continuation-based logical labels, synthetic visual-error labels, a learned PRM, and PRM-assisted online RL.
+related: []
+tags:
+- multimodal-math
+- process-reward-model
+- process-supervision
+- visual-grounding
+- ps-grpo
+- synthetic-data
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data
+why_it_matters: For rollout and search trace data, URSA separates terminal outcome, a learned process score, a detected score
+  drop, and a modified RL reward—an essential distinction when multimodal traces are reused or audited.
+card: null
+needs:
+- 'unknown: row-level upstream provenance, image resolution, route labels, and license compatibility'
+- 'unknown: BEL rollout count, final-answer checker, prompts, seeds, and error calibration'
+- 'unknown: full rejected-generation ledger, 15K RL-subset manifest, and decontamination/overlap report'
+- 'unknown: public Stage-II synthesis and Stage-III PS-GRPO training code/configuration'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: curation
+  confidence: medium
+  notes: Official paper, supplementary material, GitHub repository, release license, Hub metadata, release revisions, and
+    Dataset Viewer schemas/row counts were checked. Training-data lineage, image accessibility, tree rollouts, and paper-
+    run PS-GRPO artifacts remain unknown.
+one_line_summary: URSA releases multimodal CoT and embedded-label process tables and trains a PRM for Best-of-N and PS-GRPO;
+  the release lacks full image, trajectory, and reward-lineage records needed to audit the reported construction pipeline.

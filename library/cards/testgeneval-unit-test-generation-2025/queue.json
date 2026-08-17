@@ -1,0 +1,19 @@
+{
+  "title": "TestGenEval: A Real World Unit Test Generation and Test Completion Benchmark",
+  "candidate_links": {
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/26ded5c8ee8ec1bc4caced4e1c9b1584-Abstract-Conference.html",
+    "data": "https://huggingface.co/datasets/kjain14/testgeneval",
+    "code": "https://github.com/facebookresearch/testgeneval",
+    "project": "https://testgeneval.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:01:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 TestGenEval，含1210组真实代码—测试文件对",
+    "updated_at": "2026-07-18T12:01:52Z"
+  }
+}

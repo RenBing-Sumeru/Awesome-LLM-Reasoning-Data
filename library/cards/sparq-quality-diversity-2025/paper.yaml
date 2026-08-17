@@ -1,0 +1,146 @@
+id: sparq-quality-diversity-2025
+title: 'SPARQ: Synthetic Problem Generation for Reasoning via Quality-Diversity Algorithms'
+year: 2025
+venue: arXiv
+authors:
+- Alex Havrilla
+- Edward Hughes
+- Mikayel Samvelyan
+- Jacob Abernethy
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- synthetic_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.06499
+  arxiv: https://arxiv.org/abs/2506.06499
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.06499
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The 7,500-example MATH training set initializes the working set; sampled parent problem-solution pairs are
+    recursively mutated into child problems and intended solutions.
+  trace_author: Gemma-2-27B-it writes child problem-solution pairs in the main setup, Gemma-2-9B-it assigns skill sets, and
+    a MATH-SFT Gemma-2-9B student writes 16 verification solutions; final SFT tuples use successful student solutions.
+  answer_format: A generated math problem paired with a student reasoning solution whose extracted numerical final answer
+    agrees with the generator-written intended answer.
+  process_fields:
+  - seed and parent problem-solution pair
+  - generated child problem
+  - generated intended solution and numerical answer
+  - model-assigned skill set
+  - sixteen student verification solutions
+  - extracted numerical answers and agreement labels
+  - solve rate and quality score
+  - archive cell and working-set decision
+  - retained problem and successful student-solution tuple
+  environment_or_substrate: A two-phase quality-diversity search first mutates a static or dynamically updated working set
+    into an all-generation archive, then filters the archive by policy-relative solve rate and assembles SFT tuples.
+  verifier_or_reward: Each child receives 16 student rollouts checked by numerical final-answer agreement with its intended
+    answer; solve rate is their agreement fraction, and quality is 1 minus solve rate only inside inclusive [0.1, 0.9].
+  terminal_predicate: A problem survives archive filtering when its solve rate is within [0.1, 0.9], and each SFT tuple additionally
+    requires a student rollout whose final numerical answer matches the intended answer; neither condition proves well-posedness
+    or reasoning validity.
+recipe_metadata:
+  base_model: Pretrained Gemma-2-9B fine-tuned for three epochs on the MATH seed is the student; same-model Gemma-2-2B and
+    Gemma-2-9B generators are tested in recursive self-improvement experiments.
+  teacher: Gemma-2-27B-it is the default problem generator; successful Gemma-2-9B student verifications, rather than the generator's
+    intended solutions, become downstream SFT traces.
+  generator: Sample a parent problem and solution, ask Gemma-2-27B-it to generate a novel child problem and intended solution,
+    then use Gemma-2-9B-it to assign up to three skills from the 100 most common seed skills.
+  filtering_rule: Set quality to 1 minus solve rate for solve rates in [0.1, 0.9] and zero otherwise; retain all successful
+    student verifications for each positive-quality problem. Static/dynamic and uniform/diverse variants change parent selection
+    and working-set replacement.
+  sampling_protocol: Initialize from MATH, sample 64 parents per mutation step, generate children, classify skills, run 16
+    student verifications, append every child to the archive, optionally update the working set, then filter and construct
+    problem/student-solution tuples.
+  rollout_count: 16
+  temperature: unknown
+  inference_budget: Each main method runs at most 5,000 mutation steps, producing a 320K-child archive and about 5M student
+    verification solutions; average retained output is about 80K unique problems and 500K tuples per method.
+  optimizer_or_scaffold: Four search variants—static uniform, static diverse, dynamic uniform, and dynamic diverse—precede
+    one-epoch downstream SFT at learning rate 2e-6 cosine-decayed to 2e-7 with batch size 16 on an 8x8 TPUv4 slice.
+audit:
+  source_mixture: MATH training seeds, Gemma-2-generated child problems and intended solutions, Gemma-2-9B-it skill labels,
+    and successful Gemma-2-9B student verification traces.
+  split: MATH train supplies seeds and synthetic training inputs; MATH test is in-distribution evaluation and AIME is out-of-distribution
+    evaluation. No released corpus split or manifest exists.
+  decontamination: unknown
+  license: The arXiv paper is CC BY 4.0; code and generated-data licenses are unknown because no official implementation or
+    corpus release was confirmed.
+  lineage: MATH seed to sampled parent to generated child and intended answer to skill classification to 16 student attempts
+    to numerical agreement and solve rate to archive/working-set decision to retained problem paired with successful student
+    solutions for SFT.
+  known_failure_modes:
+  - Numerical agreement with a generated intended answer can accept invalid premises, shared answer errors, lucky guesses,
+    or flawed intermediate reasoning.
+  - The paper finds harder accepted problem-solution pairs more likely invalid under a Gemini-2.5-flash alternative-solution
+    probe.
+  - Dynamic working sets can propagate high-scoring invalid parents and reward-hack the solve-rate proxy.
+  - Most generated problems have solve rate zero, causing low retained-problem yield and roughly 16 verification generations
+    per child.
+  - Retaining every successful verification oversamples easier accepted problems because they contribute more SFT traces.
+  - Diversity depends on a learned taxonomy of 100 seed skills and no more than three labels per problem.
+  - Perturbative child-score statistics did not separate valid from invalid parents in the appendix experiment.
+  - No official code, corpus, immutable archive, tuple IDs, decoding settings, decontamination ledger, or generated-data license
+    was confirmed.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2 paper and full appendix verified on 2026-07-21. Method evidence is detailed, but no reusable artifact
+    release was confirmed and benchmark gains do not certify record validity.
+inclusion_reason: SPARQ specifies a quality-diversity search recipe that converts recursively mutated math problems and policy-relative
+  answer-agreement rollouts into student-generated SFT tuples.
+related: []
+tags:
+- sparq
+- synthetic-problems
+- quality-diversity
+- solve-rate
+- self-improvement
+- math
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: SPARQ recursively mutates MATH problems, scores each child with 16 student rollouts, and turns successful
+  student solutions from nontrivial children into SFT tuples organized by learned skill cells.
+why_it_matters: It makes problem generation, difficulty filtering, diversity sampling, and tuple assembly explicit while exposing
+  invalid-problem propagation, verifier dependence, yield, and missing-release risks.
+card: null
+needs:
+- 'needs_code: executable implementation, parsers, prompts, and pinned model revisions'
+- 'needs_data: archives, working-set histories, skill labels, verification traces, selected tuples, and immutable manifests'
+- 'needs_audit: invalid-problem rate, numerical-checker false acceptance, reward-hacking analysis, deduplication, and decontamination'
+- 'needs_license: generated-data and code terms plus upstream MATH reuse review'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: arXiv v2, DOI, paper license, complete appendix, authors, and affiliations were verified; no official code, corpus,
+    project, model, or venue artifact was confirmed.

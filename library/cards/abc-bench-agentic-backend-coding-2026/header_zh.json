@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ABC-Bench 将 224 个后端开发任务放入容器化服务环境，以部署后的真实 HTTP API 测试验证智能体的端到端实现。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "容器化后端开发智能体基准",
+  "best_for_ch": "需要评测后端服务部署、跨文件修改和端到端 API 验证的代码智能体研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jie Yang, Honglin Guo, Li Ji, Jiazheng Zhou, Rui Zheng, Zhikai Lei, Shuo Zhang, Zhiheng Xi, Shichun Liu, Yuxin Wang, Bo Wang, Yining Zheng, Tao Gui, Xipeng Qiu",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

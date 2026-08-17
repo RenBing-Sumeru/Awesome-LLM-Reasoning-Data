@@ -1,0 +1,2 @@
+1. **模型规模结果：** 在论文使用 greedy pass@1 的评测下，相对各自 base model，ReST-EM 让 PaLM 2-S 与 PaLM 2-L 的 MATH 分别提高 5.94 和 6.34 个点；在 APPS 上，PaLM 2-S* 与 PaLM 2-L 分别提高 5.6 和 6.4 个点。大模型起点更强，增益仍不小于较小模型，支持经 verifier 过滤的自训练在这两个任务上可随模型扩展。
+2. **迭代消融与停止边界：** 在 MATH 的 PaLM 2-L 上，只做一轮但使用三倍 base-policy 样本时，pass@1 为 40.3%；迭代两轮和三轮分别达到 41.0% 与 41.9%。这说明更新 policy 后重新生成，比只收集更多旧 policy 数据更有效。但 APPS 第二轮在 APPS 与 HumanEval 上都回退，因此必须按留出表现停止，而不能按训练接受率停止。

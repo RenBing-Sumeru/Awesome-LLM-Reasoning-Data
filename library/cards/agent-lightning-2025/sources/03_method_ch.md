@@ -1,0 +1,2 @@
+Training-Agent Disaggregation 架构包含协调用户上传任务 batch 的服务器、执行智能体的客户端、用于任务/资源/trace 同步的 LightningStore，以及更新资源或模型的后端。环境和奖励可在 worker 本地运行，或作为共享服务池运行；没有发布规范环境包。LightningRL 抽取输入-输出-奖励转移，将 episode 回报分配给被选择的 LLM 调用，并把 token 级优化委托给 PPO、GRPO 或 REINFORCE++。报告的实现为一个 episode 中每个动作赋予最终回报的相同值。三个示例使用 Llama-3.2-3B-Instruct，分别采用 LangChain、OpenAI Agents SDK 或 AutoGen。每项任务可以运行多次，但统一的语料采样协议、提示筛选、rollout 数、保留/拒绝转移清单、随机种子和检查点包均未披露。
+

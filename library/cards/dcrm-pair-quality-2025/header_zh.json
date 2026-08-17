@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "DCRM 以奖励相关差异相对于词面和模型概率噪声的密度来选择偏好对，避免仅按奖励差距训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "偏好对质量度量与数据选择研究",
+  "best_for_ch": "适合构造离线偏好优化的优劣回答对，并需要超越单纯奖励差筛选标准的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chengyu Huang, Tanya Goyal（康奈尔大学）",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-15T18:20:00Z"
+}

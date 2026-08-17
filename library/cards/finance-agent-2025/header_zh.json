@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Finance Agent Benchmark 用专家撰写的 SEC filing 金融研究题评测工具型 agent。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 与 Vals v2 benchmark surface",
+  "best_for_ch": "关注金融研究 agent、SEC filing 检索、专家答案和高风险领域评测边界的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Antoine Bigeard、Langston Nashold、Rayan Krishnan、Shirley Wu",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T08:00:00Z"
+}

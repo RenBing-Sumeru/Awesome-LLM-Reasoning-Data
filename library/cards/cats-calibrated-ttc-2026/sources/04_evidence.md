@@ -1,0 +1,3 @@
+Across three models and nine datasets, the paper reports that calibrated procedures improve the quality achieved for a given repeated-sampling budget. One reported example is CaTS-ES on MathQA, where the result rises from 73.7 to 83.6 with an average budget of 16 samples.
+
+These results demonstrate a budget-matched improvement for the tested models and tasks, not a universal guarantee that calibration transfers. The relevant comparison includes the confidence-prediction cost, the stopping rule, the distribution of samples per prompt, and the aggregation baseline, because a lower average budget can conceal expensive hard cases.

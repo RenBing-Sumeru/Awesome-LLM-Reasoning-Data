@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "InT 将失败的在策略推理轨迹转为首错位置的定点修复记录，在后续强化学习前先用过程监督修补错误。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要从失败推理轨迹定位首错、构造定点纠错监督，并为结果奖励强化学习提供更好初始化的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Matthew Y. R. Yang、Hao Bai、Ian Wu、Gene Yang、Amrith Setlur、Aviral Kumar",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.07164",
+    "data": "https://huggingface.co/datasets/R2E-Gym/R2E-Gym-Lite",
+    "code": "https://github.com/R2E-Gym/R2E-Gym",
+    "project": "https://r2e-gym.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:38:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布约7,500个可执行软件环境，下载量大",
+    "updated_at": "2026-07-18T07:38:38Z"
+  }
+}

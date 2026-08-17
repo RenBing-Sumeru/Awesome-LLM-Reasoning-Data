@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "从多个来源收集数据，并按流程处理数据，数据量也足够",
+    "updated_at": "2026-07-13T12:02:07Z"
+  },
+  "updated_at": "2026-07-13T12:02:07Z"
+}

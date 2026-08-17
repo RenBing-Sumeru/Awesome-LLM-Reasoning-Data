@@ -1,0 +1,1 @@
+短答案可直接校验时，RLVR 的反馈较容易获得；软件工程 agent 则必须先浏览代码仓、调用执行环境并完成多步修改，最后才得到稀疏的终局信号。Agent-RLVR 围绕 GitHub issue、Python 仓库快照、Docker 环境、测试、完整 agent 轨迹与 patch、测试结果、可选 guidance 以及带 guidance 的再次尝试来组织记录。论文报告了来自 27 个仓库的 817 个训练环境和 8,186 条轨迹，但未发布这些记录。对 rollout、搜索与测试时轨迹这一分类而言，关键数据对象不是 SWE-Bench 分数，而是把首次轨迹、可执行反馈、teacher guidance、新轨迹和终局奖励连接起来的环境级谱系。

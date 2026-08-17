@@ -1,0 +1,1 @@
+Interpret gains against the exact perturbation construction and output baselines. The important question is whether a metric separates memorization from reward-induced representation change, not merely whether it differs between two model checkpoints.

@@ -1,0 +1,6 @@
+- Start with card §§2.1 and 3.1. Keep filter training, main-model post-training, and evaluation data as separate claims.
+- The refusal surface is internal multilingual single-turn policy-violating prompts, a separate-model assist/refuse grade, and deployed mitigations; it is not a released preference dataset.
+- Read Table 1 beside Table 2: model answer rates and filter false-negative rates measure different systems.
+- Read Table 4 with safeguard removal; do not compare it directly with production-prompt safety results.
+- Read the announcement for agentic-reasoner reward models, Nov. 1–14 silent rollout, and production-query hallucination evaluation. Traffic governance and training separation remain unknown.
+- Ask for reward/filter versions, source manifests, raw evaluation records, and production-data policy before any stronger conclusion.

@@ -1,0 +1,9 @@
+对指定的 `environment_agent_trajectory_data` track，BrowseComp-Plus 可作为 search-agent episode 的 controlled evaluation substrate。830 条 query record 可以连接到固定的 100,195-document corpus、人类 evidence/gold qrels、hard negative、公开 index 与 episode output。这样 evaluator 可以分别表示 query、environment state、search action、returned observation、retrieved ID、terminal status、cited answer 与多种 feedback output，而不是只保留一个 final accuracy bit。
+
+mixed feedback contract 支持 failure attribution。研究者可以区分 terminal/parsing failure、未检索到 evidence、ranking 较弱、未引用已检索 evidence 与 semantic answer failure。论文中的 retriever、reranker、`get_document`、oracle-positive-document、inference-effort、corpus-expansion 与 judge-comparison 实验提供了具体的 controlled ablation 模板。任何后续工作都应报告 judge 与 artifact version，也不能把 score gain 解释成 dataset quality 的证明。
+
+构建过程也构成一条 benchmark-building recipe：从困难事实问题出发，用具备 search 能力的模型提出 clue/evidence URL，抓取并解析页面，只保留可恢复证据的 case，训练并交叉检查 human annotator，标注 evidence 与 gold document，从分解后的 subquery 挖掘 hard negative，固定 corpus 与 index，开放 agent tool，并分别评测 retrieval、citation、terminal validity 与 final answer。更强的复用还应保留 rejected item、deduplication logic、source-level rights、immutable version，以及全部 successful/failed episode。
+
+四组公开 GPT-5/o3 run archive 对 trajectory schema 与成本/行为审计有价值，但它们是 partial release，不是通用 training dataset。在做 episode-level research 前，应逐个解密并计数，测量 completed/incomplete/error coverage，确认所有预期 query ID 是否存在，并固定 producer、retriever、model、prompt、judge、dependency 与 artifact revision。由于缺少 proprietary API snapshot、seed、retry state 与 unified manifest，准确历史 replay 仍不受支持。
+
+证据支持的安全用途是**仅限 evaluation 与 audit**。该 benchmark 可在比 live web 更稳定的 substrate 上比较 retriever 与 agent，也可用于制定 replayable web-agent data 的 release 标准。论文不支持把其 question、qrels、document 或 trajectory 当作 SFT example、preference pair、reward-model target、process supervision、RLVR reward 或 agent-training rollout。若要开展这些用途，必须另有明确 license、split/decontamination policy、完整 provenance、failure retention 与训练有效性研究。

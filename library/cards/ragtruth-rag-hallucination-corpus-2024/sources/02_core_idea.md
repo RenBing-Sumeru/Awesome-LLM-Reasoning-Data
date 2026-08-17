@@ -1,0 +1,1 @@
+RAGTruth contains 17,790 responses generated from 2,965 source instances; 7,664 responses contain hallucinations, with 14,289 annotated spans. Tasks include CNN/DailyMail summarisation, recent-news summarisation, QA, and data-to-text. Records retain source, model, temperature, response, span boundaries and types, quality, and split. The dataset is released under MIT.

@@ -1,0 +1,5 @@
+- 明确反馈边界：完整解答只由解析后的最终答案或 MiniWob 成功信号标注，没有步骤级 verifier。
+- 把 self-refine 理解为在最新负例条件下模仿最新答案正确的同伴 completion，而不是经过验证的错误修复。
+- Self-select 训练对象始终包含恰好三个随机换序候选、正负混合标签且至少一个正例；推理时没有正候选保证。
+- 区分公开的 40,457 条 direct-QA 与每个基础模型变体 2,800 条 GPT-CoT 热身记录，以及未公开的自生成 rollouts、`D_REF`、`D_SEL`、checkpoints 和账本。
+- 把下游结果和消融增益视作受测配方的证据，同时把论文报告的 8%–70% fully correct CoT 范围视作“答案正确不能认证 rationale 忠实性”的直接证据。

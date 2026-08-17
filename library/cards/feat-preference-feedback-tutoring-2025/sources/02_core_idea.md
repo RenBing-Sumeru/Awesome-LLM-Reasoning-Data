@@ -1,0 +1,3 @@
+FEAT contributes three complementary English tutoring-feedback datasets. DIRECT-Manual (DM) is generated collaboratively by humans and LLMs and is presented as higher quality but more costly. DIRECT-Generated (DG) is LLM-only and lower cost but lower quality. DIRECT-Augmented (DA) starts from DG and adds a small portion of DM to improve quality while retaining cost efficiency.
+
+The feedback contract is not a bare answer winner: feedback explains why an instructional response is preferable. This makes the data useful for preference learning and reward modeling aimed at pedagogical quality. The three resources also expose a collection-source distinction that must remain visible; DM, DG, and DA are not interchangeable labels with identical provenance.

@@ -1,0 +1,1 @@
+Long-context evaluation asks whether information can be found, while ICL benchmarks ask whether patterns can be imitated. CL-bench requires learning a knowledge system absent from pretraining and completing reasoning, calculation, and application tasks with 31K criteria. The novelty is treating context as a temporary curriculum rather than an external memory store.

@@ -1,0 +1,5 @@
+- 先区分书目信息：稳定 Atlas ID 对应 2025 年 arXiv 首次发布，而 canonical metadata 使用正式 AAAI 2026 proceedings 记录和 DOI。
+- 应在看 headline score 前先读 task object 与 execution framework。核心对象是仓库绑定任务、终态产物和定制 grader，而不是已发布 action-observation trajectory corpus。
+- ECR 与 TPR 必须分开解释：`Process=true` 只证明输出存在、非空且可解析；终态任务成功还要求任务特定检查后 `Result=true`。
+- 审计 replay 时优先看 arXiv Appendix B 的 framework/runtime 设置和 Appendix F 的具体失败与 verifier-gaming 案例，并配合固定 GitHub 树，而不是只看较小的 HF snapshot。
+- 可与 PaperBench 对读，比较两种 environment-bound agent evaluation 的不同 terminal contract；仍待核验的项目包括上游仓库 commit、容器 digest、完整 run/result provenance、rollout retention、contamination 控制和组件级许可。

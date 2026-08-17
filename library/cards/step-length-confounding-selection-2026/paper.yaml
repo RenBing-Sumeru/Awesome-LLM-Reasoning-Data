@@ -1,0 +1,114 @@
+id: step-length-confounding-selection-2026
+title: On the Step Length Confounding in LLM Reasoning Data Selection
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Bing Wang
+- Rui Miao
+- Chen Shen
+- Shaotian Yan
+- Kaiyuan Liu
+- Ximing Li
+- Xiaosong Yuan
+- Sinan Fan
+- Jun Zhang
+- Jieping Ye
+source_role:
+- construction_recipe
+- audit_failure
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- reasoning
+- mathematics
+- science
+training_use:
+- sft
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.918/
+  arxiv: https://arxiv.org/abs/2604.06834
+  venue: https://aclanthology.org/2026.findings-acl.918/
+  code: https://github.com/wangbing1416/ASLEC
+  data: https://huggingface.co/collections/wangbing1416/msms-cot-sft
+  project: https://github.com/wangbing1416/ASLEC
+  huggingface: https://huggingface.co/collections/wangbing1416/msms-cot-sft
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.918
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.918/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LIMO-v2 and AceReason-1.1-SFT math problems.
+  trace_author: QwQ-32B, Qwen3-32B, DeepSeek-R1-Distill-Qwen-32B, and gpt-oss-120b source models.
+  answer_format: Question, verified CoT response, final answer, step segmentation, and corrected naturalness score.
+  process_fields:
+  - question
+  - reasoning_trace
+  - answer
+  - step_boundary
+  - first_token_ratio
+  - selection_score
+  environment_or_substrate: Offline reasoning-data generation and SFT selection.
+  verifier_or_reward: Math-Verify correctness filtering; corrected likelihood-based selection score.
+  terminal_predicate: Math-Verify accepted answer during collection; benchmark accuracy after SFT.
+recipe_metadata:
+  base_model: Qwen3-4B-Base, Qwen3-8B-Base, Qwen3-4B-Instruct, and Qwen2.5-7B-Instruct targets.
+  teacher: Four listed source LLMs for response generation.
+  generator: Temperature/top-p sampled source-model responses.
+  filtering_rule: ASLEC-DROP excludes step first-token probabilities; ASLEC-CASL regresses out first-token-ratio effect before
+    ranking.
+  sampling_protocol: LIMO-v2 selects five of twenty candidates per question; AceReason selects ten thousand of forty thousand
+    candidates.
+  rollout_count: 20
+  temperature: 0.6
+  inference_budget: Max generation length 64K tokens; source-specific sampling details in paper.
+  optimizer_or_scaffold: SFT on selected trajectories.
+audit:
+  source_mixture: Multi-source, multi-solution LIMO-v2 and AceReason trajectories, with generated data released.
+  split: 800 LIMO-v2 problems and sampled 10K AceReason problems; benchmark evaluations listed in paper.
+  decontamination: No dedicated contamination audit claimed; inspect upstream and benchmark overlap.
+  license: Verify official code, Hugging Face collection, source models, and upstream dataset terms.
+  lineage: 'Primary sources: https://aclanthology.org/2026.findings-acl.918/; https://github.com/wangbing1416/ASLEC; https://huggingface.co/collections/wangbing1416/msms-cot-sft'
+  known_failure_modes:
+  - First token may not be the only confounder.
+  - Step segmentation can alter scores.
+  - Online on-policy selection remains untested.
+  - Manual supplementation can affect collection distribution.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, selection methods, experiments, limitations, official code, and Hugging Face data collection
+    checked on 2026-07-15.
+inclusion_reason: It audits and corrects the score that decides which verified multi-step reasoning trajectories enter SFT.
+related: []
+tags:
+- reasoning-data-selection
+- naturalness
+- debiasing
+- sft
+status: verified
+one_line_summary: ASLEC removes step-length bias from likelihood-based reasoning-data selection by dropping or regressing
+  out first-token effects.
+reading_priority: essential
+paper_type: Reasoning-data selection audit, debiasing method, and data release
+best_for: Readers using likelihood or naturalness scores to curate multi-step reasoning SFT traces.
+confidence: high
+why_it_matters: It exposes how a formatting-dependent denominator can silently change which reasoning traces are trained on.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper, official code, and generated-data Hugging Face collection linked by the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

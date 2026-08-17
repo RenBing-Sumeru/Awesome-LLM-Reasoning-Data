@@ -1,0 +1,1 @@
+核心贡献是一条自动步骤级监督流水线，用来训练和使用数学 process reward model。机制是从部分解答继续采样，看后续是否能得到正确最终答案，由此估计当前步骤或前缀的潜力；这个信号再训练 verifier，用于排序或强化推理路径。最接近的对照是 PRM800K 这类人工过程标签，以及 outcome-only reward model。反馈契约仍是 answer-derived：步骤得分来自其 continuation 成功率，不是形式化 checker 证明该步骤本身有效。

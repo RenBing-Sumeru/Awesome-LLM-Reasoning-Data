@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Llama 4 Herd 报告了超过 30T 的多模态训练 token、200 种语言，以及 Behemoth 为 Scout 和 Maverick 提供教师能力；但数据清单和后训练反馈均为 unknown。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态模型技术报告与数据披露账本",
+  "best_for_ch": "审计多模态训练与蒸馏披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Meta",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T08:30:05Z"
+}

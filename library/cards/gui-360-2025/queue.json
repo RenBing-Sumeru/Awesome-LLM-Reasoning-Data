@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态GUI轨迹数据，数据量大",
+    "updated_at": "2026-07-22T10:32:56Z"
+  },
+  "updated_at": "2026-07-22T10:32:56Z"
+}

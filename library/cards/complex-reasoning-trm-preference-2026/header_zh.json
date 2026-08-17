@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该论文通过偏好数据刻画、评测并优化复杂推理能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "复杂推理特征、评测与偏好优化论文",
+  "best_for_ch": "研究偏好数据、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Haoran Zhang、Yafu Li、Shi Wang、Shilin Wang、Shunkai Zhang、Xiaoye Qu、Lu Cheng",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T13:02:12Z"
+}

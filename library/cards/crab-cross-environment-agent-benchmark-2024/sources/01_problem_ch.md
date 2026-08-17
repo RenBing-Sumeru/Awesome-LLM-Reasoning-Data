@@ -1,0 +1,1 @@
+一手来源是 arXiv:2407.01511、CRAB 项目页和 CAMEL-AI 官方仓库；论文 2024-07-01 首次提交，2025-07-20 修订到 v4。CRAB 要解决的是多模态 agent 如何跨多个 GUI 环境完成任务，而不是只在单个网页、桌面或手机环境里评测。评测面是 instruction-driven episode，包含环境状态、截图/观察、动作和 graph evaluator 谓词。它应作为跨环境 agent benchmark 与框架收录，不是 reward-model 数据集。证据边界在 CRAB Benchmark-v0、运行环境、task/evaluator graph 版本和 agent 通信设置。

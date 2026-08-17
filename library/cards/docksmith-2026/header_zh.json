@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DockSmith 将通过 Docker 构建与测试验证的多智能体环境构造交互筛成 SFT 数据；公开发布的是关联 2,876 个实例的 39,719 个按智能体拆分的聊天片段，而非 39,719 条完整 episode。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程环境构造、智能体轨迹数据发布与 SFT 配方",
+  "best_for_ch": "研究 SWE agent 环境、执行反馈、轨迹筛选、可重放性与数据许可审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jiaran Zhang、Lu Ma、Yanhao Li、Fanqi Wan、Di Qi、Xin Wu、Zhewei Huang、Liangyu Chen、Yingwei Ma、Qi Han、Xiangyu Zhang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

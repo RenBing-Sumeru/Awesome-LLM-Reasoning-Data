@@ -1,0 +1,108 @@
+id: fineverify-agentic-search-2026
+title: 'FineVerify: Scaling Test-Time Compute with Fine-Grained Self-Verification for Agentic Search'
+year: 2026
+venue: arXiv preprint
+authors:
+- James Xu Zhao
+- Hui Chen
+- Bryan Hooi
+- See-Kiong Ng
+source_role:
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- agentic-search
+- information-seeking
+training_use:
+- test_time_compute
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2606.00660
+  arxiv: https://arxiv.org/abs/2606.00660
+  venue: null
+  code: https://github.com/XuZhao0/fineverify
+  data: https://github.com/XuZhao0/fineverify
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2606.00660
+data_object:
+  prompt_source: Four agentic-search benchmarks, including BrowseComp-Plus.
+  trace_author: GPT-5-mini and Gemini-3-flash generate sampled search trajectories.
+  answer_format: Question, candidate trajectory, decomposed sub-questions, per-sub-question verification judgments, aggregated
+    score, and selected answer.
+  process_fields:
+  - prompt
+  - search_trajectory
+  - subquestion
+  - evidence_check
+  - verification_score
+  - aggregate_score
+  - selection
+  environment_or_substrate: Multi-step web information-seeking and answer synthesis.
+  verifier_or_reward: The model decomposes a question into checkable sub-questions and applies the same explicit criteria
+    to verify each candidate.
+  terminal_predicate: The candidate with the highest aggregated verification score is selected after the sampling budget is
+    spent.
+recipe_metadata:
+  base_model: GPT-5-mini and Gemini-3-flash in the reported experiments.
+  teacher: null
+  generator: A sampled agentic-search policy that produces complete trajectories.
+  filtering_rule: FineVerify decomposes the original question, scores each candidate against every sub-question, then ranks
+    by aggregate verification.
+  sampling_protocol: Compare four to twelve sampled trajectories with majority voting, weighted voting, Best-of-N, solution
+    aggregation, and confidence verification.
+  rollout_count: Four and twelve sampled trajectories are highlighted in the paper.
+  temperature: See official repository and paper implementation settings.
+  inference_budget: Number of full sampled agent trajectories plus verification work.
+  optimizer_or_scaffold: Fine-grained self-verification and aggregated candidate ranking.
+audit:
+  source_mixture: Official arXiv PDF and official GitHub repository linked on the paper front page.
+  split: Four agentic-search benchmarks and two model families.
+  decontamination: The paper reports benchmark-error auditing but no independent contamination audit.
+  license: Verify repository and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2606.00660
+  known_failure_modes:
+  - self-verification-bias
+  - incomplete-decomposition
+  - evidence-retrieval-error
+  - aggregation-error
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF checked on 2026-07-21. The front page lists the National University of Singapore and links the
+    official code-and-data repository.
+inclusion_reason: It makes verifier granularity and candidate selection the mechanism through which additional agent trajectories
+  improve at inference time.
+related: []
+tags:
+- test-time-compute
+- agentic-search
+- self-verification
+- reranking
+- web-agents
+status: verified
+one_line_summary: FineVerify turns each sampled agent trajectory into sub-question-level checks, enabling a more reliable
+  selection policy as the test-time trajectory budget grows.
+reading_priority: useful
+paper_type: Fine-grained verification for agentic test-time scaling
+best_for: Readers designing budgeted search agents whose final answers depend on several independently checkable claims.
+confidence: high
+why_it_matters: It shows that adding trajectories is useful only when the selector can inspect their multi-claim evidence
+  rather than rely on a single confidence score.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official PDF and linked code/data repository verified.
+category_ids:
+- scaling_rlvr_test_time_compute

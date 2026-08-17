@@ -1,0 +1,4 @@
+The authors study open-weight models and mathematical benchmarks, so their RL-versus-SFT findings do not establish the same ordering for closed models, non-math domains, or another evaluation budget. Reuse should retain this scope instead of presenting the table as a general training-law result.
+
+The standardized stack reduces but does not erase uncertainty: AIME'24 and AMC'23 contain only 30 and 40 examples, and the reported protocol still selects model-specific hyperparameters. Before comparing a new method, audit the benchmark size, seed distribution, prompt/answer-extraction implementation, model revision, and whether the tuning budget was comparable.
+The authors also release evaluation artifacts rather than the third-party training corpora behind every model, so the audit can establish evaluation robustness but cannot reconstruct data lineage or isolate every training-side cause.

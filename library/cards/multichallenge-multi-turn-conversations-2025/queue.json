@@ -1,0 +1,19 @@
+{
+  "title": "MultiChallenge: A Realistic Multi-Turn Conversation Evaluation Benchmark Challenging to Frontier LLMs",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.958/",
+    "data": "https://huggingface.co/datasets/ScaleAI/MultiChallenge",
+    "code": "https://github.com/ekwinox117/multi-challenge",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T09:48:53Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以完整多轮对话、目标回答和逐实例 rubric，测试模型维护上下文状态与持续约束的能力",
+    "updated_at": "2026-07-25T09:48:53Z"
+  }
+}

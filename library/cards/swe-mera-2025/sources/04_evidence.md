@@ -1,0 +1,7 @@
+The paper evaluates multiple coding models on tasks collected from September 2024 through June 2025. Aider uses up to six attempts, so pass@1 and pass@6 are distinct. On the 2024 subset, DeepSeek-R1-0528 reports 34.5% pass@1 and 50.0% pass@6; Devstral-Small-2505 reports 17.5% and 34.0%; DeepSeek-R1-Distill-Qwen-32B reports 18.0% and 31.5%. These are author-run model comparisons, not evidence that the current dynamic release reproduces the same values.
+
+Construction evidence includes execution and filtering rather than human certification of every row. Qwen3-32B rejects bottom-quartile tasks on correctness and test quality, but the paper does not report full judge calibration or human agreement. The authors themselves warn that reference solutions and automated tests can reject creative alternatives or miss errors.
+
+Current release inspection confirms MIT metadata, about 6.82k rows, four splits, and fields for commits, patches, tests, commands, image name, and timeouts. Current code inspection confirms base-commit cleaning and Docker/local modes. It also confirms the underconstrained solved condition: PASS_TO_PASS is enforced, FAIL_TO_PASS is not.
+
+The release therefore supports schema and evaluator audit, but not canonical trajectory analysis. No complete required set of agent observations, tool calls, reflections, intermediate patches, test logs, successes, failures, and terminal reasons is bundled across leaderboard submissions.

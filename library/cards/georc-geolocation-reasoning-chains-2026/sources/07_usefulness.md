@@ -1,0 +1,2 @@
+GeoRC can evaluate visually grounded reasoning in VLMs, train critics for geographic cues, or compare how well different MLLM judges align with expert reasoning. For training, expert chains can be decomposed into image–observation–inference–conclusion supervision, with negative examples containing missing cues, hallucinated cues, or incorrect attribution. Evaluation should report both location accuracy and reasoning precision/recall/F1, while manually reviewing valid model cues absent from the references so that lexical overlap is not mistaken for reasoning correctness.
+

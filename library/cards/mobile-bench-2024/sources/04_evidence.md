@@ -1,0 +1,5 @@
+The main evidence is the released benchmark design plus the paper's reported baseline evaluations. The paper reports 832 entries across SAST, SAMT, and MAMT; 29 applications; and 103 usable APIs. For quality verification, the authors sampled 100 data points from each task group and compared instruction-derived CheckPoint sequences with human CheckPoint sequences, reporting overlap of 0.94 for SAST, 0.85 for SAMT, 0.80 for MAMT, and 0.86 overall.
+
+In the baseline table, GPT-4 reaches PassRate 80.96 on SAST, 63 on SAMT, and 26.5 on MAMT, while CheckPoint-l2 is 83.76, 77.35, and 52.98 respectively. The API ablation is important evidence for the hybrid design: with GPT-4, removing APIs lowers CheckPoint-l2 from 83.76 to 72.73 on SAST, 77.35 to 56.74 on SAMT, and 52.98 to 31.69 on MAMT.
+
+The evidence boundary is narrow. CheckPoint is process coverage, not a proof of semantic success. PassRate uses GPT-4 judgment and may drift with model version and prompt. Instance-level confidence depends on the released task files, phone state, installed apps, app data, API availability, and action-history logging.

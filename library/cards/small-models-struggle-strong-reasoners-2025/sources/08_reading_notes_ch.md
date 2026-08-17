@@ -1,0 +1,5 @@
+- 强教师生成的正确轨迹不会自动成为小学生更好的训练数据。
+- Long-CoT 与教师规模是相关但不同的构造变量。
+- 主要 3B 实验中 Mix-Long 与 Mix-Large 采用 1:4 比例。
+- Paired-correct filtering 控制最终答案成功，不控制过程有效性。
+- 官方项目、MIT 仓库和 Hugging Face 组织提供制品发现入口，但精确数据集与 checkpoint 映射仍需确认。

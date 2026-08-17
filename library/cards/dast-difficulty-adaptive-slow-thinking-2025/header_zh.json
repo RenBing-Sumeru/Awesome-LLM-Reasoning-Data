@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DAST 对每个 MATH 训练题收集 20 条自生成推理响应，以正确性和难度相关的 Token Length Budget 校准奖励、构造偏好对，并用 SimPO 训练长度自适应的慢思考行为。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "难度自适应推理偏好数据构造与 SimPO 训练配方",
+  "best_for_ch": "关注 self-rollout、长度预算、偏好对构造与测试时推理计算分配的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yi Shen、Jian Zhang、Jieyun Huang、Shuming Shi、Wenjing Zhang、Jiangze Yan、Ning Wang、Kai Wang、Zhaoxiang Liu、Shiguo Lian",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,1 @@
+BiGGen Bench 于 2024 年 6 月提交 arXiv，论文状态标注为 NAACL 2025 Main Conference。它针对的是开放生成评测过粗的问题：仅用 helpfulness/harmlessness 之类抽象标签，难以覆盖不同能力和具体实例要求。一个评测对象包含 capability/task 元数据、instruction context、输入、参考答案和逐实例 1-5 分 rubric。反馈契约是人类或 LLM evaluator 按 rubric 打分，因此它属于 judge/rubric 型评测面，不是确定性 verifier，也不是训练配方。

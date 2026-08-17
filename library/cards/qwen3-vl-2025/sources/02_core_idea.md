@@ -1,0 +1,4 @@
+Post-training has three stages. SFT uses two 32K epochs and then a mixed 32K/256K epoch with long documents and videos; standard responses train non-thinking variants and CoT responses train thinking variants. The reported SFT set has about 1.2M samples, one-third text-only and two-thirds image-text/video-text. A separate Long-CoT cold start is approximately balanced between vision-language and text queries.
+
+Strong-to-weak distillation first combines off-policy teacher outputs for response distillation, then lets the student generate on-policy sequences and minimizes KL divergence between student and teacher logits. Final RL separates Reasoning RL—math, code, logic, visual grounding, and visual puzzles with rule/code verification—from General RL, which mixes instruction, preference, format, and targeted corrective rewards. These stages expose distinct response, sequence, logit, rollout, and reward objects even though none is released as training data.
+

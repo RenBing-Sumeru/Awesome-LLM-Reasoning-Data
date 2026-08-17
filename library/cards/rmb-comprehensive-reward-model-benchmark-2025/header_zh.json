@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "49类真实场景、约1.8万偏好比较，同时测 pairwise 与 Best-of-N，含代码和推理场景的奖励反馈。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多场景奖励模型评测、成对偏好与 Best-of-N 基准论文",
+  "best_for_ch": "需要在现实场景中同时评估奖励模型的成对排序和 Best-of-N 选择能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Enyu Zhou, Guodong Zheng, Binghai Wang, Zhiheng Xi, Shihan Dou, Rong Bao, Wei Shen, Limao Xiong, Jessica Fan, Yurong Mou, Rui Zheng, Tao Gui, Qi Zhang, Xuanjing Huang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:53:20Z"
+}

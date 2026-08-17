@@ -1,0 +1,3 @@
+The central contribution is a three-level taxonomy: Tool, Analyst, and Scientist. It describes increasing autonomy and changing responsibilities within the research lifecycle, giving readers a way to distinguish assistance with a task from broader participation in scientific work. The paper also connects this progression to future challenges.
+
+Treat the three names as comparative lenses, not as automatic quality labels. A system can be valuable as a tool while still requiring a person to interpret results or choose the next experiment. When reading a claimed scientific agent, locate its work in the lifecycle and ask whether its responsibilities match the evidence described, rather than inferring autonomy from fluent explanations alone.

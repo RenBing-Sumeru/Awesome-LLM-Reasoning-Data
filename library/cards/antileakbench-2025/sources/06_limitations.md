@@ -1,0 +1,1 @@
+The authors limit automation to QA because other tasks make embedded knowledge and automatic sample quality hard to verify. Wikidata and Wikipedia can contain errors. Reuse should sample-check claims, revisions, and aliases before treating the benchmark as contamination-free.

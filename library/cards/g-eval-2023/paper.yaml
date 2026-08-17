@@ -1,0 +1,111 @@
+id: g-eval-2023
+title: 'G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment'
+year: 2023
+venue: EMNLP 2023 main
+authors:
+- Yang Liu
+- Dan Iter
+- Yichong Xu
+- Shuohang Wang
+- Ruochen Xu
+- Chenguang Zhu
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- summarization-dialogue
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2023.emnlp-main.153/
+  arxiv: https://arxiv.org/abs/2303.16634
+  doi: https://doi.org/10.18653/v1/2023.emnlp-main.153
+  code: https://github.com/nlpyang/geval
+  data: https://github.com/nlpyang/geval
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2023.emnlp-main.153/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: prompted CoT plus form-filling evaluator; experiments on SummEval, Topical-Chat, and QAGS
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: NLG task input, candidate output, evaluation criterion, CoT form-filling judge response, discrete score distribution,
+    and scalar score
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: summarization and dialogue NLG evaluation settings
+  verifier_or_reward: scalar GPT-4 judge score validated by correlation with human ratings
+  terminal_predicate: score extraction from the rubric-conditioned GPT-4 judge
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: G-Eval prompt-and-rubric construction for LLM-as-a-judge evaluation
+  filtering_rule: pin judge model, prompt template, score-token weighting, scoring criterion, and benchmark dataset before
+    reuse
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://aclanthology.org/2023.emnlp-main.153/;
+    https://arxiv.org/abs/2303.16634; https://arxiv.org/e-print/2303.16634; https://github.com/nlpyang/geval'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official GitHub repository is MIT licensed; downstream data licenses for referenced NLG benchmarks should still
+    be checked.
+  lineage: 'Primary lead: https://arxiv.org/abs/2303.16634'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology verifies EMNLP 2023 main status and DOI. GitHub is MIT licensed and contains data/prompts/results/evaluation
+    scripts. Main feedback is scalar judgment, not pairwise preference.
+inclusion_reason: Foundational rubric-like LLM-as-metric method.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- summarization-dialogue
+one_line: G-Eval uses GPT-4 chain-of-thought form filling as an auditable scalar judge for NLG outputs.
+why_it_matters: It is an early high-impact LLM-as-a-judge evaluation surface whose prompt and score contract must be audited
+  before reward reuse.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: G-Eval uses GPT-4 chain-of-thought form filling as an auditable scalar judge for NLG outputs.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: ACL Anthology verifies EMNLP 2023 main-conference status and DOI; official arXiv source verifies the shared Microsoft
+    Cognitive Services Research affiliation block and GitHub verifies code.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,103 @@
+id: dynamic-cheatsheet-test-time-memory-2026
+title: 'Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory'
+year: 2026
+venue: EACL 2026 Long Papers
+authors:
+- Mirac Suzgun
+- Mert Yuksekgonul
+- Federico Bianchi
+- Dan Jurafsky
+- James Zou
+source_role:
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.eacl-long.333/
+  arxiv: https://arxiv.org/abs/2504.07952
+  venue: https://aclanthology.org/2026.eacl-long.333/
+  code: https://github.com/suzgunmirac/dynamic-cheatsheet
+  data: https://github.com/suzgunmirac/dynamic-cheatsheet
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.eacl-long.333
+data_object:
+  prompt_source: AIME, Game of 24, equation balancing, GPQA-Diamond, and MMLU-Pro tasks.
+  trace_author: A black-box language model produces solutions and self-curates reusable strategies, snippets, and corrections.
+  answer_format: Query, retrieved memory, response, curation decision, compact memory item, and later reuse.
+  process_fields:
+  - query
+  - memory_retrieval
+  - response
+  - curation
+  - memory_update
+  - reuse
+  environment_or_substrate: Persistent external memory across inference episodes.
+  verifier_or_reward: Self-curated utility judgments; no explicit ground-truth labels or human feedback are required for the
+    update.
+  terminal_predicate: Answer the current query while retaining concise reusable information for later queries.
+recipe_metadata:
+  base_model: Claude 3.5 Sonnet and GPT-4o in the reported experiments.
+  teacher: null
+  generator: The queried black-box language model.
+  filtering_rule: Keep concise, useful, and transferable strategies, code snippets, and corrections; revise or discard faulty
+    entries.
+  sampling_protocol: Retrieve relevant memory before solving and curate memory after an attempt.
+  rollout_count: Not the primary scaling variable; see the paper for comparison settings.
+  temperature: Model API settings; see official code.
+  inference_budget: Additional prompting and memory curation cost per episode.
+  optimizer_or_scaffold: Dynamic Cheatsheet, including cumulative curation and retrieval-and-synthesis variants.
+audit:
+  source_mixture: Official ACL Anthology PDF and official code repository.
+  split: Reported tasks include math, arithmetic puzzles, equation balancing, GPQA-Diamond, and MMLU-Pro.
+  decontamination: Persistent memory can transfer observations among evaluation instances; preserve the paper’s episode ordering
+    and separate held-out conditions when reproducing.
+  license: Check repository, API, and benchmark licenses before reuse.
+  lineage: https://aclanthology.org/2026.eacl-long.333/
+  known_failure_modes:
+  - self-curation-error
+  - memory-staleness
+  - task-order-dependence
+  - context-overhead
+  citation_status: verified
+  confidence: high
+  notes: Official EACL PDF checked on 2026-07-21. It lists Stanford University and Together AI and links the official code
+    and released results.
+inclusion_reason: It converts accumulated inference experience into a persistent, self-curated memory, making test-time compute
+  reusable across a sequence of reasoning tasks.
+related: []
+tags:
+- test-time-compute
+- test-time-learning
+- memory
+- self-curation
+- black-box-llm
+status: verified
+one_line_summary: Dynamic Cheatsheet uses self-curated persistent memory so a black-box model can reuse lessons discovered
+  during earlier inference episodes.
+reading_priority: essential
+paper_type: Test-time learning with adaptive memory
+best_for: Readers studying how repeated inference effort can compound across tasks without parameter updates.
+confidence: high
+why_it_matters: It expands test-time scaling from repeated attempts on one prompt to accumulated, auditable experience over
+  a task stream.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official conference paper and code link verified.
+category_ids:
+- scaling_rlvr_test_time_compute

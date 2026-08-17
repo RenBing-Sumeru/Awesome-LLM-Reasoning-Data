@@ -1,0 +1,1 @@
+The practical handle is the changed supervision unit: one step plus its compressed context. Evidence comes from PRM800K and cross-domain math tests; the first reuse check is whether your labels and merging policy preserve meaning.

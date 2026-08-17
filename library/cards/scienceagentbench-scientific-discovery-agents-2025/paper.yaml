@@ -1,0 +1,107 @@
+id: scienceagentbench-scientific-discovery-agents-2025
+title: 'ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery'
+year: 2025
+venue: ICLR 2025
+authors:
+- Ziru Chen
+- Shijie Chen
+- Yuting Ning
+- Qianheng Zhang
+- Boshi Wang
+- Botao Yu
+- Yifei Li
+- Zeyi Liao
+- Chen Wei
+- Zitong Lu
+- Vishal Dey
+- Mingyi Xue
+- Frazier N. Baker
+- Benjamin Burns
+- Daniel Adu-Ampratwum
+- Xuhui Huang
+- Xia Ning
+- Song Gao
+- Yu Su
+- Huan Sun
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- benchmark
+- expert_evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://openreview.net/pdf?id=6z4YKr0GK6
+  arxiv: https://arxiv.org/abs/2410.05080
+  code: https://github.com/OSU-NLP-Group/ScienceAgentBench
+  data: https://huggingface.co/datasets/osunlp/ScienceAgentBench
+  project: null
+  huggingface: https://huggingface.co/datasets/osunlp/ScienceAgentBench
+  doi: null
+  venue: https://openreview.net/pdf?id=6z4YKr0GK6
+  openreview: https://openreview.net/pdf?id=6z4YKr0GK6
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark or data release; see the linked primary artifact.
+  trace_author: Domain experts, annotators, or the official release pipeline.
+  answer_format: Benchmark prompts with reference answers, judgments, scores, or released evaluation records.
+  process_fields:
+  - prompt
+  - response
+  - label_or_verdict
+  environment_or_substrate: The task environment and evaluation protocol described in the official release.
+  verifier_or_reward: Official evaluation protocol, expert judgment, or the released verifier.
+  terminal_predicate: The released reference, judgment, score, or evaluation outcome.
+recipe_metadata:
+  base_model: See official release.
+  teacher: Domain experts or official annotators.
+  generator: Official release pipeline.
+  filtering_rule: See official paper or data card.
+  sampling_protocol: See official paper or data card.
+  rollout_count: null
+  temperature: null
+  inference_budget: See official paper or data card.
+  optimizer_or_scaffold: Evaluation protocol described in the official release.
+audit:
+  source_mixture: Official primary paper/data release and linked official artifacts.
+  split: See official release.
+  decontamination: Hold out public benchmark records where applicable.
+  license: See official artifact page.
+  lineage: https://huggingface.co/datasets/osunlp/ScienceAgentBench
+  known_failure_modes:
+  - Public benchmark records can enter future training data and inflate evaluation.
+  citation_status: verified
+  confidence: high
+  notes: Primary paper, venue or publication status, authors, and public artifact links were checked against official sources.
+inclusion_reason: The release supplies expert-authored, rubric-, judgment-, or reference-grounded evidence for evaluating
+  reasoning systems.
+related: []
+tags:
+- benchmark
+- expert_evaluation
+- judgment
+one_line_summary: ScienceAgentBench rigorously evaluates data-tool-using language agents on expert-validated scientific discovery
+  tasks.
+why_it_matters: It makes expert-grounded evaluation evidence and its audit boundary visible.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, venue or publication status, authors, and public artifact links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

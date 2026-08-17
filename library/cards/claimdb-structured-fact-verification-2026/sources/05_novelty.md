@@ -1,0 +1,1 @@
+Earlier fact-verification data use web passages, knowledge-graph triples, or small tables as evidence. ClaimDB makes truth depend on compositional queries over large real databases and treats undecidability from available evidence as a first-class label. The central changes are evidence scale, executable contracts, and abstention rather than simply more textual claims.

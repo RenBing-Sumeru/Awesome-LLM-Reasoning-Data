@@ -1,0 +1,3 @@
+RLVR assumes that a verifier can separate correct from incorrect outputs, yet executable tests miss cases and model judges make systematic mistakes. If optimisation follows this feedback, false positives can reinforce wrong programs and false negatives can suppress valid ones, so measured reward can diverge from actual task success and the required verifier quality remains unclear.
+
+This study makes verifier error an experimental variable for code generation and scientific reasoning. It introduces controlled reward noise or a model judge while retaining ground-truth checks for evaluation, yielding an empirical robustness threshold and guidance on precision versus recall.

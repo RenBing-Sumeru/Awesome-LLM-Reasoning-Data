@@ -1,0 +1,2 @@
+
+论文报告，tool-augmented agent 的平均 LLM 调用次数是 CoT 的 9.2 倍，LATS 每个请求达到 71.0 次；LLM inference 与 tool 平均分别占时延的 69.4% 和 30.2%，CPU 或外部工具可使 GPU idle time 最高占运行时间的 54.5%。在报告设置中，prefix caching 平均降低 60.1% 的 prefill latency 和 15.7% 的 agent 端到端时延。HotpotQA 的 LATS parallel scaling 将 child node 从 1 增至 16 时，准确率提高 14.4 个百分点且时延减少 196.3 秒，但并发资源压力上升。Table III 给出选定 HotpotQA 配置的汇总逐查询测量：8B/70B 下 Reflexion 为 41.53/348.41 Wh，LATS 为 22.76/158.48 Wh，而 ShareGPT 为 0.32/2.55 Wh。Table III 属于不同证据：其中 MW/GW 数值是把逐查询 GPU 能耗乘以假设流量得到的外推，不是直接的 datacenter measurement。上述结果都不能证明原始测量数据已发布，也不能证明所记录轨迹天然具有高数据质量。

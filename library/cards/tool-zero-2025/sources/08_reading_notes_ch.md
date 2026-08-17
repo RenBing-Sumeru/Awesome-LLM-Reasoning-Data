@@ -1,0 +1,6 @@
+- “Pure RL”应读作“没有 SFT checkpoint”，而不是“没有标签”：ground-truth function call 与 reference AST 直接驱动奖励。
+- 要区分宽泛的 Thought/Action/Observation 轨迹形式化与实际离线 completion-level 训练流程；Tool-Zero 没有发布 live environment。
+- 记住 GG-GRPO 的切换：早期使用部分 token overlap，后期使用 exact AST equality；每个 completion 只有一个标量奖励，没有 step label。
+- 复现时固定 ACL 规范 appendix 的八个 rollout；较早 OpenReview 版本写的是四个。
+- 复用前审计发布缺口：ToolACE 公开工件有 11,300 行，而表 2 报告保留 99,266 条 ToolACE 记录。
+- MindSpeed-RL 只能视为通用支撑基础设施；benchmark 增益是模型行为证据，不是 GG-GRPO 代码已发布或数据质量已证明的证据。

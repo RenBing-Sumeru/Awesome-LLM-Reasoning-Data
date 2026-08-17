@@ -1,0 +1,1 @@
+Do not compare FEVER accuracy and FEVER score as if they are the same metric. Keep label correctness, evidence correctness, and NEI behavior separate. Read the official scorer before interpreting leaderboard numbers.

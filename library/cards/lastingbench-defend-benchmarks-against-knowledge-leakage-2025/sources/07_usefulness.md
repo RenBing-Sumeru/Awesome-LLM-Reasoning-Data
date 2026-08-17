@@ -1,0 +1,1 @@
+Use it when maintaining a long-context QA benchmark whose answers may be memorized. Run the three probes, manually review retrieved evidence and the chosen rewrite, publish the defended item with its new answer, and compare original versus defended scores. Do not use a defended score as a general contamination certificate or silently overwrite the original benchmark.

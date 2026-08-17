@@ -1,0 +1,5 @@
+- Read Figure 1 with §§2.2-2.5: Lean accepts formal artifacts, while the LLM reviewer only filters whether a decomposition appears useful.
+- Read Tables 2-4 with Table 3; the 70% Lean-IMO-Bench result and 12/12 Putnam result use search whose cost ranges from 46 to about 3,000 LLM calls per solved Putnam problem.
+- Table 5 is the key negative result: compiler-feedback revision helps Gemini 3.1 Pro but not Goedel-Prover-V2-32B under the reported setup.
+- Tables 6 and the Putnam A5 reviewer ablation separate DAG memory and decomposition review from generic best-of-N sampling.
+- Inspect the pinned CSV and proof repository before reuse; the benchmark and successful proofs are public, but implementation, environment locks, prompts, failed branches, and decontamination evidence are not.

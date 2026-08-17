@@ -1,0 +1,1 @@
+Traditional RLVR relies on deterministic verifiers, while rubric RL often generates criteria automatically. This work has experts define atomicity and intent principles and extends the same rubrics from evaluation to enterprise RL. The novelty is feedback-object design and cross-domain transfer, not an optimisation algorithm.

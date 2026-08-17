@@ -1,0 +1,1 @@
+核心贡献是一套动态 Android benchmark：每个任务都有初始化、交互、成功判断和清理逻辑，覆盖日常手机 app 操作。机制上，环境生成任务参数和初始状态，agent 通过 UI/辅助功能观察与 Android 动作交互，最后由任务 validator 检查设备或 app 状态。相对 AITW、MiniWoB 式网页任务、静态 GUI grounding 数据和更窄的 Android harness，AndroidWorld 的方向标签是“状态会变化的可执行手机环境评测”。

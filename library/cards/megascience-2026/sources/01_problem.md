@@ -1,0 +1,5 @@
+Open post-training corpora emphasize math and code, while scientific questions often lack trustworthy references and sufficiently detailed worked solutions.
+
+MegaScience combines verified textbook references with source-specific selection and solution annotation to release a 1.25M seven-discipline reasoning mixture. The decision boundary is whether a serialized training record survives reference-answer checks, difficulty filtering, minhash deduplication, and benchmark decontamination; the central artifact is data consumed by science reasoning SFT, not a model-only release.
+
+L4 facts: primary source arXiv:2507.16812; COLM 2026; data object MegaScience with 1.25M science reasoning instances, including a 650K TextbookReasoning component from about 12.8K textbook questions; evaluation surface The paper trains Llama 3.1, Qwen 2.5, and Qwen 3 base families and reports consistent science-reasoning gains from the 1.25M mixture; the 650K textbook component spans seven disciplines.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

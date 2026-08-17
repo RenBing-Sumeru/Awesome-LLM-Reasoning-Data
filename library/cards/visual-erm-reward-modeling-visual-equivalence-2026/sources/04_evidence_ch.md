@@ -1,0 +1,1 @@
+把 Visual-ERM 用于 Qwen3-VL-8B-Instruct 的 RL 后，chart-to-code 提高 8.4 点，table 和 SVG 分别平均提高 2.7 与 4.1 点；在 VC-RewardBench 上，8B Visual-ERM 明显超过 Qwen3-VL-235B-Instruct，并接近领先闭源模型。该证据支持细粒度视觉反馈，但只覆盖三类结构化图像。 这些结果支持论文的核心主张，但只适用于其公开数据、模型规模、候选预算和评测协议；跨领域使用仍需重新验证。

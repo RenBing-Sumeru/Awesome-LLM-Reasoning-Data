@@ -1,0 +1,119 @@
+id: mcts-judge-test-time-scaling-2025
+title: 'MCTS-Judge: Test-Time Scaling in LLM-as-a-Judge for Code Correctness Evaluation'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yutong Wang
+- Pengliang Ji
+- Chaoqun Yang
+- Kaixin Li
+- Ming Hu
+- Jiaoyang Li
+- Guillaume Sartoretti
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- state_action_level
+- trajectory_value
+domains:
+- code
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2502.12468
+  arxiv: https://arxiv.org/abs/2502.12468
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Code-correctness evaluation problems; no benchmark manifest, reward records, or executable environment was
+    released in the checked evidence.
+  trace_author: unknown
+  answer_format: MCTS judge states/actions, self-assessments from historical trajectory actions, UCT values, and a stated
+    unit-test-level reward mechanism.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The LLM-as-a-Judge decision and self-assessment are judgment-required. The paper states a high-precision
+    unit-test-level reward mechanism, but its executable implementation is not released.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: MCTS-Judge uses MCTS to decompose code-correctness evaluation, combining historical-action self-assessment with
+    UCT and a unit-test-level reward mechanism.
+  filtering_rule: The LLM-as-a-Judge decision and self-assessment are judgment-required. The paper states a high-precision
+    unit-test-level reward mechanism, but its executable implementation is not released.
+  sampling_protocol: The arXiv paper reports three benchmarks and five LLMs. No official code, reward records, MCTS traces,
+    or reproducibility environment was confirmed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: MCTS-Judge uses MCTS to decompose code-correctness evaluation, combining historical-action self-assessment
+    with UCT and a unit-test-level reward mechanism.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Code-correctness evaluation problems; no benchmark manifest, reward records, or executable environment was released
+    in the checked evidence. -> MCTS judge states/actions, self-assessments from historical trajectory actions, UCT values,
+    and a stated unit-test-level reward mechanism. -> The LLM-as-a-Judge decision and self-assessment are judgment-required.
+    The paper states a high-precision unit-test-level reward mechanism, but its executable implementation is not released.
+    -> reported final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - LLM-as-a-Judge self-assessment can be self-confirming; unshared unit-test reward implementation, traces, and evaluation
+    records prevent independent replay.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It is an instructive high-risk trace source: MCTS trajectories, self-assessment, UCT values, and executable
+  reward evidence must be preserved before LLM judging can be treated as reusable feedback.'
+related: []
+tags:
+- mcts
+- llm-judge
+- test-generation
+- simulated-execution
+- test-time-scaling
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A test-time MCTS framework for code-correctness judging that exposes trajectory-aware self-assessment and
+  unit-test-level reward as its feedback objects.
+why_it_matters: 'It is an instructive high-risk trace source: MCTS trajectories, self-assessment, UCT values, and executable
+  reward evidence must be preserved before LLM judging can be treated as reusable feedback.'
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

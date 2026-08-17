@@ -1,0 +1,3 @@
+The central decision is to divide retrieval by the resolution at which search needs help. Deep Logical Retrieval first maps the input to an abstract conceptual template and supplies similar problem–answer examples, while a second retrieval stage finds analogous intermediate steps during tree expansion.
+
+Those records do not replace the generator or the verifier. They alter the information available to both: retrieved templates inform candidate generation, retrieved steps give the process reward model more context for scoring, and MCTS spends its next expansions where the combined evidence is most favorable.

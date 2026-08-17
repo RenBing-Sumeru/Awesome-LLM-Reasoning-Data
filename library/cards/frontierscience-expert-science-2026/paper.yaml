@@ -1,0 +1,99 @@
+id: frontierscience-expert-science-2026
+title: 'FrontierScience: Evaluating AI''s Ability to Perform Expert-Level Scientific Tasks'
+year: 2026
+venue: arXiv
+authors:
+- Miles Wang
+- Robi Lin
+- Kat Hu
+- Joy Jiao
+- Neil Chowdhury
+- Ethan Chang
+- Tejal Patwardhan
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- science
+- reasoning
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.21165
+  arxiv: https://arxiv.org/abs/2601.21165
+  code: null
+  data: https://huggingface.co/datasets/openai/frontierscience
+  project: null
+  huggingface: https://huggingface.co/datasets/openai/frontierscience
+  doi: https://doi.org/10.48550/arXiv.2601.21165
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Olympiad and PhD-level science problems
+  trace_author: Olympiad medalists, coaches, and PhD scientists
+  answer_format: Problem, reference solution or rubric, response, criterion score
+  process_fields:
+  - problem
+  - track
+  - rubric
+  - response
+  - score
+  environment_or_substrate: Expert scientific reasoning
+  verifier_or_reward: Granular rubric evaluation for research tasks
+  terminal_predicate: Response satisfies expert scientific solution criteria
+recipe_metadata:
+  base_model: Frontier language models
+  teacher: Olympiad and PhD-level experts
+  generator: Write and verify original science problems
+  filtering_rule: Retain original, expert-verified items
+  sampling_protocol: Several hundred questions including 160 open gold items
+  rollout_count: null
+  temperature: null
+  inference_budget: Record release and judge settings
+  optimizer_or_scaffold: Research-task rubrics
+audit:
+  source_mixture: Official arXiv paper and OpenAI Hugging Face release
+  split: 160 open gold items plus additional benchmark items
+  decontamination: Original expert problems reduce published-data overlap
+  license: Consult official data card
+  lineage: https://huggingface.co/datasets/openai/frontierscience
+  known_failure_modes:
+  - Open-ended scientific task judging remains difficult.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked.
+inclusion_reason: FrontierScience supplies expert scientific rubrics beyond multiple-choice knowledge tests.
+related: []
+tags:
+- science
+- rubric
+- expert_reasoning
+one_line_summary: FrontierScience pairs original Olympiad and PhD-level science tasks with granular research-task rubrics.
+why_it_matters: It targets expert scientific work rather than saturated factual exams.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official sources checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,5 @@
+对于智能体 SFT，工具仓库结合了从 GitHub 获取的真实 MCP tool specifications 与通过层级领域演化得到的合成工具。报告称系统从 系统级指令 与工具组合中合成数千个 agents，为任务提供明确的成功、工具使用和评估 rubrics，并用 LLM 生成的用户 personas 模拟多轮交互。一个有状态的 tool simulator 执行调用、更新状态，并引入受控成功、部分失败和边界情况。LLM judge 仅保留满足任务 rubrics 的 trajectories。
+
+当模拟 fidelity 不足时，报告增加真实 sandboxes，特别用于 coding 与 software engineering。这些环境执行代码，并采用 test-suite pass rates 等客观信号。对于 RL，报告称使用覆盖数学、STEM、逻辑、instruction following、faithfulness、coding/SWE、safety 和通用任务的 Gym-like 框架。数学/STEM/逻辑 prompts 使用专家标注、内部提取和开放数据集；以 SFT 模型的 pass@k 选择中等难度。coding 使用开放与合成的 problems/judges 以及从预训练数据中检索的人类编写 unit tests；SWE 环境则由 GitHub pull requests、issues 和 executable tests 构建。
+
+反馈是混合式的。instruction following 结合 code-interpreter checks、LLM-as-judge 和 hack detection；faithfulness 使用 sentence-level judge reward model；safety 使用演化攻击及带二元 rubric labels 的 judge。对于主观任务，K2 self-critique 使用 core、prescriptive anti-reward-hacking 与 human-annotated rubrics 做 pairwise rankings。来自可验证任务的 on-policy rollouts 会细化 critic。报告未公开工具列表、数据记录、prompts、rubric 文本、judge 实现、校准、阈值或保留与拒绝数量。

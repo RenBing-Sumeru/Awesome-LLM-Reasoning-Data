@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ChartMimic 用 chart-to-code 生成、代码执行和渲染图相似度评测 LMM 的跨模态推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2025 / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注多模态推理、可执行代码生成、图表重建、评分契约和污染风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Cheng Yang 等（Tsinghua University、Tencent AI Lab）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T09:17:07Z"
+}

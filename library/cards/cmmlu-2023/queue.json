@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T12:53:34Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "中文版本的mmlu，常用评测",
+    "updated_at": "2026-07-14T12:53:34Z"
+  }
+}

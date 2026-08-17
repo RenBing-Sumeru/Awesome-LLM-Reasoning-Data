@@ -1,0 +1,1 @@
+With LLaMA-3-8B-Instruct fixed as policy across nine tasks, Table 1 reports 61.5 overall for explicit-RM Best-of-5 versus 52.7 for greedy search, an 8.8-point gain; beam search reaches 63.3. The comparison supports reward-guided search in this 8B/environment configuration, not universal transfer to other reward models or environments.

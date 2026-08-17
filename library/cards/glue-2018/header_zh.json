@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GLUE 是 ICLR 2019 的多任务 NLU benchmark，包含 9 个英文句子/句对任务和 diagnostic set。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2019 / arXiv 的 NLU benchmark",
+  "best_for_ch": "需要 NLU 多任务基线、subtask split 口径和 leaderboard scorer 审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Alex Wang 等（New York University, DeepMind）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

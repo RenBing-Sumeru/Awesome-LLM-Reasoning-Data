@@ -1,0 +1,17 @@
+{
+  "title": "DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.11456",
+    "data": "https://huggingface.co/datasets/zwhe99/DeepMath-103K"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T12:01:01Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "math data",
+    "updated_at": "2026-07-27T12:01:01Z"
+  }
+}

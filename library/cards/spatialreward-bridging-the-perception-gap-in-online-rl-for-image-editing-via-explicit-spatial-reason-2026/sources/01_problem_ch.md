@@ -1,0 +1,3 @@
+图像编辑在线RL缺少可靠细粒度奖励，现有evaluator会出现AttentionCollapse，忽略原图与编辑图的局部差异。
+
+SpatialReward在260K空间感知数据上训练，显式预测编辑区域并基于像素证据推理，再输出编辑奖励。

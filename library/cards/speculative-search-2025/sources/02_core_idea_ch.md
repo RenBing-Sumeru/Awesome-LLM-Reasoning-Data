@@ -1,0 +1,1 @@
+SpecSearch 在搜索算法扩展节点时插入 draft-evaluate-reject-correct 模块。小模型并行起草 N 个变长 thought，再由 PRM 逐个评分。分数不低于当前步阈值的 thought 被接受；分数更低的 thought 被丢弃，并通过以大模型为目标的无损 token 级 speculative decoding 完整重新生成。纠正后的大模型 thought 分数，以及作为近似上界观测的已接受小模型 thought，通过指数移动平均更新下一步阈值。因而其反馈契约是 mixed：学习得到的过程分数负责筛选整个 thought，大模型 speculative decoding 负责分布保持的纠正，但二者都不能证明被接受 thought 必然正确。

@@ -1,0 +1,1 @@
+已有基线多是短视频 QA、图像 VQA，或没有真实视频基底的长文本 benchmark。LongVideoBench 改变的是对象：把长时长视频、语言上下文、多选 QA 和 referred temporal evidence 放进同一个 release。方向信号是多模态长上下文评测必须记录视频可用性、抽样、字幕和证据窗口元数据。质量信号来自官方论文、项目页、代码和数据发布。并不新的部分包括多选 QA、视频 QA 和 accuracy 评分。复用前要检查视频许可、下架风险、字幕 provenance、抽帧策略、选项 artifacts、split 策略和公开后的污染。

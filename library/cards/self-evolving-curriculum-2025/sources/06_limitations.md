@@ -1,0 +1,2 @@
+Absolute advantage is only a proxy for learning gain and may prioritize noisy or high-variance categories. Outcomes depend on curator-defined category boundaries, heterogeneous verifiers, seed, checkpoint, scheduler temperature, and prior samples. Final rewards do not establish trace validity. Decontamination is unknown. The repository is MIT-licensed, but task datasets and generated trajectories have component-specific or unknown obligations; no tagged release or frozen curriculum and rollout logs exist.
+

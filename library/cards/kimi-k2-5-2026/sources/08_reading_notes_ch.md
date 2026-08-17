@@ -1,0 +1,5 @@
+- 引用已固定为官方 2026 arXiv 报告，而不只是 2026 年 1 月的产品发布。
+- 将发布的 checkpoint 和 modified-mit 仓库与未发布的 SFT/RL 数据、教师输出和 agent-RL artifact 分开。
+- 将规则型 outcome、budget reward、GRM、视觉指标和 PARL reward 视为不同反馈契约。
+- 将 100,000 并发任务环境主张视为报告中的内部系统属性，而非开放环境发布。
+- 将该 artifact 保留在 Track 12；详细的 RL 披露并不使其成为可复用的 Track 8 recipe。

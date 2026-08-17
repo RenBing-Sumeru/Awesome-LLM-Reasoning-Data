@@ -1,0 +1,6 @@
+- Keep five objects separate: the 1,450,827-instance ATLAS lineage analysis, source-conditioned SCA labels, composite score Q, 17,000-row DAPO++ release, and downstream RLVR benchmark.
+- ATLAS reports 20 atomic-source labels and more than 99.7% attribution, but the complete dictionary, occurrence lists, match outputs, and author decisions are not released.
+- SCA's 00/01/10/11 transition is conditioned on one base/source checkpoint pair; it is neither a permanent correctness label nor an individual causal estimate.
+- DAPO++ replaces detected leaked DAPO rows with eligible Stack Exchange rows, but the random seed, exact counts, candidate pool, rejected rows, and mapping are unknown.
+- Q's Spearman correlations of 0.60 and 0.94 use six datasets and Math500-derived features; interpret them as within-study ranking evidence, not proof of data quality.
+- The Parquet verifies 17,000 unique train prompts and a rule-reward schema, but has no record-level atomic source, SCA, transformation, selection, license, or retained-versus-replacement fields. Reproduction also requires resolving paper-script conflicts and obtaining the missing stage4 lineage input.

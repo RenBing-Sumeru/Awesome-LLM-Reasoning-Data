@@ -1,0 +1,3 @@
+The survey makes the components of an LLM verification system visible: retrieval, prompting, fine-tuning, and the final verification decision. This separation helps readers locate a failure instead of attributing every wrong result to the language model alone.
+
+This decomposition also gives a fair comparison rule. Two systems should not be treated as equivalent merely because both use an LLM: they may retrieve from different collections, present different evidence in the prompt, or use different output labels. Read the final decision together with these components. Doing so turns a vague claim of better verification into questions about which component changed and what information the model actually received.

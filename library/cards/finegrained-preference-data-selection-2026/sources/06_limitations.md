@@ -1,0 +1,1 @@
+The rule requires aspect labels and proxy reward models that generalize across aspects; errors in those models or shared blind spots can make consensus misleading. It also focuses on reconciling records viewed as noise rather than preserving deliberate value trade-offs, reports no dedicated contamination audit, and declares neither code nor a new public dataset.

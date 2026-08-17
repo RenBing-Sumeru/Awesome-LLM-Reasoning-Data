@@ -1,0 +1,1 @@
+Lai 等（2024），《Step‑DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs》，arXiv:2406.18629。原文：https://arxiv.org/abs/2406.18629；官方代码、数据和模型：https://github.com/dvlab-research/Step-DPO。比较报告数字前，应以发布脚本核验确切步骤格式、数据构造和基准提示。

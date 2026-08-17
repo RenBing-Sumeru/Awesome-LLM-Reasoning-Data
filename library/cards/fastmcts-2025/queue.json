@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "生成-筛选-验证流程，一种mcts搜索轨迹的合成数据方法",
+    "updated_at": "2026-07-15T07:52:24Z"
+  },
+  "updated_at": "2026-07-15T07:52:24Z"
+}

@@ -1,0 +1,1 @@
+核心贡献是一个跨领域大规模 text-to-SQL benchmark，把评测从“主要理解 schema”推进到“理解数据库值和真实内容”。BIRD 包含 12,751 个 question-SQL pair、95 个数据库、约 33.4GB 内容和 37 个专业领域。机制是把人工问题、SQL、真实数据库内容和 evidence 绑定，再用执行结果与效率评分验收生成 SQL。最近对比对象是 Spider 和 WikiSQL；BIRD 改变的是数据库规模、value grounding 和效率压力。

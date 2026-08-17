@@ -1,0 +1,94 @@
+id: visualprm400k-multimodal-process-supervision-iclr-2026
+title: 'VISUALPRM400K: An Effective Dataset for Multimodal Process Reward Modeling'
+year: 2026
+venue: ICLR 2026
+authors:
+- VisualPRM400K authors
+source_role:
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- llm-post-training
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=IHyY6vdYZw
+  arxiv: null
+  code: https://github.com/OpenGVLab/InternVL/tree/main/internvl_chat/shell/internvl3.0/visualprm_data_construction
+  data: https://huggingface.co/datasets/OpenGVLab/VisualPRM400K-v1.1
+  project: https://internvl.github.io/blog/2025-03-13-VisualPRM/
+  huggingface: https://huggingface.co/OpenGVLab/VisualPRM-8B
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See primary paper.
+  trace_author: Human, model, or hybrid process source described in the primary paper.
+  answer_format: Stepwise reasoning trace with process feedback.
+  process_fields:
+  - prompt
+  - steps
+  - step_label_or_reward
+  - provenance
+  - split
+  environment_or_substrate: Reasoning, code, or tool-use process environment.
+  verifier_or_reward: Paper-specific step-level verifier or reward.
+  terminal_predicate: Paper-specific terminal correctness or acceptance predicate.
+recipe_metadata:
+  base_model: See primary paper.
+  teacher: See primary paper.
+  generator: See primary paper.
+  filtering_rule: See L4 source sections.
+  sampling_protocol: See primary paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See primary paper.
+  optimizer_or_scaffold: See primary paper.
+audit:
+  source_mixture: Primary source reviewed.
+  split: Verify train/evaluation separation.
+  decontamination: Verify overlap controls.
+  license: Verify official artifact before reuse.
+  lineage: 'Primary source: https://openreview.net/forum?id=IHyY6vdYZw'
+  known_failure_modes:
+  - Step segmentation and verifier assumptions may not transfer.
+  citation_status: verified
+  confidence: high
+  notes: Official release links rechecked on 2026-07-12 and added where the primary paper, official project, or author-maintained
+    release identifies them. Official release links rechecked on 2026-07-12 and added where the primary paper, official project,
+    or author-maintained release identifies them. Official release links rechecked on 2026-07-12 and added where the primary
+    paper, official project, or author-maintained release identifies them. Primary paper and official release were checked
+    on 2026-07-12. No independent official code/project was found on the primary release page. No independent official dataset
+    release was found on the primary release page.
+inclusion_reason: Process/trace supervision data release or data-construction method.
+related: []
+tags:
+- process-trace-batch-2026
+- process-supervision
+one_line_summary: 'VISUALPRM400K: An Effective Dataset for Multimodal Process Reward Modeling exposes process or trace supervision
+  data.'
+why_it_matters: It makes intermediate reasoning feedback auditable before reuse.
+status: verified
+needs: []
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper review
+  confidence: high
+  notes: Primary source reviewed.
+category_ids:
+- process_trace_supervision_data

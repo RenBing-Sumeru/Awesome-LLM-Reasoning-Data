@@ -1,0 +1,104 @@
+id: llm-factuality-survey-2024
+title: 'Factuality of Large Language Models: A Survey'
+year: 2024
+venue: EMNLP 2024
+authors:
+- Yuxia Wang
+- Minghan Wang
+- Muhammad Arslan Manzoor
+- Fei Liu
+- Georgi Nenkov Georgiev
+- Rocktim Jyoti Das
+- Preslav Nakov
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- factuality
+- hallucination
+- evaluation
+training_use:
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.emnlp-main.1088/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.1088
+  venue: https://aclanthology.org/2024.emnlp-main.1088/
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.1088/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed open-ended LLM generation and factuality evaluation settings.
+  trace_author: Surveyed primary works; this paper releases no new trace corpus.
+  answer_format: A critical synthesis of factuality challenges, causes, improvement approaches, and evaluation obstacles.
+  process_fields:
+  - prompt
+  - generated response
+  - factual claim
+  - evidence source
+  - factuality judgment
+  environment_or_substrate: Open-ended text generation with factuality evaluation.
+  verifier_or_reward: Surveyed factuality evaluators and human or source-grounded judgments; no common verifier is released.
+  terminal_predicate: A response is factually supported under the chosen evaluation protocol.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed works use varied evidence sources, human judgments, and automatic measures.
+  generator: Critical literature synthesis.
+  filtering_rule: The official abstract focuses on evaluating and improving factuality and on obstacles to automated evaluation
+    for open-ended generation.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews existing approaches rather than supplying one training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide result is stated.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.emnlp-main.1088/'
+  known_failure_modes:
+  - Generated answers can be factually incorrect
+  - automatic evaluation is difficult for open-ended text
+  - factuality depends on evidence and context
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly analyzes challenges, causes, solutions, and open-ended factuality evaluation.
+inclusion_reason: An accepted EMNLP survey that helps readers reason about factual accuracy separately from fluency and usefulness.
+related: []
+tags:
+- survey
+- factuality
+- hallucination
+- evaluation
+- emnlp-2024
+one_line_summary: An EMNLP 2024 survey of why LLM answers can be factually wrong and how factuality is evaluated and improved.
+why_it_matters: It shows why a fluent answer is not enough and why factuality checks for open-ended generation remain difficult.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers designing factuality evaluations or interpreting claims about hallucination reduction.
+confidence: high
+status: verified
+needs:
+- unknown
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology metadata, abstract, pages, and DOI reviewed.
+category_ids:
+- foundations_and_primers

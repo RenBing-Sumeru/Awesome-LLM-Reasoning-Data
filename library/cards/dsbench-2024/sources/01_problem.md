@@ -1,0 +1,3 @@
+Primary sources: arXiv:2409.07703, first submitted 2024-09-12 and revised 2025-04-11, the official project page, and the LiqiangJing/DSBench repository. The repository reports ICLR 2025 acceptance on 2025-01-22. DSBench asks whether data-science agents can handle realistic end-to-end tasks rather than simplified notebook or single-API benchmarks.
+
+The data object is a task instruction, possibly with images or tables, plus data files and a required answer or modeling submission. The benchmark contains 466 data-analysis tasks and 74 data-modeling tasks sourced from Eloquence/ModelOff-style analysis materials and Kaggle competitions. It belongs as a data-science agent evaluation surface, not as a code-completion-only benchmark or a training recipe.

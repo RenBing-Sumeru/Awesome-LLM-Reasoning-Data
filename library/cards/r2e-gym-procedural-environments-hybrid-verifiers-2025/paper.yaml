@@ -1,0 +1,129 @@
+id: r2e-gym-procedural-environments-hybrid-verifiers-2025
+title: 'R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents'
+year: 2025
+venue: COLM 2025 / arXiv preprint
+authors:
+- Naman Jain
+- Jaskirat Singh
+- Manish Shetty
+- Liang Zheng
+- Koushik Sen
+- Ion Stoica
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- swe-agents
+- procedural-environments
+- hybrid-verifiers
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.07164
+  arxiv: https://arxiv.org/abs/2504.07164
+  doi: https://doi.org/10.48550/arXiv.2504.07164
+  code: https://github.com/R2E-Gym/R2E-Gym
+  data: https://huggingface.co/R2E-Gym
+  project: https://r2e-gym.github.io/
+  huggingface: https://huggingface.co/R2E-Gym
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: R2E-Gym paper, project page, official GitHub repository, and Hugging Face organization; arXiv abstract uses
+    AgentGym/SYNGEN naming, while the current official site/repository use R2E-Gym/SWE-GEN.
+  trace_author: R2E-Gym authors and procedural environment generation pipeline
+  answer_format: repository-level SWE tasks with natural-language task descriptions, executable environments, unit tests,
+    ground-truth patches or commits, agent trajectories, output patches, reward signals, and final SWE-Bench-style outcomes.
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: Docker-backed repository environments exposed through the R2E-Gym Python package/datasets
+  verifier_or_reward: automated unit-test reward inside R2E-Gym plus hybrid execution-based and execution-free verifiers for
+    reranking/scaling; SWE-Bench Verified final scores use the official SWE-Bench harness.
+  terminal_predicate: task-dependent patch success, environment reward, verifier rank, or SWE-Bench harness result; these
+    labels should not be merged without provenance.
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: SWE-GEN procedural environment generator, tests, commits, and released teacher trajectories/models
+  generator: SWE-GEN curates executable environments from commits using test generation/back-translation rather than relying
+    only on human issues or pull requests.
+  filtering_rule: do not merge with the unrelated AgentGym 2024 card; pin code commit, HF dataset/model snapshot, docker image,
+    trajectory source, verifier type, split, and SWE-Bench harness version.
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2504.07164; https://r2e-gym.github.io/; https://github.com/R2E-Gym/R2E-Gym; https://huggingface.co/R2E-Gym
+  split: Pin dataset name, train/test split, task version, runtime image, evaluator version, and SWE-Bench harness revision
+    before comparing results.
+  decontamination: Public generated tasks, trajectories, models, and SWE-Bench evaluation surfaces can leak into future agent
+    training or verifier training.
+  license: Official GitHub repository is Apache-2.0; Hugging Face dataset/model card license details should be checked per
+    artifact snapshot before redistribution or training reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2504.07164'
+  known_failure_modes:
+  - arXiv abstract uses AgentGym/SYNGEN naming while current official pages use R2E-Gym/SWE-GEN; keep naming and source date
+    explicit.
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: official repository, project page, arXiv page, and Hugging Face organization verify code, data/model release surface,
+    UC Berkeley/ANU affiliations, Apache-2.0 code license, and 51%/34.4% headline results.
+inclusion_reason: it directly targets scalable environment generation for SWE-agent post-training
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- swe-agents
+- procedural-environments
+- hybrid-verifiers
+one_line: R2E-Gym builds procedural SWE environments and hybrid verifiers for open-weight agents.
+why_it_matters: it directly targets scalable environment generation for SWE-agent post-training
+status: verified
+needs:
+- 'needs_audit: pin HF artifact licenses, split, docker image, evaluator, runtime, trajectory source, model checkpoint, and
+  SWE-Bench harness version'
+- 'needs_unknown: exact per-dataset HF licenses and complete environment lineage require artifact-snapshot review'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: R2E-Gym builds procedural SWE environments and hybrid verifiers for open-weight agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv/project/GitHub/Hugging Face sources confirm this is distinct from the local AgentGym 2024 card, verify
+    UC Berkeley/ANU affiliations, and expose code/data/model artifacts.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 103
+  primary_category_id: environment_agent_trajectory_data

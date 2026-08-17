@@ -1,0 +1,5 @@
+The core construction artifacts are unreleased: source and prompt manifests, full DeepSeek-V3 decomposition outputs, subgoal dependency trees, cold-start records, expert-iteration traces, GRPO rollouts, rewards, accepted/rejected attempts, and distillation samples. The repository contains release material and a solution archive, not executable data-construction, training, RL, or environment code.
+
+Lean terminal verification is strong for the supplied formal theorem only under its exact environment. The paper reports Lean 4.9.0-rc2 for evaluation, but does not fully pin the training environment, mathlib snapshot, imports, or invocation. A Lean-successful proof therefore does not itself establish source provenance, benchmark separation beyond the reported test/valid boundary, or semantic faithfulness when a natural-language problem was autoformalized. No released decontamination protocol or overlap analysis resolves leakage risk.
+
+The official model release is governed by the DeepSeek License Agreement, not MIT. That license does not grant rights to the training data, whose source, annotation, synthetic-trace, and derivative-data terms remain unknown.

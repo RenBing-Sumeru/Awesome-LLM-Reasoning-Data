@@ -1,0 +1,3 @@
+Caution reverses curiosity-driven exploration: a lightweight predictor learns, on typical prompt–response pairs, to reconstruct a frozen reward model’s hidden features; large reconstruction error becomes an OOD uncertainty penalty rather than a novelty bonus. Best-of-N selects by reward minus λ times that error. The approach uses prompts and sampled responses rather than new human labels, and the paper provides official supplementary materials but no independently verified code repository.
+
+The penalty is reward-aware because its target is internal reward-model representation, not a random feature alone.

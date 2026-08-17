@@ -1,0 +1,1 @@
+Hu et al. (2026), “Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures,” ACL 2026 Long Papers, pages 19449–19466. Official record: https://aclanthology.org/2026.acl-long.889/ .

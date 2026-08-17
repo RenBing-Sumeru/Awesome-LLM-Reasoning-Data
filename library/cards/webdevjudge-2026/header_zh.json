@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以部署网页、rubric tree 与专家偏好审计网页开发 judge 的基准。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "网页开发 LLM-as-a-judge 元评测与可行性诊断基准",
+  "best_for_ch": "需要审计网页代码 critic、agent judge 或网页 reward signal 的研究者。",
+  "confidence_ch": "高：ICLR 2026 Oral 论文与官方代码/数据仓库已核验。",
+  "authors_ch": "Chunyang Li、Yilun Zheng、Xinting Huang、Tianqing Fang、Jiahao Xu、Lihui Chen、Yangqiu Song、Han Hu",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

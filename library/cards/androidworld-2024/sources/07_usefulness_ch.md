@@ -1,0 +1,1 @@
+它适合作为动态移动端 agent 的 benchmark schema。复用记录应保留任务类、采样参数、app 版本、初始设备状态、观察、动作、截图/accessibility 数据、终止 checker 结果、timeout、retry policy 和 scaffold 细节。对 atlas 的价值是把可执行环境反馈和离线 demonstration label 分开，并提醒所有分数都绑定到具体软件镜像，而不是抽象手机任务。

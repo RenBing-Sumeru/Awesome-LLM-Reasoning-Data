@@ -1,0 +1,5 @@
+- Positioning: Nemotron-Math generates six supervision modes per source family and packages expected answers and provenance for long-context distillation.
+- Data object: 7.5 million solution traces over 85,000 AoPS and 262,000 Math StackExchange problems; each record exposes uuid, problem, expected answers, source, messages, majority-change flag, and use split.
+- Author and selector: gpt-oss-120b generates high, medium, and low reasoning modes with and without Python TIR; retention uses answer verification, majority-answer correction metadata, source curation, and matched downstream tests.
+- Evidence anchor: On matched AoPS prompts Nemotron-Math consistently beats OpenMathReasoning, while StackExchange data improves HLE-Math; sequential bucketing trains 128K context 2-3x faster without significant reported loss.
+- Reuse decision: suitable for long-context mathematical reasoning SFT; first audit majority-answer correction can converge on a shared teacher error and share-alike subsets require source-aware redistribution.

@@ -1,0 +1,1 @@
+主要贡献是 Formal Problem-Solving（FPS）框架、Deductive-FPS、答案等价 verifier RPE，以及 FormalMath500、MiniF2F-Solving、PutnamBench-Solving 三个数据集。FPS 用 metavariable 表示未知答案，每个 tactic 同时推进填洞和证明目标；D-FPS 将前向推导答案与后向证明解耦，提高可读性。Restricted Propositional Equivalence（RPE）用受限形式证明比较复杂答案对象，避免 exact match 对集合、区间等表示的误判。

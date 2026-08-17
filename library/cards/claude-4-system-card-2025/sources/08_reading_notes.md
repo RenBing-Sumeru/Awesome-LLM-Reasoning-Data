@@ -1,0 +1,4 @@
+- Start with §§1.1.1–1.1.3 for the direct data, cleaning, alignment, and crowd-worker disclosures.
+- Separate preference selection, safety evaluation, and adversarial testing as different worker-produced objects.
+- Treat helpful-only, safety-trained, and final snapshots as evaluation strata, not released checkpoints or datasets.
+- Keep benchmark, red-team, and reasoning-transcript results separate from evidence about training-data quality.

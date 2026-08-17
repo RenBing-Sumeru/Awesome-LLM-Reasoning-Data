@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LongFact evaluates factual precision in long-form generated answers.",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / judge or verifier surface",
+  "best_for_ch": "需要审计 benchmark 对象、反馈契约、artifact 版本、split 和污染风险的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Google Research",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

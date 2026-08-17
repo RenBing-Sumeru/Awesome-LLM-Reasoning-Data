@@ -1,0 +1,4 @@
+Frontier model reports can describe training and safety at a high level without exposing the data and feedback contracts needed to audit post-training claims. The question for this Card is therefore not whether Grok 4 is a reusable recipe, but exactly what xAI's official sources disclose and what remains unestablished.
+
+The [Grok 4 Model Card](https://data.x.ai/2025-08-20-grok-4-model-card.pdf) names broad data-source categories, filtering, post-training feedback families, selected safety evaluations, and mitigations. The [official launch announcement](https://x.ai/news/grok-4) adds claims about scaled RL, expanded verifiable data, and native tool-use training. Neither source releases record-level provenance, data manifests, rewards, graders, filters, or an end-to-end reproducibility package.
+

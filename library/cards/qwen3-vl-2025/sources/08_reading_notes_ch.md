@@ -1,0 +1,6 @@
+- SFT 报告约 120 万条：三分之一纯文本、三分之二图文/视频文本；完整来源与权利未披露，checkpoint 与 benchmark 可用也不证明后训练数据可用或高质量。
+- 区分两轮 32K 加一轮混合 32K/256K 训练，与仓库中的推理 context 设置。
+- Long-CoT 在视觉语言/文本间约 1:1，并删除无需图像即可解出的视觉数学题。
+- 区分 off-policy teacher response 与对齐 teacher logits 的 on-policy student sequence。
+- Reasoning RL 报告约 30K query、每题 16 个回答、删除 0/16 与通过率高于 90% 的项，并使用 SAPO。
+- General RL 混合规则 reward 与 Qwen2.5-VL-72B-Instruct/Qwen3 judge；确切契约未发布。

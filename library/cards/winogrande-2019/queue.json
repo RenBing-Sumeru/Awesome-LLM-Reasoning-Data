@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T09:33:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "经典推理benchmark，ref3751 历史性文章",
+    "updated_at": "2026-07-15T09:33:23Z"
+  }
+}

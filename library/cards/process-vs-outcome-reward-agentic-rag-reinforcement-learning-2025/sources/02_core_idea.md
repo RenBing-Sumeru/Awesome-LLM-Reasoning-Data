@@ -1,0 +1,3 @@
+RAG_ProGuide records queries, histories, retrieval actions, documents, evidence choices, candidate answers, process preferences, and final correctness. Multiple actions from the same state are compared using relevance, evidence coverage, downstream answer correctness, and completion.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around queries, retrieval actions, evidence, process preferences, and outcome rewards, making the verifier, judge, environment, or execution source traceable for RAG reinforcement learning and reward-type comparison. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

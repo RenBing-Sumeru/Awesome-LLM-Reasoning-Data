@@ -1,0 +1,139 @@
+id: soft-sverl-2026
+title: 'Soft-SVeRL: Self-Verified Reinforcement Learning with Soft Rewards'
+year: 2026
+venue: arXiv
+authors:
+- Saurabh Dash
+- Pierre Clavier
+- John Dang
+- Matthias Galle
+- Marzieh Fadaee
+- Ahmet 脺st眉n
+- Beyza Ermis
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+- process_reward
+domains:
+- instruction_following
+- partially_verifiable_tasks
+training_use:
+- rlvr
+- reward_modeling
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2605.28561
+  arxiv: https://arxiv.org/abs/2605.28561
+  code: null
+  data: null
+  project: https://cohere.com/research
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.28561
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Controlled IFEval-style instruction-following prompts with decomposable, rule-checkable constraints; exact
+    released training set is unavailable
+  trace_author: The current shared model generates candidate responses and also samples checklist-item verification judgments
+  answer_format: Prompt, atomic checklist, candidate response, repeated yes/no verifier traces per item, empirical yes-rate,
+    thresholded item label, partial-credit score, final generator reward, and replay membership
+  process_fields:
+  - prompt
+  - checklist
+  - response
+  - criterion
+  - verifier_votes
+  - yes_rate
+  - pass_label
+  - soft_score
+  - generator_reward
+  - replay_label
+  - partition_penalty
+  environment_or_substrate: Online self-verifying RL where one parameter set serves as response policy and checklist verifier
+  verifier_or_reward: Repeated LLM yes/no votes per checklist item; item pass threshold tau_positive; response score averages
+    item passes; reward combines full-pass bonus with beta-scaled partial credit
+  terminal_predicate: Generator receives full reward for satisfying all checklist items and partial reward otherwise; verifier
+    examples enter replay only at high-confidence positive or negative thresholds
+recipe_metadata:
+  base_model: unknown
+  teacher: Gold verifier-improvement buffer with known item labels; exact model or label-source composition is not publicly
+    released
+  generator: Shared online policy/verifier model
+  filtering_rule: Aggregate J verifier votes; assign positive replay label when yes-rate >= tau_positive and negative when
+    yes-rate <= tau_negative; omit uncertain middle cases; select failed-response items with positive yes votes for anti-inflation
+    penalty
+  sampling_protocol: Generate checklist -> sample G responses -> sample J verifier votes per response-item -> threshold/average
+    into soft rewards -> add confident item cases to replay -> sample gold+replay verifier tuples -> update shared model on
+    generator reward + verifier co-training - partition penalty
+  rollout_count: null
+  temperature: null
+  inference_budget: G candidate responses times K checklist items times J verifier votes per prompt; exact G, K distribution,
+    J, tau values, and decoding settings require a released run configuration
+  optimizer_or_scaffold: Shared-parameter RL objective combining generator optimization, verifier co-training weighted by
+    lambda_v, and partition-style Yes-rate penalty weighted by lambda_p
+audit:
+  source_mixture: IFEval-style controlled instruction-following tasks, fixed gold verifier examples, and on-policy replay
+    pseudo-labels
+  split: Rule-based ground truth is used for evaluation and analysis while training uses learned checklist rewards; exact
+    splits are not released
+  decontamination: unknown
+  license: ArXiv paper license is linked; no official code or dataset license was identified
+  lineage: Prompt -> generated checklist -> on-policy responses -> repeated item-level votes -> thresholded soft reward/replay
+    labels -> gold+replay verifier update -> shared policy/verifier checkpoint
+  known_failure_modes:
+  - Shared policy/verifier parameters can increase measured reward by becoming more permissive rather than improving responses.
+  - Checklist omissions make incomplete responses look fully correct.
+  - Correlated verifier votes reduce the value of repeated sampling and can produce overconfident pseudo-labels.
+  - Replay pseudo-label errors can reinforce themselves across updates despite gold anchoring.
+  - Partial credit can reward systematically incomplete responses.
+  - No official code, gold/replay buffers, online logs, thresholds, or immutable checkpoints are released.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v1 and Cohere Labs official research listing checked 2026-07-12. No author-linked implementation or
+    data release was found.
+inclusion_reason: Defines an unusually explicit self-verifier refresh loop with repeated votes, confidence-gated replay, gold
+  anchoring, and an anti-inflation penalty.
+related: []
+tags:
+- soft-sverl
+- soft-rlvr
+- self-verification
+- checklist-reward
+- verifier-refresh
+- replay-buffer
+- reward-inflation
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Co-trains a shared response policy and checklist verifier from gold plus confidence-gated replay while penalizing
+  self-generated reward inflation.
+why_it_matters: Makes the transient verifier-training data and anti-collapse controls first-class parts of partially verifiable
+  RL.
+card: null
+needs:
+- 'needs_code: official implementation and machine-readable configuration'
+- 'needs_data: gold buffer, replay stream, checklists, votes, pseudo-labels, and rule-ground-truth splits'
+- 'needs_metadata: G/J budgets, tau thresholds, beta, lambda weights, models, prompts, temperatures, and seeds'
+- 'needs_audit: calibration, vote correlation, replay error propagation, checklist coverage, and always-yes diagnostics'
+- 'needs_license: code/data/model and generated-log reuse terms'
+curation_level: L2_metadata_complete
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Method and paper claims are verified; implementation, datasets, online buffers, and logs are unavailable.

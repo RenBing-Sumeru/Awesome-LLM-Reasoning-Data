@@ -1,0 +1,1 @@
+执行等价不等于完整语义等价，尤其当数据库不完整、问题歧义或存在并列结果时。VES 依赖硬件、数据库引擎、cache、timeout 和重复计时策略。Oracle evidence 会让评测比真实用户设置更容易；去掉 evidence 又会改变任务契约。公开 benchmark 文件和 leaderboard 提交会进入训练污染。项目页 2025-2026 的清理与新 split 更新说明版本策略很重要，旧 dev 与 cleaned dev 分数不能混用。

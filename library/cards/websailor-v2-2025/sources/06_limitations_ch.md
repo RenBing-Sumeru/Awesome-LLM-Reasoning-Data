@@ -1,0 +1,10 @@
+- **Reward 契约未知。** 论文优化 scalar `R_i`，但没有披露组成、verifier、答案等价规则、尺度、校准或代码。Curator inference：公开证据不足以评估 reward hacking 和对替代有效答案的 false negative。
+- **选择性移除失败。** SFT 使用 rejection sampling，RL 又从 loss 中排除部分超长且无答案的 negative。candidate 尝试数、排除计数和保留政策未知，会造成 survivor bias 和 observability bias。
+- **没有完整轨迹。** V2 目录只有文档和图片，既不发布成功 SFT trajectory，也不发布正确、错误、timeout、retry、tool-failure 或 overlength RL episode。
+- **环境漂移。** Google、Jina、Google Scholar、summary model 输出、cache、backup 和页面内容会随时间变化。没有公开 Wikipedia snapshot、服务版本、cache manifest、retry log、sandbox image 或 replay fixture。
+- **混合比例不清。** §4.1 说 SFT 数据全部由 SailorFog-QA-V2 合成，而 §5.1 又把 SailorFog-QA、SailorFog-QA-V2 和 IterBench 列为 training data。各阶段计数和权重未披露。
+- **污染风险。** pipeline 从真实网络采集事实，并在六个公开 benchmark 上评估，但没有 exact、semantic、entity、source-page、temporal 或 tool-observation overlap audit。直接在 BrowseComp test 上训练的实验也不是 decontamination。
+- **规模歧义。** 3 万余条指 instruction-tuning pair，而不是经验证的完整 SFT/RL trajectory 数。record schema、确切数量、split、duplicate、语言、领域和 checksum 均不可用。
+- **权利与隐私。** 论文和仓库许可证不能自动覆盖未发布 graph record、trajectory、Wikipedia snapshot、cached web content 或 tool observation。论文未披露 privacy、robots-policy、source exclusion 或 takedown 程序。
+- **版本混淆。** V1 有代码、20 行 QA 样例和公开 WebSailor 模型，V2 没有。没有明确链接时，把 V1 artifact 或另行发布的 Tongyi-DeepResearch 模型当作 V2 都是 misattribution。
+- **实验范围。** 结果由作者在一套工具栈上报告，没有 training-seed 方差、独立复现、完整计算成本，亦没有把数据、模型、context、环境和 RL 变化分解的受控实验。

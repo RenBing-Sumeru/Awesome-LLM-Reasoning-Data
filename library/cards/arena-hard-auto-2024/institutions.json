@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "UC Berkeley"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.11939",
+    "https://github.com/lmarena/arena-hard-auto",
+    "https://huggingface.co/datasets/lmarena-ai/arena-hard-auto"
+  ],
+  "verification_note": "arXiv and official lmarena/Hugging Face sources verify authors, the shared UC Berkeley affiliation line, arXiv status, and Arena-Hard-Auto artifacts; no official conference page was verified."
+}

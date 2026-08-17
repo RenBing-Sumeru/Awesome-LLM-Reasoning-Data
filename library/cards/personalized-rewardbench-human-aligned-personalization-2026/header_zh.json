@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "数据以用户专属量规构造 chosen/rejected 对，隔离个体偏好变量，并验证其可预测 BoN 与 PPO 下游表现。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "个性化奖励模型基准",
+  "best_for_ch": "需要评测个体化偏好建模、用户条件化奖励模型或多元价值对齐的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Qiyao Ma、Dechen Gao、Rui Cai、Boqi Zhao、Hanchu Zhou、Junshan Zhang、Zhe Zhao",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:38:58Z"
+}

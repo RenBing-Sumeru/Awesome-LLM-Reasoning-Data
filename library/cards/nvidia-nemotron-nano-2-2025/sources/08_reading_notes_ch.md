@@ -1,0 +1,4 @@
+- §3.1 给出领域规模、合成教师、工具模拟、翻译与安全过滤。
+- §3.2 给出三阶段 SFT、IFEval 规则奖励、WorkBench 在线 DPO、HelpSteer3 GRPO 与检查点合并。
+- §4.3 给出剪枝/KD 的 token 与序列长度日程，以及 RL 后能力恢复。
+- 复用前应审计官方数据集的逐样本许可及上游 Qwen/DeepSeek 条款。

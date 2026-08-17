@@ -1,0 +1,3 @@
+Read the taxonomy first, then the sections on frontiers and challenges. For each method that interests you, record the task it targets and whether the cited evidence concerns answer quality, reasoning behavior, or both. The open-question discussion is a useful reminder that a visible chain is not by itself a complete explanation.
+
+Add the model and prompt conditions used by each primary study, plus the comparison it actually makes. This simple template distinguishes a result in one prompt setting from a result about a whole method family. Treat the future-directions discussion as a set of questions to verify in source papers, rather than as completed empirical findings.

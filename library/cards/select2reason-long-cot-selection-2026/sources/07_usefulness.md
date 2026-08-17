@@ -1,0 +1,1 @@
+Use it to make a controlled SFT data-ablation: start with a verified long-CoT pool, score difficulty for the intended student, normalize duplicate steps, select a fixed budget, and compare against random and length-only subsets.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "每道医学选择题拟生成九条路径，经答案键条件下的验证与难度路由修复后，发布三套不等长的 SFT 视图，共 1,111,555 行。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "医学推理数据发布与多教师难度路由构造配方",
+  "best_for_ch": "关注医学推理 SFT、多教师生成、LLM 判定器、难度路由、专家审计与高风险数据治理的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Yu Sun、Xingyu Qian、Weiwen Xu、Hao Zhang、Chenghao Xiao、Long Li、Deli Zhao、Wenbing Huang、Tingyang Xu、Qifeng Bai、Yu Rong",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T11:09:56Z"
+}

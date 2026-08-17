@@ -1,0 +1,1 @@
+本卡可作为自评分树搜索的记录 schema：应保存数据项 ID、模型与 revision、seed 和解码设置、子树 ID、每个候选步骤及 token 概率、confidence/novelty 分量、组合分数、保留或拒绝决定、预算、终止原因、强制结束事件、最终答案、整链置信度和投票权重。训练记录还应单独保存答案正确性、置信度统计、非线性 GRPO 奖励与 adapter revision。只有独立 answer checker 可用时，correctness 才应进入记录，不能由 confidence 推断。

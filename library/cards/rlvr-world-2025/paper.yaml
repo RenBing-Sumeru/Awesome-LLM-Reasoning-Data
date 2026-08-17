@@ -1,0 +1,173 @@
+id: rlvr-world-2025
+title: 'RLVR-World: Training World Models with Reinforcement Learning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jialong Wu
+- Shaofeng Yin
+- Ningya Feng
+- Mingsheng Long
+source_role:
+- construction_recipe
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- world_modeling
+- text_games
+- web_navigation
+- robotics
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.13934
+  arxiv: https://arxiv.org/abs/2505.13934
+  code: https://github.com/thuml/RLVR-World
+  data: https://huggingface.co/collections/thuml/rlvr-world
+  project: https://thuml.github.io/RLVR-World/
+  huggingface: https://huggingface.co/collections/thuml/rlvr-world
+  doi: https://doi.org/10.48550/arXiv.2505.13934
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/b63a24a1832bd14fa945c71f535c0095-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'A heterogeneous set of world-transition inputs: ByteSized32 text-game transitions; WMA data collected from
+    WebArena; RT-1 robot trajectories from Open X-Embodiment; and PushT, Rope, and Granular data supplied by DINO-WM. The
+    THUML collection visibly releases derived text-game and WebArena CoT datasets; it does not provide a single source-level
+    manifest for all upstream inputs.'
+  trace_author: Text-game SFT targets are correct DeepSeek-R1 responses retained by rejection sampling; WebArena SFT targets
+    concatenate GPT-4o-mini CoT released by WMA with author-extracted changed items; video records are observed robot/simulated
+    trajectories. RLVR response/frame candidates are sampled from the current policy.
+  answer_format: Language tasks condition on natural-language rules/context, state and action and predict state differences
+    or exact accessibility-tree changes; text-game targets include next state, rule reward and completion. Video tasks condition
+    on visual observations plus quantized actions and predict one or multiple future frames.
+  process_fields:
+  - context
+  - state
+  - action
+  - next_state
+  - state_difference
+  - accessibility_tree_change
+  - task_reward
+  - completion_flag
+  - chain_of_thought
+  - visual_observation
+  - future_frame
+  environment_or_substrate: Text games; WebArena web navigation on Docker-configured AWS EC2; RT-1 tabletop robot manipulation;
+    and PushT/Rope/Granular environments. The released code implements sequence-modeling world models with GRPO RLVR.
+  verifier_or_reward: 'Rule-based feedback against ground truth: text-game complete-match binary reward or property-aware
+    task reward; WebArena exact-item F1 over changed accessibility-tree items; video negative L1 plus LPIPS on decoded predicted
+    frames.'
+  terminal_predicate: Text-game records include a completion flag. For web/video RLVR, reward evaluates a next-state or frame
+    prediction against ground truth rather than a universally released episode-success predicate; full per-record terminal
+    semantics outside text games are unknown.
+recipe_metadata:
+  base_model: 'Language: DeepSeek-R1-Distill-Qwen-1.5B and 7B (the web run uses 1.5B). Video: separate 138M LLaMA-style autoregressive
+    transformers trained from scratch with frozen visual tokenizers for RLVR.'
+  teacher: DeepSeek-R1 for rejection-sampled text-game SFT; GPT-4o-mini CoT annotations released by WMA for the WebArena SFT
+    target; no teacher is reported for video trajectories.
+  generator: On-policy GRPO samples for language state-transition prediction and autoregressive visual-token samples for video
+    prediction; offline SFT targets are constructed as stated in the data object.
+  filtering_rule: 'Text: retain correct DeepSeek-R1 responses through rejection sampling; downsample unchanged transitions
+    (changed:unchanged 100:40 for binary reward and 100:5 for task-specific reward). Web: remove prompt-plus-target pairs
+    over 5,000 tokens; extract precise item changes from accessibility trees. Video: use named dataset splits and fixed trajectory
+    segments; further filtering details are partially unknown.'
+  sampling_protocol: Language GRPO uses group size 5, temperature 1.0 and top-p 1.0. Text uses 4,237 rejection-sampled SFT
+    examples. Web retains about 7,000 of 14,000 trajectories after length filtering, split 99%/1%. RT-1 uses 99%/1%; main
+    video analysis uses GRPO group size 16.
+  rollout_count: 5
+  temperature: 1.0
+  inference_budget: 'Language RLVR maximum response length: 4,096 text-game and 7,288 WebArena tokens. Web MPC samples 20
+    candidate actions, keeps the three most frequent and repeats value scoring 20 times; video horizon is one frame or seven
+    future frames depending on setting.'
+  optimizer_or_scaffold: GRPO with a clipped objective and KL penalty. Language models receive LoRA SFT before RLVR; video
+    uses VQGAN/FSQ visual tokenizers, autoregressive transformers and frozen tokenizers during RLVR.
+audit:
+  source_mixture: The paper identifies ByteSized32, WMA/WebArena, RT-1/Open X-Embodiment and DINO-WM sources. It reports 76,369
+    ByteSized32 transitions from 31 games, about 7,000 retained WebArena trajectories, and 87,212 RT-1 trajectories. A record-level
+    cross-source mixture, retained IDs and rejected-sample ledger are not released as one immutable manifest.
+  split: ByteSized32 has a 2,954-transition official high-quality test subset; the paper says it uses that subset for SFT
+    and RLVR experiments but does not make the stage-specific allocation fully explicit. Web retains about 7,000 trajectories
+    after length filtering and uses 99%/1% train/test. RT-1 uses 99%/1%; PushT/Rope/Granular use the source-provided splits.
+    Exact immutable split files were not verified.
+  decontamination: The paper filters WebArena samples by length and describes sampling/split choices, but does not report
+    a semantic contamination or train-evaluation-overlap audit across text games, WebArena, robot trajectories, upstream teacher
+    outputs, or downstream evaluation surfaces.
+  license: The THUML repository is MIT; author-linked text-game and WebArena dataset cards state MIT; the paper says RT-1
+    follows Apache. Rights and licenses for upstream ByteSized32, WMA/WebArena, GPT-4o-mini-derived CoT, DINO-WM inputs and
+    every underlying asset are otherwise unknown.
+  lineage: Named upstream transition sources -> teacher/rejection-sampled or extracted SFT targets -> LoRA/SFT -> on-policy
+    GRPO RLVR -> author-linked data/model collection. Per-record origin, exact source version, rejected candidate and final-checkpoint
+    lineage are incomplete.
+  known_failure_modes:
+  - Exact complete-match or exact-item F1 rewards can penalize semantically equivalent predictions and can favor formatting
+    or tokenization behavior.
+  - The text-game description does not make the training/evaluation role of the official test subset sufficiently granular
+    for an overlap audit.
+  - The WebArena procedure selects the checkpoint with the highest test reward, so an independent final selection surface
+    is not documented.
+  - Video perceptual metrics (L1 and LPIPS) are not evidence that predicted trajectories are physically correct or safe for
+    policy deployment.
+  - The release exposes derived text datasets and checkpoints but not a unified upstream source/rights/decision manifest or
+    rejected rollout ledger.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings, arXiv v2, THUML project/repository, license, Hugging Face collection and author-linked
+    text/website release pages were checked on 2026-07-16. Citation and artifact links are verified; audit provenance remains
+    partial.
+inclusion_reason: A NeurIPS 2025 RLVR recipe and author-linked release that makes distinct rule-based feedback contracts inspectable
+  across text-game, web-state and video/robot world modeling, while retaining material lineage, split, rights and semantic-validity
+  limits.
+related: []
+tags:
+- rlvr
+- world-model
+- verifiable-reward
+- grpo
+- state-transition
+- webarena
+- robot-trajectories
+- data-disclosure-ledger
+- neurips-2025
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Releases code, two derived language-transition datasets and RLVR checkpoints for world models whose programmatic
+  rewards are exact state/item agreement or frame-level L1 plus LPIPS, while upstream lineage and audit artifacts remain partial.
+why_it_matters: It exposes feedback contracts and operational details that are usually obscured in RLVR reports, and it shows
+  why a released model/data collection still needs separate provenance, split and verifier-validity auditing before reuse.
+card: null
+needs:
+- 'needs_audit: stage-specific text-game train/evaluation allocation and an immutable split manifest'
+- 'needs_audit: source-level rights, per-record lineage, retained/rejected rollout IDs and version hashes'
+- 'needs_audit: semantic contamination and train-evaluation-overlap analysis across all modalities'
+- 'needs_reproduction: complete environment images, seeds, dependency pins and end-to-end rollout logs'
+- 'needs_verifier: robustness evaluation of exact-match/F1 and perceptual-metric reward behavior'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official NeurIPS, arXiv, THUML repository/project and author-linked Hugging Face collection were verified. The underlying
+    source-data and audit disclosures are materially incomplete.

@@ -1,0 +1,1 @@
+Earlier surveys often catalogue prompting, training recipes, or benchmark scores. This paper instead treats explanation itself as the organizing unit: training dynamics, mechanisms, and unintended behavior. Its direction signal is clear for reasoning data work: retain process-side observations and controls, not only prompts and final labels.

@@ -1,0 +1,3 @@
+In structured reasoning search, the costly resource is often not generation tokens but verifier calls on intermediate moves. Uniformly checking every candidate wastes calls on malformed actions and clear choices, while solution-level best-of-N cannot direct verification toward the local branch where a single mistake will derail a long derivation.
+
+The paper asks how to spend a finite verifier-call budget across intermediate states. It targets a setting where each move has explicit operator arguments and constraints, so cheap deterministic checks can remove obvious violations before an expensive process verifier decides semantic acceptability among the remaining candidates.

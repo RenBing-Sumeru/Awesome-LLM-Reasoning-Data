@@ -1,0 +1,5 @@
+- Position: reward-model accuracy can conceal brittleness under meaning-preserving rewrites.
+- Lever: transformed inputs expose score flips; paraphrase consistency reduces them.
+- Artifact: reWordBench and implementation are linked from the official RewardBench repository.
+- Evidence: Chat Hard degradation is roughly halved; robust-RM alignment wins up to 59%.
+- Decision: validate transformation invariance before treating a score flip as a failure.

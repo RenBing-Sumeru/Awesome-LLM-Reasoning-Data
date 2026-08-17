@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VFF 构造可自动判定的格式控制任务，以严格语法约束评估并训练模型遵循输出格式。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可验证格式控制数据集与评测论文",
+  "best_for_ch": "需要把结构化输出约束变成自动验证信号的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhaoyang Wang、Jinqi Jiang、Huichi Zhou、Wenhao Zheng、Xuchao Zhang、Chetan Bansal、Huaxiu Yao",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T09:19:47Z"
+}

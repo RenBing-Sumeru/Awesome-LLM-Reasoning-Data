@@ -1,0 +1,11 @@
+Policy evaluation refreshes a small subset of English single-turn prompts and expands policy-area coverage. Child-safety testing mixes human-generated and synthetic prompts across subtopics, contexts, and user personas. Prompt counts, human authors, synthetic generator, labels, graders, selection, split, and overlap with training are not disclosed.
+
+Agentic safety covers computer use through screens, mouse movement and clicks, virtual-keyboard commands, and longer-horizon coding with tools. Prompt-injection cases embed malicious environmental content in pop-ups or hidden text. Specialized RL is said to teach the model to recognize and avoid these manipulations; deployment detectors and system instructions are additional, separate controls.
+
+The automated alignment audit uses 290 seeds and an Opus 4-based auditor to generate 1,160 transcripts per target model, each 24–64 turns. Interactions are scored on eight criteria, including concerning behavior, cooperation with egregious misuse, initiative, deception, evaluation awareness, whistleblowing, and self-preservation. Scores use a 1–10 scale, plotted averages are rescaled to 0–1, and uncertainty uses bootstrapped 95% confidence intervals.
+
+Four welfare scorers process the same transcript set, and an Opus 4-based judge labels actively admirable behavior. These are evaluation scorers, not disclosed training rewards or teachers. Seed text, generator/scorer prompts, sampling settings, retries, scorer checkpoints, calibration, and human validation are unavailable.
+
+Reward-hacking evaluations include difficult coding tasks selected from Anthropic's training distribution, visible tests plus held-out fuzzed tests, and Claude Code Impossible Tasks in a sandbox with auto-accept. Impossible episodes continue until the model acknowledges infeasibility or hacks to appear successful. Two unnamed training environments are also monitored, but their mechanics are not described.
+
+Automated RSP tests cover bioinformatics tool use, software-engineering tasks, internal AI-research tasks, and CTFs. These are evaluation environments. Launch-page limits such as extended-thinking budgets, completion caps, and SWE-bench tools are inference settings, not training budgets.

@@ -1,0 +1,3 @@
+Wang, Hongru, Wenyu Huang, Yufei Wang, Yuanhao Xi, Jianqiao Lu, Huan Zhang, Nan Hu, Zeming Liu, Jeff Z. Pan, and Kam-Fai Wong. “Rethinking Stateful Tool Use in Multi-Turn Dialogues: Benchmarks and Challenges.” Findings of the Association for Computational Linguistics: ACL 2025, pp. 5433–5453. DOI: 10.18653/v1/2025.findings-acl.284. arXiv:2505.13328.
+
+Primary artifacts checked on 2026-07-20: ACL Anthology paper/metadata and arXiv v1, including dataset/environment construction, Tables 2–5, action/API appendices, prompts, error analysis, limitations, and ethics statement. No official code, data, project, or replay artifact was linked or verified.

@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Carnegie Mellon University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2401.13649",
+    "https://jykoh.com/vwa",
+    "https://github.com/web-arena-x/visualwebarena"
+  ],
+  "verification_note": "arXiv and the official project/repository verify title, authors, ACL 2024 status, CMU affiliation, and public artifact links."
+}

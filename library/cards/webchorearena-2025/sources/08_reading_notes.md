@@ -1,0 +1,5 @@
+- Read Sections 3.4–3.5 first: 10 author annotators spend more than 300 hours turning 117 templates into 532 tasks, then attach string, URL, and DOM terminal evaluators.
+- Keep the object boundary explicit: the repository releases task configurations and evaluator code, not complete successful/failed trajectories, paper-run results, or a frozen environment image.
+- Use Appendix C when comparing scores: both scaffolds have a 50-step cap, but their action spaces, multiple-action policy, temperatures, token budgets, and memory mechanisms differ.
+- Treat Table 1 as author-reported benchmark evidence; Table 2 shows modality sensitivity on a 102-task non-cross-site subset, and Table 4 shows that merely exposing a calculator rarely induces tool use.
+- Before reproduction, pin commit `542abc538fd9558362119714989166904d82f5f4`, reconcile README/JSON schema differences, preserve task order and resets, and audit judge drift, retries, contamination, and rights.

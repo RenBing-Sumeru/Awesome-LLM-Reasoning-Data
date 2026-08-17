@@ -1,0 +1,17 @@
+- **LALP 不是 correctness signal。** 该方法只在 candidate 被宣布 final-answer correct 后运行。它既不检查 step validity，也不能发现通过无效推理得到正确答案的案例。Final-answer matcher、extraction、equivalence mapping、false accept 与 false reject 均未记录。
+- **Long-range consistency 未解决。** 论文明确指出：早期错误 premise 可能让后续局部连贯 step 得到高分。小 context 可能遗漏 proof validity、factual consistency、variable identity 或 code state 所需依赖。作者建议增加 global coherence check，但没有评测该机制。
+- **Segmentation 引入未验证 judge dependency。** GLM-4.5-Air 决定 step boundary，却没有 human agreement 或 segmentation-accuracy study。Split 与 merge 选择会改变 equal-step weighting。Curator inference：即使语义相同，teacher formatting style 也可能改变分数，形成 segmenter-mediated bias。
+- **Student likelihood 不是 causal influence。** 高 LocalLP 只表示 transition 对某个 pretrained student 熟悉，不表示训练该数据会因果性提高表现。Curator inference：LALP 可能偏好 familiar shortcut、继承的 pretraining artifact 或 style pattern，并拒绝新颖但有用的 reasoning。
+- **选择具有 student specificity。** 同一 response pool 可被不同 student 排出不同顺序。虽然论文在多个 Qwen student 上展示 teacher ordering，却没有证明 selected corpus 可跨 architecture、tokenizer family、规模或 post-training history 通用。
+- **Window 选择映射不完整。** 小 window 可能遗漏必要 context，大 window 会收敛到 GALP。报告的 7B 与 32B student 在整数 window 上分别接近 `k=4` 与 `k=5` 峰值，但每个 headline run 没有映射到准确 `k`，复现与 sensitivity analysis 仍不完整。
+- **Equal-step averaging 对 boundary 敏感。** 短 step 与长、information-dense step 在 response 层面权重相同。Curator inference：过度 segmentation 会放大 filler transition，而不足 segmentation 会恢复 token-length domination 并隐藏稀疏 reasoning move。
+- **主实验规模较窄。** 主要 selected set 只有 817 个公开 LIMO prompt 与 817 条 retained response。主要 teacher 与 student 高度集中在 Qwen family；数学证据占主导，科学与代码只是附录扩展，因此不能支持通用数据质量主张。
+- **Candidate 与 failure record 缺失。** Selected 817 responses、未选正确 response、错误答案 candidate、parse failure、tie、segmentation failure、step boundary、likelihood 和逐条 decision 均未发布。无法审计 selection bias 与 failure mode。
+- **采样和训练映射含混。** 斜线分隔的 teacher-sampling 与 SFT 设置没有清楚映射到每项实验。candidate 数、temperature、top-p、top-k、`k`、seed、checkpoint selection、retry 行为、runtime 和 total compute 部分或全部 unknown。
+- **Embedding 机制披露不足。** .935 step-level 与 .760 trajectory-level coverage 结果缺少 embedding model、normalization、preprocessing，以及 response 到 step 的准确 mapping。它支持报告的相关性，却无法独立重建。
+- **没有 contamination audit。** LIMO、MATH、OpenCodeReasoning、LeetCode 与 evaluation suite 之间没有逐条 lexical、semantic 或 provenance comparison，也没有 teacher 或 student pretraining 审计。公开 benchmark provenance 不等于无污染。
+- **许可不完整。** 上游 LIMO、MATH 与 GLM-4.5-Air 有公开 license，但生成 candidate、selected response、boundary、score、代码和 checkpoint 没有 license 或 teacher-output provenance ledger。arXiv manuscript license 不是数据或代码许可。
+- **声称的仓库无法核验。** 审计时匿名 URL 重定向到 file API，未经认证返回 HTTP 401。无法核验 implementation、repository license、data、configuration、dependency lock、commit 或 release。论文链接不能证明 artifact 可复现。
+- **统计稳定性未知。** 结果是没有独立 training seed、confidence interval 或 error bar 的 point estimate。用 200 个 prompt 恢复 teacher order 的主张也没有 repeated-subsample variance。
+- **评测提升不能认证数据质量。** 表 3 与 domain extension 同时混合 candidate generation、correctness admission、segmentation、student-specific scoring、SFT 与 benchmark evaluation。它们不能证明逐条正确性、faithfulness、权利、privacy 或 consent、去污染或 deployment robustness。
+- **仍有表格级歧义。** 附录表 8 看起来把两个 model block 都标为 Qwen2.5-32B-Instruct，却展示不同 selection mixture。没有 run manifest 时，无法独立解决 model assignment。

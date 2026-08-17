@@ -1,0 +1,1 @@
+The core comparison uses executable test outcomes for 2,686 code assessments per judge and three-human ratings for 1,163 summaries. GPT-4-turbo is strongest, but it labels wrong code as correct in 50% of the reported cases; smaller models frequently fail to produce usable verdicts. This supports using an LLM judge as a fallible diagnostic, not as an unattended correctness oracle.

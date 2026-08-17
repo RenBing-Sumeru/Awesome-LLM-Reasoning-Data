@@ -1,0 +1,1 @@
+The official ACL record verifies the sole author, Findings of EMNLP 2025 venue, DOI, pages, and abstract. The abstract directly supports the survey's stated coverage of RLHF, RLAIF, DPO, GRPO, reward-guided decoding, and post-hoc correction. It does not establish a shared empirical ranking of those approaches.

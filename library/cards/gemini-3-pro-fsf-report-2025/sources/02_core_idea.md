@@ -1,0 +1,4 @@
+The official report assesses Gemini 3 Pro against Frontier Safety Framework critical-capability levels in CBRN, cyber, harmful manipulation, ML R&D, and exploratory misalignment risk. Its Track 12 contribution is not a reusable dataset or executable recipe. It is a partial disclosure of the interface between reasoning traces, post-training rewards, deployment guardrails, and evaluation scaffolding.
+
+At the post-training level, Google DeepMind reports model-generated thought traces for SFT and an RL stage with thought-length penalties. The report additionally distinguishes those penalties from other rewards, which are generally computed without reference to thoughts. It describes mitigations such as query filters, input filtering or processing, prompt-injection defenses, safety-aligned fine-tuning, and red-team feedback. These statements identify mechanisms and boundaries but not the records, algorithms, or implementations needed to reproduce them.
+

@@ -1,0 +1,5 @@
+- 将 7.5T token 和 70% code 占比与未发布的任务和轨迹数量分开记录。
+- 将 20,000 个并行环境视为报告中的基础设施规模，而不是已发布的智能体 benchmark。
+- 区分 execution-driven Code RL 与多轮 Agent RL，并保留未知的 reward 与 verifier 细节。
+- 不要从发布权重和代码推断来源权利、任务 manifest、测试有效性、切分或污染控制。
+- 不要将独立的 Qwen3 Technical Report（arXiv:2505.09388）并入这一 Coder 专属证据记录。

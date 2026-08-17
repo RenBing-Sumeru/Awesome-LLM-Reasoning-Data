@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Natural Questions 常用公开口径约 323k 个真实 Google 查询样本，给出 Wikipedia 页面上的 long answer、short answer 或 no-answer 标注。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要开放域 QA 与阅读理解交界的评测面，或审计 public/hidden split、long/short answer scorer 和 Wikipedia 版本的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tom Kwiatkowski 等（Google Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

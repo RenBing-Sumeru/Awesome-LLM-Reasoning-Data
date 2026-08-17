@@ -1,0 +1,9 @@
+对`data_construction_open_release_recipes`而言,该工作可作为自纠正数据集拆解实例。它展示了提示来源、组件生成、程序化答案检查器、分支选择、轨迹打包、SFT、pair构造和scalar-reward RL分别在流程中的位置,尤其有助于区分推理时自评与训练时真值筛选。
+
+31,990行最终发布可用于研究生成式正确性标签、条件修订、correct-to-correct保守性和学习式终止的SFT。raw与turn-level伴随仓库可用于试验替代清洗或打包逻辑。在其记录尚未连接到精确提示版本、候选、verifier输出、决策和最终行之前,不应把它们视为完整可重放构建。
+
+可审计重建应保留上游NuminaMath-CoT记录ID与版本、来源子集与许可证、generator checkpoint、渲染后消息、解码设置、seed、每个候选completion、ToRA/SymPy版本与原始parser结果、归一化答案、分支标签、接受/拒绝原因、选中轨迹ID和最终打包行ID。还应分别记录SFT checkpoint选择、每条PPO rollout/reward及每个DPO候选pair,而不是把它们与公开IFT集混为一谈。
+
+构建者可把论文的负面结果转为审计测试:分别测量correct-to-wrong转移、正确与错误答案识别率、DPO提示利用率、每个组件的拒绝率,以及拟议reward是否鼓励故意首答失败。当checker不确定时增加全部拒绝或升级处理路径,并人工审计符号等价边界案例。
+
+对atlas读者,核心结论是"self-rewarding"描述部署时控制循环,而不是训练信号的provenance。构造oracle仍是外部真值正确性。下游benchmark提升可以支持研究该配方,但安全复用仍取决于lineage、去污染、许可证、verifier校准和固定版本构建。

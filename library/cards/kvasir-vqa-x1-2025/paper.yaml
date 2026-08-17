@@ -1,0 +1,148 @@
+id: kvasir-vqa-x1-2025
+title: 'Kvasir-VQA-x1: A Multimodal Dataset for Medical Reasoning and Robust MedVQA in Gastrointestinal Endoscopy'
+year: 2025
+venue: Data Engineering in Medical Imaging, Springer
+authors:
+- Sushant Gautam
+- Michael A. Riegler
+- Pål Halvorsen
+source_role:
+- data_release
+- construction_recipe
+- benchmark
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- gastrointestinal-endoscopy
+- medical-visual-question-answering
+- multimodal-clinical-reasoning
+training_use:
+- sft
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.09958
+  arxiv: https://arxiv.org/abs/2506.09958
+  venue: https://doi.org/10.1007/978-3-032-08009-7_6
+  code: https://github.com/Simula/Kvasir-VQA-x1
+  data: https://huggingface.co/datasets/SimulaMet/Kvasir-VQA-x1
+  project: https://github.com/Simula/Kvasir-VQA-x1
+  huggingface: https://huggingface.co/datasets/SimulaMet/Kvasir-VQA-x1
+  doi: https://doi.org/10.1007/978-3-032-08009-7_6
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Atomic Kvasir-VQA question-answer pairs grouped by each of 6,500 gastrointestinal endoscopy images.
+  trace_author: Qwen3-30B-A3B naturalizes answers and merges one to three atomic questions; clinical experts validate the
+    resulting pairs.
+  answer_format: An image, complexity level, merged clinical question, naturalized answer, original atomic QA JSON, question-class
+    list, and image id.
+  process_fields:
+  - image
+  - complexity level from 1 to 3
+  - merged clinical question
+  - naturalized answer
+  - original atomic QA provenance
+  - question classes
+  - image id
+  environment_or_substrate: Static gastrointestinal endoscopy images evaluated in original and reproducibly transformed visual
+    settings.
+  verifier_or_reward: Trivial-prompt exclusion, strict JSON formatting, ambiguity checks, clinical-expert validation, text-similarity
+    metrics, and aspect-wise Qwen3-30B-A3B adjudication.
+  terminal_predicate: Retain a merged item only when its source QAs co-occur on one image and the question-answer composition
+    is clinically relevant, unambiguous, structurally valid, and expert validated.
+recipe_metadata:
+  base_model: MedGemma-4B and Qwen2.5-VL-7B are the principal downstream consumers.
+  teacher: A locally hosted Qwen3-30B-A3B naturalizes answers and merges questions; medical experts validate the generated
+    data.
+  generator: Group source QAs by image, sample one to three distinct pairs, merge the questions, naturalize the answer, and
+    retain original atomic provenance.
+  filtering_rule: Exclude predefined trivial items, reject ambiguous or clinically irrelevant merges, enforce JSON-encodable
+    output, and perform expert validation.
+  sampling_protocol: Combinatorial sampling balances levels 1, 2, and 3; construction pairs about 23% of examples with original
+    images and 77% with weak augmentations.
+  rollout_count: 1
+  temperature: null
+  inference_budget: The generation server and teacher are disclosed, but decoding temperature, token budget, and per-item
+    regeneration count are not.
+  optimizer_or_scaffold: LoRA fine-tuning with frozen vision encoders, DeepSpeed ZeRO Stage 2, and fixed clinical instruction
+    prompts.
+audit:
+  source_mixture: 58,849 atomic Kvasir-VQA pairs over 6,500 gastrointestinal endoscopy images, expanded into 159,549 complexity-stratified
+    records.
+  split: 143,594 train and 15,955 test records; assignment follows the original image subsets, and no identical QA instance
+    appears in both.
+  decontamination: Source-image split inheritance and original-QA provenance reduce direct overlap; no broader semantic or
+    model-pretraining contamination audit is reported.
+  license: CC BY-NC 4.0; public and ungated, with non-commercial reuse restrictions.
+  lineage: Kvasir-VQA image and atomic QAs -> per-image grouping and trivial-item removal -> one-to-three-way sampling ->
+    Qwen3 question merging and answer naturalization -> expert validation -> Kvasir-VQA-x1 -> LoRA fine-tuning and robustness
+    evaluation.
+  known_failure_modes:
+  - Teacher merging can change clinical meaning or make a supposedly harder question clearer through extra context.
+  - The 6,500-image gastrointestinal domain and class imbalance limit transfer to other specialties and imaging systems.
+  - Automated adjudication uses the same Qwen3 model family as generation and gives binary aspect scores, creating correlated
+    and partial-credit errors.
+  citation_status: verified
+  confidence: high
+  notes: Full paper, DOI citation, official repository, CC BY-NC 4.0 dataset metadata, actual Parquet schema and records,
+    split counts, construction scripts, and result tables were checked on 2026-07-27.
+inclusion_reason: Kvasir-VQA-x1 openly releases image-grounded clinical question-answer demonstrations whose complexity, source
+  QA provenance, expert validation, and downstream SFT use are explicit.
+related: []
+tags:
+- medical-vqa-data
+- clinical-question-merging
+- multimodal-instruction-data
+- robustness-augmentation
+- arxiv-2506.09958
+- primary-link-checked
+status: verified
+one_line_summary: Kvasir-VQA-x1 turns atomic GI-endoscopy QAs into 159,549 expert-validated, complexity-stratified multimodal
+  demonstrations for clinical VQA training and robustness evaluation.
+why_it_matters: Existing gastrointestinal VQA data emphasizes atomic recognition and offers limited compositional reasoning
+  or controlled robustness testing.
+reading_priority: must read
+paper_type: open medical multimodal instruction dataset and benchmark study
+best_for: clinical VQA fine-tuning, curriculum experiments, and visual-perturbation robustness audits
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, DOI, repository, public dataset records, schema, split, license, and evaluation tables were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: complexity-stratified clinical multimodal demonstrations
+  selection_priority_score: 8
+  selection_score_breakdown:
+    institution: 2
+    venue: 2
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: The primary paper identifies SimulaMet, Oslo Metropolitan University, and Simula Research Laboratory.
+    venue: The official DOI records the chapter in the Springer volume Data Engineering in Medical Imaging; no higher presentation
+      distinction is claimed.
+    impact: On 2026-07-27 the ungated Hugging Face dataset reported 6,088 downloads and 16 likes, and the independent MediaEval
+      Medico 2025 challenge explicitly used the dataset.
+    artifact: The public CC BY-NC 4.0 release exposes 159,549 Parquet records, original images, schema, splits, generation
+      utilities, and augmentation scripts.
+  selection_eligible: true
+  year_impact_threshold: 2

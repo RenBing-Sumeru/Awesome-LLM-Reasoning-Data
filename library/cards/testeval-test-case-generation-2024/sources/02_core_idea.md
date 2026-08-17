@@ -1,0 +1,3 @@
+One-sentence contribution: TESTEVAL evaluates test-case generation on 210 Python programs with overall, targeted line/branch, and targeted path coverage tasks.
+
+The mechanism is to expose Python test-case generation benchmark with coverage instrumentation and score outputs through test execution plus coverage measurement for overall, targeted line/branch, and targeted path tasks. Compared with nearby benchmarks, the important change is The benchmark shifts the target from producing correct solutions to producing tests that exercise program behavior and specific execution paths. The direction label is benchmark/evaluation surface, with environment data where the model interacts with a repository, workplace, or execution harness.

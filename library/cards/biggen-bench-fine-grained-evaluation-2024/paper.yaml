@@ -1,0 +1,119 @@
+id: biggen-bench-fine-grained-evaluation-2024
+title: 'The BiGGen Bench: A Principled Benchmark for Fine-grained Evaluation of Language Models with Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Seungone Kim
+- Juyoung Suk
+- Ji Yong Cho
+- Shayne Longpre
+- Chaeeun Kim
+- Dongkeun Yoon
+- Guijin Son
+- Yejin Cho
+- Sheikh Shafayat
+- Jinheon Baek
+- Sue Hyun Park
+- Hyeonbin Hwang
+- Jinkyung Jo
+- Hyowon Cho
+- Haebin Shin
+- Seongyun Lee
+- Hanseok Oh
+- Noah Lee
+- Namgyu Ho
+- Se June Joo
+- Miyoung Ko
+- Yoonjoo Lee
+- Hyungjoo Chae
+- Jamin Shin
+- Joel Jang
+- Seonghyeon Ye
+- Bill Yuchen Lin
+- Sean Welleck
+- Graham Neubig
+- Moontae Lee
+- Kyungjae Lee
+- Minjoon Seo
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm-evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.05761
+  arxiv: https://arxiv.org/abs/2406.05761
+  code: https://github.com/prometheus-eval/prometheus-eval
+  data: https://huggingface.co/datasets/prometheus-eval/BiGGen-Bench
+  project: https://github.com/prometheus-eval/prometheus-eval/tree/main/BiGGen-Bench
+  huggingface: https://huggingface.co/datasets/prometheus-eval/BiGGen-Bench
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks and prompts documented by the paper and official release.
+  trace_author: Dataset authors, annotators, and evaluation pipeline as documented in the paper.
+  answer_format: Task input, candidate response, and task-specific judgment or rubric metadata.
+  process_fields:
+  - task
+  - response
+  - judgment or rubric
+  environment_or_substrate: The evaluation environment documented in the official release.
+  verifier_or_reward: Human/expert annotations, rubric-based judgment, or benchmark scoring documented by the paper.
+  terminal_predicate: A task-specific score or label under the released evaluation protocol.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: See the paper's documented construction procedure.
+  filtering_rule: See the paper and release documentation.
+  sampling_protocol: See the official release for splits and configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official paper page and the linked official data, code, or project resource.
+  split: Consult the official release.
+  decontamination: Assess public-task exposure before using a release as held-out evaluation.
+  license: Consult the official resource terms before reuse.
+  lineage: https://arxiv.org/abs/2406.05761
+  known_failure_modes:
+  - Rubric or judge quality can constrain the validity of resulting scores.
+  citation_status: verified
+  confidence: high
+  notes: Official title, authors, affiliation block, venue status, and available resource links were checked.
+inclusion_reason: BiGGen Bench 为 77 类生成任务提供实例专属标准，以多裁判细粒度测量九种语言模型能力。
+related: []
+tags:
+- llm-judge
+- rubric
+- evaluation
+one_line_summary: BiGGen Bench supplies instance-specific criteria across 77 generation tasks for fine-grained multi-judge
+  evaluation of nine LM capabilities.
+why_it_matters: BiGGen Bench supplies instance-specific criteria across 77 generation tasks for fine-grained multi-judge evaluation
+  of nine LM capabilities.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and available release links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "检验模型面对未知、歧义和过时问题时能否正确拒答，把“知道何时不答”纳入推理可靠性审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "审计、污染或验证器鲁棒性论文",
+  "best_for_ch": "想复盘验证器、基准污染、奖励投机或可复现性风险的研究者。",
+  "confidence_ch": "高：官方主链接已核验；具体训练数据细节以原文披露为准。",
+  "authors_ch": "Polina Kirichenko、Mark Ibrahim、Kamalika Chaudhuri、Samuel J. Bell",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-13T12:32:38Z"
+}

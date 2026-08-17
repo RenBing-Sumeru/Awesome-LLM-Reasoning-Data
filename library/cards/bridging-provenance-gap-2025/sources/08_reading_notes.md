@@ -1,0 +1,6 @@
+- Use 3,916 as Table 1's cross-modal total: 3,717 text, 95 speech, and 104 video. Preserve the same paper's separate 3,713-text statement as unresolved.
+- The object is collection/dataset/separable-variant metadata, not per-record provenance and not a released reasoning-trace corpus.
+- Keep dataset licenses separate from upstream source/model terms; the audit uses strictest-source categories for aggregation, not legal judgments.
+- Read restriction percentages with their denominators: dataset counts differ from token/hour quantities, and collection-level text labels inherit the most restrictive constituent.
+- Pin repository revision `ce6662deccf011574427b6f112df479d261960b8`; v1.1.0 predates the paper, the README describes the older text-only scope, and no paper-time manifest was found.
+- Still unknown are field-level annotation coverage/agreement, frozen evidence snapshots, correction semantics, and record-level source, consent, transformation, license, and overlap lineage.

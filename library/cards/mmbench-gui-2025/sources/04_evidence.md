@@ -1,0 +1,3 @@
+The arXiv abstract reports more than 8,000 tasks across the hierarchy and states that existing GUI agents show substantial gaps, especially as tasks move from static understanding to real automation. The public GitHub and Hugging Face pages provide official artifact anchors for code and data.
+
+Instance-level evidence differs by level: a static label match for L1/L2, and an environment/evaluator result for L3/L4. Evidence boundaries include incomplete or changing runtime support, app and website drift, account state, platform versions, screen resolution, evaluator version, and whether the evaluated level is fully released.

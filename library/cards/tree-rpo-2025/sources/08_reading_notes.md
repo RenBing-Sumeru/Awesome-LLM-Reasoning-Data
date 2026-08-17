@@ -1,0 +1,4 @@
+- Trace unit to inspect: Token-length-segmented reasoning-tree branches with leaf verifiable rewards, back-propagated intermediate step values, sibling-group advantages, and final answers.
+- Feedback contract to verify: A verifiable reward function evaluates complete leaf paths. TreeRPO does not use a separate process reward model; it estimates step values from descendant leaf rewards.
+- Construction decision to compare: A sibling group is retained only when its reward distribution passes the stated variance-threshold criterion. The reported default pruning coefficient is 0.1.
+- Reuse gate before relying on the result: needs_tree_trace_release; needs_item_level_data_manifest; needs_decontamination

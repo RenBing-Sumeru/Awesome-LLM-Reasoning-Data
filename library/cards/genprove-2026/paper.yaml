@@ -1,0 +1,168 @@
+id: genprove-2026
+title: 'GenProve: Learning to Generate Text with Fine-Grained Provenance'
+year: 2026
+venue: ACL 2026
+authors:
+- Jingxuan Wei
+- Xingyue Wang
+- Yanghaoyu Liao
+- Jie Dong
+- Yuchen Liu
+- Caijun Jia
+- Bihui Yu
+- Junnan Zhu
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- scalar_reward
+domains:
+- general_qa
+- retrieval_augmented_generation
+- provenance
+training_use:
+- sft
+- process_supervision
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.228/
+  arxiv: https://arxiv.org/abs/2601.04932
+  code: https://github.com/yanghaoyuliao/GenProve
+  data: https://github.com/yanghaoyuliao/GenProve/tree/main/data
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.228
+  venue: https://aclanthology.org/2026.acl-long.228/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.228/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.228.bib
+data_object:
+  prompt_source: A public content-grounded long-form QA corpus with questions, retrieved multi-document evidence, and reference
+    answers from Yehudai et al. (ICLR 2024); the exact upstream snapshot and subset-selection manifest are not disclosed
+  trace_author: Original long-form answers are sentence-segmented; GPT-4o proposes sentence-level provenance triples, three
+    annotators screen them, and three NLP/factuality experts validate evidence sufficiency and relation correctness
+  answer_format: 'User message with question plus sentence-indexed source documents; assistant message with a long-form answer
+    whose factual sentences carry [PROVE: (DocID, SentID, Relation)] tags'
+  process_fields:
+  - question
+  - source_documents
+  - answer_sentence
+  - doc_id
+  - sent_id
+  - relation
+  - prove_tag
+  environment_or_substrate: Offline multi-document grounded generation with zero-based sentence indices and generation-time
+    provenance
+  verifier_or_reward: ReFInE labels are human-verified; GRPO uses a composite scalar reward combining threshold-gated sentence-embedding/ROUGE-L
+    content similarity with exact provenance-triple F1 over DocID, SentID, and relation
+  terminal_predicate: An annotation is retained or corrected only if it passes instruction, fluency, safety, tag-format, index,
+    evidence-sufficiency, and relation-correctness checks; otherwise it is discarded
+recipe_metadata:
+  base_model: Qwen3-8B according to the ACL paper; the released sft/train.sh instead names a local Qwen3-4B checkpoint, so
+    the executable configuration is not reconciled with the paper
+  teacher: GPT-4o for initial provenance annotation; three annotators and three experts provide screening and expert validation
+  generator: GPT-4o independently predicts candidate (DocID, SentID, Relation) triples for each target answer sentence before
+    instance reconstruction
+  filtering_rule: Remove or correct instruction failures, refusals, broken/truncated text, unsafe or personally identifiable
+    content, missing/malformed PROVE tags, split multi-source tags, invalid indices, unsupported claims, and incorrect Quotation/Compression/Inference
+    labels
+  sampling_protocol: Segment upstream answers/documents, annotate each target sentence with GPT-4o, run preliminary three-annotator
+    screening, reconstruct answer-level messages, run three-expert dual validation, then allocate separate SFT, GRPO, and
+    evaluation subsets
+  rollout_count: null
+  temperature: 1.0
+  inference_budget: Paper reports maximum sequence length 2,048 for SFT and GRPO and four GRPO iterations per update; the
+    released SFT shell script instead uses maximum length 4,096, five epochs, and four GPUs
+  optimizer_or_scaffold: Full-parameter Qwen3-8B SFT with AdamW, learning rate 2e-5 and effective batch size 16, followed
+    by GRPO initialized from the SFT policy with learning rate 2e-5, temperature 1, KL beta 0.02, tau_c 0.45, tau_p 0.50,
+    and four iterations per update; composite-reward weights alpha and beta are undisclosed
+audit:
+  source_mixture: Derived from a public synthetic content-grounded LFQA corpus with retrieved multi-document evidence; per-record
+    source-document URLs, upstream revision, source rights, and retrieval provenance are not exposed in the released JSONL
+  split: Paper Section 3.3 calls 12,540/5,256/4,838 SFT/GRPO/EVAL units 'instances' (22,634 total), while pinned repository
+    commit 907e7e7 contains 1,670/571/658 JSONL records (2,899 total); Appendix Table 4 reports 11,467 PROVE tags and 22,138
+    triples, so unit semantics and the count mismatch require author clarification
+  decontamination: unknown
+  license: ACL paper is CC BY 4.0; the top-level GenProve repository and released ReFInE JSONL declare no license. The Apache-2.0
+    file inside the vendored swift/ subtree does not license the repository-level data or GenProve artifacts. Upstream corpus/source-document
+    rights remain unknown.
+  lineage: Upstream question/documents/reference answer -> sentence segmentation and indexing -> GPT-4o per-sentence triple
+    proposals -> preliminary human screening -> answer-level reconstruction -> expert evidence/relation validation -> SFT/GRPO/EVAL
+    JSONL -> Qwen3 SFT -> GRPO with content/provenance reward; record-level upstream URLs, annotation decisions, corrections,
+    rejects, and annotator identities are not released
+  known_failure_modes:
+  - Inference provenance is substantially harder than quotation and remains low even for GenProve
+  - A correct evidence pointer can still receive the wrong relation type
+  - Sentence-embedding and ROUGE thresholds can reward lexical/semantic similarity without proving entailment
+  - Exact reference-triple F1 penalizes valid alternative evidence and inherits annotation errors
+  - Retrieval failure bounds end-to-end provenance quality
+  - Structured triples increase output length and latency
+  - Dataset is primarily English
+  - Paper/repository split counts and training configurations conflict
+  - No top-level data/code license or immutable release tag
+  - Released repository lacks a clear README, model checkpoint, complete GRPO command, and clearly isolated custom reward
+    implementation
+  citation_status: verified
+  confidence: medium
+  notes: ACL publication, arXiv 2601.04932, paper-linked GitHub repository, pinned commit 907e7e7, released JSONL row counts,
+    SFT script, and evaluation code checked on 2026-07-13. Publication and artifacts are real, but release documentation,
+    licensing, count semantics, and paper-to-code reproducibility are materially incomplete.
+inclusion_reason: ReFInE exposes expert-verified sentence-level evidence-use labels and GenProve demonstrates how to combine
+  those structured supervision records with SFT and a provenance-aware GRPO reward, making it a strong example of data construction
+  tied directly to a feedback contract.
+related: []
+tags:
+- genprove
+- refine
+- fine-grained-provenance
+- quotation
+- compression
+- inference
+- prove-tags
+- human-in-the-loop
+- sft
+- grpo
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: ReFInE converts grounded long-form QA into expert-validated sentence-level (document, sentence, relation)
+  provenance records, then GenProve trains Qwen3 with SFT and composite-reward GRPO.
+why_it_matters: It makes evidence-use type and sentence pointer part of the generated training target and reward, while its
+  count, configuration, lineage, and license gaps illustrate why an available repository is not automatically a reproducible
+  open release.
+card: null
+needs:
+- 'needs_clarification: reconcile paper split units 12540/5256/4838 with released JSONL rows 1670/571/658 and Appendix corpus
+  totals'
+- 'needs_code: publish a paper-matching Qwen3-8B SFT/GRPO configuration and isolated composite-reward implementation'
+- 'needs_metadata: disclose GRPO group size, alpha/beta reward weights, annotation decoding settings, seeds, hardware, epochs,
+  and checkpoint selection'
+- 'needs_license: declare repository/data license and document upstream corpus/source-document rights'
+- 'needs_lineage: release upstream snapshot, record-level source URLs, annotation revisions, discarded items, and split manifest'
+- 'needs_audit: report inter-annotator agreement, annotation yields, label-confusion/error rates, decontamination, and alternative-valid-evidence
+  behavior'
+- 'needs_release: publish immutable version tags/checksums and model checkpoints'
+curation_level: L2_metadata_complete
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official ACL/arXiv citation and author-linked repository verified; data/code exist but lack a top-level license,
+    immutable release, count reconciliation, and a complete paper-matching GRPO recipe.

@@ -1,0 +1,1 @@
+For QA, preference-data, or reward-model evaluation, preserve held-out answer content, add sampled strengtheners or weakeners, and compare judge verdicts. The output is a bias report by marker and task. Use it when semantic equivalence can be audited; do not rely on automated rewrites where a marker can change meaning without human checks.

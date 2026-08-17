@@ -1,0 +1,160 @@
+id: sciinstruct-2024
+title: 'SciInstruct: a Self-Reflective Instruction Annotated Dataset for Training Scientific Language Models'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Track
+authors:
+- Dan Zhang
+- Ziniu Hu
+- Sining Zhoubian
+- Zhengxiao Du
+- Kaiyu Yang
+- Zihan Wang
+- Yisong Yue
+- Yuxiao Dong
+- Jie Tang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- reasoning-data
+- mathematics
+- physics
+- chemistry
+- formal-proof
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/02ee6b7295f720407b56c457b34c54d5-Abstract-Datasets_and_Benchmarks_Track.html
+  arxiv: https://arxiv.org/abs/2401.07950
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/02ee6b7295f720407b56c457b34c54d5-Abstract-Datasets_and_Benchmarks_Track.html
+  code: https://github.com/THUDM/SciGLM
+  data: https://huggingface.co/datasets/zd21/SciInstruct
+  project: https://SciGLM.github.io/
+  huggingface: https://huggingface.co/datasets/zd21/SciInstruct
+  doi: https://doi.org/10.52202/079017-0046
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/23344-/bibtex
+data_object:
+  prompt_source: Textbooks, pedagogical materials, public question-answer sites and problem sets for science and mathematics,
+    plus LeanDojo theorem-proof records.
+  trace_author: Existing worked solutions are retained where available; GPT-4-0613 samples, critiques, and revises missing
+    scientific reasoning traces, while Lean proofs come from their formal sources.
+  answer_format: A scientific or formal-mathematics question in content, a worked solution or proof in summary, and a subject
+    label.
+  process_fields:
+  - content
+  - summary
+  - subject
+  environment_or_substrate: Static JSON Lines instruction records consumed as chatbot-style supervised fine-tuning data.
+  verifier_or_reward: Known final answers and a GPT-4 outcome-labeling prompt filter candidate traces; a ChatGLM3-6B-Base
+    feature classifier ranks instruction quality, while Lean source proofs provide formal targets rather than replayed compilation
+    evidence.
+  terminal_predicate: Accept answer-consistent traces after up to three generation/reflection stages, then remove the lowest-scoring
+    noisy instructions with the learned quality classifier.
+recipe_metadata:
+  base_model: ChatGLM3 6B/32B Base, Llama3-8B-Instruct, and Mistral-7B MetaMath are reported SFT consumers.
+  teacher: GPT-4-0613 generates, labels, critiques, and revises reasoning traces; GPT-3.5-turbo-0613 and ChatGLM2-6B contribute
+    classifier negatives.
+  generator: Initial chain-of-thought generation followed by a reflection prompt, then a reflection prompt that also reveals
+    the reference answer.
+  filtering_rule: Keep traces judged answer-correct, retry failures through two reflection stages, then rank noisy instructions
+    with a classifier trained from human/source positives and model-generated negatives.
+  sampling_protocol: The reflection subset begins with 42,497 questions and yields 32,969 accepted solutions across three
+    stages; the final cross-domain mixture contains 254,051 instructions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Three possible GPT-4 generation/judgment stages per failed reflection question; total tokens, retries
+    outside the illustrated subset, and API cost are not disclosed.
+  optimizer_or_scaffold: Standardize records as chat examples and fine-tune with Hugging Face Transformers and DeepSpeed for
+    two epochs; ChatGLM experiments use learning rate 3e-6 and a linear scheduler.
+audit:
+  source_mixture: The reported 254,051-record mixture contains 123,869 physics/chemistry, 89,934 mathematics, and 40,248 Lean
+    proof instructions gathered from textbooks, public QA, problem sets, and LeanDojo.
+  split: The datasheet uses all records as training data. The author-maintained Hugging Face mirror exposes three JSON Lines
+    files for Chinese math, English physics/chemistry, and Lean; the checked math file contains 9,110 directly readable records.
+  decontamination: The authors state construction sources were not derived from evaluation test sets, but provide no item-level
+    overlap report, semantic deduplication result, or public provenance key for every record.
+  license: The NeurIPS datasheet and Hugging Face metadata specify CC BY 4.0 for SciInstruct and no third-party IP restrictions;
+    the GitHub repository exposes code and training instructions but does not declare a separate code license.
+  lineage: 'instruction / demonstration / rationale data; closest comparisons: MAmmoTH, MetaMath, MathInstruct, LeanDojo,
+    and general self-reflection or instruction-filtering pipelines.'
+  known_failure_modes:
+  - A correct final answer can coexist with invalid intermediate steps, and GPT-4 is used in both trace generation and outcome
+    judgment.
+  - OCR damage, incomplete source problems, and a learned quality classifier can introduce source- and model-specific selection
+    bias.
+  - Public records do not carry per-instance source URLs or reflection-stage provenance, limiting license and lineage audits
+    below the dataset level.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS Datasets and Benchmarks proceedings, arXiv PDF, datasheet, affiliations, construction counts, evaluation
+    tables, repository, CC BY 4.0 release metadata, three public JSON files, and actual content/summary/subject records checked
+    on 2026-07-14.
+inclusion_reason: SciInstruct centrally releases worked scientific reasoning demonstrations and exposes an answer-filtered,
+  self-reflective trace-construction pipeline whose records are directly consumed by SFT.
+related:
+- mammoth-mathinstruct-2024
+tags:
+- instruction-demonstration-rationale
+- scientific-reasoning
+- self-reflection
+- formal-proof
+- arxiv-2401.07950
+- primary-link-checked
+status: verified
+one_line_summary: SciInstruct turns answer-only science questions into open worked-solution records through staged generation,
+  self-reflection, outcome checking, and learned quality filtering.
+why_it_matters: It makes the transition from scarce answer-only scientific problems to reusable rationale SFT data explicit
+  and evaluates both mixture components and filtering decisions.
+reading_priority: must read
+paper_type: scientific rationale-data construction and filtering study
+best_for: Readers building cross-domain scientific SFT mixtures or auditing self-reflective teacher traces.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: NeurIPS proceedings, official PDF/datasheet, public repository, CC BY 4.0 dataset, files, real records, scale, and
+    training consumers checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: scientific reasoning demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The official paper affiliation block confirms Tsinghua University KEG, Zhipu AI, and California Institute
+      of Technology, established institutions with sustained LLM, scientific reasoning, and machine-learning research.
+    venue: The official NeurIPS proceedings lists paper hash 02ee6b7295f720407b56c457b34c54d5 in the 2024 Datasets and Benchmarks
+      Track; no official oral, spotlight, or award distinction was found.
+    impact: On 2026-07-14 the official repository reported 88 stars and 11 forks, the dataset mirror reported 138 downloads,
+      OpenAlex reported 4 citations, and Hugging Face exposed an independent distilled SciInstruct derivative, jointly establishing
+      credible citation and open-source reuse signals.
+    artifact: The authors publish three directly accessible JSON files, real content/summary/subject records, a CC BY 4.0
+      datasheet, scale and domain statistics, training scripts, and multiple download mirrors; the repository does not state
+      a separate code license.
+  selection_eligible: true
+  year_impact_threshold: 3

@@ -1,0 +1,4 @@
+Use this Card to separate what a user can reuse from what they cannot audit. The public artifacts support studying or deploying the weights for policy-based classification under the user's own policy. They do not support reconstruction of the policy-labelling corpus, a transfer claim for the post-training objective, or an audit of data rights and contamination.
+
+For post-training reasoning-data research, it is a Track 12 comparison point: a release can make a policy-conditioned inference object and some evaluation evidence available while retaining the feedback contract and construction data as material unknowns. Future releases could become more auditable by publishing a policy revision history, label and reward protocol, split/decontamination report, and evaluator implementation or audit artifacts.
+

@@ -1,0 +1,1 @@
+既有 CoT augmentation 通常采样线性解释，Tree-of-Thought 虽探索替代路径，却不一定把选中推理转成训练数据。ReST-MCTS 类工作搜索完整答案，或使用独立 process reward model。SRA-MCTS 改为把 MCTS 专门用于代码之前的自然语言 thinking 部分，让同一 backbone 生成并评估步骤，把 reflection 字段带入后续扩展，再将选中 thinking 与代码序列化为 SFT 数据。其方向信号是把问题分解连接到代码生成的显式中间对象。MCTS、UCT、reflection、self-training 与 SFT 都不是新组件；该方法也没有证明 self-evaluation 已校准，或选中的自然语言计划因果性地促成代码通过测试。

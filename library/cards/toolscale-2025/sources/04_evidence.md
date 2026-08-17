@@ -1,0 +1,3 @@
+Decisive downstream experiment: On HLE, the 8B Orchestrator reports 37.1% versus GPT-5 at 35.1% while being 2.5x more efficient; the result couples ToolScale with the paper's multi-objective RL recipe. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 4,063 synthetic tool-orchestration tasks and exposes actual fields id, task description, user scenario, initial state, and evaluation criteria; on 2026-07-27 its page reported 1768 downloads. Usage is only an impact cross-check, not a causal experiment.

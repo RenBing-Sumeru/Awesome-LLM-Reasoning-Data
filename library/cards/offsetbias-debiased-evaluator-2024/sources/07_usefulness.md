@@ -1,0 +1,1 @@
+Use OffsetBias as an augmentation and stress test for a pairwise text judge. Mix it with ordinary preference data, randomize answer order, and report accuracy by the six named bias types as well as target tasks. Do not use its chosen labels as general user taste or as evidence that a response is factually correct outside the constructed pair.

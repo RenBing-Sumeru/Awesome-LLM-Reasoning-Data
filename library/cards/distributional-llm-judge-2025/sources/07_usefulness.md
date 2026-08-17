@@ -1,0 +1,1 @@
+Use the protocol to audit an evaluator before relying on it: retain original and controlled inputs, run both, and report the paired change. Success is stable behavior on matched controls. Do not use the result as a universal certification outside the tested modality or task.

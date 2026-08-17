@@ -1,0 +1,3 @@
+On ProcessBench, a 1.5B GenPRM surpasses GPT-4o with increased sampling, while a 7B model exceeds Qwen2.5-Math-PRM-72B. It also improves answer refinement as a critic. This supports rationale- and code-verified supervision, although the data remain MATH-specific and automatically labeled.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of mathematical step verification in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

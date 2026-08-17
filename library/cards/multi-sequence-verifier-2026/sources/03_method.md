@@ -1,0 +1,3 @@
+The model receives a prompt and a parallel set of candidate trajectories, then predicts scores while modeling interactions across sequences. Candidates are ranked by these set-conditioned scores instead of isolated verifier scores. For streaming inference, the same information is refreshed as decoding progresses and a stopping criterion determines whether unfinished candidates still merit computation.
+
+Evaluation compares set-level and isolated verification for best-of-N selection, calibration, and latency. The relevant trace contains the candidate pool, decoding times, intermediate and final joint scores, stop time, chosen answer, and task outcome; otherwise an early-stopping result cannot be audited against a full-decoding baseline.

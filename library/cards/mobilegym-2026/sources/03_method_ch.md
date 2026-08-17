@@ -1,0 +1,9 @@
+**输入与状态构造。** MobileGym 实现 12 个 everyday-app surrogate 和 16 个 system app。只读为主的 world data 保存帖子、商品等实体；可变 runtime overlay 保存当前用户资料、购物车、草稿、消息、设置及任务特定 override；OS runtime 保存设备与生命周期状态。每个 task class 提供自然语言模板、参数采样器、setup/state injection、允许的预期变化以及确定性 goal/answer 检查（论文 §3–§4；附录 A、D、E）。
+
+**实例化与交互。** 416 个模板拆为 Train160 和 Test256。运行时多样性来自指令变体、从人工整理集合/数值范围/当前状态采样的参数，以及环境配置。Runner 先重置模拟器并应用任务状态；需要 group rollout 时，从相同 JSON snapshot 分叉实例。Agent 接收 1080×2400 截图，在归一化到 0–1000 的坐标空间输出动作，并受 15/30/45/60 步预算限制；论文协议为 AnswerSheet 任务额外增加 15 步。当前 RL flow 通过异步环境池运行浏览器页面，但对 AnswerSheet 只增加 10 步，因此复现者必须选择并固定其中一种协议（论文 §4.2–§4.3；附录 C、F、G；官方 `mobilegym_flow.py`）。
+
+**验证。** Episode 终止或被截断后，task code 依据初始和终局结构化状态计算显式 goal checks。Query/hybrid 任务可能要求 agent 填写 typed AnswerSheet；matcher 覆盖精确选项/文本、数值容差、日期/时间/时长格式和可重复字段。完整 state diff 会标记声明的 expected changes 之外的变更。终局报告区分 goal success 与 clean success，并记录 progress、false completion、post-success abort、overdue termination 和 unexpected side effects。
+
+**Reward 与在线训练。** 论文的 GRPO 案例在 Train160 上训练 Qwen3-VL-4B-Instruct 10 步，使用 3 张 RTX Pro 6000、96 个浏览器实例、group size 8、train/PPO mini-batch 12、每 GPU micro-batch 2、学习率 1e-6、KL 系数 0.01、clip 0.2/0.28、训练温度 0.7、最大 prompt/response 长度 32,768/1,024，并采用 vLLM 异步 rollout（论文 §5.2、附录 G）。基础 reward 是终局 goal checks 的通过比例 `p`；提交错误 AnswerSheet 时移除“已提交”记账项的进度，unclean success、提前结束、成功后 `ABORT` 或 overdue 再乘 0.8/0.5 折扣。报告用二元正确性仍由最终 success predicate 决定。
+
+**公开物与复现。** 仓库公开模拟器、任务定义、split 列表、runner、judge、trajectory recorder/explorer，以及基于 vendored rLLM 与 verl 的 v0.1.0 在线 RL stack。当前 launch script 默认 `sample_n=1`、`task_seed=42`、group size 8、96 个并发任务和 train/test split；其硬件默认值与论文描述并不相同，不能把未固定版本的当前脚本直接等同于论文运行。复现必须固定 arXiv v2、仓库 commit 或 v0.1.0 tag、data-v0.1.0 archive、Node/Python/browser 与依赖版本、split 文件、task seed/参数实例、模型 checkpoint 和全部 run logs。未核验到论文成功/失败 rollout 的 canonical corpus。

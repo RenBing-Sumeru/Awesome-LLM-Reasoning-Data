@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AndroidDaily 在真实闭源 Android 应用上定义可核验移动 GUI 任务。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 Android GUI-agent benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yifan Sui 等（Beijing University of Posts and Telecommunications）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T09:24:11Z"
+}

@@ -1,0 +1,101 @@
+id: davinci-env-open-swe-environment-synthesis-at-scale
+title: 'daVinci-Env: Open SWE Environment Synthesis at Scale'
+year: 2026
+venue: arXiv
+authors:
+- Dayuan Fu
+- Shenyu Wu
+- Yunze Wu
+- Zerui Peng
+- Yaxing Huang
+- Jie Sun
+- Ji Zeng
+- Mohan Jiang
+- Lin Zhang
+- Yukun Li
+- Jiarui Hu
+- Liming Liu
+- Jinlong Hou
+- Pengfei Liu
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.13023
+  arxiv: https://arxiv.org/abs/2603.13023
+  code: https://github.com/GAIR-NLP/OpenSWE
+  data: https://huggingface.co/datasets/GAIR/OpenSWE
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Dataset authors and the released construction pipeline.
+  answer_format: Task input, candidate output, and the released verification surface.
+  process_fields:
+  - task
+  - candidate output
+  - verifier result
+  environment_or_substrate: The official released execution or verification environment.
+  verifier_or_reward: The paper's published executable or rule-based verifier.
+  terminal_predicate: The candidate output satisfies the released verification contract.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: The released verifier or execution environment.
+  generator: The authors' released construction pipeline.
+  filtering_rule: Use the official release and its documented acceptance rules.
+  sampling_protocol: Use the official split and version.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Programmatically verified outcome data.
+audit:
+  source_mixture: Official paper, candidate data release, and any official code link cited in the card.
+  split: Use the official release split.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
+  license: Check the official data and upstream-source terms before reuse.
+  lineage: https://github.com/GAIR-NLP/OpenSWE
+  known_failure_modes:
+  - Passing a released verifier does not establish behavior outside its coverage.
+  - Public tasks can overlap with downstream model training data.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv paper and OpenSWE repository were checked; no author-maintained Hugging Face environment dataset release
+    was found.
+inclusion_reason: The released resource exposes a reusable programmatic outcome-verification surface.
+related: []
+tags:
+- programmatic-verification
+one_line_summary: One-sentence position:** daVinci-Env turns more than 12.8K repositories into 45,320 environments and collects
+  13K trajectories from about 9K of them.
+why_it_matters: It exposes a reproducible terminal outcome check rather than only a textual reference.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv paper and OpenSWE repository were checked; no author-maintained Hugging Face environment dataset release
+    was found.
+category_ids:
+- programmatically_verifiable_outcome_data

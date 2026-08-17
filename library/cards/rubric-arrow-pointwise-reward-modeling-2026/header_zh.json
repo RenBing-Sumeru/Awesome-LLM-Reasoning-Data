@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RUBRIC-ARROW 交替训练 rubric 生成器与条件化点式 Judge，为不可验证任务提供可学习的奖励信号。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rubric 条件化点式奖励模型、Judge SFT 数据与后训练方法",
+  "best_for_ch": "需要构建开放式任务的 rubric Judge、点式奖励模型或偏好后训练流程的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Haoxiang Jiang, Zihan Dong, Tianci Liu, Wanying Wang, Ran Xu, Tony Yu, Linjun Zhang, Haoyu Wang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

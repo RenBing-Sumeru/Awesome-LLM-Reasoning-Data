@@ -1,0 +1,1 @@
+Human verification reports context accuracy of 97.3% for single-hop gold and 98.7% for multi-hop gold; answer accuracy is 96.7% and 97.3% (Table 3). These figures support item quality, while source errors and cutoff assumptions remain possible.

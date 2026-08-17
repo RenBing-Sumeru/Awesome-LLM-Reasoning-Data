@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "直接偏好优化（DPO）将偏好与非偏好回答对转为直接策略目标，无需在标准 RLHF 流程中单独拟合奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基础方法与数据/评测路线图",
+  "best_for_ch": "关于偏好对监督与直接偏好优化目标的基础论文。",
+  "confidence_ch": "高",
+  "authors_ch": "Rafael Rafailov、Archit Sharma、Eric Mitchell、Christopher D. Manning、Stefano Ermon、Chelsea Finn",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

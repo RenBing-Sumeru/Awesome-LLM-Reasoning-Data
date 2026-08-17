@@ -1,0 +1,6 @@
+- Data object: 46 test-only Harbor task specifications and container environments; runtime rollouts generate trajectories, but the paper's baseline sessions are not released as a verified corpus.
+- Feedback contract: deterministic end-of-rollout subtask scores in `[0,1]`, aggregated by weighted mean; resolved at `R >= 0.95` and perfect at `R = 1.0`.
+- Construction: 120 candidate broken projects are quality-filtered and calibrated with repeated DeepSeek-V4-Pro runs to 46 tasks; exact generation, rejection, repair, and calibration logs are unknown.
+- Protocol boundary: 17 models × 46 tasks × one attempt yields 782 paper runs, mostly through Terminus-2, with GPT-5.3 using Codex.
+- Release conflict: Hugging Face says tests/solutions are held out, but the pinned GitHub tree exposes both for 46/46 tasks, including 212 test files and 427 solution files.
+- Audit before reuse: reconcile 90 versus 60–480-minute budgets, pin containers/dependencies/reset state, retain success and failure sessions, and document decontamination, rights, privacy, and network safety.

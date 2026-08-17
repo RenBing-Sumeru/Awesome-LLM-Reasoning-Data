@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentRx 为 115 条失败执行轨迹标注关键失败步骤和跨域失效类别，并提供可审计的约束式诊断记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要以关键失败步骤和可追溯证据诊断 API、事件管理与网页／文件智能体轨迹的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shraddha Barke、Arnav Goyal、Alind Khare、Avaljot Singh、Suman Nath、Chetan Bansal",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

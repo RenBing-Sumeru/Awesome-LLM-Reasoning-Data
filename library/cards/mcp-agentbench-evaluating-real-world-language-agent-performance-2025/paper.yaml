@@ -1,0 +1,274 @@
+id: mcp-agentbench-evaluating-real-world-language-agent-performance-2025
+title: 'MCP-AgentBench: Evaluating Real-World Language Agent Performance with MCP-Mediated Tools'
+year: 2026
+venue: AAAI 2026
+authors:
+- Zikang Guo
+- Benfeng Xu
+- Chiwei Zhu
+- Wentao Hong
+- Xiaorui Wang
+- Zhendong Mao
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- mcp
+- multi_server_workflows
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/download/40347/44308
+  paper_pdf: https://ojs.aaai.org/index.php/AAAI/article/download/40347/44308
+  arxiv: https://arxiv.org/abs/2509.09734
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1609/aaai.v40i37.40347
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40347
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: null
+  leaderboard: null
+data_object:
+  object_type: An outcome-scored MCP agent benchmark whose 600 category-balanced instances pair a synthetic single-turn user
+    query with a curated reference answer and an executable stateless text-tool surface; evaluation produces a state-action-observation
+    episode but scores only the final answer.
+  prompt_source: 'Claude 3.7 Sonnet assists a structured generation pipeline: select category-compatible deterministic tools,
+    create a user profile, scenario, objective, and success criteria, synthesize one self-contained natural-language request
+    that does not name the tools, then apply human verification. Exact model revision, decoding settings, and record-level
+    provenance are undisclosed.'
+  trace_author: During reference construction, an LLM generates five candidate execution trajectories per query for screening.
+    During benchmark evaluation, the model under test generates the ReAct or native-tool-calling episode. The paper deliberately
+    does not use execution trajectories as ground truth, and no official trajectory archive is confirmed.
+  task_record:
+  - one of six server-scope and call-dependency categories
+  - single-turn natural-language user query
+  - intended selected MCP server and tool surface
+  - curated reference answer
+  - annotation-time outcome for time-sensitive queries
+  episode_fields:
+  - user query
+  - available MCP server tool descriptions
+  - ordered model thought text in ReAct mode
+  - tool-call name
+  - tool-call arguments
+  - tool execution observation or error response
+  - interaction history
+  - final answer
+  - action count
+  - termination reason implicit in final-text or step-cap behavior
+  - MCP-Eval binary judgment
+  action_space: Calls to tools exposed by the instantiated MCP servers plus model text responses. Single-server and multi-server
+    tasks require single, parallel, or sequential call patterns; multi-server server selection is randomized to keep the exposed
+    tool count near the practical 128-tool limit.
+  observation: Each external tool execution returns an observation to the model and is appended to ReAct history or the native
+    tool-calling conversation. The paper does not publish a schema, server-level error taxonomy, or complete observation logs.
+  answer_format: ReAct records User Query followed by Thought, Action, and Observation cycles and a Final Answer; native tool
+    calling alternates structured tool calls/results and ends with a text-only final answer. The benchmark artifact described
+    by the paper is a query-reference-answer pair, not a canonical action trace.
+  process_fields:
+  - query category
+  - state-less server and tool context
+  - model action or text response
+  - tool observation
+  - ordered episode history
+  - final answer
+  - reference answer
+  - binary pass or fail
+  verifier_or_reward: MCP-Eval uses o3-mini-high as an LLM judge over the user query, curated reference answer, evaluated
+    model's final answer, and a fixed natural-language rubric. The judge prioritizes core intent, treats specific external
+    data as evidence of tool use, favors sufficiency over exhaustive matching, ignores superficial formatting, and returns
+    pass/fail. It does not inspect the execution trace or resulting external state.
+  verifier_output: A binary `pass` or `fail` judgment per query; aggregate performance is Pass Rate. No step score, tool-call
+    correctness label, calibrated probability, or programmatic environment-state check is disclosed.
+  reward: Answer-level binary outcome used for evaluation only. The paper does not use this signal for reward-model training,
+    RLVR, policy optimization, or agent training.
+  terminal_predicate: The interaction loop ends when the model emits text without another tool call. Activity is capped at
+    30 actions, where both tool calls and text responses count; exceeding the maximum prompts an immediate final answer. Task
+    success is a separate post hoc o3-mini-high judgment of the final answer, not the loop's stopping condition.
+  provenance: Official registries and community resources -> 369 candidate MCP servers -> three-person seven-day manual filtering
+    to 33 executable, stable, stateless, text servers -> Claude-assisted contextual component and user-query generation ->
+    human verification -> five candidate trajectories and LLM-judge screening -> expert correction for queries below 20% aggregate
+    pass rate -> 600 curated query-reference-answer pairs -> evaluated agent episode -> MCP-Eval pass/fail.
+  environment_or_substrate: Thirty-three stateless text-based MCP servers exposing 188 tools, configured according to their
+    upstream instructions and unified through the third-party `chatmcp/mcprouter` interface. The exact server inventory, package/API
+    versions, MCP protocol revision, credentials, router commit, and deployment image are not disclosed.
+  release_shape: The paper describes 600 query-reference-answer pairs and reports aggregate model results, but the official
+    AAAI/arXiv surfaces do not link an author-owned dataset, code repository, server bundle, per-query tool manifest, raw
+    judge record, or successful/failed episode archive.
+recipe_metadata:
+  base_model: 'Not applicable as a single training recipe: MCP-AgentBench evaluates multiple API-hosted agents and does not
+    train a base model.'
+  teacher: Claude 3.7 Sonnet assists data construction, while a separate LLM judge screens construction trajectories; exact
+    role-specific revisions and whether the screening judge is identical to the later o3-mini-high MCP-Eval judge are not
+    explicitly pinned.
+  generator: Claude 3.7 Sonnet provides automated assistance throughout server curation, query generation, and reference-answer
+    annotation; evaluated model episodes are generated by the model under test.
+  prompt_task_source: Synthetic user profiles, scenarios, objectives, and queries constructed around selected tools from the
+    curated MCP server pool. No real-user query log or external task dataset is claimed, and per-record server/tool/source
+    ancestry is unavailable.
+  sampling_protocol: For reference construction, five distinct execution trajectories are generated per query and judged to
+    obtain an aggregate pass rate; queries below 20% are escalated to experts. Evaluation runs each query through ReAct and,
+    where supported, native tool calling, but repetitions per model-query and stochastic seeds are not disclosed.
+  temperature: unknown
+  rollout_count: 'Construction: K=5 candidate trajectories per query. Benchmark evaluation repetition count per model-query:
+    unknown.'
+  inference_budget: At most 30 agent actions per query; maximum model output length 8192 tokens; thinking budget 8192 for
+    Claude 3.7 Sonnet, Gemini 2.5 Pro, and Gemini 2.5 Flash; transient API requests retried up to three times. Total context/token
+    budget, wall-clock timeout, tool timeout, and cost cap are not disclosed.
+  search_or_scaffold: Primary interaction uses a published ReAct prompt; native tool-calling is also tested for compatible
+    models. Available MCP servers are routed through `mcprouter`. Gemini native tool calling is omitted because deployed tool
+    descriptions are incompatible with its parser.
+  filtering_rule: Servers must be executable/stable, stateless, and text-based. Generated queries must be realistic, valid,
+    self-contained, solvable with the selected deterministic tools, match one of six call-pattern categories, and pass human
+    verification. Low-pass-rate reference cases receive expert diagnosis and correction.
+  selection_threshold: Reference-answer cases with aggregate pass rate below 20% across five candidate trajectories are escalated
+    for expert intervention. The final acceptance threshold after correction, rejected counts, and adjudication logs are unknown.
+  optimizer_or_training_scaffold: null
+  user_simulator: Claude 3.7 Sonnet is prompted to synthesize an in-character, single-turn user message from the generated
+    user profile, scenario, objective, current system time, server descriptions, selected tools, and category constraints.
+audit:
+  source_mixture: The environment begins from 369 servers found in official MCP registries and community resources, then filters
+    to 33 stateless text servers. Queries and reference answers are predominantly LLM-assisted synthetic artifacts with human
+    verification; exact per-server provenance and per-record human/LLM contribution are undisclosed.
+  split: No train/dev/test, public/private, hidden-test, or temporal split is disclosed. The paper presents one 600-query
+    evaluation pool stratified evenly into six categories of 100 queries each.
+  decontamination: unknown
+  benchmark_overlap: No exact-match, near-duplicate, task-template, reference-answer, or pretraining-overlap audit against
+    existing tool-use benchmarks or evaluated models is reported. If the 600 query-answer pairs are later public, both prompt
+    contamination and judge-target optimization become material risks.
+  lineage: The paper explains server filtering, synthetic query generation, five-trajectory screening, expert correction,
+    and final-answer judging at a procedural level. It does not provide record-level lineage, selected server/tool IDs, candidate/rejected
+    artifacts, timestamps, model request IDs, seeds, tool outputs, or immutable hashes.
+  license: The arXiv manuscript is CC BY 4.0 and the formal AAAI PDF carries AAAI copyright. No benchmark dataset, server
+    bundle, trace archive, code, tool-output, or model-output release is linked, so reuse rights for those data objects are
+    unknown and must not be inferred from the paper license.
+  release_version: No official benchmark release, repository tag, code commit, data revision, server image, or results manifest
+    is disclosed. The formal paper is AAAI 2026; arXiv v1 was submitted 2025-09-10.
+  publication_year_note: The assigned entry ID ends in 2025 because of the arXiv release, but the publisher records the proceedings
+    paper as 2026. Metadata uses year 2026 and venue AAAI 2026.
+  server_api_versioning: The exact 33-server inventory, 188 tool schemas, upstream package commits, external API endpoints/versions,
+    MCP protocol version, and paper-era `mcprouter` commit are unknown. Some evaluated model identifiers are dated, but several
+    provider model names and all API behavior snapshots remain insufficiently pinned.
+  reset_and_replay: Stateful servers were explicitly excluded, reducing persistent-state reset requirements. Historical replay
+    is still unverified because time-sensitive external results, per-query randomized server selection, system time, model/API
+    revisions, retries, credentials, tool observations, and router/server versions are not captured in an official bundle.
+  verifier_or_judge_failure_modes:
+  - The o3-mini-high judge sees only query, reference answer, and model final answer; it cannot confirm that a valid MCP action
+    occurred or detect unsafe, redundant, failed, or policy-violating intermediate tool calls.
+  - The released judge prompt equates specific external-looking data with evidence of tool use and instructs the judge to
+    assume tool use when such data appears. Plausible fabricated specifics can therefore create false positives.
+  - The sufficiency-over-completeness rule can pass partially supported answers when the judge interprets the core need too
+    narrowly, while the reference answer may itself drift for time-sensitive queries.
+  - MCP-Eval disagreed with the human majority on 8.33% of the 60-item calibration sample; Cohen's kappa 0.734 and expert
+    Fleiss' kappa 0.671 show meaningful but non-perfect agreement.
+  - The judge model/version, evaluated APIs, tool schemas, and external data can drift independently, so the same final answer
+    may receive a different result later.
+  - Public disclosure of the judge prompt and reference answers, if released together with tasks, would permit benchmark-specific
+    answer shaping and verifier gaming.
+  successful_and_failed_sample_retention: Five construction trajectories per query are generated and experimental agents produce
+    both successful and failed episodes, but the official materials do not release these trajectories. Only curated query-reference-answer
+    pairs are described, with aggregate pass rates, a 60-item human-agreement summary, and qualitative error classes; dropped/retried/invalid
+    episode policy is unknown.
+  privacy_or_consent: Queries are generated from synthetic personas/scenarios rather than described real-user logs. Human
+    annotator recruitment, qualifications, compensation, consent, and retention of their work are undisclosed. The benchmark's
+    handling of external API responses, potentially proprietary/current data, identifiers, and credentials is also undisclosed.
+  security: No malicious-server threat model, prompt-injection test, credential-isolation policy, least-privilege tool policy,
+    network sandbox, data-exfiltration check, or unsafe-action audit is reported. Stateless and text-only selection does not
+    by itself address adversarial MCP responses.
+  citation_status: verified
+  confidence: high
+  notes: Treat MCP-AgentBench as a paper-defined evaluation surface, not as a released trajectory or training corpus. The
+    citation, appendix prompts, construction workflow, answer-level judge, reported results, and methodological limits are
+    verified; executable artifacts and reuse rights are not.
+  remaining_unknowns:
+  - official benchmark dataset, code, project, and release URLs
+  - exact paper-era 33-server inventory, 188 tool schemas, package versions, API endpoints, MCP revision, and router commit
+  - per-query server/tool manifest, randomization seed, system time, and time-sensitive answer timestamp
+  - role-specific construction model and judge revisions, decoding parameters, prompts beyond the published templates, and
+    seeds
+  - accepted, revised, rejected, and discarded candidate counts plus full expert adjudication protocol
+  - evaluation repetition count, sampling seeds, total token budget, wall-clock/tool timeouts, and complete request manifests
+  - complete successful, failed, retried, invalid, and truncated episodes with observations and judge outputs
+  - train/dev/test or public/private partition and decontamination/benchmark-overlap controls
+  - dataset, code, server bundle, tool-output, and model-output licenses and third-party API content rights
+  - annotator recruitment, qualifications, compensation, consent, and privacy governance
+  - MCP security, prompt-injection, credential, permission, sandbox, and data-exfiltration controls
+  - adversarial and independent MCP-Eval false-positive/false-negative calibration
+inclusion_reason: 'MCP-AgentBench makes a useful evaluation-data boundary explicit: a category-controlled MCP task produces
+  tool-mediated action/observation histories, but success attaches only to an o3-mini-high judgment of the final answer. It
+  belongs in the environment-agent track precisely because it exposes how server selection, action limits, answer-only feedback,
+  and missing replay artifacts determine what can and cannot be reused.'
+related:
+- complex-mcp-2026
+- toolathlon-2025
+- tau2-bench-2025
+tags:
+- environment-agent-trajectory-data
+- agent-benchmark
+- mcp
+- tool-use
+- multi-server
+- stateless-environment
+- llm-as-a-judge
+- answer-level-verification
+- evaluation-only
+- replay-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MCP-AgentBench evaluates 600 category-balanced queries over 33 stateless text MCP servers with answer-only
+  o3-mini-high pass/fail judgments, while releasing no confirmed server bundle, task data, or success/failure trajectory archive.
+why_it_matters: 'It separates an agent episode from its supervision contract: models may generate rich state-action-observation
+  histories, yet the benchmark observes only the final answer. That makes it a strong case study for auditing judge visibility,
+  terminal semantics, server/version drift, replayability, and the difference between evaluation logs and reusable post-training
+  data.'
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: false
+  dataset_contents_verified: false
+  repository_files_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified the official AAAI article/PDF, DOI and 2026 proceedings metadata, arXiv v1 full text and appendices, construction/agent/judge
+    prompts, and the cited third-party mcprouter repository. No author-owned benchmark code/data/project/release link was
+    present in the official paper surfaces; executable and data-release claims remain unverified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_official_release: publish or identify the official 600-item benchmark data, evaluation code, prompts, per-query manifests,
+  and result records'
+- 'needs_version_pin: freeze the 33 servers, 188 tool schemas, MCP protocol, mcprouter commit, dependencies, API endpoints,
+  model/judge revisions, and environment image'
+- 'needs_replay: record random seeds, system time, time-sensitive outputs, request IDs, retries, credentials policy, tool
+  observations, and deterministic replay instructions'
+- 'needs_rollout_release: retain successful, failed, retried, invalid, and truncated state-action-observation episodes with
+  termination reasons and judge outputs'
+- 'needs_split_and_decontamination: clarify partitions and publish deduplication, overlap, contamination, and future public-benchmark
+  exposure controls'
+- 'needs_judge_audit: test answer-only o3-mini-high scoring for fabricated-specific-data false positives, partial-answer false
+  positives, drift, and false negatives'
+- 'needs_license: publish explicit terms for benchmark queries, answers, code, server configurations, tool/API outputs, and
+  model trajectories'
+- 'needs_privacy_and_security: disclose annotator governance, external-data handling, credential isolation, permissions, sandboxing,
+  prompt-injection, and malicious-server controls'
+card: null

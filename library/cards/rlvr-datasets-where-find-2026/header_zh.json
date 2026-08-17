@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ATLAS 将 145 万条 RLVR 记录追溯到原子来源，并据泄漏与来源效用信号构建公开的 1.7 万条 DAPO++；完整谱系与选择账本尚未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "RLVR 数据谱系审计与构造配方",
+  "best_for_ch": "关注 RLVR 数据来源、污染控制、可学习性归因与开放发布审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Hsiu-Yuan Huang、Weijie Liu、Chenming Tang、Sanwoo Lee、Kai Yang、Yangkun Chen、Saiyong Yang、Yunfang Wu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

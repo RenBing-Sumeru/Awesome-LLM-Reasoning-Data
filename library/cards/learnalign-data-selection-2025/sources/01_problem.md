@@ -1,0 +1,5 @@
+LearnAlign appears in Findings of ACL 2026, while arXiv:2506.11480 preserves its June 2025 submission history and explains the entry ID. The paper addresses a construction problem inside reinforcement learning with verifiable rewards: a large prompt pool contains tasks that the current policy almost always or almost never solves, and uniform RLVR spends generation and update compute without asking which prompts are useful for that exact policy.
+
+The selected object is not merely a question-answer pair. Reproducible selection would bind an upstream prompt ID and gold answer to a warmup decision, policy checkpoint, eight generated rollouts, binary correctness judgments, success rate p, learnability p(1-p), a projected per-prompt GRPO gradient, pairwise alignment scores, a row-average score, rank, and top-N decision.
+
+That object is policy-relative. A new checkpoint, warmup set, candidate pool, parser, projection, or random seed can change the ranking. LearnAlign therefore belongs to the Data Construction and Open Release track as a selection recipe and audit case, not as a model-independent quality label or a released reasoning corpus.

@@ -1,0 +1,9 @@
+- **False rigor 是已观察到的 reward failure。** 初始 verifier RL 直接奖励抽取的 `{0, 0.5, 1}` 分数和输出格式，因此 verifier 可以匹配专家标量分数，同时虚构不存在的缺陷。Meta-verification 缩小了这一表面，但它本身仍是用未公开专家记录训练的 learned judge，而不是证明 oracle。
+- **Appendix A.3 不惩罚漏报。** 其 rubric 规定，即使证明明显错误，只要 verifier analysis 声称没有缺陷，也应将该分析视为合理。因此，meta-verification 检查的是被提出缺陷是否有效，而不直接惩罚 verifier 未提出真实缺陷。
+- **相关 verifier 盲区可能变成正标签。** 自动标注中，如果 `n` 个采样 analysis 均未发现合法问题，证明就获得 `1`。Generator、verifier 和 meta-verifier 共享模型家族与迭代 checkpoint lineage，最终模型在测试时还同时生成和验证。重复一致可能放大共享盲区，而不是消除盲区。
+- **论文不足以校准自动化契约。** 数值 `n`、`m`、`k`、样本独立性、checkpoint diversity、tie handling、标签分布、丢弃率、人工转交率、专家审计样本量、一致性统计和分类别错误率均未披露，而最后两轮完全依赖自动标签。
+- **64 次全部通过不等于形式有效。** 它表示在 learned rubric 下，64 个 LLM analysis 都没有否决选定的自然语言证明。方法中没有 Lean/Isabelle 编译、形式陈述、kernel check 或 proof certificate。专家对选定 top proof 的评估强于模型自一致，但专家身份、盲评、agreement 和全 candidate 覆盖仍未发布。
+- **评测部分自指。** `D_v` 质量提升由 learned meta-verifier 评分；one-shot 与 sequential proof correctness 使用 final verifier；Best@32 使用 self-score；high-compute search 由生成 candidate 的同一 final model 进行选择。独立人工评估主要集中在选定 high-compute 输出和 IMO-ProofBench。
+- **竞赛 contamination 未解决。** 训练优先使用 17,503 道 2010 年后的 AoPS 竞赛题，评测却包括公开 IMO 2025、CMO 2024、Putnam 2024、ISL 2024 和 IMO-ProofBench。报告没有发布 crawl manifest、temporal cutoff、exact/near-duplicate test、solution-overlap 审计、memorization 分析或来源排除台账。
+- **训练记录和 lineage 不可用。** `D_v`、`D_mv`、validation data、generated hard proof、rejected item、human-routed item 和 RFT record 的大小与分布均为 unknown。Expert protocol、GRPO/RFT 代码、reward 实现、optimizer 设置、计算量、dataset 版本和 prompt-to-update checkpoint lineage 同样缺失。
+- **Artifact 开放范围小于数据开放。** Apache 2.0 模型权重、inference/evaluation script、部分输入和部分 prediction 已发布；AoPS crawl、专家标签、verifier analysis、meta-label、自动 hard-proof corpus、RFT data 和 training code 未发布，也没有可复用 license。权重与评测代码可用不能描述为开放训练数据集。

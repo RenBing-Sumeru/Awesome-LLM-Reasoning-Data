@@ -1,0 +1,148 @@
+id: learning-when-to-plan-2025
+title: 'Learning When to Plan: Efficiently Allocating Test-Time Compute for LLM Agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Davide Paglieri
+- Bartłomiej Cupiał
+- Jonathan Cook
+- Ulyana Piterbarg
+- Jens Tuyls
+- Edward Grefenstette
+- Jakob Nicolaus Foerster
+- Jack Parker-Holder
+- Tim Rocktäschel
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agentic_reasoning
+- planning
+training_use:
+- sft
+- agent_training
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2509.03581
+  arxiv: https://arxiv.org/abs/2509.03581
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.03581
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2509.03581
+data_object:
+  prompt_source: A synthetic SFT set of 1,024 Crafter trajectories generated with 16 uniformly sampled planning prompts and
+    planning intervals sampled uniformly from 2 through 12.
+  trace_author: Llama-3.3-70B-Instruct generates the SFT trajectories; Llama-3.1-8B-Instruct generates SFT- and PPO-trained
+    agent rollouts.
+  answer_format: Each timestep emits either one action or an optional <plan> natural-language plan </plan> block followed
+    by one action; BALROG parses and executes the action while carrying the current plan in context.
+  process_fields:
+  - observation_history
+  - current_plan
+  - planning_decision
+  - plan
+  - environment_action
+  - task_reward
+  - planning_frequency
+  - plan_length
+  environment_or_substrate: BALROG wraps Crafter for SFT/RL and evaluation and a custom Partially-Observable Graph Search
+    environment for zero-shot planning-frequency analysis.
+  verifier_or_reward: PPO optimizes environment task reward; Crafter provides sparse rewards through 22 achievements, while
+    POGS rewards reaching the target. Planning-token penalties are evaluated in an ablation but removed from the main RL setup.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct for SFT and the PPO actor; an unidentified 1B model for the PPO critic.
+  teacher: Llama-3.3-70B-Instruct generates 1,024 synthetic Crafter SFT trajectories and is used for zero-shot POGS/Crafter
+    evaluation.
+  generator: The teacher follows one of 16 plan styles at a sampled fixed interval, producing mixed plan-plus-action and action-only
+    steps; a single dynamic prompt replaces those fixed prompts in SFT targets so the student can learn whether to emit a
+    plan.
+  filtering_rule: unknown
+  sampling_protocol: Planning prompts are sampled uniformly from 16 templates and planning intervals uniformly from 2 through
+    12 for 1,024 Crafter trajectories; exact episode seeds and any rejection policy are undisclosed.
+  rollout_count: 1,024 SFT trajectories; PPO uses batches of 192 rollouts of length 16, but the total number of RL rollouts
+    is undisclosed.
+  temperature: RL rollout temperature 1.0; SFT-teacher and zero-shot generation temperatures are unknown.
+  inference_budget: SFT and PPO use an 8,192-token context, history and rollout length 16, and PPO maximum output length 200;
+    planning compute is allocated by optionally emitting plan tokens.
+  optimizer_or_scaffold: Full-parameter SFT with AdamW at 5e-6 and DeepSpeed ZeRO Stage 3, followed by PPO with RSLoRA actor/critic
+    adapters, actor and critic learning rates 5e-6, KL coefficient 0.05, one PPO epoch, policy clip 0.2, value clip 1.0, gamma
+    1.0, and GAE 0.95.
+audit:
+  source_mixture: Synthetic Crafter SFT trajectories from one Llama-3.3-70B-Instruct teacher, followed by online Crafter environment
+    experience; POGS is used for zero-shot analysis rather than reported SFT/RL training.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Crafter observations and 16 plan-style prompts -> Llama-3.3-70B-Instruct trajectories at planning intervals 2-12
+    -> dynamic-plan/action and action-only SFT variants -> Llama-3.1-8B-Instruct SFT -> PPO interaction in BALROG/Crafter
+    -> learned optional plan emission and environment actions.
+  known_failure_modes:
+  - Synthetic plan styles and fixed-frequency teacher traces can constrain the learned planning policy.
+  - Closed-teacher bias and undisclosed generation temperature or filtering can propagate into SFT.
+  - Explicit reward shaping initially collapsed planning behavior.
+  - Plans can be correct while execution fails to verify prerequisites.
+  - Results are limited to POGS and Crafter and two Llama model scales.
+  - Human-guided completion is a best-of-N result after repeated attempts rather than autonomous reliability.
+  - No public dataset or currently accessible pinned code snapshot was verified.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v3, full paper appendices, current arXiv BibTeX, OpenReview submission record, and author page were
+    checked. The paper points to an anonymous 4open codebase, but its repository content/README was not retrievable during
+    verification; no data or model release was found.
+inclusion_reason: The paper makes dynamic plan emission an explicit state-action and compute-allocation object learned from
+  synthetic plan/action traces and environmental PPO feedback.
+related: []
+tags:
+- track5
+- dynamic-planning
+- test-time-compute
+- llm-agents
+- crafter
+- pogs
+- balrog
+- synthetic-sft
+- reinforcement-learning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A synthetic-SFT-plus-PPO recipe trains an LLM agent to emit a natural-language plan only when its current
+  state and plan call for additional test-time compute.
+why_it_matters: It exposes planning frequency, plan tokens, environment actions, task rewards, and compute penalties as separable
+  trace fields while the training data and runnable artifacts remain unreleased or inaccessible.
+card: null
+needs:
+- needs_code_release
+- needs_data_release
+- needs_synthetic_data_provenance
+- needs_reward_contract
+- needs_sampling_protocol
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv v3 and submission metadata checked; the anonymous code pointer was not accessible as a verifiable
+    repository snapshot, and no dataset/model artifact was confirmed.

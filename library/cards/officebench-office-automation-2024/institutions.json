@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "University of California San Diego",
+    "University of California Los Angeles",
+    "Allen Institute for AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.19056",
+    "https://github.com/zlwang-cs/OfficeBench"
+  ],
+  "verification_note": "arXiv and official GitHub verify authors, UCSD/UCLA/AI2 institutions, and code/data entry."
+}

@@ -1,0 +1,163 @@
+id: fixing-distribution-shifts-of-llm-self-critique-2025
+title: Fixing Distribution Shifts of LLM Self-Critique via On-Policy Self-Play Training
+year: 2025
+venue: ACL 2025
+authors:
+- Rong Bao
+- Donglei Yu
+- Kai Fan
+- Minpeng Liao
+source_role:
+- construction_recipe
+- verifier_reward
+- process_supervision
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+- process_reward
+domains:
+- math
+- self-critique
+training_use:
+- sft
+- process_supervision
+- rlvr
+construction_layer:
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.865/
+  arxiv: null
+  code: https://github.com/rbao2018/SCOP
+  data: null
+  project: https://github.com/rbao2018/SCOP
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.865
+  venue: https://aclanthology.org/2025.acl-long.865/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.865/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.865.bib
+data_object:
+  prompt_source: GSM8K and MATH training questions seed teacher-initialized Pair-SFT; cleaned Numina-CoT questions seed PPO
+    after proof questions without standard numerical answers and two model-relative prompt bands are removed.
+  trace_author: Qwen2.5-72B-Instruct rewrites reference reasoning and supplies initialization critiques/corrections; during
+    PPO, the current DeepSeek-Math-7B-Base or Qwen2.5-7B-Base policy generates fresh reasoning, critiques, and corrections.
+  answer_format: A feedback-bearing episode contains a question, current-policy reasoning and extracted answer, critique,
+    multiple critique-conditioned corrections and answers, hallucination disposition, and separate reasoning/critique/correction
+    rewards. No serialized episode release is available.
+  process_fields:
+  - source question and gold answer
+  - reference reasoning
+  - policy checkpoint and round
+  - policy reasoning and extracted answer
+  - reasoning correctness reward
+  - critique
+  - hallucination disposition
+  - critique-conditioned correction rollouts
+  - correction answers and correctness rewards
+  - Monte Carlo critique reward
+  - sampling and PPO metadata
+  environment_or_substrate: Pair-SFT initialization followed by on-policy reasoning-critique-correction self-play, programmatic
+    final-answer matching, rule-based hallucination handling, stage-reward assignment, and PPO policy/value updates.
+  verifier_or_reward: Reasoning receives 1 when its extracted answer matches gold. Critique receives m/n plus h(c), where
+    m of n sampled corrections are correct. A correct correction receives 1 plus alpha. Main settings use n=8 and alpha=1;
+    the paper is internally inconsistent about whether non-hallucinatory h(c) is 0 or 1.
+  terminal_predicate: Extracted reasoning or correction answer matches the gold answer. Rewards attach at the ends of reasoning,
+    critique, and correction segments rather than through one episode-level terminal bit.
+recipe_metadata:
+  base_model: DeepSeek-Math-7B-Base and Qwen2.5-7B-Base.
+  teacher: Qwen2.5-72B-Instruct initializes reference reasoning, critiques, and corrections; it also participates in RL-prompt
+    filtering.
+  generator: Pair-SFT initializes a policy capable of reasoning, critiquing, and correcting. The current policy then generates
+    fresh reasoning, four critiques, and eight corrections per critique before each PPO update.
+  filtering_rule: Retain an initialization critique when at least 6 of 8 annotator correction samples are correct, yielding
+    60K examples. For RL, remove prompts solved by the initial policy in all 8 samples and prompts the annotator fails in
+    all 8 samples.
+  sampling_protocol: PPO uses 4 critique samples and 8 corrections per critique at temperature 0.6, top-p 0.9, and maximum
+    output length 2,048. Random seeds and exact answer-extraction implementation are undisclosed.
+  rollout_count: Four critiques times eight corrections yields 32 correction rollouts per reasoning episode, in addition to
+    the initial reasoning generation.
+  temperature: 0.6
+  inference_budget: Maximum output length 2,048 tokens. The default 4-by-8 Qwen training configuration reports 1,924,239 generated
+    tokens per optimization step.
+  optimizer_or_scaffold: Pair-SFT uses AdamW, batch 256, cosine scheduling, warmup 0.03, 5 epochs, weight decay 0, lambda
+    1, and learning rates 5e-5 for DeepSeek and 1e-5 for Qwen. PPO uses batch 1,024, policy/value learning rates 2e-6/5e-6,
+    GAE lambda 0.95, gamma 1, at most 1,500 steps, KL beta 0.05, and a value model initialized from the policy.
+audit:
+  source_mixture: GSM8K/MATH questions, Qwen2.5-72B-Instruct reference reasoning and initialization annotations, cleaned Numina-CoT
+    prompts, and current-policy reasoning-critique-correction rollouts.
+  split: The paper reports 60K initialization examples but does not release their rows or manifest. The number of Numina-CoT
+    prompts surviving RL filters, training/evaluation joins, on-policy episodes, and checkpoint-specific buffers is unknown.
+  decontamination: unknown
+  license: ACL distributes the paper under CC BY 4.0. The official GitHub repository has an MIT license but contains only
+    that license and .gitignore at verified commit 4a24ea4; terms for unreleased data, trajectories, and checkpoints are unknown.
+  lineage: GSM8K/MATH question -> Qwen reference reasoning -> initial policy correct/incorrect reasoning -> Qwen critique/correction
+    -> 6-of-8 post-validation -> 60K Pair-SFT pool -> initialized policy -> filtered Numina-CoT prompt -> current-policy reasoning
+    -> 4 critiques -> 8 corrections per critique -> stage rewards -> PPO update -> refreshed policy.
+  known_failure_modes:
+  - Critique reward conflates diagnosis quality with the correction policy's capability and finite-sample variance.
+  - Final-answer matching does not validate intermediate reasoning or critique claims and may be sensitive to extraction or
+    equivalent-answer handling.
+  - The hallucination rule is coarse, and the method prose uses h(c) in {-1,0} while Appendix Table 8 and Table 10 select
+    {-1,1}.
+  - Removing policy-always-correct and annotator-always-wrong prompts concentrates training on a model-dependent middle band
+    and discards both mastered and very hard prompts.
+  - Four-by-eight sampling costs about 1.92M generated tokens per optimization step; a complete RL run reports about 960 A100
+    GPU-hours.
+  - On-policy freshness applies only after teacher-dependent Pair-SFT initialization; teacher style and errors remain in the
+    starting policy.
+  - Sparse or noisy rewards can still cause policy collapse, especially when labeled solution processes are absent.
+  - Prompt manifests, raw/failed trajectories, verifier outputs, rewards, seeds, environment lockfiles, and checkpoints are
+    unreleased.
+  - Decontamination and overlap with GSM8K, SVAMP, MATH-OAI, OlympiadBench, and OCW evaluation data are unreported.
+  - Table 1 implies a 3.66-point Qwen greedy gain, while the main-results prose reports 3.65; the Card uses table values.
+  citation_status: verified
+  confidence: medium
+  notes: The official ACL record, 21-page paper including Appendices A-D, DOI, BibTeX, affiliations, and paper-linked GitHub
+    repository were verified. The repository's current HEAD remains the 2025-05-26 initial commit with only LICENSE and .gitignore;
+    no executable implementation, data, or checkpoints are present.
+inclusion_reason: A concrete current-policy refresh recipe for complete reasoning-critique-correction episodes, with answer-level
+  stage rewards, Monte Carlo critique scoring, explicit prompt filtering, and fully reported appendix hyperparameters.
+related: []
+tags:
+- on-policy
+- self-play
+- self-critique
+- correction
+- monte-carlo-reward
+- process-reward
+- ppo
+- distribution-shift
+status: partial
+one_line_summary: SCOP refreshes reasoning-critique-correction episodes from the current policy and scores critiques through
+  sampled repair success, but its official repository remains an implementation-free placeholder.
+why_it_matters: It makes critique-data freshness and stage-specific feedback explicit construction variables while exposing
+  how teacher initialization, model-relative prompt filtering, Monte Carlo noise, and missing trajectory lineage limit reuse.
+needs:
+- 'needs_code: publish the SCOP implementation, configs, environment lock, and exact answer verifier'
+- 'needs_data: release the 60K Pair-SFT examples, retained Numina-CoT prompts, and train/evaluation manifests'
+- 'needs_trajectories: release reasoning, all critiques/corrections, extracted answers, verifier outputs, hallucination decisions,
+  and stage rewards by policy round'
+- 'needs_specification: reconcile h(c) in the method prose with the {-1,1} appendix/main configuration'
+- 'needs_lineage: map each episode to source revision, teacher/policy checkpoint, seed, PPO step, and buffer round'
+- 'needs_license: state terms for generated annotations, trajectories, checkpoints, and upstream mixtures'
+- 'needs_decontamination: document exact, near-duplicate, and semantic overlap checks'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Formal publication and repository URL are verified. The repository is pinned at current HEAD 4a24ea4663ea41e98d3682ba5ad524b8ef0c6673
+    and has no implementation, data, model, configuration, or release assets.
+category_ids:
+- data_construction_open_release_recipes

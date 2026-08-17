@@ -1,0 +1,120 @@
+id: mind2web-2023
+title: 'Mind2Web: Towards a Generalist Agent for the Web'
+year: 2023
+venue: NeurIPS 2023 Datasets and Benchmarks Track Spotlight / arXiv
+authors:
+- Xiang Deng
+- Yu Gu
+- Boyuan Zheng
+- Shijie Chen
+- Samuel Stevens
+- Boshi Wang
+- Huan Sun
+- Yu Su
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- offline-web-trajectories
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2306.06070
+  arxiv: https://arxiv.org/abs/2306.06070
+  doi: https://doi.org/10.48550/arXiv.2306.06070
+  code: https://github.com/OSU-NLP-Group/Mind2Web
+  data: https://huggingface.co/datasets/osunlp/Mind2Web
+  project: https://osu-nlp-group.github.io/Mind2Web/
+  huggingface: https://huggingface.co/datasets/osunlp/Mind2Web
+  venue: https://papers.nips.cc/paper_files/paper/2023/hash/5950bf290a1570ea401bf98882128160-Abstract-Datasets_and_Benchmarks.html
+  openreview: https://openreview.net/forum?id=kiYqbO3wqw
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors collect human web tasks and action traces across real websites
+  trace_author: human demonstrators and official dataset authors
+  answer_format: task description, website context, HTML snapshot, action target, and step sequence
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: offline real-website action traces with HTML snapshots across many sites
+  verifier_or_reward: offline action matching and element-selection evaluation over recorded page states
+  terminal_predicate: offline action matching and element-selection evaluation over recorded page states
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: human web demonstrators and OSU NLP dataset authors
+  generator: Mind2Web collection and annotation pipeline
+  filtering_rule: verify website split, cross-domain split, annotation quality, and release license before training reuse
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2306.06070;
+    https://arxiv.org/html/2306.06070; https://osu-nlp-group.github.io/Mind2Web/; https://github.com/OSU-NLP-Group/Mind2Web;
+    https://huggingface.co/datasets/osunlp/Mind2Web'
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2306.06070'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: OpenReview/proceedings, arXiv, project, GitHub, and Hugging Face sources verify The Ohio State University affiliation,
+    NeurIPS 2023 Datasets and Benchmarks Track Spotlight status, and public artifacts; test splits and raw dumps have access
+    caveats.
+inclusion_reason: it is a core offline web action-supervision corpus
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- offline-web-trajectories
+one_line: Mind2Web releases broad real-website action traces for training and evaluating web agents.
+why_it_matters: it is a core offline web action-supervision corpus
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Mind2Web releases broad real-website action traces for training and evaluating web agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: OpenReview/proceedings, arXiv, project, GitHub, and Hugging Face sources verify The Ohio State University affiliation,
+    NeurIPS 2023 Datasets and Benchmarks Track Spotlight status, and public artifacts; test splits and raw dumps have access
+    caveats.
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 27
+  primary_category_id: environment_agent_trajectory_data

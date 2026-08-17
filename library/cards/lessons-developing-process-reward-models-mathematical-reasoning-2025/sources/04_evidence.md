@@ -1,0 +1,5 @@
+The official paper documents the 500K-query preliminary setup, 6--8 candidate responses, eight continuations per step, the Qwen2.5-72B-Instruct critic, consensus-on-error-location filtering, and the reported retention examples. It also reports that the 7B and 72B PRMs are released, and the official Qwen model cards provide an executable per-step scoring interface.
+
+The paper evaluates both response-level Best-of-N and step-level ProcessBench. It reports that MC-trained PRMs can look favorable in Best-of-N yet perform worse at process-error localization, and that human annotation or LLM-as-a-judge shows stronger step-level generalization in its comparisons. These are the authors' reported experiments, not a release of their training corpus or an independent verifier audit.
+
+The model cards establish that the public artifacts are PRM checkpoints under the Qwen license. They do not establish source provenance for the golden-answer queries, rights for generated traces, answer-match correctness, critic calibration, or reproducibility of consensus filtering.

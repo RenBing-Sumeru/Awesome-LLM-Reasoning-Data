@@ -1,0 +1,5 @@
+- Keep four ledgers separate: released model weights, released dataset files, documented generation/filtering recipes, and benchmark results. Evidence in one ledger does not prove completeness in another.
+- Use the report's exact Table 2 total, 33,011,757, only as a report-level synthetic-example count. The current Hugging Face SFT viewer estimates about 3.91M rows, and the official sources do not publish a reconciliation.
+- The SFT schema is unusually useful: input, output, category, license, reasoning mode, generator, used-in-training models, version, and system-message instruction. The RL instruction-following configuration has structured task arguments rather than full policy rollouts.
+- Verification changes by domain and stage: Qwen answer-equivalence judgment, majority voting, syntax checks, Llama-Nemotron reward-model selection, Llama-3.3 answer judgment, format rewards, and instruction constraints. There is no universal “verified” label.
+- Model cards confirm Nano, Super, and Ultra weights. Generic training codebases are public, but the exact NeMo-Aligner development branch, commits, configs, rejected data, and stage-to-row manifests are not pinned.

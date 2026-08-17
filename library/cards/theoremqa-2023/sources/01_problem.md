@@ -1,0 +1,3 @@
+TheoremQA asks whether models can apply named theorems from mathematics, physics, electrical engineering, computer science, and finance to answer closed-form questions. The primary sources are the EMNLP 2023 paper "TheoremQA: A Theorem-driven Question Answering Dataset," the ACL Anthology page, the arXiv version, the official GitHub repository, and the Hugging Face dataset.
+
+The decision boundary is theorem-grounded question answering, not formal proof checking. A benchmark instance contains a question, an associated theorem, an answer type, and a reference answer; some instances also include a diagram. The feedback contract is answer-level extraction and normalization over constrained formats such as integer, float, numeric list, boolean, or multiple choice.

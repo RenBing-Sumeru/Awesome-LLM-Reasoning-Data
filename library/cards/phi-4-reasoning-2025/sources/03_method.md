@@ -1,0 +1,1 @@
+The official abstract supports complexity/diversity curation, o3-mini-generated reasoning demonstrations, and outcome RL. Prompt records, selection rules, teacher calls, reward function, rollouts, and training settings are unknown.

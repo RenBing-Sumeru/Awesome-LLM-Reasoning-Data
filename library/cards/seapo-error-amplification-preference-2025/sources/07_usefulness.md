@@ -1,0 +1,1 @@
+Use SeaPO when preference-pair negatives are too weak or expensive to score. It is most useful for a training program with a concrete error taxonomy; audit whether generated negatives are realistic and do not introduce unintended artifacts.

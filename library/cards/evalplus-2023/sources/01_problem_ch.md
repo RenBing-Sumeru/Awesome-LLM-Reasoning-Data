@@ -1,0 +1,1 @@
+EvalPlus 关注的问题是：看似饱和的代码生成 benchmark 是否只是测试不足。主要来源是 arXiv:2305.01210、EvalPlus 官方站点/仓库和 NeurIPS 2023 OpenReview 页面。这里收录它是因为它提供可执行代码评测面，而不是代码训练集。一个任务包含 HumanEval 或 MBPP prompt、候选解、原始测试和大量新增测试；成功由 EvalPlus harness 下的通过/失败决定。它对 atlas 的价值是把 benchmark false positive 转化为可审计的单元测试问题。

@@ -1,0 +1,13 @@
+{
+  "institutions": [
+    "Key Lab of High Confidence Software Technology (PKU), Ministry of Education",
+    "School of Computer Science, Peking University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T16:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2401.07339"
+  ],
+  "verification_note": "核验确认题名、作者、PKU 机构和 arXiv 状态；未核到官方代码/数据 URL。"
+}

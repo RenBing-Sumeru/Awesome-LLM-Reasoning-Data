@@ -1,0 +1,1 @@
+Use it for multilingual reward modeling, preference-data audits, cross-task transfer studies, and experiments that need multiple human votes. It is valuable for testing whether a reward model transfers beyond English general chat. It should not be used as evidence that a model is culturally aligned without local evaluation.

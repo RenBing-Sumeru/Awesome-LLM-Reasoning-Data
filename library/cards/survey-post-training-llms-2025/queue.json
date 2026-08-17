@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-21T09:08:13Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "从 微调、对齐、推理、效率、集成与适应 角度讲后训练，被引数63",
+    "updated_at": "2026-07-21T09:08:13Z"
+  }
+}

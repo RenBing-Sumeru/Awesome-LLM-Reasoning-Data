@@ -1,0 +1,6 @@
+- Read “validated Haskell programs” narrowly: rows passed a syntax/type-oriented extraction plus one compile/run check. Validation is not a proof of translation equivalence.
+- Keep the two feedback sources distinct. Liquid Haskell or execution accepts Alice's witness; Bob's ten responses measure difficulty. Bob is not the ground-truth verifier.
+- The released data object is `code/input/status/output/size`. Proofs, counterexamples, Bob responses, and curriculum decisions belong to the described but unreleased interaction object.
+- The main result is partly a yield study: positive proof data are much scarcer than negative counterexamples. Benchmark improvements should be interpreted alongside the 34-versus-903 accepted-count asymmetry.
+- The E2/E3 comparison controls approximate verified-pair volume, but accepted difficulty distributions and Bob-update class balance may still differ, as the appendix acknowledges.
+- Official artifact revisions checked for this card are GitHub `490fe084d705cb501e0fe34e592f17db2eb44a7b` and Hugging Face `57f52ef2f46d24f3b6155648e9a895e544b2455d`. Still `unknown`: exact upstream row mapping, semantic decontamination, exact translator revision, complete dependency lock, verified episode release, and adapter release.

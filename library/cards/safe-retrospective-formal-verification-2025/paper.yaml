@@ -1,0 +1,110 @@
+id: safe-retrospective-formal-verification-2025
+title: 'Safe: Enhancing Mathematical Reasoning in Large Language Models via Retrospective Step-aware Formal Verification'
+year: 2025
+venue: ACL 2025
+authors:
+- Chengwu Liu
+- Ye Yuan
+- Yichun Yin
+- Yan Xu
+- Xin Xu
+- Zaoyu Chen
+- Yasheng Wang
+- Lifeng Shang
+- Qun Liu
+- Ming Zhang
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- formal-verification
+- process-reward-modeling
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.594/
+  arxiv: https://arxiv.org/abs/2506.04592
+  code: https://github.com/liuchengwucn/Safe
+  project: https://github.com/liuchengwucn/Safe
+  data: https://huggingface.co/datasets/liuchengwu/FormalStep
+  huggingface: https://huggingface.co/datasets/liuchengwu/FormalStep
+  venue: https://aclanthology.org/2025.acl-long.594/
+  doi: https://doi.org/10.18653/v1/2025.acl-long.594
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.594/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical reasoning steps drawn from model-generated chain-of-thought responses.
+  trace_author: Language-model reasoning outputs formalized retrospectively into Lean 4 claims.
+  answer_format: Natural-language preceding and current steps, a Lean 4 statement, and formal-verification outcome.
+  process_fields:
+  - preceding_steps
+  - current_step
+  - lean_statement
+  - proof_status
+  environment_or_substrate: Lean 4 theorem proving for mathematical reasoning verification.
+  verifier_or_reward: A formal-step verifier that seeks Lean 4 proofs for individual reasoning claims.
+  terminal_predicate: Whether Lean 4 can establish the formalized current step under the retained context.
+recipe_metadata:
+  base_model: Use the models and prompts released in the official Safe repository.
+  teacher: The framework generates Lean 4 formalizations and proofs rather than relying on scalar PRM labels.
+  generator: LLM chain-of-thought steps and the formalization component.
+  filtering_rule: Accept a step only when the retrospective formal verifier finds supporting evidence or a proof.
+  sampling_protocol: Use the official FormalStep release and repository-defined evaluation procedure.
+  inference_budget: The paper reports prover and model configurations; exact inference budgets should follow the official
+    repository.
+  optimizer_or_scaffold: Retrospective step-aware Lean 4 formalization and proof search.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematical reasoning steps, Lean 4 formal statements, and theorem-proving verification outcomes.
+  split: FormalStep contains 30,809 formal statements; use official release splits.
+  decontamination: Keep benchmark items and Lean proofs separate from model-training data when evaluating verification.
+  license: Refer to the official GitHub repository and FormalStep dataset page for their terms.
+  lineage: ACL 2025 paper, author official GitHub code-and-dataset repository, and FormalStep dataset page.
+  known_failure_modes:
+  - Natural-language mathematical claims may be difficult to formalize in Lean 4
+  - Verification coverage is bounded by the prover and formalization quality
+  - The benchmark focuses on mathematics
+  citation_status: verified
+  confidence: high
+  notes: Verified ACL 2025 acceptance, author affiliations on the official PDF, the official Safe GitHub repository, and the
+    supplied FormalStep dataset page.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: Safe turns each mathematical reasoning step into a Lean 4 verification problem, releasing FormalStep to
+  make process judgments interpretable and checkable.
+why_it_matters: It grounds step-level supervision in explicit formal evidence rather than only a learned reward score.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified ACL 2025 acceptance, author affiliations on the official PDF, the official Safe GitHub repository, and the
+    supplied FormalStep dataset page.
+category_ids:
+- process_trace_supervision_data

@@ -1,0 +1,1 @@
+Limitations and hidden assumptions: The study does not release a complete reusable training corpus. Its human-preference distribution, labeler protocols, reward-model behavior, and transfer to verifiable reasoning must not be assumed from headline results.

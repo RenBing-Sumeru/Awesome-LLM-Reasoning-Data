@@ -1,0 +1,5 @@
+LLM agents usually emit text or rigid JSON tool calls. Those formats make it difficult to compose several tools, reuse intermediate values, or react to execution errors without custom parsing. CodeAct asks whether executable Python can serve as a common action language, and whether the resulting interactions can become reusable supervision rather than remaining transient online episodes.
+
+The Track 01 object is CodeActInstruct: 7,139 static multi-turn conversations that serialize an instruction, model reasoning, executable code, environment observations, corrections, and a terminal solution. Teachers generate the traces, task metrics and environment outcomes select successful episodes, and Llama-2/Mistral consumers learn them through SFT.
+
+**L4 facts:** primary source arXiv 2402.01030, accepted by ICML 2024; open dataset `xingyaoww/code-act`, with 7,139 trajectories and 10,581,681 Llama-2 tokens; construction, filtering, task mixture, training consumer, results, and execution risks verified, while the official paper view does not disclose author affiliations.

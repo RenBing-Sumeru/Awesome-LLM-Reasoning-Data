@@ -1,0 +1,1 @@
+正确性只相对于 gold API 名、参数字符串和调用顺序成立，不代表在真实服务中执行成功。等价参数格式可能被判错，语义接近的 slot name 可能被惩罚，生成的 utterance 也可能在过滤后仍遗漏或扭曲源意图。论文的 qualitative analysis 本身就列出 unnormalized slot values 和语义相近 parameter names 造成的失败。artifact 状态是重要边界：当前一手证据能核论文和转换流程，但没有稳定官方代码/数据发布链接。再分发或训练复用前必须逐个源数据集查许可。

@@ -1,0 +1,5 @@
+- 首先固定证据时间线：arXiv v1 日期为 2025 年 7 月 29 日，benchmark 数据于 2025 年 8 月 5 日加入，已检查的官方仓库状态是 commit `80506d2`；不存在 tag 或 GitHub Release。
+- 应按 identity 而非行数计数：3,122 个唯一 task 等于 2,651 train 加 471 test；6,244 个 Parquet 行是在 single-choice 与 multi-choice variant 之间重复这些 ID，417、4K+ 与 10K+ 则是冲突或范围不同的论文主张。
+- evaluator 必须按 mixed 理解：GPT-4o 判断 search 与 clarification utterance 并模拟用户；代码解析 option ID、分配 1.0/0.8/0.0 answer reward、更新 state 并终止 episode。
+- 比较 score 前应先审计 replay：Figure 8 与仓库的 judge-type 编号不同，passive elicitation 默认未设 seed，且至少一条官方记录在承认 cost 并列时仍强制指定一个 `best_id`。
+- 用途边界必须严格：论文只报告 evaluation，Parquet 文件是 task launch record，也没有核验到完整成功/失败 trajectory archive。train split 与未来 SFT/RL 讨论不是训练证据。

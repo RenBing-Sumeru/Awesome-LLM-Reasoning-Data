@@ -1,0 +1,167 @@
+id: mobileworld-2025
+title: 'MobileWorld: Benchmarking Autonomous Mobile Agents in Agent-User Interactive and MCP-Augmented Environments'
+year: 2026
+venue: ACL 2026 (Long Papers)
+authors:
+- Quyu Kong
+- Xu Zhang
+- Zhenyu Yang
+- Nolan Gao
+- Chen Liu
+- Panrong Tong
+- Chenglin Cai
+- Hanzhang Zhou
+- Jianan Zhang
+- Liangyu Chen
+- Zhidan Liu
+- Steven Hoi
+- Yue Wang
+source_role:
+- agent_environment
+- benchmark
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- mobile_gui_agents
+- tool_use
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.278/
+  arxiv: https://arxiv.org/abs/2512.19432
+  code: https://github.com/Tongyi-MAI/MobileWorld
+  data: https://github.com/Tongyi-MAI/MobileWorld/tree/main/site/trajs
+  project: https://tongyi-mai.github.io/MobileWorld/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.278
+  venue: https://aclanthology.org/2026.acl-long.278/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.278/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: '201 human-authored evaluation tasks grounded in a fixed mobile environment: 116 GUI-only, 45 agent-user
+    interaction, and 40 MCP-augmented tasks.'
+  trace_author: Evaluated end-to-end agents or planner-executor systems; agent-user tasks additionally include GPT-4.1-simulated
+    user responses and MCP tasks include external tool results.
+  answer_format: A task episode with task goal, screenshots, model prediction/thought text, parsed GUI/user/MCP action, optional
+    simulated-user response or tool output, token usage, terminal score, and evaluator reason; public trajectory bundles may
+    also map steps to screenshot-video frames.
+  process_fields:
+  - task_goal
+  - step
+  - screenshot
+  - prediction
+  - action
+  - ask_user_response
+  - tool_call
+  - token_usage
+  - terminal_score
+  - evaluator_reason
+  - frame_index
+  environment_or_substrate: Privileged Docker-in-Docker runtime containing a rooted Android Virtual Device, self-hosted Mattermost/Mastodon/Taodian
+    backends, modified apps, an orchestration API, task snapshots, and optional external MCP services.
+  verifier_or_reward: Binary task success from exact/regex text matching, backend database queries, ADB local-storage inspection,
+    or application callbacks; the simulated user is LLM-mediated but is not the terminal success judge.
+  terminal_predicate: A task-specific evaluator returns score 1.0 only when the complete target condition is satisfied; agents
+    may end with answer/status actions or hit the 50-step budget.
+recipe_metadata:
+  base_model: Evaluation includes GPT-5, Claude-4.5-Sonnet, Gemini-3-Pro, Qwen3-VL variants, GUI-Owl, UI-Venus, GELab-Zero,
+    and Doubao-1.5-UI-TARS; no training base model is defined.
+  teacher: GPT-4.1 implements the simulated user for the paper experiments; UI-Ins-7B grounds planner-produced element descriptions
+    to coordinates.
+  generator: Human annotators author and manually validate tasks; evaluated agents generate online interaction trajectories.
+  filtering_rule: Human validators attempt each task with the evaluator up to five times; tasks still scoring 0 are returned
+    for revision and reimplementation.
+  sampling_protocol: One 201-task evaluation collection is described; task-level trial count and random seed policy are not
+    disclosed.
+  rollout_count: unknown
+  temperature: 0.0
+  inference_budget: Maximum 50 actions per task in the paper experiments; token budgets and per-model retry policy are unknown.
+  optimizer_or_scaffold: 'Evaluation-only planner-executor loop: frontier LMM planner, UI-Ins-7B coordinate grounding, ask_user
+    action, dynamically injected MCP tool schemas, GUI executor, and task-specific terminal evaluator.'
+audit:
+  source_mixture: Human-authored tasks over emulator snapshots, LLM-synthesized or internet-derived fixture content, self-hosted
+    open-source backends, Android system/local apps, GPT-4.1 user simulation, and live MCP services.
+  split: The paper presents one 201-task benchmark and no train/validation/test split. Current public trajectory bundles cover
+    model-specific task subsets rather than an immutable universal split manifest.
+  decontamination: unknown
+  benchmark_overlap: Tasks are compared with AndroidWorld but no near-duplicate, model-pretraining exposure, source-URL overlap,
+    or MCP-response contamination audit is reported.
+  license: The official repository root is Apache-2.0. Rights for forked applications, Docker images, internet-derived fixtures,
+    third-party assets, MCP outputs, and submitted trajectory contents require separate inspection.
+  lineage: Human scenario design -> fixed snapshot and fixture state -> up-to-five manual solvability checks -> online model
+    episode with GUI/user/MCP observations -> task-specific programmatic score and reason -> optional public trajectory bundle.
+  release_version: Official repository main commit 8ae506487bf87785292d6cad101c49955d704d39 checked 2026-07-20; no GitHub
+    tags or releases. Public code and trajectories have changed after the paper, including an April 2026 Mattermost session-expiry
+    fix.
+  successful_and_failed_sample_retention: 'Current `site/trajs` bundles retain both terminal successes and failures. The inspected
+    `seed-2.0-pro.json.gz` contains 161 tasks: 101 score-1.0 and 60 score-0.0 episodes. Paper-era trajectories and a complete
+    201-task bundle for every reported model are not established.'
+  privacy_or_consent: Task fixtures contain person-, email-, phone-, resume-, calendar-, and message-like data described as
+    synthesized or internet-derived; record-level source, consent, redaction, and PII review are not disclosed. User-agent
+    and MCP calls may send task context to external APIs.
+  known_failure_modes:
+  - A deterministic checker can still be incomplete or wrong; the repository reports that expired Mattermost sessions caused
+    evaluation false negatives before an April 2026 fix.
+  - Text exact/regex checks can reject semantically equivalent answers or accept format-matching text without validating the
+    full retrieval process.
+  - Database, local-storage, and callback checks observe selected fields, not every unintended side effect or user-intent
+    violation.
+  - The GPT-4.1 simulated user may disclose, refuse, or phrase information differently from a human, so user-interaction scores
+    mix agent behavior with simulator policy.
+  - MCP tools are external and mutable; tool schemas, credentials, returned content, availability, and context length can
+    drift and break replay.
+  - The paper exposes one evaluation set without a train/test split or decontamination audit; it should not be repurposed
+    for training and then reported as held-out evaluation.
+  - Current public trajectories postdate the paper and are model/task-subset specific; some inspected bundled text shows encoding
+    corruption, which complicates training reuse.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology paper, arXiv v3, official repository, root license, current tree, release/tag state, README/changelog,
+    task/evaluator layout, bundler, and one public trajectory bundle were checked on 2026-07-20.
+inclusion_reason: MobileWorld exposes a replay-oriented mobile environment, a hybrid GUI/user/MCP episode object, and multiple
+  programmatic terminal predicates, while its current public trajectories make successful and failed behavior inspectable.
+related: []
+tags:
+- agent-environment
+- agent-trajectories
+- evaluation
+- mobile-gui
+- mcp
+- user-interaction
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MobileWorld evaluates 201 long-horizon mobile tasks in a containerized, snapshot-reset environment with
+  GUI, simulated-user, and MCP actions plus task-specific programmatic terminal checks.
+why_it_matters: It makes hybrid mobile episodes and deterministic environment feedback auditable, while exposing replay drift,
+  verifier scope, external-tool mutability, and privacy/licensing boundaries that block unqualified training reuse.
+card: null
+needs:
+- 'needs_release_pin: tag the paper-era code, Docker image, AVD/app/backend snapshots, task manifest, MCP schemas, and evaluator
+  versions'
+- 'needs_replay: publish complete paper-era trajectories, seeds, retries, per-model task coverage, and a 201-task success/failure
+  manifest'
+- 'needs_audit: document near-duplicate/decontamination checks, fixture provenance, PII review, external API data handling,
+  and component-level licenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: Official ACL publication, arXiv, GitHub code, project site, root license, public trajectory bundles, and a current
+    commit were verified; immutable paper-era replay artifacts remain incomplete.

@@ -1,0 +1,100 @@
+id: adaptthink-2025
+title: 'AdaptThink: Reasoning Models Can Learn When to Think'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Jiajie Zhang
+- Nianyi Lin
+- Lei Hou
+- Ling Feng
+- Juanzi Li
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematics
+training_use:
+- rlvr
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.184/
+  arxiv: https://arxiv.org/abs/2505.13417
+  code: https://github.com/THU-KEG/AdaptThink
+  data: null
+  project: null
+  huggingface: https://huggingface.co/collections/THU-KEG/adaptthink
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.184
+  venue: https://aclanthology.org/2025.emnlp-main.184/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.184/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.184.bib
+data_object:
+  prompt_source: DeepScaleR 40K mathematics problems from named AIME, AMC, Omni-Math, and STILL components.
+  trace_author: Reference/current DeepSeek-R1-Distill-Qwen policy; not every raw rollout is released.
+  answer_format: Think-tagged output; NoThinking starts with </think>.
+  process_fields:
+  - thinking_mode_choice
+  - sampled_response
+  - binary_correctness
+  environment_or_substrate: Offline mathematical QA.
+  verifier_or_reward: Binary answer correctness and constrained PPO-style objective with importance sampling.
+  terminal_predicate: Gold-answer correctness.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-1.5B and 7B.
+  teacher: unknown
+  generator: Reference pre-sampling plus on-policy mode coverage.
+  filtering_rule: Complete filter manifest unknown.
+  sampling_protocol: 16 reference samples/problem, up to 16,384 generated tokens.
+  rollout_count: 16
+  temperature: unknown
+  inference_budget: 16K evaluation context.
+  optimizer_or_scaffold: VeRL; one epoch / 314 steps reported.
+audit:
+  source_mixture: Named components, but no immutable per-record manifest.
+  split: DeepScaleR training; GSM8K, MATH500, AIME 2024 evaluation.
+  decontamination: unknown
+  license: Code MIT; upstream rights require review.
+  lineage: DeepScaleR -> Thinking/NoThinking samples -> importance-sampled RL -> checkpoint
+  known_failure_modes:
+  - Short output can be confidently wrong.
+  - Raw candidates, rejections, rewards, and revisions are incomplete.
+  citation_status: verified
+  confidence: high
+  notes: ACL, arXiv, code and author collection checked.
+inclusion_reason: Explicitly selects between long and no-thinking traces under answer verification.
+related: []
+tags:
+- adaptthink
+- thinking-mode-selection
+- rlvr
+- efficient-reasoning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Answer-verified RL chooses a full math trace or an immediate answer.
+why_it_matters: It turns reasoning-token allocation into trace selection and exposes missing rollout evidence.
+card: null
+needs:
+- needs_data
+- needs_rollouts
+- needs_verifier
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official sources checked.

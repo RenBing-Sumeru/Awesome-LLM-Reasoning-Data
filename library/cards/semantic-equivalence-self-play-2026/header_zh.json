@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "公开 28,253 条可运行 Haskell 参考程序，并给出形式证明/执行反例自博弈方案，但未发布核心验证交互语料与适配器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据构造与开放发布",
+  "best_for_ch": "关注代码推理数据、混合验证器、自博弈课程与发布审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Poon Tsz Nok、Antonio Valerio Miceli Barone",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

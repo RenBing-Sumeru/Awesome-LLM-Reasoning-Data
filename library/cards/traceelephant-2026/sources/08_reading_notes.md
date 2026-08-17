@@ -1,0 +1,5 @@
+- Keep the denominator straight: 220 failed benchmark episodes are retained from 380 cleaned executions; the current ZIP has 220 metadata files and 220 step-record files.
+- Separate three signals: source-task answer or test failure, expert responsible-agent attribution, and expert earliest-decisive-step attribution.
+- Read Table 1 for the five system-task counts, Tables 2-3 for attribution and observability results, and Appendix A.5 for the three-round expert protocol and agreement.
+- Pin the 2026-06-02 HF revision and LFS SHA; the repaired ZIP is not interchangeable with the earlier archive, and GitHub has no release or tag.
+- Audit environment substitutions and `evaluate.py` substring matching before replaying or comparing accuracy; do not infer training readiness from benchmark performance.

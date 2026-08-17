@@ -1,0 +1,1 @@
+Official citation source: *ZeroSearch: Incentivize the Search Capability of LLMs without Searching* (2025), arXiv preprint. [official primary source](https://arxiv.org/abs/2505.04588). [Official BibTeX](https://arxiv.org/bibtex/2505.04588).

@@ -1,0 +1,1 @@
+核心贡献是一套失败轨迹 benchmark 加诊断框架，用来找出 AI agent 运行中的第一个不可恢复失败。机制是把不同来源的日志归一到共同轨迹表示，再从工具 schema、领域 policy 和轨迹前缀合成全局/动态约束，逐步检查约束，最后把带证据的 violation log 交给 LLM judge 判定关键步骤和根因类别。评测面是 115 条失败轨迹，来源包括 tau-bench、Flash 和 Magentic-One/Who&When，并有 9 类根因标签。相对只看最终成功率或普通 first-failure 标注，它的新意在于把“失败在哪里”变成可审计的 evidence-backed localization。边界是 taxonomy、人工标注流程、LLM checker 和公开工件版本。

@@ -1,0 +1,107 @@
+id: swe-synth-verifiable-bug-fix-data-2025
+title: 'SWE-Synth: Synthesizing Verifiable Bug-Fix Data to Enable Large Language Models in Resolving Real-World Bugs'
+year: 2025
+venue: ICSE 2026 Research Track (Distinguished Paper Award)
+authors:
+- Minh V. T. Pham
+- Huy N. Phan
+- Hoang Nhat Phan
+- Cuong Chi Le
+- Tien N. Nguyen
+- Nghi D. Q. Bui
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- program-repair
+training_use:
+- sft
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.14757
+  arxiv: https://arxiv.org/abs/2504.14757
+  code: null
+  data: https://huggingface.co/datasets/swesynth/SWE-Synth
+  project: https://swesynth.com/
+  huggingface: https://huggingface.co/datasets/swesynth/SWE-Synth
+  doi: https://doi.org/10.48550/arXiv.2504.14757
+  venue: https://conf.researchr.org/details/icse-2026/icse-2026-research-track/45/Synthetic-Repo-level-Bug-Dataset-for-Training-Automated-Program-Repair-Models
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Versioned real repositories and selected components from seven repositories.
+  trace_author: Qwen2.5-Coder-Instruct-32B repair-agent rollouts.
+  answer_format: Repository state, synthetic bug, failed and preserved-passing tests, repair trajectory, and accepted patch.
+  process_fields:
+  - buggy component
+  - failed test log
+  - repair actions
+  - candidate patch
+  - execution result
+  environment_or_substrate: Containerized repository environments.
+  verifier_or_reward: Compilation and associated test execution.
+  terminal_predicate: A candidate patch passes all associated tests.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-Instruct-32B in reported synthesis and repair rollouts.
+  teacher: Test execution and original repository behavior.
+  generator: LLM-based component reimplementation, bug synthesis, and repair trajectory rollout.
+  filtering_rule: Discard variants that compile and pass all tests or fail to compile; retain fixes that pass associated tests.
+  sampling_protocol: One deterministic and two stochastic repair rounds in the reported trajectory collection.
+  rollout_count: 3
+  temperature: 0 then 1 for two stochastic rounds.
+  inference_budget: Report agent scaffold and rollout configuration alongside any reproduction.
+  optimizer_or_scaffold: MoatlessTool-style retrieval and repair rollout with test-based rejection sampling.
+audit:
+  source_mixture: Official arXiv paper, project site, Hugging Face data release, and ICSE program record.
+  split: The release contains a training split; review exact dataset version and subset before reuse.
+  decontamination: Audit source repository exposure, generated bug realism, test adequacy, and overlap with SWE-Bench/BugsInPy.
+  license: The dataset page does not provide a clear license in the currently available card; verify before reuse.
+  lineage: https://arxiv.org/abs/2504.14757
+  known_failure_modes:
+  - Passing tests may leave untested semantic regressions.
+  - Synthetic bug distributions can differ from naturally reported defects.
+  - Reported repair trajectories depend on the generator, retrieval setup, and test suite.
+  citation_status: verified
+  confidence: high
+  notes: Official ICSE 2026 program verifies acceptance, award, current authors, and affiliations; project site and Hugging
+    Face release were checked. The ICSE program uses a revised presentation title.
+inclusion_reason: SWE-Synth releases repair examples with executable failure/preservation tests and accepted repair outcomes,
+  giving code repair a replayable programmatic outcome signal.
+related: []
+tags:
+- program-repair
+- unit-tests
+- synthetic-data
+- repair-trajectories
+- '2025'
+one_line_summary: SWE-Synth turns repository components into test-verifiable synthetic bugs and retains successful agent repair
+  trajectories as bug-fix training data.
+why_it_matters: It preserves test-validated repair outcomes and intermediate repair actions, not just static before/after
+  diffs.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official ICSE 2026 program verifies acceptance, award, current authors, and affiliations; project site and Hugging
+    Face release were checked. The ICSE program uses a revised presentation title.
+category_ids:
+- programmatically_verifiable_outcome_data

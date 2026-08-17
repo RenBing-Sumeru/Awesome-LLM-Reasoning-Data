@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T15:35:59Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "910 个视觉依赖任务，但无数据轨迹，图像理解和多模态 grounding 纳入可执行 Web Agent 评测",
+    "updated_at": "2026-07-12T15:35:59Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该研究把 issue text（可选附带 repository path list）变成 Claude 文件定位答案，并用 gold updated_files 的完整/部分集合覆盖率审计 SWE-Bench-Verified 分数可能混入的模型记忆。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程基准污染与模型记忆审计",
+  "best_for_ch": "研究软件 agent 评测、基准污染、静态文件定位验证器与评测发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Thanosan Prathifkumar、Noble Saji Mathews、Meiyappan Nagappan",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ]
+}

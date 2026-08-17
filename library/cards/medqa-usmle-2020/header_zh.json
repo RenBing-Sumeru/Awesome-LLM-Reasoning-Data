@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MedQA-USMLE 常用英文子集有 12,723 道医学执照考试选择题；完整 MedQA 多语 release 约 61,097 题。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Di Jin 等（MIT, Harvard Medical School）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

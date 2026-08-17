@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "一个将过滤、去重、质量再平衡与评测选择联结起来的多语言数据处理管线，是理解数据发布审计的近期范例。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据发布与构建配方",
+  "best_for_ch": "关于多语言预训练语料清洗、去重与处理流程的发布论文。",
+  "confidence_ch": "高",
+  "authors_ch": "Guilherme Penedo 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

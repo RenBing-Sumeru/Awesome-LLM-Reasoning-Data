@@ -1,0 +1,1 @@
+It provides a concrete recipe for saving RLVR rollouts and a useful audit schema: predicted difficulty, selection probability, reward vector, group advantage, behavior probability, replay age, and eviction reason should travel with every group.

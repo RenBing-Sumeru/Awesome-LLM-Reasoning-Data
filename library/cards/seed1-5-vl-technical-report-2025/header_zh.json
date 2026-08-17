@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Seed1.5-VL 报告了彼此分离的数据构建、SFT、RLHF 与 RLVR 阶段，但未确立可复用数据工件或完整、可审计的反馈配方。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态前沿模型技术报告",
+  "best_for_ch": "审计多模态后训练中数据与反馈披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "ByteDance Seed Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

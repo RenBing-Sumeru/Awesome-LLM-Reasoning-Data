@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "The University of Hong Kong",
+    "Salesforce Research",
+    "Carnegie Mellon University",
+    "University of Waterloo"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2404.07972",
+    "https://os-world.github.io/",
+    "https://github.com/xlang-ai/OSWorld"
+  ],
+  "verification_note": "arXiv, project, and xlang-ai repository verify authors, institutions, NeurIPS 2024 status, and artifacts."
+}

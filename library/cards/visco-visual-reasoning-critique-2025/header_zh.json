@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "针对视觉推理答案同时评估细粒度批评与基于批评的修正能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xueqing Wu、Yuheng Ding、Bingxuan Li、Pan Lu、Da Yin、Kai-Wei Chang、Nanyun Peng",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

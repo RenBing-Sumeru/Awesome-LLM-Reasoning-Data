@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen3-Coder-Next 披露了可执行编码任务合成、Docker 验证和分阶段 agentic training，但未发布训练任务、环境、轨迹或审计记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿编码智能体技术报告与数据披露账本",
+  "best_for_ch": "关注可执行软件工程任务、agentic RL 反馈、reward-hacking 控制和复现审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Ruisheng Cao、Mouxiang Chen、Jiawei Chen、Zeyu Cui、Yunlong Feng、Binyuan Hui、Yuheng Jing、Kaixin Li、Mingze Li、Junyang Lin、Zeyao Ma、Kashun Shum、Xuwu Wang、Jinxi Wei、Jiaxi Yang、Jiajun Zhang、Lei Zhang、Zongmeng Zhang、Wenting Zhao、Fan Zhou",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

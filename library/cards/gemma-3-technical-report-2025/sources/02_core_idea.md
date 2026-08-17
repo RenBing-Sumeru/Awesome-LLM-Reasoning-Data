@@ -1,0 +1,5 @@
+Gemma 3's central data mechanism is sparse-logit distillation at scale: sample 256 logits per token according to teacher probability, zero unsampled logits, renormalize, and train the student with cross-entropy. The teacher checkpoint and serving/query budget are unknown, so the target distribution is concrete while its source is not.
+
+Instruction tuning then combines improved distillation from an undisclosed large IT teacher with RL derived from improved BOND, WARM, and WARP. Feedback families are weight-averaged human-feedback RMs, code execution, math ground truth, and safety-oriented preferences. These observe preference, executability, answer correctness, or policy compliance; they do not automatically establish faithful reasoning or absence of contamination.
+
+The report never explicitly says post-training distillation is online or on-policy. Cited methods cannot supply missing rollout facts. The direction signal is mixed learned/programmatic feedback applied across model scales, followed by QAT and open checkpoint release; the main boundary is that data and reward infrastructure remain closed.

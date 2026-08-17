@@ -1,0 +1,5 @@
+Use this Card as a disclosure matrix for closed frontier reports. It records which claims are attributable to official sources—source classes, filtering goals, reasoning RL, deliberative alignment, instruction hierarchy, tool capability, and safety evaluation—and which fields remain unknown for data reuse: record schema, counts, mixtures, provenance, rights, reward, verifier, rollouts, splits, and decontamination.
+
+The Card is useful for comparing how reports separate pretraining data, reasoning post-training, safety post-training, deployment tools, and evaluation. It also supplies a guardrail for future curation: an autograder named in an evaluation section should not populate `verifier_or_reward` unless an official source explicitly connects it to training.
+
+This is not an open construction recipe. It should not be used to claim a downloadable reasoning corpus, released chain-of-thought data, reproducible RLVR, or evidence that benchmark success proves data quality. Its correct role is to make the unknowns visible and to identify the artifacts needed for a stronger audit.

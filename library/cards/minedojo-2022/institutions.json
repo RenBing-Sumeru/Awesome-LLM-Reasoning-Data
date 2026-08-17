@@ -1,0 +1,21 @@
+{
+  "institutions": [
+    "NVIDIA",
+    "Caltech",
+    "Stanford",
+    "Columbia",
+    "SJTU",
+    "UT Austin"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T16:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2206.08853",
+    "https://minedojo.org/",
+    "https://github.com/MineDojo/MineDojo",
+    "https://minedojo.org/knowledge_base",
+    "https://openreview.net/forum?id=rc8o_j8I8PX"
+  ],
+  "verification_note": "核验确认 NeurIPS 2022 D&B 状态、多机构归属、项目页、代码、知识库和 OpenReview 入口。"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CUARewardBench 在多类软件任务上同时评测奖励模型对计算机操作轨迹的逐步判断和整轨判断能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要比较计算机使用智能体奖励模型、核查局部操作错误或评估轨迹级反馈质量的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Haojia Lin、Xiaoyu Tan、Yulei Qin、Zihan Xu、Yuchen Shi、Zongyi Li、Gang Li、Shaofei Cai、Siqi Cai、Chaoyou Fu、Ke Li、Xing Sun",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

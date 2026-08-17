@@ -1,0 +1,1 @@
+Risk depends on the two reference models, the chosen 10% discard ratio, and a harm taxonomy; different tokenizers can change the mask. The GPT-4o judging setup needs human or task-specific audit before deployment.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RubricEval 将 instruction-following judge 拆成单条 rubric 的二元满足性评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 rubric-level LLM judge、instruction-following 评测、meta-evaluation 和 reward/filter 审计的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Tianjun Pan 等（College of Computer Science and Artificial Intelligence, Fudan University、Ant Group、Donghua University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T09:46:54Z"
+}

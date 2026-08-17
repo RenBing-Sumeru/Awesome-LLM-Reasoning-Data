@@ -1,0 +1,242 @@
+id: aegis-2026
+title: 'Aegis: Automated Error Generation and Attribution for Multi-Agent Systems'
+year: 2026
+venue: ICLR 2026
+authors:
+- Fanqi Kong
+- Ruijie Zhang
+- Huaxiao Yin
+- Guibin Zhang
+- Xiaofei Zhang
+- Ziang Chen
+- Zhaowei Zhang
+- Xiaoyuan Zhang
+- Song-Chun Zhu
+- Xue Feng
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- multi_agent_systems
+- agent_trajectories
+- error_attribution
+- mathematics
+- code
+- science
+- knowledge
+- general_assistant
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=zqcYoxXiN3
+  paper_pdf: https://arxiv.org/pdf/2509.14295v6
+  arxiv: https://arxiv.org/abs/2509.14295
+  code: https://github.com/kfq20/AEGIS
+  code_snapshot: https://github.com/kfq20/AEGIS/tree/ced13443fd8ab373ae97e9eaae72660e8e733a22
+  data: https://huggingface.co/datasets/Fancylalala/AEGIS
+  project: https://kfq20.github.io/AEGIS-Website/
+  huggingface: https://huggingface.co/datasets/Fancylalala/AEGIS
+  model: null
+  doi: https://doi.org/10.48550/arXiv.2509.14295
+  venue: https://openreview.net/forum?id=zqcYoxXiN3
+  openreview: https://openreview.net/forum?id=zqcYoxXiN3
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks come from MATH, GSM8K, HumanEval, SciBench, MMLU-Pro/MMLU, and GAIA. A deterministic successful trajectory
+    for an upstream task is the source object from which faulty variants are generated.
+  trace_author: Six multi-agent frameworks run GPT-4o-mini agents at temperature 0 with a fixed random seed to produce successful
+    baselines; an adaptive LLM manipulator at temperature 0.7 creates faulty variants through prompt injection or response
+    corruption. The exact model snapshots and manipulator model identity are unknown.
+  answer_format: The public HF viewer exposes JSONL rows with top-level id, metadata, input, output, and ground_truth. Visible
+    rows contain task/query and conversation history, framework/benchmark/model/agent-count metadata, a JSON attribution target
+    listing faulty agents and MAST error modes, and correct-answer/injected-agent provenance.
+  process_fields:
+  - id
+  - metadata.framework
+  - metadata.benchmark
+  - metadata.model
+  - metadata.num_agents
+  - metadata.num_injected_agents
+  - metadata.task_type
+  - input.query
+  - input.conversation_history
+  - output.faulty_agents
+  - output.faulty_agents.agent_name
+  - output.faulty_agents.error_type
+  - output.faulty_agents.injection_strategy
+  - ground_truth.correct_answer
+  - ground_truth.injected_agents
+  - ground_truth.injected_agents.malicious_action_description
+  observation: A serialized multi-agent conversation/execution history containing ordered agent turns and their contents;
+    the paper treats a trajectory as states and actions, while the release viewer exposes it as conversation history.
+  action_space:
+  - normal multi-agent response
+  - prompt-injected agent response
+  - response-corrupted agent output
+  - framework-specific tool or execution action
+  environment_or_substrate: Six MAS frameworks (LLM Debate, MacNet, AgentVerse, DyLAN, SmolAgents, Magentic-One) operating
+    on six benchmark families. The public release is primarily an offline JSONL corpus plus generation/evaluation code, not
+    a pinned executable environment snapshot.
+  verifier_or_reward: Construction keeps an injected rollout only when a task-specific evaluator marks the final outcome failed.
+    Math uses normalized answer matching, HumanEval executes tests, SciBench uses tolerance-aware numeric comparison, MMLU-Pro
+    uses choice extraction, and GAIA uses GPT-4o-mini semantic judgment. For GRPO, exact agent-error pairs earn full credit,
+    correct agent or error earns one-time partial credit, malformed/duplicate/excess/false-positive outputs are penalized,
+    and the result is normalized to a scalar reward.
+  terminal_predicate: An injected trajectory is retained when the relevant task evaluator changes the outcome from a successful
+    baseline to failure, Z(tau_injected)=1. Because GAIA uses an LLM judge and other tasks use executable or normalized checks,
+    this predicate is mixed rather than uniformly programmatic.
+  provenance: Upstream benchmark task -> deterministic successful MAS baseline -> unique injection plan of target-agent/error-mode
+    pairs -> prompt injection or response corruption -> task evaluator -> retain only induced failure -> attribution map equal
+    to the injected plan -> train/validation/Aegis-Bench JSONL. Record-level baseline linkage is not verified in the public
+    viewer.
+recipe_metadata:
+  base_model: Construction agents are GPT-4o-mini. Reported SFT/GRPO experiments use Qwen2.5-7B-Instruct, Qwen2.5-14B-Instruct,
+    Qwen3-8B-Non-Thinking, and Qwen3-8B-Thinking in the combinations disclosed by the paper; exact checkpoint revisions are
+    unknown.
+  teacher: No human or model teacher supplies the attribution target; the injected plan is the target by construction and
+    task evaluators decide whether the intervention caused terminal failure. Three experts audit a 100-trajectory sample but
+    do not label the full training corpus.
+  generator: A context-aware adaptive LLM manipulator generates task- and role-specific prompt injections or corrupted responses
+    against deterministic successful multi-agent trajectories.
+  prompt_task_source: MATH, GSM8K, HumanEval, SciBench, MMLU-Pro/MMLU, and GAIA tasks executed through six MAS frameworks.
+    Exact upstream versions and task IDs per split are not documented in a release manifest.
+  filtering_rule: Retain only injected trajectories that the task-specific evaluator judges failed; set the attribution map
+    to the intentionally injected agent/error pairs. Non-failing injections and self-corrected runs are discarded or at least
+    not exposed in the inspected release. DyLAN labels receive post-hoc refinement.
+  sampling_protocol: Run successful baselines deterministically at temperature 0 with fixed random seeds; create multiple
+    unique injection plans and randomly choose prompt injection or response corruption; run the manipulator at temperature
+    0.7; exact plans/attempts per baseline and retry budget are unknown.
+  rollout_count: unknown
+  temperature: 'MAS agents: 0; adaptive manipulator: 0.7.'
+  inference_budget: Construction API/token budget is unknown. Training uses maximum sequence length 8,192; evaluation increases
+    context to 32,768 for Who&When coverage.
+  optimizer_or_scaffold: SFT and GRPO use verl on 4 A800 GPUs. Table 6 reports batch size 64, three epochs, learning rates
+    3e-6 (SFT) and 5e-6 (GRPO), and GRPO LoRA rank 64 with KL coefficient 0.001. DCL uses all-MiniLM-L6-V2 with MIL attention
+    and classification/contrastive/hierarchy losses for two epochs; the main text says 4 RTX 4090 GPUs while Appendix D.1
+    says 4 RTX 3090 GPUs.
+audit:
+  source_mixture: 9,533 induced-failure trajectories from six upstream task families and six MAS frameworks; 24,843 agent/error
+    injections across 14 MAST-derived modes. The corpus deliberately excludes injections that do not induce task failure.
+  split: Paper §6 selects 100 trajectories per benchmark for Aegis-Bench (600 total), then splits the remainder 80/20 into
+    train/validation with a fixed seed. HF shows approximately 7.15k train, 1.79k validation, and 600 test rows. No group-by-upstream-task
+    or group-by-successful-baseline policy is disclosed.
+  decontamination: unknown
+  benchmark_overlap: Training, validation, and test all originate from the same six benchmark families. The paper states trajectory
+    subsets are non-overlapping, but does not show that injected variants sharing an upstream task or successful baseline
+    cannot cross splits; Who&When is used only as an external OOD evaluation set.
+  license: HF dataset metadata declares MIT; the GitHub code repository has an MIT license; arXiv v6 is CC BY 4.0. Rights
+    and redistribution terms for upstream benchmark tasks, framework outputs, and model-generated traces are not reconciled.
+  lineage: Benchmark task -> successful GPT-4o-mini MAS trajectory -> injected faulty variant -> evaluator-confirmed failure
+    -> planned agent/error labels -> JSONL split. Public IDs encode benchmark/model/framework and a suffix, but immutable
+    baseline-to-variant linkage and discarded-attempt lineage are unknown.
+  release_version: No common semantic version or manifest binds the artifacts. Paper is arXiv v6 (2026-04-27); audited GitHub
+    main is ced13443fd8ab373ae97e9eaae72660e8e733a22 (2026-02-28) with no GitHub Release; HF train/val are at 4fc115a99368cfffa0ad32cce88f1db5b41237f6
+    and test at 65bd10d8b20ea2c0f27cc8f3692e6652867097db. HF README retains the older 'Identification' title and omits SmolAgents
+    from its framework list.
+  artifact_hashes:
+    train_jsonl_sha256: add3aae4c32b2bed4d413dee4721c8a028d451c555efd2caa8c68ca8dc6466a8
+    validation_jsonl_sha256: fe0b3d0ebc469a3adb561ed893fb3336769590556348445ba0ee0671619ffe49
+    test_jsonl_sha256: a2f2793f97fce179d27846c81618c2ade719b42e5ab3f347d0d5189e09f65bd1
+  successful_and_failed_sample_retention: Only evaluator-confirmed induced failures are retained as the 9,533-row corpus.
+    Successful baselines are described as contrastive anchors, but their serialization in the public JSONL release is not
+    verified. Counts and records for non-failing injections, self-corrections, and other discarded attempts are unknown.
+  privacy_or_consent: The paper reports three expert annotators for a 100-trajectory label-fidelity study, but recruitment,
+    compensation, consent, raw labels, and adjudication are not disclosed. Other privacy/consent considerations are unknown.
+  known_failure_modes:
+  - The attribution target equals the planned injections; it does not establish that every injected error was necessary or
+    independently causal when multiple agents are perturbed.
+  - Controlled MAST-mode injections may not represent emergent, interaction-induced or previously unseen failures; the paper
+    explicitly identifies the fixed taxonomy and controlled plans as limitations.
+  - GAIA failure selection depends on GPT-4o-mini semantic judgment, while format normalizers, unit tolerances, code tests
+    and extraction rules can also produce false positives or false negatives.
+  - Multiple variants can originate from a common task or successful baseline, but grouped splitting is undisclosed, creating
+    possible train/test structural leakage.
+  - Discarding non-failing injections removes evidence of resilience and self-correction and can teach models artifacts of
+    interventions that happen to defeat the evaluator.
+  - 'SFT overfits synthetic style: Who&When performance peaks after two epochs and declines while Aegis-Bench performance
+    continues to rise.'
+  - Macro-F1 trails Micro-F1 on rare modes, and the Appendix A.2 case shows all models, including Aegis, missing a subtle
+    numeric root cause.
+  - DyLAN post-hoc label refinement is insufficiently specified for independent audit.
+  - Main text and Appendix D disagree on whether DCL used RTX 4090 or RTX 3090 GPUs.
+  - Paper claims release of all models, but no official model artifact link was verified.
+  - Mutable code/data histories, unpinned model APIs and missing cross-artifact manifest prevent immutable end-to-end replay.
+  citation_status: verified
+  confidence: medium
+  notes: Full arXiv v6 including appendices, ICLR/OpenReview identity, official project page, GitHub repository/commit/license/evaluation
+    surface, and HF dataset card/viewer/file commits and hashes were checked. The large JSONL files were not exhaustively
+    decoded and the full construction pipeline was not replayed.
+  remaining_unknowns:
+  - Exact GPT-4o-mini snapshot/API configuration and manipulator model identity.
+  - Successful-baseline count, injection attempts per baseline, and discarded/non-failing injection count.
+  - Grouped split, deduplication, and contamination controls.
+  - Complete JSONL nested schema and public availability of successful anchor trajectories.
+  - DyLAN label-refinement procedure and record-level adjudication history.
+  - Pinned task evaluator versions and GAIA judge prompt/model snapshot.
+  - Upstream benchmark/framework rights and redistribution compatibility.
+  - Official model checkpoint URLs and licenses.
+  - Human label-fidelity study materials and consent/compensation details.
+inclusion_reason: Aegis is a released, environment-linked corpus of evaluator-confirmed multi-agent failures whose episode-level
+  agent/error labels support SFT, a structured GRPO reward, contrastive representation learning, and attribution evaluation;
+  it directly exposes how intervention, terminal verification, and selective retention create agent-trajectory supervision.
+related: []
+tags:
+- multi-agent-systems
+- agent-trajectories
+- synthetic-failures
+- error-attribution
+- prompt-injection
+- response-corruption
+- mixed-verifier
+- sft
+- grpo
+- contrastive-learning
+- selection-bias
+- version-drift
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Aegis converts deterministic successful multi-agent runs into 9,533 evaluator-confirmed faulty trajectories
+  with agent/error-mode labels, while mixed verifiers and selective failure retention bound reuse.
+why_it_matters: It makes the full MAS episode and injected agent/error map a concrete post-training object for SFT and GRPO,
+  but also shows why synthetic intervention data must expose discarded attempts, grouped splits, verifier versions, baseline
+  lineage, and immutable release manifests.
+card: null
+needs:
+- 'needs_schema_audit: exhaustively inspect JSONL nested fields and verify whether successful baseline/positive-anchor trajectories
+  are publicly serialized'
+- 'needs_split_audit: publish exact split counts and prove grouping by upstream task and successful baseline'
+- 'needs_failure_ledger: release non-failing injections, self-corrections, discarded-attempt counts, and selection reasons'
+- 'needs_replay_manifest: bind arXiv v6, GitHub commit, HF commits/hashes, dependencies, evaluator versions, model snapshots,
+  and seeds'
+- 'needs_license_audit: reconcile MIT with upstream benchmark/framework/model-output rights'
+- 'needs_model_url: verify the paper-claimed open model checkpoints and licenses'
+- 'needs_label_audit: document DyLAN refinement and release the human fidelity-study labels/adjudication'
+- 'needs_decontamination: document deduplication and train/validation/test plus downstream benchmark overlap controls'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Citation, accepted-paper identity, full v6 paper/appendices, project page, code repository and pinned head, code/dataset/paper
+    licenses, HF file inventory/commits/hashes, and dataset viewer schema were verified. Large JSONL contents were not exhaustively
+    decoded; OpenReview text was browser-challenge protected; no model release was located.

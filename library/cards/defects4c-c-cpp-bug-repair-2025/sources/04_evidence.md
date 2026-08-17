@@ -1,0 +1,3 @@
+Construction evidence comes from reducing approximately nine million bug-relevant commits to 248 ordinary defects and 102 vulnerabilities. This indicates that each task passes localization, build, and reproducibility filters rather than being a raw diff scrape. The authors also evaluate 24 LLMs under one harness, using identical code context and execution tests to compare ordinary and vulnerability repair.
+
+These experiments support Defects4C as a reproducible testbed for C/C++ repair challenges. Passing the provided tests, however, proves correctness only relative to the current oracle. The 350 function-level instances do not represent system-level concurrency, performance regressions, or security properties outside test coverage.

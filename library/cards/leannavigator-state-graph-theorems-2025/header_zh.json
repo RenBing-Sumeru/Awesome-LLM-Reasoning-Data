@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LeanNavigator 通过遍历 Mathlib4 的状态转移图生成 470 万条 Lean 定理—证明对，并以 Lean 检查器保证证明可验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Lean 形式化证明数据集与状态图生成方法",
+  "best_for_ch": "需要大规模 Lean 训练语料、形式化验证器或定理证明评测数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "David Yin, Jing Gao",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:31:35Z"
+}

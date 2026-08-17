@@ -1,0 +1,3 @@
+1. Repurpose QA data into a query and grounding context. 2. Construct answer pairs that contrast evidence-following answers with answers that hallucinate, ignore context, over-refuse, omit needed information, or add needless detail. 3. Train 7B–24B contextual reward models on roughly 4K pairs with grounding available. 4. Evaluate pairwise consistency on RAG-RewardBench, RAGferee's test set, and ContextualJudgeBench, including an ablation without grounding.
+
+The output is a context-sensitive preference set and reward models. Reproduction requires the retrieved passages as model input; removing them changes the decision task.

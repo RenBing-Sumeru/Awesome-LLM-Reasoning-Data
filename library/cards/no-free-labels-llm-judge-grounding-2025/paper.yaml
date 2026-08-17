@@ -1,0 +1,102 @@
+id: no-free-labels-llm-judge-grounding-2025
+title: 'No Free Labels: Limitations of LLM-as-a-Judge Without Human Grounding'
+year: 2025
+venue: arXiv
+authors:
+- Michael Krumdick
+- Charles Lovering
+- Varshini Reddy
+- Seth Ebner
+- Chris Tanner
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- finance
+- general
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.05061
+  arxiv: https://arxiv.org/abs/2503.05061
+  code: null
+  data: https://huggingface.co/datasets/michaelkrumdickkensho/BFF-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/michaelkrumdickkensho/BFF-Bench
+  doi: https://doi.org/10.48550/arXiv.2503.05061
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Business and finance questions together with a challenging MT-Bench subset.
+  trace_author: Financial professionals author questions and long-form answers, then assess LLM responses.
+  answer_format: Question, reference answer, LLM response, correctness judgment, and judge evaluation.
+  process_fields:
+  - question
+  - reference
+  - response
+  - correctness_label
+  - judge_score
+  environment_or_substrate: Open-ended correctness evaluation in business, finance, and general question answering.
+  verifier_or_reward: Domain-expert correctness labels and expert-written reference answers.
+  terminal_predicate: A judge agrees with expert correctness assessments, particularly on questions it cannot answer itself.
+recipe_metadata:
+  base_model: Diverse evaluated LLM judges and response generators.
+  teacher: Financial professionals and expert annotators.
+  generator: Create challenging questions and references, generate LLM responses, and collect expert correctness judgments.
+  filtering_rule: Retain challenging instances with expert-grounded judgments.
+  sampling_protocol: 160 BFF-Bench questions and 1,200 expert-evaluated responses across BFF-Bench and MT-Bench.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix reference availability, judge prompt, response set, and aggregation method.
+  optimizer_or_scaffold: Evaluation of automated grading methods against human verdicts.
+audit:
+  source_mixture: Official arXiv paper and Kensho Hugging Face dataset release.
+  split: Consult the dataset card for configurations and access conditions.
+  decontamination: Expert references must remain separated from systems being evaluated when measuring reference-free judgment.
+  license: Consult the official Hugging Face dataset terms before reuse.
+  lineage: https://huggingface.co/datasets/michaelkrumdickkensho/BFF-Bench
+  known_failure_modes:
+  - Reference-free judges can appear reliable in aggregate while failing questions outside their knowledge.
+  - Expert references can themselves vary in quality and scope.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, complete author list, Kensho affiliation, and official Hugging Face data link were checked.
+inclusion_reason: The release provides expert-grounded correctness judgments for testing when LLM-as-a-judge can substitute
+  for human evaluation.
+related: []
+tags:
+- llm_as_judge
+- human_grounding
+- finance
+- benchmark
+- correctness
+one_line_summary: No Free Labels shows that LLM judges need human grounding to reliably grade correctness beyond questions
+  they can answer.
+why_it_matters: It turns a common evaluator assumption into a testable limitation with expert reference and judgment data.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and data release were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

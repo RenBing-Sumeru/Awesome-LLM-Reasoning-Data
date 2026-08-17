@@ -1,0 +1,129 @@
+id: longalign-2024
+title: 'LongAlign: A Recipe for Long Context Alignment of Large Language Models'
+year: 2024
+venue: Findings of EMNLP 2024
+authors:
+- Yushi Bai
+- Xin Lv
+- Jiajie Zhang
+- Yuze He
+- Ji Qi
+- Lei Hou
+- Jie Tang
+- Yuxiao Dong
+- Juanzi Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-emnlp.74/
+  arxiv: https://arxiv.org/abs/2401.18058
+  code: https://github.com/THUDM/LongAlign
+  data: https://huggingface.co/datasets/THUDM/LongAlign-10k
+  project: https://github.com/THUDM/LongAlign
+  huggingface: https://huggingface.co/datasets/THUDM/LongAlign-10k
+  doi: https://doi.org/10.18653/v1/2024.findings-emnlp.74
+  venue: https://aclanthology.org/2024.findings-emnlp.74/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-emnlp.74/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: long documents paired with diverse question and task templates
+  trace_author: a strong language model writes answers conditioned on the complete long context
+  answer_format: long context, instruction, assistant answer, and length or packing-group metadata
+  process_fields:
+  - long context
+  - instruction
+  - assistant answer
+  - and length or packing-group metadata
+  environment_or_substrate: JSON conversation records with long documents and length metadata
+  verifier_or_reward: length and format checks, response review, and long-context benchmark evaluation
+  terminal_predicate: Retain a record only when length and format checks, response review, and long-context benchmark evaluation
+    accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: a strong language model writes answers conditioned on the complete long context
+  generator: LongAlign releases 10K long-context instruction records and combines them with length-grouped batching and loss
+    weighting so long and short examples can be trained without excessive padding or sequence bias.
+  filtering_rule: length and format checks, response review, and long-context benchmark evaluation
+  sampling_protocol: long documents paired with diverse question and task templates
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: long-context instruction SFT with sorted or packed batching
+audit:
+  source_mixture: long documents paired with diverse question and task templates
+  split: 'Official release scale: 10,000 long-context instruction records; storage: JSON conversation records with long documents
+    and length metadata.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official dataset-card and repository terms; embedded document sources require provenance review
+  lineage: long documents paired with diverse question and task templates -> a strong language model writes answers conditioned
+    on the complete long context -> length and format checks, response review, and long-context benchmark evaluation -> long-context
+    instruction SFT with sorted or packed batching.
+  known_failure_modes:
+  - Teacher answers can miss evidence deep in the context
+  - only 10K records cover limited document genres
+  - long-sequence training cost and source-document licenses constrain reproduction.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 11 citations; this is not a Google Scholar count.'
+inclusion_reason: 'LongAlign-10k is a public Track 01 training object: long context, instruction, assistant answer, and length
+  or packing-group metadata; it is consumed by long-context instruction SFT with sorted or packed batching.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- length-balanced-long-context-instructions
+status: verified
+one_line_summary: LongAlign-10k packages long documents, instructions, and answers with length-aware training metadata.
+why_it_matters: treating context-length distribution and batch grouping as auditable properties of an instruction dataset
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: aligning an extended-context base model to follow long-document instructions
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: length-balanced long-context instructions
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Tsinghua University, Zhipu.AI.
+    venue: 'The official venue URL confirms formal publication at Findings of EMNLP 2024: https://aclanthology.org/2024.findings-emnlp.74/'
+    impact: OpenAlex reported 11 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON conversation records with long documents and length metadata records
+      at https://huggingface.co/datasets/THUDM/LongAlign-10k with terms recorded as: official dataset-card and repository
+      terms; embedded document sources require provenance review.'
+  selection_eligible: true
+  year_impact_threshold: 3

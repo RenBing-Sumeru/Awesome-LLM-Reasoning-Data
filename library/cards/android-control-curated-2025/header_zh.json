@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AndroidControl-Curated 将 AndroidControl 净化为五种静态 step 数据视图，以 box 对齐评分和 LLM-人工任务/标签修订支撑评测与 Magma-R1 训练，但训练重叠、许可证和可回放环境仍未披露。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Android GUI 基准净化、数据发布与模型报告",
+  "best_for_ch": "研究移动 GUI agent 轨迹数据、grounding verifier、benchmark purification 与训练评测泄漏的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Ho Fai Leung, Xiaoyan Xi, Fei Zuo",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-20T11:32:12Z"
+}

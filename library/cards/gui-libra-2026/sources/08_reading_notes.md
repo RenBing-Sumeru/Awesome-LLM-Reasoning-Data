@@ -1,0 +1,5 @@
+- **Position:** scarce action-aligned GUI rationales and ambiguous step reward are treated as one data-to-training problem.
+- **Method handle:** clean trajectories, augment rationale/action JSON, filter agreement/coordinates, run action-aware SFT, then KL-constrained RL.
+- **Data/artifact handle:** GUI-Libra-81K contains 81K steps from 9K trajectories; official project, GitHub, Hugging Face, and models are linked, but release license needs checking.
+- **Evidence anchor:** Qwen3-VL-8B rises 30.4→42.6 on AndroidWorld; KL changes offline/online Pearson correlation from 0.63 to 0.89 under the reported setup.
+- **Reuse decision:** useful for static GUI trajectories; first audit action coverage, mobile/web balance, and reward false negatives on valid alternatives.

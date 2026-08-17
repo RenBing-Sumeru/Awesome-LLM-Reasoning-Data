@@ -1,0 +1,94 @@
+id: detecting-benchmark-contamination-through-watermarking-2025
+title: Detecting Benchmark Contamination Through Watermarking
+year: 2025
+venue: ICLR 2025 Workshop on GenAI Watermarking
+authors:
+- Tom Sander
+- Pierre Fernandez
+- Saeed Mahloujifar
+- Alain Durmus
+- Chuan Guo
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.17259
+  arxiv: https://arxiv.org/abs/2502.17259
+  code: https://github.com/facebookresearch/meta-seal
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://iclr.cc/virtual/2025/35727
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
+  citation_status: verified
+  confidence: high
+  notes: 'Full-paper review completed on 2026-07-24. The official code repository is available; no separate official data release was confirmed.'
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2502.17259.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'The central contribution provides a proactive audit mechanism for benchmark contamination and evaluation reliability.'
+related: []
+tags:
+- audit
+- benchmark-contamination
+status: verified
+one_line_summary: Proactive benchmark watermarking produces a calibrated white-box test for memorized contamination.
+why_it_matters: It makes benchmark contamination auditable before release without relying on a clean reference set.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and code were verified; full bilingual review completed on 2026-07-24.
+category_ids:
+- audit_failure_contamination_verifier_attacks

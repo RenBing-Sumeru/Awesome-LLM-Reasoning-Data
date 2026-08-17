@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "BPP-Search 用学习式过程奖励模型剪枝数学建模树，再用成对偏好分类器选择最终候选；公开的 StructuredOR 仅含 124 条最终结构化样例，而不含原始搜索树。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "树搜索方法与最终结构化数据集发布",
+  "best_for_ch": "研究测试时树搜索、过程奖励模型、候选选择器、运筹优化推理数据与发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Teng Wang、Wing-Yin Yu、Zhenqi He、Zehua Liu、Hailei Gong、Han Wu、Xiongwei Han、Wei Shi、Ruifeng She、Fangzhou Zhu、Tao Zhong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

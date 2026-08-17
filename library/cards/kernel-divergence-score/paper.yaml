@@ -1,0 +1,95 @@
+id: kernel-divergence-score
+title: How Contaminated Is Your Benchmark? Measuring Dataset Leakage in Large Language Models with Kernel Divergence
+year: 2025
+venue: ICML 2025
+authors:
+- Hyeong Kyu Choi
+- Maxim Khanov
+- Hongxin Wei
+- Yixuan Li
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains: &id001
+- llm-evaluation
+- benchmark-contamination
+- membership-inference
+training_use:
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/choi25b.html
+  arxiv: https://arxiv.org/abs/2502.00678
+  code: https://github.com/deeplearning-wisc/kernel-divergence-score
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v267/choi25b.html
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/choi25b.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The evaluation surface is a benchmark sample set, embeddings before and after benchmark fine-tuning, and
+    a benchmark-level Kernel Divergence Score.
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: null
+  environment_or_substrate: null
+  verifier_or_reward: The method compares kernel-similarity structure before and after fine-tuning on the benchmark; controlled
+    exposure levels provide an audit target rather than relying only on downstream accuracy.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single released training recipe.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: The official method fine-tunes a model on benchmark data, extracts pre/post sample embeddings, and
+    computes divergence between the associated kernel matrices. The released implementation documents experiments including
+    WiKiMIA, BookMIA, ArxivTection, and The Pile.
+audit:
+  source_mixture: Official primary paper and only paper-linked official artifacts listed above.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Primary source: https://proceedings.mlr.press/v267/choi25b.html'
+  known_failure_modes:
+  - The procedure requires model access sufficient for fine-tuning and embedding extraction. Exact kernel and fine-tuning
+    choices must be read from the paper and code before reuse; closed-model applicability is unknown.
+  citation_status: verified
+  confidence: high
+  notes: Editorial routing and audit notes are distinguished from paper facts in the Card sections.
+inclusion_reason: 'Track0 routing value: Kernel Divergence Score estimates benchmark contamination from how sample-embedding
+  kernel structure changes after controlled fine-tuning.'
+related: []
+tags: *id001
+one_line: Kernel Divergence Score estimates benchmark contamination from how sample-embedding kernel structure changes after
+  controlled fine-tuning.
+one_line_summary: Kernel Divergence Score estimates benchmark contamination from how sample-embedding kernel structure changes
+  after controlled fine-tuning.
+why_it_matters: The method compares kernel-similarity structure before and after fine-tuning on the benchmark; controlled
+  exposure levels provide an audit target rather than relying only on downstream accuracy. Read this as an audit foundation,
+  then route to Benchmarks and Evaluation Surfaces and Audit, Failure, Contamination, and Verifier Attacks for concrete benchmark
+  releases and attacks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source verified; optional facts remain null or unknown.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧯 Contamination / evaluation surveys

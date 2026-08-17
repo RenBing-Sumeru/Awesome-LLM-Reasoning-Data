@@ -1,0 +1,143 @@
+id: nvidia-nemotron-nano-2-2025
+title: 'NVIDIA Nemotron Nano 2: An Accurate and Efficient Hybrid Mamba-Transformer Reasoning Model'
+year: 2025
+venue: arXiv preprint
+authors:
+- NVIDIA
+source_role:
+- model_report
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- general_reasoning
+- mathematics
+- code
+- science
+- tool_use
+- multilingual
+- safety
+training_use:
+- sft
+- distillation
+- preference_learning
+- rlvr
+- agent_training
+- safety_alignment
+construction_layer:
+- frontier_pipeline
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2508.14444
+  arxiv: https://arxiv.org/abs/2508.14444
+  code: https://github.com/NVIDIA-NeMo/Nemotron
+  data: https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2
+  project: null
+  huggingface: https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2
+  doi: https://doi.org/10.48550/arXiv.2508.14444
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2508.14444
+data_object:
+  prompt_source: Math/code/science prompts reused from Nemotron-H; xLAM, Glaive and NVIDIA-When2Call tool prompts; LMSYS,
+    HelpSteer2/3 and about 550K WildChat prompts; Aegis/HarmfulTasks/RedTeam2K/gretel safety prompts; translated English post-training
+    data.
+  trace_author: DeepSeek-R1-0528 for math/science/code and safety responses; Qwen3-235B-A22B for tool-use and conversation,
+    including simulated User/Assistant/API agents; additional released records use listed Qwen/DeepSeek generators.
+  answer_format: Mostly single-turn prompt-response records with reasoning traces; also multi-turn/multi-step tool trajectories,
+    reasoning-off responses, deliberately truncated traces with preserved final answers, and successful/failed preference
+    pairs.
+  process_fields:
+  - reasoning_trace
+  - thinking_mode
+  - tool_calls
+  - api_responses
+  - terminal_success
+  - preference_label
+  - verifier_reward
+  - reward_model_score
+  environment_or_substrate: Rule-checked tool simulation and WorkBench database-state environment; instruction-following verification;
+    math/code/science/chat/safety task mixtures.
+  verifier_or_reward: Rule-based tool checker; WorkBench database-state comparison; IFEval-style rule verifier; Qwen-based
+    reward model for HelpSteer3 GRPO; guard models for safety.
+  terminal_predicate: 'Task-dependent: tool/API trajectory succeeds and final database state matches; IFEval constraints pass;
+    other GRPO/chat outcomes use the Qwen-based reward model.'
+recipe_metadata:
+  base_model: Nemotron-Nano-12B-v2-Base, pretrained from scratch on 20T tokens and extended to 128K; final 9B model is a pruned/distilled
+    aligned derivative.
+  teacher: Aligned 12B parent for forward-KL logit distillation; DeepSeek-R1-0528 and Qwen3-235B-A22B are primary synthetic
+    response teachers.
+  generator: DeepSeek-R1-0528, Qwen3-235B-A22B, and the current on-policy Nano V2 checkpoint for WorkBench preference generation.
+  filtering_rule: Retain only rule-verified successful tool trajectories; line-by-line translation with bracket parsing and
+    language-ID filtering; safety guard filtering; released prompts filtered for quality/complexity, inconsistent/easy-to-guess
+    items and syntax errors.
+  sampling_protocol: Three-stage SFT; on-policy successful/failed WorkBench pairs for iterative DPO; HelpSteer3 GRPO rollouts
+    generated with and without thinking; staged forward-KL distillation at increasing context lengths.
+  rollout_count: null
+  temperature: null
+  inference_budget: Training includes reasoning-free responses and traces truncated to 1–2K tokens while preserving final
+    answers; inference supports explicit thinking-token budgets and up to 128K context.
+  optimizer_or_scaffold: SFT1/SFT2/SFT3, IFEval GRPO, iterative on-policy DPO, RLHF, checkpoint interpolation; Minitron depth/width
+    pruning followed by forward-KL logit distillation.
+audit:
+  source_mixture: Paper reports domain counts and about 80B SFT tokens; official dataset v2 reports category counts, but the
+    released set is the majority rather than a proven exact snapshot of every training record.
+  split: unknown
+  decontamination: Pretraining deduplication is discussed; post-training benchmark decontamination/split policy is not fully
+    disclosed.
+  license: Official dataset v2 is predominantly CC-BY-4.0 with small ODC-BY and CC-BY-SA subsets and per-sample license metadata;
+    synthetic records may trigger Qwen/DeepSeek terms. Model uses NVIDIA Open Model License.
+  lineage: 12B base -> three-stage SFT and targeted DPO/GRPO/RLHF -> aligned 12B -> Minitron pruning and staged KD -> final
+    9B, with post-RL KD and checkpoint merging.
+  known_failure_modes:
+  - Released data is described as the majority, not an exact immutable training snapshot
+  - Synthetic teacher and reward-model biases propagate into traces and preferences
+  - Concatenated SFT initially degraded tool use, motivating an un-concatenated repair stage
+  - GRPO/RLHF improve target behaviors but temporarily reduce other benchmarks, requiring KD and model merging
+  - Mixed per-item licenses and upstream model terms complicate downstream reuse
+  citation_status: verified
+  confidence: high
+  notes: Official paper, model, dataset and NVIDIA developer repo checked.
+inclusion_reason: An unusually auditable frontier recipe linking released reasoning traces and tool trajectories to staged
+  SFT, rule/RM feedback, on-policy DPO, GRPO/RLHF and compression distillation.
+related: []
+tags:
+- nvidia
+- nemotron-nano-2
+- reasoning-traces
+- tool-use
+- sft
+- dpo
+- grpo
+- rlhf
+- distillation
+- open-data
+status: verified
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- data_construction_open_release_recipes
+one_line_summary: Nemotron Nano 2 aligns a 12B hybrid model with about 80B SFT tokens, rule- and reward-model feedback, on-policy
+  DPO, GRPO and RLHF, then prunes/distills it to 9B while releasing the models and most training data.
+why_it_matters: It connects concrete data records, verifiers, optimization stages and compression recovery, and exposes enough
+  released artifacts to audit much of the reasoning-data pipeline.
+card: null
+needs:
+- 'needs_metadata: rollout counts, sampling temperatures, reward calibration and DPO/RLHF label counts'
+- 'needs_audit: exact released-versus-used manifests, split policy and post-training decontamination'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv report, model page, dataset page and NVIDIA repo checked.

@@ -1,0 +1,1 @@
+Read the anti-concentration assumption and the empirical S1 comparison together. The key claim is conditional: verification helps when the base model already covers varied potentially correct traces that imitation would collapse.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用多次 o3 判决构造长上下文偏好数据，专门衡量幻觉与完整性等生成质量。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长上下文偏好数据、奖励模型与策略优化论文",
+  "best_for_ch": "需要评估或训练长问答、数据到文本、摘要奖励模型的研究者。",
+  "confidence_ch": "高：ACL Findings 正式论文与项目仓库可核验；数据下载、版本与许可必须在复用前复查。",
+  "authors_ch": "Hanning Zhang, Juntong Song, Juno Zhu, Yuanhao Wu, Tong Zhang, Cheng Niu",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

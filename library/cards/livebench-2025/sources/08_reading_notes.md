@@ -1,0 +1,5 @@
+- Object: a LiveBench score is inseparable from its dated release, task set, and scorer version.
+- Scale: the paper release has 1,000 questions, 18 tasks, and six categories.
+- Feedback: core evaluation uses objective or task-specific checks rather than an open-ended LLM judge.
+- Evidence: o1-preview scores 64.7, and two refreshes preserve ranking correlation above 0.997 for the tested models.
+- Audit: freshness limits fixed-test memorization but still requires provenance, semantic-overlap, checker, and release-drift checks.

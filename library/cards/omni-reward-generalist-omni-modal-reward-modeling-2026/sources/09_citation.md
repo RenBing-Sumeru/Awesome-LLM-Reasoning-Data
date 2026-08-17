@@ -1,0 +1,1 @@
+Zhuoran Jin, Hongbang Yuan, Kejian Zhu, Jiachun Li, Pengfei Cao, Yubo Chen, Kang Liu, and Jun Zhao. 2026. Omni-Reward: Towards Generalist Omni-Modal Reward Modeling with Free-Form Preferences. arXiv:2510.23451. Data: https://huggingface.co/datasets/jinzhuoran/OmniRewardData.

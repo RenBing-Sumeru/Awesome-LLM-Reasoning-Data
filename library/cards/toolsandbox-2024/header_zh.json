@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ToolSandbox 在有状态对话中评测工具使用能力，包含用户模拟、隐式工具状态依赖和里程碑检查。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的评测面 / 环境基准",
+  "best_for_ch": "关注工具调用、状态依赖、交互式评测和对话轨迹验收规则的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Jiarui Lu 等（Apple）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:35:07Z"
+}

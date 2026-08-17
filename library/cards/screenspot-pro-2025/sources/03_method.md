@@ -1,0 +1,5 @@
+Inputs are professional GUI screenshots and natural-language target instructions; model outputs are coordinates, bounding boxes, or intermediate search regions. The benchmark output is localization success against the annotated target box.
+
+The authors collect high-resolution screenshots from professional applications, annotate target UI elements, and quality-control both task validity and target-box precision. The benchmark includes English instructions and a Chinese-instruction variant translated with GPT-4 and reviewed by bilingual authors. Evaluation covers end-to-end GUI grounding models and multi-round search methods. ScreenSeekeR uses planner-guided area selection, candidate scoring, and recursive search, producing an interpretable search trace.
+
+Reproduction must pin dataset revision, screenshot resolution, target boxes, instruction language, evaluator rule, model output parsing, leaderboard date, and whether a method uses single-shot prediction, iterative zooming/narrowing, ReGround, or ScreenSeekeR-style recursive search.

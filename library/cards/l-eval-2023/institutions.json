@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "Fudan University",
+    "The University of Hong Kong",
+    "University of Illinois Urbana-Champaign",
+    "Shanghai AI Lab"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2307.11088",
+    "https://arxiv.org/e-print/2307.11088",
+    "https://github.com/OpenLMLab/LEval",
+    "https://huggingface.co/datasets/L4NLP/LEval",
+    "https://l-eval.github.io/"
+  ],
+  "verification_note": "Official arXiv source lists Fudan/HKU/UIUC/Shanghai AI Lab as a shared author block; official repository labels the work ACL 2024 Outstanding and provides code/data/project artifacts. No separate ACL Anthology page was located in checked sources."
+}

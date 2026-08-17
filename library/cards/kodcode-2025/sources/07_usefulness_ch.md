@@ -1,0 +1,3 @@
+- 目标是训练输出长推理与可执行答案的编程助手时使用 R1-SFT；需要单元测试 reward 或重新生成训练 target 时使用 V1 三元组。
+- 输入是选定的问题/style，并在适用时加入测试元数据；输出是已验证对话或代码答案。成功标准是全部测试通过，并在保留的代码 benchmark 上优于匹配 base model。
+- 应保留问题 ID、subset、seed ID、全部 trial、覆盖率、选中答案、测试、benchmark 相似度、R1 通过序列、split 与数据 revision。不适合必须商业许可或必须使用独立作者测试的场景。

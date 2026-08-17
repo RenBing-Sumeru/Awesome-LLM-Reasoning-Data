@@ -1,0 +1,260 @@
+id: herald-lean4-dataset-2025
+title: 'Herald: A Natural Language Annotated Lean 4 Dataset'
+year: 2025
+venue: ICLR 2025
+authors:
+- Guoxiong Gao
+- Yutong Wang
+- Jiedong Jiang
+- Qi Gao
+- Zihan Qin
+- Tianyi Xu
+- Bin Dong
+source_role:
+- data_release
+- construction_recipe
+- model_report
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematics
+- formal_theorem_proving
+- lean4
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/file/8c2bb821410066459be64d03a4dc5719-Paper-Conference.pdf
+  paper_pdf: https://proceedings.iclr.cc/paper_files/paper/2025/file/8c2bb821410066459be64d03a4dc5719-Paper-Conference.pdf
+  supplement: https://proceedings.iclr.cc/paper_files/paper/2025/file/8c2bb821410066459be64d03a4dc5719-Supplemental-Conference.zip
+  arxiv: https://arxiv.org/abs/2410.10878
+  code: https://github.com/frenzymath/herald_translator
+  data: https://huggingface.co/datasets/FrenzyMath/Herald_statements
+  data_statements: https://huggingface.co/datasets/FrenzyMath/Herald_statements
+  data_proofs: https://huggingface.co/datasets/FrenzyMath/Herald_proofs
+  project: https://github.com/frenzymath/herald_translator
+  huggingface: https://huggingface.co/FrenzyMath/Herald_translator
+  models: https://huggingface.co/FrenzyMath/Herald_translator
+  lean_environment: https://github.com/frenzymath/lean_test_v4110
+  lean_jixia: null
+  dataset_card: https://huggingface.co/datasets/FrenzyMath/Herald_statements
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/8c2bb821410066459be64d03a4dc5719-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=Se6MgCtRhz
+  bibtex: https://proceedings.iclr.cc/paper_files/paper/2025/file/8c2bb821410066459be64d03a4dc5719-Bibtex-Conference.bib
+  release: null
+  doi: https://doi.org/10.48550/arXiv.2410.10878
+  acl: null
+  pmlr: null
+  cvf: null
+data_object:
+  record_type: 'Two train-only parallel corpora derived from Mathlib4: 579,883 natural-language/formal-statement rows and
+    44,553 informal/formal-theorem-and-proof rows.'
+  prompt_source: Mathlib4 declarations and tactic proofs. Statement generation uses extracted head statements, declaration
+    kind, docstrings, neighboring statements, dependent theorems, and the nearest of 1,000 manually annotated examples. Proof
+    generation additionally uses theorem texts, tactic explanations, and proof states before and after tactic lines.
+  trace_author: An undisclosed LLM generates informal statements, proof-step explanations, integrated informal proofs, and
+    language augmentations. Five pure-mathematics PhD students with Lean expertise refine the prompt principles over six feedback
+    rounds and provide tactic explanations.
+  statement_record:
+    fields:
+    - id
+    - informal_statement
+    - formal_statement
+    count: 579883
+    split: train
+    formal_shape: Released examples contain imports or context and a Lean theorem declaration ending in `:= sorry`; they do
+      not contain a complete proof.
+  proof_record:
+    fields:
+    - id
+    - name
+    - formal_theorem
+    - informal_theorem
+    - formal_proof
+    - informal_proof
+    - commented_proof
+    - header
+    count: 44553
+    split: train
+    formal_shape: Each row can retain the declaration name and header, formal and informal theorem statements, a complete
+      tactic proof, an informal proof, and a proof with natural-language comments.
+  process_fields:
+  - Mathlib4 declaration or tactic proof
+  - structural context and dependency relations
+  - dependency level and translation order
+  - retrieved manual example
+  - generated informal statement
+  - tactic-state-derived formal statement
+  - informal-language augmentation
+  - tactic-line informalization
+  - integrated informal proof
+  - Lean compiler status for tactic-derived statements
+  observation: Lean-Jixia is described as exposing declaration metadata, dependencies, tactic lines, and proof states. Public
+    proof rows retain more theorem context than statement rows, but neither release contains the complete extraction, retrieval,
+    generation, sampling, and validation trace.
+  verifier_output: Tactic-state-derived statements are reported as Lean-compiled during construction. Released evaluation
+    code returns Lean REPL messages and accepts candidates with no severity `error`, then optionally retains candidates whose
+    learned back-translation/NLI result is `same`. These outputs are not attached to released training rows.
+  reward: None. Herald is supervised parallel data, not preference or reinforcement learning data. Lean and learned semantic
+    checks are filters or evaluation gates, not per-token or trajectory rewards.
+  environment_or_substrate: Mathlib4 under Lean 4.11.0. The linked test environment pins Mathlib commit 20c73142afa995ac9c8fb80a9bb585a55ca38308
+    and REPL commit adbbfcb9d4e61c12db96c45d227de92f21cc17dd, but no release manifest proves that this exact environment generated
+    every public row.
+  verifier_or_reward: Mixed contract. Lean can establish that formal text elaborates or that a proof checks in the configured
+    environment; equivalence between natural and formal language remains judgment-dependent. The optional evaluation layer
+    back-translates with InternLM2-Math-Plus-7B and asks DeepSeek-V2.5 whether the meanings match.
+  terminal_predicate: Released evaluation code treats a generated Lean declaration as passing when the REPL emits no severity
+    `error`; warnings are allowed. The learned semantic stage passes when its parser extracts `same`. Neither condition alone
+    proves NL-FL equivalence, and `sorry`-bearing statement rows do not prove their propositions.
+  provenance: Mathlib4 declaration or tactic proof -> Lean-Jixia structural extraction -> dependency-ordered retrieval-augmented
+    LLM informalization -> original, tactic-state, or informal-language branch -> random sampling -> train-only statement
+    and proof releases -> bidirectional statement expansion plus OpenHermes2.5 mixing -> Herald Translator SFT.
+  release_surface: Exact Parquet releases and a model checkpoint are public. The code covers translator inference, Lean checking,
+    back-translation, NLI, and evaluation, but not Mathlib extraction, dependency-order execution, retrieval-index construction,
+    augmentation, proof informalization, or corpus assembly.
+recipe_metadata:
+  source_corpus: Mathlib4. The paper reports rounded original and final corpus sizes, but the exact source revision and complete
+    declaration manifest used for generation are undisclosed.
+  base_model: DeepSeek-Prover-V1.5-Base 7B is used for Herald Translator. The model that generated corpus annotations and
+    augmentations is not identified.
+  teacher: Undisclosed LLM for corpus generation, with five Lean-expert pure-mathematics PhD students refining prompts and
+    tactic explanations. Exact checkpoint, provider terms, and per-row teacher identity are unknown.
+  generator: An LLM translates formal statements in dependency order, informalizes tactic proofs line by line before integration,
+    and produces four families of informal variants. Operational generation code is not released.
+  prompt_task_source: Mathlib4 declarations and tactic proofs enriched with Lean-Jixia structural context and the nearest
+    of 1,000 manually annotated NL-FL examples.
+  filtering_rule: Tactic-state formal statements must pass Lean compilation. Related tactic states are randomly downsampled,
+    and informal augmentations are sampled. No complete row-level semantic-quality filter is documented for all released NL-FL
+    pairs.
+  sampling_protocol: Sample tactic-derived statements and informal variants to counts matching the selected originals, yielding
+    a paper-reported 1:2:1 original:tactic:informal statement mixture. Seeds, similarity criteria, candidate-pool sizes, retained
+    IDs, and rejected records are absent.
+  rollout_count: unknown
+  temperature: Unknown for construction. Evaluation uses temperature 0.99 for 128 translator candidates, 0.1 for back-translation,
+    and 0.01 for the NLI API; these settings do not establish the original generation configuration.
+  inference_budget: Unknown for construction. Tokens, retries, compute, throughput, and rejected-candidate budget are not
+    reported.
+  search_or_scaffold: Dependency-DAG ordering, cosine retrieval over 1,000 manual examples, and tactic-state decomposition.
+    The embedding model, vector-index version, and traversal implementation are undisclosed.
+  selection_threshold: No global semantic score threshold is reported. Compiler success is required for tactic-derived formal
+    statements; described downselection is otherwise random sampling.
+  seed_protocol: unknown
+  buffer_policy: Offline Mathlib extraction, translation, augmentation, and sampling; no online experience buffer is involved.
+  optimizer_or_scaffold: Herald Translator receives a 2,000-step OpenHermes2.5 warm-up, then five SFT epochs at learning rate
+    4e-5 with cosine decay. The final mix is NL-to-FL:FL-to-NL:OpenHermes2.5 = 2:2:1. Optimizer, batch size, hardware, seeds,
+    and checkpoint-selection details are incomplete.
+audit:
+  source_mixture: The public statement release has 579,883 rows and the proof release has 44,553. The paper reports a rounded
+    1:2:1 original:tactic:informal statement mixture, approximately 145K, 290K, and 145K. Public rows expose no branch label
+    or source declaration, so exact membership cannot be reconstructed.
+  split: 'Both datasets expose only `train`: 579,883 statements and 44,553 proofs. No validation/test split or source-file,
+    declaration-family, or dependency component partition is released.'
+  decontamination: unknown
+  benchmark_overlap: No row-level exact or semantic overlap audit is reported against miniF2F, ProofNet, Extract-Theorem,
+    College CoT, or relevant pretraining corpora.
+  license: Herald statement data, proof data, translator weights, and the main code repository declare Apache-2.0. The linked
+    Lean helper has no detected license. Rows do not record exact upstream revision, per-row attribution, generator terms,
+    or human-annotation consent/provenance.
+  lineage: Mathlib4 -> Lean-Jixia extraction -> dependency context -> retrieved manual example -> undisclosed-LLM informalization
+    -> tactic or language augmentation -> random sampling -> train-only Parquet releases. Statement rows omit source declaration/file/revision,
+    branch, generator checkpoint, prompt, retrieved example, compiler log, and rejection history. Proof rows retain name and
+    header but omit most build lineage.
+  release_version: Statement dataset HEAD d8d849682ecfba92dda26026a97e10a662187f4c, proof dataset HEAD 2d31b459df74d730bff85682de237d894b4eecfa,
+    model HEAD c819f8707ef7486befcac64b7ce907afa7fb7dd4, code HEAD f03f6c40e57baae4ed084f29e0511364f41a2370, and Lean environment
+    HEAD 25a1d0527272e24bc88f0aec08db74e69b5db4b3 were verified. No named release or manifest binds them to one historical
+    build.
+  successful_and_failed_sample_retention: Only retained rows are public. Generated candidates, compiler rejects, near-duplicate
+    tactic states, unsampled variants, retrieval results, retries, human feedback decisions, learned-judge outputs, and row-level
+    validation logs are absent.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Lean elaboration checks formal syntax and types, not equivalence to the informal statement; statement rows use `sorry`
+    and contain no proof.
+  - Compiler plus back-translation/NLI checking has false positives and false negatives. The appendix includes an all-comment
+    output that passes and a compiled but semantically wrong polynomial formalization.
+  - Table 4 reports 151 Herald outputs passing the validation pipeline in a ProofNet human audit, but only 101 are fully correct;
+    24 have minor and 26 have major errors.
+  - Statement rows omit original/tactic/informal labels and source declarations, blocking row-level mixture reconstruction
+    and source-aware deduplication.
+  - Random sampling omits seeds, similarity criteria, candidate counts, retained IDs, and rejected records.
+  - Generator identity/checkpoint, complete prompts, decoding, retries, compute, embedding model, and exact Mathlib revision
+    are undisclosed.
+  - Public code implements inference and evaluation, not the construction pipeline; the cited Lean-Jixia paper URL was unavailable
+    when checked.
+  - No benchmark-overlap or pretraining-contamination audit is reported.
+  - Term-style proofs are excluded, biasing the proof release toward tactic developments, and some annotations retain Lean
+    identifiers or awkward formal phrasing.
+  - ArXiv v2 and the accepted ICLR paper report different model scores, and no manifest binds paper, data, model, code, and
+    runtime versions.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the accepted ICLR paper and appendices, proceedings record and BibTeX, official supplement, arXiv
+    v2, exact Hugging Face row counts and revisions, model metadata, code, and linked Lean environment. Artifact existence
+    is verified; semantic row correctness and end-to-end construction reproducibility are not. The paper-linked `https://github.com/reaslab/Lean-Jixia`
+    URL returned 404 on 2026-07-23; it is retained as a historical unavailable dependency in the audit record, not as a live
+    artifact, and no unverified successor is substituted.
+  remaining_unknowns:
+  - Exact Mathlib source revision and source-declaration manifest
+  - Generator identity, checkpoint, terms, prompts, decoding, seeds, retries, and compute
+  - Lean-Jixia version and end-to-end construction implementation
+  - Exact branch membership, candidate pools, validation logs, and rejects
+  - Embedding model, retrieval index, and per-row retrieved example
+  - Benchmark overlap and pretraining contamination
+  - Human-annotation provenance, consent, and helper-repository license
+inclusion_reason: Herald is an open formal-reasoning construction case that combines Mathlib4 structure, dependency-aware
+  retrieval, tactic-state augmentation, proof informalization, and Lean checks. It also exposes the audit boundary between
+  machine-checkable formal validity and judgment-dependent NL-FL alignment.
+related: []
+tags:
+- herald
+- lean4
+- mathlib4
+- formal-mathematics
+- autoformalization
+- nl-fl-pairs
+- proof-informalization
+- tactic-state-augmentation
+- retrieval-augmented-generation
+- compiler-validation
+status: partial
+card: null
+one_line_summary: Herald dependency-orders Mathlib informalization, retrieves from 1,000 manual examples, and augments statements
+  through tactic states and LLM rewrites, but omits the construction code, exact source revision, row lineage, rejects, and
+  decontamination evidence.
+why_it_matters: It demonstrates how formal libraries can seed large parallel reasoning corpora while showing why compiler
+  success must not be conflated with natural-language semantic correctness, proof availability, data quality, or complete
+  release lineage.
+needs:
+- 'needs_manifest: publish the exact Mathlib revision, declaration list, Lean-Jixia version, prompts, model/checkpoint revisions,
+  configs, seeds, runtime image, and hashes'
+- 'needs_pipeline: release extraction, dependency ordering, retrieval-index build, informalization, augmentation, proof integration,
+  sampling, and packaging code'
+- 'needs_lineage: add per-row source declaration/file/revision, construction branch, generator run, prompt version, retrieved
+  example, and transformation history'
+- 'needs_rejections: release candidates, compiler/NLI logs, near-duplicate groups, sampled/rejected IDs, retries, and human
+  feedback decisions'
+- 'needs_semantic_audit: publish stratified expert review labels for statement and proof alignment'
+- 'needs_contamination: version evaluation sets and publish exact and semantic overlap scans'
+- 'needs_release_pin: bind data, model, code, Lean/Mathlib/REPL environment, and accepted-paper version in one named release'
+- 'needs_license: license the Lean helper and document upstream attribution, generator terms, and annotation consent/provenance'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Venue, accepted paper and appendix, exact data schemas and counts, artifact revisions, model, code, runtime pins,
+    licenses, affiliations, and official BibTeX were checked. Missing construction implementation, source/generator manifests,
+    semantic row audit, and contamination evidence remain explicit.
+category_ids:
+- data_construction_open_release_recipes
+- programmatically_verifiable_outcome_data

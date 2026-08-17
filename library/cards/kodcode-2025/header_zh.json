@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "KodCode 公开大规模 CC BY-NC 编程三元组与 268,211 条经单元测试验收的 R1-SFT 记录，并保留试验、难度和污染字段。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可执行校验的合成编程数据集与推理 SFT 配方",
+  "best_for_ch": "适合构造单元测试验收的编程 SFT/RL 数据，或审计同源生成的答案与测试。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhangchen Xu、Yang Liu、Yueqin Yin、Mingyuan Zhou、Radha Poovendran",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T09:40:00Z"
+}

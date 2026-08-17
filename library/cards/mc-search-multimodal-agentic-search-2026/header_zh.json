@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MC-Search 以经核验的图文多跳证据链评测多模态智能体，并将其转化为改进检索规划的过程监督。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要多模态检索轨迹、逐跳证据归因，或训练搜索型 MLLM 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xuying Ning、Dongqi Fu、Tianxin Wei、Mengting Ai、Jiaru Zou、Ting-Wei Li、Hanghang Tong、Yada Zhu、Hendrik Hamann、Jingrui He",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

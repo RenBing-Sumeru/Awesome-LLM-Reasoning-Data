@@ -1,0 +1,1 @@
+Text-only contamination work cannot capture image leakage or cross-modal matching. MM-Detect changes the unit of audit from a textual item to text, image, and their relationship, and supports several model-access regimes. The novelty is this unified source-oriented audit rather than a new multimodal benchmark score.

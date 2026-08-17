@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ChartAssistant 将图表到表格对齐与公开的多任务 ChartSFT 对话语料结合。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "构建同时支持图表提取、问答和推理的统一助手",
+  "confidence_ch": "高",
+  "authors_ch": "Fanqing Meng, Wenqi Shao, Quanfeng Lu, Peng Gao, Kaipeng Zhang, Yu Qiao, Ping Luo",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

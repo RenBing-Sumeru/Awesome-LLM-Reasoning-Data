@@ -1,0 +1,5 @@
+- Read the paper's source-mixture tables together with the official pre-training and post-training collections; a reported model stage is not itself a source manifest.
+- Keep math/code/constraint verifiers separate from the Qwen3 32B chat judge, because their error modes and audit expectations differ.
+- Treat decon results as evidence of a stated filtering process, not as a zero-leakage guarantee.
+- Before reproducing a result, pin the model, dataset, and manifest revisions and review the source-level license chain.
+- Keep this Card in Track 12: its main value is disclosure quality and explicit unknowns, not Track 8 scaling attribution.

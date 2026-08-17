@@ -1,0 +1,254 @@
+id: absolute-zero-2025
+title: 'Absolute Zero: Reinforced Self-play Reasoning with Zero Data'
+year: 2025
+venue: NeurIPS 2025 (Main Conference Track)
+authors:
+- Andrew Zhao
+- Yiran Wu
+- Yang Yue
+- Tong Wu
+- Quentin Xu
+- Matthieu Lin
+- Shenzhi Wang
+- Qingyun Wu
+- Zilong Zheng
+- Gao Huang
+source_role:
+- construction_recipe
+- verifier_reward
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- code_reasoning
+- mathematical_reasoning
+- procedural_task_generation
+- self_play
+training_use:
+- rlvr
+construction_layer:
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf
+  paper_pdf: https://papers.nips.cc/paper_files/paper/2025/file/9837dc00ff67d176373268ed48042d49-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2505.03335
+  code: https://github.com/LeapLabTHU/Absolute-Zero-Reasoner
+  code_paper_branch: https://github.com/LeapLabTHU/Absolute-Zero-Reasoner/tree/paper
+  data: https://github.com/LeapLabTHU/Absolute-Zero-Reasoner/tree/paper/data
+  project: https://andrewzh112.github.io/absolute-zero-reasoner/
+  huggingface: https://huggingface.co/collections/andrewzh/absolute-zero-reasoner
+  models: https://huggingface.co/collections/andrewzh/absolute-zero-reasoner
+  logs: https://wandb.ai/andrewzhao112/AbsoluteZeroReasoner
+  release: null
+  dataset_card: null
+  doi: https://doi.org/10.48550/arXiv.2505.03335
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/9837dc00ff67d176373268ed48042d49-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.03335
+data_object:
+  record_type: Online proposer-solver self-play records grounded in deterministic Python program/input/output task objects;
+    the complete paper-run records are not released as a fixed dataset.
+  prompt_source: Deduction and abduction proposals condition on six uniformly sampled self-generated historical triplets.
+    Induction proposals reuse a buffered program and generate ten inputs plus a natural-language message. Buffer initialization
+    starts from a human-specified identity-function triplet and base-model-generated seeds, not an external task-answer collection.
+  trace_author: One current pretrained-base policy plays both proposer and solver roles and emits R1-style reasoning and answer
+    completions.
+  context_state:
+  - task_type in {deduction, abduction, induction}
+  - six historical reference triplets for deduction or abduction proposal
+  - one buffered program for induction proposal
+  - growing per-task buffers of validated triplets
+  - current training step and task-role group
+  proposer_record:
+    deduction_abduction: task type, reference triplets, proposed Python program, proposed input, executor-derived output,
+      parse/execution/safety/determinism status, eight solver attempts, solver success rate, learnability reward, and terminal
+      format reward
+    induction: buffered program, ten proposed inputs, ten executor-derived outputs, natural-language message, validation status
+      for every input, eight solver attempts on the visible/hidden split, learnability reward, and terminal format reward
+  solver_record:
+    deduction: program and input prompt, reasoning completion, predicted output, Python value-equality result, and terminal
+      scalar reward
+    abduction: program and target output prompt, reasoning completion, predicted input, program-execution equivalence result,
+      and terminal scalar reward
+    induction: five visible I/O pairs and a message, reasoning plus synthesized program, five hidden I/O checks, all-tests-pass
+      result, and terminal scalar reward
+  answer_format: R1-style thinking and answer sections, with task-specific Python code, input, or output blocks parsed by
+    the released reward implementation.
+  process_fields:
+  - task_type
+  - historical_references_or_buffered_program
+  - proposer_prompt
+  - proposer_reasoning_and_answer
+  - generated_program
+  - generated_input_or_input_set
+  - executor_derived_output_or_output_set
+  - validation_and_determinism_status
+  - solver_prompt
+  - solver_reasoning_and_answer
+  - hidden_induction_tests
+  - eight_rollout_solver_success_rate
+  - proposer_learnability_reward
+  - solver_accuracy_reward
+  - format_penalty
+  - creation_step
+  observation: Python execution produces values, exceptions/timeouts, equality outcomes, and validation flags. These observations
+    drive filtering and rewards but the full paper-run observation stream is not released.
+  verifier_output: Proposal parse/execution/safety/two-run-determinism status; deduction value equality; abduction p(predicted_input)=target_output;
+    induction per-hidden- case functional equality and all-tests-pass status; eight-sample success rate for proposal learnability.
+  reward: Proposer learnability is zero at zero solver success and otherwise one minus the eight-rollout success rate; the
+    implementation applies a -0.5 terminal value when no positive role score remains. Solver correctness is terminal and programmatic.
+    Format failures receive -1 and wrong but well-formatted completions receive -0.5.
+  environment_or_substrate: A released Python executor derived from QwQ plus veRL/vLLM rollout and TRR++ training infrastructure.
+    The paper-branch executor uses exec/eval in worker processes and is explicitly not a production-safe sandbox.
+  verifier_or_reward: One executable, rule-based Python layer validates proposed tasks, creates privileged outputs, and checks
+    final solver behavior; no learned reward model or LLM judge is used.
+  terminal_predicate: Deduction succeeds on value equality, abduction succeeds when the proposed input executes to the target
+    output, and induction succeeds only when the synthesized program matches all hidden I/O cases.
+  provenance: pretrained base model -> identity seed -> base-model-generated 256-record seed buffers -> iterative validated
+    task buffers -> proposer and solver rollouts -> Python terminal rewards -> TRR++ updates -> released AZR checkpoints
+  release_surface: The repository releases model-specific 256-row seed JSONL files and generation/training code. It does not
+    release immutable complete online buffers, proposer/solver rollouts, eight-sample verifier traces, rewards, rejected proposals,
+    or failed executions from the reported runs.
+recipe_metadata:
+  base_model: Main models use Qwen2.5-7B and Qwen2.5-Coder-7B. Scaling experiments use Qwen2.5-Coder-3B, Qwen2.5-Coder-14B,
+    Qwen2.5-14B, and Llama-3.1-8B.
+  teacher: None at the AZR RL stage. The same current policy proposes and solves tasks; externally pretrained base-model lineage
+    remains upstream.
+  generator: The current policy in proposer mode generates Python tasks, while the same policy in solver mode generates eight
+    Monte Carlo answers for learnability estimation and one training answer per solver instance.
+  prompt_task_source: Human-authored task templates and task taxonomy wrapped around self-generated historical Python triplets;
+    the only hand-specified initial task object is an identity-function triplet.
+  filtering_rule: Require parseable task-specific formatting, executable Python with a returned value, absence of configured
+    forbidden modules/keywords, and matching outputs across two executions. Induction requires all ten proposed inputs to
+    execute successfully. No constraint is imposed on its message.
+  sampling_protocol: Uniformly sample six reference triplets for deduction/abduction proposals and one buffered program for
+    induction. Use one policy rollout per training instance and eight additional current-policy solver rollouts to estimate
+    every proposal's success rate.
+  rollout_count: One training completion for each instance in six task-role groups, with group batch size 64, plus eight solver
+    rollouts per proposed task for the learnability estimate.
+  temperature: 1.0
+  top_p: 1.0
+  inference_budget: Maximum prompt length 6144 and response length 8096; 500 training steps. The paper reports about 3-5 days
+    per experiment on A800 clusters; the paper-branch README specifies 2, 4, and 8 80GB GPUs for 3B, 7/8B, and 14B.
+  search_or_scaffold: Growing task buffers, uniform historical-reference sampling, current-task preference with buffer backfill,
+    and eight-sample Monte Carlo difficulty estimation; no tree search.
+  selection_threshold: No difficulty threshold for buffer admission. All syntactically valid, safe-listed, executable, and
+    two-run-deterministic tasks are retained, including tasks with zero or perfect solver success.
+  seed_protocol: Generate B x 4 = 256 valid deduction/abduction seed triplets with the base model before any model update,
+    then generate a 256-record induction seed buffer. Released 7B seed files match these counts.
+  buffer_policy: Add every valid new task. Use current-step valid proposals for solver training and uniformly backfill short
+    batches from previously validated records; paper-branch 7B script caps programs at 16384.
+  reward_schedule: Static terminal role rewards plus task-relative normalization across six task-role groups. Optional complexity/diversity
+    rewards are disabled in the paper configuration.
+  optimizer_or_scaffold: Task-Relative REINFORCE++ with a clipped PPO objective, six task-role baselines, AdamW, learning
+    rate 1e-6, gradient clip 1.0, one PPO epoch, entropy coefficient 0.001, and no KL loss or KL reward.
+audit:
+  source_mixture: No external human-curated or distilled task-answer data enters the AZR RL curriculum. Upstream pretrained
+    model data is not zero or audited here; human-authored prompts, task definitions, executor rules, and evaluation benchmarks
+    remain part of the system.
+  split: 'No conventional fixed training split is used: tasks are generated online into evolving buffers. Released seed JSONL
+    files are model-specific initialization artifacts. Exact paper-run task/trajectory manifests and immutable train/validation
+    bindings are unavailable.'
+  decontamination: unknown
+  benchmark_overlap: No sample-level or semantic overlap analysis was found between generated programs and HumanEval+, MBPP+,
+    LiveCodeBench, CruxEval, mathematical benchmarks, or base-model pretraining data. OOD denotes absence from the explicit
+    AZR curriculum, not verified pretraining decontamination.
+  license: The GitHub repository declares MIT. Seed JSONL files have no separate dataset card or data-specific license notice.
+    Released Hugging Face model pages have no model card, so checkpoint license and intended-use terms are unknown.
+  lineage: Qwen2.5 or Llama base checkpoint -> paper-branch seed generation -> online task buffers -> propose/solve Python-verified
+    RLVR -> AZR checkpoints -> external benchmark evaluation. Exact paper-run buffers and trajectory hashes are not released.
+  release_version: Reproduction code was inspected at paper branch commit 41ed983cdf541cfcd2f963f33c055d50074f3c90 (2025-06-01).
+    The default branch later drifted; no GitHub tag or release pins the paper package.
+  successful_and_failed_sample_retention: Released seed files retain validated initial tasks. Complete successful and failed
+    proposer/solver rollouts, invalid proposals, exceptions, timeouts, eight-rollout difficulty samples, reward records, and
+    evolving paper-run buffers are not released as a fixed corpus.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - The raw executor runs generated Python through exec/eval. A module denylist, process boundary, AST parse, and timeout
+    do not provide a hardened sandbox; the README warns against production use.
+  - Two matching executions can falsely classify latent nondeterministic or stateful programs as deterministic.
+  - Appendix E reports that global variables can leak correct-answer information; the final runs retain them because removing
+    them hurt performance.
+  - Comments and docstrings function as a proposer-to-solver hint channel; removing them reduced performance, so the curriculum
+    can reward communication shortcuts rather than only intended program reasoning.
+  - Eight current-policy samples provide a noisy learnability estimate, and all valid tasks enter the buffer even when solver
+    success is zero or one.
+  - A pretrained proposer may regenerate memorized programs or benchmark-like patterns; no semantic decontamination or base-pretraining
+    audit is reported.
+  - No error bars, seed-level variance, or independent training reruns are reported. Greedy evaluation does not remove stochastic
+    RL-run variance.
+  - Llama-3.1-8B occasionally produced safety-concerning chains of thought, showing that autonomous curriculum generation
+    can amplify unsafe behavior without oversight.
+  - Full rollout/buffer data is absent, Hugging Face checkpoints have no model cards, official logs are not packaged into
+    an immutable manifest, and the repository has no tags or releases.
+  - Official arXiv/project/repository BibTeX duplicates Yang Yue, whereas the NeurIPS proceedings page and final PDF list
+    ten authors.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the NeurIPS proceedings page and all 64 final-PDF pages, arXiv v3 metadata, project page, paper-branch
+    repository tree and key implementation files, model-specific seed JSONL files, repository license/branch/release state,
+    Hugging Face collection and all five model pages, and the official W&B link.
+  remaining_unknowns:
+  - Exact immutable paper-run buffers, proposer/solver trajectories, rewards, failures, seeds, and checkpoint hashes
+  - Complete run-to-W&B mapping and whether every reported experiment/log is public
+  - Model-weight license, model cards, intended use, safety evaluation, and checkpoint-specific training provenance
+  - Semantic decontamination against evaluation benchmarks and upstream base-model pretraining data
+  - Independent reruns, training variance, checkpoint-selection policy, and total project compute including failed runs
+inclusion_reason: 'AZR is an anchor construction recipe for self-generated reasoning data: one policy proposes deterministic
+  Python tasks, a code executor validates and completes them, eight solver attempts define task learnability, and terminal
+  executable rewards train proposer and solver jointly without an external RL-stage task-answer corpus.'
+related:
+- alphamath-almost-zero-2024
+- genius-unsupervised-self-training-2025
+- spc-self-play-critic-2025
+tags:
+- absolute-zero
+- self-play
+- rlvr
+- procedural-task-generation
+- code-execution
+- autotelic-curriculum
+- trr-plus-plus
+- zero-data-boundary
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Absolute Zero turns a growing buffer of self-proposed Python triplets into an online RLVR curriculum, rewarding
+  proposer learnability from eight solver attempts and solver correctness by execution, while releasing the recipe and seeds
+  but not the complete paper-run trajectories.
+why_it_matters: It makes a zero-external-task-data self-play loop operational and auditable, but also exposes the boundary
+  that "zero data" still relies on pretrained models, human-designed prompts and verifiers, and can retain shortcut-bearing
+  programs whose full lineage is not released.
+card: null
+needs:
+- 'needs_trace_release: publish immutable paper-run buffers, proposer and solver completions, eight-sample verifier traces,
+  rewards, rejected proposals, exceptions, and creation steps'
+- 'needs_reproducibility_pin: publish a tagged release with exact configs, dependencies, executor image, seeds, checkpoint
+  hashes, and run-to-log manifest'
+- 'needs_model_docs: add model cards, licenses, intended use, limitations, safety evaluation, and checkpoint-specific provenance
+  for all released weights'
+- 'needs_security: replace the raw exec/eval executor with a pinned hardened sandbox and document isolation, resource limits,
+  and adversarial tests'
+- 'needs_audit: evaluate global-variable/comment shortcuts, verifier false positives, semantic benchmark overlap, and upstream
+  pretraining contamination'
+- 'needs_statistics: report independent RL runs, seed-level variance, checkpoint selection, and total compute including failed
+  experiments'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, venue, arXiv, project, paper-branch code, seed data, repository license, model collection/pages,
+    and logs entry were checked. Artifact verification confirms that releases exist; it does not upgrade the missing trajectory
+    corpus, model documentation, or reproducibility pins.

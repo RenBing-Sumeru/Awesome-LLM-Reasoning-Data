@@ -1,0 +1,6 @@
+- 先看表 1：它说明看似匹配的同作者 holdout 仍可能产生严重 false positive。
+- 将图 3 与 Algorithm 1 一起读；关键对象是 sequence-level shuffle 后产生的共享 prefix 自然/生成 suffix pair。
+- 把 dual-classifier difference test 视为 feedback contract，并牢记未拒绝 null hypothesis 只能算 inconclusive。
+- 对照表 2 与表 5：较大的 generation gap 会造成 false negative，去掉 calibration 则会造成 false positive。
+- 应以表 4 而不是周围正文为准；若干 non-member p-value 是 0.06–0.09，并非都高于 0.1。
+- 建议与 *LLM Dataset Inference: Did you train on my dataset?* 对读；复用前核验 archive license、revision、checkpoint、target access 与预注册统计方案。

@@ -1,0 +1,1 @@
+This is a literature synthesis, not a new training method. It classifies knowledge conflicts, examines their causes and model behaviors, and reviews solutions; the relevant inputs are contextual statements and model knowledge, while the output is a response under disagreement.

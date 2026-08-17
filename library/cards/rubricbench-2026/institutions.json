@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "City University of Hong Kong",
+    "Tencent Hunyuan",
+    "McGill - Mila & Quebec AI Institute",
+    "University of Illinois Springfield",
+    "MBZUAI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2603.01562",
+    "https://arxiv.org/html/2603.01562",
+    "https://github.com/planepig/rubricbench",
+    "https://huggingface.co/datasets/DonJoey/rubricbench"
+  ],
+  "verification_note": "Official arXiv HTML verifies CityU HK, Tencent Hunyuan, McGill/Mila, UIS, and MBZUAI affiliations; official GitHub and Hugging Face sources verify code/data artifacts."
+}

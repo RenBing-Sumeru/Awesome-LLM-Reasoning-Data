@@ -1,0 +1,133 @@
+id: gui-libra-2026
+title: 'GUI-Libra: Training Native GUI Agents to Reason and Act with Action-aware Supervision and Partially Verifiable RL'
+year: 2026
+venue: arXiv preprint (2026)
+authors:
+- Rui Yang
+- Qianhui Wu
+- Zhaoyang Wang
+- Hanyang Chen
+- Ke Yang
+- Hao Cheng
+- Huaxiu Yao
+- Baolin Peng
+- Huan Zhang
+- Jianfeng Gao
+- Tong Zhang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- gui-agents
+- multimodal-reasoning
+training_use:
+- sft
+- agent_training
+- rlvr
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2602.22190
+  arxiv: https://arxiv.org/abs/2602.22190
+  code: https://github.com/GUI-Libra/GUI-Libra
+  data: https://huggingface.co/GUI-Libra
+  project: https://gui-libra.github.io
+  huggingface: https://huggingface.co/GUI-Libra
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Existing public web and mobile GUI trajectories, cleaned to 3-50 steps and augmented with action-aligned
+    rationales.
+  trace_author: GPT-4.1 generates structured reasoning and action fields; original trajectory coordinates are retained and
+    subsequently checked.
+  answer_format: Screenshot and textual context paired with a reasoning trace and one executable JSON action.
+  process_fields:
+  - system-level instruction, user instruction, interaction history, current screenshot
+  - reasoning trace
+  - action type, action description, action target, value or coordinates
+  - action re-prediction agreement and bounding-box alignment
+  environment_or_substrate: Static web and mobile GUI trajectories; online environments are used only for evaluation.
+  verifier_or_reward: Qwen3-VL action agreement, bounding-box containment, and partially verifiable step rewards during RL.
+  terminal_predicate: SFT records pass agreement and coordinate filters; RL uses step reward with KL-constrained optimization.
+recipe_metadata:
+  base_model: Qwen2.5-VL-3B/7B-Instruct and Qwen3-VL-4B/8B-Instruct.
+  teacher: GPT-4.1 for rationale/action augmentation; Qwen3-VL models for filtering.
+  generator: Augment cleaned public trajectories, retain action-aligned records, apply action-aware SFT, then conservative
+    GRPO.
+  filtering_rule: Keep steps with action re-prediction accuracy at least 0.3 and coordinates inside a predicted target bounding
+    box.
+  sampling_protocol: Ten stochastic action re-predictions per input; RL subset downsampled for domain and step-index balance.
+  rollout_count: 8
+  temperature: null
+  inference_budget: RL rollout batch 256; no online interaction is used for training.
+  optimizer_or_scaffold: Action-aware SFT followed by GRPO with KL regularization and success-adaptive negative-gradient scaling.
+audit:
+  source_mixture: Seven public web/mobile trajectory sources; final SFT data are mobile-heavy and only 14.3% web.
+  split: 81K SFT steps from 9K trajectories; a balanced 40K-step subset is used for RL.
+  decontamination: The paper reports source cleaning but no dedicated benchmark-overlap audit for the released mixture.
+  license: Release license was not confirmed from the paper or inspected project page.
+  lineage: GUI-Libra-81K is derived from existing public GUI trajectory datasets rather than newly collected online rollouts.
+  known_failure_modes:
+  - A demonstrated action is only one of several potentially valid actions, so step reward can label alternatives incorrectly.
+  - The released mixture is mobile-heavy and does not establish scaling to fully online training.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v2 PDF and the official project page were checked on 2026-07-13. The PDF identifies UIUC, Microsoft, and UNC-Chapel
+    Hill; no peer-reviewed venue or acceptance record was found.
+inclusion_reason: Releases action-aligned GUI reasoning records and shows how their filtering and consumption affect native
+  GUI-agent post-training.
+related: []
+tags:
+- gui-reasoning-data
+- action-aware-sft
+- partially-verifiable-rl
+status: verified
+one_line_summary: GUI-Libra turns public GUI trajectories into 81K action-aligned reasoning steps and trains native agents
+  with action-aware SFT and conservative RL under ambiguous step rewards.
+why_it_matters: It exposes the record schema, filters, and reward ambiguity needed to judge whether offline GUI supervision
+  will transfer to online task completion.
+reading_priority: recommended
+paper_type: GUI reasoning dataset and post-training recipe
+best_for: Researchers constructing reasoning-and-action supervision for native GUI agents.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Paper, project, GitHub, and Hugging Face organization links are present on the official project page.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-c-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: GUI action-aligned reasoning data
+  selection_priority_score: 5
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 1
+    artifact: 1
+  selection_evidence:
+    institution: The paper PDF lists UIUC, Microsoft, and UNC-Chapel Hill, institutions with sustained GUI-agent and language-model
+      research.
+    venue: Only the arXiv preprint was confirmed; no official peer-reviewed acceptance or distinguished presentation was found.
+    impact: Official APIs checked 2026-07-13; GUI-Libra-81K-SFT and GUI-Libra-81K-RL had 190 and 144 Hugging Face downloads,
+      and the official repository had 66 stars and 2 forks.
+    artifact: The official project links code, SFT/RL datasets, evaluation data, and four model checkpoints, but the release
+      license and exact storage format were not confirmed.
+  selection_eligible: true
+  year_impact_threshold: 1

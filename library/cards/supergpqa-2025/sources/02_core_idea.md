@@ -1,0 +1,5 @@
+The one-sentence contribution is a broad graduate-disciplinary multiple-choice benchmark built with expert sourcing, annotator transcription, and Human-LLM collaborative filtering, then evaluated with hierarchy-aware accuracy reports.
+
+The core mechanism has three stages. In source screening, expert annotators collect credible graduate-level materials rather than relying only on exercise websites. In transcription, annotators convert or revise raw questions into multiple-choice form, add plausible distractors, set metadata, and estimate difficulty. In quality inspection, rule checks, model-based checks, plagiarism checks, and expert review remove malformed, trivial, ambiguous, or unreliable candidates.
+
+The closest comparisons are GPQA and MMLU-Pro. SuperGPQA changes the scale and taxonomy: it emphasizes 285 subfields and reports sample-, subfield-, field-, and discipline-level performance so imbalanced discipline sizes do not silently dominate every conclusion. The direction label is expert-domain benchmark construction with an explicit construction and audit pipeline.

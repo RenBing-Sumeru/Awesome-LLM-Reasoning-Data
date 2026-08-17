@@ -1,0 +1,88 @@
+id: lne-blocking-2025
+title: 'LNE-Blocking: An Efficient Framework for Contamination Mitigation Evaluation on Large Language Models'
+year: 2025
+venue: Findings of EMNLP 2025
+authors: []
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.188/
+  arxiv: https://arxiv.org/abs/2509.15218
+  arxiv: null
+  code: https://github.com/RuijieH/LNE-Blocking
+  data: https://github.com/RuijieH/LNE-Blocking
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.findings-emnlp.188/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
+  citation_status: verified
+  confidence: high
+  notes: 'Official paper/project and public artifact URL checked on 2026-07-18. Focus: contamination detection and response-blocking
+    evaluation code.'
+inclusion_reason: '该工作通过污染检测和受控解码扰动，审计潜在泄漏基准上的模型真实性能。'
+related: []
+tags:
+- contamination-audit
+- evaluation-reliability
+- candidate-slate
+status: verified
+one_line_summary: contamination detection and response-blocking evaluation code
+why_it_matters: It offers an inference-time audit for benchmark contamination and evaluation reliability.
+curation_level: L2_artifact_verified
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: Official final paper and public code release checked; L4 Chinese review completed.
+category_ids:
+- audit_failure_contamination_verifier_attacks

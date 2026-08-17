@@ -1,0 +1,1 @@
+Multi-SWE-bench 已覆盖多种非 Python 语言，却没有系统处理 C# 的 solution/project、NuGet 和 MSBuild 生态；将普通测试脚本替换为 `dotnet test` 也不足以保证历史 commit 可重放。SWE-Sharp-Bench 的变化是为 .NET 建立端到端 curation pipeline，并用同配置 Python 对照量化生态迁移差距。它不改变 SWE-bench 的 issue + patch + tests 契约，而是补足一个重要企业语言并公开从挖掘、构建、测试选择到评测的完整再现路径。

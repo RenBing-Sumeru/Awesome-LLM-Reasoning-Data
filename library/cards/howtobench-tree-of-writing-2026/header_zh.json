@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HoWToBench 用 1,302 条中文写作指令和显式加权的 Tree-of-Writing rubric，评估开放式长文写作质量。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rubric 基准与评测方法论文",
+  "best_for_ch": "研究开放式写作评测、可解释 Judge 或中文生成质量的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Andrew Zhuoer Feng、Cunxiang Wang、Yu Luo、Lin Fan、Yilin Zhou、Zikang Wang、Xiaotao Gu、Jie Tang、Hongning Wang、Minlie Huang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:47:21Z"
+}

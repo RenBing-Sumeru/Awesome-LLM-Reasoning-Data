@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用 5,352 个经验证候选对系统测试代码 LLM 判别器，并暴露顺序和来源敏感性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码 LLM-as-a-Judge 基准与可靠性审计",
+  "best_for_ch": "需要比较、校准或审计代码生成、修复和单元测试判别器的研究者。",
+  "confidence_ch": "高：已核对 arXiv 正文首页作者机构、官方数据集页及论文链接代码仓库。",
+  "authors_ch": "Hongchao Jiang, Yiming Chen, Yushi Cao, Hung-yi Lee, Robby T. Tan",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

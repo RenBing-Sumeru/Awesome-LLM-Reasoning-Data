@@ -1,0 +1,108 @@
+id: lost-in-translation-lvlm-judges-2026
+title: 'Lost in Translation: Do LVLM Judges Generalize Across Languages?'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Md Tahmid Rahman Laskar
+- Mohammed Saidul Islam
+- Mir Tafseer Nayeem
+- Amran Bhuiyan
+- Mizanur Rahman
+- Shafiq Joty
+- Enamul Hoque
+- Jimmy Huang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- multilingual
+- vision-language
+- llm-as-a-judge
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1746/
+  arxiv: https://arxiv.org/abs/2604.19405
+  code: null
+  data: https://huggingface.co/datasets/tahmedge/MM-JudgeBench
+  project: https://huggingface.co/datasets/tahmedge/MM-JudgeBench
+  huggingface: https://huggingface.co/datasets/tahmedge/MM-JudgeBench
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1746
+  venue: https://aclanthology.org/2026.findings-acl.1746/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1746/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: VL-RewardBench extension and OpenCQA-derived chart reasoning data.
+  trace_author: Benchmark curators, translation pipeline, and reference judges with human evaluation.
+  answer_format: Image-text input, response pair, language, subset, and preference label.
+  process_fields:
+  - image
+  - instruction
+  - response_a
+  - response_b
+  - language
+  - label
+  environment_or_substrate: Multilingual vision-language preference evaluation and chart reasoning.
+  verifier_or_reward: Reference-judge labels are checked against human agreement; models are scored on pairwise choice.
+  terminal_predicate: A LVLM judge chooses the preferred response in the target language.
+recipe_metadata:
+  base_model: Twenty-two LVLM judges evaluated by the paper.
+  teacher: GPT-5 reference labels plus human evaluation and translation systems.
+  generator: Multilingual extension of vision-language preference and chart-reasoning examples.
+  filtering_rule: Evaluation data are separated from a released multilingual adaptation training set.
+  sampling_protocol: Pin the official dataset revision and choose one of the two benchmark subsets.
+  inference_budget: Translation system, judge model, and reasoning mode affect language-wise results.
+  optimizer_or_scaffold: Pairwise judge evaluation and domain-adaptation fine-tuning protocol.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Multilingual visual preference pairs, chart reasoning cases, translations, and reference-judge labels.
+  split: The release contains more than 60K pairs across 25 languages; evaluation and adaptation data are disjoint.
+  decontamination: Keep the public evaluation split separate from any adaptation or reward-model training.
+  license: Confirm the current Hugging Face dataset card before reuse.
+  lineage: Findings of ACL 2026 paper and tahmedge/MM-JudgeBench release.
+  known_failure_modes:
+  - Automated translation can alter cultural nuance and preference signals.
+  - Reference-model labels can preserve judge-specific bias despite human-agreement checks.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL 2026 Findings record, paper authors, official dataset release, scale, and stated evaluation/adaptation
+    split separation.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: MM-JudgeBench evaluates LVLM judges on over 60K multilingual image-text preference pairs across 25 languages
+  and chart-reasoning settings.
+why_it_matters: It tests whether a visual reward signal survives language transfer rather than assuming English judge accuracy
+  generalizes.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL 2026 Findings record, paper authors, official dataset release, scale, and stated evaluation/adaptation
+    split separation.
+category_ids:
+- preference_reward_feedback_data

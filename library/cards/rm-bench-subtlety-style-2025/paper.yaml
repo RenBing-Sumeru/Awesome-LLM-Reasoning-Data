@@ -1,0 +1,106 @@
+id: rm-bench-subtlety-style-2025
+title: 'RM-Bench: Benchmarking Reward Models of Language Models with Subtlety and Style'
+year: 2025
+venue: ICLR 2025
+authors:
+- Yantao Liu
+- Zijun Yao
+- Rui Min
+- Yixin Cao
+- Lei Hou
+- Juanzi Li
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- reward-modeling
+- reasoning-evaluation
+- style-bias
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=QEHrmQPBdd
+  arxiv: https://arxiv.org/abs/2410.16184
+  code: https://github.com/THU-KEG/RM-Bench
+  data: https://github.com/THU-KEG/RM-Bench
+  project: https://github.com/THU-KEG/RM-Bench
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2410.16184
+  venue: https://openreview.net/forum?id=QEHrmQPBdd
+  openreview: https://openreview.net/forum?id=QEHrmQPBdd
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Prompts spanning benchmark scenarios including mathematics and code.
+  trace_author: RM-Bench construction pipeline creates subtle content and style-controlled response comparisons.
+  answer_format: Prompt, response comparison, preference label, content-change type, and style-bias condition.
+  process_fields:
+  - prompt
+  - response_a
+  - response_b
+  - preference_label
+  - content_type
+  - style_condition
+  environment_or_substrate: Language-model reward ranking under content and style changes.
+  verifier_or_reward: Known subtle content differences set the correct preference while style perturbations test bias.
+  terminal_predicate: A reward model chooses the response with the preferable content despite style interference.
+recipe_metadata:
+  base_model: Nearly forty reward models evaluated by the ICLR paper.
+  teacher: Controlled content modifications and style interventions define benchmark labels.
+  generator: Response-pair construction with subtle semantic differences and style variations.
+  filtering_rule: Retain pairs whose preference is determined by the controlled content difference.
+  sampling_protocol: Pin repository version and its 1,327 prompts and 11,943 comparisons.
+  inference_budget: Reward-model scoring configuration affects style-bias results.
+  optimizer_or_scaffold: Official RM-Bench evaluation code.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Controlled response comparisons, content perturbations, style interventions, and preference labels.
+  split: The repository documents 1,327 prompts and 11,943 comparisons; pin its commit.
+  decontamination: Training on controlled pairs invalidates their use for held-out style-bias evaluation.
+  license: Check the official repository license and source-data terms before reuse.
+  lineage: ICLR 2025 paper and THU-KEG code-and-data release.
+  known_failure_modes:
+  - Controlled perturbations may not cover all real-world style confounders.
+  - Benchmark scores depend on the chosen set of subtle content changes.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICLR 2025 OpenReview/proceedings record, formal affiliations, and the official THU-KEG code-and-data
+    repository.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RM-Bench tests reward models on 11,943 controlled comparisons that separate subtle content quality from
+  style bias.
+why_it_matters: It exposes whether a reward model is responding to reasoning-relevant content rather than superficial writing
+  style.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICLR 2025 OpenReview/proceedings record, formal affiliations, and the official THU-KEG code-and-data
+    repository.
+category_ids:
+- preference_reward_feedback_data

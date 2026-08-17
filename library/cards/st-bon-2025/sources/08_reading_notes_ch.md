@@ -1,0 +1,5 @@
+- ST-BoN 在所有采样 token 前缀首次两两分歧时开始评分。
+- CoE 距离是内部 selector signal；平均距离越小越优，但它不是正确性标签。
+- 主设置为 top-k 20、top-p 0.95、temperature 0.7、buffer 长度 tau=c，N 在 3 到 80 之间变化。
+- 官方仓库提供代码、若干 benchmark 输入及最终时延/停止字段，但未确认发布完整逐候选分数日志。
+- 成本与准确率增益评估的是解码规则，不能证明 trace release 完整或数据质量可靠。

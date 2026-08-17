@@ -1,0 +1,1 @@
+Use this work when answers are easier to source than instructions, such as curated documents, manuals, or human-authored explanations. It provides a concrete pattern for recording the source document, generated instruction, filter decision, and model iteration so the resulting instruction data is traceable.

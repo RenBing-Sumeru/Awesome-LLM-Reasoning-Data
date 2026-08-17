@@ -1,0 +1,5 @@
+Natural-language chain-of-thought solutions are readable but do not supply executable semantics for checking either intermediate claims or the final transformation. Prolog-MATH asks whether the full 7,500-example MATH training set can be converted into declarative programs whose outputs are mechanically checked, while retaining reusable mathematical abstractions rather than producing an isolated program for every problem.
+
+The intended construction object is richer than a prose rationale: a MATH problem and source CoT lead to suggested predicates, a candidate symbolic answer type, an executable Prolog program, an execution result, and a verifier decision. The paper uses this object for supervised fine-tuning and then treats initially failed problems as an RL search set.
+
+Execution is only a terminal boundary. A program can print the gold answer while hard-coding a value, using an incomplete derivation, or departing from its predicate names and source CoT. The paper's own manual audit finds such coincidentally correct cases, so verified coverage must not be read as semantic fidelity.

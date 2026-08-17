@@ -1,0 +1,3 @@
+GM-PRM-20K contains about 20K records with images, questions, prefixes, current steps, visual-evidence checks, logical judgments, error types, and corrections. Strong VLMs judge grounding and logic separately, followed by answer or second-judge filtering.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around image-evidence checks, logical judgments, error types, and correction suggestions, making the verifier, judge, environment, or execution source traceable for multimodal mathematical step assessment and correction. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

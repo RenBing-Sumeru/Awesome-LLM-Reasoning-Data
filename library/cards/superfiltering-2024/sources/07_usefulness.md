@@ -1,0 +1,3 @@
+- For selecting a small instruction subset when scoring and training budgets are limited, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of the score may reward easy instruction-output lexical dependence and discard rare capabilities.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: low instruction-following difficulty scores rank records before fixed-percentage selection. Do not reuse the release when its licensing or source provenance cannot be preserved.

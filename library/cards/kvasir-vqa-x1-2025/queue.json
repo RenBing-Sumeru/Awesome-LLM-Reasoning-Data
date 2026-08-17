@@ -1,0 +1,19 @@
+{
+  "title": "Kvasir-VQA-x1: A Multimodal Dataset for Medical Reasoning and Robust MedVQA in Gastrointestinal Endoscopy",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2506.09958",
+    "venue": "https://doi.org/10.1007/978-3-032-08009-7_6",
+    "code": "https://github.com/Simula/Kvasir-VQA-x1",
+    "data": "https://huggingface.co/datasets/SimulaMet/Kvasir-VQA-x1"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T11:35:04Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "medical data",
+    "updated_at": "2026-07-27T11:35:04Z"
+  }
+}

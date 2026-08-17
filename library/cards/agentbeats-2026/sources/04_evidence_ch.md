@@ -1,0 +1,9 @@
+field study 报告了来自独立参与者的 298 个 judge agent、12 个 category 与 467 个 subject agent，覆盖已进行的五个月（论文 §7、Figure 5）。官方 competition page 将 Phase 1 标为 2025 年 10 月 16 日至 2026 年 1 月 31 日，将 Phase 2 标为 2026 年 3 月 2 日至 6 月 2 日。论文称计划中的六个月 competition 在写作时仍在进行，因此这些数量是平台 snapshot，而不是冻结的 dataset release。
+
+repository analysis 提供了构造证据，但没有公开 inclusion manifest。排除不可访问或 malformed 的提交并对其余仓库去重后，Python 出现在 99% 的 judge-agent repository 与 98% 的 subject-agent repository 中；78.3% 的 judge repository 检测到 prompt，含 prompt 的 judge 平均有 241 行 prompt、1.16 万字符（论文 §7、Table 4）。由于准确 repository list、exclusion ledger、deduplication key 与 prompt-scanner snapshot 均未发布，这些统计无法从不可变论文 artifact 中独立重建。
+
+coding case 提供了一条可执行 feedback 示例。研究在 SWE-Bench Pro public 的 731 个 instance、Terminal-Bench 2.0 的 89 个 task，以及通过 ground-truth-test validation 后保留的 1,222 个 DevEval task 上评测四组 model-harness pairing。主实验成本报告为约 6,000 美元（论文 §8.3）。在 harness-swap 实验中，native pairing 在六项比较中的五项获胜，solve-rate 平均优势为 5.3 个百分点；Terminal-Bench 2.0 存在一个与 time budget 有关的例外（论文 §8.5、Table 7）。这些是作者报告的 configuration comparison，并非独立复现。
+
+trajectory inspection 还暴露了负面信号。在 DevEval 上，Gemini 3.1 Pro 与 OpenCode 组合报告了约 2% 的 tool-call error rate；Appendix Table 10 的准确值为 2.44%，超过其他 agent 的十倍。作者把成本异常归因于低效 exploration 与 harness incompatibility。但 harness log 并不完全可比：tool set 不同，mini-SWE-agent 不提供 token count，而一次 shell call 可能隐藏 read/edit/search 行为（Appendix A）。因此，该因果解释是作者基于非统一 trace 作出的判断。
+
+论文明确限制了 public-score fidelity。研究没有复现 Anthropic 的 SWE-Bench Pro memorization screen，无法使用 Qwen 未发布的 corrected benchmark form，并且 Terminal-Bench 的 thinking-effort setting 与公开 vendor report 不同（§8.4）。Appendix A 同时汇总成功与失败 run 的 aggregate statistics，但没有核验到与 arXiv v2 绑定的逐条 trajectory、artifact、score 或 failure archive。现有证据支持 protocol 与报告的 evaluation finding，却不能证明 trajectory 完整、verifier 已校准、许可充分、可准确 replay 或具备 training-data quality。

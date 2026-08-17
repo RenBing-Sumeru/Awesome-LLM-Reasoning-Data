@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebWorld 训练网页世界模型，用于网页智能体仿真、合成轨迹生成和搜索。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 web world-model paper",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Zikai Xiao 等（机构以 arXiv 正文为准）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T15:32:35Z"
+}

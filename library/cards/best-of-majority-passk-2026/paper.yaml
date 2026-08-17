@@ -1,0 +1,93 @@
+id: best-of-majority-passk-2026
+title: 'Best-of-Majority: Minimax-Optimal Strategy for Pass@k Inference Scaling'
+year: 2026
+venue: ICLR 2026
+authors:
+- Qiwei Di
+- Kaixuan Ji
+- Xuheng Li
+- Heyang Zhao
+- Quanquan Gu
+source_role:
+- scaling_study
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2510.03199
+  arxiv: https://arxiv.org/abs/2510.03199
+  venue: https://iclr.cc/virtual/2026/poster/10008737
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.03199
+data_object:
+  prompt_source: Mathematical reasoning prompts used in the paper's inference experiments.
+  trace_author: The evaluated language model generates a batch of candidate responses at inference time.
+  answer_format: A set of sampled responses, their frequency counts, reward-model scores, and a selected submission subset.
+  process_fields:
+  - prompt
+  - sampled_responses
+  - sampling_budget
+  - response_frequency
+  - reward_score
+  - submitted_subset
+  environment_or_substrate: Pass@k inference with an imperfect reward model and a finite sample budget.
+  verifier_or_reward: A reward model estimates response quality; ground-truth reward defines evaluation regret.
+  terminal_predicate: The submitted set contains a high-reward response under the task's evaluation.
+recipe_metadata:
+  base_model: Reference language model specified by the paper's experiments.
+  teacher: null
+  generator: Repeated sampling from the reference model.
+  filtering_rule: Retain high-frequency candidates, then select the top-k by reward-model score.
+  sampling_protocol: Generate N candidates and submit at most k responses under the Pass@k setting.
+  rollout_count: null
+  temperature: null
+  inference_budget: Explicitly parameterized by N generated candidates and k permitted submissions.
+  optimizer_or_scaffold: Best-of-Majority inference-time selection.
+audit:
+  source_mixture: Official ICLR 2026 poster record and arXiv paper.
+  split: Consult the paper for experimental benchmark splits.
+  decontamination: No separate release-wide decontamination audit is claimed; assess benchmark overlap for a deployment.
+  license: Paper is available on arXiv; verify any benchmark and model licenses separately.
+  lineage: 'Primary sources: https://arxiv.org/abs/2510.03199; https://iclr.cc/virtual/2026/poster/10008737'
+  known_failure_modes:
+  - Assumes access to an adequately accurate reward model.
+  - Theoretical guarantees may not capture all open-ended generation settings.
+  - The procedure allocates inference budget but does not create new model knowledge.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR record, arXiv paper, author affiliation, method, and reported evidence checked on 2026-07-20.
+inclusion_reason: It formalizes how pass@k performance should scale with sampling and submission budgets, making test-time compute allocation auditable.
+related: []
+tags:
+- test-time-compute
+- pass-at-k
+- inference-scaling
+- reward-model
+status: verified
+one_line_summary: Best-of-Majority gives a minimax-optimal, scaling-monotonic way to allocate sampled candidates under a Pass@k inference budget.
+reading_priority: essential
+paper_type: Test-time inference-scaling theory and mathematical-reasoning evaluation
+best_for: Readers designing pass@k evaluation or reward-model-guided inference under finite sampling budgets.
+confidence: high
+why_it_matters: It separates the sampling budget, submission budget, and reward-model error rather than treating more samples as an automatic gain.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR poster record and primary arXiv paper checked; no official code or standalone data release was declared in the checked sources.
+category_ids:
+- scaling_rlvr_test_time_compute

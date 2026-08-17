@@ -1,0 +1,1 @@
+PRISM is a directly released multimodal safety trace pipeline: structured four-stage VLM reasoning is searched with MCTS, UCB and safety/helpfulness feedback turn selected and rejected paths into DPO pairs, and the same framework also exposes test-time beam-search/Best-of-N scaling.

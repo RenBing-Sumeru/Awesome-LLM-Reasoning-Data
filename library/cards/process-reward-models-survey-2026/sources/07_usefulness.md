@@ -1,0 +1,1 @@
+The survey is a guide to the process-reward-model lifecycle: creating process data, building models, and using their scores. It separates raw reasoning traces, step-level labels, PRMs, search or selection mechanisms, and outcome rewards. It is useful for orientation rather than as a source of released labels, weights, or benchmarks.

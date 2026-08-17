@@ -1,0 +1,1 @@
+作者使用完全相同的 model–agent 配置对 SWE-bench Verified 的 Python 任务和 SWE-Sharp-Bench 的 C# 任务进行对照：Python resolved rate 约 70%，C# 仅约 40%，差 30 个百分点。由于模型、scaffold 和评测流程保持一致，该实验有力说明语言生态与工具链迁移仍是瓶颈；150 题可在 17 个仓库中自动重放，也支持可复现性。边界是两套 benchmark 的任务难度、仓库数量和 issue 分布并未严格匹配，差距不能全部归因于 C# 语法；此外 150 题样本较小，单个仓库会明显影响总体分数。

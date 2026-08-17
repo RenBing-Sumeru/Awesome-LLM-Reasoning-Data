@@ -1,0 +1,3 @@
+- Separate TeleChat2 from TeleChat2.5/T1 stages.
+- Treat 10T as an aggregate pretraining claim.
+- Request datasets and feedback specifications before reproducing later stages.

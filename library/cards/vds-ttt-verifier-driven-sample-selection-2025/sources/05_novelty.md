@@ -1,0 +1,1 @@
+Track 5 contribution: A verifier-gated pseudo-label selection pipeline for sequential test-time LoRA adaptation. The relevant auditable object is For each prompt, 2/4/8/16 candidate solutions, their Skywork-o1-Open-PRM-1.5B scores, threshold decision, and at-most-one selected pseudo-label.

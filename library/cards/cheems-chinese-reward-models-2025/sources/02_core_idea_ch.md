@@ -1,0 +1,1 @@
+CHEEMS 将完全人工标注的中文奖励模型基准 CheemsBench 与用于训练的人工—机器偏好数据集 CheemsPreference 结合。CheemsBench 有2,492个提示和17,600个比较；CheemsPreference 有27,861条人工指令和37,618个比较。官方仓库公开用于评测和奖励模型训练的代码与数据。

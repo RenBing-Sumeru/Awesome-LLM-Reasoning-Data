@@ -1,0 +1,2 @@
+A vision-language model may predict the correct location while justifying it with nonexistent text, infrastructure, or vegetation. Evaluating only country or city accuracy therefore cannot distinguish visually grounded reasoning from guessing the location first and inventing an explanation afterward. GeoRC asks how expert GeoGuessr reasoning chains can provide an auditable standard for evaluating whether a model identifies valid visual evidence, derives reasonable intermediate inferences, and reaches a location conclusion consistent with that evidence.
+

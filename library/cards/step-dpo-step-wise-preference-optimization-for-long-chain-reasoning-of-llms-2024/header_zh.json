@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "提出 Step-DPO 步骤级偏好优化算法：把长数学推理的 DPO 监督从整题答案下沉到单个推理步骤。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "后训练数据、偏好、奖励或评测研究",
+  "best_for_ch": "研究 LLM 后训练反馈数据与 verifier 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xin Lai、Zhuotao Tian、Yukang Chen、Senqiao Yang、Xiangru Peng、Jiaya Jia",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T08:59:47Z"
+}

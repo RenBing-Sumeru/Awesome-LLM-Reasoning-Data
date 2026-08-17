@@ -1,0 +1,1 @@
+An intermediate image can look convincing while still failing to represent the required relation. Generated visual states add compute cost and can introduce new errors. Cross-benchmark comparisons are difficult because tasks differ in what counts as visual grounding, so do not compare methods by accuracy alone.

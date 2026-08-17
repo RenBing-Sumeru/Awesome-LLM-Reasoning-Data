@@ -1,0 +1,132 @@
+id: bigcodearena-reliable-human-preferences-code-generation-2025
+title: 'BigCodeArena: Unveiling More Reliable Human Preferences in Code Generation via Execution'
+year: 2025
+venue: arXiv
+authors:
+- Terry Yue Zhuo
+- Xiaolong Jin
+- Hange Liu
+- Juyong Jiang
+- Tianyang Liu
+- Chen Gong
+- Bhupesh Bishnoi
+- Vaisakhi Mishra
+- Marek Suppa
+- Noah Ziems
+- Saiteja Utpala
+- Ming Xu
+- Guangyu Song
+- Kaixin Li
+- Yuhan Cao
+- Bo Liu
+- Zheng Liu
+- Sabina Abdurakhmanova
+- Wenhao Yu
+- Mengzhao Jia
+- Jihan Yao
+- Kenneth Hamilton
+- Kumar Shridhar
+- Minh Chien Vu
+- Dingmin Wang
+- Jiawei Liu
+- Zijian Wang
+- Qian Liu
+- Binyuan Hui
+- Meg Risdal
+- Ahsen Khaliq
+- Atin Sood
+- Zhenchang Xing
+- Wasi Uddin Ahmad
+- John Grundy
+- David Lo
+- Banghua Zhu
+- Xiaoning Du
+- Torsten Scholak
+- Leandro von Werra
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- pairwise_preference
+domains:
+- code-generation
+- preference-learning
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.08697
+  arxiv: https://arxiv.org/abs/2510.08697
+  code: https://github.com/bigcode-project/bigcodearena
+  data: https://huggingface.co/datasets/bigcode/bigcodearena-preference-5k
+  project: null
+  huggingface: https://huggingface.co/datasets/bigcode/bigcodearena-preference-5k
+  doi: https://doi.org/10.48550/arXiv.2510.08697
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real code-generation sessions.
+  trace_author: Code-producing models and human raters.
+  answer_format: Executable candidate programs and pairwise preferences.
+  process_fields:
+  - prompt
+  - chosen
+  - rejected
+  - execution
+  environment_or_substrate: Program execution.
+  verifier_or_reward: Execution signals plus human preference.
+  terminal_predicate: Released comparison passing collection checks.
+recipe_metadata:
+  base_model: Evaluated code models
+  teacher: null
+  generator: Code LLMs
+  filtering_rule: Execution-informed collection; see paper.
+  sampling_protocol: 14K raw sessions and more than 4,700 pairwise preferences.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Code reward-model and preference-learning evaluation.
+audit:
+  source_mixture: Code sessions with executable outputs.
+  split: See official dataset.
+  decontamination: Audit repository and benchmark overlap.
+  license: See data card.
+  lineage: Primary arXiv paper and BigCode release.
+  known_failure_modes:
+  - Passing tests can miss specification errors.
+  - Human preference may favor style or explanation.
+  citation_status: verified
+  confidence: high
+  notes: Paper and official data/repository reviewed.
+inclusion_reason: Public code preference data grounded by execution evidence.
+related: []
+tags:
+- preference-data
+- code
+- execution
+one_line_summary: BigCodeArena couples human code preferences with execution to make code-feedback labels more reliable.
+why_it_matters: It joins subjective feedback to a programmatic correctness surface.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: primary-paper and official-release review
+  confidence: high
+  notes: Verified paper, code, and Hugging Face dataset.
+category_ids:
+- preference_reward_feedback_data

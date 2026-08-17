@@ -1,0 +1,9 @@
+Dataset adaptation 从 Nemotron-Cascade 的数学、代码和 SWE 混合中选取经过过滤的 prompt；这些混合源自 OpenMathReasoning、OpenCodeReasoning、SWE-Bench-Train、SWE-reBench、SWE-Smith 与 SWE-Fixer-Train。流水线把原 prompt 和领域后缀插入 Terminus 2 模板，并在环境中实例化 SWE 代码文件。这些 adapter tasks 只有 instruction 与 environment，没有关联 tests，因此其 correctness contract 不能统一视为 programmatic。
+
+Synthetic generation 分为 seed-based 与 skill-based 两条支路。skill 支路通常从一套领域 taxonomy 中组合三到五项技能，覆盖 data processing、data querying、data science、debugging、dependency management、file operations、scientific computing、security、software engineering，以及发布目录中的相关类别。一个 synthetic task specification 包含自然语言 instruction、可选 input files、`task.toml`、`environment/Dockerfile` 和基于 pytest 的 tests；已检查的 archive 中 `solution/` 目录为空，没有生成的 oracle solution。论文描述了九个共享领域镜像，但没有用不可变 digest 绑定它们。
+
+DeepSeek-V3.2 通过 Docker/tmux 中的 Terminus 2 工作。每轮 scaffold 提供当前终端状态并要求结构化 JSON action；系统执行字面 keystrokes，再把终端输出作为下一轮 observation。Harbor 负责生成编排，作者扩展支持 Singularity/HPC；Daytona 用于评测。teacher 的 temperature、seed、turn/token/time 上限、retry、每任务 attempts、服务快照与生成计算量均为 unknown。
+
+在已检查的 synthetic infrastructure 中，pytest 检查最终状态；一个代表性的 `tests/test.sh` 根据 pytest 退出状态把二值 `1` 或 `0` 写入 `/logs/verifier/reward.txt`。任务 specification 可为单项测试配置 partial-credit 权重，但公开 conversation corpus 没有规范化 outcome、scalar reward、test result、termination cause 或 verifier log 列。assistant 内嵌的 `task_complete` 只是自我声明，不是 terminal predicate；adapter tasks 则没有 tests。
+
+Post-processing 删除与 Terminal-Bench 2.0 test prompts 存在 14-gram 重叠的 prompt、identity leak，以及包含中文字符的 response。除此之外，最终配方会保留通过去重与质量过滤的轨迹，不依据 teacher-declared completion 或 test success 再筛除。学生 SFT 使用 veRL 与 AdamW，训练两轮，learning rate 为 `2e-5`、weight decay 为 `1e-4`、global batch size 为 128、每 GPU micro-batch size 为 1，并采用 cosine schedule、10% warmup、gradient clipping 1.0 和 CPU offload。默认 SFT 最大长度为 32,768 tokens；long-context 与 curriculum 设置只是消融实验，没有对应的独立公开行 manifest。

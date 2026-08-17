@@ -1,0 +1,7 @@
+iOSWorld的贡献是一套可执行的原生iOS评测契约：把持续存在的虚构身份、确定性应用状态、多模态智能体交互、任务特定rubric和事后episode judge绑定在一起。26个应用共享互联的合成记录，而不是彼此独立的模拟界面。每项常规任务开始前，runner会重启模拟器，清除manifest所列应用的数据容器及共享workspace app-group容器，逐个启动应用完成reseed，再终止应用并返回主屏幕；这属于应用数据重置，并非恢复不可变的模拟器镜像。
+
+反馈契约是`judgment_required`。GPT-5.4 Mini接收任务goal、完整截图与动作序列、最终答案，以及每项任务4-13条criterion，输出整体success判断和带理由的逐criterion satisfied标记。scalar reward是满足criterion的比例；严格pass要求全部criterion均满足。因此监督附着于`full_episode`，并产生`scalar_reward`与二值成功标签，而不是经过验证的state-action label，也不是论文证明可用于训练的reward。
+
+该judge可以跨整条轨迹评估可见进展和语义报告，但不会直接执行程序化数据库predicate。屏外状态、rubric遗漏的条件、其他有效路径、有害的中间副作用及API模型漂移，都无法被充分或稳定观察。对128条Opus 4.6 vision+XML轨迹的人类验证显示，任务级一致率为89%，rubric级准确率为86%；因此judge是经过校准的证据，而不是真值。
+
+相对Android移动端基准，具体变化是原生iOS substrate与一个互联、持续的persona。相对AndroidWorld式程序化检查，其主要成功接口是rubric-conditioned trajectory judge。可选的逐应用MCP server提供typed operation，也带来另一层问题：它们可能绕过可见UI转移；高风险动作虽有prepare/confirm pair，但扩展确认界面默认关闭，legacy direct verb仍可用。论文组合了已有的模拟器、accessibility、LLM judge和tool server组件；方向价值来自这些组件在episode层面的可审计绑定，而非某一组件本身。

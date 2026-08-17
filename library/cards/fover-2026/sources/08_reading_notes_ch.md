@@ -1,0 +1,5 @@
+- 结合阅读第 3 节、表 1 与附录 B：40K 是步骤混合，而 LastStepBalanced 发布集暴露 40K 条训练记录；它与终稿的精确对应关系仍未解决。
+- 把 Z3 与 Isabelle 标签理解为“相对于构造后形式输入的有效性”；声称语义正确之前，还要检查 informal-to-Isabelle 转换。
+- 仔细阅读 Isabelle wrapper：非目标步骤被替换为 `sorry`，所以标签验证的是假定上下文下的局部步骤，而不是完整依赖链。
+- 把表 2 与表 3 当作下游行为证据，而非逐行质量证明；即使平均值提高，若干 Best-of-7 单项仍然下降。
+- 分别固定 GitHub commit 与 Hugging Face 数据 revision，因为官方数据卡明确说明其内容对应论文早期版本。

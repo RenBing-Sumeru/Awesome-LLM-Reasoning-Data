@@ -1,0 +1,1 @@
+论文评测七个 LLM 与四种代理框架，最佳代理总体解决率为 70.7%；在较小处理器核项目上超过 90%，在复杂 SoC 项目上低于 65%。失败分析将问题分为 fault localization、硬件语义推理以及 RTL/配置/验证跨 artifact 协调，且项目范围和 bug 类型比代码行数更能解释难度。结果支持真实仓库 benchmark 的必要性，但部分 OpenTitan 流程依赖 Synopsys VCS，环境开放性有限。

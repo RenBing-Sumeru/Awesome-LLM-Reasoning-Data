@@ -1,0 +1,3 @@
+ExeVR-53k contains about 53K task–execution-video–reward records with synchronized actions. Positives come from successful executions, while negatives include wrong clicks, inputs, early stops, and real failures.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around tasks, screen recordings, action timestamps, outcome rewards, and step-level negative examples, making the verifier, judge, environment, or execution source traceable for execution ranking and computer-use agent reinforcement. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

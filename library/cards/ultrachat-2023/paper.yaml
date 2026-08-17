@@ -1,0 +1,122 @@
+id: ultrachat-2023
+title: Enhancing Chat Language Models by Scaling High-quality Instructional Conversations
+year: 2023
+venue: arXiv
+authors:
+- Ning Ding
+- Yulin Chen
+- Bokai Xu
+- Yujia Qin
+- Zhi Zheng
+- Shengding Hu
+- Zhiyuan Liu
+- Maosong Sun
+- Bowen Zhou
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- large-language-models
+- synthetic-instruction-generation
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2305.14233
+  arxiv: https://arxiv.org/abs/2305.14233
+  code: https://github.com/thunlp/UltraChat
+  data: https://github.com/thunlp/UltraChat
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Sector-specific topics, writing tasks, and existing materials transformed into goals for synthetic conversations.
+  trace_author: An OpenAI dialogue model generates both user and assistant turns under sector-specific prompts.
+  answer_format: English multi-turn user/assistant message sequences with retained dialogue context.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Offline dialogue generation in three sectors followed by LLaMA supervised fine-tuning.
+  verifier_or_reward: Teacher generation supplies both sides of the dialogue; statistical quality analysis and downstream
+    evaluations judge coherence and usefulness.
+  terminal_predicate: Construction prompts and formatting checks terminate a dialogue; corpus statistics and downstream chat
+    judgments assess the release.
+recipe_metadata:
+  base_model: LLaMA for the reported UltraLLaMA training.
+  teacher: An OpenAI dialogue model generates both sides of each synthetic conversation.
+  generator: Builds topic and task pools, iteratively generates user and assistant turns, applies quality controls, and fine-tunes
+    UltraLLaMA on the resulting corpus.
+  filtering_rule: Teacher generation supplies both sides of the dialogue; statistical quality analysis and downstream evaluations
+    judge coherence and usefulness.
+  sampling_protocol: Sample sector metadata, generate alternating user and assistant turns with retained context, then normalize
+    the dialogue record.
+  rollout_count: null
+  temperature: null
+  inference_budget: Multi-turn generation continues under sector-specific prompts; exact API token and sampling budgets must
+    be pinned from the release code.
+  optimizer_or_scaffold: Builds topic and task pools, iteratively generates user and assistant turns, applies quality controls,
+    and fine-tunes UltraLLaMA on the resulting corpus.
+audit:
+  source_mixture: Synthetic user-assistant conversations with multiple turns, topic or task metadata, generated questions,
+    responses, and dialogue context.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'synthetic instruction generation lineage; closest comparisons: wizardlm-2024, magpie-2024.'
+  known_failure_modes:
+  - Fully synthetic conversations can amplify teacher style and factual errors; reported diversity metrics do not guarantee
+    user-distribution coverage.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper and Tsinghua NLP UltraChat repository checked. No formal conference publication was confirmed.
+inclusion_reason: UltraChat scales synthetic multi-turn instructional conversations to 1.5 million dialogues with an explicit
+  topic and generation framework.
+related:
+- wizardlm-2024
+- magpie-2024
+tags:
+- synthetic-instruction-generation
+- arxiv-2305.14233
+- primary-link-checked
+status: verified
+one_line_summary: UltraChat generates both sides of 1.47M topic-steered conversations, turning explicit user-demand sectors
+  into multi-turn SFT data.
+why_it_matters: It makes synthetic user-turn provenance and conversational context visible in a large chat-training corpus.
+reading_priority: recommended
+paper_type: Synthetic multi-turn conversation data construction
+best_for: Researchers generating or auditing large multi-turn chat SFT corpora.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and Tsinghua NLP UltraChat repository were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: synthetic instruction generation
+  selection_priority_score: 7
+  selection_score_breakdown:
+    recency: 2
+    impact: 3
+    venue: 0
+    institution: 2

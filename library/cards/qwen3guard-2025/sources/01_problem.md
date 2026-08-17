@@ -1,0 +1,4 @@
+Open safety guards often classify only a completed response as safe or unsafe. The Qwen report frames two practical gaps: binary labels may not map cleanly to different deployment policies, and whole-response classification cannot intervene while an answer is streaming. For a reasoning-data atlas, the relevant question is not simply whether a guard scores well, but what prompts, responses, labels, and feedback procedures constitute the guard's trainable or deployable data object.
+
+Qwen3Guard addresses this with a Gen variant that performs instruction-following moderation and a Stream variant that classifies generation incrementally. The report discloses meaningful construction interfaces, but it does not release the record-level training corpus, complete policy/label artifacts, or a reproducible feedback audit.
+

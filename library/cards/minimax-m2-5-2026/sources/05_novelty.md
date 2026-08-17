@@ -1,0 +1,3 @@
+Relative to prompt-response alignment, MiniMax-M2.5 treats economically grounded work environments as the RL substrate and combines task performance, process quality, and speed in long agent trajectories. Forge's scaffold-agnostic interface and tree-merged asynchronous rollout design address systems scale, while CISPO makes completion time part of the optimization signal.
+
+Relative to the existing MiniMax-M2 Card, this release adds the M2.5 checkpoint, quantified 200K+ software-environment claim, office/search evaluation surfaces, explicit CISPO performance-plus-speed equation, and concrete release-license boundary. The novelty is primarily systems integration and scale; its data/verifier reproducibility remains limited.

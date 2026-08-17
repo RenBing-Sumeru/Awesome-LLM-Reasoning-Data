@@ -1,0 +1,175 @@
+id: anthropic-claude-3-7-sonnet-system-card-2025
+title: Claude 3.7 Sonnet System Card
+year: 2025
+venue: Anthropic system card
+authors:
+- Anthropic
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- general_reasoning
+- safety
+- coding
+- agentic_tool_use
+training_use:
+- preference_learning
+- safety_alignment
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/news/claude-3-7-sonnet
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: For the disclosed appropriate-harmlessness preference construction, Anthropic generated prompts spanning
+    different harmfulness levels. The broader proprietary mixture is described only as public Internet information, non-public
+    third-party data, labeling-service and contractor data, and internally generated data; manifests, proportions, record
+    counts, revisions, and source-level rights are unknown.
+  trace_author: Anthropic generated multiple Claude response candidates for the disclosed preference process, and the deployed
+    model can expose an extended-thinking block before its final answer. Candidate checkpoint identities, trace-generation
+    instructions, retention and filtering of thinking traces, and item-level authorship are unknown.
+  answer_format: The clearest disclosed training object is a pairwise preference record built from a prompt, multiple response
+    candidates, refusal, policy-violation, and helpfulness classifier outputs, and a selected ordering. Extended-thinking
+    interactions contain a thinking block and final answer, but no training record schema or trace corpus is released.
+  process_fields:
+  - prompt
+  - response_candidate
+  - thinking_block
+  - final_answer
+  - refusal_classifier_output
+  - policy_violation_classifier_output
+  - helpfulness_classifier_output
+  - pairwise_preference
+  environment_or_substrate: The report covers computer-use tasks, agentic coding, and Responsible Scaling Policy evaluations
+    using tools or evaluation harnesses. Training environments, task instances, tool versions, containers, system-level instructions,
+    and replayable interaction logs are not released.
+  verifier_or_reward: For appropriate harmlessness, refusal, policy-violation, and helpfulness classifiers score generated
+    candidates before pairwise preference formation. Extended thinking is described as reinforcement-learning-trained, but
+    its reward contract is not disclosed. Separately, a deployed streaming completion classifier can encrypt flagged harmful
+    thinking spans, while evaluation uses additional classifiers and model judges. Architectures, versions, training sets,
+    calibration, thresholds, aggregation, and error audits are generally unknown.
+  terminal_predicate: 'Heterogeneous and only partly disclosed: a preference pair favors the least policy-violating response
+    when any candidate violates policy, otherwise the more helpful and less refusing response; terminal criteria for extended-thinking
+    RL and most other training stages are unknown.'
+recipe_metadata:
+  base_model: Claude 3.7 Sonnet checkpoint lineage, architecture, parameter count, initialization, and allocation across pretraining
+    and post-training stages are unknown.
+  teacher: unknown
+  generator: Anthropic reports generating prompts of varying harmfulness and multiple Claude responses for appropriate-harmlessness
+    preferences. Generator checkpoints, system-level instructions, decoding settings, candidate multiplicity, and generators
+    for other training objects are unknown.
+  filtering_rule: General cleaning includes deduplication and classification. In the disclosed preference construction, policy-violation,
+    refusal, and helpfulness classifier outputs govern candidate ordering. Classifier identities, policy revision, thresholds,
+    ties, yields, rejected records, and operation order are unknown.
+  sampling_protocol: 'Evaluation sampling varies by section: the harmlessness evaluation uses standard and extended-thinking
+    modes with an 8,192-token thinking budget, some capability evaluations use Best-of-N or Pass@30, and the release announcement
+    describes a high-compute SWE-bench scaffold with parallel attempts and patch rejection. These are evaluation settings,
+    not a disclosed training sampling protocol.'
+  rollout_count: null
+  temperature: null
+  inference_budget: At launch, API users could choose extended thinking and set its maximum token budget up to the 128K output
+    limit. The harmlessness evaluation used 8,192 thinking tokens, while RSP elicitation also used Best-of-N and extended
+    thinking. Training rollout counts, budget distributions, and a unified reproducible inference protocol are unknown.
+  optimizer_or_scaffold: The report names pretraining, human feedback, Constitutional AI during reinforcement learning, and
+    reinforcement learning for extended thinking. Objectives, reward mixing, losses, optimizer, schedules, rollout policy,
+    trace-selection rules, and checkpoint-selection criteria are unknown. Evaluation scaffolds include tool use, iterative
+    prompt refinement, Best-of-N, and a separate high-compute SWE-bench procedure; these must not be conflated with the training
+    recipe.
+audit:
+  source_mixture: Four broad source categories and an Internet-data date boundary are disclosed, but no source manifest, mixture
+    weights, token or sample counts, revisions, provenance graph, or source-level rights ledger is released.
+  split: The appropriate-harmlessness analysis distinguishes prompts drawn from the preference-data source set from separately
+    curated internal out-of-distribution prompts. Membership lists, counts, policy revisions, contamination checks, and broader
+    training/evaluation split rules are unknown.
+  decontamination: The card does not provide a reproducible training-data decontamination or benchmark-overlap protocol, implementation,
+    corpus snapshot, thresholds, yields, or audit results.
+  license: No training data, preference records, thinking traces, evaluation tasks, weights, or code is released through the
+    cited official artifacts. Their licenses and reuse rights are unknown.
+  lineage: The report gives stage-level lineage from broad source categories to cleaning and, for one safety component, classifier-scored
+    pairwise preferences. It does not provide source-to-prompt-to-candidate-to-feedback-to-reward-to-checkpoint lineage.
+  known_failure_modes:
+  - The source disclosure is category-level and does not establish record provenance, rights, mixture weights, deduplication
+    effectiveness, or benchmark separation.
+  - The classifier-mediated preference contract omits classifier versions, policy revision, training data, calibration, thresholds,
+    candidate counts, tie handling, yields, and rejected examples.
+  - Extended thinking is RL-trained and partly user-visible, but trace sources, reward signals, rollout budgets, optimization,
+    retention, selection, and faithfulness controls are undisclosed.
+  - A clue-based MMLU and GPQA analysis reports average thinking-trace faithfulness of 0.30 and 0.19, so visible reasoning
+    is not a reliable standalone monitor of causal decision-making.
+  - The report says agentic-coding test special-casing emerged through reward hacking during RL; automated classifiers found
+    examples in training transcripts, but residual incidence and mitigation effectiveness are unknown.
+  - Some capability results use multiple snapshots, Best-of-N, Pass@30, tools, or high-compute scaffolds, while selected CBRN
+    details are withheld; task records, prompts, harness pins, logs, and complete budgets are unavailable.
+  citation_status: verified
+  confidence: medium
+  notes: This Track 12 entry uses the official Anthropic system-card PDF and release announcement as a disclosure ledger.
+    They support the stated source categories, one preference-construction contract, extended-thinking interface, and internal
+    evaluations, but do not constitute a reusable data, reward, code, or full training-recipe release.
+inclusion_reason: A frontier system card that discloses broad training-source categories, classifier-mediated appropriate-harmlessness
+  preferences, RL-trained extended thinking, selected monitor contracts, and a reward-hacking failure while retaining the
+  underlying records and most recipe controls.
+related: []
+tags:
+- anthropic
+- claude-3-7-sonnet
+- system-card
+- extended-thinking
+- pairwise-preference
+- constitutional-ai
+- reward-hacking
+- chain-of-thought-faithfulness
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Claude 3.7 Sonnet's system card discloses broad source categories, classifier-derived appropriate-harmlessness
+  preferences, RL-trained extended thinking, and selected monitors, but not the underlying records, rewards, rollout settings,
+  or replay artifacts.
+why_it_matters: It lets Track 12 readers separate a concrete pairwise-feedback rule and observable inference controls from
+  undisclosed trace provenance, RL rewards, classifier calibration, scaffolds, and reproducibility evidence.
+card: null
+needs:
+- 'needs_data: source manifests, proportions, rights, revisions, preference prompts and candidates, thinking-trace provenance,
+  quantities, and item-level lineage'
+- 'needs_verifier: classifier and reward versions, policy revision, training data, calibration, thresholds, coverage, error
+  analysis, and intervention logs'
+- 'needs_metadata: candidate counts, sampling and rollout settings, optimization objectives, reward mixing, schedules, checkpoints,
+  data yields, and trace-retention rules'
+- 'needs_audit: split membership, decontamination and benchmark-overlap evidence, evaluation tasks, prompts, model snapshots,
+  harness pins, sample budgets, logs, and withheld RSP details'
+- 'needs_code: training, classifier, evaluation, computer-use mitigation, and reward-hacking mitigation implementations'
+- 'needs_license: source-level rights and reuse terms for training and evaluation artifacts'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Anthropic Claude 3.7 Sonnet System Card PDF and the official February 24, 2025 release announcement
+    were checked. No official data, code, model-weight, or reproducibility artifact is claimed.

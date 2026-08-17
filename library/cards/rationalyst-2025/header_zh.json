@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "论文报告用后续 token 可预测性筛得约 7.9 万条隐式 rationale，并训练 8B 过程监督器；但官方链接数据集只有 15,178 行，完整发布尚未对齐。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "弱验证驱动的过程监督数据构建论文",
+  "best_for_ch": "研究隐式 rationale、弱验证器、过程监督、测试时步骤选择与数据发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Dongwei Jiang、Guoxuan Wang、Yining Lu、Andrew Wang、Jingyu Zhang、Chuyu Liu、Benjamin Van Durme、Daniel Khashabi",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

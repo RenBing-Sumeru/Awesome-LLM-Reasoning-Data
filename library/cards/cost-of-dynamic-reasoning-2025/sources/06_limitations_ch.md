@@ -1,0 +1,2 @@
+
+这些结论依赖具体配置：两个 Llama-3.1 模型规模、A100 硬件、单一 vLLM/PyTorch/CUDA stack、选定的 agent-workload pair，以及可能变化的工具时延。Scaling study 每个设计点使用 50 道题，但没有发布所选 ID、seed、精确 benchmark revision、parser version 或完整 replay configuration。AgentBench 的可选 trace writer 与小型示例 trace 不能替代论文实验的完整 trajectory 或原始时延/能耗日志。论文说明以 DCGM 测量 GPU utilization，但 device-power sampling 与 energy integration procedure 尚未披露到可审计深度。Table III 假设每天 7140 万或 137 亿次查询并外推仅 GPU 的能耗，遗漏 CPU、memory、network、storage、cooling 和 request batching，因此不能当作实测 facility demand。最后，对 LATS 的并发修改相对原始顺序实现改善了时延，却使跨实现直接比较更复杂。

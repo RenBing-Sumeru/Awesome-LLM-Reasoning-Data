@@ -1,0 +1,112 @@
+id: matharena-2025
+title: 'MathArena: Evaluating LLMs on Uncontaminated Math Competitions'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks platform / arXiv
+authors:
+- Mislav Balunović
+- Jasper Dekoninck
+- Ivo Petrov
+- Nikola Jovanović
+- Martin Vechev
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- live-math
+- live-hidden-contamination-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+- reward_verifier_layer
+artifacts:
+  project: https://matharena.ai/
+  venue: https://matharena.ai/
+  paper: https://arxiv.org/abs/2505.23281
+  arxiv: https://arxiv.org/abs/2505.23281
+  code: https://github.com/eth-sri/matharena
+  data: https://huggingface.co/MathArena
+  huggingface: https://huggingface.co/MathArena
+  doi: https://doi.org/10.48550/arXiv.2505.23281
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct newly released math competitions and current contest math; exact split,
+    artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose newly released math competitions and current contest math, prompt/task metadata,
+    a model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: newly released math competitions and current contest math
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct newly released math competitions and current contest math; exact split,
+    artifact, license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: live_hidden_contamination_audit
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://matharena.ai/; https://arxiv.org/abs/2605.00674;
+    https://arxiv.org/pdf/2605.00674; https://github.com/eth-sri/matharena; https://huggingface.co/MathArena'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://matharena.ai/'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv 2505.23281, MathArena site, GitHub, and Hugging Face organization verify the 2025 uncontaminated-competitions
+    paper, ETH/INSAIT affiliations, live leaderboard, code, and data/log artifacts. The official site also cites a newer 2026
+    platform paper, so the local Card anchors the candidate to the 2025 paper while noting the platform update.
+inclusion_reason: Good live-math lead, but exact paper/source and scoring policy need confirmation.
+related: []
+tags:
+- benchmark
+- live_hidden_contamination_audit
+- live-math
+why_it_matters: Good live-math lead, but exact paper/source and scoring policy need confirmation.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MathArena exposes newly released math competitions and current contest math as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv 2505.23281, MathArena site, GitHub, and Hugging Face organization verify the 2025 uncontaminated-competitions
+    paper, ETH/INSAIT affiliations, live leaderboard, code, and data/log artifacts. The official site also cites a newer 2026
+    platform paper, so the local Card anchors the candidate to the 2025 paper while noting the platform update.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,8 @@
+- The "user model" is unnamed. Its checkpoint, instructions, policy, access, edit strategy, stochasticity, and relationship to real users are unknown.
+- No coding-task source, repository identity or revision, prompt, dependency state, tool interface, file-edit representation, or rights record is disclosed for the RL intervention.
+- No rollout or training-record schema is released. Observations, actions, tool calls, intermediate patches, conflicts, model responses, accepted and rejected attempts, and retention rules are unknown.
+- "Positive reinforcement" is not a complete feedback contract. Reward magnitude, detector or judge, aggregation, credit assignment, calibration, false-positive and false-negative behavior, coverage, and interaction with other objectives are undisclosed.
+- RL algorithm, optimizer, sampling, rollout budget, temperature, schedule, compute, checkpoint allocation, split policy, decontamination, and source-to-checkpoint lineage are unknown.
+- The destructive-actions evaluation measures an outcome after the intervention, but its cases and scoring implementation are not released, and the report does not map it to the training reward. Its reported performance cannot establish training-data quality or verifier reliability.
+- Codex CLI prompting, product sandboxes, monitoring, red teaming, and other capability or safety evaluations belong to prompting, deployment, or evaluation layers unless explicitly linked to training. They cannot be used to fill the missing training ledger.
+- The system card supports audit of what was disclosed, not independent reproduction, data reuse, rights assessment, or attribution of overall model behavior to this single intervention.

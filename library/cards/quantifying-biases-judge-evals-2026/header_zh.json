@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以贝叶斯广义线性模型识别、量化并校正 LLM 自动评测器的系统偏差。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "LLM 自动评测偏差的贝叶斯建模与校正研究",
+  "best_for_ch": "需要量化 verbosity、自偏好等评测偏差并报告不确定性的研究者。",
+  "confidence_ch": "中：论文与作者已核验；公开条目未提供可确认的作者机构和独立代码发布。",
+  "authors_ch": "Magda Dubois、Harry Coppock、Mario Giulianelli、Ole Kristian Jorgensen、Timo Flesch、Lennart Luettgau、Cozmin Ududec",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

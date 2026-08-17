@@ -1,0 +1,1 @@
+This is a literature survey. It collects existing NL2Code models, reviews benchmarks and metrics, compares model results on HumanEval, and discusses the gap between current systems and human programmers. The accompanying website is intended to track later work through crowdsourcing; the paper itself does not specify one shared training pipeline.

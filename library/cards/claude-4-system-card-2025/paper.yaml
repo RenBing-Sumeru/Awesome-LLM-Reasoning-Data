@@ -1,0 +1,111 @@
+id: claude-4-system-card-2025
+title: Claude 4 System Card
+year: 2025
+venue: Anthropic system card
+authors:
+- Anthropic
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- general_reasoning
+- coding
+- agentic_tool_use
+training_use:
+- preference_learning
+- safety_alignment
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www-cdn.anthropic.com/6d8a8055020700718b0c49369f60816ba2a7c285/Claude%204%20System%20Card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/transparency
+  huggingface: null
+  doi: null
+  venue: https://www.anthropic.com/transparency
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Anthropic describes broad source categories in its transparency materials. Specific prompt sources, corpus
+    records, proportions, licenses, revisions, and manifests are unknown.
+  trace_author: The system card reports human feedback and Constitutional AI at a high level. Annotator identities, instructions,
+    model-generated traces, selection, and item-level provenance are unknown.
+  answer_format: Training and safety-evaluation record schemas, reasoning traces, agent actions, tool interactions, and retained
+    fields are unknown.
+  process_fields: []
+  environment_or_substrate: Safety and capability assessments are reported, but training/evaluation environments, tools, versions,
+    containers, and task interfaces are unknown.
+  verifier_or_reward: Human feedback and Constitutional AI are reported at a broad level. Reward models, preference protocols,
+    constitutional application, verifiers, calibration, and terminal predicates are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Claude 4 model-family checkpoint lineage and post-training allocation are unknown in this Card.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: The report identifies human-feedback and Constitutional-AI approaches but does not disclose objectives,
+    optimizers, rollout budgets, reward normalization, or schedules.
+audit:
+  source_mixture: Broad source categories are disclosed, not a source-level mixture, immutable manifest, token/sample counts,
+    revision pins, or rights mapping.
+  split: unknown
+  decontamination: unknown
+  license: Training-data, preference-data, and evaluation-data rights are unknown.
+  lineage: The system card and transparency page establish report-level lineage for Claude 4, but no source-to-example-to-feedback-to-checkpoint
+    trace is released.
+  known_failure_modes:
+  - Broad source categories cannot establish data provenance, rights, or benchmark contamination controls.
+  - Human feedback and Constitutional AI do not specify a reward contract, coverage, calibration, or annotator protocol.
+  - Absent environment, trajectory, and release records prevent independent reproduction or safety audit.
+  citation_status: verified
+  confidence: medium
+  notes: This Card is a conservative Track12 disclosure ledger and does not treat a system card as a reusable post-training
+    recipe.
+inclusion_reason: A high-impact system-card disclosure baseline that names broad source categories, human feedback, and Constitutional
+  AI while retaining the record-level data and feedback ledger as undisclosed.
+related: []
+tags:
+- anthropic
+- claude-4
+- frontier-report
+- data-disclosure-ledger
+- constitutional-ai
+- human-feedback
+- safety
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Claude 4's system card and transparency materials name broad source categories, human feedback, and Constitutional
+  AI, but do not disclose record-level data, reward, or environment contracts.
+why_it_matters: It supplies an independent closed-frontier baseline for distinguishing high-level alignment disclosure from
+  auditable reasoning-data and feedback provenance.
+card: null
+needs:
+- 'needs_data: source manifests, rights, mixtures, revisions, and train/evaluation splits'
+- 'needs_verifier: human-feedback protocols, constitutional application, rewards, calibration, and success predicates'
+- 'needs_metadata: generators, filters, sampling, rollouts, objectives, checkpoints, and schedules'
+- 'needs_audit: decontamination, benchmark overlap, environment/tool pins, trajectories, and release logs'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: high
+  notes: Only the supplied official Anthropic Claude 4 System Card PDF and Transparency page are referenced.

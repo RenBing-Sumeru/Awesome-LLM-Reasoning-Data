@@ -1,0 +1,6 @@
+- Keep the reward contract exact: Lean success is binary `1/0`; the separate lemma-before-theorem formatting penalty has an undisclosed weight and is not proof correctness.
+- Treat the reusable record as statement + lemma/proof/failure + compiler feedback + self-summary + environment + terminal result, not merely a final successful proof.
+- Light means Pass@8–16 candidates with 8–16 refinements each—approximately Pass@64–256 and 1–2 hours; medium gives each failed lemma an 8×8 inner budget.
+- Heavy begins with 5,000 conjectures, grows thousands of facts, and uses an undisclosed LLM relevance judge before a final medium run; formal validity and relevance selection are different contracts.
+- Preserve the IMO 2025 deadline distinction: 4/6 during competition, 5/6 post-competition; human formalization and Seed1.6-Thinking fill-in-the-blank priors also matter.
+- The 230M-problem/38B-token Seed-Geometry corpus and LooKeng are unreleased. The official repository exposes successful proof artifacts, not open training data or failed trajectories.

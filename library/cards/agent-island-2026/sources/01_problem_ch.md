@@ -1,0 +1,7 @@
+本卡片的权威论文记录是 2026 年 5 月 5 日提交的 arXiv:2605.04312v1。官方 artifact 将其描述为 NeurIPS 2026 submission，但没有核验到录用，因此 venue 保持为 **arXiv preprint**。论文处理的问题是：当固定能力 benchmark 已经暴露、受到 contamination 或趋于 saturation 时，如何继续评测 frontier language model。Agent Island 不再复用固定题库，而是在低风险社交策略环境中让每个被测模型面对会自适应的模型对手。
+
+一个 benchmark instance 是完整的七玩家 game episode。七个互不重复的 model identifier 获得匿名 player label。前五个 elimination round 中，仍在场的玩家先私下协商，再公开 pitch，随后私下投票淘汰另一名在场玩家并给出 rationale；环境淘汰一人后，玩家还会进行 memory consolidation。第六轮由两名幸存者 pitch，五名已淘汰玩家私下投票并给出 rationale，选出胜者。发布的 JSON log 同时保留 game configuration/status、player-to-model mapping、parser 与 usage statistics、round state、vote tally，以及按顺序记录的私密/公开 event；event 包含 prompt、content、visibility、provider 暴露的 reasoning、metadata 与 timestamp。
+
+该对象属于 environment_agent_trajectory_data，因为 state、action、visibility、环境聚合与 terminal winner 被共同序列化。它不是 policy training 的证据：论文没有向玩家提供明确 reward，只把 episode 用于 evaluation 与 behavioral audit。自适应对局也不能证明已经去污染；固定公开 rules、engine、API 与已发布 log 仍然可见。
+
+必须严格分开两个规模。arXiv v1 分析与冻结的 version-1.0.0 manifest 恰好包含 **999 场游戏、49 个 unique model**。2026 年 7 月 20 日独立核验的可变 live source 则报告 **1,270 场游戏、62 条 ranking row**；按官网 `games_played >= 10` 规则，页面显示 **59 个 model**，源时间戳为 2026-07-02 15:26:25.976235+00:00。这些 live 数字不是论文结果，更早的 live snapshot 已经过时。现有证据足以形成深入的双语 Card，但 accepted metadata 仍保持 `partial` 与 `L3_summary_ready`，因为 generator/model binding、失败 run 账本、compute 细节、decontamination 和 replication ZIP 许可仍为 unknown。

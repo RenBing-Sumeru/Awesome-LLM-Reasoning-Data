@@ -1,0 +1,1 @@
+核心贡献是把 API 工具使用拆成 planning、retrieval 和 calling 三类能力，并用 73 个可运行 API tools 支撑评测与训练对话。机制上，系统给出用户请求和 API 库，模型需要选择工具、组织调用顺序和参数，再由执行结果或标注答案判定对话是否达到目标。相对早期 tool-use prompt、ToolBench 式 API 语料和通用 function-calling 测试，API-Bank 的方向信号是“可运行多步 API 对话评测 + 监督 tool-use 数据”。

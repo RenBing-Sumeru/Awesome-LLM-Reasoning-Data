@@ -1,0 +1,11 @@
+The reconstructable final-paper recipe is:
+
+1. **Select source problems.** Use the symbolic FLDx2 split for first-order entailment and remove examples whose proofs contain `assump`, including proof-by-contradiction patterns. For theorem proving, draw GSM8K-level word problems from GSM8K, GSM8K-derived MetaMathQA cases, and Big-Math.
+2. **Generate formal artifacts.** Give six demonstrations to Llama 3.1 8B and Qwen 2.5 7B for Z3-compatible FLDx2 traces. Use Qwen 2.5 7B with few-shot prompts to translate math word problems into Isabelle statements and generate step-by-step Isabelle proofs.
+3. **Filter syntax.** Reject invalid Z3 formats. For Isabelle, replace every proof step with `sorry` and retain only statements and proof structures accepted by Isabelle syntax and type checking.
+4. **Assign step labels.** The Z3 wrapper converts each logical step into an independent query. The Isabelle wrapper runs once per target step, restores only that step, and leaves other proof steps as `sorry`. Correctness is recorded as a Boolean aligned with `solution_steps`.
+5. **Balance and package.** The paper's final mixture contains 10K Llama logic, 10K Qwen logic, and 20K Qwen theorem-proving steps. The released LastStepBalanced sets have a 40K train split and balance the last target label at 50%; `mask_history: true` makes only that last label contribute to training loss.
+6. **Train PRMs.** Fine-tune all Llama 3.1 8B or Qwen 2.5 7B parameters with LLaMA-Factory, AdamW, one epoch, batch size 32, sequence cutoff 2048, linear warmup and decay, warmup ratio 0.5, and DeepSpeed ZeRO-3. Choose learning rate from 1e-6, 2e-6, 5e-6, and 1e-5 using Orca-Math and two BBH tasks.
+7. **Evaluate.** Generate seven solutions per problem at temperature 0.5, score a solution by its minimum step score, and report Best-of-7 on 12 benchmark components. Also report ProcessBench step-error AUROC through the first human-annotated error.
+
+The repository at commit `6fc639c46e7c2e9a0786c10238ac8bbc2c6f287f` exposes the construction stages, Z3/Isabelle wrappers, final-dataset balancing, configs, and evaluation code. Undisclosed production details remain `unknown`: generation temperature for FOVER-40K, retry and rejection counts, acceptance rates, full seed and job manifests, prover timeout/failure policy for the released run, and total construction cost.

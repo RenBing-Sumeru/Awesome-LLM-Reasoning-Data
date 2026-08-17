@@ -1,0 +1,5 @@
+URSA addresses a multimodal process-supervision gap: image-grounded math solutions need more than a correct final answer, but manually labeling both logical validity and visual consistency at scale is expensive. The NeurIPS 2025 paper constructs CoT and process-supervision tables, trains a multimodal PRM, and uses it in test-time selection and online RL.
+
+The relevant data object is not a benchmark score. It is an image-referenced question, a stepwise solution, embedded step labels, a final answer, and—during construction—rollouts and their outcome-based continuation values. This belongs to **Rollout, Search, and Test-Time Trace Data** because BEL labels and PS-GRPO both depend on sampled continuations or groups of rollouts.
+
+The L4 boundary is specific: the official paper, supplement, repository, three Hub datasets, and three model cards were checked. The public tables are three-column records, however, not a complete release of images, rollout trees, terminal-judge outputs, route labels, rejected samples, or PS-GRPO reward logs.

@@ -1,0 +1,1 @@
+Evidence boundary: The paper reports human evaluations on its prompt distribution and compares instruction-following models with the base model; exact release-scale and licensing details remain unavailable in the public paper. This is evidence for the reported setting, not a substitute for an independent provenance or contamination audit of a later dataset.

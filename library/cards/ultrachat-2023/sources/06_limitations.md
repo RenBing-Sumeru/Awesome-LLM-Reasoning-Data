@@ -1,0 +1,3 @@
+- **Shared teacher bias.** The OpenAI dialogue model writes both speakers, so its factual errors, style, and assumptions can compound across turns; sample complete conversations with an independent factual/safety check.
+- **Coverage gap.** Topic diversity statistics do not establish coverage of real user traffic, and the released corpus is English-only; compare sectors and languages against the deployment distribution.
+- **Evaluation ambiguity.** UltraLLaMA and Vicuna differ in training data and recipe, while model-based chat scores are judge-sensitive; rerun matched checkpoints with a pinned judge before attributing gains.

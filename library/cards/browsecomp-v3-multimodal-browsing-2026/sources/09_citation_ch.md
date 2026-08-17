@@ -1,0 +1,1 @@
+引用：Huanyao Zhang 等，"BrowseComp-V3: A Visual, Vertical, and Verifiable Benchmark for Multimodal Browsing Agents," arXiv:2602.12876, 2026。论文/HTML：https://arxiv.org/abs/2602.12876 与 https://arxiv.org/html/2602.12876。数据：https://huggingface.co/datasets/Halcyon-Zhang/BrowseComp-V3（README 入口：https://huggingface.co/datasets/Halcyon-Zhang/BrowseComp-V3/blob/main/README.md）。代码：unknown。

@@ -1,0 +1,19 @@
+{
+  "title": "Evaluating the Robustness of Proof Autoformalization in Lean 4",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.14867",
+    "data": "https://github.com/ucr-rai/robust-proof-autoformalization",
+    "code": "https://github.com/ucr-rai/robust-proof-autoformalization",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T11:41:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 Benchmark 共包含 6,357 个评测实例",
+    "updated_at": "2026-07-19T11:41:50Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该条目将推理轨迹、搜索选择或测试时计算作为可审计的研究对象；未披露字段已明确标为 unknown。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹、搜索或测试时计算研究",
+  "best_for_ch": "需要审计 rollout、选择器、预算、数据谱系与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yao Zhang、Yu Wu、Haowei Zhang、Weiguo Li、Haokun Chen、Jingpei Wu、Guohao Li、Zhen Han、Volker Tresp",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

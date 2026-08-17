@@ -1,0 +1,3 @@
+1. Collect MLLM image–instruction responses and ask annotators to identify and correct hallucinated segments. 2. Turn corrected versus original behavior into dense preference signals rather than one response-level winner. 3. Apply dense direct preference optimization to align the base MLLM. 4. Evaluate hallucination on Object HalBench, MMHal-Bench, and a 146-sample human benchmark, while checking helpfulness on LLaVA Bench and VQAv2.
+
+The output is a correctional-feedback dataset and an aligned model. Reproduction requires the segment annotations and dense loss construction; a plain chosen/rejected conversion loses the paper's central supervision.

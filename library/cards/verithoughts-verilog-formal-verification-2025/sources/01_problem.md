@@ -1,0 +1,3 @@
+Verilog reasoning datasets are small and usually contain only problem statements and final RTL, without explanatory reasoning or reliable labels indicating whether a generated module is equivalent to the target circuit. Unit tests may miss errors in the input space, while manually writing hardware problems and testbenches is expensive, leaving small open models without high-quality HDL reasoning supervision.
+
+VeriThoughts works backward from existing Verilog modules to generate questions and reasoning solutions, then uses formal equivalence checking to compare generated RTL with the reference module. This produces a large reasoning dataset with self-consistency labels and a new evaluation split.

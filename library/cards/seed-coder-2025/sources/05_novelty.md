@@ -1,0 +1,5 @@
+Earlier code models used GitHub/web corpora, synthetic instructions, execution filtering, preference optimization, and RL. Seed-Coder's distinct contribution is integrating these into one quantified pipeline: external-teacher quality labels distilled into a small scorer, iterative web recall, a 6T curriculum, generated-test self-correction, on-policy DPO, external LongCoT warmup, and target-policy GRPO.
+
+The new data interface is not merely “high-quality code.” It joins source and commit metadata, learned scores, site categories, syntax state, generated instructions/solutions/tests, sandbox outcomes, preference pairs, and long-CoT rewards. Each filter can change the distribution and become an implicit objective.
+
+The title overstates autonomy if read literally. DeepSeek-V2-Chat anchors quality; external LLMs synthesize and evaluate SFT; DeepSeek-R1/open traces initialize reasoning. Target-policy self-improvement appears later. Before reuse, one must audit teacher/scorer bias, independent tests, sandbox exploitability, language/site retention, semantic leakage, and source licenses.

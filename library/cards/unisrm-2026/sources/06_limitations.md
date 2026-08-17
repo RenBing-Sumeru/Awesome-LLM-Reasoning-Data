@@ -1,0 +1,3 @@
+The authors state that benchmark coverage omits challenging acoustic conditions, including heavy accents and overlapped speech; success on the four included tasks therefore does not establish robustness in those conditions. Reuse should add a held-out human-rated accent/overlap slice before treating the model as a general speech judge.
+
+Training and inference combine a speech-LLM backbone, multi-sample rollouts, and GRPO, creating non-trivial compute and latency costs. In addition, most construction labels originate from Gemini before selective human verification; audit the released verification rate and disagreement by task rather than equating model agreement with ground truth.

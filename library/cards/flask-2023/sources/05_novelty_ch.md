@@ -1,0 +1,1 @@
+已有 instruction benchmark 常用整体 pairwise preference 或宽泛聚合维度。FLASK 把评分对象改成 skill-specific rubric。方向信号是评测标签应说明到底在评哪个能力。LLM-as-judge scoring 本身并不新。复用前要查 rubric 重叠、judge 校准、skill 分配歧义、分数尺度漂移，以及 judge 是否偏好冗长或公式化回答。

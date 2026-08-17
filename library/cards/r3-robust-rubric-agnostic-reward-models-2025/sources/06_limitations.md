@@ -1,0 +1,2 @@
+1. **Primary limitation.** A self-inferred rubric may not match the user’s intended values. High-stakes tasks should still provide expert rubrics.
+2. **Curator audit risk.** Teacher-generated reasoning and scores define the training policy, while 20K records cannot cover every domain. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

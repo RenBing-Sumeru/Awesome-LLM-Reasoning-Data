@@ -1,0 +1,1 @@
+论文报告 185,445 条 claim，split 为 145,449 train、9,999 dev、9,999 test 和 19,998 reserved。逐样本证据是 gold label 加 evidence sentence set；只有汇总 accuracy 不够，因为 evidence retrieval 是任务的一部分。NEI claim 不要求支持证据。证据边界包括构造时的 Wikipedia、标注政策和官方 scorer 对证据集合的处理。

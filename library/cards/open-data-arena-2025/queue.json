@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "数据平台，可给benchmark",
+    "updated_at": "2026-07-14T08:07:23Z"
+  },
+  "updated_at": "2026-07-14T08:07:23Z"
+}

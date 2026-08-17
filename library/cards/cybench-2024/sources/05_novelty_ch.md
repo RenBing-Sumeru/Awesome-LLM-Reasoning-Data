@@ -1,0 +1,1 @@
+已有基线要么是静态网络安全知识测试，要么是网络安全特异性较弱的通用 agent benchmark。Cybench 把对象改成可执行 CTF episode，包含真实文件、服务、命令输出和 flag。它还加入 subtasks，让研究者能审计部分能力，而不只看完整解题的零一结果。方向信号是一个高风险评测面：agent autonomy、工具使用和环境反馈不可分开。质量信号是近期专业任务和人类难度校准。并不新的部分是 CTF flag、shell 环境和 agent scaffold。复用前要审计竞赛数据权利、Docker 镜像、网络策略、答案泄漏、安全控制和公开任务污染。

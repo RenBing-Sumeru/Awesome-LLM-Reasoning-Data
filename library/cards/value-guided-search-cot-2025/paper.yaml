@@ -1,0 +1,173 @@
+id: value-guided-search-cot-2025
+title: Value-Guided Search for Efficient Chain-of-Thought Reasoning
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Kaiwen Wang
+- Jin Peng Zhou
+- Jonathan Chang
+- Zhaolin Gao
+- Nathan Kallus
+- Kianté Brantley
+- Wen Sun
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- scalar_reward
+- trajectory_value
+domains:
+- mathematics
+- competition-math
+- reasoning
+training_use:
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/7a8a3a34ede2bae1fd2fb1876a7ba362-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.17373
+  code: https://github.com/kaiwenw/ValueGuidedSearch
+  data: https://huggingface.co/datasets/VGS-AI/OpenR1-VM
+  project: null
+  huggingface: https://huggingface.co/VGS-AI
+  doi: https://doi.org/10.48550/arXiv.2505.17373
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/7a8a3a34ede2bae1fd2fb1876a7ba362-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=jOsuKwiCL0
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: OpenR1-Math default split (94K problems) pre-filtered into the released 49,394-row OpenR1-Cleaned corpus;
+    post-filtering leaves 44,509 prompt groups in the OpenR1-VM train split.
+  trace_author: Four DeepSeek-R1-Distill-Qwen sizes (1.5B, 7B, 14B, and 32B) produce 14 diverse roll-ins per prompt; DeepSeek-R1-Distill-Qwen-1.5B
+    is the fixed roll-out policy that completes four randomly cut prefixes per roll-in.
+  answer_format: A math problem with reference solution/final answer plus grouped token-ID roll-ins and roll-outs, processed
+    boxed answers, boolean rewards, and three-class outcome labels.
+  process_fields:
+  - message_id
+  - problem
+  - solution
+  - answer
+  - reward
+  - roll_in_ids
+  - roll_outs_ids
+  - processed_answer
+  - labels
+  environment_or_substrate: Offline long-context mathematical CoT sampling for value-model training, followed by block-wise
+    beam search or DVTS over DeepSeek generations at test time.
+  verifier_or_reward: math-verify checks parsed boxed answers against ground truth; labels are 0 for finished-incorrect, 1
+    for finished-correct, and 2 for incomplete, while DeepSeek-VM-1.5B predicts the probability of class 1 for search and
+    weighted voting.
+  terminal_predicate: A generation succeeds when it finishes with a parseable boxed answer accepted by math-verify; wrong
+    answers and responses that hit the 16,384-token cap receive zero reward.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-1.5B initializes the 28-layer, hidden-size-1536 Qwen2ForClassifier value model; 1.5B,
+    7B, 14B, and 32B variants supply roll-ins.
+  teacher: unknown
+  generator: For each retained prompt, sample 14 independent roll-ins, select four random prefix positions per roll-in, and
+    complete each prefix with the fixed 1.5B policy, yielding 56 labeled roll-in/roll-out pairs.
+  filtering_rule: Pre-filter for exactly one parseable boxed answer, automatic verifiability, non-MCQ single-part tasks, and
+    no links; post-filter prompt groups whose 56 roll-outs are all incorrect or incomplete.
+  sampling_protocol: Cut indices follow the paper's sqrt-weighted distribution, described as favoring earlier positions; response-generation
+    decoding parameters and seeds are unknown. At inference, use temperature 0.6 and top-p 0.95.
+  rollout_count: 56 labeled pairs per prompt before post-filtering; 2.8M pairs before and about 2.5M pairs after removing
+    roughly 10% all-failure prompt groups.
+  temperature: 'Training-data generation: unknown. VGS inference: 0.6 with top-p 0.95.'
+  inference_budget: Search uses a 16,384-token maximum, 4,096-token blocks, beam width 2, budget-dependent DVTS, and final
+    weighted majority voting; reported sweeps span N=4 to 1024, with headline N=256/128/64 for 1.5B/7B/14B generators.
+  optimizer_or_scaffold: The value model uses token-level cross-entropy over three outcome classes for 5 epochs with batch
+    1024, cosine max LR 1e-4, AdamW, and 16 nodes of 8 H100 GPUs; inference uses SGLang block-wise beam search plus weighted
+    majority voting.
+audit:
+  source_mixture: OpenR1-Math is the sole named upstream prompt corpus, but it aggregates mathematical sources and the VGS
+    paper does not audit every upstream source or right; OpenR1-Cleaned preserves a source field.
+  split: OpenR1-Cleaned releases train 48,394, validation 500, and test 500; OpenR1-VM releases one 44,509-row train split
+    whose rows group the 56 rollout pairs for each retained prompt.
+  decontamination: The authors report no training/test example with more than 50% 8-gram overlap and use 2025 AIME/HMMT tests
+    released after the underlying models/data; comprehensive upstream decontamination is unknown.
+  license: 'OpenR1-VM: Apache-2.0. OpenR1-Cleaned: CC-BY-NC-4.0. DeepSeek-VM-1.5B model weights: unknown. GitHub code: unknown
+    (no LICENSE detected).'
+  lineage: OpenR1-Math -> rule/manual-derived pre-filters -> OpenR1-Cleaned -> four-model roll-ins plus four random cut points
+    each -> fixed 1.5B roll-outs -> math-verify three-class labels -> remove all-failure prompt groups -> OpenR1-VM -> DeepSeek-VM-1.5B
+    -> block-wise beam/DVTS search and weighted majority vote.
+  known_failure_modes:
+  - A learned value can miss subtle but decisive errors; Appendix C.7 shows a critically wrong rejected beam still scoring
+    0.337.
+  - Value guidance becomes out of distribution for stronger generators, and the 14B VGS margin over majority voting is small.
+  - All-failure prompt groups and pre-filter rejects are removed without a released rejection manifest, biasing the dataset
+    toward tasks the 1.5B roll-out policy can sometimes solve.
+  - OpenR1-VM retains incorrect/incomplete traces inside surviving groups, but full discarded search branches and historical
+    search trees are not released.
+  - The repository advertises filtering code, but its current tree exposes training/search utilities rather than the end-to-end
+    data collection and pre-filter pipeline.
+  - OpenR1-VM exposes only a train split even though Appendix E names a 500-example value-model validation split; the matching
+    validation artifact is not identified.
+  - The model repository contains weights and config but no tokenizer files or embedded custom classifier implementation,
+    so use depends on the GitHub code and an upstream tokenizer.
+  - Mixed or missing licenses constrain reuse: the cleaned prompt corpus is non-commercial, while the model and code licenses
+      are undisclosed.
+  - The reported 0.024% classifier overhead is an analytical FLOP estimate and does not include every systems cost.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings/poster, OpenReview, arXiv v2, author repository, both VGS-AI datasets, model files/config,
+    schemas, splits, and license declarations were checked. Citation and artifacts are verified, but release completeness
+    remains partial.
+inclusion_reason: This work exposes an unusually concrete search-data pipeline linking 2.5M labeled long-CoT roll-in/roll-out
+  pairs, a released token-level value model, block-wise selection, weighted voting, and explicit inference budgets, making
+  it a core example of rollout/search/test-time trace data.
+related:
+- qwen2-5-math-prm-2025
+- constrained-mcts-long-cot-2025
+- strategic-scaling-test-time-compute-2025
+- a-star-thought-2025
+tags:
+- value-guided-search
+- openr1-vm
+- token-level-value-model
+- roll-in-roll-out
+- block-wise-beam-search
+- dvts
+- weighted-majority-vote
+- test-time-compute
+- math-verify
+- negative-traces
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: VGS releases 2.5M math roll-in/roll-out pairs with correct, incorrect, and incomplete outcome labels, trains
+  a 1.5B token-level value model, and uses it to guide 4,096-token beam-search blocks plus weighted voting.
+why_it_matters: It connects the full reasoning-data lifecycle—prompt filtering, failed and successful rollouts, token-level
+  value targets, selector-guided search, and explicit compute budgets—while making the missing rejection manifests, discarded
+  branches, and license gaps visible for audit.
+card: null
+needs:
+- needs_v2_card_materialization
+- needs_code_license
+- needs_model_license
+- needs_data_generation_protocol
+- needs_filtering_pipeline
+- needs_rejection_manifest
+- needs_search_tree_release
+- needs_split_clarity
+- needs_model_packaging
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title/arXiv/ID deduplication found no V2 duplicate. Core Card recommended because paper, data, value model,
+    code, budgets, results, and concrete audit gaps are all sufficiently evidenced; card remains null because this task may
+    not create a shared Card artifact.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HellaSwag 用约 70K 个 adversarially filtered 续写选择题测试 grounded commonsense。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要 commonsense 多选题基线、split 口径和 accuracy harness 审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Rowan Zellers 等（University of Washington, Allen Institute for Artificial Intelligence）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

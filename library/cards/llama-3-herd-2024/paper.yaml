@@ -1,0 +1,225 @@
+id: llama-3-herd-2024
+title: The Llama 3 Herd of Models
+year: 2024
+venue: arXiv preprint
+authors:
+- Llama Team
+source_role:
+- model_report
+- construction_recipe
+- process_supervision
+- verifier_reward
+- benchmark
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- pairwise_preference
+- scalar_reward
+- process_reward
+domains:
+- language_modeling
+- mathematical_reasoning
+- code_generation
+- tool_use
+- multilingual
+- long_context
+- instruction_following
+- safety_alignment
+training_use:
+- sft
+- distillation
+- preference_learning
+- reward_modeling
+- process_supervision
+- evaluation
+- audit
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://ai.meta.com/research/publications/the-llama-3-herd-of-models/
+  arxiv: https://arxiv.org/abs/2407.21783
+  code: https://github.com/meta-llama/llama-models
+  data: null
+  project: https://ai.meta.com/blog/meta-llama-3-1/
+  huggingface: https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct
+  doi: https://doi.org/10.48550/arXiv.2407.21783
+  venue: https://ai.meta.com/research/publications/the-llama-3-herd-of-models/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Post-training uses repeated human annotation, public instruction data, capability-specific sourcing, pretraining
+    records converted to QA, and synthetic code, reasoning, multilingual, long-context, tool, factuality, steerability, and
+    safety prompts. Tool data includes core-tool trajectories, The Stack functions, multi-agent API dialogs, files, and human
+    dialogs. Exact manifests, rights, counts, and memberships are unknown.
+  trace_author: Humans write prompts, compare two-model responses, edit preferred answers, and label tool messages. Llama
+    checkpoints and experts generate most SFT targets, including over 2.7M code examples, stepwise math and correction traces,
+    translations, long-context dialogs, tool trajectories, and safety examples; the model card reports over 25M synthetic
+    fine-tuning examples overall. Reward models, execution, and Llama judges rank/filter records.
+  answer_format: Multi-message chat records can contain assistant text, code, tool calls/outputs, reasoning, and final answers.
+    Preference records hold rejected, chosen, and optionally edited responses plus four-level strength. Feedback includes
+    scalar RM scores, Llama quality scores, binary code scores, outcome/step rewards, parser/linter/compiler/test results,
+    and safety labels.
+  process_fields:
+  - source_or_capability
+  - system_prompt
+  - conversation_context
+  - user_prompt
+  - candidate_model_checkpoint
+  - candidate_response
+  - optional_reasoning_trace
+  - optional_tool_call
+  - optional_tool_output
+  - optional_code_execution_result
+  - optional_ground_truth_answer
+  - optional_step_reward
+  - optional_outcome_reward
+  - optional_reward_model_score
+  - optional_preference_strength
+  - optional_chosen_response
+  - optional_edited_response
+  - optional_rejected_response
+  - optional_quality_difficulty_topic_scores
+  - optional_safety_label
+  - optional_filter_or_dedup_decision
+  environment_or_substrate: Code uses parsers, linters, compilation, unit tests, and containers; math can interleave Python
+    and MCTS guided by learned stepwise reward models. Tools include Brave Search, Python, Wolfram Alpha, file processing,
+    and arbitrary Python/JSON function definitions. Environments, tests, API snapshots, outputs, MCTS, reward checkpoints,
+    and sandbox policies are not released.
+  verifier_or_reward: A preference RM trained on edited > chosen > rejected selects the best of usually 10–30 samples. Code
+    uses parsing, linting, compilation, generated tests, execution, self-verification, and Llama judges. Math uses final-answer
+    filters, self-verification, outcome/stepwise RMs, MCTS, and Python. Safety uses human/LLM labels, Llama Guard 3, Prompt
+    Guard, and Code Shield. Checkpoints, prompts, thresholds, calibration, and error rates are mostly unavailable.
+  terminal_predicate: Retention may end at RM top selection, passing code checks, correct math answer/trace, successful tool
+    execution and answer, preferred/edited human response, or safety-policy label. DPO consumes chosen/rejected pairs. Exact
+    criteria, equivalence, search stops, timeouts, tool errors, and ties are unknown.
+recipe_metadata:
+  base_model: Dense decoder-only Llama 3.1 models at 8B, 70B, and 405B with GQA, 128K vocabulary, and up to 128K context.
+    The 405B model trains on 15.6T text tokens with about 3.8e25 FLOPs; 8B/70B are trained beyond compute-optimal duration.
+  teacher: The 405B model and capability experts improve smaller models and generate synthetic records. A code expert is continued-pretrained
+    on 1T tokens with over 85% code and extended to 16K. Llama checkpoints also generate, judge, rewrite, verify reasoning,
+    and label safety. Exact pairings, checkpoints, losses, temperatures, and budgets are incomplete.
+  generator: Six alignment rounds use humans, policy variants, latest/best chat checkpoints, the 405B flagship, a code expert,
+    multi-agent tool generators, guided mutation, and Rainbow Teaming. Record-level generator IDs, prompts, model pools, version
+    history, and candidate totals are unknown.
+  filtering_rule: Pretraining applies URL/document/line deduplication, PII/adult/unsafe filters, repetition/outlier rules,
+    Llama-2-derived quality/domain classifiers, language ID over 176 languages, and downsampling. Post-training uses RM/Llama
+    quality, difficulty scoring, semantic deduplication, answer/execution/self-verification/judge/safety/tool-format filters.
+    Thresholds, yields, rights checks, and rejected records are closed.
+  sampling_protocol: Final pretraining mix is about 50% general knowledge, 25% math/reasoning, 17% code, and 8% multilingual,
+    with dynamic sampling and annealing. Each preference prompt receives two responses from two models. Rejection sampling
+    draws usually 10–30 candidates and keeps the RM favorite. Final SFT mix is 52.66% general English, 14.89% code, 3.01%
+    multilingual, 8.14% exam-like, 21.19% reasoning/tools, and 0.11% long context.
+  rollout_count: Over 25M synthetic fine-tuning examples are reported. Code SFT has over 2.7M examples, including about 1M
+    execution-feedback and 1.2M backtranslation dialogs. Rejection sampling generates 10–30 candidates per prompt. Total SFT,
+    preferences, RM records, math/tool/safety traces, and queries are unknown.
+  temperature: unknown
+  inference_budget: Models support 128K context after six progressive stages over about 800B tokens. Rejection sampling uses
+    10–30 outputs; MCTS/tool budgets, response limits, temperatures, test timeouts, retries, and per-task compute are unknown.
+  optimizer_or_scaffold: 405B pretraining uses AdamW, peak LR 8e-5, 8,000 warmup steps, cosine decay to 8e-7 over 1.2M steps,
+    token batches growing 4M→8M→16M, progressive 8K→128K context, final 40M-token linear annealing, and checkpoint averaging.
+    Six post-training rounds repeat RM, rejection sampling, 8.5K–9K-step SFT at LR 1e-5, DPO at LR 1e-5 with beta 0.1, format-token
+    masking, 0.2 chosen NLL, and averaging. PPO was explored but not adopted.
+audit:
+  source_mixture: Meta discloses 15.6T tokens, December 2023 cutoff, broad public-online provenance, no Meta user data, and
+    50/25/17/8 composition, but not corpus names, URLs, snapshots, source counts, rights, opt-outs, or manifests. Post-training
+    proportions and some synthetic counts omit total human/preference composition.
+  split: Benchmark training sets are excluded from annealing and recent preferences feed DPO, but no pretraining validation,
+    SFT/RM/DPO, code-test, math-reward, tool-function, safety, annotator, or six-round membership manifests are released.
+  decontamination: An 8-gram analysis estimates high overlap for AGIEval 98%, BBH 95%, BoolQ 96%, HellaSwag 85%, QuaC 99%,
+    and Natural Questions 52%; HellaSwag and PiQA show material gains. HumanEval, MBPP, MMLU, and MMLU-Pro cannot be reliably
+    assessed, and false positives/negatives are acknowledged. Synthetic/preference/tool/safety records lack equivalent audits.
+  license: The manuscript has the arXiv distribution license. Weights/materials use the custom Llama 3.1 Community License
+    with attribution/naming, AUP, and a separate-license condition above 700M MAU; it is not an OSI license. Utilities and
+    guards are released, but corpus, annotations, preferences, traces, reward models, tests, outputs, and training stack lack
+    reusable releases.
+  lineage: Aggregate lineage runs from public-online records through filtering/mixing to 15.6T pretraining, 800B long-context
+    stages, 40M-token annealing, then six RM→best-of-10–30 rejection sampling→SFT→DPO→averaging rounds. Capability branches
+    add code/math/multilingual/tool/long-context/safety data, with Llama Guard 3 separate. Item-level source, generator, reward,
+    round, and checkpoint lineage is unavailable.
+  known_failure_modes:
+  - Aggregate public-online provenance does not establish source consent, copyright, licenses, opt-outs, balance, or item
+    lineage.
+  - Related Llama models generate, judge, filter, rewrite, and self-verify much SFT data, creating correlated errors.
+  - General and math reward models, Llama judges, prompts, calibration, thresholds, and checkpoints are closed.
+  - Best-of-10–30 rejection sampling omits candidates, temperatures, seeds, normalization, ties, and diversity.
+  - DPO—not PPO—trains the released model; broad RLHF labels must not imply online PPO.
+  - Model-generated code tests can be revised after failure, so passing them is not independent correctness.
+  - Math filters/MCTS/Python omit equivalence rules, step labels, settings, calibration, and error rates.
+  - Tool records depend on unreleased API snapshots, terms, outputs, sandboxes, and error handling.
+  - Benchmark contamination is high or unresolved for several major evaluations.
+  - Safety data/policies/benchmarks are closed; Llama Guard 3 reduces violations but can raise benign refusals.
+  - Released weights/code/guards do not include the 15.6T corpus, preference/SFT data, RMs, candidate rollouts, or training
+    stack.
+  - The current repository also covers later generations; Llama 4 claims must not be back-attributed to this 2024 recipe.
+  citation_status: verified
+  confidence: high
+  notes: Official Meta paper, arXiv v3, launch page, repositories, Llama 3.1 model card/license, 405B checkpoint, and Llama
+    Guard 3/PurpleLlama artifacts were inspected on 2026-07-24. Llama 4 Herd is treated as a related successor, not a duplicate.
+inclusion_reason: A foundational disclosure quantifying a 15.6T-token mixture and six-round RM/rejection-sampling/SFT/DPO
+  pipeline with execution- and process-filtered capability data, released weights and guards, but closed records and lineage.
+related:
+- llama-4-herd-2025
+tags:
+- meta
+- llama-3
+- llama-3-1
+- open-weights
+- pretraining-data
+- synthetic-data
+- human-preferences
+- reward-model
+- rejection-sampling
+- supervised-finetuning
+- dpo
+- code-execution
+- mathematical-reasoning
+- process-reward
+- tool-use
+- llama-guard-3
+- contamination-audit
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Llama 3.1 discloses a 15.6T-token 50/25/17/8 pretraining mix and six rounds of reward modeling, best-of-10–30
+  rejection sampling, SFT, and DPO, while releasing weights and guards but not corpora, preferences, reward models, candidates,
+  or item lineage.
+why_it_matters: It clearly connects aggregate corpus composition to post-training data objects and verifiers while exposing
+  the gap between open weights and closed records, reward contracts, source rights, contamination controls, and generator-to-checkpoint
+  lineage.
+card: null
+needs:
+- 'needs_data: source manifests/rights, pretraining records, SFT counts, preference comparisons/edits, rejected candidates,
+  capability traces, round membership, and item lineage'
+- 'needs_verifier: RM checkpoints, judge prompts, human rubrics/agreement, equivalence rules, code tests/sandbox, MCTS, tool
+  validators, safety policies/labels, calibration, and overoptimization audits'
+- 'needs_metadata: source snapshots, mixture dynamics, generator checkpoints, temperatures/seeds, per-capability K, training
+  steps by round, averaging weights, queries, compute, and selection'
+- 'needs_audit: split manifests, synthetic/preference leakage, contamination, generator-judge correlation, rejected failures,
+  memorization, multilingual/rights bias, version drift, and hashes'
+- 'needs_license: corpus/source permissions, public instruction data, annotations, synthetic outputs, The Stack functions,
+  tool outputs, tests, reward data/checkpoints, safety benchmarks, and component terms'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: No exact target-library duplicate was found. Official paper/arXiv, launch page, model card/license, repositories,
+    checkpoint, and guard releases were verified. Llama 4 Herd is related successor lineage.

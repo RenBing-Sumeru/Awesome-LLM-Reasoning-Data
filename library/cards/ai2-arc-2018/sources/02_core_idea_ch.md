@@ -1,0 +1,1 @@
+核心贡献是 AI2 Reasoning Challenge：7,787 道小学科学选择题，其中 ARC-Easy 5,197 题、ARC-Challenge 2,590 题。机制是收集真实科学考试题，并把同时被检索式 solver 和词共现 solver 答错的题定义为 Challenge 集。相对普通考试 QA 集，ARC 把“被浅层基线筛过”本身纳入评测面。方向标签是静态 benchmark 加答案键 verifier。复用时必须保留 split、train/dev/test 文件、官方 scorer，并记住 Challenge 标签代表历史基线失败，不等于对内在难度的形式证明。

@@ -1,0 +1,116 @@
+id: android-in-the-zoo-coat-2024
+title: 'Android in the Zoo: Chain-of-Action-Thought for GUI Agents'
+year: 2024
+venue: Findings of EMNLP 2024 / arXiv
+authors:
+- Jiwen Zhang
+- Jihao Wu
+- Yihua Teng
+- Minghui Liao
+- Nuo Xu
+- Xiao Xiao
+- Zhongyu Wei
+- Duyu Tang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- chain-of-action-thought
+- android
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2403.02713
+  arxiv: https://arxiv.org/abs/2403.02713
+  doi: https://doi.org/10.48550/arXiv.2403.02713
+  code: https://github.com/IMNearth/CoAT
+  data: https://github.com/IMNearth/CoAT
+  project: https://github.com/IMNearth/CoAT
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official Android in the Zoo paper and CoAT repository
+  trace_author: Fudan/Huawei authors and CoAT annotation pipeline
+  answer_format: Android screenshots, actions, instructions, CoAT reasoning annotations, examples, and data downloads
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: Android screen-action pairs with chain-of-action-thought annotations
+  verifier_or_reward: CoAT annotation schema and GUI action prediction evaluation
+  terminal_predicate: CoAT annotation schema and GUI action prediction evaluation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: Chain-of-action-thought annotations over Android actions
+  generator: CoAT Android GUI annotation pipeline
+  filtering_rule: pin Google Drive/Baidu links, split/hash, license, and annotation schema
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2403.02713; https://github.com/IMNearth/CoAT
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2403.02713'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: data link longevity, license, split hashes, and CoAT schema sufficiency for trajectory reuse need audit.
+inclusion_reason: it adds process annotations to Android GUI action traces
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- chain-of-action-thought
+- android
+one_line: Android in the Zoo adds chain-of-action-thought annotations to Android GUI actions.
+why_it_matters: it adds process annotations to Android GUI action traces
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Android in the Zoo adds chain-of-action-thought annotations to Android GUI actions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv and CoAT repository verify authors, Fudan/Huawei institutions, Findings of EMNLP 2024 status, and data/code
+    entry.
+category_ids:
+- data_construction_open_release_recipes
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 71
+  primary_category_id: data_construction_open_release_recipes

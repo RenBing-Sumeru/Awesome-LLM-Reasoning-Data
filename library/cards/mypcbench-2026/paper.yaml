@@ -1,0 +1,111 @@
+id: mypcbench-2026
+title: 'MyPCBench: A Benchmark for Personally Intelligent Computer-Use Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Lawrence Keunho Jang
+- Andrew Keunwoo Jang
+- Jing Yu Koh
+- Ruslan Salakhutdinov
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- os-agents
+- personal-computer-use
+- linux-desktop
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.16748
+  arxiv: https://arxiv.org/abs/2606.16748
+  doi: https://doi.org/10.48550/arXiv.2606.16748
+  code: https://github.com/ljang0/MyPCBench
+  data: https://huggingface.co/datasets/ljang0/MyPCBench
+  project: https://mypcbench.com/
+  huggingface: https://huggingface.co/datasets/ljang0/MyPCBench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official MyPCBench paper, project, repository, and HF dataset
+  trace_author: CMU authors and computer-use agent runs
+  answer_format: personal computer-use tasks, app/web states, Docker/QEMU environment, actions, rubrics, and dataset records
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: personal digital-life Linux desktop with simulated logged-in web apps
+  verifier_or_reward: MyPCBench rubrics, judge/scorer, and environment checks
+  terminal_predicate: MyPCBench rubrics, judge/scorer, and environment checks
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: MyPCBench task/rubric authors
+  generator: MyPCBench QEMU/Docker desktop benchmark construction
+  filtering_rule: pin Docker tag, HF revision, app state seeds, and judge/scorer model
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2606.16748; https://mypcbench.com/; https://github.com/ljang0/MyPCBench; https://huggingface.co/datasets/ljang0/MyPCBench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2606.16748'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: Docker image tag, HF revision, app state seeds, rubric judge/model version, and privacy assumptions need audit.
+inclusion_reason: it targets personally intelligent computer-use agents with contextual desktop tasks
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- os-agents
+- personal-computer-use
+- linux-desktop
+one_line: MyPCBench benchmarks personally intelligent agents in a simulated personal desktop environment.
+why_it_matters: it targets personally intelligent computer-use agents with contextual desktop tasks
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MyPCBench benchmarks personally intelligent agents in a simulated personal desktop environment.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, GitHub, and HF dataset verify authors, CMU institution, and artifacts.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 79
+  primary_category_id: environment_agent_trajectory_data

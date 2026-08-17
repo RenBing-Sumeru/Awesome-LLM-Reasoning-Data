@@ -1,0 +1,106 @@
+id: openassistant-conversations-democratizing-large-language-model-alignment-2023
+title: OpenAssistant Conversations - Democratizing Large Language Model Alignment
+year: 2023
+venue: arXiv
+authors:
+- Andreas Köpf
+- Yannic Kilcher
+- Dimitri von Rütte
+- Sotiris Anagnostidis
+- Zhi-Rui Tam
+- Keith Stevens
+- Abdullah Barhoum
+- Nguyen Minh Duc
+- Oliver Stanley
+- Richárd Nagyfi
+- Shahul ES
+- Sameer Suri
+- David Glushkov
+- Arnav Dantuluri
+- Andrew Maguire
+- Christoph Schuhmann
+- Huu Nguyen
+- Alexander Mattick
+source_role:
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- llm-post-training
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2304.07327
+  arxiv: https://arxiv.org/abs/2304.07327
+  code: https://github.com/LAION-AI/Open-Assistant
+  data: https://huggingface.co/datasets/OpenAssistant/oasst1
+  project: https://open-assistant.io/
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper.
+  trace_author: See official paper.
+  answer_format: Candidate output with feedback record.
+  process_fields:
+  - context
+  - candidate
+  - feedback
+  - provenance
+  environment_or_substrate: See official paper.
+  verifier_or_reward: Paper-specific label, judge, rubric, or reward contract.
+  terminal_predicate: Paper-specific evaluation acceptance or score.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Primary paper and verified official release reviewed.
+  split: unknown; verify from primary source
+  decontamination: unknown; verify overlap and leakage controls
+  license: unknown; verify before reuse
+  lineage: 'Primary source: https://arxiv.org/abs/2304.07327'
+  known_failure_modes:
+  - Judge, rubric, or reward assumptions may not transfer.
+  - Artifact and license availability require verification.
+  citation_status: verified
+  confidence: high
+  notes: Content, named authors, and official release links reviewed from the primary paper/release.
+inclusion_reason: Candidate paper on open conversational alignment data with an official arXiv primary link.
+related: []
+tags:
+- candidate-batch
+- post-training
+- reward-or-judgment
+one_line_summary: OpenAssistant Conversations - Democratizing Large Language Model Alignment addresses open conversational
+  alignment data.
+why_it_matters: It exposes a feedback, preference, reward, rubric, safety, or post-training data surface that must be audited
+  before reuse.
+status: verified
+needs: []
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper-and-official-release review
+  confidence: high
+  notes: Primary arXiv link supplied by curator; substantive review pending.
+category_ids:
+- preference_reward_feedback_data

@@ -1,0 +1,5 @@
+Medical reasoning data is expensive to distill and underrepresents rare diseases, so larger generic trace sets do not reliably improve the long tail.
+
+MedSSR controls question synthesis with rare-disease knowledge, lets the policy produce pseudo-labels, and combines self-supervised with human-anchored reinforcement learning. The decision boundary is whether a serialized training record survives medical answer rewards, pseudo-label confidence, human-annotated real data, and two-stage RL; the central artifact is data consumed by medical reasoning SFT and semi-supervised RL, not a model-only release.
+
+L4 facts: primary source arXiv:2604.11547; Findings of ACL 2026; data object MedSSR-Synthetic-43K with 43K synthetic medical reasoning records; evaluation surface Across Qwen3-8B and Llama-3.1-8B-Instruct, the method outperforms compared approaches on ten medical benchmarks and reports up to a 5.93% gain on rare-disease tasks.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

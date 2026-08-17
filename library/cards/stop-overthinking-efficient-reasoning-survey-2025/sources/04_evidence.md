@@ -1,0 +1,1 @@
+The official abstract identifies model-based, output-based, and prompt-based efficient reasoning, and also covers efficient data, small models, and benchmarks. The survey is therefore a map for choosing a primary study. It is not a single leaderboard: task mix, hardware, and budget definitions remain important.

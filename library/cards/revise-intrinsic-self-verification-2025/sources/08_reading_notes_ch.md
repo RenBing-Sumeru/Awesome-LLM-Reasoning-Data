@@ -1,0 +1,6 @@
+- Stage 1 构造 `D_verify` 并训练 `eos` 与 `refine`，Stage 2 构造 `D_correct` 并训练 `refine` 后 continuation；不要合并两类 pair schema。
+- 两阶段都结合 chosen-sequence SFT 与 DPO，属于离线偏好学习，不是在线 RL。
+- 结果正确性监督 path 级控制决定，不验证每个推理步骤，也不应改标为过程监督。
+- confidence-aware voting 在推理时使用学习到的 `eos` 概率；它是需要校准的 selector，不是数据质量证据。
+- MBPP 需单独阅读，因为其谱系增加了外部模型推理生成与单元测试过滤。
+- 代码已公开；转换 pair、拒绝路径、生成日志、checkpoint、精确来源版本和转换数据许可仍为 unknown。

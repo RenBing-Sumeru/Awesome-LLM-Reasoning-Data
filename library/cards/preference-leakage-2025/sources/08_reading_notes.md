@@ -1,0 +1,5 @@
+- **Position:** it audits lineage-based preference contamination, not prompt overlap.
+- **Lever:** compare same-model, inheritance, and family generator--judge relations with a leakage score.
+- **Artifact:** official repository releases the study code and data.
+- **Evidence:** same-model relatedness averages 23.6% leakage; even different-series same-family relation averages 2.8%.
+- **Reuse decision:** require a provenance table and unrelated-judge control before claiming a synthetic-data gain.

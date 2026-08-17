@@ -1,0 +1,1 @@
+引用：Seungone Kim 等，"The BiGGen Bench: A Principled Benchmark for Fine-grained Evaluation of Language Models with Language Models," arXiv:2406.05761, 2024；NAACL 2025 Main Conference。论文：https://arxiv.org/abs/2406.05761。官方 artifact：https://github.com/prometheus-eval/prometheus-eval/tree/main/BiGGen-Bench 与 https://huggingface.co/datasets/prometheus-eval/BiGGen-Bench。

@@ -1,0 +1,3 @@
+Kimi K2.5 combines three normally separate disclosure layers: multimodal post-training, heterogeneous feedback, and parallel-agent coordination. Zero-vision SFT makes a concrete claim that text-only supervision can activate visual tool behavior; joint RL connects text and visual abilities; PARL makes coordination itself part of the optimized policy.
+
+The report is also unusually specific about reward interfaces. It distinguishes verifiable outcomes, token efficiency, general-purpose GRMs, visual task metrics, and auxiliary PARL rewards that discourage useless parallelism. For this atlas, that level of interface disclosure is valuable even though the corresponding datasets, rubrics, calibration, and runtime artifacts remain unavailable.

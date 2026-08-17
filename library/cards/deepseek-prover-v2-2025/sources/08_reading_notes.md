@@ -1,0 +1,3 @@
+- Read cold-start construction and RL together: binary Lean reward follows a selective pipeline in which only particular solved subgoal decompositions become training examples.
+- Separate proof verification from theorem provenance and semantics. Lean checks the supplied formal statement under a specific environment; it does not audit an upstream autoformalization or source license.
+- Treat public models, ProverBench, and miniF2F solution files as release facts, not substitutes for prompts, rollouts, reward logs, environment pins, split manifests, or decontamination evidence.

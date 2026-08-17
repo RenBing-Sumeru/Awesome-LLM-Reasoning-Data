@@ -1,0 +1,17 @@
+{
+  "title": "ANCHOR: Branch-Point Data Generation for GUI Agents",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.07153",
+    "data": "https://huggingface.co/datasets/yale-nlp/Anchor"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T10:56:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用已有成功轨迹的关键中间状态扩展新任务",
+    "updated_at": "2026-07-16T10:56:13Z"
+  }
+}

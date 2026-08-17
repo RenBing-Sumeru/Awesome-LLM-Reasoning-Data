@@ -1,0 +1,11 @@
+- 真实 SWE 台账只到任务族层面。代码仓库身份与 revision、prompt、环境镜像、tool schema、任务数、mixture weight、来源权利、action trajectory、non-user-visible reasoning、成功与失败尝试、filter 和保留规则均不可用。
+- “PR preference”和类人编码风格点名目标行为，却不能确立 pairwise record、annotator instruction、preference model、scalar reward、优化阶段、权重或校准。主要 coding-agent feedback contract 仍不完整。
+- 迭代运行测试直到通过是观察到且期望的行为，不是 executable test 构成训练 reward 的证据。测试还可能漏掉语义回归、安全缺陷和 specification violation；模型也可能过拟合 harness 或进行只满足可见检查的窄修改。这些是 curator inference 的 reward-hacking 风险。
+- Code-review evaluation 存在判断风险。经验工程师评价 correctness 和 importance，但代码仓库与 commit 样本、rubric、每条 comment 的 label 数、inter-rater agreement、aggregation、假阳性/假阴性率及原始判断均未披露。近期公开 commit 还带来未解决的训练/评测 overlap。
+- 恶意软件流水线继承自 codex-1，而不是新披露的 GPT-5-Codex 构造。Generator 版本、prompt、数量、标签、filter、golden-set 独立性和失败样例均为 unknown。表 3 结果不能把更广泛编码表现归因于该安全数据。
+- 新 prompt-injection 训练数据与编码专用评测缺少 membership 边界，因此无法区分对未见攻击的 robustness 与 overlap。0.98 评测分数也没有附带攻击数量、uncertainty、严重性混合或失败样例。
+- SWE-bench 覆盖全部 500 题只修复了基础设施缺口，不是 benchmark decontamination。Refactor repository 与近期 code-review commit 缺少 cutoff date、hash、duplicate check、solution-overlap 分析或全局 train/development/test manifest。
+- 员工流量 token decile、七小时测试、mobile-web preference、安全 benchmark、CTF 和 Cyber Range 都是评测或 observational surface。它们混合 model、scaffold、task mix、budget、environment 与 judge，不能隔离训练数据效果。
+- Sandbox、network policy、approval、screenshot、citation、terminal log 和 test report 是部署控制或证据面，不能用于推断训练 container、reward、任务正确性，或模型退出生产后的当前产品行为。
+- 后续 Codex 家族的 conflicting-edit user model、edit-preservation reward、原生 compaction training、内部 PR hidden test 和扩展 Preparedness environment 均不在本报告中。回填这些内容会制造错误 lineage。
+- 没有任务语料、preference/review record、安全数据、模型权重、reward 实现、evaluator 代码、replay 环境、source-license ledger、decontamination report 或 item-level checkpoint lineage 被发布。因此，除阅读与审计参考外的复用均被阻断。

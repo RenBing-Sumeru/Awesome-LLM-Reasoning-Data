@@ -1,0 +1,2 @@
+Each iteration samples 1,024 Numina-Math prompts and generates four responses per prompt, up to 4,096 tokens each. Math-Verify assigns -1 or +1 from boxed-answer agreement. RAFT retains positive responses for likelihood training; RAFT++ adds importance sampling and clipping. Reinforce-Rej removes uniform-reward groups before a minimalist policy-gradient update. Experiments compare these choices with Reinforce, GRPO, PPO, and iterative DPO on Qwen2.5-Math-7B-base and Llama-3.2-3B-Instruct.
+

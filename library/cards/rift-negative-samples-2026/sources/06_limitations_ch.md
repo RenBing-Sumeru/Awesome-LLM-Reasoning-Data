@@ -1,0 +1,5 @@
+- 审计风险：The quality of the training signal depends on the discriminative power of the reward source; the paper identifies reward noise as a remaining concern.
+- 审计风险：Evidence is primarily from objective mathematical reasoning; transfer to subjective or open-ended generation is explicitly unresolved.
+- 审计风险：Answer-level rewards cannot identify partially correct steps in a long failed trajectory.
+- 审计风险：No official reusable code, mixed-reward buffer, checkpoint, row-level provenance manifest, or release license was identified in the official primary source reviewed.
+- 审计风险：Greater sampling is not monotonically beneficial: the paper reports diminished performance at 16 sampled responses per MATH problem relative to 8 in its ablation.

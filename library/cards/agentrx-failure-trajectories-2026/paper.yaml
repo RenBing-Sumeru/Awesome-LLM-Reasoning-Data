@@ -1,0 +1,115 @@
+id: agentrx-failure-trajectories-2026
+title: 'AgentRx: Diagnosing AI Agent Failures from Execution Trajectories'
+year: 2026
+venue: arXiv preprint; ICML 2026 template/preprint, no acceptance verified
+authors:
+- Shraddha Barke
+- Arnav Goyal
+- Alind Khare
+- Avaljot Singh
+- Suman Nath
+- Chetan Bansal
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- failure-diagnosis
+- execution-trajectories
+- agent-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.02475
+  arxiv: https://arxiv.org/abs/2602.02475
+  doi: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: AgentRx arXiv paper
+  trace_author: AgentRx authors and trajectory diagnosis process
+  answer_format: failed trajectories, diagnostic labels, failure categories, source domains, and analysis outputs
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: failed AI-agent execution trajectories for diagnosis
+  verifier_or_reward: failure-diagnosis criteria and trajectory-level labels described by the paper
+  terminal_predicate: failure-diagnosis criteria and trajectory-level labels described by the paper
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: failed trajectory annotations and diagnostic taxonomy
+  generator: AgentRx failure diagnosis pipeline
+  filtering_rule: find official dataset/code release before marking artifact complete
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2602.02475
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2602.02475'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: official dataset/code release not found; confirm license, privacy, and source-domain splits for 115 failed trajectories
+inclusion_reason: it focuses on failure trajectories as diagnosis data for agent systems
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- failure-diagnosis
+- execution-trajectories
+- agent-evaluation
+one_line: AgentRx diagnoses AI-agent failures from execution trajectories.
+why_it_matters: it focuses on failure trajectories as diagnosis data for agent systems
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AgentRx diagnoses AI-agent failures from execution trajectories.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Agent verification confirms title, authors, Microsoft/UIUC affiliations, and arXiv status; no official artifact URL
+    was found.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 122
+  primary_category_id: environment_agent_trajectory_data

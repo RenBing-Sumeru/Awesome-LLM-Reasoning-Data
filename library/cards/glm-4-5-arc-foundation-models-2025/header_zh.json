@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GLM-4.5 披露了约 23T token 的 ARC 训练与后训练框架，包含专家自蒸馏、验证器/奖励/裁判反馈和 agent 环境；但官方发布的是权重与推理材料，而非原始语料、RM/Judge 工件、可回放环境或审计记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿 ARC 基座模型技术报告与数据披露账本",
+  "best_for_ch": "需要审计前沿推理、代码和 agent 模型的数据来源、反馈契约、轨迹筛选、环境依赖与发布边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "GLM-4.5 Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

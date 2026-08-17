@@ -1,0 +1,5 @@
+Vision-language models have abundant perception data but much less broad, worked supervision for multi-step visual reasoning. VisualWebInstruct asks whether image-guided web search can find naturally occurring educational problems at a scale and diversity that narrow synthetic-image or school-level datasets do not provide.
+
+The paper builds training data rather than a new reward or interactive environment: one record is a complete question, optional relevant image references, and an extracted or synthesized worked answer for SFT. It belongs in instruction, demonstration, and rationale data because the serialized answer is the training target; benchmark scores are only the evaluation surface.
+
+**L4 facts:** primary sources arXiv 2503.10582 and the official EMNLP 2025 Main record, DOI 10.18653/v1/2025.emnlp-main.72; open dataset `TIGER-Lab/VisualWebInstruct` with 906,160 QA pairs, including 347,313 image-associated records over 163,743 unique images; full PDF, official project, code, dataset, construction stages, SFT consumer, and audit gaps verified, while the dataset-specific license remains unconfirmed.

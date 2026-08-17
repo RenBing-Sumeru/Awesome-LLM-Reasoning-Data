@@ -1,0 +1,3 @@
+Closest work provides smaller or task-specific data. The novelty is the 300K unified supervision and systematic analysis of data-construction choices rather than a new loss.
+
+The substantive change is therefore not a generic SFT, DPO, BCE, or RL objective, but the construction of multi-source image problems, multi-model trajectories, first-error labels, and positive/negative step ratios as a learnable and auditable data object. By storing feedback evidence that would otherwise remain hidden in scripts or environment execution, the work allows later studies to replace labelers, filters, or negative-example sources independently.

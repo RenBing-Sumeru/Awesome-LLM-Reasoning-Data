@@ -1,0 +1,13 @@
+- Easy与Hard不是同一任务集上的可互换难度标签。Easy移除8项任务,只公开27个`data_source`值;Hard公开全部35项。数据统计、verifier覆盖与模型结论都必须注明配置。
+- 公开对象是提示加verifier状态,不含每个提示16个在线policy回答、接受/拒绝集合、格式分数、正确性分数、advantage或训练步骤连接,因此无法精确重放论文的RL经验数据。
+- `reward_model.answer`、`reward_model.solution`与`reward_model.style`是公开schema字段,但可能为空。官方指导使用`extra_info.game_data_str`;不同任务的答案可能位于不同嵌套位置,通用loader可能在无提示下读取错误字段。
+- 论文的格式描述比仓库奖励参考宽松。代码要求精确起止位置,且每个标签只能出现一次。因此,格式差异可能在逻辑正确性检查前就把奖励置零。
+- 程序化不等于不会出错。每项任务都有自己的答案抽取与验证逻辑,但没有公开逐任务误差率、对抗测试集、歧义标签或人工裁决集来校准假阳性与假阴性。
+- 作者报告生成样本与benchmark测试集之间没有完全相同记录,但近重复、语义、模板和采用资源的重叠均为unknown。没有公开的匹配/移除ledger覆盖KOR-Bench、BBH、BBEH、ARC-AGI、Zebra Puzzle或数学/代码评估。
+- 难度校准只被部分披露。论文具名DeepSeek R1与OpenAI-o3-mini,但精确版本/endpoint、校准提示、seed与解码设置均为unknown;下界chat模型未具名。
+- 当前GitHub仓库没有tagged release。Hugging Face历史记录了重复与Boolean Expressions修复,GitHub issue 6还报告Cipher题目生成器缺失。复用未固定hash的`main`可能改变行内容或可执行行为。
+- 固定的Hard发布存在已观察到的文本完整性缺陷:Dataset Server前100条记录均来自Campsite,其中48条在提示和`game_data_str`中都出现中文乱码。各任务/配置的受影响比例,以及该问题是否改变parser或reward行为,均为unknown。
+- 仓库和数据集metadata标为MIT,OpenReview将论文标为CC BY 4.0,但采用任务与benchmark启发任务的逐记录上游来源身份、归属和许可证兼容仍不完整。
+- 7B与32B研究采用不同数据配置、回答长度、batch与模型容量;混合领域研究还改变任务mixture。Benchmark差异不能只归因于数据质量。
+- 论文提供答案级二元reward,不提供过程标签。通过verifier不能证明中间推理忠实、简洁、安全或适合教学。
+- 采样temperature、完整软件/依赖版本、基础设施细节、随机seed和精确rollout语料均为unknown,因此复现仍然不完整。

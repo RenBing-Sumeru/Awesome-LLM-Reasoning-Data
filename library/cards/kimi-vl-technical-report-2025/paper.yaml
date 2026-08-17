@@ -1,0 +1,155 @@
+id: kimi-vl-technical-report-2025
+title: Kimi-VL Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Kimi Team
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- multimodal_reasoning
+- computer_vision
+- agent
+- mathematics
+training_use:
+- sft
+- distillation
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2504.07491
+  arxiv: https://arxiv.org/abs/2504.07491
+  code: https://github.com/MoonshotAI/Kimi-VL
+  data: null
+  project: https://github.com/MoonshotAI/Kimi-VL
+  huggingface: https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking-2506
+  doi: https://doi.org/10.48550/arXiv.2504.07491
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.07491
+data_object:
+  prompt_source: The report describes public and in-house multimodal sources in six categories—caption, interleaving, OCR,
+    knowledge, video, and agent—but does not release source manifests, counts, or proportions.
+  trace_author: Non-reasoning SFT uses human-annotated seeds, seed-model candidate responses, and annotator ranking/refinement.
+    Long-CoT traces are sampled from Kimi k1.5 with curated prompts. Agent demonstrations include human computer-use trajectories
+    with synthesized CoT.
+  answer_format: Multimodal instruction-response pairs, long-CoT reasoning traces, screenshot-action dense grounding records,
+    and continuous agent trajectories; the exact released schema is unavailable.
+  process_fields:
+  - prompt
+  - multimodal_input
+  - response
+  - candidate_response
+  - annotator_ranking
+  - ground_truth
+  - reasoning_trace
+  - reward_verdict
+  - screenshot
+  - action
+  - trajectory
+  environment_or_substrate: An internal platform manages virtual-machine environments in bulk, with Desktop, Mobile, and Web
+    action spaces. Environment code, task instances, action schema, and execution logs are not released.
+  verifier_or_reward: Reasoning SFT data are filtered by an off-the-shelf reward model and rule-based rewards. RL uses a reward
+    model that assigns binary correctness relative to ground truth plus a length-based penalty. Reward-model identity, rules,
+    thresholds, and calibration are unknown.
+  terminal_predicate: Wrong CoT responses are filtered by model evaluation and rule-based rewards; RL centers on binary answer
+    correctness relative to ground truth. Retention thresholds, exceptions, and failure logs are unknown.
+recipe_metadata:
+  base_model: Moonlight intermediate pre-training checkpoint reported to have processed 5.2T pure-text tokens; Kimi-VL combines
+    MoonViT, an MLP projector, and an MoE language decoder.
+  teacher: Kimi k1.5 generates multiple long-CoT trajectories. Its exact checkpoint, prompting, and decoding configuration
+    are unknown.
+  generator: Human seed data train a seed model for candidate-response generation; Kimi k1.5 generates long CoT under curated
+    reasoning prompts; the report also describes internal synthesis pipelines.
+  filtering_rule: The report states filtering, synthesis, and deduplication; SFT uses annotator ranking/refinement and rejection
+    sampling, while long CoT uses reward-model and rule-based filtering. Algorithms, thresholds, and retention yields are
+    unknown.
+  sampling_protocol: Multiple Kimi k1.5 reasoning trajectories are sampled for each multi-step QA item. RL additionally uses
+    curriculum and prioritized sampling; rollout count and detailed schedule are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Four pre-training stages are reported. Joint SFT trains one epoch at 32K and one at 128K sequence
+    length; long-CoT warmup is followed by online policy mirror descent RL. Full hyperparameters, iterations, compute, and
+    training code are not released.
+audit:
+  source_mixture: Public and in-house caption, interleaving, OCR, knowledge, video, and agent data, plus Moonlight text data,
+    are described at category level. Exact sources, ratios, counts, jurisdictions, and rights are unknown.
+  split: unknown
+  decontamination: The paper states filtering and deduplication but does not disclose algorithms, thresholds, evaluation-set
+    matching scope, or audit results.
+  license: The official GitHub repository and official Hugging Face model pages are marked MIT. Training-data and mixed-source
+    licenses are unknown.
+  lineage: High-level lineage is disclosed from mixed sources through internal filtering/synthesis/deduplication, SFT or Kimi
+    k1.5 long-CoT generation, reward/rule filtering, and SFT/RL. Source-level manifests, transformation records, and rejected
+    samples are not released.
+  known_failure_modes:
+  - Internal and web-scale data lack source and rights disclosure, preventing license, provenance, privacy, and attribution
+    audit.
+  - Reward-model identity, rules, thresholds, calibration, and rejection rates are unavailable, so long-CoT filtering quality
+    cannot be independently assessed.
+  - No disclosed decontamination protocol establishes training-to-evaluation leakage boundaries.
+  - Agent environments, tasks, trajectories, and execution logs are unavailable, preventing replay or independent agent-training
+    reproduction.
+  - Released weights and inference/deployment material do not substitute for released training data, RL artifacts, or a reproducible
+    training stack.
+  citation_status: verified
+  confidence: medium
+  notes: Only arXiv, MoonshotAI's official GitHub repository, and MoonshotAI's official Hugging Face model pages were used.
+    This is a Track 12 partial-disclosure record; it is not classified under Track 8.
+inclusion_reason: A high-impact frontier multimodal report that discloses the outline of data, feedback, long-CoT, RL, and
+  agent-trajectory construction while withholding the artifacts required for independent reuse and audit.
+related: []
+tags:
+- kimi-vl
+- frontier-report
+- data-disclosure-ledger
+- multimodal
+- long-cot
+- reinforcement-learning
+- reward-model
+- agent-trajectory
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Kimi-VL reports a mixed multimodal pipeline from human and model-generated SFT to Kimi k1.5 long-CoT filtering
+  and ground-truth-centered RL, while releasing weights and inference material but not the training data, reward artifacts,
+  agent environment, or audit records.
+why_it_matters: It separates a detailed frontier-model narrative from the missing source manifests, validator specifications,
+  licenses, splits, decontamination evidence, and replayable environments that Track 12 readers need to assess reuse and auditability.
+card: null
+needs:
+- 'needs_data: source-level data manifests, counts, versions, proportions, licenses, and data cards'
+- 'needs_metadata: annotation protocol, seed/teacher checkpoints, prompts, rollouts, decoding settings, and retention yields'
+- 'needs_verifier: reward-model identity, rules, thresholds, calibration, error analysis, and RL reward implementation'
+- 'needs_audit: splits, decontamination method, benchmark-overlap audit, source-rights audit, and rejected-sample statistics'
+- 'needs_environment: agent VM images, tasks, action schema, trajectories, execution logs, and replay scripts'
+- 'needs_code: data construction, training, RL, and evaluation configurations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official arXiv, DOI, GitHub repository, and official Hugging Face model pages were verified. Training data, feedback
+    artifacts, agent environments, and reproducibility material remain undisclosed.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Mobile-Bench 用 API/UI 任务和 checkpoint 指标评测 LLM 移动智能体。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "ACL 2024 Long Papers 的 mobile-agent benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shihan Deng 等（XiaoMi AI Lab）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:09:47Z"
+}

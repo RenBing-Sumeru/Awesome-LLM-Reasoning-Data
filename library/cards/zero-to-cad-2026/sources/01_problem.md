@@ -1,0 +1,5 @@
+Real CAD datasets expose final geometry but rarely the editable construction history needed to train interpretable program-generating models.
+
+Zero-to-CAD uses tool-using agents to synthesize, execute, repair, and validate nearly one million CadQuery construction programs without real trajectories. The decision boundary is whether a serialized training record survives isolated code execution, topology checks, geometric validation, and export validation; the central artifact is data consumed by CAD program generation SFT and agent training, not a model-only release.
+
+L4 facts: primary source arXiv:2604.24479; arXiv preprint; data object Zero-to-CAD 1M with 999,633 executable CAD construction sequences; evaluation surface All 999,633 released sequences pass code-execution, geometric, and export validation; the paper evaluates generation validity and diversity rather than treating rendering alone as success.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

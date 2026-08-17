@@ -1,0 +1,3 @@
+For `frontier_reports_data_disclosure_ledger`, this Card helps separate four commonly conflated layers: hidden training records, named post-training stages, deployed reasoning/tool interfaces, and evaluation evidence. It is especially useful when comparing models that advertise test-time reasoning but do not expose their reasoning traces or post-training data.
+
+An audit derived from this Card should request source and rights manifests, SFT/preference schemas, reward and calibration details, rollout and thinking-budget accounting, filter behavior, evaluation splits, decontamination, and versioned release logs. The card can guide disclosure comparison and risk review; it cannot reproduce training or validate data quality.

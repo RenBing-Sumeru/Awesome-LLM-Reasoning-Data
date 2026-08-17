@@ -1,0 +1,6 @@
+- 先合并阅读论文 §§4.1–4.3 与 Appendix C：10.5K 条 trace / 94.3K 个 step 是总采集规模，而 SFT 使用 726 条 trace / 6,208 个 XML step 与 6,053 个 SoM step。
+- Self-exploration operation data 没有进入 SFT；只有由其训练出的 completion reward model 被带入下一标注阶段。
+- 解读 SR 前应检查 `evaluation/task.py`、task implementation 与 `generate_result.py`：operation task 使用 UI/device predicate，query task 使用 GPT-4o 或 GLM-4 judgment，Finish 不等于 success。
+- fresh AVD/container reset 和 Pixel 7 Pro / API 33 config 是 replay ingredient，不是 immutable reproduction；image、APK/app、emulator 与 base-state hash 仍缺失。
+- training reuse 前应解决论文 5 个 epoch 与仓库指南 3 个 epoch 的冲突，并取得 split、overlap/decontamination、failure ledger、archive hash 与 data right。
+- AndroidWorld、AndroidControl 与 V-Droid 只能作为独立 comparison 阅读；它们都不能补充 AndroidLab 缺失的 lineage 或 release fact。

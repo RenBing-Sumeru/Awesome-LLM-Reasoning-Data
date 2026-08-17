@@ -1,0 +1,1 @@
+Earlier visual reward benchmarks typically test pairwise preference or final-response quality. VLRMBench adds step correctness and error localization to one framework and uses eight tasks to test whether model abilities remain consistent. Its novelty is task coverage and a unified protocol, not a new reward model or data-generation algorithm.

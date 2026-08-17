@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Google Research"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T14:06:28Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2311.07911",
+    "https://arxiv.org/abs/2311.07911",
+    "https://github.com/google-research/google-research/tree/master/instruction_following_eval",
+    "https://doi.org/10.48550/arXiv.2311.07911"
+  ],
+  "verification_note": "Institution names are kept in English; reviewer should verify final author affiliations from the primary source before L6."
+}

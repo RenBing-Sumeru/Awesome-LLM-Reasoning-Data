@@ -1,0 +1,3 @@
+The key reading boundary is the feedback contract: official scoring CLI compares predictions with GT structures using TextEdit, FormulaCDM, TableTEDS, ROEdit, per-track Overall, and Avg3 across clean, digital-degraded, and real-degraded tracks. Do not mix aggregate leaderboard scores with row-level verifier evidence, and do not treat public evaluation data as clean training data.
+
+Read the artifact/version notes before comparing models. If the benchmark uses a judge, separate judge agreement from ground truth; if it uses executable checks, separate checker acceptance from broader semantic correctness.

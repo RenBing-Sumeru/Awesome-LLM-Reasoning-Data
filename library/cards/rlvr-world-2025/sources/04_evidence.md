@@ -1,0 +1,6 @@
+The verified NeurIPS record, arXiv paper, THUML repository/project, and author-linked Hugging Face collection support the existence of the paper, code, project page, two derived language-transition datasets, and multiple model/tokenizer checkpoints. The collection is evidence of released derived artifacts, not evidence that every paper-reported upstream trajectory or online RLVR rollout is publicly available.
+
+The paper documents distinct supervised objects and reward definitions across text games, web-state prediction, and video/robot prediction. It also reports WebArena evaluation on Docker-configured AWS EC2 across Shopping, CMS, Reddit, GitLab, and Mapping, and describes Web MPC that samples 20 actions, keeps the three most frequent, and repeats value scoring 20 times. These are reported experimental procedures, not deployment validation, an independently released environment image, or proof that a world-model prediction is safe for control.
+
+The paper reports named split ratios and counts, but accepted evidence did not establish immutable split files, source-level record IDs, rejected-rollout logs, complete environment dependencies, or end-to-end run logs. The Card therefore treats artifact availability as verified while keeping provenance completeness partial.
+

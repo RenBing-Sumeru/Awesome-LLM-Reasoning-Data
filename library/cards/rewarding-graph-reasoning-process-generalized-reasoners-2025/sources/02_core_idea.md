@@ -1,0 +1,3 @@
+GraphSilo contains graph structures, questions, answers, prefixes, current graph operations, resulting states, and step labels. Correct traces come from graph algorithms, while negatives come from LLM errors or controlled perturbations and are verified by execution.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around graph structures, operation traces, state transitions, first-error locations, and positive/negative labels, making the verifier, judge, environment, or execution source traceable for graph tasks and structural generalization. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

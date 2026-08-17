@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R2E-Gym 将仓库提交程序化转换为 8,000 余个可执行 SWE 环境，并以单测奖励支持开放代码 agent 的训练与评测。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "程序化仓库环境、可执行验证器与软件 agent 训练数据",
+  "best_for_ch": "需要可重放软件工程环境、单测奖励或开放代码 agent 训练数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Naman Jain, Jaskirat Singh, Manish Shetty, Liang Zheng, Koushik Sen, Ion Stoica",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

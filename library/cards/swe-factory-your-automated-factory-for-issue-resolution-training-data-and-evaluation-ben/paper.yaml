@@ -1,0 +1,94 @@
+id: swe-factory-your-automated-factory-for-issue-resolution-training-data-and-evaluation-ben
+title: 'SWE-Factory: Your Automated Factory for Issue Resolution Training Data and Evaluation Benchmarks'
+year: 2026
+venue: FSE 2026
+authors:
+- Lianghong Guo
+- Yanlin Wang
+- Caihua Li
+- Wei Tao
+- Pengyu Yang
+- Jiachi Chen
+- Haoyu Song
+- Duyu Tang
+- Zibin Zheng
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.10954
+  arxiv: https://arxiv.org/abs/2506.10954
+  code: https://github.com/DeepSoftwareAnalytics/swe-factory
+  data: https://huggingface.co/datasets/SWE-Factory/DeepSWE-Agent-Kimi-K2-Trajectories-2.8K
+  project: null
+  huggingface: https://huggingface.co/datasets/SWE-Factory/DeepSWE-Agent-Kimi-K2-Trajectories-2.8K
+  doi: null
+  venue: https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/70/SWE-Data-Construction-Automatically-
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Dataset authors and the released construction pipeline.
+  answer_format: Task input, candidate output, and the released verification surface.
+  process_fields:
+  - task
+  - candidate output
+  - verifier result
+  environment_or_substrate: The official released execution or verification environment.
+  verifier_or_reward: The paper's published executable or rule-based verifier.
+  terminal_predicate: The candidate output satisfies the released verification contract.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: The released verifier or execution environment.
+  generator: The authors' released construction pipeline.
+  filtering_rule: Use the official release and its documented acceptance rules.
+  sampling_protocol: Use the official split and version.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Programmatically verified outcome data.
+audit:
+  source_mixture: Official paper, candidate data release, and any official code link cited in the card.
+  split: Use the official release split.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
+  license: Check the official data and upstream-source terms before reuse.
+  lineage: https://huggingface.co/datasets/SWE-Factory/DeepSWE-Agent-Kimi-K2-Trajectories-2.8K
+  known_failure_modes:
+  - Passing a released verifier does not establish behavior outside its coverage.
+  - Public tasks can overlap with downstream model training data.
+  citation_status: verified
+  confidence: medium
+  notes: FSE 2026 record, official repository, and 2,809-trajectory Hugging Face release were checked.
+inclusion_reason: The released resource exposes a reusable programmatic outcome-verification surface.
+related: []
+tags:
+- programmatic-verification
+one_line_summary: One-sentence position:** SWE-Factory automates environments, exit-code grading, and fail-to-pass validation
+  and releases a 2,809-task Gym.
+why_it_matters: It exposes a reproducible terminal outcome check rather than only a textual reference.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: FSE 2026 record, official repository, and 2,809-trajectory Hugging Face release were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

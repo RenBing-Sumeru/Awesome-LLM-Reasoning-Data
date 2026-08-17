@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Learn-by-interact 将 85,905 条由文档任务驱动的智能体交互轨迹扩展为 1,456,808 个指令—子轨迹候选，经双模型一致筛选后报告 440,008 条样本，但未发布语料、实现或模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体交互数据构造方法与扩展研究",
+  "best_for_ch": "研究如何把不完美的环境交互转化为 SFT 或智能体训练数据，以及审计目标重标注、模型委员会筛选、相关子轨迹和未开放工件带来的风险",
+  "confidence_ch": "高",
+  "authors_ch": "Hongjin Su、Ruoxi Sun、Jinsung Yoon、Pengcheng Yin、Tao Yu、Sercan Ö. Arık",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,5 @@
+1. Inputs: multimodal college-level questions, associated images or diagrams, answer candidates or target answers, subject/subfield labels, and model prompts that expose both text and visual content.
+2. Pipeline: package the visual-text item, present it to a multimodal model, extract the model's final answer, normalize the answer according to the official evaluator, and score it against the benchmark target.
+3. Outputs: per-item correctness, subject/subfield accuracy, discipline-level summaries, and an overall benchmark score.
+4. Feedback contract: answer-key or target-answer matching under the official evaluation scripts; no tool execution or external environment verifies the reasoning trace.
+5. Reproducibility notes: pin the official dataset revision, whether validation or hidden/test split is used, image preprocessing/resolution policy, prompt template, answer extraction rule, evaluator commit, model snapshot, and license. The HF dataset card lists Apache-2.0 and notes that test answers are not publicly provided there.

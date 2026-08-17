@@ -1,0 +1,23 @@
+{
+  "title": "V-STaR: Training Verifiers for Self-Taught Reasoners",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2402.06457",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "data_construction_open_release_recipes"
+  ],
+  "reason_to_include": "验证器，DPO，拒绝采样微调",
+  "updated_at": "2026-07-11T13:25:28Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "验证器，DPO，拒绝采样微调",
+    "updated_at": "2026-07-11T13:25:28Z"
+  }
+}

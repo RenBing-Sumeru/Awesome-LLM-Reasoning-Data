@@ -1,0 +1,5 @@
+- 应把记录读作 `question` + oracle `answer` + 任务 `metadata`，RL 再加 policy 回答与标量 reward；它不是固定 rationale 语料。
+- 先读论文 §2 与附录 A.1–A.3 了解任务/配置表面，再读附录 A.6 的实际 GRPO scaffold 和第 7 节的作者限制。
+- 必须分开论文时期与当前代码：精确实验 commit 为 unknown，当前 cascade scoring 是发表后才加入。
+- 表1支持一致的域内改善，但表2–4包含边际与负结果；不要将证据概括为普遍迁移。
+- 可将本卡与 SynLogic 搭配阅读，对比另一种 generator-verifier 构造模式；审计子串、归一化或多解 reward 时，还应搭配 verifier 失效研究。

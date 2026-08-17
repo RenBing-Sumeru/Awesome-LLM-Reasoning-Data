@@ -1,0 +1,3 @@
+1. Generate candidate image–question answers with open MLLMs. 2. Split each answer into self-contained factual claims and convert claims into questions, using a small Llama 3 model trained from 2K Llama 3 70B examples. 3. Ask an open-source visual labeler to verify each question against the image and aggregate the verdicts into preference pairs. 4. Train an MLLM on those pairs and optionally use its reward to select among inference-time samples.
+
+The outputs are AI-labeled preference data, aligned models, and a self-feedback selector. Reproduction needs the generator/labeler checkpoints and prompts; changing them changes the label source.

@@ -1,0 +1,3 @@
+The decisive static-data comparison holds Llama-2-Chat-7B and the SFT recipe while replacing 6,130 AgentTraj episodes with 14,485 AgentTraj-L episodes. WebShop rises from 66.5 to 73.5, ALFWorld from 77.5 to 83.0, TextCraft from 44.0 to 60.0, and SciWorld from 26.42 to 74.47 (Table 3). The larger pool wins broadly, though source coverage and episode count change together.
+
+AgentTraj-L-SFT also exceeds the untrained base by large margins across the supported tasks and is competitive with commercial agents on several environments. This confirms that the released demonstrations are consumable, but the broader paper's AgentSTaR results use additional exploration and should not be attributed to AgentTraj-L alone.

@@ -1,0 +1,6 @@
+- 先看图 3 与附录 A/表 6：它们展示完整五阶段 pipeline，并明确写出决定性的 `Solution Verification Strategy: None`。
+- 表 1 应与附录 D.3/表 12 连读：变规模时 coverage 有帮助，但 solvability filter 也拒绝了 MATH500 的 30.2% 和 level-5 的 49.3%。
+- 最终 mixture 由表 11 而非 abstract 定义：50% Suggester-Editor、20% IQC、20% Taxonomy Key Concepts、10% Distraction Insertion。
+- 表 4/10 显示跨 student 迁移却不是全面胜出：Qwen2.5-Math-7B 虽然总平均更高，OlympiadBench 仍略低于 refreshed ScaleQuest。
+- 必须区分 problem quality、solution quality 与下游 checkpoint accuracy；最终 recipe 保留 first teacher solution，benchmark gain 不能证明 record correctness。
+- 附录 F 只覆盖部分 prompt，官方页面也没有 FLAMES data/code release，因此 Card 为 `L4_chinese_review_ready`，canonical 发布状态仍保持 `partial`。

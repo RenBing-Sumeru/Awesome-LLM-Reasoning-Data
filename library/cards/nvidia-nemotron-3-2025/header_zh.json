@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Nemotron 3 披露多环境 RL 以及广泛的权重、数据和 recipe 发布，但仍保留专有或门控来源边界与不完整的逐环境审计细节。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型家族白皮书与数据披露账本",
+  "best_for_ch": "希望区分公开、门控与私有训练材料，并审计多环境 RL 复现边界的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "NVIDIA",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TheoremBench 用 Lean4 编译验收 classical theorem proving，并把 theorem-level coverage 与 token-efficiency 纳入评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 Lean4 theorem proving、formal verifier 反馈契约、premise-conditioned proving、benchmark 复现边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "QuocViet Pham 等（Skolkovo Institute of Science and Technology、HSE University、Artificial Intelligence Research Institute、Sberbank）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

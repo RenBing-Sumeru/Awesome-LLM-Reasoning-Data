@@ -1,0 +1,103 @@
+id: steca-step-level-trajectory-calibration-2025
+title: 'STeCa: Step-level Trajectory Calibration for LLM Agent Learning'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Hanlin Wang
+- Jian Wang
+- Chak Tou Leong
+- Wenjie Li
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- agent-reasoning
+- embodied-agents
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.604/
+  arxiv: https://arxiv.org/abs/2502.14276
+  code: https://github.com/WangHanLinHenry/STeCa
+  data: https://drive.google.com/uc?id=1tqZyqzyE7NnJdUJlwwfcwnPUFMafKdfA
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.604
+  venue: https://aclanthology.org/2025.findings-acl.604/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.604/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ALFWorld and VirtualHome task instances.
+  trace_author: LLM agents, expert demonstrations, and the trajectory-calibration procedure.
+  answer_format: Expert and explored trajectories with deviation actions, reflections, calibrated trajectories, and rewards.
+  process_fields:
+  - expert_trajectory
+  - explored_trajectory
+  - deviation_action
+  - reflection
+  - calibrated_trajectory
+  - reward
+  environment_or_substrate: ALFWorld and VirtualHome interactive environments.
+  verifier_or_reward: Environment terminal reward and Monte Carlo step-reward estimation.
+  terminal_predicate: Successful completion according to the environment reward.
+recipe_metadata:
+  base_model: Agent backbones and prompting configurations documented in the paper and official repository.
+  teacher: Expert trajectories and environment feedback.
+  generator: Trajectory exploration followed by step-level deviation detection and calibration.
+  filtering_rule: Identify incorrect actions against expert trajectories and retain reflected, calibrated samples.
+  sampling_protocol: Explore environment trajectories under the paper's task settings.
+  inference_budget: Use the repository configuration and released expert-trajectory package.
+  optimizer_or_scaffold: SFT and reinforcement learning with calibrated trajectory supervision.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Interactive trajectories from ALFWorld and VirtualHome, with expert demonstrations and generated corrections.
+  split: The repository supplies the official trajectory package and scripts; pin its version for reuse.
+  decontamination: Not described as a benchmark-decontamination protocol.
+  license: Refer to the official repository and underlying environments.
+  lineage: Findings of ACL 2025 paper and author-maintained STeCa repository with linked data download.
+  known_failure_modes:
+  - Calibration quality depends on expert-trajectory alignment.
+  - Environment-specific rewards may not transfer to open-ended tools.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the ACL Anthology paper and the official repository, which supplies code and a direct expert-trajectory
+    data download.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: STeCa releases and constructs calibrated agent trajectories that attach deviation-aware corrections to environment-grounded
+  steps.
+why_it_matters: It exposes a reusable route from terminal environment feedback to step-level trajectory supervision.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the ACL Anthology paper and the official repository, which supplies code and a direct expert-trajectory
+    data download.
+category_ids:
+- process_trace_supervision_data

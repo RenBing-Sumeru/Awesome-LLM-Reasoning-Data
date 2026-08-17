@@ -1,0 +1,5 @@
+Prior smartphone GUI benchmarks evaluate generic execution, physical-device realism, or fixed action-path task completion. PSPA-Bench changes the evaluation object by adding personas, preference-sensitive task branches, time-varying preference sampling, and long-term adaptation metrics.
+
+The direction signal is not merely "more phone tasks"; it is the TDG feedback contract. The benchmark separates fixed progress from flexible preference satisfaction, then computes process metrics from execution traces instead of only binary success. It also makes long-term adaptation auditable through delta APR/PPR/CT/CPT after experience accumulation.
+
+What is not new: smartphone GUI agents, ReAct-style frameworks, memory modules, LLM-as-judge evaluation, and synthetic templates already existed. Before reuse, inspect TDG construction quality, privacy assumptions, synthetic persona realism, app availability, license terms for code/data beyond the arXiv paper, evaluator prompts, and whether the anonymous repository has become durable.

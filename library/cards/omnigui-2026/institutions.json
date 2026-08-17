@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "XPeng Motors"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2605.18758",
+    "https://omni-gui.github.io",
+    "https://github.com/omni-gui/OmniGUI",
+    "https://huggingface.co/datasets/OmniGUI/OmniGUI"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF verify authors, XPeng Motors institution, and public artifacts."
+}

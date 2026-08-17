@@ -1,0 +1,215 @@
+id: shepherd-2026
+title: 'Shepherd: Enabling Programmable Meta-Agents via Reversible Agentic Execution Traces'
+year: 2026
+venue: arXiv preprint
+authors:
+- Simon Yu
+- Derek Chong
+- Ananjan Nandi
+- Dilara Soylu
+- Jiuding Sun
+- Christopher D Manning
+- Weiyan Shi
+source_role:
+- infrastructure
+- agent_environment
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- agent_trajectories
+- tool_use
+- software_engineering
+- reinforcement_learning
+training_use:
+- rlvr
+- agent_training
+construction_layer:
+- trace_writing
+- search_substrate
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2605.10913
+  paper_html: https://arxiv.org/html/2605.10913v3
+  paper_pdf: https://arxiv.org/pdf/2605.10913v3
+  arxiv: https://arxiv.org/abs/2605.10913
+  code: https://github.com/shepherd-agents/shepherd
+  experiments: https://github.com/shepherd-agents/shepherd-experiments
+  data: null
+  project: https://shepherd-agents.ai/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.10913
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Tree-GRPO training uses model-specific filtered subsets of the 2,492-task Endless Terminals pool: 442 tasks
+    for Qwen3.5 and 530 for Nemotron-3 after removing tasks passed by all eight base-policy rollouts. No record-level task
+    or generated-trajectory manifest is released.'
+  trace_author: A worker policy emits typed intent/outcome effects while a Claude Opus 4.7 meta-agent selects a prior turn
+    and proposes a bash action for sibling continuations in the reported Tree-GRPO experiment.
+  answer_format: A persistent Git-like commit graph records typed effect intents and outcomes, tool calls, environment mutations,
+    scope branches, and terminal outcome rewards; training consumes shared prefixes and independently sampled sibling suffixes
+    rather than a released static dataset.
+  process_fields:
+  - effect_intent
+  - effect_outcome
+  - reversibility_tier
+  - tool_call
+  - environment_mutation
+  - trace_commit
+  - parent_commit
+  - scope
+  - branch
+  - shared_prefix
+  - sibling_suffix
+  - outcome_reward
+  observation: Effect outcomes record responses from models, tools, and the bound environment. Intent is emitted before materialization,
+    allowing a supervisor to observe or intercept an action before an outcome exists.
+  action_space: Worker actions include model calls, tool calls, environment mutations, and user-defined effects. Scope-level
+    operations emit, fork, merge, and discard; the Tree-GRPO meta-agent selects a fork turn and proposes a bash action rendered
+    through the worker policy.
+  environment_or_substrate: A scope binds sandbox handles, model providers, tools, processes, filesystem state, and an effect
+    cursor. Copy-on-write forks capture coupled agent-environment state; reversible effects roll back natively, compensable
+    effects require user handlers, and irreversible calls such as model calls and emails are audit-only.
+  verifier_or_reward: Tree-GRPO uses task-specific terminal outcome rewards, not a learned value function or process reward
+    model. Prefix actions receive an inter-root GRPO advantage and suffix actions an intra-tree sibling advantage. Other paper
+    applications use benchmark-specific tests or scores, so the overall contract is mixed rather than a universal verifier.
+  terminal_predicate: Task-specific benchmark completion and outcome reward. The paper defines no framework-wide terminal
+    schema or universal success verifier.
+  provenance: Endless Terminals task -> eight base-policy screening rollouts -> model-specific retained task pool -> fresh
+    sandbox and root rollout -> meta-agent-selected fork turn -> rollback to the pre-turn commit -> isolated sibling suffixes
+    -> task outcome rewards -> inter-root and intra-tree advantages -> clipped GRPO update.
+recipe_metadata:
+  base_model: Qwen3.5-35B-A3B and Nemotron-3-Super-120B-A12B.
+  teacher: Claude Opus 4.7 selects the Tree-GRPO fork turn and proposes the injected bash action.
+  generator: Eight root rollouts per prompt are generated in fresh sandboxes; each root is rolled back to a meta-agent-selected
+    turn and continued through isolated sibling branches at matched generation compute.
+  prompt_task_source: A 2,492-task Endless Terminals pool; Terminal-Bench 2.0 is held out as out-of-distribution test data.
+  filtering_rule: For each base model, remove tasks where all eight sampled base-policy rollouts pass (pass@8=1.0), leaving
+    442 Qwen3.5 tasks and 530 Nemotron-3 tasks. SkyRL overlong filtering removes trajectories exceeding the disclosed turn
+    or token caps.
+  sampling_protocol: Each training step samples 16 prompts and eight rollouts per prompt, for 128 root rollouts. Tree-GRPO
+    then forms sibling continuations from a selected fork while matching Flat GRPO generation compute.
+  rollout_count: 8 samples per prompt; 128 root rollouts per training step. The branch factor is not recoverable from the
+    rendered arXiv HTML text and no generated-trajectory manifest is released.
+  temperature: unknown
+  inference_budget: Each rollout is capped at 8 turns, 1,024 generated tokens per turn, and 16,384 input tokens. Training
+    runs ten epochs for 1,120 steps on Modal-managed 8-H100 nodes; checkpoints and validation are taken every 10 steps.
+  optimizer_or_scaffold: Meta-Agent-Guided Tree-RL / Tree-GRPO uses clipped GRPO with inter-root advantages on shared-prefix
+    actions and sibling-normalized intra-tree advantages on post-fork actions. The paper reports Adam, weight decay 0.01,
+    max-norm 0.1, a 20-step warm-up, constant schedule, and no KL loss; the HTML conversion omits the learning-rate value.
+audit:
+  source_mixture: Model-specific filtered Endless Terminals tasks, typed root effects, coupled sandbox state, meta-agent-selected
+    fork points, sibling continuations, and task outcome rewards. No per-record mixture or generated trajectory corpus is
+    released.
+  split: Training starts from the Endless Terminals task pool and evaluates a held-out Endless Terminals validation split
+    every 10 steps. Terminal-Bench 2.0 is held out as an out-of-distribution test set; Table 5 reports 89 tasks with five
+    seeds. Exact train/validation task IDs and a split manifest are not released.
+  decontamination: unknown
+  benchmark_overlap: The paper separates Endless Terminals training from Terminal-Bench 2.0 testing, but reports no model
+    pretraining-contamination, task-near-duplicate, or cross-benchmark overlap audit.
+  license: 'Paper: CC BY-NC-ND 4.0. Shepherd framework and shepherd-experiments repository: MIT. Rights for Endless Terminals
+    tasks, Terminal-Bench 2.0 tasks, model outputs, generated traces, and third-party services remain governed by their own
+    terms and are not consolidated in a data license.'
+  lineage: The runtime commit graph links effects, scopes, parent commits, branches, and shared prefixes by content hash.
+    The paper does not release an immutable manifest mapping training tasks, rollout seeds, rewards, checkpoints, and final
+    model artifacts.
+  release_version: arXiv v3 dated 2026-06-24 is the audited paper version. The actively maintained Shepherd repository is
+    early alpha. The companion shepherd-experiments repository supplies the four applications, microbenchmarks, and a frozen
+    substrate snapshot, but has no GitHub Release and does not publish the generated training trajectories or model checkpoints.
+  successful_and_failed_sample_retention: Training must observe both successful and failed root/sibling outcomes to compute
+    outcome variance and advantages; all-pass tasks are removed before training and overlong trajectories are filtered. The
+    paper does not disclose whether complete successful, failed, or filtered trajectories are durably retained, nor does it
+    release counts or a record-level retention manifest.
+  reset_or_replay: Each root begins in a fresh sandbox. Fork rewinds coupled agent-environment state to immediately before
+    the selected turn and creates isolated copy-on-write children; discard restores the parent while merge propagates accepted
+    effects. Byte-exact claims cover captured reversible state. Compensable effects depend on user handlers, and irreversible
+    external/model calls cannot be undone and are only recorded for audit.
+  privacy_or_consent: unknown. Execution traces may contain prompts, model outputs, tool arguments/results, filesystem contents,
+    database mutations, or email metadata. Neither the paper nor the inspected repository pages provide a trace-level consent,
+    secret/PII redaction, retention, or access-control policy for a public trajectory release.
+  security: 'Intent/outcome separation can intercept risky operations before materialization, and forks isolate reversible
+    sandbox effects. These are primitives rather than a complete safety policy: irreversible effects materialize immediately,
+    compensations are user-supplied, and arbitrary tool effects require correct classification and handlers.'
+  known_failure_modes:
+  - The three applications are proof-of-existence demonstrations; the paper does not claim optimal meta-agent policies, broad
+    robustness, or that the gains require Shepherd.
+  - Counterfactual replay saves little when an edit changes broadly coupled behavior, because the affected suffix can expand
+    to the full trajectory.
+  - 'Rollback is tiered: reversible filesystem/sandbox state can be restored, compensable effects require application handlers,
+    and model calls or emails are audit-only.'
+  - Overlay checkpoint depth is bounded at roughly 60 layers before periodic compaction is required, and effect-stream storage
+    grows linearly with events.
+  - Tree-GRPO depends on a stronger Claude Opus 4.7 meta-agent to select fork turns, adding supervision cost and a teacher-policy
+    dependency.
+  - Task screening removes all-pass tasks and overlong rollouts, but exact task IDs, seeds, branch factor, filtered-trajectory
+    counts, and record-level rewards are not released.
+  - No generated trajectory dataset, trained checkpoint, immutable experiment release, split manifest, decontamination report,
+    or consolidated data license is available.
+  - 'Current framework and paper experiment artifacts are separate: the official experiment repository freezes the paper substrate,
+    while the maintained framework is early alpha and may change.'
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v3, project/repository pages, the maintained Shepherd repository, and the shepherd-experiments repository
+    were checked on 2026-07-20. Reported experiments were not rerun; missing record-level release and audit details remain
+    explicit.
+  remaining_unknowns:
+  - Exact Endless Terminals train/validation task IDs, random seeds, sibling branch factor, reward outputs, filtered-rollout
+    counts, and trajectory retention policy.
+  - A paper-linked immutable tag or archive mapping experiment code, frozen substrate, dependency images, task versions, checkpoints,
+    and results.
+  - Generated trajectory and checkpoint availability, hashes, per-record lineage, and a consolidated license for tasks, traces,
+    rewards, and model outputs.
+  - Pretraining contamination, near-duplicate task overlap, privacy/consent, secret redaction, retention, and access-control
+    procedures.
+inclusion_reason: Shepherd makes the coupled agent-environment execution history a first-class data object and demonstrates
+  how reversible typed traces, branch-local outcome rewards, and two-level credit assignment can construct agent-RL supervision
+  without flattening away environment state.
+related:
+- causal-agent-replay-2026
+- terminalworld-2026
+- tgpo-2025
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+- reversible-execution
+- meta-agents
+- tree-grpo
+- counterfactual-replay
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Shepherd turns agent execution into a reversible Git-like trace and uses meta-agent-selected forks for Tree-GRPO,
+  while leaving generated trajectories, checkpoints, splits, and data-governance artifacts unreleased.
+why_it_matters: It exposes the state, action, environment, branch, and reward relationships needed for auditable long-horizon
+  agent supervision, while showing that rollback guarantees and dataset release guarantees are separate questions.
+card: null
+needs:
+- 'needs_data_release: generated root and sibling trajectories, rewards, task IDs, seeds, success/failure retention counts,
+  and hashes'
+- 'needs_checkpoint_release: trained Tree-GRPO checkpoints and checkpoint-to-run lineage'
+- 'needs_split_manifest: exact Endless Terminals training/validation membership and Terminal-Bench 2.0 evaluation version'
+- 'needs_reproduction: immutable experiment tag, dependency/container lock, launch configuration, and end-to-end rerun'
+- 'needs_decontamination: pretraining and cross-benchmark overlap audit'
+- 'needs_governance: consolidated task/trace/model-output licensing plus privacy, consent, secret-redaction, retention, and
+  access-control policy'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation identity, arXiv v3 full text, maintained framework, project page, and companion frozen experiment repository
+    were verified. No trajectory data or trained checkpoint release was found, and experiments were not independently rerun.

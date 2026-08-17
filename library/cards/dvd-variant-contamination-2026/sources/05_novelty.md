@@ -1,0 +1,1 @@
+Existing detectors use a static score, surface similarity, or reproduction cue and mainly target verbatim exposure. DVD changes the measurement object to stochastic local-generation variance induced by one test item. Its claimed novelty is the memory-adherence/perturbation-drift signature and a benchmark of semantically equivalent variants, not another similarity threshold.

@@ -1,0 +1,3 @@
+Generic rejection sampling keeps final-answer-correct or reward-ranked traces. PaRS adds a continuous target-error gate and a recipe-specific PLQY envelope, then treats early stopping as part of data construction. Its novelty is the domain-specific selection interface: candidate order, physical admissibility, numeric tolerance, and discard/halting state.
+
+Teacher sampling, SFT, LLM judging, and simple range checks are not individually new. The paper does not release the interface's operational artifacts, so reported performance should not be read as evidence that physics gates themselves are fully validated or portable to other material targets.

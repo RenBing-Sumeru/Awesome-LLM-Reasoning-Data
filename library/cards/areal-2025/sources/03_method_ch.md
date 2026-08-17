@@ -1,0 +1,2 @@
+该系统分离 GPU rollout 与 trainer 集群，并将 CPU 奖励服务和 TCP 传输与生成重叠；它使用可中断 rollout worker、控制器和单次使用的 replay buffer。控制器对超出最大陈旧度的请求限速或拒绝，优先旧缓冲条目，并在 trainer 更新后更新 rollout 权重。陈旧度感知的解耦 PPO 分离行为策略与近端策略；它不使用 critic 或 reference model，GAE lambda 和 gamma 均为一，采用全局 batch 优势归一化、四个 minibatch、Adam 和分布式参数存储。报告设置为每 batch 512 个提示、每提示 16 个回答、temperature/top-p 1.0、固定 seed 1，并且除非另有说明，数学 eta 为 8、代码 eta 为 4。配置表写最大生成 27,648 token，而表 1 写 32K；没有不可变运行配置解决这一差异。
+

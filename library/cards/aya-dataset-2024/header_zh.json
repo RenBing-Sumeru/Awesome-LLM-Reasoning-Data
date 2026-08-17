@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Aya 发布 20.4114 万条覆盖 65 种语言、带任务来源的人写指令回答对。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "给英语占主导的指令混合补充人写多语言监督",
+  "confidence_ch": "高",
+  "authors_ch": "Shivalika Singh, Freddie Vargus, Daniel D'souza, Börje F. Karlsson, Abinaya Mahendiran, Wei-Yin Ko, Herumb Shandilya, Jay Patel, Deividas Mataciunas, Laura O'Mahony, Mike Zhang, Ramith Hettiarachchi, Joseph Wilson, Marina Machado, Luisa Souza Moura, Dominik Krzemiński, Hakimeh Fadaei, Irem Ergün, Ifeoma Okoh, Aisha Alaagib, Oshan Mudannayake, Zaid Alyafeai, Vu Minh Chien, Sebastian Ruder, Surya Guthikonda, Emad A. Alghamdi, Sebastian Gehrmann, Niklas Muennighoff, Max Bartolo, Julia Kreutzer, Ahmet Üstün, Marzieh Fadaee, Sara Hooker",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

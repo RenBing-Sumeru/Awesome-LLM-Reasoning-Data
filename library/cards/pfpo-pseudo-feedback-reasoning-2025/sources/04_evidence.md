@@ -1,0 +1,3 @@
+For Mathstral-7B, the paper reports MATH accuracy rising from 58.3 to 68.6 after SFT, frontier-feedback PFPO, and two self-feedback iterations; GSM8K moves from 85.6 to 90.3 and College Math from 34.3 to 42.2. For Llama-3.1-8B, repeated self-feedback reaches 57.8 on MATH, versus 53.8 after its SFT stage.
+
+On LiveCodeBench, DeepSeek-Coder-7B-v1.5 rises from 21.1 to 24.6 after the reported frontier-feedback and two self-feedback iterations. On APPs it rises from 15.4 after SFT to 19.1 in the reported iterative setting. These results support the claimed record-construction route across answer checking and executable multi-test programming, but do not prove pseudo feedback is correct on every generated test.

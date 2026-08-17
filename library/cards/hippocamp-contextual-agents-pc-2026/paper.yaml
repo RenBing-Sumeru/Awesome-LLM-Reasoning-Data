@@ -1,0 +1,113 @@
+id: hippocamp-contextual-agents-pc-2026
+title: 'HippoCamp: Benchmarking Contextual Agents on Personal Computers'
+year: 2026
+venue: ECCV 2026
+authors:
+- Zhe Yang
+- Shulin Tian
+- Kairui Hu
+- Shuai Liu
+- Hoang-Nhat Nguyen
+- Yichi Zhang
+- Zujin Guo
+- Mengying Yu
+- Zinan Zhang
+- Jingkang Yang
+- Chen Change Loy
+- Ziwei Liu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- contextual-agents
+- personal-computing
+- stepwise-diagnosis
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.01221
+  arxiv: https://arxiv.org/abs/2604.01221
+  code: https://github.com/HippoCamp-AI/HippoCamp
+  project: https://hippocamp-ai.github.io/
+  data: https://huggingface.co/datasets/MMMem-org/HippoCamp
+  huggingface: https://huggingface.co/datasets/MMMem-org/HippoCamp
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2604.01221
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Three realistic personal-computing profiles and device-scale personal files.
+  trace_author: Benchmark construction provides evidence-grounded reasoning and failure-diagnosis trajectories.
+  answer_format: Question, file evidence, evidence locators, step-wise rationale, and stage-wise capability labels.
+  process_fields:
+  - file_path
+  - evidence
+  - rationale
+  - agent_cap
+  - answer
+  environment_or_substrate: Multimodal personal file systems.
+  verifier_or_reward: Evidence grounding and stage-level search/perception/reasoning labels support failure diagnosis.
+  terminal_predicate: Correct evidence-grounded answer or user-profile inference.
+recipe_metadata:
+  base_model: A broad set of MLLMs and agentic methods are evaluated.
+  teacher: Dataset authors provide structured evidence and trajectory annotations.
+  generator: Personal-file environment construction and evidence-grounded QA annotation.
+  filtering_rule: Profiles, files, and QA are curated for long-horizon contextual reasoning.
+  sampling_protocol: 42.4GB, 2K+ files, 581 QA pairs, and 46.1K structured trajectory annotations.
+  inference_budget: See project/repository.
+  optimizer_or_scaffold: Contextual-agent benchmark with stage-wise diagnosis.
+  rollout_count: 46100
+  temperature: null
+audit:
+  source_mixture: Personal files, evidence-grounded QA, rationales, and capability labels.
+  split: Use the official HF manifests for profile and split details.
+  decontamination: Personal-file evidence must remain separated between training and evaluation.
+  license: HippoCamp Research License v1, as stated on the official dataset page.
+  lineage: ECCV 2026 paper listing, project page, code, and official dataset.
+  known_failure_modes:
+  - Synthetic profiles may not cover all real users
+  - Large files require costly retrieval
+  - Evidence can be misbound to the wrong entity
+  citation_status: verified
+  confidence: high
+  notes: Verified all authors, NTU/Synvo affiliations, official project, data schema/scale, and reported ECCV 2026 status
+    from primary project and dataset pages.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: HippoCamp evaluates contextual agents over realistic personal file systems with evidence-grounded rationales
+  and step-wise failure labels.
+why_it_matters: It pairs device-scale multimodal context with structured evidence and process annotations for diagnosing agent
+  failure stages.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified all authors, NTU/Synvo affiliations, official project, data schema/scale, and reported ECCV 2026 status
+    from primary project and dataset pages.
+category_ids:
+- process_trace_supervision_data

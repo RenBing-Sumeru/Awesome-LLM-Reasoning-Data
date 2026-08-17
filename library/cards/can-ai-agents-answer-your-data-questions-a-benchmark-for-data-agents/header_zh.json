@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "54 个跨 12 数据集、9 领域、4 DBMS 的真实多数据库 agent 问题。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Ruiying Ma, Shreya Shankar, Ruiqi Chen, Yiming Lin, Sepanta Zeighami, Rajoshi Ghosh, Abhinav Gupta, Anushrut Gupta, Tanmai Gopal, Aditya G. Parameswaran",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

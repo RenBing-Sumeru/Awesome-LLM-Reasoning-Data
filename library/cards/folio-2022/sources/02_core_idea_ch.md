@@ -1,0 +1,1 @@
+核心贡献是 1,430 个 examples、487 个 premise sets 的 benchmark，并用一阶逻辑标注验证推理标签。机制是编写自然语言 premises 和 hypotheses，映射到 FOL，用 inference engine 检查标注，再按 gold-label accuracy 评测模型。模型评分的反馈契约是 answer-level classification；程序化部分主要用于审计标注一致性。最近对比是 RTE/NLI 数据集、ProofWriter 和 formal-logic benchmark。方向标签是 formalizable natural-language reasoning。

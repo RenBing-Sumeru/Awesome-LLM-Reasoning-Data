@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GPT-5.1-Codex-Max 系统卡披露了合成恶意软件与 prompt-injection 安全数据，以及由 user model 注入冲突编辑、以保留用户改动获得正向强化的 RL episode；其主要价值是可审计披露边界，而非提供可复用训练语料或 reward 实现。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿编码代理系统卡与数据披露账本",
+  "best_for_ch": "审计闭源编码代理训练对象、反馈契约、环境评测和披露边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

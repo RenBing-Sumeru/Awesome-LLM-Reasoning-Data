@@ -1,0 +1,3 @@
+Keep three distinctions separate while reading. First, MT-Bench is a fixed public question set; Chatbot Arena is a live or snapshot-based preference platform. Second, GPT-4 as a judge is the evaluated mechanism, not the unquestioned ground truth. Third, aggregate agreement or win rate is not an instance-level verifier result.
+
+Read the paper in the order problem and benchmark construction, judge-bias sections, agreement tables, then appendix details on agreement calculation and bias prompts. Downstream use should keep human-human agreement, judge-human agreement, non-tie agreement, tie/inconsistent handling, and leaderboard score as separate claims.

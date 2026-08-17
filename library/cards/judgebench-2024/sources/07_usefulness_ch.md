@@ -1,0 +1,1 @@
+JudgeBench 适合当作 judge model、reward model、prompt 模板和回答顺序鲁棒性的轻量审计面。复用 schema 时应保留 `pair_id`、来源数据集、原题 id、问题、回答模型、两个回答、objective label、judge 名称/模型、prompt 模板、顺序策略、原始 judgment、解析后的 decision 和 split。它特别适合在把 judge 用于评测、rerank 或 reward pipeline 前，先区分“偏好跟随能力”和“正确性判断能力”。

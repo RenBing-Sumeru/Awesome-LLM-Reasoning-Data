@@ -1,0 +1,1 @@
+现有 instruction-following benchmark 多直接评价被测模型，已有 judge benchmark 又多使用独立 pair。IF-RewardBench 的新意是把每条指令组织成“checklist—多回答—完整偏好图”，从而同时评价细粒度约束识别和 listwise 排序，并与对齐训练场景对接。checklist 和 pairwise preference 都不是新对象；创新在于将全部 pair 组合为一致图结构以及覆盖多轮和系统提示控制。

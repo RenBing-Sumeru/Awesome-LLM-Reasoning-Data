@@ -1,0 +1,115 @@
+id: truthfulqa-2021
+title: 'TruthfulQA: Measuring How Models Mimic Human Falsehoods'
+year: 2021
+venue: ACL 2022 / arXiv
+authors:
+- Stephanie Lin
+- Jacob Hilton
+- Owain Evans
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- truthfulness
+- factuality
+- safety-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2022.acl-long.229/
+  arxiv: https://arxiv.org/abs/2109.07958
+  code: https://github.com/sylinrl/TruthfulQA
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2022.acl-long.229
+  venue: https://aclanthology.org/2022.acl-long.229/
+  openreview: null
+  acl: https://aclanthology.org/2022.acl-long.229/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 817 questions across 38 categories in the TruthfulQA benchmark; pin generation vs multiple-choice setting
+    and evaluator version.
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'question, truthful reference answers, false answers, category metadata, and generation/multiple-choice settings;
+    Benchmark size: 817 个问题，覆盖 38 个类别。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'question, truthful reference answers, false answers, category metadata, and generation/multiple-choice
+    settings; Benchmark size: 817 个问题，覆盖 38 个类别。'
+  verifier_or_reward: human and learned-judge truthfulness/informativeness evaluation plus multiple-choice scoring
+  terminal_predicate: human and learned-judge truthfulness/informativeness evaluation plus multiple-choice scoring
+  benchmark_size: 817 个问题，覆盖 38 个类别。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for TruthfulQA: Measuring How Models Mimic Human Falsehoods; exact curation details
+    should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'ACL Anthology, arXiv, and official GitHub/software artifact for TruthfulQA: Measuring How Models Mimic
+    Human Falsehoods.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary publication: https://aclanthology.org/2022.acl-long.229/; arXiv version: https://arxiv.org/abs/2109.07958'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Scale recorded as 817 questions across 38 categories; pin generation/MC mode, learned
+    judge version, and human-evaluation protocol before comparing scores. Benchmark size: 817 个问题，覆盖 38 个类别。'
+inclusion_reason: TruthfulQA 检查模型是否复述常见误解和虚假信念，而不是给出真实回答。
+related: []
+tags:
+- benchmark
+- truthfulness
+- factuality
+- safety-evaluation
+why_it_matters: 它提供 817 个问题，覆盖 38 个类别。 的评测规模信息和 truthfulness 方向的可复用 benchmark 坐标。
+status: verified
+needs:
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, dataset scale/version, and
+  license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: TruthfulQA 检查模型是否复述常见误解和虚假信念，而不是给出真实回答。
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

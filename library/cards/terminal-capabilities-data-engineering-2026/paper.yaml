@@ -1,0 +1,304 @@
+id: terminal-capabilities-data-engineering-2026
+title: On Data Engineering for Scaling LLM Terminal Capabilities
+year: 2026
+venue: arXiv preprint
+authors:
+- Renjie Pi
+- Grace Lam
+- Mohammad Shoeybi
+- Pooya Jannaty
+- Bryan Catanzaro
+- Wei Ping
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- terminal_agents
+- shell_and_cli
+- docker_environments
+- agent_trajectories
+- math
+- code
+- software_engineering
+- data_processing
+- data_querying
+- data_science
+- debugging
+- dependency_management
+- file_operations
+- scientific_computing
+- security
+- system_administration
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.21193
+  paper_pdf: https://arxiv.org/pdf/2602.21193
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2602.21193
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Nemotron-Terminal-Corpus
+  data_snapshot: https://huggingface.co/datasets/nvidia/Nemotron-Terminal-Corpus/tree/a1667c4ffdadea02a89bffe4f1bb7ca2ff19f8d9
+  task_data: https://huggingface.co/datasets/nvidia/Nemotron-Terminal-Synthetic-Tasks
+  task_data_snapshot: https://huggingface.co/datasets/nvidia/Nemotron-Terminal-Synthetic-Tasks/tree/7e53648e183cee7bcb0aed623cc91a121d37fa38
+  project: https://huggingface.co/collections/nvidia/nemotron-terminal
+  huggingface: https://huggingface.co/datasets/nvidia/Nemotron-Terminal-Corpus
+  model_8b: https://huggingface.co/nvidia/Nemotron-Terminal-8B
+  model_14b: https://huggingface.co/nvidia/Nemotron-Terminal-14B
+  model_32b: https://huggingface.co/nvidia/Nemotron-Terminal-32B
+  doi: https://doi.org/10.48550/arXiv.2602.21193
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2602.21193
+data_object:
+  object_type: A supervised-fine-tuning terminal episode serialized as a role/content conversation plus coarse agent, model,
+    task, episode, and run metadata. The current official corpus contains exactly 366,154 rows, not a verified count of unique
+    tasks.
+  prompt_source: Dataset adapters wrap filtered Nemotron-Cascade math, code, and SWE prompts derived from OpenMathReasoning,
+    OpenCodeReasoning, SWE-Bench-Train, SWE-reBench, SWE-Smith, and SWE-Fixer-Train. Synthetic tasks are generated from structured
+    seeds or a primitive-skill taxonomy; the current public corpus confirms adapters and skill-based rows but not the paper's
+    seed-based stream.
+  trace_author: DeepSeek-V3.2 produces all SFT trajectories through the Terminus 2 scaffold. The public row metadata identifies
+    `agent`, `model`, and `model_provider`, but immutable serving snapshots and decoding settings are not supplied.
+  task_record:
+  - natural_language_instruction
+  - optional_input_files
+  - task.toml
+  - environment/Dockerfile
+  - tests/test.sh_and_pytest_files_for_synthetic_tasks
+  - empty_solution_directory_in_checked_synthetic_archive
+  episode_fields:
+  - conversations.role
+  - conversations.content
+  - agent
+  - model
+  - model_provider
+  - date
+  - task
+  - episode
+  - run_id
+  - trial_name
+  - enable_thinking
+  - source_for_dataset_adapters_only
+  answer_format: The assistant content embeds analysis/plan text and a Terminus 2 JSON action object with `commands[{keystrokes,duration}]`
+    and optional `task_complete`; assistant cells can also contain `<think>` text. The final artifact is task-dependent code,
+    files, patches, reports, or environment state.
+  process_fields:
+  - system_prompt_and_task_instruction
+  - current_terminal_state
+  - assistant_analysis
+  - assistant_plan
+  - shell_keystrokes
+  - command_wait_duration
+  - self_declared_task_complete
+  - new_terminal_output
+  - multi_turn_recovery_or_correction
+  observation: User-role content carries the initial current terminal screen and subsequent `New Terminal Output`, including
+    stdout/stderr, file listings, program output, verifier feedback, and environment effects. Observations are embedded text
+    rather than normalized state-diff fields.
+  action_space: Batches of literal keystrokes sent to an interactive tmux session inside a Linux container, with per-command
+    wait durations and support for control-key sequences.
+  environment_or_substrate: Terminus 2 over Docker/tmux, orchestrated at generation scale with Harbor and an author extension
+    for Singularity/HPC. Synthetic tasks use nine shared domain images; adapter tasks have an instruction and environment
+    but no associated tests.
+  verifier_or_reward: Synthetic task folders include pytest-based end-state checks with configurable partial-credit weights
+    in the generation specification. A checked verifier script maps pytest exit status to binary reward 1/0. Adapter tasks
+    lack tests, and the released corpus schema has no normalized verifier outcome or reward.
+  verifier_output: In the checked task archive, pytest writes CTRF output and `/logs/verifier/reward.txt`. These outputs are
+    not published as top-level fields in the 366,154-row conversation corpus.
+  reward: No row-level scalar reward is exposed. The paper compares teacher-declared completion and test success for filtering
+    ablations, but the public feature map does not permit independent success/failure enumeration.
+  terminal_predicate: For checked synthetic task infrastructure, pytest exit status determines binary verifier success after
+    the episode. The assistant's embedded `task_complete` is self-declared and must not be treated as the verifier predicate;
+    adapter terminal correctness is unknown because those tasks have no tests.
+  provenance: Upstream adapter prompt or synthetic seed/skill specification -> Terminal-Task-Gen task and environment -> DeepSeek-V3.2
+    trajectory through Terminus 2 -> 14-gram TB2 decontamination and identity/language quality filters -> mixed no-outcome-filter
+    SFT recipe -> public train-only Parquet row. Record-level upstream revisions, verifier decisions, and rejected alternatives
+    are incomplete.
+  release_shape: Four train-only Parquet configs contain 226,313 adapter rows, 44,809 skill-based easy rows, 89,343 skill-based
+    medium rows, and 5,689 skill-based mixed rows. A separate tar-archive repository exposes skill-based task folders with
+    instructions, inputs, Dockerfiles, tests, and task metadata.
+recipe_metadata:
+  base_model: Qwen3-8B, Qwen3-14B, and Qwen3-32B are the student base models.
+  teacher: DeepSeek-V3.2 generates synthetic tasks and all SFT trajectories.
+  generator: Terminal-Task-Gen combines dataset adaptation, seed-based synthesis, and primitive-skill synthesis; Terminus
+    2 executes trajectory generation in containerized terminal environments.
+  prompt_task_source: Math, code, and SWE prompts from the named Nemotron-Cascade mixtures, plus structured adjacent-domain
+    seeds and domain-specific primitive-skill combinations.
+  filtering_rule: Remove prompts with a 14-gram overlap against Terminal-Bench 2.0 test prompts, remove identity leaks, and
+    discard responses containing Chinese characters. The selected study recipe does not remove incomplete or unsuccessful
+    trajectories because no-filter outperformed complete-only and success-only.
+  sampling_protocol: Adapter rows are produced from one wrapped prompt per selected source instance. Synthetic tasks are generated
+    from a seed or typically 3-5 primitive skills, then DeepSeek-V3.2 interacts through Terminus 2. Attempts per task, retries,
+    and whether multiple episodes share a task are unknown.
+  rollout_count: 'Paper Table 5 studies 490,520 trajectories: 226,313 adapters plus 124,366 seed-based and 139,841 skill-based.
+    The current public corpus has exactly 366,154 rows and omits the confirmed release of the 124,366 seed-based stream; unique
+    task count is unknown.'
+  temperature: unknown
+  inference_budget: Teacher generation turn, token, wall-time, retry, and sampling budgets are unknown. The main SFT run uses
+    a 32,768-token maximum sequence length; evaluation uses 40,960 tokens, with 65,536-token SFT/evaluation ablations. A nontrivial
+    long tail is truncated, but its exact size is unknown.
+  search_or_scaffold: Terminus 2 supplies the JSON action scaffold and tmux terminal interface; Harbor/Singularity orchestrate
+    generation and Daytona manages evaluation sandboxes.
+  selection_threshold: The final recipe retains all decontaminated/quality-filtered trajectories regardless of teacher-declared
+    completion or test success. Exact release-specific failure labels and post-filter counts are not exposed.
+  optimizer_or_scaffold: SFT uses veRL with AdamW, learning rate 2e-5, weight decay 1e-4, two epochs, global batch size 128,
+    micro-batch size 1 per GPU, cosine schedule, 10% warmup, gradient clipping 1.0, and CPU offload.
+  training_compute: The 8B and 14B models use 4 nodes with 8 GPUs each; the 32B model uses 16 nodes with 8 GPUs each. GPU
+    model, wall-clock time, energy, and total training FLOPs are unknown.
+  seeds: unknown
+audit:
+  source_mixture: 'Paper study: 162,692 math, 31,960 code, 31,661 SWE, 124,366 seed-based synthetic, and 139,841 skill-based
+    synthetic trajectories. Current public corpus: the first three adapter components plus 139,841 skill-based rows; the seed-based
+    124,366 are not confirmed released.'
+  split: Four configurations each expose only `train`; there is no conventional validation/test split. Scaling-fraction row
+    IDs and curriculum-stage manifests are not published.
+  decontamination: Prompts with a 14-gram overlap against Terminal-Bench 2.0 test samples are removed. Matching normalization,
+    code, removed counts, broader corpus/benchmark overlap, and post-release test contamination checks are unknown.
+  license: The official corpus and task repositories are labeled CC BY 4.0. Record-level rights and attribution for upstream
+    prompts, issues/patches, generated traces, model terms, Docker images, packages, and task assets are not reconciled.
+  lineage: Adapter rows expose a coarse `source` field; all rows expose task/episode/run metadata; skill-based rows omit `source`.
+    Canonical upstream record IDs/revisions, prompt transformations, verifier decisions, rejected candidates, and immutable
+    build/training manifests are not published.
+  release_version: arXiv:2602.21193v1; corpus revision a1667c4ffdadea02a89bffe4f1bb7ca2ff19f8d9; task repository revision
+    7e53648e183cee7bcb0aed623cc91a121d37fa38. No Terminal-Task-Gen code release was confirmed.
+  release_completeness: The public corpus exactly matches 226,313 adapters plus 139,841 skill-based trajectories but omits
+    the paper's 124,366 seed-based stream. It also omits normalized outcomes/rewards, the generation and training pipeline,
+    rejected-item ledgers, and complete replay manifests.
+  successful_and_failed_sample_retention: The paper's final no-filter recipe deliberately retains incomplete and unsuccessful
+    trajectories and reports that it outperforms complete-only and success-only. The public row schema lacks outcome labels,
+    so exact successful/incomplete/failed counts for the released 366,154 rows are not independently auditable.
+  action_observation_outcome: Actions and observations are recoverable as embedded conversation text, including command JSON
+    and terminal output. Outcome is not a normalized row field; `task_complete` is self-declared, while checked task tests
+    produce a separate binary reward file.
+  container_and_reset: Synthetic task folders contain Dockerfiles and task metadata, but the checked task uses a mutable internal
+    `:latest` image, a mutable GHCR `:latest` base, and unpinned apt/pip installs. Exact reset, cache, volume, network, and
+    cleanup semantics are unknown.
+  replay: The released task archive is structurally replay-oriented and exposes instructions, inputs, tests, and Dockerfiles.
+    Exact replay is not established because image digests, dependency locks, Harbor/Terminus/Singularity revisions, teacher
+    serving snapshot, seeds, network policy, and original verifier logs are missing; the internal NVIDIA image reference may
+    also be inaccessible.
+  budget: A checked mixed data-processing task specifies 900-second agent and verifier timeouts, 600-second build timeout,
+    1 CPU, and 2G memory. Corpus-wide task budgets and teacher generation compute are unknown; paper-level SFT GPU counts
+    are disclosed.
+  privacy_or_consent: unknown
+  safety: Security tasks can cover exploit payloads, vulnerability analysis, authentication, and network security. Docker
+    isolation is documented, but egress, credentials, malicious-output handling, and corpus-wide safety review are unknown.
+  known_failure_modes:
+  - The advertised approximately 366K corpus can be misread as the full 490,520-row Table 5 mixture; the public release excludes
+    the 124,366 seed-based trajectories.
+  - Row count can be misreported as unique task count even though the schema separates task, episode, and run IDs.
+  - No normalized outcome or reward field allows self-declared `task_complete` to be mistaken for verifier success.
+  - Adapter trajectories have no tests, so a uniform programmatic verification claim would be false.
+  - Failure retention is supported by paper ablations, but the released corpus does not expose labels needed to reproduce
+    the complete/success/failure breakdown.
+  - Public task-taxonomy directories drift from the nine-domain list in the main text, including model training and system
+    administration categories.
+  - Generated pytest suites can be incomplete or gameable; no full semantic audit or false-positive/false-negative analysis
+    is released.
+  - Mutable images, unpinned packages, internal registry references, missing harness commits, and absent reset manifests prevent
+    exact Docker replay.
+  - The 14-gram TB2 screen does not establish broader decontamination from other terminal, math, code, or SWE benchmarks.
+  - Long-tail trajectories are truncated at the SFT context boundary, but affected rows and truncation metadata are not published.
+  - Coarse source labels and repository-level licenses do not establish record-level provenance, attribution, privacy, or
+    rights.
+  - Security and live shell commands create abuse and environment-risk surfaces not covered by a published safety policy.
+  citation_status: verified
+  confidence: medium
+  notes: The arXiv v1 full paper and Appendix A, NVIDIA collection, model cards, corpus card/tree/API/schema/counts, task
+    repository card/tree, and a checksum-bound representative task archive were checked on 2026-07-25. The 8.2 GB corpus was
+    not fully downloaded, adapter first-row rendering is blocked by the official dataset-server scan-size limit, and all task
+    archives/verifiers were not cold-built or semantically audited.
+  remaining_unknowns:
+  - Unique task count and task-to-episode/run multiplicity
+  - Public location of the 124,366 seed-based trajectories and task specifications
+  - Terminal-Task-Gen, Harbor extension, post-processing, and veRL code/configuration
+  - Teacher temperature, turn/token/time budget, seeds, retries, and generation compute
+  - Per-row verifier result, reward, test log, termination cause, and failure class
+  - Exact mapping from paper filtering ablations to current public skill-based rows
+  - Upstream record IDs/revisions and complete record-level source/license lineage
+  - Container digests, dependency locks, reset/cache/network policy, and cold-replay evidence
+  - Scaling-subset row manifests and curriculum-stage membership
+  - Decontamination implementation/removal ledger and broader overlap audit
+inclusion_reason: This work releases a large terminal SFT corpus and a concrete no-filter trajectory recipe whose action-observation
+  episodes, failure retention, data-scale ablations, and release/replay gaps directly expose how rollout data affects terminal-agent
+  post-training.
+related:
+- nemotron-cascade-2025
+tags:
+- nemotron-terminal
+- terminal-corpus
+- terminal-task-gen
+- terminal-agents
+- terminus-2
+- docker
+- harbor
+- agent-trajectories
+- synthetic-data
+- dataset-adapters
+- failed-trajectories
+- sft
+- scaling-study
+- programmatic-verification
+- release-audit
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- instruction_demonstration_rationale_data
+one_line_summary: Releases exactly 366,154 train-only terminal SFT episodes from dataset adapters and skill-based synthesis,
+  while the paper's no-filter recipe retains incomplete and failed behavior but the public rows expose no normalized outcome
+  or reward.
+why_it_matters: It provides unusually direct evidence that retaining realistic error states can outperform success-only filtering
+  for terminal-agent SFT, while making count reconciliation, failure labels, verifier semantics, and container replayability
+  first-class audit requirements.
+card: null
+card_recommendation: 'High-priority L4 bilingual Card: preserve the exact 366,154-versus-490,520 count boundary, embedded
+  action/observation schema, absent normalized outcome field, no-filter failure-retention evidence, missing seed-based stream,
+  train-only splits, license/lineage gaps, and partial Docker replay contract; keep Review state new until human review.'
+needs:
+- 'needs_seed_release: publish or identify the 124,366 seed-based trajectories and their task specifications'
+- 'needs_outcome_schema: expose per-row verifier result, reward, completion source, test logs, termination cause, and failure
+  class'
+- 'needs_task_count: publish unique task counts and task-to-episode/run multiplicity'
+- 'needs_code: release Terminal-Task-Gen, Harbor/Singularity changes, post-processing, and veRL training configs'
+- 'needs_generation_budget: disclose teacher decoding, token/turn/time limits, seeds, retries, attempts, and compute'
+- 'needs_replay_manifest: pin image digests, dependencies, harness revisions, reset/cache/network rules, task budgets, and
+  cold-replay hashes'
+- 'needs_lineage: publish upstream record IDs/revisions, prompt transformations, verifier decisions, and rejected-item ledgers'
+- 'needs_split_mapping: publish scaling-fraction row IDs, curriculum-stage manifests, and any held-out validation data'
+- 'needs_decontamination: release the 14-gram implementation/removal counts and broader terminal/math/code/SWE overlap audit'
+- 'needs_license_safety_privacy: reconcile record-level rights, attribution, model terms, privacy/consent, deletion, security-task
+  safeguards, and network/credential policy'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  duplicate_checked: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Exact title/arXiv/ID/corpus deduplication passed against the target Card metadata. Official paper, appendix, model/data/task
+    links, current corpus and task revisions, exact split counts, published feature schema, a live skill-based row, and representative
+    task/verifier/Docker files were verified. Verification does not establish full-corpus semantic correctness, per-row outcomes,
+    complete release, or exact replay.

@@ -1,0 +1,10 @@
+- Full-pass gate 具有循环性。较弱或错误的生成 suite 可能接受错误代码，而错误 code/test pair 又会成为两个角色的正向 SFT 数据。通过全部采样测试不等于符合自然语言规范。
+- Solver 与 Verifier 共享 Llama 3.1 8B 权重和上游数据，因此错误相关。75.14%/72.38% 的迭代一致率不代表独立性，也可能反映稳定的共同盲点。
+- Verifier DPO negative 来自模型采样空间中的其他 expected output。若假定的 chosen output 本身错误，偏好方向就会反转；Solver DPO 的 failing-code negative 也存在同类问题。
+- Branch coverage 是在候选 solution 上测量，而不是在未知的预期程序行为上测量。Output diversification 只能阻止一种简单捷径，不能保证边界覆盖、oracle correctness、异常处理或对抗鲁棒性。
+- Iter 1 只有 45% 样本形成一致的 full-pass pair。默认规则丢弃其余记录，而放宽阈值的消融说明更多选择数据可能伤害效果，表明 scoring function 与候选池高度敏感。
+- 103,280 条去重 prompt 仅被描述，没有发布。精确 snippet revision、template mixture、去重过程、各轮生成记录数、接受/拒绝比例、split 构建与 provenance join 均不可用。
+- 主生成候选数、temperature、top-p、random seed、SFT/DPO 超参数、compute budget、timeout、dependency policy、process isolation 与 sandbox security 均为 unknown。已披露的 temperature 0.6/top-p 0.9 只用于评估负例生成。
+- Decontamination 与 overlap control 为 unknown。训练 prompt 使用 OSS-Instruct snippet 与 benchmark 训练模板，评估使用 MBPP 和 LiveCodeBench；embedding-distribution similarity 不是重叠审计。
+- 未核实到作者关联代码、生成语料、model checkpoint 或这些未发布 artifact 的 license。该论文配方无法逐记录重放或检查。
+- 证据仅覆盖 Python function-level task 与一个 8B model。对其他语言、repository context、交互调试、更大模型或生产测试环境的泛化均为 unknown。

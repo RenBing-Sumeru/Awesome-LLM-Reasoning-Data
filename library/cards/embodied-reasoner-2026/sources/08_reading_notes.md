@@ -1,0 +1,6 @@
+- Read the data engine and three-stage training sections together. The key lineage is 1,128 teacher traces -> 6,246 environment-accepted policy rollouts -> 2,016 anomaly/failure correction records -> 9,390 released trajectories.
+- Keep the scale units separate: 9,390 trajectories, about 64K images, 8M thought tokens, and about 90K thought-pattern occurrences.
+- Treat ordered key-action coverage plus the correct final state as the Stage-2 acceptance contract. Search Efficiency, Task Completeness, and repeated-exploration rate are evaluation metrics, not extra acceptance rules.
+- Inspect how the thought was produced: GPT-4o sees the upcoming selected action. This is a direct trace-faithfulness risk even when the episode succeeds environmentally.
+- Read the task breakdown, not only the aggregate 80.96% success rate. The final 7B model reports 65.16% on search and 54.29% on composite tasks; the former trails GPT-o3-mini in the paper's table.
+- Before reuse, pin the paper, code, and data revisions; repair or bypass the current mixed-schema HF viewer failure; verify episode counts and file hashes; and test replay, alternative valid plans, failure labels, rights, and model availability independently.

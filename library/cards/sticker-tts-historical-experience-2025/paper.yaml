@@ -1,0 +1,105 @@
+id: sticker-tts-historical-experience-2025
+title: 'Sticker-TTS: Learn to Utilize Historical Experience with a Sticker-driven Test-Time Scaling Framework'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Jie Chen
+- Jinhao Jiang
+- Yingqian Min
+- Zican Dong
+- Shijie Wang
+- Wayne Xin Zhao
+- Ji-Rong Wen
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.621/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.621/
+  code: https://github.com/RUCAIBox/Sticker-TTS
+  data: https://github.com/RUCAIBox/Sticker-TTS
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.621
+data_object:
+  prompt_source: OpenThoughts mathematical problems for training; AIME 2024, AIME 2025, and OlymMATH for evaluation.
+  trace_author: DeepSeek-R1 teachers and the three Sticker-TTS components.
+  answer_format: Reasoning traces, structured stickers, corrected stickers, and boxed final answers.
+  process_fields:
+  - question
+  - reasoning_trace
+  - sticker
+  - revised_sticker
+  - previous_answer
+  - final_answer
+  environment_or_substrate: Iterative multi-model reasoning loop.
+  verifier_or_reward: Exact-answer benchmark correctness and dual filtering during self-improvement.
+  terminal_predicate: A final mathematical answer matches the benchmark reference answer.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen 7B and 32B models reported by the paper.
+  teacher: DeepSeek-R1 and o3-mini during initialization.
+  generator: Sticker Utilizer in an iterative three-component loop.
+  filtering_rule: Keep valid self-distilled trajectories and control error-to-correct versus correct-to-correct transitions;
+    retain cases with meaningful correction.
+  sampling_protocol: One initial response followed by N rounds of extraction, modification, utilization, and answer aggregation.
+  rollout_count: N iterations; the paper reports N=10 comparisons.
+  temperature: null
+  inference_budget: Iterative long-chain generation; N rounds have cost comparable to roughly 2N long reasoning solutions.
+  optimizer_or_scaffold: Sticker Extractor, Sticker Modifier, and Sticker Utilizer with two-stage distillation-guided self-improvement.
+audit:
+  source_mixture: Official EMNLP paper, ACL Anthology record, and official GitHub repository.
+  split: AIME 2024, AIME 2025, and OlymMATH as reported in the paper.
+  decontamination: Not separately claimed in the primary source.
+  license: Official repository reports Apache-2.0; verify upstream benchmark and OpenThoughts terms before redistribution.
+  lineage: https://aclanthology.org/2025.emnlp-main.621/
+  known_failure_modes:
+  - incorrect_sticker
+  - error_propagation
+  - multi_model_latency
+  - math_domain_bias
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, affiliations, venue, DOI, code/data availability, and reported evaluation claims checked against
+    the official EMNLP paper and repository on 2026-07-20.
+inclusion_reason: It reallocates inference computation across history-aware iterative refinement, using compact intermediate
+  evidence rather than independent repeated samples.
+related: []
+tags:
+- test-time-compute
+- historical-experience
+- iterative-refinement
+- multi-agent
+- mathematical-reasoning
+status: verified
+one_line_summary: Sticker-TTS turns previous reasoning traces into corrected compact cues that guide later test-time solution
+  attempts.
+reading_priority: essential
+paper_type: Test-time scaling and history-aware iterative reasoning framework
+best_for: Readers studying how to reuse earlier reasoning attempts under a fixed inference budget.
+confidence: high
+why_it_matters: It gives historical reasoning an explicit compact representation that can be corrected and reused instead
+  of repeatedly sampling from scratch.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and public RUCAIBox repository were checked; the paper states that code and data are available
+    in the repository.
+category_ids:
+- scaling_rlvr_test_time_compute

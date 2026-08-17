@@ -1,0 +1,5 @@
+TabMWP is useful as a compact evaluation coordinate for table-grounded mathematical reasoning. It lets researchers test whether a model can read semi-structured tables, select relevant rows or cells from textual clues, perform arithmetic, and return either a numeric value or a multiple-choice text answer.
+
+The dataset is also useful for comparing prompting, retrieval, tool use, and table-encoder methods under a shared answer-level metric. Because the official repository includes train/dev/test JSON files and evaluation scripts, it is practical for reproducing the original baselines or adding newer LLM/tool results.
+
+For reasoning-data work, TabMWP is a reminder that benchmark records can contain multiple representations of the same input object. The image, semi-structured text, structured table, question, answer, and solution fields should be tracked separately because a model may use one representation, another model may use a different one, and leaderboard entries can differ by whether they use ground-truth text tables or image inputs.

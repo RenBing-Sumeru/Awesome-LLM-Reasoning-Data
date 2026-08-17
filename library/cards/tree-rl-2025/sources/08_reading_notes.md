@@ -1,0 +1,5 @@
+- Read Sections 3.1 and 3.2 together: EPTree's branch structure is the source of both exploration and the process-reward calculation.
+- Use Appendix Table 4 and Table 3 before interpreting gains; compare 30 leaves/480 training batch with 16 leaves/256 rather than calling the setup fully compute-matched.
+- Inspect `scripts/treerl-qw14b.sh`, `tree_node.py`, and `remote_reward.py` before treating a final-answer reward as reproducible.
+- Keep the released prompt-answer input file distinct from the missing runtime trees, rejected branches, and selection ledger.
+- Treat source mapping, decontamination, service versions, and trace release as reuse gates.

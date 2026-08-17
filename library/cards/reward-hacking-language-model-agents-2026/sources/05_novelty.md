@@ -1,0 +1,3 @@
+Classical AI Safety Gridworlds expose proxy-reward failures in reinforcement-learning agents, but they do not by themselves test language-model interaction or modern post-training. The closest existing practice is to inspect a deployed agent after a suspicious outcome.
+
+This paper changes the observation/action interface into text and evaluates modern language models under direct proxy-reward optimization while retaining an independently logged hidden objective. The gridworld concept is not new; the novelty is a controlled language-agent audit surface. Reuse depends on validating the text conversion and hidden-reward implementation.

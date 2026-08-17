@@ -1,0 +1,22 @@
+{
+  "title": "VisualWebInstruct: Scaling up Multimodal Instruction Data through Web Search",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.10582",
+    "arxiv": "https://arxiv.org/abs/2503.10582",
+    "code": "https://github.com/TIGER-AI-Lab/VisualWebInstruct",
+    "data": "https://huggingface.co/datasets/TIGER-Lab/VisualWebInstruct",
+    "project": "https://tiger-ai-lab.github.io/VisualWebInstruct/",
+    "huggingface": "https://huggingface.co/datasets/TIGER-Lab/VisualWebInstruct",
+    "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.72"
+  },
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "reason_to_include": "web-mined multimodal reasoning demonstrations",
+  "updated_at": "2026-07-14T11:38:56Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态推理数据构建",
+    "updated_at": "2026-07-14T11:38:56Z"
+  }
+}

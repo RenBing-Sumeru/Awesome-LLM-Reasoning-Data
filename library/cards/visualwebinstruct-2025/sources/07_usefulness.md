@@ -1,0 +1,3 @@
+- Use the released QA/image records as a broad multimodal SFT source when narrow chart, geometry, or elementary-science datasets do not cover the target distribution.
+- Reuse the two-stage pipeline as a checklist: image-based retrieval, accessibility-tree extraction, record validity filtering, multi-answer consistency, and source-answer alignment.
+- Use the reported LLaVA-OneVision and MAmmoTH-VL ablations as baselines, but preserve source URLs, dataset revision, teacher versions, and an independent rights/correctness audit.

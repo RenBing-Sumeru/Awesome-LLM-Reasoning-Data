@@ -1,0 +1,5 @@
+- 区分两个对象：StructuredOR 发布 124 条最终记录（训练 86、测试 38），BPP-Search 则运行在未发布的搜索树上。
+- 公开记录的结构是 `question` + 嵌套 `label`（`set`、`parameter`、`variable`、`objective`、`constraint`）+ `objective_value`；不要推定其中存在节点或检查器字段。
+- 按论文注明的 GPT-4o 可解子集解释搜索结果：StructuredOR 30/38、MAMO-ComplexLP 72/211、NL4OPT 143/289。
+- 分支因子 3 的 39 次调用、分支因子 4 的 84 次调用，以及宽度 2/3 的 15/21 个步骤都是实验级预算，不是逐记录元数据。
+- 首先审计发布边界：原始树、剪枝与被拒节点、选择器语料及分数、检查器输出、实现、逐样例预算和数据集 license 均缺失或为 unknown。

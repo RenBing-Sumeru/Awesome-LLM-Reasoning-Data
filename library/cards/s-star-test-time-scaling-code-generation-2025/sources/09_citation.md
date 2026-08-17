@@ -1,0 +1,1 @@
+Dacheng Li, Shiyi Cao, Chengkun Cao, Xiuyu Li, Shangyin Tan, Kurt Keutzer, Jiarong Xing, Joseph E. Gonzalez, and Ion Stoica. S*: Test Time Scaling for Code Generation. Findings of EMNLP 2025, 15964-15978. https://aclanthology.org/2025.findings-emnlp.865/ · https://aclanthology.org/2025.findings-emnlp.865.bib · https://github.com/NovaSky-AI/SkyThought

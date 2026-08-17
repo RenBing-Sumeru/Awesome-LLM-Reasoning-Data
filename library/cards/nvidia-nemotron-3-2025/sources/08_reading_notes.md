@@ -1,0 +1,5 @@
+- Separate public weights and software from released, gated, private-third-party, and NVIDIA-internal training material.
+- Treat developer recipes as open-subset reference implementations, not evidence that the reported proprietary-data results are reproducible.
+- Record multi-environment RL by task family, environment version, terminal predicate, reward, rollout policy, and calibration; most of these are still incomplete here.
+- Preserve the two Nano data-scale statements: 141 datasets and 10.648T tokens in the table, versus approximately 25T training tokens in the text.
+- Keep this as a Track 12 disclosure ledger, not a Track 8 reusable-RL-recipe classification.

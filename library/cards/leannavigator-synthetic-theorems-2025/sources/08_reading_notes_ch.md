@@ -1,0 +1,6 @@
+- 区分生成图与公开数据：LeanNavigator 搜索带 tactic 边的 Mathlib4 状态图，Zenodo 只提供两个字符串构成的 `[state, proof/tactic text]` 记录。
+- 搜索契约很明确：FAISS 检索 100 个 tactic 模板，每状态最多实例化 200 个 tactic；每个种子的 breadth-first exploration 在 30 分钟或 200,000 次转移后停止，只保留距 `ProofFinished` 至多八步的状态。
+- 选中证明先最小化 tactic 数，再最小化 tactic 字符串总长度。这只验证一条短可执行路径，不证明唯一性、语义新颖性或数学表述最优。
+- 官方 notebook 精确报告载入 4,702,639 个样本，但没有清单用校验和把本地输入绑定到 Zenodo 压缩包；应与论文取整后的 470 万和 10 亿 token 分开表述。
+- notebook 的未固定种子随机 90/10 行级切分，在图血缘被移除后可能让相关状态跨 split；应改用按源定理或图分组的切分。
+- notebook 中的 Mathlib4 commit 与 Lean 4.9.0-rc2 只是复现线索，不是发布级固定项。代码许可、批量重放、完整血缘、精确/语义重叠和论文—工件快照仍未解决。

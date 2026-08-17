@@ -1,0 +1,5 @@
+The arXiv abstract reports 57 tasks including elementary mathematics, US history, computer science, law, and more, and states that the largest GPT-3 model was still far from expert-level accuracy while improving over random chance by almost 20 percentage points on average. The official repository README identifies the work as ICLR 2021 and publishes OpenAI API evaluation code plus a downloadable test package.
+
+The decisive row-level evidence is simple: a model answer is correct only when its selected option equals the reference option. Aggregate evidence such as average accuracy, subject accuracy, or leaderboard rank is therefore only as reliable as the released question text, answer key, split, prompt scaffold, and evaluation implementation.
+
+Evidence boundary: public MMLU has become a common training-contamination target, later work has documented benchmark-quality issues, and scores from different harnesses can differ through prompt formatting, answer normalization, few-shot examples, and model snapshot changes.

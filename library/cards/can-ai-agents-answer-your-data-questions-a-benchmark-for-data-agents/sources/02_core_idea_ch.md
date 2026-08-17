@@ -1,0 +1,1 @@
+DAB 含 54 个问题、12 个数据集、9 个领域和 4 类数据库管理系统，覆盖 SQLite、PostgreSQL、DuckDB 与 MongoDB 等组合。任务体现多库集成、格式不规范的 key join、非结构化文本转换和领域知识四类难点。每题提供数据库环境、问题、ground truth 与验证脚本；数据对象是“多源数据状态—agent 查询/代码—答案产物—程序验证结果”，定位为小规模高真实性 benchmark。

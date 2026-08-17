@@ -1,0 +1,5 @@
+- 先确认 release boundary：公开的是 4,201 个任务记录与 9,471 个 error label，不包括完整 command、observation、patch、log、test 和成功/失败 terminal record。
+- 日期必须分开：ID/year 的 2025 来自 arXiv v1；已核验正式 venue 是 ICLR 2026 Poster；仓库 commit `86ab7858613b85f4a8316f3cda3c83086b8cf7c2` 早于最终会议版本。
+- 建议先读 Sections 3.1-3.4 与 Appendices A、C、D，理解 task construction、process/terminal feedback、计划中的 trajectory generation 用途和输出 prompt；再用 Table 3、Sections 4.2-4.5、Figure 7 查看结果与 failure pattern。
+- 不要合并不同 repository 统计口径：论文是 323，发布中则有 320 个 JSONL 名称、321 个目录、329 条 revision；同样，发布中的 level0 无法由论文的 levels 1-10 说明。
+- replay 前应解决 execution gitlink，调和 GPT-4.1-mini 与 `gpt-4o-mini`，锁定 image/package/network/cache/reset 状态，保留失败样本，并审计 split、overlap、license 和 root/network execution security。

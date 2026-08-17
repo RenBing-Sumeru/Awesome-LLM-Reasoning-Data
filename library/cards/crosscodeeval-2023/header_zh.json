@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CrossCodeEval 评测多语言跨文件代码补全。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2023 Datasets and Benchmarks Track 的 cross-file code completion benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yangruibo Ding 等（Columbia University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T04:23:23Z"
+}

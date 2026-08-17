@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "比较 RAFT、Reinforce 与 GRPO，并通过过滤四条响应全部正确或全部错误的题组构造 Reinforce-Rej；TMLR 投稿已由作者撤回。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "在线拒绝采样与策略梯度分析",
+  "best_for_ch": "研究 RAFT、GRPO、在线过滤、熵塌缩和有效训练分布的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Xiong、Jiarui Yao、Yuhui Xu、Bo Pang、Lei Wang、Doyen Sahoo、Junnan Li、Nan Jiang、Tong Zhang、Caiming Xiong、Hanze Dong",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T09:51:10Z"
+}

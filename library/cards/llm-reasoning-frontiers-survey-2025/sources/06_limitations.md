@@ -1,0 +1,1 @@
+The taxonomy is broad and cannot replace task-specific reporting. Agent results in particular depend on tool quality, environment state, action limits, and interaction budget. A system may appear stronger simply because it is allowed more observations or retries. Use the map to form comparisons, then read the primary protocol.

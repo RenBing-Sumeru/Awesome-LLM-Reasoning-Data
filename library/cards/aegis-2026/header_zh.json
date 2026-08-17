@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Aegis 将确定性成功的多智能体运行转化为 9,533 条经 mixed evaluator 确认失败的完整 episode，并附 agent/error-mode 归因；其选择性保留、分组策略未披露与未固定回放限制训练复用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多智能体错误归因数据集、基准与 verifier/reward 方法",
+  "best_for_ch": "研究多智能体失败轨迹、SFT/GRPO 归因监督、mixed verifier、数据选择偏差与 episode 回放审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Fanqi Kong, Ruijie Zhang, Huaxiao Yin, Guibin Zhang, Xiaofei Zhang, Ziang Chen, Zhaowei Zhang, Xiaoyuan Zhang, Song-Chun Zhu, Xue Feng",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "SciArena: An Open Evaluation Platform for Non-Verifiable Scientific Literature-Grounded Tasks",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=am6RR85mnc",
+    "data": "https://huggingface.co/datasets/yale-nlp/SciArena"
+  },
+  "review_note": "L4 材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T08:55:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "超2万研究者投票，公开约 13,204 条投票记录，收集文献问答的两两偏好，校准科学写作裁判",
+    "updated_at": "2026-07-24T08:55:58Z"
+  }
+}

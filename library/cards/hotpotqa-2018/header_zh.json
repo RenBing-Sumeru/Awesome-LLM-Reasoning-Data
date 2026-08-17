@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HotpotQA 含约 113k 个 Wikipedia 多跳问答样本，并给出 supporting facts，使答案与证据链能一起被评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要多跳检索/阅读理解评测面，或比较 distractor、full-wiki、supporting-fact scorer 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhilin Yang 等（Carnegie Mellon University, Stanford University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

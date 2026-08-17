@@ -1,0 +1,3 @@
+This report is a useful template for documenting frontier recipes at three levels: aggregate corpus composition, capability-specific record construction, and feedback/optimizer sequencing. Dataset builders can reuse its distinctions among human preferences, edited targets, rejection-sampled SFT, execution-verified code, process-filtered reasoning, tool trajectories, and safety records.
+
+For stronger auditability, every record should carry source/license identity, generator checkpoint and decoding, candidate-set membership, verifier/RM version and score, failure/rejection reason, round membership, and final checkpoint ancestry. Open-weight releases should separately enumerate which weights, code, data, rewards, tests, and environments are actually reusable.

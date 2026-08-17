@@ -1,0 +1,115 @@
+id: visualwebarena-2024
+title: 'VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks'
+year: 2024
+venue: ACL 2024 / arXiv
+authors:
+- Jing Yu Koh
+- Robert Lo
+- Lawrence Jang
+- Vikram Duvvur
+- Ming Chong Lim
+- Po-Yu Huang
+- Graham Neubig
+- Shuyan Zhou
+- Ruslan Salakhutdinov
+- Daniel Fried
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- multimodal-web-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2401.13649
+  arxiv: https://arxiv.org/abs/2401.13649
+  doi: https://doi.org/10.18653/v1/2024.acl-long.50
+  code: https://github.com/web-arena-x/visualwebarena
+  data: https://github.com/web-arena-x/visualwebarena/tree/main/config_files
+  project: https://jykoh.com/vwa
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.50/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors extend WebArena-style tasks with visually grounded website interactions
+  trace_author: official task designers and annotators described by the paper
+  answer_format: task instruction, browser observation, visual state, action sequence, and final success outcome
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: realistic visually grounded web tasks over browser pages, screenshots, and site state
+  verifier_or_reward: task-specific web environment predicates and answer checks over visual/page state
+  terminal_predicate: task-specific web environment predicates and answer checks over visual/page state
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official task authors and validators
+  generator: official VisualWebArena task construction pipeline
+  filtering_rule: keep only source-backed claims about task construction, visual dependence, and evaluator behavior
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2401.13649, official project page, and web-arena-x/visualwebarena repository
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2401.13649'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology verifies ACL 2024 status and DOI. Official project reports 910 new visual tasks, GPT-4o 19.78%, and
+    human 88.70%; reuse requires pinned site snapshot, browser rendering, and evaluator version.
+inclusion_reason: it adds visual UI grounding to realistic browser-agent evaluation
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- multimodal-web-agents
+why_it_matters: it adds visual UI grounding to realistic browser-agent evaluation
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: VisualWebArena turns visually grounded website tasks into an auditable browser-agent evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: ACL Anthology verifies ACL 2024 status and DOI. Official project reports 910 new visual tasks, GPT-4o 19.78%, and
+    human 88.70%; reuse requires pinned site snapshot, browser rendering, and evaluator version.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 23
+  primary_category_id: benchmarks_evaluation_surfaces

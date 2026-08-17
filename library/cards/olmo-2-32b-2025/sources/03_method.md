@@ -1,0 +1,6 @@
+The release identifies OLMo-Mix-1124 as a 3.9T-token pretraining mixture from DCLM, Dolma, StarCoder, and Proof Pile II. Dolmino mid-training is reported as 843B tokens of quality-filtered resampled OLMo-Mix documents, educational/math/academic material absent from OLMo-Mix, and synthetic plus human-generated instruction data. The checked materials do not establish a record-level source-to-stage allocation for the 32B run.
+
+For post-training, 32B filters SFT instructions and chosen preference responses that mention a synthetic-generation date cutoff. Persona MATH and Grade School Math retain prompt/completion groups only when a majority vote is reached over five completions. The producing models, prompts, sampling settings, exact thresholds beyond this rule, and retained/rejected trace mapping are unknown.
+
+Ai2 states that it uses high-quality instructions for SFT, on-policy preference data for DPO, and GRPO RLVR for GSM8K, IFEval, and MATH prompts. Ground-truth and constraint fields in the released RLVR mix support an answer/constraint data object, but the answer parser, task rewards, reward aggregation, calibration, GRPO rollouts, environment/harness configuration, and checkpoint-selection procedure are not established by the checked release.
+

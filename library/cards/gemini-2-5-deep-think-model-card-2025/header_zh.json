@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Gemini 2.5 Deep Think Model Card 披露并行假设生成、追加的推理与数学数据、novel RL、人类/critic 反馈和前沿安全评测，但未公开训练记录、推理奖励、分支预算或 checkpoint 谱系。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型卡与数据披露台账",
+  "best_for_ch": "审计前沿推理模型的数据对象、反馈契约、test-time compute、评测预算和版本映射的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Google DeepMind",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

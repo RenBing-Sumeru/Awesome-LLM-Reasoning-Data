@@ -1,0 +1,1 @@
+以往工作各自发布 DafnyBench、FVAPPS、Verina 或 VerifiedCogen，并在不同 prompt、模型和成功定义下报告结果，无法横向观察 vericoding。本文的新意不是新增某一种 verifier，而是建立跨三种形式语言的统一数据 schema、来源索引、构建脚本和结果表，并明确保留 non-compiling issues 而非静默删除。它还将 6,174 个新增任务与已有 benchmark 合并，使研究者可比较语言生态、自然语言辅助和模型时间进展；但并未做到同一算法在三语言中的完全对齐。

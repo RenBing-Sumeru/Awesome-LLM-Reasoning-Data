@@ -1,0 +1,4 @@
+- 将 state–tactic 转移、proof/disproof/timeout 结果、预算和 replay 纳入情况记录为不同字段。
+- 区分 300K 条 Mathlib SFT pair、约八千万形式 RL 陈述和目标特定 TTRL 变体。
+- 注意失败尝试不会进入网络更新，且 replay buffer 未发布。
+- 将 IMO 与基准结果视为计算密集方法的证据，而不是数据忠实性或开放性的证明。

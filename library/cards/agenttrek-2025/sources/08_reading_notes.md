@@ -1,0 +1,5 @@
+- Confirm ICLR 2025 Spotlight from the official proceedings and virtual-program record; start with Figure 2 and Sections 2.1–2.2.
+- Treat 10,398 trajectories, 52,594 dialogue turns, and the 6,000/10,000 training subsets as different units until a mapping manifest exists.
+- Compare the 44.38% arithmetic with Appendix C's 39.9% and the “nearly 5,000” sentence; the paper does not reconcile them.
+- Read Appendix G.1 before interpreting “successful,” then inspect Appendix H's expired-tutorial failure and the missing failed-data release.
+- Pair with `learn-by-interact-2025`; audit the text-only HF schema, absent construction/training code, licenses, environment snapshots, rights/privacy controls, and contamination before reuse.

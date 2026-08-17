@@ -1,0 +1,156 @@
+id: cogcom-2025
+title: 'CogCoM: A Visual Language Model with Chain-of-Manipulations Reasoning'
+year: 2025
+venue: ICLR 2025
+authors:
+- Ji Qi
+- Ming Ding
+- Weihan Wang
+- Yushi Bai
+- Qingsong Lv
+- Wenyi Hong
+- Bin Xu
+- Lei Hou
+- Juanzi Li
+- Yuxiao Dong
+- Jie Tang
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- multimodal-reasoning
+- visual-question-answering
+- visual-grounding
+- mathematics
+- ocr
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2402.04236
+  arxiv: https://arxiv.org/abs/2402.04236
+  code: https://github.com/zai-org/CogCoM
+  data: https://huggingface.co/datasets/qijimrc/CoMDataset
+  project: https://github.com/zai-org/CogCoM
+  huggingface: https://huggingface.co/datasets/qijimrc/CoMDataset
+  venue: https://openreview.net/forum?id=Fg0eo2AkST
+  openreview: https://openreview.net/forum?id=Fg0eo2AkST
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: TextVQA, ST-VQA, TDIUC counting/absurd questions for automated chains, plus MathVista and ChartQA for expert
+    math chains.
+  trace_author: GPT-4 writes manipulation plans, GroundingDINO and PaddleOCR instantiate visual results, DFS selects answer-terminating
+    paths, and ten human experts author/verify graphical math chains.
+  answer_format: A record contains pid, image_path/decoded image, question, answer, com_founds, and final_com; each manipulation
+    node stores operation name, parameters, bounding boxes or recognized text, variables, returned value, description, and
+    found status.
+  process_fields:
+  - image, question, answer, and source id
+  - manipulation function and parameters
+  - bounding box, OCR text, derived image, or calculation result
+  - intermediate description and final chain of manipulations
+  environment_or_substrate: Static images transformed into branching manipulation-result trees and serialized multi-turn,
+    multi-image VQA demonstrations.
+  verifier_or_reward: GroundingDINO and PaddleOCR supply visual evidence; DFS retains paths whose last manipulation reaches
+    the golden answer, while expert annotators construct and check the math subset.
+  terminal_predicate: A positive automated path must terminate at the source golden answer; failed tool-result branches are
+    excluded from the final chain.
+recipe_metadata:
+  base_model: CogVLM-style 17B model with EVA2-CLIP-E visual encoder, Vicuna-7B-v1.5 backbone, MLP adapter, and 6.5B visual-expert
+    parameters.
+  teacher: GPT-4-turbo is the linguistic annotator; GroundingDINO and PaddleOCR are visual annotators; ten experts annotate
+    CoM-Math.
+  generator: Prompt GPT-4 with six manipulation definitions and five demonstrations, execute grounding/OCR-derived operations,
+    and traverse the result tree.
+  filtering_rule: Depth-first search keeps only branches ending in the golden answer; expert math records preserve manually
+    supplied manipulation results.
+  sampling_protocol: Produce about 70K automated chains and 7K expert math samples; the release exposes 80,827 automatic records,
+    4,518 test records, and 6,998 math records.
+  rollout_count: null
+  temperature: null
+  inference_budget: GPT-4-turbo annotation ran from September to December 2023; the paper reports a 0.3555 positive-path success
+    rate but not total API tokens or cost.
+  optimizer_or_scaffold: Three next-token stages; the final 576K-image stage uses batch 160, 14K iterations, AdamW, learning
+    rate 1e-5, and 160 A100-days.
+audit:
+  source_mixture: Released splits contain 80,827 automated records, 4,518 CoM-test records, and 6,998 CoM-Math records; paper
+    Table 5 reports 13,766 TextVQA, 3,959 ST-VQA, 54,523 TDIUC-count, and 11,677 TDIUC-absurd chains.
+  split: The official release separates com, com_test, and com_math Parquet/JSONL files; source benchmark leakage beyond those
+    declared splits is not quantified.
+  decontamination: No semantic image/question decontamination report is provided across training mixtures and all nine downstream
+    benchmarks.
+  license: The official Hugging Face dataset identifies CC-BY-SA-4.0; component images and source VQA datasets retain their
+    own terms.
+  lineage: Public VQA triples receive GPT-4 plans, executable visual annotations, DFS answer filtering, and multi-turn serialization;
+    expert math chains are added separately before SFT.
+  known_failure_modes:
+  - Five-shot GPT-4 prompting produces low-diversity manipulation language and can overfit a narrow trace style.
+  - Grounding/OCR errors create wrong branches, while final-answer agreement cannot prove every retained intermediate statement
+    is faithful.
+  - The model internalizes tool outputs and does not execute external tools at inference, so emitted boxes/text can still
+    be hallucinated.
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2025 final paper and appendix, official OpenReview link, first-page affiliations, CC-BY-SA-4.0 data metadata,
+    actual JSONL/Parquet record, production limits, ablation, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: CoMDataset publishes step-level visual manipulation demonstrations with explicit trace authors, executable
+  visual annotations, answer-terminating DFS selection, and direct SFT consumption.
+related:
+- mulberry-reasoning-reflection-2025
+tags:
+- visual-manipulation-traces
+- multimodal-rationale-data
+- visual-grounding
+- ocr
+- expert-math-data
+status: verified
+one_line_summary: CogCoM releases visual manipulation chains whose grounding, OCR, and calculation results form evidence-bearing
+  multimodal SFT targets.
+why_it_matters: It exposes a structured bridge from visual tools and golden answers to trainable multi-turn reasoning demonstrations.
+reading_priority: must read
+paper_type: visual chain-of-manipulations dataset and model report
+best_for: Researchers building or auditing evidence-bearing visual reasoning and tool-distillation data.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: ICLR/arXiv paper, OpenReview record, repository, CC-BY-SA-4.0 dataset metadata, splits, schema, and actual sample
+    were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-general
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: evidence-bearing visual manipulation demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The official paper affiliation block lists Tsinghua University and Zhipu AI.
+    venue: The final paper states publication as a conference paper at ICLR 2025 and links its official OpenReview record.
+    impact: On 2026-07-14 the official repository reported 222 stars and 12 forks, while the dataset reported 150 downloads
+      and 6 likes.
+    artifact: The release provides paper, code, model, CC-BY-SA-4.0 JSONL/Parquet records, image archive, and visualization
+      notebook.
+  selection_eligible: true
+  year_impact_threshold: 2

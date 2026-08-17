@@ -1,0 +1,242 @@
+id: portool-tool-use-llm-training-with-rewarded-tree-2025
+title: 'PORTool: Importance-Aware Policy Optimization with Rewarded Tree for Multi-Tool-Integrated Reasoning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Feijie Wu
+- Weiwu Zhu
+- Yuxiang Zhang
+- Soumya Chatterjee
+- Jiarong Zhu
+- Fan Mo
+- Rong Luo
+- Jing Gao
+source_role:
+- construction_recipe
+- agent_environment
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- multi_tool_reasoning
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.26020
+  paper_pdf: https://arxiv.org/pdf/2510.26020v2
+  paper_revision: https://arxiv.org/abs/2510.26020v2
+  arxiv: https://arxiv.org/abs/2510.26020
+  project: https://machinelearning.apple.com/research/portool-policy-optimization
+  code: null
+  data: null
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.48550/arXiv.2510.26020
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.26020
+data_object:
+  object_type: A private set of real-user assistant queries and policy-generated, prefix-sharing rollout trees. Each root
+    query expands into complete tool-use episodes; nodes bind a reasoning/tool-call step to executed tool responses or errors,
+    and terminal outcomes plus bounded format/execution signals are transformed into step-wise importance and policy advantages.
+  prompt_source: 3,607 anonymized and de-identified text queries collected from interactions with a production mobile assistant.
+    The queries cover Weather, Sports, Geo/Maps, Knowledge, Clock/Time, News, Flight, and Stock, with both time/location-sensitive
+    and invariant requests.
+  trace_author: Qwen-2.5-7B-Instruct and Qwen-3-1.7B policies generate stochastic tool-use rollouts during training in a private
+    sandboxed executable environment.
+  task_fields:
+  - anonymized_user_query
+  - domain
+  - time_or_location_dependency
+  - split
+  tree_fields:
+  - shared_prefix_history
+  - node_reasoning
+  - node_tool_calls
+  - node_tool_responses_or_errors
+  - child_branches
+  - completed_trajectory_membership
+  - terminal_outcome_label
+  - formatting_execution_score
+  - step_importance
+  - fork_relative_advantage
+  - trajectory_relative_advantage
+  observation: The policy sees the user query, tool schemas, prior reasoning/tool calls, and structured tool outputs or explicit
+    errors appended to context. Runtime time and location can be retrieved through a dedicated context tool.
+  action_space: Each step emits a short reasoning block and a structured JSON array containing one or more independently executable
+    calls from 21 function-style tools, including the terminal response_gen tool.
+  answer_format: Alternating reasoning and structured tool-call blocks, ending with response_gen and a natural-language answer
+    or the 6-tool-call-step horizon.
+  verifier_or_reward: A fixed GPT-4o evaluator judges the full trajectory and tool evidence as true, false, or unable_to_answer.
+    Each evaluated trajectory is judged 5 times and majority-voted. PORTool combines descendant outcome rewards with a bounded
+    formatting/execution score under correctness-dominant scaling.
+  reward: Trajectory-level terminal outcome supervision is converted into a prefix-consistent step importance. Sibling steps
+    at a fork receive local relative advantages, while complete trajectories also receive trajectory-relative advantages.
+    Format validity and successful invocation are auxiliary and cannot outweigh correctness.
+  terminal_predicate: An episode terminates when response_gen is invoked or the maximum budget of 6 tool-call steps is reached;
+    GPT-4o then assigns the post-hoc outcome label.
+  provenance: De-identified production query -> train/evaluation split -> SFT warm start -> stochastic policy rollout tree
+    in the sandboxed 21-tool environment -> tool outputs/errors -> 5-vote terminal judgment -> step importance -> mixed fork-
+    and trajectory-relative policy update.
+  environment_or_substrate: A private sandboxed environment with 21 rigid-schema production-style assistant tools and explicit
+    failure modes. It supports real-time responses and unlimited training executions; the backend and full implementation
+    are not publicly released.
+  release_boundary: The arXiv v2 paper, source, appendix tool schemas/prompts, examples, and Apple research page are public.
+    The 3,607 queries, SFT data, rollout trees, terminal labels, step rewards, checkpoints, code, evaluator prompt/configuration,
+    and executable tool backend were not verified as released artifacts.
+recipe_metadata:
+  base_model:
+  - Qwen-2.5-7B-Instruct
+  - Qwen-3-1.7B
+  teacher: GPT-4o is the fixed terminal evaluator. The private SFT teacher or demonstration source is not disclosed.
+  generator: The current policy produces bounded, prefix-sharing stochastic rollout trees; Qwen and baseline policies are
+    optimized after a 5-epoch SFT warm start.
+  prompt_or_task_source: 3,607 anonymized production mobile-assistant queries in 8 domains, including 1,287 time/location-dependent
+    and 2,320 invariant queries.
+  filtering_rule: User-identifying information is removed before use. Further collection, language, quality, deduplication,
+    safety, and exclusion rules are not disclosed.
+  sampling_protocol: 3,072 queries are used for training and 535 for held-out evaluation. PORTool generates 8 rollouts per
+    training query while preserving shared prefixes and distinct children at forks.
+  rollout_count: 8
+  temperature: Training uses temperature 1.0, top-p 1.0, and top-k -1. Evaluation uses temperature 0.7, top-p 0.8, top-k -1
+    for Qwen-2.5-7B-Instruct and temperature 0.6, top-p 0.95, top-k 20 for Qwen-3-1.7B.
+  inference_budget: At most 6 tool-call steps per episode; each reasoning step is capped at 2,048 generated tokens. Maximum
+    total prompt length is 30,720 and per-response length is 1,024 in the reported configuration.
+  optimizer_or_scaffold: SFT for 5 epochs followed by PORTool agentic RL for 15 epochs, equivalent to 90 steps. Training uses
+    VeRL/VLLM, LoRA rank 16, batch size 512, PPO-style minibatch 128, learning rate 1e-6, no KL loss, and one node with 8
+    NVIDIA H100 GPUs.
+  reward_or_selection_rule: All sampled branches contribute to within-tree credit assignment. Shared nodes aggregate descendant
+    outcomes into one importance value. At discriminative forks the adaptive operator emphasizes the best branch; for tied
+    best-case children it averages to reflect reliability. Fork-relative and trajectory-relative advantages are mixed with
+    normalization-aware scaling.
+audit:
+  source_mixture: Private production mobile-assistant queries across 8 domains. Of 3,607 queries, 1,287 are time/location-dependent
+    and 2,320 invariant. Tool outputs are generated online in the private sandbox rather than taken from a frozen public corpus.
+  split: 3,072 training and 535 held-out evaluation queries. The paper does not disclose randomization, stratification, user-level
+    grouping, temporal cutoff, duplicate handling, or a separate development set. Results average the best 3 checkpoints.
+  decontamination: No semantic deduplication, pretraining-overlap, user-level leakage, paraphrase overlap, or train/evaluation
+    contamination audit is disclosed. ToolBench and TravelPlanner are additional external evaluations, not evidence that the
+    private split is contamination-free.
+  benchmark_overlap: The private production queries are distinct in stated source from ToolBench and TravelPlanner, but no
+    item-level overlap or paraphrase audit is released.
+  lineage: The paper specifies query-to-tree-to-reward computation and publishes illustrative traces, tool schemas, and prompt
+    cards. It does not release durable per-query IDs, collection timestamps, anonymization logs, tree manifests, random seeds,
+    tool response snapshots, raw judge votes, or checkpoint/run mappings.
+  license: arXiv v2 is distributed under CC BY 4.0. No verified license covers the private production queries, generated trajectories,
+    tool outputs, code, backend, judge configuration, SFT data, or trained checkpoints.
+  release_version:
+    paper: arXiv:2510.26020v2
+    initial_submission: '2025-10-29'
+    current_revision: '2026-04-30'
+    apple_page_publication: 2026-05
+    tagged_end_to_end_release: null
+  artifact_release_state: 'Public: arXiv v2/PDF/source and Apple research page. Not verified public: code, data, model weights,
+    complete traces/rewards, evaluator prompt/configuration, anonymization records, environment/backend, or immutable experiment
+    manifests.'
+  successful_and_failed_sample_retention: Within an update, PORTool needs successful, failed, and unable-to-answer terminal
+    branches to compute descendant importance, sibling comparisons, and trajectory advantages. The paper does not disclose
+    retry/drop counts or a persistent retention policy, and no complete branch-level corpus in any outcome class is public.
+  replayability: The paper fixes time-sensitive evaluation to Cupertino, California and records execution timestamps to second
+    precision. Exact replay still requires the private 21-tool backend, tool versions/data sources, query set, SFT initialization,
+    random seeds, all sampled branches, raw GPT-4o votes, and model checkpoints; real-time external information can also drift.
+  verifier_or_judge_failure_modes:
+  - GPT-4o is calibrated at 94.37% agreement on 700 human-labeled query-answer pairs, leaving nonzero disagreement and no
+    domain-specific confusion matrix.
+  - Majority voting over 5 calls reduces variance but does not remove correlated judge bias, reference ambiguity, or evidence-selection
+    errors.
+  - unable_to_answer can reflect tool limitations, missing information, or execution failure; mapping it into optimization
+    may conflate environment limits with policy quality.
+  - Adaptive max aggregation can emphasize a lucky successful descendant, while averaging can dilute rare but decisive success;
+    the method switches heuristically based on sibling discrimination.
+  - Formatting/execution success is not semantic correctness. The paper bounds this auxiliary signal so it cannot dominate
+    terminal correctness.
+  - Dynamic tool responses can change both the trajectory and judge evidence between otherwise identical reruns.
+  privacy_or_consent: The paper says all production-assistant text queries are anonymized, de-identified, and stripped of
+    user-identifying information. It does not disclose collection consent, retention period, anonymization technique, re-identification
+    assessment, privacy review/IRB status, geographic scope, or handling of sensitive query content and tool outputs.
+  safety_boundary: The training environment is described as sandboxed and its published schemas are production-style assistant/search/utility
+    tools. The paper does not publish a threat model, forbidden-query policy, tool-output trust policy, prompt-injection defense,
+    abuse filtering, or proof that every backend operation is side-effect-free.
+  citation_status: verified
+  confidence: high
+  notes: Verified arXiv v2/full HTML and appendix plus the official Apple research page on 2026-07-20. The v2 title, author
+    spelling, 21-tool environment, model/training details, split, privacy statement, and judge calibration materially supersede
+    the sparse baseline. No official code/data/model release was verified.
+  remaining_unknowns:
+  - public_query_sft_tree_reward_checkpoint_and_code_release
+  - collection_consent_anonymization_method_retention_and_privacy_review
+  - split_randomization_user_grouping_temporal_cutoff_dedup_and_contamination
+  - complete_branch_retry_drop_and_success_failure_retention_manifest
+  - tool_backend_versions_data_sources_side_effect_policy_and_replay_bundle
+  - raw_judge_votes_prompt_configuration_and_domain_calibration
+inclusion_reason: 'PORTool exposes a useful trajectory-data contract: multiple tool-use episodes share prefixes, terminal
+  success/failure propagates through descendant branches, execution feedback remains auxiliary, and local fork comparisons
+  are blended with global trajectory advantages for agentic RL.'
+related:
+- tool-r1-2025
+- tree-rl-2025
+tags:
+- portool
+- tool-use
+- agentic-rl
+- rewarded-tree
+- shared-prefix
+- fork-relative-advantage
+- outcome-reward
+- execution-feedback
+- private-production-data
+- replay-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: PORTool turns 8 shared-prefix tool-use rollouts per query into correctness-dominant step importance for
+  SFT-warm-started agentic RL, but its 3,607 production queries, trajectory trees, rewards, code, checkpoints, and 21-tool
+  backend remain private.
+why_it_matters: It makes credit assignment across successful, failed, and unable-to-answer tool paths explicit while showing
+  that a training recipe can be well described yet remain non-replayable and unavailable as a reusable public dataset.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  project_verified: true
+  code_verified: false
+  data_verified: false
+  model_verified: false
+  replay_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: Current official paper/project metadata verified; absence of a verified public artifact is not proof that no private
+    or later artifact exists.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release: publish licensed queries, SFT data, rollout trees, terminal labels, step rewards, code, checkpoints, judge
+  configuration, and tool backend'
+- 'needs_lineage: retain per-query collection/split IDs, complete branches, raw votes, seeds, tool versions/responses, retry/drop
+  decisions, and checkpoint mappings'
+- 'needs_split_contamination: document user grouping, time cutoff, stratification, deduplication, pretraining exposure, benchmark
+  overlap, and development selection'
+- 'needs_replay: freeze the 21-tool backend and data sources with query, time/location, model, SFT, decoding, seed, and evaluator
+  manifests'
+- 'needs_rights_privacy_safety: document licenses, consent, anonymization validation, retention, sensitive-content handling,
+  abuse filtering, injection defenses, and side-effect policy'
+card: null
+card_recommendation: 'High-priority L4 upgrade: preserve the rewarded-tree object, three terminal outcomes, success/failure
+  branch retention, SFT-to-RL recipe, split/contamination, replay, release, licensing, privacy, and safety boundaries.'

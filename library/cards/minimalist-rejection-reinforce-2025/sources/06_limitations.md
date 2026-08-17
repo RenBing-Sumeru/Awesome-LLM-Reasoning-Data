@@ -1,0 +1,2 @@
+Binary final-answer reward cannot validate intermediate reasoning. Positive-only updates can collapse entropy, while all-wrong negative groups may destabilize training. Group filtering changes the policy-dependent prompt distribution and may remove useful boundary cases. Decontamination and rollout obligations are unknown. The Apache-2.0 repository has no tagged snapshot, frozen prompt manifest, rollout groups, selected-response dataset, or reward logs.
+

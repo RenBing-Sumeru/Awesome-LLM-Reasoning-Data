@@ -1,0 +1,320 @@
+id: windowsworld-2026
+title: 'WindowsWorld: A Process-Centric Benchmark of Autonomous GUI Agents in Professional Cross-Application Environments'
+year: 2026
+venue: 'Findings of the Association for Computational Linguistics: ACL 2026'
+authors:
+- Jinchao Li
+- Yunxin Li
+- Chenrui Zhao
+- Zhenran Xu
+- Baotian Hu
+- Min Zhang
+source_role:
+- benchmark
+- agent_environment
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+- judgment_required
+supervision_granularity:
+- full_episode
+- process_reward
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- desktop_gui
+- multimodal_agents
+- cross_application_reasoning
+- tool_use
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.750/
+  paper_pdf: https://aclanthology.org/2026.findings-acl.750.pdf
+  arxiv: https://arxiv.org/abs/2604.27776
+  arxiv_pdf: https://arxiv.org/pdf/2604.27776
+  code: https://github.com/HITsz-TMG/WindowsWorld
+  code_snapshot: https://github.com/HITsz-TMG/WindowsWorld/tree/fbccd464f94fec9e284e139f97bf96d0b192f580
+  data: https://github.com/HITsz-TMG/WindowsWorld/blob/fbccd464f94fec9e284e139f97bf96d0b192f580/benchmark.json
+  vm_image: https://1drv.ms/u/c/e8642dbeac76c2db/IQCdgyZYiEbEQJXobPBkeVxEAVDPP8v1urchER7YzbMiEKI?e=p9ladN
+  license: https://github.com/HITsz-TMG/WindowsWorld/blob/fbccd464f94fec9e284e139f97bf96d0b192f580/LICENSE
+  project: null
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.750
+  venue: https://aclanthology.org/2026.findings-acl.750/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.750/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-acl.750.bib
+data_object:
+  object_type: An executable Windows desktop benchmark specification, not a released trajectory-training corpus. The canonical
+    public object is a bilingual task record with persona, difficulty, involved applications, declarative preconditions, environment-setup
+    requests, intermediate state checkpoints, and a final success criterion. Running the supplied harness can add screenshots,
+    actions, model responses, environment signals, checkpoint judgments, and a terminal judgment for one agent episode.
+  prompt_source: 'The paper reports 181 professional Windows tasks across 17 applications, grounded in 16 personas from five
+    domains. DeepSeek-V3.2 generated candidates from persona routines and application dependencies with web search restricted
+    to allowlisted open platforms; a four-node refiner, four human reviewers, and an environment generator then processed
+    them. The pinned public benchmark contains all 181 task records: 39 L1, 80 L2, 50 L3, and 12 L4.'
+  task_record:
+  - task_id
+  - instruction
+  - instruction_cn
+  - task_category
+  - persona
+  - involved_apps
+  - pre_conditions
+  - environment_setup.files_to_create
+  - environment_setup.urls_to_mock
+  - environment_setup.downloadable_resources
+  - evaluation_metrics.success_criterion
+  - evaluation_metrics.intermediate_checks
+  - evaluation_metrics.expected_final_state
+  - validity_info
+  - duplicate_fields
+  - construction_timestamps
+  - review_status
+  - reviewer_notes
+  trace_author: The evaluated GUI model or agent generates runtime actions and responses from screenshots, accessibility trees,
+    or Set-of-Marks observations. `hf_run.py` can serialize each locally executed episode, but the official repository does
+    not contain the paper's complete experimental successful and failed trajectories.
+  episode_fields:
+  - task_instruction
+  - step_num
+  - model_response
+  - action
+  - screenshot_file
+  - environment_reward
+  - done
+  - info_or_execution_error
+  - intermediate_checkpoint_judgments
+  - intermediate_score
+  - final_judgment
+  - final_result
+  answer_format: A sequence of PyAutoGUI or Computer_13 GUI actions ending with DONE, FAIL, or the level-specific step cap.
+    For feasible L1-L3 tasks, Qwen3-VL-Plus judges every intermediate state and final success from ordered actions and screenshots.
+    For infeasible L4 tasks, the released evaluator awards final success when the action list is empty or the last action
+    is recognized as FAIL.
+  observation: The paper evaluates screenshot, screenshot plus accessibility tree, and Set-of-Marks inputs. The environment
+    is partially observable; the public runner retains post-action screenshots and action/response metadata locally.
+  action_space:
+  - pyautogui_mouse_and_keyboard_actions
+  - computer_13_actions_for_uipath
+  - DONE
+  - FAIL
+  environment_or_substrate: Controlled Windows virtual machines using OSWorld-derived infrastructure and 17 desktop applications.
+    Agents are intended to use ordinary GUI operations without internal APIs or privileged system calls. The repository documents
+    VMware execution and links a mutable OneDrive WindowsWorld 25H2 VM image rather than an immutable image digest.
+  state_reset: '`hf_run.py` invokes `env.reset()` before a standard task, which restores the configured VM environment, but
+    the call does not pass the task object and the runner does not visibly materialize each record''s `environment_setup`.
+    The release therefore does not establish that the 97 tasks requesting generated local files and 16 tasks listing downloadable
+    resources are initialized from `benchmark.json` by the main runner.'
+  verifier_or_reward: For L1-L3, Qwen3-VL-Plus receives the instruction, ordered actions, all retained screenshots, intermediate
+    checks, and final success criterion, and returns a binary decision plus reason for each checkpoint and the final state.
+    S_int is the mean satisfied-checkpoint fraction and S_final is binary final completion. L4 uses a programmatic last-action/empty-action
+    FAIL test instead of the VLM judge. These are evaluation signals; the paper does not release or demonstrate them as an
+    online RL training reward.
+  terminal_predicate: 'Interaction stops on DONE, FAIL, or a maximum of 15/25/40/20 steps for L1/L2/L3/L4. Benchmark success
+    is post hoc: Qwen3-VL-Plus must accept the final state for feasible tasks, while an L4 episode passes if it emits or is
+    reduced to FAIL under the released rule. Runner termination and benchmark success are distinct.'
+  provenance: Persona and application dependencies -> DeepSeek-V3.2 candidate tasks -> semantic deduplication, URL/file validity
+    audit, dependency reasoning, and metric refinement -> four-person human filtering -> LLM-generated/merged setup files
+    -> public task record -> VM execution by an evaluated agent -> screenshot/action history -> VLM checkpoint/final judgments
+    or L4 FAIL rule -> aggregate S_int and S_final. Record-level candidate revisions, generated setup artifacts, published
+    run IDs, and complete judge calls are not released.
+  release_shape: The pinned repository releases the exact paper-scale 181-row `benchmark.json`, environment/agent/evaluator
+    code, installation instructions, and a OneDrive VM link. It contains no committed `hf_result`, `result_cache`, `traj.jsonl`,
+    per-step screenshot corpus, or paper-experiment result bundle; those files are produced only by local execution.
+recipe_metadata:
+  base_model: DeepSeek-V3.2 is the disclosed task generator. The specific models used by the dependency reasoner, metric refiner,
+    and environment generator, including immutable snapshots, are unknown. Evaluation covers Gemini-3-flash/pro-preview, GPT-5.2,
+    Claude-Sonnet-4.5, Qwen3-VL-Plus, S3, and UiPath configurations described in the paper.
+  teacher: null
+  generator: Persona-based DeepSeek-V3.2 generation with allowlisted web search, followed by a four-node automated refiner,
+    four human reviewers, and LLM-based file synthesis with smart merging across tasks in the same persona.
+  prompt_task_source: Sixteen professional personas across five domains, their daily work routines, primary/secondary applications,
+    and application dependencies. Public benchmark records retain bilingual instructions, persona, task category, apps, preconditions,
+    setup requests, evaluation criteria, validity metadata, and review metadata.
+  filtering_rule: The semantic deduplicator removes near-duplicate instructions above a cosine-similarity threshold whose
+    numeric value is not recoverable from the accessible HTML text; the validity auditor checks URLs and file/setup consistency;
+    the dependency reasoner converts procedural prerequisites into declarative states; the metric refiner standardizes observable
+    checkpoints. Humans reject ambiguous, subjective, proprietary-software, or inaccessible-service tasks.
+  sampling_protocol: The paper evaluates the 181-task suite across model/observation configurations using fixed level-dependent
+    step caps. Exact stochastic repeats, API retry handling, random seeds, candidate generation batch counts, and retained/rejected
+    candidate totals are unknown.
+  rollout_count: unknown
+  temperature: Exact settings for the published experiments and task-construction calls are unknown. Current `hf_run.py` defaults
+    agent calls to temperature 0.5 and the Qwen3-VL-Plus judge to 0.3, but these mutable code defaults are not an immutable
+    manifest of the paper runs.
+  inference_budget: Published maximum interaction steps are 15 for L1, 25 for L2, 40 for L3, and 20 for L4. Current runner
+    sets 10,000 agent max tokens and 4,096 judge max tokens, but provider timeouts, retry budgets, API costs, and exact paper-run
+    token limits are unknown.
+  optimizer_or_scaffold: VMware reset -> selected observation modality -> model/agent prediction -> PyAutoGUI or Computer_13
+    execution -> local screenshot/trajectory logging -> Qwen3-VL-Plus process/final judgment for L1-L3 or last-action FAIL
+    check for L4 -> aggregate S_int/S_final. No post-training optimizer is part of the released benchmark recipe.
+audit:
+  source_mixture: 'The paper-scale release has 181 tasks over 17 apps: 39 L1 single-app atomic, 80 L2 multi-app linear, 50
+    L3 dynamic reasoning, and 12 L4 infeasible. It reports 77.9% multi-app tasks, 71.8% L2/L3 tasks, 2.4 apps per task, and
+    4.97 checkpoints per task. Direct inspection finds 899 intermediate-check strings in `benchmark.json`, matching 4.97/row.'
+  split: No train/dev/test split is disclosed or encoded. All 181 public records form an evaluation suite, and the runner
+    loads them as one benchmark list while skipping task IDs already present in a local result directory.
+  decontamination: unknown
+  benchmark_overlap: The environment derives from OSWorld infrastructure, but the paper does not publish task-level overlap
+    checks against OSWorld or other GUI benchmarks, nor any model-pretraining contamination audit. Public tasks, checkpoints,
+    evaluator prompt, and final criteria create future memorization and evaluator-gaming risk.
+  lineage: Aggregate construction and evaluation lineage is described, and task rows carry created/refined/reviewed timestamps,
+    duplicate flags, validity information, review status, and notes. Candidate-to-final diffs, reviewer identities and raw
+    decisions, generated file lineage, VM-state mappings, execution IDs, and author-run trajectory/judge linkage are absent.
+  license: GitHub declares Apache-2.0 and includes the license text; README specifically says OSWorld-derived portions remain
+    Apache-2.0. The linked Windows VM and installed proprietary applications remain subject to Microsoft/vendor terms, and
+    the release does not separately state rights for generated trajectories or every downloadable/external task resource.
+  release_version: Paper identity is ACL Anthology 2026.findings-acl.750 and arXiv:2604.27776v1 (2026-04-30). Repository was
+    inspected at main commit `fbccd464f94fec9e284e139f97bf96d0b192f580` dated 2026-05-11; it has no tag or GitHub Release.
+    The OneDrive VM link is mutable and no cross-artifact manifest binds paper, code, task JSON, VM image, model APIs, and
+    results.
+  artifact_hashes:
+    benchmark_json_git_blob_sha1: adae53ec32fe9b92183fe76f400a4aa4c457e541
+    benchmark_json_sha256: c894bbce218db9fad5f8c54b9fcdb0e77f15622efc8d14890c20aafbb4a4c551
+    benchmark_json_size_bytes: 531900
+  public_record_status: 'Although the paper describes human-reviewed final tasks and the repository exposes all 181 records,
+    the pinned JSON internally marks only 126 `approved` and 55 `pending`; it marks 160 validity records true and 21 false.
+    Every row has `is_duplicate: false`. These fields may be stale construction metadata, but the release does not explain
+    or reconcile them, so public-row readiness must not be inferred solely from the paper total.'
+  successful_and_failed_sample_retention: The paper reports aggregate results and analyzes both successful and failed executions,
+    including checkpoint-wise first-failure and failure/success step statistics. The runner is capable of saving local action/response
+    logs, screenshots, Qwen judgments, and final scores for either outcome. However, the official repository does not publish
+    the complete successful, failed, timed-out, errored, or retried author trajectories, so public retention counts and selection
+    policy are unknown.
+  privacy_or_consent: The paper states that four postgraduate researchers filtered instructions and validated checkpoints,
+    were compensated USD 1.5 per task, and that LLM-generated/manual-reviewed instructions contain no PII or harmful content.
+    Raw annotation sheets, consent procedure, adjudication records, and a resource-by-resource privacy audit are not released.
+  replay: Code, 181 task definitions, setup descriptors, VM instructions, and a VM image link support partial re-execution.
+    Exact replay is not established because dependencies and API snapshots are not locked, the VM has no published digest,
+    the full paper-run corpus/configuration is absent, and current `hf_run.py` resets without passing the task setup. A fresh
+    user cannot independently verify every reported success/failure from released artifacts alone.
+  experimental_evidence:
+    benchmark_scale: 181 tasks, 17 applications, 16 personas, five professional domains, 899 released checkpoint strings.
+    task_levels: L1/L2/L3/L4 = 39/80/50/12; 77.9% use at least two applications; 71.8% are L2/L3.
+    horizon: Minimum expert actions average 9.67/18.13/27.81 for L1/L2/L3; runtime step caps are 15/25/40/20.
+    best_result: 'Gemini-3-flash-preview with screenshot plus accessibility tree: S_int 50.32%, S_final 20.44%.'
+    step_matched_result: At similar expert length, L1 vs L2 falls from S_int 65.74% to 35.14% and S_final 46.15% to 14.29%.
+    judge_validation: 100 stratified L1-L3 tasks, 518 checkpoints, two human annotators; Pearson 0.9108/0.8316 and Cohen kappa
+      0.8668/0.8271 for checkpoint/final judgments.
+  verifier_or_judge_failure_modes:
+  - The closed Qwen3-VL-Plus judge and unpinned API snapshot can drift; current prompt, temperature, and screenshots are not
+    an immutable paper-run contract.
+  - Paper error analysis finds false positives when action history looks successful but the actual GUI state is occluded,
+    and false negatives when a briefly achieved state is no longer visible.
+  - For L4, an empty action list or a final FAIL action is automatically scored successful without checking whether the agent
+    identified the correct infeasibility reason; failure-prone agents can receive credit.
+  - The benchmark JSON contains five intermediate checks across L4 records, but the released L4 evaluator ignores all intermediate
+    checks.
+  - Current standard runner calls `env.reset()` without the task configuration and does not visibly consume `environment_setup`,
+    risking missing files or resources unless the distributed VM was pre-populated exactly as expected.
+  - The public task file's 55 pending review states and 21 invalid flags conflict with a naive reading of all 181 rows as
+    uniformly approved final records.
+  - No full author trajectory/result bundle is public, preventing independent audit of successes, failures, timeouts, execution
+    errors, retries, judge calls, and aggregate calculations.
+  - Public task criteria and judge prompt allow contamination or targeted evaluator gaming; no hidden split or submission
+    policy is documented.
+  - The mutable VM image, evolving Windows/app interfaces, external URLs, authenticated services, and unpinned provider APIs
+    can change task feasibility and observed scores.
+  - Intermediate checkpoints are state predicates rather than causal step labels; high S_int does not prove a coherent or
+    safe path, and omitted side effects can remain unpenalized.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology record/PDF/BibTeX, arXiv v1 full HTML including appendices, official GitHub repository and pinned tree,
+    181-row benchmark JSON, README/installation/license, main runner/evaluator, result summarizer, release/tag state, and
+    VM link were inspected. Artifact verification confirms that the task/environment code release exists, not that all paper
+    results are replayable or that a complete trajectory dataset is public.
+  remaining_unknowns:
+  - exact_generator_refiner_environment_generator_model_snapshots_prompts_temperatures_and_candidate_counts
+  - explanation_and_resolution_for_55_pending_and_21_invalid_public_task_records
+  - generated_environment_files_and_task_to_vm_state_or_snapshot_mapping
+  - immutable_vm_digest_app_versions_dependencies_and_external_resource_snapshot
+  - full_success_failure_timeout_error_retry_trajectory_and_raw_judge_call_release
+  - exact_paper_run_models_API_revisions_seeds_retries_timeouts_and_cost_manifest
+  - train_dev_test_or_explicit_evaluation_only_and_future_leaderboard_policy
+  - task_overlap_decontamination_and_evaluator_gaming_controls
+  - license_scope_for_vm_installed_apps_external_resources_and_generated_trajectories
+inclusion_reason: 'WindowsWorld is a core Track 6 entry because it joins professional cross-application task specifications,
+  Windows VM execution, action/observation trajectories, intermediate state predicates, a calibrated VLM judge, and infeasibility
+  handling. Its release also makes crucial boundaries visible: task definitions are public at paper scale, but complete trajectories
+  are not; setup/review/version contracts remain incomplete; and L4 reward is much weaker than L1-L3 judging.'
+related:
+- osworld-2024
+tags:
+- environment-agent-trajectory-data
+- windowsworld
+- desktop-gui
+- computer-use-agent
+- multimodal-agent
+- cross-application-reasoning
+- process-aware-evaluation
+- intermediate-checkpoints
+- llm-as-judge
+- infeasible-tasks
+- vm-environment
+- replay-partial
+- trajectory-release-incomplete
+category_ids:
+- environment_agent_trajectory_data
+one_line: WindowsWorld releases all 181 Windows task/checkpoint specifications and an executable Qwen-judged harness, but
+  not the authors' complete success/failure trajectories, and its public review/setup/version contracts remain incomplete.
+one_line_summary: WindowsWorld releases all 181 Windows task/checkpoint specifications and an executable Qwen-judged harness,
+  but not the authors' complete success/failure trajectories, and its public review/setup/version contracts remain incomplete.
+why_it_matters: It shows how partial-progress feedback can make long-horizon GUI failures diagnostically useful while also
+  demonstrating that task scale, released trajectories, environment initialization, judge calibration, and exact replay are
+  separate evidence claims that must not be collapsed into one “dataset released” label.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  artifact_verified: true
+  task_manifest_verified: true
+  repository_files_verified: true
+  published_trajectory_corpus_verified: false
+  replay_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: ACL Anthology 2026.findings-acl.750; arXiv:2604.27776v1
+  repository_commit: fbccd464f94fec9e284e139f97bf96d0b192f580
+  duplicate_check: Exact-title and proposed-ID inspection found the assigned existing `windowsworld-2026` placeholder in the
+    target checkout and no second WindowsWorld record; OSWorld is a distinct predecessor/environment dependency.
+  notes: Citation, authors, venue, DOI, arXiv, full paper/appendix, paper-scale task JSON, release contents, main execution
+    and judgment paths, VM link, repository license, and repository version were checked. The VM was not downloaded and no
+    benchmark run was replayed; no complete author trajectory bundle is available, so status remains partial and curation
+    stays L3.
+curation_level: L3_summary_ready
+needs:
+- 'needs_task_status_reconciliation: explain and correct the 55 pending review rows and 21 validity=false rows in the published
+  181-task manifest'
+- 'needs_environment_setup: release generated setup files and connect every task''s environment_setup to deterministic runner
+  initialization or a task-specific VM snapshot'
+- 'needs_trajectory_release: publish all successful, failed, timed-out, errored, and retried author runs with task/model/modality
+  IDs, actions, screenshots/a11y, judge calls, outputs, and checksums'
+- 'needs_replay_manifest: bind paper, commit, task JSON, VM digest, Windows/app/dependency versions, model APIs, seeds, retries,
+  evaluator prompt/settings, and result hashes'
+- 'needs_split_policy: publish an explicit evaluation-only or train/dev/test manifest plus contamination and future leaderboard-submission
+  policy'
+- 'needs_l4_verifier: require evidence and reason-sensitive infeasibility verification instead of accepting empty/no-op or
+  generic FAIL as success'
+- 'needs_license_audit: clarify rights for the VM, installed apps, external/downloadable resources, benchmark records, and
+  generated trajectories'
+- 'needs_construction_lineage: release generator/refiner/environment prompts and model snapshots, candidate/rejection counts,
+  reviewer decisions, and task-level revision provenance'
+card: null
+card_recommendation: High-priority L4 Card candidate after the Card preserves the exact 181-task public release, distinguishes
+  task/checkpoint specifications from unavailable full trajectories, documents the 126-approved/55-pending and 160-valid/21-invalid
+  manifest state, and foregrounds environment-setup wiring, L4 verifier weakness, judge drift, replay, and license limits.

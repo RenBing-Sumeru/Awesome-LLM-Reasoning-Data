@@ -1,0 +1,5 @@
+- 应把第 3 节与附录 A–C 一起阅读：发布单位是包含嵌套候选的问题，答案接收与 `thought_correctness_verify` 分开。
+- 外层 `train` 行数应采用固定 README 的 708,009；datasets-server 的 552,229 是部分估算。嵌套 CoT 精确总数仍未独立验证，只能保留论文“超过两百万”的口径。
+- 解释 RV 前先读公式 1–2：最终 RV 以 alpha=0.5 混合 QwQ-32B 判断与对数归一化 token 长度；公开行没有暴露两个分量。
+- 阅读表 2–4 时应同时保留数据契约：联合选择是匹配问题的 SFT 结果，DPO 编码冗长度偏好，GRPO 加入学习得到的 RV/CD 奖励，但完整 rollout 设置缺失。
+- ACL 论文、主数据集、OmniThought-0528 和 EasyDistill 必须分别固定版本。ACL 正式版加入 DeepSeek-R1-0528/Qwen3 内容；核验到的代码只是部分 scaffold，不是冻结的构造清单。

@@ -1,0 +1,162 @@
+id: honeybee-vl-reasoning-2026
+title: 'HoneyBee: Data Recipes for Vision-Language Reasoners'
+year: 2026
+venue: CVPR 2026
+authors:
+- Hritik Bansal
+- Devendra Singh Sachan
+- Kai-Wei Chang
+- Aditya Grover
+- Gargi Ghosh
+- Wen-tau Yih
+- Ramakanth Pasunuru
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal
+- visual_reasoning
+- mathematics
+- science
+- text_reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2026/html/Bansal_HoneyBee_Data_Recipes_for_Vision-Language_Reasoners_CVPR_2026_paper.html
+  arxiv: https://arxiv.org/abs/2510.12225
+  code: https://github.com/facebookresearch/HoneyBee_VLM
+  data: https://huggingface.co/datasets/facebook/HoneyBee
+  project: https://github.com/facebookresearch/HoneyBee_VLM
+  huggingface: https://huggingface.co/datasets/facebook/HoneyBee
+  doi: null
+  venue: https://openaccess.thecvf.com/content/CVPR2026/html/Bansal_HoneyBee_Data_Recipes_for_Vision-Language_Reasoners_CVPR_2026_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2026/html/Bansal_HoneyBee_Data_Recipes_for_Vision-Language_Reasoners_CVPR_2026_paper.html
+  bibtex: null
+data_object:
+  prompt_source: The source study compares image/question contexts from ViRL, Math-LLaVA, R1-OneVision, ThinkLite-VL-Hard,
+    LLaVA-CoT, and MMK12. The final release is built from ViRL image/question/final-answer tuples, newly generated questions
+    conditioned on ViRL images and seed questions, and 1.04M OpenThoughts3 text questions.
+  trace_author: Llama-4 Scout generates captions, synthetic questions, and solution CoTs; it also re-annotates all 1.04M OpenThoughts3
+    samples. The original upstream questions and images are referenced by identifier where they are not redistributed.
+  answer_format: Released rows expose q_source, q_id, optional image_path, optional question, and cot. Vision-language CoTs
+    concatenate a separately generated detailed image caption with a solution ending in a boxed final answer; pointer-only
+    rows can leave question or image_path null.
+  process_fields:
+  - q_source
+  - q_id
+  - image_path
+  - question
+  - cot
+  environment_or_substrate: Controlled full-parameter SFT studies on Perception Language Models at 1B, 3B, and 8B scales;
+    the final recipe is primarily an SFT data release, while the paper separately tests one epoch of GRPO on another verifiable
+    multimodal dataset.
+  verifier_or_reward: Existing ViRL questions use known final answers to filter 16 sampled CoTs. Each new question receives
+    four same-teacher CoTs; an answer occurring at least three times becomes a proxy final answer, and only CoTs matching
+    that proxy are retained.
+  terminal_predicate: For an existing question, retain a trace when its extracted final answer matches the source answer.
+    For a synthetic question, retain a trace when its extracted answer matches the at-least-three-of-four majority answer.
+    No independent process verifier certifies intermediate reasoning.
+recipe_metadata:
+  base_model: Perception Language Models (PLM) at 1B, 3B, and 8B, using Llama-3.2 language backbones and a perception encoder
+  teacher: Llama-4 Scout, a 109B-total/17B-active open-weights MoE vision-language model
+  generator: Llama-4 Scout independently generates captions and solution traces for the selected caption-and-solve variant,
+    generates new questions, and re-annotates OpenThoughts3
+  filtering_rule: Remove evaluation images that exactly match source images under pHash; for existing questions keep answer-correct
+    CoTs; for generated questions require at least three of four answers to agree and retain only matching traces
+  sampling_protocol: Compare six capped source datasets -> select ViRL -> retain its 39K real tuples -> sample 16 CoTs per
+    existing tuple and filter by known answer -> generate 14 new questions per image -> sample four CoTs per new question
+    and majority-filter -> independently caption images and prepend captions to retained solutions -> merge the resulting
+    vision-language records with 1.04M re-annotated OpenThoughts3 records
+  rollout_count: 4
+  temperature: null
+  inference_budget: Data-generation temperature, top-p, maximum generation length, and random seed are undisclosed. The separate
+    test-time experiment samples 64 solutions at temperature 0.7 and reuses one caption after the first solution.
+  optimizer_or_scaffold: Full-parameter PLM SFT for five epochs; the released 3B YAML pins seed 777, 6,075 steps, peak learning
+    rate 4e-5, warmup 607 steps, and a 2,048 global batch implied by eight nodes, eight GPUs, batch size four, and eight gradient-accumulation
+    steps
+audit:
+  source_mixture: Released q_source values observed in the official Dataset Viewer are OpenThoughts3, ViRL, and Ours. OpenThoughts3
+    questions and ViRL images/questions are partly represented as upstream pointers rather than self-contained redistributed
+    content.
+  split: The official Hub exposes one default/train split with five columns. Its partial Dataset Viewer conversion reports
+    1,360,000 materialized rows and 2,463,128 estimated rows at dataset revision 3ac2b01b117893adcd02c62f7e04bd500b2a5240;
+    the paper table reports 2,480,000 total records, split into 1,440,000 vision-language and 1,040,000 text-only records.
+  decontamination: The study removes source instances whose images exactly match validation images according to pHash. Near-duplicate
+    or transformed images, semantically equivalent questions, answer leakage, and overlap with the five held-out post-construction
+    evaluations are not reported as exhaustively checked.
+  license: The repository license states CC-BY-NC for the data, says Llama-4 outputs remain subject to the Llama 4 license
+    and its model-naming condition, and says third-party content remains under its own terms. A record-level source/license
+    matrix is not released.
+  lineage: ViRL source tuple or OpenThoughts3 question identifier -> Llama-4 Scout caption/question/solution generation ->
+    known-answer or three-of-four same-teacher filtering -> pointer-preserving row with q_source and q_id -> PLM SFT. Generation
+    requests, rejected candidates, extracted-answer logs, and per-row source revisions are not released.
+  known_failure_modes:
+  - The rounded 2.5M headline, the paper table's 2.480M records, and the live Hub estimate of 2,463,128 rows are different
+    claims and should not be substituted for one another.
+  - Three-of-four agreement from one teacher can retain correlated hallucinations or parsing errors; answer agreement does
+    not establish visual grounding or faithful intermediate reasoning.
+  - Exact-image pHash filtering does not establish near-duplicate, transformed-image, paraphrase, or semantic decontamination.
+  - Pointer-only OpenThoughts3 and ViRL rows require upstream reconstruction, whose availability, revisions, deletion status,
+    and licenses can change independently.
+  - A spot check of the official Dataset Viewer found at least one released CoT whose prose says no interval satisfies the
+    inequality but then boxes an interval; this demonstrates possible internal inconsistency, not its prevalence.
+  - The official repository is archived and read-only, has two commits and no formal GitHub release, and explicitly says trained
+    HoneyBee VLM checkpoints are not planned for release.
+  - Data-generation sampling parameters and a deterministic reconstruction manifest are unknown.
+  citation_status: verified
+  confidence: high
+  notes: Checked the official CVPR 2026 paper and supplement, arXiv record, official repository at commit 987a1cba97a496c3f9ad43ade65c4504a4428ce0,
+    and official Hugging Face dataset at revision 3ac2b01b117893adcd02c62f7e04bd500b2a5240 on 2026-07-21. Citation and artifact
+    existence are verified; release completeness and record-level correctness remain partial.
+  metadata_status: partial
+inclusion_reason: Provides a controlled multimodal data-recipe study and a large pointer-preserving release with explicit
+  teacher, source-selection, question/trace scaling, and licensing boundaries.
+related: []
+tags:
+- honeybee
+- vision-language-reasoning
+- multimodal-cot
+- llama4-scout
+- data-scaling
+- caption-and-solve
+- pointer-based-release
+- same-teacher-majority
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: HoneyBee reports 2.480M caption-plus-solution and text-only SFT records built with Llama-4 Scout around
+  28K images and 350K questions; the live release is pointer-based, partially materialized, and governed by layered licenses.
+why_it_matters: It turns context choice, auxiliary captions, image diversity, questions per image, and traces per question
+  into separately tested construction variables, giving the open-release recipe track a concrete multimodal scaling study
+  with visible audit boundaries.
+card: null
+needs:
+- 'needs_snapshot: publish immutable dataset shards, checksums, and a paper-to-Hub row reconciliation manifest'
+- 'needs_label_audit: independently adjudicate sampled traces, proxy answers, visual grounding, and same-teacher correlated
+  errors'
+- 'needs_decontamination: add near-duplicate image and semantic question/answer overlap checks with removed-record logs'
+- 'needs_license_audit: publish record-level upstream source, revision, rights, attribution, and deletion handling'
+- 'needs_model: trained HoneyBee VLM checkpoints are not released'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official publication, dataset schema/count endpoints, archived repository tree/license/config, and verified institutional
+    block were checked; unknown generation parameters and incomplete release lineage remain explicit.

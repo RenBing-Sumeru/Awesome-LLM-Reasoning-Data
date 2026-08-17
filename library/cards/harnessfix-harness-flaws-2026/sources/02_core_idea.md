@@ -1,0 +1,3 @@
+The contribution is a diagnosis-and-repair workflow for benchmark harness flaws found in failed agent trajectories. The core mechanism is HTIR, a tree-shaped intermediate representation that normalizes a trajectory into task, environment, action, observation, evaluator, and failure nodes so that flaws can be localized and mapped to repair operators.
+
+Compared with benchmark leaderboards or trajectory datasets that only report success/failure, HarnessFix treats the harness as the inspected system. The feedback contract is: a proposed repair must be checked by the affected benchmark environment or evaluator, not accepted from an LLM explanation alone. The direction label is agent-environment audit and benchmark repair.

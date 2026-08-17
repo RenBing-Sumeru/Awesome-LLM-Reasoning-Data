@@ -1,0 +1,66 @@
+id: codeultrafeedback-coding-preferences-2025
+title: 'CodeUltraFeedback: An LLM-as-a-Judge Dataset for Aligning Large Language Models to Coding Preferences'
+year: 2025
+venue: ACM Transactions on Software Engineering and Methodology
+authors:
+- Martin Weyssow
+- Aton Kamanda
+- Xin Zhou
+- Houari Sahraoui
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2403.09032
+  arxiv: https://arxiv.org/abs/2403.09032
+  code: null
+  data: https://huggingface.co/datasets/coseal/CodeUltraFeedback
+  project: null
+  huggingface: https://huggingface.co/datasets/coseal/CodeUltraFeedback
+data_object:
+  prompt_source: See the official paper and dataset release.
+  trace_author: See the official construction description.
+  answer_format: 10,000 coding instructions, four candidate answers from fourteen models, and GPT-3.5 scores plus textual
+    feedback across five coding preferences
+  verifier_or_reward: See the official paper and dataset release.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See the official paper and dataset release.
+  annotation_policy: See the official paper and dataset release.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: Dataset-specific provenance, license, contamination, and transfer risks require review.
+verification:
+  link_verified: true
+  sources:
+  - https://arxiv.org/abs/2403.09032
+  - https://huggingface.co/datasets/coseal/CodeUltraFeedback
+inclusion_reason: 为编程指令的多模型回答提供五维裁判评分和文字反馈，可训练代码偏好与奖励模型。
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: 'CodeUltraFeedback: An LLM-as-a-Judge Dataset for Aligning Large Language Models to Coding Preferences releases
+  10,000 coding instructions, four candidate answers from fourteen models, and GPT-3.5 scores plus textual feedback across
+  five coding preferences for preference learning, reward modeling, evaluation, and feedback audit.'
+why_it_matters: 为编程指令的多模型回答提供五维裁判评分和文字反馈，可训练代码偏好与奖励模型。

@@ -1,0 +1,1 @@
+Use KTO when feedback is naturally logged as approvals, rejections, safety flags, or scalar ratings that can be thresholded, rather than as matched response pairs. It is particularly useful for deciding whether a data-collection system should preserve pair construction costs or emit independently labeled generations for a direct alignment objective.

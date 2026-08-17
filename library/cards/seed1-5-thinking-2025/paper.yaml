@@ -1,0 +1,125 @@
+id: seed1-5-thinking-2025
+title: 'Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors:
+- ByteDance Seed
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+- physics
+- chemistry
+- coding
+- logic_reasoning
+- general_assistant
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.13914
+  arxiv: https://arxiv.org/abs/2504.13914
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.13914
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: STEM mixes open-source datasets, public competitions, and proprietary collections; code uses competitive-programming
+    tasks; logic uses generated puzzles; non-verifiable prompts derive from Doubao-1.5 Pro RL data.
+  trace_author: Long-CoT SFT traces use model synthesis, human annotation, cold-start prompting, and rejection sampling; exact
+    model identities are undisclosed.
+  answer_format: Long reasoning trace plus a task-specific final answer, executable code, or natural-language response.
+  process_fields:
+  - reference_answer
+  - unit_tests
+  - checker_script
+  - puzzle_generator
+  - long_cot_trace
+  - pairwise_reward
+  environment_or_substrate: In-house code sandbox plus task-specific puzzle generators and internal unified RL infrastructure.
+  verifier_or_reward: Seed-Verifier and Seed-Thinking-Verifier; code tests/checkers; puzzle verifiers; pairwise generative
+    RM.
+  terminal_predicate: Answer equivalence or task check for verifiable work, or a pairwise relative-preference score for non-verifiable
+    work; thresholds are undisclosed.
+recipe_metadata:
+  base_model: Exact base checkpoint is undisclosed; the final report describes a 20B-active/200B-total MoE.
+  teacher: Doubao-Pro 1.5 for STEM cleaning; other internal/SOTA model identities are incomplete.
+  generator: Human or internal-model cold starts followed by long-CoT generation and Seed-Verifier rejection sampling.
+  filtering_rule: Removes malformed or easy STEM prompts, incomplete code specifications, low-diversity or easy non-verifiable
+    prompts, and rejected SFT traces.
+  sampling_protocol: 400k SFT examples (300k verifiable and 100k non-verifiable); exact RL rollout counts and decoding settings
+    are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: SFT is truncated to 32k tokens; RL budget details are undisclosed.
+  optimizer_or_scaffold: Two-epoch SFT followed by unified long-CoT RL with verifier, RM, and hybrid feedback.
+audit:
+  source_mixture: Per-source identities, proportions, and provenance are not released.
+  split: No public training split; BeyondAIME release status and split are not pinned.
+  decontamination: No training-data decontamination protocol is disclosed.
+  license: unknown
+  lineage: Partially disclosed but lacks source records, model versions, and derivation lineage.
+  known_failure_modes:
+  - Verifier reward hacking and unstable equivalence
+  - Mixed-domain feedback interference
+  - Exploration collapse on easy prompts
+  - Missing data/license/split/decontamination artifacts
+  citation_status: verified
+  confidence: medium
+  notes: This is a Track-12 disclosure ledger, not a reusable RLVR recipe; underlying data and complete operational metadata
+    are unavailable.
+inclusion_reason: A frontier report with concrete partial disclosures of four RL data families, 400k SFT examples, filters,
+  verifiers, and RM contracts.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- long-cot
+- sft
+- rlvr
+- verifier
+- reward-modeling
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: ByteDance Seed reports four reasoning-RL data families, 400k long-CoT SFT examples, filters, verifiers,
+  and reward modeling without releasing source-level data or full audit metadata.
+why_it_matters: Lets readers separate disclosed data and feedback interfaces from undisclosed provenance, licensing, split,
+  decontamination, and reusable artifacts.
+card: null
+needs:
+- 'needs_metadata: source-level mixture/provenance/licenses/splits'
+- 'needs_metadata: RL rollout and decoding settings'
+- 'needs_audit: training data decontamination'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official arXiv bibliographic record and report verified; no official data, code, project, or Hugging Face artifact
+    is pinned.

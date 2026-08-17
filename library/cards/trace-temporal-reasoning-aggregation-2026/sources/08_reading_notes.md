@@ -1,0 +1,1 @@
+Read the answer-induction mechanism together with the stopping rule: stable induced answers are useful only if they faithfully summarize the current reasoning prefix. Inspect cases of false convergence and late correction separately. The main audit question is whether TRACE saves computation after the answer is genuinely stable, rather than merely cutting off hard trajectories.

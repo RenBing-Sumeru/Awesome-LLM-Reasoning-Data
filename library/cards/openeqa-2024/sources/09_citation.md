@@ -1,0 +1,3 @@
+Arjun Majumdar, Anurag Ajay, Xiaohan Zhang, Pranav Putta, Sriram Yenamandra, Mikael Henaff, Sneha Silwal, Paul Mcvay, Oleksandr Maksymets, Sergio Arnaud, Karmesh Yadav, Qiyang Li, Ben Newman, Mohit Sharma, Vincent Berges, Shiqi Zhang, Pulkit Agrawal, Yonatan Bisk, Dhruv Batra, Mrinal Kalakrishnan, Franziska Meier, Chris Paxton, Sasha Sax, Aravind Rajeswaran. "OpenEQA: Embodied Question Answering in the Era of Foundation Models." 2024 / CVPR 2024. https://open-eqa.github.io/
+
+Official artifacts to check: paper: https://open-eqa.github.io/; project: https://open-eqa.github.io/; code: https://github.com/facebookresearch/open-eqa; data: https://github.com/facebookresearch/open-eqa.

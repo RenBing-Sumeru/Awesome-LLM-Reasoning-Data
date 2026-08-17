@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "best-N研究，多个数据集采样，效果不错",
+    "updated_at": "2026-07-19T11:53:36Z"
+  },
+  "updated_at": "2026-07-19T11:53:36Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,9 @@
+A standard RLHF reward model is trained on comparisons whose two responses were sampled from an SFT policy. Policy optimization then changes the response distribution. The reward model is therefore applied to responses unlike those that determined its training risk, and its own score can continue rising even after the policy stops matching the intended preferences.
+
+The paper formalizes this as covariate shift under reward-model misspecification. The minimizer of the Bradley-Terry loss under the SFT response distribution need not minimize the same loss under a later policy distribution. Consequently, even with unlimited comparisons from the original SFT distribution, the ordinary reward-model parameter estimate, and generally the policy-gradient estimate built from it, can remain inconsistent for the current policy.
+
+For data curation, the central object must be stated precisely. OCRM starts with one fixed preference dataset: prompts, two SFT-policy completions, and a winner/loser label. It does not obtain newly labeled comparisons from the evolving policy. What changes is the effective reward-model training distribution: at each refresh, the same records receive stage-specific weights derived from the current policy and the original SFT behavior policy.
+
+This distinction matters because a refreshed weighted empirical risk is a construction recipe, not a newly collected dataset. The paper asks whether distribution correction can extend the usefulness of already collected preference comparisons while avoiding the cost of new samples and labels.
+
+For this atlas, the reusable object is a disclosed, code-backed transformation of fixed preference records into stage-specific training views. That makes it an open construction recipe adjacent to reward-model methodology, not a released preference corpus, an on-policy data-collection system, or a benchmark. Missing immutable data and run artifacts remain part of the release boundary.

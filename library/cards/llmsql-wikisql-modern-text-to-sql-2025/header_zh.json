@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LLMSQL 修复并重发布 WikiSQL 为完整 SQL 记录，再以可执行的 SQLite 结果集合评分。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "清洗并可执行验证的单表 Text-to-SQL 基准",
+  "best_for_ch": "需要现代 Text-to-SQL 单表基线或数据清洗范式的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dzmitry Pihulski, Karol Charchut, Viktoria Novogrodskaia, Jan Kocoń",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

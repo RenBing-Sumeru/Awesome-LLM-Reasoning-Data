@@ -1,0 +1,1 @@
+Code-generation test-time scaling can produce many candidate programs but must ultimately return one. Existing selectors may assume public tests that are unavailable for new tasks or spend additional LLM calls on test generation and pairwise judging. DiffCodeGen asks whether candidate selection can instead use executable behavior without a reference-output oracle.

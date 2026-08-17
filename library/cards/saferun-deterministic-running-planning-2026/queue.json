@@ -1,0 +1,19 @@
+{
+  "title": "SafeRun: Enabling Determinism in LLM Planning for Running",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.09027",
+    "data": "https://huggingface.co/datasets/zzp-seeker/SafeRun-RunPlanning-Benchmark",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:13:18Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用100份多周跑步计划和硬约束求解器验证配速、恢复与负荷，场景较窄但规划奖励完全确定",
+    "updated_at": "2026-07-19T12:13:18Z"
+  }
+}

@@ -1,0 +1,114 @@
+id: gram-r2-self-training-reward-reasoning-2026
+title: 'GRAM-R²: Self-Training Generative Foundation Reward Models for Reward Reasoning'
+year: 2026
+venue: AAAI 2026
+authors:
+- Chenglong Wang
+- Yongyu Mu
+- Hang Zhou
+- Yifu Huo
+- Ziming Zhu
+- Jiali Zeng
+- Murun Yang
+- Bei Li
+- Tong Xiao
+- Xiaoyang Hao
+- Chunliang Zhang
+- Fandong Meng
+- Jingbo Zhu
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- preference-modeling
+- reward-reasoning
+- alignment
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/40626
+  arxiv: https://arxiv.org/abs/2509.02492
+  code: null
+  data: https://huggingface.co/datasets/wangclnlp/GRAM-RR-TrainingData
+  project: https://wangclnlp.github.io/wangchenglong.github.io/
+  huggingface: https://huggingface.co/datasets/wangclnlp/GRAM-RR-TrainingData
+  doi: https://doi.org/10.1609/aaai.v40i39.40626
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40626
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Rationale-free labeled preference data and large unlabeled preference corpora.
+  trace_author: Preference-proving model and iterative self-training pipeline.
+  answer_format: Prompt, response comparison, generated preference rationale, and final A/B preference conclusion.
+  process_fields:
+  - prompt
+  - response_a
+  - response_b
+  - preference_label
+  - rationale
+  - conclusion
+  environment_or_substrate: Reward-model response ranking and alignment tasks.
+  verifier_or_reward: Preference-proving model generates rationales conditioned on labels; self-training supplies pseudo-labels
+    for unlabeled data.
+  terminal_predicate: A final preference label is generated for a response pair.
+recipe_metadata:
+  base_model: LLaMA-3.1-8B-Instruct and other reported backbones.
+  teacher: Preference-proving model trained on rationale-free labeled examples.
+  generator: Iterative pseudo-labeling and rationale generation on unlabeled preference data.
+  filtering_rule: Use the self-training schedule and data controls in the official release.
+  sampling_protocol: Pin dataset revision, model checkpoint, and self-training iteration.
+  inference_budget: Rationale generation and self-training iterations are material cost controls.
+  optimizer_or_scaffold: Preference-proving warm-up followed by iterative reward-model self-training.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Rationale-free labeled preference examples, unlabeled preference data, and generated reward rationales.
+  split: The official 28.5 GB training-data release should be pinned to a revision.
+  decontamination: Not fully documented on the public release page.
+  license: Confirm from the current official dataset card before reuse.
+  lineage: AAAI 2026 paper, author project page, and wangclnlp training-data and model releases.
+  known_failure_modes:
+  - Pseudo-label and rationale errors can compound over self-training iterations.
+  - Reward reasoning quality depends on the labeled seed data and preference-proving model.
+  citation_status: verified
+  confidence: high
+  notes: Verified the AAAI 2026 proceedings record, author project page, and Hugging Face paper/data artifacts identifying
+    GRAM-R² and its training data.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: GRAM-R² self-trains a generative foundation reward model by turning labeled and unlabeled preference pairs
+  into rationale-backed comparison supervision.
+why_it_matters: It exposes an explicit feedback–comparison–conclusion format for scaling reward reasoning beyond manually
+  written rationales.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the AAAI 2026 proceedings record, author project page, and Hugging Face paper/data artifacts identifying
+    GRAM-R² and its training data.
+category_ids:
+- preference_reward_feedback_data

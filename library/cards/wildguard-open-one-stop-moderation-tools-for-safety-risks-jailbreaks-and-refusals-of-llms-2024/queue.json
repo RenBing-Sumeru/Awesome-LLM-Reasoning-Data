@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建并公开 WildGuardMix，为有害性、越狱和拒答提供大规模安全反馈标签，可用于 guard model 与安全奖励训练",
+    "updated_at": "2026-07-12T15:00:02Z"
+  },
+  "updated_at": "2026-07-12T15:00:02Z"
+}

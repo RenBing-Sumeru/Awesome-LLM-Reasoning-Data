@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Guided-ReST 用最优解作为仅构造期可见的局部地标，修补并筛选策略自身的搜索轨迹；其价值在于展示特权引导蒸馏配方，但未发布冻结轨迹语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "特权引导的搜索轨迹构造与自训练方法",
+  "best_for_ch": "适合研究搜索轨迹蒸馏、迭代自训练、代码修复反馈和特权信息泄漏审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Seungyong Moon, Bumsoo Park, Hyun Oh Song",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,106 @@
+id: big-math-large-scale-high-quality-math-rl-2025
+title: 'Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models'
+year: 2025
+venue: arXiv
+authors:
+- Alon Albalak
+- Duy Phung
+- Nathan Lile
+- Rafael Rafailov
+- Kanishk Gandhi
+- Louis Castricato
+- Anikait Singh
+- Chase Blagden
+- Violet Xiang
+- Dakota Mahan
+- Nick Haber
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.17387
+  arxiv: https://arxiv.org/abs/2502.17387
+  code: https://github.com/SynthLabsAI/big-math
+  data: https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified
+  project: null
+  huggingface: https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified
+  doi: https://doi.org/10.48550/arXiv.2502.17387
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated open mathematical problem sources.
+  trace_author: Source datasets and the Big-Math curation pipeline.
+  answer_format: Open-ended mathematical question with a closed-form reference answer.
+  process_fields:
+  - problem
+  - answer
+  - source
+  - domain
+  - solve rate
+  environment_or_substrate: Released Parquet dataset and answer-comparison rules.
+  verifier_or_reward: Closed-form answer parsing and comparison.
+  terminal_predicate: The submitted final answer matches the unique, parseable reference answer.
+recipe_metadata:
+  base_model: Llama-3.1 models are used for reported solve-rate filtering.
+  teacher: Rule-based answer checks plus manual filter audits.
+  generator: Multi-source collection, filtering, and multiple-choice reformulation pipeline.
+  filtering_rule: Retain open-ended questions with uniquely verifiable closed-form answers.
+  sampling_protocol: Use the released verified split and preserve source and difficulty metadata.
+  rollout_count: 64 Llama-3.1-8B rollouts are reported for the solve-rate field.
+  temperature: null
+  inference_budget: See the paper for model-based filtering budgets.
+  optimizer_or_scaffold: RLVR-oriented mathematical data curation.
+audit:
+  source_mixture: Official arXiv paper, SynthLabs GitHub repository, and Hugging Face dataset release.
+  split: Use the verified release; the paper distinguishes it from an unverified subset.
+  decontamination: The paper filters overlap with selected mathematical evaluation sets; users should audit their own target
+    evaluations.
+  license: The dataset page documents its access and licence terms; verify the frozen revision before reuse.
+  lineage: https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified
+  known_failure_modes:
+  - A correct final answer does not verify the derivation.
+  - Source data and reformulations can retain semantic or licensing errors.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv paper, author affiliations, official GitHub repository, and Hugging Face release were checked.
+inclusion_reason: Big-Math releases mathematical prompts whose closed-form answers provide a reusable programmatic outcome
+  predicate for RL training.
+related: []
+tags:
+- mathematics
+- rlvr
+- answer-verification
+- '2025'
+one_line_summary: Big-Math turns diverse open mathematical sources into a 251,122-item RL dataset of open-ended questions
+  with uniquely checkable closed-form answers.
+why_it_matters: It makes a final-answer verification contract available at scale while preserving source and difficulty metadata.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: The arXiv paper, author affiliations, official GitHub repository, and Hugging Face release were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

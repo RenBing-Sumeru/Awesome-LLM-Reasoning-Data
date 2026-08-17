@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态数学推理",
+    "updated_at": "2026-07-17T07:08:03Z"
+  },
+  "updated_at": "2026-07-17T07:08:03Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,6 @@
+- Read §§2.2–2.4 and Appendix B first: the construction contribution is model-based exploration plus five rounds of long-to-short clue removal, producing approximately 40K QA pairs.
+- Keep the three objects separate: approximately 40K evolved QA, approximately 13K correct ReAct trajectories for SFT, and approximately 12K QA items for online GRPO.
+- Read §§3.1–3.2 with Eq. 4: SFT drops incorrect trajectories; RL uses mixed `0.2 * format + DeepSeek-V3 correctness` reward, not an executable environmental terminal predicate.
+- Pin the progressive RL budget exactly as 64K/50→96K/75→128K/100 and the eight-rollout GRPO group before comparing long-horizon behavior.
+- Treat Table 1 difficulty shifts and Figure 5's longer-trajectory correlation as model/scaffold-dependent evidence; Table 2 uses Avg@4 with DeepSeek-V3 judge and is not independently reproduced.
+- Inspect the release before reuse: only 100 QA rows, model weights, and inference/evaluation code are public; complete trajectories, reward logs, synthesis/training code, splits, and failed attempts are absent. Also audit direct BrowseComp-en exemplar use against BrowseComp-en/zh evaluation and preserve the 15-author arXiv/GitHub/HF versus 14-author OpenReview discrepancy in versioned citations.

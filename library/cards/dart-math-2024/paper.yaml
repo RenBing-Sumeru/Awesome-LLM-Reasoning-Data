@@ -1,0 +1,164 @@
+id: dart-math-2024
+title: 'DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving'
+year: 2024
+venue: NeurIPS 2024
+authors:
+- Yuxuan Tong
+- Xiwen Zhang
+- Rui Wang
+- Ruidong Wu
+- Junxian He
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- natural-language-reasoning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2407.13690
+  code: https://github.com/hkust-nlp/dart-math
+  data: https://huggingface.co/datasets/hkust-nlp/dart-math-hard
+  project: https://hkust-nlp.github.io/dart-math/
+  huggingface: https://huggingface.co/collections/hkust-nlp/dart-math
+  doi: https://doi.org/10.52202/079017-0251
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/0ef1afa0daa888d695dcd5e9513bafa3-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Original MATH training queries and the authors' corrected GSM8K training queries; original human solutions
+    are also appended to the final SFT datasets.
+  trace_author: DeepSeekMath-7B-RL generates natural-language chain-of-thought responses without tool execution.
+  answer_format: The final DART-Math-Hard and DART-Math-Uniform rows are `query`/`response` pairs. Supplementary accepted-response
+    pools retain query provenance, ground-truth answer, generated response, extracted answer, answer-correctness flag, decoding
+    metadata, `query_id`, and `resp_id`; separate query-info rows retain sampling counts and pass-rate statistics.
+  process_fields:
+  - query
+  - query_src_agent
+  - query_src_method
+  - gt_ans
+  - query_metadata
+  - resp
+  - resp_src_agent
+  - resp_src_method
+  - ans_correct
+  - ration_type
+  - proc_correct_prob
+  - resp_metadata
+  - ans
+  - query_id
+  - resp_id
+  - n_samples_list_and_n_corrects_list_in_query_info
+  - tot_n_samples_and_tot_n_corrects_in_query_info
+  - pass_rate_and_pass_rate_bernoulli_std_in_query_info
+  environment_or_substrate: Offline vLLM sampling, regex/SymPy terminal-answer grading, difficulty-aware allocation, curation,
+    then supervised instruction tuning; no interactive environment or code-execution trace is part of the released SFT record.
+  verifier_or_reward: A repository implementation extracts final answers with regular expressions and uses SymPy-based symbolic
+    judgment for numbers, symbols, matrices/vectors, intervals, Boolean expressions, dates, and times. It supplies a Boolean
+    answer-level acceptance signal and does not verify intermediate reasoning.
+  terminal_predicate: A candidate is retained when its extracted terminal answer is judged equivalent to the reference answer;
+    sampling for a query stops when the strategy's target number of correct responses is met or the practical raw-trial cap
+    is reached.
+recipe_metadata:
+  base_model: Downstream SFT is evaluated on Mistral-7B, DeepSeekMath-7B, Llama3-8B, and Llama3-70B base models.
+  teacher: DeepSeekMath-7B-RL is the sole response generator and the sampling model used to estimate query difficulty.
+  generator: DeepSeekMath-7B-RL through vLLM with a natural-language CoT prompt.
+  filtering_rule: Accept only responses passing regex extraction and SymPy/reference-answer judgment. DARS-Uniform targets
+    40 correct responses per query; DARS-Prop2Diff assigns a target proportional to `1-pass_rate`, up to 192 for the hardest
+    queries, while attempting to preserve at least one synthetic response per query.
+  sampling_protocol: Maximum 2,048 output tokens, top-p 0.95, temperature 1.6. Temperature was selected from a 0.3–1.8 sweep
+    in 0.1 increments. The final datasets append original MATH/GSM8K training examples to accepted synthetic responses.
+  rollout_count: Variable by query and strategy. The authors report approximately 150 million raw samples in the full synthesis
+    run; per-query raw caps and realized counts are recorded only partially in released metadata.
+  temperature: 1.6
+  inference_budget: About 35,000 raw samples per A100 GPU-hour in the reported setup; approximately 160 A100 GPU-days for
+    about 150 million raw samples and an over-95% target-achievement ratio.
+  optimizer_or_scaffold: Transformers SFT with sequence packing to length 4,096, batch size 64 computation sequences, Adam
+    with zero weight decay, 3% linear warmup and cosine schedule. Maximum learning rates are 1e-5 for Mistral-7B, 5e-5 for
+    DeepSeekMath-7B/Llama3-8B, and 2e-5 for Llama3-70B; Llama3 models use one epoch and the default for other DART runs is
+    three.
+audit:
+  source_mixture: Synthetic responses generated from fixed MATH and corrected GSM8K training queries, plus the original human-annotated
+    training responses. Exact MATH/GSM8K proportions in each final release are not stated in the final two-column schema.
+  split: The official DART-Math-Hard and DART-Math-Uniform repositories expose train-only splits with 585,392 and 590,705
+    rows at the checked revisions. No separate development split or immutable paper-level manifest is disclosed.
+  decontamination: No semantic deduplication, pretraining-overlap audit, or explicit decontamination against MATH, GSM8K,
+    CollegeMath, DeepMind Mathematics, OlympiadBench-Math, or TheoremQA is reported. Evaluation uses MATH/GSM8K test splits
+    and four stated out-of-domain benchmarks.
+  license: The code repository and official DART Hugging Face cards declare MIT. Compatibility and attribution obligations
+    for upstream MATH/GSM8K content and synthetic derivatives require a separate source-level review.
+  lineage: MATH or corrected GSM8K training row -> DeepSeekMath-7B-RL candidates -> regex/SymPy answer decisions -> per-query
+    pass-rate/count metadata -> Uniform or Prop2Diff allocation -> accepted synthetic response plus original training responses
+    -> two-column SFT release. Pool artifacts preserve accepted-response lineage IDs, but complete rejected-response text
+    is not established.
+  known_failure_modes:
+  - Final-answer equivalence can accept a response with invalid, contradictory, or unfaithful intermediate reasoning.
+  - Regex extraction and symbolic normalization can produce false positives or false negatives; the paper does not report
+    a calibrated parser/judge error study.
+  - Difficulty is relative to DeepSeekMath-7B-RL, temperature 1.6, the checker, and the sampling budget, so the allocation
+    need not transfer to another generator.
+  - The paper body defines fail rate as the proportion incorrect, but the appendix's displayed formula is inconsistent; the
+    official README clarifies `1-pass_rate`.
+  - The official README says Prop2Diff reproduction still requires manual effort, so the published repository is not a one-command
+    reconstruction of the reported Hard dataset.
+  - Erroneous GSM8K labels can corrupt acceptance; the authors publish `gsm8k-fix`, but a complete change ledger and independent
+    label audit are not documented in the paper.
+  - The accepted-response pools and aggregate query counts do not substitute for the complete rejected-response text needed
+    to audit checker errors and selection bias.
+  - Benchmark overlap, upstream rights, exact run seeds, dependency versions, and immutable model/data manifests remain incompletely
+    documented.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS paper and appendix, repository main commit 219b32467b55f7c610195e148b56df3431e1a963, project documentation,
+    and official hkust-nlp Hugging Face collection were checked on 2026-07-21. Citation and artifacts are verified; reproducibility
+    and upstream-rights metadata remain partial.
+inclusion_reason: DART-Math makes per-query sampling allocation and answer-level acceptance explicit in an open mathematical
+  SFT recipe, while exposing how generator-relative difficulty changes the retained training distribution.
+related: []
+tags:
+- mathematics
+- synthetic-cot
+- rejection-sampling
+- difficulty-aware-sampling
+- answer-verification
+- supervised-fine-tuning
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: DART-Math converts MATH and corrected GSM8K training prompts into answer-verified CoT pairs by allocating
+  more DeepSeekMath-7B-RL trials to queries with lower pass rates.
+why_it_matters: It turns a usually hidden rejection-sampling budget into an auditable data-construction choice and demonstrates
+  that coverage and difficulty distribution can matter independently of final dataset size.
+card: null
+needs:
+- 'needs_reproduction: package the exact Prop2Diff allocation and reported raw-trial caps without manual reconstruction'
+- 'needs_audit: release complete rejected-response text and quantify answer-parser/SymPy false accepts and false rejects'
+- 'needs_snapshot: publish immutable end-to-end manifests for source revisions, generator checkpoint, code commit, seeds,
+  environment, and final row lineage'
+- 'needs_decontamination: document semantic overlap and pretraining/evaluation contamination controls'
+- 'needs_license: provide source-level rights and attribution analysis for MATH, GSM8K, corrected labels, and synthetic derivatives'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Official NeurIPS, arXiv, DOI, GitHub, project documentation, code license, dataset/model collection, final SFT datasets,
+    accepted-response pools, query-info datasets, and corrected GSM8K release were verified. Release completeness remains
+    partial.

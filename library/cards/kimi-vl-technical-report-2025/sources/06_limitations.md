@@ -1,0 +1,3 @@
+The report does not publish source-level data manifests, counts, mixture ratios, licenses, annotation protocol, prompts, Kimi k1.5 checkpoint details, rollout counts, decoding parameters, retention yields, reward-model identity, reward rules, thresholds, calibration, or RL logs. Train/validation/test splits and a decontamination protocol are also not disclosed.
+
+The agent component is described but not replayable from public materials: VM images, tasks, action schema, trajectories, execution logs, and construction code are absent. Therefore neither the data lineage nor feedback false-positive/false-negative behavior can be independently audited. MIT status for repository and model weights does not establish rights for the mixed training corpus or its derivatives.

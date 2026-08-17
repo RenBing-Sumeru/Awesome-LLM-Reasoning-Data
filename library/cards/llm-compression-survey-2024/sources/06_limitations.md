@@ -1,0 +1,1 @@
+The best choice depends on the model, hardware, task, and metric, so method comparisons do not automatically transfer across deployment settings. The survey does not release a common compressed checkpoint, dataset, or fixed evaluation suite.

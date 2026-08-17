@@ -1,0 +1,1 @@
+Read the budget-matched baselines and stopping ablations before using the result as a general scaling law. Record cycle count, re-noising depth, branch count, evaluation signal, and wall-clock cost; these fields reveal whether an apparent gain comes from better allocation or simply more computation.

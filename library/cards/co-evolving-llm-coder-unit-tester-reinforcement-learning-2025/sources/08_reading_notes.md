@@ -1,0 +1,5 @@
+- “No ground-truth code” is accurate; “no ground truth” is not. Private gold tests anchor both coder and tester rewards.
+- Each training task produces 16 coder and 16 tester rollouts, a 16-by-16 generated-test execution matrix, and additional gold-test outcomes.
+- Coder reward, derived tester reward, generated-test Best-of-N score, and final private-test correctness are four different signals.
+- The public release includes 4,529 CodeContests training records, code, evaluation tooling, and model weights, but not a fixed complete corpus of paper-run rollout episodes.
+- Reported model gains and reward ablations support the method under its setup; they do not certify test coverage or rollout-data quality.

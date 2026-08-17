@@ -1,0 +1,1 @@
+论文评测 25 个开源与闭源 LMM。结果显示，即使领先专有模型也难以在开放式任务中持续遵循多样 criteria，开源模型在标准切换时落后更明显；仅用整体 judgment 做 critic 微调虽然改善视觉 grounding，却不能稳定迁移到 criterion-level 判断。进一步的 reasoning fine-tuning 和 test-time scaling 也没有消除边界不一致。这些受控比较支持 benchmark 测到了不同于总体偏好的能力，但人类 criteria 定义仍决定冲突标签的有效性。

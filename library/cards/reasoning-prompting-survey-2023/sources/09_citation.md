@@ -1,0 +1,1 @@
+Qiao, Shuofei; Ou, Yixin; Zhang, Ningyu; Chen, Xiang; Yao, Yunzhi; Deng, Shumin; Tan, Chuanqi; Huang, Fei; and Chen, Huajun. 2023. Reasoning with Language Model Prompting: A Survey. ACL 2023 Long Papers, pages 5368–5393. Official record, abstract, PDF, DOI, and the linked resource collection: https://aclanthology.org/2023.acl-long.294/

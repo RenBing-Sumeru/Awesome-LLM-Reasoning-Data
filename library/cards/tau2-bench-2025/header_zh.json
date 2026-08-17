@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "tau2-bench 发布双控制客服环境，从 2,285 个 telecom 完整组合中抽取 114 个评测任务，并保留状态/动作反馈及成功与失败轨迹；准确复用必须固定论文时代的 v0.1.0。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "双控制客服智能体评测环境与轨迹发布",
+  "best_for_ch": "研究环境智能体轨迹、用户模拟器、程序化 verifier 与 benchmark 版本审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Victor Barres, Honghua Dong, Soham Ray, Xujie Si, Karthik Narasimhan",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

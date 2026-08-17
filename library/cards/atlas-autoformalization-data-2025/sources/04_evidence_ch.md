@@ -1,0 +1,1 @@
+在相同 pass@k 协议下，LoRA 版 ATLAS Translator 在 ProofNet 的 pass@1 为 39.46%，高于 Herald Translator 的 31.43% 和初始化模型的 23.56%；在 MathQual 上达到 22.75%，高于 Kimina-Autoformalizer 的 19.01%。除 ProofNet pass@32 外，论文报告相对最佳基线的提升达到统计显著。进一步使用 DeepSeek-Prover-7B 全参数训练后，ProofNet pass@1 达 54.99%。这些结果支持数据效用，但更强基座本身也贡献了部分提升。

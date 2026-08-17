@@ -1,0 +1,1 @@
+官方论文和项目页给出的证据是 20 个 app 上的 116 个 Android 任务，并公开 task list 与 Google Research 代码。论文使用 M3A 等 agent 作为基线，摘要中最强设置的成功率为 30.6%，说明即使强模型也只完成少数动态手机任务。逐样本证据来自任务 validator 对最终状态的检查，而不是汇总成功率本身。证据边界是 release 的任务列表、app 版本、emulator 状态、prompt/动作预算和 evaluator 实现。

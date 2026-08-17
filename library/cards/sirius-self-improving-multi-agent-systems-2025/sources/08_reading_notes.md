@@ -1,0 +1,5 @@
+- Treat NeurIPS 2025 Main Conference Track as canonical venue metadata.
+- Direct success stores all roles; repaired failure stores the selected role and rerun successors only after terminal success.
+- Table 7's 1,890 cases are not the unknown per-role SFT row count.
+- The repository releases five physics inputs, not the experience libraries, failures, feedback, models, or logs.
+- Audit coarse credit, erased correction provenance, split/contamination manifests, version pinning, and derived-data licenses.

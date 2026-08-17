@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ByteDance Seed 披露四类推理 RL 数据、40 万条 long-CoT SFT、过滤器、verifier 与 reward modeling，但未发布来源级数据或完整审计元数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型报告与数据披露账本",
+  "best_for_ch": "希望核对推理 RL 数据来源、反馈接口、训练配方与审计缺口的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "ByteDance Seed",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

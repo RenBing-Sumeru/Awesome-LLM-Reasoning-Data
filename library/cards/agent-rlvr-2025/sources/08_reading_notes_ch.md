@@ -1,0 +1,5 @@
+- 论文报告的数据对象为 817 个仓库环境和 8,186 条轨迹，其中 4,093 条为 positive；未发现官方数据发布。
+- Guidance 分为 plan、environment feedback 和 environment interaction 三类，由 claude-3-7-sonnet-20250219 生成，并使用可能包含 reference patch 的特权信息。
+- 环境测试提供二值终局奖励；同一任务的正确与错误完整轨迹组成 offline DPO 的 preference pair。
+- 正确的无 guidance 轨迹还用于 SFT，problem/patch 数据则训练 pairwise reward model，在测试时从 k=32 个 patch 中选择。
+- 复用前应审计 593 + 219 与 817 的计数矛盾、pretraining contamination、测试完整性、发布许可、seed 和精确任务谱系。

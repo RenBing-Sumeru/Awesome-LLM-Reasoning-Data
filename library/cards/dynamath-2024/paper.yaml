@@ -1,0 +1,112 @@
+id: dynamath-2024
+title: 'DynaMath: A Dynamic Visual Benchmark for Evaluating Mathematical Reasoning Robustness of Vision Language Models'
+year: 2024
+venue: ICLR 2025 / arXiv
+authors:
+- Chengke Zou
+- Xingang Guo
+- Rui Yang
+- Junyu Zhang
+- Bin Hu
+- Huan Zhang
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-math
+- multimodal-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2411.00836
+  arxiv: https://arxiv.org/abs/2411.00836
+  doi: https://doi.org/10.48550/arXiv.2411.00836
+  code: https://github.com/DynaMath/DynaMath
+  data: https://huggingface.co/datasets/DynaMath/DynaMath_Sample
+  project: https://dynamath.github.io/
+  huggingface: https://huggingface.co/datasets/DynaMath/DynaMath_Sample
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct programmatically generated visual math variants; exact split, artifact,
+    license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose programmatically generated visual math variants, prompt/task metadata, a model output
+    surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: programmatically generated visual math variants
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct programmatically generated visual math variants; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: multimodal_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2411.00836;
+    https://arxiv.org/pdf/2411.00836; https://dynamath.github.io/; https://github.com/DynaMath/DynaMath'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2411.00836'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv, project, GitHub, and Hugging Face sources verify authors, UIUC/UC Berkeley affiliations, ICLR 2025 status
+    as stated by the official sources, and public sample dataset/code. No independent OpenReview/ICLR page was located in
+    this pass.
+inclusion_reason: Dynamic perturbations help test rule solving versus memorization.
+related: []
+tags:
+- benchmark
+- multimodal_reasoning_benchmark
+- multimodal-math
+why_it_matters: Dynamic perturbations help test rule solving versus memorization.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: DynaMath exposes programmatically generated visual math variants as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv, project, GitHub, and Hugging Face sources verify authors, UIUC/UC Berkeley affiliations, ICLR 2025 status
+    as stated by the official sources, and public sample dataset/code. No independent OpenReview/ICLR page was located in
+    this pass.
+category_ids:
+- benchmarks_evaluation_surfaces

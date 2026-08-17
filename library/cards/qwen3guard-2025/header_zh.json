@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen3Guard 披露了约 119 万条人工/合成安全分类样本、Gen 的 SFT、Stream 的 token 级标签构造及一个独立的安全 RL 应用，但未公开记录级来源、完整标签/奖励校准或可复现训练工件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "安全护栏技术报告与开源模型发布",
+  "best_for_ch": "审计安全分类数据、护栏反馈与流式干预披露边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

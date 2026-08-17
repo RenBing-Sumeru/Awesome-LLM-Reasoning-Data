@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Synth 把仓库组件改写为可测试的合成缺陷，并保留通过测试的 agent 修复轨迹，形成可验证的缺陷修复训练数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "带可执行测试与修复轨迹的合成仓库级缺陷修复数据集",
+  "best_for_ch": "需要缺陷修复训练数据、可执行单测验证或修复轨迹的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Minh V. T. Pham, Huy N. Phan, Hoang Nhat Phan, Cuong Chi Le, Tien N. Nguyen, Nghi D. Q. Bui",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:32:01Z"
+}

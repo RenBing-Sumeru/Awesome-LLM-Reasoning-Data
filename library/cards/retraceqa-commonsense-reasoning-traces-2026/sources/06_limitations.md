@@ -1,0 +1,1 @@
+First, commonsense answers and explanations may depend on cultural context, so expert labels may not transfer across regions. Second, traces come from a limited set of small models and may not represent larger models or open generation. Third, multiple-choice options encourage post-hoc rationalization, so reuse should include open-answer evaluation without visible candidates.

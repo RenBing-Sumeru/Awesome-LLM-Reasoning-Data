@@ -1,0 +1,1 @@
+Hyunseok Lee 等。《ReVISE: Learning to Refine at Test-Time via Intrinsic Self-Verification》。ICML 2025，PMLR 267:33616–33634。https://proceedings.mlr.press/v267/lee25ab.html。官方代码：https://github.com/seunghyukoh/revise。

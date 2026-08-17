@@ -1,0 +1,1 @@
+Do not collapse three claims: final-answer accuracy on Bamboogle, measured compositionality gap, and faithfulness of self-ask traces. Read the metric definition before the prompt examples. For downstream use, keep model knowledge, decomposition quality, search quality, and final composition as separate labels.

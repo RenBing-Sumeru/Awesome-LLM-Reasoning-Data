@@ -1,0 +1,3 @@
+The contribution is a BrowseComp-style benchmark extended to multimodal web evidence. The core mechanism is hand-crafted, hard-to-search questions plus evidence and answer verification that require agents to browse, inspect visual media, reason across sources, and produce a short final answer.
+
+Closest comparisons are BrowseComp, GAIA-style browsing tasks, and text-only web QA benchmarks. The feedback contract combines reference-answer comparison with checklist-guided LLM judging, so the decisive signal is answer/judge agreement under a pinned judge model, not an environment terminal predicate alone.

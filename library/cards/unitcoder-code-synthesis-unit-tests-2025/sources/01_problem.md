@@ -1,0 +1,3 @@
+Pretraining code corpora are large and API-diverse but have inconsistent quality and no executable supervision. Synthetic methods starting from a small set of high-quality instructions are more reliable but constrained by seed distributions and introduce teacher preferences into problem statements. Simply discarding raw functions that fail tests would also lose long-tail APIs and complex implementations.
+
+UnitCoder automatically generates unit tests for functions from pretraining corpora, iteratively repairs failing code, and refines style after tests pass, converting raw code into large-scale verifiable post-training data while attempting to preserve original functionality.

@@ -1,0 +1,1 @@
+Hu, Jingcheng, Yinmin Zhang, Shijie Shang, Xiaobo Yang, et al. “PaCoRe: Learning to Scale Test-Time Compute with Parallel Coordinated Reasoning.” Proceedings of ACL 2026, pages 27200–27215. https://aclanthology.org/2026.acl-long.1253/. Official resources: https://github.com/stepfun-ai/PaCoRe.

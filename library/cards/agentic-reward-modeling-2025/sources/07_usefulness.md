@@ -1,0 +1,3 @@
+For a team with a preference RM and tasks containing factual claims or explicit constraints, reuse the router-plus-verifier pattern to rank candidate outputs or construct DPO pairs. Required inputs are the instruction, candidate responses, an appropriate base RM, a trustworthy evidence source, and executable constraint rules; output component scores, routing trace, and a final ranking.
+
+Judge success on a held-out human-labeled disagreement set and report per-checker errors, not just aggregate accuracy. It is unsuitable when correctness cannot be operationalized, search/evidence is unreliable, or a high-stakes decision needs human review.

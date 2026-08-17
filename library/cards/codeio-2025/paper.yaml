@@ -1,0 +1,149 @@
+id: codeio-2025
+title: 'CODE I/O: Condensing Reasoning Patterns via Code Input-Output Prediction'
+year: 2025
+venue: ICML 2025
+authors:
+- Junlong Li
+- Daya Guo
+- Dejian Yang
+- Runxin Xu
+- Yu Wu
+- Junxian He
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+domains:
+- code-reasoning
+- symbolic-reasoning
+- scientific-reasoning
+- logical-reasoning
+- mathematical-reasoning
+- commonsense-reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.mlr.press/v267/li25t.html
+  arxiv: https://arxiv.org/abs/2502.07316
+  venue: https://proceedings.mlr.press/v267/li25t.html
+  code: https://github.com/hkust-nlp/CodeIO
+  data: https://huggingface.co/datasets/hkust-nlp/CodeIO-PyEdu-Reasoning
+  project: https://codei-o.github.io/
+  huggingface: https://huggingface.co/datasets/hkust-nlp/CodeIO-PyEdu-Reasoning
+  doi: null
+  openreview: https://openreview.net/forum?id=feIaF6vYFl
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/li25t.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Executable functions transformed from CodeMix, PythonEdu-Reasoning, algorithm repositories, mathematics collections,
+    and online coding platforms.
+  trace_author: DeepSeek-V2.5 writes natural-language input-prediction and output-prediction chains of thought and, for initially
+    wrong answers, a revised second turn.
+  answer_format: A prompt containing a natural-language query, input/output specification, reference function, and one side
+    of an I/O pair, followed by a CoT prediction, execution feedback, and optional revision.
+  process_fields:
+  - prompt with function, query, and known input or output
+  - first-turn chain of thought and JSON prediction
+  - first-turn execution or answer-matching feedback
+  - optional second-turn revision and re-verification feedback
+  environment_or_substrate: Sandboxed Python execution of deterministic, JSON-serializable functions and generated test inputs.
+  verifier_or_reward: Output predictions are matched to cached ground truth; input predictions are checked by re-executing
+    the function, with exceptions and mismatches returned as revision feedback.
+  terminal_predicate: Package the first response and feedback; for an initially wrong prediction append one revision and its
+    re-check, retaining both correct and incorrect final records.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-7B, DeepSeek-Coder-V2-Lite, Llama-3.1-8B, and Gemma-2-27B are evaluated as two-stage SFT consumers.
+  teacher: DeepSeek-V2.5 transforms raw code and writes the CoT responses and revisions.
+  generator: Normalize raw files into executable functions, generate constrained inputs, execute for ground-truth I/O pairs,
+    ask the teacher for natural-language predictions, verify them, and optionally request one revision.
+  filtering_rule: Exclude random, non-executable, timeout, or overly complex functions and I/O objects; unlike rejection sampling,
+    retain wrong CoTs with explicit feedback after verification.
+  sampling_protocol: Start from 810.5K raw files, retain 454.9K executable functions, and create about 3.52M nearly balanced
+    input/output prediction records.
+  rollout_count: 2
+  temperature: 0.7
+  inference_budget: The paper reports 3.52M teacher-generated samples and one optional revision turn but does not disclose
+    a complete token, GPU, or monetary generation budget.
+  optimizer_or_scaffold: One epoch of CODE I/O or CODE I/O++ SFT followed by 700 steps of general instruction tuning, using
+    sequence length 4,096.
+audit:
+  source_mixture: 1,674,345 CodeMix, 1,630,716 PyEdu-R, and 216,159 other-source instances after processing, for 3.52M total
+    training samples.
+  split: The paper trains on the 3.52M full mixture; the public release is only the PythonEdu-Reasoning subset because collaborators
+    imposed compliance limits, and its exact row count is not stated on the dataset card.
+  decontamination: LeetCode-O excludes LeetCode problems covered by training, but the paper does not report one comprehensive
+    decontamination pass across all 14 main evaluation benchmarks.
+  license: The released CodeIO-PyEdu-Reasoning dataset declares ODC-BY; the unreleased CodeMix mixture and upstream code sources
+    have separate compliance and license boundaries.
+  lineage: Raw code becomes a cleaned function, generated I/O pairs, a prompt, teacher CoT, execution feedback, and optional
+    revision; only the PythonEdu-Reasoning branch is publicly downloadable.
+  known_failure_modes:
+  - About half of first-turn predictions are wrong, and the released training design deliberately retains wrong reasoning
+    together with feedback rather than filtering it out.
+  - Correct final I/O does not establish that the natural-language chain of thought faithfully represents the function's actual
+    computation.
+  - The publicly released subset does not reproduce the full CodeMix-heavy training distribution used for the main results.
+  citation_status: verified
+  confidence: high
+  notes: Official ICML/PMLR paper, arXiv PDF, project page, repository, Hugging Face file tree, dataset license, construction
+    scripts, affiliations, and adoption counters checked on 2026-07-14.
+inclusion_reason: CODE I/O releases teacher-written CoT, execution feedback, and revision records that are explicitly consumed
+  as SFT targets; the central reusable object is demonstration data rather than raw code pretraining.
+related: []
+tags:
+- instruction-demonstration-rationale
+- code-input-output
+- execution-feedback
+- self-correction
+- arxiv-2502.07316
+- primary-link-checked
+status: verified
+one_line_summary: CODE I/O transforms 454.9K executable functions into 3.52M CoT prediction records, while publicly releasing
+  the ODC-BY PythonEdu-Reasoning subset.
+why_it_matters: It exposes diverse program logic as natural-language reasoning supervision and makes prediction correctness,
+  feedback, and revision visible in the serialized record.
+reading_priority: must read
+paper_type: execution-verified reasoning demonstration dataset and two-stage SFT recipe
+best_for: Researchers building broad reasoning SFT mixtures from executable code or auditing feedback-bearing correction traces.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: PMLR paper, repository pipeline, ODC-BY Hugging Face subset, 11.225 GB JSONL file, and release limitation were checked;
+    the full 3.52M mixture is not public.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-final5
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: execution-verified code reasoning demonstrations
+  selection_priority_score: 10
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 1
+  selection_evidence:
+    institution: The ICML paper affiliation block lists DeepSeek-AI, Shanghai Jiao Tong University, and HKUST.
+    venue: The official PMLR record confirms a regular paper at the 42nd International Conference on Machine Learning; no
+      oral, spotlight, or award distinction is claimed.
+    impact: The official repository had 572 stars and 34 forks, and the public dataset had 138 downloads and 58 likes on 2026-07-14,
+      providing multiple concrete use signals above the 2025 threshold.
+    artifact: The repository publishes the full construction, verification, revision, and training pipeline, while the ODC-BY
+      dataset release is limited to the PythonEdu-Reasoning subset rather than the full training mixture.
+  selection_eligible: true
+  year_impact_threshold: 2

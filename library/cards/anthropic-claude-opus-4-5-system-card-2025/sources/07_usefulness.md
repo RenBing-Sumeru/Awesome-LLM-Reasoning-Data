@@ -1,0 +1,4 @@
+For Track 12, Claude Opus 4.5 is a particularly useful frontier-disclosure comparison point. Readers can distinguish broad source descriptions from source manifests; prior-model reasoning text in supervised learning from reward use in RL; reward-hacking safeguards from a released reward contract; and published decontamination rules from reproducible contamination evidence. The named transcript reviews also illustrate how an internal monitoring result can be informative without becoming independently auditable.
+
+Use this Card to assess the evidence a system card supplies for data lineage, feedback mechanisms, monitorability, reward hacking, and evaluation hygiene. Do not use it to reconstruct Anthropic's training pipeline, infer undocumented source rights or preference data, treat the monitorability analyses as released trace corpora, or conclude that the reported decontamination rules provide complete benchmark separation.
+

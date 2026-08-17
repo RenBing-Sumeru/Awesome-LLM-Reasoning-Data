@@ -1,0 +1,1 @@
+一手来源是 arXiv 2312.13771、官方项目页和 Tencent 仓库；arXiv 当前版本注明 Accepted to CHI 2025。它的问题是：多模态 agent 能否像手机用户一样只通过可见 GUI 操作 app，而不是依赖后端 API。收录边界是 smartphone-control agent environment / trajectory surface；它不是以公开大规模数据集为主的工作。评测面是一条高层手机任务、屏幕/状态观察、点击/滑动/输入等动作，以及 app 结果上的完成判定。

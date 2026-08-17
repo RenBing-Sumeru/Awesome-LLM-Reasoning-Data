@@ -1,0 +1,3 @@
+One-sentence contribution: SQuAD v1.1 is the canonical span-extraction reading-comprehension benchmark with crowd-written questions over Wikipedia passages.
+
+The mechanism is to expose static span-extraction reading-comprehension dataset and score outputs through normalized exact match and token-level F1 over predicted answer spans. Compared with nearby benchmarks, the important change is The contribution is a large crowd-written span-extraction dataset over real passages, which became a standard coordinate for reading-comprehension evaluation. The direction label is benchmark/evaluation surface, with environment data where the model interacts with a repository, workplace, or execution harness.

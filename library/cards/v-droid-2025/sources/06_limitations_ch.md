@@ -1,0 +1,8 @@
+- **发布与 schema：** 论文所述 110K 偏好对未公开。GitHub commit `8d549027634abe65a5721fe6bc3b5e84475db2f6` 只有五条 `{chosen, rejected}` 示例；任务/app/episode ID、原始状态、动作集合、分数、熵、下一观测、纠正 provenance、终止证据、失败记录以及轮次/split manifest 均缺失。偏好对数量不能替代可审计数据对象。
+- **Verifier 歧义：** P3 把除所选动作外的每个备选动作都标为 rejected。一个状态可能存在多条有效路径，因而有效备选可能成为 false negative；反过来，仅依据当前文本被判为 helpful 的动作仍可能在未来失败。entropy triage 并不完美，也可能漏掉置信度很高的错误决策。这些是根据反馈契约得出的 curator inference，不是论文测得的错误率。
+- **恢复偏差：** reverse action 来自固定映射，而非在线成功 verifier。作者明确观察到 self-correction 数据占比过高会造成反复 back 的坍缩，因此把它限制在约 2.5%。保留的数据仍可能偏向容易逆转的错误，而 timeout、中止任务、不可恢复失败及未被标记的错误均不可获得。
+- **环境与表示漂移：** v5 描述 Accessibility-Service XML，v1、五条示例及 HF model card 则使用 HTML。预处理细节、screenshot 或其他 UI 模态、emulator 与 Android 版本、app build、账号、重置状态、凭证、网络/服务状态、timeout 和 benchmark revision 均未固定。公开 preview 主要面向 AndroidWorld，不能证明 AndroidLab/MobileAgentBench 可完整回放。
+- **外部模型依赖：** GPT-4 构造 working memory，并占论文所报每步 4.3 秒中的 3.03 秒，但其 snapshot、prompt、decoding、API 行为、重试与 cache 设置均为 unknown。任务合成与动作补全 LLM 也未披露。因此，仅凭 verifier checkpoint 无法回放 memory 实验和 latency。
+- **规模与评测：** 从 9K 到 110K 的曲线同时改变数据量、app/任务多样性、标注组成、人工纠错和 verifier checkpoint，不能识别纯粹的数据规模效应。AndroidWorld 被明确列为域内，论文也未披露逐条或语义 decontamination 审计。benchmark 成功率只是下游系统证据，不是标签准确性、覆盖、隐私或一般训练数据质量的证明。
+- **版本化主张：** 稳定 ID 以 2025 结尾，最终标题与出版年份却是 2026。v1/项目页/README 头条声称 AndroidWorld 领先 9.5 个百分点、每步 0.7 秒；v5 则为领先 5.2 个百分点、每步总计 4.3 秒、每次 decision 约 0.7 秒。未固定版本的摘要容易混用不兼容主张。
+- **权利、隐私与 artifact 安全：** 论文的 CC BY 4.0、项目站点的 CC BY-SA 4.0、HF model card 的 Apache-2.0 都不能自动授权 GitHub 代码、五条示例、110K 语料、来源任务、app 或 UI 内容；代码/数据许可证为 unknown。标注者 consent、敏感 UI 脱敏、留存及隐私审查也为 unknown。HF 发布包含 PyTorch 序列化的 `v_head.pth`，应先审查加载路径并在隔离环境中处理。

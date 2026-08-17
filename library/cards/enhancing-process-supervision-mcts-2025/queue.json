@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "自训练循环，树搜索轨迹",
+    "updated_at": "2026-07-19T14:07:55Z"
+  },
+  "updated_at": "2026-07-19T14:07:55Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,3 @@
+Multimodal mathematical datasets are often small, visually homogeneous, or generated from repetitive templates, allowing models to rely on text transcription rather than understanding geometry diagrams, plots, tables, and scientific illustrations. Other large collections lack dependable answer verification and decontamination, contaminating SFT and RLVR with noisy labels.
+
+DeepVision-103K collects and synthesizes K–12 visual mathematics with broad knowledge-point and visual-element coverage, difficulty control, and decontamination, then retains verifiable items through answer parsing and rule checks for multimodal SFT, RLVR, and evaluation.

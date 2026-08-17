@@ -1,0 +1,3 @@
+The contribution is a controlled scaling account of contamination: repeated benchmark items can cause large overfitting under Chinchilla-scale training, yet can be forgotten after enough clean data. The evaluation object is a contaminated or holdout question and its model likelihood/accuracy.
+
+The authors connect this empirical effect to the optimizer: cumulative AdamW weight decay bounds past-gradient influence, while observed forgetting is often faster. The paper releases code, not a new training dataset; its result is an audit model of conditions, not permission to ignore benchmark overlap.

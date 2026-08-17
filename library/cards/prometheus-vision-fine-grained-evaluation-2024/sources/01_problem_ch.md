@@ -1,0 +1,1 @@
+长文本 VLM 回答既要遵循指令，也必须与图像内容一致。文本 LLM judge 无法直接看图，通用 VLM 又没有接受细粒度 rubric 训练，因此常把语言流畅度误当成视觉正确性。闭源 GPT-4V 可以评价但成本和版本不可控。论文研究能否构建大规模视觉 rubric-feedback 数据，训练一个开放 VLM evaluator，在用户指定标准下同时判断回答质量与 image grounding。

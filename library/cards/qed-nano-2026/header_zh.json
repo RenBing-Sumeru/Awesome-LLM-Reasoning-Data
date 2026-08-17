@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "QED-Nano 将每题名义 128 次的离线难度估计、每题 16 次的 rubric-reward GRPO 与三轮 Reasoning Cache 训练连接起来；FineProofs-RL 发布题目、rubric 和分数数组，但不发布产生这些分数的证明文本或逐次评分意见。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "自然语言定理证明模型报告、rubric 奖励配方与统计型 rollout 数据发布",
+  "best_for_ch": "研究 rollout 数据、Olympiad proof RL、LLM judge 奖励、Reasoning Cache、test-time compute 与数据发布可审计性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "LM-Provers、Yuxiao Qu、Amrith Setlur、Jasper Dekoninck、Edward Beeching、Jia Li、Ian Wu、Lewis Tunstall、Aviral Kumar",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

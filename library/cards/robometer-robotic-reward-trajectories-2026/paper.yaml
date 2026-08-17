@@ -1,0 +1,109 @@
+id: robometer-robotic-reward-trajectories-2026
+title: 'Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons'
+year: 2026
+venue: 'Robotics: Science and Systems 2026'
+authors:
+- Anthony Liang
+- Yigit Korkmaz
+- Jiahui Zhang
+- Minyoung Hwang
+- Abrar Anwar
+- Sidhant Kaushik
+- Aditya Shah
+- Alex S. Huang
+- Luke Zettlemoyer
+- Dieter Fox
+- Yu Xiang
+- Anqi Li
+- Andreea Bobu
+- Abhishek Gupta
+- Stephen Tu
+- Erdem Bıyık
+- Jesse Zhang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- robotics
+- trajectory-preference
+- reward-learning
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2603.02115
+  arxiv: https://arxiv.org/abs/2603.02115
+  code: https://github.com/robometer/robometer
+  data: https://huggingface.co/robometer
+  project: https://robometer.github.io/
+  huggingface: https://huggingface.co/robometer
+  doi: https://doi.org/10.48550/arXiv.2603.02115
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Robot tasks across 21 embodiments and diverse scenes.
+  trace_author: Expert demonstrations, real robot trajectories, and augmented failed or suboptimal trajectories.
+  answer_format: Video-language trajectory, frame progress label where available, task-success signal, and same-task preference
+    comparison.
+  process_fields:
+  - video
+  - instruction
+  - frame_progress
+  - success
+  - trajectory_preference
+  environment_or_substrate: Robot learning tasks and real-world evaluations.
+  verifier_or_reward: Progress supervision anchors expert rewards; trajectory comparisons order same-task executions.
+  terminal_predicate: The learned reward ranks better trajectories above failed or suboptimal alternatives.
+recipe_metadata:
+  base_model: Video-language reward model trained on RBM-1M.
+  teacher: Expert or reward-labeled demonstrations supply frame-level progress supervision.
+  generator: Real and augmented robot trajectories supply successes, failures, and comparisons.
+  filtering_rule: Task-matched comparison construction orders trajectories and retains usable video-language records.
+  sampling_protocol: Pin RBM-1M revision and separate in-distribution and OOD scenes.
+  inference_budget: Video sequence length and trajectory comparisons determine training cost.
+  optimizer_or_scaffold: Dual objective combines frame-level progress loss with trajectory-comparison preference loss.
+audit:
+  source_mixture: Over one million robot trajectories across 21 embodiments, including expert, suboptimal, and failed data.
+  split: The project releases in-distribution and OOD evaluation datasets; pin revision identifiers.
+  decontamination: Robot tasks, videos, and augmented trajectories must be isolated from downstream evaluation.
+  license: Confirm the Hugging Face dataset card and repository LICENSE.
+  lineage: RSS 2026 paper, Robometer project, official repository, and RBM-1M datasets.
+  known_failure_modes:
+  - Preference comparisons only order trajectories within the same task.
+  - Augmented failures may differ from failures produced by deployment policies.
+  citation_status: verified
+  confidence: high
+  notes: Verified project affiliation block, RSS 2026 venue statement, official code, and Robometer dataset releases.
+inclusion_reason: The public release combines progress labels and trajectory preferences over robot behavior for reward learning.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Robometer learns robot rewards from both per-frame progress and same-task trajectory preferences, including
+  failed executions.
+why_it_matters: It makes otherwise ambiguous suboptimal robot data usable for reward learning.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified project affiliation block, RSS 2026 venue statement, official code, and Robometer dataset releases.
+category_ids:
+- preference_reward_feedback_data

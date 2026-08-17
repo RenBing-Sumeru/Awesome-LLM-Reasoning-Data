@@ -1,0 +1,1 @@
+Earlier rubric benchmarks focus on everyday chat or general instructions, where expertise is mainly needed for answering. ProfBench has experts define tasks and provide criterion labels while explicitly studying self-enhancement bias. Its contribution is the combination of professional knowledge requirements and judge-calibration data, not a new professional foundation model.

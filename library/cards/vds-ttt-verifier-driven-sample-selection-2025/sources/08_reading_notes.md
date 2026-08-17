@@ -1,0 +1,3 @@
+- A verifier-gated pseudo-label selection pipeline for sequential test-time LoRA adaptation.
+- Feedback boundary: The process reward model is the programmatic selector; stated thresholds are 0.99 for math and 0.9 for AIME, and unselected candidates are not described as a released negative set.
+- Audit boundary: PRM thresholding can admit incorrect pseudo-labels or exclude correct low-scoring solutions; sequential adaptation risks order dependence and test leakage.

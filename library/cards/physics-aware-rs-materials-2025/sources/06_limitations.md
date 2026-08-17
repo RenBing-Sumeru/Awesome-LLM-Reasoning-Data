@@ -1,0 +1,5 @@
+- Internal recipes, wet-lab targets, trace texts, selected/rejected candidates, gate values, code, prompts, and checkpoints are unavailable.
+- Continuous-error and PLQY gates inherit target measurement uncertainty and provenance risks; their thresholds and answer extraction are undisclosed.
+- Final numerical acceptance cannot establish that a rationale's mechanism claims are physically correct.
+- About 20% of prompts are discarded, but released data do not reveal which recipe regimes fail or how this changes the training distribution.
+- Curator inference: without item-level logs, lower candidate count cannot be separated from easier prompts, stronger teacher behavior, or gate-induced selection bias.

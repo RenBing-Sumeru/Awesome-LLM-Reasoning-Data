@@ -1,0 +1,215 @@
+id: rstar-math-2025
+title: 'rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking'
+year: 2025
+venue: ICML 2025
+authors:
+- Xinyu Guan
+- Li Lyna Zhang
+- Yifei Liu
+- Ning Shang
+- Youran Sun
+- Yi Zhu
+- Fan Yang
+- Mao Yang
+source_role:
+- data_release
+- process_supervision
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- pairwise_preference
+- process_reward
+- trajectory_value
+domains:
+- math
+- competition-mathematics
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- process_supervision
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+artifacts:
+  paper: https://proceedings.mlr.press/v267/guan25f.html
+  arxiv: https://arxiv.org/abs/2501.04519
+  code: https://github.com/microsoft/rStar/tree/rStar-math
+  data: https://huggingface.co/datasets/ElonTusk2001/rstar_sft
+  project: https://github.com/microsoft/rStar/tree/rStar-math
+  huggingface: https://huggingface.co/datasets/ElonTusk2001/rstar_ppm
+  sft_data: https://huggingface.co/datasets/ElonTusk2001/rstar_sft
+  ppm_data: https://huggingface.co/datasets/ElonTusk2001/rstar_ppm
+  doi: null
+  venue: https://proceedings.mlr.press/v267/guan25f.html
+  openreview: https://openreview.net/forum?id=5zwF1GizFa
+  pmlr: https://proceedings.mlr.press/v267/guan25f.html
+  bibtex: https://proceedings.mlr.press/v267/guan25f.html
+data_object:
+  prompt_source: A reported pool of 747K answer-keyed math word problems, primarily from MetaMath and the competition-level
+    portion of NuminaMath, augmented with GPT-4-generated problems seeded from 7.5K MATH-train and 3.6K AMC-AIME training
+    problems. GPT-4 generates ten solutions per synthetic problem and the paper retains problems with at least three consistent
+    solutions. Exact source counts, item IDs, deduplication, and release-to-source mappings are unknown.
+  trace_author: Round 1 uses DeepSeek-Coder-V2-Instruct (236B) as the MCTS policy. Rounds 2-4 use successively fine-tuned
+    Qwen2.5-Math-7B policy SLMs; rounds 3-4 additionally use the previous round's 7B process preference model (PPM) to initialize
+    step values.
+  answer_format: The internal construction object is a problem-ground-truth pair plus an MCTS tree of code-augmented reasoning
+    steps, execution observations, terminal answers, visits, and Q-values. The public SFT release flattens selected correct
+    trajectories to `query` and `response`. The public PPM release flattens shared-prefix step comparisons to `prompt`, `neg`,
+    `pos`, `neg_count`, and `pos_count`.
+  process_fields:
+  - problem / query
+  - ground-truth final answer
+  - source dataset and seed lineage, not released per row
+  - partial root-to-node reasoning prefix
+  - one-step natural-language reasoning embedded as Python comments
+  - cumulative Python code
+  - execution observation or error
+  - parent-child tree relation
+  - node visit count
+  - initial PPM value in rounds 3-4
+  - rollout-updated Q-value
+  - terminal extracted answer
+  - terminal correctness verdict
+  - selected SFT trajectory
+  - positive and negative step continuations for PPM training
+  - round, seed, and realized search budget, not released per row
+  environment_or_substrate: Offline MCTS over code-augmented reasoning-step nodes. Each candidate's cumulative Python program
+    is executed; runtime-valid candidates remain in the tree, terminal answers are checked against a reference answer, and
+    terminal outcomes are back-propagated. From round 3, a learned PPM supplies initial step values before terminal updates.
+  verifier_or_reward: Python execution is a programmatic syntax/runtime filter. Ground-truth answer equivalence supplies terminal
+    +1/-1 feedback. Search-derived Q-values rank candidate steps, and the learned PPM predicts a scalar process score used
+    to guide later-round and test-time MCTS. None of these contracts proves the semantic validity of every intermediate comment
+    or formalization.
+  terminal_predicate: A terminal trajectory is positive when its extracted final answer is judged equivalent to the ground-truth
+    answer. Code-error, over-depth, and no-valid-child terminals receive negative reward. Public SFT selection keeps up to
+    two correct trajectories per prompt after Q-based ranking and removes responses containing `error`.
+recipe_metadata:
+  base_model: Four-round self-evolution is run on Qwen2.5-Math-7B. Final round-4 trajectories also fine-tune Qwen2.5-Math-1.5B,
+    Qwen2-Math-7B, and Phi3-mini-Instruct policy models. PPMs are initialized from the corresponding fine-tuned policy model
+    with a scalar tanh head.
+  teacher: No superior model supplies the reported solution trajectories. However, GPT-4 generates part of the 747K problem
+    pool and DeepSeek-Coder-V2-Instruct (236B) bootstraps round-1 MCTS traces; ground-truth answers supply terminal supervision.
+  generator: Round 1 DeepSeek-Coder-V2-Instruct, followed by successively fine-tuned Qwen2.5-Math-7B policy SLMs that generate
+    one code-augmented reasoning step at a time inside MCTS.
+  filtering_rule: Keep Python-executable candidate steps; use reference-answer correctness for terminal feedback; rank correct
+    trajectories by Q-values and retain up to two for SFT. For PPM data, require positive candidates to reach correct terminals
+    and negative candidates to reach incorrect terminals, then keep repository pairs with Q-margin at least 0.5 and edit distance
+    at least 20. Synthetic problems whose generated trajectories have below 50% accuracy are removed.
+  sampling_protocol: 'Paper default: maximum depth 16, 16 rollouts per problem, 8 candidates per step, UCT constant 2. Round
+    1 uses 8 rollouts and 5 candidates. Round 4 uses 16 candidates, two trees with different random seeds, and extra search
+    for unsolved problems up to 64 and, if needed, 128 rollouts. The checked public configs instead set 12 candidates and
+    48 iterations, so a paper-exact runnable manifest is not identified.'
+  rollout_count: 8 in the bootstrap round; 16 by default in later rounds; hard round-4 problems receive additional 64 and
+    potentially 128 rollouts. Exact per-problem realized counts are not released.
+  temperature: unknown
+  inference_budget: Bootstrap generation used ten nodes of 8x80GB H100 GPUs for about two weeks. Rounds 2-4 used fifteen nodes
+    of 4x40GB A100 GPUs, about three days per ordinary round; the expanded final round took about one week. Per-record token
+    totals and realized search budgets are not released.
+  optimizer_or_scaffold: Each round trains a fresh policy model from the initial base for two epochs at sequence length 4096
+    and batch size 128; Qwen runs use AdamW and learning rate 7e-6. PPM training uses mixed-outcome problems, two positive
+    and two negative candidates per step, Bradley-Terry pairwise ranking, one epoch, batch size 512, and learning rate 7e-6.
+    The official README's example RM command uses two epochs, requiring reconciliation with the paper.
+audit:
+  source_mixture: Primarily MetaMath and competition-level NuminaMath, plus GPT-4-generated variants of 7.5K MATH-train and
+    3.6K AMC-AIME training seeds. Exact item IDs, proportions, transformations, duplicates, source-license mapping, and round-specific
+    inclusion are unknown.
+  split: The official SFT release has 1,188,842 rows and the PPM release has 1,407,399 rows; both expose only a `train` split.
+    No source-disjoint development/test split, round partition, or immutable 747K source manifest is published.
+  decontamination: unknown
+  license: The Microsoft code repository is MIT, and both linked Hugging Face dataset cards declare MIT. The minimal cards
+    do not reconcile upstream rights or attribution requirements for NuminaMath, MetaMath, MATH, AMC/AIME, and GPT-4-generated
+    derivatives.
+  lineage: Upstream answer-keyed problem or GPT-4 synthetic problem -> source-quality filtering -> round-specific policy/PPM
+    MCTS -> Python runtime filtering -> terminal answer-equivalence feedback -> Q-value back-propagation -> selected correct
+    trajectories for policy SFT plus shared-prefix positive/negative step pairs for PPM training -> next self-evolution round.
+    Public tables omit the source ID, raw tree, Q-values, visits, round, seed, and search budget.
+  release_version: Code branch `rStar-math` at commit b3c1846185f4af877e1e441a67c4c5fcfed9d442; SFT dataset revision 955b090fc7597b01b32fe1b36966f4f97c47cd05;
+    PPM dataset revision 657b6546c9544f1ebbf6f9ba9da099ab63db42ab; verified 2026-07-23.
+  released_vs_claimed: Released artifacts include MCTS/extraction/training/evaluation code, flattened SFT and PPM training
+    tables, example data, evaluation questions, and licenses. The inspected release does not include the canonical 747K source
+    pool, raw MCTS trees, Q/visit annotations, complete rejected trees, round/search provenance, trained policy checkpoints,
+    trained PPM checkpoints, or a paper-exact immutable run manifest.
+  known_failure_modes:
+  - Python execution detects syntax/runtime failures but does not establish that comments, formalization, or calculations
+    faithfully solve the prompt.
+  - Terminal answer equivalence can accept trajectories with invalid or contradictory intermediate reasoning and can itself
+    produce false positives or false negatives.
+  - MCTS Q-values measure observed success under one policy, tree, and finite budget; unvisited alternatives and policy changes
+    can reverse rankings.
+  - PPM pairs inherit terminal-checker and search errors, and iterative policy/PPM co-evolution can amplify early shortcuts.
+  - The public SFT schema drops source IDs, Q-values, visits, rejected branches, and round metadata; the PPM schema drops
+    Q margins, tree topology, terminal-verdict evidence, and problem lineage.
+  - The paper and checked repository configs disagree on candidate counts, iterations/rollouts, temperature disclosure, and
+    PPM epoch examples, so the public code is not a pinned paper-exact reproduction.
+  - The 19-of-20 label-error observation for remaining unsolved synthetic problems is based on a small unreleased manual audit.
+  - No decontamination or benchmark-overlap analysis is documented for the source pool or released rows.
+  - Dataset-level MIT labels do not by themselves resolve upstream source and synthetic-derivative licensing.
+  - Exact released policy and PPM checkpoints were not found, blocking direct reproduction of the reported round and test-time
+    scaling results.
+  citation_status: verified
+  confidence: high
+  notes: Official PMLR metadata/PDF, arXiv, OpenReview link, Microsoft repository branch, Hub dataset cards/APIs, schemas,
+    row counts, code paths, configs, and licenses were checked. Citation and artifact existence are verified; release completeness,
+    source lineage, and paper-exact reproducibility are partial.
+inclusion_reason: rStar-Math is a high-value Data Construction and Open Release Recipes entry because it exposes a four-round
+  loop from problem sourcing through code-executed tree search, terminal feedback, Q-based trajectory selection, process-preference
+  construction, and iterative policy/verifier retraining, while its flattened release makes the missing lineage required for
+  audit unusually clear.
+related:
+- rest-mcts-2024
+- dart-math-2024
+tags:
+- primary-link-checked
+- artifact-verified
+- math
+- code-augmented-reasoning
+- mcts
+- self-evolution
+- process-preference-model
+- process-supervision
+- synthetic-data
+- open-data
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: rStar-Math turns answer-keyed math problems into code-executed MCTS trajectories and Q-ranked step preferences
+  across four self-evolution rounds, releasing flattened SFT and PPM tables but not the underlying source/tree lineage.
+why_it_matters: It is an operational example of jointly evolving a reasoning-data generator and process verifier without superior-model
+  solution distillation, and it shows exactly which provenance is lost when rich search trees are flattened into training-ready
+  SFT and preference rows.
+status: partial
+card: null
+needs:
+- 'needs_lineage: publish the canonical 747K source manifest with source IDs, proportions, transformations, deduplication,
+  filtering decisions, and release-row mappings'
+- 'needs_search_artifacts: release raw MCTS trees, visits, Q-values, terminal verdicts, rejected branches, round IDs, seeds,
+  and realized per-item budgets'
+- 'needs_reproduction: pin paper-exact configs, environment/container, dependency versions, code commit, data revisions, and
+  trained policy/PPM checkpoints'
+- 'needs_audit: quantify Python-execution and answer-equivalence false accepts/rejects and audit PPM preference-label noise'
+- 'needs_decontamination: document semantic overlap with training and evaluation benchmarks'
+- 'needs_license: reconcile upstream dataset and synthetic-derivative rights rather than relying only on top-level MIT tags'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title/arXiv/PMLR-key duplicate search found no existing entry. Verified PMLR/ICML metadata, arXiv, OpenReview
+    link, Microsoft `rStar-math` branch at b3c1846, MIT code license, SFT revision 955b090 with 1,188,842 two-column train
+    rows, and PPM revision 657b654 with 1,407,399 five-column train rows. Artifact presence is verified; paper-exact completeness
+    is not.

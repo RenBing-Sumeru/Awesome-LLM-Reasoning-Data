@@ -1,0 +1,17 @@
+{
+  "title": "Data Contamination Quiz: A Tool to Detect and Estimate Contamination in Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.tacl-1.37/",
+    "code": "https://github.com/shahriargolchin/DCQ"
+  },
+  "review_note": "Official TACL paper and official repository containing code, inputs, intermediate results, and reports verified.",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以原始样本与词级扰动构成位置偏差补偿测验，在无训练数据和 logits 条件下估计黑盒模型的逐字污染范围。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

@@ -1,0 +1,3 @@
+Correctness is only relative to the stated contract: Gold offer-URL set matching defines strict completion; product-search, add-to-cart, and checkout tasks also report precision, recall, and F1 for partial completion. Offline shops trade live realism for reproducibility. Product extraction, catalog freshness, task generator rules, checkout simulation, and gold-set semantics must be pinned.
+
+The paper should not be read as unrestricted real-world reliability. Public artifacts can become training data, service-backed environments can drift, and judge/evaluator implementations can change across releases.

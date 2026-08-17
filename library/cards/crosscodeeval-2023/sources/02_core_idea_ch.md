@@ -1,0 +1,1 @@
+核心贡献是一套多语言跨文件代码补全 benchmark：从许可较宽松的 GitHub 仓库抽取样本，并用静态分析确保补全点确实需要当前文件之外的上下文。机制不是让模型自由写程序，而是先破坏或隐藏 import/跨文件依赖，再定位未解析符号，从而形成需要检索相关文件的补全实例。数据对象是“仓库上下文补全样本”，不是执行轨迹。反馈契约是与参考补全做 exact match、edit similarity 和 identifier/API match。最近对比对象是 HumanEval/MBPP 这类单文件题，以及 repository-level retrieve-and-generate 评测。方向标签是检索敏感的代码评测面。

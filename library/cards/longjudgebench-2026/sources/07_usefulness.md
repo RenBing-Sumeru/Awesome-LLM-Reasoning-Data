@@ -1,0 +1,2 @@
+A team evaluating reports, plans, or long answers can use LongJudgeBench to select a judge and protocol by scenario, then check agreement and stability rather than only an average score. Do not transfer a winning configuration to a new genre without human spot checks.
+For selection, Reference’s mean gain does not mean every task should add it: its gain on RealDR is limited, and combining it with a rubric does not beat Reference alone. Without reliable references, report Vanilla and Rubric scenario scores rather than manufacture an anchor.

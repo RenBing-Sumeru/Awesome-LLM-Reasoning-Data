@@ -1,0 +1,6 @@
+- The paper's evaluation unit is 150 executable OSWorld Ubuntu VM tasks—50 misuse, 50 prompt-injection, and 50 misbehavior cases—not a training corpus or a prevalence sample.
+- Distinguish OSWorld reward/done logs from GPT-4.1 AER outputs: the reported feedback is `reasoning`, `success`, `safety`, and `violation_step`, aided by a GPT-4o final-screen caption.
+- Judge validation covers 150 o4-mini traces and gives unsafe/completion F1 of 0.76/0.79; unsafe recall is only 0.64, so benchmark labels require error analysis.
+- Read Paper Table 2 for model results, Table 3 for judge precision/recall/F1, Appendix B Table 10 for conditional step agreement, and Appendix B.5 for concrete judge failures.
+- Pin the inspected repository commit and reconcile its 51 injection combinations with the paper's 50 before comparing scores or claiming exact replay.
+- Use OS-Harm only for evaluation and audit; Drive-specific license, immutable inventory/checksums, complete retention, and annotation agreement remain unknown.

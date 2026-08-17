@@ -1,0 +1,5 @@
+- CWT 每次训练一个 rationale chunk；SBC 使用当前学生模型的 loss 修订边界。
+- STT 以删除 chunk 后答案是否正确作为跳过决策，但这不能证明该步骤无关。
+- 报告协议中的教师 rationale 由 text-davinci-002 以最大长度 128、temperature 0.7 生成。
+- 论文评测七项推理任务，但部分任务保留近乎完整的 rationale，提速很小。
+- 未确认官方处理后轨迹或删除日志，因此 benchmark 增益不是数据质量证据。

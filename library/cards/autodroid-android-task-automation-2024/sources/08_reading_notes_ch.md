@@ -1,0 +1,1 @@
+不要把 AutoDroid 当成静态数据集论文。关键对象是可执行 Android episode，其有效性依赖 UI state、action constraint 和 terminal success check。benchmark 与 safety 部分要一起读：action accuracy 高不代表 task completion 一定成功，风险动作需要单独策略。下游比较必须固定 app、VM snapshot、模型服务日期和 prompt/memory 设置。

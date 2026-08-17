@@ -1,0 +1,5 @@
+Large math SFT corpora in early 2024 depended on proprietary teachers whose terms constrained downstream use and whose changing behavior limited reproducibility. Open models such as Mixtral produced fewer correct solutions per problem, especially on MATH, so simply replacing GPT-4 sharply reduced training-set coverage.
+
+OpenMathInstruct-1 combines high-budget sampling with default, subject-specific, and masked-reference prompts to elicit mixed text-and-Python solutions from Mixtral-8x7B. Code execution and final-answer matching select 1.8M correct GSM8K/MATH demonstrations, while 6.6M incorrect trajectories are published separately.
+
+**L4 facts:** Primary source: NeurIPS 2024 Datasets and Benchmarks Track, DOI 10.52202/079017-1096; decision boundary: execute up to three code blocks, extract the boxed answer, compare against source ground truth, and stop on execution error; collection verification: release schema, commercial-use license, source coverage, sampling imbalance, and model evidence checked.

@@ -1,0 +1,1 @@
+FACTS Grounding 关注的问题是：模型长回答是否完全基于给定长文档和用户请求。主要来源是 arXiv:2501.03200，以及官方 Kaggle FACTS Grounding benchmark/leaderboard。这里收录它是因为它提供带 public/open 与 private/blind split 的 grounding 评测面，而不是 claim extraction 数据集或普通 QA 语料。一个任务包含用户请求、最长 32K tokens 的完整文档、模型长回答，以及 eligibility 和 grounding 的 judge 输出。它对 atlas 的价值是提供带隐藏集和 judge ensemble 的文档溯源事实性反馈契约。

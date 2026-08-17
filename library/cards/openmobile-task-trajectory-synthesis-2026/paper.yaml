@@ -1,0 +1,117 @@
+id: openmobile-task-trajectory-synthesis-2026
+title: 'OpenMobile: Building Open Mobile Agents with Task and Trajectory Synthesis'
+year: 2026
+venue: COLM 2026
+authors:
+- Kanzhi Cheng
+- Zehao Li
+- Zheng Ma
+- Nuo Chen
+- Jialin Cao
+- Qiushi Sun
+- Zichen Ding
+- Fangzhi Xu
+- Hang Yan
+- Jiajun Chen
+- Luu Anh Tuan
+- Jianbing Zhang
+- Lewei Lu
+- Dahua Lin
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mobile-agents
+- computer-use
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.15093
+  arxiv: https://arxiv.org/abs/2604.15093
+  code: https://github.com/njucckevin/OpenMobile-Code
+  data: https://huggingface.co/datasets/cckevinn/OpenMobile-Data
+  project: https://njucckevin.github.io/openmobile/
+  huggingface: https://huggingface.co/datasets/cckevinn/OpenMobile-Data
+  doi: https://doi.org/10.48550/arXiv.2604.15093
+  venue: https://njucckevin.github.io/openmobile/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Synthesized AndroidWorld task instructions grounded in explored app functionality.
+  trace_author: OpenMobile's policy-switching mobile-agent rollout.
+  answer_format: Multimodal mobile-agent training JSON and raw rollout trajectories with screenshots and intervention metadata.
+  process_fields:
+  - instruction
+  - screenshot
+  - action
+  - trajectory
+  - policy_source
+  - monitor_output
+  - intervention_triggered
+  environment_or_substrate: AndroidWorld emulator across Android applications.
+  verifier_or_reward: Environment completion and a strong-model monitor used for intervention during rollout.
+  terminal_predicate: Successful mobile-task completion in AndroidWorld.
+recipe_metadata:
+  base_model: Qwen vision-language configurations and strong/weak rollout policies documented by the project.
+  teacher: Strong-model monitoring and intervention in policy-switching rollout.
+  generator: Environment exploration, global-memory task synthesis, and policy-switching trajectory rollout.
+  filtering_rule: Merge successful rollouts and post-process them into released multimodal SFT splits.
+  sampling_protocol: Explore app state transitions, synthesize instructions, then roll out trajectories with recovered initialization
+    parameters.
+  inference_budget: Use the released splits and repository configuration; pin the data revision for reproduction.
+  optimizer_or_scaffold: LLaMA-Factory supervised fine-tuning for mobile agents.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: OpenMobile-synthesized tasks and trajectories from AndroidWorld exploration and rollout.
+  split: Four public LlamaFactory training JSON splits, with raw dumps containing trajectory screenshots.
+  decontamination: The project reports an instruction-overlap analysis against benchmark tests; use its published analysis
+    when selecting reuse settings.
+  license: Apache-2.0 for the code repository; confirm dataset-specific terms before redistribution.
+  lineage: COLM 2026 project announcement, arXiv paper, author repository, and author dataset release.
+  known_failure_modes:
+  - Data is grounded in AndroidWorld and may not transfer to arbitrary mobile interfaces.
+  - Intervention signals depend on the monitor and policy configurations.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the author project page, which reports COLM 2026 acceptance, links the code and data, and documents
+    2.8K instructions, 34K action steps, and 20 Android apps.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: OpenMobile releases synthesized Android tasks and policy-switching mobile-agent trajectories that retain
+  error-recovery signals.
+why_it_matters: It jointly opens task synthesis, recovery-rich execution traces, training splits, and the construction code
+  for mobile agents.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the author project page, which reports COLM 2026 acceptance, links the code and data, and documents
+    2.8K instructions, 34K action steps, and 20 Android apps.
+category_ids:
+- process_trace_supervision_data

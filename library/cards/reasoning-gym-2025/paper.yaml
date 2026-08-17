@@ -1,0 +1,183 @@
+id: reasoning-gym-2025
+title: 'REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards'
+year: 2025
+venue: NeurIPS 2025 Spotlight
+authors:
+- Zafir Stojanovski
+- Oliver Stanley
+- Joe Sharratt
+- Richard Jones
+- Abdulhakeem Adefioye
+- Jean Kaddour
+- Andreas Köpf
+source_role:
+- agent_environment
+- construction_recipe
+- verifier_reward
+- benchmark
+- infrastructure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- algebra
+- algorithmic-reasoning
+- arithmetic
+- code
+- cognition
+- games
+- geometry
+- graph-reasoning
+- induction
+- logic
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=GqYSunGmp7
+  arxiv: https://arxiv.org/abs/2505.24760
+  code: https://github.com/open-thought/reasoning-gym
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.24760
+  venue: https://openreview.net/forum?id=GqYSunGmp7
+  openreview: https://openreview.net/forum?id=GqYSunGmp7
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: More than 100 registered Python generators create reasoning problems across mathematical, algorithmic, logical,
+    graph, cognition, code, geometry, and game domains from task-specific configurations.
+  trace_author: Model policies generate answer responses during RLVR. Reasoning Gym generates questions, oracle answers, task
+    metadata, and executable rewards; it does not release a canonical corpus of policy reasoning traces.
+  answer_format: Each generated entry contains question, answer, and metadata fields. Response syntax, normalization, partial-credit
+    behavior, and the set of accepted solutions are task-specific.
+  process_fields:
+  - registered task or source-dataset name
+  - full generator configuration
+  - repository or package version
+  - seed and generated-item index
+  - question
+  - oracle answer
+  - task-specific metadata and difficulty fields
+  - model response when an experiment logs it
+  - native score_answer output and any auxiliary reward
+  - optional mixture weights and curriculum state
+  environment_or_substrate: ProceduralDataset generators, a named task registry, finite virtual datasets, optional reseeding
+    for continuing streams, weighted composite datasets, and optional task curricula.
+  verifier_or_reward: Each task supplies a score_answer function returning an algorithmic scalar reward. The paper's RL reward
+    adds an accuracy component and a 0.2 formatting component, while its evaluation tables report accuracy only. Current post-paper
+    releases also expose an optional cascade for normalized-string, numeric, and symbolic-math matches.
+  terminal_predicate: A generated question is answered once, the selected task verifier scores that response, and the single-turn
+    episode terminates.
+recipe_metadata:
+  base_model: Qwen2.5-3B-Instruct is used in the reported intra-domain, cross-domain, curriculum, and RG-Math external-transfer
+    experiments.
+  teacher: none
+  generator: Registered task-specific Python procedural generators with configurable difficulty, structural, and stylistic
+    parameters.
+  filtering_rule: unknown as a library-wide rule; validity and solvability constraints are implemented separately by individual
+    generators, and the paper does not report a universal materialized-corpus filter.
+  sampling_protocol: Paper training experiments sample included tasks uniformly. The library additionally supports finite
+    configured datasets, weighted composites, and continuing streams, so realized data depend on task registry, configuration,
+    size, seed, index, and curriculum state.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: The Appendix A.6 example uses a 20,000-item virtual dataset, 4,096 prompt tokens, 2,048 response tokens,
+    eight responses per prompt, and 500 training steps. These are paper experiment settings, not library-wide defaults.
+  optimizer_or_scaffold: GRPO with a Reasoning-Gym-modified verl stack for most experiments; separate qwen-math training code
+    is used for the RG-Math external-generalization model. The current official training README pins verl commit c34206925e2a50fd452e474db857b4d488f8602d
+    and vLLM 0.7.3 for the reported setup.
+audit:
+  source_mixture: A version-dependent registry of more than 100 procedural task generators. Paper experiments sample selected
+    tasks uniformly; the library can also combine configured tasks with explicit weights.
+  split: No universal fixed train/test split exists. Intra-domain and cross-domain studies use held-out tasks and identical
+    evaluation sets of 50 problems across three runs. Curriculum evaluation uses 50 held-out examples at each difficulty level.
+    Reuse requires frozen instances separated from training streams.
+  decontamination: Procedural generation reduces reliance on a fixed item table, but the paper provides no comprehensive semantic,
+    template, or external-benchmark overlap audit. The authors' claim that generated instances avoid memorization is therefore
+    not a substitute for decontamination evidence.
+  license: Apache-2.0 for the official repository; provenance and licensing of task-specific bundled or external resources
+    still require task-level review.
+  lineage: A generated item depends on code or package version, registered generator, complete configuration, seed, index,
+    virtual size or reseeding rule, mixture weights, curriculum state, scorer mode, and optional dependency versions.
+  known_failure_modes:
+  - The release is a mutable generator-and-scorer library rather than a canonical fixed dataset; task registry, defaults,
+    generated items, and rewards can change across versions.
+  - The exact Reasoning Gym commit used in the paper is unknown. Current main audited at 49b07130b3fcd12f2d064bba7c43869543a0e7e7
+    reports version 0.1.26.dev0 and includes post-paper scorer changes.
+  - The current base ProceduralDataset scorer awards partial credit when the oracle answer occurs as a substring of a longer
+    response, creating a false-positive and reward-hacking surface.
+  - The current optional cascade can only upgrade a native score and adds LaTeX normalization, case-insensitive equality,
+    numeric tolerance, and symbolic matching; it was added after the paper and must not be projected onto paper-era experiments.
+  - Symbolic matching is silently skipped when the optional math-verify dependency is unavailable, so current scorer behavior
+    can differ across installations.
+  - Task-specific scorers can mishandle formatting variants, malformed outputs, numeric tolerance, or multiple valid solutions.
+    Unit tests do not establish soundness and completeness over every solution space.
+  - If a seed is omitted, the current base class draws a random 32-bit seed. Missing seed, item index, and stream or curriculum
+    state prevent exact replay.
+  - Procedural generation does not prevent semantic overlap, shared templates, or train/evaluation leakage when code revisions,
+    seeds, and realized snapshots are uncontrolled.
+  - Paper training rewards include a formatting component, and early reward spikes are partly attributed to format learning;
+    reward curves therefore are not pure correctness curves.
+  - Transfer evaluations use small 50-problem sets across three runs, and some reported effects are negative or marginal.
+    They do not validate every generator or verifier.
+  - Curricula cover only a subset of tasks, difficulty levels are not calibrated across environments, and Count Primes never
+    advances beyond its initial level in the reported curriculum run.
+  - The paper focuses on single-turn text tasks and does not cover persistent multi-turn or multimodal environments.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v2, the 44-page paper and appendix, OpenReview identity, repository README, current dataset and cascade
+    scorer implementations, training documentation, and current main revision were checked. Results demonstrate use in evaluation
+    and RLVR, not universal generator validity, verifier calibration, decontamination, or data quality.
+  metadata_status: summary_ready
+inclusion_reason: Reasoning Gym is a core open construction and verifier substrate for RLVR because it exposes configurable
+  procedural generators, task-specific executable rewards, mixtures, curricula, and training integrations rather than only
+  a fixed reasoning dataset.
+related:
+- synlogic-2025
+tags:
+- procedural-generation
+- reasoning-environment
+- rlvr
+- rule-based-verifier
+- dynamic-curriculum
+- synthetic-data
+- open-source
+- version-sensitive
+status: verified
+one_line_summary: Reasoning Gym is an open library of more than 100 configurable procedural reasoning generators with task-specific
+  executable rewards for dynamic RLVR training and evaluation.
+why_it_matters: It makes the reusable reasoning-data object a versioned generator-verifier environment whose realized examples
+  and rewards depend on code, configuration, seeds, scorer behavior, and curriculum state.
+card: null
+needs:
+- 'needs_reproducibility: identify and pin the exact Reasoning Gym commit used for each paper experiment'
+- 'needs_snapshot: record the full task registry, configs, seeds, indices, virtual sizes, mixture weights, curriculum transitions,
+  and frozen evaluation instances'
+- 'needs_verifier_audit: measure native and cascade scorer false positives and false negatives, including substring leakage,
+  numeric tolerance, malformed output, and multiple-valid-solution cases'
+- 'needs_dependency_pin: record whether optional math-verify scoring is enabled and pin its version for current releases'
+- 'needs_decontamination: release semantic and template overlap checks against every external evaluation version'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Exact title, arXiv ID, OpenReview ID, NeurIPS 2025 Spotlight status, official repository, current code revision,
+    and current package metadata were checked. No canonical official fixed dataset or Hugging Face release is claimed; the
+    verified reusable artifact is the generator, verifier, and training-code repository.
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives

@@ -1,0 +1,5 @@
+Relative to S1-style budget forcing, LCPO moves length control from an inference-time intervention into the training objective. Instead of truncating a response or inserting continuation tokens until a quota is reached, it conditions the policy on a budget and rewards both terminal correctness and realized length. This turns requested compute into a field of the prompt/rollout/reward record.
+
+Relative to supervised length labels, the paper's key data-facing change is online feedback. Its SFT-only ablation relabels generated traces with their lengths but still fails to make the model follow requested budgets; LCPO continually evaluates newly generated responses against the requested length. L1-Max further distinguishes a ceiling from an exact target, avoiding the requirement to fill unused budget.
+
+The novelty should remain scoped to learned length control for the studied reasoning policies. The method does not introduce step-correctness supervision, a new mathematical answer verifier, or a curated trace corpus, and its budget signal does not identify which reasoning content should be retained.

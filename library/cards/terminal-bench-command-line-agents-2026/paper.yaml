@@ -1,0 +1,125 @@
+id: terminal-bench-command-line-agents-2026
+title: 'Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces'
+year: 2026
+venue: ICLR 2026 / arXiv
+authors:
+- Mike A. Merrill
+- Alexander G. Shaw
+- Nicholas Carlini
+- Boxuan Li
+- Harsh Raj
+- Ivan Bercovich
+- Lin Shi
+- Jeong Yeon Shin
+- Thomas Walshe
+- E. Kelly Buchanan
+- Alex Dimakis
+- Andy Konwinski
+- Ludwig Schmidt
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- terminal-agents
+- command-line-environments
+- execution-feedback
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.11868
+  arxiv: https://arxiv.org/abs/2601.11868
+  doi: https://doi.org/10.48550/arXiv.2601.11868
+  code: https://github.com/laude-institute/terminal-bench
+  data: https://www.tbench.ai/
+  project: https://www.tbench.ai/
+  huggingface: https://huggingface.co/datasets/harborframework/terminal-bench-2.0
+  venue: https://openreview.net/forum?id=a7Qa4CcHak
+  openreview: https://openreview.net/forum?id=a7Qa4CcHak
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official Terminal-Bench paper and benchmark site
+  trace_author: Terminal-Bench authors and command-line agent runs
+  answer_format: terminal tasks, setup scripts, command traces, tests, execution logs, and benchmark records
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: hard command-line tasks with setup, execution, and scoring
+  verifier_or_reward: Terminal-Bench task tests and terminal execution scoring
+  terminal_predicate: Terminal-Bench task tests and terminal execution scoring
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: Terminal-Bench task authors and terminal environment definitions
+  generator: Terminal-Bench task and harness construction
+  filtering_rule: pin task/harness repository URLs, benchmark version, complete author roster, and terminal-bench@2.0 release
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2601.11868; https://www.tbench.ai/; https://github.com/laude-institute/terminal-bench;
+    https://openreview.net/forum?id=a7Qa4CcHak
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2601.11868'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: exact task split, harness/package version, runtime image, task licenses, and public/private leaderboard policy need
+    audit.
+inclusion_reason: terminal predicates and command workflows are core environment data
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- terminal-agents
+- command-line-environments
+- execution-feedback
+why_it_matters: terminal predicates and command workflows are core environment data
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Terminal-Bench evaluates agents on hard realistic command-line tasks with execution feedback.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project site, repository, and repository citation verify title, large author roster, ICLR 2026/OpenReview
+    status, and public benchmark entry; local card keeps a shortened author list with leading authors.
+category_ids:
+- benchmarks_evaluation_surfaces
+- programmatically_verifiable_outcome_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 90
+  primary_category_id: benchmarks_evaluation_surfaces

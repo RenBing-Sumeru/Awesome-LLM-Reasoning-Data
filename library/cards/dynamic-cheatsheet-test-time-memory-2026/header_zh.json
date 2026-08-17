@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"Dynamic Cheatsheet 通过自整理的持久记忆，让黑箱模型复用先前推理过程中发现的策略、代码和纠错经验。","reading_priority_ch":"必读","paper_type_ch":"自适应记忆测试时学习研究","best_for_ch":"研究无需参数更新、却能让多次推理努力跨任务累积的读者。","confidence_ch":"高","authors_ch":"Mirac Suzgun、Mert Yuksekgonul、Dan Jurafsky（斯坦福大学）；Federico Bianchi（Together AI）；James Zou（斯坦福大学、Together AI）","category_ids":["scaling_rlvr_test_time_compute"]}

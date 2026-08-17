@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Shanghai AI Laboratory",
+    "Abaka AI",
+    "2077AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2412.07626",
+    "https://arxiv.org/pdf/2412.07626",
+    "https://github.com/opendatalab/OmniDocBench",
+    "https://huggingface.co/datasets/opendatalab/OmniDocBench"
+  ],
+  "verification_note": "Official PDF superscripts verify Shanghai AI Laboratory, Abaka AI, and 2077AI affiliations; arXiv comment and official repository verify CVPR 2025 acceptance, code, and data artifacts."
+}

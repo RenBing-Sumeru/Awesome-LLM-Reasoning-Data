@@ -1,0 +1,113 @@
+id: swe-dev-feature-driven-software-development-2025
+title: 'SWE-Dev: Evaluating and Training Autonomous Feature-Driven Software Development'
+year: 2025
+venue: arXiv
+authors:
+- Yaxin Du
+- Yuzhu Cai
+- Yifan Zhou
+- Cheng Wang
+- Yu Qian
+- Xianghe Pang
+- Qian Liu
+- Yue Hu
+- Siheng Chen
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- code-generation
+- agent-evaluation
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.16975
+  arxiv: https://arxiv.org/abs/2505.16975
+  code: https://github.com/DorothyDUUU/SWE-Dev
+  data: https://huggingface.co/datasets/Dorothydu/SWE-Dev/tree/main/dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/Dorothydu/SWE-Dev
+  doi: https://doi.org/10.48550/arXiv.2505.16975
+  venue: null
+  openreview: https://openreview.net/forum?id=vokqMIUEaz
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Feature requirements and repository contexts sourced from more than 1,000 open-source projects.
+  trace_author: Repository developers and dataset constructors.
+  answer_format: PRD, incomplete or target source context, developer-authored tests, and ground-truth implementation metadata.
+  process_fields:
+  - PRD
+  - source files
+  - unit tests
+  - ground-truth code
+  - dependency metadata
+  - call tree
+  environment_or_substrate: Runnable Python repository environments.
+  verifier_or_reward: Execution of developer-authored unit tests.
+  terminal_predicate: A proposed implementation satisfies the executable test suite.
+recipe_metadata:
+  base_model: Qwen2.5-Instruct variants in reported training experiments.
+  teacher: Developer-authored tests and reference implementations.
+  generator: Dataset construction from real repositories and feature-development requirements.
+  filtering_rule: Release requires runnable environments and executable tests for each instance.
+  sampling_protocol: Not a synthetic rollout corpus; evaluation uses Pass@k on easy and hard test splits.
+  rollout_count: null
+  temperature: null
+  inference_budget: Report context selection and Pass@k sampling budget when reproducing results.
+  optimizer_or_scaffold: Supports SFT, RL, and multi-agent training over test-based feedback.
+audit:
+  source_mixture: Official arXiv paper, official GitHub repository, Hugging Face dataset card, and OpenReview record.
+  split: 14,000 training instances and 500 manually curated test instances split into easy and hard subsets.
+  decontamination: Audit public repository exposure, test leakage, dependency versions, and train/test repository overlap.
+  license: Hugging Face dataset card lists Apache-2.0; verify repository and upstream-project terms before reuse.
+  lineage: https://arxiv.org/abs/2505.16975
+  known_failure_modes:
+  - Passing developer tests does not guarantee untested feature behavior.
+  - Public repositories and tests can become contaminated training or evaluation targets.
+  - The released suite focuses on Python and may not transfer to other ecosystems.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v3 author affiliations, official GitHub code, Hugging Face data card, and OpenReview record were checked; no
+    accepted venue was found.
+inclusion_reason: SWE-Dev releases runnable feature-development records and developer-authored tests, so code outcomes can
+  be independently executed and scored.
+related: []
+tags:
+- software-engineering
+- unit-tests
+- feature-development
+- agent-training
+- '2025'
+one_line_summary: SWE-Dev supplies 14,000 runnable feature-development training tasks and 500 test tasks where developer-authored
+  unit tests score repository-level implementations.
+why_it_matters: Its runnable test suites turn a repository-level development outcome into an executable feedback signal rather
+  than a text-only code comparison.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: arXiv v3 author affiliations, official GitHub code, Hugging Face data card, and OpenReview record were checked; no
+    accepted venue was found.
+category_ids:
+- programmatically_verifiable_outcome_data

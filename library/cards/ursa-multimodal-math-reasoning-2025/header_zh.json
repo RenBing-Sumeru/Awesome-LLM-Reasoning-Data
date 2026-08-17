@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "URSA 将多模态 CoT、BEL/MIE 过程标签和 PRM 分数下降信号接入 PS-GRPO；公开表格未保留完整图像、rollout 与奖励血缘。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态过程监督数据构造、过程奖励模型与在线强化学习研究",
+  "best_for_ch": "需要审计视觉数学 CoT、过程标签、PRM 选择与在线 RL 奖励契约的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Ruilin Luo, Zhuofan Zheng, Lei Wang, Yifan Wang, Xinzhe Ni, Zicheng Lin, Songtao Jiang, Yiyao Yu, Chufan Shi, Ruihang Chu, Jin Zeng, Yujiu Yang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

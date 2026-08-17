@@ -1,0 +1,6 @@
+- Only 1,610 Q&As receive the reported aggregate human evaluation, versus 2.94 million released Q&As. Sampling, per-item labels, evaluator agreement, corrected rows, and rejected-generation logs are not disclosed.
+- Interaction and intention prompts explicitly use future scene descriptions. These labels contain privileged hindsight and cannot be treated as online prediction targets unless future-dependent fields are marked or removed.
+- The rule-based translation is the only scene representation observed by GPT-4 Turbo. Translation errors, omitted actors, map errors, and heuristic relation errors can therefore propagate into every generated category.
+- Selection through WOMD `objects_of_interest` favors already identified interactive scenes. Coverage and error rates may not transfer to ordinary, weak-interaction, rare, or out-of-distribution driving scenes.
+- Exact Azure model snapshot, decoding settings, seeds, retries, parser, rejection policy, prompt revision, Waymo archive revision, and dataset file hashes are unknown. The repository has no tagged release, and Waymo access is gated.
+- The repository license and Waymo terms both apply. Agent-ID substitution is described as preventing overfitting, not as anonymization or complete provenance; commercial and derivative reuse needs a separate rights review.

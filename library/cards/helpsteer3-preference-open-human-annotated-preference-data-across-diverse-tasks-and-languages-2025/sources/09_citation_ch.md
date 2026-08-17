@@ -1,0 +1,1 @@
+Wang 等（2025），《HelpSteer3‑Preference: Open Human-Annotated Preference Data across Diverse Tasks and Languages》，arXiv:2505.11475。原文：https://arxiv.org/abs/2505.11475；数据：https://huggingface.co/datasets/nvidia/HelpSteer3。

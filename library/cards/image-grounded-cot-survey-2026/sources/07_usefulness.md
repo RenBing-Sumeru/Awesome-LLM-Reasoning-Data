@@ -1,0 +1,1 @@
+For a student project, use this card to specify a process record before collecting examples. Store the question, the image evidence chosen at each step, the textual inference, the next visual state, and an evaluation rule for the connection. This creates a dataset that can reveal whether a model used visual evidence instead of merely producing a plausible narrative.

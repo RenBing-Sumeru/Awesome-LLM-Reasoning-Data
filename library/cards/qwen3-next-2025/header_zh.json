@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Qwen3-Next 发布了 Instruct 与 Thinking 权重，并披露了 15T 预训练及以 GSPO 改善 RL 稳定性的高层信息；但后训练数据、奖励/验证器、rollout、过滤和审计记录均未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型发布报告与数据披露账本",
+  "best_for_ch": "审计开放权重模型中架构和权重披露与后训练数据、反馈和复现证据之间的边界",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T12:59:39Z"
+}

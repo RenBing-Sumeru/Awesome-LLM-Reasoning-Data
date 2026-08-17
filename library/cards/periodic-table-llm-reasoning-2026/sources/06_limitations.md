@@ -1,0 +1,1 @@
+The survey covers heterogeneous modalities and task definitions, so one taxonomy slot can conceal different trace formats, data sources, and verification contracts. It is a 2026 snapshot; new benchmarks and agent environments may change the boundaries quickly.

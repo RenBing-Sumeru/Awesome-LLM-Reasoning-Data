@@ -1,0 +1,7 @@
+- 论文把 success rate 定义为所有 step 正确且到达预期 final screen，但发布 evaluator 计算静态 step success。解析后的 action 可以满足 scorer，却未证明 Android episode 到达 terminal state；反之，未列入 retained alternative 的有效 live interaction 也可能被判错。
+- Human/LLM correction 披露不足。reviewer identity、prompt、decoding、expert 运行次数、panel size、抽样比例、rubric、agreement 与 correction threshold 均为 unknown；Algorithm 1 与正文也没有使 verification scope 完全一致（论文 §2.1.2 与 Algorithm 1，pp. 3–5）。
+- Magma-R1 的 2,400 条训练 sample 来自同一个 AndroidControl-Curated evaluation surface。精确 ID、selection rule、Easy/Hard mapping、train/test separation 与 decontamination 均为 unknown，因此训练/评测 overlap 是实质 leakage risk。
+- 发布是静态的。未验证 emulator image、Android/app version manifest、account state、reset protocol、live environment runner 或 terminal-state checker，因此 screenshot/action record 不能建立 replayable episode，也可能随 app 变化而 drift。
+- Artifact identity 已发生 drift。论文和 root model config 对应 3B/Qwen2.5-VL，而当前重定向仓库名为 `Magma-R1-4B-AndroidControl`，并包含较新的 Qwen3-VL-4B material。Table 1 的归因需要 immutable checkpoint mapping。
+- Dataset 与 code license 为 unknown，因为没有验证到 repository LICENSE 或 dataset-card license。model card 的 MIT 声明不授予 curated JSON、screenshot、上游 AndroidControl material 或第三方 app content 的权利。发布记录含 contact-like string，但 privacy/consent 与逐记录 redaction 也未披露。
+- Point、box 与 task-improved 文件记录数不等且没有 conversion/split manifest。官方 evaluation entry point 只覆盖 task-improved map slice，不能复现所有报告表格；failed rollout、rejected proposal 与完整 human decision 也未发布。

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T06:09:50Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "首篇系统分析多模态大语言模型时代数学推理的综合综述",
+    "updated_at": "2026-07-28T06:09:50Z"
+  }
+}

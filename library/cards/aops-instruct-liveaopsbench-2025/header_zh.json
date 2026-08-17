@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AoPS-Instruct 将 2024 年前的论坛问题与社区解答转为 647,255 条重写 SFT 记录，LiveAoPSBench 则用更严格的答案检查筛选较新的时间戳帖子；训练快照、逐记录来源与内容复用权利仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "论坛数学 SFT 数据构造与时间评测配方",
+  "best_for_ch": "研究数学 SFT、动态基准、去污染、数据沿袭和社区内容发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Sadegh Mahdavi、Muchen Li、Kaiwen Liu、Christos Thrampoulidis、Leonid Sigal、Renjie Liao",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

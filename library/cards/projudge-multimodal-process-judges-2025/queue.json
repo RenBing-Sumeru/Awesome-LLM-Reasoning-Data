@@ -1,0 +1,19 @@
+{
+  "title": "ProJudge: A Multi-Modal Multi-Discipline Benchmark and Instruction-Tuning Dataset for MLLM-based Process Judges",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/ICCV2025/html/Ai_ProJudge_A_Multi-Modal_Multi-Discipline_Benchmark_and_Instruction-Tuning_Dataset_for_MLLM-based_Process_Judges_ICCV_2025_paper.html",
+    "data": "https://huggingface.co/datasets/julyai/ProJudge-173k",
+    "code": "https://github.com/JulyAI/ProJudge",
+    "project": "https://projudge.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:48:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "十七万多学科步骤标注，兼顾训练规模与人工测试集",
+    "updated_at": "2026-07-16T11:48:09Z"
+  }
+}

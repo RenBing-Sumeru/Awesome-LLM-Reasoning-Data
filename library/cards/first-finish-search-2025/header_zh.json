@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FFS 并行启动多个独立推理样本，任一轨迹完成即停止并返回；它利用短轨迹更可能正确的经验规律，但不使用 verifier。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Aradhye Agarwal；Ayan Sengupta；Tanmoy Chakraborty",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

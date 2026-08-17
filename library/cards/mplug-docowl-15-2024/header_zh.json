@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DocOwl 1.5 把约 400 万条结构记录与 2.5 万条按答案过滤的文档解释结合起来。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "训练无需外部文字识别器即可回答并解释文档问题的助手",
+  "confidence_ch": "高",
+  "authors_ch": "Anwen Hu, Haiyang Xu, Jiabo Ye, Ming Yan, Liang Zhang, Bo Zhang, Chen Li, Ji Zhang, Qin Jin, Fei Huang, Jingren Zhou",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

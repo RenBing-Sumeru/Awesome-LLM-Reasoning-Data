@@ -1,0 +1,3 @@
+OpenEQA: Embodied Question Answering in the Era of Foundation Models 定义了 embodied-ai, open-vocabulary-qa, agent-评测 的评测面：模型输出或智能体轨迹必须满足任务特定的反馈契约。主来源与产物是 paper: https://open-eqa.github.io/; project: https://open-eqa.github.io/; code: https://github.com/facebookresearch/open-eqa; data: https://github.com/facebookresearch/open-eqa；本地元数据记录的年份/来源为 2024 / CVPR 2024。
+
+收录边界是 benchmarks_evaluation_surfaces，来源角色为 benchmark，验证契约为 需要裁判判断、混合。一个评测实例 里包含：episodic memory or active-exploration setting, environment/video or scan context, open-vocabulary question, ground-truth answer, model answer, and LLM-Match 评测 output。除非官方产物另有训练数据说明，否则这张卡把它视为评测、审计，不是训练配方。它对 atlas 的价值在于把任务对象、输出和验证器/裁判/奖励/环境谓词 绑定起来，而不是只记录抽象能力结论。

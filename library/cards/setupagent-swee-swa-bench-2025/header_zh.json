@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SetUpAgent 通过历史依赖重建、测试解析与 F2P/P2P 终态契约构造 SWA-Bench 和 SWEE-Bench，但公开行数漂移、数据集许可和生成源码仍阻碍可复现实验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "仓库级代码智能体基准与自动构造配方",
+  "best_for_ch": "研究仓库级代码智能体评测、历史环境重建、测试终态判定和基准发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Konstantinos Vergopoulos, Mark Niklas Müller, Martin Vechev",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

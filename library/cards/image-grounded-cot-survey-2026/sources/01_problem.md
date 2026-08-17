@@ -1,0 +1,1 @@
+Multimodal models can give a polished explanation without clearly showing which image evidence supports each step. This ACL survey studies image-grounded chain-of-thought, where textual reasoning is interleaved with visual state updates. It matters whenever a task needs fine perception, geometry, games, planning, or an imagined next state.

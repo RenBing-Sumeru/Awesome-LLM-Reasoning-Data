@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Bench++ 自动构造 11,133 条多语言任务，但当前公开下载集为其中 500 条。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Lilin Wang, Lucas Ramalho, Alan Celestino, Phuc Anthony Pham, Yu Liu, Umang Kumar Sinha, Andres Portillo, Onassis Osunwa, Gabriel Maduekwe",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

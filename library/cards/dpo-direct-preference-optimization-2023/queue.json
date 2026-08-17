@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:36:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "确立了直接从优选/拒选对训练策略的主流范式，是后续偏好优化工作的核心基线",
+    "updated_at": "2026-07-17T12:36:42Z"
+  }
+}

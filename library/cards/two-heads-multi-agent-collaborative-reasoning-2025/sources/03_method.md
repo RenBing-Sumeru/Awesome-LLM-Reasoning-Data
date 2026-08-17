@@ -1,0 +1,1 @@
+Data object: Multi-agent discussions; exact schema requires dataset inspection. Process fields: discussion, collaboration_trajectory, ceo_depth. Construction: M500 SFT plus CEO coordination.. Selection or feedback: Formal M500 verifier/reward not established.. Sampling: Adaptive depth; budgets unknown..

@@ -1,0 +1,7 @@
+All three reward components can be gamed. Tag and step-count checks reward surface form. Trace length can reward rambling, failed search, or an ill-posed problem. Majority agreement from K samples of one teacher is correlated judgment and can converge on the same wrong answer; MathSmith-Hard removes even that signal. Boxed-string extraction does not establish symbolic equivalence, premise consistency, or proof validity.
+
+The paper calls concept sampling contamination-resistant, but no released n-gram, semantic-similarity, or manual benchmark-overlap audit covers GSM8K, MATH-500, AIME 2024/2025, or OlympiadBench. PlanetMath source URLs and immutable revisions are absent from the public record schema. A single train split, missing stable IDs, inconsistent viewer row estimates, and no joined rejection/reward log limit dataset accounting.
+
+Reproducibility is also incomplete. The paper and current code differ on teacher sample count, rollout grouping, SFT epochs, and hardware configuration. GPT-4o/API snapshots, dates, random seeds, published-run Tmax and decoding settings are not pinned. The repositories and checked artifacts carry Apache-2.0 labels, but those labels do not independently settle rights for every PlanetMath-derived passage or generated output.
+
+Finally, benchmark gains are model- and scale-dependent. The paper reports weaker effects for 1.7B/4B students and possible tradeoffs on easier problems. Performance cannot substitute for independent checks of correctness, diversity, licensing, contamination, or release completeness.

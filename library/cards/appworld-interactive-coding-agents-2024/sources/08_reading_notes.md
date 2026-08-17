@@ -1,0 +1,1 @@
+Keep direct task completion separate from collateral damage. A high aggregate score is not a row-level certificate unless the final state and tests are available. Read the environment and evaluation sections before model comparisons, because AppWorld's contribution is the controllable world and verifier, not one particular agent scaffold.

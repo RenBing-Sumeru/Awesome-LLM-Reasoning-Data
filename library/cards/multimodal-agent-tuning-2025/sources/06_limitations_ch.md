@@ -1,0 +1,11 @@
+- **反馈高度同源。** GPT-4o mini 同时生成 query、非图像文件与轨迹，并负责两级判断。Curator inference：共享错误和风格偏好可能穿过两个 filter，而风格不同但有效的轨迹可能被拒绝。没有发布独立 oracle、model panel、precision/recall 研究或逐条决策。
+- **执行是较弱的 terminal predicate。** 代码门槛只能发现 runtime success，不能判断工具选择、observation、算术或最终答案是否正确。trajectory judge 仍是模型语义判断，因此存在 false accept、false reject、verifier gaming 和 hidden teacher trait 风险。
+- **Verifier 存在模态错配。** 附录的 query-file prompt 只按图像表述，但 MM-Traj 还包含 PDF、DOCX、PPTX、XLSX、CSV、音频及其他文件。这可能系统性误判非图像文件的充分性和相关性。
+- **人类证据内部矛盾。** 附录正文给出的保留/过滤 task 与 trajectory score 是 7.96/6.30 和 8.64/6.24，而表 6 与主文讨论则是 8.32/6.36 和 8.67/6.38。原始 rating、agreement、judge confusion matrix 与更正值均不可得。
+- **发布单位无法对齐。** 论文报告 23.5K candidate、约 20K 个保留任务和约 15K 个文件；固定版本发布有 21,168 条 JSON row 和 19,307 个 ZIP 文件。Attachment reference 与物理文件还是额外单位。没有 row-file manifest 解释重复、缺失引用或论文/发布漂移。
+- **Schema 与 pipeline 失败可直接观察。** 14,558 行的 `image` 是 dictionary，6,610 行是 string，使 HF viewer 的声明 schema 失败。已检查 final-verifier script 指向该 commit 中不存在的 prompt path，所以公开 shell pipeline 无法原样跑通。
+- **拒绝证据缺失。** 人类研究用到的 filtered trajectory 没有发布，也没有 accepted/rejected ledger、executable status、verifier response、reason、retry 或 failure manifest。选择偏差和信息丰富的失败均无法审计。
+- **多份许可不能合成一个授权。** HF front matter 写 MIT，card 正文写 CC-BY-NC-4.0；代码是 MIT，模型标为 CC-BY-NC-SA-4.0。SA-1B 使用受限研究许可，COCO 声明不拥有图像版权。这些声明都没有解决逐条上游权利。
+- **Privacy 与安全均为 unknown。** 人脸、名人、地标、网页与艺术来源缺少逐条 consent、attribution、PII review、redaction、takedown 和 deletion 记录。生成 Python、web access、Office/PDF 检查、图像编辑、人脸检测和广泛 package 均没有配套公开 sandbox、egress policy、恶意文件筛查或 incident ledger。
+- **污染与重放尚未解决。** 没有 exact 或 semantic overlap audit 覆盖 GTA、GAIA、Cauldron、open-LLaVA-NeXT、上游图像/caption 或 base-model pretraining。随机采样无固定 seed，外部 API、搜索、retriever、模型与 package 都会引入 version drift。
+- **建模范围比标签更窄。** 作者明确说没有处理轨迹中的 intermediate multimodal result。因此，benchmark gain 不能证明通用 multimodal-agent 能力，也不能认证数据正确性、权利、provenance 或安全。

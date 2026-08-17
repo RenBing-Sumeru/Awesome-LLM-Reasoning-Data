@@ -1,0 +1,5 @@
+- Positioning: Kvasir-VQA-x1 is an open multimodal instruction release with a robustness benchmark layered on the same clinical records.
+- Data object: each record exposes the image, complexity, merged question, naturalized answer, original atomic QAs, clinical classes, and image id.
+- Author and selector: Qwen3-30B-A3B composes the text; trivial-item removal, structural checks, ambiguity screening, and clinical experts select the release.
+- Evidence anchor: LoRA fine-tuning produces large gains over base MedGemma and Qwen2.5-VL, while transformed-data variants remain stable across clean and perturbed validation images.
+- Reuse decision: suitable for GI VQA fine-tuning and robustness audits after checking teacher-judge correlation, source-image coverage, complexity validity, and non-commercial terms.

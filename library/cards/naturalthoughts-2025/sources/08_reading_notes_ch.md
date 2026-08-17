@@ -1,0 +1,5 @@
+- 问题：重点是哪些 teacher 轨迹能迁移通用推理，而不只是能生成多少轨迹。
+- 记录：每条 SFT 数据把 NaturalReasoning 问题与完整 DeepSeek-R1 轨迹和答案配对。
+- 选择：扩量是很强的 baseline；难度和推理策略多样性在若干设置中提高样本效率。
+- 证据：Qwen 使用 500K 条训练后在四项任务中的三项超过 OpenThoughts3-1.2M，但 MATH500 没有超过。
+- 复用：缺少公开 artifact、teacher 错误、代理有效性、来源条款和污染都是必查项。

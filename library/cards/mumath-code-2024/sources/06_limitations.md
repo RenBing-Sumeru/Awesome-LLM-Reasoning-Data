@@ -1,0 +1,3 @@
+- **Pseudo-answers can reinforce consensus errors.** Majority agreement on altered questions is not ground truth and does not validate intermediate code; recompute answers with independent solvers and inspect execution traces before reuse.
+- **Rights and lineage are incomplete.** The public data card has no declared dataset license and records expose no source or transformation field; pin the release, reconstruct provenance where possible, and review upstream and teacher-output terms.
+- **Interpreter traces are an execution surface.** Replaying generated Python without isolation can consume resources or execute unsafe behavior, while the paper does not fully disclose per-record execution budgets; sandbox code and record timeouts, dependencies, and outputs.

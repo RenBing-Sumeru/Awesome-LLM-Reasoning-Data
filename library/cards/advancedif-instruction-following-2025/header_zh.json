@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AdvancedIF 将专家 rubric 用于复杂、多轮和系统提示指令跟随的评测与强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "高级指令跟随的专家 rubric 与奖励学习基准",
+  "best_for_ch": "需要训练或评估指令跟随 Judge、奖励模型和 RL 系统的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yun He, Wenzhe Li, Hejia Zhang, Songlin Li, Karishma Mandyam 等",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T10:51:11Z"
+}

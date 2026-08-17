@@ -1,0 +1,6 @@
+- 三类规模不要混淆：verifier 训练覆盖 3.7K 个独立 issue，下游 16K 条 rollout 排序后选 4K 条用于 SFT，另有 776 条私有样本评测 verifier 排序能力。
+- 三层反馈应分别记录：held-out-test 执行标签、学习型二值 verdict/logit 分数，以及 group-normalized GRPO reward。
+- “Environment-free”移除的是下游训练中的仓库专属依赖和测试运行器；OpenHands 仍会在最小 Ubuntu 镜像中执行 shell command。
+- 问题生成与最终判断都需要 golden/reference patch，因此对全新问题或不同但正确的解法存在适用性与泄漏边界。
+- Rust/C 差距、问题过多导致的退化、失败的 scoring pass，以及未发布的 rejected/timeout 轨迹都是关键负面证据，而非次要注释。
+- 复用前应要求 release、replay、decontamination、license/privacy 与 sandbox-security manifest；这些在 arXiv v1 中仍不可用或为 unknown。

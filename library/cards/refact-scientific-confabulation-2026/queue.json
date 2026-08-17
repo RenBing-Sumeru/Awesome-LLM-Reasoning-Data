@@ -1,0 +1,19 @@
+{
+  "title": "ReFACT: A Benchmark for Scientific Confabulation Detection with Positional Error Annotations",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.eacl-long.381/",
+    "data": "https://huggingface.co/datasets/ddz5431/refact",
+    "code": "https://github.com/ddz5431/ReFACT",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:44:40Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布科学回答的专家错误片段定位数据",
+    "updated_at": "2026-07-17T08:44:40Z"
+  }
+}

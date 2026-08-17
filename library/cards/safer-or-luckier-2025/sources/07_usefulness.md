@@ -1,0 +1,1 @@
+Audit a safety judge before ranking systems: inject apology/position controls, repeat runs, report artifact shifts with human agreement, then choose a balanced jury only if both improve. Do not use agreement alone as a safety certificate.

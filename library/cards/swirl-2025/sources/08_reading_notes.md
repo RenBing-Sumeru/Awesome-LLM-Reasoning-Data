@@ -1,0 +1,5 @@
+- Do not index SWiRL as a benchmark: its contribution is a synthetic trajectory construction, selection, and offline step-wise RL recipe; no SWiRL benchmark or official corpus release was verified.
+- Keep the two data units separate: the generated object is a complete search/calculator trajectory, while the primary optimizer consumes one overlapping prefix subtrajectory per action. Read §2 and Figure 2 first.
+- Keep the two Gemini roles separate: Appendix A's stage-1 GOOD/BAD process filter selects trajectories; §2.2's stage-2 generative action reward has no golden answer and an undisclosed prompt/scale.
+- Read Figure 4 with Appendix C: process-only is best for SWiRL and retains incorrect outcomes, whereas process-plus-outcome is best for the SFT comparison. Filter quality is objective-dependent.
+- Before reuse, verify trajectories, rejected samples, rewards, reward mapping, model/tool/index versions, optimizer settings, split/overlap controls, lineage, and licenses; all remain unavailable or unknown.

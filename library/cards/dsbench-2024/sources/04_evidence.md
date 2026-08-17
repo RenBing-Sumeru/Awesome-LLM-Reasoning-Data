@@ -1,0 +1,3 @@
+The arXiv abstract reports 466 data-analysis tasks, 74 data-modeling tasks, best-agent performance of 34.12% solved data-analysis tasks, and 34.74% Relative Performance Gap. The project page repeats the same scale and emphasizes that existing LLMs, LVLMs, and agents struggle on the benchmark.
+
+The decisive evidence is task-level evaluation output: an analysis answer judged correct or incorrect, or a modeling submission scored by the competition metric. This is stronger than self-reported success but bounded by the official processed data, judge/model version for answer checking, metric implementation, and whether source competition data changed after release.

@@ -1,0 +1,1 @@
+BIG-bench 要回答的是：怎样用一个社区构建的宽任务集合来量化并外推语言模型能力，而不是只看单一任务族。一手来源是 arXiv/TMLR 论文、OpenReview 条目和官方 google/BIG-bench 仓库。数据对象是 BIG-bench 格式的 benchmark task：包含 prompt/input、target 或 multiple-choice 选项、元数据和任务特定 scorer。它属于经典静态能力评测面；不是训练集、不是行动环境，也不是同质化推理 benchmark。

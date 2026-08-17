@@ -1,0 +1,1 @@
+静态发布缺少复现负梯度机制所需的 grouped completions、逐回答 reward 与 advantage、策略版本以及进入更新的成员关系。核验样本中 solution 字段经常为空，非空内容的作者与谱系也为 unknown。第一阶段 rollout.n 在 Table 5 和 8k 脚本中为 8，但附录正文写为 16；发布的 8k 脚本在 entropy coefficient 与 mini-batch size 上也不同于 Table 5。boxed-answer 检查可能接受中间推理无效的答案，也可能在格式或等价性边界上失败。数据集许可证、逐记录 DeepScaleR 来源、去污染和训练-测试重叠控制均为 unknown，报告的 benchmark 提升不能证明数据质量。

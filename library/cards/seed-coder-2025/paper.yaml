@@ -1,0 +1,214 @@
+id: seed-coder-2025
+title: 'Seed-Coder: Let the Code Model Curate Data for Itself'
+year: 2025
+venue: arXiv preprint
+authors:
+- ByteDance Seed
+- Yuyu Zhang
+- Jing Su
+- Yifan Sun
+- Chenguang Xi
+- Xia Xiao
+- Shen Zheng
+- Anxiang Zhang
+- Kaibo Liu
+- Daoguang Zan
+- Tao Sun
+- Jinhua Zhu
+- Shulin Xin
+- Dong Huang
+- Yetao Bai
+- Lixin Dong
+- Chao Li
+- Jianchong Chen
+- Hanzhi Zhou
+- Yifan Huang
+- Guanghan Ning
+- Xierui Song
+- Jiaze Chen
+- Siyao Liu
+- Kai Shen
+- Liang Xiang
+- Yonghui Wu
+source_role:
+- model_report
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- code_generation
+- code_completion
+- code_infilling
+- code_editing
+- software_engineering
+- competitive_programming
+- multilingual_code
+training_use:
+- sft
+- distillation
+- preference_learning
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.03524
+  arxiv: https://arxiv.org/abs/2506.03524
+  code: https://github.com/ByteDance-Seed/Seed-Coder
+  data: null
+  project: https://bytedance-seed-coder.github.io
+  huggingface: https://huggingface.co/collections/ByteDance-Seed/seed-coder
+  doi: https://doi.org/10.48550/arXiv.2506.03524
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Pretraining uses public GitHub repositories, 74M commits from 140K filtered repositories, Common Crawl/code
+    web pages, and math web data. SFT uses code/instruction/chat sources. LongCoT uses CodeContests, ICPC, open-r1/codeforces-cots,
+    DeepSeek-R1 solutions, and pre-August-2024 LiveCodeBench.
+  trace_author: DeepSeek-V2-Chat labels file quality; a 1.3B regressor imitates it. External LLMs synthesize/evaluate SFT
+    and tests. The instruct policy generates DPO candidates. DeepSeek-R1/open sources provide warmup; Seed-Coder generates
+    GRPO rollouts.
+  answer_format: Records include files, repository sequences, commit prediction, web documents, FIM, instruction-response
+    pairs, test/revision traces, chosen/rejected pairs, and long CoT plus code with execution/format signals.
+  process_fields:
+  - source_repository
+  - commit_metadata
+  - programming_language
+  - raw_code
+  - dedup_status
+  - syntax_status
+  - oracle_score_0_to_10
+  - distilled_score
+  - website_category
+  - fasttext_score
+  - instruction_style
+  - synthesized_instruction
+  - synthesized_response
+  - difficulty_score
+  - generated_tests
+  - sandbox_result
+  - revision
+  - chosen_response
+  - rejected_response
+  - long_cot_trace
+  - correctness_reward
+  - format_reward
+  environment_or_substrate: Tree-sitter filters code. Generated solutions/tests execute in an undisclosed sandbox for SFT/DPO;
+    competitive-programming tasks execute for warmup/GRPO. Compiler/runtime, images, limits, tests, exploit controls, and
+    implementation are unreleased.
+  verifier_or_reward: DeepSeek-V2-Chat 0-10 quality labels and a 1.3B imitation scorer filter pretraining. SFT/DPO use syntax,
+    model judgment, and generated-test execution. LongCoT uses correctness and format rewards, but formulas, aggregation,
+    parser, weights, and normalization are unknown.
+  terminal_predicate: Self-correction stops on generated-test pass or an unknown revision cap. DPO/RL termination, timeout,
+    memory, retry, partial credit, and overlong rules are only partially disclosed.
+recipe_metadata:
+  base_model: 8.2B, 36-layer Llama-3-style Base trained from scratch for 6T tokens. Instruct adds 3M SFT and 20K DPO pairs.
+    Reasoning starts from Base, uses thousands of warmup traces, then GRPO.
+  teacher: DeepSeek-V2-Chat is the quality oracle; unspecified LLMs generate/evaluate SFT; DeepSeek-R1/open CoTs supply warmup.
+    Exact checkpoints/prompts/decoding are mostly unknown.
+  generator: 1.3B scorer, fastText recall models, external SFT/test generators, DeepSeek-R1, current instruct policy, and
+    warmed Seed-Coder policy.
+  filtering_rule: SHA256/MinHash/Tree-sitter then bottom ~10% quality removal; web fastText plus LLM/category thresholds;
+    2-3 continued-data recall rounds; SFT correctness/syntax/difficulty >=3/10 and self-correction; warmup correctness; RL
+    excludes unverifiable/overlong and >87.5%-correct prompts.
+  sampling_protocol: 'Scorer: one epoch on 222,066 files. Web: 10M candidates and 70/30 seed/validation. SFT: difficulty-aware,
+    3 epochs, packing. DPO: hundreds candidates/prompt, ~20K pairs. GRPO: batch 128, temp 0.6, 16 rollouts/prompt for 90 steps
+    at 16K then 32 for 160 steps at 32K.'
+  rollout_count: 3M SFT pairs, 20K DPO pairs, thousands of warmup traces; GRPO 250 steps, but total trajectories remain unknown.
+  temperature: 0.6 for GRPO; other generation temperatures unknown.
+  inference_budget: Pretraining 8K, continued/post-training 32K; GRPO 16K then 32K. Released Reasoning context is 65,536;
+    over 10% of IOI/Codeforces evaluation samples truncate at 64K.
+  optimizer_or_scaffold: '6T schedule: LR 3e-4 for first 1T and next 4T, reduce by sqrt(10) for 400B, then 3e-5 for 600B.
+    SFT and warmup LR 2e-5. GRPO/verl batch 128, LR 1e-6, no KL, clip 0.28, token-wise loss, overlong filtering, 87.5% easy
+    threshold.'
+audit:
+  source_mixture: '6T schedule: 1T code/math web + 4T curated code + 1T continued pretraining. Ingredients include ~1T GitHub
+    tokens/89 languages, 100B commit, 1.2T code web, 130B recalled high-quality, and 1T long-context; overlaps and exact mixtures
+    are unknown.'
+  split: Web uses 70/30 seed/validation; scorer test has 1,178 oracle-labeled files. No full split. Pre-August-2024 LiveCodeBench
+    RL versus 2024-10–2025-02 evaluation is only a named temporal holdout.
+  decontamination: Any 10-gram word overlap is reportedly removed against key benchmarks, but manifests, tokenization, counts,
+    semantic/repository/translated clones, generated-test leakage, and crawl cutoffs are unknown.
+  license: Repository and weights are MIT. Training data are unreleased; MIT does not relicense underlying GitHub/web/chat/contest/benchmark
+    sources.
+  lineage: Stage lineage is described, but immutable source/commit -> score -> generation -> test -> preference/reward ->
+    batch -> checkpoint IDs are absent.
+  known_failure_modes:
+  - Self-curation relies on DeepSeek-V2-Chat, unspecified external LLMs, and DeepSeek-R1.
+  - The scorer imitates its oracle and is trained on 21 languages but applied to 89.
+  - Bottom-10% removal and site-category scoring can amplify language/style bias.
+  - FastText expansion can reinforce false positives and teacher preferences.
+  - Generated solutions and generated tests create correlated certification and preference loops.
+  - Correctness/format rewards and sandbox are unreleased.
+  - 10-gram filtering misses semantic, translated, solution, and repository leakage.
+  - MIT code/weight labels do not cover source training rights.
+  citation_status: verified
+  confidence: high
+  notes: Verified from arXiv v2, official GitHub/project, Hugging Face collection/cards, and ByteDance release. Teacher imitation,
+    on-policy sampling, execution feedback, and target-model self-curation are distinguished.
+inclusion_reason: A detailed end-to-end code-model data recipe from learned corpus filtering through synthetic SFT, sandbox
+  preferences, and LongCoT GRPO, with important bias, feedback-loop, decontamination, and license gaps.
+related:
+- dapo-2025
+- deepseek-r1-2025
+- opencodereasoning-advancing-data-distillation-for-competitive-coding-2025
+tags:
+- seed-coder
+- bytedance-seed
+- code-data
+- model-centric-curation
+- quality-scorer
+- deepseek-v2-chat
+- synthetic-sft
+- generated-tests
+- dpo
+- long-cot
+- grpo
+- rlvr
+- competitive-programming
+- data-feedback-loop
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Seed-Coder builds a 6T curriculum with external-teacher quality scoring, then adds 3M SFT, 20K sandbox-derived
+  preferences, and 250-step LongCoT GRPO while withholding data, scorer, tests, rewards, and lineage.
+why_it_matters: It shows how learned filters and executable feedback shape a code model while exposing teacher, language,
+  formatting, generated-test, licensing, and leakage risks.
+card: null
+needs:
+- 'needs_data: manifests, counts, scorer labels, SFT/DPO/RL records, tests, rewards, rejects, splits, and lineage'
+- 'needs_metadata: thresholds, mixtures, generators, decoding, DPO settings, reward weights, sandbox limits, compute, and
+  hashes'
+- 'needs_verifier: scorer weights/calibration, tests, sandbox, reward code, exploit/flaky-test audit, and language errors'
+- 'needs_audit: semantic/repository leakage, manifests, drift, scorer/site/language bias, weak tests, privacy, and reproduction'
+- 'needs_license: source-level licenses, attribution, consent/takedown, and derivative terms'
+- 'needs_code: acquisition, dedup, scoring, recall, synthesis, preference, GRPO, evaluation, and provenance tooling'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, repository, project, weights, and MIT labels verified. No training data, quality scorer, preferences,
+    verifier, or training code is claimed.

@@ -1,0 +1,3 @@
+Start with the three perspectives, then read the method, benchmark, and metric sections together. For any study, write down what the model is allowed to abstain from and what cost is assigned to an unnecessary refusal or an unsupported answer.
+
+Add one more question while reading: what action follows from abstention? A system might ask for clarification, defer to a person, retrieve information, or simply stop; these options have different meanings. Compare reported results only when the alternative actions and the evaluation costs are aligned. The survey is most useful when it helps you expose these hidden choices rather than when it is used to select a single headline score.

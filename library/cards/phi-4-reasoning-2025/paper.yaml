@@ -1,0 +1,130 @@
+id: phi-4-reasoning-2025
+title: Phi-4-reasoning Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Marah Abdin
+- Sahaj Agarwal
+- Ahmed Awadallah
+- Vidhisha Balachandran
+- Harkirat Behl
+- Lingjiao Chen
+- Gustavo de Rosa
+- Suriya Gunasekar
+- Mojan Javaheripi
+- Neel Joshi
+- Piero Kauffmann
+- Yash Lara
+- Caio César Teodoro Mendes
+- Arindam Mitra
+- Besmira Nushi
+- Dimitris Papailiopoulos
+- Olli Saarikivi
+- Shital Shah
+- Vaishnavi Shrivastava
+- Vibhav Vineet
+- Yue Wu
+- Safoora Yousefi
+- Guoqing Zheng
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- science
+- code
+- algorithmic_reasoning
+- planning
+- spatial_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.21318
+  arxiv: https://arxiv.org/abs/2504.21318
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.21318
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated teachable prompts selected for complexity/diversity; sources, counts, and selection implementation
+    unknown.
+  trace_author: o3-mini reasoning demonstrations; exact version, prompts, and record lineage unknown.
+  answer_format: Prompt plus reasoning demonstration; full schema unknown.
+  process_fields:
+  - prompt
+  - reasoning_demonstration
+  environment_or_substrate: Phi-4 SFT and a short outcome-based RL extension; implementation unknown.
+  verifier_or_reward: Outcome-based RL reported; reward source, verifier, calibration, and error analysis unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Phi-4; immutable base checkpoint lineage unknown.
+  teacher: o3-mini
+  generator: o3-mini
+  filtering_rule: Complexity/diversity curation; thresholds and yields unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: Reasoning uses inference-time compute, but budget and decode policy unknown.
+  optimizer_or_scaffold: SFT; Phi-4-reasoning-plus uses a short outcome-based RL phase; objective/schedule unknown.
+audit:
+  source_mixture: Teachable prompts and o3-mini demonstrations disclosed only at high level.
+  split: unknown
+  decontamination: unknown
+  license: Training-data and teacher-output licenses not verified.
+  lineage: Phi-4 to curated prompts plus o3-mini demonstrations to SFT, then short outcome RL for plus variant; item-level
+    lineage unknown.
+  known_failure_modes:
+  - Prompt provenance and selection cannot be audited.
+  - Outcome reward/verifier and rollouts are unspecified.
+  - No checked official training data/code release.
+  - Longer traces can confound training and inference-budget effects.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv abstract directly checked.
+inclusion_reason: Frontier report with named teacher-trace SFT and outcome-RL interfaces but unreleased underlying data and
+  reward contracts.
+related: []
+tags:
+- phi-4-reasoning
+- frontier-report
+- data-disclosure-ledger
+- o3-mini
+- outcome-rl
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Phi-4-reasoning reports curated teachable-prompt SFT with o3-mini demonstrations and a short outcome-RL
+  extension, but not data sources, scale, rewards, or rollouts.
+why_it_matters: It is a compact example of informative model-report interfaces that still cannot support reuse or audit.
+card: null
+needs:
+- 'needs_data: prompts demonstrations and RL corpora'
+- 'needs_verifier: reward definition and calibration'
+- 'needs_audit: splits decontamination lineage and rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv citation and abstract checked; no non-paper artifact verified.

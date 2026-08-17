@@ -1,0 +1,5 @@
+- 优先阅读 §3 与 Appendix B，先画清一条 Office episode：共享的 request/template identifier、同步 visual/accessibility state、文本 observation/thought、混合 GUI/API action、status 与 EvaAgent evaluation field。
+- 区分三个边界：EvaAgent 的 whole-trajectory GPT-4.1 judgment、已发布的 static step scorer，以及 executable terminal-state verifier。只有前两者有文档，第三者缺失。
+- 记住规模拆分：17,189 条成功 trajectory 加 62,170 条失败 trajectory，等于 79,359 条 trajectory；总计 1,225,177 个 step，release 约 574 GB。
+- 联合查看 Tables 7–10：SFT 提高了报告的 grounding 和 action-prediction score，但 visual+A11y action prediction 仍低于 visual-only SFT；这些静态分数都不能认证 data quality 或 replay。
+- 复用前固定 GitHub commit `a9f9d2e6f125c8cbc176b46a74aeef76ed16f0f6` 与 HF file，并审计 query-count conflict、split/template leakage、failure lineage、EvaAgent error、第三方 UI rights 与 privacy control。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MATPO 在单一 LLM 内训练规划者与工作者角色，并对嵌套工具使用轨迹进行联合奖励归因。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "研究多智能体工具调用强化学习、信用分配与轨迹监督的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhanfeng Mo、Xingxuan Li、Yuntao Chen、Lidong Bing",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

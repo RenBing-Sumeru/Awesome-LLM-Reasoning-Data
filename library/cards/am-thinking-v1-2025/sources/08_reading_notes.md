@@ -1,0 +1,5 @@
+- Read sections 2–3 for the data object and reward contract; the abstract substantially under-describes both.
+- Keep the 2.84M SFT responses, 54K selected math/code RL prompts, and 54.8K-row released dataset conceptually separate.
+- Treat DeepSeek-R1 and o4-mini as math-label validators, not as disclosed generators of every training trace.
+- Distinguish reported decontamination from an auditable item-level removal manifest.
+- Benchmark gains support the pipeline as a whole, not the reliability of each verifier or reward.

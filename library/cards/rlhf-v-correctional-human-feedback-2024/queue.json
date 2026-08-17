@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构造并公开了一个多模态细粒度人类反馈数据集，论文使用约 1.4K 条，当前公开版本扩展至 5,733 对",
+    "updated_at": "2026-07-14T06:21:52Z"
+  },
+  "updated_at": "2026-07-14T06:21:52Z"
+}

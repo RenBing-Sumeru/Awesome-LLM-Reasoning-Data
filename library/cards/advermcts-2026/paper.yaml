@@ -1,0 +1,198 @@
+id: advermcts-2026
+title: 'AdverMCTS: Combating Pseudo-Correctness in Code Generation via Adversarial Monte Carlo Tree Search'
+year: 2026
+venue: ICML 2026
+authors:
+- Qingyao Li
+- Weiwen Liu
+- Weinan Zhang
+- Yong Yu
+- Bo An
+source_role:
+- construction_recipe
+- verifier_reward
+- agent_environment
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+- scalar_reward
+domains:
+- code
+- software_engineering
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=0JpXqndUrA
+  arxiv: https://arxiv.org/abs/2604.10449
+  code: https://github.com/SIMONLQY/AdverMCTS
+  data: null
+  project: https://github.com/SIMONLQY/AdverMCTS
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.10449
+  venue: https://openreview.net/forum?id=0JpXqndUrA
+  openreview: https://openreview.net/forum?id=0JpXqndUrA
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Competition-programming problem statements and at most five visible public tests from formal 100-problem
+    samples of each APPS Introductory, Interview and Competition split and each TACO Easy, Medium and Hard split.
+  trace_author: The same selected backbone family acts as Solver, Attacker and output Arbiter. The Solver writes partial reasoning
+    thoughts and complete Python programs; the Attacker writes test-strategy thoughts and concrete inputs conditioned on the
+    current accepted code pool.
+  answer_format: Complete Python program candidates, adversarial test inputs, candidate execution outputs, and an Arbiter-supplied
+    expected output for each accepted adversarial test.
+  process_fields:
+  - solver thought tree and UCB statistics
+  - generated complete code candidates
+  - public-test execution results and pass rates
+  - accepted code pool
+  - attacker test-strategy tree and UCB statistics
+  - DMTS candidate test inputs
+  - per-code execution outputs and output-divergence reward
+  - Arbiter validity decision and expected output
+  - accumulated global adversarial tests
+  - penalties and final public/adversarial reranking scores
+  environment_or_substrate: Generated Python programs are executed against APPS or TACO tests. At inspected commit f45427800a32dc6966429bc4f7baf61df5c6a15f,
+    the released executor launches a subprocess, applies an 11-second in-process alarm, a 15-second parent-side monitor, a
+    10 MB captured-output cap, a 4 GiB address/data/stack rlimit and a reliability guard that disables selected destructive/process
+    operations. It provides no container, namespace, seccomp or documented network isolation and is not a security boundary
+    for arbitrary untrusted code.
+  verifier_or_reward: Public-test pass rate supplies intrinsic Solver reward. The Attacker receives an output-divergence reward
+    over the accepted code pool. A same-backbone LLM Arbiter reads the specification, generated input and divergent outputs,
+    discards tests it judges ambiguous or invalid, and labels accepted tests; failures on the growing global test suite produce
+    Solver penalties and hard admission/reranking constraints.
+  terminal_predicate: Hierarchically rank generated programs first by public-test pass rate and then by pass rate on all accumulated
+    adversarial tests, selecting the highest-ranked program. Hidden tests are reserved for evaluation and are not available
+    to the inference procedure.
+recipe_metadata:
+  base_model: Qwen3-4B-Instruct-2507 and Qwen3-8B non-instruct are the main backbones; DeepSeek-V3.2 671B appears in the backbone-scaling
+    experiment.
+  teacher: No separate teacher is used. The selected backbone is reused as Solver, Attacker and LLM output Arbiter; therefore
+    the adversarial labels are self-judged rather than supplied by an independent oracle.
+  generator: A persistent Solver MCTS searches over partial chain-of-thought nodes and rolls each expanded thought into a
+    complete program. A persistent Attacker MCTS searches over abstract vulnerability strategies and uses divergence-driven
+    multi-sample test synthesis conditioned on the evolving code pool.
+  filtering_rule: A program enters the shared pool only if it passes every public test and every previously retained adversarial
+    test. A generated input is retained only after it causes output divergence and the Arbiter supplies a non-null expected
+    output; retained input-output pairs become hard gates for future programs and secondary criteria in final reranking.
+  sampling_protocol: Main experiments use 16 Solver rollouts and 2 Attacker rollouts per interaction with maximum tree width
+    3. The released driver/README use five generated test candidates in the DMTS batch and a small accepted code pool, but
+    exact paper-version capacity and every generation setting are not fully specified in the paper.
+  rollout_count: 16
+  temperature: The released implementation sets DMTS test-input sampling to 0.7 and the LLM Arbiter to 0.0. The paper reports
+    0.7 for Best-of-N, but a complete paper-version decoding-temperature contract for every Solver and Attacker call remains
+    unknown.
+  inference_budget: Main results use 16 Solver rollouts and 2 Attacker rollouts per interaction. The attacker-budget study
+    varies 1 to 4 rollouts and finds an inverted-U trend; APPS-Competition Pass@1 rises from 31% at one attacker rollout to
+    36% at two, then larger budgets can saturate or hurt. Exact token totals, wall-clock cost, hardware allocation and per-problem
+    dollar cost are unknown.
+  optimizer_or_scaffold: Dual UCB-guided MCTS with a persistent Solver thought tree, persistent Attacker strategy tree, dynamic
+    accepted code pool, divergence-driven test synthesis, an LLM Global Filtering Hub, penalty backpropagation and hard test-based
+    reranking. This is inference-time search, not a parameter-training optimizer.
+audit:
+  source_mixture: The reported evaluation samples 100 problems from each of three APPS and three TACO difficulty splits, for
+    600 benchmark problems in total. The method generates transient programs, test strategies and adversarial tests separately
+    for each problem; it does not release these generated traces or tests as a reusable dataset.
+  split: APPS Introductory, Interview and Competition and TACO Easy, Medium and Hard are evaluated with up to five visible
+    public tests per problem; hidden tests determine pass rate and Pass@1. The exact sampled problem identifiers and a deterministic
+    split manifest are not released in the inspected repository.
+  decontamination: unknown. The paper does not report exact-match, near-duplicate or semantic-overlap checks between the evaluated
+    APPS/TACO problems and the pretraining or instruction data of Qwen3 or DeepSeek-V3.2.
+  license: The OpenReview paper is CC BY 4.0. No LICENSE file or detected GitHub license, data license, model-output license
+    analysis, or separately licensed adversarial-test release was found in the official code repository; reuse rights for
+    the code and generated artifacts therefore remain unknown.
+  lineage: For each benchmark problem, public-test-passing Solver programs populate a bounded code pool. The persistent Attacker
+    tree generates code-pool-conditioned inputs; divergent executions are sent to the same-backbone Arbiter, and accepted
+    input-output pairs are appended to problem-local dynamic test memory. These tests gate later pool admission, penalize
+    originating Solver nodes and rerank final candidates. The memory is reset for the next problem and is not published with
+    stable test IDs, generation prompts, per-test provenance or rejection records.
+  known_failure_modes:
+  - Output divergence cannot detect a shared logical error when every candidate emits the same wrong output; the paper states
+    this limitation explicitly.
+  - The same backbone adjudicates its own generated tests. On TACO, Arbiter-labeled test validity measured against gold code
+    is 79.88%, leaving a material measured invalid-label rate despite outperforming majority voting at 37.88%.
+  - A wrongly adjudicated test becomes a persistent hard constraint for the remainder of that problem. No explicit deduplication,
+    repeated revalidation, confidence calibration, correction or test-retraction loop was found in the released implementation.
+  - No explicit repeated-execution or flakiness screen was found. A nondeterministic candidate or environment can therefore
+    create unstable divergence or expected-output evidence.
+  - Larger Attacker budgets can over-optimize disagreement and produce brittle or borderline-valid tests; the paper reports
+    an inverted-U trend from one to four attacker rollouts.
+  - The reported discriminator analysis has 56.7% recall, 78.95% precision and 16.1% false-positive rate, so many silent bugs
+    remain undetected and some truly correct programs are wrongfully penalized.
+  - Hidden tests are used only for retrospective evaluation; inference-time correctness still depends on sparse public tests,
+    code-pool diversity and fallible Arbiter judgments.
+  - The released execution layer is a subprocess reliability wrapper rather than a security sandbox. Although the inspected
+    code sets a 4 GiB rlimit plus time and output caps, it lacks container, namespace, seccomp and documented network isolation
+    and should not be treated as safe for arbitrary untrusted code.
+  - The exact benchmark sample IDs, complete seeds/configuration, immutable release, dependency lockfile and full cost/hardware
+    accounting are not published, limiting exact reproduction.
+  - The repository releases code but no generated adversarial tests, code pools, search trees, per-test decisions, invalid-test
+    ledger or benchmark result bundle, so the claimed dynamic data-construction process cannot be audited record by record.
+  - The official code repository has no explicit license, and separately downloaded APPS/TACO data retain their own upstream
+    terms; the paper's CC BY 4.0 license does not license the implementation or benchmark data.
+  citation_status: verified
+  confidence: medium
+  notes: OpenReview metadata identifies this as an ICML 2026 regular paper and links the de-anonymized official repository.
+    arXiv v1, the official repository README/source tree and paper method, experiment, appendix and prompt sections were inspected
+    through 2026-07-18. The repository was observed on branch master at commit f45427800a32dc6966429bc4f7baf61df5c6a15f with
+    no GitHub release, LICENSE file or bundled APPS/TACO data; release-completeness observations remain medium confidence.
+inclusion_reason: AdverMCTS is a concrete test-time data-construction recipe in which an adversarial search agent generates
+  and retains counterexample tests that continuously strengthen a code verifier, while its measured Arbiter errors and incomplete
+  trace release expose important audit risks.
+related:
+- rethinkmcts-2025
+- codet-2022
+tags:
+- adversarial-mcts
+- code-generation
+- counterexample-generation
+- dynamic-test-memory
+- output-arbiter
+- pseudo-correctness
+- test-time-compute
+- verifier-refresh
+- open-code
+status: partial
+one_line_summary: AdverMCTS co-evolves a Solver code-search tree and an Attacker test-search tree, retaining Arbiter-labeled
+  counterexamples as a growing hard verifier at inference time.
+why_it_matters: It turns adversarial counterexample discovery into an explicit inference-time data pipeline, while making
+  clear that test validity, sandboxing, retention policy, decision lineage and release completeness determine whether the
+  resulting verifier can be trusted or reused.
+card: null
+needs:
+- 'needs_test_release: publish every generated and retained adversarial test with stable problem/test IDs, expected output,
+  generation prompt, strategy path, divergence outputs, Arbiter decision and rejection reason'
+- 'needs_verifier_audit: independently validate retained tests, expose confidence and disagreement, deduplicate tests, detect
+  flaky executions, and support correction or retraction of poisoned constraints'
+- 'needs_reproducibility: publish exact benchmark sample IDs, seeds, all model endpoints/checkpoints, decoding settings, code-pool
+  capacity, prompt versions, dependency lockfile, hardware and complete inference cost'
+- 'needs_sandbox: run generated programs inside a maintained container or kernel-isolated sandbox with explicit CPU, memory,
+  process, filesystem and network limits'
+- 'needs_license: add an explicit code license and document APPS/TACO terms plus rights for generated programs, reasoning
+  traces and adversarial tests'
+- 'needs_release: publish an immutable tagged code release and result bundle tied to the accepted paper version'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: ICML 2026 regular status, authors, OpenReview/arXiv identity and official code link are verified. Generated data
+    release, code license, exact sample manifest, complete decoding configuration, strong sandboxing and record-level verifier
+    lineage remain partial or unknown.
+category_ids:
+- data_construction_open_release_recipes

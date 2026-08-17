@@ -1,0 +1,5 @@
+- Positioning: MegaScience combines verified textbook references with source-specific selection and solution annotation to release a 1.25M seven-discipline reasoning mixture.
+- Data object: question, generated answer, subject, reference answer, and source.
+- Author and selector: language models annotate step-by-step solutions against extracted reference answers; selection uses reference-answer checks, difficulty filtering, minhash deduplication, and benchmark decontamination.
+- Evidence anchor: The paper trains Llama 3.1, Qwen 2.5, and Qwen 3 base families and reports consistent science-reasoning gains from the 1.25M mixture; the 650K textbook component spans seven disciplines.
+- Reuse decision: suitable for science reasoning SFT; first audit textbook extraction can misalign questions and references, and non-commercial share-alike terms limit some downstream uses.

@@ -1,0 +1,3 @@
+For a team with Python coding prompts but no reliable tests, adapt the MCTS-to-trace-judge pipeline to produce scored partial and complete programs, train a reward model, and compare GRPO against a fixed test-based or human-checked baseline. Retain the question, code, execution trace, prompt, judge version, and score so reward errors can be audited.
+
+Use the model's average score to order a fixed training set only after checking that score tracks difficulty on held-out, independently verified problems. Do not reuse its acceptance rule for unsafe code, languages without a validated trace design, or repository tasks without isolation and a new judge audit.

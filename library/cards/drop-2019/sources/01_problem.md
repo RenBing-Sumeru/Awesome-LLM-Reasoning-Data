@@ -1,0 +1,3 @@
+Primary sources: arXiv:1903.00161, last revised 2019-04-16, and the ACL Anthology record for NAACL 2019, pages 2368-2378. DROP asks whether reading-comprehension systems can answer questions requiring discrete reasoning over paragraph content, rather than relying on entity matching or shallow paraphrase.
+
+The data object is a passage, an adversarially crowdsourced question, and one or more normalized answers that may be spans, numbers, dates, or derived expressions. The evaluation surface is answer-level exact match and F1 after normalization and answer-type handling. This card belongs as a benchmark/evaluation surface for discrete textual reasoning, not as chain-of-thought data, proof data, or an environment trajectory benchmark.

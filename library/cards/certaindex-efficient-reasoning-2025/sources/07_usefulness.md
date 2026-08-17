@@ -1,0 +1,1 @@
+Use Certaindex when a service supports repeated or long-horizon reasoning and needs per-request early exit. Log probe answers, stability values, exit decisions, consumed tokens, latency, and correctness, then check whether stabilized wrong answers cluster by task or model version. Dynasor provides an official implementation surface for this deployment-oriented evaluation.

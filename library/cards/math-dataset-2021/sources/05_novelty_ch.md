@@ -1,0 +1,1 @@
+既有基线主要是更简单的算术文字题和较小数学 QA 资源。MATH 改变的是数据对象：竞赛级题目，带 solution text、subject taxonomy、difficulty levels 和较难的 held-out test split。方向信号是 answer-level math evaluation 可以成为后续 verifier 和 process-supervision 工作的稳定底座。质量信号是规模和元数据。并不新的部分是自动最终答案评分本身。复用前要检查题源谱系、license、精确 split、答案归一化、污染，以及 solution text 是否被当作训练数据使用。

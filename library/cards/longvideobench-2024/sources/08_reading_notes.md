@@ -1,0 +1,1 @@
+Keep answer accuracy and temporal grounding separate. The answer key tells whether the option is correct; referred context helps ask whether the model could have used the right evidence. Read sampling and transcript policies before comparing models. A text-only or sparsely sampled setup may measure different behavior from full-video understanding.

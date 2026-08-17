@@ -1,0 +1,1 @@
+The relevant disclosure is the explicit family-level stage split: SFT/DPO for TeleChat2 and added continual pretraining/RL for the later models. The operational definitions of those stages are not given in the inspected abstract.

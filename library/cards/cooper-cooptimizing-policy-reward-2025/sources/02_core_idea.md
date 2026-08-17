@@ -1,0 +1,2 @@
+Initial VerifyRM data starts from 65K question-reference-completion triples produced from seven math datasets and eleven LLMs. Only Math-Verify/Qwen3-4B agreement cases are retained, yielding the released 58.7K examples. During Cooper training, the current policy samples 16 rollouts per prompt. A Math-Verify-accepted response becomes a positive; a same-family assistant corrupts it until Math-Verify rejects the negative. The RM is updated after each GRPO policy step.
+

@@ -1,0 +1,3 @@
+Web agents usually receive only terminal rewards, making long-trajectory credit assignment difficult. Web-Shepherd constructs action-level preferences and checklists and releases WebRewardBench.
+
+This gap directly determines whether web-agent step rewards can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on page observations, same-state actions, checklists, process preferences, and terminal outcomes and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in WebRewardBench and web-agent RL.

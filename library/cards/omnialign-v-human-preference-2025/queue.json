@@ -1,0 +1,18 @@
+{
+  "title": "OmniAlign-V: Towards Enhanced Alignment of MLLMs with Human Preference",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2502.18411",
+    "data": "https://huggingface.co/datasets/PhoenixZ/OmniAlign-V-DPO",
+    "code": "https://github.com/PhoenixZ810/OmniAlign-V"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T10:26:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "OmniAlign-V-DPO以OmniAlign-V优质回答为 chosen，形成15万组DPO偏好对",
+    "updated_at": "2026-07-15T10:26:50Z"
+  }
+}

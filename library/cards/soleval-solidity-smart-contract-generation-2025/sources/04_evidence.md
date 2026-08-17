@@ -1,0 +1,3 @@
+The final paper evaluates 16 LLMs, and the strongest reaches only 26.29% Pass@10 on SolEval, showing that real repository-level Solidity generation remains unsaturated. Fine-tuning Qwen-7B on SolEval raises Pass@5 from 16.67% to 58.33% under the reported protocol, demonstrating direct training utility.
+
+Joint Pass, Gas, and Vul results also expose candidates that are functionally correct but costly or insecure. The SFT comparison may still be affected by training hyperparameters beyond the dataset. Slither covers only its rule set, while gas depends on compiler versions, test call paths, and execution configuration.

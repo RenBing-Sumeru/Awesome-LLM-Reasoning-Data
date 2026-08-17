@@ -1,0 +1,169 @@
+id: e3-test-time-compute-exploration-2025
+title: 'e3: Learning to Explore Enables Extrapolation of Test-Time Compute for LLMs'
+year: 2025
+venue: arXiv
+authors:
+- Amrith Setlur
+- Matthew Y. R. Yang
+- Charlie Snell
+- Jeremy Greer
+- Ian Wu
+- Virginia Smith
+- Max Simchowitz
+- Aviral Kumar
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- test_time_compute
+training_use:
+- rlvr
+- test_time_compute
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.09026
+  arxiv: https://arxiv.org/abs/2506.09026
+  code: https://github.com/ars22/e3
+  data: https://huggingface.co/datasets/CMU-AIRe/e3-math-easy
+  project: https://matthewyryang.com/e3/
+  huggingface: https://huggingface.co/CMU-AIRe/e3-1.7B
+  doi: https://doi.org/10.48550/arXiv.2506.09026
+  venue: https://iclr.cc/virtual/2026/poster/10008718
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.09026
+data_object:
+  prompt_source: The paper says DMath questions come from DeepScaleR and partitions them by Qwen-R1-Distilled-32B accuracy.
+    Official releases contain 12,853 stage-1 easy rows and 2,500 stage-2 medium/hard rows, but record-level upstream provenance
+    is not documented.
+  trace_author: The current Qwen3-1.7B policy generates grouped GRPO rollouts during training. The generator of each public
+    row's static solution field and its relationship to those on-policy rollouts are unknown.
+  answer_format: Public Parquet rows store a chat prompt, rule-style ground truth, solution text, scalar reward, aggregate
+    total/correct/incorrect length statistics, ability/source fields, and split/index metadata. They do not release the full
+    grouped on-policy responses, per-response rewards or advantages, or update membership.
+  process_fields:
+  - prompt
+  - solution
+  - reward
+  - length
+  - correct_length
+  - incorrect_length
+  - data_source
+  - ability
+  - reward_model.ground_truth
+  - reward_model.style
+  - extra_info.index
+  - extra_info.split
+  environment_or_substrate: verL GRPO/PPO with vLLM rollout generation, stage-specific response budgets, and a custom curriculum_math
+    outcome scorer. The 16k stage uses four nodes of eight H100 GPUs in the paper and released launcher.
+  verifier_or_reward: The released scorer requires a response containing </think>, extracts the final LaTeX boxed answer,
+    and returns 1 when MathD-style normalization or SymPy equivalence matches one of the ground truths, otherwise 0. GRPO
+    group normalization supplies positive and negative advantages; this is answer-level outcome verification, not step validation.
+  terminal_predicate: A response receives reward 1 only when a boxed final answer is extracted and accepted by MathD-style
+    or SymPy checking against the rule ground truth; missing delimiters, missing boxed answers, and failed equivalence checks
+    receive 0.
+recipe_metadata:
+  base_model: Qwen3-1.7B.
+  teacher: unknown
+  generator: The current policy samples grouped responses using vLLM inside GRPO; later training can update from stale off-policy
+    samples under density-ratio clipping.
+  filtering_rule: The released 16k script sets only_train_on_positive=False and remove_truncated=False, so incorrect and truncated
+    responses are not simply discarded before optimization. No frozen accepted/rejected rollout dataset or per-trace advantage
+    release was verified.
+  sampling_protocol: e3 first trains on easy DMath prompts at an 8k output budget, then continues on medium/hard prompts at
+    16k, and evaluates extrapolation to 32k. The 16k stage uses rollout.n=32. For 8k, Table 5 and the released script use
+    8, while appendix prose says 16.
+  rollout_count: Stage 2 uses 32 rollouts per prompt. Stage-1 count is unresolved because the paper prose says 16 while Table
+    5 and scripts/grpo/grpo_8k.sh specify 8.
+  temperature: 0.6
+  inference_budget: Training output budgets are 8192 then 16384 tokens; the released scripts set maximum extrapolation lengths
+    to twice each budget, and the paper evaluates the final model to 32768 output tokens.
+  optimizer_or_scaffold: verL GRPO with learning rate 1e-6, KL loss coefficient 0.001, vLLM generation, and curriculum_math
+    reward. The paper reports entropy coefficients 0.002 and 0.001 for 8k and 16k, whereas the released 8k script sets 0;
+    other 8k mini-batch settings also differ.
+audit:
+  source_mixture: Official releases separate 12,853 easy prompts from 2,500 medium/hard prompts. The paper attributes DMath
+    to DeepScaleR, but the dataset cards have no source manifest and data_source is empty in inspected rows.
+  split: Both training artifacts expose one train split; medium/hard membership appears in extra_info.split. A separate official
+    60-row hmmt-aime-2025 artifact is linked for evaluation. Immutable revision SHAs were inspected but are not pinned in
+    paper.yaml links.
+  decontamination: unknown
+  license: The GitHub code and e3-1.7B model are MIT. The official dataset metadata inspected states no dataset license, so
+    upstream prompt, ground-truth, and solution rights remain unknown.
+  lineage: DeepScaleR-derived DMath prompts are partitioned by measured difficulty and released with rule ground truth plus
+    static aggregate fields; during training the current policy generates grouped responses under an 8k-to-16k curriculum;
+    boxed-answer correctness yields group advantages, including negative advantages for incorrect traces; optimization produces
+    e3-1.7B, which is evaluated to 32k. The grouped rollout corpus and per-trace advantages are not released.
+  known_failure_modes:
+  - Static dataset rows contain aggregate reward and length fields but not the grouped responses needed to replay negative-gradient
+    updates.
+  - The solution field is often empty and its producer and relationship to online rollouts are undocumented.
+  - Stage-1 rollout count conflicts between prose, Table 5, and the released script; the 8k entropy coefficient and mini-batch
+    settings also differ between paper and script.
+  - Boxed-answer equivalence does not certify intermediate reasoning and inherits extraction, normalization, and SymPy edge
+    cases.
+  - No data license, record-level upstream provenance, decontamination report, or train/test overlap analysis was verified.
+  - Test-time gains can be confounded by task difficulty, training budget, rollout group size, off-policy reuse, and evaluation
+    budget; they do not prove data quality.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v2, author project, ars22/e3 repository, reward scorer, 8k/16k scripts, e3-1.7B model, and three CMU-AIRe
+    datasets were checked. Static releases are verified; grouped on-policy rollout and advantage releases are not.
+inclusion_reason: e3 is directly relevant to rollout and test-time trace data because it treats each prompt as a budget-conditioned
+  group of successful and failed responses whose relative advantages drive exploration, while the public release exposes only
+  static prompt-level records and aggregate statistics.
+related: []
+tags:
+- e3
+- test-time-compute
+- in-context-exploration
+- grpo
+- outcome-reward-rl
+- negative-gradients
+- curriculum
+- math-reasoning
+- rollout-budget
+status: partial
+one_line_summary: e3 releases staged math prompt/ground-truth data, code, and a Qwen3-1.7B checkpoint for an 8k-to-16k GRPO
+  curriculum, but not the grouped on-policy rollouts or per-trace advantages used during training.
+why_it_matters: For rollout and test-time trace data, e3 makes group composition, failed-response gradients, task difficulty,
+  and token budget part of the training-data contract; without the grouped traces, its central feedback mechanism cannot be
+  fully replayed or audited.
+card: null
+needs:
+- 'needs_rollout_release: publish grouped on-policy traces, per-trace rewards/advantages, and update membership for both stages'
+- 'needs_metadata: resolve stage-1 rollout and hyperparameter conflicts and pin the exact run commit'
+- 'needs_lineage: identify the static solution-field generator and record-level DeepScaleR/DMath provenance'
+- 'needs_snapshot: pin immutable Hugging Face, code, scorer, and checkpoint revisions'
+- 'needs_verifier_audit: document boxed-answer extraction and equivalence-checking error modes'
+- 'needs_decontamination: report overlap controls for training prompts, AIME 2025, and HMMT 2025'
+- 'needs_license: state licenses and upstream rights for both public training datasets'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv, project, code, reward scorer, launch scripts, model, and CMU-AIRe training/test datasets were verified.
+    No frozen grouped rollout, reward-log, or per-trace advantage release was confirmed.
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute

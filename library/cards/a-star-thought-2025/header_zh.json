@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "A*-Thought 使用 BIS 引导的 A* 搜索与 s1.1-32B 验证，将 s1K-1.1 长链推理压缩为一千条 SFT 轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理轨迹压缩数据集与搜索构造方法",
+  "best_for_ch": "关注长链推理压缩、SFT 数据和验证器边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoang Xu、Shuo Wang、Xu Han、Zhenghao Liu、Huijia Wu、Peipei Li、Zhiyuan Liu、Maosong Sun、Zhaofeng He",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

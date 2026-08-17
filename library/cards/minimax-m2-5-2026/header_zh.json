@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MiniMax-M2.5 报告 20 万+软件环境、Forge 树合并异步 rollout 与 CISPO 性能/过程/速度反馈，并开放 229B FP8 权重；环境、奖励系统、训练数据和 lineage 仍未发布，SWE-Bench 80.2 与 75.8 也未解释。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放权重 Agent 模型发布与数据披露账本",
+  "best_for_ch": "研究软件工程 Agent RL、工作环境数据、过程/速度奖励、Forge/CISPO 与发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "MiniMax AI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

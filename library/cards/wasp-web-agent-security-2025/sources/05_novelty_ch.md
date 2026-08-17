@@ -1,0 +1,7 @@
+WASP所描述的prior-work baseline包括攻击者控制范围过大、恶意goal不现实或彼此孤立的prompt-injection测试、single-step评测，以及无法公开复现的模型提供商安全套件。VisualWebArena已经提供browser task、accessibility-tree observation、可执行action与自托管网站；既有agent scaffold也已提供policy和interaction loop。
+
+WASP从四个具体方面改变评测对象：在black-box设置下把攻击者限制为普通不可信用户可控的页面内容；在GitLab与Reddit/Postmill上定义21个可实现恶意goal；把这些goal与benign task、注入格式组合成84个end-to-end case；同时记录GPT-4o检测的中间带偏与按goal定制的terminal success，并配套37个utility任务。由此，“agent遵循了攻击”和“攻击造成预期结果”可以分开测量。
+
+对reasoning data研究而言，方向信号来自feedback interface，而不是benchmark规模。一条web-agent trace可同时带有judgment-based compromise label与environment/log-based outcome label；二者可能因refusal、partial execution、agent incompetence、judge error或verifier mismatch而不一致。发布还说明supervision granularity可能造成误读：内部按action判断，但在没有canonical action-label corpus时，可复用对象只有full-episode聚合结果。
+
+论文没有提出VisualWebArena、GitLab/Postmill substrate、GPT-4o、Claude Computer Use、browser tool calling、LLM-as-judge分类、DOM predicate或自动attack search。攻击文本由人工编写，主要新意是受限安全场景及其成对feedback layer。复用时不能把更高ASR当作数据质量证据；应先固定发布版本，对账论文与代码的exfiltration语义，校准judge，捕获完整rollout，并核验环境和许可证provenance。

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T06:20:15Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "讨论如何估计系统的置信度、如何依据观察到的正确性校准置信度、已有哪些技术进展，以及这些估计能用于何处",
+    "updated_at": "2026-07-28T06:20:15Z"
+  }
+}

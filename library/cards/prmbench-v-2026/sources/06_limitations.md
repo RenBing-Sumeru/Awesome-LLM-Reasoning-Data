@@ -1,0 +1,3 @@
+- The authors state that five domains and nine types remain moderate in scale relative to real-world multimodal reasoning. Reuse should report coverage rather than treating a high score as broad robustness.
+- The benchmark deliberately emphasizes scientific tasks with objective answers. This improves annotation verifiability but leaves creative and open-domain visual reasoning, where intermediate gold labels are subjective, untested.
+- BR2-PRM is evaluated for test-time selection, not training-time optimization or RL integration. In addition, no public standalone artifact is linked; obtain the exact data, license, prompts, and annotation protocol before training on it.

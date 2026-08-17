@@ -1,0 +1,3 @@
+- 先查看 data_object，确认记录中到底保存了哪些候选、轨迹或预算字段。
+- 再核对 verifier_or_reward 与 filtering_rule，避免把选择器效果误认为数据本身的效果。
+- 将 unknown、null 和 audit 风险视为复用边界；不要据此假定存在未发布的原始轨迹。

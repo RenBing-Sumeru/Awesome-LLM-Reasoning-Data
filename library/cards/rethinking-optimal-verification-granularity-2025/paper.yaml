@@ -1,0 +1,106 @@
+id: rethinking-optimal-verification-granularity-2025
+title: Rethinking Optimal Verification Granularity for Compute-Efficient Test-Time Scaling
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Hao Mark Chen
+- Guanxi Lu
+- Yasuyuki Okoshi
+- Zhiwen Mo
+- Masato Motomura
+- Hongxiang Fan
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/8011b23e1dc3f57e1b6211ccad498919-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.11730
+  code: https://github.com/hmarkc/VG-Search
+  data: null
+  project: null
+  huggingface: https://huggingface.co/blog/search-and-learn
+  doi: null
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/8011b23e1dc3f57e1b6211ccad498919-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.11730
+data_object:
+  prompt_source: MATH-500/MATH-250; standalone trace release unverified.
+  trace_author: Proposer LLM creates partial/complete candidates.
+  answer_format: Candidate prefix and scalar verifier score at tunable intervals.
+  process_fields:
+  - candidate_prefix
+  - verification_granularity
+  - verifier_score
+  - selected_beam
+  - branch
+  environment_or_substrate: Tunable verifier-guided Beam/BoN search.
+  verifier_or_reward: Reported Skywork PRM scores prefixes.
+  terminal_predicate: Selected beams continue until final scored candidate.
+recipe_metadata:
+  base_model: Qwen generator/Skywork PRM combinations reported.
+  teacher: unknown
+  generator: Proposer emits continuations between verifier calls.
+  filtering_rule: Top beams retained at selected cadence.
+  sampling_protocol: Varies beam/branch/cadence/difficulty/budget.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Fixed-budget accuracy/compute comparisons.
+  optimizer_or_scaffold: Training-free search.
+audit:
+  source_mixture: No prompt-to-trace-score corpus verified.
+  split: MATH-250 tuning/MATH-500 evaluation reported.
+  decontamination: unknown
+  license: Code Apache-2.0; model/data rights require review.
+  lineage: prompt -> prefixes -> PRM scores -> beams -> branches -> final
+  known_failure_modes:
+  - Noisy PRMs may make frequent checks harmful.
+  - Optimal cadence depends on task/model/budget.
+  - Oracle cadence is not deployable.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS, arXiv and code checked.
+inclusion_reason: Controls when prefix trace observations influence search.
+related: []
+tags:
+- vg-search
+- verifier
+- prm
+- beam-search
+- compute-efficiency
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: VG-Search controls verifier cadence to trade prefix pruning against inference cost.
+why_it_matters: Verification frequency itself is a trace/compute allocation policy.
+card: null
+needs:
+- needs_data
+- needs_metadata
+- needs_verifier
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper/code checked.

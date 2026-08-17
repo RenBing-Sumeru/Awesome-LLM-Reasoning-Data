@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以受控扰动下的逐层表征几何，审计 RL 后训练中的奖励驱动记忆污染。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要审计 RL 推理模型污染风险的研究者。",
+  "confidence_ch": "中：已核对 AI4GOOD Workshop 2026 与 arXiv 记录；需按原设置复现。",
+  "authors_ch": "Minju Gwak, Minseo Kwak, Dongseok Lee, Guijin Son, Alan Ritter, Jaehyung Kim",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

@@ -1,0 +1,3 @@
+# Novelty
+
+Earlier multimodal instruction mixtures either retained terse academic QA, relied on costly human labels, or queried proprietary teachers for rich responses. MAmmoTH-VL changes the construction decision by triaging 153 sources, applying category-specific open-model rewriting only where needed, and attaching a visual consistency judge before release. The direction signal is a 12M-scale, openly downloadable rationale mixture whose teacher and filter roles are explicit enough to audit. Instruction tuning, CoT rewriting, source mixtures, and model-as-judge filtering are not individually new.

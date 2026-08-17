@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "对零通过率题目注入 30%–80% 的专家解答前缀，并依据样本通过率的 EMA 学习进展动态重加权 GRPO。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "样本级在线 RLVR 优化配方",
+  "best_for_ch": "研究前缀引导、在线课程、样本状态跟踪与 GRPO 数据加权的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xinjie Chen、Minpeng Liao、Guoxin Chen、Chengxi Li、Biao Fu、Kai Fan、Xinggao Liu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T09:58:38Z"
+}

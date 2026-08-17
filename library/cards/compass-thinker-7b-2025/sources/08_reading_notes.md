@@ -1,0 +1,5 @@
+- Read sections 3–4.2 for the actual optimizer, base model, data construction, verifier, and hyperparameters.
+- “30K verifiable problems” does not mean the full source manifest or verifier implementation is public.
+- Separate Llama-8B difficulty labeling from the custom final-answer verifier used for filtering and reward.
+- Dynamic sampling removes groups with accuracy 0 or 1; the response-group size remains unknown.
+- Treat AIME 2024 accuracy as model evidence, not as a verifier or provenance audit.

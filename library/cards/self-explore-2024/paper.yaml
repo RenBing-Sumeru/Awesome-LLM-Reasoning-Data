@@ -1,0 +1,170 @@
+id: self-explore-2024
+title: 'Self-Explore: Enhancing Mathematical Reasoning in Language Models with Fine-grained Rewards'
+year: 2024
+venue: Findings of EMNLP 2024
+authors:
+- Hyeonbin Hwang
+- Doyoung Kim
+- Seungone Kim
+- Seonghyeon Ye
+- Minjoon Seo
+source_role:
+- construction_recipe
+- process_supervision
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- step_level
+- pairwise_preference
+domains:
+- math
+training_use:
+- sft
+- preference_learning
+- process_supervision
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-emnlp.78/
+  arxiv: https://arxiv.org/abs/2404.10346
+  code: https://github.com/hbin0701/Self-Explore
+  data: https://github.com/hbin0701/Self-Explore/tree/master/data
+  project: https://github.com/hbin0701/Self-Explore
+  huggingface: https://huggingface.co/hbin0701/DeepSeek_MATH_Self_Explore
+  doi: https://doi.org/10.18653/v1/2024.findings-emnlp.78
+  venue: https://aclanthology.org/2024.findings-emnlp.78/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-emnlp.78/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-emnlp.78.bib
+data_object:
+  prompt_source: Human-curated GSM8K and MATH training problems and solutions. The repository redistributes 7,473 GSM8K train
+    and 7,500 MATH train records plus their test files, but does not publish immutable upstream revisions.
+  trace_author: Each model family supplies its own SFT generator and RFT explorer. Mistral-7B, Llemma-7B, and DeepSeek-Math-7B-Base
+    therefore produce separate candidate, RFT, outcome-pair, exploration, and granular-pair corpora. GPT-4 is used only in
+    an explorer ablation and qualitative evaluation, not in the main self-generated recipe.
+  answer_format: Raw generation rows contain prompt, 100 predicted rationales, and the source answer. RFT rows contain query
+    and a correct response. Outcome and granular preference rows contain prompt, chosen, and rejected; in a granular row the
+    prompt includes the question and accepted prefix, chosen is a recovery completion, and rejected is the localized pit step.
+  process_fields:
+  - prompt
+  - preds
+  - answer
+  - query
+  - response
+  - chosen
+  - rejected
+  - final_steps
+  - step_pred
+  - answers
+  environment_or_substrate: Offline self-generation with vLLM, programmatic answer checking, heuristic deduplication and pairing,
+    step-conditioned continuation search, and DPO/IPO/KTO preference optimization experiments.
+  verifier_or_reward: GSM8K candidates use extracted-answer equality, with the released RFT code additionally checking every
+    embedded arithmetic equation; MATH uses task-specific answer extraction and eval_math. During exploration, a prefix is
+    recoverable if at least one of four continuations reaches the gold answer.
+  terminal_predicate: A generated rationale or continuation is outcome-correct when the task-specific checker matches the
+    ground-truth answer. The first explored step for which none of four continuations is correct is labeled the first pit;
+    if every tested step has a successful continuation, the pair is discarded.
+recipe_metadata:
+  base_model: Mistral-7B, Llemma-7B, and DeepSeek-Math-7B-Base
+  teacher: No external teacher in the main recipe; the same target-model family generates candidates and, after RFT, explores
+    rejected prefixes
+  generator: The SFT checkpoint samples full rationales; its RFT successor samples step-conditioned recovery continuations
+    and serves as the DPO reference policy
+  filtering_rule: Deduplicate sampled rationales; retain task-checker-correct solutions for RFT; pair each correct solution
+    with a distinct incorrect solution selected by edit-distance heuristics; locate the first zero-recovery step; remove pairs
+    with no pit; omit final-answer conclusions from rejected spans before DPO
+  sampling_protocol: SFT on source solutions -> sample 100 rationales per training problem -> answer/equation verification
+    and heuristic deduplication -> RFT on retained correct rationales -> outcome-level correct/incorrect pairing -> sample
+    four continuations from successive rejected prefixes -> label the first prefix with zero successful recovery -> construct
+    prompt/chosen/rejected granular pairs -> preference training
+  rollout_count: 100
+  temperature: 0.7
+  inference_budget: Four recovery continuations per tested step at temperature 0.7; released code caps exploration at 20 segmented
+    steps and uses maximum generation lengths of 512 tokens for GSM8K and 1,024 for MATH
+  optimizer_or_scaffold: The paper trains the SFT generator for two epochs and RFT explorer for one epoch while selecting
+    comparison checkpoints across five epochs; preference training runs three epochs. Released DPO configs use batch size
+    32 overall, beta 0.1, RMSprop, linear scheduling, seed 42, and task/model-specific learning rates.
+audit:
+  source_mixture: GSM8K and MATH are processed separately for each of three 7B model families. Paper Table 5 reports model-
+    and task-specific RFT, outcome-pair, and granular-pair sizes; the final granular sets range from 31,248 to 56,283 rows
+    for the capped settings, with Mistral/GSM8K marked as an uncapped exception at 56,283.
+  split: The repository publishes only source GSM8K/MATH train and test JSONL files. It provides scripts that can generate
+    RFT, DPO, exploration, and gpair JSONL files, but none of the paper-run generated files, their train splits, rejected
+    cases, or checksums are released.
+  decontamination: unknown
+  license: The paper states that the datasets and models are under MIT except Mistral-7B under Apache-2.0, and the two checked
+    author Hugging Face model cards declare Apache-2.0. The GitHub repository has no detected license file or SPDX license,
+    and generated RFT/preference-data redistribution terms are unstated.
+  lineage: Source problem/solution -> model-specific SFT checkpoint -> 100 raw candidates -> deduplication and task-specific
+    verification -> model-specific RFT data/checkpoint -> edit-distance outcome pair -> step segmentation -> four continuation
+    samples per prefix -> first zero-recovery label -> prompt/chosen/rejected granular pair -> preference-trained checkpoint.
+    Paper-run row IDs, random streams, intermediate decisions, and generated files are unavailable.
+  known_failure_modes:
+  - A first pit is defined by zero successes in four samples from one explorer, so it denotes practical non-recoverability
+    under a budget rather than a proven first mathematical error.
+  - Correct final answers can coexist with flawed rationales; answer extraction, equation parsing, or MATH equivalence checks
+    can also create false positives or false negatives.
+  - The label depends on model checkpoint, step segmentation, temperature, rollout count, maximum length, parser, and sampling
+    randomness; these dependencies are not stored in released row manifests.
+  - Easy GSM8K questions can yield too few incorrect traces, while hard MATH questions can yield too few correct traces, making
+    pair coverage selective rather than representative of all source problems.
+  - Preference training raises top-1 accuracy but the paper reports lower sampled-answer diversity and rapidly saturating
+    chosen-over-rejected reward accuracy, consistent with overconfidence or reward exploitation risk.
+  - The current code selects the shortest eligible correct recovery continuation, whereas the paper describes randomly selecting
+    one; this paper-code difference can change granular pairs.
+  - Paper Appendix C describes an eight-pair cap but Table 5 marks Mistral/GSM8K as generated without that constraint; reproductions
+    must state which regime they use.
+  - The repository releases executable construction code but not raw 100-way generations, deduplication decisions, outcome
+    pairs, exploration continuations, first-pit labels, discarded pairs, or final granular training files.
+  - The README's two checkpoint links are inconsistent with repository names, including one misspelled URL; task-to-checkpoint
+    mapping should be verified independently before reuse.
+  - No train/test contamination or semantic-overlap audit is reported for the generated rationales or model pretraining corpora.
+  citation_status: verified
+  confidence: high
+  notes: Checked the official ACL paper including appendices, ACL BibTeX/DOI, repository at commit 54b8ba9f4cee1ef52f72de916e100e0da2ae6863,
+    source-data/code tree, and author Hugging Face model repositories on 2026-07-21. Method and artifacts are verified; generated
+    paper-run corpora and their row lineage remain unavailable.
+  metadata_status: partial
+inclusion_reason: Recycles rejected self-generated math traces into model-relative, first-pit preference supervision and exposes
+  the construction code, while leaving the generated training artifacts and decision ledger unreleased.
+related: []
+tags:
+- self-training
+- rejection-sampling
+- first-error-localization
+- step-level-preference
+- dpo
+- mathematical-reasoning
+- search-generated-data
+- finite-search-label
+status: partial
+one_line_summary: Self-Explore converts rejected math rationales into prompt/chosen/pit-step preferences by searching for
+  the first prefix with no correct recovery among four samples; code is open, but paper-run generated pairs are not.
+why_it_matters: It shows how answer-verifiable rejected traces can be recycled into step-local supervision while making finite-search
+  labels, selective pair coverage, and unreleased generation ledgers central audit risks.
+card: null
+needs:
+- 'needs_data: release raw candidates, RFT data, outcome pairs, exploration samples, gpair files, and discarded-case logs'
+- 'needs_lineage: map every row to source ID, generator/explorer checkpoint, parser, seed, and code revision'
+- 'needs_license: state repository-code and generated-data redistribution terms'
+- 'needs_decontamination: document source/test and semantic-overlap checks'
+- 'needs_error_audit: compare first-pit and answer labels with human or symbolic step judgments'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: Publication, code, source files, scripts, and two author checkpoints were verified; generated preference corpora
+    are absent and README checkpoint links are inconsistent.
+category_ids:
+- data_construction_open_release_recipes

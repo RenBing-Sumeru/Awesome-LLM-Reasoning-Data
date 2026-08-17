@@ -1,0 +1,2 @@
+1. **与公开配方比较扩量效果：** 使用 Qwen2.5-7B-Instruct 和论文的匹配评测时，随机选择 500K 条 NaturalThoughts，在 GPQA-Diamond、MATH500、MMLU-Pro、SuperGPQA 上分别得到 48.6、83.1、62.3、35.2；OpenThoughts3-1.2M 为 46.9、91.2、59.1、33.5。NaturalThoughts 用更少记录赢得四项中的三项，但在 MATH500 上仍更弱。
+2. **按难度混合蒸馏：** 在 GPQA-Diamond 上，纯 System-2 训练的 Think 模式准确率为 37.6%，平均输出 8,740 tokens；按难度混合 System-1 与 System-2 后，Think 模式达到 38.9%，平均 7,562 tokens，并能在 No-Think 模式用 799 tokens 得到 34.5%。该对比按问题难度改变 target 形式，支持可调效率，但只覆盖这一任务与 student 设置。

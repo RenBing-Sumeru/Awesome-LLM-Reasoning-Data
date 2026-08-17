@@ -1,0 +1,28 @@
+id: sonata-adaptive-thinking-2026
+title: 'Adaptive Thinking: Large Language Models Know When to Think in Latent Space'
+year: 2026
+venue: ICLR 2026
+authors: ['Pingzhi Li', 'Bairu Hou', 'Yun Zhu', 'Yihao Feng', 'Ke Ye', 'Tao Lei', 'Zhifeng Chen', 'Tianlong Chen', 'Xianzhi Du']
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level]
+domains: [reasoning]
+training_use: [test_time_compute]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://iclr.cc/virtual/2026/poster/10011708, arxiv: null, venue: https://iclr.cc/virtual/2026/poster/10011708, code: null, data: null, project: https://machinelearning.apple.com/research/adaptive-thinking, huggingface: null, doi: null}
+data_object: {prompt_source: "Official paper tasks.", trace_author: "Reasoning system.", answer_format: "Reasoning traces and test-time decisions.", process_fields: [prompt, trace, budget, decision, outcome], environment_or_substrate: "Test-time reasoning.", verifier_or_reward: "Paper-specific signal.", terminal_predicate: "Official evaluation."}
+recipe_metadata: {base_model: "See official paper.", teacher: null, generator: "Test-time procedure.", filtering_rule: "See official paper.", sampling_protocol: "See official paper.", rollout_count: null, temperature: null, inference_budget: "Explicit test-time budget.", optimizer_or_scaffold: "Paper-specific."}
+audit: {source_mixture: "Official paper and ICLR 2026 record.", split: "See paper.", decontamination: "Not separately claimed.", license: "Verify artifacts before reuse.", lineage: 'https://openreview.net/pdf?id=3XnEPOZqZD', known_failure_modes: ["Model and deployment dependence"], citation_status: verified, confidence: high, notes: "Official source and affiliations checked."}
+inclusion_reason: "It explicitly changes or measures how a reasoning system spends test-time computation."
+related: []
+tags: [test-time-compute, reasoning, scaling]
+status: verified
+one_line_summary: "Adaptive Thinking: Large Language Models Know When to Think in Latent Space"
+reading_priority: essential
+paper_type: Test-time scaling study
+best_for: Readers studying allocation of inference computation.
+confidence: high
+why_it_matters: It makes an inference-budget decision auditable.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official sources checked."}
+category_ids: [scaling_rlvr_test_time_compute]

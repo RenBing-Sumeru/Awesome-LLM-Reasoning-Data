@@ -1,0 +1,17 @@
+{
+  "title": "MedS³: Towards Medical Slow Thinking with Self-Evolved Soft Dual-sided Process Supervision",
+  "candidate_links": {
+    "paper": "https://ojs.aaai.org/index.php/AAAI/article/view/40395",
+    "data": "https://huggingface.co/datasets/pixas/MedSSS-data"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-19T07:49:21Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "医疗垂直领域，发布医疗MCTS正负路径和值标签，可训练过程奖励",
+    "updated_at": "2026-07-19T07:49:21Z"
+  }
+}

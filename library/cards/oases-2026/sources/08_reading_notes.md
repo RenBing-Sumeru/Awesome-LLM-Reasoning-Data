@@ -1,0 +1,5 @@
+- Keep the main search rollout and every prefix-evaluation rollout linked but distinct.
+- Audit EM/F1 normalization and equivalent-answer failures before trusting reward deltas.
+- Preserve retrieved-document snapshots and policy revisions to measure evaluator drift.
+- Count evaluation-rollout generation in training cost even though inference uses only the search role.
+- Treat benchmark gains as system evidence, not proof that state rewards or unreleased traces are high-quality data.

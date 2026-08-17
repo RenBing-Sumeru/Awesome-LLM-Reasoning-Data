@@ -1,0 +1,3 @@
+- Terminal task success does not verify the faithfulness, minimality, or safety of each intermediate thought and code action. Audit sampled trajectories step by step, run static plus dynamic code checks, and replay only inside per-episode isolation with resource, network, and allowlist restrictions.
+- MATH and ALFWorld occur in both synthesis sources and parts of MINT. Preserve the paper's in-domain/out-of-domain separation and rerun overlap checks for any new evaluation suite.
+- Teachers and Python environments imprint syntax, package versions, error messages, and recovery habits. Pin the execution image and compare against alternative teachers before treating the behavior as general.

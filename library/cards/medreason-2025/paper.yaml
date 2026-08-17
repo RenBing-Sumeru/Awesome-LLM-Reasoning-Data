@@ -1,0 +1,158 @@
+id: medreason-2025
+title: 'MedReason: Eliciting Factual Medical Reasoning Steps in LLMs via Knowledge Graphs'
+year: 2025
+venue: arXiv preprint
+authors:
+- Juncheng Wu
+- Wenlong Deng
+- Xingxuan Li
+- Sheng Liu
+- Taomian Mi
+- Yifan Peng
+- Ziyang Xu
+- Yi Liu
+- Hyunjin Cho
+- Chang-In Choi
+- Yihan Cao
+- Hui Ren
+- Xiang Li
+- Xiaoxiao Li
+- Yuyin Zhou
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- medical-reasoning
+- clinical-question-answering
+- knowledge-graphs
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.00993
+  arxiv: https://arxiv.org/abs/2504.00993
+  code: https://github.com/UCSC-VLAA/MedReason
+  data: https://huggingface.co/datasets/UCSC-VLAA/MedReason
+  project: https://github.com/UCSC-VLAA/MedReason
+  huggingface: https://huggingface.co/datasets/UCSC-VLAA/MedReason
+  doi: https://doi.org/10.48550/arXiv.2504.00993
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/UCSC-VLAA/MedReason#citation
+data_object:
+  prompt_source: Training questions and answers from MedQA, MedMCQA, PubMedQA, MMLU, MedXpert, HuatuoGPT-o1, and the medical
+    portion of Humanity's Last Exam.
+  trace_author: GPT-4o extracts question/answer entities, maps them to PrimeKG, prunes paths, writes the reasoning explanation,
+    and answers from that explanation for filtering.
+  answer_format: A JSONL record containing dataset_name, id_in_dataset, question, answer, reasoning, and options; reasoning
+    includes retrieved thinking paths, a step-by-step process, and a conclusion.
+  process_fields:
+  - dataset_name
+  - id_in_dataset
+  - question
+  - options
+  - answer
+  - reasoning paths
+  - reasoning process
+  environment_or_substrate: Static medical QA records connected through PrimeKG entities and shortest paths; no online clinical
+    environment or patient interaction is used.
+  verifier_or_reward: GPT-4o regenerates an answer using only the generated rationale, which is compared with the original
+    ground-truth answer; licensed clinicians separately compare sampled explanations with HuatuoGPT-o1.
+  terminal_predicate: Keep a generated rationale only when answer recovery matches the source answer; 32,682 of 45,725 generated
+    records survive.
+recipe_metadata:
+  base_model: Llama-3.1-Instruct-8B, Mistral-Instruct-7B, Medical-CoT-8B, DeepSeek-R1-Distill-Llama-8B, and Huatuo-o1-RL-8B
+    are SFT consumers.
+  teacher: GPT-4o-0806 through API version 2024-12-01-preview.
+  generator: Extract entities, map them to PrimeKG nodes, find shortest question-answer paths, prune to three relevant paths,
+    generate a grounded explanation, and recover the answer from that explanation.
+  filtering_rule: Remove QA pairs without mappable entities; after rationale generation, retain only records whose rationale-only
+    answer matches the original answer.
+  sampling_protocol: Begin with 55,071 training QA pairs from seven sources; 45,725 support generated rationales and 32,682
+    pass quality filtering.
+  rollout_count: 45725
+  temperature: null
+  inference_budget: The paper reports about $3,600 in GPT-4o API usage; exact token counts, wall time, and random seeds are
+    not disclosed.
+  optimizer_or_scaffold: SFT runs three epochs with learning rate 5e-6, batch size 128, and DeepSpeed ZeRO stage 3 on eight
+    GPUs.
+audit:
+  source_mixture: The final set contains 8,016 MedQA, 6,197 MedMCQA, 10,444 PubMedQA, 827 MMLU, 666 MedXpert, 6,475 Huatuo,
+    and 57 HLE records.
+  split: Only source training data are used for generation; for MedXpert and HLE the paper reserves the remaining items for
+    testing. The public release exposes one 32,682-line JSONL file rather than explicit train/validation files.
+  decontamination: Source train/test boundaries are described, but teacher pretraining contamination, cross-source duplicates,
+    and semantic overlap with evaluation benchmarks are not fully audited.
+  license: The Hugging Face dataset declares Apache-2.0 and is non-gated. The GitHub repository has no detected LICENSE file,
+    and each upstream medical QA source retains its own terms.
+  lineage: Seven existing medical QA sources are mapped to PrimeKG; proprietary GPT-4o writes paths and explanations; answer
+    recovery selects the released SFT records.
+  known_failure_modes:
+  - PrimeKG coverage excludes questions without mappable entities and can transmit stale or incomplete medical relations.
+  - A rationale can reproduce the correct option while containing unsupported intermediate steps.
+  - Proprietary-teacher behavior and upstream dataset terms limit exact regeneration and redistribution analysis.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv v2 PDF, official repository and dataset, 115,474,386-byte JSONL release, a real record, schema, counts,
+    Apache-2.0 dataset tag, source mixture, API version/cost, experiments, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: MedReason releases step-by-step medical rationales whose construction explicitly maps QA entities through
+  a knowledge graph and filters traces by recovering the ground-truth answer before SFT.
+related:
+- sciinstruct-2024
+tags:
+- medical-reasoning-data
+- knowledge-graph-grounding
+- chain-of-thought
+- answer-filtering
+- arxiv-2504.00993
+status: verified
+one_line_summary: MedReason maps medical QA entities through PrimeKG, uses GPT-4o to write grounded rationales, and releases
+  32,682 answer-filtered step-by-step SFT records.
+why_it_matters: It makes factual guidance an explicit input to medical rationale generation and exposes the resulting records,
+  rather than relying only on an unconstrained reasoning teacher.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, repository, non-gated Apache-2.0 dataset, full JSONL size, actual row, construction code, model links,
+    and reported evaluation settings checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714-round2-root
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: knowledge-graph-grounded medical reasoning demonstrations
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 1
+  selection_evidence:
+    institution: The official PDF lists UC Santa Cruz, UBC, NTU, Stanford, Weill Cornell Medicine, NYU Langone Health, Vector
+      Institute, multiple university hospitals, and Massachusetts General Hospital.
+    venue: The audited source is arXiv:2504.00993; no peer-reviewed acceptance is claimed for this 2025 Card.
+    impact: The release won third prize in the 2025 Hugging Face Reasoning Datasets Competition; on 2026-07-14 the official
+      repository had 279 stars and 23 forks, while the dataset had 920 recent downloads and 86 likes.
+    artifact: Data, generation/training/evaluation code, three model releases, prompts, and documentation are public; the
+      dataset declares Apache-2.0, but the GitHub repository lacks a detected code LICENSE, so completeness scores 1.
+  selection_eligible: true
+  year_impact_threshold: 2

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以打分、成对比较和批量排序三类任务全面检验多模态模型担任裁判的能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dongping Chen、Ruoxi Chen、Shilin Zhang、Yaochen Wang、Yinuo Liu、Huichi Zhou、Qihui Zhang、Yao Wan、Pan Zhou、Lichao Sun",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T09:42:33Z"
+}

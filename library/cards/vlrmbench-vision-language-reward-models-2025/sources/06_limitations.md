@@ -1,0 +1,1 @@
+First, source datasets differ in difficulty, image quality, and error construction, so aggregate scores can reflect mixture composition. Second, some labels are rule- or model-assisted and require reliability reporting on a human-reviewed subset. Third, public fixed JSONL data can enter training, so future evaluation needs hidden questions or refreshed error generators.

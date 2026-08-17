@@ -1,0 +1,5 @@
+Length Controlled Policy Optimization (LCPO) appends a token request to each source prompt and optimizes an on-policy response with GRPO. L1-Exact combines binary final-answer correctness with a penalty proportional to the absolute difference between requested and realized length. The paper fixes the exact-mode trade-off coefficient at 0.0003, so the policy is rewarded for solving the problem while approaching the requested count.
+
+L1-Max continues from L1-Exact with a soft maximum-length objective. It permits a correct response to finish below the ceiling and gradually penalizes violations instead of hard-truncating the sequence; the model retains both exact and maximum modes according to the prompt. Thus the policy, not an external truncator, learns whether to compress or expand its reasoning.
+
+The feedback contract is programmatic but narrow. Boxed-answer extraction and mathd/SymPy equivalence checks judge the terminal answer, while token counting judges budget adherence. Neither signal certifies the semantic validity or faithfulness of the intermediate chain.

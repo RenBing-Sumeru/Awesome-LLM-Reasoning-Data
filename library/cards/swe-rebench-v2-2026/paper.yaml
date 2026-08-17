@@ -1,0 +1,302 @@
+id: swe-rebench-v2-2026
+title: 'SWE-rebench V2: Language-Agnostic SWE Task Collection at Scale'
+year: 2026
+venue: ICML 2026
+authors:
+- Ibragim Badertdinov
+- Maksim Nekrashevich
+- Anton Shevtsov
+- Alexander Golubev
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+verification_contract:
+- programmatic
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- software_engineering
+- code
+- repository_agents
+- multilingual_programming
+training_use:
+- agent_training
+- rlvr
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.23866
+  arxiv: https://arxiv.org/abs/2602.23866
+  pdf: https://arxiv.org/pdf/2602.23866
+  code: https://github.com/SWE-rebench/SWE-rebench-V2
+  data: https://huggingface.co/datasets/nebius/SWE-rebench-V2
+  data_prs: https://huggingface.co/datasets/nebius/SWE-rebench-V2-PRs
+  project: https://huggingface.co/collections/nebius/swe-rebench-v2
+  huggingface: https://huggingface.co/datasets/nebius/SWE-rebench-V2
+  doi: https://doi.org/10.48550/arXiv.2602.23866
+  venue: https://icml.cc/virtual/2026/poster/63732
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  code_revision: https://github.com/SWE-rebench/SWE-rebench-V2/tree/c71902a8cf8d2b725f63d51f199f4d3e56f68d2d
+  data_revision: https://huggingface.co/datasets/nebius/SWE-rebench-V2/tree/475dd5e8703bb5fb22dd3c60b5d038b019eba1e0
+  data_prs_revision: https://huggingface.co/datasets/nebius/SWE-rebench-V2-PRs/tree/40faf2c1bb160de625f3c3270ac9d62ea45f3f9c
+data_object:
+  unit_of_record: One repository-level software-engineering repair environment/task row, not a released agent trajectory.
+    A downstream agent receives a problem statement and repository state at base_commit, produces a candidate patch through
+    an interaction episode, and is graded by repository tests in a Docker image.
+  releases:
+    executable_issue_linked:
+      rows: 32079
+      repositories: 3617
+      languages: 20
+      split: train
+      prebuilt_images: true
+      problem_source: linked GitHub issue description
+    pr_derived_expansion:
+      rows: 126300
+      paper_scale_claim: 120000+
+      split: train
+      prebuilt_images: false
+      problem_source: LLM-generated statement conditioned on PR description and gold patch
+  prompt_or_task_source:
+  - public GitHub Archive issue and pull-request activity
+  - linked issue text for the 32,079-row executable release
+  - generated problem statement for the 126,300-row PR-derived release
+  context_or_state:
+  - repo
+  - base_commit
+  - created_at
+  - language
+  - repository source tree in the task Docker image
+  - install_config
+  - image_name for the executable issue-linked release
+  released_fields_issue_linked:
+  - instance_id
+  - repo
+  - base_commit
+  - patch
+  - test_patch
+  - problem_statement
+  - pr_description
+  - created_at
+  - image_name
+  - language
+  - interface
+  - license
+  - FAIL_TO_PASS
+  - PASS_TO_PASS
+  - install_config
+  - meta
+  released_fields_pr_derived:
+  - instance_id
+  - repo
+  - pull_number
+  - base_commit
+  - patch
+  - test_patch
+  - problem_statement
+  - pr_description
+  - hints_text
+  - created_at
+  - FAIL_TO_PASS
+  - PASS_TO_PASS
+  - interface
+  - license
+  - install_config
+  - meta
+  trace_or_actions: Agent state/action/observation traces are generated only when a downstream agent interacts with the environment;
+    neither official dataset releases the seven-model diagnostic trajectories or a training trajectory corpus.
+  answer_or_artifact: A submitted candidate patch. The released patch field is the historical gold/reference solution and
+    must not be treated as the agent action trace.
+  process_labels:
+  - LLM issue-quality metadata A and B1-B7 in the paper prompt
+  - difficulty
+  - PR categories
+  - intent completeness
+  - test-alignment issues
+  - external URLs
+  - generated interface description
+  observation: Full-suite raw test logs are produced at evaluation time and parsed into per-test PASSED, FAILED, or SKIPPED
+    states; official eval saves the log path but logs are not fields in the released task rows.
+  verifier_output:
+  - FAIL_TO_PASS tests recovered by the candidate patch
+  - PASS_TO_PASS tests that regress
+  - normalized actual passed and failed test identifiers
+  - passed_match
+  - process exit_code
+  reward: Test-based terminal success is available as a binary episode outcome; a shaped or partial-credit reward is not specified
+    by the release.
+  terminal_predicate: The released evaluator applies the candidate patch and test patch inside the task image, runs install_config.test_cmd,
+    parses the log, and sets passed_match when the normalized passed-test set exactly matches PASS_TO_PASS plus FAIL_TO_PASS.
+    The report separately lists unrecovered F2P and regressed P2P tests.
+  provenance: GitHub Archive event and public repository/PR/issue -> repository filters -> base commit plus solution/test
+    diff split -> synthesized repository setup and parser -> pre-fix/post-fix full-suite validation -> three-judge issue clarity
+    filter -> diagnostic metadata -> released row and optional prebuilt image.
+  environment_or_substrate: A linux/amd64 Docker image with a repository checked out at base_commit, language base tooling,
+    synthesized install commands, a full-suite test command, and a repository-specific log parser.
+recipe_metadata:
+  base_model: Qwen3-Coder-480B-A35B-Instruct for base-Dockerfile generation, interactive setup synthesis, and log-parser synthesis.
+  teacher:
+    setup_agent: Qwen3-Coder-480B-A35B-Instruct under mini-SWE-agent v1.14.4
+    issue_clarity_judges:
+    - gpt-oss-120b
+    - GLM-4.7
+    - DeepSeek-V3.2
+    metadata_annotator: gpt-oss-120b
+    pr_problem_generator: unknown
+    interface_generator: unknown
+  generator: Distributed Git repository mining plus an interactive setup agent, generated language base Dockerfiles, generated
+    repository log parsers, an LLM issue clarity ensemble, LLM diagnostic enrichment, and PR-conditioned problem statement
+    generation.
+  prompt_or_task_source: Public GitHub Archive issue/PR events, cloned repository histories, issue descriptions, PR discussions,
+    commit SHAs, patches, tests, licenses, and primary-language metadata.
+  sampling_protocol: Filter repositories by language/activity; link merged test-changing PRs to resolved issues; split solution
+    and test patches; synthesize one setup per repository; validate full suites before and after the gold fix; require at
+    least one fail-to-pass test; retain specifications accepted by all three issue-clarity judges; enrich surviving records.
+    Separately reuse successful repository setups for unlinked PRs and generate leak-filtered task text.
+  temperature: unknown
+  rollout_count:
+    production_setup_runs_per_repository: 1
+    log_parser_regeneration_cap: 5
+    diagnostic_runs_per_model_per_task: 3
+  inference_budget: unknown
+  search_or_scaffold: mini-SWE-agent v1.14.4 closed-loop terminal interaction for repository setup; one production attempt
+    per repository, with documented pass@k retry ablations.
+  filtering_rule:
+    repository: Permissive license; resolved issue; merged PR; PR changes tests; high-resource thresholds of 25 stars and
+      15 closed issues, long-tail thresholds of 10 stars and 1 closed issue.
+    executable: Synthesized setup reruns successfully, test output can be parsed, and at least one test changes from fail
+      before the solution to pass after it.
+    issue_clarity: Retain only if gpt-oss-120b, GLM-4.7, and DeepSeek-V3.2 all rate the specification adequate under the adapted
+      SWE-bench Verified rubric.
+    pr_leakage: Refined generation prompt plus post-processing for suspicious solution leakage; exact detector and threshold
+      are unknown.
+  selection_threshold:
+    high_resource_min_stars: 25
+    high_resource_min_closed_issues: 15
+    long_tail_min_stars: 10
+    long_tail_min_closed_issues: 1
+    minimum_fail_to_pass_tests: 1
+    issue_judge_acceptance: unanimous_three_judge_acceptance
+  optimizer_or_scaffold: No model optimizer is reported because this paper does not train an agent; mini-SWE-agent is the
+    setup and diagnostic execution scaffold.
+audit:
+  source_mixture: Real public GitHub issues and pull requests spanning 20 programming languages and tasks dated 2014-2025;
+    one issue-linked executable release and one larger PR-derived training release.
+  split: 'Each official Hugging Face dataset exposes one default/train split only: 32,079 issue-linked rows and 126,300 PR-derived
+    rows. No official held-out validation or test split is disclosed.'
+  decontamination: unknown
+  benchmark_overlap: SWE-bench Verified human annotations calibrate the issue filter and SWE-bench family tasks appear in
+    setup ablations, but overlap or deduplication between the released rows and existing SWE benchmarks is not quantified.
+  lineage: Public GitHub event/repository/issue/PR -> base commit and patches -> setup and parser synthesis -> paired full-suite
+    validation -> LLM filtering/enrichment -> HF row; record-level source URLs are incomplete because pr_url is nullable.
+  license: Official code is MIT. Both dataset cards declare CC BY 4.0 and require users to honor the per-instance source-repository
+    license. Complete dependency, issue, PR, test, and contributor-rights compatibility is unknown.
+  release_version:
+    paper: arXiv:2602.23866v2
+    code: c71902a8cf8d2b725f63d51f199f4d3e56f68d2d
+    executable_dataset: 475dd5e8703bb5fb22dd3c60b5d038b019eba1e0
+    pr_dataset: 40faf2c1bb160de625f3c3270ac9d62ea45f3f9c
+    tagged_release: null
+  verifier_or_judge_failure_modes:
+  - Generated log parsers may omit, merge, or misname tests across heterogeneous runners.
+  - Tests can impose implicit names or requirements absent from the problem statement.
+  - P2P tests can couple the task to unrelated repository behavior.
+  - External dependencies and mutable URLs can change outcomes.
+  - Official eval uses Docker host networking and no explicit subprocess timeout.
+  - The public image template suppresses individual install-command failures with `|| true`.
+  - Mutable image tags without verified OCI digests weaken immutable replay.
+  - Unanimous LLM clarity filtering has high precision but very low recall and is not human verification.
+  successful_and_failed_sample_retention: Only tasks surviving setup, F2P extraction, and issue filtering enter the main release.
+    Rejected setup attempts, parser failures, judge disagreements, raw failed candidates, and diagnostic agent trajectories
+    are not released; their complete counts and contents are unknown.
+  privacy_or_consent: Sources are public GitHub activity. The paper mentions excluding potentially sensitive information,
+    but the rule, audit results, contributor consent, deletion process, and retained-PII assessment are unknown.
+  training_use_evidence: The authors position the rows as substrates for agent training, test-reward RL/RL warm-up, SFT subset
+    selection, and evaluation. The paper itself runs a seven-model diagnostic evaluation but no training ablation on filtered
+    data.
+  release_drift: ICML's poster abstract reports 36,000+/3,800+/100,000+, whereas arXiv v2 and current HF releases report 32,079/3,617/120,000+
+    and 126,300 PR rows. Reuse must pin the paper and dataset revisions above.
+  known_failure_modes:
+  - Automated setup and parser generation introduce reward noise.
+  - The single-container design excludes multi-service, database, and external-infrastructure tasks.
+  - The test oracle can reward patch compatibility without establishing semantic equivalence or maintainability.
+  - Generated PR problem statements may leak or distort information from the gold patch.
+  - Main-release metadata schema exposes B1-B6 while the paper prompt defines B1-B7.
+  - The PR dataset meta schema contains irregular legacy fields and should be normalized before reuse.
+  citation_status: official_icml_and_arxiv_verified
+  confidence: high
+  notes: Full paper and appendices, official ICML page, pinned GitHub tree/files, both official HF cards/schemas/revisions,
+    licenses, release state, and evaluator logic were checked on 2026-07-20.
+  remaining_unknowns:
+  - Full GitHub Archive mining and distributed collection implementation
+  - Immutable Docker/OCI image digests and complete environment manifest
+  - Exact dependency snapshots and runtime/tool versions per task
+  - Exact PR generator/interface generator models and all decoding parameters
+  - Exact PR leakage detector, thresholds, rejection counts, and measured leakage rate
+  - Broad duplicate, benchmark-overlap, and pretraining-contamination audit
+  - Raw rejected tasks, failed setups, parser failures, and diagnostic trajectories
+  - Sensitive-information filter details, privacy audit, and consent/deletion policy
+  - PMLR proceedings URL or ICML conference DOI
+inclusion_reason: A multilingual, training-oriented release that makes repository task records, Docker execution environments,
+  F2P/P2P terminal feedback, automated setup and parser synthesis, conservative LLM filtering, and diagnostic risk metadata
+  inspectable at substantially larger scale than manually curated SWE benchmarks.
+related:
+- swe-smith-scaling-data-construction-for-software-engineering-agents-2025
+tags:
+- swe
+- repository-agents
+- executable-environments
+- test-verification
+- multilingual-code
+- rl-environments
+- data-construction
+- open-release
+- artifact-verified
+category_ids:
+- environment_agent_trajectory_data
+- data_construction_open_release_recipes
+- programmatically_verifiable_outcome_data
+one_line_summary: SWE-rebench V2 releases 32,079 prebuilt, test-verifiable repository repair environments across 20 languages
+  plus 126,300 PR-derived training tasks, built by an automated setup, oracle-extraction, LLM-filtering, and metadata pipeline.
+why_it_matters: It exposes the environment and terminal test contract needed to turn real repository changes into post-training
+  tasks, while also surfacing the parser, specification, licensing, and replay risks that determine whether those tasks are
+  trustworthy learning signals.
+status: verified
+card: null
+needs:
+- 'needs_snapshot: pin code c71902a8cf8d2b725f63d51f199f4d3e56f68d2d and both HF revisions'
+- 'needs_replay: record OCI image digests, dependency snapshots, runner/parser versions, network policy, and timeout policy'
+- 'needs_release: obtain the complete harvesting/setup orchestration code or document that it is unavailable'
+- 'needs_overlap_audit: quantify duplicates, benchmark overlap, and contamination'
+- 'needs_rights_audit: review per-repository and contribution/dependency/test licensing'
+- 'needs_failure_release: preserve rejected tasks, failed setups, parser failures, judge disagreements, and diagnostic trajectories'
+- 'needs_venue_metadata: add PMLR or conference DOI if an official proceedings record appears'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  code_verified: true
+  data_verified: true
+  license_verified: true
+  release_state_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: ICML poster 63732 confirms the venue. arXiv v2 and current HF releases are used for scale because the ICML abstract
+    has older counts. GitHub has no tag or Release; pinned main and HF revisions are recorded. Artifact verification does
+    not imply complete reproducibility or unrestricted reuse.

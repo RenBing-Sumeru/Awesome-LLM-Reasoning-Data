@@ -1,0 +1,3 @@
+Current conversational LLMs usually assume that users already know what they want and only need help expressing or executing it. This assumption fails in open-ended tasks such as creative writing or design, where users often form preferences only after seeing concrete alternatives. Repeated clarification questions cannot reveal a preference that has not yet been formed.
+
+DiscoverLLM therefore treats intent discovery as a distinct problem. It trains assistants to present useful possibilities, observe how the user’s preference becomes more concrete, and balance exploration with efficient task completion.

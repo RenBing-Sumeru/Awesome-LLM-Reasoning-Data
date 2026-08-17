@@ -1,0 +1,5 @@
+- 把论文 §§3.2-3.5 连起来读：Dynamic Sampling、token 权重、长度 reward 与整数目标改写共同构成一条数据—反馈 pipeline。
+- 将表 1 视为同一 AIME 2024 设置下的累计 progression，而不是每个组件的独立证明；同时对照后续官方 reproduction table。
+- 复用 DAPO-Math-17K 前先读附录 A：公开题目可能是 LLM 对原题的改写，但原题和改写 trace 都未保留。
+- 加载前固定 Hub revision `6587709` 并审计 1,791,700 行 train split；可见重复块说明行数不等于独立 prompt 数。
+- 规则 reward 只能视为 outcome supervision；在把它当作训练合同前，核对精确 extractor、equivalence rule、长度调整和被拒题组。

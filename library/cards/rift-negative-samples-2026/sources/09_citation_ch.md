@@ -1,0 +1,1 @@
+官方引用记录：Zehua Liu, Shuqi Liu, Tao Zhong, Mingxuan Yuan (2026). RIFT: Repurposing Negative Samples via Reward-Informed Fine-Tuning. arXiv preprint. Official record: https://arxiv.org/abs/2601.09253. Citation details are provisional unless a verified BibTeX record is listed.

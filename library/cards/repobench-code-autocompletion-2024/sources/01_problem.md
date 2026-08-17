@@ -1,0 +1,3 @@
+RepoBench: Benchmarking Repository-Level Code Auto-Completion Systems asks how to close this gap: Code completion systems need repository-level context, but line-level completion benchmarks often ignore cross-file retrieval and project structure. The primary source is https://arxiv.org/abs/2306.03091; public status is ICLR 2024 / arXiv (2023).
+
+Decision boundary: It is collected as a static repository-level code completion/retrieval benchmark, not as an interactive agent environment. The reusable object is a repository context, target file or line, retrieved code context, language split, completion target, and static metric record. This matters for the atlas because the object and feedback contract are inspectable together.

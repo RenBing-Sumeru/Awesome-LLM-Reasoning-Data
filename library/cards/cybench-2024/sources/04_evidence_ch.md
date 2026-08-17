@@ -1,0 +1,1 @@
+论文报告 benchmark 含 40 个专业级 CTF 任务，来自四个竞赛，并评测 8 个模型；对表现较好的模型还比较多个 scaffold。作者报告 Claude 3.5 Sonnet、GPT-4o、OpenAI o1-preview 和 Claude 3 Opus 驱动的 agent 在没有 subtask guidance 时能解决部分完整任务，而人类校准中最难任务耗时 24 小时 54 分钟。逐实例决定性证据是挑战环境中产生的有效 flag 或 subtask check。证据边界很窄：成功率受 scaffold、命令环境、web search 策略、预算和 answer-leak 修复影响；subtask 进度不能当作完整任务成功。

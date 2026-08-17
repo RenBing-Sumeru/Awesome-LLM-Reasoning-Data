@@ -1,0 +1,223 @@
+id: thought-anchors-2025
+title: 'Thought Anchors: Which LLM Reasoning Steps Matter?'
+year: 2025
+venue: arXiv preprint; submitted to ICLR 2026
+authors:
+- Paul C. Bogdan
+- Uzay Macar
+- Neel Nanda
+- Arthur Conmy
+source_role:
+- data_release
+- audit_failure
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- full_episode
+domains:
+- mathematical_reasoning
+- general_knowledge_reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.19143
+  arxiv: https://arxiv.org/abs/2506.19143
+  code: https://github.com/interp-reasoning/thought-anchors
+  data: https://huggingface.co/datasets/uzaymacar/math-rollouts
+  project: https://www.thought-anchors.com/
+  huggingface: https://huggingface.co/datasets/uzaymacar/math-rollouts
+  doi: https://doi.org/10.48550/arXiv.2506.19143
+  venue: null
+  openreview: https://openreview.net/forum?id=6NUtPO9PdV
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.19143
+data_object:
+  prompt_source: The released traces use Level-5-style problems from MATH. The main paper selects 20 questions with 25-75%
+    Qwen-14B accuracy after screening 1,000 problems with ten samples each. The code's selected_problems.json currently contains
+    106 qualifying candidates, but this is not evidence that all 106 were analyzed or fully released. The exact MATH source
+    split and revision for each released problem are unknown.
+  trace_author: DeepSeek-R1-Distill-Qwen-14B generates the main correct/incorrect base reasoning traces and sentence-conditioned
+    continuations; DeepSeek-R1- Distill-Llama-8B supplies the cross-model replication. OpenAI GPT-4o (April-May 2025) labels
+    sentence functions and direct dependencies but does not author the reasoning traces. Qwen3-30B-A3B is used only for the
+    paper's later MMLU causal-graph experiment, not the math-rollouts release.
+  answer_format: A base record contains a step-by-step chain of thought ending in a requested boxed answer. Each sentence/chunk
+    continuation records the removed and resampled chunk, prefix, generated continuation/full CoT, extracted answer, and boolean
+    correctness where available. The dataset-compatible HF layer stores raw files as path/filename/extension/size/content
+    rows.
+  process_fields:
+  - problem
+  - level
+  - type
+  - gt_solution
+  - gt_answer
+  - nickname
+  - base_solution
+  - sentence_chunk
+  - chunk_index
+  - chunk_removed
+  - prefix_without_chunk
+  - chunk_resampled
+  - full_cot
+  - answer
+  - is_correct
+  - function_tags
+  - depends_on
+  - accuracy
+  - resampling_importance_accuracy
+  - resampling_importance_kl
+  - counterfactual_importance_accuracy
+  - counterfactual_importance_kl
+  - forced_importance_accuracy
+  - forced_importance_kl
+  - different_trajectories_fraction
+  - overdeterminedness
+  environment_or_substrate: Offline prefix intervention over a fixed reasoning trace. For sentence i, the remove condition
+    drops i and regenerates from its preceding prefix, while the keep condition retains i and regenerates from i+1. Forced-answer
+    variants interrupt at each position and append an unfinished boxed-answer cue. This is a counterfactual rollout substrate,
+    not an online environment or a correctness-maximizing search policy.
+  verifier_or_reward: Programmatic extraction, normalization, and comparison of boxed answers to the MATH ground truth yields
+    correctness and empirical answer distributions. Sentence importance is measured by accuracy changes and KL divergence
+    between keep/remove distributions; counterfactual importance retains semantically different resamples using all-MiniLM-L6-v2
+    cosine similarity below 0.8. GPT-4o supplies judgment-based function and dependency annotations. There is no learned reward
+    model.
+  terminal_predicate: A rollout is correct when its extracted normalized boxed final answer matches the MATH reference under
+    the repository checker; absent, malformed, or nonmatching answers do not satisfy this predicate. Exact counts by failure
+    type are not released.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-14B for the main MATH experiment and DeepSeek-R1- Distill-Llama-8B for cross-model
+    replication. Qwen3-30B-A3B is limited to the separate MMLU analysis in paper v4.
+  teacher: OpenAI GPT-4o (April-May 2025) auto-labels sentence function tags and direct dependencies. MATH reference solutions/answers
+    provide terminal ground truth; no teacher model is reported for trace distillation or policy training.
+  generator: Generate one correct and one incorrect base CoT per selected question, split each CoT into sentence-like chunks,
+    then regenerate a continuation from every chunk boundary with the current chunk removed or retained. The code supports
+    Novita, Together, Fireworks, and local backends and defaults to Novita, but the exact provider/model revision for each
+    released record is unknown.
+  filtering_rule: Main questions must have 25-75% screening accuracy. Analysis stops after the answer has converged to the
+    same response in more than 98% of resamples. Chunks shorter than four characters can be removed during analysis. Counterfactual
+    metrics condition on a replacement sentence whose all-MiniLM-L6-v2 cosine similarity to the original is below 0.8, the
+    reported median over original/resampled pairs.
+  sampling_protocol: For each sentence, compare 100 keep continuations (resample from i+1) with 100 remove/resample continuations
+    (resample from i), for 200 continuations across the two answer distributions. Forced-answer analysis separately samples
+    100 completions at each sentence position. The release generator targets 100 rollouts per chunk, while the HF card reports
+    actual files as typically containing 10-100; uniform per-file counts are not guaranteed.
+  rollout_count: 100
+  temperature: '0.6'
+  inference_budget: Repository defaults allow up to 16,384 new tokens and 275 sentence chunks; the paper reports main Qwen
+    responses averaging 4,208 tokens and 144.2 sentences. Code exposes a nominal seed of 44 but deliberately does not send
+    that seed to API providers, so released API generation is not demonstrably deterministic.
+  optimizer_or_scaffold: No post-training optimizer is used. Offline analysis builds empirical answer distributions, KL/accuracy
+    importance metrics, GPT-4o sentence labels/dependencies, embedding-filtered counterfactual subsets, receiver-head attention
+    summaries, and causal attention-suppression graphs.
+audit:
+  source_mixture: 'The paper''s main object is 20 MATH questions with one correct and one incorrect Qwen-14B base trace (40
+    responses), replicated with 20 correct and 20 incorrect Llama-8B base traces. The HF raw tree has four main solution branches
+    per model plus a two-problem Qwen-only sanity branch: nine model-by-solution-type branches, not the ten implied by the
+    card schematic. Qwen exposes 20 problem directories in each of its four main branches plus two sanity directories. HF
+    estimates 20,997 dataset rows, but these are indexed raw files, not rollouts; each solutions.json can contain an array
+    of 10-100 continuations. The current data/ index has 183 Parquet shards (19.6 GB), while HF reports 111 GB total including
+    raw and indexed representations.'
+  split: HF exposes a single default split for the file-index dataset. Raw artifacts are partitioned by model, temperature/top-p,
+    correct/incorrect base type, forced-answer/sanity variant, problem, and chunk, not by train/dev/test. Generation code
+    defaults to the MATH train split, but record-level source split/revision is absent, so the released source split is unknown.
+  decontamination: unknown
+  license: The current arXiv v4 PDF and OpenReview submission are CC BY 4.0. The official code repository is MIT licensed,
+    and the HF dataset card declares MIT. The dataset card does not document upstream MATH derivative-data rights.
+  lineage: MATH prompt/reference -> 1,000-problem screening -> selected moderate- difficulty questions -> correct/incorrect
+    base CoTs -> sentence chunks -> keep/remove and forced-answer continuations -> boxed-answer extraction and correctness
+    -> answer-distribution importance -> GPT-4o function/dependency labels -> raw JSON directory tree -> one-row-per-file
+    HF Parquet index. Exact source revision, API provider/checkpoint/date/seed, per-request errors, and record-level transformation
+    provenance are missing. HF main has 176 commits and no semantic release version; commit pinning is required.
+  known_failure_modes:
+  - The HF viewer's roughly 21k rows are file-index rows, not individual continuations; treating this number as a rollout
+    count materially overstates or mischaracterizes the release.
+  - Paper-side estimates compare 100 valid continuations per condition, while the dataset card says released chunk files typically
+    contain 10-100. Exact valid, failed, missing-answer, and incorrect counts are not reconciled in a manifest.
+  - The card schematic implies five solution types for both models, but the raw tree has no Llama sanity branch; the two-problem
+    sanity branch is Qwen-only.
+  - selected_problems.json contains 106 screening candidates whereas the paper uses 20 questions; confusing candidate-pool,
+    task, variant, file, and nested-rollout counts can create incorrect scale claims.
+  - API provider, endpoint/model revision, and generation date are absent per record, and the code deliberately does not transmit
+    its nominal seed to API providers.
+  - Boxed-answer normalization can collapse distinct strings or mis-handle malformed outputs; exact checker failures and unanswered
+    traces are not summarized.
+  - GPT-4o function/dependency labels are not human gold, and the fixed 0.8 embedding threshold can misclassify semantic equivalence
+    or difference.
+  - The paper notes high resampling cost, receiver-head confounding by sentence position, out-of-distribution attention-suppression
+    inputs, unresolved error correction, and overdetermined downstream causes.
+  - No source-split manifest, prompt decontamination, duplicate audit, or benchmark-overlap analysis is released.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv v4 paper and appendices, OpenReview submission status, official code at b53ed8c75d3f6112f68adfaec9a13d4d708c442e,
+    current HF main at a3a2fe1, raw directory layouts, dataset card/viewer, 183-shard file index, and representative nested
+    schemas were checked. Official sources only show submission to ICLR 2026, not acceptance. Status remains partial because
+    exact nested rollout counts, source/provider/checkpoint lineage, split, decontamination, and upstream data rights are
+    unresolved.
+inclusion_reason: 'Thought Anchors releases an unusually inspectable counterfactual trace object: sentence-conditioned continuation
+  banks, positive and negative base traces, final-answer distributions, functional/dependency labels, and causal importance
+  metrics. It belongs in rollout/search/test-time trace data because it makes the sentence intervention, continuation budget,
+  answer feedback, and failure-retention contract explicit while exposing important count and provenance pitfalls in a very
+  large public release.'
+related:
+- not-all-rollouts-useful-2025
+- every-rollout-counts-2025
+tags:
+- thought-anchors
+- counterfactual-rollouts
+- sentence-intervention
+- reasoning-trace-attribution
+- answer-distribution-feedback
+- chain-of-thought-interpretability
+- negative-traces
+- attention-suppression
+- receiver-heads
+- math-rollouts
+- open-data-release
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data
+one_line_summary: Thought Anchors releases MATH reasoning traces with sentence-level keep/remove continuation banks, correct
+  and incorrect outcomes, answer- distribution importance metrics, and LLM-labeled dependencies for auditing which steps steer
+  downstream reasoning.
+why_it_matters: The release turns a reasoning sentence into an auditable intervention unit and preserves downstream continuations
+  rather than only a scalar score, enabling trace attribution and failure analysis; it also demonstrates why file counts,
+  nested rollout counts, generator lineage, and semantic filtering must be reconciled before reusing large rollout corpora.
+card: null
+needs:
+- 'needs_counts_manifest: publish exact per-branch problem, chunk, file, nested continuation, valid, incorrect, missing-answer,
+  malformed-answer, and API-error counts'
+- 'needs_version_manifest: provide an immutable semantic release and reconcile the 176-commit HF history, nine raw branches,
+  183 Parquet shards, 20,997 indexed files, and nested rollout totals'
+- 'needs_generation_lineage: record provider, endpoint/model revision, request date, seed, decoding parameters, and source
+  code commit per rollout'
+- 'needs_source_provenance: record exact MATH revision/split and problem-level provenance'
+- 'needs_decontamination: document duplicate, contamination, and benchmark-overlap checks'
+- 'needs_license_audit: document upstream MATH derivative-data rights in addition to the declared MIT dataset license'
+- 'needs_negative_trace_audit: summarize incorrect-base, incorrect-continuation, malformed/no-answer, and failed-request retention
+  and filtering'
+- 'needs_venue_status: update only if an official ICLR decision or publication page becomes available'
+- 'card_recommendation: create a release/audit Card focused on intervention semantics, answer-distribution feedback, nested
+  schema, count reconciliation, and unresolved lineage'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv/OpenReview, code, project, and HF links were verified; the full paper/appendices, current code, release
+    tree/card/viewer, version history, and representative schemas were inspected. Venue remains an unaccepted ICLR 2026 submission,
+    and metadata status is partial because nested counts, generator/source lineage, split, decontamination, and upstream data-rights
+    documentation remain incomplete.

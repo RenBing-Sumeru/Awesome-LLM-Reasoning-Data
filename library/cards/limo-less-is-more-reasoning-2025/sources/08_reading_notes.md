@@ -1,0 +1,6 @@
+- Use the official venue and version pair: COLM 2025/arXiv v3 goes with LIMO-v2's 800 rows; the 817-row LIMO v1 artifacts are legacy.
+- Read paper Sections 3.1 and 6.3 before the headline scores: they define the 4-attempt filter, 1–3/32 band, 2,125-question pool, lexical score, base dependence, and diminishing returns after 800.
+- The quality score is 30% length, 20% validation-like words, 25% tentative expressions, and 25% connective phrases; it measures style proxies, not step correctness.
+- “800 examples” excludes the tens-of-millions pool, repeated difficulty attempts, three-teacher generation, human examination, and undisclosed compute.
+- Cloning GitHub does not reproduce v2: the bundled data is the 817-row v1 file, the YAML contains a dataset placeholder, and the registry has no LIMO entry.
+- Before reuse, pin the v2 HF revisions and resolve missing construction code, lineage, rejects, n-gram parameters, final correctness checker, and the MIT/Apache-2.0/upstream-rights inconsistency.

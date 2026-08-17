@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该研究把 3 个软件工程 agent 的 120 条成功/失败运行统一为 2,822 次 thought-action-result 迭代，并加入动作与语义关系标注；它适合评测与审计，但缺少可重放环境和不可变发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "软件工程 agent 轨迹数据发布与混合方法实证研究",
+  "best_for_ch": "研究 agent trajectory、软件修复行为、反馈利用、失败模式和轨迹发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Islem Bouzenia、Michael Pradel",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

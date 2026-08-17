@@ -1,0 +1,151 @@
+id: agent-flan-2024
+title: 'Agent-FLAN: Designing Data and Methods of Effective Agent Tuning for Large Language Models'
+year: 2024
+venue: Findings of ACL 2024
+authors:
+- Zehui Chen
+- Kuikun Liu
+- Qiuchen Wang
+- Wenwei Zhang
+- Jiangning Liu
+- Dahua Lin
+- Kai Chen
+- Feng Zhao
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent-reasoning
+- tool-use
+- web
+- embodied-ai
+- database
+- operating-systems
+training_use:
+- sft
+- agent_training
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-acl.557/
+  arxiv: https://arxiv.org/abs/2403.12881
+  code: https://github.com/InternLM/Agent-FLAN
+  data: https://huggingface.co/datasets/internlm/Agent-FLAN
+  project: https://internlm.github.io/Agent-FLAN/
+  huggingface: https://huggingface.co/datasets/internlm/Agent-FLAN
+  doi: https://doi.org/10.18653/v1/2024.findings-acl.557
+  venue: https://aclanthology.org/2024.findings-acl.557/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-acl.557/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-acl.557.bib
+data_object:
+  prompt_source: AgentInstruct and ToolBench tasks, with additional negative queries that separate tool availability from
+    user requests.
+  trace_author: Existing AgentInstruct and ToolBench teachers supply source traces; the authors transform and decompose them
+    into ReAct, conversation, CoT, capability, and negative records.
+  answer_format: An id plus conversation turns containing user state/tool information and assistant reasoning, tool selection,
+    arguments, or explicit non-use responses, with loss masks.
+  process_fields:
+  - id
+  - conversation.role
+  - conversation.content
+  - conversation.loss
+  - thought
+  - action
+  - tool response
+  - negative condition
+  environment_or_substrate: Seven held-in task families covering ALFWorld, WebShop, Mind2Web, knowledge graphs, operating
+    systems, databases, and ToolBench APIs.
+  verifier_or_reward: Source task outcomes and ToolBench FINAL ANSWER checks support source filtering; format and action-hallucination
+    conditions create explicit negative supervision.
+  terminal_predicate: Keep source records following required source format and, for ToolBench, containing FINAL ANSWER; reject
+    DFSDT retry-preface records and supervise when tools should not be called.
+recipe_metadata:
+  base_model: Llama-2 7B, 13B, and 70B
+  teacher: Teachers inherited from AgentInstruct and ToolBench; the paper focuses on transformation and mixture rather than
+    one new teacher.
+  generator: Convert ReAct/JSON into natural conversations, decompose examples by reasoning, retrieval, understanding, and
+    instruction following, then add two families of tool-use negatives.
+  filtering_rule: Remove records that violate Thought-Action-ActionInput; for ToolBench require FINAL ANSWER and remove DFSDT
+    retry-preface samples; retain about 10 percent of ToolBench.
+  sampling_protocol: Default mixture uses 10 percent ReAct and 90 percent conversation form, with reasoning:retrieval:understanding
+    weights 1:0.25:0.75 plus 2,000 instruction-following samples.
+  rollout_count: 24703
+  temperature: null
+  inference_budget: The paper reports 18.1M weighted-mixture training tokens and GPU counts for model scales, but not source-teacher
+    generation cost or a total wall-clock budget.
+  optimizer_or_scaffold: Llama-2 SFT with cosine schedule, learning rate 2e-5, batch size 32 for 7B/13B and 128 for 70B.
+audit:
+  source_mixture: 195 OS, 538 database, 300 knowledge-graph, 351 WebShop, 336 ALFWorld, 116 Mind2Web, and 22,867 ToolBench
+    samples, totaling 24,703.
+  split: The public release exposes seven JSONL splits for AgentInstruct ReAct/conversation forms, ToolBench instruction,
+    negative, ReAct, conversation, and CoT forms.
+  decontamination: The paper evaluates held-out tasks but does not document a release-wide semantic overlap audit across all
+    inherited AgentInstruct, ToolBench, Agent-H, and evaluation prompts.
+  license: The official dataset card and code repository declare Apache-2.0; inherited AgentInstruct and ToolBench source
+    terms still require record-level review.
+  lineage: Static conversations and rationale/tool traces explicitly consumed by SFT; Agent-H is an evaluation neighbor, but
+    the release's central object is the redesigned training mixture.
+  known_failure_modes:
+  - Training formats and negative templates can become shortcut signals rather than robust tool-use judgment.
+  - Only about ten percent of ToolBench is used, and the selection may bias API coverage.
+  - Inherited teacher and source-dataset errors remain despite conversational reformatting.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper and affiliations, official Apache-2.0 repository and dataset, seven-file manifest, one actual JSONL record,
+    mixture counts, training settings, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: Agent-FLAN openly releases a 24,703-record SFT mixture whose central contribution is the transformation,
+  capability balancing, and negative supervision of serialized agent reasoning and tool traces.
+related:
+- agenttuning-2024
+tags:
+- instruction-demonstration-rationale
+- agent-trajectories
+- tool-use
+- negative-supervision
+- arxiv-2403.12881
+status: verified
+one_line_summary: Agent-FLAN releases 24,703 redesigned agent conversations that separate reasoning, retrieval, arguments,
+  format following, and tool-use negatives for SFT.
+why_it_matters: It treats representation, capability balance, and non-action examples as data decisions and measures their
+  effects separately from simply adding more trajectories.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings, Apache-2.0 data and code, seven split files, actual record, counts, filters, and SFT consumer
+    checked.
+category_ids:
+- instruction_demonstration_rationale_data
+- process_trace_supervision_data
+batch:
+  id: paper-card-l4-pipeline-20260714-round2
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: capability-balanced agent and tool-use demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The official PDF confirms University of Science and Technology of China and Shanghai AI Laboratory affiliations,
+      established institutions in agent and language-model research.
+    venue: ACL Anthology confirms a regular Findings of ACL 2024 paper; no oral, spotlight, or award distinction is claimed.
+    impact: The official repository had 361 stars, and the public dataset reported 370 downloads and 103 likes on 2026-07-14;
+      later agent-data work compares against or inherits Agent-FLAN, meeting the 2024 impact threshold.
+    artifact: The official Apache-2.0 dataset exposes seven readable JSONL files, an inspectable conversation schema, 24,703
+      documented records, models, and training code.
+  selection_eligible: true
+  year_impact_threshold: 3

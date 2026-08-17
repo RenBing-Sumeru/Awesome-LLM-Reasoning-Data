@@ -1,0 +1,1 @@
+Its core idea is a two-way view: causal inference can be used to study LLM reasoning, fairness, safety, explainability, and multimodality; LLMs can support causal relationship discovery and causal effect estimation. This prevents readers from treating “causal LLM” as one undifferentiated claim. The useful first question is which direction of assistance a paper actually studies.

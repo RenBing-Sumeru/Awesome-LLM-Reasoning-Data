@@ -1,0 +1,128 @@
+id: spreadsheetbench-2-business-workflows-2026
+title: 'SpreadsheetBench 2: Evaluating Agents on End-to-End Business Spreadsheet Workflows'
+year: 2026
+venue: arXiv preprint
+authors:
+- Jian Zhu
+- Yuzheng Zhang
+- Zeyao Ma
+- Bohan Zhang
+- Armin Schoepf
+- Daniel Woloch
+- Peter Yiliu Wang
+- Guangyu Robert Yang
+- Samuel Jacob
+- Siddharth Nagisetty
+- Abhiram Chundru
+- Jean Lin
+- Spencer Mateega
+- Jing Zhang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- spreadsheet-agents
+- business-workflows
+- office-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.29955
+  arxiv: https://arxiv.org/abs/2606.29955
+  doi: https://doi.org/10.48550/arXiv.2606.29955
+  code: https://github.com/RUCKBReasoning/SpreadsheetBench-2
+  data: https://huggingface.co/datasets/KAKA22/SpreadsheetBench-v2
+  project: https://spreadsheetbench.github.io/
+  huggingface: https://huggingface.co/datasets/KAKA22/SpreadsheetBench-v2
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official SpreadsheetBench 2 paper and project page
+  trace_author: SpreadsheetBench 2 authors and benchmark workflow construction
+  answer_format: business spreadsheet files, workflow instructions, multi-sheet edits, expected deliverables, and scoring
+    records
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: end-to-end business spreadsheet workflows across multi-sheet files
+  verifier_or_reward: SpreadsheetBench 2 workflow evaluator and spreadsheet file-state checks
+  terminal_predicate: SpreadsheetBench 2 workflow evaluator and spreadsheet file-state checks
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: business workflow task authors and spreadsheet examples
+  generator: SpreadsheetBench 2 business workflow benchmark pipeline
+  filtering_rule: pin exact dataset package, raw-source restrictions, evaluator implementation, and non-redistributed data
+    boundary
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2606.29955; https://spreadsheetbench.github.io/; https://github.com/RUCKBReasoning/SpreadsheetBench-2;
+    https://huggingface.co/datasets/KAKA22/SpreadsheetBench-v2
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: 'Needs verification: the paper says dataset CC BY-SA 4.0 and evaluation code MIT, while Hugging Face metadata reports
+    MIT.'
+  lineage: 'Primary lead: https://arxiv.org/abs/2606.29955'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: Raw business-source restrictions, release version, split, VLM checklist judge, visualization export path, and evaluator
+    details need audit.
+inclusion_reason: it extends spreadsheet agents to end-to-end business workflows
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- spreadsheet-agents
+- business-workflows
+- office-agents
+why_it_matters: it extends spreadsheet agents to end-to-end business workflows
+status: verified
+needs:
+- 'needs_audit: resolve license conflict, split, evaluator, VLM judge, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SpreadsheetBench 2 evaluates agents on end-to-end business spreadsheet workflows.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv and project page verify title, authors, institutions, and V2 dataset pointer; exact code/evaluator release,
+    dataset package, and license should be pinned from official artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 86
+  primary_category_id: benchmarks_evaluation_surfaces

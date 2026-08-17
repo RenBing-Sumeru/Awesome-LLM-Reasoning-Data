@@ -1,0 +1,3 @@
+Earlier factuality pipelines often verify each claim against retrieved evidence or outsource quality judgment to a stronger language model. ACPO instead uses the distribution of the current model's own sampled statements, so its supervision source is internal agreement rather than a separately supplied factual label.
+
+Its distinctive contribution is to make that agreement granular enough for long answers. The method does not vote over a whole response; it clusters sentence-level facts, turns cluster membership into a signed response score, and writes a standard chosen-rejected record that can be consumed by DPO. This preserves a simple optimizer while changing how its training comparisons are produced.

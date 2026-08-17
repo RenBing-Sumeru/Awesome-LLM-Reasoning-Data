@@ -1,0 +1,3 @@
+Quality evidence comes from 1,401 tasks across 83 repositories that pass two-stage filtering and execution checks. Each instance pairs a feature modification with relevant unit tests rather than treating pull-request text alone as a requirement. Multiple LLMs and agents are evaluated under one harness and perform substantially worse on FEA-Bench than on existing bug-fix benchmarks, indicating an unsaturated challenge in adding components and editing related code.
+
+This supports benchmark discrimination but does not prove that difficulty comes only from feature implementation. Repository length, environments, context policies, and agent scaffolds also affect scores. Model comparisons must standardize retrieval, editing rounds, and test budgets.

@@ -1,0 +1,3 @@
+Reinforcement learning with verifiable rewards works most easily when an answer has a short, fixed form that a program can check exactly. Many reasoning tasks in medicine, chemistry, economics, psychology, and education instead have free-form reference answers, so exact matching discards useful distinctions or fails to give a usable reward.
+
+This paper asks how to extend reference-based reinforcement learning to such domains without collecting extensive domain-specific process annotations. It uses a generative verifier, trained from exploration records, to turn a reference answer and a policy response into a probabilistic reward.

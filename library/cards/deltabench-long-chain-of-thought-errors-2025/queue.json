@@ -1,0 +1,19 @@
+{
+  "title": "Can Large Language Models Detect Errors in Long Chain-of-Thought Reasoning?",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.905/",
+    "data": "https://huggingface.co/datasets/OpenStellarTeam/DeltaBench",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:45:20Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "长轨迹细标首错和反思，适合诊断真实推理失效",
+    "updated_at": "2026-07-16T11:45:20Z"
+  }
+}

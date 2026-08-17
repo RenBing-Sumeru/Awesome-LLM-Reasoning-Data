@@ -1,0 +1,182 @@
+id: android-control-curated-2025
+title: 'AndroidControl-Curated: Revealing the True Potential of GUI Agents through Benchmark Purification'
+year: 2025
+venue: arXiv preprint
+authors:
+- Ho Fai Leung
+- Xiaoyan Xi
+- Fei Zuo
+source_role:
+- benchmark
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- state_action_level
+domains:
+- agent_trajectories
+- mobile_ui_control
+- gui_grounding
+training_use:
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.18488
+  arxiv: https://arxiv.org/abs/2510.18488
+  code: https://github.com/batechworks/AndroidControl_Curated
+  data: https://huggingface.co/datasets/batwBMW/AndroidControl_Curated
+  project: null
+  huggingface: https://huggingface.co/batwBMW/Magma-R1-4B-AndroidControl
+  doi: https://doi.org/10.48550/arXiv.2510.18488
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: High- and low-level AndroidControl task instructions, purified through bounding-box relabeling and optional
+    task/history/ground-truth corrections.
+  trace_author: Original AndroidControl human demonstrations, with correction proposals from an undisclosed LLM reviewer and
+    verification by an undisclosed panel of human experts.
+  answer_format: A static GUI step record with screenshot path, task or instruction, prior-action history, target action type,
+    point and/or bounding-box target, and optional revised task/history, alternative candidate actions, reviewer rationale,
+    and original-versus-corrected ground truth.
+  process_fields:
+  - image
+  - instruction
+  - task
+  - history
+  - step_instruction
+  - gt_action
+  - gt_coordinate
+  - gt_min_bbox
+  - gt_max_bbox
+  - gt_bbox
+  - gt_input_text
+  - revised_task
+  - revised_memory
+  - candidate_predictions
+  - candidate_actions
+  - candidate_review_result
+  - org_gt_action
+  - gpt_corrected
+  environment_or_substrate: Static screenshots and flattened Android GUI steps derived from AndroidControl; screenshot archives
+    are released, but no pinned emulator/app environment or reset/replay protocol was verified.
+  verifier_or_reward: Released evaluation code normalizes action types, checks predicted-box centers against ground-truth
+    boxes (or point distance for point views), applies token/substring matching to input text, and accepts any retained candidate
+    action for improved tasks. Magma-R1 training uses a Gaussian distance reward for grounding.
+  terminal_predicate: Released code computes step success as correct action type plus grounding for click/long-press, or action-type
+    correctness otherwise. The paper separately describes end-to-end success as all steps correct with the intended final
+    screen reached, but no released live terminal-state checker was verified.
+recipe_metadata:
+  base_model: Qwen2.5-VL-3B-Instruct according to the root official model config; the paper describes a 3B multimodal base,
+    while the current HF repository also contains a later Qwen3-VL-4B checkpoint.
+  teacher: Three expert agents (Qwen3-VL-235B, InfiGUI-R1, and GUI-R1) identify consensus failures; the LLM reviewer model
+    and human-review panel details are unknown.
+  generator: Original AndroidControl human demonstrations plus LLM-proposed task/ground-truth corrections and human expert
+    verification.
+  filtering_rule: Flag a task when all three expert agents fail; assign a deficiency cause and proposed correction with an
+    LLM; apply human-verified corrections. Exact acceptance thresholds and the 2.4K Magma-R1 training-sample selection rule
+    are unknown.
+  sampling_protocol: Magma-R1 uses GRPO rollouts and stratified action-type sampling to increase rare-action exposure. Group
+    size, target proportions, epochs, and rollout IDs are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper reports 60 H20 GPU-hours (approximately USD 60) for post-training. The released evaluation inference
+    uses temperature 0.0, top-p 0.001, repetition penalty 1.05, and max_tokens 512; these are not established as training
+    settings.
+  optimizer_or_scaffold: GRPO with a PPO-style clipped objective, within-group reward normalization, Gaussian-kernel grounding
+    reward, and action-type proportional batch sampling. Clip epsilon, Gaussian sigma, optimizer, learning rate, and training
+    schedule are unknown.
+audit:
+  source_mixture: Derived from AndroidControl human mobile-UI demonstrations and repackaged as high/low point and bounding-box
+    views plus a high-level task-improved view. The exact upstream dataset revision is unknown.
+  split: The paper reports Easy and Hard subsets; release files are named low/high and contain unequal point/bbox/improved
+    record counts. No immutable train/validation/test manifest or 2.4K training-ID list was verified.
+  decontamination: unknown
+  benchmark_overlap: Unknown. Magma-R1 is trained on 2,400 samples selected from AndroidControl-Curated, which is also the
+    evaluation surface; exact IDs and overlap controls are not disclosed.
+  license: 'Dataset and GitHub code license unknown: no dataset-card license metadata or repository LICENSE file was verified.
+    The model card declares MIT, but that does not establish rights for benchmark data, screenshots, or third-party app content.'
+  lineage: AndroidControl human demonstrations -> point-to-bounding-box intent-aligned labels -> consensus-failure candidate
+    selection -> LLM task/ground-truth correction proposals -> human expert verification -> AndroidControl-Curated JSON/screenshot
+    release; 2.4K selected samples then feed Magma-R1 GRPO training.
+  release_version: 'GitHub main is untagged and has no GitHub release. HF dataset revision checked: 62aeecdcafa4097d340c5a4389690a5f14e938ed;
+    HF model revision checked: 4fe611412b13dfdec1782dd1671d7c659abc2bf7.'
+  successful_and_failed_sample_retention: The improved release retains original/candidate/reviewer fields for some corrected
+    records, but a complete manifest of all rejected candidates, failed rollouts, and human decisions is unknown.
+  privacy_or_consent: Unknown. Released task/action strings include email-address-like and phone-number-like content, and
+    screenshot archives derive from human mobile interactions; redaction, consent, and PII review are not disclosed.
+  known_failure_modes:
+  - The paper's end-to-end terminal-screen success definition is not implemented by the released static step evaluator, so
+    reported SR and released Step_Success_Rate should not be assumed identical.
+  - The paper's point-in-element formula and the code's predicted-box-center or normalized-distance checks are related but
+    not identical scoring contracts.
+  - The LLM reviewer identity, prompt, sampling settings, human panel size, review sample size, agreement, and correction
+    threshold are undisclosed.
+  - The 2.4K training IDs and train/evaluation overlap controls are unavailable, creating a material leakage and attribution
+    risk.
+  - The official evaluation entry point only iterates the task-improved benchmark, uses repository-internal path assumptions,
+    and does not provide a complete Tables 1-2 reproduction workflow.
+  - No emulator image, app-version manifest, reset script, or live replay protocol was verified; the release is a static benchmark
+    rather than a pinned executable environment.
+  - The paper reports Magma-R1-3B, while the current redirected model repository is named 4B and contains both Qwen2.5-VL-3B
+    and Qwen3-VL-4B artifacts, so checkpoint-to-result attribution requires manual pinning.
+  - Dataset/code licensing and record-level privacy/consent remain unresolved.
+  citation_status: verified
+  confidence: medium
+  notes: Primary paper, all 10 PDF pages, official repository tree and text code, five released JSON files, HF dataset/model
+    manifests, model configs, licenses, tags, and releases were checked on 2026-07-20. No appendix or formal venue page was
+    found.
+inclusion_reason: This work exposes a concrete Android state-action benchmark object and shows how point-versus-box scoring,
+  alternative valid actions, and task/label correction change GUI-agent evaluation; it is therefore directly useful for both
+  trajectory-data audit and benchmark-construction practice.
+related:
+- android-control-2024
+tags:
+- environment-agent-trajectory-data
+- benchmarks-evaluation-surfaces
+- android
+- gui-agent
+- benchmark-purification
+- data-quality
+- grounding-evaluation
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: AndroidControl-Curated releases five static Android step-data views and screenshot archives, couples box-aligned
+  scoring with LLM-human task and label correction, and uses 2,400 selected samples for GRPO agent training.
+why_it_matters: It demonstrates that the evaluation contract and label quality can move GUI-agent success rates by double
+  digits, while its released records and scorer make those effects auditable enough to study—provided users preserve the unresolved
+  licensing, replay, split, and checkpoint boundaries.
+card: null
+needs:
+- 'needs_license: confirm separate terms for code, curated JSON, screenshots, and third-party app content'
+- 'needs_split: publish Easy/Hard mapping, train/validation/test manifest, exact 2.4K training IDs, and overlap/decontamination
+  audit'
+- 'needs_metadata: disclose LLM reviewer/version/prompt, human panel/rubric/agreement, correction thresholds, and upstream
+  AndroidControl revision'
+- 'needs_training_recipe: release GRPO trainer/config, group size, sigma, clip epsilon, optimizer, schedule, target action
+  proportions, and random seeds'
+- 'needs_replay: pin emulator, Android/app versions, credentials/reset protocol, screenshot-to-record manifest, and terminal-state
+  checker'
+- 'needs_versioning: tag immutable code/data/model releases and map the paper''s 3B result to one exact checkpoint'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv v1, full PDF, GitHub, HF dataset/model, JSON contents, evaluation/inference code, configs, release/tag
+    state, and license metadata were verified. Recommend an evidence-grounded L4 Card rewrite, but keep Review state new and
+    do not promote curation level until bilingual Card validation.

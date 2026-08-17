@@ -1,0 +1,3 @@
+Teacher distillation often asks a small model to imitate whatever answer a stronger model gives. That can teach surface style without teaching which reasoning strategy fits a task, and a strategy that is effortless for GPT-4 may be unsuitable for a 7B or 13B student.
+
+Orca 2 addresses this by choosing task-specific strategies—direct answer, step-by-step, recall-then-generate, recall-reason-generate, and others—using detailed prompts to elicit suitable GPT-4 responses, then erasing those strategy prompts during student training. The direct data object is a task paired with a strategy-shaped answer trace; 817K new records join FLAN and Orca 1 data in progressive SFT. Primary source: https://arxiv.org/abs/2311.11045; no formal venue beyond arXiv was confirmed.

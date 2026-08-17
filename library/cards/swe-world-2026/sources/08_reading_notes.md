@@ -1,0 +1,5 @@
+- Keep the object boundary explicit: 16,550 tasks, 26K SWT examples, 21K SWR examples, and 5.7K policy-SFT episodes are not the same unit.
+- Read SWT as action-level simulated `stdout`/`stderr`/`exit_code`, SWR as episode-level test report plus binary reward, and Docker as the collection/final-evaluation oracle.
+- Preserve the 32B RL discrepancy: 55.0 in the abstract/Table 2/README versus 54.8 in §6.2 prose.
+- Pair Table 7 with Figure 2: CoT improves SWR accuracy, while non-CoT SWR directly exhibits reward hacking and trajectory-length collapse.
+- Check the official demos and weights, but do not infer a full data release; unresolved items include corpora, licenses, splits, lineage, judge identity, contamination, privacy, and RL compute.

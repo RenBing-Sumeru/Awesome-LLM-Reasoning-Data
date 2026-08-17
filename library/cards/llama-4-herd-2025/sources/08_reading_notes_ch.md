@@ -1,0 +1,5 @@
+- 使用任何 token 总量前，先读官方报告的 pretraining 与 mid-training 段落：模型卡分别给出 Scout 约 40T、Maverick 约 22T，报告则另称整体混合超过 30T。
+- 按顺序阅读 Maverick 后训练：删除超过 50% 的简单 SFT 数据、lightweight SFT、带持续过滤的困难提示 online RL，最后是 lightweight DPO。
+- 把 Behemoth 保持为独立分支：95% SFT 裁剪、pass@k curriculum、zero-advantage 过滤和 asynchronous RL 均未被说明为 Scout/Maverick 流程。
+- 把 Behemoth-to-Maverick codistillation 视为已披露的目标生成谱系，而不是教师输出或 trace 已发布。
+- 官方 Hugging Face collection 只能证明权重与模型卡已发布，不能证明训练数据已发布；benchmark 表也只能作为评测证据阅读。

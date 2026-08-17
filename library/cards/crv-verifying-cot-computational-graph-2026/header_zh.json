@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CRV 把推理步骤的归因图视为计算执行轨迹，从图结构中识别并干预导致 CoT 错误的因果特征。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要白盒过程验证数据、带步骤正确性标签的 CoT，或希望把机制可解释性用于推理错误诊断的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zheng Zhao、Yeskendir Koishekenov、Xianjun Yang、Naila Murray、Nicola Cancedda",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

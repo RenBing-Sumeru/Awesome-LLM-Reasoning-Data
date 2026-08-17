@@ -1,0 +1,1 @@
+RL claims are sensitive to hidden choices. A noisy reward can optimize fluent but invalid traces, a weak verifier can reward shortcuts, and more rollouts can imitate algorithmic progress. The survey cannot normalize those conditions across all primary work. Before reuse, inspect reward failures, rollout count, and whether evaluation overlaps with training tasks.

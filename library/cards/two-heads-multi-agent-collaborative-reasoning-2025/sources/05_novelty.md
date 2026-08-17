@@ -1,0 +1,1 @@
+The Track 5 contribution is to make discussion, collaboration_trajectory, ceo_depth an explicit object for rollout, search, selection, or test-time control rather than treating it as disposable generation state.

@@ -1,0 +1,2 @@
+The reported setup begins with 1.1K DeepSeek-R1-derived NuminaMath solutions for cold-start SFT. During GRPO, the Qwen2.5 policy generates 16 rollouts for each of 16 prompts. A prompt group is accepted when its pass rate falls between lower and upper thresholds, typically symmetric around 0.5. A visit-count queue and asynchronous replacement maintain a fixed accepted batch. Correctness, format, and language rewards define the training feedback.
+

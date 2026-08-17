@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenEQA 用真实环境中的开放词表问题评估模型在环境记忆和主动探索设置下的具身问答能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "CVPR 2024 的 embodied QA benchmark / evaluation surface",
+  "best_for_ch": "关注具身问答、环境记忆、主动探索、LLM judge 和开放词表答案评测的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Arjun Majumdar 等（FAIR, Meta 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

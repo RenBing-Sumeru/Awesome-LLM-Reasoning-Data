@@ -1,0 +1,1 @@
+Wei Li, William Bishop, Alice Li, Chris Rawles, Folawiyo Campbell-Ajala, Divya Tyamagundlu, and Oriana Riva. 2024. "On the Effects of Data Scale on UI Control Agents." arXiv:2406.03679; arXiv record lists NeurIPS 2024. https://arxiv.org/abs/2406.03679 . Official code/data entry: https://github.com/google-research/google-research/tree/master/android_control .

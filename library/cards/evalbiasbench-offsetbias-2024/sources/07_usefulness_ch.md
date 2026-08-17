@@ -1,0 +1,1 @@
+可把 OffsetBias 用作 evaluator-bias 审计 schema。复用时保留 prompt、候选回答、偏差类别、目标判断、标注或生成来源、judge prompt、judge 模型、解码设置和分数。它适合检查 reward model、LLM-as-judge 或 preference pipeline 是否受无关 offset 影响。对 atlas 来说，它提醒我们反馈契约本身也可以成为被评测对象。

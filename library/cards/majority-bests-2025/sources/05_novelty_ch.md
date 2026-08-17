@@ -1,0 +1,1 @@
+MoB 不生成新的推理路径，也不训练新的 verifier；它只变换 BoN 已有的 N 个输出与标量 reward：估计 Best-of-m 答案分布并返回其众数。相对 self-consistency，它保留每个假想子集内的 reward 排序；相对 BoN，它聚合最高 reward 结果的分布；相对 Weighted BoN，它不是简单按答案累加原始 reward。对本图谱而言，可复用贡献是闭式 O(N log N) selector、adaptive m 规则和发布的评分候选池 schema，而不是把众数答案视为更优推理的天然证明。

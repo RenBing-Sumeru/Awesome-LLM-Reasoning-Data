@@ -1,0 +1,16 @@
+{
+  "title": "MAmmoTH-VL: Eliciting Multimodal Reasoning with Instruction Tuning at Scale",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2412.05237"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:08:24Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态推理数据",
+    "updated_at": "2026-07-14T12:08:24Z"
+  }
+}

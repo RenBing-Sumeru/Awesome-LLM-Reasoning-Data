@@ -1,0 +1,22 @@
+{
+  "institutions": [
+    "Carnegie Mellon University",
+    "KAIST",
+    "LG AI Research",
+    "Cornell University",
+    "MIT",
+    "Yonsei University",
+    "University of Washington",
+    "University of Illinois Chicago"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.05761",
+    "https://github.com/prometheus-eval/prometheus-eval/tree/main/BiGGen-Bench",
+    "https://huggingface.co/datasets/prometheus-eval/BiGGen-Bench",
+    "https://huggingface.co/spaces/prometheus-eval/BiGGen-Bench-Leaderboard"
+  ],
+  "verification_note": "Official arXiv and Prometheus-eval artifacts verify the long author list, institution groups, NAACL 2025 status, benchmark data/results, and leaderboard."
+}

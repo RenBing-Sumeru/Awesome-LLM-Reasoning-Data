@@ -1,0 +1,136 @@
+id: openai-gpt-5-3-codex-system-card-2026
+title: GPT-5.3-Codex System Card
+year: 2026
+venue: OpenAI system card
+authors:
+- OpenAI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- coding
+- software_engineering
+- agentic_tool_use
+- safety
+training_use:
+- agent_training
+- safety_alignment
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/gpt-5-3-codex-system-card/
+  huggingface: null
+  doi: null
+  venue: https://openai.com/index/gpt-5-3-codex-system-card/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: For one destructive-action safety intervention, the report says a user model made conflicting edits during
+    RL rollouts. User-model specification, coding-task and repository sources, task prompts, data mixture, counts, rights,
+    and record-level provenance are unknown.
+  trace_author: The report identifies a user model as making conflicting edits during RL rollouts. It does not disclose the
+    user-model identity, how its edits were generated, agent-trajectory contents, human annotation, selection, retention,
+    or item-level lineage.
+  answer_format: The report describes conflicting user edits and a model behavior condition during RL rollouts, but no training-record
+    or trajectory schema, tool-call format, patch representation, test output, or retained fields.
+  process_fields: []
+  environment_or_substrate: The card describes product sandboxes and several evaluation settings, but none establishes the
+    post-training environment. Training task environments, repositories, tools, versions, container images, and replayability
+    are unknown.
+  verifier_or_reward: For one RL safety intervention, GPT-5.3-Codex received positive reinforcement when it did not revert
+    user-model changes during a rollout. Reward magnitude, aggregation, measurement implementation, coverage, other rewards,
+    calibration, and the relation to deployment monitors or evaluation metrics are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: The report compares GPT-5.3-Codex with GPT-5.2-Codex and GPT-5.2 capabilities, but checkpoint lineage, architecture,
+    pretraining sources, and post-training-stage allocation are unknown.
+  teacher: unknown
+  generator: A user model that made conflicting edits during RL rollouts is reported for one destructive-action safety intervention.
+    Its identity, prompt policy, generation procedure, and coverage are unknown.
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The system card characterizes GPT-5.3-Codex as capable of long-running tasks and describes some evaluation
+    elicitation budgets, but it does not disclose the released model's production inference budget or any post-training rollout
+    budget.
+  optimizer_or_scaffold: The report states that the intervention occurred during RL and used positive reinforcement for not
+    reverting conflicting user edits. RL algorithm, objective composition, optimizer, reward normalization, rollout policy,
+    schedule, and compute are unknown.
+audit:
+  source_mixture: No source-level training mixture, manifest, task inventory, count, rights map, revision pin, or data-governance
+    record is disclosed. The only training-data-related object described is a user-model conflicting-edit intervention.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: The report supports a narrow lineage statement from a user-model conflicting-edit rollout intervention to a positive-reinforcement
+    condition in GPT-5.3-Codex RL. Source-to-task-to-trajectory-to-reward-to-checkpoint lineage is unknown.
+  known_failure_modes:
+  - The conflicting-edit intervention does not disclose task sources, repository snapshots, trajectory records, rights, or
+    coverage, so it cannot support a reusable coding-agent dataset claim.
+  - Positive reinforcement for preserving a user edit is not a complete reward or verifier contract; implementation, calibration,
+    false-positive/negative behavior, and interaction with other objectives are undisclosed.
+  - Product sandboxes, real-time monitoring, red teaming, and capability/safety evaluations are deployment or evaluation evidence
+    and must not be conflated with post-training data or rewards.
+  - Reported evaluation environments and hidden tests are not sufficient to reproduce training or establish contamination
+    controls, splits, or benchmark-overlap boundaries.
+  citation_status: verified
+  confidence: high
+  notes: This Track12 Card records the limited explicit RL safety disclosure and the surrounding disclosure boundary. It does
+    not represent a system card, safeguards stack, or evaluation report as an open or reproducible post-training recipe.
+inclusion_reason: An official 2026 frontier coding-agent system card that explicitly discloses a narrow RL safety intervention
+  involving conflicting user edits and positive reinforcement, while leaving the training data, trajectory, reward, and environment
+  ledger materially undisclosed.
+related: []
+tags:
+- openai
+- gpt-5-3-codex
+- codex
+- system-card
+- frontier-report
+- data-disclosure-ledger
+- coding-agent
+- reinforcement-learning
+- safety
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: GPT-5.3-Codex's system card discloses one RL safety intervention—simulated conflicting user edits with positive
+  reinforcement for preserving them—while withholding the task, trajectory, reward, and training-environment ledger.
+why_it_matters: 'It is a high-impact Track12 disclosure-boundary case: a concrete coding-agent RL behavior is named, but the
+  evidence is still insufficient to reconstruct the data object, verification contract, or reproducible post-training recipe.'
+card: null
+needs:
+- 'needs_data: user-model specification, task and repository sources, prompts, trajectories, retained-record schema, counts,
+  provenance, rights, and splits'
+- 'needs_verifier: edit-preservation measurement, reward function, reward aggregation, coverage, calibration, failures, and
+  relation to other RL objectives'
+- 'needs_metadata: RL algorithm, optimizer, sampling, rollout budget, generators, filters, training stages, checkpoints, schedule,
+  and compute'
+- 'needs_audit: decontamination, benchmark-overlap controls, environment and tool pins, reproducibility artifacts, lineage,
+  and license'
+- 'needs_code: user-model, training scaffold, reward measurement, evaluators, monitor, and sandbox implementations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official OpenAI publication page and the linked official GPT-5.3-Codex System Card PDF were checked. No official
+    arXiv, DOI, code, data, model-weight, dataset, or BibTeX artifact was established from these sources.

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SCoRe 在学习者自身的两轮纠正轨迹上训练，先做 KL 约束的初始化，再用进度整形的多轮强化学习配合程序化结果奖励。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Aviral Kumar、Vincent Zhuang、Rishabh Agarwal、Yi Su、John D Co-Reyes、Avi Singh、Kate Baumli、Shariq Iqbal、Colton Bishop、Rebecca Roelofs、Lei M Zhang、Kay McKinney、Disha Shrivastava、Cosmin Paduraru、George Tucker、Doina Precup、Feryal Behbahani、Aleksandra Faust",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen3-Coder 报告了 7.5T、70% code 的预训练、数据清理、execution-driven Code RL 和 20,000 个并行 Agent-RL 环境，但未发布任务、测试、轨迹、reward 或审计记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿编码智能体发布报告与数据披露账本",
+  "best_for_ch": "关注编码 RL、长程智能体环境、执行反馈和开放权重复现边界的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

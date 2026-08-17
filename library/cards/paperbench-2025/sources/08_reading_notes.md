@@ -1,0 +1,6 @@
+- Start with the ICML 2025 / PMLR 267 paper and appendices, then inspect the pinned frontier-evals commit rather than assuming the current main branch matches the publication.
+- Keep 8,316 rubric leaves separate from 646 runs. The former is annotation structure over 20 papers; the latter is an experimental count whose complete artifacts are unavailable.
+- Read the release by object class: 20 evaluation tasks, the current 3 development tasks, rubrics and runner/judge/monitor code are public; full run logs and outputs are not.
+- Inspect the Result Match category before interpreting the aggregate score: it contains only 566 leaves, and the reported Result Analysis scores are about 0–1.4%.
+- Treat JudgeEval's 5 submissions, F1 0.83, and top 10 file selection as limited calibration evidence, not a universal guarantee of grading validity.
+- Track protocol drift explicitly: the paper says 2 dev papers but the current split has 3, while network, credentials, dependencies, retry behavior, licenses, and missing artifacts all constrain replay.

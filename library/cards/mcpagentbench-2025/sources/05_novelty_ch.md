@@ -1,0 +1,3 @@
+已有基线是 agent-environment, tool-use, and benchmark-harness papers in the same atlas category。MCPAgentBench: A Real-world Task Benchmark for Evaluating LLM Agent MCP Tool Use 的变化点是它给出的特定任务对象和反馈契约：Real-world MCP task definitions, simulated MCP tools, dynamic sandbox, candidate tool lists, and distractors.，并由 Completion rate and execution-efficiency metrics 裁判 whether agents choose and invoke MCP tools correctly. 验收。方向信号是这个对象-反馈组合，而不是泛泛说模型能力提升或下降。
+
+质量信号是官方产物（paper: https://arxiv.org/abs/2512.24565; doi: https://doi.org/10.48550/arXiv.2512.24565）、来源 元数据，以及 split、license、lineage、failure modes 等审计字段。并不新的部分是 benchmark 或 裁判 本身。复用前要检查 artifact version、license、split、evaluator/裁判 实现、data lineage、prompt/scaffold 设置和 contamination risk。

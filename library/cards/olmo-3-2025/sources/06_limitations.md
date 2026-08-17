@@ -1,0 +1,5 @@
+The release is broad but not a universal source-rights manifest. Dolma 3 reconstruction code and an official model card are Apache-2.0, but the license, provenance, and reuse compatibility of every upstream document, source dataset, and synthetic derivative require split-level review. The paper's released training mixes are described as reconstructions of sampled training tokens, so they are not a substitute for independently replaying the original jobs.
+
+The verification contract is not uniform. LLM-judge chat rewards can encode judge bias; code test cases can be incomplete; heuristic, PII, quality, language, and repetition filters can make false-positive and false-negative errors. Tool trajectories may depend on changing external environments and web content; some web outputs are summarized before use.
+
+Decontamination is detailed, but it is still a detection-and-filtering procedure, not proof of zero benchmark leakage. The report does not provide a single global split definition for the entire model flow. The model card's statement that training logs are coming soon means the current completeness of every promised log must be checked at use time.

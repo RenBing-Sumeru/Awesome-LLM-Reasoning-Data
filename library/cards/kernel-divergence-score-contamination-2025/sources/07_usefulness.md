@@ -1,0 +1,1 @@
+Use KDS as a white-box preflight check before comparing models on a benchmark: pin model revision, chosen layer, LoRA recipe, gamma and sampled items, then report the contamination curve rather than one threshold. Pair it with source-lineage and held-out temporal checks; a high score calls for caution, not automatic exclusion.

@@ -1,0 +1,3 @@
+RubricBench: Aligning Model-Generated Rubrics with Human Standards 定义了 rubric-奖励-modeling, 裁判-奖励-meta-评测 的评测面：模型输出或智能体轨迹必须满足任务特定的反馈契约。主来源与产物是 paper: https://arxiv.org/abs/2603.01562; code: https://github.com/planepig/rubricbench; data: https://huggingface.co/datasets/DonJoey/rubricbench; huggingface: https://huggingface.co/datasets/DonJoey/rubricbench; doi: https://doi.org/10.48550/arXiv.2603.01562；本地元数据记录的年份/来源为 2026 / arXiv preprint。
+
+收录边界是 benchmarks_evaluation_surfaces，来源角色为 benchmark, 验证器_奖励，验证契约为 需要裁判判断。一个评测实例 里包含：Each record contains case_id, instruction, response_a, response_b, A/B label, domain, source, and expert atomic rubrics derived from the instruction。除非官方产物另有训练数据说明，否则这张卡把它视为评测、审计，不是训练配方。它对 atlas 的价值在于把任务对象、输出和验证器/裁判/奖励/环境谓词 绑定起来，而不是只记录抽象能力结论。

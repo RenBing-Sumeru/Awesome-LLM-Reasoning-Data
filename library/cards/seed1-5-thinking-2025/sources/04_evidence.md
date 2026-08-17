@@ -1,0 +1,5 @@
+The official arXiv report identifies the four task families and describes their associated checks, verifiers, or reward model. It reports approximately 100k cleaned STEM tasks, about 10k puzzle problems, and a 400k-example SFT mixture with a 300k/100k verifiable versus non-verifiable split. These are reported construction counts, not a public data release or a manifest of unique items.
+
+The report also describes Seed-Verifier, Seed-Thinking-Verifier, code tests or checkers, puzzle verifiers, and a pairwise generative RM, followed by unified long-CoT RL. This supports recording a mixed feedback contract. It does not establish the strength, calibration, false-accept rate, or reproducibility of each feedback component because the corresponding artifacts and evaluation logs are unavailable.
+
+The evidence supports a partial-disclosure assessment: the paper makes data-family and feedback-interface claims concrete, while source proportions, licenses, splits, decontamination, RL rollout counts, decoding settings, and reusable data or code remain unavailable.

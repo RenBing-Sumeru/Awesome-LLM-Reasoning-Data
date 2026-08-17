@@ -1,0 +1,7 @@
+The report changes the usual multimodal-model endpoint from an answer to a temporally extended physical action object. Current images and language instructions feed a distilled VLA backbone, while a local decoder emits action chunks. The distinctive disclosure is the lifecycle connection among internet-scale multimodal data, expert teleoperation, action fine-tuning, per-task specialization, and evaluation on multiple robot embodiments.
+
+The reasoning-enhanced variant adds an explicit future-trajectory intermediate: approximately one second of left- and right-arm motion is predicted before low-level control. This is more specific than claiming that a policy "reasons," because it identifies a supervised intermediate that can be visualized. It remains a partial disclosure because the relabelling generator, coordinates, loss, coverage, and validation are hidden.
+
+The 2,000–5,000-demo specialization recipe and 5/20/100-demo adaptation study make data quantity part of the report rather than only model scale. However, demonstration curation, failures, sampling, and rights are unavailable, and success/progress are evaluation rubrics rather than a disclosed RL feedback contract.
+
+ERQA is a genuine open benchmark release, but its 400 answer-level items are not a substitute for the temporally dense robot-action corpus. Before reuse, builders must separately verify action schemas, hardware and camera pins, task/scene overlap, distillation, trajectory labels, optimizer settings, scorer reliability, and licenses.

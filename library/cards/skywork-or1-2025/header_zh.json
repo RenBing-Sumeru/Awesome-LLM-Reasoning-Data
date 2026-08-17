@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Skywork-OR1 报告长 CoT RL、熵塌缩分析并声称开放权重、代码和训练数据，但工件内容及反馈契约尚未独立核验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿 RL 模型技术报告与数据披露台账",
+  "best_for_ch": "区分开源主张与已审计训练数据、奖励和发布物的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Jujie He 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

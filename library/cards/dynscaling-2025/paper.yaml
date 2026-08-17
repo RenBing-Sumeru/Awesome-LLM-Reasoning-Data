@@ -1,0 +1,136 @@
+id: dynscaling-2025
+title: 'DynScaling: Efficient Verifier-free Inference Scaling via Dynamic and Integrated Sampling'
+year: 2025
+venue: unknown
+authors:
+- Fei Wang
+- Xingchen Wan
+- Ruoxi Sun
+- Jiefeng Chen
+- Sercan Ö. Arık
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- full_episode
+domains:
+- mathematics
+- science
+training_use:
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.16043
+  arxiv: https://arxiv.org/abs/2506.16043
+  code: null
+  data: null
+  project: https://research.google/pubs/dynscaling-efficient-verifier-free-inference-scaling-via-dynamic-and-integrated-sampling/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.16043
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.16043
+data_object:
+  prompt_source: GPQA Diamond and the combined AIME 2024/AIME 2025 evaluation questions; no DynScaling response or trajectory
+    release was identified on the official paper records.
+  trace_author: Gemini 1.5 Flash or Gemini 2.5 Pro generates independent initial responses and responses conditioned on synthetic
+    concatenations of initial responses.
+  answer_format: Multiple sampled full responses per query, pattern-extracted answers, and a final majority-voted answer under
+    a fixed batch budget.
+  process_fields:
+  - initial_parallel_response
+  - synthetic_thought_segment
+  - conditioned_response
+  - parsed_answer
+  - response_uncertainty
+  - ucb_sampling_priority
+  - per_query_sample_budget
+  - majority_vote_answer
+  environment_or_substrate: Batch inference over a query set under one fixed total sampling budget; model responses are parsed
+    and grouped by answer.
+  verifier_or_reward: No external verifier is used at inference time. Variation ratio over parsed answers supplies the allocation
+    reward, UCB supplies the priority score, and majority voting selects the final answer; benchmark evaluation uses strict
+    equivalence to ground truth.
+  terminal_predicate: The total batch inference budget is exhausted, then a majority vote is taken for every query.
+recipe_metadata:
+  base_model: Gemini 1.5 Flash and Gemini 2.5 Pro.
+  teacher: unknown
+  generator: For an integrated-sampling call with budget B, the model first produces B/2 independent responses, then B/2 additional
+    responses; each additional response is conditioned on a synthetic thought segment made by concatenating k randomly selected
+    initial responses.
+  filtering_rule: No response-quality filter is reported. Pattern matching extracts answers; the allocator selects a top-ranked
+    query subset from UCB priorities, but the subset size or tie rule is not disclosed.
+  sampling_protocol: Unit budget B_unit=8 samples, thought length k=4, and default exploration ratio c=1/4. Each query receives
+    one unit initially, after which selected queries receive further units until the total budget is spent.
+  rollout_count: unknown
+  temperature: '0.6'
+  inference_budget: Total budgets vary across experiments. B_unit is 8 samples; maximum output length is 8192 tokens for Gemini
+    1.5 Flash and 32768 tokens for Gemini 2.5 Pro, while reported curves use output-token budget.
+  optimizer_or_scaffold: Inference-only inter-query allocation with UCB priority a_i = u_i + c*sqrt(log(B_used)/B_i); no fine-tuning
+    or auxiliary model.
+audit:
+  source_mixture: GPQA Diamond plus AIME 2024 and AIME 2025 evaluation prompts; no released DynScaling response or trajectory
+    mixture was identified.
+  split: GPQA Diamond has 198 questions; AIME 2024 and AIME 2025 have 30 problems each and are combined into a 60-problem
+    evaluation set. No Card-local split manifest is released.
+  decontamination: unknown
+  license: unknown
+  lineage: Query batch -> one integrated unit per query -> independent initial responses -> randomly concatenated synthetic
+    thought segments -> conditioned responses -> parsed-answer variation ratio -> UCB query priority -> additional integrated
+    units for selected queries -> majority-voted final answer.
+  known_failure_modes:
+  - Cross-query allocation requires a batch and does not directly support isolated, streaming, or latency-sensitive queries.
+  - Low disagreement can represent confident error, while high disagreement need not indicate that more samples will recover
+    the correct answer.
+  - Majority voting and uncertainty depend on answer extraction and exact answer grouping; neither is a correctness verifier.
+  - Algorithm 2 returns both initial and conditioned responses, while the implementation discussion says an eight-sample unit
+    yields four predicted answers for majority voting; the exact counted set is not resolved in the paper.
+  - Token-cost comparisons depend on variable response lengths, and displayed accuracy curves are moving-average smoothed.
+  - Evaluation covers two Gemini models and two reasoning benchmark families; transfer to other models, tasks, and online
+    workloads is unknown.
+  - No official code, prompts, generated responses, allocation logs, seeds, or reusable trajectory release was identified
+    on the official paper records.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1, the official arXiv BibTeX endpoint, and the Google Research publication record were checked. The latter
+    is bibliographic; it does not establish an implementation or data release.
+inclusion_reason: Specifies a verifier-free, batch-level recipe whose sampled responses, synthetic contexts, uncertainty scores,
+  and per-query budget decisions form an auditable test-time trace object.
+related: []
+tags:
+- dynscaling
+- verifier-free
+- test-time-compute
+- inference-scaling
+- parallel-sequential-sampling
+- multi-armed-bandit
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: DynScaling combines integrated parallel-sequential sampling with UCB-style inter-query allocation to spend
+  a fixed inference budget using answer disagreement rather than an external verifier.
+why_it_matters: It exposes a concrete batch-level test-time trace schema while making uncertainty heuristics, majority selection,
+  and the lack of released traces explicit audit boundaries.
+card: null
+needs:
+- needs_code
+- needs_release
+- needs_prompts
+- needs_audit
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv and Google Research publication records were checked; no official code, data, prompt, model-output,
+    or trajectory release was identified.

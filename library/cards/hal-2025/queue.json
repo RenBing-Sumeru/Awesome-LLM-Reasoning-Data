@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "基础设施benchmark与agent评测轨迹数据，数据量可",
+    "updated_at": "2026-07-22T10:31:33Z"
+  },
+  "updated_at": "2026-07-22T10:31:33Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

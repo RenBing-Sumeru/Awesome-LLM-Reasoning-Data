@@ -1,0 +1,116 @@
+id: mobileagentbench-2024
+title: 'MobileAgentBench: An Efficient and User-Friendly Benchmark for Mobile LLM Agents'
+year: 2024
+venue: arXiv preprint
+authors:
+- Luyuan Wang
+- Yongyu Deng
+- Yiwei Zha
+- Guodong Mao
+- Qinmin Wang
+- Tianchen Min
+- Wei Chen
+- Shoufa Chen
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- benchmark-harness
+- android
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.08184
+  arxiv: https://arxiv.org/abs/2406.08184
+  doi: https://doi.org/10.48550/arXiv.2406.08184
+  code: https://github.com/MobileAgentBench/mobile-agent-bench
+  data: https://github.com/MobileAgentBench/mobile-agent-bench
+  project: https://MobileAgentBench.github.io
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official MobileAgentBench project and repository
+  trace_author: official authors and mobile-agent evaluations
+  answer_format: mobile tasks, UI observations, agent actions, checkpoints, and success metrics
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: mobile LLM-agent benchmark environment and task harness
+  verifier_or_reward: MobileAgentBench task validators and success-condition scripts
+  terminal_predicate: MobileAgentBench task validators and success-condition scripts
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: MobileAgentBench authors and task annotations
+  generator: MobileAgentBench task/harness construction
+  filtering_rule: pin task data, app dependencies, emulator/device setup, and success-condition scripts
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2406.08184; https://MobileAgentBench.github.io; https://github.com/MobileAgentBench/mobile-agent-bench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2406.08184'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: task data, license, app dependencies, emulator/device reproducibility, and success conditions need pinning.
+inclusion_reason: it provides a lightweight benchmark harness for mobile LLM agents
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- benchmark-harness
+- android
+one_line: MobileAgentBench provides a user-friendly mobile-agent benchmark harness.
+why_it_matters: it provides a lightweight benchmark harness for mobile LLM agents
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MobileAgentBench provides a user-friendly mobile-agent benchmark harness.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, and GitHub verify authors, institutions, and public benchmark artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 54
+  primary_category_id: benchmarks_evaluation_surfaces

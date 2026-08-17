@@ -1,0 +1,99 @@
+id: rubriks-cube-explanation-rubric-cube-2025
+title: 'Rubrik’s Cube: Testing a New Rubric for Evaluating Explanations on the CUBE dataset'
+year: 2025
+venue: ACL 2025
+authors:
+- Diana Galvan-Sosa
+- Gabrielle Gaudeau
+- Pride Kavumba
+- Yunmeng Li
+- Hongyi Gu
+- Zheng Yuan
+- Keisuke Sakaguchi
+- Paula Buttery
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- language-understanding
+- explanation
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1160/
+  arxiv: null
+  code: https://github.com/RubriksCube/rubriks_cube
+  data: https://github.com/RubriksCube/rubriks_cube
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1160
+  venue: https://aclanthology.org/2025.acl-long.1160/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1160/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://aclanthology.org/2025.acl-long.1160/
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: CUBE provides public, rubric-based quality feedback for explanation generation across reasoning and language
+  tasks.
+related: []
+tags:
+- explanations
+- rubric
+- reward-model
+- acl-2025
+one_line_summary: Rubrik’s CUBE releases 26,000 explanations with human and model quality annotations under an education-inspired
+  evaluation rubric.
+why_it_matters: It exposes rubric-conditioned explanation-quality labels rather than a single undifferentiated preference
+  signal.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data
+- judgment_rubric_domain_expert_data

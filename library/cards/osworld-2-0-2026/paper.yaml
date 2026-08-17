@@ -1,0 +1,145 @@
+id: osworld-2-0-2026
+title: 'OSWorld 2.0: Benchmarking Computer-Use Agents on Long-Horizon Real-World Tasks'
+year: 2026
+venue: arXiv/project release
+authors:
+- Mengqi Yuan
+- Zilong Zhou
+- Xinzhuang Xiong
+- Weiming Wu
+- Jiayang Sun
+- Jiamin Song
+- Kaiqian Cui
+- Bowen Wang
+- Haoyuan Wu
+- Yitong Li
+- Dunjie Lu
+- Haikong Lu
+- Qi Zhen
+- Xinyuan Wang
+- Jiaqi Deng
+- Yuhao Yang
+- Cheng Chen
+- Boyuan Zheng
+- Alex Su
+- Xiao Yu
+- Hao Zou
+- Saaket Agashe
+- Xing Han Lu
+- Manpreet Kaur
+- Zhengyang Qi
+- Vincent Sunn Chen
+- Frederic Sala
+- Dayiheng Liu
+- Junyang Lin
+- Zhou Yu
+- Yu Su
+- Siva Reddy
+- Xin Eric Wang
+- Peng Qi
+- Tianbao Xie
+- Tao Yu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- os-agents
+- long-horizon-computer-use
+- desktop-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.29537
+  arxiv: https://arxiv.org/abs/2606.29537
+  doi: https://doi.org/10.48550/arXiv.2606.29537
+  code: https://github.com/xlang-ai/OSWorld-V2
+  data: https://huggingface.co/datasets/xlangai/osworld_v2_tasks
+  project: https://osworld-v2.xlang.ai/
+  huggingface: https://huggingface.co/datasets/xlangai/osworld_v2_tasks
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official OSWorld 2.0 project, repository, and HF datasets
+  trace_author: OSWorld 2.0 authors and computer-use agent/human trajectories
+  answer_format: OSWorld 2.0 tasks, HF task data, trajectories, desktop environment state, actions, and outcome checks
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: long-horizon real-world computer-use tasks across desktop workflows
+  verifier_or_reward: OSWorld 2.0 task evaluators and trajectory scoring
+  terminal_predicate: OSWorld 2.0 task evaluators and trajectory scoring
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: OSWorld 2.0 task authors and trajectory datasets
+  generator: OSWorld 2.0 benchmark and trajectory release
+  filtering_rule: pin benchmark release hash, provider images, gated HF access, and hosted services
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2606.29537; https://osworld-v2.xlang.ai/; https://github.com/xlang-ai/OSWorld-V2;
+    https://huggingface.co/datasets/xlangai/osworld_v2_tasks; https://huggingface.co/datasets/xlangai/osworld2.0-trajectory
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2606.29537'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: benchmark release hash, provider image, gated HF access, hosted services, and self-hosted web dependencies need audit.
+inclusion_reason: it extends OS agent evaluation to long-horizon professional computer-use workflows
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- os-agents
+- long-horizon-computer-use
+- desktop-agents
+one_line: OSWorld 2.0 adds long-horizon real-world computer-use tasks and trajectory releases.
+why_it_matters: it extends OS agent evaluation to long-horizon professional computer-use workflows
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: OSWorld 2.0 adds long-horizon real-world computer-use tasks and trajectory releases.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, GitHub, and HF datasets verify authors, institutions, release status, and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 75
+  primary_category_id: environment_agent_trajectory_data

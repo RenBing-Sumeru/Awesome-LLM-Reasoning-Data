@@ -1,0 +1,1 @@
+同一个 policy 在不同指令下承担两个角色。作为 searcher，它交替生成推理、搜索动作、检索结果观察和最终答案；作为 state evaluator，它只能利用某个前缀状态中已积累的信息回答原问题。同一 exact-match/token-F1 scorer 为所有状态答案和最终答案评分。相邻状态得分之差成为产生新证据的搜索动作的过程奖励，最终答案仍接收结果奖励。搜索与评估 rollout 共享 PPO/GAE 训练 buffer，使 evaluator 跟随当前策略产生的状态分布。

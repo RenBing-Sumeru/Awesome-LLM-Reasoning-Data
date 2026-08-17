@@ -1,0 +1,1 @@
+Fu, Yichao，Junda Chen，Siqi Zhu，Zheyu Fu，Zhongdongming Dai，Yonghao Zhuang，Yian Ma，Aurick Qiao，Tajana Rosing，Ion Stoica，Hao Zhang。2025。《利用 Certaindex 高效扩展大语言模型推理程序》。载于《神经信息处理系统进展》第 38 卷。https://papers.nips.cc/paper_files/paper/2025/hash/d037fd021c9aace128b8ce25001cdb6c-Abstract-Conference.html

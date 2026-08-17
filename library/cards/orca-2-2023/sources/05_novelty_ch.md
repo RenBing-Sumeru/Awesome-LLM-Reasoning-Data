@@ -1,0 +1,1 @@
+Orca 1 和其它 explanation-tuning 方法把 teacher 的推理 instruction 与回答一起暴露给 student。Orca 2 改变训练记录：生成时选择适合任务的策略，训练时再向 student 隐藏策略 prompt。模型必须从任务本身推断何时使用所观察到的行为，使策略选择成为学习信号的一部分。Teacher 生成解释和渐进式 SFT 已经存在；Prompt Erasing 与任务专用策略映射才是明确变化。

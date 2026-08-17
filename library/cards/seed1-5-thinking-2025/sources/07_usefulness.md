@@ -1,0 +1,3 @@
+This report is useful as a disclosure template for reading frontier reasoning-model releases. It lets readers record separate fields for prompt sources, trace generation, task-specific verifiers, a pairwise reward model, SFT composition, and later RL, rather than collapsing all of them into a generic claim of "RL-trained reasoning data."
+
+For post-training work, it illustrates a mixed supervision setting: executable or checkable tasks can provide terminal signals, while non-verifiable assistant tasks rely on relative preference. Any attempt to reuse the approach should treat the public report as design context only and separately obtain or document the missing sources, licenses, splits, decontamination, model versions, rollout configurations, and feedback calibration.

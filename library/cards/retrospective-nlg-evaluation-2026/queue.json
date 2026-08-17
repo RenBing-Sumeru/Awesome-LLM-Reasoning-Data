@@ -1,0 +1,17 @@
+{
+  "title": "Never Truly Out of Fashion: A Retrospective Look at Evaluation in NLG",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.retroeval-main.8/",
+    "data": null
+  },
+  "review_note": "已完整精读：以 24,291 篇 ACL NLG 论文审计 LLM judge 与人工评估的报告和校准缺口。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "基于公开代码和审计数据，量化揭示 LLM judge 使用中未报告人工校准的缺口。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

@@ -1,0 +1,6 @@
+- Read Section 4 and Figure 1 first to separate the five data contracts; their outputs are not interchangeable contamination labels.
+- Treat the Section 5 oracle as a known-**added**-exposure control. It does not establish a clean LLaMA-2 base checkpoint or total historical exposure.
+- Cross-check the before/after oracle tables for direction, not merely significance: all reported Min-K% values move opposite the expected contamination direction.
+- Inspect the repository before reproducing Local Order or Canonical Order. The former can duplicate the true successor; the latter uses a population-SD t statistic, and both require missing order assets.
+- Keep the release boundary explicit: 1,500 processed `.txt` rows and 150 completion CSV rows are public, but oracle records, generated probes, outputs, checkpoints, and logs are not.
+- Do not infer safe reuse from public access. The paper is CC BY 4.0, while repository code/data terms and per-source benchmark rights are unknown.

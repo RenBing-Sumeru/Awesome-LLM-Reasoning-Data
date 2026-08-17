@@ -1,0 +1,5 @@
+- Current arXiv v2 defines four action sets: understanding, reflection, coding, and summary.
+- UCT selects nodes; Qwen2.5-Math-PRM supplies Q/V-style process scores; partial-order rules constrain transitions.
+- Candidate trajectories are aggregated by answer vote, with terminal reward breaking ties.
+- Reported accuracy gains evaluate the search configuration, not intermediate-step correctness or trace quality.
+- The paper links an official repository, but release pinning, license, full tree logs, seeds, and PRM lineage remain unresolved.

@@ -1,0 +1,127 @@
+id: lost-in-the-middle-2023
+title: 'Lost in the Middle: How Language Models Use Long Contexts'
+year: 2023
+venue: TACL 2024 / arXiv
+authors:
+- Nelson F. Liu
+- Kevin Lin
+- John Hewitt
+- Ashwin Paranjape
+- Michele Bevilacqua
+- Fabio Petroni
+- Percy Liang
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- long-context
+- position-bias
+- retrieval-diagnostics
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2307.03172
+  arxiv: https://arxiv.org/abs/2307.03172
+  code: https://github.com/nelson-liu/lost-in-the-middle
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2307.03172
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2024.tacl-1.9/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'synthetic or controlled QA context with relevant document placed at different positions and answer target;
+    Benchmark size: 不是固定题库；用 NQ/多文档 QA 和 synthetic key-value retrieval 构造位置敏感诊断，规模随 context 长度和位置网格变化。'
+  dataset_scale: Official release exposes two evaluation families, multi-document QA and key-value retrieval; QA has oracle
+    plus 10/20/30-document settings with 3/5/7 gold-position files, while KV has 75/140/300-key settings commonly generated
+    with 500 examples each.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'synthetic or controlled QA context with relevant document placed at different positions and answer
+    target; Benchmark size: 不是固定题库；用 NQ/多文档 QA 和 synthetic key-value retrieval 构造位置敏感诊断，规模随 context 长度和位置网格变化。'
+  verifier_or_reward: answer accuracy as a function of evidence position and context length
+  terminal_predicate: answer accuracy as a function of evidence position and context length
+  benchmark_size: 不是固定题库；用 NQ/多文档 QA 和 synthetic key-value retrieval 构造位置敏感诊断，规模随 context 长度和位置网格变化。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for Lost in the Middle: How Language Models Use Long Contexts; exact curation
+    details should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for Lost in the Middle: How Language Models Use
+    Long Contexts.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2307.03172'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Dataset scale recorded as two task families: QA release files cover oracle and 10/20/30-document position sweeps,
+    and KV release files cover 75/140/300 keys with commonly 500 examples per generated setting; reviewer should pin release
+    commit, generated files, and scorer details before L5/L6 promotion. Benchmark size: 不是固定题库；用 NQ/多文档 QA 和 synthetic key-value
+    retrieval 构造位置敏感诊断，规模随 context 长度和位置网格变化。'
+inclusion_reason: Lost in the Middle diagnoses whether models use relevant information depending on its position in a long
+  context, across controlled QA and key-value retrieval settings.
+related: []
+tags:
+- benchmark
+- long-context
+- position-bias
+- retrieval-diagnostics
+one_line: Lost in the Middle diagnoses long-context position bias across QA settings with 10/20/30 documents and KV retrieval
+  settings with 75/140/300 keys.
+why_it_matters: It supplies a reusable evaluation coordinate for long-context, position-bias work.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin Lost-in-the-Middle release commit, generated QA/KV files, seed, scorer, prompt/scaffold settings, and
+  license'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Lost in the Middle diagnoses long-context position bias across QA settings with 10/20/30 documents and KV
+  retrieval settings with 75/140/300 keys.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

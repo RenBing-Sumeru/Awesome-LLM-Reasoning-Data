@@ -1,0 +1,1 @@
+Xiao, Yang、Jiashuo Wang、Ruifeng Yuan、Chunpu Xu、Kaishuai Xu、Wenjie Li、Pengfei Liu. 2025. 《LIMOPro: Reasoning Refinement for Efficient and Effective Test-time Scaling》. 《神经信息处理系统进展》第 38 卷（NeurIPS 2025）。官方论文：https://arxiv.org/abs/2505.19187。官方代码：https://github.com/GAIR-NLP/LIMOPro。官方细化数据：https://huggingface.co/datasets/YangXiao-nlp/LIMOPro-Data-LIMO-P。

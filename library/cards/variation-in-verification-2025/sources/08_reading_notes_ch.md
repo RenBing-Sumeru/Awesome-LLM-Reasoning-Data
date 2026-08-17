@@ -1,0 +1,5 @@
+- 数据对象：可连接的 benchmark prompts、15-model candidate CoTs、response correctness labels、15-model verifier CoTs 与 binary verdicts。
+- 构造过程：每个 model-problem pair 采样 64 条生成响应；验证器评估目标为 8 条候选，条件允许时平衡为 4 正确、4 错误。
+- 反馈边界：验证器不接收 gold answer，但 evaluation label 使用 answer checkers 与带参考答案的 LLM fallbacks。
+- TTS 边界：conditional pass rate 衡量从 retained pool 均匀采样，不是 Best-of-N selection。
+- 开放边界：代码与轨迹已公开，但精确发布计数、immutable manifests、去污染、upstream rights 和完整 version/compute metadata 仍未解决。

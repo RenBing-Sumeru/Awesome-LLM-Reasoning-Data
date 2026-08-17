@@ -1,0 +1,1 @@
+When an LLM evaluates another LLM, the evaluator itself becomes an object to understand. Meta-judging asks who evaluates that evaluator: prompts, versions, rubrics, and calibration all shape what an automated judge score means.

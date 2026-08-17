@@ -1,0 +1,1 @@
+Zhou, Shu、Rui Ling、Junan Chen、Xin Wang、Tao Fan 与 Hao Wang。2026。《When More Thinking Hurts: Overthinking in LLM Test-Time Compute Scaling》。计算语言学协会发现论文集：ACL 2026，第 23967–23977 页。官方论文：https://aclanthology.org/2026.findings-acl.1199/。

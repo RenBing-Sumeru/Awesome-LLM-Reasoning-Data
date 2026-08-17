@@ -1,0 +1,92 @@
+id: lager-internal-representations-2025
+title: 'Beyond the Surface: Enhancing LLM-as-a-Judge Alignment with Human via Internal Representations'
+year: 2025
+venue: NeurIPS 2025 (Poster)
+authors:
+- Peng Lai
+- Jianjie Zheng
+- Sijie Cheng
+- Yun Chen
+- Peng Li
+- Yang Liu
+- Guanhua Chen
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.03550
+  arxiv: https://arxiv.org/abs/2508.03550
+  code: https://github.com/sustech-nlp/LAGER
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/file/8629b0fff229b8a27efb1422e990605f-Paper-Conference.pdf
+  openreview: https://openreview.net/forum?id=BCWQ5w9aGd
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Requires white-box hidden states and a human-labelled calibration set.
+  citation_status: verified
+  confidence: medium
+  notes: Cross-layer score-token aggregation improves point-wise judge alignment but does not test adversarial robustness.
+inclusion_reason: 'Audits point-wise LLM judging by testing whether intermediate representations improve human-score alignment.'
+related: []
+tags:
+- llm-as-a-judge
+- internal-representations
+- audit
+status: verified
+one_line_summary: Aggregates score-token logits across frozen transformer layers to improve point-wise judge alignment with humans.
+why_it_matters: It makes the evaluator readout itself an auditable source of misalignment rather than treating final-token scores as fixed.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: NeurIPS 2025 publication and public code verified from the full paper.
+category_ids:
+- audit_failure_contamination_verifier_attacks

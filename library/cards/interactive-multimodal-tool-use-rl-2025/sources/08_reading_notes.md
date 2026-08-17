@@ -1,0 +1,6 @@
+- Start with §2.1 and Fig. 2: SQLite seeded from tau-bench, REST endpoints exposed as MCP tools, GPT-4 user simulation, SeedTTS speech, and a rule terminal verifier form one environment contract.
+- TARL's judge labels turns `{-1,0,1}`, but the stable GRPO/PPO variants optimize the 10×/5×/`1/T` aggregated trajectory reward rather than independent local rewards (§3.2; §5.1).
+- The training recipe uses about 3,000 retail tasks, alternates text retail with DeepScaleR math, and gives Qwen2.5-Omni-7B a 30-step simplified-task GRPO warm-up before mixed speech-text training (§4.1; §4.3).
+- Read Table `tab::main_results`, Table `tab::multimodal_results`, and the reward-granularity/intervention analyses together; positive pass^1 results coexist with unstable local rewards, failed intervention, and weak airline transfer.
+- The expected natural-language output check is excluded from primary training/evaluation, so a correct database mutation does not certify conversational quality (§2.1; appendix output-check tables).
+- The paper promises future task release but provides no verified paper-specific code, data, project, rollout, or model artifact; training reuse remains blocked.

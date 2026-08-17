@@ -1,0 +1,1 @@
+This work changes the unit or acquisition path of process evidence relative to whole-chain labels. VisualPRM400K releases 400,000 multimodal process-supervision examples for step-reward training in visual reasoning, covering image conditions, candidate derivations, labels, and answer outcomes.

@@ -1,0 +1,1 @@
+Use this paper when a system can spend extra compute selectively and its intermediate work is observable. Match the candidate pool and total budget against a simpler baseline, then log which branch, tool, restart, or comparison changed the final decision. It is especially useful for code or agent tasks with executable or otherwise checkable feedback.

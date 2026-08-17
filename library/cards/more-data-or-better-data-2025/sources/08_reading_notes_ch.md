@@ -1,0 +1,6 @@
+- 先理解统一 80/20 scaffold,再追问每张表对应的 model、stage、token 与 baseline。
+- 将 Math-Cosmo 的 0.13B OCR 输入、760M 重写输出与 MATH +1.72 视为三个不同事实。
+- 把 NaturalReasoning-QwQ 的 agreement 视为 consistency filter,而不是 correctness verifier。
+- 在称候选数据"better"前,检查跨任务回退与尚未解决的 MATH seed/evaluation 边界。
+- 保留负结果:原始扩量、检索数量、Long-CoT mixing 与 reasoning length 都不能可靠预测收益。
+- 在接受 Table 5 的总结前,先阅读 Table 3–4 与附录 Table 6–10;再与 `advancing-math-data-synthesis-2025` 对读,比较 mixture screening 和变换—阶段消融,并追问隐藏 baseline、运行预算、重叠和跨任务回退是否让每个 delta 可复现、可解释。

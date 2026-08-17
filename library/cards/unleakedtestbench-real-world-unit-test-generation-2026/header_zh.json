@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UnLeakedTestBench 以 3,909 个泄漏受控的真实 Python 函数及配对泄漏集，用执行、覆盖率和变异测试区分测试生成的泛化与记忆。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "泄漏控制的单元测试生成基准",
+  "best_for_ch": "研究测试生成、代码泛化或基准污染的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dong Huang, Jie M. Zhang, Mark Harman, Qianru Zhang, Mingzhe Du, See-Kiong Ng",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:02:23Z"
+}

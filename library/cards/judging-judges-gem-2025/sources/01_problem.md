@@ -1,0 +1,1 @@
+High agreement with another automated judge can hide disagreement with people. This paper isolates the problem on short TriviaQA answers, where human agreement is deliberately high, and asks how well common LLM judges reproduce human correctness decisions and rankings.

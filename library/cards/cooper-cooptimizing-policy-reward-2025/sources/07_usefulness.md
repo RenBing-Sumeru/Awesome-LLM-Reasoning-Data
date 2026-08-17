@@ -1,0 +1,2 @@
+The recipe is useful for testing online verifier refresh, reward-hacking resistance, pair-construction yield, hard-negative quality, and policy/RM co-adaptation. Reuse should preserve the ordering—GRPO policy update then contrastive RM update—and distinguish VerifyRM reward from the Math-Verify pair anchor. Builders need the missing dynamic stream to audit shortcut learning, shared drift, and retry bias.
+

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SCAN-Pro 发布 19.7 万条带步骤分数的数学轨迹，以置信度引导的蒙特卡洛去噪支持稳健过程奖励训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要以低成本自动标注训练数学过程奖励模型，并分析首错邻域噪声的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuyang Ding, Xinyu Shi, Juntao Li, Xiaobo Liang, Zhaopeng Tu, Min Zhang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

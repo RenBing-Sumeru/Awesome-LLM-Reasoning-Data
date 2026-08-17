@@ -1,0 +1,107 @@
+id: llm-abstention-survey-2025
+title: 'Know Your Limits: A Survey of Abstention in Large Language Models'
+year: 2025
+venue: TACL 2025
+authors:
+- Bingbing Wen
+- Jihan Yao
+- Shangbin Feng
+- Chenjun Xu
+- Yulia Tsvetkov
+- Bill Howe
+- Lucy Lu Wang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- abstention
+- hallucination
+- safety
+training_use:
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.tacl-1.26/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1162/tacl_a_00754
+  venue: https://aclanthology.org/2025.tacl-1.26/
+  openreview: null
+  acl: https://aclanthology.org/2025.tacl-1.26/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed queries that may warrant an answer or an abstention.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A framework based on the query, the model, and human values.
+  process_fields:
+  - query
+  - uncertainty
+  - abstention-decision
+  - answer
+  - human-values
+  environment_or_substrate: LLM systems where unsupported answers can cause hallucination or safety risks.
+  verifier_or_reward: The survey organizes existing metrics and does not provide one common verifier.
+  terminal_predicate: Whether abstention is appropriate depends on the query, model behavior, and stated values.
+recipe_metadata:
+  base_model: No single base model; literature survey.
+  teacher: Surveyed works use varied data, objectives, and evaluation protocols.
+  generator: Literature synthesis and framework construction.
+  filtering_rule: The official abstract organizes methods, benchmarks, and metrics around query, model, and human values.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes the literature rather than a new system.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.tacl-1.26/'
+  known_failure_modes:
+  - Over-abstention can reduce usefulness
+  - Under-abstention can preserve unsupported answers
+  - Appropriate behavior depends on context and values
+  citation_status: verified
+  confidence: high
+  notes: The official abstract defines abstention as declining to provide an answer and gives its three-perspective framework.
+inclusion_reason: A TACL survey that helps readers compare abstention methods with their evaluation and value assumptions
+  visible.
+related: []
+tags:
+- foundations-and-primers
+- abstention
+- tacl-2025
+- survey
+why_it_matters: It treats declining to answer as a decision that must be both useful and accountable to context.
+one_line_summary: A TACL 2025 survey organizing LLM abstention through the query, model, and human values.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers studying hallucination mitigation, selective prediction, and safe answer policies.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable measures balancing answer coverage and abstention quality'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata
+  abstract: null
+  venue: null
+  pages: null
+  and DOI were reviewed.: null
+category_ids:
+- foundations_and_primers

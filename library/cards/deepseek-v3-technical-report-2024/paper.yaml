@@ -1,0 +1,104 @@
+id: deepseek-v3-technical-report-2024
+title: DeepSeek-V3 Technical Report
+year: 2024
+venue: arXiv preprint
+authors:
+- DeepSeek-AI
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- mathematics
+- coding
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.19437
+  arxiv: https://arxiv.org/abs/2412.19437
+  code: https://github.com/deepseek-ai/DeepSeek-V3
+  data: null
+  project: null
+  huggingface: https://huggingface.co/deepseek-ai/DeepSeek-V3
+  doi: https://doi.org/10.48550/arXiv.2412.19437
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2412.19437
+data_object:
+  prompt_source: The report discloses 14.8T high-quality and diverse pretraining tokens but no source manifest, proportions,
+    or post-training prompt inventory.
+  trace_author: Long chain-of-thought distillation is reported at a high level; teacher checkpoints and trace provenance are
+    unknown.
+  answer_format: Unknown for training records; released inference uses a chat model interface.
+  process_fields: []
+  environment_or_substrate: Offline model training; a reproducible post-training environment is not disclosed.
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: DeepSeek-V3 MoE with 671B total parameters and 37B activated parameters per token.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: The report discloses 14.8T pretraining tokens and about 2.788M H800 GPU-hours; post-training budgets are
+    unknown.
+  optimizer_or_scaffold: The report states supervised fine-tuning followed by reinforcement learning, but does not disclose
+    a reward/verifier, optimizer, or rollout configuration.
+audit:
+  source_mixture: Aggregate token scale is disclosed; corpus provenance, source proportions, licenses, and post-training mixture
+    are unknown.
+  split: unknown
+  decontamination: unknown
+  license: The model repository and model release provide their own terms; training and evaluator-data rights are unknown.
+  lineage: High-level SFT, RL, and long-CoT distillation are reported without checkpoint-to-trace or item-level lineage.
+  known_failure_modes:
+  - Reported benchmark results do not establish training-data lineage or contamination controls.
+  - SFT/RL data, reward, verifier, sampling, and filtering details are not disclosed.
+  - Aggregate token scale cannot substitute for an auditable corpus manifest.
+  citation_status: verified
+  confidence: medium
+  notes: This Track12 Card records disclosed and undisclosed fields in the official report; it is not a reusable training
+    recipe.
+inclusion_reason: A primary frontier technical report that discloses model and aggregate training scale plus a high-level
+  SFT-to-RL sequence while withholding material data-lineage and feedback-contract fields.
+related: []
+tags:
+- deepseek
+- deepseek-v3
+- frontier-report
+- data-disclosure-ledger
+- moe
+- post-training
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: DeepSeek-V3 discloses aggregate pretraining scale and a high-level SFT/RL post-training sequence, but not
+  the data lineage or feedback contract needed to audit the recipe.
+why_it_matters: It makes the difference between a model technical report and a reproducible reasoning-data pipeline explicit.
+card: null
+needs:
+- 'needs_data: pretraining, SFT, RL, and distillation manifests with rights and lineage'
+- 'needs_metadata: teachers, reward/verifier, filters, sampling, rollouts, and mixture weights'
+- 'needs_audit: splits, decontamination, and benchmark-overlap evidence'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv report, official repository, and model release were checked; the post-training pipeline remains partially
+    disclosed.

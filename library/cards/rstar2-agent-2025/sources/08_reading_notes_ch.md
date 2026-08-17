@@ -1,0 +1,3 @@
+- 保留 GRPO-RoC 和 Resample-on-Correct。
+- 索取环境固定版本和测试覆盖度。
+- 将 510 步与每 episode 成本分开。

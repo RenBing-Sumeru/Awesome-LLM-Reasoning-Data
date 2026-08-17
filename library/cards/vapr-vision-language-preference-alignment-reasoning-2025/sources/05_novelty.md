@@ -1,0 +1,1 @@
+Prior multimodal preference data relies on VLM regeneration or judge ranking. VaPR turns negative creation into constrained minimal editing of a trusted chosen response, so the pair differs mainly in the target visual fact and suppresses length/style shortcuts at the source.

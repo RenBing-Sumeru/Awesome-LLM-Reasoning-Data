@@ -1,0 +1,5 @@
+- Keep the publication timeline explicit: arXiv v1 appeared on 2024-12-18, benchmark release 1.0.0 followed on 2024-12-20, and the archival venue is NeurIPS 2025 Datasets and Benchmarks Track.
+- Do not turn 24.0% into 30.3% into a controlled improvement claim. The former is OpenHands 0.14.2 + Claude-3.5-Sonnet; the latter is OpenHands 0.28.1 + Gemini 2.5 Pro, so model, harness, and paper version all drifted.
+- Read the task/evaluator description together with the official experiment run shape: one task has intent, checkpoints, evaluator, setup, and environment, while one run adds model-generated actions/observations, screenshots, checkpoint results, and a terminal outcome.
+- Remember that 51/175 tasks (29%) use LLM evaluation and 41 tasks use simulated colleagues. These model-mediated components are part of the measurement environment and need versioning and calibration.
+- Reuse only for version-pinned evaluation/audit until the experiment-log license, immutable images/manifests, split, decontamination, task-level lineage, judge variance, privacy/consent, and historical failure completeness are resolved; the logs are not an evidenced training corpus.

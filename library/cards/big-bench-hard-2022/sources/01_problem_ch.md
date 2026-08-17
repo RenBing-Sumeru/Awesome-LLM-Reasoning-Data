@@ -1,0 +1,1 @@
+BIG-Bench Hard 要回答的是：BIG-bench 中哪些任务对强语言模型仍然困难，chain-of-thought prompting 是否会改变这种困难度。一手来源是 arXiv 论文和官方 BIG-Bench-Hard GitHub 仓库。数据对象是 JSON 任务文件，样本包含 input/question 和 target answer，并配套所选子集的 prompt 与评测脚本。它属于静态 hard-reasoning 评测面；不是新的交互环境，也不是机械验证的推理语料。

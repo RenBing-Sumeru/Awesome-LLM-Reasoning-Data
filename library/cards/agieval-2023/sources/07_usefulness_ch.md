@@ -1,0 +1,1 @@
+AGIEval 可用作静态考试 benchmark，也可作为标准化考试推理的污染审计坐标。复用时应保留 task id、source exam、语言、题干、选项、标准答案、prompt template、answer extractor、scorer version 和 model output。它适合在固定 harness 下比较 instruction-following 系统，但不能直接当过程监督或 reward model；那需要额外的 trace-level label 和 license 审计。

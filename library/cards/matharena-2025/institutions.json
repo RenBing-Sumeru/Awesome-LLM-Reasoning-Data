@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "ETH Zurich",
+    "INSAIT, Sofia University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:55:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2505.23281",
+    "https://matharena.ai/",
+    "https://github.com/eth-sri/matharena",
+    "https://huggingface.co/MathArena",
+    "https://arxiv.org/abs/2605.00674"
+  ],
+  "verification_note": "arXiv 2505.23281, MathArena site, GitHub, and Hugging Face organization verify the 2025 uncontaminated-competitions paper, ETH/INSAIT affiliations, live leaderboard, code, and data/log artifacts. The official site also cites a newer 2026 platform paper, so the local Card anchors the candidate to the 2025 paper while noting the platform update."
+}

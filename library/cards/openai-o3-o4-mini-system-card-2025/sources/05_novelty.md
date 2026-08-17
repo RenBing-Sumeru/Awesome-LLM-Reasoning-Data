@@ -1,0 +1,5 @@
+For the frontier-report disclosure track, the useful contribution is the contrast between specific high-level claims and absent operational detail. The document is unusually explicit that o-series reasoning uses large-scale reinforcement learning, that deliberative alignment targets reasoning over safety policies, and that instruction-hierarchy conflicts are supervised. It also names broad acquisition channels and filtering goals.
+
+At the same time, those statements stop before the record level. There is no disclosed prompt-to-rollout schema, reward interface, accepted/rejected candidate structure, tool-trajectory format, or source-to-stage mapping. The Card can therefore compare disclosure depth across closed-model reports without implying that the underlying data is open, independently auditable, or reproducible.
+
+The report is also a useful negative example for evidence attribution: detailed evaluation graders and safety tables can coexist with an unknown training verifier. Keeping these two layers separate is more informative than repeating the system card's performance narrative.

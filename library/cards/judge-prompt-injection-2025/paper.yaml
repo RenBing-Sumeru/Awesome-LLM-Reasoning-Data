@@ -1,0 +1,92 @@
+id: judge-prompt-injection-2025
+title: Optimization-based Prompt Injection Attack to LLM-as-a-Judge
+year: 2024
+venue: CCS 2024
+authors:
+- Jiawen Shi
+- Zenghui Yuan
+- Yinuo Liu
+- Yue Huang
+- Pan Zhou
+- Lichao Sun
+- Neil Zhenqiang Gong
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2403.17710
+  arxiv: https://arxiv.org/abs/2403.17710
+  code: https://github.com/ShiJiawenwen/JudgeDeceiver
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1145/3658644.3690291
+  venue: https://doi.org/10.1145/3658644.3690291
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: CCS 2024 primary publication and official implementation verified on 2026-07-24. No official downloadable attack dataset was found.
+inclusion_reason: '以可复核的优化攻击、跨位置评测与防御失效率直接审计 LLM 裁判的注入风险。'
+related: []
+tags:
+- audit
+- round3
+status: verified
+one_line_summary: JudgeDeceiver optimizes a prompt-injection suffix that makes an LLM judge select an attacker-controlled response across response positions.
+why_it_matters: It exposes that swap testing and common detection filters do not secure LLM-as-a-Judge from candidate-controlled instructions.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: medium
+  notes: CCS 2024 primary publication and official implementation verified; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

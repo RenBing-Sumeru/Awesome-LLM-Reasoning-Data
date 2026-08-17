@@ -1,0 +1,1 @@
+核心贡献是一个手工构造的 class-level Python 基准：100 个任务、100 个类、410 个方法，平均每个类 33.1 个 test cases。关键机制是把评测单位从独立函数改成整类代码，并显式包含 method dependency、field dependency、library dependency 和 standalone 方法。反馈契约是官方 tests 的可执行正确性与 Pass@k 汇总。最近对比对象是 HumanEval 和 MBPP 这类更简单的独立函数 prompt。方向标签是带面向对象依赖结构的 executable code benchmark。

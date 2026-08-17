@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该方法以覆盖引导 fuzzing 和行为聚类选择代码候选，并明确最大簇共识不是正确性证明。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yifeng He, Ethan Wang, Jicheng Wang, Xuanxin Ouyang, Hao Chen",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,1 @@
+The space of unanswerable dialogue is open-ended, so the 20 datasets cannot cover every abstention case. Labels for subjectivity or missing context can be contestable, and the paper relies on an LLM judge despite manual validation. A model can also raise its score by refusing too often; inspect precision and answerable-question accuracy, not recall alone.

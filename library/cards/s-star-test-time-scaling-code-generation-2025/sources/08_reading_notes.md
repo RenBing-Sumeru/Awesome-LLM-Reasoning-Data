@@ -1,0 +1,5 @@
+- Generation uses 16 candidates and up to two public-test debugging rounds.
+- Selection uses LLM-generated distinguishing inputs plus actual execution.
+- Public-test passing and private-test correctness are different predicates.
+- The repository reports intermediate results, but exact completeness requires inspection.
+- Pass@1 gains are selector evaluation, not data-quality proof.

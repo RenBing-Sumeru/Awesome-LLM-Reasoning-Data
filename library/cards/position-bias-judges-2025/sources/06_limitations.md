@@ -1,0 +1,3 @@
+The authors evaluate 12 commercial judges in pairwise settings, four in list-wise settings with only three candidates, and three Llama models; more models, prompting strategies, tasks, and larger candidate pools could change the conclusions. Reuse should therefore rerun the protocol on the intended model, prompt, and list size.
+
+Closed-model architecture and parameter information are unavailable, so judge-level effects are approximated by model family. The analysis is post hoc and studies bias rather than mitigation; before using it as a release gate, define a response policy for low fairness or consistency and test it prospectively.

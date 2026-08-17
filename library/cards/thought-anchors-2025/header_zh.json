@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Thought Anchors 公开了 MATH 正确与错误推理链、逐句保留/移除的反事实续写、强制回答续写及答案分布指标，用于审计哪些句子改变后续推理；HF 的 20,997 行是原始文件索引而非 rollout 数量。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "句子级反事实推理轨迹数据发布与可解释性审计方法",
+  "best_for_ch": "研究 rollout 数据结构、CoT 因果归因、负面轨迹、答案分布反馈与大规模发布计数审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Paul C. Bogdan、Uzay Macar、Neel Nanda、Arthur Conmy",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

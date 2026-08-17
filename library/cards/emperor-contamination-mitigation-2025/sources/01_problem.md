@@ -1,0 +1,3 @@
+Benchmark contamination can inflate scores when test items enter model training, but replacing an established benchmark is costly and updating its questions may silently change the capability being measured. Aggregate accuracy drop or accuracy matching cannot show whether the same questions remain equally diagnostic.
+
+This paper evaluates existing benchmark-update strategies with a controlled clean-versus-contaminated model setup. It introduces question-level fidelity and contamination resistance to ask whether an update both preserves the original evaluation and removes the benefit of memorizing the original items.

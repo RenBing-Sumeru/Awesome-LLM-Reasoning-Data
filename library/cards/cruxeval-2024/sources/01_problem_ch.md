@@ -1,0 +1,1 @@
+CRUXEval 问的是：代码模型能否在短 Python 程序上做执行推理，给定输入预测输出，或给定输出反推一个可产生该输出的输入。主要来源是 2024 年 1 月 arXiv 论文和 Hugging Face 官方数据集。它属于 benchmark / verifier-shaped evaluation surface，因为样本围绕可执行函数和 I/O 契约构造；它不是 HumanEval 式“写一个新函数并跑隐藏测试”的合成基准。一个实例包含短 Python 函数、一个输入输出对、任务方向、候选答案和经执行确认的参考答案。对 atlas 的价值是把语义执行推理与程序生成分开。

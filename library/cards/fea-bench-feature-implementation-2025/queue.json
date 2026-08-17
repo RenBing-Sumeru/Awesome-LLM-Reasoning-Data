@@ -1,0 +1,19 @@
+{
+  "title": "FEA-Bench: A Benchmark for Evaluating Repository-Level Code Generation for Feature Implementation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.839/",
+    "data": "https://huggingface.co/datasets/microsoft/FEA-Bench",
+    "code": "https://github.com/microsoft/FEA-Bench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:08:49Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 FEA-Bench，含来自83个仓库的1,401个功能开发任务及关联单测",
+    "updated_at": "2026-07-18T12:08:49Z"
+  }
+}

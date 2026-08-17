@@ -1,0 +1,1 @@
+Difficulty is measured with the chosen base model and rollouts, so a ranking may not transfer unchanged to another student or domain. Long traces can still be stylistically verbose rather than correct; reuse should verify answers and inspect selected traces for repeated or shortcut reasoning.

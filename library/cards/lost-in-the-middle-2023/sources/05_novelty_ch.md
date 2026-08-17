@@ -1,0 +1,1 @@
+既有长上下文评测常问模型能否从长 prompt 中答题；这篇的新意是把决定性证据的位置变成控制变量。方向信号在于它把一个总分拆成 context position audit，可以检查“窗口很长但中间读不到”的失败。质量信号来自配对构造：答案目标相同，位置变化，反馈仍是答案正确性。并不新的部分是 retrieval QA、synthetic key-value lookup 和 exact-answer scoring。复用前要检查 prompt 格式、干扰文档来源、生成 split、scorer、license 和公开样例污染。

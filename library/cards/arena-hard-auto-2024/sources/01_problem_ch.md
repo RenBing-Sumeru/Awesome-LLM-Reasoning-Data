@@ -1,0 +1,1 @@
+一手来源是 arXiv 2406.11939、官方 lmarena 仓库和 Hugging Face release；论文 2024 年 6 月提交、10 月修订。它解决的问题是：开放式 LLM 评测需要持续构造高难度 prompt，但完整人工偏好收集成本很高。收录边界是 benchmark-building 和自动 pairwise judge 评测面，不是有唯一标准答案的 QA 数据集。数据对象是困难用户 prompt、两个模型回答、judge 配置、成对判断和汇总胜率。

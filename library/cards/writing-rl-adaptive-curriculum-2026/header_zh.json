@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "该工作按策略与参考写作质量差选择长文指令，并在策略获胜后逐步提升参考答案难度。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "面向长篇写作的自适应课程强化学习研究",
+  "best_for_ch": "为开放式生成设计数据选择和自适应参考调度的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xuanyu Lei, Chenliang Li, Yuning Wu, Kaiming Liu, Weizhou Shen, Peng Li, Ming Yan, Fei Huang, Ya-Qin Zhang, Yang Liu",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-16T10:00:00Z"
+}

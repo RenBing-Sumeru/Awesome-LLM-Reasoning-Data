@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DEPO 通过离线选题、按可学习性过滤在线 rollout，并回放探索不足的样本，提高 RLVR 的数据效率。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "RLVR 数据选择与回放配方",
+  "best_for_ch": "优化 RLVR 题目与 rollout 分配的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Xinyu Tang, Zhenduo Zhang, Yurou Liu, Wayne Xin Zhao, Zujie Wen, Zhiqiang Zhang, Jun Zhou",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T04:19:43Z"
+}

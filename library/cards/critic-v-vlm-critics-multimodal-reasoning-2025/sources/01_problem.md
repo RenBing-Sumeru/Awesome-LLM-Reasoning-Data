@@ -1,0 +1,3 @@
+Multimodal models hallucinate visual content or follow flawed reasoning paths, while a final correct/incorrect scalar does not indicate what to revise. Asking the same model to self-criticize can favor its own answer, and high-quality data distinguishing useful from unhelpful critiques is scarce.
+
+Critic-V separates a Reasoner from a Critic. The Reasoner generates multimodal reasoning, while the Critic provides natural-language revision feedback. The Critic is trained with DPO on critique preferences ranked by rule-based reward, and its feedback iteratively updates the Reasoner’s textual policy.

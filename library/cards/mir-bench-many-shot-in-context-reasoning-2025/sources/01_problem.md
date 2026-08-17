@@ -1,0 +1,3 @@
+Existing pattern-induction benchmarks usually provide fewer than ten demonstrations and mainly test few-shot abstraction. Long-context benchmarks focus largely on retrieval or classification and cannot determine whether a model can integrate hundreds or thousands of input-output examples into a complex rule. A longer context window does not automatically imply that a model can use more information; performance may saturate early or even decline.
+
+MIR-Bench uses hidden executable functions to generate large numbers of input-output shots and asks models to predict outputs for new inputs from many-shot contexts. It systematically studies scaling, robustness to erroneous examples, chain-of-thought, code induction, and retrieval augmentation.

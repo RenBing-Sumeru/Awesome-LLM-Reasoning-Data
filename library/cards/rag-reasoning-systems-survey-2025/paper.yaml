@@ -1,0 +1,124 @@
+id: rag-reasoning-systems-survey-2025
+title: A Survey of RAG-Reasoning Systems in Large Language Models
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Yangning Li
+- Weizhi Zhang
+- Yuyao Yang
+- Wei-Chieh Huang
+- Yaozu Wu
+- Junyu Luo
+- Yuanchen Bei
+- Henry Peng Zou
+- Xiao Luo
+- Yusheng Zhao
+- Chunkit Chan
+- Yankai Chen
+- Zhongfen Deng
+- Yinghui Li
+- Hai-Tao Zheng
+- Dongyuan Li
+- Renhe Jiang
+- Ming Zhang
+- Yangqiu Song
+- Philip S. Yu
+source_role:
+- survey_background
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- rag
+- reasoning
+- retrieval
+- agents
+- benchmarks
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.648/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.648
+  venue: https://aclanthology.org/2025.findings-emnlp.648/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.648/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed knowledge-intensive reasoning tasks and RAG systems.
+  trace_author: The surveyed primary works; no new trace corpus is released.
+  answer_format: A taxonomy of Reasoning-Enhanced RAG, RAG-Enhanced Reasoning, and synergized RAG-Reasoning systems.
+  process_fields:
+  - query
+  - retrieved knowledge
+  - reasoning step
+  - search action
+  - answer
+  environment_or_substrate: Retrieval-augmented and agentic reasoning systems.
+  verifier_or_reward: The survey reviews task-specific evaluation and does not define one universal reward or verifier.
+  terminal_predicate: Task-specific answer quality or knowledge-grounded reasoning success.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed systems use varied retrievers, corpora, and evaluators; the survey has no single teacher.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract separates reasoning that optimizes RAG stages, retrieval that supplies reasoning premises,
+    and systems that interleave search and thought.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews RAG and reasoning designs rather than providing a training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.648/'
+  known_failure_modes:
+  - Retrieved text can be irrelevant or incomplete.
+  - Reasoning can remain ungrounded despite retrieval.
+  - Reported performance can depend on corpus, search policy, and evaluation benchmark.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly names the three-part taxonomy and its coverage of methods, datasets, and open challenges.
+inclusion_reason: An accepted EMNLP Findings survey that makes the relationship between external evidence, search, and multi-step
+  reasoning explicit.
+related: []
+tags:
+- foundations-and-primers
+- rag
+- reasoning
+- emnlp-2025
+- survey
+why_it_matters: It separates using reasoning to improve retrieval from using retrieval to supply missing premises for reasoning.
+one_line_summary: A 2025 EMNLP Findings survey that maps how retrieval and multi-step reasoning can strengthen each other.
+paper_type: RAG-reasoning survey
+reading_priority: strong
+best_for: Readers building or evaluating systems that must search for evidence while solving multi-step, knowledge-intensive
+  tasks.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable reporting of retrieval corpus, search policy, evidence attribution, and inference budget across surveyed
+  systems'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

@@ -1,0 +1,150 @@
+id: cost-of-dynamic-reasoning-2025
+title: 'The Cost of Dynamic Reasoning: Demystifying AI Agents and Test-Time Scaling from an AI Infrastructure Perspective'
+year: 2026
+venue: HPCA 2026
+authors:
+- Jiin Kim
+- Byeongjun Shin
+- Jinha Chung
+- Minsoo Rhu
+source_role:
+- scaling_study
+- infrastructure
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- ai-agents
+- test-time-scaling
+- systems
+- infrastructure
+- energy-efficiency
+training_use:
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.04301
+  arxiv: https://arxiv.org/abs/2506.04301
+  code: https://github.com/VIA-Research/AgentBench
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.04301
+  venue: https://ieeexplore.ieee.org/document/11408569
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Evaluation queries from HotpotQA, WebShop, MATH, and HumanEval; ShareGPT is the non-agentic single-turn baseline.
+    The repository contains benchmark input files, but the exact 50-question manifests used for each design point are not
+    identified.
+  trace_author: Runtime LLM outputs and tool-interaction trajectories produced by CoT, ReAct, Reflexion, LATS, and LLMCompiler
+    with Llama-3.1-Instruct backends.
+  answer_format: Task-specific final answers, scores, tool interactions, and system measurements. The paper reports aggregate
+    accuracy, latency, token, GPU-utilization, GPU-energy, and projected-power results; the repository exposes optional trace
+    saving and one small example trace, not the paper's complete per-request measurement records.
+  process_fields:
+  - Reported aggregates pair agent, workload, model, and scaling configuration with accuracy or task score, end-to-end latency,
+    invocation and token statistics, GPU behavior, energy per query, and projected datacenter power.
+  - Reusable raw lineage would require per-query prompts, trajectories, tool timings, LLM timings, device telemetry, configuration
+    identifiers, and seeds; that paper-specific record set is not confirmed as released.
+  environment_or_substrate: GCP a2-highgpu-1g (12 vCPUs, 85GB memory, 1 NVIDIA A100 40GB) for Llama-3.1-8B-Instruct and a2-highgpu-8g
+    (96 vCPUs, 680GB memory, 8 NVIDIA A100 40GB GPUs) for Llama-3.1-70B-Instruct; vLLM 0.6.6, PyTorch 2.6, CUDA 12.8, with
+    prefix caching enabled unless stated otherwise. External or local tools include Wikipedia APIs, WebShop navigation, Wolfram
+    Alpha/Python calculation, and Python execution.
+  verifier_or_reward: HotpotQA exact match, MATH exact match with minor formatting equivalence, WebShop's task-specific score,
+    and HumanEval pass-all-unit-tests accuracy. Reflexion and LATS also use workflow-internal reflection or value signals,
+    but the study does not define a training reward or release a unified verifier manifest.
+  terminal_predicate: Benchmark-specific completion and correctness or task score; exact benchmark revisions, per-item predicates,
+    parser versions, and selected item manifests are not consolidated as a released audit artifact.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct by default; Llama-3.1-70B-Instruct for model-size test-time-scaling comparisons.
+  teacher: unknown
+  generator: CoT, ReAct, Reflexion, LATS, and LLMCompiler are evaluated as inference workflows; LATS is adapted for concurrent
+    LLM inference and parallel tool invocation.
+  filtering_rule: Unsuitable agent-benchmark pairs are omitted; exact paper-specific inclusion manifests and any additional
+    failure filtering are unknown.
+  sampling_protocol: The test-time-scaling design-space study evaluates each design point on 50 sample questions and varies
+    few-shot examples, iteration or reflection limits, and LATS child-node expansion. Earlier system-characterization figures
+    do not disclose one complete per-workload sample manifest, and random seeds are unknown.
+  inference_budget: Controlled budgets include ReAct iteration limits, Reflexion reflection depth, few-shot example count,
+    and LATS child nodes per expansion; Table III selects the highest-accuracy Reflexion and LATS HotpotQA configurations.
+  optimizer_or_scaffold: An OpenAI-compatible vLLM serving and agent-evaluation scaffold with prefix caching and asynchronous
+    workers; this is an evaluation system, not a post-training optimization recipe.
+  rollout_count: unknown
+  temperature: unknown
+audit:
+  source_mixture: HotpotQA, WebShop, MATH, and HumanEval agent workloads plus ShareGPT as a single-turn serving baseline.
+    The repository bundles benchmark input files, but exact experiment item selections and benchmark revisions are not fully
+    specified.
+  split: The paper uses 50 sample questions per design point in the test-time-scaling study and omits unsuitable agent-benchmark
+    pairs; selected IDs, split accounting for all figures, and replay manifests are unknown.
+  decontamination: unknown
+  license: The AgentBench code repository is MIT licensed. The licenses and redistribution terms of bundled benchmark inputs,
+    the example trace, and any unreleased measurement records are not established here as one reusable data license.
+  lineage: Benchmark inputs and tools -> agent-specific multi-step LLM/tool execution under a stated serving configuration
+    -> benchmark outcomes and runtime/device measurements -> aggregate accuracy, latency, utilization, memory, token, and
+    GPU-energy results -> datacenter-power projections under explicit traffic assumptions. The final raw-to-aggregate record
+    set is not released.
+  known_failure_modes:
+  - Results are tied to the chosen workflows, benchmarks, Llama-3.1 models, A100 systems, vLLM version, prefix caching, and
+    tool latencies; they do not define a universal cost of agents.
+  - The repository can save traces and includes one small trace.txt example, but complete paper-specific trajectories, selected
+    query IDs, per-request timing and energy telemetry, seeds, and configuration snapshots are not confirmed as released.
+  - Table III power numbers are projections from per-query GPU energy and assumed daily query volumes, not direct datacenter
+    measurements; they omit CPU, memory, networking, storage, cooling, and batching effects.
+  - The paper names DCGM for GPU utilization, but the exact device-power sampling and energy-integration procedure is not
+    disclosed in sufficient detail for independent audit.
+  - LATS is modified for concurrent inference and parallel tool invocation, so latency and resource results are not a direct
+    measurement of the original sequential implementation.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2 and the author-linked AgentBench main branch were checked. The repository provides runnable agents,
+    benchmark inputs, optional trace saving, and one small example trace, but no paper-specific raw energy log or complete
+    per-request measurement release was verified.
+  metadata_status: partial
+inclusion_reason: A systems study that makes agent workflow, test-time budget, latency, GPU energy, and projected power explicit
+  audit dimensions while exposing the missing raw records needed to reuse those measurements as reasoning-trace data.
+related: []
+tags:
+- dynamic-reasoning
+- test-time-scaling
+- ai-agents
+- infrastructure
+- latency
+- gpu-energy
+- power-projection
+- lats
+status: partial
+card: null
+needs:
+- needs_raw_measurement_records
+- needs_hardware_telemetry_method
+- needs_task_manifest
+- needs_benchmark_version_and_split_metadata
+- needs_random_seed_and_full_configuration_records
+one_line_summary: A systems evaluation of five agent workflows that reports aggregate accuracy, latency, GPU-energy, and projected
+  datacenter-power trade-offs, while its complete per-request measurement records remain unreleased.
+why_it_matters: For rollout and test-time trace curation, it shows that branch count, iteration depth, tool latency, hardware,
+  and serving configuration are part of trace provenance; aggregate benchmark gains cannot substitute for those raw lineage
+  fields.
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv v2 and the author-linked AgentBench repository verified. Code, benchmark inputs, optional trace saving,
+    and a small example trace are public; complete experimental trajectories, per-request latency/energy telemetry, selected
+    query manifests, and exact power-integration details remain unverified.
+category_ids:
+- rollout_search_test_time_trace_data

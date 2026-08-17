@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "V-Droid 将 Android 轨迹扩展为 110K 组逐步 P3 动作偏好并训练标量验证器，但完整语料、可回放环境及实验—发布版本映射均未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "移动 GUI 智能体的生成式动作验证器与偏好数据构建方法",
+  "best_for_ch": "研究移动智能体轨迹、过程偏好、验证器训练及发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Gaole Dai、Shiqi Jiang、Ting Cao、Yuanchun Li、Yuqing Yang、Rui Tan、Mo Li、Lili Qiu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-21T13:56:33Z"
+}

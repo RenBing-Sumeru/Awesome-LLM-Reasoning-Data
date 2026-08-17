@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MR²Bench 含图像多响应排序与视频问答约 9.4 万众包偏好判断，可直接训练一次前向完成 N 路比较的奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多响应多模态奖励模型与人类偏好排序基准论文",
+  "best_for_ch": "希望以一次前向比较多个图像或视频候选回答、并需要公开 N 路人类排序数据的奖励模型研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yinuo Yang, Zixian Ma, Manasi Ganti, Jieyu Zhang, Ranjay Krishna",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:52:12Z"
+}

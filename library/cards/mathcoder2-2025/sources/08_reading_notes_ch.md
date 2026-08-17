@@ -1,0 +1,5 @@
+- 官方决定是 ICLR 2025 Spotlight；作者顺序采用 proceedings 元数据，同时注意 PDF 将 Ke Wang 与 Houxing Ren 的顺序对调。
+- 将表 1 读作六个精确论文语料组件，总计 19,487,652 个文档、19,184,073,343 个 token；不要当作当前 partial Hugging Face snapshot 的统计。
+- 区分预期 verifier 与代码实现：论文要求执行成功并匹配预期结果，代码却只对短数值输出做 0.01 以内比较，其他情况无执行错误即接受。
+- 按论文和部署脚本，翻译 teacher 是 Llama-3.1-70B-Instruct；README 中的 Mixtral-8x7B-Instruct 属于冲突元数据。
+- 复用前审计弱 sandbox、断裂 pipeline、text-only 谱系丢失、教材发布缺口、去污染 schema mismatch、根代码许可缺口，以及 continued-pretrained 与 SFT checkpoint 边界。

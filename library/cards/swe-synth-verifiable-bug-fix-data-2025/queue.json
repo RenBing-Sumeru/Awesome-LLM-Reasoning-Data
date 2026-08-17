@@ -1,0 +1,19 @@
+{
+  "title": "SWE-Synth: Synthesizing Verifiable Bug-Fix Data to Enable Large Language Models in Resolving Real-World Bugs",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.14757",
+    "data": "https://huggingface.co/datasets/swesynth/SWE-Synth",
+    "code": null,
+    "project": "https://swesynth.com/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:32:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布4,500个带提交、补丁和测试日志的修复实例，可复现验证真实缺陷修复",
+    "updated_at": "2026-07-18T07:32:13Z"
+  }
+}

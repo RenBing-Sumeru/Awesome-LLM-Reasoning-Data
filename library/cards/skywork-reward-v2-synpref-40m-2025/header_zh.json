@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 SynPref-40M 并提出人机协同的数据筛选与校验流程，用大规模高质量偏好数据训练通用奖励模型。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "偏好与奖励反馈数据集或数据构建研究",
+  "best_for_ch": "需要构建、审计或复用偏好与奖励反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chris Yuhao Liu、Liang Zeng、Yuzhen Xiao、Jujie He 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T09:13:46Z"
+}

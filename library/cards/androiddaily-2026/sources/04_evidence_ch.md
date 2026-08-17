@@ -1,0 +1,1 @@
+arXiv 摘要报告 AndroidDaily 含 94 个高频 Android 应用上的 350 个真实日常任务。论文报告 GRADE 与人类评测者达到 87.37% agreement，最强被测模型在 AndroidDaily 上达到 62.0% success。这些是主要可信信号：benchmark 覆盖、评测器与人的一致性，以及当前模型性能缺口。行级证据是可观察轨迹按任务 guideline 检查，不是隐藏状态 verifier。证据边界包括闭源 app 版本、评测器模型/prompt、人类一致性样本、guideline 质量，以及已核来源中未发现稳定公开代码/数据 artifact。

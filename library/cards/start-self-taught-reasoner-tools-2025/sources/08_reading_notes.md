@@ -1,0 +1,6 @@
+- Read Figure 1 and Paper Section 2.2 first: the key object is a hint-induced wrong-to-correct Python trajectory, followed by `D_seed=10K`, START-0, and the reported `D_START=40K` expansion.
+- Keep the scale units unresolved: the six Table 9 sources sum to 46,969 rather than 49,969, and the printed math sources sum to 36,895 rather than the 40K math-problem claim; unique prompts, candidates, accepts, and rejects are not separated.
+- Use Table 5 as the failure ledger: hints repair 33.0% of initially wrong cases, leave 67.0% wrong, and turn 10.4% of initially correct cases wrong. The underlying trajectories and denominators are not released.
+- Do not equate 100% Python triggering or higher benchmark scores with data quality. The checker, sandbox, modification logic, decoding protocol, rejected examples, licenses, and decontamination ledger are all unavailable.
+- Read Appendix H beside Section 3.4: one says greedy decoding, while the other gives temperature 0.6 and top-p 0.95. Also inspect Appendix A/Table 9 for count inconsistencies and Appendix J.1 for library-use counts.
+- Read with V-STaR, OpenCodeReasoning, and Tool Zero as mechanism comparisons, while remembering that START has no official code, data, model, environment, logs, project page, or immutable release.

@@ -1,0 +1,116 @@
+id: androidcontrol-ui-control-agents-2024
+title: On the Effects of Data Scale on UI Control Agents
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks / arXiv
+authors:
+- Wei Li
+- William Bishop
+- Alice Li
+- Chris Rawles
+- Folawiyo Campbell-Ajala
+- Divya Tyamagundlu
+- Oriana Riva
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- android
+- ui-control-data
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.03679
+  arxiv: https://arxiv.org/abs/2406.03679
+  doi: https://doi.org/10.48550/arXiv.2406.03679
+  code: https://github.com/google-research/google-research/tree/master/android_control
+  data: https://github.com/google-research/google-research/tree/master/android_control
+  project: https://github.com/google-research/google-research/tree/master/android_control
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper and Google Research AndroidControl repository
+  trace_author: Google/DeepMind authors and collected Android control demonstrations
+  answer_format: AndroidControl high/low-level instructions, UI states, action traces, app splits, and evaluation records
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: large-scale Android UI control demonstrations and OOD app evaluation
+  verifier_or_reward: AndroidControl UI action matching and task success evaluation
+  terminal_predicate: AndroidControl UI action matching and task success evaluation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: AndroidControl demonstrations and instruction annotations
+  generator: AndroidControl data-scale and UI-control benchmark construction
+  filtering_rule: record formal title vs dataset name, bucket path, release version, and split
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2406.03679; https://github.com/google-research/google-research/tree/master/android_control
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2406.03679'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: candidate name differs from formal paper title; GCS bucket, release version, app split, and license need audit.
+inclusion_reason: it studies data-scale effects with a large Android UI-control dataset
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- android
+- ui-control-data
+one_line: AndroidControl evaluates UI-control agents through large-scale Android demonstrations and app-generalization splits.
+why_it_matters: it studies data-scale effects with a large Android UI-control dataset
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AndroidControl evaluates UI-control agents through large-scale Android demonstrations and app-generalization
+  splits.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv and Google Research repository verify formal title, authors, Google/DeepMind institutions, and NeurIPS Datasets
+    and Benchmarks status.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 68
+  primary_category_id: benchmarks_evaluation_surfaces

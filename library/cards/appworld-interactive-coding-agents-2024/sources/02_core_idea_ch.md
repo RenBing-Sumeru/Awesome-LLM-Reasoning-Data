@@ -1,0 +1,1 @@
+核心贡献是一个由 app 和模拟用户组成的沙盒世界，用来评测通过写代码调用 API 完成任务的 agent。机制是暴露大量 app API 和隐藏世界状态，让 agent 程序化交互，最后用单元测试检查数据库/状态。最近参照是 WebArena/OSWorld 式环境、tool-use benchmark 和静态 API-calling 数据集。方向标签是 stateful API-agent evaluation：反馈契约同时检查任务完成和非预期副作用。

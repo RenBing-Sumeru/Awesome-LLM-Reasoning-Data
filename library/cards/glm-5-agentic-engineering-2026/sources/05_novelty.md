@@ -1,0 +1,5 @@
+GLM-5's main contribution for a reasoning-data atlas is the unusually explicit connection among data sources, executable environments, trajectory transport, reward services, and asynchronous optimization. It does not stop at naming “agent data”; it describes how SWE, terminal, search, and slide tasks are instantiated as services and connected to a shared learner.
+
+TITO addresses a subtle reproducibility problem in heterogeneous agent rollouts: text reconstructed by different inference and training tokenizers may not map to identical model tokens. Preserving exact token IDs, rollout log probabilities, and weight-version metadata makes off-policy correction and loss construction more auditable in principle.
+
+The report also distinguishes multiple feedback contracts. Reasoning RL uses source-specific binary outcome judgments, Agentic RL uses task environments and group-relative trajectory rewards, and General RL mixes deterministic rules, outcome reward models, and generative reward models. This is more informative than a single generic “RL” label, even though the concrete judges and formulas remain private.

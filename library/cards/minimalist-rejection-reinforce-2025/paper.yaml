@@ -1,0 +1,122 @@
+id: minimalist-rejection-reinforce-2025
+title: 'A Minimalist Approach to LLM Reasoning: from Rejection Sampling to Reinforce'
+year: 2025
+venue: arXiv
+authors:
+- Wei Xiong
+- Jiarui Yao
+- Yuhui Xu
+- Bo Pang
+- Lei Wang
+- Doyen Sahoo
+- Junnan Li
+- Nan Jiang
+- Tong Zhang
+- Caiming Xiong
+- Hanze Dong
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.11343
+  arxiv: https://arxiv.org/abs/2504.11343
+  code: https://github.com/RLHFlow/Minimal-RL
+  data: null
+  project: https://github.com/RLHFlow/Minimal-RL
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.11343
+  venue: null
+  openreview: https://openreview.net/forum?id=eK3yDPtwIK
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Approximately 860K Numina-Math problems with labeled answers
+  trace_author: Current Qwen2.5-Math-7B or Llama-3.2-3B policy
+  answer_format: Step-by-step reasoning with boxed final answer
+  process_fields:
+  - prompt
+  - candidate_responses
+  - binary_rewards
+  - accepted_responses
+  - prompt_reward_pattern
+  environment_or_substrate: Online rollout collection and filtering on verl
+  verifier_or_reward: Math-Verify binary final-answer correctness represented as -1 or +1
+  terminal_predicate: Extracted boxed answer matches reference
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B-base and Llama-3.2-3B-Instruct
+  teacher: unknown
+  generator: Current policy
+  filtering_rule: RAFT retains positive responses; Reinforce-Rej discards four-response prompt groups that are all incorrect
+    or all correct
+  sampling_protocol: Sample 1,024 prompts, generate four responses, score with Math-Verify, then apply response or uniform-reward
+    group filtering
+  rollout_count: 4
+  temperature: null
+  inference_budget: Four responses per prompt, maximum 4,096 generated tokens
+  optimizer_or_scaffold: RAFT/RAFT++, Reinforce, GRPO, PPO, iterative DPO, and Reinforce-Rej comparison
+audit:
+  source_mixture: Numina-Math prompts and answers plus online Qwen/Llama rollouts
+  split: Train on Numina-Math; evaluate on MATH500, Minerva Math, and OlympiadBench
+  decontamination: unknown
+  license: Apache-2.0 code; data and generated-rollout obligations unknown
+  lineage: Prompt/reference to policy rollouts, Math-Verify rewards, filtering, and update
+  known_failure_modes:
+  - Binary final-answer rewards do not validate intermediate reasoning
+  - Positive-only RAFT can collapse entropy
+  - All-incorrect negative updates can destabilize learning
+  - Filtering changes the effective online prompt distribution
+  - No tagged code release or frozen rollout artifact
+  - TMLR submission was withdrawn and is not accepted
+  citation_status: verified
+  confidence: high
+  notes: arXiv, official code, and withdrawn OpenReview status verified.
+inclusion_reason: Isolates online response and prompt filtering as the main data mechanism behind several reasoning post-training
+  algorithms.
+related: []
+tags:
+- raft
+- rejection-sampling
+- reinforce-rej
+- grpo
+- online-filtering
+- withdrawn
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Shows that positive-response selection is a strong baseline and filters uniform-reward prompt groups to
+  stabilize minimalist policy-gradient training.
+why_it_matters: Demonstrates that the effective online reasoning dataset can explain much of GRPO behavior, beyond reward
+  normalization alone.
+card: null
+needs:
+- 'needs_snapshot: tagged code revision and immutable configurations'
+- 'needs_data: rollout groups, rewards, selected responses, and manifests'
+- 'needs_audit: decontamination, verifier errors, entropy collapse, and seed variance'
+- 'needs_status: preserve withdrawn TMLR status'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper and code verified; no frozen rollout release; OpenReview submission withdrawn.

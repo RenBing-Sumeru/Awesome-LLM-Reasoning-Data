@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "University of California, Los Angeles",
+    "California Institute of Technology",
+    "University of Washington"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2307.10635",
+    "https://arxiv.org/e-print/2307.10635",
+    "https://scibench-ucla.github.io"
+  ],
+  "verification_note": "Official ICML source verifies UCLA, Caltech, and University of Washington affiliations plus ICML 2024 status."
+}

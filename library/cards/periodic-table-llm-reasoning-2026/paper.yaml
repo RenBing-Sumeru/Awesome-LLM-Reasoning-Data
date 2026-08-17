@@ -1,0 +1,108 @@
+id: periodic-table-llm-reasoning-2026
+title: 'The Periodic Table of LLM Reasoning: A Structured Survey of Reasoning Paradigms, Methods, and Failure Modes'
+year: 2026
+venue: arXiv preprint
+authors:
+- Avinash Anand
+- Mahisha Ramesh
+- Avni Mittal
+- Ashutosh Kumar
+- Erik Cambria
+- Zhengkui Wang
+- Timothy Liu
+- Aik Beng Ng
+- Simon See
+- Rajiv Ratn Shah
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- llm-reasoning
+- reasoning-taxonomy
+- failure-modes
+- evaluation-methodology
+training_use:
+- unknown
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.11470
+  arxiv: https://arxiv.org/abs/2606.11470
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2606.11470
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed tasks and benchmarks across reasoning paradigms.
+  trace_author: Surveyed literature; the paper does not release a new trace dataset.
+  answer_format: A structured taxonomy of reasoning paradigms, methods, evaluation benchmarks, and recurring failure modes.
+  process_fields:
+  - reasoning paradigm
+  - method family
+  - failure mode
+  - evaluation benchmark
+  environment_or_substrate: LLM reasoning research across language, visual, temporal, code, retrieval, tool, agentic, and
+    reinforcement-learning settings.
+  verifier_or_reward: Discusses reward modeling and evaluation benchmarks as surveyed mechanisms; no new verifier or reward
+    is released.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single model recipe; a literature survey.
+  teacher: unknown
+  generator: Systematic literature analysis stated to cover more than 300 recent papers.
+  filtering_rule: Papers are organized by reasoning paradigm, method trend, evaluation, and failure mode.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Structured reasoning taxonomy rather than an optimizer.
+audit:
+  source_mixture: Official arXiv record and paper.
+  split: Not applicable to a survey.
+  decontamination: The survey identifies failure modes but does not establish contamination status for every cited benchmark
+    or dataset.
+  license: An arXiv license is linked from the official record; a dataset license is not applicable.
+  lineage: 'Primary source: https://arxiv.org/abs/2606.11470'
+  known_failure_modes:
+  - Taxonomy labels span heterogeneous tasks and can hide differences in data provenance or verification.
+  - The stated literature search includes both primary and third-party indexing services, so cited works need primary-source
+    verification before reuse.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract states the more-than-300-paper scope, covered paradigms, and failure-mode synthesis.
+inclusion_reason: A 2026 broad reasoning map that routes new readers from paradigm labels to the data, verifier, environment,
+  evaluation, and failure questions handled in specialized tracks.
+related: []
+tags:
+- reasoning-survey
+- taxonomy
+- failure-modes
+- evaluation
+- 2026
+why_it_matters: It makes the distinction between a reasoning task label and the evidence needed to train or evaluate it explicit.
+status: verified
+needs:
+- 'needs_review: verify primary sources for any individual paper, dataset, or benchmark cited by this survey'
+one_line_summary: A 2026 reasoning survey that maps paradigms, method families, benchmarks, and failure modes before readers
+  enter data-specific tracks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv abstract, author list, and submission history reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧠 Reasoning LLM surveys

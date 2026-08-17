@@ -1,0 +1,1 @@
+Existing environment generators usually either synthesize from scratch or convert real tasks. SETA separates source conversion from environment evolution and gives both the same verification contract, expanding source coverage while controlling difficulty. The novelty is the dual-pipeline environment factory and unified reward surface, not a new GRPO algorithm.

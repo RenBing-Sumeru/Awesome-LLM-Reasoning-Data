@@ -1,0 +1,130 @@
+id: qwen2-5-math-prm-2025
+title: Qwen2.5-Math-PRM
+year: 2025
+venue: Qwen release
+authors:
+- Qwen Team
+source_role:
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.07301
+  arxiv: https://arxiv.org/abs/2501.07301
+  code: null
+  data: null
+  project: https://qwenlm.github.io/blog/qwen2.5-math-prm/
+  huggingface: https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B
+  doi: https://doi.org/10.48550/arXiv.2501.07301
+  venue: https://qwenlm.github.io/blog/qwen2.5-math-prm/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2501.07301
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: At inference, the official 7B example supplies a system-level instruction, query, and a reasoning response
+    segmented by double line breaks; `<extra_0>` is inserted after each step to obtain per-step scores. The training-record
+    schema is unknown.
+  process_fields:
+  - system_prompt
+  - query
+  - reasoning_response
+  - step_separator
+  - step_reward
+  environment_or_substrate: Offline PRM inference over mathematical reasoning text. The checked model card recommends double-newline
+    step boundaries and the `<extra_0>` separator-token interface; no training or replay environment is released.
+  verifier_or_reward: The official 7B model card extracts the probability of the positive class at each `<extra_0>` separator
+    as a reward between 0 and 1. Label semantics, calibration, aggregation, thresholds, error rates, and training-time verification
+    are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Qwen states that Qwen2.5-Math-PRM-7B and -72B are fine-tuned on Qwen2.5-Math-7B-Instruct and Qwen2.5-Math-72B-Instruct
+    respectively.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: The official Qwen 7B and 72B model cards display license `qwen`. Rights and licenses for any unreported prompts,
+    traces, labels, or training data are unknown.
+  lineage: The release identifies the two Qwen2.5-Math-Instruct base models and provides model weights plus a step-reward
+    inference interface. Source-to-prompt-to-trace-to-label-to-checkpoint lineage is unknown.
+  known_failure_modes:
+  - 'Step segmentation is an input requirement: the model card recommends double line breaks and insertion of `<extra_0>`
+    after each step, so formatting choices can alter the computed reward sequence.'
+  - The checked release sources do not disclose PRM training prompts, traces, labels, source provenance, filters, retained/rejected
+    examples, or item-level lineage.
+  - Reward-label semantics, calibration, aggregation, thresholds, and error analysis are not released, so independent verification
+    of the 0–1 reward scale is unavailable.
+  - The announcement's Best-of-N context scores candidate responses from step scores; Qwen's linked report warns that response-level
+    BoN alone can be biased for process verification.
+  citation_status: verified
+  confidence: medium
+  notes: V2 migration of a legacy seed. Official Qwen blog, Qwen 7B/72B model cards, and the report explicitly linked by those
+    sources were checked. This is a model-release disclosure ledger, not a claim that Qwen released the training data, labels,
+    construction recipe, calibration, or full PRM audit artifacts.
+inclusion_reason: Official Qwen release of two mathematical process reward models with a concrete per-step inference/reward
+  interface and a linked technical report, while the underlying data, labels, calibration, and reproducibility ledger remain
+  materially undisclosed.
+related: []
+tags:
+- qwen
+- qwen2-5-math-prm
+- process-reward-model
+- process-supervision
+- mathematical-reasoning
+- verifier-reward
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen released 7B and 72B mathematical process reward models that score segmented reasoning steps through
+  a 0–1 positive-class probability interface, but not their training data, labels, calibration, or construction/audit records.
+why_it_matters: It separates a usable open PRM interface from the unreleased data and verifier evidence needed to reproduce,
+  calibrate, or independently audit process supervision.
+card: null
+needs:
+- 'needs_data: prompt sources, traces, step records, labels, retained and rejected examples, dataset manifests, source-level
+  rights, and item-level lineage'
+- 'needs_verifier: positive-label semantics, answer/step verification protocol, calibration, aggregation, thresholds, coverage,
+  human validation, and false-positive/false-negative analysis'
+- 'needs_metadata: teacher/generator identities, filtering rules and yields, sampling settings, rollout counts, optimizer,
+  schedule, seeds, checkpoint mapping, and compute'
+- 'needs_audit: train/validation/test splits, data and benchmark decontamination, release-to-training mapping, version pins,
+  and reproducibility logs'
+- 'needs_code: official training, label-construction, filtering, calibration, and evaluation implementations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official Qwen announcement, official Qwen 7B and 72B model pages, and the official report linked from those pages
+    were checked. The released model weights and inference interface are verified; no official training-data or standalone
+    training-code artifact was verified.

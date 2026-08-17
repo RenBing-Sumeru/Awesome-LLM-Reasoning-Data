@@ -1,0 +1,6 @@
+- 区分统计分母：HF manifest 的 train 恰有 13,972,791 行，而附录表 5 给出四舍五入后的 607.3K 个 unique question 和 13.97M 个 pair。
+- 阅读第 2.2、3 节和附录 A-C，核查 format、teacher、filtering、diversity、两条 augmentation 分支，以及 threshold-zero majority contract。
+- “Majority”是 32 个 solution 中最常见的非 null 抽取表面形式；阈值 0 不要求固定共识，公开行也省略投票和 candidate。
+- 去污染过滤器覆盖 GSM8K、MATH、AMC 2023 和 AIME 2024；Omni-MATH 不在范围内，后来显示约 1.4% overlap。
+- 区分 release 与 current recipe 版本：dataset commit `469216e...` 保留 564 个过长问题，而已检查的 2026 Skills commit `74b8649...` 会删除过长 item。
+- 复用前，应把 CC BY 4.0 data 与 Apache-2.0 code 同逐条来源 attribution、teacher terms、candidate/rejection lineage 和更新后的 benchmark-overlap evidence 对齐。

@@ -1,0 +1,291 @@
+id: envscaler-2026
+title: 'EnvScaler: Scaling Tool-Interactive Environments for LLM Agent via Programmatic Synthesis'
+year: 2026
+venue: arXiv preprint
+authors:
+- Xiaoshuai Song
+- Haofei Chang
+- Guanting Dong
+- Yutao Zhu
+- Zhicheng Dou
+- Ji-Rong Wen
+source_role:
+- agent_environment
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- tool_use
+- agent_trajectories
+- stateful_environments
+- multi_turn_interaction
+- synthetic_environments
+training_use:
+- sft
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.05808
+  paper_pdf: https://arxiv.org/pdf/2601.05808v2
+  arxiv: https://arxiv.org/abs/2601.05808
+  code: https://github.com/RUC-NLPIR/EnvScaler
+  data: https://huggingface.co/collections/XXHStudyHard/envscaler
+  environment_dataset: https://huggingface.co/datasets/XXHStudyHard/EnvScaler-191-Env/tree/3d30c6ac2446c06b79d727f196b84df90cc9cb69
+  sft_scenario_dataset: https://huggingface.co/datasets/XXHStudyHard/EnvScaler-SFT-Scenario/tree/bf3bf8656541dfc82eae8672b9fcf76f32d4ab05
+  rl_scenario_dataset: https://huggingface.co/datasets/XXHStudyHard/EnvScaler-RL-Scenario/tree/a14061538b0ffd3e84d44edf40fbe67477f83552
+  sft_trajectory_dataset: https://huggingface.co/datasets/XXHStudyHard/EnvScaler-SFT-Traj-9K/tree/0279d9ac792a12bfd28f8659de07948b4698df63
+  project: null
+  huggingface: https://huggingface.co/collections/XXHStudyHard/envscaler
+  doi: https://doi.org/10.48550/arXiv.2601.05808
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/RUC-NLPIR/EnvScaler/tree/87e667397abacf274858c0964796beb8f984aafe#citation
+  release: https://github.com/RUC-NLPIR/EnvScaler/tree/87e667397abacf274858c0964796beb8f984aafe
+  license: https://github.com/RUC-NLPIR/EnvScaler/blob/87e667397abacf274858c0964796beb8f984aafe/LICENSE
+  leaderboard: null
+data_object:
+  object_type: A versioned bundle of executable synthetic tool environments, SFT/RL task scenarios, and filtered SFT tool-interaction
+    trajectories; no RL rollout corpus or complete paper-run replay archive is released.
+  prompt_source: Stateful, domain-specific tasks are sourced from API-Bank and ToolACE, transformed by LLMs into environment
+    descriptions, embedded/deduplicated, and used to synthesize environments and scenarios. Per-record upstream task identifiers
+    and complete transformation lineage are not released.
+  trace_author: Qwen3-30B-A3B-Thinking-2507 generates the released conversation and non-conversation SFT trajectories. Models
+    trained in the paper generate RL rollouts online, but those rollouts are not released.
+  environment_record:
+  - env_id
+  - environment summary and introduction
+  - state-space definition
+  - constraint rules
+  - operation list and tool schemas
+  - environment class name, code, and definition
+  - function details
+  sft_scenario_record:
+  - env_id and environment class name
+  - task_id
+  - JSON-serialized initial configuration
+  - task text
+  rl_scenario_record:
+  - env_id and environment class name
+  - task_id
+  - JSON-serialized initial configuration
+  - task text
+  - checklist items paired with executable Python check functions
+  released_sft_trajectory_record:
+  - conversation or non-conversation trajectory type
+  - task_info with environment ID, task ID, and task
+  - serialized tool definitions
+  - serialized system, user, assistant, and tool messages including tool calls
+  - serialized simulated-user messages
+  - step count
+  runtime_episode_fields:
+  - task information and tools
+  - interaction messages and user messages
+  - per-step observation
+  - per-step action/tool call
+  - per-step scalar reward
+  - terminated and truncated flags
+  - total reward
+  - final observation and final information
+  - step count
+  answer_format: The agent alternates natural-language reasoning with structured tool calls against the generated Python environment.
+    Non-conversation agents signal `Task Completed`; conversation episodes use simulated-user turns and terminate when the
+    user emits `###STOP###` or an action limit is reached.
+  process_fields:
+  - environment state
+  - observation/tool result
+  - reasoning and tool action
+  - simulated-user turn in conversation mode
+  - reward
+  - termination or truncation
+  observation: Tool-return observations and, in conversation mode, simulated-user messages. The released SFT rows preserve
+    messages/tool calls but not a fully versioned state-diff/replay manifest.
+  action_space: Environment-specific generated Python tools plus completion signaling; each environment averages 18.58 tools
+    according to paper Table 2.
+  environment_or_substrate: 191 synthesized executable Python environments with generated state schemas, constraint rules,
+    operations, documentation, and task-specific initialization.
+  verifier_or_reward: RL scenarios ship Boolean Python terminal-state check functions. The runtime executes each function
+    over final environment state and returns the fraction passed. Upstream environment/check construction and environment-selection
+    assessment use LLM agents, so the end-to-end contract is mixed rather than purely programmatic.
+  verifier_output: Per-check Boolean outcomes, aggregate scalar reward in [0,1], and episode termination/truncation metadata.
+    Raw checking-agent pass/warning/fail records and rejected check functions are not released.
+  reward: Terminal outcome reward equals passed checklist functions divided by total checklist functions. Public SFT environments
+    intentionally return zero reward and use format/completion/action-count filtering rather than terminal-state correctness.
+  terminal_predicate: Non-conversation episodes stop on the agent's completion signal or action limit; conversation episodes
+    stop on simulated-user `###STOP###` or action limit. These stop conditions do not establish success; verifier-bearing
+    RL scenarios separately compute final-state checklist reward.
+  provenance: API-Bank/ToolACE task pool -> stateful/domain-specific filtering -> LLM environment-description induction and
+    embedding deduplication -> LLM environment programming -> 100-round checking-agent assessment and not-fail filtering ->
+    scenario/initial-state/checklist synthesis -> SFT teacher interaction and filtering or online RL rollout -> SFT/RL training
+    and benchmark evaluation.
+  release_shape: 'Four official datasets: 191 environment rows; 4,684 SFT scenario rows across 140 environments with check
+    functions omitted; 2,550 RL scenario rows with check functions; and 9,022 claimed SFT trajectories. The current default
+    SFT-trajectory dataset builder is broken by two incompatible file schemas, although individual raw files remain downloadable.'
+recipe_metadata:
+  base_model: The scaling study trains Qwen3-1.7B, Qwen3-4B, and Qwen3-8B variants with SFT and/or RL and evaluates additional
+    baseline models; exact model-artifact revisions used in every run are not bound in a release manifest.
+  teacher: Qwen3-30B-A3B-Thinking-2507 generates the released SFT trajectories in conversation and non-conversation settings.
+  generator: GPT-4.1 and Qwen3-235B-Instruct-2507 support environment discovery/programming; GPT-4.1-mini and Qwen3-30B-A3B-Instruct-2507
+    support assessment. ScenGenerator uses LLMs to synthesize initial state, task, checklist, and check functions.
+  prompt_task_source: API-Bank and ToolACE tasks filtered for stateful, domain-specific tool interaction; exact per-record
+    source IDs, source mixture weights, and transformation prompts are unknown.
+  sampling_protocol: Environment candidates receive 100 checking rounds. SFT collects conversation and non-conversation teacher
+    interactions. RL uses 64 tasks with 8 rollouts each per update step in non-conversation mode.
+  temperature: RL example configuration sets temperature 0.99, top-p 0.99, and top-k 100. Environment/scenario construction
+    and released SFT trajectory generation temperatures are unknown.
+  rollout_count: Paper reports about 9K retained teacher trajectories for SFT. RL samples 512 rollouts per update step (64
+    tasks x 8); the aggregate number of RL rollouts retained or discarded is unknown and no RL rollout dataset is released.
+  inference_budget: 'Environment checking uses 100 rounds per candidate. RL uses up to roughly 200 update steps, maximum 32K
+    trajectory length, 4K generation length per interaction step, and example `max_actions: 40`.'
+  search_or_scaffold: SkelBuilder for environment induction/programming/checking; ScenGenerator for state/task/checklist generation;
+    generated Python tool environments; a simulated user in conversation mode; LlamaFactory for SFT; ROLL/Reinforce++ for
+    RL.
+  filtering_rule: Candidate environments are retained when `(pass + warning) / total >= 0.85`, not when strict pass rate is
+    0.85. SFT filtering drops invalid syntax, incomplete episodes, LLM-judged-impossible tasks, and trajectories outside 3–29
+    non-conversation or 5–39 conversation actions.
+  selection_threshold: Environment not-fail rate >= 0.85 across 100 checking rounds.
+  optimizer_or_training_scaffold: Full-parameter LlamaFactory SFT for 3 epochs at learning rate 1e-6, 32K maximum length,
+    effective batch 256, with `mask_history` final-turn supervision; ROLL Reinforce++ RL with KL coefficient 0.1 and example
+    seed 42/learning rate 1e-6.
+  user_simulator: An LLM-simulated user supplies progressive requirements in conversation mode and emits `###STOP###` when
+    satisfied; the exact model/version, prompts, decoding settings, and retry policy for the released trajectories are not
+    completely disclosed.
+audit:
+  source_mixture: API-Bank and ToolACE tasks; GPT-4.1/Qwen3-family environment generation and checking; generated Python environments/check
+    functions; Qwen3-30B-A3B-Thinking-2507 SFT trajectories; and online rollouts from trained Qwen3-family agents. Per-record
+    model/source attribution and mixture weights are unavailable.
+  split: Paper uses 140 of 191 environments for SFT data and the remaining 51 for RL. The official SFT scenario release has
+    4,684 rows across 140 environments; the RL scenario release has 2,550 rows. Split seed, environment-selection policy beyond
+    count, and semantic overlap are undisclosed.
+  decontamination: unknown
+  benchmark_overlap: Models are evaluated on BFCL-v3 multi-turn, Tau-Bench, and ACEBench-Agent. No systematic overlap or semantic-contamination
+    analysis between API-Bank/ToolACE-derived construction inputs, generated environments/scenarios, these benchmarks, or
+    model pretraining is disclosed.
+  lineage: The paper documents the pipeline and named model roles at stage level, but the release lacks per-row upstream task
+    IDs, prompts, random seeds, generator/checker responses, rejection reasons, dependency locks, and one manifest binding
+    paper v2 to exact code/data/model revisions.
+  license: The repository and four official dataset cards state MIT. The release does not separately document rights for API-Bank/ToolACE-derived
+    task material, model-provider outputs, or whether every generated artifact and trajectory is covered by the root license.
+  release_version: 'Paper arXiv v2 (2026-04-17); code inspected at commit 87e667397abacf274858c0964796beb8f984aafe; HF revisions:
+    191-Env 3d30c6a, SFT-Scenario bf3bf86, RL-Scenario a140615, SFT-Traj-9K 0279d9a. No Git tag or GitHub Release exists.'
+  version_drift: No immutable release manifest binds paper v2, GitHub commit, four HF revisions, dependencies, prompts, and
+    model endpoints. The current SFT trajectory revision also mixes incompatible raw and masked schemas, causing the default
+    Hugging Face builder/viewer to fail.
+  verifier_or_judge_failure_modes:
+  - Generated check functions may omit intended constraints, over-constrain valid solutions, depend on brittle generated state
+    fields, or reward terminal-state shortcuts; no independent false-positive/false-negative audit is reported.
+  - Environment acceptance counts `warning` together with `pass` in the >=0.85 not-fail threshold, so the headline filter
+    should not be interpreted as a 0.85 strict correctness rate.
+  - LLM checking agents and the LLM impossibility filter can encode model-specific blind spots; complete prompts, raw votes,
+    disagreement, and calibration records are not released.
+  - Completion tokens/user stop signals end episodes independently of reward, so incomplete or incorrect terminal states can
+    still terminate cleanly.
+  - The public SFT pipeline has no terminal correctness reward because check functions are omitted; retained trajectories
+    are format/completion filtered rather than programmatically verified for task success.
+  - Environment and check-function strings are executed via Python `exec` with builtins available; generated release code
+    is not sandboxed and must be treated as untrusted.
+  - 'Small-model RL is not uniformly beneficial: Qwen3-1.7B slightly declines on Tau-Bench, which the paper links to noisy
+    reward sensitivity.'
+  successful_and_failed_sample_retention: The public environment dataset retains 191 selected environments but not the 75
+    rejected programs/check logs. SFT trajectory code drops malformed, incomplete, too-short/too-long, and LLM-judged-impossible
+    cases, but rejected trajectories are not released. No RL rollout corpus, reward trace archive, or full success/failure
+    accounting was found.
+  privacy_or_consent: The objects are described as synthesized from existing task datasets and model interactions. No personal-data
+    audit, human-subject collection, consent process, or privacy scan is documented; whether upstream tasks contain personal
+    or sensitive strings is unknown.
+  citation_status: verified
+  confidence: high
+  notes: Use the paper title-block author order; arXiv metadata swaps the final two authors. Treat 7K and 9K as rounded paper
+    descriptions and use 7,234 released scenarios and 9,022 claimed SFT trajectories for the pinned releases. Do not treat
+    the runtime episode schema as a released RL trajectory corpus. Restrict `training_use` to SFT, RLVR, and agent training.
+  remaining_unknowns:
+  - exact per-record API-Bank/ToolACE provenance and upstream transformation rights
+  - construction, checking, scenario, and user-simulator prompts plus dated model endpoints and decoding/retry settings
+  - immutable release manifest, dependency lock, and code/data/model hash binding
+  - environment split seed, semantic deduplication, benchmark-overlap, and decontamination results
+  - complete pass/warning/fail checking records and 75 rejected environment programs/logs
+  - successful and failed SFT/RL rollout corpora with rewards, final states, seeds, truncations, and replay metadata
+  - independent check-function coverage, false-positive/false-negative, reward-hacking, and adversarial audit
+  - data-specific license/provenance statement for upstream tasks and provider outputs
+  - privacy or sensitive-string scan of executable state fixtures and traces
+inclusion_reason: 'EnvScaler is a direct environment-and-agent-data contribution: it publishes executable stateful tool worlds,
+  distinct SFT and verifier-bearing RL scenarios, and filtered SFT trajectories while exposing how generated terminal checks
+  and environment scale enter agent post-training.'
+related:
+- feedback-driven-tool-use-improvements-via-automated-build-environments-2025
+- envfactory-2026
+- scaleenv-2026
+tags:
+- envscaler
+- environment-agent-trajectory-data
+- tool-use
+- executable-environment
+- synthetic-environment
+- agent-sft
+- agent-rlvr
+- terminal-state-verifier
+- mixed-verification
+- failure-retention-gap
+- version-drift
+- code-execution-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: EnvScaler releases 191 executable tool environments, 7,234 SFT/RL scenarios, and 9,022 SFT trajectories,
+  but SFT success is not terminal-state verified and reproducible RL reuse still lacks rollout, version, and verifier-audit
+  records.
+why_it_matters: It makes environment scale a concrete post-training data variable—state, tools, rules, tasks, trajectories,
+  and executable outcome checks—while showing why release shape, terminal-versus-success semantics, rejected samples, code
+  safety, and version pins determine whether synthetic agent data can be trusted or replayed.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified arXiv v2, all paper sections/appendices/tables used here, official repository and pinned commit, executable
+    selection/reward/SFT-filter/config code, MIT license, official Hugging Face collection, and the four pinned dataset schemas/counts.
+    No exhaustive execution of all generated environments, full semantic check audit, or paper-run replay was performed.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release_manifest: tag and bind paper v2, code commit, four dataset revisions, dependencies, prompts, model endpoints,
+  and seeds'
+- 'needs_hf_schema_fix: separate raw and masked SFT trajectory files into compatible dataset configurations and restore default
+  loading/viewer behavior'
+- 'needs_replay: release successful and failed SFT/RL episodes with actions, observations, rewards, final states, truncations,
+  seeds, and runtime manifests'
+- 'needs_failure_corpus: release or summarize the 75 rejected environments, check-agent records, and trajectory rejection
+  counts/reasons'
+- 'needs_verifier_audit: independently test generated terminal checks for coverage, false rewards, missed valid paths, reward
+  hacking, and cross-version stability'
+- 'needs_security_boundary: publish hardened sandbox/isolation guidance for executing generated environment and check-function
+  Python'
+- 'needs_split_and_decontamination: publish split seed/policy, semantic deduplication, benchmark overlap, and public-exposure
+  controls'
+- 'needs_license_and_provenance: document upstream API-Bank/ToolACE rights, provider-output terms, and per-record source/model
+  lineage'
+- 'needs_simulator_metadata: disclose conversation-user model/version, prompts, decoding settings, retries, and stop-policy
+  details'
+card: null

@@ -1,0 +1,5 @@
+- 将 60 万、20 万和 80 万数字解读为报告中的阶段数量，而不是公开数据集。
+- 将 R1-Zero 的规则准确性/格式反馈与后续语言 reward、V3 judgment 和通用 reward model 分开。
+- 公开权重和 dense distill 不会披露 cold-start prompt、RL rollout、来源权利或反馈校准。
+- 不要将评测 temperature、top-p、样本数或 token cap 当作训练采样设置的证据。
+- 将该报告保留在 Track 12：对有影响力 RL 管线的披露不是 Track 8 的可复用 recipe 主张。

@@ -1,0 +1,3 @@
+Use TheoremBench as a verifier-backed evaluation surface for formal-math agents and Lean proof generation. It is most useful when a study needs to know not only whether a parent theorem was solved, but also how much of the theorem development the system can discharge.
+
+A reusable record should preserve theorem ID, Lean declaration, plain-main or premised view, source context, imports, extracted premises, ground-truth proof, generated proof, Lean4/mathlib version, compile verdict, error text, sample budget, timeout, and token counts. Keep formal checker acceptance separate from natural-language theorem understanding and from any training-data filtering claim.

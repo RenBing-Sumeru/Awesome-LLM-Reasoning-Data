@@ -1,0 +1,3 @@
+The general process reward improves trajectory selection or reinforcement over terminal rewards and transfers to some unseen tasks or robots. Progress definitions may still differ across tasks.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of robot progress process rewards in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

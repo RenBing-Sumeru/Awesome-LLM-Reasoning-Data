@@ -1,0 +1,3 @@
+- **Complexity proxy.** An evolved instruction can be longer without requiring a harder decision; compare operator-specific examples and human difficulty judgments rather than token length alone.
+- **Unverified teacher targets.** The same proprietary teacher rewrites requests and answers them, so errors can pass directly into SFT; add an independent answer or execution check for factual and reasoning tasks.
+- **Evaluation dependence.** The paper acknowledges limits of GPT-4 and small human evaluations; rerun a pinned judge and task-specific tests before using WizardEval gains as a deployment claim.

@@ -1,0 +1,5 @@
+已有 Lean 系统已经提供 LEAP 使用的多种组件：Lean 提供 kernel-backed checking，LeanSearch 检索 Mathlib 材料，Lean Blueprint 用 dependency graph 表示人类证明计划，Draft, Sketch, and Prove 连接非形式化论证与形式化证明，Goedel-Prover-V2、AlphaProof 等系统训练专用 formal prover，Hilbert 与 Aristotle 使用 agentic search。LEAP 没有使这些组件本身变新，benchmark 扩展也应与 proof-search mechanism 分开评价。
+
+真正改变的是职责分配。general-purpose model 负责 informal reasoning、proof generation、decomposition、revision 和 heuristic decomposition review；Lean 提供可执行 acceptance predicate；AND-OR DAG 提供全局 proof memory、共享 lemma、anticipatory lemma planning 和无环 dependency tracking，而不是把每次分解当作彼此独立的递归 subtree。Lean-IMO-Bench 发布 60 条由 IMO-ProofBench 人工形式化得到的评测记录。DAG 与 reviewer ablation 使这些设计选择可以同“只增加 sample 数量”区分开。
+
+对 reasoning-data 研究而言，其价值在于区分常被混为一谈的三种记录：checker-accepted artifact、judge-approved search decision 与到达结果所用 compute。公开发布只稳定保留了第一种。复用前仍要检查 statement fidelity、固定 proof environment 和 backend、跨方法规范化 compute、核验 benchmark exposure，并补齐失败分支与 reviewer output。没有这些条件时，它是有用的 evaluation/reference design，而非完整 trajectory-data recipe。

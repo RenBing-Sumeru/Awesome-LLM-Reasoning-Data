@@ -1,0 +1,1 @@
+已有事实性 benchmark 多评估短 claim、检索段落或公开答案集。FACTS Grounding 把设置改成基于长 public/private 文档的长回答，并通过 leaderboard 提交评测。质量信号是 hidden private split 以及 eligibility + grounding 的显式 judge。LLM judge 做 factuality 并不新。复用前要查 judge prompt、聚合方式、private split 政策、unsupported partial-credit 行为，以及回答是否因无害遗漏或风格被惩罚。

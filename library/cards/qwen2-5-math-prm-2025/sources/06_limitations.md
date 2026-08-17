@@ -1,0 +1,4 @@
+The input format is part of the contract: the model card recommends double-newline segmentation and an extra_0 separator after each step, so formatting can change the reward sequence. The checked release does not define the positive label, step-quality taxonomy, label source, inter-annotator agreement, calibration, score aggregation beyond the reported Best-of-N example, thresholds, coverage, or error rates.
+
+There is no verified release of PRM training prompts, traces, step records, labels, filters, retained or rejected examples, splits, decontamination evidence, generator or teacher, optimization settings, training code, or source-to-checkpoint lineage. The qwen model-page license label does not establish rights for unreported data. The linked report's warning that response-level Best-of-N can be biased for process verification should not be generalized into a claim of a calibrated PRM.
+

@@ -1,0 +1,1 @@
+论文将失败命名为 **Small Model Learnability Gap**，分为 long-CoT gap 和 large-teacher gap，并提出 Mix Distillation：Mix-Long 混合长短 CoT，Mix-Large 混合强弱教师响应。主要 3B 实验采用 1:4 比例，即长 CoT 或大教师记录占 20%。其数据贡献是受控的轨迹选择与混合配方，而非新公共语料库。

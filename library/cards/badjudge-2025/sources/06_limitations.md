@@ -1,0 +1,3 @@
+The strongest results assume full control of evaluator inputs, labels, or weights; web poisoning is more realistic but produced weaker and trigger-dependent effects. The defense experiments use related models fine-tuned from the same base and selected clean data, so model merging may not transfer to arbitrary proprietary judges or unknown provenance. ASR and clean agreement do not by themselves establish fairness or human alignment. Before reuse, test false positives, clean-task degradation, and the threat assumptions of the actual data pipeline.
+
+The study’s main metric uses GPT-4o-mini agreement as a clean proxy, so independent human validation remains necessary for consequential use.

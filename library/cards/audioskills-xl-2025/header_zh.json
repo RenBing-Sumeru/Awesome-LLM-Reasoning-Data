@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AudioSkills-XL 把声音、音乐和语音来源扩展为 800 万条问答，并另设 25 万条受控思考记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "音频语言监督微调与推理调优",
+  "confidence_ch": "高",
+  "authors_ch": "Arushi Goel、Sreyan Ghosh、Jaehyeon Kim、Sonal Kumar、Zhifeng Kong、Sang-gil Lee、Chao-Han Huck Yang、Ramani Duraiswami、Dinesh Manocha、Rafael Valle、Bryan Catanzaro",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

@@ -1,0 +1,23 @@
+{
+  "institutions": [
+    "CASIA",
+    "UCAS",
+    "Beijing Key Laboratory of Super Intelligent Security of Multi-Modal Information",
+    "NWPU",
+    "JLU",
+    "USTC",
+    "PKU",
+    "HelloGroup",
+    "ShanghaiTech"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2605.07492",
+    "https://arxiv.org/html/2605.07492",
+    "https://github.com/zhihengli-casia/puredocbench",
+    "https://huggingface.co/datasets/zhihengli-casia/puredocbench"
+  ],
+  "verification_note": "Official arXiv HTML verifies CASIA/UCAS/NWPU/JLU/USTC/PKU/HelloGroup/ShanghaiTech institution abbreviations and per-author affiliations; code, project, and Hugging Face sources verify artifacts."
+}

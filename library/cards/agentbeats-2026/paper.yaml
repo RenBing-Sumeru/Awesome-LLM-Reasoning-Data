@@ -1,0 +1,242 @@
+id: agentbeats-2026
+title: 'AgentBeats: Agentifying Agent Assessment for Openness, Standardization, and Reproducibility'
+year: 2026
+venue: arXiv preprint
+authors:
+- Xiaoyuan Liu
+- Jianhong Tu
+- Yuqi Chen
+- Siyuan Xie
+- Sihan Ren
+- Tianneng Shi
+- Gal Gantar
+- Evan Sandoval
+- Donghyun Lee
+- Daniel Miao
+- Peter J. Gilbert
+- Nick Hynes
+- Mauro Staver
+- Warren He
+- David Marn
+- Andrew Low
+- Xi Zhang
+- Elron Bandel
+- Michal Shmueli-Scheuer
+- Siva Reddy
+- Alexandre Drouin
+- Alexandre Lacoste
+- Ramayya Krishnan
+- Elham Tabassi
+- Yu Su
+- Victor Barres
+- Chenguang Wang
+- Wenbo Guo
+- Dawn Song
+source_role:
+- infrastructure
+- benchmark
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- agent_trajectories
+- environment_interaction
+- agent_evaluation
+- coding_agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.13608
+  paper_pdf: https://arxiv.org/pdf/2606.13608
+  arxiv: https://arxiv.org/abs/2606.13608
+  code: https://github.com/agentbeats/agentbeats
+  data: null
+  project: https://agentbeats.dev/
+  documentation: https://docs.agentbeats.org/
+  tutorial: https://github.com/RDI-Foundation/agentbeats-tutorial
+  leaderboard_template: https://github.com/RDI-Foundation/agentbeats-leaderboard-template
+  competition: https://rdi.berkeley.edu/agentx-agentbeats.html
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2606.13608
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Judge-agent-owned fixed or adaptive benchmark tasks and data. In the coding case, tasks come from the 731-instance
+    SWE-Bench Pro public split, all 89 Terminal-Bench 2.0 tasks, and 1,222 DevEval instances retained after ground-truth-test
+    validation.
+  trace_author: Subject agents produce A2A/MCP assessment episodes under judge-controlled tasks and environments; no centralized
+    released trajectory corpus is established.
+  answer_format: A delegator request with participant role-endpoint mapping and configuration; judge-issued A2A tasks; optional
+    MCP tool calls and environment observations; subject responses/artifacts; final environment state; judge metrics; and
+    a JSON result report whose inner schema is assessment-specific.
+  process_fields:
+  - assessment_request
+  - participant_roles
+  - configuration
+  - task_id
+  - task_instruction
+  - environment_access
+  - a2a_message_or_update
+  - mcp_tool_call
+  - tool_or_environment_observation
+  - subject_response
+  - output_artifact
+  - final_environment_state
+  - metric
+  - score
+  - result_report
+  observation: Judge/benchmark-specific A2A messages, MCP tool responses, logs, artifacts and environment state. The coding
+    case uses isolated source-tree containers and terminal/filesystem interactions.
+  action_space: Assessment-specific A2A responses and MCP calls. In the coding case, subject agents edit/read files and issue
+    terminal or harness-native tool actions; no universal action vocabulary is imposed.
+  environment_or_substrate: Judge-controlled benchmark data, tools and environments orchestrated in local, remote, hosted,
+    proxy or CI mode; the coding case uses isolated containers and either runtime injection or remote shell over MCP.
+  verifier_or_reward: Judge-agent-owned predefined metrics implemented programmatically, semantically through prompts/LLM
+    judgment, or as a mixture. The coding case runs each benchmark's evaluation scripts over collected artifacts/environment
+    state to produce final solve scores.
+  terminal_predicate: Assessment-specific completion notification or timeout followed by judge-defined scoring. Coding tasks
+    terminate when the subject signals completion or times out, after which the judge collects artifacts and runs benchmark
+    tests.
+  provenance: Delegator configuration -> judge/task/data/environment preparation -> subject A2A/MCP episode -> response/artifact/final
+    state -> judge metrics and result report -> platform, CI or local output. Immutable record-level manifests are not released
+    with the paper.
+recipe_metadata:
+  base_model: 'Coding case: Claude Opus 4.7, GPT-5.4, Gemini 3.1 Pro, and Qwen3.5-397B-A17B. Field-study agents use heterogeneous
+    and incompletely enumerated models.'
+  teacher: unknown
+  generator: Community-authored judge and subject agents generate assessment interactions. The coding case pairs each named
+    model with Claude Code, Codex CLI, OpenCode, or mini-SWE-agent.
+  prompt_task_source: Judge-specific datasets/configuration. Main case study uses SWE-Bench Pro public, Terminal-Bench 2.0,
+    and DevEval; exact meta-instruction text and complete configuration files are not released with the paper.
+  filtering_rule: Field study excludes inaccessible or malformed repositories and deduplicates the rest. DevEval ground-truth
+    solutions are executed in the authors' environment and failing instances are dropped, yielding 1,222 retained tasks.
+  sampling_protocol: 'Field study snapshot: 298 judge agents in 12 categories and 467 subject agents. Main coding evaluation:
+    731 SWE-Bench Pro public tasks, all 89 Terminal-Bench 2.0 tasks, and 1,222 filtered DevEval tasks. Harness-swap experiments
+    use 20% subsamples of DevEval and SWE-Bench Pro and all Terminal-Bench tasks.'
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Agents use default prompts/inference settings; reported thinking efforts are xHigh for Opus 4.7, Medium
+    for GPT-5.4, High for Gemini 3.1 Pro, and thinking enabled without another effort setting for Qwen3.5. Total main experiment
+    cost is about $6,000; exact time limits, seeds and per-instance retry budgets are unknown.
+  selection_threshold: DevEval instances must pass ground-truth tests before inclusion. Episode success thresholds are benchmark-specific
+    test or metric predicates.
+  optimizer_or_scaffold: No policy/reward-model training is performed. AgentBeats supplies A2A/MCP orchestration, judge-controlled
+    environments and deployment modes; the coding case evaluates fixed model-harness pairings.
+audit:
+  source_mixture: Heterogeneous community-authored judge tasks, benchmark datasets, A2A/MCP interactions, environment states,
+    CI outputs, platform metadata, and coding-agent runs on DevEval, SWE-Bench Pro and Terminal-Bench 2.0.
+  split: There is no universal AgentBeats train/test split. The coding case uses SWE-Bench Pro's 731-instance public split,
+    all 89 Terminal-Bench 2.0 instances, and 1,222 DevEval instances after ground-truth filtering; the harness-swap study
+    subsamples 20% of DevEval and SWE-Bench Pro.
+  decontamination: unknown
+  benchmark_overlap: No platform-wide subject-model contamination or public-task exposure audit is disclosed. The paper explicitly
+    does not reproduce Anthropic's SWE-Bench Pro memorization screen and cannot use Qwen's corrected unreleased benchmark
+    form.
+  license: The arXiv manuscript is CC BY-NC-ND 4.0. No detected repository license was found for the checked earlier SDK,
+    docs, tau agentification example, current tutorial, or leaderboard template; benchmark-specific repositories may differ.
+    No umbrella license covers tasks, trajectories, logs or results.
+  lineage: Delegator request/config -> judge data/environment/tool setup -> subject-agent episode -> judge scoring -> local/platform/CI
+    result. The paper does not publish a record-level lineage manifest tying field-study or coding-case records to immutable
+    artifact versions.
+  release_version: Paper evidence is arXiv:2606.13608v2 (2026-06-14). The linked earlier official SDK's latest release is
+    v1.2.6 (2025-11-17) and its README marks it deprecated. Current tutorial/templates/dashboard are rolling artifacts updated
+    independently of the paper; no commit/image/result manifest binds them to v2.
+  successful_and_failed_sample_retention: Appendix A reports aggregate resource/tool statistics for both succeeded and failed
+    coding runs, but no record-level success/failure trajectory archive or exclusion ledger is released.
+  privacy_or_consent: Competition and remote/hosted modes can involve private services, credentials and execution logs. The
+    checked paper and official artifacts do not provide a complete consent, retention, deletion or redistribution policy for
+    submitted code and traces.
+  known_failure_modes:
+  - 'Judge semantics are heterogeneous: programmatic tests, environment predicates, prompts and LLM judges are not interchangeable,
+    so scores across judges do not share one reward meaning.'
+  - Semantic judge or user-simulation logic can be prompt-injected; the paper recommends isolating scoring in a sub-agent
+    but does not audit all 298 judges for attacks or false positives.
+  - Remote agents may lack observable logs and standardized reset behavior; authentication and control-plane support are necessary
+    but not a proof of reproducibility.
+  - Coding-agent runtime injection can fail or perturb the evaluation container, motivating a preflight and remote-shell fallback.
+  - Several evaluated models and production harnesses are proprietary, and provider/API/model behavior may drift after the
+    paper.
+  - 'Public-score fidelity depends on configuration and benchmark version: memorization screens, corrected splits and reasoning-effort
+    choices differ from vendor reports.'
+  - 'Harness-level tool logs are not fully comparable: each harness exposes different tools, MSA omits token counts, and shell
+    calls can hide read/edit/search actions.'
+  - No paper-linked task/trajectory data card, immutable container/image manifest, result bundle or record-level replay archive
+    was verified.
+  - The earlier official SDK is deprecated and predates arXiv v2, while the current tutorial, gateway/template stack and live
+    dashboard continue to change.
+  - Core/reference repository licenses and an umbrella task/trace/result license are missing, blocking confident redistribution
+    or training-data reuse.
+  citation_status: verified
+  confidence: medium
+  notes: The arXiv v2 paper and appendices, official docs/dashboard/competition page, GitHub organizations, deprecated SDK
+    and release metadata, current tutorial/local runner, leaderboard template, and tau agentification example were checked.
+    Paper identity and protocol/experiment claims are verified; release completeness, licensing and exact replay remain partial.
+  remaining_unknowns:
+  - Exact commits, Docker digests, benchmark snapshots, model/API versions, prompts, secrets/configuration and time limits
+    behind Tables 6-10.
+  - Per-instance rollout counts, temperatures, random seeds, retries and failure handling.
+  - Record-level trajectories, logs, artifacts, scores and failed-run reasons.
+  - Frozen 298-judge/467-subject manifest, repository exclusion ledger, deduplication keys and prompt-scanner snapshot.
+  - Universal result schema, platform-wide provenance, contamination checks and retention/deletion policy.
+  - Common code/task/trace/result license and rights for cross-repository aggregation.
+  - Author-confirmed mapping from the deprecated SDK to the June 2026 experiment stack.
+inclusion_reason: 'AgentBeats makes the evaluation environment and feedback contract first-class agents: a judge packages
+  tasks, tools, environment setup and scoring behind A2A/MCP, producing complete subject-agent episodes whose results can
+  be compared and audited even though the paper does not release a reusable trajectory corpus.'
+related:
+- hal-2025
+- tau2-bench-2025
+- mcp-agentbench-evaluating-real-world-language-agent-performance-2025
+tags:
+- agentbeats
+- agentified-agent-assessment
+- agent-evaluation
+- a2a
+- mcp
+- judge-agent
+- agent-trajectories
+- environment-feedback
+- coding-agents
+- evaluation-infrastructure
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: AgentBeats turns a benchmark into an A2A/MCP judge agent that owns tasks, environments and scoring, and
+  validates the interface through a 298-judge/467-subject field study plus standardized coding-agent episodes.
+why_it_matters: It exposes the missing contract around agent trajectories—who provides the environment, what the judge can
+  observe, how terminal outcomes become metrics, and which deployment artifacts must be pinned—while also showing why protocol
+  standardization alone does not make traces licensed or exactly replayable.
+card: null
+needs:
+- 'needs_release_manifest: bind arXiv v2 to exact repositories/commits, Docker image digests, benchmark snapshots, model/API
+  versions, configs and result artifacts'
+- 'needs_trajectory_release: publish record-level successful and failed coding trajectories, logs, artifacts, scores and exclusions'
+- 'needs_field_study_manifest: publish the frozen 298-judge/467-subject inventory, repository filters, dedup keys and prompt-extraction
+  procedure'
+- 'needs_license: publish code licenses and an explicit policy for benchmark tasks, submitted agents, traces, logs and leaderboard
+  results'
+- 'needs_replay: provide one immutable local/CI replay bundle and reconcile the deprecated v1.2.6 SDK with the current template/gateway/Amber
+  stack'
+- 'needs_decontamination: document subject-model exposure and benchmark-version/memorization controls'
+- 'needs_privacy_policy: document credential, private-service, log/trace retention, consent, deletion and redistribution rules'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Primary paper identity, v2 full text, official project/docs/competition, deprecated SDK release state, and current
+    tutorial/template artifacts were verified. Artifact verification does not imply that the paper's experiments are exactly
+    replayable or that trajectories are released/licensed.

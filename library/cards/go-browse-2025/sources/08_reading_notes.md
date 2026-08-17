@@ -1,0 +1,5 @@
+- Distinguish the 196,462-row raw release from the 164,533-row processed release and record which one a claim uses.
+- Preserve task proposal, feasibility attempts, judge outputs, solver traces, graph metadata, observations, actions, and terminal rewards as separate lineage stages.
+- Reconcile the paper's composition table with the separate “39K unsuccessful trajectories” statement before using aggregate counts.
+- VLM feasibility and quality judgments are filtering signals, not proof that every retained task or browser action is correct.
+- Audit page provenance, timestamps, privacy, screenshots, HTML rights, dataset terms, and immutable manifests before reuse.

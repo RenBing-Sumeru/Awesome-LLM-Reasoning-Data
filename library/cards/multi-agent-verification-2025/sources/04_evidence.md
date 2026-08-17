@@ -1,0 +1,3 @@
+The paper reports that multi-agent verification scales more favorably than the compared single-verifier, self-consistency, and reward-model baselines in its experiments. It further presents gains in settings where verifier strength or the training configuration changes, supporting the claim that a panel can create useful selection information.
+
+That evidence is conditional on the chosen tasks, base models, verifier prompts, and aggregation protocol. It does not show that simply adding agents always helps: correlated judges can agree on the same mistake, and a panel with much larger total inference cost must be compared under a matched budget.

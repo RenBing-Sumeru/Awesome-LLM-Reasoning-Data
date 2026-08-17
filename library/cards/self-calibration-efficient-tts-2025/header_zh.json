@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"自校准将自一致性置信度蒸馏到单次前向传播，使采样可以依据置信度早停。","reading_priority_ch":"可读","paper_type_ch":"置信度校准测试时扩展研究","best_for_ch":"希望减少固定最佳候选采样成本的读者。","confidence_ch":"高","authors_ch":"Chengsong Huang、Langlin Huang、Jiaxin Huang（华盛顿大学圣路易斯分校）；Jixuan Leng（卡内基梅隆大学）；Jiacheng Liu（华盛顿大学）","category_ids":["scaling_rlvr_test_time_compute"]}

@@ -1,0 +1,6 @@
+- 先明确对象边界：一个静态current screenshot加一个action，用于预测next-state text或Yes/No事实；不存在完整episode、可执行环境、reset或terminal success。
+- 区分MobileWorldBench与MobileWorld：前者评测250个generation transition和1,787个保留QA item，后者提供约1.4M个模型标注item用于SFT。
+- 评分前审计图像完整性：固定官方snapshot中只有**249/250**个generation row同时具备两张引用screenshot。
+- 固定judge：论文指定`gpt-4o-2024-08-06`，发布评分脚本在无显式配置时默认`gpt-4o-mini`。
+- 正确理解mixed feedback：generation使用GPT-4o accuracy/completeness/relevance分数；QA使用精确Yes/No accuracy，label为1,162个Yes对625个No。
+- 复用前核验split hash、deduplication/decontamination、failed/no-change保留、Parquet manifest、许可、privacy/consent与第三方screenshot权利。

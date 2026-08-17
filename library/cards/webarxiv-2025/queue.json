@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T03:30:43Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "研究范围窄 web评测可复现性，也不算严格的benchmark",
+    "updated_at": "2026-07-15T03:30:43Z"
+  }
+}

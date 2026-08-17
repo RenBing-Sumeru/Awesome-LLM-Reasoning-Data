@@ -1,0 +1,5 @@
+- 不要把 SWiRL 编入 benchmark：其贡献是合成轨迹构造、筛选与离线 step-wise RL recipe；未核验到 SWiRL benchmark 或官方语料发布。
+- 必须区分两种数据单元：生成对象是完整搜索/计算器轨迹，主优化器消费的是每个动作一条、相互重叠的前缀子轨迹。优先阅读 §2 与 Figure 2。
+- 必须区分 Gemini 的两个角色：Appendix A 中 stage-1 的 GOOD/BAD 过程筛选用于选择轨迹；§2.2 中 stage-2 的生成式动作 reward 不使用 golden answer，且 prompt/标度未披露。
+- 应把 Figure 4 与 Appendix C 对照阅读：process-only 对 SWiRL 最好并保留错误结果，而过程与结果交集对 SFT 对比最好；筛选质量取决于训练目标。
+- 复用前必须核验轨迹、拒绝样本、reward、reward 映射、模型/工具/索引版本、optimizer 设置、划分/重叠控制、lineage 与许可证；这些项目仍不可用或为 unknown。

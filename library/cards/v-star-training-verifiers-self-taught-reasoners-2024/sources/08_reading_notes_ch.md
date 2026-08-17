@@ -1,0 +1,5 @@
+- 结合 Algorithm 1 阅读 Section 3：只有正确样本进入 `D_GEN`，所有带标签样本进入 `D_VER`，最终 DPO pairs 是同题正确解与错误解的 Cartesian products。
+- 区分不同预算：3 轮训练 × 16 个候选等于每题 48 个候选；主测试指标从 128 个候选估计 Best-of-64；large-k GSM8K 图使用 1,000 次生成。
+- 把 GSM8K answer equality 和 MBPP test passing 视为 terminal outcome label，而不是对每个 rationale step 或完整 program semantics 的验证。
+- 把 Sections 4.4-4.7 作为边界阅读：DPO 优于受测 LoRA ORM，Best-of-k 在 k 至少为 16 时饱和，把 verifier 放入 MBPP training loop 也没有显著收益。
+- 复用前应处理官方代码、buffer、pair manifest、checkpoint、hyperparameter、execution sandbox、split ID、calibration 与 decontamination audit 的缺失。

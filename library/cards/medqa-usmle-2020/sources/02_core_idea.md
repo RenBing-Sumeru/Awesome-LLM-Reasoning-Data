@@ -1,0 +1,3 @@
+The contribution is a large medical-exam QA benchmark spanning three languages and several exam sources. The paper reports 61,097 questions in total and 12,723 English questions, including USMLE-style medical licensing questions.
+
+The core mechanism is curation of exam-style multiple-choice questions into released train/dev/test resources, with answer-key accuracy as the feedback contract. Closest comparisons are general QA benchmarks and earlier medical QA datasets such as PubMedQA; MedQA shifts the evaluation surface toward licensing-exam reasoning. The direction label is medical-domain benchmark data, with audit risk around subset identity, split versions, licenses, and public benchmark contamination.

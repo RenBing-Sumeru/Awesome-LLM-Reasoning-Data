@@ -1,0 +1,19 @@
+{
+  "title": "Praetor: A Fine-Grained Generative LLM Evaluator with Instance-Level Customizable Evaluation Criteria",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.513/",
+    "data": "https://github.com/tjunlp-lab/Praetor",
+    "code": "https://github.com/tjunlp-lab/Praetor",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:15:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布含问题、回答、实例级准则、参考答案和批评的 Praetor_trainset，训练可自定义标准的双语裁判",
+    "updated_at": "2026-07-25T10:15:52Z"
+  }
+}

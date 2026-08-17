@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "为每个提示词生成 n 条 rollout，但只选择奖励方差最大的 m 条极端奖励 episode 更新 GRPO，以降低昂贵的策略更新成本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "RLVR rollout 下采样与系统效率方法",
+  "best_for_ch": "关注 GRPO、rollout 筛选、奖励多样性和推理/训练硬件解耦的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Yixuan Even Xu、Yash Savani、Fei Fang、J. Zico Kolter",
+  "category_ids": [
+    "rollout_search_test_time_trace_data",
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T08:24:47Z"
+}

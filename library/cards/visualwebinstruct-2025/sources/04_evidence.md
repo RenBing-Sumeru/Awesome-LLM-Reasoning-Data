@@ -1,0 +1,3 @@
+1. In the controlled data ablation, LLaVA-OneVision-mid rises from a 26.3 seven-benchmark average to 38.1 with VisualWebInstruct, compared with 33.6 using LLaVA-CoT; mixing both reaches 39.7. On the stronger MAmmoTH-VL backbone, VisualWebInstruct raises the average from 45.4 to 49.0, and the mixed run reaches 50.4.
+
+2. The final 7B MAmmoTH-VL2 reports 40.7 on MMMU-Pro standard, 68.1 on MathVista, 42.6 on MathVerse, and 55.7 on DynaMath. These results support the SFT utility claim for the reported backbones and data mixture, but they do not isolate web retrieval from teacher strength or prove correctness of every released trace.

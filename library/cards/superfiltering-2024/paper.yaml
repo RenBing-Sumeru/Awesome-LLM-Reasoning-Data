@@ -1,0 +1,131 @@
+id: superfiltering-2024
+title: 'Superfiltering: Weak-to-Strong Data Filtering for Fast Instruction-Tuning'
+year: 2024
+venue: ACL 2024 Main
+authors:
+- Ming Li
+- Yong Zhang
+- Shwai He
+- Zhitao Li
+- Hongyu Zhao
+- Jianzong Wang
+- Ning Cheng
+- Tianyi Zhou
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.acl-long.769/
+  arxiv: https://arxiv.org/abs/2402.00530
+  code: https://github.com/tianyi-lab/Superfiltering
+  data: https://github.com/tianyi-lab/Superfiltering/tree/main/data
+  project: https://github.com/tianyi-lab/Superfiltering
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.acl-long.769
+  venue: https://aclanthology.org/2024.acl-long.769/
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.769/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public Alpaca and Alpaca-GPT4 instruction pools
+  trace_author: a small GPT-2 model computes instruction-following difficulty from conditional loss
+  answer_format: instruction, optional input, output, GPT-2 instruction-following difficulty score, and selection membership
+  process_fields:
+  - instruction
+  - optional input
+  - output
+  - GPT-2 instruction-following difficulty score
+  - and selection membership
+  environment_or_substrate: JSON instruction-input-output records with filtering scores and selected splits
+  verifier_or_reward: low instruction-following difficulty scores rank records before fixed-percentage selection
+  terminal_predicate: Retain a record only when low instruction-following difficulty scores rank records before fixed-percentage
+    selection accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: a small GPT-2 model computes instruction-following difficulty from conditional loss
+  generator: Superfiltering uses GPT-2 loss ratios to score how much each response depends on its instruction, ranks the full
+    pool cheaply, and publishes the scored records together with 5 percent and 2 percent subsets.
+  filtering_rule: low instruction-following difficulty scores rank records before fixed-percentage selection
+  sampling_protocol: public Alpaca and Alpaca-GPT4 instruction pools
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: small-subset instruction SFT
+audit:
+  source_mixture: public Alpaca and Alpaca-GPT4 instruction pools
+  split: 'Official release scale: scored Alpaca and Alpaca-GPT4 pools with public 5 percent and 2 percent selected subsets;
+    storage: JSON instruction-input-output records with filtering scores and selected splits.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository license and the terms of the underlying Alpaca-family data
+  lineage: public Alpaca and Alpaca-GPT4 instruction pools -> a small GPT-2 model computes instruction-following difficulty
+    from conditional loss -> low instruction-following difficulty scores rank records before fixed-percentage selection ->
+    small-subset instruction SFT.
+  known_failure_modes:
+  - A low difficulty score can favor stylistic dependence rather than factual quality
+  - results center on Alpaca-family pools
+  - fixed top-percent selection can reduce domain and language coverage.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 20 citations; this is not a Google Scholar count.'
+inclusion_reason: 'Superfiltering scored instruction data is a public Track 01 training object: instruction, optional input,
+  output, GPT-2 instruction-following difficulty score, and selection membership; it is consumed by small-subset instruction
+  SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- weak-model-instruction-utility-filtering
+status: verified
+one_line_summary: Superfiltering releases scored Alpaca-family records and tiny subsets selected by GPT-2 instruction-following
+  difficulty.
+why_it_matters: using a weak language model's conditional-loss ratio as a data-utility ranking signal
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: selecting a small instruction subset when scoring and training budgets are limited
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: weak-model instruction utility filtering
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include University of Maryland, Ping An Technology (Shenzhen) Co., Ltd..
+    venue: 'The official venue URL confirms formal publication at ACL 2024 Main: https://aclanthology.org/2024.acl-long.769/'
+    impact: OpenAlex reported 20 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON instruction-input-output records with filtering scores and selected
+      splits records at https://github.com/tianyi-lab/Superfiltering/tree/main/data with terms recorded as: official repository
+      license and the terms of the underlying Alpaca-family data.'
+  selection_eligible: true
+  year_impact_threshold: 3

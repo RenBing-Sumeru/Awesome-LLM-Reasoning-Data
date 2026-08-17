@@ -1,0 +1,95 @@
+id: longrlvr-verifiable-context-rewards-2026
+title: 'LongRLVR: Long-Context Reinforcement Learning Requires Verifiable Context Rewards'
+year: 2026
+venue: ICLR 2026
+authors:
+- Guanzheng Chen
+- Michael Qizhe Shieh
+- Lidong Bing
+source_role:
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- process_reward
+- answer_level
+domains:
+- long-context-reasoning
+- question-answering
+training_use:
+- rlvr
+construction_layer:
+- reward_verifier_layer
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2603.02146
+  arxiv: https://arxiv.org/abs/2603.02146
+  venue: https://openreview.net/forum?id=omVhYvyTPJ
+  code: https://github.com/real-absolute-AI/LongRLVR
+  data: https://huggingface.co/datasets/Guanzheng/LongRLVR-Data
+  project: https://github.com/real-absolute-AI/LongRLVR
+  huggingface: https://huggingface.co/datasets/Guanzheng/LongRLVR-Data
+  doi: https://doi.org/10.48550/arXiv.2603.02146
+  openreview: https://openreview.net/forum?id=omVhYvyTPJ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Long documents from book, arXiv, and code sources, filtered to 8K–64K tokens.
+  trace_author: Qwen3-235B-A22B generates candidate grounded QA records and judges their quality.
+  answer_format: Long context, question, selected chunk identifiers, and final answer.
+  process_fields:
+  - context_chunks
+  - question
+  - selected_chunk_ids
+  - final_answer
+  - context_reward
+  - answer_reward
+  environment_or_substrate: Long-document QA with documents partitioned into 64 chunks.
+  verifier_or_reward: F-score over selected evidence chunks, combined with answer correctness.
+  terminal_predicate: A rollout receives its terminal reward after emitting chunk identifiers and an answer.
+recipe_metadata:
+  base_model: LLaMA-3.1-8B, Qwen2.5-7B-1M, or Qwen2.5-14B-1M Instruct.
+  teacher: Qwen3-235B-A22B.
+  generator: Qwen3-235B-A22B after clustering document chunks with BGE-M3 embeddings.
+  filtering_rule: Keep the best QA candidate per document only after two-stage rejection sampling and a judge score above 9/10.
+  sampling_protocol: 46K retained QA pairs; RL uses eight sampled responses per prompt for one epoch.
+  rollout_count: 8
+  temperature: not disclosed for the released training data generation
+  inference_budget: 64K maximum context and 4,096 maximum response tokens during RL rollouts.
+  optimizer_or_scaffold: GRPO with AdamW and a context-and-answer reward.
+audit:
+  source_mixture: Long-Data-Collection books and arXiv documents plus StarCoder code documents.
+  split: Training corpus is distinct from RULER-QA, LongBench v2, and LongReason evaluation; exact overlap audit is not reported.
+  decontamination: The paper reports source filtering and removal of easy questions, but no full contamination audit.
+  license: The release page should be checked before redistribution; paper-level license is CC BY 4.0.
+  lineage: 'Primary paper: https://arxiv.org/abs/2603.02146; official code and data: https://github.com/real-absolute-AI/LongRLVR'
+  known_failure_modes:
+  - Evidence labels and quality ratings are produced by the same frontier model.
+  - Explicit relevant-chunk labels may be unavailable for natural long-context tasks.
+  - Context-reward quality depends on the completeness of the reference evidence set.
+  citation_status: verified
+  confidence: high
+  notes: Paper PDF, ICLR status, author affiliations, code, dataset, released models, and main results were checked on 2026-07-15.
+inclusion_reason: It changes the RL training objective by making selected evidence chunks a supervised and reward-bearing part of each long-context record.
+related: []
+tags:
+- long-context
+- rlvr
+- grounding
+- reward-design
+status: verified
+one_line_summary: LongRLVR trains long-context models with a verifiable reward for evidence selection as well as answer correctness.
+why_it_matters: It makes the intermediate grounding record, rather than only the final answer, an explicit consumer of the RL objective.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR/arXiv paper, GitHub implementation, Hugging Face data, and released model links were checked.
+category_ids:
+- training_usage_optimization_objectives

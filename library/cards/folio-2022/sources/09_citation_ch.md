@@ -1,0 +1,1 @@
+引用：Simeng Han 等，"FOLIO: Natural Language Reasoning with First-Order Logic." EMNLP 2024，ACL Anthology 2024.emnlp-main.1229。DOI：https://doi.org/10.18653/v1/2024.emnlp-main.1229。论文/数据：https://aclanthology.org/2024.emnlp-main.1229/；https://aclanthology.org/attachments/2024.emnlp-main.1229.data.zip。

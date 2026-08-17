@@ -1,0 +1,103 @@
+id: med-refl-medical-reflection-2025
+title: 'Med-REFL: Medical Reasoning Enhancement via Self-Corrected Fine-grained Reflection'
+year: 2025
+venue: arXiv
+authors:
+- Hongxian Yang
+- Jiayu Qian
+- Segao Peng
+- Haoyu Zhang
+- Lu-An Huang
+- MC Tan
+- Shi-An Huang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- medical-reasoning
+training_use:
+- preference_learning
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2506.13793
+  arxiv: https://arxiv.org/abs/2506.13793
+  code: https://github.com/TianYin123/Med-REFL
+  data: https://huggingface.co/datasets/HANI-LAB/Med-REFL-DPO
+  project: null
+  huggingface: https://huggingface.co/datasets/HANI-LAB/Med-REFL-DPO
+  doi: https://doi.org/10.48550/arXiv.2506.13793
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Medical reasoning questions used for reflection-based answer construction.
+  trace_author: Model-generated reasoning and self-corrections.
+  answer_format: Medical question, candidate reasoning, fine-grained reflection, and preference pair.
+  process_fields:
+  - question
+  - reasoning
+  - reflection
+  - chosen
+  - rejected
+  environment_or_substrate: Medical question answering.
+  verifier_or_reward: Reflection-guided preference construction; exact release-side scorer details require the paper and repository
+    revision.
+  terminal_predicate: A self-corrected preference pair is retained for DPO training.
+recipe_metadata:
+  base_model: See the paper and official repository for experimental base models.
+  teacher: unknown
+  generator: Self-corrected fine-grained reflection pipeline.
+  filtering_rule: Preference pairs are constructed from reflection-guided corrections; exact release filtering must be checked
+    in the pinned artifact revision.
+  sampling_protocol: See the official paper and dataset revision.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: DPO on Med-REFL preference data.
+audit:
+  source_mixture: Medical reasoning questions and reflection-derived preference pairs.
+  split: Verify against the official dataset revision.
+  decontamination: Not disclosed in the supplied official metadata.
+  license: Verify on the Hugging Face dataset card before reuse.
+  lineage: Official arXiv, GitHub, and Hugging Face links recorded in the candidate information summary.
+  known_failure_modes:
+  - Medical reasoning errors may persist in self-corrections
+  - Dataset scope may not cover clinical deployment
+  - Release revision may change metadata
+  citation_status: verified
+  confidence: medium
+  notes: The supplied official information summary lists no paper-front-page institution; no affiliation is therefore asserted.
+inclusion_reason: Med-REFL releases reflection-derived medical preference pairs for preference optimization of medical reasoning
+  models.
+related: []
+tags:
+- medical
+- reflection
+- preference-pairs
+- dpo
+one_line_summary: Med-REFL creates self-corrected fine-grained reflection preference pairs for medical reasoning optimization.
+why_it_matters: It supplies a preference-data object that targets error correction within medical reasoning rather than only
+  final-answer selection.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: official candidate information summary
+  confidence: medium
+  notes: Paper, code, and data links were supplied as official entries; institution was explicitly null.
+category_ids:
+- preference_reward_feedback_data
+- process_trace_supervision_data

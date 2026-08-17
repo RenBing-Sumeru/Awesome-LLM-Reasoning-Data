@@ -1,0 +1,17 @@
+{
+  "title": "BadJudge: Backdoor Vulnerabilities of LLM-As-A-Judge",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=eC2a2IndIt",
+    "code": "https://github.com/TerryTong-Git/badjudge"
+  },
+  "review_note": "Official ICLR paper and code repository verified.",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统刻画评测器训练数据和权重中的后门风险，并以可复现攻击、真实评测场景和模型合并防御直接服务自动判别可靠性审计。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

@@ -1,0 +1,6 @@
+- 阅读 arXiv v4，并把其中 100-task、68-repository、iFlow/TDD 协议作为论文基线；不要把后续发布设置悄然混入论文结果。
+- 单独检查实时 manifest：lite 有 50 个任务、default 有 100 个、default_v2 有 100 个、full 有 226 个，而 dataset card 仍保留过时的 137 计数。
+- 在解释 EvoScore 前，沿一个 20 轮记录检查 base 状态、requirement.xml、代码快照、pytest JSON、iteration.jsonl 和终止状态。
+- 区分 runner completion、Resolved、Zero_regression、ZRR、timeout、invalid report 与 archive presence；它们不是可互换的成功标签。
+- 将 115 GB 轨迹发布视为有价值但文档不完整的对象，直到 archive schema、逐任务覆盖、失败留存和脱敏检查被公开。
+- 把回放与安全一同审计：Python 3.11、Docker 镜像、apt/npm 构建、API key、网络策略、上游许可、公开测试和可变 v1/v2 split 都会改变复用结论。

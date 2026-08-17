@@ -1,0 +1,1 @@
+对 rollout/search/test-time-trace 轨道而言，Marco-o1 v2 具体展示了如何把一棵搜索树转化为多种下游数据产品：长路径 SFT targets、短路径偏好、共享近前缀的 rejected branches，以及测试时 MCTS candidates。可审计记录应保留源提示、节点转移模板、各节点 generator 模型、提示与解码设置、父子 ID、节点角色与文本、规则检查结果、reward 与回传、停止原因、全部接受和拒绝路径、相对长度分桶、共同前缀 mask 和最终训练 split。该 schema 可支持 SFT、DPO、搜索策略分析与 verifier 审计，同时把终局正确性与模型生成 reflection 的质量分开。

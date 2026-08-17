@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "在不删改基准题目的前提下校正污染推理，并明确比较残余污染与干净效用的权衡。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

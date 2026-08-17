@@ -1,0 +1,1 @@
+Zhang, Kai, Jiayi Liao, Chengpeng Li, Ziyuan Xie, Sihang Li, and Xiang Wang. 2026. Chronos: Learning Temporal Dynamics of Reasoning Chains for Test-Time Scaling. In Findings of the Association for Computational Linguistics: ACL 2026, pages 27651–27664. Association for Computational Linguistics. https://aclanthology.org/2026.findings-acl.1376/

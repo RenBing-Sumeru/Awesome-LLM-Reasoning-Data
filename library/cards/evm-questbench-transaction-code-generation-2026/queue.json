@@ -1,0 +1,19 @@
+{
+  "title": "EVM-QuestBench: An Execution-Grounded Benchmark for Natural-Language Transaction Code Generation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1642/",
+    "data": "https://github.com/OpenEdgeHQ/EVM-quest-bench",
+    "code": "https://github.com/OpenEdgeHQ/EVM-quest-bench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T13:05:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数据包含 107 个任务，以 Python/JSON 配置、自然语言模板、参数采样规则和验证器代码的形式存储",
+    "updated_at": "2026-07-19T13:05:29Z"
+  }
+}

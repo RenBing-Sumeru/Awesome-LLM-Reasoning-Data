@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TFPI 以空的 closed-think 前缀初始化策略，在 Polaris-53K 上使用 8 个 RLVR rollout 训练较少显式思考但保持性能的模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xin Xu；Clive Bai；Kai Yang；Tianhao Chen；Yang Wang；Saiyong Yang；Can Yang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

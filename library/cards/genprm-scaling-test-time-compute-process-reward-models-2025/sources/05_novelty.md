@@ -1,0 +1,3 @@
+Closest PRM datasets store binary labels or Monte Carlo values. GenPRM adds judging rationales and executable evidence to each step, enabling test-time scaling. The novelty is their integration into the process-supervision record rather than code execution or CoT alone.
+
+The substantive change is therefore not a generic SFT, DPO, BCE, or RL objective, but the construction of MATH trajectories, relative-progress estimates, code execution, and generative judgment rationales as a learnable and auditable data object. By storing feedback evidence that would otherwise remain hidden in scripts or environment execution, the work allows later studies to replace labelers, filters, or negative-example sources independently.

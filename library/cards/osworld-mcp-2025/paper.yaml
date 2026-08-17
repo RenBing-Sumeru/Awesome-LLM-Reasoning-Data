@@ -1,0 +1,174 @@
+id: osworld-mcp-2025
+title: 'OSWorld-MCP: Benchmarking MCP Tool Invocation In Computer-Use Agents'
+year: 2025
+venue: ICLR 2026
+authors:
+- Hongrui Jia
+- Jitong Liao
+- Xi Zhang
+- Haiyang Xu
+- Tianbao Xie
+- Chaoya Jiang
+- Ming Yan
+- Si Liu
+- Wei Ye
+- Fei Huang
+source_role:
+- agent_environment
+- benchmark
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.24563
+  arxiv: https://arxiv.org/abs/2510.24563
+  code: https://github.com/X-PLUG/OSWorld-MCP
+  data: https://github.com/X-PLUG/OSWorld-MCP/tree/main/evaluation_examples
+  project: https://osworld-mcp.github.io/
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=rceD6wwt4B
+  openreview: https://openreview.net/forum?id=rceD6wwt4B
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 361 OSWorld task IDs after excluding 8 Google Drive tasks; human reviewers annotate 250 as tool-beneficial
+    and 111 as non-tool-beneficial. Full task instructions, setup, and evaluator definitions are inherited from OSWorld rather
+    than duplicated in this repository.
+  trace_author: Evaluated computer-use agents generate online GUI/MCP episodes. The official release exposes task/tool manifests
+    and evaluation code, but no complete machine-readable rollout corpus for the paper experiments.
+  answer_format: A dynamic desktop episode with task instruction, screenshot-centered observation, optional application state,
+    model thought/reasoning summary, one GUI or MCP action per step, tool result or updated environment observation, self-reported
+    termination status, and a task-specific evaluator score.
+  process_fields:
+  - task_id
+  - instruction
+  - screenshot
+  - accessibility_tree
+  - terminal
+  - current_application
+  - application_state
+  - available_tools
+  - reasoning_summary
+  - action
+  - tool_result
+  - terminal_status
+  - evaluator_score
+  environment_or_substrate: OSWorld-derived VM desktop environment spanning nine applications, extended with a local FastMCP
+    server, filesystem and git MCP servers, application-specific tool schemas, per-application tool retrieval, and OSWorld
+    task setup/evaluators.
+  verifier_or_reward: OSWorld task-specific programmatic evaluators compare collected environment results against expected
+    states. TIR additionally uses human task labels and counts a decision as correct only when a tool-beneficial task succeeds
+    with a tool or a non-tool-beneficial task succeeds without one.
+  terminal_predicate: The agent may terminate with success/failure or exhaust the 15- or 50-step experimental budget; benchmark
+    accuracy is determined by the task evaluator, not by the agent's self-reported status.
+recipe_metadata:
+  base_model: Evaluation covers Qwen2.5-VL-72B-Instruct, Qwen3-VL-Plus, Seed1.5-VL, Claude 4 Sonnet, OpenAI o3, Gemini-2.5-Pro,
+    and Agent-S2.5; no training base model is defined.
+  teacher: OpenAI o3 generates and summarizes code solutions used to construct 72 MCP tools; no teacher generates benchmark
+    target trajectories.
+  generator: For every OSWorld task, OpenAI o3 attempts code solutions; successful summarized code is wrapped as MCP tools.
+    These 72 tools are pooled with 192 tools curated from existing MCP servers before manual filtering.
+  filtering_rule: Each of 264 collected tools is independently reviewed by at least two GUI-agent developers and retained
+    only if both qualify it after rejecting task-specific or functionally duplicate tools; 158 remain.
+  sampling_protocol: Agents run the 361-task benchmark under GUI-only and GUI+MCP configurations, with per-application RAG
+    over tool descriptions; reported results average three runs per model/configuration. Seeds and task-order policy are unknown.
+  rollout_count: unknown
+  temperature: 1.0
+  inference_budget: Maximum 15 or 50 action steps in the paper experiments; model token budgets are unknown.
+  optimizer_or_scaffold: 'Evaluation-only GUI-Owl-style loop: visual perception, thought plus reasoning summary, action selection
+    between 11 GUI operations and a retrieved MCP subset, environment/tool response, and OSWorld terminal evaluation. Agent-S2.5
+    uses OpenAI o3 for generation and UI-TARS-1.5-72B for grounding.'
+audit:
+  source_mixture: Public OSWorld tasks and software states; 72 OpenAI-o3-generated tools; 192 imported candidate tools from
+    existing MCP servers; manual tool and task annotations; agent-generated synthetic interactions.
+  split: One 361-task evaluation set is released, partitioned analytically into 250 tool-beneficial and 111 non-tool-beneficial
+    tasks. No train/validation/test split is defined, and the release does not provide a held-out training-safe subset.
+  decontamination: unknown
+  benchmark_overlap: All tasks derive from OSWorld, and task IDs remain directly linkable to that benchmark. No near-duplicate,
+    model-pretraining exposure, source-asset, or tool-description contamination audit is reported.
+  license: unknown. The official repository has no root LICENSE file and GitHub reports no detected license at commit f5d6aacadf01ea90b7c7af193b8120bf9028358b.
+    The paper states research and educational release intent, which is not a substitute for code/data redistribution terms;
+    OSWorld and imported MCP components require separate review.
+  lineage: OSWorld task and evaluator -> o3 code attempt or imported MCP candidate -> dual-review filtering -> 158-tool catalog
+    -> human tool-benefit annotation -> online GUI/MCP episode -> OSWorld task-specific score plus aggregate Acc/TIR/ACS.
+  release_version: Official repository main tree f5d6aacadf01ea90b7c7af193b8120bf9028358b checked 2026-07-20; it has no GitHub
+    Releases and no root license. The README records tool fixes and new leaderboard results after the paper.
+  successful_and_failed_sample_retention: unknown. The repository releases task IDs, tool-benefit groupings, tool schemas/code,
+    agents, and evaluation utilities, but no complete paper-run trajectory archive or explicit success/failure retention manifest
+    was found.
+  privacy_or_consent: The paper states that tasks come from publicly available OSWorld software environments, interactions
+    are synthetic, no human-subject data are collected, and no proprietary, confidential, or personally identifiable information
+    is included. Record-level provenance/redaction evidence for inherited task fixtures and logs is not released.
+  known_failure_modes:
+  - The benchmark inherits OSWorld image, application, task-setup, and evaluator dependencies; without immutable versions,
+    reset and terminal checks can drift.
+  - The agent's success/failure termination status is not the ground truth; task-specific evaluators may observe only selected
+    state and can miss unintended side effects.
+  - TIR mixes tool-choice correctness with successful task completion, so a correct tool decision followed by execution failure
+    receives no credit.
+  - Tool-beneficial labels are manual efficiency judgments; agreement statistics, borderline cases, and annotation logs are
+    not released.
+  - Per-application RAG and lexicographic tool order materially affect results, so tool catalog, descriptions, retrieval policy,
+    and order must be pinned for comparison.
+  - No training split or decontamination audit is provided; training on tasks, tool labels, or generated episodes would invalidate
+    later claims of held-out OSWorld-MCP evaluation.
+  - Released tools include filesystem writes, moves, git operations, browser settings, OS configuration, and document mutation.
+    The MCP server binds to 0.0.0.0:9292, while authentication, least-privilege policy, prompt-injection defenses, and a complete
+    sandbox contract are not documented.
+  - The repository does not release complete paper trajectories, seeds, failures, environment image digests, or a paper-era
+    tag, preventing exact episode replay.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v2, ICLR 2026 OpenReview record, project page, official repository README/tree, task manifests, environment
+    reset/evaluator code, MCP client/server, tool schemas, and release/license state were checked on 2026-07-20.
+inclusion_reason: OSWorld-MCP exposes a hybrid GUI/MCP action surface, task-level programmatic verification, and human tool-benefit
+  labels over a dynamic desktop environment, making its episode contract and audit risks directly relevant to Track 6.
+related: []
+tags:
+- agent-environment
+- agent-trajectories
+- evaluation
+- desktop-gui
+- mcp
+- tool-use
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: OSWorld-MCP evaluates 361 OSWorld desktop tasks with 158 curated MCP tools, per-step GUI/tool choice, task-specific
+  environment checks, and tool-choice-aware TIR, while complete paper trajectories and immutable replay artifacts remain unreleased.
+why_it_matters: It makes hybrid GUI/MCP decision episodes and verifier feedback inspectable, but also exposes split leakage,
+  evaluator scope, mutable tool retrieval, missing rollout retention, unclear licensing, and a broad MCP attack surface that
+  constrain training reuse.
+card: null
+needs:
+- 'needs_release_pin: publish a paper-era tag with OSWorld commit, VM/image digest, application versions, task/evaluator manifest,
+  MCP schemas, retrieval policy, and tool-order policy'
+- 'needs_replay: release per-run episode logs with observations, thoughts, GUI/MCP actions, tool outputs, terminal evaluator
+  details, seeds, and success/failure retention'
+- 'needs_audit: document task-label agreement, contamination checks, inherited fixture provenance, component licenses, MCP
+  authentication/sandboxing, and prompt-injection defenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, ICLR record, project, code, task/tool manifests, environment/evaluator integration, and current repository
+    state were verified; complete trajectories and immutable replay pins remain unavailable.

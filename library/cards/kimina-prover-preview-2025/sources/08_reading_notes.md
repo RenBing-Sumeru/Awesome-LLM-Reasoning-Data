@@ -1,0 +1,3 @@
+- Whole-proof Lean compilation is a binary terminal predicate after a proof is completed; do not label it as interactive step feedback.
+- Audit autoformalization separately: a theorem can compile and still misrepresent the original informal problem, so compilation, LLM judging, expert monitoring, and structural filters serve different roles.
+- Check reproducibility at the artifact level: public distills, tools, and proof archives do not provide the 200K prompts, RL rollouts, reward logs, source lineage, or fully pinned Lean environment.

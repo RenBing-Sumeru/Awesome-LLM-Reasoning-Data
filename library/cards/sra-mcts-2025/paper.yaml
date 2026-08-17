@@ -1,0 +1,116 @@
+id: sra-mcts-2025
+title: 'SRA-MCTS: Self-driven Reasoning Augmentation with Monte Carlo Tree Search for Code Generation'
+year: 2025
+venue: IJCAI 2025
+authors:
+- Bin Xu
+- Yiguan Lin
+- Yinghao Li
+- Yang Gao
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- code
+- reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- trace_writing
+artifacts:
+  paper: https://www.ijcai.org/proceedings/2025/965
+  arxiv: https://arxiv.org/abs/2411.11053
+  code: https://github.com/DIRECT-BIT/SRA-MCTS
+  data: https://huggingface.co/datasets/BinXD/SRA-MCTS-Llama-3.1-8B
+  project: null
+  huggingface: https://huggingface.co/BinXD/SRA-MCTS-Llama-3.1-8B
+  doi: https://doi.org/10.24963/ijcai.2025/965
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Medium and hard LeetCode programming problems are converted into question–thinking–code triples.
+  trace_author: Llama-3.1-8B release
+  answer_format: MCTS nodes contain thinking steps and generated code; released examples expose question and solution, while
+    complete trees and rejected branches were not confirmed available.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Iterative self-evaluation supplies the search value signal; code-task terminal success is tied to generated
+    solutions, but exact executable judging details require the paper/code artifact.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Llama-3.1-8B release
+  teacher: unknown
+  generator: SRA-MCTS expands self-driven reasoning steps through MCTS and converts selected reasoning/code paths into SFT
+    records.
+  filtering_rule: Iterative self-evaluation supplies the search value signal; code-task terminal success is tied to generated
+    solutions, but exact executable judging details require the paper/code artifact.
+  sampling_protocol: The official repository is DIRECT-BIT/SRA-MCTS (Apache-2.0); the official HF release BinXD/SRA-MCTS-Llama-3.1-8B
+    is CC-BY-NC-4.0. Full tree logs are not established.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: SRA-MCTS expands self-driven reasoning steps through MCTS and converts selected reasoning/code paths
+    into SFT records.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: Apache-2.0 for code; CC-BY-NC-4.0 for the named model
+  lineage: Medium and hard LeetCode programming problems are converted into question–thinking–code triples. -> MCTS nodes
+    contain thinking steps and generated code; released examples expose question and solution, while complete trees and rejected
+    branches were not confirmed available. -> Iterative self-evaluation supplies the search value signal; code-task terminal
+    success is tied to generated solutions, but exact executable judging details require the paper/code artifact. -> reported
+    final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Self-evaluation can mis-rank branches; only final question/solution schema was verified in release evidence, not full
+    tree, scores, or rejected trace lineage.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It illustrates which search-tree fields must be released to audit an MCTS data recipe; the public final
+  records are not a substitute for the missing branch history.
+related: []
+tags:
+- mcts
+- code-generation
+- sft
+- self-evaluation
+- leetcode
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: An end-to-end MCTS-to-SFT code-reasoning recipe with official code and a model release.
+why_it_matters: It illustrates which search-tree fields must be released to audit an MCTS data recipe; the public final records
+  are not a substitute for the missing branch history.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official IJCAI paper, author repository, released model, and SRA-MCTS dataset page were verified; missing generation
+    and lineage details remain unknown. as unknown or null.

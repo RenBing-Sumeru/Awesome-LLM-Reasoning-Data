@@ -1,0 +1,1 @@
+Use it to stress-test a summary-faithfulness detector or to design evidence-linked human review. Give the detector a passage and summary, compare its decision with the span labels and rationales, then inspect error types rather than only aggregate accuracy. Do not use it alone to claim a detector works on ordinary summaries or other generation tasks.

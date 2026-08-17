@@ -1,0 +1,5 @@
+- WebPuzzle has 23,684 training items and 275 expert-curated test items; only 7,000 WebPuzzle items enter DeepDiver training.
+- The cold-start SFT mixture totals 5,500 items, of which 2,000 are WebPuzzle; a separate 5,000 WebPuzzle items are used for RL.
+- Each RL sample receives 14 rollouts at temperature 0.9, not 14 total rollouts; each rollout permits at most seven tool-call rounds.
+- Qwen-Turbo loose/strict judgments, format reward, and a conditional +1.0 search bonus form the episode feedback; none is a programmatic correctness proof.
+- Verify an official dataset, license, code/model/rollout release, retrieval snapshot, user-query consent, and decontamination record before artifact reuse.

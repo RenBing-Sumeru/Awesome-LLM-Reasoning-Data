@@ -1,0 +1,136 @@
+id: natural-questions-2019
+title: 'Natural Questions: A Benchmark for Question Answering Research'
+year: 2019
+venue: Transactions of the ACL / Google Research
+authors:
+- Tom Kwiatkowski
+- Jennimaria Palomaki
+- Olivia Redfield
+- Michael Collins
+- Ankur Parikh
+- Chris Alberti
+- Danielle Epstein
+- Illia Polosukhin
+- Jacob Devlin
+- Kenton Lee
+- Kristina Toutanova
+- Llion Jones
+- Matthew Kelcey
+- Ming-Wei Chang
+- Andrew M. Dai
+- Jakob Uszkoreit
+- Quoc Le
+- Slav Petrov
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- open-domain-qa
+- search-queries
+- reading-comprehension
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/Q19-1026/
+  arxiv: null
+  code: https://github.com/google-research-datasets/natural-questions
+  data: https://ai.google.com/research/NaturalQuestions
+  project: https://ai.google.com/research/NaturalQuestions
+  huggingface: null
+  doi: https://doi.org/10.1162/tacl_a_00276
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/Q19-1026/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: Common public Natural Questions release has 307,373 training examples, 7,830 development examples, and 7,842
+    test examples, about 323k total; pin public/hidden split and Wikipedia snapshot.
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'real user query, Wikipedia page, long-answer span, short-answer span or yes/no/no-answer label; Benchmark
+    size: 超过 300K 个真实搜索问题；常见训练集约 307K，dev/test 各约 7.8K。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'real user query, Wikipedia page, long-answer span, short-answer span or yes/no/no-answer label;
+    Benchmark size: 超过 300K 个真实搜索问题；常见训练集约 307K，dev/test 各约 7.8K。'
+  verifier_or_reward: long-answer and short-answer F1 under official scorer
+  terminal_predicate: long-answer and short-answer F1 under official scorer
+  benchmark_size: 超过 300K 个真实搜索问题；常见训练集约 307K，dev/test 各约 7.8K。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for Natural Questions: A Benchmark for Question Answering Research; exact curation
+    details should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for Natural Questions: A Benchmark for Question
+    Answering Research.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://aclanthology.org/Q19-1026/'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Scale recorded as the common public release of 307,373 train, 7,830 dev, and 7,842 test
+    examples; pin split visibility, Wikipedia snapshot, and scorer before reuse. Benchmark size: 超过 300K 个真实搜索问题；常见训练集约 307K，dev/test
+    各约 7.8K。'
+inclusion_reason: Natural Questions anchors open-domain QA in real Google queries with long and short answer annotations over
+  Wikipedia pages.
+related: []
+tags:
+- benchmark
+- open-domain-qa
+- search-queries
+- reading-comprehension
+one_line: Natural Questions anchors open-domain QA in real Google queries with long and short answer annotations over Wikipedia
+  pages.
+why_it_matters: It supplies a reusable evaluation coordinate for open-domain-qa, search-queries work.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, dataset scale/version, and
+  license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Natural Questions anchors open-domain QA in real Google queries with long and short answer annotations over
+  Wikipedia pages.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

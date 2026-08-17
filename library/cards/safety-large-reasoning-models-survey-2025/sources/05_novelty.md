@@ -1,0 +1,3 @@
+The authors position this as the first comprehensive survey of large reasoning model safety. Its novelty is a unified safety landscape for reasoning-enhanced models, not a claim of a universal mitigation. It is most useful when comparing work that treats general language-model safety and reasoning-specific vulnerabilities differently.
+
+The contribution is a shared frame for asking whether stronger reasoning changes the relevant risk, the available attack surface, or the plausible defense. It does not assert that all concerns are unique to reasoning models. Readers should use the framework to state what is reasoning-specific in a paper, then use the original experiment to judge the strength and scope of that evidence.

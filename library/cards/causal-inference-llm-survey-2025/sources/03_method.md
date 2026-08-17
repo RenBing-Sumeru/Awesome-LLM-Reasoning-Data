@@ -1,0 +1,1 @@
+This paper synthesizes existing research rather than specifying one training pipeline. Its inputs are causal frameworks and LLM studies; its output is a review of the two directions and their intersections. No common data release, reward, verifier, prompt format, or evaluation budget is asserted by the official abstract.

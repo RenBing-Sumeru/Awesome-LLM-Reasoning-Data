@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UnifiedReward 联合图像和视频的理解与生成偏好，统一支持成对排序与单点评分，并用于自动构造 DPO 数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "偏好或奖励反馈数据论文",
+  "best_for_ch": "研究偏好学习、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yibin Wang、Yuhang Zang、Hao Li、Cheng Jin、Jiaqi Wang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T14:00:00Z"
+}

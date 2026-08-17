@@ -1,0 +1,1 @@
+The method depends on defensible claim segmentation and expert-calibrated legal criteria. A score can still be wrong when the response omits a decisive issue, the applicable jurisdiction differs, or the judge mishandles a subtle legal relation. The proprietary evaluation data also limit independent reproduction.

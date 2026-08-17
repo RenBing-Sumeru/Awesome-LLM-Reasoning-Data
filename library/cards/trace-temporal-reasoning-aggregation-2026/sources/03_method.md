@@ -1,0 +1,3 @@
+TRACE segments a running chain of thought into reasoning steps and induces a candidate final answer at each step. It stores recent induced answers and confidence values, computes answer consistency and temporal confidence within a sliding window, then evaluates their weighted stability score.
+
+If the score crosses the configured threshold, generation terminates with that induced answer; otherwise another reasoning step is produced. The mechanism needs no fine-tuning of the underlying model, but it does add answer induction and window bookkeeping, so token savings must be measured together with that overhead.

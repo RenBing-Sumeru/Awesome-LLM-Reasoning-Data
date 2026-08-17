@@ -1,0 +1,3 @@
+TestGenEval releases 1,210 real code–test file pairs from 11 actively maintained Python repositories, with 68,647 original human-written tests. The benchmark includes generating a complete test file from scratch and completing the beginning, end, or additional portion of a partially provided suite. Each instance is tied to a repository revision and Docker environment.
+
+Its verifier is not textual matching. It first checks whether tests parse and execute, then measures coverage improvement on the target source file and uses mutation testing to assess whether injected faults are detected. This separates producing legal tests from producing discriminative tests. The resource is primarily an evaluation benchmark but can also support test-generator and code-reward research.

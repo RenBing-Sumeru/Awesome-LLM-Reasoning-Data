@@ -1,0 +1,116 @@
+id: ifeval-2023
+title: Instruction-Following Evaluation for Large Language Models
+year: 2023
+venue: arXiv / Google Research
+authors:
+- Jeffrey Zhou
+- Tianjian Lu
+- Swaroop Mishra
+- Siddhartha Brahma
+- Sujoy Basu
+- Yi Luan
+- Denny Zhou
+- Le Hou
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- instruction-following
+- rule-based-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2311.07911
+  arxiv: https://arxiv.org/abs/2311.07911
+  code: https://github.com/google-research/google-research/tree/master/instruction_following_eval
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2311.07911
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: '541 prompts containing one or more verifiable constraints drawn from 25 instruction types, including format,
+    length, keyword, language, and structural requirements; Benchmark size: 541 条 prompt，包含多类可程序检查的 instruction 约束。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: '541-prompt instruction-following benchmark with 25 rule-checkable instruction types; Benchmark
+    size: 541 条 prompt，包含多类可程序检查的 instruction 约束。'
+  verifier_or_reward: rule-based instruction checkers for strict and loose prompt-level success
+  terminal_predicate: rule-based instruction checkers for strict and loose prompt-level success
+  benchmark_size: 541 条 prompt，包含多类可程序检查的 instruction 约束。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Instruction-Following Evaluation for Large Language Models; exact curation
+    details should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Instruction-Following Evaluation for Large
+    Language Models.
+  split: Public benchmark is commonly reported as 541 prompts / 25 verifiable instruction types; pin the google-research commit,
+    prompt list, and strict-vs-loose scoring mode before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2311.07911'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Scale is 541 prompts and 25 verifiable instruction types. Reviewer should pin exact artifact, checker code, and
+    strict/loose scorer details before L5/L6 promotion. Benchmark size: 541 条 prompt，包含多类可程序检查的 instruction 约束。'
+inclusion_reason: IFEval 用规则可检查的指令约束评测模型是否真的遵循格式、长度、关键词、语言等要求。
+related: []
+tags:
+- benchmark
+- instruction-following
+- rule-based-evaluation
+why_it_matters: 它提供 541 条 prompt，包含多类可程序检查的 instruction 约束。 的评测规模信息和 instruction-following 方向的可复用 benchmark 坐标。
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin the 541-prompt version, google-research commit, strict/loose checker implementation, prompt/scaffold settings,
+  and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: IFEval 用规则可检查的指令约束评测模型是否真的遵循格式、长度、关键词、语言等要求。
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

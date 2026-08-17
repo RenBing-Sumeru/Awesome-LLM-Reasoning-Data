@@ -1,0 +1,7 @@
+1. **Choose hard tasks.** Sample 3,000 HotpotQA, 5,586 MATH, 4,439 APPS, 3,000 WikiTableQuestion, and 3,553 ALFWorld instances after task-specific difficulty filtering.
+2. **Expose executable interfaces.** Provide Wikipedia search functions, Python mathematics and coding packages, pandas/SQLite tables, or ALFWorld control APIs. Single-turn problems are repurposed to permit several thought, execute, observation, and answer turns.
+3. **Generate trajectories.** GPT-3.5 Turbo and Claude 1/2 attempt the tasks through MINT; the long-context GPT-3.5 variant handles APPS, and GPT-4-0613 attempts a subset unsolved by the other teachers.
+4. **Verify and select.** Original task metrics judge terminal correctness. Keep actions that parse and execute under CodeAct; discard malformed calls, episodes containing only execution errors, and odd-turn records that never answer the user. Among multi-turn successes, preserve traces that correct an earlier mistake.
+5. **Package and consume.** Release 7,139 trajectories: 1,664 search, 1,732 math, 647 coding, 1,065 table, and 2,031 robot-planning records. Mix them with 69,230 general conversations for full-parameter SFT of Llama-2 7B and Mistral 7B.
+
+Reproduction should pin teacher versions, source revisions, MINT prompts, execution images, tool packages, task checkers, and dataset revision. The paper does not consolidate teacher cost or random seeds into a complete generation budget.

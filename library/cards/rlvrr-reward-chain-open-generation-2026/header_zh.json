@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RLVRR 将高质量参考答案转换为有序奖励链，用于开放式生成的强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "训练数据选择或奖励设计论文",
+  "best_for_ch": "研究后训练数据消费与优化目标的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuxin Jiang, Yufei Wang, Qiyuan Zhang, Xingshan Zeng, Liangyou Li, Jierun Chen, Chaofan Tao, Haoli Bai, Lifeng Shang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T20:30:00Z"
+}

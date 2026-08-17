@@ -1,0 +1,2 @@
+{"one_line_summary_ch":"代码生成既需要更广候选覆盖，也需要可靠选择，但仅靠并行采样可能错过修复机会，而代码正确性需要可执行的区分。","reading_priority_ch":"必读","paper_type_ch":"测试时扩展研究（Findings of EMNLP 2025）","best_for_ch":"研究推理预算分配与测试时扩展的读者。","confidence_ch":"高","authors_ch":"Dacheng Li、Shiyi Cao、Chengkun Cao、Xiuyu Li、Shangyin Tan、Kurt Keutzer、Jiarong Xing、Joseph E. Gonzalez、Ion Stoica（机构以官方论文为准）","category_ids":["scaling_rlvr_test_time_compute"]}
+

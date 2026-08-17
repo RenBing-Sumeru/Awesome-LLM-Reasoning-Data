@@ -1,0 +1,17 @@
+{
+  "title": "DeepResearch-9K: A Challenging Benchmark Dataset of Deep-Research Agent",
+  "candidate_links": {
+    "paper": "https://arxiv.org/pdf/2603.01152",
+    "data": "https://huggingface.co/datasets/artillerywu/DeepResearch-9K"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T10:57:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "九千研究任务带搜索链、推理链和可验答案，适合训练证据型深度研究代理",
+    "updated_at": "2026-07-16T10:57:19Z"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Beyond the Surface: Measuring Self-Preference in LLM Judgments",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.86/",
+    "data": "https://github.com/zhiyuanc2001/self-preference"
+  },
+  "review_note": "已按 EMNLP 2025 原文完成双语精读卡片；用于 LLM judge 自偏好审计。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "DBG 将回答质量与自偏好分离，并以正式论文和公开实现提供可复核的评测器偏见审计证据。",
+    "updated_at": "2026-07-20T04:20:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

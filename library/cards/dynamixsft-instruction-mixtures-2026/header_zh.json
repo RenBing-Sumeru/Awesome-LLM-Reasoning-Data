@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DYNAMIX SFT 以单步学习进度更新来源级指令数据混合权重，并用先验和探索下限保留覆盖面。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "动态指令数据混合优化研究",
+  "best_for_ch": "设计自适应来源级指令微调抽样的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Haebin Shin, Lei Ji, Xiao Liu, Zhiwei Yu, Hyunwoo Yoo, Qi Chen, Yeyun Gong",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T23:50:00Z"
+}

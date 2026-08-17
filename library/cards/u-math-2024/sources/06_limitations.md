@@ -1,0 +1,5 @@
+The largest limitation is the verifier. Free-form university math answers are graded through LLM judges, so scores inherit judge-model drift, prompt sensitivity, answer-format sensitivity, and possible disagreement between mathematically valid equivalent solutions. mu-MATH helps diagnose this risk but does not remove it.
+
+The second limitation is artifact governance. The paper states that the benchmark and evaluation code are open-sourced, but any score reuse should pin the exact repository revision, data files, prompt templates, model versions, and license. A public benchmark can also enter training corpora after release, so claims about contamination-free evaluation need a dated model cutoff and a dataset version.
+
+The third limitation is domain scope. U-MATH is broader than school-level math but still reflects a selected university curriculum and subject balance. It should not be treated as full coverage of graduate mathematics, theorem proving, numerical computing, or interactive problem solving.

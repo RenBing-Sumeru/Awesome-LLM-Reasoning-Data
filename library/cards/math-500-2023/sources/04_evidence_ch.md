@@ -1,0 +1,1 @@
+关键证据是官方论文把 MATH-500 作为代表性报告子集使用，以及 OpenAI 仓库发布了 split 和 grader。在过程监督论文中，MATH-500 的核心数字用于比较 process-supervised 与 outcome-supervised verifier 在 verifier-guided solution selection 后的最终答案准确率。行级证据是一道题、标准答案、模型最终答案和 grader verdict。边界是：它只有 500 题；如果 subset 文件、grader、答案抽取、采样数和搜索/重排预算不同，分数不能直接比较。

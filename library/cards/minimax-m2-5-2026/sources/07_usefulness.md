@@ -1,0 +1,3 @@
+This release is useful as a design reference for agent-native RL infrastructure: separate scaffold, environment, reward, rollout, and training services; record outcome/process/speed feedback; version executable tasks; and track asynchronous policy age and merge ancestry. A reproduction attempt should begin by pinning the 229B FP8 config, 196K context, scaffold, tool versions, environment images, reward servers, and evaluation harness.
+
+Reuse is currently limited to inference/evaluation of the released checkpoint under its model license and to audit-oriented reconstruction. Training reuse is blocked by unavailable environments, trajectories, rewards, rights, splits, and Forge/CISPO implementation.

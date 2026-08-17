@@ -1,0 +1,4 @@
+The arena treats dataset value as a controlled empirical question. It normalizes more than 120 public post-training datasets, fine-tunes common 7B–8B base models separately on each dataset with fixed LLaMA-Factory configurations, evaluates the resulting models on 22+ benchmarks, and complements downstream performance with model-based, LLM-judge, heuristic, and lineage diagnostics. The reusable object is not one homogeneous corpus but a linked record of upstream dataset, normalized SFT data, training configuration, checkpoint/result, intrinsic scores, and genealogy.
+
+The scale must remain qualified: the paper reports 600+ training runs, 10000+ evaluation runs, and 40M processed data points. These are platform-level totals, not 40M newly authored reasoning traces or proof that every live artifact exactly matches the paper snapshot.
+

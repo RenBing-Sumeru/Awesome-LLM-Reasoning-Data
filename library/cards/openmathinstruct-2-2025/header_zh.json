@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenMathInstruct-2 用 Llama-3.1-405B-Instruct 的 solution augmentation 与 question-solution augmentation 构造 13,972,791 条数学 SFT 记录，并用 32 个解答的表面多数票生成新题答案；其规模与开放 recipe 价值明确，但阈值为 0、逐条投票/lineage 缺失和残余 Omni-MATH overlap 限制了可审计性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模开放数学 SFT 数据发布、构造 recipe 与 scaling study",
+  "best_for_ch": "构建数学 reasoning SFT 数据、比较 teacher/format/diversity/scale、实现答案聚合与去污染，或审计开放数据版本和逐条 lineage 的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Shubham Toshniwal、Wei Du、Ivan Moshkov、Branislav Kisacanin、Alexan Ayrapetyan、Igor Gitman",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

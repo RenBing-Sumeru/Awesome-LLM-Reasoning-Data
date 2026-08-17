@@ -1,0 +1,1 @@
+Use AirGapAgent-R to compare an agent’s appropriate data sharing and trace leakage before exposing reasoning logs to users, tools, or support staff. Keep the two scores separate, add injection probes, and inspect sampled extractor decisions. Do not use its synthetic labels as a substitute for a domain-specific privacy policy or a real-user safety review.

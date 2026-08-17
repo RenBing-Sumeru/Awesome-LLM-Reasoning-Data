@@ -1,0 +1,1 @@
+已有基线多是单环境 GUI、网页、桌面或移动端评测，且常只给粗粒度最终成功。CRAB 把评测对象改成跨环境工作流，并用 graph evaluator 作为可复用结构化谓词。方向信号是多设备、多模态 agent benchmark 与更细粒度成功分解。质量信号是公开代码、任务数据、文档、demo 和 benchmark framework，而不是封闭 leaderboard。Python action decorator、GUI automation 和 completion ratio 本身并不新。复用前要审任务许可、`licenses/LICENSE`、benchmark-v0 版本、evaluator graph 忠实性、设备状态和公开轨迹污染。

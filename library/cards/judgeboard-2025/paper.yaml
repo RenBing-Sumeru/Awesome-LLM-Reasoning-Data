@@ -1,0 +1,98 @@
+id: judgeboard-2025
+title: 'JudgeBoard: Benchmarking and Enhancing Small Language Models for Reasoning Evaluation'
+year: 2026
+venue: AAAI 2026
+authors:
+- Zhenyu Bi
+- Gaurav Srivastava
+- Yang Li
+- Meng Lu
+- Swastik Roy
+- Morteza Ziyadi
+- Xuan Wang
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/40256
+  arxiv: https://arxiv.org/abs/2511.15958
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1609/aaai.v40i36.40256
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40256
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Public benchmark page for evaluating reasoning judges across multiple datasets.
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2511.15958.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'JudgeBoard directly measures reasoning-judge reliability, exposes error asymmetry on wrong candidate answers,
+  and tests whether profiled small-model debate improves it.'
+related: []
+tags:
+- audit
+- llm-as-a-judge
+- reasoning-evaluation
+status: verified
+one_line_summary: Public benchmark page for evaluating reasoning judges across multiple datasets.
+why_it_matters: It adds an auditable reliability or failure-mode surface to Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page and public artifact recorded.
+category_ids:
+- audit_failure_contamination_verifier_attacks

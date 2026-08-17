@@ -1,0 +1,3 @@
+MM-RLHF发布120K细粒度人工偏好对，并提出先生成critique再评分的Critique-BasedRewardModel与DynamicRewardScaling，形成数据、奖励模型和偏好优化闭环。
+
+人工标注者按多个细粒度维度比较图文回应；偏好对训练critiquerewardmodel，再依据奖励差异动态调整样本权重并优化LLaVA-ov-7B。

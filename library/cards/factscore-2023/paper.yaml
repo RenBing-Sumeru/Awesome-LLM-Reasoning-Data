@@ -1,0 +1,126 @@
+id: factscore-2023
+title: 'FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation'
+year: 2023
+venue: EMNLP 2023 main
+authors:
+- Sewon Min
+- Kalpesh Krishna
+- Xinxi Lyu
+- Mike Lewis
+- Wen-tau Yih
+- Pang Wei Koh
+- Mohit Iyyer
+- Luke Zettlemoyer
+- Hannaneh Hajishirzi
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- factuality
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2023.emnlp-main.741/
+  arxiv: https://arxiv.org/abs/2305.14251
+  doi: https://doi.org/10.18653/v1/2023.emnlp-main.741
+  code: https://github.com/shmsw25/FActScore
+  data: https://github.com/shmsw25/FActScore
+  project: https://github.com/shmsw25/FActScore
+  package: https://pypi.org/project/factscore/
+  google_drive_data: https://drive.google.com/drive/folders/1kFey69z8hGXScln01mVxrOhrqgM62X7I
+  huggingface: null
+  venue: https://aclanthology.org/2023.emnlp-main.741/
+  openreview: null
+  acl: https://aclanthology.org/2023.emnlp-main.741/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: people biography prompts over entity names; official README exposes 183 labeled prompt entities and 500 unlabeled
+    prompt entities.
+  trace_author: model generations are decomposed into atomic facts by human annotators or automatic estimators; support labels
+    come from human annotation or retrieval-grounded support judges.
+  answer_format: topic/person entity, model long-form generation, extracted atomic facts, retrieval evidence, support labels,
+    response ratio, fact count, initial score, and length-penalized FActScore percentage
+  process_fields:
+  - topic entity
+  - model long-form output
+  - atomic fact list
+  - retrieved evidence or source passage
+  - support label
+  - estimator, knowledge source, gamma, abstain policy, and package version
+  environment_or_substrate: selected knowledge source, defaulting in the public package to English Wikipedia dated 2023-04-01
+  verifier_or_reward: human or automatic support judgment for each atomic fact, followed by percentage aggregation
+  terminal_predicate: an atomic fact is accepted when the selected knowledge source supports it under the pinned human or
+    automatic FActScore protocol
+recipe_metadata:
+  base_model: Not a training recipe; the work is an evaluation protocol, factuality metric, and audit surface.
+  teacher: human atomic-fact annotators and the selected knowledge source define the strongest support labels; automatic estimators
+    approximate that contract.
+  generator: atomic-fact decomposition plus retrieval-grounded support judging over model long-form outputs.
+  filtering_rule: detect abstentions, optionally reuse released atomic facts, and apply the gamma length penalty only under
+    explicitly pinned settings.
+  sampling_protocol: Pin labeled/unlabeled entity set, model outputs, knowledge-source snapshot, estimator name, package version,
+    gamma, abstain detector, and released-data revision before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: ACL Anthology proceedings page, arXiv record/PDF, official GitHub repository, PyPI package metadata, and
+    official Google Drive data release linked from the repository.
+  split: Official README exposes 183 labeled prompt entities and 500 unlabeled prompt entities; pin the Google Drive data
+    revision, released model outputs, and local cache before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: PyPI classifies the package as MIT and the official repository includes package/source release paths; ACL paper
+    page is under ACL Anthology terms/CC BY 4.0 for recent materials. Check Google Drive data redistribution terms before
+    mirroring data.
+  lineage: 'Primary lead: https://aclanthology.org/2023.emnlp-main.741/'
+  known_failure_modes:
+  - atomic fact decomposition can be too coarse, too fine, or ambiguous
+  - retrieval misses can mark true facts unsupported
+  - selected knowledge source can be incomplete, stale, or domain-mismatched
+  - support judge, package version, gamma, abstain policy, and model/API cache can change scores
+  - aggregate score can hide response ratio and number of attempted facts
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology verifies EMNLP 2023 main status, Singapore venue, pages 12076-12100, and DOI. Official GitHub/PyPI
+    verify the package, MIT package classifier, default Wikipedia 2023-04-01 knowledge source, 183 labeled entities, 500 unlabeled
+    entities, and public data/download workflow. FActScore is atomic-fact factuality evaluation, not pairwise preference data.
+inclusion_reason: Good reference for grounding and factuality judge design.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- factuality
+why_it_matters: Good reference for grounding and factuality judge design.
+status: verified
+needs:
+- 'needs_audit: pin Google Drive data revision, package version, estimator name, knowledge-source snapshot, gamma, abstain
+  detector, and cache policy'
+- 'needs_audit: inspect whether target-domain facts are covered by the selected source before interpreting unsupported labels'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: FActScore exposes atomic fact decomposition and retrieval-grounded factual precision as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: high
+  notes: ACL Anthology verifies EMNLP 2023 main status, Singapore venue, pages 12076-12100, and DOI. Official GitHub/PyPI
+    verify the package, MIT package classifier, default Wikipedia 2023-04-01 knowledge source, 183 labeled entities, 500 unlabeled
+    entities, and public data/download workflow.
+category_ids:
+- benchmarks_evaluation_surfaces

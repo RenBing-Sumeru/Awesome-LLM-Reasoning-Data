@@ -1,0 +1,1 @@
+论文的核心贡献是开放hs2-naive-reasoning-binary-max，规模为约6.01K条长CoT偏好评审样本，核心数据对象为prompt、chosen/rejected回答、长评审轨迹与A/B结论。其高层机制是：教师生成长程比较推理，并按原偏好标签与格式筛选，从而把原本粗粒度、昂贵或不稳定的反馈转换为可训练、可评测的结构化记录。该数据主要用于RM-Bench与pairwise RLHF，并通过先SFT warm-up，再规则RL训练Think-RM验证效用。

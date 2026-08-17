@@ -1,0 +1,1 @@
+The model-horizon categories are empirical and may change after post-training or under new task distributions. The API-oriented study also restricts the search procedures it can implement, so it does not settle the value of every verifier or tool-using method.

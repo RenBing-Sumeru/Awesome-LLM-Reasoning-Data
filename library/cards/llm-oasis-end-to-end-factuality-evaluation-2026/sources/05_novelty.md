@@ -1,0 +1,1 @@
+FEVER-style resources provide a claim and evidence, so models do not judge natural text containing mixed factuality. LLM-Oasis expands claim manipulation into complete-text generation and releases the chain from extraction and falsification to end-to-end evaluation. The novelty is moving the evaluation unit from isolated claims to raw text.

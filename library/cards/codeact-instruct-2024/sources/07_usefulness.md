@@ -1,0 +1,3 @@
+- Use the 7,139 released records as SFT demonstrations when the target agent must learn to react to execution output and recover from errors, not merely emit a one-shot tool call.
+- Reuse the construction checklist: hard-source sampling, executable interface, multi-teacher rollout, task-metric success, parseability checks, and recovery-focused selection.
+- Treat domain counts and ID/OD evaluation as required reporting fields. Preserve source IDs, teacher identity, every observation, terminal checker result, and the execution-image digest.

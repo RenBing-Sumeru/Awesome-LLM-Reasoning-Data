@@ -1,0 +1,3 @@
+VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks asks how to close this gap: Real web interfaces expose information through layout, images, icons, and visual states, but many web-agent benchmarks under-test multimodal grounding. The primary source is https://arxiv.org/abs/2401.13649; public status is ACL 2024 / arXiv (2024).
+
+Decision boundary: It is collected as a multimodal browser-agent evaluation surface, not as static visual QA or a generic model report. The evaluation surface is a natural-language goal, browser/page state, screenshot or visual evidence, optional DOM/HTML context, action history, and final task success condition. This makes the paper useful for the atlas because the data object and feedback rule can be audited together.

@@ -1,0 +1,111 @@
+id: general-process-reward-modeling-robotic-reinforcement-learning-2026
+title: General Process Reward Modeling for Robotic Reinforcement Learning
+year: 2026
+venue: CVPR 2026
+authors:
+- Huajie Tan
+- Sixiang Chen
+- Yijie Xu
+- Zixiao Wang
+- Yuheng Ji
+- Cheng Chi
+- Yaoxu Lyu
+- Zhongxia Zhao
+- Xiansheng Chen
+- Peterson Co
+- Shaoxuan Xie
+- Guocai Yao
+- Pengwei Wang
+- Zhongyuan Wang
+- Shanghang Zhang
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- robotic_manipulation
+- vision_language_reward_modeling
+- process_supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2026/html/Tan_General_Process_Reward_Modeling_for_Robotic_Reinforcement_Learning_CVPR_2026_paper.html
+  arxiv: https://arxiv.org/abs/2512.23703
+  code: https://github.com/FlagOpen/Robo-Dopamine
+  data: https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-GRM-Dataset
+  project: https://robo-dopamine.github.io/
+  huggingface: https://huggingface.co/datasets/tanhuajie2001/Robo-Dopamine-GRM-Dataset
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and dataset.
+  trace_author: See the official paper.
+  answer_format: Step-level process-supervision records described in the official artifact.
+  process_fields:
+  - task_instruction
+  - reference_images
+  - multi_view_before_images
+  - multi_view_after_images
+  - progress_score
+  - reward_response
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official dataset.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper and dataset.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: See the official paper.
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Officially released process-supervision records.
+  split: See the official dataset.
+  decontamination: See the official paper.
+  license: See the official dataset card.
+  lineage: Candidate-pool and primary artifacts were checked.
+  known_failure_modes:
+  - See the limitations section.
+  citation_status: verified
+  confidence: high
+  notes: The candidate's arXiv/project title was superseded by the formal CVPR 2026 title. Checked CVPR Open Access, the official
+    project, GitHub repository, dataset card, and paper affiliations.
+inclusion_reason: The paper releases step-level process-supervision data for training or evaluating process reward models.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: Robo-Dopamine releases multi-view robot-state progress supervision for general process reward modeling and
+  policy-invariant reward shaping in manipulation.
+why_it_matters: It provides a concrete, reusable process-level supervision object.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Official sources were checked before card creation.
+category_ids:
+- process_trace_supervision_data

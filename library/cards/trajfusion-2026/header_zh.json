@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TrajFusion 从 16 条数学解答中选择代表性错误，将其与通用反思和一条正确轨迹融合为标准 SFT 目标；价值在构造配方，而非尚未发布的数据复用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "错误轨迹融合构造配方",
+  "best_for_ch": "研究拒绝采样、错误轨迹复用、数学 SFT 与过程审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jie Deng、Hanshuang Tong、Jun Li、Shining Liang、Ning Wu、Hongzhi Li、Yutao Xie",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

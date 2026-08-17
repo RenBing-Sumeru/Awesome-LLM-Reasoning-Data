@@ -1,0 +1,3 @@
+Defects4C contains 248 ordinary defects and 102 security vulnerabilities, totaling 350 real C/C++ repair instances. The authors first filter approximately nine million bug-relevant commits, then identify defective functions, repair diffs, project revisions, and reproducible tests. The vulnerability subset is linked to public security information and CVE scenarios.
+
+Each task centers on a buggy function and its context and includes a gold patch, build scripts, test entry points, and Docker assets. The core verifier requires a candidate patch to compile, turn the reproduction test from failure to success, and preserve regression tests. The resource primarily evaluates code models and APR systems but can also seed execution-filtered repair SFT or RLVR.

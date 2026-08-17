@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FaithCoT-Bench 以带步骤证据的专家标注 CoT 轨迹，检验某条解释是否反映模型的内部推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要评测 CoT 忠实性、比较过程检测器或分析后验解释与真实决策脱节的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xu Shen、Song Wang、Zhen Tan、Laura Yao、Xinyu Zhao、Kaidi Xu、Xin Wang、Tianlong Chen",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:23:08Z"
+}

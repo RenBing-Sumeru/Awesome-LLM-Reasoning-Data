@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "为每个数据集配套记录其动机、组成、收集过程、用途与限制的基础文档规范。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集文档规范",
+  "best_for_ch": "提出数据集动机、组成、收集、用途和限制文档框架的基础论文。",
+  "confidence_ch": "高",
+  "authors_ch": "Timnit Gebru 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

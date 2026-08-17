@@ -1,0 +1,5 @@
+The official [arXiv record](https://arxiv.org/abs/2504.21801) identifies the 2025 report and documents DeepSeek-V3 decomposition, 7B recursive proof search, synthetic cold starts, binary reward supervision, and the reported training settings. It reports miniF2F-test only for evaluation, while miniF2F-valid is used in the subgoal curriculum.
+
+The official [DeepSeek-Prover-V2 repository](https://github.com/deepseek-ai/DeepSeek-Prover-V2) provides the report, README, model license, figures, and a miniF2F-solution ZIP. It links official 7B/671B model downloads and [DeepSeek-ProverBench](https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench), a 325-problem formalized evaluation dataset. The official [671B model page](https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B) provides model-release material.
+
+These sources verify models and evaluation artifacts, not a release of the training prompts, DeepSeek-V3 outputs, subgoal trees, SFT records, GRPO rollouts, reward logs, rejected attempts, exact Lean environment, or item-level provenance.

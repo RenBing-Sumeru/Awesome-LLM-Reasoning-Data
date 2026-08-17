@@ -1,0 +1,19 @@
+{
+  "title": "D3-Gym: Constructing Real-World Verifiable Environments for Data-Driven Discovery",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2604.27977",
+    "data": "https://github.com/OSU-NLP-Group/D3-Gym",
+    "code": "https://github.com/OSU-NLP-Group/D3-Gym",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T09:43:33Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 D3-Gym，覆盖239个仓库中的565项科学数据发现任务，含数据、Docker、参考方案和评测脚本",
+    "updated_at": "2026-07-19T09:43:33Z"
+  }
+}

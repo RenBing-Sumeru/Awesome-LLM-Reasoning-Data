@@ -1,0 +1,6 @@
+- Keep four quantities separate—25M collected records, 14M synthesis seeds, each method's output count/token budget, and the final model's approximately 140B-token CPT mixture—and note the controlled-study inconsistency between 14.7B mathematical-corpus tokens in the main setup/Appendix C and 13.7B in Appendix A.1.
+- Response diversification, query expansion, retrospective enhancement, and tutorship amplification create different schemas and feedback signals.
+- Tutorship has the highest reported synthesis score but also the largest synthetic-token exposure; this is not standalone evidence of record quality.
+- CPT/SFT comparisons use 1% SFT controls for instruction following, but optimization and checkpoint selection still differ.
+- `accept`/`refuse`, teacher `correct`/`wrong`, and the evaluation compare model are model judgments; the compare model explicitly ignores rationale errors and checks the final answer.
+- MathGPT-8B weights are released. Source, seed, synthetic, rejected, and decision records are not.

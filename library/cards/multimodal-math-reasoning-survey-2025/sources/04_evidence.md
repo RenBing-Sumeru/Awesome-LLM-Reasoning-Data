@@ -1,0 +1,3 @@
+The paper's support comes from its stated coverage of over 200 studies and its explicit benchmark–method–challenge framework. The official abstract says it examines state-of-the-art Math-LLM developments with emphasis on multimodal settings. This supports its value as a landscape summary, not as a single controlled experiment establishing a universal best approach.
+
+Its evidence is therefore evidence about reported practices, categories, and open difficulties in the literature. It should not be interpreted as a direct head-to-head comparison between every model or modality. When a result affects a design decision, consult the original experiment to determine what input information was available and which stage of the pipeline its metric actually evaluates.

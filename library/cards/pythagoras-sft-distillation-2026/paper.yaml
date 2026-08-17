@@ -1,0 +1,134 @@
+id: pythagoras-sft-distillation-2026
+title: 'Pythagoras-Prover: Advancing Efficient Formal Proving via Augmented Lean Formalisation'
+year: 2026
+venue: arXiv preprint
+authors:
+- Leang, Joshua Ong Jun
+- Zhao, Zheng
+- Stoian, Mihaela Catalina
+- Xu, Qiyuan
+- Li, Haonan
+- Li, Wenda
+- Cohen, Shay B.
+- Giunchiglia, Eleonora
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- compiler-verified-formal-proof-distillation
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2606.12594
+  arxiv: https://arxiv.org/abs/2606.12594
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/Pythagoras-LM/SFT_Dataset_Distillation_4B
+  project: https://huggingface.co/Pythagoras-LM
+  huggingface: https://huggingface.co/datasets/Pythagoras-LM/SFT_Dataset_Distillation_4B
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: released mathematical SFT problems selected for controlled mutation
+  trace_author: an augmented formalization pipeline mutates problems and generates proof plans and Lean proofs
+  answer_format: original question, mutated question, source, Lean statement, Lean proof, problem type, reasoning chain, and
+    difficulty
+  process_fields:
+  - original question
+  - mutated question
+  - source
+  - Lean statement
+  - Lean proof
+  - problem type
+  - reasoning chain
+  - and difficulty
+  environment_or_substrate: English informal mathematics and Lean 4 formal theorem proving
+  verifier_or_reward: Lean compilation, formal proof checking, mutation validation, and difficulty assignment
+  terminal_predicate: Lean compilation, formal proof checking, mutation validation, and difficulty assignment
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: an augmented formalization pipeline mutates problems and generates proof plans and Lean proofs
+  generator: Augmented Lean Formalisation mutates seed problems, writes reasoning plans and Lean artifacts, and retains only
+    compiler-verified proofs in a 336K-record SFT set.
+  filtering_rule: Lean compilation, formal proof checking, mutation validation, and difficulty assignment
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: autoregressive and diffusion-based theorem-prover SFT
+audit:
+  source_mixture: released mathematical SFT problems selected for controlled mutation
+  split: Official release at https://huggingface.co/datasets/Pythagoras-LM/SFT_Dataset_Distillation_4B; exact configs are
+    described by the dataset card.
+  decontamination: Lean compilation, formal proof checking, mutation validation, and difficulty assignment
+  license: Apache-2.0
+  lineage: released mathematical SFT problems selected for controlled mutation -> an augmented formalization pipeline mutates
+    problems and generates proof plans and Lean proofs -> Lean compilation, formal proof checking, mutation validation, and
+    difficulty assignment -> Pythagoras-Prover SFT Dataset -> autoregressive and diffusion-based theorem-prover SFT
+  known_failure_modes:
+  - compiler success does not ensure natural or pedagogically useful proofs
+  - and mutation can preserve hidden near-duplicates
+  citation_status: verified
+  confidence: high
+  notes: Full 31 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for autoregressive and diffusion-based theorem-prover
+  SFT; records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2606.12594
+- primary-link-checked
+status: verified
+one_line_summary: Augmented Lean Formalisation mutates seed problems, writes reasoning plans and Lean artifacts, and retains
+  only compiler-verified proofs in a 336K-record SFT set.
+why_it_matters: Formal proving data is limited by the cost of translating informal mathematics into diverse, executable Lean
+  statements and proofs.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: autoregressive and diffusion-based theorem-prover SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: compiler-verified formal proof distillation
+  selection_priority_score: 5
+  selection_score_breakdown:
+    institution: 2
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 42 downloads and 0 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual one public JSON file records, field schema, scale, and Apache-2.0 terms.
+  selection_eligible: true
+  year_impact_threshold: 1

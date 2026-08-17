@@ -1,0 +1,115 @@
+id: llm-evaluation-survey-2024
+title: A Survey on Evaluation of Large Language Models
+year: 2024
+venue: ACM Transactions on Intelligent Systems and Technology
+authors:
+- Yupeng Chang
+- Xu Wang
+- Jindong Wang
+- Yuan Wu
+- Linyi Yang
+- Kaijie Zhu
+- Hao Chen
+- Xiaoyuan Yi
+- Cunxiang Wang
+- Yidong Wang
+- Wei Ye
+- Yue Zhang
+- Yi Chang
+- Philip S. Yu
+- Qiang Yang
+- Xing Xie
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- evaluation
+- reasoning
+- benchmarks
+- reasoning-data
+- reliability
+training_use:
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://dl.acm.org/doi/10.1145/3641289
+  arxiv: https://arxiv.org/abs/2307.03109
+  code: https://github.com/MLGroupJLU/LLM-eval-survey
+  data: null
+  project: https://github.com/MLGroupJLU/LLM-eval-survey
+  huggingface: null
+  doi: https://doi.org/10.1145/3641289
+  venue: https://dl.acm.org/doi/10.1145/3641289
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed tasks, datasets, benchmarks, and evaluation protocols for large language models.
+  trace_author: The benchmark and primary-study authors summarized by the survey.
+  answer_format: An evaluation map organized by what to evaluate, where to evaluate, and how to evaluate.
+  process_fields:
+  - evaluation target
+  - task and dataset
+  - protocol
+  - metric
+  - success and failure evidence
+  environment_or_substrate: Large-language-model evaluation in general tasks, reasoning, applications, and risk settings.
+  verifier_or_reward: Reviews diverse metrics, human studies, model judges, and benchmark-specific graders.
+  terminal_predicate: A task-specific score or judgment defined by the evaluated benchmark.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Not applicable.
+  generator: Literature synthesis and evaluation taxonomy.
+  filtering_rule: The official abstract organizes the field through what, where, and how to evaluate.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new training recipe is proposed.
+audit:
+  source_mixture: Official ACM article page, official arXiv record, and linked source repository.
+  split: Not applicable to a survey.
+  decontamination: Discusses evaluation challenges but gives no universal contamination verdict.
+  license: Article and repository terms should be checked before reusing any separately linked artifact.
+  lineage: 'Primary source: https://dl.acm.org/doi/10.1145/3641289'
+  known_failure_modes:
+  - A score can conceal prompt, model, or grading sensitivity.
+  - Benchmark coverage and real-world reliability are different claims.
+  citation_status: verified
+  confidence: high
+  notes: OpenAlex listed 2,567 citations when checked on 2026-07-28; citation counts change over time.
+inclusion_reason: A highly cited survey with CMU, PKU, and Microsoft Research Asia affiliations that makes evaluation conditions
+  visible for reasoning-data work.
+related: []
+tags:
+- foundations-and-primers
+- llm-evaluation
+- reasoning-benchmarks
+- survey
+- high-citation
+why_it_matters: It prevents reasoning-data projects from treating one benchmark score as a complete capability claim.
+one_line_summary: A high-impact survey that turns “evaluate an LLM” into concrete choices about target, dataset, protocol,
+  and metric.
+paper_type: Survey and evaluation taxonomy
+reading_priority: strong
+best_for: Readers designing an evaluation suite or interpreting reasoning benchmark scores.
+confidence: high
+status: verified
+needs:
+- 'unknown: a single evaluation protocol that remains valid across models, tasks, and deployment settings'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official article, arXiv abstract, author affiliations, and public citation index were checked.
+category_ids:
+- foundations_and_primers

@@ -1,0 +1,5 @@
+The one-sentence contribution is that Emergence WebVoyager: Building transparent and consistent Web Agents packages WebVoyager-style tasks with transparency and consistency checks for web-agent evaluation into a reusable agent evaluation or trajectory surface. The core mechanism is to bind a task instruction to browser state, tool state, screenshots, DOM/HTML, or simulator state, then score the agent through task success checks plus consistency and transparency audit criteria.
+
+The data object is web task definitions, task instantiation rules, browsing traces, and failure handling records. The feedback contract is environmental: success depends on page state, answer matching, task predicates, or evaluator checks rather than a free-form preference label. Category rationale: it belongs in environment_agent_trajectory_data because the reusable unit is an interactive environment, web action record, or browser-task harness.
+
+Closest comparisons are WebVoyager, BrowserArena, and Online-Mind2Web.

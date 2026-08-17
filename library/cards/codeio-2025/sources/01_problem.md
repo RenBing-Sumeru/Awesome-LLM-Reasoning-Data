@@ -1,0 +1,5 @@
+Reasoning supervision is abundant for mathematics and code generation but sparse and fragmented for logic, science, symbolic, and commonsense tasks. Raw-code pretraining hides useful procedures behind syntax and unrelated implementation details, while text-to-code supervision still rewards code production rather than transferable natural-language reasoning.
+
+CODE I/O converts raw programs into executable functions and asks a teacher to explain either the output for a given input or a feasible input for a given output. Execution checks the prediction, and CODE I/O++ preserves the feedback plus one revision turn, producing about 3.52M CoT training records from 454.9K functions.
+
+**L4 facts:** primary source ICML 2025, PMLR 267:34471-34489, https://proceedings.mlr.press/v267/li25t.html; data object and decision boundary are the prompt, first CoT prediction, execution feedback, optional revision, and re-check; the full construction and evaluation evidence are verified, but the release covers only PythonEdu-Reasoning and does not disclose its exact row count.

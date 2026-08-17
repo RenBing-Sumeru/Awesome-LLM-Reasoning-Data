@@ -1,0 +1,95 @@
+id: coig-p-chinese-preference-2025
+title: 'COIG-P: A High-Quality and Large-Scale Chinese Preference Dataset for Alignment with Human Values'
+year: 2026
+venue: Findings of EACL 2026
+authors:
+- Siwei Wu
+- Jincheng Ren
+- Xinrun Du
+- Shuyue Guo
+- Xingwei Qu
+- Yiming Liang
+- Jie Liu
+- Yunwen Li
+- Tyler Loakman
+- Tianyu Zheng
+- Boyu Feng
+- Huaqing Yuan
+- Zenith Wang
+- Jiaheng Liu
+- Wenhao Huang
+- Chenglin Cai
+- Haoran Que
+- Jian Yang
+- Yuelin Bai
+- Zekun Moore Wang
+- Zhouliang Yu
+- Qunshu Lin
+- Ding Pan
+- Yuchen Jiang
+- Tiannan Wang
+- Wangchunshu Zhou
+- Shenzhi Wang
+- Xingyuan Bu
+- Minghao Liu
+- Guoyin Wang
+- Ge Zhang
+- Chenghua Lin
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.findings-eacl.288/
+  arxiv: null
+  code: https://github.com/multimodal-art-projection/COIG-P
+  data: https://huggingface.co/datasets/m-a-p/COIG-P
+  project: null
+  huggingface: https://huggingface.co/datasets/m-a-p/COIG-P
+data_object:
+  prompt_source: See the official paper and dataset card.
+  trace_author: See the official construction description.
+  answer_format: Chinese queries, candidate responses, chosen/rejected labels, domain, and quality-control metadata.
+  verifier_or_reward: Multiple LLMs generate and score responses; the paper explicitly reports no human intervention in the
+    construction pipeline.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See official paper and dataset card.
+  annotation_policy: Multiple LLMs generate and score responses; the paper explicitly reports no human intervention in the
+    construction pipeline.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: Labels are synthetic rather than human judgments; model-family bias, source licensing, and benchmark contamination
+    require audit.
+verification:
+  link_verified: true
+  sources:
+  - https://aclanthology.org/2026.findings-eacl.288/
+  - https://huggingface.co/datasets/m-a-p/COIG-P
+inclusion_reason: About one million Chinese chosen/rejected pairs across six domains, generated and judged by multiple LLMs.
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: COIG-P releases Chinese chosen/rejected pairs across six task domains, using multi-model generation and
+  judging to make preference optimization resources available at million-pair scale.
+why_it_matters: About one million Chinese chosen/rejected pairs across six domains, generated and judged by multiple LLMs.

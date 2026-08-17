@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以同分布上下文是否降低 token 置信度，量化语言模型对候选数据集的污染风险。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据污染检测与基准审计方法",
+  "best_for_ch": "需要在已知或未知预训练语料下审计语言模型评测污染的研究者。",
+  "confidence_ch": "高：已核对作者公开 PDF、OpenReview 条目和公开补充材料链接。",
+  "authors_ch": "Michał Zawalski, Meriem Boubdir, Klaudia Bałazy, Besmira Nushi, Pablo Ribalta",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

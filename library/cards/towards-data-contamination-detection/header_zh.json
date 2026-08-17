@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "COLING 2025 对现代语言模型污染检测方法的比较研究：检测结果依赖方法和访问条件，不是训练语料的通用判定。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "COLING 2025 数据污染检测方法审计",
+  "best_for_ch": "涵盖基准泄漏、污染检测与评测可信度的实证方法研究。",
+  "confidence_ch": "高",
+  "authors_ch": "Vinay Samuel、Yue Zhou、Henry Peng Zou",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

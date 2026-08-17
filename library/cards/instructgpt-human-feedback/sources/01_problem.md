@@ -1,0 +1,1 @@
+Primary source: https://arxiv.org/abs/2203.02155. Training language models to follow instructions with human feedback is a primer on reusable feedback data and policy optimization. The paper describes labeler-written and API-submitted prompts, labeler demonstrations, rankings of model outputs, and reward-model scores used in a policy-optimization stage.

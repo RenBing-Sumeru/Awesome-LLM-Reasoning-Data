@@ -1,0 +1,3 @@
+- Use correct JSONL traces for math SFT when commercial use and an open teacher are required; use the incorrect split for outcome-verifier or error-analysis research, not as unlabelled positive supervision.
+- The training input is the source question and the target is the mixed prose/code solution including execution outputs and boxed answer. Success should be checked against a base-model baseline on held-out math tasks and stratified by source problem.
+- Reuse the recipe by retaining problem ID, source, prompt family, masked reference, seed, teacher revision, code/output events, predicted/expected answer, correctness, error, and selection weight. It is unsuitable when faithful human-written derivations or broad domains beyond GSM8K/MATH are mandatory.

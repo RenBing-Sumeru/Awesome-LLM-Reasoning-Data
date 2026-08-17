@@ -1,0 +1,5 @@
+- Positioning: HalluciDoctor diagnoses and rewrites roughly 50K visual conversations whose answers contain unsupported image claims.
+- Method handle: HalluciDoctor diagnoses toxic records, identifies unsupported spans, rewrites them against image evidence, and releases corrected conversations for retraining.
+- Data handle: about 50,000 diagnosis-and-rewrite visual instruction records; each record contains image, original instruction-response, hallucination diagnosis, and corrected response.
+- Evidence anchor: Training on corrected rather than original records reduces hallucination metrics while preserving general VQA performance; the controlled comparison changes the data diagnosis/rewrite stage.
+- Reuse decision: best for auditing and repairing a visual SFT mixture before training; first audit teacher agreement can be mistaken for image-grounded correctness.

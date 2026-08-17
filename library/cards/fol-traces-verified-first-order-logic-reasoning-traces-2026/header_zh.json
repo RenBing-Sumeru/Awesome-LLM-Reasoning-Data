@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FOL-Traces 发布带复杂度元数据的程序化验证一阶逻辑推理轨迹，用于诊断结构化推断能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "程序化验证的一阶逻辑推理轨迹数据与诊断基准论文",
+  "best_for_ch": "研究可验证逻辑推理过程、步骤补全和掩码操作预测。",
+  "confidence_ch": "高",
+  "authors_ch": "Isabelle Lee、Sarah Liaw、Dani Yogatama",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

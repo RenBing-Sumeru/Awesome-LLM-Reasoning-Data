@@ -1,0 +1,107 @@
+id: libra-assessing-improving-reward-model-learning-think-2025
+title: 'Libra: Assessing and Improving Reward Model by Learning to Think'
+year: 2025
+venue: arXiv
+authors:
+- Meng Zhou
+- Bei Li
+- Jiahao Liu
+- Xiaowen Shi
+- Yang Bai
+- Rongxiang Weng
+- Jingang Wang
+- Xunliang Cai
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+- reward-modeling
+training_use:
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.21645
+  arxiv: https://arxiv.org/abs/2507.21645
+  code: null
+  data: https://huggingface.co/datasets/meituan/Libra-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/meituan/Libra-Bench
+  doi: https://doi.org/10.48550/arXiv.2507.21645
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH-500 level-5, AIME 2024, and AIME 2025 mathematics problems.
+  trace_author: Five reasoning models sampled by the paper authors.
+  answer_format: Question, response, correctness label, model metadata, reference, subset, and optional chain of thought.
+  process_fields:
+  - question
+  - response
+  - label
+  - model
+  - reference
+  - subset
+  - response_with_cot
+  environment_or_substrate: High-difficulty mathematical reasoning.
+  verifier_or_reward: Answer rules, strong-model checking, and human verification.
+  terminal_predicate: The candidate response is labelled correct or incorrect for the problem.
+recipe_metadata:
+  base_model: Libra-RM models reported in the paper.
+  teacher: Answer rules, strong-model checks, and human verification.
+  generator: DeepSeek-R1, Qwen3-32B, QwQ-32B, and two R1-Distill models.
+  filtering_rule: Remove truncated reasoning and balance positive and negative samples across generators.
+  sampling_protocol: At least 64 responses per problem as reported in the paper.
+  rollout_count: At least 64 per problem
+  temperature: null
+  inference_budget: See paper for model-specific sampling settings.
+  optimizer_or_scaffold: Rejection sampling, SFT, and rule-reward RL for Libra-RM.
+audit:
+  source_mixture: Primary arXiv paper and Meituan's concrete Hugging Face dataset page.
+  split: Dataset card records subsets for MATH-500 and the two AIME sets.
+  decontamination: Check overlap between the mathematics sources and any downstream reasoning benchmark.
+  license: MIT licence stated on the dataset page.
+  lineage: https://arxiv.org/abs/2507.21645
+  known_failure_modes:
+  - Correctness labels can inherit ambiguity in mathematical answer normalization.
+  - Benchmark coverage is limited to the selected high-difficulty mathematics sources.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv primary source and the specific Meituan/Libra-Bench dataset page were checked.
+inclusion_reason: Libra Bench releases reward-model supervision that tests whether a judge can assess the correctness of difficult
+  reasoning outputs.
+related: []
+tags:
+- reward-model
+- mathematics
+- preference-data
+- reasoning
+- '2025'
+one_line_summary: Libra Bench turns difficult mathematical reasoning outputs into a 3,740-record correctness benchmark for
+  training and testing thinking reward models.
+why_it_matters: It makes reward-model reasoning itself observable through labelled judgments of difficult model-generated
+  solutions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The arXiv primary source and the specific Meituan/Libra-Bench dataset page were checked.
+category_ids:
+- preference_reward_feedback_data

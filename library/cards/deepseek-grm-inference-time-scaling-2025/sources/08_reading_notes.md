@@ -1,0 +1,5 @@
+- SPCT combines Rejective Fine-Tuning with rule-based GRPO over generated principles, critiques, and scores.
+- The 27B recipe reports 1,256K RFT examples and 237K RL examples, including a large in-house component.
+- Inference-time scaling sums repeated pointwise scores; Meta RM guided voting evaluates sampled judgment trajectories.
+- Official 16B, 27B, and MetaRM checkpoints are listed, but raw data, critiques, and code were not confirmed.
+- Reward-benchmark scaling evaluates the judge pipeline; it is not proof of trace or source-mixture quality.

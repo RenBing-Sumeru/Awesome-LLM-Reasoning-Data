@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Collaborative Reasoner（Coral）让两个对称的同模型 agents 对 reasoning problems 进行五路逐 turn 采样与五棵独立 conversation trees，通过 same-family LLM belief extraction 加 gold matching 构造 SFT targets 和 same-prefix DPO pairs；论文报告 8B/70B 接受 379.6K/311.3K turns，但没有公开 conversations、SFT/DPO rows、rejects、checkpoints、logs 或 splits。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "合成多轮协作推理对话的构造配方、混合验证器与 DPO/SFT 模型报告",
+  "best_for_ch": "研究多智能体自博弈、对话树采样、基于信念的反馈、同前缀偏好构造，或审计仅开源代码这类发布的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Ansong Ni、Ruta Desai、Yang Li、Xinjie Lei、Dong Wang、Jiemin Zhang、Jane Yu、Ramya Raghavendra、Gargi Ghosh、Shang-Wen Li、Asli Celikyilmaz",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

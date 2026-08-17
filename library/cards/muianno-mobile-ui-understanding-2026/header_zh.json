@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MUIAnno 提供专家标注的移动 UI 数据和评测 benchmark。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 mobile UI understanding dataset",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Athar Parvez 等（Information and Computer Science Department, King Fahd University of Petroleum and Minerals）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:08:14Z"
+}

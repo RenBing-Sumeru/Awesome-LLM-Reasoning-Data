@@ -1,0 +1,17 @@
+{
+  "title": "GeoRC: A Benchmark for Geolocation Reasoning Chains",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1883/",
+    "data": "https://huggingface.co/datasets/mohit-talreja/GeoRC"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:45:49Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "GeoRC 提供 500 个场景和 800 条专家地理推理链，以步骤匹配和人工评分评估视觉推理过程，下载量高",
+    "updated_at": "2026-07-26T05:45:49Z"
+  }
+}

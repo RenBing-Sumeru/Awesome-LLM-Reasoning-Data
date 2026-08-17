@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "研究多模型共识作为监督信号的收益与潜在偏差。",
+    "updated_at": "2026-07-19T00:00:00Z"
+  },
+  "updated_at": "2026-07-18T13:22:03Z"
+}

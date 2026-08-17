@@ -1,0 +1,112 @@
+id: moral-roleplay-villains-2026
+title: 'Too Good to be Bad: On the Failure of LLMs to Role-Play Villains'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Zihao Yi
+- Qingxuan Jiang
+- Ruotian Ma
+- Xingyu Chen
+- Qu Yang
+- Mengru Wang
+- Fanghua Ye
+- Ying Shen
+- Zhaopeng Tu
+- Xiaolong Li
+- Liefeng Bo
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+- answer_level
+domains:
+- roleplay
+- safety_alignment
+- creative_writing
+training_use:
+- evaluation
+- audit
+construction_layer:
+- filtering_curation
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.282/
+  arxiv: null
+  code: https://github.com/Tencent/DigitalHuman/tree/main/RolePlay_Villain
+  data: https://huggingface.co/datasets/Zihao1/Moral-RolePlay
+  project: null
+  huggingface: https://huggingface.co/datasets/Zihao1/Moral-RolePlay
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.282
+  venue: https://aclanthology.org/2026.findings-acl.282/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.282/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Character-centric scenarios curated from COSER.
+  trace_author: Gemini-2.5-Pro labels scene completeness, emotional tone, moral alignment, and traits; authors create a balanced
+    test.
+  answer_format: Scenario, character profile, four-level moral alignment, trait labels, role-play response, and fidelity evaluation.
+  process_fields:
+  - scenario
+  - character
+  - moral_level
+  - emotional_tone
+  - traits
+  - response
+  - fidelity_score
+  environment_or_substrate: Actor-framed zero-shot fictional role play.
+  verifier_or_reward: Role-fidelity evaluation over the moral scale and character traits.
+  terminal_predicate: A response remains faithful to the persona rather than defaulting to prosocial safety style.
+recipe_metadata:
+  base_model: State-of-the-art LLMs evaluated with the same actor-framed prompt.
+  teacher: Gemini-2.5-Pro annotation, with author-defined evaluation framework.
+  generator: COSER curation, filtering, annotation, and stratified sampling.
+  filtering_rule: Discard scenes with completeness below 3; final mean completeness is 4.22.
+  sampling_protocol: Full corpus has 23,191 scenes and 54,591 portrayals; test has 800 characters from 325 scenes, 200 per
+    moral level.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fixed zero-shot actor-framed prompting.
+  optimizer_or_scaffold: Evaluation and alignment audit, not a released training recipe.
+audit:
+  source_mixture: Official ACL paper, Tencent repository, and authors' HF dataset.
+  split: Balanced 800-character evaluation set; source corpus is strongly level-imbalanced.
+  decontamination: COSER lineage and synthetic labels should be checked before any training use.
+  license: See the HF dataset/repository.
+  lineage: COSER -> programmatic filtering -> Gemini annotation -> balanced moral-level test.
+  known_failure_modes:
+  - Synthetic trait annotation
+  - fictional-only setting
+  - evaluation risks conflating safety policy with desired creative fidelity.
+  citation_status: verified
+  confidence: high
+  notes: ACL PDF verifies affiliations and both official artifact links.
+inclusion_reason: It supplies a structured moral/trait rubric and a balanced expert-style evaluation surface for a safety-versus-fidelity
+  reasoning tension.
+related: []
+tags:
+- roleplay
+- safety
+- rubric
+- llm_judge
+one_line_summary: Moral RolePlay evaluates whether safety-aligned LLMs can preserve a fictional persona across a four-level
+  moral spectrum.
+why_it_matters: It exposes a judgment-required failure where generic chat quality is not a valid substitute for character
+  fidelity.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL record/PDF, repository, and HF dataset were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

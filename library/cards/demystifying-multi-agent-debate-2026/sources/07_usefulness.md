@@ -1,0 +1,4 @@
+For `rollout_search_test_time_trace_data`, a reusable debate record should preserve benchmark item/split, model and adapter revision, all 10 initial candidates, the diversity definition and selection decisions, selected five, every round's response/confidence, visible peer order, answer changes, component rewards, terminal vote, and matching rule. This enables audits of diversity collapse, confidence calibration, conformity, position bias, reward gaming, and correct-minority survival.
+
+Builders can compare fixed inference budgets, replace lexical engagement with semantic interaction tests, and stratify confidence reliability by dataset and round. Source QA examples, 5K confidence-SFT records, 10K hard GRPO prompts, training rollouts, and evaluation dialogues should remain separate objects. Final correctness must not label every argument as good.
+

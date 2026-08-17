@@ -1,0 +1,5 @@
+- Positioning: Nex Agent-SFT reselects tasks from the Nex ecosystem, regenerates responses with a tool-capable teacher, and publishes six splits under one message-and-tools contract.
+- Data object: 69,008 records across agentic code, agent, chat, deep research, HTML, and tool-calling splits; each record exposes messages, tool definitions, uuid, and generator.
+- Author and selector: DeepSeek-V3.1-Nex-N1 regenerates tool-aware multi-turn responses; retention uses environment-grounded trajectory generation, split-specific validity checks, and downstream agent evaluation.
+- Evidence anchor: Nex-N1 consistently beats the open-source baselines reported on SWE-bench and tau2 and approaches proprietary systems; the paper evaluates the wider ecosystem, not Agent-SFT in isolation.
+- Reuse decision: suitable for agent SFT; first audit regenerated traces can imitate teacher shortcuts instead of environment-grounded recovery and the paper does not isolate the contribution of each of six splits.

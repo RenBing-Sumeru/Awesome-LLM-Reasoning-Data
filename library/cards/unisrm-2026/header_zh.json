@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "以统一数据、逐维理由和一致性奖励，把语音质量判断从黑盒标量扩展为可审计的多任务奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "语音奖励模型、数据集与评测基准论文",
+  "best_for_ch": "需要构建带上下文的语音评委、语音奖励或审计多维判断记录的研究者。",
+  "confidence_ch": "高：ACL 正式论文、PDF、代码与数据入口均已核验；总记录数和最终数据许可仍应以仓库版本为准。",
+  "authors_ch": "Yuanyuan Wang、Dongchao Yang、Yayue Deng、Zhiyong Wu、Yiwen Guo、Helen Meng、Xixin Wu",
+  "category_ids": ["judgment_rubric_domain_expert_data"],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

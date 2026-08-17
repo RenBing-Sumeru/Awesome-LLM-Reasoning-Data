@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RubricBench 以专家原子 rubric 和胜负标签检验模型生成准则是否忠实反映人类评判标准。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "模型生成 rubric 与人工标准对齐基准",
+  "best_for_ch": "研究 LLM Judge、rubric 奖励模型与对齐评测的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming 等",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

@@ -1,0 +1,5 @@
+- Treat g as the number of newline-delimited reasoning steps between verifier calls, not a universal semantic unit.
+- Preserve every B1 × B2 candidate, PRM score, retained beam, rejected branch, and compute measurement.
+- Separate validation-tuned CM-g/AM-g from oracle choices made with MATH-500 test performance.
+- Recompute cadence when the proposer, verifier, task distribution, difficulty bucket, or budget changes.
+- Treat accuracy/FLOPs gains as search-policy evidence, not proof of trace-record quality.

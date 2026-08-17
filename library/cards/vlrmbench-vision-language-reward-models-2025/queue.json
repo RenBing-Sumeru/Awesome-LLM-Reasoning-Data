@@ -1,0 +1,19 @@
+{
+  "title": "VLRMBench: A Comprehensive and Challenging Benchmark for Vision-Language Reward Models",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/ICCV2025/html/Ruan_VLRMBench_A_Comprehensive_and_Challenging_Benchmark_for_Vision-Language_Reward_Models_ICCV_2025_paper.html",
+    "data": "https://github.com/JCruan519/VLRMBench/tree/main/benchmark_data",
+    "code": "https://github.com/JCruan519/VLRMBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:56:41Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "覆盖八类视觉步骤任务，适合补充多模态奖励模型评测",
+    "updated_at": "2026-07-16T11:56:41Z"
+  }
+}

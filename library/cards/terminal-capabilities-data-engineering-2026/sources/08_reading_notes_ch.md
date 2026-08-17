@@ -1,0 +1,5 @@
+- 区分公开的 366,154 行与论文 490,520 条 trajectory mixture；相差的 124,366 条是未确认发布的 seed-based 轨迹。
+- 把 `conversations` 理解为嵌入文本的 action-observation，而非规范化 outcome schema；`task_complete` 只是模型自报。
+- 将 verification 视为 mixed：已检查的 synthetic tasks 使用 pytest end-state checks，adapter tasks 则没有 tests。
+- no-filter 消融支持的是论文所选 SFT 配方，不是公开发布物中可按标签核验的 failure breakdown。
+- replay 或复用前应固定 image、dependency、harness revision、row manifest、verifier log、decontamination rule 与组件 license。

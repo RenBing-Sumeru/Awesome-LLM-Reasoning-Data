@@ -1,0 +1,3 @@
+- **Public-evidence bias.** The synthesis sees published papers and system reports, not private data pipelines or negative industrial results. Treat coverage as a map of visible evidence.
+- **Not a formal meta-analysis.** Study selection is question-driven and heterogeneous results are not combined into effect sizes. Return to primary sources for quantitative decisions.
+- **Comparability remains limited.** Models, verifiers, data mixtures, budgets, and benchmarks vary widely. Reconstruct these settings before transferring a claim.

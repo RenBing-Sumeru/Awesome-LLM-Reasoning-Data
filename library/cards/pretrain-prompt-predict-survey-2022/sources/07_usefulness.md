@@ -1,0 +1,1 @@
+Use this paper before creating prompt-derived reasoning data. Define a template version, demonstration source, answer mapping, and scoring method as part of the dataset record. Then test perturbations that should not change the intended answer. This turns a prompt from an undocumented instruction into a reproducible data transformation.

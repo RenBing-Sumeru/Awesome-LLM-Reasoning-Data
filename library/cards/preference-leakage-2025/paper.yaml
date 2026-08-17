@@ -1,0 +1,97 @@
+id: preference-leakage-2025
+title: 'Preference Leakage: A Contamination Problem in LLM-as-a-Judge'
+year: 2025
+venue: ICML 2025
+authors:
+- Dawei Li
+- Renliang Sun
+- Yue Huang
+- Ming Zhong
+- Bohan Jiang
+- Jiawei Han
+- Xiangliang Zhang
+- Wei Wang
+- Huan Liu
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=grIvSXVJ65
+  arxiv: https://arxiv.org/abs/2502.01534
+  code: https://github.com/David-Li0406/Preference-Leakage
+  data: https://github.com/David-Li0406/Preference-Leakage
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=grIvSXVJ65
+  openreview: https://openreview.net/forum?id=grIvSXVJ65
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - Preference leakage is hard to detect when generator/judge lineage is undisclosed.
+  citation_status: verified
+  confidence: high
+  notes: 'Official paper/project and public artifact URL checked on 2026-07-18. Focus: judge relatedness bias and released
+    synthesis/judgment data.'
+inclusion_reason: 'Track 13 candidate: the central contribution audits contamination, verifier or judge failure, reward hacking,
+  or evaluation reliability.'
+related: []
+tags:
+- track13
+- audit
+- candidate-slate
+status: verified
+one_line_summary: judge relatedness bias and released synthesis/judgment data
+why_it_matters: It offers a concrete audit surface or failure-mode dataset for Track 13.
+curation_level: L2_artifact_verified
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: ICML 2025 proceedings status and public code/data release verified; bilingual L4 review completed.
+category_ids:
+- audit_failure_contamination_verifier_attacks

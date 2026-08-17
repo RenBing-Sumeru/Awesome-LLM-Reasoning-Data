@@ -1,0 +1,3 @@
+Use this Card to audit claims made around a frontier multimodal release. It supports a concrete checklist: separate official weights and inference material from training-data availability; ask whether model and rule verifiers are identifiable and calibratable; require source, rights, split, and contamination evidence; and treat an agent-data description as non-reusable until its environment and trajectories are released.
+
+The report can inform conceptual comparisons of SFT, long-CoT distillation, RL with verifiable outcomes, and agent training. It should not be used as a drop-in source of training data, reward models, RL recipes, or replayable agent trajectories.

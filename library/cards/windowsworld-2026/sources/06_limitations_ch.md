@@ -1,0 +1,10 @@
+- **任务定义发布不等于轨迹发布。** 官方仓库公开181项任务和可在本地生成`traj.jsonl`、截图与judge结果的runner，但没有公开作者完整的成功、失败、超时、执行错误、重试或raw judge calls。汇总failure analysis不能替代逐记录留存。
+- **公开状态不一致。** 论文把任务描述为经过人工review的最终集合，但固定JSON只有126条approved、55条pending，validity为true/false的数量是160/21。release note没有说明这些是陈旧字段、故意保留的无效样本还是未完成状态；把所有行视为统一可用可能传播坏任务。
+- **环境初始化缺口。** 标准`hf_run.py`调用`env.reset()`时不传task，也没有明显执行`environment_setup`。97行要求生成文件，16行列出downloadable resource。除非可变VM镜像已经包含精确状态，否则缺失setup会把可行任务变成意外失败。
+- **VLM false positive与false negative。** Qwen3-VL-Plus观察action和截图历史，而不是权威应用状态。论文报告当前状态被遮挡导致false positive，短暂达到的状态后来不可见导致false negative。封闭且未固定的服务revision还会带来时间漂移。
+- **L4 reward hacking。** 空action history或最后一个FAIL会被直接视为正确，而不验证不可行原因。广泛拒绝或尚未行动就崩溃的agent也可能得分；论文对UiPath的分析已经显示频繁判定未完成会抬高L4表现。
+- **Checkpoint覆盖不等于因果监督。** 状态谓词经过人工审核并允许不同路径，但未必覆盖有害side effect、顺序约束或全局一致性。高`S_int`可以与terminal failure共存，也不能证明路径连贯、安全或高效。
+- **没有split或contamination边界。** 181项任务、checkpoint、最终标准和judge prompt全部公开，却没有train/dev/test、hidden test、任务重叠审计、模型预训练decontamination或未来submission policy。记忆与针对criteria的evaluator gaming风险会随时间上升。
+- **回放与版本漂移。** 仓库没有tag或GitHub Release，OneDrive VM没有digest，Windows、应用、URL、账户、模型API和依赖都可能变化。论文实验的精确snapshot、seed、retry、prompt、cost和result hash缺失，无法进行不可变复现。
+- **许可证与外部资源边界。** 仓库代码声明Apache-2.0，但Windows镜像、已安装专有应用、外部URL/download和生成的agent trajectory可能受其他或未说明的权利约束。链接存在不代表可再分发。
+- **作者明确的范围限制。** 完整轨迹执行和人工审核checkpoint限制大规模或online RL；尽管有双语指令，OS界面仍主要是单一语言；MCP工具尚未评测。结果不能直接推广到多语言OS、MCP增强agent、训练效率或真实部署安全性。

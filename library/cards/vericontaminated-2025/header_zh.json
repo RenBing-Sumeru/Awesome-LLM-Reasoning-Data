@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "以双检测器审计 Verilog 评测污染，并量化缓解污染与代码质量的取舍。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Verilog 代码生成基准的数据污染与评测可靠性审计",
+  "best_for_ch": "评估硬件代码生成模型、构建去污染基准或审计训练—测试泄漏的研究者。",
+  "confidence_ch": "高：已全文核对论文、正式出版信息与官方代码仓库；检测结果依赖 CCD、Min-K% Prob 的阈值设定。",
+  "authors_ch": "Zeng Wang，Minghao Shao，Jitendra Bhandari，Likhitha Mankali，Ramesh Karri，Ozgur Sinanoglu，Muhammad Shafique，Johann Knechtel。",
+  "category_ids": ["audit_failure_contamination_verifier_attacks"],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+Multi-Crit 适合审计多模态奖励模型和 judge 是否真正遵循用户 rubric，而不仅是输出与总体人类偏好相似的结果。研究者可用同一回答对切换 criteria，测量可控性、冲突识别和排序稳定性，也可把人工维度标签用于训练 criterion-conditioned reward model。若产品只需要单一固定指标，完整 benchmark 可能过于复杂；但仍应至少用冲突子集检查模型是否偷偷依赖默认偏好。

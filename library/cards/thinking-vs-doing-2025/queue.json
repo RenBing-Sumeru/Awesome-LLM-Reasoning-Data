@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "多模态网页智能体交互，未发布rollout corpus,但github里面有数据待确认",
+    "updated_at": "2026-07-21T14:23:04Z"
+  },
+  "updated_at": "2026-07-21T14:23:04Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

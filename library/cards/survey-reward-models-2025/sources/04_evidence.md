@@ -1,0 +1,1 @@
+The official abstract explicitly covers preference collection, reward modeling, usage, applications, and evaluation benchmarks. It is evidence of a broad taxonomy, not validation of a particular reward dataset.

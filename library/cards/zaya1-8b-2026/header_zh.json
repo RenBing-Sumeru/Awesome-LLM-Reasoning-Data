@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ZAYA1-8B 披露了推理优先预训练、长 CoT midtraining/SFT、可验证数学/代码 RL 与行为 RM/IF 优化，并公开 Apache-2.0 权重；但训练数据、教师/RM 工件、配置化环境、复现栈和审计记录仍未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿推理模型技术报告与数据披露账本",
+  "best_for_ch": "需要核查前沿推理模型的数据混合、长 CoT 构造、验证/奖励契约、RL 环境和公开权重发布边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Robert Washbourne 等，Zyphra",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T08:34:20Z"
+}

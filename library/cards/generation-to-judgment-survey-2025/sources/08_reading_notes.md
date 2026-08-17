@@ -1,0 +1,5 @@
+- Position: LLM judges are development components, not merely open-ended generation metrics.
+- Method: classify judge I/O, six attributes, ten methods, and four benchmark families.
+- Artifact: official paper, maintained website, and paper list are available; this is a survey rather than a new dataset.
+- Evidence anchor: the taxonomy spans alignment, retrieval, reasoning, and agent applications, while retaining reliability risks.
+- Reuse decision: write a judge contract and adversarial test plan before trusting any survey-cited method.

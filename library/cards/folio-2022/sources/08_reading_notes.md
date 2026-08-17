@@ -1,0 +1,1 @@
+Keep two contracts separate: FOL validation of dataset labels and answer-level scoring of models. Read the examples where natural language and logic diverge before treating FOLIO as purely programmatic evaluation.

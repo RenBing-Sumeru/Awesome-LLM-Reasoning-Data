@@ -1,0 +1,154 @@
+id: covo-self-rewarding-2025
+title: 'Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Kongcheng Zhang
+- Qi Yao
+- Shunyu Liu
+- Yingjie Wang
+- Baisheng Lai
+- Jieping Ye
+- Mingli Song
+- Dacheng Tao
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- mathematical_reasoning
+- commonsense_reasoning
+- science_reasoning
+training_use:
+- unknown
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=ckW70ls93V
+  arxiv: https://arxiv.org/abs/2506.08745
+  code: https://github.com/sastpg/CoVo
+  data: https://huggingface.co/datasets/sastpg/CoVo_Dataset
+  project: https://github.com/sastpg/CoVo
+  huggingface: https://huggingface.co/datasets/sastpg/CoVo_Dataset
+  doi: https://doi.org/10.48550/arXiv.2506.08745
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/565f995643da6329cec701f26f8579f5-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=ckW70ls93V
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Open-Reasoner-Zero training instructions, whose reported mixture includes AIME through 2023, MATH, NuminaMath,
+    Tulu 3 MATH, OpenR1-Math-220k, other open datasets, and programmatically synthesized reasoning tasks; released records
+    omit per-source identifiers.
+  trace_author: The current policy samples 16 on-policy trajectories for each prompt.
+  answer_format: Trajectories are split into newline-based states; extracted final answers define answer groups and candidates
+    for state-to-answer likelihood distances.
+  process_fields:
+  - prompt
+  - trajectory
+  - intermediate_state
+  - extracted_final_answer
+  - distance_matrix
+  - consistency
+  - volatility
+  - answer_group
+  - intrinsic_reward
+  - curiosity_reward
+  - normalized_advantage
+  environment_or_substrate: OpenRLHF with vLLM and Reinforce++ performs online rollout, self-scoring, and policy optimization.
+  verifier_or_reward: A programmatic self-reward uses current-policy likelihood geometry to combine trajectory consistency,
+    volatility, answer-group agreement, and optional curiosity; it is not an external correctness verifier. Math-Verify is
+    used only for benchmark evaluation.
+  terminal_predicate: A completed response yields an extracted final answer; prompts whose sampled answers are all identical
+    provide no comparative reward signal and may be filtered.
+recipe_metadata:
+  base_model: Llama-3.2-3B-Instruct and Qwen2.5-3B/7B-Instruct, with an appendix scaling experiment on Qwen2.5-14B-Instruct.
+  teacher: none
+  generator: For each prompt, sample 16 trajectories, split them into states, score every state against distinct sampled final
+    answers, compute trajectory and answer-group rewards, and update the same policy.
+  filtering_rule: Optionally remove prompts whose sampled answers are all identical; group remaining trajectories by exact
+    extracted final answer. The complete normalization and extraction specification is unknown.
+  sampling_protocol: temperature 1.0, top-p 1.0, top-k disabled, maximum 4096 generated tokens, and 16 samples per prompt
+    in the paper.
+  rollout_count: 16
+  temperature: 1.0
+  inference_budget: The paper reports one epoch on eight A100-80GB GPUs; complete token counts, GPU-hours, and per-run seeds
+    are unknown.
+  optimizer_or_scaffold: Reinforce++ with clipped updates and normalized advantages; learning rate 5e-7 and initial KL coefficient
+    1e-4.
+audit:
+  source_mixture: Open-Reasoner-Zero prompt mixture is described at dataset level, but record-level source identifiers are
+    not released.
+  split: The Hugging Face release contains train.jsonl and test.jsonl, but their fields differ and the hosted dataset builder
+    reports a schema-cast error; no manifest maps the files to the paper's training and evaluation runs.
+  decontamination: unknown; the paper gives a release-chronology argument for most prompts but reports no measured overlap
+    audit against the evaluation suites.
+  license: The Hugging Face dataset card declares MIT; code licensing scope and rights inherited from upstream prompt sources
+    remain partial.
+  lineage: Paper-run trajectories, extracted-answer groups, distance matrices, reward records, filtered prompts, seeds, logs,
+    and checkpoints are not released.
+  known_failure_modes:
+  - A wrong but internally consistent trajectory can receive high reward
+  - a shared misconception can strengthen a wrong answer group
+  - reward calibration is self-referential to the current policy
+  - newline segmentation and answer extraction change the score
+  - exact-string grouping can separate equivalent answers
+  - all-identical filtering removes both easy and uniformly failed prompts
+  - reward computation scales with trajectories times states times candidate answers
+  - the public script uses 2048 generated tokens and leaves curiosity disabled by default whereas the paper reports 4096 tokens
+    and includes curiosity
+  - the released train and test JSONL schemas are incompatible with the hosted builder
+  citation_status: verified
+  confidence: medium
+  notes: Official paper, venue page, repository, script, and dataset repository were checked; benchmark accuracy is evaluation
+    evidence, not evidence that the self-reward or released prompts are correct.
+inclusion_reason: Exposes a concrete recipe for turning multiple on-policy reasoning traces into programmatic self-reward
+  without correctness labels, together with important release and audit gaps.
+related: []
+tags:
+- self-rewarding-rl
+- trajectory-consistency
+- volatility
+- curiosity-reward
+- reinforce-plus-plus
+- reward-hacking
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- preference_reward_feedback_data
+one_line_summary: Converts 16 on-policy trajectories into consistency, volatility, answer-group, and curiosity rewards for
+  Reinforce++ without using correctness labels for optimization.
+why_it_matters: Makes a self-generated reward recipe inspectable while showing why internal consistency must not be conflated
+  with external correctness.
+card: null
+needs:
+- paper-run reward records and checkpoints
+- record-level source lineage
+- measured contamination analysis
+- exact answer extraction and normalization specification
+- complete licensing scope
+- machine-loadable aligned train and test schemas
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official paper
+  code: null
+  training script: null
+  and dataset repository verified; paper-run reward artifacts and checkpoints are absent.: null

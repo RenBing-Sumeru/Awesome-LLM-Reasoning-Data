@@ -1,0 +1,114 @@
+id: piqa-2019
+title: 'PIQA: Reasoning about Physical Commonsense in Natural Language'
+year: 2019
+venue: AAAI 2020 / arXiv
+authors:
+- Yonatan Bisk
+- Rowan Zellers
+- Ronan Le Bras
+- Jianfeng Gao
+- Yejin Choi
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- physical-commonsense
+- multiple-choice
+- text-only-reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/1911.11641
+  arxiv: https://arxiv.org/abs/1911.11641
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.1911.11641
+  venue: https://aaai.org/ojs/index.php/AAAI/article/view/6239
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: human-authored physical commonsense questions targeting everyday interactions with objects.
+  trace_author: Official authors, annotators, validators, or dataset curators disclosed by the primary source.
+  answer_format: goal or question, two candidate physical actions, gold label, and split metadata where released.
+  dataset_scale: 17,951 two-choice questions reported for PIQA; paper reports 95% human accuracy and 77% for strong pretrained
+    models at release time.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: static two-choice natural-language physical commonsense benchmark
+  verifier_or_reward: answer-level accuracy against the gold choice.
+  terminal_predicate: model selects the labeled plausible solution among two candidates.
+  benchmark_size: 17,951 two-choice questions reported for PIQA; paper reports 95% human accuracy and 77% for strong pretrained
+    models at release time.
+recipe_metadata:
+  base_model: Not a training recipe; this entry treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the primary source.
+  generator: human-authored physical commonsense questions targeting everyday interactions with objects.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary sources checked: https://arxiv.org/abs/1911.11641'
+  split: Exact split, hidden/public policy, live-refresh policy, and subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; post-release score claims require versioned
+    contamination evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/1911.11641'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, evaluator version, split, model version, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: arXiv page verifies title, authors, AAAI 2020 comment, task description, human/model accuracy summary, and DOI.
+inclusion_reason: It is a compact answer-key surface for physical commonsense gaps that are not well captured by encyclopedia-style
+  text QA.
+related: []
+tags:
+- benchmark
+- physical-commonsense
+- multiple-choice
+- text-only-reasoning
+one_line: PIQA evaluates whether a model can choose the more plausible physical action for everyday goals.
+why_it_matters: It is a compact answer-key surface for physical commonsense gaps that are not well captured by encyclopedia-style
+  text QA.
+status: verified
+needs:
+- 'needs_audit: locate and pin the current official dataset distribution and license before redistribution'
+- 'needs_audit: inspect split files, adversarial filtering details, and answer-option artifacts'
+- 'needs_review: compare against later physical commonsense and multimodal embodied benchmarks'
+one_line_summary: PIQA evaluates whether a model can choose the more plausible physical action for everyday goals.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv page verifies title, authors, AAAI 2020 comment, task description, human/model accuracy summary, and DOI.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-16'
+  primary_category_id: benchmarks_evaluation_surfaces

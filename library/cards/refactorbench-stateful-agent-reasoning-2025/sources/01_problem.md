@@ -1,0 +1,3 @@
+Common coding-agent benchmarks ask models to fix one defect or implement one feature, while final tests only indicate whether the repository passes. They cannot isolate whether an agent remembers earlier edits, tracks cross-file dependencies, or follows multiple mutually exclusive instructions. Real refactoring involves sequential edits, changing state, and compositional objectives, so agents may repeat actions, overwrite previous work, or complete only part of a task.
+
+RefactorBench uses multi-file refactoring in real open-source repositories, with compositional instructions and AST-based tests designed specifically to evaluate state tracking and multi-hop modification over long trajectories.

@@ -1,0 +1,9 @@
+对指定的 environment_agent_trajectory_data track，AgentBeats 最适合作为 evaluation interface 与 audit reference。它提供了一份 assessment episode 序列化清单：参与方 role/endpoint、configuration、task id/instruction、environment access、A2A message、MCP call 与 observation、subject response/artifact、final environment state、metric、score、termination 和 result report。用该清单检查其他 agent benchmark，可以暴露缺失的 state、action、observation、verifier 与 replay 字段。
+
+judge-agent abstraction 适合 feedback-contract audit。研究者可以把每个 judge 的 observable surface 与 scoring path 分类为 programmatic、environmental、semantic 或 mixed；区分 completion/timeout 与 success；测试 predicate shortcut 和 semantic-judge injection；并记录 reset、log、artifact、failure reason 与 metric component 是否在执行后保留。跨 judge 结果应保留 judge identity 与 metric semantics，而不能压缩成一个泛化 reward。
+
+五种 deployment mode 可用于固定版本后的 infrastructure comparison。研究可以在 local、remote、hosted/proxy control 与 CI 中运行相同 judge-subject pairing，再比较 authentication failure、environment initialization、observable log、artifact retention、reset behavior、latency 与 score agreement。此类研究必须固定 endpoint、commit、image、secret policy、result schema、timeout/retry setting 与 benchmark snapshot；论文没有提供完整 v2 manifest。
+
+coding case 是 configuration-aware audit 的模板，而不是已认证 trajectory 的来源。研究者可以围绕 benchmark task、model、harness、reasoning effort、injection 与 MCP remote shell、completion/timeout、evaluation script 和 terminal score 重建矩阵，再检查 harness incompatibility 与 tool-log measurement bias。Appendix A 的 success/failure aggregate 提示应审计 retention，但新研究必须发布逐条输出，因为论文没有提供。
+
+安全复用等级是**仅限 evaluation 与 audit**。不得把 AgentBeats 当作 SFT demonstration、preference pair、process supervision、reward-model data、RLVR 或 agent-training rollout 的证据。只有在 arXiv v2 与不可变 code/image/config/result/trace、split 与 contamination control、retention/privacy policy，以及覆盖 task、submitted agent、log、trajectory 和 leaderboard output 的明确权利绑定后，training reuse 与准确 replay 的阻断条件才可能解除。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "定义针对 LLM 判别器的数据后门，并以模型合并缓解被操纵的评测结果。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "LLM 判别器后门攻击与防御审计",
+  "best_for_ch": "构建、微调或部署自动评测器、奖励模型、安全护栏与检索重排器的研究者。",
+  "confidence_ch": "高：已核对 ICLR 正文、作者机构和官方代码仓库；仓库含攻击、防御与评测工具。",
+  "authors_ch": "Terry Tong, Fei Wang, Zhe Zhao, Muhao Chen",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

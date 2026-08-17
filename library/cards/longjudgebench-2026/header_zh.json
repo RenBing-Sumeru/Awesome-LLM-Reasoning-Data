@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以跨场景、跨协议基准检验 LLM 评审器对长文本输出的稳定性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要评测报告、计划或长回答的自动评审器研究者。",
+  "confidence_ch": "中：arXiv 预印本，官方链接代码；独立数据发布尚未确认。",
+  "authors_ch": "Junjie Chen, Yuxi Dong, Haitao Li, Weihang Su, Yujia Zhou, Min Zhang, Yiqun Liu, Qinyao Ai",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

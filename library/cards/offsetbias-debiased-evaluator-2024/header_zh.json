@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OffsetBias 发布围绕其任务场景组织的候选回答比较与反馈记录，可用于有边界的偏好学习、奖励建模、评测和审计。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据集论文",
+  "best_for_ch": "偏好学习、奖励建模与反馈数据审计",
+  "confidence_ch": "中",
+  "authors_ch": "Junsoo Park、Seungyeon Jwa、Meiying Ren、Daeyoung Kim、Sanghyuk Choi",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T07:08:30Z"
+}

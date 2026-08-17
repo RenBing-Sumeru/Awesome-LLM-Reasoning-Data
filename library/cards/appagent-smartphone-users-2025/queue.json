@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T10:20:16Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "规模小，基线弱 不如专门的androiddata",
+    "updated_at": "2026-07-13T10:20:16Z"
+  }
+}

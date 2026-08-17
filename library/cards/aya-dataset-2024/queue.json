@@ -1,0 +1,17 @@
+{
+  "title": "Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.acl-long.620/",
+    "data": "https://huggingface.co/datasets/CohereForAI/aya_dataset"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T12:06:40Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多语言数据",
+    "updated_at": "2026-07-27T12:06:40Z"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Composition-Grounded Instruction Synthesis for Visual Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.15040",
+    "data": "https://www.dropbox.com/scl/fo/db29pn3bya6n6l3pzs9yo/ALu7ecV3LgH-gcvfyESW8vQ/data?dl=0&rlkey=fl4ty5oovx8xvo48k2dhx58q1&st=njr870c9&subfolder_nav_tracking=1",
+    "code": "https://github.com/gxy000/COGS",
+    "project": "https://cogsynthesis.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:14:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布视觉因素、子问题和中间答案组成的合成过程数据",
+    "updated_at": "2026-07-17T08:14:58Z"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Emergence WebVoyager 审计 WebVoyager 式任务的透明度和一致性。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 web-agent audit paper",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Deepak Akkil 等（Emergence AI / Northwestern University）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T13:01:22Z"
+}

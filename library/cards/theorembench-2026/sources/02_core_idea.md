@@ -1,0 +1,3 @@
+The core contribution is a theorem-level Lean4 benchmark that measures whether models can prove main theorems and associated subtheorems, rather than only solve isolated statements.
+
+The mechanism has two views of the same formal material. A plain-main view asks for a proof of the parent theorem directly; a premised view converts dependencies into explicit premise binders and evaluates both parent theorem success and subtheorem coverage. The feedback contract is Lean4 compilation. Closest comparisons include miniF2F-style formal theorem proving and mathlib-oriented proof generation, but TheoremBench is more dependency-aware and reports coverage/token-efficiency alongside pass rates.

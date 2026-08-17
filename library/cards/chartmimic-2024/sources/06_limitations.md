@@ -1,0 +1,3 @@
+Correctness is only as strong as the execution sandbox and chart metrics. A rendered image can be visually close while using wrong data, wrong scale, missing uncertainty information, or misleading labels. Conversely, a semantically reasonable chart may score poorly if styling differs from the reference.
+
+Scientific-paper charts may carry copyright or license constraints, and reference-code provenance must be checked before redistribution or training use. Scores depend on plotting libraries, fonts, backend rasterization, image resolution, timeouts, package versions, and prompt format. Public figures, reference code, and rendered outputs can contaminate future multimodal training.

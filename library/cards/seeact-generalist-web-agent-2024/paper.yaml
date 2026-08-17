@@ -1,0 +1,118 @@
+id: seeact-generalist-web-agent-2024
+title: GPT-4V(ision) is a Generalist Web Agent, if Grounded
+year: 2024
+venue: ICML 2024 / arXiv
+authors:
+- Boyuan Zheng
+- Boyu Gou
+- Jihyung Kil
+- Huan Sun
+- Yu Su
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- visual-grounding
+- live-web
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2401.01614
+  arxiv: https://arxiv.org/abs/2401.01614
+  doi: https://doi.org/10.48550/arXiv.2401.01614
+  code: https://github.com/OSU-NLP-Group/SeeAct
+  data: https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web
+  project: https://osu-nlp-group.github.io/SeeAct/
+  huggingface: https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official SeeAct paper tasks, Mind2Web-derived offline tasks, Multimodal-Mind2Web records, and live-web tasks
+  trace_author: official authors, Mind2Web human demonstrations, and SeeAct web-agent rollouts
+  answer_format: natural-language web task, screenshot, HTML/context candidates, grounded element/action, live runner trace,
+    and success outcome
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: live website runner and multimodal web action grounding
+  verifier_or_reward: web task success checks and action-grounding evaluation
+  terminal_predicate: web task success checks and action-grounding evaluation
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: OSU NLP authors and grounding annotations
+  generator: SeeAct live runner and multimodal data packaging
+  filtering_rule: pin runner version and live-site date before reuse
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2401.01614; https://osu-nlp-group.github.io/SeeAct/; https://github.com/OSU-NLP-Group/SeeAct;
+    https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2401.01614'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: arXiv/project/GitHub/HF sources verify the SeeAct agent, Multimodal-Mind2Web data, and live-web runner; live-web
+    drift, runner version, data license, and evaluator settings still need pinning.
+inclusion_reason: it connects visual and HTML grounding to live web-agent action selection
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- web-browser-agents
+- visual-grounding
+- live-web
+one_line: SeeAct studies visually grounded live-web agents and Multimodal-Mind2Web data.
+why_it_matters: it connects visual and HTML grounding to live web-agent action selection
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SeeAct studies visually grounded live-web agents and Multimodal-Mind2Web data.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, GitHub, and HF data verify authors, OSU institution, ICML 2024 status, SeeAct code/tools, and Multimodal-Mind2Web
+    artifacts; PMLR page was not independently pinned here.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 44
+  primary_category_id: benchmarks_evaluation_surfaces

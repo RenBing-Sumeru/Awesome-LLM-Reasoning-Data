@@ -1,0 +1,17 @@
+{
+  "title": "Blackbox Model Provenance via Palimpsestic Membership Inference",
+  "candidate_links": {
+    "paper": "https://github.com/RohithKuditipudi/blackbox-model-tracing",
+    "data": "https://github.com/RohithKuditipudi/blackbox-model-tracing"
+  },
+  "review_note": "已按 NeurIPS 2025 原文完成双语精读；用于黑盒衍生模型与文本的训练谱系审计。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "纳入正式池：以可量化独立性检验审计黑盒模型来源，并公开代码、transcript 与查询及观测设置边界。",
+    "updated_at": "2026-07-24T12:00:00Z"
+  },
+  "updated_at": "2026-07-24T12:00:00Z"
+}

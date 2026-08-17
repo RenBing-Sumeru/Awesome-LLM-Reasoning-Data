@@ -1,0 +1,3 @@
+The contribution is a larger and harder grounded commonsense continuation benchmark built by Adversarial Filtering. The mechanism starts from video-caption and instructional-text situations, generates candidate endings, repeatedly removes negatives that a strong discriminator can reject, and keeps distractors that remain plausible to models but wrong for the context.
+
+Compared with SWAG, HellaSwag expands the source domains and refreshes the adversarial filtering setup so that BERT-era models do not solve it by artifacts. The data object is still answer-level multiple choice, and the feedback contract is still label accuracy; the direction label is contamination-prone public benchmark with adversarial data construction.

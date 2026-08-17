@@ -1,0 +1,99 @@
+id: direct-preference-optimization
+title: 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model'
+year: 2023
+venue: NeurIPS 2023
+authors:
+- Rafael Rafailov
+- Archit Sharma
+- Eric Mitchell
+- Christopher D. Manning
+- Stefano Ermon
+- Chelsea Finn
+source_role:
+- construction_recipe
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains: &id001
+- preference-optimization
+- alignment
+- reward-modeling
+training_use:
+- preference_learning
+- safety_alignment
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2305.18290
+  arxiv: https://arxiv.org/abs/2305.18290
+  code: https://github.com/eric-mitchell/direct-preference-optimization
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2305.18290
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The central record is a prompt with a preferred and a dispreferred response. The pair is a judgment-derived
+    supervision object, not an outcome verifier or a proof of factual correctness.
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: null
+  environment_or_substrate: null
+  verifier_or_reward: DPO derives a closed-form objective that uses preference pairs and a reference policy to optimize the
+    language model directly under the paper's reward-model parameterization.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single released training recipe.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: The paper compares a direct preference objective with a conventional multi-stage RLHF route. Reuse
+    requires keeping the prompt, both responses, preference direction, reference-policy assumptions, and any annotator or
+    judge context visible.
+audit:
+  source_mixture: Official primary paper and only paper-linked official artifacts listed above.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Primary source: https://arxiv.org/abs/2305.18290'
+  known_failure_modes:
+  - DPO does not repair weak or biased pair labels. The paper's objective choices, reference policy, data distribution, and
+    evaluation setting remain part of the feedback contract.
+  citation_status: verified
+  confidence: high
+  notes: Editorial routing and audit notes are distinguished from paper facts in the Card sections.
+inclusion_reason: 'Track0 routing value: Direct Preference Optimization turns chosen/rejected response pairs into a direct
+  policy objective without fitting and optimizing a separate reward model in the standard RLHF pipeline.'
+related: []
+tags: *id001
+one_line: Direct Preference Optimization turns chosen/rejected response pairs into a direct policy objective without fitting
+  and optimizing a separate reward model in the standard RLHF pipeline.
+one_line_summary: Direct Preference Optimization turns chosen/rejected response pairs into a direct policy objective without
+  fitting and optimizing a separate reward model in the standard RLHF pipeline.
+why_it_matters: DPO derives a closed-form objective that uses preference pairs and a reference policy to optimize the language
+  model directly under the paper's reward-model parameterization. Route to Preference and Reward Feedback Data for pair construction
+  and judge provenance, then to Training Usage and Optimization Objectives for objective-level comparisons.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source verified; optional facts remain null or unknown.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧱 Instruction / rationale / preference lineages

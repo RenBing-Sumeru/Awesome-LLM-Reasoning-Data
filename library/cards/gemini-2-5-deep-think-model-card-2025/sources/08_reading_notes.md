@@ -1,0 +1,5 @@
+- Read Model Data on page 3 first: it is the direct source for multimodal instruction-response pairs, preferences, tool use, added reasoning/theorem material, curated mathematics solutions, filtering, and the boundary of what is not released.
+- Keep two reward claims separate: the Deep Think card names human and critic feedback, while the Data Reward Model plus rubric-prompted Critic is defined only at Gemini 2.5 family level.
+- In the capability table, preserve IMO 2025 as pass@1 and other matharena.ai results as best-of-32; neither setting reveals training rollouts or the deployed parallel-thinking budget.
+- Read FSF results together with page 19: evaluation used a preliminary implementation with a different thinking prompt and serving configuration, while the app and hours-long IMO variants also differ.
+- Pair this Card with `gemini-2-5-technical-report-2025`; still verify reasoning-corpus manifests, branch traces, rewards, decontamination, licenses, raw safety artifacts, and checkpoint mapping.

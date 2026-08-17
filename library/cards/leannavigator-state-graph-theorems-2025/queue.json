@@ -1,0 +1,19 @@
+{
+  "title": "Generating Millions Of Lean Theorems With Proofs By Exploring State Transition Graphs",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.04772",
+    "data": "https://zenodo.org/records/13989482",
+    "code": "https://github.com/davidsyin/leannavigator",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:31:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布470万经Lean内核核验的定理证明数据集",
+    "updated_at": "2026-07-18T07:31:31Z"
+  }
+}

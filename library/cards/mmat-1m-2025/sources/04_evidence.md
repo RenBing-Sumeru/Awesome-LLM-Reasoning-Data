@@ -1,0 +1,1 @@
+Official arXiv, CVF ICCV 2025 proceedings page, project, author repository, and Hugging Face data are live. The 1.66M-row release establishes a substantial retained artifact. It does not establish that GPT-4o-generated and GPT-4o-reflected rationales are independently correct, faithful to images, or reproducible under changed APIs and retrieval indexes.

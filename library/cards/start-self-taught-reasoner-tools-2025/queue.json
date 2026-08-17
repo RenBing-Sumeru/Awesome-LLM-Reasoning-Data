@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "工具推理轨迹构造",
+    "updated_at": "2026-07-24T10:42:25Z"
+  },
+  "updated_at": "2026-07-24T10:42:25Z",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

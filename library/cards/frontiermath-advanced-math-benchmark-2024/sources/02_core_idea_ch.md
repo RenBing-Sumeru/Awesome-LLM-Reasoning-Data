@@ -1,0 +1,1 @@
+核心贡献是数百道由专家原创和审核的高等数学问题，覆盖主要数学分支，目标是保持对 frontier models 的难度并降低污染。机制包括专家命题与评审、受控发布、难度分层和 answer-level verification/checking。反馈契约是在访问控制政策下，用程序化或规则化答案验收。最近对比是 MATH、OlympiadBench、GPQA 式专家 benchmark 和 formal proof benchmark。方向标签是把 verifier coverage 作为审计字段的高难隐藏数学评测。

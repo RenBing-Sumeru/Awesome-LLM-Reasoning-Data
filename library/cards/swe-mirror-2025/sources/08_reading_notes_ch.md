@@ -1,0 +1,5 @@
+- 必须区分四个对象：60,671 个镜像任务、6,431 条成功 SWE-Mirror episode、6,025 条成功 SWE-rebench episode，以及 12,456 条 episode 的 SFT 混合。
+- 优先阅读第 2.2–2.3 节与图 1，理解 `test.patch -> mirror.patch -> fix.patch` 构造和 `Run.log -> Test.log -> Fix.log` verifier。
+- 表 4 是关键语义审计：177 个取得多数标签的任务中，156 个为高或中等一致性，21 个不一致；184 个任务中另有 7 个没有多数结论。
+- Error Masking 保留成功 episode 内的错误 turn，但屏蔽其 response loss；这不能证明整体失败 rollout 已发布或进入训练。
+- 建议与 SWE-Smith、SWE-rebench 对读；复用前还需核实发布 URL、commit/镜像、split、overlap、许可、隐私/secret scan 与重放。

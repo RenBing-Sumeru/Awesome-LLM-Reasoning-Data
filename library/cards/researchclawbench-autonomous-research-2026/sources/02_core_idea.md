@@ -1,0 +1,1 @@
+ResearchClawBench contains 40 tasks across ten scientific domains, each grounded in a real paper hidden during evaluation. Only related literature, data, and execution materials are provided. Experts decompose target figures, experiments, methods, and conclusions into weighted multimodal criteria, while ResearchHarness supports comparison of full agents and native LLMs.

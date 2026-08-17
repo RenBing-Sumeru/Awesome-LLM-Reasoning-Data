@@ -1,0 +1,105 @@
+id: mediocrity-llm-judge-anchor-selection-2026
+title: Mediocrity is the key for LLM as a Judge Anchor Selection
+year: 2026
+venue: ACL 2026
+authors:
+- Shachar Don-Yehiya
+- Asaf Yehudai
+- Leshem Choshen
+- Omri Abend
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- llm_evaluation
+training_use:
+- evaluation
+- reward_modeling
+- preference_learning
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.706/
+  arxiv: https://arxiv.org/abs/2603.16848
+  code: https://github.com/IBM/Anchor-Selection
+  data: https://huggingface.co/datasets/ibm-research/900K-Judgements
+  project: null
+  huggingface: https://huggingface.co/datasets/ibm-research/900K-Judgements
+  doi: https://doi.org/10.18653/v1/2026.acl-long.706
+  venue: https://aclanthology.org/2026.acl-long.706/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.706/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Arena-Hard-v2.0 pairwise evaluation prompts and model answers.
+  trace_author: Five judge models produce pairwise verdicts and confidence labels.
+  answer_format: Model pair, raw judgment, extracted verdict, confidence, final verdict, timestamp, and judge model.
+  process_fields:
+  - uid
+  - model_a_in_prompt
+  - model_b_in_prompt
+  - raw_judgment
+  - extracted_verdict
+  - confidence
+  - final_verdict
+  - judge_model
+  environment_or_substrate: Anchor-based pairwise LLM-as-a-judge ranking.
+  verifier_or_reward: Judge verdicts and confidence support analysis of anchor informativeness.
+  terminal_predicate: The chosen anchor yields informative comparisons and reliable system rankings.
+recipe_metadata:
+  base_model: Twenty-two candidate anchor models and five judge models.
+  teacher: Existing benchmark rankings and cross-judge comparisons.
+  generator: Compare systems against candidate anchors, record verdicts, and measure correlation with human rankings.
+  filtering_rule: Analyse valid judgments and distinguish informative from saturated comparisons.
+  sampling_protocol: Official dataset release contains 939,499 judgments.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix benchmark revision, anchor set, judge model, order randomization, and ranking protocol.
+  optimizer_or_scaffold: Anchor-selection analysis and benchmark-size power analysis.
+audit:
+  source_mixture: Official ACL paper, IBM code repository, and IBM Research Hugging Face data release.
+  split: The public Hugging Face release provides a 939k-row default training split.
+  decontamination: The data records evaluation judgments rather than human gold labels; use it for judge-analysis claims with
+    the paper's assumptions.
+  license: CDLA-Permissive-2.0 according to the official Hugging Face dataset card.
+  lineage: https://huggingface.co/datasets/ibm-research/900K-Judgements
+  known_failure_modes:
+  - Results are grounded in a particular benchmark and anchor pool.
+  - LLM judge judgments can preserve systematic biases even with improved anchor choice.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL record, author list, institutional affiliations, IBM repository, and Hugging Face data release were
+    checked.
+inclusion_reason: The release exposes large-scale judge verdicts and confidence signals for auditing anchor selection in pairwise
+  LLM evaluation.
+related: []
+tags:
+- llm_as_judge
+- anchor_selection
+- pairwise
+- ranking
+- benchmark
+one_line_summary: This work shows that middling anchors make pairwise LLM judging more informative than extreme anchors.
+why_it_matters: It makes the hidden choice of comparison anchor measurable and auditable in scalable model evaluation.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper, code, and IBM Research dataset release were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

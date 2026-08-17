@@ -1,0 +1,10 @@
+- **语义忠实度：**Isabelle 可以接受一个被误译 theorem 的证明。发布数据没有字段证明 informal word problem、候选答案、生成 statement 与形式 theorem 之间一致。
+- **局部与全局 proof validity：**把非目标 Isabelle 步骤替换为 `sorry` 可以隔离单条 command，但可能隐藏依赖、scope 或未正确解除 assumption 的错误。论文在扩展讨论中提出结合局部与 solution-level 检查，但没有对全部发布数据实施该契约。
+- **受限的逻辑分布：**为简化 Z3 wrapper，FLDx2 中使用 `assump` 的案例被删除，其中包括反证法模式。这同时缩窄了 proof structure 与可能的错误类型。
+- **失败可观测性：**无效格式尝试、被拒生成、重试次数、接收率、prover log、exception 类别、timeout 结果，以及环境失败如何映射为标签，都没有作为逐行审计字段发布。
+- **平衡语义：**LastStepBalanced 配方平衡最后一个监督标签，并使用 `mask_history: true`；它没有证明每个中间标签分布都平衡或已校准。
+- **版本漂移：**官方 Hugging Face 卡片声明其内容对应论文早期版本。两个模型特定的 40K 数据集与四个 raw 变体没有透明标识 ACL 终稿中的单一混合；其中 raw Llama formal-proof 集也没有出现在 ACL 表 1。
+- **污染：**论文没有报告相关数学和逻辑领域的去污染或 source-to-evaluation overlap 分析。
+- **评测范围：**Best-of-7 使用七个生成候选、最小步骤聚合、部分 benchmark 抽样，并主要与未微调 backbone 做成对比较。若干单项下降，benchmark 改进不能证明标签准确或数据语义质量。
+- **复现缺口：**FOVER-40K 的生成温度、采样与重试预算、生产 seeds、终稿精确数据 revision、完整构造算力和冻结的端到端 manifest 仍为 `unknown`。
+- **权利：**项目声明数据采用 CC BY 4.0、代码采用 Apache-2.0，并列出上游许可；下游用户仍需保留署名，并审计每个来源与 base model 的条款。

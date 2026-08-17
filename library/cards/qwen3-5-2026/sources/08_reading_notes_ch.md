@@ -1,0 +1,5 @@
+- 区分预训练来源类别、RL task distribution、环境 episode 与部署输入；它们是不同的数据对象。
+- 将“million-agent environments”视为单位未定义的系统规模主张，而不是已发布环境数量或轨迹数据集。
+- Hugging Face 仓库只核验模型工件的权重、配置、模型规模与 Apache-2.0 许可。
+- 官方 QwenLM 仓库现在提供发布信息与 BibTeX，但不提供 RL training code 或记录。
+- 不要从 benchmark 增益或 asynchronous-RL 术语推断 verifier、reward、terminal predicate、rollout budget 或 data-quality guarantee。

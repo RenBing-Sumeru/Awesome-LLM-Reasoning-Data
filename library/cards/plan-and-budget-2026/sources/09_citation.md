@@ -1,0 +1,1 @@
+Lin, Junhong, Xinyue Zeng, Jie Zhu, Song Wang, Julian Shun, Jun Wu, and Dawei Zhou. “Plan and Budget: Effective and Efficient Test-Time Scaling on Large Language Model Reasoning.” ICLR 2026. https://arxiv.org/abs/2505.16122

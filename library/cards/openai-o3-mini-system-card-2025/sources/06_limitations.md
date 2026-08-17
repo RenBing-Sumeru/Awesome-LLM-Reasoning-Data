@@ -1,0 +1,4 @@
+The source mixture lacks identities, proportions, counts, acquisition terms, rights, manifests, and item-level lineage. The report does not disclose train/evaluation splits, decontamination or benchmark-overlap controls, data licenses, a training-record schema, chain-of-thought retention policy, or source-to-checkpoint traceability.
+
+The reinforcement-learning objective, reward/verifier, safety-data provenance and labels, teacher/generator, sampling, rollout count, optimizer, schedule, compute, and training environment are unknown. Evaluation autograders and red-team judgments should not be promoted to training feedback without evidence. Production measurements can vary with system updates, final parameters, and system-level instructions, while the report itself treats Preparedness evaluations as lower bounds.
+

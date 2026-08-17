@@ -1,0 +1,1 @@
+BiGGen Bench 可用于综合比较语言模型的九类开放生成能力，也可作为 LLM-as-a-judge 元评测集，分析 evaluator 在不同任务上的偏差。实例 rubric 可直接改造成 reward criteria、训练 judge 的监督标签或 agent 验收条件。研究者还可学习其“能力—任务—实例—criteria”层级设计，为自有 benchmark 避免覆盖偏差。由于测试集较小，不适合直接作为大规模训练数据；若用于 reward model，应另构造训练集并保留 benchmark 隔离。

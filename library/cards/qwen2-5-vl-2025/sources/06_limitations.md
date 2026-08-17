@@ -1,0 +1,4 @@
+The report does not release training data, a dataset manifest, record schemas, retained/rejected samples, reward-model weights, or preference pairs. It does not name the raw-web, proprietary, purchased, and most open-source sources, nor provide mixture weights, source rights, per-source counts, splits, deduplication, or decontamination results.
+
+The reward-model and answer-matching mechanisms are only described at a high level. Their training data, calibration, thresholds, failure rates, and susceptibility to shortcut optimization are unknown. Agent training material is likewise incomplete for reuse: virtual environments, environment versions, state resets, action predicates, annotation coverage, and replay information are not specified. Reported benchmarks cannot attribute gains to a particular construction stage or verify that the hidden training data is auditable.
+

@@ -1,0 +1,3 @@
+- Majority final answers and GPT-4 reasonableness judgments can retain shared teacher errors and do not validate intermediate steps. Re-solve a stratified sample with independent tools and humans.
+- Transfer is weak across source domains: training on the GSM8K-derived subset scores 6.7 on MATH, while the MATH-derived subset scores 42.4 on GSM8K. Do not infer broad mathematical coverage from in-domain gains.
+- The public release omits per-record provenance and a license, and its approximately 751K scale differs from the 304K main experiment. Reconstruct lineage, review rights, and cite the exact snapshot and n value.

@@ -1,0 +1,107 @@
+id: chain-of-thought-reasoning-survey-2024
+title: 'Navigate through Enigmatic Labyrinth A Survey of Chain of Thought Reasoning: Advances, Frontiers and Future'
+year: 2024
+venue: ACL 2024 (Long Papers)
+authors:
+- Zheng Chu
+- Jingchang Chen
+- Qianglong Chen
+- Weijiang Yu
+- Tao He
+- Haotian Wang
+- Weihua Peng
+- Ming Liu
+- Bing Qin
+- Ting Liu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- chain-of-thought
+- reasoning
+- prompting
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2024.acl-long.65/
+  arxiv: https://arxiv.org/abs/2309.15402
+  code: https://github.com/zchuz/CoT-Reasoning-Survey
+  data: null
+  project: https://github.com/zchuz/CoT-Reasoning-Survey
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.acl-long.65
+  venue: https://aclanthology.org/2024.acl-long.65/
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.65/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed chain-of-thought prompting methods and reasoning tasks.
+  trace_author: Surveyed primary works; the paper is not a new trace collection.
+  answer_format: A taxonomy of methods, frontiers, challenges, and open questions.
+  process_fields:
+  - prompt
+  - reasoning chain
+  - task
+  - taxonomy
+  environment_or_substrate: Chain-of-thought reasoning with language models.
+  verifier_or_reward: The survey reports heterogeneous primary-study evaluation settings rather than one verifier.
+  terminal_predicate: Task-level performance reported by the underlying studies.
+recipe_metadata:
+  base_model: No single model; this is a literature survey.
+  teacher: The reviewed work uses diverse prompts and data sources.
+  generator: Systematic literature investigation and taxonomy construction.
+  filtering_rule: The official abstract says the paper systematically investigates relevant research and summarizes advanced
+    methods through a taxonomy.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Not a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, DOI record, and linked resource list.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.acl-long.65/'
+  known_failure_modes:
+  - Different prompting studies use different models, tasks, and output formats.
+  - A fluent reasoning chain need not establish causal reasoning.
+  citation_status: verified
+  confidence: high
+  notes: The official ACL abstract describes a systematic investigation and taxonomy of chain-of-thought research.
+inclusion_reason: An accepted ACL survey that makes chain-of-thought research easier to read as a connected set of methods,
+  evidence, and unresolved questions.
+related: []
+tags:
+- foundations-and-primers
+- chain-of-thought
+- reasoning
+- acl-2024
+- survey
+why_it_matters: It helps distinguish a reasoning-chain technique from the task, evidence, and limitation with which it is
+  reported.
+one_line_summary: An ACL 2024 survey that organizes chain-of-thought reasoning methods, current frontiers, and open questions.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers building a clear mental model of chain-of-thought methods before comparing individual papers.
+confidence: high
+status: verified
+needs:
+- 'unknown: common evaluation protocols across chain-of-thought studies'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, DOI, and linked resource were reviewed.
+category_ids:
+- foundations_and_primers

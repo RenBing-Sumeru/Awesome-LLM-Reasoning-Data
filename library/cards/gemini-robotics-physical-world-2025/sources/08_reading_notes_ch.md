@@ -1,0 +1,5 @@
+- 先读 Section 3.1 和 Figure 14，掌握最明确的 record interface：当前场景图像加自然语言指令被映射为可执行 action chunks。
+- 再读 Section 4.2 和 Figure 24，理解重新标注的 reasoning intermediate：未来约 1 秒的左右机械臂轨迹。
+- 严格分开评测与训练：binary success、scalar progress、重复 trial 和 ERQA answer key 都是已报告的评测契约，不是已披露的 RL reward。
+- Appendix 中 2M 和 1M training steps 只能归给 diffusion baseline；Gemini Robotics 的训练步数、optimizer、loss 和 batch size 均为 unknown。
+- 把 400 条、CC BY 4.0 的 ERQA release 视为 answer-level benchmark，不能当成专有 ALOHA 2 demonstration 或 Gemini weights 已开放的证据。

@@ -1,0 +1,3 @@
+Decisive downstream experiment: With simple SFT, AM-Distill-Qwen-32B exceeds DeepSeek-R1-Distill-Qwen-32B on AIME2024, MATH-500, GPQA-Diamond, and LiveCodeBench; both data size and verification differ. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 1.4 million bilingual reasoning traces and exposes actual fields chat messages containing a user problem and a distilled long reasoning response; on 2026-07-27 its page reported 2393 downloads. Usage is only an impact cross-check, not a causal experiment.

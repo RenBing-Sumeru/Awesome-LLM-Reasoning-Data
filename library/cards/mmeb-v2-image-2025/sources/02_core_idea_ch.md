@@ -1,0 +1,3 @@
+核心贡献是在 multimodal-embedding, image-retrieval, visual-representation 上提供 MMEB-V2 contains 78 datasets across images, videos, and visual documents; this entry emphasizes the image 评测 slice and its relation to the full benchmark.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：retrieval/classification metrics computed from labeled query-candidate pairs and ranked outputs。
+
+数据对象或环境是：offline multimodal embedding 评测 across image-centered and expanded visual modalities。最接近的对比对象是 document, chart, multimodal QA, and visual 评测 benchmarks。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 程序化。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

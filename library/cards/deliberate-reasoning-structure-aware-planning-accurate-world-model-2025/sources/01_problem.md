@@ -1,0 +1,3 @@
+Ordinary CoT stores linear answers and does not explicitly supervise subgoals, state prediction, or backtracking. The paper frames deliberate reasoning as structure-aware planning with a world model and releases SWAP_v2.
+
+This gap directly determines whether structured-planning process supervision can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on initial states, subgoal structures, actions, state transitions, and verification results and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in state prediction, search, and deliberate reasoning.

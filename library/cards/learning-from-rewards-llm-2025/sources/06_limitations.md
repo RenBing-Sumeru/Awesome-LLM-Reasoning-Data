@@ -1,0 +1,1 @@
+The paper is a survey, so licenses, splits, annotation procedures, and contamination controls belong to the individual datasets and benchmarks it cites. A common reward vocabulary should not be read as a guarantee of comparability or correctness.

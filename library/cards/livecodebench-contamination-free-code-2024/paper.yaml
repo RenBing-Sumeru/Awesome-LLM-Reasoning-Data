@@ -1,0 +1,111 @@
+id: livecodebench-contamination-free-code-2024
+title: 'LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code'
+year: 2024
+venue: arXiv preprint
+authors:
+- Naman Jain
+- King Han
+- Alex Gu
+- Wen-Ding Li
+- Fanjia Yan
+- Tianjun Zhang
+- Sida Wang
+- Armando Solar-Lezama
+- Koushik Sen
+- Ion Stoica
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- contamination-resistant-code
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2403.07974
+  project: https://livecodebench.github.io/
+  code: https://github.com/LiveCodeBench/LiveCodeBench
+  data: https://huggingface.co/datasets/livecodebench/code_generation_lite
+  arxiv: https://arxiv.org/abs/2403.07974
+  doi: https://doi.org/10.48550/arXiv.2403.07974
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: authors continuously collect new LeetCode, AtCoder, and Codeforces problems with release-date metadata.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: records include recent contest problems, scenario labels, generated code or predictions, and executable tests/expected
+    outputs.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: recent contest problems with execution, repair, and output prediction
+  verifier_or_reward: scoring is programmatic through execution or output matching.
+  terminal_predicate: scoring is programmatic through execution or output matching.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: authors continuously collect new LeetCode, AtCoder, and Codeforces problems with release-date metadata.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2403.07974;
+    https://arxiv.org/pdf/2403.07974; https://livecodebench.github.io/'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2403.07974'
+  known_failure_modes:
+  - contest-source licensing, time-window pinning, execution harness details, and pass@k settings can change conclusions.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: Sida Wang has no explicit affiliation marker in the checked arXiv/project author line. Remaining artifact/license/split/scoring
+    questions stay in needs.
+inclusion_reason: 'high: executable live code benchmark with contamination and harness audit risks.'
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- contamination-resistant-code
+why_it_matters: Live-updated contest source makes it a top code contamination-audit candidate.
+status: verified
+needs:
+- 'needs_metadata: verify dataset license and exact Hugging Face data split used'
+- 'needs_audit: inspect execution harness, pass@k settings, and contest-source provenance'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: LiveCodeBench exposes recent contest problems with execution, repair, and output prediction as an auditable
+  evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Sida Wang has no explicit affiliation marker in the checked arXiv/project author line.
+category_ids:
+- benchmarks_evaluation_surfaces

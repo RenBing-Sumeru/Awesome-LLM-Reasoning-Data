@@ -1,0 +1,1 @@
+The primary evidence is the [official primary source](https://arxiv.org/abs/2505.04588). The verified paper/venue status recorded for this Card is arXiv preprint. Public-artifact boundary: code simulation-tuning data and models confirmed; full rollout logs unknown.

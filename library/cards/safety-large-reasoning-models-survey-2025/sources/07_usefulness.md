@@ -1,0 +1,3 @@
+Use this paper to build a safety reading list for reasoning models or to turn “is it safe?” into concrete questions about risks, attacks, and defenses. It helps identify whether a project has considered reliability as well as capability. It is not a substitute for testing a particular model in its intended environment.
+
+Use the taxonomy to prepare a deployment-specific checklist: define the risk of concern, the relevant interaction or attack condition, the proposed mitigation, and the measurement that would indicate success. This makes safety work testable rather than rhetorical. The survey guides the questions; actual model assessment still requires evidence from the intended setting.

@@ -1,0 +1,3 @@
+The paper does not introduce iterative refinement, generative verification, or Best-of-N as general ideas. Its distinctive combination is: holistic first-error verification; one model spanning Fast, Slow, and consensus-gated Flex modes; RL targeted at the short fast mode; event-triggered completeness probing that reuses the solver’s own likelihoods; and diagnostic feedback that drives another attempt.
+
+For rollout/search curation, the important shift is from a terminal candidate-and-score pair to a conditional trajectory of stop probes, verifier-budget decisions, localized feedback, and revisions. This exposes where computation was withheld or escalated and makes verification policy part of the trace object.

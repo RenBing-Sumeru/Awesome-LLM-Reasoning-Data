@@ -1,0 +1,179 @@
+id: search-time-contamination-deep-research-2026
+title: 'Search-Time Contamination in Deep Research Agents: Measuring Performance Inflation in Public Benchmark Evaluation'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yongjie Wang
+- Xinyue Zhang
+- Kunhong Yao
+- Zhiwei Zeng
+- Kaisong Song
+- Jun Lin
+- Zhiqi Shen
+source_role:
+- audit_failure
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+training_use:
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.05241
+  arxiv: https://arxiv.org/abs/2606.05241
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 6,803 evaluation questions from MedQA (1,273), six MMLU medical subsets after shortest-half filtering (544),
+    MedMCQA after shortest-half filtering (2,089), MedXpertQA Text (2,450), HLE-149 (149), and Medbullets5op (298).
+  trace_author: Tongyi Deep Research generates the main observable ReAct-style trajectories; Step, Gemini, and Valyu Deep
+    Research provide limited commercial-agent outputs for smaller generalization studies.
+  answer_format: A question episode containing reasoning turns, Search queries and ranked URL/snippet observations, Visit
+    URLs and retrieved page content/summaries, intermediate predictions, per-turn BML/QCL/EAL labels, and a final multiple-choice
+    or open-ended prediction.
+  process_fields:
+  - benchmark
+  - question_id
+  - question
+  - ground_truth
+  - turn
+  - reasoning
+  - action_type
+  - search_query
+  - retrieved_urls
+  - snippets
+  - visited_url
+  - retrieved_content
+  - intermediate_prediction
+  - bml
+  - qcl
+  - eal
+  - final_prediction
+  - final_correctness
+  environment_or_substrate: Open-web deep-research search/browse environment. Tongyi uses Serper search and Jina browsing
+    in English; proprietary agents use their own search and browser stacks, exposing fewer trajectory fields.
+  verifier_or_reward: BML uses regex matches over sensitive host/dataset URL patterns; QCL uses normalized longest-common-substring
+    overlap and excludes EAL cases; EAL uses DeepSeek V4 Pro to require both an exact question fingerprint and an explicitly
+    paired ground-truth answer. Final MCQ correctness is accuracy; HLE-149 follows its LLM-judge protocol.
+  terminal_predicate: The agent stops when it emits a final answer. The audit compares final correctness and intermediate
+    prediction changes around contamination events; no training reward or contamination intervention reward is introduced.
+recipe_metadata:
+  base_model: Tongyi-DeepResearch-30B-A3B is the main agent and is fine-tuned from Qwen3-30B-A3B. Step 3.5 Flash, Gemini 3.1
+    Pro, and Valyu API systems are used for limited generalization checks.
+  teacher: DeepSeek V4 Pro labels explicit answer leakage. The standard HLE LLM judge is used for open-ended HLE-149 correctness,
+    but its exact model/version is not specified in this paper.
+  generator: Existing deep-research agents execute live Search/Visit trajectories on public benchmark questions; deterministic
+    URL/overlap rules and LLM/human judgments add contamination labels post hoc.
+  filtering_rule: The shortest half of MMLU-medical and MedMCQA questions is excluded to reduce factual-recall-only items.
+    HLE-149 is a separately audited biology/chemistry subset. No pre-run removal of web-exposed questions is performed.
+  sampling_protocol: The main Tongyi evaluation covers 6,803 questions. Commercial-agent comparison uses the first 100 MedQA
+    questions; Valyu is additionally tested on 100 PubMedQA questions. Seeds, repeats, task order, and query nondeterminism
+    controls are unknown.
+  rollout_count: 6803
+  temperature: unknown
+  inference_budget: No fixed turn/token/search budget is disclosed. Mean observed turns range from 6.23 (MMLU) to 15.87 (MedMCQA)
+    across the six main datasets.
+  optimizer_or_scaffold: 'Audit-only ReAct-style policy over accumulated history: reason, Search, inspect URLs/snippets, Visit
+    selected pages, integrate observations, make intermediate predictions, and emit a final answer. Tongyi is also run with
+    web search disabled as an ablation.'
+audit:
+  source_mixture: Public medical/clinical benchmark questions and labels, live search rankings/snippets, mutable third-party
+    webpages, deep-research reasoning and predictions, regex/lexical contamination labels, DeepSeek V4 Pro judgments, and
+    partial human annotations.
+  split: This is an evaluation-only collection, not a train/validation/test release. Post-hoc subsets are induced by observed
+    BML and by QCL/EAL co-occurrence inside BML trajectories; comparisons assume similar question difficulty rather than using
+    randomized contamination assignment.
+  decontamination: No pre-evaluation decontamination is applied. The study audits naturally occurring exposure, disables web
+    search in one Tongyi ablation, and recommends future isolated sandboxes/private or dynamic benchmarks; it does not run
+    a controlled answer-injection/removal experiment.
+  benchmark_overlap: Overlap with the live web is the measured variable. BML matches hosting/exam/dataset URL patterns, QCL
+    detects question-text overlap, and EAL detects an exact question-answer pair. Unmatched hosts, paraphrases, paywalls,
+    changing pages, and judge misses can leave contamination undetected.
+  license: The arXiv paper is CC BY 4.0. The six benchmarks, search logs, proprietary-agent outputs, snippets, and third-party
+    webpage contents retain separate terms. The paper-linked anonymous results repository is currently inaccessible (HTTP
+    401 after redirect), so its license and redistribution scope are unknown.
+  lineage: Benchmark question/label -> live agent reasoning/Search/Visit trajectory -> URL/snippet/page observations -> per-turn
+    BML/QCL/EAL detection -> intermediate/final prediction -> correctness, subgroup comparison, prediction-shift and survival
+    analysis.
+  release_version: arXiv v1 dated 2026-06-03 was checked on 2026-07-20. The paper links anonymous.4open.science/r/Search-Time_Contamination-25F2/,
+    but the file endpoint returned HTTP 401; no stable public code/data release, commit, or checksum was verified.
+  successful_and_failed_sample_retention: unknown. Tables analyze correct and incorrect predictions and contamination events,
+    but the inaccessible result repository prevents verification of whether all successful, failed, no-prediction, tool-error,
+    blocked-page, and incomplete trajectories are retained.
+  privacy_or_consent: Inputs are public benchmark questions, many framed as synthetic or exam-style clinical vignettes rather
+    than patient records. Retrieved pages are third-party web content; record-level privacy/PII review, robots/terms compliance,
+    consent, redaction, and storage policy for traces are not reported.
+  known_failure_modes:
+  - BML regex patterns have incomplete recall and broad keywords such as question/test/quiz can create false positives; a
+    suspicious URL is not proof that an answer was consumed.
+  - QCL lexical overlap can miss paraphrases and may treat legitimate source-context retrieval as contamination; the threshold
+    and EAL exclusion make labels policy-dependent.
+  - EAL depends on DeepSeek V4 Pro. Medbullets5op validation reports 100% precision but 83.33% recall; MedQA reports 94.87%
+    precision without recall.
+  - Post-hoc contaminated/uncontaminated groups are not randomized. The comparable-difficulty assumption may be violated,
+    so subgroup accuracy differences are associations rather than causal treatment effects.
+  - Intermediate turns without an explicit prediction are counted incorrect, adding noise to prediction-shift dynamics.
+  - Search rankings, pages, paywalls, snippets, and proprietary agent implementations are mutable, so trajectories cannot
+    be replayed from question IDs alone.
+  - Commercial agents expose only final predictions, summaries, and visited URLs, limiting step-level detection and cross-agent
+    comparability.
+  - 'The detection methodology is dual use: publishing exact sensitive URL patterns or benchmark artifacts can itself facilitate
+    evaluation gaming and further contamination.'
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1, methodology, benchmark counts, agent/search configuration, tables, appendices, judge prompt, human agreement,
+    limitations, ethics statement, and the linked repository's current access failure were checked on 2026-07-20.
+inclusion_reason: The paper treats retrieved URLs and page content as contamination-bearing environment state and labels leakage
+  at the trajectory step where it enters reasoning, making evidence provenance and prediction shifts directly relevant to
+  Track 6.
+related: []
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+- deep-research
+- web-search
+- contamination-audit
+- evaluation
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Across 6,803 questions from six medical/clinical benchmarks, the study labels benchmark metadata, question
+  context, and explicit answers inside deep-research search trajectories and shows that direct answer exposure can inflate
+  accuracy and accelerate prediction convergence.
+why_it_matters: 'It demonstrates that web observations are not neutral evidence: they can contain the evaluation item itself,
+  so auditable search trajectories, controlled retrieval corpora, and contamination-aware scoring are necessary for credible
+  agent evaluation.'
+card: null
+needs:
+- 'needs_release: restore a stable official code/data/trace repository with immutable commit, checksums, schema, detector
+  configuration, and artifact license'
+- 'needs_replay: preserve query/ranking/snippet/page snapshots, timestamps, browser/search versions, model prompts, budgets,
+  seeds, failures, and all intermediate predictions'
+- 'needs_audit: report QCL thresholds/ablation, full detector confusion matrices, page-use/PII/terms policy, causal contamination
+  interventions, and non-medical-domain validation'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: The official arXiv paper was verified; the paper-linked anonymous result repository was not accessible, so release,
+    retention, replay, and license claims remain scoped as unknown.

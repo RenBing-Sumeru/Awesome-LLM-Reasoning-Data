@@ -1,0 +1,12 @@
+- 发布的 source list 不符合论文对 selection 的字面描述。它包含三本具名书籍、一篇较早的具名论文，以及 2025 年 1 月和 2 月的 arXiv ID，超出所称 2023 年 5 月至 2024 年 10 月窗口。没有 candidate manifest、OpenReview link/score、venue label 或 filter log 解释这些例外。
+- Row-level grounding 过于粗糙，无法直接审计。`paper` 只是标题或 arXiv ID；最终文件丢弃 formula type/content、page/equation span、retrieved evidence、context、agent/model revision、retry 与 human edit。100 条答案中没有一条保留 appendix prompt 要求的 `evidence:` 后缀。
+- Expert protocol 未充分披露。论文没有给出 mathematician 数量、topic qualification、assignment、independence、double-review rate、agreement、adjudication、rejection count 或 revision history；同时称有五项 selection principle，却只列出四项。
+- Difficulty evaluation 受 selection 条件影响。专家先刻意选出最难的 100 题，再报告模型在同一集合上的低 solve rate。这可以支持 benchmark challenge，却不能估计生成池上的表现，也不能证明广泛覆盖。
+- Automatic derivation evaluation 使用 DeepSeek-R1，而作者明确观察到 LLM 可能给错误推导满分。没有报告 human correlation、judge version、repeatability、confidence interval 或 adversarial calibration。
+- 73/27 random split 不是 source-disjoint：test 的 18 个来源中有 17 个也在 train。模型在 SFT 时可能见到相关 notation、definition、theorem family 或 document phrasing。Random seed 与 grouping policy 均为 unknown。
+- 100-row choice file 每题有 3 个 distractor，但没有发布 distractor-generation script、source、validator 或 human acceptance record。Option artifact 可能使选字母比生成有效推导更容易。
+- Quality 论证使用的 2,000-pair pool、top-500 set、另标作 fullset 的集合、rejected candidate 与 stage output 均缺失。2,000 阶段之前的数量也未知，无法计算 selection rate 与 failure distribution。
+- Code 不是精确 reproduction package。论文中的 GPT-o1-Pro 阶段通过 web 手工交互并上传 screenshot，而公开脚本默认 Gemini 与 DeepSeek；dependency 未固定，orchestrator 文件名拼写错误，也没有 run config/source PDF。
+- 一个 generation script 含硬编码 Google API-key-like credential。它应被视为已经暴露／需撤销，并改用 environment-based secret loading；本卡刻意不复现该值。
+- README 声称 MIT，但 repository 没有 LICENSE file，GitHub 也未检测到 license。最终 answer 抽取或轻度编辑第三方 paper/book text，而 row 不含 source-license 与 attribution metadata。公开可访问本身不授予再分发或商业训练权利。
+- 论文称 freshness 有助于避免 contamination，但没有报告 exact、near-duplicate、semantic 或 memorization audit。Live release 中更晚／更早的来源以及 train/test 间 document overlap，使 `decontamination` 必须保持 unknown。

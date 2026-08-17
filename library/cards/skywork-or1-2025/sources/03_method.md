@@ -1,0 +1,1 @@
+The official Skywork dataset card identifies named math and coding source pools, quality assessment, deduplication, difficulty estimation, and offline/online filtering. The report names customized GRPO and adaptive entropy control, but exact item schemas, reward functions, verifier implementations, thresholds, and sample-level decisions remain unavailable.

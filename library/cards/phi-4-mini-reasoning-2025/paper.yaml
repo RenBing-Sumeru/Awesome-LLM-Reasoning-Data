@@ -1,0 +1,160 @@
+id: phi-4-mini-reasoning-2025
+title: 'Phi-4-Mini-Reasoning: Exploring the Limits of Small Reasoning Language Models in Math'
+year: 2025
+venue: arXiv preprint
+authors:
+- Haoran Xu
+- Baolin Peng
+- Hany Awadalla
+- Dongdong Chen
+- Yen-Chun Chen
+- Mei Gao
+- Young Jin Kim
+- Yunsheng Li
+- Liliang Ren
+- Yelong Shen
+- Shuohang Wang
+- Weijian Xu
+- Jianfeng Gao
+- Weizhu Chen
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+training_use:
+- distillation
+- preference_learning
+- rlvr
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2504.21233
+  arxiv: https://arxiv.org/abs/2504.21233
+  code: null
+  data: null
+  project: https://azure.microsoft.com/en-us/blog/one-year-of-phi-small-language-models-making-big-leaps-in-ai/
+  huggingface: https://huggingface.co/microsoft/Phi-4-mini-reasoning
+  doi: https://doi.org/10.48550/arXiv.2504.21233
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.21233
+data_object:
+  prompt_source: AquaRAT, Ape210K, MetaMathQA, MathInstruct, TAL-SCQ5K, OpenR1-Math, Bespoke-Stratos-17k, OpenThoughts-114K,
+    and several undisclosed in-house seed datasets. Exact mixture weights, item inventory, and license mapping are unknown.
+  trace_author: Existing reasoning annotations are reused when present; for sources without trajectories, DeepSeek-R1 (671B)
+    generates CoT answers. Item-level generator lineage and the precise DeepSeek-R1 snapshot are unknown.
+  answer_format: A math question paired with a long-CoT response and final answer; construction records also carry verification
+    status, domain, difficulty, and repetition attributes. Later stages form correct-over-incorrect preference pairs and answer-level
+    RL rewards.
+  process_fields:
+  - question
+  - reasoning_trace
+  - final_answer
+  - verifier_result
+  - domain_category
+  - difficulty_level
+  - repetition_flag
+  - preference_pair
+  - reward
+  environment_or_substrate: Offline synthetic-trace construction, mid-training, SFT, and DPO followed by online RL over math
+    prompts; the training implementation and executable environment are not released.
+  verifier_or_reward: A math-verification tool checks verifiable final answers, and GPT-4o-mini rechecks rollouts initially
+    marked incorrect because the tool can produce false negatives. DPO uses correct responses as preferred and incorrect responses
+    as dispreferred. RL uses a binary final-answer correctness reward; verifier implementation, prompts, calibration, and
+    error rates are unknown.
+  terminal_predicate: Final-answer correctness under the undisclosed math verifier, with GPT-4o-mini rechecking during data
+    construction; correctness of intermediate reasoning steps is not established.
+recipe_metadata:
+  base_model: Phi-4-Mini, a 3.8B-parameter dense decoder-only Transformer.
+  teacher: DeepSeek-R1 (671B) generates missing reasoning trajectories; existing source annotations are also reused, so not
+    every retained trajectory has a newly disclosed teacher call.
+  generator: For questions lacking trajectories, approximately eight DeepSeek-R1 rollouts are sampled per question.
+  filtering_rule: Correct rollouts are retained for distillation. SFT selects a compact, representative subset whose reported
+    difficulty exceeds college level. Rollout DPO keeps questions classified by GPT-4o-mini as high-school level or above
+    and pairs correct with incorrect rollouts. RL prompt filtering favors groups with relatively uniform response lengths
+    and removes overly easy groups above a stated example threshold of 50% accuracy.
+  sampling_protocol: The report aggregates about 10M rollouts across 1.6M samples. Mid-training uses the full constructed
+    set; later stages use undisclosed selected subsets. RL oversamples difficult prompts, retains all positive responses,
+    randomly samples an equal number of negatives, and does not disclose final prompt, pair, or rollout counts.
+  rollout_count: unknown
+  temperature: RL sampling starts at 1.0, decays linearly to 0.6 over the first 50% of training steps, and remains at 0.6;
+    other construction and DPO decoding settings are unknown.
+  inference_budget: Mid-training uses 16K packed sequences, SFT 20K unpacked sequences, DPO 16K, and RL 25K. Evaluation uses
+    temperature 0.6, top-p 0.95, a 32K maximum sequence length, three runs, and average performance.
+  optimizer_or_scaffold: 'Four stages: distilled-CoT mid-training, distilled-CoT SFT, Rollout DPO, and RL with verifiable
+    reward. The first two stages use batch size 128, learning rate 1e-5, five epochs, and 0.1 warmup; DPO uses learning rate
+    5e-7 for one epoch; RL uses learning rate 5e-7. The exact RL algorithm implementation and remaining hyperparameters are
+    unknown.'
+audit:
+  source_mixture: The paper names eight public resources and several in-house seed datasets, but gives no item manifest, mixture
+    weights, per-source retained counts, collection dates, or license ledger. The later Data Summary confirms public and synthetic
+    data use but does not resolve those gaps.
+  split: unknown
+  decontamination: unknown
+  license: The released model weights are MIT-licensed. Licenses and redistribution rights for the assembled training records,
+    reused annotations, in-house seeds, preference pairs, and verifier outputs are not documented as a unified data release.
+  lineage: Partial stage-level lineage is reported from source question or existing annotation through DeepSeek-R1 generation
+    where needed, verification, subset selection, DPO pairing, and RL. Item-level source-to-rollout lineage, prompts, accepted
+    and rejected IDs, and stage manifests are unavailable.
+  known_failure_modes:
+  - Automatic math verification can create false negatives
+  - GPT-4o-mini rechecking and difficulty labeling introduce a proprietary judge dependency
+  - Final-answer reward can accept an invalid derivation or exploit answer parsing
+  - RL groups have large response-length variance and can have uniform rewards
+  - No released training data, verifier implementation, preference manifest, or contamination audit
+  citation_status: verified
+  confidence: high
+  notes: The paper says existing reasoning annotations are directly reused, whereas the later official model card and Data
+    Summary describe the training data as exclusively synthetic mathematical content generated by DeepSeek-R1. This unresolved
+    source-description tension should not be silently normalized.
+inclusion_reason: An official small-model report that exposes a four-stage post-training sequence, named data resources, rollout
+  scale, preference construction, answer-level verification, and RL stabilization choices while leaving the training records,
+  verifier, and audit manifests unreleased.
+related:
+- deepseek-r1-2025
+tags:
+- phi-4-mini
+- frontier-report
+- disclosure-ledger
+- mathematical-reasoning
+- synthetic-cot
+- dpo
+- rlvr
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Phi-4-Mini-Reasoning documents a four-stage math-reasoning pipeline over about 10M rollouts, with correct-trace
+  distillation, rejected-rollout DPO, and final-answer RLVR, but releases weights rather than the training data or verifier
+  stack.
+why_it_matters: It enables a stage-by-stage disclosure audit of data objects and feedback contracts for a 3.8B reasoning model,
+  including a visible mismatch between the paper and later model-card descriptions of trajectory provenance.
+card: null
+needs:
+- 'needs_data: item manifest, exact public/in-house mixture, retained counts by stage, preference pairs, splits, and licenses'
+- 'needs_metadata: generation prompts, DeepSeek-R1 snapshot, verifier implementation, GPT-4o-mini prompts, subset yields,
+  RL rollout count, and complete optimizer settings'
+- 'needs_audit: decontamination, verifier false-positive and false-negative analysis, reward-gaming tests, and source-to-record
+  lineage'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv report, Microsoft release page, Hugging Face model repository, model card, and Data Summary verified.
+    Model weights are released; training data, training code, preference records, and verifier implementation remain unavailable.

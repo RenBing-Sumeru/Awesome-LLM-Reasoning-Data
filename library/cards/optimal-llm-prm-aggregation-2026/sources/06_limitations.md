@@ -1,0 +1,1 @@
+The conclusion depends on the model, decoding configuration, task distribution, and cost definition. All auxiliary work—drafting, scoring, calibration, or preprocessing—must be counted before transferring an efficiency claim, and aggregate accuracy can hide slow or unreliable tail cases.

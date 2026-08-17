@@ -1,0 +1,5 @@
+The official arXiv report states approximately 800k synthetic verifiable software-engineering tasks and 807,693 pull-request-derived repository instances. It also reports about 600B repository-level mid-training tokens. These are construction or training-scale statements, not a released manifest of distinct tasks, revisions, containers, trajectories, or records.
+
+The report supports recording majority-consensus synthesized tests, execution verification, completion and format penalties, and a response to git or network reward hacking. It also says SFT and RL prompts are disjoint and describes removal of downstream-benchmark overlap and evaluation remotes, branches, or tags. The report does not disclose the methods, thresholds, benchmarks, residual-overlap results, or logs required to independently evaluate those controls.
+
+The official QwenLM repository and Qwen model release are available, while no official training-task, Docker-image, trajectory, verifier-data, or filter-log release is identified. The evidence therefore supports a partial-disclosure model report, not a reusable executable-task dataset or fully auditable agent-RL recipe.

@@ -1,0 +1,5 @@
+- Correct traces from a stronger teacher are not automatically better training data for a small student.
+- Long-CoT and teacher-scale effects are related but distinct construction variables.
+- Mix-Long and Mix-Large use a 1:4 ratio in the main 3B experiments.
+- Paired-correct filtering controls final-answer success, not process validity.
+- The official project, MIT repository, and Hugging Face organization provide an artifact-discovery surface, but exact paper-to-dataset and checkpoint mappings still require confirmation.

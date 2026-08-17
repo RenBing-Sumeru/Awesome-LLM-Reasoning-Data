@@ -1,0 +1,1 @@
+论文在 LiveCodeBench 和 CodeContests 上评估 12 个指令与推理模型，并区分覆盖和选择。这些结果表明混合流程可相对所研究基线提高最终 Pass@1，但不能证明公开测试、生成输入、判断或被选程序都正确。EMNLP 官方条目称代码、模型生成和中间结果位于 https://github.com/NovaSky-AI/SkyThought。声称每次修订、输入、执行、失败或拒绝都在其中前，必须核对固定 commit。

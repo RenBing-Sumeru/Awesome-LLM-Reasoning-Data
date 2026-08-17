@@ -1,0 +1,11 @@
+The safe reuse class is **reading and audit reference only**. The Card is useful as a four-layer template: training interventions, evaluation records and scorers, monitorability infrastructure, and deployment safeguards. Every claim should retain its layer, date, model or monitor checkpoint, sampling frame, environment, budget, and terminal predicate.
+
+For long-rollout data design, build records with task and workspace revision, actor and change ownership, initial and intermediate state, commands and tool calls, agent-authored changes, simulated-user work, revert operations, final artifact, preservation and task-correctness predicates, reward components, and failure labels. Publish semantic tests and adversarial cases for diff-preserving but intent-destroying behavior.
+
+For dynamic safety evaluation, preserve complete multi-turn trajectories, simulator model and prompt, adaptive attack policy, per-message labels, worst-case aggregation, and failure examples. For production-like resampling, pin the traffic window, deidentification procedure, preserved context, replaced final turn, resampling model, automatic labeler, and product safety stack excluded from the estimate.
+
+For monitorability research, separate the CoT monitor from the answer or task grader. Report CoT-only, action-only, and combined observations; label mismatch; class prevalence; CoT-length strata; monitor calibration; cross-fit split; and environment-level results. Recreate CoT-Control with explicit synthetic instruction templates and do not interpret low control as a formal non-steerability guarantee.
+
+For agent and cyber evaluation, keep hidden tests, flags, pass@1, any-success, medal thresholds, expert rubrics, and policy compliance as distinct contracts. A public analogue should pin environments and tests, release failed traces, and compare learned graders with programmatic and human judgments.
+
+For deployment audit, evaluate the topical classifier and safety-reasoner monitor separately, including false positives, false negatives, threshold drift, latency, appeal or manual-review pathways, and actor-level enforcement. These controls should never substitute for evidence about training data or model-only safety.

@@ -1,0 +1,3 @@
+- About 17% of initially selected benchmark candidates required human revision, so SQL/Python agreement does not guarantee natural, unambiguous QA.
+- Experiments cover context-provided QA up to 128K and small-model LoRA, not million-token retrieval, free-form synthesis, or other long-context capabilities.
+- Web/Wikipedia snapshots, source rights, and the released dataset license are not fully specified; answer verification does not resolve provenance or temporal drift.

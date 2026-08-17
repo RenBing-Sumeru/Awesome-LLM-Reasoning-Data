@@ -1,0 +1,16 @@
+{
+  "title": "Massive Supervised Fine-tuning Experiments Reveal How Data, Layer, and Training Factors Shape LLM Alignment Quality",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.1138/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:43:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "大规模对照实验证明数据来源与基础模型兼容性会显著影响 SFT 效果，是数据使用决策的重要实证依据",
+    "updated_at": "2026-07-15T13:43:11Z"
+  }
+}

@@ -1,0 +1,5 @@
+- 将论文第 3–4 节与 `dataset/break_down_question.py`、`inference/_5_planned_local_weighted_model.py` 一起读：发布的机制是 prompt 分解加 credit/schedule 分配，不是对各子解独立执行并检查。
+- 将论文第 5 节与 `run/run_inf.py` 一起读：E3 使用聚合的任务分数与 completion-token 用量。应核查每个比较究竟计入哪些 tokens、模型 API 和任务 scorer。
+- 将预分解输入文件视为生成来源不完整的评测 scaffolding，而不是已经审查过的训练语料。
+- 解读 TravelPlanner 结果前先检查 `dataset/travelplanner_dataset.py`：evaluator 之前有第二个 LLM 执行 JSON 重建。
+- 可与 fixed-budget 和 test-time-compute 工作一同阅读，但在提出数据质量或因果归因主张前，仍应要求逐项 trace manifest 和污染控制。

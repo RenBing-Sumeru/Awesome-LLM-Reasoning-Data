@@ -1,0 +1,1 @@
+正确性只相对于 detector rule 和 emulator 配置成立。Rule-based detector 可能漏掉语义错误，也可能接受脆弱的 UI-state shortcut。官方项目页说明曾因高随机性删除 7 个任务，因此 release 版本会实质影响分数。Chrome、Wikipedia、Walmart、Instagram 等动态或联网任务会随时间变化。闭源模型 API 版本和 prompt 示例也影响可比性。完整 release 材料的许可和再分发条款是 artifact-specific；不能仅凭论文推断。

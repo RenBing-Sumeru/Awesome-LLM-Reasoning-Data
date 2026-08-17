@@ -1,0 +1,1 @@
+核心贡献是一套从新发布编程题持续构造、用执行或精确输出契约验收的 live code benchmark。机制是从 LeetCode、AtCoder、Codeforces 收集题目，记录时间戳，并围绕同一编程基底构造多种场景。数据对象不只是 prompt 到 solution：不同场景会包含待修复代码、需要模拟执行的代码、测试、期望输出和模型提交。最接近的对照是 HumanEval、MBPP、APPS、CodeContests；LiveCodeBench 改的是新鲜度和场景覆盖，而不是程序化评分这一基础思想。方向标签是 contamination-resistant executable code evaluation。

@@ -1,0 +1,1 @@
+暂定引用 — Mohammad Mahdi Moradi, Hossam Amer, Sudhir Mudur, Weiwei Zhang, Yang Liu, Walid Ahmed。[Continuous Self-Improvement of Large Language Models by Test-time Training with Verifier-Driven Sample Selection](https://arxiv.org/abs/2505.19475)。arXiv preprint，2025。题名、作者、会议与主要 URL 已按官方来源核验。

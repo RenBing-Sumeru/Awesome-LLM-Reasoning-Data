@@ -1,0 +1,7 @@
+- 尚未发布版本化六域rollout corpus。生成episode总数、token数、存储量，以及各领域保留成功、保留失败、timeout、exception和丢弃记录数量均为unknown。论文说明了部分失败如何影响reward与gradient，尤其是SWE，但没有说明这些episode是否被归档或公开。
+- 论文没有把训练实现固定到commit或tag。arXiv v3早于GitHub v0.1.0与v0.2.0，current main又晚于这些release，且其SWE训练README仍不完整。因此，`verl`、vLLM、tool plugin、environment schema、dataset、model、index、database、container、API与cache都存在version drift复现风险。
+- 六类verifier具有不同盲区。exact match可能拒绝语义正确但格式不同的答案；单一数据库上的SQL execution可能接受语义错误但观测结果相同的query；DeepSearch的`0.1`调用bonus与视觉curiosity项可能奖励不必要调用；SWE reward稀疏，且受test、dependency、resource和container state影响。这些是依据公开reward定义作出的curator inference，不是已测量的失败率。
+- `valid`与`done`是接口信号，不是语义process label。action在语法上有效时仍可能策略错误；环境终止也可能对应任务失败。mask observation同样无法发现被破坏、过时、对抗性或误导性的工具输出。
+- 统一item-level split、跨领域去重、benchmark-overlap审计与decontamination过程均为unknown。web/search行为会在cache与live source之间漂移，snippet-only评测也不同于调用外部summarizer的评测。
+- 论文采用CC BY 4.0，代码仓库根目录采用MIT，但上游dataset、database、Wikipedia index、web content与cache、model、container、submodule及derived trajectory没有完整license chain。DeepSearch HF任务仓库没有已核验的dataset license tag；SQL reproduction仓库声明MIT也不能建立每项上游asset的权利。web/search内容的privacy与consent处理同样为unknown。
+- 附录A.3与表5/current code对SQL base model存在冲突，前者写Qwen2.5-7B-Instruct，后者写Qwen2.5-Coder-7B-Instruct。精确的table-to-checkpoint映射、seed、variance以及统一hardware/compute归因均未作为replay manifest提供。

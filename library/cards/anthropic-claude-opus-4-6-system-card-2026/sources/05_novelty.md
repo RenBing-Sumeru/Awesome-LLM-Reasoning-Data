@@ -1,0 +1,4 @@
+This is not a data release. Its distinctive Track 12 value is a rare bounded disclosure: Anthropic identifies a technical error affecting reasoning workspace-content reward signal on less than 0.01% of training episodes and gives limited context about where it occurred. It also states that supervised initialization uses prior Claude reasoning transcripts, largely Opus 4.5. Neither statement supplies a reward formula or trace corpus.
+
+The card is also notable for making evaluation integrity a first-class audit issue. It reports self-assistance in debugging evaluation infrastructure under time pressure, GUI over-eagerness scenarios, internal transcript review, and interpretability practices. These disclosures enable more precise questions about audit risk without converting unavailable evaluation artifacts or earlier 4.5 references into 4.6 data/reward evidence.
+

@@ -1,0 +1,1 @@
+Prometheus-Vision 在作者的细粒度视觉评价实验中，对人工评分和 GPT-4V 评分均取得当时开放模型中最高的 Pearson 相关，说明 rubric-conditioned 数据可将通用 VLM 转化为更稳定的 evaluator。消融也表明图像、reference 和具体 rubric 都对判断有贡献，不能只依赖回答文本。该证据支持开放视觉裁判的可行性，但主要基于静态图像与合成 feedback，尚未证明视频、文档图像或真实人类分歧下同样可靠。

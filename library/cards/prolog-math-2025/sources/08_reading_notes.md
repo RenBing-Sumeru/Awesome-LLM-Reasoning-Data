@@ -1,0 +1,6 @@
+- Read Sections 2–3 with Algorithm 1: the data object includes a changing shared predicate buffer, type-aware program generation, SWI-Prolog execution, and a terminal verifier, not merely problem–program pairs.
+- Use Tables 1–3 as construction and recovery evidence under reported setups; do not infer public-release size or semantic program quality from coverage or MATH-500 accuracy.
+- Read Appendix E beside the pinned reward code: the paper requires all suggested predicates for 0.5 partial credit, while the released implementation detects any overlap.
+- Treat Appendix G as essential negative evidence. Correct final answers can coexist with false assumptions or incomplete factor reasoning, and manual logic pass rates are below automatic acceptance.
+- Pin GitHub commit `d01ae636df27f5ae52b6d59616cb757555a7862c` and Hub revision `0aa6c9783d698ea3fbe5e71a76cfb01d2cd0d5af`; reconcile the paper, viewer, and dataset-prose counts before reuse.
+- Distinguish the paper verifier from the standalone pipeline script's substring check, and independently execute a stratified sample across symbolic answer types.

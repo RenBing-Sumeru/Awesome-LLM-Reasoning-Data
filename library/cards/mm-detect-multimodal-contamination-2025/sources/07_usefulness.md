@@ -1,0 +1,1 @@
+For a multimodal benchmark owner, run MM-Detect on its text, image, and pair fields to produce a leakage report before publishing rankings. For a model audit, compare access settings and archive the source candidates. Do not interpret a detected similarity as definitive training-data proof without provenance evidence.

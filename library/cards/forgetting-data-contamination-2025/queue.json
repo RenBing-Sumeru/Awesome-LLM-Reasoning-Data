@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以受控训练证明污染效应受重复、数据规模与遗忘动力学共同支配，为基准污染审计提供可复现实验框架。",
+    "updated_at": "2026-07-24T00:00:00Z"
+  }
+}

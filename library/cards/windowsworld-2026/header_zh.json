@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "WindowsWorld公开181项Windows跨应用任务、899条checkpoint与可执行判分框架，但未发布作者实验的完整成败轨迹；公开任务状态、环境初始化和版本锁定仍限制复现与训练复用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Windows跨应用GUI智能体基准、环境与process-aware verifier",
+  "best_for_ch": "研究桌面GUI智能体、长程跨应用轨迹、过程checkpoint、VLM judge、不可行任务判定与环境回放审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jinchao Li, Yunxin Li, Chenrui Zhao, Zhenran Xu, Baotian Hu, Min Zhang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

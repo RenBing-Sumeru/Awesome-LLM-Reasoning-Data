@@ -1,0 +1,2 @@
+1. **Training or data construction.** R3-Dataset-20K can train interpretable reward models, rubric generators, and criterion-transfer evaluators. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** High-stakes tasks should still provide expert rubrics. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

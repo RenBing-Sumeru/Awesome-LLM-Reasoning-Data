@@ -1,0 +1,1 @@
+已有 LLM 代码编辑工作常要求局部修改或评测生成片段；CodePlan 把对象改成由依赖分析指导的多步仓库编辑。方向信号是在编辑前后围绕代码图进行 planning。质量信号是 Microsoft 官方 replication package，包含 source/target/pred 仓库和可重算指标。并不新的部分包括静态分析、LLM prompting、文本 diff 指标和仓库基准。复用前要查 MIT 许可证、仓库 archived 状态、指标充分性、语言/项目范围、依赖图忠实度和缺少 hidden-test 验收的问题。

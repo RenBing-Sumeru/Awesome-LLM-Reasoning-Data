@@ -1,0 +1,1 @@
+Prior explanation-evaluation datasets often focus on one task or one overall quality score. CUBE applies one educational rubric across reasoning and language tasks and retains dimension-level judgments from humans and six models, making disagreement itself an analyzable data object.

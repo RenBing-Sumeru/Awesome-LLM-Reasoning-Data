@@ -1,0 +1,5 @@
+For `environment_agent_trajectory_data`, SWE-MERA exposes how a repository task connects prompt provenance, base-commit state, patches, executable tests, build/test observations, and terminal feedback. It is useful for evaluating software-engineering agents, auditing refresh pipelines, and testing whether implementation matches stated verifier semantics.
+
+The supported `training_use` is evaluation only. The release contains reference patches and tests but not a canonical agent trajectory corpus, preference dataset, reward API, SFT recipe, or RL experiment. Using reference patches for training would also blur the benchmark boundary and increase contamination.
+
+Safe use should pin HF and code revisions, enforce both FAIL_TO_PASS and PASS_TO_PASS, record complete test reports and critical failures, rebuild containers from immutable dependencies, and retain every agent attempt and intermediate patch. Users should also reconcile split membership, reserve unpublished future tasks where possible, audit upstream licenses/PII, and run repositories in hardened, network-controlled sandboxes.

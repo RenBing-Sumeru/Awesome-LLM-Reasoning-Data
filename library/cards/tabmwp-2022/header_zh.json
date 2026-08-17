@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TabMWP 收录 38,431 道半结构化表格数学应用题，用来评测模型结合 table、文本和算术的能力。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Pan Lu 等（University of California, Los Angeles, University of Washington）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T12:37:52Z"
+}

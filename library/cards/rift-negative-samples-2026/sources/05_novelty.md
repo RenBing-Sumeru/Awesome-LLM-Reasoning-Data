@@ -1,0 +1,1 @@
+RIFT makes an explicit rollout-to-training contract for mixed-quality mathematical traces: retain all eight self-generated candidates per problem, attach final-answer-derived signed rewards, and use a stable objective that learns from both accepted and rejected trajectories.

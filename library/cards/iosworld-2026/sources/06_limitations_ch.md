@@ -1,0 +1,6 @@
+- **发布边界：** 26个应用、seed data、133项任务、1,123条criterion、runner、evaluator、MCP server和本地trajectory writer均已发布，但完整实验的成功、失败、超时、safety-blocked、judge-error及retry episode语料没有公开；公众只能看到16条精选轨迹。公开样本的成败选择规则和retry保留规则为unknown。
+- **Judge保真度：** GPT-5.4 Mini是闭源且未固定snapshot的API judge。人类对照仍发现79个criterion false positive和69个false negative，并存在类别相关偏差及更高的semantic/report误差。rubric遗漏、视觉上合理但状态错误的结果、屏外状态与有害中间动作，都可能逃过主要反馈契约。
+- **回放与环境漂移：** reset只清除并重建应用数据，不会恢复完整不可变模拟器。项目没有用tagged release绑定应用构建digest、模拟器镜像、Xcode/iOS/Appium/WebDriverAgent版本、模型API、seed、retry、任务/结果checksum和judge call；截图、XML tree、动作和标签都可能漂移。
+- **划分与公开暴露：** 133条任务记录有category与difficulty字段，但没有train/dev/test split。论文未披露decontamination、被测模型训练重叠、prompt leakage或未来leaderboard exposure政策。公开任务、rubric、evaluator prompt和seed state允许记忆与judge gaming。
+- **构造与归因：** Claude Code prompt/snapshot/setting、175项候选清单、修订与移除diff、reviewer及逐记录provenance均缺失。根仓库采用Apache-2.0并保留若干嵌套MIT notice，但Notes README引用的根`ATTRIBUTIONS.md`不存在；源码、seed、视觉资产、gallery和生成轨迹的完整权利清单未被逐项说明。
+- **安全与泛化：** 全部数据及Jordan Avery persona均为合成内容，因此不涉及真实用户同意主张，但不能证明真实设备安全。任务包含购买、支付、预订和消息操作。MCP prepare/confirm pair并非默认扩展接口，legacy risky verb仍暴露；direct persistence tool还可能绕过人类可见UI。单一虚构persona和单一代际iOS/Xcode上的结果不能直接泛化到真实服务或用户。

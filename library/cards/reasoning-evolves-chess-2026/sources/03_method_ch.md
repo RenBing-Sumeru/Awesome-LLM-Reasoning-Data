@@ -1,0 +1,3 @@
+发布的 Parquet 记录共享 `general_instruction`、`question`、`response`、`fen_board`、`fullmove_count`、`data_type` 和 `data_subtype` 字段。拒绝采样使用 Llama 4 Maverick：Best Move 和 Worst Move 保留正确答案，Predict Move 保留 Stockfish 排名位于前 30% 的走法，Legal Moves 保留 IoU 高于未披露阈值的输出。Guided Synthetic 使用 Llama 4 Maverick 和 gpt-oss-120b，对由引擎确定的国际象棋情境给出自然语言说明。
+
+对于 VABP，一个基于 Stockfish 的定制程序以 softmax 对候选走法采样，递归构建由引擎赋值的树，按深度、节点数和 write-off 条件停止，将该树语言化，并以 minimax 选择最终走法。Best Move 提供引擎建议的 UCI 走法；Best Line 提供 4 个最优半回合及最终的带符号 centipawn 值。SFT 使用 LlamaFactory；RL 使用 veRL，并采用 Dr. GRPO、Clip-Higher 和无 KL divergence 的设置。全局教师生成 rollout 数、温度、固定的 VABP 设置、Legal Moves 阈值以及完整的 RL 奖励组成仍为 unknown。

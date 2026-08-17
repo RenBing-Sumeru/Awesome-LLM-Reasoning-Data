@@ -1,0 +1,5 @@
+1. **Build a task bank:** Design 200 scientific tasks with stratified difficulty and execute 124 across four scientific workflows.
+2. **Run multiple agents:** Have three frontier models, one open model, and a live-retrieval variant perform the tasks while preserving complete tool interactions.
+3. **Structure each step:** Encode every action as JSON with timestamp, phase, thought, action, observation, error, revision trigger, and confidence.
+4. **Organize outcomes and analysis:** Record final claims, success, total steps, and errors and define five benchmark tasks including outcome prediction, first-error localization, and claim verification; Models run the same tasks under one schema, allowing tool misuse, reasoning failure, and revision behavior to be compared with common units.
+5. **Reproducibility:** Reproducibility: fix the task-bank version, model release, tools or APIs, retrieval snapshots, prompts, and nine-field parsing. Mark undisclosed task budgets, failure rules, or tool parameters unknown.

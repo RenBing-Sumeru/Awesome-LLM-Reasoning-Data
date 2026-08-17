@@ -1,0 +1,5 @@
+- Read "top 0.5%" as token positions inside each individual response, not the top 0.5% of dataset records.
+- Keep HES and correctness as separate fields: HES ranks uncertainty/complexity, while an external checker defines RFT/RL success.
+- Compare the stage-specific object: SFT demonstrations, 32-candidate RFT pools, and positive/negative GRPO rollouts are not interchangeable records.
+- Treat 31.34 versus 31.83 in the main Math SFT average and 19.26 versus 18.34 in RL as setup-specific evidence, not universal data-quality proof.
+- Audit prompt coverage and failed-trajectory sampling: per-query RFT often beats global selection, random negatives beat low-HES negatives in the reported RL ablation, and the nine-author arXiv v1 versus eight-author OpenReview record remains a version mismatch; no ICLR acceptance or paper-specific release was verified.

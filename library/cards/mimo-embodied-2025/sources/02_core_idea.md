@@ -1,0 +1,5 @@
+The core idea is staged cross-domain transfer. Stage 1 binds general multimodal competence to affordance, planning, and spatial records. Stage 2 retains earlier data while adding driving views, hazards, intent, road geometry, and high-level decisions. Stage 3 adds explicit reasoning about situations, alternatives, constraints, risk, trajectories, and justification. Stage 4 applies group-relative policy optimization to records with rule-checkable answers.
+
+Main GRPO rewards exact multiple-choice answers, box IoU, whether a point lies in the target mask, and strict output templates. These rewards are deterministic enough for RLVR at the label level, but they verify neither physical task completion nor collision-free, comfortable, legally compliant driving.
+
+The NAVSIM branch is a separate construction: MiMo features condition a denoising diffusion trajectory policy, imitation learning initializes it, and DiffGRPO improves offline planner metrics. The report does not publish its reward, simulator revision, rollouts, code, or checkpoints.

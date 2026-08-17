@@ -1,0 +1,10 @@
+- **Success-only supervision。** RFT 丢弃答案错误、超过 32k token、tool call 不超过五次的 trajectory，形成 survivor、length 和 complexity bias，并移除 failure analysis 最需要的失败、恢复和 near miss。
+- **重构 thought 的 faithfulness。** 第二个 LLM 在看到 expert action 及其后续 observation 后才写 thought；这些 rationale 可能只是合理的 post-hoc explanation，而非 expert 选择 action 的真实原因。重构模型、prompt、decoding 和人工检查均未知。
+- **Judge 不确定性。** Answer judge 未披露。§5.3 承认 SailorFog-QA 可能存在非唯一答案，因此单一 reference 加 learned equivalence judgment 会产生 false negative 或 false positive；0.9 的 answer 权重也压倒 programmatic format term。
+- **Environment drift。** Google result、网页、Jina retrieval 与 Qwen-2.5-72B summary 都会变化或失败。发布物没有带时间戳 page corpus、response cache、API version、retry log 或 deterministic replay fixture，历史 trajectory 无法精确再生成。
+- **Reward 盲点。** Terminal correctness 不验证 citation support、中间 factuality、探索效率或 thought 的因果忠实度。Agent 即使中间主张无依据，也可能因最终答案正确而得分；format checker 也可能被语法正确但低质量的 ReAct structure 利用。
+- **Sampling 盲点。** DUPO 去掉全对与全错 group。这提高优化方差，却不给持续失败 task 提供 gradient，并把有效 task distribution 推向中等难度。
+- **论文明确限制。** 作者在 §5.4 明确指出 32k filter、context-limit failure、简单问题上的 over-thinking，以及同步 RL 仅 50 step 等限制。
+- **Release gap。** 官方仓库只暴露 20 条 QA 示例，没有 2,000 余条成功 RFT trace、失败/被拒绝 trace、synthesis code、逐条 lineage、split 或 reward log；README 仍承诺未来发布 trajectory，不能把计划发布写成已经发布。
+- **权利与隐私。** 论文为 CC0、仓库 MIT、已发布模型页为 Apache-2.0，但 QA sample 没有独立 dataset card/license。网页来源 provenance、再分发权、个人信息过滤、consent 与 takedown 程序均未披露。
+- **泛化与证据。** 实验只覆盖同一 tool framework 下四个信息检索 benchmark；没有多 seed 方差、judge calibration、contamination audit、web perturbation 或独立复现证明 recipe 可迁移到其他 environment。

@@ -1,0 +1,5 @@
+- **数据身份：** 区分 E-step 中由 RM 排序五个候选得到的 DPO pair，与 M-step 中更新策略对上一策略的伪 pair；主要 RM 更新会混合 policy-comparison 与 self-training 记录。
+- **反馈依赖：** 当前 RM 同时负责候选排序、checkpoint 选择、分数差计算与刷新自身所用数据的筛选；这些门控没有独立人类或任务 oracle 验证。
+- **必须保留的设置：** UltraFeedback 三路划分、固定 2000 条选择集、`M=5`、温度 0.8、top-p 0.95、DPO beta 0.01、每 50 step 保存 checkpoint、`tau=60%`、LQF 和基础 RM 重初始化。
+- **证据边界：** 表 1 的 Iter2 报告 AlpacaEval-2 长度控制胜率 54.1%、Arena-Hard 胜率 38.4%，但 GSM8K/MMLU 下降，第 4 次迭代也在 early stopping 前退化；benchmark 提升不是伪标签质量审计。
+- **发布边界：** ACL/DOI/arXiv 记录与机构已核验，但论文链接的 GitHub 默认分支只是 Alignment Handbook 快照，没有 Mutual-Taught 专用代码、配置、数据、模型、tag 或 release。

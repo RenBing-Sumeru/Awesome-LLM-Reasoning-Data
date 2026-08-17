@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen process-reward models 使用 MC 加 critic consensus 的步骤标签并公开权重，但没有发布 queries、traces、labels、calibration 或审计语料。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程奖励模型技术报告与数据披露台账",
+  "best_for_ch": "需要审计数学过程监督、MC 标注、LLM critic、consensus filtering 和 PRM 评估偏差的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhenru Zhang、Chujie Zheng、Yangzhen Wu、Beichen Zhang、Runji Lin、Bowen Yu、Dayiheng Liu、Jingren Zhou、Junyang Lin",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

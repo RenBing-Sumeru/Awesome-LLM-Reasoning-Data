@@ -1,0 +1,5 @@
+RACE-bench extends repository-agent evaluation from terminal patches to an auditable, structured account of issue understanding, localization, implementation planning, and ordered execution steps. The five modules allow distinct errors—misunderstanding the feature, missing a file, inventing work, or sequencing changes poorly—to be measured separately.
+
+Its verifier contract deliberately combines executable and judgment-based signals. Patch application and FTP/PTP execution provide deterministic-in-principle terminal checks, while semantic matching handles valid descriptions that do not share exact wording. The apply-success/test-fail group connects intermediate reasoning measurements to a concrete executable failure boundary.
+
+The novelty does not make the reference a unique solution or the judge a programmatic verifier. Several fields are DeepSeek-generated or reconstructed from a patch after the run, GPT-5.2 filters references, and semantic comparison depends on a model. These design choices are useful for audit but unsuitable as hidden assumptions in a training reward.

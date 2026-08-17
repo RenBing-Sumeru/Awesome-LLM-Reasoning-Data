@@ -1,0 +1,5 @@
+- Read Appendix A.1 before interpreting "structure-preserved": it is a rewrite instruction, not a verifier or a measured faithfulness guarantee.
+- Check Appendix B and the public viewer together: the claimed construction is 1,000 long plus 984 short examples, while the release is one 1,984-row train split without pair IDs.
+- Read Tables 2 and 3 as conditional ablations: direct/ThinkTwice rewriting and long-only/short-only training are compared under this paper's setup, but mixture ratio is not swept.
+- Read Table 4 with the prompt templates: balanced thinking changes the inference instruction, so it does not isolate data-mixture causality.
+- Pair this Card with the upstream s1/s1K-1.1 documentation before reuse; do not infer upstream provenance, decontamination, or permission from the MIT label on the downstream Hugging Face page.

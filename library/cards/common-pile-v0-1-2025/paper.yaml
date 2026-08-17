@@ -1,0 +1,136 @@
+id: common-pile-v0-1-2025
+title: 'The Common Pile v0.1: An 8TB Dataset of Public Domain and Openly Licensed Text'
+year: 2025
+venue: Advances in Neural Information Processing Systems 38 (NeurIPS 2025), Datasets and Benchmarks Track
+authors:
+- Nikhil Kandpal
+- Brian Lester
+- Colin A. Raffel
+- Sebastian Majstorovic
+- Stella Biderman
+- Baber Abbasi
+- Luca Soldaini
+- Enrico Shippole
+- A. Feder Cooper
+- Aviya Skowron
+- John Kirchenbauer
+- Shayne Longpre
+- Lintang Sutawika
+- Alon Albalak
+- Zhenlin Xu
+- Guilherme Penedo
+- Loubna Ben Allal
+- Elie Bakouch
+- John David Pressman
+- Honglu Fan
+- Dashiell Stander
+- Guangyu Song
+- Aaron Gokaslan
+- Tom Goldstein
+- Brian R. Bartoldson
+- Bhavya Kailkhura
+- Tyler Murray
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- data-provenance
+- data-licensing
+- llm-pretraining
+- data-documentation
+training_use:
+- unknown
+construction_layer:
+- frontier_pipeline
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/52acc050138d6f40dad6f12f91a4ce22-Abstract-Datasets_and_Benchmarks_Track.html
+  arxiv: https://arxiv.org/abs/2506.05209
+  code: https://github.com/r-three/common-pile
+  data: https://huggingface.co/common-pile
+  project: null
+  huggingface: https://huggingface.co/common-pile
+  doi: https://doi.org/10.48550/arXiv.2506.05209
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/52acc050138d6f40dad6f12f91a4ce22-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public-domain and openly licensed text collected from 30 sources spanning research papers, code, books, encyclopedias,
+    educational materials, audio transcripts, and other domains.
+  trace_author: Source authors and publishers; the release is pretraining text rather than a reasoning-trace corpus.
+  answer_format: Text documents prepared for LLM pretraining; source-specific schemas and transformations require inspection
+    in the official repository.
+  process_fields:
+  - source provenance
+  - license status
+  - source-specific processing
+  - training mixture
+  environment_or_substrate: Data collection, processing, and preparation pipeline for LLM pretraining.
+  verifier_or_reward: No reward or verifier contract is described for this release.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: The paper validates the corpus by training two 7B Comma v0.1 models; those validation models are not a reasoning-data
+    recipe.
+  teacher: unknown
+  generator: Source-specific collection and processing code released by the authors.
+  filtering_rule: The official repository says each source has preparation code; exact inclusion and filtering rules must
+    be inspected per source.
+  sampling_protocol: The paper reports a training mixture release; detailed sampling policy is not confirmed in the sources
+    reviewed for this Card.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Dataset collection, processing, and preparation code; no post-training optimizer is released.
+audit:
+  source_mixture: An 8TB corpus from 30 sources described as public domain and openly licensed text.
+  split: unknown
+  decontamination: unknown
+  license: Dataset-wide license and source-level license inventory require source-level verification. The official code repository
+    is MIT licensed.
+  lineage: 'Primary sources: https://proceedings.neurips.cc/paper_files/paper/2025/hash/52acc050138d6f40dad6f12f91a4ce22-Abstract-Datasets_and_Benchmarks_Track.html
+    ; https://github.com/r-three/common-pile'
+  known_failure_modes:
+  - A corpus described as openly licensed still requires source-level license, provenance, and processing checks before reuse.
+  - This is a pretraining corpus, not direct evidence that a reasoning-data release has adequate verifier, label, or split
+    documentation.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS abstract confirms the 8TB scale, 30-source composition, code release, training mixture, and Comma
+    validation models.
+inclusion_reason: 'A recent, formally published primer on provenance and licensing documentation: it demonstrates why source
+  mixture, processing code, license claims, and model-validation evidence must be separated when auditing data for post-training
+  reasoning work.'
+related: []
+tags:
+- data-provenance
+- data-licensing
+- data-documentation
+- pretraining-corpus
+- neurips-2025
+one_line: A NeurIPS 2025 public-domain/open-license corpus release that makes source provenance and processing artifacts first-class
+  audit objects.
+why_it_matters: It shows that scale and an open-code release do not remove the need to inspect source-specific license, transformation,
+  and contamination evidence before using data downstream.
+status: verified
+needs:
+- 'needs_review: verify each source-level license, processing rule, split, and contamination statement before reusing any
+  subset'
+one_line_summary: A NeurIPS 2025 public-domain/open-license corpus release that makes source provenance and processing artifacts
+  first-class audit objects.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS proceedings, arXiv abstract, and official repository README reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 📦 Data documentation / datasheets

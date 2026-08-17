@@ -1,0 +1,4 @@
+- DEPO makes the usually hidden selection boundary visible.
+- Selection, rollout allocation, and replay jointly determine the effective RLVR corpus.
+- The main reusable contribution is an auditable data-allocation recipe.
+- Reduced compute does not by itself prove that the selected data have reusable quality.

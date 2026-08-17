@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "MBZUAI",
+    "LibrAI",
+    "Shanghai Jiao Tong University",
+    "Microsoft Research Asia",
+    "The University of Melbourne"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2306.09212",
+    "https://arxiv.org/e-print/2306.09212",
+    "https://github.com/haonan-li/CMMLU",
+    "https://huggingface.co/datasets/haonan-li/cmmlu"
+  ],
+  "verification_note": "Official arXiv source verifies MBZUAI/LibrAI/SJTU/MSRA/University of Melbourne affiliations; GitHub and Hugging Face sources verify code and dataset artifacts."
+}

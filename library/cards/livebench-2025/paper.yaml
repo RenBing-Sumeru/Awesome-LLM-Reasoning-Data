@@ -1,0 +1,130 @@
+id: livebench-2025
+title: 'LiveBench: A Challenging, Contamination-Limited LLM Benchmark'
+year: 2025
+venue: ICLR 2025 Spotlight
+authors:
+- Colin White
+- Samuel Dooley
+- Manley Roberts
+- Arka Pal
+- Ben Feuer
+- Siddhartha Jain
+- Ravid Shwartz-Ziv
+- Neel Jain
+- Khalid Saifullah
+- Sreemanti Dey
+- Shubh-Agrawal
+- Sandeep Singh Sandha
+- Siddartha Naidu
+- Chinmay Hegde
+- Yann LeCun
+- Tom Goldstein
+- Willie Neiswanger
+- Micah Goldblum
+source_role:
+- benchmark
+- survey_background
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- large-language-models
+- evaluation-background
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.19314
+  arxiv: https://arxiv.org/abs/2406.19314
+  code: https://github.com/LiveBench/LiveBench
+  data: https://huggingface.co/livebench
+  project: https://livebench.ai
+  huggingface: https://huggingface.co/livebench
+  doi: https://doi.org/10.48550/arXiv.2406.19314
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Recent mathematics contests, arXiv papers, news, code sources, movie synopses, and newly generated or transformed
+    tasks.
+  trace_author: Benchmark authors and source-specific generators; evaluated model responses are separate records.
+  answer_format: A versioned prompt, model response, objective answer or task-specific checker, category, and score.
+  process_fields:
+  - prompt
+  - model response
+  - ground truth or checker
+  - task and category
+  - release version and score
+  environment_or_substrate: A dated, periodically refreshed benchmark spanning six categories and 18 tasks in the paper release.
+  verifier_or_reward: Deterministic answer checks and task-specific metrics; core scores do not rely on an open-ended LLM
+    judge.
+  terminal_predicate: Score a response under the pinned task checker and aggregate it within a named benchmark release.
+recipe_metadata:
+  base_model: Not applicable; LiveBench evaluates submitted models rather than training one base model.
+  teacher: Not applicable to the core evaluation record.
+  generator: Curate recent or newly generated difficult tasks with objective scoring and replace a portion in later releases.
+  filtering_rule: Retain challenging questions that admit objective or task-specific scoring and satisfy task-specific freshness
+    rules.
+  sampling_protocol: The paper release contains 1,000 questions over 18 tasks and six categories; later releases must be pinned
+    separately.
+  rollout_count: null
+  temperature: null
+  inference_budget: Model-specific; comparisons must preserve endpoint and decoding settings.
+  optimizer_or_scaffold: Public evaluation harness and leaderboard.
+audit:
+  source_mixture: Mathematics, coding, reasoning, language, instruction following, and data analysis tasks with dated provenance.
+  split: The benchmark is released by version; later refreshes replace approximately one sixth of the questions per update
+    in the reported design.
+  decontamination: Fresh sources and updates limit exposure to a fixed public test but do not prove zero leakage.
+  license: The paper states that the official repository uses Apache-2.0; source-specific data terms still require checking.
+  lineage: 'evaluation background lineage; closest comparisons: HELM and Chatbot Arena.'
+  known_failure_modes:
+  - Source leakage, generator artifacts, scorer bugs, and release drift can all change the meaning of a score.
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2025 Spotlight status, author list, PDF affiliations, official repository, project page, Hugging Face organization,
+    and repository license checked.
+inclusion_reason: LiveBench turns benchmark freshness, versioning, and objective scoring into an auditable contamination-limiting
+  evaluation protocol.
+related:
+- helm-2023
+- chatbot-arena-2024
+tags:
+- evaluation-background
+- arxiv-2406.19314
+- primary-link-checked
+status: verified
+one_line_summary: LiveBench combines dated task releases, periodic replacement, and objective scoring so model results can
+  be audited against a specific contamination-limited benchmark version.
+why_it_matters: It makes the benchmark version and checker part of the evidence instead of treating a public test set as timeless.
+reading_priority: must read
+paper_type: contamination-limited benchmark and evaluation protocol
+best_for: Readers designing versioned, objectively scored LLM evaluations or auditing benchmark leakage.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, repository, project page, Hugging Face release location, and repository license checked.
+category_ids:
+- foundations_and_primers
+- benchmarks_evaluation_surfaces
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: foundations_and_primers
+  direction_label: evaluation background
+  selection_priority_score: 13
+  selection_score_breakdown:
+    recency: 4
+    impact: 4
+    venue: 3
+    institution: 2

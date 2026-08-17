@@ -1,0 +1,3 @@
+One-sentence contribution: WebArena: A Realistic Web Environment for Building Autonomous Agents makes a user goal, self-hosted website state, seeded data or credentials when needed, browser observations, allowed actions, and a final validation program. reusable by binding it to a concrete feedback contract.
+
+Core mechanism: The environment provides self-hosted sites across four common domains and 812 long-horizon tasks. Feedback contract: Functional correctness validators and annotated programs grade whether the final website state satisfies the task. Closest comparisons are static web QA, simplified simulators, and single-page browser tasks. Direction label: verifier-anchored agent evaluation, where the reusable unit is task object plus acceptance rule.

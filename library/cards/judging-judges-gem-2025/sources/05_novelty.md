@@ -1,0 +1,1 @@
+The contribution is a deliberately low-ambiguity human-alignment test, not another benchmark win. By separating chance-corrected agreement from ranking and testing prompt/reference perturbations, it shows that strong-looking LLM judges can be systematically lenient or brittle even when the task itself admits a clear human verdict.

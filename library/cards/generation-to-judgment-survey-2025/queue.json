@@ -1,0 +1,13 @@
+{
+  "title": "From Generation to Judgment: Opportunities and Challenges of LLM-as-a-Judge",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.138/",
+    "data": "https://aclanthology.org/2025.emnlp-main.138.pdf"
+  },
+  "review_note": "已按 EMNLP 2025 原文完成双语精读卡片，并核对 LLM judge 的分类、基准与可靠性边界。",
+  "manual_annotation": {"search_status": "promoted", "decision_reason": "三维分类将 judge 的用途、基准与偏差风险连接起来，适合作为评估器可靠性审计的系统入口。", "updated_at": "2026-07-24T03:30:00Z"},
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

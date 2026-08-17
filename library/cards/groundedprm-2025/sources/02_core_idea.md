@@ -1,0 +1,4 @@
+Each MCTS node represents a partial reasoning state and stores tool queries, binary verification outcomes, values, and visits. UCT selects a node; expansion samples K=3 candidate actions; simulation completes a solution; Wolfram Alpha checks intermediate transformations; final-answer comparison supplies a binary outcome; the combined reward is backpropagated.
+
+Training records do not merely contain scalar values. GroundedPRM uses a generative target: the original problem and full trace condition a binary decision plus a natural-language explanation derived from tool feedback. The learned Qwen2.5-7B-Instruct PRM can then score N=8 candidate next steps during reward-guided greedy decoding. The construction verifier, hybrid label, learned PRM, and inference-time selector are four distinct objects.
+

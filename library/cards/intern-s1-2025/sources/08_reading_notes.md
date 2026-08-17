@@ -1,0 +1,5 @@
+- Read Sections 4.1 and 4.2 of the [paper HTML](https://ar5iv.labs.arxiv.org/html/2508.15763v2) together: the 5T/2.5T aggregates sit above page-level PDF parsing, domain-centric web decisions, scientific recall classifiers, and a separate 250B image-text stage.
+- In Section 5.1, translate "offline RL" into its concrete object: best-of-N-selected instruction responses trained with a conventional SFT objective; the generators, N, thresholds, record counts, and final mixture remain unknown.
+- In Sections 5.2.1 and 5.2.2, trace reward routing by task: Internbootcamp verifiers, passrate@64 instruction filtering, CompassVerifier plus rules for multimodal correctness, and POLAR-7B for open-ended dialogue.
+- Check Sections 5.2.3 and 5.2.4 for 8-rollout filtering, the OREAL/KL-Cov objective, frozen ViT/router, 600 steps, and the removal of about 3% of high-gradient-norm samples.
+- Compare the [repository](https://github.com/InternLM/Intern-S1) and [model card](https://huggingface.co/internlm/Intern-S1) with the paper: they verify weights and inference tooling, not release of the 5T corpus, instruction/RL records, task inventory, or full reward stack.

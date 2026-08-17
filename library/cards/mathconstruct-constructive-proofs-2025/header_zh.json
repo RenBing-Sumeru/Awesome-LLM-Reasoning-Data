@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MathConstruct 提供 126 道构造型竞赛题与程序化检查器，并通过题目变体检验模型是否真正满足构造约束。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "构造性数学证明与程序化检查基准",
+  "best_for_ch": "需要测试构造型数学推理、答案检查器或鲁棒性变体评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mislav Balunović, Jasper Dekoninck, Nikola Jovanović, Ivo Petrov, Martin Vechev",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:56:16Z"
+}

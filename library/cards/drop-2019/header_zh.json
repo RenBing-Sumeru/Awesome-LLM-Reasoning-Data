@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DROP 是段落阅读理解 benchmark，论文/发行口径从约 55k 到 96k 问题不等，重点考算术、计数、排序等离散推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要阅读理解中的离散推理评测，或需要先 pin DROP release、split 和 EM/F1 scorer 口径的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dheeru Dua 等（Allen Institute for Artificial Intelligence, University of California, Irvine）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

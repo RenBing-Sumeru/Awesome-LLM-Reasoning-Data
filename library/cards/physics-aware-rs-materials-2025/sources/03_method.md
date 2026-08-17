@@ -1,0 +1,5 @@
+**Input → sampling.** A complete QD-LED recipe describes layers, materials, geometry and process variables; the prompt requests a JSON EQE percentage. Qwen3-235B-A22B samples teacher reasoning traces sequentially, up to a 12-candidate comparison budget.
+
+**Gates → halt → output.** A candidate must pass range consistency, continuous error tolerance to wet-lab EQE, and an empirical PLQY envelope. The first passer is retained. If no candidate passes, the procedure tests within-batch error variance and best-error improvement, halts when either signals low exploration value or the budget ends, and otherwise raises temperature. No passing candidate means the example is discarded.
+
+**Training/evaluation.** Qwen3-32B is SFT-trained for one epoch with AdamW. Teacher-side metrics include selected-trace MAE, candidate count, and an external DeepSeek-R1 judge score; student tests report MAE, calibration/correlation measures, and physics-violation rate from five test inferences. Threshold values, prompt templates for collection, candidate logs, and full hyperparameters are unavailable.

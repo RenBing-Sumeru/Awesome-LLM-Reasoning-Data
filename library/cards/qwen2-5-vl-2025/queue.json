@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数据对象披露",
+    "updated_at": "2026-07-15T13:12:20Z"
+  },
+  "updated_at": "2026-07-15T13:12:20Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

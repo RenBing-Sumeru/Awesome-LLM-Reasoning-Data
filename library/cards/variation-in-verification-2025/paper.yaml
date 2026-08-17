@@ -1,0 +1,144 @@
+id: variation-in-verification-2025
+title: 'Variation in Verification: Understanding Verification Dynamics in Large Language Models'
+year: 2026
+venue: ICLR 2026
+authors:
+- Yefan Zhou
+- Austin Xu
+- Yilun Zhou
+- Janvijay Singh
+- Jiang Gui
+- Shafiq Joty
+source_role:
+- data_release
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- knowledge
+- natural_language_reasoning
+training_use:
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.17995
+  arxiv: https://arxiv.org/abs/2509.17995
+  code: https://github.com/YefanZhou/llm-verify-dynamics
+  data: https://huggingface.co/collections/YefanZhou98/llm-verification-dynamics
+  project: https://yefanzhou.github.io/llm-verify-dynamic/
+  huggingface: https://huggingface.co/collections/YefanZhou98/llm-verification-dynamics
+  doi: null
+  venue: https://openreview.net/forum?id=DcEuBwrWnB
+  openreview: https://openreview.net/forum?id=DcEuBwrWnB
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2509.17995
+data_object:
+  prompt_source: '4,444 evaluation problems: 2,347 mathematics problems from eight benchmarks, 1,196 MMLU-Pro knowledge questions,
+    and 901 ReClor, FOLIO, and GPQA Diamond natural-language reasoning questions.'
+  trace_author: 'Fifteen generator models: fourteen open instruction-tuned models from Qwen, Llama, Gemma, and Mistral families,
+    plus GPT-4o.'
+  answer_format: Joinable records containing the prompt/question, generator CoT response, extracted and gold answers, response
+    correctness, generator and sampling metadata, verifier CoT, and a binary correct/incorrect verdict.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Static benchmark evaluation and verifier-filtered test-time sampling; the official GitHub repository
+    provides verification and visualization code, while the two Hugging Face datasets provide generator and verifier records.
+  verifier_or_reward: Each of 15 generative verifiers receives a problem and candidate response without the reference answer,
+    greedily generates one verification CoT, and emits [[Correct]] or [[Incorrect]]. Ground-truth response labels use answer
+    checkers plus reference-based LLM fallback.
+  terminal_predicate: Response correctness is established from extracted-answer equivalence to the gold answer, with checker
+    and LLM fallbacks. For verification-augmented TTS, accepted candidates form the retained pool; if none are accepted, evaluation
+    reverts to the original generator pass rate.
+recipe_metadata:
+  base_model: The study uses instruction-tuned Qwen2.5, Qwen3, Llama 3.x, Gemma 2, and Mistral-family models plus GPT-4o;
+    no model is trained by this paper.
+  teacher: unknown
+  generator: The same 15 models serve as generators and verifiers in a 15-by-15 pairing design.
+  filtering_rule: For verifier evaluation, up to eight responses are taken from each 64-response model-problem pool, targeting
+    four correct and four incorrect responses; scarce classes are kept and the other class fills the pool. Additional RQ2
+    comparisons restrict problems and repeatedly equalize per-generator denominators.
+  sampling_protocol: Generators produce 64 responses per model-problem pair with default temperature 0.7 and top-p 1.0; Qwen3
+    non-thinking uses top-p 0.8. Verifiers use greedy decoding, temperature 0.0, top-p 1.0, and one verification per candidate.
+  rollout_count: 64
+  temperature: 0.7
+  inference_budget: Generator records report max_tokens 4096; verifier records contain one greedy verification trace per evaluated
+    candidate. Aggregate compute and API versions are not fully disclosed.
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: GSM8K, MATH500, OlympiadBench, AIME24/25, AMC23, Minerva-Math, BBEH Multi-step Arithmetic, MMLU-Pro, ReClor,
+    FOLIO, and GPQA Diamond. The released Generator card reports about 619K records; the Verifier card reports about 9.9M
+    records.
+  split: The paper uses benchmark test sets except a 600-item GSM8K subsample, a random 10% sample from each MMLU-Pro discipline,
+    and the ReClor validation set; the remaining exact source split details follow the paper. Hugging Face packages Generator
+    as train and Verifier as test, but these names are packaging splits rather than a documented train/test protocol for a
+    learned model.
+  decontamination: unknown
+  license: Both Hugging Face dataset cards declare MIT. The GitHub repository does not expose a license file in the verified
+    top-level listing, and the cards do not resolve upstream benchmark rights or model-output licensing.
+  lineage: Official join keys (model, dataset_source, dataset_idx, response_idx) connect each released verifier record to
+    the candidate generator trace. Records expose generator/verifier identities, sampling settings, correctness labels, gold
+    answers, CoTs, and verdicts; immutable release manifests and source-level rights records are not provided.
+  known_failure_modes:
+  - Reference-free verifiers may solve a hard problem incorrectly and reject a correct candidate that disagrees with their
+    own answer.
+  - Errors from stronger generators can be internally consistent and harder for a verifier to detect.
+  - Balanced response subsampling changes the natural correct/incorrect prevalence and is designed for TPR/TNR estimation,
+    not corpus-quality measurement.
+  - Ground-truth labels inherit extraction, answer-checker, reference-answer, and LLM-judge errors.
+  - Conditional pass rate evaluates uniform sampling from a retained pool and is not Best-of-N or majority-vote selection.
+  - Official Verifier documentation reports about 9.9M records while the platform estimates 7,346,479 rows and exposes 1,655,624
+    converted rows; the exact release manifest is unresolved.
+  - No decontamination audit or source-rights ledger is disclosed for reuse as training data.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper, ICLR project page, OpenReview link, GitHub repository, and both Hugging Face dataset cards
+    were checked on 2026-07-19. The release is suitable for evaluation and audit, but benchmark results do not establish data
+    or verifier quality.
+inclusion_reason: The work releases a joinable candidate-and-verification trace matrix and shows why verifier behavior in
+  test-time filtering must be audited across problem difficulty, generator capability, and verifier capability.
+related: []
+tags:
+- generative-verifier
+- verification-cot
+- test-time-scaling
+- candidate-filtering
+- tpr-tnr
+- verifier-audit
+- open-traces
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A released 15-generator by 15-verifier trace matrix for auditing how reference-free generative verification
+  changes with task difficulty and model capability.
+why_it_matters: It gives Track 5 a concrete, joinable record of candidate rollouts, correctness labels, verifier rationales,
+  verdicts, and filtering behavior while exposing where test-time gains can be confounded by pool construction and verifier
+  error.
+card: null
+needs:
+- 'needs_metadata: immutable file manifest, exact row counts, API/model revisions, and complete compute settings'
+- 'needs_audit: decontamination, upstream rights, label-error calibration, and source-wise release coverage'
+- 'needs_reproducibility_protocol: reconcile documented record counts and verify complete 15-by-15 coverage'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, project, venue, code, and two-dataset collection verified; unresolved release counts, rights, and
+    audit metadata keep the Card partial.

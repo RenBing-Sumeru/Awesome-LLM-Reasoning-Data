@@ -1,0 +1,5 @@
+Online research-trajectory synthesis is expensive and unstable because failed searches may reflect either a weak agent or missing documents.
+
+OpenResearcher bootstraps an offline evidence corpus, then generates and filters complete search-browse-answer trajectories without repeated live-web dependence. The decision boundary is whether a serialized training record survives final-answer checking, retrievability bootstrapping, error/status fields, and trajectory filtering; the central artifact is data consumed by deep-research agent SFT, not a model-only release.
+
+L4 facts: primary source arXiv:2603.20278; arXiv preprint; data object OpenResearcher-Dataset with more than 97K deep-research trajectories over a 15M-document offline corpus; evaluation surface A 30B-A3B student trained on the released trajectories reaches 54.8% on BrowseComp-Plus, a reported gain of 34.0 points; the corpus includes a tail with more than 100 tool calls.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

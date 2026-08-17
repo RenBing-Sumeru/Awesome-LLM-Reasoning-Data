@@ -1,0 +1,1 @@
+FVAPPS 等工作把编程题转换为 Lean theorem，通常弱化了原始运行效率和竞赛输入输出；Verus 数据集则多来自小型验证程序。VeriContest 的变化是保留在线 judge 作为现实功能/复杂度约束，同时增加 Verus specification 和 proof kernel，并用正负测试主动审计 specification 是否过弱。新意不在首次使用 Verus 或竞赛题，而在三个 verifier 的组合：judge 检查程序、Verus 检查证明、Post2Exe/反例测试检查规格，从而避免“证明了一个错误或过弱命题”。

@@ -1,0 +1,123 @@
+id: autotts-agentic-discovery-2026
+title: 'LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling'
+year: 2026
+venue: arXiv preprint
+authors:
+- Tong Zheng
+- Haolin Liu
+- Chengsong Huang
+- Huiwen Bao
+- Sheng Zhang
+- Rui Liu
+- Runpeng Dai
+- Ruibo Chen
+- Chenxi Liu
+- Tianyi Xiong
+- Xidong Wu
+- Hongming Zhang
+- Heng Huang
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2605.08083
+  arxiv: https://arxiv.org/abs/2605.08083
+  venue: null
+  code: https://github.com/zhengkid/AutoTTS
+  data: https://github.com/zhengkid/AutoTTS
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: AIME24 for controller discovery and held-out AIME25 and HMMT25 mathematical reasoning problems.
+  trace_author: Qwen3 base models pre-generate 128 reasoning trajectories and intermediate probe answers for each model-problem
+    pair.
+  answer_format: Question, branch prefixes at fixed token intervals, probe answers, controller actions, final aggregate answer,
+    accuracy, and total token cost.
+  process_fields:
+  - question
+  - branch_prefixes
+  - probe_outputs
+  - active_branches
+  - action_history
+  - beta
+  - final_answer
+  - accuracy
+  - token_cost
+  environment_or_substrate: Offline replay environment over pre-collected multi-branch reasoning trajectories.
+  verifier_or_reward: Exact-answer task accuracy combined with total generation and probe cost; controller selection seeks
+    a better accuracy-cost frontier.
+  terminal_predicate: The aggregated final answer matches the benchmark reference answer.
+recipe_metadata:
+  base_model: Qwen3-0.6B, Qwen3-1.7B, Qwen3-4B, and Qwen3-8B; transfer tests include DeepSeek-R1-Distill-Llama-8B.
+  teacher: Claude Code proposes controller code from the recorded discovery history.
+  generator: Base reasoning models generate the replayed branch trajectories at temperature 0.7.
+  filtering_rule: A controller chooses among branch, continue, probe, prune, and answer actions; beta determines the monotone
+    accuracy-cost budget trade-off.
+  sampling_protocol: Pre-sample 128 trajectories per model-problem pair, repeatedly evaluate candidate controllers on random
+    subsets, and compare with SC@64, ASC, ESC, and Parallel-Probe.
+  rollout_count: 128 pre-sampled trajectories per model-problem pair; each candidate controller is evaluated 64 times on random
+    subsets.
+  temperature: 0.7 for trajectory collection.
+  inference_budget: Fixed-length 500-token intervals; beta controls the controller budget.
+  optimizer_or_scaffold: AutoTTS uses an offline replay environment, one-dimensional beta parameterization, execution-trace
+    feedback, and a five-round Claude Code discovery loop.
+audit:
+  source_mixture: Official arXiv paper and official AutoTTS GitHub repository.
+  split: AIME24 is the search set; AIME25 and HMMT25 are held out for evaluation.
+  decontamination: The paper separates discovery and held-out benchmarks, but does not provide a universal pretraining-contamination
+    audit.
+  license: Verify the repository license and each underlying benchmark license before reuse.
+  lineage: https://arxiv.org/abs/2605.08083
+  known_failure_modes:
+  - replay-distribution-mismatch
+  - search-set-overfitting
+  - probe-signal-error
+  - controller-code-instability
+  - math-domain-limitation
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF and official GitHub link checked on 2026-07-20. The paper lists University of Maryland, University
+    of Virginia, Washington University in St. Louis, University of North Carolina, Google, and Meta affiliations.
+inclusion_reason: It automates width-depth inference-budget allocation by discovering when to branch, continue, probe, prune,
+  or stop reasoning trajectories and evaluates the resulting accuracy-cost scaling curve.
+related: []
+tags:
+- test-time-scaling
+- controller-discovery
+- offline-replay
+- adaptive-compute
+- branch-pruning
+status: verified
+one_line_summary: AutoTTS discovers test-time branching and stopping controllers in an offline replay environment, improving
+  the accuracy-token frontier without hand-coding a fixed scaling rule.
+reading_priority: essential
+paper_type: Agentic test-time scaling controller discovery study
+best_for: Readers developing adaptive multi-trajectory reasoning systems that need a repeatable way to search allocation policies
+  rather than manually tune heuristics.
+confidence: high
+why_it_matters: It makes the allocation policy itself searchable and exposes an inexpensive offline route for comparing branch,
+  probe, pruning, and stopping decisions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and official GitHub artifact link checked.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "揭示软污染会把基准分数变为浅层泛化测试，直接支持训练—评测隔离与污染审计。",
+    "updated_at": "2026-07-19T00:00:00Z"
+  },
+  "updated_at": "2026-07-19T00:00:00Z"
+}

@@ -1,0 +1,142 @@
+id: cooper-cooptimizing-policy-reward-2025
+title: 'Cooper: Co-Optimizing Policy and Reward Models in Reinforcement Learning for Large Language Models'
+year: 2025
+venue: arXiv
+authors:
+- Haitao Hong
+- Yuchen Yan
+- Xingyu Wu
+- Guiyang Hou
+- Wenqi Zhang
+- Weiming Lu
+- Yongliang Shen
+- Jun Xiao
+source_role:
+- construction_recipe
+- verifier_reward
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+- reward_modeling
+training_use:
+- rlvr
+- reward_modeling
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.05613
+  arxiv: https://arxiv.org/abs/2508.05613
+  code: https://github.com/zju-real/cooper
+  data: https://github.com/zju-real/cooper/tree/main/dataset
+  project: https://zju-real.github.io/cooper/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2508.05613
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: VerifyRM starts from seven mathematical reasoning datasets; Cooper RL uses a random 10K subset of DeepMath
+  trace_author: Eleven mainstream LLMs generate initial VerifyRM completions; the current policy generates on-policy rollouts;
+    a same-family assistant model corrupts correct reasoning into hard negative responses
+  answer_format: Question, reference answer, completion, binary correctness label for VerifyRM; during Cooper, question/reference
+    with on-policy positive response and assistant-generated negative response
+  process_fields:
+  - question
+  - reference_answer
+  - completion
+  - correctness_label
+  - policy_rollouts
+  - rule_positive
+  - assistant_negative
+  - reward_model_score
+  environment_or_substrate: GRPO over mathematical reasoning with a reference-conditioned VerifyRM updated after each policy
+    update
+  verifier_or_reward: Math-Verify high-precision rule anchor for selecting positives and validating negatives; Qwen3-4B agreement
+    labels initial VerifyRM data; VerifyRM scores policy rollouts
+  terminal_predicate: Policy reward is VerifyRM score; RM pair is usable when Math-Verify accepts a positive and rejects the
+    assistant-corrupted negative
+recipe_metadata:
+  base_model: Qwen2.5-1.5B-Instruct and Llama-3.2-1B-Instruct policies; VerifyRM initialized from Qwen2.5-Math-1.5B-Instruct
+  teacher: Qwen3-4B non-thinking mode for initial hybrid annotation; same policy model family is used as the assistant negative
+    generator
+  generator: Current policy samples 16 rollouts per prompt; assistant LLM repeatedly corrupts one rule-accepted correct trajectory
+    until rule rejection
+  filtering_rule: Initial VerifyRM retains Math-Verify/Qwen3-4B agreement from 65K triples, yielding 58.7K examples; Cooper
+    selects a random rule-accepted positive, generates a rule-rejected negative, and masks samples when no valid pair is constructed
+  sampling_protocol: 'For each RL iteration/batch: generate 16 policy rollouts -> VerifyRM scoring and GRPO policy update
+    -> choose rule-positive -> generate/retry rule-negative -> contrastive RM update -> repeat'
+  rollout_count: 16
+  temperature: 0.7 for initial completion collection and evaluation; RL rollout temperature not explicitly established in
+    inspected public prose
+  inference_budget: 'Initial data: one completion from each of 11 LLMs per selected problem, 65K triples; RL: 16 rollouts
+    per prompt for 10 epochs; negative generation retries until valid or masks the sample'
+  optimizer_or_scaffold: GRPO with KL coefficient 0.001 for policy; contrastive score-difference loss for RM; each training
+    step contains policy then RM optimization
+audit:
+  source_mixture: Seven math datasets for VerifyRM and 10K DeepMath prompts for Cooper; exact record IDs are available only
+    through released files/configuration inspection
+  split: VerifyBench-overlapping queries are removed from VerifyRM training; policy evaluation uses GSM8K, SVAMP, MATH500,
+    OlympiadBench-EN, and Math Odyssey
+  decontamination: VerifyBench query overlap is explicitly removed; complete semantic overlap across DeepMath and five evaluation
+    benchmarks is unknown
+  license: Apache-2.0 repository; included training data and upstream math datasets retain their own terms
+  lineage: Seven datasets -> 11-model completions -> Math-Verify/Qwen3 agreement -> 58.7K VerifyRM data -> initial VerifyRM
+    -> DeepMath on-policy rollouts -> rule-positive/assistant-negative pairs -> per-step RM refresh
+  known_failure_modes:
+  - Rule anchors have high precision but low recall and may favor parseable answer formats.
+  - Assistant-generated negatives can contain superficial corruption artifacts that the RM learns as shortcuts.
+  - Using the same model family as policy and assistant can preserve shared blind spots.
+  - Policy and RM still co-adapt; rule anchoring reduces but does not eliminate shared drift or reward hacking.
+  - Dynamic positive-negative pairs, failed construction attempts, retry counts, and complete per-step RM checkpoints are
+    not released as a versioned stream.
+  - 'Project page and README disagree on the headline gain: abstract/table imply 0.54 absolute average points, while README
+    highlights 3.09%, so use table values.'
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v1, project page, Apache-2.0 code, and 58.7K VerifyRM training parquet checked 2026-07-12. Project
+    remains a preprint under review.
+inclusion_reason: Provides a concrete per-training-step recipe for refreshing a reward model from rule-anchored on-policy
+  positives and generated hard negatives.
+related: []
+tags:
+- cooper
+- reward-model-refresh
+- co-optimization
+- hard-negatives
+- grpo
+- math-verify
+- reward-hacking
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Updates a reference-based reward model after every GRPO policy step using rule-accepted on-policy positives
+  and assistant-generated rule-rejected negatives.
+why_it_matters: Makes verifier refresh cadence and pair construction explicit while showing the limits of static reward models.
+card: null
+needs:
+- 'needs_data: versioned dynamic pair stream, failed pairs, retry counts, and per-step RM checkpoints'
+- 'needs_snapshot: immutable repository, dataset, and configuration revision'
+- 'needs_audit: rule false positives, corruption shortcuts, and shared policy-assistant-RM drift'
+- 'needs_metadata: exact RL rollout decoding parameters and full upstream record/license manifest'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Static VerifyRM data and implementation are public; the dynamically constructed Cooper pairs and refresh logs are
+    not released as standalone artifacts.

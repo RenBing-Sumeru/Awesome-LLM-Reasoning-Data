@@ -1,0 +1,102 @@
+id: tta-star-small-model-reasoning-2026
+title: Test-Time Scaling for Multistep Reasoning in Small Language Models via A* Search
+year: 2026
+venue: ICLR 2026 submission
+authors:
+- Alexander Braverman
+- Weitong Zhang
+- Quanquan Gu
+source_role:
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=eJ1yDj6vtH
+  arxiv: null
+  venue: https://openreview.net/forum?id=eJ1yDj6vtH
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+data_object:
+  prompt_source: Mathematical reasoning benchmarks reported in the paper.
+  trace_author: The small language model expands, critiques, and refines partial derivations.
+  answer_format: Prompt, partial solution node, self-reflection, A*-style priority, expansion, and completed answer.
+  process_fields:
+  - prompt
+  - partial_solution
+  - path_cost
+  - heuristic_score
+  - self_critique
+  - expansion
+  - final_answer
+  environment_or_substrate: Goal-directed tree search over partial textual solutions.
+  verifier_or_reward: Self-reflection from the base model provides guidance in an A*-style cost function; no external PRM
+    is required.
+  terminal_predicate: A completed solution is selected from the search tree and assessed by benchmark answer correctness.
+recipe_metadata:
+  base_model: Small language models evaluated in the official paper.
+  teacher: null
+  generator: The same SLM acts as solution proposer, critic, and refiner.
+  filtering_rule: A*-style priority combines path cost with a heuristic estimate of future solution potential.
+  sampling_protocol: Iteratively expand prioritized partial-solution nodes within the test-time search budget.
+  rollout_count: Governed by the tree-search budget.
+  temperature: See official paper settings.
+  inference_budget: Search-node expansions and self-reflection calls.
+  optimizer_or_scaffold: Training-free Test-time A* Search (TTA*).
+audit:
+  source_mixture: Official OpenReview record and publicly visible paper PDF.
+  split: Mathematical reasoning benchmarks; see official paper for exact splits.
+  decontamination: No separate contamination audit is claimed.
+  license: The OpenReview submission is CC BY 4.0; verify benchmark terms separately.
+  lineage: https://openreview.net/forum?id=eJ1yDj6vtH
+  known_failure_modes:
+  - self-critique-error
+  - heuristic-miscalibration
+  - search-budget-explosion
+  - small-model-capability-limit
+  citation_status: verified
+  confidence: medium
+  notes: Official OpenReview paper checked on 2026-07-21. The author-visible PDF lists Cornell University, University of North
+    Carolina at Chapel Hill, and University of California, Los Angeles. No public code or data link is provided; the venue
+    status is submission, not acceptance.
+inclusion_reason: It directly studies inference-time allocation through goal-directed search over partial reasoning traces,
+  without adding training or an external verifier.
+related: []
+tags:
+- test-time-compute
+- a-star-search
+- small-language-models
+- self-reflection
+- mathematical-reasoning
+status: verified
+one_line_summary: TTA* uses a training-free A*-style search over partial solutions so a small model can spend test-time compute
+  on the most promising self-refined branches.
+reading_priority: useful
+paper_type: Training-free A* test-time scaling study
+best_for: Readers designing resource-constrained reasoning search without a separate process reward model.
+confidence: medium
+why_it_matters: It makes the search-tree priority and self-reflection heuristic explicit, exposing a different allocation
+  mechanism from repeated full-solution sampling.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: medium
+  notes: Official OpenReview submission and author-visible PDF verified; no code/data artifact or acceptance record found.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -1,0 +1,113 @@
+id: qcoder-quantum-hardware-feedback-2025
+title: 'QCoder Benchmark: Bridging Language Generation and Quantum Hardware through Simulator-Based Feedback'
+year: 2025
+venue: INLG 2025
+authors:
+- Taku Mikuriya
+- Tatsuya Ishigaki
+- Masayuki Kawarada
+- Shunya Minami
+- Tadashi Kadowaki
+- Yohichi Suzuki
+- Soshun Naito
+- Shunya Takata
+- Takumi Kato
+- Tamotsu Basseda
+- Reo Yamada
+- Hiroya Takamura
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- environmental
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- quantum_programming
+- code_generation
+- simulator
+training_use:
+- evaluation
+- test_time_compute
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.inlg-main.43/
+  arxiv: null
+  code: https://github.com/QCoder-Bench/QCoder-Benchmark
+  data: https://huggingface.co/datasets/tm0012-QCB/QCoderBenchmark
+  project: https://qcoder-bench.github.io/
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.inlg-main.43/
+  openreview: null
+  acl: https://aclanthology.org/2025.inlg-main.43/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Quantum-programming problems from the public QCoder educational platform.
+  trace_author: Human contest participants provide submitted Qiskit solutions and revision histories.
+  answer_format: Natural-language problem and hardware constraints, Qiskit solve function, simulator verdict, and human solution
+    history.
+  process_fields:
+  - problem
+  - constraints
+  - target_state
+  - qiskit_code
+  - simulator_feedback
+  - human_revision
+  environment_or_substrate: Quantum simulator representing domain-specific hardware constraints.
+  verifier_or_reward: Simulator checks functional correctness, circuit depth, execution time, and unsupported-gate/error conditions.
+  terminal_predicate: Generated code constructs a valid circuit satisfying the target state and hardware constraints.
+recipe_metadata:
+  base_model: GPT-4o, o3, and other code-generation models in the paper.
+  teacher: Human programming-contest submissions.
+  generator: QCoder problem and contest-submission collection with permission from the platform developers.
+  filtering_rule: Simulator environment rejects invalid circuits and classifies errors.
+  sampling_protocol: 58 problems, about 30 human solutions each, 1,740 problem-solution pairs, and about 20 intermediate revisions
+    per submission on average.
+  rollout_count: Iterative refinement is enabled by simulator feedback.
+  temperature: null
+  inference_budget: Repeated generation/refinement calls are evaluated using simulator feedback.
+  optimizer_or_scaffold: Public evaluation API for feedback-driven iterative code generation.
+audit:
+  source_mixture: Official INLG paper and QCoder project site.
+  split: Benchmark construction and evaluation API are documented by the project.
+  decontamination: Contest data and public problems require strict separation from training/evaluation when reused.
+  license: Inspect the project site and source-platform terms.
+  lineage: QCoder platform problems + human contest submissions + simulator feedback.
+  known_failure_modes:
+  - Simulator is a proxy for actual hardware
+  - Qiskit-specific API
+  - public contest data can become a training leak.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF and project page verify author order, affiliations, 58 problems, 1,740 pairs, and simulator feedback.
+inclusion_reason: It grounds code-reasoning evaluation in a specialist simulator and real human implementation/revision data.
+related: []
+tags:
+- quantum
+- simulator_feedback
+- expert_data
+- code
+one_line_summary: QCoder combines human quantum-programming contest submissions with simulator feedback so LLMs can be judged
+  beyond ordinary Python execution.
+why_it_matters: It demonstrates a domain-expert feedback contract in which executable code must satisfy meaningful hardware-aware
+  constraints.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: Official INLG paper/PDF and QCoder project page were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

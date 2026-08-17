@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "审计 LLM judge 的打分—比较冲突与成对传递性失效，并以概率推理降低不一致。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "LLM-as-a-Judge 一致性与可靠性审计",
+  "best_for_ch": "构建、选择或审计 LLM-as-a-Judge 自动评测系统的研究者与工程团队。",
+  "confidence_ch": "高：已全文核对 ICLR 论文、OpenReview 终稿与官方代码；改进数字限于其给定模型和评测协议。",
+  "authors_ch": "Yidong Wang，Yunze Song，Tingyuan Zhu，Xuanwang Zhang，Zhuohao Yu，Hao Chen，Chiyu Song，Qiufeng Wang，Zhen Wu，Xinyu Dai，Yue Zhang，Cunxiang Wang，Wei Ye，Shikun Zhang。",
+  "category_ids": ["audit_failure_contamination_verifier_attacks"],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

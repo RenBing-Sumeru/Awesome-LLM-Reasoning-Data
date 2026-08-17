@@ -1,0 +1,6 @@
+- 把 `(question, initial solution, critique, revised solution)` 视为语义 episode，并在外围保留角色、正确性、轮次、筛选和 checkpoint 字段。
+- Helpful Critic 面向初始错误答案，Misleading Critic 面向初始正确答案；Prover 不知道 critique 来自哪个角色。
+- 主筛选对每条 critique 采样四次 revision：Helpful Critic 至少两次纠正，Misleading Critic 至少三次成功误导。
+- 固定拒绝短语属于 verifier 契约，不是无关紧要的 prompt 细节；必须审计表面形式投机和误拒问题。
+- 仓库中的 19,473 条 `data/train.jsonl` 是原始题池，不能据此推断 Google Drive rollout 具有相同 schema 或数量。
+- 复用前应同时阅读 CDG-1/CDG-2 的非单调结果、论文—脚本差异、独立下游数据流程、unknown 许可和缺失的不可变 rollout 清单。

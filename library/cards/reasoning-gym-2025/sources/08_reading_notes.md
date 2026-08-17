@@ -1,0 +1,5 @@
+- Read the record as `question` + oracle `answer` + task `metadata`, then add policy response and scalar reward for RL; it is not a fixed rationale corpus.
+- Start with Paper §2 and Appendix A.1–A.3 for the task/configuration surface, then Appendix A.6 for the actual GRPO scaffold and Section 7 for author-stated limits.
+- Separate paper-era behavior from current code: the exact experimental commit is unknown, and current cascade scoring was added after publication.
+- Table 1 supports consistent intra-domain gains, but Tables 2–4 contain marginal and negative cases; do not summarize the evidence as universal transfer.
+- Pair this Card with SynLogic for another generator-verifier construction pattern and with verifier-failure work when auditing substring, normalization, or multiple-solution rewards.

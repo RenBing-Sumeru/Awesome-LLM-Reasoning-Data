@@ -1,0 +1,5 @@
+- 论文每题收集 48 个 response，并用不重叠窗口复用它们以估计预算 1、2、4、8、16。
+- Oracle label 在平均预算下最大化经验准确率减去 lambda 定价的样本成本。
+- 16 特征 XGBoost classifier 模仿这些 label；这是监督分类，不是在线 policy-gradient RL。
+- 四个 setting 共使用 38,400 条模型响应，但 raw response 与 utility table 未确认为发布。
+- 报告增益评估的是样本数预算下的分配器，不能证明 trace-data quality 或 API drift 下的迁移。

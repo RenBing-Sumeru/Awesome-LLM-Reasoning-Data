@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Ai2 的 OLMo 2 32B 发布链接了数据、权重和 recipe，并披露 SFT 过滤、五次 completion 的数学多数选择、on-policy 偏好数据和 GRPO-RLVR 任务族；reward 实现与完整来源/审计细节仍未解决。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型发布说明与数据披露账本",
+  "best_for_ch": "需要审计开放权重模型的阶段化数据、RLVR 反馈边界与来源权利的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Ai2",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

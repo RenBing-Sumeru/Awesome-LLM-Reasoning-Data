@@ -1,0 +1,19 @@
+{
+  "title": "VisReason: A Large-Scale Dataset for Visual Chain-of-Thought Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2511.17731",
+    "data": "https://huggingface.co/datasets/Y-Research-Group/VisReason",
+    "code": null,
+    "project": "https://lingxiao-li.github.io/visreason.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:04:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布区域定位、缩放、验证等视觉思维链",
+    "updated_at": "2026-07-17T12:04:09Z"
+  }
+}

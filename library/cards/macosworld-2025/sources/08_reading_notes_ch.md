@@ -1,0 +1,6 @@
+- 先读§§3–4与附录C，以重建task JSON、AWS/VMware重置路径、截图/action loop和可执行grader。
+- 区分各项数字：202项主英文任务，中文/日文/俄文各183项，阿拉伯文171项，以及从主集合抽取的29项英文安全任务。
+- 表3共同171项任务结果与表4语言平均值是模型/环境观察，不是任务正确性或训练数据质量证明。
+- 阅读表5时必须保留三种安全结果；GPT-4o的0% distraction同时对应100%未处理，不能据此声称防御成功。
+- 将本卡与OSWorld、WindowsAgentArena和AndroidWorld对照阅读，以分离macOS原生、prompt/UI成对本地化和上下文欺骗贡献。
+- 复用前应核验固定commit、AMI/应用、evaluator错误行为、完整rollout manifest、split/decontamination政策及逐记录权利；这些仍未解决。

@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Information and Computer Science Department, King Fahd University of Petroleum and Minerals",
+    "SDAIA-KFUPM Joint Research Center for Artificial Intelligence, King Fahd University of Petroleum and Minerals"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2605.17656",
+    "https://annota-nine.vercel.app",
+    "https://huggingface.co/datasets/atharparvezce/MUIAnno-Mobile-UI-Dataset"
+  ],
+  "verification_note": "arXiv, annotation tool, and HF dataset verify title, authors, KFUPM institutions, and data entry; code was not located."
+}

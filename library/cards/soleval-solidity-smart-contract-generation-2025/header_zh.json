@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SolEval 从 28 个 Solidity 仓库发布 1,507 个任务，并以 Foundry 测试、Slither 安全扫描和 gas 指标联合验证合约生成。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "仓库级 Solidity 智能合约生成基准",
+  "best_for_ch": "需要以功能、安全与资源开销共同评测或训练智能合约代码模型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhiyuan Peng, Xin Yin, Rui Qian, Peiqin Lin, YongKang Liu, Hao Zhang, Chenhao Ying, Yuan Luo",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:10:24Z"
+}

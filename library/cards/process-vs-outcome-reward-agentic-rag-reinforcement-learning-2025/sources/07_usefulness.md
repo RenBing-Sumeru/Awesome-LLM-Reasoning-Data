@@ -1,0 +1,3 @@
+The data fit RAG-agent PRMs, reward ablations, retrieval-policy training, and diagnosis. They require a fixed index and answer checks.
+
+Practical reuse requires the task context and process state expected by the paper. Users can reuse queries, retrieval actions, evidence, process preferences, and outcome rewards or reconstruct local data under the same protocol, producing a step-level training set, trajectory ranking, or process reward model. Success should be checked with step F1, first-error localization, preference accuracy, or verifier replay rather than final-task score alone. Direct transfer is inappropriate when feedback sources, replay conditions, licensing, or error distributions differ materially.

@@ -1,0 +1,11 @@
+- The complete 1,450,827-instance lineage dictionary, occurrence lists, source labels, transformations, match scores, and author decisions are absent, so aggregate lineage and leakage claims cannot be audited record by record.
+- DAPO++ does not identify retained DAPO versus inserted Stack Exchange rows. Atomic source, upstream record and revision, predecessor chain, transformation, removal reason, SCA transition, source URL, and license are unknown per row.
+- Random replacement cannot be replayed because the seed, eligible-pool snapshot, exact removal and insertion counts, rejected candidates, and old-to-new mapping are unknown; the final 17,000-row file is insufficient.
+- SCA labels are conditioned on one base/source checkpoint pair. They are not stable truth labels, individual causal effects, or guarantees for another model scale, verifier, optimizer, or prompt format.
+- Q uses Math500 Mean@4 and Pass@4 while Math500 also selects checkpoints. Correlations cover six datasets, and external validity beyond two Qwen3 scales and this math surface is unknown.
+- The 36,148 leakage count emphasizes similarity at or above 0.90 and acknowledges risk near 0.80. Rewrites below threshold, benchmark-version drift, and manual false positives or negatives remain unresolved.
+- Manual canonicalization inspects only 30–50 records per dataset, and semantic ancestry is reviewed case by case. No inter-annotator agreement, independent adjudication, sampling-error analysis, or correction protocol is reported; older branches reach only approximately 2014.
+- Released scoring code requires absent stage4_final.json or hard-codes paper results; one script stops at 800,000 entries. GRPO scripts conflict with paper settings.
+- No LICENSE file or tagged immutable release was found. Upstream licensing, generated-output rights, benchmark terms, vendored VERL compatibility, consent, attribution, and deletion handling are unknown.
+- DAPO++ has only a train split, constant data_source, dapo-prefixed indices, and no text-quality report. A sampled prompt has a stray Chinese instruction marker, but broader noise, parser failures, and correction history are uncharacterized.
+- Experiments cover offline mathematical RLVR with Qwen3-1.7B-Base and Qwen3-8B-Base. Code, agent, multimodal, interactive, non-mathematical, and other-model-family uses are not validated.

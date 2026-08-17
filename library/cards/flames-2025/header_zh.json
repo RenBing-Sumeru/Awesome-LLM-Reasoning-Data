@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FLAMES 在统一教师、学生与训练设置下比较 12 种数学题合成 agent 和 6 种质量控制策略，并给出 150K、1M、1.5M 混合配方；但最终采用 First 且无独立解答验证，官方数据与构造代码也未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学合成数据管线消融与扩展研究",
+  "best_for_ch": "研究合成数学数据、教师蒸馏、质量过滤、数据混合与覆盖率权衡的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Parker Seegmiller、Kartik Mehta、Soumya Saha、Chenyang Tao、Shereen Oraby、Arpit Gupta、Tagyoung Chung、Mohit Bansal、Nanyun Peng",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

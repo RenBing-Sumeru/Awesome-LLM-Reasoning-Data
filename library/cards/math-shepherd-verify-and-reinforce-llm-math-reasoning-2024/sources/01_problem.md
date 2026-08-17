@@ -1,0 +1,1 @@
+Long mathematical solutions may contain an early error that corrupts every later step, but final correctness cannot localize it. Math-Shepherd asks how to automatically generate stepwise verification signals and use them to reinforce better solution trajectories.

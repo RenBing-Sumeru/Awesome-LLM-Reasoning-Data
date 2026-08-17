@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen-AgentWorld 报告在七类环境的 1,000 多万条轨迹上依次进行 CPT、SFT 和 GSPO RL，并使用 rubric 加规则的混合奖励；其发布了 35B 权重和独立的 AgentWorldBench 评测集，但训练数据、奖励与环境复现仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体环境语言世界模型报告与数据披露账本",
+  "best_for_ch": "需要审计智能体轨迹、世界模型训练、LLM 裁判奖励和评测数据边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,3 @@
+Models such as QwQ and DeepSeek-R1 generate long chains of thought containing strategy shifts, backtracking, and self-reflection. Short-chain step classifiers cannot determine whether these structures repair errors or merely hide earlier failures. Final-answer evaluation also misses useless computation, incorrect reflection, and error propagation in long trajectories, leaving verifier capability under realistic long context unknown.
+
+The paper introduces DeltaBench, collecting long chains of thought for mathematics, code, and general reasoning and annotating segment correctness, validity, earliest errors, strategy transitions, and reflection for diagnosing PRMs and critics.

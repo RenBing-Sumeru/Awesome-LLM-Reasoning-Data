@@ -1,0 +1,3 @@
+1. When reference answers and reward-model scores can accept fluent but unsupported reasoning, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because synthetic expansion may reproduce teacher biases or uneven domain coverage, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve CC-BY-NC-4.0 and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

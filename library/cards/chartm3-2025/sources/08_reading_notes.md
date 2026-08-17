@@ -1,0 +1,6 @@
+- Read §3 with Appendix A.7. The prompts reveal that questions and analysis programs use source data/chart code, then rationales are instructed to hide code dependence and appear visually derived.
+- Keep reported units exact: 141,800 training Q&A and 2,871 test Q&A; the abstract's 142K Q&A and 38K training charts are rounded. Compare Table 7 retained pools with Table 2 final splits—the unexplained differences are an audit question, not evidence for additional released data.
+- Separate the contracts: program execution, Qwen2-VL-2B chart classification, multimodal consistency judging, ten-sample difficulty estimation, human test refinement, exact-match RL reward, Qwen3-32B open-answer reward, and Qwen-Max benchmark judgment.
+- Read Tables 3 and 4 together. Full CoT-SFT gives 62.88/51.67 on ChartM3/ChartM3-Multi; in the 30K comparison SFT gives 58.17/47.17 and GRPO 52.40/40.33. GRPO's value is not uniformly higher in-domain.
+- Remember that GRPO ignores the supplied CoT paths. Its seven rollouts and binary think/answer format reward cannot certify explanation quality.
+- Do not attach the similarly named third-party Hugging Face dataset. Preserve code/data/project/license as unavailable until an author-confirmed artifact appears.

@@ -1,0 +1,1 @@
+FACTORY 是大规模、人类验证的英文长文提示集，官方数据页以 JSONL 发布 `all`、`hard` 和 `fact_checking` splits，规模处于 10K–100K。每个提示记录问题和相关 URL；人工事实标注将回答拆成 claims，并标 Factual、NonFactual、Inconclusive 或 No Verifiable Fact，同时保存证据来源与引用片段。核心贡献既包括高难、可回答、非时效敏感的提示，也包括可训练 factuality Judge 的 claim—标签—证据对象。

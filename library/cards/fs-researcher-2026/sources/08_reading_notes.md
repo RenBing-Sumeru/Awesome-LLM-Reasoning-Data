@@ -1,0 +1,5 @@
+- Treat raw pages, structured notes, control files, and final report sections as separate objects with explicit links.
+- Verify note-to-source entailment and retain page hashes and retrieval timestamps; a citation path alone is insufficient.
+- Compare scaling runs with matched backbones, web snapshots, tool versions, judge settings, and total cost.
+- Preserve todos, checklist findings, logs, rejected sources, and file diffs instead of exporting only the successful workspace.
+- Treat benchmark and judge improvements as system evidence, not certification of the archived evidence or generated report.

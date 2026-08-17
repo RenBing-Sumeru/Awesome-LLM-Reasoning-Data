@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Princeton University",
+    "Princeton Language and Intelligence",
+    "University of Chicago"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2310.06770",
+    "https://www.swebench.com/",
+    "https://github.com/SWE-bench/SWE-bench",
+    "https://huggingface.co/datasets/princeton-nlp/SWE-bench"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF dataset verify authors, institutions, ICLR Oral status, and artifacts."
+}

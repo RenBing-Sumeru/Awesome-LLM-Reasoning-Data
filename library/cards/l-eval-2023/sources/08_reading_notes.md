@@ -1,0 +1,1 @@
+Do not treat "long context" as one ability. Separate retrieval/truncation effects, exact-answer tasks, open-ended summarization or QA, LIE scoring, LLM-judge battles, and human subsets. The most important reading move is to map each reported number to its task group and metric.

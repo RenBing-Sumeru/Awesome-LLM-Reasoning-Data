@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TRAJECT-Bench 将自然语言任务与 1,228 个 RapidAPI 派生工具上的参数化并行/顺序参考轨迹绑定，并用程序检查、LLM judge 与动态 API 混合评分；当前发布存在 5,670/5,870 数量冲突且无法冻结回放，因此仅适合评测与审计。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多工具智能体轨迹基准与评测数据发布",
+  "best_for_ch": "研究工具调用轨迹、混合 verifier、动态 API benchmark、发布漂移与训练/评测边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Pengfei He, Zhenwei Dai, Bing He, Hui Liu, Xianfeng Tang, Hanqing Lu, Juanhui Li, Jiayuan Ding, Subhabrata Mukherjee, Suhang Wang, Yue Xing, Jiliang Tang, Benoit Dumoulin",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

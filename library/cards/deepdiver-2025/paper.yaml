@@ -1,0 +1,151 @@
+id: deepdiver-2025
+title: 'DeepDiver: Adaptive Web-Search Intensity Scaling via Reinforcement Learning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Wenxuan Shi
+- Haochen Tan
+- Chuqiao Kuang
+- Xiaoguang Li
+- Hanting Chen
+- Xiaozhe Ren
+- Yasheng Wang
+- Lu Hou
+- Lifeng Shang
+source_role:
+- benchmark
+- construction_recipe
+- scaling_study
+verification_contract:
+- environmental
+- judgment_required
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- web
+- information_seeking
+- reasoning
+training_use:
+- sft
+- distillation
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/180d4373aca26bd86bf45fc50d1a709f-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.24332
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.24332
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/180d4373aca26bd86bf45fc50d1a709f-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=CqLWckpTbG
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.24332
+data_object:
+  prompt_source: Wiki-corpus pages and real-user queries with retrieved webpages from a deployed smart-assistant service;
+    open-web pages support Cross-Page QA and Open Riddle generation, while Wiki pages support Wiki Riddle generation.
+  trace_author: LLMs generate WebPuzzle questions, answers, checklists, and difficulty labels; five experts curate the 275-example
+    test set; DeepDiver policies generate iterative-RAG RL rollouts.
+  answer_format: A question followed by alternating reasoning, one-to-five search queries per tool-call round, top-two retrieved
+    results per query, and a final answer.
+  process_fields:
+  - question
+  - reference_answer
+  - checklist
+  - difficulty_label
+  - reasoning
+  - search_queries
+  - retrieved_documents
+  - final_answer
+  - grader_outcome
+  - format_reward
+  - accuracy_reward
+  - extra_search_reward
+  environment_or_substrate: Live open-web iterative RAG using Bocha for Chinese settings and LangSearch for English settings;
+    only the top two results per query are retained.
+  verifier_or_reward: Qwen-Turbo loose and strict answer graders use the reference answer and checklist; GRPO combines their
+    accuracy judgment with format reward and a conditional +1.0 reward for successful search-enabled rollouts.
+  terminal_predicate: The policy emits the answer action or reaches the maximum of seven tool-call rounds.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct and Pangu-7B-Reasoner.
+  teacher: DeepSeek-R1 supplies cold-start SFT responses and four-trial pass@4 difficulty labels.
+  generator: LLM-based Cross-Page QA and riddle generation for WebPuzzle, followed by policy-generated iterative reasoning/search
+    rollouts in the live-web environment.
+  filtering_rule: LLM filtering removes offensive, politically sensitive, ethically concerning, NSFW, ambiguous, controversial,
+    multiple-choice, boolean, and unsolvable candidates; the 7,000-example training mixture is sampled by pass@4 difficulty
+    category.
+  sampling_protocol: Each RL sample receives 14 rollouts at temperature 0.9; each rollout permits at most seven tool-call
+    rounds, each round emits one to five queries, and only the top two search results per query are retained.
+  rollout_count: 14 per RL sample
+  temperature: '0.9'
+  inference_budget: Maximum seven tool-call rounds and 20k-token sequence length in the reported 7B experiments.
+  optimizer_or_scaffold: Cold-start SFT followed by one epoch of iterative-RAG GRPO; batch size 32, learning rate 1e-6, KL
+    coefficient 0.001, with retrieved tokens masked from the policy loss.
+audit:
+  source_mixture: WebPuzzle contains 23,684 training and 275 expert-curated test examples; cold-start SFT also uses 300 real-user
+    questions, 2,200 general-reasoning problems, and 1,000 real-user queries concatenated with retrieved documents.
+  split: Of 7,000 selected WebPuzzle examples, 2,000 enter the 5,500-example cold-start SFT mixture and 5,000 are reserved
+    for RL; the 275-example test set is curated from 500 seeds by five experts.
+  decontamination: unknown
+  license: unknown; the paper says WebPuzzle will be released after privacy and safety review, but no released dataset or
+    license was verified.
+  lineage: Wiki/open-web pages and deployed-assistant queries -> LLM-generated questions, answers, and checklists -> LLM safety/quality
+    filtering -> DeepSeek-R1 pass@4 difficulty tags -> selected SFT/RL mixtures -> live-web iterative-RAG rollouts -> Qwen-Turbo/format/extra-search
+    rewards -> GRPO updates.
+  known_failure_modes:
+  - Live search results and engine behavior can drift; no retrieval snapshot was verified.
+  - Qwen-Turbo judgments depend on prompts, reference answers, and checklists and are not correctness proofs.
+  - DeepSeek-R1 pass@4 difficulty tags can inherit teacher and grader errors.
+  - Real-user-query consent, webpage provenance, decontamination, and redistribution rights are undisclosed.
+  - Experiments are limited to 7B models and 20k-token sequences, and DeepDiver can over-search even on simple questions.
+  - No reusable code, WebPuzzle release, trained model, or rollout corpus was verified.
+  citation_status: verified
+  confidence: high
+  notes: The final NeurIPS proceedings title, nine-author list, and Huawei Language Model Lab affiliation supersede the differing
+    arXiv v1 metadata.
+inclusion_reason: WebPuzzle and DeepDiver expose a concrete live-web trajectory object and a judgment-based RL feedback contract
+  for studying adaptive search intensity.
+related: []
+tags:
+- deepdiver
+- webpuzzle
+- open-web-rl
+- iterative-rag
+- search-intensity-scaling
+- grpo
+- llm-grader
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: DeepDiver trains 7B policies on WebPuzzle with live-web iterative-RAG GRPO, using answer judgments and a
+  conditional search bonus to study how search depth changes with information demand.
+why_it_matters: It makes search queries, retrieved evidence, stopping decisions, and episode rewards relevant rollout data
+  for the rollout/search/test-time trace track, while leaving live-web drift and artifact availability as explicit audit limits.
+card: null
+needs:
+- needs_code
+- needs_dataset_release
+- needs_rollout_artifact
+- needs_retrieval_snapshot
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Final NeurIPS proceedings, paper PDF, arXiv v2, and OpenReview record checked; no official code, dataset, model,
+    or rollout release was verified.

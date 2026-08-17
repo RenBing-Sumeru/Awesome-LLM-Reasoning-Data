@@ -1,0 +1,19 @@
+{
+  "title": "Uncertainty-Based Methods for Automated Process Reward Data Construction and Output Aggregation in Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://ojs.aaai.org/index.php/AAAI/article/view/40351",
+    "data": "https://github.com/Jiuzhouh/UnPRM/blob/main/data.zip",
+    "code": "https://github.com/Jiuzhouh/UnPRM",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:31:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "主线是不确定性构造与聚合方法，同时公开自动步骤奖励数据",
+    "updated_at": "2026-07-17T12:31:29Z"
+  }
+}

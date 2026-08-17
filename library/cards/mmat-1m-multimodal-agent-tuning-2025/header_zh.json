@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MMAT-1M 将多模态问答扩展为包含推理、反思、API 调用与 RAG 的百万级智能体训练对话。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "百万级多模态推理、反思与工具使用智能体数据集论文",
+  "best_for_ch": "需要同时训练多模态链式推理、自我反思和动态工具使用能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tianhong Gao, Yannian Fu, Weiqun Wu, Haixiao Yue, Shanshan Liu, Gang Zhang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

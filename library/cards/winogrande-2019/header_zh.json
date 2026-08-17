@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WinoGrande 将 Winograd-style 常识消歧扩展到约 44K 题，并用 adversarial filtering 降低浅层线索。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要 Winograd-style 常识基线、subset 大小和二选一 scorer 审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Keisuke Sakaguchi 等（Allen Institute for Artificial Intelligence, University of Washington）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T20:18:19Z"
+}

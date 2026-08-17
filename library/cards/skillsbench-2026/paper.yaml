@@ -1,0 +1,170 @@
+id: skillsbench-2026
+title: 'SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks'
+year: 2026
+venue: arXiv
+authors:
+- Xiangyi Li
+- Yimin Liu
+- Wenbo Chen
+- Bingran You
+- Zonglin Di
+- Yifeng He
+- Shenghan Zheng
+- Kyoung Whan Choe
+- Jiankai Sun
+- Shuyi Wang
+- Chujun Tao
+- Binxu Li
+- Xuandong Zhao
+- Hejia Geng
+- Xiaojun Wu
+- Junwei Zhou
+- Xiaokun Chen
+- Hanwen Xing
+- Yubo Li
+- Qunhong Zeng
+- Di Wang
+- Yuanli Wang
+- Roey Ben Chaim
+- Penghao Jiang
+- Haotian Shen
+- Luyang Kong
+- Xinyi Liu
+- Runhui Wang
+- Xuanqing Liu
+- Jiachen Li
+- Xin Lan
+- Yueqian Lin
+- Wengao Ye
+- Junwei He
+- Songlin Li
+- Yue Zhang
+- Yipeng Gao
+- Yijiang Li
+- Ze Ma
+- Liqiang Jing
+- Tianyu Wang
+- Kaixin Li
+- Yiqi Xue
+- Haoran Lyu
+- Yizhuo He
+- Yuchen Tian
+- Shutong Wu
+- Bowei Wang
+- Yixuan Gao
+- Bo Chen
+- Litong Liu
+- Sikai Cheng
+- Jiajun Bao
+- Shuaicheng Tong
+- Shuwen Xu
+- Terry Yue Zhuo
+- Tinghan Ye
+- Qi Qi
+- Miao Li
+- Longtai Liao
+- Zelin Tan
+- Chang Shi
+- Xilin Tang
+- Srinath Tankasala
+- Boqin Yuan
+- Yaoyao Qian
+- Jianhong Tu
+- Chenguang Wang
+- Yizhou Sun
+- Wei Wang
+- Aaron Taylor
+- Ziyue Yang
+- Changkun Guan
+- Zhikang Dong
+- Xinyu Zhang
+- Steven Dillmann
+- Han-chung Lee
+- Dawn Song
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- skill-evaluation
+- model-capabilities
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.12670
+  arxiv: https://arxiv.org/abs/2602.12670
+  doi: https://doi.org/10.48550/arXiv.2602.12670
+  code: https://github.com/benchflow-ai/skillsbench
+  data: https://github.com/benchflow-ai/skillsbench/tree/main/tasks
+  project: https://www.skillsbench.ai
+data_object:
+  dataset_scale: 87 public skill-oriented tasks across 8 domains in the arXiv v4 abstract; official GitHub exposes tasks/,
+    tasks-extra/, registry.json, taxonomy, experiments, and harness code.
+  prompt_source: human-authored task.md instructions in the public SkillsBench task modules; task data live inside containerized
+    task directories.
+  trace_author: 142 contributors submitted candidate tasks; benchmark authors and maintainers curated the public release.
+  answer_format: task, model output, skill label, checker/judge result, and score.
+  process_fields:
+  - skill label
+  - prompt
+  - model response
+  - expected answer or rubric
+  - score
+  environment_or_substrate: skill-level benchmark suite.
+  verifier_or_reward: deterministic task verifiers, primarily executable tests/checkers, under matched no-Skills and curated-Skills
+    conditions.
+  terminal_predicate: task passes its pinned deterministic verifier or receives the corresponding verifier score.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark surface.
+  teacher: task/rubric authors.
+  generator: skill taxonomy and task construction.
+  filtering_rule: human-authored tasks, oracle-pass requirement, structural checks, skill-to-solution leakage checks, and
+    maintainer review before inclusion.
+  sampling_protocol: Pin arXiv v4, GitHub commit or release snapshot, 87-task inventory, model harness, no-Skills versus curated-Skills
+    condition, and selected trials.
+  rollout_count: null
+  temperature: null
+  inference_budget: model-specific
+  optimizer_or_scaffold: skill_benchmark_eval
+audit:
+  source_mixture: Primary paper verified from arXiv v4; public project page and official GitHub repo verified on 2026-07-18.
+  split: public GitHub task inventory; exact release tag/commit should be pinned for reproducible comparison.
+  decontamination: public prompts can leak.
+  license: Apache-2.0 in official GitHub repository metadata.
+  lineage: Agent-skill benchmark introduced on arXiv as a 2026 benchmark surface; public repo exposes the benchmark tasks
+    and harness.
+  known_failure_modes:
+  - skill labels can be too broad
+  - aggregate score can hide missing capabilities
+  - judge/rubric drift can move scores
+  citation_status: arXiv metadata and public artifacts verified
+  confidence: medium
+  notes: Author list, DOI, 36 affiliation labels, project page, GitHub repo, Apache-2.0 license, and public tasks directory
+    verified on 2026-07-18.
+inclusion_reason: SkillsBench was requested as a model-capability benchmark gap.
+related: []
+tags:
+- benchmark
+- capabilities
+why_it_matters: Skill-level benchmarks need transparent task taxonomy and scorer contracts.
+status: verified
+needs:
+- 'needs_audit: pin exact GitHub commit or release, 87-task snapshot, selected trial files, model harness versions, and any
+  hidden/withheld verifier components before L6'
+one_line_summary: SkillsBench evaluates model capabilities across skill-labeled tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium_high
+  notes: arXiv v4 metadata, DOI, author/institution footnote, project page, official GitHub repo, Apache-2.0 license, and
+    public tasks directory verified; still pin commit/release for L6.
+category_ids:
+- benchmarks_evaluation_surfaces

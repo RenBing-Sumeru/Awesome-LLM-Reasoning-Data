@@ -1,0 +1,129 @@
+id: ferret-grit-2024
+title: 'Ferret: Refer and Ground Anything Anywhere at Any Granularity'
+year: 2024
+venue: ICLR 2024
+authors:
+- Haoxuan You
+- Haotian Zhang
+- Zhe Gan
+- Xianzhi Du
+- Bowen Zhang
+- Zirui Wang
+- Liangliang Cao
+- Shih-Fu Chang
+- Yinfei Yang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://iclr.cc/virtual/2024/poster/19537
+  arxiv: https://arxiv.org/abs/2310.07704
+  code: https://github.com/apple/ml-ferret
+  data: https://github.com/apple/ml-ferret#grit-dataset
+  project: https://github.com/apple/ml-ferret
+  huggingface: null
+  doi: null
+  venue: https://iclr.cc/virtual/2024/poster/19537
+  openreview: https://iclr.cc/virtual/2024/poster/19537
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public detection and segmentation annotations expanded into hierarchical referring conversations
+  trace_author: GPT-4-assisted instruction generation anchored to known regions
+  answer_format: image, point/box/free-form region, referring phrase, instruction, and grounded response
+  process_fields:
+  - image
+  - point/box/free-form region
+  - referring phrase
+  - instruction
+  - and grounded response
+  environment_or_substrate: JSON annotations with images, regions, and conversations
+  verifier_or_reward: region coordinates/masks, source labels, and referring/grounding benchmark scores
+  terminal_predicate: Retain a record only when region coordinates/masks, source labels, and referring/grounding benchmark
+    scores accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: GPT-4-assisted instruction generation anchored to known regions
+  generator: Ferret combines a hybrid region encoder with GRIT records that express points, boxes, and free-form regions in
+    the same conversation, training both referring and grounding directions.
+  filtering_rule: region coordinates/masks, source labels, and referring/grounding benchmark scores
+  sampling_protocol: public detection and segmentation annotations expanded into hierarchical referring conversations
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: region-aware multimodal SFT
+audit:
+  source_mixture: public detection and segmentation annotations expanded into hierarchical referring conversations
+  split: 'Official release scale: about 1.1 million grounded refer-and-answer records; storage: JSON annotations with images,
+    regions, and conversations.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: CC BY-NC 4.0 for GRIT; LLaMA/Vicuna and source-image conditions also apply
+  lineage: public detection and segmentation annotations expanded into hierarchical referring conversations -> GPT-4-assisted
+    instruction generation anchored to known regions -> region coordinates/masks, source labels, and referring/grounding benchmark
+    scores -> region-aware multimodal SFT.
+  known_failure_modes:
+  - GRIT is non-commercial
+  - generated language can expose source category labels
+  - region sampling favors annotated objects over unlabelled context.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 43 citations; this is not a Google Scholar count.'
+inclusion_reason: 'GRIT is a public Track 01 training object: image, point/box/free-form region, referring phrase, instruction,
+  and grounded response; it is consumed by region-aware multimodal SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- multi-granularity-refer-and-ground-data
+status: verified
+one_line_summary: Ferret's GRIT corpus serializes points, boxes, and free-form regions into about 1.1M grounded conversations.
+why_it_matters: unifying multiple region granularities in one serialized dialogue contract
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: building an interface where a user circles an arbitrary region and asks for an explanation
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: multi-granularity refer-and-ground data
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Columbia University, Apple AI/ML.
+    venue: 'The official venue URL confirms formal publication at ICLR 2024: https://iclr.cc/virtual/2024/poster/19537'
+    impact: OpenAlex reported 43 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON annotations with images, regions, and conversations records at https://github.com/apple/ml-ferret#grit-dataset
+      with terms recorded as: CC BY-NC 4.0 for GRIT; LLaMA/Vicuna and source-image conditions also apply.'
+  selection_eligible: true
+  year_impact_threshold: 3

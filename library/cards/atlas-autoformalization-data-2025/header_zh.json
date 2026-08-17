@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ATLAS 通过提升、增广和合成扩展自然语言—Lean 定理对，并以 Lean 检查筛选自动形式化数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Lean 自动形式化数据集与验证论文",
+  "best_for_ch": "构建或使用 Lean 可检验自动形式化训练数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoyang Liu、Yicheng Hu、Jinghui Lu、Jian Guo、Yaochu Jin、Jie Zhou、Tao Yang、Mingxuan Wang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T08:59:07Z"
+}

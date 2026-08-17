@@ -1,0 +1,5 @@
+- 应分别阅读三条数据分支：DeepSeek-Math-V2 生成的证明文本属于 FineProofs-SFT；FineProofs-RL 含 5,227 道题目、rubric、score array 与统计量，但没有证明或 grader assessment。
+- 必须区分不同预算：名义上每题 128 次的离线 Qwen3 尝试用于估计难度；在线 GRPO 对 64 个 prompt 各采样 16 个 policy rollout，即每个 batch 1,024 个样本；Reasoning Cache 使用三轮训练迭代。
+- 应检查实际 array length，而不能假设固定为 128：4,773 条记录含 128 个分数，453 条含 62-127 个，另有一条含 256 个；发布没有解释这些例外。
+- 应把 GPT-OSS-20B-medium 视为 learned rubric judge，而非 formal verifier 或 process labeler；论文记录了与人工判断的不一致，逐尝试输入和 assessment 也未发布。
+- 复用前应固定代码和 Hugging Face revisions，区分 5,227 条 train 发布与 128 条 FineProofs-RL-test repository，并审计 decontamination、上游权利、filtering bias 与 test-time token budget。

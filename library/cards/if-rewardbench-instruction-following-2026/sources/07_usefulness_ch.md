@@ -1,0 +1,1 @@
+研究者可用 IF-RewardBench 选择适合做指令遵循 reward 的 judge，而不是只根据通用偏好 benchmark 排名。其 checklist 和 preference graph 也可作为训练数据格式范例：为每个 prompt 生成多条回答，标注约束满足向量，再训练 listwise reward model。实际复用时应将公开测试集仅用于评测，并另建训练 split；产品侧还可将 constraint assessment 用于定位具体违规，而不是只给总体低分。

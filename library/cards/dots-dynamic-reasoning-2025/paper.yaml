@@ -1,0 +1,214 @@
+id: dots-dynamic-reasoning-2025
+title: 'DOTS: Learning to Reason Dynamically in LLMs via Optimal Reasoning Trajectories Search'
+year: 2025
+venue: ICLR 2025
+authors:
+- Murong Yue
+- Wenlin Yao
+- Haitao Mi
+- Dian Yu
+- Ziyu Yao
+- Dong Yu
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- trajectory_value
+domains:
+- mathematics
+- symbolic_reasoning
+- commonsense_reasoning
+- scientific_qa
+- reading_comprehension
+training_use:
+- sft
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/5e5d6f9ac33ba9349ba7b2be9f21bad9-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2410.03864
+  code: https://github.com/MurongYue/DOTS
+  data: https://huggingface.co/datasets/MurongYue/DOTS_searching_results
+  project: null
+  huggingface: https://huggingface.co/datasets/MurongYue/DOTS_searching_results
+  doi: https://doi.org/10.48550/arXiv.2410.03864
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/5e5d6f9ac33ba9349ba7b2be9f21bad9-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The many-shot construction uses the MATH training set. Few-shot construction uses four examples from each
+    of 27 BBH categories (108 total), four Game of 24 examples, and four TheoremQA examples. The public HF artifact is a MATH
+    raw-rollout file whose observed `meta info` records retain the source ID, problem, level, type, reference solution, answer,
+    and task-solving LLM. Record-level upstream license, deduplication, and benchmark-overlap metadata are not supplied.
+  trace_author: Task-solving rollouts are generated separately by GPT-4o-mini, Llama-3-70B-Instruct, and Llama-3-8B-Instruct.
+    GPT-4o generates a verbal explanation of why the selected action trajectory is optimal. For internalized planner tuning,
+    the selected solver also supplies the reasoning process used as the SFT target.
+  answer_format: The released 4.8 GB JSON is a top-level list of raw trial records. Inspected rows contain `meta info` and
+    `trial result`; the latter contains a trial ID, a four-slot action trajectory, full role/content reasoning dialogues,
+    extracted predicted answer, and binary score. The paper's final planner tuple is query, ground-truth answer, selected
+    trajectory, GPT-4o explanation, and, for internalized tuning, the solver reasoning process.
+  process_fields:
+  - meta info.id
+  - meta info.problem
+  - meta info.level
+  - meta info.type
+  - meta info.solution
+  - meta info.answer
+  - meta info.task_solving_llm
+  - trial result.id
+  - trial result.trajectory
+  - trial result.reasoning dialogues
+  - trial result.pred_ans
+  - trial result.score
+  environment_or_substrate: 'A fixed three-layer action space composes 12 trajectories: analysis chooses query rewriting,
+    query decomposition, or Empty; solution chooses CoT or PoT; verification chooses Self-Verification or Empty. The repository
+    names the same actions `query_rewriting`, `planning`, `CoT`, `programming_solver`, `verifier`, and empty string, with
+    `direct_answering` as a terminal fourth slot. Search repeatedly samples every current candidate and prunes to smaller
+    top sets.'
+  verifier_or_reward: 'Candidate trajectories receive final-answer success scores against the source ground truth, using task-specific
+    answer extraction/checking. The paper reports simple-eval for MATH, the standard Game of 24 checker, and exact string
+    matching for other tasks. Self-Verification is a separate optional reasoning action: the same solver emits a natural-language
+    correctness verdict and retries after an incorrect verdict; it is not an independent proof checker.'
+  terminal_predicate: Search selects the trajectory with the highest accumulated final-answer success rate, breaking ties
+    in favor of shorter action paths. A Self-Verification path stops when the solver declares the answer correct or reaches
+    an undisclosed maximum retry count. Per-record stop reasons and retry budgets are not exposed.
+recipe_metadata:
+  base_model: 'External planner: Llama-3-8B-Instruct, with GPT-4o-mini or Llama-3-70B-Instruct as frozen solver. Internalized
+    planner and solver: Llama-3-8B-Instruct.'
+  teacher: Existing benchmark ground-truth answers provide outcome supervision; the solver-specific rollouts provide reasoning
+    traces; GPT-4o provides explanations of selected action trajectories. No additional human trajectory labels are reported.
+  generator: Enumerate all 12 reasoning-action trajectories for each question, sample each trajectory repeatedly with the
+    designated solver, accumulate answer-correctness success rates, prune candidates while preferring shorter paths, choose
+    the best solver-conditioned trajectory, ask GPT-4o for an explanation, and construct external- or internalized-planner
+    SFT examples.
+  filtering_rule: The paper removes planner examples judged uninformative because trajectories uniformly succeed or fail,
+    then selects by accumulated success rate with trajectory length as a tie-break. The exact released-item retention manifest,
+    thresholds for the easy/hard condition, rejected-question count, and relationship between the paper filter and current
+    repository implementation are unknown.
+  sampling_protocol: The paper sets two search iterations, four evaluations per candidate per iteration, retained-set sizes
+    8 and 3, and temperature 0.4. This yields 80 trajectory executions for a fully searched item before explanation generation
+    and any variable Self-Verification retries. The current repository instead uses two evaluations outside debug, an active
+    default temperature of 0.8, and probing plus three exploration stages; it is not parameter-identical to the paper.
+  rollout_count: 'Paper configuration: 80 candidate-trajectory executions per fully searched question (12 x 4 in the first
+    round plus 8 x 4 in the second). Search yields 1,722 selected planner examples for GPT-4o-mini, 1,624 for Llama-3-70B-Instruct,
+    and 2,140 for Llama-3-8B-Instruct, 5,486 in total. The exact number of raw trial records in the public 4.8 GB JSON is
+    unknown.'
+  temperature: 0.4 in the paper's Appendix A. The current repository workflow defaults to 0.8, so the released implementation
+    must be manually reconciled to reproduce the reported configuration.
+  inference_budget: Search uses 80 solver trajectory executions per fully searched item under the paper configuration, excluding
+    GPT-4o explanation calls and variable Self-Verification retries. At inference, the planner chooses one action trajectory;
+    the paper reports 409.1 average output tokens for internalized DOTS and longer trajectories for harder MATH levels, but
+    no per-record token, call, latency, or monetary budget log is released.
+  optimizer_or_scaffold: The paper reports LitGPT full supervised fine-tuning with learning rate 2e-5, global batch size 64,
+    maximum sequence length 4096, four epochs, and eight-fold upsampling of few-shot examples. The current repository config
+    instead specifies global batch size 32 and two epochs, while retaining learning rate 2e-5 and maximum sequence length
+    4096.
+audit:
+  source_mixture: Many-shot MATH training examples plus 108 BBH, four Game of 24, and four TheoremQA few-shot examples form
+    the planner-label sources. Evaluation uses MATH test, BBH/Game of 24/TheoremQA test or hold-out data, and OOD DeepMind
+    Math, MMLU-Pro, StrategyQA, and DROP. The public HF release exposes only one MATH-named raw-rollout JSON and does not
+    provide a solver/split/source manifest.
+  split: The paper separates MATH training from MATH test, uses small labeled few-shot sets with test or hold-out evaluation,
+    and reports solver-specific selected example counts of 1,722, 1,624, and 2,140. The HF repository has one `math_collected_trajectory.json`
+    file with no documented train/validation/test partitions or exact raw-record count; these solver counts are not split
+    counts. The current training config declares a 0.01 validation fraction, but no released manifest identifies the resulting
+    rows.
+  decontamination: unknown
+  license: The HF dataset metadata and 24-byte dataset card declare MIT. The GitHub code repository has no recognized license
+    or LICENSE file, so the code license is unknown. Upstream MATH/benchmark rights and rights for model-generated dialogue
+    derivatives are not discussed.
+  lineage: Benchmark question and ground-truth answer -> solver-specific sampling over 12 action trajectories -> task-specific
+    answer extraction and binary scoring -> accumulated-success pruning with path-length tie-break -> selected optimal trajectory
+    -> GPT-4o explanation -> external planner SFT target, or explanation plus trajectory plus solver reasoning plus answer
+    -> internalized planner SFT. The HF artifact preserves raw scored trials; the currently inaccessible Drive link was the
+    stated location for final processed SFT data.
+  known_failure_modes:
+  - The planner labels are deliberately solver-specific and Table 7 shows different CoT/PoT choices for GPT-4o-mini and Llama-3-70B-Instruct;
+    transferring a planner to another solver can therefore overfit solver capability rather than question structure.
+  - Search optimizes benchmark ground-truth answer checks and answer extractors. Exact-match or formatting behavior can dominate
+    selection; Appendix C reports a date-understanding failure caused by Python output-format mismatch.
+  - Self-Verification is produced by the same solver and is not independently grounded, so correlated errors or confident
+    false verification can survive.
+  - The public HF file does preserve full dialogues, failed trials, trajectory IDs, predicted answers, and binary scores,
+    but its observed rows do not explicitly store accumulated score tables, retained/pruned candidate sets, prune reasons,
+    random seeds, or token/call/cost budgets.
+  - The HF artifact is one 4,800,046,236-byte JSON with a minimal license-only card; the dataset viewer fails feature extraction,
+    exact record count and stable splits are undocumented, and robust streaming/schema tooling is required.
+  - The repository's Google Drive link for searched results and final SFT data returned HTTP 404 on 2026-07-25, so the final
+    processed SFT examples cannot be verified even though raw scored rollouts remain available on HF.
+  - Paper and current code disagree on evaluation count, temperature, number of active exploration stages, global batch size,
+    and epochs, blocking a parameter-exact reproduction without author clarification.
+  - In the current workflow code, `run_modules` counts non-empty returned result objects for the accumulated search score
+    while binary correctness is computed separately for recorded trials. This may make current-code pruning differ from the
+    paper's ground-truth success-rate selector.
+  - No trained planner checkpoints, explicit release version, code license, decontamination procedure, semantic deduplication,
+    or record-level provenance manifest is available.
+  citation_status: verified
+  confidence: high
+  notes: The ICLR proceedings PDF and appendices, arXiv record, author-linked GitHub repository, repository files, HF API/tree
+    at revision d6de3b157227150740d38c38e92ffd1803c3d42a, the first 65,536 bytes of the 4.8 GB raw rollout file, and the README-linked
+    Drive endpoint were checked on 2026-07-25. The citation and raw scored-rollout artifact are verified; release completeness
+    and parameter-exact reproducibility remain partial.
+inclusion_reason: DOTS is a direct search-generated reasoning-data recipe whose 12-action trajectory space, outcome scoring,
+  pruning budget, solver-conditioned selection, and planner SFT targets are explicit. Its public 4.8 GB artifact unusually
+  preserves raw successful and failed rollout dialogues and scores, while missing manifests, processed SFT files, checkpoints,
+  and paper-exact code settings remain important audit boundaries for this track.
+related: []
+tags:
+- dots
+- optimal-reasoning-trajectories
+- reasoning-action-search
+- dynamic-reasoning
+- solver-conditioned-planner
+- raw-rollouts
+- rejected-traces
+- outcome-verification
+- supervised-fine-tuning
+- test-time-compute
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: DOTS searches 12 solver-conditioned reasoning-action trajectories with repeated ground-truth scoring, trains
+  external or internalized planners on the selected paths, and releases a 4.8 GB MATH file containing raw dialogues, failed
+  trials, trajectory IDs, predicted answers, and binary scores.
+why_it_matters: The work makes trajectory choice and search budget first-class reasoning-data variables and exposes more raw
+  search evidence than a final-only SFT release, while showing why solver/evaluator overfit, missing pruning manifests, and
+  paper-code configuration drift must be audited before reuse.
+card: null
+needs:
+- 'needs_release_manifest: publish exact raw-record counts, solver partitions, stable IDs, schema, checksums, source lineage,
+  and train/validation/test split manifests'
+- 'needs_final_sft_data: restore the README-linked Drive folder or publish the final external- and internalized-planner SFT
+  files on a stable versioned host'
+- 'needs_search_state: publish accumulated candidate scores, retained/pruned sets, prune reasons, seeds, retries, stop reasons,
+  and per-example token/call/cost budgets'
+- 'needs_code_alignment: provide a tagged paper-exact implementation resolving evaluation count, temperature, search-stage,
+  scoring, batch-size, and epoch discrepancies'
+- 'needs_checkpoints: release the trained external and internalized planners with base-model revisions and evaluation configurations'
+- 'needs_license: add an explicit code license and document upstream benchmark and generated-dialogue reuse rights'
+- 'needs_decontamination: document exact/semantic deduplication, benchmark-overlap checks, and solver pretraining-contamination
+  considerations'
+- 'card_recommendation: create a recipe/release Card centered on the 12-path search schema, raw failed-rollout release, verifier/selector
+  contract, and paper-code drift'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ICLR/arXiv identity, author-linked code and data, the full paper and appendices, exact 12-trajectory schema,
+    reported search/SFT settings and counts, HF revision/files/license, observed raw-record fields, target-card duplicate
+    keys, and the current Drive failure were checked. Status is partial because the exact release count/splits, processed
+    SFT data, full search-state manifest, checkpoints, decontamination, code license, and paper-exact implementation remain
+    unresolved.

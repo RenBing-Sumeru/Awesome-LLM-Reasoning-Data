@@ -1,0 +1,5 @@
+- Record: prompt, sampled solution, binary verifier result, and self-training iteration.
+- Budget: 32 MATH or 64 APPS candidates per prompt; keep at most ten correct outputs.
+- Mechanism: regenerate after every SFT round so the data producer improves with the policy.
+- Evidence: PaLM 2-L gains 6.34 points on MATH and 6.4 on APPS, but APPS regresses in round two.
+- Reuse: verifier precision, prompt reuse, held-out stopping, source terms, and generation cost are mandatory checks.

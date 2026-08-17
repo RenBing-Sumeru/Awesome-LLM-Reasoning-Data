@@ -1,0 +1,108 @@
+id: open-discovery-trace-ai-scientist-2026
+title: 'OpenDiscoveryTrace: Process Traces for Evaluating AI Scientist Workflows'
+year: 2026
+venue: ICML 2026 AI for Science Workshop Dataset Proposal Competition
+authors:
+- Anonymous
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- ai-scientist-agents
+- process-traces
+- error-localization
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=EHT3wVhCUZ
+  arxiv: null
+  code: https://github.com/aayambansal/OpenDiscoveryTrace
+  project: null
+  data: https://huggingface.co/datasets/aayambansall/OpenDiscoveryTrace
+  huggingface: https://huggingface.co/datasets/aayambansall/OpenDiscoveryTrace
+  venue: https://openreview.net/forum?id=EHT3wVhCUZ
+  doi: null
+  openreview: https://openreview.net/forum?id=EHT3wVhCUZ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Scientific tasks across four science domains.
+  trace_author: Frontier and open-weight AI scientist agents generate complete workflows.
+  answer_format: Prompt, step timestamp/phase/thought/action/observation/error/revision trigger/confidence, and final outcome.
+  process_fields:
+  - step_id
+  - phase
+  - thought
+  - action
+  - observation
+  - error
+  - revision_trigger
+  - confidence
+  - final_claim
+  environment_or_substrate: Tool-using AI scientist workflows.
+  verifier_or_reward: Trace-level outcome, error-localization, claim-verification, autonomy, and process-quality tasks.
+  terminal_predicate: Success and final claim correctness recorded with a full execution trace.
+recipe_metadata:
+  base_model: GPT-5.4, Claude Opus 4.6, Gemini 3.1 Pro, and four open-weight models.
+  teacher: Task outcomes and analysis pipelines characterize errors and quality; no named human labeler is disclosed.
+  generator: Agent harnesses execute scientific tasks with tools and log the full workflow.
+  filtering_rule: The repository executes 124 tasks from a 200-task bank and provides full release files on Hugging Face.
+  sampling_protocol: Current repository states 522 trajectories across seven models and 124 tasks; use release revision for
+    exact counts.
+  inference_budget: See official harness/configuration.
+  optimizer_or_scaffold: Structured AI-scientist trace benchmark.
+  rollout_count: 522
+  temperature: null
+audit:
+  source_mixture: Scientific agent tasks, tool calls, observations, error records, revisions, confidence, and outcomes.
+  split: Task bank and full trajectories are documented in the repository/Hugging Face release.
+  decontamination: Separate task instances and tool states when using traces for training or evaluation.
+  license: Code MIT; data and paper CC BY 4.0, according to the official repository.
+  lineage: ICML 2026 workshop competition submission, official GitHub, and Hugging Face data release.
+  known_failure_modes:
+  - Anonymous submission prevents institution attribution
+  - Task and tool coverage remain bounded
+  - Self-reported confidence need not be calibrated
+  citation_status: verified
+  confidence: high
+  notes: The public submission lists authors as Anonymous and no institution; this card records no institution rather than
+    inventing one. Title, venue context, code, data schema, release size, and licenses were verified from official repository
+    and dataset pages.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: OpenDiscoveryTrace releases complete AI-scientist workflows—thoughts, tools, errors, revisions, and outcomes—for
+  process-level evaluation.
+why_it_matters: It makes scientific-agent failures observable at the trace level rather than only scoring final claims.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: The public submission lists authors as Anonymous and no institution; this card records no institution rather than
+    inventing one. Title, venue context, code, data schema, release size, and licenses were verified from official repository
+    and dataset pages.
+category_ids:
+- process_trace_supervision_data

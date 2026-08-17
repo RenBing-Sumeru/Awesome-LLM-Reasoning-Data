@@ -1,0 +1,2 @@
+Use the official arXiv record and its complete BibTeX export: Shuai Bai et al. “Qwen3-VL Technical Report.” arXiv:2511.21631 (2025). [Paper](https://arxiv.org/abs/2511.21631) · [Official BibTeX](https://arxiv.org/bibtex/2511.21631) · [Repository](https://github.com/QwenLM/Qwen3-VL) · [Model collection](https://huggingface.co/collections/Qwen/qwen3-vl). No official post-training dataset is linked; a hand-shortened BibTeX block is intentionally not substituted for the full official author record.
+

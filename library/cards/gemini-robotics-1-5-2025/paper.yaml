@@ -1,0 +1,220 @@
+id: gemini-robotics-1-5-2025
+title: 'Gemini Robotics 1.5: Pushing the Frontier of Generalist Robots with Advanced Embodied Reasoning, Thinking, and Motion
+  Transfer'
+year: 2025
+venue: arXiv preprint
+authors:
+- Gemini Robotics Team
+source_role:
+- model_report
+- construction_recipe
+- agent_environment
+- benchmark
+- verifier_reward
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- robotics
+- embodied_reasoning
+- vision_language_action
+- robot_manipulation
+- multimodal_reasoning
+- spatial_reasoning
+- agentic_systems
+- safety
+training_use:
+- sft
+- evaluation
+- audit
+- safety_alignment
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.03342
+  arxiv: https://arxiv.org/abs/2510.03342
+  code: null
+  data: null
+  project: https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.03342
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The main VLA object combines text instructions and robot-camera images with robot sensor/action records collected
+    across ALOHA, bi-arm Franka, and Apollo humanoid tasks; the broader training mixture also contains public Internet text,
+    image, and video data. In the full agent, the ER orchestrator receives user input and environmental feedback, may obtain
+    external information through tools, and emits natural-language subtask instructions to the VLA. Safety auto-red-teaming
+    starts from ordinary training/evaluation tasks and transforms them into malicious instructions, corrupted images, or rollout-time
+    environment disturbances. Exact source manifests, sampling proportions, and record counts are unknown.
+  trace_author: Robot trajectory producers and collection protocol are undisclosed. Gemini Robotics 1.5 generates natural-language
+    thinking at inference and appends it before action, but the report does not identify the author, teacher, generator, or
+    annotation procedure for any training-time thinking targets. Synthetic image captions are generated with Gemini and FlexCap.
+    Auto-red-team attacks are model-generated and an AutoRater returns correctness/safety judgments and a reasoning trace.
+  answer_format: Gemini Robotics-ER 1.5 outputs text, including numerical coordinates, plans, tool-oriented instructions,
+    progress estimates, and binary success judgments. Gemini Robotics 1.5 outputs continuous numerical robot actions and,
+    with thinking enabled, natural-language thoughts interleaved before actions. Evaluations additionally use task-specific
+    scalar progress, binary success, pointing coordinates/trajectories, answer strings, and failure-mode labels.
+  process_fields:
+  - text_instruction_or_question
+  - robot_camera_image_or_video
+  - robot_sensor_record
+  - robot_embodiment
+  - optional_external_tool_result
+  - optional_natural_language_plan
+  - optional_natural_language_thinking_trace
+  - continuous_robot_action
+  - environmental_feedback
+  - task_progress_score
+  - binary_success_or_failure
+  - optional_point_or_trajectory
+  - optional_attack_type
+  - optional_autorater_judgment
+  environment_or_substrate: Physical execution uses ALOHA, bi-arm Franka, and Apollo humanoid robots. Development evaluation
+    also uses MuJoCo, and the agentic orchestrator may call Google Search or user-defined tools. The exact observation/state
+    schema, action dimensions, control frequency, camera calibration, task simulator assets, environment versioning, and production
+    tool interface are unknown.
+  verifier_or_reward: Robot suites use task-specific progress and binary success; ER success detection maps images plus a
+    task instruction to success/failure, with real-time 5 Hz and offline variants. Long-horizon failure analysis labels planning,
+    success-detection, and action failures. Text VQA responses are graded by Gemini 2.5 Flash, and safety attacks are judged
+    by an AutoRater for correctness and safety. These are disclosed as evaluation/audit contracts; the report does not claim
+    that robot progress or success is an RL reward.
+  terminal_predicate: The ER orchestrator uses success detection to decide when to switch subtasks, and appendix rubrics award
+    points for physical subtask completion. A success-detection failure is explicitly defined as ending a subtask too early
+    or too late. No single released executable terminal predicate, calibration set, or production threshold is provided.
+recipe_metadata:
+  base_model: Both models inherit the core Gemini family. The exact Gemini checkpoint, parameter count, pretraining snapshot,
+    and stage allocation are unknown.
+  teacher: Gemini and FlexCap generate synthetic image captions. The training-time source of VLA/ER thinking traces and any
+    teacher for specialized post-training are unknown.
+  generator: Unknown collectors produce the multi-embodiment robot sensor/action corpus. Gemini Robotics 1.5 and ER 1.5 generate
+    inference-time thoughts; an attacker model generates prompt, scene, and environment attacks, and an AutoRater generates
+    safety/correctness critiques. Generator checkpoints and prompts are unknown.
+  filtering_rule: The model card reports multi-stage safety and quality filtering, including automated removal of some personal
+    and sensitive information, but gives no thresholds, measured recall, residual-risk audit, caption acceptance rule, robot-trajectory
+    quality rule, or filtering yield.
+  sampling_protocol: Motion Transfer co-trains across ALOHA, Franka, and Apollo data plus public Internet modalities; exact
+    mixture weights, batching, curriculum, reweighting, and per-platform sampling are unknown. Auto-red-teaming samples an
+    ordinary training/evaluation task and adversarially transforms it, but its source distribution and acceptance protocol
+    are undisclosed.
+  rollout_count: Training episode and rollout counts are unknown. The VLA evaluation contains 230 tasks; the long-horizon
+    agent evaluation contains eight tasks across ALOHA and Franka. Cross-embodiment appendices disclose a 10-task Franka-to-ALOHA
+    suite and 11 ALOHA/humanoid-to-Franka tasks, but raw trial records and all denominators are not released.
+  temperature: unknown
+  inference_budget: Thinking-token budget is varied in the ER scaling experiment, and every plotted point averages three runs;
+    exact peak-token values are not asserted because the numerical values appear only in commented TeX. Real-time success
+    detection runs at 5 Hz with simulated inference latency, while offline success detection allows unlimited inference time.
+  optimizer_or_scaffold: Motion Transfer is described as a new VLA architecture and training recipe that aligns knowledge
+    across embodiments, but its objective, optimizer, batch size, steps, schedule, and checkpoint selection are unknown. The
+    model card names JAX, ML Pathways, and TPU v4/v5p/v6e. Franka receives additional post-training for long-horizon evaluation
+    whereas ALOHA uses the pre-training checkpoint.
+audit:
+  source_mixture: The report names multi-embodiment ALOHA/Franka/Apollo robot data spanning thousands of tasks, public Internet
+    text/image/video, robot sensor/action data, original and Gemini/FlexCap synthetic captions, and auto-red-team-generated
+    safety data. Counts, hours, frame/action totals, platform ratios, source manifests, time ranges, collection sites, operators,
+    failure retention, rights, and licenses are unknown.
+  split: Generalization axes and task-specific cross-embodiment conditions are described, but the item-level train/dev/test
+    split, robot-task-scene-object membership, randomization seeds, raw rollouts, and checkpoint-to-suite mapping are not
+    released. The ALOHA and Franka long-horizon results use different post-training states.
+  decontamination: No global benchmark decontamination, Internet-overlap scan, duplicate-trajectory test, near-duplicate scene
+    audit, or memorization analysis is disclosed. Cross-embodiment evaluation restricts target tasks to data collected on
+    another robot, but no released manifest permits independent verification.
+  license: The manuscript is CC BY 4.0. Rights and reuse terms for robot demonstrations, sensor/action records, public Internet
+    sources, synthetic captions, thinking traces, success labels, safety data, model weights, and training code are not disclosed,
+    and no VLA corpus or checkpoint is released.
+  lineage: The disclosed stage lineage is core Gemini family -> separate ER/VLA fine-tuning -> multi-embodiment Motion Transfer
+    and optional thinking -> ER-plus-VLA agent assembly -> simulated/real robot, benchmark, and safety evaluation. Record-level
+    source-caption-sensor-action-thought-feedback-checkpoint lineage and version hashes are unknown.
+  known_failure_modes:
+  - Motion Transfer is named and ablated but not specified at algorithmic or record level, so the transfer data object and
+    training recipe cannot be reproduced.
+  - Thinking traces are visible at inference, but training-label authorship, generation prompts, coverage, filtering, and
+    whether displayed traces match internal training targets are undisclosed.
+  - Success/progress labels and long-horizon point rubrics are partly described, but scorer identity, inter-rater agreement,
+    calibration, raw episodes, and executable terminal predicates are unavailable.
+  - Over 90% of development evaluation episodes used simulation; rank consistency helps iteration but does not replace final
+    real-robot validation or disclose the sim-real failure distribution.
+  - Long-horizon ALOHA uses a pre-training checkpoint while Franka receives extra post-training, creating a deployment/checkpoint
+    confound across platforms.
+  - Earlier-model comparisons are explicitly not apples-to-apples because earlier checkpoints used less data and were embodiment-specific.
+  - Real-time success detection can become stale under model latency; the report notes that older predictions quickly lose
+    relevance during dynamic interaction.
+  - Text VQA is graded by Gemini 2.5 Flash, introducing judge-model bias and dependence on an API configuration accessed during
+    a limited September 2025 window.
+  - The reported agent failure totals are subtask-level summaries without released denominators, raw rollouts, or an independent
+    reproduction package.
+  - The VLA is available only to select partners while ER is exposed through an API, so observed public ER behavior cannot
+    verify the private physical-action checkpoint or training corpus.
+  - No robot corpus, model weights, or training code is released; paper-level CC BY 4.0 must not be misattributed to proprietary
+    training artifacts.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv record, 62-page official Google DeepMind PDF, full arXiv source and appendices, model card, and official
+    launch page were inspected on 2026-07-24. Commented TeX is not treated as published evidence, evaluation signals are not
+    promoted to training rewards, and ASIMOV-2.0 is kept separate from the proprietary robot training corpus.
+inclusion_reason: A major-lab frontier report with unusually useful but incomplete disclosure of a heterogeneous multi-embodiment
+  robot mixture, a cross-robot Motion Transfer recipe, explicit natural-language thought/action interleaving, success/progress
+  feedback contracts, synthetic-caption filtering, and adversarial safety-data construction.
+related:
+- gemini-robotics-physical-world-2025
+tags:
+- google-deepmind
+- gemini-robotics
+- motion-transfer
+- multi-embodiment
+- embodied-reasoning
+- vision-language-action
+- robot-sensor-action-data
+- natural-language-thinking
+- success-detection
+- progress-estimation
+- auto-red-teaming
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Gemini Robotics 1.5 discloses ALOHA, Franka, and Apollo sensor/action data mixed with Internet text-image-video
+  data, cross-embodiment Motion Transfer, natural-language thinking before action, and progress/success contracts, but not
+  the mixture, record schema, labels, optimizer, rights, or released corpus.
+why_it_matters: It is a high-value disclosure ledger for physical agents because it connects frontier-model fine-tuning to
+  multi-robot trajectories, synthetic captioning, tool-using orchestration, inference-time thinking, environment feedback,
+  and adversarial safety data while making the reproducibility and deployment gaps explicit.
+card: null
+needs:
+- 'needs_data: per-platform record counts, task/scene manifests, sensor and action schemas, timestamps, failures, synthetic
+  captions, thinking targets, success labels, adversarial records, and record-level lineage'
+- 'needs_verifier: label authors, complete progress/success rubrics, class balance, calibration, inter-rater reliability,
+  executable terminal checks, AutoRater validation, and raw trials'
+- 'needs_metadata: exact Gemini checkpoints, Motion Transfer algorithm, mixture weights, sampling, filtering thresholds, optimizer,
+  loss, batch size, steps, schedules, compute, and checkpoint selection'
+- 'needs_audit: complete split, task/scene/object overlap, benchmark decontamination, duplicate trajectories, memorization,
+  sim-real gaps, judge bias, checkpoint comparability, failure retention, privacy, and deployment drift'
+- 'needs_license: rights and reuse terms for robot records, Internet sources, synthetic captions, thinking traces, success/safety
+  labels, model weights, and training code'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, and arXiv-ID deduplication against the target V2 Card library found no match. Official
+    paper, PDF, TeX source/appendices, model card, and launch page were verified; no official robot dataset, VLA checkpoint,
+    or training-code artifact is claimed.

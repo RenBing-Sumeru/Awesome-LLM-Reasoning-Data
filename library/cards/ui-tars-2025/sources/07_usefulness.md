@@ -1,0 +1,3 @@
+UI-TARS offers a concrete schema for computer-use data: instruction, screenshot/history, normalized action, next state, thought provenance, first-error label, correction, recovery continuation, preference relation, terminal action, environment version, and filter/judge outputs. It is especially useful for designing recovery-aware SFT and action-level DPO rather than training only on successful demonstrations.
+
+Training reuse is blocked by unavailable records and rights. Evaluation/audit reuse should explicitly separate in-domain suites, claimed held-out environments, System-1/2 scaffold, Best-of-N budget, step limit, `CallUser` policy, screenshot resolution, and exact app/OS/browser images.

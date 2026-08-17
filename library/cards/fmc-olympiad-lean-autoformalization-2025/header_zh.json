@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FMC 通过带错误反馈的自动形式化流程，将 3,922 道奥数自然语言题与 9,787 个 Lean 形式化对齐并验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "奥数自然语言题到 Lean 的自动形式化数据集",
+  "best_for_ch": "需要自然语言到 Lean 形式化、自动定理证明训练或评测数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiaxuan Xie, Chengwu Liu, Ye Yuan, Siqi Li, Zhiping Xiao, Ming Zhang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

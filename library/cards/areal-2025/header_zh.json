@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AReaL 发布了用于数学/代码 RL 的 Apache-2.0 异步 PPO 基础设施和 NeurIPS 系统配方；未核验到规范推理语料、论文运行 rollout/奖励账本、不可变数据切分或最终检查点溯源包。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "异步强化学习系统、程序化奖励契约与轨迹血缘披露审计",
+  "best_for_ch": "关注大规模异步 RL、策略陈旧性、跨版本 rollout、程序化验证器和系统可复现性的研究者与工程人员",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Fu、Jiaxuan Gao、Xujie Shen、Chen Zhu、Zhiyu Mei、Chuyi He、Shusheng Xu、Guo Wei、Jun Mei、Jiashu Wang、Tongkai Yang、Binhang Yuan、Yi Wu",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

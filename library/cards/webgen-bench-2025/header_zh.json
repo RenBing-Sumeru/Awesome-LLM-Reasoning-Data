@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebGen-Bench 将网站生成与浏览器执行的功能测试做成可审计的评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 预印本的基准与评测面",
+  "best_for_ch": "关注基准、评分契约、污染风险、评测框架和后训练反馈可复用性的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Zimu Lu 等（Multimedia Laboratory, The Chinese University of Hong Kong）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:31:18Z"
+}

@@ -1,0 +1,5 @@
+- 将 36T-token 表述视为汇总级披露，而不是来源清单或具有明确许可的数据集发布。
+- 将 3,995 个 query-verifier pairs 与 GRPO 的主张，同未公开的 verifier 实现、奖励公式、rollout 数和校准审计区分开来。
+- 对 Qwen2.5-72B-Instruct、QwQ-32B 和人工评估，只记录其在 cold start 中被明确披露的角色。
+- 核查 rejection-sampled thinking 数据和整理后的 non-thinking SFT 数据没有公开示例、数量、prompts 或保留率。
+- 将 thinking-budget 行为和 benchmark 结果排除在此 Track 12 披露评估之外。

@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "约3.6k条、9领域推理轨迹给出错误位置、类型与理由，直接测量 PRM 的跨域过程判断。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨领域过程奖励模型评测与错误类型标注基准论文",
+  "best_for_ch": "需要检验过程奖励模型在科学和逻辑等非数学领域定位错误步骤及区分错误类型能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhouhao Sun, Xuan Zhang, Xiao Ding, Bibo Cai, Li Du, Kai Xiong, Xinran Dai, Fei Zhang, Weidi Tang, Zhiyuan Kan, Yang Zhao, Bing Qin, Ting Liu",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T18:31:42Z"
+}

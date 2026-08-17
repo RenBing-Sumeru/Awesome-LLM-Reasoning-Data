@@ -1,0 +1,155 @@
+id: self-certainty-bon-2025
+title: Scalable Best-of-N Selection for Large Language Models via Self-Certainty
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Zhewei Kang
+- Xuandong Zhao
+- Dawn Song
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+- reasoning
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/1c7eff166a8e345f664f0faa8f4e4d2e-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2502.18581
+  code: https://github.com/backprop07/Self-Certainty
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.18581
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/1c7eff166a8e345f664f0faa8f4e4d2e-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=29FRqmVQK8
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2502.18581
+data_object:
+  prompt_source: LiveBench-Math, GSM8K validation, MATH test, CRUXEval-O, and LiveCodeBench; MATH Level 3 is also used for
+    the DeepSeek-R1-Distill-Llama-8B trial.
+  trace_author: Llama-3.1-8B-Instruct generates the main candidate sets; DeepSeek-R1-Distill-Llama-8B and Qwen-2.5-Coder-32B-Instruct
+    provide additional generalization candidates.
+  answer_format: Prompt, N candidate responses, full next-token probability distributions, one self-certainty scalar and rank
+    per response, extracted answer when applicable, optional Borda vote, and selected response or answer.
+  process_fields:
+  - prompt
+  - candidate_response
+  - generator_model
+  - token_probability_distribution
+  - sampled_token_probability
+  - response_length
+  - self_certainty_score
+  - confidence_rank
+  - extracted_answer
+  - extraction_validity
+  - borda_exponent
+  - borda_vote
+  - answer_vote_total
+  - selected_candidate
+  - final_answer
+  environment_or_substrate: Inference-time Best-of-N selection integrated as an extension to ZeroEval; LiveCodeBench code
+    outputs are parsed into its expected format, but selection does not execute candidates.
+  verifier_or_reward: Self-certainty is the response-average KL divergence KL(U||p) from a uniform distribution over the full
+    vocabulary, computed from each next-token distribution. Pure Best-of-N selects the highest score; fixed-answer Borda voting
+    assigns rank weight (N-r+1)^p and sums votes by extracted answer.
+  terminal_predicate: For open-ended selection, return the highest-self-certainty candidate. For fixed-answer tasks, optionally
+    return the answer with the largest Borda vote total; candidates without an extractable answer receive negative-infinity
+    confidence in the released selector.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct is the main generator; DeepSeek-R1-Distill-Llama-8B and Qwen-2.5-Coder-32B-Instruct are
+    additional evaluated generators.
+  teacher: No teacher or auxiliary reward model is used by self-certainty selection.
+  generator: Sample N responses, retain each full vocabulary distribution at every generated token, average tokenwise KL(U||p)
+    into a response score, then select by score or combine confidence rank with answer frequency through Borda voting.
+  filtering_rule: Responses without extractable fixed answers are masked for selection and assigned negative-infinity confidence
+    by the released code. Borda voting groups valid responses by extracted answer; p controls confidence-rank influence.
+  sampling_protocol: Generate 64 Llama-3.1-8B-Instruct responses per prompt at temperature 0.6 and top-p 0.9; form N=4, 8,
+    16, 32, and 64 subsets from identical samples and average main results across five repetitions. The DeepSeek-R1-Distill-Llama-8B
+    MATH Level 3 experiment is one trial.
+  rollout_count: 64 candidates per prompt for main experiments, evaluated as Best-of-N subsets of 4, 8, 16, 32, and 64.
+  temperature: 0.6 with top-p 0.9 for main candidate generation.
+  inference_budget: N=4-64 candidate responses per prompt; full vocabulary probabilities are required for every generated
+    token. Exact maximum generation lengths and complete runtime manifests are not disclosed in the paper.
+  optimizer_or_scaffold: Inference-only scoring and selection using ZeroEval extensions; no fine-tuning or learned reward
+    model is required.
+audit:
+  source_mixture: Named evaluation benchmarks only; no paper-specific candidate, token-distribution, score, or selection-log
+    dataset was released.
+  split: GSM8K validation, MATH test, MATH Level 3 test, CRUXEval-O, LiveBench-Math, and LiveCodeBench are named. Exact item
+    revisions and candidate manifests are not released.
+  decontamination: LiveBench-Math was released after Llama-3.1-8B-Instruct deployment and is used as a contamination-mitigation
+    surface; contamination evidence for the remaining benchmarks and models is unknown.
+  license: unknown
+  lineage: Benchmark prompt -> 64 sampled responses and token distributions -> self-certainty per response -> rank -> either
+    top-score selection or extracted-answer Borda aggregation -> selected response/answer. Raw candidates, logits, and scores
+    are not released.
+  known_failure_modes:
+  - A single artificially high-confidence wrong response can win pure self-certainty selection; the paper gives an example
+    where the highest score selects 12.5 instead of the correct answer 64.
+  - On fixed-answer mathematics, pure self-certainty can underperform self-consistency; Borda gains depend on answer extraction
+    and frequency.
+  - The Borda exponent p is model-, task-, and N-dependent and is recommended to be tuned on task-specific validation queries,
+    creating a tuning and leakage audit requirement.
+  - Full vocabulary probabilities are required for every token, limiting applicability to closed APIs and increasing logit
+    storage or recomputation cost.
+  - Averaging token scores can obscure localized errors, and the uniform reference distribution is a design choice; an empirical
+    reference showed distribution-shift degradation on GSM8K.
+  - Some USC results are omitted because over 20 percent of examples exceed the context limit under the study settings.
+  - The author repository publishes selector code but no release package, raw candidate traces, logits, score manifests, pinned
+    environment, or repository license.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings, arXiv v3, OpenReview record, and author repository checked. Repository dependency licenses
+    do not establish a license for this repository or generated records.
+inclusion_reason: The paper turns full token probability distributions into deterministic response-level selector scores and
+  combines score ranks with answer-frequency votes, making a concrete Best-of-N feedback and trace schema.
+related: []
+tags:
+- best-of-n
+- self-certainty
+- confidence-estimation
+- token-distribution
+- borda-voting
+- test-time-scaling
+- response-selection
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A NeurIPS 2025 Best-of-N selector that scores each sampled response from its full token distributions and
+  optionally combines confidence rank with answer frequency through Borda voting.
+why_it_matters: For rollout/search/test-time trace curation, it specifies the candidates, token-distribution scores, ranks,
+  extraction states, votes, and selected output, while exposing the gap between intrinsic confidence and verified correctness.
+card: null
+needs:
+- needs_candidate_trace_release
+- needs_logit_or_score_release
+- needs_selection_manifest
+- needs_exact_benchmark_revisions
+- needs_repository_license
+- needs_pinned_reproducibility_environment
+- needs_borda_tuning_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official NeurIPS/arXiv/OpenReview records and author implementation verified; no raw candidate/logit/score release
+    or repository license verified.

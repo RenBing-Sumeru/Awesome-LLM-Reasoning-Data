@@ -1,0 +1,5 @@
+- Read Sections 3.1-3.3 first: the scalar reward is the next-token `Yes` probability, and the CoT variant conditions that probability on a self-generated verification rationale.
+- Appendix A is the data recipe: it gives the algorithmic candidate counts, GSM8K split and 50-solution sampling, reference-guided prompt, 16-correct/16-incorrect cap, and verdict filter.
+- Do not label the release as process supervision merely because rationale text grades steps; the retained correctness contract and deployed reward are answer-level.
+- Figure 1 and Table C.1 report strong Best-of-N and transfer results, while Figure C.2 supplies the useful negative result that too much solution-generation mixture can hurt verification.
+- The official GSM8K release exposes both direct and rationale targets, but code, checkpoints, generated-critique license scope, decontamination, rejected-rationale logs, and an immutable tagged snapshot remain unresolved.

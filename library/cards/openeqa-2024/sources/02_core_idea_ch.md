@@ -1,0 +1,3 @@
+核心贡献是在 embodied-ai, open-vocabulary-qa, agent-评测 上提供 project page reports over 1,600 human-generated questions over more than 180 real-world environments; HM3D questions are shared across EM-EQA and A-EQA settings.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：LLM-Match automatic 评测 protocol correlated with human judgment, plus human judgment as reference。
+
+数据对象或环境是：embodied question-answering benchmark over videos, scans, real-world environments, and simulation settings。最接近的对比对象是 agent-environment, tool-use, and benchmark-harness papers in the same atlas category。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 需要裁判判断、混合。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

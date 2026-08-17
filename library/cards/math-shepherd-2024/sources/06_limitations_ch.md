@@ -1,0 +1,1 @@
+高 reward 只表示在给定采样策略下，从这个前缀继续生成时常能到达参考答案；它不证明当前步骤逻辑有效。弱 generator 可能低估好前缀，幸运 continuation 也可能高估有缺陷前缀。方法继承底层数学任务的 final-answer checker 局限。复用前要固定公开 artifact、split 和 license 细节。PRM reranking 或 reinforcement 得到的分数受预算影响，不能和 single-sample baseline 混报。

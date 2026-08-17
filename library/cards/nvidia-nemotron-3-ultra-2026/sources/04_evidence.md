@@ -1,0 +1,6 @@
+NVIDIA's official project page states that it releases pre-trained, post-trained, and quantized checkpoints, datasets used for training, and model recipes. The official BF16 model card identifies the OpenMDW License Agreement v1.1. NVIDIA's post-training collection and NVIDIA-NeMo repository are linked from the release surface. These facts support a real release of weights, collections, and recipes.
+
+The same official model card declares 226 datasets and 14.8T tokens, with the overall partition listed as training 100%, testing 0%, validation 0%. The technical report separately states 20T-token pretraining. The checked materials do not explain the relation between these two totals. The card also names public, crawled, synthetic, private third-party, private NVIDIA, vendor, and undisclosed source types, and identifies private search RL and undisclosed local environments.
+
+The report gives an explicit reward caveat in its SWE teacher stage: final hidden-test reward can incorrectly reward or penalize full trajectories. NVIDIA adds masks and negative-advantage handling and closes two gold-patch leak channels, but the checked materials do not provide reward-error rates, calibration results, or a full cross-environment audit.
+

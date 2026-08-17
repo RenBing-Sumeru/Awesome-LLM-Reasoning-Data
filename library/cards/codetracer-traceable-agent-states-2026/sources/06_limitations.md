@@ -1,0 +1,1 @@
+First, whether an action is useless depends on the acceptable exploration budget and may change across agent strategies. Second, repository and dependency versions affect tool outcomes, requiring reproducible environments. Third, 4,316 trajectories come from limited agents and tasks, so trained models may overfit to particular log formats.

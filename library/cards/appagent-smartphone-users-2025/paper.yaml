@@ -1,0 +1,117 @@
+id: appagent-smartphone-users-2025
+title: 'AppAgent: Multimodal Agents as Smartphone Users'
+year: 2025
+venue: CHI 2025 / arXiv
+authors:
+- Chi Zhang
+- Zhao Yang
+- Jiaxuan Liu
+- Yanda Li
+- Yucheng Han
+- Xin Chen
+- Zebiao Huang
+- Bin Fu
+- Gang Yu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- smartphone-apps
+- human-demonstrations
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2312.13771
+  arxiv: https://arxiv.org/abs/2312.13771
+  doi: https://doi.org/10.48550/arXiv.2312.13771
+  code: https://github.com/TencentQQGYLab/AppAgent
+  data: https://github.com/TencentQQGYLab/AppAgent
+  project: https://appagent-official.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official AppAgent paper, project, and repository
+  trace_author: Tencent authors, human demonstrations, and autonomous app exploration
+  answer_format: smartphone app tasks, visual states, demonstrations, exploration logs, action knowledge, and results
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: smartphone app exploration and demonstration-derived operation knowledge
+  verifier_or_reward: task completion checks over smartphone apps and demonstration-based evaluation
+  terminal_predicate: task completion checks over smartphone apps and demonstration-based evaluation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: AppAgent human demonstration and exploration procedure
+  generator: AppAgent multimodal smartphone operation loop
+  filtering_rule: pin author-list version, project/repo revision, and app environment state
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2312.13771; https://appagent-official.github.io/; https://github.com/TencentQQGYLab/AppAgent
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2312.13771'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: project BibTeX and arXiv author-list versions differ; Yanda Li inclusion, app versions, and data release completeness
+    need audit.
+inclusion_reason: it combines demonstrations and autonomous exploration over smartphone apps
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- smartphone-apps
+- human-demonstrations
+one_line: AppAgent treats multimodal agents as smartphone users that learn from demonstrations and exploration.
+why_it_matters: it combines demonstrations and autonomous exploration over smartphone apps
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AppAgent treats multimodal agents as smartphone users that learn from demonstrations and exploration.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, and Tencent repository verify title, Tencent institution, CHI 2025 status, and artifacts.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 65
+  primary_category_id: environment_agent_trajectory_data

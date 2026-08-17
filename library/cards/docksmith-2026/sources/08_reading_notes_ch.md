@@ -1,0 +1,5 @@
+- 严格区分计数单位：39,719 条公开记录是关联 2,876 个实例的 per-agent chat fragment；筛选后完整训练 episode 数仍为 unknown。
+- 先读 §2.2 与 Figure 1 理解四 agent 的状态—动作—观察循环，再读 §2.3.1 核对执行成功筛选、冗余过滤、语言上限和 1:2:2 复杂度 curriculum。
+- 只有 verified-success trajectory 被描述为进入 SFT；失败 rollout 用于评测与错误分析，并非已记录的负面训练语料。
+- 版本必须分开固定：11 位作者的 ICML 最终版、用于章节证据的 arXiv v2、dataset content commit `b847dad...`、当前 dataset revision `1d44cd3...` 与 model revision `1404f4d...`。
+- 复用前检查 episode 重建、Docker/test predicate 有效性、仓库与依赖权利、model license、secret、network isolation，以及缺失的不可变 replay manifest。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RepoBench 用静态检索和补全指标评测仓库级代码补全。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "ICLR 2024 / arXiv 的 repository-level code completion benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tianyang Liu 等（University of California, San Diego）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T13:54:04Z"
+}

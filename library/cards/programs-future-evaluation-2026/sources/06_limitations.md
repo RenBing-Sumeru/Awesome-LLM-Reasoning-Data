@@ -1,0 +1,1 @@
+Programs can be repetitive, noisy, or unable to encode nuanced semantic criteria. Weak supervision cannot repair a shared blind spot; audit program diversity, execution safety, and error cases before trusting aggregation.

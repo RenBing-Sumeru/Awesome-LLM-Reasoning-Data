@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "这篇综述把监督推理、推理时诱导、自改进、评测和解释拆成不同主张类型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "LLM 推理领域综述与决策地图",
+  "best_for_ch": "适合筛选推理论文，或区分数据、提示、训练、评测与解释主张的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jie Huang, Kevin Chen-Chuan Chang",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-11T07:47:09Z"
+}

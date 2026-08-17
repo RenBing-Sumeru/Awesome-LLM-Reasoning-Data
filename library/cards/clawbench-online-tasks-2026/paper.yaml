@@ -1,0 +1,129 @@
+id: clawbench-online-tasks-2026
+title: 'ClawBench: Can AI Agents Complete Everyday Online Tasks?'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yuxuan Zhang
+- Yubo Wang
+- Yipeng Zhu
+- Penghui Du
+- Junwen Miao
+- Xuan Lu
+- Wendong Xu
+- Yunzhuo Hao
+- Songcheng Cai
+- Xiaochen Wang
+- Huaisong Zhang
+- Xian Wu
+- Yi Lu
+- Minyi Lei
+- Kai Zou
+- Huifeng Yin
+- Ping Nie
+- Liang Chen
+- Dongfu Jiang
+- Wenhu Chen
+- Kelsey R. Allen
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-agents
+- online-tasks
+- production-websites
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.08523
+  arxiv: https://arxiv.org/abs/2604.08523
+  doi: https://doi.org/10.48550/arXiv.2604.08523
+  code: null
+  data: null
+  project: https://claw-bench.com
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 153 everyday online tasks across 144 live platforms and 15 categories.
+  prompt_source: ClawBench task definitions over routine online workflows such as purchases, appointments, and applications.
+  trace_author: ClawBench authors and evaluated web agents.
+  answer_format: user task, required documents or form information, live website trajectory, final-submission interception
+    record, and task success status.
+  process_fields:
+  - user goal
+  - live platform and category
+  - user-provided documents or fields
+  - browser actions and observations
+  - intercepted final submission request
+  - success or failure status
+  environment_or_substrate: production websites with live multi-step workflows.
+  verifier_or_reward: safety interception layer and task-specific completion checks over the final submission attempt.
+  terminal_predicate: task is complete when the agent reaches the required final submission state without causing real-world
+    side effects.
+recipe_metadata:
+  base_model: Not a training recipe; it is a live-web agent evaluation framework.
+  teacher: task authors and production-site workflows define the expected final state.
+  generator: curated everyday online tasks plus live-site execution and final-request interception.
+  filtering_rule: Do not treat scores as stable unless platform state, task date, account setup, and interception logic are
+    pinned.
+  sampling_protocol: Pin task list, live-site date, account credentials, documents, browser runtime, model scaffold, action
+    budget, and interception implementation.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is agent- and task-specific; live-site latency and failure handling must be reported.
+  optimizer_or_scaffold: online_web_agent_environment
+audit:
+  source_mixture: arXiv 2604.08523 and project page listed in the arXiv comment.
+  split: Public/private split and downloadable artifact status were not verified.
+  decontamination: Task descriptions and live-site strategies can leak into agent training or scaffolds.
+  license: Artifact license was not verified; live websites impose separate terms and safety constraints.
+  lineage: 'Primary source: https://arxiv.org/abs/2604.08523'
+  known_failure_modes:
+  - live platform UI, account state, prices, forms, and policies can drift
+  - final-submission interception must block real-world side effects reliably
+  - tasks may require private user data or credentials
+  - public task descriptions can become prompt/scaffold contamination
+  - success checks can miss partial harm before final submission
+  citation_status: verified
+  confidence: medium
+  notes: arXiv HTML verifies title, authors, affiliations, 153 tasks, 144 platforms, 15 categories, live production-site design,
+    interception layer, and Claude Sonnet 4.6 result example. Project page was listed by arXiv but detailed artifact links
+    were not verified.
+inclusion_reason: It pushes web-agent evaluation from static sandboxes toward live production workflows with safety interception.
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-agents
+why_it_matters: It is a live-web evaluation surface where environmental drift and real-world side-effect control are central.
+status: verified
+needs:
+- 'needs_audit: verify artifact license, task split, downloadable harness, account setup, and final-submission interception
+  guarantees'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ClawBench evaluates web agents on everyday online tasks across live production websites.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: medium
+  notes: arXiv HTML verifies the affiliation list; project page exists but detailed code/data artifact status was not verified.
+category_ids:
+- benchmarks_evaluation_surfaces

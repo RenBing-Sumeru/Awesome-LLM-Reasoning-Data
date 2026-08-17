@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以网页交互轨迹合成与逐步过滤构建 WebSTAR 和 WebSCORE，为计算机使用智能体提供带细粒度质量信号的大规模训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "计算机使用智能体的合成轨迹与逐步质量过滤数据集论文",
+  "best_for_ch": "需要训练、筛选或评测网页操作智能体轨迹及逐步反馈信号的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yifei He, Pranit Chawla, Yaser Souri, Subhojit Som, Xia Song",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

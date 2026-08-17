@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HalluGuard 以证据支撑的偏好元组训练小型推理模型，用于识别检索增强生成中的幻觉。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "检索增强生成幻觉检测的偏好数据与奖励模型论文",
+  "best_for_ch": "研究检索增强生成可靠性、奖励建模或偏好优化的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Loris Bergeron、Ioana Buhnila、Jérôme François、Radu State",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T11:35:05Z"
+}

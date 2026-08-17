@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以需求删除构造写作 reward model 排序评测，并用其训练 WRL。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "写作 reward model 需求级评测与强化学习训练论文",
+  "best_for_ch": "需要按显式写作约束评测或训练 reward model 的研究者。",
+  "confidence_ch": "高：Findings of ACL 2026 正式论文和官方代码/数据仓库已核验；合成排序仍需人工审计。",
+  "authors_ch": "Qingyu Ren, Tianjun Pan, Xingzhou Chen, Xuhong Wang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

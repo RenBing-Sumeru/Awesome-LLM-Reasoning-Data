@@ -1,0 +1,1 @@
+The error study finds underspecified answers particularly hard: Llama-3-70B recalls only 23.3% while GPT-4 reaches 33.9%. Smaller judges are more prompt- and reference-order-sensitive; several show strong positive-answer leniency. Keep lexical baselines: their excellent ranking is evidence that ranking can mask poor verdict calibration.

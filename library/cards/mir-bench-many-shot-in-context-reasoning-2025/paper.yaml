@@ -1,0 +1,97 @@
+id: mir-bench-many-shot-in-context-reasoning-2025
+title: 'MIR-Bench: Can Your LLM Recognize Complicated Patterns via Many-Shot In-Context Reasoning?'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks
+authors:
+- Kai Yan
+- Zhan Ling
+- Kang Liu
+- Yifan Yang
+- Ting-Han Fan
+- Lingfeng Shen
+- Zhengyin Du
+- Jiecao Chen
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- in-context-learning
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/796076672b00f54fb01d05a2e5fde363-Abstract-Datasets_and_Benchmarks_Track.html
+  arxiv: null
+  code: null
+  data: https://huggingface.co/datasets/kaiyan289/MIR-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/kaiyan289/MIR-Bench
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/796076672b00f54fb01d05a2e5fde363-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Programmatically constructed pattern-recognition tasks with demonstrations.
+  trace_author: Benchmark construction pipeline; models generate answers.
+  answer_format: Many-shot demonstrations, query, and target answer.
+  process_fields:
+  - demonstrations
+  - query
+  - answer
+  - exact-match result
+  environment_or_substrate: Textual in-context evaluation environment.
+  verifier_or_reward: Deterministic answer comparison.
+  terminal_predicate: The answer matches the task's target rule output.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: null
+  sampling_protocol: Consult the official Hugging Face release for configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official NeurIPS paper and author Hugging Face dataset.
+  split: Consult the dataset card.
+  decontamination: Synthetic-pattern construction should be checked for shortcut correlations.
+  license: Consult the dataset card.
+  lineage: https://proceedings.neurips.cc/paper_files/paper/2025/hash/796076672b00f54fb01d05a2e5fde363-Abstract-Datasets_and_Benchmarks_Track.html
+  known_failure_modes:
+  - Exact answers can conceal partial rule understanding.
+  - Many-shot settings can be sensitive to prompt length.
+  citation_status: verified
+  confidence: high
+  notes: Final NeurIPS title, author list, ByteDance Seed affiliation, and official dataset were checked.
+inclusion_reason: MIR-Bench 以多示例上下文中的复杂模式归纳任务，评估模型从大量演示中提炼规则的能力。
+related: []
+tags:
+- in-context-learning
+- pattern-reasoning
+- benchmark
+- '2025'
+one_line_summary: MIR-Bench evaluates whether models can infer complex patterns from many in-context demonstrations.
+why_it_matters: MIR-Bench evaluates whether models can infer complex patterns from many in-context demonstrations.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Final NeurIPS title, author list, ByteDance Seed affiliation, and official dataset were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

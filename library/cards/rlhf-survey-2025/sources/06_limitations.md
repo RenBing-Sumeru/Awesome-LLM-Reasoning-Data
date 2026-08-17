@@ -1,0 +1,3 @@
+- **Uneven scope.** Control and robotics receive the deepest treatment, while the LLM literature moves quickly; check newer primary work before treating the taxonomy as exhaustive.
+- **Survey evidence.** The synthesis cannot verify every cited dataset, annotator pool, reward model, or implementation; trace any deployment claim to the original artifact and evaluation.
+- **Feedback ambiguity.** Human preference can encode correctness, style, safety, or annotator-specific values; record the target construct before reusing a method for reasoning supervision.

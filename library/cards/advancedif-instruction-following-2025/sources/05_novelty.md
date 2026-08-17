@@ -1,0 +1,1 @@
+IFEval-style work relies on surface constraints and other RL methods often use holistic rewards. AdvancedIF covers semantic, multi-turn, and system instructions with expert atomic criteria and trains a criterion-level verifier for dense rewards. The novelty is connecting benchmark, judge, and training through rubrics, not the first use of RL.

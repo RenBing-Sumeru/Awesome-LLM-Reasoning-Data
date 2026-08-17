@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GenPRM 发布带推理与验证的过程监督数据，使生成式奖励模型能够在测试时扩展判定。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "生成式过程奖励模型与数学过程监督数据论文",
+  "best_for_ch": "构建可解释的数学步骤判定器，或研究 PRM 测试时扩展。",
+  "confidence_ch": "高",
+  "authors_ch": "Jian Zhao、Runze Liu、Kaiyan Zhang、Zhimu Zhou、Junqi Gao 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:14:28Z"
+}

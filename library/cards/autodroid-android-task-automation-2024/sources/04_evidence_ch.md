@@ -1,0 +1,1 @@
+论文报告 DroidTask 包含 13 个开源 app 上的 158 个常见任务，并有人工 step label 把 GUI state 与 action 对齐。主实验中，GPT-4 版 AutoDroid 的 action accuracy 为 90.9%、task success 为 71.3%，相比 GPT-4-powered baseline 的任务完成率提升 36.4 到 39.7 个百分点，平均查询成本降低 51.7%。论文还报告 UI pruning/merging 将每个 GUI state 的平均 action choice 从 36.4 降到 13.2。行级证据是可执行 action trace 和任务成功检测器，而不是文字 judge。证据边界取决于发布 app、VM/环境、prompt、在线模型版本和作者定义的成功条件。

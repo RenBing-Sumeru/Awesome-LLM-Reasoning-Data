@@ -1,0 +1,1 @@
+Limitations and hidden assumptions: The paper is model- and task-dependent, and it does not make a generated rationale a verified causal account. Trace provenance, correctness checking, and downstream training reuse require separate evidence.

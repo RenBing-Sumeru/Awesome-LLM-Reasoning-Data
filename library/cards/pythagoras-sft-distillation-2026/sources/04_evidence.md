@@ -1,0 +1,3 @@
+Experiment 1: Pythagoras-Prover-32B reaches 93.0% on MiniF2F-Test and solves 93 of 672 tested problems in the paper's harder suite; the 4B model is compared with much larger provers.
+
+Experiment 2: The released artifact contains 336,596 mutated problems split into 86,715 easy, 134,049 medium, and 115,832 hard instances; on 2026-07-27 the official Hub page exposed an actual record with fields original question, mutated question, source, Lean statement, Lean proof, problem type, reasoning chain, and difficulty and reported 42 downloads. Artifact use does not by itself validate the paper's causal claim.

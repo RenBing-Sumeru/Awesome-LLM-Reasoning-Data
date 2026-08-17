@@ -1,0 +1,242 @@
+id: workforceagent-r1-2025
+title: 'WorkForceAgent-R1: Incentivizing Reasoning Capability in LLM-based Web Agents via Reinforcement Learning'
+year: 2026
+venue: 'Findings of the Association for Computational Linguistics: EACL 2026'
+authors:
+- Yuchen Zhuang
+- Di Jin
+- Jiaao Chen
+- Wenqi Shi
+- Hanrui Wang
+- Chao Zhang
+source_role:
+- construction_recipe
+- agent_environment
+- verifier_reward
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- state_action_level
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- web_navigation
+- workplace_automation
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-eacl.3/
+  paper_pdf: https://aclanthology.org/2026.findings-eacl.3.pdf
+  arxiv: https://arxiv.org/abs/2505.22942
+  code: https://github.com/night-chen/WorkForceAgent-R1
+  code_revision: https://github.com/night-chen/WorkForceAgent-R1/tree/1ee2619b95403764da30308035ff4dbcbc9a74c1
+  code_snapshot: https://github.com/night-chen/WorkForceAgent-R1/tree/1ee2619b95403764da30308035ff4dbcbc9a74c1
+  data: null
+  model: null
+  project: https://www.hanruiwang.com/projects/workforceagent-r1
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-eacl.3
+  venue: https://aclanthology.org/2026.findings-eacl.3/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-eacl.3/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-eacl.3.bib
+data_object:
+  object_type: The paper constructs successful oracle-like multi-step WorkArena trajectories and then decomposes them into
+    independent single-step action-prediction records for SFT and rule-verified GRPO. Neither the trajectory corpus nor the
+    derived record corpus is included in the public repository.
+  prompt_source: WorkArena's 33 ServiceNow task types. The authors reserve 10 training configuration files per task (330 configurations
+    total), keep training and testing configurations separate, and use o3-mini to perturb the training configurations so they
+    differ from BrowserGym and WorkArena configurations. WorkArena's full 19,912-instance benchmark inventory is context,
+    not the reported training-set size.
+  trace_author: BrowserGym cheat() Playwright scripts generate oracle-like action/observation trajectories. o3-mini supplies
+    reasoning annotations for the standard SFT trajectories; DeepSeek-R1-Distill-Llama-70B supplies longer reasoning for the
+    SFT-L ablation. GRPO policy samples produce candidate reasoning/action completions during RL.
+  answer_format: A single-step completion contains reasoning inside <think>...</think> followed by one environment action
+    inside <action>...</action>. The target action has an operation type such as click or fill and parameters such as an element
+    identifier.
+  process_fields:
+  - natural_language_goal
+  - current_webpage_html_or_accessibility_tree
+  - previous_action_history
+  - available_action_definitions
+  - target_action_type
+  - target_action_parameters
+  - optional_teacher_reasoning_for_sft
+  - sampled_policy_reasoning_for_rl
+  - sampled_policy_action
+  - format_reward
+  - action_type_reward
+  - action_parameter_reward
+  - post_action_token_penalty
+  - total_scalar_reward
+  observation: The policy conditions on the current webpage HTML (examples render an accessibility tree), the natural-language
+    goal, the previous action history, and the current action definitions. It does not receive a packaged replayable environment
+    snapshot in the public release.
+  action_space: Structured BrowserGym web operations such as click and fill, with operation-specific parameters, principally
+    element identifiers.
+  environment_or_substrate: BrowserGym drives remote-hosted WorkArena tasks on ServiceNow. BrowserGym's heuristic cheat()
+    Playwright programs supply oracle-like actions for training; WorkArena's live task execution and backend checks supply
+    the benchmark success rate used for evaluation.
+  verifier_or_reward: Training uses an offline rule verifier against the oracle action, not live terminal WorkArena feedback.
+    The paper specifies Rf=0.1 for correct tag/action format; Rs=1 for the exact action type and parameters, Rs=0.1 for the
+    correct action type only, otherwise 0; and Rp=-0.9 when tokens follow </action>, with R=Rf+Rs+Rp. Exact action matching
+    is explicitly presented as a surrogate necessitated by real-time feedback constraints.
+  terminal_predicate: Evaluation reports WorkArena task success from the environment. RL optimization itself is decomposed
+    into single-step decisions and scores the predicted next action against the oracle action rather than executing each candidate
+    to task completion.
+  provenance: WorkArena task/configuration -> o3-mini configuration perturbation -> BrowserGym cheat()/Playwright oracle interaction
+    -> rejection of invalid or unsuccessful traces -> single-step goal/state/history/target-action records -> 1,000-sample
+    SFT warm-up and GRPO candidate rollouts -> rule reward -> policy update -> separate WorkArena evaluation.
+  release_shape: Paper plus implementation code only. The repository contains preprocessing, reward, and training scripts
+    with <DATA_PATH>/<MODEL_PATH> placeholders, but no data directory, trajectory manifest, complete success/failure logs,
+    model checkpoint, Hugging Face release, tag, or GitHub Release.
+recipe_metadata:
+  base_model: Main experiments use Qwen2.5-3B-Instruct, Qwen2.5-7B-Instruct, and Qwen2.5-14B-Instruct; a backbone-transfer
+    experiment uses Llama-3.1-8B-Instruct. No trained checkpoint is publicly linked.
+  teacher: o3-mini perturbs configurations and annotates the standard SFT trajectories; deepseek-ai/DeepSeek-R1-Distill-Llama-70B
+    injects long-chain reasoning for SFT-L. The GRPO reward is rule-based rather than teacher-judged.
+  generator: BrowserGym cheat() Playwright scripts generate oracle-like trajectories; the current policy generates groups
+    of single-step candidates during GRPO.
+  prompt_task_source: Ten reserved training configurations for each of 33 WorkArena task types, followed by o3-mini perturbation;
+    exact configuration IDs and a task-to-record manifest are not released.
+  filtering_rule: The paper removes trajectory samples containing invalid actions or unsuccessful outcomes. Counts and reasons
+    before and after filtering are not disclosed, and rejected artifacts are not released.
+  sampling_protocol: Oracle-like trajectories are sampled for each training configuration and decomposed by decision step.
+    The paper does not disclose the total number of accepted trajectories, total derived steps, per-configuration retries,
+    seeds, or the full training manifest.
+  rollout_count: The paper denotes G candidates per state without giving G in the text. The released training script sets
+    actor_rollout_ref.rollout.n=8, but no run manifest binds that script revision to every reported experiment and the total
+    candidate count is unknown.
+  temperature: 0.6 for policy rollouts, as reported in the paper and set in the released training script.
+  inference_budget: Paper reports 8 NVIDIA H200 141GB GPUs, SFT for one epoch with batch size 32 and learning rate 1e-4 on
+    1,000 randomly selected training samples, then RL batch size 128, learning rate 1e-5, and KL coefficient beta=1e-3. Total
+    tokens, accepted record count, wall-clock time, seeds, and API cost for o3-mini are unknown.
+  optimizer_or_scaffold: GRPO over independent single-step decisions with group-relative advantages, clipping, and KL regularization,
+    implemented on veRL/TinyZero. The paper compares PPO and GRPO; the released shell script requests 15 epochs, rollout group
+    size 8, and 1e-6 actor LR, which does not exactly match every paper-level implementation value.
+audit:
+  source_mixture: Synthetic, heuristic-generated ServiceNow interactions from 33 WorkArena task types, o3-mini configuration
+    perturbations/reason annotations, optional DeepSeek distilled reasoning for SFT-L, and on-policy candidates from four
+    open backbone sizes. Exact record-level mixture weights and teacher versions are not disclosed.
+  split: The paper states that training and testing configuration files are separate and reserves 330 training configurations.
+    The released preprocessing script instead loads an external <DATA_PATH> and calls train_test_split independently for train
+    and test, without publishing fixed indices; if run literally, those separately sampled partitions need not be disjoint.
+  decontamination: o3-mini perturbation is used to make training configurations unique relative to existing BrowserGym and
+    WorkArena configurations. No model-pretraining overlap audit, exact-match report, or released perturbed-config manifest
+    supports a broader decontamination claim.
+  benchmark_overlap: Training and evaluation use the same 33 WorkArena task types and ServiceNow substrate, although configuration
+    files are reported as separate. This is within-benchmark generalization across configurations, not evidence of broad web-domain
+    generalization.
+  license: The ACL paper is CC BY 4.0. The GitHub repository exposes no repository-level LICENSE and GitHub reports no detected
+    license; Notice.txt only credits ByteDance. Some inherited source files contain Apache-2.0 headers, which does not establish
+    a license for the entire repository or for the unavailable training data.
+  lineage: The paper documents the conceptual pipeline but publishes no configuration IDs, trajectory IDs, step IDs, rejection
+    ledger, teacher-response ledger, rollout manifest, checkpoint hashes, or evaluation episode logs. The code revision is
+    pin-able but its <DATA_PATH> and <MODEL_PATH> inputs are unresolved.
+  release_version: 'Formal paper: ACL Anthology 2026.findings-eacl.3, March 2026, pages 34-49, DOI 10.18653/v1/2026.findings-eacl.3.
+    arXiv:2505.22942v2 was last revised 2025-06-08. Code: main commit 1ee2619b95403764da30308035ff4dbcbc9a74c1 dated 2025-06-01;
+    GitHub reports two commits and no tags or Releases.'
+  release_completeness: The public artifact is sufficient to inspect a preprocessing template, reward code, and one training
+    command, but insufficient to inspect or replay the paper's actual data, filtering decisions, SFT annotations, RL samples,
+    trained models, or benchmark episodes.
+  successful_and_failed_sample_retention: The paper keeps successful oracle-like trajectories after removing invalid-action
+    and unsuccessful samples. Neither accepted trajectories nor rejected/failed trajectories are publicly released, and their
+    counts are unknown. Aggregate benchmark success rates do not substitute for complete success/failure episode records.
+  verifier_or_judge_failure_modes:
+  - Exact next-action matching is only a surrogate for environment-level success and may reject alternative valid actions.
+  - The reward evaluates tag syntax, action type, and parameters, but not whether the written reasoning is faithful or causally
+    useful.
+  - The paper acknowledges that even the sparse reward can incentivize superficial reward hacking.
+  - Dense-reward ablations collapsed toward frequent actions or excessive post-termination actions, illustrating exploitable
+    proxy signals.
+  - 'At pinned commit 1ee2619b..., webagent.py does not implement the paper equations literally: it relaxes several tag checks,
+    returns scores on a different scale, and contains an apparently inverted postfix-length branch.'
+  replay: Training is not independently replayable from the repository because the dataset and base/warm-up checkpoints are
+    external placeholders, fixed split indices and seeds are absent, WorkArena is remote-hosted, and no environment/database
+    snapshot is pinned.
+  privacy_or_consent: The authors state that training and evaluation data are synthetic heuristic-generated trajectories in
+    controlled benchmark environments and use no real-user sensitive data. No independent content or leakage audit of generated
+    text is reported.
+  known_failure_modes:
+  - Workplace-only WorkArena coverage limits transfer to other web domains.
+  - A gap remains to stronger commercial agents, despite selected comparisons with GPT-4o.
+  - Same-task-family evaluation can overstate generalization beyond WorkArena.
+  - Reward and preprocessing code drift from the paper specification and lack a bound run manifest.
+  - Filtering removes unsuccessful/invalid traces, preventing audit of failure coverage and selection bias.
+  citation_status: verified
+  confidence: high
+  notes: Formal ACL identity, arXiv history, full paper and appendices, author project page, GitHub repository/revision/tree/release/license
+    state, preprocessing scripts, reward implementation, and training script were inspected. Paper results were not independently
+    reproduced because the data and checkpoints are not released.
+  remaining_unknowns:
+  - Accepted full-trajectory count, rejected trajectory count, and derived single-step record count.
+  - Exact training/test configuration IDs, split seed, retry budget, and perturbation prompts/outputs.
+  - Complete o3-mini and DeepSeek teacher versions, prompts, generations, costs, and filtering.
+  - Exact per-experiment code revision, hyperparameter manifest, random seeds, tokens, wall-clock time, and checkpoint hashes.
+  - Training-data, model-checkpoint, and repository-wide code licenses.
+inclusion_reason: WorkForceAgent-R1 is a concrete environment-agent training recipe that converts successful WorkArena oracle
+  trajectories into single-step goal/state/history/action examples and optimizes them with an explicit rule verifier. Its
+  value to the track lies equally in the data/feedback contract and in the audit boundary created by an unreleased trajectory
+  corpus.
+related: []
+tags:
+- workforceagent-r1
+- web-agent
+- workarena
+- browsergym
+- oracle-trajectories
+- single-step-reasoning
+- grpo
+- rule-based-reward
+- release-gap
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WorkForceAgent-R1 turns filtered WorkArena oracle trajectories into single-step action-verification problems
+  for SFT and GRPO, but releases code without the trajectory corpus, rejection ledger, or trained checkpoints.
+why_it_matters: It isolates a cheap rule-based feedback contract for workplace web-agent reasoning while showing why paper-scale
+  configurations, derived records, public artifacts, proxy rewards, and complete success/failure retention must be audited
+  separately.
+card: null
+needs:
+- 'needs_data_release: publish the 330 perturbed configurations, accepted oracle trajectories, derived single-step records,
+  and immutable manifests'
+- 'needs_failure_ledger: publish invalid and unsuccessful trajectory counts, IDs, raw records where safe, and rejection reasons'
+- 'needs_split_fix: publish fixed disjoint train/test IDs and correct or explain the independent split calls in the preprocessing
+  script'
+- 'needs_reward_reconciliation: align the released webagent.py scorer with the paper equations and add conformance tests'
+- 'needs_replay: pin WorkArena/BrowserGym/Playwright/veRL/TinyZero revisions, ServiceNow state, seeds, prompts, and checkpoints'
+- 'needs_license: add repository-wide code terms and explicit training-data/model licenses'
+- 'needs_model_release: publish the reported trained checkpoints or state clearly that they remain unavailable'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  repository_verified: true
+  dataset_verified: false
+  artifact_inventory_verified: true
+  license_verified: false
+  replay_verified: false
+  decontamination_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: ACL Anthology 2026.findings-eacl.3, arXiv:2505.22942v2, and GitHub commit 1ee2619b95403764da30308035ff4dbcbc9a74c1
+    were verified. No public dataset, complete success/failure trajectory release, trained model, tag, or GitHub Release was
+    found.

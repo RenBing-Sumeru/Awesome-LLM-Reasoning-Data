@@ -1,0 +1,5 @@
+- WebPuzzle 含 23,684 条训练数据和 275 条专家整理的测试数据，但只有 7,000 条 WebPuzzle 进入 DeepDiver 训练。
+- 冷启动 SFT 混合共 5,500 条，其中 2,000 条来自 WebPuzzle；另有 5,000 条 WebPuzzle 单独用于 RL。
+- 每个 RL 样本以 temperature 0.9 生成 14 条 rollout，并非总共只有 14 条；每条 rollout 最多七轮工具调用。
+- episode 反馈由 Qwen-Turbo 宽松/严格判断、格式奖励和条件式 +1.0 搜索奖励组成，均不是程序化正确性证明。
+- artifact 复用前应核验官方数据集与许可证、代码/模型/rollout 发布、检索快照、用户查询授权和去污染记录。

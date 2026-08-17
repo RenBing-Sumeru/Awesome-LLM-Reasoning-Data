@@ -1,0 +1,135 @@
+id: long-cot-collection-2025
+title: 'One Missing Piece for Open-Source Reasoning Models: A Dataset to Mitigate Cold-Starting Short CoT LLMs in RL'
+year: 2025
+venue: 'Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 6: Industry Track)'
+authors:
+- Hyungjoo Chae
+- Dongjin Kang
+- Jihyuk Kim
+- Beong-woo Kwak
+- Sunghyun Park
+- Haeju Park
+- Jinyoung Yeo
+- Moontae Lee
+- Kyungjae Lee
+source_role:
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- general_reasoning
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-industry.85/
+  arxiv: https://arxiv.org/abs/2506.02338
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-industry.85
+  venue: https://aclanthology.org/2025.acl-industry.85/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-industry.85/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Both the 1,000-item seed set and the claimed 100,000-item collection stem from Magpie-Reasoning-V1-150K;
+    exact source-row IDs and an immutable 100K manifest are unavailable.
+  trace_author: o1 supplies manually collected seed reasoning-flow outlines and hidden-thought-token budgets; GPT-4o generates
+    new flows, stepwise rationales, and final answers.
+  answer_format: A question is paired with a generated outline sequence, stepwise long rationale, and final answer; the paper
+    does not publish a machine-readable row schema for the claimed release.
+  environment_or_substrate: Offline retrieval over Magpie domain labels and estimated thought budgets, followed by GPT-4o
+    generation; downstream studies use LLaMA-Factory SFT and a separate OpenRLHF/RingAttention GRPO environment.
+  verifier_or_reward: Collection filtering asks GPT-4o to judge a generated answer span against a reference answer. Downstream
+    GRPO separately uses length, latex2sympy answer, and format rewards.
+  terminal_predicate: Retain a generated rationale when GPT-4o judges its answer compatible with the reference; the paper
+    says 76% of generated instances remain as correct-answer predictions after filtering.
+recipe_metadata:
+  base_model: Qwen-2.5-7B-Instruct and Llama-3.1-8B-Instruct for SFT; Qwen-2.5-0.5B-LC for the reported GRPO stage.
+  teacher: o1 for 1K seed flows and budgets; GPT-4o for collection generation and answer judgment; o3-mini for a 100-example
+    R1 comparison.
+  generator: Retrieve a seed by Magpie main/subcategory and thought-budget similarity, have GPT-4o predict outline count and
+    a reasoning-flow sequence, expand each step using previous rationales plus current and next outlines, then generate and
+    append the final solution.
+  filtering_rule: GPT-4o compares the generated answer span with the reference answer using the Appendix F prompt; item-level
+    decisions, judge calibration, and error analysis are unavailable.
+  sampling_protocol: The paper constructs 100%, 50%, and 25% outline-budget variants. Construction-time temperature, candidate
+    count, retries, random seeds, and API/model snapshots are unknown.
+  rollout_count: unknown for collection construction; downstream GRPO uses 16 samples per prompt.
+  temperature: unknown for construction; downstream evaluation uses 0.6, while BoN uses top-p 0.95 and temperature 1.0.
+  inference_budget: Controlled through the number of generated reasoning outlines; the absolute construction-time token cap
+    is unknown. Reported rationales reach 30 steps and 20K thought tokens.
+  optimizer_or_scaffold: 'SFT: LLaMA-Factory, BF16, 3 epochs, learning rate 5e-6, max sequence 8,192, batch 1, accumulation
+    8 on 4 A100s. GRPO: OpenRLHF with RingAttention, BF16, 5 epochs, learning rate 5e-7, max sequence 16,384, batch 64, 16
+    samples/prompt on 16 A100s.'
+audit:
+  source_mixture: Magpie-Reasoning-V1-150K -> 1K manually collected o1 flow/budget demonstrations -> domain-and-budget retrieval
+    -> 100K GPT-4o long-CoT generations -> GPT-4o final-answer judgment.
+  split: The paper names 1K seed and 100K constructed items but provides no verified downloadable train/dev/test or retained/rejected
+    manifest.
+  decontamination: unknown
+  license: Appendix H identifies Magpie-Reasoning-V1 under the Meta Llama 3 Community License, but no license or rights manifest
+    is verified for the unavailable generated collection.
+  lineage: The paper discloses the pipeline and prompts, but not record-level Magpie IDs, o1 collection metadata, API revisions,
+    candidates, judge decisions, release hashes, or a paper-matched repository commit.
+  known_failure_modes:
+  - The ACL paper and metadata promise public code, data, and models at the literal text LINK; no usable paper-authorized
+    release URL is provided.
+  - GPT-4o both generates the flow/rationale and judges the final answer, so collection filtering is not independent.
+  - Final-answer agreement does not establish the validity, faithfulness, or absence of errors in intermediate reasoning.
+  - Thought budgets are compared across hidden OpenAI tokens, GPT-tokenized R1 traces, and tagged local-model traces, so the
+    units are not directly identical.
+  - The paper reports that the 25% budget can force too much information into too few outlines and make rationales confusing.
+  - The reported RLVR gains combine SFT initialization with NuminaMath prompts, three rewards, GRPO, and a 0.5B policy; they
+    do not isolate intrinsic data quality.
+inclusion_reason: 'Directly relevant to the rollout/search and construction tracks: the paper converts retrieved o1 flow and
+  thought-budget demonstrations into GPT-4o-authored long reasoning traces, filters them by answer judgment, and studies those
+  traces as an SFT cold start for RLVR.'
+related: []
+tags:
+- long-cot-collection
+- long-cot
+- short-cot
+- thought-budget
+- cold-start
+- sft
+- rlvr
+- gpt-4o
+- o1
+- trace-construction
+status: partial
+one_line_summary: A paper-described 100K long-CoT recipe retrieves o1 flow/budget seeds to guide GPT-4o stepwise generation
+  and answer judgment, but the publication's release target remains the literal text LINK and no paper-matched artifact is
+  verified.
+why_it_matters: It makes reasoning-flow shape and thought budget explicit construction variables for long-trace SFT before
+  RLVR, while exposing how missing releases and row-level decisions prevent independent audit or reuse.
+card: null
+needs:
+- 'needs_release: usable official code, data, and model URLs plus immutable versions'
+- 'needs_manifest: 100K row schema, Magpie source IDs, retained/rejected records, splits, and hashes'
+- 'needs_generation: exact o1/GPT-4o versions, API dates, decoding, candidate count, retries, seeds, and token caps'
+- 'needs_verifier: per-row GPT-4o decisions, calibration set, disagreement/error analysis, and independent process checks'
+- 'needs_audit: generated-data rights, decontamination, benchmark-overlap ledger, and full lineage'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: high
+  notes: Official ACL record, 17-page ACL paper including appendices/prompts, DOI, and arXiv:2506.02338 were checked. Citation
+    and affiliations are verified; no usable paper-matched code, dataset, or model release was found.
+category_ids:
+- rollout_search_test_time_trace_data
+- data_construction_open_release_recipes

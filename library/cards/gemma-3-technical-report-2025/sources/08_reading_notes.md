@@ -1,0 +1,5 @@
+- Preserve the scale mapping: 1B/4B/12B/27B use 2T/4T/12T/14T tokens; the larger three add a frozen roughly 400M SigLIP encoder.
+- The pretraining target is 256 sampled teacher logits per token; teacher identity and query mode remain unknown.
+- Do not infer online/on-policy rollouts from “large IT teacher” or cited BOND/WARM/WARP work; post-training rollout counts are undisclosed.
+- Keep weight-averaged human RMs, code execution, math ground truth, safety RLHF, and 5,000-step QAT as distinct feedback/stage claims.
+- Read the 50-token prefix/suffix, 10% edit-distance, and approximately 24x memorization result with the private-sample and license boundaries.

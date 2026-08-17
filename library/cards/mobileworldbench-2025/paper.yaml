@@ -1,0 +1,242 @@
+id: mobileworldbench-2025
+title: 'MobileWorldBench: Towards Semantic World Modeling For Mobile Agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Shufan Li
+- Konstantinos Kallidromitis
+- Akash Gokul
+- Yusuke Kato
+- Kazuki Kozuka
+- Aditya Grover
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- answer_level
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- mobile_gui
+- semantic_world_models
+- state_transition_prediction
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.14014
+  paper_pdf: https://arxiv.org/pdf/2512.14014
+  arxiv: https://arxiv.org/abs/2512.14014
+  code: https://github.com/jacklishufan/MobileWorld
+  code_snapshot: https://github.com/jacklishufan/MobileWorld/tree/3db6f2913bd41b105f9b50efcaec1b155faf9c6f
+  data: https://huggingface.co/datasets/jacklishufan/MobileWorld
+  benchmark_data: https://huggingface.co/datasets/jacklishufan/mobileworldbench
+  huggingface: https://huggingface.co/datasets/jacklishufan/MobileWorld
+  model: https://huggingface.co/jacklishufan/Qwen3-VL-8B-Instruct-MobileWorld-SFT
+  project: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: 'An offline one-step Android GUI state-transition corpus and benchmark: current screenshot plus natural-language
+    action maps to a textual state-change description or yes/no facts about the next state.'
+  prompt_source: Current/action/next screenshot triplets are sampled from human demonstrations in Android Control and Android
+    in the Wild. MobileWorldBench uses held-out/test-source transitions; MobileWorld uses source training transitions, subject
+    to the split-audit limits below.
+  trace_author: Humans authored the source device demonstrations. Qwen3-VL-8B-Instruct annotates 90% of MobileWorld and Qwen3-VL-235B-A22B
+    annotates 10%; GPT-4o proposes and filters benchmark QA, and qualified Mechanical Turk workers perform final QA filtering.
+  task_record:
+  - current_screenshot_path
+  - next_screenshot_path_for_generation
+  - action_or_step_instruction
+  - reference_change_description_for_generation
+  - yes_no_question_and_answer_for_qa
+  - source_category_where_released
+  answer_format: Next-State-Generation returns a short free-form description of expected GUI changes. Next-State-QA returns
+    Yes or No. The training release contains state/action/future-state descriptions and QA supervision in three Parquet members
+    inside one tar archive.
+  process_fields:
+  - current_state_screenshot
+  - action
+  - next_state_screenshot_or_reference
+  - high_level_action_annotation
+  - state_change_description
+  - yes_no_question
+  - yes_no_answer
+  - source_task_or_category
+  - judge_dimension_scores
+  observation: A static screenshot of the current Android UI; the generation judge additionally receives the ground-truth
+    next screenshot and a reference change description.
+  action_space: Natural-language descriptions of source human mobile actions, including clicks/taps, scrolling/swiping, text
+    input, wait, and other actions present in AiTW or Android Control. The benchmark does not execute them.
+  environment_or_substrate: Offline Android screenshots extracted from AiTW and Android Control human demonstrations. MobileWorldBench
+    is not a resettable app/device environment and provides no executable episode state. AndroidWorld appears only as a separate
+    downstream online experiment.
+  verifier_or_reward: Generation predictions are scored by a GPT-4o judge on accuracy, completeness, and relevance (1-5 each;
+    overall out of 15). QA is scored by yes/no answer accuracy. Human pairwise comparisons over 3,000 sampled model-output
+    matches provide an additional analysis, not the primary released metric.
+  terminal_predicate: No episode terminal predicate exists. Each independent transition ends after one predicted next-state
+    description or yes/no answer; generation feedback is the parsed judge score and QA feedback is answer correctness.
+  provenance: Human mobile demonstration transition -> high-level action annotation -> candidate descriptions/QA generated
+    with next-state access -> VLM filtering and, for benchmark QA, human filtering -> static CSV plus image or Parquet release
+    -> model prediction -> rubric judge or answer-accuracy score.
+recipe_metadata:
+  base_model: Qwen3-VL-8B-Instruct is the demonstrated SFT base model.
+  teacher: Qwen3-VL-8B-Instruct (90%) and Qwen3-VL-235B-A22B (10%) annotate MobileWorld; Qwen3-VL-235B-A22B converts low-level
+    benchmark actions; GPT-4o proposes/self-checks/filters benchmark QA; qualified Mechanical Turk workers perform final QA
+    checks.
+  generator: Three state-change descriptions and eight QA candidates are generated per source transition using the before/action/after
+    evidence.
+  prompt_task_source: Human demonstration transitions from the training portions of AiTW and Android Control for MobileWorld,
+    and benchmark/test-source transitions for MobileWorldBench. Exact record-level source IDs are not released in all benchmark
+    files.
+  filtering_rule: For descriptions, a VLM judge chooses the best of three under accuracy, completeness, and relevance. QA
+    candidates undergo self-check and relevance filtering; benchmark QA additionally removes human-disagreed, irrelevant,
+    or ambiguous items. MobileWorld training annotations are not human-filtered.
+  sampling_protocol: MobileWorldBench samples 250 transitions for generation and 500 for QA, creates 4,000 QA candidates,
+    VLM-filters to 2,458, and human-filters to 1,787. MobileWorld reports approximately 543k QA pairs and 942k descriptions;
+    source-transition count, random seeds, and sampling shares are undisclosed.
+  rollout_count: 'Not applicable as full agent rollouts: released objects are independent one-step transitions. The paper
+    reports about 1.4M final training items, with rounded components 543k QA plus 942k descriptions.'
+  temperature: Training-annotation decoding is unknown. Benchmark Next-State-QA evaluation uses temperature 0.0; generation
+    evaluation uses each model's default sampling parameters.
+  inference_budget: One model call per benchmark row, plus one judge call per generation prediction. Fine-tuning uses two
+    epochs, batch size 128, 1280px images, 6% warmup, and a cosine schedule; token limits and usable learning-rate values
+    are undisclosed.
+  optimizer_or_scaffold: Qwen3-VL-8B-Instruct is SFT-trained with AdamW. Downstream AndroidWorld planning proposes eight actions,
+    predicts semantic next states, and scores them with a VLM value model; this planner is not the benchmark data object.
+audit:
+  source_mixture: Android Control and AiTW human-demonstration transitions. Training annotations mix 90% Qwen3-VL-8B and 10%
+    Qwen3-VL-235B-A22B output. The benchmark mixes 250 generation transitions with 1,787 retained QA items from 500 transitions
+    and covers 22 apps and four broad task categories.
+  split: The paper distinguishes MobileWorld source training transitions from MobileWorldBench held-out/test-source transitions.
+    However, `benchmark/qa.csv` omits source-dataset and split fields, no immutable transition-ID manifest or dev split is
+    published, and the HF training archive exposes only a generic `train` split.
+  decontamination: No evaluated-model pretraining overlap audit, screenshot/text deduplication report, benchmark-to-training
+    hash comparison, or post-release contamination policy is reported. Public benchmark CSVs and reference fields create direct
+    evaluation-contamination risk.
+  benchmark_overlap: The paper asserts source train-versus-test separation, but the release does not supply record-level cross-split
+    IDs or hashes needed to verify zero overlap. Generated annotations may also share annotator-model priors with evaluated
+    Qwen-family models.
+  license: The arXiv paper is CC BY 4.0. No LICENSE file or license metadata was found in the official GitHub repository,
+    MobileWorld dataset, mobileworldbench image dataset, or released fine-tuned model; rights for source screenshots, third-party
+    app content, annotations, code, and weights remain unknown.
+  lineage: Source human demonstration -> one-step screenshot/action/screenshot triplet -> model-generated candidate semantics
+    -> VLM and optional human filtering -> CSV/images or tarred Parquet -> SFT/evaluation. Record-level annotator identity,
+    candidate/rejection history, and source-to-release hashes are absent.
+  release_version: 'Paper: arXiv v1 dated 2025-12-16. Code inspected at `3db6f2913bd41b105f9b50efcaec1b155faf9c6f`; training
+    data at `2bc6a208b99a0e85697300dd576853674227d4c6`; benchmark images at `8a9e39c5f09cf63e9b16fd3ad47cf4eb23adaf13`; model
+    at `16a7165faf81178a8c292a147c9266b2eb162078`. GitHub has no tagged Release.'
+  successful_and_failed_sample_retention: The annotation prompt allows descriptions of failed actions or no observed change,
+    but neither paper nor release reports their prevalence, balancing, kept/rejected counts, or record-level decisions. No
+    episode success/failure labels or complete source trajectories are released.
+  reset_or_replay: Not supported. Evaluation loads static screenshots and CSV rows; there is no emulator/device snapshot,
+    app fixture, executable action trace, environment reset, or deterministic replay contract.
+  privacy_or_consent: The release derives from mobile screenshots in AiTW and Android Control, but MobileWorld provides no
+    dataset card documenting consent, PII filtering, account/app-content handling, takedown, or redistribution rights. Human-filtering
+    worker qualification is described, but consent and demographic/adjudication details are not.
+  known_failure_modes:
+  - The official benchmark-image snapshot lacks both images for one `benchmark/gen.csv` row (`episode_12551800716657978063`,
+    steps 2363 and 2364), leaving only 249 of 250 generation rows image-complete.
+  - Generation scores depend on a proprietary VLM judge and prompt parsing; the paper specifies `gpt-4o-2024-08-06`, while
+    the released scoring script defaults to `gpt-4o-mini` unless a judge config is supplied.
+  - The generation judge is vulnerable to verbosity, hallucination, rubric drift, API drift, and non-determinism; the paper
+    itself observes a completeness/accuracy tradeoff.
+  - The QA labels are imbalanced in the released CSV (1,162 Yes versus 625 No), enabling answer-prior exploitation if per-class
+    metrics are not reported.
+  - The HF training release has no dataset card and appears as three WebDataset archive members rather than approximately
+    1.4M inspectable rows; schema, row counts, hashes, and candidate/filter lineage are not documented.
+  - 'Rounded counts are internally non-exact: 543k QA plus 942k descriptions is about 1.485M, while the headline says 1.4M.'
+  - Training annotations are mostly generated and VLM-filtered without human filtering, so correlated annotator errors and
+    judge preference can survive at scale.
+  - Source-level train/test separation cannot be independently audited from the released QA fields, and no decontamination
+    or duplicate-transition report is provided.
+  - Static one-step records cannot test long-horizon recovery, environment drift, reset reliability, or terminal success and
+    must not be represented as full-episode trajectories.
+  - Paper CC BY 4.0 does not establish permission to redistribute or train on the separate code, screenshots, annotations,
+    or model weights.
+  citation_status: verified
+  confidence: medium
+  notes: The complete arXiv paper and appendices, official repository files/scripts at a pinned commit, both official dataset
+    repositories, and the released model inventory were checked. The 184MB training tar was audited by HTTP range and HF dataset-server
+    metadata rather than fully materializing every Parquet row.
+  remaining_unknowns:
+  - Exact source-transition count and per-source/per-app proportions for MobileWorld.
+  - Record-level source IDs, cross-split overlap hashes, deduplication results, and decontamination policy.
+  - Complete Parquet schemas, exact row counts, immutable manifest, and record-level annotation/filter lineage.
+  - Training annotation decoding parameters, exact learning rate, token budget, random seeds, and checkpoint-selection rule.
+  - Artifact licenses and third-party screenshot/app-content rights.
+  - Privacy filtering, consent, PII audit, and takedown procedures.
+  - Exact proprietary judge configuration, retry policy, and API snapshot used for every published score.
+inclusion_reason: 'MobileWorldBench makes one-step semantic state prediction and its mixed feedback contract explicit for
+  mobile-agent reasoning: human demonstration transitions become textual future-state supervision, rubric-judged generation,
+  and exact yes/no evaluation, while the offline release exposes important boundaries around episode semantics, replay, split
+  verification, and artifact rights.'
+related:
+- mobilebench-ol-2026
+tags:
+- mobile-gui
+- semantic-world-model
+- state-transition
+- next-state-generation
+- next-state-qa
+- vlm-judge
+- synthetic-annotation
+- human-filtering
+- agent-trajectories
+- offline-benchmark
+- release-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MobileWorldBench evaluates one-step Android future-state semantics with GPT-judged descriptions and yes/no
+  QA, while MobileWorld supplies roughly 1.4M model-annotated transition items for SFT.
+why_it_matters: It isolates the predictive component of mobile-agent reasoning into auditable state/action/next-state records,
+  but also shows why source trajectories do not imply episode supervision and why judge versions, split hashes, replay support,
+  licenses, and annotation lineage matter before reuse.
+card: null
+needs:
+- 'needs_release_manifest: publish exact row counts, schemas, source IDs, per-file hashes, candidate/filter lineage, and an
+  immutable versioned manifest'
+- 'needs_benchmark_fix: add the two missing generation images or remove/version the affected CSV row'
+- 'needs_split_audit: publish transition-level train/test IDs, deduplication hashes, overlap results, and evaluated-model
+  contamination policy'
+- 'needs_license: specify separate licenses and third-party rights for code, datasets/screenshots, annotations, and model
+  weights'
+- 'needs_privacy: document consent, PII filtering, account/app-content handling, worker procedures, and takedown policy'
+- 'needs_reproducibility: pin judge model/config, retries, API versions, random seeds, full training hyperparameters, and
+  checkpoint selection'
+- 'needs_failure_audit: report no-change/failed-action prevalence and release kept/rejected candidate decisions without recasting
+  them as episode outcomes'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  repository_files_verified: true
+  dataset_snapshot_verified: true
+  model_snapshot_verified: true
+  episode_release_verified: false
+  license_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Title, authors, date, arXiv license, full paper/appendix, official code, benchmark CSV counts and scripts, HF image
+    inventory, training tar members, and model snapshot were verified. Exact Parquet rows, cross-split lineage, artifact licenses,
+    privacy procedures, and deterministic judge replay remain unresolved.

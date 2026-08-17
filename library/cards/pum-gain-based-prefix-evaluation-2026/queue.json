@@ -1,0 +1,19 @@
+{
+  "title": "From Correctness to Utility: Gain-Based Prefix Evaluation for LLM Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.07190",
+    "data": "https://huggingface.co/datasets/zhiqix/PUM-MATH",
+    "code": "https://zhiqix.github.io/pum-project-page",
+    "project": "https://zhiqix.github.io/pum-project-page"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T14:13:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "二十八万数学推理前缀偏好对 + 过程奖励建模",
+    "updated_at": "2026-07-16T14:13:11Z"
+  }
+}

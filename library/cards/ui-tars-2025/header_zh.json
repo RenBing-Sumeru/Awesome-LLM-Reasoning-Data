@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UI-TARS 披露约 50B-token 的原生 GUI Agent 管线，连接截图感知、统一动作示范、合成 thought、在线 VM rollout、人类纠错、reflection SFT 与 action-level DPO，但数据配比、权利、split、verifier 和可复现环境仍不完整。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "原生 GUI Agent 构造报告与数据披露账本",
+  "best_for_ch": "研究 computer-use 数据、统一 action schema、reflection tuning、在线环境飞轮与 System-1/2 推理的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yujia Qin、Yining Ye、Junjie Fang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-24T14:50:52Z"
+}

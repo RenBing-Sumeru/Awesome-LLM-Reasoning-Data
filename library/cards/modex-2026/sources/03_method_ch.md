@@ -1,0 +1,3 @@
+对每个提示，目标模型独立生成 N 条路径。ModeX 构造 N×N 邻接矩阵，每个元素为 unigram、bigram 和 trigram 集合 Jaccard 重叠之和。它建立非归一化图 Laplacian，将 Fiedler 向量按零阈值切成两簇并计算切分 conductance。若 conductance 低于论文报告的 tau=0.8，则接受该切分；较大簇保留，大小相同时由总边权决定。系统在诱导子图上递归重复，直到不存在可接受切分，再返回最大度节点。主实验使用 N=4、8、16；论文未报告生成温度、top-p、各任务精确 token 上限或随机种子。
+
+ModeX-Lite 从 N 条并行解码开始，每生成 T 个 tokens（论文与官方代码默认 100）便在当前前缀上构图并执行一次非递归谱划分，只让代表性子集继续生成；所有剩余路径输出 EOS 后再选择中心。主设置使用 CNN/DailyMail v3.0.0 测试集前 300 条、HumanEval 全部 164 条测试题和 Math-500 测试集前 300 条，模型为 Qwen2.5-7B-Instruct 与 Llama3.1-8B-Instruct，代码任务以 CodeLlama-7B-Instruct 替代 Llama。官方 MIT 仓库包含算法代码、模型与数据集 wrapper、提示、评测工具、脚本和日志接口，但未核验到可复用的候选/图/剪枝轨迹语料。

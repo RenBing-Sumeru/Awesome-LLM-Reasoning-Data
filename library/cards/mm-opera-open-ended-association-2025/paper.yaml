@@ -1,0 +1,99 @@
+id: mm-opera-open-ended-association-2025
+title: 'MM-OPERA: Benchmarking Open-ended Association Reasoning for Large Vision-Language Models'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Zimeng Huang
+- Jinxin Ke
+- Xiaoxuan Fan
+- Yufeng Yang
+- Yang Liu
+- Liu Zhonghan
+- Zedi Wang
+- Junteng Dai
+- Haoyi Jiang
+- Yuyu Zhou
+- Keze Wang
+- Ziliang Chen
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm-evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.26937
+  arxiv: https://arxiv.org/abs/2510.26937
+  code: https://github.com/MM-OPERA-Bench/MM-OPERA
+  data: https://huggingface.co/datasets/titic/MM-OPERA
+  project: null
+  huggingface: https://huggingface.co/datasets/titic/MM-OPERA
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks and prompts documented by the paper and official release.
+  trace_author: Dataset authors, annotators, and evaluation pipeline as documented in the paper.
+  answer_format: Task input, candidate response, and task-specific judgment or rubric metadata.
+  process_fields:
+  - task
+  - response
+  - judgment or rubric
+  environment_or_substrate: The evaluation environment documented in the official release.
+  verifier_or_reward: Human/expert annotations, rubric-based judgment, or benchmark scoring documented by the paper.
+  terminal_predicate: A task-specific score or label under the released evaluation protocol.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: See the paper's documented construction procedure.
+  filtering_rule: See the paper and release documentation.
+  sampling_protocol: See the official release for splits and configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official paper page and the linked official data, code, or project resource.
+  split: Consult the official release.
+  decontamination: Assess public-task exposure before using a release as held-out evaluation.
+  license: Consult the official resource terms before reuse.
+  lineage: https://arxiv.org/abs/2510.26937
+  known_failure_modes:
+  - Rubric or judge quality can constrain the validity of resulting scores.
+  citation_status: verified
+  confidence: high
+  notes: Official title, authors, affiliation block, venue status, and available resource links were checked.
+inclusion_reason: MM-OPERA 以开放式图文联想任务和过程感知裁判，评估视觉语言模型的发散与收敛关联推理。
+related: []
+tags:
+- llm-judge
+- rubric
+- evaluation
+one_line_summary: MM-OPERA evaluates open-ended multimodal association reasoning with process-aware judging of divergent and
+  convergent associations.
+why_it_matters: MM-OPERA evaluates open-ended multimodal association reasoning with process-aware judging of divergent and
+  convergent associations.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and available release links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

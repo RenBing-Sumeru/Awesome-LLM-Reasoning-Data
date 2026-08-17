@@ -1,0 +1,1 @@
+Feedback Collection 可直接用于训练 rubric reward model、生成式 judge 或 critique model，也可借鉴其四字段输入设计建立领域数据。使用时应保留 rubric 的逐级描述，而不是只给维度名；评测需同时报告相关性、成对准确率和校准。若没有参考答案，可实验 reference-free 版本，但不能假设原论文性能保持。对高风险任务应加入人工或程序 verifier，避免教师偏差被大规模复制。

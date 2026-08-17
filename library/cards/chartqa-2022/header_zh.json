@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ChartQA 用图表图片、表格和自然语言问题评估模型的视觉读取、逻辑比较与数值推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Findings of ACL 2022 / arXiv 的 chart VQA benchmark / evaluation surface",
+  "best_for_ch": "关注图表理解、视觉-表格联合推理、数值答案归一化和 chart benchmark 饱和的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Ahmed Masry 等（York University、Nanyang Technological University、Salesforce Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

@@ -1,0 +1,153 @@
+id: long-short-cot-mixture-sft-2025
+title: Long-Short Chain-of-Thought Mixture Supervised Fine-Tuning Eliciting Efficient Reasoning in Large Language Models
+year: 2025
+venue: arXiv preprint
+authors:
+- Bin Yu
+- Hang Yuan
+- Haotian Li
+- Xueyin Xu
+- Yuliang Wei
+- Bailing Wang
+- Weizhen Qi
+- Kai Chen
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- scientific_question_answering
+- reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2505.03469
+  arxiv: https://arxiv.org/abs/2505.03469
+  code: null
+  data: https://huggingface.co/datasets/VLyb/s1K-mix
+  project: null
+  huggingface: https://huggingface.co/VLyb/s1-mix-32B
+  doi: https://doi.org/10.48550/arXiv.2505.03469
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The paper starts from s1K-1.1, reported to contain 1,000 question, detailed-CoT, and answer instances distilled
+    from DeepSeek-R1. The original question-source manifest and row-level identifiers are not disclosed by this paper.
+  trace_author: The long traces come from the upstream s1K-1.1 release; Qwen2.5-72B-Instruct rewrites each usable thought
+    process into a shorter trace under the paper's constrained prompt. The final answer is retained in the training response
+    according to the paper.
+  answer_format: Each released row has system, instruction, input, and output strings. The output contains a <think>...</think>
+    trace followed by the answer; instruction distinguishes detailed from brief thinking. The public viewer shows a single
+    train split with 1,984 rows.
+  process_fields:
+  - system
+  - instruction
+  - input
+  - output containing thinking trace and answer
+  environment_or_substrate: Offline Qwen2.5-72B-Instruct rewriting, then random merging of the original long and rewritten
+    short examples, followed by LlamaFactory SFT. Balanced thinking is an inference prompt, not an additional data-collection
+    environment.
+  verifier_or_reward: No automatic or human post-rewrite correctness, faithfulness, or quality verifier is reported. The rewriting
+    prompt constrains preservation of logical flow, steps, verification process, and final answer, but this instruction is
+    not an acceptance test or reward.
+  terminal_predicate: Sixteen inputs are excluded because they exceed the rewriter context limit. No other accept/reject predicate,
+    rewrite score, or multiple-candidate selection rule is disclosed.
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct, fine-tuned to produce s1-mix-32B.
+  teacher: DeepSeek-R1 is the reported upstream source of the s1K-1.1 long traces; Qwen2.5-72B-Instruct is the short-trace
+    rewriter.
+  generator: The Appendix A.1 prompt asks the rewriter to preserve logical flow, steps, verification process, and final answer;
+    remove redundant tokens; preserve step-by-step formatting; retain alternative attempts; and add no new information.
+  filtering_rule: 'Length exclusion only: 16 inputs exceed context limits, leaving 984 short examples. The paper reports no
+    answer check, trace-faithfulness check, quality score, or retry/selection procedure.'
+  sampling_protocol: The 1,000 long and 984 short examples are completely randomly merged. Rewriter temperature, top-p/top-k,
+    maximum tokens, seeds, number of attempts, and the merge manifest are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: The balanced-thinking evaluation changes the instruction from detailed or brief to appropriate thinking.
+    Test-time sample count, decoding parameters, and token limits are not disclosed.
+  optimizer_or_scaffold: LlamaFactory SFT on 16 A800 GPUs; cutoff_len 4096, learning rate 1e-5, cosine schedule, warmup ratio
+    0.05, bf16 true, AdamW, and weight decay 1e-4. Other parameters use LlamaFactory defaults; the epoch count is adjusted
+    to equalize the quantity of training samples with s1.1-32B, but the exact count is not stated.
+audit:
+  source_mixture: s1K-1.1 (1,000 DeepSeek-R1-distilled long trace-and-answer instances) -> Qwen2.5-72B-Instruct rewrite ->
+    984 short traces after 16 length exclusions -> random union of 1,000 long plus 984 short rows -> s1K-mix train split ->
+    Qwen2.5-32B-Instruct SFT.
+  split: The public Hugging Face viewer exposes one default/train split of 1,984 rows. It does not expose an immutable long-short
+    pair map, the 16 excluded identifiers, retained/failed rewrite records, or a source-split manifest.
+  decontamination: unknown
+  license: The current Hugging Face dataset and model pages label their own releases MIT. The paper does not establish the
+    license, consent, source provenance, or redistribution terms of upstream s1K-1.1 prompts and DeepSeek-R1-distilled traces.
+  lineage: Upstream question and long trace/answer -> constrained LLM rewrite -> context-length exclusion -> random long/short
+    mixture -> SFT checkpoint. Per-row source IDs, rewriter checkpoint revision, executed prompts, decoding logs, seeds, pair
+    linkage, and rejected outputs are not released.
+  known_failure_modes:
+  - A prompt instruction to preserve structure does not verify correctness or faithfulness; a compressed trace can omit a
+    decisive step, alter an answer, or retain unsupported content.
+  - Without paired IDs or a rewrite ledger, users cannot audit which long row produced which short row, locate the 16 omissions,
+    or measure compression and error on matched examples.
+  - The dataset contains one public train split and no reported decontamination analysis; benchmark overlap and contamination
+    risk remain unknown.
+  - The model card and the linked GitHub repository currently say the project is under development; the repository is a project-page
+    template rather than a verified training implementation. It is therefore not listed as usable code.
+  - The reported balanced-thinking outcome combines mixture SFT with an inference instruction change, so benchmark results
+    do not isolate the released dataset's causal contribution.
+  - The authors only study a 32B student and a 1,000-source-example dataset, and explicitly leave mixture-ratio, larger-model,
+    and larger-data scaling untested.
+  citation_status: verified
+  confidence: medium
+  notes: The paper, appendix, author affiliations, author-hosted Hugging Face dataset, and author-hosted model page were checked.
+    The data release is accessible and its viewer confirms schema and row count, but upstream lineage and a reproducible generation/training
+    implementation are incomplete.
+  metadata_status: partial
+inclusion_reason: This is a trace-construction and SFT recipe that turns one upstream long-CoT corpus into paired long/short-style
+  demonstrations, then exposes response length as a training-data variable. It belongs in instruction and rationale data because
+  its released object is an instruction-to-reasoning-response example, not a rollout or search log.
+related: []
+tags:
+- long-short-cot
+- chain-of-thought-rewriting
+- rationale-data
+- supervised-fine-tuning
+- reasoning-distillation
+- efficient-reasoning
+- s1k-mix
+status: partial
+one_line_summary: LS-Mixture rewrites s1K-1.1 long reasoning traces into constrained shorter variants and randomly mixes both
+  for SFT, but it releases neither a rewrite verifier nor the pair-level provenance needed to audit compression fidelity.
+why_it_matters: It treats reasoning-trace length as a controllable construction variable rather than only an inference-time
+  budget. The accessible 1,984-row release permits inspection of the serialized examples, but missing pair IDs, rewrite settings,
+  correctness checks, decontamination, and upstream provenance block direct use as an audited training recipe.
+card: null
+needs:
+- 'needs_pairs: immutable long-short pair IDs, the identities of the 16 excluded inputs, and retained/failed rewrite records'
+- 'needs_verification: post-rewrite answer-correctness and step-faithfulness checks with acceptance/rejection criteria and
+  error analysis'
+- 'needs_reproducibility: rewriter checkpoint revision, executed prompt serialization, decoding settings, retries, seeds,
+  merge manifest, epoch count, and evaluation decoding settings'
+- 'needs_provenance: upstream s1K-1.1 prompt/source manifest, DeepSeek-R1 trace lineage, and redistribution/consent terms'
+- 'needs_audit: decontamination and benchmark-overlap analysis plus mixture-ratio and scale ablations'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card-repair-curator
+  confidence: medium
+  notes: Checked arXiv:2505.03469v2 and its appendix; the current public s1K-mix dataset viewer; the current s1-mix-32B model
+    page; and the linked ZGCA-AI4Edu repository. The repository and model card state that the project is under development,
+    so no reproducible code claim is made.
+category_ids:
+- instruction_demonstration_rationale_data

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以经双重核验的成对判决数据进行 SFT-DPO 训练，并审计其作为偏好信号的效用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "生成式 LLM 裁判的训练、偏差过滤与偏好信号评测",
+  "best_for_ch": "构建开源 LLM 裁判，或用自动偏好信号训练策略模型的团队。",
+  "confidence_ch": "中高：已全文核对 EMNLP 正式论文与官方数据页；下游策略模型为内部实验。",
+  "authors_ch": "Jiachen Yu, Shaoning Sun, Xiaohui Hu, Jiaxu Yan, Kaidong Yu, Xuelong Li",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

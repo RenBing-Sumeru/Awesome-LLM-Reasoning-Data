@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Llama-Nemotron 报告架构搜索、蒸馏、持续预训练、推理 SFT 与大规模 RL，并声称发布模型、后训练数据和代码；具体反馈与审计边界仍需工件级核验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "开放推理模型技术报告与数据披露账本",
+  "best_for_ch": "比较模型报告的发布声明与工件级可审计证据的读者",
+  "confidence_ch": "中",
+  "authors_ch": "NVIDIA",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,164 @@
+id: groundedprm-2025
+title: 'GroundedPRM: Tree-Guided and Fidelity-Aware Process Reward Modeling for Step-Level Reasoning'
+year: 2025
+venue: arXiv
+authors:
+- Yao Zhang
+- Yu Wu
+- Haowei Zhang
+- Weiguo Li
+- Haokun Chen
+- Jingpei Wu
+- Guohao Li
+- Zhen Han
+- Volker Tresp
+source_role:
+- process_supervision
+- verifier_reward
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- math
+- reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2510.14942
+  arxiv: https://arxiv.org/abs/2510.14942
+  code: https://github.com/YaoZ720/GroundedPRMCode
+  data: https://huggingface.co/datasets/Yuuuuuu98/Grounded_PRM
+  project: https://yaozhang.ai/groundedprm/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.14942
+  venue: https://neurips.cc/virtual/2025/137239
+  openreview: https://openreview.net/forum?id=tmUP8BNyJB
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Problems from the MATH dataset; the paper does not publish a source split or released row IDs.
+  trace_author: A policy LLM generates structured step objectives and natural-language actions during multi-round MCTS. The
+    exact construction-policy checkpoint is not explicitly pinned; Qwen2.5-7B-Instruct is the PRM base and the reward-guided
+    search policy.
+  answer_format: Each training instance contains the original problem, a full reasoning trajectory, binary labels derived
+    from the sign of hybrid rewards, and natural-language explanations derived from external-tool feedback after consistency
+    filtering.
+  process_fields:
+  - problem
+  - reasoning_steps
+  - step_objective
+  - action
+  - tool_query
+  - tool_response
+  - binary_step_verification
+  - final_answer_correctness
+  - hybrid_reward_sign
+  - rationale
+  environment_or_substrate: Offline MCTS over partial MATH reasoning states. Nodes store tool queries, verification outcomes,
+    values, and visits; UCT selects nodes, each expansion samples K=3 actions, simulations continue to a final answer, and
+    rewards are backpropagated.
+  verifier_or_reward: Wolfram Alpha is the disclosed external math tool. Each intermediate step receives v in {-1,1}; the
+    final answer receives F in {-1,1}. A discounted aggregate combines future step signals with beta-weighted terminal correctness,
+    and node value combines the aggregate with the local verification result.
+  terminal_predicate: The generated final answer is compared with MATH ground truth to obtain binary F. Exact answer extraction/equivalence
+    handling and the Wolfram Alpha API/parser revision are not pinned.
+recipe_metadata:
+  base_model: GroundedPRM is LoRA-fine-tuned from Qwen2.5-7B-Instruct in a sequence-to-sequence generative format.
+  teacher: External tool feedback supplies verification rationales; no human step-label teacher is used. The exact MCTS policy
+    checkpoint is not clearly identified.
+  generator: A policy LLM generates K=3 candidate actions at each expansion and multi-round MCTS explores optimal and suboptimal
+    trajectories over MATH problems.
+  filtering_rule: Filter incomplete, inconsistent, or tool-unverifiable traces; retain tool-derived explanations only after
+    consistency filtering against binary labels.
+  sampling_protocol: UCT selection -> K=3 expansion -> left-to-right simulation to a final answer -> Wolfram Alpha step checks
+    plus ground-truth terminal check -> hybrid reward -> discounted backpropagation; maximum round count, exploration coefficient,
+    beta, gamma, and construction decoding parameters are not numerically reported.
+  rollout_count: null
+  temperature: null
+  inference_budget: Construction uses multiple MCTS rollouts but does not disclose R. Reward-guided greedy decoding samples
+    N=8 Qwen2.5-7B-Instruct candidate actions per step at temperature 1.
+  optimizer_or_scaffold: LoRA sequence-to-sequence fine-tuning with LLaMA-Factory on four A100 80GB GPUs; Qwen2.5-7B-Instruct
+    base. Other hyperparameters appear in Appendix C, while the released executable configuration is unavailable.
+audit:
+  source_mixture: Approximately 40K automatically labeled MATH instances after MCTS generation, tool verification, hybrid
+    scoring, and filtering. No author-confirmed dataset artifact or row-level provenance was verified.
+  split: unknown for training. ProcessBench and six mathematical benchmarks are evaluation surfaces, not released training
+    splits.
+  decontamination: unknown; no released MATH-to-ProcessBench/evaluation overlap or prompt-reuse ledger was verified.
+  license: unknown for the constructed data and model because no author-confirmed release was verified; MATH, Wolfram Alpha
+    responses, and generated traces may carry separate terms.
+  lineage: MATH problem -> MCTS node/action trajectory -> Wolfram Alpha query/response per step -> binary v signals plus ground-truth
+    final F -> hybrid scalar/backpropagated values -> signed label plus tool-grounded rationale -> Qwen2.5-7B-Instruct generative
+    PRM -> N=8 reward-guided step selection
+  known_failure_modes:
+  - Natural-language reasoning is only partially translatable to a structured Wolfram Alpha query; parser or relevance errors
+    can produce false verification labels.
+  - The paper calls labels verified, but the exact API/model/parser revisions, query-generation behavior, beta/gamma, round
+    budget, and decoding settings are not pinned.
+  - Tool verification catches certain algebraic/arithmetic transformations but may miss assumptions, proof gaps, semantic
+    relevance, or visually plausible yet irrelevant computations.
+  - Filtering tool-unverifiable traces can bias the data toward tool-friendly mathematics and suppress hard or linguistic
+    reasoning failures.
+  - No author-confirmed code, model, or dataset release exposes accepted/rejected trajectories, full MCTS trees, or a deterministic
+    run manifest.
+  - Reward-guided search results combine a particular N=8 candidate policy distribution with the learned selector and do not
+    prove row-level label correctness.
+  citation_status: verified
+  confidence: high
+  notes: 'The official arXiv PDF supplies substantially more construction detail than the prior draft: MATH, Wolfram Alpha,
+    K=3, explicit hybrid equations, 40K rows, Qwen2.5-7B-Instruct PRM base, and N=8/temperature=1 inference. Artifact verification
+    remains false.'
+inclusion_reason: GroundedPRM is directly relevant to Track 5 because it constructs search-tree reasoning paths and turns
+  external-tool validation plus MCTS feedback into step-level process-reward targets, then evaluates reward-guided test-time
+  decoding.
+related: []
+tags:
+- primary-link-checked
+- process-reward
+- mcts
+- tree-search
+- tool-validation
+- test-time-search
+- release-unverified
+status: partial
+card: null
+needs:
+- 'needs_release: author-confirmed code, dataset, model, schema, license, and immutable revision'
+- 'needs_mcts_manifest: maximum rounds, exploration coefficient, beta, gamma, decoding parameters, seeds, nodes, edges, visits,
+  and rejected branches'
+- 'needs_verifier_audit: Wolfram Alpha query/parser/API revision, failure codes, agreement with experts, and coverage by step
+  type'
+- 'needs_lineage: MATH row IDs, split mapping, per-record policy/checker traces, and accepted/rejected filter reasons'
+- 'needs_decontamination: overlap audit against ProcessBench and all reported reward-guided search benchmarks'
+one_line_summary: GroundedPRM converts MATH MCTS trajectories into about 40K generative step-supervision records by combining
+  Wolfram Alpha checks with final-answer outcomes, but releases no author-confirmed tree, data, code, model, or run manifest.
+why_it_matters: It is a concrete example of turning local tool checks and global search outcomes into process-reward data,
+  while exposing how verifier coverage, hybrid-credit parameters, filtered failures, and candidate budgets condition the resulting
+  labels.
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv title, author list, identifier, submission date, abstract, arXiv DOI, and claimed training/search
+    mechanism were checked. No author-confirmed project, code, data, model, or venue page was verified; all such artifact
+    fields are null.
+category_ids:
+- rollout_search_test_time_trace_data
+- training_usage_optimization_objectives
+- preference_reward_feedback_data
+- process_trace_supervision_data

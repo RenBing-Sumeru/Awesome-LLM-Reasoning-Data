@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "100K RAG回答含正确性判断、细粒度错误层级与诊断文本，可复用于检索推理反馈。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集与评测论文",
+  "best_for_ch": "需要细粒度事实性、安全性或评审反馈资源的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Guanting Dong、Jiajie Jin、Xiaoxi Li、Yutao Zhu、Zhicheng Dou、Ji-Rong Wen",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T13:05:50Z"
+}

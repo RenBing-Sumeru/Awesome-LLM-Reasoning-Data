@@ -1,0 +1,102 @@
+id: questbench-information-acquisition-2025
+title: 'QuestBench: Can LLMs ask the right question to acquire information in reasoning tasks?'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Belinda Z. Li
+- Been Kim
+- Zi Wang
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- planning
+- mathematics
+- information-acquisition
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.22674
+  arxiv: https://arxiv.org/abs/2503.22674
+  code: null
+  data: https://huggingface.co/datasets/belindazli/QuestBench
+  project: null
+  huggingface: https://huggingface.co/datasets/belindazli/QuestBench
+  doi: https://doi.org/10.48550/arXiv.2503.22674
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Logic, PDDL planning, human-edited GSM, and equation-based GSM problems.
+  trace_author: Benchmark authors and human GSM annotators.
+  answer_format: Underspecified problem, candidate clarification questions, hidden state, and correct option.
+  process_fields:
+  - underspecified_problem
+  - question_options
+  - hidden_variable
+  - correct_option
+  - complete_problem
+  environment_or_substrate: Constraint-satisfaction solvers for logic, planning, and math representations.
+  verifier_or_reward: Solver checks whether a question restores a unique solution.
+  terminal_predicate: The selected clarification removes all residual ambiguity of the complete CSP.
+recipe_metadata:
+  base_model: Evaluated frontier models select clarification questions.
+  teacher: CSP solver and human GSM editing.
+  generator: Convert complete tasks to CSPs, hide one key assignment, and solve for minimally sufficient questions.
+  filtering_rule: Retain variables whose revealed value restores a unique answer.
+  sampling_protocol: 'Four one-question subsets: Logic-Q, Planning-Q, GSM-Q, and GSME-Q.'
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix option order, solver, human-edit version, and random seed.
+  optimizer_or_scaffold: One-step question selection scored by CSP ambiguity resolution.
+audit:
+  source_mixture: Official arXiv paper, NeurIPS track information, and author Hugging Face dataset.
+  split: Consult the dataset card for current subset and split records.
+  decontamination: Reuse should audit overlap between source reasoning tasks and model training data.
+  license: Check the official dataset card before reuse.
+  lineage: https://huggingface.co/datasets/belindazli/QuestBench
+  known_failure_modes:
+  - Only one clarification is allowed.
+  - Multiple-choice options can expose surface cues and avoid free-form question generation.
+  - Ambiguous preferences, noisy answers, and refusal are not represented by deterministic CSPs.
+  citation_status: verified
+  confidence: high
+  notes: Paper, authors and PDF affiliations, NeurIPS 2025 track listing, and author Hugging Face release were checked.
+inclusion_reason: QuestBench supplies solver-verified clarification-choice records whose label is whether a question makes
+  an underspecified reasoning task uniquely solvable.
+related: []
+tags:
+- clarification
+- information-acquisition
+- csp
+- benchmark
+- neurips-2025
+one_line_summary: 'QuestBench turns clarification into a solver-checked choice: select the single missing variable whose answer
+  makes an underspecified reasoning problem uniquely solvable.'
+why_it_matters: It separates asking for necessary information from solving an already complete task.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, dataset release, and first-page affiliations were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

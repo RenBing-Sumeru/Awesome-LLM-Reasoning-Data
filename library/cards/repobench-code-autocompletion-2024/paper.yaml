@@ -1,0 +1,114 @@
+id: repobench-code-autocompletion-2024
+title: 'RepoBench: Benchmarking Repository-Level Code Auto-Completion Systems'
+year: 2023
+venue: ICLR 2024 / arXiv
+authors:
+- Tianyang Liu
+- Canwen Xu
+- Julian McAuley
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- repository-completion
+- code-generation
+- retrieval
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2306.03091
+  arxiv: https://arxiv.org/abs/2306.03091
+  doi: https://doi.org/10.48550/arXiv.2306.03091
+  code: https://github.com/Leolty/repobench
+  data: https://huggingface.co/datasets/tianyang/repobench_python_v1.1
+  project: null
+  huggingface: https://huggingface.co/datasets/tianyang/repobench_python_v1.1
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: RepoBench paper, GitHub repository, and Hugging Face datasets
+  trace_author: RepoBench authors and repository-context extraction
+  answer_format: repository context windows, completion targets, retrieval contexts, language splits, and benchmark results
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: repository-level code auto-completion contexts
+  verifier_or_reward: 'static repository retrieval and completion metrics: RepoBench-R uses Accuracy@k, while RepoBench-C
+    and RepoBench-P use Exact Match and Edit Similarity.'
+  terminal_predicate: retrieval rank or completion string matches the target under the static metric
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: repository source code and completion targets
+  generator: repository completion benchmark extraction pipeline
+  filtering_rule: distinguish v1.1 data from initial paper data and note static-completion scope
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2306.03091; https://github.com/Leolty/repobench; https://huggingface.co/datasets/tianyang/repobench_python_v1.1;
+    https://huggingface.co/datasets/tianyang/repobench_java_v1.1
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2306.03091'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: RepoBench is a static repository-level retrieval/completion benchmark, not an interactive agent environment. GitHub
+    README marks ICLR 2024 status; arXiv gives the paper record. v1.1 Python and Java Hugging Face datasets should be distinguished
+    from the original paper data.
+inclusion_reason: it provides repository-context code data adjacent to agent trajectory environments
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- repository-completion
+- code-generation
+- retrieval
+one_line: RepoBench benchmarks repository-level code auto-completion with repository context.
+why_it_matters: it provides repository-context code data adjacent to agent trajectory environments
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RepoBench benchmarks repository-level code auto-completion with repository context.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: RepoBench is a static repository-level retrieval/completion benchmark, not an interactive agent environment. GitHub
+    README marks ICLR 2024 status; arXiv gives the paper record. v1.1 Python and Java Hugging Face datasets should be distinguished
+    from the original paper data.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 113
+  primary_category_id: environment_agent_trajectory_data

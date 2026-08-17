@@ -1,0 +1,111 @@
+id: throw-hybrid-test-time-compute-2026
+title: 'Think Hard Only When Needed: A Hybrid Best-of-N and Beam Search for Efficient Test-Time Compute'
+year: 2026
+venue: Findings of EACL 2026
+authors:
+- Hyewon Suh
+- Chaojian Li
+- Cheng-Jhih Shih
+- Zheng Wang
+- Kejing Xia
+- Yonggan Fu
+- Yingyan Celine Lin
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-eacl.315/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-eacl.315/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-eacl.315
+data_object:
+  prompt_source: MATH500, AMC23, and AIME24 prompts.
+  trace_author: Qwen2.5 and Llama policy models generate short first-stage partial trajectories and selectively continued
+    branches.
+  answer_format: Prompt, partial branches, process-reward scores, difficulty indicator, easy/hard label, retained or expanded
+    branches, final answer, and exact-match correctness.
+  process_fields:
+  - prompt
+  - partial_trace
+  - prm_score
+  - difficulty_indicator
+  - branch_action
+  - final_answer
+  - correctness
+  - latency
+  - token_count
+  environment_or_substrate: Streaming batch-1 inference on NVIDIA A100-SXM4-40GB, with additional A5000 evaluation.
+  verifier_or_reward: Qwen2.5-Math-PRM-7B or Llama3.1-8B PRM scores partial trajectories.
+  terminal_predicate: Benchmark exact-answer accuracy.
+recipe_metadata:
+  base_model: Qwen2.5-1.5B-Instruct, Qwen2.5-3B-Instruct, and Llama3.2-3B-Instruct.
+  teacher: Not applicable; an external process reward model guides the search.
+  generator: THROW combines short parallel sampling with PRM-guided branch truncation or expansion.
+  filtering_rule: The fraction of first-stage branches below a PRM threshold classifies a prompt as easy or hard; easy prompts
+    keep top branches and hard prompts expand them.
+  sampling_protocol: Compare Best-of-N, PRM beam search, and hybrid search at N=8, 16, and 32.
+  rollout_count: Primary tables use 16 paths; full sweeps use 8, 16, and 32.
+  temperature: 0.7.
+  inference_budget: 350 first-stage tokens and up to 2,048 output tokens; second-stage budget depends on the difficulty classification.
+  optimizer_or_scaffold: Two-stage adaptive branch truncation and expansion using PRM-based query difficulty.
+audit:
+  source_mixture: Official ACL paper.
+  split: Three mathematical reasoning benchmarks; policy and PRM substitutions test robustness.
+  decontamination: No formal contamination audit is claimed.
+  license: Check the licenses of Qwen, Llama, PRMs, and benchmarks before reuse.
+  lineage: https://aclanthology.org/2026.findings-eacl.315/
+  known_failure_modes:
+  - prm-miscalibration
+  - threshold-tuning
+  - batch-size-one-assumption
+  - math-only-evaluation
+  - external-verifier-cost
+  citation_status: verified
+  confidence: high
+  notes: Official EACL PDF checked on 2026-07-21. All authors list the Georgia Institute of Technology. No dedicated code,
+    data, or project release is linked in the paper.
+inclusion_reason: It allocates test-time computation conditionally by using early PRM evidence to choose between branch pruning
+  and branch expansion, directly optimizing accuracy, tokens, and latency.
+related: []
+tags:
+- test-time-compute
+- hybrid-search
+- best-of-n
+- beam-search
+- process-reward-model
+status: verified
+one_line_summary: THROW uses early PRM scores to spend less search on easy prompts and selectively expand promising branches
+  for hard ones.
+reading_priority: essential
+paper_type: Adaptive hybrid test-time compute study
+best_for: Readers serving batch-1 reasoning workloads who must balance parallel sampling throughput against the sequential
+  scoring cost of beam search.
+confidence: high
+why_it_matters: It turns query difficulty into a concrete switching rule between two common search families instead of applying
+  the same compute budget to every prompt.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official EACL paper checked; no dedicated artifact release is reported.
+category_ids:
+- scaling_rlvr_test_time_compute

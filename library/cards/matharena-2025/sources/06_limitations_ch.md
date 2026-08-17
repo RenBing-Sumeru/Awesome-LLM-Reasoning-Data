@@ -1,0 +1,1 @@
+Uncontaminated 是相对于发布时间的声明，不是永久属性。题目、答案和日志一旦公开，未来训练污染就很可能发生。证明题评分比最终答案检查更难审计，可能依赖 judge instructions 或人工裁决。竞赛 license 和再分发权利是按比赛而定的，不能默认一致。排行榜比较必须固定 model versions、prompts、sampling budgets 和 platform date。不要把 2025 论文结果与后续 MathArena 平台更新混在一起报告，除非标注版本。

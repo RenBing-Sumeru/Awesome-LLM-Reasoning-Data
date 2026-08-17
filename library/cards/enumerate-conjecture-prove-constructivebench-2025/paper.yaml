@@ -1,0 +1,110 @@
+id: enumerate-conjecture-prove-constructivebench-2025
+title: 'Enumerate-Conjecture-Prove: Formally Solving Answer-Construction Problems in Math Competitions'
+year: 2025
+venue: arXiv
+authors:
+- Jialiang Sun
+- Yuzhi Tang
+- Ao Li
+- Chris J. Maddison
+- Kuldeep S. Meel
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- formal-mathematics
+- lean4
+- theorem-proving
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.18492
+  arxiv: https://arxiv.org/abs/2505.18492
+  code: https://github.com/JackSun200312/ECP
+  data: https://huggingface.co/datasets/sunjia72/ConstructiveBench
+  project: null
+  huggingface: https://huggingface.co/datasets/sunjia72/ConstructiveBench
+  doi: https://doi.org/10.48550/arXiv.2505.18492
+  venue: null
+  openreview: https://openreview.net/forum?id=YDmkmdoC3M
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical competition answer-construction problems formalized in Lean.
+  trace_author: Dataset authors and the ECP enumeration-and-conjecturing pipeline.
+  answer_format: Formal problem, constructed answer, and Lean proof obligation.
+  process_fields:
+  - formal context
+  - candidate answer
+  - conjecture
+  - Lean theorem
+  - proof
+  - verification result
+  environment_or_substrate: Lean theorem-proving environment.
+  verifier_or_reward: Lean elaboration and kernel checking.
+  terminal_predicate: The constructed object and its accompanying Lean proof are accepted by Lean.
+recipe_metadata:
+  base_model: The framework is model-agnostic; reported experiments include GPT-4.1-mini and DeepSeek-Prover-V2-7B.
+  teacher: Lean checker and formalized competition problems.
+  generator: LLM enumeration followed by pattern-driven conjecturing and theorem proving.
+  filtering_rule: Retain formally verified Lean instances and reject candidates that do not prove.
+  sampling_protocol: The arXiv version reports 3,431 ConstructiveBench problems; later submission materials report 3,640,
+    so reuse must pin the selected release.
+  rollout_count: null
+  temperature: null
+  inference_budget: Consult the code release for enumeration and proof-search settings.
+  optimizer_or_scaffold: Enumerate–Conjecture–Prove modular neuro-symbolic pipeline.
+audit:
+  source_mixture: Official arXiv paper, author GitHub repository, Hugging Face dataset, and OpenReview submission record.
+  split: Release-size discrepancy exists between the arXiv and later submission; pin a dataset revision before comparison.
+  decontamination: Audit competition-source overlap and existing Lean formalizations before using the benchmark as unseen
+    evaluation.
+  license: Verify repository and dataset-card license terms before reuse.
+  lineage: https://github.com/JackSun200312/ECP
+  known_failure_modes:
+  - Lean acceptance proves only the formalized problem, not the intended natural-language reading.
+  - The currently visible release size differs across paper versions.
+  - Enumeration may fail to propose a valid object before proof search starts.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, code, dataset, affiliations, and OpenReview status were checked; the ICLR 2026 submission was withdrawn,
+    so no acceptance is claimed.
+inclusion_reason: ConstructiveBench pairs answer construction with Lean-checked proofs, exposing a deterministic outcome signal
+  for formal mathematical synthesis.
+related: []
+tags:
+- lean4
+- answer-construction
+- formal-mathematics
+- neuro-symbolic
+- '2025'
+one_line_summary: ECP couples answer enumeration and conjecturing with Lean proofs on ConstructiveBench, turning constructed
+  competition answers into formally checked outcomes.
+why_it_matters: It uses the proof kernel to check the constructed object itself, not just a textual explanation of it.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, code, dataset, affiliations, and OpenReview status were checked; the ICLR 2026 submission was withdrawn,
+    so no acceptance is claimed.
+category_ids:
+- programmatically_verifiable_outcome_data

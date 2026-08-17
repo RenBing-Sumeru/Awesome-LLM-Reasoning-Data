@@ -1,0 +1,5 @@
+- Positioning: AM-Distilled unifies 1.4 million R1 responses and routes math, code, and other tasks through answer checks, execution, or reward-model review.
+- Data object: 1.4 million bilingual reasoning traces; each record exposes chat messages containing a user problem and a distilled long reasoning response.
+- Author and selector: primarily DeepSeek-R1 writes long reasoning responses; retention uses reference-answer matching for math, executable tests for code, and reward-model review for other domains.
+- Evidence anchor: With simple SFT, AM-Distill-Qwen-32B exceeds DeepSeek-R1-Distill-Qwen-32B on AIME2024, MATH-500, GPQA-Diamond, and LiveCodeBench; both data size and verification differ.
+- Reuse decision: suitable for reasoning SFT and distillation; first audit reward-model review is weaker than execution for open-domain reasoning and noncommercial terms limit redistribution and commercial training.

@@ -1,0 +1,5 @@
+FActScore measures factual precision relative to a selected knowledge source. It does not measure topic completeness, usefulness, writing quality, fairness, safety, or whether the answer includes the most important facts. A terse answer can have high precision while omitting central information.
+
+The support label is only as reliable as decomposition and evidence retrieval. An atomic fact can be true but absent from the source, retrieved poorly, ambiguous after decomposition, or judged incorrectly by the support model. Conversely, source support may not capture temporal updates, contested facts, or domain-specific provenance standards.
+
+The official package has practical dependencies: Python environment, spaCy model, retrieval database, model/API cache, optional LLAMA weights for one estimator, OpenAI-compatible key for another estimator, and a default Wikipedia snapshot. Scores should not be compared unless these components, the `gamma` setting, abstain detection, and any released atomic facts are pinned.

@@ -1,0 +1,3 @@
+Standard deployment treats every prompt as an isolated event. A model can spend substantial compute rediscovering the same algebraic trick, code routine, or failure diagnosis on later queries, while a longer context of raw transcripts eventually becomes too costly and noisy to be useful.
+
+Dynamic Cheatsheet asks whether a black-box model can learn during use without changing its parameters or receiving labels. The problem is therefore not only how to solve one hard query with more tokens, but how to turn successful and unsuccessful inference into compact experience that lowers the cost and error rate of subsequent queries.

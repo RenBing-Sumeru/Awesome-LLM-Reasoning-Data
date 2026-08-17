@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SQaLe 基于 135,875 个真实来源数据库模式构建 517,676 条经执行验证的文本到 SQL 三元组。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基于真实数据库模式的可执行 Text-to-SQL 数据集",
+  "best_for_ch": "需要大规模、可执行验证的 Text-to-SQL 训练或评测数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Cornelius Wolff, Daniel Gomm, Madelon Hulsebos",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

@@ -1,0 +1,118 @@
+id: proofnet-2023
+title: 'ProofNet: Autoformalizing and Formally Proving Undergraduate-Level Mathematics'
+year: 2023
+venue: arXiv preprint
+authors:
+- Zhangir Azerbayev
+- Bartosz Piotrowski
+- Hailey Schoelkopf
+- Edward W. Ayers
+- Dragomir Radev
+- Jeremy Avigad
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- autoformalization-formal-proof
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2302.12433
+  arxiv: https://arxiv.org/abs/2302.12433
+  doi: https://doi.org/10.48550/arXiv.2302.12433
+  code: https://github.com/zhangir-azerbayev/ProofNet
+  data: https://huggingface.co/datasets/hoskinson-center/proofnet
+  project: null
+  huggingface: https://huggingface.co/datasets/hoskinson-center/proofnet
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ProofNet authors select undergraduate textbook/exam mathematics problems, transcribe natural-language statements/proofs,
+    and pair them with human-authored Lean 3 theorem statements.
+  trace_author: ProofNet authors and Lean-proficient human annotators; natural-language proofs are adapted from solution manuals
+    or written by annotators as disclosed by the paper.
+  answer_format: each benchmark record pairs a natural-language theorem statement and proof with a Lean 3 formal theorem statement
+    and source header; model outputs are judged by Lean typecheck plus expert semantic review.
+  process_fields:
+  - natural-language theorem statement
+  - natural-language proof
+  - Lean 3 formal theorem statement
+  - source header/import context
+  - model formalization or informalization output
+  - Lean typecheck result
+  - human semantic correctness judgment when reported
+  environment_or_substrate: Lean 3 plus mathlib; the official repository now identifies itself as the original Lean 3 artifact.
+  verifier_or_reward: Lean 3 typechecking supplies the programmatic well-formedness signal; human experts judge semantic equivalence
+    for autoformalization accuracy.
+  terminal_predicate: a candidate statement must typecheck for mechanical acceptance, and must be judged semantically equivalent
+    to count as a correct autoformalization in the paper's evaluation.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct informal-to-formal theorem statements/proofs in Lean; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Keep Lean typecheck, human semantic correctness, and BLEU separate; do not treat BLEU as a verifier reward.
+  sampling_protocol: Pin Lean 3/mathlib versions, dataset revision, source headers, prompts, evaluator model/endpoints, and
+    expert judging policy before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2302.12433;
+    https://github.com/zhangir-azerbayev/ProofNet; https://huggingface.co/datasets/hoskinson-center/proofnet'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: GitHub repository license is MIT; Hugging Face dataset redistribution terms still require artifact-level review
+    because local HF access failed during this pass.
+  lineage: 'Primary lead: https://arxiv.org/abs/2302.12433'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv and GitHub verify authors, institution set, Lean 3 code artifact, 371-example benchmark description, and MIT
+    repository license. Hugging Face dataset link is listed by the official README, but HF metadata could not be fetched locally.
+    No official conference venue was verified.
+inclusion_reason: Verifier-backed proof surface connecting natural language and formal math.
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- autoformalization-formal-proof
+one_line: ProofNet exposes informal-to-formal theorem statements/proofs in Lean as an auditable evaluation surface.
+why_it_matters: Verifier-backed proof surface connecting natural language and formal math.
+status: verified
+needs:
+- 'needs_metadata: verify Hugging Face dataset metadata and redistribution terms'
+- 'needs_audit: inspect split/version policy, Lean 3/mathlib environment, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ProofNet exposes informal-to-formal theorem statements/proofs in Lean as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv and GitHub verify authors, the Yale/Warsaw/EleutherAI/CMU institution set, the Lean 3 code artifact, and MIT
+    repository license. The official README points to the Hugging Face dataset, but local HF metadata fetch failed. No official
+    conference venue was verified.
+category_ids:
+- benchmarks_evaluation_surfaces

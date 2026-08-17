@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CL-bench 以 500 个复杂专业上下文、1,899 项任务和 31,607 条专家 rubric，衡量模型是否能从上下文习得新知识。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "上下文学习的专家 rubric 评测基准",
+  "best_for_ch": "研究长上下文代理、上下文学习与可验证评测的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shihan Dou, Ming Zhang, Zhangyue Yin 等",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:30:13Z"
+}

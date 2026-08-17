@@ -1,0 +1,1 @@
+引用：Yang Liu, Dan Iter, Yichong Xu, Shuohang Wang, Ruochen Xu, Chenguang Zhu. “G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment.” EMNLP 2023 main, 2023. https://aclanthology.org/2023.emnlp-main.153/ 官方链接：https://github.com/nlpyang/geval 和 https://arxiv.org/abs/2303.16634 。

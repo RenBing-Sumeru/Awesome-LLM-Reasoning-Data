@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将Sky-T1配方迁移到DeepSeek-R1教师，以GPT-4o-mini数学判断和代码执行过滤，发布16,710条接受的长推理对话。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "推理蒸馏数据发布与拒绝采样配方",
+  "best_for_ch": "关注长CoT蒸馏、Sky-T1谱系、混合验证和开放许可的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Bespoke Labs",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T11:56:01Z"
+}

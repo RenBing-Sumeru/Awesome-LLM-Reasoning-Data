@@ -1,0 +1,5 @@
+Reported Lean results include 121/155 (78.1%) on past IMO, 100.0% MiniF2F validation and 99.6% test, 331/657 PutnamBench, 30/100 CombiBench, and 81.8% MiniCTX-v2 under light search. Search budgets differ across benchmarks and harder unsolved items are escalated, so these are not uniform-compute comparisons.
+
+For IMO 2025, the deadline-sensitive result is **4/6 during the competition and 5/6 post-competition**. P1 completed after the deadline. Human experts translated statements, and fill-in-the-blank formalization used initial solution candidates from Seed1.6-Thinking; these evaluation-time priors must stay visible.
+
+Seed-Geometry reports 43/50 on IMO-AG-50 and solves IMO 2025 geometry P2 in under two seconds. The latter is a natural-language proof artifact rather than a Lean proof, and the geometry model, engine, data, and hardware are unreleased. The official repository releases successful solutions; the inspected P1/P3/P4/P5 Lean files have 4,357/1,969/3,929/767 lines and no textual `sorry` or `admit`, but they were not independently compiled.

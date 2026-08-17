@@ -1,0 +1,125 @@
+id: negative-aware-fine-tuning-2025
+title: 'NFT: Bridging Supervised Learning and Reinforcement Learning in Math Reasoning'
+year: 2026
+venue: ICLR 2026
+authors:
+- Huayu Chen
+- Kaiwen Zheng
+- Qinsheng Zhang
+- Ganqu Cui
+- Lifan Yuan
+- Yin Cui
+- Haotian Ye
+- Tsung-Yi Lin
+- Ming-Yu Liu
+- Jun Zhu
+- Haoxiang Wang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- rlvr
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2505.18116
+  arxiv: https://arxiv.org/abs/2505.18116
+  code: https://github.com/NVlabs/NFT
+  data: null
+  project: https://research.nvidia.com/labs/cosmos-lab/negative-aware-ft/
+  huggingface: https://huggingface.co/nvidia/NFT-7B
+  doi: null
+  venue: null
+  openreview: https://openreview.net/forum?id=ujBrsQm6Zu
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Math prompts; the checked sources describe a 512-prompt rollout collection but do not publish its immutable
+    manifest.
+  trace_author: Qwen Math 7B and 32B
+  answer_format: For each prompt, Qwen Math produces 16 candidate answers. A binary correctness verifier separates positive
+    and negative answer trajectories for NFT training.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Programmatic binary answer correctness is the stated reward/partition signal; the precise verifier implementation
+    and all trace records were not verified as released.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Qwen Math 7B and 32B
+  teacher: unknown
+  generator: NFT retains both correct and incorrect samples, first learning their relative preference signal and then optimizing
+    with a reinforcement-learning objective rather than discarding failures.
+  filtering_rule: Programmatic binary answer correctness is the stated reward/partition signal; the precise verifier implementation
+    and all trace records were not verified as released.
+  sampling_protocol: The paper reports online experiments with Qwen Math 7B and 32B and 16 answers per one of 512 prompts;
+    exact decoding settings and full rollout logs were not verified.
+  rollout_count: 16 answers for each of 512 rollout prompts in the reported collection
+  temperature: unknown
+  inference_budget: Online RL training; full budget unknown
+  optimizer_or_scaffold: NFT retains both correct and incorrect samples, first learning their relative preference signal and
+    then optimizing with a reinforcement-learning objective rather than discarding failures.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Math prompts; the checked sources describe a 512-prompt rollout collection but do not publish its immutable manifest.
+    -> For each prompt, Qwen Math produces 16 candidate answers. A binary correctness verifier separates positive and negative
+    answer trajectories for NFT training. -> Programmatic binary answer correctness is the stated reward/partition signal;
+    the precise verifier implementation and all trace records were not verified as released. -> reported final selection or
+    training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Negative samples can encode verifier or generator errors; no official NFT code, dataset, full trace release, license,
+    or decontamination report was confirmed.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It is a concrete accepted/rejected rollout recipe, but its reuse is limited by missing verifier, rollout,
+  and release-provenance details.
+related: []
+tags:
+- negative-samples
+- math-reasoning
+- rlvr
+- answer-verifier
+- rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: NFT trains math reasoning from verifier-separated positive and negative rollouts instead of treating rejected
+  answers as disposable.
+why_it_matters: It is a concrete accepted/rejected rollout recipe, but its reuse is limited by missing verifier, rollout,
+  and release-provenance details.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, NVIDIA project page, NVlabs code repository, OpenReview record, and released NFT-7B model page were
+    verified; undisclosed data-construction details remain unknown. as unknown or null.

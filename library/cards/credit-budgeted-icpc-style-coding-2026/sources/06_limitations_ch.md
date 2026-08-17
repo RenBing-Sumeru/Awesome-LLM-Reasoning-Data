@@ -1,0 +1,1 @@
+正确性只相对于导入的 problemset 和 judge tests 成立。更低 credit cost 可能代表效率，也可能代表探索不足，所以成本和正确性必须一起读。README 说明发布的 Hydro problemset 已包含公开 USACO 2025-2026 season contests，但最新 March open contest 因官方数据未发布而缺失，这是版本边界。代码是 MIT，但 USACO 材料和第三方语料保留各自条款。API latency、本地硬件和 provider 价格都会改变预算解释。

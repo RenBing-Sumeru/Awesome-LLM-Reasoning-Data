@@ -1,0 +1,103 @@
+id: rethinking-improving-autoformalization-2025
+title: 'Rethinking and Improving Autoformalization: Towards a Faithful Metric and a Dependency Retrieval-Based Approach'
+year: 2025
+venue: ICLR 2025
+authors:
+- Qi Liu
+- Xinhao Zheng
+- Xudong Lu
+- Qinxiang Cao
+- Junchi Yan
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-mathematics
+- lean4
+- autoformalization
+training_use:
+- evaluation
+- sft
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=hUb2At2DsQ
+  arxiv: null
+  code: https://github.com/Purewhite2019/rethinking_autoformalization
+  data: https://github.com/Purewhite2019/rethinking_autoformalization
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/file/d630537fc4402cfa3ebbc7450a0cac91-Paper-Conference.pdf
+  openreview: https://openreview.net/forum?id=hUb2At2DsQ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Frontier formal-mathematics projects and Lean library dependencies.
+  trace_author: Paper authors, expert equivalence annotators, and dependency parser.
+  answer_format: Natural-language/formal theorem pairs, expert equivalence labels, dependency pairs, and BEq outcomes.
+  process_fields:
+  - natural_language
+  - formal_statement
+  - dependency
+  - equivalence_label
+  - beq_outcome
+  environment_or_substrate: Lean and pinned Mathlib/formalization libraries.
+  verifier_or_reward: Bidirectional Extended Definitional Equivalence (BEq) with restricted proof automation.
+  terminal_predicate: Candidate and reference statements satisfy the bidirectional BEq condition.
+recipe_metadata:
+  base_model: RAutoformalizer.
+  teacher: Experts for 200 equivalence pairs; Lean dependency parser for retrieval supervision.
+  generator: Extract Con-NF theorems, parse library topology, and generate query–dependency retrieval pairs.
+  filtering_rule: Accept BEq equivalence only when both formal directions are proven.
+  sampling_protocol: Con-NF has 961 theorem pairs with 1,348 formal dependency objects.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin Lean/Mathlib, automation strategy, and retrieval-library versions.
+  optimizer_or_scaffold: Retrieve dependencies before Lean generation; evaluate with BEq@k.
+audit:
+  source_mixture: Official ICLR proceedings paper, OpenReview record, and author GitHub repository.
+  split: 200 expert-labelled equivalence pairs and 961 Con-NF theorem pairs.
+  decontamination: Audit retrieval candidates and train/test library boundaries for reference or near-equivalent leakage.
+  license: Apache-2.0 in the official repository.
+  lineage: https://github.com/Purewhite2019/rethinking_autoformalization
+  known_failure_modes:
+  - BEq proof failure can be a false negative caused by incomplete automation.
+  - Con-NF is small and limited to selected research formalization projects.
+  - Dependency retrieval can expose a reference or near-equivalent answer.
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2025 proceedings PDF, official repository, author list, affiliation, and release links were checked.
+inclusion_reason: The released Con-NF and equivalence labels pair Lean statements with executable semantic-verification outcomes
+  and dependency supervision.
+related: []
+tags:
+- autoformalization
+- lean4
+- beq
+- retrieval
+- iclr-2025
+one_line_summary: This work couples a bidirectional Lean equivalence verifier with dependency retrieval and the 961-item Con-NF
+  benchmark to measure and improve faithful autoformalization.
+why_it_matters: It distinguishes semantic correctness from compilability and makes library dependencies explicit supervision
+  for formalization.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR PDF, OpenReview link, and author code/data repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

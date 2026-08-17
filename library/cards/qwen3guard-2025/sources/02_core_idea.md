@@ -1,0 +1,4 @@
+Qwen3Guard is a Qwen-family safety-moderation release with two distinct data/feedback interfaces. Qwen3Guard-Gen receives moderation instructions, a safety policy/category specification, dialogue context, and target content; it produces a risk assessment and category, plus a refusal judgment for model-response classification. Qwen3Guard-Stream adds query and response heads so that response tokens can be classified during generation.
+
+The disclosed Gen corpus has more than 1.19M human-annotated and synthetic positive/negative prompt and response samples. Gen is trained with SFT, while Stream uses derived token labels and supervised classification losses. Separately, the report shows Gen used as a safety judge in a GSPO safety-RL experiment. That downstream reward demonstration is relevant to filtering/RL design, but is not the verified training contract for the guard models themselves.
+

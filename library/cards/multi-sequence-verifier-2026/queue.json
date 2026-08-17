@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T08:55:39Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "利用多个序列验证器并行评估候选推理，以提升固定推理预算下的筛选质量",
+    "updated_at": "2026-07-20T08:55:39Z"
+  }
+}

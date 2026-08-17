@@ -1,0 +1,5 @@
+- Use the Findings of EMNLP 2025 ACL record—not the earlier ICLR submission—as the accepted venue, and read Sections 3–5 with Appendix A.
+- Keep the six selectors distinct: LESS, IFD, SelectIT, and cross-entropy are quality-oriented; DiverseEvol and ZIP are diversity-oriented; five random subsets are the control.
+- Treat 10K and 50K as the tested selected-subset scales, and do not generalize the title to external scorers, omitted expensive methods, or 100K+ selections.
+- Compare Table 4's proportional longest-within-cluster rule with `token_length/kmeans_sample.py`: the public script truncates to 100 embeddings and selects cluster centers.
+- Pair this Card with `more-data-or-better-data-2025`, and keep selected IDs, seeds, contamination, code/data licenses, WildChat privacy lineage, checkpoints, and the immutable run manifest unresolved.

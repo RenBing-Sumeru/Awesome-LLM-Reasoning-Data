@@ -1,0 +1,5 @@
+- Start with the data boundary: 1,186 WebArena-Lite seed samples and 12,200 ORM samples are described, but the complete online curriculum corpus is not released.
+- Read Algorithm 1 with Appendix B: 8 phases each retain 500 tasks, current rollouts train the policy, successful trajectories enter replay, and failed instructions seed later generation.
+- Keep the feedback contract mixed: executable WebArena-Lite rewards supervise original tasks and ORM construction; the learned ORM judges generated tasks from action history and final HTML.
+- Treat the roughly 103 MB `.pt` as a partial, unlicensed, serialized SFT artifact, not as all trajectories; inspect it in isolation before `torch.load`.
+- Pair the headline scores with the 165-task split, ORM error, cross-site regression, missing overlap manifest, missing failure corpus, and unpinned environment state.

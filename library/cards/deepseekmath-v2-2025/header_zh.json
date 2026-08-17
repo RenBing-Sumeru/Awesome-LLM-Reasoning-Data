@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepSeekMath-V2 以专家三级标签训练自然语言 proof verifier 和 meta-verifier，再通过多采样自动标注与 GRPO 形成生成—验证闭环；其价值是披露反馈型数据飞轮，但 LLM 判断与 64 次一致通过都不是 Lean/Isabelle 形式证明证书。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "自然语言数学证明生成—验证前沿报告与数据披露账本",
+  "best_for_ch": "研究自然语言 proof verifier、meta-verification、GRPO 数据飞轮和测试时搜索审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zhihong Shao、Yuxiang Luo、Chengda Lu、Z.Z. Ren、Jiewen Hu、Tian Ye、Zhibin Gou、Shirong Ma、Xiaokang Zhang",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

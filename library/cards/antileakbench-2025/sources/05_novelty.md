@@ -1,0 +1,1 @@
+Earlier live benchmarks mainly collect recent data. AntiLeakBench changes the acceptance rule: a fact and its support must be demonstrably post-cutoff, then the pipeline generates and refreshes the item without human authoring. The contribution is this provenance-linked construction contract.

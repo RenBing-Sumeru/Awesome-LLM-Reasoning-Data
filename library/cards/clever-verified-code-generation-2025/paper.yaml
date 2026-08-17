@@ -1,0 +1,109 @@
+id: clever-verified-code-generation-2025
+title: 'CLEVER: A Curated Benchmark for Formally Verified Code Generation'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Amitayush Thakur
+- Jasper Lee
+- George Tsoukalas
+- Meghana Sistla
+- Matthew Zhao
+- Stefan Zetzsche
+- Greg Durrett
+- Yisong Yue
+- Swarat Chaudhuri
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-verification
+- lean4
+- code-generation
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.13938
+  arxiv: https://arxiv.org/abs/2505.13938
+  code: https://github.com/trishullab/clever
+  data: https://huggingface.co/datasets/amitayusht/clever
+  project: null
+  huggingface: https://huggingface.co/datasets/amitayusht/clever
+  doi: https://doi.org/10.48550/arXiv.2505.13938
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated programming tasks based on HumanEval.
+  trace_author: Human benchmark curators.
+  answer_format: Natural-language task, held-out Lean specification, and Lean implementation/proof obligation.
+  process_fields:
+  - task description
+  - specification
+  - implementation
+  - Lean type-check result
+  - curation metadata
+  environment_or_substrate: Lean type-checking environment.
+  verifier_or_reward: Post-hoc Lean type checker.
+  terminal_predicate: The generated specification and implementation type-check and the implementation provably satisfies
+    the specification.
+recipe_metadata:
+  base_model: Benchmark evaluates few-shot and agentic language-model approaches.
+  teacher: Hand-crafted specifications and Lean checker.
+  generator: Manual curation of programming tasks and non-leaking specifications.
+  filtering_rule: Exclude test-case supervision, LLM-generated annotations, specification leakage, and vacuous solutions.
+  sampling_protocol: 161 curated end-to-end verified code-generation problems.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin Lean toolchain and use the official evaluation repository.
+  optimizer_or_scaffold: Separate specification generation and implementation-with-proof evaluation.
+audit:
+  source_mixture: Official arXiv paper, author GitHub repositories, Hugging Face dataset, and authors' NeurIPS publication
+    listing.
+  split: 161 hand-curated problems; dataset files are distributed in CSV form on Hugging Face.
+  decontamination: HumanEval-derived tasks and public Lean artifacts can enter model training data.
+  license: Hugging Face dataset card states MIT; verify code and HumanEval source terms.
+  lineage: https://github.com/trishullab/clever
+  known_failure_modes:
+  - Lean acceptance only covers the encoded specification.
+  - Specification generation remains difficult and can fail before code generation begins.
+  - HumanEval ancestry creates potential training-data overlap.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, benchmark GitHub, Hugging Face data card, evaluation repository, affiliations, and NeurIPS 2025 listing
+    were checked.
+inclusion_reason: CLEVER supplies hand-curated Lean specifications and proof-checked implementations for verified code generation.
+related: []
+tags:
+- lean4
+- formal-verification
+- verified-code
+- program-synthesis
+- '2025'
+one_line_summary: CLEVER evaluates end-to-end Lean verified code generation on 161 hand-curated tasks with held-out specifications
+  and post-hoc type checking.
+why_it_matters: It avoids test-only shortcuts and checks a complete specification-to-implementation contract in Lean.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, benchmark GitHub, Hugging Face data card, evaluation repository, affiliations, and NeurIPS 2025 listing
+    were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

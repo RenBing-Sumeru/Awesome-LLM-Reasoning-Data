@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Hunyuan-TurboS 报告 300 万条 SFT 指令、自适应长短 CoT、人工标注 GRM、代码沙箱反馈和两阶段 GRPO，但未公开来源 manifest 与多数关键复现配置。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿推理模型技术报告与数据披露账本",
+  "best_for_ch": "需要审计推理后训练数据、反馈组件与披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Tencent Hunyuan Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T10:28:02Z"
+}

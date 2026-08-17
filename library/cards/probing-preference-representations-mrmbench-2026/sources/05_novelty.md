@@ -1,0 +1,1 @@
+Existing RM benchmarks treat models as black boxes and compare chosen/rejected accuracy. MRMBench moves evaluation to preference representations and uses six-dimensional easy/hard probes to explain why a model succeeds or fails rather than adding another aggregate leaderboard.

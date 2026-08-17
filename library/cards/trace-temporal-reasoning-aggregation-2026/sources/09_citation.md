@@ -1,0 +1,1 @@
+Li, Jiakun, Xingwei He, Kefan Li, Hongzheng Chai, Hongyue Yu, and Yuan Yuan. 2026. Efficient Test-Time Scaling via Temporal Reasoning Aggregation. Findings of ACL 2026. https://arxiv.org/abs/2604.17304

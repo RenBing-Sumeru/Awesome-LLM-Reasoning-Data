@@ -1,0 +1,5 @@
+- Treat the 36T-token statement as an aggregate disclosure, not a source manifest or a licensed dataset release.
+- Separate the 3,995 query-verifier pairs and GRPO claim from any unreported verifier implementation, reward formula, rollout count, or calibration audit.
+- Record Qwen2.5-72B-Instruct, QwQ-32B, and human assessment only in the specific roles disclosed for cold start.
+- Check that rejection-sampled thinking data and curated non-thinking SFT data have no released examples, counts, prompts, or retention yields.
+- Keep thinking-budget behavior and benchmark results outside this Track 12 disclosure assessment.

@@ -1,0 +1,5 @@
+- 论文结论应锚定 arXiv:2605.04312v1 与冻结的 version-1.0.0 manifest：999 场 completed game、49 个 unique model，manifest SHA-256 为 `73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad`。
+- episode sequence 必须准确：七个不同模型；五轮 private sidebar、public pitch、private elimination vote/rationale、淘汰与 memory；随后两名 finalist pitch，由五名已淘汰玩家组成 jury 投票。
+- feedback contract 应读作 agent vote -> parser -> tally -> uniform random tie break -> terminal winner -> Bayesian Plackett-Luce posterior。它对胜者进行带 uncertainty 的 ranking，却不验证中间 reasoning 或 objective correctness。
+- live audit 与论文必须分开：2026 年 7 月 20 日，源含 1,270 games 与 62 条 ranking row，其中 59 条通过 display filter；源时间戳是 2026-07-02 15:26:25.976235+00:00。不得替换为更早的 live snapshot。
+- 复用仅限 evaluation/audit。data 是 CC BY 4.0，固定 commit 的 engine 是 MIT，匿名 replication ZIP 的 license 为 unknown；准确 generator/model binding、failed-run ledger、compute 与 decontamination 仍缺失。

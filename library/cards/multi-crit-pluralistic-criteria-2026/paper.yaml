@@ -1,0 +1,103 @@
+id: multi-crit-pluralistic-criteria-2026
+title: 'Multi-Crit: Benchmarking Multimodal Judges on Pluralistic Criteria-Following'
+year: 2026
+venue: CVPR 2026
+authors:
+- Tianyi Xiong
+- Yi Ge
+- Ming Li
+- Zuolong Zhang
+- Pranav Kulkarni
+- Kaishen Wang
+- Qi He
+- Zeying Zhu
+- Chenxi Liu
+- Ruibo Chen
+- Tong Zheng
+- Yanshuo Chen
+- Xiyao Wang
+- Renrui Zhang
+- Wenhu Chen
+- Heng Huang
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm-evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.21662
+  arxiv: https://arxiv.org/abs/2511.21662
+  code: null
+  data: https://huggingface.co/datasets/txiong23/Multi-Crit
+  project: https://multi-crit.github.io/
+  huggingface: https://huggingface.co/datasets/txiong23/Multi-Crit
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks and prompts documented by the paper and official release.
+  trace_author: Dataset authors, annotators, and evaluation pipeline as documented by the paper.
+  answer_format: Task input, candidate response, and task-specific judgment or rubric metadata.
+  process_fields:
+  - task
+  - response
+  - judgment or rubric
+  environment_or_substrate: The evaluation environment documented in the official release.
+  verifier_or_reward: Human/expert annotations, rubric-based judgment, or benchmark scoring documented by the paper.
+  terminal_predicate: A task-specific score or label under the released evaluation protocol.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: See the paper's documented construction procedure.
+  filtering_rule: See the paper and release documentation.
+  sampling_protocol: See the official release for splits and configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official paper page and the linked official data, code, or project resource.
+  split: Consult the official release.
+  decontamination: Assess public-task exposure before using a release as held-out evaluation.
+  license: Consult the official resource terms before reuse.
+  lineage: https://arxiv.org/abs/2511.21662
+  known_failure_modes:
+  - Rubric or judge quality can constrain the validity of resulting scores.
+  citation_status: verified
+  confidence: high
+  notes: Official title, authors, affiliation block, venue status, and available resource links were checked.
+inclusion_reason: Multi-Crit 提供准则级人工偏好及冲突感知指标，用于检验多模态评判模型能否遵循多元量规。
+related: []
+tags:
+- llm-judge
+- rubric
+- evaluation
+one_line_summary: Multi-Crit supplies criterion-level human preferences and conflict-aware metrics for testing whether multimodal
+  judges follow pluralistic rubrics.
+why_it_matters: Multi-Crit supplies criterion-level human preferences and conflict-aware metrics for testing whether multimodal
+  judges follow pluralistic rubrics.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and available release links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

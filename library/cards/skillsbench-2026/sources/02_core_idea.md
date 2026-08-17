@@ -1,0 +1,3 @@
+The one-sentence contribution is: SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks packages a named evaluation surface whose value depends on a pinned data object and feedback contract, not on leaderboard numbers alone.
+
+The core mechanism is to expose or define tasks with a scoring surface: mixed checker or judge scoring. The data object is task, model output, skill label, checker/judge result, and score. The direction label is benchmark / evaluation surface, with conservative downstream use as evaluation, audit. Closest comparisons are earlier or broader skill-evaluation, model-capabilities evaluations with a different source mix, scorer, or release policy.

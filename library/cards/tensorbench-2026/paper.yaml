@@ -1,0 +1,287 @@
+id: tensorbench-2026
+title: 'TensorBench: Benchmarking Coding Agents on a Compiler-Based Tensor Framework'
+year: 2026
+venue: arXiv preprint; NeurIPS 2026 submission
+authors:
+- Bobby Yan
+- Fredrik Kjolstad
+source_role:
+- benchmark
+- data_release
+- agent_environment
+- verifier_reward
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- coding_agents
+- repository_level_software_engineering
+- compiler_engineering
+- sparse_tensor_compilation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.05570
+  paper_pdf: https://arxiv.org/pdf/2606.05570
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2606.05570
+  code: null
+  benchmark_repository: null
+  target_repository: https://github.com/bobbyyyan/scorch
+  data: https://huggingface.co/datasets/tensorbench/tensorbench-1.0
+  project: https://tensorbench.org/
+  huggingface: https://huggingface.co/datasets/tensorbench/tensorbench-1.0
+  trajectories: null
+  predictions: null
+  doi: https://doi.org/10.48550/arXiv.2606.05570
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: A repository-level feature-addition or refactoring task anchored to a pinned Scorch commit, plus an evaluated
+    coding-agent episode whose final repository patch is graded by executable post-patch tests.
+  prompt_source: '199 natural-language tasks over Scorch: 194 feature-addition tasks and 5 refactoring tasks. The paper reports
+    primary categories API (99), Scheduler (37), Runtime (28), Format (20), IR (8), and Codegen (7). Feature descriptions
+    request both an implementation and agent-written tests; refactoring descriptions request behavior preservation.'
+  trace_author: Each evaluated coding agent produces its own structured session log, tool calls, file edits, final unified
+    diff, and any added tests. The paper evaluates seven scaffold-model pairs once on each task, for 1,393 agent-task runs.
+    The released trajectory inventory was claimed by the paper but was not retrievable from an accessible official repository
+    during this verification.
+  task_record:
+  - instance_id
+  - repo_id
+  - repo_url
+  - base_commit
+  - language
+  - setup_commands
+  - test_command
+  - test_timeout
+  - refactor_type
+  - description
+  - files
+  - task_type
+  - categories
+  episode_fields:
+  - task description and pinned base commit
+  - scaffold and model configuration
+  - structured session or trajectory log when emitted by the scaffold
+  - tool calls and observations
+  - final working-tree unified diff
+  - implementation changes
+  - agent-added tests
+  - pre-existing tests modified or deleted
+  - before-patch pytest output
+  - after-patch pytest output
+  - per-instance evaluation report
+  - pass or fail terminal outcome
+  - adversarial-audit flags and verdict where available
+  answer_format: A repository patch represented as a unified diff, usually including implementation code and agent-authored
+    tests for feature tasks; the evaluator also retains structured run output and a task-level report according to the paper's
+    artifact index.
+  process_fields:
+  - repository reads and searches
+  - shell commands and observations
+  - file edits
+  - test-writing actions
+  - elapsed wall-clock execution
+  - final patch statistics
+  - post-hoc tool-call categories
+  - audit-judge outputs
+  observation: The agent observes the frozen Scorch working copy and outputs from its native CLI tools inside a per-task Docker
+    container. The final grader observes the extracted diff and pytest outputs in a fresh container; it does not inspect a
+    hidden reference implementation.
+  action_or_tool_call: Native Claude Code, Codex CLI, Gemini CLI, or OpenHands file-read, search, edit, shell, and other scaffold
+    actions. The appendix normalizes these to Read, Edit, Search, Shell, and Other for trajectory analysis.
+  verifier_output: Before- and after-patch pytest outputs, per-test pass/fail counts, a task-level binary outcome, and a separate
+    LLM-judge audit for API mismatch, weakened existing tests, missing substantive edits, and vacuous added tests.
+  reward: 'Evaluation-only binary terminal feedback: a run succeeds iff no post-patch test fails. The paper does not train
+    an agent with this outcome or release it as a demonstrated RL reward.'
+  terminal_predicate: Apply the agent's unified diff to a fresh checkout at the task's pinned base commit, rebuild the C++
+    runtime, and run the full pytest suite; success holds exactly when every inherited and agent-added test passes (the public
+    data card expresses this as after.failed == 0).
+  provenance: Scorch working copies at selected commits -> LLM-agent task authoring across multiple sessions with prior tasks
+    supplied to discourage duplicates -> author inspection of all 199 descriptions -> one frozen Docker evaluation per agent-task
+    pair -> extracted diff -> fresh-container build and test -> terminal report and post-hoc trajectory/audit analysis. Of
+    the five refactor tasks, one is author-written and four are LLM-agent-authored.
+  environment_or_substrate: The open-source Scorch sparse+dense tensor compiler, pinned per task to one of five base commits,
+    executed in Docker with Python 3.11, a rebuilt C++ extension, and the upstream randomized, parametrized pytest suite.
+    Sparse and mixed operators are usually checked against dense PyTorch; optimization changes may be checked against an existing
+    unoptimized path.
+  release_shape: The verified Hugging Face artifact contains tensorbench.json with 199 task records, Dockerfile, run_tests.sh,
+    croissant.json, and a dataset card. The paper additionally says the public release contains benchmark/shared harness code,
+    image digest, predictions, trajectories, per-instance evaluation outputs, a flattened result matrix, and adversarial-audit
+    code; those additional files were not retrievable from the project-linked GitHub URL during this curation.
+recipe_metadata:
+  base_model: No policy is trained. Evaluated model/scaffold pairs are Claude Opus 4.6 and 4.7 with Claude Code; GPT-5.3-Codex,
+    GPT-5.4, and GPT-5.5 with Codex CLI at xhigh effort; Gemini 3.1 Pro Preview with Gemini CLI; and Qwen3-Coder-480B-A35B-Instruct
+    with OpenHands via OpenRouter.
+  teacher: unknown
+  generator: An undisclosed LLM agent authored all 194 feature descriptions and four of five refactoring descriptions by exploring
+    local Scorch checkouts under the fixed appendix prompts; the authors hand-wrote refactor_dedupe_ops. Generator model,
+    scaffold version, decoding settings, and seeds are not disclosed.
+  prompt_task_source: Local Scorch repository states at specified commit SHAs. The authoring prompt asks the generator to
+    explore the codebase for new feature or behavior-preserving refactor candidates, and prior task lists are supplied in
+    later sessions to discourage duplicates.
+  sampling_protocol: Successive authoring sessions across different base commits produced one description per candidate and
+    ultimately 194 feature tasks; four refactor tasks came from a separate LLM-agent pass and one refactor was human-authored.
+    Session count, candidate count, rejection count, and per-session acceptance yield are unknown. Evaluation uses one run
+    for every one of seven agents on every one of 199 tasks.
+  temperature: unknown
+  rollout_count: 1 evaluation episode per agent-task pair; 7 x 199 = 1,393 total runs.
+  inference_budget: Two-hour wall-clock cap per task. No explicit output-token cap beyond CLI defaults, except an OpenHands-side
+    max_output_tokens limit for the OpenRouter Qwen3 configuration. Provider context windows, retry behavior, and exact token
+    usage are not reported per episode.
+  search_or_scaffold: Native Claude Code, Codex CLI, Gemini CLI, and OpenHands execution loops inside task-specific containers.
+    Each receives the stored task description as a single user message; the harness adds no task-specific implementation guidance
+    beyond the common heading wrapper.
+  filtering_rule: Prior task lists are given to later authoring sessions to discourage duplicates, and the authors inspect
+    all 199 descriptions for plausible changes. No executable reference solution, maintainer-authored hidden test, formal
+    feasibility filter, or disclosed automatic quality score is used for task admission.
+  selection_threshold: unknown
+  optimizer_or_training_scaffold: null
+audit:
+  source_mixture: 194 LLM-agent-authored feature tasks, four LLM-agent-authored refactor tasks, and one author-written refactor
+    task, all targeting a single public Scorch codebase at five base commits. Aggregate construction lineage is described,
+    but generator-session and candidate-rejection logs are not released in the verified data artifact.
+  split: The paper treats all 199 tasks as one evaluation suite and does not define train, validation, or hidden-test splits.
+    The accessible Hugging Face card reports 199 rows; split naming and a separately held-out validation surface were not
+    verified.
+  decontamination: No empirical model-training-corpus overlap test or item-level decontamination procedure is reported. Section
+    2.6 says behavioral grading reduces the incentive to memorize a canonical patch but does not remove contamination by public
+    task descriptions, tests, trajectories, or successful patches, and recommends that benchmark artifacts not be deliberately
+    used for training.
+  benchmark_overlap: Tasks are newly authored against public Scorch repository states rather than mined from merged issue/patch
+    pairs, so no canonical reference patch is required. However, the codebase, task descriptions, public artifacts, agent-written
+    tests, and successful patches may enter future corpora; no benchmark-to-corpus or task-to-other-benchmark overlap manifest
+    is released.
+  lineage: Scorch commit -> LLM or human task description -> author inspection -> pinned task record -> single agent run ->
+    unified diff and structured log -> fresh-container build/test -> per-instance outcome -> optional LLM adversarial audit.
+    Record-level base commits exist in the task schema, but generator identity, authoring-session IDs, candidate rejection
+    history, and immutable cross-artifact manifest are unknown.
+  license: arXiv lists the paper under CC BY 4.0. The verified Hugging Face card states MIT for the benchmark scaffolding,
+    dataset, Dockerfile, and grading strategy, while saying the target Scorch codebase is governed by its own upstream license.
+    No LICENSE file was visible in the verified Hugging Face file list, and the accessible Scorch repository page did not
+    expose a license, so target-code and trajectory/prediction reuse rights remain unclear.
+  release_version: arXiv:2606.05570v1 submitted 2026-06-04; project page labels the suite TensorBench v1.0; verified Hugging
+    Face repository revision 0e74d35e39dbf67f3845710b232d0b1e7b54c335, last modified 2026-05-07. No accessible benchmark-harness
+    GitHub revision or cross-artifact checksum manifest was verified.
+  version_drift: The paper states that benchmark code, image digest, predictions, trajectories, evaluation outputs, and audits
+    are available through tensorbench.org, but the project's GitHub link resolved to https://github.com/bobbyyyan/tensorbench
+    and returned 404 during verification. The accessible Hugging Face repository contains the task dataset and lightweight
+    evaluation files, not the claimed prediction, trajectory, and per-instance evaluation directories.
+  verifier_or_judge_failure_modes:
+  - The post-patch suite has no independent hidden tests or human feature-correctness review; new behavior is constrained
+    mainly by tests written by the same agent that wrote the patch, so a pass can be a false positive for incomplete or misinterpreted
+    features.
+  - Inherited randomized tests are strong regression checks only over tested seeds, shapes, formats, and compiler paths; they
+    do not establish semantic completeness for a new API or transformation.
+  - Agents may add vacuous or API-mismatched tests, weaken existing tests, or submit cosmetic edits. The paper's audit found
+    especially high vacuous-test flag rates for Qwen3 and Gemini 3.1, making their reported pass rates loose upper bounds
+    on true task completion.
+  - The adversarial audit itself uses two LLM judges and has only moderate overall inter-judge agreement (Cohen's kappa 0.367);
+    binding-judge rules and unresolved disagreements affect which runs receive final audit labels.
+  - LLM-generated task descriptions can be underspecified, overspecified, or infeasible. Author inspection confirms plausibility
+    but does not replace reference implementations or maintainer-written validation tests.
+  - All tasks target one compiler codebase, so success does not establish generalization to other repositories, software domains,
+    build systems, or test-oracle regimes.
+  successful_and_failed_sample_retention: The paper says every agent-task pair's diff, agent output, trajectory log, pytest
+    outputs, and report are released, which would cover both successful and failed runs. This retention claim could not be
+    verified against accessible files because the linked benchmark repository returned 404 and the Hugging Face dataset does
+    not contain those run directories.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: medium
+  notes: Paper identity, authors, arXiv version/license, full text, appendices, project page, public leaderboard, Hugging
+    Face dataset card/file inventory/revision, and the Scorch target repository were checked. The entry remains partial because
+    the benchmark-harness repository, image digest, trajectories, predictions, evaluation outputs, and their licenses were
+    not accessible for file-level verification; NeurIPS 2026 is a submission claim, not a confirmed acceptance venue.
+  remaining_unknowns:
+  - generator LLM, scaffold, snapshot, decoding parameters, seeds, session count, candidate count, and rejection history
+  - official acceptance venue or review record beyond the NeurIPS 2026 submission statement
+  - accessible immutable benchmark and shared-harness repositories, tags, commits, and dependency lockfiles
+  - public Docker image reference and digest claimed by the paper
+  - complete predictions, trajectories, evaluation outputs, audit cache, flattened matrix, manifests, and checksums
+  - trajectory and prediction licenses plus the target Scorch codebase license
+  - train/dev/hidden-test split policy and representative independently authored validation tests
+  - empirical decontamination and overlap checks for public tasks, tests, trajectories, and patches
+  - provider-dated model snapshots, exact token costs, seeds, retries, and episode-level resource accounting
+inclusion_reason: TensorBench exposes an executable repository-agent feedback contract in which a pinned codebase, full working
+  trajectory, final patch, inherited regression suite, agent-authored feature tests, and binary terminal predicate can be
+  studied together. It is especially useful for auditing where environmental verification ends and self-authored-test gaming
+  or incomplete feature coverage begins.
+related: []
+tags:
+- environment-agent-trajectory-data
+- coding-agent-benchmark
+- repository-level-software-engineering
+- compiler
+- sparse-tensors
+- executable-evaluation
+- programmatic-verification
+- agent-authored-tests
+- trajectory-analysis
+- verifier-gaming
+- evaluation-only
+category_ids:
+- environment_agent_trajectory_data
+one_line: TensorBench evaluates seven coding agents on 199 pinned Scorch feature/refactor tasks using fresh-container pytest
+  outcomes and trajectory audits, but its self-authored feature tests and currently inaccessible run artifacts limit correctness
+  and replay claims.
+one_line_summary: TensorBench evaluates seven coding agents on 199 pinned Scorch feature/refactor tasks using fresh-container
+  pytest outcomes and trajectory audits, but its self-authored feature tests and currently inaccessible run artifacts limit
+  correctness and replay claims.
+why_it_matters: It turns repository modification into a concrete environment episode with a reproducible terminal predicate
+  and preserves enough process structure to compare tool use, regressions, and near-misses; it also demonstrates that an executable
+  verifier can remain incomplete when the evaluated agent authors the tests for the new behavior.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: false
+  project_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  target_repository_verified: true
+  benchmark_repository_files_verified: false
+  trajectory_contents_verified: false
+  prediction_contents_verified: false
+  evaluation_outputs_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv, PDF/appendices, project pages, leaderboard, Hugging Face dataset page and API metadata, and the Scorch
+    repository were verified. Artifact verification applies to the task dataset, not to the paper-claimed harness, prediction,
+    trajectory, evaluation-output, image, or audit directories, whose project-linked GitHub repository returned 404.
+curation_level: L3_summary_ready
+needs:
+- 'needs_artifact_retrieval: restore or expose the benchmark/codebench repositories and verify the paper-claimed image digest,
+  predictions, trajectories, evaluation outputs, audits, flattened results, manifests, and checksums'
+- 'needs_license: provide file-level licenses for task data, harness code, trajectories, predictions, evaluation outputs,
+  audit judgments, and the pinned Scorch revisions'
+- 'needs_generator_metadata: disclose the authoring LLM/scaffold, snapshots, decoding, seeds, session counts, generated candidates,
+  rejection reasons, and acceptance yield'
+- 'needs_hidden_validation: add independently authored hidden or maintainer validation tests for a representative subset and
+  estimate the terminal predicate''s false-positive rate'
+- 'needs_split_and_decontamination: define evaluation/validation splits and publish overlap checks plus a policy for public
+  tasks, tests, trajectories, and patches entering training corpora'
+- 'needs_replay: pin the benchmark harness, shared grading infrastructure, Docker digest, Scorch commits, dependency locks,
+  provider aliases/run dates, retries, and representative cold-replay results'
+- 'needs_venue: replace the NeurIPS 2026 submission note only if an official acceptance or proceedings page becomes available'
+card: null

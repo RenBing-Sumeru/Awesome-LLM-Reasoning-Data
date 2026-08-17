@@ -1,0 +1,4 @@
+The paper reports the completed controlled program at platform scale: more than 120 training datasets, 600+ training runs, 10000+ evaluation runs, 40M processed data points, and evaluation on 22+ benchmarks. Its analyses report complexity–performance trade-offs, benchmark redundancy, and genealogical relations among datasets. These results establish that the arena can produce comparative measurements under its chosen 7B–8B SFT scaffold.
+
+They do not establish a model-independent ranking of intrinsic dataset quality. A fixed recipe improves comparability but can underfit datasets that need different schedules, mixtures, or objectives. Downstream performance is a proxy conditioned on base model, hyperparameters, benchmark selection, overlap, and evaluator versions. The official toolkit and Hugging Face organization are live, but the paper-era aggregate cannot be reconstructed confidently without an immutable manifest.
+

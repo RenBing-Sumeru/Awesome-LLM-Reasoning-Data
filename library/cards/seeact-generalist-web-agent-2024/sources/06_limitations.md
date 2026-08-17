@@ -1,0 +1,5 @@
+The main limitation is environment instability. Live websites change, block automation, require accounts, alter page layouts, or expose different content by location and date. A reproduced online score can therefore fail because the environment moved, not because the model or grounding method is worse.
+
+The second limitation is attribution. A web-agent score mixes model reasoning, prompt design, candidate generation, grounding policy, action budget, browser tool behavior, and success checking. Manual or oracle grounding can reveal planning potential, but it is not the same contract as an autonomous agent. Offline action matching is more stable, yet it may reward matching a historical human trace rather than completing the current live task.
+
+For data reuse, unknowns include exact redistribution terms for every artifact, how future model training may contaminate public tasks, and whether third-party live services can be accessed under the same conditions. Treat SeeAct as a strong environment/grounding audit card, not as a fully controlled long-term benchmark snapshot.

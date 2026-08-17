@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SeeAct 研究视觉 grounding 的真实网页智能体和 Multimodal-Mind2Web 数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICML 2024 / arXiv 的 web-agent grounding paper",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Boyuan Zheng 等（The Ohio State University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T20:15:54Z"
+}

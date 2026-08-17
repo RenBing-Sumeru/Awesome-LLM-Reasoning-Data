@@ -1,0 +1,1 @@
+既有基线是 AITW 式动作轨迹和通用 CoT/CoA prompting。AitZ 的变化是给 screen-action pair 附加动作相关语义标签，把观察屏幕、思考动作、描述动作和描述动作结果拆成独立字段。方向信号是 GUI agent 的过程级监督，可用于 prompting、微调或错误分析。不是新的部分包括 Android 轨迹、下一步动作预测、截图和自然语言指令。复用前要查标注一致性、隐藏 prompt 选择、下载链接持久性、split 泄漏、模型 API 漂移，以及 CoAT 标签到底训练了可迁移行为还是只解释演示者动作。

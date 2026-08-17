@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VisualWebArena 将视觉网页任务变成可审计的浏览器智能体评测表面。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "ACL 2024 的 multimodal web-agent benchmark",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jing Yu Koh 等（Carnegie Mellon University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T13:07:52Z"
+}

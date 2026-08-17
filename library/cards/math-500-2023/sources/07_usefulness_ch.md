@@ -1,0 +1,1 @@
+MATH-500 适合作为数学推理、verifier selection 和答案抽取审计的小型回归集。复用记录应保留 problem id、可用的 subject/level、source split、prompt、模型样本、final-answer extractor、grader 版本、正确性，以及搜索/重排元数据。它是有用的基线坐标，但记录里必须说明用途是 evaluation-only、verifier selection，还是 training-data filtering。

@@ -1,0 +1,5 @@
+- Read Paper §§3.3–3.4 and OSF `leak_test.py`/`metric.py` together: the object is one static path-list answer with answer-level set feedback, not an agent trajectory.
+- Keep model snapshots exact: Claude 3.5 Sonnet is `claude-3-5-sonnet-20240620`, Claude 3.7 Sonnet is `claude-3-7-sonnet-20250219`, and the released script's 3.7 Haiku default must be overridden.
+- Keep the headline ratios scoped: about 6× versus BeetleBox and 3× versus SWE-rebench apply to issue-only complete coverage; the file-structure condition is described as about 4× and 2×.
+- Treat the findings as behavioral evidence consistent with memory, not proof that a particular SWE-Bench-Verified issue occurred in Claude training data.
+- Before reuse, resolve the OSF license and snapshot, recover the missing BeetleBox labels and September recipe, pin repository path manifests, and audit parser and overprediction effects.

@@ -1,0 +1,1 @@
+Post-training methods differ not only by algorithm name, but by who produced the trajectories and which states the model learns from. The off-policy/on-policy distinction reveals when a system relies on existing data and when it continues learning from experience it generated itself.

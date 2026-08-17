@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "受控审计显示：GRPO 可在随机或错误奖励下放大 Qwen 的既有推理行为并提高数学分数，但这一效应常无法迁移到其他模型家族。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "RLVR 奖励信号与优化机制审计论文",
+  "best_for_ch": "需要判断 RLVR 增益是否真由奖励信息带来、或准备复现数学推理强化学习的人。",
+  "confidence_ch": "高：已核对 arXiv v2 与作者公开代码仓库；数据目录的独立许可未披露。",
+  "authors_ch": "Rulin Shao, Shuyue Stella Li, Rui Xin, Scott Geng, Yiping Wang, Sewoong Oh, Simon Shaolei Du, Nathan Lambert, Sewon Min, Ranjay Krishna, Yulia Tsvetkov, Hannaneh Hajishirzi, Pang Wei Koh, Luke Zettlemoyer",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

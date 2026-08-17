@@ -1,0 +1,117 @@
+id: android-in-the-wild-device-control-2023
+title: 'Android in the Wild: A Large-Scale Dataset for Android Device Control'
+year: 2023
+venue: NeurIPS 2023 Datasets and Benchmarks Track / arXiv
+authors:
+- Christopher Rawles
+- Alice Li
+- Daniel Rodriguez
+- Oriana Riva
+- Timothy Lillicrap
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- android
+- device-control-demonstrations
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2023/hash/bbbb6308b402fe909c39dd29950c32e0-Abstract-Datasets_and_Benchmarks.html
+  arxiv: https://arxiv.org/abs/2307.10088
+  doi: https://doi.org/10.48550/arXiv.2307.10088
+  code: https://github.com/google-research/google-research/tree/master/android_in_the_wild
+  data: https://github.com/google-research/google-research/tree/master/android_in_the_wild
+  project: https://github.com/google-research/google-research/tree/master/android_in_the_wild
+  huggingface: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2023/hash/bbbb6308b402fe909c39dd29950c32e0-Abstract-Datasets_and_Benchmarks.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/21519-/bibtex
+data_object:
+  prompt_source: official Android in the Wild paper and Google Research repository
+  trace_author: Google Research/DeepMind authors and collected Android demonstrations
+  answer_format: Android episodes, screenshots, natural-language instructions, actions, and device-control traces
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: real Android device-control demonstrations with screenshots, instructions, and actions
+  verifier_or_reward: dataset replay/evaluation over action labels and task episodes
+  terminal_predicate: dataset replay/evaluation over action labels and task episodes
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: human Android device-control demonstrations
+  generator: Android in the Wild data collection pipeline
+  filtering_rule: pin GCS bucket version, download permissions, split, and license
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://proceedings.neurips.cc/paper_files/paper/2023/hash/bbbb6308b402fe909c39dd29950c32e0-Abstract-Datasets_and_Benchmarks.html;
+    https://proceedings.neurips.cc/paper_files/paper/2023/file/bbbb6308b402fe909c39dd29950c32e0-Paper-Datasets_and_Benchmarks.pdf;
+    https://arxiv.org/abs/2307.10088; https://github.com/google-research/google-research/tree/master/android_in_the_wild
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://proceedings.neurips.cc/paper_files/paper/2023/hash/bbbb6308b402fe909c39dd29950c32e0-Abstract-Datasets_and_Benchmarks.html'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS proceedings verify NeurIPS 2023 Datasets and Benchmarks Track publication in Advances in Neural Information
+    Processing Systems 36, pages 59708-59728; GCS bucket access, license, split hashes, and download reproducibility still
+    need audit.
+inclusion_reason: it is a large real-device mobile control demonstration dataset
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- android
+- device-control-demonstrations
+one_line: Android in the Wild provides large-scale real Android device-control demonstration episodes.
+why_it_matters: it is a large real-device mobile control demonstration dataset
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Android in the Wild provides large-scale real Android device-control demonstration episodes.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: NeurIPS proceedings, arXiv, and Google Research repository verify authors, Google/DeepMind institutions, venue status,
+    and dataset/code entry.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 67
+  primary_category_id: environment_agent_trajectory_data

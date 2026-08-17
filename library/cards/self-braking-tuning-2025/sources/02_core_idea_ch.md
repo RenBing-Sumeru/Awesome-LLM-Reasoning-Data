@@ -1,0 +1,1 @@
+SBT 用加权 overthink score 评估每条轨迹。其中，推理效率分量比较首次得到正确答案所需步骤与全部思考步骤；标记分量统计人工整理的反思/验证表达，论文报告两者权重分别为 90% 和 10%。SBT-E 保留 Foundation Solution 与一个 Evolution Solution，并 mask 下一段开头；SBT-D 逐步加入推理并重算得分，在超过主阈值（报告为 0.2）时停止，再 mask 后续一个得分区间。两者都在边界插入类似顿悟的自然语言制动句，训练损失只覆盖未 mask token。

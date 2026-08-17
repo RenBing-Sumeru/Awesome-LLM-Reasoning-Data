@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SeRL 从 500 条 seed instructions 出发，在线生成问题，以 16 个响应的 Math-Verify 等价聚类和多数一致构造二元奖励，再用 Reinforce++ 更新同一 policy；但公开物只有代码与 prompt snapshots，缺少论文运行的完整 responses、rewards、failures、logs、checkpoints 与 manifests，并存在 paper/code 配置漂移和 2,802 条 exact duplicate prompts。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "有限 seed 数据的在线 self-play RLVR 构造 recipe、programmatic self-reward 与部分数据发布",
+  "best_for_ch": "研究 self-instruction、self-consensus reward、online curriculum、reward hacking，或审计 paper-code-data 一致性与 trajectory release 完整性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Wenkai Fang、Shunyu Liu、Yang Zhou、Kongcheng Zhang、Tongya Zheng、Kaixuan Chen、Mingli Song、Dacheng Tao",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

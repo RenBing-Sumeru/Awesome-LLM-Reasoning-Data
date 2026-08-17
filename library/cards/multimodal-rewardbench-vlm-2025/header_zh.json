@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "5,211 个图文提示—优/劣回答三元组，覆盖推理、知识、安全、VQA 等六类反馈面，是训练和审计视觉语言判别器的基础基准。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "视觉语言奖励模型的专家标注评测基准论文",
+  "best_for_ch": "需要训练或审计视觉语言奖励模型在正确性、偏好、知识、推理、安全与视觉问答中表现的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Michihiro Yasunaga, Luke Zettlemoyer, Marjan Ghazvininejad",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T19:04:03Z"
+}

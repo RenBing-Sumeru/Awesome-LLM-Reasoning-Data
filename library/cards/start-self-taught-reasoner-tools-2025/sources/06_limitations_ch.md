@@ -1,0 +1,16 @@
+- **没有可复用发布。** 没有核验到官方 `D_seed`、`D_START`、接收或拒绝轨迹、代码库、START-0 或 START checkpoint、Python 环境、生成日志、dataset card、model card、项目页或不可变 release。该工作是描述 recipe 的开放论文，不是开放数据或环境 artifact。
+- **规模单位含混。** `D_seed=10K` 与 `D_START=40K` 被报告为样本数，但论文没有区分 unique prompt 与多条 trajectory。unique count、candidate count、接收 yield、来源分配、重复项和 hash 均未知。
+- **打印总数矛盾。** 表 9 的六个来源分项合计 46,969，而不是报告的 49,969，相差 3,000；打印的数学来源合计 36,895，而第 3.1 节报告 40K math problems，第 2.2 节又称 `D_START` 含 40K math reasoning samples。报告的 74% 数学、26% 代码比例也无法由这些分项重建。
+- **Verifier 不可审计。** 最终答案抽取、数学等价、代码测试、parsing failure、partial-credit 行为和 checker 版本均未知。Curator inference：false accept 可能接收错误轨迹，false reject 可能删除有用纠错；aggregate benchmark gain 无法测量任一错误率。
+- **环境不可重放。** Python package version、sandbox、filesystem 与 network access、timeout、resource limit、state reset、exception serialization 和确定性执行均未披露。Curator inference：环境漂移或不安全生成代码可能同时改变选择结果与模型行为。
+- **采样与修改不完整。** 论文称每个 hint 通过多次 sampling iteration 检查，却没有给出 rollout count、聚合规则、seed、hint mixture 或保留的 paraphrase manifest。图 1 包含 `score -> filter -> modify`，但没有定义通用 modification algorithm 或 edit provenance。
+- **解码陈述矛盾。** 第 3.4 节指定 top-p 0.95 与 temperature 0.6，附录 H 则指定 greedy decoding。论文没有把这些设置映射到数据生成和各项评测，因此实际 `D_seed` 与 `D_START` sampling protocol 仍为 unknown。
+- **失败数据被丢弃。** 论文报告 10.4% correct-to-wrong、67.0% wrong-to-wrong，并提到重复与错误执行过滤，却没有发布底层失败、denominator、拒绝原因或 filter output。这阻碍选择偏差分析，也无法利用信息丰富的负面轨迹。
+- **Hint 可能损害行为。** 10.4% correct-to-wrong rate 表明干预会破坏正确解；重复 hint 在 GPQA 与 MATH500 上可能进入平台期或降低准确率；hard LiveCodeBench 只提高 2 分。增加 hint intervention 并非一致更好。
+- **工具触发不等于工具质量。** 100% Python trigger rate 只测量模型是否输出工具调用，不说明调用是否必要、安全、高效或语义有益。Curator inference：优化该 proxy 可能奖励多余计算或利用执行环境特性。
+- **去污染不可复现。** 作者引用 Qwen2.5-Math 方法，却没有发布本地 normalization、threshold、删除数量、benchmark coverage 或 overlap ledger。LiveCodeBench 的时间分割不能处理语义重叠、上游模型 pretraining，也不能覆盖数学与科学 benchmark。
+- **许可未解决。** ACL 论文使用 CC BY 4.0，但该许可不覆盖未发布 prompt、生成轨迹、环境或 checkpoint。论文没有给出来源特定或生成数据 license 与 derivative-use 条款，而 checklist 只是把来源链接指作 licensing documentation。
+- **安全分析缺失。** Responsible NLP Checklist 的 A2 把 potential-risk discussion 标为 absent。论文没有评估执行不可信生成代码、unsafe library、environment escape、filesystem 或 network misuse，也没有分析工具错误传播。
+- **统计证据有限。** 没有报告 confidence interval、独立训练 rerun、seed-level variance 或 checkpoint-selection policy。对 benchmark 多次采样求平均不能替代 training-run uncertainty。
+- **Benchmark 表现不能认证数据。** 报告提升同时混合 intervention、采样、选择、轨迹格式、full-parameter SFT 和评测预算；它不能证明逐条正确性、trace faithfulness、权利、provenance、污染控制、privacy 或 consent，也不能证明可复现。
+- **人工工作披露不足。** Checklist 把人工工作描述为作者进行的 simple annotation，但论文没有说明哪些记录被人工创作或修改、具体 instruction、workload、adjudication 或 quality check。

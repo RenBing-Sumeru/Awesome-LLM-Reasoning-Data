@@ -1,0 +1,122 @@
+id: webarena-realistic-web-environment-2023
+title: 'WebArena: A Realistic Web Environment for Building Autonomous Agents'
+year: 2023
+venue: Published as ICLR 2024 in arXiv PDF; WebArena-x index also labels WebArena as NeurIPS 2024 Oral
+authors:
+- Shuyan Zhou
+- Frank F. Xu
+- Hao Zhu
+- Xuhui Zhou
+- Robert Lo
+- Abishek Sridhar
+- Xianyi Cheng
+- Tianyue Ou
+- Yonatan Bisk
+- Daniel Fried
+- Uri Alon
+- Graham Neubig
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-agents
+- interactive-agent-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2307.13854
+  project: https://webarena.dev/og/
+  code: https://github.com/web-arena-x/webarena
+  data: https://github.com/web-arena-x/webarena
+  arxiv: https://arxiv.org/abs/2307.13854
+  doi: https://doi.org/10.48550/arXiv.2307.13854
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: authors build realistic self-hostable websites from common domains and a benchmark task suite.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: records include natural-language web tasks, website environments, browser trajectories, and validation programs.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: browser tasks on self-hosted realistic websites with functional checks
+  verifier_or_reward: final state is graded by annotated programs and functional correctness checks.
+  terminal_predicate: final state is graded by annotated programs and functional correctness checks.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: authors build realistic self-hostable websites from common domains and a benchmark task suite.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: interactive_agent_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2307.13854;
+    https://arxiv.org/pdf/2307.13854; https://webarena.dev/; https://webarena.dev/og/'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2307.13854'
+  known_failure_modes:
+  - service drift, validation coverage, observation modality, seeded credentials, and action budgets can affect scores.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv PDF labels ICLR 2024, while WebArena-x index labels WebArena as NeurIPS 2024 Oral. Official sources report
+    812 long-horizon tasks over four website domains, GPT-4 14.41%, and human 78.24%.
+inclusion_reason: 'high: canonical web-agent benchmark with environment and terminal-predicate audit risks.'
+related: []
+tags:
+- benchmark
+- interactive_agent_benchmark
+- web-agents
+why_it_matters: Canonical reproducible web-agent benchmark.
+status: verified
+needs:
+- 'needs_metadata: verify license, exact task split/version, and official repository path'
+- 'needs_audit: inspect validation programs, service pinning, credentials/data handling, and action budget policy'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WebArena exposes browser tasks on self-hosted realistic websites with functional checks as an auditable
+  evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv PDF labels ICLR 2024, while WebArena-x index labels WebArena as NeurIPS 2024 Oral. Official sources report
+    812 long-horizon tasks over four website domains, GPT-4 14.41%, and human 78.24%.
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 22
+  primary_category_id: environment_agent_trajectory_data
+  decision: update_existing_card

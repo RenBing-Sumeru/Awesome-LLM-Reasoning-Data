@@ -1,0 +1,1 @@
+Earlier formal-verification work often checks only a complete answer or proof, making it hard to locate the exact flaw in natural-language reasoning. Safe moves formalization to individual steps and feeds checker outcomes into later correction. The change is the stepwise translate-and-verify supervision point rather than Lean, proof search, or the language model itself.

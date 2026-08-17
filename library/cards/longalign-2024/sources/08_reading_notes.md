@@ -1,0 +1,5 @@
+- Positioning: LongAlign-10k packages long documents, instructions, and answers with length-aware training metadata.
+- Method handle: LongAlign releases 10K long-context instruction records and combines them with length-grouped batching and loss weighting so long and short examples can be trained without excessive padding or sequence bias.
+- Data handle: 10,000 long-context instruction records; each record contains long context, instruction, assistant answer, and length or packing-group metadata.
+- Evidence anchor: Under the paper's matched long-context backbone, LongAlign data and its training recipe improve long-document QA and retrieval benchmarks over position-extension-only and naive batching baselines; ablations separate data length diversity from packing efficiency.
+- Reuse decision: best for aligning an extended-context base model to follow long-document instructions; first audit models can exploit position and document-template cues without integrating distant evidence.

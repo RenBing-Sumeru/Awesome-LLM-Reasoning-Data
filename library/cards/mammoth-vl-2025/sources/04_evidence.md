@@ -1,0 +1,3 @@
+# Evidence
+
+**Claim:** self-filtering materially improves the utility of rewritten records. **Controlled setup:** Appendix Table A1 trains the same Qwen2.5-1.5B-Instruct-based model under identical conditions on 1M random records sampled before versus after filtering. **Result:** the 15-benchmark average rises from 42.6 to 49.9; ChartQA moves from 26.8 to 63.0 and DocVQA from 71.7 to 76.5, although MMMU-Pro Vision falls from 15.5 to 13.7. **Boundary:** this isolates the reported filtering decision at 1M scale, but the filter is the same model family used for rewriting, and gains do not establish the correctness of every retained rationale.

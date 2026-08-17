@@ -1,0 +1,180 @@
+id: rest-mcts-2024
+title: 'ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search'
+year: 2024
+venue: NeurIPS
+authors:
+- Dan Zhang
+- Sining Zhoubian
+- Ziniu Hu
+- Yisong Yue
+- Yuxiao Dong
+- Jie Tang
+source_role:
+- data_release
+- process_supervision
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- process_reward
+- trajectory_value
+domains:
+- math
+- science
+- reasoning
+training_use:
+- sft
+- process_supervision
+- reward_modeling
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2406.03816
+  arxiv: https://arxiv.org/abs/2406.03816
+  code: https://github.com/THUDM/ReST-MCTS
+  data: https://huggingface.co/datasets/zd21/ReST-MCTS-Llama3-8b-Instruct-Policy-1st
+  project: https://rest-mcts.github.io/
+  huggingface: https://huggingface.co/datasets/zd21/ReST-MCTS-Llama3-8b-Instruct-PRM-1st
+  doi: https://doi.org/10.52202/079017-2066
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/76ec4dc30e9faaf0e4b6093eaa377218-Abstract-Conference.html
+  bibtex: null
+data_object:
+  prompt_source: Answer-keyed mathematics and science questions. Initial value data use MATH training questions and 11,554
+    lean-science questions from SciInstruct. The policy-generation pool is selected from the training sets of MATH, GSM8K,
+    and TheoremQA; exact item IDs, proportions, and release-to-source mappings are unknown.
+  trace_author: 'The current policy model generates reasoning steps inside MCTS*. Reported policy backbones are Llama3-8B-Instruct,
+    Mistral-7B: MetaMATH, and SciGLM-6B.'
+  answer_format: The construction object is a question with a reference answer and a tree of partial solutions and completed
+    trajectories. Public policy data flatten a selected complete trajectory into instruction/output; public value data flatten
+    a problem-plus-partial-solution and scalar target into prompt_answer/label.
+  process_fields:
+  - question and reference final answer
+  - partial solution / MCTS* node state
+  - generated next reasoning step
+  - parent-child tree relation
+  - node visit count
+  - predicted quality value
+  - minimum observed reasoning distance to a correct answer
+  - terminal-answer verdict
+  - selected complete trajectory
+  - released policy fields instruction and output
+  - released value fields prompt_answer and label
+  environment_or_substrate: Offline MCTS* over reasoning-step nodes, followed by unfinished-branch pruning, terminal-answer
+    verification, search-derived value-target inference, and iterative policy/value-model training.
+  verifier_or_reward: A learned process value model guides selection, expansion, greedy rollout, backup, and early stopping.
+    Completed traces are checked against reference answers by string matching or, when learned equivalence judgment is used,
+    GPT-4. The exact judge revision, complete judging instruction, and error analysis are unknown.
+  terminal_predicate: A completed trajectory enters positive policy data only when its extracted final answer matches or is
+    judged equivalent to the reference answer. Separately, search can stop before that acceptance check when a node value
+    reaches the reported 0.9 threshold.
+recipe_metadata:
+  base_model: 'Policy backbones are Llama3-8B-Instruct, Mistral-7B: MetaMATH, and SciGLM-6B. Mistral-7B is the value-model
+    backbone for the Llama3 and Mistral policy lines, and ChatGLM3-6B is used for the SciGLM line.'
+  teacher: There is no single teacher for all signals. Reference answers supply terminal feedback; GPT-4 is reported for terminal
+    cases requiring learned equivalence judgment; the current policy supplies self-critique; and tree reachability plus observed
+    reasoning distance produce scalar value targets.
+  generator: The current policy expands reasoning-step branches and performs greedy rollouts within MCTS*, guided by the current
+    process value model.
+  filtering_rule: Remove unfinished branches, verify the remaining terminal answers, and use verified-correct complete trajectories
+    as positive SFT data. Derive value data from partial solutions in the pruned search tree according to observed reachability
+    and distance to a verified-correct terminal.
+  sampling_protocol: Each search iteration uses a value-and-visit upper-confidence rule, expands b candidate next steps, greedily
+    rolls out the best-valued continuation for at most m steps, and backs values up with a weighted average. Appendix E.2
+    reports evaluation defaults T=50, b=3, m=2, alpha=0.5, and an ending threshold of 0.9. Exact settings for every released
+    dataset are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The reported default evaluation budget is 50 search iterations, expansion branch factor 3, and rollout
+    depth cap 2. Per-example token totals and exact construction budgets for the public datasets are not disclosed.
+  optimizer_or_scaffold: Mutual iterative self-training updates the policy on verified positive trajectories and the value
+    model on search-derived partial-solution targets. Appendix E.1 reports MSE, AdamW, and learning rate 1e-6 for initial
+    value training; the repository README lists different backbone-specific learning rates, so the paper-matched configuration
+    requires reconciliation.
+audit:
+  source_mixture: 'Initial science value data use 11,554 lean-science SciInstruct questions; initial math value data use MATH
+    train with breadth-first-search traces from Mistral-7B: MetaMATH. Policy generation uses questions selected from MATH,
+    GSM8K, and TheoremQA train. Exact item IDs, proportions, and the mapping into each released iteration are unknown.'
+  split: At verified Hub revisions, ReST-MCTS-PRM-0th has 473,833 rows (426,449 train / 23,692 validation / 23,692 test),
+    the Llama3 first-iteration policy release has 33,722 train rows, and the Llama3 first-iteration PRM release has 673,492
+    rows (626,108 train / 23,692 validation / 23,692 test). Split rationale and question-level disjointness are unknown.
+  decontamination: unknown
+  license: Hugging Face metadata tags ReST-MCTS-PRM-0th as Apache-2.0 and the checked Llama3 first-iteration policy data,
+    PRM data, and policy checkpoint as CC-BY-4.0. The official code repository has no visible software license at the verified
+    revision. Compatibility with upstream question, model, and generated-derivative terms remains unaudited.
+  lineage: Answer-keyed question -> policy-generated MCTS* tree -> unfinished-branch pruning -> terminal-answer verification
+    -> verified complete trajectories for policy SFT plus search-derived partial-solution values for value-model training
+    -> next policy/value-model iteration.
+  known_failure_modes:
+  - A correct terminal answer does not establish that every retained intermediate step is valid.
+  - Search-derived values measure observed reachability and progress under one policy and finite budget, not policy-independent
+    logical truth.
+  - A falsely high learned value can stop search at the 0.9 threshold; self-critique comes from the current inference model
+    and is not an independent verifier.
+  - String matching can mishandle equivalent formats, while the learned terminal judge revision and complete instruction are
+    undisclosed.
+  - The first visible public policy row reaches the correct answer through unsupported geometric claims, providing a concrete
+    single-sample warning about terminal-only acceptance.
+  - Public two-column policy and value tables omit tree topology, rejected branches, visits, terminal-verdict provenance,
+    and per-example search settings.
+  - Initial science labels assume supplied solutions are reliable and concise and treat added steps from a weaker generator
+    as incorrect.
+  - Policy and value models train on each other's searched outputs, so early search or value errors can be reinforced across
+    iterations.
+  - Search cost grows with iteration and branching; the paper reports 108 seconds per question for its basic MCTS* setting.
+  - No decontamination analysis or question-level split provenance is reported for the released artifacts.
+  citation_status: verified
+  confidence: high
+  notes: 'Official NeurIPS proceedings, arXiv, project page, GitHub repository, and Hugging Face APIs were checked on 2026-07-22.
+    Verified revisions: repository 2d5f488c3d6e24f99d50a9860e818383b1bb5883; ReST-MCTS-PRM-0th 4318a214504f641641e5e35bb0471a8ff0544295;
+    Llama3 policy data ff8f39c4eff17a0462a30b0cd76a2de84e641951; Llama3 PRM data 94eb8649c399ce57090d65749ac7affc67a92719;
+    Llama3 policy checkpoint e871254cca401dc48cb0cc64caa21180e19e5db1. No code-repository license or question-level release
+    provenance was found at these revisions.'
+  metadata_status: carded
+inclusion_reason: ReST-MCTS* is an open construction recipe that converts answer-keyed reasoning questions into both selected
+  policy trajectories and search-derived partial-solution value targets, directly serving the Data Construction track's focus
+  on auditable generation, feedback, selection, and release boundaries.
+related: []
+tags:
+- primary-link-checked
+- artifact-verified
+- process-reward
+- tree-search
+- self-training
+- math
+- science
+status: verified
+card: null
+needs:
+- 'unknown: release question identifiers, source-mixture mapping, and question-disjoint split policy'
+- 'unknown: raw tree topology, rejected branches, visits, verdict provenance, and per-example search budgets'
+- 'unknown: exact GPT-4 judge revision, complete judging instruction, and judge-error analysis'
+- 'unknown: paper-matched value-model settings and official code-repository license'
+- 'unknown: decontamination and benchmark-overlap analysis'
+one_line_summary: ReST-MCTS* uses value-guided tree search and terminal-answer verification to create positive policy trajectories
+  and scalar partial-solution targets for mutual self-training.
+why_it_matters: For the Data Construction and Open Release Recipes track, the paper exposes a loop from prompt sourcing through
+  tree search, terminal feedback, trajectory selection, value-label inference, and iterative reuse; its flattened public tables
+  also make the missing lineage needed for process-level audit explicit.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings metadata and DOI, arXiv paper, project and repository, Hub revisions, public schemas, row counts,
+    and license tags were verified.
+category_ids:
+- data_construction_open_release_recipes
+- process_trace_supervision_data

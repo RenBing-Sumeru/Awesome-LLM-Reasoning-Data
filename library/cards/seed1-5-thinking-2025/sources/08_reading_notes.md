@@ -1,0 +1,5 @@
+- Treat the four reported data families as a disclosure map, not as released corpora.
+- Keep the 400k SFT mixture separate from undisclosed RL rollouts and final training volume.
+- Trace which feedback is terminal checking, verifier scoring, or pairwise preference before comparing domains.
+- Do not infer source licenses, train splits, decontamination, or artifact availability from the arXiv report.
+- Read the named verifier and RM components as interfaces with unknown calibration and release status.

@@ -1,0 +1,3 @@
+Large reasoning models show strong performance in mathematics and coding, but stronger reasoning also raises deployment-relevant vulnerabilities and safety concerns. This Findings EMNLP 2025 paper surveys risks, attacks, and defenses specific to these models. It is a field map, not a new model, benchmark, or defense system.
+
+The boundary is deployment rather than capability alone: a model can solve a reasoning task well while still presenting a risk under a particular interaction or threat condition. The survey helps a reader identify what safety question is actually being posed. It does not establish that every reasoning model has the same vulnerability profile or that one evaluation covers all use cases.

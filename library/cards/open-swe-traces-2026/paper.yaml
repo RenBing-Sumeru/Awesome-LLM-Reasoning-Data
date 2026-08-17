@@ -1,0 +1,154 @@
+id: open-swe-traces-2026
+title: 'Open-SWE-Traces: Advancing Dual-Mode Multilingual Distillation for Software Engineering Agents'
+year: 2026
+venue: arXiv
+authors:
+- Wasi Uddin Ahmad
+- Nikolai Ludwig
+- Somshubra Majumdar
+- Boris Ginsburg
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+- answer_level
+domains:
+- software_engineering
+- repository_level_code
+- multilingual_code
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- trace_writing
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.16038
+  arxiv: https://arxiv.org/abs/2606.16038
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Open-SWE-Traces
+  project: https://huggingface.co/collections/nvidia/open-swe-traces
+  huggingface: https://huggingface.co/datasets/nvidia/Open-SWE-Traces
+  doi: https://doi.org/10.48550/arXiv.2606.16038
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2606.16038
+data_object:
+  prompt_source: 20,000 unique real-world pull-request tasks selected from SWE-rebench-V2 after language and repository-license
+    filtering.
+  trace_author: MiniMax-M2.5 generates thinking trajectories and Qwen3.5-122B-A10B generates non-thinking trajectories through
+    OpenHands- and SWE-agent-family harnesses.
+  answer_format: One repository-level episode with instance and trajectory identifiers, repository/license/language fields,
+    a structured conversation and tool history, a three-valued resolved label, and category/reference-patch/model-patch metadata.
+  process_fields:
+  - instance_id
+  - repo
+  - license
+  - language
+  - trajectory_id
+  - trajectory
+  - tools
+  - resolved
+  - metadata.category
+  - metadata.reference_patch
+  - metadata.model_patch
+  - hf_dataset_name
+  environment_or_substrate: Containerized SWE-rebench-V2 repository tasks executed with OpenHands and SWE-agent; the paper
+    uses the multilingual MOpenHands and MSWE-agent variants for training/evaluation experiments.
+  verifier_or_reward: 'Repository tests provide an environmental outcome: resolved=1 for solved, resolved=0 for unresolved,
+    and resolved=-1 when outcome information is unavailable. Exact per-row test commands and logs are not released.'
+  terminal_predicate: The harness completes an episode and evaluates its patch against task tests; incomplete, prematurely
+    terminated, empty-patch, test-editing, malformed-tool, repeated-error, or prohibited git-history trajectories are removed
+    before release.
+recipe_metadata:
+  base_model: The teachers are MiniMax-M2.5 and Qwen3.5-122B-A10B; the validation students are Qwen3-30B-A3B Thinking, Instruct,
+    and Coder variants.
+  teacher: MiniMax-M2.5 for thinking traces and Qwen3.5-122B-A10B for non-thinking traces.
+  generator: OpenHands and SWE-agent agent-computer interfaces over SWE-rebench-V2 containers; exact generation-harness revisions
+    are unknown.
+  filtering_rule: Restrict to nine languages and repositories labeled MIT, Apache-2.0, BSD-2-Clause, or BSD-3-Clause; remove
+    runtime-corrupted or incomplete episodes, empty patches, test edits, malformed or illegal concurrent tool calls, repeated
+    tool errors, and AST-detected prohibited git-history inspection.
+  sampling_protocol: For each selected task, run teacher/harness combinations, aggregate heterogeneous logs, validate runtime
+    completion, apply behavioral and git-integrity filters, then normalize surviving episodes into a shared Parquet schema.
+  rollout_count: 207,489 retained trajectories; raw generation volume, retry count, and rejected-count breakdown are unknown.
+  temperature: unknown
+  inference_budget: Generation turn/token budgets are unknown. Student evaluation uses maximum 250 turns and a 256K context;
+    /think and /no_think decoding settings are reported only for evaluation.
+  optimizer_or_scaffold: Agent scaffolds are OpenHands and SWE-agent. Student SFT uses learning rate 1e-5, batch size 32,
+    131,072-token context, 0.1 warmup ratio, cosine schedule, and three epochs; the optimizer name is unknown.
+audit:
+  source_mixture: 20,000 unique pull-request tasks from SWE-rebench-V2 repositories in Python, Go, TypeScript, JavaScript,
+    Rust, Java, PHP, C, and C++, restricted by four permissive repository-license labels.
+  split: The release has openhands and sweagent configurations, each split by minimax_m25 and qwen35_122b. These are source
+    modes, not conventional train/validation/test partitions.
+  decontamination: TrajectoryScanner removes prohibited git-history inspection, but no broader overlap audit against SWE-bench
+    Verified, Multilingual, or Pro is disclosed.
+  license: The NVIDIA dataset card labels the release CC BY 4.0; source repositories are filtered to MIT, Apache-2.0, BSD-2-Clause,
+    or BSD-3-Clause. Per-component rights for issue/PR prose, patches, dependencies, and generated reasoning are not separately
+    documented.
+  lineage: SWE-rebench-V2 task -> language/license selection -> teacher and agent-harness execution -> runtime/behavior/git-integrity
+    filters -> normalized episode with source dataset name, repository, patches, tools, and outcome. Canonical PR URL and
+    base/head commit SHA are not explicit row fields.
+  known_failure_modes:
+  - Only 65,244 of 207,489 trajectories are resolved; 95,487 are unresolved and 46,758 have unavailable outcome information.
+  - The reported 40.6% pass rate uses the 160,731 known outcomes as denominator, not all released trajectories.
+  - An unresolved or unknown episode can contain useful partial work, misleading behavior, flaky-test effects, or environment
+    failures that public fields cannot disambiguate.
+  - Harness-specific action and observation formats cause transfer loss; the paper reports MOpenHands loops in 5-10% of evaluated
+    cases for OPEN-SWE-AGENT.
+  - Repository-level license labels do not by themselves establish rights for every component carried into a trace.
+  - The paper reports automated PII and credential redaction but does not disclose the detector, recall study, or residual-risk
+    audit.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v1, its appendix, NVIDIA collection, dataset card, Viewer schema, and HF revision 9c0e4579a4ee0effa3e5f7a552494a045f29377d
+    were checked on 2026-07-21. The official collection currently exposes the paper and dataset, but no code repository or
+    OPEN-SWE-AGENT checkpoint.
+inclusion_reason: A released multilingual software-engineering trajectory corpus that preserves full tool-use episodes, patches,
+  source-repository metadata, and solved, unresolved, and unavailable environmental outcomes for distillation and audit.
+related: []
+tags:
+- open-swe-traces
+- swe-agent
+- openhands
+- software-engineering
+- trajectory-distillation
+- multilingual-code
+- failed-trajectories
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Releases 207,489 multilingual software-agent episodes from 20,000 SWE-rebench-V2 pull-request tasks across
+  two teachers and two harness families, retaining solved, unresolved, and unavailable outcomes.
+why_it_matters: It makes large-scale SWE-agent distillation inspectable at episode level and provides direct evidence about
+  the value and risks of training on non-success trajectories.
+card: null
+needs:
+- 'needs_release_mapping: exact mapping from the four public configurations to every student-training ablation'
+- 'needs_generation_metadata: teacher decoding, seeds, retry budgets, harness commits, container revisions, and rejection
+  counts'
+- 'needs_lineage: canonical PR URL and base/head commit SHAs per task'
+- 'needs_outcome_audit: per-row test commands, logs, checksums, and causes for resolved=-1'
+- 'needs_license_audit: issue/PR prose, patches, dependencies, teacher terms, and generated reasoning'
+- 'needs_artifacts: official pipeline code and OPEN-SWE-AGENT checkpoint links'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: The official paper, appendix, NVIDIA dataset, collection, schema, current revision, row totals, and CC BY 4.0 dataset
+    label were verified; missing replay and model/code artifacts remain explicit.

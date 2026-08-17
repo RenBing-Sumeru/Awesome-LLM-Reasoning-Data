@@ -1,0 +1,3 @@
+The prior baseline is general open-domain QA and smaller or narrower medical QA resources. MedQA changes the object to exam-derived, multilingual medical multiple-choice questions at larger scale, with a standard answer-key scoring surface.
+
+The direction signal is domain-specialized benchmark construction for medical reasoning rather than generic reading comprehension. The quality signal is the released question/choice/answer structure and reproducible accuracy scorer. What is not new: multiple-choice scoring and exam-question evaluation are established patterns. Before reuse, inspect copyright and redistribution terms, subset identity, split counts, official commit, and whether the target model may have seen public questions.

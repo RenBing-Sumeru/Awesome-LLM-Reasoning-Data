@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SkillsBench 以公开任务、技能包和确定性 verifier 评测 Agent Skills 对多领域任务表现的增益。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / 评测面",
+  "best_for_ch": "适合关注智能体技能包、公开任务目录、确定性 verifier、模型 harness 与跨领域能力评测边界的读者。",
+  "confidence_ch": "中高",
+  "authors_ch": "Xiangyi Li 等 77 位作者（BenchFlow、OSU、Amazon、UC Berkeley 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

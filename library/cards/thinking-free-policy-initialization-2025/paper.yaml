@@ -1,0 +1,121 @@
+id: thinking-free-policy-initialization-2025
+title: Thinking-Free Policy Initialization Makes Distilled Reasoning Models More Effective and Efficient Reasoners
+year: 2026
+venue: ICLR 2026
+authors:
+- Xin Xu
+- Clive Bai
+- Kai Yang
+- Tianhao Chen
+- Yang Wang
+- Saiyong Yang
+- Can Yang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- rlvr
+- distillation
+- evaluation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2509.26226
+  arxiv: https://arxiv.org/abs/2509.26226
+  code: https://github.com/Tencent-Hunyuan/Thinking-Free_Policy_Initialization
+  data: null
+  project: null
+  huggingface: https://huggingface.co/collections/xx18/tfpi
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Polaris53K math/reasoning prompts are used with an empty closed-think prefix; exact source/license and prompt
+    manifest require the released collection audit.
+  trace_author: Policy initialized with an empty closed-think prefix
+  answer_format: A thinking-free/short output policy initialized from an empty think prefix, then trained with 8 RLVR rollouts;
+    the paper describes models and evaluation data but not full rollout logs.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: RLVR uses answer-level programmatic reward where tasks allow it; exact verifier implementation and all
+    negative/failed rollouts were not established as released.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Policy initialized with an empty closed-think prefix
+  teacher: unknown
+  generator: TFPI initializes a policy to avoid extended hidden thinking and optimizes it with RLVR to retain reasoning performance
+    at lower inference cost.
+  filtering_rule: RLVR uses answer-level programmatic reward where tasks allow it; exact verifier implementation and all negative/failed
+    rollouts were not established as released.
+  sampling_protocol: Official Tencent code and HF collection xx18/tfpi were identified, including TFPI-EVA; dataset cards/licenses
+    and rollout logs were not fully verified.
+  rollout_count: 8 RLVR rollouts
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: TFPI initializes a policy to avoid extended hidden thinking and optimizes it with RLVR to retain
+    reasoning performance at lower inference cost.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Polaris53K math/reasoning prompts are used with an empty closed-think prefix; exact source/license and prompt manifest
+    require the released collection audit. -> A thinking-free/short output policy initialized from an empty think prefix,
+    then trained with 8 RLVR rollouts; the paper describes models and evaluation data but not full rollout logs. -> RLVR uses
+    answer-level programmatic reward where tasks allow it; exact verifier implementation and all negative/failed rollouts
+    were not established as released. -> reported final selection or training use. Raw lineage records are not established
+    as released.
+  known_failure_modes:
+  - Empty-prefix initialization can change behavior in ways not captured by final accuracy; 8-rollout RLVR data and verifier
+    provenance are not released as a complete audit trail.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It connects rollout-based policy training to an efficiency goal, but must be documented with verifier, prompt,
+  and rollout lineage rather than only released model checkpoints.
+related: []
+tags:
+- rlvr
+- thinking-free
+- policy-initialization
+- polaris53k
+- efficient-reasoning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: An RLVR initialization recipe aimed at reducing explicit reasoning cost while retaining answer-level reward
+  training.
+why_it_matters: It connects rollout-based policy training to an efficiency goal, but must be documented with verifier, prompt,
+  and rollout lineage rather than only released model checkpoints.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

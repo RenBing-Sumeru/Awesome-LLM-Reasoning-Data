@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:08:49Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "分析验证信号跨成本分层不可比时，为什么全局预算分配会失效，并给出分层修复证据",
+    "updated_at": "2026-07-20T13:08:49Z"
+  }
+}

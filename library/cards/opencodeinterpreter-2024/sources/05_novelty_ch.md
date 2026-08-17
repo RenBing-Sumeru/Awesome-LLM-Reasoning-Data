@@ -1,0 +1,1 @@
+更早的代码 SFT 数据主要是彼此独立的 instruction-response pair，自调试与 compiler-feedback 系统则常把执行状态留在在线 scaffold 中。OpenCodeInterpreter 改变的是可审计对象：公开静态多轮记录，把解释、代码、诊断、模拟用户反馈和修订保存在一起，并用五个构造分支同时覆盖交互与相关查询上下文。Findings ACL 接收、开放 Apache-2.0 artifact、较强的仓库/数据采用度、分阶段反馈结果和行重叠检查构成质量信号，但代码执行、合成反馈、查询打包和 SFT 各自都不是新方法。真正的方向信号，是把执行与反馈行为以 68K 规模打包成可复用对话监督；复用时必须检查语义正确性、合成反馈 artifact、provider/来源条款、benchmark 重叠与代码安全重放。

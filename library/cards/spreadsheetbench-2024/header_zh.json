@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SpreadsheetBench 用真实 Excel 操作任务和文件状态比较评测智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2024 Datasets and Benchmarks Spotlight 的 spreadsheet benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zeyao Ma 等（Renmin University of China）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:02:26Z"
+}

@@ -1,0 +1,98 @@
+id: leannavigator-state-graph-theorems-2025
+title: Generating Millions Of Lean Theorems With Proofs By Exploring State Transition Graphs
+year: 2025
+venue: arXiv
+authors:
+- David Yin
+- Jing Gao
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-mathematics
+- lean4
+- theorem-proving
+training_use:
+- sft
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.04772
+  arxiv: https://arxiv.org/abs/2503.04772
+  code: https://github.com/davidsyin/leannavigator
+  data: https://zenodo.org/records/13989482
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.04772
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Existing Mathlib4 theorem states explored by LeanNavigator.
+  trace_author: LeanNavigator state-graph traversal.
+  answer_format: A generated Lean theorem statement paired with its Lean proof.
+  process_fields:
+  - Lean state
+  - tactic
+  - state transition
+  - proof path
+  environment_or_substrate: Mathlib4 and an interactive Lean client.
+  verifier_or_reward: Lean proof checking and proof-finished state.
+  terminal_predicate: The constructed Lean proof is accepted by the Lean environment.
+recipe_metadata:
+  base_model: Reported Flan-T5 models for the theorem-proving experiment.
+  teacher: Interactive Lean client and Lean checker.
+  generator: Embedding-retrieval tactic generation traversing theorem state graphs.
+  filtering_rule: Retain states with a path to a proof-finished node.
+  sampling_protocol: For each state, attempt tactics and continue through unseen successor states as described in the paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Tactic-search budget is part of the generation process; consult the paper for the exact configuration.
+  optimizer_or_scaffold: State-transition graph exploration and retrieval-based tactic selection.
+audit:
+  source_mixture: Official arXiv paper, Zenodo release, and author GitHub repository.
+  split: Training corpus from Mathlib4; reported evaluation on MIL and MiniF2F.
+  decontamination: Audit Mathlib version, theorem provenance, overlap between generated statements and evaluation suites,
+    and Lean environment version.
+  license: Verify Mathlib4, Zenodo record, and repository licenses before redistribution.
+  lineage: https://arxiv.org/abs/2503.04772
+  known_failure_modes:
+  - Lean acceptance only verifies the encoded statement under the pinned environment.
+  - Generated theorems can inherit structural regularities from Mathlib4 and leak into related evaluations.
+  citation_status: verified
+  confidence: high
+  notes: arXiv author affiliations, paper-linked Zenodo data release, and author repository were checked.
+inclusion_reason: LeanNavigator releases theorem–proof records with Lean as the deterministic terminal verifier, creating
+  reusable programmatically verifiable formal-proof outcomes.
+related: []
+tags:
+- lean4
+- formal-proofs
+- state-graphs
+- synthetic-data
+- '2025'
+one_line_summary: LeanNavigator explores Mathlib4 state graphs to release 4.7 million Lean theorem–proof pairs whose proofs
+  are accepted by Lean.
+why_it_matters: The release makes formal proof acceptance a reproducible terminal predicate for a large synthetic theorem
+  corpus.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: arXiv author affiliations, paper-linked Zenodo data release, and author repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

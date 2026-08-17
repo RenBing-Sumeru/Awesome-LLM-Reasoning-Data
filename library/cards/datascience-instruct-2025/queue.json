@@ -1,0 +1,17 @@
+{
+  "title": "DeepAnalyze: Agentic Large Language Models for Autonomous Data Science",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.16872",
+    "data": "https://huggingface.co/datasets/RUC-DataLab/DataScience-Instruct-500K"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-30T13:26:35Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "data science数据",
+    "updated_at": "2026-07-30T13:26:35Z"
+  }
+}

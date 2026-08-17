@@ -1,0 +1,5 @@
+Source-level provenance, mixture weights, item lineage, licenses, and public train or evaluation splits are not released. The report does not disclose a training-data decontamination protocol. Although it names internal components such as Seed-Verifier and Seed-Thinking-Verifier, it does not release their versions, calibration, prompt interfaces, decision thresholds, or false-accept and false-reject behavior.
+
+The exact base checkpoint, most generator identities, prompts, decoding settings, rollout counts, selection yields, and full optimizer or RL budget are also unknown. Thus, the reported 400k SFT count and named feedback components should not be interpreted as sufficient instructions to reconstruct the training pipeline.
+
+The report itself discusses risks including verifier reward hacking, unstable answer equivalence, mixed-domain feedback interference, and exploration collapse on easy prompts. With no reusable data, code, complete data documentation, or audit logs, independent inspection of those risks remains limited.

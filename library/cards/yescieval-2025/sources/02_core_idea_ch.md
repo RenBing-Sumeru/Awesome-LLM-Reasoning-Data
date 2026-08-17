@@ -1,0 +1,1 @@
+YESciEval 将科学回答判断拆为 9 个明确的 rubric 分数与理由，再以正常样本和对抗样本对 LLaMA-3.1-8B judge 进行 SFT 与对比偏好优化。其发布的语料覆盖 ORKGSyn 和 BioASQ 回答记录，包含 33 个学科及生物医学问答，并保留多种 LLM 的 1--5 分 rubric 评分。数据以 CSV 形式通过 YESciEval Corpus 发布，采用 CC BY 4.0；它服务于评测和 judge/reward model 研究，而非可验证的真值奖励。

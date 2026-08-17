@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebCanvas 通过 Mind2Web-Live 和关键节点中间状态检查，在在线网页环境中评测网页智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的评测面 / 环境基准",
+  "best_for_ch": "关注在线网页漂移、网页智能体轨迹、关键节点评估和动态页面复现边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yichen Pan 等（iMean AI、Carnegie Mellon University）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-17T07:17:48Z"
+}

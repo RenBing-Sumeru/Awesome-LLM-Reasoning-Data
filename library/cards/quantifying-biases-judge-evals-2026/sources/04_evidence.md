@@ -1,0 +1,1 @@
+The paper demonstrates the framework in simulations, showing that it recovers bias effects and supports counterfactual corrections while providing uncertainty estimates. This supports diagnostic inference under the specified model, not a guarantee that every real judge bias is observed or causally removable.

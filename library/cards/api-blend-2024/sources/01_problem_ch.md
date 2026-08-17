@@ -1,0 +1,1 @@
+API-BLEND 是 IBM Research 2024 年 arXiv / ACL 状态论文，面向 API LLM 的训练与评测。它要补的缺口是：很多 tool-use 数据是合成的、单次调用的，或评测指标不可比；而 API agent 需要同时做 API detection、parameter filling 和调用顺序预测。这里收录它作为 API sequencing corpus 和 evaluation surface，不把它当 live tool 环境。一个样本是自然语言 utterance、候选 API 和参数、gold API call sequence、参数名和值，以及 split 元数据。

@@ -1,0 +1,107 @@
+id: abc-bench-agentic-backend-coding-2026
+title: 'ABC-Bench: Benchmarking Agentic Backend Coding in Real-World Development'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Jie Yang
+- Honglin Guo
+- Li Ji
+- Jiazheng Zhou
+- Rui Zheng
+- Zhikai Lei
+- Shuo Zhang
+- Zhiheng Xi
+- Shichun Liu
+- Yuxin Wang
+- Bo Wang
+- Yining Zheng
+- Tao Gui
+- Xipeng Qiu
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- backend-development
+- agent-evaluation
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1142/
+  arxiv: null
+  code: https://github.com/OpenMOSS/ABC-Bench
+  data: https://huggingface.co/datasets/OpenMOSS-Team/ABC-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/OpenMOSS-Team/ABC-Bench
+  doi: null
+  venue: https://aclanthology.org/2026.findings-acl.1142/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1142/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public tasks and repository contexts released by the authors.
+  trace_author: Dataset curators and the underlying project sources.
+  answer_format: A backend repository task with containerized runtime, deployment configuration, and external HTTP API tests.
+  process_fields:
+  - task
+  - repository or formal context
+  - candidate artifact
+  - verifier result
+  environment_or_substrate: The released executable or formal-verification environment.
+  verifier_or_reward: Container deployment followed by end-to-end external HTTP API tests.
+  terminal_predicate: The deployed service satisfies the benchmark's API test contract.
+recipe_metadata:
+  base_model: The benchmark evaluates model-generated artifacts; consult the paper for model-specific settings.
+  teacher: Container deployment followed by end-to-end external HTTP API tests.
+  generator: The authors' collection and curation pipeline.
+  filtering_rule: Retain records that satisfy the published executable or formal validation procedure.
+  sampling_protocol: Use the official split and evaluation configuration.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin the released environment, toolchain, and sampling configuration when reproducing results.
+  optimizer_or_scaffold: Programmatically verified outcome evaluation and, where released, training data.
+audit:
+  source_mixture: Official paper, official data release, and official code or project page where available.
+  split: Use the split packaged with the official release.
+  decontamination: Public source repositories, problem statements, and tests can overlap with model training data.
+  license: Check the official data and upstream-source licences before redistribution or commercial use.
+  lineage: https://huggingface.co/datasets/OpenMOSS-Team/ABC-Bench
+  known_failure_modes:
+  - Passing the released verifier does not establish behavior outside its covered specification or tests.
+  - Public tasks and repositories can create training-data contamination or benchmark-overfitting risk.
+  citation_status: verified
+  confidence: high
+  notes: The ACL Anthology paper, official OpenMOSS repository, and official Hugging Face dataset were checked.
+inclusion_reason: The release pairs tasks with an executable or formal terminal verification contract.
+related: []
+tags:
+- programmatic-verification
+- benchmark
+- '2026'
+one_line_summary: ABC-Bench evaluates agents on 224 containerized backend-development tasks whose deployed services must pass
+  end-to-end HTTP API tests.
+why_it_matters: It exposes a rerunnable outcome-verification surface rather than a text-only reference answer.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: The ACL Anthology paper, official OpenMOSS repository, and official Hugging Face dataset were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

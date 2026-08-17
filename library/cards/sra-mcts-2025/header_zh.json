@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SRA-MCTS 从中高难 LeetCode 题目出发，在树中生成思考步骤和代码，并把选中路径转换为 question-thinking-code 的 SFT 记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Bin Xu；Yiguan Lin；Yinghao Li；Yang Gao",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

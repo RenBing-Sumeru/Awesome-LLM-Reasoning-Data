@@ -1,0 +1,7 @@
+The formal primary source is the NeurIPS 2025 conference paper; arXiv:2511.13223, the NeurIPS poster, OpenReview, and the author-designated repository corroborate identity and implementation. The paper lists Zhejiang University, Alibaba Cloud, and Zhiyuan Research Institute affiliations (p. 1).
+
+This is not generic model compression. Long chain-of-thought raises latency, memory pressure, and output-token cost; direct length penalties or globally shortest traces can remove reasoning needed for difficult questions. TokenSqueeze asks how to construct shorter training traces whose depth depends on prompt difficulty, then amortize that preference into model weights rather than merely truncate decoding (paper §§1, 3.1).
+
+It belongs to the rollout/search/test-time-trace category because each source prompt yields many sampled traces and the recipe selects/rejects candidates. It is adjacent to preference-data and Long2Short work, but it is neither a released static corpus nor a step-proof benchmark: correctness is extracted-final-answer equality and rewrite quality is a local KL proxy.
+
+The inspectable input is \`datasets/math14k.jsonl\`; Step 1 requires \`instruction\` and \`ground_truth_answer\`, then appends 64 completions with \`response\`, \`equal\`, and \`token_length\`. Later records carry chosen/rejected responses and rewrite/KL information. Upstream provenance, original split, license, count, and paper-matched generated outputs are unknown. L4 here means a bilingual, primary-source-audited recipe Card, not certification of a reusable dataset.

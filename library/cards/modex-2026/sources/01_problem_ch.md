@@ -1,0 +1,1 @@
+Best-of-N 生成能提高得到有用回答的机会，但开放式输出无法通过精确答案多数投票聚合。外部 reward model 或 LLM judge 会增加成本并引入自身偏差，而 perplexity 也不等同于回答质量。ModeX 研究能否仅凭采样回答之间的结构选择一个代表性输出。其轨迹对象是推理时候选集及确定性选择记录：完整或部分回答路径、成对 n-gram 相似度、加权图、Fiedler 向量划分、conductance 检验、保留簇、剪枝事件和最终中心候选。它属于 rollout/search/test-time trace track，因为标准 ModeX 与 ModeX-Lite 都在多条路径之间分配计算，并显式决定哪条轨迹保留，同时既不训练 selector，也不生成替代答案。

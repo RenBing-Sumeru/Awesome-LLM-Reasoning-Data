@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:34:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将奖励模型转为样本选择器，提供了奖励驱动数据筛选后再微调的简洁范式",
+    "updated_at": "2026-07-17T12:34:27Z"
+  }
+}

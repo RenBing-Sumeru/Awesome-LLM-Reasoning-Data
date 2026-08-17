@@ -1,0 +1,5 @@
+The main trust signal is the expert-labeled PQA-L set: 1,000 examples annotated as yes, no, or maybe, split into 500 cross-validation examples and 500 test examples. The paper also reports larger PQA-U and PQA-A resources, but their evidence strength is different because they are unlabeled or heuristically generated.
+
+The official scorer evaluates a prediction file keyed by PMID against the repository's test_ground_truth.json and reports exact three-way label accuracy and macro-F1. This gives row-level checkability for the label decision: a prediction either matches the PQA-L gold label or it does not. It does not certify that a model produced a faithful biomedical explanation, nor does it validate clinical applicability.
+
+The reported modeling results use biomedical language-model baselines and show that domain-specific pretraining and additional weakly labeled/artificial data can improve the three-way decision. Those aggregate numbers are bound to the paper's splits, preprocessing, model versions, and use of conclusion-derived labels; they should not be compared to later leaderboard scores without recording the same subset and evaluation script.

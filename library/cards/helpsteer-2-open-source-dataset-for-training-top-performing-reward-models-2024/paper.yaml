@@ -1,0 +1,105 @@
+id: helpsteer-2-open-source-dataset-for-training-top-performing-reward-models-2024
+title: 'HelpSteer 2: Open-source dataset for training top-performing reward models'
+year: 2024
+venue: arXiv
+authors:
+- Zhilin Wang
+- Yi Dong
+- Olivier Delalleau
+- Jiaqi Zeng
+- Gerald Shen
+- Daniel Egert
+- Jimmy J. Zhang
+- Makesh Narsimhan Sreedhar
+- Oleksii Kuchaiev
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- llm-post-training
+training_use:
+- reward_modeling
+- preference_learning
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.08673
+  arxiv: https://arxiv.org/abs/2406.08673
+  code: https://github.com/NVIDIA/NeMo-Aligner
+  data: https://huggingface.co/datasets/nvidia/HelpSteer2
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/HelpSteer2
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: General instruction prompts and paired model responses described in the HelpSteer2 release.
+  trace_author: Human annotators supply preference and rich attribute supervision.
+  answer_format: Two responses with preference/attribute labels used to train a scalar reward model.
+  process_fields:
+  - prompt
+  - response pair
+  - preference
+  - attribute scores
+  - annotation provenance
+  environment_or_substrate: Open-ended instruction-following setting.
+  verifier_or_reward: Human preference and multi-attribute ratings; trained reward model predicts a preference signal.
+  terminal_predicate: Human-preferred response or derived reward ranking.
+recipe_metadata:
+  base_model: Internal base model described by the paper.
+  teacher: Human annotation rather than proprietary LLM distillation.
+  generator: Response-pair collection and annotation pipeline.
+  filtering_rule: Paper emphasizes updated response and attribute-label quality; verify dataset card for per-item filtering.
+  sampling_protocol: Approximately 10,000 response pairs.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Reward-model training and SteerLM 2.0 alignment using multi-attribute predictions.
+audit:
+  source_mixture: Permissively licensed human preference data; verify source prompt provenance in the data card.
+  split: Verify official train/eval split before reuse.
+  decontamination: RewardBench is an evaluation surface and must not be folded into training.
+  license: CC-BY-4.0 according to paper.
+  lineage: 'Primary source: https://arxiv.org/abs/2406.08673'
+  known_failure_modes:
+  - Ten thousand pairs may under-cover rare tasks or languages.
+  - Preference attributes encode annotator and guideline values.
+  - RewardBench performance does not prove policy alignment quality.
+  citation_status: verified
+  confidence: high
+  notes: Primary paper and official Hugging Face/code references reviewed.
+inclusion_reason: Candidate paper on an open dataset for reward-model training with an official arXiv primary link.
+related: []
+tags:
+- candidate-batch
+- post-training
+- reward-or-judgment
+one_line_summary: HelpSteer2 is a CC-BY-4.0 preference dataset of about 10,000 response pairs for efficient reward-model training.
+why_it_matters: It shows how rich human preference attributes and a small, permissively licensed pair set can support reward
+  modeling and downstream alignment.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper review
+  confidence: high
+  notes: Authors, data scale/license, code/data links, and RM/SteerLM use reviewed.
+category_ids:
+- preference_reward_feedback_data

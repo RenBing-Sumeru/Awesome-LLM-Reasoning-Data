@@ -1,0 +1,5 @@
+- MoB reuses one N-output pool; it changes selection, not generation or model weights.
+- The actual implementation computes the bootstrap answer distribution in closed form rather than storing sampled subsets.
+- Released JSONL records include prompt, full generation, extracted answer, benchmark score, and ArmoRM/GRM/Skywork rewards.
+- The main tables use N=128; generation pools contain 512 temperature-1 outputs per question.
+- Gains over BoN evaluate a selector and do not prove completion quality, reward validity, decontamination, or data rights.

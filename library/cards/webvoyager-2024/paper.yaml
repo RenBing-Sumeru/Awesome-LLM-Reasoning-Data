@@ -1,0 +1,118 @@
+id: webvoyager-2024
+title: 'WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models'
+year: 2024
+venue: ACL 2024 main / arXiv
+authors:
+- Hongliang He
+- Wenlin Yao
+- Kaixin Ma
+- Wenhao Yu
+- Yong Dai
+- Hongming Zhang
+- Zhenzhong Lan
+- Dong Yu
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- multimodal-web-agents
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2401.13919
+  arxiv: https://arxiv.org/abs/2401.13919
+  doi: https://doi.org/10.18653/v1/2024.acl-long.371
+  code: https://github.com/MinorJerry/WebVoyager
+  data: https://github.com/MinorJerry/WebVoyager/tree/main/data
+  project: https://github.com/MinorJerry/WebVoyager
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.371/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors build end-to-end web browsing tasks for multimodal agents
+  trace_author: official authors and model-agent rollouts
+  answer_format: user goal, screenshot/page observation, browser action trace, and final answer
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: live website browsing with screenshot observations and multimodal action trajectories
+  verifier_or_reward: task-specific answer checks and human or evaluator judgments over browsing results
+  terminal_predicate: task-specific answer checks and human or evaluator judgments over browsing results
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official WebVoyager authors and evaluators
+  generator: WebVoyager browsing-agent task and rollout pipeline
+  filtering_rule: pin live website date and evaluator assumptions before comparing scores
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2401.13919;
+    https://arxiv.org/html/2401.13919; https://aclanthology.org/2024.acl-long.371/; https://github.com/MinorJerry/WebVoyager'
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2401.13919'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: ACL and GitHub sources verify 643 task queries over 15 websites, 59.1% task success, and 85.3% agreement between
+    GPT-4V automatic evaluation and human judgment. The evaluator is GPT-4V judge plus optional human inspection, not a deterministic
+    reward.
+inclusion_reason: it is a widely used live-web multimodal agent benchmark
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- multimodal-web-agents
+why_it_matters: it is a widely used live-web multimodal agent benchmark
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WebVoyager evaluates multimodal agents on live website browsing tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: ACL and GitHub sources verify 643 task queries over 15 websites, 59.1% task success, and 85.3% agreement between
+    GPT-4V automatic evaluation and human judgment. The evaluator is GPT-4V judge plus optional human inspection, not a deterministic
+    reward.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 31
+  primary_category_id: benchmarks_evaluation_surfaces

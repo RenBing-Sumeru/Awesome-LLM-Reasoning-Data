@@ -1,0 +1,6 @@
+The official system card dated February 25, 2025 directly supports the browsing-task RL, ground-truth/rubric grading, chain-of-thought grader, safety-data, prompt-injection mitigation, and sandbox statements in this Card. The [official system-card page](https://openai.com/index/deep-research-system-card/) and [launch announcement](https://openai.com/index/introducing-deep-research/) corroborate that this is an agentic web-research release, not an academic paper or data release.
+
+The card reports safety, external red-team, and Preparedness evaluations. It also documents an evaluation-specific browsing-contamination analysis: some CTF browsing trajectories retrieved online hints or full flags, and reported performance declined after contaminated trajectories were removed. This is evidence of an evaluation risk and a specific filtering analysis; it is not evidence of a disclosed training-data decontamination procedure.
+
+Reported evaluations and mitigations must remain separate from training evidence. They do not reveal the browser-task corpus, test/train allocation, rubrics, grader implementation, reward transformation, browsing harness, logs, or the provenance and rights of browsing or safety records.
+

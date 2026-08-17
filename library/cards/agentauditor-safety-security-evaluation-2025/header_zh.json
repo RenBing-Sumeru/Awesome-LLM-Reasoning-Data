@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ASSEBench 为智能体安全与安全防护轨迹提供双标准专家判定，AgentAuditor 以检索式经验记忆增强自动审计。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量表数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hanjun Luo、Shenyu Dai、Chiming Ni、Xinfeng Li、Guibin Zhang、Kun Wang、Tongliang Liu、Hanan Salam",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

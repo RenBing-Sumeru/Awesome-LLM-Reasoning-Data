@@ -1,0 +1,6 @@
+- The data unit is a problem, partial solution, candidate next step, and MCTS-derived relative score.
+- Terminal simulations receive binary reward from comparison with the ground-truth answer; intermediate scores are indirect rollout statistics.
+- Score-zero steps are dropped, and the highest-UCB next step extends the path for another search.
+- Llama-3.1-8B-Instruct and deepseek-math-7b-instruct improve on the reported MATH and GSM8K comparisons, but performance converges quickly and can degrade with more data or iterations.
+- No official code or trace release was verified, and missing search and training settings prevent score reconstruction.
+- Model accuracy is recipe evidence, not proof of process-record quality.

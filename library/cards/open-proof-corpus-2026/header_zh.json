@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Open Proof Corpus 将前沿模型的自然语言证明与专家裁决、反馈和可选错误定位配对，形成罕见的丰富验证器数据，但单评审覆盖与 split 边界必须谨慎处理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "专家评审数学证明语料 / 验证器 benchmark",
+  "best_for_ch": "适合训练证明验证器、研究人类标签可靠性或审计 best-of-N 证明选择的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Jasper Dekoninck, Ivo Petrov, Kristian Minchev, Mislav Balunović, Martin Vechev, Miroslav Marinov, Maria Drencheva, Lyuba Konova, Milen Shumanov, Kaloyan Tsvetkov, Nikolay Drenchev, Lazar Todorov, Kalina Nikolova, Nikolay Georgiev, Vanesa Kalinkova, Margulan Ismoldayev",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-12T09:40:20Z"
+}

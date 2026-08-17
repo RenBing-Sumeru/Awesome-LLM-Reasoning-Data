@@ -1,0 +1,1 @@
+Han 等（2024），《WildGuard: Open One-stop Moderation Tools for Safety Risks, Jailbreaks, and Refusals of LLMs》，arXiv:2406.18495。论文：https://arxiv.org/abs/2406.18495；官方实现与发布：https://github.com/allenai/wildguard。复现审核或越狱数字时，应注明确切模型/数据版本及策略设置。

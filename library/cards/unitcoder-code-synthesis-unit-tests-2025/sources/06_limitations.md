@@ -1,0 +1,3 @@
+1. **Test false positives:** Generated tests may cover only surface behavior, allowing incorrect code to pass. Reuse should report coverage and mutation score and verify with an independent test generator.  
+2. **Functional drift:** Bug-fix and refinement agents may change a function into an implementation that satisfies tests but has different semantics. Re-running the same tests is insufficient; documentation, call relations, and differential inputs should be compared.  
+3. **Source and licensing:** The data inherits duplication, contamination, and licensing risks from pretraining corpora and focuses on Python/API scenarios. Provenance must be audited and evaluation repositories isolated before training.

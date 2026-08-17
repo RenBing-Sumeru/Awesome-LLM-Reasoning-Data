@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-16T09:36:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将偏好样本的使用从静态筛选变为随训练状态动态调度",
+    "updated_at": "2026-07-16T09:36:23Z"
+  }
+}

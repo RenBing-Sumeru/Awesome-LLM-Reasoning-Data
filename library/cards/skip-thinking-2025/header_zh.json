@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Skip-Thinking 以 text-davinci-002 生成的 CoT 为教师轨迹，按 chunk 进行 CWT、SBC 与 STT 等选择性跳过，以训练更短的推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaoshu Chen；Sihang Zhou；Ke Liang；Xiaoyu Sun；Xinwang Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

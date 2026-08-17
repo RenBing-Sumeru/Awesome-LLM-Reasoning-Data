@@ -1,0 +1,19 @@
+{
+  "title": "ATLAS: Autoformalizing Theorems through Lifting, Augmentation, and Synthesis of Data",
+  "candidate_links": {
+    "paper": "https://papers.neurips.cc/paper_files/paper/2025/hash/5159aaee380391c366b27994ed225e4f-Abstract-Conference.html",
+    "data": "https://huggingface.co/datasets/XiaoyangLiu-sjtu/ATLAS_dataset",
+    "code": "https://github.com/XiaoyangLiu-sjtu/ATLAS",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T08:59:28Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布 ATLAS 数据集，含 117,145 条自然语言—Lean 平行陈述，并以编译和回译一致性过滤",
+    "updated_at": "2026-07-24T08:59:28Z"
+  }
+}

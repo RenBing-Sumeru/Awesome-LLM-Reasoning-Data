@@ -1,0 +1,5 @@
+- Positioning: Quilt-LLaVA converts localized narration from open pathology videos into 107K image-question-explanation records.
+- Method handle: The pipeline aligns video narration to selected pathology frames, converts localized narratives into 107K instruction-response records, and tunes LLaVA on the resulting evidence-rich domain conversations.
+- Data handle: 107,000 histopathology visual-instruction records; each record contains pathology image crop, localized narrative or question, and diagnostic/explanatory response.
+- Evidence anchor: Quilt-LLaVA improves histopathology question answering and zero-shot transfer relative to generic visual assistants; the dataset ablation attributes gains to localized narrative supervision rather than model scale.
+- Reuse decision: best for training a pathology assistant to explain visible morphology; first audit misaligned narration can teach confident claims about features outside the crop.

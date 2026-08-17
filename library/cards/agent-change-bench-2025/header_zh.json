@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AgentChangeBench 用 315 个银行、航空与零售 goal-shift 任务及混合环境/LLM 指标评测对话 agent，但 2,835 条 sequence 的映射和补充发布不足以支持 replay 或训练复用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "目标变更对话智能体环境评测基准",
+  "best_for_ch": "研究 tool-use agent、用户模拟器、goal-shift 评测与混合反馈审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Manik Rana, Calissa Man, Anotida Expected Msiiwa, Jeffrey Paine, Kevin Zhu, Sunishchal Dev, Vasu Sharma, Ahan M R",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

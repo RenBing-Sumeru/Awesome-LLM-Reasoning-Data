@@ -1,0 +1,1 @@
+Its contribution is a compact, deliberately curated preference resource for training reward models. A pair is interpretable because the underlying response attributes can be inspected; the intended learning signal is not merely “chosen beats rejected,” but a comparison grounded in dimensions that can conflict, such as concise versus complete.

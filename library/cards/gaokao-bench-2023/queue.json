@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:04:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "中文评测比较多 专门高考",
+    "updated_at": "2026-07-15T12:04:13Z"
+  }
+}

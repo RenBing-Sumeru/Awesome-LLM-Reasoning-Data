@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提出模型自生成并自评步骤级推理候选的 Process-based Self-Rewarding 流程，公开代码及部分训练评测数据",
+    "updated_at": "2026-07-12T09:53:07Z"
+  },
+  "updated_at": "2026-07-12T09:53:07Z"
+}

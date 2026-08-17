@@ -1,0 +1,5 @@
+- Positioning: OpenResearcher bootstraps an offline evidence corpus, then generates and filters complete search-browse-answer trajectories without repeated live-web dependence.
+- Data object: question id, question, answer, interleaved messages, latency, error, attempts, status, and chunk metadata.
+- Author and selector: GPT-OSS-120B searches an offline corpus and writes complete tool-use trajectories; selection uses final-answer checking, retrievability bootstrapping, error/status fields, and trajectory filtering.
+- Evidence anchor: A 30B-A3B student trained on the released trajectories reaches 54.8% on BrowseComp-Plus, a reported gain of 34.0 points; the corpus includes a tail with more than 100 tool calls.
+- Reuse decision: suitable for deep-research agent SFT; first audit offline corpus coverage constrains what the agent can discover, and answer correctness does not validate every cited intermediate claim.

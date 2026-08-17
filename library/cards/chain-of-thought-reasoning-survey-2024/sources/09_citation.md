@@ -1,0 +1,3 @@
+Zheng Chu, Jingchang Chen, Qianglong Chen, Weijiang Yu, Tao He, Haotian Wang, Weihua Peng, Ming Liu, Bing Qin, and Ting Liu. 2024. Navigate through Enigmatic Labyrinth A Survey of Chain of Thought Reasoning: Advances, Frontiers and Future. ACL 2024 Long Papers, pages 1173–1203. https://aclanthology.org/2024.acl-long.65/
+
+Use the ACL Anthology record as the authoritative entry for title, authorship, venue, pages, and DOI; it also links the paper and the authors' resource collection. When citing a concrete method or empirical result mentioned here, cite that primary study as well. This survey is the source for taxonomy and synthesis, not for a new shared experiment.

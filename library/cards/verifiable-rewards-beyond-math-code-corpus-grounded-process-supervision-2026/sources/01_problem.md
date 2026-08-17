@@ -1,0 +1,3 @@
+Factual QA lacks step verifiers comparable to mathematical checkers. CorVer decomposes answers into claims and retrieves evidence from a fixed corpus to create replayable sentence-level rewards.
+
+This gap directly determines whether corpus-grounded factual process supervision can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on questions, atomic claims, retrieved evidence, entailment results, and sentence-level rewards and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in factual question answering、RAG and sentence-level critic.

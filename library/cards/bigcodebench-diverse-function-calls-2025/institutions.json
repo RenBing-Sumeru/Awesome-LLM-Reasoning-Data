@@ -1,0 +1,32 @@
+{
+  "institutions": [
+    "Monash University",
+    "CSIRO's Data61",
+    "Singapore Management University",
+    "Detomo Inc.",
+    "Queen Mary University of London",
+    "University of Notre Dame",
+    "TU Darmstadt",
+    "University of Virginia",
+    "Inria",
+    "Intel",
+    "Tencent AI Lab",
+    "Cornell University",
+    "University College London",
+    "UNC Chapel Hill",
+    "UC Berkeley",
+    "MIT",
+    "Shanghai Jiao Tong University",
+    "Uber",
+    "University of Illinois Urbana-Champaign",
+    "Sea AI Lab",
+    "AWS AI Labs",
+    "Contextual AI",
+    "Carnegie Mellon University",
+    "ServiceNow Research",
+    "Hugging Face"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-24T00:00:00Z"
+}

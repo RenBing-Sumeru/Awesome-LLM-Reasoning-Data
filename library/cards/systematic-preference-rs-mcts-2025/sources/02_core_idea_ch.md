@@ -1,0 +1,5 @@
+基础数据对象是合成的受约束指令。种子 instruction-following prompts(论文以 IFEval 为例)先由 Llama-3.1-70B-Instruct 移除原约束;同一模型再把抽样的 base prompts 作为 few-shot demonstrations,每次生成 20 个新的无约束 prompts。新生成与种子派生的 base prompts 使用 all-mpnet-base-v2 嵌入,并按 dot-product similarity 去重。每个保留的 base prompt 随后获得一组互不冲突的 k∈{4,5,6} constraints、随机采样或模型生成的 keyword arguments,以及自然语言改写。附录表 7 对 k=4、5、6 分别报告 15,900、15,739 和 15,559 个 prompts,精确总数为 47,198;论文正文将其约写为 48K。
+
+偏好数据对象是一个合成 prompt 加一个 chosen 完整回答和一个 rejected 完整回答。代码 verifier 分别判断每项约束,并把二值结果聚合为满足约束的比例。RS 独立采样完整 policy responses,再选择 aggregate scores 精确匹配指定 chosen/rejected 值 `(c,r)` 的回答组成 pair。MCTS 则在部分 token-sequence responses 上搜索;合格的 sibling nodes 从 parent 继承共享前缀,并从这些 sibling nodes 抽样完整 rollouts 形成 pair。
+
+必须区分两种 reward contract。MCTS 搜索的 expansion 阶段把平均 rollout verifier scores 与 policy model 对内容的 self-evaluation 混合,lambda=0.2。最终抽取 pair 时,论文舍弃这一混合搜索奖励,只应用程序化 verifier score,以保证 RS 与 MCTS 使用同一正确性标准。最终 DPO 记录 schema 未发布,因此 constraint IDs、keyword arguments、共享前缀边界、逐约束结果、分数和搜索统计是否实际存储均为 unknown。

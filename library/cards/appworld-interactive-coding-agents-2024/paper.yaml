@@ -1,0 +1,111 @@
+id: appworld-interactive-coding-agents-2024
+title: 'AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents'
+year: 2024
+venue: ACL 2024 / arXiv
+authors:
+- Harsh Trivedi
+- Tushar Khot
+- Mareike Hartmann
+- Ruskin Manku
+- Vinty Dong
+- Edward Li
+- Shashank Gupta
+- Ashish Sabharwal
+- Niranjan Balasubramanian
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- app-api-agents
+- tool-api-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2407.18901
+  project: https://appworld.dev/appworld/
+  code: https://github.com/StonyBrookNLP/appworld
+  data: https://appworld.dev/appworld/
+  arxiv: https://arxiv.org/abs/2407.18901
+  doi: https://doi.org/10.48550/arXiv.2407.18901
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: authors build a controllable world with 9 apps, 457 APIs, simulated users, and 750 tasks.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: records include task instructions, app/API world state, generated code/actions, and state-based unit-test
+    outcomes.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: simulated apps, APIs, and state-based unit tests
+  verifier_or_reward: robust programmatic state-based and execution-based unit tests grade task success and collateral damage.
+  terminal_predicate: robust programmatic state-based and execution-based unit tests grade task success and collateral damage.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: authors build a controllable world with 9 apps, 457 APIs, simulated users, and 750 tasks.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: tool_api_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2407.18901;
+    https://arxiv.org/pdf/2407.18901; https://appworld.dev/'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2407.18901'
+  known_failure_modes:
+  - unit-test coverage, API-schema memorization, install/version pinning, and sandbox assumptions affect validity.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv comments say ACL'24 Camera Ready. Remaining artifact/license/split/scoring questions stay in needs.
+inclusion_reason: 'high: controllable tool/API environment with strong verifier and side-effect audit questions.'
+related: []
+tags:
+- benchmark
+- tool_api_benchmark
+- app-api-agents
+one_line: AppWorld exposes simulated apps, APIs, and state-based unit tests as an auditable evaluation surface.
+why_it_matters: Excellent stateful app-world surface with collateral-damage checks.
+status: verified
+needs:
+- 'needs_metadata: verify code/package/data license and exact ACL Anthology link if available'
+- 'needs_audit: inspect unit-test coverage, split version, and sandbox assumptions'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AppWorld exposes simulated apps, APIs, and state-based unit tests as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv comments say ACL'24 Camera Ready.
+category_ids:
+- benchmarks_evaluation_surfaces

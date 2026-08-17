@@ -1,0 +1,3 @@
+Existing RAG hallucination detectors commonly provide only a classification score, or use a general-purpose LLM to judge each response without task-specific preference training. Their explanations may be absent, expensive to obtain, or insufficiently grounded in the supplied document.
+
+HalluGuard changes the supervision object to paired reasoning responses that jointly contain a groundedness label and evidence-based justification. Its novelty is not synthetic claim generation or ORPO alone, but the combination of document-grounded preference tuples, large-versus-small model response pairing, label verification, and two-judge consensus filtering to distill interpretable detection into a 4B model.

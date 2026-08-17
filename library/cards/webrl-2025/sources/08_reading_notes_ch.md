@@ -1,0 +1,5 @@
+- 先确认数据边界：论文描述了 1,186 条 WebArena-Lite 种子样本和 12,200 条 ORM 样本，但完整在线课程语料没有发布。
+- 将 Algorithm 1 与 Appendix B 对照阅读：8 个阶段各保留 500 个任务；当前 rollout 用于训练策略，成功轨迹进入 replay，失败指令则成为后续生成种子。
+- 始终把反馈契约视为 mixed：可执行 WebArena-Lite reward 监督原始任务和 ORM 构造，学习型 ORM 则依据动作历史与最终 HTML 判断生成任务。
+- 把约 103 MB 的 `.pt` 看作部分、无独立许可的序列化 SFT 工件，而非全部轨迹；执行 `torch.load` 前应在隔离环境检查。
+- 阅读 headline score 时同时核对 165 个任务的 split、ORM 误差、跨站点回退、缺失的 overlap manifest、缺失的失败语料和未固定环境状态。

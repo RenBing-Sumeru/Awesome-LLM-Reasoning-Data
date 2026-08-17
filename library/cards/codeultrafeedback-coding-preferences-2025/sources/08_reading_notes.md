@@ -1,0 +1,3 @@
+1. Inspect the five preference definitions and the GPT-3.5 judging prompt. 2. Sample one instruction across all four answers and annotations, including the rationale. 3. Run tests or compilation where possible before accepting a high rating. 4. Measure whether model identity, answer length, or formatting predicts ratings. 5. Hold out instruction families and compare a tuned model with the original CodeLlama-7B-Instruct.
+
+The key reading question is whether the feedback measures the named coding preference or a shortcut correlated with it. Preserve that question in downstream reports; aggregate preference scores without the underlying rationale are not sufficient audit evidence.

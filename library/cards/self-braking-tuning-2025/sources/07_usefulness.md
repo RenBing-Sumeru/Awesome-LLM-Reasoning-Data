@@ -1,0 +1,3 @@
+SBT is useful as a trace-rewriting schema. A reusable record should preserve upstream dataset and item ID, original trace, step segmentation, extracted intermediate answers, first-correct position, marker matches, both component scores, weights and thresholds, selected SBT variant, retained/masked spans, braking cue, loss mask, rejection reason, model/tokenizer revision, and evaluation outcome. This supports audits of whether removal targets redundancy or useful self-correction.
+
+Downstream users should keep construction heuristics, masked supervision, answer correctness, and benchmark performance separate. The reported model results justify testing the recipe; they do not prove the missing decision ledger or shortened traces are high-quality data.

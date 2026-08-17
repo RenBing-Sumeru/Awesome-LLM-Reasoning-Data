@@ -1,0 +1,3 @@
+Decisive downstream experiment: The paper reports state-of-the-art results on challenging math benchmarks for models trained with DeepMath; its strongest causal handle is the controlled difficulty, decontamination, and verification pipeline rather than raw scale. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 103,000 math questions with three DeepSeek-R1 solutions per record and exposes actual fields question, final_answer, difficulty, topic, and r1_solution_1 through r1_solution_3; on 2026-07-27 its page reported 11900 downloads. Usage is only an impact cross-check, not a causal experiment.

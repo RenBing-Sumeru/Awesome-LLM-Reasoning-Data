@@ -1,0 +1,1 @@
+Read the dataset card and preserve the exact revision. Report language/task/model strata, number of annotations used per item, aggregation method, discarded disagreements, license, and any translation or templating. Evaluate per language and per task before publishing a global mean.

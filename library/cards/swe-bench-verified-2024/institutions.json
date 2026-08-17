@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "OpenAI",
+    "Princeton Language and Intelligence"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://openai.com/index/introducing-swe-bench-verified/",
+    "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+    "https://github.com/SWE-bench/SWE-bench"
+  ],
+  "verification_note": "OpenAI release, HF dataset, and SWE-bench harness verify authors, OpenAI/Princeton collaboration, and subset artifacts."
+}

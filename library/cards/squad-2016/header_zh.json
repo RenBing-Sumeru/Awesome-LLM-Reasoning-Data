@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SQuAD v1.1 是经典抽取式阅读理解基准，问题由众包围绕 Wikipedia 段落编写。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "EMNLP 2016 / ACL Anthology 的评测面",
+  "best_for_ch": "关注抽取式问答、阅读理解评测、EM/F1 指标和经典公开数据污染边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Pranav Rajpurkar 等（Stanford University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T10:41:39Z"
+}

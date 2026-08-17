@@ -1,0 +1,22 @@
+{
+  "institutions": [
+    "Yale University",
+    "Harvard University",
+    "NVIDIA",
+    "Iowa City West High School",
+    "University of Washington",
+    "University of Hong Kong",
+    "Penn State University",
+    "Meta AI",
+    "Salesforce Research"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2209.00840",
+    "https://arxiv.org/pdf/2209.00840",
+    "https://aclanthology.org/2024.emnlp-main.1229/"
+  ],
+  "verification_note": "ACL Anthology verifies EMNLP 2024 main-proceedings status and DOI; official PDF superscripts verify the Yale/Harvard/NVIDIA/Iowa City West/UW/HKU/Penn State/Meta/Salesforce affiliation set."
+}

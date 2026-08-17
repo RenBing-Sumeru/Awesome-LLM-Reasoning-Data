@@ -1,0 +1,3 @@
+- **No open training data:** the 817K Orca 2 records and detailed task-strategy mapping are not released, so provenance, teacher errors, duplicates, and exact prompts cannot be independently audited. Treat the model weights as a behavior artifact, not a reproducible data release.
+- **Attribution is confounded:** the final model combines FLAN, 5M GPT-3.5 Orca 1, 1M GPT-4 Orca 1, new Orca 2 data, progressive training, and Prompt Erasing. Reuse requires matched ablations before assigning gains to strategy hiding alone.
+- **Teacher and judge dependence:** GPT-4 can produce plausible but wrong reasoning, and some open-ended evaluations also use model judgment. Add programmatic or human expert checks for target-domain answers and traces.

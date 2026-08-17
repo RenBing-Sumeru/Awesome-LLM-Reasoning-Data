@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PRISM 将 1,500 名参与者的调查、社会人口信息与 21 个 LLM 的实时对话评分相连，揭示多文化对齐的主观差异。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "参与式、多文化人类反馈数据集与对齐审计研究",
+  "best_for_ch": "研究偏好多元性、代表性采样、个性化对齐或人类反馈治理的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Hannah Rose Kirk、Alexander Whitefield、Paul Röttger 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T15:30:00Z"
+}

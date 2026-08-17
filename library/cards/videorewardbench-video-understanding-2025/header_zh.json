@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "1,563 个视频偏好样本、1,482 段视频，按感知、知识、推理、安全给出 chosen/rejected 回答，适合视频推理反馈。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "视频理解多模态奖励模型的偏好评测基准论文",
+  "best_for_ch": "需要检验视频奖励模型能否在感知、知识、推理与安全间稳定选择优质回答的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhihong Zhang, Xiaojian Huang, Jin Xu, Zhuodong Luo, Xinzhi Wang, Jiansheng Wei, Xuejin Chen",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ASLEC校正概率排序推理数据中的步骤长度混淆，并在多个目标模型上测试校正后的4K/10K训练子集。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据选择偏差诊断与开放配方",
+  "best_for_ch": "研究推理数据筛选、自然度评分、因果校正和发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Bing Wang、Rui Miao、Chen Shen、Shaotian Yan、Kaiyuan Liu、Ximing Li、Xiaosong Yuan、Sinan Fan、Jun Zhang、Jieping Ye",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T06:41:45Z"
+}

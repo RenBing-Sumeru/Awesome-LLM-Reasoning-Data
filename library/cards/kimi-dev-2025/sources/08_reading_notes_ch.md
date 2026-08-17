@@ -1,0 +1,5 @@
+- 约 150B 指上采样后的 token exposure，不是 150B 个唯一 token；论文给出的 pre-upsampling component 合计约 90B。
+- 必须区分模拟 file-tool interaction 与 Docker-grounded RL episode：前者禁用 shell execution，并使用合成 observation。
+- 论文所述 5,016 条 SWE-smith 轨迹应视为 paper-run claim；其 immutable revision、row ID、shuffle seed 与 preprocessing 尚未解决。
+- 所有 pass rate 以及 \(2^{23}\) 对 \(1.5\times2^{28}\) token 的比较，都只能在论文模型、任务、prompt、sampling 与执行条件下解释。
+- 不要把公开 evaluation JSONL、repository harness 或预处理仓库说明误当成未发布的训练 corpus、完整 failed-rollout archive 或可复现内部 Docker fleet。

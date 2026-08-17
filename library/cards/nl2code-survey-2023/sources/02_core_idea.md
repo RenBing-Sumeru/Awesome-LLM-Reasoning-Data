@@ -1,0 +1,1 @@
+The survey organizes 27 LLMs for NL2Code and reviews the benchmarks and metrics used to compare them. Its HumanEval comparison and discussion lead to three factors behind progress: model size, high-quality data, and expert tuning. These are useful comparison lenses, not a guarantee that any one system will solve every programming task.

@@ -1,0 +1,5 @@
+- Read Section 4.2.2 first: it is the only place that directly connects conflicting user edits, RL rollouts, and positive reinforcement for preserving changes.
+- Keep Section 5.1.3.1 separate from training: internal PR prompts, tests, hints, pre-PR branches, command-line/Python actions, and hidden unit tests are evaluation objects.
+- Treat every rollout number as evaluation-only unless the report explicitly assigns it to training; the destructive-action training rollout count and length remain unknown.
+- Compare this card with the May 2025 Codex addendum and the GPT-5.3-Codex system card to track which safety-data and reward fields become more or less explicit across versions.
+- Before reuse, ask for the user-model policy, conflict taxonomy, preservation detector, successful and failed trajectories, repository rights, global split, decontamination ledger, and reward-hacking audit.

@@ -1,0 +1,239 @@
+id: probench-2026
+title: 'ProBench: Benchmarking GUI Agents with Accurate Process Information'
+year: 2026
+venue: AAAI Conference on Artificial Intelligence (AAAI-26)
+authors:
+- Leyang Yang
+- Ziwei Wang
+- Xiaoxuan Tang
+- Sheng Zhou
+- Dajun Chen
+- Wei Jiang
+- Yong Li
+source_role:
+- benchmark
+- agent_environment
+- verifier_reward
+verification_contract:
+- programmatic
+- environmental
+- judgment_required
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- gui_agents
+- mobile_agents
+- android
+- bilingual_evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/39974
+  arxiv: https://arxiv.org/abs/2511.09157v1
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1609/aaai.v40i32.39974
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/39974
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: '217 mobile GUI evaluation instructions over 34 applications: 149 State-related tasks and 68 Process-related
+    tasks. The language breakdown is 75 English tasks (52 State, 23 Process) and 142 Chinese tasks (97 State, 45 Process).
+    Applications originate from a filtered SPA-BENCH list; human-written seeds are expanded by Qwen3 and then manually filtered/edited.'
+  trace_author: The evaluated GUI agent produces the action sequence. Process Provider converts observed runtime actions into
+    textual evidence using either programmatic a11y-tree extraction or an MLLM comparison of before/after screenshots. No
+    public corpus of the paper's evaluated trajectories was confirmed.
+  answer_format: A task supplies a natural-language instruction to an interactive single-app Android episode. The agent emits
+    CLICK, SWIPE, TYPE, ENTER, BACK, COMPLETE or WAIT actions. The terminal evaluator returns a binary judgment that is aggregated
+    as benchmark accuracy; the pipeline also distinguishes Uncompleted, Failure and Success.
+  process_fields:
+  - task_instruction
+  - task_type
+  - language
+  - application
+  - current_screenshot
+  - historical_operations
+  - action_type
+  - click_coordinate
+  - accessibility_tree
+  - node_text
+  - content_description
+  - resource_id
+  - optional_before_screenshot
+  - optional_after_screenshot
+  - textualized_action
+  - final_screenshot
+  - completion_signal
+  - terminal_outcome
+  observation: Real-time screenshot plus task instruction and context such as historical operation records. Process Provider
+    additionally accesses the a11y tree or paired before/after screenshots to create evaluator-facing action descriptions.
+  action_space:
+  - CLICK
+  - SWIPE
+  - TYPE
+  - ENTER
+  - BACK
+  - COMPLETE
+  - WAIT
+  environment_or_substrate: adbutils-controlled Android devices running one application per task. English apps run in Android
+    Emulator; Chinese apps run on a physical Android phone with ADBKeyboard. The benchmark includes third-party online applications
+    and live/mutable content.
+  verifier_or_reward: Gemini 2.5 Pro produces a terminal True/False judgment. State tasks use task plus final screenshot.
+    Process tasks add the complete sequence of textualized actions obtained from Structure Description Converter or MLLM-based
+    Summarizer; the main experiments use the programmatic converter. The result is full-episode binary evaluation, not agent-visible
+    process reward.
+  terminal_predicate: Uncompleted if the 15-step budget expires without COMPLETE; Failure if COMPLETE is emitted but requirements
+    are unmet; Success only when COMPLETE is emitted and the judge finds the final state and, for Process tasks, critical
+    operations satisfactory. Five identical consecutive operations trigger early failure.
+  provenance: SPA-BENCH application list -> app filtering -> human seed tasks -> Qwen3 expansion -> human filtering/editing
+    -> State/Process classification -> live device episode -> action textualization -> Gemini terminal judgment. Record-level
+    source, generation, editing, execution and judgment lineage is not publicly released.
+recipe_metadata:
+  base_model: Not a training recipe. Evaluated systems include GPT-4o, Claude 4 Sonnet, Gemini 2.5 Pro, Qwen2.5-VL 7B/32B/72B,
+    InternVL3-8B, UI-TARS-1.5-7B, UI-R1-E-3B and GUI-R1-3B.
+  teacher: Gemini 2.5 Pro is the terminal judge and optional action summarizer. It does not provide demonstration trajectories
+    to the evaluated agents.
+  generator: Qwen3 expands manually composed seed tasks, followed by human filtering and editing. Exact checkpoint, prompt,
+    decoding settings and candidate/rejection counts are unknown.
+  prompt_task_source: Human seed instructions for applications retained from the SPA-BENCH app list, then Qwen3 expansion
+    and manual correction/diversification. Exact seed and candidate pools are unknown.
+  filtering_rule: Remove English apps that cannot run in an emulator and apps with bot-detection or anti-automation; manually
+    filter/edit generated tasks for correctness and diversity, while reducing lexical and structural instruction overlap.
+    Formal thresholds, rejected records and adjudication are unknown.
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Maximum 15 interaction steps per task, plus early failure after five identical consecutive operations.
+    Per-model sampling temperature, token budget, retry count, repeat count and seeds are unknown.
+  selection_threshold: Terminal binary True/False from Gemini 2.5 Pro, with COMPLETE required for success. Paper validation
+    reports agreement/correctness against human judgments but does not disclose validation sample size or adjudication protocol.
+  optimizer_or_scaffold: 'Evaluation-only adbutils scaffold: screenshot/context delivery, text-action parsing, Android control,
+    history capture, optional action textualization, Gemini terminal judgment, 15-step limit and repeated-action early stopping.
+    No policy optimization is reported.'
+  reset_protocol: Researchers manually clear all in-app histories before every execution. No automated emulator snapshot/device
+    restore, reset script, validation checklist, server/account state reset or cross-run equivalence audit is disclosed.
+audit:
+  source_mixture: 217 Qwen3-expanded and human-edited task instructions, 34 bilingual mobile applications, Android emulator
+    and physical-phone execution, action histories, a11y or screenshot-based Process Provider descriptions, final screenshots
+    and Gemini judgments. Only paper tables, prompts, examples and aggregate results are public.
+  split: unknown; the work defines no train/dev/test split. English/Chinese and State/Process are evaluation strata, not training
+    partitions. Appendix tables expose task instructions, but no machine-readable versioned manifest or hidden-test policy
+    was confirmed.
+  decontamination: Authors report reducing lexical and structural overlap between instructions. They do not publish the method,
+    thresholds, duplicate report, external benchmark overlap, Qwen3 self-contamination check, or evaluated-model training
+    exposure audit.
+  benchmark_overlap: Application selection begins from SPA-BENCH, and task generation uses Qwen3. Record-level overlap with
+    SPA-BENCH, other mobile benchmarks, public app instructions, model training corpora or the paper's appendix is unknown.
+  license: The proceedings PDF states Copyright © 2026 AAAI, all rights reserved. No official ProBench code/data release or
+    separate license was confirmed. Rights to task text, trajectories, screenshots, application content, accounts and future
+    machine-readable releases are therefore unknown.
+  lineage: High-level construction is documented, but immutable mappings from source application, seed prompt, Qwen3 generation,
+    human edit, task type, app/device version, initial state, model run, process text, human validation and Gemini result
+    are unavailable.
+  release_version: AAAI proceedings record and arXiv:2511.09157v1 were checked on 2026-07-20. No official repository tag,
+    dataset revision, environment image or task-manifest hash exists in the confirmed artifact set.
+  successful_and_failed_sample_retention: The evaluation distinguishes Uncompleted, Failure and Success and reports aggregate
+    accuracy plus early-stop ratios; selected success/failure screenshots appear as case studies. No public per-episode success,
+    failure, uncompleted, action, observation, Process Provider output or judge-response corpus was confirmed.
+  privacy_or_consent: unknown; no account provisioning, credential handling, annotator consent/compensation, PII detection,
+    screenshot redaction, personalized-content review, data retention or takedown policy is disclosed. This matters because
+    tasks cover email, maps, shopping, finance, social and other online applications.
+  safety: unknown; the paper provides no dedicated safety or misuse assessment and does not document safeguards for purchases,
+    forms, route changes, account actions, settings, abusive automation, rate limits or third-party terms. Filtering apps
+    with bot detection is a construction choice, not a deployed safety control.
+  known_failure_modes:
+  - Structure Description Converter depends on a11y metadata that can be noisy, empty or misleading across app implementations;
+    only click operations receive its node-based detail.
+  - MLLM action summaries and terminal Gemini judgments can hallucinate or miss task/process requirements; reported correctness
+    is below 100% and validation protocol details are sparse.
+  - 'A completion signal is model-dependent: UI-R1-E-3B reportedly completed zero tasks because it never emitted COMPLETE,
+    even when the underlying GUI goal may have been reached.'
+  - Coordinate grounding errors, repeated actions, weak historical-operation use and shallow task planning dominate reported
+    agent failures.
+  - Manual clearing of app histories cannot guarantee clean server-side, account, cookie, personalization, notification, clock,
+    locale or network state across runs.
+  - Mutable third-party online apps and a physical Chinese phone make exact execution replay impossible without missing device/app/account/network
+    snapshots and code.
+  - Public appendix prompts can contaminate future evaluated models; no hidden set or formal exposure policy is stated.
+  - No official task/evaluator/trajectory package or license supports independent auditing, verifier-error analysis or safe
+    training reuse.
+  citation_status: verified
+  confidence: medium
+  notes: Verified against the AAAI-26 proceedings record, DOI, arXiv v1, rendered 18-page PDF, method/experiment sections,
+    Appendix A prompts and Appendix task tables. Paper identity, task counts and evaluation design are strong; implementation,
+    release, replay, split, lineage, rights, privacy and safety evidence remain incomplete.
+  remaining_unknowns:
+  - Official code, machine-readable tasks, environment package, results, Process Provider outputs, and trajectories
+  - Qwen3 generation checkpoint/prompt/settings, candidate pool, rejection counts, and annotator protocol
+  - App packages/versions, Android images/versions, device hardware, accounts, locale, network, region, and time state
+  - Evaluation repeats, seeds, decoding settings, retries, per-task results, and judge API snapshot
+  - Automated reset equivalence, immutable device/app snapshots, and deterministic replay
+  - Train/dev/test or hidden-test policy, dedup report, external overlap, and model-exposure audit
+  - Human evaluator validation sample, agreement, adjudication, and verifier false-positive/negative slices
+  - Code/data/task/trajectory and third-party screenshot/content licenses
+  - Credential, PII, consent, retention, takedown, side-effect, rate-limit, and misuse controls
+inclusion_reason: 'ProBench makes intermediate mobile-GUI operations part of the terminal feedback contract: action evidence
+  is extracted programmatically or summarized from screen changes and supplied with the final screenshot to a judge. This
+  directly illustrates process-aware environment evaluation, while the lack of released tasks, code or trajectories prevents
+  treating it as ready-to-train process-supervision data.'
+related:
+- spa-bench-2025
+tags:
+- environment-agent-trajectory-data
+- gui-agent
+- mobile-agent
+- android
+- interactive-benchmark
+- process-aware-evaluation
+- trajectory-level-judge
+- accessibility-tree
+- verifier-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: ProBench evaluates 217 bilingual mobile-GUI tasks by feeding action-level process descriptions and the final
+  screen to a terminal Gemini judge, but releases neither a confirmed executable benchmark package nor a trajectory corpus.
+why_it_matters: It demonstrates how a final-state benchmark can detect missed sorting, filtering and other invisible intermediate
+  requirements without prescribing one gold path, while also exposing the audit cost of model-based judging, manual reset,
+  mutable apps and absent record-level releases.
+card: null
+needs:
+- 'needs_release: publish versioned task manifests, evaluator/Process Provider code, environment setup, per-run results and
+  complete trajectories'
+- 'needs_provenance: publish seed, Qwen3 generation, human editing, task-type and application lineage with candidate/rejection
+  statistics'
+- 'needs_split_policy: define train/dev/test or explicit evaluation-only/hidden-test policy and immutable task hashes'
+- 'needs_decontamination: publish lexical/semantic deduplication, SPA-BENCH overlap and evaluated-model exposure audits'
+- 'needs_replay: pin Android/device/app/account/network state, automate resets, save seeds/configs and provide emulator snapshots
+  where legally possible'
+- 'needs_verifier_audit: release human-validation protocol, sample size, agreement/adjudication, judge prompts/responses and
+  false-positive/negative slices'
+- 'needs_rights: state licenses for task text, code, evaluator outputs, trajectories, screenshots and third-party application
+  content'
+- 'needs_privacy_safety: document credentials, PII/redaction, consent, retention/takedown, rate limits and controls for state-changing
+  actions'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official AAAI proceedings article, DOI, arXiv v1 and PDF were verified. No official ProBench code/data/project/Hugging
+    Face artifact was confirmed, so those links remain null and artifact completeness remains false. The target Card was not
+    modified.

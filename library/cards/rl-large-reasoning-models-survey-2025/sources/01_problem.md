@@ -1,0 +1,1 @@
+Reinforcement learning has become a central way to train large reasoning models, yet a reported gain can depend on far more than the optimizer. It can depend on the tasks used for rollouts, the reward or verifier, filtering, compute budget, and evaluation. This survey gathers those pieces so readers can see RL reasoning as a data-and-feedback system rather than a named algorithm.

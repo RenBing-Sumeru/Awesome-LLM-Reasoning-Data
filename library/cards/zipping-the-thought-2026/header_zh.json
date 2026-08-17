@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Zipping the Thought 在受控合成数据中改变 CoT 压缩粒度，分析数据多样性、重复训练与 RLVR 如何影响步骤拆解和长度泛化。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "压缩推理数据的受控研究",
+  "best_for_ch": "适合选择 CoT 粒度及 SFT、RLVR 数据预算的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kohsei Matsutani, Gouki Minegishi, Takeshi Kojima, Yusuke Iwasawa, Yutaka Matsuo",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

@@ -1,0 +1,3 @@
+- The authors note that contrastive preference data can transmit model and dataset bias, especially for subjective or culturally specific criteria. Audit rubric disagreement and subgroup behavior before treating it as human preference.
+- The model is formulated for pairwise comparison. Absolute scoring and ranking more than two responses are unverified, so do not use pairwise accuracy as evidence for those settings.
+- The reported optimization is primarily offline preference optimization. Test online-RL stability, reward hacking, and the license/provenance of every constituent source before deployment.

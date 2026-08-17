@@ -1,0 +1,1 @@
+Use it when an outcome-only reward model is suspected of exploiting shallow cues. Hold out checklist examples, compare outcome accuracy and rationale consistency separately, and only then test whether their combined reward improves a policy without degrading judgement quality on a separate evaluation set.

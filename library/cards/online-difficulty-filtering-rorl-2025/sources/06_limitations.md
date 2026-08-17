@@ -1,0 +1,2 @@
+Only mathematics is empirically validated. Difficulty depends on checkpoint, decoding, rollout count, and verifier behavior, so thresholds may not transfer. Aggressive bands can sharply increase replacement rollouts and latency. Binary answer normalization can introduce verifier errors. No author-linked code, prompt split, accepted or rejected rollout log, trained model, or rollout dataset is released; decontamination, licensing, and exact decoding details remain unknown.
+

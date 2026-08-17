@@ -1,0 +1,197 @@
+id: vlm-capability-curriculum-2026
+title: 'From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models'
+year: 2026
+venue: ICML 2026
+authors:
+- Juncheng Wu
+- Hardy Chen
+- Haoqin Tu
+- Xianfeng Tang
+- Freda Shi
+- Hui Liu
+- Hanqing Lu
+- Cihang Xie
+- Yuyin Zhou
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- vision_language
+- visual_perception
+- visual_mathematics
+- mathematics
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=r7uOjvZdzO
+  arxiv: https://arxiv.org/abs/2605.20177
+  code: https://github.com/UCSC-VLAA/VLM-CapCurriculum
+  data: https://huggingface.co/collections/UCSC-VLAA/vlm-capcurriculum
+  project: https://ucsc-vlaa.github.io/VLM-CapCurriculum/
+  huggingface: https://huggingface.co/collections/UCSC-VLAA/vlm-capcurriculum
+  doi: null
+  venue: https://openreview.net/forum?id=r7uOjvZdzO
+  openreview: https://openreview.net/forum?id=r7uOjvZdzO
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2605.20177
+data_object:
+  prompt_source: Stage 1 uses perception-focused four-way MCQs generated from fine-grained DOCCI image captions; Stage 2 redistributes
+    13,181 ORZ-Math-13k text-math problems; Stage 3 releases 16,195 visual-reasoning problems from Math PUMA (6,696), GeoQA170K
+    (6,499), CLEVR-Math (2,000), and ArxivQA (1,000). The paper also names DocVQA, but the hosted Stage-3 dataset card does
+    not include it in the released mixture.
+  trace_author: Qwen2.5-72B generates Stage-1 perception questions and answers from captions. Qwen3-VL-8B-Instruct generates
+    the 16 difficulty-scoring answers stored per released problem. During RLVR, the current policy of each Qwen or InternVL
+    backbone generates on-policy training responses.
+  answer_format: Every hosted row documents `index`, `problem`, `answer`, `images`, `source`, 16 extracted final-answer `predictions`,
+    16 boolean `correctness` values, and scalar `pass_rate`. Stage-1 and many Stage-3 rows use multiple-choice option letters;
+    Stage-2 uses text-math answers. Raw full completions and chain-of-thought text are not included in the documented dataset
+    schema.
+  process_fields:
+  - index
+  - problem
+  - answer
+  - images
+  - source
+  - predictions
+  - correctness
+  - pass_rate
+  environment_or_substrate: Offline JSONL stage datasets and image archives feed an EasyR1 GRPO pipeline. Capability staging
+    runs perception, then textual reasoning, then visual reasoning; the optional two-dimensional curriculum additionally orders
+    rows easy-to-hard by pass rate within each stage.
+  verifier_or_reward: The released training reward extracts a boxed final answer, grades it with MathRuler, checks a paired
+    `think` tags plus `\boxed{...}` output format, and combines 0.9 answer accuracy with 0.1 format reward. Difficulty records
+    grade each of 16 Qwen3-VL-8B-Instruct answers against the target and store the boolean vector and its mean. Neither contract
+    verifies the reasoning steps.
+  terminal_predicate: A training rollout succeeds when its extracted boxed answer is graded correct; format compliance contributes
+    a smaller scalar bonus. A difficulty sample's terminal label is its answer-level correctness, and the problem's pass rate
+    is the mean of the 16 labels.
+recipe_metadata:
+  base_model: Qwen3-VL-8B-Instruct, Qwen2.5-VL-7B-Instruct, InternVL3-8B, and InternVL3.5-8B are trained in staged/merged
+    experiments; Qwen3-VL-8B-Instruct is the difficulty-scoring model.
+  teacher: Qwen2.5-72B for Stage-1 caption-to-MCQ generation
+  generator: Qwen2.5-72B synthesizes perception MCQs; the current VLM policy generates GRPO responses; Qwen3-VL-8B-Instruct
+    produces the 16 released difficulty predictions per row.
+  filtering_rule: A Stage-1 QA is retained only when both Qwen2.5-VL-7B and Qwen2.5-VL-32B answer it incorrectly from the
+    image but correctly from the caption. Stage 2 curates ORZ-Math-13k. The hosted Stage-3 release mixes four open sources;
+    any additional row-level retention rules are unknown. Difficulty curricula sort by pass rate from easy to hard.
+  sampling_protocol: Difficulty estimation samples 16 answers per problem from Qwen3-VL-8B at temperature 1.0. Capability+difficulty
+    ordering applies descending pass rate within each capability stage. Training GRPO samples a group of five responses per
+    input; other rollout sampling parameters and random seeds are unknown.
+  rollout_count: 16 difficulty-scoring predictions per released row, yielding 523,776 extracted predictions and correctness
+    labels over 32,736 rows; GRPO training group size is five responses per input.
+  temperature: 1.0 for difficulty-score generation; RLVR training rollout temperature is unknown.
+  inference_budget: Maximum training response length is 2,048 tokens and Appendix Table 6 lists maximum prompt length 2,048.
+    Staged training reports 90, 375, and 465 steps, while merged training uses 930 total steps. The Qwen3 launchers specify
+    16, 15, and 15 epochs for stages 1-3. The repository estimates about 24 GPU-hours on 8 H200 GPUs for the Qwen3-VL-8B staged
+    quickstart.
+  optimizer_or_scaffold: EasyR1 GRPO/RLVR with sequential capability stages, answer-plus-format reward, a mixed vision-encoder
+    schedule (open in stages 1 and 3, frozen in stage 2), and optional within-stage difficulty sorting by pass rate.
+audit:
+  source_mixture: The public release contains 3,360 DOCCI-derived perception rows, 13,181 ORZ-Math-13k text rows, and 16,195
+    visual rows from Math PUMA (6,696), GeoQA170K (6,499), CLEVR-Math (2,000), and ArxivQA (1,000), for 32,736 rows total.
+    The paper additionally names DocVQA, but the hosted visual dataset card does not list DocVQA in the released mixture.
+  split: Each hosted dataset documents one `train` split; no release-level validation or test split is documented. The Stage-1
+    construction utility can produce deterministic 85/5/10 local splits, but that optional formatter does not make the hosted
+    artifact multi-split.
+  decontamination: unknown
+  license: OpenReview labels the paper CC BY 4.0, and the code repository is Apache-2.0. The three hosted dataset cards declare
+    Apache-2.0, but Stage 1 notes DOCCI's CC BY 4.0 caption license, Stage 2 redistributes ORZ-Math-13k, and Stage 3 explicitly
+    retains the separate upstream licenses of four image sources. Row-level reuse obligations are therefore not fully resolved
+    by the top-level labels.
+  lineage: DOCCI caption and image -> Qwen2.5-72B perception MCQ -> dual-VLM image-fail/caption-pass intersection -> hosted
+    Stage-1 row; ORZ-Math-13k -> hosted Stage-2 row; four visual corpora -> hosted Stage-3 row. Each hosted problem is sampled
+    16 times by Qwen3-VL-8B-Instruct -> extracted answers -> correctness vector -> mean pass rate. Rows are then used as three
+    sequential EasyR1 GRPO stages, optionally sorted by pass rate within stage.
+  known_failure_modes:
+  - Released `predictions` are extracted answer strings or option letters, not raw completions; full correct and incorrect
+    reasoning traces, logprobs, token counts, latency, and seeds cannot be audited.
+  - Incorrect answer-level candidates remain in the 16-element vectors, but the reasoning that produced rejected answers is
+    absent, so the release is not a full rollout-trace corpus.
+  - Pass rate is measured with one Qwen3-VL-8B-Instruct policy at temperature 1.0 and is quantized in increments of 1/16;
+    it is model- and sampling-policy-dependent rather than an intrinsic difficulty label.
+  - The answer-and-format verifier checks final-answer equivalence and syntax, not visual grounding or intermediate reasoning
+    validity; reward hacking or plausible unsupported traces can pass.
+  - Stage-1 labels are generated from captions by Qwen2.5-72B and filtered with two Qwen2.5-VL models, so caption errors,
+    generator errors, and correlated family-specific blind spots can survive.
+  - The paper lists DocVQA in the visual data mixture while the hosted 16,195-row dataset card lists only Math PUMA, GeoQA170K,
+    CLEVR-Math, and ArxivQA.
+  - The hosted datasets expose only train splits, and no decontamination protocol is disclosed for overlap with training or
+    evaluation benchmarks.
+  - Top-level Apache-2.0 dataset labels do not replace upstream source-specific image, caption, and redistribution obligations;
+    Stage-3 reuse requires per-source license review.
+  - The paper's main-text statement about enabling the visual encoder in all staged phases is imprecise relative to Appendix
+    Table 8 and the released scripts, which use an open/frozen/open schedule.
+  - The headline 86.9% perception-error estimate depends on Claude-4.5-Haiku judgments; manual validation matched 33 of 40
+    sampled decisions, so the diagnostic label is not a perfect ground truth.
+  citation_status: verified
+  confidence: high
+  notes: Verified on 2026-07-25 against the ICML/OpenReview record, full 19-page arXiv paper and appendix, author project
+    page, official GitHub construction/training/reward files, and all three UCSC-VLAA Hugging Face dataset cards. Exact-title,
+    arXiv-ID, proposed-ID, and Card-directory dedup checks found no match in the target checkout.
+inclusion_reason: Releases a reusable curriculum data object in which every problem carries 16 sampled final answers, a 16-bit
+  correctness vector, and a pass rate used for easy-to-hard ordering inside perception, textual-reasoning, and visual-reasoning
+  RLVR stages; it also exposes the construction and verifier scaffold while leaving full reasoning completions outside the
+  release.
+related:
+- self-evolving-curriculum-2025
+- phi-4-reasoning-vision-15b-2026
+- visualprm-2025
+tags:
+- vlm-capcurriculum
+- capability-curriculum
+- difficulty-curriculum
+- repeated-sampling
+- pass-rate
+- correctness-vector
+- visual-perception
+- visual-reasoning
+- rlvr
+- grpo
+- answer-level-rollouts
+- open-data
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: VLM-CapCurriculum releases 32,736 staged RLVR problems with 16 extracted Qwen3-VL-8B answers, per-answer
+  correctness flags, and a pass rate per row, enabling capability-first and within-stage difficulty curricula without releasing
+  the underlying full reasoning completions.
+why_it_matters: 'It turns repeated sampling into an auditable curriculum signal across perception, text reasoning, and visual
+  reasoning, while making the central reuse boundary explicit: answer-level success vectors and images are public, but raw
+  correct and rejected chains of thought, decontamination, and source-level license resolution are not.'
+card: null
+needs:
+- 'needs_trace: release raw 16-sample completions, reasoning text, token counts, latency, and stable per-rollout IDs'
+- 'needs_sampling: disclose pass-rate top-p/top-k, maximum tokens, seeds, and exact answer-extraction/grading settings'
+- 'needs_split: document or release validation/test manifests for all three hosted stage datasets'
+- 'needs_decontamination: audit source and benchmark overlap across DOCCI, ORZ-Math-13k, and the visual mixture'
+- 'needs_license: provide row-level upstream source and license fields, especially for Stage-3 images'
+- 'needs_lineage: reconcile DocVQA in the paper with the four-source hosted visual release'
+card_recommendation: High-priority core-only bilingual Card. Center the Card on the eight-field released row, the full 16-answer
+  correctness vector and pass-rate calculation, the capability-plus-difficulty schedule, the answer/format verifier, and the
+  distinction between retained incorrect final answers and missing rejected reasoning traces. Include the train-only split,
+  source-mixture discrepancy, and upstream-license boundary as blocking audit notes.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: ICML/OpenReview citation, arXiv paper and appendix, project page, code/reward/training artifacts, HF collection,
+    all three dataset schemas, counts, pass-rate vectors, image layouts, and license statements were checked. Status remains
+    partial because full completions, decontamination, non-train splits, complete sampling metadata, and source-level license
+    resolution are unavailable.

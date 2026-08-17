@@ -1,0 +1,191 @@
+id: zaya1-8b-2026
+title: ZAYA1-8B Technical Report
+year: 2026
+venue: arXiv preprint
+authors:
+- Robert Washbourne
+- Rishi Iyer
+- Tomas Figliolia
+- Henry Zheng
+- Ryan Lorig-Roach
+- Sungyeon Yang
+- Pritish Yuvraj
+- Quentin Anthony
+- Yury Tokpanov
+- Xiao Yang
+- Ganesh Nanduru
+- Stephen Ebert
+- Praneeth Medepalli
+- Skyler Szot
+- Srivatsan Rajagopal
+- Alex Ong
+- Bhavana Mehta
+- Beren Millidge
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- scalar_reward
+domains:
+- general_reasoning
+- mathematics
+- coding
+- tool_use
+- instruction_following
+training_use:
+- sft
+- distillation
+- rlvr
+- reward_modeling
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2605.05365
+  arxiv: https://arxiv.org/abs/2605.05365
+  code: https://github.com/Zyphra/vllm/tree/zaya1-pr
+  data: null
+  project: https://www.zyphra.com/our-work/zaya1-8b
+  huggingface: https://huggingface.co/Zyphra/ZAYA1-8B
+  doi: https://doi.org/10.48550/arXiv.2605.05365
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2605.05365
+data_object:
+  prompt_source: The report names broad web, code, math, multilingual, reasoning, instruction-formatted, chat, tool-calling,
+    puzzle, competitive-programming, behavioral, and TTC-aggregation prompts. Individual datasets, source manifests, dates,
+    prompts, licenses, and source weights are unknown.
+  trace_author: Long-CoT teacher/expert rollouts occur from pretraining onward. Aggregation examples use existing expert rollouts
+    and, during RL, expert or prior/current checkpoint self-rollouts. Teacher identities, prompts, decoding settings, licenses,
+    and trace provenance are unknown.
+  answer_format: Chat/instruction responses, think-block CoT plus final answers, code, tool-calling traces, executable input/output
+    tasks, aggregation prompts containing reasoning tails, and verifier outcomes. Released training schemas are unavailable.
+  process_fields:
+  - prompt
+  - reasoning_trace
+  - final_answer
+  - candidate_reasoning_tail
+  - aggregation_prompt
+  - code
+  - input_output_specification
+  - test_case
+  - verifier_result
+  - reward
+  - instruction_following_gate
+  environment_or_substrate: The report describes 400 adaptive RLVE-Gym environments and synthetic code environments transformed
+    from competitive-programming references. Environment versions, task instances, reference corpus, test suites, containers,
+    seeds, scheduler state, and replay logs are not released.
+  verifier_or_reward: Reported signals include normalized math-answer correctness, puzzle/environment verification, exact
+    code I/O execution, compile/held-out-test checks, falsification checks, verifiable final-answer/code rewards, reward-model
+    scores gated by a binary instruction-following checker, and LZ77 repetition reward-zeroing. Reward-model identity, training
+    data, prompts, thresholds, calibration, and error analyses are unknown.
+  terminal_predicate: A correct normalized answer, environment solve outcome, accepted execution or hidden-test result, valid
+    falsifying input, verifier-approved final answer/code, or a passing IF gate followed by reward-model scoring. Exact implementation
+    and aggregation details are unknown.
+recipe_metadata:
+  base_model: 'ZAYA1-8B is a reasoning-focused MoE trained from scratch: 8T and 4T 4K base-pretraining phases, 1.2T-token
+    32K midtraining, and 660B-token 131K SFT. The public post-trained checkpoint follows Zyphra/ZAYA1-base and Zyphra/ZAYA1-reasoning-base
+    in the official model tree.'
+  teacher: Existing expert-model reasoning rollouts provide long-CoT and aggregation material. The report does not identify
+    teacher checkpoints or their license and prompting details.
+  generator: Construction includes answer-preserving trimming, expert-rollout tail extraction and aggregation, plus self-aggregation
+    from current or prior-stage checkpoints. Generator versions, prompts, seeds, and yields are unknown.
+  filtering_rule: Answer-preserving trimming retains final answers while trimming reasoning tails and drops samples only when
+    answer sections cannot fit. RL uses verifiers, an instruction-following gate, reward-model scores, and repetition reward-zeroing.
+    Source-level filters, thresholds, and retention rates are unknown.
+  sampling_protocol: The report describes grouped dynamic rollout sampling, adaptive RLVE difficulty, weighted environment
+    selection, and asynchronous PipelineRL. Exact production group size and most training decoding schedules are unknown.
+  rollout_count: unknown
+  temperature: Official deployment guidance gives temperature 1.0/top-p 0.95 for general use and 0.6/top-p 0.95 for agent/code
+    use. Exact training temperatures are unknown.
+  inference_budget: Markovian RSA evaluation describes a 40K final-response budget and 4K carry-forward tail in one configuration.
+    This is an inference evaluation detail recorded only for its data-construction and release-boundary implications, not
+    a Track 8 classification.
+  optimizer_or_scaffold: 'SFT is followed by four RL stages: 232-step reasoning warmup, 400-step RLVE-Gym curriculum, 384+464-step
+    math/code aggregation RL, and 384-step behavioral RL. The report describes PipelineRL, Binary-TV trust-region masking,
+    Dr-GRPO SMTSN, MaxRL, behavioral GRPO, router replay, and momentum-free Muon. Full source code and reproducible configurations
+    are not released.'
+audit:
+  source_mixture: 'Category-level midtraining/SFT mixtures are reported: long-CoT 86.1%/75.0%, web/synthetic-web/multilingual
+    5.7%/9.8%, long-context 0.8%/6.4%, code 3.0%/5.0%, math/STEM 3.0%/2.6%, and short instruction 1.4%/1.2%. Individual source
+    datasets are omitted.'
+  split: CodeARC is described as using held-out tests and behavioral stages by epoch, but official split membership, source-overlap
+    policy, evaluation exclusion rules, and seed-level partitions are unknown.
+  decontamination: unknown
+  license: The official ZAYA1-8B model release is Apache-2.0. Training-data, teacher-trace, behavioral-prompt, competitive-programming-reference,
+    reward-model, tool-trace, and environment licenses are unknown.
+  lineage: High-level lineage is disclosed from broad source categories through answer-preserving trimming, expert/self aggregation,
+    SFT, verifiable RL, and behavioral RM/IF optimization. Source manifests, transformation logs, rejected samples, data cards,
+    and artifact hashes are not released.
+  known_failure_modes:
+  - Apache-2.0 weights and inference-support forks do not release the training/post-training data, reward model, verifier
+    implementation, or audit evidence.
+  - Individual data sources, licenses, dates, source-level proportions, consent, and PII handling are undisclosed.
+  - Teacher, reward-model, behavioral-prompt, and aggregation-trace provenance are insufficient for independent verification
+    or rights audit.
+  - No published benchmark-overlap or decontamination protocol establishes leakage boundaries.
+  - RLVE/code environment versions, scheduler state, test suites, containers, and replay logs are unavailable.
+  - Answer-preserving trimming creates an artificial truncated-rationale-to-answer transition whose source-level effects cannot
+    be independently audited.
+  - SFT aggregation targets can be included without a verifier, so teacher-trace correctness cannot be assumed.
+  citation_status: verified
+  confidence: medium
+  notes: 'Only official Zyphra sources were used: arXiv, Zyphra''s project page, Zyphra''s GitHub inference-support fork,
+    and the official Zyphra Hugging Face model page. This is Track 12 only; TTC/RSA is included only as a data-construction,
+    verification, and release-boundary fact, not as Track 8 content.'
+inclusion_reason: A 2026 frontier technical report that exposes unusually concrete category-level mixtures, verifier types,
+  RL stage sizes, and aggregation-data construction, while retaining the decisive training-data, reward, environment, and
+  audit artifacts behind a public-weight release.
+related: []
+tags:
+- zaya1-8b
+- zyphra
+- frontier-report
+- data-disclosure-ledger
+- reasoning
+- coding
+- long-cot
+- reinforcement-learning
+- verifier
+- reward-model
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: ZAYA1-8B reports reasoning-first pretraining, long-CoT midtraining/SFT, verifiable math/code RL, and behavioral
+  RM/IF optimization with public Apache-2.0 weights, but not the data, teacher/RM artifacts, configured environments, reproduction
+  stack, or audit records needed to independently validate that pipeline.
+why_it_matters: 'It is a strong Track 12 example of partial frontier disclosure: the report specifies much more than model
+  weights alone, including mixture categories and verifier interfaces, but withheld source manifests, data cards, reward/judge
+  artifacts, runnable environments, and contamination evidence still prevent reproducibility and auditability.'
+card: null
+needs:
+- 'needs_data: source-level manifests, dates, counts, rights, licenses, and public data cards'
+- 'needs_metadata: teacher identities, prompts, decoding settings, seeds, aggregation yields, and retention rates'
+- 'needs_verifier: verifier implementation, hidden-test policy, reward-model identity/training data, thresholds, calibration,
+  and error analysis'
+- 'needs_audit: split definitions, benchmark-overlap/decontamination protocol, source-rights/PII audit, provenance logs, and
+  rejected-sample statistics'
+- 'needs_environment: RLVE/code configurations, reference corpora, containers, tests, scheduler state, and replay logs'
+- 'needs_code: data construction, SFT/RL, router replay, evaluation harness, and reproduction configurations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official arXiv, DOI, Zyphra project page, official model page, and Zyphra's documented inference-support repository
+    were verified. Only model weights and inference-support material are public; training and audit artifacts are undisclosed.

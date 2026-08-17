@@ -1,0 +1,120 @@
+id: lppo-progressive-optimization-2025
+title: 'From Data-Centric to Sample-Centric: Enhancing LLM Reasoning via Progressive Optimization'
+year: 2025
+venue: arXiv
+authors:
+- Xinjie Chen
+- Minpeng Liao
+- Guoxin Chen
+- Chengxi Li
+- Biao Fu
+- Kai Fan
+- Xinggao Liu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2507.06573
+  arxiv: https://arxiv.org/abs/2507.06573
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.06573
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 817 LIMO expert-solution problems plus MATH level 3-5 problems
+  trace_author: Expert solutions provide prefixes; current policy generates continuations
+  answer_format: Question, optional partial expert prefix, policy completion, and boxed final answer
+  process_fields:
+  - question
+  - expert_solution
+  - sampled_prefix
+  - rollout
+  - final_answer
+  - pass_rate
+  - ema_pass_rate
+  - learning_progress
+  - sample_weight
+  environment_or_substrate: Online sample-centric GRPO with prefix augmentation and per-sample state
+  verifier_or_reward: Rule-based final-answer matching
+  terminal_predicate: Boxed final answer matches reference
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B with additional scale/backbone checks
+  teacher: LIMO expert solutions, including DeepSeek-R1/QwQ-derived solutions
+  generator: Current policy conditioned on question and optional expert prefix
+  filtering_rule: Prefix-augment zero-pass expert samples; exclude current-step 0%/100% pass samples and next-epoch solved
+    samples; weight by EMA progress
+  sampling_protocol: Roll out, measure pass rate, sample 30%-80% complete-line prefix for unsolved expert examples, re-roll
+    out, update EMA, weight advantages, curate active set
+  rollout_count: 32
+  temperature: 1.0
+  inference_budget: 5K prompt and response tokens; 32 rollouts; 300 steps
+  optimizer_or_scaffold: GRPO plus Prefix-Guided Sampling and Learning-Progress Weighting
+audit:
+  source_mixture: LIMO expert-solution examples and MATH level 3-5 prompts with online rollouts
+  split: About 9.2K training samples; multiple math evaluations
+  decontamination: unknown
+  license: unknown
+  lineage: Source and expert solution to optional prefix, rollout, answer reward, EMA progress, and weighted update
+  known_failure_modes:
+  - Answer matching does not verify reasoning or prefix faithfulness
+  - Expert-prefix availability limits transfer
+  - Per-sample state adds complexity
+  - EMA and triggers depend on policy, seed, and epoch
+  - Evidence is mainly mathematical
+  - No official code, processed data, or rollout logs
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1 is work in progress and links no reusable artifact.
+inclusion_reason: Transforms trusted traces into online prefix-guided RL prompts and dynamically weights samples by learning
+  progress.
+related: []
+tags:
+- lppo
+- prefix-guided-sampling
+- learning-progress
+- online-curation
+- grpo
+- rlvr
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Augments unsolved RLVR prompts with partial expert traces and reweights each example by changes in rollout
+  pass rate.
+why_it_matters: Makes data presentation and sample state part of the reasoning-data lifecycle instead of treating prompts
+  as static.
+card: null
+needs:
+- 'needs_code: LPPO implementation and state tracking'
+- 'needs_data: manifests, prefix provenance, and rollout logs'
+- 'needs_audit: contamination, prefix leakage, seeds, and verifier errors'
+- 'needs_license: upstream and generated-trace reuse terms'
+curation_level: L2_metadata_complete
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper verified; no official reusable artifact linked.

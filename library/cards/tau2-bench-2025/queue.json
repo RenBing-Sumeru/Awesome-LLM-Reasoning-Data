@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "客服智能体，2,285 个完整任务，数据加测评",
+    "updated_at": "2026-07-22T02:17:58Z"
+  },
+  "updated_at": "2026-07-22T02:17:58Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

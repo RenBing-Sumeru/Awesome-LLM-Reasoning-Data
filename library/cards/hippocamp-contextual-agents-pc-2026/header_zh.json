@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HippoCamp 在真实个人文件系统上评测上下文智能体，并提供证据链与逐步失败诊断标注。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "研究个人计算、长程多模态检索和智能体过程诊断的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhe Yang、Shulin Tian、Kairui Hu、Shuai Liu、Hoang-Nhat Nguyen、Yichi Zhang、Zujin Guo、Mengying Yu、Zinan Zhang、Jingkang Yang、Chen Change Loy、Ziwei Liu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:35:34Z"
+}

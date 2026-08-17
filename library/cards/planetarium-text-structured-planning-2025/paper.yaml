@@ -1,0 +1,103 @@
+id: planetarium-text-structured-planning-2025
+title: 'Planetarium: A Rigorous Benchmark for Translating Text to Structured Planning Languages'
+year: 2025
+venue: NAACL 2025
+authors:
+- Max Zuo
+- Francisco Piedrahita Velez
+- Xiaochen Li
+- Michael L. Littman
+- Stephen H. Bach
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- planning
+- pddl
+- code-generation
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.naacl-long.560/
+  arxiv: null
+  code: https://github.com/BatsResearch/planetarium
+  data: https://huggingface.co/datasets/BatsResearch/planetarium
+  project: null
+  huggingface: https://huggingface.co/datasets/BatsResearch/planetarium
+  doi: https://doi.org/10.18653/v1/2025.naacl-long.560
+  venue: https://aclanthology.org/2025.naacl-long.560/
+  openreview: null
+  acl: https://aclanthology.org/2025.naacl-long.560/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Programmatically generated Blocks World and Gripper planning instances.
+  trace_author: Benchmark authors generate PDDL problems and four natural-language description styles.
+  answer_format: Natural-language planning description, ground-truth PDDL, candidate PDDL, and hierarchical verifier outcomes.
+  process_fields:
+  - description
+  - pddl
+  - parseable
+  - solvable
+  - semantically_correct
+  environment_or_substrate: STRIPS PDDL parser and planner over Blocks World and Gripper.
+  verifier_or_reward: Object-renaming-invariant PDDL semantic-equivalence checker.
+  terminal_predicate: Candidate PDDL parses, is solvable, and has equivalent initial state and goal under an allowed mapping.
+recipe_metadata:
+  base_model: Open and API language models are evaluated.
+  teacher: Programmatic planning-instance generator.
+  generator: Planning templates yield solvable PDDL with four language descriptions per problem.
+  filtering_rule: Check PDDL parsing, solvability, and semantic equivalence independently.
+  sampling_protocol: Paper reports 145,918 independent pairs; HF expands representations to about 584K rows.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin PDDL subset, planner, renaming rules, release version, and random seeds.
+  optimizer_or_scaffold: Hierarchical parser, planner, and semantic-equivalence evaluation.
+audit:
+  source_mixture: ACL Anthology paper, author GitHub repository, and BatsResearch Hugging Face dataset.
+  split: Consult the official dataset card for current representation-specific splits.
+  decontamination: Programmatic templates can retain surface cues; audit template overlap before interpreting generalization.
+  license: Check the official repository and dataset card for current licence terms.
+  lineage: https://github.com/BatsResearch/planetarium
+  known_failure_modes:
+  - Only STRIPS Blocks World and Gripper are covered.
+  - Template-generated language may not reflect real user planning requests.
+  - Object-mapping equivalence may not accept behaviorally equivalent alternative domain encodings.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper, author code repository, and Hugging Face data release were checked.
+inclusion_reason: Planetarium releases text-to-PDDL records with a programmatic semantic-equivalence contract stronger than
+  parsing or planner success.
+related: []
+tags:
+- pddl
+- planning
+- semantic-equivalence
+- naacl-2025
+one_line_summary: Planetarium pairs four textual descriptions with planning problems and uses object-renaming-aware PDDL equivalence
+  to distinguish solvable outputs from semantically correct ones.
+why_it_matters: It shows that executable plans can encode the wrong problem and makes semantic verification directly reusable
+  for text-to-PDDL training and evaluation.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL, code, and data records were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

@@ -1,0 +1,1 @@
+RottenReviews 汇集 ICLR 2024、NeurIPS 2023、F1000Research 和 Semantic Web Journal 等来源的 15K 以上投稿、审稿和元数据，并关联 9K 以上审稿人学术画像。另有 753 条跨来源审稿意见接受专家质量标注。数据同时提供评论长度、具体性、引用和审稿人依赖特征，以及 LLM 的结构化判断，使研究者能比较规则指标、模型 judge 与人类专家。

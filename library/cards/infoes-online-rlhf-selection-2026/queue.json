@@ -1,0 +1,18 @@
+{
+  "title": "Influence-based Online Experience Selection for Effective RLHF",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.2206/",
+    "code": "https://github.com/paraGONG/InfOES",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:18:45Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "按经验对目标验证回报的估计影响动态筛选在线 RLHF 数据，直接连接数据选择与优化目标",
+    "updated_at": "2026-07-15T15:18:45Z"
+  }
+}

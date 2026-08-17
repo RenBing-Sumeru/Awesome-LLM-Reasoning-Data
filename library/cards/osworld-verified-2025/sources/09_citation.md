@@ -1,0 +1,3 @@
+Tianbao Xie, Mengqi Yuan, Danyang Zhang, Xinzhuang Xiong, Zhennan Shen, Zilong Zhou, Xinyuan Wang, Yanxu Chen, Jiaqi Deng, Junda Chen, Bowen Wang, Haoyuan Wu, Jixuan Chen, Junli Wang, Dunjie Lu, Hao Hu, Tao Yu. "Introducing OSWorld-Verified." 2025 / XLANG Lab blog / OSWorld release. https://xlang.ai/blog/osworld-verified
+
+Official artifacts to check: paper: https://xlang.ai/blog/osworld-verified; project: https://os-world.github.io/; code: https://github.com/xlang-ai/OSWorld; data: https://github.com/xlang-ai/OSWorld/tree/main/evaluation_examples; doi: https://doi.org/10.48550/arXiv.2404.07972.

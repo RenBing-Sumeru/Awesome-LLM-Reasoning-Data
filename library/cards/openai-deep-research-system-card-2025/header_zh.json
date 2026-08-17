@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI 的 Deep Research System Card 披露了浏览任务强化学习：以真值或量规为依据、由思维链模型评分，并加入浏览安全数据；但未披露数据集、轨迹、评分器、奖励设计或复现工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿智能体系统卡与浏览后训练数据披露台账",
+  "best_for_ch": "需要审计浏览智能体后训练、奖励/评分合约、安全数据与污染边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

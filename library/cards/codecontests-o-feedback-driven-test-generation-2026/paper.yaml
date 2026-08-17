@@ -1,0 +1,107 @@
+id: codecontests-o-feedback-driven-test-generation-2026
+title: 'CodeContests-O: Powering LLMs via Feedback-Driven Iterative Test Case Generation'
+year: 2025
+venue: arXiv
+authors:
+- Jianfeng Cai
+- Jinhua Zhu
+- Ruopei Sun
+- Kangwen Zhao
+- Dongyun Xue
+- Mingxiao Feng
+- Wengang Zhou
+- Houqiang Li
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- competitive-programming
+- code-generation
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.13682
+  arxiv: https://arxiv.org/abs/2601.13682
+  code: https://github.com/cai-jianfeng/CodeContests-O
+  data: https://huggingface.co/datasets/caijanfeng/CodeContests-O
+  project: null
+  huggingface: https://huggingface.co/datasets/caijanfeng/CodeContests-O
+  doi: https://doi.org/10.48550/arXiv.2601.13682
+  venue: null
+  openreview: https://openreview.net/forum?id=WqpDl3ASGX
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Competitive-programming problems and known correct and incorrect solution pools from CodeContests.
+  trace_author: Feedback-driven LLM test-case generation framework.
+  answer_format: Problem, candidate program, generated tests, expected outputs, and execution feedback.
+  process_fields:
+  - problem
+  - reference solution
+  - solution pool
+  - test cases
+  - execution result
+  - feedback
+  environment_or_substrate: Executable competitive-programming test environment.
+  verifier_or_reward: Test execution against known correct and incorrect solutions.
+  terminal_predicate: Tests accept correct solutions and expose incorrect solutions according to the released checker.
+recipe_metadata:
+  base_model: See the paper for test-generation model details; Qwen2.5-7B is used in a reported fine-tuning experiment.
+  teacher: Execution results on correct and incorrect solution pools.
+  generator: Feedback-driven iterative generator and checker refinement.
+  filtering_rule: Iterate until test fidelity and discriminability reach the selected threshold or the budget ends.
+  sampling_protocol: Use the released test cases and execution configuration for reproducible checks.
+  rollout_count: null
+  temperature: null
+  inference_budget: The maximum refinement iteration is specified in the official method.
+  optimizer_or_scaffold: Program-generation feedback loop with test-based RL reward use.
+audit:
+  source_mixture: Official arXiv paper, USTC GitHub repository, Hugging Face dataset, and ACL ARR OpenReview record.
+  split: Follow the dataset card configuration and preserve the released test cases.
+  decontamination: Competitive-programming tasks and public solution pools can overlap with model training data.
+  license: The dataset card states Apache-2.0; separately check upstream CodeContests terms.
+  lineage: https://huggingface.co/datasets/caijanfeng/CodeContests-O
+  known_failure_modes:
+  - Tests with high aggregate discrimination may still miss unseen implementation errors.
+  - Public contest problems and solution pools create contamination risk.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv paper, author affiliation, official GitHub repository, Hugging Face release, and OpenReview record were
+    checked.
+inclusion_reason: CodeContests-O releases competitive-programming tests whose executable outcomes supply reusable feedback
+  for code training and evaluation.
+related: []
+tags:
+- code
+- test-generation
+- competitive-programming
+- rlvr
+- '2026'
+one_line_summary: CodeContests-O iteratively improves competitive-programming test cases using execution feedback from correct
+  and incorrect solution pools.
+why_it_matters: It makes test quality an iteratively audited executable signal rather than relying on static, sparse cases.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: The arXiv paper, author affiliation, official GitHub repository, Hugging Face release, and OpenReview record were
+    checked.
+category_ids:
+- programmatically_verifiable_outcome_data

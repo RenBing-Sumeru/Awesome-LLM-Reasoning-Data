@@ -1,0 +1,3 @@
+HELM is the Stanford CRFM Holistic Evaluation of Language Models paper, first released on arXiv in 2022 and cited by the official repository as a TMLR 2023 paper. It addresses a benchmark problem: language-model evaluation had become fragmented across tasks, models, metrics, prompts, and reporting practices, making model comparisons hard to audit.
+
+The evaluation surface is a scenario x model x metric run record: a scenario adapter creates prompts, a model produces outputs under standardized conditions, and metric code scores accuracy plus dimensions such as calibration, robustness, fairness, bias, toxicity, and efficiency. The atlas boundary is evaluation infrastructure, not a training dataset or reward recipe.

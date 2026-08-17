@@ -1,0 +1,17 @@
+{
+  "title": "AGENTBANK: Towards Generalized LLM Agents via Fine-Tuning on 50000+ Interaction Trajectories",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-emnlp.116.pdf",
+    "data": "https://huggingface.co/datasets/Solaris99/AgentBank"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T10:16:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "五万跨任务轨迹，逐步思考与动作齐全，通用代理价值高",
+    "updated_at": "2026-07-16T10:16:19Z"
+  }
+}

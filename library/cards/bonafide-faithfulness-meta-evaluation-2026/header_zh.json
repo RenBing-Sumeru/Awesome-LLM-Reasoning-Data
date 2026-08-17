@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BonaFide 构造可恢复真实计算标签的 CoT，用以证明常见忠实性指标往往无法可靠衡量步骤或整条轨迹的忠实性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要验证 CoT 忠实性指标、构造可控过程标签或审计解释度量是否真正有效的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yoav Gur-Arieh、Ana Marasović、Mor Geva",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

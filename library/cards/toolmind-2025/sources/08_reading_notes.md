@@ -1,0 +1,5 @@
+- Positioning: ToolMind constructs a function graph, simulates realistic interactions, and filters each turn before retaining complete self-corrective trajectories.
+- Data object: 160,000 synthetic and 200,000 augmented open-source tool-use instances; each record exposes multi-turn conversations and tool definitions.
+- Author and selector: a multi-agent simulator writes user, assistant, and tool turns over a function graph; retention uses fine-grained turn-level checks plus trajectory-level quality filtering.
+- Evidence anchor: ToolMind-trained models improve over the paper's baselines on tau-bench, tau2-bench, and BFCL-v4; the comparison supports turn-level filtering but does not isolate every augmented source.
+- Reuse decision: suitable for tool-use SFT; first audit judge models can miss semantically wrong calls that match the expected syntax and synthetic user behavior and function graphs may not reflect production failures.

@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Tongji University",
+    "Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ)",
+    "Shanghai AI Laboratory"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2511.16590",
+    "https://sen0609.github.io/D-GARA/",
+    "https://github.com/sen0609/D-GARA"
+  ],
+  "verification_note": "arXiv, project, and GitHub verify authors, institutions, AAAI 2026/arXiv status, and public artifacts."
+}

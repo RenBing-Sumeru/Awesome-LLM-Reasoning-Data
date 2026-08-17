@@ -1,0 +1,3 @@
+An evaluation maintainer with suspected paraphrase leakage can create matched original/variant items, run temperature-sampled DVD on a target model, and output an item-level contamination flag plus a manual-review queue. Success is separation on held-out clean and intentionally contaminated controls, not a high benchmark score.
+
+An auditor can stress-test a detector against semantic transformations. Do not use DVD as a universal certificate when temperature sampling is unavailable, the task is outside tested domains, or a clean control set cannot be built; use provenance review and complementary detectors.

@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "6,216题、83,456步标签，以正确性/合理性等细粒度反馈训练和诊断 PRM，直接服务多步数学推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "细粒度过程奖励模型评测与步骤反馈基准论文",
+  "best_for_ch": "需要评测或诊断过程奖励模型对数学推理中隐性错误、合理性和敏感性的识别能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mingyang Song, Zhaochen Su, Xiaoye Qu, Jiawei Zhou, Yu Cheng",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T08:33:54Z"
+}

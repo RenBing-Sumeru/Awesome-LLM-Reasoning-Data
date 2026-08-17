@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LLaVA-Critic-113k 含 46K 图像、113K 评分或成对偏好及理由，覆盖多种视觉任务，可用于多模态 judge 与偏好训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态通用评审模型与 critic 指令数据集",
+  "best_for_ch": "需要视觉语言 judge、带理由的评估监督或多模态偏好训练数据的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Tianyi Xiong、Xiyao Wang、Dong Guo、Qinghao Ye、Haoqi Fan、Quanquan Gu、Heng Huang、Chunyuan Li",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

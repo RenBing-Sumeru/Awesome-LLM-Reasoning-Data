@@ -1,0 +1,114 @@
+id: causal-inference-llm-survey-2025
+title: 'Large Language Models and Causal Inference in Collaboration: A Comprehensive Survey'
+year: 2025
+venue: Findings of NAACL 2025
+authors:
+- Xiaoyu Liu
+- Paiheng Xu
+- Junda Wu
+- Jiaxin Yuan
+- Yifan Yang
+- Yuhang Zhou
+- Fuxiao Liu
+- Tianrui Guan
+- Haoliang Wang
+- Tong Yu
+- Julian McAuley
+- Wei Ai
+- Furong Huang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- causal-inference
+- reasoning
+- fairness
+- explainability
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.findings-naacl.427/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-naacl.427
+  venue: https://aclanthology.org/2025.findings-naacl.427/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-naacl.427/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed research connecting language models and causal inference.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A two-way synthesis of causal methods for LLMs and LLM assistance for causal tasks.
+  process_fields:
+  - causal relationship
+  - causal effect
+  - reasoning
+  - fairness
+  - explainability
+  environment_or_substrate: Language-model and causal-inference frameworks in collaboration.
+  verifier_or_reward: No shared verifier or reward is introduced.
+  terminal_predicate: Task-specific causal estimation or reasoning outcome.
+recipe_metadata:
+  base_model: No single base model; literature survey.
+  teacher: Surveyed works use varied data and supervision.
+  generator: Literature synthesis.
+  filtering_rule: Official abstract covers causal evaluation and improvement of LLMs, plus LLM support for causal tasks.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new training recipe is introduced.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-naacl.427/'
+  known_failure_modes:
+  - Causal claims depend on assumptions
+  - LLM and causal tasks differ by setting
+  - Underlying results are heterogeneous
+  citation_status: verified
+  confidence: high
+  notes: The abstract explicitly presents both directions of collaboration.
+inclusion_reason: A peer-reviewed survey connecting causal reasoning, fairness, safety, explainability, and language models.
+related: []
+tags:
+- foundations-and-primers
+- causal-inference
+- naacl-2025
+- survey
+why_it_matters: It distinguishes using causal ideas to evaluate language models from using language models to assist causal
+  tasks.
+one_line_summary: A Findings NAACL 2025 survey of two-way collaboration between causal inference and language models.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers connecting causal reasoning with LLM evaluation, fairness, explainability, or causal discovery.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable assumptions and evaluation settings across cited work'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata
+  abstract: null
+  venue: null
+  pages: null
+  and DOI were reviewed.: null
+category_ids:
+- foundations_and_primers

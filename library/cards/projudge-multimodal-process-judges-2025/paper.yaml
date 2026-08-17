@@ -1,0 +1,114 @@
+id: projudge-multimodal-process-judges-2025
+title: 'ProJudge: A Multi-Modal Multi-Discipline Benchmark and Instruction-Tuning Dataset for MLLM-based Process Judges'
+year: 2025
+venue: ICCV 2025
+authors:
+- Jiaxin Ai
+- Pengfei Zhou
+- Zhaopan Xu
+- Ming Li
+- Fanrui Zhang
+- Zizhen Li
+- Jianwen Sun
+- Yukang Feng
+- Baojin Huang
+- Zhongyuan Wang
+- Kaipeng Zhang
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-reasoning
+- mathematical-reasoning
+- scientific-reasoning
+- process-reward-modeling
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openaccess.thecvf.com/content/ICCV2025/html/Ai_ProJudge_A_Multi-Modal_Multi-Discipline_Benchmark_and_Instruction-Tuning_Dataset_for_MLLM-based_Process_Judges_ICCV_2025_paper.html
+  arxiv: https://arxiv.org/abs/2503.06553
+  code: https://github.com/JulyAI/ProJudge
+  data: https://huggingface.co/datasets/julyai/ProJudge-173k
+  project: https://projudge.github.io/
+  huggingface: https://huggingface.co/datasets/julyai/ProJudge-173k
+  doi: null
+  venue: https://openaccess.thecvf.com/content/ICCV2025/html/Ai_ProJudge_A_Multi-Modal_Multi-Discipline_Benchmark_and_Instruction-Tuning_Dataset_for_MLLM-based_Process_Judges_ICCV_2025_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/ICCV2025/html/Ai_ProJudge_A_Multi-Modal_Multi-Discipline_Benchmark_and_Instruction-Tuning_Dataset_for_MLLM-based_Process_Judges_ICCV_2025_paper.html
+  bibtex: null
+data_object:
+  prompt_source: Multimodal science problems spanning mathematics, physics, chemistry, and biology.
+  trace_author: Candidate MLLM solution processes curated for training and human-reviewed evaluation.
+  answer_format: Multimodal problem, solution steps, per-step correctness, error type, and explanation.
+  process_fields:
+  - problem
+  - image
+  - solution_steps
+  - correctness
+  - error_type
+  - explanation
+  environment_or_substrate: Multimodal multi-discipline scientific problem solving.
+  verifier_or_reward: Human expert labels in ProJudgeBench; instruction-tuning supervision in ProJudge-173k.
+  terminal_predicate: A judge detects, classifies, and explains a step-level error.
+recipe_metadata:
+  base_model: MLLM-based process judges trained with the paper's Dynamic Dual-Phase fine-tuning strategy.
+  teacher: Human experts for the 2,400-case ProJudgeBench test set.
+  generator: The official ProJudge data-construction pipeline.
+  filtering_rule: Use the released instruction-tuning and benchmark partitions as documented by the project.
+  sampling_protocol: Keep ProJudgeBench evaluation separate from ProJudge-173k training data.
+  inference_budget: Match the project evaluation configuration for MLLM judges.
+  optimizer_or_scaffold: Dynamic Dual-Phase fine-tuning for explicit solution reasoning and judgment.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Multimodal scientific questions, solution processes, human benchmark labels, and instruction-tuning records.
+  split: ProJudgeBench has 2,400 test cases and 50,118 step labels; ProJudge-173k is the training release.
+  decontamination: Do not train on the benchmark test cases when reporting process-judge results.
+  license: Refer to the official project, repository, and Hugging Face dataset pages for current terms.
+  lineage: ICCV 2025 paper, official ProJudge project page, repository, and ProJudge-173k Hugging Face release.
+  known_failure_modes:
+  - Training and evaluation cover selected scientific disciplines
+  - Multimodal judging performance can depend on visual perception quality
+  - The 173K training corpus should not be conflated with human test labels
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICCV 2025 proceedings record and paper affiliation block, plus the official project page and ProJudge-173k
+    data link.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: ProJudge combines a 2,400-case human-labeled multimodal process-judge benchmark with a 173K instruction-tuning
+  release for step-level error diagnosis.
+why_it_matters: It separates a human-labeled multimodal evaluation surface from a large instruction-tuning resource for process
+  judges.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICCV 2025 proceedings record and paper affiliation block, plus the official project page and ProJudge-173k
+    data link.
+category_ids:
+- process_trace_supervision_data

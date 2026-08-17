@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "APEX-Agents 在跨应用专业工作任务中评测智能体。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "arXiv 的 professional workplace agent benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bertie Vidgen 等（Mercor）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T09:34:48Z"
+}

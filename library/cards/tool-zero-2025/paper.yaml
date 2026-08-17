@@ -1,0 +1,232 @@
+id: tool-zero-2025
+title: 'Tool Zero: Training Tool-Augmented LLMs via Pure RL from Scratch'
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: EMNLP 2025'
+authors:
+- Yirong Zeng
+- Xiao Ding
+- Yutai Hou
+- Yuxian Wang
+- Li Du
+- Juyi Dai
+- Qiuyang Ding
+- Duyu Tang
+- Dandan Tu
+- Weiwen Liu
+- Bing Qin
+- Ting Liu
+source_role:
+- model_report
+- verifier_reward
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- tool_use
+- function_calling
+- tool_integrated_reasoning
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.485/
+  paper_pdf: https://aclanthology.org/2025.findings-emnlp.485.pdf
+  responsible_nlp_checklist: https://aclanthology.org/attachments/2025.findings-emnlp.485.checklist.pdf
+  arxiv: https://arxiv.org/abs/2511.01934
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  release: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.485
+  venue: https://aclanthology.org/2025.findings-emnlp.485/
+  openreview: https://openreview.net/forum?id=hEvzbtEY75
+  acl: https://aclanthology.org/2025.findings-emnlp.485/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-emnlp.485.bib
+  training_framework: https://gitee.com/ascend/MindSpeed-RL
+  training_framework_current: https://gitcode.com/Ascend/MindSpeed-RL
+  toolace_data: https://huggingface.co/datasets/Team-ACE/ToolACE
+  xlam_data: https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k
+  xlam_irrelevance_data: https://huggingface.co/datasets/MadeAgents/xlam-irrelevance-7.5k
+data_object:
+  prompt_source: Offline ToolACE and xLAM function-calling tasks. A record supplies a user query or multi-turn dialogue history
+    plus a JSON candidate-tool list; the main Tool-Zero-7B/32B experiment uses ToolACE, while xLAM is used for generalizability
+    analysis and includes the linked 7.5K irrelevance subset.
+  trace_author: For each RL prompt, the current policy samples a completion containing natural-language thought and an answer/tool
+    call. Ground-truth calls come from the source datasets; the source records are LLM-synthesized, but complete per-record
+    generator lineage is not disclosed in Tool Zero.
+  answer_format: '`<think>natural-language reasoning</think><answer>[func_name(param=value), ...]</answer>` using a hybrid
+    JSON/Python tool-call convention. The paper''s formal trajectory alternates a reasoning action/tool subset with tool-execution
+    or user-feedback observations.'
+  process_fields:
+  - user_query
+  - dialogue_history
+  - candidate_tool_list
+  - natural_language_thought
+  - selected_tool_subset
+  - parameterized_tool_invocations
+  - tool_execution_or_user_feedback_observation
+  - ground_truth_tool_call
+  - reference_ast
+  - format_reward
+  - general_overlap_reward
+  - strict_ast_reward
+  - tool_specific_signals
+  - final_scalar_reward
+  observation: The formal object defines `o_i` as observations after tool execution, including environment and user feedback.
+    In the published training pipeline, those observations are supplied only when present in the offline dialogue history;
+    no Tool-Zero-specific online execution environment or observation service is released.
+  action_or_tool_call: At step i the model emits a natural-language reasoning action, chooses a subset of candidate tools,
+    and serializes one or more parameterized function calls.
+  verifier_output: Programmatic format-validity bit, token-overlap score during the exploratory phase, exact reference-AST
+    score during the strict phase, multi-tool bonus, invalid-parameter penalties, and their scheduled sum.
+  reward: One whole-completion scalar `R_final = R_format + R_tool`; `R_tool` sigmoid-mixes `r_general` and `r_strict` over
+    training. GRPO normalizes rewards within each sampled group to form advantages.
+  environment_or_substrate: Offline function-calling records and the MindSpeed-RL GRPO training framework on Ascend NPUs.
+    The method does not release a resettable executable tool environment.
+  verifier_or_reward: 'Dynamic generalization-guided rule reward: early delimiter-token overlap to a reference call, later
+    exact AST equivalence, plus output-format, multi-tool, and parameter-value signals. No learned reward model or LLM judge
+    is used.'
+  terminal_predicate: A generated completion ends after the answer section and is scored against the reference call/AST. This
+    is not a released environment-state success predicate.
+  provenance: ToolACE or xLAM task/tool schema -> parseability filtering -> optional multi-turn augmentation and name masking
+    -> Qwen2.5 Base policy rollout -> GG-GRPO whole-completion rule reward -> Tool-Zero checkpoint. Record IDs, exact splits,
+    failed-rollout logs, and checkpoint manifests are unknown.
+recipe_metadata:
+  base_model: Qwen2.5-7B Base and Qwen2.5-32B Base for the named Tool-Zero-7B/32B models; Appendix D also studies 1.5B and
+    3B base scales.
+  teacher: 'None for policy initialization: Tool-Zero begins from a base model rather than an SFT checkpoint. Ground-truth
+    function calls from ToolACE/xLAM still supervise the rule reward.'
+  generator: The current policy generates GRPO completions. Source datasets are LLM-synthesized; Tool Zero does not disclose
+    a complete generator/version ledger for every training record or the model used for its multi-turn augmentation.
+  prompt_task_source: ToolACE and xLAM queries, candidate tool schemas, reference calls, and available dialogue histories;
+    xLAM is supplemented with MadeAgents/xlam-irrelevance-7.5k.
+  filtering_rule: Drop records whose tool calls cannot be parsed as JSON or Python code or whose candidate-tool list cannot
+    be parsed as JSON. Exact parser version, rejected IDs, and rejection counts by cause are unknown.
+  sampling_protocol: For each question GRPO samples a group of 8 completions in the final ACL version, scores them with GG-GRPO,
+    and normalizes the group rewards. The earlier OpenReview version reports 4 rollouts, so the paper version must be pinned.
+  rollout_count: 8
+  temperature: 0.8
+  inference_budget: Maximum prompt length 2048 and response length 2048. The paper reports up to 28 hours per GG-GRPO run
+    on 5 x 8 Ascend 910B NPUs.
+  search_or_scaffold: GRPO group sampling without a critic model; vLLM rollout backend. This is not tree search and does not
+    execute a released live tool environment.
+  selection_threshold: Late-stage strict reward requires exact AST equivalence to the reference. No separate dataset-selection
+    threshold is disclosed.
+  multi_turn_augmentation: 'For xLAM: concatenate related single-turn dialogs; remove/reintroduce a tool; mask a parameter
+    to elicit clarification; perturb calls/parameters/values to elicit result validation.'
+  data_masking: Replace function and parameter names with generic identifiers so the model relies more on tool descriptions
+    and argument semantics.
+  reward_schedule: '`R_tool = sigma(t,m) * r_strict + (1-sigma(t,m)) * r_general`, with reported kappa 0.1 and transition
+    midpoint 25 in the final appendix.'
+  optimizer_or_scaffold: GG-GRPO in MindSpeed-RL; global batch 128, mini-batch 1024, learning rate 5e-7 with cosine decay,
+    tensor model parallel size 4, clip epsilon 0.2, and KL loss disabled.
+audit:
+  source_mixture: Table 2 reports xLAM after processing as 67,500 single-turn plus 10,254 augmented multi-turn records and
+    ToolACE as 97,300 single-turn plus 1,966 multi-turn records. The named Tool-Zero main experiment uses ToolACE; xLAM is
+    used in generalizability experiments.
+  split: unknown
+  decontamination: unknown
+  benchmark_overlap: Table 8 measures candidate-tool-set overlap between training and evaluation datasets, but no sample-level
+    near-duplicate, prompt-template, answer, or benchmark-contamination audit is reported. BFCL is evolving and is identified
+    only as checked out on February 26, 2024, without a commit hash.
+  license: 'ACL paper: CC-BY-4.0; MindSpeed-RL code: MIT; ToolACE public subset: Apache-2.0; xLAM and xLAM-irrelevance dataset
+    cards: CC-BY-4.0. These do not establish licenses for the unreleased processed Tool-Zero corpus, reward implementation,
+    or Tool-Zero checkpoints.'
+  lineage: Public ToolACE/xLAM sources -> paper-specific filtering, augmentation, and name masking -> Qwen2.5 Base GG-GRPO
+    rollouts -> unreleased Tool-Zero checkpoints -> BFCL/API-Bank/Nexus Raven/Tool-Alpaca/Seal-Tools evaluation. Exact record,
+    code, model, and benchmark revision bindings are unavailable.
+  release_version: Canonical paper is ACL Anthology `2025.findings-emnlp.485` with DOI `10.18653/v1/2025.findings-emnlp.485`;
+    arXiv is 2511.01934. No Tool-Zero-specific code/data/model/project release or tag was verified. The paper-linked Gitee
+    framework repository migrated to GitCode, creating additional infrastructure version drift.
+  successful_and_failed_sample_retention: Unknown. Parse-invalid source records are removed, but rejected IDs/reasons, malformed
+    augmented dialogs, failed RL rollouts, reward-hacked samples, and checkpoint-selection logs are not released.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - The early token-overlap reward can favor copying tool/argument surface tokens and may be gamed without producing an executable
+    call; the paper itself notes excessive exploration can induce reward hacking and superficial-cue overfitting.
+  - Exact single-reference AST equivalence can reject semantically equivalent valid calls or alternative tool plans and does
+    not verify downstream environment task success.
+  - Format reward can teach tag compliance independently of tool correctness.
+  - Synthetic multi-turn perturbations may not match real environment dynamics, and no Tool-Zero-specific live execution/replay
+    surface is released.
+  - The public ToolACE card exposes 11,300 rows, while the paper reports 99,266 retained ToolACE records; exact training-data
+    reconstruction and rights for the larger processed set are unresolved.
+  - The final ACL paper and earlier OpenReview version disagree on rollout count (8 versus 4).
+  - Table 4 and Table 9 disagree on Tool-Alpaca/average results; Table 5 and its prose disagree on 32.38 versus 32.28; the
+    headline 7.14%/7.18% claims do not match Table 3's 6.80/6.84 absolute-point gaps.
+  - No seed-level variance, error bars, independent reruns, or complete checkpoint-selection rule is provided.
+  - MindSpeed-RL's current generic Qwen2.5 GRPO config uses a math verifier and materially different settings; it is not a
+    released reproduction config for GG-GRPO.
+  citation_status: verified
+  confidence: medium
+  notes: Canonical venue/DOI, all 13 final PDF pages including appendices, four key pages visually, arXiv, OpenReview record,
+    ACL checklist, upstream dataset cards/licenses, MindSpeed-RL README/LICENSE/config/train scripts, migration/current repository,
+    release/tag state, and absence of paper-specific strings were checked. Tool-Zero code, processed data, models, and evaluation
+    scripts remain unverified and therefore null.
+  remaining_unknowns:
+  - Exact ToolACE/xLAM revisions, record IDs, splits, augmentation seeds, and rejection manifests.
+  - Tool-Zero-specific reward source, training/evaluation scripts, config, dependency lock, and pinned framework commit.
+  - Tool-Zero-7B/32B checkpoint URLs, hashes, model cards, and licenses.
+  - Random seeds, run counts, variance, checkpoint-selection rule, and compute by run/ablation.
+  - Immutable benchmark versions, evaluation scripts, and sample-level contamination analysis.
+  - Author resolution of the rollout-count and reported-score inconsistencies.
+inclusion_reason: 'Tool Zero makes the feedback contract for pure-RL function-calling explicit: an offline Thought/Action/Observation-style
+  tool-use completion receives a scheduled scalar reward that moves from partial token overlap to exact reference-AST verification,
+  enabling direct GRPO from base models while exposing important label, release, and replay boundaries.'
+related:
+- tool-r1-2025
+- verltool-holistic-agentic-rl-with-tool-use-2025
+tags:
+- environment-agent-trajectory-data
+- training-usage-optimization-objectives
+- tool-use
+- function-calling
+- pure-rl
+- grpo
+- rule-based-reward
+- reward-scheduling
+- tool-generalization
+- offline-reference-verification
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- training_usage_optimization_objectives
+one_line_summary: Tool Zero applies pure GRPO to offline ToolACE/xLAM function-calling records and dynamically tightens each
+  completion's scalar rule reward from exploratory token overlap to strict reference-AST correctness.
+why_it_matters: It is a concrete example of how trajectory-shaped tool-use data can support RLVR without SFT, while showing
+  that 'pure RL' still depends on reference calls and that unreleased processed data, reward code, checkpoints, benchmark
+  pins, and reporting inconsistencies materially limit reuse.
+card: null
+needs:
+- 'needs_code: release and pin the GG-GRPO reward implementation, Tool-Zero train/eval entry points, configs, dependency lock,
+  and exact MindSpeed-RL commit'
+- 'needs_data: publish the processed ToolACE/xLAM record manifest, splits, augmentation seeds, filter/rejection ledger, and
+  mapping to public dataset revisions'
+- 'needs_model: publish Tool-Zero-7B/32B checkpoints with hashes, model cards, intended use, and licenses'
+- 'needs_evaluation: pin benchmark commits/data, prompts, evaluators, and per-example outputs; disclose sample-level overlap/decontamination
+  checks'
+- 'needs_statistics: disclose seeds, independent run counts, variance/error bars, checkpoint selection, and compute by experiment'
+- 'needs_reconciliation: resolve OpenReview/ACL rollout-count drift and the Table 4/Table 9, Table 5/prose, and headline-gain
+  inconsistencies'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official ACL venue/DOI/PDF/checklist, arXiv, ARR record, source dataset cards/licenses, and the cited MindSpeed-RL
+    framework's README, MIT license, tags/migration, generic configs, and training scripts were verified. No Tool-Zero-specific
+    code, processed data, model, project, release, config, or evaluation script was verified; those links remain null.

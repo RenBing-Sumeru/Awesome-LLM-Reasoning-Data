@@ -1,0 +1,108 @@
+id: bonafide-faithfulness-meta-evaluation-2026
+title: 'Faithfulness Metrics Don''t Measure Faithfulness: A Meta-Evaluation with Ground Truth'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yoav Gur-Arieh
+- Ana Marasović
+- Mor Geva
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- chain-of-thought-faithfulness
+- meta-evaluation
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2605.25052
+  arxiv: https://arxiv.org/abs/2605.25052
+  code: https://github.com/yoavgurarieh/BonaFide
+  project: null
+  data: https://huggingface.co/datasets/yoavgurarieh/BonaFide-Extended
+  huggingface: https://huggingface.co/datasets/yoavgurarieh/BonaFide-Extended
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2605.25052
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Procedurally generated bottleneck-computation tasks and diversionary-hint tasks across 13 settings.
+  trace_author: Ten open-weight LMs generate CoTs; an automated retrieval-and-validation pipeline derives step and CoT labels
+    from known required computations.
+  answer_format: Task, CoT steps, answer, required computation or hint condition, step label, and CoT label.
+  process_fields:
+  - cot_steps
+  - bottleneck_steps
+  - hint_acknowledgment
+  - faithfulness_label
+  - step_type
+  - cot_label
+  environment_or_substrate: Controlled tasks whose outputs reveal required intermediate computation.
+  verifier_or_reward: Automated label extraction, validated against human annotations at 98.9% precision.
+  terminal_predicate: A CoT contains the required faithful computations and no unfaithful step.
+recipe_metadata:
+  base_model: Ten open-weight models from Qwen3, OLMo 3, DeepSeek-R1-Distill, and Llama 3.3 families.
+  teacher: Gemini 3 Flash retrieval judge and Gemini 3 Pro validation judge.
+  generator: Procedural task generation plus CoT sampling.
+  filtering_rule: Keep outright cases with correct answers and diversionary cases following the hint, then extract labels
+    with precision-oriented multi-track judges.
+  sampling_protocol: Evaluate existing faithfulness metrics at step and CoT level over balanced labels.
+  inference_budget: The paper reports metric costs; consult the released resources for exact settings.
+  optimizer_or_scaffold: Ground-truth meta-evaluation benchmark.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: 13 controlled task types, ten model families, automated labels, and a larger unfiltered release.
+  split: BonaFide has 3,066 labeled CoTs across 13 tasks and ten models; the paper also reports 1,946 labeled CoT steps.
+  decontamination: Procedural task generation aims to preclude memorization shortcuts; public labels should not be reused
+    for evaluation without held-out generation.
+  license: arXiv manuscript is CC BY 4.0; check the official dataset release for data terms.
+  lineage: arXiv paper, author GitHub repository, and official BonaFide Hugging Face release.
+  known_failure_modes:
+  - Task designs only recover selected necessary computations
+  - Automated labels prioritize precision and may omit faithful details
+  - Controlled tasks may not represent natural deployment CoTs
+  citation_status: verified
+  confidence: high
+  notes: Verified title, authors, affiliations, benchmark construction, release links, and core results from the arXiv HTML
+    paper. The source paper links the official GitHub and Hugging Face releases.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: BonaFide creates CoTs with recoverable ground-truth computation labels to show that common faithfulness
+  metrics often measure neither step nor whole-trace faithfulness reliably.
+why_it_matters: It replaces plausibility and importance proxies with task designs that expose a known required computation
+  for direct metric validation.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified title, authors, affiliations, benchmark construction, release links, and core results from the arXiv HTML
+    paper. The source paper links the official GitHub and Hugging Face releases.
+category_ids:
+- process_trace_supervision_data

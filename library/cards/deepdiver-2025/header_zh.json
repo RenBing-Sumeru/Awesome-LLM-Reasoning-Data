@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepDiver 在 WebPuzzle 上用真实网页的迭代式检索增强生成与 GRPO 训练 7B 策略，以答案评判加条件化搜索奖励研究搜索深度如何随信息需求变化。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Wenxuan Shi、Haochen Tan、Chuqiao Kuang、Xiaoguang Li、Hanting Chen、Xiaozhe Ren、Yasheng Wang、Lu Hou、Lifeng Shang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

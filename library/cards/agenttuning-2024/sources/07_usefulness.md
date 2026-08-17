@@ -1,0 +1,3 @@
+- For an agent-SFT builder with compatible text environments, use the six public splits as a compact baseline mixture and preserve speaker, loss-mask, action, and observation boundaries. The output is an SFT set whose success should be checked on both source and domain-held-out environments; do not use it unchanged when task rewards are unavailable.
+
+- For a data auditor, replay a stratified sample against pinned environment versions, measure reward false positives, repeated-action failures, and intermediate-step errors, and report results per source split. The output is a reproducibility report; do not infer step correctness from a terminal pass alone.

@@ -1,0 +1,3 @@
+Use this paper as a checklist for any LLM-as-judge leaderboard that might reward surface features. It gives a compact pattern: identify a measurable confounder, model the judge preference as a function of that confounder, and report a counterfactual score alongside or instead of the raw score.
+
+For atlas reuse, preserve the instruction id, candidate output, reference output, generator identity, output lengths, auto-annotator config, randomized order, raw preference/probability, raw win rate, LC win rate, cache/version metadata, and leaderboard date. The Card is most useful as a benchmark-audit and reward-verifier design reference, especially when converting automatic evaluator scores into development decisions.

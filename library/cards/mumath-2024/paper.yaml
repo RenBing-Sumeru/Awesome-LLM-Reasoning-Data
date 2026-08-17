@@ -1,0 +1,158 @@
+id: mumath-2024
+title: 'MuMath: Multi-perspective Data Augmentation for Mathematical Reasoning in Large Language Models'
+year: 2024
+venue: Findings of NAACL 2024
+authors:
+- Weihao You
+- Shuo Yin
+- Xudong Zhao
+- Zhilong Ji
+- Guoqiang Zhong
+- Jinfeng Bai
+source_role:
+- model_report
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- grade-school-math
+- competition-math
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2024.findings-naacl.185/
+  arxiv: https://arxiv.org/abs/2309.12284
+  venue: https://aclanthology.org/2024.findings-naacl.185/
+  code: https://github.com/youweihao-tal/MuMath
+  data: https://huggingface.co/datasets/weihao1/MuMath-Data
+  project: https://github.com/youweihao-tal/MuMath
+  huggingface: https://huggingface.co/datasets/weihao1/MuMath-Data
+  doi: https://doi.org/10.18653/v1/2024.findings-naacl.185
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-naacl.185/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-naacl.185.bib
+data_object:
+  prompt_source: GSM8K's 7,473 training problems and MATH's 7,500 training problems, transformed through four families of
+    GPT-4-authored augmentation.
+  trace_author: GPT-4 rephrases questions, reorganizes solutions, creates backward and altered questions, judges expression
+    replacements, writes solutions, outlines, and plans.
+  answer_format: Current JSONL records expose a `gt` answer string plus user and assistant role-content messages; assistant
+    content contains natural-language reasoning and a terminal answer.
+  process_fields:
+  - ground-truth or majority-vote final answer
+  - user math problem
+  - assistant natural-language solution
+  - implicit augmentation family and source described at corpus level
+  environment_or_substrate: Prompted GPT-4 augmentation, answer matching for transformations with known answers, GPT-4 reasonableness
+    judgment for expression replacement, majority sampling for answer-unknown alterations, and LLaMA-2 SFT.
+  verifier_or_reward: Known-answer matching for rephrasing, FOBAR, and BF-Trans; GPT-4 validity judgment plus majority answer
+    among 30 solutions for altered questions; no step-level formal verifier.
+  terminal_predicate: Retain known-answer transformations after final-answer agreement, retain expression replacements judged
+    reasonable, and choose one response with the majority answer for answer-unknown altered questions.
+recipe_metadata:
+  base_model: LLaMA-2 7B, 13B, and 70B are full-fine-tuned consumers in the paper.
+  teacher: GPT-4 performs all four augmentation families, produces solutions, and judges expression-replacement questions.
+  generator: Rephrasing and solution reorganization; FOBAR and BF-Trans; difficulty enhancement and expression replacement;
+    nested outline and plan construction.
+  filtering_rule: Match source-derived answers where available; filter unreasonable expression replacements with GPT-4; use
+    30-solution majority sampling for new questions; cap retained solutions per unique question with n.
+  sampling_protocol: Request 15 solutions per GSM8K question and 30 per MATH question, then retain up to n majority-answer
+    solutions; n=2 defines the main 304K experiment and n=6 defines the 751K scaled release.
+  rollout_count: 30
+  temperature: null
+  inference_budget: Up to 15 teacher solutions for GSM8K-derived questions and 30 for MATH-derived questions, plus GPT-4 generation
+    and judgment calls for each applicable augmentation branch.
+  optimizer_or_scaffold: Full-parameter AdamW SFT for three epochs, global batch size 128, cosine schedule with 0.03 warmup,
+    on NVIDIA A800 GPUs.
+audit:
+  source_mixture: The main paper's n=2 corpus has about 277K question-augmentation records plus about 27K reorganization and
+    nested-task records, totaling 304K; its GSM8K and MATH portions are 142K and 162K.
+  split: The current official release is one public `MuMath-Data.jsonl` file described by the published MuMath-Code follow-up
+    as about 751K stage-1 records; this corresponds to the paper appendix's n=6 scaling condition, not the 304K main experiment.
+  decontamination: The paper starts from GSM8K and MATH train splits and evaluates their test splits but does not report a
+    broad semantic decontamination scan for teacher-generated variants or later benchmarks.
+  license: The official dataset card declares no dataset license and is currently a MuMath-Code README; upstream GSM8K/MATH
+    rights and GPT-4 output terms require separate review.
+  lineage: GSM8K/MATH train problem -> augmentation-family prompt -> GPT-4 question or solution -> known-answer, judge, or
+    majority filter -> per-question cap n -> JSONL release -> LLaMA-2 SFT consumer.
+  known_failure_modes:
+  - Majority answers can preserve correlated teacher mistakes and do not validate intermediate reasoning.
+  - The public `gt` plus `messages` schema omits source dataset, source ID, augmentation branch, teacher call, and filter
+    decision.
+  - The 304K main experiment and approximately 751K current file are different versions and must not be cited interchangeably.
+  citation_status: verified
+  confidence: high
+  notes: Findings NAACL record, DOI, full paper, official JSONL, two actual records, `gt` plus messages schema, main and appendix
+    scale boundary, current data card, repo, OpenAlex citation record, and adoption by MuMath-Code checked on 2026-07-14.
+inclusion_reason: MuMath releases reusable natural-language math demonstrations and directly compares four complementary prompt-and-solution
+  augmentation families, majority filtering, and data scale.
+related:
+- mumath-code-2024
+- metamathqa-2024
+- mammoth-mathinstruct-2024
+tags:
+- instruction-demonstration-rationale
+- math-reasoning
+- multi-perspective-augmentation
+- majority-sampling
+- version-boundary
+- arxiv-2309.12284
+- primary-link-checked
+status: verified
+one_line_summary: MuMath turns GSM8K and MATH into multi-perspective natural-language SFT data, with a 304K main recipe and
+  a distinct approximately 751K scaled release.
+why_it_matters: It tests whether diversifying both the problem and the visible solution structure improves tool-free math
+  reasoning, while exposing a useful but easy-to-miss release-version boundary.
+reading_priority: must read
+paper_type: multi-perspective mathematical instruction-data construction study
+best_for: Researchers augmenting math SFT data or comparing reformulation, backward construction, question alteration, nested
+  planning, and majority filtering.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings, public JSONL and actual records, data schema, construction recipe, main/scale version boundary,
+    training consumers, results, impact, and rights gap checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-math
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: multi-perspective natural-language math demonstrations
+  selection_priority_score: 9
+  selection_score_breakdown:
+    institution: 2
+    venue: 2
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper lists Tomorrow Advancing Life, Ocean University of China, and East China Jiaotong University.
+    venue: ACL Anthology records the paper in Findings of NAACL 2024 with DOI 10.18653/v1/2024.findings-naacl.185.
+    impact: OpenAlex work W4401043500 reported 3 citations, updated 2026-06-11; the official repository had 1 star and 0 forks
+      and the dataset had 46 downloads and 3 likes on 2026-07-14, while the published EMNLP 2024 MuMath-Code follow-up uses
+      MuMath-Data as its first training stage.
+    artifact: The official public JSONL and repository expose actual `gt` plus role-content message records, prompts, training
+      lineage, models, and scaled follow-up use, although the dataset card lacks a license declaration.
+  selection_eligible: true
+  year_impact_threshold: 3

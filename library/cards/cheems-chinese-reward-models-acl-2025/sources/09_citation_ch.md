@@ -1,0 +1,1 @@
+Xueru Wen、Jie Lou、Zichao Li、Yaojie Lu 等（2025），《Cheems: A Practical Guidance for Building and Evaluating Chinese Reward Models from Scratch》，ACL 2025。主论文：https://aclanthology.org/2025.acl-long.737/。数据或代码工件：本卡未把它声明为已核验的公开工件。本 L4 卡记录了复用前必须检查的论文特定反馈对象、构建逻辑、证据边界与审计项。

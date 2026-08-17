@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以人工核验的九类局部错误，评估多模态过程奖励模型是否真正识别视觉推理失误。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态过程奖励模型评测与错误诊断论文",
+  "best_for_ch": "需要选择或审计视觉推理过程裁判，并评估其 Best-of-N 选择价值的研究者。",
+  "confidence_ch": "高：ACL 正式论文与完整方法、实验可核验；独立数据和代码工件尚未确认。",
+  "authors_ch": "Chi-Min Chan, Han Zhu, Chunyang Jiang, Jiaming Ji, Juntao Dai, Wei Xue, Sirui Han, Yike Guo",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

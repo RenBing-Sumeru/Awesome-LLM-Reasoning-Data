@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统梳理推理模型的方法、训练与评测脉络，可作为领域术语和证据边界的总览入口。",
+    "updated_at": "2026-07-19T00:00:00Z"
+  },
+  "updated_at": "2026-07-19T00:00:00Z"
+}

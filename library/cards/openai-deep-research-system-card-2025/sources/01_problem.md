@@ -1,0 +1,4 @@
+Agentic browsing can be trained with tasks, feedback, tools, and safety mitigations that are only partially visible in a system card. The audit question is not whether Deep Research is a released browsing corpus or reproducible agent recipe, but which training and feedback interfaces OpenAI actually discloses and which controls remain unestablished.
+
+The [Deep Research System Card](https://cdn.openai.com/deep-research-system-card.pdf) says OpenAI created browsing datasets for research use cases, trained an early web-browsing version of o3 with reinforcement learning on browsing tasks, and used ground-truth answers or rubrics graded by a chain-of-thought model. It also names reused o1 safety datasets and new browsing-specific safety data. The official sources do not release the tasks, web data, trajectories, graders, reward transformation, browser environment, or reproducibility artifacts.
+

@@ -1,0 +1,99 @@
+id: robustjudge-2025
+title: 'LLMs Cannot Reliably Judge (Yet?): A Comprehensive Assessment on the Robustness of LLM-as-a-Judge'
+year: 2025
+venue: arXiv preprint
+authors:
+- Songze Li
+- Chuokun Xu
+- Jiaying Wang
+- Xueluan Gong
+- Chen Chen
+- Jirui Zhang
+- Jun Wang
+- Kwok-Yan Lam
+- Shouling Ji
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.09443
+  arxiv: https://arxiv.org/abs/2506.09443
+  code: https://github.com/S3IC-Lab/RobustJudge
+  data: https://github.com/S3IC-Lab/RobustJudge
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://arxiv.org/abs/2506.09443
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Public RobustJudge release evaluates reliability under multiple automated judge-attack scenarios.
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2506.09443.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Track 13: contamination, verifier/reward failure, reward hacking, or evaluator reliability.'
+related: []
+tags:
+- track13
+- audit
+- final-slate
+status: verified
+one_line_summary: Public RobustJudge release evaluates reliability under multiple automated judge-attack scenarios.
+why_it_matters: It adds an auditable reliability or failure-mode surface to Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page and public artifact recorded.
+category_ids:
+- audit_failure_contamination_verifier_attacks

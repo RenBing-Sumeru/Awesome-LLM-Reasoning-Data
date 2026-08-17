@@ -1,0 +1,17 @@
+{
+  "title": "AceMath: Advancing Frontier Math Reasoning with Post-Training and Reward Modeling",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.206/",
+    "data": "https://huggingface.co/datasets/nvidia/AceMath-Instruct-Training-Data"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T14:09:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数学数据&训练recipe",
+    "updated_at": "2026-07-14T14:09:27Z"
+  }
+}

@@ -1,0 +1,5 @@
+- Read Sections 2.1-2.5 first for the source mixture, decontamination, teacher generation, verifier contracts, and quality filters.
+- Separate three quantities: roughly 3.34M unique queries, about 40M intended teacher responses, and the officially caveated public subset.
+- In Section 3, note that CV is computed from repeated DeepSeek-R1 verification scores and that the category-specific CV thresholds are not published.
+- Read Tables 1-2 together: Stage II improves AIME2024 and GPQA-Diamond for 32B but lowers LiveCodeBench.
+- Treat the Hugging Face limitations and schema as part of the paper evidence; they expose label, duplication, and release-scope risks absent from the headline.

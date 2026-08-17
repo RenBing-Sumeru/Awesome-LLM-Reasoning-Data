@@ -1,0 +1,6 @@
+- 从模型卡 §§2.1、3.1 开始。将 filter training、main-model post-training、evaluation data 分成独立主张。
+- refusal surface 是内部多语单轮违反政策 prompt、separate-model assist/refuse grade、deployed mitigation；它不是已发布 preference dataset。
+- 将 Table 1 与 Table 2 并读：model answer rate 与 filter false-negative rate 衡量不同系统。
+- 结合 safeguard removal 阅读 Table 4；不要直接和 production-prompt safety result 比较。
+- 阅读公告的 agentic-reasoner reward model、11 月 1–14 日 silent rollout、production-query hallucination evaluation。traffic governance 和训练分离仍未知。
+- 任何更强结论前，都应索要 reward/filter version、source manifest、原始 evaluation record、production-data policy。

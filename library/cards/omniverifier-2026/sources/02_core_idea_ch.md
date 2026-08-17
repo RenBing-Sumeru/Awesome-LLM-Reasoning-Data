@@ -1,0 +1,1 @@
+核心对象是生成式通用 verifier：它在多模态推理与生成中判断并解释视觉结果。论文发布覆盖 16 类关键视觉验证任务的 ViVerBench，并以大规模视觉验证数据训练 OmniVerifier-7B。官方仓库提供训练、推理、评测代码，ViVerBench 可从 Hugging Face 下载。论文报告 OmniVerifier 在 ViVerBench 上提升 8.3 点，并支持顺序测试时改进方案 OmniVerifier-TTS。

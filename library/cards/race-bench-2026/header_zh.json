@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "RACE-bench 描述 528 个 Docker 化 feature-addition 任务，以 FTP/PTP 测试验证补丁，并用五类结构化参考审计中间推理，但未核实任何官方 benchmark 制品发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "仓库级代码智能体评测基准与中间推理审计方法",
+  "best_for_ch": "研究 repository-level code agents、可执行测试验证、中间推理评价和基准审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Shuhan Liu、Zhiyi Zhao、Xing Hu、Kui Liu、Xiaohu Yang、Xin Xia",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "review_note": "纳入正式池：以微调前后样本嵌入核矩阵的结构变化，按单调性与一致性量化基准泄漏。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "纳入正式池：以微调前后样本嵌入核矩阵的结构变化，按单调性与一致性量化基准泄漏。",
+    "updated_at": "2026-07-21T00:00:00Z"
+  },
+  "updated_at": "2026-07-21T00:00:00Z"
+}

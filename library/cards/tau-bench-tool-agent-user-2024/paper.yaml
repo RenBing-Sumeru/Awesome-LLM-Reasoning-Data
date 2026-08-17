@@ -1,0 +1,114 @@
+id: tau-bench-tool-agent-user-2024
+title: 'tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains'
+year: 2024
+venue: arXiv preprint
+authors:
+- Shunyu Yao
+- Noah Shinn
+- Pedram Razavi
+- Karthik Narasimhan
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- tool-and-user-interaction
+- tool-api-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2406.12045
+  arxiv: https://arxiv.org/abs/2406.12045
+  code: https://github.com/sierra-research/tau-bench
+  project: https://tau-bench.github.io/
+  doi: https://doi.org/10.48550/arXiv.2406.12045
+  data: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: hidden user instructions for simulated retail and airline customer-service tasks, refined to have unique
+    policy-consistent outcomes
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: hidden user goal, domain policy/database state, tool calls, multi-turn conversation, final state, required
+    output substrings where applicable, and pass/fail reward
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: retail and airline user-agent-tool conversations with stateful Python database tools
+  verifier_or_reward: Final database state must match the annotated goal state, and required response substrings must appear
+    when the task asks for user-facing outputs.
+  terminal_predicate: The simulated user stops the episode or the action budget is exhausted; reward is then computed from
+    final state and required outputs.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: simulated user-agent-tool tasks in airline and retail domains; exact curation details may remain unknown.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: tool_api_benchmark
+audit:
+  source_mixture: 'Official sources checked: https://arxiv.org/abs/2406.12045; https://arxiv.org/pdf/2406.12045; https://github.com/sierra-research/tau-bench;
+    https://github.com/sierra-research/tau-bench/blob/main/LICENSE; https://github.com/sierra-research/tau2-bench'
+  split: Original paper reports 115 retail tasks and 50 airline tasks; exact repository tag and any later task fixes must
+    be pinned before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official tau-bench repository license checked as MIT; downstream task/data redistribution should still pin the
+    exact artifact version.
+  lineage: 'Primary source: https://arxiv.org/abs/2406.12045'
+  known_failure_modes:
+  - user simulator behavior can bias scores; database-state predicates may miss conversational quality
+  - original repository now warns that airline and retail tasks are outdated and points users to the successor tau2/tau3 repository
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: PDF shows all authors under Sierra; Shunyu Yao has a work-done-during-internship footnote with no other affiliation
+    verified there. GitHub license is MIT. Original repository README marks tasks as outdated and points to tau2/tau3 for
+    fixed tasks, so current comparisons need version pinning.
+inclusion_reason: 'high: full-episode tool/user environment with terminal reward and scaffold-risk questions.'
+related: []
+tags:
+- benchmark
+- tool_api_benchmark
+- tool-and-user-interaction
+why_it_matters: Important state-based metric for reliability over repeated trials.
+status: verified
+needs:
+- 'needs_metadata: verify whether there is an official non-arXiv venue/OpenReview page'
+- 'needs_audit: pin exact repository tag, user simulator, terminal reward, split, random-seed policy, and task-fix status'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Tau-Bench exposes retail/airline user-agent-tool conversations with database-state grading as an auditable
+  evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: medium
+  notes: PDF, GitHub README, and MIT license were checked. Original tau-bench repository now flags its tasks as outdated,
+    so scores require version pinning.
+category_ids:
+- benchmarks_evaluation_surfaces

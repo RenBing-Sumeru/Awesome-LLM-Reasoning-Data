@@ -1,0 +1,3 @@
+- **依赖 teacher 与代理指标：** DeepSeek-R1 的错误会进入 target，而模型分歧、长度和策略标签都不是完美质量指标。复用子集前，应分层抽样并用独立答案与轨迹检查复核。
+- **泛化存在混杂：** 增益依赖 NaturalReasoning 的题目混合、所测 Llama/Qwen student 和 benchmark 重叠。迁移到新领域时，要重做匹配选择实验并检查语义污染。
+- **Artifact 缺口与成本：** 未确认官方 NaturalThoughts 发布或许可证，而生成和最多 500K 轨迹训练成本很高。复现需要公开精确记录、provenance、teacher 版本、被拒绝样本和算力。

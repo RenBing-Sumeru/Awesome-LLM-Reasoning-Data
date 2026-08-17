@@ -1,0 +1,5 @@
+The one-sentence contribution is: ProofNet turns undergraduate pure-math exercises into parallel informal/formal Lean 3 benchmark records for evaluating statement autoformalization, informalization, theorem proving, and proof autoformalization.
+
+The core mechanism is human curation and Lean formalization of textbook/exam problems selected for self-containment, natural formalizability, and lower train-test overlap risk with mathlib. This differs from mathlib-style theory building: ProofNet emphasizes concrete applications of undergraduate results rather than the most abstract library theorem.
+
+The closest formal-math comparison in the paper is prior formal theorem-proving benchmarks such as miniF2F, while the closest task comparison is autoformalization from natural language to a theorem prover. The feedback contract is mixed: Lean typechecking gives a programmatic signal for well-formed statements; expert judgment is required for semantic correctness; BLEU is explicitly weak for this task. Direction label: verifier-backed formal-math evaluation surface.

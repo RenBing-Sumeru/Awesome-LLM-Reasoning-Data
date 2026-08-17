@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T14:06:21Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "905ref 3.6kstar 经典",
+    "updated_at": "2026-07-13T14:06:21Z"
+  }
+}

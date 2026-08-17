@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SafeRun 将跑步计划请求交给 CP-SAT 求解器执行硬约束，使每个被接受的计划都通过明确的安全规则检查。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "带确定性安全验证器的跑步规划基准",
+  "best_for_ch": "研究硬约束规划、工具调用和安全验证器的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Meilin Chen, Zepeng Zhai, Jiaxuan Zhao, Yuan Lu",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

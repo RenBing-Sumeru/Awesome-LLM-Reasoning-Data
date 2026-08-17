@@ -1,0 +1,17 @@
+{
+  "title": "OpenCodeInstruct: A Large-scale Instruction Tuning Dataset for Code LLMs",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.04030",
+    "data": "https://huggingface.co/datasets/nvidia/OpenCodeInstruct"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:14:40Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "code数据",
+    "updated_at": "2026-07-27T09:14:40Z"
+  }
+}

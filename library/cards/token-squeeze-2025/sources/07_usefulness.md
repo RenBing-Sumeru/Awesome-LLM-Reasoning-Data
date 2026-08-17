@@ -1,0 +1,7 @@
+For the assigned rollout/search/test-time-trace category, use this as a **method and audit reference only**, not safe training-data reuse. It gives a concrete checklist: number of rollouts, final-answer comparator, difficulty-dependent selector, rejection rule, and local rewrite proxy. A controlled replication can compare shortest-correct, fixed-quantile, Q-DYN, no-refinement, and full-objective variants under identical source rows and rollout budgets.
+
+For a construction study, log source ID, template, checkpoint/tokenizer revision, every completion, extracted answer, comparator result, token count, selection rank, exclusion reason, rewrite candidate, KL estimate, and final pair ID. Report verification errors and retention by difficulty. That turns an executable recipe into an auditable rollout dataset rather than inferring quality from benchmark scores.
+
+For training, preserve the SFT-on-positive versus DPO-L-on-pair distinction: Table 4 indicates neither pure objective recovers the reported trade-off. Match context, loss mix, length term, base checkpoint, decoding policy, and evaluation budget before attributing gains to selection. Do not reuse AIME/MATH/LiveCodeBench prompts until overlap and licensing are documented.
+
+Training reuse is blocked pending generated data, immutable manifests, provenance/license, comparator audit, splits, and decontamination. Public code is a starting implementation, not a reproducible release of the paper's data object.

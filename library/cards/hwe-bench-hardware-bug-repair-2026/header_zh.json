@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HWE-Bench 在真实硬件仓库上以原生仿真和回归测试评估代理修复历史 bug 的能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "带原生仿真验证的仓库级硬件修复基准",
+  "best_for_ch": "研究 HDL 代理、硬件修复和仿真式奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Fan Cui, Hongyuan Hou, Zizhang Luo, Chenyun Yin, Yun Liang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

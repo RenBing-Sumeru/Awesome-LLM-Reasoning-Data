@@ -1,0 +1,5 @@
+Correctness holds only relative to the annotated record, answer type, reference answer or solution, prompt format, and selected scoring path. OCR and markdown conversion can introduce semantic or formatting errors; image URLs can become unavailable; public olympiad problems may already exist in pretraining corpora despite leakage checks.
+
+The feedback contract is heterogeneous. Rule-based matching is stronger for closed forms and exact structures, CS test cases check only the released or hidden tests used by the benchmark, GPT-4V model-based evaluation is a judge rather than a verifier, and process-level scores come from a sample after model-assisted step reformatting.
+
+The official test split with unreleased answers is useful for leaderboard integrity but limits independent local audit. Users should not treat validation-set scores as official test scores, process-level sampled findings as full-dataset proof, or answer-level correctness as evidence that the generated reasoning is faithful.

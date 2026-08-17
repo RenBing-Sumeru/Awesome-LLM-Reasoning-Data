@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Weaver 汇聚多个弱验证器的输出，用估计准确度的归一化分数筛选重复采样候选。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jon Saad-Falcon, E. Kelly Buchanan, Mayee F. Chen等",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-17T06:27:18Z"
+}

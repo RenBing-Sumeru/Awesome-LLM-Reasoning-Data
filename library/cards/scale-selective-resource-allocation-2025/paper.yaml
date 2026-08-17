@@ -1,0 +1,165 @@
+id: scale-selective-resource-allocation-2025
+title: 'SCALE: Selective Resource Allocation for Overcoming Performance Bottlenecks in Mathematical Test-time Scaling'
+year: 2025
+venue: AAAI 2026
+authors:
+- Yang Xiao
+- Chunpu Xu
+- Ruifeng Yuan
+- Jiashuo Wang
+- Wenjie Li
+- Pengfei Liu
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- test_time_compute
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.00466
+  arxiv: https://arxiv.org/abs/2512.00466
+  code: https://github.com/XiaoYang66/DualThinking
+  data: https://huggingface.co/datasets/YangXiao-nlp/DualThinking
+  project: null
+  huggingface: https://huggingface.co/datasets/YangXiao-nlp/DualThinking
+  doi: https://doi.org/10.48550/arXiv.2512.00466
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40697
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Four released JSON files use LIMOPro or a release-described LIMOPro v2 source: 817 and 800 LIMOPro rows
+    at thresholds 0.2 and 0.6, plus 782 and 713 LIMOPro v2 rows at the same thresholds. The paper''s SFT experiment describes
+    800 LIMOPro pairs, but no immutable mapping to the four-file release is provided.'
+  trace_author: SCALE traces are generated with QwQ-32B according to the official dataset card. The pipeline uses model prompts
+    to generate alternatives, self-evaluate an outline, score step difficulty, and produce step traces; a separate human annotation
+    process is not disclosed.
+  answer_format: Each released record contains source problem, condition, question, ground-truth answer, sampling_id, SCALE
+    final_answer, is_correct, cot_name, model_name, a steps dictionary, 0–1 steps_scores, detailed step traces, concise step
+    solutions, and optional summaries.
+  process_fields:
+  - id
+  - problem
+  - condition
+  - question
+  - answer
+  - sampling_id
+  - final_answer
+  - is_correct
+  - steps
+  - steps_scores
+  - steps_detail
+  - steps_content
+  - steps_summary
+  environment_or_substrate: Prompted mathematical inference code over OpenAI-compatible endpoints (vLLM recommended), with
+    configurable thinking and non-thinking model endpoints. It is not an executable task environment and the release does
+    not supply per-row timing, token usage, endpoint, or retry logs.
+  verifier_or_reward: Eight candidate outlines are selected by a self-evaluation prompt; each selected step gets a model-assessed
+    difficulty score in [0,1]. A threshold sends a step to System 1 or System 2. The published trace filter retains cases
+    whose final answer matches the LIMOPro answer; this is answer-level filtering, not verification of each intermediate step.
+  terminal_predicate: is_correct records whether the SCALE-generated final answer matches the LIMOPro ground truth. The normalization/extraction
+    policy and false-positive/false-negative audit are not released as a separate validation artifact.
+recipe_metadata:
+  base_model: QwQ-32B generates the four public trace variants. Test-time experiments use Qwen3-32B, QwQ, DeepSeek-R1-Distill-Llama-70B,
+    and DeepSeek-R1-Distill-Qwen-32B; SFT experiments use Qwen2.5-14B/32B/72B-Instruct and Llama3.3-70B-Instruct.
+  teacher: QwQ-32B is the disclosed synthetic-trace generator. Exact endpoint, revision, system-message instructions, seeds,
+    and generation retries for every released row are unknown.
+  generator: For each problem, generate eight alternative outlines; choose one through self-evaluation; score each sub-problem
+    with accumulated context; invoke System 2 when score exceeds a threshold and System 1 otherwise; propagate prior sub-problems
+    and solutions; extract a final answer; then answer-match filter the completed trace.
+  filtering_rule: The paper and official repository say that SCALE traces whose final answer differs from the original LIMOPro
+    answer are removed. The public dataset card asserts all examples have matching final answers, but rejected rows and the
+    matching implementation are unavailable.
+  sampling_protocol: Eight outline versions are generated. Paper inference uses temperature 0.6 and top-p 0.95; repository
+    examples expose top_k 20, a threshold default of 0.5, and max_tokens 32768. Exact per-file decoding configuration, seeds,
+    candidate outputs, and retries are unknown.
+  rollout_count: Eight outline candidates per problem; no released count or ledger for detailed-solution retries or failed
+    requests.
+  temperature: 0.6 for paper inference experiments; public trace-file generation settings are not pinned per row.
+  inference_budget: Qwen3-32B scaling varies System 2 maximum tokens from 4,096 to 32,768. The release has no per-row generated-token,
+    latency, runtime, or System 1/System 2 routing field.
+  optimizer_or_scaffold: Four non-reasoning models are SFT-trained on the paper's curated 800 SCALE pairs using LIMOPro training
+    configurations; the SCALE paper delegates optimizer, schedule, and detailed procedure to LIMOPro.
+audit:
+  source_mixture: Official data card lists 817 LIMOPro 0.2, 800 LIMOPro 0.6, 782 LIMOPro v2 0.2, and 713 LIMOPro v2 0.6 traces,
+    all QwQ-32B. No source-row manifest or distinction between paper SFT rows and released files is supplied.
+  split: The paper evaluates AIME24, AIME25, and AMC23 and uses LIMOPro for SFT trace construction. Exact source versions,
+    source IDs, deduplication, train/evaluation overlap, and the 800-row SFT manifest are unknown.
+  decontamination: unknown
+  license: The author code repository says MIT. The Hugging Face data card should be checked at download time, and upstream
+    LIMOPro/LIMOPro v2 licensing and redistribution provenance are not established by the checked SCALE sources.
+  lineage: LIMOPro or LIMOPro v2 item -> eight outlines -> self-evaluation-selected outline -> contextual difficulty scores
+    -> thresholded System 1/System 2 step generation -> final-answer match filter -> released JSON trace; the paper's 800-pair
+    SFT subset is not manifest-linked.
+  known_failure_modes:
+  - Self-evaluated outline choice and difficulty scores may be uncalibrated or reward stylistic decompositions.
+  - Answer matching does not verify intermediate correctness, faithfulness, or mode-routing quality.
+  - Rejected outlines, failed requests, and answer-mismatched traces are absent, obscuring selection bias.
+  - The row schema does not retain per-step routing choice, token counts, latency, model endpoint/revision, prompt version,
+    or seed.
+  - Four released files contain 3,112 traces while the reported SFT corpus has 800 pairs; their membership relation is unknown.
+  - Dataset provenance, split controls, decontamination, and upstream rights remain incomplete.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv HTML/PDF record, linked author GitHub repository, and linked Hugging Face dataset card were checked. They
+    verify method, schema, released file counts, and claimed use; audit completeness remains partial.
+  metadata_status: partial
+inclusion_reason: SCALE is an open mathematical process-trace release whose step decomposition, self-assessed difficulty,
+  thresholded route, detailed trace, and answer-match flag make sub-problem test-time allocation inspectable for this track.
+related: []
+tags:
+- mathematical-reasoning
+- test-time-scaling
+- adaptive-compute
+- subproblem-decomposition
+- difficulty-routing
+- qwq
+- step-traces
+- synthetic-data
+- open-code
+- open-data
+status: partial
+why_it_matters: It exposes richer allocation metadata than whole-problem token caps and gives an SFT-ready trace schema, but
+  missing rejected candidates, per-step routing/compute logs, immutable SFT membership, and decontamination prevent a full
+  selection or efficiency audit.
+card: null
+needs:
+- 'needs_trace_metadata: selected and rejected outlines, prompts, decoding settings, model revisions, seeds, retries, and
+  self-evaluation outputs'
+- 'needs_compute_logs: per-step route, generated tokens, latency, hardware, and aggregate accounting'
+- 'needs_split: immutable 800-pair SFT manifest and mapping to all released JSON files'
+- 'needs_verifier: answer normalization/checking implementation and error audit'
+- 'needs_decontamination: source/evaluation-overlap controls for LIMOPro, LIMOPro v2, AIME24/AIME25, and AMC23'
+- 'needs_provenance: pinned upstream source versions and redistribution rights'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card-repair-staging
+  confidence: high
+  notes: Official arXiv record, author GitHub repository, and author-linked Hugging Face dataset card were reviewed.
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: SCALE releases QwQ-32B mathematical traces with decomposed steps and self-assessed difficulty scores, routing
+  each step by a threshold and filtering only final-answer matches.

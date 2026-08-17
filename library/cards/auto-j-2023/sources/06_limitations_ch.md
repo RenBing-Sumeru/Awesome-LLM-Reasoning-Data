@@ -1,0 +1,1 @@
+正确性只相对于 GPT-4 teacher judgment、人工测试标签和场景 criteria 成立。Judge 可能继承 teacher 偏好、位置/顺序伪影、源数据污染和输出格式失败。58 场景 taxonomy 覆盖面较广但并不穷尽，多语言或专门领域需要单独验证。Pairwise agreement 和排序相关性不能保证每条 critique 都可靠。模型和数据复用必须检查 checkpoint 许可、Chatbot Arena/偏好数据上游条款，以及 release artifact 的限制。

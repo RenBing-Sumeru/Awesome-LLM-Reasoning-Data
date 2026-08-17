@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该工作以模型导出的长度归一化步骤熵筛选完整 CoT 中的低熵步骤，用 [SKIP] 构造压缩轨迹，并以 SFT 和 GRPO 学习更短的推理输出。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基于步骤熵的长短链推理压缩、SFT 与 GRPO 训练配方",
+  "best_for_ch": "关注推理轨迹选择、CoT 压缩、RLVR 反馈契约和数据可审计性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zeju Li、Jianyuan Zhong、Ziyang Zheng、Xiangyu Wen、Zhijian Xu、Yingying Cheng、Fan Zhang、Qiang Xu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

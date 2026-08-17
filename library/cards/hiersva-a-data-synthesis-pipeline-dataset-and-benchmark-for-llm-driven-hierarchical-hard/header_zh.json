@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "342 个层级 RTL 模块、28 组深层 bug pair 与六维 SVA 验证 benchmark。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Maohua Nie, Jiang Zhu, Jingqun Zhang, Zhichen Zeng, Jiayi Wang, Sibo Zhang, Jialin Wang, C. -J. Richard Shi",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

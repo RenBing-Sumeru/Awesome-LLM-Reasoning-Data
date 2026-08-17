@@ -1,0 +1,1 @@
+数据对象：Multi-agent discussions; exact schema requires dataset inspection.；过程字段：discussion, collaboration_trajectory, ceo_depth。构造方式：M500 SFT plus CEO coordination.。反馈或选择机制：Formal M500 verifier/reward not established.。采样：Adaptive depth; budgets unknown.。

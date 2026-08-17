@@ -1,0 +1,2 @@
+证据账本已核验官方 arXiv 条目、Ai2 发布说明、rlresearch 仓库及许可证、作者关联的 Hugging Face 集合、SFT 与 RL 数据集卡，以及最终模型卡。论文报告 16K 条 SFT 轨迹，而公开 SFT 的 train 切分有 13,062 行，且明确排除了 MegaScience、HotpotQA 和 ScholarQA 子集。论文报告约 9K 个 RL 提示，约为 5K SearchArena/OpenScholar 加 4K RaR；公开 RL 的 train 切分则有 4,881 行 SearchArena/OpenScholar 数据，并明确排除 RaR。两个公开数据页都只提供 train 切分。最终模型在发布层面的树为 Qwen3-8B-Base 到 Qwen3-8B 到 DR-Tulu-SFT-8B 再到 DR-Tulu-8B RL；这不是逐记录或逐步骤的溯源图。
+

@@ -1,0 +1,3 @@
+The paper reports 83 theorem groups and 1,142 premised Lean4 proving instances and evaluates multiple contemporary theorem-proving or general LLM systems with pass@k, theorem-level coverage, average subtheorems proved, and token-efficiency. The decisive instance-level evidence is simple: a candidate proof is inserted into the expected Lean context and either compiles or fails.
+
+The aggregate evidence should be read with its harness boundary. Scores can change if the Lean4 version, mathlib commit, prompt format, timeout, number of samples, theorem grouping, or proof extraction changes. The current metadata verifies the arXiv paper and PDF but does not pin a public dataset/code URL, license, Lean4 version, mathlib commit, or exact retained instance files.

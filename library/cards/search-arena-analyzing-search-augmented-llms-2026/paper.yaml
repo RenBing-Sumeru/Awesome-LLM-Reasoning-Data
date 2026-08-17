@@ -1,0 +1,126 @@
+id: search-arena-analyzing-search-augmented-llms-2026
+title: 'Search Arena: Analyzing Search-Augmented LLMs'
+year: 2026
+venue: ICLR 2026
+authors:
+- Mihran Miroyan
+- Tsung-Han Wu
+- Logan King
+- Tianle Li
+- Jiayi Pan
+- Xinyan Hu
+- Wei-Lin Chiang
+- Anastasios N. Angelopoulos
+- Trevor Darrell
+- Narges Norouzi
+- Joseph E. Gonzalez
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- full_episode
+domains:
+- search-augmented-llms
+- web-grounding
+- human-preference
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.05334
+  arxiv: https://arxiv.org/abs/2506.05334
+  code: https://github.com/lmarena/search-arena
+  data: https://huggingface.co/datasets/lmarena-ai/search-arena-24k
+  project: https://legacy.lmarena.ai/
+  huggingface: https://huggingface.co/datasets/lmarena-ai/search-arena-24k
+  doi: https://doi.org/10.48550/arXiv.2506.05334
+  venue: https://openreview.net/forum?id=MMGRlDnhtI
+  openreview: https://openreview.net/forum?id=MMGRlDnhtI
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Consented in-the-wild Search Arena conversations collected from 2025-03-18 to 2025-05-08.
+  trace_author: Users provide prompts and votes; anonymous search-enabled models supply paired responses and search traces.
+  answer_format: Multi-turn conversation with messages_a, messages_b, optional human vote, timestamp, model/search metadata,
+    language, and intent annotations.
+  process_fields:
+  - messages_a
+  - messages_b
+  - vote
+  - timestamp
+  - model_metadata
+  - search_trace
+  - language
+  - user_intent
+  environment_or_substrate: Side-by-side Search Arena interface for anonymous search-enabled LLMs.
+  verifier_or_reward: User choices among A better, B better, tie, and both bad; paper additionally audits citation attribution
+    with an LLM pipeline.
+  terminal_predicate: A conversation is released after consent, de-identification, and filtering of server-error or inconsistent-configuration
+    examples.
+recipe_metadata:
+  base_model: 13 publicly released search-enabled models in the dataset; models vary by conversation.
+  teacher: null
+  generator: Production Search Arena deployment rather than synthetic generation.
+  filtering_rule: Remove server errors, inconsistent configurations, and quality issues; Google DLP API redacts PII and sensitive
+    information.
+  sampling_protocol: 24,069 multi-turn conversations, 12,652 human preference votes, about 11K users in 136 countries, and
+    around 90 languages.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Pairwise human votes support ranking and preference analysis; repository provides analysis scripts.
+audit:
+  source_mixture: User prompts, paired model replies, retrieval/search traces, preference votes, timestamps, and post-processed
+    annotations.
+  split: Release is observational deployment data; a training/test split is not specified on the official dataset card.
+  decontamination: Dynamic web retrieval and public model responses can overlap with held-out search tasks; establish an evaluation
+    time boundary before training.
+  license: Prompts are CC-BY-4.0; model outputs remain subject to the respective model providers' terms.
+  lineage: arXiv source, ICLR acceptance statement, official GitHub repository, and official Hugging Face dataset card checked
+    on 2026-07-14.
+  known_failure_modes:
+  - Citation count can affect votes without supporting claims
+  - Automated PII removal can miss residual sensitive content
+  - Votes reflect Search Arena users rather than a representative population
+  citation_status: verified
+  confidence: high
+  notes: Formal title, UC Berkeley affiliation, release scope, consent/de-identification, record fields, license boundary,
+    code, and official data links were checked.
+inclusion_reason: Search Arena releases real paired search-LLM conversations, user preference judgments, and retrieval traces
+  for preference learning and grounding analysis.
+related: []
+tags:
+- search
+- arena
+- human-votes
+- citations
+- retrieval-traces
+one_line_summary: Search Arena releases real multi-turn search-LLM battles with user votes and full retrieval traces, exposing
+  the difference between preferred and well-supported answers.
+why_it_matters: It joins observed human preferences to the retrieved evidence needed to audit whether citation-rich answers
+  are actually grounded.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: arXiv source archive, ICLR acceptance record, official GitHub repository, and official Hugging Face dataset
+    page
+  confidence: high
+  notes: Formal title, venue, affiliation, official code/data, schema, collection procedure, privacy treatment, and license
+    boundary were checked.
+category_ids:
+- preference_reward_feedback_data

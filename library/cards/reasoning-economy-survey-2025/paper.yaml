@@ -1,0 +1,109 @@
+id: reasoning-economy-survey-2025
+title: 'Harnessing the Reasoning Economy: A Survey of Efficient Reasoning for Large Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Rui Wang
+- Hongru Wang
+- Boyang Xue
+- Jianhui Pang
+- Shudong Liu
+- Yi Chen
+- Jiahao Qiu
+- Derek Fai Wong
+- Heng Ji
+- Kam-Fai Wong
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- chain-of-thought
+- reasoning-data
+- inference-efficiency
+- test-time-compute
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2503.24377
+  arxiv: https://arxiv.org/abs/2503.24377
+  code: https://github.com/DevoAllen/Awesome-Reasoning-Economy-Papers
+  data: null
+  project: https://github.com/DevoAllen/Awesome-Reasoning-Economy-Papers
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.24377
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning tasks and long reasoning traces.
+  trace_author: Primary studies reviewed by the survey; no new trace corpus is released.
+  answer_format: A taxonomy of ways to reduce redundant reasoning while preserving task quality.
+  process_fields:
+  - input difficulty
+  - reasoning length
+  - compute budget
+  - efficiency method
+  - task score
+  environment_or_substrate: Large language models that use explicit reasoning at inference time.
+  verifier_or_reward: Reviews task-specific scores, length signals, and other feedback mechanisms; no common judge is released.
+  terminal_predicate: Task-specific correctness together with an efficiency measurement.
+recipe_metadata:
+  base_model: No single model; this is a literature survey.
+  teacher: Surveyed studies use varied teachers and feedback.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: The paper groups approaches that regulate inefficient reasoning behavior or improve test-time use.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new optimizer is introduced.
+audit:
+  source_mixture: Official arXiv record and linked project repository.
+  split: Not applicable to a survey.
+  decontamination: No cross-paper contamination conclusion is supplied.
+  license: The paper is a preprint; no dataset is released.
+  lineage: 'Primary source: https://arxiv.org/abs/2503.24377'
+  known_failure_modes:
+  - Shorter traces can remove steps needed on difficult tasks.
+  - Efficiency comparisons depend on model, hardware, decoding, and measurement choices.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly presents a survey of efficient reasoning for large language models.
+inclusion_reason: A 2025 survey from CUHK, HKU, Princeton, and UIUC collaborators that treats reasoning traces as both useful
+  evidence and a finite compute resource.
+related: []
+tags:
+- foundations-and-primers
+- reasoning-economy
+- chain-of-thought
+- survey
+- 2025
+why_it_matters: It gives students a disciplined way to compare answer quality against trace length, time, and computation.
+one_line_summary: A 2025 survey of how to reduce redundant reasoning without confusing fewer tokens with better reasoning.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers working with long reasoning traces, test-time budgets, or efficiency claims.
+confidence: high
+status: verified
+needs:
+- 'unknown: a standard protocol that jointly reports accuracy, trace quality, latency, and cost'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv title, abstract, author block, and linked project were checked.
+category_ids:
+- foundations_and_primers

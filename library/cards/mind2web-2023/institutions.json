@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "The Ohio State University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:25:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2306.06070",
+    "https://osu-nlp-group.github.io/Mind2Web/",
+    "https://github.com/OSU-NLP-Group/Mind2Web",
+    "https://huggingface.co/datasets/osunlp/Mind2Web",
+    "https://openreview.net/forum?id=kiYqbO3wqw",
+    "https://papers.nips.cc/paper_files/paper/2023/hash/5950bf290a1570ea401bf98882128160-Abstract-Datasets_and_Benchmarks.html"
+  ],
+  "verification_note": "OpenReview/proceedings, arXiv, project, GitHub, and Hugging Face sources verify The Ohio State University affiliation, NeurIPS 2023 Datasets and Benchmarks Track Spotlight status, and public artifacts; test splits and raw dumps have access caveats."
+}

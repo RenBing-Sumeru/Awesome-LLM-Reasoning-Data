@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "采样轨迹，卡片质量存在问题，待审核",
+    "updated_at": "2026-07-18T14:00:48Z"
+  },
+  "updated_at": "2026-07-18T14:00:48Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

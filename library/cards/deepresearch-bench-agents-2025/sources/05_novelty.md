@@ -1,0 +1,1 @@
+Earlier deep-research evaluation used small-scale holistic human ratings or fixed answers. DeepResearch Bench combines cross-domain PhD tasks, reference-driven adaptive criteria, and citation evaluation so each task receives suitable checks. The novelty is evaluating both report quality and evidence collection rather than building a new search agent.

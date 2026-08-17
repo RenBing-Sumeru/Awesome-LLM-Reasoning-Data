@@ -1,0 +1,3 @@
+Use ViVerBench to test a visual judge, image generator, or unified multimodal model when the desired output must be checked against a prompt. Produce the required JSON responses, run a pinned rule-based or GPT-4.1-based evaluator, and inspect results by category; success is reproducible category-level improvement, not a single unqualified score.
+
+Use OmniVerifier as a feedback module when an image-generation/editing pipeline can accept explanatory verification between iterations. The required inputs are prompt, visual output, the released model, and an iteration budget; output is a decision/explanation and refined candidate. Do not use it as ground truth in high-stakes settings without human audit and task-specific calibration.

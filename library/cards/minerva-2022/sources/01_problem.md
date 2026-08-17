@@ -1,0 +1,3 @@
+Minerva is a Google Research / arXiv 2022 model report on quantitative reasoning with language models. The problem is not to define a new math benchmark, but to test whether a large language model further trained on mathematical and scientific text can answer hard public math and science problems with final-answer evaluation.
+
+The evaluation surface is a set of benchmark prompts from MATH, GSM8K, MMLU-STEM, and a paper-reported OCW course problem set, plus model-generated step-by-step solutions and final answers. It belongs in the atlas as an early reasoning-evaluation coordinate; it should not be reused as proof that the released benchmarks are uncontaminated, hidden, or suitable as training reward without a separate scorer and split audit.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ShareGPT4V 先收集 10 万条 GPT-4V 详尽描述，再训练描述器把高密度视觉监督扩展到 120 万张图像。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "在视觉问答微调前构造带细节的图像落地监督",
+  "confidence_ch": "高",
+  "authors_ch": "Lin Chen, Jinsong Li, Xiaoyi Dong, Pan Zhang, Conghui He, Jiaqi Wang, Feng Zhao, Dahua Lin",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

@@ -1,0 +1,1 @@
+Dong et al. (2026), “Revealing the Seen, Imagining the Beyond: A Survey of Image-Grounded Chain-of-Thought Reasoning in Multimodal LLMs,” ACL 2026 Long Papers, pages 45055–45070. Official record: https://aclanthology.org/2026.acl-long.2087/ .

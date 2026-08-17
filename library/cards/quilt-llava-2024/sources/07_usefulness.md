@@ -1,0 +1,3 @@
+- For training a pathology assistant to explain visible morphology, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of misaligned narration can teach confident claims about features outside the crop.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: temporal/text localization, pathology terminology checks, and downstream VQA evaluation. Do not reuse the release when its licensing or source provenance cannot be preserved.

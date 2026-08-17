@@ -1,0 +1,6 @@
+- 始终区分三个对象：VisualPRM400K 是自动训练数据，VisualPRM-8B 是学得的 scorer，VisualProcessBench 是人工标注测试集。
+- 论文精确配方是：每个图问对四个初始解答、最多 12 个存储/合并步骤、每个前缀 16 条 continuation。
+- 正训练标签表示 mc_i > 0，即 16 条 continuation 中至少一条通过终局 checker；它不表示人工验证了当前步骤。
+- 原始公开数据保存派生后的 `+/-` conversation 目标；后来的 v1.1-Raw 标量/计数字段属于变化后的发布，不是原始 rollout 账本。
+- 默认 Best-of-N 在 policy 温度 0.7 下使用 N=8，但没有发布候选与拒绝 trace；报告时应同时给出采样预算和 selector 预算。
+- benchmark F1 与 Best-of-N 提升属于模型评估，不能作为来源洁净度、去污染、标签正确性或许可完整性的证明。

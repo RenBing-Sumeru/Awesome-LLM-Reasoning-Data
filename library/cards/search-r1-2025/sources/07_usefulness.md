@@ -1,0 +1,1 @@
+Search-R1 is useful as a schema for collecting search-agent RL episodes: preserve prompt ID, every model span, query, retrieved document IDs and corpus revision, action budget, terminal answer, reward, policy checkpoint, and rejected siblings. Without those fields, released code and checkpoints support method reproduction but not a reusable, auditable trajectory corpus.

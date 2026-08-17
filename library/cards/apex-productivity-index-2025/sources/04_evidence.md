@@ -1,0 +1,1 @@
+Across 23 frontier models on APEX-v1.0, GPT-5 with high reasoning scores 64.2%, followed by Grok 4 at 61.3% and Gemini 2.5 Flash with thinking at 60.4%; Qwen3-235B is the best open model and ranks seventh. The results show a remaining gap from experts and sensitivity to reasoning settings, but benchmark scores should not be equated directly with job-replacement rates.

@@ -1,0 +1,1 @@
+核心贡献是一个公开且持续演化的 function-calling benchmark，把调用语法、函数选择相关性、可执行正确性和多轮/agentic 工具使用分开评测。机制是按类别把模型输出交给不同 evaluator：结构化调用用 AST 类匹配，可运行任务用 execution check，后续版本加入场景级检查。最近对比对象包括 API-Bank、ToolBench、Gorilla APIBench 和各模型供应商的工具调用 demo。方向标签是带环境反馈契约的 tool/API benchmark。

@@ -1,0 +1,8 @@
+- GPT-4.1 AER是semantic instrument，而非ground truth。相对150条人工标注o4-mini episode，其unsafe recall为64%；已记录的失败包括看不到被忽略的注入、把注入文本当作合法指令、把部分误用进展过度判为完成、把正常技术操作误报为unsafe，以及漏掉真实安全故障。
+- judge接收action/reasoning历史与GPT-4o生成的最终截图caption，而不是完整VM state的形式化读数。caption错误、被省略的视觉证据、不可见hidden state和judge模型漂移都可能改变`success`、`safety`或`violation_step`；prompt主动偏向false positive也会塑造标签分布。
+- 人工验证范围有限：3名参与任务设计的作者各自标注一个50任务类别的o4-mini轨迹。论文未报告独立双重标注、inter-rater agreement、adjudication，也没有对其余被测模型提供同等验证。
+- 该benchmark受能力confounding影响。能力较弱的agent可能只是无法执行有害目标而显得安全；15步上限也会同时压低成功与unsafe行为。任务较短，attack简单且静态，人工策划的stress-test混合不能估计自然部署发生率或adaptive-attack鲁棒性。
+- 复现对环境敏感。作者报告使用VMware Workstation，但没有验证其他OSWorld VM provider；Ubuntu snapshot、应用状态、accessibility tree、网络内容、模型API、截图、timeout与pyautogui时序都可能漂移。仓库没有release或tag，而且已检查commit展开为51个注入组合，论文则报告50个。
+- 仓库代码采用Apache-2.0，但Google Drive工件的数据集/轨迹专用条款，以及OSWorld衍生或外部托管asset的权利均为unknown。Drive没有已核验的不可变inventory、checksum，也没有论文实验到发布episode的一一映射。
+- 更广泛的semantic decontamination为unknown。发布提供canary并要求不要训练或在线发布这些样例，同时10个注入base task按构造即与OSWorld重叠。refusal、unsafe success、crash、timeout、retry、jailbreak run与ablation的精确保留情况同样为unknown。
+- Curator inference：若没有固定benchmark bundle与对账说明，后续结果可能在沿用OS-Harm名称的同时，实际评测不同注入集合或judge stack。该version drift直接阻碍score comparison与replay审计。

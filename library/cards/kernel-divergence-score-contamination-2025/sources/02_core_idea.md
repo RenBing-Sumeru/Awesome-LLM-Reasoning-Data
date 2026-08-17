@@ -1,0 +1,1 @@
+Kernel Divergence Score (KDS) compares an RBF kernel matrix over normalized sample embeddings before and after one epoch of LoRA fine-tuning on the candidate dataset. Unseen samples change more under fine-tuning, so the negative gated kernel divergence rises with the fraction already known to the model.

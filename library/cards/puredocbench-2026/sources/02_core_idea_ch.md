@@ -1,0 +1,3 @@
+核心贡献是在 document-benchmark-审计, benchmark-quality-审计 上提供 1,475 official pages, 4,425 official images, 10 top-level domains, 66 fine-grained subcategories, and three image tracks named clean, digital-degraded, and real-degraded.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：official scoring CLI compares predictions with GT structures using TextEdit, FormulaCDM, TableTEDS, ROEdit, per-track Overall, and Avg3 across clean, digital-degraded, and real-degraded tracks。
+
+数据对象或环境是：document parsing over clean rendered pages, digitally degraded images, and real-degraded images。最接近的对比对象是 document, chart, multimodal QA, and visual 评测 benchmarks。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 混合。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

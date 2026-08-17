@@ -1,0 +1,3 @@
+The report does not provide source manifests, crawl dates, source proportions, data licenses, consent or PII treatment, teacher/reward/judge identities, prompts, filtering thresholds, retention rates, or rejected samples. It mentions deduplication but does not disclose a benchmark-overlap audit.
+
+The agent loop is also not replayable from the official release: API/MCP inventories, tool snapshots, sandbox images, AgentGym configurations, task instances, action schemas, terminal predicates, and execution logs are unavailable. Model weights under an MIT release do not resolve any of these missing data, feedback, environment, or audit dependencies.

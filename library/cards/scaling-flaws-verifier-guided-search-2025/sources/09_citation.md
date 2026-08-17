@@ -1,0 +1,1 @@
+Provisional citation — Fei Yu, Yingru Li, Benyou Wang. [Scaling Flaws of Verifier-Guided Search in Mathematical Reasoning](https://arxiv.org/abs/2502.00271). arXiv preprint, 2025. Title, authors, venue, and primary URL were checked against the official source.

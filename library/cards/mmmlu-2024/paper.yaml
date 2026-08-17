@@ -1,0 +1,118 @@
+id: mmmlu-2024
+title: Multilingual Massive Multitask Language Understanding
+year: 2024
+venue: OpenAI / Hugging Face dataset release
+authors:
+- OpenAI
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- multilingual-evaluation
+- broad-academic
+- multiple-choice
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2009.03300
+  arxiv: https://arxiv.org/abs/2009.03300
+  code: https://github.com/openai/simple-evals
+  data: https://huggingface.co/datasets/openai/MMMLU
+  project: null
+  huggingface: https://huggingface.co/datasets/openai/MMMLU
+  doi: https://doi.org/10.48550/arXiv.2009.03300
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MMLU test questions translated into 14 locales by professional human translators according to the OpenAI
+    dataset card.
+  trace_author: Official authors, annotators, validators, or dataset curators disclosed by the primary source.
+  answer_format: translated MMLU multiple-choice question, subject/category metadata, answer options, gold option, locale,
+    and test split.
+  dataset_scale: 14 locales covering Arabic, Bengali, German, Latin American Spanish, French, Hindi, Indonesian, Italian,
+    Japanese, Korean, Brazilian Portuguese, Swahili, Yoruba, and Simplified Chinese; test split only in the OpenAI dataset
+    card.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: static multilingual multiple-choice academic benchmark derived from MMLU test records
+  verifier_or_reward: the selected option is compared with the inherited MMLU answer key under the evaluation harness.
+  terminal_predicate: model output resolves to the gold multiple-choice option for the locale-specific item.
+  benchmark_size: 14 locales covering Arabic, Bengali, German, Latin American Spanish, French, Hindi, Indonesian, Italian,
+    Japanese, Korean, Brazilian Portuguese, Swahili, Yoruba, and Simplified Chinese; test split only in the OpenAI dataset
+    card.
+recipe_metadata:
+  base_model: Not a training recipe; this entry treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the primary source.
+  generator: MMLU test questions translated into 14 locales by professional human translators according to the OpenAI dataset
+    card.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary sources checked: https://huggingface.co/datasets/openai/MMMLU; https://huggingface.co/datasets/openai/MMMLU/raw/main/README.md;
+    https://github.com/openai/simple-evals; https://arxiv.org/abs/2009.03300'
+  split: Exact split, hidden/public policy, live-refresh policy, and subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; post-release score claims require versioned
+    contamination evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://huggingface.co/datasets/openai/MMMLU'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, evaluator version, split, model version, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: OpenAI Hugging Face dataset card verifies locales, test split files, MIT license, professional human translation
+    statement, and simple-evals link.
+inclusion_reason: It provides a multilingual audit surface for measuring whether subject knowledge survives translation and
+  locale-specific answer rendering.
+related: []
+tags:
+- benchmark
+- multilingual-evaluation
+- broad-academic
+- multiple-choice
+one_line: MMMLU turns the MMLU test set into professionally translated multiple-choice tests across 14 locales.
+why_it_matters: It provides a multilingual audit surface for measuring whether subject knowledge survives translation and
+  locale-specific answer rendering.
+status: verified
+needs:
+- 'needs_audit: pin exact dataset revision and simple-evals commit before comparing scores'
+- 'needs_audit: inspect per-locale translation notes, answer normalization, and license obligations'
+- 'needs_review: human curator should assess promotion beyond baseline benchmark status'
+one_line_summary: MMMLU turns the MMLU test set into professionally translated multiple-choice tests across 14 locales.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: OpenAI Hugging Face dataset card verifies locales, test split files, MIT license, professional human translation
+    statement, and simple-evals link.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-16'
+  primary_category_id: benchmarks_evaluation_surfaces

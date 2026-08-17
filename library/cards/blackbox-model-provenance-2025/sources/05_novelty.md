@@ -1,0 +1,1 @@
+Canaries modify training, and held-out dataset inference depends on secrecy. This work changes the evidence source to randomized training order, with an exact false-positive guarantee under its shuffle assumption and a text-only extension. The contribution is a provenance test with a formal null.

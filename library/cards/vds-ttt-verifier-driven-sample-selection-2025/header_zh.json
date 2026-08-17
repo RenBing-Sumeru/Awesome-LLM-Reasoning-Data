@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "VDS-TTT 对每个输入生成多个候选答案，使用学习到的 verifier 分数和阈值选取一个伪标签，再对 LoRA 参数执行顺序式测试时微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Mohammad Mahdi Moradi；Hossam Amer；Sudhir Mudur；Weiwei Zhang；Yang Liu；Walid Ahmed",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

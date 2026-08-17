@@ -1,0 +1,1 @@
+This is a taxonomy and empirical synthesis. For each primary method, record whether reasoning remains explicit, what is compressed or latent, the input allocation rule, model and decoding conditions, task score, token count, memory, and latency. A comparison is meaningful only when quality and resource measurements use the same task conditions.

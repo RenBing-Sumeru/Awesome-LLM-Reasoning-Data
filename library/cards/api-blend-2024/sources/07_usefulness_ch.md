@@ -1,0 +1,1 @@
+它适合作为把 intent/slot 和 dialogue 数据转成 API-sequence 训练样本的 recipe。记录时应保留 source dataset id、原始 utterance、转换方法、使用的 prompt model、候选 API 列表、候选参数列表、gold API sequence、参数值、split、metric 和过滤决定。对 atlas 的价值是把 API detection、slot filling、sequence ordering 分开，并显示模型看到多来源 blend 后 OOD 评测会如何变化。

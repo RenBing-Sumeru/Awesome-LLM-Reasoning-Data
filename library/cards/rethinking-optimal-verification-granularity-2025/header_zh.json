@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "VG-Search 通过控制验证器的调用频率，在前缀剪枝收益与推理开销之间做权衡。（论文未披露的发布、回放与审计细节保留为未知。）",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Hao Mark Chen、Guanxi Lu、Yasuyuki Okoshi、Zhiwen Mo、Masato Motomura、Hongxiang Fan",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

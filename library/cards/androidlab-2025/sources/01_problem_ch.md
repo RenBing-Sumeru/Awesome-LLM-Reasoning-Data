@@ -1,0 +1,7 @@
+AndroidLab 的 canonical source 是 ACL 2025 camera-ready 论文（ACL Anthology `2025.acl-long.107`，第 2144–2166 页，DOI `10.18653/v1/2025.acl-long.107`）；辅助核验来源为 arXiv:2410.24024v2，以及在 commit `4bfe108cf3883b710e8e5c6fba288161c830e504` 检查的官方代码仓库。该工作同时处理两个相互关联的问题：为 instruction tuning 收集可执行的 Android demonstration，以及在可复现 app 状态和明确成功条件下评测 autonomous agent。
+
+训练数据对象是一条由人工执行的 Android trace。公开描述显示，它由 task/system instruction、interaction history、XML observation 或带标记的 screenshot、analysis/reasoning 和一次 function-call action 构成；标注过程还会在每次操作前采集 screenshot 与 page XML。官方 SFT 材料以 LlamaFactory 格式描述，共 726 条 trace、6,208 个 XML-mode step 和 6,053 个 SoM-mode step。由于未对 `android-lab-train.zip` 做 record-level 检查，archive 的确切字段、episode ID、asset、provenance column 与 file hash 仍未核验。
+
+评测对象与训练对象不同：它包含 138 个任务之一、一个预打包 AVD 状态、一条 instruction、agent framework/model、state-action-observation history 以及 task-specific completion output。该套件由 93 个 operation task 和 45 个 query task 组成，覆盖 9 个 app；operation 输出是 state sequence，query 输出还包含 free-form answer。
+
+该论文属于 `environment_agent_trajectory_data`，因为 Android state、action、observation、reset 和 terminal judgment 共同定义了 supervision 与 evaluation。它并未证明 autonomous 与 manual collection 期间产生的 10.5K 条 trace / 94.3K 个 step 全部发布或进入 SFT，也不能与 AndroidWorld、AndroidControl 或 V-Droid 混同。官方论文、代码、evaluator 与 artifact pointer 足以支撑完整双语 Card，但 corpus bytes、license、split、failure retention 和 immutable replay 仍只达到 partial 状态。

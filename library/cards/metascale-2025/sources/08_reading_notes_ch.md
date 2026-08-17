@@ -1,0 +1,5 @@
+- 应把 Section 2.2–2.4 作为轨迹规范阅读：top-8 WildChat retrieval、UCB arm selection、reward update 与 LLM-mediated evolution 是不同事件。
+- 主匹配实验每个 benchmark 使用 64 个随机样本和 128 次尝试；精确条目 ID 与 seed 未发布。
+- MetaScale decoding temperature、UCB β、evolution interval (k) 与精确初始池大小仍为 unknown。
+- 应对照 Table 2 与 Table 3：Arena-Hard 排名会随 style control 改变，style-controlled confidence interval 也相互重叠。
+- Benchmark 提升评估的是 selector，不能证明隐藏的 meta-thought、reward log 或 retrieved example 是高质量可复用数据。

@@ -1,0 +1,3 @@
+The data fit web-agent PRMs, action-level RL, and reward benchmarking. They are unsuitable for non-replayable or privacy-sensitive environments.
+
+Practical reuse requires the task context and process state expected by the paper. Users can reuse page observations, same-state actions, checklists, process preferences, and terminal outcomes or reconstruct local data under the same protocol, producing a step-level training set, trajectory ranking, or process reward model. Success should be checked with step F1, first-error localization, preference accuracy, or verifier replay rather than final-task score alone. Direct transfer is inappropriate when feedback sources, replay conditions, licensing, or error distributions differ materially.

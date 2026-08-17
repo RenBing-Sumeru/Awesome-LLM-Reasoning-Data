@@ -1,0 +1,1 @@
+Prior work commonly treats a single output or score as sufficient evidence. This work changes the target to a controlled reliability property and tests the decision rule itself. Its novelty is the audit contract, not merely another benchmark score.

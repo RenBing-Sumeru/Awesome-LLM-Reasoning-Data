@@ -1,0 +1,1 @@
+Thakur, A. S., Choudhary, K., Ramayapally, V. S., Vaidyanathan, S., Hupkes, D.（2025）。Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges。GEM² 2025，404--430 页。https://doi.org/10.18653/v1/2025.gem-1.33。

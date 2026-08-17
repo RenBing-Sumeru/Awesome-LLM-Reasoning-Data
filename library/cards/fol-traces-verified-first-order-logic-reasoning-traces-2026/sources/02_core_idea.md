@@ -1,0 +1,3 @@
+FOL-Traces records premises, queries, truth or satisfiability labels, solver states, inference operations, and complexity metadata. Controlled generators create formulas, and deterministic solvers produce proof or counterexample traces and difficulty measures.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around formulas, answers, solver states, derivation operations, and complexity metadata, making the verifier, judge, environment, or execution source traceable for formal-logic generalization and difficulty curricula. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

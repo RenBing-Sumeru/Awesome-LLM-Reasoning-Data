@@ -1,0 +1,19 @@
+{
+  "title": "EffiBench-X: A Multi-Language Benchmark for Measuring Efficiency of LLM-Generated Code",
+  "candidate_links": {
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/6b8198f777d1ba87a8250368db2ea16a-Abstract-Datasets_and_Benchmarks_Track.html",
+    "data": "https://huggingface.co/datasets/EffiBench/effibench-x",
+    "code": "https://github.com/EffiBench/EffiBench-X",
+    "project": "https://github.com/EffiBench/EffiBench-X"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T13:01:55Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "EffiBench-X 收录623道六语言题目，每题配100个测试并测量运行效率，是同时检查代码正确性与性能的benchmark",
+    "updated_at": "2026-07-19T13:01:55Z"
+  }
+}

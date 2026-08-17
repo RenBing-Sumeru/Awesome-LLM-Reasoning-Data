@@ -1,0 +1,1 @@
+KDS requires white-box embeddings and fine-tuning, and its pairwise kernel is quadratic in sample count. Its controlled labels establish sensitivity to overlap, not the actual provenance of a model's pretraining corpus. Results depend on model, layer, fine-tuning recipe and temporal/domain shift; the score cannot identify which source or individual item leaked.

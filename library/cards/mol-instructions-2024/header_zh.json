@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Mol-Instructions 用统一指令结构组织超过 200 万条分子、蛋白质和生物医学文本目标。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "训练一个模型处理分子、蛋白质和生物医学文本指令",
+  "confidence_ch": "高",
+  "authors_ch": "Yin Fang, Xiaozhuan Liang, Ningyu Zhang, Kangwei Liu, Rui Huang, Zhuo Chen, Xiaohui Fan, Huajun Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

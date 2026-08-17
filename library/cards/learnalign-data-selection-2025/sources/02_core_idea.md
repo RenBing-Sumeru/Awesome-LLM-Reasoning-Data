@@ -1,0 +1,5 @@
+For prompt i, eight rollouts from the warmed-up policy produce a binary success rate p_i. Learnability is V_i=p_i(1-p_i): it is zero when all rollouts fail or succeed and reaches its maximum at p=0.5. LearnAlign normalizes the prompt's GRPO gradient direction, multiplies it by V_i, and applies a random projection to obtain a tractable vector.
+
+The pairwise score S_ij is V_i V_j times cosine similarity between the two projected gradients. LearnAlign constructs the n-by-n score matrix, includes each prompt's self-pair, averages every row, sorts those means, and selects the top N. The intended interpretation is that p(1-p) measures current learning potential while gradient alignment measures representativeness under the RLVR update objective.
+
+The feedback contract remains sparse binary final-answer correctness against ground truth; no intermediate reasoning is checked. The paper's theoretical appendix derives proportionality between policy-gradient magnitude and p(1-p) only under a simplified one-correct-action, one-incorrect-action setting. The metric is therefore a policy-conditioned selection signal, not a general proof of prompt quality.

@@ -1,0 +1,1 @@
+核心贡献有两层：定义 compositionality gap，即模型能答对必要子问题却答错组合问题的比例；再提出 self-ask，让模型先显式提出并回答 follow-up question，再给最终答案。评测对象是组合问题、短参考答案，以及用于 gap 分析的相关子问题。反馈契约是最终答案正确性，以及测 gap 时的子问题正确性；短答案评分可能需要 exact-match 辅助或人工判断。最近对比对象是直接 prompting、chain-of-thought prompting，以及接入搜索引擎的 self-ask。

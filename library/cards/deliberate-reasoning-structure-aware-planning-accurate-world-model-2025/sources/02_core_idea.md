@@ -1,0 +1,3 @@
+SWAP_v2 contains problems, initial states, goals, subgoal structures, actions, transitions, verification results, and final trajectories. Search or teacher models generate plans, while simulation or answer checks validate transitions.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around initial states, subgoal structures, actions, state transitions, and verification results, making the verifier, judge, environment, or execution source traceable for state prediction, search, and deliberate reasoning. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

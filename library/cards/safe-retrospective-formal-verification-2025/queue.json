@@ -1,0 +1,19 @@
+{
+  "title": "Safe: Enhancing Mathematical Reasoning in Large Language Models via Retrospective Step-aware Formal Verification",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.594/",
+    "data": "https://huggingface.co/datasets/liuchengwu/FormalStep",
+    "code": "https://github.com/liuchengwucn/Safe",
+    "project": "https://github.com/liuchengwucn/Safe"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:40:56Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以Lean可验证步骤提供高可信监督，标签质量极强",
+    "updated_at": "2026-07-16T12:40:56Z"
+  }
+}

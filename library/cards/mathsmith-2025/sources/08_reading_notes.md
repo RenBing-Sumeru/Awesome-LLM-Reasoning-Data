@@ -1,0 +1,6 @@
+- Keep the three data layers separate: concept summaries, problem/rationale records, and teacher solution records.
+- MathSmith-HC uses structure, trace-length complexity, and same-teacher consistency; MathSmith-Hard omits consistency.
+- Available Ratio means correctly formatted and teacher-solvable with a valid answer, not independently verified correctness.
+- The paper reports K=5 teacher samples, while the current reward code defaults to three; reproduce the paper from a pinned manifest, not defaults alone.
+- `sampled_concept` supports concept-level tracing, but it is not a stable source-page or cross-release identifier.
+- Treat long CoT as a proxy to audit, not a quality label; inspect ambiguity, guessed answers, and equivalent-answer parsing. Before training, pin revisions, reconcile row counts, hash files, check duplicates and semantic overlap, and review upstream rights.

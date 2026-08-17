@@ -1,0 +1,6 @@
+- Use Findings of ACL 2026 as the official venue/year; the 2025 entry ID reflects the first arXiv submission.
+- Read Sections 4.3–4.4 together: eight-rollout p(1-p), projected GRPO gradients, the n-by-n matrix, row means, and top-N selection define one policy-relative data object.
+- Compare Tables 1, 2, 5, and 13 before claiming full-data parity; results depend on subset size, model, metric, and training-step budget.
+- Include all 8h55m of selection in efficiency accounting; gradient estimation, not the 12.7-second matrix multiplication, is the largest reported component.
+- Preserve as unresolved the answer checker, projection dimension/seed, selected and rejected rows, DAPO 17K/14K naming, training seeds, decontamination, and license lineage.
+- Treat proposed Nyström/cascade scaling and future code release as unverified future work, not available artifacts.

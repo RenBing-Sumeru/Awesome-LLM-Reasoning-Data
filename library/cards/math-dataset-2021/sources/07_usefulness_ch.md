@@ -1,0 +1,1 @@
+MATH 适合作为 hard math evaluation 和 answer-checking audit 的根 schema。记录中应保留 problem text、subject、difficulty、split、worked solution、boxed answer、answer parser 版本、grader result 和 model output。做 recipe 设计时，它可以用于监督解答、verifier 评测、PRM rollout 和 hard negative analysis，但必须标清使用的是 problem-only record、solution text，还是 answer labels。

@@ -1,0 +1,3 @@
+Reasoning models increasingly expose discrete effort settings, but choosing “low” or “high” effort per query is often a heuristic. Always using high effort wastes latency on easy questions; choosing low effort too aggressively can silently raise the error rate. A useful deployment policy needs to specify not only an average cost objective but also what probability of failure it is prepared to accept.
+
+CATS asks how to select a reasoning-effort level while controlling the chance of an incorrect answer below a user-specified tolerance. The decision surface is a prompt paired with predicted success at each effort level, and the intended output is the cheapest eligible level rather than simply the level that appears most confident.

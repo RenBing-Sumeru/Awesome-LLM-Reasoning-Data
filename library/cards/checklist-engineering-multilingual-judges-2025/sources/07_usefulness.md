@@ -1,0 +1,3 @@
+A multilingual evaluation team can use CE-Judge’s code and prompts to turn an instruction and candidate response into visible criteria, feedback, and a score or winner; success is agreement with held-out human judgments. For translation or chat comparisons, build both directional checklists for every candidate and inspect the criteria when a decision is disputed. It is unsuitable when text cannot be safely sent to a translation API or when the target language/task lacks a credible human reference set for calibration.
+
+A practical report should retain the source text, translation, two checklists, final rationale, and human agreement by language so errors can be localized.

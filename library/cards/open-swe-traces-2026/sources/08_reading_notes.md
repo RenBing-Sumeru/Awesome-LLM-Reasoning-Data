@@ -1,0 +1,5 @@
+- Keep four denominators separate: 20,000 unique PR tasks, 207,489 released trajectories, 160,731 known outcomes, and 65,244 resolved trajectories.
+- Read `resolved` exactly as documented: `1` solved, `0` unresolved, and `-1` unavailable; the reported 40.6% excludes `-1`.
+- Compare thinking/non-thinking teachers and OpenHands/SWE-agent configurations as four source modes, not train/validation/test splits.
+- Inspect runtime, patch, tool-schema, test-editing, and git-history filters, then note that their code and rejection ledger are not public.
+- Pin HF revision `9c0e4579a4ee0effa3e5f7a552494a045f29377d` or a later audited revision and recover PR/commit/container lineage before replay or evaluation.

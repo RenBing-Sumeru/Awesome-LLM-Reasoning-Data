@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "IF-RewardBench 用专家核验的约束标签构建偏好图，测试评判模型对指令遵循回答的列表排序能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bosi Wen、Yilin Niu、Cunxiang Wang、Xiaoying Ling、Ying Zhang、Pei Ke、Hongning Wang、Minlie Huang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

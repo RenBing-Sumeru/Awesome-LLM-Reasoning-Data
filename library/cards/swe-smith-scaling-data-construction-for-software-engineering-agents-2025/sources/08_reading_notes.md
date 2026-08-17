@@ -1,0 +1,4 @@
+- Read `patch` as the injected regression diff, not as the repair answer; pair it with `FAIL_TO_PASS`, `PASS_TO_PASS`, the issue, and the named image.
+- Keep the paper snapshot separate from mutable releases: 50,137 task rows in the paper, 5,016 successful SFT rows at trajectory revision `470d6f...`, and larger later trajectory views with explicit outcomes.
+- The replay-critical missing items are immutable image digests, exact source commits and parsers, harness and SWE-agent revisions, and a complete map from attempts to released rows.
+- The most important audit distinction is executable validity versus semantic quality: tests support the former, while issue realism, leakage, licensing, and broader contamination remain separate checks.

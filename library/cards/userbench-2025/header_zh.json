@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "UserBench 发布 3,122 个唯一旅行规划任务及 GPT-4o/规则混合验证的 Gym 交互环境，用于评测偏好澄清、搜索与推荐；论文运行轨迹未发布，计数、judge 编号、随机性与 best_id 并列标签仍需固定版本审计。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "用户偏好澄清型智能体评测环境与任务发布",
+  "best_for_ch": "研究环境智能体数据、用户模拟器、混合 verifier、偏好澄清评测与发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Cheng Qian, Zuxin Liu, Akshara Prabhakar, Zhiwei Liu, Jianguo Zhang, Haolin Chen, Heng Ji, Weiran Yao, Shelby Heinecke, Silvio Savarese, Caiming Xiong, Huan Wang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

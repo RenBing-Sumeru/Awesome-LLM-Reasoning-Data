@@ -1,0 +1,2 @@
+
+官方 e3-math-easy 与 e3-math-medhard Parquet 分别包含 12,853 和 2,500 条记录。每条保存 chat prompt、rule ground truth、solution 字段、标量 reward、聚合的 length/correct_length/incorrect_length 及元数据；它们是提示级静态记录，不是当前策略生成的分组轨迹。训练采用 verL GRPO 与 vLLM，温度 0.6、学习率 1e-6、KL loss 系数 0.001，输出预算先为 8192、后为 16384 token。自定义 scorer 要求存在 think 结束标签，抽取最后一个 boxed answer，并通过 MathD 风格或 SymPy 等价判断返回 1 或 0。第二阶段每个提示采样 32 条回答并保留负 advantage 学习；第一阶段 rollout 数与部分 8k 超参数在论文正文、Table 5 和发布脚本之间存在冲突。

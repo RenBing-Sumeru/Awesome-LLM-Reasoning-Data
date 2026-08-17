@@ -1,0 +1,118 @@
+id: gaia-general-ai-assistants-2023
+title: 'GAIA: a benchmark for General AI Assistants'
+year: 2023
+venue: ICLR 2024 poster / arXiv
+authors:
+- Grégoire Mialon
+- Clémentine Fourrier
+- Craig Swift
+- Thomas Wolf
+- Yann LeCun
+- Thomas Scialom
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- general-ai-assistants
+- interactive-agent-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2311.12983
+  arxiv: https://arxiv.org/abs/2311.12983
+  data: https://huggingface.co/datasets/gaia-benchmark/GAIA
+  project: https://huggingface.co/gaia-benchmark
+  huggingface: https://huggingface.co/gaia-benchmark
+  doi: https://doi.org/10.48550/arXiv.2311.12983
+  code: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: human-authored general assistant tasks; exact curation details may remain unknown.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: 466 real-world assistant questions with optional files or multimodal inputs, level metadata, final answers,
+    and hidden-answer leaderboard policy
+  process_fields:
+  - question
+  - optional file or multimodal input
+  - level metadata
+  - final answer
+  - split or hidden-answer policy
+  environment_or_substrate: general-assistant tasks requiring reasoning, browsing, tool use, files, and multimodal handling
+  verifier_or_reward: final-answer correctness under the official answer set, answer normalization, and leaderboard hidden-answer
+    policy
+  terminal_predicate: submitted final answer matches the official expected answer after benchmark normalization
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: human-authored general assistant tasks; exact curation details may remain unknown.
+  filtering_rule: pin public dev versus hidden test policy, answer normalizer, allowed tools, file access, and leaderboard
+    date
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: interactive_agent_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2311.12983;
+    https://arxiv.org/pdf/2311.12983; https://openreview.net/forum?id=fibxvahvs3; https://huggingface.co/gaia-benchmark'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2311.12983'
+  known_failure_modes:
+  - tool access and browsing settings can dominate scores; answer normalization may create false positives or negatives
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies 466 questions, human 92%, GPT-4 with plugins 15%, and 300 retained answers for leaderboard use. Released
+    object is final-answer benchmark data, not state-action trajectories.
+inclusion_reason: 'high: multi-tool assistant benchmark with scaffold and held-out-policy audit risk.'
+related: []
+tags:
+- benchmark
+- interactive_agent_benchmark
+- general-ai-assistants
+why_it_matters: It is a compact hidden-answer benchmark for general assistant orchestration across tools, web, files, and
+  multimodal context.
+status: verified
+needs:
+- 'needs_metadata: verify official ICLR/OpenReview page, license, and HF split terms'
+- 'needs_audit: inspect final-answer scorer and tool/browsing budget policy'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: GAIA evaluates general assistants with 466 hidden-answer real-world questions requiring reasoning, tools,
+  browsing, files, and multimodal handling.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: OpenReview ICLR record lists five authors and omits Craig Swift; arXiv/PDF lists six authors and maps Craig Swift
+    to AutoGPT.
+category_ids:
+- benchmarks_evaluation_surfaces
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 21
+  primary_category_id: environment_agent_trajectory_data
+  decision: update_existing_card

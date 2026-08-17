@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "万级代码生成与问答批评记录，结合测试与人工维度标签，可训练代码推理的批评和修正反馈器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码批评能力评测与细粒度反馈基准论文",
+  "best_for_ch": "需要评估或训练代码生成、代码问答场景下的错误定位、解释与修正反馈器的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Alexander Zhang, Marcus Dong, Jiaheng Liu, Wei Zhang, Yejie Wang, Jian Yang, Ge Zhang, Tianyu Liu, Zhongyuan Peng, Yingshui Tan, Yuanxing Zhang, Zhexu Wang, Weixun Wang, Yancheng He, Ken Deng, Wangchunshu Zhou, Wenhao Huang, Zhaoxiang Zhang",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-15T18:46:09Z"
+}

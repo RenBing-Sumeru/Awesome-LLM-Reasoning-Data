@@ -1,0 +1,155 @@
+id: speculative-search-2025
+title: Accelerating Large Language Model Reasoning via Speculative Search
+year: 2025
+venue: ICML 2025
+authors:
+- Zhihai Wang
+- Jie Wang
+- Jilai Pan
+- Xilin Xia
+- Huiling Zhen
+- Mingxuan Yuan
+- Jianye Hao
+- Feng Wu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.mlr.press/v267/wang25di.html
+  arxiv: https://arxiv.org/abs/2505.02865
+  code: https://github.com/MIRALab-USTC/LLMReasoning-SpecSearch
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v267/wang25di.html
+  openreview: https://openreview.net/forum?id=oq0t5BXilT
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/wang25di.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The main evaluation randomly selects 100 problems each from MATH and GSM8K; exact item IDs and a split manifest
+    are not released.
+  trace_author: At every tree expansion, a small draft model generates candidate thoughts; candidates below the dynamic PRM
+    threshold are replaced by full thoughts regenerated through lossless token-level speculative decoding with the large model.
+  answer_format: A search tree whose nodes are variable-length reasoning thoughts, with a PRM score and accept-or-correct
+    decision for each drafted node, followed by the host search algorithm's selected reasoning path and final answer.
+  process_fields:
+  - prompt
+  - reasoning_prefix
+  - search_step
+  - candidate_thought
+  - draft_model_identity
+  - process_reward_score
+  - rejection_threshold
+  - accept_or_correct
+  - corrected_thought
+  - search_state
+  - selected_path
+  - final_answer
+  environment_or_substrate: Inference-time tree search; SpecSearch is a node-expansion module demonstrated with beam search
+    and MCTS rather than a training environment.
+  verifier_or_reward: MATH-psa is the main thought evaluator, with Math-Shepherd tested separately. A step-wise threshold
+    estimates the large model's expected PRM score from corrected large-model thoughts and accepted small-model thoughts,
+    using an exponential moving average.
+  terminal_predicate: Termination and final-path choice belong to the host beam-search or MCTS procedure; raw per-instance
+    stopping events and complete search logs are not released.
+recipe_metadata:
+  base_model: Quantized Qwen2.5-72B-Instruct with Qwen2.5-7B-Instruct, and quantized Llama3-70B-Instruct with Llama3-8B-Instruct;
+    smaller Qwen2.5 draft models are studied in sensitivity experiments.
+  teacher: unknown
+  generator: The small model drafts N thoughts in parallel; the PRM scores them; thoughts below the current threshold are
+    discarded and regenerated in full by a large-model token-level speculative decoder; the combined set is returned to the
+    host search.
+  filtering_rule: Accept a small-model thought when its PRM score is at least the current step-wise threshold; otherwise replace
+    it with a large-model-distribution thought. Update the next threshold with EMA weight 0.9 from scored corrected thoughts,
+    augmented in practice with accepted small-model thoughts as approximate upper-bound observations.
+  sampling_protocol: The default reported setup uses tree width 6, tree depth 50, beam size 2, MATH-psa, beam search, and
+    EMA weight 0.9. Main tests use 100 randomly selected MATH problems and 100 randomly selected GSM8K problems. Decoding
+    temperature, random seeds, exact item IDs, and initial threshold are unknown from the paper.
+  rollout_count: Six candidate thoughts are drafted per expansion in the default width; the total number of expansions and
+    generated thoughts per problem is task- and search-dependent and undisclosed.
+  temperature: unknown
+  inference_budget: Default tree width 6, maximum depth 50, and beam size 2; the MCTS experiment uses width 6, depth 50, and
+    4 iterations.
+  optimizer_or_scaffold: Inference-only speculative node-expansion scaffold; the paper does not train a policy, PRM, or reusable
+    trace dataset.
+audit:
+  source_mixture: Main results use MATH-100 and GSM8K-100 random subsets. Appendices also evaluate full GSM8K, AIME, OlympiadBench
+    OE-TO-maths-zh-CEE, and HumanEval; exact sampled-item manifests are unavailable.
+  split: The paper says 100 problems are randomly selected from each of MATH and GSM8K, but does not publish their IDs, seed,
+    or split manifest.
+  decontamination: unknown
+  license: No repository license or separate license for generated search traces was verified; the code repository has no
+    published release.
+  lineage: Benchmark prompt -> small-model thought drafts -> PRM scores -> comparison with an EMA threshold estimated from
+    prior accepted or corrected thoughts -> accept or large-model correction -> host-search state update -> selected path
+    and final answer. Per-instance lineage logs are not released.
+  known_failure_modes:
+  - The paper's GSM8K case study shows an incorrect fourth thought receiving a PRM score of 0.8916015625, after which later
+    reasoning remains wrong.
+  - The theoretical result concerns expected PRM-defined thought quality, not semantic correctness, factual faithfulness,
+    or equality of the final-answer distribution.
+  - The guarantee is conditional on normally distributed independent thought scores, a large model with no lower mean score
+    than the small model, descending large-model quality, bounded variance, and a sufficiently high threshold.
+  - Empirical accuracy is not uniformly unchanged: for example, Qwen beam search on GSM8K-100 reports 96% for SpecSearch versus
+      97% for autoregressive large-model search, and Math-Shepherd evaluation reports 94% versus 96%.
+  - Threshold behavior depends on PRM calibration, accepted-thought contamination of the estimator, the initial threshold,
+    search depth, and model pair.
+  - No official raw tree traces, exact prompt manifest, corrected-versus-accepted decision log, generated-data license, or
+    pinned artifact release supports independent trace audit or downstream reuse.
+  citation_status: verified
+  confidence: high
+  notes: Official PMLR and arXiv records, the PMLR-linked OpenReview record, the full paper and appendices, and the PMLR-linked
+    author repository were checked. Artifact verification covers source code, not a trace dataset, model release, or complete
+    experiment log.
+inclusion_reason: 'SpecSearch defines an auditable test-time trace-selection interface: a PRM scores small-model thoughts,
+  a history-based threshold accepts or rejects them, and rejected thoughts are replaced by large-model-distribution corrections
+  before tree search continues.'
+related: []
+tags:
+- speculative-search
+- test-time-search
+- process-reward-model
+- thought-generation
+- trace-selection
+- inference-acceleration
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: An ICML 2025 tree-search accelerator that accepts PRM-scored small-model thoughts above a history-based
+  threshold and replaces rejected thoughts through lossless large-model speculative decoding.
+why_it_matters: For rollout and test-time trace curation, it exposes the thought, score, dynamic threshold, accept-or-correct
+  decision, and search state that should be retained, while the official release stops at code rather than auditable trace
+  data.
+card: null
+needs:
+- needs_trace_release
+- needs_prompt_manifest
+- needs_process_reward_artifact
+- needs_license
+- needs_selection_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official PMLR, arXiv, OpenReview, and the author repository are verified. Artifact verification refers to code only;
+    no raw trace or data release was established.

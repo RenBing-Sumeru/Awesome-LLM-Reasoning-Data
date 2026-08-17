@@ -1,0 +1,124 @@
+id: mmmu-2023
+title: 'MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI'
+year: 2023
+venue: CVPR 2024 Oral / arXiv
+authors:
+- Xiang Yue
+- Yuansheng Ni
+- Kai Zhang
+- Tianyu Zheng
+- Ruoqi Liu
+- Ge Zhang
+- Samuel Stevens
+- Dongfu Jiang
+- Weiming Ren
+- Yuxuan Sun
+- Cong Wei
+- Botao Yu
+- Ruibin Yuan
+- Renliang Sun
+- Ming Yin
+- Boyuan Zheng
+- Zhenzhu Yang
+- Yibo Liu
+- Wenhao Huang
+- Huan Sun
+- Yu Su
+- Wenhu Chen
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-academic-reasoning
+- multimodal-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2311.16502
+  arxiv: https://arxiv.org/abs/2311.16502
+  doi: https://doi.org/10.48550/arXiv.2311.16502
+  code: https://github.com/MMMU-Benchmark/MMMU
+  data: https://huggingface.co/datasets/MMMU/MMMU
+  project: https://mmmu-benchmark.github.io/
+  huggingface: https://huggingface.co/datasets/MMMU/MMMU
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2024/html/Yue_MMMU_A_Massive_Multi-discipline_Multimodal_Understanding_and_Reasoning_Benchmark_for_CVPR_2024_paper.html
+  bibtex: null
+data_object:
+  prompt_source: official authors construct or curate college-level multimodal subject questions; exact artifact, split, and
+    license details require source review.
+  trace_author: Official benchmark authors or task curators; exact annotator/generator details require source review.
+  answer_format: benchmark records expose college-level multimodal subject questions, along with prompt/task metadata and
+    an evaluation target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: college-level multimodal subject questions
+  verifier_or_reward: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+  terminal_predicate: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate college-level multimodal subject questions; exact artifact, split, and license
+    details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: multimodal_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://openaccess.thecvf.com/content/CVPR2024/papers/Yue_MMMU_A_Massive_Multi-discipline_Multimodal_Understanding_and_Reasoning_Benchmark_for_CVPR_2024_paper.pdf;
+    https://mmmu-benchmark.github.io/; https://huggingface.co/datasets/MMMU/MMMU'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2311.16502'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official CVF PDF verifies numeric affiliation mapping and CVPR 2024 status. Artifact/license/split/scoring details
+    remain review targets.
+inclusion_reason: Broad domain reasoning with heterogeneous images.
+related: []
+tags:
+- benchmark
+- multimodal_reasoning_benchmark
+- multimodal-academic-reasoning
+why_it_matters: Broad domain reasoning with heterogeneous images.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MMMU exposes college-level multimodal subject questions as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official CVF PDF verifies numeric affiliation mapping and CVPR 2024 status.
+category_ids:
+- benchmarks_evaluation_surfaces

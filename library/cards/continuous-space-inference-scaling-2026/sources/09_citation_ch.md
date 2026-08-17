@@ -1,0 +1,1 @@
+Wang, Minghan、Thuy-Trang Vu、Ehsan Shareghi 与 Gholamreza Haffari。2026。《Towards Inference-time Scaling for Continuous Space Reasoning》。计算语言学协会发现论文集：ACL 2026，第 26842–26856 页。官方论文：https://aclanthology.org/2026.findings-acl.1338/。官方代码：https://github.com/yuriak/LatentITS。

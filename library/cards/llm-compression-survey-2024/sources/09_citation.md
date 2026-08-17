@@ -1,0 +1,1 @@
+Xunyu Zhu, Jian Li, Yong Liu, Can Ma, and Weiping Wang. 2024. A Survey on Model Compression for Large Language Models. Transactions of the Association for Computational Linguistics, 12:1556–1577. https://aclanthology.org/2024.tacl-1.85/

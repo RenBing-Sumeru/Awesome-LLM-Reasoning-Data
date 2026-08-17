@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Skolkovo Institute of Science and Technology",
+    "HSE University",
+    "Artificial Intelligence Research Institute",
+    "Sberbank"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2606.09450",
+    "https://arxiv.org/pdf/2606.09450"
+  ],
+  "verification_note": "Official PDF superscripts verify Skoltech, HSE, AIRI, and Sberbank affiliations. The contact email for Andrey Galichin uses mtuci.ru, but MTUCI is not listed as a numbered affiliation, so it is not treated as verified institution metadata."
+}

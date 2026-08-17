@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T12:41:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态推理ref1167",
+    "updated_at": "2026-07-16T12:41:00Z"
+  }
+}

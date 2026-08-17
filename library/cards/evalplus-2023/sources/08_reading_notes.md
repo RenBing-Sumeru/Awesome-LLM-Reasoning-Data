@@ -1,0 +1,1 @@
+Read the failure examples before the leaderboard. Keep base pass rate, plus pass rate, and true program correctness separate. EvalPlus is about verifier strength; it should not be mistaken for a new distribution of programming tasks.

@@ -1,0 +1,1 @@
+Do not equate CoAT with generic chain-of-thought. Here the important object is action-grounded process annotation with explicit screen, action, and result fields. Read the sample JSON format before reading the result tables. Keep three labels separate: CoAT annotation quality, next-action prediction accuracy, and live GUI task success.

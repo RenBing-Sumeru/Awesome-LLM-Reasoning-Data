@@ -1,0 +1,120 @@
+id: screenspot-pro-2025
+title: 'ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer Use'
+year: 2025
+venue: arXiv preprint / public project leaderboard
+authors:
+- Kaixin Li
+- Ziyang Meng
+- Hongzhan Lin
+- Ziyang Luo
+- Yuchen Tian
+- Jing Ma
+- Zhiyong Huang
+- Tat-Seng Chua
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- gui-grounding
+- desktop-agents
+- professional-apps
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.07981
+  arxiv: https://arxiv.org/abs/2504.07981
+  doi: https://doi.org/10.48550/arXiv.2504.07981
+  code: https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding
+  data: https://huggingface.co/datasets/likaixin/ScreenSpot-Pro
+  project: https://gui-agent.github.io/grounding-leaderboard/
+  huggingface: https://huggingface.co/datasets/likaixin/ScreenSpot-Pro
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official ScreenSpot-Pro paper, project, repository, and HF dataset
+  trace_author: ScreenSpot-Pro authors and GUI grounding annotations
+  answer_format: screenshots, target instructions, professional app contexts, bounding/click targets, and leaderboard records
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: professional high-resolution GUI grounding tasks
+  verifier_or_reward: GUI grounding localization metrics and project evaluator
+  terminal_predicate: GUI grounding localization metrics and project evaluator
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: professional GUI target annotations
+  generator: ScreenSpot-Pro data curation and grounding benchmark
+  filtering_rule: pin HF revision, leaderboard version, and author-order variants
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2504.07981; https://gui-agent.github.io/grounding-leaderboard/; https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding;
+    https://huggingface.co/datasets/likaixin/ScreenSpot-Pro
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: GitHub API reports MIT license for the code repository; Hugging Face dataset redistribution terms still need reuse-time
+    verification.
+  lineage: 'Primary lead: https://arxiv.org/abs/2504.07981'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: venue status, Hugging Face dataset license, dataset revision, and leaderboard version need audit.
+inclusion_reason: it gives high-resolution professional GUI targets for computer-use agents
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- gui-grounding
+- desktop-agents
+- professional-apps
+one_line: ScreenSpot-Pro evaluates GUI grounding in professional high-resolution computer-use screens.
+why_it_matters: it gives high-resolution professional GUI targets for computer-use agents
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ScreenSpot-Pro evaluates GUI grounding in professional high-resolution computer-use screens.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, GitHub, and HF dataset verify authors, institutions, and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 82
+  primary_category_id: environment_agent_trajectory_data

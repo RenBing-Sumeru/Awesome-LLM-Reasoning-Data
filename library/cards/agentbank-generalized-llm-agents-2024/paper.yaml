@@ -1,0 +1,107 @@
+id: agentbank-generalized-llm-agents-2024
+title: 'AGENTBANK: Towards Generalized LLM Agents via Fine-Tuning on 50000+ Interaction Trajectories'
+year: 2024
+venue: Findings of EMNLP 2024
+authors:
+- Yifan Song
+- Weimin Xiong
+- Xiutian Zhao
+- Dawei Zhu
+- Wenhao Wu
+- Ke Wang
+- Cheng Li
+- Wei Peng
+- Sujian Li
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- agent-reasoning
+- interactive-environments
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2024.findings-emnlp.116.pdf
+  arxiv: https://arxiv.org/abs/2410.07706
+  code: null
+  data: https://huggingface.co/datasets/Solaris99/AgentBank
+  project: null
+  huggingface: https://huggingface.co/datasets/Solaris99/AgentBank
+  doi: https://doi.org/10.18653/v1/2024.findings-emnlp.116
+  venue: https://aclanthology.org/2024.findings-emnlp.116/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-emnlp.116/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Sixteen tasks spanning five agent skill dimensions.
+  trace_author: AgentBank annotation pipeline and agent-environment interaction collection.
+  answer_format: Interaction trajectories with stepwise chain-of-thought rationale and actions.
+  process_fields:
+  - instruction
+  - thought
+  - action
+  - observation
+  - trajectory
+  environment_or_substrate: Diverse agent environments and tasks.
+  verifier_or_reward: Task-specific environment outcomes and the paper's trajectory annotation pipeline.
+  terminal_predicate: Task completion in each source environment.
+recipe_metadata:
+  base_model: The trajectory and Samoyed training configurations documented in the EMNLP paper.
+  teacher: The AgentBank annotation pipeline.
+  generator: Scalable LLM-assisted collection of agent-environment interactions.
+  filtering_rule: Construct trajectories with mitigated difficulty bias as described in the paper.
+  sampling_protocol: Collect diverse tasks across five skill dimensions and sixteen task settings.
+  inference_budget: Pin the official Hugging Face dataset revision for reproduction.
+  optimizer_or_scaffold: Trajectory fine-tuning of LLMs to produce the Samoyed agents.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Over 50,000 agent-environment interaction trajectories from sixteen tasks.
+  split: Use and pin the exact official AgentBank dataset revision.
+  decontamination: Not fully documented as a target-benchmark decontamination procedure.
+  license: Refer to the official dataset page and the underlying task environments.
+  lineage: Findings of EMNLP 2024 paper and the paper-linked AgentBank release.
+  known_failure_modes:
+  - Task and environment distributions may not cover unseen agent settings.
+  - Step rationales are generated annotations and can be imperfect.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the Findings of EMNLP 2024 paper, which links the official AgentBank data release and documents
+    50K+ trajectories with per-action CoT rationales.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: AGENTBANK releases 50K+ cross-task interaction trajectories with chain-of-thought rationale for every action.
+why_it_matters: It is a widely reusable large-scale baseline for generalist agent trajectory tuning across multiple skill
+  dimensions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the Findings of EMNLP 2024 paper, which links the official AgentBank data release and documents
+    50K+ trajectories with per-action CoT rationales.
+category_ids:
+- process_trace_supervision_data

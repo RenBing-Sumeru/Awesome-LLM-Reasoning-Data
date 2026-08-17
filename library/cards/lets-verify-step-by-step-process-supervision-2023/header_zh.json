@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 PRM800K：为 MATH 解题轨迹提供 80 万条人工步骤反馈标签，并实证过程监督优于只监督最终答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lightman et al.",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

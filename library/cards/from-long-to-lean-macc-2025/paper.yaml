@@ -1,0 +1,219 @@
+id: from-long-to-lean-macc-2025
+title: 'From Long to Lean: Performance-aware and Adaptive Chain-of-Thought Compression via Multi-round Refinement'
+year: 2025
+venue: EMNLP 2025
+authors:
+- JianZhi Yan
+- Le Liu
+- Youcheng Pan
+- Shiwei Chen
+- Zike Yuan
+- Yang Xiang
+- Buzhou Tang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical_reasoning
+training_use:
+- sft
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.618/
+  arxiv: https://arxiv.org/abs/2509.22144
+  code: https://github.com/Leon221220/MACC
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.618
+  venue: https://aclanthology.org/2025.emnlp-main.618/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.618/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.618.bib
+data_object:
+  prompt_source: The method defines task inputs from D_train and experiments on mathematical reasoning with GSM8K, MATH/MATH-500,
+    and AIME24 surfaces. The exact construction subset, upstream revisions, source-row IDs, prompt count, and train/evaluation
+    mapping are not disclosed, so canonical benchmark sizes must not be treated as generated-corpus counts.
+  trace_author: Formally, the target model S generates the original CoT r0. An API compressor sequentially rewrites the preceding
+    trace; GPT-4o-mini is the main compressor, with GPT-3.5-turbo, GPT-4.1-nano, GPT-4.1-mini, GPT-4o, and DeepSeek-V3 in
+    compressor studies. Operational lineage is ambiguous because Tables 9-11 report compressor-dependent original lengths
+    repeated across target models.
+  answer_format: Initial generation requests step-by-step reasoning and a boxed final answer. Every compression prompt contains
+    the question, prior thought process, and final answer, and asks only for a simplified thought process. The SFT target
+    combines the selected compressed CoT with the answer after `Q [EOS] <compress> [EOS]`; for reasoning models, reasoning
+    and answer processes are separated, compressed, and concatenated.
+  process_fields:
+  - task input x / question
+  - original CoT r0
+  - final answer a exposed to the compressor
+  - round index i (conceptual; no released field)
+  - compressed revision ri
+  - tokenized length and compression rate CR_i
+  - length-rebound stopping decision
+  - selected CoT r* and selected round (conceptual; selected index is not released)
+  - configuration-level PPL, original/compressor accuracy, compressed length, and fine-tuned accuracy
+  environment_or_substrate: 'Offline sequential API rewriting: one initial trace is passed through one compressor call per
+    round, each revision conditions the next, and the loop stops on a token-length rebound or the undisclosed maximum T. The
+    selected traces and an undisclosed fraction of original traces are then LoRA fine-tuned with LLaMA-Factory. This is not
+    an interactive environment and the public repository contains no runnable substrate.'
+  verifier_or_reward: 'The per-example MACC selector is token-count monotonicity only: if ri is longer than r(i-1), the pseudocode
+    breaks and retains r(i-1). No per-round answer checker, semantic-equivalence judge, perplexity threshold, or process verifier
+    appears in Algorithm 1. Benchmark answer accuracy and compressed-CoT perplexity are reported for evaluation/prediction,
+    not as the stopping gate.'
+  terminal_predicate: Terminate on the first strict token-length increase and retain the preceding revision; equality does
+    not stop the published pseudocode. If no rebound occurs, retain the last non-increasing revision before maximum round
+    T. T, tokenization revision, per-example stop logs, and error handling are unknown, and Appendix Table 6 visually marks
+    a longer rebound round as selected, conflicting with the stated rule.
+recipe_metadata:
+  base_model: Reported target models are LLaMA-3.1-8B-Instruct, Qwen2.5-3B-Instruct, Qwen2.5-7B-Instruct, DeepSeek-R1-Distill-Qwen-1.5B,
+    and DeepSeek-R1-Distill-Qwen-7B. Exact checkpoint/tokenizer revisions and the target-specific construction manifests are
+    unknown.
+  teacher: The paper explicitly distinguishes MACC from knowledge distillation and says it compresses self-generated CoTs
+    without introducing new knowledge. External API compressors nevertheless author the revision text, and each compressor
+    sees the final answer label.
+  generator: The formal generator is target model S for r0 followed by a selected API compressor for r1...rT. GPT-4o-mini
+    is the main compressor; GPT-3.5-turbo, GPT-4.1-nano, GPT-4.1-mini, GPT-4o, and DeepSeek-V3 appear in ablations. The method/table
+    ambiguity over original-trace authorship remains unresolved.
+  filtering_rule: Retain the last revision before a strict token-length rebound; no correctness or semantic-fidelity filter
+    is specified. A Performance Estimation Hypothesis uses configuration features such as compression rate, PPL, original
+    lengths, and target/compressor training accuracy to predict downstream accuracy and length for compressor choice, but
+    it is not the per-example selector.
+  sampling_protocol: Generate one original trace, then one answer-conditioned rewrite from the preceding trace per round with
+    a fixed compression prompt. Figure 3 spans rounds 2-10, Tables 9-11 span rounds 2-5, the GSM8K example spans rounds 0-5,
+    and the MATH example spans rounds 0-8. Temperature, top-p/top-k, seeds, API snapshots, retries, timeouts, and per-call
+    token caps are unknown.
+  rollout_count: One initial trace plus one sequential revision per round. Maximum T and total generated/retained/rejected
+    record counts are unknown; no best-of-N candidate multiplicity within a round is reported.
+  temperature: unknown
+  inference_budget: The construction maximum-round budget T and per-example API/token budgets are unknown. Appendix A.5 reports
+    a maximum inference token setting of 16,384 and max training sequence length 16,384, but does not establish either as
+    the API compression-call budget. Per-example calls, tokens, latency, cost, rebounds, and rejected-round budgets are not
+    released.
+  optimizer_or_scaffold: LLaMA-Factory LoRA fine-tuning with rank 8, alpha 16, learning rate 2e-5, batch size 32, 3 epochs,
+    max sequence length 16,384, bfloat16, AdamW, and cosine warmup; the paper reports about 1.5 hours for a 7B model. Hardware,
+    seed, LoRA target modules, warmup fraction, LLaMA-Factory revision, and the original/selected trace mixture ratio are
+    unknown.
+audit:
+  source_mixture: Mathematical task inputs -> target-model original CoTs -> answer-conditioned sequential API rewrites ->
+    token-length-rebound selection -> selected compressed CoTs plus an undisclosed fraction of original CoTs -> SFT. Exact
+    task counts, source revisions, mixture weights, generated-round counts, and retention counts are unknown.
+  split: No generated-corpus split or record manifest is released. Experiments name GSM8K, MATH-500, and AIME24, with MATH-500/AIME24
+    labeled OOD in the DeepSeek table, but exact construction/evaluation row mappings are not disclosed. The performance estimator
+    uses 5-fold cross-validation with an 80/20 split over n=20 configuration rows per target model; this is not a corpus split
+    and grouping neighboring rounds by compressor is not reported.
+  decontamination: No prompt deduplication, train-test overlap audit, semantic decontamination, answer-template leakage audit,
+    or family-level isolation procedure is disclosed.
+  license: unknown for implementation and generated data. The ACL paper is CC BY 4.0 under ACL Anthology policy. The official
+    repository README displays an MIT badge that links to `LICENSE`, but current and historical trees contain no LICENSE file;
+    no corpus exists to carry a data license.
+  lineage: The paper defines x -> r0 -> r1...ri -> r*, then r* plus answer for SFT, but Algorithm 1 outputs only conceptual
+    pairs (x, r*). The official repository at commit 2046df78636495de86e9c015820295b16f1f63fd contains only README.md. There
+    are no original traces, intermediate/rebound/rejected rounds, selected indices, token counts, PPL/correctness labels,
+    source IDs, hashes, checkpoints, prompts-as-files, configurations, or final training records.
+  known_failure_modes:
+  - The final answer is supplied to every compression call, so the generated rationale is label-conditioned; it cannot be
+    treated as an answer-blind inference trace, and apparent correctness retention may exploit the exposed answer.
+  - Token-length rebound is used as a proxy for maximal valid compression, but length decrease does not certify logical validity,
+    faithfulness, or answer correctness; no per-round correctness or semantic gate is specified.
+  - Appendix Table 6 marks GPT-4o-mini round 8 in blue even though it is visibly longer than rounds 4-7, while Algorithm 1
+    says a rebound selects the preceding round. Missing per-round token counts and code prevent reconciliation.
+  - Table 5 marks selected rounds despite later candidates that are textually identical or nearly identical; equality does
+    not stop the pseudocode, so the appendix labels cannot be reconstructed without tokenization and stop logs.
+  - Formal Sec. 3.2 says target model S authors r0, but Tables 9-11 show compressor-dependent original lengths repeated across
+    target models and Figure 8 names “Compressor Origin Length,” leaving operational trace lineage ambiguous.
+  - Tables 9-11 expose only configuration aggregates. Per-example original, revised, selected, and rejected traces; token/PPL/correctness/select-round
+    fields; and verifier provenance are not released.
+  - The performance estimator has only n=20 points per target model and the 5-fold/80-20 procedure does not disclose grouping
+    by compressor or related round, creating an unresolved leakage/optimism risk among closely related configurations.
+  - Fixed round sweeps use 2-10, 2-5, 0-5, or 0-8 depending on the figure/table, while the adaptive algorithm uses an unspecified
+    T. Budget-normalized comparison and exact per-example preprocessing cost cannot be reconstructed.
+  - External API compressor versions, decoding settings, seeds, retries, and tokenization are unpinned, so model drift can
+    change revisions, stop points, and the selected corpus.
+  - The official repository claims to provide an implementation but contains only README.md; the referenced requirements and
+    license files, code, data, configs, prompts, model artifacts, and evaluation harness are absent.
+  - Generated-corpus count, machine-readable schema, split, lineage, license, and decontamination are all undisclosed, blocking
+    data-level reuse.
+  - Benchmark aggregate accuracy and latency do not validate the quality, correctness, provenance, or licensing of individual
+    compressed traces.
+  citation_status: verified
+  confidence: high
+  notes: Verified 2026-07-25 against the complete 17-page ACL paper and appendices, visual renderings of Tables 5-6, ACL metadata/BibTeX/DOI,
+    arXiv v1, and the full Git history/current tree of the author-designated repository. Repository HEAD was 2046df78636495de86e9c015820295b16f1f63fd.
+    Citation and the empty release boundary are verified; no runnable implementation or generated corpus is available.
+inclusion_reason: 'MACC is a direct long2short trace-search recipe: each original rationale becomes a sequential path of answer-conditioned
+  revisions, a token-length rule selects one stopping point, and the selected full trace becomes SFT data. It is especially
+  relevant to this track because original, intermediate, selected, rebound, and rejected records plus per-example budgets
+  are all hidden behind aggregate tables.'
+related:
+- token-squeeze-2025
+- self-training-elicits-concise-reasoning-2025
+- long-short-cot-mixture-sft-2025
+tags:
+- macc
+- long2short
+- reasoning-compression
+- multi-round-refinement
+- token-elasticity
+- length-based-selection
+- answer-conditioned-compression
+- compressed-cot-sft
+- external-api-compressor
+- selected-rejected-traces
+- corpus-not-released
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: MACC sequentially rewrites each target-model math rationale with an answer-conditioned API compressor, stops
+  on a token-length rebound, and SFTs the selected concise trace; the official repository currently releases neither the implementation
+  nor the generated corpus.
+why_it_matters: It makes long-to-short reasoning a trace-selection problem whose result depends on round budget, API model,
+  answer exposure, tokenization, and stop rule, while the missing original/rejected revisions and an appendix selection inconsistency
+  show why aggregate accuracy cannot substitute for auditable record-level lineage.
+card: null
+needs:
+- 'needs_code: release the MACC implementation, requirements, pinned API/model/tokenizer revisions, prompts, configs, seeds,
+  retries, training, and evaluation harness'
+- 'needs_corpus: release original CoTs, every compressed revision, rebound/rejected rounds, selected traces, and final SFT
+  records at an immutable revision'
+- 'needs_schema: document stable IDs, source IDs, round index, parent round, text, final answer exposure, token count, compression
+  rate, PPL, correctness/verifier result, stop reason, and selected-round fields'
+- 'needs_counts: report source prompt count, generated revisions, rebound/rejected rounds, selected records, original-trace
+  mixture count, exclusions, retries, and final retained examples by model/dataset'
+- 'needs_splits: publish construction/train/validation/test manifests and exact GSM8K/MATH/MATH-500/AIME24 row mappings'
+- 'needs_license: add actual code and derived-data license files and document upstream benchmark/API output redistribution
+  rights'
+- 'needs_lineage: resolve whether r0 is target- or compressor-authored operationally and publish prompt-to-r0-to-rounds-to-selection
+  mappings with hashes'
+- 'needs_selection_audit: reconcile Table 5-6 blue labels with Algorithm 1, publish per-round tokenization and stop logs,
+  and report semantic/correctness errors of the length-only selector'
+- 'needs_leakage_audit: quantify effects of giving the final answer to the compressor and use grouped CV for related compressor/round
+  configurations in the performance estimator'
+- 'needs_budget_logs: publish per-example maximum T, API calls, input/output tokens, latency, cost, failures, retries, and
+  inference/training budgets separately'
+- 'needs_decontamination: document deduplication, train-test overlap, semantic contamination, and answer-template leakage
+  checks'
+- 'card_recommendation: create a construction/audit Card centered on answer-conditioned revision chains, length-only selection,
+  the Table 6 inconsistency, and the unreleased full corpus'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: ACL proceedings metadata/PDF/BibTeX/DOI, arXiv v1, the author-designated GitHub repository and full history at commit
+    2046df78636495de86e9c015820295b16f1f63fd, appendix prompts, selected-round renderings, aggregate fields, fine-tuning settings,
+    and the absence of code/data/license artifacts were checked. Status is partial because the repository is README-only and
+    generated records, schema, counts, splits, selection logs, budgets, license, and decontamination are absent.

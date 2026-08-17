@@ -1,0 +1,231 @@
+id: leannavigator-synthetic-theorems-2025
+title: Generating Millions Of Lean Theorems With Proofs By Exploring State Transition Graphs
+year: 2025
+venue: arXiv preprint
+authors:
+- David S. Yin
+- Jing Gao
+source_role:
+- data_release
+- construction_recipe
+- model_report
+- infrastructure
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- formal_mathematics
+- automated_theorem_proving
+- lean4
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.04772
+  paper_pdf: https://arxiv.org/pdf/2503.04772
+  arxiv: https://arxiv.org/abs/2503.04772
+  code: https://github.com/davidsyin/leannavigator
+  code_snapshot: https://github.com/davidsyin/leannavigator/tree/5c06f1477728ab5e349a0792d68461b1b2961ef9
+  data: https://zenodo.org/records/13989482
+  dataset_card: https://zenodo.org/records/13989482
+  data_doi: https://doi.org/10.5281/zenodo.13989482
+  project: null
+  huggingface: null
+  models: null
+  release: null
+  doi: https://doi.org/10.48550/arXiv.2503.04772
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2503.04772
+data_object:
+  record_type: 'The public dataset is a top-level JSON array of two-string rows: serialized Lean proof-state text paired with
+    a proof/tactic string. Generation internally constructs tactic-labelled state-transition graphs, but graph objects and
+    transition logs are not part of the public archive.'
+  prompt_source: Existing Mathlib4 theorems provide seed states. Every reachable Lean state is interpreted as a theorem whose
+    hypotheses are the local context and whose goal is the target proposition. The exact seed-theorem manifest is not published.
+  trace_author: LeanNavigator retrieves normalized tactic templates using a contrastively trained GPTNeo-350M state/template
+    embedder and FAISS, fills variable and hypothesis placeholders, and explores candidate transitions through LeanDojo. The
+    shortest accepted path to ProofFinished becomes the target proof.
+  context_state:
+  - serialized local hypotheses
+  - serialized Lean goal
+  - generation-time predecessor states and tactic edges
+  - generation-time distance to ProofFinished
+  - source Mathlib4 theorem and file, not retained in the public row
+  answer_format: One Lean tactic or a newline-separated tactic sequence proving the supplied state. The official training
+    notebook truncates targets at the first newline before model training.
+  process_fields:
+  - Lean proof-state text
+  - proof or tactic text
+  - tactic-labelled transition edge at generation time
+  - ProofFinished reachability at generation time
+  - shortest-path tactic count at generation time
+  - rejected or error transitions, not released
+  - source theorem, graph ID, and predecessor IDs, not released
+  observation: LeanDojo returns a successor proof state, ProofFinished, or an error after a tactic is applied. Only successful
+    transitions contribute to the graph; the public pairs do not include these execution observations.
+  verifier_output: 'Per-attempt Lean environment outcome: error, a changed proof state, or ProofFinished. The released dataset
+    does not expose verifier transcripts, environment hashes, or replay results.'
+  environment_or_substrate: Lean 4 plus Mathlib4 accessed through LeanDojo. Official notebooks use Mathlib4 commit 27c6744e1c0e25d676be5eb252cd4b6d30c6acc7
+    and report its toolchain as leanprover/lean4:v4.9.0-rc2, but the paper and Zenodo record do not bind the released archive
+    to that environment.
+  verifier_or_reward: No learned reward model or human judge is used. Lean programmatically accepts or rejects each proposed
+    tactic transition, and ProofFinished is the terminal success signal.
+  terminal_predicate: A state is provable when ProofFinished is reachable. The dataset retains only states whose selected
+    proof is at most eight tactics long and chooses the fewest-tactic path, breaking ties by total tactic-string length.
+  provenance: Mathlib4 seed theorem -> initial Lean state -> normalized tactic-template retrieval -> variable/hypothesis instantiation
+    -> LeanDojo transition execution -> reachable state-transition graph -> ProofFinished reachability within eight tactics
+    -> shortest proof selection -> flattened state/proof JSON row.
+  release_surface: Zenodo publishes one 204,343,176-byte tar.xz archive containing a single 2,690,343,143-byte leannavigator_dataset.json.
+    GitHub publishes a 10,000-row sample and notebooks. Full graphs, source lineage, failures, rejected tactics, replay logs,
+    model checkpoints, and a paper-run manifest are not released.
+recipe_metadata:
+  base_model: GPTNeo-350M is the tactic-template retrieval embedder. The paper reports downstream flan-t5-base (350M) and
+    flan-t5-small (80M) proof generators.
+  teacher: Existing correct Mathlib4 tactic applications supervise contrastive state/template retrieval; no external LLM teacher
+    is disclosed.
+  generator: LeanNavigator retrieves 100 nearest tactic templates from a FAISS index, fills placeholders with in-scope variables
+    and hypotheses, and limits generated candidate tactics to 200 per state.
+  prompt_task_source: Seed theorems are drawn from Mathlib4. Exact theorem membership, file manifest, seed count, and inclusion/exclusion
+    rules are unknown.
+  filtering_rule: Discard tactics that Lean reports as errors. From the resulting graph, retain states with a path of at most
+    eight tactics to ProofFinished and select the shortest path, breaking equal-length ties by total tactic-string length.
+  sampling_protocol: The state/template embedder is trained contrastively with a theorem state, a correct tactic, and a randomly
+    selected incorrect tactic. Generation uses nearest-neighbor template retrieval and breadth-first state exploration; no
+    stochastic rollout distribution is disclosed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Per seed theorem, search stops after 30 minutes or 200,000 state transitions. At most 200 instantiated
+    tactics are tried per visited state. Dataset generation uses 24 Ray processes for up to 24 concurrent theorems and reportedly
+    took 28 days over Mathlib4.
+  search_or_scaffold: Priority-queue breadth-first state exploration over a Lean transition graph with FAISS-retrieved tactic
+    templates and LeanDojo execution.
+  selection_threshold: ProofFinished must be reachable within at most eight tactics; no released novelty, difficulty, duplicate,
+    semantic-diversity, or contamination threshold is reported.
+  tokenization: The paper reports BPE tokenization for downstream flan-t5 training and a rounded corpus size of one billion
+    tokens. The exact tokenizer revision and token-counting script are unknown.
+  optimizer_or_scaffold: The paper discloses supervised training of flan-t5-base and flan-t5-small but not a complete optimizer
+    recipe. The released notebook instead assigns google/byt5-base with AdamW at 5e-5, so it is not treated as an exact reproduction
+    of the reported flan-t5 experiments.
+audit:
+  source_mixture: The construction source is Mathlib4 plus Lean's tactic environment and Mathlib-derived positive tactic examples
+    for retrieval training. Exact source theorem membership, file weights, duplicate rates, and per-domain composition are
+    unknown.
+  split: Zenodo releases one flattened JSON with no train/validation/test labels or original-theorem/graph grouping. The official
+    training notebook performs an unseeded random 90/10 row split after shuffling, which can place states derived from the
+    same source theorem or graph on both sides.
+  decontamination: unknown
+  benchmark_overlap: The paper states that Mathlib4 training means the model never saw MIL or MiniF2F contents, but no item-level
+    source manifest, exact or semantic overlap analysis, ancestor-graph grouping, or base-model pretraining audit is released.
+    The assertion is not upgraded to a reproducible decontamination contract.
+  license: Zenodo designates the dataset CC BY 4.0. The GitHub repository has no root license; a LICENSE under the vendored
+    miniF2F-lean4 subtree does not license the surrounding code. The dataset card does not provide item-level upstream source
+    or derivative-rights analysis.
+  lineage: High-level generation lineage is documented, but public rows omit source theorem/file, graph ID, predecessor IDs,
+    accepted/rejected edges, template provenance, generation timestamp, environment hash, and verification log.
+  release_version: Zenodo record 13989482 was published 2024-10-25, before the paper's 2025-02-16 arXiv submission. Code was
+    inspected at default-branch commit 5c06f1477728ab5e349a0792d68461b1b2961ef9 dated 2025-04-04. No tag, GitHub release,
+    or paper-to-Zenodo/code manifest fixes one reproducible snapshot.
+  release_count: The paper rounds the scale to 4.7M theorems and 1B tokens. The official training notebook prints 4,702,639
+    loaded examples, but its local input is not checksum-bound to the Zenodo archive, whose record does not state a row count.
+  verification_replay: Generation-time Lean acceptance is reported, but the release contains no item-level verifier output
+    or bulk recompilation report and was not replayed in this audit. Compatibility outside the original environment is unknown.
+  known_failure_modes:
+  - Public data flattens generation-time state-transition graphs into state/proof pairs, preventing graph reconstruction and
+    ancestor-aware splitting.
+  - The release omits source theorem IDs, file paths, graph IDs, accepted and rejected transitions, tactic-template provenance,
+    and verification logs.
+  - The Mathlib commit and Lean 4.9.0-rc2 appear in notebooks but are not bound to the Zenodo file by a release manifest or
+    checksum.
+  - Random row-level splitting can leak closely related states or proofs from the same original theorem or graph across train
+    and validation partitions.
+  - No exact or semantic benchmark-overlap report supports the paper's "never seen" assertion as a strong decontamination
+    guarantee.
+  - Intermediate proof states are valid formal goals under their local hypotheses but should not be described as independently
+    novel or human-interest mathematical theorems.
+  - The at-most-eight-tactic and shortest-proof rules exclude longer-horizon proofs and bias the release toward short tactic
+    paths.
+  - Template retrieval and instantiation favor tactics already represented in Mathlib4's proof ecology; coverage and diversity
+    audits are absent.
+  - The paper gives rounded scale values without the tokenizer revision, counting script, exact generation yield, rejection
+    rate, duplicate analysis, or per-seed statistics.
+  - The code is notebook-oriented, has a minimal root README, no root license, no dependency lock or requirements file, no
+    root Lean toolchain, and no tagged paper release.
+  - The released training notebook uses byt5-base while the paper reports flan-t5 models, and it does not expose a fixed random
+    seed or a run manifest tying it to Table 3.
+  - The dataset release predates the paper and has not been versioned with a paper-aligned schema, count, environment, split,
+    or provenance card.
+  citation_status: verified
+  confidence: medium
+  notes: Verified against the complete 16-page arXiv PDF, arXiv metadata, Zenodo record/API and archive header/decompressed
+    prefix, the official 10,000-row sample, and key notebooks at commit 5c06f1477728ab5e349a0792d68461b1b2961ef9. Artifact
+    existence and sample/archive structure are verified; full-file MD5 recomputation and bulk Lean proof replay were not completed.
+  remaining_unknowns:
+  - Exact seed theorem and source-file manifest
+  - Release-bound Mathlib4, Lean, LeanDojo, Python, and dependency versions
+  - Full-archive independently counted rows and recomputed checksum
+  - Graph IDs, predecessor/edge records, rejected transitions, failures, and generation yields
+  - Train/validation/test and ancestor-graph split manifests
+  - Exact and semantic overlap or contamination audit
+  - GPTNeo retrieval-training split, optimizer, checkpoint, seed, and negative-sampling details
+  - Exact flan-t5 optimizer, schedule, steps, tokenizer revision, checkpoints, and random seeds
+  - Code license and item-level upstream or derivative rights documentation
+inclusion_reason: LeanNavigator is an important open formal-data construction recipe because it turns Lean-verified paths
+  through Mathlib4 proof-state graphs into millions of state/proof supervision pairs and publishes both data and code, while
+  clearly exposing the audit gap between a rich verified generation graph and a flattened, weakly versioned release.
+related: []
+tags:
+- leannavigator
+- lean4
+- formal-mathematics
+- automated-theorem-proving
+- state-transition-graph
+- tactic-retrieval
+- synthetic-proof-data
+- leandojo
+- open-release
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line: LeanNavigator explores Lean proof-state graphs with retrieved tactic templates and environment verification, releasing
+  about 4.7M flattened state/proof pairs rather than the underlying graphs and audit logs.
+one_line_summary: LeanNavigator turns Lean-verified paths through Mathlib4 state-transition graphs into about 4.7M state/proof
+  pairs, but the public archive flattens away graph ancestry, failures, verifier logs, and a release-bound environment.
+why_it_matters: It demonstrates how a proof assistant can scale synthetic reasoning supervision through executable state exploration,
+  while showing why environment pins, graph-aware splits, source lineage, and retained rejection records are essential for
+  safe reuse and contamination auditing.
+card: null
+needs:
+- 'needs_manifest: bind Zenodo file, exact row/token counts, code commit, Mathlib4 commit, Lean/LeanDojo versions, and checksums
+  in one release manifest'
+- 'needs_schema: document the full JSON schema, encoding, tactic-sequence delimiter, field semantics, and provenance fields'
+- 'needs_graph_release: publish graph IDs, source theorem/file IDs, predecessor and edge records, accepted/rejected tactics,
+  failures, and ProofFinished paths'
+- 'needs_split: provide source-theorem/graph-grouped train, validation, and test manifests with fixed seeds'
+- 'needs_audit: report exact and semantic overlap, duplicates, graph-family leakage, generation yields, rejection rates, and
+  bulk replay results'
+- 'needs_reproducibility: package scripts/configs with locked Python, Lean, Mathlib4, LeanDojo, FAISS, model, and hardware
+  dependencies'
+- 'needs_model_recipe: reconcile flan-t5 versus byt5 code, and publish tokenizer, optimizer, schedule, seeds, checkpoints,
+  and run-to-table mapping'
+- 'needs_license: add a root code license and clarify upstream source and derived-data rights'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official paper, code, sample data, Zenodo metadata, and archive structure were inspected. Full archive checksum verification
+    and Lean replay remain outstanding; the public release is not a graph or a complete paper-run manifest.

@@ -1,0 +1,5 @@
+CE-Judge first abstracts the instruction and response into concepts, then creates two complementary English checklists: response-conditioned criteria from instruction concepts and instruction-conditioned criteria from response concepts. Their union guides a final judgment on the original text. For pairwise tasks, each candidate receives this checklist construction before comparison. The framework uses Qwen2.5-7B-Instruct without fine-tuning; official code is linked by the paper and no new dataset is introduced.
+
+Checklist generation is deliberately judgment-neutral; only the last stage converts criteria into a verdict, which preserves an inspectable separation between criterion construction and scoring.
+
+The chosen checklist items, translation, and final rationale can therefore be inspected separately when a multilingual verdict is challenged.\n

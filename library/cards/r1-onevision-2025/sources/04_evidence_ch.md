@@ -1,0 +1,2 @@
+1. **训练策略消融。** 在同一 Qwen2.5-VL-7B 谱系下，base 在 MathVision、MathVerse 和 MathVerse Vision Only 上分别为 25.4、43.6 和 38.2；使用 R1-Onevision 数据做 SFT 后分别变为 26.3、43.4 和 39.7，而 SFT+RL 达到 29.9、46.4 和 40.0（表 4）。这组结果支持 SFT 带来较小的直接收益，也支持组合后训练获得更大增益，但不能把 SFT+RL 的全部差异单独归因于 155K 条示范。
+2. **模型规模迁移。** 在 3B base 上，R1-Onevision 训练把 MathVision 从 21.7 提高到 23.7、MathVerse 从 34.7 提高到 38.6、Vision Only 从 31.2 提高到 35.5（表 6）。两个模型规模上的方向一致，但它们都属于 Qwen2.5-VL 家族并共享同一评测表面。

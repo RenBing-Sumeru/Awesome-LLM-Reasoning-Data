@@ -1,0 +1,107 @@
+id: instructdiff-contrastive-entropy-selection-2026
+title: 'InstructDiff: Domain-Adaptive Data Selection via Contrastive Entropy for Efficient LLM Fine-Tuning'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Junyou Su
+- He Zhu
+- Xiao Luo
+- Liyu Zhang
+- Hong-Yu Zhou
+- Yun Chen
+- Peng Li
+- Yang Liu
+- Guanhua Chen
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- instruction-tuning
+- mathematics
+- medical
+- code
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.486/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.486/
+  code: https://github.com/zhuchichi56/Instruct-diff
+  data: null
+  project: https://github.com/zhuchichi56/Instruct-diff
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.486
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.486/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: NuminaMath, Alpaca, MedCAQA, and BigCode candidate instruction-response pools.
+  trace_author: Existing source datasets; InstructDiff does not create a replacement corpus.
+  answer_format: Instruction-response record with base and calibration-model likelihood and entropy measurements.
+  process_fields:
+  - instruction
+  - response
+  - NLL_difference
+  - contrastive_entropy
+  - selection_iteration
+  environment_or_substrate: Full-parameter SFT evaluated across mathematics, general instructions, medical QA, and code.
+  verifier_or_reward: Downstream benchmark scores and instruction-following preference evaluations.
+  terminal_predicate: Selected subset improves downstream SFT over specified baselines.
+recipe_metadata:
+  base_model: Qwen2.5-7B for mathematics; Llama3-8B for general, medical, and code experiments.
+  teacher: None; a lightly SFT-calibrated copy of the base model supplies the comparison state.
+  generator: Warmup calibration followed by NLL-difference filtering and contrastive-entropy ranking.
+  filtering_rule: Drop bottom and top 10% by NLL difference; rank remaining records by lowest contrastive entropy.
+  sampling_protocol: Typically warm up on 10% and select 10% of the original pool; code uses 20% selection.
+  rollout_count: null
+  temperature: null
+  inference_budget: One or more selection/SFT iterations; two iterations are the reported cost-performance sweet spot.
+  optimizer_or_scaffold: Full-parameter supervised fine-tuning.
+audit:
+  source_mixture: 10K pools in four domains; additional 100K mathematics and 52K general scaling pools.
+  split: Standard downstream benchmark splits named in the ACL paper.
+  decontamination: No dedicated contamination audit claimed; inspect each upstream dataset and benchmark.
+  license: Follow licenses for NuminaMath, Alpaca, MedCAQA, BigCode, and the official code repository.
+  lineage: 'Primary sources: https://aclanthology.org/2026.acl-long.486/; https://github.com/zhuchichi56/Instruct-diff'
+  known_failure_modes:
+  - Tiny warmup subsets cause noisy calibration gaps.
+  - Selections transfer poorly across model families.
+  - Fixed thresholds may not be optimal for new pools.
+  - Mechanism behind opposite entropy regimes is not established.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, method, experiments, limitations, and official code link checked on 2026-07-16.
+inclusion_reason: It explicitly determines which instruction-response records enter SFT by optimizing a model-relative selection
+  criterion.
+related: []
+tags:
+- data-selection
+- contrastive-entropy
+- sft
+- reasoning
+status: verified
+one_line_summary: InstructDiff selects SFT records through calibration-induced NLL and entropy changes, retaining the lowest
+  contrastive-entropy examples.
+reading_priority: essential
+paper_type: Domain-adaptive supervised fine-tuning data-selection study
+best_for: Readers selecting a model-specific SFT subset from mixed instruction or reasoning pools.
+confidence: high
+why_it_matters: It connects each candidate response to a measurable model-state change before it is admitted to SFT.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and the code URL stated in the paper were checked.
+category_ids:
+- training_usage_optimization_objectives

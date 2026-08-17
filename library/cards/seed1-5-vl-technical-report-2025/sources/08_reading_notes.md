@@ -1,0 +1,5 @@
+- Separate the 16B, 3T, and 240B VLM stages; do not collapse them into a precisely released 3.256T-token dataset.
+- The approximately 50k multimodal SFT set is mixed with internal text-only and LongCoT data whose sizes and records are not disclosed.
+- Hybrid PPO gives general prompts reward-model feedback and verifiable prompts task-specific feedback; the reward model sees only the final solution.
+- Four LongCoT iterations recycle verifier-approved RL outputs into later SFT, but trace manifests and checkpoint mappings are unavailable.
+- The official release provides API access and Apache-2.0 sample code/cookbooks, not Seed1.5-VL weights or training data.

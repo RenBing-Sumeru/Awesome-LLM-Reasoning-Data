@@ -1,0 +1,5 @@
+- 先读 Figure 2 与 §3.3-3.6：构造对象是一条从 function graph 到 reference call/output 再到 trajectory 的链，而不是普通 chat transcript。
+- 仔细阅读附录 A 的 negative-hint prompt：Gemini 将 SFT action 与 reference response 比较，并赋予五类错误之一；这是 teacher filter，不是执行落地的证明。
+- Table 1 是关键规模记录：34,000 条正向 SFT 实例和 4,556 个 mDPO 对，且 single-turn、multi-turn、irrelevance 的混合比例不同。
+- 将 Table 4 与 Table 2 一起读：正向 context distillation 与负向 context distillation 均有论文内消融，但没有公开的逐对审计。
+- 将附录 C 读作受限的 BFCL-v3 FSP-overlap 研究，而不是普遍的无污染声明；未发布的环境与 API-version 记录仍是主要审计边界。

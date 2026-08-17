@@ -1,0 +1,6 @@
+- Keep report disclosures, released MIT weights, unreleased training records, and benchmark behavior in four separate ledgers.
+- Read about 400B as unweighted synthetic source tokens and 9.8T as the final training-token budget; no public crosswalk reconciles them.
+- Post-training has three objects: about 8B SFT tokens, 250,297 token-local Pivotal Token Search examples, and 841,842 full-response judge-guided pairs.
+- Pivotal Token Search uses sampled continuation success plus task oracles; GPT-4o judging is a different contract based on accuracy, style, and detail.
+- Fresh AMC results and n-gram filtering do not replace a released semantic contamination and removal ledger.
+- Preserve generator identities, prompts, rollouts, source rights, record counts, selection decisions, and stage lineage as unknown where undisclosed.

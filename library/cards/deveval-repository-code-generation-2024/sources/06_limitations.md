@@ -1,0 +1,3 @@
+Correctness is bounded by the released tests and repository state; passing tests does not prove the generated function is semantically equivalent to the reference implementation. Dependency recall diagnoses whether a model mentions useful project dependencies, but it is not a terminal correctness label.
+
+The release depends on external repositories, downloaded source bundles, dependency data, and a Python environment that can drift. The official repository warns against simultaneous evaluation scripts within one repository because modifications can corrupt results. License and redistribution status for the benchmark data and original repositories is not fully resolved by the paper abstract.

@@ -1,0 +1,1 @@
+Standard RLAIF often asks one judge for an overall preference. RLAIF-V turns answer claims into checkable visual questions before aggregation, and uses open peer models for both feedback and inference-time selection. Its novelty is the decomposition-based open feedback pipeline, not a new ground-truth vision verifier.

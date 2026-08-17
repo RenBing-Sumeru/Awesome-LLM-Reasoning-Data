@@ -1,0 +1,5 @@
+The prior baseline is factual QA evaluation with TriviaQA and Natural Questions, plus truthfulness and factuality work such as TruthfulQA, FreshQA, LongFact, and FActScore. Those references either became easier for frontier models, focus on fast-changing knowledge, decompose long outputs, or use broader factuality contracts.
+
+SimpleQA changes the surface by combining adversarially difficult short questions, single-answer and timelessness constraints, independent trainer verification, supporting URL metadata, and a three-way grader that separates wrong answers from non-attempts. The direction signal is that factuality evaluation should preserve abstention and calibration behavior rather than reporting only correctness.
+
+What is not new: short-answer QA, prompted grading, public benchmark CSVs, and model leaderboard tables. The quality signal is the disciplined narrowing of the task and the explicit label semantics. Before reuse, inspect public-row contamination, CSV checksum, supporting URL availability, grader model, prompt, evaluator commit, F-score interpretation, and whether a wrong-answer penalty is more appropriate for the downstream use case.

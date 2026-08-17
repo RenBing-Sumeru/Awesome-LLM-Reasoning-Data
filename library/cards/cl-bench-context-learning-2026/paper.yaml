@@ -1,0 +1,118 @@
+id: cl-bench-context-learning-2026
+title: 'CL-bench: A Benchmark for Context Learning'
+year: 2026
+venue: arXiv
+authors:
+- Shihan Dou
+- Ming Zhang
+- Zhangyue Yin
+- Chenhao Huang
+- Yujiong Shen
+- Junzhe Wang
+- Jiayi Chen
+- Yuchen Ni
+- Junjie Ye
+- Cheng Zhang
+- Huaibing Xie
+- Jianglu Hu
+- Shaolei Wang
+- Weichao Wang
+- Yanling Xiao
+- Yiting Liu
+- Zenan Xu
+- Zhen Guo
+- Pluto Zhou
+- Tao Gui
+- Zuxuan Wu
+- Xipeng Qiu
+- Qi Zhang
+- Xuanjing Huang
+- Yu-Gang Jiang
+- Di Wang
+- Shunyu Yao
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- cross_domain
+- long_context
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.03587
+  arxiv: https://arxiv.org/abs/2602.03587
+  code: https://github.com/Tencent-Hunyuan/CL-bench
+  data: https://huggingface.co/datasets/tencent/CL-bench
+  project: null
+  huggingface: https://huggingface.co/datasets/tencent/CL-bench
+  doi: https://doi.org/10.48550/arXiv.2602.03587
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert-authored professional contexts
+  trace_author: Models and domain experts
+  answer_format: Context, task, response, rubrics, binary grades
+  process_fields:
+  - context
+  - task
+  - rubrics
+  - grade
+  environment_or_substrate: Context-dependent reasoning
+  verifier_or_reward: Rubric-based judge
+  terminal_predicate: All rubrics for the task are satisfied
+recipe_metadata:
+  base_model: Language models
+  teacher: Experienced domain experts
+  generator: CL-bench construction pipeline
+  filtering_rule: Four context-learning categories
+  sampling_protocol: 500 contexts and 1899 tasks
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: All-rubrics-pass evaluation
+audit:
+  source_mixture: Official arXiv, GitHub, and Hugging Face release
+  split: Consult dataset card
+  decontamination: New task knowledge is placed in the context
+  license: Consult repository
+  lineage: https://huggingface.co/datasets/tencent/CL-bench
+  known_failure_modes:
+  - Rubric coverage can be costly for long answers.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, code, and data checked.
+inclusion_reason: CL-bench exposes expert rubrics for evaluating whether models learn task-specific knowledge from context.
+related: []
+tags:
+- context_learning
+- long_context
+- rubric
+one_line_summary: CL-bench tests context learning through 1,899 expert-rubriced tasks across 500 complex professional contexts.
+why_it_matters: It shifts long-context evaluation from retrieval toward verifiable acquisition and use of new knowledge.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, code, and data checked.
+category_ids:
+- judgment_rubric_domain_expert_data

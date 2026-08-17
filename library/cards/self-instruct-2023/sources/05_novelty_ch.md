@@ -1,0 +1,1 @@
+以往的 instruction tuning 依赖固定的人写任务集，即使回答由模型生成，任务本身也不变。Self-Instruct 把生成对象改成 instruction 分布：模型发明任务、创建实例、执行过滤，再把接受的任务反馈给下一轮生成 prompt。新意是这条带明确任务与实例过滤的闭环合成数据自举，而不是 SFT 或 in-context prompting 本身。它建立了后来 instruction evolution 与回答生成流程继续扩展的可复用谱系。

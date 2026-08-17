@@ -1,0 +1,5 @@
+CoVo's distinguishing move is to turn intermediate path geometry into a self-reward. Final-answer majority voting treats all trajectories ending in one answer as equivalent; a learned judge imports another model's biases; executable verification is unavailable outside checkable domains. CoVo instead asks whether a trajectory's intermediate prefixes consistently point toward its own sampled final answer and how late the preferred answer changes.
+
+The vector form of answer-group aggregation is also consequential: it combines consistency and volatility while reducing the influence of a single high-scoring outlier. Curiosity supplies an exploration term derived from policy transition probabilities rather than from a teacher.
+
+The novelty is therefore a label-free reward construction recipe over multiple on-policy traces. It is not a new ground-truth annotation source, proof checker, or guarantee that consistent paths are correct. The method remains dependent on the current policy's calibration, candidate-answer coverage, segmentation, and answer extraction.

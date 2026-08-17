@@ -1,0 +1,3 @@
+Language models can be strong at natural-language tasks yet struggle with long-horizon planning that needs structured reasoning. This survey asks how they can help construct and refine formal planning specifications so dependable automated planners can be used downstream. It is a Findings ACL 2025 survey of research at the intersection of NLP and automated planning, not a new planner implementation.
+
+The key distinction is between describing a plan in fluent language and providing a formal problem representation that a planner can act on. A project may succeed at the first while failing at the second. Read this survey when deciding whether the main difficulty lies in interpreting a specification, formalizing it, or solving an already formal planning problem.

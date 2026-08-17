@@ -1,0 +1,5 @@
+The paper's dataset evidence is the expert-demonstrated release: 709 episodes, 2,579 steps, 29 mobile applications, a balanced Chinese/English split, five task dimensions, and three dependency levels. The official repository and HF card expose a filtered release with 708 episodes and 2,572 steps, so reported numbers must be tied to version.
+
+The benchmark evidence comes from deterministic step-level evaluation. In the paper's main table, Gemini 3 Pro reaches about 63.6 EM and 33.4 SR, while Qwen3-Omni leads the open-source models at about 32.3 EM and 5.1 SR. The low episode SR despite much higher type accuracy shows that exact parameter grounding and multi-step consistency remain hard.
+
+Ablations support the benchmark design. Removing audio/video hurts AV-Critical tasks most, while AV-Present tasks change little; adding irrelevant audio/video can even degrade some models. The evidence boundary is offline teacher forcing: it isolates perception-to-action prediction but does not test recovery after self-induced environment errors.

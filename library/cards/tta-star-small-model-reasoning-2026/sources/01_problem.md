@@ -1,0 +1,3 @@
+Small language models are attractive for low-memory, deployable systems, but they often fail on multi-step mathematical reasoning. Existing test-time scaling can add computation through multiple samples or external process reward models, yet those choices either consume a large inference budget or require another trained component that is difficult to deploy alongside a small model.
+
+This paper asks whether a small model can improve its own reasoning through structured search alone. It treats partial derivations as nodes in a tree and asks which node deserves the next expansion, critique, or refinement call. The intended gain comes from directing a limited test-time budget toward promising partial solutions rather than repeatedly sampling unrelated full answers.

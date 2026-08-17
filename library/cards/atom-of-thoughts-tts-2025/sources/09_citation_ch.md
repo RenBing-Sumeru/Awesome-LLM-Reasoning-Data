@@ -1,0 +1,1 @@
+Teng, Fengwei、Quan Shi、Zhaoyang Yu、Jiayi Zhang、Yuyu Luo、Chenglin Wu 和 Zhijiang Guo。2025。《用于马尔可夫大语言模型测试时扩展的思维原子》。第 38 卷《神经信息处理系统进展》（NeurIPS 2025）。论文：https://arxiv.org/abs/2502.12018。代码：https://github.com/qixucen/atom。

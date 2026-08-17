@@ -1,0 +1,9 @@
+- Numerical agreement is checked against a model-generated intended answer. Invalid premises, wrong intended answers shared by the student, lucky guesses, or flawed intermediate reasoning can all pass.
+- Difficulty is policy-relative. A valid problem outside Gemma-2-9B’s competence can receive zero quality, while a familiar or answer-leaking problem can appear easy and be removed.
+- The paper’s Gemini-2.5-flash probe finds harder accepted pairs more likely invalid. Dynamic working sets can recursively propagate such high-scoring invalid parents and reward-hack the proxy.
+- The attempted perturbative validity signal does not separate valid and invalid parents: both groups show a 0.03 mean child-parent score difference and roughly 28% zero-score children in the appendix experiment.
+- Most children have solve rate zero. Sixteen student generations per child therefore produce roughly 5M verification solutions for a 320K archive with only about 80K retained questions on average.
+- Pairing every successful rollout with a retained question oversamples easier accepted problems. Removing 75% of easy traces has mixed effects, so tuple multiplicity remains a design choice.
+- Diversity is bounded by Gemma-2-9B-it labels, the 100 most frequent seed skills, and at most three skills per question. Coverage can reflect classifier vocabulary or errors rather than semantic diversity.
+- No official code, generated archive, working-set history, selected tuple IDs, checkpoint, decoding settings, seeds, deduplication report, decontamination ledger, or generated-data license was confirmed.
+- The paper license is CC BY 4.0, but this does not establish terms for an unreleased MATH-derived corpus or implementation.

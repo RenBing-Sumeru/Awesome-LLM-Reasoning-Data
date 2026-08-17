@@ -1,0 +1,1 @@
+Use ReDis when examples expose a recoverable latent rule and the training pipeline can test a candidate rule against demonstrations. Keep teacher generation, consistency filtering, SFT, and preference alignment as separate ablations; do not treat a high agreement score as ground-truth correctness outside the task contract.

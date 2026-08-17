@@ -1,0 +1,1 @@
+1. Position: Bayesian audit for autograder bias. 2. Lever: joint target/bias GLM. 3. Artifact: software package; institution data is not publicly confirmed. 4. Evidence: simulations support recovery under assumptions. 5. Reuse: disclose covariates and validate corrections.

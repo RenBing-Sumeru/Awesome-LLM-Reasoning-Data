@@ -1,0 +1,1 @@
+既有基线多是更小、更窄或由单一机构策划的 benchmark suite。BIG-bench 的变化是开放社区贡献任务，并把带可执行评分定义的任务放在统一仓库里。方向信号是 benchmark-as-platform：异构任务定义加通用 harness，用于 scaling 研究。并不新的部分是 prompt 评测、multiple-choice 评分、exact-match 指标和许多单个任务想法。复用前要审计任务 license、作者提供的数据来源、任务重复、scorer 正确性、任务权重和公开数据污染。

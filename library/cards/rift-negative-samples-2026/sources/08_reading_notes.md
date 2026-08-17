@@ -1,0 +1,3 @@
+- Start with the data object and feedback contract: For the reported math buffers, final-answer correctness assigns a positive reward to correct candidates and a negative reward to incorrect candidates; RIFT reweights learning with that signed scalar feedback.
+- Check the stated construction or selection rule: RIFT retains the complete signed-reward buffer; unlike rejection-sampling fine-tuning, it does not discard negative-reward candidates or require explicit preference pairs.
+- Treat unreleased traces, prompt mappings, and other fields marked unknown as audit boundaries rather than implicit availability.

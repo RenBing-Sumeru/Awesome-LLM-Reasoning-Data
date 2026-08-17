@@ -1,0 +1,3 @@
+Parallel reasoning trajectories can improve difficult answers, but independent rollouts often repeat the same mistake or discard useful intermediate discoveries after one attempt. Historical-memory approaches may retain too much noisy information, while verify-refine pipelines may provide feedback without deciding which local findings and global strategies deserve reuse in later iterations.
+
+TMAS asks how test-time computation can be coordinated across agents, trajectories, and refinement rounds. Its target is an iterative system that both exploits verified intermediate progress and deliberately explores strategies not already exhausted, so that more agent calls become a structured search budget rather than a collection of disconnected answers.

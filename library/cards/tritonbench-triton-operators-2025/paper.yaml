@@ -1,0 +1,109 @@
+id: tritonbench-triton-operators-2025
+title: 'TritonBench: Benchmarking Large Language Model Capabilities for Generating Triton Operators'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Jianling Li
+- Shangzhan Li
+- Zhenye Gao
+- Qi Shi
+- Yuxuan Li
+- Zefan Wang
+- Jiacheng Huang
+- Haojie Wang
+- Jianrong Wang
+- Xu Han
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- gpu-programming
+- code-generation
+- triton
+training_use:
+- evaluation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1183/
+  arxiv: https://arxiv.org/abs/2502.14752
+  code: https://github.com/thunlp/TritonBench
+  data: https://github.com/thunlp/TritonBench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1183
+  venue: https://aclanthology.org/2025.findings-acl.1183/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1183/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real-world GitHub Triton operators and PyTorch-interface-aligned operators.
+  trace_author: Repository operator authors and benchmark evaluators.
+  answer_format: Operator specification, generated Triton code, correctness tests, and performance profile.
+  process_fields:
+  - operator
+  - PyTorch interface
+  - Triton implementation
+  - test result
+  - latency
+  - GPU configuration
+  environment_or_substrate: Triton and GPU execution environment.
+  verifier_or_reward: Functional execution checks and GPU performance profiling.
+  terminal_predicate: The generated Triton operator produces correct outputs and meets the benchmark's measured efficiency
+    condition.
+recipe_metadata:
+  base_model: Benchmark evaluates code LLMs rather than releasing a teacher.
+  teacher: Reference operators, execution tests, and profiler.
+  generator: Curation of GitHub and PyTorch-aligned Triton operators.
+  filtering_rule: Report correctness and performance separately; efficiency is measured on deployed GPUs.
+  sampling_protocol: 184 real-world GitHub operators plus PyTorch-interface evaluation channel.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin Triton version, GPU, input shapes, and profiling protocol.
+  optimizer_or_scaffold: GPU execution and profiling based evaluation.
+audit:
+  source_mixture: ACL proceedings, author GitHub repository, and arXiv record.
+  split: Two evaluation channels; repository describes current task organization.
+  decontamination: Public GitHub operators can overlap with model training data.
+  license: Verify repository and upstream operator licenses before redistribution.
+  lineage: https://github.com/thunlp/TritonBench
+  known_failure_modes:
+  - Performance profiles vary across GPU hardware and software versions.
+  - Test correctness may not cover all kernels' numerical regimes.
+  - GitHub provenance can affect contamination and licensing.
+  citation_status: verified
+  confidence: high
+  notes: ACL proceedings paper, author repository, official title, and publication record were checked.
+inclusion_reason: TritonBench exposes executable correctness and performance outcomes for generated GPU operators.
+related: []
+tags:
+- triton
+- gpu-kernels
+- profiling
+- code-generation
+- '2025'
+one_line_summary: TritonBench evaluates generated Triton operators through 184 real-world kernels plus GPU correctness and
+  efficiency profiling.
+why_it_matters: It distinguishes executable correctness from hardware-level efficiency instead of conflating them.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: ACL proceedings paper, author repository, official title, and publication record were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

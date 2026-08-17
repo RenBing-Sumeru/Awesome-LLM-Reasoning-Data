@@ -1,0 +1,4 @@
+- Treat retrieved passages as environment observations, not policy-generated labels.
+- The reward checks the final answer; intermediate reasoning and retrieval steps remain unverified.
+- NQ and HotpotQA are training sources; the other five QA sets are evaluation sources.
+- Confirm artifact scope separately: code/checkpoints are public, raw rollout release is unknown.

@@ -1,0 +1,1 @@
+The paper proposes a standardized dataset documentation practice covering motivation, composition, collection, recommended uses, maintenance, and limitations. It treats this documentation as an accompanying record for a dataset rather than as evidence that a dataset is accurate, legally cleared, or free from downstream misuse.

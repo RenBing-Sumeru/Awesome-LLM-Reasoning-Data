@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Nemotron-CrossThink 报告了采用结构化、可验证问答和优化数据混合的跨领域 RL，但未披露语料清单、验证器实现或可复现控制信息。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨领域可验证强化学习技术报告",
+  "best_for_ch": "希望审计数学以外 RLVR 数据来源、答案格式和反馈披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Syeda Nahida Akter 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

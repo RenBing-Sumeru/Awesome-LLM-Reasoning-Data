@@ -1,0 +1,112 @@
+id: lemma-learning-errors-mathematical-advancement-2025
+title: 'LEMMA: Learning from Errors for MatheMatical Advancement in LLMs'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Zhuoshi Pan
+- Yu Li
+- Honglin Lin
+- Qizhi Pei
+- Zinan Tang
+- Wei Wu
+- Chenlin Ming
+- H. Vicky Zhao
+- Conghui He
+- Lijun Wu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- self-correction
+- error-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.605/
+  arxiv: https://arxiv.org/abs/2503.17439
+  code: https://github.com/pzs19/LEMMA
+  project: null
+  data: https://huggingface.co/datasets/panzs19/LEMMA
+  huggingface: https://huggingface.co/datasets/panzs19/LEMMA
+  venue: https://aclanthology.org/2025.findings-acl.605/
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.605
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.605/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical reasoning tasks drawn from the training corpus described in the paper.
+  trace_author: Teacher and student models produce incorrect, repaired, and freshly restarted solutions.
+  answer_format: An erroneous solution, its first erroneous step, a reflection connection, and a correct continuation or fresh
+    correct solution.
+  process_fields:
+  - incorrect_solution
+  - error_step
+  - reflection_connection
+  - correct_solution
+  environment_or_substrate: Mathematical CoT fine-tuning.
+  verifier_or_reward: Final-answer correctness and an error-type-grounded augmentation procedure select error-correction pairs.
+  terminal_predicate: A corrected or restarted solution reaches the correct mathematical answer.
+recipe_metadata:
+  base_model: See the official paper and repository for released training configurations.
+  teacher: Teacher-generated correct solutions and error-aware augmentation.
+  generator: Model-generated incorrect solutions, fixes, and fresh restarts.
+  filtering_rule: The corpus truncates at an error and connects an error trajectory to a correct solution through model-aware
+    reflection.
+  sampling_protocol: Analyze error types, augment representative mistakes, then generate a repair or fresh correct solution.
+  inference_budget: See the official release for sampling details.
+  optimizer_or_scaffold: Supervised fine-tuning on incorrect-correct reflection connections.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematics problems, model-generated errors, repaired solutions, and fresh correct solutions.
+  split: Refer to the official dataset and repository for split details.
+  decontamination: Separate evaluation benchmarks from the error-correction training corpus.
+  license: The official Hugging Face dataset is CC-BY-4.0; consult the GitHub repository for code terms.
+  lineage: ACL 2025 Findings paper, author GitHub repository, and panzs19 Hugging Face release.
+  known_failure_modes:
+  - Error types and repairs depend on the generating models
+  - A correct endpoint does not by itself prove every repair explanation is faithful
+  - The data focus is mathematical reasoning
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL 2025 proceedings title, authors, affiliations, DOI, author-released GitHub repository, and panzs19/LEMMA
+    dataset.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: LEMMA turns diverse model mistakes into error-to-correction training pairs, teaching mathematical LLMs to
+  repair their own reasoning without an external critique model.
+why_it_matters: It preserves the first error and its repair path, making negative reasoning evidence directly usable for training
+  rather than discarding it.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL 2025 proceedings title, authors, affiliations, DOI, author-released GitHub repository, and panzs19/LEMMA
+    dataset.
+category_ids:
+- process_trace_supervision_data

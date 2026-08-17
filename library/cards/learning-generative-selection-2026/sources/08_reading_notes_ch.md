@@ -1,0 +1,5 @@
+- 数学构造从 37K 条 OpenMathReasoning 问题开始；代码问题数和最终选择提示数均为 unknown。
+- 每个提示包含 2–16 个候选，至少一个经验证正确的候选，且正确候选比例不超过 50%。
+- 数学 16 条、代码 8 条 rollout 指每个提示的 on-policy selector rollout，并非候选池大小。
+- selector RL 使用 temperature 1.5、top-p 1.0；候选生成采样参数为 unknown。
+- Benchmark 增益只评估自动标签下的选择，不能证明 verifier 准确、数据质量、发布完整性或复用权利。

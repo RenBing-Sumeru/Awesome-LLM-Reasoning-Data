@@ -1,0 +1,103 @@
+id: draco-deep-research-2026
+title: 'DRACO: a Cross-Domain Benchmark for Deep Research Accuracy, Completeness, and Objectivity'
+year: 2026
+venue: arXiv
+authors:
+- Joey Zhong
+- Hao Zhang
+- Clare Southern
+- Jeremy Yang
+- Thomas Wang
+- Kate Jung
+- Shu Zhang
+- Denis Yarats
+- Johnny Ho
+- Jerry Ma
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- deep_research
+- web
+- cross_domain
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.11685
+  arxiv: https://arxiv.org/abs/2602.11685
+  code: null
+  data: https://huggingface.co/datasets/perplexity-ai/draco
+  project: null
+  huggingface: https://huggingface.co/datasets/perplexity-ai/draco
+  doi: https://doi.org/10.48550/arXiv.2602.11685
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Anonymized real deep-research usage patterns
+  trace_author: Task curators and rubric authors
+  answer_format: Task, rubric, report, citations, score
+  process_fields:
+  - task
+  - rubric
+  - report
+  - citation
+  - score
+  environment_or_substrate: Open-web deep research
+  verifier_or_reward: Task-specific four-dimension rubrics
+  terminal_predicate: Report is accurate, complete, objective, and well cited
+recipe_metadata:
+  base_model: Deep research systems
+  teacher: Curators of real usage tasks
+  generator: Filtered and augmented requests
+  filtering_rule: Anonymized, open-ended, objectively evaluable tasks
+  sampling_protocol: 10 domains and 40 countries
+  rollout_count: null
+  temperature: null
+  inference_budget: Open-web research
+  optimizer_or_scaffold: Accuracy, completeness, objectivity, and citation rubrics
+audit:
+  source_mixture: Official arXiv and Hugging Face release
+  split: Consult data card
+  decontamination: Real usage patterns are anonymized
+  license: Consult data card
+  lineage: https://huggingface.co/datasets/perplexity-ai/draco
+  known_failure_modes:
+  - Time-sensitive web evidence can change evaluations.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked.
+inclusion_reason: DRACO brings task-specific expert-like rubrics to real deep-research use patterns.
+related: []
+tags:
+- deep_research
+- rubric
+- web
+one_line_summary: DRACO scores real deep-research reports for accuracy, completeness, objectivity, and citation quality.
+why_it_matters: It grounds report evaluation in diverse real-world research requests rather than synthetic prompts.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and data checked.
+category_ids:
+- judgment_rubric_domain_expert_data

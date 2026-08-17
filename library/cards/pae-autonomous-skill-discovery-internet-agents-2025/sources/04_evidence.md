@@ -1,0 +1,3 @@
+PAE is evaluated on real WebVoyager sites and self-hosted WebArena sites and achieves strong performance on human-authored benchmarks after autonomous task proposal and reinforcement learning. VLM terminal judgments can still be fooled by page appearance or hidden task constraints. The most informative evidence holds the backbone, candidate tasks, and interaction or inference budget fixed while changing the data construction or feedback mechanism. Reproduction should report dataset size, success and failure balance, verifier versions, environment cost, and random seeds so that data gains can be separated from model or compute gains.
+
+---

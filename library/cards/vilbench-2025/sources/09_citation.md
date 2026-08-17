@@ -1,0 +1,3 @@
+Tu, Haoqin; Feng, Weitao; Chen, Hardy; Liu, Hui; Tang, Xianfeng; and Xie, Cihang. 2025. *ViLBench: A Suite for Vision-Language Process Reward Modeling.* In Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, pages 6764–6779. Association for Computational Linguistics. DOI: 10.18653/v1/2025.emnlp-main.344.
+
+Primary records: [ACL Anthology](https://aclanthology.org/2025.emnlp-main.344/), [arXiv](https://arxiv.org/abs/2503.20271), [official code](https://github.com/UCSC-VLAA/ViLBench), and [official ViLReward-73K dataset](https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K).

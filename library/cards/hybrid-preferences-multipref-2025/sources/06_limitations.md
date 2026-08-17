@@ -1,0 +1,3 @@
+Author-stated limitation: the routing experiments beyond MultiPref remain at the same post-filtering size of about 7K records, so the PPM may not extrapolate when preference data continue to grow. The paper also finds only small differences when using the datasets or mixtures for DPO, and says that reward-model gains may not transfer to PPO or policy performance; before reuse, evaluate the routed data in the actual downstream objective rather than RewardBench alone.
+
+Curator audit risk: reward-model training removes every pair tied by humans or GPT-4, retaining 7,531 non-tie records. This can concentrate learning on clearer cases and weaken claims about ambiguous comparisons; report the removed share and test the final reward model on a tie-rich slice.

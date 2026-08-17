@@ -1,0 +1,1 @@
+Research problem: Math problems used for test-time adaptation; a versioned prompt/data release was not verified. VDS samples multiple candidate solutions, selects a high-scoring pseudo-label when available, then performs sequential LoRA test-time updates. This paper does not by itself establish a reusable open trace corpus.

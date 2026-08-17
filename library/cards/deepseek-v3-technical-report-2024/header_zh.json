@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepSeek-V3 披露了聚合预训练规模与高层 SFT/RL 后训练顺序，但未披露审计该配方所需的数据谱系和反馈合约。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型技术报告",
+  "best_for_ch": "审计模型报告的数据披露边界",
+  "confidence_ch": "中",
+  "authors_ch": "DeepSeek-AI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

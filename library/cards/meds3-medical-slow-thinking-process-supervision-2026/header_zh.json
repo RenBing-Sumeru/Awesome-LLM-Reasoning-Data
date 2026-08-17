@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布医学问题的正负 MCTS 推理轨迹及步骤 Q-value、rollout value，用于软双向过程奖励监督。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "医学过程监督数据集与过程奖励模型论文",
+  "best_for_ch": "需要医学推理的正负轨迹、步骤价值标签或过程奖励训练数据的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Shuyang Jiang, Yusheng Liao, Zhe Chen, Ya Zhang, Yanfeng Wang, Yu Wang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

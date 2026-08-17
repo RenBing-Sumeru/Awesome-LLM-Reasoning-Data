@@ -1,0 +1,3 @@
+Prior baselines include outcome-only benchmarks, monolithic LLM-as-judge protocols over full traces, TRAIL's judge protocol, Agent GPA, and AgentCompass. This paper changes the evaluation unit from a whole trace prompt to many focused span-level assessments plus separate top-down metrics.
+
+The direction signal is methodological: the same judge model can localize better when the trace is decomposed and scored under structured rubrics. What is not new is TRAIL, GAIA, SWE-bench, or LLM-as-a-judge. Before reuse, inspect the judge prompts, mapper, taxonomy alignment, annotation noise, trace schema, and whether proprietary GPT-5.4 access is available.

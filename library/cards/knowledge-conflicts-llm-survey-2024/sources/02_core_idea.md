@@ -1,0 +1,3 @@
+The central idea is to distinguish where disagreement occurs before comparing solutions. The survey connects each conflict category to its causes, observed LLM behavior, and proposed remedies, so a reader can ask whether a failure comes from supplied context, competing sources, or stored knowledge.
+
+This prevents remedies from being treated as interchangeable. A strategy for contradictory documents may not address a mismatch between a document and learned knowledge, while internal inconsistency raises a different question. Identify the sources present, their relationship, and the response behavior the evaluation rewards before judging a method.

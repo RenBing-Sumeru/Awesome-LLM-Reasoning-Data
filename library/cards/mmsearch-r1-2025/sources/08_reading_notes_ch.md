@@ -1,0 +1,5 @@
+- 区分 FVQA 提示记录、缓存图像搜索结果与在线策略 GRPO episode。
+- Search-required/search-free 标签由特定策略的 8 条 rollout 推导而来。
+- 检索信息是环境观察，并从策略损失中屏蔽。
+- Exact Match 加格式奖励不验证中间推理或检索相关性。
+- 应固定网页、工具、摘要模型、数据集和代码版本；benchmark 提升不是数据质量证明。

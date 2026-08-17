@@ -1,0 +1,1 @@
+1. 输入：评价 prompt、候选回答、偏差类别和目标判断。2. 流程：构造或筛选对偏差敏感的案例，标注目标判断，用去偏数据训练或测试 evaluator，并比较偏置/去偏行为。3. 输出：benchmark case、去偏 tuning record、evaluator 脚本或 checkpoint，以及偏差指标。4. 反馈：judge 输出与目标标签或 rubric 对齐，而不是由外部可执行环境验收。5. 复用前必须固定数据版本、偏差 taxonomy、judge prompt、模型版本、解码策略，以及该记录是用于评测还是 evaluator 微调。

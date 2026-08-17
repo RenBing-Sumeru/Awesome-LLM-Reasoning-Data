@@ -1,0 +1,3 @@
+The paper's framework separates three things that are often mixed together: what the query demands, what the model can support, and what people value in the situation. It uses this framework to organize abstention methods, benchmarks, and evaluation metrics.
+
+The framework is a reading tool as much as a taxonomy. Query properties can make an answer hard or underspecified; model properties determine what support is available; human values determine which error is more costly. Keeping the three perspectives separate prevents a confidence score or a refusal rate from being mistaken for a complete safety judgment. A method should be read with the perspective it actually addresses.

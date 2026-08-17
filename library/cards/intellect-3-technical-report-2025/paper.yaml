@@ -1,0 +1,149 @@
+id: intellect-3-technical-report-2025
+title: 'INTELLECT-3: Technical Report'
+year: 2025
+venue: arXiv preprint
+authors:
+- Prime Intellect Team
+- Mika Senghaas
+- Fares Obeid
+- Sami Jaghouar
+- William Brown
+- Jack Min Ong
+- Daniel Auras
+- Matej Sirovatka
+- Jannik Straube
+- Andrew Baker
+- Sebastian Müller
+- Justus Mattern
+- Manveer Basra
+- Aiman Ismail
+- Dominik Scherm
+- Cooper Miller
+- Ameen Patel
+- Simon Kirsten
+- Mario Sieg
+- Christian Reetz
+- Kemal Erdem
+- Vincent Weisser
+- Johannes Hagemann
+source_role:
+- model_report
+- construction_recipe
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- general_reasoning
+- mathematics
+- code
+- science
+- agent
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.16144
+  arxiv: https://arxiv.org/abs/2512.16144
+  code: https://github.com/PrimeIntellect-ai/prime-rl
+  data: null
+  project: https://www.primeintellect.ai/blog/intellect-3
+  huggingface: https://huggingface.co/PrimeIntellect/INTELLECT-3
+  doi: https://doi.org/10.48550/arXiv.2512.16144
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks from publicly released Prime Intellect environments spanning math, code, science, logic, deep research,
+    and software engineering; exact training mixture weights are not disclosed
+  trace_author: GLM-4.5-Air-Base-derived policy checkpoints interacting with verifiers environments
+  answer_format: Single- or multi-turn reasoning episodes, including text, tool calls, code execution, environment observations,
+    and terminal rewards
+  process_fields:
+  - environment
+  - prompt
+  - response
+  - tool_call
+  - observation
+  - reward
+  - terminal_outcome
+  environment_or_substrate: verifiers environments from the Environments Hub, Prime Sandboxes, and asynchronous prime-rl rollout
+    infrastructure
+  verifier_or_reward: Environment-specific programmatic or task-defined rewards, including executable checks and verifier-backed
+    outcomes
+  terminal_predicate: Defined separately by each released training environment
+recipe_metadata:
+  base_model: GLM-4.5-Air-Base
+  teacher: unknown
+  generator: Current policy actors managed by prime-rl
+  filtering_rule: Environment-specific validation and reward logic; a single global acceptance threshold is not disclosed
+  sampling_protocol: SFT followed by asynchronous, slightly off-policy large-scale RL over a mixture of reasoning and agentic
+    environments
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: prime-rl asynchronous RL with verifiers integration; training scaled to 512 H200 GPUs across 64 nodes
+audit:
+  source_mixture: Math, code, science, logic, deep research, and software-engineering environments; exact per-environment
+    proportions and sampled prompt manifest are not disclosed
+  split: Training and evaluation implementations are released, but the exact frozen run manifests and split snapshots require
+    pinning
+  decontamination: unknown
+  license: Model card declares MIT; released training frameworks and environments use permissive licenses, but each environment
+    and upstream task source requires separate review
+  lineage: GLM-4.5-Air-Base -> SFT -> asynchronous environment rollouts and rewards -> INTELLECT-3; record-level rollout lineage
+    is not released as one frozen corpus
+  known_failure_modes:
+  - Asynchronous off-policy lag can change optimization behavior
+  - Environment rewards can be gamed or depend on incomplete tests
+  - Exact environment mixture weights, rollout settings, and frozen manifests are not disclosed
+  - Open infrastructure does not by itself reproduce the original data mixture or compute run
+  citation_status: verified
+  confidence: high
+  notes: Verified against the official arXiv record, Prime Intellect release page, model card, prime-rl repository, and Environments
+    Hub references.
+inclusion_reason: A frontier report with unusually broad infrastructure disclosure for SFT and large-scale verifier-backed
+  RL, while still leaving run-level data mixture and rollout manifests unresolved.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- asynchronous-rl
+- verifiers
+- environments
+- agentic-rl
+- open-infrastructure
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Prime Intellect reports SFT and asynchronous RL of a 106B MoE on released verifier-backed environments,
+  with open infrastructure but no frozen run-level data manifest.
+why_it_matters: It lets reviewers separate genuinely open RL infrastructure and environments from undisclosed mixture weights,
+  rollout settings, and record-level lineage.
+card: null
+needs:
+- 'needs_snapshot: exact environment versions, prompt manifests, and run configuration'
+- 'needs_metadata: mixture weights, decoding settings, and rollout counts'
+- 'needs_audit: decontamination and environment-specific reward-gaming analysis'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, release page, model, trainer, and environment artifacts verified.

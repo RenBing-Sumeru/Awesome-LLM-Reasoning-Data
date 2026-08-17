@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ReFInE 将长文本问答转成专家核验的句子级证据三元组，GenProve 再以 SFT 与复合奖励 GRPO 学习生成时溯源。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "细粒度溯源数据集与训练配方",
+  "best_for_ch": "研究检索增强生成、句子级证据监督、过程奖励与开放数据审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jingxuan Wei、Xingyue Wang、Yanghaoyu Liao、Jie Dong、Yuchen Liu、Caijun Jia、Bihui Yu、Junnan Zhu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T11:50:59Z"
+}

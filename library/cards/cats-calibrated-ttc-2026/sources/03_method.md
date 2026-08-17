@@ -1,0 +1,3 @@
+The method first obtains confidence targets from repeated model generations and trains a self-calibration component to predict them from a single response. It instantiates this signal in confidence-aware self-consistency, early stopping, and adaptive-sampling procedures rather than changing the base reasoning model.
+
+Evaluation compares these procedures under controlled sample budgets across nine reasoning datasets and several instruction-tuned models. The important record is a prompt together with its sampled answers, agreement-derived target, calibrated confidence, allocation decision, and final aggregation; without that record, reported savings cannot be reconstructed.

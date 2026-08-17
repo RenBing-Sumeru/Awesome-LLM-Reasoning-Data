@@ -1,0 +1,6 @@
+- Version the source: March 5 is the launch, March 17 adds the mini appendix, and April 24 adds the CoT update now embedded in the same 38-page PDF.
+- Keep four layers separate: long-rollout, confirmation, prompt-injection, and cyber interventions are training; dynamic/resampled conversations and programmatic tasks are evaluation; GPT-5 Thinking CoT scoring is monitoring; the two-tier cyber stack is deployment.
+- Treat connector and function-call prompt-injection results as training-overlapping, while treating cyber safety non-overlap and named biology held-out claims as narrow local boundaries.
+- Read the 13-evaluation, 24-environment monitorability suite with its grader mismatch, few-positive, short-CoT, and cross-fit confounds; Anti-Scheming and Memory are slated for removal pending revision.
+- Bind programmatic results to their predicates and budgets: CVE-Bench uses three rollouts and pass@1, Cyber Range uses 16 trials and any-success, and Monorepo-Bench requires all hidden tests to pass.
+- Before reuse, request simulated-work trajectories, ownership labels, preservation detector and reward, dynamic/traffic sampling records, grader and monitor versions, deployment-monitor error audits, immutable revisions, global splits, licenses, and lineage.

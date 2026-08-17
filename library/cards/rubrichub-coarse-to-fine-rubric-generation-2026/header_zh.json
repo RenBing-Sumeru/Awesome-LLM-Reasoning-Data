@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "约 11 万跨域 rubric/评分样本，含 criterion、权重、评分和评审细节，可供 RM 微调与 RL。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "自动粗到细评分准则生成与跨域奖励数据论文",
+  "best_for_ch": "需要为开放式生成构造细粒度、带权重的评分准则，并进行拒绝采样微调或基于准则强化学习的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sunzhu Li, Jiale Zhao, Huimin Ren, Zhenlin Wei, Yang Zhou, Jingwen Yang, Shunyu Liu, Kaike Zhang, Wei Chen",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-15T18:30:19Z"
+}

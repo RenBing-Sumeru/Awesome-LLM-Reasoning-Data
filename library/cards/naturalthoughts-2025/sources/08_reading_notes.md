@@ -1,0 +1,5 @@
+- Question: which teacher traces transfer general reasoning, not merely how many traces can be generated.
+- Record: each SFT item pairs a NaturalReasoning question with a complete DeepSeek-R1 trace and answer.
+- Selection: scale is a strong baseline; difficulty and reasoning-strategy diversity improve efficiency in several settings.
+- Evidence: 500K Qwen training beats OpenThoughts3-1.2M on three of four reported tasks, not on MATH500.
+- Reuse: the missing public artifact, teacher errors, proxy validity, source terms, and contamination are mandatory audit points.

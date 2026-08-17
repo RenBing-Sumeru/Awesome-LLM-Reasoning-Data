@@ -1,0 +1,1 @@
+可把 ConDefects 作为污染可控的可执行代码 benchmark schema。需要保留 task id、语言、日期、难度、faulty code、repaired code、fault location、test list、pass/fail vector、coverage matrix、子集过滤器和数据更新时间。它适合评估修复 agent、定位方法和 post-cutoff split 设计。atlas 复用时要分开训练、评测和审计用途；同一批测试可作为评测 verifier，但不能未经审计转成 reward 数据。

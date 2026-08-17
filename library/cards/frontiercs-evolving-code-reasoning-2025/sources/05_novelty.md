@@ -1,0 +1,1 @@
+Traditional contest datasets require a known correct answer, while research-agent benchmarks have few tasks. FrontierCS organises executable CS problems with unknown optima but objective scores across algorithmic and research tracks. The novelty is the combination of open objectives, partial rewards, and expert references.

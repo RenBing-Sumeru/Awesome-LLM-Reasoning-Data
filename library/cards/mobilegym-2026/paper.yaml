@@ -1,0 +1,116 @@
+id: mobilegym-2026
+title: 'MobileGym: A Verifiable and Highly Parallel Simulation Platform for Mobile GUI Agent Research'
+year: 2026
+venue: arXiv preprint
+authors:
+- Dingbang Wu
+- Rui Hao
+- Haiyang Wang
+- Shuzhe Wu
+- Han Xiao
+- Zhenghong Li
+- Bojiang Zhou
+- Zheng Ju
+- Zichen Liu
+- Lue Fan
+- Zhaoxiang Zhang
+source_role:
+- agent_environment
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- mobile_gui_agents
+- agent_trajectories
+- reinforcement_learning
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.26114
+  arxiv: https://arxiv.org/abs/2605.26114
+  code: https://github.com/Purewhiter/mobilegym
+  data: https://github.com/Purewhiter/mobilegym/releases/tag/data-v0.1.0
+  project: https://mobilegym.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.26114
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Parameterized task templates with natural-language instructions and JSON initial-state injection.
+  trace_author: Online agent rollouts in a browser-hosted mobile simulator; canonical released rollout corpus is unknown.
+  answer_format: Screenshot observations, GUI actions, structured state, goal checks, diagnostics, and reward outputs.
+  process_fields:
+  - task_template
+  - initial_state_patch
+  - screenshot
+  - action
+  - structured_state
+  - goal_check
+  - scalar_reward
+  environment_or_substrate: Android-like browser simulator with 12 everyday-app surrogates and 16 system apps represented
+    as structured state.
+  verifier_or_reward: Deterministic check_goals/get_answer state checks, AnswerSheet checks, side-effect comparison, and shaped
+    dense reward.
+  terminal_predicate: Fixed budgets and deterministic goal-state success with false-complete, side-effect, and overdue diagnostics.
+recipe_metadata:
+  base_model: Qwen3-VL-4B-Instruct for the reported GRPO case study.
+  teacher: unknown
+  generator: Template parameter binding and JSON state injection followed by agent interaction.
+  filtering_rule: unknown
+  sampling_protocol: 160 strictly disjoint train templates and 256 test templates are reported.
+  rollout_count: GRPO group size 8; total record count unknown.
+  temperature: 0.7 for reported training.
+  inference_budget: Evaluation budgets span 15 to 60 steps, with AnswerSheet allowance.
+  optimizer_or_scaffold: Online GRPO with vLLM asynchronous rollouts and shaped reward.
+audit:
+  source_mixture: Simulated app modules, JSON world data, templates, synthetic content, and online trajectories.
+  split: 160 train and 256 test templates; exact paper-run split pin is unknown.
+  decontamination: Template disjointness is stated; semantic overlap audit is unknown.
+  license: Core simulator/RL code Apache-2.0; data/content CC BY-NC 4.0 with third-party-platform caveats.
+  lineage: Template -> state patch -> screenshot/action rollout -> post-state -> deterministic checks and reward.
+  known_failure_modes:
+  - Simulator fidelity is bounded; exact paper-run pins, rollout/reward/checkpoint ledgers, and broad sim-to-real evidence
+    are missing.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary sources were checked during this Track 6 curation; unresolved release and replay details remain
+    explicit.
+inclusion_reason: 'Direct Track 6 inclusion: the work exposes or specifies an environment-linked data object, action/feedback
+  contract, and auditable construction or evaluation boundary.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MobileGym is a browser-hosted mobile GUI simulator whose structured state supports reset/forked rollouts,
+  deterministic state-based judging, and a reported GRPO run.
+why_it_matters: It exposes mobile post-training as auditable state/action/reward interaction while separating simulated control
+  from real-app fidelity.
+card: null
+needs:
+- 'needs_metadata: release version, split, lineage, or audit details remain incomplete'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: main_agent
+  confidence: medium
+  notes: Primary citation is verified; artifact and replay completeness are represented in the fields above.

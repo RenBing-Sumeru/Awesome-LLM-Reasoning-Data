@@ -1,0 +1,1 @@
+Uniform online RL sampling spends rollouts on prompts that are either already solved or almost never solved. The paper asks whether current-policy difficulty prediction and replay of informative groups can reduce this waste.

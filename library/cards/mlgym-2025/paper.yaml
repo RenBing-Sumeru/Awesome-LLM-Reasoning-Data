@@ -1,0 +1,330 @@
+id: mlgym-2025
+title: 'MLGym: A New Framework and Benchmark for Advancing AI Research Agents'
+year: 2025
+venue: COLM 2025
+authors:
+- Deepak Nathani
+- Lovish Madaan
+- Nicholas Roberts
+- Nikolay Bashlykov
+- Ajay Menon
+- Vincent Moens
+- Mikhail Plekhanov
+- Amar Budhiraja
+- Despoina Magka
+- Vladislav Vorotilov
+- Gaurav Chaurasia
+- Dieuwke Hupkes
+- Ricardo Silveira Cabral
+- Tatiana Shavrina
+- Jakob Nicolaus Foerster
+- Yoram Bachrach
+- William Yang Wang
+- Roberta Raileanu
+source_role:
+- agent_environment
+- benchmark
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- machine_learning_research
+- scientific_agents
+- code_agents
+- tool_use
+- benchmark_evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/pdf/75f6e6aa5276a0b93fd3859ec7b41c92ee79cea8.pdf
+  paper_pdf: https://openreview.net/pdf/75f6e6aa5276a0b93fd3859ec7b41c92ee79cea8.pdf
+  arxiv: https://arxiv.org/abs/2502.14499
+  code: https://github.com/facebookresearch/MLGym
+  code_snapshot: https://github.com/facebookresearch/MLGym/tree/9d40c1b5035202018cd7091fb4e83a9c68b377c0
+  data: https://github.com/facebookresearch/MLGym/tree/9d40c1b5035202018cd7091fb4e83a9c68b377c0/trajectories/mlgym_bench_v0
+  project: null
+  huggingface: https://huggingface.co/datasets/mlgym/coco-captioning
+  model: null
+  reward_model: null
+  doi: null
+  venue: https://openreview.net/forum?id=ryTr83DxRq
+  openreview: https://openreview.net/forum?id=ryTr83DxRq
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  license: https://github.com/facebookresearch/MLGym/blob/9d40c1b5035202018cd7091fb4e83a9c68b377c0/LICENSE
+  replay_code: https://github.com/facebookresearch/MLGym/blob/9d40c1b5035202018cd7091fb4e83a9c68b377c0/run_replay.py
+data_object:
+  object_type: A containerized ML-research task specification plus an executed shell-agent episode. The task binds a task/dataset
+    description, starter artifacts, dependencies, timeout, read-only task-specific evaluator, baseline, and expected submission
+    artifact; a released episode adds model/tool messages, stepwise thoughts, actions, observations, state, execution time,
+    validation history, final submission, exit status, cost/token statistics, and task metrics.
+  prompt_source: Thirteen author-curated Level-1 baseline-improvement tasks built from public datasets and environments across
+    data science, game theory, computer vision, NLP, and reinforcement learning. Each task prompt is populated from its YAML
+    description and dataset docs and may include baseline/starter code. No benchmark-wide task-candidate or rejection ledger
+    is released.
+  task_record:
+  - task_id_and_name
+  - task_and_dataset_description
+  - dataset_configs
+  - task_entrypoint
+  - starter_code_and_submission_instructions
+  - baseline_paths_and_scores
+  - evaluation_paths_and_read_only_flag
+  - dependency_and_training_timeout_configuration
+  - optional_memory_path
+  trace_author: A frontier LLM wrapped by the MLGym SWE-Agent-derived ReAct scaffold generates the discussion/thought and
+    one shell or tool action per step. The official repository publishes complete run directories for the current model-task-seed
+    grid, including both valid and invalid runs; these are evaluation rollouts, not a curated policy-training corpus.
+  episode_fields:
+  - environment_name
+  - system_prompt_and_task_prompt
+  - role_tagged_message_history
+  - step_index
+  - thought_or_discussion
+  - parsed_action
+  - shell_or_tool_observation
+  - response_and_state
+  - execution_time
+  - model_cost_token_and_api_call_stats
+  - intermediate_validation_scores
+  - final_submission_path
+  - exit_status
+  - final_task_metrics
+  answer_format: 'A flexible task-specific artifact rather than one universal answer schema: examples include CSV predictions,
+    model weights or policies, Python strategy code, and optimized heuristic/training code. `submit` terminates the episode;
+    reaching the step/cost limit triggers autosubmission of the last codebase state when possible.'
+  observation: Initial task and dataset instructions followed by textual command output, tool feedback, current step/remaining-step
+    counters, open-file and working-directory state, plus score feedback whenever `validate` is called.
+  action_space:
+  - arbitrary_noninteractive_bash_command
+  - open_goto_scroll
+  - search_file_search_dir_find_file
+  - create_edit_insert
+  - validate
+  - submit
+  - optional_literature_search_and_pdf_parse
+  - optional_memory_write_and_memory_read
+  environment_or_substrate: A Gymnasium-compatible MLGymEnv backed by Docker or Podman, a non-root `/home/agent/workspace`,
+    task-specific data, dependencies, starter code, read-only evaluator, GPU allocation, and SWE-Agent-derived command tools.
+    Current main defaults to image `aigym/mlgym-agent:latest`; the paper does not publish an immutable paper-run OCI digest
+    manifest.
+  verifier_or_reward: Task-specific Python evaluation scripts programmatically score the submitted artifact using heterogeneous
+    metrics such as accuracy, validation loss, R2, BLEU, game/RL return, or wall-clock time. `validate` and `submit` run the
+    same scoring surface; `validate` exposes the current test-set score without terminating. No learned judge is used.
+  verifier_output:
+  - task_specific_metric_dictionary
+  - intermediate_score_history
+  - valid_or_invalid_submission_state
+  - exit_status
+  - aggregate_performance_profile_and_AUP_for_cross_task_comparison
+  reward: The benchmark feedback is a task-specific scalar metric recorded in `info.score`, with direction handled later by
+    the performance-profile/AUP computation. In current `MLGymEnv.step`, the native Gym reward returned at every transition
+    is always 0; therefore the public evaluator is not, without an adapter, the demonstrated RL reward interface implied by
+    the Gym framing.
+  terminal_predicate: '`submit` terminates after evaluator execution. A run also terminates on the 50-step or USD 4 budget
+    in the paper, explicit skip/forfeit/error conditions, or environment failures; the last state may be autosubmitted. A
+    valid run means at least one evaluator score exists, not necessarily that the artifact beats the baseline.'
+  provenance: Public source dataset/environment plus author task YAML -> container reset and task setup -> task/ACI prompt
+    -> one model action -> command observation -> optional repeated test-set validation -> submitted or autosubmitted artifact
+    -> evaluator metric history and exit status -> four-run task/model aggregation and AUP. Current public trajectories add
+    post-paper model runs on mutable main.
+  release_shape: Official repository release of framework code, 13 task configs, evaluator/starter artifacts, replay script,
+    and at the audited commit 676 `.traj` files plus 676 paired `results.json` files (13 model-directory names × 13 tasks
+    × 4 runs). The final COLM paper's failure analysis covers 624 trajectories (12 models × 13 tasks × 4 seeds); the extra
+    current `gemini-20-pro` grid must not be attributed to that paper table.
+recipe_metadata:
+  base_model: Final COLM experiments use GPT-4o, o3-mini, o1-preview, Gemini 1.5 Pro, Gemini 2.0 Flash, Gemini 2.5 Pro, Claude-3.5-Sonnet-20241022,
+    Claude-3.7-Sonnet, Llama-3.1-405B-Instruct, Llama-4-Scout, Llama-4-Maverick, and DeepSeek-R1. Current public main also
+    contains a complete `gemini-20-pro` trajectory grid not included in the final paper's 12-model analysis.
+  teacher: null
+  generator: Each evaluated base model generates its own MLGym episode through a SWE-Agent-derived ReAct harness. There is
+    no external trajectory teacher, no demonstrated policy-training stage, and no released trained checkpoint.
+  prompt_or_task_source: MLGym-Bench task YAML, dataset documentation, optional baseline/starter code, ACI documentation,
+    and generic ML researcher instructions. The exact author task-candidate generation and selection process is not disclosed.
+  sampling_protocol: Four runs with different seeds per paper model-task pair. Models use temperature 0.0 and top-p 0.95 except
+    o1-preview and o3-mini, whose APIs use default temperature 1.0. The paper reports best attempt across all valid `validate`
+    calls and best final submission across the four runs.
+  rollout_count:
+    final_paper_models: 12
+    final_paper_tasks: 13
+    runs_per_model_task: 4
+    final_paper_failure_analysis_trajectories: 624
+    audited_public_main_model_directories: 13
+    audited_public_main_trajectories: 676
+  temperature: 0.0 for configurable models; API default 1.0 for o1-preview and o3-mini.
+  inference_budget: Maximum 50 environment interactions or USD 4 API cost per paper run, whichever occurs first, plus task-specific
+    training-command timeouts. Current CLI/config defaults are mutable and must not be substituted for the paper settings.
+  search_or_scaffold: SWE-Agent-derived single-command ReAct loop with rolling history processing, shell/file/search/edit
+    tools, repeated `validate`, terminal `submit`, and optional literature-search and memory modules. The paper experiments
+    use SWE-Agent tools and validation; optional extended tools are not all part of the reported comparison.
+  filtering_rule: The paper analyzes the fixed 13-task suite and does not describe score-based filtering of rollouts. Public
+    current main exposes every model-task-run directory in the audited grid, including invalid/failed cases. Task curation
+    and rejected benchmark candidates are not released record by record.
+  selection_threshold: No trajectory acceptance threshold. Best Attempt uses any valid intermediate `validate` call; Best
+    Submission uses the final submitted or autosubmitted artifact. Cross-task AUP transforms metric direction and infeasible
+    results.
+  optimizer_or_training_scaffold: null
+audit:
+  source_mixture: 'Thirteen heterogeneous tasks reuse public datasets/environments and starter implementations: Kaggle-style
+    regression, generated 3-SAT, three repeated games, CIFAR-10, Fashion-MNIST, MS-COCO, MNLI, FineWeb/Modded-NanoGPT, and
+    three Gymnax RL environments. The official release does not provide a single record-level rights/provenance manifest across
+    all upstream sources.'
+  split: There is no benchmark-wide train/dev/test task split. Constituent tasks use their own train/validation/test or environment-seed
+    protocols, but `validate` can be called without limit and explicitly returns the current test-set score to support further
+    adaptation. Thus the reported surface is interactive test-feedback optimization, not a clean once-only held-out test.
+  decontamination: Not disclosed. The tasks, prompts, baselines, evaluators, and common source datasets are public; the paper
+    does not report task-template overlap, model-pretraining exposure, or post-release leaderboard contamination checks.
+  benchmark_overlap: MLGym incorporates well-known public datasets and codebases and compares itself with MLE-Bench, MLAgentBench,
+    RE-Bench, ScienceAgentBench, and SWE-Agent, but no instance-level overlap or shared-source audit is reported. Public evaluator
+    access and released trajectories increase future training/evaluation leakage risk.
+  lineage: Aggregate lineage from task YAML and upstream dataset through container episode to evaluator scores is inspectable.
+    Missing are a paper-run immutable task/data/image manifest, record-level upstream license IDs, checksums linking the final
+    paper's 624 analyzed trajectories to current files, and a post-paper correction/replacement ledger.
+  license: Repository README says the majority of code is CC BY-NC 4.0; SWE-Agent and Modded-NanoGPT portions are MIT, while
+    Gymnax and Gymnax-blines portions are Apache-2.0. The root license bundle and README do not establish one uniform license
+    for all upstream datasets, generated trajectories, submissions, model outputs, or dependencies; the official `mlgym/coco-captioning`
+    component also needs its own dataset-card review before reuse.
+  release_version:
+    final_paper: COLM 2025 final PDF
+    openreview_forum: ryTr83DxRq
+    arxiv: 2502.14499v1
+    repository_commit: 9d40c1b5035202018cd7091fb4e83a9c68b377c0
+    repository_commit_date: '2025-08-10T19:47:54Z'
+    tags: 0
+    github_releases: 0
+    changelog_state: heading only
+  successful_and_failed_sample_retention: The final paper analyzes failed and incomplete runs, defining failure as no valid
+    intermediate score and incompletion as termination after at least one valid score. Current public main retains the full
+    676-run grid and paired result files, including invalid examples such as GPT-4o Breakout with an empty agent-score list.
+    Exact post-paper additions, corrections, deletions, and error-to-file mapping lack a tagged release manifest.
+  replayability: '`run_replay.py` can extract recorded assistant messages as actions and re-execute them through the runner,
+    and the task/evaluator code is public. Deterministic replay is still partial because main is mutable, the README uses
+    a `latest` container tag, no paper-run OCI digest/checksum bundle is published, upstream datasets/dependencies can drift,
+    and hardware/runtime seeds and full environment state are not pinned end to end.'
+  verifier_or_judge_failure_modes:
+  - Unlimited `validate` calls expose the test-set metric, so the agent can overfit hyperparameters, artifacts, or evaluator
+    quirks to the benchmark test surface; Best Attempt explicitly rewards the best observed test feedback.
+  - Evaluation scripts are read-only but inspectable, allowing targeted optimization against visible implementation details
+    and possible false-positive blind spots.
+  - Heterogeneous metrics and task-specific evaluator semantics make AUP sensitive to direction handling, infeasible-run treatment,
+    task mix, and the four-run best-of selection.
+  - Native Gym transition reward is always zero in current code while scores live in `info`; treating MLGym as an off-the-shelf
+    RL reward environment would silently mis-specify the feedback contract.
+  - Public tasks, baselines, evaluator code, and trajectories create contamination and evaluator-gaming surfaces for later
+    model training or benchmark submissions.
+  - Mutable `main`, a `latest` container tag, no GitHub releases/tags, and an effectively empty changelog allow task, evaluator,
+    dependency, and trajectory drift without a paper-bound version boundary.
+  - Validity only requires producing a score, not beating the baseline or producing scientifically novel work; strong benchmark
+    results measure Level-1 artifact optimization, not autonomous discovery.
+  privacy_or_consent: The benchmark draws on public third-party datasets and code rather than a disclosed human-subject collection.
+    No benchmark-wide PII, consent, deletion, or takedown audit is reported, so downstream users must review each source.
+  security: Agents execute broad shell and training commands in a non-root container and cannot modify read-only evaluator/data
+    files through normal permissions. Network access, dependency installation, malicious upstream artifacts, secrets, container
+    capabilities, and GPU isolation are not fully specified as a paper-run security policy.
+  experimental_evidence:
+    final_paper_scale: 13 tasks, 12 models, 4 runs per model-task pair; 624 trajectories in failure analysis.
+    current_public_scale: 676 trajectories and 676 results files at audited main commit; 13 model directories × 13 tasks ×
+      4 runs.
+    aggregate_result: Gemini-2.5-Pro has the highest final-paper aggregate AUP; results are author-reported and not independently
+      reproduced here.
+    reliability_result: Except o1-preview, Gemini-1.5-Pro, and Gemini-2.0-Flash, every final-paper model lacks a valid submission
+      on at least one task.
+  known_failure_modes:
+  - Repeated visible test feedback permits adaptive overfitting and reward/evaluator gaming.
+  - Evaluator readability can expose task-specific shortcuts even though files are read-only.
+  - Failed, incomplete, and valid are execution/evaluator categories, not scientific-quality labels.
+  - Task/data/image/dependency drift can change replay and scores on mutable main.
+  - No demonstrated agent-training result supports treating the released episodes as validated SFT or RL data.
+  - Mixed upstream licenses and dataset rights block blanket commercial reuse.
+  citation_status: verified
+  confidence: high
+  notes: Audited the final COLM 2025 PDF and appendices, arXiv metadata, official GitHub README/license/task/environment/replay
+    code, complete recursive repository tree, representative valid and invalid trajectory/result records, commit/tag/release
+    metadata, and official Hugging Face organization. No environment execution or independent score reproduction was performed.
+    Artifact verification means the code/tasks/trajectories exist, not that they form a tagged, deterministic, uniformly licensed
+    training release.
+  remaining_unknowns:
+  - Immutable paper-run task, data, evaluator, dependency, GPU, and OCI-image manifest with checksums.
+  - Exact file mapping and correction history for the final paper's 624 analyzed trajectories.
+  - Stable tagged trajectory version, changelog, retention/deletion policy, and post-paper additions ledger.
+  - Benchmark-wide decontamination, task overlap, and model-pretraining exposure audit.
+  - Complete license/provenance/PII/consent reconciliation for every upstream dataset and generated output.
+  - Deterministic replay evidence across operating system, container, datasets, dependencies, evaluator, GPU, and seeds.
+  - Any demonstrated policy-training objective, reward adapter, optimizer, checkpoint, or training result using MLGym.
+inclusion_reason: MLGym makes an AI-research episode inspectable as task configuration, container state, shell/tool trace,
+  repeated validation feedback, flexible submitted artifact, evaluator metrics, and exit status. It is a core Track 6 environment
+  and trajectory release, while its visible test feedback, zero native Gym reward, mutable release boundary, and mixed upstream
+  rights are equally important for deciding whether the episodes can be reused beyond evaluation and audit.
+related: []
+tags:
+- environment-agent-trajectory-data
+- ai-research-agents
+- agent-environment
+- agent-trajectories
+- shell-tools
+- flexible-artifact-evaluation
+- programmatic-evaluator
+- test-feedback-adaptation
+- failed-trajectory-retention
+- replay-partial
+- release-version-drift
+- mixed-license
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MLGym releases 13 containerized ML-research tasks and a current 676-run action/observation corpus with task-specific
+  evaluator scores and replay code, but repeated validation exposes test feedback, native Gym reward remains zero, and the
+  release is untagged and license-mixed.
+why_it_matters: It connects task/data configuration, container state, one-command agent actions, observations, intermediate
+  evaluator feedback, flexible research artifacts, failures, and replay into one auditable episode object, while showing why
+  a Gym interface and public trajectories do not by themselves establish a clean RL reward, held-out evaluation, deterministic
+  replay, or training-safe release.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  code_verified: true
+  task_environment_verified: true
+  trajectory_release_verified: true
+  failed_sample_retention_verified: true
+  replay_code_verified: true
+  license_file_verified: true
+  complete_rights_verified: false
+  evaluation_and_audit_use_verified: true
+  agent_training_verified: false
+  deterministic_replay_verified: false
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  official_paper_version: COLM 2025 final PDF
+  repository_commit: 9d40c1b5035202018cd7091fb4e83a9c68b377c0
+  notes: Citation, final venue paper, current source/task/evaluator/replay code, the complete public trajectory tree, sample
+    record schemas, one invalid retained result, repository versioning, and license notices were verified. Current public
+    trajectory count includes one model grid not in the final paper and must be described as repository state, not a paper
+    result.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release_tag: publish a paper-bound tag/release, checksums, changelog, and 624-to-676 drift ledger'
+- 'needs_replay: pin OCI digests, task/data/evaluator/dependency/GPU versions, seeds, reset semantics, and replay tests'
+- 'needs_split_audit: distinguish optimization feedback from a held-out final test and document task/dataset splits'
+- 'needs_decontamination: audit public task, evaluator, trajectory, and model-pretraining overlap'
+- 'needs_reward_adapter: document any nonzero RL reward interface, objective, optimizer, and training result'
+- 'needs_license_audit: reconcile all upstream dataset/code licenses and generated trajectory/model-output rights'
+- 'needs_privacy_security: document PII/consent/deletion and container/network/dependency security controls'
+card: null

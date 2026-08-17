@@ -1,0 +1,13 @@
+Motion Transfer cannot be reproduced from the report. The architecture, cross-embodiment alignment object, loss, optimizer, batching, mixture weights, curriculum, schedule, checkpoint selection, and negative-transfer controls are undisclosed. Aggregate ablations show an effect but do not identify which data source, platform ratio, or algorithmic component causes it.
+
+The provenance of natural-language thinking labels is unknown. Visible inference traces do not reveal whether training targets came from human annotators, a teacher model, self-generation, distillation, or hidden internal representations. Coverage, prompts, revision, filtering, and agreement between displayed thoughts and optimized targets are not reported. Numerical thinking-token values appearing only in commented TeX are not published evidence and must not be cited as experiment settings.
+
+Simulation creates a substantial audit boundary. More than 90% of development evaluation episodes use aligned MuJoCo scenes, but simulator assets, versions, randomization, failure distribution, and sim-to-real calibration are unavailable. Rank consistency can support iteration without establishing real-world robustness.
+
+Environment and checkpoint comparability are incomplete. The 230-task general VLA suite uses a shared checkpoint, but long-horizon ALOHA uses a pre-training checkpoint and Franka receives extra post-training. Real-time and offline success detection also differ in latency and inference budget. Scores across these conditions should not be merged into a single model estimate.
+
+Progress, success, and failure labels have incomplete provenance. Task rubrics are partly described, but label authors, class balance, inter-rater agreement, thresholds, calibration, false-positive/negative rates, and executable terminal predicates are not released. Gemini 2.5 Flash grading and the AutoRater add proprietary judge dependencies.
+
+Data and rights remain opaque. There is no platform-level manifest for robot demonstrations, sensor/action records, Internet sources, synthetic captions, thinking traces, safety attacks, or labels; nor are operator consent, privacy review, failure retention, licenses, or redistribution terms provided. The manuscript's CC BY 4.0 license does not extend to these proprietary artifacts, model weights, or training code.
+
+Finally, item-level splits, duplicate-trajectory checks, scene/object overlap, Internet contamination, and record-level source-to-caption-to-sensor/action-to-thought-to-checkpoint lineage are absent. Cross-embodiment restrictions are conceptually useful but cannot be independently verified without manifests.

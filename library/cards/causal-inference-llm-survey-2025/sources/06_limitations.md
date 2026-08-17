@@ -1,0 +1,1 @@
+Causal conclusions depend on assumptions about variables and their relationships, and those assumptions can vary across applications. Results from causal discovery, effect estimation, model evaluation, and fairness analysis are therefore not automatically interchangeable. A survey can organize this diversity but cannot supply missing assumptions for each primary study.

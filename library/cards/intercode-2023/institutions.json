@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Department of Computer Science, Princeton University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2306.14898",
+    "https://intercode-benchmark.github.io/",
+    "https://github.com/princeton-nlp/intercode"
+  ],
+  "verification_note": "arXiv, project, and GitHub verify authors, Princeton institution, NeurIPS status, and artifacts."
+}

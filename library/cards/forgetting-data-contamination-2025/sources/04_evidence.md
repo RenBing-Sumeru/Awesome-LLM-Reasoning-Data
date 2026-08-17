@@ -1,0 +1,3 @@
+Under fixed 7B-token training, four repetitions create a 5-point accuracy gap for a 124M model and 20 points for a 1.6B model; for a 350M model, 4, 12, 32, and 144 repetitions create 11, 25, 44, and 51 points respectively (Figure 1). This establishes the model-size and repetition dependence.
+
+The controlled forgetting result is equally important: after 15× Chinchilla training, the 124M model’s 12× contamination gap falls within the holdout confidence interval, and OLMo-1B loses 96% of a 15-point gain after less than 1% of remaining training (Figures 1–3). It supports conditional forgetting, not safety from recent or repeated leakage.

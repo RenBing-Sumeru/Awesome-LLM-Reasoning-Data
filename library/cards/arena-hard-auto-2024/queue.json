@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T12:55:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ref529 御三家常测评，虽然非核心指标 从Chatbot Arena等真实用户请求中，用主题聚类和LLM难度标注自动筛选高质量开放式提示，构建低成本、可持续更新的Arena-Hard评测集。",
+    "updated_at": "2026-07-14T12:55:13Z"
+  }
+}

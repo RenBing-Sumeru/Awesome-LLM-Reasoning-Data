@@ -1,0 +1,108 @@
+id: scientific-discovery-llm-survey-2025
+title: 'From Automation to Autonomy: A Survey on Large Language Models in Scientific Discovery'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Tianshi Zheng
+- Zheye Deng
+- Hong Ting Tsang
+- Weiqi Wang
+- Jiaxin Bai
+- Zihao Wang
+- Yangqiu Song
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- scientific-discovery
+- agents
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.895/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.895
+  venue: https://aclanthology.org/2025.emnlp-main.895/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.895/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed LLM applications in scientific discovery.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A taxonomy of Tool, Analyst, and Scientist roles in the research lifecycle.
+  process_fields:
+  - scientific-method
+  - role
+  - autonomy
+  - research-lifecycle
+  - challenge
+  environment_or_substrate: Scientific discovery and human-AI collaboration.
+  verifier_or_reward: The survey introduces no common verifier or reward.
+  terminal_predicate: Scientific success is task-specific; no universal predicate is supplied.
+recipe_metadata:
+  base_model: No single base model; literature survey.
+  teacher: Surveyed works use varied tools, environments, and feedback.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: Official abstract organizes changing roles using Tool, Analyst, and Scientist.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes the field rather than a new system.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.emnlp-main.895/'
+  known_failure_modes:
+  - Autonomy and responsibility can be overstated
+  - Scientific tasks vary substantially
+  - Ethical governance remains a challenge
+  citation_status: verified
+  confidence: high
+  notes: The official abstract introduces a Tool–Analyst–Scientist taxonomy.
+inclusion_reason: A peer-reviewed survey organizing LLM roles and increasing autonomy in scientific discovery.
+related: []
+tags:
+- foundations-and-primers
+- scientific-discovery
+- agents
+- emnlp-2025
+- survey
+why_it_matters: It gives readers a concrete vocabulary for separating task automation from broader scientific responsibility.
+one_line_summary: An EMNLP 2025 survey of how LLM roles in scientific discovery evolve from tools to increasingly autonomous
+  agents.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers studying LLM agents, scientific workflows, and human-AI collaboration.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable evidence for autonomy across scientific settings'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata
+  abstract: null
+  venue: null
+  pages: null
+  and DOI were reviewed.: null
+category_ids:
+- foundations_and_primers

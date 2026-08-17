@@ -1,0 +1,109 @@
+id: int-self-proposed-interventions-credit-assignment-2026
+title: 'InT: Self-Proposed Interventions Enable Credit Assignment in LLM Reasoning'
+year: 2026
+venue: ICLR 2026 Poster
+authors:
+- Matthew Y. R. Yang
+- Hao Bai
+- Ian Wu
+- Gene Yang
+- Amrith Setlur
+- Aviral Kumar
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- credit-assignment
+- reinforcement-learning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2601.14209
+  arxiv: https://arxiv.org/abs/2601.14209
+  code: https://github.com/intervention-training/int
+  project: https://intervention-training.github.io/
+  data: https://huggingface.co/datasets/CMU-AIRe/InT-SFT
+  huggingface: https://huggingface.co/datasets/CMU-AIRe/InT-SFT
+  venue: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Difficult mathematical problems with reference solutions and model-generated unsuccessful attempts.
+  trace_author: The base model proposes interventions after self-verifying its own failed reasoning rollout.
+  answer_format: Problem, answer, reference solution, incorrect attempt, corrected prefix, intervention, and intervention-guided
+    continuation.
+  process_fields:
+  - incorrect_attempt
+  - first_error
+  - intervention
+  - intervention_guided_attempt
+  environment_or_substrate: Long-horizon mathematical reasoning with outcome-verified reinforcement learning.
+  verifier_or_reward: Reference-solution comparison locates the first error; final-answer verification filters guided continuations.
+  terminal_predicate: A continuation reaches a verified correct final answer.
+recipe_metadata:
+  base_model: Qwen3-4B-Instruct-2507 in the official reproduction instructions.
+  teacher: The same base model self-verifies failures and proposes localized corrective interventions.
+  generator: On-policy reasoning rollouts sampled from the base model.
+  filtering_rule: The optional guided-rollout stage retains interventions that lead to correct final outcomes.
+  sampling_protocol: The project selects hard problems, samples incorrect rollouts, proposes interventions, then filters guided
+    continuations.
+  inference_budget: The release documents 64-rollout filtering for hard problems; evaluation budgets vary by benchmark.
+  optimizer_or_scaffold: Intervention SFT followed by online reinforcement learning.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Hard mathematical problems, reference solutions, on-policy failed rollouts, self-proposed interventions,
+    and outcome-verified continuations.
+  split: The official collection includes InT-SFT, InT-RL, test, hard-set, and intervention-augmented hard-set releases.
+  decontamination: Keep the evaluation and held-out hard problem sets separate from intervention SFT and RL data.
+  license: Refer to the official Hugging Face collection and GitHub repository for release-specific terms.
+  lineage: arXiv paper, official InT project site, official GitHub repository, and CMU-AIRe Hugging Face releases.
+  known_failure_modes:
+  - The method depends on reference solutions and reliable outcome verification
+  - An intervention can be plausible without improving the eventual continuation, so filtering is material
+  - Evidence centers on difficult mathematical reasoning and may not transfer to tasks without step-verification support
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv title and author list, ICLR 2026 Poster status on the official OpenReview submissions page, project-page
+    affiliation block, official code repository, and CMU-AIRe data collection.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: InT turns failed on-policy reasoning traces into localized corrective interventions, creating process-supervision
+  records that patch the first error before downstream RL.
+why_it_matters: It converts outcome-only failures into a reusable, localized intervention record rather than treating an entire
+  failed trajectory as uniformly bad.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv title and author list, ICLR 2026 Poster status on the official OpenReview submissions page, project-page
+    affiliation block, official code repository, and CMU-AIRe data collection.
+category_ids:
+- process_trace_supervision_data

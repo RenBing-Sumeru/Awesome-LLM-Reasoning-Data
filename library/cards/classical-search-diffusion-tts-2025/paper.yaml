@@ -1,0 +1,96 @@
+id: classical-search-diffusion-tts-2025
+title: Inference-time Scaling of Diffusion Models through Classical Search
+year: 2025
+venue: arXiv preprint
+authors:
+- Xiangcheng Zhang
+- Haowei Lin
+- Haotian Ye
+- James Zou
+- Jianzhu Ma
+- Yitao Liang
+- Yilun Du
+source_role:
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+domains:
+- agentic-search
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.23614
+  arxiv: https://arxiv.org/abs/2505.23614
+  venue: null
+  code: https://github.com/helixml/diffusion-inference-scaling
+  data: null
+  project: https://diffusion-inference-scaling.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.23614
+data_object:
+  prompt_source: Planning, offline reinforcement learning, and image-generation objectives.
+  trace_author: A diffusion model is refined by verifier-guided local search and BFS/DFS global search.
+  answer_format: Sample, verifier score, local refinement, global branch, and final output.
+  process_fields:
+  - sample
+  - score
+  - local_search
+  - global_search
+  - output
+  environment_or_substrate: Diffusion inference with classical search.
+  verifier_or_reward: World-model, Q-function, or task-specific verifier.
+  terminal_predicate: Select a high-scoring sample under the inference budget.
+recipe_metadata:
+  base_model: Diffusion models used in the paper.
+  teacher: null
+  generator: Diffusion sampler.
+  filtering_rule: Refine local candidates and explore global modes according to verifier feedback.
+  sampling_protocol: Annealed Langevin MCMC plus BFS/DFS.
+  rollout_count: Budget dependent.
+  temperature: Not applicable.
+  inference_budget: Local steps and global search nodes.
+  optimizer_or_scaffold: Classical search for diffusion inference.
+audit:
+  source_mixture: Official arXiv paper and project page.
+  split: Maze planning, D4RL offline RL, and image-generation experiments.
+  decontamination: Audit verifier and task data separately.
+  license: Check model and project licenses.
+  lineage: https://arxiv.org/abs/2505.23614
+  known_failure_modes:
+  - verifier-hacking
+  - hyperparameter-sensitivity
+  - search-cost
+  citation_status: verified
+  confidence: high
+  notes: Official paper and project checked on 2026-07-21; affiliations are Helixon, Stanford, and Harvard.
+inclusion_reason: It allocates test-time compute through explicit local and global search over diffusion trajectories.
+related: []
+tags:
+- test-time-compute
+- diffusion
+- search
+- verifier
+status: verified
+one_line_summary: Classical search improves diffusion inference through verifier-guided Langevin local search and BFS/DFS
+  global exploration.
+reading_priority: recommended
+paper_type: Diffusion test-time search study
+best_for: Readers studying non-autoregressive test-time scaling.
+confidence: high
+why_it_matters: It makes local refinement and global branching explicit compute-allocation choices.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official resources verified.
+category_ids:
+- scaling_rlvr_test_time_compute

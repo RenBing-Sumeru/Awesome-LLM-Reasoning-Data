@@ -1,0 +1,181 @@
+id: verifiable-fine-tuning-2025
+title: 'Verifiable Fine-Tuning for LLMs: Zero-Knowledge Training Proofs Bound to Data Provenance and Policy'
+year: 2025
+venue: arXiv preprint
+authors:
+- Hasan Akgul
+- Daniel Borg
+- Arta Berisha
+- Amina Rahimova
+- Andrej Novak
+- Mila Petrov
+source_role:
+- construction_recipe
+- infrastructure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- data-provenance
+- cryptographic-verification
+- instruction-following
+- safety
+- bilingual
+training_use:
+- sft
+- audit
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.16830
+  arxiv: https://arxiv.org/abs/2510.16830
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.16830
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The experiments use manuscript-defined Mix-A (200,000 English instruction-response pairs), Mix-B (120,000
+    pairs; 60% English and 40% Chinese), a 15,000-pair safety slice, a shadow corpus, and 5,000 synthetic telemetry descriptors.
+    The upstream dataset names, versions, item IDs, and base-model identity are not disclosed.
+  trace_author: unknown; the paper does not identify who wrote the Mix-A/Mix-B or safety responses, nor the generator and
+    seed for the synthetic telemetry descriptors.
+  answer_format: Instruction-response pairs are committed as leaves containing the input, target, and metadata tuple (source_id,
+    license_id, proc_digest, policy_tags); training additionally emits batch membership witnesses, quota counters, optimizer-state
+    commitments, step proofs, epoch proofs, and a final model digest/proof.
+  process_fields:
+  - input
+  - target response
+  - source_id
+  - license_id
+  - proc_digest
+  - policy_tags
+  - dataset Merkle root
+  - sampler mode and seed policy
+  - batch membership proof
+  - quota bin and per-epoch counters
+  - initialization and model hashes
+  - optimizer state commitment
+  - approximation budgets
+  - step proof
+  - epoch proof
+  - final proof
+  environment_or_substrate: PyTorch PEFT training wrapped by the described VFT-FrontEnd, with C++/Rust proof-backend bridges,
+    recursive SNARK/STARK-style proof systems, optional Intel SGX or ARM CCA attestation, and public or private verifiable
+    sampling. No implementation repository was confirmed.
+  verifier_or_reward: A cryptographic verifier checks membership in the committed dataset, declared sampler behavior, PEFT-restricted
+    approximate forward/backward computation, AdamW transitions, hash-chain continuity, approximation bounds, and declared
+    quota constraints. It does not evaluate whether the committed content, source labels, licenses, policy tags, or targets
+    are semantically truthful or appropriate.
+  terminal_predicate: Verification accepts when the recursive proof binds the public initialization hash, dataset root, manifest
+    hash, and final model digest while all covered step, optimizer, membership, approximation, and quota constraints pass.
+    Validation batches and probabilistically unverified federated client steps are outside full end-to-end coverage.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: The described VFT-FrontEnd freezes the backbone, instruments LoRA modules, constructs fixed-point shadow tensors
+    and checksums, and streams witnesses into a recursive proof system. The actual implementation and transformed run artifacts
+    were not found at an official URL.
+  filtering_rule: The policy manifest declares admissible license_id and proc_digest values, eligibility filters, per-example
+    policy tags, binning rules, and per-epoch quota ceilings. Proofs enforce consistency with those declarations but do not
+    validate the declarations' real-world semantics.
+  sampling_protocol: Public mode derives indices from a published seed and CSPRNG and exposes Merkle paths for replay; private
+    mode hides indices while proving membership and aggregate quotas in zero knowledge. The paper also describes interleaving
+    public and private windows and federated probabilistic audits.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: One epoch of LoRA fine-tuning with ranks 4, 8, or 16 on attention and MLP projections, global batch
+    size 64, frozen layer norms and embeddings, AdamW beta1=0.9, beta2=0.95, epsilon=1e-8, weight decay=0.05, cosine decay,
+    3% warmup, gradient clipping 1.0, and default 14 integer plus 14 fractional fixed-point bits. The learning-rate value
+    and exact model architecture are not disclosed.
+audit:
+  source_mixture: 'Mix-A: 200,000 English instruction-response pairs; Mix-B: 120,000 pairs with 60% English and 40% Chinese;
+    safety slice: 15,000 pairs; synthetic telemetry: 5,000 items; shadow examples are binned by domain, register, and length,
+    but their count and all upstream dataset identities are unknown.'
+  split: A stratified 5% of each policy bin is held out for validation. Validation is public and separately provenance-recorded
+    but is explicitly not proven inside the VFT training circuits.
+  decontamination: unknown
+  license: The arXiv manuscript is CC BY 4.0. The paper states that public mixture data permit research use and that license
+    IDs and attribution are committed per example, but it does not name the upstream datasets or disclose their license IDs.
+    No code, proof-artifact, manifest, model, or data release license was confirmed.
+  lineage: Source instruction-response item and claimed metadata -> leaf hash over content/source/license/preprocessing/policy
+    tags -> dataset and counter commitments plus manifest hash -> public or private admissible sampler -> fixed-point LoRA/AdamW
+    step witness -> step proof and model-state hash chain -> epoch quota certificate -> recursive final proof bound to the
+    final digest. The proof establishes execution relative to committed declarations, not that those declarations are factually
+    or legally correct.
+  known_failure_modes:
+  - A commitment binds source_id, license_id, preprocessing digest, and policy tags as strings but does not prove their external
+    truth, authorization, consent, or legal compatibility.
+  - The proof does not establish data quality, answer correctness, safety-label correctness, absence of PII, fairness, or
+    decontamination.
+  - The upstream Mix-A/Mix-B datasets and base model are unnamed, preventing independent lineage and license verification.
+  - Validation batches are outside the circuits, so reported model-quality measurements are not covered by the training proof.
+  - Private sampling hides indices and prevents deterministic third-party replay; only membership and aggregate quota claims
+    are exposed.
+  - Federated experiments verify only sampled client steps and therefore provide probabilistic coverage rather than a proof
+    of every local update.
+  - The production claim is restricted to PEFT; full-parameter fine-tuning is explicitly not production-ready.
+  - Loose approximation tolerances weaken fidelity to ordinary floating-point training, while tight tolerances sharply increase
+    prover cost and memory.
+  - Optional TEE property cards are needed for code-identity attestation; the ZK proof alone does not establish that an uncommitted
+    front end or preprocessing implementation is benign.
+  - Quota proofs enforce the declared policy, which can itself be discriminatory or mis-specified, and do not validate bin
+    assignments against external reality.
+  - The paper says scripts, Dockerfiles, Nix expressions, manifests, seeds, and proofs are published, but no official artifact
+    URL was found, so reported costs and guarantees cannot currently be independently reproduced.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v3, HTML, and TeX source were checked on 2026-07-13. Method and reported numerical claims are detailed,
+    but missing model/data identities and missing official artifacts materially limit external verification.
+inclusion_reason: VFT specifies a provenance-aware release contract that binds per-example source/license/preprocessing metadata,
+  sampling rules, quotas, optimizer semantics, approximation budgets, and the final PEFT checkpoint into recursively verifiable
+  certificates.
+related: []
+tags:
+- data-provenance
+- manifest
+- zero-knowledge-proofs
+- verifiable-training
+- peft
+- lora
+- policy-quotas
+- private-sampling
+- release-audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: VFT commits instruction data and per-example provenance metadata to a manifest, then recursively proves
+  that a LoRA/AdamW training trajectory obeyed the committed sampler, approximation, and quota policy.
+why_it_matters: It turns lineage and release-policy claims into machine-checkable training certificates, while making clear
+  that cryptographic consistency with a manifest is not evidence that the manifest's source, license, quality, or consent
+  assertions are true.
+card: null
+needs:
+- 'needs_artifacts: locate an official implementation, verifier, manifests, proofs, model checkpoint, Dockerfiles, and Nix
+  expressions'
+- 'needs_sources: disclose Mix-A, Mix-B, safety-slice, and shadow-corpus dataset identities and immutable revisions'
+- 'needs_model: identify the public base model, exact initialization digest, architecture, and model license'
+- 'needs_license: disclose actual per-source license IDs and verify compatibility rather than only committing claimed IDs'
+- 'needs_semantic_audit: distinguish cryptographic execution integrity from source authenticity, consent, data quality, policy-tag
+  correctness, and decontamination'
+- 'needs_cost_reproduction: independently reproduce prover time, memory, verifier time, proof size, and private-index leakage'
+curation_level: L3_evidence
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: medium
+  notes: Official paper verified; no official reusable implementation, run certificates, model, or committed dataset artifacts
+    were confirmed.

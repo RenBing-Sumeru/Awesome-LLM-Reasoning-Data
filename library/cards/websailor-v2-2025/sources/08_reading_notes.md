@@ -1,0 +1,6 @@
+- Read final-paper §§3.1–3.4 first. The 30K-plus number is for SailorFog-QA-V2 instruction-tuning pairs; do not silently convert it into a complete-trajectory count.
+- Read §4.1 for the SFT object: unspecified open-source solvers, successful ReAct trajectories, rejection sampling, Qwen3-30B-A3B-Thinking-2507, and 128k context. Teacher identity and retained/rejected counts remain unknown.
+- Read §4.2 and Equation 2 together. The optimizer is described, but the terminal reward `R_i` is not. Selective negative exclusion therefore cannot be audited from the objective alone.
+- Use Table 1 and Figure 6 for SFT-to-RL gains; use Figure 5 for context/action-budget scaling. Keep author-reported benchmark performance separate from independent evidence.
+- Keep four release surfaces distinct: arXiv v1, final ICLR/OpenReview paper, the documentation-only V2 directory, and the richer V1 directory/model collection. Only explicit provenance permits cross-version attribution.
+- Read alongside `websailor-2025` and `webdancer-2025`, but do not use either paper to backfill V2 unknowns. Prioritize reward correctness, the stage-specific SailorFog-QA/V2/IterBench mixture, full success/failure retention, benchmark overlap, environment versioning, and data/trajectory rights.

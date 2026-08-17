@@ -1,0 +1,6 @@
+- 优先阅读论文 §2.1 与 Algorithm 1：purification 是 box-aligned scoring，再加 consensus-failure mining、LLM correction proposal 和 human verification，而不是简单重命名 AndroidControl split。
+- 必须区分论文的 terminal success rate 与发布的静态 `Step_Success_Rate`；复现分数前先检查 `src/eval/utils.py` 和 `src/eval/evaluate_actions_androidControl_vllm.py`。
+- Table 2 的 Hard SR 变化——Qwen3-VL-235B 为 61.2→71.7→76.5，Magma-R1 为 57.6→69.1→75.3——说明 measurement sensitivity，不是逐记录认证。
+- Magma-R1 GRPO 使用的 2,400 条 sample 没有发布 ID/split manifest，因此它与 evaluation surface 的 overlap 为 unknown。
+- 应固定 dataset revision、scorer 与精确 3B checkpoint；替换为重定向 model repository 中较新的 4B material 时必须明确报告变化。
+- License、privacy、live replay、human-review protocol 与 rejected-candidate retention 都是尚未解决的复用门槛。

@@ -1,0 +1,8 @@
+The release describes the pretraining input only as a uniform 15T-token sample from Qwen3's 36T-token corpus. It does not provide the source mixture, document identifiers, source rights, data revisions, filters, deduplication, contamination controls, or retained record schema. The reported lineage is therefore limited to Qwen3 corpus, sampled pretraining subset, Qwen3-Next-80B-A3B-Base, and the Instruct and Thinking post-trained variants.
+
+The [Thinking model repository](https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking) states “Pretraining (15T tokens) & Post-training,” exposes weights and configuration under Apache-2.0, and supplies inference instructions. The Instruct repository does the same for the non-thinking variant. The model cards state that Qwen3-Next inference support was merged into Hugging Face Transformers; this makes the inference architecture inspectable, not the original training pipeline.
+
+For RL, the release names GSPO and the generic GSPO source supplies a sequence-level objective over queries and grouped responses. No accepted source specifies the Qwen3-Next query set, response generator, teacher, reward or verifier, judge, group construction, terminal predicate, advantage computation, loss coefficients, rollout count, decoding settings, optimizer, schedule, checkpoint selection, or training environment. Those fields remain unknown.
+
+The Thinking model card recommends a maximum output length of 32,768 tokens for most queries and 81,920 for complex mathematics or programming benchmarks. These are inference and benchmark settings, not evidence about training-time rollout budgets.
+

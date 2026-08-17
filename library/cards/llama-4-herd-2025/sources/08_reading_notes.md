@@ -1,0 +1,5 @@
+- Read the official report's pretraining and mid-training paragraphs before using any token count; model cards give about 40T for Scout and 22T for Maverick, while the report separately states an overall mixture above 30T.
+- Follow the Maverick post-training sequence in order: remove more than 50% easy-tagged SFT data, lightweight SFT, harder-prompt online RL with continuous filtering, then lightweight DPO.
+- Keep Behemoth on a separate branch: its 95% SFT pruning, pass@k curriculum, zero-advantage filtering, and asynchronous RL are not documented as Scout/Maverick procedures.
+- Treat Behemoth-to-Maverick codistillation as a disclosed target-generation lineage, not as a release of teacher outputs or traces.
+- Use the official Hugging Face collection as evidence for released weights and model cards, not for released training data; read benchmark tables only as evaluation evidence.

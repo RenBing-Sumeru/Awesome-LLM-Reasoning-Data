@@ -1,0 +1,3 @@
+Abstention means that an LLM declines to provide an answer. This TACL 2025 survey asks when that behavior can reduce hallucination and improve safety without making a system unhelpful, and it frames the question through the query, the model, and human values.
+
+The decision boundary matters: abstention is neither an error by definition nor a universal remedy. A useful system needs to distinguish unsupported answers from questions it can answer responsibly, while recognizing that the cost of an incorrect answer and the cost of a refusal can differ by context. The survey asks readers to make those costs visible rather than treating every non-answer as equally safe.

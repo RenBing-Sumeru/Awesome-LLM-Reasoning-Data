@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "agent推理任务，真实任务序列",
+    "updated_at": "2026-07-20T10:51:34Z"
+  },
+  "updated_at": "2026-07-20T10:51:34Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

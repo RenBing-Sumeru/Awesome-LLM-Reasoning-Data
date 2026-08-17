@@ -1,0 +1,6 @@
+- Read §3 first and separate the evolving data object from final benchmark scores: questions, rollouts, pseudo-labels, code embeddings, memory decisions, and replay links are the construction record.
+- Keep three feedback roles distinct: uncertainty targets difficulty, SAM/MAP shape novelty, and majority pseudo-labels train the Solver.
+- SAM canonical code is a similarity representation. It is not executed proof, and its prompt may repair a flawed question into a different task.
+- Table 2 is the cleanest component check; the full 4B method scores 52.59 Math AVG versus 49.62 without MAP, 51.18 without replay, and 50.50 without SAM.
+- Treat Table 1 gains and GPT-4o analyses as evidence for the reported setup, not proof that individual records are correct or released.
+- Check the official repository before reuse: as of 2026-07-22 it is a non-executable project page with a prospective release plan.

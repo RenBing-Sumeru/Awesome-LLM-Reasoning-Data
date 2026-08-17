@@ -1,0 +1,1 @@
+Use this survey when a project has several possible levers. If the failure is missing knowledge, retrieval may be relevant; if the failure is a long dependency chain, more candidates or training traces may be relevant; if the task requires action, the environment and feedback must be specified. The framework turns “improve reasoning” into a concrete design choice.

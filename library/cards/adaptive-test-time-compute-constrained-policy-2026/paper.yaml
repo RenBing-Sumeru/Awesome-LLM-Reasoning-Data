@@ -1,0 +1,118 @@
+id: adaptive-test-time-compute-constrained-policy-2026
+title: Adaptive Test-Time Compute Allocation for Reasoning LLMs via Constrained Policy Optimization
+year: 2026
+venue: arXiv preprint
+authors:
+- Zhiyuan Zhai
+- Bingcong Li
+- Bingnan Xiao
+- Ming Li
+- Xin Wang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- rlvr
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2604.14853
+  arxiv: https://arxiv.org/abs/2604.14853
+  code: https://github.com/zhiyuanZhai20/AdaCompute-LLM
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.14853
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Questions are paired with candidate compute budgets; the checked paper does not establish a public prompt/budget
+    dataset.
+  trace_author: unknown
+  answer_format: For each question and budget, 48 response samples are used to form Lagrangian-oracle labels and train a gradient-boosted
+    budget-selection classifier.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: A constrained reward/Lagrangian objective defines labels programmatically; exact reward implementation,
+    rollout storage, and budget-cost accounting are incomplete in the checked source.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: AdaCompute-LLM learns to allocate response budget per question under a constrained-policy objective rather than
+    using one fixed test-time budget.
+  filtering_rule: A constrained reward/Lagrangian objective defines labels programmatically; exact reward implementation,
+    rollout storage, and budget-cost accounting are incomplete in the checked source.
+  sampling_protocol: The paper states 48 responses per question–budget pair. An author repository URL was identified but contents
+    and license were not independently verified; no data release was confirmed.
+  rollout_count: 48 responses per question–budget pair
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: AdaCompute-LLM learns to allocate response budget per question under a constrained-policy objective
+    rather than using one fixed test-time budget.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Questions are paired with candidate compute budgets; the checked paper does not establish a public prompt/budget
+    dataset. -> For each question and budget, 48 response samples are used to form Lagrangian-oracle labels and train a gradient-boosted
+    budget-selection classifier. -> A constrained reward/Lagrangian objective defines labels programmatically; exact reward
+    implementation, rollout storage, and budget-cost accounting are incomplete in the checked source. -> reported final selection
+    or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Oracle-style labels may not transfer to deployment; cost model, response traces, classifier features, and source-data
+    provenance remain incomplete.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It makes the missing bridge between test-time scaling and reusable trace data clear: question–budget rollouts,
+  label derivation, and costs must all be retained.'
+related: []
+tags:
+- adaptive-compute
+- constrained-optimization
+- test-time-compute
+- budget-allocation
+- rlvr
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: A budget-allocation method that turns repeated responses into supervised compute-policy labels.
+why_it_matters: 'It makes the missing bridge between test-time scaling and reusable trace data clear: question–budget rollouts,
+  label derivation, and costs must all be retained.'
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

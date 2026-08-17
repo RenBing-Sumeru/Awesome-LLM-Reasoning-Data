@@ -1,0 +1,246 @@
+id: macarena-2026
+title: 'MacArena: Benchmarking Computer Use Agents on an Online macOS Environment'
+year: 2026
+venue: 'Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026'
+authors:
+- Victor Muryn
+- Maksym Shamrai
+- Sofiia Mazepa
+- Yehor Khodysko
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- gui_agents
+- macos
+- desktop_automation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.06560v1
+  arxiv: https://arxiv.org/abs/2606.06560v1
+  code: https://github.com/MacPaw/MacArena
+  data: https://github.com/MacPaw/MacArena/tree/dcdc7d366da12641578ab90f085d69db91651c58/evaluation_examples
+  project: null
+  huggingface: https://huggingface.co/buckets/macpaw-research/MacArena
+  doi: null
+  venue: https://agentwild-workshop.github.io/icml2026/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: '421 public macOS task definitions across 50 applications: 221 manually ported OSWorld tasks, 151 macOSWorld-derived
+    tasks, and 49 MacArena-specific tasks. The 49 custom records span five categories and 20 applications; every custom JSON
+    at the audited commit labels its source as `synth_generation`, while the paper describes all tasks as manually created/reviewed,
+    so exact generation provenance remains unresolved.'
+  trace_author: The evaluated computer-use policy generates the runtime GUI trajectory. The official runner can persist each
+    attempted run locally, but no canonical public corpus or immutable manifest of the paper's reported model trajectories
+    was confirmed.
+  answer_format: A task JSON contains an id, natural-language instruction, initialization `pre_command` or structured `config`,
+    and a task-specific evaluator, plus source/app/category and optional delay/upload/network fields. A locally generated
+    run contains timestamped screenshot files, `traj.jsonl`, model response history, runtime log, final `result.txt`, and
+    an MP4 recording.
+  process_fields:
+  - task_id
+  - instruction
+  - source
+  - pre_command_or_config
+  - evaluator
+  - related_apps
+  - categories
+  - screenshot_observation
+  - optional_accessibility_tree
+  - optional_terminal_output
+  - action
+  - per_step_reward
+  - done
+  - info
+  - screenshot_file
+  - response_history
+  - final_result
+  - recording
+  observation: Each state exposes a full-desktop screenshot; the environment can optionally expose a macOS accessibility tree
+    and terminal output. The paper's baseline experiments state that every agent receives a screenshot at each step.
+  action_space:
+  - move_to
+  - click
+  - right_click
+  - double_click
+  - drag_to
+  - scroll
+  - mouse_down
+  - mouse_up
+  - typing
+  - press
+  - key_down
+  - key_up
+  - hotkey
+  - wait
+  - fail
+  - done
+  environment_or_substrate: 'Two UTM virtual machines use Apple''s native Virtualization framework on Apple Silicon: `MacArena.utm`
+    for the 49 custom tasks and `osworld.utm` for OSWorld and macOSWorld tasks. Public configs specify aarch64 macOS, 1920x1200
+    dynamic display, 8192 MB memory, and shared networking; the repository app manifest states macOS Sequoia 15.5 and pins
+    selected application versions.'
+  verifier_or_reward: Final-state programmatic evaluation. OSWorld-style records compose result getters and metrics; macOSWorld-style
+    and MacArena-specific records run shell/Python/ AppleScript commands inside the VM. The evaluator returns a scalar in
+    [0,1]. Runtime `env.step` returns reward 0, so feedback is terminal full-episode scoring, not state-action or process
+    reward supervision.
+  terminal_predicate: Interaction stops when the agent emits DONE or FAIL or reaches the 15-step horizon; the runner then
+    invokes the task evaluator against final VM state. FAIL maps to zero for feasible OSWorld-style tasks, while task success
+    is determined by the evaluator, not by the agent's DONE declaration alone.
+  provenance: Source task or custom task record -> task initialization in one of two UTM VMs -> screenshot/optional-a11y observation
+    and mouse/keyboard action loop -> terminal final-state evaluator -> local per-run trace/result/video. Immutable record-level
+    source hashes and a public reported-rollout manifest are unknown.
+recipe_metadata:
+  base_model: Not a training recipe. Paper baselines are UI-TARS-1.5 7B, Qwen3-VL 2B, Qwen3-VL 4B, and OpenAI Computer Use
+    Preview.
+  teacher: unknown
+  generator: 'Paper states human annotators manually created and reviewed all tasks. The 49 custom repository records instead
+    use `source: synth_generation`; no model name, prompt, sampling setup, or adjudication explaining that label is disclosed.'
+  prompt_task_source: Curated OSWorld ports, macOSWorld tasks, and 49 custom macOS-native tasks. Custom-task annotator count,
+    instructions, source pool, rejection statistics, and record-level source lineage are unknown.
+  filtering_rule: Authors report human review of every task for executability, unambiguity, and correct specification. Acceptance
+    criteria beyond those labels, inter-annotator checks, rejected-task counts, evaluator unit tests, and adjudication are
+    unknown.
+  sampling_protocol: Four agents are evaluated for two runs per task with screenshot observations and raw mouse/keyboard actions.
+    Exact seeds, retry policy used for paper results, API/model snapshots, and per-model decoding settings are not disclosed.
+  rollout_count: 2 runs per task per evaluated model in the paper; no public rollout manifest confirmed
+  temperature: unknown
+  inference_budget: 15 interaction steps per task. Appendix A says at most two macOS guests run simultaneously on one Apple
+    Silicon host and MacArena uses up to two parallel tasks; additional hosts are required for greater throughput.
+  selection_threshold: Success Rate counts tasks whose execution evaluator returns a positive result. The two-run helper records
+    both run directories but aggregates the maximum run score.
+  optimizer_or_scaffold: Evaluation-only scaffold with UTM clone/start/delete control, task setup, action execution, local
+    trajectory/result recording, final-state graders, and score aggregation; no policy optimizer or post-training objective
+    is reported.
+  reset_protocol: 'The paper describes copy-on-use: clone a clean base VM for each episode and discard it afterward. The official
+    provider supports clone/delete reset, but the audited two-run helper fully resets only run 1 and runs run 2 after merely
+    closing applications.'
+audit:
+  source_mixture: 221 OSWorld-derived, 151 macOSWorld-derived, and 49 custom tasks, two UTM VM images, public task setup/evaluator
+    code, and locally generated agent traces. Repository tree counts match the paper's 421-task total.
+  split: unknown; no train/dev/test split or hidden-test policy is disclosed. The only paper-level groupings are the three
+    source subsets and their categories. At the audited commit, README/runner examples refer to several meta-file names that
+    are absent from the tree; only `evaluation_examples/machine_0_test.json` is present.
+  decontamination: unknown
+  benchmark_overlap: 372 of 421 tasks inherit OSWorld or macOSWorld lineage and all prompts/evaluators are public. The paper
+    observes a ranking reversal and hypothesizes task-distribution familiarity, but supplies no formal training-data exposure,
+    duplicate, or decontamination audit.
+  license: Root license states MIT for MacPaw code/framework/custom tasks, Apache-2.0 for OSWorld tasks, and CC BY-NC 4.0
+    for macOSWorld tasks. Apple macOS EULA and third-party application licenses remain the user's responsibility. The root
+    license refers to `/tasks/...` component paths and an OSWorld LICENSE that are not present at the audited tree locations,
+    so component-level redistribution and commercial-training rights require clarification.
+  lineage: Curated OSWorld port or macOSWorld import or custom task -> human validation claim -> public task JSON/setup/evaluator
+    -> one of two public UTM images -> evaluated agent episode -> final execution score. Record-level immutable upstream revisions
+    are unknown.
+  release_version: Repository audit pinned to commit dcdc7d366da12641578ab90f085d69db91651c58 on 2026-07-20. The public HF
+    bucket reports 9 files and 121,038,630,504 bytes, last updated 2026-06-08. No paper-bound semantic version tying paper,
+    task hashes, VM hashes, app versions, and reported results together was confirmed.
+  successful_and_failed_sample_retention: The runner locally writes screenshots, trajectory JSONL, responses, logs, result,
+    and video for completed runs irrespective of score; exception paths append an error. Both run directories are retained
+    even though the aggregate selects the maximum score. No canonical public success/failure trajectory corpus for the paper
+    experiments was confirmed.
+  privacy_or_consent: unknown; the paper does not disclose annotator count, demographics, compensation, consent protocol,
+    or a privacy/redaction audit. Local run artifacts contain desktop screenshots, model responses, logs, and video, and the
+    121 GB VM release was not exhaustively inspected for embedded state or credentials.
+  safety: The Impact Statement anticipates no work-specific direct negative consequences, but no dedicated misuse, credential,
+    external-service, or VM-image security assessment is reported. Some task setup scripts access live external URLs, creating
+    side-effect and drift surfaces that require sandboxing for reuse.
+  known_failure_modes:
+  - Public task `450f6f33-bf2c-43bf-a349-4363e9b75740` instructs merging Contacts entries but its evaluator checks Session
+    Setapp website-blocker/YouTube state, demonstrating at least one direct task-verifier semantic mismatch.
+  - The paper claims a clean copy-on-use state per episode, while the audited two-run helper resets only the first run and
+    starts the second after closing applications; residual files/preferences can affect the second score.
+  - 'All 49 custom JSONs say `source: synth_generation` although the paper says tasks were manually created, leaving generator
+    and lineage attribution unresolved.'
+  - Final-state scripts can produce false positives/negatives under app, filesystem, accessibility, shell, window-title, or
+    version drift; no evaluator error study is reported.
+  - Public prompts and graders plus inherited benchmark tasks create contamination and verifier-gaming risk; the paper's familiarity
+    explanation is not an exposure audit.
+  - No canonical released rollouts, replay manifest, seeds, model/API snapshots, or train/dev/test policy supports exact result
+    replay or safe training reuse.
+  - Reproduction requires Apple Silicon, UTM, licensed macOS, large VM downloads, third-party apps, and mutable external resources;
+    Appendix A limits a host to two guests.
+  - No human-performance baseline is reported despite 100% human-verification claims.
+  citation_status: verified
+  confidence: medium
+  notes: Full arXiv v1 paper, Appendix A, official arXiv metadata, AIWILD workshop site, official repository/task tree and
+    selected task/evaluator files, runner/reset code, license/NOTICE, versions manifest, and official HF VM bucket/configs
+    were checked. Citation and artifact identity are strong; reuse confidence is reduced by verifier, reset, provenance, split,
+    release, privacy, and license gaps.
+  remaining_unknowns:
+  - Custom-task generator and reconciliation of `synth_generation` with human-created wording
+  - Annotator protocol, agreement, rejection counts, compensation, and consent
+  - Complete task-level upstream revision/provenance and evaluator test ledger
+  - Paper-run seeds, API/model snapshots, decoding settings, and exact retry/reset behavior
+  - Train/dev/test or evaluation-only policy and decontamination/model-exposure checks
+  - Immutable public success/failure trajectories and deterministic replay metadata
+  - Paper-bound task, VM, app, dependency, and result manifest
+  - Component-level redistribution, commercial-training, VM-image, and asset rights
+inclusion_reason: 'MacArena releases an execution-verified macOS evaluation object: 421 task definitions, two Apple-Silicon
+  UTM environments, screenshot/action interaction, local trajectory logging, and final-state programmatic feedback. It directly
+  exposes the environment and terminal contract needed to audit desktop-agent episodes, while its missing public rollout corpus
+  and concrete verifier/reset/provenance defects prevent treating it as ready-made training trajectory data.'
+related:
+- macosworld-2025
+tags:
+- environment-agent-trajectory-data
+- computer-use-agent
+- gui-agent
+- macos
+- interactive-benchmark
+- execution-based-evaluation
+- virtual-machine
+- verifier-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line: MacArena releases 421 executable macOS GUI tasks and two Apple-Silicon UTM environments with terminal state graders
+  and local trace logging, but no canonical public rollouts and material verifier/reset/provenance gaps.
+one_line_summary: MacArena releases 421 executable macOS GUI tasks and two Apple-Silicon UTM environments with terminal state
+  graders and local trace logging, but no canonical public rollouts and material verifier/reset/provenance gaps.
+why_it_matters: 'It makes macOS desktop-agent state, action, reset, and final-feedback interfaces inspectable for evaluation
+  and audit, while showing why a runnable environment is not automatically a reusable training corpus: failures, replay metadata,
+  splits, verifier tests, rights, and contamination evidence still determine whether trajectories can be trusted.'
+card: null
+card_recommendation: Upgrade the existing `macarena-2026` V2 Card to L4_chinese_review_ready from this ledger, explicitly
+  preserving the verifier mismatch, two-run reset discrepancy, absent canonical trajectory corpus, and license/provenance
+  unknowns; keep review state new until human Review.
+needs:
+- 'needs_verifier_audit: fix task/evaluator mismatches and publish task-level evaluator tests and error analysis'
+- 'needs_reset_reconciliation: align the two-run helper with the paper''s clean copy-on-use claim'
+- 'needs_provenance: reconcile `synth_generation` with human-created wording and publish record-level lineage'
+- 'needs_split_policy: publish train/dev/test or explicit evaluation-only policy plus hidden/public evaluator rules'
+- 'needs_trajectory_manifest: release immutable success, failure, timeout, response, observation, action, and result records'
+- 'needs_replay: pin seeds, model/API versions, runner config, VM/task hashes, app versions, and external dependencies'
+- 'needs_audit: document decontamination/model exposure, evaluator false positives/negatives, privacy, and safety'
+- 'needs_rights: reconcile component paths/licenses and state VM, third-party app, asset, redistribution, and training rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Verified against arXiv:2606.06560v1 and official MacPaw artifacts. Repository inspection was pinned to dcdc7d366da12641578ab90f085d69db91651c58;
+    HF bucket metadata/configs were checked on 2026-07-20. Venue acceptance is author-stated in the paper/arXiv/repository/VM
+    README; no paper-specific OpenReview or proceedings record was confirmed.

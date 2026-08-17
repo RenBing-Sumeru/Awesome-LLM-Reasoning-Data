@@ -1,0 +1,1 @@
+Outcome supervision rewards only the final answer and gives little signal about which reasoning step deserves credit. This work asks whether step-by-step verification can train models to produce more reliable mathematical reasoning than final-answer rewards alone.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以反事实干预测试推理模型的思维草稿是否真正影响后续推理与最终答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "研究推理过程忠实性、可监控性与干预评测的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zidi Xiong、Shan Chen、Zhenting Qi、Himabindu Lakkaraju",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

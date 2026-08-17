@@ -1,0 +1,103 @@
+id: two-heads-multi-agent-collaborative-reasoning-2025
+title: 'Two Heads are Better Than One: Test-time Scaling of Multi-agent Collaborative Reasoning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Can Jin
+- Hongwu Peng
+- Qixin Zhang
+- Yujin Tang
+- Dimitris N. Metaxas
+- Tong Che
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- full_episode
+domains:
+- mathematics
+- code
+- general_reasoning
+- multi_agent
+training_use:
+- sft
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2504.09772
+  arxiv: https://arxiv.org/abs/2504.09772
+  code: https://github.com/jincan333/MAS-TTS
+  data: https://huggingface.co/datasets/Can111/m500
+  project: null
+  huggingface: https://huggingface.co/Can111/m1-32b
+  doi: https://doi.org/10.48550/arXiv.2504.09772
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.09772
+data_object:
+  prompt_source: M500 has 500 collaborative reasoning traces; task provenance unknown.
+  trace_author: Collaborative trace provenance incomplete.
+  answer_format: Multi-agent discussions; exact schema requires dataset inspection.
+  process_fields:
+  - discussion
+  - collaboration_trajectory
+  - ceo_depth
+  environment_or_substrate: CEO agent coordinates discussion/depth.
+  verifier_or_reward: Formal M500 verifier/reward not established.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct fine-tuned to M1-32B.
+  teacher: unknown
+  generator: M500 SFT plus CEO coordination.
+  filtering_rule: unknown
+  sampling_protocol: Adaptive depth; budgets unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: SFT hyperparameters unknown.
+audit:
+  source_mixture: Source tasks, generators, revisions, filtering unknown.
+  split: unknown
+  decontamination: unknown
+  license: Code Apache-2.0; dataset/model rights unknown.
+  lineage: M500 -> M1-32B -> CEO-coordinated inference
+  known_failure_modes:
+  - M500 lineage incomplete.
+  - Coordination is not replayable without logs/prompts.
+  - Results can vary with topology/API/budget.
+  citation_status: verified
+  confidence: medium
+  notes: Official paper, repo, M500/model links checked.
+inclusion_reason: Links a collaborative trace corpus to inference-time coordination.
+related: []
+tags:
+- multi-agent
+- m500
+- ceo-agent
+- collaborative-reasoning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Two Heads releases M500 and adapts multi-agent discussion depth with a CEO agent.
+why_it_matters: Communication trajectories are a reusable Track 5 search substrate.
+card: null
+needs:
+- needs_metadata
+- needs_data
+- needs_recipe
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official links verified; data contents not independently audited.

@@ -1,0 +1,6 @@
+- Start with Figures 2–3 and §§3–4: the key object is the JSON-state episode generator, not the leaderboard.
+- Read Appendix G before interpreting “dense reward”: it is terminal goal-check progress with discounts, not a per-action reward trace.
+- Keep the two gains separate: +12.8 SR points on full Test256 versus +42.8 simulation and +40.7 real-device points on the selected 59-task signal subset.
+- Treat Train160/Test256 as template-level disjointness; semantic overlap, world-data overlap, and pretraining contamination remain unknown.
+- Pair this with AndroidWorld/AndroidLab for emulator contrasts and AppWorld for state-based verification; inspect current `mobilegym-rl` separately because v0.1.0 postdates arXiv v2.
+- Still needed: exact paper-run commit/data pin, sampled task IDs and seeds, complete success/failure rollout logs, reward vectors, and the trained checkpoint.

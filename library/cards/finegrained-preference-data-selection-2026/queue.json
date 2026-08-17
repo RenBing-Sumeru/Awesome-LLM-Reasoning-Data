@@ -1,0 +1,18 @@
+{
+  "title": "Data Selection for LLM Alignment Using Fine-Grained Preferences",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=FqFU3IrnEa",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T08:33:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以跨偏好维度的共识过滤冲突样本，再用标准 DPO 训练，让细粒度偏好数据更可靠、更高效",
+    "updated_at": "2026-07-16T08:33:38Z"
+  }
+}

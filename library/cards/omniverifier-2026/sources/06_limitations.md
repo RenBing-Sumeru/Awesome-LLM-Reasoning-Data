@@ -1,0 +1,3 @@
+ViVerBench measures 16 designed categories, not all visual semantics or real-world harm. A reported gain can therefore reflect this benchmark’s task construction; before reuse, inspect category coverage and test prompts that match the target generator and domain.
+
+The released evaluation has rule-based and GPT-4.1-based paths. Model-based judging introduces a second evaluator whose bias and version can affect conclusions, while details of some data-construction filters and compute budgets are not confirmed here. Reuse should pin evaluator, model, dataset, and code revisions and audit disagreements.

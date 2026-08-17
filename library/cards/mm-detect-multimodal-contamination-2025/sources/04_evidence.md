@@ -1,0 +1,1 @@
+The study audits 12 MLLMs over five benchmarks and reports substantial contamination, particularly for proprietary models and older benchmarks. Its source analysis indicates that leakage may arise from unimodal pretraining sources. This supports a multimodal audit requirement, but does not prove the exact training corpus for every model.

@@ -1,0 +1,5 @@
+The central reversal is: discover an executable interaction first, then name the task it supports. Rule-based exploration traverses interactive GUI elements and records a pre-state/action/post-state triple. The discovery action set is `CLICK`, `TYPE`, and `SCROLL`; GPT-4o supplies content for text-entry fields, while the remaining exploration policy is described as rule based.
+
+GPT-4o reads the action and before/after visual evidence to write a concise low-level instruction, an analysis of possible continuation, and an executable high-level task. Those high-level tasks are then executed in the environment by a GUI-capable model such as GPT-4o, yielding full trajectories. This ordering grounds task wording in an observed state transition instead of asking a generator to imagine a task from the initial screen alone.
+
+The second idea is to avoid a binary complete/fail discard. A Trajectory Reward Model (TRM) assigns each trajectory a score from 1 to 5 for completion and coherence. Sampling uses `P(g_i)=R_i/sum_k R_k`, so incomplete trajectories remain eligible but are down-weighted. This is a sampling contract, not proof that every retained step is correct.

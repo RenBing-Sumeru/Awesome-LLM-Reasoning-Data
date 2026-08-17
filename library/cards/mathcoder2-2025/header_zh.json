@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MathCoder2 将筛选后的数学网页翻译为“条件—表达式—结果—Python”记录，与网页、合成、代码和教材数据组成论文报告的 19,487,652 文档、19,184,073,343 token 的 MathCode-Pile；当前公开数据仍是只有 train split 的 partial text-only 版本，且执行过滤、谱系、许可、去污染和 checkpoint 绑定均不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学 continued-pretraining 数据构建、执行过滤与开放发布审计",
+  "best_for_ch": "研究模型翻译的数学代码、continued pretraining、程序执行筛选、混合数据配方，以及 partial release 的 sandbox、谱系、许可、去污染和版本绑定风险",
+  "confidence_ch": "中",
+  "authors_ch": "Zimu Lu、Aojun Zhou、Ke Wang、Houxing Ren、Weikang Shi、Junting Pan、Mingjie Zhan、Hongsheng Li",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,3 @@
+Its evidence is the structured review of existing systems and the official claim that code supplies verifiable execution paths and runtime validation. The survey does not establish one universal gain from code: results must still be read with the task, environment, test set, and feedback mechanism used by each primary study.
+
+Execution provides an observable result, but observability is not identical to correctness. A test can cover only part of a specification, and a runtime signal can reflect an environment-specific constraint. The survey supports using these distinctions to interpret existing work; it does not claim that one execution score compares all methods or programming settings.

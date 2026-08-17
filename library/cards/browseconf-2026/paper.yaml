@@ -1,0 +1,114 @@
+id: browseconf-2026
+title: 'BrowseConf: Confidence-Guided Test-Time Scaling for Web Agents'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Litu Ou
+- Kuan Li
+- Huifeng Yin
+- Liwen Zhang
+- Zhongwang Zhang
+- Xixi Wu
+- Rui Ye
+- Zile Qiao
+- Yong Jiang
+- Pengjun Xie
+- Fei Huang
+- Jingren Zhou
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- web_agents
+- information_seeking
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.21/
+  arxiv: https://arxiv.org/abs/2510.23458
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.21
+  venue: https://aclanthology.org/2026.findings-acl.21/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.21/
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.23458
+data_object:
+  prompt_source: BrowseComp/BrowseComp-zh evaluations; SailorFog-QA validation.
+  trace_author: Web agent produces multi-turn attempts with answer/confidence.
+  answer_format: Answer plus verbalized confidence; optional summary/negative context.
+  process_fields:
+  - answer
+  - confidence
+  - attempt_index
+  - summary
+  - low_confidence_history
+  - stop
+  environment_or_substrate: Web-agent restart/summary/negative retry loop.
+  verifier_or_reward: Self-confidence routes/stops; correctness only evaluates.
+  terminal_predicate: Confidence threshold or highest-confidence answer at budget.
+recipe_metadata:
+  base_model: gpt-oss-120b and DeepSeek-V3.1 reported.
+  teacher: unknown
+  generator: Web-search agent emits answer/confidence per attempt.
+  filtering_rule: Threshold selected on SailorFog-QA; Neg condition differs from prior low-confidence answer.
+  sampling_protocol: Maximum 10 attempts reported.
+  rollout_count: 10
+  temperature: unknown
+  inference_budget: Attempts and threshold.
+  optimizer_or_scaffold: Training-free allocation.
+audit:
+  source_mixture: No queries, pages, action logs, summaries, selection/rejection package.
+  split: Validation/eval separated but immutable manifest unknown.
+  decontamination: unknown
+  license: Web/benchmark/model/tool rights need review.
+  lineage: query -> actions/observations -> answer/confidence -> context -> retry/stop
+  known_failure_modes:
+  - Confidence miscalibration.
+  - Threshold transfer risk.
+  - Summaries can omit evidence; negative context can overcorrect.
+  - Web state is volatile.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL/arXiv checked.
+inclusion_reason: Confidence directly controls web-agent retry, stopping, and trace reuse.
+related: []
+tags:
+- web-agent
+- confidence
+- rollout
+- early-stopping
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: BrowseConf uses verbalized confidence to stop/retry web-agent rollouts.
+why_it_matters: A per-rollout trace field controls interactive allocation and memory.
+card: null
+needs:
+- needs_code
+- needs_data
+- needs_metadata
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official citations; no code/data found.

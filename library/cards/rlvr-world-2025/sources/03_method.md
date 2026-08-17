@@ -1,0 +1,6 @@
+The paper reports four upstream families. ByteSized32 supplies 76,369 text-game transitions from 31 games; its 2,954-transition high-quality subset is described as the official test subset. Text SFT uses 4,237 correct DeepSeek-R1 responses retained by rejection sampling, with unchanged transitions downsampled to changed:unchanged ratios of 100:40 for binary reward and 100:5 for task-specific reward. Language GRPO uses group size 5, temperature 1.0, and top-p 1.0.
+
+For WebArena, the paper starts from about 14,000 WMA trajectories, removes prompt-plus-target pairs longer than 5,000 tokens, retains about 7,000, and reports a 99%/1% split. The SFT target combines GPT-4o-mini CoT released by WMA with extracted accessibility-tree changes. For video, it uses RT-1/Open X-Embodiment plus PushT, Rope, and Granular inputs named from DINO-WM; the paper reports 87,212 RT-1 trajectories and a 99%/1% split. Separate 138M autoregressive video transformers use frozen VQGAN/FSQ tokenizers; main video analysis reports GRPO group size 16.
+
+The author-linked collection visibly releases derived text-game and WebArena CoT datasets, code, and model/tokenizer checkpoints. It does not, from the accepted evidence, provide one immutable manifest joining all upstream inputs, selected/rejected records, rollout traces, reward decisions, source rights, and final-checkpoint lineage.
+

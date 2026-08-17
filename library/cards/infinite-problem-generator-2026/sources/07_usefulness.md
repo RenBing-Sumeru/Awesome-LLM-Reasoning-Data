@@ -1,0 +1,3 @@
+- Reuse the architecture when a STEM domain can be expressed as tested functions with explicit validity ranges; it is well suited to generating executable SFT or evaluation records.
+- Treat formula count and dependency structure as curriculum controls, then separately audit linguistic realism and physical assumptions.
+- Before redistribution or training, verify the dataset license, textbook provenance, code/text agreement, and overlap with target evaluations.

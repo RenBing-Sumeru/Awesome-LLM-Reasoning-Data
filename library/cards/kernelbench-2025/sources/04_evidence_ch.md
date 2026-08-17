@@ -1,0 +1,1 @@
+arXiv 摘要报告了 250 个精心选择的 PyTorch ML workload，并给出主要经验边界：前沿模型常能生成语法上像样的 kernel，但正确且优化的 kernel 仍很少。摘要报告最佳测试模型正确完成 87% 任务，但只有 10% 达到优化，平均 speedup 为 1.12x。官方博客和仓库提供数据、prompt、评测脚本和 leaderboard 环境。行级决定性证据是可执行结果：生成 kernel 能编译，在随机测试上数值匹配 PyTorch，并相对 reference 计时。证据边界高度依赖硬件和软件栈；speedup 不能跨 GPU、CUDA 版本、compiler flag、tensor shape 或 timing policy 直接外推。

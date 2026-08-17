@@ -1,0 +1,1 @@
+Use it when mixed custom data must preserve task utility while protecting a safe base model. Build defensible reference subsets, compare with an equal-ratio sample filter, and evaluate both safety and utility. Do not use it without a meaningful safety reference set.

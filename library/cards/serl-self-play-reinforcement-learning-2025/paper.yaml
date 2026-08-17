@@ -1,0 +1,269 @@
+id: serl-self-play-reinforcement-learning-2025
+title: 'SeRL: Self-play Reinforcement Learning for Large Language Models with Limited Data'
+year: 2025
+venue: NeurIPS 2025 (Main Conference Track)
+authors:
+- Wenkai Fang
+- Shunyu Liu
+- Yang Zhou
+- Kongcheng Zhang
+- Tongya Zheng
+- Kaixuan Chen
+- Mingli Song
+- Dacheng Tao
+source_role:
+- construction_recipe
+- verifier_reward
+- data_release
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- medical_reasoning
+- self_play
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/file/95c2cbe23fb6d28a4ae908aa7f3de5bf-Paper-Conference.pdf
+  paper_pdf: https://papers.nips.cc/paper_files/paper/2025/file/95c2cbe23fb6d28a4ae908aa7f3de5bf-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2505.20347
+  code: https://github.com/wantbook-book/SeRL
+  code_pinned: https://github.com/wantbook-book/SeRL/tree/f8a4f86a797b9a91b22ce53b1fdc7fea4c225693
+  data: https://github.com/wantbook-book/SeRL/tree/f8a4f86a797b9a91b22ce53b1fdc7fea4c225693/openrlhf/dataset/math
+  doi: https://doi.org/10.48550/arXiv.2505.20347
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/95c2cbe23fb6d28a4ae908aa7f3de5bf-Abstract-Conference.html
+  bibtex: https://papers.nips.cc/paper_files/paper/2025/file/95c2cbe23fb6d28a4ae908aa7f3de5bf-Bibtex-Conference.bib
+  project: null
+  huggingface: null
+  models: null
+  logs: null
+  release: null
+  dataset_card: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+data_object:
+  record_type: Online self-play RL groups consisting of one generated question, sixteen policy responses with chain-of-thought
+    and final answers, a programmatic answer-equivalence grouping, and one binary majority-agreement reward per response.
+    Complete grouped records from the reported runs are not released.
+  prompt_source: Main experiments begin with 500 MATH training questions sampled uniformly across difficulty levels. Few-shot
+    generation mixes seed questions with previously accepted generated questions. A medical extension instead uses 500 randomly
+    sampled MedQA training instructions.
+  trace_author: The current LLaMA-3.2-3B-Instruct or Qwen2.5-7B-Instruct policy generates both new questions and the sixteen
+    reasoning responses used for reward and policy updates.
+  context_state:
+  - 500-record domain seed
+  - eight-example few-shot question-generation context
+  - accepted generated-question pool
+  - current policy checkpoint and iteration
+  - current unconsumed batch used by the similarity filter
+  instruction_record:
+    fields:
+    - generated_question
+    - generated_question_index
+    - seed_or_generated_few_shot_context
+    - maximum_ROUGE_L_against_comparison_pool
+    - lexical_and_length_filter_status
+    - sixteen_response_majority_ratio
+    - difficulty_filter_status
+    release_note: Run-local code serializes only prompt and index for retained, difficulty-filtered, or expired groups. It
+      does not serialize a complete filter feature vector or rejection reason.
+  response_record:
+    fields:
+    - question
+    - chain_of_thought
+    - final_answer
+    - extracted_mathematical_answer
+    - pairwise_equivalence_relations
+    - selected_majority_cluster
+    - binary_agreement_reward
+    release_note: Reported-run responses, extraction outputs, equivalence matrices, verifier exceptions, and rewards are not
+      released.
+  answer_format: The response prompt asks the policy to reason step by step and provide a final answer. Math-Verify extraction
+    and grading compare completed responses.
+  process_fields:
+  - seed_question_pool
+  - few_shot_question_generation_prompt
+  - generated_question
+  - similarity_keyword_length_filter_results
+  - sixteen_reasoning_responses
+  - final_answer_extractions
+  - pairwise_math_equivalence_matrix
+  - majority_answer_cluster
+  - majority_ratio
+  - difficulty_filter_result
+  - per_response_binary_reward
+  - Reinforce++_return_and_advantage
+  - training_step_and_iteration
+  observation: The construction loop observes ROUGE-L, lexical and length checks, answer equivalence relations, majority ratio,
+    and online policy state.
+  verifier_output: Pairwise Math-Verify equivalence between final answers, a neighbor count for each response, one selected
+    majority response, sixteen binary agreement rewards, and their mean for difficulty admission.
+  reward: A response receives 1 when Math-Verify treats it as equivalent to the selected majority response and 0 otherwise.
+    The mean of sixteen rewards must lie inclusively between 0.2 and 0.8 for training admission.
+  environment_or_substrate: OpenRLHF/Reinforce++ with Ray and vLLM for online generation, rollout, filtering, and updates;
+    Math-Verify supplies answer extraction and programmatic mathematical equivalence.
+  verifier_or_reward: Self-consensus over sixteen responses from the current policy, grouped by mathematical equivalence.
+    This is not a ground-truth correctness verifier and can reward a shared wrong answer.
+  terminal_predicate: Terminal reward is majority-cluster membership. Question admission also requires lexical, length, similarity,
+    and dual-ended agreement filters.
+  provenance: MATH or MedQA seed -> few-shot question generation -> online filters -> sixteen current-policy reasoning responses
+    -> Math-Verify equivalence -> binary majority rewards -> Reinforce++ update -> next iteration.
+  release_surface: The repository bundles a configured 500-row math seed, MATH derivatives, one 7,532-row generated-question
+    file named for iteration 4, and one mixed 15,004-row generated-plus-ground-truth file. It does not release complete paper-run
+    response/reward groups, rejected generations, or manifests.
+recipe_metadata:
+  base_model: Main experiments use LLaMA-3.2-3B-Instruct and Qwen2.5-7B-Instruct.
+  teacher: None at the SeRL RL stage. The same current policy generates questions, samples responses, and defines reward through
+    self-consensus; pretrained models and seed datasets remain upstream inputs.
+  generator: The current policy generates question-only instructions from a few-shot prompt, then samples sixteen chain-of-thought
+    responses for every candidate retained through the non-difficulty filters.
+  prompt_task_source: Five hundred MATH training questions sampled uniformly across difficulty levels for math runs; five
+    hundred randomly selected MedQA training instructions for the medical extension.
+  filtering_rule: Reject questions with maximum ROUGE-L above 0.7, configured visual/file/ programming keywords, non-English
+    or punctuation-leading text, fewer than 3 or more than 150 words, or a sixteen-response majority ratio outside the inclusive
+    range 0.2 to 0.8.
+  sampling_protocol: Appendix C.4 specifies an eight-example context with one-fourth seed and three-fourths previously generated
+    examples. Released code instead samples at most two generated examples and fills the remainder from seed, using eight
+    seed examples before any generated pool exists. Question generation uses temperature 0.8, top-p 0.95, maximum 1,024 new
+    tokens, presence penalty 2, and one generation per prompt.
+  rollout_count: 16
+  temperature: 1.0
+  top_p: unknown
+  inference_budget: Three reported iterations, each a full pass over 7,500 admitted instructions with sixteen responses per
+    prompt, nominally 120,000 sampled responses per iteration. Prompt and response maxima are each 1,024 tokens. Compute uses
+    eight RTX A6000 GPUs, a 96-core Intel Xeon Gold 5318Y CPU, and 512 GB RAM; GPU-hours and failed-run compute are unknown.
+  search_or_scaffold: No tree search. The scaffold is an evolving accepted-question pool, online lexical/similarity filters,
+    sixteen-sample self-consistency, and a dual-ended difficulty window.
+  selection_threshold: Maximum ROUGE-L at most 0.7 and mean binary majority reward inclusively from 0.2 to 0.8, plus keyword,
+    leading-character, and 3-to-150-word filters.
+  seed_protocol: Sample 500 MATH train questions uniformly across difficulty levels. The pinned seed file has 500 rows and
+    500 unique normalized prompts.
+  buffer_policy: Accepted generated questions populate `global_keep_data` for later few-shot generation. Candidate batches
+    are consumed online; response groups surviving the difficulty window are queued for training, while groups waiting more
+    than one step are marked expired.
+  reward_schedule: Static binary majority-membership reward at response level plus the Reinforce++ token-level KL penalty.
+    Difficulty is the mean of the sixteen binary rewards.
+  optimizer_or_scaffold: Reinforce++ with normalized returns/advantages, actor learning rate 5e-7, reported initial KL coefficient
+    1e-4, batch size 16, one epoch, and three iterations. Released templates diverge from paper values and are not exact paper-run
+    configurations.
+audit:
+  source_mixture: Main training starts from 500 human-curated MATH seed questions and adds current-policy questions whose
+    rewards come from the same policy's answer consensus. The medical extension uses 500 MedQA seeds. Base-model pretraining
+    data and upstream benchmark provenance are not audited.
+  split: Math seeds come from MATH train; evaluation uses MATH-500, MATH-Hard, ASDiv, College Math, TabMWP, and MMLU-Pro.
+    The medical extension seeds from MedQA train and evaluates MedQA, PubMedQA, and NephSAP. Exact run seed IDs, generated
+    manifests, and checkpoint-to-iteration bindings are absent.
+  decontamination: unknown
+  benchmark_overlap: A curator exact-normalized-string comparison found zero overlap between the configured 500-row seed or
+    inspected bundled files and bundled MATH-500/MATH-Hard evaluation files. No semantic overlap test or base-pretraining
+    contamination audit is reported, so this does not establish decontamination.
+  license: Repository code declares Apache-2.0, and the README license table names only the codebase. Bundled MATH-derived
+    and generated files have no separate dataset card or dataset-specific/per-component license statement.
+  lineage: Base checkpoint plus sampled seed -> current-policy question generation -> online filters -> sixteen response rollouts
+    -> Math-Verify equivalence and majority reward -> Reinforce++ update -> iteration evaluation. Exact run artifacts, checkpoint
+    hashes, and manifests are absent.
+  release_version: Audited default-branch commit f8a4f86a797b9a91b22ce53b1fdc7fea4c225693 (2026-01-24). There are no tags
+    or GitHub Releases, the branch contains post-paper additions, and no immutable author-designated paper revision was found.
+  successful_and_failed_sample_retention: Bundled files retain seed, training, generated-question, and mixed prompt snapshots.
+    Run-local code can retain prompt/index pairs for difficulty-filtered, expired, and trained groups, but not the complete
+    sixteen responses, equivalence matrices, verifier exceptions, rewards, lexical rejection reasons, or exact accepted/rejected
+    stream.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - 'Majority agreement is not correctness: the paper shows plausible reasoning consistently ending with final answer 0 can
+    earn full reward while MATH-500 accuracy collapses.'
+  - The difficulty window mitigates demonstrated reward hacking but cannot distinguish a moderately sized wrong consensus
+    from a correct one.
+  - Math-Verify exceptions are caught without logging and treated as non-equivalence, silently fragmenting answer clusters.
+  - The paper says tied majority answers use the shortest answer, while code uses the first maximum-neighbor response and
+    has no length comparison.
+  - Appendix C.4 specifies one-fourth seed and three-fourths generated few-shot examples; code uses at most two generated
+    and fills an eight-example context from seed.
+  - LLaMA and Qwen templates disagree with paper tables on micro-batches, initial KL coefficient, and/or instructions per
+    iteration; no exact paper-run config is tagged.
+  - '`llama_gen7500_iter4.jsonl` has 7,532 rows but only 4,730 unique normalized prompts, leaving 2,802 exact duplicate prompts.
+    Its iteration-4 filename does not map to the three reported iterations.'
+  - The bundled mixed file lacks a row-level source field and is not clearly bound to a main online SeRL run.
+  - Majority-at-16 does not consistently rise across iterations, so the method may compress multi-sample agreement into Pass@1
+    rather than raise the underlying capability ceiling.
+  - One fixed random seed and no error bars leave RL variance and checkpoint-selection sensitivity unquantified.
+  - Complete trajectories, failure records, public run logs, official checkpoints, semantic decontamination, and immutable
+    paper releases are unavailable.
+  - Self-generated curricula can propagate seed bias, while medical use raises explainability and high-impact deployment risks.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the NeurIPS proceedings record and final 33-page paper, arXiv metadata, pinned current repository,
+    generation prompt, training templates, trainer filtering/retention code, Math-Verify reward code, bundled JSONL files,
+    code license, and release state. Artifact existence does not upgrade missing paper-run lineage.
+  remaining_unknowns:
+  - Exact paper-run code revision, dependency lock, seed IDs, RNG state, and complete configurations
+  - Complete accepted and rejected generated-question streams for all iterations
+  - All responses, extracted answers, equivalence matrices, verifier errors, and rewards
+  - Mapping from bundled files to experiments, iterations, and checkpoints
+  - Semantic benchmark overlap and upstream pretraining contamination
+  - Dataset-specific license and provenance for every bundled component
+  - Official checkpoints, hashes, public logs, and checkpoint-selection rule
+  - Independent runs, variance, total GPU-hours, and failed-run compute
+inclusion_reason: SeRL is a limited-data self-play recipe in which a small domain seed drives online question generation,
+  filters select trainable prompts, sixteen self-sampled answers define majority-agreement rewards, and Reinforce++ updates
+  the same policy without labels for generated questions.
+related:
+- absolute-zero-2025
+- covo-self-rewarding-2025
+- self-evolving-curriculum-2025
+tags:
+- serl
+- self-play
+- self-instruction
+- self-rewarding
+- majority-voting
+- math-verify
+- reinforce-plus-plus
+- online-data-generation
+- limited-data
+- reward-hacking
+status: partial
+one_line_summary: SeRL generates questions from a 500-example seed, filters them by diversity and self-consensus difficulty,
+  and trains on sixteen-response agreement rewards, while releasing code and prompt snapshots rather than complete paper-run
+  trajectories.
+why_it_matters: It operationalizes label-free reward construction for scarce-domain reasoning, but its wrong-consensus failure
+  and paper-code-release mismatches show why self-rewarding data needs failures, equivalence traces, provenance, and immutable
+  configurations.
+card: null
+needs:
+- 'needs_trace_release: publish immutable accepted/rejected questions, all sixteen responses, extracted answers, equivalence
+  matrices, verifier errors, rewards, filter reasons, steps, and iteration IDs'
+- 'needs_reproducibility_pin: tag the exact paper revision with dependency lock, full LLaMA/Qwen configs, RNG seeds, seed
+  IDs, checkpoint hashes, and run manifest'
+- 'needs_config_reconciliation: resolve the few-shot ratio, tie-break, micro-batch, KL, and iteration-size contradictions'
+- 'needs_data_card: document every bundled file''s purpose, schema, generating checkpoint, iteration, filtering state, deduplication,
+  provenance, and license'
+- 'needs_deduplication: explain or remove the 2,802 exact duplicate prompts and publish unique counts for all paper-run generations'
+- 'needs_audit: test wrong-consensus reward, verifier exception rates, semantic benchmark overlap, pretraining contamination,
+  and medical safety'
+- 'needs_statistics: report independent runs, variance, checkpoint selection, total compute, and failures'
+- 'needs_artifacts: publish official checkpoints, model cards, licenses, intended use, and public run logs or mark them unavailable'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Canonical NeurIPS acceptance, final paper, arXiv, pinned code, bundled data, license, affiliations, official BibTeX,
+    and release state were checked. Exact paper-run trajectories, configurations, checkpoints, and logs remain unavailable.
+category_ids:
+- data_construction_open_release_recipes

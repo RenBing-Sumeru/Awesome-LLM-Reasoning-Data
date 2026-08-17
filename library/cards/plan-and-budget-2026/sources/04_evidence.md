@@ -1,0 +1,3 @@
+The paper reports higher accuracy with fewer reasoning tokens than compared baselines and uses its E3 measure to summarize the correctness–efficiency trade-off. Reported comparisons include large reasoning models, supporting the claim that adaptive allocation can improve the operating point rather than only increase the ceiling.
+
+Those results depend on the decomposition quality and the cost model used for planning and decoding. A credible reading compares all token use, including planning, and checks whether the same savings remain on unseen task types where the model’s complexity estimate may be unreliable.

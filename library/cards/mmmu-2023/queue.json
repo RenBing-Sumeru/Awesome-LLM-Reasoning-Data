@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T12:49:43Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态模型发展中的重要历史基准 2666ref",
+    "updated_at": "2026-07-14T12:49:43Z"
+  }
+}

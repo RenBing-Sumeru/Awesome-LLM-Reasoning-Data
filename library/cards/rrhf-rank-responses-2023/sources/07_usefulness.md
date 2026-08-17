@@ -1,0 +1,1 @@
+Use RRHF when feedback naturally orders more than two alternatives and a full reward-model/PPO stack is unnecessary. It helps decide whether to retain the entire candidate pool rather than collapsing feedback immediately into one chosen/rejected pair.

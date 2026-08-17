@@ -1,0 +1,6 @@
+- Treat RandomCalculation as a lower-contamination procedural control, not as a certified contamination-free dataset.
+- Keep decoding configurations distinct: reported RLVR training uses temperature 1.0 and 16 samples per prompt, while Avg@16 evaluation uses temperature 0.7, top-p 0.8, and top-k 20.
+- The released supervision is answer-level. No gold rationale or per-step verifier signal is provided.
+- The result directory has an auxiliary 0-operation file plus the twenty advertised 1-20-operation files; all checked files have 1,000 rows, but the generator does not explicitly deduplicate.
+- Partial-prompt and KL/overlap results support an audit hypothesis but do not reveal exact pretraining provenance.
+- Before reuse, pin a commit, add a seed and split manifest, implement explicit deduplication, inspect the float-conversion check and other numeric edge cases, and resolve the absent license.

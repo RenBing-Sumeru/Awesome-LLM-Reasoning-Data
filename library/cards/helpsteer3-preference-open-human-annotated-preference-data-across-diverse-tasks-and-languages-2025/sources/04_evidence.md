@@ -1,0 +1,1 @@
+The paper evaluates models trained with the release and analyzes how human labels vary across tasks and languages. Its evidence supports the claim that broad, redundant human annotation is viable at this scale; it does not show that the majority vote represents every locale or that all languages have equal coverage and quality.

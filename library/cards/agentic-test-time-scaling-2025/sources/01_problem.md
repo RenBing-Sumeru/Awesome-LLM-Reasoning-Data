@@ -1,0 +1,3 @@
+Methods that improve a single answer by sampling more completions do not transfer directly to agents. An agent has tool calls, observations, intermediate commitments, and accumulated errors; branching every step can explode cost and make a good final rollout less likely. Reflection can correct mistakes, but constant reflection can interrupt a productive trajectory.
+
+The paper asks which test-time scaling choices are useful for tool-using agents rather than isolated question answering. It compares parallel rollout search, sequential revision, verifier and result-merging mechanisms, and ways to diversify rollouts, using GAIA tasks where an agent must search the web and handle multimodal files.

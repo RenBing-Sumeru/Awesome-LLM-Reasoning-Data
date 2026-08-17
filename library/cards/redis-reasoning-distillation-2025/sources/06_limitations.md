@@ -1,0 +1,1 @@
+A teacher may propose plausible but wrong rules, and agreement with a small set of demonstrations is not proof of a rule’s general validity. The reported tasks have structured input-output contracts, so reuse on natural-language data needs stronger verification, leakage checks, and an audit of teacher-model dependence.

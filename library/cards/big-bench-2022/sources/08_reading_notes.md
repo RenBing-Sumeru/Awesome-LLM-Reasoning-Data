@@ -1,0 +1,1 @@
+Read task construction and scoring policy before interpreting aggregate plots. Keep task-level evidence, normalized aggregate score, and extrapolation claims separate. A BIG-bench result is not portable unless the task subset, repository commit, prompt/few-shot setting, and model version are named.

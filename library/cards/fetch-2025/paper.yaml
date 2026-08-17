@@ -1,0 +1,131 @@
+id: fetch-2025
+title: 'Don''t Get Lost in the Trees: Streamlining LLM Reasoning by Overcoming Tree Search Exploration Pitfalls'
+year: 2025
+venue: ACL 2025
+authors:
+- Ante Wang
+- Linfeng Song
+- Ye Tian
+- Dian Yu
+- Haitao Mi
+- Xiangyu Duan
+- Zhaopeng Tu
+- Jinsong Su
+- Dong Yu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- scalar_reward
+- trajectory_value
+domains:
+- mathematics
+- reasoning
+training_use:
+- process_supervision
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1167/
+  arxiv: https://arxiv.org/abs/2502.11183
+  code: https://github.com/XMUDeepLIT/Fetch
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1167
+  venue: https://aclanthology.org/2025.acl-long.1167/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1167/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K training prompts for the LLaMA-3-8B policy/value setup; MATH uses policy and PRM training data released
+    by Math-Shepherd. GSM8K, GSM-Plus, and MATH500 are evaluation surfaces.
+  trace_author: LLaMA-3-8B policy for GSM8K/GSM-Plus; a Mistral-7B-based policy for MATH.
+  answer_format: Partial or complete reasoning-state nodes are clustered into hyper-nodes, scored by a verifier, expanded
+    through search, and selected as final reasoning solutions.
+  process_fields:
+  - prompt
+  - reasoning_state
+  - semantic_equivalence_signal
+  - rollout_return_or_verifier_value
+  - hypernode_selection
+  - final_answer
+  environment_or_substrate: Offline mathematical reasoning with Best-First Search, Beam Search, Tree Search, and Monte Carlo
+    Tree Search.
+  verifier_or_reward: A value network or PRM gives scalar state scores. The paper trains score estimates with adjusted TD(lambda)
+    returns and averages multiple verifier scores at inference.
+  terminal_predicate: Gold-answer correctness on the named mathematics evaluation datasets; the checked sources do not establish
+    a separately released answer-normalization implementation.
+recipe_metadata:
+  base_model: LLaMA-3-8B for GSM8K/GSM-Plus; a Mistral-7B-based Math-Shepherd policy for MATH.
+  teacher: LLaMA-3-8B-Instruct is used only for the prompting-based embedding-label approach; the consistency-based approach
+    does not use that teacher.
+  generator: FETCH expands tree-search nodes, merges semantically similar states with agglomerative clustering, and uses verifier
+    scores to guide subsequent selection and expansion.
+  filtering_rule: After each expansion, agglomerative clustering creates hyper-nodes from semantically equivalent reasoning
+    states; the verifier score determines selection and member-expansion order.
+  sampling_protocol: For GSM8K verifier training, 16 rollouts per question at temperature 1.0 are sampled from the initial
+    state. The paper reports about 100K step pairs per dataset for embedding post-training; non-greedy search experiments
+    use temperature 0.8.
+  rollout_count: 16 per GSM8K question for value-network training; MATH rollout count is unknown.
+  temperature: 1.0 for the stated GSM8K verifier-training rollouts; 0.8 for non-greedy search experiments.
+  inference_budget: Search-algorithm- and dataset-specific expansion budgets; no single reusable budget is established.
+  optimizer_or_scaffold: Cross-entropy policy fine-tuning; MSE verifier training with adjusted TD(lambda) returns; parallel
+    verifier ensembling at inference.
+audit:
+  source_mixture: GSM8K training data is used for the LLaMA setup, while MATH reuses Math-Shepherd policy and PRM training
+    data. The complete generated step-pair and rollout mixture is not released or established by the checked sources.
+  split: GSM8K and GSM-Plus test cases plus MATH500 are evaluated; full release splits for generated records are unknown.
+  decontamination: unknown
+  license: unknown
+  lineage: Named math prompts -> policy-generated reasoning states and rollouts -> semantic-equivalence labels or rollout-derived
+    values -> clustered hyper-nodes and verifier scores -> selected test-time solution. Complete raw lineage records are not
+    established as released.
+  known_failure_modes:
+  - Agglomerative clustering can incorrectly group distinct reasoning states when its distance threshold is increased.
+  - Verifier-score variance can redirect search away from promising trajectories; ensembling adds deployment cost.
+  - The official repository exposes code and a toy JSONL example, but not a complete rollout-tree or embedding-label release.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology, arXiv, and the author-linked repository were checked. Unreleased data, licenses, full search logs,
+    and decontamination details remain unknown.
+inclusion_reason: FETCH makes the state, similarity signal, verifier score, and tree-selection mechanism explicit, making
+  it a strong Track 5 test-time search record despite incomplete raw-trace release.
+related: []
+tags:
+- fetch
+- tree-search
+- state-merging
+- verifier-ensemble
+- td-learning
+- test-time-compute
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: FETCH reduces redundant tree expansion by clustering equivalent reasoning states and stabilizes verifier-guided
+  search with TD-trained, ensembled scores.
+why_it_matters: It identifies the internal trace objects and score variance that determine whether additional test-time search
+  compute is useful, while exposing missing rollout and label-release evidence.
+card: null
+needs:
+- needs_full_rollout_release
+- needs_embedding_label_data
+- needs_decontamination_protocol
+- needs_license
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ACL and arXiv records plus the author-linked code repository were checked; only a toy JSONL example, not
+    a full trace release, was confirmed.

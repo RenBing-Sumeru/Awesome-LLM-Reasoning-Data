@@ -1,0 +1,3 @@
+- Use the taxonomy before compressing SFT data: decide whether steps are algebraically composed or actually omitted, because they learn differently.
+- Run matched diversity-versus-repetition tests instead of treating token count or epoch count as data scale.
+- If exact rewards exist, test whether RLVR re-expands useful atomic steps; do not assume the arithmetic result transfers to open-ended natural tasks.

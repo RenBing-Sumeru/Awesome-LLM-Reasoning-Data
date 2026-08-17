@@ -1,0 +1,176 @@
+id: webchain-2026
+title: 'WebChain: A Large-Scale Human-Annotated Dataset of Real-World Web Interaction Traces'
+year: 2026
+venue: CVPR
+authors:
+- Sicheng Fan
+- Rui Wan
+- Yifei Leng
+- Gaoning Liang
+- Li Ling
+- Yanyi Shang
+- Dehan Kong
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- web_agents
+- multimodal_agents
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- frontier_pipeline
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2026/papers/Fan_WebChain_A_Large-Scale_Human-Annotated_Dataset_of_Real-World_Web_Interaction_Traces_CVPR_2026_paper.pdf
+  arxiv: https://arxiv.org/abs/2603.05295
+  data: https://huggingface.co/datasets/webagentlab/WebChain
+  huggingface: https://huggingface.co/datasets/webagentlab/WebChain
+  venue: https://openaccess.thecvf.com/content/CVPR2026/html/Fan_WebChain_A_Large-Scale_Human-Annotated_Dataset_of_Real-World_Web_Interaction_Traces_CVPR_2026_paper.html
+  cvf: https://openaccess.thecvf.com/content/CVPR2026/html/Fan_WebChain_A_Large-Scale_Human-Annotated_Dataset_of_Real-World_Web_Interaction_Traces_CVPR_2026_paper.html
+data_object:
+  prompt_source: An unnamed LLM synthesizes executable web tasks from a functional schema extracted from each target website;
+    tasks are stratified into simple retrieval, multi-constraint navigation, and conditional-dependency forms
+  trace_author: Human annotators execute the synthesized tasks on live websites; an unnamed VLM later generates optional action-level
+    Chain-of-Thought-style rationales
+  answer_format: A task-conditioned web trajectory whose ordered steps align viewport and available full-page imagery, HTML
+    and Accessibility tree state, action type and arguments, target coordinates and bounding box, selectors, text, timestamps,
+    and optional synthetic rationale
+  process_fields:
+  - task_instruction
+  - trajectory_id
+  - step_id
+  - pre_action_dom
+  - post_action_dom
+  - viewport_screenshot
+  - full_page_screenshot_when_available
+  - accessibility_tree
+  - action_type
+  - action_arguments
+  - click_coordinates
+  - target_bounding_box
+  - css_selector
+  - xpath_or_dom_reference
+  - target_inner_text
+  - timestamp
+  - prior_action_history
+  - optional_synthetic_rationale
+  environment_or_substrate: Live real-world websites spanning 428 domains, collected through WebChain Builder across multiple
+    operating systems, browsers, and viewports; exact per-record browser, locale, account, and site snapshot metadata are
+    undisclosed
+  verifier_or_reward: Released trajectories are described as human-verified. In the paper's training experiments, reward combines
+    action-type agreement with action-content agreement; clicks are matched by coordinate-in-reference-box and typed text
+    by lexical coverage of the reference text. This does not constitute a universal live-site task-success verifier.
+  terminal_predicate: Human task completion is asserted for retained trajectories, but a domain-general executable terminal
+    predicate and per-trajectory adjudication record are undisclosed
+recipe_metadata:
+  base_model: Qwen2.5-VL-3B and Qwen2.5-VL-7B are used in reported training experiments; the released data object is not tied
+    to a single base checkpoint
+  teacher: Human annotators provide action demonstrations; an unnamed VLM provides synthetic action rationales
+  generator: Unnamed LLM for schema-conditioned task synthesis, WebChain Builder for passive human interaction logging, and
+    an unnamed VLM for post-hoc rationale generation
+  filtering_rule: The release is described as 31,725 human-verified trajectories; attempted, failed, rejected, duplicate,
+    or partially completed trajectory counts and acceptance rules are unknown
+  sampling_protocol: Extract a target site's functional schema -> synthesize a schema-grounded task at one of three complexity
+    levels -> have a human execute it in WebChain Builder -> log aligned visual, structural, and action state -> densify all
+    interactive viewport elements -> optionally generate an action rationale -> derive high-level planning and low-level grounding
+    processed views
+  rollout_count: 31725 released trajectories and 317993 interaction steps; total attempted rollouts are unknown
+  temperature: unknown
+  inference_budget: Mean released trajectory length is 10.02 steps and mean task duration is 1.07 minutes; generation-token
+    budgets and retry limits are unknown
+  optimizer_or_scaffold: Dual Mid-Training separates spatial grounding from long-horizon planning. The paper studies SGRL
+    with Visual Grounding Densification, CoT-SFT on 5,000 synthetic-rationale samples, and subsequent Long-Chain-oriented
+    RLVR; this Card preserves the accepted sft and agent_training taxonomy boundary.
+audit:
+  source_mixture: 31,725 human-verified trajectories and 317,993 steps from 428 live website domains; the paper shows broad
+    commerce, travel, accommodation, real-estate, and finance coverage, but a complete per-domain sampling distribution and
+    collection-date manifest are not disclosed
+  split: The official release contains high-level and low-level test Parquet files, and WebChainBench uses 1,200 held-out
+    steps divided into short- and long-chain subsets; deterministic split-generation, deduplication, and exclusion manifests
+    are not published in the checked artifacts
+  decontamination: unknown
+  license: WebChain Academic Research License v1.0. Access is manually gated and limited to approved non-commercial academic
+    use; commercial use, substantial redistribution, mirroring, and re-identification require or are subject to additional
+    restrictions. The license does not establish rights to every captured third-party webpage.
+  lineage: Website functional schema -> unnamed-LLM task -> human live-site interaction captured by WebChain Builder -> aligned
+    step record -> interactive-element grounding densification -> optional unnamed-VLM rationale -> raw archives and high/low
+    processed Parquet views -> SFT/agent-training experiments and held-out WebChainBench evaluation
+  known_failure_modes:
+  - Reference-action imitation can penalize valid alternative selectors, coordinates, navigation orders, shortcuts, or recovery
+    actions; one human path is not a unique gold plan.
+  - Coordinate-in-box and lexical text matching verify agreement with recorded actions, not the live website's final task
+    outcome.
+  - Human verification is not accompanied by disclosed per-trajectory adjudication logs, annotator agreement, rejection counts,
+    or a universal executable success predicate.
+  - Synthetic rationales may be plausible post-hoc explanations rather than faithful human reasoning; the generating VLM and
+    quality-control procedure are undisclosed.
+  - Live-site DOM, layout, authentication, geolocation, personalization, and API changes can stale coordinates and selectors
+    and prevent exact replay.
+  - Screenshots, DOM, Accessibility trees, typed text, account state, forms, or session context may contain personal, confidential,
+    copyrighted, or otherwise restricted information despite the paper's no-PII release claim.
+  - Per-site Terms of Service, robots/access policy, consent, copyright, and redistribution-rights evidence is not published;
+    the dataset license alone does not resolve source-content rights.
+  - Full-page screenshot coverage is explicitly partial, raw folders require custom parsing, and the release does not expose
+    one uniform Hugging Face schema across all files.
+  - The official Hugging Face quick-start references a different namespace from the public repository, and the LICENSE footer
+    names a third namespace, creating a concrete reproducibility hazard.
+  - The arXiv-linked GitHub repository contained only a README and two images when checked; it did not provide construction,
+    training, or evaluation code despite its README's Apache-2.0 claim.
+  citation_status: verified
+  confidence: medium
+  notes: CVF accepted paper, arXiv v3, official gated Hugging Face card/license/API manifest, and author-linked GitHub tree
+    checked 2026-07-21. Dataset availability is verified at HF revision ae99f420a646866fd3f6d70ca5984efa0eca5a77; code availability
+    is not verified.
+inclusion_reason: WebChain provides an unusually large real-site human trajectory object with step-level visual, structural,
+  and action alignment plus a concrete grounding-versus-planning training recipe, while exposing important licensing, privacy,
+  replay, synthetic-rationale, and release-completeness audit boundaries.
+related: []
+tags:
+- webchain
+- web-agents
+- human-trajectories
+- triple-alignment
+- gui-grounding
+- long-horizon-planning
+- synthetic-rationales
+- gated-dataset
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Releases 31,725 human-verified live-web trajectories with 317,993 visually, structurally, and action-aligned
+  steps, plus separate grounding and planning recipes, under a gated academic license.
+why_it_matters: For the open-release-recipe track, WebChain makes the training unit and three-stage construction pipeline
+  concrete, but also shows why artifact completeness, success semantics, source rights, privacy evidence, and replay metadata
+  must be audited independently of benchmark gains.
+card: null
+needs:
+- 'needs_metadata: task-generator and rationale-generator model IDs, prompts, decoding settings, seeds, retries, and exact
+  software versions'
+- 'needs_quality: attempted/rejected trajectory counts, annotator recruitment and pay, training, agreement, adjudication,
+  and per-record verification fields'
+- 'needs_split: deterministic train/test/WebChainBench manifests, duplicate checks, cross-benchmark decontamination, and exclusion
+  rules'
+- 'needs_privacy: consent basis, redaction procedure, per-record decisions, audit sample, and estimated false-negative rate'
+- 'needs_rights: per-domain Terms of Service, robots/access-policy, copyright, and redistribution-rights review'
+- 'needs_replay: collection timestamps, browser/OS/viewport/locale/account metadata, archived page state, and drift diagnostics'
+- 'needs_release: corrected Hugging Face namespace instructions, complete schema documentation, file checksums, and full-page
+  screenshot coverage map'
+- 'needs_code: construction, training, and evaluation implementation or an explicit statement that the author-linked repository
+  is documentation-only'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: medium
+  notes: Paper identity and the gated dataset release are verified. artifact_verified refers to the Hugging Face data repository,
+    not to code; the author-linked GitHub repository had no implementation files when checked.

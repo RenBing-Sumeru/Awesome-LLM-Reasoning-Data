@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "STaR 反复把答案正确的模型 rationale 转成新一轮 SFT 数据，用少量示范自举推理能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "迭代式 rationale 自训练",
+  "best_for_ch": "适合用有标准答案但缺少书面 rationale 的题目构造推理 SFT 数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Eric Zelikman, Yuhuai Wu, Jesse Mu, Noah D. Goodman",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-11T07:47:09Z"
+}

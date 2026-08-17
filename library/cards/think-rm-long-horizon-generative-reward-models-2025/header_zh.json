@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "6.01K 长 CoT 偏好评审样本，含 chosen/rejected 判定过程，训练能先推理再裁决的通用 GenRM。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长程推理生成式奖励模型与偏好评审数据论文",
+  "best_for_ch": "需要训练带内部审议过程的生成式奖励模型，或直接利用成对偏好奖励优化策略的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ilgee Hong, Changlong Yu, Liang Qiu, Weixiang Yan, Zhenghao Xu, Haoming Jiang, Qingru Zhang, Qin Lu, Xin Liu, Chao Zhang, Tuo Zhao",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:27:54Z"
+}

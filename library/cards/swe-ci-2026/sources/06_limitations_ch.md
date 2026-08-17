@@ -1,0 +1,7 @@
+- **版本与 split 漂移。** 论文的 v1 基准有来自 68 个仓库的 100 个任务。发布后来新增 126 个任务；实时 manifest 现含 lite 50、default 100、default_v2 100 和 full 226，但 dataset card 仍写 full 137。
+- **轨迹完整性。** 115 GB 轨迹仓库称全部原始运行经轻度脱敏后公开，却没有逐任务覆盖、成功/失败/超时/重试索引、归档 schema 或论文结果映射。
+- **成功语义。** Runner success 表示没有编排异常，而非通过全部测试。未解决任务可在 20 轮终止；无效 pytest 输出可按 gap -1 归档，因此 resolved 与 failed 状态需要显式健康标签。
+- **Verifier 脆弱性。** 弱测试允许过拟合和 false positive，flaky 或环境敏感测试会造成 false negative。TDD 暴露测试，RDD 对 Programmer 隐藏测试，短序列则被填充到 20 轮 horizon。
+- **回放限制。** v1 manifest 含归档 hash，但精简的 v2/full manifest 省略仓库、许可和 hash 字段。Python 3.11 设置、apt/npm 下载、API 行为、并发、重试和可变仓库仍未固定。
+- **权利与隐私。** Runner 代码为 Apache-2.0，metadata 为 CC BY 4.0，但上游代码、测试、包、镜像和模型输出仍适用各自条款。“轻度脱敏”没有公开 secret/PII 方法或留存政策。
+- **安全。** 第三方代码和测试在 Docker 中执行，同时 API key 被写入 agent 配置；公开控制主要强调 8,192 MB 硬内存、4,096 MB 预留和 128 MB/s I/O，而非网络 allowlist 或最小权限。

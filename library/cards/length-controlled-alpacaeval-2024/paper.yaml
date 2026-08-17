@@ -1,0 +1,119 @@
+id: length-controlled-alpacaeval-2024
+title: 'Length-Controlled AlpacaEval: A Simple Way to Debias Automatic Evaluators'
+year: 2024
+venue: COLM 2024
+authors:
+- Yann Dubois
+- Balázs Galambosi
+- Percy Liang
+- Tatsunori B. Hashimoto
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- instruction-following
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2404.04475
+  arxiv: https://arxiv.org/abs/2404.04475
+  doi: https://doi.org/10.48550/arXiv.2404.04475
+  code: https://github.com/tatsu-lab/alpaca_eval
+  data: https://huggingface.co/datasets/tatsu-lab/alpaca_eval
+  project: https://tatsu-lab.github.io/alpaca_eval/
+  huggingface: https://huggingface.co/datasets/tatsu-lab/alpaca_eval
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: AlpacaEval instruction-following evaluation prompts and reference-model outputs used by the official AlpacaEval
+    2.0 harness.
+  trace_author: model developers provide candidate outputs; the official AlpacaEval harness pairs them with reference outputs
+    and LLM auto-annotator judgments.
+  answer_format: instruction, candidate output, baseline/reference output, randomized pairwise judge result, raw win rate,
+    and length-controlled win-rate metric.
+  process_fields:
+  - instruction
+  - candidate model output
+  - baseline or reference model output
+  - output-length difference
+  - auto-annotator preference or probability
+  - raw and length-controlled win rate
+  environment_or_substrate: AlpacaEval 2.0 pairwise automatic evaluation harness for instruction-following model outputs.
+  verifier_or_reward: weighted AlpacaEval GPT-4 Turbo auto-annotator plus a generalized linear length-control adjustment over
+    preference predictions.
+  terminal_predicate: aggregate raw win rate and length-controlled win rate against the selected baseline/reference model.
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an automatic-evaluation and judge-bias audit surface.
+  teacher: AlpacaEval human preference data and Chatbot Arena correlations are used to validate automatic evaluator behavior.
+  generator: official AlpacaEval evaluation harness and length-control analysis over model outputs and baseline outputs.
+  filtering_rule: compare raw and length-controlled win rates, and inspect length sensitivity before treating an auto-evaluator
+    score as model quality.
+  sampling_protocol: Pin AlpacaEval version, evaluator config, reference model, model outputs, prompt template, cache state,
+    API model version, and leaderboard date.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation cost depends on the annotator configuration and API model; the paper/repo report low-cost runs
+    but users must pin their evaluator.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: arXiv 2404.04475, official AlpacaEval project page, tatsu-lab/alpaca_eval repository, and Hugging Face dataset
+    page.
+  split: AlpacaEval scores depend on the released evaluation set, reference outputs, annotator configuration, and cached annotations;
+    these must be versioned before comparison.
+  decontamination: Public instructions, outputs, annotations, and leaderboard examples can leak into future model training;
+    post-release comparisons require dated outputs and evaluator versions.
+  license: Repository code is Apache-2.0; the README advertises data under CC BY-NC 4.0, so data redistribution and commercial
+    reuse need artifact-level review.
+  lineage: Length-Controlled AlpacaEval is the canonical paper; original AlpacaEval remains the implementation/evaluation
+    artifact, not the Card's paper title.
+  known_failure_modes:
+  - Length control reduces one known confounder but does not remove all automatic-judge biases, such as style, factuality
+    blind spots, model-family preference, or prompt sensitivity.
+  - Scores can change with evaluator model, reference model, prompt/config, cache, API behavior, and leaderboard refresh date.
+  - Aggregate LC win rate is not a row-level correctness certificate and should not be reused as supervised reward without
+    a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv verifies the LC title, four authors, 2024 release, and COLM 2024 status; the official repo supplies the AlpacaEval
+    2.0 harness, LC win-rate documentation, implementation, and citation entry.
+inclusion_reason: It turns automatic preference evaluation into an auditable judge-bias correction surface by explicitly controlling
+  for response length.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- instruction-following
+- length_bias
+why_it_matters: It makes a widely used LLM-as-judge leaderboard more useful for auditing judge bias rather than rewarding
+  verbosity.
+status: verified
+needs:
+- 'needs_audit: pin evaluator config, reference model, output cache, API model version, and data license before score reuse'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Length-Controlled AlpacaEval debiases AlpacaEval-style automatic preference scores by estimating win rate
+  at equal output length.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: arXiv API verifies title, authors, 2024 publication metadata, v2 date, and COLM 2024 comment; the official repository
+    verifies LC win-rate usage, implementation, citation key, and code/data license badges.
+category_ids:
+- benchmarks_evaluation_surfaces

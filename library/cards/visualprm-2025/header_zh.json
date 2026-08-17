@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "VisualPRM400K 把 16 次续写的前缀成功率转成二元多模态步骤标签用于训练 8B 过程奖励模型，但原始发布未包含这些标签背后的续写记录与判定台账。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Weiyun Wang、Zhangwei Gao、Lianjie Chen、Zhe Chen、Jinguo Zhu、Xiangyu Zhao、Yangzhou Liu、Yue Cao、Shenglong Ye、Xizhou Zhu、Lewei Lu、Haodong Duan、Yu Qiao、Jifeng Dai、Wenhai Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

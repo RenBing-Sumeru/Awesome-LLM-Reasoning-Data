@@ -1,0 +1,277 @@
+id: online-mind2web-2025
+title: An Illusion of Progress? Assessing the Current State of Web Agents
+year: 2025
+venue: COLM 2025
+authors:
+- Tianci Xue
+- Weijian Qi
+- Tianneng Shi
+- Chan Hee Song
+- Boyu Gou
+- Dawn Song
+- Huan Sun
+- Yu Su
+source_role:
+- agent_environment
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- web_agents
+- live_web
+- gui_control
+training_use:
+- evaluation
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.01382
+  paper_pdf: https://arxiv.org/pdf/2504.01382v4
+  paper_revision: https://arxiv.org/abs/2504.01382v4
+  arxiv: https://arxiv.org/abs/2504.01382
+  code: https://github.com/OSU-NLP-Group/Online-Mind2Web
+  code_snapshot: https://github.com/OSU-NLP-Group/Online-Mind2Web/tree/f0d805ee0e9e0b3ea70911e45e5264b72968f3dc
+  data: https://huggingface.co/datasets/osunlp/Online-Mind2Web
+  data_snapshot: https://huggingface.co/datasets/osunlp/Online-Mind2Web/tree/eacad896a84dc5b65e29b0b06e4699ab0544d701
+  project: null
+  huggingface: https://huggingface.co/datasets/osunlp/Online-Mind2Web
+  model: https://huggingface.co/osunlp/WebJudge-7B
+  reward_model: https://huggingface.co/osunlp/WebJudge-7B
+  reward_model_snapshot: https://huggingface.co/osunlp/WebJudge-7B/tree/bb550f8e301855933db5490eb8128217b3aca5dc
+  evaluation_results: https://github.com/OSU-NLP-Group/Online-Mind2Web/tree/f0d805ee0e9e0b3ea70911e45e5264b72968f3dc/data/evaluation_results/online_mind2web_evaluation_results
+  submission_schema: https://github.com/OSU-NLP-Group/Online-Mind2Web/tree/f0d805ee0e9e0b3ea70911e45e5264b72968f3dc/data/schema_v2
+  leaderboard: https://huggingface.co/spaces/osunlp/Online_Mind2Web_Leaderboard
+  doi: https://doi.org/10.48550/arXiv.2504.01382
+  venue: https://openreview.net/forum?id=6jZi4HSs6o
+  openreview: https://openreview.net/forum?id=6jZi4HSs6o
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.01382
+  code_license: https://github.com/OSU-NLP-Group/Online-Mind2Web/blob/f0d805ee0e9e0b3ea70911e45e5264b72968f3dc/LICENSE
+data_object:
+  object_type: A mutable live-web benchmark plus submitted browser episodes and episode-level feedback. The task release contains
+    300 current task records across 136 sites. A v2 submitted episode binds task metadata to per-step screenshots, URLs, actions,
+    optional thoughts, action-effect status, final answer, and later human or WebJudge outcome labels.
+  prompt_source: Starting from 650 randomly selected original Mind2Web tasks, the authors found 47% invalid or paired with
+    outdated reference trajectories. The final 300 use 167 selected Mind2Web tasks, 24 rewritten Mind2Web tasks, 34 Mind2Web-Live
+    tasks, and 75 newly authored tasks on popular or underrepresented websites.
+  trace_author: Evaluated agents generate live-browser episodes. The paper evaluates SeeAct, Agent-E, Browser Use, Claude
+    Computer Use 3.5, Claude Computer Use 3.7, and Operator. Current submission schema also accepts third-party agent runs.
+  task_fields:
+  - task_id
+  - website
+  - task_description
+  - reference_length
+  episode_fields:
+  - schema_version
+  - task
+  - task_id
+  - agent_final_answer
+  - reference_length
+  - action_history
+  - per_step_index
+  - per_step_screenshot
+  - per_step_url_when_available
+  - per_step_action
+  - per_step_thought_nullable
+  - per_step_action_status_when_available
+  observation: 'The agent observes mutable live websites through screenshots. Open-source agents use Playwright; Claude Computer
+    Use uses a local Chrome browser and Operator uses OpenAI''s remote browser. Viewports differ: some agents capture extended
+    full pages while others record only the visible region.'
+  action_space: The current v2 schema standardizes navigation, click, type, scroll, hover, wait, key press, select, back,
+    forward, refresh, and task-complete actions. The optional per-step SUCCESS/FAILED flag records whether an action visibly
+    took effect, not whether the overall task was completed correctly.
+  answer_format: Multi-step browser interaction ending with TASK_COMPLETE and an optional first-class agent final answer.
+    WebJudge intentionally ignores final answers and intermediate model thoughts, relying on task text, factual action history,
+    selected screenshots, and visible outcomes.
+  verifier_or_reward: Human evaluators assign task-level failure, success, or not-executable labels. WebJudge first extracts
+    required key points, scores/summarizes screenshots, retains frames at a relevance threshold, and then predicts binary
+    episode success from task, key points, selected screenshots, and factual actions.
+  reward: Binary episode success/failure for evaluation. Not-executable is a separate human label. WebJudge-7B learns key-screenshot
+    relevance from synthetic supervision; its final key-point and outcome calls remain handled by an LLM.
+  terminal_predicate: Generation ends when the agent declares TASK_COMPLETE or reaches its agent-specific interaction limit.
+    Benchmark success is assigned post hoc by humans or WebJudge; action-level SUCCESS and terminal emission alone do not
+    establish task success.
+  provenance: Mind2Web/Mind2Web-Live or newly authored task -> viability, ambiguity and CAPTCHA filtering -> versioned public
+    task -> specified start website -> live-browser screenshot/action episode -> human task label and/or WebJudge key-point,
+    screenshot-selection and binary outcome records.
+  environment_or_substrate: Public live websites started from benchmark-specified URLs, without a frozen page corpus or sandbox
+    reset. Paper comparisons prohibit Google Search so agents stay on the intended site. Site content, structure, availability,
+    bot defenses, regional state, accounts and remote-browser behavior can drift.
+  release_boundary: Official artifacts include the gated 300-task JSON, code, prompts/evaluator, task-level human labels,
+    WebJudge outputs, example trajectory packages, a v2 submission schema, and WebJudge-7B weights. The complete raw successful,
+    failed and not-executable screenshot/action trajectories for all six paper agents were not verified as a public corpus.
+recipe_metadata:
+  base_model: Agent evaluation uses SeeAct, Agent-E, Browser Use, Claude Computer Use 3.5, Claude Computer Use 3.7, and Operator.
+    Open-agent backbones include gpt-4o-2024-08-06; Claude Computer Use 3.5 uses claude-3-5-sonnet-20241022. Operator is a
+    remote product with no paper API.
+  teacher: At least two human annotators label every evaluated task trajectory and a third resolves disagreement. GPT-4o,
+    GPT-4.1-mini, Claude 3.7, and Qwen2.5-VL-72B synthesize key-screenshot training targets for WebJudge-7B.
+  generator: Human-derived task curation and evaluated-agent interaction. Task writers select, rewrite, or author tasks; agents
+    generate browser trajectories; WebJudge models derive key points, screenshot relevance summaries/scores, and terminal
+    judgments.
+  prompt_or_task_source: 167 selected Mind2Web tasks, 24 rewritten Mind2Web tasks, 34 Mind2Web-Live tasks, and 75 newly authored
+    tasks, covering 136 websites and 12 domains.
+  filtering_rule: Remove ambiguous tasks, tasks invalidated by site or ground-truth changes, and tasks blocked by strong CAPTCHA.
+    Rewritten tasks restore solvability or eliminate ambiguity. Later maintainers replace outdated/invalid tasks while aiming
+    to preserve website and reference-length difficulty.
+  sampling_protocol: 'Final paper suite has 300 tasks: 83 easy with reference length at most 5, 143 medium with length 6-10,
+    and 74 hard with length at least 11. Website selection prioritizes SimilarWeb traffic while adding 14 niche-site tasks
+    and regional diversity.'
+  rollout_count: The paper evaluates six agents over the benchmark and human-labels their trajectories, but retry/drop accounting
+    and a complete run manifest are not disclosed. The current repository notes that leaderboard results average three runs;
+    this later policy is not evidence of three paper runs.
+  temperature: WebJudge GPT-4o uses temperature 0; o4-mini uses default medium reasoning effort. Agent-wide decoding settings
+    are not uniformly disclosed.
+  inference_budget: SeeAct, Browser Use, and Agent-E use at most 25 steps. Claude Computer Use 3.7 uses at most 50 steps with
+    thinking disabled. Operator's remote-product budget is not disclosed.
+  search_or_scaffold: Open agents run online with Playwright, Claude Computer Use on local Chrome, and Operator in OpenAI's
+    remote browser. Tasks begin at the specified website and Google Search is prohibited for the main comparison.
+  filtering_or_selection_threshold: WebJudge retains screenshots whose relevance score is at least 3. Threshold 3 is fixed
+    across agents; lower values increase token load and higher values can discard critical evidence.
+  optimizer_or_training_scaffold: WebJudge-7B fine-tunes Qwen2.5-VL-7B using screenshot-relevance targets from SeeAct, Browser
+    Use, and Claude Computer Use 3.5 trajectories; Agent-E, Claude Computer Use 3.7, and Operator are held out. Training uses
+    4 H100 80GB GPUs, bfloat16, batch size 256, maximum length 4096, 5 epochs, learning rate 5e-6, cosine scheduling, and
+    10% warmup.
+audit:
+  source_mixture: 167 selected Mind2Web tasks, 24 rewritten Mind2Web tasks, 34 Mind2Web-Live tasks, and 75 new tasks. The
+    suite spans 136 websites and 12 domains; it intentionally mixes inherited crowdsourced tasks with author-written updates.
+  split: 'The 300 released tasks form a public evaluation set; no canonical task-level train/dev/test or hidden holdout is
+    disclosed. WebJudge-7B instead splits by trajectory-producing agent: three agents for training and three held out.'
+  decontamination: No model-training overlap or cross-benchmark deduplication audit is disclosed. Many tasks descend from
+    public Mind2Web/Mind2Web-Live and all current tasks are public or gated after acceptance, so post-release memorization
+    and benchmark-specific tuning remain risks.
+  benchmark_overlap: Lineage to Mind2Web and Mind2Web-Live is explicit. The paper contrasts WebVoyager and samples 100 of
+    its tasks for a search-shortcut audit, but no item-level semantic overlap manifest with WebVoyager or other live-web benchmarks
+    is released.
+  lineage: Aggregate source counts and current task IDs are available. Record-level original IDs, rewrite diffs, annotator
+    identities, validity decisions, task replacement history, run IDs, browser state, retries, and links from every judgment
+    to a complete immutable trajectory are incomplete.
+  license: The dataset card and repository state CC BY 4.0 for Online-Mind2Web data; repository code is MIT; the WebJudge-7B
+    model card is Apache-2.0. These declarations do not enumerate rights for third-party website screenshots, page content,
+    trademarks, or submitted agent trajectories.
+  release_version:
+    paper: arXiv:2504.01382v4
+    paper_date: '2025-10-08'
+    venue: COLM_2025
+    openreview: 6jZi4HSs6o
+    code_revision: f0d805ee0e9e0b3ea70911e45e5264b72968f3dc
+    code_revision_date: '2026-05-28'
+    data_revision: eacad896a84dc5b65e29b0b06e4699ab0544d701
+    data_revision_date: '2026-07-18'
+    reward_model_revision: bb550f8e301855933db5490eb8128217b3aca5dc
+    tagged_end_to_end_release: null
+  artifact_release_state: Paper, COLM record, task dataset, code, evaluator prompts, human/WebJudge task labels, example trajectories,
+    v2 submission schema, and WebJudge-7B weights are public or access-gated. No GitHub Release/tag or immutable end-to-end
+    environment/result bundle exists.
+  successful_and_failed_sample_retention: The repository releases task-level human labels 0/1/2 and WebJudge result directories
+    across paper agents, preserving aggregate success, failure and not-executable outcomes. It provides example trajectory
+    packages and a schema for submissions, but a complete public corpus of all paper screenshots, actions, thoughts, URLs,
+    retries, successes and failures was not verified.
+  replayability: Exact replay is blocked by mutable external websites, regular task replacement, differing agent viewports,
+    CAPTCHA/access changes, unspecified account/cookie/locale state, a remote Operator browser, missing complete run packages,
+    and absent immutable page snapshots. Versioned tasks improve comparison but do not freeze observations or outcomes.
+  verifier_or_judge_failure_modes:
+  - WebJudge can miss decisive frames if screenshot relevance scoring filters them out; threshold 2, 3 and 4 yield different
+    agreement.
+  - Binary visible-outcome judgment can misread hidden server state, stale page state, alternate valid paths, or task completion
+    that lacks a decisive frame.
+  - Action histories must contain factual actions only; including hallucinated agent final responses raises false positives.
+  - o4-mini is more conservative on out-of-domain benchmarks and can have high precision but low recall; judge choice changes
+    labels and success rates.
+  - GPT-4o remains stochastic at temperature 0; three runs have average success-rate standard deviation 1.1% and maximum 1.8%.
+  - v1 parallel action, thought and screenshot arrays could silently desynchronize; the later v2 schema detects rather than
+    retrospectively repairs old gaps.
+  - Website drift, CAPTCHAs, unavailable pages and regional/session differences can change executability independently of
+    agent capability.
+  privacy_or_consent: The gated dataset requests contact sharing and states research-only, non-harmful use. The v2 schema
+    forbids passwords or PII in typed-action text. The paper/repository does not provide a complete account-fixture policy,
+    privacy/redaction log, subject-consent record, or IRB statement for captured third-party web content and submitted screenshots.
+  safety_boundary: Episodes act on public live websites rather than a resettable sandbox. The release does not specify a uniform
+    credential, purchase, submission, irreversible-action, or side-effect policy across agents. Current v2 guidance improves
+    trace hygiene but does not make real-site execution risk-free.
+  citation_status: verified
+  confidence: high
+  notes: Verified arXiv v4/full HTML, official COLM/OpenReview citation, official repository at commit f0d805e, gated HF task
+    release at eacad89, current v2 schema, human/WebJudge result directories, code/data licenses, and WebJudge-7B model at
+    bb550f8 on 2026-07-20. No live benchmark run was executed.
+  remaining_unknowns:
+  - complete_paper_run_trajectory_corpus_with_retries_and_versioned_site_state
+  - item_level_original_task_rewrite_replacement_and_annotator_lineage
+  - canonical_task_train_dev_test_or_hidden_holdout_policy
+  - model_training_overlap_cross_benchmark_dedup_and_post_release_contamination
+  - exact_account_cookie_locale_region_Captcha_and_remote_browser_state
+  - complete_third_party_web_content_screenshot_and_submission_rights
+  - privacy_redaction_consent_IRB_and_irreversible_action_policy
+inclusion_reason: 'Online-Mind2Web makes the gap between cached/offline web traces and mutable real-site episodes auditable:
+  tasks, screenshots, factual actions, human labels, WebJudge selection/judgment, task updates, and replay failures jointly
+  determine whether a web-agent trajectory is credible evaluation or reward data.'
+related:
+- mind2web-2023
+- webvoyager-2024
+tags:
+- online-mind2web
+- live-web
+- web-agent
+- agent-trajectory
+- webjudge
+- llm-as-judge
+- reward-model
+- screenshot-selection
+- task-versioning
+- replay-risk
+- contamination-risk
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: Online-Mind2Web releases 300 mutable live-site tasks, evaluation code and task-level labels plus WebJudge-7B,
+  but not a complete immutable corpus of all paper trajectories or the external website states needed for exact replay.
+why_it_matters: It couples realistic browser episodes with human and judge feedback while exposing how screenshot selection,
+  task replacement, web drift, execution failures, judge choice, and incomplete trajectory retention affect evaluation and
+  reward-model reuse.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  code_verified: true
+  data_verified: true
+  reward_model_verified: true
+  evaluation_results_verified: true
+  submission_schema_verified: true
+  complete_trajectory_corpus_verified: false
+  replay_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: 'Baseline metadata materially understated the release: authors, official code, task data, evaluation records, schema,
+    licenses, and WebJudge-7B are verified. Artifact verification does not imply complete trajectory retention or deterministic
+    replay against mutable external sites.'
+curation_level: L3_summary_ready
+needs:
+- 'needs_trajectory_release: publish complete paper episodes with screenshots, actions, URLs, thoughts where available, final
+  answers, human/WebJudge labels, retries, and run IDs'
+- 'needs_replay: pin task version, website snapshot or capture, browser/viewport, account/cookie/locale state, agent/model
+  settings, budgets, and evaluator versions'
+- 'needs_split_contamination: define hidden or refreshed evaluation policy and audit Mind2Web overlap, model training exposure,
+  and benchmark-specific tuning'
+- 'needs_lineage: link every task to source version, rewrite/replacement history, validity decision, annotators, and every
+  label to an immutable trajectory'
+- 'needs_judge_audit: release calibrated false-positive/false-negative analyses by task/agent/length and preserve raw human
+  disagreements'
+- 'needs_rights_privacy_safety: document screenshot/page/submission rights, privacy/consent/redaction, account fixtures, and
+  irreversible-action controls'
+card: null

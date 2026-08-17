@@ -1,0 +1,1 @@
+Hariri, Mohsen，Michael Hinczewski，Jing Ma，Vipin Chaudhary。2026。《Ranking Reasoning LLMs under Test-Time Scaling》。收录于《Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)》，第 33437–33478 页。Association for Computational Linguistics。https://aclanthology.org/2026.acl-long.1544/

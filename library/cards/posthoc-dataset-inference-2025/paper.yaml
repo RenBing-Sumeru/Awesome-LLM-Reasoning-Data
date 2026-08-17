@@ -1,0 +1,176 @@
+id: posthoc-dataset-inference-2025
+title: Unlocking Post-hoc Dataset Inference with Synthetic Data
+year: 2025
+venue: ICML 2025
+authors:
+- Bihe Zhao
+- Pratyush Maini
+- Franziska Boenisch
+- Adam Dziedzic
+source_role:
+- construction_recipe
+- data_release
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- unknown
+domains:
+- general-text
+- data-provenance
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/zhao25q.html
+  arxiv: https://arxiv.org/abs/2506.15271
+  code: https://github.com/sprintml/PostHocDatasetInference
+  data: https://drive.google.com/file/d/1NijRPbnx4aSYdQuqj9jJa6LxaGBJinAA/view?usp=sharing
+  project: https://github.com/sprintml/PostHocDatasetInference
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.15271
+  venue: https://proceedings.mlr.press/v267/zhao25q.html
+  openreview: https://openreview.net/forum?id=a5Kgv47d2e
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/zhao25q.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Suspect natural-language documents are segmented into short sequences, shuffled, capped per document, and
+    split at sequence rather than document level. Experiments use 1,400 posts from one author and selected Pile subsets; Pile
+    train supplies known members and validation plus test supplies known non-members.
+  trace_author: Natural suspect suffixes come from source documents. A Meta Llama 3 8B generator, LoRA-finetuned on other
+    shuffled sequences from the same suspect corpus, completes a shared prefix to produce a paired synthetic held-out suffix.
+    These are text continuations, not reasoning traces.
+  answer_format: Each comparison object is an original natural suffix paired with a generated suffix that shares its prefix.
+    Released Pile directories contain member and non-member original JSONL files plus generated counterparts; `text` stores
+    clean text and other entries store text augmentations.
+  process_fields:
+  - shared prefix
+  - original suffix
+  - generated suffix
+  - text
+  - augmented text variants
+  - target-model MIA features
+  - text-classifier probability
+  - combined-classifier probability
+  environment_or_substrate: Offline post-hoc dataset inference over a target causal language model. The released implementation
+    loads model weights and computes token-likelihood-derived membership features; a sampled-text-only black-box contract
+    is not demonstrated.
+  verifier_or_reward: A text-only classifier estimates the natural-versus-synthetic distribution gap, while a combined classifier
+    receives text plus target-model membership features. A one-sided difference-comparison t-test asks whether the combined
+    classifier separates paired original/generated suffixes more strongly; repeated-run p-values are aggregated with Sidak
+    correction.
+  terminal_predicate: At significance level 0.05, reject the null that target-model membership features add no detectable
+    separation beyond the text-only generation gap. Rejection is set-level membership evidence under the test assumptions;
+    failure to reject is inconclusive, not proof of non-use.
+recipe_metadata:
+  base_model: Reported target models include deduplicated Pythia 410M, 1B, 1.4B, 2.8B, and 6.9B checkpoints and OLMo-7B.
+  teacher: unknown
+  generator: Meta Llama 3 8B is LoRA-finetuned with next-token prediction on shuffled sequences from the suspect corpus, then
+    completes shared prefixes to synthesize approximately in-distribution held-out suffixes.
+  filtering_rule: Remove non-text elements from the single-author blogs; cap snippets per source document; limit Pile subset
+    sequences to 32 or 64 tokens; choose token length to minimize text-classifier AUC; and handle target-model-feature outliers
+    before calibration. Exact paper-run outlier fractions are incompletely rendered.
+  sampling_protocol: The paper reserves 2,000 sequences for generator inference and uses the rest for generator training;
+    the repository additionally assigns sequence indices 2,000–3,999 to validation. Per evaluated set, 1,000 suspect and 1,000
+    synthetic items train the classifiers and another equally sized paired sample supports the t-test. The released driver
+    defaults to ten randomized runs.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper equates total t-test sample size with target-model queries and reports the strongest cross-dataset
+    consistency at 2,000 total queries, split equally between paired suspect and synthetic sets. Generation-token, compute,
+    memory, and wall-clock budgets are unknown.
+  optimizer_or_scaffold: Generator LoRA rank 32, 100 epochs, warm-up ratio 0.03, and a linear scheduler are reported. Two-layer
+    GPT2-style text and combined classifiers train for 20 epochs; the positive-weight linear membership layer trains for 200
+    epochs. The paper's rendered learning-rate value is unavailable, and generic script defaults do not pin the reported run.
+audit:
+  source_mixture: One 1,400-post single-author blog corpus, including 450 known-member posts, plus selected Pile subsets spanning
+    web text, forums, biomedical and legal text, papers, code, email, multilingual proceedings, and chat. OLMo experiments
+    use Dolma v1.7 as known members and Paloma as known non-members.
+  split: Generator partitions are created after document segmentation and sequence shuffling, deliberately permitting snippets
+    from one document in both generator training and inference. Pile train is treated as member and combined validation/test
+    as non-member; classifier training and statistical testing use separate random portions of paired natural/generated data.
+  decontamination: Blog posts published after the Pile collection cutoff are used as non-members for the Pythia experiment,
+    and Pile split membership supplies ground truth for Pythia. No general record-level decontamination ledger, target-training
+    manifest, or transformed-overlap audit is released.
+  license: The code repository is MIT licensed. The repository-linked Google Drive archive and its upstream Pile-derived contents
+    have no explicit dataset license in the inspected official materials, so redistribution and downstream-use terms remain
+    unknown and cannot be inferred from the code license.
+  lineage: Suspect documents are segmented, capped, and shuffled; sequences are divided into generator train, validation,
+    and inference groups; Meta Llama 3 8B LoRA learns the corpus distribution; inference prefixes yield natural/synthetic
+    suffix pairs; the target model produces likelihood-derived MIA features; text-only and combined classifiers estimate generation
+    and membership-plus-generation gaps; repeated one-sided tests are Sidak-corrected into a set-level result.
+  known_failure_modes:
+  - Conventional dataset inference produces severe false positives under small suspect/held-out distribution shifts; the blog
+    non-member control gives nominal p-values from 0.001 to 0.002 before the proposed repair.
+  - A large natural-versus-synthetic text gap can hide the weaker membership signal and cause false negatives; ICL paraphrasing,
+    ICL completion, preference optimization, and the no-segment/no-suffix ablations infer both sets as non-members.
+  - Removing post-hoc calibration makes known member and known non-member sets significant, recreating a false positive; unconstrained
+    feature weights can also exploit generation-direction artifacts.
+  - Statistical power depends on set size, target-model memorization, generator quality, classifier architecture, token length,
+    outlier handling, and random splits. A non-significant result cannot establish non-use.
+  - Main-table non-member p-values include 0.06 for StackExchange and 0.07 for Github and EuroParl, so the paper prose claiming
+    all non-member values exceed 0.1 overstates the displayed margin.
+  - The implementation computes likelihood-derived features from locally loaded target models; applicability to closed models
+    exposing only sampled text is not demonstrated.
+  - A rejected null is aggregate statistical evidence under the tested assumptions, not proof that a particular record was
+    used, nor proof of date, checkpoint, authorization, ownership, license breach, or legal infringement.
+  - Sequence-level generator splitting improves distribution matching but does not provide document-independent generator
+    evaluation.
+  - The Google Drive release is mutable and lacks an author checksum, version manifest, released checkpoints, and an explicit
+    dataset license. GitHub has no tagged release; the README's release update and unfinished-items list are internally stale
+    about data availability.
+  - Several Pile subsets described as potentially copyright-problematic are excluded, but that choice does not establish rights
+    or consent for every retained source.
+  citation_status: verified
+  confidence: medium
+  notes: Official PMLR proceedings, arXiv full text and appendix, OpenReview link, author repository, current code, MIT license,
+    and repository-linked Google Drive release page were checked on 2026-07-22. The archive was not downloaded, so file count,
+    byte size, checksum, license, and immutable revision remain unknown.
+inclusion_reason: The work gives a concrete recipe for constructing synthetic reference data when a trustworthy matched holdout
+  does not exist, and couples that construction with distribution-gap calibration, false-positive controls, open code, and
+  a released Pile-derived artifact.
+related:
+- llm-dataset-inference-2024
+- tracing-the-roots-2026
+tags:
+- dataset-inference
+- synthetic-heldout
+- membership-inference
+- provenance-audit
+- post-hoc-calibration
+- false-positive-control
+- suffix-completion
+- open-release
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Shared-prefix synthetic suffixes and calibrated paired tests enable post-hoc set-level training-data inference
+  without a pre-existing matched holdout.
+why_it_matters: The method turns a missing-heldout problem in provenance audits into an explicit data-construction and calibration
+  recipe, while its result remains conditional aggregate evidence rather than record-level lineage or legal proof.
+card: null
+needs:
+- 'needs_data_license: state the license and redistribution terms for the generated held-out archive and every retained upstream
+  subset'
+- 'needs_release_snapshot: publish an immutable archive with file manifest, author checksums, and exact code revision'
+- 'needs_checkpoints: release generator and classifier checkpoints or deterministic reconstruction metadata'
+- 'needs_reproducibility: pin random seeds, exact learning rate, generation decoding parameters, outlier fractions, and all
+  classifier/test configurations'
+- 'needs_blackbox_scope: document and evaluate the minimum target-model query interface, especially for closed sampled-text-only
+  APIs'
+- 'needs_statistical_scope: preregister thresholds and report power, multiplicity, and false-positive calibration across more
+  generators, model families, and adversarial shifts'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: medium
+  notes: Citation, ICML/PMLR publication, official code, MIT license, and repository-linked data page are verified; the dataset
+    license, immutable release, archive checksum, released checkpoints, and fully pinned paper-run configuration remain partial.

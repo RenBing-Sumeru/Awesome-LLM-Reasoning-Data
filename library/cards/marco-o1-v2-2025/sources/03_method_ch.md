@@ -1,0 +1,3 @@
+每个提示从 root 开始，依据用节点转移矩阵表示的随机 reasoning-flow template 展开。MCTS 用 upper-confidence 规则选择节点，按节点角色提示模型，并 rollout 到 Answer 节点。经规则检查的正确答案获得终局 reward 并回传；错误答案可回到较早节点并触发 Reflection。论文使用 Qwen2.5-72B-Instruct 处理 Thinking 类节点，使用 Llama3.1-70B-Instruct 处理 Reflection，因此 generator 与 critic 分离，但二者仍由模型介导。已核实公开 artifact 未确定完整提示来源清单、各领域 checker 实现、搜索上限、rollout 数、采样温度、tree seed 或完整原始树语料。
+
+后训练阶段按每个问题的相对长度对有效正确路径分桶，而不是使用全局 token 阈值。论文将长正确路径用于 SFT、短正确路径用于 DPO；负路径选自与正路径拥有最短共同前缀的错误分支。Conservative DPO 对可能有噪声的偏好标签进行软化，mask-based DPO 排除共享前缀的梯度，联合目标为 L_DPO 加 alpha 倍 L_SFT，论文后续配置采用 alpha=1。实验从用所构造 CoT 数据微调的 Llama-3.1-8B 开始，并在 Llama 与 Qwen 模型上测试迁移。官方 GitHub 仓库指向 Marco-o1 模型资源，但已核实证据不能证明已发布逐行 v2 搜索树语料及其分支分数、拒绝路径、pair 标识与 checker 日志。

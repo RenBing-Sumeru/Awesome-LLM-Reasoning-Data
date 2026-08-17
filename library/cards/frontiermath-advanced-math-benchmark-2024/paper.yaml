@@ -1,0 +1,157 @@
+id: frontiermath-advanced-math-benchmark-2024
+title: 'FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI'
+year: 2024
+venue: arXiv preprint
+authors:
+- Elliot Glazer
+- Ege Erdil
+- Tamay Besiroglu
+- Diego Chicharro
+- Evan Chen
+- Alex Gunning
+- Caroline Falkman Olsson
+- Jean-Stanislas Denain
+- Anson Ho
+- Emily de Oliveira Santos
+- Olli Järviniemi
+- Matthew Barnett
+- Robert Sandler
+- Matej Vrzala
+- Jaime Sevilla
+- Qiuyu Ren
+- Elizabeth Pratt
+- Lionel Levine
+- Grant Barkley
+- Natalie Stewart
+- Bogdan Grechuk
+- Tetiana Grechuk
+- Shreepranav Varma Enugandla
+- Mark Wildon
+- Terence Coelho
+- Ahsan Z. Khan
+- Will Brian
+- Pedro Teixeira
+- Vinh-Kha Le
+- Jan Jurka
+- Johannes Schmitt
+- Sai Sanjeev Balakrishnan
+- Peisheng Yu
+- David Brodsky
+- Razzi Masroor
+- Jessica Wang
+- Daniel Arreola
+- Joseph Knight
+- Noah Lebowitz-Lockard
+- Tasos Moulinos
+- Josh Ducey
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- advanced-mathematics
+- research-math
+- contamination-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2411.04872
+  arxiv: https://arxiv.org/abs/2411.04872
+  code: null
+  data: null
+  project: https://epoch.ai/frontiermath
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2411.04872
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Original, unpublished advanced mathematics problems authored and peer-reviewed by expert mathematicians.
+  trace_author: Expert problem authors and reviewers; model solutions are evaluated against concise answer targets and automated
+    verification where available.
+  answer_format: A difficult mathematics problem with domain/difficulty metadata, expected answer, and automated verification
+    or answer-checking policy.
+  process_fields:
+  - problem statement
+  - mathematical domain
+  - difficulty tier
+  - answer target
+  - verification method
+  - public or controlled-access release status
+  environment_or_substrate: Epoch AI FrontierMath benchmark program, including Tiers 1-4 and an Open Problems component on
+    the current project page.
+  verifier_or_reward: Automated verification/checking is the intended scoring contract, but coverage and exact normalizers
+    must be inspected before treating it as a reusable reward.
+  terminal_predicate: A model answer is accepted when the benchmark's verifier or answer-checking rule accepts it for that
+    problem version.
+recipe_metadata:
+  base_model: Not a training recipe; the paper evaluates frontier AI models on advanced math.
+  teacher: Expert mathematician authors and peer reviewers.
+  generator: Human expert problem writing and vetting, with unpublished problems selected to reduce contamination.
+  filtering_rule: Retain original problems with reliable expected answers and verification paths; access and release policies
+    determine what can be independently replayed.
+  sampling_protocol: Record benchmark version, tier, problem-access policy, answer-checker coverage, and whether a problem
+    is in Tiers 1-4 or Open Problems.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budgets and model scaffolds must be reported separately from the benchmark definition.
+  optimizer_or_scaffold: Advanced-math benchmark curation and automated answer verification.
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2411.04872;
+    https://arxiv.org/html/2411.04872; https://epoch.ai/frontiermath'
+  split: Public/control boundaries are version-dependent; exact hidden/public split, access policy, and release tier must
+    be pinned before reuse.
+  decontamination: Original unpublished expert problems reduce web contamination, but any public subset can leak after release
+    and should not be mixed with training data.
+  license: License and redistribution terms for full problem data remain unknown in the checked official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2411.04872'
+  known_failure_modes:
+  - Controlled access improves contamination resistance but reduces reproducibility.
+  - Automated verification may cover only some answer forms or depend on normalization details.
+  - Difficulty tiers and open-problem status can change across project-page versions.
+  - High difficulty may conflate reasoning ability, domain knowledge, tool use, and search budget.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv/project verify title, authorship lead, controlled-access benchmark framing, and under-2% then-SOTA solve rate.
+    Epoch project page reports FrontierMath v2 released 2026-06-12 and addressed errors in 42% of problems; separate Tiers
+    1-4 from Open Problems.
+inclusion_reason: FrontierMath is a high-priority expert-written, low-contamination advanced-math benchmark with an explicit
+  automated-verification scoring contract and important access-policy risks.
+related: []
+tags:
+- benchmark
+- advanced-math
+- expert-written
+- hidden-benchmark
+- automated-verification
+why_it_matters: It turns expert problem authorship, hidden/public access, and verifier coverage into central fields for evaluating
+  whether hard math benchmarks are reusable feedback contracts.
+status: verified
+needs:
+- 'needs_metadata: verify license, data access process, and exact public/private split'
+- 'needs_audit: inspect answer normalizers, verifier coverage, tier definitions, and leaderboard policy'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: FrontierMath tests frontier models on original expert-written advanced mathematics problems with controlled
+  release and automated verification.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv/project verify title, authorship lead, controlled-access benchmark framing, and under-2% then-SOTA solve rate.
+    Epoch project page reports FrontierMath v2 released 2026-06-12 and addressed errors in 42% of problems; separate Tiers
+    1-4 from Open Problems.
+category_ids:
+- benchmarks_evaluation_surfaces

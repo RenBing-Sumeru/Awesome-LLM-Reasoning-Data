@@ -1,0 +1,1 @@
+LiveCodeBench 可作为可执行 benchmark record 的结构参考：保留平台、problem id、发布日期、题面、场景标签、prompt、参考测试或期望输出、runtime image、timeout、模型提交、分数和 evaluator commit。它适合用于代码污染审计、pass/fail 反馈契约设计，以及把代码生成表现与修复、执行行为分开。对 atlas 来说，它是一个 evaluation-only 数据的清晰案例：反馈契约足够强，可审计，但不等于可以直接安全地当训练 reward。

@@ -1,0 +1,3 @@
+Benchmarks such as DS-1000 and HumanEval focus on short functions and deterministic tests, while MLE-bench emphasizes autonomous competition agents without supplying human solution sketches. MLAlgo-Bench directly tests whether a model can follow a complex algorithm specification or professional solution sketch and produce a multi-step, performance-sensitive implementation.
+
+Its novelty is not the first execution of generated code. It combines functional completion, relative model quality, and computational cost in one protocol and spans both implementation of known algorithms and realization of human competition strategies. This separates syntax-level coding, algorithm understanding, and engineering integration.

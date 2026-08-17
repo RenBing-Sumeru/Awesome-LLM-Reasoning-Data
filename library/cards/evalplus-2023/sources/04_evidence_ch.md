@@ -1,0 +1,1 @@
+论文显示，许多能通过原始 HumanEval 或 MBPP 的解法在扩展测试下失败，暴露了 benchmark false positive。关键证据不是某个汇总 pass@k，而是每道题在 plus 测试套件下的执行结果。模型排名和分数下降受 EvalPlus 版本、运行时、timeout、采样策略以及使用 HumanEval+ 还是 MBPP+ 约束。通过 EvalPlus 比通过原始 benchmark 更强，但仍不是完整程序正确性的证明。

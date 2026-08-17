@@ -1,0 +1,3 @@
+SWE-Flow releases 16,061 training instances and 2,020 test instances and introduces SWE-Flow-Eval. Each instance comes from a real GitHub project and records a partial codebase, stage-specific unit tests, target modifications, and an executable environment, producing multi-step TDD data rather than only final repair patches.
+
+The core construction object is a Runtime Dependency Graph (RDG). Tests are executed dynamically to observe function-call relations, which determine a development schedule. Every step is verifiable by the tests available at that stage. Released artifacts include data, models, Docker images, and generation code for SFT, execution-feedback training, and evaluation of TDD agents.

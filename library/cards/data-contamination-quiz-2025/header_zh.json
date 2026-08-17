@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以原题与词级扰动组成选择题，在黑盒模型中估计逐字数据污染及其位置偏差边界。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "黑盒数据污染检测与估计方法",
+  "best_for_ch": "需要在无法取得训练数据、权重或 logits 时审计基准污染的研究者。",
+  "confidence_ch": "高：已核对 TACL 正文、官方作者机构和官方代码数据仓库。",
+  "authors_ch": "Shahriar Golchin, Mihai Surdeanu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

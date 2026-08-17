@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "提出 Cheems 中文奖励模型构建配方：覆盖偏好数据生产、奖励模型训练和本土化评测，可直接复现中文 Reward Model 流程。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "偏好与奖励反馈数据集或数据构建研究",
+  "best_for_ch": "需要构建、审计或复用偏好与奖励反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xueru Wen、Jie Lou、Zichao Li、Yaojie Lu 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T12:00:26Z"
+}

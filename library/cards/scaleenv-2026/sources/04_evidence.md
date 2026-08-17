@@ -1,0 +1,5 @@
+On tau2-Bench, Qwen3-SE-8B scores 50.9, 37.5, and 27.2 on Retail, Airline, and Telecom, versus 38.4, 30.5, and 21.5 for Qwen3-8B. On VitaBench, Qwen3-SE-32B scores 10.8 on Cross and 34.5 on Instore, versus 5.3 and 22.5 for Qwen3-32B. Its VitaBench Pass@4 average rises from 36.0 to 46.8.
+
+The reward ablation averages 3 tau2-Bench domains. Rule-based verification reaches Avg@4 38.5, Pass@4 62.9, and Pass^4 15.0, versus 36.5, 58.8, and 14.6 for LLM-as-a-Judge. Removing execution verification also degrades the trained agent, supporting the claim that plausible but non-executable tasks produce conflicting learning signals.
+
+With 1,024 tasks fixed, Pass@4 rises as domain count moves through 2, 4, 8, and 16. Two non-overlapping 4-domain subsets also outperform the base model. These experiments support diversity scaling and executable verification; they do not establish task-level decontamination, deterministic replay, exhaustive test coverage, or quality of an independently downloadable corpus.

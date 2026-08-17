@@ -1,0 +1,1 @@
+The release contains 16,710 accepted train rows with a fixed instruction prompt and a two-message user/assistant conversation. DeepSeek-R1 supplies unreformatted reasoning traces and final answers. Approximate source inputs are 10.5K NuminaMath, 2.5K APPS, 3K TACO, and 1K STILL-2; rejection sampling means these source counts are not an exact retained composition manifest.

@@ -1,0 +1,215 @@
+id: visualprm-2025
+title: 'VisualPRM: An Effective Process Reward Model for Multimodal Reasoning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Weiyun Wang
+- Zhangwei Gao
+- Lianjie Chen
+- Zhe Chen
+- Jinguo Zhu
+- Xiangyu Zhao
+- Yangzhou Liu
+- Yue Cao
+- Shenglong Ye
+- Xizhou Zhu
+- Lewei Lu
+- Haodong Duan
+- Yu Qiao
+- Jifeng Dai
+- Wenhai Wang
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+- process_reward
+- trajectory_value
+domains:
+- multimodal-reasoning
+- visual-mathematics
+- visual-question-answering
+- science
+- charts
+- ocr
+- documents
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.10291
+  arxiv: https://arxiv.org/abs/2503.10291
+  code: https://github.com/OpenGVLab/InternVL/tree/main/internvl_chat/tools/reasoning_data_pipeline
+  data: https://huggingface.co/datasets/OpenGVLab/VisualPRM400K
+  project: https://internvl.github.io/blog/2025-03-13-VisualPRM/
+  huggingface: https://huggingface.co/OpenGVLab/VisualPRM-8B
+  doi: https://doi.org/10.48550/arXiv.2503.10291
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: VisualPRM400K takes images and questions from MMPR v1.1. The paper shows domains including general VQA, science,
+    charts, mathematics, OCR, and documents, but does not publish a paper-version source-count table, immutable upstream record
+    mapping, or source-level license matrix.
+  trace_author: InternVL2.5-series models generate four step-by-step solutions for each image-question pair and also generate
+    Monte Carlo continuations from every solution prefix. Exact generator checkpoint allocation and per-record generator identity
+    for the original paper release are unknown.
+  answer_format: 'The conceptual construction record contains an image, question, one solution split into steps, and an expected-accuracy
+    value mc_i for each prefix. The original public VisualPRM400K converts these values into multi-turn conversations: the
+    first user turn contains image, question, and step 1; later user turns add one step; assistant turns emit a discrete ''+''
+    or ''-'' step label. The later VisualPRM400K-v1.1-Raw exposes step text, score, num_mc_correct, and num_mc_total, but
+    it is a different version and not an immutable raw snapshot of the original paper data.'
+  process_fields:
+  - id
+  - image
+  - question
+  - solution
+  - solution_step
+  - solution_prefix
+  - mc_expected_accuracy
+  - num_mc_correct
+  - num_mc_total
+  - step_label
+  - conversation_role
+  - conversation_content
+  environment_or_substrate: Offline multimodal generation and verification over MMPR v1.1 images/questions. There is no interactive
+    environment; the relevant substrate is the image-question record, InternVL2.5 generation stack, step splitter/merger,
+    continuation sampler, and terminal-answer checker.
+  verifier_or_reward: For each prefix, 16 sampled completions are checked against the source ground-truth answer; mc_i is
+    the fraction judged correct. A value-based label is '+' when mc_i > 0 and '-' when mc_i = 0, so one successful continuation
+    is sufficient for a positive label. The paper does not specify the exact paper-time checker for every source. Later official
+    code provides dataset-dependent exact, VQA, multiple-choice, numerical, LaTeX, and Math-Verify-style checks, but it is
+    not a tagged record of the original run.
+  terminal_predicate: A continuation terminates with an extracted final answer and contributes 1 when the source-dependent
+    checker accepts it against the ground-truth answer, otherwise 0. The paper-level extraction rules, parser versions, fallbacks,
+    and failure handling are unknown. VisualPRM itself predicts step tokens and is not the terminal verifier that created
+    the labels.
+recipe_metadata:
+  base_model: The released VisualPRM-8B is an 8B InternVL-family reward model. Official Hugging Face metadata names OpenGVLab/InternVL2_5-8B
+    and OpenGVLab/InternVL2_5-8B-MPO in its base lineage and lists MMPR-v1.1 plus VisualPRM400K as training datasets; the
+    paper does not fully specify the checkpoint initialization or mixture relationship.
+  teacher: InternVL2.5-series models generate original solutions and Monte Carlo continuations. The exact sizes, revisions,
+    per-source assignment, and whether one or several checkpoints produced each record are unknown.
+  generator: For every image-question pair, sample four candidate solutions. Split each solution into steps; if it exceeds
+    12 steps, evenly merge adjacent text into at most 12 units. For each retained prefix, sample 16 completions, check terminal
+    answers, and store mc_i as the successful-completion fraction before converting it to a discrete step label.
+  filtering_rule: 'The main label rule uses threshold 0: mc_i > 0 is positive and mc_i = 0 is negative. All steps are supervised
+    rather than stopping training labels after the first error. The paper reports testing stricter thresholds and finding
+    worse aggregate PRM results. It does not publish source-removal filters, failed-generation counts, parser-failure counts,
+    duplicate filters, or an accepted/rejected ledger.'
+  sampling_protocol: Four initial solutions are sampled per image-question pair; every retained step prefix receives 16 Monte
+    Carlo continuations; solutions are capped by merging to 12 stored steps. The resulting paper dataset has about 400K solution
+    samples and 2M supervised steps, averaging 5.6 steps and 126.9 words per response and 22.6 words per step; about 10% of
+    steps receive the negative label.
+  rollout_count: 16
+  temperature: The paper does not disclose the construction temperature for VisualPRM400K. Best-of-N evaluation samples policy
+    responses at temperature 0.7; this evaluation setting must not be transferred to training-data construction.
+  inference_budget: Training-label construction uses 4 initial solutions per image-question pair, 16 continuations per retained
+    prefix, and at most 12 stored/merged steps. Best-of-N uses N=8 by default and reports scaling through N=128; the sampled
+    candidate responses and selector logs are not released.
+  optimizer_or_scaffold: VisualPRM uses packed training for one epoch with AdamW (beta1=0.9, beta2=0.999, weight decay 0.05),
+    initial learning rate 1e-5, linear warmup over the first 5% of steps, and cosine decay to zero. It predicts discrete step-quality
+    tokens in a multi-turn chat formulation and averages probability-weighted step scores to rank a full response.
+audit:
+  source_mixture: The paper attributes images/questions to MMPR v1.1 and solutions to InternVL2.5-series sampling. It reports
+    broad visual-reasoning domains but no per-source record counts, upstream IDs, generator mixture, collection dates, or
+    paper-snapshot manifest. The current original dataset repository is a 72.7 GB archive with one train split and separate
+    image/annotation archives.
+  split: The original VisualPRM400K repository exposes a train split and no documented validation/test split. VisualProcessBench
+    is a separate 2,866-row test artifact. Independence between VisualPRM400K/MMPR v1.1 prompts and VisualProcessBench or
+    the seven Best-of-N evaluation benchmarks is not established by a released mapping.
+  decontamination: unknown. No exact, near-duplicate, image-hash, question-semantic, or source-ID overlap ledger was verified
+    between MMPR v1.1-derived training prompts and VisualProcessBench, MMMU, MathVista, MathVision, MathVerse, DynaMath, WeMath,
+    LogicVista, or the text-only evaluations.
+  license: The arXiv paper is CC BY 4.0; the official InternVL repository, VisualPRM-8B model card, VisualPRM400K dataset
+    card, and VisualProcessBench card are labeled MIT, with an Apache-2.0 notice for an InternLM component. These top-level
+    labels do not replace record-level attribution and compatibility checks for MMPR v1.1 images/questions, benchmark-derived
+    items, or generated outputs.
+  lineage: MMPR v1.1 image/question -> four InternVL2.5-series solutions -> split or even merge to at most 12 steps -> 16
+    continuations per prefix -> source-dependent terminal checks -> mc_i -> '+'/'-' label -> multi-turn VisualPRM training
+    row -> VisualPRM-8B step scorer -> mean step score for Best-of-N selection. The original release omits continuation texts,
+    per-completion checker outputs, seeds, rejected rollouts, and a deterministic item-level construction ledger.
+  known_failure_modes:
+  - The mc_i > 0 rule labels a prefix positive when only one of 16 continuations succeeds, so recovery by the continuation
+    model or a lucky sample can mask an erroneous current step.
+  - Monte Carlo values depend on the continuation checkpoint, prompt formatting, temperature, seed, rollout count, answer
+    extractor, and source-specific checker; most of these paper-run details are unknown.
+  - Evenly merging long solutions into at most 12 units can combine correct and incorrect reasoning into one supervision target
+    and hide the location of a local error.
+  - About 90% of training steps are positive, creating class imbalance; benchmark results show that generic multimodal critics
+    can already be biased toward positive judgments.
+  - The original public training format stores discrete labels rather than the full Monte Carlo decision record. The later
+    v1.1-Raw release exposes scalar counts for a changed dataset version and cannot substitute for an original-version rollout
+    ledger.
+  - Current official construction code was released after the paper and includes later InternVL3/v1.1 scripts. Without a paper-tagged
+    commit and run manifest, current defaults do not prove the exact original configuration.
+  - VisualProcessBench uses expert labels and author spot checks but reports no inter-annotator agreement or per-item adjudication
+    history. Neutral steps are excluded from binary F1 evaluation.
+  - The paper text names Gemini-2.0-Flash among benchmark solution generators, while the released 2,866 rows and paper count
+    table contain GPT-4o, Claude-3.5-Sonnet, QvQ-72B-Preview, and InternVL2.5-78B only.
+  - The released artifacts do not provide a source-level decontamination report or record-level upstream license matrix.
+  citation_status: verified
+  confidence: high
+  notes: Checked the arXiv paper/source, official project page, OpenGVLab/InternVL construction code, original VisualPRM400K
+    release, VisualPRM-8B, VisualProcessBench, and later v1.1/Raw variants on 2026-07-19. Original data revision cead68db3cdb9c88d8cc311821f037bc0377925e,
+    model revision 7b7c9c4fecbc013c56966b7186eb44905e5bea53, and benchmark revision a7cf5129a597d090e785f2b08f0df83962beb09f
+    were inspected; no claim is made that current GitHub main is the paper-run revision.
+inclusion_reason: VisualPRM links multimodal solution prefixes to Monte Carlo process values and releases the derived training
+  set, reward model, and a separate human-labeled benchmark. It belongs in rollout/search/test-time trace data because both
+  label construction and Best-of-N depend on repeated samples, while the underlying continuations and selection logs remain
+  an important missing layer.
+related: []
+tags:
+- visualprm
+- multimodal-process-reward
+- monte-carlo-labeling
+- best-of-n
+- visualprocessbench
+- open-release
+- rollout-audit
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: VisualPRM400K converts 16-continuation prefix success rates into binary multimodal step labels for an 8B
+  PRM, but the original release omits the continuation and decision ledger behind those labels.
+why_it_matters: It is a concrete open example of how training-time rollout labels feed a process scorer and then a test-time
+  Best-of-N selector, making rollout budget, terminal checking, version identity, and rejected traces central audit objects
+  rather than implementation trivia.
+card: null
+needs:
+- 'needs_rollout_ledger: release every original prefix continuation, extracted answer, checker mode/output, seed, and mc aggregation
+  record'
+- 'needs_lineage: publish upstream MMPR record IDs, source dataset/revision, image hash, solution-generator checkpoint, and
+  transformation history'
+- 'needs_reproducibility: pin the paper-time code commit, environment, prompts, decoding settings, parser versions, and per-source
+  verification rules'
+- 'needs_decontamination: compare training prompts/images against VisualProcessBench and every Best-of-N evaluation benchmark
+  with a released match/removal ledger'
+- 'needs_license_audit: provide record-level upstream attribution and redistribution compatibility for images, questions,
+  benchmark-derived rows, and model-generated traces'
+- 'needs_benchmark_audit: publish annotator agreement, adjudication records, and resolve the Gemini generator discrepancy'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper, DOI, official project/code, original training dataset, model checkpoint, benchmark, and later versioned releases
+    were verified. Record-level original rollout provenance, paper-time code identity, decontamination, and upstream rights
+    remain partial.

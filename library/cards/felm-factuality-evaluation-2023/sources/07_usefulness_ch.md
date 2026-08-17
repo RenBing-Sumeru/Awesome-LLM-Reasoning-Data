@@ -1,0 +1,1 @@
+FELM 可用于训练 factuality judge、claim verifier 和 retrieval-augmented evaluator，也适合分析回答级正确率为何掩盖局部幻觉。复用时应保留 segment、error type 和 evidence URL 三层字段，并定期检查证据有效性；评测需分别报告错误召回和正确片段误报率。将数据扩展到 agent 场景时，可进一步记录工具输出与每条 claim 的来源链。

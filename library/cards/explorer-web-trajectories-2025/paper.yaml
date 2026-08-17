@@ -1,0 +1,197 @@
+id: explorer-web-trajectories-2025
+title: 'Explorer: Scaling Exploration-driven Web Trajectory Synthesis for Multimodal Web Agents'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Vardaan Pahuja
+- Yadong Lu
+- Corby Rosset
+- Boyu Gou
+- Arindam Mitra
+- Spencer Whitehead
+- Yu Su
+- Ahmed Hassan Awadallah
+source_role:
+- construction_recipe
+- agent_environment
+- scaling_study
+verification_contract:
+- judgment_required
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web_navigation
+- gui_agents
+- information_seeking
+- transactional_web_tasks
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.326/
+  arxiv: https://arxiv.org/abs/2502.11357
+  code: https://github.com/OSU-NLP-Group/Explorer
+  data: null
+  project: https://osu-nlp-group.github.io/Explorer/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.326
+  venue: https://aclanthology.org/2025.findings-acl.326/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.326/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-acl.326.bib
+data_object:
+  unit_of_record: A verifier-accepted multimodal live-web episode whose final record links an initial URL and evolving task
+    proposal to a final high-level task description, ordered grounded and natural-language actions, per-step page observations,
+    and an episode-level success judgment. The complete 94K-record corpus is described in the paper but was not verified as
+    a downloadable artifact.
+  prompt_source: Initial sites come from the Similarweb top 100 and approximately 49K Tranco URLs. For a 4K subset, GPT-4o
+    first formulates a Google search query to reach the target site.
+  trace_author: GPT-4o is used throughout the proposer, refiner, summarizer, and task-verifier roles; Appendix B calls the
+    billed synthesis model GPT-4o-turbo, but no dated service snapshot is disclosed.
+  context_or_state: Initial URL, current screenshot, set-of-mark screenshot, parsed HTML or accessibility tree, and accumulated
+    task/action history on a live website.
+  trace_or_actions: Atomic click, type, select, scroll-up, scroll-down, and stop actions are stored both as grounded element-index
+    commands and natural-language descriptions.
+  answer_or_artifact: A final task description that says what the episode accomplished without restating how, together with
+    the complete action and screenshot history.
+  process_fields:
+  - initial_url
+  - abstract_task_proposal
+  - refined_task_descriptions
+  - grounded_actions
+  - natural_language_actions
+  - screenshots
+  - set_of_mark_screenshots
+  - html
+  - accessibility_tree
+  - final_task_description
+  - verifier_decision
+  observation: Screenshots, HTML, accessibility-tree elements, and page transitions collected by Playwright from mutable real-world
+    websites.
+  verifier_output: A GPT-4o task verifier predicts episode success or failure from the final task description, action history,
+    all trajectory screenshots, and Markdown for the last page.
+  reward: No scalar training reward is reported. The binary verifier decision is used as a corpus-retention filter; retained
+    trajectories then provide SFT targets.
+  terminal_predicate: Generation halts on stop, the pipeline's step boundary, or safety/feasibility events such as CAPTCHA,
+    login, or payment. Corpus inclusion additionally requires verifier acceptance as coherent, aligned, and successful.
+  provenance: Seed URL -> proposer task and first action -> iterative task refinement with live execution -> trajectory summarization
+    -> GPT-4o success judgment -> verifier-approved pool -> 40K sample -> scroll-count filter -> approximately 30K SFT trajectories.
+  environment_or_substrate: Playwright over live public websites, with collection viewport up to 1980 x 1080; the reported
+    run used 60 parallel processes for 50 hours.
+  release_boundary: The official repository exposes generation, training, and evaluation code, but no immutable snapshot,
+    checksums, manifest, or corpus license for the reported 94K accepted trajectories was identified.
+recipe_metadata:
+  base_model: Phi-3.5-Vision and Qwen2-VL-7B are fine-tuned as Explorer-4B and Explorer-7B; experiment-specific mixtures also
+    use Mind2Web data.
+  teacher: GPT-4o for the four synthesis and verification roles; Appendix B names GPT-4o-turbo for cost accounting, while
+    the exact service version is unknown.
+  generator: Four-role proposer, refiner, summarizer, and verifier pipeline with live Playwright execution and a separate
+    CAPTCHA detector.
+  prompt_or_task_source: Similarweb top 100, approximately 49K Tranco URLs, and a 4K Google-search-start subset.
+  sampling_protocol: Select a seed URL, propose an abstract task and first action, execute and refine task/action pairs against
+    successive page states, summarize the completed history, judge success, and retain accepted episodes.
+  filtering_rule: Reject trajectories judged incoherent, misaligned, or unsuccessful. For the training experiments, sample
+    40K accepted records and remove episodes with more than two scroll actions, leaving approximately 30K.
+  selection_threshold: binary_verifier_acceptance
+  rollout_count: 175000
+  temperature: unknown
+  inference_budget: The accepted pool averages 7.7 steps. Collection reports 175K raw attempts, 94K accepted episodes, 60
+    processes, 50 hours, 720K images, 830M tokens, and 33.3M elements; exact maximum steps and decoding settings are unknown.
+  search_or_scaffold: Playwright live-site execution with screenshot, HTML, accessibility-tree, and set-of-mark capture; the
+    action vocabulary is click, type, select, scroll, and stop.
+  optimizer_or_scaffold: Official training examples use full-parameter fine-tuning. Appendix A reports batch size 64 and two
+    epochs for Mind2Web-Live synthetic-data runs, with learning rate 4e-5 for Phi-3.5V and 1e-5 for Qwen2-VL-7B; exact seeds
+    and complete run manifests are unknown.
+audit:
+  source_mixture: Similarweb top-100 high-traffic sites plus approximately 49K Tranco URLs; a 4K subset begins with generated
+    Google search. Per-site counts and collection timestamps are not disclosed.
+  split: The paper distinguishes 175K raw attempts, 94K verifier-approved episodes, a 40K sampled training candidate set,
+    and approximately 30K records after a scroll-count filter. Public membership and split manifests were not found.
+  decontamination: unknown
+  benchmark_overlap: No item-, URL-, task-, or template-level overlap audit against Mind2Web-Live, Multimodal-Mind2Web, MiniWob++,
+    or the 100 generated in-domain test tasks is reported.
+  lineage: Live URL seed -> GPT-4o proposed/refined task and actions -> captured page observations -> task summary -> GPT-4o
+    completion judgment -> accepted-only pool -> sampled and scroll-filtered SFT subset.
+  license: The official code repository is MIT-licensed. The ACL paper text is CC BY 4.0. No separate license was identified
+    for the unreleased trajectories, screenshots, HTML, accessibility trees, task text, or page content.
+  release_version: ACL Anthology record 2025.findings-acl.326 and the official GitHub main branch were checked on 2026-07-22;
+    GitHub showed no tagged release.
+  successful_and_failed_sample_retention: The described training corpus retains verifier-approved successes. Failed and near-miss
+    attempts, full verifier outputs, and the raw-to-accepted membership mapping were not verified as released.
+  verifier_or_judge_failure_modes:
+  - On 100 randomly sampled trajectories, automatic verification agrees with human judgment on 81%; the normalized confusion
+    matrix includes 0.14 human failures predicted successful and 0.05 human successes predicted failed.
+  - The same model family participates in proposing, refining, summarizing, and judging, creating correlated blind spots and
+    circular acceptance criteria.
+  - The verifier observes screenshots and last-page Markdown, not hidden server state, irreversible side effects, or independent
+    evidence of task completion.
+  environment_failure_modes:
+  - live-page drift, personalization, disappearance, and layout changes
+  - CAPTCHA, login, payment, media, and bot-defense barriers
+  - unresponsive elements and dynamic-content changes
+  - missing timestamps, cookies, locale, browser version, and page snapshots
+  privacy_or_consent: The authors state that no personal information is used during execution and that a subset is monitored
+    for access-policy compliance. No corpus-wide redaction report, consent record, or site-by-site policy ledger is released.
+  known_failure_modes:
+  - grounding error during refinement
+  - unresponsive website
+  - summarization hallucination
+  - technical issues such as login or bot detection
+  - task incomplete at the step limit
+  - successful-only retention hides failed and near-miss behavior
+  citation_status: verified
+  confidence: high
+  notes: ACL paper including appendices, ACL metadata/BibTeX, official project page, and official GitHub repository were checked
+    on 2026-07-22. Code availability is verified separately from corpus availability.
+  remaining_unknowns:
+  - exact GPT-4o service snapshot and decoding parameters
+  - maximum generation horizon, random seeds, and complete run configuration
+  - collection timestamps and per-site request counts
+  - immutable raw, accepted, 40K, and approximately 30K membership manifests
+  - dataset license, content rights, privacy/redaction report, and policy ledger
+  - decontamination, duplication, and train/evaluation overlap evidence
+inclusion_reason: A concrete large-scale recipe for converting live web exploration into filtered multimodal agent episodes,
+  with useful volume, cost, and execution statistics, but a material gap between the described corpus and released artifacts.
+related: []
+tags:
+- explorer
+- web-agent
+- gui-agent
+- trajectory-synthesis
+- live-web
+- playwright
+- successful-only-filter
+- multimodal-sft
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Synthesizes 175K GPT-4o-driven live-web episodes and retains 94K verifier-approved multimodal trajectories
+  for web-agent training.
+why_it_matters: Shows how exploration, environmental execution, multimodal state capture, and outcome filtering can scale
+  agent data, while exposing why immutable snapshots and content rights are essential release metadata.
+card: null
+needs:
+- 'needs_data: immutable snapshot and membership manifests for raw, accepted, and training subsets'
+- 'needs_metadata: timestamps, per-site counts, checksums, decoding settings, seeds, and full run configuration'
+- 'needs_license: explicit reuse terms for captured page content, screenshots, actions, task text, and model outputs'
+- 'needs_privacy: corpus-wide PII/redaction procedure and results'
+- 'needs_compliance: site-level access-policy review and request-rate logs'
+- 'needs_replay: page snapshots, browser/dependency versions, locale/session state, and drift diagnostics'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, appendices, project page, MIT code repository, and absence of a repository-tagged release were checked.
+    artifact_verified refers to code and project artifacts, not to release of the described trajectory corpus.

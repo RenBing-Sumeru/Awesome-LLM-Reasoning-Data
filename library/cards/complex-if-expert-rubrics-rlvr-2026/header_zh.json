@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将约千条复杂指令与 10–40 个专家原子 rubric 结合，作为评测和 RLVR 的稠密奖励信号。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "专家 rubric 数据与训练论文",
+  "best_for_ch": "用专家准则构建复杂指令评测或 RLVR 奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sushant Mehta、Liudas Panavas、Eleanor Fleming、Paul Mains、Edwin Chen",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:39:08Z"
+}

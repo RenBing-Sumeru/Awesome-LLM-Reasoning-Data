@@ -1,0 +1,3 @@
+Existing SWE-bench pipelines require manually written environments and test parsers for each repository, while automated approaches often let one LLM repeatedly repair a Dockerfile. SWE-Factory separates the work among four collaborating agents, reuses prior experience through environment memory, and standardizes grading through shell exit codes.
+
+The novelty is not the fail-to-pass concept itself. It removes two scaling bottlenecks: project-specific log parsing and manual fail-to-pass validation. One factory can therefore produce executable multilingual instances while reporting construction cost and quality metrics such as precision and recall.

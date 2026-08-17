@@ -1,0 +1,3 @@
+Read the card with three separations in mind. First, a formal proof verifies the encoded theorem, not the original natural-language statement by itself. Second, aggregate leaderboard success is not row-level evidence unless the accepted proof and checker environment are known. Third, PutnamBench can be an evaluation surface without being a safe training corpus.
+
+Start with the arXiv page for citation and venue status, then compare the project page and repository for current counts, language coverage, licensing, and maintenance policy. Keep the arXiv v2 count and the live project/repository count separate. For downstream use, never merge Lean, Isabelle, Coq, answer-given, and answer-finding results without explicit tags.

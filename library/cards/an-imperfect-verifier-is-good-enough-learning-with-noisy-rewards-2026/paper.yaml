@@ -1,0 +1,91 @@
+id: an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026
+title: 'An Imperfect Verifier is Good Enough: Learning with Noisy Rewards'
+year: 2026
+venue: arXiv preprint arXiv:2604.07666
+authors:
+- Andreas Plesner
+- Francisco Guzmán
+- Anish Athalye
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains: []
+training_use:
+- unknown
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.07666
+  arxiv: https://arxiv.org/abs/2604.07666
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: []
+  environment_or_substrate: unknown
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: unknown
+  known_failure_modes: []
+  citation_status: verified
+  confidence: high
+  notes: 'Seeded from BibTeX key plesner2026imperfectverifier. Deduplicated title collision; dropped lower-confidence id:
+    an-imperfect-verifier-is-good-enough-learning-with-noisy-rewards-2026.'
+  author_review:
+    status: verified
+    source: https://arxiv.org/abs/2604.07666
+    reviewed_on: '2026-07-13'
+    note: 按 arXiv 官方作者栏核对；团队/超长署名保留官方集体作者并提示查看原文完整名单。
+inclusion_reason: Seeded from local BibTeX for later atlas classification; needs curator review.
+related: []
+tags:
+- seeded-from-bib
+status: verified
+card: null
+needs: []
+one_line_summary: Local BibTeX seed for the 🪜 Process Supervision and Process Reward Models map; use it to inspect the paper's
+  data object, verifier contract, and release metadata before promoting it.
+why_it_matters: Official paper link is pinned; curator should next add a paper-specific reasoning-data summary and audit note.
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-06-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary link pinned in artifacts.
+curation_level: L1_link_verified
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

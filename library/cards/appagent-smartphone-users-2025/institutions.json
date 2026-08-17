@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Tencent"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2312.13771",
+    "https://appagent-official.github.io/",
+    "https://github.com/TencentQQGYLab/AppAgent"
+  ],
+  "verification_note": "arXiv, project, and Tencent repository verify title, Tencent institution, CHI 2025 status, and artifacts."
+}

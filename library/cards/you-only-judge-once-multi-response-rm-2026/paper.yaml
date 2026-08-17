@@ -1,0 +1,97 @@
+id: you-only-judge-once-multi-response-rm-2026
+title: 'You Only Judge Once: Multi-response Reward Modeling in a Single Forward Pass'
+year: 2026
+venue: arXiv 2026
+authors:
+- Yinuo Yang
+- Zixian Ma
+- Manasi Ganti
+- Jieyu Zhang
+- Ranjay Krishna
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- vision-language
+- reward-modeling
+- preference-ranking
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.10966
+  arxiv: https://arxiv.org/abs/2604.10966
+  code: https://github.com/yinuoyang01/multi-response-rm
+  data: https://huggingface.co/datasets/yinuoy/MR2Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/yinuoy/MR2Bench
+  doi: https://doi.org/10.48550/arXiv.2604.10966
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Image prompts and video question-answering prompts paired with multiple candidate responses.
+  trace_author: Paid human annotators for MR²Bench-Image and crowdsourced pairwise judgments aggregated for MR²Bench-Video.
+  answer_format: Image or video prompt, multiple responses, and a ranking with ties allowed.
+  process_fields:
+  - prompt
+  - image_or_video
+  - responses
+  - rankings
+  environment_or_substrate: Multimodal reward-model evaluation.
+  verifier_or_reward: Human rankings and a preference-graph ensemble provide comparison labels.
+  terminal_predicate: The reward model ranks candidate responses in agreement with the human ordering.
+recipe_metadata:
+  base_model: Molmo2-4B or Qwen3-VL-4B reward-model backbones.
+  teacher: Human annotators and crowdsourced preference judgments.
+  generator: Candidate answers from diverse multimodal models.
+  filtering_rule: Video judgments are denoised with a preference-graph ensemble.
+  sampling_protocol: Pin the official MR²Bench dataset revision and evaluation split.
+  inference_budget: One joint forward pass scores N candidates; the paper studies N from 2 to 16.
+  optimizer_or_scaffold: Cross-entropy over scalar response scores; GRPO uses the reward model downstream.
+audit:
+  source_mixture: Human-ranked image examples and crowdsourced video-QA preference judgments.
+  split: MR²Bench-Image has 240 prompts; MR²Bench-Video is derived from 94K pairwise judgments and the dataset release reports
+    735 rows.
+  decontamination: Keep public benchmark examples separate from reward-model training and report any overlap.
+  license: ODC-BY on the official dataset card; proprietary-model outputs and source video terms also apply.
+  lineage: arXiv paper, official GitHub code release, and yinuoy/MR2Bench dataset.
+  known_failure_modes:
+  - Video preference ranking remains difficult and may not transfer to unseen media.
+  - Large-N scaling and ranking calibration need separate checks.
+  citation_status: verified
+  confidence: high
+  notes: Verified arXiv primary source, official code linked by the dataset card, MR²Bench release, schema, scale, and license.
+inclusion_reason: The public dataset supplies human preference rankings over multiple multimodal candidate responses for reward-model
+  training and evaluation.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: MR²Bench turns multimodal response evaluation into an N-way human-ranking task and supports a reward model
+  that scores all candidates jointly in one forward pass.
+why_it_matters: It exposes ranking information that pairwise-only reward benchmarks discard.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified arXiv primary source, official code linked by the dataset card, MR²Bench release, schema, scale, and license.
+category_ids:
+- preference_reward_feedback_data

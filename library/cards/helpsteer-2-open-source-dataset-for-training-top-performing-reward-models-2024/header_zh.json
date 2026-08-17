@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 HelpSteer2 开源人类偏好数据，以可解释的多维质量属性和偏好对训练高性能通用奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "人工偏好数据、奖励模型与 SteerLM 对齐研究",
+  "best_for_ch": "需要可商用人类偏好数据和多属性奖励信号的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhilin Wang、Yi Dong、Olivier Delalleau 等（NVIDIA）",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

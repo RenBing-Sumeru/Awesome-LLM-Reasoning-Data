@@ -1,0 +1,5 @@
+Inputs are database schemas and contents, human-written natural-language questions, and model predictions in SQL. Outputs are SQL queries and official evaluator scores.
+
+The dataset construction collects databases from many domains, asks annotators to write questions and SQL queries, and organizes examples by difficulty and SQL component structure. The split is cross-domain: databases in train, dev, and test do not overlap, so memorizing one schema is not enough. The paper reports 11 college-student annotators for question-SQL records.
+
+The verifier is the official Spider evaluator. Exact-set matching decomposes SQL into components such as SELECT, WHERE, GROUP BY, ORDER BY, keywords, and set operations; execution accuracy checks whether the predicted SQL returns the same result under the database. Reproduction must pin Spider version, evaluator commit, database package, SQL dialect assumptions, test-set access policy, and whether reported scores use exact match, execution accuracy, or both.

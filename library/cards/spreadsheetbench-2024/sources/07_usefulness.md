@@ -1,0 +1,3 @@
+Use SpreadsheetBench as a reference benchmark for office agents that must edit files, run code, inspect intermediate execution feedback, and satisfy a final-state predicate. It is also a useful schema example for spreadsheet episodes: instruction, input workbook, answer workbook, answer position, instruction type, action program, execution feedback, and per-test-case score.
+
+For atlas reuse, preserve whether a result uses soft or hard restriction, single-round or multi-round feedback, the spreadsheet engine, evaluator revision, dataset archive name, and public/private exposure status. The benchmark is most useful as an evaluation and audit surface; using it as reward or training feedback requires extra contamination, license, and split controls.

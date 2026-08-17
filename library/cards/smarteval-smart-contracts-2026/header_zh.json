@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SmartEval 用专家实现、五维 rubric、审计和编译记录，系统评测 9,000 份 LLM 生成 Solidity 合约的质量。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能合约生成质量评测与安全审计数据集",
+  "best_for_ch": "研究代码生成、智能合约安全或代码质量 judge 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Abhinav Goel, Agostino Capponi, Alfio Gliozzo, Chaitya Shah",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

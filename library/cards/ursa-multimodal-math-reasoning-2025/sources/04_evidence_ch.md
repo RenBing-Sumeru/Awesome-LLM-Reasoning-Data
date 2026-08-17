@@ -1,0 +1,4 @@
+- **发布证据。** Dataset Viewer 报告 MMathCoT-1M（1,019,059 行）、DualMath-1.1M（1,100,779）和 URSA_Alignment_860K（863,534）各有一个 `train` split，均为三个字符串字段。前两个 Hub 卡标为 GPL-3.0，alignment 集标为 MIT。官方仓库为 Apache-2.0，包含推理/打分代码，但未核验到数据构造或 PS-GRPO 训练代码。
+- **选择器证据。** 表 2 中，URSA-8B-RM 在 Best-of-32 下的 MathVerse、MathVista-GPS、MathVision 分别为 55.0、87.2、35.1；self-consistency 为 50.7、85.4、33.1。这是在一个候选池下的选择准确率，并非每条过程标签的校准。
+- **RL 证据。** 表 1 报告 URSA-8B 在六个基准上的平均值为 54.7，URSA-8B-PS-GRPO 为 58.2。在声明相同训练数据、超参数和 rollout 数量下，图 6 报告 PS-GRPO 的平均提升为 6.8%，vanilla GRPO 为 3.1%。表 4 中报告最佳测试行使用 gamma=0.5、rho=0.3，平均值 58.2。
+- **失败证据。** 论文报告两个标量过程奖励 GRPO 变体的测试准确率低于 vanilla GRPO，且回答更短、步骤更少。这支持把 PRM 分数与其作为优化目标的用法分开；并不证明所提惩罚消除了 reward hacking。

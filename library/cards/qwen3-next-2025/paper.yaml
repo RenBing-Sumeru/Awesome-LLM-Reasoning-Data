@@ -1,0 +1,124 @@
+id: qwen3-next-2025
+title: 'Qwen3-Next: Towards Ultimate Training & Inference Efficiency'
+year: 2025
+venue: Qwen official release blog
+authors:
+- Qwen Team
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- long_context
+- mathematics
+- code
+training_use:
+- unknown
+construction_layer:
+- scaling_report
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://qwen.ai/blog?id=qwen3-next
+  arxiv: null
+  code: null
+  data: null
+  project: https://qwen.ai/blog?id=qwen3-next
+  huggingface: https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking
+  doi: null
+  venue: https://qwen.ai/blog?id=qwen3-next
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Pretraining is described only as a uniformly sampled 15T-token subset of Qwen3's 36T-token corpus; corpus
+    composition, item provenance, and all post-training prompt sources are unknown.
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: []
+  environment_or_substrate: The public objects are the Qwen3-Next Instruct and Thinking model repositories, configurations,
+    and inference instructions. Training environments, task interfaces, tools, and retained training-record schemas are unknown.
+  verifier_or_reward: The release says GSPO was used for RL stability and efficiency. The linked generic GSPO source defines
+    sequence-level optimization over grouped responses and group-relative advantages, but Qwen3-Next-specific rewards, verifiers,
+    judges, feedback sources, calibration, and error analysis are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Qwen3-Next-80B-A3B-Base; 80B total parameters with about 3B activated.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: The base model is reported to use a uniformly sampled 15T-token subset of Qwen3's 36T-token corpus. Post-training
+    sample construction, mixture, response grouping, rollout allocation, and decoding are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The Thinking model card recommends a maximum output length of 32,768 tokens for most queries and 81,920
+    for complex mathematics or programming benchmarks. This is deployment guidance, not a disclosed training rollout budget.
+  optimizer_or_scaffold: Qwen names GSPO and links its generic sequence-level objective, but Qwen3-Next-specific loss terms,
+    reward computation, group size, optimizer, schedule, coefficients, checkpoints, and training budget are unknown.
+audit:
+  source_mixture: Only a uniformly sampled 15T-token subset of Qwen3's 36T-token pretraining corpus is disclosed. Source proportions,
+    manifests, revisions, rights, and the complete post-training mixture are unknown.
+  split: unknown
+  decontamination: unknown
+  license: Official Qwen3-Next model repositories state Apache-2.0 for released weights and code files. Rights and licenses
+    for pretraining and post-training sources are unknown.
+  lineage: Qwen3 36T corpus -> uniform 15T pretraining subset -> Qwen3-Next-80B-A3B-Base -> post-trained Instruct and Thinking
+    variants. Item-level lineage, stage manifests, intermediate checkpoints, and retained or rejected records are unavailable.
+  known_failure_modes:
+  - No post-training prompts, responses, thinking traces, rollout groups, rejected outputs, or source manifests are released.
+  - GSPO is named without a Qwen3-Next-specific reward, verifier, judge, feedback, rollout, or calibration contract.
+  - The 15T sampling statement does not disclose corpus composition, source rights, filters, deduplication, or contamination
+    controls.
+  - Architecture and benchmark results cannot isolate the effects of post-training data, RL, reward design, or test-time budget.
+  - Training and evaluation splits and benchmark-overlap controls are undisclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Official Qwen release blog, official Qwen Hugging Face model cards, and the linked official GSPO source were verified
+    on 2026-07-18. No Qwen3-Next-specific arXiv or venue paper was identified; the model cards cite the distinct Qwen3 Technical
+    Report.
+inclusion_reason: Official Qwen frontier release that discloses a 15T pretraining subset, post-trained Instruct and Thinking
+  weights, and high-level GSPO use while leaving the post-training data and feedback ledger materially opaque.
+related:
+- qwen3-2025
+tags:
+- qwen3-next
+- qwen
+- frontier-report
+- data-disclosure-ledger
+- hybrid-attention
+- sparse-moe
+- gspo
+- post-training
+- open-weights
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3-Next releases Instruct and Thinking weights and reports 15T pretraining plus GSPO-assisted RL, but
+  does not disclose post-training prompts, rewards or verifiers, rollout groups, filters, or audit records.
+why_it_matters: It is a high-impact disclosure case in which architecture, inference code, and model weights are inspectable
+  while the data and feedback required to reproduce or audit reasoning post-training remain unavailable.
+card: null
+needs:
+- 'needs_data: post-training prompts, responses, thinking traces, rollout groups, rejected outputs, mixture, counts, and immutable
+  manifests'
+- 'needs_verifier: reward and feedback sources, verifier or judge contracts, GSPO group construction, calibration, error analysis,
+  and terminal predicates'
+- 'needs_metadata: teachers or generators, filters, sampling and decoding, rollout count, optimizer, schedule, checkpoints,
+  and training compute'
+- 'needs_audit: train and evaluation splits, decontamination, benchmark overlap, source revisions, and retained or rejected
+  sample yields'
+- 'needs_license: per-source and synthetic-output rights beyond the Apache-2.0 release license'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official Qwen blog, official model repositories, and the linked GSPO source were checked. Model artifacts are available,
+    but no reusable Qwen3-Next post-training data, recipe, or audit artifact is released.

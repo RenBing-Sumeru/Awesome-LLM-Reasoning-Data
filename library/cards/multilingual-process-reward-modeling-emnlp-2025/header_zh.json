@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将 PRM800K 与 Math-Shepherd 翻译为七种训练语言，系统检验多语过程奖励模型在 11 种语言数学推理上的迁移。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wang et al.",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-13T09:14:02Z"
+}

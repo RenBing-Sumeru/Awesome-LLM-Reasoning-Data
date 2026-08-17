@@ -1,0 +1,1 @@
+Do not read AGIEval scores as general intelligence scores. They are answer-level accuracies on a fixed, public, exam-derived benchmark under a prompt and parser. Keep task-level results separate from aggregates, and keep human exam origin separate from proof of fresh or uncontaminated evaluation.

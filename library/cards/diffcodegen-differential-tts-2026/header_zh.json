@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"DiffCodeGen 利用覆盖引导的差分测试从多样代码候选中选择结果，除候选生成外几乎不增加大语言模型词元成本。","reading_priority_ch":"必读","paper_type_ch":"高效代码生成测试时扩展研究","best_for_ch":"没有公开测试用例、却需要以可执行分析替代奖励模型重排序的代码助手开发者。","confidence_ch":"高","authors_ch":"Yifeng He、Ethan Wang、Jicheng Wang、Xuanxin Ouyang、Hao Chen（机构：加州大学戴维斯分校、武汉大学、香港大学）","category_ids":["scaling_rlvr_test_time_compute"]}

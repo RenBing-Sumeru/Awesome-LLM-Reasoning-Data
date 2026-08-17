@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "XiaoMi AI Lab",
+    "Gaoling School of Artificial Intelligence, Renmin University of China"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://aclanthology.org/2024.acl-long.478/",
+    "https://arxiv.org/abs/2407.00993",
+    "https://github.com/XiaoMi/MobileBench"
+  ],
+  "verification_note": "ACL Anthology, arXiv, and XiaoMi repository verify authors, institutions, ACL 2024 status, and released artifacts."
+}

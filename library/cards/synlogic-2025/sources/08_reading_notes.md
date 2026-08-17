@@ -1,0 +1,5 @@
+- Read "35 tasks" as the framework and Hard configuration; Easy contains 27 after eight zero-accuracy tasks are removed.
+- The released rows are prompts plus serialized verifier state, not teacher demonstrations or the 16 online policy rollouts used per prompt.
+- Public `reward_model` fields may be empty; official guidance computes rewards from `extra_info.game_data_str` and task identity.
+- Final reward is binary format multiplied by task correctness; the repository reference enforces stricter tag placement and counts than the prose summary suggests.
+- DeepSeek R1 and OpenAI-o3-mini calibrate difficulty upper bounds rather than response traces, while lower-bound model identities and full settings remain unknown; pin both GitHub and Hugging Face hashes because fixes changed the release, the Cipher generator is missing, sampled Hard Campsite rows expose Chinese mojibake, and Tables 2–3 are downstream evidence rather than proof of data quality.

@@ -1,0 +1,3 @@
+LLM-as-a-Judge systems must be cheap, low-latency, and usable through closed APIs, yet prompt optimization requires repeated calls and per-dataset tuning, logit-based calibration is unavailable through many APIs, and iterative feature discovery is expensive. These constraints prevent dependable human-aligned evaluation at production scale.
+
+SAJA separates one fixed structured-rubric call from a lightweight supervised calibration head. The call produces interpretable multi-dimensional features, while a small human-labeled subset trains the head to map them to a task-specific human-aligned score or class.

@@ -1,0 +1,3 @@
+Correctness is localization correctness, not task completion. A model can click the right element in a screenshot without being able to plan a workflow, operate the application, recover from state changes, or understand domain semantics.
+
+Scores depend on screenshot resolution, coordinate normalization, target-box annotation, output parsing, model vision pipeline, and whether multi-round search is allowed. Professional software screenshots may have licensing constraints. Public benchmark images can be memorized, and Chinese-instruction results should be reported separately from English because language switching changes the task.

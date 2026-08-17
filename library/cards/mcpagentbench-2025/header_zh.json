@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MCPAgentBench 提供可审计的工具使用或 agent 环境评测面，核心是 Completion rate and execution-efficiency metrics judge whether agents choose and invoke MCP tools correctly.",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Agent 环境 / 工具使用数据与评测",
+  "best_for_ch": "研究 tool-use、agent trajectory、环境反馈契约和可复现评测的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Wenrui Liu、Zixiang Liu、Elsie Dai、Wenhan Yu、Lei Yu、Tong Yang 等（Peking University 等）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

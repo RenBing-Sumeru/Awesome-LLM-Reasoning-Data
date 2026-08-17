@@ -1,0 +1,5 @@
+- Read Section 3, Table 1, and Appendix B together: the 40K count is a step mixture, while the LastStepBalanced release exposes 40K training records whose exact final-paper alignment is unresolved.
+- Treat Z3 and Isabelle labels as validity relative to constructed formal inputs; inspect the informal-to-Isabelle conversion before claiming semantic correctness.
+- Read the Isabelle wrapper carefully: non-target steps are replaced by `sorry`, so labels certify local steps under assumed context rather than the complete dependency chain.
+- Use Tables 2 and 3 as downstream behavior evidence, not row-quality proof; several Best-of-7 benchmark cells decline even when averages improve.
+- Pin GitHub commit and Hugging Face dataset revisions separately because official dataset cards explicitly refer to a previous paper version.

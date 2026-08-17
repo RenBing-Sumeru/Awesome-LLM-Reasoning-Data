@@ -1,0 +1,1 @@
+与 sampled-token 平均对数概率或 perplexity 相比，self-certainty 使用每一步的完整词表分布，计算其相对均匀分布的偏离程度，再在整个回答上取平均。与 self-consistency 相比，它能给每个回答提供标量，包括开放式代码输出；Borda voting 又把该排名与答案频率结合，而不是在置信度和共识之间二选一。与训练式 reward model 相比，该选择器无需训练，信号直接来自模型内部。对本 atlas 而言，方向价值在于把 rollout 的 token distribution 明确转换为答案级分数、排名、票数以及被选中/未选中的候选。KL divergence、Best-of-N 与 Borda voting 都不是新工具；贡献在于这个完整分布置信指标及其作为可扩展选择对象的用法。

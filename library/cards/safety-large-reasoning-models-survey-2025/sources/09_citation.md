@@ -1,0 +1,3 @@
+Cheng Wang, Yue Liu, Baolong Bi, Duzhen Zhang, Zhong-Zhi Li, Yingwei Ma, Yufei He, Shengju Yu, Xinfeng Li, Junfeng Fang, Jiaheng Zhang, and Bryan Hooi. 2025. Safety in Large Reasoning Models: A Survey. Findings of EMNLP 2025, pages 3468–3482. https://aclanthology.org/2025.findings-emnlp.185/
+
+Use the ACL Anthology record for official bibliographic metadata, the paper, and the DOI. Cite this survey for its safety taxonomy and field synthesis. Cite primary work separately for a particular risk, attack, defense, threat model, or measured outcome, because this paper does not introduce a shared benchmark or new experimental result.

@@ -1,0 +1,3 @@
+The official data center on target problems, prefixes, current steps, labels, and retrieved evidence. A question-level and step-level index is built from existing process supervision, and two-stage retrieval attaches similar labeled cases to each target.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around target steps, problem-level cases, step-level cases, and retrieval sources, making the verifier, judge, environment, or execution source traceable for cross-problem-type and cross-generator-model OOD assessment. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

@@ -1,0 +1,3 @@
+First, topology labels are derived from the accuracy of responses generated under topology-specific prompts. A response formatted as a tree or graph does not prove that the model internally followed that reasoning structure. Reuse should therefore test whether removing or perturbing the visible topology format changes performance.
+
+Second, correctness is mainly determined from final answers, so a response with flawed intermediate reasoning can still enter training if it reaches the right result. The synthetic data also depends on Qwen2-VL-7B and GPT-4o-mini and focuses on visual mathematics and logic. Reuse should audit intermediate reasoning and test other domains and generators.

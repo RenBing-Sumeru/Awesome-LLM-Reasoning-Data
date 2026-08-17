@@ -1,0 +1,1 @@
+规则求解器在全部评测实例上达到 100% 且每题少于 50 微秒，说明 gold 与 verifier 可确定执行。相比之下，四个 frontier model 在 Level 2 的 rendering-robust accuracy 仅 7.8%–23.5%，即使某种表面形式最高可达约 65%；同一模型不同 CoT prompt 的波动约 36 个百分点，超过模型间差距。DeFAb-Hard 上最佳模型 53.3%，symbolic solver 仍为 100%；CONJURE pilot 未产生新概念。结果证明 benchmark 能暴露表面敏感和理论破坏，但大量训练集由自动知识图组合生成，逻辑可解不等同于自然语言事实真实或开放世界创造力。

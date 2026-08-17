@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "树搜索相关，300k数据sft",
+    "updated_at": "2026-07-20T11:25:37Z"
+  },
+  "updated_at": "2026-07-20T11:25:37Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

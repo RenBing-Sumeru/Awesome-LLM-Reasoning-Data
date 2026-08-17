@@ -1,0 +1,5 @@
+- Keep the unique full-trajectory count at 1,527,259: Kimi-K2 518,516 + OSS 457,130 + Qwen3 551,613.
+- Interpret HF's 1,646,546 stored rows as the three full configurations plus a repeated 119,287-row SFT subset, not as independent trajectories.
+- Follow the five stages: MCP onboarding, task synthesis, Kimi-K2 task review, live rollout, then rule/target-tool/GPT-OSS-120B trajectory review and packaging.
+- Treat the feedback contract as mixed and full-episode/state-action supervision; real tool responses do not supply a task-general correctness predicate or scalar reward.
+- Restrict demonstrated training reuse to SFT on Qwen2.5-7B/14B/32B, and audit version binding, replay, rejection lineage, rights, PII, contamination, and tool-name matching before reuse.

@@ -1,0 +1,1 @@
+设回答长度为 n、词表大小为 V，self-certainty 在所有生成位置上平均 KL(U||p)：即 -1/(nV) 乘以对所有 token 位置和词表项求和的 log(V*p)。next-token distribution 越不均匀，得分越高。纯 Best-of-N 直接返回最高分回答。对于可抽取最终答案的任务，论文先按 self-certainty 排列 N 个回答，再令排名 r 获得 (N-r+1)^p 票，并对相同答案累加；p=0 等价于多数投票，p 很大时趋近于纯分数选择。该反馈契约是确定性的，也不需要外部 reward model，但它衡量的是生成器自身的置信程度，并不验证语义或可执行正确性。

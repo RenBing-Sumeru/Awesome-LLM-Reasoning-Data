@@ -1,0 +1,3 @@
+A generated hypothesis can be fluent without being new, testable, or true. Formal representations may make checking clearer but can restrict expression; natural-language representations can express richer ideas but make validation less direct. The survey maps these tensions, while the empirical strength of a particular method remains dependent on the primary study.
+
+No representation removes the need to specify what counts as relevant evidence and what outcome would disconfirm a candidate. Formalization can clarify checks while omitting aspects of an intended explanation; natural language can preserve nuance while making the comparison less determinate. Treat these as design trade-offs, not as proof that one representation is universally better.

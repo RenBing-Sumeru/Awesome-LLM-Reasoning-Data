@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DR-Tulu 发布了深度研究智能体的 SFT/RL 数据、代码和检查点；其 GRPO 训练结合检索锚定、持续与演化的自然语言 rubric 以及程序化协议奖励，但最终数据混合、在线 rubric 历史与评判校准仍未完整披露。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "深度研究智能体的演化 rubric 强化学习配方、数据发布边界与反馈审计",
+  "best_for_ch": "关注智能体后训练、LLM 评判、检索与引用反馈、数据血缘和可复现实验环境的研究者与工程人员",
+  "confidence_ch": "高",
+  "authors_ch": "Rulin Shao、Akari Asai、Shannon Zejiang Shen、Hamish Ivison、Varsha Kishore、Jingming Zhuo、Xinran Zhao、Molly Park、Samuel G. Finlayson、David Sontag、Tyler Murray、Sewon Min、Pradeep Dasigi、Luca Soldaini、Faeze Brahman、Wen-tau Yih、Tongshuang Wu、Luke Zettlemoyer、Yoon Kim、Hannaneh Hajishirzi、Pang Wei Koh",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "judgment_rubric_domain_expert_data"
+  ]
+}

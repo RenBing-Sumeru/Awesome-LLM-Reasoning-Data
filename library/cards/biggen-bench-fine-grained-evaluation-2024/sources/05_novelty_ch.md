@@ -1,0 +1,1 @@
+MT-Bench、AlpacaEval 等 benchmark 主要以对话或 instruction following 为中心，评价标准通常固定且抽象。BiGGen Bench 从能力覆盖开始设计 benchmark，并将 criteria 下沉到实例级，使 judge 知道每道题具体要检查什么。相比 Prometheus 等训练 judge 的工作，它重点发布一个用于评测生成模型和 evaluator 的公共测试面；相比传统 benchmark，它同时公开多个模型响应与人类/judge 分数，便于研究评价器偏差和 criteria 设计。

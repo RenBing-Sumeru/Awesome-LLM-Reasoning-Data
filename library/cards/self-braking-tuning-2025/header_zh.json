@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SBT 从 OpenR1-Math 推导截断或掩码的推理轨迹并加入 braking prompt，以监督模型在冗余推理前自行终止；派生样本和决策账本尚未确认独立发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹重写与自制动微调配方",
+  "best_for_ch": "需要审计长 CoT 截断、停止监督与 OpenR1-Math 派生数据边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Haoran Zhao、Yuchen Yan、Yongliang Shen、Haolei Xu、Wenqi Zhang、Kaitao Song、Jian Shao、Weiming Lu、Jun Xiao、Yueting Zhuang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

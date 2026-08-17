@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Mixture-of-Thoughts 先挑选适合学生学习的题目，再汇集 34.9 万条跨数学、代码与科学的教师推理对话。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "Phi-4-reasoning 的监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Marah Abdin、Sahaj Agarwal、Ahmed Awadallah、Vidhisha Balachandran、Harkirat Behl、Lingjiao Chen、Gustavo de Rosa、Suriya Gunasekar、Mojan Javaheripi、Neel Joshi、Piero Kauffmann、Arindam Mitra、Besmira Nushi、Dimitris Papailiopoulos、Guoqing Zheng",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

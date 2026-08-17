@@ -1,0 +1,2 @@
+既有工作已经使用 BoN、rejection sampling 与训练时 regularization，也分析过 reward/KL trade-off 等性质。本文的区别在于：它在 imperfect proxy reward 与未知 true reward 不一致时研究下游 true-reward regret，把 reference-policy coverage 明确为性能上限，并用逐 prompt 的 query complexity 描述算力。InferenceTimePessimism 复用与训练时 χPO 相关的 χ²-regularization 原理，但通过 normalizer estimation 与 rejection sampling 在推理时实现目标分布。它不是新的源数据集、reward model 或 benchmark。对 reasoning-data 整理而言，其方向信号更窄但可操作：测试时选择记录应保留候选、policy likelihood、proxy score、(N)、β、归一化与接受决策，并将 true evaluation 单独记录，因为只有最终答案会掩盖 reward hacking 过程。
+

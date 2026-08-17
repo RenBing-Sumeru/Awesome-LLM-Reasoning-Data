@@ -1,0 +1,143 @@
+id: am-thinking-v1-2025
+title: 'AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yunjie Ji
+- Xiaoyu Tian
+- Sitong Zhao
+- Haotian Wang
+- Shuaiting Chen
+- Yiping Peng
+- Han Zhao
+- Xiangang Li
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+- science
+- instruction_following
+- general_chat
+training_use:
+- sft
+- rlvr
+construction_layer:
+- frontier_pipeline
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2505.08311
+  arxiv: https://arxiv.org/abs/2505.08311
+  code: null
+  data: https://huggingface.co/datasets/a-m-team/AM-Thinking-v1-RL-Dataset
+  project: null
+  huggingface: https://huggingface.co/a-m-team/AM-Thinking-v1
+  doi: https://doi.org/10.48550/arXiv.2505.08311
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public datasets spanning mathematics, code, science, instruction following, and general chat; the paper names
+    the component datasets, and the released RL subset contains 54.8K train rows from 19 data-source labels.
+  trace_author: Synthetic-response generator identity is undisclosed; DeepSeek-R1 and o4-mini are used specifically to validate
+    or repair mathematical ground truths.
+  answer_format: Assistant responses contain complete <think> and <answer> components; mathematics uses a final boxed answer,
+    code uses fenced Python or C++ programs, and chat may be single-turn or multi-turn.
+  process_fields:
+  - data_source
+  - prompt
+  - ability
+  - reward_model
+  - extra_info
+  - synthetic_response
+  - pass_rate_or_reward_score
+  - difficulty
+  environment_or_substrate: Math-Verify for mathematics, a distributed secure code sandbox for test execution, strict IFEval
+    for instruction following, and an LLM-based reward model for non-verifiable queries.
+  verifier_or_reward: Binary exact-equivalence reward for math; binary all-tests-pass reward for code; binary all-instructions-pass
+    reward for instruction following; mean helpfulness, correctness, and coherence score for non-verifiable responses.
+  terminal_predicate: Math answer matches the reference, all code tests pass, or every required instruction passes; non-verifiable
+    queries use a scalar reward rather than an objective terminal predicate.
+recipe_metadata:
+  base_model: Qwen2.5-32B base
+  teacher: DeepSeek-R1 and o4-mini for mathematical ground-truth validation and correction; other teacher roles are unknown.
+  generator: The generator of SFT synthetic responses is undisclosed.
+  filtering_rule: Deduplicate; remove URL/image prompts; exact and semantic evaluation-set decontamination; filter incomplete
+    math prompts; validate or repair math ground truth; remove proofs and multi-part problems; rewrite MCQs; filter responses
+    by perplexity, repeated n-grams, and think/answer structure; retain RL math/code prompts with SFT pass rate strictly between
+    0 and 1.
+  sampling_protocol: SFT may retain multiple responses for hard prompts. RL uses strict on-policy sampling with 256 prompts
+    per batch and 16 rollouts per prompt; Stage 2 removes math/code prompts solved in every Stage-1 rollout and adds 15K chat
+    plus 5K instruction-following prompts.
+  rollout_count: 16
+  temperature: null
+  inference_budget: SFT maximum sequence length 32K; RL maximum response length 24K in Stage 1 and 32K in Stage 2.
+  optimizer_or_scaffold: Two-epoch SFT with learning rate 8e-5, global batch 64, packing and 5% cosine warmup, followed by
+    two-stage GRPO without KL; overlong responses receive zero advantage.
+audit:
+  source_mixture: The paper names public source datasets for five task families. SFT uses about 2.84M responses; the official
+    RL release contains 54.8K rows, while Stage 2 additionally uses 15K chat and 5K instruction-following prompts not represented
+    as a complete released training manifest.
+  split: The official RL dataset exposes one 54.8K-row train split; complete SFT and stage-specific split manifests are not
+    released.
+  decontamination: Exact-match and semantic deduplication against evaluation sets are reported, but thresholds, embedding
+    model, and item-level removal logs are undisclosed.
+  license: The official model and RL dataset pages declare Apache-2.0; this does not by itself resolve the licenses and redistribution
+    conditions of every upstream source.
+  lineage: Public source prompts are cleaned and, for math, ground truths are checked or repaired; synthetic responses are
+    filtered for SFT; SFT pass rates select math/code prompts for two-stage on-policy GRPO. The released RL rows expose source
+    and reward metadata, but full item-level SFT and stage lineage is unavailable.
+  known_failure_modes:
+  - Binary final-answer and all-tests-pass rewards can miss invalid reasoning or weaknesses in reference answers, parsers,
+    and test coverage.
+  - The LLM reward model for open-ended data is unnamed and its calibration or error rate is not reported.
+  - Important filtering thresholds, the SFT response generator, exact RL learning rates, and full training code are not disclosed.
+  - Reported benchmark scores do not establish upstream rights, complete decontamination, or reproducibility of the full pipeline.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2, model release, and 54.8K-row RL dataset release checked on 2026-07-17.
+inclusion_reason: A concrete open 32B reasoning-model recipe that discloses source families, query and response filtering,
+  task-specific reward contracts, SFT/RL settings, a checkpoint, and an RL prompt release.
+related: []
+tags:
+- frontier-report
+- construction-recipe
+- qwen2-5-32b
+- sft
+- rlvr
+- grpo
+- rule-based-reward
+- code-sandbox
+- open-data
+- open-checkpoint
+status: verified
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- data_construction_open_release_recipes
+one_line_summary: AM-Thinking-v1 combines 2.84M-sample SFT with two-stage GRPO over difficulty-filtered public queries and
+  task-specific math, code, instruction, and model-based rewards, and releases the 32B checkpoint plus a 54.8K-row RL dataset.
+why_it_matters: It provides an unusually concrete mid-scale reasoning recipe linking public prompt sourcing, ground-truth
+  repair, response filtering, reward contracts, curriculum selection, and on-policy rollout settings.
+card: null
+needs:
+- 'needs_metadata: SFT response generator, filtering thresholds, reward-model identity, exact RL learning rates, and stage-transition
+  details'
+- 'needs_release: complete SFT corpus, Stage-2 chat/IF manifest, verifier implementation, and end-to-end training code'
+- 'needs_audit: per-source rights, item-level lineage, decontamination log, and verifier/reward error analysis'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, Apache-2.0 model checkpoint, and Apache-2.0 54.8K-row RL dataset verified.

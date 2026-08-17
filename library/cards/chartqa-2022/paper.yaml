@@ -1,0 +1,118 @@
+id: chartqa-2022
+title: 'ChartQA: A Benchmark for Question Answering about Charts with Visual and Logical Reasoning'
+year: 2022
+venue: Findings of ACL 2022 / arXiv
+authors:
+- Ahmed Masry
+- Do Xuan Long
+- Jia Qing Tan
+- Shafiq Joty
+- Enamul Hoque
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- chart-understanding
+- visual-question-answering
+- logical-reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2203.10244
+  arxiv: https://arxiv.org/abs/2203.10244
+  code: https://github.com/vis-nlp/ChartQA
+  data: https://github.com/vis-nlp/ChartQA
+  project: null
+  huggingface: https://huggingface.co/datasets/ahmed-masry/ChartQA
+  doi: https://doi.org/10.48550/arXiv.2203.10244
+  venue: https://aclanthology.org/2022.findings-acl.177/
+  openreview: null
+  acl: https://aclanthology.org/2022.findings-acl.177/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: human-written chart questions plus machine-generated questions from human-written chart summaries.
+  trace_author: Official authors, annotators, validators, or dataset curators disclosed by the primary source.
+  answer_format: chart image, natural-language question, answer string or number, source split, chart table, and optional
+    visual annotations in the full release.
+  dataset_scale: 9.6K human-written questions and 23.1K machine-generated questions reported by the paper; repository documents
+    chart images, tables, splits, and annotations.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: static chart question-answering benchmark over chart images and underlying tables
+  verifier_or_reward: answer-level match or normalized comparison to the gold text/numeric answer under the evaluation script.
+  terminal_predicate: model answer matches the gold answer after task-specific normalization.
+  benchmark_size: 9.6K human-written questions and 23.1K machine-generated questions reported by the paper; repository documents
+    chart images, tables, splits, and annotations.
+recipe_metadata:
+  base_model: Not a training recipe; this entry treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the primary source.
+  generator: human-written chart questions plus machine-generated questions from human-written chart summaries.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary sources checked: https://arxiv.org/abs/2203.10244; https://github.com/vis-nlp/ChartQA'
+  split: Exact split, hidden/public policy, live-refresh policy, and subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; post-release score claims require versioned
+    contamination evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2203.10244'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, evaluator version, split, model version, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies authors, ACL Findings status, and question counts; official GitHub verifies dataset layout, full release,
+    annotations, and license file.
+inclusion_reason: It exposes whether multimodal models can combine chart perception, table values, arithmetic, and natural-language
+  question answering.
+related: []
+tags:
+- benchmark
+- chart-understanding
+- visual-question-answering
+- logical-reasoning
+one_line: ChartQA evaluates visual and logical reasoning over chart images with human and machine-generated questions.
+why_it_matters: It exposes whether multimodal models can combine chart perception, table values, arithmetic, and natural-language
+  question answering.
+status: verified
+needs:
+- 'needs_audit: pin GitHub/Hugging Face dataset revision and evaluator implementation'
+- 'needs_audit: inspect noisy SVG-derived annotations and source-site redistribution terms'
+- 'needs_review: compare against ChartQAPro for saturation and real-world chart diversity'
+one_line_summary: ChartQA evaluates visual and logical reasoning over chart images with human and machine-generated questions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv verifies authors, ACL Findings status, and question counts; official GitHub verifies dataset layout, full release,
+    annotations, and license file.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-16'
+  primary_category_id: benchmarks_evaluation_surfaces

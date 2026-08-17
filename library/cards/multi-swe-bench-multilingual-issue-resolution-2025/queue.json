@@ -1,0 +1,19 @@
+{
+  "title": "Multi-SWE-bench: A Multilingual Benchmark for Issue Resolving",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.02605",
+    "data": "https://huggingface.co/datasets/ByteDance-Seed/Multi-SWE-bench",
+    "code": "https://github.com/multi-swe-bench/multi-swe-bench",
+    "project": "https://multi-swe-bench.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:33:08Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布1,632个多语言仓库修复任务及容器测试，下载量大",
+    "updated_at": "2026-07-18T07:33:08Z"
+  }
+}

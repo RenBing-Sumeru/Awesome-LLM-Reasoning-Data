@@ -1,0 +1,76 @@
+id: intermt-multiturn-interleaved-preference-2025
+title: 'InterMT: Multi-Turn Interleaved Preference Alignment with Human Feedback'
+year: 2025
+venue: arXiv preprint
+authors:
+- Boyuan Chen
+- Donghai Hong
+- Jiaming Ji
+- Jiacheng Zheng
+- Bowen Dong
+- Jiayi Zhou
+- Kaile Wang
+- Juntao Dai
+- Xuyao Wang
+- Wenqi Chen
+- Qirui Zheng
+- Wenxin Li
+- Sirui Han
+- Yike Guo
+- Yaodong Yang
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2505.23950
+  arxiv: https://arxiv.org/abs/2505.23950
+  code: null
+  data: https://huggingface.co/datasets/PKU-Alignment/InterMT
+  project: https://pku-intermt.github.io/
+  huggingface: https://huggingface.co/datasets/PKU-Alignment/InterMT
+data_object:
+  prompt_source: See the official paper and dataset card.
+  trace_author: See the official construction description.
+  answer_format: A seed prompt and image, paired multi-turn conversations, and local and global annotations.
+  verifier_or_reward: Human annotators provide multi-dimensional preference feedback at turn and conversation levels.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See official paper and dataset card.
+  annotation_policy: Human annotators provide multi-dimensional preference feedback at turn and conversation levels.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: The data is multimodal, long-horizon, and CC-BY-NC; annotation and simulated interaction choices may not transfer
+    to other modalities.
+verification:
+  link_verified: true
+  sources:
+  - https://arxiv.org/abs/2505.23950
+  - https://huggingface.co/datasets/PKU-Alignment/InterMT
+inclusion_reason: Human preferences over multi-turn interleaved multimodal conversations with local and global feedback.
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: InterMT releases human preference annotations for competing multi-turn, interleaved image-text conversations,
+  covering both local turns and complete interaction trajectories.
+why_it_matters: Human preferences over multi-turn interleaved multimodal conversations with local and global feedback.

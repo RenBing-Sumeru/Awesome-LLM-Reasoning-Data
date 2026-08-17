@@ -1,0 +1,1 @@
+Mukherjee, Arpan, Marcello Bullo, Debabrota Basu, and Deniz Gündüz. 2026. Test-time Verification via Optimal Transport: Coverage, ROC, & Sub-optimality. International Conference on Learning Representations. https://arxiv.org/abs/2510.18982

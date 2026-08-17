@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T07:16:39Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "coding agent的github 人机协作，数据多，但工作不够solid，SWE-smith可替代",
+    "updated_at": "2026-07-13T07:16:39Z"
+  }
+}

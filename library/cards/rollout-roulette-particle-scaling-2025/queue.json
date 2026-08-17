@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:02:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用粒子滤波保留可能被过程奖励误判的推理路径，直接优化多轨迹推理的算力分配",
+    "updated_at": "2026-07-20T13:02:29Z"
+  }
+}

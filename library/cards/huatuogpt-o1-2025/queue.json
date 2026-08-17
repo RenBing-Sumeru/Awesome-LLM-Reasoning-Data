@@ -1,0 +1,17 @@
+{
+  "title": "Towards Medical Complex Reasoning with LLMs through Medical Verifiable Problems",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2412.18925",
+    "data": "https://huggingface.co/datasets/FreedomIntelligence/medical-o1-reasoning-SFT"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T11:37:20Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "medical数据",
+    "updated_at": "2026-07-27T11:37:20Z"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Osprey: Pixel Understanding with Visual Instruction Tuning",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/CVPR2024/html/Yuan_Osprey_Pixel_Understanding_with_Visual_Instruction_Tuning_CVPR_2024_paper.html",
+    "data": "https://huggingface.co/datasets/AntGroup-MI/Osprey-724K"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:12:48Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态数据",
+    "updated_at": "2026-07-27T09:12:48Z"
+  }
+}

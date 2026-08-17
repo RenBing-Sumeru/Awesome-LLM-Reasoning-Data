@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "失败轨迹，数据充足",
+    "updated_at": "2026-07-21T10:16:07Z"
+  },
+  "updated_at": "2026-07-21T10:16:07Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

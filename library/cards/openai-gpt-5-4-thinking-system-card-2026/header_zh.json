@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GPT-5.4 Thinking 的 living system card 披露长 rollout 自回退并保护模拟用户工作、确认策略与 cyber 安全训练，同时加入动态/production-like 轨迹、CoT monitorability 和 programmatic agent 评测；其关键价值是分离训练、评测、monitor 与部署，而底层记录、reward 和全局 split 仍未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Living 前沿推理系统卡与数据、监控及部署披露账本",
+  "best_for_ch": "审计长轨迹 agent 训练、CoT monitorability、评测 grader 和 cyber 部署监控边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,171 @@
+id: theorem-prover-judge-synthetic-data-2025
+title: Theorem Prover as a Judge for Synthetic Data Generation
+year: 2025
+venue: ACL 2025
+authors:
+- Joshua Ong Jun Leang
+- Giwon Hong
+- Wenda Li
+- Shay B. Cohen
+source_role:
+- construction_recipe
+- verifier_reward
+- process_supervision
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+- pairwise_preference
+- process_reward
+domains:
+- mathematics
+training_use:
+- sft
+- preference_learning
+- process_supervision
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1448/
+  arxiv: https://arxiv.org/abs/2502.13137
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1448
+  venue: https://aclanthology.org/2025.acl-long.1448/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1448/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Few-shot reverse-question-answering seeds from GSM8K and MATH solutions, concentrated in arithmetic problem
+    solving, algebra, and counting and probability.
+  trace_author: GPT-4o and the latest GPT-4o chat snapshot generate two candidate natural-language solutions per synthetic
+    question; GPT-4o also performs question and answer autoformalisation, auto-informalisation, alignment checking, and retry
+    revisions.
+  answer_format: A synthetic mathematics question with two step-by-step natural-language solutions, associated Lean formalisation
+    attempts, step-level execution outcomes, retry history, and an SFT target, a verified-versus-false DPO pair, or a disposal/exclusion
+    decision.
+  process_fields:
+  - source benchmark and mathematical domain
+  - synthetic question and CoMAT symbolic representation
+  - Lean question formalisation and auto-informalisation
+  - round-trip alignment decision
+  - two candidate natural-language solutions
+  - stepwise Lean answer formalisation
+  - Lean execution output and diagnostic feedback
+  - retry history and final Verified, False, or Error outcome
+  - SFT, DPO, disposal, or unresolved-error route
+  environment_or_substrate: Lean theorem proving after CoMAT-style question conversion, with GPT-4o autoformalisation, reverse
+    translation, a second GPT-4o alignment check, and iterative correction from Lean diagnostics.
+  verifier_or_reward: Lean executes formalised reasoning steps. A trace is Verified when its proof steps verify, False when
+    a step is refuted, and Error when the formalisation does not execute; Error triggers at most five retries in Algorithm
+    1.
+  terminal_predicate: Verified/Verified response pairs supply SFT examples; Verified/False pairs supply DPO preferences; False/False
+    pairs are disposed; unresolved Error cases are excluded rather than treated as verified.
+recipe_metadata:
+  base_model: Experiments apply LoRA to Llama-2-7B-chat-hf, Llama-3.2-3B-Instruct, Llama-3.1-8B-Instruct, OLMo-2-1124-7B-Instruct,
+    and Mistral-7B-Instruct-v0.3.
+  teacher: The appendix names gpt-4o-2024-08-06, gpt-4o-2024-11-20, and the latest GPT-4o chat snapshot for generation and
+    formalisation roles; Lean, not the language model, supplies executable proof feedback.
+  generator: Reverse question answering generates questions from GSM8K/MATH few-shot solutions, after which two GPT-family
+    responses are generated for each retained question.
+  filtering_rule: Reject question formalisations that fail round-trip alignment; classify answer formalisations as Verified,
+    False, or Error; retry Error up to five times; route Verified/Verified to SFT, Verified/False to DPO, False/False to disposal,
+    and unresolved Error to exclusion.
+  sampling_protocol: Question generation is few-shot, answer generation is zero-shot, and formalisation uses 10-shot prompts
+    for GSM8K, 8-shot prompts for MATH algebra, and 6-shot prompts for MATH counting and probability. Reported generation
+    uses temperature 0 and a 3,500-token maximum.
+  rollout_count: 2 candidate solutions per retained synthetic question
+  temperature: 0.0
+  inference_budget: At most five iterative autoformalisation retries per answer in Algorithm 1. The appendix reports approximately
+    $50 for 300 samples and also $0.60 per sample; these figures are arithmetically inconsistent and should not be used as
+    a reconciled cost estimate.
+  optimizer_or_scaffold: One LoRA SFT epoch on 2,562 verified responses followed by three DPO epochs on 473 verified-versus-false
+    pairs; effective batch size 64, learning rate 3e-5, RMSprop, seed 42, and DPO beta 0.1. Training and evaluation used two
+    80 GB A100 GPUs.
+audit:
+  source_mixture: 'SIMQA has 3,508 response records: 1,876 derived from GSM8K and 1,632 from MATH. Table 8 allocates 2,562
+    records to SFT and 473 pairs, or 946 responses, to DPO across GSM8K, algebra, counting and probability, and a small Others
+    group.'
+  split: The paper reports training allocations, not a released item-level split manifest. Source-row identifiers, grouping
+    rules, and overlap with GSM8K, GSMSymbolic, MATH-500, and the other evaluation sets are undisclosed.
+  decontamination: unknown
+  license: The ACL paper is CC BY 4.0. The paper-linked GitHub repository is unavailable, so code/data licensing, redistribution
+    terms, and inherited GSM8K/MATH rights could not be verified.
+  lineage: GSM8K/MATH seed solution -> reverse-generated question -> CoMAT symbolic form -> Lean question formalisation ->
+    GPT-4o auto-informalisation and alignment check -> two generated solutions -> stepwise Lean formalisation and error-driven
+    retries -> Verified/False/Error outcomes -> SFT/DPO/disposal/exclusion route -> LoRA SFT and DPO.
+  known_failure_modes:
+  - Lean execution certifies the generated formal statement and proof, not necessarily faithful alignment with the original
+    natural-language problem or reasoning intent.
+  - GPT-4o participates in formalisation and round-trip alignment checking, creating correlated self-validation risk even
+    though a second call performs the check.
+  - The 54-case manual audit found five theorem-prover false positives among 19 human-negative cases; the paper's appendix
+    includes a concrete semantically wrong answer that nevertheless verifies.
+  - Error is distinct from mathematical falsehood; retries and eventual exclusion can bias the retained corpus toward easier-to-formalise
+    questions and shorter traces.
+  - Two False responses are disposed, so some negative-trace diversity is not retained for training.
+  - The generated corpus contains 3,508 responses and is concentrated in a limited set of mathematical subdomains; generator
+    competence also limits difficulty.
+  - Benchmark changes are mixed across models and tasks and do not independently establish dataset correctness, coverage,
+    licensing, or causal benefit.
+  - The paper reports approximately 40% iterative refinement in Section 4.3 and 50% in Appendix E; it reports a final-two-sentence
+    judge context in Section 3 and final-three-sentence context in Appendix D.
+  - Algorithm 1 appears to break after the first verified step although the prose defines verification over all proof steps;
+    implementation is unavailable to resolve the reading.
+  - The appendix's approximately $50 for 300 samples and $0.60-per-sample statements do not agree arithmetically.
+  - Exact Lean/mathlib revision, complete prompts, source-row lineage, rejected items, disposed pairs, retry logs, proofs,
+    and trained checkpoints are not available in an accessible release.
+  - No pretraining decontamination or inherited-license audit is reported.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper and appendix, ACL metadata, DOI, and arXiv record were checked on 2026-07-22. The paper-cited
+    repository URL returned 404, and no accessible SIMQA or model release was confirmed.
+inclusion_reason: TP-as-a-Judge is a concrete synthetic-reasoning-data recipe in which round-trip question formalisation and
+  executable Lean outcomes route response pairs into SFT, DPO, rejection, or retry paths.
+related: []
+tags:
+- theorem-prover-feedback
+- lean
+- autoformalisation
+- synthetic-math-data
+- step-verification
+- reverse-question-answering
+- sft-dpo-routing
+- formal-verifier
+- release-unavailable
+status: partial
+one_line_summary: A Lean-grounded recipe for generating and selecting synthetic mathematical reasoning, with executable step
+  checks, retry feedback, and explicit SFT/DPO routing.
+why_it_matters: It makes an executable theorem prover part of the data-allocation contract while exposing formalisation fidelity,
+  selection bias, and unavailable release artifacts as audit risks.
+card: null
+needs:
+- 'needs_url: restore or relocate the paper-linked RLTPF repository and publish an immutable release'
+- 'needs_metadata: release SIMQA rows, Lean proofs, retry histories, disposed pairs, prompts, source identifiers, and trained
+  checkpoints'
+- 'needs_metadata: document code/data/model licenses and inherited GSM8K/MATH rights'
+- 'needs_metadata: publish the exact Lean and mathlib environment and reconcile paper-internal procedural discrepancies'
+- 'needs_metadata: audit natural-language-to-formal-statement faithfulness with independent annotators'
+- 'needs_metadata: report decontamination and evaluation-overlap checks'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, appendix, ACL record, arXiv record, and DOI verified. The paper-cited repository is unavailable,
+    and no public data or model artifact was confirmed.
+category_ids:
+- programmatically_verifiable_outcome_data
+- data_construction_open_release_recipes

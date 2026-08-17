@@ -1,0 +1,1 @@
+Agarwal, Aradhye, Ayan Sengupta, and Tanmoy Chakraborty. 2025. “The Art of Scaling Test-Time Compute for Large Language Models.” arXiv:2512.02008. Official code: https://github.com/Aradhye2002/art_of_tts.

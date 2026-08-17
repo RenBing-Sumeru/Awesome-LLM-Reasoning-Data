@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MedReason 把医疗问答实体映射到 PrimeKG，由 GPT-4o 生成有知识路径约束的解释，并开放 32,682 条通过答案恢复筛选的逐步 SFT 记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "医学推理数据集与知识图谱约束的合成流程",
+  "best_for_ch": "适合构建或审计医学 CoT 数据、知识图谱约束生成和答案级筛选流程的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Juncheng Wu, Wenlong Deng, Xingxuan Li, Sheng Liu, Taomian Mi, Yifan Peng, Ziyang Xu, Yi Liu, Hyunjin Cho, Chang-In Choi, Yihan Cao, Hui Ren, Xiang Li, Xiaoxiao Li, Yuyin Zhou",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

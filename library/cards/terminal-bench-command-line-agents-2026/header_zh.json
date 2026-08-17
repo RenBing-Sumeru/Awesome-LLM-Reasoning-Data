@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Terminal-Bench 用真实困难命令行任务和执行反馈评测智能体。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "ICLR 2026 / arXiv 的 command-line agent benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mike A. Merrill 等（Stanford University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:07:06Z"
+}

@@ -1,0 +1,3 @@
+The paper supports its account by systematically gathering relevant research, not by introducing one new score. Its abstract states that chain-of-thought prompting has been found to improve reasoning capability and that the paper surveys advanced methods. When comparing cited claims, retain the original task and evaluation conditions because the papers can study different problems.
+
+Its evidence therefore describes the shape of the literature and the range of reported findings, rather than a pooled experiment in which every method uses the same model and protocol. Check the cited study when an improvement matters: it may concern final answers, the form of intermediate output, or both, and those claims have different practical implications.

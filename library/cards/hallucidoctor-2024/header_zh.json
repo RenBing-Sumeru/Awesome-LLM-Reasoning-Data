@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HalluciDoctor 诊断并改写约 5 万条含有图像无依据陈述的视觉对话。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "在训练前审计并修复视觉指令混合中的无依据回答",
+  "confidence_ch": "高",
+  "authors_ch": "Qifan Yu, Juncheng Li, Longhui Wei, Liang Pang, Wentao Ye, Bosheng Qin, Siliang Tang, Qi Tian, Yueting Zhuang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

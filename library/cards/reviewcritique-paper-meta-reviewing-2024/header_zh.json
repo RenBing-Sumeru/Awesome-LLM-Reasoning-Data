@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以专家标注的缺陷片段比较人类与 LLM 论文评审，并检验模型能否识别低质量评论。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiangshu Du、Yibo Wang、Wenting Zhao、Zhongfen Deng、Shuaiqi Liu、Renze Lou、Henry Peng Zou、Pranav Narayanan Venkit、Nan Zhang、Mukund Srinath、Haoran Ranran Zhang、Vipul Gupta、Yinghui Li、Tao Li、Fei Wang、Qin Liu、Tianlin Liu、Pengzhi Gao、Congying Xia、Chen Xing、Jiayang Cheng、Zhaowei Wang、Ying Su、Raj Sanjay Shah、Ruohao Guo、Jing Gu、Haoran Li、Kangda Wei、Zihao Wang、Lu Cheng、Surangika Ranathunga、Meng Fang、Jie Fu、Fei Liu、Ruihong Huang、Eduardo Blanco、Yixin Cao、Rui Zhang、Philip S. Yu、Wenpeng Yin",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

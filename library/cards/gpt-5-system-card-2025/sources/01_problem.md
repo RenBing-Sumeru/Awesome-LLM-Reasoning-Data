@@ -1,0 +1,5 @@
+Frontier model reports can mix four evidence layers that answer different questions: disclosures about training data, descriptions of post-training feedback, safety or capability evaluations, and safeguards applied at deployment. Treating any one layer as proof of another obscures what can actually be audited. A benchmark result does not reveal the records that produced a model, and an end-to-end safeguard result does not isolate the effect of training.
+
+GPT-5 makes this boundary especially important because the released product is a unified system rather than a single static model. OpenAI describes a fast model, a deeper reasoning model, a real-time router, mini fallbacks, and a parallel test-time-compute setting called gpt-5-thinking-pro. Track 12 therefore asks what data objects and feedback contracts are actually disclosed for the models and router, which evaluation evidence is reported, which controls operate only at deployment, and what remains unavailable.
+
+This Card is scoped to the August 7, 2025 launch system card. It does not merge later GPT-5 addenda or successor reports into the launch disclosure.

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen3.5-Omni 报告文本—视觉和超过一亿小时音视频语料、256K 上下文与全模态能力，但未披露后训练数据、奖励/verifier、rollout 或审计细节。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "前沿全模态模型技术报告与数据披露台账",
+  "best_for_ch": "审计全模态语料声明与缺失后训练证据之间差距的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

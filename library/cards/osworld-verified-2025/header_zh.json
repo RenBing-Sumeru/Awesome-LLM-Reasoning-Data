@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "OSWorld-Verified 是 OSWorld 的维护升级版，修复 300+ 问题并提供更稳定的 computer-use agent 评测信号。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark update / agent environment",
+  "best_for_ch": "需要比较 OSWorld 旧分数、Verified 分数、桌面环境复现和 leaderboard 版本边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tianbao Xie、Mengqi Yuan、Danyang Zhang 等（XLANG Lab）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

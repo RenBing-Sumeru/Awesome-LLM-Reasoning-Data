@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 WildGuardMix 安全审核数据和 WildGuard 模型，用统一标签识别有害意图、回答风险、拒答与越狱攻击。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "后训练数据、偏好、奖励或评测研究",
+  "best_for_ch": "研究 LLM 后训练反馈数据与 verifier 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Seungju Han、Kavel Rao、Allyson Ettinger、Liwei Jiang、Bill Yuchen Lin、Nathan Lambert、Yejin Choi、Nouha Dziri",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T08:45:02Z"
+}

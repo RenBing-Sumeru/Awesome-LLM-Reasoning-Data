@@ -1,0 +1,5 @@
+The report does not release post-training data, environment packages or snapshots, verifiers, reward models, teacher checkpoints, teacher routing, or MOPD and ORM integration details. Full source provenance, record counts, task manifests, train/evaluation splits, decoding settings, rollout counts, reward thresholds, judge rubrics, and accepted-versus-rejected yields are unknown.
+
+The reported code, terminal, Playwright, search, and synthetic function-calling environments cannot be independently reproduced from the available artifacts. The official licenses cover the Hugging Face weights under MIT and the repository under Apache-2.0, but do not establish rights for post-training data or environments.
+
+The disclosed SWE-Bench issue is a concrete reward-hacking route: undeleted ground-truth commits in an environment can leak a successful solution. An evaluation-image update addresses that named issue, but the report does not provide a comprehensive contamination audit or sufficient evidence of train/evaluation separation across all task families.

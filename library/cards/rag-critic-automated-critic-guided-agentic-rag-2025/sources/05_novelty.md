@@ -1,0 +1,1 @@
+Earlier RAG evaluation checks final answers or citations, with error analysis performed manually after experiments. RAG-Critic trains an online diagnostic model, organises open error descriptions into a two-level taxonomy, and connects diagnosis to agent control. The novelty is feedback determining the next action rather than a new retriever.

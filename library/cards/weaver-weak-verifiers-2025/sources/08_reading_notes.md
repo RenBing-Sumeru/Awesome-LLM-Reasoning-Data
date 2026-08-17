@@ -1,0 +1,6 @@
+- Data object: repeated query-response candidates, raw and normalized verifier scores, binary votes, fitted TPR/TNR values, posterior correctness scores, and the selected response.
+- Main contract: judgment-required answer-level selection; Weaver is not a programmatic oracle.
+- Main comparisons use 100 candidates and a heterogeneous weak-verifier ensemble; about 1% labeled development data supplies priors and threshold information.
+- Keep official-version results separate: NeurIPS reports 86.2% average, while the accessible arXiv Table 1 reports 87.7%.
+- Distillation uses Weaver posterior scores to train 396M ModernBERT cross-encoders; retention metrics do not certify each pseudo-label.
+- Audit verifier correlation, class-prior and threshold shift, missing-correct-candidate cases, release lineage, decontamination, and licenses before reuse.

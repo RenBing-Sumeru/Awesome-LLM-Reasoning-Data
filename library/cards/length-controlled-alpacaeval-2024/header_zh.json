@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Length-Controlled AlpacaEval 通过在同等输出长度条件下估计胜率，降低 AlpacaEval 自动偏好评测对长回答的偏置。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "COLM 2024 / arXiv 的自动评测去偏论文",
+  "best_for_ch": "关注 LLM-as-judge、偏好评测、leaderboard 去偏、评测 harness 复用边界的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yann Dubois、Balázs Galambosi、Percy Liang、Tatsunori B. Hashimoto（Stanford University、Independent Researcher）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T08:20:41Z"
+}

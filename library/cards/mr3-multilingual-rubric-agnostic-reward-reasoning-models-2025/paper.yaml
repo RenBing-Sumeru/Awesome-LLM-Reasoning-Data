@@ -1,0 +1,93 @@
+id: mr3-multilingual-rubric-agnostic-reward-reasoning-models-2025
+title: 'mR3: Multilingual Rubric-Agnostic Reward Reasoning Models'
+year: 2025
+venue: ICLR 2026
+authors:
+- David Anugraha
+- Shou-Yi Hung
+- Zilu Tang
+- Annie En-Shiun Lee
+- Derry Tanti Wijaya
+- Genta Indra Winata
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- alignment
+training_use:
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.01146
+  arxiv: https://arxiv.org/abs/2510.01146
+  code: https://github.com/rubricreward/mr3
+  data: https://github.com/rubricreward/mr3
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the paper and official data artifact.
+  trace_author: unknown
+  answer_format: Preference or reward-feedback record described in the official artifact.
+  process_fields:
+  - prompt
+  - response
+  - preference
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official release.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: See the official paper.
+  filtering_rule: See the official artifact.
+  sampling_protocol: See the official artifact.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Officially released preference or reward-feedback records.
+  split: unknown
+  decontamination: unknown
+  license: Verify in the official artifact before reuse.
+  lineage: Candidate pool supplied official paper and data links.
+  known_failure_modes:
+  - Release metadata needs artifact-level verification
+  citation_status: verified
+  confidence: high
+  notes: Author affiliations were not provided in the candidate pool; this card does not infer them.
+inclusion_reason: The candidate pool identifies an official preference or reward-feedback artifact for this paper.
+related: []
+tags:
+- preference
+- reward
+- feedback-data
+one_line_summary: This paper releases or uses a preference or reward-feedback artifact for alignment research.
+why_it_matters: It provides a feedback object for alignment training or evaluation.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: official paper, data/code artifact, and venue review
+  confidence: high
+  notes: Official paper and data URLs were supplied in the candidate pool.
+category_ids:
+- preference_reward_feedback_data

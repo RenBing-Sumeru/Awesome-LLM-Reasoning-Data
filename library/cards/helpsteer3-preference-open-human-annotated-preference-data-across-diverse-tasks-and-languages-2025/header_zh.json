@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 HelpSteer3-Preference 多任务、多语言人工偏好数据，扩展通用、STEM 与中文场景的奖励模型监督覆盖。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "专家人工偏好数据、奖励模型与 RLHF",
+  "best_for_ch": "需要审计 LLM 后训练反馈、奖励或评测数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhilin Wang、Jiaqi Zeng、Olivier Delalleau 等（NVIDIA）",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

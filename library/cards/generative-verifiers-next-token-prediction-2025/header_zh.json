@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Generative Verifiers 将答案验证改写为直接判决或生成式 critique 的下一 token SFT，并公开 GSM8K 反馈记录，但生成理由的许可证范围、代码、checkpoint 与去污染仍未解决。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "生成式 verifier 与合成验证理由数据构建研究",
+  "best_for_ch": "需要设计 reward model、生成验证理由、Best-of-N 选择器或审计开放反馈数据的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Lunjun Zhang；Arian Hosseini；Hritik Bansal；Seyed Mehran Kazemi；Aviral Kumar；Rishabh Agarwal",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

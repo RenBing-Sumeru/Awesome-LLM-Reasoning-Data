@@ -1,0 +1,135 @@
+id: simpleqa-2024
+title: Measuring short-form factuality in large language models
+year: 2024
+venue: OpenAI / arXiv
+authors:
+- Jason Wei
+- Nguyen Karina
+- Hyung Won Chung
+- Yunxin Joy Jiao
+- Spencer Papay
+- Amelia Glaese
+- John Schulman
+- William Fedus
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- factuality
+- short-form-qa
+- calibration
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/papers/simpleqa.pdf
+  arxiv: https://arxiv.org/abs/2411.04368
+  code: https://github.com/openai/simple-evals/blob/main/simpleqa_eval.py
+  data: https://openaipublic.blob.core.windows.net/simple-evals/simple_qa_test_set.csv
+  project: https://openai.com/index/introducing-simpleqa/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2411.04368
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 4,326 short fact-seeking questions in the public SimpleQA CSV.
+  prompt_source: AI trainers wrote knowledge-seeking questions with single, timeless, evidence-supported answers; candidate
+    questions were made difficult by requiring at least one of four reference model completions to fail.
+  trace_author: OpenAI authors, AI trainers who created questions and reference answers, independent AI trainers who verified
+    answers, and the prompted grading classifier used in the released evaluator.
+  answer_format: metadata dictionary, problem string, reference answer string, model answer, and grader label in CORRECT,
+    INCORRECT, or NOT_ATTEMPTED.
+  process_fields:
+  - metadata with topic, answer type, and supporting URLs
+  - short factual question
+  - reference answer
+  - predicted answer
+  - three-way grader label
+  - aggregate correct, incorrect, not attempted, correct-given-attempted, and F-score metrics
+  environment_or_substrate: short-form factual question answering; no tool-use environment, retrieval step, multi-turn dialogue,
+    or long-form claim decomposition is part of the released evaluator.
+  verifier_or_reward: a prompted frontier-model classifier compares question, reference answer, and predicted answer, then
+    returns CORRECT, INCORRECT, or NOT_ATTEMPTED.
+  terminal_predicate: a response is correct only when it fully contains the reference answer and does not contradict it; a
+    response is incorrect when it contains any contradiction; otherwise it is not attempted.
+  benchmark_size: 4,326 public CSV rows.
+recipe_metadata:
+  base_model: Not a training recipe; the work is an evaluation benchmark and grader contract for short-form factuality.
+  teacher: AI trainers supply and verify reference answers; the released evaluator uses a prompted grading classifier for
+    model outputs.
+  generator: question creation by AI trainers, independent answer verification, criteria checks for single/timeless answers,
+    source-domain checks, and final public CSV release.
+  filtering_rule: Keep only questions whose creator and independent verifier agree, whose answers are intended to be stable
+    after December 31, 2023, and whose evidence comes from at least two unique website domains among trainer-provided sources.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; calibration experiments in the paper include repeated
+    sampling, but the standard benchmark row is one question and one model answer.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: OpenAI PDF, arXiv record, official simple-evals implementation, and public OpenAI-hosted CSV.
+  split: simple-evals reads a public test-set CSV with 4,326 rows; no hidden split was verified.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: simple-evals repository reports MIT License; confirm whether downstream redistribution of the CSV follows the same
+    terms before packaging or training reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2411.04368'
+  known_failure_modes:
+  - public CSV rows can become training contamination
+  - factual coverage is restricted to short-answer questions with single timeless answers
+  - grader labels can drift with grader model, prompt, parsing rule, or local evaluator commit
+  - F-score can reward guessing whenever the model believes it is more than roughly 50% likely to be right
+  - aggregate score can hide differences between abstention behavior and wrong-answer behavior
+  - supporting web sources and metadata URLs need separate license and availability checks before redistribution
+  citation_status: verified
+  confidence: high
+  notes: Official PDF verifies the 4,326-question scale, two-stage trainer creation/verification process, approximately 3%
+    estimated benchmark error rate, three-way grading contract, model table, and calibration experiments. Official simple-evals
+    code verifies the public CSV URL and metric fields.
+inclusion_reason: SimpleQA isolates short-form factuality and abstention behavior with a compact public benchmark and explicit
+  three-way grader.
+related: []
+tags:
+- benchmark
+- factuality
+- short-form-qa
+- calibration
+why_it_matters: It is a compact factuality benchmark for separating correct answers, wrong claims, and non-attempts under
+  a reproducible evaluator contract.
+status: verified
+needs:
+- 'needs_audit: pin simple-evals commit, grader model, public CSV checksum/version, prompt/scaffold settings, and CSV redistribution
+  terms'
+- 'needs_audit: decide whether reports should emphasize correct rate, correct-given-attempted, F-score, or a wrong-answer
+  penalty'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SimpleQA evaluates short factual answers with a public 4,326-row dataset and a three-way factuality/abstention
+  grader.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: high
+  notes: Official PDF, arXiv page, simple-evals implementation, and OpenAI-hosted CSV were checked during regeneration. The
+    OpenAI index page was reachable only behind a browser challenge, so the PDF and official repository are the stronger sources.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

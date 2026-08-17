@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Multi-modal Agent Tuning 用 GPT-4o mini 生成查询、文件与 ReAct 轨迹并经可执行代码门槛和双重同源 judge 筛选，公开 21,168 条 MM-Traj 记录；其构造 recipe 可供研究，但许可冲突、schema 失败、缺少拒绝账本与独立正确性核验阻断直接训练复用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态 agent 轨迹构造 recipe、数据发布与模型研究",
+  "best_for_ch": "研究多模态工具使用 SFT、合成 ReAct 轨迹、LLM-as-judge 筛选或开放数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zhi Gao、Bofei Zhang、Pengxiang Li、Xiaojian Ma、Tao Yuan、Yue Fan、Yuwei Wu、Yunde Jia、Song-Chun Zhu、Qing Li",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

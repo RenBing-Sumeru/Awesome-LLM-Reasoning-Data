@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebEvolver 联合训练 Llama-3.3-70B 的策略模型与世界模型，发布了两者的监督微调消息数据，并使用合成采样与世界模型前瞻；原始轨迹与回放元数据未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Tianqing Fang、Hongming Zhang、Zhisong Zhang、Kaixin Ma、Wenhao Yu、Haitao Mi、Dong Yu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-17T06:20:12Z"
+}

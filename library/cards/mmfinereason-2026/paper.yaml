@@ -1,0 +1,136 @@
+id: mmfinereason-2026
+title: 'MMFineReason: Closing the Multimodal Reasoning Gap via Open Data-Centric Methods'
+year: 2026
+venue: arXiv preprint
+authors:
+- Honglin Lin
+- Zheng Liu
+- Yun Zhu
+- Chonghan Qin
+- Juekai Lin
+- Xiaoran Shang
+- Conghui He
+- Wentao Zhang
+- Lijun Wu
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- multimodal-reasoning
+- reasoning-data
+training_use:
+- sft
+- distillation
+- rlvr
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2601.21821
+  arxiv: https://arxiv.org/abs/2601.21821
+  code: null
+  data: https://huggingface.co/collections/OpenDataArena/mmfinereason
+  project: https://huggingface.co/collections/OpenDataArena/mmfinereason
+  huggingface: https://huggingface.co/collections/OpenDataArena/mmfinereason
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Standardized multimodal tasks pooled from public datasets including FineVision, BMMR, Euclid30K, Zebra-CoT-Physics,
+    and GameQA-140K.
+  trace_author: Qwen3-VL-235B-A22B-Thinking generates visually grounded long-form reasoning.
+  answer_format: Image or diagram, question, think trace, final answer, source metadata, and quality or difficulty signals.
+  process_fields:
+  - multimodal prompt and source
+  - teacher-generated reasoning and final answer
+  - duplicate, answer-consistency, and difficulty signals
+  environment_or_substrate: Static multimodal question answering with images, diagrams, and text.
+  verifier_or_reward: Format and length checks, 50-gram deduplication, answer-consistency filtering, and four-rollout difficulty
+    estimation.
+  terminal_predicate: Retain a standardized record only after quality filtering; include it in the compact subset when Qwen3-VL-4B-Thinking
+    does not solve it reliably across four attempts.
+recipe_metadata:
+  base_model: Qwen3-VL 2B, 4B, and 8B models are trained; Qwen3-VL-4B-Thinking estimates difficulty.
+  teacher: Qwen3-VL-235B-A22B-Thinking.
+  generator: Normalize pooled tasks, generate think and answer fields with the teacher, filter quality and duplicates, then
+    estimate difficulty.
+  filtering_rule: Apply template and length checks, remove 50-gram duplicates, require answer consistency, and rank records
+    by four-rollout student success.
+  sampling_protocol: The full standardized pool has about 2.3M records; quality filtering yields 1.8M, and difficulty selection
+    yields 123K.
+  rollout_count: 4
+  temperature: null
+  inference_budget: One teacher trace per retained example plus four Qwen3-VL-4B-Thinking attempts for difficulty selection.
+  optimizer_or_scaffold: SFT on the 1.8M or 123K corpus; the paper also evaluates a GSPO reinforcement-learning stage.
+audit:
+  source_mixture: Multiple public multimodal datasets spanning mathematics, science, charts, diagrams, games, and general
+    visual question answering.
+  split: The release provides full 2.3M, filtered 1.8M, and difficult 123K variants; benchmark splits remain task-specific.
+  decontamination: 50-gram deduplication reduces internal repetition, but does not establish benchmark-level decontamination
+    for every source.
+  license: The Hugging Face datasets declare Apache-2.0; source-dataset terms and image rights still require per-source review.
+  lineage: Records preserve a pooled-source origin and are transformed by standardization, teacher generation, quality filtering,
+    and difficulty selection.
+  known_failure_modes:
+  - Final-answer agreement can retain fluent but unfaithful reasoning.
+  - Difficulty labels depend on Qwen3-VL-4B-Thinking and may not transfer to other students.
+  - Mixed source licenses and image provenance require separate redistribution checks.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF and OpenDataArena Hugging Face collection checked on 2026-07-13. Dataset row counts were checked
+    from the published Parquet metadata.
+inclusion_reason: MMFineReason provides a reproducible quality-and-difficulty pipeline for turning pooled multimodal tasks
+  into long-CoT post-training data.
+related: []
+tags:
+- arxiv-2601.21821
+- instruction-demonstration-rationale-data
+- multimodal-reasoning
+status: verified
+one_line_summary: MMFineReason distills and filters 1.8M multimodal long-CoT examples, then selects a 123K difficult subset
+  that retains most of the training gain.
+why_it_matters: It shows how source normalization, answer consistency, deduplication, and student-relative difficulty can
+  make multimodal reasoning data more efficient.
+reading_priority: recommended
+paper_type: multimodal reasoning data construction and selection
+best_for: Researchers building or selecting multimodal long-CoT data for SFT and subsequent RL.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Paper, authors, affiliations, methods, experiments, Hugging Face collection, licenses, schemas, and published row
+    counts were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-c-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: teacher-distilled multimodal long-CoT data
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: The PDF lists Shanghai AI Laboratory, Shanghai Jiao Tong University, Peking University, and The University
+      of Hong Kong.
+    venue: Only the arXiv preprint was confirmed; no official peer-reviewed acceptance or distinguished presentation was found.
+    impact: Official API checked 2026-07-13; four MMFineReason dataset variants had 5,866, 1,824, 652, and 427 Hugging Face
+      downloads, with 65 to 125 likes on the main releases.
+    artifact: The official collection exposes four Apache-2.0 Parquet variants with scale, schemas, and SFT use documented;
+      source-image rights still require a separate audit.
+  selection_eligible: true
+  year_impact_threshold: 1

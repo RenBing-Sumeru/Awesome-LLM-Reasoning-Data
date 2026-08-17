@@ -1,0 +1,117 @@
+id: judgebench-2024
+title: 'JudgeBench: A Benchmark for Evaluating LLM-based Judges'
+year: 2024
+venue: ICLR 2025 conference paper / arXiv
+authors:
+- Sijun Tan
+- Siyuan Zhuang
+- Kyle Montgomery
+- William Y. Tang
+- Alejandro Cuadron
+- Chenguang Wang
+- Raluca Ada Popa
+- Ion Stoica
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- llm-judges
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2410.12784
+  arxiv: https://arxiv.org/abs/2410.12784
+  doi: https://doi.org/10.48550/arXiv.2410.12784
+  code: https://github.com/ScalerLab/JudgeBench
+  data: https://huggingface.co/datasets/ScalerLab/JudgeBench
+  project: null
+  huggingface: https://huggingface.co/datasets/ScalerLab/JudgeBench
+  venue: https://openreview.net/forum?id=G0dksFayVq
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct objective response-pair judging for knowledge/reasoning/math/code; exact
+    split, artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose objective response-pair judging for knowledge/reasoning/math/code, prompt/task metadata,
+    a model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: objective response-pair judging for knowledge/reasoning/math/code
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct objective response-pair judging for knowledge/reasoning/math/code; exact
+    split, artifact, license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2410.12784;
+    https://arxiv.org/pdf/2410.12784; https://github.com/ScalerLab/JudgeBench; https://huggingface.co/datasets/ScalerLab/JudgeBench'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2410.12784'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v2 states ICLR 2025 conference paper; GitHub, Hugging Face dataset, and leaderboard verify public artifacts
+    and UC Berkeley/Washington University in St. Louis affiliations.
+inclusion_reason: Meta-evaluates LLM judges on hard correctness pairs.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- llm-judges
+why_it_matters: Meta-evaluates LLM judges on hard correctness pairs.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: JudgeBench exposes objective response-pair judging for knowledge/reasoning/math/code as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv v2 states ICLR 2025 conference paper; GitHub, Hugging Face dataset, and leaderboard verify public artifacts
+    and UC Berkeley/Washington University in St. Louis affiliations.
+category_ids:
+- benchmarks_evaluation_surfaces
+- judgment_rubric_domain_expert_data
+- preference_reward_feedback_data

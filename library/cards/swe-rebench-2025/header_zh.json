@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "SWE-rebench 自动收集新鲜 SWE 任务并进行去污染智能体评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2025 / arXiv 的 SWE agent evaluation benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ibragim Badertdinov 等（Nebius）",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T13:30:45Z"
+}

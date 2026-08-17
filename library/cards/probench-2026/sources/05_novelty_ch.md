@@ -1,0 +1,7 @@
+最接近的baseline是final-state-only GUI evaluation：只要trajectory到达视觉上可接受的屏幕就获得credit。ProBench改变terminal evaluator输入，加入被评智能体自身critical operation的文本证据，从而区分终态外观相同、但是否执行sorting、filtering或其他必要process condition不同的结果。
+
+第二项变化是双路径Process Provider。accessibility-tree conversion提供programmatic node evidence，before/after screenshot summarizer提供model-generated action description。二者都送入同一个terminal Gemini judgment；都不是独立reward function或expected action trace。
+
+对推理数据研究而言，方向信号是action-level record可支持trajectory-level judge，而不自动成为step supervision。benchmark明确区分observation/history、evaluator-facing evidence、terminal label与agent-visible training signal。由于没有发布demonstration或process-label dataset，这一区分尤其重要。
+
+本文并未分别新提出Android control、accessibility tree、screenshot comparison、MLLM judging或binary success metric。217项双语任务覆盖与报告模型差距属于evaluation coverage，不是数据质量认证。复用需要发布task/code、evaluator test、device/app snapshot、自动reset、split/exposure政策、trajectory retention、privacy/safety控制与明确rights。

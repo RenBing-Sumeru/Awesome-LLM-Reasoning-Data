@@ -1,0 +1,6 @@
+- 明确列出全部十个训练环境：三个研究世界和七个获许可商业游戏；ASKA 与 MineDojo 只是从初始环境训练中 held out。
+- 策略输入/输出是 720p RGB 与普通键鼠动作块；外部验证器仍可能读取特权状态或屏幕/动作信号。
+- 人类游戏轨迹占主要数据量，精选成功 bridge episode 接受 Gemini 过程推理/对话标注；数量和失败轨迹保留未知。
+- 区分 online RLVR 与自改进：后者包含 Gemini task generator、SIMA 2 actor、Gemini 0–100 reward model、experience bank 和再训练。
+- 同时保留 65% 人类评测、66% 自动评测、ASKA/MineDojo 迁移增益、MineDojo 750 个 task-seed 配置及基础推理保留下降。
+- 没有公开可复用代码/数据/模型/环境 artifact；商业权利、Gemini 角色相关性、base model 先验和版本/save-state 漂移是主要审计风险。

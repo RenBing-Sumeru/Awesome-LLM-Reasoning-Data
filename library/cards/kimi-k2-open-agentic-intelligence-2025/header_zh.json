@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Kimi K2 报告称 3,000+ 个真实 MCP 工具和 20,000+ 个合成工具经由 rubric 过滤轨迹、执行环境、RLVR 与 self-critique 反馈进入后训练，但未公开数据、verifier 实现或审计工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿智能体模型技术报告与数据披露台账",
+  "best_for_ch": "需要审计 MCP 工具、智能体轨迹、真实执行环境、RLVR 与自评奖励披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Kimi Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,5 @@
+- **Position.** W²Bench asks whether a reward model detects detailed writing requirements rather than generic writing quality.
+- **Mechanism.** Requirement dropout produces an ordered set of candidate answers; WRL trains a Bradley--Terry reward model and uses it in GRPO.
+- **Artifact.** Official code and data are released at the project repository; the paper's five categories cover content, style, format, and length requirements.
+- **Evidence anchor.** Our-RM-7B reports 94.6 correlation/97.3 IL/78.0 PL, and WRL raises Qwen2.5-7B-Instruct from 57.0 to 64.4 on WritingBench.
+- **Reuse decision.** Suitable for explicit constraints; manually validate induced rankings before using them as reward labels.

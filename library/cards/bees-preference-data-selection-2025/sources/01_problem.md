@@ -1,0 +1,3 @@
+DPO is usually trained on every available preference pair, although preference datasets can contain ambiguous, mislabeled, or redundant comparisons. Such noise can shrink learned reward parameters toward zero, and a larger dataset can therefore be worse than a smaller, better-curated one.
+
+This paper asks which preference pairs should enter alignment training when reward signals disagree or are noisy. It treats the data decision as part of the optimization objective: retain pairs with clear, reliable preference evidence rather than assuming that difficult or low-gap pairs are automatically more useful.

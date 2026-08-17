@@ -1,0 +1,3 @@
+Junhong Lin, Xinyue Zeng, Jie Zhu, Song Wang, Julian Shun, Jun Wu, and Dawei Zhou. 2026. *Plan and Budget: Effective and Efficient Test-Time Scaling on Reasoning Large Language Models*. International Conference on Learning Representations (ICLR 2026).
+
+Official paper records: [OpenReview](https://openreview.net/forum?id=ctspw4CqbS) and [arXiv:2505.16122](https://arxiv.org/abs/2505.16122) (v3, 2 March 2026). The official author repository is [junhongmit/P-and-B](https://github.com/junhongmit/P-and-B), which provides its ICLR BibTeX entry and is MIT licensed. No separate official dataset release, project page, or model release was verified; the repository's pre-decomposed evaluation files must not be represented as a separately released training dataset.

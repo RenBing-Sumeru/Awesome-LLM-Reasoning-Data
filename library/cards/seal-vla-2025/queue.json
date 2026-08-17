@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "vla推理数据",
+    "updated_at": "2026-07-18T12:08:20Z"
+  },
+  "updated_at": "2026-07-18T12:08:20Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

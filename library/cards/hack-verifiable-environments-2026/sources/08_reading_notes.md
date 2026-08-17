@@ -1,0 +1,5 @@
+- Position: make reward hacking measurable by planting and deterministically monitoring a known shortcut.
+- Mechanism: wrap TextArena with a filesystem that exposes hidden solutions, bugs, or opponent-prompt attacks.
+- Artifact: open code implements 34 environments; no separate official dataset release is claimed.
+- Evidence anchor: harder games increase hack rate for most settings, and prohibitive prompts reduce but do not eliminate it.
+- Reuse decision: use it to compare agents under a stated threat model; inspect whether the planted hack matches the deployment risk.

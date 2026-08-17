@@ -1,0 +1,226 @@
+id: deepseekmath-v2-2025
+title: 'DeepSeekMath-V2: Towards Self-Verifiable Mathematical Reasoning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zhihong Shao
+- Yuxiang Luo
+- Chengda Lu
+- Z.Z. Ren
+- Jiewen Hu
+- Tian Ye
+- Zhibin Gou
+- Shirong Ma
+- Xiaokang Zhang
+source_role:
+- model_report
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+- process_reward
+domains:
+- mathematics
+- natural_language_theorem_proving
+- olympiad_reasoning
+- proof_verification
+training_use:
+- sft
+- reward_modeling
+- process_supervision
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.22570
+  arxiv: https://arxiv.org/abs/2511.22570
+  code: https://github.com/deepseek-ai/DeepSeek-Math-V2
+  data: https://github.com/deepseek-ai/DeepSeek-Math-V2/tree/main/outputs
+  project: https://github.com/deepseek-ai/DeepSeek-Math-V2
+  huggingface: https://huggingface.co/deepseek-ai/DeepSeek-Math-V2
+  doi: https://doi.org/10.48550/arXiv.2511.22570
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The initial problem pool contains 17,503 crawled Art of Problem Solving contest problems, prioritizing olympiads,
+    team-selection tests, post-2010 problems, and items explicitly requiring proofs. A DeepSeek-V3.2-Exp-SFT checkpoint is
+    also said to use mathematics- and code-related reasoning data, but that SFT mixture is unknown. Later generator-produced
+    hard proofs become verifier-training candidates.
+  trace_author: A variant of DeepSeek-V3.2-Exp-Thinking generates and iteratively refines initial candidate proofs. Mathematical
+    experts label sampled proofs and verifier analyses. In later iterations, the improving proof generator produces hard proofs;
+    the learned verifier writes issue analyses, the learned meta-verifier judges asserted issues, and an automated pipeline
+    assigns proof labels.
+  answer_format: Initial verifier records are problem, natural-language proof, and proof score in {0,0.5,1}. Meta-verifier
+    records are problem, proof, verifier proof analysis, and analysis-quality score. Generator outputs contain a Solution
+    followed by a Self Evaluation, including detailed self-analysis and a boxed self-score. Released evaluation outputs additionally
+    contain problem IDs, predicted proofs, automatic average ratings, and human ratings.
+  process_fields:
+  - problem_statement
+  - natural_language_proof
+  - proof_issue_analysis
+  - expert_proof_score_0_0.5_1
+  - verifier_analysis
+  - expert_meta_quality_score_0_0.5_1
+  - generator_self_analysis
+  - generator_self_score
+  - format_reward
+  - score_proximity_reward
+  - meta_verification_reward
+  - proof_generator_reward
+  environment_or_substrate: Training and verification operate over natural-language problem, proof, and analysis prompts;
+    no formal theorem-prover environment is used. At test time, a proof pool is expanded and rescored through repeated generation,
+    verification, and refinement. The official repository releases example inference and evaluation scripts and prompt templates,
+    but not the GRPO or RFT training environment or automatic-label training pipeline.
+  verifier_or_reward: The LLM verifier emits an issue analysis and score 0, 0.5, or 1. Initial verifier RL multiplies a programmatic
+    format indicator by 1 minus the absolute difference between predicted and expert score; enhanced verifier RL also multiplies
+    by a learned meta-verifier quality score. Generator RL uses the verifier's proof score plus an accurate-self-assessment
+    term that combines self-score agreement and meta-verification, with alpha 0.76 and beta 0.24. These are learned natural-language
+    judgment contracts, not formal proof-checker guarantees.
+  terminal_predicate: Training episode termination is not disclosed. Sequential test-time refinement stops when the generator
+    gives itself score 1 or the maximum attempt count is reached. High-compute search stops after up to 16 iterations or when
+    a proof passes all 64 LLM-verifier attempts; repeated verifier agreement is treated as high confidence, not machine-checked
+    mathematical validity.
+recipe_metadata:
+  base_model: DeepSeekMath-V2 is built on DeepSeek-V3.2-Exp-Base. Initial verifier RL starts from a DeepSeek-V3.2-Exp-SFT
+    version trained on mathematics- and code-related reasoning data. The official Hugging Face release lists a 685B-parameter
+    model, but complete pretraining and post-training checkpoint lineage and stage allocation are not disclosed.
+  teacher: Mathematical experts provide initial proof scores and meta-verifier quality scores. A DeepSeek-V3.2-Exp-Thinking
+    variant generates initial proofs, while learned verifier and meta-verifier checkpoints supply later feedback. Expert identities,
+    counts, agreement, and the model-variant checkpoints are unknown.
+  generator: Initial candidate proofs come from a DeepSeek-V3.2-Exp-Thinking variant prompted to refine over multiple rounds.
+    Later hard proofs are produced by the improving proof generator; verifier analyses and meta-verifier assessments generate
+    automatic labels. Generator versions, sampling configuration, and record counts are unknown.
+  filtering_rule: Initial proofs are randomly sampled across diverse mathematical problem types for expert scoring. The automated
+    hard-proof pipeline examines the lowest verifier score, requires at least k analyses whose asserted issues are validated
+    by majority across m meta-assessments, assigns 1 when no legitimate issue is found across n attempts, and otherwise discards
+    or routes the proof to experts. Numeric n, m, k, yields, class balance, and human-routing rate are unknown.
+  sampling_protocol: Generator and verifier are optimized iteratively. For automatic labeling, multiple independent verifier
+    analyses and meta-verifier assessments are sampled per proof; exact independence, temperatures, counts, and checkpoint
+    diversity are unknown. The released evaluation script uses temperature 1.0 and top-p 0.95 by default, but this is not
+    evidence of the training sampler.
+  rollout_count: The problem pool has 17,503 tasks, but initial proof count, expert-labeled count, meta-verification count,
+    GRPO rollout count, auto-labeled hard-proof count, and rejected count are unknown. Test-time experiments disclose 8 samples
+    and 8 verifications for one-shot evaluation, 32 refinement threads and 32 verifications for sequential refinement, and
+    64 proofs by 64 verifications for high-compute search.
+  temperature: Training temperature is unknown. Official example inference code defaults proof generation, verification, and
+    meta-verification temperatures to 1.0 with top-p 0.95.
+  inference_budget: Single attempts have a 128K token limit. Sequential refinement uses up to 8 attempts with 32 independent
+    threads and 32 verification analyses. High-compute search initializes 64 proofs with 64 analyses each, keeps 64 proofs,
+    pairs each with 8 selected analyses, and runs up to 16 iterations or until all 64 verification attempts pass. The released
+    example script uses 128 parallel generations and 64 verifications per proof over 16 rounds.
+  optimizer_or_scaffold: GRPO iteratively optimizes verification then generation. The proof generator is initialized from
+    the verifier checkpoint; from iteration two, the verifier is initialized from a rejection-fine-tuned checkpoint consolidating
+    prior verification and generation capabilities. GRPO hyperparameters, optimizer, learning rate, KL control, batch sizes,
+    compute, RFT acceptance criteria, total iterations, and checkpoint hashes are unknown.
+audit:
+  source_mixture: The only quantified source is 17,503 AoPS contest problems. The DeepSeek-V3.2-Exp-SFT mathematics and code
+    data, generated-proof counts, expert-label counts, auto-labeled hard-proof volumes, per-iteration mixture weights, versions,
+    source rights, and retention policy are unknown.
+  split: A validation split of the verifier dataset is mentioned without size or membership. Evaluation uses 91 in-house CNML-level
+    problems plus IMO 2025, CMO 2024, Putnam 2024, ISL 2024, and IMO-ProofBench. No global train, validation, and evaluation
+    membership, temporal cutoff, or source-level exclusion ledger is disclosed.
+  decontamination: No exact-match, near-duplicate, solution-overlap, memorization, or source-repository contamination audit
+    is reported. Because training prioritizes post-2010 AoPS contest problems and evaluation uses public 2024 and 2025 contests,
+    benchmark and solution overlap require explicit auditing.
+  license: The official repository and model weights are Apache 2.0, and selected evaluation inputs, outputs, and inference
+    code are released. The 17,503-problem crawl, expert-labeled verifier and meta-verifier datasets, automated hard-proof
+    labels, RFT data, and training code are not released; their source-level rights and reuse terms are unknown.
+  lineage: The paper provides stage-level lineage from AoPS problems to generated proofs, expert proof labels, verifier and
+    meta-verifier GRPO, generator RL, automated hard-proof labels, rejection fine-tuning, and the final checkpoint. It does
+    not provide prompt-to-proof-to-analysis-to-meta-analysis-to-label-to-update record IDs, dataset versions, or checkpoint
+    hashes.
+  known_failure_modes:
+  - Initial verifier RL can reward a correct scalar score even when the accompanying issue analysis hallucinates nonexistent
+    defects; the paper explicitly identifies this false-rigor failure.
+  - Appendix A.3 tells the meta-verifier to accept a no-defect analysis even if the proof itself is obviously wrong, so meta-verification
+    focuses on validating asserted defects and does not directly penalize false negatives.
+  - The automated pipeline labels a proof 1 when sampled verifier attempts find no validated issue; correlated generator,
+    verifier, and meta-verifier blind spots can therefore become positive training labels.
+  - The automatic-label parameters n, m, and k, label distributions, discard and human-routing rates, expert-check size, and
+    error metrics are undisclosed, preventing calibration or reproduction.
+  - At high-compute test time the same final model performs generation and verification, and candidate selection uses verifier
+    or self-assigned scores, creating correlated-error and self-confirmation risk.
+  - Passing 64 LLM-verifier attempts is not a formal proof certificate. No Lean or Isabelle checker or compiled proof artifact
+    is used, and selected expert validation is not a machine guarantee.
+  - AoPS training sources and recent public contest evaluations lack a disclosed contamination and solution-overlap audit;
+    strong competition scores cannot establish clean generalization.
+  - The release includes weights, evaluation prompts and code, selected inputs, and predictions, but not training records,
+    GRPO or RFT code, reward code, automated labels, or complete lineage.
+  - Verifier validation and most one-shot and sequential results are evaluated by the project's learned verifier; independent
+    human validation coverage, uncertainty, and per-class false-positive and false-negative rates are incomplete.
+  citation_status: verified
+  confidence: high
+  notes: The complete 19-page arXiv v1 paper including all prompt appendices, the official repository, raw inference templates
+    and scripts, released input and output folders, license, and official Hugging Face model page were inspected on 2026-07-24.
+    This entry distinguishes LLM verification, generator self-verification, expert review, and formal proof checking, and
+    does not treat repeated model agreement as a formal correctness guarantee.
+inclusion_reason: A frontier mathematical-reasoning report that exposes a generator-verifier scaling loop, expert-scored proof
+  and meta-verification records, explicit GRPO reward formulas, fully automated hard-proof labeling in later iterations, and
+  verifier-guided test-time search while leaving training datasets, calibration, contamination controls, and record-level
+  lineage incomplete.
+related:
+- deepseek-r1-2025
+- deepseek-prover-v2-2025
+- open-proof-corpus-2026
+tags:
+- deepseek
+- deepseekmath-v2
+- natural-language-proofs
+- proof-verifier
+- meta-verification
+- self-verification
+- grpo
+- reward-model
+- automated-labeling
+- generator-verifier-loop
+- test-time-compute
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: DeepSeekMath-V2 alternates GRPO-trained proof verification and generation, bootstraps harder proof labels
+  through multi-sample verifier and meta-verifier judgments, and scales self-verification at test time, while releasing model
+  weights and evaluation artifacts but not the training records or formal correctness certificates.
+why_it_matters: It is an unusually concrete frontier disclosure of how proof problems, generated proofs, expert scores, verifier
+  analyses, meta-verification, learned rewards, and test-time search form a data flywheel, while exposing the audit gap between
+  LLM agreement and formally verified mathematics.
+card: null
+needs:
+- 'needs_data: exact AoPS crawl manifest, verifier and meta-verifier datasets, validation records, auto-labeled hard proofs,
+  rejected and human-routed samples, RFT data, counts, versions, provenance, and record lineage'
+- 'needs_verifier: per-class accuracy, false-positive and false-negative audits, calibration, independent expert evaluation,
+  meta-verifier blind-spot analysis, checkpoint diversity, and adversarial proof tests'
+- 'needs_metadata: expert protocol, generator, verifier, and meta-verifier checkpoints, n, m, k, sampling, filters, GRPO and
+  RFT hyperparameters, optimizer, schedules, compute, total iterations, and checkpoint hashes'
+- 'needs_audit: train and evaluation membership, temporal cutoff, AoPS and solution overlap, near-duplicate detection, memorization,
+  correlated self-verification errors, label drift, and independent reproduction'
+- 'needs_license: source-level rights and explicit reuse terms for AoPS-derived problems, generated proofs, expert annotations,
+  verifier analyses, auto-labels, and RFT records'
+- 'needs_code: GRPO and RFT training, reward implementation, automatic-label construction, expert-annotation tooling, dataset
+  assembly, and full evaluation calibration'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, and arXiv-ID deduplication against the target V2 Card library found no match. The official
+    arXiv abstract and PDF, DeepSeek repository, selected raw files, Apache 2.0 license, evaluation inputs and outputs, and
+    official Hugging Face weight release were verified. No training-data or training-code release is claimed.

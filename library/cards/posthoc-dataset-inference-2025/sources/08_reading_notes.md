@@ -1,0 +1,6 @@
+- Start with Table 1: it demonstrates why a seemingly matched same-author holdout can still create a severe false positive.
+- Read Figure 3 with Algorithm 1; the crucial object is a shared-prefix natural/generated suffix pair created after sequence-level shuffling.
+- Treat the dual-classifier difference test as the feedback contract, and remember that non-rejection is inconclusive.
+- Compare Table 2 and Table 5: a larger generation gap causes false negatives, while removing calibration causes false positives.
+- Check Table 4 rather than its surrounding prose; several non-member p-values are 0.06–0.09, not above 0.1.
+- Read alongside *LLM Dataset Inference: Did you train on my dataset?* and verify archive license, revisions, checkpoints, target access, and preregistered statistics before reuse.

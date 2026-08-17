@@ -1,0 +1,3 @@
+This Card helps readers audit a frontier open-weight release without confusing it with a released reasoning-data resource. It gives a concrete schema for separating public inference artifacts—weights, tokenizer, reference code, Harmony format, and reference tool environments—from unreleased construction artifacts—training prompts, traces, rewards, verifiers, data lineage, and audit logs.
+
+It is useful for comparative disclosure studies, for assessing what can and cannot be reused in post-training research, and for designing future release checklists. Reusers may inspect the public tool and conversation interfaces, but must not infer a training recipe, a calibrated verifier, a licensed dataset, or contamination-safe evaluation from those artifacts.

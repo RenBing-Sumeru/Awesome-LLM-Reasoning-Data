@@ -1,0 +1,152 @@
+id: llama-4-herd-2025
+title: 'The Llama 4 Herd: The Beginning of a New Era of Natively Multimodal AI Innovation'
+year: 2025
+venue: Meta research publication
+authors: unknown
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- multimodal
+- general_reasoning
+training_use:
+- sft
+- distillation
+- preference_learning
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+  arxiv: null
+  code: https://github.com/meta-llama/llama-models
+  data: null
+  project: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+  huggingface: https://huggingface.co/collections/meta-llama/llama-4
+  doi: null
+  venue: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Pretraining mixes publicly available and licensed data with information from Meta products and services,
+    including publicly shared Instagram and Facebook posts and interactions with Meta AI. Post-training uses a curated harder-prompt
+    curriculum, but prompt inventories, source counts, mixture weights, and record-level provenance are unknown.
+  trace_author: Meta explicitly documents Llama 4 Behemoth codistillation targets for Maverick, including fresh Behemoth forward
+    passes for additional student data. Safety tuning combines vendor-produced human data with synthetic data. Authors and
+    generators of the general SFT, online-RL, and DPO records are otherwise unknown.
+  answer_format: The report names multimodal SFT examples, online-RL prompts and policy outputs, DPO feedback, safety prompts/responses,
+    difficulty labels, and Behemoth soft/hard distillation targets. No serialized training-record schema is released.
+  process_fields: []
+  environment_or_substrate: Multimodal text-image tasks are reported for Maverick online RL, and safety testing includes automated
+    and manual adversarial interactions. Task environments, reset conditions, tool interfaces, and replay artifacts are unknown.
+  verifier_or_reward: Llama models judge SFT examples as easy versus harder and the policy continually filters prompts by
+    difficulty during Maverick online RL. The RL reward, judge checkpoint and prompt, calibration, aggregation, and DPO preference
+    contract are unknown. Behemoth post-training separately uses policy pass@k hardness and zero-advantage filtering; those
+    details must not be attributed to Scout or Maverick.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: The official collection releases base and instruction-tuned Scout and Maverick weights. Starting checkpoints
+    before pretraining and the exact checkpoint handoffs among mid-training, SFT, online RL, and DPO are unknown.
+  teacher: The official report specifically says Maverick is codistilled from the still-unreleased Behemoth teacher. Its introduction
+    more generally calls Behemoth a teacher for the new models, but it does not document a Scout-specific distillation protocol.
+  generator: Behemoth supplies dynamically weighted soft and hard targets during Maverick pretraining; fresh teacher forward
+    passes create targets for additional student data. Llama models label SFT difficulty, and the current policy participates
+    in continuous online-RL prompt filtering. Exact model versions and generated records are unreleased.
+  filtering_rule: For Maverick, more than 50% of SFT data tagged easy by Llama judges is removed; online RL alternates training
+    with filtering to retain medium-to-hard prompts, followed by lightweight DPO for response-quality corner cases. Behemoth
+    separately prunes 95% of SFT data and filters zero-advantage prompts.
+  sampling_protocol: Maverick uses a curriculum of harder multimodal prompts, but rollout count and decoding settings are
+    unknown. Behemoth uses policy pass@k analysis, increasing prompt hardness, mixed-capability batches, and varied system
+    instructions; k and sampling parameters are undisclosed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Scout is pre- and post-trained at 256K context and is released with a claimed 10M input context through
+    length generalization; Maverick is listed at 1M context. These context specifications are not online-RL rollout budgets,
+    which remain unknown.
+  optimizer_or_scaffold: The disclosed family pipeline is pretraining, specialized-data mid-training, then lightweight SFT,
+    online RL, and lightweight DPO for Maverick. Behemoth uses lightweight SFT followed by large-scale asynchronous online
+    RL. RL objectives, optimizer settings, reward coefficients, and checkpoint schedules are unknown.
+audit:
+  source_mixture: Official model cards report about 40T multimodal pretraining tokens for Scout and about 22T for Maverick,
+    from public, licensed, and Meta product/service information; the launch report separately describes an overall text-image-video
+    mixture above 30T. No source manifest, per-source count, mixture weight, collection window, or item-level provenance is
+    released.
+  split: unknown
+  decontamination: unknown
+  license: Released model weights and repository materials use the custom Llama 4 Community License, not a general open-data
+    license. The underlying training corpus is not released, and source-level rights, consent context, and redistribution
+    terms cannot be audited from the checked artifacts.
+  lineage: Official artifacts establish base and instruction-tuned Scout/Maverick releases and a Behemoth-to-Maverick codistillation
+    relationship. Behemoth was still training and not released in the April 2025 report; teacher targets, post-training records,
+    reward components, and item-to-checkpoint lineage are unavailable.
+  known_failure_modes:
+  - Released weights and inference code do not constitute a release of the pretraining, SFT, online-RL, DPO, distillation,
+    or safety-training records.
+  - The 200-language pretraining statement must not be confused with the 12 languages explicitly supported by the model cards.
+  - Scout's 10M context claim comes from length generalization after 256K pre- and post-training and is not evidence for 10M-token
+    training examples.
+  - Behemoth's pass@k curriculum, 95% SFT pruning, zero-advantage filtering, and asynchronous RL are a separate branch and
+    must not be silently assigned to the released models.
+  - The RL reward, DPO preference source, judge versions, filtering thresholds, split policy, and decontamination procedure
+    are undisclosed.
+  - Reported benchmark performance measures model behavior under stated evaluations; it does not establish training-data quality,
+    provenance, legality, or reproducibility.
+  citation_status: verified
+  confidence: medium
+  notes: Track 12 disclosure-ledger entry based on the official Meta release report, official Scout and Maverick model cards,
+    the official Hugging Face collection, and the meta-llama repository. Weights are released; training data and core feedback
+    artifacts are not.
+inclusion_reason: A high-impact frontier-family disclosure that names multimodal pretraining sources, model-specific token
+  totals, hard-example filtering, SFT-online-RL-DPO stages, safety-data channels, and Behemoth-to-Maverick codistillation
+  while leaving record-level data and reward contracts unavailable.
+related: []
+tags:
+- llama-4
+- meta
+- frontier-report
+- disclosure-ledger
+- multimodal
+- sft
+- online-rl
+- dpo
+- distillation
+- model-as-judge
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Meta reports multimodal pretraining plus hard-example SFT, online RL, DPO, safety tuning, and Behemoth-to-Maverick
+  codistillation for Llama 4, releases Scout/Maverick weights, and withholds the training records and core feedback stack.
+why_it_matters: It lets the frontier-report ledger separate released model artifacts from unreleased multimodal data, difficulty
+  labels, policy rollouts, preferences, rewards, and teacher targets, while preventing benchmark results from standing in
+  for data evidence.
+card: null
+needs:
+- 'needs_data: pretraining manifests, SFT examples, RL prompts and rollouts, DPO records, safety records, teacher targets,
+  and rejected examples'
+- 'needs_metadata: source proportions, prompt inventories, generator and judge versions, filter thresholds, rollout settings,
+  and checkpoint handoffs'
+- 'needs_reward: Maverick and Behemoth RL objectives, reward components, judge prompts, calibration, DPO preference contract,
+  and zero-advantage definition'
+- 'needs_audit: train/evaluation splits, decontamination, item-level lineage, source rights and consent context, and independent
+  feedback-failure analysis'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official Meta report, Scout and Maverick model cards, Hugging Face collection, and meta-llama repository verified.
+    No official training-data, teacher-target, RL-reward, or preference-data release was found.

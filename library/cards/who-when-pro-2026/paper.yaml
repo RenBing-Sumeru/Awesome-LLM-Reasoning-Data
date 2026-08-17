@@ -1,0 +1,309 @@
+id: who-when-pro-2026
+title: 'Who&When Pro: Can LLMs Really Attribute Failures in AI Agents?'
+year: 2026
+venue: arXiv preprint
+authors:
+- Jiale Liu
+- Huajun Xi
+- Shaokun Zhang
+- Yifan Zeng
+- Tianwei Yue
+- Chi Wang
+- Jian Kang
+- Qingyun Wu
+- Huazheng Wang
+source_role:
+- benchmark
+- construction_recipe
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- failure_attribution
+- multi_agent_systems
+- multimodal_agents
+- web_and_tool_use
+- code_and_data_science
+- gui_and_embodied_interaction
+- video_understanding
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2607.09996
+  paper_pdf: https://arxiv.org/pdf/2607.09996
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2607.09996
+  code: https://github.com/whowhenpro/whowhen_pro
+  code_snapshot: https://github.com/whowhenpro/whowhen_pro/tree/db3946cae6895c8056b9b482c283fc3949a6654f
+  data: null
+  project: https://whowhenpro.github.io/
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.48550/arXiv.2607.09996
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks are drawn from 26 public academic benchmarks across nine task categories and text, image, and video
+    modalities. The benchmark includes QA, mathematical/scientific reasoning, code, data science, web research, GUI/computer
+    use, text-grounded embodied interaction, and video QA. Exact source task IDs and a downloadable task manifest are not
+    public.
+  trace_author: Fifteen single- and multi-agent frameworks produce complete source runs. Primary backbone models are GPT-4.1
+    and Gemini 3 Flash, with the paper stating that each configuration's model is stored in trace metadata. A separately described
+    but unnamed frontier model generates an adaptive failure-injection prompt; the original base agent then generates the
+    corrupted action and all downstream behavior.
+  answer_format: An evaluation instance presents a failed agent transcript and asks the attribution model to output Agent
+    Name, Step Number, Error Mode, and a short reason. Ground truth is the responsible agent/component, the earliest decisive
+    step, and exactly one of 18 failure modes. The task's reference answer can be included in an open-book variant but is
+    omitted in the default all-at-once evaluation. No public serialized row schema is available.
+  process_fields:
+  - source_benchmark
+  - task_category
+  - task_input
+  - reference_answer
+  - modality
+  - agent_framework
+  - base_model
+  - agent_topology
+  - ordered_step_coordinate
+  - acting_agent_or_component
+  - agent_message_or_reasoning
+  - action_or_tool_call
+  - observation
+  - intermediate_artifact
+  - injected_action
+  - decisive_agent_label
+  - decisive_step_label
+  - error_mode_label
+  - terminal_task_outcome
+  observation: Complete execution traces include agent messages, tool/environment observations, and intermediate artifacts.
+    Static search, page, and image outputs are replayed from a content-addressable cache; browser and code environments are
+    re-executed with fidelity checks. Exact public field names, binary artifacts, redactions, and media encodings are unknown
+    because no benchmark rows are released.
+  action_space: Framework-specific natural-language decisions, structured tool calls, code execution, browser/GUI actions,
+    embodied commands, video inspection, and inter-agent handoffs. The paper does not define one normalized executable action
+    schema across all 15 frameworks.
+  environment_or_substrate: Twenty-six source benchmarks executed through 15 frameworks. Static factual tool responses use
+    a synchronous SQLite cache keyed by SHA-256 of canonicalized parameters. Stateful browser/code actions are replayed on
+    fresh instances and aborted on detected divergence or exception. No environment image, cache, page snapshot, filesystem
+    snapshot, dependency lock, or replay package is public.
+  verifier_or_reward: 'Source-task success/failure is decided with each benchmark''s official evaluator when available; the
+    full evaluator inventory and fallbacks are not disclosed. Attribution predictions are compared with constructed labels:
+    responsible-agent accuracy on multi-agent traces, exact decisive-step accuracy, macro-F1 over error modes, and Joint requiring
+    all three correct. This is a mixed environmental/programmatic/judgment contract, not a released scalar training reward.'
+  terminal_predicate: A corrupted rollout enters Who&When Pro only if the source task's evaluator changes the outcome from
+    successful seed to failure after one injected action. Reverting that action recovers the successful seed under the decisive-error
+    construction. The paper does not publish per-benchmark evaluator versions, outputs, thresholds, false-positive audits,
+    or retained rows.
+  provenance: Public benchmark task -> source agent rollout -> successful/failed partition -> natural failures inform taxonomy/profile
+    -> successful trace selected as seed -> failure-mode-conditioned step selection -> frontier-model adaptive injection prompt
+    -> base-agent corrupted action -> exact-prefix replay -> post-injection continuation -> source evaluator -> retain only
+    task failure -> artifact-leakage and answer-salience filters -> agent/step/error-mode labels. Record-level lineage and
+    rejected-attempt logs are not public.
+recipe_metadata:
+  base_model: A mixture of frontier LLMs powers source agents. Appendix F.2 identifies GPT-4.1 and Gemini 3 Flash as primary
+    backbones; the per-agent/benchmark selection is said to appear in trace metadata, which is not public. Exact API snapshots
+    are unknown.
+  teacher: PhD-level reviewers derive the taxonomy and plausible failure-mode profiles from sampled natural failures. Three
+    independent annotators additionally review 100 generated traces for label fidelity. Neither process labels the entire
+    benchmark from scratch, and raw annotations/adjudication are not public.
+  generator: Fifteen agent frameworks generate source and downstream trajectories. An unnamed frontier model writes an adaptive
+    prompt for a chosen failure mode; this prompt is patched into the original base-agent model call so the base agent itself
+    emits the erroneous action in its own style.
+  prompt_task_source: Twenty-six public benchmark families listed in Appendix G and mapped to frameworks in Table 7, including
+    ALFWorld, BigCodeBench, HumanEval, LiveCodeBench-Pro, GPQA, MATH, MMLU-Pro, SciBench, GAIA, SimpleQA-Verified, OSWorld,
+    WebVoyager, BrowseComp-VL, MMSearch variants, chart/image QA, and LVBench. Exact versions, task IDs, source licenses,
+    and sampling proportions are not released as a manifest.
+  filtering_rule: Exclude invalid injection steps or modes that cannot plausibly occur; retain only post-injection rollouts
+    that fail the official task evaluator; then remove traces leaking construction artifacts and traces where the correct
+    answer is already salient before the injection step. Natural failures are used for taxonomy calibration rather than benchmark
+    instances. Exact rules, prompts, thresholds, rejection counts, and reviewer overrides are unknown.
+  sampling_protocol: For each successful seed, sample an injection step conditioned on an applicable failure mode with mode-specific
+    position preferences, replay the prefix, inject one corrupted action, and resume the original system. The number of seeds,
+    modes or steps attempted per seed, retry budget, random seed, and retained rate are not disclosed.
+  rollout_count: The final benchmark contains 12,326 retained injected failures. Counts of successful source runs, natural
+    failures, total injection attempts, post-injection successes, replay aborts, and filter rejections are unknown.
+  temperature: unknown
+  inference_budget: Construction API/token/time budgets and maximum injection attempts are not disclosed. Reported retained
+    traces average 7.5 steps and 1,139 words, with a maximum of 50 steps. All evaluation traces fit each evaluated model's
+    native context window and are presented without truncation or summarization.
+  search_or_scaffold: Static external calls use a synchronous SQLite content-addressable cache. Raw page content is cached
+    but the secondary page-summary LLM output is not. Stateful Magentic-One browser and code-executor actions are replayed
+    through Playwright/fresh executors with per-action fidelity checks; detected failures abort or redirect the injection
+    attempt.
+  optimizer_or_scaffold: No policy, reward-model, PRM, SFT, or RL optimizer is used in the reported Who&When Pro study. The
+    experimental scaffold prompts ten frontier LLMs with all-at-once, step-by-step, or binary-search attribution protocols
+    and scores static predictions against constructed labels.
+audit:
+  source_mixture: Paper-reported 12,326 retained failed trajectories across 26 source benchmarks, nine task categories, 15
+    agent frameworks, 18 error modes, and three modalities. Composition is 51% text, 42% image, 7% video and 76% single-agent
+    versus 24% multi-agent. Counts by individual source task, successful seed, natural failure, and injection attempt are
+    not released.
+  split: No train/dev/test split is disclosed. Table 4 appears to evaluate the benchmark under the main all-at-once protocol;
+    a stratified 1,444-trace subset supports protocol/cost/ground-truth ablations, and a separate description gives 100 stratified
+    traces for human review. Exact IDs, sampling seeds, overlap among these sets, and whether reviewed/corrected labels replace
+    main labels are unknown.
+  decontamination: unknown
+  benchmark_overlap: All source tasks originate from 26 public academic benchmarks. The paper does not report duplicate, near-duplicate,
+    model-training contamination, source-task grouping, or downstream overlap checks. Reusing unreleased rows for training
+    would contaminate evaluation on the same Who&When Pro instances and potentially the upstream task IDs.
+  license: arXiv v1 is CC BY-NC-SA 4.0. The official GitHub repository has no LICENSE file and the benchmark data are not
+    released, so code/data rights are unknown. No manifest reconciles redistribution rights for upstream benchmark inputs,
+    web/page/image observations, model-generated reasoning, intermediate artifacts, or agent-framework outputs.
+  lineage: The paper documents aggregate task-to-seed-to-injection-to-failure lineage and says the per-configuration base
+    model is stored in trace metadata. No public row preserves source task ID, successful-seed link, natural-failure profile,
+    injected prompt/action, cache key, replay status, evaluator output, filter decision, model revision, or reviewer correction.
+  release_version:
+    paper: arXiv:2607.09996v1; submitted 2026-07-10; 36-page PDF
+    paper_pdf_sha256: 50ee0997c80913b7cd9d7946da9e0d583e0177f3791bfa236aec72673054417a
+    project_page_sha256: aa75c9e43111d7e96bd3bc65390baa737f5ab89b61a0dd3c5d463b2b5c79505c
+    repository_commit: db3946cae6895c8056b9b482c283fc3949a6654f
+    repository_commit_date: '2026-07-12T17:00:05-04:00'
+    repository_release: null
+    dataset_release: null
+    dataset_revision: unknown
+    evaluator_release: null
+  artifact_release_state: The official project page and GitHub repository are public. At the inspected revision, the repository
+    contains only README.md and one dataset illustration; README explicitly says evaluation code and benchmark data are not
+    public yet, and every release-status checkbox is empty. The project page's Data button is an empty `#` link. Therefore
+    zero benchmark trajectory rows, labels, evaluator scripts, environments, prompts, configs, model prediction files, or
+    dependency specifications are currently available from official artifacts.
+  paper_release_claim_discrepancy: Appendix A.2 states that all traces, labels, and evaluation code are released, but the
+    official repository and project page explicitly show those artifacts as unavailable. This draft follows observed official
+    release state, not the manuscript's present-tense release claim.
+  released_objects:
+    paper_reported_failure_trajectories: 12326
+    paper_reported_source_benchmarks: 26
+    paper_reported_task_categories: 9
+    paper_reported_agent_frameworks: 15
+    paper_reported_error_modes: 18
+    public_benchmark_rows: 0
+    public_successful_seed_rows: 0
+    public_natural_failure_rows: 0
+    public_rejected_injection_rows: 0
+    public_evaluation_code: false
+    public_construction_code: false
+    public_environment_or_cache: false
+  successful_and_failed_sample_retention: Successful source trajectories are retained internally as injection seeds. Naturally
+    failed source trajectories inform the taxonomy/profile but are not directly benchmark instances. Among injections, only
+    continuations judged to fail and passing leakage/salience filters become the 12,326 benchmark rows; successful continuations,
+    replay aborts, and filtered cases are omitted. None of the successful seeds, natural failures, retained injected failures,
+    or discarded attempts are public, and their non-final counts are unknown.
+  privacy_or_consent: Appendix A says source trajectories come from public academic benchmarks, contain no PII, and do not
+    involve human subjects. Yet three annotators review 100 traces and PhD-level reviewers create the taxonomy/profiles; recruitment,
+    compensation, consent, raw labels, corrections, redaction rules, and a record-level PII audit are not disclosed. The unavailable
+    corpus prevents an independent privacy check.
+  known_failure_modes:
+  - Labels are called golden by construction, but human majority approval is 94% for decisive step and 90% for agent/error
+    family, with 2% marked as having no clear decisive error; injected causality is not perfectly aligned with human-readable
+    root-cause attribution.
+  - The 18-mode taxonomy is explicitly non-exhaustive and is derived from sampled natural failures. Controlled injection may
+    underrepresent emergent, multi-error, interaction-driven, recovery, and out-of-taxonomy failures.
+  - Retaining only injections that flip the source evaluator selects for evaluator-sensitive failures and drops resilience/self-correction
+    evidence. Mixed task evaluators can introduce false positives or false negatives, but their versions and outputs are not
+    public.
+  - The cache returns static factual tool outputs, but the page-summary model is rerun and allowed to vary, so observation
+    context is not fully frozen even when raw page content is stable.
+  - Stateful browser/code replay depends on fresh environments and action-level checks. Appendix F reports Bing DOM rotation
+    behind 89% of `input_text` replay failures; aborted attempts and environment snapshots are unavailable.
+  - Failure-mode classifiers often map planning, verification, and coordination causes to reasoning symptoms. Supplying the
+    gold answer can make judges skip the root cause and focus on downstream outcome mismatch.
+  - Step accuracy falls from 94% on traces below 3K tokens to 50% above 12K; incremental step-by-step evaluation also commits
+    early and underperforms the full-trace protocol.
+  - Public benchmark tasks and unpinned frontier APIs create contamination and version-drift risks. Exact task IDs, provider
+    snapshots, prompts, temperatures, seeds, tool versions, and budgets are unknown.
+  - The paper claims a complete release while official artifacts publish no data/evaluator. This blocks record-level verification
+    of every scale, schema, label, split, license, privacy, and replay claim.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v1 metadata, 36-page PDF and appendices, manuscript license, official project HTML, official GitHub README/tree/history
+    and pinned head were checked. PDF Tables 2–4 and Appendix F pages were also visually rendered. No benchmark rows, evaluator,
+    construction code, environment, cache, prediction files, or formal venue record were available for independent reproduction.
+  remaining_unknowns:
+  - Exact schema, media packaging, per-source counts, task IDs, and source-task versions for all 12,326 rows.
+  - Counts and records for successful seeds, natural failures, injection attempts, successful continuations, replay aborts,
+    and post-hoc rejections.
+  - Identity/revision of the frontier injection model and exact API snapshots, prompts, temperatures, seeds, retry policy,
+    and construction budget.
+  - Complete source-evaluator inventory, versions, thresholds, outputs, and false-positive/false-negative analysis.
+  - Train/dev/test or evaluation split manifest; IDs and overlap for the 100 human-review and 1,444 ablation subsets.
+  - Deduplication, benchmark-overlap, source-task grouping, and model/data contamination controls.
+  - Dataset/code license and compatibility with upstream benchmarks, agent frameworks, web content, and model-output terms.
+  - Human taxonomy/review recruitment, compensation, consent, raw labels, adjudication, and correction propagation.
+  - Immutable browser/code environments, raw-content cache, page-summary model revision, and per-row replay evidence.
+  - Release timing or immutable version binding for the paper-claimed traces, labels, evaluation code, and configs.
+inclusion_reason: 'Who&When Pro defines a high-value environment-linked failure-attribution object: a full agent episode is
+  paired with responsible-agent, earliest-decisive-step, and error-mode labels created through successful-prefix replay and
+  evaluator-confirmed failure. It also exposes core audit questions around intervention fidelity, dropped recoveries, mixed
+  evaluators, taxonomy coverage, multimodal context, and paper-versus-release divergence.'
+related:
+- who-when-2025
+- aegis-2026
+- agentracer-2025
+- traceelephant-2026
+tags:
+- who-when-pro
+- agent-failure-attribution
+- controlled-error-injection
+- decisive-step
+- multi-agent-systems
+- multimodal-trajectories
+- mixed-evaluator
+- warm-start-replay
+- benchmark-audit
+- unreleased-data
+- paper-release-discrepancy
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Who&When Pro reports 12,326 controlled failed trajectories across 3 modalities and 26 benchmarks with responsible-agent,
+  decisive-step, and error-mode labels, while the official data and evaluation code remain unavailable.
+why_it_matters: It turns agent debugging into a concrete episode-level evaluation contract and tests whether frontier models
+  can localize causal failures, while demonstrating why successful anchors, discarded injections, evaluator versions, replay
+  state, label corrections, and actual release artifacts must be audited before a benchmark can support training or reproducible
+  evaluation.
+card: null
+needs:
+- 'needs_data_release: publish the 12,326 rows, full schema/media, source-task IDs, labels, checksums, and immutable version'
+- 'needs_code_release: publish evaluation/construction code, prompts, configs, dependencies, model mappings, and reproducible
+  commands'
+- 'needs_failure_ledger: release successful seeds, natural failures, post-injection successes, replay aborts, filtered records,
+  counts, and reasons'
+- 'needs_split_audit: publish main evaluation, human-review, and ablation subset IDs, overlap, sampling seeds, corrections,
+  and any train/dev/test policy'
+- 'needs_evaluator_audit: pin every source evaluator and release raw decisions, thresholds, judge prompts, calibration, and
+  error analysis'
+- 'needs_replay_manifest: publish static caches, stateful environment snapshots, framework/model/API revisions, seeds, retry
+  budgets, and per-row lineage'
+- 'needs_decontamination: document duplicate, source-task grouping, benchmark-overlap, and model/data contamination controls'
+- 'needs_license_audit: add code/data licenses and reconcile upstream benchmark, framework, web-content, media, and model-output
+  rights'
+- 'needs_human_audit: disclose taxonomy/review recruitment, compensation, consent, raw labels, adjudication, and correction
+  propagation'
+- 'needs_release_reconciliation: resolve the manuscript claim that all traces/labels/code are released against the official
+  coming-soon repository'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: 'Citation, nine authors, arXiv v1 full paper/appendices/license, official project page, official GitHub repository
+    and pinned head were verified. Artifact verification means the official release state was inspected: repository and project
+    exist, but the data, evaluation/construction code, environments, configs, prediction files, and licenses are absent. The
+    reported benchmark could not be replayed or audited row by row.'

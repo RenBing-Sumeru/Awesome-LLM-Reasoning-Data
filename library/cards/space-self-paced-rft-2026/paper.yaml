@@ -1,0 +1,106 @@
+id: space-self-paced-rft-2026
+title: 'SPaCe: Unlocking Sample-Efficient Large Language Models Training With Self-Pace Curriculum Learning'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Dai Do
+- Manh Nguyen
+- Svetha Venkatesh
+- Hung Le
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- mathematics
+- logic
+training_use:
+- rlvr
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.171/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.171/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.171
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.171/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: DeepScaleR subsets, GSM8K, MATH, and Knights and Knaves pools.
+  trace_author: Model rollouts during GRPO training; the paper uses existing datasets rather than releasing a new corpus.
+  answer_format: Prompt, semantic embedding, per-example attribute, cluster identifier, correctness reward, and scheduling
+    statistics.
+  process_fields:
+  - prompt
+  - embedding
+  - difficulty_attribute
+  - cluster_id
+  - correctness_reward
+  - solve_rate
+  - bandit_selection
+  environment_or_substrate: GRPO-based reinforcement fine-tuning for mathematical and logical reasoning.
+  verifier_or_reward: Binary outcome correctness reward.
+  terminal_predicate: Downstream exact-match or task-specific reasoning accuracy.
+recipe_metadata:
+  base_model: Qwen3-0.6B, DeepSeek-R1-Distill-Qwen-1.5B, several compact models, and Qwen3-8B-Base.
+  teacher: None; online correctness reward and an embedding model inform the schedule.
+  generator: One-time joint semantic-attribute clustering, farthest-point reduction, and Thompson-sampling assignment.
+  filtering_rule: Keep a fixed diverse quota per cluster; dynamically downweight hard clusters with stagnant solve rates.
+  sampling_protocol: Each selected batch is drawn from a bandit-chosen cluster; several settings use at most 10 clusters and
+    10 representatives per cluster.
+  rollout_count: null
+  temperature: null
+  inference_budget: Low-resource GRPO; the paper reports sample counts and hyperparameters by dataset.
+  optimizer_or_scaffold: GRPO reinforcement fine-tuning implemented with the Open-R1 codebase.
+audit:
+  source_mixture: Existing mathematical and logical reasoning datasets, reduced to representative cluster subsets.
+  split: GSM8K, MATH500, AIME24, AIME25, and Knights and Knaves evaluation protocols.
+  decontamination: No dedicated contamination audit claimed; inspect every upstream dataset and benchmark.
+  license: Follow upstream datasets, models, and Open-R1 codebase terms.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.171/'
+  known_failure_modes:
+  - Only models below 8B are evaluated.
+  - Quality depends on attributes, embeddings, and cluster construction.
+  - Outcome reward limits use on subjective tasks.
+  - No author-declared standalone code or new data release.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, method, experiments, limitations, upstream artifact links, and absence of a claimed
+    standalone release checked on 2026-07-16.
+inclusion_reason: It changes both the retained reasoning records and their online sampling frequency during reinforcement
+  fine-tuning.
+related: []
+tags:
+- self-paced-learning
+- data-reduction
+- curriculum
+- rlvr
+status: verified
+one_line_summary: SPaCe reduces a reasoning pool by semantic-difficulty clusters and uses a progress-aware bandit to schedule
+  RFT samples.
+reading_priority: essential
+paper_type: Self-paced reinforcement-fine-tuning data selection and scheduling study
+best_for: Readers building compact, adaptive curricula for verifiable reasoning reinforcement fine-tuning.
+confidence: high
+why_it_matters: It makes record coverage and changing training exposure jointly explicit in a low-budget RFT policy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; it cites upstream data and Open-R1 but does not claim an author-owned standalone
+    release.
+category_ids:
+- training_usage_optimization_objectives

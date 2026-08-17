@@ -1,0 +1,3 @@
+The paper provides a useful schema for agent-training data: retain prompt provenance, reasoning, ordered calls and responses, environment snapshots, verified lemma dependencies, summary/restart lineage, terminal proof, and reward. Such records would support outcome RL, tool-policy analysis, failure mining, and controlled curriculum construction.
+
+It also suggests evaluation reporting that separates agent-only Pass@8×8 from NL-prover-plus-sketch TTS and records depth, leaf budget, H20-days, wall time, width, and retrieval snapshot. For trustworthy reuse, dataset builders should add source membership, parent IDs, English-to-Lean review, judge calibration, and a held-out model-selection protocol.

@@ -1,0 +1,7 @@
+既有基线包括模拟tool的agent安全评测、browser-only安全benchmark，以及OSWorld通用桌面任务环境。这些工作分别简化了真实执行、限制了应用面，或主要关注任务完成，而不是专门的harm taxonomy与semantic safety judgment。
+
+OS-Harm在三个方面改变了评测对象。第一，它定义150个可执行桌面任务，覆盖user misuse、注入指令与模型自身misbehavior；第二，它保留多模态state-action episode，而不只保存final answer；第三，它同时附加full-episode的completion/safety判定与首个unsafe step位置。另有150条人工标注o4-mini轨迹用于judge验证，使false positive、false negative和定位一致性可被测量。
+
+对reasoning data研究而言，主要方向信号来自该数据接口：安全feedback附着在environment trajectory上，可与任务来源、observation表示、action history、terminal behavior和judge output联合审计。它还说明，即使action可以回放，环境执行本身也不会自动产生安全verifier；semantic harm与completion仍然需要judgment。
+
+该benchmark没有提出OSWorld、Ubuntu VM执行、pyautogui控制、OSWorld baseline agent、AER、基于GPT的最终屏幕caption或LLM-as-judge评测。它围绕新的桌面harm任务集扩展并整合这些组件。论文unsafe rate不能证明数据质量；复用前应先核对50/51条注入manifest差异、固定环境与judge全部版本、验证Drive条款，并检查人工标签和保留协议。

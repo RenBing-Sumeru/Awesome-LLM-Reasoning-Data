@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:18:10Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "不确定 BrowseComp 的多模态扩展，需要跨网页结合文字、图片等证据进行深度搜索，适合多模态搜索agent ref7",
+    "updated_at": "2026-07-15T12:18:10Z"
+  }
+}

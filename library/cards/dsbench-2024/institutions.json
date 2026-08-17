@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "University of Texas at Dallas",
+    "Tencent AI Lab, Seattle",
+    "University of Southern California"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://openreview.net/forum?id=DSsSPr0RZJ",
+    "https://arxiv.org/abs/2409.07703",
+    "https://liqiangjing.github.io/dsbench.github.io/",
+    "https://github.com/LiqiangJing/DSBench"
+  ],
+  "verification_note": "OpenReview verifies ICLR 2025 status; arXiv and project sources verify the authors, UTD/Tencent/USC institution set, and released benchmark artifacts."
+}

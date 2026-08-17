@@ -1,0 +1,8 @@
+- **过程筛选误差。** Gemini 1.5 Pro Thinking 判断动作在上下文中是否合理，并不判断检索证据是否真实、完整、最新或无污染。false positive 可能保留看似合理但错误的搜索步骤或最终答案；process-only 筛选本就明确保留一部分错误结果。（论文 §2.1；Appendix A）
+- **奖励不透明与 gaming。** stage-2 generative reward 的 prompt、标量范围、归一化、解码、校准与模型 snapshot 均未披露。这阻碍对 policy 实际优化对象的重建，也使 reward hacking 或对冗长/风格的偏好未被测量。
+- **Judge 角色相关。** Gemini 1.5 Pro 同时参与过程筛选、RL reward、GSM8K 评测与过程标签分析。由相关模型判断测得的改进可能共享盲点；Appendix D 的 100 条检查没有覆盖过程筛选误差或 reward 过优化。（论文 §4.1；Appendix D）
+- **前缀加权未说明。** 把含 K 个动作的轨迹转换成 K 条样本会重复长上下文，并让较长 episode 获得更多优化记录。“这可能重加权样本”是 curator inference；论文没有披露能化解该风险的去重、逐轨迹归一化或加权规则。
+- **环境漂移。** QA 依赖未发布的文章语料 snapshot、Gecko-1B checkpoint、索引配置、检索深度和已保存搜索结果；数学依赖未披露的 SymPy/Python 版本与异常处理。离线前缀因此可能重放文本，却无法复现原始环境行为。
+- **划分与污染。** HotPotQA 与 GSM8K 的训练问题既生成合成池，也定义域内评测面。精确版本、训练/评测 ID 映射、语义去重、预训练污染与检索语料答案泄漏均未审计。
+- **发布与权利。** 未核验到官方代码、合成轨迹、筛选标签、reward、保留/拒绝 manifest、向量索引、配置、checkpoint 或模型/数据许可证。CC BY 4.0 覆盖 arXiv 论文，不覆盖这些缺失工件或上游检索文本。
+- **泛化与复现。** 结果来自作者在有限任务族上的实验，且常使用 300 条子集。较小 Gemma 模型的域外结果不稳定，optimizer 细节缺失，也没有独立复现包。（论文 §4；Appendices B 与 F）

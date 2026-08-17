@@ -1,0 +1,1 @@
+论文报告 AIME24/25 的 four-seed mean 与 max，并在 AMC23、MATH500 上给出结果。更具诊断性的证据是 AIME24、1.5B、N=32、M=2 消融：完整 confidence reward 为 58.9，未做 RL 为 54.5，仅 correctness reward 为 54.9，移除错误答案 confidence penalty 为 54.0；novelty 权重 0.5 和 beam width 2 也优于所测替代项。这些结果说明论文设定对奖励与搜索选择敏感，不能证明 confidence 是正确过程标签，也不能证明发布物包含完整高质量轨迹；附录展示了置信度 0.89 的错误算术步骤。代码、配方和两个 checkpoint 可核验，但未找到逐步分数或原始 rollout 发布。

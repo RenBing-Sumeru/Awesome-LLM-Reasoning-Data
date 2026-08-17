@@ -1,0 +1,187 @@
+id: t1-advancing-language-model-reasoning-2025
+title: 'T1: Advancing Language Model Reasoning through Reinforcement Learning and Inference Scaling'
+year: 2025
+venue: Proceedings of the 42nd International Conference on Machine Learning (ICML 2025), PMLR 267
+authors:
+- Zhenyu Hou
+- Xin Lv
+- Rui Lu
+- Jiajie Zhang
+- Yujiang Li
+- Zijun Yao
+- Juanzi Li
+- Jie Tang
+- Yuxiao Dong
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematics
+- reasoning
+- test_time_compute
+training_use:
+- sft
+- rlvr
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/hou25e.html
+  arxiv: https://arxiv.org/abs/2501.11651
+  code: https://github.com/THUDM/T1
+  data: https://huggingface.co/datasets/zai-org/T1
+  project: null
+  huggingface: https://huggingface.co/datasets/zai-org/T1
+  doi: null
+  venue: https://proceedings.mlr.press/v267/hou25e.html
+  openreview: https://openreview.net/forum?id=tnxONP8zTE
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/hou25e.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The paper uses publicly available MATH-train and NuminaMath questions. MATH uses its official answers; for
+    NuminaMath, an LLM extracts a concise final answer. The paper reports roughly 12,000 SFT questions and 30,000 remaining
+    RL questions after label-quality and difficulty filtering, but supplies no immutable per-row upstream URL or rights manifest.
+  trace_author: For SFT, multiple responses from different LLMs are judged against the ground-truth label, critiqued or verified
+    by an LLM, and merged by another LLM into one trial-and-error/self-verification chain. The identities, versions, prompts,
+    and decoding settings of those LLMs are not disclosed.
+  answer_format: The intended SFT object is a mathematical problem plus a synthesized long chain of thought containing attempted
+    solutions, critiques or self-checks, and a final answer. At dataset revision 137595d2bcb16ef9791d67f3a6753acfe6ab30cd,
+    sft.jsonl begins with prompt and response fields while rl-data.jsonl begins with source, problem, and answer fields; no
+    dataset card explains their exact correspondence to paper splits or experiments.
+  process_fields:
+  - prompt
+  - response
+  - source
+  - problem
+  - answer
+  environment_or_substrate: This is text-only mathematical reasoning rather than an external tool environment. Correctness
+    is judged from a final answer against a ground-truth label; the paper evaluates AIME 2024, Omni-MATH, MATH500, and GPQA.
+  verifier_or_reward: The reported RL reward is 1 for a ground-truth-correct answer and 0 otherwise. Responses detected as
+    repetitive, excessively long, mixed-language, or containing garbled characters receive -1 through rule detection and a
+    perplexity filter. RLOO uses leave-one-out normalized rewards; a normalized KL term against an EMA reference policy is
+    also reported.
+  terminal_predicate: An RL completion is reward-positive when its final answer matches the ground truth under the authors'
+    answer-evaluation procedure. The exact parser, normalization rules, per-item verifier outputs, and failure logs are not
+    released.
+recipe_metadata:
+  base_model: Reported experiments use GLM-4-9B and Qwen2.5 14B/32B variants. The paper does not provide a released T1 model
+    weight at the checked author repository.
+  teacher: Multiple unnamed LLMs generate attempts, critique or verify them, and merge them into SFT chains. Their identities
+    and versions are not disclosed.
+  generator: For each question, collect multiple candidate answers; compare each with the label; solicit a critique for an
+    incorrect answer or verification for a correct one; merge problem, attempts, and feedback into a chain; rewrite chains
+    that merely enumerate approaches into an abstracted trial-and-error pattern.
+  filtering_rule: Construction removes inaccurate/noisy labels and easy questions. For RL, 16 responses are sampled per question
+    and prompts with pass rate in (0, 0.3) are retained. During RL, malformed or undesirable long responses receive -1 using
+    rules and perplexity. Exact source-filter decisions and released-row memberships are unavailable.
+  sampling_protocol: RL generates K=64 responses per prompt at high temperature (the main sweep includes temperatures 0.9,
+    1.1, 1.2, and 1.3 with top-p 0.95). The policy gradient update is performed every 32 prompts. Seeds, exact prompt templates,
+    and all decoding parameters are not disclosed.
+  rollout_count: 64 RL responses per prompt; 16 responses per question for the reported RL-prompt selection stage.
+  temperature: High-temperature sampling is central to the reported RL recipe; Table 2 evaluates 0.9, 1.1, 1.2, and 1.3 with
+    top-p 0.95. The selected universal temperature and per-model settings are not fully disclosed.
+  inference_budget: Training/inference maximum generation lengths are 10,240 tokens for GLM-4-9B and Qwen2.5-14B, and 16,384
+    for Qwen2.5-32B. The separate inference-scaling analysis truncates a long completion at 10%-increment prefixes and asks
+    the base model to summarize/finalize each prefix.
+  optimizer_or_scaffold: SFT runs for three epochs with learning rate 1e-5 and cosine scheduling. RL uses RLOO, learning rate
+    1.5e-6, KL coefficient 2e-4, reward normalization, entropy bonus, and an EMA reference-policy anchor. Full optimizer configuration,
+    infrastructure, and training code are not released in the checked repository.
+audit:
+  source_mixture: Public MATH-train and NuminaMath questions feed approximately 12k SFT and 30k RL prompts after filtering.
+    The release provides two JSONL files but no row-level upstream source manifest, deduplication report, or reconciliation
+    with these paper counts.
+  split: The paper distinguishes SFT construction data, RL prompts, and four evaluation benchmarks, but the Hugging Face repository
+    has no documented train/dev/test split or release-to-experiment manifest. The dataset viewer fails to build a combined
+    schema because the two JSONL files have incompatible columns.
+  decontamination: Unknown. The paper reports benchmark evaluation but no corpus-level overlap or model-pretraining contamination
+    audit between MATH/NuminaMath-derived training prompts and MATH500, AIME 2024, Omni-MATH, or GPQA.
+  benchmark_overlap: Unknown. Since row-level upstream provenance and deduplication decisions are unavailable, independent
+    overlap checks against the reported benchmarks cannot be completed from the release.
+  license: The checked GitHub repository is MIT. The Hugging Face dataset page/API exposes no dataset license or upstream-rights
+    statement; the MIT repository license does not establish redistribution rights for MATH, NuminaMath, generated traces,
+    or labels.
+  lineage: MATH-train or NuminaMath question -> label extraction/checking -> multiple LLM attempts -> correct/incorrect critique
+    or verification -> LLM merge/rewrite into SFT chain; separately, filtered prompt -> 64 RL completions -> answer reward,
+    bad-response penalty, RLOO/KL update. Release-row-to-stage mapping is not documented.
+  release_version: Hugging Face dataset revision 137595d2bcb16ef9791d67f3a6753acfe6ab30cd was observed on 2026-07-23 and contains
+    sft.jsonl and rl-data.jsonl. The author GitHub repository had no GitHub release and its README says model weights and
+    RL training data are “coming soon,” despite the dataset exposing an rl-data.jsonl filename. Recheck this mutable and internally
+    inconsistent release state before reuse.
+  successful_failed_retention: The construction recipe retains RL prompts with 16-sample pass rate in (0, 0.3), and RL penalizes
+    some undesirable outputs with -1. It does not release all attempts, per-attempt reward/verifier decisions, filter reasons,
+    or a complete rejected-sample manifest.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Final-answer reward can miss reasoning errors that happen to end in the correct answer and can reject semantically valid
+    equivalent answers when parsing or normalization fails.
+  - Rule/perplexity penalties can falsely flag legitimate long, multilingual, or unusual mathematical text; thresholds and
+    row-level decisions are not released.
+  - Synthesized SFT chains may inherit hidden teacher-model preferences, and their constituent attempts/critiques are not
+    independently auditable.
+  - The viewer's schema-cast error and absent data card prevent straightforward inspection; file names alone do not prove
+    that the public files reproduce the paper's SFT/RL data.
+  - No benchmark-overlap or contamination audit is reported, so benchmark gains are not evidence of data quality or clean
+    separation.
+  citation_status: verified
+  confidence: high
+  notes: PMLR proceedings/full paper, OpenReview, the author-maintained GitHub repository, and the Hugging Face dataset API/files
+    were cross-checked on 2026-07-23. Paper mechanisms and current artifact presence are verified; complete replay, rights,
+    data-schema semantics, and release-to-experiment lineage remain partial.
+inclusion_reason: 'A reasoning-data construction and RLVR case study: it turns answer-checked math problems into synthesized
+  self-correcting chains, then studies high-temperature multi-rollout RL and inference-budget scaling. It belongs in rollout/search
+  test-time trace data because its core object is a long reasoning trace with answer-level verification, not a process-label
+  release.'
+related: []
+tags:
+- t1
+- synthesized-cot
+- self-verification
+- trial-and-error
+- rlvr
+- rloo
+- high-temperature-rollouts
+- inference-scaling
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: T1 synthesizes trial-and-error/self-verification math chains for SFT and applies answer-verified, high-temperature
+  64-rollout RLOO to study training and inference scaling, but public release semantics, lineage, and replay remain incomplete.
+why_it_matters: It is a concrete evidence source for coupling long reasoning traces with outcome verification and diversity-oriented
+  RL; it is not yet a self-contained, auditable training dataset because the public files lack documented lineage, schema
+  semantics, and verifier decisions.
+card: null
+needs:
+- 'needs_release_reconciliation: reconcile the README’s “RL training data coming soon” claim with the public rl-data.jsonl
+  file'
+- 'needs_schema: document the two JSONL schemas, record counts, split semantics, and mapping to paper experiments'
+- 'needs_lineage: publish row-level MATH/NuminaMath provenance, label extraction, generation, filter, and deduplication records'
+- 'needs_reward_spec: release answer parsing/normalization, bad-response rules/thresholds, and per-completion reward/verifier
+  outputs'
+- 'needs_replay: publish model/teacher versions, prompts, seeds, decoding settings, training code/configuration, and immutable
+  artifact pins'
+- 'needs_license: dataset license and upstream-source redistribution analysis'
+- 'needs_contamination_audit: overlap and pretraining-exposure analysis for all reported evaluation benchmarks'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Official PMLR, OpenReview, arXiv full text, author GitHub, and Hugging Face dataset API/raw-file metadata were checked.
+    Artifact presence is verified, while the release is incomplete for exact training replay and its RL-data status is internally
+    inconsistent.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作分析开放 DPO 语料，并利用逐样本任务、输入质量和奖励标注构建 UltraMix。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "后训练数据、偏好、奖励或评测研究",
+  "best_for_ch": "研究 LLM 后训练反馈数据与 verifier 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Aladin Djuhera、Farhan Ahmed、Swanand Ravindra Kadhe、Syed Zawad、Heiko Ludwig、Holger Boche",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

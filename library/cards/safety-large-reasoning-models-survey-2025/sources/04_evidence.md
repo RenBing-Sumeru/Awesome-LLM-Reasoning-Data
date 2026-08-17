@@ -1,0 +1,3 @@
+The evidence is the survey's systematic coverage and its explicit taxonomy, rather than a newly reported experimental result. The official abstract identifies risks, attacks, and defenses as distinct objects of analysis. Readers should use the taxonomy to locate relevant primary evidence, then inspect each study's threat model and measurements directly.
+
+Its support therefore concerns the structure of the safety literature, not a pooled estimate of model safety. An empirical result has meaning only under its stated model access, task, attack, and measurement conditions. Before adopting a conclusion, check whether the primary study measures the risk itself, attack success, a defense effect, or another proxy.

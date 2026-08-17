@@ -1,0 +1,5 @@
+- Read §§2.2-3.3 with Appendix A before interpreting “zero data”: the claim concerns external task-answer data in the AZR RL stage, not pretraining, human prompts, executor design, or benchmarks.
+- Write down the three terminal predicates separately: deduction value equality, abduction execution equivalence, and induction success on all five hidden I/O pairs.
+- Inspect Appendix E before trusting curriculum difficulty. Global variables leak answers, and comments/docstrings form an author-observed proposer-to-solver hint channel.
+- Use the `paper` branch, not the drifting default branch, and run the executor only inside a hardened disposable sandbox; the official README says the raw implementation is unsafe for production.
+- Treat `data/` as released seed initialization, not the paper-run corpus. The online buffers, eight-attempt verifier traces, rewards, failures, and exact checkpoint/run lineage remain unavailable.

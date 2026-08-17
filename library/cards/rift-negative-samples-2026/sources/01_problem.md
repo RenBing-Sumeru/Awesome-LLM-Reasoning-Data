@@ -1,0 +1,1 @@
+This Track 5 entry addresses the following post-training reasoning-data gap: It exposes the usually discarded negative side of rejection-sampling data as a first-class training signal, while recording that the outcome verifier, reward magnitudes, sampling budget, and loss stabilization jointly determine the usable trace distribution.

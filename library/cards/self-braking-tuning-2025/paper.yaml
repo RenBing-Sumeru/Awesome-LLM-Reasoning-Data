@@ -1,0 +1,110 @@
+id: self-braking-tuning-2025
+title: Let LRMs Break Free from Overthinking via Self-Braking Tuning
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Haoran Zhao
+- Yuchen Yan
+- Yongliang Shen
+- Haolei Xu
+- Wenqi Zhang
+- Kaitao Song
+- Jian Shao
+- Weiming Lu
+- Jun Xiao
+- Yueting Zhuang
+source_role:
+- construction_recipe
+- data_release
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematics
+training_use:
+- sft
+- process_supervision
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://papers.neurips.cc/paper_files/paper/2025/hash/02d028c3bf5d4875b5a4e4b4311087f7-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.14604
+  code: https://github.com/ZJU-REAL/Self-Braking-Tuning
+  data: null
+  project: https://zju-real.github.io/SBT/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.14604
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/02d028c3bf5d4875b5a4e4b4311087f7-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.14604
+data_object:
+  prompt_source: 92,064 filtered OpenR1-Math instances.
+  trace_author: OpenR1-Math trajectories; SBT variants are derived.
+  answer_format: Think-tagged traces plus a braking prompt.
+  process_fields:
+  - foundation_solution
+  - evolution_solution
+  - overthink_score
+  - masked_segment
+  - braking_prompt
+  environment_or_substrate: Offline mathematical traces.
+  verifier_or_reward: First-correct-step efficiency and marker redundancy signals; masking/truncation supervision.
+  terminal_predicate: First standard-answer point and selected braking boundary.
+recipe_metadata:
+  base_model: Qwen2.5-Math and Llama variants reported.
+  teacher: Upstream OpenR1-Math provenance is incomplete.
+  generator: SBT-E/SBT-D truncate/mask and insert a braking cue.
+  filtering_rule: 16K limit and problematic formats removed; full manifest unknown.
+  sampling_protocol: Existing traces, no new rollout count.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: 16,384-token training maximum.
+  optimizer_or_scaffold: Megatron-LM SFT, 3 epochs reported.
+audit:
+  source_mixture: No immutable source-to-derived-record map.
+  split: 92K training instances; derived split manifests unknown.
+  decontamination: unknown
+  license: Code Apache-2.0; upstream rights require review.
+  lineage: OpenR1-Math -> filters/scores/masks -> SBT-E/SBT-D -> SFT
+  known_failure_modes:
+  - First correct answer may not show reasoning is dispensable.
+  - Marker rules are format sensitive.
+  - Derived records and decision ledger are not confirmed released.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS, arXiv, project, and code checked.
+inclusion_reason: A trace-rewriting recipe for adaptive stopping supervision.
+related: []
+tags:
+- self-braking
+- overthinking
+- trace-truncation
+- sft
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: SBT derives masked/truncated math traces with braking prompts from OpenR1-Math.
+why_it_matters: It exposes construction of accepted and masked trace segments without publishing the full ledger.
+card: null
+needs:
+- needs_data
+- needs_audit
+- needs_verifier
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official sources checked.

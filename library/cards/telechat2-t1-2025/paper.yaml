@@ -1,0 +1,104 @@
+id: telechat2-t1-2025
+title: Technical Report of TeleChat2, TeleChat2.5 and T1
+year: 2025
+venue: arXiv preprint
+authors: []
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- pairwise_preference
+domains:
+- language
+- code
+- mathematics
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.18013
+  arxiv: https://arxiv.org/abs/2507.18013
+  code: null
+  data: null
+  project: null
+  huggingface: https://huggingface.co/Tele-AI/TeleChat2-3B
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: TeleChat2 is reported to pretrain on 10 trillion high-quality and diverse tokens; source datasets, rights,
+    and composition are undisclosed.
+  trace_author: unknown
+  answer_format: T1 supports long chain-of-thought reasoning; the released report does not provide an item-level training
+    target schema.
+  process_fields: []
+  environment_or_substrate: Offline language-model post-training; code and mathematics are named target areas for continual
+    pretraining plus RL.
+  verifier_or_reward: DPO and RL are named, but preference provenance, reward/verifier, and terminal criteria are undisclosed.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: TeleChat2 series; exact base/pretrained checkpoint lineage for each reported variant is not extracted here.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: TeleChat2 uses SFT and DPO; TeleChat2.5 and T1 add domain-specific continual pretraining and RL.
+    Detailed objective configurations are undisclosed.
+audit:
+  source_mixture: Only a 10-trillion-token high-level pretraining claim and domain-specific continual-pretraining claim are
+    disclosed.
+  split: unknown
+  decontamination: unknown
+  license: An official TeleChat2 model page was verified; rights for 10T pretraining and post-training data remain unknown.
+  lineage: The report names stages but does not link records from source/corpus through SFT, DPO, continual pretraining, and
+    RL.
+  known_failure_modes:
+  - 10T-token scale does not disclose source mixture or contamination controls
+  - DPO and RL are named without reward, preference, or acceptance records
+  - One official model page does not establish the provenance or completeness of every series release
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv abstract verifies the reported training-stage sequence and public release of 35B/115B post-trained
+    variants.
+inclusion_reason: A staged model-series report that provides a useful ledger boundary between named SFT/DPO/RL phases and
+  undisclosed data/feedback artifacts.
+related: []
+tags:
+- frontier-report
+- telechat
+- sft
+- dpo
+- continual-pretraining
+- reinforcement-learning
+- disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: TeleChat2/T2.5/T1 names 10T pretraining, SFT, DPO, continual pretraining, and RL, but does not disclose
+  the data, preference, or reward records behind those stages.
+why_it_matters: It keeps a concrete multi-stage training disclosure useful without mistaking stage labels for an open post-training
+  recipe.
+card: null
+needs:
+- 'needs_data: source/corpus, SFT, DPO, continual-pretraining, and RL manifests'
+- 'needs_metadata: preference/reward design and per-stage configurations'
+- 'needs_audit: splits, decontamination, rights, and series-to-record lineage'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: arXiv report and an official Tele-AI Hugging Face model page checked; no dataset/reward artifact pinned.

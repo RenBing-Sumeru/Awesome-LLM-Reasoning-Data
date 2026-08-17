@@ -1,0 +1,1 @@
+1. 输入：近 6 个月 Codeforces 竞赛题，含 division、rating、tag 和题面。2. 生成：评测 30 个开源模型和 3 个闭源模型；开源默认设置包括 temperature 0.7、top_p 0.8、top_k 20、repetition_penalty 1.1。3. 提交：把解答提交到 Codeforces，每题最多 8 次。4. 输出：官方 verdict、通过统计和 Elo 估计。5. 复现：固定 contest IDs、日期、语言、模型设置、提交 API/token 策略、Codeforces 条款和 leaderboard 日期。

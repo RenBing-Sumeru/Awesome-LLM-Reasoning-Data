@@ -1,0 +1,1 @@
+Read BFCL by version, not as one frozen dataset. Keep AST, relevance, executable, multi-turn, and agentic categories separate; an overall score can hide very different failure modes. A leaderboard row is only auditable when paired with the model adapter, provider date, evaluator commit, and dataset release.

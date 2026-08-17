@@ -1,0 +1,1 @@
+Ma, Yichuan、Linyang Li、Yongkang Chen、Peiji Li、Xiaozhe Li、Qipeng Guo、Dahua Lin 与 Kai Chen。2026。“Timely Machine: Awareness of Time Makes Test-Time Scaling Agentic”。第 64 届计算语言学协会年会论文集，第 1 卷：长论文，4619–4636 页。官方论文：https://aclanthology.org/2026.acl-long.211/。

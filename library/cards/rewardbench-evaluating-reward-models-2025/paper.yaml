@@ -1,0 +1,109 @@
+id: rewardbench-evaluating-reward-models-2025
+title: 'RewardBench: Evaluating Reward Models for Language Modeling'
+year: 2025
+venue: Findings of NAACL 2025
+authors:
+- Nathan Lambert
+- Valentina Pyatkin
+- Jacob Morrison
+- LJ Miranda
+- Bill Yuchen Lin
+- Khyathi Chandu
+- Nouha Dziri
+- Sachin Kumar
+- Tom Zick
+- Yejin Choi
+- Noah A. Smith
+- Hannaneh Hajishirzi
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- reward-modeling
+- reasoning-evaluation
+- safety
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-naacl.96/
+  arxiv: https://arxiv.org/abs/2403.13787
+  code: https://github.com/allenai/reward-bench
+  data: https://huggingface.co/datasets/allenai/reward-bench
+  project: https://huggingface.co/spaces/allenai/reward-bench
+  huggingface: https://huggingface.co/datasets/allenai/reward-bench
+  doi: https://doi.org/10.18653/v1/2025.findings-naacl.96
+  venue: https://aclanthology.org/2025.findings-naacl.96/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-naacl.96/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Prompt collections spanning chat, reasoning, safety, and structured out-of-distribution queries.
+  trace_author: Benchmark curators and source response generators.
+  answer_format: Prompt, chosen response, rejected response, subset, and preference rationale category.
+  process_fields:
+  - prompt
+  - chosen
+  - rejected
+  - subset
+  - label
+  environment_or_substrate: Language-model reward evaluation across chat, reasoning, and safety.
+  verifier_or_reward: Pairwise preference labels include subtle but verifiable reasons such as bugs or incorrect facts.
+  terminal_predicate: A reward model ranks the chosen response above the rejected response.
+recipe_metadata:
+  base_model: Reward models trained by classifier MLE, DPO, and other methods.
+  teacher: Source preference annotations and verifiable pair construction.
+  generator: Curated prompt-chosen-rejected triples from multiple task categories.
+  filtering_rule: Structured challenge subsets retain meaningful, preference-sensitive comparisons.
+  sampling_protocol: Pin the official data revision and evaluation scripts.
+  inference_budget: Reward-model scoring protocol and model revision affect leaderboards.
+  optimizer_or_scaffold: Open RewardBench evaluation code and leaderboard.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Chat, reasoning, safety, and structured pairwise preference examples.
+  split: The release documents 2,985 pairs; pin the selected revision.
+  decontamination: Do not train on public benchmark pairs and report the same split as evaluation.
+  license: Check the official dataset card and upstream source terms before reuse.
+  lineage: Findings of NAACL 2025 paper, allenai repository, dataset, and leaderboard.
+  known_failure_modes:
+  - Pairwise ranking does not fully capture all dimensions of response quality.
+  - Public examples can create benchmark contamination.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL Anthology paper and affiliations, the official allenai repository, dataset, and leaderboard.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RewardBench supplies 2,985 prompt-chosen-rejected comparisons for evaluating reward models on chat, reasoning,
+  safety, and subtle correctness failures.
+why_it_matters: It is a reusable baseline for testing whether a reward model recognizes the concrete reason one response should
+  be preferred.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL Anthology paper and affiliations, the official allenai repository, dataset, and leaderboard.
+category_ids:
+- preference_reward_feedback_data

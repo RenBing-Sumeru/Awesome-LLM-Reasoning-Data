@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OS-Genesis 先探索虚拟 GUI，再从状态—动作—状态三元组反向合成可执行任务，并用分级轨迹奖励采样移动端与网页智能体轨迹用于 SFT。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "GUI 智能体轨迹构造方法与数据发布",
+  "best_for_ch": "研究环境交互轨迹、反向任务合成、轨迹奖励与 GUI 智能体训练的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qiushi Sun、Kanzhi Cheng、Zichen Ding、Chuanyang Jin、Yian Wang、Fangzhi Xu、Zhenyu Wu、Chengyou Jia、Liheng Chen、Zhoumianze Liu、Ben Kao、Guohao Li、Junxian He、Yu Qiao、Zhiyong Wu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

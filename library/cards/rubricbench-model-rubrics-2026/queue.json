@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "RubricBench 为1,147组高难回答比较配专家原子细则和胜负标签，能检查模型写出的评分标准是否符合人类判断",
+    "updated_at": "2026-07-21T13:19:31Z"
+  },
+  "updated_at": "2026-07-21T13:19:31Z"
+}

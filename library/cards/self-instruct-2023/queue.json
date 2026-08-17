@@ -1,0 +1,25 @@
+{
+  "title": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2212.10560",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "reason_to_include": "instruction数据合成",
+  "decision_reason": "instruction数据合成",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T08:55:05Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "instruction数据合成",
+    "updated_at": "2026-07-11T08:55:05Z"
+  }
+}

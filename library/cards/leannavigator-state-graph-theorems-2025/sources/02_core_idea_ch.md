@@ -1,0 +1,1 @@
+论文的核心贡献是把“证明搜索产生的中间状态”转化为可复用训练数据，而不是仅把搜索当作推理过程。LeanNavigator 在 Mathlib4 上构建状态转移图，每个可证明状态都可形成一个新 theorem statement，通向完成节点的最短路径则成为 proof。作者公开约 4.7M 个定理—证明对、约 10 亿 token，规模比 ReProver 使用的约 112K 定理高一个数量级以上。数据由 Lean 实际执行每个 tactic 并由内核确认终止状态，因此可用于 tactic generation、proof search 训练和形式化推理 SFT；公开 Zenodo 快照采用 CC BY 4.0。

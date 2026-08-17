@@ -1,0 +1,1 @@
+SWE-Gym 与 SWE-smith 主要解决训练环境扩充，best-of-N SWE agent 工作则通常只用测试或单一 reward model 选轨迹。R2E-Gym 的变化是把 commit 级数据合成和 verifier scaling 放在同一系统中：SYNGEN 不依赖人工 issue/新增测试即可从提交生成任务；推理时不要求某一种 verifier 完全可靠，而是利用执行信号与 learned judgment 的不同失败模式。它并未发明 back-translation、测试生成或奖励模型，而是将三者组织成“更多环境 + 混合验证”的开放权重训练/推理配方。

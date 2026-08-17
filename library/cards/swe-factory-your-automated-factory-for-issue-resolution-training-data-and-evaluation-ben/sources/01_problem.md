@@ -1,0 +1,3 @@
+The expensive part of constructing SWE data from GitHub issues is not scraping text but making old commits installable, interpreting test outcomes correctly, and confirming that issues fail at base and pass after gold patches. Traditional workflows require manual Dockerfiles, project-specific log parsers, and instance-by-instance checks, limiting multilingual scale.
+
+SWE-Factory automates these stages. A multi-agent SWE-Builder restores environments, standardized exit codes determine command success, and fail-to-pass validation is executed automatically. Its objective is low-cost production of issue-resolution tasks for training and evaluation rather than a new coding model.

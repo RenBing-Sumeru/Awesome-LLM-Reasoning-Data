@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ResearchQA 从 75 个领域的综述文章提炼问题与细粒度 rubric，评测学术问答的引用、解释与局限性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多学科学术问答的 survey-mined rubric 基准",
+  "best_for_ch": "研究科研问答、引用评测与跨领域 RAG 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Li S. Yifei, Allen Chang, Chaitanya Malaviya, Mark Yatskar",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

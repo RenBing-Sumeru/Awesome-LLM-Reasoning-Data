@@ -1,0 +1,5 @@
+- 公开发布是一个 1,266 行、四列的测试 CSV：经混淆的 `problem` 与 `answer`，以及明文 `problem_topic` 和 `canary`；canary 与 XOR decryptor 都是公开的，因此混淆可逆。
+- BrowseComp 评分的是与单一参考答案的语义一致性。论文 grader checkpoint 为 unknown，judge 无法验证搜索、证据、引用或浏览轨迹。
+- 当前官方 `browsecomp_eval.py` 返回 `correct: yes/no`，却与裸 `yes/no` 比较；使用前必须修复并测试这个 reference scorer，但不能把该缺陷当作论文结果无效的证明。
+- Table 3 与 64 样本分析展示了已报告系统下的难度、过度自信和测试时计算效应；它们不能证明数据集质量或发布完整性。
+- 阅读时必须同时考虑实时网页与污染边界：没有发布 replay substrate 或运行轨迹，公开解密使泄漏成为可能，有证据支持的用途仍只有 evaluation、audit 和 test-time-compute analysis。

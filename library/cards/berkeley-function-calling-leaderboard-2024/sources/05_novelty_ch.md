@@ -1,0 +1,1 @@
+既有基线多是 prompt 级工具使用 demo，或单一数据集上的 API 选择测试。BFCL 的变化是维护一个公开 leaderboard，使用 typed schema、多类别 evaluator、可执行检查，并在后续版本加入多轮和 agentic 任务。质量信号是成功由 parser/executor predicate 约束，而不是只看文本相似度。并不新的部分是 function calling、JSON/schema 校验和 API benchmark。复用前要检查 license、hidden/public 政策、evaluator 代码、live function 波动、模型专用 adapter，以及任务集是否已进入训练语料。

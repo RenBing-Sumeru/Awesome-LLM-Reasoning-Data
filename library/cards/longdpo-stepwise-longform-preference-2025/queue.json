@@ -1,0 +1,18 @@
+{
+  "title": "LongDPO: Unlock Better Long-form Generation Abilities for LLMs via Critique-augmented Stepwise Information",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.395/",
+    "code": "https://github.com/pingbowen23/LongDPO",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:11:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把长文本的偏好构造、事实一致性筛选和批评修订落实到逐步训练记录中",
+    "updated_at": "2026-07-16T07:11:27Z"
+  }
+}

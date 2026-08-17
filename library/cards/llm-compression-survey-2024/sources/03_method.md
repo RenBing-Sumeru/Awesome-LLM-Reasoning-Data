@@ -1,0 +1,1 @@
+This paper synthesizes compression literature rather than introducing one executable pipeline. It explains the major method families and surveys benchmarking strategies and metrics used to assess compressed models, so readers can compare both mechanism and evaluation choice.

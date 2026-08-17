@@ -1,0 +1,1 @@
+ACL 论文的证据是比较式的：自动诱导的过程监督在用于验证或强化生成解答时提升数学推理表现，并与 outcome-supervision 风格基线比较。行级证据不是人工 proof label，而是一组 sampled continuations、这些 continuation 的最终答案、answer-checker verdicts，以及聚合到前缀上的 reward。因此证据边界是概率性且预算绑定的：generator 质量、rollout count、decoding 参数和 answer checker 可靠性都会改变标签。

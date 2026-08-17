@@ -1,0 +1,1 @@
+ARC 可作为稳定的科学选择题 benchmark，也可作为记录 benchmark lineage 的模板。复用时保留 question id、split、subset、题干、选项、gold option、scorer version，以及被评测系统使用的检索语料。对 atlas 来说，它最适合用来区分 evaluation-only 答案键反馈与更丰富的 evidence-grounded 或 process-supervised 推理数据。

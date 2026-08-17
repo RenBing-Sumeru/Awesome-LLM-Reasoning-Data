@@ -1,0 +1,108 @@
+id: vlrmbench-vision-language-reward-models-2025
+title: 'VLRMBench: A Comprehensive and Challenging Benchmark for Vision-Language Reward Models'
+year: 2025
+venue: ICCV 2025
+authors:
+- Jiacheng Ruan
+- Wenzhen Yuan
+- Xian Gao
+- Ye Guo
+- Daoxin Zhang
+- Zhe Xu
+- Yao Hu
+- Ting Liu
+- Yuzhuo Fu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-reasoning
+- reward-modeling
+- evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openaccess.thecvf.com/content/ICCV2025/html/Ruan_VLRMBench_A_Comprehensive_and_Challenging_Benchmark_for_Vision-Language_Reward_Models_ICCV_2025_paper.html
+  arxiv: https://arxiv.org/abs/2503.07478
+  code: https://github.com/JCruan519/VLRMBench
+  data: https://github.com/JCruan519/VLRMBench/tree/main/benchmark_data
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark or construction sources described in the paper.
+  trace_author: Released model trajectories or process records.
+  answer_format: Problem, reasoning process, and the released process-supervision fields.
+  process_fields:
+  - image
+  - question
+  - response
+  - step_correctness
+  - critique
+  environment_or_substrate: multimodal-reasoning, reward-modeling, evaluation
+  verifier_or_reward: The paper's released process labels, reward criteria, or evaluation targets.
+  terminal_predicate: The official process-quality or error-detection target.
+recipe_metadata:
+  base_model: See the paper and official release for the exact model configuration.
+  teacher: Automatically constructed process supervision.
+  generator: Multimodal policy model trajectories.
+  filtering_rule: Use the released data and documented filtering configuration.
+  sampling_protocol: Keep released training data distinct from reported benchmark evaluation.
+  inference_budget: Match the paper's evaluation settings.
+  optimizer_or_scaffold: Official process-reward-model training and evaluation code.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Official released problems, reasoning processes, and process-level supervision.
+  split: Use the official release and its documented split.
+  decontamination: Do not use released evaluation examples for training when reporting benchmark performance.
+  license: Refer to the official release for current terms.
+  lineage: Primary paper and official code/data release.
+  known_failure_modes:
+  - Data distribution is task-specific
+  - Process annotations and criteria depend on the construction protocol
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICCV 2025 paper and SJTU/Xiaohongshu affiliation block plus the official VLRMBench repository and benchmark-data
+    directory.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: VLRMBench provides 12,634 vision-language reward-model questions spanning process understanding, outcome
+  judgment, and critique.
+why_it_matters: The release provides a reusable process-supervision or process-evaluation surface.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICCV 2025 paper and SJTU/Xiaohongshu affiliation block plus the official VLRMBench repository and benchmark-data
+    directory.
+category_ids:
+- process_trace_supervision_data

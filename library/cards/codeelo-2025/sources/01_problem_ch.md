@@ -1,0 +1,1 @@
+一手来源包括 arXiv:2501.01257、CodeElo 项目页、QwenLM/CodeElo 仓库，以及仓库链接的 Qwen/CodeElo 数据页。它解决的问题是许多竞赛代码基准缺少私有测试、special judge 支持和执行环境对齐。CodeElo 的收录边界是 competition-level coding evaluation surface，不是训练 recipe。一个任务是近期 Codeforces 题，包含标题、时限/内存、题面、样例、可选 note、竞赛 division、难度 rating、标签和官方平台提交结果。

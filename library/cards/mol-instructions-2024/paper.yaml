@@ -1,0 +1,129 @@
+id: mol-instructions-2024
+title: 'Mol-Instructions: A Large-Scale Biomolecular Instruction Dataset for Large Language Models'
+year: 2024
+venue: ICLR 2024
+authors:
+- Yin Fang
+- Xiaozhuan Liang
+- Ningyu Zhang
+- Kangwei Liu
+- Rui Huang
+- Zhuo Chen
+- Xiaohui Fan
+- Huajun Chen
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://iclr.cc/virtual/2024/poster/18554
+  arxiv: https://arxiv.org/abs/2306.08018
+  code: https://github.com/zjunlp/Mol-Instructions
+  data: https://huggingface.co/datasets/zjunlp/Mol-Instructions
+  project: https://github.com/zjunlp/Mol-Instructions
+  huggingface: https://huggingface.co/datasets/zjunlp/Mol-Instructions
+  doi: null
+  venue: https://iclr.cc/virtual/2024/poster/18554
+  openreview: https://iclr.cc/virtual/2024/poster/18554
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public molecule and protein databases organized into 17 task families
+  trace_author: source database labels, templates, and language-model-written explanatory instructions
+  answer_format: task instruction, molecular/protein representation or text input, and structured or natural-language target
+  process_fields:
+  - task instruction
+  - molecular/protein representation or text input
+  - and structured or natural-language target
+  environment_or_substrate: JSON task files for molecules, proteins, and biomolecular text
+  verifier_or_reward: chemical/biological labels, exact structured targets, and task-specific metrics
+  terminal_predicate: Retain a record only when chemical/biological labels, exact structured targets, and task-specific metrics
+    accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: source database labels, templates, and language-model-written explanatory instructions
+  generator: Mol-Instructions maps 17 biomolecular task families into a common instruction-input-output schema and publishes
+    more than two million examples spanning molecule design, property prediction, protein understanding, and text tasks.
+  filtering_rule: chemical/biological labels, exact structured targets, and task-specific metrics
+  sampling_protocol: public molecule and protein databases organized into 17 task families
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: domain SFT and cross-task transfer
+audit:
+  source_mixture: public molecule and protein databases organized into 17 task families
+  split: 'Official release scale: more than 2 million biomolecular instruction records; storage: JSON task files for molecules,
+    proteins, and biomolecular text.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: CC BY 4.0 under the official DATA_LICENSE; upstream database terms remain applicable
+  lineage: public molecule and protein databases organized into 17 task families -> source database labels, templates, and
+    language-model-written explanatory instructions -> chemical/biological labels, exact structured targets, and task-specific
+    metrics -> domain SFT and cross-task transfer.
+  known_failure_modes:
+  - Database labels and molecule splits can leak near-duplicates
+  - generated explanations are not laboratory evidence
+  - source licenses and safety constraints differ by task.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 39 citations; this is not a Google Scholar count.'
+inclusion_reason: 'Mol-Instructions is a public Track 01 training object: task instruction, molecular/protein representation
+  or text input, and structured or natural-language target; it is consumed by domain SFT and cross-task transfer.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- cross-object-biomolecular-instruction-data
+status: verified
+one_line_summary: Mol-Instructions unifies more than two million molecule, protein, and biomedical-text targets under one
+  instruction schema.
+why_it_matters: a shared instruction interface across symbolic biomolecular objects and natural language
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training one model to answer molecule, protein, and biomedical text instructions
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: cross-object biomolecular instruction data
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Zhejiang University, ZJU-Ant Group Joint Research Center for Knowledge
+      Graphs, Hangzhou Innovation Center, Zhejiang University.
+    venue: 'The official venue URL confirms formal publication at ICLR 2024: https://iclr.cc/virtual/2024/poster/18554'
+    impact: OpenAlex reported 39 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON task files for molecules, proteins, and biomolecular text records
+      at https://huggingface.co/datasets/zjunlp/Mol-Instructions with terms recorded as: CC BY 4.0 under the official DATA_LICENSE;
+      upstream database terms remain applicable.'
+  selection_eligible: true
+  year_impact_threshold: 3

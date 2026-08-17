@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude 4 的系统卡和透明度材料列出广义来源类别、人工反馈与 Constitutional AI，但未披露记录级数据、奖励或环境合约。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "闭源前沿模型系统卡与透明度披露",
+  "best_for_ch": "比较闭源前沿模型数据与反馈披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

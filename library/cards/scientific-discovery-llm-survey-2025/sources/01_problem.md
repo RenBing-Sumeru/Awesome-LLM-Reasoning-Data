@@ -1,0 +1,3 @@
+Language models are changing scientific discovery from task-specific automation toward increasingly autonomous agents and new forms of human-AI collaboration. This EMNLP 2025 survey charts those changing roles through the scientific method. It is a conceptual survey, not a release of a scientific agent, robot, or benchmark.
+
+For a reader, the practical question is therefore not simply whether an LLM appears in a laboratory workflow. It is which scientific activity it supports, what decisions remain with people, and what evidence is available for the claimed responsibility. The survey is useful for separating a narrow automated contribution from broader participation without assuming that either one is sufficient for an entire discovery process.

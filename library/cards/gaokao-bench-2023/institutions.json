@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "School of Computer Science, Fudan University",
+    "School of Computer Science and Technology, East China Normal University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2305.12474",
+    "https://arxiv.org/pdf/2305.12474",
+    "https://github.com/OpenLMLab/GAOKAO-Bench"
+  ],
+  "verification_note": "Official arXiv PDF v3 title page lists 14 authors and Fudan/ECNU institution lines; arXiv abstract metadata lists only 6 authors, so this Card follows the official PDF title page. Several added authors have no visible per-author superscripts in the checked PDF lines."
+}

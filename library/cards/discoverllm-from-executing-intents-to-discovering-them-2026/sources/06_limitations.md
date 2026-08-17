@@ -1,0 +1,3 @@
+First, the simulator assumes that latent preferences already exist and become progressively more concrete. Real users may reverse earlier choices, abandon an option, or develop a new goal that was not present in the intent tree; the system may then mistake model steering for successful discovery.
+
+Second, the intent trees, transition judge, reward, and main simulated evaluation share the same ontology. A model may learn artifacts of this formalization rather than general collaboration. The released scores are also model-generated rather than human preference labels. Reuse therefore requires independent human validation and tests of non-monotonic preference changes.

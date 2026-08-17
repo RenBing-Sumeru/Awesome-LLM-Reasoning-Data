@@ -1,0 +1,94 @@
+id: vericontaminated-2025
+title: 'VeriContaminated: Assessing LLM-Driven Verilog Coding for Data Contamination'
+year: 2025
+venue: ICLAD 2025
+authors:
+- Zeng Wang
+- Minghao Shao
+- Jitendra Bhandari
+- Likhitha Mankali
+- Ramesh Karri
+- Ozgur Sinanoglu
+- Muhammad Shafique
+- Johann Knechtel
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://doi.org/10.1109/ICLAD65226.2025.00017
+  arxiv: https://arxiv.org/abs/2503.13572
+  code: https://github.com/DfX-NYUAD/VeriContaminated
+  data: https://github.com/DfX-NYUAD/VeriContaminated
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1109/ICLAD65226.2025.00017
+  venue: https://doi.org/10.1109/ICLAD65226.2025.00017
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Official repository releases the Verilog contamination-assessment implementation.
+inclusion_reason: 'Track 13: contamination, verifier/reward failure, reward hacking, or evaluator reliability.'
+related: []
+tags:
+- track13
+- audit
+- final-slate
+status: verified
+one_line_summary: Official repository releases the Verilog contamination-assessment implementation.
+why_it_matters: It adds an auditable reliability or failure-mode surface to Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page and public artifact recorded.
+category_ids:
+- audit_failure_contamination_verifier_attacks

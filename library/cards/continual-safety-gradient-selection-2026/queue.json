@@ -1,0 +1,18 @@
+{
+  "title": "Continual Safety Alignment via Gradient-Based Sample Selection",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.942/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:19:16Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过避开会造成安全漂移的高梯度良性训练样本，使持续微调的数据选择直接服务于安全与任务性能的权衡",
+    "updated_at": "2026-07-15T15:19:16Z"
+  }
+}

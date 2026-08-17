@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Web-Shepherd 发布网页智能体的步骤级偏好对与检查清单，用于训练引导轨迹选择的过程奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "网页智能体过程奖励模型与步骤级偏好监督数据论文",
+  "best_for_ch": "训练或评测网页智能体的过程奖励、步骤选择与轨迹重排序。",
+  "confidence_ch": "高",
+  "authors_ch": "Hyungjoo Chae、Sunghwan Kim、Junhee Cho 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

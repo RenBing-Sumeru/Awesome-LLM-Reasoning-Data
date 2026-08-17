@@ -1,0 +1,1 @@
+传统 barrier synthesis benchmark 主要比较数值或符号求解器，缺少语言模型如何利用专家启发式的接口。BarrierBench 的变化是把系统、自然语言推理、候选 certificate、SMT 反例与修正循环组织为 agent task，并支持 barrier-controller 联合合成。新意在 benchmark 和 verifier-in-the-loop workflow，而非新的 SMT 理论。

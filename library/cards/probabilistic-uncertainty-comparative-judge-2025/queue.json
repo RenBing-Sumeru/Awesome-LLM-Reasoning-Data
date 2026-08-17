@@ -1,0 +1,13 @@
+{
+  "title": "Generalised Probabilistic Modelling and Improved Uncertainty Estimation in Comparative LLM-as-a-judge",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=YJ4gr1RT37",
+    "data": null
+  },
+  "review_note": "已精读：以重排序概率主动选择比较，审计比较式 LLM judge 的效率与校准风险。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {"search_status":"promoted","decision_reason":"UAI 正式论文为比较式 LLM judge 提供可操作的不确定性与比较预算审计。","updated_at":"2026-07-20T00:00:00Z"}
+}

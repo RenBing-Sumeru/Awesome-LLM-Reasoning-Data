@@ -1,0 +1,3 @@
+Earlier secure-code benchmarks often use static-analysis alerts or human vulnerability labels as the terminal judgment. AutoSUIT changes the contract by building two independent executable oracles for the same task and placing vulnerability repair, CWE-aware generation, and code completion in one record format.
+
+The novelty is not unit testing itself. The benchmark uses tests to express both what the program must do and what it must never do, while expanding coverage to 232 CWEs and four languages. Security is therefore judged by behavior under concrete attack and normal scenarios rather than inferred indirectly from pattern-matching tools.

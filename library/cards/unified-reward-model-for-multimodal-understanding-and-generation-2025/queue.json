@@ -1,0 +1,17 @@
+{
+  "title": "Unified Reward Model for Multimodal Understanding and Generation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.05236",
+    "data": "https://huggingface.co/collections/CodeGoat24/unifiedreward-training-data-67c300d4fd5eff00fa7f1ede"
+  },
+  "review_note": "L4 材料已准备，等待人工判定。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T08:30:05Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "整合超过42万条图像与视频理解/生成反馈数据，统一成成对排序和单点评分监督",
+    "updated_at": "2026-07-15T08:30:05Z"
+  }
+}

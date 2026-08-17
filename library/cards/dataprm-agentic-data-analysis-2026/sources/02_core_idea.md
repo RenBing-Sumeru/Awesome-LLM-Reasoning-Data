@@ -1,0 +1,3 @@
+The central record is a data-analysis trajectory with intermediate execution state, tool outputs, step-level annotation, and a process decision. The reward model can actively probe the environment, so a claimed result is checked against execution evidence rather than accepted only because its explanation is plausible.
+
+Its reflection-aware reward separates errors that an agent can repair from failures that should terminate or strongly penalize a trajectory. This makes the feedback useful for both selecting candidate analyses and training a policy, but it also binds the record to the particular software environment and datasets used for evaluation.

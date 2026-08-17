@@ -1,0 +1,1 @@
+作者分析了 13 个 benchmark 变体、约一万个问题。批量 Lean metaprogram 会发现反例、vacuous theorem、unsound axiom 等；其中一部分有机器可检查证书。另一层 recall-oriented 语义审计处理缺失假设、误译和评测漏洞，这些问题不能被静态工具完全判定。复用时应固定 benchmark revision、Lean/Mathlib 环境、checker revision、定理 ID、证书，并严格区分机器认证与依赖判断的结论。核验官方 checker 代码和修正快照。

@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "UC Berkeley",
+    "Microsoft Research"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-13T00:00:00Z",
+  "source_urls": [
+    "https://proceedings.neurips.cc/paper_files/paper/2024/hash/e4c61f578ff07830f5c37378dd3ecb0d-Abstract-Conference.html",
+    "https://arxiv.org/abs/2305.15334",
+    "https://gorilla.cs.berkeley.edu/",
+    "https://github.com/ShishirPatil/gorilla"
+  ],
+  "verification_note": "NeurIPS proceedings verifies 2024 Main Conference Track and DOI; paper/project sources identify UC Berkeley and Microsoft Research affiliations."
+}

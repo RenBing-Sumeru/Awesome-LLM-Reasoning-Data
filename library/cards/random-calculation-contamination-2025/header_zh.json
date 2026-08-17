@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "程序化生成20个算术难度层级，并以正确/随机/反向奖励对照区分低污染RLVR学习与基准记忆。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "程序化算术数据发布与污染审计",
+  "best_for_ch": "关注RLVR、程序化验证、基准污染和记忆诊断的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Mingqi Wu、Zhihao Zhang、Qiaole Dong、Zhiheng Xi、Jun Zhao、Senjie Jin、Xiaoran Fan、Yuhao Zhou、Huijie Lv、Ming Zhang、Yanwei Fu、Qin Liu、Songyang Zhang、Qi Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

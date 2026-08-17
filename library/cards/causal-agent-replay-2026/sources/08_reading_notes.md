@@ -1,0 +1,5 @@
+- Keep the version boundary explicit: arXiv exposes only the five-page `2606.08275v1`; GitHub `v0.2.0` adds later Who&When work, and PyPI exposes only `0.0.1`.
+- Separate three replay claims: digest-based message reconstruction, repeated action-signature matching with recorded observations, and counterfactual forward replay that may call the Environment again.
+- Read arXiv Sections 2-4 for the SCM trajectory, five interventions, contrastive intervals, point of commitment, and Shapley coalitions; read Section 5 for the planted synthetic tests.
+- Treat the repository-only Who&When result as a negative surrogate-replay stress test: the CI locus fires on 22/121, while the unreleased JSONL blocks per-instance verification.
+- Do not infer a training trajectory release: no CAR dataset, split, LICENSE text, environment snapshot/reset/sandbox/rollback contract, privacy policy, or decontamination audit is available.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Defects4C 从真实 C/C++ 仓库整理 248 个缺陷与 102 个漏洞，配套可复现测试以执行验证修复补丁。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "C/C++ 缺陷修复与漏洞修复可执行基准",
+  "best_for_ch": "需要评测 C/C++ 自动程序修复、漏洞修复或基于测试的代码奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jian Wang, Xiaofei Xie, Qiang Hu, Shangqing Liu, Jiongchi Yu, Jiaolong Kong, Yi Li",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:06:56Z"
+}

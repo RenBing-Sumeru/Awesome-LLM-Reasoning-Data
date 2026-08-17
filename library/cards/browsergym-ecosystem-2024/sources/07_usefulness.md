@@ -1,0 +1,3 @@
+Use BrowserGym as a design pattern for browser-agent evaluation infrastructure. A reusable record should preserve benchmark id, adapter version, task id, split, reset state, observation modality, action schema, browser/runtime version, agent scaffold, prompts, step logs, terminal predicate, score, error state, timeout, and artifact links.
+
+For atlas work, it is a bridge card between environment-agent trajectory data and benchmark/evaluation surfaces. It helps distinguish the substrate contract from the benchmark-specific verifier, which is essential when comparing agents across WebArena-style, WorkArena-style, MiniWoB-style, and trace-based tasks.

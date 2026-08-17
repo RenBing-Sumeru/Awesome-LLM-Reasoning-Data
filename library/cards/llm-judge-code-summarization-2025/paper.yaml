@@ -1,0 +1,97 @@
+id: llm-judge-code-summarization-2025
+title: On the Effectiveness of LLM-as-a-judge for Code Generation and Summarization
+year: 2025
+venue: IEEE Transactions on Software Engineering
+authors:
+- Giuseppe Crupi
+- Rosalia Tufano
+- Alejandro Velasco
+- Antonio Mastropaolo
+- Denys Poshyvanyk
+- Gabriele Bavota
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.16587
+  arxiv: https://arxiv.org/abs/2507.16587
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://www.cs.wm.edu/~denys/pubs/TSE-LLMs-as-a-judge.pdf
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Even the strongest tested judge frequently mislabels code; calibrate against an independent oracle.
+  citation_status: verified
+  confidence: medium
+  notes: Full paper reviewed; author-hosted IEEE Transactions on Software Engineering version confirms formal publication.
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2507.16587.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Empirical audit of LLM-judge reliability for code generation and code summarization.'
+related: []
+tags:
+- llm-as-a-judge
+- code-evaluation
+- audit
+status: verified
+one_line_summary: Tests whether LLM judges reliably assess code correctness and code-summary quality against executable and human references.
+why_it_matters: It quantifies judge failures that can make automated code evaluation or reward signals unsafe.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary paper page recorded; artifact availability stated without inference.
+category_ids:
+- audit_failure_contamination_verifier_attacks
+category:
+- audit_failure_contamination_verifier_attacks

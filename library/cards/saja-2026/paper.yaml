@@ -1,0 +1,102 @@
+id: saja-2026
+title: 'SAJA: A Simple Approach to Judge Alignment for LLM-as-a-Judge'
+year: 2026
+venue: ACL 2026 Industry Track
+authors:
+- Sneha Kola
+- Pankaj Kumar Sharma
+- Soumyadeep Dey
+- Bamdev Mishra
+- Mayur Datar
+source_role:
+- benchmark
+- infrastructure
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- llm-as-a-judge
+- rubric
+- evaluation-reliability
+training_use:
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.acl-industry.45/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-industry.45/
+  code: https://github.com/microsoft/SAJA
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-industry.45/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official paper-described evaluation tasks, response pairs, or rubric-conditioned examples.
+  trace_author: Paper authors, released dataset contributors, or evaluated models as stated by the primary source.
+  answer_format: Candidate response plus a rubric, preference, score, or judge/verifier outcome.
+  process_fields:
+  - prompt or task
+  - candidate response(s)
+  - rubric or context
+  - human/model judgment
+  - evaluation split or audit condition
+  environment_or_substrate: Official public artifact when linked; otherwise the official publication record.
+  verifier_or_reward: Rubric-conditioned judge, reward model, or human-validated evaluation signal.
+  terminal_predicate: The paper-defined judgment, preference, score, or diagnostic result.
+recipe_metadata:
+  base_model: See official source for evaluated model families.
+  teacher: Human annotations, expert rubrics, or an explicitly disclosed model judge.
+  generator: Official data-construction or evaluation pipeline.
+  filtering_rule: Use the paper-defined quality controls and preserve disagreement information where released.
+  sampling_protocol: Paper-specific; verify the official artifact before replication.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Official artifact when available.
+audit:
+  source_mixture: Official primary publication plus a linked public artifact when identified.
+  split: Use only the official split and version; do not treat search snippets as data provenance.
+  decontamination: Track 07 focus is judgment and rubric reliability; evaluate context, position, format, and model bias before
+    reuse.
+  license: Verify the artifact license before redistribution or training use.
+  lineage: Official source -> disclosed data/judgment procedure -> evaluation result.
+  known_failure_modes:
+  - LLM judges can be sensitive to style, ordering, prompt format, or model identity.
+  - Human or expert labels may be expensive and may not transfer across domains.
+  - A high agreement score does not establish causal reliability under distribution shift.
+  citation_status: verified
+  confidence: medium
+  notes: Primary source is pinned. An absent code/data URL is left null rather than inferred.
+inclusion_reason: 'Track 07 addition: the central contribution creates, calibrates, or audits rubric-, expert-, or LLM-judgment
+  data.'
+related: []
+tags:
+- track07
+- judgment-rubric
+- 2025-2026
+status: verified
+card: null
+needs:
+- Pin an official public data/code release before downstream reuse.
+one_line_summary: A rubric-based calibration approach that aligns one-call LLM judgments to a small human-labeled set.
+why_it_matters: It provides an auditable judgment-required feedback surface for post-training reasoning data and evaluation.
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19T12:58:49Z'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary link checked during Track 07 intake.
+curation_level: L5_review_ready
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,25 @@
+{
+  "title": "LiveBench: A Challenging, Contamination-Limited LLM Benchmark",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2406.19314",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "reason_to_include": "benchmark refresh来对抗contamination",
+  "decision_reason": "benchmark refresh来对抗contamination",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T11:04:12Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "benchmark refresh来对抗contamination",
+    "updated_at": "2026-07-11T11:04:12Z"
+  }
+}

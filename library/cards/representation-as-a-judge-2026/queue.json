@@ -1,0 +1,17 @@
+{
+  "title": "Rethinking LLM-as-a-Judge: Representation-as-a-Judge with Small Language Models via Semantic Capacity Asymmetry",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.22588",
+    "data": "https://github.com/zhuochunli/Representation-as-a-judge"
+  },
+  "review_note": "已完整精读：INSPECTOR 以小模型隐藏表示拟合强 judge 分数，并用于推理数据过滤。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ICLR 2026 正式论文，公开可复现代码与分类器，提供低成本 judge 的明确审计边界。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

@@ -1,0 +1,5 @@
+- Anchor every claim to arXiv:2606.13608v2 (2026-06-14). The differently titled ICML Position Paper is related official material, not a verified venue record for this title.
+- Keep the object concrete: delegator request and role/endpoint configuration -> judge task/data/environment -> A2A/MCP interaction -> response/artifact/final state -> metric, score, and assessment-specific JSON report.
+- Read the 298-judge/467-subject field-study snapshot separately from the coding case over 731 SWE-Bench Pro, 89 Terminal-Bench 2.0, and 1,222 filtered DevEval tasks; neither is a released trajectory corpus.
+- Reproduction must reconcile the deprecated v1.2.6 SDK with the later paper and rolling tutorial/template/dashboard stack, then pin commits, images, benchmark snapshots, model/API settings, timeouts, outputs, and failure retention.
+- Reuse is evaluation/audit only: the manuscript is CC BY-NC-ND 4.0, repository and umbrella trace/result licensing is unclear, and benchmark scores do not certify data quality.

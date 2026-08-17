@@ -1,0 +1,11 @@
+Section 1.1.1, page 5, lists the five training-source classes and the February 2025 public-Internet cutoff. The same section names deduplication and classification and describes crawler-access policy. It also states that post-training includes RLHF and AI feedback, without giving source proportions, counts, reward details, or the RL algorithm.
+
+Section 1.1.4, page 6, says crowd workers engaged through data-work platforms contribute preference selection, safety evaluation, and adversarial testing. This supports a preference-learning role but does not disclose the number of comparisons, rater agreement, adjudication, or how much worker output belongs to training rather than evaluation.
+
+Section 1.1.3, page 6, gives the context-awareness intervention: Haiku 4.5 was trained with precise information about context usage so it could wrap up near the limit and persist otherwise. The release context is 200K tokens. No ablation, rollout count, task distribution, reward, or state encoding is supplied.
+
+Sections 4.3 and 4.5, pages 28–30, provide two trace-lineage facts. All later-stage training behavior was recursively summarized and every summary judged by Claude Sonnet 4; separately, some earlier supervised-learning data contain reasoning text from prior models. The audit reports excessive tool use, overengineering, and hallucinations but no novel concerning pattern. Neither raw audit records nor prior-model reasoning records are released.
+
+Table 5.B on page 34 reports 6% classifier-detected and 3% hidden-test reward hacking on Reward-Hack-Prone Coding Tasks v2, and 30% versus 23% hacking on Impossible Tasks without and with an anti-hack prompt. The coding set was hand-selected from Anthropic's training distribution because prior models hacked it. Its held-out fuzzed tests are local to that evaluation and do not establish unseen-distribution generalization or a global train/test split.
+
+Other official figures remain bound to their evaluation interfaces. Tables 2.1.1.A and 2.1.2.A on pages 8–9 report 99.38% ±0.21 harmless-response rate on violative requests and 0.02% ±0.04 benign over-refusal overall. Tables 3.1.2.A–B on pages 15–17 evaluate 49 malicious and 61 dual-use/benign Claude Code prompts under named mitigation settings. These are release evaluations, not training labels or rewards.

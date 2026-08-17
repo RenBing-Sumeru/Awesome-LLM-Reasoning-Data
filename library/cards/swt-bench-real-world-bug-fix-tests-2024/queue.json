@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:17:51Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "Issue复现测试生成 2025更新 论文引用145",
+    "updated_at": "2026-07-14T19:17:51Z"
+  }
+}

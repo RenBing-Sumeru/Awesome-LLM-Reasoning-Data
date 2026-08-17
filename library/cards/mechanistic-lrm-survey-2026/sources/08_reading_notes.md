@@ -1,0 +1,1 @@
+Read in two passes. First, make a table with claim, measurement, intervention, and failure condition for each primary study you care about. Second, choose one claim and ask whether the listed evidence would still distinguish competing explanations. The most productive outcome is a sharper experiment, not a memorized taxonomy.

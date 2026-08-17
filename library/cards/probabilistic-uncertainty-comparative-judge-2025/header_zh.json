@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用广义概率模型与重排序概率，减少成对 LLM judge 排名所需比较。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "比较式 LLM judge 的概率建模、主动比较与不确定性评测研究",
+  "best_for_ch": "需要以较少成对比较获得稳定候选排序并量化置信度的研究者。",
+  "confidence_ch": "高：UAI 2025 论文、作者和剑桥大学机构已核验；未确认公开代码或数据集。",
+  "authors_ch": "Yassir Fathullah、Mark J. F. Gales",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

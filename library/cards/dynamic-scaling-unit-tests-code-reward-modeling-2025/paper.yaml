@@ -1,0 +1,100 @@
+id: dynamic-scaling-unit-tests-code-reward-modeling-2025
+title: Dynamic Scaling of Unit Tests for Code Reward Modeling
+year: 2025
+venue: ACL 2025 (Long Papers)
+authors:
+- Zeyao Ma
+- Xiaokang Zhang
+- Jing Zhang
+- Jifan Yu
+- Sijia Luo
+- Jie Tang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.343/
+  arxiv: https://arxiv.org/abs/2501.01054
+  code: https://github.com/RUCKBReasoning/CodeRM
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: candidate solutions generated unit tests execution rewards and test budgets
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: test-derived reward
+  terminal_predicate: difficulty-adaptive number of tests and BoN selection
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: candidate solutions generated unit tests execution rewards and test budgets'
+  known_failure_modes:
+  - generated tests can introduce reward error
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://aclanthology.org/2025.acl-long.343/'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: candidate solutions generated unit
+  tests execution rewards and test budgets.'
+related: []
+tags:
+- track5
+- programmatic_code_formal
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- audit_failure_contamination_verifier_attacks
+one_line_summary: Dynamic Scaling of Unit Tests for Code Reward Modeling records candidate solutions generated unit tests
+  execution rewards and test budgets under test-derived reward.
+why_it_matters: It makes difficulty-adaptive number of tests and BoN selection and its audit boundary visible for reasoning-data
+  curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Bench Pro 以人工补全的长程工程需求和 Docker 化 F2P/P2P 测试评测补丁，但后续官方审计指出其中相当一部分任务存在质量问题。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长程软件工程 benchmark 与可执行补丁评测数据",
+  "best_for_ch": "需要长程软件工程任务、F2P/P2P 测试或 benchmark 审计案例的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiang Deng, Jeff Da, Edwin Pan, Yannis Yiming He, Charles Ide, Kanak Garg, Niklas Lauffer, Andrew Park, Nitin Pasari, Chetan Rane, Karmini Sampath, Maya Krishnan, Srivatsa Kundurthy, Sean Hendryx, Zifan Wang, Chen Bo Calvin Zhang, Noah Jacobson, Bing Liu, Brad Kenstler",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

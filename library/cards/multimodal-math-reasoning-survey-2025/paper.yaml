@@ -1,0 +1,107 @@
+id: multimodal-math-reasoning-survey-2025
+title: 'A Survey of Mathematical Reasoning in the Era of Multimodal Large Language Model: Benchmark, Method & Challenges'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Yibo Yan
+- Jiamin Su
+- Jianxiang He
+- Fangteng Fu
+- Xu Zheng
+- Yuanhuiyi Lyu
+- Kun Wang
+- Shen Wang
+- Qingsong Wen
+- Xuming Hu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- mathematical-reasoning
+- multimodal-reasoning
+- benchmarks
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.614/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.614
+  venue: https://aclanthology.org/2025.findings-acl.614/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.614/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed multimodal mathematical reasoning studies, methods, and benchmarks.
+  trace_author: The surveyed primary works; the survey does not release a new trace collection.
+  answer_format: A three-dimensional synthesis of benchmarks, methodologies, and challenges.
+  process_fields:
+  - multimodal input
+  - mathematical task
+  - benchmark
+  - method
+  - challenge
+  environment_or_substrate: Mathematical reasoning with multimodal large language models.
+  verifier_or_reward: The survey examines benchmark evaluations and does not introduce one shared verifier.
+  terminal_predicate: Benchmark-specific mathematical answer correctness; no universal predicate is supplied.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed works use varied data and supervision sources.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract classifies the field by benchmarks, methodologies, and challenges.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes literature rather than a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.614/'
+  known_failure_modes:
+  - Multimodal inputs can introduce perception and grounding errors before mathematical reasoning.
+  - Underlying benchmarks and models are heterogeneous.
+  - Reported challenges may depend on task and modality.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract describes a review of over 200 studies published since 2021.
+inclusion_reason: A peer-reviewed survey organizing multimodal mathematical reasoning around benchmarks, methods, and open
+  challenges.
+related: []
+tags:
+- foundations-and-primers
+- mathematical-reasoning
+- multimodal-reasoning
+- acl-2025
+- survey
+why_it_matters: It separates failures in multimodal mathematical reasoning into evaluation, methodology, and challenge dimensions.
+one_line_summary: A Findings ACL 2025 survey of multimodal mathematical reasoning benchmarks, methods, and challenges.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers designing or evaluating mathematical reasoning tasks that contain more than plain text.
+confidence: high
+status: verified
+needs:
+- 'unknown: directly comparable experimental conditions across multimodal mathematical reasoning benchmarks'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

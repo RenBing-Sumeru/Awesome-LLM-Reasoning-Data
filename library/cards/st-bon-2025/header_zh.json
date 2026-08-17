@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ST-BoN 在 Best-of-N 的早期解码阶段用内部状态的一致性估计潜在优质路径，提前截断较差候选而不训练显式奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yiming Wang；Pei Zhang；Siyuan Huang；Baosong Yang；Zhuosheng Zhang；Fei Huang；Rui Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

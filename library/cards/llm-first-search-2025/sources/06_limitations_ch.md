@@ -1,0 +1,1 @@
+LLM 既决定是否回溯，又为 frontier 评分；一旦其判断失准，两类错误会相关联。LFS 假设转移确定、合法动作可枚举且历史状态可恢复，而真实环境可能不可逆、部分可观测或带噪声。评估仅覆盖两个托管模型、两类谜题和每游戏五次运行，并未固定 API snapshot 或给出完整的实测条目清单。Temperature 0.0 不能保证托管模型完全确定。论文称 o3-mini 使用 low reasoning effort，但固定仓库中 Countdown agent 使用 low，Sudoku agent 使用 medium。仓库代码采用 Apache-2.0，而任务数据来源、输入权利和模型输出权利仍未解决。论文的原始结果树或 pickle 未发布，因此无法审计价值校准、被拒分支、重试和完整轨迹覆盖情况。

@@ -1,0 +1,14 @@
+{
+  "institutions": [],
+  "has_more": false,
+  "no_institution": true,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.15754",
+    "https://arxiv.org/e-print/2407.15754",
+    "https://longvideobench.github.io/",
+    "https://github.com/longvideobench/LongVideoBench",
+    "https://huggingface.co/datasets/longvideobench/LongVideoBench"
+  ],
+  "verification_note": "Official project page verifies NeurIPS 2024 Datasets and Benchmarks status and artifacts; checked official arXiv source and project page list authors but do not disclose author affiliations."
+}

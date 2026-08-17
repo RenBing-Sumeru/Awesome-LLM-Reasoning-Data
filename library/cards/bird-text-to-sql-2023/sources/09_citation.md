@@ -1,0 +1,1 @@
+Jinyang Li et al. "Can LLM Already Serve as A Database Interface? A BIg Bench for Large-Scale Database Grounded Text-to-SQLs." arXiv:2305.03111, 2023; NeurIPS 2023. Paper: https://arxiv.org/abs/2305.03111. Official project/code: https://bird-bench.github.io/ and https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/bird.

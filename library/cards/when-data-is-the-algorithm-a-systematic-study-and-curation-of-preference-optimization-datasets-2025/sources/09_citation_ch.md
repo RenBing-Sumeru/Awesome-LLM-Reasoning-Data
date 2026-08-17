@@ -1,0 +1,1 @@
+Djuhera 等（2025），《When Data is the Algorithm: A Systematic Study and Curation of Preference Optimization Datasets》，arXiv:2511.10985。原文：https://arxiv.org/abs/2511.10985。作者发布的标注、元数据和 UltraMix 是行级策展来源的权威工件；复现 30% 规模比较时应引用其版本。

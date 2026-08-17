@@ -1,0 +1,5 @@
+对 Data Construction and Open Release Recipes track 而言，SPIRAL 是用 environment-generated online curriculum 替代固定 prompt corpus 的具体蓝图。复现者可以借鉴 shared-policy 双角色循环、每个游戏/角色单独的 EMA baseline、vectorized actor collection、终局规则反馈以及周期性 game-state dump。它尤其适合作为以下消融的 baseline：静态 demonstration 与 online RL、固定与共同演化的 opponent、global 与 role-conditioned baseline、single-game 与 multi-game curriculum。
+
+可审计实现应保存游戏与依赖版本、初始状态与 seed、role prompt、每条 observation 与完整 response、parsed action、action-validity flag、transition、termination reason、terminal return、baseline、advantage、policy checkpoint 与 update configuration；还应保留 failed、invalid、zero-advantage 与 truncated episode，运行多个随机种子，评估 parser/environment exploitation，并把 reasoning faithfulness 与 win rate、benchmark accuracy 分开测试。
+
+Artifact 的复用等级需要拆分。代码在固定 commit 与依赖后可作为 recipe reproduction 起点。论文实验的在线 stream 因未冻结，只适合作为 reading/audit reference。静态 Qwen3-32B SFT 对比数据集在其 Dataset Viewer schema、split、lineage 与 license 被独立确认前，训练复用应视为 blocked。公开模型也只能在逐一核对 model card 与 license 后作为评测或初始化候选。

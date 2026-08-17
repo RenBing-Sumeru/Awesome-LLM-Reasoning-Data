@@ -1,0 +1,26 @@
+{
+  "institutions": [
+    "Shanghai AI Laboratory",
+    "Shanghai Jiao Tong University",
+    "Xiamen University",
+    "University of Science and Technology of China",
+    "Hong Kong University of Science and Technology",
+    "Harbin Institute of Technology",
+    "Tsinghua University",
+    "Nanjing University",
+    "Fudan University",
+    "The University of Hong Kong",
+    "Donghua University",
+    "The Chinese University of Hong Kong"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2507.19478",
+    "https://arxiv.org/html/2507.19478",
+    "https://github.com/open-compass/MMBench-GUI",
+    "https://huggingface.co/datasets/OpenGVLab/MMBench-GUI"
+  ],
+  "verification_note": "arXiv, GitHub, and HF verify title, authors, institutions, and public artifact entries; HF schema/runtime details still need audit."
+}

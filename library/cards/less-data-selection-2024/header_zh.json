@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LESS 公开梯度影响分数与面向具体任务筛选的指令子集。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "从大型指令池构建小规模任务专属微调子集",
+  "confidence_ch": "高",
+  "authors_ch": "Mengzhou Xia, Sadhika Malladi, Suchin Gururangan, Sanjeev Arora, Danqi Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

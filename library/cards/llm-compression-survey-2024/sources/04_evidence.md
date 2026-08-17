@@ -1,0 +1,1 @@
+The official abstract identifies quantization, pruning, and knowledge distillation as the covered method families, and explicitly includes benchmarks and metrics as necessary assessment tools. The paper is a survey, so it should be read as a map of reported results rather than a claim that one method wins everywhere.

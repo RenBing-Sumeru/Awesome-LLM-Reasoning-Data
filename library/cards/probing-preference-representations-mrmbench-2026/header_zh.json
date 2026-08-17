@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MRMBench 从正确性、帮助性、连贯性等六维剖析偏好表示，提供约 16.7 万实例以诊断奖励模型的真实偏好能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多维奖励模型基准与表征分析方法",
+  "best_for_ch": "需要分析奖励模型偏好维度、可解释性或多目标奖励建模的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Chenglong Wang、Yifu Huo、Yang Gan、Yongyu Mu、Qiaozhi He、Murun Yang、Bei Li、Chunliang Zhang、Tongran Liu、Anxiang Ma、Zhengtao Yu、Jingbo Zhu、Tong Xiao",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

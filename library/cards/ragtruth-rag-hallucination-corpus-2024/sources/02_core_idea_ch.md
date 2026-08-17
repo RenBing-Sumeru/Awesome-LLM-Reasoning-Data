@@ -1,0 +1,1 @@
+RAGTruth 基于 2,965 个 source instance 收集 17,790 份回答，其中 7,664 份含幻觉，共标出 14,289 个 hallucination span。任务覆盖 CNN/DailyMail 摘要、近期新闻摘要、问答和 data-to-text；记录保留 source、模型、temperature、回答、span 起止位置、类型、质量与 split。数据以 MIT 许可开放。

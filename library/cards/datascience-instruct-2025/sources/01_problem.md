@@ -1,0 +1,5 @@
+Most data-science assistants are trained on isolated code snippets or question answering and therefore do not learn the long workflow from raw files to an auditable analyst report.
+
+DeepAnalyze synthesizes complete multi-turn analyst trajectories and packages 500K instruction records that interleave planning, code execution, observations, and final reporting. The decision boundary is whether a serialized training record survives sandbox execution, artifact inspection, and task-level evaluation metadata; the central artifact is data consumed by agentic SFT for autonomous data analysis, not a model-only release.
+
+L4 facts: primary source arXiv:2510.16872; arXiv preprint; data object DataScience-Instruct-500K with 500K tool-using data-science instruction trajectories; evaluation surface The paper evaluates an 8B end-to-end agent trained on the 500K trajectories and reports stronger autonomous analysis than prior workflow and general-agent baselines across its data-science task suite.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

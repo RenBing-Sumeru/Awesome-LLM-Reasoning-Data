@@ -1,0 +1,239 @@
+id: thinkbooster-2026
+title: 'ThinkBooster: A Unified Framework for Seamless Test-Time Scaling of LLM Reasoning'
+year: 2026
+venue: ACL 2026 System Demonstrations
+authors:
+- Vladislav Smirnov
+- Quang-Chieu Nguyen
+- Sergey Senichev
+- Minh Ngoc Ta
+- Ekaterina Fadeeva
+- Artem Vazhentsev
+- Daria Galimzianova
+- Nikolai Rozanov
+- Viktor Mazanov
+- Jingwei Ni
+- Tianyi Wu
+- Igor Kiselev
+- Mrinmaya Sachan
+- Iryna Gurevych
+- Preslav Nakov
+- Timothy Baldwin
+- Artem Shelmanov
+source_role:
+- infrastructure
+- scaling_study
+- benchmark
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- full_episode
+- scalar_reward
+- process_reward
+domains:
+- mathematical-reasoning
+- scientific-question-answering
+- code-generation
+- cuda-kernel-generation
+- test-time-compute
+- reasoning-search
+training_use:
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-demo.70/
+  arxiv: https://arxiv.org/abs/2606.06915
+  code: https://github.com/IINemo/thinkbooster
+  data: https://huggingface.co/test-time-compute
+  project: http://thinkbooster.nlpresearch.group
+  huggingface: https://huggingface.co/test-time-compute
+  doi: https://doi.org/10.18653/v1/2026.acl-demo.70
+  venue: https://aclanthology.org/2026.acl-demo.70/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-demo.70/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-demo.70.bib
+data_object:
+  prompt_source: 'Nine evaluation surfaces: MATH-500, OlympiadBench, GaoKao23EN, AIME 2024, AIME 2025, GPQA-Diamond, HumanEval+,
+    MBPP+, and KernelBench. Formatted benchmark mirrors or adapters are exposed through the official test-time-compute Hugging
+    Face organization.'
+  trace_author: Qwen2.5-Math-7B-Instruct, Qwen3-8B, and GPT-OSS-120B generate the paper trajectories. The tracked debugger
+    cache separately contains Claude Sonnet 4 generations made through OpenRouter.
+  answer_format: Full natural-language reasoning plus boxed mathematical or multiple-choice answers, Python function solutions,
+    or CUDA kernel code, depending on the benchmark.
+  process_fields:
+  - prompt and optional gold answer
+  - complete sampled trajectories
+  - post-hoc reasoning steps
+  - candidate texts and tree nodes
+  - selected, kept, and pruned status
+  - PRM, uncertainty, confidence, critic, or probe scores
+  - scorer direction and aggregation
+  - selected trajectory and extracted answer
+  - completion reason and selected index when available
+  - generation, strategy, and scorer config snapshot
+  - input, output, and total token counts
+  - theoretical generator and PRM TFLOPs
+  - wall-clock latency
+  environment_or_substrate: A modular inference substrate combining local Hugging Face/vLLM or OpenAI-compatible hosted endpoints
+    with offline sampling, online stepwise search, prefill continuation, scorer calls, benchmark graders, an endpoint gateway,
+    and a visual debugger.
+  verifier_or_reward: Candidate selection supports Qwen2.5-Math-PRM-7B process rewards, entropy/perplexity/sequence-probability/probability-differential
+    confidence signals, LLM-as-a-critic value or vote judgments, and reported ReProbe internal-state scores. Final evaluation
+    uses exact match, optional LLM judgment, EvalPlus tests, or KernelBench syntax, compilation, and numerical correctness.
+  terminal_predicate: A run terminates when a strategy reaches its answer or completion detector, or its configured reasoning-step
+    or continuation budget. Evaluation success is dataset-specific gold-answer equality, passing code tests, or a valid and
+    correct CUDA kernel.
+recipe_metadata:
+  base_model: Paper experiments use Qwen2.5-Math-7B-Instruct, Qwen3-8B, and GPT-OSS-120B. The toolkit also accepts other local
+    or OpenAI-compatible models, so users must record the actual provider and model snapshot.
+  teacher: No teacher model or training-data distillation is used in the paper. LLM critics are runtime selectors or judges,
+    not teachers.
+  generator: 'Nine test-time-compute strategies are implemented: Best-of-N, majority voting/self-consistency, beam search/ToT,
+    extended thinking, MUR/dynamic exploration, DeepConf online, DeepConf offline, phi-decoding, and uncertainty CoT.'
+  filtering_rule: Offline methods rerank complete candidates or vote over extracted answers. Online methods select or prune
+    candidates after steps using scorer aggregation and optional sliding windows. Benchmark evaluation applies exact match,
+    optional LLM judgment, EvalPlus, or KernelBench checks.
+  sampling_protocol: Qwen2.5-Math-7B uses temperature 0.7, top-p 0.8, top-k 20, and at most 4,096 tokens. Qwen3-8B uses 0.6,
+    0.95, 20, and at most 32,768 tokens. GPT-OSS-120B uses 0.6, 0.95, 20, and at most 65,536 tokens. Results are averaged
+    over three seeds where applicable.
+  rollout_count: Qwen2.5 beam search uses width 5, 8 candidates, and 30 steps. Qwen3 beam search uses width 3, 5 candidates,
+    and 250 steps. Offline Best-of-N and self-consistency use 8 trajectories. MUR uses 8 candidates per step, momentum 0.9,
+    and 50 Qwen2.5 or 250 Qwen3 steps. Qwen3 extended thinking permits at most 3 continuations.
+  temperature: Qwen2.5-Math-7B uses 0.7; Qwen3-8B and GPT-OSS-120B use 0.6. The current LLM-critic config separately defaults
+    to 0.7 for three judgment samples.
+  inference_budget: The paper budget is strategy- and model-specific, with maximum generation lengths of 4,096, 32,768, or
+    65,536 tokens. Theoretical compute is reported as generator plus PRM TFLOPs; wall-clock is logged but not compared under
+    a fixed serving setup.
+  optimizer_or_scaffold: Hydra-composed experiment configs drive vLLM, Hugging Face, or API generators, strategy classes,
+    scorers, evaluators, local outputs, optional W&B logging, crash-resistant resume, an OpenAI-compatible gateway, and the
+    visual debugger. No policy optimizer or post-training loop is part of the paper.
+audit:
+  source_mixture: The paper evaluates five math benchmarks, one graduate science QA benchmark, two Python code benchmarks,
+    and one CUDA-kernel benchmark. The official Hugging Face organization now has 13 public dataset repositories, so the live
+    release surface is broader and mutable relative to the nine paper tasks.
+  split: 'The paper evaluates test surfaces only: 500 MATH-500, 675 OlympiadBench, 385 GaoKao23EN, 30 AIME 2024, 30 AIME 2025,
+    198 GPQA-Diamond, 164 HumanEval+, 378 MBPP+, and 100 KernelBench examples. No train/dev split or paper-run rollout dataset
+    is released.'
+  decontamination: unknown
+  license: ACL materials published after 2016 are CC BY 4.0 and the toolkit repository is MIT. The checked Hugging Face dataset
+    cards do not expose a dataset-specific license. Separate reuse rights for upstream benchmark mirrors, Claude-generated
+    debugger examples, and unreleased paper-run model outputs are unknown.
+  lineage: Benchmark prompt or custom request -> model/provider generation -> one of nine offline or online test-time strategies
+    -> optional post-hoc step extraction -> PRM, uncertainty/confidence, LLM-critic, or ReProbe-style scoring -> aggregation/window
+    or majority vote -> selected trajectory and final answer -> dataset-specific grader -> performance, token, TFLOP, and
+    latency records -> optional debugger event and tree representation.
+  known_failure_modes:
+  - The public repository does not persist the historical paper-run prompt/candidate/scorer corpus, selected-index manifest,
+    resolved Hydra snapshots, W&B exports, or scored rejected paths; output, log, W&B, JSONL, CSV, and parquet artifacts are
+    ignored.
+  - The only tracked generated trace corpus is an 861,328-byte debugger cache with two Claude Sonnet 4 math prompts at budget
+    8 and five strategy runs each. It is not the paper evaluation corpus.
+  - The paper and README claim ReProbe support, but the audited commit has no dedicated ReProbe implementation or config reference
+    beyond README mentions, leaving the Appendix C ReProbe path unresolved.
+  - A math-trained Qwen2.5 PRM is used as a proxy for coding because no coding PRM is released; domain shift can make the
+    selector prefer fluent but incorrect code trajectories.
+  - Uncertainty and internal-state scorers require logprobs or hidden states, and online strategies may require prefill. Closed
+    APIs expose only a subset and can change capabilities.
+  - Native unstructured reasoning is segmented by heuristic markers after generation, so boundary errors can distort step
+    scores, pruning, and visual interpretation.
+  - Beam search can cost substantially more compute yet underperform Best-of-N or self-consistency. Unnormalized comparisons
+    can attribute gains to strategy rather than budget.
+  - Scorer aggregation and window combinations are grid-searched independently, but no immutable per-result config hash maps
+    every table or figure point to a public run.
+  - TFLOPs are theoretical and treat uncertainty overhead as negligible. They omit batching, KV-cache reuse, hardware, provider
+    latency, and other systems effects.
+  - No benchmark decontamination, model-training overlap audit, or duplicate-prompt procedure is reported.
+  - PyPI exposes version 0.1.1 while pyproject.toml at the audited commit says 0.1.0; no immutable paper release tag is identified.
+  - Optional dependencies are cloned or pulled from moving branches or unpinned Git repositories, so LM-Polygraph, uncertainty
+    heads, speculators, KernelAct, and hosted-provider behavior can drift.
+  - Official project, demo, and video URLs are mutable redirects; the debugger currently lands on a Runpod proxy rather than
+    an archival release.
+  - Root MIT licensing does not resolve upstream licenses or provider output terms for every benchmark mirror and generated
+    reasoning trace.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL and arXiv citation surfaces, the complete paper and appendix, repository commit 561489b1e037722b4210189d9ab09a75a9fc8159,
+    MIT license, PyPI page, Hugging Face organization and representative dataset cards, experiment configs, evaluator, scorer
+    and strategy code, API schema, and tracked debugger cache were checked. Citation, code, benchmark surfaces, trace schema,
+    and budgets are verified; historical paper-run trace and output completeness is partial.
+inclusion_reason: ThinkBooster makes runtime test-time reasoning data unusually concrete by unifying nine search and sampling
+  strategies, four scorer families, explicit model, candidate, and token budgets, mixed graders, config snapshots, and an
+  inspectable step, candidate, and tree debugger, while its missing paper-run corpus exposes the difference between a trace-generating
+  toolkit and a reusable trace release.
+related:
+- s1-simple-test-time-scaling-2025
+- bon-coverage-optimality-2025
+- scaling-flaws-verifier-guided-search-2025
+tags:
+- test-time-compute
+- reasoning-search
+- best-of-n
+- self-consistency
+- beam-search
+- extended-thinking
+- mur
+- deepconf
+- phi-decoding
+- uncertainty-cot
+- process-reward-model
+- uncertainty-scoring
+- llm-critic
+- reprobe
+- visual-debugger
+- candidate-traces
+- selection-logs
+- compute-accounting
+- openai-compatible-api
+- vllm
+- infrastructure
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: ThinkBooster is an MIT-licensed toolkit and ACL 2026 demo that generates and inspects prompt, candidate,
+  step-score, selection, token, TFLOP, latency, and config traces for nine test-time reasoning strategies, but does not release
+  the historical paper-run trace corpus.
+why_it_matters: It provides a common runtime data contract for comparing sampled trajectories, search trees, PRM, confidence,
+  and critic selectors, and exact inference budgets, while making release completeness, scorer domain shift, step segmentation,
+  systems accounting, API drift, and generated-output provenance auditable.
+card: null
+card_recommendation: High-priority core-only bilingual L4 Card centered on the runtime trace contract across all nine strategies,
+  exact paper budgets and graders, the two-example persisted debugger cache, the absence of paper-run prompts, candidates,
+  scorer logs, and config hashes, the unresolved ReProbe implementation path, and license, API, and dependency drift. ThinkBooster
+  must not be described as an open paper-run reasoning-trace dataset.
+needs:
+- needs_paper_run_trace_corpus
+- needs_scored_candidate_and_rejected_path_manifest
+- needs_resolved_config_and_environment_snapshots
+- needs_wandb_or_result_exports
+- needs_reprobe_implementation_mapping
+- needs_dataset_license_ledger
+- needs_generated_output_license
+- needs_provider_and_model_snapshot_pins
+- needs_dependency_lock
+- needs_decontamination
+- needs_fixed_serving_wall_clock_study
+- needs_immutable_release_tag
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, arXiv-ID, ACL-ID, DOI, and official-URL searches found no duplicate in the V2 target. The
+    toolkit, package, Hugging Face surfaces, full paper and appendix, repository configs, code, and cache, and live official
+    redirects were verified. A core V2 Card is materialized by this bundle; Review state remains new.

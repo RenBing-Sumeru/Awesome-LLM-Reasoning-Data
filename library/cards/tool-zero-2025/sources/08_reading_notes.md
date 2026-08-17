@@ -1,0 +1,6 @@
+- Read “pure RL” as “no SFT checkpoint,” not “no labels”: ground-truth function calls and reference ASTs drive the reward.
+- Separate the broad Thought/Action/Observation trajectory formalism from the actual offline completion-level training pipeline; no Tool-Zero live environment was released.
+- Remember the GG-GRPO transition: partial token overlap early, exact AST equality late, one scalar reward per completion, and no step labels.
+- Pin the canonical ACL appendix at eight rollouts; the earlier OpenReview version says four.
+- Audit the release gap before reuse: public ToolACE has 11,300 rows, while Table 2 reports 99,266 retained ToolACE records.
+- Treat MindSpeed-RL as generic supporting infrastructure and benchmark gains as model evidence, not as released GG-GRPO code or proof of data quality.

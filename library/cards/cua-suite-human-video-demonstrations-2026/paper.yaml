@@ -1,0 +1,114 @@
+id: cua-suite-human-video-demonstrations-2026
+title: 'CUA-Suite: Massive Human-annotated Video Demonstrations for Computer-Use Agents'
+year: 2026
+venue: 'ICLR 2026 Workshop on Lifelong Agents: Learning, Aligning, Evolving'
+authors:
+- Xiangru Jian
+- Shravan Nayak
+- Kevin Qinghong Lin
+- Aarash Feizi
+- Kaixin Li
+- Patrice Bechard
+- Spandana Gella
+- Sai Rajeswar
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- computer-use-agents
+- gui-trajectories
+- video-based-reward-modeling
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=IgTUGrZfMr
+  arxiv: https://arxiv.org/abs/2603.24440
+  code: https://github.com/ServiceNow/GroundCUA/tree/main/VideoCUA
+  project: https://cua-suite.github.io/
+  data: https://huggingface.co/datasets/ServiceNow/VideoCUA
+  huggingface: https://huggingface.co/datasets/ServiceNow/VideoCUA
+  venue: https://openreview.net/forum?id=IgTUGrZfMr
+  doi: null
+  openreview: https://openreview.net/forum?id=IgTUGrZfMr
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert desktop tasks across 87 professional applications.
+  trace_author: Human demonstrators whose continuous desktop videos, cursor traces, and interaction logs are densely annotated.
+  answer_format: Task instruction, continuous 30 fps video, timestamped action log, and linked UI-grounding identifiers.
+  process_fields:
+  - task_id
+  - task_instruction
+  - platform
+  - action_log
+  - timestamp
+  - action_type
+  - action_params
+  - groundcua_id
+  environment_or_substrate: Desktop computer-use workflows across professional applications.
+  verifier_or_reward: Expert-verified demonstrations and dense step-level annotations support trajectory synthesis and reward
+    modeling.
+  terminal_predicate: Completion of the recorded human desktop task.
+recipe_metadata:
+  base_model: The provided synthesis pipeline can add LLM observation, thought, action, and reflection annotations.
+  teacher: Human expert video demonstrations and annotations.
+  generator: VideoCUA conversion extracts frames at action timestamps; an optional LLM pipeline generates CoT annotations.
+  filtering_rule: Expert verification and dense UI annotation precede release; optional CoT generation is a separate derived
+    artifact.
+  sampling_protocol: Download VideoCUA, convert to trace JSONL, then optionally run the released CoT pipeline.
+  inference_budget: CoT generation model, thread count, and filtering options are set by the repository pipeline.
+  optimizer_or_scaffold: Trajectory conversion and optional CoT synthesis for imitation learning, offline RL, or reward modeling.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Human desktop videos, timestamped mouse and keyboard actions, task metadata, and linked UI-grounding annotations.
+  split: VideoCUA has about 10,000 tasks, 55 hours of 30 fps video, and 6M frames across 87 applications.
+  decontamination: Keep task-level videos and trajectories separate between agent training and evaluation; respect application-data
+    and privacy constraints.
+  license: MIT on the official VideoCUA Hugging Face dataset page.
+  lineage: ICLR 2026 workshop paper, CUA-Suite project, ServiceNow VideoCUA dataset, and official conversion/synthesis repository.
+  known_failure_modes:
+  - Video demonstrations do not directly encode all user intent
+  - Optional CoT labels are model-generated rather than human-authored
+  - Coverage is limited to the released applications and desktop settings
+  citation_status: verified
+  confidence: high
+  notes: Verified ICLR 2026 workshop publication, author-affiliation block on the official project page, VideoCUA data card,
+    and the official ServiceNow conversion pipeline.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: CUA-Suite releases about 10,000 expert desktop videos with timestamped actions and dense UI links, preserving
+  full interaction trajectories for computer-use training and process evaluation.
+why_it_matters: It preserves temporal interaction evidence that sparse screenshots and final clicks discard.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified ICLR 2026 workshop publication, author-affiliation block on the official project page, VideoCUA data card,
+    and the official ServiceNow conversion pipeline.
+category_ids:
+- process_trace_supervision_data

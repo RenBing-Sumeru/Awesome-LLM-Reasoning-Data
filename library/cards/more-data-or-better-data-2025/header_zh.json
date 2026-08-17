@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "在固定 80% 基线与 20% 候选混合中比较数学数据配方，教育化重构和 QwQ 蒸馏仅改善部分数学指标，且存在跨任务回退、代码与构造语料未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学推理数据选择与合成比较研究",
+  "best_for_ch": "关注数学推理数据配方、受控比较和开放发布审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Yike Zhao、Simin Guo、Ziqing Yang、Shifan Han、Dahua Lin、Fei Tan",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T09:42:00Z"
+}

@@ -1,0 +1,6 @@
+The release outlines two feedback stages. Reasoning RL uses problems in four broad domains with what Tencent calls ground-truth real feedback. The release does not define that phrase operationally: it could involve exact answers, symbolic checks, tests, or another mechanism, so the verifier type and terminal predicate remain unknown. A curriculum reportedly raises problem difficulty while context length is expanded in stages.
+
+For longer-run optimization, Tencent reports data replay and periodic policy resetting. Preference alignment then uses a unified reward system combining self-rewarding—an early T1-preview version evaluates and scores model outputs—with an unnamed reward model. This supports a mixed-feedback classification at answer/scalar-reward level, but not a claim of an open or fully programmatic RLVR pipeline.
+
+The key data object is consequently only partially specified: problem prompts and generated outputs must participate in training, but their schema, reasoning-trace retention, references, reward fields, accepted/rejected states, and linkage across stages are undisclosed. The Card records the released mechanism names without filling those missing records by inference.
+

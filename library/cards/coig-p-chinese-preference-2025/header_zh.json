@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "COIG-P 发布覆盖六类任务的中文 chosen/rejected 对，通过多模型生成与评审提供百万级偏好优化资源。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集论文",
+  "best_for_ch": "偏好学习、奖励建模与反馈审计研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Siwei Wu、Jincheng Ren、Xinrun Du、Shuyue Guo、Xingwei Qu、Yiming Liang、Jie Liu、Yunwen Li、Tyler Loakman、Tianyu Zheng、Boyu Feng、Huaqing Yuan、Zenith Wang、Jiaheng Liu、Wenhao Huang、Chenglin Cai、Haoran Que、Jian Yang、Yuelin Bai、Zekun Moore Wang、Zhouliang Yu、Qunshu Lin、Ding Pan、Yuchen Jiang、Tiannan Wang、Wangchunshu Zhou、Shenzhi Wang、Xingyuan Bu、Minghao Liu、Guoyin Wang、Ge Zhang、Chenghua Lin",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T11:16:58Z"
+}

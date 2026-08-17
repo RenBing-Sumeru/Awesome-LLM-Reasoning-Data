@@ -1,0 +1,1 @@
+The important ablation is adaptation: without fine-tuning the signal collapses. Gamma .001--1 is stable, gamma 10 weak, late layers strongest, and one epoch SGD best. Preserve the five independently sampled subsets and do not read the controlled seen/unseen construction as an estimate of real-web contamination prevalence.

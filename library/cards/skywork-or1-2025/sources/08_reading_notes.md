@@ -1,0 +1,3 @@
+- Confirm official artifact URLs.
+- Do not infer an entropy remedy.
+- Separate scores from release verification.

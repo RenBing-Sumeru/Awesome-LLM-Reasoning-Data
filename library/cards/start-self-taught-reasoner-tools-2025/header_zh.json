@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "START 通过在长推理中插入多类 hint、调用 Python，并筛选由错转对的工具轨迹，先构造 10K D_seed 再扩展到报告的 40K D_START；其构造思路可供研究，但数据、checker、环境、模型和代码均未发布，且来源计数存在内部矛盾。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "工具推理轨迹构造 recipe 与模型研究",
+  "best_for_ch": "研究 tool-integrated reasoning、自训练轨迹筛选、Python 环境反馈或审计未发布数据 recipe 的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Chengpeng Li、Mingfeng Xue、Zhenru Zhang、Jiaxi Yang、Beichen Zhang、Bowen Yu、Binyuan Hui、Junyang Lin、Xiang Wang、Dayiheng Liu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

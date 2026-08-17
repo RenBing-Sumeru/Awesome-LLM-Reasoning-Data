@@ -1,0 +1,4 @@
+This Card treats Grok 4 as a **partial disclosure ledger**. The model card states that pretraining includes publicly available Internet data, data produced by third parties for xAI, data from users or contractors, and internally generated data. It further states that the recipe uses de-duplication and classification before training, then supervised fine-tuning of specific capabilities and reinforcement-learning techniques involving human feedback, verifiable rewards, and model grading (model card, §3.1).
+
+The data object is consequently a report-level description of closed training and evaluation pipelines, not a released corpus. Its only concrete evaluation-record shape is a refusal evaluation: harmful queries, model responses, and a separate model's judgment of whether a response correctly refused. The reward, verifier, and record contracts used in actual post-training remain unknown.
+

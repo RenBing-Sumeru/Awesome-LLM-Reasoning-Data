@@ -1,0 +1,3 @@
+论文给出两种获得长度方向的路径。若有 GSM8K 或 PRM800K 数学部分这类带推理标注的数据，可先将模型微调到较短链，形成 cold start。若没有显式解释，则使用基础模型与其对应推理模型之间的更新作为方向，例如 LLaMA-3.1-8B 与 DeepSeek-R1-Distill-Llama-8B，或 Qwen-32B-Instruct 与 QwQ-32B-Preview。改变该方向的系数，会为同一问题生成由短到长的多条解；CoT-Valve++ 在微调时加入归一化长度因子，CoT-Valve+P 则依次使用更短的解。
+
+官方 Hugging Face collection 发布了三个标注为 Apache-2.0 的数据集。MixChain-Z-GSM8K 包含 6,863 个问题，每条记录有五个解：原始答案、四个生成解、各自 token 数和提取的 target。MixChain-Z-PRM12K 包含 12,000 个数学问题，沿用五解结构，并为四个生成解提供正确性标记；其数据卡明确称数据未过滤并保留错误解。MixChain-C-LIMO 提供两个配置，分别有 474 和 564 条 question-solution 记录，报告的平均 CoT 长度为 2,994.7 和 4,890.6 tokens。公开数据卡同时提醒，生成解长度并不严格单调。未核实到官方训练代码或完整采样配置；用于每条发布记录的精确答案提取器、seed、参数系数、模型 checkpoint 与去污染流程仍为 unknown。

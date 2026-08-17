@@ -1,0 +1,10 @@
+- 论文时代 release 对版本高度敏感。`v0.1.3` 后来移除了默认 natural-language assertion check，`v0.2.1` 加入 Gym 与 train/test split，`v1.0.0` 将系统重构为 tau3，并记录大量 airline/retail 修复与新运行模式。当前 telecom `tasks.json` 包含全部 2,285 个任务，并用独立 `base=114` split 表示原样本；`v0.1.0` 则把 114 个抽样 task 直接放在 `tasks.json`。未固定版本的 task、score 或 replay 结论不可比较。
+- 论文 Table 1 报告 115 个 retail task，而 `v0.1.0` 只有 114 个。缺少或新增记录的来源为 unknown。benchmark 总数必须说明取自论文还是固定版本 release。
+- user simulation 可能因过早停止、遗漏约束、编造细节、错误 tool use 或违反 turn structure 造成 false failure。Table 2 记录 telecom 有 3/50 个 critical error 与 5/50 个 benign error，这与另一处“没有 critical error”的表述冲突。audit sample 较小，也没有校准所有 model/domain 配置的错误率。
+- 确定性 environment assertion 与 action gate 可能漏掉语义要求，或奖励 shortcut state change；natural-language assertion 则继承 judge variance 与 rubric bias。发布中没有独立 calibration set、对抗性 predicate suite、false-positive/false-negative 估计或 reward-hacking 研究。公开 task、policy、reference action 与 evaluator code 也允许 benchmark-specific 优化。
+- generator 所用 LLM 身份、prompt、sampling、拒绝数量与逐条 review history 均未披露，继承的 airline/retail task ancestry 也不完整。即使 telecom composition code 已发布，这些空白仍阻止重建 source mixture 与 selection process。
+- `v0.1.0` 没有 train/dev/test split manifest，也没有披露 prompt/model-pretraining overlap 或去污染协议。公开发布会带来未来污染风险；不能在不改变评测 artifact 的情况下，把后续 split 反向投射到论文。
+- 准确 replay 除本地 code 与 data 外，还依赖闭源 model API、LiteLLM/provider behavior、credential、serving revision 与 configuration。trial seed 不能固定外部 sampling implementation，因此即使使用论文时代 tag，也可能无法重现历史模型行为。
+- 已检查的 GPT-4.1 telecom-default 文件保留 156 个成功和 300 个失败 episode，但没有证据证明所有可能实验都完整。发布中不存在 trajectory-quality filter 或面向训练的 selection protocol，因此这些日志不应被称为整理后的 demonstration 或 preference data。
+- 仓库根目录采用 MIT，arXiv 论文采用 CC BY 4.0，但没有单独的数据/轨迹权利声明覆盖继承的 tau-bench 材料、生成的模型输出与全部 provider term。mock customer data 降低了直接隐私风险，但 simulator audit 的 annotator 招募、报酬、consent 与 agreement statistics 均为 unknown。
+- 论文只评测 agent，没有报告 SFT、preference optimization、reward-model training、process supervision 或 agent RL。后续 Gym/RL interface 不能反向支持这些用途。benchmark score 也不能证明训练数据质量、真实客户有效性，或对 telecom、airline、retail 之外场景的泛化。

@@ -1,0 +1,5 @@
+OpenMathInstruct-1 通过为每个 GSM8K/MATH 问题采样数百条代码解释器解答，并用掩码参考解暴露推导结构而不泄露中间数值和最终答案，把开放许可的 Mixtral 变成有竞争力的数学轨迹 teacher。执行与答案匹配选择 SFT target，按题 round-robin 的公平采样则防止拥有大量成功解的简单题主导训练；可复用对象是经检查的理由/代码轨迹，因此本工作属于指令、示范与理由数据，而非原始数学预训练或纯评测 benchmark。
+
+Google Scholar 引用数：169（查询于 2026-07-27；https://scholar.google.com/scholar_lookup?title=OpenMathInstruct-1%3A+A+1.8+Million+Math+Instruction+Tuning+Dataset&author=Shubham+Toshniwal&hl=en）
+
+开源数据：有。数据集名称：OpenMathInstruct-1。官方地址：https://huggingface.co/datasets/nvidia/OpenMathInstruct-1。规模：1.8M 条正确问题-解答对与 6.6M 条错误采样轨迹；正确部分包括 GSM8K 7,469 道训练题的 1.04M 条唯一解，以及 MATH 6,978 道训练题的 787K 条唯一解。记录形式：`question`、`generated_solution`、`expected_answer`、`predicted_answer`、`error_message`、`is_correct`、`dataset` 与 `generation_type`。文件/存储格式：按正确/错误和 train/validation 分成四个 JSONL，逻辑文件总大小约 8.9 GB。领域/语言：英文小学应用题与竞赛数学，覆盖 GSM8K 和 MATH 七个学科。构造与筛选：Mixtral-8x7B 在默认、学科和掩码参考 prompt 下编写混合文字/Python 轨迹；解释器运行代码，grader 检查 boxed answer，随后进行语法清洗和去重。许可/访问限制：公开、无需审批、采用可商业使用的 NVIDIA License；来源数据条款仍需考虑。预期用途：数学推理 SFT、蒸馏、利用错误轨迹研究 verifier，以及数据选择实验。

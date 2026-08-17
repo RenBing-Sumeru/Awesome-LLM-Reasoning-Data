@@ -1,0 +1,1 @@
+The paper’s key contribution is breadth with annotation redundancy: each item receives three to five annotations from a pool of more than 6,400 annotators in 77 countries. This makes disagreement a property to measure rather than discard. The release connects general instruction following, coding, multilingual evaluation, and other tasks in one preference set.

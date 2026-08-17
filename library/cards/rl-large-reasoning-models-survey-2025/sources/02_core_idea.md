@@ -1,0 +1,1 @@
+The paper organizes the field through foundations, core problems, training resources, and applications. That sequence is useful: an RL method is not understandable until the data source and feedback contract are known, and a reward result is not portable until the target task and rollout conditions are known.

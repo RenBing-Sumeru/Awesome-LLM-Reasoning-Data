@@ -1,0 +1,96 @@
+id: lmarena-leaderboard-2025
+title: LMArena / Arena AI Leaderboard
+year: 2025
+venue: Arena AI / LMArena leaderboard infrastructure
+authors:
+- Arena AI
+- LMArena
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- model-evaluation
+- human-preference
+- leaderboard
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arena.ai/leaderboard
+  arxiv: null
+  doi: null
+  code: https://github.com/lmarena/arena-rank
+  data: https://huggingface.co/lmarena-ai
+  project: https://arena.ai/leaderboard
+data_object:
+  dataset_scale: Continuously updated leaderboard/vote stream; exact snapshot, filters, and ranking method version must be
+    pinned for any comparison.
+  prompt_source: User-submitted prompts in the Arena platform.
+  trace_author: Two anonymized candidate models produce responses for the same prompt.
+  answer_format: Pairwise human preference vote, tie, or abstention plus model and filter metadata.
+  process_fields:
+  - prompt
+  - model A response
+  - model B response
+  - human vote
+  - ranking snapshot
+  - confidence interval
+  environment_or_substrate: Online model comparison platform and leaderboard pipeline.
+  verifier_or_reward: Human pairwise preference aggregated by the official ranking methodology.
+  terminal_predicate: A model receives an aggregate rating under a pinned leaderboard snapshot and ranking method.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark/evaluation surface.
+  teacher: Official benchmark authors or platform maintainers.
+  generator: Official task construction and benchmark harness.
+  filtering_rule: See official release/version notes; do not infer unreleased filters.
+  sampling_protocol: Pin task version, scaffold, model settings, scorer, and leaderboard snapshot.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: evaluation harness or platform-specific scaffold
+audit:
+  source_mixture: Official benchmark page plus public repository/data artifact where available.
+  split: see official source; hidden/public policy may be partial
+  decontamination: public exposure and leaderboard reuse can create contamination risk
+  license: verify from official artifact before redistribution
+  lineage: tracked to official benchmark source
+  known_failure_modes: &id001
+  - pin snapshot date, ranking package/version, prompt filters, model sampling settings, and confidence intervals
+  - do not treat Arena rank as proof of factual or task-specific correctness
+  citation_status: verified_official_source
+  confidence: high
+  notes: Official leaderboard, Arena-Rank repository, and LMArena data organization identify the current infrastructure; comparisons
+    must be snapshot-specific.
+inclusion_reason: LMArena is a continuing human-preference leaderboard infrastructure that ranks models from anonymized pairwise
+  battles rather than fixed-answer correctness.
+related:
+- mt-bench-chatbot-arena-2023
+tags:
+- benchmark
+- evaluation-surface
+- leaderboard
+- pairwise_preference
+why_it_matters: LMArena is a continuing human-preference leaderboard infrastructure that ranks models from anonymized pairwise
+  battles rather than fixed-answer correctness.
+status: verified
+needs: *id001
+one_line_summary: LMArena is a continuing human-preference leaderboard infrastructure that ranks models from anonymized pairwise
+  battles rather than fixed-answer correctness.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: codex_official_source_check
+  confidence: high
+  notes: Official leaderboard, Arena-Rank repository, and LMArena data organization identify the current infrastructure; comparisons
+    must be snapshot-specific.
+category_ids:
+- benchmarks_evaluation_surfaces

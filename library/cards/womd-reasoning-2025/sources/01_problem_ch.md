@@ -1,0 +1,5 @@
+本卡以PMLR官方条目、ICML 2025论文、arXiv v3、作者代码仓库和受访问控制的Waymo发布页为主要来源。PMLR将论文收录于Proceedings of the 42nd International Conference on Machine Learning第267卷,页码34288–34311。
+
+WOMD提供轨迹、HD map和交通控制状态,但这些结构化字段不会直接形成关于路权规则或驾驶意图所引发远距离交互的自然语言监督。WOMD-Reasoning先把选中场景翻译为文本,再使用Microsoft Azure GPT-4 Turbo生成事实型与推理型问答。
+
+数据对象包含63,000个WOMD场景和294万条问答:22.9万条地图、32.6万条自车、197.6万条周边agent、34.6万条交互及6.3万条意图问答。它作为问答监督对应`instruction_demonstration_rationale_data`,又因每条记录来自多agent运动场景而对应`environment_agent_trajectory_data`。其收录价值依赖场景lineage的保留,以及对当前事实与未来条件交互标签的明确区分。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Big-Math 将多源开放数学题清洗并重构为 251,122 条开放式、闭式且答案唯一可核验的 RL 训练记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学 RLVR 数据集与清洗重构方法",
+  "best_for_ch": "需要大规模、可规则核验的数学 RLVR 提示数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Alon Albalak, Duy Phung, Nathan Lile, Rafael Rafailov, Kanishk Gandhi, Louis Castricato, Anikait Singh, Chase Blagden, Violet Xiang, Dakota Mahan, Nick Haber",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

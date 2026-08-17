@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GRIP 报告把 7.5K 条 MATH 种子扩展为 2,123,345 个图条件问题—解答对，并通过官方补充材料发布 24,957 条四字段样本；代码、完整语料、评审权重、谱系和许可证仍未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "图引导数学推理数据构造与部分发布",
+  "best_for_ch": "研究合成推理数据、概念图重组、多模型筛选及发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jiankang Wang, Jianjun Xu, Xiaorui Wang, Yuxin Wang, Mengting Xing, Shancheng Fang, Hongtao Xie",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

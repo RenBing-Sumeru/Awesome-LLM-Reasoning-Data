@@ -1,0 +1,169 @@
+id: womd-reasoning-2025
+title: 'WOMD-Reasoning: A Large-Scale Dataset for Interaction Reasoning in Driving'
+year: 2025
+venue: ICML 2025
+authors:
+- Yiheng Li
+- Cunxin Fan
+- Chongjian Ge
+- Seth Z. Zhao
+- Chenran Li
+- Chenfeng Xu
+- Huaxiu Yao
+- Masayoshi Tomizuka
+- Bolei Zhou
+- Chen Tang
+- Mingyu Ding
+- Wei Zhan
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- autonomous_driving
+- motion
+- traffic_interaction
+- intention_reasoning
+- multimodal
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/li25l.html
+  arxiv: https://arxiv.org/abs/2407.04281
+  code: https://github.com/yhli123/WOMD-Reasoning
+  data: https://waymo.com/open/download/
+  project: https://github.com/yhli123/WOMD-Reasoning
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v267/li25l.html
+  openreview: https://openreview.net/forum?id=lTBq5LOUKC
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/li25l.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 63,000 WOMD scenarios selected from the WOMD training and interactive-validation partitions using the objects_of_interest
+    label; inputs include HD-map elements, traffic controls, present agent state, and future trajectory state.
+  trace_author: 'A rule-based program converts WOMD map and motion fields into ego-centric text. Microsoft Azure GPT-4 Turbo
+    then generates all five Q&A categories: map environment, ego motion, surrounding-agent motion, interaction, and ego intention.'
+  answer_format: Per-scenario JSON containing sid, ego, cur_time, future_time, rel_id, rel_qa_id, and paired env_q/env_a,
+    ego_q/ego_a, sur_q/sur_a, and int_q/int_a arrays. The intention Q&A is included in int_q/int_a rather than a separate
+    published field.
+  process_fields:
+  - sid
+  - ego
+  - cur_time
+  - future_time
+  - rel_id
+  - rel_qa_id
+  - env_q
+  - env_a
+  - ego_q
+  - ego_a
+  - sur_q
+  - sur_a
+  - int_q
+  - int_a
+  environment_or_substrate: Waymo Open Motion Dataset multi-agent trajectories and HD maps. ScenarioNet and MetaDrive provide
+    an optional simulated vision extension with BEV and ego-view rendering.
+  verifier_or_reward: No released per-record verifier, reward, or acceptance predicate. Four human evaluators judged whether
+    the correct answer was included for 1,610 Q&As; aggregate reported accuracy is 91.99%, with 91.03% for interaction and
+    87.50% for intention questions. Further human cleaning was ongoing.
+  terminal_predicate: unknown. The paper does not disclose an automatic accept/reject rule for generated rows, a per-item
+    confidence field, or a released ledger of corrected and rejected generations.
+recipe_metadata:
+  base_model: LLaVA-v1.5-7B is the language-model base for Motion-LLaVA; a MultiPath++ implementation supplies the motion-vector
+    encoder.
+  teacher: Microsoft Azure GPT-4 Turbo.
+  generator: Rule-based WOMD-to-text translation followed by a four-part prompt consisting of system, responsibility, global-rule,
+    and in-context components. GPT-4 Turbo produces factual and reasoning Q&As.
+  filtering_rule: Only WOMD scenarios with objects_of_interest labels are translated. The exact generated-row rejection, correction,
+    deduplication, and quality-filtering rules are unknown.
+  sampling_protocol: 52,000 WOMD training scenes produce about 2.43 million Q&As and 11,000 interactive-validation scenes
+    produce about 0.51 million Q&As, for 63,000 scenes and 2.94 million Q&As total. The reasoning portion contains 346,000
+    interaction Q&As and 63,000 intention Q&As.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper reports approximately USD 12,750 in Azure GPT-4 Turbo API cost; endpoint snapshot, token limits,
+    decoding parameters, seeds, retry policy, and per-scene generation counts are unknown.
+  optimizer_or_scaffold: Motion-LLaVA fine-tunes all components for one epoch on WOMD-Reasoning using LLaVA-v1.5-7B and a
+    motion-prediction-pretrained MultiPath++ encoder. The paper reports about two GPU-days, described as one day on two NVIDIA
+    A6000 GPUs.
+audit:
+  source_mixture: WOMD map, signal, present-state, and future-trajectory fields are converted into rule-produced text and
+    then into GPT-4 Turbo Q&As. Optional simulated BEV and ego-view videos are rendered with ScenarioNet and MetaDrive.
+  split: 'The language release follows WOMD training and interactive-validation partitions: 52,000 training scenes and 11,000
+    validation scenes. The repository names training.tar.gz and validation_interactive.tar.gz, but the gated Waymo archive
+    revision and an immutable manifest are not identified.'
+  decontamination: unknown. The paper does not report duplicate-scene, near-duplicate-language, template-leakage, or train/evaluation
+    contamination checks.
+  license: The repository license permits educational, research, and not-for-profit use and grants specified commercial rights
+    to BDD and BAIR Commons members and affiliates; other commercial licensing requires separate contact. The annotations
+    are also subject to Waymo terms. A record-level license and provenance ledger is not published.
+  lineage: WOMD scene and agent identifiers plus current/future timestamps feed a rule-based textual translation; GPT-4 Turbo
+    produces five Q&A categories; the release stores original WOMD IDs and substituted Q&A IDs. Interaction and intention
+    answers explicitly use current and future descriptions.
+  known_failure_modes:
+  - Rule-translator errors propagate because its text is the only scene representation observed by GPT-4 Turbo.
+  - Interaction and intention targets use future trajectories, creating hindsight-conditioned supervision that is not causally
+    available in online deployment.
+  - The objects_of_interest selection concentrates the release on scenes already marked as significantly interactive and may
+    not represent ordinary driving scenes.
+  - Only 1,610 of 2.94 million Q&As receive the reported aggregate human evaluation; the sampling method, corrected subset
+    size, and record-level judgments are not released.
+  - LLM-generated answers have no per-record formal verifier, confidence, rejection reason, or correction provenance.
+  - The Waymo download is access-gated, and the repository has no tagged release; exact archive, prompt, translator, and API
+    revisions are not pinned together.
+  - Agent-ID substitution is described as an anti-overfitting measure, but it does not by itself provide a complete transformation
+    or rights ledger.
+  citation_status: verified
+  confidence: medium
+  notes: Official PMLR ICML 2025 record, arXiv v3 full text, author GitHub repository, prompts, translator, repository license,
+    and gated Waymo endpoint were checked. Dataset contents behind the Waymo login were not directly inspected.
+inclusion_reason: WOMD-Reasoning exposes a scene-to-language construction pipeline in which structured trajectories and traffic
+  rules become factual and reasoning Q&As, making the distinction between rule-derived context, LLM-authored supervision,
+  and hindsight-conditioned labels directly relevant to reasoning-data audit.
+related: []
+tags:
+- womd
+- waymo
+- driving
+- interaction-reasoning
+- intention-reasoning
+- synthetic-qa
+status: partial
+one_line_summary: WOMD-Reasoning converts 63,000 WOMD scenes into 2.94 million GPT-4 Turbo Q&As, including 409,000 interaction
+  and intention records that may depend on future trajectories.
+why_it_matters: It is a large driving-language supervision object with explicit scene lineage and released construction prompts,
+  but reuse requires separating factual from generated reasoning, marking future-conditioned targets, and auditing the unverified
+  majority of records.
+card: null
+needs:
+- 'needs_release_manifest: pin the Waymo archive revision, file hashes, WOMD source revision, split membership, repository
+  commit, and rendering version'
+- 'needs_generation_contract: disclose the exact Azure model snapshot, decoding settings, seeds, retries, parser, rejection
+  rules, and failed-generation logs'
+- 'needs_human_audit: publish the 1,610-item evaluation sample, per-item labels, evaluator agreement, corrected subset, and
+  cleaning provenance'
+- 'needs_causal_labels: mark every field and Q&A that uses future trajectory information'
+- 'needs_license_lineage: document record-level WOMD provenance and compatibility between Waymo terms and the annotation license'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official publication, repository, and official gated data endpoint verified.
+category_ids:
+- instruction_demonstration_rationale_data
+- environment_agent_trajectory_data

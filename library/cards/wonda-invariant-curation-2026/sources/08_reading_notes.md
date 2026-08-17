@@ -1,0 +1,6 @@
+- Read Sections 3.2 and 4.2 plus Algorithms 1–2 first: induction, sufficiency, and speedup are separate labels, and the LLM rewrite need not be equivalent to the raw invariant.
+- Keep three populations distinct: 4,000 raw invariants processed, 7,763 rows in the curated-full release, and 7,284 grade/length-filtered V2 samples used by the reported SFT experiment.
+- Table 4 is the strongest data-quality evidence: raw V0 targets can damage syntax validity, V1 repairs much of it, and V2 yields the largest cross-family gains.
+- “Matches GPT-5.2” refers to VBP-E2E under a virtual portfolio; Qwen3-14B-V2 has substantially lower invariant correctness.
+- Grade 3 is environment-relative because verifier version, hardware, timeout, concurrency, and baseline timings define the speedup label.
+- Before reuse, inspect the program-grouped split, InvBench/SV-COMP lineage, dataset licenses, rejected candidates, and the drift between paper and current training configs.

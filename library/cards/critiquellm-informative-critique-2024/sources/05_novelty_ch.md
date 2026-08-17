@@ -1,0 +1,1 @@
+此前开源 evaluator 多只预测标量分数，或依赖固定任务与少量人工 rubric。CRITIQUELLM 将 instruction synthesis、跨模型回答采样和详细 critique 蒸馏结合起来，统一支持参考式与无参考式评价。其新意主要在数据构建和输出契约：裁判不仅给 verdict，还需解释问题并提出修改建议；同时通过大规模候选生成与多阶段筛选扩展任务覆盖，而非直接复制现有 benchmark。

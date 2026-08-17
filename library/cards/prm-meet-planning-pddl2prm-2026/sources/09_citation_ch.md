@@ -1,0 +1,1 @@
+引用与工件核验：https://arxiv.org/abs/2604.17957。机构信息按主论文署名单位记录为 Sapienza University of Rome；作者字段为 Pisano and Navigli。官方实现或项目页：https://babelscape.github.io/prm-meets-planning/。 官方数据或发布页：https://babelscape.github.io/prm-meets-planning/。

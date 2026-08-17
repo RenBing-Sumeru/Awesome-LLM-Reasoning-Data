@@ -1,0 +1,1 @@
+证据来自官方 harness 的类别级通过/失败评分，以及公开 leaderboard 的 overall 和子类别准确率。BFCL 官方页面记录了多个版本，覆盖 non-live/static 与 live function、parallel/multiple calls、多轮设置，以及后续 agentic/web-search 类评测。逐样本证据是 evaluator 对已解析或已执行 tool call 的判定，不是人工偏好判断。由于榜单是活的，任何数字比较都必须记录快照日期、模型版本、evaluator commit，以及结果来自托管 API 还是开源权重 adapter。

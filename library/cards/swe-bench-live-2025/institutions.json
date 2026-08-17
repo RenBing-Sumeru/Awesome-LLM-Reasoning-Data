@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Microsoft"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2505.23419",
+    "https://swe-bench-live.github.io/",
+    "https://github.com/microsoft/SWE-bench-Live",
+    "https://huggingface.co/SWE-bench-Live"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF organization verify authors, Microsoft institution, and artifacts."
+}

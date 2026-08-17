@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多智能体失败归因基准与轨迹数据集",
+    "updated_at": "2026-07-21T14:09:34Z"
+  },
+  "updated_at": "2026-07-21T14:09:34Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

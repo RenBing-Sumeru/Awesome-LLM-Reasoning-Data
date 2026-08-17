@@ -1,0 +1,2 @@
+1. **Primary limitation.** Low-resource languages rely heavily on translation and teacher distillation. Each language needs separate human auditing, calibration, and cultural review.
+2. **Curator audit risk.** English-centered criteria may overwrite cultural differences, and aggregate scores can hide weak long-tail languages. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

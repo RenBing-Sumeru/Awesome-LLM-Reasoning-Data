@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentRL 发布了异步 GRPO 框架，并链接了覆盖五类任务的 AgentBench-FC 环境栈；论文层面的合成输入、在线轨迹、评估器事件和不可变混合/切分账本仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多轮多任务智能体强化学习框架、环境反馈契约与可复现性审计",
+  "best_for_ch": "关注智能体环境、工具调用轨迹、异步强化学习、环境奖励和训练数据溯源的研究者与工程人员",
+  "confidence_ch": "高",
+  "authors_ch": "Hanchen Zhang、Xiao Liu、Bowen Lv、Xueqiao Sun、Bohao Jing、Iat Long Iong、Zhenyu Hou、Zehan Qi、Hanyu Lai、Yifan Xu、Rui Lu、Hongning Wang、Jie Tang、Yuxiao Dong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-20T11:21:13Z"
+}

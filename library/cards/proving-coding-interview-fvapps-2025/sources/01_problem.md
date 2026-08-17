@@ -1,0 +1,3 @@
+Coding-interview benchmarks such as APPS use finite unit tests for Python programs. They catch some errors but do not prove correctness for all inputs, while formal theorem-proving datasets rarely require both writing a program and proving it. Models may pass examples without translating natural-language requirements into contracts and machine-checked proofs.
+
+FVAPPS translates APPS problems into Lean 4 files. Each task retains a natural-language description and provides a function signature, `#eval` examples, and one or more correctness theorems left with `sorry`. A model may fill proofs only or implement both functions and proofs. The Lean compiler and kernel provide final verification, upgrading a test-based coding benchmark into formally verified program synthesis.

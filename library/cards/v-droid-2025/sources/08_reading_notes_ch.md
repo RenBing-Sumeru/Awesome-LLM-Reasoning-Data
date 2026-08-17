@@ -1,0 +1,6 @@
+- 先解决身份问题：`v-droid-2025` 是既定稳定 ID，arXiv v5 与 MobiCom 条目则使用 2026 年最终标题和 ACM DOI；arXiv 摘要页仍显示旧标题。
+- 阅读 benchmark 表格前先看第 4–5 节：核心对象是由实际 Android 轨迹派生的逐步“正确动作—备选动作”P3 偏好对，不是已发布的 110K episode 数据集。
+- 始终保留发布边界：固定版本的 GitHub preview 只有五条 `{chosen, rejected}` 记录，因此 `data` 为 `null`，完整训练复用受阻。
+- 只使用 v5 指标：59.5/38.3/49.0 的任务成功率、AndroidWorld 领先 5.2 个百分点、每步 4.3 秒、每次 decision 约 0.7 秒；领先 9.5 个百分点和“每步 0.7 秒”均为过时头条。
+- 结合阅读表 1、图 13 与第 4.2 节：entropy triage 并非单调改善，reverse-action 数据过多会造成反复 back 的坍缩，尽管 self-correction 消融为正。
+- 回放前应固定 GitHub/HF revision，并解决 HTML/XML 输入差异、GPT-4 memory 配置、动作补全 LLM、环境/app 版本、完整 split、license、隐私及失败轨迹保留问题。

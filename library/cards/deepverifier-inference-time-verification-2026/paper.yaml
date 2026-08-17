@@ -1,0 +1,120 @@
+id: deepverifier-inference-time-verification-2026
+title: 'Inference-Time Scaling of Verification: Self-Evolving Deep Research Agents via Test-Time Rubric-Guided Verification'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Yuxuan Wan
+- Tianqing Fang
+- Zaitang Li
+- Yintong Huo
+- Wenxuan Wang
+- Haitao Mi
+- Dong Yu
+- Michael R. Lyu
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- agentic-reasoning
+- information-seeking
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2601.15808
+  arxiv: https://arxiv.org/abs/2601.15808
+  venue: null
+  code: https://github.com/yxwan123/DeepVerifier
+  data: null
+  project: https://github.com/Tencent/CognitiveKernel-Pro
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2601.15808
+data_object:
+  prompt_source: WebAggregatorQA trajectories for taxonomy and data construction; GAIA, GAIA-Web, XBench-DeepSearch, and BrowseComp
+    for evaluation.
+  trace_author: Cognitive Kernel-Pro agents, with Claude-3.7-Sonnet and other evaluated backbone models, generate research
+    trajectories and answers.
+  answer_format: Trajectory summaries, localized potential failures, rubric labels, follow-up verification questions, evidence-backed
+    answers, a 1-to-4 judge score, corrective feedback, and retry outputs.
+  process_fields:
+  - task
+  - trajectory_summary
+  - failure_labels
+  - followup_questions
+  - verification_evidence
+  - judge_score
+  - feedback
+  - retry_answer
+  environment_or_substrate: Web-enabled deep-research agents with browsing, screenshotting, code execution, and iterative
+    retry.
+  verifier_or_reward: DeepVerifier decomposes verification into retrieval sub-questions and uses rubric-guided judging; scores
+    at most two reject and at least three accept in the test-time loop.
+  terminal_predicate: Stop when the judge accepts an answer or the predefined retry limit is reached.
+recipe_metadata:
+  base_model: Claude-3.7-Sonnet, GPT-4.1, Qwen3-8B, and a fine-tuned DeepVerifier-8B variant.
+  teacher: DeepVerifier feedback generated with Claude-3.7-Sonnet; human reference solution traces ground taxonomy annotation.
+  generator: The deep-research agent creates an answer and action trajectory; verification agents retrieve evidence for targeted
+    follow-up questions.
+  filtering_rule: For DeepVerifier-4K, retain correctly accepting and correctly rejecting verification trajectories, balance
+    them, and convert them into prompt-response pairs.
+  sampling_protocol: Iteratively verify, provide rubric-based feedback, and retry until acceptance or the retry ceiling; evaluate
+    full and subset agent benchmarks.
+  rollout_count: Up to ten feedback rounds in the reported GAIA scaling curve.
+  temperature: Not specified in the official paper.
+  inference_budget: Multiple verifier, retrieval, judging, and retry rounds at test time; the reported scaling curve covers
+    zero through ten feedback rounds.
+  optimizer_or_scaffold: 'Three modules: decomposition, verification, and judge, driven by a five-class, thirteen-subclass
+    failure taxonomy.'
+audit:
+  source_mixture: Official arXiv paper and the two official GitHub repositories linked in its PDF.
+  split: Taxonomy uses 90 WebAggregatorQA tasks and 2,997 actions; evaluation is separated onto GAIA, BrowseComp, and XBench-DeepSearch.
+  decontamination: The paper explicitly separates WebAggregatorQA taxonomy construction from its three evaluation datasets,
+    but web and model leakage remain a deployment concern.
+  license: Check the repositories, benchmark sources, and released DeepVerifier-4K materials before reuse.
+  lineage: https://arxiv.org/abs/2601.15808
+  known_failure_modes:
+  - rubric-coverage
+  - verifier-hallucination
+  - web-evidence-volatility
+  - retry-cost
+  - backbone-dependence
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF checked on 2026-07-20. It lists The Chinese University of Hong Kong, Tencent AI Lab, Singapore
+    Management University, and Renmin University of China, and links the two official GitHub repositories.
+inclusion_reason: It explicitly scales test-time verification and feedback rounds for deep-research agents, measuring how
+  additional verifier-guided retry compute improves final task success.
+related: []
+tags:
+- test-time-compute
+- agent-verification
+- rubric-guided-feedback
+- iterative-refinement
+- deep-research
+status: verified
+one_line_summary: DeepVerifier converts agent failure rubrics into targeted test-time checks and feedback loops that improve
+  deep-research-agent answers through repeated verification and retry.
+reading_priority: essential
+paper_type: Agent verification and test-time scaling study
+best_for: Readers building web-enabled agents that must spend additional inference compute on evidence-based self-correction.
+confidence: high
+why_it_matters: It operationalizes verification as a repeatable inference loop rather than a final judge call, making extra
+  agent compute target diagnosed failure points.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv PDF and both paper-linked GitHub repositories checked.
+category_ids:
+- scaling_rlvr_test_time_compute

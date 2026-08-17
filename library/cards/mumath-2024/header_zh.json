@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MuMath 以四类多视角增强把 GSM8K 和 MATH 转成自然语言训练示范，并区分 304K 主实验与约 751K 扩展发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多视角数学指令数据构造研究",
+  "best_for_ch": "适合增强数学监督微调数据，或比较改写、逆向构造、题目变换、嵌套规划和多数筛选。",
+  "confidence_ch": "高",
+  "authors_ch": "Weihao You、Shuo Yin、Xudong Zhao、Zhilong Ji、Guoqiang Zhong、Jinfeng Bai",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T15:15:00Z"
+}

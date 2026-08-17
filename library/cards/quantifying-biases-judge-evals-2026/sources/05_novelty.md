@@ -1,0 +1,1 @@
+Unlike agreement-only audits, the method models the target result and bias mechanisms together, then exposes uncertainty and counterfactual mitigation. Its novelty is statistical attribution, not discovering that verbosity or self-preference exists. Inspect covariate selection and model assumptions before treating a correction as valid.

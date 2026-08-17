@@ -1,0 +1,1 @@
+The method depends on reference quality and on the teacher judge that creates reward labels; errors can be copied into the smaller verifier and amplified by RL. Reuse should audit judge agreement per domain and hold out prompts that were not used in reward-model construction.

@@ -1,0 +1,22 @@
+{
+  "institutions": [
+    "Northeastern University",
+    "Hanover High School",
+    "Wellesley College",
+    "Oberlin College",
+    "Roblox Research",
+    "Stevens Institute of Technology",
+    "University of Massachusetts Amherst"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2208.08227",
+    "https://arxiv.org/pdf/2208.08227",
+    "https://github.com/nuprl/MultiPL-E",
+    "https://huggingface.co/datasets/nuprl/MultiPL-E",
+    "https://doi.org/10.1109/TSE.2023.3267446"
+  ],
+  "verification_note": "Official arXiv/PDF, GitHub credits, Hugging Face, and DOI sources verify authors, institutions, IEEE TSE status, and executable benchmark artifacts."
+}

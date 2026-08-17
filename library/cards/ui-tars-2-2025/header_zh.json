@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "UI-TARS-2 披露数据飞轮、多轮 RL 与大规模 rollout 沙箱，但未披露训练记录和奖励账本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "GUI 智能体技术报告",
+  "best_for_ch": "研究智能体环境、rollout 与后训练披露的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Haoming Wang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

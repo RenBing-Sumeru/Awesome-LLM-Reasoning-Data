@@ -1,0 +1,1 @@
+训练提示由 NQ 与 HotpotQA 训练集合并而成。Rollout 使用 Qwen2.5 3B 或 7B 的 base/instruct 策略模型、2018 Wikipedia 语料、E5 检索器，并在每次调用中返回 3 个段落。生成在输出 <answer> 区段或达到最大动作预算时终止；非法动作会触发固定的 rethink 提示。论文比较 PPO 与 GRPO。其拒绝采样基线每题生成 5 个候选并保留最终答案正确的轨迹，但这不是 Search-R1 本身的强化学习数据契约。

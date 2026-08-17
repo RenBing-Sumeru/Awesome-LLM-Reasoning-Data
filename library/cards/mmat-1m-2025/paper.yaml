@@ -1,0 +1,128 @@
+id: mmat-1m-2025
+title: 'MMAT-1M: A Large Reasoning Dataset for Multimodal Agent Tuning'
+year: 2025
+venue: ICCV 2025
+authors:
+- Tianhong Gao
+- Yannian Fu
+- Weiqun Wu
+- Haixiao Yue
+- Shanshan Liu
+- Gang Zhang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+- step_level
+domains:
+- multimodal_reasoning
+- tool_use
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2507.21924
+  arxiv: https://arxiv.org/abs/2507.21924
+  code: https://github.com/VIS-MPU-Agent/MMAT-1M
+  data: https://huggingface.co/datasets/VIS-MPU-Agent/MMAT-1M
+  project: https://mmat-1m.github.io/
+  huggingface: https://huggingface.co/datasets/VIS-MPU-Agent/MMAT-1M
+  doi: https://doi.org/10.48550/arXiv.2507.21924
+  venue: https://openaccess.thecvf.com/content/ICCV2025/html/Gao_MMAT-1M_A_Large_Reasoning_Dataset_for_Multimodal_Agent_Tuning_ICCV_2025_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/ICCV2025/html/Gao_MMAT-1M_A_Large_Reasoning_Dataset_for_Multimodal_Agent_Tuning_ICCV_2025_paper.html
+  bibtex: null
+data_object:
+  prompt_source: Public multimodal QA datasets including Visual CoT, LLaVA-CoT, The Cauldron subsets, TabMWP, and Infoseek
+  trace_author: GPT-4o generates rationales, tool/RAG interactions, and reflection-based refinements
+  answer_format: Multi-turn Rationale-and-Reflection dialogue or compressed one-turn ORR record with image references and
+    optional tool/RAG calls
+  process_fields:
+  - source_dataset
+  - image
+  - question
+  - reference_answer
+  - rationale
+  - tool_call
+  - tool_result
+  - reflection
+  - revised_rationale
+  - compressed_dialogue
+  environment_or_substrate: Offline multimodal QA enrichment with API calls and retrieval-augmented multi-turn dialogue
+  verifier_or_reward: GPT-4o reflection checks/refines logical consistency and accuracy against source QA; no independent
+    executable verifier
+  terminal_predicate: Dialogue/reflection yields the intended reference answer in RR or ORR format
+recipe_metadata:
+  base_model: Open multimodal models such as InternVL2.5 are fine-tuned for evaluation
+  teacher: GPT-4o
+  generator: GPT-4o rationale, dynamic API/RAG, reflection, and compression pipeline
+  filtering_rule: Curate public QA, generate rationale/tool evidence, reflect and revise for consistency, optionally compress
+    to ORR
+  sampling_protocol: 'Four stages: source curation; multi-turn rationale plus tool/RAG generation; reflection refinement into
+    RR; optional one-turn compression into ORR'
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Supervised multimodal agent tuning on RR/ORR records
+audit:
+  source_mixture: Visual CoT, LLaVA-CoT, The Cauldron subsets, TabMWP, Infoseek, and their component image/QA sources
+  split: Current HF release has about 1.64M train and 16.6K validation rows (1.66M total); exact source-wise split and leakage
+    controls are not documented in the card excerpt
+  decontamination: unknown
+  license: 'Composite: Apache-2.0, CC BY 4.0/subset-specific terms, and TabMWP CC BY-NC-SA 4.0; commercial use may require
+    separate permission and share-alike obligations'
+  lineage: Image paths often reveal source families, but the public schema shown exposes only messages/images; consistent
+    per-record source ID, original QA ID, teacher call, tool result provenance, reflection revisions, and license are not
+    verified
+  known_failure_modes:
+  - GPT-4o generates and validates its own rationales, creating correlated teacher errors
+  - Tool/API and RAG results can be stale, unavailable, or incorrectly cited
+  - Reflection can improve plausibility without guaranteeing faithfulness
+  - ORR compression can drop failed calls, uncertainty, or corrective context
+  - Heterogeneous source licenses prevent treating the whole mixture as uniformly Apache-2.0
+  - Failed tool calls, rejected rationales, and teacher prompts are not released
+  citation_status: verified
+  confidence: high
+  notes: Official ICCV 2025 CVF proceedings record verified. HF currently exposes 1.66M rows, so MMAT-1M is a family/name
+    rather than an exact one-million row count. Repository contains documentation but no tagged release and no complete generation
+    code was verified.
+inclusion_reason: Releases a large multimodal agent-tuning mixture with explicit rationale, dynamic tool/RAG, reflection,
+  and compression stages.
+related: []
+tags:
+- mmat-1m
+- multimodal-agent-tuning
+- rationale-reflection
+- tool-use
+- rag
+- composite-licensing
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Enriches public multimodal QA with GPT-4o rationales, dynamic tool/RAG calls, reflection, and optional compression,
+  releasing about 1.66M RR/ORR records.
+why_it_matters: Offers a large cross-source agent-tuning object while exposing correlated teacher validation, tool replay,
+  compression, lineage, and composite-license risks.
+card: null
+needs:
+- 'needs_code: complete generation/reflection/compression pipeline'
+- 'unknown: per-record source/license/original QA lineage'
+- 'unknown: failed/rejected tool and rationale records'
+- 'needs_audit: source-level split/decontamination and teacher validation error rate'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against arXiv, author repository/project, and official HF release.

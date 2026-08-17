@@ -1,0 +1,1 @@
+Android in the Zoo 研究移动 GUI 智能体是否能从显式动作级推理中受益：前序动作、当前屏幕、下一步动作意图和动作后果。主要来源是 2024 年 arXiv 论文和官方 CoAT GitHub；仓库更新记录说明该工作被 EMNLP 2024 Findings 接收。它的边界是带标注的 Android screen-action 数据和动作预测评测，不是在线 Android 环境，也不是泛化的 chain-of-thought 安全结论。一个数据对象是 screen-action 时间步，包含 episode id、step id、screen description、action thinking、action description 和 action result 等字段。对 atlas 的价值是给移动 GUI 轨迹提供过程标注。

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T11:23:33Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "经典 Text-to-SQL 历史基准 ref2526",
+    "updated_at": "2026-07-18T11:23:33Z"
+  }
+}

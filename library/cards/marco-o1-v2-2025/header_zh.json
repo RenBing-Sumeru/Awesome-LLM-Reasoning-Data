@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Marco-o1 v2 从头用 MCTS 构造树状 CoT 数据，再结合思考长度平衡、细粒度 DPO 和联合后训练目标缓解长推理蒸馏瓶颈。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Huifeng Yin；Yu Zhao；Minghao Wu；Xuanfan Ni；Bo Zeng；Hao Wang；Tianqi Shi；Liangying Shao；Chenyang Lyu；Longyue Wang；Weihua Luo；Kaifu Zhang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

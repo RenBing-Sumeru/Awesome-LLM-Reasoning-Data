@@ -1,0 +1,6 @@
+- 论文评测单元是150个可执行OSWorld Ubuntu VM任务——50个misuse、50个prompt-injection与50个misbehavior case——不是训练语料或发生率样本。
+- 应区分OSWorld reward/done日志与GPT-4.1 AER输出：论文报告的feedback为`reasoning`、`success`、`safety`和`violation_step`，并使用GPT-4o最终屏幕caption。
+- judge验证覆盖150条o4-mini轨迹，unsafe/completion F1为0.76/0.79；unsafe recall仅0.64，因此benchmark标签必须配合错误分析。
+- 优先阅读论文表2的模型结果、表3的judge precision/recall/F1、附录B表10的条件式步骤一致率，以及附录B.5的具体judge failure。
+- 比较score或声称精确replay前，应固定已检查仓库commit，并对账其中51个注入组合与论文50个case的差异。
+- OS-Harm仅应用于evaluation与audit；Drive专用许可证、不可变inventory/checksum、完整保留情况与annotation agreement仍为unknown。

@@ -1,0 +1,28 @@
+id: optimal-llm-prm-aggregation-2026
+title: 'Optimal Aggregation of LLM and PRM Signals for Efficient Test-Time Scaling'
+year: 2026
+venue: ICLR 2026
+authors: ['Peng Kuang', 'Yanli Wang', 'Xiaoyu Han', 'Yaowenqi Liu', 'Kaidi Xu', 'Haohan Wang']
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level]
+domains: [reasoning]
+training_use: [test_time_compute]
+construction_layer: [scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2510.13918, arxiv: https://arxiv.org/abs/2510.13918, venue: https://iclr.cc/virtual/2026/poster/10006667, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2510.13918}
+data_object: {prompt_source: "Official paper tasks.", trace_author: "Reasoning system.", answer_format: "Reasoning traces and decisions.", process_fields: [prompt, trace, budget, outcome], environment_or_substrate: "Test-time reasoning.", verifier_or_reward: "Paper-specific.", terminal_predicate: "Official evaluation."}
+recipe_metadata: {base_model: "See paper.", teacher: null, generator: "Paper-specific test-time procedure.", filtering_rule: "See paper.", sampling_protocol: "See paper.", rollout_count: null, temperature: null, inference_budget: "Explicit test-time budget.", optimizer_or_scaffold: "Paper-specific."}
+audit: {source_mixture: "Official ICLR 2026 paper record.", split: "See paper.", decontamination: "Not separately claimed.", license: "Verify artifacts before reuse.", lineage: 'https://iclr.cc/virtual/2026/poster/10006667', known_failure_modes: ["Deployment dependence"], citation_status: verified, confidence: high, notes: "Official source checked."}
+inclusion_reason: "It makes test-time compute allocation, efficiency, or scaling behavior explicit."
+related: []
+tags: [test-time-compute, scaling, reasoning]
+status: verified
+one_line_summary: "Optimal Aggregation of LLM and PRM Signals for Efficient Test-Time Scaling"
+reading_priority: essential
+paper_type: Test-time scaling study
+best_for: Readers studying reasoning-budget allocation.
+confidence: high
+why_it_matters: It measures a concrete decision about additional inference computation.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official source checked."}
+category_ids: [scaling_rlvr_test_time_compute]

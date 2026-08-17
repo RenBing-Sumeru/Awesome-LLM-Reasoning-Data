@@ -1,0 +1,1 @@
+Keep three layers separate: original BIG-bench task, BBH hard-subset selection, and CoT prompting evaluation. A correct final answer is not a verified reasoning trace. Any BBH comparison should name the prompt file, answer extractor, model version, and repository commit.

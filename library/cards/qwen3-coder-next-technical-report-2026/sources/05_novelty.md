@@ -1,0 +1,3 @@
+The report makes an executable-task pipeline unusually visible for a frontier coding-agent release. It separates buggy and fixed repository states, tests, Docker environments, verification scripts, and trajectories, rather than treating a code issue and a final patch as the whole data object. Its combination of test synthesis, execution checks, pairwise judgment, completion reward, and format penalties also exposes multiple feedback layers.
+
+For this atlas, the novel contribution is a detailed partial disclosure of how repository tasks may be constructed and defended against reward shortcuts. The value is evidentiary rather than a claim that the described pipeline is open, fully calibrated, or independently reproducible.

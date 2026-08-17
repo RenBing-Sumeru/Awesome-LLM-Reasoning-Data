@@ -1,0 +1,5 @@
+Correctness holds only relative to the gold option chosen by the authors' validation process and official labels. A correct prediction means the model matched option 1 or option 2; it does not show that the model used the intended commonsense relation.
+
+The benchmark is sensitive to release version, split choice, label visibility, and evaluation route. Version 1.1 includes public train/dev labels but no labels inside `test.jsonl`; test evaluation depends on leaderboard submission. The paper's counts and the release-package counts are not identical in every field, so score reuse should cite the exact artifact rather than only the paper.
+
+AFLite is a strong audit step but not an exhaustive verifier. It targets shortcuts visible through a specific embedding/classifier procedure and parameter choices, leaving other artifacts, world-knowledge ambiguity, annotation noise, demographic bias, and training-data contamination possible. The dataset should not be read as a universal commonsense test or as a guarantee that transfer gains on older benchmarks measure true reasoning rather than remaining benchmark artifacts.

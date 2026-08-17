@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AdaptThink 以答案正确性为终点信号，结合受约束优化与重要性采样，在完整思考和直接回答两种输出模式之间学习按题目难度分配推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "测试时推理模式选择与 RLVR 训练配方",
+  "best_for_ch": "关注推理 token 分配、Thinking/NoThinking 轨迹选择、答案验证和 rollout 审计边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jiajie Zhang、Nianyi Lin、Lei Hou、Ling Feng、Juanzi Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

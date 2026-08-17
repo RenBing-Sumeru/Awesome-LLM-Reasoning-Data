@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OmniAlign-V-DPO 将图像、开放式问题、优选回答和模型采样的劣选回答发布为 15 万条偏好对，用于多模态大语言模型的 DPO 对齐。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态偏好数据集、构建流程与对齐评测论文",
+  "best_for_ch": "需要复用图像条件偏好对、审计 AI 评审负样本，或比较多模态 SFT 与 DPO 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiangyu Zhao、Shengyuan Ding、Zicheng Zhang 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T15:00:00Z"
+}

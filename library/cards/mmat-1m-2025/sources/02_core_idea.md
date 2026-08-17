@@ -1,0 +1,2 @@
+The four-stage recipe curates public multimodal QA, uses GPT-4o to generate rationales and dynamic API/RAG interactions, asks GPT-4o to reflect and revise into Rationale-and-Reflection records, and optionally compresses them into one-turn ORR examples. The current official Hugging Face release has about 1.66M rows—approximately 1.64M train and 16.6K validation—so “1M” is a family name, not an exact current count.
+

@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "training_usage_optimization_objectives"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "工具调用轨迹、程序化 verifier、GRPO 奖励设计；公开工件目前只展示 11,300 行，并称其为 subset",
+    "updated_at": "2026-07-21T14:15:41Z"
+  },
+  "updated_at": "2026-07-21T14:15:41Z"
+}

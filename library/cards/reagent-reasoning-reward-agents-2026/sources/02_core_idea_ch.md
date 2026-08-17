@@ -1,0 +1,1 @@
+论文提出多面向 reasoning reward model——Agent-RRM，并设计三种集成方式：Reagent-C 使用文本 critique 修订，Reagent-R 使用标量奖励引导，Reagent-U 统一两者。开放数据包含 agent 轨迹、生成推理、批评与分数，其中包括 Reagent-RRM-RL-90K。其贡献是为 agent 轨迹建立结构化反馈契约，而非只给终局标签，使语言级纠正和基于奖励的强化学习能够共同使用。

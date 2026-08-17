@@ -1,0 +1,112 @@
+id: vericontest-verifiable-competitive-programming-2026
+title: 'VeriContest: A Competitive-Programming Benchmark for Verifiable Code Generation'
+year: 2026
+venue: arXiv
+authors:
+- Zichen Xie
+- Mrigank Pawagi
+- Yuxin Liu
+- Aaditi Rai
+- Lize Shao
+- John Berberian Jr.
+- Sicong Che
+- Wenxi Wang
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- code-generation
+- agent-evaluation
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.08553
+  arxiv: https://arxiv.org/abs/2605.08553
+  code: https://github.com/HIPREL-Group/VeriContest
+  data: https://huggingface.co/datasets/Gax-c/VeriContest
+  project: null
+  huggingface: https://huggingface.co/datasets/Gax-c/VeriContest
+  doi: https://doi.org/10.48550/arXiv.2605.08553
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LeetCode and Codeforces competitive-programming problems.
+  trace_author: Expert annotators and semi-automated expansion with human review.
+  answer_format: Natural-language task, Rust implementation, Verus specification and proof, plus positive and negative tests.
+  process_fields:
+  - problem
+  - specification
+  - Rust code
+  - Verus proof
+  - positive tests
+  - negative tests
+  environment_or_substrate: Rust and Verus verification environment.
+  verifier_or_reward: Verus checking plus judge acceptance and test suites.
+  terminal_predicate: The code and proof meet the Verus and test/judge contract.
+recipe_metadata:
+  base_model: Not applicable to benchmark construction.
+  teacher: Expert validation, online judge acceptance, Verus checking, and tests.
+  generator: Three-phase expansion from manual seeds with human-in-the-loop review.
+  filtering_rule: Retain records with validated specifications, proofs, and additional postcondition completeness testing.
+  sampling_protocol: '946 problems: 690 LeetCode and 256 Codeforces.'
+  rollout_count: null
+  temperature: null
+  inference_budget: Report model and evaluation stage separately for specification, code, proof, and end-to-end tasks.
+  optimizer_or_scaffold: Stage-wise Verus verification and test-based quality assurance.
+audit:
+  source_mixture: Official arXiv paper, HIPREL Group repository, Hugging Face dataset, and author/group pages.
+  split: The public dataset stores test files per problem; verify any official train/evaluation split before optimization.
+  decontamination: Audit source-platform exposure, Verus version, judge behavior, and specification completeness.
+  license: Repository is Apache-2.0; inspect DATA_LICENSE.md and the dataset release for data-specific terms.
+  lineage: https://arxiv.org/abs/2605.08553
+  known_failure_modes:
+  - High test coverage cannot prove a complete formal specification.
+  - The benchmark targets a constrained Rust/Verus subset.
+  - Competitive-programming sources can be contaminated by public solutions.
+  citation_status: verified
+  confidence: high
+  notes: Official paper/repository/dataset were checked. Institution set is corroborated by the HIPREL Group/UVA page, first
+    author CV, and author affiliation records; formal venue was not disclosed.
+inclusion_reason: VeriContest releases task records with formally checked Verus proofs alongside executable code and tests,
+  yielding a strong programmatically verifiable final outcome.
+related: []
+tags:
+- formal-verification
+- rust
+- verus
+- competitive-programming
+- '2026'
+one_line_summary: VeriContest pairs 946 programming problems with Rust code, Verus specifications and proofs, and positive/negative
+  tests to evaluate end-to-end verifiable code generation.
+why_it_matters: It separates ordinary code generation from specification and proof synthesis while making all stages checkable
+  by a formal verifier.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper/repository/dataset were checked. Institution set is corroborated by the HIPREL Group/UVA page, first
+    author CV, and author affiliation records; formal venue was not disclosed.
+category_ids:
+- programmatically_verifiable_outcome_data

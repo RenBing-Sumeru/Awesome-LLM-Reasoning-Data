@@ -1,0 +1,161 @@
+id: making-slow-thinking-faster-step-entropy-2025
+title: 'Making Slow Thinking Faster: Compressing LLM Chain-of-Thought via Step Entropy'
+year: 2026
+venue: International Conference on Learning Representations (ICLR 2026)
+authors:
+- Zeju Li
+- Jianyuan Zhong
+- Ziyang Zheng
+- Xiangyu Wen
+- Zhijian Xu
+- Yingying Cheng
+- Fan Zhang
+- Qiang Xu
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical_reasoning
+- knowledge_reasoning
+training_use:
+- sft
+- rlvr
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.03346
+  arxiv: https://arxiv.org/abs/2508.03346
+  code: https://github.com/staymylove/COT_Compresstion_via_Step_entropy
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://iclr.cc/virtual/2026/poster/10008526
+  openreview: https://openreview.net/forum?id=cGLqQfS5wH
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The paper merges 40K DeepScaleR and 90K OpenR1-Math mathematical problems to form a 130K-instance composite;
+    a paper-matched prompt manifest, source revisions, and row-level IDs were not verified.
+  trace_author: DeepSeek-R1-Distill-Qwen-7B generates the full Chain-of-Thought trajectories used for the reported entropy-pruned
+    training data.
+  answer_format: A response contains <think> reasoning </think> followed by a final answer. Reasoning steps are delimited
+    by double newlines; selected low-entropy steps are replaced by the literal [SKIP] token in the compressed trace.
+  process_fields:
+  - problem
+  - full_cot
+  - newline_delimited_reasoning_steps
+  - length_normalized_step_entropy
+  - compressed_cot
+  - final_answer
+  environment_or_substrate: Offline mathematical-reasoning trace construction and two-stage fine-tuning. The public repository
+    provides vLLM-based full-CoT generation and masking scripts, followed by DeepSpeed SFT and GRPO scripts; it does not expose
+    the paper-matched generated rows.
+  verifier_or_reward: Step entropy ranks intermediate steps by a model-derived, length-normalized token-entropy score; it
+    is a redundancy selector rather than a ground-truth correctness verifier. GRPO adds a final-answer correctness reward,
+    skip-ratio reward, skip-number penalty, and response-length penalty. The paper does not fully specify the final-answer
+    extraction/checking implementation or publish per-completion reward records.
+  terminal_predicate: For the reported SFT set, samples longer than 4,096 tokens are removed after 80% low-entropy pruning,
+    leaving 70K samples. The paper does not document a public accept/reject ledger beyond this length filter; GRPO optimizes
+    rewards rather than publishing a retained-rollout predicate.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-7B is used for full-CoT generation and as the reported two-stage training base; static-pruning
+    experiments additionally evaluate DeepSeek-R1-7B, DeepSeek-R1-14B, and Qwen3-8B.
+  teacher: No separate teacher is reported for the main construction. The same DeepSeek-R1-Distill-Qwen-7B model generates
+    full CoTs whose low-entropy steps are then replaced by [SKIP].
+  generator: DeepSeek-R1-Distill-Qwen-7B generates full <think> trajectories; its token distributions supply the step-entropy
+    scores used to construct compressed traces.
+  filtering_rule: Rank newline-delimited steps by length-normalized step entropy, replace the lowest 80% with [SKIP], then
+    filter sequences exceeding 4,096 tokens for the SFT set. The paper does not report a final-answer-correctness filter for
+    the 70K SFT examples.
+  sampling_protocol: For each problem, generate a complete CoT, segment the thinking content at double newlines, compute per-step
+    entropy, and replace the lowest-entropy steps with [SKIP]. The paper reports 80% pruning for its training construction
+    but does not disclose decoding temperatures, seeds, retries, full rollout counts per source problem, or released retained/rejected
+    records.
+  rollout_count: null
+  temperature: null
+  inference_budget: Static experiments test 10%-100% step-mask ratios and select 80% low-entropy pruning. The trained model
+    produces compressed CoTs at inference, but a complete inference-time sampling budget, latency protocol, and cost accounting
+    are not disclosed.
+  optimizer_or_scaffold: Stage 1 runs SFT for three epochs on 70K pruned samples using DeepSpeed Stage 2 and LoRA. Stage 2
+    applies GRPO to a random 10K-sample subset with group size 14, DeepSpeed Stage 3, LoRA, AdamW, and a composite correctness/compression/length
+    reward; the repository supplies stage-specific scripts.
+audit:
+  source_mixture: 40K DeepScaleR problems plus 90K OpenR1-Math problems -> DeepSeek-R1-Distill-Qwen-7B full CoTs -> newline
+    step segmentation and length-normalized entropy -> 80% lowest-entropy steps replaced by [SKIP] -> sequences over 4,096
+    tokens removed -> 70K SFT samples -> random 10K subset for GRPO. No row-level mixture manifest or generated-trace release
+    was verified.
+  split: The paper reports 130K source problems, 70K post-length-filter SFT samples, and a random 10K GRPO subset, but it
+    does not provide public train/validation/test manifests, source-row mappings, or retained/rejected trace identifiers.
+  decontamination: unknown
+  license: unknown
+  lineage: DeepScaleR/OpenR1-Math prompts -> DeepSeek-R1-Distill-Qwen-7B full CoT -> model-derived per-step entropy -> fixed-ratio
+    [SKIP] compression -> length filtering -> SFT -> GRPO on a 10K subset. Dataset versions, row-level lineage, source licenses,
+    and generated-rollout identifiers are undisclosed.
+  known_failure_modes:
+  - The author repository contains construction and training code but no verified paper-matched 130K/70K dataset, compressed
+    trace corpus, raw entropy values, or retained/rejected rollout ledger; the data object is therefore not independently
+    reusable or auditable.
+  - Step boundaries are defined by model-generated double newlines, so the entropy ranking and which reasoning content is
+    removed can change under different formatting or segmentation choices.
+  - The fixed 80% pruning ratio is validated mainly on mathematical tasks and selected MMLU domains; the paper itself does
+    not establish transfer to open-ended, commonsense, creative, multimodal, or all model/task settings.
+  - The GRPO correctness reward is described at a high level but its final-answer extraction/checker implementation, reward-component
+    logs, and per-completion successes or failures are not released.
+  - Reported efficiency and accuracy reflect a coupled pipeline of source data, model-generated traces, entropy selection,
+    length filtering, SFT, GRPO, and inference configuration; the paper does not release ablations that isolate all data-lineage
+    and budget effects.
+  citation_status: verified
+  confidence: high
+  notes: The ICLR 2026 poster record, arXiv:2508.03346, OpenReview forum, and author-linked public code repository are verified.
+    The repository implements the disclosed construction/SFT/GRPO recipe, but no downloadable paper-matched trace dataset
+    or immutable data manifest was verified; data-related fields remain null or partial.
+  metadata_status: partial
+inclusion_reason: 'A direct Track 5 long-to-short trace-construction recipe: it converts model-generated full CoTs into step-entropy-ranked
+  compressed traces, then uses SFT and GRPO to transfer selective [SKIP]-based reasoning to lower-token inference.'
+related: []
+tags:
+- cot-compression
+- step-entropy
+- skip-token
+- long-to-short
+- trace-selection
+- sft
+- grpo
+- rlvr
+- test-time-efficiency
+status: partial
+one_line_summary: The paper ranks newline-delimited CoT steps by model-derived entropy, replaces low-entropy steps with [SKIP],
+  and trains SFT-plus-GRPO models to generate shorter reasoning traces.
+why_it_matters: 'It operationalizes Track 5''s core distinction between a full rollout trace and a selected trace: a model-derived
+  step score chooses what to hide, and the selected compressed trace becomes an SFT target before GRPO further trades off
+  answer correctness and token use. The unavailable generated corpus and selector/reward logs prevent independent assessment
+  of lineage, selection bias, and reusable training data.'
+card: null
+needs:
+- 'needs_data: paper-matched full and compressed CoT rows, per-step entropy scores, [SKIP] masks, source-record IDs, retained/rejected
+  traces, splits, and immutable versioning'
+- 'needs_provenance: DeepScaleR/OpenR1-Math versions and licenses, exact prompts, model revisions, decoding settings, seeds,
+  retries, and full rollout accounting'
+- 'needs_audit: final-answer checker/extraction implementation, GRPO reward-component logs, selector robustness across segmentations,
+  decontamination analysis, and controlled budget attribution'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against the ICLR 2026 official poster page, OpenReview forum, arXiv:2508.03346 (v2), and the paper-linked
+    public GitHub repository. Code is verified; a complete reusable trace-data artifact is not.
+category_ids:
+- rollout_search_test_time_trace_data

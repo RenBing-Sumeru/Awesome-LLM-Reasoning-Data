@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"ZIP-RC 在同一次前向中预测奖励与剩余长度，并据此分配测试时搜索。","reading_priority_ch":"必读","paper_type_ch":"零开销内省与自适应测试时搜索研究（ICLR 2026）","best_for_ch":"构建同时控制答案质量、计算量和延迟的自适应并行解码系统的读者。","confidence_ch":"高","authors_ch":"Rohin Manvi、Joey Hong、Tim Seyde、Maxime Labonne、Mathias Lechner、Sergey Levine（机构：加州大学伯克利分校、MIT CSAIL、Liquid AI）","category_ids":["scaling_rlvr_test_time_compute"]}

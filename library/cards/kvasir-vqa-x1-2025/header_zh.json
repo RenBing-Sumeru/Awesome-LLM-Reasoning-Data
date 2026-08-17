@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Kvasir-VQA-x1 将胃肠内镜原子问答扩展为 159,549 条经专家验证、按复杂度分层的多模态示范，用于临床视觉问答训练和鲁棒性评估。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放医学多模态指令数据集与基准研究",
+  "best_for_ch": "临床视觉问答微调、课程学习实验与视觉扰动鲁棒性审计",
+  "confidence_ch": "高",
+  "authors_ch": "Sushant Gautam、Michael A. Riegler、Pål Halvorsen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T07:50:00Z"
+}

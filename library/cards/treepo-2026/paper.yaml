@@ -1,0 +1,259 @@
+id: treepo-2026
+title: 'TreePO: Enhancing Policy Efficacy and Inference Efficiency with Tree Modeling'
+year: 2026
+venue: ICML 2026
+authors:
+- Yizhi LI
+- Qingshui Gu
+- Zhoufutu Wen
+- Ziniu Li
+- Ruibin Yuan
+- Tianshun Xing
+- Shuyue Guo
+- Tuney Zheng
+- Xin Zhou
+- Xingwei Qu
+- Wangchunshu Zhou
+- Zheng Zhang
+- Wei Shen
+- Wei Xue
+- Qian Liu
+- Chenghua Lin
+- Jian Yang
+- Ge Zhang
+- Wenhao Huang
+source_role:
+- construction_recipe
+- scaling_study
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+- trajectory_value
+domains:
+- mathematical_reasoning
+- reasoning
+training_use:
+- rlvr
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=npsWK8rgYO
+  paper_pdf: https://openreview.net/pdf?id=npsWK8rgYO
+  arxiv: https://arxiv.org/abs/2508.17445
+  code: https://github.com/multimodal-art-projection/TreePO
+  data: https://huggingface.co/datasets/m-a-p/TreePO_data
+  project: https://m-a-p.ai/TreePO/
+  huggingface: https://huggingface.co/collections/m-a-p/treepo
+  models: https://huggingface.co/collections/m-a-p/treepo
+  release: null
+  dataset_card: https://huggingface.co/datasets/m-a-p/TreePO_data
+  doi: https://doi.org/10.48550/arXiv.2508.17445
+  venue: https://openreview.net/forum?id=npsWK8rgYO
+  openreview: https://openreview.net/forum?id=npsWK8rgYO
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  record_type: Online query-rooted trees of shared-prefix reasoning segments whose terminal textual trajectories are paired
+    with programmatic answer outcomes and tree-relative subgroup advantages; the complete paper-run tree records are not publicly
+    released.
+  prompt_source: Approximately 8,000 MATH level-3-to-5 questions following SimpleRL plus 40,000 DeepScaler training questions.
+    The official HF repository releases corresponding train/test Parquets and aligned evaluation Parquets, but its default
+    viewer exposes only 3,120 evaluation rows as one auto-derived train split.
+  trace_author: The current Qwen2.5-7B base policy during online RL training. Separate offline efficiency analyses use Qwen2.5-7B-Instruct,
+    Qwen2.5-Math-7B-Instruct, and Qwen2.5-Math-7B.
+  context_state:
+  - query as root node
+  - active prompt queue
+  - shared response-prefix tokens and KV cache
+  - current depth and segment-token budget
+  - per-node branching budget
+  - completed or stopped trajectories
+  answer_format: Free-form mathematical chain-of-thought text with a final answer expected in legal `boxed{}` formatting;
+    EOS, repetition, depth, and output-token limits can also terminate a path.
+  process_fields:
+  - prompt_or_query
+  - input_ids
+  - full_response_token_ids
+  - per_token_logprobs
+  - cumulative_logprobs
+  - tree_idx
+  - depth
+  - token_count_per_step
+  - status
+  - finished_reason
+  - trajectory_finish_step
+  - fallback_counters
+  - terminal_answer_reward
+  - subgroup_advantage
+  observation: The rollout engine observes decoded segments, answer formatting, EOS, repeated substrings, token log-probabilities,
+    depth, response length, active-path counts, and completed-path counts.
+  verifier_output: Rule-style final-answer equivalence against the ground truth plus a terminal correctness reward. There
+    is no independently supervised process-correctness label for each segment.
+  reward: Outcome reward `R_i` is final-answer correctness. TreePO forms ancestor-defined trajectory subgroups, subtracts
+    each subgroup mean reward, averages the subgroup-relative advantages across ancestors, and applies global variance normalization.
+  environment_or_substrate: Online segment-level tree generation implemented in veRL with a vLLM backend; common prefixes
+    share KV-cache computation while active branches are scheduled through a prompt queue.
+  verifier_or_reward: Programmatic boxed-answer equivalence and DAPO-style group filtering; no learned judge or reward model
+    is required by the reported math setup.
+  terminal_predicate: A legal boxed answer, EOS, maximum response length, maximum tree depth, or repetition stop ends a path.
+    Paper fallback selects only stopped paths with formatted answers or EOS; implementation behavior is policy-configurable.
+  provenance: Released SimpleRL/DeepScaler prompt and ground-truth Parquets -> current-policy segment rollouts -> shared-prefix
+    tree with branching, pruning, and fallback -> terminal rule reward -> hierarchical subgroup advantages -> TreePO policy
+    updates -> released checkpoints and benchmark evaluation.
+  runtime_schema: The in-memory `DataSampleTree` contains ancestry, response tokens, log-probabilities, status, finish reason,
+    and per-step token counts. Trainer-facing `DataProto` returns terminal responses plus `tree_idx`, finish step, and fallback
+    counters.
+  persisted_schema: The optional diagnostic JSON stores arguments, timing/length summaries, aggregate depth and token-count
+    distributions, and flattened input/output pairs. It does not preserve full tree edges, per-record finish reason, all active/pruned
+    branches, rejected query groups, or fallback lineage.
+  release_surface: Official code, prompt/reward Parquets, and model checkpoints are released. No immutable corpus of paper-run
+    rollout trees, all branches, pruned paths, group-rejected queries, rewards, or trainer batches was found.
+recipe_metadata:
+  base_model: Qwen2.5-7B base for the main RL training. Offline efficiency experiments additionally use Qwen2.5-7B-Instruct,
+    Qwen2.5-Math-7B-Instruct, and Qwen2.5-Math-7B.
+  teacher: unknown
+  generator: The current policy decodes fixed-length segments, forks selected prompt prefixes, and reuses shared-prefix KV
+    cache through the vLLM inference backend.
+  prompt_task_source: MATH level-3-to-5 questions following SimpleRL and the DeepScaler collection; evaluation uses AIME 2024,
+    AMC 2023, MATH500, MINERVA, and OlympiadBench.
+  filtering_rule: Prompts longer than 1,024 tokens are filtered. Root query groups with all-correct or all-wrong terminal
+    rewards are dynamically rejected. Repetition can stop a branch; subgroup-level all-positive/all-negative rejection was
+    tested and not adopted.
+  sampling_protocol: Binary per-depth branching with maximum width 16; the reported online settings explore depth-by-segment
+    pairs `28x256`, `14x512`, and `7x1024`. Initial divergence is fixed or randomly assigned from 2 to 8. Branching budget
+    is redistributed over active paths, and depth-first fallback runs only when no active path remains and the target width
+    has not been reached.
+  rollout_count: 16 trajectories per query for online training and validation. The data loader samples three times the 512-query
+    training batch and retains 512 non-zero-reward-variance groups.
+  temperature: Released training script sets temperature 1.0, top-p 1.0, and top-k -1. The paper's 16-rollout shared-prefix
+    case study uses temperature 0.8.
+  inference_budget: Online training uses a 7,168-token response limit and the released main script selects `14x512`, width
+    16, fixed step divergence 2, and initial divergence up to 8. Table 2 compares sequential sampling with `8x2048` trees
+    at branching factors 2, 4, and 8. Offline efficiency uses 64 prompts and 64 rollouts per prompt on one H100 80GB at 60%
+    utilization with a 7,000-token per-trajectory budget and no tensor/data parallelism.
+  search_or_scaffold: Segment-level shared-prefix search, branching-budget transfer, answer/EOS/repetition stopping, depth-first
+    fallback, and ancestor-defined trajectory subgroups.
+  selection_threshold: Root query groups must have non-zero reward standard deviation. All active branches receive at least
+    one branch in the probability-based allocation ablations, but not every possible or pruned branch is retained.
+  seed_protocol: unknown
+  reward_schedule: Static programmatic outcome correctness followed by subgroup-relative baselines, simple averaging across
+    ancestors, and global variance normalization. Subgroup-size weighting and subgroup rejection are ablations, not the selected
+    method.
+  optimizer_or_scaffold: DAPO-modified GRPO with TreePO hierarchical advantages, clip-low 0.2, clip-high 0.28, token-mean
+    loss, no KL reward/loss, learning rate 1e-6, 10 warmup steps, batch size 512, gradient clip 1.0, FSDP, and at most 20
+    epochs in the released script.
+  training_compute: The paper reports 64 GPUs for the main training setup and checkpoint interval 50. Hardware model for that
+    64-GPU run is not disclosed.
+  efficiency_results: Table 2 reports 12%-43% lower GPU hours across tested tree settings. The controlled offline analysis
+    reports a geometric-mean gain of 40% trajectories/s and 30% tokens/s across three Qwen2.5 variants; the abstract reports
+    maxima of 40% trajectory-level and 35% token-level sampling reduction.
+audit:
+  source_mixture: Main RL prompts are approximately 8K SimpleRL MATH level-3-to-5 plus 40K DeepScaler samples. The HF repository
+    also packages AIME, AMC, MATH, MINERVA, and OlympiadBench evaluation Parquets. No row-level source/license/decontamination
+    manifest links each training prompt to a paper-run rollout tree.
+  split: Root HF filenames distinguish DeepScaler train/AIME and SimpleRL train/test files, while an evaluation folder packages
+    five aligned benchmark Parquets. Because the dataset card lacks YAML metadata, the default viewer exposes only 3,120 evaluation
+    examples as one `train` split; semantic split bindings and exact paper-run hashes are not published.
+  decontamination: unknown
+  benchmark_overlap: No prompt-level or semantic overlap audit between the released training mixture, evaluation benchmarks,
+    or base-model pretraining data was found.
+  license: The OpenReview paper is CC BY-NC-SA 4.0 and the GitHub code is Apache-2.0. The HF dataset card declares no dataset
+    license, and the checked model page does not establish a separate model-weight license; both remain unknown.
+  lineage: SimpleRL/DeepScaler prompt and rule ground truth -> Qwen2.5-7B online segment tree -> terminal answer outcomes
+    -> ancestor subgroup advantages -> DAPO-style policy update -> released TreePO checkpoints. Full branch-level lineage
+    is not released.
+  release_version: Code inspected at GitHub main commit `f05552394e734ea2838cf9e3b8191f5093319dcf` (2025-10-08); HF data inspected
+    at commit `e626dfb59a78e9f53e6bd951da56e4ec6c51b38c` (2025-10-08). The GitHub repository has no tagged release.
+  successful_and_failed_sample_retention: Terminal samples can include answer-complete, EOS, max-length, max-depth, and repetition-stopped
+    trajectories. Short-filtered paths and unallocated active paths can disappear, and group-rejected queries are not published.
+    No complete successful/failed/pruned/rejected tree corpus was found.
+  known_failure_modes:
+  - A correct boxed answer can reward invalid intermediate reasoning; answer parsing/equivalence can also mishandle equivalent
+    mathematical forms.
+  - Repetition-stopped and otherwise incomplete paths may enter the terminal response pool, while discarded short paths and
+    unallocated branches leave no reusable audit record.
+  - Dynamic removal of all-correct/all-wrong query groups changes the sampled curriculum, but no rejected-query manifest is
+    released.
+  - The optional JSON exporter flattens terminal input/output pairs and aggregate statistics, so it cannot reconstruct exact
+    parent-child edges, fallback ancestry, pruning decisions, or branch-level rewards.
+  - Efficiency gains depend on prefix sharing, model alignment, segment length, rollout count, vLLM scheduling, and H100-specific
+    measurements; wider or deeper trees are not uniformly better.
+  - Lower GPU hours do not uniformly preserve peak accuracy; Table 2 shows budget-dependent accuracy/efficiency trade-offs.
+  - The paper says at most two extra sampling batches when forming a training batch, whereas the released script sets maximum
+    generation batches to 10.
+  - Dataset YAML metadata, data/model licenses, decontamination, random seeds, immutable rollout manifests, and complete paper-run
+    logs are missing.
+  - Accepted OpenReview title/authors/year differ from the arXiv/project/repository citation; citation metadata can silently
+    regress to the older 2025 record.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the ICML 2026 OpenReview record and final-paper link, all 16 pages of the official arXiv v1 paper,
+    the official project page, GitHub implementation and Apache license, HF collection, checkpoint page, dataset card/files/viewer,
+    datasets-server schema/statistics, and target-checkout duplicate searches.
+  remaining_unknowns:
+  - Exact paper-run rollout trees, all active/pruned/rejected branches, rewards, fallback decisions, and trainer-batch hashes
+  - Dataset and model-weight licenses and upstream per-source licensing
+  - Random seeds, complete run-to-checkpoint/log mapping, failure runs, and independent rerun variance
+  - Prompt-level decontamination and overlap with evaluation or base-model pretraining data
+  - Hardware model for the reported 64-GPU online training runs
+inclusion_reason: 'TreePO makes online reasoning-rollout structure itself an optimization object: shared-prefix segment trees
+  reduce redundant inference, and terminal outcome rewards are transformed into ancestor-subgroup advantages for RLVR. It
+  is therefore a direct Track 5 construction recipe, while its missing branch-complete rollout release is an important audit
+  boundary.'
+related:
+- dapo-2025
+- tree-rl-2025
+tags:
+- treepo
+- tree-structured-rollouts
+- shared-prefix
+- segment-level-sampling
+- kv-cache-reuse
+- hierarchical-advantage
+- outcome-reward
+- rlvr
+- test-time-compute
+- inference-efficiency
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: TreePO replaces independent math rollouts with shared-prefix segment trees and trains on terminal answer
+  rewards through hierarchical subgroup advantages, releasing code, prompts, and checkpoints but not complete paper-run trees.
+why_it_matters: It exposes how rollout topology, branch allocation, fallback, token budgets, and outcome-reward credit assignment
+  jointly shape RLVR efficiency, while showing why prompt releases alone are insufficient for branch-level reproducibility.
+card: null
+card_recommendation: recommended
+card_recommendation_reason: The method is a high-value Track 5 anchor with an explicit tree data object, exact compute budgets,
+  released implementation and artifacts, and a consequential gap between in-memory tree lineage and public data.
+needs:
+- 'needs_rollout_release: publish immutable paper-run terminal trajectories with prompts, rewards, tree_idx, segment boundaries,
+  and checkpoint/run bindings'
+- 'needs_branch_audit: retain every active, pruned, short-filtered, unallocated, fallback, and group-rejected branch with
+  parent-child edges and stop reasons'
+- 'needs_dataset_metadata: add a dataset card with semantic configs/splits, per-file row counts, source provenance, and dataset
+  license'
+- 'needs_reproducibility_pin: publish a tagged release with exact configs, container hashes, random seeds, hardware, run-to-log
+  mapping, and checkpoint hashes'
+- 'needs_decontamination: report prompt-level and semantic overlap checks against all evaluation benchmarks and upstream model
+  training data'
+- 'needs_reconciliation: explain the paper-vs-script extra-generation-batch discrepancy and pin the configuration used for
+  each reported table'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official citation, accepted venue metadata, paper/arXiv, project, code, code license, data repository, dataset schema,
+    collection, and checkpoints were checked. Artifact verification confirms these releases exist; it does not imply that
+    the rollout trees, pruned/rejected records, dataset/model licenses, or complete reproducibility package are available.

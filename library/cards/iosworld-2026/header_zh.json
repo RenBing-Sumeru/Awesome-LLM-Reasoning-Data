@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "iOSWorld发布26个互联SwiftUI应用、133项任务与1,123条rubric，并开放seed state、runner、MCP和episode judge；但完整成败rollout语料未公开，现阶段仅适合评测复用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "原生iOS智能体交互基准与可执行环境",
+  "best_for_ch": "研究移动GUI智能体、环境交互轨迹、rubric-based judge、MCP工具与回放审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Lawrence Keunho Jang, Mareks Woodside, Geronimo Carom, Andrew Keunwoo Jang, Jing Yu Koh, Ruslan Salakhutdinov",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

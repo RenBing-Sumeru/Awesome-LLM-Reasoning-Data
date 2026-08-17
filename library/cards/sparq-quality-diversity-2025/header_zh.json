@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SPARQ 递归变异 MATH 题目，用 16 条学生 rollout 估计子题难度，并将非平凡子题的成功学生解答组织成按技能单元索引的 SFT 元组。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "质量—多样性合成数学问题构造与规模研究",
+  "best_for_ch": "研究合成题目、策略相对难度筛选、质量—多样性搜索和数学 SFT 数据构造的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Alex Havrilla、Edward Hughes、Mikayel Samvelyan、Jacob Abernethy",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

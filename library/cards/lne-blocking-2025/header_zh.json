@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LNE-Blocking 以长度归一化熵决定解码扰动强度，估计潜在泄漏基准上的非记忆性能。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Findings of EMNLP 2025 的基准污染缓解与评测可靠性研究",
+  "best_for_ch": "需要审计污染基准、比较记忆与泛化行为或设计污染缓解评测的研究者。",
+  "confidence_ch": "高：正式会议论文、代码与作者机构均已核验。",
+  "authors_ch": "Ruijie Hou, Yueyang Jiao, Hanxu Hu, Yingming Li, Wai Lam, Huajian Zhang, Hongyuan Lu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

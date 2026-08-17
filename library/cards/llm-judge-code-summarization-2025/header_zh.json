@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "审计大语言模型评审代码正确性和代码摘要质量时的可靠性与失效模式。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "大语言模型评审可靠性实证研究",
+  "best_for_ch": "需要校准代码自动评测或代码奖励信号的研究者。",
+  "confidence_ch": "高：已核对正文、作者机构与 IEEE TSE 正式版本。",
+  "authors_ch": "Giuseppe Crupi, Rosalia Tufano, Alejandro Velasco, Antonio Mastropaolo, Denys Poshyvanyk, Gabriele Bavota",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

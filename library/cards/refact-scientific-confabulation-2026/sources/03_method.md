@@ -1,0 +1,5 @@
+1. **Collect authentic QA:** Select scientific questions with expert answers from `r/AskScience`, clean formatting, and preserve full context.
+2. **Verify errors with experts:** Domain reviewers determine whether an answer contains confabulation and mark the minimal erroneous span and correct fact.
+3. **Create single-error variants:** Insert or replace one scientific error while holding the rest of the answer fixed, controlling position and semantic similarity.
+4. **Organize evaluation:** Ask models to detect independently, localize spans, compare two responses, and produce corrections, scoring F1, positional overlap, and revision correctness; After perturbation, experts confirm that the new error is valid, the rest of the response remains intact, and an exact correction is preserved.
+5. **Reproducibility:** Reproducibility: fix the Reddit snapshot, expert guidelines, error-injection rules, nine models, and independent or pairwise prompts. Mark undisclosed generation budgets, discipline strata, or judge parameters unknown.

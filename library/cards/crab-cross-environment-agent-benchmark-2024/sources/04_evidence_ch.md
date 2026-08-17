@@ -1,0 +1,1 @@
+官方项目页报告了 Ubuntu 和 Android 两个环境中的 120 个任务，并说明跨环境支持、graph evaluator 和任务生成。arXiv v4 摘要报告 benchmark 上 single-agent GPT-4o 的最佳 completion ratio 为 38.01%。官方仓库公开 `crab-benchmark-v0`、文档、示例和安装说明。单条样本的证据是 episode 轨迹上的 graph evaluator 节点结果，而不是 leaderboard 数字本身。证据受 benchmark-v0、evaluator graph 语义、通信设置、模型版本、GUI/设备状态和依赖版本约束。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HuatuoGPT-o1 把医学考试题筛成 4 万道可验证问题，其中一半带复杂推理用于微调，另一半用于强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "医学复杂推理监督微调后接可验证强化学习",
+  "confidence_ch": "高",
+  "authors_ch": "Junying Chen、Zhenyang Cai、Ke Ji、Xidong Wang、Wanlong Liu、Rongsheng Wang、Jianye Hou、Benyou Wang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

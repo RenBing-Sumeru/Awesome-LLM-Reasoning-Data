@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SoundMind 将 6,446 个逻辑三元组转为文本与语音对齐的长推理示范和蕴含标签，用于音频语言模型的监督微调与规则奖励训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放音频推理数据集与强化学习研究",
+  "best_for_ch": "构建与审计语音思维链监督微调或规则奖励训练数据",
+  "confidence_ch": "高",
+  "authors_ch": "Xingjian Diao、Chunhui Zhang、Keyi Kong、Weiyi Wu、Chiyu Ma、Zhongyu Ouyang、Peijun Qing、Soroush Vosoughi、Jiang Gui",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T07:50:00Z"
+}

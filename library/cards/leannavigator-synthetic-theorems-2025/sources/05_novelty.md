@@ -1,0 +1,9 @@
+LeanNavigator's distinctive move is to mine proof supervision from the state graph around existing formal theorems rather than relying only on their original human-written proof paths. Any reachable state that can still reach `ProofFinished` becomes a new training task, with the reverse path to the terminal node serving as its proof.
+
+The tactic-template retrieval layer makes that graph expansion operational. Normalizing variable and hypothesis names increases template reuse; a learned state/template embedding plus FAISS narrows the action set before Lean execution. This combination is different from exhaustively enumerating tactics and from autoregressively generating every candidate action.
+
+The verifier is not novel as a new scoring model: it is Lean's executable semantics exposed through LeanDojo. The novelty lies in using that environment signal to build a large graph, then extracting terminal-reachable states under an eight-tactic horizon and shortest-path rule. Likewise, the public object is a conventional supervised input/target pair rather than a new training objective.
+
+For reasoning-data curation, the work makes an important separation visible. **Search-time richness and release-time richness are not the same.** Generation has graph ancestry, alternate edges, failed actions, and exact terminal reachability; the release discards them. The resulting rows remain useful for SFT, but cannot reproduce the search, support graph-aware splits, or audit why one path was selected without additional manifests.
+
+The term “generated theorem” should also be read narrowly. A Lean proof state under local hypotheses is a valid formal proposition that can become a theorem declaration, but the paper does not show that 4.7 million rows are distinct human-interest mathematical discoveries. The construction primarily expands executable supervision within Mathlib4's proof ecology.

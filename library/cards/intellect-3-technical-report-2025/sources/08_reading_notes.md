@@ -1,0 +1,4 @@
+- Separate released infrastructure from the unreleased frozen rollout corpus and run manifest.
+- Check the exact version and reward logic of every Environments Hub module before reuse.
+- Treat benchmark gains as evidence for the reported evaluation settings, not proof of complete recipe reproducibility.
+- Audit asynchronous policy lag, sandbox behavior, test coverage, and reward-gaming surfaces together.

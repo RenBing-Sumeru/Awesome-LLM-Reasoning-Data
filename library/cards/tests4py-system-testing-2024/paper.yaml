@@ -1,0 +1,114 @@
+id: tests4py-system-testing-2024
+title: 'Tests4Py: A Benchmark for System Testing'
+year: 2024
+venue: FSE 2024 / arXiv
+authors:
+- Marius Smytzek
+- Martin Eberlein
+- Batuhan Serçe
+- Lars Grunske
+- Andreas Zeller
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- system-testing
+- bug-benchmarks
+- test-generation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2307.05147
+  arxiv: https://arxiv.org/abs/2307.05147
+  doi: https://doi.org/10.48550/arXiv.2307.05147
+  code: https://github.com/smythi93/Tests4Py
+  data: https://github.com/smythi93/Tests4Py
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tests4Py paper and GitHub repository
+  trace_author: Tests4Py authors and benchmark construction
+  answer_format: buggy programs, tests, grammars, oracles, checkout metadata, and system-testing outcomes
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: system-testing benchmark tasks and bug reproductions
+  verifier_or_reward: test execution, oracle checks, and Tests4Py tooling
+  terminal_predicate: test execution, oracle checks, and Tests4Py tooling
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: system-test oracles and bug datasets
+  generator: Tests4Py benchmark packaging
+  filtering_rule: verify checkout, oracle, grammar, and test-generation interface
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2307.05147; https://github.com/smythi93/Tests4Py
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2307.05147'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: system testing/bug benchmark rather than LLM trajectory data; verify checkout, oracle, grammar, and interface
+inclusion_reason: it contributes executable testing surfaces adjacent to code-agent evaluation
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- system-testing
+- bug-benchmarks
+- test-generation
+one_line: Tests4Py provides a benchmark for system testing and bug-oriented evaluation.
+why_it_matters: it contributes executable testing surfaces adjacent to code-agent evaluation
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Tests4Py provides a benchmark for system testing and bug-oriented evaluation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: arXiv v2 confirms FSE 2024 booktitle, authors, affiliations, benchmark scale, and arXiv DOI; official README confirms
+    CLI, install path, and MIT license.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 116
+  primary_category_id: benchmarks_evaluation_surfaces

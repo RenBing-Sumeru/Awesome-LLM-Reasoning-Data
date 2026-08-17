@@ -1,0 +1,3 @@
+Correctness is only relative to the packaged project tests and metadata. Passing tests does not prove the patch is semantically complete, secure, or production-ready, and the hot-fix label depends on issue metadata plus reviewer judgment.
+
+The artifact is Java/Apache-heavy and may not transfer to other ecosystems, operational incidents, or non-testable production failures. Dependency drift is a major risk: Java versions, Maven/Gradle versions, submodule commits, release tags, and flaky tests can change the executable verdict. License and redistribution terms should be checked at repository and upstream-project levels.

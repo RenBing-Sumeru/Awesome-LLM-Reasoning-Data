@@ -1,0 +1,99 @@
+id: llava-critic-learning-evaluate-multimodal-models-2025
+title: 'LLaVA-Critic: Learning to Evaluate Multimodal Models'
+year: 2025
+venue: CVPR 2025
+authors:
+- Tianyi Xiong
+- Xiyao Wang
+- Dong Guo
+- Qinghao Ye
+- Haoqi Fan
+- Quanquan Gu
+- Heng Huang
+- Chunyuan Li
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- answer_level
+domains:
+- multimodal-evaluation
+- vision-language
+training_use:
+- reward_modeling
+- preference_learning
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2025/html/Xiong_LLaVA-Critic_Learning_to_Evaluate_Multimodal_Models_CVPR_2025_paper.html
+  arxiv: null
+  code: https://github.com/llava-vl/LLaVA-Critic
+  data: https://huggingface.co/datasets/lmms-lab/llava-critic-113k
+  project: https://llava-vl.github.io/blog/2024-10-03-llava-critic
+  huggingface: https://huggingface.co/datasets/lmms-lab/llava-critic-113k
+  doi: https://doi.org/10.1109/CVPR52734.2025.01391
+  venue: https://openaccess.thecvf.com/content/CVPR2025/html/Xiong_LLaVA-Critic_Learning_to_Evaluate_Multimodal_Models_CVPR_2025_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2025/html/Xiong_LLaVA-Critic_Learning_to_Evaluate_Multimodal_Models_CVPR_2025_paper.html
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://openaccess.thecvf.com/content/CVPR2025/html/Xiong_LLaVA-Critic_Learning_to_Evaluate_Multimodal_Models_CVPR_2025_paper.html
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: LLaVA-Critic publicly releases multimodal critic instruction and preference data for evaluation and alignment.
+related: []
+tags:
+- vision-language
+- critic
+- preference-data
+- cvpr-2025
+one_line_summary: LLaVA-Critic releases 113,000 multimodal evaluation records—scores, preference pairs, and rationales—to
+  train an open generalist vision-language evaluator.
+why_it_matters: It combines criterion-following scoring, pairwise preference, and rationale generation in one open multimodal
+  critic dataset.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data

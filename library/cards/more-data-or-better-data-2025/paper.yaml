@@ -1,0 +1,121 @@
+id: more-data-or-better-data-2025
+title: More Data or Better Data? A Critical Analysis of Data Selection and Synthesis for Mathematical Reasoning
+year: 2025
+venue: EMNLP 2025 Industry Track
+authors:
+- Yike Zhao
+- Simin Guo
+- Ziqing Yang
+- Shifan Han
+- Dahua Lin
+- Fei Tan
+source_role:
+- construction_recipe
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical_reasoning
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-industry.43/
+  arxiv: https://arxiv.org/abs/2510.07169
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-industry.43
+  venue: https://aclanthology.org/2025.emnlp-industry.43/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-industry.43/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-industry.43.bib
+data_object:
+  prompt_source: OCR-derived mathematics books, NaturalReasoning questions, MATH failure cases and retrieved neighbors, and
+    textbook chunks; exact source manifests are undisclosed.
+  trace_author: Qwen2.5-72B writes Math-Cosmo explanations and QwQ-32B regenerates NaturalReasoning answers; several other
+    generator/filter models are unnamed.
+  answer_format: Educational rewrites, distilled reasoning answers, weakness-guided problems, and textbook question-solution
+    pairs; no canonical released schema exists.
+  process_fields:
+  - source
+  - generated_text
+  - answer_consistency
+  - retrieval_rank
+  - quality_decision
+  - deduplication_decision
+  environment_or_substrate: Fixed 80% validated code/math plus 20% candidate-data training comparisons.
+  verifier_or_reward: Benchmark deltas, answer agreement, unspecified LLM quality judgments, and MinHash deduplication.
+  terminal_predicate: Candidate data are useful when the controlled mixture improves the baseline; record-level predicates
+    remain partial.
+recipe_metadata:
+  base_model: DeepSeek-V2-Lite or Qwen2.5-3B; table-to-checkpoint mapping is incomplete.
+  teacher: Qwen2.5-72B and QwQ-32B, with other models unknown.
+  generator: OCR restructuring, strong-model distillation, failure-guided retrieval/augmentation, and textbook QA extraction.
+  filtering_rule: Consistency checks, LLM filtering and MinHash; exact prompts, thresholds and rejects are unknown.
+  sampling_protocol: Every candidate is evaluated at 20% mixture weight against 80% validated data.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Math-Cosmo expands about 0.13B OCR tokens to 760M tokens; full generation/training cost is unknown.
+  optimizer_or_scaffold: Controlled annealing-style comparison; exact optimizer and schedule are undisclosed.
+audit:
+  source_mixture: The validated baseline and record-level mixtures are not released.
+  split: Item-level splits, seeds, source snapshots, and the separation between MATH failure seeds and MATH evaluation are
+    unknown.
+  decontamination: MinHash is reported for textbook QA deduplication, not benchmark decontamination; benchmark-wide overlap
+    and MATH failure-seed separation are unknown.
+  license: Paper is CC BY 4.0; constructed-data and source-book rights are unavailable.
+  lineage: Aggregate pipelines are described without stable IDs, source pages, teacher logs or rejection records.
+  known_failure_modes:
+  - Agreement can preserve concordant wrong answers
+  - candidate mixtures confound several factors
+  - constructed corpora and code are unreleased
+  - results lack repeated-run uncertainty
+  - reasoning length is not a reliable difficulty proxy
+  citation_status: verified
+  confidence: medium
+  notes: Publication is verified; no official construction artifact was identified.
+inclusion_reason: Controlled comparison of math-data selection and synthesis, including useful negative results and release-audit
+  lessons.
+related:
+- advancing-math-data-synthesis-2025
+tags:
+- math-data-selection
+- data-synthesis
+- controlled-mixtures
+- negative-results
+- release-gaps
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Compares math-data recipes under a fixed 80/20 scaffold, finding benefits from restructuring and strong-model
+  distillation but releasing none of the constructed corpora.
+why_it_matters: Separates practical data-recipe effects from simple scale while exposing missing controls, lineage and release
+  artifacts.
+card: null
+needs:
+- unknown constructed-data release
+- unknown baseline composition
+- unknown decoding and training configuration
+- unknown benchmark-wide decontamination
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official ACL Anthology publication, PDF, BibTeX, DOI, and arXiv record verified; no official construction code or
+    generated-data release was found.

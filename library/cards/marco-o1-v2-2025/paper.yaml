@@ -1,0 +1,120 @@
+id: marco-o1-v2-2025
+title: 'Marco-o1 v2: Towards Widening The Distillation Bottleneck for Reasoning Models'
+year: 2025
+venue: ACL 2025
+authors:
+- Huifeng Yin
+- Yu Zhao
+- Minghao Wu
+- Xuanfan Ni
+- Bo Zeng
+- Hao Wang
+- Tianqi Shi
+- Liangying Shao
+- Chenyang Lyu
+- Longyue Wang
+- Weihua Luo
+- Kaifu Zhang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- pairwise_preference
+domains:
+- reasoning
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- search_substrate
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1145/
+  arxiv: https://arxiv.org/abs/2503.01461
+  code: https://github.com/AIDC-AI/Marco-o1
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1145
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1145/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Open-ended reasoning prompts; full prompt-source manifest and full training corpus were not verified as released.
+  trace_author: unknown
+  answer_format: MCTS chain-of-thought trees with terminal rule rewards, selected trajectories, and SFT/DPO preference pairs.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Terminal rule checking is programmatic when applicable, while reflection and model-based components
+    yield a mixed feedback contract.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Marco-o1 v2 uses MCTS to expand reasoning traces, gathers selected trajectories for SFT, and forms preference
+    pairs for DPO.
+  filtering_rule: Terminal rule checking is programmatic when applicable, while reflection and model-based components yield
+    a mixed feedback contract.
+  sampling_protocol: Official code is AIDC-AI/Marco-o1. Demonstration data are available, but the checked evidence does not
+    establish a full tree/trajectory corpus release.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Marco-o1 v2 uses MCTS to expand reasoning traces, gathers selected trajectories for SFT, and forms
+    preference pairs for DPO.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Open-ended reasoning prompts; full prompt-source manifest and full training corpus were not verified as released.
+    -> MCTS chain-of-thought trees with terminal rule rewards, selected trajectories, and SFT/DPO preference pairs. -> Terminal
+    rule checking is programmatic when applicable, while reflection and model-based components yield a mixed feedback contract.
+    -> reported final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Rule rewards may not cover open-ended correctness; partial data release leaves tree scores, rejected branches, and pair
+    lineage unavailable.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It is a direct example of multi-stage search trace reuse; audit depends on retaining the search tree and
+  preference-pair derivation, not only final demonstrations.
+related: []
+tags:
+- mcts
+- chain-of-thought
+- sft
+- dpo
+- open-ended-reasoning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: An open reasoning pipeline connecting MCTS chain-of-thought search to SFT and DPO data construction.
+why_it_matters: It is a direct example of multi-stage search trace reuse; audit depends on retaining the search tree and preference-pair
+  derivation, not only final demonstrations.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

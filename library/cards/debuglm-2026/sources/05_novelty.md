@@ -1,0 +1,5 @@
+The central contribution is a proactive provenance contract: source identity is bound to task records during training and can be requested alongside generation later. This differs from static dataset documentation, retrieval over stored training text, or post-hoc influence estimation because the final model learns an explicit source-label interface as part of optimization.
+
+DebugLM also reuses the source vocabulary for deployment control. The same label that supports diagnosis can condition a source-targeted refusal, connecting a construction-time field to an observable action. Fine-grained and multi-source experiments explore how far this interface can move beyond one dataset-one tag.
+
+The novelty should not be overstated. The model is trained to self-report curator-supplied labels; the paper does not cryptographically bind those reports to immutable records, authenticate the training run, or replay a failure through an execution environment. Its contribution is a learned diagnostic and control schema, not independently verified causal lineage.

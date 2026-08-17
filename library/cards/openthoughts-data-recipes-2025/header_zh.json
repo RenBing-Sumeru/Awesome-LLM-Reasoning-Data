@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenThoughts 用来源筛选、prompt 过滤、16 次 QwQ-32B 采样和完整 SFT 构成 120 万条数学/代码/科学推理数据；其主要价值是把构造选择变成可对照的 recipe，但答案未做正确性验证，且来源权利、逐条 provenance 与仓库密钥卫生问题阻断直接训练复用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放推理数据发布、构造 recipe 与 SFT scaling study",
+  "best_for_ch": "设计 reasoning-data 构造管线、比较 prompt/answer 过滤策略、复现 teacher distillation，或审计开放数据许可、provenance、去污染与 secret hygiene 的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Etash Guha、Ryan Marten、Sedrick Keh、Negin Raoof、Georgios Smyrnis、Hritik Bansal、Marianna Nezhurina、Jean Mercat、Trung Vu、Zayne Sprague、Ashima Suvarna、Benjamin Feuer、Leon Liangyu Chen、Zaid Khan、Eric Frankel、Sachin Grover、Caroline Choi、Niklas Muennighoff、Shiye Su、Wanjia Zhao、John Yang、Shreyas Pimpalgaonkar、Kartik Sharma、Charlie Cheng-Jie Ji、Yichuan Deng、Sarah Pratt、Vivek Ramanujan、Jon Saad-Falcon、Stutee Acharya、Jeffrey Li、Achal Dave、Alon Albalak、Kushal Arora、Blake Wulfe、Chinmay Hegde、Greg Durrett、Sewoong Oh、Mohit Bansal、Saadia Gabriel、Aditya Grover、Kai-Wei Chang、Vaishaal Shankar、Aaron Gokaslan、Mike A. Merrill、Tatsunori Hashimoto、Yejin Choi、Jenia Jitsev、Reinhard Heckel、Maheswaran Sathiamoorthy、Alexandros G. Dimakis、Ludwig Schmidt",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

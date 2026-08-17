@@ -1,0 +1,3 @@
+TRACE defines convergence from a sliding window of reasoning steps instead of from one token-level estimate. Answer Consistency Score measures whether an induced candidate answer recurs across the window, while Confidence Trajectory Score summarizes the model's confidence for that answer over the same time span.
+
+The two signals are combined into a stability score. Only when the best candidate exceeds a threshold does the system stop and return it; otherwise the reasoning model continues. This converts early exit from a reactive confidence heuristic into a test-time allocation rule based on sustained evidence.

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Agent Island 发布了含 999 场七智能体社交策略 episode 的冻结 CC BY 4.0 manifest，并以 Bayesian Plackett-Luce 对胜者结果建模；独立的 live leaderboard 会持续漂移。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多智能体动态 benchmark、环境与 full-episode 数据发布",
+  "best_for_ch": "研究 environment/agent trajectory、adaptive-opponent evaluation、行为审计与 live benchmark 版本治理的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Connacher Murphy",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

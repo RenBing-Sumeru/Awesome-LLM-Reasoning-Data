@@ -1,0 +1,14 @@
+For **Data Construction & Open Release Recipes**, Coral is most useful as a blueprint for converting multi-turn self-play into controlled next-turn preferences and as a disclosure checklist for collaborative-agent data.
+
+1. **Preserve the raw tree.** Store problem/split/revision, gold answer, prompts, active role, full prefix, all five siblings, randomly continued sibling, all five tree IDs, token usage, errors, and stop decisions. The final DPO row cannot recover this construction history.
+2. **Audit the mixed verifier.** Release the extraction prompt/model revision, raw extractor output, normalized belief, match decision, invalid cases, and expert adjudication samples. Measure extraction false positives and negatives by task and context length.
+3. **Separate outcome from collaboration quality.** Retain partial-progress, clarification, persuasion, assertion, verbosity, and politeness annotations independently of final-answer correctness. A correct answer does not make every turn good; a missing final answer does not make every turn useless.
+4. **Construct context-controlled preferences.** Same-prefix siblings are a strong design for isolating next-turn choice. Publish all eligible positive/negative siblings and sampling decisions so pair selection bias and easy-problem caps can be audited.
+5. **Reconcile executable settings.** Release one immutable paper-run command per model/task with two-pairs/20-per-problem caps, 8,192-token policy, generation knobs, seeds, dependency locks, prepared splits, checkpoint hashes, and logs.
+6. **Complete the task and release surface.** Add MBPP-CR construction, fix GPQA naming, publish conversations, SFT/DPO rows, rejects, failures, checkpoints, data/model cards, licenses, and contamination reports.
+
+The reusable training form is answer-level SFT or pairwise preference learning. It is not process supervision, scalar reward modeling, or evidence that social metrics were optimized. A downstream user could reproduce a new Coral-style corpus from code and upstream tasks, but should not claim to reproduce the paper data without the missing run manifests and prepared splits.
+
+The raw tree is also useful for research beyond the paper’s final DPO transformation: comparing branch selection, estimating correct-minority survival, testing independent belief extractors, modeling belief transitions, or evaluating social behavior under fixed answer correctness. Those uses require retaining siblings and failures rather than only selected pairs.
+
+Reuse classification is **recipe/audit reference with conditional code reuse**. Code and Matrix infrastructure are available under MIT; the synthetic training data and trained models are not available, and their terms are unknown. Benchmark gains are evaluation evidence, not a substitute for data provenance, verifier calibration, split audit, or model documentation.

@@ -1,0 +1,6 @@
+- 对来源做版本化：3 月 5 日是首发，3 月 17 日加入 mini appendix，4 月 24 日加入当前已嵌入同一 38 页 PDF 的 CoT 更新。
+- 严格分开四层：long-rollout、confirmation、prompt-injection 与 cyber 干预属于 training；dynamic/resampled conversation 和 programmatic task 属于 evaluation；GPT-5 Thinking CoT 评分属于 monitoring；两级 cyber stack 属于 deployment。
+- 将 connector 与 function-call prompt-injection 结果视为与训练重叠；将 cyber safety non-overlap 和指定 biology held-out 主张视为局部窄边界。
+- 阅读 13 项评测、24 个 environment 的 monitorability suite 时保留 grader mismatch、少 positive、短 CoT 和 cross-fit confound；Anti-Scheming 与 Memory 计划在修订前移除。
+- 将 programmatic 结果绑定 predicate 与 budget：CVE-Bench 使用三次 rollout 和 pass@1，Cyber Range 使用 16 次 trial 与 any-success，Monorepo-Bench 要求全部 hidden test 通过。
+- 复用前索取 simulated-work trajectory、ownership label、preservation detector/reward、dynamic/traffic sampling record、grader/monitor 版本、部署 monitor 错误审计、不可变 revision、全局 split、license 和 lineage。

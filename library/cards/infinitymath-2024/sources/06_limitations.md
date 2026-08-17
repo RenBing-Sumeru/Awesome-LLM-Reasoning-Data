@@ -1,0 +1,3 @@
+- The paper does not document a broad decontamination pass, while GSM8K and MATH contribute training items and also anchor common evaluations. Reuse must compare source identifiers and normalized text against every evaluation split.
+- Execution against one source answer can accept a template that fails for other valid substitutions. Reuse should property-test many boundary and random values, not trust the retained flag alone.
+- The released programs are executable Python and variable constraints are teacher-generated. Replay requires a sandbox, resource limits, dependency capture, and checks for nonsensical numeric domains.

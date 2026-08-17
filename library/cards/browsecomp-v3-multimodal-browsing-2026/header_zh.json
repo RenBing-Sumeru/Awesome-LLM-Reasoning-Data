@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BrowseComp-V3 定义面向多模态浏览智能体的视觉、垂直、可核验任务。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 multimodal browsing benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Huanyao Zhang 等（Peking University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T20:06:42Z"
+}

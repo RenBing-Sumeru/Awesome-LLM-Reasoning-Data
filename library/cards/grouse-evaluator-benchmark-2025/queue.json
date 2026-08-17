@@ -1,0 +1,13 @@
+{
+  "title": "GroUSE: A Benchmark to Evaluate Evaluators in Grounded Question Answering",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.coling-main.304/",
+    "data": "https://aclanthology.org/2025.coling-main.304.pdf"
+  },
+  "review_note": "已按 COLING 2025 原文完成双语精读卡片与 grounded QA judge 审计核对。",
+  "manual_annotation": {"search_status": "promoted", "decision_reason": "144 个受控单元测试能直接检验 grounded QA judge 是否识别具体失效，且官方材料可复核。", "updated_at": "2026-07-24T03:30:00Z"},
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

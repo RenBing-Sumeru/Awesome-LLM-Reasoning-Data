@@ -1,0 +1,1 @@
+FEVER 关注的问题是：如何把事实验证评测成带文本证据的 claim labeling。主要来源是 NAACL-HLT 2018 ACL Anthology 论文、arXiv:1803.05355、FEVER 数据页和官方 scorer。这里收录它是因为它是 evidence-grounded fact-verification benchmark，而不是自由生成或 RAG benchmark。一个记录包含 Wikipedia 派生 claim、SUPPORTS/REFUTES/NOT ENOUGH INFO 标签，以及 supported/refuted claim 的证据句集合。它对 atlas 的价值是把答案标签和 evidence retrieval 显式绑定到评分契约中。

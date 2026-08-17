@@ -1,0 +1,5 @@
+The survey's contribution is a formal decomposition from **feedback acquisition** to **reward learning** to **policy learning**. It distinguishes demonstrations, corrections, comparisons, rankings, ratings, critiques, and other feedback forms; asks how queries and annotators are selected; then tracks how learned reward signals interact with policy optimization, distribution shift, and reward exploitation. Compared with LLM-only RLHF overviews, it imports a longer control/robotics lineage and makes the feedback object's semantics explicit, which is why it functions as a foundations card.
+
+Google Scholar citations: 513（checked 2026-07-27；https://scholar.google.com/scholar_lookup?title=A+Survey+of+Reinforcement+Learning+from+Human+Feedback&author=Timo+Kaufmann&hl=en）
+
+Open dataset: no. The survey does not release a new dataset; Section 8.4 catalogs existing RLHF datasets across domains. Their names, locations, sizes, record forms, licenses, and intended uses remain properties of the cited primary releases and must be checked there rather than inferred from this survey.

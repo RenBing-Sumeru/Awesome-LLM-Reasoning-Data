@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "提出 PDDL2PRM：把可执行规划中的动作转为带精确分级奖励的推理步骤，自动生成约百万规模 PRM 训练数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Pisano and Navigli",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-13T13:46:13Z"
+}

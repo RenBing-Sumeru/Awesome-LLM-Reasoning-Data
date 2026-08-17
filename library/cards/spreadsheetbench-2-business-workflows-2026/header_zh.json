@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SpreadsheetBench 2 用 321 个端到端业务电子表格工作流评测智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的商业电子表格工作流评测基准",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Jian Zhu 等（Renmin University of China）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:18:47Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Omni-RewardData 将跨五种模态的候选比较与自由文本偏好准则一起公开，使通用奖励模型能够按指定判断维度评分。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态偏好数据集、奖励模型与偏好评测",
+  "best_for_ch": "需要构建跨模态奖励模型，或审计自由文本偏好准则的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhuoran Jin、Hongbang Yuan、Kejian Zhu 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

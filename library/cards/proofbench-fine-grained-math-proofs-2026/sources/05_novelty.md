@@ -1,0 +1,1 @@
+Earlier math judges check final answers or binary proof validity. ProofBench converts competition marking into references, key steps, and 0–7 partial credit and evaluates its value for best-of-N. The novelty is a fine-grained proof reward for search rather than a proof generator.

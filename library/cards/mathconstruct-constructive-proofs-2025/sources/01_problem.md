@@ -1,0 +1,3 @@
+Most mathematics benchmarks require a fixed number or multiple-choice option and can saturate through simplicity, memorization, or guessing. They also omit a common competition format: constructing an object satisfying a set of constraints. Construction problems have large answer spaces, making string matching ineffective, but a reliable checker can determine exactly whether a candidate meets every condition.
+
+MathConstruct asks how constructive proofs can become a programmatically verifiable and parametrically variable LLM benchmark. It collects competition problems, implements parsers and constraint checkers, and requires models to output constructed objects in specified formats, so correctness is determined by execution rather than similarity to a reference answer.

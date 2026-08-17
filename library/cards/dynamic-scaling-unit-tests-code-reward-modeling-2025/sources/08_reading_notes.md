@@ -1,0 +1,5 @@
+- Reproduce the execution matrix and report false-acceptance and false-rejection rates against hidden reference tests, rather than auditing only the final Pass@1 gain.
+- Preserve generated, repaired, accepted, and rejected tests with generator version, prompt, sampling seed, interpreter version, timeout, and exception logs.
+- Check source-dataset licenses, duplicates, and overlap with HumanEval Plus, MBPP Plus, and the selected LiveCodeBench date range before reusing the synthetic records.
+- Compare fixed and dynamic budgets at equal policy samples, test-generation calls, executions, and wall-clock cost; stratify failures by predicted and gold difficulty.
+- Verify whether an official CodeRM-8B model/data release exists and whether it contains record schemas, splits, checksums, lineage, and the difficulty-classifier artifacts promised by the paper.

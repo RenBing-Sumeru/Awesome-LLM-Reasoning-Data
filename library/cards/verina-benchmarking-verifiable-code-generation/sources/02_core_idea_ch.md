@@ -1,0 +1,1 @@
+VERINA 含 189 个手工整理的 Lean 编程任务，每题提供详细问题描述、函数签名、参考实现、形式化前/后置条件、证明目标和广泛测试。benchmark 可独立评测 CodeGen、SpecGen、ProofGen，也可把生成 artifact 作为下游输入测试组合误差。数据与代码开放，项目当前标注 ICLR 2026。其 data object 是“问题—代码—规格—证明—测试/Lean 检查结果”，适用于模块化 vericoding 评测。

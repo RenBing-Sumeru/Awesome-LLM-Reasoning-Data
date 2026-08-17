@@ -1,0 +1,3 @@
+The closest self-consistency methods use majority answers to filter or select solutions in tasks with a single answer. PFPO changes the data contract by treating every reasoning problem as a testable interface and extending majority voting to outputs of multiple generated programs on multiple inputs. This makes a test score, rather than a bare consensus answer, the source of a preference relation.
+
+It also does not require a winner to pass every pseudo test. The quality threshold and winner-loser margin explicitly acknowledge that synthetic tests can be imperfect. That decision lets the same pseudo-feedback object feed outcome DPO, process preference construction, and iterative self-improvement rather than serving only as an inference-time selector.

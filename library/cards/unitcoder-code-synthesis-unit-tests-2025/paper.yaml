@@ -1,0 +1,99 @@
+id: unitcoder-code-synthesis-unit-tests-2025
+title: 'UnitCoder: Scalable Code Synthesis from Pre-training Corpora'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Yichuan Ma
+- Yunfan Shao
+- Peiji Li
+- Demin Song
+- Qipeng Guo
+- Linyang Li
+- Xipeng Qiu
+- Kai Chen
+source_role:
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- unit-tests
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.286/
+  arxiv: null
+  code: https://github.com/Entarochuan/UnitCoder
+  data: https://github.com/Entarochuan/UnitCoder
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.emnlp-main.286/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.286/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Functions and unit tests mined from pre-training corpora.
+  trace_author: Data-construction pipeline.
+  answer_format: Code-synthesis prompt, target function, and executable tests.
+  process_fields:
+  - context
+  - function signature
+  - implementation
+  - unit tests
+  - execution result
+  environment_or_substrate: Programming-language execution environment.
+  verifier_or_reward: Unit-test execution.
+  terminal_predicate: The target implementation passes the mined tests.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: Keep samples whose tests execute successfully under the release procedure.
+  sampling_protocol: Consult the official repository for data access and splits.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: ACL Anthology paper and official GitHub repository serving as code and data entry point.
+  split: Consult the repository.
+  decontamination: The source corpus may overlap with model pretraining; audit before benchmark use.
+  license: Consult the repository and upstream corpus terms.
+  lineage: https://aclanthology.org/2025.emnlp-main.286/
+  known_failure_modes:
+  - Mined unit tests can be incomplete.
+  - Source-corpus overlap complicates evaluation claims.
+  citation_status: verified
+  confidence: high
+  notes: EMNLP title, authors, Fudan and Shanghai AI Laboratory affiliations, and official repository were checked.
+inclusion_reason: UnitCoder 从预训练语料中挖掘函数与单元测试，借助测试执行筛出可用于代码合成训练的大规模样本。
+related: []
+tags:
+- code-synthesis
+- unit-tests
+- pretraining-corpora
+- '2025'
+one_line_summary: UnitCoder mines functions and unit tests from pre-training corpora, using test execution to filter scalable
+  code-synthesis training data.
+why_it_matters: UnitCoder mines functions and unit tests from pre-training corpora, using test execution to filter scalable
+  code-synthesis training data.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: EMNLP title, authors, Fudan and Shanghai AI Laboratory affiliations, and official repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

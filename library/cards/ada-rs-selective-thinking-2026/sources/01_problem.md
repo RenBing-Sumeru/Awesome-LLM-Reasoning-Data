@@ -1,0 +1,2 @@
+
+Ada-RS studies selective reasoning for multi-turn e-commerce tool use: the policy should spend reasoning tokens when they help produce a correct tool call, but avoid a long internal reasoning trace when the same decision is already easy. The paper therefore treats multiple completions of the same context—not a single benchmark answer—as the construction unit. Each candidate can be audited by its tool-call outcome, reasoning length, estimated prompt difficulty, adaptive reward, and whether it becomes a preference example or remains in an on-policy training group.

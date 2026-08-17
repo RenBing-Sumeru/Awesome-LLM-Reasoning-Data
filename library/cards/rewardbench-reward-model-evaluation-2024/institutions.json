@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Allen Institute for Artificial Intelligence",
+    "University of Washington",
+    "Berkman Klein Center, Harvard Law"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://aclanthology.org/2025.findings-naacl.96/",
+    "https://aclanthology.org/2025.findings-naacl.96.pdf"
+  ],
+  "verification_note": "ACL Anthology verifies Findings of ACL: NAACL 2025, pages 1755-1797."
+}

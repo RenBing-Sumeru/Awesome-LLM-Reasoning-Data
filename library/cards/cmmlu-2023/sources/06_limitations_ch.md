@@ -1,0 +1,1 @@
+正确性只相对于给定选项 key 成立，不能证明自由生成推理、事实时效性或更广泛中文能力。四选一格式可能被先验和答案位置偏差利用。公开数据和答案 key 会污染训练。prompt language、few-shot examples、CoT mode、答案抽取和 harness 版本都会改变分数。基准覆盖 67 topics，但不覆盖所有中文方言、领域或实时知识；比较前必须固定 subject-level provenance 和具体 split/version。

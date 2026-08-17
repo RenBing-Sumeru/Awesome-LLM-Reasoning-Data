@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SETS 先并行生成多个答案，再由模型自我核验并在有限轮次内自我修正；它依赖模型自身判断，不等同于外部正确性验证器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jiefeng Chen；Jie Ren；Xinyun Chen；Chengrun Yang；Ruoxi Sun；Jinsung Yoon；Sercan Ö. Arık",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

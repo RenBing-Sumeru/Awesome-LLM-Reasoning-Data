@@ -1,0 +1,179 @@
+id: rethinking-stateful-tool-use-2025
+title: 'Rethinking Stateful Tool Use in Multi-Turn Dialogues: Benchmarks and Challenges'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Hongru Wang
+- Wenyu Huang
+- Yufei Wang
+- Yuanhao Xi
+- Jianqiao Lu
+- Huan Zhang
+- Nan Hu
+- Zeming Liu
+- Jeff Z. Pan
+- Kam-Fai Wong
+source_role:
+- benchmark
+- agent_environment
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- multi_turn_dialogue
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.284/
+  arxiv: https://arxiv.org/abs/2505.13328
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.284
+  venue: https://aclanthology.org/2025.findings-acl.284/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.284/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Task-oriented dialogues and annotations primarily from SGD plus MultiWOZ are remapped from service/domain,
+    intent, and slot/value structures into App, API, and argument structures; database lookup turns become API calls.
+  trace_author: Source users and system turns come from SGD/MultiWOZ. Role-consistent variants are LLM rewrites of system
+    utterances; the exact rewriting model and accepted-sample workflow are undisclosed. Evaluated LLMs generate action, API-call,
+    code, and response predictions.
+  answer_format: A multi-turn dialogue trajectory with per-turn dialogue context, source action labels, App/API schema, required/optional
+    argument values, environment state before and after calls, API result, system response, and optional role configuration;
+    evaluation targets one of six lifecycle tasks rather than one universal output.
+  process_fields:
+  - dialogue_id
+  - turn_id
+  - user_utterance
+  - system_utterance
+  - action
+  - app
+  - api
+  - required_arguments
+  - optional_arguments
+  - api_result
+  - environment_state
+  - role_config
+  - generated_response
+  environment_or_substrate: VirtualMobile, a Python simulation in which Apps are classes, APIs are functions, lookup outputs
+    are stored as per-App databases, transactional flags govern confirmation, and state-tracking attributes carry prior tool
+    results across dialogue turns.
+  verifier_or_reward: Tool creation is checked by executing generated Python functions on all available test calls and comparing
+    outputs; awareness, selection, and execution use label accuracy at action/API/argument levels; responses use BLEU and
+    ROUGE-L; role consistency uses GPT-4o scores validated by a three-annotator human study.
+  terminal_predicate: No single episode-level success predicate or cumulative reward is reported. Evaluation is primarily
+    per lifecycle task and dialogue turn; a dialogue can end with Goodbye, while tool calls may produce success/failure notifications
+    and updated state.
+recipe_metadata:
+  base_model: Evaluation covers 13 models from ChatGLM3, Qwen1.5, Mistral, Llama 2, Llama 3, Vicuna, GPT-3.5, and GPT-4o families;
+    the benchmark has no single training base model.
+  teacher: GPT-4o judges role consistency; the model used to create the released role-style rewrites is unknown.
+  generator: A Python setting-shift script converts source annotations into tool labels; system responses are rewritten under
+    50 manually collected role configurations; authors manually implement Apps/APIs and populate databases with unique source
+    lookup results.
+  filtering_rule: Seed datasets are selected for realistic multi-turn tool invocation and detailed annotations. API implementations
+    are checked so identical dialogue inputs reproduce identical source outputs. Record-level rejection, rewrite review, deduplication
+    beyond unique API results, and annotator agreement are unknown.
+  sampling_protocol: Table 2 reports 16,142 training and 900 evaluation dialogues, with 85,191 and 4,274 API calls respectively.
+    Thirteen models are evaluated with temperature 0.1 and top-p 0.1; role evaluation samples one role per dialogue.
+  rollout_count: unknown
+  temperature: 0.1
+  inference_budget: No explicit per-dialogue token, retry, or tool-call budget is reported. Dialogue lengths range from 4
+    to more than 40 turns in the analysis.
+  optimizer_or_scaffold: 'Prompted evaluation of six tasks: Python tool creation; state-aware action choice; flat or hierarchical
+    App/API selection; argument filling and execution; response generation from context/state; and role-style transformation.
+    No reflection or advanced agent framework is used.'
+audit:
+  source_mixture: SGD and MultiWOZ dialogue text/labels, automatically shifted tool labels, unique source database results,
+    manually implemented Python Apps/APIs, 50 movie/TV-derived role configurations, LLM role rewrites, and outputs from 13
+    evaluated models.
+  split: 'Table 2 reports separate training/evaluation partitions: training has 20 Apps, 45 APIs, 16,142 dialogues, 329,964
+    turns, and 85,191 calls; evaluation has 15 Apps, 30 APIs, 900 dialogues, 15,568 turns, and 4,274 calls. The split derivation
+    and overlap controls are not documented.'
+  decontamination: unknown
+  benchmark_overlap: DialogTool is explicitly derived from SGD and MultiWOZ. No utterance/API/schema near-duplicate analysis,
+    source-split leakage audit, or evaluated-model pretraining contamination study is reported.
+  license: The ACL paper is CC BY 4.0. No official DialogTool/VirtualMobile code or data artifact and no artifact license
+    were verified; reuse must separately follow SGD, MultiWOZ, role-source, and any future release terms.
+  lineage: SGD/MultiWOZ dialogue and lookup result -> automatic setting shift to action/App/API/argument labels -> optional
+    role-conditioned system rewrite -> manually implemented VirtualMobile function/database -> model prediction -> task-specific
+    programmatic, lexical, GPT-4o, or human score.
+  release_version: ACL Anthology publication and arXiv v1 were checked on 2026-07-20. Neither paper record links an official
+    repository, dataset, project page, immutable environment package, tag, or release manifest.
+  successful_and_failed_sample_retention: unknown. Source/reference dialogues are tabulated, but no official artifact exposes
+    evaluated model trajectories, generated code, execution exceptions, API successes/failures, retries, or a retention manifest.
+  privacy_or_consent: The authors state that source datasets were public and ethically vetted and that they selected data
+    to avoid offensive or biased content. Record-level consent, PII screening, redaction, provenance for lookup databases,
+    and rights for 50 movie/TV role configurations are not reported.
+  known_failure_modes:
+  - State is distributed across dialogue history, App/API state, prior results, missing arguments, and transactional confirmation;
+    turn-local accuracy can hide an earlier error that corrupts later turns.
+  - Missing required or optional arguments dominate many execution failures; date formatting/reasoning and location aliases
+    produce value mismatches.
+  - An API error can propagate into subsequent state and response, but the reported evaluation does not define an autonomous
+    retry, rollback, or recovery protocol.
+  - Generated Python tools can hallucinate unavailable libraries or malformed code. Safe execution isolation, resource limits,
+    and side-effect policy are not documented because VirtualMobile artifacts are unavailable.
+  - The deterministic same-input/same-output database supports testing but may underrepresent live service drift, network
+    errors, permissions, concurrency, and transactional side effects.
+  - No episode-level terminal success verifier is reported; BLEU/ROUGE-L and role-style judgments do not establish task completion
+    or factual use of tool results.
+  - The paper's prose says approximately 33k turns, while Table 2 reports 329,964 training and 15,568 evaluation turns; users
+    should preserve table values and flag the inconsistency.
+  - No official release, replay harness, reset contract, code/data license, split-overlap audit, or success/failure retention
+    policy is verifiable.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper, arXiv v1, tables, appendices, prompts, action/API schemas, metrics, error analysis, ethics statement,
+    and official-link absence were checked on 2026-07-20.
+inclusion_reason: DialogTool defines a stateful multi-turn trajectory object whose action choice, App/API selection, arguments,
+  returned results, and role-conditioned response are evaluated against a Python environment and mixed feedback contracts,
+  directly supporting Track 6 analysis.
+related: []
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+- multi-turn-dialogue
+- stateful-tool-use
+- virtual-environment
+- evaluation
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: DialogTool converts SGD/MultiWOZ into stateful App/API dialogues and evaluates six tool-lifecycle tasks
+  in VirtualMobile, but official data/code, full model rollouts, reset/replay details, and artifact licensing remain unavailable.
+why_it_matters: It exposes how dialogue history, tool state, missing arguments, API results, and role-conditioned responses
+  interact over long horizons, while making release, contamination, recovery, and episode-level verification gaps explicit.
+card: null
+needs:
+- 'needs_release: publish DialogTool and VirtualMobile with immutable version, artifact license, source-record lineage, split
+  manifests, and checksums'
+- 'needs_replay: document reset/state serialization, per-model prompts and seeds, generated code/calls/results, retries, exceptions,
+  and success/failure retention'
+- 'needs_audit: report source/split overlap and decontamination, role-source rights, PII/redaction review, generated-code
+  sandboxing, and transaction/rollback policy'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: Official ACL and arXiv paper artifacts were verified; no official code, data, project, or replay artifact was linked
+    or found, so release-dependent fields remain unknown.

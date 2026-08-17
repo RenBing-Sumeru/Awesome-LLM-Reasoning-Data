@@ -1,0 +1,2 @@
+Conventional coding benchmarks require Python programs to pass input-output tests, but quantum code can be syntactically valid and still fail because circuits are too deep, use unsupported gates, or violate device constraints. A static final answer cannot reveal whether failure comes from language understanding, program logic, or hardware executability. QCoder asks how real quantum-programming contest tasks, human submissions, and a quantum simulator can be connected to evaluate and diagnose hardware-constrained code reasoning with reproducible environmental feedback.
+

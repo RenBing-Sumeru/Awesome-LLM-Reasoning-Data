@@ -1,0 +1,5 @@
+- 记住部署 transition：goal、screenshot 与 recent actions 产生 function call；客户端执行后返回 function_result、URL 和 next screenshot。
+- Online-Mind2Web/WebVoyager 的 temperature 1、include_thoughts、autoregressive pass@1 与三人整轨多数票必须和分数一起保留。
+- 保留 WebVoyager 从 643 减至 559 个经日期修改的可行任务，并区分官方/自报结果与 Browserbase 结果。
+- 保留 AndroidWorld 的 Pixel 6、Android 13/API 33、screenshot-only、无 accessibility tree 条件；其他 environment pin 仍未知。
+- 不要从 benchmark vote 或逐步 safety gating 推断训练 reward；重点审计 prompt injection、确认机制、可变环境与缺失的训练 rollout。

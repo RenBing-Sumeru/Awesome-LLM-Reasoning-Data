@@ -1,0 +1,1 @@
+Cybench 关注语言模型智能体能否在可执行环境中解决专业级网络安全 CTF 任务，以及这种能力带来的风险。主要来源是 arXiv 论文、ICLR 2025 Oral 的 OpenReview 记录、项目页和公开 GitHub 仓库。它属于 agent-environment benchmark，因为反馈来自命令环境和 flag 验收；它不是静态选择题式网络安全问答，也不是纯代码题。一个任务包含 CTF 描述、starter files、初始化的命令环境、可选 subtasks、智能体动作、环境观察和 flag 成功条件。对 atlas 的价值是提供高风险工具型智能体的状态/动作/反馈闭环。

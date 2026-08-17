@@ -1,0 +1,3 @@
+从蒸馏 long-chain-of-thought 模型开始 RLVR，虽然初始推理能力较强，但 rollout 往往很长，迫使训练使用大 context 并承担高昂采集成本。若直接以很短的最大长度启动 RLVR，又可能截断有用行为；论文的 meta-experiment 中这种设置导致准确率明显下降。因此核心决策问题是：如何获得成本更低的初始化 policy，同时不引入长度奖励，也不丢失后续阶段需要的 slow-thinking 能力。
+
+TFPI 被放置在 long-CoT distillation 与标准 RLVR 之间。其底层数据对象是在线批次中的 Polaris-53K prompt、每题八条 policy 响应、token likelihood、rule-based 二元 outcome reward 和分阶段响应长度元数据。已确认官方 ICLR 2026 论文、Tencent-Hunyuan 仓库、Hugging Face checkpoint collection 与 TFPI-EVA 评测数据。它们提供代码、prompt/checkpoint 和评测资产，但没有完整且不可变地发布所有成功与失败 rollout、reward 记录及 optimizer 事件。因此本卡可作为具备较强复现条件、但 trace-level lineage 不完整的训练 recipe 达到 L4。

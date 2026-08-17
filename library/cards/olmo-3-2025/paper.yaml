@@ -1,0 +1,162 @@
+id: olmo-3-2025
+title: Olmo 3
+year: 2025
+venue: arXiv preprint
+authors:
+- Team Olmo
+source_role:
+- model_report
+- data_release
+- construction_recipe
+- verifier_reward
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- language_model_pretraining
+- long_context
+- mathematics
+- coding
+- instruction_following
+- general_chat
+- function_calling
+- tool_use
+training_use:
+- sft
+- distillation
+- preference_learning
+- rlvr
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.13961
+  arxiv: https://arxiv.org/abs/2512.13961
+  code: https://github.com/allenai/OLMo-core
+  data: https://huggingface.co/collections/allenai/olmo-3-pre-training
+  project: https://allenai.org/olmo
+  huggingface: https://huggingface.co/collections/allenai/olmo-3
+  doi: https://doi.org/10.48550/arXiv.2512.13961
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2512.13961
+data_object:
+  prompt_source: Stage-specific Dolma 3 pools and mixes for pretraining, midtraining, and long-context extension; Dolci Think/Instruct/RL
+    and RL-Zero prompt pools for post-training.
+  trace_author: 'Mixed provenance: source datasets plus synthetic traces, completions, preference pairs, and tool trajectories.
+    The report names GPT-4.1, o4-mini, QwQ-32B, DeepSeek-R1, Qwen 3, GPT-4o, GPT-3.5, and GPT-5 in specific construction stages;
+    no single generator applies to all subsets.'
+  answer_format: Pretraining documents; supervised responses and Think traces; pairwise chosen/rejected DPO responses; verifiable
+    math/code/instruction outputs; scalar-reward RL rollouts; and multi-turn tool-call trajectories.
+  process_fields:
+  - intermediate_thinking_traces
+  - reference_answers
+  - preference_pairs
+  - code_test_cases
+  - verifier_outcomes
+  - tool_calls
+  - environment_outputs
+  - stage_checkpoints
+  - manifests
+  environment_or_substrate: OlmoCore for base-model and supervised/preference training; OlmoRL with vLLM actors and DeepSpeed
+    learners for RL; AWS Lambda for code-test execution; MCP-served ASC and Serper environments for portions of tool-use data.
+  verifier_or_reward: Math uses normalized reference-answer comparison with SymPy; code uses test cases; precise instruction
+    following uses constraint functions; chat uses a Qwen3 32B LLM judge with a 0-1 score, with or without a reference answer.
+  terminal_predicate: Exact equivalence for math, passing test cases for code, satisfying every stated constraint for precise
+    instruction following, LLM-judge score for chat, and adherence/correctness filters for released tool trajectories.
+recipe_metadata:
+  base_model: Olmo 3 Base 7B and 32B; RL-Zero starts directly from Olmo 3 Base 7B.
+  teacher: Mixed disclosed generators and judges; examples include GPT-4.1, o4-mini, QwQ-32B, DeepSeek-R1, Qwen 3 32B/0.6B,
+    GPT-4o, GPT-3.5, and GPT-5 in specified construction stages.
+  generator: Source mixtures plus synthetic rewriting, trace/completion generation, programmatic task generation, preference
+    construction, and tool-trajectory synthesis as specified per Dolma/Dolci subset.
+  filtering_rule: Pretraining uses heuristic, language, quality/topic, PII, exact/MinHash/suffix-array deduplication and mixing
+    filters. Post-training filters unclear or non-commercial licenses, incomplete traces, failed constraints/tests, model-identity
+    artifacts, repetition, and unsuitable topics; it also applies decontamination.
+  sampling_protocol: Base training uses a 5.93T-token pretraining mix, a 100B-token midtraining mix, and 50B/100B long-context
+    extension. RL uses stage-specific prompt mixes, offline difficulty filtering for Think 7B, active sampling, and domain-balanced
+    mixing with additional math and instruction-following emphasis.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: Think RL uses up to 32K response tokens; Instruct RL uses shorter budgets. The report gives RL group size
+    8 and uses eight rollouts per prompt for Think 7B offline difficulty filtering.
+  optimizer_or_scaffold: SFT followed by DPO and a GRPO-derived RLVR procedure with zero-gradient filtering, active sampling,
+    token-level loss, asymmetric clipping, truncated importance sampling in selected runs, and no KL loss.
+audit:
+  source_mixture: The paper tabulates a 9.31T-token pretraining pool and 5.93T-token final mix, a 2.19T-token midtraining
+    pool and 99.95B-token final mix, plus stage-specific Dolci SFT/DPO/RL counts. Official Hugging Face collections expose
+    the corresponding pools, mixes, and post-training datasets.
+  split: Stage- and model-specific releases exist for 7B and 32B; the official post-training collection states that datasets
+    follow the model resulting from their use. A single universal train/validation/test split contract is unknown for the
+    complete model flow.
+  decontamination: Midtraining and long-context data are filtered with AI2 decon against the evaluation harness; all post-training
+    stages use the Tülu 3 procedure with 8-gram matching and 0.5 overlap threshold plus task-specific false-positive handling.
+    RL-Zero is additionally decontaminated from pretraining and midtraining data.
+  license: Dolma 3 reconstruction code is Apache-2.0 and the official Olmo 3 7B Instruct model card is Apache-2.0. The license
+    and reuse compatibility of every upstream and generated data subset are unknown without reviewing each released data artifact
+    and its source chain.
+  lineage: AI2 releases a connected model flow from Dolma 3 pools/mixes through intermediate checkpoints and Dolci/RL datasets
+    to Think, Instruct, and RL-Zero models. OLMo-core v2.4.0 lists official Olmo 3 scripts, data mixes, manifests, and model
+    cards.
+  known_failure_modes:
+  - LLM-judge rewards for chat are judgment-based and can embed judge bias.
+  - Decontamination is a disclosed procedure, not proof of zero leakage.
+  - Training mixes are released as reconstructions of sampled training tokens.
+  - PII, quality, language, and repetition filters can have false positives or false negatives.
+  - Tool trajectories can depend on changing external environments and summarized web outputs.
+  - End-to-end licensing remains incomplete until every source and derivative is reviewed.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, AI2 project page, AI2 GitHub repositories/releases, and AI2 Hugging Face collections/model cards
+    were checked. This is a Track 12 disclosure-ledger record only; it is not classified under Track 8.
+inclusion_reason: A frontier model report with unusually broad, official disclosure of stage-wise data pools, training mixes,
+  construction procedures, feedback contracts, intermediate checkpoints, code, manifests, and audit mechanisms.
+related: []
+tags:
+- track12
+- frontier-report
+- data-disclosure-ledger
+- fully-open
+- model-flow
+- dolma3
+- dolci
+- rlvr
+- release-audit
+status: verified
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Olmo 3 is an AI2 frontier model-flow release that discloses stage-wise Dolma and Dolci data artifacts, construction
+  recipes, reward contracts, code, checkpoints, and decontamination procedures.
+why_it_matters: 'It makes the Track 12 distinction concrete: broad official disclosure improves auditability, but it does
+  not eliminate unresolved questions about per-source rights, exact source-level provenance, judge bias, or residual contamination.'
+card: null
+needs:
+- 'needs_license: review licenses and provenance for every original and synthetic source in each released mix'
+- 'needs_metadata: confirm current availability and completeness of all promised training logs'
+- 'needs_audit: cross-check released dataset revisions against their corresponding checkpoint manifests before reproduction
+  claims'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, AI2 project page, AI2 GitHub releases/repositories, and AI2 Hugging Face collections were checked;
+    no local legacy or V2 duplicate was found.

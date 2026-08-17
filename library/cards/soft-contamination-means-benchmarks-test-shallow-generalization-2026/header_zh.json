@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "讨论软污染如何让基准看似测到泛化、实则只测到浅层相似性，适合补充传统去重检查。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "审计、污染或验证器鲁棒性论文",
+  "best_for_ch": "想复盘验证器、基准污染、奖励投机或可复现性风险的研究者。",
+  "confidence_ch": "高：官方主链接已核验；具体训练数据细节以原文披露为准。",
+  "authors_ch": "Ari Spiesberger, Juan J. Vazquez, Nicky Pochinkov, Tomáš Gavenčiak, Peli Grietzer, Gavin Leech, Nandi Schoots",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-13T12:32:38Z"
+}

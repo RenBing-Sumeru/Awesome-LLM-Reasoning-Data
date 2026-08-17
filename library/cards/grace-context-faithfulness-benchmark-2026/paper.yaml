@@ -1,0 +1,112 @@
+id: grace-context-faithfulness-benchmark-2026
+title: 'GRACE: Step-Level Benchmark for Faithful Reasoning over Context'
+year: 2026
+venue: arXiv preprint
+authors:
+- Hoang Pham
+- Dong Le
+- Anh Tuan Luu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- context-grounded-reasoning
+- faithfulness
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2606.16151
+  arxiv: https://arxiv.org/abs/2606.16151
+  code: null
+  project: null
+  data: https://anonymous.4open.science/r/grace-bench-14e8
+  huggingface: null
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2606.16151
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Context-grounded multi-hop and deductive reasoning tasks from MuSiQue, 2WikiMHQA, ReClor, and LogiQA.
+  trace_author: Ten LLMs generate cited reasoning traces; multi-judge consensus labels training records and trained human
+    annotators label the difficult test cases.
+  answer_format: Context, question, reasoning steps, per-step faithfulness label, error category, and explanation.
+  process_fields:
+  - reasoning_steps
+  - faithfulness
+  - error_category
+  - error_explanation
+  - track
+  - annotation_tier
+  environment_or_substrate: Textual evidence-grounded and deductive reasoning over supplied context.
+  verifier_or_reward: Three LLM judges vote on step labels; human adjudication produces the disagreement-focused test set.
+    The training signal can serve as a process reward.
+  terminal_predicate: Every step is classified as faithful or unfaithful, with an error type and explanation for unfaithful
+    steps.
+recipe_metadata:
+  base_model: Ten source models; downstream SFT and GRPO experiments use small Qwen and Llama models.
+  teacher: Qwen3.5-27B open critiques plus three open-weight LLM judges and human annotators.
+  generator: Single-shot cited CoT traces generated from curated source tasks.
+  filtering_rule: Keep grounded questions; form training data from high-agreement judge labels and reserve judge-disagreement
+    traces for human annotation.
+  sampling_protocol: Balance categories and source models, then label every step using the task-specific taxonomy.
+  inference_budget: See the paper appendices for model and training configuration.
+  optimizer_or_scaffold: Faithfulness-aware SFT and GRPO process reward.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Four source reasoning datasets, ten model-generated trace sets, LLM critiques, judge votes, and human annotations.
+  split: 'GRACE-train: 6,915 traces and 29,612 steps; GRACE-test: 437 traces and 2,044 human-annotated steps.'
+  decontamination: The test set is selected from judge-disagreement traces to make it difficult; public benchmark reuse can
+    still cause evaluation leakage.
+  license: The arXiv manuscript is CC BY 4.0; check the anonymous release for dataset terms.
+  lineage: Official arXiv paper and the anonymous data/code release cited in the manuscript.
+  known_failure_modes:
+  - Judge consensus can encode shared model bias
+  - Context faithfulness does not prove causal faithfulness to internal model computation
+  - Anonymous release terms and long-term maintenance remain to be confirmed
+  citation_status: verified
+  confidence: high
+  notes: Verified the formal arXiv title, authors, affiliations, data link, corpus construction, and split statistics from
+    the arXiv HTML paper. No separate official code or project URL was disclosed; the anonymous release is recorded only as
+    the data entry point.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: GRACE supplies context-grounded reasoning traces with per-step faithfulness labels, error types, and explanations
+  for training or testing process evaluators.
+why_it_matters: It separates context faithfulness from final-answer accuracy and offers both scalable consensus labels and
+  a human-annotated hard test set.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the formal arXiv title, authors, affiliations, data link, corpus construction, and split statistics from
+    the arXiv HTML paper. No separate official code or project URL was disclosed; the anonymous release is recorded only as
+    the data entry point.
+category_ids:
+- process_trace_supervision_data

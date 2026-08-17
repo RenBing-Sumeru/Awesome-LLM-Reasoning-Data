@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepSeek-V3.1 发布了权重、接口、128K 上下文和基础延长 token 数，但未公开后训练数据、反馈或审计栈。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿模型发布",
+  "best_for_ch": "审计版本化发布的披露边界",
+  "confidence_ch": "中",
+  "authors_ch": "DeepSeek-AI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

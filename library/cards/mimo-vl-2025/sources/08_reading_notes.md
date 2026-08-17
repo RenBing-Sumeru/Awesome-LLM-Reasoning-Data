@@ -1,0 +1,5 @@
+- Read Sections 2.2–2.3 first for the actual data objects, modality-specific filtering, four-stage token budgets, and the special role of long reasoning data in Stage 4.
+- In Section 3, separate RLVR’s rule-verifiable tasks from RLHF’s model-ranked preference pairs; they have different evidence strength and failure modes.
+- Treat the 80K figure as applying only to the disclosed visual-reasoning RLVR set, not to the full synthetic reasoning corpus or all MORL data.
+- Use Section 5’s interference discussion as a first-class limitation: a mixed reward service does not eliminate cross-domain optimization conflicts.
+- Check the repository and model pages for released checkpoints and evaluation code, but do not infer that their licenses cover undisclosed training data.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以七类压力场景检验开源 LLM 生成文本的检测与作者归因鲁棒性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "机器生成文本检测与作者归因基准论文",
+  "best_for_ch": "需要评估机器文本检测、归因或训练污染风险的研究者。",
+  "confidence_ch": "高：EMNLP 正式论文、公开数据集规模、作者与 University of Calabria 机构均已核验。",
+  "authors_ch": "Lucio La Cava, Andrea Tagarelli",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

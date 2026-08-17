@@ -1,0 +1,316 @@
+id: webchorearena-2025
+title: 'WebChoreArena: Evaluating Web Browsing Agents on Realistic Tedious Web Tasks'
+year: 2025
+venue: COLM 2026
+authors:
+- Atsuyuki Miyai
+- Zaiying Zhao
+- Kazuki Egashira
+- Atsuki Sato
+- Tatsumi Sunada
+- Shota Onohara
+- Hiromasa Yamanishi
+- Mashiro Toyooka
+- Kunato Nishina
+- Ryoma Maeda
+- Kiyoharu Aizawa
+- Toshihiko Yamasaki
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- web_browsing
+- long_horizon_tasks
+- memory_and_calculation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.01952
+  paper_pdf: https://arxiv.org/pdf/2506.01952v1
+  arxiv: https://arxiv.org/abs/2506.01952
+  code: https://github.com/WebChoreArena/WebChoreArena
+  data: https://github.com/WebChoreArena/WebChoreArena/blob/542abc538fd9558362119714989166904d82f5f4/BrowserGym/config_files/test_webchore.raw.json
+  data_mirror: https://www.kaggle.com/datasets/miatsu/webchorearena-json-files
+  project: https://webchorearena.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.01952
+  venue: https://colmweb.org/AcceptedPapers.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.01952
+  paper_revision: https://arxiv.org/abs/2506.01952v1
+  code_revision: https://github.com/WebChoreArena/WebChoreArena/tree/542abc538fd9558362119714989166904d82f5f4
+  data_revision: https://github.com/WebChoreArena/WebChoreArena/blob/542abc538fd9558362119714989166904d82f5f4/BrowserGym/config_files/test_webchore.raw.json
+  license: https://github.com/WebChoreArena/WebChoreArena/blob/542abc538fd9558362119714989166904d82f5f4/LICENSE
+  trajectories: null
+  model_results: null
+data_object:
+  unit_of_record: One released benchmark row is a task configuration with `task_id`, one or more `sites`, `start_url`, `start_url_lite`,
+    `storage_state`, an intent template and instantiated intent, required observation modality, main and optional sub-type,
+    an execution description, template instantiation values, and an `eval` object containing evaluator types and task-specific
+    references. The pinned merged JSON contains 532 such rows; it is not a rollout corpus.
+  prompt_source: Ten annotators selected from the paper authors explored the self-hosted sites, authored 117 task templates
+    and their instantiations, and refined the tasks over more than 300 hours. The paper reports 25 Shopping, 29 Shopping Admin,
+    20 Reddit, 28 GitLab, and 15 cross-site templates, averaging about 4.5 task instances per template.
+  trace_author: AgentOccam or BrowserGym agents backed by GPT-4o, Claude 3.7 Sonnet, or Gemini 2.5 Pro generate state-action-observation
+    episodes at evaluation time. The official release contains task and evaluator code, not the paper-run successful and failed
+    trajectories.
+  task_record:
+  - task_id
+  - sites
+  - start_url
+  - start_url_lite
+  - storage_state
+  - intent_template
+  - intent
+  - required_obs
+  - type_main
+  - type_sub
+  - description
+  - instantiation_dict
+  - eval
+  task_distribution:
+    shopping: 117
+    shopping_admin: 132
+    reddit: 91
+    gitlab: 127
+    cross_site: 65
+  required_observation_distribution:
+    any: 451
+    text_accessibility_tree: 69
+    image_screenshot: 12
+  reasoning_type_distribution:
+    long_term_memory: 222
+    massive_memory: 168
+    calculation: 100
+    others: 42
+  context_or_state: A task begins from the configured URL and authenticated storage state in a self-hosted WebArena deployment.
+    At each step the agent receives a partial page observation, maintains agent-specific memory/history, acts on the page,
+    and receives the next observation. Core sites are Shopping, Shopping Admin, Reddit, and GitLab; some released cross-site
+    rows also reference Wikipedia.
+  trace_or_actions: BrowserGym exposes 15 browser, tab, navigation, messaging, and infeasibility actions and can issue multiple
+    actions per step. AgentOccam uses eight basic, page, note/stop, and branch/prune actions with one action per step. Both
+    paper configurations cap episodes at 50 steps.
+  observation: Accessibility-tree text for tasks marked `any` or `text`, with screenshots additionally supplied for tasks
+    marked `image`; agent-specific histories and memory representations are maintained during execution. No canonical episode
+    observation log is released.
+  answer_or_artifact: A task ends in a textual answer, a target URL, and/or a changed webpage state specified by the task's
+    evaluator configuration. The benchmark scores the final answer or final live page state, not a stepwise reasoning annotation.
+  process_labels:
+  - required_observation_modality
+  - main_task_type
+  - optional_sub_task_type
+  - task_specific_terminal_score
+  verifier_output: Each configured evaluator returns a numeric score. `string_match` uses exact, must-include, or GPT-4o fuzzy
+    equivalence; `url_match` checks the final URL; `program_html` extracts designated page elements and compares them with
+    reference content. When multiple evaluators apply, their scores are multiplied.
+  reward: Evaluation-only terminal scalar produced by the configured evaluator or product of evaluator scores. No evidence
+    supports use of this score for policy optimization in the paper.
+  terminal_predicate: The agent stops with an answer or infeasibility report, or reaches the 50-step cap. Success is then
+    determined by the configured final-answer, URL, and/or webpage-state checks; no step-level correctness label is provided.
+  provenance: WebArena simulated sites -> author exploration and task proposals -> Claude-based early-agent challenge probing
+    -> template and instance creation -> ambiguity/output-format refinement -> three-annotator cross-checks per site and repeated
+    inference/error-analysis/revision -> released JSON task/evaluator records -> runtime agent episode -> terminal score.
+  environment_or_substrate: A self-hosted WebArena-compatible deployment plus the released AgentOccam and BrowserGym wrappers.
+    The repository requires site setup, URL replacement, authentication state, prescribed task order, and environment resets
+    after each website before cross-site evaluation.
+  release_boundary: The official GitHub repository releases the 532 task JSON, a 102-task analysis subset, task generators,
+    AgentOccam and BrowserGym integration code, evaluator implementations, and an Apache-2.0 license. It does not release
+    paper-run trajectories, observations, result bundles, reset snapshots, or a fully pinned WebArena deployment image.
+recipe_metadata:
+  base_model: Not applicable to task construction as a training base model. Evaluation uses GPT-4o-2024-05-13, claude-3-7-sonnet-20250219,
+    and gemini-2.5-pro-preview-03-25 inside AgentOccam and BrowserGym.
+  teacher: A Claude-based agent was used during early task prototyping to identify model limitations and refine difficulty.
+    The paper does not describe teacher-trace distillation or release those construction-stage runs.
+  generator: Ten author annotators manually create task templates and instantiations; AgentOccam and BrowserGym agents generate
+    evaluation episodes at runtime.
+  prompt_or_task_source: Human-authored intents grounded in functions and seeded content of the four principal self-hosted
+    WebArena sites, plus cross-site combinations. Map tasks were excluded because of functionality and server-availability
+    problems.
+  filtering_rule: Favor memory-intensive analytical chores; use a Claude-based agent to reject or refine overly simple prototypes;
+    reduce ambiguity in task wording and evaluator expectations; standardize answer formats; cross-check each site's tasks
+    with three annotators; and iterate through inference, error analysis, and revision. A record-level rejection ledger is
+    not released.
+  selection_threshold: unknown
+  sampling_protocol: Annotators expand 117 templates into 532 instances. The exact instantiation selection policy, randomization,
+    rejected candidates, and per-task author lineage are not disclosed.
+  rollout_count: unknown
+  temperature: BrowserGym uses temperature 0.1 for all three evaluated models. AgentOccam uses 0.5 for GPT-4o, 0.95 for Claude
+    3.7 Sonnet, and an unspecified default for Gemini 2.5 Pro; the latter settings are described by the paper as unofficial.
+  inference_budget: All WebChoreArena runs use a 50-step cap. BrowserGym max-new-token limits are 2,000 for GPT-4o and Claude
+    and 8,000 for Gemini; AgentOccam max-token limits are 128,000 for GPT-4o and 4,096 for Claude, while Gemini uses defaults.
+  search_or_scaffold: 'Two evaluation scaffolds are released: BrowserGym with accessibility-tree and optional screenshot observations,
+    and AgentOccam with explicit note, branch, and prune memory/planning actions. Exact upstream commits and deployment images
+    used for the paper experiments are not disclosed.'
+  optimizer_or_scaffold: No optimizer or post-training recipe is used. WebChoreArena evaluates frozen model-backed agents;
+    the paper does not claim SFT, RLVR, or agent training on the released tasks.
+  reset_protocol: The official README instructs evaluators to preserve task order because later tasks can alter environment
+    state, reset after each website, then run cross-site tasks, and reset before rerunning failed tasks. A machine-readable
+    reset manifest and immutable site snapshot are not released.
+audit:
+  source_mixture: Human-authored templates and instantiations over Shopping, Shopping Admin, Reddit, GitLab, and cross-site
+    WebArena states, with Claude-based difficulty probing and author cross-checks. Item-level authorship, rejected proposals,
+    and exact source-state lineage are unavailable.
+  split: The release presents one 532-task evaluation benchmark and a 102-task analysis subset containing one task from each
+    non-cross-site template. No train/dev/test split or hidden holdout is specified; training use must not be inferred.
+  decontamination: No model-pretraining contamination analysis, public-benchmark exposure policy, string or semantic overlap
+    report, or future test-refresh protocol is disclosed.
+  benchmark_overlap: WebChoreArena intentionally reuses the WebArena sites, environment design, and evaluator family while
+    contributing newly human-curated harder tasks. No record-level overlap audit against WebArena or other web-agent benchmarks
+    is released.
+  lineage: Aggregate template/task counts and the high-level construction process are documented, but task-level annotator
+    identity, prototype and revision history, Claude trial outputs, cross-check decisions, and rejected-task manifests are
+    not public.
+  license: The official GitHub repository and Kaggle dataset report Apache-2.0. The project website separately uses CC BY-SA
+    4.0. Rights and version obligations for adopted upstream WebArena, BrowserGym, AgentOccam, website databases, screenshots,
+    and generated interaction logs require separate review and are not established by the top-level repository license alone.
+  release_version:
+    paper: arXiv:2506.01952v1
+    paper_date: '2025-06-02'
+    venue: COLM 2026 accepted paper
+    repository_commit: 542abc538fd9558362119714989166904d82f5f4
+    repository_commit_date: '2026-07-09'
+    kaggle_dataset_version: 1
+    kaggle_dataset_date: '2025-05-15'
+    github_release_tag: null
+    upstream_webarena_commit: unknown
+    environment_image: unknown
+  artifact_release_state: Paper, project page, code, task data, evaluator code, small-set IDs, and license are public. Full
+    paper-run results and successful/failed trajectories, immutable environment images and databases, paper-bound dependency
+    commits, and task construction records are not public.
+  released_objects:
+    task_records: 532
+    task_templates: 117
+    analysis_subset_ids: 102
+    evaluator_code_released: true
+    task_generators_released: true
+    complete_model_trajectories_released: false
+    complete_success_and_failure_results_released: false
+    immutable_environment_snapshot_released: false
+  environment_versioning:
+    substrate: self-hosted WebArena-compatible sites
+    upstream_commit: unknown
+    database_snapshot_hashes: unknown
+    browser_version: BrowserGym README pins Playwright 1.50.0, but the paper-bound Chromium build and AgentOccam browser stack
+      are not fully pinned.
+    authentication_state: runtime_local
+    reset_semantics: partially documented in README
+    deterministic_replay: not verified
+  successful_and_failed_sample_retention: The paper reports aggregate success scores and selected failure examples but does
+    not release the underlying run corpus. BrowserGym tooling records API and environment errors locally and recommends moving
+    erroneous results aside before reruns, but the exact paper-run retry, exclusion, crash, and timeout accounting is not
+    disclosed.
+  privacy_or_consent: Task annotators are paper authors and sites are self-hosted simulations; the paper does not report external
+    human-subject data collection. A privacy review of seeded website content, authentication states, screenshots, or any
+    future released trajectories is not disclosed.
+  verifier_or_judge_failure_modes:
+  - Exact and must-include string checks can reject semantically correct answers because of formatting or accept answers containing
+    a required substring without establishing full correctness.
+  - GPT-4o fuzzy matching introduces model-version, prompt, and judge error; no frozen judge-response bundle, calibration
+    set, or adversarial robustness audit is released.
+  - URL and DOM-element checks observe only configured final-page evidence and can miss hidden state, unintended side effects,
+    or alternative valid completions.
+  - Multiplication across evaluator components can make one false negative collapse the whole task score and does not expose
+    which intermediate agent step failed.
+  - Task-order dependence, authenticated state, and incomplete reset/version manifests can change outcomes even in nominally
+    self-hosted environments.
+  - The README documents `affect_environment`, `required_wait`, and misspelled `strage_state` columns, while the pinned 532-row
+    JSON instead exposes `storage_state` and omits the first two fields, weakening machine-readable replay and mutation auditing.
+  known_failure_modes:
+  - Agents miscount when aggregating items over multiple pages.
+  - Calculation errors become more frequent when more than fifteen numbers must be combined.
+  - Agents forget task constraints or required output formats.
+  - Agents lose page/action state, hallucinate nonexistent products, stop early, or abandon complex searches.
+  - Visual inputs can reduce accuracy relative to accessibility-tree-only inputs for some models and tasks.
+  - A provided calculator does not reliably help because agents seldom choose to use it.
+  - Simulated sites preserve reproducibility better than the live web but leave a reality gap.
+  citation_status: verified
+  confidence: high
+  notes: Audited arXiv v1 including appendices, the official project page, the COLM 2026 accepted-paper list, GitHub commit
+    `542abc5...`, the 532-row merged task JSON, evaluator code, READMEs, license, and Kaggle dataset v1 on 2026-07-20. Artifact
+    verification establishes the benchmark release, not a public trajectory corpus or deterministic end-to-end replay package.
+  remaining_unknowns:
+  - Paper-bound commits for WebArena, BrowserGym, AgentOccam, dependencies, browser image, and site/database snapshots
+  - Task-level annotator, prototype, revision, rejection, and Claude challenge-probing lineage
+  - Exact paper-run seeds, retries, API failures, timeouts, exclusions, and complete result/trajectory bundles
+  - Formal benchmark-overlap, model-exposure, and future public-test contamination audit
+  - Machine-readable state-mutation, wait, reset, and cross-task dependency manifest
+  - Calibration, stability, and adversarial error analysis for GPT-4o fuzzy evaluation
+  - Rights review for upstream code, simulated website content, screenshots, authentication state, and future trajectories
+inclusion_reason: WebChoreArena releases a concrete environment-facing task object and mixed terminal feedback contract for
+  long, memory- and calculation-heavy browser episodes. Its value to the environment-and-agent-trajectory track is the inspectable
+  task/evaluator boundary, while absent trajectories, paper-bound environment snapshots, and complete run accounting remain
+  explicit audit limits.
+related: []
+tags:
+- environment-agent-trajectory-data
+- web-agent-benchmark
+- browser-agent
+- webarena
+- long-horizon-tasks
+- memory-intensive-tasks
+- programmatic-evaluation
+- llm-judge
+- environment-reset
+- replay-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebChoreArena releases 532 author-curated WebArena tasks with answer-, URL-, and DOM-based terminal evaluators,
+  but not paper-run trajectories or a fully pinned environment snapshot.
+why_it_matters: It turns memory-heavy browser chores into reusable task/evaluator records whose feedback can be inspected
+  at the terminal boundary, while making clear that an executable benchmark is not automatically a trajectory dataset or a
+  training release.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  code_verified: true
+  task_data_verified: true
+  evaluation_code_verified: true
+  artifact_verified: true
+  license_verified: true
+  trajectory_release_verified: false
+  result_release_verified: false
+  replay_verified: false
+  complete_rights_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Identity and acceptance were verified against arXiv, the official project, and the COLM accepted-paper list. Code,
+    task JSON, evaluators, repository license, and Kaggle v1 were verified. This does not verify paper-run rollouts, complete
+    results, paper-bound environment images, or all third-party rights.
+curation_level: L3_summary_ready
+needs:
+- 'needs_replay: pin upstream commits, dependencies, browser/site/database images, authentication state, task-order dependencies,
+  and reset manifests'
+- 'needs_trajectory_release: publish complete successful, failed, crashed, timed-out, and retried episodes with observations,
+  actions, terminal scores, and exclusion reasons'
+- 'needs_lineage: release task-level authoring, prototype, Claude-probing, revision, cross-check, and rejection records'
+- 'needs_split_and_contamination: define benchmark version/holdout policy and publish overlap, public-exposure, and model-contamination
+  audits'
+- 'needs_verifier_audit: pin the GPT-4o judge and publish calibration, alternative-valid-answer, false-positive, false-negative,
+  and adversarial tests'
+- 'needs_schema_alignment: reconcile README columns with the released JSON and expose state-mutation, wait, and reset fields
+  machine-readably'
+- 'needs_rights: clarify upstream code, simulated-site content, screenshot, authentication-state, and trajectory redistribution/training
+  rights'
+card: null

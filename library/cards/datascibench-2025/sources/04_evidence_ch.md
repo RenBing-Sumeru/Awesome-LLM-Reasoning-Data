@@ -1,0 +1,1 @@
+arXiv 摘要报告实验覆盖 6 个 API 模型、8 个开源通用模型和 9 个开源代码生成模型。作者报告 API 模型在所有指标上优于开源模型，且 Deepseek-Coder-33B-Instruct 是所评测开源模型中表现最好的。逐实例决定性证据是 Task-Function-Code 分数：执行结果由与任务绑定的 metric 和程序化规则检查。证据边界是：分数受执行环境、metric 实现、GT 验证、prompt/scaffold 和数据集版本影响。复用模型排序前必须固定官方 metric code 和 release 版本。

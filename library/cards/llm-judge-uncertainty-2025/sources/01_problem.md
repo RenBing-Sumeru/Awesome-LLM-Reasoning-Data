@@ -1,0 +1,3 @@
+An LLM judge normally returns one rating, although its token probabilities, prompt sensitivity, and limited calibration data make that score uncertain. A point score can therefore overstate agreement with human labels, especially in reasoning evaluation where a small calibration set makes coverage unreliable.
+
+The paper introduces an uncertainty-analysis framework for rating-based LLM judging. It uses conformal prediction on judge logits and held-out human ratings to attach an interval to each score, then adapts the interval to discrete ordinal labels. Its evaluation object is a prompt, generated response, judge logits, human rating, interval, and recommended midpoint score.

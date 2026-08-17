@@ -1,0 +1,19 @@
+{
+  "title": "Prometheus-Vision: Vision-Language Model as a Judge for Fine-Grained Evaluation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-acl.672/",
+    "data": "https://huggingface.co/datasets/prometheus-eval/Perception-Collection",
+    "code": "https://github.com/prometheus-eval/prometheus-vision",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:18:17Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提供约 1.5 万条视觉 rubric 及图像、回答和反馈，训练能按图像内容细评的多模态裁判",
+    "updated_at": "2026-07-25T10:18:17Z"
+  }
+}

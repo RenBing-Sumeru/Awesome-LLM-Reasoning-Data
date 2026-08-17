@@ -1,0 +1,3 @@
+GraphPRM improves graph-step judging and answer selection and transfers to some unseen reasoning benchmarks. The key difference is executable process labels rather than outcome-only training.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of executable graph-reasoning process supervision in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

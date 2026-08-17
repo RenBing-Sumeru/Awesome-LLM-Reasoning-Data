@@ -1,0 +1,148 @@
+id: hunyuan-t1-2025
+title: Hunyuan-T1
+year: 2025
+venue: official release page
+authors:
+- Tencent Hunyuan Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- logic
+- science
+- code
+training_use:
+- rlvr
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://tencent.github.io/llm.hunyuan.T1/README_EN.html
+  arxiv: null
+  code: null
+  data: null
+  project: https://github.com/Tencent/llm.hunyuan.T1
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The release says Tencent collected world science and reasoning problems spanning mathematics, logical reasoning,
+    science, and code, from basic mathematics to complex scientific problem solving. Dataset names, source inventories, counts,
+    collection dates, licenses, mixture weights, and item-level provenance are undisclosed.
+  trace_author: unknown; the release does not identify the policy checkpoints, external or internal generators, or whether
+    retained records include reasoning traces. An early T1-preview version is named only as a preference-stage evaluator.
+  answer_format: unknown; the release does not publish a record schema, reference-answer representation, reasoning-trace format,
+    accepted/rejected outputs, or reward fields.
+  process_fields: []
+  environment_or_substrate: Offline reasoning reinforcement learning followed by human-preference alignment on the TurboS-based
+    model; execution environments, tools, sandboxes, and task-specific substrates are undisclosed.
+  verifier_or_reward: For reasoning RL, the release states that the four problem domains use ground-truth real feedback, without
+    defining the checking mechanism. For preference alignment, an early T1-preview version evaluates and scores outputs and
+    is combined with a reward model in a unified reward system. Reward weights, prompts, thresholds, calibration, and implementations
+    are undisclosed.
+  terminal_predicate: unknown; neither the ground-truth acceptance rule nor the combined preference-reward decision rule is
+    specified.
+recipe_metadata:
+  base_model: TurboS fast-thinking base with a Hybrid-Transformer-Mamba MoE architecture. The exact checkpoint, parameterization,
+    pre-training snapshot, and context configuration used for Hunyuan-T1 are undisclosed; the later Hunyuan-TurboS report
+    does not pin the T1 release to a specific reported checkpoint.
+  teacher: An early T1-preview version is reported as a self-reward evaluator during preference alignment. Its checkpoint,
+    prompt, scoring rubric, training data, and calibration are unknown; the release does not identify it as the reasoning-RL
+    data generator.
+  generator: unknown; no rollout policy, prompt generator, response generator, or versioned model lineage is disclosed.
+  filtering_rule: unknown; the release does not specify correctness filters, rejection sampling, deduplication, difficulty
+    estimation, safety filtering, or stage yields.
+  sampling_protocol: Curriculum learning reportedly increases data difficulty and expands context length in stages. Bucket
+    definitions, ordering rules, sampling weights, context lengths, seeds, and stage counts are undisclosed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Context length is reportedly expanded stepwise during training, but the schedule, maximum length for this
+    T1 release, rollout token budget, and decoding limits are unknown.
+  optimizer_or_scaffold: The release reports reinforcement learning with data replay and periodic policy resetting and says
+    96.7% of post-training compute was allocated to RL. The RL algorithm, objective, replay buffer, reset cadence, optimizer,
+    batch size, KL or clipping treatment, and total compute are undisclosed.
+audit:
+  source_mixture: Only four broad reasoning domains and a range from basic mathematics to complex scientific problems are
+    named. No source manifest, per-domain count, synthetic-data share, or mixture weight is public.
+  split: unknown; no train, validation, evaluation, replay-buffer, or preference-stage membership manifests are released.
+  decontamination: unknown; the release provides benchmark scores but no benchmark-overlap, memorization, or contamination
+    audit.
+  license: unknown for the training prompts, references, generated records, evaluator outputs, and reward artifacts. The public
+    GitHub content repository does not license or release the training data or model weights.
+  lineage: The release links Hunyuan-T1 to the TurboS base family and names an early T1-preview evaluator plus an unnamed
+    reward model. It does not provide record-level source-to-prompt-to-rollout lineage, versioned checkpoint lineage, timestamps,
+    accepted/rejected records, or reward logs.
+  known_failure_modes:
+  - The 96.7% figure is a compute-allocation claim, not a disclosed token count, sample count, or replayable training recipe.
+  - Ground-truth real feedback does not identify whether tasks use exact match, symbolic equivalence, unit tests, theorem
+    checking, human labels, or another verifier.
+  - The unified self-reward plus reward-model scheme is not auditable without evaluator and reward-model versions, prompts,
+    weights, calibration, and score logs.
+  - The claimed more-than-50% stability improvement has no published metric definition, baseline, variance, or underlying
+    training curves.
+  - The official project repository and Hugging Face Space expose release text and an API demo, not training code, weights,
+    datasets, a substantive model card, or verifier artifacts.
+  - Benchmark results measure reported model behavior and do not establish provenance, legality, correctness, representativeness,
+    or decontamination of the hidden training records.
+  citation_status: verified
+  confidence: medium
+  notes: Checked Tencent's official bilingual release page and GitHub content repository, the official Tencent Cloud launch/version
+    records, the official Hunyuan-T1 Hugging Face Space, and the later Hunyuan-TurboS technical report. No formal Hunyuan-T1
+    paper, training-data release, model-weight card, reward/verifier release, or construction code was confirmed.
+inclusion_reason: A frontier reasoning-model release with unusually explicit RL compute allocation and named curriculum, replay/reset,
+  and mixed preference-feedback components, while leaving the actual data records and reward contract unreleased.
+related:
+- hunyuan-turbos-2025
+tags:
+- frontier-report
+- hunyuan
+- reinforcement-learning
+- curriculum-learning
+- data-replay
+- policy-reset
+- self-reward
+- reward-model
+- disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Hunyuan-T1 reports that 96.7% of post-training compute went to RL over broad science-and-reasoning problems,
+  with curriculum, replay/reset, ground-truth feedback, and T1-preview-plus-reward-model preference scoring, but releases
+  none of the underlying training records or reward implementation.
+why_it_matters: 'It is a compact disclosure-ledger case: several system-level post-training components are named, yet the
+  data object, verifier semantics, reward aggregation, stage accounting, rights, and reproducibility artifacts remain unknown.'
+card: null
+needs:
+- 'needs_data: source manifests, dataset identities and counts, retained and rejected rollouts, replay-buffer snapshots, and
+  preference records'
+- 'needs_metadata: curriculum buckets, context schedule, stage accounting, generator and evaluator versions, rollout settings,
+  and optimization hyperparameters'
+- 'needs_reward: ground-truth verifier definitions, self-reward prompt and rubric, reward-model checkpoint, aggregation weights,
+  calibration, and reward logs'
+- 'needs_audit: split manifests, benchmark-overlap and contamination analysis, stability metric and baseline, lineage, and
+  failure analysis'
+- 'needs_license: rights for source problems, references, generated traces, evaluator outputs, and derived preference data'
+- 'needs_code: training, replay/reset, verifier, reward, and evaluation configurations, plus a versioned model card or checkpoint'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official release, content repository, cloud service records, API-demo Space, and related TurboS report were checked.
+    They verify the release and high-level claims but do not provide reusable T1 training, model, data, or reward artifacts.

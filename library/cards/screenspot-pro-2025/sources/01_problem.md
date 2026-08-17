@@ -1,0 +1,3 @@
+ScreenSpot-Pro asks whether multimodal models can ground GUI instructions in high-resolution professional software screens. The primary source is the arXiv paper https://arxiv.org/abs/2504.07981, first uploaded in 2025, with the public grounding leaderboard, GitHub repository, and Hugging Face dataset as artifacts.
+
+The decision boundary is GUI grounding for professional computer use. A sample contains a high-resolution screenshot, a target instruction, application/domain metadata, and a target box or coordinate region evaluated by localization accuracy. It is not an end-to-end computer-use benchmark like OSWorld and not a training recipe. It belongs in the atlas because grounding a target UI element is a core perception/action precondition for desktop agents.

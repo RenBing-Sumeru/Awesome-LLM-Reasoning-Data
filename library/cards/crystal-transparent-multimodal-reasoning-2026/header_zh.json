@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CRYSTAL 提供 6,372 条经质量门控的多模态参考推理链，并以顺序敏感指标揭示“答对但推理缺失或失序”的情况。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要以可验证中间步骤评测多模态推理，并把答案正确性与推理覆盖度、顺序分开分析的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wayner Barrios、SouYoung Jin",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

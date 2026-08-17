@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "KAIST",
+    "Yonsei University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://b-moca.github.io/",
+    "https://arxiv.org/abs/2404.16660",
+    "https://arxiv.org/pdf/2404.16660",
+    "https://github.com/jylee425/b-moca/tree/release/ver.3"
+  ],
+  "verification_note": "Official project, arXiv, PDF, and repository sources verify KAIST/Yonsei affiliations, CoLLAs 2025 and ICLR 2024 workshop spotlight status, and the B-MoCA artifact. Project page spells the third author as Minyong Ahn, while arXiv/PDF/BibTeX spell Minyong An; this Card follows arXiv/PDF."
+}

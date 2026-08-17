@@ -1,0 +1,1 @@
+Audio MultiChallenge 把文本版 MultiChallenge 扩展到音频原生场景，保留 Inference Memory、Instruction Retention 和 Self Coherence，并新增 Voice Editing。数据包含 452 段对话、47 位说话者和 1,712 条实例级 rubric，音频保留自然口误、停顿、非单调表述及背景声。每条任务不只给整体分数，而是用具体可检查标准判断模型是否满足关键要求。

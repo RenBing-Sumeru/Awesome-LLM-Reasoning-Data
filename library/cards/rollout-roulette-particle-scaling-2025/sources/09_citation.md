@@ -1,0 +1,1 @@
+Puri, Isha, Shivchander Sudalairaj, Guangxuan Xu, Kai Xu, and Akash Srivastava. 2025. Rollout Roulette: A Probabilistic Inference Approach to Inference-Time Scaling of LLMs using Particle-Based Monte Carlo Methods. In Advances in Neural Information Processing Systems 38. https://papers.nips.cc/paper_files/paper/2025/hash/e55c675d3230dbc3bf24c986d6685632-Abstract-Conference.html

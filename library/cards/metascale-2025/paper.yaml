@@ -1,0 +1,148 @@
+id: metascale-2025
+title: 'MetaScale: Test-Time Scaling with Evolving Meta-Thoughts'
+year: 2026
+venue: 'Findings of the Association for Computational Linguistics: ACL 2026'
+authors:
+- Qin Liu
+- Wenxuan Zhou
+- Nan Xu
+- James Y. Huang
+- Fei Wang
+- Sheng Zhang
+- Hoifung Poon
+- Muhao Chen
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- reasoning
+- mathematics
+- general-purpose
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.574/
+  arxiv: https://arxiv.org/abs/2503.13447
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.574
+  venue: https://aclanthology.org/2026.findings-acl.574/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.574/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-acl.574.bib
+data_object:
+  prompt_source: Matched main comparisons use 64 randomly sampled instances from each of GSM8K, MMLU-Pro, and Arena-Hard;
+    additional style-controlled and uncontrolled analyses use the full Arena-Hard set. Exact sampled IDs are unknown.
+  trace_author: GPT-4o (gpt-4o-0806) or Llama-3.1-8B-Instruct generates self-composed meta-thoughts, candidate responses,
+    and evolved meta-thoughts at inference time.
+  answer_format: A query-specific pool of textual meta-thoughts, each containing a cognitive mindset and problem-solving strategy,
+    plus selected arms, UCB statistics, candidate responses, reward scores, evolved children, and one highest-scoring final
+    response.
+  process_fields:
+  - query
+  - retrieved_wildchat_example
+  - cognitive_mindset
+  - problem_solving_strategy
+  - selected_meta_thought
+  - selection_count
+  - empirical_mean_reward
+  - ucb_score
+  - candidate_response
+  - reward_model_score
+  - parent_meta_thought
+  - evolved_meta_thought
+  - final_answer
+  environment_or_substrate: Fixed-budget multi-armed-bandit search over meta-thoughts with UCB selection and periodic target-LLM-mediated
+    evolution.
+  verifier_or_reward: Skywork-Reward-Llama-3.1-8B-v0.2 scores candidates for search; evaluation uses numeric exact match on
+    GSM8K, answer extraction on MMLU-Pro, and GPT-4-Turbo judgments against GPT-4-0314 on Arena-Hard.
+  terminal_predicate: After budget T attempts, return the candidate response with the largest Skywork reward-model score.
+recipe_metadata:
+  base_model: GPT-4o (gpt-4o-0806) and Llama-3.1-8B-Instruct.
+  teacher: unknown
+  generator: The target LLM self-composes query-specific strategies, abstracts strategies from the top 8 embedding-similar
+    WildChat tasks, generates a response under the UCB-selected strategy, and creates evolved strategies from high-UCB parents.
+  filtering_rule: Select the meta-thought maximizing empirical mean reward plus beta times sqrt(log(t)/selection_count); use
+    high-UCB parents for evolution; return the response with maximum reward-model score.
+  sampling_protocol: Main matched comparisons use 64 randomly sampled items per benchmark and a budget of 128 attempts; scaling
+    analyses vary the budget from 1 to 128. Greedy one-pass baselines use temperature 0, and sampled Best-of-N baselines use
+    temperature 0.6.
+  rollout_count: T=128 attempts in the main fixed-budget comparison; 1 to 128 attempts in scaling analyses.
+  temperature: MetaScale decoding temperature is unknown; the paper explicitly reports 0 for greedy one-pass/CoT baselines
+    and 0.6 for sampled Best-of-N baselines.
+  inference_budget: A predetermined number T of candidate-response attempts, up to 128 in reported experiments.
+  optimizer_or_scaffold: Inference-only UCB arm selection plus periodic LLM-mediated genetic evolution; no model parameters
+    are updated.
+audit:
+  source_mixture: WildChat supplies the top 8 embedding-similar task-solution examples for initialization, combined with target-LLM
+    self-composed strategies; evaluation uses GSM8K, MMLU-Pro, and Arena-Hard.
+  split: 64 randomly sampled test instances per benchmark for matched main comparisons; full Arena-Hard for additional style-controlled
+    and uncontrolled comparisons; exact sampled IDs are unknown.
+  decontamination: unknown
+  license: The ACL paper is available under CC BY 4.0; no separate license was verified for code, meta-thought traces, retrieved
+    examples, or generated responses.
+  lineage: Query -> self-composed strategies plus abstractions from top-8 similar WildChat examples -> UCB-selected meta-thought
+    -> target-LLM response -> Skywork reward -> UCB update -> periodic LLM evolution -> highest-scoring response.
+  known_failure_modes:
+  - The same outcome reward model drives search and final selection, so proxy-reward errors can steer both UCB statistics
+    and the returned response.
+  - The WildChat version, embedding model, index, retrieved example IDs, and contamination checks are not disclosed.
+  - UCB beta, evolution interval k, exact initial-pool size, MetaScale decoding temperature, and random seeds are not fully
+    reported.
+  - The 64-item main subsets have no released identities; Arena-Hard rankings change with style control, and MMLU-Pro extraction
+    falls back to a random option on parse failure.
+  - Evaluation is English-only, uses two target models, and studies single-model rather than collaborative evolution.
+  - No official code, meta-thought trace, UCB history, reward log, or evaluation-subset manifest was verified.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL Anthology publication, ACL BibTeX, arXiv record, and full paper checked; no official reusable implementation
+    or trace release was verified.
+inclusion_reason: MetaScale makes strategy proposals, retrieval-derived initialization, bandit statistics, scalar rewards,
+  evolved strategy pools, and final selection explicit test-time trace objects, while leaving the underlying traces unreleased.
+related: []
+tags:
+- test-time-scaling
+- meta-thoughts
+- multi-armed-bandit
+- ucb
+- genetic-evolution
+- reward-model-selection
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: MetaScale searches over query-specific cognitive strategies with UCB and LLM-mediated evolution, using an
+  outcome reward model to select the final response under a fixed inference budget.
+why_it_matters: It provides a concrete schema for auditing strategy-level test-time traces—retrieval source, arm statistics,
+  rewards, evolution lineage, budget, and final selection—without treating benchmark gains as evidence that the hidden traces
+  are reusable or high quality.
+card: null
+needs:
+- needs_code
+- needs_meta_thought_trace_release
+- needs_reward_model_protocol
+- needs_retrieval_corpus_manifest
+- needs_evaluation_sample_manifest
+- needs_ucb_and_evolution_hyperparameters
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Findings of ACL 2026 record, DOI, BibTeX, arXiv, and full text verified; code, data, and trace artifacts remain unverified.

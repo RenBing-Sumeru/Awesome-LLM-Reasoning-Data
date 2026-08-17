@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Math-LLaVA 将四万张筛选图像扩展为开放的三十六万条多模态数学问答，并用消融实验区分图像选择与四类合成操作的贡献。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态数学指令数据构造研究",
+  "best_for_ch": "适合构建图像推理 SFT 数据，或审计教师生成短答案示范的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wenhao Shi, Zhiqiang Hu, Yi Bin, Junhua Liu, Yang Yang, See-Kiong Ng, Lidong Bing, Roy Ka-Wei Lee",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

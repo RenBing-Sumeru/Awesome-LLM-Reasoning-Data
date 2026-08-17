@@ -1,0 +1,106 @@
+id: compute-optimal-tts-model-reward-2025
+title: Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling
+year: 2025
+venue: arXiv preprint
+authors:
+- Runze Liu
+- Junqi Gao
+- Jian Zhao
+- Kaiyan Zhang
+- Xiu Li
+- Biqing Qi
+- Wanli Ouyang
+- Bowen Zhou
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.06703
+  arxiv: https://arxiv.org/abs/2502.06703
+  venue: null
+  code: https://github.com/RyanLiu112/compute-optimal-tts
+  data: null
+  project: https://ryanliu112.github.io/compute-optimal-tts/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.06703
+data_object:
+  prompt_source: MATH-500 and AIME24 mathematics problems.
+  trace_author: Policy models searched at inference.
+  answer_format: Candidate solutions, process-reward scores, search selections, and final answers.
+  process_fields:
+  - problem
+  - policy_model
+  - verifier
+  - candidate
+  - reward_score
+  - search_strategy
+  - budget
+  - final_answer
+  environment_or_substrate: External test-time sampling and search.
+  verifier_or_reward: Process reward models across policy-model and PRM families.
+  terminal_predicate: Exact correctness on reported mathematical benchmarks.
+recipe_metadata:
+  base_model: Policy models from 0.5B to 72B across two model families, as reported.
+  teacher: null
+  generator: Policy LLM used by best-of-N, beam search, or diverse verifier tree search.
+  filtering_rule: PRM-guided selection of candidates or intermediate steps, depending on the strategy.
+  sampling_protocol: Compare best-of-N, beam search, and diverse verifier tree search over policies, PRMs, difficulties, and
+    budgets.
+  rollout_count: Varied by the paper's compute-optimal configurations.
+  temperature: null
+  inference_budget: Test-time sampling/search budget and reported efficiency.
+  optimizer_or_scaffold: Reward-aware compute-optimal test-time scaling selection.
+audit:
+  source_mixture: Official arXiv paper, project page, and official GitHub repository.
+  split: MATH-500 and AIME24 as reported in the paper.
+  decontamination: Not separately claimed in the primary source.
+  license: Verify repository and upstream model/dataset terms before reuse.
+  lineage: https://arxiv.org/abs/2502.06703
+  known_failure_modes:
+  - prm_ood_error
+  - reward_hacking
+  - difficulty_misestimation
+  - compute_overhead
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, affiliations, project, code, methods, and reported claims checked against the official paper and
+    project on 2026-07-20.
+inclusion_reason: It analyzes how policy model, verifier compatibility, and problem difficulty determine compute-optimal inference-time
+  search.
+related: []
+tags:
+- test-time-compute
+- compute-optimal
+- process-reward-model
+- search
+- mathematical-reasoning
+status: verified
+one_line_summary: The study shows that optimal inference-time search depends jointly on generator, verifier, and problem difficulty
+  rather than model size alone.
+reading_priority: useful
+paper_type: Empirical compute-optimal test-time scaling study
+best_for: Readers comparing PRM-guided sampling and search across different model sizes and task difficulties.
+confidence: high
+why_it_matters: It makes reward-model compatibility an explicit part of selecting a practical test-time scaling strategy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper, public code repository, and project page were checked.
+category_ids:
+- scaling_rlvr_test_time_compute

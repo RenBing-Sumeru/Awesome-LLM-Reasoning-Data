@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Rubicon 披露了面向开放式任务的 rubric-based RL：使用专有 90 万以上语料与 1 万以上 rubric，并发布模型检查点；但训练数据、评分器校准、代码和完整审计账本均未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rubric 奖励技术报告与部分数据披露账本",
+  "best_for_ch": "研究开放式任务奖励、rubric 评分、RL 训练和前沿报告披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zenan Huang、Yihong Zhuang、Guoshan Lu、Zeyu Qin、Haokai Xu、Tianyu Zhao、Ru Peng、Jiaqi Hu、Zhanming Shen、Xiaomeng Hu、Xijun Gu、Peiyi Tu、Jiaxin Liu、Wenyu Chen、Yuzhuo Fu、Zhiting Fan、Yanmei Gu、Yuanyuan Wang、Zhengkai Yang、Jianguo Li、Junbo Zhao",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T08:36:55Z"
+}

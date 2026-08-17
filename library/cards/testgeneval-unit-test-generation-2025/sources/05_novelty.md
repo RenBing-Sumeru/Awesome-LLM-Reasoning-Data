@@ -1,0 +1,3 @@
+HumanEval-style benchmarks ask models to write functions that are scored by existing tests, while prior test-generation datasets often start from isolated functions or synthetic specifications. TestGenEval changes the evaluation object: models must generate or continue complete test files for existing implementations in real repositories while handling fixtures, imports, and project dependencies.
+
+A second practical change is its three-layer contract of execution, coverage, and mutation rather than treating test success or coverage as the sole quality signal. It does not introduce a new test-generation model; the novelty lies in real file-level data, completion settings, and the multi-metric automated protocol.

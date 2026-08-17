@@ -1,0 +1,5 @@
+ARC-AGI-2 asks whether an AI system can infer a novel abstract transformation from a few colored-grid examples and apply it to unseen test grids. The primary paper is "ARC-AGI-2: A New Challenge for Frontier AI Reasoning Systems," arXiv:2505.11831, first posted in 2025 and revised in 2026. The official ARC Prize repository releases the public task data.
+
+The evaluation object is a JSON task with `train` demonstration pairs and `test` pairs. Each grid is a rectangular matrix of integers 0-9, visualized as colors, with sizes from 1x1 to 30x30. A solver sees demonstration input/output grids and test inputs, then must construct the exact output grid, including dimensions and every cell value.
+
+The decision boundary is few-shot abstract grid transformation with exact-answer scoring. It is not natural-language QA, not a multiple-choice reasoning set, and not a proof of general intelligence by itself. Its useful signal is whether a solver can acquire a task-specific transformation from minimal examples under public/private leakage controls.

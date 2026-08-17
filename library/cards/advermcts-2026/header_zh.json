@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AdverMCTS 让 Solver 代码树与 Attacker 测试树共同演化，并把同一主干模型的 Arbiter 标注反例存为逐题动态硬验证器；但 79.88% 测试有效率与 16.1% 误杀率表明，持久约束仍可能被错误标签污染。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "对抗式测试时搜索、动态验证器与代码选择方法",
+  "best_for_ch": "研究代码推理、MCTS、反例生成、动态验证器和验证器审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qingyao Li、Weiwen Liu、Weinan Zhang、Yong Yu、Bo An",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

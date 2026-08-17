@@ -1,0 +1,1 @@
+The record’s value comes from retained interaction structure, not its prose alone. Read the trajectory normalisation and rule-checking steps closely: they define what the preference label certifies and which kinds of tool errors remain invisible.

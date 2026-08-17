@@ -1,0 +1,5 @@
+- Read Section 4.1 for the formal instruction-question-answer object, three-attempt rejection rule, and reported 96,533 retained records.
+- Read Section 4.2 and Table 6 before attributing gains to data alone; progressive SFT changes the training order and produces mixed task-level effects.
+- Use Appendix D.1 to recover the terminology dictionaries, structured prompts, and human-check dimensions, while noting that audit sampling and adjudication are unspecified.
+- Compare the construction verifier with the expert error analysis: answer agreement can coexist with fabricated content, wrong provisions, and outdated citations.
+- Treat the official GitHub link as an availability check, not as evidence of a release; the repository was empty when verified.

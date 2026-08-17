@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "CodeScout 发布 54,845 条 CodeScout-14B 与 CodeScout-4B 的完整终端代码搜索 RL rollout，保留多次尝试、分层定位奖励和 8,281 条零奖励失败轨迹；但公开行数超过论文名义预算，部分分组不完整，且数据许可与精确重放谱系仍为 unknown。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码搜索 agent 的在线 RL rollout 数据发布与可验证奖励构造配方",
+  "best_for_ch": "研究多次 rollout、代码定位 verifier、失败轨迹保留、异步 RLVR、训练预算核对与 agent 轨迹可重放性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Lintang Sutawika、Aditya Bharat Soni、Bharath Sriraam R R、Apurva Gandhi、Taha Yassine、Sanidhya Vijayvargiya、Yuchen Li、Xuhui Zhou、Yilin Zhang、Leander Melroy Maben、Graham Neubig",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

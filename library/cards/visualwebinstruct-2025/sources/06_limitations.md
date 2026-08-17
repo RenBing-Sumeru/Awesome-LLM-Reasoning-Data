@@ -1,0 +1,3 @@
+- Majority agreement among four GPT-4o samples is not an external correctness proof; correlated errors can survive. Reusers should manually audit intermediate reasoning and compare against independent answer checkers where possible.
+- Google Lens retrieval, membership filtering, and source availability shape the domain, language, copyright, and difficulty distribution. Reusers should retain source provenance and conduct rights and representation reviews instead of treating the mixture as uniformly reusable.
+- The paper states that benchmark decontamination was performed but omits its algorithm and counts, while the strongest result also mixes LLaVA-CoT. Reusers should rerun overlap detection and report both VisualWebInstruct-only and mixed-data results.

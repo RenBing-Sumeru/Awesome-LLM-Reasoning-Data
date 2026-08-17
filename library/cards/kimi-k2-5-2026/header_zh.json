@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Kimi K2.5 报告了 15T 多模态持续预训练、zero-vision SFT、联合 RL、GRM 和 PARL，但未发布数据、教师、环境、rollout 或 reward 校准 artifact。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态智能体技术报告与数据披露账本",
+  "best_for_ch": "需要审计多模态后训练、GRM、Agent Swarm 与 agent-RL 环境发布边界的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Kimi Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,136 @@
+id: openresearcher-dataset-2026
+title: 'OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis'
+year: 2026
+venue: arXiv preprint
+authors:
+- Li, Zhuofeng
+- Jiang, Dongfu
+- Ma, Xueguang
+- Zhang, Haoxiang
+- Nie, Ping
+- Zhang, Yuyu
+- Zou, Kai
+- Xie, Jianwen
+- Zhang, Yu
+- Chen, Wenhu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- offline-long-horizon-research-trajectories
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2603.20278
+  arxiv: https://arxiv.org/abs/2603.20278
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/OpenResearcher/OpenResearcher-Dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/OpenResearcher/OpenResearcher-Dataset
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: about 6K difficult QA prompts with 10K bootstrapped gold documents
+  trace_author: GPT-OSS-120B searches an offline corpus and writes complete tool-use trajectories
+  answer_format: question id, question, answer, interleaved messages, latency, error, attempts, status, and chunk metadata
+  process_fields:
+  - question id
+  - question
+  - answer
+  - interleaved messages
+  - latency
+  - error
+  - attempts
+  - status
+  - and chunk metadata
+  environment_or_substrate: English long-horizon web research and evidence synthesis
+  verifier_or_reward: final-answer checking, retrievability bootstrapping, error/status fields, and trajectory filtering
+  terminal_predicate: final-answer checking, retrievability bootstrapping, error/status fields, and trajectory filtering
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: GPT-OSS-120B searches an offline corpus and writes complete tool-use trajectories
+  generator: OpenResearcher bootstraps an offline evidence corpus, then generates and filters complete search-browse-answer
+    trajectories without repeated live-web dependence.
+  filtering_rule: final-answer checking, retrievability bootstrapping, error/status fields, and trajectory filtering
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: deep-research agent SFT
+audit:
+  source_mixture: about 6K difficult QA prompts with 10K bootstrapped gold documents
+  split: Official release at https://huggingface.co/datasets/OpenResearcher/OpenResearcher-Dataset; exact configs are described
+    by the dataset card.
+  decontamination: final-answer checking, retrievability bootstrapping, error/status fields, and trajectory filtering
+  license: MIT
+  lineage: about 6K difficult QA prompts with 10K bootstrapped gold documents -> GPT-OSS-120B searches an offline corpus and
+    writes complete tool-use trajectories -> final-answer checking, retrievability bootstrapping, error/status fields, and
+    trajectory filtering -> OpenResearcher-Dataset -> deep-research agent SFT
+  known_failure_modes:
+  - offline corpus coverage constrains what the agent can discover
+  - and answer correctness does not validate every cited intermediate claim
+  citation_status: verified
+  confidence: high
+  notes: Full 37 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for deep-research agent SFT; records name
+  the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2603.20278
+- primary-link-checked
+status: verified
+one_line_summary: OpenResearcher bootstraps an offline evidence corpus, then generates and filters complete search-browse-answer
+  trajectories without repeated live-web dependence.
+why_it_matters: Online research-trajectory synthesis is expensive and unstable because failed searches may reflect either
+  a weak agent or missing documents.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: deep-research agent SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: offline long-horizon research trajectories
+  selection_priority_score: 5
+  selection_score_breakdown:
+    institution: 2
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 4581 downloads and 131 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet multi-turn message records across multiple generation seeds records,
+      field schema, scale, and MIT terms.
+  selection_eligible: true
+  year_impact_threshold: 1

@@ -1,0 +1,133 @@
+id: codecontests-alphacode-2022
+title: Competition-Level Code Generation with AlphaCode
+year: 2022
+venue: Science 2022 / arXiv
+authors:
+- Yujia Li
+- David Choi
+- Junyoung Chung
+- Nate Kushman
+- Julian Schrittwieser
+- Rémi Leblond
+- Tom Eccles
+- James Keeling
+- Felix Gimeno
+- Agustin Dal Lago
+- Thomas Hubert
+- Peter Choy
+- Cyprien de Masson d'Autume
+- Igor Babuschkin
+- Xinyun Chen
+- Po-Sen Huang
+- Johannes Welbl
+- Sven Gowal
+- Alexey Cherepanov
+- James Molloy
+- Daniel J. Mankowitz
+- Esme Sutherland Robson
+- Pushmeet Kohli
+- Nando de Freitas
+- Koray Kavukcuoglu
+- Oriol Vinyals
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- algorithmic-coding
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2203.07814
+  arxiv: https://arxiv.org/abs/2203.07814
+  doi: https://doi.org/10.1126/science.abq1158
+  code: https://github.com/google-deepmind/code_contests
+  data: https://github.com/google-deepmind/code_contests
+  project: https://deepmind.google/blog/competitive-programming-with-alphacode/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct programming contest submissions with public/private tests; exact split,
+    artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose programming contest submissions with public/private tests, prompt/task metadata,
+    a model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: programming contest submissions with public/private tests
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct programming contest submissions with public/private tests; exact split,
+    artifact, license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2203.07814;
+    https://arxiv.org/pdf/2203.07814; https://github.com/google-deepmind/code_contests; https://deepmind.google/blog/competitive-programming-with-alphacode/'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2203.07814'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official Science/arXiv and DeepMind sources verify the team-level DeepMind affiliation, Science publication, and
+    CodeContests artifacts; no per-author affiliation table was found. Artifact/license/split/scoring details remain review
+    targets.
+inclusion_reason: Strong source for contest-style reasoning and sampling/evaluation design.
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- algorithmic-coding
+one_line: CodeContests exposes programming contest submissions with public/private tests as an auditable evaluation surface.
+why_it_matters: Strong source for contest-style reasoning and sampling/evaluation design.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CodeContests exposes programming contest submissions with public/private tests as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official Science/arXiv and DeepMind sources verify the team-level DeepMind affiliation, Science publication, and
+    CodeContests artifacts; no per-author affiliation table was found.
+category_ids:
+- benchmarks_evaluation_surfaces

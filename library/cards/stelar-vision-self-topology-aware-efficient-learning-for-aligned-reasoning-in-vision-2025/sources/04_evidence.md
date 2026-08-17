@@ -1,0 +1,3 @@
+The main comparison uses Qwen2-VL-7B-Instruct as the base model and evaluates on MATH-V and VLM-S2H. STELAR-VISION reaches 28.0% overall in-distribution accuracy, compared with 18.3% for the base model and 23.7% for equally sized Chain-Only training. This corresponds to gains of 9.7 and 4.3 percentage points, respectively.
+
+The same model is also evaluated on five out-of-distribution benchmarks and consistently improves over the base model. Frugal Learning reduces output length by 18.1% while preserving comparable accuracy. These results support topology-aware training under the reported Qwen2-VL setup, but do not prove that the generated topology labels represent the model’s actual internal reasoning.

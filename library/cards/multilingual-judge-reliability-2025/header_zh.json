@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "审计多语 LLM 评测器的跨语言一致性，发现平均 Fleiss' Kappa 约为 0.3。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要核查推理数据与自动评测可靠性的研究者。",
+  "confidence_ch": "高：Findings of EMNLP 2025 正式论文、作者、机构与核心结论已核验。",
+  "authors_ch": "Xiyan Fu, Wei Liu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

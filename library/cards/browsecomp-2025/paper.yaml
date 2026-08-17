@@ -1,0 +1,279 @@
+id: browsecomp-2025
+title: 'BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents'
+year: 2025
+venue: arXiv preprint (arXiv:2504.12516)
+authors:
+- Jason Wei
+- Zhiqing Sun
+- Spencer Papay
+- Scott McKinney
+- Jeffrey Han
+- Isa Fulford
+- Hyung Won Chung
+- Alex Tachard Passos
+- William Fedus
+- Amelia Glaese
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- web_agents
+- environment_interaction
+- live_web
+- information_seeking
+- factual_qa
+training_use:
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.12516
+  paper_pdf: https://cdn.openai.com/pdf/5e10f4ab-d6f7-442e-9508-59515c65e35d/browsecomp.pdf
+  arxiv: https://arxiv.org/abs/2504.12516
+  code: https://github.com/openai/simple-evals
+  code_commit: https://github.com/openai/simple-evals/tree/652c89d0ca9df547706735883097e9537d40dc47
+  data: https://openaipublic.blob.core.windows.net/simple-evals/browse_comp_test_set.csv
+  project: https://openai.com/index/browsecomp/
+  supplementary: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.12516
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: null
+data_object:
+  object_type: A 1,266-item live-web browsing benchmark. Each released row contains an obfuscated factual question, an obfuscated
+    short reference answer, one plaintext topic label, and a plaintext canary/password. An evaluated run adds a prompted free-form
+    response and an answer-level LLM judgment; it does not add a canonical browser trajectory to the released dataset.
+  prompt_source: Human trainers start from a factual seed such as a person, event, or artifact, collect discriminating characteristics,
+    and invert them into a hard-to-find question with one intended short, stable answer. Trainers were encouraged to write
+    about personal interests.
+  trace_author: Evaluated browsing agents produce their own searches and interactions through model-specific live-web products,
+    but the official release does not publish those action/observation traces. Construction evidence and human search traces
+    are also not released.
+  episode_fields:
+  - decrypted_question
+  - reference_answer
+  - problem_topic
+  - canary
+  - prompted_model_response
+  - extracted_final_answer
+  - model_reported_confidence
+  - grader_reasoning
+  - answer_correctness_label
+  public_release_fields:
+  - problem
+  - answer
+  - problem_topic
+  - canary
+  answer_format: The evaluated model is prompted to emit an explanation, one succinct Exact Answer, and a 0%-100% confidence.
+    The reference answer is a short string; the released grader asks whether the extracted answer semantically matches it
+    and allows a small numerical margin.
+  process_fields:
+  - unknown_search_queries
+  - unknown_tool_calls
+  - unknown_page_observations
+  - unknown_citations
+  - final_response
+  - answer_level_judge_output
+  observation: The benchmark itself provides no observation stream. Agents use the changing live web through their own browsing/search
+    interfaces; page contents, URLs, search results, screenshots, timestamps, locale, account/session state, and browser state
+    are not included in the official data.
+  verifier_or_reward: 'An LLM judge receives the question, full model response, and reference answer, extracts the final answer,
+    explains meaningful differences, and should emit correct: yes or correct: no. The paper does not disclose the grader checkpoint
+    used for reported results. The current repository runner supplies gpt-4.1-2025-04-14, but its BrowseComp metric code has
+    a return-value/comparison mismatch that prevents matched labels from being counted correctly without repair.'
+  reward: Intended evaluation reward is a binary answer-correctness score. No training reward or policy-optimization use is
+    defined. Confidence is used for calibration and parallel answer-selection analysis, not as verified process supervision.
+  terminal_predicate: Intended benchmark completion is production of a final response whose extracted answer the judge marks
+    correct. No executable browser stopping rule, environmental success predicate, task reset, or timeout contract is released.
+  provenance: human factual seed -> inverted hard question and short reference answer supported by private construction evidence
+    -> model/search/human difficulty checks and alternative-answer revision -> post-hoc OpenAI chat-model topic label -> Deep
+    Research zero-pass review removing 21 of 1,287 candidates -> 1,266-row obfuscated public test CSV -> agent response ->
+    answer-only LLM judgment -> aggregate accuracy, calibration, pass-rate, and test-time-compute analyses.
+  environment_or_substrate: Unpinned live public web plus each evaluated system's proprietary or model-specific browsing/search
+    interface. The release has no web snapshot, document corpus, browser image, API schema, dependency lock, reset fixture,
+    or deterministic replay environment.
+  release_shape: 'The official CSV has 1,266 rows and exactly four columns: problem, answer, problem_topic, and canary. Problem
+    and answer are Base64-encoded XOR ciphertext decrypted using a SHA-256-derived repeated key from the public per-row canary;
+    all rows share the same canary. Retrieved 2026-07-20, the file was 1,196,283 bytes with SHA-256 7B24471CD5B3EB2A46830A14802B5C029EA62F488FF75A0F88AF7923D1454ABF
+    and HTTP Last-Modified 2025-04-10.'
+recipe_metadata:
+  base_model: unknown
+  teacher: No model teacher generates target answers. Human trainers create items. GPT-4o with/without browsing, o1, and an
+    early Deep Research version act as adversarial difficulty filters; exact revisions and attempts for construction are not
+    fully disclosed.
+  generator: Human trainers create all benchmark questions and reference answers from factual seeds. A prompted OpenAI chat
+    model assigns topic labels post hoc; its checkpoint and prompt are unknown.
+  prompt_task_source: Human-selected public-web facts spanning ten topics. Record-level source URLs, evidence passages, collection
+    dates, writer/validator identities, and upstream rights are not released.
+  sampling_protocol: Require intended short/stable factual answers and evidence; test candidate difficulty against contemporary
+    models, five simple Google searches, and a partially enforced ten-minute second-human criterion; revise items from trainers
+    whose questions are solved above 40%. The candidate pool was 1,287, and 21 of 118 Deep Research zero-pass items were removed
+    after answer-format, ambiguity, or correctness review, yielding 1,266.
+  temperature: unknown
+  rollout_count: Main Table 3 rollout counts/retry policy are not disclosed. Sections 4.4-4.5 explicitly use 64 outputs or
+    trials per question for Deep Research aggregation/pass-rate analysis and for the o1/Deep Research pass-rate distribution;
+    these runs are not released.
+  inference_budget: Exact token, page, search-call, time, latency, and cost budgets for main evaluations are unknown. Figure
+    1 varies an unspecified Deep Research browsing-effort axis; Figure 4 varies parallel samples from 1 to 64.
+  search_or_scaffold: GPT-4o-search-preview-2025-03-11 and an unspecified Deep Research agent access the live web through
+    their native systems. Search provider details, query policy, browser state, locale, credentials, timeout, backtracking
+    policy, and tool schema are not pinned.
+  filtering_rule: Keep questions intended to have one short, indisputable, stable, evidence-supported answer; require contemporary-model
+    failure, absence from first pages of five simple Google searches, and desired human difficulty; revise suspected alternative-answer
+    items and remove malformed, ambiguous, or incorrect zero-pass items.
+  selection_threshold: The exact global acceptance score is unknown. The ten-minute human check was not strictly enforced,
+    only a portion received second-trainer attempts, and item-level filter outcomes/adjudication logs are not released.
+  optimizer_or_training_scaffold: 'None for BrowseComp itself: it is used for evaluation, calibration/failure audit, and test-time-compute
+    analysis, not for an disclosed SFT, RLVR, preference, reward-model, or agent-training recipe.'
+audit:
+  source_mixture: Purely human-authored factual questions across TV shows/movies 205, Other 197, Science/technology 173, Art
+    127, History 125, Sports 123, Music 116, Video games 71, Geography 70, and Politics 59. The public CSV lacks record-level
+    web sources, evidence, author/validator provenance, or creation dates.
+  split: One public 1,266-row test set is released; no train/dev/hidden split is defined. The evaluator can randomly sample
+    a debugging subset with seed 0, but that is not a canonical benchmark split.
+  decontamination: The release obfuscates question/answer plaintext, includes a canary, and asks users not to post examples.
+    Because the canary/password and decryptor are public, this is leakage friction and a filtering aid rather than access
+    control. No training-corpus overlap scan, post-release contamination measurement, refreshed/hidden holdout, record-level
+    contamination flag, or removal guarantee is reported.
+  benchmark_overlap: Collection instructions follow SimpleQA and query/grader prompts follow Humanity's Last Exam. The paper
+    compares prior retrieval/web-agent benchmarks but reports no exact or semantic overlap audit with SimpleQA, HLE, other
+    benchmarks, public question banks, or evaluated-model training data.
+  lineage: Aggregate construction and pruning lineage is reported, but record-level seeds, source/evidence URLs, writer/validator
+    IDs, dates, model-filter attempts, alternative-answer adjudication, removed-item history, and evaluated-run IDs are unavailable.
+    Deep Research was trained on data teaching BrowseComp-like task skill, but whether any released test item overlapped training
+    is unknown.
+  license: The official simple-evals README lists BrowseComp with the repository MIT License, and the repository LICENSE is
+    MIT. The separately hosted CSV contains no embedded license/data card, and the release does not document record-level
+    upstream web-content rights; treat code/repository licensing as verified while retaining source-rights uncertainty.
+  release_version: The data blob reports Last-Modified 2025-04-10 18:07:43 GMT, ETag 0x8DD785A972BF8A0, size 1,196,283 bytes,
+    and audit SHA-256 7B24471CD5B3EB2A46830A14802B5C029EA62F488FF75A0F88AF7923D1454ABF. The repository has no tags/releases
+    and states that it stopped receiving new model results in July 2025. Current inspected commit is 652c89d0ca9df547706735883097e9537d40dc47.
+  version_drift: The live web, search indexes, commercial agent products, and grader backend can drift. Current simple_evals.py
+    uses gpt-4.1-2025-04-14 as grader, which postdates the 2025-04-10 OpenAI release and is not identified as the paper grader.
+    The repository later changed sampler handling, has no pinned dependency environment, and the current BrowseComp scoring
+    mismatch remains unfixed.
+  verifier_or_judge_failure_modes:
+  - Single-reference semantic judgment can reject another valid answer; the paper explicitly says inverted construction cannot
+    guarantee that all valid answers are known.
+  - The answer-only grader cannot verify browsing, factual evidence, source quality, citations, persistence, creativity, or
+    a faithful search path.
+  - The grader checkpoint used for paper results is undisclosed, so judge drift and judge-model sensitivity cannot be reproduced
+    or audited.
+  - 'Current browsecomp_eval.py returns strings such as correct: yes but compares them with bare yes/no, so matched judge
+    outputs are not counted as correct or incorrect. No BrowseComp unit test catches this.'
+  - Twenty-one items were removed after reviewing Deep Research zero-pass cases; this improves labels but conditions the final
+    benchmark on one undisclosed model version and does not expose removed records or adjudication.
+  - Browsing-capable systems show high calibration error in Table 3, including 82% for GPT-4o with browsing and 91% for Deep
+    Research, indicating overconfident wrong answers.
+  - Live-web pages, rankings, access policies, and search results change; without snapshots or replay metadata, identical
+    agent behavior may receive different information later.
+  - Public obfuscation is reversible with the shipped canary and decryptor; after release, plaintext can enter training or
+    online indexes despite the authors' request.
+  successful_and_failed_sample_retention: The paper retains aggregate human give-up/solve counts, model accuracy/calibration,
+    test-time-compute curves, and pass-rate distributions. The official release retains no per-run model response, confidence,
+    successful path, failed path, query, tool call, page observation, citation, timestamp, retry, or grader transcript from
+    the paper evaluations.
+  privacy_or_consent: The paper says human trainers created the dataset and later attempted questions without named AI assistants.
+    Trainer count, demographics, compensation, consent, privacy/PII screening, ethics or IRB review, rejected-work policy,
+    and rights for person-related public-web facts are not disclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Title/authors/year, full paper, official OpenAI page, public CSV shape/content, decryptor, evaluator, current runner,
+    repository history, and MIT repository license were inspected. Confidence is capped at medium because the paper grader,
+    Deep Research version/tooling, item-level provenance/evidence, model outputs/trajectories, replay substrate, contamination
+    audit, privacy process, and tested evaluator release are absent, and the current evaluator has a blocking scoring defect.
+  remaining_unknowns:
+  - paper-result grader checkpoint, API/backend, decoding settings, validation and judge-stability evidence
+  - exact Deep Research checkpoint, browsing/search stack, tool schema, run dates and per-run compute budgets
+  - item-level factual seeds, source/evidence URLs, creation dates, writer/validator provenance and alternative-answer adjudication
+  - removed 21 items, per-item removal reasons and full construction/filter logs
+  - canonical hidden/dev split, refresh policy, model-training overlap and post-publication contamination audit
+  - successful/failed model responses, confidence records, searches, actions, observations, citations, timestamps and retries
+  - browser/web/search snapshots, reset/session state, timeout policy and deterministic replay fixtures
+  - immutable data release/checksum manifest, changelog, dependency lock and corrected evaluator tests
+  - privacy, consent, compensation, PII review, ethics process and record-level upstream rights
+inclusion_reason: 'BrowseComp is a high-signal web-agent evaluation surface: it exposes 1,266 human-authored hard factual
+  prompts, an explicit short-answer judge contract, construction filters, calibration and test-time-compute analyses, plus
+  unusually important release risks. Its value to this track comes from separating an environment-interaction benchmark from
+  a trajectory corpus and from making answer-only, live-web, contamination, and evaluator-reproducibility limits auditable.'
+related:
+- bearcubs-2025
+- browsecomp-plus-2025
+tags:
+- browsecomp
+- live-web
+- web-agent
+- information-seeking
+- short-answer-benchmark
+- llm-answer-judge
+- test-time-compute
+- reversible-obfuscation
+- canary
+- contamination-risk
+- answer-only-feedback
+- no-trajectory-release
+- non-replayable-environment
+- evaluator-bug
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: BrowseComp releases 1,266 obfuscated hard factual web questions and short answers scored by an answer-only
+  LLM judge, but no browsing trajectories, citations, or replayable web state, and its current official reference scorer has
+  a label-parsing defect.
+why_it_matters: It is a canonical stress test for persistent live-web search and test-time compute, while its reversible anti-leakage
+  layer, single-reference judge, undisclosed paper grader, post-release contamination risk, missing episodes, and scoring-code
+  defect show why benchmark availability is not the same as trajectory reuse or reproducible feedback.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  artifact_verified: true
+  repository_files_verified: true
+  dataset_contents_verified: true
+  full_release_verified: false
+  gold_answers_verified: true
+  trajectory_release_verified: false
+  replay_environment_verified: false
+  evaluator_execution_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Gold-answer verification means the official encrypted answer column was present, complete, and successfully decrypted
+    with the official code for all 1,266 rows without reproducing answer text. It does not mean answers were independently
+    fact-checked. Evaluator execution is false because static audit found a blocking label-return/comparison defect; reported
+    paper scores were not reproduced.
+curation_level: L3_summary_ready
+needs:
+- 'needs_evaluator_fix: return the captured yes/no group, add BrowseComp unit and expected-output tests, and publish a scorer
+  version tied to paper results'
+- 'needs_grader_pinning: disclose the paper-result grader checkpoint, API/backend, decoding settings, prompt version and judge
+  validation'
+- 'needs_episode_release: publish successful and failed responses, confidence records, searches, tool calls, observations,
+  citations, timestamps, retries and grader transcripts'
+- 'needs_replay: pin browser/search environment, page or corpus snapshots, locale/session state, reset semantics, time/tool
+  budgets and terminal conditions'
+- 'needs_contamination_audit: measure post-release exposure and model-training overlap, publish duplicate/overlap checks,
+  and define refreshed or hidden evaluation versions'
+- 'needs_lineage: publish record-level factual seeds, evidence URLs, writer/validator provenance, creation dates, alternative-answer
+  adjudication and removal history'
+- 'needs_version_manifest: provide immutable data versions, author checksums, changelog, dependency lock and repository release/tag
+  tied to the paper'
+- 'needs_rights_privacy: document dataset-specific licensing scope, upstream web-content rights, trainer consent/compensation,
+  PII review and ethics process'
+card: null

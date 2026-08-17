@@ -1,0 +1,96 @@
+id: stepsearch-2025
+title: 'StepSearch: Igniting LLMs Search Ability via Step-Wise Proximal Policy Optimization'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Xuhui Zheng
+- Kang An
+- Ziliang Wang
+- Yuhang Wang
+- Yichao Wu
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- agent_training
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.15107
+  arxiv: https://arxiv.org/abs/2505.15107
+  code: https://github.com/zxh20001117/StepSearch
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.15107
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: subquestion search trajectories
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: information-gain and redundancy intermediate feedback
+  terminal_predicate: step-wise PPO search action selection
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: subquestion search trajectories'
+  known_failure_modes:
+  - trace availability and reward fields require verification
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2505.15107'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: subquestion search trajectories.'
+related: []
+tags:
+- track5
+- raw_search_rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: 'StepSearch: Igniting LLMs Search Ability via Step-Wise Proximal Policy Optimization records subquestion
+  search trajectories under information-gain and redundancy intermediate feedback.'
+why_it_matters: It makes step-wise PPO search action selection and its audit boundary visible for reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

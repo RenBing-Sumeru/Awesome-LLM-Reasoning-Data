@@ -1,0 +1,5 @@
+- Positioning: MMC packages more than 409K chart QA records and 250K alignment examples from scientific and non-scientific charts.
+- Method handle: MMC mines arXiv and non-arXiv charts, constructs 409,887 question-answer records plus 250K alignment examples, and trains chart assistants across extraction, comparison, and numerical reasoning tasks.
+- Data handle: 300,000 arXiv chart QA records, 109,887 non-arXiv QA records, and 250,000 alignment records; each record contains chart image, question or alignment instruction, and answer.
+- Evidence anchor: Using the same model backbone, MMC instruction tuning improves ChartQA, PlotQA, and additional chart benchmarks over generic visual instruction data; cross-source tests show that the arXiv and non-arXiv mixture matters beyond one template family.
+- Reuse decision: best for training a general chart assistant across scientific and everyday visualizations; first audit template and OCR artifacts can masquerade as numerical reasoning.

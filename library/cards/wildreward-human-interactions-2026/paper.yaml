@@ -1,0 +1,94 @@
+id: wildreward-human-interactions-2026
+title: 'WildReward: Learning Reward Models from In-the-Wild Human Interactions'
+year: 2026
+venue: arXiv
+authors:
+- Hao Peng
+- Junjia Qi
+- Xiaozhi Wang
+- Yijun Yao
+- Lei Hou
+- Yuanzi Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- alignment
+training_use:
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.08829
+  arxiv: https://arxiv.org/abs/2602.08829
+  code: https://github.com/THU-KEG/WildReward
+  data: https://huggingface.co/datasets/THU-KEG/WildFB
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released data artifact.
+  trace_author: unknown
+  answer_format: Prompt, candidate response or action, and preference or reward supervision.
+  process_fields:
+  - prompt
+  - response
+  - preference
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: Feedback or reward signal described by the official paper.
+  terminal_predicate: Records are retained according to the release procedure.
+recipe_metadata:
+  base_model: See official paper.
+  teacher: unknown
+  generator: See official paper and artifact.
+  filtering_rule: See official artifact.
+  sampling_protocol: See official artifact.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Released preference or reward records.
+  split: Verify against the official artifact revision.
+  decontamination: Not disclosed in the supplied official metadata.
+  license: Verify in the official artifact before reuse.
+  lineage: Official links, authors, and institutions are recorded in the supplied information summary.
+  known_failure_modes:
+  - Release revision may change metadata
+  - Feedback scope may be incomplete
+  citation_status: verified
+  confidence: medium
+  notes: Institution information follows the supplied official information summary.
+inclusion_reason: The paper releases or uses preference or reward feedback data relevant to alignment.
+related: []
+tags:
+- preference
+- reward
+- feedback-data
+one_line_summary: The paper provides preference or reward feedback data for alignment research.
+why_it_matters: It makes a feedback object available for alignment training, evaluation, or analysis.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: official candidate information summary
+  confidence: medium
+  notes: Paper, artifact, author, and institution entries were supplied in the summary.
+category_ids:
+- preference_reward_feedback_data

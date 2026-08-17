@@ -1,0 +1,154 @@
+id: advancing-math-data-synthesis-2025
+title: 'Advancing Mathematical Reasoning in Language Models: The Impact of Problem-Solving Data, Data Synthesis Methods, and
+  Training Stages'
+year: 2025
+venue: ICLR 2025
+authors:
+- Zui Chen
+- Tianqiao Liu
+- Mi Tian
+- Qing Tong
+- Weiqi Luo
+- Zitao Liu
+source_role:
+- construction_recipe
+- scaling_study
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematics
+training_use:
+- distillation
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=GtpubstM1D
+  arxiv: https://arxiv.org/abs/2501.14002
+  huggingface: https://huggingface.co/ai4ed/MathGPT-8B
+  doi: https://doi.org/10.48550/arXiv.2501.14002
+  venue: https://openreview.net/forum?id=GtpubstM1D
+  openreview: https://openreview.net/forum?id=GtpubstM1D
+data_object:
+  prompt_source: The authors report collecting 25 million problem-solving records from NuminaMath, Lila, and undisclosed proprietary
+    data; 14 million records are used as augmentation seeds. Source proportions and an item manifest are unavailable.
+  trace_author: An unspecified generation model creates response-diversified, query-expanded, and retrospective traces. An
+    unspecified weak student and strong teacher create tutorship traces; exact checkpoints and decoding settings are unknown.
+  answer_format: 'A source math question and worked solution plus one method-specific derivative: alternative solutions; new
+    questions with solutions and self-checks; an artificial backtracking trace marked with [back]; or a student solution followed
+    by a teacher correctness judgment, error localization, correction, and continued solution.'
+  process_fields:
+  - source_dataset
+  - source_question
+  - source_solution
+  - seed_filter_reason
+  - synthesis_method
+  - generated_question_or_solution
+  - accept_or_refuse_signal
+  - student_solution
+  - teacher_correct_or_wrong_signal
+  - error_location_and_correction
+  - retained_or_rejected
+  environment_or_substrate: Offline LLM synthesis followed by controlled continued pre-training (CPT) or supervised fine-tuning
+    (SFT); no interactive environment is used.
+  verifier_or_reward: 'Method-specific LLM judgments: response diversification and query expansion use generator-produced
+    accept/refuse or self-check signals, while tutorship uses a strong teacher''s correct/wrong judgment and correction. Retrospective
+    enhancement has no independently disclosed acceptance verifier. Evaluation uses a separate answer-comparison model that
+    checks final answers rather than rationale validity.'
+  terminal_predicate: A derivative is intended to be retained according to method-specific tagged prompt output and filtering.
+    Exact parsers, rejection rules, retry budgets, failure handling, and retrospective-trace acceptance criteria are unknown.
+recipe_metadata:
+  base_model: Llama2 for controlled research-question experiments; Llama3-8B for the final MathGPT-8B model.
+  teacher: An unspecified strong teacher is paired with an unspecified weak student for tutorship amplification; exact checkpoints
+    are unknown.
+  generator: 'Four operators are compared: response diversification, query expansion, retrospective enhancement, and tutorship
+    amplification.'
+  filtering_rule: Seeds are filtered for completeness and number of reasoning steps. Response diversification requests two
+    distinct solutions and an accept/refuse tag; query expansion creates two new question-solution pairs and self-checks each;
+    tutorship asks a teacher to judge and correct a student's solution. The final recipe emphasizes seeds with more than five
+    reasoning steps. Exact parser, retry, and retrospective acceptance behavior are unknown.
+  sampling_protocol: Apply one operator to filtered seeds, add retained outputs to an experiment-specific mixture, and run
+    separate CPT comparisons. Candidate retry counts, random seeds, decoding settings, and selection yields are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Reported synthesis outputs are 14,018,544 records/6.82B tokens for response diversification, 24,459,192/4.78B
+    for query expansion, 14,707,792/5.04B for retrospective enhancement, and 11,942,328/13.90B for tutorship amplification.
+    The final model is reported as using about 140B CPT tokens, 100B math-related.
+  optimizer_or_scaffold: Controlled CPT runs for at most 25,000 steps with global batch 1024, context length 4096, a 95/5
+    train-validation split, and learning rate warmed to 1e-4 then cosine-decayed to 1e-5. SFT uses batch 256, cosine decay
+    from 1e-5 to 1e-6, three epochs, and reports the best of ten checkpoints. Final MathGPT-8B uses context length 8192 and
+    otherwise reports the same CPT step, batch, and learning-rate schedule.
+audit:
+  source_mixture: General data includes RedPajama ArXiv, C4, and Wikipedia plus AlgebraicStack and StarCoder code; mathematical
+    corpus uses OpenWebMath; problem-solving data mixes NuminaMath, Lila, and proprietary records. Main experiments repeatedly
+    specify 14.7B mathematical-corpus tokens, while Appendix A.1 states 13.7B; this internal discrepancy is unresolved. Synthetic
+    arms add unequal record and token counts.
+  split: Controlled CPT reports a 95/5 train-validation split. Item-level splits, immutable manifests, source-to-seed partitions,
+    and seed-to-output partitions are not released.
+  decontamination: MinHash removes documents containing duplicate spans above 2048 bytes and training documents containing
+    more than 100 bytes overlapping evaluation train or test subsets. The paper reports removing 2,594 OpenWebMath documents
+    in one audit. This exact-text rule does not establish semantic decontamination.
+  license: The OpenReview paper is CC BY 4.0 and the MathGPT-8B repository declares Apache-2.0. Rights for the mixed source
+    corpus, proprietary records, and synthetic derivatives are unknown; paper and model licenses do not license the unreleased
+    training data.
+  lineage: Source pool -> completeness/step-count seed filtering -> one of four synthesis operators -> method-specific tagged
+    judgment -> experiment-specific token mixture -> CPT or SFT checkpoint. Item-level source IDs, generator revisions, rejected
+    candidates, decisions, and model-ready corpus manifests are unavailable.
+  known_failure_modes:
+  - Proprietary source data prevents complete provenance, rights, and contamination audits.
+  - Generator, strong-teacher, and weak-student checkpoints, decoding, retries, and random seeds are unknown.
+  - Self-issued accept/refuse and correctness judgments can retain invalid questions, answers, or reasoning.
+  - Retrospective enhancement constructs backtracking errors rather than sampling authentic student mistakes.
+  - The four synthesis arms add unequal token volumes, so benchmark differences do not isolate transformation quality.
+  - CPT and SFT use different optimization and checkpoint-selection procedures, limiting a stage-only causal interpretation.
+  - The evaluation comparison model explicitly focuses on final answers and ignores reasoning errors, so reported accuracy
+    does not validate rationale quality.
+  - Rejected outputs, per-method yields, false-accept rates, and item-level lineage are unavailable.
+  - A released model checkpoint is not a release of source, synthetic, or rejected training records.
+  citation_status: verified
+  confidence: medium
+  notes: The ICLR 2025 paper, arXiv record, appendix prompts, MathGPT-8B weights, and answer-comparison model are verified.
+    Synthesis code, corpora, rejected outputs, and complete per-source license manifests are not released.
+inclusion_reason: Compares four transformations of mathematical problem-solving records and their controlled use in CPT and
+  SFT, while exposing audit gaps around proprietary inputs, LLM self-checks, unequal budgets, and unreleased synthetic data.
+related: []
+tags:
+- mathgpt
+- math-data-synthesis
+- response-diversification
+- query-expansion
+- retrospective-enhancement
+- tutorship-amplification
+- continued-pretraining
+- sft
+status: partial
+category_ids:
+- instruction_demonstration_rationale_data
+- data_construction_open_release_recipes
+one_line_summary: Compares four math problem-synthesis operators and controlled CPT/SFT allocations, but releases MathGPT-8B
+  rather than the source or synthetic corpora.
+why_it_matters: Treats transformation semantics and training stage as separate reasoning-data choices and identifies provenance,
+  judge, rejection, budget, and license records still required for audit or reuse.
+card: null
+needs:
+- 'needs_data: release or manifest source, seed, accepted synthetic, and rejected records with item-level lineage'
+- 'needs_metadata: disclose generator, teacher, student, prompts, decoding, retries, random seeds, parsers, and yields'
+- 'needs_license: provide per-source and synthetic-output rights, including terms for proprietary inputs'
+- 'needs_audit: report false accepts, transformation errors, semantic leakage, budget-matched ablations, and checkpoint-selection
+  sensitivity'
+- 'needs_code: release synthesis, filtering, decontamination, CPT, and SFT implementations'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: card_writer
+  confidence: medium
+  notes: Citation, MathGPT-8B weights, and the answer-comparison model are verified. The paper does not provide reusable training
+    data, synthesis code, rejected outputs, or complete license and generation metadata.

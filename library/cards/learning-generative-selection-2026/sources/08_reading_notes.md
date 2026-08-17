@@ -1,0 +1,5 @@
+- Math construction starts from 37K OpenMathReasoning problems; the code-problem count and final selection-prompt counts are unknown.
+- Each prompt contains 2–16 candidates, at least one verified-correct candidate, and at most 50% verified-correct candidates.
+- The 16 math and 8 code rollout counts are on-policy selector rollouts per prompt, not candidate-pool sizes.
+- Selector RL uses temperature 1.5 and top-p 1.0; candidate-generation sampling parameters are unknown.
+- Benchmark gains evaluate selection under automatic labels and do not prove verifier accuracy, data quality, release completeness, or reuse rights.

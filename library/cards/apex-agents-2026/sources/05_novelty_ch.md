@@ -1,0 +1,1 @@
+已有基线是 OS、浏览器、办公和 tool-use agent benchmark，但很多任务更短或缺少专业领域交付物。APEX-Agents 的变化在于用专家编写的专业服务 worlds、gold deliverables、二元 rubric criteria 和 Archipelago 执行栈来记录跨应用工作。质量信号来自公开 benchmark metadata、gold outputs、criterion-level grading 和执行基础设施。它并没有发明 model-as-judge 或办公软件评测；复用前要查 judge 校准、rubric 歧义、许可和 gated access 条款，以及这些金融/法律设定只是模拟场景而非专业建议。

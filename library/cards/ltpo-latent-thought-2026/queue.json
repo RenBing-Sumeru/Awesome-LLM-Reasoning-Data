@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T08:56:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "在不更新参数的推理过程中优化潜在思考策略，属于运行时推理能力增强",
+    "updated_at": "2026-07-20T08:56:06Z"
+  }
+}

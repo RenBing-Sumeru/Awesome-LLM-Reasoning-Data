@@ -1,0 +1,6 @@
+- 把报告的 7.9 万视为构建混合规模，而不是已验证的公开 HF 数据集规模：viewer 显示 15,178 行。还要区分三个模型角色——Llama-3-8B-Instruct 插入并评分训练 rationale，RATIONALYST 根据轨迹预测 rationale，Llama agent 提出步骤。
+- 构建验证器询问“已观察后文是否变得更可能”，不检查 rationale 或候选步骤是否正确。Table 1 是规模依据：GSM8K 在 17,566 个候选中保留 19.5%，ECQA 在 19,669 个候选中保留 57.6%，Pile 在阈值 0 下保留 2.6%–29.8%。
+- 不要把 2,000 单位统一写成 token：论文分别写过 word 和 token，公开脚本则计算字符。也不要静默修正 loss 符号冲突；代码中名为 `perplexity` 的变量实际累加 log-probability。
+- Appendix H 关于“大多数保留 Pile rationale 描述前文”的发现，比基准提升更直接地反映 rationale 质量。Table 2/model card 的 ECQA 是 75.2，Table 5 则是 76.2。
+- 公开推理脚本使用 3 个候选、温度 0.7、seed 14、最多 15 次迭代；这是有界似然引导步骤选择，不是经环境验证的 rollout。
+- license 必须逐 artifact 区分：ACL 论文为 CC BY 4.0，HF 模型为 Apache-2.0，数据集未知，GitHub 代码未知。

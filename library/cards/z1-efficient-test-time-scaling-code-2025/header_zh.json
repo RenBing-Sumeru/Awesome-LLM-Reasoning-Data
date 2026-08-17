@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Z1 发布 107,173 条 Code Evol-Instruct 派生问题与 QwQ-32B-Preview 完整响应轨迹，并用 Shifted Thinking Window 约束推理预算；但数据没有正确性 verifier、长短标签、许可证或去污染记录。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码推理轨迹发布、长短轨迹蒸馏与测试时预算研究",
+  "best_for_ch": "研究 rollout 轨迹、长短推理蒸馏、SFT 数据配方和 test-time compute 归因的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zhaojian Yu、Yinghao Wu、Yilun Zhao、Arman Cohan、Xiao-Ping Zhang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

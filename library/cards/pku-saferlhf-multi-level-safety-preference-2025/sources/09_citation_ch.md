@@ -1,0 +1,1 @@
+Jiaming Ji、Donghai Hong、Borong Zhang、Boyuan Chen 等（2025），《PKU-SafeRLHF: Towards Multi-Level Safety Alignment for LLMs with Human Preference》，ACL 2025。主论文：https://arxiv.org/abs/2406.15513。数据或代码工件：https://huggingface.co/datasets/PKU-Alignment/PKU-SafeRLHF。本 L4 卡记录了复用前必须检查的论文特定反馈对象、构建逻辑、证据边界与审计项。

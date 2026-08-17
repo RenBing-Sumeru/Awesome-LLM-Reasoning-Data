@@ -1,0 +1,3 @@
+Code models are usually evaluated on implementation generation, while unit-test generation is often measured on small functions, synthetic code, or a single coverage metric. Tests for real repositories require cross-file dependencies, fixtures, project conventions, and existing suites. A test that merely compiles may neither reach the target code nor reveal defects.
+
+TestGenEval therefore builds a real-world benchmark for test generation and completion. It pairs source files with human-written test files from mature Python repositories, restores executable environments, and measures generated tests through execution, code coverage, and mutation score. It asks whether models can write runnable tests that expose program behavior in repository context.

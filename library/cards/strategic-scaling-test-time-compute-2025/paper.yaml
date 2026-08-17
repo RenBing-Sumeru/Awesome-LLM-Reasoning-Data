@@ -1,0 +1,112 @@
+id: strategic-scaling-test-time-compute-2025
+title: 'Strategic Scaling of Test-Time Compute: A Bandit Learning Approach'
+year: 2026
+venue: ICLR 2026
+authors:
+- Bowen Zuo
+- Yinglun Zhu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- process_reward
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.12721
+  arxiv: https://arxiv.org/abs/2506.12721
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Evaluation questions compete for a shared compute budget; no allocation logs or versioned prompt manifest
+    were released.
+  trace_author: unknown
+  answer_format: Per-instance compute choices, outcomes, and a bandit/global allocation policy across repeated reasoning attempts.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Feedback varies by task—process reward model, LLM judge, self-consistency, or code execution—so the
+    contract is mixed and must remain task-specific.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: The method treats test-time compute allocation as a bandit problem, strategically distributing budget across
+    questions rather than scaling every instance equally.
+  filtering_rule: Feedback varies by task—process reward model, LLM judge, self-consistency, or code execution—so the contract
+    is mixed and must remain task-specific.
+  sampling_protocol: The official arXiv record states that the paper is to appear at ICLR 2026. No code, data, allocation
+    history, or detailed task-wise reward artifacts were confirmed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: The method treats test-time compute allocation as a bandit problem, strategically distributing budget
+    across questions rather than scaling every instance equally.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Evaluation questions compete for a shared compute budget; no allocation logs or versioned prompt manifest were
+    released. -> Per-instance compute choices, outcomes, and a bandit/global allocation policy across repeated reasoning attempts.
+    -> Feedback varies by task—process reward model, LLM judge, self-consistency, or code execution—so the contract is mixed
+    and must remain task-specific. -> reported final selection or training use. Raw lineage records are not established as
+    released.
+  known_failure_modes:
+  - Mixed reward sources are not directly comparable; without allocation and reward logs, reported aggregate gains cannot
+    be replayed or audited per instance.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It makes budget allocation a first-class trace field and warns that a single claimed feedback contract can
+  conceal task-dependent judges and verifiers.
+related: []
+tags:
+- test-time-compute
+- bandit
+- global-allocation
+- strategic-scaling
+- mixed-feedback
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A global bandit allocation framework for allocating test-time reasoning compute across instances.
+why_it_matters: It makes budget allocation a first-class trace field and warns that a single claimed feedback contract can
+  conceal task-dependent judges and verifiers.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

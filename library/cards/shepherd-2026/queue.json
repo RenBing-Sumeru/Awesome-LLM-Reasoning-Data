@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "智能体综合测试数据，2k+任务",
+    "updated_at": "2026-07-22T03:36:29Z"
+  },
+  "updated_at": "2026-07-22T03:36:29Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

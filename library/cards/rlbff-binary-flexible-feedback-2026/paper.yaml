@@ -1,0 +1,107 @@
+id: rlbff-binary-flexible-feedback-2026
+title: 'RLBFF: Binary Flexible Feedback to bridge between Human Feedback & Verifiable Rewards'
+year: 2026
+venue: ICLR 2026
+authors:
+- Zhilin Wang
+- Jiaqi Zeng
+- Olivier Delalleau
+- Ellie Evans
+- Daniel Egert
+- Hoo-Chang Shin
+- Felipe Soares
+- Yi Dong
+- Oleksii Kuchaiev
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- reward-modeling
+- preference-learning
+- alignment
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=P3R3S6S5Km
+  arxiv: https://arxiv.org/abs/2509.21319
+  code: https://github.com/NVIDIA-NeMo/RL
+  data: https://huggingface.co/datasets/nvidia/HelpSteer3
+  project: https://huggingface.co/collections/nvidia/reward-models-10-2025
+  huggingface: https://huggingface.co/datasets/nvidia/HelpSteer3
+  doi: https://doi.org/10.48550/arXiv.2509.21319
+  venue: https://openreview.net/forum?id=P3R3S6S5Km
+  openreview: https://openreview.net/forum?id=P3R3S6S5Km
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Open human-annotated feedback records in NVIDIA's HelpSteer3 release.
+  trace_author: Human feedback writers and the RLBFF principle-extraction pipeline.
+  answer_format: Prompt, response, natural-language feedback, extracted principle, and binary satisfaction label.
+  process_fields:
+  - prompt
+  - response
+  - feedback
+  - principle
+  - binary_label
+  environment_or_substrate: General instruction-following and reward-model alignment tasks.
+  verifier_or_reward: A response is judged for entailment of a specified binary principle.
+  terminal_predicate: The response satisfies or does not satisfy the selected principle.
+recipe_metadata:
+  base_model: Qwen3-32B and reward-model configurations documented in the ICLR paper and release.
+  teacher: Human natural-language feedback is transformed into binary-answerable principles.
+  generator: Principle extraction from feedback records and reward-model training data preparation.
+  filtering_rule: Keep principles with cross-annotator semantic agreement as described in the paper.
+  sampling_protocol: Use the official HelpSteer3 revision and published RLBFF configuration.
+  inference_budget: Principle extraction and RLBFF rollout settings are material reproduction controls.
+  optimizer_or_scaffold: Entailment-style reward-model training and RLBFF reinforcement learning.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Human feedback records, extracted binary principles, and response-principle satisfaction labels.
+  split: HelpSteer3 is publicly versioned; pin the exact release revision before reuse.
+  decontamination: Public alignment data may overlap with downstream reward-model evaluation sets.
+  license: The official NVIDIA release lists CC-BY-4.0; confirm the selected revision before reuse.
+  lineage: ICLR 2026 paper, NVIDIA HelpSteer3 release, NVIDIA reward-model collection, and NVIDIA-NeMo RL implementation.
+  known_failure_modes:
+  - Principle extraction can omit nuance from the original human feedback.
+  - Binary satisfaction labels can oversimplify trade-offs among multiple quality dimensions.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICLR 2026 OpenReview record and NVIDIA affiliation, the arXiv record, HelpSteer3 dataset, model collection,
+    and NVIDIA-NeMo RL repository.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RLBFF turns natural-language feedback into binary principles so reward models can score whether a response
+  satisfies a chosen quality criterion.
+why_it_matters: It preserves an explicit, configurable feedback contract between open-ended human feedback and reward-model
+  supervision.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICLR 2026 OpenReview record and NVIDIA affiliation, the arXiv record, HelpSteer3 dataset, model collection,
+    and NVIDIA-NeMo RL repository.
+category_ids:
+- preference_reward_feedback_data

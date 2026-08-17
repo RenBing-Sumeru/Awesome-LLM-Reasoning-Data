@@ -1,0 +1,116 @@
+id: thinking-vs-doing-interaction-2025
+title: 'Thinking vs. Doing: Improving Agent Reasoning by Scaling Test-Time Interaction'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Junhong Shen
+- Hao Bai
+- Lunjun Zhang
+- Yifei Zhou
+- Amrith Setlur
+- Shengbang Tong
+- Diego Caples
+- Nan Jiang
+- Tong Zhang
+- Ameet S. Talwalkar
+- Aviral Kumar
+source_role:
+- scaling_study
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+domains:
+- web-agents
+training_use:
+- test_time_compute
+- reinforcement_learning
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.07976
+  arxiv: https://arxiv.org/abs/2506.07976
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/f7c4783621a20f5f11a316cd249e0252-Abstract-Conference.html
+  code: https://github.com/test-time-interaction/TTI
+  data: null
+  project: https://test-time-interaction.github.io/
+  huggingface: https://huggingface.co/sjunhongs/tti_webvoyager
+  doi: https://doi.org/10.48550/arXiv.2506.07976
+data_object:
+  prompt_source: Synthetic web tasks for training and WebVoyager or WebArena tasks for evaluation.
+  trace_author: Gemma 3 12B web agent and comparison policies.
+  answer_format: Browser actions, observations, optional reasoning, and task completion decisions.
+  process_fields:
+  - task
+  - observation
+  - action
+  - interaction_horizon
+  - trajectory
+  - terminal_reward
+  - token_cost
+  - task_outcome
+  environment_or_substrate: WebVoyager and WebArena web-agent environments.
+  verifier_or_reward: Environment task success and binary task rewards during online learning.
+  terminal_predicate: Task-specific environment evaluator.
+recipe_metadata:
+  base_model: Gemma 3 12B.
+  teacher: null
+  generator: Web agent acting over an adjustable interaction horizon.
+  filtering_rule: Filtered behavior cloning is the principal reported online-RL implementation.
+  sampling_protocol: Rollouts begin short and receive progressively longer maximum interaction horizons through a multiplicative
+    curriculum.
+  rollout_count: Configuration-dependent.
+  temperature: null
+  inference_budget: Number of environment interaction steps and total token budget; WebArena experiments use a maximum horizon
+    of 30.
+  optimizer_or_scaffold: TTI curriculum-based online RL, implemented primarily with online filtered behavior cloning.
+audit:
+  source_mixture: Official NeurIPS 2025 proceedings, arXiv paper, project page, and official code repository.
+  split: The project page reports WebVoyager with 427 tasks over 13 domains; use the paper and repository for exact training
+    and evaluation splits.
+  decontamination: The project says WebVoyager training uses synthetic task generation to avoid training on the benchmark
+    itself; independently verify any changed task release.
+  license: Verify repository, checkpoint, WebArena, and WebVoyager terms before reuse.
+  lineage: 'Primary sources: https://proceedings.neurips.cc/paper_files/paper/2025/hash/f7c4783621a20f5f11a316cd249e0252-Abstract-Conference.html
+    ; https://github.com/test-time-interaction/TTI'
+  known_failure_modes:
+  - Longer interaction increases latency and environmental cost.
+  - The agent can over-rely on resets or search as a fallback.
+  - The paper reports limited self-verification near task completion.
+  - Results are web-environment dependent.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked on 2026-07-20. Project page lists CMU, Scribe, UIUC, University of Toronto, UC Berkeley,
+    The AGI Company, and NYU.
+inclusion_reason: It makes the agent interaction horizon an explicit inference-time budget and evaluates its scaling against
+  longer per-step reasoning.
+related: []
+tags:
+- test-time-compute
+- agent
+- web-agent
+- interaction-horizon
+- online-rl
+- exploration
+status: verified
+one_line_summary: TTI scales a web agent’s test-time interaction horizon, then trains that behavior with a horizon curriculum
+  so the agent can explore, backtrack, and re-plan.
+reading_priority: essential
+paper_type: Test-time interaction scaling and online reinforcement-learning study
+best_for: Readers studying compute allocation between per-step reasoning and environment interaction in agents.
+confidence: high
+why_it_matters: It shows that more test-time actions can acquire information unavailable to a longer reasoning trace before
+  acting.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, proceedings record, project page, source code, two released checkpoint links, authors, and affiliations
+    checked.
+category_ids:
+- scaling_rlvr_test_time_compute

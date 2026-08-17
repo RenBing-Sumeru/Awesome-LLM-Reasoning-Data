@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "VGS 公开 250 万条带正确、错误与未完成结果标签的数学 roll-in/roll-out 对，并用其训练 1.5B token-level value model 引导分块搜索；完整拒绝清单、历史搜索树及代码和模型许可证仍未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长链推理价值模型数据发布与 test-time search 配方",
+  "best_for_ch": "研究 rollout/search trace、value model 监督、推理预算归因和开放数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Kaiwen Wang, Jin Peng Zhou, Jonathan Chang, Zhaolin Gao, Nathan Kallus, Kianté Brantley, Wen Sun",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

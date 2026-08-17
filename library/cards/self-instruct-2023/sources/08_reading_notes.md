@@ -1,0 +1,5 @@
+- Object: an instruction, optional input, generated output, and filtering provenance used as one SFT instance.
+- Scale: 175 human seeds expand into 52,445 instructions and 82,439 instances.
+- Filter: maximum ROUGE-L above 0.7 rejects lexical near-duplicates but not semantic duplicates.
+- Evidence: SUPER-NATURALINSTRUCTIONS ROUGE-L rises from 6.8 to 39.9, while only 54% of audited records are valid in every field.
+- Reuse: add semantic diversity checks, independent answer verification, provenance, license review, and matched modern-model baselines.

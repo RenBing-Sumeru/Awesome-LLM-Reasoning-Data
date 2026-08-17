@@ -1,0 +1,5 @@
+- Positioning: ShareGPT4V distills 100K GPT-4V captions into a captioner that expands dense visual supervision to 1.2M images.
+- Method handle: ShareGPT4V first collects 100K detailed GPT-4V descriptions, trains Share-Captioner on them, and then generates a 1.2M dense-caption expansion used before visual instruction tuning.
+- Data handle: 100,000 GPT-4V captions for SFT and a 1.2M-caption pretraining expansion; each record contains image id, dense factual caption or visual question, and assistant target.
+- Evidence anchor: Replacing short captions with the 100K high-quality set and its 1.2M expansion improves a common model across a broad multimodal benchmark suite; the controlled signal is caption detail rather than a larger language model.
+- Reuse decision: best for creating detailed visual grounding targets before question-answer SFT; first audit teacher hallucinations may be amplified by the 1.2M synthetic expansion.

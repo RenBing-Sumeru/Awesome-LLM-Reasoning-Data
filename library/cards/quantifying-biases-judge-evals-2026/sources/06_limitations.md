@@ -1,0 +1,1 @@
+Bias attribution depends on measured covariates and GLM specification; omitted or correlated sources can be misattributed. Validate with held-out interventions or human labels before acting on a correction.

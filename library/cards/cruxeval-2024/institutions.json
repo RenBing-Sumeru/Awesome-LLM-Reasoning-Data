@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "MIT CSAIL",
+    "Meta AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2401.03065",
+    "https://arxiv.org/html/2401.03065",
+    "https://huggingface.co/datasets/cruxeval-org/cruxeval"
+  ],
+  "verification_note": "Official arXiv and Hugging Face sources verify authors, MIT CSAIL/Meta AI affiliations, and dataset release; no official conference page was verified."
+}

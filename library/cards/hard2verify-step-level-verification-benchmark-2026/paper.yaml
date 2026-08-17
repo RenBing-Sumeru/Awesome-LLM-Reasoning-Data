@@ -1,0 +1,107 @@
+id: hard2verify-step-level-verification-benchmark-2026
+title: 'Hard2Verify: A Step-Level Verification Benchmark for Open-Ended Frontier Math'
+year: 2026
+venue: ACL 2026
+authors:
+- Shrey Pandit
+- Austin Xu
+- Xuan-Phi Nguyen
+- Yifei Ming
+- Caiming Xiong
+- Shafiq Joty
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- process-reward-modeling
+- evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1031/
+  arxiv: https://arxiv.org/abs/2510.13744
+  code: https://github.com/SalesforceAIResearch/Hard2Verify
+  data: https://huggingface.co/datasets/Salesforce/Hard2Verify
+  project: null
+  huggingface: https://huggingface.co/datasets/Salesforce/Hard2Verify
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1031
+  venue: https://aclanthology.org/2026.acl-long.1031/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1031/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Recent, challenging, open-ended frontier mathematics questions.
+  trace_author: Frontier LLM responses annotated by human mathematics reviewers.
+  answer_format: Problem, response, step-level correctness/support annotations, and first-error identification task data.
+  process_fields:
+  - problem
+  - response
+  - step_annotations
+  - first_error
+  environment_or_substrate: Open-ended mathematical proof and solution verification.
+  verifier_or_reward: Human step-level judgments of correctness and sufficient support.
+  terminal_predicate: A verifier either annotates steps or identifies the first error.
+recipe_metadata:
+  base_model: Twenty-nine critics and process reward models are evaluated; use the official evaluation harness for details.
+  teacher: Human mathematics annotators contributing more than 500 hours of labeling.
+  generator: Frontier LLM responses to open-ended math questions.
+  filtering_rule: Human reviewers establish step-level annotations and first-error targets.
+  sampling_protocol: Use the encrypted official Hugging Face release through the provided evaluation script.
+  inference_budget: Per-model evaluation settings are supplied by the official harness.
+  optimizer_or_scaffold: Official step-level and error-identification evaluation scripts.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Open-ended frontier math questions, frontier-model answers, and human step annotations.
+  split: The Hugging Face data is encrypted; use the official evaluator to access the intended evaluation format.
+  decontamination: The maintainers explicitly encrypt the released data to mitigate leakage and contamination; do not train
+    on decrypted benchmark examples.
+  license: Apache-2.0 for the official repository; the dataset also carries use restrictions stated by its maintainers.
+  lineage: ACL 2026 paper, Salesforce AI Research GitHub evaluation repository, and official Hugging Face dataset page.
+  known_failure_modes:
+  - The dataset is an evaluation benchmark rather than an unrestricted training corpus
+  - Access is encrypted to reduce leakage
+  - Open-source verifiers lag the strongest closed systems on this setting
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL 2026 publication, Salesforce AI Research affiliation, and official GitHub and Hugging Face links
+    named in the paper.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: Hard2Verify provides over 500 hours of human step-level annotations for testing verifiers on recent, open-ended
+  frontier mathematics.
+why_it_matters: It supplies a deliberately contamination-protected human evaluation surface for verification beyond short-answer
+  mathematics.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL 2026 publication, Salesforce AI Research affiliation, and official GitHub and Hugging Face links
+    named in the paper.
+category_ids:
+- process_trace_supervision_data

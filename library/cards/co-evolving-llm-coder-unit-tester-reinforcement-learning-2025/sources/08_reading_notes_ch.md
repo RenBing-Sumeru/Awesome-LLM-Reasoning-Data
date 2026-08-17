@@ -1,0 +1,5 @@
+- “No ground-truth code”是准确的；“没有 ground truth”并不准确，因为私有 gold tests 同时锚定 coder 与 tester 奖励。
+- 每个训练任务产生 16 个 coder rollout、16 个 tester rollout、一个 16×16 的生成测试执行矩阵，以及额外的 gold-test 结果。
+- Coder 奖励、推导式 tester 奖励、生成测试 Best-of-N 分数和最终私有测试正确性是四种不同信号。
+- 公开发布包含 4,529 条 CodeContests 训练记录、代码、评测工具和模型权重，但不含固定且完整的论文实验 rollout episode 语料。
+- 模型增益与奖励消融支持论文设置下的方法有效性，但不能认证测试覆盖率或 rollout 数据质量。

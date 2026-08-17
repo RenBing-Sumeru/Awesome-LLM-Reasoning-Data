@@ -1,0 +1,5 @@
+EPTree starts with M complete response chains. It ranks eligible token positions by uncertainty, selects the top N positions, continues T branches from each, and repeats for L expansion rounds. In the main reported setting, (M,N,L,T)=(6,2,1,2), which produces 30 leaves per prompt.
+
+The feedback contract is terminally anchored. A completed leaf is assigned binary final-answer correctness. For each tree node, TreeRL estimates value as the fraction of correct descendant leaves; it then combines a global advantage relative to the virtual root with a local advantage relative to the parent. Because shared non-leaf segments occur in multiple extracted sequences, their update values are divided by the square root of selected descendant traces.
+
+Relative to independent ChainRL sampling, this changes the sample topology and the supervision granularity together. Relative to a static PRM, the process signal is regenerated from the current policy's tree. It does not make terminal correctness a proof of every intermediate step, nor does the public release expose a static corpus that would permit an independent check of those derived signals.

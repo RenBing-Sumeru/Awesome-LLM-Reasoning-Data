@@ -1,0 +1,92 @@
+id: search-r1-2025
+title: 'Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors: []
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- agent_training
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2503.09516
+  arxiv: https://arxiv.org/abs/2503.09516
+  code: https://github.com/PeterGriffinJin/Search-R1
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2503.09516
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: multi-turn search interactions and reasoning traces
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: retrieval-token masking plus outcome reward
+  terminal_predicate: RL policy selects search use and response
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: multi-turn search interactions and reasoning traces'
+  known_failure_modes:
+  - search index and raw step logs are not confirmed
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2503.09516'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: multi-turn search interactions and
+  reasoning traces.'
+related: []
+tags:
+- track5
+- raw_search_rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: 'Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning records multi-turn
+  search interactions and reasoning traces under retrieval-token masking plus outcome reward.'
+why_it_matters: It makes RL policy selects search use and response and its audit boundary visible for reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

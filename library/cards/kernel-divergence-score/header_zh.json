@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "核散度分数以受控微调前后样本嵌入结构的变化估计基准污染程度。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基础方法与数据/评测路线图",
+  "best_for_ch": "关于受控暴露条件下基准泄漏度量的 ICML 研究。",
+  "confidence_ch": "高",
+  "authors_ch": "Hyeong Kyu Choi、Maxim Khanov、Hongxin Wei、Yixuan Li",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

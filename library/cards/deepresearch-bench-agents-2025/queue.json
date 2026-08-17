@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "DeepResearch Bench 提供100个博士级任务、400篇系统报告和专家标注，适合校准深度研究代理的证据与写作质量",
+    "updated_at": "2026-07-21T12:37:22Z"
+  },
+  "updated_at": "2026-07-21T12:37:22Z"
+}

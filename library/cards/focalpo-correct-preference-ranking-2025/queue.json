@@ -1,0 +1,18 @@
+{
+  "title": "FocalPO: Enhancing Preference Optimizing by Focusing on Correct Preference Rankings",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-short.21/",
+    "code": "https://github.com/TongLiu-github/focalpo",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:11:15Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "证明了偏好训练不应默认侧重当前排序错误的回答对，而应显式重加权可靠的正确排序信号",
+    "updated_at": "2026-07-16T07:11:15Z"
+  }
+}

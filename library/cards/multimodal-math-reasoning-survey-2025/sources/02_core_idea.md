@@ -1,0 +1,3 @@
+The survey's organizing idea is three-dimensional: benchmarks, methodologies, and challenges. It uses that structure to connect multimodal mathematical reasoning pipelines with the roles played by language models and multimodal language models. A reader can use the map to ask whether a reported result is limited by the task set, by the method, or by an unresolved difficulty in the setting.
+
+These dimensions should be read together rather than as interchangeable labels. A benchmark specifies an evaluation surface, a methodology specifies an intervention, and a challenge identifies a source of uncertainty or failure. The framework helps a reader avoid crediting a model change for an effect that may instead follow from the selected input modality or task construction.

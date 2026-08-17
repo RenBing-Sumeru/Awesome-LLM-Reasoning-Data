@@ -1,0 +1,19 @@
+{
+  "title": "ProfBench: Multi-Domain Rubrics requiring Professional Knowledge to Answer and Judge",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.18941",
+    "data": "https://huggingface.co/datasets/nvidia/ProfBench",
+    "code": "https://github.com/NVlabs/ProfBench",
+    "project": "https://huggingface.co/spaces/nvidia/ProfBench"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T13:04:12Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ProfBench 用7,000余组专业问题、依据材料和专家细则覆盖科学、金融、咨询等领域，适合训练专业Judge",
+    "updated_at": "2026-07-21T13:04:12Z"
+  }
+}

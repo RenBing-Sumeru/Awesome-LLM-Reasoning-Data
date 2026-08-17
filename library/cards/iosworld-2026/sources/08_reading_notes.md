@@ -1,0 +1,6 @@
+- Read Sections 3.1-3.3 and Appendix H first to reconstruct seeded state, the Appium/XCUITest loop, observation/action modes, task/rubric schema, and trajectory judge.
+- Keep the released counts together: 26 connected apps, 133 tasks split 27/60/46, and 1,123 criteria at 4-13 per task; these are benchmark objects, not a released training corpus.
+- Interpret feedback as `judgment_required`, `full_episode`, and `scalar_reward`; strict pass means every criterion was accepted by GPT-5.4 Mini, not that a programmatic state predicate succeeded.
+- Read Appendix J before comparing categories: judge agreement is imperfect, with 79 criterion false positives, 69 false negatives, and direction-dependent task bias.
+- Separate executable release from trajectory release: seed state, runner, evaluator, MCP servers, and task JSON are public, while only 16 curated runs, not the full success/failure corpus, are visible.
+- Before reuse, verify the repository/toolchain/API snapshot, replay manifest, split and decontamination policy, raw failures and retries, risky-action confirmation defaults, and missing third-party attribution details.

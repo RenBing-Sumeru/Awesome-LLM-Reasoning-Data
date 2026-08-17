@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "流程化抽取论坛数学数据并构造",
+    "updated_at": "2026-07-15T04:45:22Z"
+  },
+  "updated_at": "2026-07-15T04:45:22Z"
+}

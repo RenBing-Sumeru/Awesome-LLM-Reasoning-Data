@@ -1,0 +1,5 @@
+The prior baseline was biomedical QA dominated by retrieval-style tasks, factoid/list answers, or free-form expert answers. PubMedQA changes the object: the question is a research-title claim, the supplied evidence is the article abstract without the conclusion, and the target is a compact yes/no/maybe judgment aligned to the conclusion.
+
+The new signal is not the classifier architecture. The novelty is the dataset construction and feedback contract: expert labels for a small reliable evaluation set, a larger unlabeled pool, an artificial expansion procedure, and an official exact-label evaluator. This makes biomedical conclusion reasoning reusable as a benchmark coordinate.
+
+Reuse checks should inspect subset identity, split files, label distribution, whether PQA-A heuristics introduce artifacts, whether PubMed source-text terms permit the planned redistribution, and whether public examples have leaked into later model training. Treat PQA-L labels as evaluation evidence and PQA-A/PQA-U as weaker construction resources unless separately audited.

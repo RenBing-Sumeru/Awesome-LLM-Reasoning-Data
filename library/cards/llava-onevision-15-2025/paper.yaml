@@ -1,0 +1,143 @@
+id: llava-onevision-15-2025
+title: 'LLaVA-OneVision-1.5: Fully Open Framework for Democratized Multimodal Training'
+year: 2025
+venue: arXiv preprint
+authors:
+- An, Xiang
+- Xie, Yin
+- Yang, Kaicheng
+- Zhang, Wenkang
+- Zhao, Xiuwei
+- Cheng, Zheng
+- Wang, Yirui
+- Xu, Songcen
+- Chen, Changrui
+- Wu, Chunsheng
+- Huajie Tan
+- Li, Chunyuan
+- Jing Yang
+- Jie Yu
+- Xiyao Wang
+- Bin Qin
+- Yumeng Wang
+- Zizhen Yan
+- Ziyong Feng
+- Ziwei Liu
+- Bo Li
+- Jiankang Deng
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- fully-disclosed-large-scale-multimodal-instruction-mixture
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2509.23661
+  arxiv: https://arxiv.org/abs/2509.23661
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/mvp-lab/LLaVA-OneVision-1.5-Instruct-Data
+  project: null
+  huggingface: https://huggingface.co/datasets/mvp-lab/LLaVA-OneVision-1.5-Instruct-Data
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: a balanced aggregation of public multimodal instruction datasets
+  trace_author: source annotations and model-generated conversations are normalized into one dialogue contract
+  answer_format: record id, image reference, ordered user/assistant conversations, and data-source label
+  process_fields:
+  - record id
+  - image reference
+  - ordered user/assistant conversations
+  - and data-source label
+  environment_or_substrate: multilingual image, document, chart, OCR, grounding, STEM, and visual reasoning tasks
+  verifier_or_reward: source-specific checks, mixture balancing, decontamination, and benchmark ablations
+  terminal_predicate: source-specific checks, mixture balancing, decontamination, and benchmark ablations
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: source annotations and model-generated conversations are normalized into one dialogue contract
+  generator: LLaVA-OneVision-1.5 releases a 22M instruction mixture and an efficient full training stack, separating the instruction
+    stage from its 85M mid-training corpus and 67K RL set.
+  filtering_rule: source-specific checks, mixture balancing, decontamination, and benchmark ablations
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: full-model multimodal SFT before optional RL
+audit:
+  source_mixture: a balanced aggregation of public multimodal instruction datasets
+  split: Official release at https://huggingface.co/datasets/mvp-lab/LLaVA-OneVision-1.5-Instruct-Data; exact configs are
+    described by the dataset card.
+  decontamination: source-specific checks, mixture balancing, decontamination, and benchmark ablations
+  license: Apache-2.0 for the release; upstream media terms still apply
+  lineage: a balanced aggregation of public multimodal instruction datasets -> source annotations and model-generated conversations
+    are normalized into one dialogue contract -> source-specific checks, mixture balancing, decontamination, and benchmark
+    ablations -> LLaVA-OneVision-1.5-Instruct-Data -> full-model multimodal SFT before optional RL
+  known_failure_modes:
+  - the 22M mixture inherits heterogeneous media licenses and benchmark overlap
+  - and source scale can dominate smaller reasoning-rich subsets
+  citation_status: verified
+  confidence: high
+  notes: Full 25 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for full-model multimodal SFT before optional
+  RL; records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2509.23661
+- primary-link-checked
+status: verified
+one_line_summary: LLaVA-OneVision-1.5 releases a 22M instruction mixture and an efficient full training stack, separating
+  the instruction stage from its 85M mid-training corpus and 67K RL set.
+why_it_matters: Open multimodal recipes often publish weights without the exact large instruction mixture, preventing controlled
+  study of data balance and economical training.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: full-model multimodal SFT before optional RL
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: fully disclosed large-scale multimodal instruction mixture
+  selection_priority_score: 4
+  selection_score_breakdown:
+    institution: 0
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 154111 downloads and 77 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual multi-config Parquet/JSON conversations plus referenced images records,
+      field schema, scale, and Apache-2.0 for the release; upstream media terms still apply terms.
+  selection_eligible: true
+  year_impact_threshold: 2

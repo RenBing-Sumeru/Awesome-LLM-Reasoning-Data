@@ -1,0 +1,132 @@
+id: facts-grounding-2025
+title: 'The FACTS Grounding Leaderboard: Benchmarking LLMs'' Ability to Ground Responses to Long-Form Input'
+year: 2025
+venue: arXiv preprint / Kaggle leaderboard
+authors:
+- Alon Jacovi
+- Andrew Wang
+- Chris Alberti
+- Connie Tao
+- Jon Lipovetz
+- Kate Olszewska
+- Lukas Haas
+- Michelle Liu
+- Nate Keating
+- Adam Bloniarz
+- Carl Saroufim
+- Corey Fry
+- Dror Marcus
+- Doron Kukliansky
+- Gaurav Singh Tomar
+- James Swirhun
+- Jinwei Xing
+- Lily Wang
+- Madhu Gurumurthy
+- Michael Aaron
+- Moran Ambar
+- Rachana Fellinger
+- Rui Wang
+- Zizhao Zhang
+- Sasha Goldshtein
+- Dipanjan Das
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- factuality-and-grounding
+- live-hidden-contamination-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2501.03200
+  arxiv: https://arxiv.org/abs/2501.03200
+  doi: https://doi.org/10.48550/arXiv.2501.03200
+  code: null
+  data: https://www.kaggle.com/benchmarks/google/facts-grounding
+  project: https://www.kaggle.com/facts-leaderboard
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: document-grounded factuality tasks and model-response evaluation setup; exact curation details may remain
+    unknown.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: Source document/input, generation prompt, model long-form answer, factuality/grounding judgment, and aggregate
+    leaderboard score.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: long-document grounding with public/private split and judge ensemble
+  verifier_or_reward: 'two-stage response-level judge: request-satisfaction eligibility filter, groundedness judgment against
+    the document, and multi-judge aggregation'
+  terminal_predicate: 'two-stage response-level judge: request-satisfaction eligibility filter, groundedness judgment against
+    the document, and multi-judge aggregation'
+  dataset_scale: 860 public/Open examples plus 859 private/Blind examples; documents up to 32k tokens.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: document-grounded factuality tasks and model-response evaluation setup; exact curation details may remain unknown.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: live_hidden_contamination_audit
+audit:
+  source_mixture: https://arxiv.org/abs/2501.03200; https://www.kaggle.com/facts-leaderboard; https://www.kaggle.com/benchmarks/google/facts-grounding
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2501.03200'
+  known_failure_modes:
+  - judge ensemble may have style or position bias; long-form answers can mix supported and unsupported claims
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies the 860 public/Open plus 859 private/Blind example split and max 32k-token documents; official Kaggle
+    URL verifies the online benchmark surface. No official GitHub/HF/code release was verified.
+inclusion_reason: 'high: judge-based grounding surface with public/private leaderboard and hidden-policy risks.'
+related: []
+tags:
+- benchmark
+- live_hidden_contamination_audit
+- factuality-and-grounding
+why_it_matters: Private split plus grounding-specific scoring makes it useful for contamination-resistant evaluation.
+status: verified
+needs:
+- 'needs_metadata: locate official Kaggle/project/data links and license'
+- 'needs_audit: inspect judge ensemble, rubric, private split, and claim-level scoring policy'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: FACTS Grounding exposes long-document grounding with public/private split and judge ensemble as an auditable
+  evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv verifies the 860 public/Open plus 859 private/Blind example split and max 32k-token documents; official Kaggle
+    URL verifies the online benchmark surface. No official GitHub/HF/code release was verified.
+category_ids:
+- benchmarks_evaluation_surfaces

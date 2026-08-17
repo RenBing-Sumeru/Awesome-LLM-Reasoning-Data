@@ -1,0 +1,1 @@
+Jiefeng Chen, Jie Ren, Xinyun Chen, Chengrun Yang, Ruoxi Sun, Jinsung Yoon, and Sercan Ö. Arık. SETS: Leveraging Self-Verification and Self-Correction for Improved Test-Time Scaling. Transactions on Machine Learning Research, 2025. Official record: https://openreview.net/forum?id=Wv9NMJoKww · arXiv: https://arxiv.org/abs/2501.19306

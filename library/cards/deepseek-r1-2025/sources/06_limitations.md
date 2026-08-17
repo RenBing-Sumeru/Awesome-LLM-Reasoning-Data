@@ -1,0 +1,5 @@
+The released weights, code, report, and distill checkpoints do not release the cold-start prompts, 600K/200K SFT material, 800K R1 rows, RL rollouts, accepted/rejected candidates, teachers, source manifests, or item-level lineage. The reported counts cannot establish unique sample counts, provenance, rights, or the mapping from a source item to a final distilled output.
+
+Rule rewards can accept flawed reasoning even when a final answer passes. Later DeepSeek-V3 judgments and general reward models are not accompanied by prompt templates, versions, calibration, error rates, or adversarial evaluation. Task extractors, compilers, test harnesses, terminal predicates, reward formulas, coefficients, optimizer settings, sampling allocation, and training budgets are also undisclosed.
+
+The report notes readability and language-mixing issues in R1-Zero and language-mixing beyond Chinese/English in R1, along with prompt sensitivity and weaker function calling, multi-turn, roleplay, and JSON performance than V3. No public split, decontamination procedure, residual-overlap result, or immutable revision ledger enables independent audit of these risks.

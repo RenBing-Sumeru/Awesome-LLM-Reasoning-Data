@@ -1,0 +1,3 @@
+ZAYA1-8B is trained from scratch with reasoning data present from pretraining onward. The report uses answer-preserving trimming to fit long reasoning traces into shorter contexts: it keeps the final answer, trims the end of the last reasoning block, removes earlier thinking blocks if needed, and drops a sample only when the answer itself cannot fit.
+
+Its post-training contract is mixed. The first RL stages rely primarily on verifiable math, puzzle, code, and aggregation tasks, while the final behavioral stage combines a reward model with an instruction-following gate. This makes the report useful for Track 12 because the feedback modes and their limits are described even though their executable artifacts are not released.

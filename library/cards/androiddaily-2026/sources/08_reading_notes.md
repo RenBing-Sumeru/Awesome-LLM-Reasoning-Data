@@ -1,0 +1,1 @@
+Read GRADE before reading the leaderboard numbers. The benchmark's key claim is not that closed-source apps become mechanically verified; it is that observable task guidelines can make opaque app workflows more auditable. Keep human agreement, GRADE judgment, and true app-side outcome separate, especially for tasks whose final state is partly hidden or personalized.

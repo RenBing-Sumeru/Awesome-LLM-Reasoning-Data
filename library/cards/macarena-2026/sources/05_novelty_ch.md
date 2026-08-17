@@ -1,0 +1,7 @@
+OSWorld与macOSWorld构成最接近的任务lineage：MacArena的421项任务中有372项源于这两个来源。MacArena改变的是可复用评测对象：把继承任务和49项新的macOS-specific任务放入两套可下载Apple-Silicon UTM环境，暴露原始鼠标/键盘控制，并把任务setup绑定到可执行final-state evaluation。产物是本地可运行的environment/feedback package，而不是新的训练算法。
+
+第二项具体贡献是runtime record接口。一次运行可以落盘timestamped screenshot、含action和0 per-step reward的`traj.jsonl`、response history、log、最终scalar score、error与MP4 video。这使任务定义、本地生成episode和规范化发布trajectory corpus三者的区别可审计。MacArena提供前两个对象；第三个尚未确认。
+
+对推理数据研究而言，方向信号来自端到端绑定：source task与initialization，经过VM state、screenshot/action interaction、terminal declaration，到evaluator与保留结果。该绑定也暴露了仅列标题/数量的benchmark清单会隐藏的质量问题：instruction/evaluator mismatch、第二次运行未完整重克隆VM，以及人工创建声称下仍未解决的`synth_generation` provenance。
+
+本文并未新提出以screenshot为observation、GUI鼠标/键盘action、virtual machine、final-state script或success rate。421项任务和121 GB规模说明覆盖面与分发成本，不代表逐记录正确。复用前必须核验upstream task revision、evaluator test、实际split/meta-file、reset等价性、app/external-resource版本、公开rollout manifest、隐私、decontamination与组件级权利。

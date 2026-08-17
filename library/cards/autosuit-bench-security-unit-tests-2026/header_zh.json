@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AutoSUIT Bench 自动构造覆盖 232 类 CWE 的安全单元测试套件，以编译和测试断言共同衡量代码功能与安全行为。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "安全单元测试代码生成基准",
+  "best_for_ch": "需要评测或训练兼顾功能正确性与安全测试覆盖的代码模型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Samuel Osebe, Fan Yang, Junyi Li, Yue Gu, Yongxin Wang, Satyapriya Krishna, Kai-Wei Chang, Aram Galstyan, Rahul Gupta, Weitong Ruan",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

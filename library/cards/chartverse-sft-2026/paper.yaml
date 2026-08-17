@@ -1,0 +1,140 @@
+id: chartverse-sft-2026
+title: 'ChartVerse: Scaling Chart Reasoning via Reliable Programmatic Synthesis from Scratch'
+year: 2026
+venue: arXiv preprint
+authors:
+- Zheng Liu
+- Honglin Lin
+- Chonghan Qin
+- Xiaoyang Wang
+- Xin Gao
+- Yu Li
+- Mengzhang Cai
+- Yun Zhu
+- Zhanping Zhong
+- Qizhi Pei
+- Zhuoshi Pan
+- Xiaoran Shang
+- Bin Cui
+- Conghui He
+- Wentao Zhang
+- Lijun Wu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- program-grounded-chart-reasoning-synthesis
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2601.13606
+  arxiv: https://arxiv.org/abs/2601.13606
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/opendatalab/ChartVerse-SFT-1.8M
+  project: null
+  huggingface: https://huggingface.co/datasets/opendatalab/ChartVerse-SFT-1.8M
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: programmatically generated charts with known underlying tables and code
+  trace_author: language and vision teachers write questions and long solutions against program ground truth
+  answer_format: id, image list, chart-generating code, question, answer, executable solution, and CoT solution
+  process_fields:
+  - id
+  - image list
+  - chart-generating code
+  - question
+  - answer
+  - executable solution
+  - and CoT solution
+  environment_or_substrate: English chart perception, numerical reasoning, and program synthesis
+  verifier_or_reward: program execution, answer checking, rendering validation, and difficulty/failure-rate selection
+  terminal_predicate: program execution, answer checking, rendering validation, and difficulty/failure-rate selection
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: language and vision teachers write questions and long solutions against program ground truth
+  generator: ChartVerse generates charts from executable programs and releases questions with both code solutions and long
+    reasoning traces tied to known ground truth.
+  filtering_rule: program execution, answer checking, rendering validation, and difficulty/failure-rate selection
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: chart-reasoning SFT with a separate 40K RL subset
+audit:
+  source_mixture: programmatically generated charts with known underlying tables and code
+  split: Official release at https://huggingface.co/datasets/opendatalab/ChartVerse-SFT-1.8M; exact configs are described
+    by the dataset card.
+  decontamination: program execution, answer checking, rendering validation, and difficulty/failure-rate selection
+  license: Apache-2.0
+  lineage: programmatically generated charts with known underlying tables and code -> language and vision teachers write questions
+    and long solutions against program ground truth -> program execution, answer checking, rendering validation, and difficulty/failure-rate
+    selection -> ChartVerse-SFT-1.8M -> chart-reasoning SFT with a separate 40K RL subset
+  known_failure_modes:
+  - program templates can become shortcuts
+  - and very long average traces may overfit synthetic rendering conventions
+  citation_status: verified
+  confidence: high
+  notes: Full 29 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for chart-reasoning SFT with a separate 40K
+  RL subset; records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2601.13606
+- primary-link-checked
+status: verified
+one_line_summary: ChartVerse generates charts from executable programs and releases questions with both code solutions and
+  long reasoning traces tied to known ground truth.
+why_it_matters: Web-scraped chart data is hard to scale and verify because the latent table, rendering code, and exact numerical
+  answers are usually missing.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: chart-reasoning SFT with a separate 40K RL subset
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: program-grounded chart reasoning synthesis
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 2917 downloads and 138 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet records plus referenced chart images records, field schema, scale,
+      and Apache-2.0 terms.
+  selection_eligible: true
+  year_impact_threshold: 1

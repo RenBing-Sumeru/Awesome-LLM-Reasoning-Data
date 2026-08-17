@@ -1,0 +1,11 @@
+{
+  "title": "TrustJudge: Inconsistencies of LLM-as-a-Judge and How to Alleviate Them",
+  "candidate_links": {"paper": "https://openreview.net/forum?id=UwkNZPZ9Rl", "data": "https://github.com/TrustJudge/TrustJudge"},
+  "review_note": "全文核对 ICLR 终稿与官方代码。",
+  "category_ids": ["audit_failure_contamination_verifier_attacks"],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "识别打分—比较冲突与成对传递性失效，并以概率化推理降低自动 judge 的框架级不一致。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

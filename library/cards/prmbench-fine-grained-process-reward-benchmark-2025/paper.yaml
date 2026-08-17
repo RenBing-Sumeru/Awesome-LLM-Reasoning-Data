@@ -1,0 +1,107 @@
+id: prmbench-fine-grained-process-reward-benchmark-2025
+title: 'PRMBENCH: A Fine-grained and Challenging Benchmark for Process-Level Reward Models'
+year: 2025
+venue: ACL 2025
+authors:
+- Mingyang Song
+- Zhaochen Su
+- Xiaoye Qu
+- Jiawei Zhou
+- Yu Cheng
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- process-reward-modeling
+- evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1230/
+  arxiv: https://arxiv.org/abs/2501.03124
+  code: https://github.com/ssmisya/PRMBench
+  data: https://huggingface.co/datasets/hitsmy/PRMBench_Preview
+  project: https://prmbench.github.io/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1230
+  venue: https://aclanthology.org/2025.acl-long.1230/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1230/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Carefully designed mathematical reasoning problems and modified solution steps.
+  trace_author: PRMBench curation and annotation framework.
+  answer_format: Question, solution steps, modified steps, error steps, error reason, and error classification.
+  process_fields:
+  - question
+  - steps
+  - modified_steps
+  - error_steps
+  - reason
+  - classification
+  environment_or_substrate: Mathematical multi-step reasoning.
+  verifier_or_reward: Fine-grained error annotations over simplicity, soundness, and sensitivity dimensions.
+  terminal_predicate: The benchmark identifies erroneous steps and error types.
+recipe_metadata:
+  base_model: Benchmark evaluated 15 PRMs and critic-model configurations; see the paper and toolkit.
+  teacher: Curation and annotation framework documented by the official project.
+  generator: Problem and solution modification pipeline.
+  filtering_rule: Fine-grained annotations identify targeted implicit error types.
+  sampling_protocol: Use the official dataset and toolkit revision.
+  inference_budget: Evaluation settings and model inference budgets must be matched for comparison.
+  optimizer_or_scaffold: PRM Eval ToolKit, data generation and annotation framework, and benchmark evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematical problems, original and modified solution steps, and fine-grained error annotations.
+  split: Use the dataset and evaluation configuration released in the official repository.
+  decontamination: Benchmark reuse as training data can contaminate PRM evaluation and requires separate controls.
+  license: Apache-2.0 for the official repository.
+  lineage: ACL 2025 paper, author project site, and official PRMBench repository containing code, data, documentation, and
+    toolkit.
+  known_failure_modes:
+  - Artificially modified steps may differ from naturally occurring model errors.
+  - Using PRMBench data in training compromises its value as an evaluation surface.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL 2025 paper, project page with affiliations, and official repository that exposes code, dataset,
+    documentation, and Apache-2.0 license.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: PRMBENCH provides 6,216 mathematical problems and 83,456 step labels to measure whether process reward models
+  detect subtle reasoning errors.
+why_it_matters: Its released error-step and reason fields let builders audit a PRM beyond final-answer correctness.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL 2025 paper, project page with affiliations, and official repository that exposes code, dataset,
+    documentation, and Apache-2.0 license.
+category_ids:
+- preference_reward_feedback_data
+- process_trace_supervision_data
+- audit_failure_contamination_verifier_attacks

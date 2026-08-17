@@ -1,0 +1,1 @@
+Critic-V 将 Reasoner 与 Critic 解耦：Reasoner 生成多模态推理，Critic 给出自然语言修改意见；Critic 用按规则奖励排序的 critique preference data 做 DPO，之后反馈迭代更新 Reasoner 的文本策略。官方仓库发布 Critic-V 的训练与评测资产，其中核心偏好对象是图像、问题、原推理回答、两条候选 critique 及基于规则奖励形成的 chosen/rejected 排序。论文未把它包装为一个具有独立数据卡和稳定样本数的大型通用数据集，复用时应以仓库实际文件版本为准。

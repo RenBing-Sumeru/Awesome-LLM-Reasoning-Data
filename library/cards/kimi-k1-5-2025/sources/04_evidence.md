@@ -1,0 +1,5 @@
+The official arXiv report provides the title, authorship, version history, DOI, 25-page report, and the cited methods above. The official MoonshotAI repository independently identifies the work as Kimi k1.5's technical report and links the full report.
+
+The report supplies concrete counts for several mechanisms: ten samples per prompt for difficulty scoring, N=8 for no-CoT answer-guess filtering, approximately one million text and one million text-vision vanilla-SFT examples, 50 generated code tests per problem, ten reference submissions, 7/10 and 9/10 code-test retention thresholds, two approximately 800k math-RM datasets, and n=8 for shortest rejection sampling.
+
+The report also describes three pretraining stages and high-level text/multimodal source categories. This substantiates that the interfaces and selection procedures were reported. It does not substantiate independent replay: the official repository offers report material only, and no official model, data, reward-model, or executable training release was found.

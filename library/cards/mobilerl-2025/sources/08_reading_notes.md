@@ -1,0 +1,6 @@
+- Use current arXiv v2 counts: 97.9k reasoning-free SFT steps, 23.6k reasoning-SFT steps, 2,000 AndroidWorld RL tasks, and 1,103 AndroidLab RL tasks. The earlier 500k/71.4k wording is not the current paper record.
+- Follow one episode end to end: screenshot plus compressed XML → reasoning/action → Android transition → Finish or 50 turns → rule-based or learned binary outcome → SPA reward → group-relative advantage → replay/prune/filter decision.
+- Read Appendix D.3.2 before treating AndroidLab as verifiable: the reward model is distilled from proprietary-VLM majority labels and reaches 86% on 1,000 verified traces; MobileRL-9B's best RL run uses AndroidWorld only.
+- Interpret 80.2%/53.6% as full-resolution results. Table 6 retains compressed-image results of 75.8%/46.8%, and the evaluation README warns about deployment-related variation.
+- The release boundary matters: GitHub publishes an MIT evaluation framework and Hugging Face publishes an Apache-2.0 checkpoint, but training code/data, reward model, replay buffer, and complete rollouts are absent.
+- Audit what disappears. AdaPR replays high-advantage successes, negative pruning discards failures, and FCF removes repeated all-zero tasks; sample efficiency can improve while behavioral coverage narrows.

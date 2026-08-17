@@ -1,0 +1,6 @@
+- 采用当前 arXiv v2 数字：97.9k reasoning-free SFT step、23.6k reasoning-SFT step、2,000 个 AndroidWorld RL task 与 1,103 个 AndroidLab RL task；早期 500k/71.4k 口径不是当前论文记录。
+- 沿一条 episode 追踪全流程：screenshot + compressed XML → reasoning/action → Android transition → Finish 或 50 turn → rule-based/learned binary outcome → SPA reward → group-relative advantage → replay/prune/filter decision。
+- 把 AndroidLab 当作 verifiable 之前先读 Appendix D.3.2：reward model 从 proprietary-VLM majority label 蒸馏，在 1,000 条 verified trace 上为 86%；MobileRL-9B 的最佳 RL 使用 AndroidWorld only。
+- 80.2%/53.6% 是 full-resolution result；Table 6 保留 compressed-image 的 75.8%/46.8%，evaluation README 还提醒 deployment 会造成波动。
+- release 边界很重要：GitHub 发布 MIT evaluation framework，Hugging Face 发布 Apache-2.0 checkpoint，但 training code/data、reward model、replay buffer 与完整 rollout 均缺失。
+- 审计“哪些数据消失”：AdaPR replay high-advantage success，negative pruning 丢弃 failure，FCF 移除重复全零任务；sample efficiency 可能提高，behavior coverage 也可能收窄。

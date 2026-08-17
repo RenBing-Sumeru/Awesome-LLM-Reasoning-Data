@@ -1,0 +1,9 @@
+输入由六类异构任务recipe组成。VT-Math使用DeepMath prompt和Python interpreter；VT-Search使用retrieval QA、E5 retriever以及基于2018 Wikipedia dump构建的FAISS index；VT-SQL使用SkyRL-SQL问题、数据库和可执行ground-truth SQL；VT-VisualReasoner使用Pixel-Reasoner任务及zoom/frame-selection工具；VT-DeepSearch在SimpleDeepSearcher与Web-Sailor混合的1K样本上训练，通过带cache的SERPER访问Google Search；VT-SWE通过R2E-Gym scaffold使用R2E-Lite任务（附录A.1–A.6）。
+
+对每个任务，在线policy生成action直到配置的stop token。VeRL Workflow把action和辅助trajectory metadata发送给Tool Server。plugin实现`parse_action`、`load_env`、`conduct_action`、`update_env`与`delete_env`，使不同trajectory能够保持独立状态并异步发出tool call。返回的observation被追加到policy context，交互持续到领域完成条件、最大轮数或失败。policy objective只在action-token片段上计算，并通常mask observation token（论文§§3.2–3.3）。
+
+verifier/reward阶段按领域定义。数学中，答案匹配时`R_acc=1`，否则为`-1`；额外tool term在正确时为0，否则为`-0.25`。检索使用exact-match reward 1/-1；SQL按execution result是否一致给1/-1；视觉推理组合accuracy、curiosity与重复调用项，其中`H=.3`、`N=1`、`alpha=.5`、`beta=.05`；deep search把答案准确性与`0.1`的任意tool-call bonus相加；SWE仅在正常终止且全部verification test通过时返回1，timeout、exception或长度过限均返回0并mask gradient，interaction、reward与episode timeout分别为90秒、300秒和20分钟（附录A）。
+
+附录表8按Math/Search/SQL/Visual/DeepSearch/SWE依次给出rollout batch size `128/512/256/128/128/32`、每任务sample数`16/16/5/8/16/8`和最大轮数`1/2/5/3/5/100`。训练temperature除VisualReasoner为0.6外均为1.0；top-p除VisualReasoner为0.95外均为1.0。GRPO是通用optimizer baseline，论文也评测DAPO。actor learning rate除SWE为`2e-6`外均为`1e-6`。这些设置按领域变化；论文未披露统一的总rollout数量、filter或selection threshold。
+
+输出是在RLVR、agent training和evaluation中消费的在线episode及任务标量reward。现有证据不支持把已发布episode corpus用于SFT、distillation、preference learning或reward-model training。经核验的DeepSearch与SQL官方HF仓库只发布任务prompt/reference object以及search cache或database，而不是rollout episode。精确replay需要论文代码commit、`verl` submodule与dependency lock、model/checkpoint revision、dataset/index/database/container snapshot、API行为与credential、cache、seed、task split和episode manifest；目前没有论文版本固定的bundle覆盖整条链路，current-main中的SWE训练README也仍不完整。

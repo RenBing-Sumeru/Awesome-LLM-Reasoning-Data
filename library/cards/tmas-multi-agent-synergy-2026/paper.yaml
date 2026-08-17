@@ -1,0 +1,114 @@
+id: tmas-multi-agent-synergy-2026
+title: 'TMAS: Scaling Test-Time Compute via Multi-Agent Synergy'
+year: 2026
+venue: arXiv preprint
+authors:
+- George Wu
+- Nan Jing
+- Qing Yi
+- Chuan Hao
+- Ming Yang
+- Feng Chang
+- Yuan Wei
+- Jian Yang
+- Ran Tao
+- Bryan Dai
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- rlvr
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2605.10344
+  arxiv: https://arxiv.org/abs/2605.10344
+  venue: null
+  code: https://github.com/IQuestLab/tmas
+  data: https://github.com/IQuestLab/tmas
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.10344
+data_object:
+  prompt_source: Challenging reasoning benchmarks including IMO-AnswerBench.
+  trace_author: Solution, verification, summary, experience, and guideline agents generate iterative collaborative traces.
+  answer_format: Question, parallel solutions, verification feedback and scores, rollout summary, experience-bank entries,
+    guideline-bank entries, and final answer.
+  process_fields:
+  - prompt
+  - trajectory
+  - verification
+  - verification_score
+  - summary
+  - experience_memory
+  - guideline_memory
+  - iteration
+  - final_answer
+  environment_or_substrate: Iterative multi-agent reasoning with parallel exploration and sequential refinement.
+  verifier_or_reward: Independent verification passes plus a hybrid RL reward for correctness, experience use, and strategy
+    exploration.
+  terminal_predicate: The iterative agent system returns a final solution whose correctness is evaluated by the benchmark.
+recipe_metadata:
+  base_model: Qwen3-30B-A3B-Thinking-2507 and Qwen3-4B-Thinking-2507 in highlighted results.
+  teacher: null
+  generator: Five specialized agents in a shared multi-agent inference framework.
+  filtering_rule: Experience bank retains reliable local conclusions and errors; guideline bank records high-level attempted
+    strategies to prevent redundant exploration.
+  sampling_protocol: At each iteration, generate N paths, verify each M times, summarize, update two memory banks, then condition
+    the next iteration.
+  rollout_count: N parallel solutions and M verification passes per solution; exact settings are in the paper.
+  temperature: See official implementation.
+  inference_budget: Agent calls across solution, verification, summary, and memory-update stages over T iterations.
+  optimizer_or_scaffold: TMAS plus Hybrid-RL.
+audit:
+  source_mixture: Official arXiv PDF and official GitHub repository linked on the paper front page.
+  split: Reasoning benchmark protocols are described in the paper.
+  decontamination: No independent contamination audit is claimed.
+  license: Verify repository, base-model, and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2605.10344
+  known_failure_modes:
+  - memory-contamination
+  - verifier-error
+  - exploration-collapse
+  - multi-agent-cost-explosion
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF checked on 2026-07-21. It lists IQuest Research and Beihang University and links the official
+    code-and-data repository.
+inclusion_reason: It explicitly scales test-time computation through coordinated multi-agent trajectories, verification passes,
+  and reusable cross-iteration memory.
+related: []
+tags:
+- test-time-compute
+- multi-agent
+- memory
+- verification
+- rlvr
+status: verified
+one_line_summary: TMAS coordinates parallel solution, verification, summarization, and two memory banks so later test-time
+  iterations can reuse reliable progress without repeating strategies.
+reading_priority: useful
+paper_type: Multi-agent iterative test-time scaling study
+best_for: Readers designing long-horizon reasoning systems that must coordinate exploration, verification, and memory reuse.
+confidence: high
+why_it_matters: It treats cross-trajectory information retention as a controllable test-time resource rather than leaving
+  parallel rollouts independent.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official PDF and linked code/data repository verified.
+category_ids:
+- scaling_rlvr_test_time_compute

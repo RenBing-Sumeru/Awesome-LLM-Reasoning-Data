@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "KnowMe-Bench 以带证据链接的长篇自传叙事，检验记忆 Agent 能否推断人的动机、状态与决策原则。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长上下文专家核验基准论文",
+  "best_for_ch": "构建长期记忆、人格建模或证据约束解释系统的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tingyu Wu、Zhisheng Chen、Ziyan Weng、Shuhe Wang、Shuo Zhang、Sen Hu、Silin Wu、Qizhen Lan、Huacan Wang、Ronghao Chen",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:46:39Z"
+}

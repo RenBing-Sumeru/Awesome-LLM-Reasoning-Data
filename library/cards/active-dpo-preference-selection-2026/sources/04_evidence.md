@@ -1,0 +1,3 @@
+Across the six reported model-task settings, the curves in the main experiment show higher average reward for policies trained on ActiveDPO-selected pairs than random selection, APO, and APLP at the same sequence of annotation budgets. The paper also reports that the ranking remains favorable in its win-rate plots after comparison with the initial policy.
+
+A controlled study with two differently initialized Gemma models finds that the same three DPO data subsets can rank differently for the two models, supporting the policy-specific premise. Ablations show that gradient normalization improves the WebGPT-Gemma result, while projection dimensions below 8,192 reduce performance and larger dimensions bring little additional gain.

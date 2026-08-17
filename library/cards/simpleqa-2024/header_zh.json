@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SimpleQA 用 4,326 条短事实问答和三分类评分器评估模型的正确回答、错误回答与不作答行为。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要审计短事实问答、factuality、abstention/calibration 指标、公开 benchmark 污染风险和 judge prompt 稳定性的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jason Wei、Nguyen Karina、Hyung Won Chung 等（OpenAI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RealWorldQA 用真实图片和多选问题评估模型对空间布局、方向和物理场景的基础理解。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "xAI Grok-1.5 Vision Preview release 的 multimodal benchmark / evaluation surface",
+  "best_for_ch": "关注真实图片空间理解、车辆视角问题、多选评测和发布物 license 风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "xAI",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

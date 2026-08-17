@@ -1,0 +1,3 @@
+Evidence for inclusion comes from official metadata and artifact pages: arXiv 2603.29020 and EmergenceAI/EmergenceWebVoyager repository. The author list used in this Card is Deepak Akkil, Mowafak Allaham, Amal Raj, Tamer Abuelsaad, Ravi Kokku. Institution metadata is recorded separately in institutions.json as Emergence AI, Northwestern University.
+
+The evidence is enough for L4 because it identifies the primary source, the publication or preprint status, and at least one reusable evaluation or data artifact when such an artifact is publicly linked. It is not enough for final trust without checking evaluator code and split/version policy.

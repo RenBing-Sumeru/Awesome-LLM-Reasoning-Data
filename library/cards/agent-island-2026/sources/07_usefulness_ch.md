@@ -1,0 +1,9 @@
+对指定的 environment_agent_trajectory_data track，Agent Island 适合作为具体的 episode-schema 与 feedback-contract reference。可比发布应保留 task/rules configuration、participant 与 model identity、visibility-filtered observation、private/public action、parser output、active/eliminated state、vote tally、terminal predicate、final winner、error、usage 与 replay/version metadata。冻结 log 说明 agent episode 不能被简化成公开 transcript 或单一 scalar score。
+
+999-game manifest 可以作为受版本控制的 evaluation baseline。研究者可下载准确 ID 集，核验 manifest SHA-256 `73ee6cc97ada604830e933131b19ed81839049b19dfcc1a3c970a72dfce862ad`，检查 CC BY 4.0 Croissant metadata，并在已发布 log 上重跑 winner ranking 或替代 behavioral analysis。匿名 replication ZIP 以 SHA-256 `5b2c7c5262a46c65b51b659b9c3c0b4edb7eb8cf443cb6d2a4489d2d673e8b2d` 固定，可作为 analysis 起点；但其缺少 license，无法放心复用代码，也不能重新生成游戏。
+
+该数据也适合 verifier 与 environment audit。研究可以比较 parser failure 字段与最终保留 outcome，测试 tie handling、winner-only 与更丰富 ordinal outcome、prior assumption、burn-in、matchup/provider effect 的敏感性；same-provider finding 也提示应使用 schedule-aware model。此类分析应发布 rejection ledger，并区分 author-reported result 与独立重跑 estimate。
+
+live source 只有在被 snapshot 后才适合研究 benchmark drift。审计记录应捕获 retrieval time、source timestamp、raw JSON hash、total game、ranking-row count、display filter、displayed-model count、normalization、ordering statistic 与 uncertainty interval。2026 年 7 月 20 日审计对应 1,270 games、62 rows、59 displayed models，source timestamp 为 2026-07-02 15:26:25.976235+00:00。这些值不能替代静态的 999-game/49-model 论文集。
+
+安全复用等级是**仅限 evaluation 与 audit**。论文没有展示 SFT、preference optimization、reward-model training、RLVR 或 agent-policy training，玩家也没有收到明确 reward。训练复用超出现有证据边界，需要另行审查 quality、privacy/provider terms、contamination、failure retention 与 model-generated content。准确重现 episode 还需要把 engine/dependency version、immutable model/API revision、decoding setting、retry 与 compute metadata 绑定到每场游戏。

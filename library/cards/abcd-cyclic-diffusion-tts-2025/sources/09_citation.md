@@ -1,0 +1,1 @@
+Lee, Gyubin, Truong Nhat Nguyen Bao, Jaesik Yoon, Dongwoo Lee, Minsu Kim, Yoshua Bengio, and Sungjin Ahn. “Adaptive Inference-Time Scaling via Cyclic Diffusion Search.” NeurIPS 2025. arXiv:2505.14036. https://arxiv.org/abs/2505.14036.

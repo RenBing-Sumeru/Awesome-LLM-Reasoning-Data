@@ -1,0 +1,1 @@
+Kandpal, Nikhil 等。《The Common Pile v0.1: An 8TB Dataset of Public Domain and Openly Licensed Text》。Advances in Neural Information Processing Systems 38（NeurIPS 2025，Datasets and Benchmarks Track）。https://proceedings.neurips.cc/paper_files/paper/2025/hash/52acc050138d6f40dad6f12f91a4ce22-Abstract-Datasets_and_Benchmarks_Track.html

@@ -1,0 +1,1 @@
+Zheng, Tong、Haolin Liu、Chengsong Huang、Huiwen Bao、Sheng Zhang、Rui Liu、Runpeng Dai、Ruibo Chen、Chenxi Liu、Tianyi Xiong、Xidong Wu、Hongming Zhang 与 Heng Huang。2026。“LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling”。arXiv 预印本 arXiv:2605.08083。官方论文：https://arxiv.org/abs/2605.08083。官方代码与发布工件：https://github.com/zhengkid/AutoTTS。

@@ -1,0 +1,3 @@
+Errors in multimodal science problems may arise from image reading, formulas, domain knowledge, or intermediate reasoning, yet existing MLLM judges often provide only an overall correct/incorrect verdict. There is no unified benchmark for step localization, error typing, and explanation, while human review is costly and uncalibrated proprietary judges can propagate bias.
+
+ProJudge builds both the human-annotated ProJudgeBench and the large ProJudge-173k dataset. The benchmark evaluates process judges, while the instruction-tuning data and dynamic dual-phase training teach open MLLMs to analyze a solution before issuing judgments.

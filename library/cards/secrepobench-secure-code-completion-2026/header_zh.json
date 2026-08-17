@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SecRepoBench 在 318 个真实 C/C++ 仓库缺口上以开发者测试与漏洞利用复验共同衡量补全的功能和安全性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "仓库级安全代码补全基准",
+  "best_for_ch": "研究安全代码代理、仓库级补全或执行式代码验证的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chihao Shen, Connor Dilgren, Purva Chiniya, Luke Griffith, Yu Ding, Yizheng Chen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

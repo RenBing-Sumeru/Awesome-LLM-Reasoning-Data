@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作用 Lean 的可执行证明反馈筛选合成数学推理，并将回答对分配到 SFT、DPO、丢弃或重试路径；核心审计风险是自然语言与形式化陈述的对齐，以及当前不可访问的发布仓库。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "合成数据构建与定理证明器反馈方案",
+  "best_for_ch": "构建合成数学推理数据、集成 Lean 反馈、设计可验证偏好对或审计自动形式化流水线的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Joshua Ong Jun Leang, Giwon Hong, Wenda Li, Shay B. Cohen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data",
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,1 @@
+The five axes can be correlated, culturally contingent, or insufficient for safety and factuality in specialized domains. Score aggregation and pair construction introduce researcher choices; reward models can exploit verbosity or style artifacts. Audit rater agreement, score distributions, response-source leakage, and behavior on adversarial prompts.

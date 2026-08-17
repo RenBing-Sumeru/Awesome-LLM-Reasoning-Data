@@ -1,0 +1,1 @@
+The paper's value is its joint treatment of compression techniques and the evaluation choices needed to judge them. It does not present compression as merely shrinking parameter counts; it connects practical applicability to how efficiency and model behavior are measured.

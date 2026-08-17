@@ -1,0 +1,7 @@
+The prior-work baseline is live-web evaluation, static web traces, and simulated web environments. Live-web tasks can become unreproducible when answers or layouts change; static traces can understate real navigation difficulty; simulators can miss messy browser behavior. WebArXiv narrows the domain to arXiv so that web interaction remains realistic while answers are designed to be stable.
+
+What changes is the pairing of a real academic website domain with time-invariant task design and deterministic final-answer checks. The paper also adds a behavior diagnosis, Rigid History Reflection, and a small intervention that lets the agent choose a relevant previous observation from recent history instead of treating every recent step equally.
+
+The direction signal is that web-agent data can be made more auditable by choosing a stable substrate and publishing a precise final-answer contract. The setup exposes whether an agent failed at prompt interpretation, interface navigation, history use, or content extraction rather than hiding those failures behind live-web drift.
+
+The quality signal is the structured task taxonomy, independent answer verification, full-task evaluation over multiple agents, and ablation against history-window baselines. What is not new is browser-based agent evaluation itself, arXiv search as a task domain, or final-answer success rate. Reuse checks should verify whether the claimed snapshots, action trajectories, and evaluator scripts are actually reproducible from the public artifact.

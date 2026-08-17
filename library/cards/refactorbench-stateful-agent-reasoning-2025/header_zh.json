@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RefactorBench 以可执行重构任务测试语言代理对跨文件状态与代码变换的持续推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码重构代理基准与可执行评测集",
+  "best_for_ch": "研究代码代理、跨文件状态推理和测试驱动评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dhruv Gautam、Spandan Garg、Jinu Jang、Neel Sundaresan、Roshanak Zilouchian Moghaddam",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T09:18:01Z"
+}

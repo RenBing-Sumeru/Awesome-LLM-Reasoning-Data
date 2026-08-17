@@ -1,0 +1,18 @@
+{
+  "title": "Improving the OOD Performance of Closed-Source LLMs on NLI Through Strategic Data Selection",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-eacl.286/",
+    "code": "https://github.com/joestacey/LLM_robustness_NLI",
+    "data": "https://github.com/joestacey/LLM_robustness_NLI"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:18:59Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "展示在无法访问模型参数时，仍可通过策略性选择合成示例改善闭源模型的域外 NLI 表现",
+    "updated_at": "2026-07-15T15:18:59Z"
+  }
+}

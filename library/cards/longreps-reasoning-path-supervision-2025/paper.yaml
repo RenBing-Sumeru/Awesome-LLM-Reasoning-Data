@@ -1,0 +1,110 @@
+id: longreps-reasoning-path-supervision-2025
+title: 'Chain-of-Thought Matters: Improving Long-Context Language Models with Reasoning Path Supervision'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Dawei Zhu
+- Xiyu Wei
+- Guangxiang Zhao
+- Wenhao Wu
+- Haosheng Zou
+- Junfeng Ran
+- Xun Wang
+- Lin Sun
+- Xiangzheng Zhang
+- Sujian Li
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- long-context-reasoning
+- process-supervision
+- question-answering
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.170/
+  arxiv: https://arxiv.org/abs/2502.20790
+  code: https://github.com/lemon-prog123/LongRePS
+  project: null
+  data: https://huggingface.co/datasets/Lemon123prog/Qwen-2.5-7B-LongRePS
+  huggingface: https://huggingface.co/datasets/Lemon123prog/Qwen-2.5-7B-LongRePS
+  venue: https://aclanthology.org/2025.findings-emnlp.170/
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.170
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.170/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Long documents and questions from long-context QA settings.
+  trace_author: Self-sampling generates candidate reasoning paths for long-context answers.
+  answer_format: Long instruction/context, a structured output with reasoning and answer, and accepted answer aliases.
+  process_fields:
+  - reasoning
+  - retrieved_excerpts
+  - answer
+  - answers
+  environment_or_substrate: Long-context QA requiring evidence retrieval and multi-hop aggregation.
+  verifier_or_reward: A long-context-specific quality assessment protocol filters bootstrapped reasoning paths.
+  terminal_predicate: The generated answer matches one of the task's accepted answers.
+recipe_metadata:
+  base_model: Released Qwen-2.5-7B LongRePS checkpoint/data configuration.
+  teacher: Self-sampling plus the paper's quality-assessment protocol.
+  generator: Model-generated reasoning paths over long contexts.
+  filtering_rule: Retain high-quality reasoning paths under the proposed long-context assessment procedure.
+  sampling_protocol: Bootstrap paths by self-sampling, assess their long-context quality, then supervise a model to generate
+    reasoning paths.
+  inference_budget: See the official repository for task-specific context and sampling settings.
+  optimizer_or_scaffold: Process-supervised fine-tuning on selected reasoning paths.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Long-context documents/questions, self-sampled reasoning paths, and answer-alias supervision.
+  split: The official release has warmup and other named splits; use its split definitions when reproducing.
+  decontamination: Keep long-context evaluation instances out of path-supervision training.
+  license: The official Hugging Face dataset is MIT licensed; source task terms apply.
+  lineage: Findings of EMNLP 2025 paper, authors' LongRePS repository, and Lemon123prog data collection.
+  known_failure_modes:
+  - Reasoning-path quality filtering can favor the generator's style
+  - Long contexts can contain missing or ambiguous evidence
+  - Evidence may not transfer from QA to unrelated long-context tasks
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL proceedings title, author affiliations, DOI, paper-linked LongRePS GitHub repository, and official
+    Lemon123prog dataset card.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: LongRePS bootstraps and quality-filters explicit evidence paths for long documents, training language models
+  to reason through context rather than only predict the final answer.
+why_it_matters: It makes the intermediate retrieval-and-aggregation path a released supervision object for long-context models.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL proceedings title, author affiliations, DOI, paper-linked LongRePS GitHub repository, and official
+    Lemon123prog dataset card.
+category_ids:
+- process_trace_supervision_data

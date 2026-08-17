@@ -1,0 +1,5 @@
+- The official decision is ICLR 2025 Spotlight; use the proceedings author order, while noting that the PDF swaps Ke Wang and Houxing Ren.
+- Read Table 1 as six exact paper-corpus components totaling 19,487,652 documents and 19,184,073,343 tokens, not as statistics of the current partial Hugging Face snapshot.
+- Keep the intended verifier distinct from code: paper prose requires execution and expected-result match, whereas implementation compares only short numeric outputs within 0.01 and otherwise accepts error-free execution.
+- The translation teacher is Llama-3.1-70B-Instruct according to the paper and deployment script; the README's Mixtral-8x7B-Instruct statement is conflicting metadata.
+- Before reuse, audit the weak sandbox, broken pipeline paths, text-only provenance loss, missing textbook release, decontamination schema mismatch, root-code license gap, and continued-pretrained versus SFT checkpoint boundary.

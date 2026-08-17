@@ -1,0 +1,9 @@
+BuildBench 的贡献是把 repository compilation 转化为一种 environment-grounded agent evaluation：任务带有人工核验的目标，agent 接收迭代 execution feedback，最终由明确的 filename-based terminal metric 评分。
+
+benchmark object 有两层。公开的 task/label 层记录 repository identity 与 metadata、compilability、target 或 cross-compiled executable filename、documentation-URL trajectory、failure note、comment，以及当前 test revision 新增的 source commit hash。评测 episode 层从 repository、README/file tree 与可选的 retrieved instruction 开始；Bash Command Generator 生成 command sequence `S_k`，Execution Agent 在 container 中执行，execution result `f_k` 成为下一步 observation。公开 release 没有把第二层序列化为完整 rollout corpus。
+
+feedback contract 是 mixed programmatic/environmental feedback，监督附着在 answer artifact 与 full episode 上。online interaction 在未披露的 `Success(f_k)` 为 true 或 `k` 达到未披露上限 `K` 时停止。offline **Completion** 要求无错误终止且至少产生一个 binary；**Strict Success** 要求出现全部人工目标 binary filename；**Flexible Success** 要求至少出现一个目标 filename。这套 contract 能观察 process termination、binary presence 与 filename agreement，却不能确认 executable functionality、patch 后的 semantic preservation、security、deterministic rebuildability，也不能确认生成的是预期程序，而非 stale、intermediate、vendored 或 submodule binary。
+
+论文明确给出的最近比较对象是 100-project CompileAgentBench/CompileAgent 路线。BuildBench 从大规模 GitHub C/C++ population 出发，经过 keyword/star/fork filtering 后随机抽取 385 个 candidate，再由 systems graduate student 逐个尝试 build，最后保留 148 个 positive task 用于 agent evaluation。OSS-Build-Agent 还把 README-first file/web retrieval、batched command generation 与 iterative error repair 组合起来。这些是 benchmark design 与 scaffold 的差别，不是新 training objective 的证据。
+
+对 reasoning-data 研究而言，它的方向价值是把 task provenance、interactive state/action/observation behavior 与 episode-level terminal predicate 分开。release 也同时揭示了审计边界：task label 与 documentation path 可以支持 evaluation construction，但在缺少 command-observation trace、environment snapshot 与 evaluator code 时，不能把它们重新归类为 agent-training trajectory。

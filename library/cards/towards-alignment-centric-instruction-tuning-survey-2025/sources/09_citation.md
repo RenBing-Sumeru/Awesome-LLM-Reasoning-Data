@@ -1,0 +1,1 @@
+Han, Xudong, Junjie Yang, Tianyang Wang, Ziqian Bi, Xinyuan Song, Junfeng Hao, and Junhao Song. “Towards Alignment-Centric Paradigm: A Survey of Instruction Tuning in Large Language Models.” arXiv:2508.17184, 2025. https://arxiv.org/abs/2508.17184

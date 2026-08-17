@@ -1,0 +1,1 @@
+ZeroSearch: Incentivize the Search Capability of LLMs without Searching addresses a test-time reasoning problem in which traces, selection decisions, or compute allocation determine the final output. The concrete object described by the official source is: simulated retrieval documents and curriculum rollouts.

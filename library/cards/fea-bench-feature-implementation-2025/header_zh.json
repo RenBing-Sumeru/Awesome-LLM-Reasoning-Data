@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FEA-Bench 从 83 个仓库的拉取请求提取 1,401 个功能开发任务，并用关联单元测试验证仓库级新增功能。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "仓库级功能实现代码生成基准",
+  "best_for_ch": "需要评估新增功能实现而非缺陷修复的仓库级代码智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Li, Xin Zhang, Zhongxin Guo, Shaoguang Mao, Wen Luo, Guangyue Peng, Yangyu Huang, Houfeng Wang, Scarlett Li",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:08:31Z"
+}

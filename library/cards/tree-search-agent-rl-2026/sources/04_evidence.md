@@ -1,0 +1,14 @@
+The empirical scope is broader than one dataset but still specific: eleven evaluation datasets across single-hop retrieval QA, multi-hop retrieval QA, and web-agent QA. The paper reports that Tree-GRPO improves over chain-based agent RL across these settings and studies expected rollout budgets near 2, 4, 8, and 16. These are author-reported training and evaluation results, not an independent reproduction.
+
+Several ablations support claims about the construction mechanism rather than only the final score:
+
+- Agent-step branching outperforms token- or sentence-level branching in the reported Qwen2.5-3B, budget-4 comparison. This supports the paper’s decision to treat a complete thought-action-observation interaction as the process unit, but does not prove that the same boundary is optimal in every environment.
+- Varying \(M,N,L\) shows a diversity/reuse trade-off. More independently rooted trees improve exploration, while concentrating the budget in shared-prefix expansion eventually gives diminishing or degraded results. Prefix reuse is therefore not a free multiplication of independent evidence.
+- With few branches, the intra-tree baseline can have high variance and training can collapse. The inter-tree advantage is reported as an important fallback rather than a complete solution to sparse or homogeneous rewards.
+- The paper’s failed cases show early commitment to a partially satisfying path, failure to reconsider after new evidence, and an incorrect final answer. Tree structure alone does not ensure reflection or recovery.
+
+The feedback path is directly supported by the paper, theory appendix, and official implementation: EM/F1 plus the format term scores selected leaves; leaves are grouped by `tree_uid`; intra-tree and inter-tree normalization produce the summed training advantages. The code also supports the release-boundary finding: selected full responses and statistics are packed for the online update, while node ancestry and the complete tree are not returned and the tree is deleted.
+
+The theoretical result is narrower than a general process-supervision guarantee. Under binary outcomes, the paper derives that intra-tree GRPO and step-level DPO share a preference-gradient direction while differing in weight. It does not demonstrate that each shared-prefix branch point is causally responsible for the terminal result, and web-agent F1 is continuous rather than binary.
+
+Reported benchmark performance is evidence that this training recipe affected the authors’ evaluated policies. It is not evidence that the transient trees are a high-quality reusable dataset, that the terminal verifier validates intermediate reasoning, or that missing branches and rewards can be reconstructed. No independent result bundle, raw rollout corpus, or record-level replay ledger was verified.

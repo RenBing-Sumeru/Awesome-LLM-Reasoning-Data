@@ -1,0 +1,127 @@
+id: general-reasoner-2025
+title: 'General-Reasoner: Advancing LLM Reasoning Across All Domains'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Xueguang Ma
+- Qian Liu
+- Dongfu Jiang
+- Ge Zhang
+- Zejun MA
+- Wenhu Chen
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English physics, chemistry, finance, electronics, mathematics, and broad web knowledge
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.14652
+  arxiv: https://arxiv.org/abs/2505.14652
+  code: null
+  data: https://huggingface.co/datasets/TIGER-Lab/WebInstruct-verified
+  project: null
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/WebInstruct-verified
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: web-crawled questions with diverse answer representations
+  trace_author: curation models normalize questions and answers while a generative verifier reasons over equivalence
+  answer_format: id, question, answer, answer type, category, and difficulty
+  process_fields:
+  - id
+  - question
+  - answer
+  - answer type
+  - category
+  - and difficulty
+  environment_or_substrate: English physics, chemistry, finance, electronics, mathematics, and broad web knowledge
+  verifier_or_reward: generative answer verification with chain-of-thought and context plus category and difficulty filters
+  terminal_predicate: Retain records only after generative answer verification with chain-of-thought and context plus category
+    and difficulty filters.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: curation models normalize questions and answers while a generative verifier reasons over equivalence
+  generator: General-Reasoner crawls broad questions, normalizes answer types, and uses a context-aware generative verifier
+    to retain questions with scoreable answers.
+  filtering_rule: generative answer verification with chain-of-thought and context plus category and difficulty filters
+  sampling_protocol: web-crawled questions with diverse answer representations
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: multi-domain reasoning RL
+audit:
+  source_mixture: web-crawled questions with diverse answer representations
+  split: 'Official release scale: 228,736 training and 1,000 test question-answer records; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: Apache-2.0
+  lineage: web-crawled questions with diverse answer representations -> curation models normalize questions and answers while
+    a generative verifier reasons over equivalence -> generative answer verification with chain-of-thought and context plus
+    category and difficulty filters -> WebInstruct-verified -> multi-domain reasoning RL
+  known_failure_modes:
+  - a generative verifier can share factual errors with the policy model
+  - web crawling creates provenance, duplication, and contamination risks
+  citation_status: verified
+  confidence: high
+  notes: The full 15-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: WebInstruct-verified is a public Track 01 object containing id, question, answer, answer type, category,
+  and difficulty and is explicitly consumed by multi-domain reasoning RL.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2505.14652
+- primary-link-checked
+status: verified
+one_line_summary: General-Reasoner crawls broad questions, normalizes answer types, and uses a context-aware generative verifier
+  to retain questions with scoreable answers.
+why_it_matters: Rule-based answer checkers work for math but reject equivalent free-form answers in science and professional
+  domains, blocking broad RL data collection.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: multi-domain reasoning RL
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English physics, chemistry, finance, electronics, mathematics, and broad web knowledge
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 1192 downloads and 69 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: Apache-2.0.'
+  selection_eligible: true
+  year_impact_threshold: 2

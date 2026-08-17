@@ -1,0 +1,266 @@
+id: swe-factory-2026
+title: SWE Data Construction, Automatically!
+year: 2026
+venue: ACM FSE 2026 Research Papers
+authors:
+- Lianghong Guo
+- Yanlin Wang
+- Caihua Li
+- Wei Tao
+- Pengyu Yang
+- Jiachi Chen
+- Haoyu Song
+- Duyu Tang
+- Zibin Zheng
+source_role:
+- construction_recipe
+- data_release
+- benchmark
+- verifier_reward
+- agent_environment
+- model_report
+verification_contract:
+- environmental
+- programmatic
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- code_reasoning
+- software_engineering
+- issue_resolution
+- coding_agents
+- repository_agents
+training_use:
+- sft
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/70/SWE-Data-Construction-Automatically-
+  paper_pdf: https://github.com/DeepSoftwareAnalytics/swe-factory/blob/760b1758c04ba61885972fe8f635c9db3b2c3232/preprint.pdf
+  supplemental: null
+  arxiv: https://arxiv.org/abs/2506.10954
+  code: https://github.com/DeepSoftwareAnalytics/swe-factory
+  code_snapshot: https://github.com/DeepSoftwareAnalytics/swe-factory/tree/760b1758c04ba61885972fe8f635c9db3b2c3232
+  data: https://huggingface.co/datasets/SWE-Factory/DeepSWE-Agent-Kimi-K2-Trajectories-2.8K
+  data_snapshot: https://huggingface.co/datasets/SWE-Factory/DeepSWE-Agent-Kimi-K2-Trajectories-2.8K/tree/2a2175e291a0606376592af08b64c25afabe72a9
+  dataset_card: https://huggingface.co/datasets/SWE-Factory/DeepSWE-Agent-Kimi-K2-Trajectories-2.8K
+  task_data: https://github.com/DeepSoftwareAnalytics/swe-factory/blob/760b1758c04ba61885972fe8f635c9db3b2c3232/data_collection/collect/SetupBench-lite/merged_instances_versions.jsonl
+  environment_data: https://huggingface.co/datasets/SWE-Factory/SWE-Factory-Gym
+  model: https://huggingface.co/SWE-Factory
+  project: https://github.com/DeepSoftwareAnalytics/swe-factory
+  huggingface_collection: https://huggingface.co/SWE-Factory
+  doi: null
+  venue: https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/70/SWE-Data-Construction-Automatically-
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  record_type: 'Three linked objects are described: a GitHub issue-resolution task anchored by repository and base commit
+    with issue text, test patch, and gold patch; a runnable environment recipe containing a Dockerfile and evaluation script;
+    and a full agent/environment trajectory serialized as interleaved messages for supervised fine-tuning.'
+  prompt_source: Real GitHub issues paired with merged pull requests. The issue description is the task prompt; the pull request
+    supplies test and gold patches; pairs without test changes are discarded. The benchmark pool contains issues created before
+    2025-03-01.
+  trace_author: Kimi-K2 interacts once with each of 2,809 prepared Python task environments through the DeepSWE Execute Bash,
+    Search, File Editor, and Finish/Submit tools.
+  answer_format: Multi-turn system, user, and assistant messages contain the issue, environment interaction, tool calls and
+    outputs, reasoning, and code-editing behavior. The primary public trajectory schema exposes only `messages`.
+  process_fields:
+  - repo
+  - pull_number
+  - instance_id
+  - issue_numbers
+  - base_commit
+  - patch
+  - test_patch
+  - problem_statement
+  - hints_text
+  - created_at
+  - version
+  - dockerfile
+  - eval_script
+  - eval_script_skeleton
+  - messages
+  environment_or_substrate: Repository state at a base commit is built into a task-local Docker environment. A generated evaluation
+    script applies the test patch, runs target tests, and emits an exit-code marker. The Builder locally builds and starts
+    containers; no paper-run image registry or digest manifest is released.
+  verifier_or_reward: Gold-patch fail-to-pass verification requires tests to exit nonzero before the gold patch and zero after
+    it, as parsed from `OMNIGRIL_EXIT_CODE`. Human log review evaluates this parser but is not serialized as a released reward
+    or label field.
+  terminal_predicate: '`previous_exit != 0 && after_gold_exit == 0`; missing files or markers are errors. The predicate does
+    not distinguish assertion failures from other nonzero failures and therefore admits error-to-pass risk.'
+  released_payload: The pinned repository releases exactly 671 raw SweSetupBench task records. The primary Hugging Face trajectory
+    release has exactly 2,809 train rows with one `messages` field. A separate later SWE-Factory-Gym release has 430 rows
+    with task, patch, Dockerfile, and evaluation-script fields. No manifest binds these record sets.
+  failed_records: Builder output and fail-to-pass rates and failure categories are reported only in aggregate. The 2,809-row
+    trajectory release has no success, verifier, reward, failure, or rejection field, and no failed-builder or corrected human-audit
+    split is published.
+  provenance: GitHub issue/PR and base commit -> binary-test-resource repair -> four-agent Dockerfile/evaluation-script construction
+    with execution feedback and same-repository/version memory -> gold-patch fail-to-pass validation -> prepared coding environment
+    -> one Kimi-K2 interaction trajectory -> full-parameter SFT. Stable cross-release row mappings are unavailable.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-Instruct 3B, 7B, and 14B; Llama-3.1-8B-Instruct; and Qwen3-8B-Instruct in non-thinking mode are
+    full-parameter fine-tuned.
+  teacher: Kimi-K2 for the released 2,809 agent trajectories
+  generator: 'SWE-Builder uses GPT-4.1-mini-2025-04-14, Kimi-K2, or DeepSeek-V3-0324 with four collaborating roles: Repository
+    Explorer, Environment Manager, Test Manager, and Test Analyst. Kimi-K2 generates the 2,809 SFT trajectories with the DeepSWE
+    scaffold.'
+  prompt_or_task_source: Real issue descriptions from GitHub repositories, paired with PR-derived test and gold patches and
+    a base commit. The paper states that ten Python training repositories are distinct from SWE-bench repositories.
+  filtering_rule: Require a pull request with test changes; recover omitted binary test resources; retain environments that
+    build and satisfy gold-patch fail-to-pass under the generated evaluation script. Tool installation reduces 2,877 constructed
+    Python environments to 2,809 prepared environments.
+  sampling_protocol: SweSetupBench samples 20% within each repository/version stratum, minimum one, from 2,441 raw issues
+    to obtain 671. Training samples one Kimi-K2 trajectory for each of 2,809 prepared environments. Exact seeds and task membership
+    for the 2,809 set are unknown because the linked appendix is unavailable.
+  rollout_count: One training trajectory per prepared task, 2,809 total. SWE-Builder experiments run on 671 benchmark issues;
+    valid-environment counts are 337, 321, and 282 for GPT-4.1 mini, Kimi-K2, and DeepSeek-V3.
+  temperature: The accepted paper reports 0.1 for Builder experiments and 0.2 for Kimi-K2 training-trajectory sampling. Current
+    README and run examples differ and are not treated as paper-run values.
+  inference_budget: Builder maximum five iterations, ten context-retrieval rounds, and 20 parallel subprocesses in the accepted
+    paper. Training-trajectory generation and evaluation allow up to 40 agent iterations.
+  optimizer_or_scaffold: Full-parameter SFT with MS-Swift on eight A800 GPUs for three training iterations as stated, maximum
+    length 65,536, bf16, learning rate 1e-5, warmup 0.05, FlashAttention, packing, YaRN, and model-dependent sequence parallelism.
+    Evaluation uses vLLM on one A100.
+  verifier_training: No learned verifier is trained. The released contract is programmatic exit-code parsing; three experienced
+    researchers manually inspect logs to validate it.
+  selection_rule: Environment acceptance requires a runnable construction whose relevant tests fail before and pass after
+    the gold patch. The paper does not state that the one Kimi-K2 trajectory per environment is filtered for successful issue
+    resolution, and public trajectory rows contain no outcome field.
+audit:
+  source_mixture: Real issue, pull-request, patch, test, and repository content from GitHub; generated Dockerfiles and evaluation
+    scripts; Kimi-K2 agent interactions; and five base-model families. Per-repository mixture for the 2,809 training tasks
+    is unavailable because the linked appendix is missing.
+  split: Repository SetupBench-lite has 671 task rows. The primary Hugging Face trajectory release has one 2,809-row train
+    split with only `messages`. SWE-Factory-Gym has one 430-row train split. No validation/test, outcome, repository, or accepted/rejected
+    split manifest binds these objects.
+  decontamination: The paper states repository-level separation between ten training repositories and SWE-bench repositories.
+    Exact repository membership is not independently auditable, and no issue-, commit-, patch-, semantic-, solution-, or model-pretraining-overlap
+    analysis is released.
+  benchmark_overlap: Training uses repositories stated to be distinct from SWE-bench, while evaluation uses SWE-bench Verified
+    and Lite. The paper suggests Kimi-K2 may contain relevant repository knowledge from training; no generator or base-model
+    contamination audit is provided.
+  license: 'The code repository uses a custom dual-license notice: AGPL-3.0 terms for non-commercial or academic use and separate
+    commercial licensing. The three Hugging Face dataset cards declare MIT but provide no upstream-license or relicensing
+    analysis for issue text, code, patches, tests, or tool output. The five model repositories have no README/model card or
+    declared license.'
+  lineage: Paper-level lineage is clear, but row-level mappings among 2,441 raw issues, 671 SweSetupBench tasks, 2,877 constructed
+    training environments, 2,809 prepared environments and trajectories, 430 Gym rows, training subsets, five checkpoints,
+    and evaluations are not released.
+  release_version: 'Accepted FSE record and repository PDF were checked alongside arXiv. Pinned repository head: 760b1758c04ba61885972fe8f635c9db3b2c3232.
+    Primary trajectory dataset: 2a2175e291a0606376592af08b64c25afabe72a9. Gym: c31daaecf6cd8bb6392a798058f547ee8b24d713. The
+    repository has no tags or GitHub Releases, and no manifest binds these revisions to one paper run.'
+  successful_and_failed_sample_retention: The primary trajectory release has no outcome or reward and no rejected split. Aggregate
+    environment failures and a human-validation confusion matrix are reported, but record-level failures, parser corrections,
+    disagreements, and rejection reasons are not public.
+  immutable_manifest: Individual GitHub and Hugging Face revisions can be pinned, but no signed release-wide manifest covers
+    source task IDs and hashes and rights, Dockerfiles, base-image digests, packages or SBOMs, evaluation scripts, verifier
+    logs and decisions, trajectories, training subsets, checkpoints, and benchmark predictions.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Exit-code parsing conflates assertion failures with crashes, dependency failures, timeouts, and other nonzero exits, creating
+    error-to-pass risk.
+  - Marker identifier typos and `set -e` early termination caused 16 false negatives in the reported 1,201-pair human audit.
+  - Gold-patch validation is label-aware; errors in pull-request linkage, tests, or the gold patch can flow into environment
+    acceptance.
+  - The accepted FSE record/PDF and older arXiv/repository citation metadata disagree on title and author identity; headline
+    builder results also changed across versions.
+  - The accepted-version PDF retains placeholder ACM metadata, and the linked `Appendix.pdf` is missing from the repository
+    and its history.
+  - Current README and run examples differ from the accepted paper's temperature and parallelism settings, and there is no
+    tagged paper-run revision.
+  - The 2,809-row release is messages-only and cannot be mechanically linked to environments, verifier outcomes, or success;
+    Gym exposes only 430 task/environment rows.
+  - Dockerfiles are recipes with mutable base-image tags; built images, digests, package locks, SBOMs, and a cross-task image
+    manifest are absent.
+  - Blanket MIT dataset labels do not establish rights to redistribute or relicense upstream GitHub issue text, repository
+    code, patches, tests, logs, and derived trajectories.
+  - Exact training repository membership and overlap audits are missing, and generator/base-model pretraining contamination
+    is unmeasured.
+  - The five released checkpoints have no model cards or license declarations.
+  citation_status: verified
+  confidence: high
+  notes: Official FSE acceptance, all 21 paper pages, arXiv, the pinned repository tree, code, data and license, the primary
+    and adjacent Hugging Face datasets, viewers and APIs, and all five model repositories were checked on 2026-07-24. Artifact
+    existence is verified; exact reproduction, complete release, rights, contamination safety, and per-row correctness remain
+    partial.
+inclusion_reason: SWE-Factory is a central open construction recipe for turning real GitHub issue and pull-request pairs into
+  executable Docker-based tasks, verifying them with a gold-patch fail-to-pass contract, collecting coding-agent trajectories,
+  and using those trajectories for full-parameter SFT. It also exposes audit boundaries around exit-code semantics, gold-label
+  dependence, container immutability, record-set reconciliation, version drift, contamination, and upstream rights.
+related: []
+tags:
+- swe-factory
+- github-issues
+- issue-resolution
+- coding-agents
+- software-engineering
+- docker-environments
+- multi-agent-construction
+- fail-to-pass
+- exit-code-verifier
+- gold-patch
+- agent-trajectories
+- full-parameter-sft
+- swe-bench
+- binary-test-resources
+- contamination-audit
+- container-reproducibility
+- license-risk
+- release-completeness
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: SWE-Factory converts issue and pull-request pairs into runnable coding-agent tasks through binary-test recovery,
+  four-agent Docker and test-script generation, execution feedback, and gold-patch fail-to-pass validation, then samples Kimi-K2
+  trajectories for supervised fine-tuning.
+why_it_matters: It demonstrates a bridge from real software changes to executable agent supervision while showing why verifier
+  semantics, immutable containers, source rights, contamination checks, and row-level release lineage are part of data quality
+  rather than optional documentation.
+card: null
+needs:
+- 'needs_metadata: publish final camera-ready DOI/BibTeX metadata and reconcile the accepted FSE title and author list with
+  older arXiv/repository citation metadata.'
+- 'needs_supplement: restore and pin the linked Appendix.pdf or publish its promised repository lists, prompts, detailed settings,
+  and additional analyses in another immutable official artifact.'
+- 'needs_lineage: publish stable IDs and mappings across 2,441 raw issues, 671 SweSetupBench rows, 2,877 and 2,809 training
+  environments, 2,809 trajectories, 430 Gym rows, training subsets, checkpoints, and evaluations.'
+- 'needs_release: expose the 2,809 task/environment records or bind each messages-only trajectory to its task, repository
+  and base commit, Dockerfile, evaluation script, verifier outcome, and success status.'
+- 'needs_verifier_audit: release the 1,217 and 1,201 human-validation records, annotations, agreement and adjudication, false-negative
+  IDs and corrections, and explicit error-to-pass analyses by failure type and language.'
+- 'needs_container_manifest: publish digest-pinned base and built images, package locks, SBOMs, resource hashes, build logs,
+  and a mapping from every task, trajectory, and evaluation to its exact environment.'
+- 'needs_reproduction: tag the paper-run code and provide one config that reconciles the accepted paper with current README
+  and run-script defaults.'
+- 'needs_license: reconcile repository dual licensing, dataset MIT labels, upstream project licenses, issue and pull-request
+  text and patch rights, and checkpoint licenses with per-record attribution.'
+- 'needs_contamination_audit: publish the ten training repositories and test repository-, issue-, commit-, patch-, semantic-,
+  solution-, generator-, and base-model-pretraining overlap with SWE-bench and other evaluations.'
+- 'needs_model_cards: add license, base-model terms, exact training-data and code revision bindings, intended use, limitations,
+  and checkpoint-specific evaluation to all five model repositories.'
+- 'needs_security_privacy: document untrusted-code sandboxing, network and secret controls, malware and PII scanning, retention,
+  takedown, and deletion handling for GitHub-derived content and execution traces.'
+- 'needs_manifest: provide a signed immutable release manifest binding source hashes and rights, construction prompts and
+  models, environments, verifier logs, trajectories, training configs and subsets, checkpoints, and predictions.'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: FSE acceptance and the existence of the paper, code, 671-record repository data, three Hugging Face datasets, and
+    five Hugging Face model repositories are verified. Verification does not certify complete object release, final proceedings
+    metadata, exact reproducibility, checkpoint or data licensing, contamination safety, or row-level provenance.

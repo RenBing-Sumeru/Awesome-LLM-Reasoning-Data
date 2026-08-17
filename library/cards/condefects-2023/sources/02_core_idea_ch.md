@@ -1,0 +1,1 @@
+ConDefects 的贡献是面向缺陷定位和程序修复的低泄漏 AtCoder 数据集。arXiv 摘要报告原始版本含 2021-10 到 2023-09 产生的 1,254 个 Java faulty programs 和 1,625 个 Python faulty programs；官方仓库 2024/6 更新又报告 810 个 Java task、985 个 Python task、2,045 个 Java files、2,864 个 Python files。反馈契约是程序式的：运行测试、记录 pass/fail 与 coverage，并把修复/定位结果同发布记录比较。最近对比对象是 Defects4J 类和 LLM 前的修复数据集；方向标签是 leakage-aware executable code benchmark。

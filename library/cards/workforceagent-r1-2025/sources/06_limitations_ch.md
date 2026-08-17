@@ -1,0 +1,11 @@
+- **Proxy false negative。** 精确 oracle-action matching 可能把另一种同样有效的导航动作判错；由于候选并未实际执行，verifier 无法识别等价路径或恢复策略。这是根据论文 surrogate contract 得出的 curator inference。
+- **Reasoning 未验证。** 系统检查标签与动作，但不把 `&lt;think&gt;` 内容同状态转移或因果证据对照；因此更高的动作奖励不能证明 reasoning 忠实。
+- **失败被丢弃。** 构造过程在训练前删除无效动作和失败轨迹，且未公开拒绝数量、ID、原始失败记录或各任务接收率，因此无法衡量 selection bias 与 failure coverage。
+- **发布缺口。** 仓库代码中的外部数据路径与模型路径仍未解析；仓库没有提供 330 个配置、已接收轨迹、派生记录、teacher 标注、GRPO 样本、评测 episode 或训练后 checkpoint。完整成功轨迹与失败轨迹都不可获得。
+- **论文/代码漂移。** 在提交 `1ee2619b…` 中，`webagent.py` 放宽了多项标签检查，评分尺度与 `Rf+Rs+Rp` 不同，且 postfix-length 分支与标签/注释相冲突；预处理器还分别调用 `train_test_split` 生成 train 与 test。没有 run manifest 将论文实验绑定到修正后的代码。
+- **Reward hacking。** 论文直接观察到 dense-reward 变体退化为频繁 click，或在结束标签后持续生成动作。Sparse 设计更稳定，但作者仍把表面化 reward hacking 列为限制。
+- **Benchmark overlap。** 论文称训练/测试配置分离，但两者都使用相同的 33 类 WorkArena 任务和 ServiceNow substrate；没有报告更广网页领域评测或模型训练污染审计。
+- **隐藏 teacher 特征。** o3-mini 扰动配置并标注 SFT reasoning，`DeepSeek-R1-Distill-Llama-70B` 提供 SFT-L reasoning；精确版本、prompt、输出、采样控制、成本和过滤规则均未知。
+- **Replay 与版本。** WorkArena 为远程托管；ServiceNow 状态、BrowserGym/Playwright 版本、容器/数据库 snapshot、配置 ID、split seed 和 checkpoint hash 均未固定。仓库没有 tag 或 GitHub Release。
+- **权利边界。** ACL 论文采用 CC BY 4.0，但代码仓库没有根级 LICENSE，未公开训练数据/checkpoint 的条款也未知；不能把继承文件中的 Apache header 推广到整个 release。
+- **作者明确的范围。** 论文承认与更强 commercial model 仍有差距、企业网页以外的泛化有限，并存在残余 reward-hacking 风险。Benchmark 分数不能被当作 data quality 或安全部署的证明。

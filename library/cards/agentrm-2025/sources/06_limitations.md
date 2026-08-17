@@ -1,0 +1,1 @@
+The authors train on only three held-in interactive environments because adding environments requires manual implementation, so broader coverage is untested. They do not combine the policy with agent prompt engineering or policy RL. Reuse should measure reward calibration and search gains in the target environment rather than treat the reported average as a general guarantee.

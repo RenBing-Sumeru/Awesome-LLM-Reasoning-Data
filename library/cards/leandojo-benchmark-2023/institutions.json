@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "Caltech",
+    "NVIDIA",
+    "MIT",
+    "UC Santa Barbara",
+    "UT Austin"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:20:16Z",
+  "source_urls": [
+    "https://leandojo.org/",
+    "https://arxiv.org/abs/2306.15626",
+    "https://arxiv.org/pdf/2306.15626",
+    "https://github.com/lean-dojo/LeanDojo"
+  ],
+  "verification_note": "Official paper/project verify NeurIPS 2023 and the listed institutions; Saad Godil's work was conducted while at NVIDIA."
+}

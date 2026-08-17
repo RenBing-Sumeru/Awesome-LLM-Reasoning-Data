@@ -1,0 +1,117 @@
+id: star-2022
+title: 'STaR: Bootstrapping Reasoning With Reasoning'
+year: 2022
+venue: NeurIPS 2022
+authors:
+- Eric Zelikman
+- Yuhuai Wu
+- Jesse Mu
+- Noah D. Goodman
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- large-language-models
+- self-training-demonstrations
+training_use:
+- sft
+- distillation
+construction_layer:
+- self_play_anchor
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2203.14465
+  arxiv: https://arxiv.org/abs/2203.14465
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Task questions with gold answers and a small set of few-shot rationale demonstrations.
+  trace_author: The current STaR model; failed questions may be retried while conditioning on the gold answer.
+  answer_format: A generated free-form rationale followed by a parsed task answer.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Static answer-keyed reasoning datasets, including synthetic arithmetic, CommonsenseQA, and GSM8K.
+  verifier_or_reward: Exact or task-specific answer correctness filters traces; intermediate reasoning steps receive no direct
+    labels.
+  terminal_predicate: The parsed final answer matches the dataset's gold answer under the task-specific checker.
+recipe_metadata:
+  base_model: GPT-J 6B for the reported CommonsenseQA experiment; other experiments use paper-specified models.
+  teacher: The same current model supplies ordinary and answer-conditioned rationales.
+  generator: Generates rationales, keeps those yielding correct answers, rationalizes failed questions while conditioning
+    on the gold answer, fine-tunes, and repeats.
+  filtering_rule: Exact or task-specific answer correctness filters traces; intermediate reasoning steps receive no direct
+    labels.
+  sampling_protocol: Sample a rationale and answer for each training question, retain correct traces, and rationalize failures
+    with the gold answer.
+  rollout_count: null
+  temperature: null
+  inference_budget: One ordinary rationale sample per question plus one answer-conditioned retry for failures in each training
+    round.
+  optimizer_or_scaffold: Iterative SFT on accepted ordinary and answer-conditioned rationale traces.
+audit:
+  source_mixture: Answer-keyed reasoning questions, few-shot rationale prompts, accepted ordinary traces, and accepted rationalized
+    traces.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'self-training demonstrations lineage; closest comparisons: rest-em-2024, v-star-2024.'
+  known_failure_modes:
+  - Answer-conditioned rationalization can teach post-hoc explanations, early errors can reinforce themselves, and only successful
+    traces are preserved.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper and NeurIPS 2022 proceedings metadata checked; affiliations are Stanford University and Google
+    Research.
+inclusion_reason: STaR bootstraps rationale data by repeatedly training on self-generated chains that lead to correct answers.
+related:
+- rest-em-2024
+- v-star-2024
+tags:
+- self-training-demonstrations
+- arxiv-2203.14465
+- primary-link-checked
+status: verified
+one_line_summary: STaR repeatedly turns answer-correct model rationales into new SFT data, bootstrapping reasoning from few
+  demonstrations.
+why_it_matters: It shows how answer keys can replace large-scale rationale annotation when terminal correctness is reliable.
+reading_priority: must read
+paper_type: Iterative rationale self-training
+best_for: Researchers building answer-verifiable reasoning SFT data from questions that lack written rationales.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv primary source and locally captured metadata were checked; linked artifacts are included only when
+    present in the verified source packet.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: self-training demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    recency: 1
+    impact: 5
+    venue: 3
+    institution: 2

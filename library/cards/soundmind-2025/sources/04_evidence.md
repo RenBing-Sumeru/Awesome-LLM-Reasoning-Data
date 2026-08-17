@@ -1,0 +1,3 @@
+Experiment 1: In audio-to-text evaluation, Qwen2.5-Omni-7B rises from 77.59% accuracy to 81.40% after SoundMind-RL, an absolute gain of 3.81 points; the tuned model also exceeds Gemini-Pro-V1.5 at 74.54% and MiniCPM-o at 73.17% under the paper's harness.
+
+Experiment 2: In text-to-audio, accuracy increases from 80.79% to 83.84% while word error rate worsens from 2.18% to 6.99%; in audio-to-audio, accuracy rises from 77.59% to 81.40% while word error rate worsens from 2.23% to 8.95%. The paired gain and degradation expose a reasoning-versus-speech-fidelity trade-off rather than an unqualified improvement.

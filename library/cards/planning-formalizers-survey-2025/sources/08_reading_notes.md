@@ -1,0 +1,3 @@
+Read the motivation on long-horizon planning first, then focus on the formalizer role and the challenges of deployment frameworks. For every primary system you inspect, record the input specification, the target formal language, the planner used, and the criterion for a successful plan. That record reveals whether the claimed capability is planning, formalization, or both.
+
+Add a note on where each evaluation checks correctness: before formalization, after formalization, or after planner execution. This makes comparison more precise because failures at those points have different causes. Finish with the future-directions discussion only after the pipeline is clear, treating it as a guide to unresolved design questions rather than a catalogue of solved problems.

@@ -1,0 +1,1 @@
+Practical use: Use it for controlled studies of scalar ratings versus pairwise preference training. Teams should preserve raw records alongside derived labels and compare the proposed recipe to a raw-data baseline under fixed training hyperparameters. Use a held-out human or independently verified set for threshold selection whenever possible.

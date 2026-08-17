@@ -1,0 +1,3 @@
+The arXiv abstract reports 1,000 problems over seven Python libraries, 1.8% incorrectness among Codex-002 solutions accepted by the evaluation, and 43.3% accuracy for the best public system at the time. The GitHub simplified-format README gives an executable sanity result for provided Codex002 answers: overall mean 0.388, with library counts summing to 1,000.
+
+The row-level evidence is an execution verdict from the problem's own test functions, plus string/API checks when present. This is reliable only relative to generated test cases, reference implementation, package versions, and sandbox behavior. The benchmark evidence does not certify all semantically valid solutions, especially where prompts are ambiguous or tests under-cover edge cases.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AdaptiveStep 用模型置信度确定推理步骤边界，替代人工规则切分，使数学和代码轨迹的过程奖励对准实际决策点。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要自动分割长推理轨迹、避免固定长度或换行规则，并训练过程奖励模型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuliang Liu、Junjie Lu、Zhaoling Chen、Chaofeng Qu、Jason Klein Liu、Chonghan Liu、Zefan Cai、Yunhui Xia、Li Zhao、Jiang Bian、Chuheng Zhang、Wei Shen、Zhouhan Lin",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

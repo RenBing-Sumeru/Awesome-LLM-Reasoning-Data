@@ -1,0 +1,3 @@
+Existing tool-use evaluations often generate questions from a small set of fixed APIs, producing weak inter-tool dependencies, unverifiable answers, or remote services that cannot be reproduced. Correctly invoking one function does not establish that a model can identify multi-hop information needs, select a sequence of tools, and integrate intermediate results.
+
+ToolHop constructs the required tool chain backward from user queries and jointly creates tools, documentation, code, and answers for local execution. It turns multi-hop tool use into a reproducible, automatically scored benchmark that also supports analysis of calling strategies.

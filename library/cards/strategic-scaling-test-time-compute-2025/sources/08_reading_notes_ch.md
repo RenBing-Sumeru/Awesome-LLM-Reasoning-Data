@@ -1,0 +1,5 @@
+- 每个问题是一只 bandit arm；默认的一单位算力是一条生成回答。
+- 当 oracle 分数或 self-consistency 信号越过阈值后，Elimination 会把预算重新分配。
+- 反馈随任务而变：PRM、LLM judge、self-consistency 和可执行 ground truth 不可互换。
+- 报告增益是在指定预算下对分配策略的评估，不能验证未发布轨迹的质量。
+- 复用需要逐题分配、oracle、提示、seed 和 token 成本日志，目前未确认这些记录已发布。

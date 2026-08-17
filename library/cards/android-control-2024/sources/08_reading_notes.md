@@ -1,0 +1,6 @@
+- Start with Paper Table 1 and Appendix B.2: the reusable object is 15,283 full episodes with paired instruction granularities, not an online Android environment.
+- Read Appendix D.3 before interpreting scores: step accuracy is relaxed matching to one demonstrated next action, not live task completion.
+- Keep the split discrepancy visible: Table 3 says 13,604 training episodes, while official `splits.json` contains 13,603 train IDs.
+- Treat the million-episode targets in §§4.4–4.5 as log-linear extrapolations; no dataset or training run at those scales is reported.
+- Read this with Android in the Wild for the closest transfer baseline, and with replayable mobile-agent environments to see what AndroidControl does not release.
+- Resolve the Apache-2.0 versus non-commercial-only conflict, pin shard/split hashes, and inspect TFRecord status fields before training or redistribution.

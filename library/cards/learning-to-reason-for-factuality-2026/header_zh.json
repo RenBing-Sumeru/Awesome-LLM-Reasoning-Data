@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作发布经筛选的事实推理 SFT 轨迹与偏好对，而 GRPO 阶段采用检索支撑的 claim 核验和 LLM 相关性判断，反馈并非纯程序化。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "事实推理数据发布与多阶段后训练配方",
+  "best_for_ch": "训练或审计长文本事实推理的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Xilun Chen, Ilia Kulikov, Vincent-Pierre Berges, Barlas Oğuz, Rulin Shao, Gargi Ghosh, Jason Weston, Wen-tau Yih",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-12T14:16:54Z"
+}

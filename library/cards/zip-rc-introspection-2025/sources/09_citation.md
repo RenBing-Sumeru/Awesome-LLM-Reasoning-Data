@@ -1,0 +1,1 @@
+Manvi, Rohin, Joey Hong, Tim Seyde, Maxime Labonne, Mathias Lechner, and Sergey Levine. “Zero-Overhead Introspection for Adaptive Test-Time Compute.” ICLR 2026. https://arxiv.org/abs/2512.01457. Official code: https://github.com/rohinmanvi/ZIP-RC.

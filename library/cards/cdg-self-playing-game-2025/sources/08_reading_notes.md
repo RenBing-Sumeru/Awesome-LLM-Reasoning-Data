@@ -1,0 +1,6 @@
+- Treat `(question, initial solution, critique, revised solution)` as the semantic episode; retain role, correctness, loop, selection, and checkpoint fields around it.
+- Helpful feedback is tested on initially wrong answers; misleading feedback is tested on initially correct answers. The Prover is not told which role produced the critique.
+- Main selection uses four revisions per critique, with thresholds of at least two corrected revisions for Helpful Critic and at least three successful attacks for Misleading Critic.
+- The exact rejection string is part of the verifier contract, not a cosmetic prompt detail; audit surface-form gaming and false negatives.
+- The repository's 19,473-row `data/train.jsonl` is the raw question pool, not proof that the linked rollout corpus has the same schema or count.
+- Read the non-monotonic CDG-1/CDG-2 results, script–paper mismatches, separate downstream data pipelines, unknown licenses, and missing immutable rollout manifest before reuse.

@@ -1,0 +1,3 @@
+Claim: adding the released pairs after OmniAlign-V SFT improves judged multimodal alignment. Setup: the same OmniAlign-V SFT model is compared before and after DPO. Result: MM-AlignBench rises from 57.1 / +11.1 to 64.3 / +22.4, and WildVision from 29.6 / -31.3 to 41.8 / -10.1; values are winning rate / reward. Boundary: this supports the reported DPO stage in this configuration, not a direct guarantee of human satisfaction.
+
+Mechanism check: InternVL2-8B also rises from 31.4 / -21.8 to 64.7 / +19.4 on MM-AlignBench after DPO. That comparison supports portability beyond one base model, but MM-AlignBench uses GPT-4o judging against Claude3V-Sonnet references, so judge behavior remains part of the result.

@@ -1,0 +1,2 @@
+This Card records the disclosure boundary of the official OpenAI o3-mini System Card. The report identifies broad pretraining-source categories, high-level filtering, large-scale reinforcement learning on reasoning models, deliberative alignment, generated safety data, and multiple safety-evaluation procedures. It does not release a training corpus, record schema, reward/verifier contract, or post-training recipe.
+

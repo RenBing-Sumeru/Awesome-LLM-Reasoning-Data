@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "通过受控 SFT、22 个以上下游基准、多轴评分与谱系分析比较 120 个以上后训练数据集；论文同时报告 600 次以上训练、10000 次以上评测和 4000 万条已处理数据点。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "后训练数据价值评测基础设施与构造配方",
+  "best_for_ch": "关注数据集选择、受控 SFT、混合验证器、数据谱系和开放发布审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Mengzhang Cai、Xin Gao、Yu Li、Honglin Lin、Zheng Liu、Zhuoshi Pan、Qizhi Pei、Xiaoran Shang、Mengyuan Sun、Zinan Tang、Xiaoyang Wang、Zhanping Zhong、Yun Zhu、Dahua Lin、Conghui He、Lijun Wu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T08:06:49Z"
+}

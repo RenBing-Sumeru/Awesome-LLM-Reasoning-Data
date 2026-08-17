@@ -1,0 +1,5 @@
+- 优先阅读 Section 4.2.2：这是唯一把冲突用户编辑、RL rollout 和“保留修改获得正向强化”直接连接起来的部分。
+- 把 Section 5.1.3.1 与训练严格分开：内部 PR prompts、tests、hints、PR 前分支、命令行与 Python 动作以及 hidden unit tests 都是评测对象。
+- 除非报告明确把数字分配给训练，否则所有 rollout 数都按 evaluation-only 处理；destructive-action 训练的 rollout 数和长度仍为 unknown。
+- 将本 Card 与 2025 年 5 月 Codex addendum、GPT-5.3-Codex 系统卡对照阅读，追踪各版本中安全数据和 reward 字段披露的增减。
+- 复用前应索取 user-model policy、冲突 taxonomy、保留检测器、成功与失败轨迹、仓库权利、全局 split、decontamination ledger 和 reward-hacking audit。

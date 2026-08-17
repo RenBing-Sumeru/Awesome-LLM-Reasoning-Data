@@ -1,0 +1,4 @@
+The official [Qwen release post](https://qwenlm.github.io/blog/qwen2.5-math-prm/) establishes the 2025 release, the 7B and 72B artifacts, their Qwen2.5-Math-Instruct bases, the Best-of-N context, and the ProcessBench description. The official [7B model card](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B) and [72B model card](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B) establish the release artifacts, model-page license label, and the step-separator probability interface.
+
+The official release pages cite [The Lessons of Developing Process Reward Models in Mathematical Reasoning](https://arxiv.org/abs/2501.07301) as a supporting technical report. In this migration Card, that report corroborates the release context; it does not replace the Qwen release title or supply unspecified training artifacts. No official training data, label set, standalone construction code, calibration package, or replay environment was verified in the checked sources.
+

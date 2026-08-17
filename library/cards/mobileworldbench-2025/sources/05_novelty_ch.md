@@ -1,0 +1,7 @@
+最接近的baseline对象是完整mobile demonstration trajectory：screenshot与人类action沿episode展开，最终指向任务完成。MobileWorldBench有意把对象改成彼此独立的单步transition，并要求预测semantic future state。这使state/action监督更易序列化和离线评测，同时移除了完整agent trajectory所包含的environment、history、recovery behavior与terminal success。
+
+第二项变化是成对的evaluation接口。自由形式Next-State-Generation使用三维GPT-4o rubric反馈，Next-State-QA使用精确Yes/No accuracy。因此benchmark在同一transition-prediction问题的两种视图上展示learned semantic judge与programmatic binary check。两种反馈都不是environmental verifier，而learned一侧还依赖model/prompt/version。
+
+MobileWorld把同一单步对象扩展为大型SFT构造recipe：Qwen3-VL annotator访问before/action/after证据，生成多个candidate description与QA pair，再由VLM filter选择输出；benchmark QA另加Mechanical Turk过滤。其方向价值是明确分开human source demonstration、synthetic semantic annotation、offline benchmark target与downstream AndroidWorld planning。
+
+本文并未新提出screenshot、action description、VLM annotation、SFT、Yes/No QA或LLM-as-judge evaluation。1.4M headline与benchmark提升属于规模/结果声称，不是逐记录质量认证。复用前必须审计缺失generation image、精确Parquet count/schema、source/split ID、decontamination hash、failed/no-change保留、judge配置、artifact许可、privacy/consent与第三方screenshot权利。

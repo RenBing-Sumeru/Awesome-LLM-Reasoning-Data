@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T14:10:12Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将各个部件分开，把提升推理性能变成具体结构选择",
+    "updated_at": "2026-07-28T14:10:12Z"
+  }
+}

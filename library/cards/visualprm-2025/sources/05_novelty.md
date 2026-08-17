@@ -1,0 +1,7 @@
+The data contribution extends Monte Carlo process supervision from text-only mathematics to image-conditioned reasoning. A label is attached to a visual solution prefix, not just a textual step in isolation. The construction therefore couples visual input, question semantics, step segmentation, continuation sampling, terminal answer checking, and process-value estimation.
+
+The model contribution reformulates step scoring as a multi-turn multimodal conversation so an existing generative MLLM can emit discrete quality tokens. It supervises all stored steps, including those after an earlier negative label, which preserves examples where a later step may correct the trajectory. Mean aggregation then turns step probabilities into a response score for Best-of-N.
+
+VisualProcessBench provides a separate human-labeled measurement object. Instead of asking only for the first error, it labels every step positive, negative, or neutral and evaluates error detection across five visual-reasoning sources. This separation is useful because an automatically generated training target and a human evaluation label have different evidence status.
+
+None of the individual ingredients is wholly new: Monte Carlo rollouts, process reward modeling, discrete labels, step aggregation, and Best-of-N predate the paper. The novelty is their multimodal integration plus an open dataset/model/benchmark package. The original continuation and selection traces remain absent, so the release advances reuse more than complete construction auditability.

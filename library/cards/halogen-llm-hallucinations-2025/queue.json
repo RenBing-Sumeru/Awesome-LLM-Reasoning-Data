@@ -1,0 +1,16 @@
+{
+  "title": "HALoGEN: Fantastic LLM Hallucinations and Where to Find Them",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.71/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-22T13:35:44Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "HALoGEN 覆盖多任务幻觉样本及成因标签，包含 10,923 个生成提示",
+    "updated_at": "2026-07-22T13:35:44Z"
+  }
+}

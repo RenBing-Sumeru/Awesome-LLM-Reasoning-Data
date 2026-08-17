@@ -1,0 +1,1 @@
+The most important distinction is final-answer SR versus process-level PS. A model can collect some evidence and still fail the task. The Hugging Face dataset link should be treated as a starting artifact record; pin dataset revision, license, split, evaluator code, and URL snapshot policy before using it as reusable benchmark data.

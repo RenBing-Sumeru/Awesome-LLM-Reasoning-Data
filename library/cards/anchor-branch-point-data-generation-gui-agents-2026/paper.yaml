@@ -1,0 +1,104 @@
+id: anchor-branch-point-data-generation-gui-agents-2026
+title: 'ANCHOR: Branch-Point Data Generation for GUI Agents'
+year: 2026
+venue: ACL 2026
+authors:
+- Jinbiao Wei
+- Yilun Zhao
+- Kangqi Ni
+- Arman Cohan
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- gui-agents
+- computer-use
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2602.07153
+  arxiv: https://arxiv.org/abs/2602.07153
+  code: https://github.com/yale-nlp/Anchor
+  data: https://huggingface.co/datasets/yale-nlp/Anchor
+  project: null
+  huggingface: https://huggingface.co/datasets/yale-nlp/Anchor
+  doi: https://doi.org/10.48550/arXiv.2602.07153
+  venue: https://aclanthology.org/2026.acl-long.774/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.774/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Verified desktop GUI seed demonstrations.
+  trace_author: ANCHOR's task-variant proposer and executing agent.
+  answer_format: State-grounded task variants and GUI trajectories with branch-point and step-level quality signals.
+  process_fields:
+  - trajectory_id
+  - branch_point
+  - state
+  - task_variant
+  - action
+  - observation
+  - verification
+  environment_or_substrate: OSWorld and WindowsAgentArena desktop environments.
+  verifier_or_reward: State-aware task-completion checks, trajectory-consistency checks, and task-conditioned step filtering.
+  terminal_predicate: Verified completion of the state-grounded desktop task.
+recipe_metadata:
+  base_model: The executing-agent configurations described in the ANCHOR paper and official repository.
+  teacher: Verified seed demonstrations and state-aware verifier.
+  generator: Branch-point task-variant proposal followed by GUI-agent rollout.
+  filtering_rule: Remove ungrounded actions and denoise post-branch segments using task-conditioned step filtering.
+  sampling_protocol: Expand meaningful state-change points from verified seed demonstrations.
+  inference_budget: Pin the official dataset revision and repository configuration for reproduction.
+  optimizer_or_scaffold: Supervised fine-tuning on expanded GUI trajectories.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Verified seed demonstrations and state-grounded synthetic GUI trajectory expansions.
+  split: The official Yale NLP release is a parquet dataset; pin its revision for reuse.
+  decontamination: Not fully documented on the public dataset page.
+  license: Refer to the official dataset and repository terms.
+  lineage: arXiv paper, Yale NLP repository, and Yale NLP dataset release.
+  known_failure_modes:
+  - Branch expansions remain limited by seed-demonstration coverage.
+  - State-aware checks may miss semantically incorrect yet state-consistent actions.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the arXiv record, official Yale NLP repository, and official Anchor dataset page, which exposes
+    a 10K–100K-scale parquet release.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: ANCHOR releases branch-point-expanded GUI trajectories with state-aware verification and step-level denoising.
+why_it_matters: It targets the local decision point at which GUI trajectories diverge, rather than labeling only completed
+  episodes.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the arXiv record, official Yale NLP repository, and official Anchor dataset page, which exposes
+    a 10K–100K-scale parquet release.
+category_ids:
+- process_trace_supervision_data

@@ -1,0 +1,1 @@
+Tokens, time, energy, and accuracy are different quantities. A hidden or compressed process may lower visible cost while reducing inspectability, and a fixed small budget can fail precisely on the rare problems that need exploration. Check difficulty-stratified results before reusing an efficiency claim.

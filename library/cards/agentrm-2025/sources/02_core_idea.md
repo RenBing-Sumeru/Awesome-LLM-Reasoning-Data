@@ -1,0 +1,6 @@
+- One-sentence contribution:
+- Core mechanism:
+- Data object / evaluation surface:
+- Feedback contract: what judges, verifies, scores, or terminates the behavior.
+- Direction label: the short research direction this paper represents.
+- What to compare against: closest datasets, benchmarks, methods, or failure papers already in the atlas.

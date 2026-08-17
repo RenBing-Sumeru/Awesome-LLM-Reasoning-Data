@@ -1,0 +1,5 @@
+- 先看 object，不要先看 score：315 个 declarative task 生成带 API observation、shift timestamp、TSR/TUE/TCRR/GSRT component 与 transfer event 的 user-agent-tool episode；准确 release serialization 仍未核验。
+- feedback 必须视为 mixed：environment/API check 与 transcript-derived redundancy 同时存在，另有 `gpt-4o-mini` communication judge 和未披露的 goal-shift detector。recovery 表示 acknowledgment 加上没有 human transfer，不等于已经验证 changed goal 完成。
+- 不要把 315 个 task 悄悄改写成 2,835 条 released record。乘以 3 个 model 与 3 次 run 只是合理的 curator arithmetic；source count 本身相加为 314，也需要 artifact-level reconciliation。
+- 模型比较应读 Table 5；引用 persona result 前必须对照 Table 7 与其后段落，因为两处互相冲突。任何 benchmark score 都不能证明 data quality 或 training utility。
+- supplement 只能标记为“官方列出但未检查”。复用前要固定 MTI OpenReview note、arXiv version、author list、environment/judge version、license、split、checksum、failure retention 与 replay manifest；parallel LAW record 属于 version drift。

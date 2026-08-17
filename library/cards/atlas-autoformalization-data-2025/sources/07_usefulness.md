@@ -1,0 +1,3 @@
+1. **Autoformalization training:** Fine-tune a Lean translator on the 117K parallel statements and evaluate with compilation success and pass@k under a fixed Mathlib version.  
+2. **Formal-data expansion:** Given an existing formal library, reuse concept lifting, natural-language synthesis, formal back-translation, and compilation/NLI filtering to produce new parallel pairs.  
+3. **Difficulty evaluation:** Use MathQual to test extrapolation from undergraduate problems to graduate-level statements. When the goal is full proof generation rather than theorem-statement translation, ATLAS provides formalized inputs but does not replace proof-search trajectories.

@@ -1,0 +1,1 @@
+ACL Anthology 页面和论文报告：API-Bank 有 73 个可运行 API tools、314 段人工标注评测对话和 753 次 API call；训练集包含来自 2,138 个 API、覆盖 1,000 个领域的 1,888 段 tool-use 对话。主要实验证据是 GPT-3.5 比 GPT-3 更会用工具，GPT-4 在 planning 上更强，Lynx 相比 Alpaca 提升超过 26 分并接近 GPT-3.5。逐样本证据是工具选择、参数、API 返回处理和最终回答是否满足标注或可执行目标；总分会掩盖具体失败环节。

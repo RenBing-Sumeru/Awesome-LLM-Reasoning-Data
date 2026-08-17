@@ -1,0 +1,115 @@
+id: reasoning-in-llms-survey-2023
+title: 'Towards Reasoning in Large Language Models: A Survey'
+year: 2023
+venue: Findings of ACL 2023
+authors:
+- Jie Huang
+- Kevin Chen-Chuan Chang
+source_role:
+- survey_background
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- large-language-models
+- field-surveys
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2212.10403
+  arxiv: https://arxiv.org/abs/2212.10403
+  code: null
+  data: null
+  project: https://github.com/jeffhj/LM-reasoning
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2023.findings-acl.67/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A literature taxonomy connecting supervised reasoning data, prompting, bootstrapping methods, reasoning benchmarks,
+    and analysis claims.
+  trace_author: Humans or models author rationales and answers in the surveyed primary work; the survey authors organize the
+    literature claims.
+  answer_format: Method-specific answers, rationales, derivations, programs, prompts, and evaluation records.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Literature on supervised reasoning training, inference-time prompting, self-improvement, benchmarks,
+    and model analysis.
+  verifier_or_reward: Task accuracy, benchmark protocols, and qualitative analysis provide evidence; the survey itself does
+    not create a new verifier.
+  terminal_predicate: Primary papers use task-specific accuracy, exact match, execution, or qualitative analysis; the survey
+    defines no universal verifier.
+recipe_metadata:
+  base_model: Not applicable; this is a survey of many language-model families.
+  teacher: Method-specific human or model trace authors in the surveyed literature.
+  generator: Organizes the field into fully supervised tuning, prompting and in-context learning, hybrid self-improvement,
+    evaluation, and findings about what model behavior does or does not demonstrate.
+  filtering_rule: Task accuracy, benchmark protocols, and qualitative analysis provide evidence; the survey itself does not
+    create a new verifier.
+  sampling_protocol: Literature synthesis rather than a single generation protocol; reproduce sampling from each cited primary
+    paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not applicable to a survey; inference budgets belong to each cited prompting or generation method.
+  optimizer_or_scaffold: Organizes the field into fully supervised tuning, prompting and in-context learning, hybrid self-improvement,
+    evaluation, and findings about what model behavior does or does not demonstrate.
+audit:
+  source_mixture: A literature taxonomy connecting supervised reasoning data, prompting, bootstrapping methods, reasoning
+    benchmarks, and analysis claims.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'field surveys lineage; closest comparisons: chain-of-thought-prompting-2022, star-2022.'
+  known_failure_modes:
+  - Coverage reflects literature available around 2022-2023, and survey categories can blur prompting improvements with genuine
+    reasoning gains.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL Anthology paper, arXiv version, and companion literature repository checked; official affiliation is
+    University of Illinois at Urbana-Champaign.
+inclusion_reason: A structured map of how LLM reasoning is elicited, trained, evaluated, and interpreted.
+related:
+- chain-of-thought-prompting-2022
+- star-2022
+tags:
+- field-surveys
+- arxiv-2212.10403
+- primary-link-checked
+status: verified
+one_line_summary: This survey separates supervised reasoning, inference-time elicitation, self-improvement, evaluation, and
+  interpretation into distinct claim types.
+why_it_matters: It prevents prompt gains, training effects, benchmark scores, and faithful-reasoning claims from being conflated.
+reading_priority: recommended
+paper_type: LLM reasoning field survey and decision map
+best_for: Researchers screening reasoning papers or separating data, prompting, training, evaluation, and interpretation claims.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology paper, arXiv version, and companion literature repository were checked.
+category_ids:
+- foundations_and_primers
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: foundations_and_primers
+  direction_label: field surveys
+  selection_priority_score: 9
+  selection_score_breakdown:
+    recency: 2
+    impact: 3
+    venue: 2
+    institution: 2

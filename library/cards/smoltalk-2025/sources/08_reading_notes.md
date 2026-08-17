@@ -1,0 +1,5 @@
+- Positioning: SmolTalk combines inherited and newly generated conversations under one message schema, then tunes source weights through ablations and manual mixture review.
+- Data object: about 1.1 million instruction-response conversations; each record exposes messages with role and content, plus a source label.
+- Author and selector: source annotations and synthetic teachers write assistant turns; retention uses subset-specific filtering, source balancing, benchmark decontamination, and manual mixture refinement.
+- Evidence anchor: The complete SmolLM2 recipe outperforms Qwen2.5-1.5B and Llama-3.2-1B on the paper's aggregate evaluation; the attribution boundary is the full staged data recipe rather than SmolTalk alone.
+- Reuse decision: suitable for SmolLM2 instruction SFT; first audit the end-to-end comparison changes several data stages, so SmolTalk's isolated effect is limited and inherited subsets carry heterogeneous licenses and contamination risks.

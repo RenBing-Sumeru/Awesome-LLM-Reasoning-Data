@@ -1,0 +1,3 @@
+- **Fresh is not unseen:** models may have encountered related sources or generated variants before evaluation. Audit source dates, model-access dates, and semantic overlap rather than claiming zero contamination.
+- **Release drift:** replacing questions changes the measurement target, so scores from different releases are not directly interchangeable. Preserve old task files and report both within-release comparisons and cross-release changes.
+- **Checker scope:** objective scoring improves reproducibility only for properties encoded by the checker; bugs and narrow answer formats can mis-score valid behavior. Version the scorer and manually inspect representative failures.

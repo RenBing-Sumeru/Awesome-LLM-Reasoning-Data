@@ -1,0 +1,3 @@
+Use the release to preference-tune an open MLLM for image-grounded, open-ended answers. Input is an image and prompt; train a DPO-compatible model to prefer `chosen` over `rejected`; output is an aligned visual-response policy. Check success on held-out, image-disjoint prompts and an evaluation not sharing the same judge lineage.
+
+It is most suitable after visual instruction tuning and can also be used to examine model-generated negatives. Do not use it as human-authored ground truth, a general safety dataset, or a factual visual verifier. Download the image archives and check source rights before treating paths as portable.

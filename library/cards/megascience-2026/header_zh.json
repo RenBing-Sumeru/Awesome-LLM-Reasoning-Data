@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MegaScience 用教材参考答案、逐来源筛选和分步解答标注构建 125 万条、覆盖七个学科的科学推理混合。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "科学推理监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Fan, Run-Ze、Wang, Zengzhi、Liu, Pengfei",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

@@ -1,0 +1,2 @@
+Each prompt is decomposed into atomic checklist items. For every response-item pair, the shared verifier samples repeated yes/no judgments; empirical Yes-rates become thresholded item labels and averaged partial credit. Confident positive and negative cases enter replay, fixed gold examples anchor the verifier, and a separate anti-inflation penalty discourages positive votes on incomplete responses.
+

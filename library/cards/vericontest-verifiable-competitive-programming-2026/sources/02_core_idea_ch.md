@@ -1,0 +1,1 @@
+核心贡献是将竞赛编程的功能、效率与形式证明统一到同一 benchmark。数据含 690 道 LeetCode 和 256 道 Codeforces 题；每条记录包含 Rust/Verus 规格、可执行程序、证明、在线判题信息、正测试与由 mutation 产生的负测试。Verus 编译/证明内核判断形式正确性，原平台 judge 检查算法与复杂度，Post2Exe 将后置条件转为可执行检查并寻找不完整规格。最终数据约 50 GB，平均每题数百正例并有约十倍负例，可用于 vericoding 评测、specification generation、proof generation 和 verifier-guided RL。

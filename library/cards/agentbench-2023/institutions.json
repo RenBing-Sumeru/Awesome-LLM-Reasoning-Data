@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Tsinghua University",
+    "The Ohio State University",
+    "UC Berkeley"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2308.03688",
+    "https://github.com/THUDM/AgentBench"
+  ],
+  "verification_note": "Official arXiv/PDF and THUDM repository sources verify authors, Tsinghua/OSU/UC Berkeley affiliations, ICLR 2024 status, and code/data artifacts. Existing card was updated in place."
+}

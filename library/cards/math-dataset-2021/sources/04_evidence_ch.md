@@ -1,0 +1,1 @@
+证据来自公开的 12,500 题数据集、7,500/5,000 train/test 划分，以及论文中显示当时语言模型只能解出少量 test problems 的 baseline 结果。行级决定性证据是一道题、参考最终答案、可选的 worked solution、模型最终答案，以及 grader 或等价性判定。证据边界是：aggregate accuracy 依赖答案抽取和等价处理；最终答案正确也不等于模型推理过程有效。

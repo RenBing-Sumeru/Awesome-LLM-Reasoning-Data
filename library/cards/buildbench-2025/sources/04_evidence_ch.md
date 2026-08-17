@@ -1,0 +1,9 @@
+论文主要结果在 148 个经过人工核验可编译的 test repository 上报告。使用 LLM-assisted retrieval 与 Claude 3.7 Sonnet 的 OSS-Build-Agent 达到 85.2% unvalidated Completion、66.4% Strict Success 与 71.8% Flexible Success（Table 1）。使用相同 Claude 3.7 Sonnet 的 single-turn baseline 为 21.5% strict、22.1% flexible，strict 相差 49.7 个百分点。这支持“在 BuildBench filename metric 下，所评测的 retrieval-plus-iterative-execution scaffold 优于论文 single-turn baseline”，但不能证明公开记录适合作为 training data。
+
+重复 GPT-4o retrieval run 暴露的是不稳定性，而非一个确定性 score。3 次运行的 strict success 为 53.0% ± 6.8，flexible success 为 57.6% ± 6.5；pass@3 则升至 65.5% strict 与 70.3% flexible（Table 2 与 Figure 4）。这些结果说明 multi-turn retrieval 与 execution path 存在实质差异，也意味着 replay 需要 run ID、seed、documentation snapshot、model snapshot、cache state 与完整 trajectory；这些 artifact 均未发布。
+
+在 130 个带 URL-level retrieval label 的 test repository 上，使用 GPT-4o 的 OSS-Build-Agent retriever 有 73.8% 访问到 ground-truth documentation URL，而 CompileAgent 为 46.2%（Section 6.2）。这是针对 labeled URL 的 navigation predicate，不能证明 retrieved content 正确、稳定、充分或 license-compatible。论文报告 OSS-Build-Agent 有 6.6 次 error-resolution attempt、CompileAgent 有 7.5 个 step，但后者一次只执行一条 command，不能把两者当作相同 efficiency unit。
+
+failure analysis 给出一项 negative result：在检查的 o3-mini plus retrieval condition 中，有 69 个 repository 的 error 被 agent 识别，却在终止前始终没有修复（Section 6.3 与 Figure 5）。Appendix 案例包括从错误目录调用 CMake，以及没有先处理 root-cause submodule ownership error 就继续面对 downstream `make install` failure。这些案例支持 diagnosis 与 recovery 具有 brittleness，但完整逐 run log 未发布，无法独立重新编码核验。
+
+当前 official data artifact 提供了超出论文的 release evidence：385 个 candidate label 保留 148 个 positive 与 237 个 negative，test label 现在固定全部 385 个 source commit，validation release 有 70 条记录，retrieval JSON 有 130 条记录。但 237 个 negative test row 中只有 126 个含非空 failure reason，而且这些 repository label 都不是 failed agent rollout。以上 performance value 均为作者报告，本 Card 未独立复现。benchmark performance 只能说明 system 在这套 benchmark contract 下的表现，不能证明 data release 对训练而言完整、无污染、安全或高质量。

@@ -1,0 +1,3 @@
+Common LLM-judge benchmarks provide only a question and candidate responses, omitting source documents that determine correctness in RAG and summarization. Judges may prefer fluent but unfaithful answers and fail when faithfulness, completeness, and contextual relevance must be assessed together.
+
+ContextualJudgeBench constructs about 2,000 difficult context-grounded response pairs across RAG and summarization and eight evaluation slices, using existing human annotations and controlled model perturbations to create verifiable conditional labels for faithfulness, completeness, and related criteria.

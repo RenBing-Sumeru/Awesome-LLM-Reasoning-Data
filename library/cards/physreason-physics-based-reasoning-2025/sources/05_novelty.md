@@ -1,0 +1,1 @@
+Earlier physics benchmarks mainly score final numbers or choices. PhysReason decomposes reference solutions into modeling, formula, and calculation steps and locates the first divergence in a model trajectory. The contribution is the evaluation granularity and physics-specific error taxonomy rather than a new physics solver.

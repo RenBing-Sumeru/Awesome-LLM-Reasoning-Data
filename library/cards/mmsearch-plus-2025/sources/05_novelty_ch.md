@@ -1,0 +1,7 @@
+MMSearch、BrowseComp-VL和MM-BrowseComp等既有多模态浏览benchmark已经组合图像、问题、检索或web-agent evaluation。MMSearch-Plus通过Spatial-Temporal Extrapolation改变task object：图像用于锚定事件或实体，而问题所求答案位于画面之外的空间或时间。标注者保留video或arXiv来源引用，并通过对闭源MLLM的adversarial filtering移除无需检索即可回答的问题。
+
+第二项具体变化是被评测接口。智能体可在text search、image search和基于人工SoM index的crop/search之间切换，同时在SerpAPI result与Gemini summary之上维护threaded hypothesis state。因此，视觉定位、query policy、retrieval、synthesis和stopping的故障可以分别讨论。不过，公开发布只序列化QA/image/source-reference记录；支撑这些分析的动态state与transition并未发布。
+
+反馈设计仍以答案为中心。acceptable variant与GPT-4o语义判断便于开放形式评分，但不会产生citation verification或step-level provenance supervision。论文中的`state_action_level`评测表面来自智能体交互过程，并不代表已发布带标签state-action dataset。SoM收益同样衡量特权人工定位，不能说明具备automatic detection能力。
+
+visual QA、live search、LLM生成summary、LLM-as-a-judge、crop/zoom tool、可逆混淆或Set-of-Mark本身都不是新组件。311项任务规模与模型分数变化体现评测广度，并非逐记录正确性的独立证据。复用前仍需核实source snapshot与权利、annotation/filter lineage、SoM发布、evaluator校准、成败episode保留、search/cache版本、replay lock、split政策和正式contamination control。

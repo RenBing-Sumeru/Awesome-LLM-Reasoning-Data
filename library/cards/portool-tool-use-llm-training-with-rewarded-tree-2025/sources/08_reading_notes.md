@@ -1,0 +1,6 @@
+- Read the arXiv v2 appendix; it materially expands the data, environment, reward, training, and privacy description.
+- Treat a node as a shared-prefix state-action-response object, not merely a text reasoning step.
+- Keep terminal correctness, unable-to-answer, format validity, and execution success as distinct feedback fields.
+- Verify that both successful and failed descendants remain attached to a shared node before computing local advantages.
+- Separate the published algorithm from the unreleased production queries, trees, tool backend, checkpoints, and judge configuration.
+- Audit split leakage, runtime drift, licensing, privacy, and safety before proposing data reuse or replay.

@@ -1,0 +1,5 @@
+- 先读第 3 页 Model Data：这里直接支持多模态 instruction-response pairs、偏好、工具使用、新增推理/定理材料、精选数学解答和过滤，同时也划定了未发布内容的边界。
+- 必须分开两类 reward 主张：Deep Think Card 只提到人类与 critic 反馈；Data Reward Model 加 rubric-prompted Critic 仅在 Gemini 2.5 家族层面被定义。
+- 阅读能力表时，保留 IMO 2025 的 pass@1 与其他 matharena.ai 结果的 best-of-32 区别；两者都不披露训练 rollout 或部署 parallel-thinking budget。
+- FSF 结果必须与第 19 页一起读：评测使用了 thinking prompt 和 serving configuration 不同的 preliminary implementation，app 与耗时数小时的 IMO 版本也不同。
+- 建议与 `gemini-2-5-technical-report-2025` 配套阅读；仍需核验推理语料 manifest、branch trace、reward、decontamination、license、raw safety artifact 与 checkpoint mapping。

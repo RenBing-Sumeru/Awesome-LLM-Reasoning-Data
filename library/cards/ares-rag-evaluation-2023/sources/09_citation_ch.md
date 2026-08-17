@@ -1,0 +1,1 @@
+引用：Jon Saad-Falcon、Omar Khattab、Christopher Potts、Matei Zaharia，《ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems》，NAACL 2024；arXiv:2311.09476。论文：https://arxiv.org/abs/2311.09476。官方代码/数据：https://github.com/stanford-futuredata/ARES。

@@ -1,0 +1,3 @@
+- **Teacher and proxy dependence:** DeepSeek-R1 errors propagate, while disagreement, length, and strategy labels are imperfect quality proxies. Audit a stratified sample with independent answer and trace checks before reusing a selected subset.
+- **Confounded generalization:** gains depend on NaturalReasoning's question mixture, the tested Llama/Qwen students, and benchmark overlap. Repeat matched selection studies in the target domain and run semantic contamination checks.
+- **Artifact gap and cost:** no official NaturalThoughts release or license was confirmed, and generation plus up-to-500K-trace training is expensive. Reproduction requires publishing exact records, provenance, teacher version, rejected items, and compute.

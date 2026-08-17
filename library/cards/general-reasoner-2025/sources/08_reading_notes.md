@@ -1,0 +1,5 @@
+- Positioning: General-Reasoner crawls broad questions, normalizes answer types, and uses a context-aware generative verifier to retain questions with scoreable answers.
+- Data object: 228,736 training and 1,000 test question-answer records; each record exposes id, question, answer, answer type, category, and difficulty.
+- Author and selector: curation models normalize questions and answers while a generative verifier reasons over equivalence; retention uses generative answer verification with chain-of-thought and context plus category and difficulty filters.
+- Evidence anchor: Across 12 benchmarks including MMLU-Pro, GPQA, SuperGPQA, TheoremQA, BBEH, and MATH AMC, General-Reasoner outperforms the paper's existing RL baselines while preserving math ability.
+- Reuse decision: suitable for multi-domain reasoning RL; first audit a generative verifier can share factual errors with the policy model and web crawling creates provenance, duplication, and contamination risks.

@@ -1,0 +1,3 @@
+DiscoverLLM makes the progressive concretization of latent user intent the main supervision target. A hierarchical user simulator reveals only currently discovered requirements, while an intent-discovery reward favors assistant responses that expose useful refinements and later satisfy them.
+
+The authors release `DiscoverLLM-multiturn-preferences`, containing 9,318 English candidate responses across creative writing, technical writing, and SVG drawing. Each record includes dialogue context, one candidate completion, a reward score, latent-intent history, and provenance, supporting reward modeling and preference optimization.

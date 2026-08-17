@@ -1,0 +1,5 @@
+The official [arXiv record](https://arxiv.org/abs/2504.11354) identifies *Kimina-Prover Preview: Towards Large Formal Reasoning Models with Reinforcement Learning* (2025). The official [MoonshotAI/Kimina-Prover-Preview repository](https://github.com/MoonshotAI/Kimina-Prover-Preview) provides project material, tools, proof archives, and a corrected [miniF2F artifact](https://github.com/MoonshotAI/Kimina-Prover-Preview/blob/master/minif2f_test_solved_filtered_0710.zip). The official [Kimina-Prover-Preview-Distill-7B page](https://huggingface.co/AI-MO/Kimina-Prover-Preview-Distill-7B) provides a public distill.
+
+These official artifacts support the claims that public distills, tooling, proof files, and the corrected miniF2F archive exist. They do not establish a release of the complete 200K prompt pool, Claude cold starts, Kimi-thinking mixture, 72B RL rollouts, reward logs, prompt-to-proof lineage, environment pins, or full train/validation partitions.
+
+The report describes 13-gram decontamination and removal of AMC12/AIME/IMO overlap from NuminaMath against miniF2F. It does not provide overlap lists or residual contamination analysis.

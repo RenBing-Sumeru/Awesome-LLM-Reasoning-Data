@@ -1,0 +1,105 @@
+id: evaluating-mathematical-reasoning-beyond-accuracy-2025
+title: Evaluating Mathematical Reasoning Beyond Accuracy
+year: 2025
+venue: AAAI 2025 (Oral)
+authors:
+- Shijie Xia
+- Xuefeng Li
+- Yixin Liu
+- Tongshuang Wu
+- Pengfei Liu
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- mathematical-reasoning
+- process-evaluation
+- data-selection
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/34987
+  arxiv: https://arxiv.org/abs/2404.05692
+  code: https://github.com/GAIR-NLP/ReasonEval
+  data: https://github.com/GAIR-NLP/ReasonEval
+  project: https://github.com/GAIR-NLP/ReasonEval
+  huggingface: https://huggingface.co/GAIR/ReasonEval-7B
+  doi: https://doi.org/10.1609/aaai.v39i26.34987
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/34987
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical problems and generated solutions used in MR-GSM8K and related meta-evaluation resources.
+  trace_author: Human step segmentation and annotation, plus calibrated LLM evaluators.
+  answer_format: Mathematical solution segmented into steps with validity and redundancy labels.
+  process_fields:
+  - problem
+  - solution
+  - steps
+  - validity
+  - redundancy
+  environment_or_substrate: Step-by-step mathematical reasoning.
+  verifier_or_reward: ReasonEval LLM evaluators score validity and redundancy.
+  terminal_predicate: A reasoning step is valid and non-redundant under the annotation protocol.
+recipe_metadata:
+  base_model: ReasonEval-7B and ReasonEval-34B configurations released by GAIR.
+  teacher: Human-labeled meta-evaluation data calibrates the LLM evaluators.
+  generator: Mathematical solution generation followed by human segmentation and labeling.
+  filtering_rule: Evaluate and select trajectories using step validity and redundancy.
+  sampling_protocol: Use the repository's MR-GSM8K/MR-MATH evaluation scripts and fixed splits.
+  inference_budget: Evaluator base model and prompt configuration affect reported meta-evaluation.
+  optimizer_or_scaffold: ReasonEval evaluator training and repository scripts for process-quality evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematics problems, LLM solutions, human step annotations, and evaluator outputs.
+  split: The official repository provides MR-MATH and evaluation scripts; pin the selected commit and data version.
+  decontamination: Training on the released meta-evaluation records compromises their use as held-out evaluation.
+  license: The repository states Apache-2.0 for MR-MATH and ReasonEval-34B; ReasonEval-7B uses the Llama 2 license.
+  lineage: AAAI 2025 oral paper, GAIR-NLP repository, and GAIR model releases.
+  known_failure_modes:
+  - Validity and redundancy can be ambiguous for alternate but correct mathematical derivations.
+  - Results are bounded by the mathematical tasks and evaluators studied.
+  citation_status: verified
+  confidence: high
+  notes: Verified the AAAI 2025 proceedings record and affiliation block, the official GAIR-NLP repository, released model
+    pages, data license statement, and oral acceptance notice.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: ReasonEval evaluates mathematical reasoning beyond final-answer accuracy with step-level validity and redundancy
+  labels, models, and selection tools.
+why_it_matters: It gives a reusable process-quality target for identifying incorrect or unnecessary steps that final-answer
+  metrics conceal.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the AAAI 2025 proceedings record and affiliation block, the official GAIR-NLP repository, released model
+    pages, data license statement, and oral acceptance notice.
+category_ids:
+- preference_reward_feedback_data
+- process_trace_supervision_data

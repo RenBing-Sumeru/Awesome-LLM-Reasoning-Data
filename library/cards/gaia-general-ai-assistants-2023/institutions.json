@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "FAIR, Meta",
+    "HuggingFace",
+    "AutoGPT",
+    "GenAI, Meta"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2311.12983",
+    "https://arxiv.org/pdf/2311.12983",
+    "https://openreview.net/forum?id=fibxvahvs3",
+    "https://huggingface.co/gaia-benchmark"
+  ],
+  "verification_note": "OpenReview ICLR record lists five authors and omits Craig Swift; arXiv/PDF lists six authors and maps Craig Swift to AutoGPT."
+}

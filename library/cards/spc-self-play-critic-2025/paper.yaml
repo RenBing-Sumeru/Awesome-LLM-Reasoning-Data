@@ -1,0 +1,149 @@
+id: spc-self-play-critic-2025
+title: 'SPC: Evolving Self-Play Critic via Adversarial Games for LLM Reasoning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jiaqi Chen
+- Bang Zhang
+- Ruotian Ma
+- Peisong Wang
+- Xiaodan Liang
+- Zhaopeng Tu
+- Xiaolong Li
+- Kwan-Yee K. Wong
+source_role:
+- verifier_reward
+- construction_recipe
+- process_supervision
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+- process_reward
+domains:
+- math
+training_use:
+- sft
+- reward_modeling
+- process_supervision
+- rlvr
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/cb7baa005c239c1c7c4098c2a9e00450-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2504.19162
+  code: https://github.com/chen-judge/SPC/
+  data: https://connecthkuhk-my.sharepoint.com/%3Af%3A/g/personal/jadge_connect_hku_hk/EkB9OYBHr_tGmGeJ5xxTncgBXFnln9nPP4jmCKNcQSSDIQ?e=oF7b6g
+  project: https://chen-judge.github.io/SPC/
+  huggingface: https://huggingface.co/judge/SPC-Critic-2
+  doi: https://doi.org/10.48550/arXiv.2504.19162
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/cb7baa005c239c1c7c4098c2a9e00450-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=JddJvNSiHk
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: PRM800K correct/incorrect step pairs bootstrap both roles; PRM800K training problems and solutions from three
+    open LLM solvers seed self-play.
+  trace_author: GPT-4 creates initial error transformations; DeepSeek-R1-Distill-Qwen-7B drafts critiques, GPT-4o standardizes
+    them, and learned sneaky-generator/critic policies create later-round traces.
+  answer_format: Generator outputs a transformation rationale and an incorrect step in an Answer tag; critic outputs partial-solution
+    analysis, a concise step critique, and an Answer-tagged Correct or Incorrect conclusion.
+  process_fields:
+  - math problem
+  - partial solution prefix
+  - selected correct step
+  - predefined error type
+  - transformed candidate step
+  - critic critique and correctness conclusion
+  - solver-impact validation outcome
+  - critic and generator binary rewards
+  - self-play round
+  environment_or_substrate: A sneaky generator changes one correct reasoning step, solver continuations test whether the change
+    harms answer success, and a critic then judges a mixture of retained corruptions and correct steps.
+  verifier_or_reward: Original continuation success of at least 75% and sneaky continuation success of 0% validate a corruption;
+    correct game decisions receive +1 and failures -1, with opposing generator/critic outcomes.
+  terminal_predicate: A candidate enters the game after passing the solver-impact thresholds; the confrontation ends when
+    the critic emits Correct or Incorrect and both policies receive outcome-derived rewards.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct for both the sneaky generator and critic.
+  teacher: GPT-4-turbo-2024-04-09 teaches error transformations; DeepSeek-R1-Distill-Qwen-7B drafts critic traces; GPT-4o-2024-08-06
+    rewrites them; PRM800K human labels filter critic SFT data.
+  generator: Randomly select a correct step and prefix, choose one of five error types, rewrite only that step, and preserve
+    a structured Answer-tagged output.
+  filtering_rule: Retain a corruption only if continuations from the original step succeed at least 75% and those from the
+    changed step succeed 0%; balance critic rewards and generator outcome classes for RL.
+  sampling_protocol: Pregenerate four solver solutions, discard zero-success problems, use about 90% medium and 10% easy problems,
+    generate 16 completions for medium cases, then sample one correct step per successful solution.
+  rollout_count: Sixteen solver completions for retained medium problems and four pregenerated completions for easy problems;
+    exact per-record rollout storage is unknown.
+  temperature: unknown
+  inference_budget: Critic-guided search regenerates a rejected step up to five times; self-consistency experiments use five
+    independent searches.
+  optimizer_or_scaffold: Round-0 SFT is followed by offline RL with importance weighting, mean-reward baseline, KL coefficient
+    0.1, and SFT coefficient 0.15; round 2 balances Sneaky-1 against Critic-0 and merges both rounds.
+audit:
+  source_mixture: Critic SFT has 21.8K examples (9.4K correct, 12.4K incorrect); generator SFT has 13K. Critic RL has 6.4K
+    round-1 and 6.8K round-2 examples; generator RL has 6K per round.
+  split: Self-play uses PRM800K training problems. Released README names separate round-0 SFT and merged round-2 critic RL
+    files plus three evaluation files; released JSON schema and exact row audit are unknown.
+  decontamination: unknown
+  license: Hugging Face checkpoint repositories display MIT; code and SharePoint data licenses are unknown.
+  lineage: PRM800K steps and labels to teacher-generated SFT traces to round-0 policies to solver-impact-filtered adversarial
+    games to balanced offline RL to round-2 critic and stepwise search evaluation.
+  known_failure_modes:
+  - downstream-success filtering is solver- and sampling-dependent and is not a mathematical proof of step invalidity
+  - fixed prompts and five error types can create shortcuts for the critic
+  - adversarial co-adaptation can narrow the error distribution
+  - balanced correctness classes differ from natural error prevalence
+  - binary rewards omit error severity and critique usefulness
+  - data files require institutional sign-in, blocking schema, checksum, and row-level provenance audit
+  - code and data licenses are undisclosed
+  - search gains depend on extra retries and self-consistency budget
+  citation_status: verified
+  confidence: medium
+  notes: Official NeurIPS paper, project, code, and both critic checkpoints verified on 2026-07-21; the official data link
+    redirects to institutional sign-in.
+inclusion_reason: SPC specifies and partially releases a reproducible recipe for creating step-level critic traces and binary
+  rewards through solver-validated adversarial self-play.
+related: []
+tags:
+- self-play
+- adversarial-data
+- process-critic
+- step-verification
+- synthetic-errors
+- reinforcement-learning
+- open-release
+status: partial
+one_line_summary: SPC bootstraps a step critic and error generator, then creates solver-filtered adversarial traces and binary
+  rewards over two self-play rounds.
+why_it_matters: It turns model-generated corruptions and game outcomes into renewable verifier-training data, while exposing
+  solver dependence, co-adaptation, and gated-release risks.
+card: null
+needs:
+- 'needs_data_access: obtain authorized access to the official SharePoint folder'
+- 'needs_snapshot: pin code, model, and data revisions with immutable hashes'
+- 'needs_metadata: audit released JSON keys, exact row counts, and split contents'
+- 'needs_license: establish code and data licenses'
+- 'needs_decontamination: document overlap checks against evaluation benchmarks'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: medium
+  notes: Paper, code, project, and checkpoints are accessible; official data filenames are documented but the linked folder
+    requires institutional sign-in.
+category_ids:
+- data_construction_open_release_recipes

@@ -1,0 +1,1 @@
+Direct preference optimization turns paired preferences into a training signal without first fitting a separate reward model. A preference pair expresses what was chosen, not proof that the preferred response is factually correct or safe.

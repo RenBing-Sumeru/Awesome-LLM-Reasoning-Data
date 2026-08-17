@@ -1,0 +1,1 @@
+This survey does not provide a single operational definition or benchmark for trustworthy meta-judging. Automated evaluators may still share biases, exposure, and blind spots with the evaluated system. A stable score can be consistently wrong.

@@ -1,0 +1,3 @@
+DAST derives a Token Length Budget (TLB) from rollout statistics for each question. Sampling accuracy and the mean length of correct responses determine how much reasoning length the method treats as appropriate: lower observed accuracy moves the budget toward the maximum generation length.
+
+Each sampled response receives a rule-based reward calibrated by its correctness class and relative deviation from that TLB. The resulting ranked response pool is converted into same-correctness preference pairs, then used by SimPO to learn concise reasoning where the problem appears easy and longer reasoning where the rollout evidence indicates difficulty.

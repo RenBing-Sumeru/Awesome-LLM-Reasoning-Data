@@ -1,0 +1,1 @@
+既有基线是只看最终答案的开放域 QA 评测，以及可能产生非结构化 rationale 的 chain-of-thought prompt。这项工作的新意在于显式测量“子答案可得但组合失败”的情况，并把 follow-up question 做成 prompt 级契约。方向信号是：分解式交互可以被检查，也可以接搜索。并不新的部分是 multi-hop QA、短答案评分和 search-augmented QA。复用前要检查小数据集 license、精确导出版本、评分规则、搜索快照，以及 Bamboogle 问题是否已经污染模型训练。

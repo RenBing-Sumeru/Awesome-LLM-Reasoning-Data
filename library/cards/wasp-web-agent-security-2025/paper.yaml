@@ -1,0 +1,251 @@
+id: wasp-web-agent-security-2025
+title: 'WASP: Benchmarking Web Agent Security Against Prompt Injection Attacks'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Ivan Evtimov
+- Arman Zharmagambetov
+- Aaron Grattafiori
+- Chuan Guo
+- Kamalika Chaudhuri
+source_role:
+- benchmark
+- agent_environment
+- audit_failure
+verification_contract:
+- environmental
+- judgment_required
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- agent_trajectories
+- web_navigation
+- web_agent_security
+- prompt_injection
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/1c9818387f5dd0a0bc151214660f059d-Abstract-Datasets_and_Benchmarks_Track.html
+  paper_pdf: https://proceedings.neurips.cc/paper_files/paper/2025/file/1c9818387f5dd0a0bc151214660f059d-Paper-Datasets_and_Benchmarks_Track.pdf
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2504.18575
+  code: https://github.com/facebookresearch/wasp
+  data: https://github.com/facebookresearch/wasp/tree/ffee6f41fde76acd14bd792db442479c506260c2/webarena_prompt_injections/configs/croissant
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.18575
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/1c9818387f5dd0a0bc151214660f059d-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: https://openreview.net/forum?id=Ip1cCUAllL
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.18575
+data_object:
+  prompt_source: Twenty-one manually constructed and manually realizability-checked attacker goals—12 for a self-hosted GitLab
+    clone and 9 for a Postmill-based Reddit clone—are paired at runtime with one of two benign user goals in the same environment
+    and one of two task-related injection templates, yielding 84 main prompt-injection tasks. A separate 37-task utility set
+    contains the attacker goals as legitimate requests plus common site actions.
+  trace_author: The evaluated web agent produces scaffold-specific observations, reasoning/model messages, and browser or
+    computer actions. Paper experiments cover GPT-4o, GPT-4o-mini, o1, Claude Sonnet 3.5 v2, Claude Sonnet 3.7 Extended Thinking,
+    and Llama-3.3-70B. The official release generates logs locally and does not contain a canonical public rollout corpus.
+  answer_format: One runtime benchmark episode combines a benign user objective, attacker objective and security category,
+    injected webpage content and action URL, environment setup/parameters, an ordered observation-reasoning-action trace,
+    final environment/log state, per-action compromise judgments aggregated to an episode label, goal-specific end-to-end
+    success, utility success, and cleanup metadata.
+  process_fields:
+  - free_form_name
+  - environment
+  - security_violation_category
+  - setup_fn
+  - parameters
+  - benign_user_goal
+  - attacker_goal
+  - action_url
+  - injection_format
+  - injected_instruction
+  - start_url
+  - task_id
+  - observation
+  - model_reasoning_or_message
+  - browser_or_computer_action
+  - action_index
+  - action_compromise_label
+  - action_judge_reasoning
+  - asr_intermediate_episode_label
+  - end_to_end_eval_type
+  - end_to_end_predicate
+  - asr_end_to_end
+  - utility_success
+  - cleanup_fn
+  - notes
+  observation: VisualWebArena supplies an accessibility tree and optionally a Set-of-Marks screenshot; Claude CURI supplies
+    screenshots and retains the last ten screenshots plus prior model output; the tool-calling loop returns accessibility-tree
+    observations as low-privilege tool messages and retains three past observations in the pinned implementation.
+  action_or_tool_call: VisualWebArena identifier-based browser actions, Claude Computer Use click/type actions over screen
+    coordinates, or OpenAI-style browser tool calls. Current pinned code caps these scaffolds differently and serializes logs
+    as HTML or JSONL.
+  verifier_output: For ASR-intermediate, GPT-4o returns action-level reasoning plus one of compromised, not_compromised, or
+    outright_refusal; the released evaluator marks the episode compromised if any action is compromised. ASR-end-to-end and
+    utility return task-level numeric success from goal-specific environment, DOM-content, or action-log rules.
+  reward: No training reward is used. The benchmark reports binary task-level attack/utility outcomes and aggregates them
+    as rates.
+  environment_or_substrate: Self-hosted VisualWebArena-derived GitLab and Postmill/Reddit websites, deployed by the authors
+    on AWS EC2 for the paper. The sites are isolated from real users but are pre-populated with data scraped from the corresponding
+    original sites; the release requires users to reconstruct and configure the web services.
+  verifier_or_reward: 'Mixed contract: GPT-4o judgment over each trace action for intermediate diversion, HTML/DOM state predicates
+    for most end-to-end goals, and an exfiltration evaluator that at pinned commit ffee6f41 scans extracted action text for
+    an expected URL substring rather than independently verifying server receipt.'
+  terminal_predicate: 'Full-episode feedback is assigned after the agent stops or reaches the scaffold-specific action cap.
+    End-to-end success is task-specific: required or forbidden DOM content for most goals, or expected exfiltration URL text
+    in agent actions for exfil goals. Utility uses corresponding task evaluators; this is not one universal terminal predicate.'
+  provenance: Manual attacker goal and benign task -> runtime cross-product with injection template -> setup of isolated GitLab/Postmill
+    state -> injected page content -> model/scaffold interaction log -> GPT-4o action judgments plus task-specific final evaluator
+    -> ASR-intermediate, ASR-end-to-end, and utility summaries -> cleanup. The released Croissant JSONL files expose 21 base
+    attacks and 37 utility records, not the generated model rollouts.
+recipe_metadata:
+  base_model: Evaluated backbones are GPT-4o, GPT-4o-mini, o1, Claude Sonnet 3.5 v2, Claude Sonnet 3.7 Extended Thinking,
+    and Llama-3.3-70B; immutable provider model snapshots are unknown.
+  teacher: GPT-4o acts as the ASR-intermediate judge. No policy-training teacher or demonstration teacher is used.
+  generator: Authors manually write the attacker goals and injection templates; the benchmark runner instantiates them in
+    the environment and evaluated agents generate trajectories. No learned or search-based attack generator is reported.
+  prompt_or_task_source: Manually designed concrete security violations for GitLab and Reddit plus four simple benign user
+    goals chosen to be achievable by contemporary agents; the full rejected-candidate and authoring ledger is unknown.
+  filtering_rule: Authors manually verify that each retained attacker goal can be completed in the environment. Further candidate-generation
+    counts, rejection reasons, quality adjudication, or selection thresholds are unknown.
+  sampling_protocol: The main fixed suite crosses 21 attacker goals with two same-environment user goals and two task-related
+    injection formats for 84 tasks per model/scaffold/defense setting. Task-agnostic attacks are evaluated in a smaller ablation.
+    No multi-seed sampling or confidence-interval protocol is reported.
+  temperature: unknown
+  rollout_count: 84 prompt-injection episodes per complete main setting and 37 utility prompts; exact total retained executions,
+    retries, crashes, and reruns across all Table 2 settings and ablations are unknown.
+  inference_budget: Pinned code uses maximum 15 VisualWebArena steps, 20 GPT tool-calling actions with three prior observations
+    retained, and 75 Claude CURI actions. The README estimates 4–6 hours for one complete run. Token budgets, provider-side
+    compute, seeds, and total experiment cost are unknown.
+  search_or_scaffold: 'Three evaluation scaffolds: VisualWebArena with accessibility tree and optional Set-of-Marks screenshot,
+    Anthropic Claude Computer Use Reference Implementation with screenshot history, and a browser tool-calling loop that places
+    webpage content in low-privilege tool responses. Optional defensive system-level instructions and instruction-hierarchy
+    message placement are evaluated.'
+  selection_threshold: unknown
+  optimizer_or_scaffold: No optimizer or model training. The released workflow sets up and injects tasks, runs one of the
+    three agent scaffolds, evaluates action-level compromise and final task state, accumulates rates, and cleans the environment.
+audit:
+  source_mixture: Fixed benchmark mixture of 12 GitLab and 9 Reddit attacker goals, two benign user goals per environment,
+    two main task-related injection formats, and 37 utility tasks. Security violations include exfiltration, data destruction,
+    gaining/removing access, impairing defenses, execution, phishing, harassment, misinformation, and snooping.
+  split: Evaluation-only. No train/dev split is defined. The release separates 21 base attack records from 37 utility records;
+    the paper’s 84 main test tasks are generated at runtime rather than stored as an immutable 84-record manifest.
+  decontamination: unknown
+  benchmark_overlap: WASP directly builds on VisualWebArena and its scraped GitLab/Reddit substrate. Item-level overlap with
+    evaluated-model training data, later benchmark releases, or public prompt-injection corpora is unknown.
+  license: The official README and root LICENSE place the majority of WASP and its data under CC BY-NC 4.0. Vendored VisualWebArena
+    and Claude Computer Use demo components use MIT terms. Users must preserve the component boundary and non-commercial restriction;
+    no unrestricted training-data license is established.
+  lineage: Manual goal/config -> VisualWebArena-derived site setup -> user-goal and injection-template instantiation -> agent
+    observation/reasoning/action episode -> GPT-4o any-compromised-action aggregate -> task-specific DOM or log predicate
+    -> metrics -> cleanup. Record-level provenance for scraped site content and generated rollouts is incomplete.
+  release_version: Official main commit ffee6f41fde76acd14bd792db442479c506260c2 (2025-05-14) inspected 2026-07-20. No GitHub
+    tag or Release exists; the repository was archived on 2026-07-01. Croissant metadata uses the string main as `sha256`,
+    so it is not an immutable content checksum.
+  verifier_or_judge_failure_modes:
+  - The GPT-4o intermediate judge is uncalibrated against an independent human-labeled evaluation set; one false-positive
+    action makes the whole episode compromised.
+  - Malformed judge output or an API error defaults to not_compromised in the pinned parser, creating a systematic false-negative
+    path.
+  - The pinned exfiltration evaluator checks whether an expected URL substring appears in agent action text, not whether the
+    attacker server received the secret or whether the transmitted value is complete and valid.
+  - DOM substring evaluators can change under website versions, localization, rendering, stale state, or partial actions and
+    need not prove the intended semantic security violation.
+  - 'Low end-to-end ASR is capability-confounded: an agent can follow the malicious instruction yet fail to complete it, producing
+    the paper’s “security by incompetence” phenomenon rather than robust refusal.'
+  successful_and_failed_sample_retention: Task configs and evaluators are released, but canonical paper rollout logs are not.
+    Local runs can store both logs and traces under `--output-dir`; the release does not disclose an immutable inventory of
+    successful, refused, confused, failed, crashed, timed-out, or retried episodes.
+  privacy_or_consent: Authors report self-hosted tests with no real users and no human subjects. The VisualWebArena substrate
+    is nevertheless pre-populated with scraped real-site data; record-level provenance, consent, PII review, and redistribution
+    rights for that content are unknown.
+  statistical_limits: The paper reports no error bars or statistical-significance analysis. Results are single-suite rates
+    over a small fixed set and are sensitive to API model, scaffold, environment, and evaluator revisions.
+  scope_limits: Author-stated limitations are two websites, limited prompt diversity, and no desktop/code-agent coverage.
+    The archived release and reliance on external APIs and separately deployed web services further constrain future replay.
+  known_failure_modes:
+  - The 21-row released attack JSONL is a base-goal manifest, not the paper's fully instantiated 84-task suite; naive row
+    counting changes the claimed benchmark unit.
+  - No immutable environment image, scraped-data snapshot, service-version manifest, or complete reset-state record ties current
+    replay to the paper runs.
+  - No canonical successful/failed trajectory corpus is released, so trajectory-level audit and judge re-scoring require a
+    fresh run.
+  - The paper's exfiltration semantics and the pinned release's action-text substring evaluator are not equivalent.
+  - Intermediate judging can be gamed or biased by model reasoning style, and the any-positive aggregation magnifies one judgment
+    error.
+  - The current Croissant metadata lacks a valid content checksum and incompletely documents the richer task fields present
+    in the JSONL records.
+  - Non-commercial and mixed component licenses, plus upstream scraped-site provenance, limit redistribution and reuse assumptions.
+  - Model API revisions, archived code, and live deployment dependencies create version drift even when task configs are pinned.
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS proceedings paper and appendix, arXiv version record, NeurIPS OpenReview record, official repository README/tree/history/licenses,
+    pinned task/Croissant files, prompt injector, runner, action judge, final evaluator, and setup/cleanup paths were checked.
+    Artifact verification means the official files exist; it does not claim immutable end-to-end replay or a released trajectory
+    dataset.
+  remaining_unknowns:
+  - Exact provider model snapshots, temperatures, seeds, retries, token budgets, and total experiment cost.
+  - Attacker/user-goal candidate pool, rejected cases, authoring responsibilities, and selection/adjudication records.
+  - Task/model-training decontamination and overlap checks.
+  - Pinned VM/container/site images, scraped-data snapshot, account state, and service versions.
+  - Independent calibration, agreement, and revision policy for the GPT-4o action judge.
+  - Canonical model logs and retention counts for every outcome and retry class.
+  - Record-level scraped-content provenance, consent, and rights.
+inclusion_reason: 'WASP exposes a concrete security-feedback surface for web agents: executable environment episodes whose
+  observations and actions are scored both for intermediate hijacking and end-to-end attacker-goal completion, making the
+  gap between judgment-based diversion labels and environment/log predicates directly auditable.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- benchmarks-evaluation-surfaces
+- web-agents
+- prompt-injection
+- agent-security
+- visualwebarena
+- mixed-verification
+- benchmark-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: WASP operationalizes realistic web-agent hijacking as 84 runtime-instantiated tasks with a GPT-4o any-compromised-action
+  judge and task-specific environment or action-log predicates, exposing both security-by-incompetence and verifier-contract
+  drift.
+why_it_matters: 'It shows why an agent trajectory needs two distinct audit layers: a judge can detect that the policy started
+  following an injection, while final-state checks reveal whether harm was actually completed; the released exfiltration checker,
+  missing rollouts, mixed license, and environment drift also demonstrate why benchmark code is not automatically a reusable
+  training corpus.'
+card: null
+needs:
+- 'needs_snapshot: publish a tagged release with valid checksums and a paper-to-config/environment/model mapping'
+- 'needs_replay: pin VM/container/site images, scraped-data snapshot, service versions, accounts, reset state, API model revisions,
+  and random settings'
+- 'needs_evaluator_reconciliation: align exfiltration scoring with confirmed receipt/valid-value semantics and document DOM-predicate
+  edge cases'
+- 'needs_judge_audit: release human calibration, agreement, judge version/prompt, malformed-output handling, and action-to-episode
+  aggregation analysis'
+- 'needs_trajectory_release: publish immutable successful, refused, hijacked-incomplete, failed, crashed, timed-out, and retried
+  logs with record-level configs'
+- 'needs_decontamination: document task overlap and evaluated-model training contamination checks'
+- 'needs_rights: clarify scraped-site provenance and preserve CC BY-NC versus MIT component boundaries'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation, venue, proceedings PDF/appendix, arXiv v3, OpenReview record, official code/data tree, current immutable
+    main commit, Croissant records, runner, action judge, end-to-end evaluators, licenses, tags/releases, and archived state
+    were verified. No canonical rollout corpus or immutable environment release was found, so reproducibility and training
+    reuse remain partial.

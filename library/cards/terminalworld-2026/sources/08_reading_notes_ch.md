@@ -1,0 +1,6 @@
+- 先读论文第 3.1–3.4 节：关键对象是把 80,870 条公开录制转换为 1,530 个可执行 Docker 任务，而不是发布模型轨迹语料。
+- 必须保持反馈边界清楚：episode 含 shell action 与 terminal observation，但正确性是完整 episode 的状态测试结果；没有发布 step-level correctness 或 training reward。
+- 应把 `AllPassing` / `Nop` / `Partial` 理解为 verifier sensitivity gate，而不是测试具有 soundness、completeness 或不可 gaming 的形式化证明。
+- 必须区分三个发布表面：论文有 18 个类别，稳定 README 有 19 个，已检查的当前 manifest 有 20 个；当前记录还删除了论文所述 `source_url`。
+- 任何复用前都要协调 CC BY 4.0、CC BY-NC 4.0 与 strictly non-commercial academic research，并固定 code/data/image/test 版本，检查 end-of-life image 的冷重放。
+- 建议与 Terminal-Bench 对读以比较任务来源与 outcome verification，但不能把论文报告的 91% command novelty 当作逐任务 decontamination。

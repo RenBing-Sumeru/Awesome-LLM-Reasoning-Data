@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TOSS 依据安全与效用参考模型的损失差，在 SFT 前掩掉不安全回复词元。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "安全微调的词元级数据选择论文（ICLR 2026）",
+  "best_for_ch": "研究安全微调、训练数据清洗和安全—效用权衡的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yanping Li, Zhening Liu, Zijian Li, Zehong Lin, Jun Zhang",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:00:00Z"
+}

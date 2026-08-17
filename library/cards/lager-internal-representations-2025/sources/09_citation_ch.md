@@ -1,0 +1,1 @@
+Lai, P., Zheng, J., Cheng, S., Chen, Y., Li, P., Liu, Y., Chen, G.（2025）。Beyond the Surface: Enhancing LLM-as-a-Judge Alignment with Human via Internal Representations。NeurIPS 2025。arXiv:2508.03550。

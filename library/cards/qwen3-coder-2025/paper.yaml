@@ -1,0 +1,129 @@
+id: qwen3-coder-2025
+title: 'Qwen3-Coder: Agentic Coding in the World'
+year: 2025
+venue: Qwen official release blog
+authors:
+- Qwen Team
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+domains:
+- coding
+- software_engineering
+- agentic_tool_use
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://qwenlm.github.io/blog/qwen3-coder/
+  arxiv: null
+  code: https://github.com/QwenLM/Qwen3-Coder
+  data: null
+  project: https://qwenlm.github.io/blog/qwen3-coder/
+  huggingface: https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Broad coding task mixture. The release reports 7.5T pretraining tokens with 70 percent code plus real-world
+    coding and SWE-style tasks, but no task prompts, repository manifests, source counts, or rights.
+  trace_author: Qwen2.5-Coder cleans and rewrites noisy pretraining data. Generators for code-RL solutions, tool trajectories,
+    and synthetic test cases are not disclosed.
+  answer_format: Code, tool calls, multi-turn agent actions, environment feedback, and execution or test outcomes; exact record
+    schema and terminal formats are unknown.
+  process_fields:
+  - code_solution_or_edit
+  - tool_call
+  - environment_feedback
+  - execution_or_test_outcome
+  - multi_turn_agent_state
+  environment_or_substrate: A Qwen-built Alibaba Cloud system reportedly runs 20,000 independent environments in parallel
+    for long-horizon agent RL. Images, task definitions, provisioners, and access are undisclosed.
+  verifier_or_reward: Code RL uses execution feedback from automatically scaled test cases; agent RL uses multi-turn environment
+    feedback. Reward formulae, tests, pass criteria, and error analysis are unknown.
+  terminal_predicate: Code execution success or environment completion is implied; pass thresholds, timeout policy, and partial-completion
+    handling are unknown.
+recipe_metadata:
+  base_model: Qwen3-Coder-480B-A35B-Instruct is a 480B-total/35B-activated MoE. Exact base checkpoint and full lineage are
+    not disclosed by the release.
+  teacher: Qwen2.5-Coder is reported for cleaning and rewriting; other teachers and generators are unknown.
+  generator: Automatic scaling of test cases across diverse coding tasks is reported; prompts, seeds, acceptance procedure,
+    and count are unknown.
+  filtering_rule: Qwen2.5-Coder cleans and rewrites noisy data. Thresholds, yields, test-validity checks, and trajectory filters
+    are undisclosed.
+  sampling_protocol: 7.5T pretraining tokens, 70 percent code, and long-horizon RL are stated; mixture weights, rollout allocation,
+    test sampling, and schedule are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Execution-driven Code RL and long-horizon Agent RL on scalable Alibaba Cloud environments; algorithm,
+    optimizer, reward shaping, coefficients, steps, and compute budget are unknown.
+audit:
+  source_mixture: The release states 7.5T tokens and 70 percent code and names noisy-data rewriting, PR-oriented data, coding
+    tasks, and test scaling. Source manifests, revisions, proportions, and provenance are unknown.
+  split: unknown
+  decontamination: unknown
+  license: Released weights are Apache-2.0. Rights for pretraining sources, tasks, tests, repository contexts, environments,
+    and trajectories are unknown.
+  lineage: Qwen2.5-Coder data cleaning and final model release are named; item-level lineage, generator lineage, base mapping,
+    and stage checkpoints are unknown.
+  known_failure_modes:
+  - No public test-validity or reward-hacking audit
+  - 20,000-environment claim is not reproducible without artifacts/logs
+  - No split or contamination protocol
+  - Omitted RL/reward/rollout/filter details prevent recipe reuse
+  citation_status: verified
+  confidence: medium
+  notes: Track-12 disclosure ledger only. The model card cites arXiv:2505.09388 for the distinct Qwen3 Technical Report; it
+    is not attached as a Coder-specific paper.
+inclusion_reason: Official Qwen release with high-level data-scale, execution-feedback, and environment-scale disclosures
+  alongside material unreleased data and audit boundaries.
+related:
+- qwen3-2025
+tags:
+- qwen3-coder
+- frontier-report
+- data-disclosure-ledger
+- coding-agent
+- execution-feedback
+- long-horizon-rl
+- open-weights
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3-Coder reports 7.5T/70-percent-code pretraining, data cleaning, execution-driven Code RL, and 20,000
+  parallel Agent-RL environments but not the tasks, tests, trajectories, rewards, or audit records.
+why_it_matters: It separates released Qwen weights and tooling from the undisclosed post-training substrate behind agentic-coding
+  claims.
+card: null
+needs:
+- 'needs_data: tasks, tests, trajectories, environment images, and records'
+- 'needs_metadata: base lineage, manifests, mixture weights, filters, rollout settings, optimizer, and rewards'
+- 'needs_audit: splits, overlap controls, test validity, verifier error rates, and reward-hacking analysis'
+- 'needs_license: source-level rights for code, pull-request context, tests, and synthetic materials'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official Qwen blog, QwenLM repository, and Qwen model card verified; they do not release the described data, environment,
+    or feedback systems.

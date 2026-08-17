@@ -1,0 +1,1 @@
+Limitations and hidden assumptions: The procedure requires model access sufficient for fine-tuning and embedding extraction. Exact kernel and fine-tuning choices must be read from the paper and code before reuse; closed-model applicability is unknown.

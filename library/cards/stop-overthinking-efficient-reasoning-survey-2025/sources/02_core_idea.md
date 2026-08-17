@@ -1,0 +1,1 @@
+The paper separates three intervention points: change the reasoning model, change the emitted reasoning process, or adapt the prompt and budget to the input. Compare all three against both answer quality and cost. A shorter trace is useful only when it preserves the evidence needed by the task.

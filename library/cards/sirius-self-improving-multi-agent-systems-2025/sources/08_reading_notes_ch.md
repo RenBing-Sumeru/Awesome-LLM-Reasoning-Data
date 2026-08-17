@@ -1,0 +1,5 @@
+- Venue 以 NeurIPS 2025 Main Conference Track 为准。
+- 直接成功保存所有角色；修复失败只有在终局成功后才保存 selected role 与 rerun successor。
+- 表 7 的 1,890 个 case 不是未知的 per-role SFT row 数。
+- 仓库只发布五条 physics input，不是 experience library、failure、feedback、model 或 log。
+- 审计 coarse credit、被抹除的 correction provenance、split/contamination manifest、version pin 与 derived-data license。

@@ -1,0 +1,6 @@
+- 先读§2.1与Fig. 2：由tau-bench填充的SQLite、作为MCP tool暴露的REST endpoint、GPT-4 user simulation、SeedTTS语音和规则terminal verifier共同构成一个environment contract。
+- TARL的judge用`{-1,0,1}`标注每轮，但稳定GRPO/PPO实际优化10×/5×/`1/T`聚合后的trajectory reward，而不是彼此独立的局部reward（§3.2、§5.1）。
+- 训练配方使用约3,000个零售任务，在文本零售与DeepScaleR数学之间交替，并让Qwen2.5-Omni-7B先做30步简化任务GRPO warm-up，再进行混合语音-文本训练（§4.1、§4.3）。
+- 应把表`tab::main_results`、表`tab::multimodal_results`和reward-granularity/intervention分析合并阅读；正向pass^1结果与局部reward不稳定、intervention失败和airline迁移较弱同时存在。
+- 主要训练/评测排除了expected natural-language output check，因此数据库mutation正确并不能认证对话质量（§2.1；附录output-check表）。
+- 论文承诺未来发布任务，但没有已核验的论文专属code、data、project、rollout或model artifact；训练复用保持blocked。

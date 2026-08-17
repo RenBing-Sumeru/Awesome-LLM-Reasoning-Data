@@ -1,0 +1,3 @@
+Decisive downstream experiment: On the paper's matched question-quality evaluation, NATURALREASONING obtains a mean score of 6.45 versus 5.92 for the second-best source, and its distillation studies improve broad reasoning benchmarks. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 2.8 million questions with reference answers and teacher responses and exposes actual fields question, reference_answer, and a list of response and response_model pairs; on 2026-07-27 its page reported 2001 downloads. Usage is only an impact cross-check, not a causal experiment.

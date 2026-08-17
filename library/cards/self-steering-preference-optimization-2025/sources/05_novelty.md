@@ -1,0 +1,3 @@
+The new contribution is a data-generator objective, not simply another direct-preference loss. It treats the likelihood of the rejected response under the target policy as part of what makes a preference record usable. This connects pair quality to the gradient signal the policy will actually receive during later optimization.
+
+Principle prompting previously supplied an easy way to obtain contrastive answers, but did not control whether the bad answer was plausibly on policy. SSO adds an unconditioned response and asymmetric rejected-side objective to make that control explicit. The record construction therefore includes a learned distributional constraint before DPO sees any chosen/rejected pair.

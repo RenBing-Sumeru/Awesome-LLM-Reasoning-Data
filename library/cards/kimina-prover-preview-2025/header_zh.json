@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Kimina-Prover 披露了 20 万条 Lean prompt 构建、约 2 万条冷启动轨迹、整证明的 Lean 编译终态 RL，以及公开的蒸馏模型/工具；但未公开核心 prompt、rollout、奖励、环境版本锁定或完整谱系。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿形式化推理技术报告与数据披露账本",
+  "best_for_ch": "需要区分 Lean 整证明终态验证、自动形式化语义审查与交互式步骤反馈，并审计 RL 复现边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Haiming Wang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

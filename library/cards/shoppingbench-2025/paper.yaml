@@ -1,0 +1,120 @@
+id: shoppingbench-2025
+title: 'ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents'
+year: 2025
+venue: AAAI 2026 Oral / arXiv
+authors:
+- Jiangyuan Wang
+- Kejun Xiao
+- Qi Sun
+- Huaipeng Zhao
+- Tao Luo
+- Jian Dong Zhang
+- Xiaoyi Zeng
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- shopping-environment
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.04266
+  arxiv: https://arxiv.org/abs/2508.04266
+  doi: https://doi.org/10.48550/arXiv.2508.04266
+  code: https://github.com/yjwjy/ShoppingBench
+  data: https://github.com/yjwjy/ShoppingBench/tree/main/data
+  project: https://github.com/yjwjy/ShoppingBench
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors build shopping tasks and trajectory data for shopping agents
+  trace_author: official authors and distilled or collected shopping trajectories
+  answer_format: shopping intent, sandbox/search trajectory, selected products or final answer, constraint scores, CAR, and
+    ASR
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: ShoppingBench sandbox over 2,746,368 product records with product, knowledge, same-shop, voucher,
+    and budget intents
+  verifier_or_reward: product relevance, knowledge, shop, and budget constraint metrics plus cumulative average relevance
+    and absolute success rate
+  terminal_predicate: final selected products or answer satisfy intent-specific constraints under the pinned evaluator
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official ShoppingBench authors and trajectory sources
+  generator: ShoppingBench task and trajectory construction pipeline
+  filtering_rule: verify trajectory distillation, data provenance, evaluator behavior, and license before reuse
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2508.04266 v4 HTML/API and yjwjy/ShoppingBench repository with README, data directory, and rollout/evaluation
+    scripts
+  split: Pin the 2,410 training / 900 test instruction split, test JSONL files, product archive, search index, and evaluator
+    version before comparing results.
+  decontamination: Public test files and GPT-4.1-derived trajectories can leak into future training data; post-release or
+    web-search claims require dated evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2508.04266'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v4 and repository sources verify current title, authors, Alibaba institution, AAAI 2026 oral status, 3,310
+    instructions, 2,746,368 products, and code/data links.
+inclusion_reason: it modernizes shopping-agent evaluation with richer intents and trajectories
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- shopping-environment
+one_line: ShoppingBench evaluates shopping agents on grounded shopping intents over a large product sandbox.
+why_it_matters: it modernizes shopping-agent evaluation with richer intents and trajectories
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ShoppingBench evaluates shopping agents on grounded shopping intents over a large product sandbox.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv v4 and repository sources verify current title, authors, Alibaba institution, AAAI 2026 oral status, 3,310
+    instructions, 2,746,368 products, and code/data links.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 35
+  primary_category_id: benchmarks_evaluation_surfaces

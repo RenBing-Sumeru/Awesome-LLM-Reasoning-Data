@@ -1,0 +1,12 @@
+- SFT success 边界：声称公开的 9,022 条 SFT trajectory 是真实 transcript，但 SFT scenario 省略 check function，public SFT environment 也返回 zero reward。保留标准核验的是 syntax、completion marker、length 与 LLM impossibility judgment，而不是 terminal task success。
+- RL 发布边界：带 verifier 的 RL scenario 已公开，论文也描述 online RL episode，但没有发现 RL rollout corpus、逐步 reward archive、完整 final-state log 或 success/failure accounting。runtime schema 不能被写成已发布数据。
+- verifier coverage：生成 Boolean check 可能遗漏预期 constraint、过度限制有效 solution、依赖脆弱 state field，或奖励 terminal-state shortcut。这是基于 generated-check contract 的 curator inference；论文没有报告独立 false-positive/false-negative、coverage、reward-hacking 或 adversarial audit。
+- selection semantics：environment acceptance 在至少 0.85 的 not-fail rate 中把 warning 与 pass 合并。raw vote、disagreement、calibration、rejected check 以及 75 个 rejected environment program/log 缺失，因此无法重建 strict correctness 与 selection bias。
+- termination 与 correctness：Task Completed、###STOP### 和 action limit 独立于 checklist reward 结束 episode。trajectory 可以在未完成或错误时干净终止，generated check 也可能在不违反 stop rule 的情况下被 gaming。
+- executable-code 风险：environment class 与 check string 通过开放 builtins 的 Python exec 运行。发布没有 sandbox；如果 replay 未隔离，恶意或有缺陷的生成代码可能影响文件、进程、credential 或 network state。这是 code-safety 边界，不是在断言已检查 release 具有恶意。
+- loader 缺陷：固定 SFT trajectory revision 混合不兼容的 raw 与 instruction/input/output/system/history schema，导致默认 Hugging Face builder/viewer 抛出 DatasetGenerationCastError。单独 raw file 仍可访问，但 default loading 不是可复现的一键路径。
+- 版本与 replay：没有 tag、GitHub Release、dependency lock 或 immutable manifest 绑定 arXiv v2、commit 87e6673、四个 HF revision、prompt、endpoint、seed 与确切 model artifact。state diff、dependency image、完整 reward 与 paper-run replay fixture 也缺失。
+- split、overlap 与 contamination：论文使用 140 个环境做 SFT、51 个做 RL，随后在 BFCL-v3 multi-turn、Tau-Bench 与 ACEBench-Agent 上评测。split seed/policy、semantic deduplication、source/benchmark overlap，以及 pretraining 或 future-public-exposure audit 均未披露。
+- lineage 与 rights：repository 与 dataset card 声明 MIT，但逐记录 API-Bank/ToolACE provenance、upstream transformation right、provider-output term、prompt、generator/checker response，以及 root license 对所有对象的覆盖范围没有单独确立。
+- failure retention：malformed、incomplete、length-invalid 与被 LLM 判断 impossible 的 SFT case 会被丢弃；75 个环境被拒；RL rollout 未发布。按 trajectory reason 的 rejection count、discarded sample、raw check 与成功/失败 episode corpus 均不可得。
+- 泛化与 simulator 限制：作者指出 synthesis bias、open environment 有限，以及缺少真实 latency、network 与 error dynamics。simulated-user model/version、prompt、decoding、retry behavior 与 stop-policy detail 不完整。Qwen3-1.7B 在 Tau-Bench 上下降也说明 RL gain 并不统一。

@@ -1,0 +1,5 @@
+1. **Positioning:** The work uses Schoenfeld Episode Theory to define seven functional process labels for large reasoning models.
+2. **Method handle:** It collects SAT math CoTs, adapts cognitive definitions, annotates sentences and paragraphs, and analyzes transitions.
+3. **Data handle:** The repository releases full responses, seven episode labels, and detailed annotation guidelines.
+4. **Evidence anchor:** Different LRMs exhibit stable but distinct Plan, Implement, Verify, and Explore transition patterns.
+5. **Reuse decision:** It fits cognitive process analysis; avoid anthropomorphism and add correctness labels for PRMs; evaluation should separately check agreement at sentence, paragraph, and complete-episode boundaries; cross-model comparisons must fix problems, prompts, and sentence segmentation; It is best for theory-driven process annotation and model-behavior comparison. The main risks are anthropomorphism and boundary drift, requiring human calibration under fixed prompts.

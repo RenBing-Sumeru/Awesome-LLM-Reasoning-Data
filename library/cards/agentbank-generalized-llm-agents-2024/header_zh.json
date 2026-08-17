@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AGENTBANK 汇集 16 项任务、五类智能体技能的五万余条交互轨迹，并为每个动作提供链式推理标注。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "跨任务智能体交互轨迹与逐步思维标注数据集论文",
+  "best_for_ch": "需要大规模、跨环境 ReAct/CoT 轨迹来研究通用智能体微调和能力迁移的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yifan Song, Weimin Xiong, Xiutian Zhao, Dawei Zhu, Wenhao Wu, Ke Wang, Cheng Li, Wei Peng, Sujian Li",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T10:15:49Z"
+}

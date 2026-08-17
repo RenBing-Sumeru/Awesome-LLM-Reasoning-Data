@@ -1,0 +1,9 @@
+相关prior baseline并不是“此前没有桌面智能体基准”。OSWorld已经提供可扩展VM交互和programmatic evaluator，Windows Agent Arena专注Windows执行，ProBench、SPA-Bench与A3也推动了中间或process-sensitive evaluation；WindowsWorld明确继承OSWorld-derived infrastructure。PyAutoGUI控制、accessibility观察、LLM生成、VLM判分和职业persona都是已有组件，不能单独作为创新主张。
+
+真正改变的是evaluation object。一条WindowsWorld记录把专业多应用指令、声明式前置条件、环境依赖、path-essential中间状态、最终状态标准和不可行任务类别绑定起来。因此，即使最终成功率接近零，不同episode仍可在多个语义状态上比较。77.9%的多应用集中度和L3平均27.81个最少专家动作，使该接口主要测量协调与状态保持，而不只是视觉grounding。
+
+构造recipe也改变了成本结构：persona-based DeepSeek-V3.2生成后接四节点refiner、人工筛选和带smart merging的文件合成。值得关注的是任务生成、setup dependency、状态指标与VM执行之间的联动。不过，候选总数、精确refiner/environment model、任务修订历史和合成setup文件没有发布，自动化质量不能只靠论文重建。
+
+feedback创新有明确边界。经人工确认且不绑定特定action的checkpoint，使部分进度允许替代路径；作者还用两名标注者验证Qwen3-VL-Plus。这比final-only success更具诊断性，但仍是post-hoc trajectory judging。公开L4 contract显著弱于L1–L3，因为它接受通用FAIL标记；论文也没有把这些信号证明为可扩展online training reward。
+
+对reasoning-data研究，方向性价值在于：轨迹数据应同时绑定任务、环境状态、可见证据、中间谓词、terminal predicate和evaluator版本。WindowsWorld提供了大部分schema，却没有完整执行语料或不可变replay manifest。复用前必须区分“benchmark定义的创新”与“trajectory data是否公开”，并检查任务审批、setup接线、judge漂移、失败留存、split policy和license scope。

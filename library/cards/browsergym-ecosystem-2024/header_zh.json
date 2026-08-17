@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BrowserGym 为可复现 Web 智能体研究提供统一浏览器环境层。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "TMLR 2025 / arXiv 的 Web-agent benchmark infrastructure",
+  "best_for_ch": "关注 Web/浏览器智能体、统一环境接口、adapter 评测契约、轨迹数据和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Thibault Le Sellier De Chezelles 等（ServiceNow Research、Mila、Polytechnique Montréal、Carnegie Mellon University 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T20:10:39Z"
+}

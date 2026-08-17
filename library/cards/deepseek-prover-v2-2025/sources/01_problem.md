@@ -1,0 +1,3 @@
+DeepSeek-Prover-V2 targets formal theorem proving in Lean 4 by combining informal mathematical planning with formal proof generation. Its report is relevant to a reasoning-data audit because it describes synthetic cold starts, self-generated proof data, programmatic proof verification, and reinforcement learning, while the operational artifacts behind those claims remain largely unavailable.
+
+For this Card, a successful Lean check means that a completed proof is accepted for the supplied formal theorem in a particular Lean environment. It does not, on its own, establish the provenance of the theorem prompt, the semantic faithfulness of an autoformalization to an informal source, or reproducibility without the exact environment and data lineage.

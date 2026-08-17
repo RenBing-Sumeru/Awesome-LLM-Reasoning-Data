@@ -1,0 +1,6 @@
+- Read Section 3.1 with Table 1: the exact construction counts are 57,215 collected seeds, 37,754 retained seeds, 1,565,632 synthetic candidates, 380,560 retained synthetic problems, and 418,314 total problems.
+- Read Sections 3.2.2 and 3.3 together: synthetic rows use agreement, but difficult Codeforces-derived items can pass at 40%, and seed problems with no passing QWQ-32B candidate retain all generated solutions.
+- Use Table 5 as verifier evidence: 96.8% and 92.8% are oracle-comparison accuracies, which establish usefulness and residual error; model benchmark gains are not row-level correctness measurements.
+- Compare the paper and supplement before reimplementation: the released verifier votes per input, uses strict `>`, drops constant-output problems, and the code package is missing a functioning LLM call plus required files/arguments.
+- Pin data by revision and treat counts as separate objects: the 580K paper mixture, 418,314 Table 1 total, 480K Appendix Table 6 entry, and roughly 398K public synthetic configs are not reconciled.
+- Follow the final NeurIPS proceedings for authorship: it includes Cheng Li; the current arXiv and Hugging Face citation blocks omit that author.

@@ -1,0 +1,6 @@
+- 日期必须分开写：arXiv v1 出现在 2025 年，但正式 publisher record 是 AAAI 2026；entry ID 保留早期 batch identity。
+- 记住对象边界：600 个 query-reference-answer instance 会生成 interaction history，但论文没有规定唯一 gold execution trace，也没有核实到官方 trajectory archive。
+- 在相信 Pass Rate 前先读 Appendix E。MCP-Eval 把具体 external-looking data 视为工具使用证据，但 judge 看不到 call trace 或 state。
+- Table 1 应解释为 model-plus-scaffold measurement：Qwen3-235B-A22B 在 ReAct 下为 64.7%，native tool calling 下为 40.2%；Kimi K2 的 native tool calling 为 61.0%。
+- 可与 ComplexMCP 的 programmatic final-state verification、Toolathlon 的 task-specific evaluator 与 trajectory log release 对读；三者共享 MCP/tool-use 表象，但 feedback 与 release contract 差异更关键。
+- 在 600 条任务、server/tool manifest、版本、rights、完整 episode、replay record 与独立 judge/security calibration 核实前，只用于阅读与 evaluation design。

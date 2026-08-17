@@ -1,0 +1,4 @@
+This is not a data release. Its distinctive Track 12 value is the conjunction of a concrete trace-origin statement, a narrowly stated reward boundary, and disclosed evaluation scaffolding. The report says that reasoning models generate SFT thought traces; it identifies length penalties on thoughts in RL; and it explicitly says that most other rewards are computed without reference to thoughts. That is more informative than a generic statement that a model uses post-training, while still falling far short of a disclosed data or reward pipeline.
+
+The report also makes the confounders around cyber comparisons visible: Gemini 3 Pro receives increased attempt budgets, step limits, and tool affordances relative to earlier models. This Card preserves that boundary so reported safety evidence can be compared without turning the report into a capability leaderboard, a reusable dataset, or a fully specified training recipe.
+

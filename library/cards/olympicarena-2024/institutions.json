@@ -1,0 +1,20 @@
+{
+  "institutions": [
+    "Shanghai Jiao Tong University",
+    "Shanghai Artificial Intelligence Laboratory",
+    "Soochow University",
+    "Generative AI Research Lab (GAIR)"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:25:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.12753",
+    "https://gair-nlp.github.io/OlympicArena/",
+    "https://github.com/GAIR-NLP/OlympicArena",
+    "https://huggingface.co/datasets/GAIR/OlympicArena",
+    "https://openreview.net/forum?id=ayF8bEKYQy",
+    "https://papers.nips.cc/paper_files/paper/2024/hash/222d2eaf24cf8259a35d6c7130d31425-Abstract-Datasets_and_Benchmarks_Track.html"
+  ],
+  "verification_note": "OpenReview/proceedings, project, GitHub, and Hugging Face sources verify NeurIPS 2024 Datasets and Benchmarks Track Poster status, institutions, and public artifacts; test answers are withheld for leaderboard-style evaluation."
+}

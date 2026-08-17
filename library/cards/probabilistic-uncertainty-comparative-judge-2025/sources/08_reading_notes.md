@@ -1,0 +1,5 @@
+- **Position:** it turns comparative judging from exhaustive ranking into uncertainty-guided acquisition.
+- **Lever:** PoE score inference plus Laplace covariance produces a probability of reordering for each candidate pair.
+- **Artifact:** UAI paper only; no verified public code or dataset link.
+- **Evidence:** on SummEval, 90%-of-final performance needs roughly 60% fewer Flan-T5 and 50% fewer Qwen comparisons than minimum uncertainty.
+- **Reuse decision:** calibrate on a held-out human ranking; avoid it when Gaussian posterior approximation is visibly poor.

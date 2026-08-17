@@ -1,0 +1,99 @@
+id: harvey-legal-agent-benchmark-2025
+title: Harvey's Legal Agent Benchmark
+year: 2025
+venue: Vals AI / Harvey benchmark page
+authors:
+- Harvey
+- Vals AI
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- legal
+- legal-agents
+- professional-services
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://www.vals.ai/benchmarks/hlab
+  arxiv: null
+  doi: null
+  code: null
+  data: null
+  project: https://www.vals.ai/benchmarks/hlab
+data_object:
+  dataset_scale: Official page distinguishes a public set and a held-out test set; exact task count/version should be pinned
+    from Harvey/Vals release notes.
+  prompt_source: Legal work task with task-specific documents and criteria.
+  trace_author: Evaluated legal agent operating with six provided tools and internet access disabled.
+  answer_format: Legal work product, file outputs, citations, or supporting work product demanded by the task.
+  process_fields:
+  - legal task
+  - workspace files
+  - tool trace or output files
+  - criterion-level grades
+  - task pass indicator
+  environment_or_substrate: Document, spreadsheet, presentation, and file-system tool environment for legal work.
+  verifier_or_reward: Two LLM judges grade criteria; task passes only when all criteria pass under the official policy.
+  terminal_predicate: Submitted work satisfies every task-specific criterion.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark/evaluation surface.
+  teacher: Official benchmark authors or platform maintainers.
+  generator: Official task construction and benchmark harness.
+  filtering_rule: See official release/version notes; do not infer unreleased filters.
+  sampling_protocol: Pin task version, scaffold, model settings, scorer, and leaderboard snapshot.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: evaluation harness or platform-specific scaffold
+audit:
+  source_mixture: Official benchmark page plus public repository/data artifact where available.
+  split: see official source; hidden/public policy may be partial
+  decontamination: public exposure and leaderboard reuse can create contamination risk
+  license: verify from official artifact before redistribution
+  lineage: tracked to official benchmark source
+  known_failure_modes: &id001
+  - pin current public/held-out split, exact judge prompts, legal-domain coverage, and release license
+  - legal correctness remains jurisdiction- and date-sensitive
+  citation_status: verified_official_source
+  confidence: high
+  notes: The official Vals page verifies the benchmark surface and scoring policy; private held-out material limits independent
+    reproduction.
+inclusion_reason: Harvey's Legal Agent Benchmark tests legal work products over documents, spreadsheets, presentations, and
+  file-system tools, using task criteria and LLM-judge grading.
+related:
+- legalbench-2023
+- lawbench-2023
+- new-legal-research-bench-2025
+tags:
+- agent_environment
+- benchmark
+- evaluation-surface
+- legal
+one_line: Harvey's Legal Agent Benchmark tests legal work products over documents, spreadsheets, presentations, and file-system
+  tools, using task criteria and LLM-judge grading.
+why_it_matters: Harvey's Legal Agent Benchmark tests legal work products over documents, spreadsheets, presentations, and
+  file-system tools, using task criteria and LLM-judge grading.
+status: verified
+needs: *id001
+one_line_summary: Harvey's Legal Agent Benchmark tests legal work products over documents, spreadsheets, presentations, and
+  file-system tools, using task criteria and LLM-judge grading.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: codex_official_source_check
+  confidence: high
+  notes: The official Vals page verifies the benchmark surface and scoring policy; private held-out material limits independent
+    reproduction.
+category_ids:
+- benchmarks_evaluation_surfaces

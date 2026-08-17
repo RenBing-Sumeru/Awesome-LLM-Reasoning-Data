@@ -1,0 +1,1 @@
+正确性只相对于 AitZ JSON 标注和动作解析器成立。过程标签可能语言流畅，但仍然不完整、过度特化，或与真实 GUI affordance 不一致。仓库通过 Google Drive 和 Baidu 分发数据，而不是带版本号的数据 registry，因此正式比较前应本地保存哈希和 archive 内容。报告的 prompt 改进主要是动作预测和小样本比较，不是受控在线 Android 任务成功。Single 子集只有 train，以及公开截图，也带来泄漏和污染风险。

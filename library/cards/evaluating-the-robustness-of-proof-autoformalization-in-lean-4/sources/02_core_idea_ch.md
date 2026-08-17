@@ -1,0 +1,1 @@
+benchmark 基于 miniF2F 与 MATH-500 的自然语言证明构造两类数据。global perturbation 改变风格、句式或组织但保持语义；local perturbation 修改数值、符号或某一步，要求形式化结果相应变化，即使新证明可能为反事实。每条记录保存原证明、扰动证明、预期变化、模型 Lean 输出、编译结果及一致性/忠实度标签。官方代码和数据用于 autoformalization robustness 诊断，而非大规模证明 SFT。

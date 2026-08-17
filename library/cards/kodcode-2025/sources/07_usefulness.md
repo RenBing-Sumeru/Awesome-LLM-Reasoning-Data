@@ -1,0 +1,3 @@
+- Use R1-SFT when the target is a coding assistant that produces long reasoning and executable solutions; use V1 triplets when training with unit-test reward or generating a new verified SFT target.
+- The input is the chosen question/style plus test metadata when appropriate; the output is a verified conversation or code solution, and success is all tests passing plus improvement over a matched base model on held-out code benchmarks.
+- Preserve question ID, subset, seed IDs, every trial, coverage, selected solution, test, benchmark similarity, R1 pass sequence, split, and dataset revision. Do not use the release when commercial licensing or independently authored tests are mandatory.

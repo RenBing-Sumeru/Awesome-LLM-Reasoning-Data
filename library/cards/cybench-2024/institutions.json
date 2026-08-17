@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Stanford University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2408.08926",
+    "https://cybench.github.io/",
+    "https://github.com/andyzorigin/cybench",
+    "https://openreview.net/forum?id=tc90LV0yRL"
+  ],
+  "verification_note": "arXiv, OpenReview, project, and GitHub sources verify ICLR 2025 Oral status, Stanford affiliation, and public benchmark code/data; leaderboard versions and answer-leak fixes must be pinned."
+}

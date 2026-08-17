@@ -1,0 +1,9 @@
+- **无可复用artifact：** 尚未确认官方code、machine-readable task set、Process Provider/evaluator实现、environment package、result file或trajectory corpus。独立执行、verifier testing与逐记录error analysis均受阻。
+- **不是process supervision：** action description由被评智能体behavior生成，只展示给terminal judge。它们不是gold action、agent-visible feedback、dense process reward或发布的training label。
+- **judge与converter错误：** a11y metadata可能noisy、empty或misleading，详细node extraction也只适用于click。MLLM summary和Gemini terminal judgment可能hallucinate或遗漏要求；报告validation低于100%，且缺少sample/protocol细节。
+- **人工reset：** 手工清除in-app history不能保证server/account/cookie/personalization/notification/clock/locale/network状态干净。英文emulator与中文physical-phone运行也缺少固定Android/app/device/account snapshot，不能deterministic replay。
+- **无split或污染审计：** State/Process与English/Chinese是evaluation strata，不是split。未发布train/dev/test或hidden-test政策、task hash、正式lexical/semantic dedup report、external overlap analysis、Qwen3 contamination check或evaluated-model exposure audit。
+- **failure retention：** 论文区分Uncompleted、Failure与Success并展示selected case，但没有公开per-episode action、observation、process text、judge response、label或完整success/failure/uncompleted corpus。
+- **构造不透明：** Qwen3 checkpoint/prompt/setting、seed/candidate pool、rejection count、annotator protocol、agreement与adjudication均为unknown。减少lexical/structural overlap只是声称，没有machine-readable report。
+- **权利：** AAAI论文声明Copyright © 2026 AAAI, all rights reserved。由于没有单独code/data/task/trajectory发布或许可，task text、screenshot、application content、evaluator output与未来artifact的复用权利均为unknown。
+- **隐私与安全：** 尽管使用live email、map、shopping、finance、social等app，credential/account setup、PII/redaction、personalized-content review、consent、retention、takedown、purchase/form/setting控制、rate limit与misuse政策均未披露。

@@ -1,0 +1,5 @@
+- Verify whether the public repository actually contains the 60k filtered keywords, the 19k training subset, raw online rollouts, rejected candidates, and per-step reward fields; record each artifact separately.
+- Recompute `G_t` and `P_t` on sampled records from retrieved-document snapshots, checking whether TF–IDF overlap matches factual information gain and whether duplicate detection is stable.
+- Audit MuSiQue lineage, GPT-4o generation prompts, N/M candidate settings, source-consensus filtering, dataset license, and decontamination; keep absent fields `unknown`.
+- Reproduce the matched ablation with frozen retrieval indexes, identical action budgets, seeds, and model checkpoints so retrieval drift and compute do not masquerade as reward improvements.
+- Inspect failed and high-reward trajectories for format exploitation, repetitive searches, phantom answers, and reward collapse; do not infer record-level quality from aggregate EM/F1.

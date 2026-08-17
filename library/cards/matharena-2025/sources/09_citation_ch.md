@@ -1,0 +1,1 @@
+引用：Mislav Balunovic, Jasper Dekoninck, Ivo Petrov, Nikola Jovanovic, Martin Vechev，"MathArena: Evaluating LLMs on Uncontaminated Math Competitions"，arXiv:2505.23281，2025。论文：https://arxiv.org/abs/2505.23281；官方平台：https://matharena.ai/；官方代码：https://github.com/eth-sri/matharena；官方数据/日志组织：https://huggingface.co/MathArena。

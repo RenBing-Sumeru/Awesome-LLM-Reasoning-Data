@@ -1,0 +1,1 @@
+Panagiotis Giadikiaroglou、Maria Lymperaiou、Giorgos Filandrianos、Giorgos Stamou。2024。《Puzzle Solving using Reasoning of Large Language Models: A Survey》。EMNLP 2024，11574–11591 页。论文与会议官方记录：https://aclanthology.org/2024.emnlp-main.646/

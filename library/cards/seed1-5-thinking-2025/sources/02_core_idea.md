@@ -1,0 +1,3 @@
+The report describes four reasoning-RL data families: STEM, competitive-programming code, logic puzzles, and non-verifiable assistant tasks. It pairs these families with heterogeneous feedback: answer or task checks for verifiable work, Seed-Verifier and Seed-Thinking-Verifier for long-CoT reasoning, and a pairwise generative reward model for non-verifiable tasks.
+
+For the disclosure ledger, the central contribution is a partial interface specification: the paper identifies several prompt sources, trace-writing routes, verifier or reward components, filtering decisions, and a 400k-example SFT stage. It is not an open release of the underlying data, code, or full RL configuration.

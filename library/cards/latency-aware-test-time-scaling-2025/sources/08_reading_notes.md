@@ -1,0 +1,5 @@
+- Read Table 1 first: at 1,024 tokens, the joint s1.1-32B configuration changes both latency (`96.2` to `57.2 s`) and accuracy (`75.0` to `82.3%`).
+- Treat branch count, draft length, output length, aggregation, hardware/load, and latency as one configuration record; token count alone is not the budget used by the paper.
+- Table 2's s1.1-3B row reports 11 greedy steps although §5.3 says 8–10; prefer the row-level value and keep the discrepancy visible.
+- Read Appendix A.2 for acceptance rates and task-specific configurations, then Appendix A.4 for the multi-request failure boundary.
+- Pair this Card with token-optimal TTS and self-consistency work, but do not infer a public rollout release from benchmark performance.

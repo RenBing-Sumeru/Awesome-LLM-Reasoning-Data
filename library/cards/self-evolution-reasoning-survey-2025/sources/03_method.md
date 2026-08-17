@@ -1,0 +1,1 @@
+When using the taxonomy, record one round as a complete unit: seed tasks, generated traces, filters or rewards, the model update, and evaluation on held-out tasks. Then compare rounds rather than only the first and last model. The paper is a synthesis, not a released pipeline, so implementation details and data licenses remain properties of the primary methods.

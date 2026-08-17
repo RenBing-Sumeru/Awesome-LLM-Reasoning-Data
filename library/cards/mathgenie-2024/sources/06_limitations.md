@@ -1,0 +1,3 @@
+- Mcode verifies its own style of solutions and has only 82.6% average precision, including 64.5% on MATH. Replay code and use independent solvers or human review before treating accepted pairs as positives.
+- The pipeline full-fine-tunes several 70B models and reports up to 32 A800 80GB GPUs; teacher cost, retries, and per-record provenance are not consolidated, limiting exact reproduction.
+- Records contain executable Python, models are limited to text and 4,096-token contexts, and no broad semantic decontamination is reported. Sandbox code, scan target evaluations, and retain upstream rights metadata.

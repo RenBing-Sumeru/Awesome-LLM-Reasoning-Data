@@ -1,0 +1,1 @@
+Do not read the score as claim-level precision. Read the eligibility filter, grounding judge, and split policy before comparing models. Public/Open examples, Private/Blind examples, and later FACTS versions must stay separate.

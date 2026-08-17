@@ -1,0 +1,1 @@
+Read the README's TFRecord fields and action space before interpreting scale curves. Keep app-generalization, task-generalization, and random in-distribution results separate. AndroidControl is about the effect of data scale under a particular offline action schema; do not use its aggregate score as a direct measure of deployed mobile-agent reliability.

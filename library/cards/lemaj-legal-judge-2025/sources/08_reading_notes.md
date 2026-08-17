@@ -1,0 +1,1 @@
+Read the reported agreement measures together with the construction of LDPs: the decomposition is part of the intervention, not neutral preprocessing. Check which legal task, source materials, and expert standard the study uses before treating a rating difference as a general capability claim.

@@ -1,0 +1,5 @@
+- 先读 Figure 1、论文 §§3.1–3.3 和 Table 2：它们共同说明 policy/PPM 轮次循环、可执行 MCTS 节点、两种导出监督对象，以及与本 track 最相关的解题覆盖率变化。
+- 把 Q-value 理解为依赖 policy、搜索树、检查器和预算的 trajectory value，不要当作每个局部步骤数学正确性的内在标签。
+- 对照 Hugging Face schema 与仓库 extractor：最终表保留了可用的 SFT 与偏好文本，却丢失了选择时依赖的搜索树证据和 provenance。
+- 阅读“没有更强模型 solution distillation”的主张时，同时保留两个 bootstrap 事实：GPT-4 扩展了题目池，DeepSeek-Coder-V2-Instruct (236B) 生成了第 1 轮轨迹。
+- 复用前需解决论文与配置差异、上游许可、去污染、来源映射、原始搜索树和 checkpoint 身份问题。

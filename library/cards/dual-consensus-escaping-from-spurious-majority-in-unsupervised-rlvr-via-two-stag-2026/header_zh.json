@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用双阶段共识缓解无监督 RLVR 中多数错误答案带来的伪信号，适合审计投票机制的失效条件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "审计、污染或验证器鲁棒性论文",
+  "best_for_ch": "想复盘验证器、基准污染、奖励投机或可复现性风险的研究者。",
+  "confidence_ch": "高：官方主链接已核验；具体训练数据细节以原文披露为准。",
+  "authors_ch": "Kaixuan Du、Meng Cao、Hang Zhang、Yukun Wang、Xiangzhou Huang、Ni Li",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-13T12:32:38Z"
+}

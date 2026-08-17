@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "rStar2-Agent 披露 Python 执行环境、GRPO-RoC、Resample-on-Correct 与分阶段智能体 RL，但任务、环境、奖励/verifier、rollout 和审计工件仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿智能体推理技术报告与数据披露台账",
+  "best_for_ch": "审计执行反馈、工具环境和分阶段智能体 RL 的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Ning Shang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,3 @@
+AgentPack is useful as a schema for code-editing supervision from real software-engineering agent use. Preserve agent identity, attribution signal, repository, commit/PR ids, date, natural-language description, file paths, old and new content or hunks, patch size, language/file type, task labels, filtering decisions, split, and snapshot version.
+
+For atlas use, it is a cautionary example of agent data without a full environment loop: the record is valuable, but the feedback contract is implicit and downstream. It can support code-editing model training and audits of public agent adoption, provided users do not mistake merged code for per-item verified correctness.

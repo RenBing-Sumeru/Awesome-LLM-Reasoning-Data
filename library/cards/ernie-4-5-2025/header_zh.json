@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "ERNIE 4.5 披露了 230 万条 LLM SFT、异构验证器/奖励栈、基于 PPO 与 UPO 的渐进 RL，以及三阶段 VLM SFT-to-RLVR 流水线，但未发布底层后训练账本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态模型后训练与反馈系统技术报告",
+  "best_for_ch": "研究混合奖励、偏好优化、多模态 RLVR 与前沿模型披露审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "百度 ERNIE 团队",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

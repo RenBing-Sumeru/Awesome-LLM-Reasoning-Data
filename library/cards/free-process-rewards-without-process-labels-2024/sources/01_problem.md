@@ -1,0 +1,1 @@
+Step-level labels are costly, while final-answer correctness alone provides weak credit assignment. This paper asks whether a useful process reward can be recovered from outcome supervision without collecting explicit process annotations.

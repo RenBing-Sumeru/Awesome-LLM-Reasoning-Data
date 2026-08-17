@@ -1,0 +1,4 @@
+The paper analyzes 26,624 cases for the correlation between initial diversity and debate gain, compares single models, vanilla five-by-five debate, majority vote, diversity selection, learned aggregation, confidence, and combined variants, and reports Brier, ECE, AUROC, accuracy, Pass@5, and unique answers. It also proves results under a simplified Dirichlet-categorical belief-update model.
+
+Appendix evidence is especially useful for audit: it gives the 5K/10K construction, sampling hyperparameters, reward scales, and the observed reward-hacking behavior that motivated the engagement heuristic. System-level benchmark and calibration results support the mechanisms under tested settings. They do not prove every confidence value is calibrated, every argument is correct, or the unreleased dialogues are high-quality data.
+

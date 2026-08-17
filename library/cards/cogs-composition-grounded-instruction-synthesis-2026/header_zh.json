@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "COGS 将少量困难视觉问题分解为可复用的感知与推理因子，再与新图像重组，合成带因子级过程奖励的问答数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要合成图表、文档或网页视觉推理数据，并让中间子问题直接形成过程奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinyi Gu、Jiayuan Mao、Zhang-Wei Hong、Zhuoran Yu、Pengyuan Li、Dhiraj Joshi、Rogerio Feris、Zexue He",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:14:53Z"
+}

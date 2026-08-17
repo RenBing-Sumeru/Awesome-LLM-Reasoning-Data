@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该研究把五种污染检测器作为不同的审计接口，在八个基准与一个受控 LLaMA-2 指令微调 oracle 上比较；五种指标都未能稳定追踪已知新增暴露比例，方法间一致性也很弱。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据污染检测审计、受控构造 recipe 与负结果研究",
+  "best_for_ch": "设计基准污染审计、核查检测器假设、构造已知新增暴露对照，或评估开放审计 artifact 完整性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Vinay Samuel、Yue Zhou、Henry Peng Zou",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

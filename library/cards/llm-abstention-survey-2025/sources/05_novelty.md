@@ -1,0 +1,3 @@
+Its distinctive contribution is to place human values beside query difficulty and model capability. That shift is useful because an identical refusal can be appropriate in one context and unnecessarily restrictive in another.
+
+The contribution is not a claim that more refusal is always preferable. It explains why a behavior cannot be evaluated without stating who bears its consequences and what information is available. This is a useful corrective to comparisons based only on aggregate scores. It lets readers ask whether a proposed improvement changes the model's evidence, the decision policy, or merely the evaluation preference used to declare success.

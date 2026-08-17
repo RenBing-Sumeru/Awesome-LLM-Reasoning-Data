@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TELBench 标注深度研究代理轨迹中的有害错误片段，DRIFT 通过追踪无证据主张定位代理最早出错的位置。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要诊断研究代理轨迹、训练过程审计器或评估首错定位能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiaming Wang、Ziteng Feng、Jiangtao Wu、Ruihao Li、Qianqian Xie、Yuxiang Ren、He Zhu、Xueming Han、Fanyu Meng、Junlan Feng、Jiaheng Liu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:17:49Z"
+}

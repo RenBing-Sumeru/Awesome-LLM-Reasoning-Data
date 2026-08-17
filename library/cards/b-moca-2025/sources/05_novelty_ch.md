@@ -1,0 +1,1 @@
+已有基线多是固定环境、任务范围较窄或配置变化有限的 mobile/OS agent 评测。B-MoCA 的变化是把“设备配置”本身作为受控泛化轴。方向信号是现实 Android 日常任务、随机化测试配置、rule-based success detector，以及同时支持 LLM、MLLM 和 imitation-learning agent。质量信号是开放代码/材料 release，以及全任务和代表性长程任务实验。不是新的部分包括 Android emulation、ADB/Appium 式状态检查和 success-detector benchmark。复用前要检查 release branch、detector 正确性、app/data 许可、环境 ID、随机性任务、语言设置，以及训练 demonstration 是否与测试配置重叠。

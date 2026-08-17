@@ -1,0 +1,1 @@
+Read the three method families as a comparison table. For every candidate, write quality signal, cost signal, intervention point, and the hardest failure. Keep quality and cost separate until the end; otherwise an attractive average can hide a severe loss on difficult reasoning.

@@ -1,0 +1,1 @@
+Record dataset revision, license, five-axis definitions, normalization, pair-generation threshold, response generator, model checkpoint, and evaluation template. Evaluate each axis and length-controlled subsets; an aggregate RewardBench score cannot reveal which label dimension the model learned.

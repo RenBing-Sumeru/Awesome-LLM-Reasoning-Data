@@ -1,0 +1,5 @@
+- Read Sections 3.2 and 4.3 with Tables 2–5: pool size 64, tournament branching factor \(N\), and the number of selector repetitions are different budgets.
+- Figure 2 defines the actual feedback interface: generated comparative reasoning followed by the zero-based text field `Judgment: [IDX]`.
+- Treat 73.4% and 87.1% as author-reported selector results under specific QwQ and DeepSeek settings, not as proof that selector traces are high-quality training data.
+- Keep the target-paper object separate from OpenMathReasoning: the former's Comp-Math pools are unreleased; the latter has 565,620 packed, correctness-filtered training rows with no standalone chosen index or per-candidate labels.
+- Reproduction priorities are target candidate pools and seeds, full versus summarized traces, prompt and parser versions, HMMT judge outputs, per-permutation logs, and token/latency-normalized budgets.

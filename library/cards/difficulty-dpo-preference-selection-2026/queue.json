@@ -1,0 +1,18 @@
+{
+  "title": "Difficulty-Based Preference Data Selection by DPO Implicit Reward Gap",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2508.04149",
+    "code": "https://github.com/Difficulty-Based-Preference-Data-Select",
+    "data": "https://github.com/Difficulty-Based-Preference-Data-Select"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T08:47:56Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "选择隐式奖励差最小的偏好边界样本，使 DPO 和奖励模型能以约 10% 数据获得更强训练信号",
+    "updated_at": "2026-07-16T08:47:56Z"
+  }
+}

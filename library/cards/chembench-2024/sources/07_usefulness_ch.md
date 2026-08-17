@@ -1,0 +1,1 @@
+ChemBench 可作为专家领域评测记录的配方参考：应保留 topic、question、expected answer 或 metric、model prompt、model answer、score、package version 和 confidence/calibration notes。它适合做领域模型审计、化学 benchmark 污染检查，以及 prompt/harness 对比。在 atlas 中，化学家表现应作为 baseline 字段，不能和自动 verifier result 混在一起。

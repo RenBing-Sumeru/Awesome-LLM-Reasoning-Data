@@ -1,0 +1,1 @@
+BBH is useful as a compact regression set for reasoning prompts and answer-extraction pipelines. A reusable record should keep task name, input, target, prompt variant, rationale text, extracted answer, scorer result, and model/decoding configuration. For the atlas, it is a clean example of turning a broad benchmark into a hard subset with a prompt-sensitive feedback contract.

@@ -1,0 +1,3 @@
+The paper presents a two-way relationship. Code can enhance reasoning through abstraction, modularity, logical structure, executable paths, decomposition, and runtime validation. Reasoning can in turn move code intelligence beyond completion toward planning, debugging, and more difficult software tasks.
+
+The two directions should be read separately before they are combined. In one, code is an intermediate object that constrains thinking; in the other, reasoning organizes a software task before or during implementation. Their common link is a connection between a structured artifact, execution, and feedback that can inform the next decision.

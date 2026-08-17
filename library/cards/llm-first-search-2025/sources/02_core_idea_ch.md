@@ -1,0 +1,1 @@
+LFS 同时维护当前状态—动作路径和由未选候选组成的 priority queue。在每个非终局步骤中，exploration prompt 返回模型是否要离开当前路径；若选择探索，frontier 中价值最高的已存节点成为当前节点；否则，任务专用 evaluation prompt 为可用子节点给出标量价值，系统沿最高价值子节点继续，并保留其他子节点以供后续回溯。其反馈契约是 mixed：LLM 同时担任控制器和价值 judge，而确定性的 Countdown 或 Sudoku 代码负责枚举合法动作、执行转移并检查终局成功，给出二元任务 reward。模型分数用于选择，但不是经独立验证的正确性标签。

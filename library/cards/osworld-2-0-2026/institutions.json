@@ -1,0 +1,27 @@
+{
+  "institutions": [
+    "XLANG Lab, The University of Hong Kong",
+    "University of California, San Diego",
+    "Columbia University",
+    "University of California, Santa Barbara",
+    "Mila",
+    "Uniphore",
+    "Snorkel AI",
+    "University of Wisconsin-Madison",
+    "Alibaba Qwen",
+    "The Ohio State University",
+    "Simular",
+    "NeoCognition"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2606.29537",
+    "https://osworld-v2.xlang.ai/",
+    "https://github.com/xlang-ai/OSWorld-V2",
+    "https://huggingface.co/datasets/xlangai/osworld_v2_tasks",
+    "https://huggingface.co/datasets/xlangai/osworld2.0-trajectory"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF datasets verify authors, institutions, release status, and artifacts."
+}

@@ -1,0 +1,1 @@
+一手来源是 Balunovic 等人的 "MathArena: Evaluating LLMs on Uncontaminated Math Competitions"（2025 年 arXiv），以及官方 MathArena 网站、GitHub 和 Hugging Face 组织。论文要解决的是如何用足够新的数学竞赛评测前沿模型，从而降低 benchmark contamination。收录边界是 live/recent competition evaluation，不是静态教材题库，也不是形式化证明验证。数据对象是竞赛题、官方答案或证明目标、模型输出、抽取出的答案或被评审的证明，以及分数。它对 atlas 的价值是污染感知的数学评测面。

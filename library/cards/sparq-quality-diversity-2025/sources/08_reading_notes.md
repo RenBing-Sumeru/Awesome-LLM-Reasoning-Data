@@ -1,0 +1,5 @@
+- Start with Sections 2–3 and Appendix F: MATH supplies 7.5K seeds, Gemma-2-27B-it mutates parents, Gemma-2-9B-it assigns up to three skills, and a MATH-SFT Gemma-2-9B produces 16 verification solutions.
+- Read quality literally as (1-)solve-rate only within [0.1, 0.9]. Verification is numerical agreement with a generated intended answer, not independent proof checking.
+- Distinguish the 320K all-generation archive, about 80K retained unique problems, and about 500K retained problem/successful-solution tuples; they are different data objects with different multiplicities.
+- Compare search and filtering results separately: dynamic diverse generation maximizes measured skill coverage, static uniform gives the strongest main downstream model, and joint QD filtering is strongest under fixed sample budgets.
+- Treat the validity probe and Appendix B as central evidence. Harder accepted items are more often invalid, and child-score statistics do not repair that failure; code, corpus, schema, temperature, decontamination, and data license remain unknown.

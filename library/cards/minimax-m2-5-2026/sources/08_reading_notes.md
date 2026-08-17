@@ -1,0 +1,6 @@
+- Treat 200K+ software environments as an undefined author-reported scale, not a released corpus or 200K unique repositories.
+- Forge separates agent, LLM, environment, reward, rollout, and training services; tree merging claims ~40× speedup but lacks semantics and reproduction.
+- CISPO combines future performance and speed rewards minus a baseline; process reward is also named, but definitions, weights, calibration, and code are closed.
+- Preserve the official SWE-Bench conflict: README 80.2 versus HF evaluation attachment 75.80, with no reconciliation.
+- The released model is a 229B FP8 MoE with 196,608 maximum positions; inference availability does not reproduce pretraining, SFT, RL, or environments.
+- Code and weights have different modified-MIT/model-license terms; neither grants rights to unreleased workspaces, trajectories, or reward data.

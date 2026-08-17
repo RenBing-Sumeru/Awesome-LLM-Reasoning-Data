@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "基于跨七十年论文语料，量化 NLG 评测中人工评估、LLM judge 与评测标准的长期演变。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NLG 评测实践的纵向语料审计研究",
+  "best_for_ch": "需要制定 LLM judge 校准、人工评估或评测术语审计方案的研究者。",
+  "confidence_ch": "高：正式 ACL 论文及其公开代码和数据仓库均已核验。",
+  "authors_ch": "Patrícia Schmidtová, Saad Mahamood, Ondřej Dušek",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

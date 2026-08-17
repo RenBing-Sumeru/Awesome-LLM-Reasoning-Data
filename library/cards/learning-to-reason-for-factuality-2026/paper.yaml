@@ -1,0 +1,140 @@
+id: learning-to-reason-for-factuality-2026
+title: Learning to Reason for Factuality
+year: 2026
+venue: ICML 2026
+authors:
+- Xilun Chen
+- Ilia Kulikov
+- Vincent-Pierre Berges
+- Barlas Oğuz
+- Rulin Shao
+- Gargi Ghosh
+- Jason Weston
+- Wen-tau Yih
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+- judgment_required
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- factuality
+- long-form-generation
+- knowledge
+- reasoning
+training_use:
+- sft
+- preference_learning
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.05618
+  arxiv: https://arxiv.org/abs/2508.05618
+  code: https://github.com/facebookresearch/factual_reasoning
+  data: https://huggingface.co/datasets/facebook/factual_reasoning
+  project: https://github.com/facebookresearch/factual_reasoning
+  huggingface: https://huggingface.co/datasets/facebook/factual_reasoning
+  doi: https://doi.org/10.48550/arXiv.2508.05618
+  venue: https://openreview.net/forum?id=byZ7DoyDNd
+  openreview: https://openreview.net/forum?id=byZ7DoyDNd
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 7,000 Llama-4 synthetic fact-seeking prompts grounded by WildChat and non-test LongFact demonstrations, split
+    into 3,000 SFT and 4,000 RL prompts
+  trace_author: Llama 3.3 response outputs for the released offline data; current policy for online GRPO rollouts
+  answer_format: Chat-formatted src plus a Long-CoT tgt for SFT, or tgt_chosen and tgt_rejected Long-CoT responses for DPO;
+    responses use think and answer tags
+  process_fields:
+  - src
+  - tgt
+  - tgt_chosen
+  - tgt_rejected
+  - pairwise
+  - veriscore_margin
+  - len_chosen
+  - len_rejected
+  environment_or_substrate: Offline SFT and DPO files plus an online GRPO recipe that calls a separate ScalableVeriScore service
+  verifier_or_reward: ScalableVeriScore extracts and checks claims using retrieved web evidence; online reward combines smoothed
+    factual precision, supported-claim detail, and an LLM relevance comparison
+  terminal_predicate: Each completion is generated to a stop or token limit, checked for the think-and-answer format, and
+    scored post hoc; there is no interactive environment terminal state
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct
+  teacher: Llama-4-Maverick-17B-128E-Instruct-FP8 for prompt synthesis; Llama 3.3 outputs for released responses
+  generator: Ten offline candidates per prompt; four current-policy rollouts per prompt in online GRPO
+  filtering_rule: Select the highest-VeriScore-precision candidate for SFT; retain the maximum-margin DPO pair only when precision
+    margin is greater than 0.1 and relative length difference is at most 0.1
+  sampling_protocol: Paper reports 3,000 SFT prompts, 4,000 RL prompts, and about 3,700 retained DPO pairs; released files
+    contain 3,000 SFT rows and 3,706 DPO rows
+  rollout_count: 4
+  temperature: 1.0
+  inference_budget: Four GRPO rollouts per prompt with max_tokens 2048 in the released policy config
+  optimizer_or_scaffold: fairseq2 SFT, DPO, and modified GRPO with a live verifier server; the reported experiments use one
+    epoch, while current repository configs expose additional step and epoch limits
+audit:
+  source_mixture: WildChat demonstrations, non-test LongFact demonstrations, Llama-generated prompts and responses, and web-retrieved
+    evidence used by VeriScore
+  split: Hugging Face releases only sft/train.jsonl and dpo/train.jsonl; the original 4,000-prompt online split, online rollouts,
+    and component reward logs are not released
+  decontamination: The paper specifies non-test LongFact demonstrations; broader overlap checks against all six evaluation
+    sets and the verifier's changing web corpus are unknown
+  license: Dataset and code are CC-BY-NC-4.0; Llama-generated material and third-party content retain additional model and
+    source obligations, including the dataset card's Llama naming condition for distributed trained models
+  lineage: WildChat and non-test LongFact demonstrations -> Llama 4 synthetic prompts -> ten Llama 3.3 candidate responses
+    -> VeriScore selection for SFT or DPO; separate current-policy rollouts are scored online for GRPO
+  known_failure_modes:
+  - Precision-only optimization can favor short answers, while detail rewards can favor correct but irrelevant material
+  - Claim extraction, web retrieval, claim verification, and the LLM relevance judge can each introduce error or non-stationarity
+  - Candidate pools, retrieved evidence, original online prompts, online rollouts, and reward-component logs are not released
+  - The Hugging Face viewer cannot currently cast the differing SFT and DPO schemas together, although the raw JSONL files
+    are available
+  - Reported one-epoch schedules and current repository config limits need to be reconciled for exact reproduction
+  - Non-commercial and upstream model or content obligations constrain reuse
+  citation_status: verified
+  confidence: high
+  notes: Official paper, OpenReview record, Meta code repository, Hugging Face data release, and companion ScalableVeriScore
+    repository were checked; released offline schemas and row counts were inspected directly.
+inclusion_reason: Open factuality construction recipe with released SFT and DPO records and a clearly separable, unreleased
+  online GRPO data plane.
+related: []
+tags:
+- factuality
+- long-cot
+- veriscore
+- dpo
+- grpo
+status: partial
+one_line_summary: Releases factual-reasoning SFT and DPO data while online GRPO uses a mixed retrieval-and-judge reward whose
+  rollouts are not released.
+why_it_matters: Makes the data and feedback boundary visible for studying how factual precision, supported detail, relevance,
+  and verifier error interact in long-form reasoning post-training.
+card: cards/releases/factual_reasoning.md
+needs:
+- 'needs_rollout_release: publish the original 4,000 online prompts, GRPO trajectories, retrieved evidence, and reward-component
+  logs'
+- 'needs_verifier_audit: pin retrieval state, prompts, model revisions, and error analysis'
+- 'needs_recipe_reconciliation: reconcile reported one-epoch runs with current repository config limits'
+- 'needs_license_review: resolve CC-BY-NC, Llama, and third-party content obligations for the intended reuse'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, code, data release, OpenReview record, and companion verifier artifacts were verified; unknowns and
+    unreleased online artifacts remain explicitly marked.
+category_ids:
+- data_construction_open_release_recipes

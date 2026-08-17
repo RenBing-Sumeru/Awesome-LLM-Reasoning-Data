@@ -1,0 +1,105 @@
+id: pretrain-prompt-predict-survey-2022
+title: 'Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing'
+year: 2022
+venue: ACM Computing Surveys
+authors:
+- Pengfei Liu
+- Weizhe Yuan
+- Jinlan Fu
+- Zhengbao Jiang
+- Hiroaki Hayashi
+- Graham Neubig
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- prompting
+- reasoning
+- reasoning-data
+- few-shot-learning
+- evaluation
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://dl.acm.org/doi/10.1145/3560815
+  arxiv: https://arxiv.org/abs/2107.13586
+  code: https://github.com/thunlp/PromptPapers
+  data: null
+  project: http://pretrain.nlpedia.ai/
+  huggingface: null
+  doi: https://doi.org/10.1145/3560815
+  venue: https://dl.acm.org/doi/10.1145/3560815
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Natural-language task inputs transformed into prompt templates and answer spaces.
+  trace_author: Surveyed prompting studies; no new trace corpus is released.
+  answer_format: A systematic taxonomy of prompt construction, pre-trained models, and tuning strategies.
+  process_fields:
+  - task input
+  - template
+  - answer mapping
+  - demonstrations
+  - tuning strategy
+  - metric
+  environment_or_substrate: Pre-trained language models used with discrete or learned prompts.
+  verifier_or_reward: Task-specific evaluation from the surveyed primary work.
+  terminal_predicate: The prompt-derived output is mapped to a task answer and judged by the task metric.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Reviewed work varies from demonstrations to supervised task labels.
+  generator: Literature synthesis and unified notation.
+  filtering_rule: Organizes work by pre-trained model, prompt choice, and tuning strategy.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new recipe.
+audit:
+  source_mixture: Official ACM article and arXiv record.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion for all prompting benchmarks.
+  license: Check source and project terms before reuse.
+  lineage: 'Primary source: https://dl.acm.org/doi/10.1145/3560815'
+  known_failure_modes:
+  - Prompt gains are sensitive to template and demonstration choice
+  - Benchmark outcomes can depend on answer mapping
+  citation_status: verified
+  confidence: high
+  notes: OpenAlex listed 3,674 citations when checked on 2026-07-28; citation counts change over time.
+inclusion_reason: A high-citation survey with Carnegie Mellon University participation that provides the foundation for reasoning
+  prompting and prompt-derived data design.
+related: []
+tags:
+- foundations-and-primers
+- prompting
+- reasoning
+- high-citation
+- survey
+why_it_matters: It makes a prompt a documented transformation from task data to an answer space, not a casual string.
+one_line_summary: A high-impact systematic survey of the prompt designs that later reasoning prompting builds on.
+paper_type: Systematic survey
+reading_priority: strong
+best_for: Readers designing prompt-derived reasoning data or comparing prompting studies.
+confidence: high
+status: verified
+needs:
+- 'unknown: stable conclusions across prompt templates, demonstrations, models, and answer mappings'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official ACM article, arXiv abstract, project, and public citation index were checked.
+category_ids:
+- foundations_and_primers

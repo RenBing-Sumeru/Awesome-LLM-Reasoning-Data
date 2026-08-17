@@ -1,0 +1,5 @@
+- Read Sections 3.1–3.2 together with Figures 2–3. The RL configuration uses **8 or 16** rollouts per prompt; it should not be summarized as a fixed 16-rollout recipe.
+- Compare the paper's 383K filtered prompt pool and 2.2M-sample v7 blend with the public SFT release: 3,970,332 rows from 514,807 source questions and only four content fields. The paper does not publish a row-level mapping between them.
+- Use Figure 8 and Tables 2–3 to separate three claims: the temperature comparison, the value of retaining Math Stage I before Stage II, and the reversal of overlong-filtering benefit at 32K context.
+- Treat the released model weights and AceReason-Math as partial official artifacts. They do not supply the code-RL prompts, tests, execution environment, rejected rollouts, or a complete training implementation.
+- The highest-value follow-up is an immutable manifest for the final SFT blend and all RL stages, plus executable math and code verifier definitions and provenance for rejected samples.

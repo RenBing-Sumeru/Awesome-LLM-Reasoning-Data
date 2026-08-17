@@ -1,0 +1,13 @@
+**Inputs.** WorkArena supplies 33 ServiceNow task types and natural-language goals. The authors reserve 10 training configurations per task, for 330, use separate testing configurations, and ask o3-mini to perturb training configurations so they differ from existing BrowserGym/WorkArena configurations. The IDs, perturbation prompts, outputs, and fixed split manifest are not public.
+
+**Trajectory generation and filtering.** BrowserGym `cheat()` functions run Playwright scripts to produce oracle-like action/observation sequences. The paper removes samples with invalid actions or unsuccessful outcomes. It gives no attempted, accepted, rejected, or per-task trajectory counts, so “330 configurations” must not be rewritten as “330 released trajectories.”
+
+**Record transformation.** Each accepted episode is decomposed into independent steps. A training input contains the goal, current HTML/AXTree observation, previous actions, and action definitions; the reference is the next structured action. The paper's notation omits future observations from a step record. Standard SFT attaches o3-mini reasoning; SFT-L injects longer reasoning from `DeepSeek-R1-Distill-Llama-70B`.
+
+**SFT and rollout.** The RL initialization uses one SFT epoch on 1,000 randomly selected records, batch size 32, and learning rate `1e-4`. At each GRPO state the policy samples `G` candidates. The paper does not numerically disclose `G`; the pinned public script sets `rollout.n=8`, temperature 0.6, and maximum response length 1,024, but no run manifest proves that every paper result used this exact file.
+
+**Verifier and optimizer.** The paper's total reward is `R = Rf + Rs + Rp`: `Rf=0.1` for valid structured output; `Rs=1` for exact action type and parameters, `0.1` for type alone, else zero; `Rp=-0.9` if tokens follow `&lt;/action&gt;`. GRPO computes group-relative advantages with clipping and KL regularization. Paper-level RL uses batch 128, LR `1e-5`, rollout temperature 0.6, and KL coefficient `1e-3` on eight H200 141GB GPUs.
+
+**Outputs and evaluation.** Outputs are fine-tuned Qwen2.5 3B/7B/14B policies and a Llama-3.1-8B transfer result, evaluated by WorkArena success rate. No trained checkpoint or evaluation episode log is linked.
+
+**Reproduction audit.** Pin ACL paper/arXiv version, code SHA, BrowserGym, WorkArena/ServiceNow state, Playwright, veRL/TinyZero, teacher snapshots, configuration IDs, random seeds, data/checkpoint hashes, and reward tests. The public preprocessor independently calls `train_test_split` for train and test, and pinned `webagent.py` does not literally implement the paper equations; both differences require reconciliation before treating the repository as an exact reproduction.

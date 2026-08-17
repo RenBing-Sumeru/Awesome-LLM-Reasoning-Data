@@ -1,0 +1,6 @@
+- Keep denominators separate: the HF manifest has exactly 13,972,791 train rows, while Appendix Table 5 gives a rounded 607.3K unique-question total and 13.97M pairs.
+- Read Sections 2.2 and 3 plus Appendices A-C for format, teacher, filtering, diversity, both augmentation branches, and the threshold-zero majority contract.
+- “Majority” is the most common non-null extracted surface form among 32 solutions; threshold 0 requires no fixed consensus, and public rows omit votes and candidates.
+- The decontamination filter covers GSM8K, MATH, AMC 2023, and AIME 2024; Omni-MATH was outside scope and later showed about 1.4% overlap.
+- Keep release and current recipe versions distinct: dataset commit `469216e...` retains 564 overlong questions, while inspected 2026 Skills commit `74b8649...` removes overlong items.
+- Before reuse, reconcile CC BY 4.0 data and Apache-2.0 code with row-level source attribution, teacher terms, candidate/rejection lineage, and refreshed benchmark-overlap evidence.

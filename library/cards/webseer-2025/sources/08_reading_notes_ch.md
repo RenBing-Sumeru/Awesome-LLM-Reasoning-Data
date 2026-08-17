@@ -1,0 +1,5 @@
+- 数据对象：包含工具调用、观察、多次答案提交、文本化得分反馈与反思的网页搜索 episode。
+- 冷启动数据使用独立工具型 verifier 与标准答案一致性检查；完全失败的样本会被丢弃。
+- SRRL 以 Qwen2.5-14B 为基础，采用带 DAPO clip-higher 的 GRPO、每个 prompt 8 条轨迹，以及随提交次数衰减的答案奖励。
+- 代码、SFT 数据、RL 数据和 14B checkpoint 已公开；完整评估脚本与 tagged release 尚未提供。
+- 审计重点是环境漂移、verifier 重查筛选、缺失的失败 episode，以及 benchmark 分数与数据质量之间的差距。

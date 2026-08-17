@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Tree-GRPO 在在线 RL 中构造共享前缀的 ReAct agent-step 树，以 EM/F1 与格式规则给终点叶子评分并形成树内/树间相对优势；官方发布提供实现代码，但未发布原始树、舍弃分支或逐记录奖励谱系。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "在线 agent RL 树式 rollout 构造、隐式过程监督与发布审计研究",
+  "best_for_ch": "研究共享前缀 rollout、ReAct agent-step 信用分配、训练预算、程序化奖励和轨迹发布边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yuxiang Ji、Ziyu Ma、Yong Wang、Guanhua Chen、Xiangxiang Chu、Liaoni Wu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

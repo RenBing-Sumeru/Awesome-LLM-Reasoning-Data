@@ -1,0 +1,1 @@
+已有 NLI benchmark 通常给 premise-hypothesis 标签，但不要求开放证据检索。FEVER 把对象改成关于 Wikipedia 的 claim，并附证据句。方向信号是 factuality evaluation 应同时测答案和 provenance。蕴含分类本身并不新。复用前要查 evidence sufficiency、标注歧义、Wikipedia 漂移、claim 泄漏，以及下游系统是否使用同一 scorer 和 split。

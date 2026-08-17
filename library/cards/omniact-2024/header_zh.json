@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "OmniACT 提供桌面和网页多模态动作数据，用于通用自主智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 desktop/web multimodal action dataset",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Raghav Kapoor 等（Carnegie Mellon University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T13:20:00Z"
+}

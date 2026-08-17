@@ -1,0 +1,5 @@
+- 应把第 3.1–3.6 节与 Algorithm 1 对照阅读：数据对象是用 observation-supported goal 重标的固定失败 episode，`0.4` 最佳候选 fallback 也是 acceptance boundary 的一部分。
+- 实验语料规模必须写准：WebArena 从 612 个 WA-TRAIN task 收集 3,000 条失败加 500 条成功轨迹，ToolBench 为 5,000 条失败加 2,000 条成功轨迹；这些逐记录 corpus 均未公开。
+- 必须拆分三类信号：benchmark environment 判定原任务 success，LLM judge 验证 hindsight pair，severity 缩放 SFT loss 或 DPO margin；它们都不是 step supervision 或 RLVR。
+- 审计 precision 时必须同时审计 selection：MJ-X 在 WebArena/ToolBench 的 human precision 为 97.1%/96.0%，但 filter 拒绝的 pair 中有 38.7%/35.8% 被人类判定有效。
+- 复用前应修复单一 `LLMClient` judge 路径、强制检查 `is_valid`、对齐 severity 方向、移除 SFT/DPO 的 300 字符 observation 截断，并补齐 data、split、script、rights 与 replay manifest。

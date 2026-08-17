@@ -1,0 +1,1 @@
+Use RLHF-V when building a vision-language alignment set that must preserve which response span is unsupported. Keep corrections attached to images and evaluate both hallucination and helpfulness after training. Do not flatten it into generic preference data if the downstream method cannot retain span-level provenance.

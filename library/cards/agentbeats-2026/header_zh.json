@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AgentBeats 将 benchmark 封装为掌管任务、环境与评分的 A2A/MCP judge agent，以统一评测 episode 的协议边界；但 arXiv v2 未绑定可重放轨迹、结果与实现清单。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能体评测协议、基础设施与案例研究",
+  "best_for_ch": "研究 agent evaluation、环境反馈契约、episode 审计与 replay 边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaoyuan Liu, Jianhong Tu, Yuqi Chen, Siyuan Xie, Sihan Ren, Tianneng Shi, Gal Gantar, Evan Sandoval, Donghyun Lee, Daniel Miao, Peter J. Gilbert, Nick Hynes, Mauro Staver, Warren He, David Marn, Andrew Low, Xi Zhang, Elron Bandel, Michal Shmueli-Scheuer, Siva Reddy, Alexandre Drouin, Alexandre Lacoste, Ramayya Krishnan, Elham Tabassi, Yu Su, Victor Barres, Chenguang Wang, Wenbo Guo, Dawn Song",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

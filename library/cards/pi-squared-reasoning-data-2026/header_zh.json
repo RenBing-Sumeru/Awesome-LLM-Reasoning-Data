@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "π2 将 Wikipedia 表格转成由 SQL 与 Python 双路径确认答案的长上下文问答，再反向生成推理轨迹用于高效 SFT。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长上下文推理数据集、生成流程与评测集",
+  "best_for_ch": "适合构造可验证多文档推理 SFT 数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Quyet V. Do, Thinh Pham, Nguyen Nguyen, Sha Li, Pratibha Zunjare, Tu Vu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

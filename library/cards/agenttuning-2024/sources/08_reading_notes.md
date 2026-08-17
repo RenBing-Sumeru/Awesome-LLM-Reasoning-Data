@@ -1,0 +1,5 @@
+- Positioning: AgentTuning answers weak open-model agent behavior with 1,866 reward-filtered, multi-environment ReAct demonstrations.
+- Method handle: instruction construction, GPT interaction, reward filtering, and agent/general mixture training are the four decisions; reward filtering determines admission.
+- Data handle: six non-gated Parquet splits expose id and conversation turns with loss masks, thoughts, actions, observations, and terminal answers; no dataset-specific license is declared.
+- Evidence anchor: Llama-2-chat-70B moves from 0.51 to 1.40 on the normalized held-out aggregate while its general aggregate remains 0.95 versus 0.96.
+- Reuse decision: suitable as a compact text-agent SFT baseline; before reuse, replay samples and resolve upstream terms because terminal reward does not certify the rationale.

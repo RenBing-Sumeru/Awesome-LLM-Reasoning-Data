@@ -1,0 +1,3 @@
+1. **Many-shot ICL evaluation:** Plot accuracy from 4 to 2,048 shots and record the saturation point instead of reporting only the largest-context result.  
+2. **Context-strategy research:** Under the same model and token budget, compare random sampling, RAG, summarization, code induction, and direct transduction.  
+3. **Private task construction:** Write input generators for deterministic functions, execute them to obtain shots and queries, and filter by rule ambiguity and difficulty. MIR-Bench’s verifier and conclusions are unsuitable for tasks dominated by retrieving one fact or lacking exact outputs.

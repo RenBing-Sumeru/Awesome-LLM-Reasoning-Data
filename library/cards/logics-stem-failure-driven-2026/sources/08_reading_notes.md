@@ -1,0 +1,5 @@
+- **Position:** combine million-scale STEM long-CoT curation with a second stage aimed at verified model failures.
+- **Method handle:** annotate, deduplicate, decontaminate, distill, stratify, train, retrieve around failures, then retrain.
+- **Data/artifact handle:** 5.3M and 1.6M public CC BY-NC 4.0 releases; the reported SFT uses a 2.2M mixture containing private lineage.
+- **Evidence anchor:** the 8B RL model leads the reported suite; science failure data raises HMMT 68.96 to 74.79 in a matched comparison.
+- **Reuse decision:** valuable for STEM post-training after source-rights, teacher-error, contamination, and target-overfitting audits.

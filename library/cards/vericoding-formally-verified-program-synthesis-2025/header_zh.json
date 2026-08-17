@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Vericoding 汇集 12,504 个 Dafny、Verus 与 Lean 规格任务，并可用相应形式验证器复跑生成的代码与证明。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "跨语言形式验证程序综合基准",
+  "best_for_ch": "需要比较 Dafny、Verus/Rust 与 Lean 上可验证代码生成能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sergiu Bursuc, Theodore Ehrenborg, Shaowei Lin, Lacramioara Astefanoaei, Ionel Emilian Chiosa, Jure Kukovec, Alok Singh, Oliver Butterley, Adem Bizid, Quinn Dougherty, Miranda Zhao, Max Tan, Max Tegmark",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

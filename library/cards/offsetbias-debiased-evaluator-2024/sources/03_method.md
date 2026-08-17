@@ -1,0 +1,3 @@
+1. Diagnose six recurring biases with judge failures and hand-crafted EVALBIASBENCH cases. 2. Sample instructions from Alpaca, UltraChat, Evol-Instruct, and FLAN. 3. Use off-topic generation or GPT-4/Claude-3-Opus error generation to make a stylistically tempting but critically wrong response, with an existing reference or weaker-model output as the good response. 4. Remove items that both a base judge and GPT-3.5 solve, then train by adding the retained pairs to preference data and swap response order to reduce position bias.
+
+The output is 8,504 hard pairs and an 80-case bias benchmark. Reproduction depends on the published generation prompts, filter, and response ordering; a pair's label says which response is correct for its constructed instruction.

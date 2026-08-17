@@ -1,0 +1,5 @@
+- **Position:** executable programs replace per-item direct LLM judging.
+- **Mechanism:** six criteria induce diverse synthesized programs; weak supervision aggregates their labels.
+- **Evidence anchor:** against direct Qwen2.5-14B judging, the reported average is +15.83% consistency and -23.7% biased responses.
+- **Reuse discipline:** inspect programs, sandbox execution, and calibrate with human labels before deployment.
+- **Artifact:** the paper reports the workshop artifact; no verified public code or data URL is recorded here.

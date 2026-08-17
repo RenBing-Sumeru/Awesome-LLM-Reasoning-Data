@@ -1,0 +1,5 @@
+- 必须明确时间线：arXiv v1 于 2024 年 12 月 18 日公开，benchmark release 1.0.0 于 2024 年 12 月 20 日发布，正式 venue 则是 NeurIPS 2025 Datasets and Benchmarks Track。
+- 不要把 24.0% 到 30.3% 写成受控提升。前者使用 OpenHands 0.14.2 + Claude-3.5-Sonnet，后者使用 OpenHands 0.28.1 + Gemini 2.5 Pro，模型、harness 与论文版本都发生了漂移。
+- 应把 task/evaluator 描述与官方 experiment run 结构对照阅读：一条 task 包含意图、checkpoint、evaluator、setup 与环境；一次 run 再加入模型生成 action/observation、截图、checkpoint 结果与终态。
+- 记住 51/175 个任务（29%）使用 LLM evaluation，41 个任务使用模拟同事。这些模型驱动组件属于测量环境的一部分，需要版本化与校准。
+- 在 experiment-log license、不可变 image/manifest、split、去污染、任务级 lineage、judge 方差、privacy/consent 与历史失败记录完整性解决前，只能用于固定版本的 evaluation/audit；这些日志不是已有证据支持的训练语料。

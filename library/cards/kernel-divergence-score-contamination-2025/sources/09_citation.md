@@ -1,0 +1,1 @@
+Choi, H. K., Khanov, M., Wei, H., and Li, Y. (2025). How Contaminated Is Your Benchmark? Measuring Dataset Leakage in Large Language Models with Kernel Divergence. ICML 2025, PMLR 267:10666--10682. arXiv:2502.00678.

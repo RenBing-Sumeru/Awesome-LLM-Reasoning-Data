@@ -1,0 +1,3 @@
+Complete Lean proofs of IMO problems are often long and require planning many intermediate lemmas, invoking Mathlib, and handling formal-language details. Although miniF2F contains 20 IMO test problems, public complete proofs originally covered only a small subset. When a model fails under an all-or-nothing full-theorem metric, it is difficult to tell whether the failure comes from mathematical insight, long-horizon planning, Lean syntax, or library use.
+
+IMO-Steps asks how hard complete proofs can be decomposed into smaller tasks that remain mathematically meaningful and independently verifiable. The authors write missing complete Lean proofs and split them along proof structure into standalone lemmas, enabling fine-grained training, evaluation, and failure diagnosis.

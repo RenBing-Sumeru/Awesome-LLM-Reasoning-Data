@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "重建含 430 个节点、971 条边的后训练数据集谱系图，并从 31 个上游问答源经精确匹配与 MinHash 去重报告 57 万条多样性导向语料；经核验的官方发布并不包含该语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数据谱系审计与构造方法论文",
+  "best_for_ch": "关注后训练数据来源、混合去重、污染传播、根源采样与发布可审计性的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Yu Li、Xiaoran Shang、Qizhi Pei、Yun Zhu、Xin Gao、Honglin Lin、Zhanping Zhong、Zhuoshi Pan、Zheng Liu、Xiaoyang Wang、Conghui He、Dahua Lin、Feng Zhao、Lijun Wu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

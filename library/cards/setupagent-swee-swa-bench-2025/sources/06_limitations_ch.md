@@ -1,0 +1,10 @@
+- 在已检查的官方 artifacts 中没有找到 SetUpAgent 生成源码、reference-command database、完整 prompts-as-code、system messages、seeds、API retries 和 token/成本预算。公开 SWEBench fork 提供 evaluator 适配，不是 benchmark generation 实现。
+- 历史复现信息不完整：准确 `uv` 版本、package-index snapshot、Ubuntu base-image digest、完整 package manifest 和逐任务不可变 Docker digest 均为 unknown；可变 tag 会改变重放行为。
+- 95% 测试通过阈值不等于环境完全正确。SWA 人工审计的 30 个样本中只有 22 个 setup 完全正确，说明 false-positive setup acceptance 是已经观察到的风险。
+- Terminal predicate 依赖测试。测试不完整、flaky、过度具体、泄漏或误解析都可能造成 false positive 或 false negative；检查过的分支对 XFAIL/XPASS 和缺失测试名的处理是一个具体敏感点。
+- 当前官方发布含 450 个 SWA 与 798 个 SWEE 行，不是论文中的 535 与 885，且没有 instance-removal manifest 或 changelog。评测分数和抽样会随 revision 漂移。
+- 两个 Hub 发布都只有公开 `test` split。论文没有报告与其他 SWE benchmarks 的完整逐实例 overlap audit，也没有直接进行 model-training-corpus decontamination 检查。
+- 源仓库经过 permissive license 筛选，但两个数据集发布都没有声明 dataset license。issue 文本、PR 文本、补丁、测试、依赖和贡献者内容的权利与 attribution 仍未解决。
+- 失败 setup、被拒 PR、parser failure、无 F2P case 和完整执行日志均未发布。这阻碍对失败分布的分析，也可能隐藏系统性环境选择偏差。
+- 论文的 agent 评测受成本限制：主比较把 SWEE 与 SWE-Full 均匀下采样到 535 个实例，而最终版部分结果使用 100-instance subset。报告的相对差距不应被解释为完整数据集常数。
+- 对公开 GitHub 文本与代码的 privacy、contributor consent 和 governance 处理为 unknown。公开可见本身不等于允许基准再分发或下游训练。

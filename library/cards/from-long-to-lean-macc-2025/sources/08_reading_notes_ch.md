@@ -1,0 +1,5 @@
+- 应把第 3.2–3.4 节、算法 1 与附录 A.2 连起来视为一个数据契约：目标模型 \(r_0\)、答案条件化顺序 API 改写、严格 token 长度回弹、选中 \(r^*\)，以及 rationale 加答案的 SFT。
+- 必须区分反馈角色：token 数是唯一逐样本停止 predicate；PPL、原始/compressor accuracy 与下游微调 accuracy 是配置级分析特征，不是语义或正确性 gate。
+- 应查看渲染后的表 5–6，而不只依赖文本抽取：表 6 把明显更长的第 8 轮标为选中，却与算法 1 的“选择前一轮”规则冲突；缺失 tokenization/停止日志使问题无法协调。
+- 应把官方 GitHub 链接视为已核验但只有 README 的 artifact：已检查 commit 上不存在实现、requirements、代码/数据许可证、语料、schema、split、独立 prompt 文件、配置、checkpoint 或评估 harness。
+- 复现或复用前，应要求原始/中间/选中/回弹记录、精确 \(T\)、模型/API/tokenizer 固定、逐轮计数与检查、SFT mixture manifest、去污染、成本日志和明确衍生数据权利；受支持训练用途仍只有 SFT。

@@ -1,0 +1,4 @@
+The useful data contribution is an explicit debate contract in which pre-interaction coverage and within-interaction influence are separately observable. The record can distinguish ten sampled candidates, five selected distinct answers, each round's visible context, expressed confidence, revision, component rewards, and terminal vote.
+
+The paper's formal diversity objective counts unique answers; it does not specify embedding distance, although the repository README describes an embedding-based implementation. Confidence elicitation, self-consistency, GRPO, and majority vote have precedents. The direction signal is joining diversity-controlled initialization with trained confidence expression and use, while exposing reward-hacking pressure. This remains a protocol/recipe, not a released debate dataset.
+

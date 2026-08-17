@@ -1,0 +1,116 @@
+id: chartmimic-2024
+title: 'ChartMimic: Evaluating LMM''s Cross-Modal Reasoning Capability via Chart-to-Code Generation'
+year: 2025
+venue: ICLR 2025 / arXiv
+authors:
+- Cheng Yang
+- Chufan Shi
+- Yaxin Liu
+- Bo Shui
+- Junjie Wang
+- Mohan Jing
+- Linran Xu
+- Xinyu Zhu
+- Siheng Li
+- Yuxiang Zhang
+- Gongye Liu
+- Xiaomei Nie
+- Deng Cai
+- Yujiu Yang
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- chart-to-code-reasoning
+- multimodal-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.09961
+  arxiv: https://arxiv.org/abs/2406.09961
+  doi: https://doi.org/10.48550/arXiv.2406.09961
+  code: https://github.com/ChartMimic/ChartMimic
+  data: https://huggingface.co/datasets/ChartMimic/ChartMimic
+  project: https://chartmimic.github.io/
+  huggingface: https://huggingface.co/datasets/ChartMimic/ChartMimic
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate scientific-paper chart figure, instruction, and reference-code triplets
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: chart figure, instruction, generated plotting code, execution status, rendered chart, reference code, and
+    multi-level metric scores
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: chart-to-code generation with executable plotting-code evaluation and rendered-output comparison
+  verifier_or_reward: code execution plus official multi-level chart/code metrics determine sample score
+  terminal_predicate: generated code executes under the benchmark environment and rendered chart metrics are computed
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate 4,800 human-curated figure, instruction, and code triplets spanning 18 regular chart
+    types, 4 advanced types, and 201 subcategories
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: multimodal_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2406.09961;
+    https://arxiv.org/html/2406.09961; https://chartmimic.github.io/; https://github.com/ChartMimic/ChartMimic; https://huggingface.co/datasets/ChartMimic/ChartMimic'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2406.09961'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv/project/GitHub/Hugging Face sources verify authors, Tsinghua/Tencent affiliations, ICLR 2025 status,
+    artifacts, 4,800 triplets, 201 subcategories, and reported model-evaluation scale. Artifact license/split/scoring details
+    remain review targets.
+inclusion_reason: Combines visual understanding with executable reconstruction.
+related: []
+tags:
+- benchmark
+- multimodal_reasoning_benchmark
+- chart-to-code-reasoning
+why_it_matters: Combines visual understanding with executable reconstruction.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ChartMimic exposes chart-to-code generation and rendered-output comparison as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv/project/GitHub/Hugging Face sources verify authors, Tsinghua/Tencent affiliations, ICLR 2025 status,
+    artifacts, 4,800 triplets, 201 subcategories, and reported model-evaluation scale.
+category_ids:
+- benchmarks_evaluation_surfaces

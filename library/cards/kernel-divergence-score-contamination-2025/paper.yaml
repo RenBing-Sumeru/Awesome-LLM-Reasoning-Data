@@ -1,0 +1,98 @@
+id: kernel-divergence-score-contamination-2025
+title: How Contaminated Is Your Benchmark? Measuring Dataset Leakage in Large Language Models with Kernel Divergence
+year: 2025
+venue: ICML 2025
+authors:
+- Hyeong Kyu Choi
+- Maxim Khanov
+- Hongxin Wei
+- Yixuan Li
+source_role:
+- benchmark
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- contamination
+- verifier-audit
+- evaluation-reliability
+training_use:
+- audit
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/choi25b.html
+  arxiv: https://arxiv.org/abs/2502.00678
+  venue: https://proceedings.mlr.press/v267/choi25b.html
+  code: https://github.com/deeplearning-wisc/kernel-divergence-score
+  data: https://github.com/deeplearning-wisc/kernel-divergence-score
+  project: null
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/choi25b.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official evaluation, benchmark, or controlled contamination records described by the primary source.
+  trace_author: Paper authors and released evaluation harnesses.
+  answer_format: Model output, verifier/detector decision, and evaluation metadata.
+  process_fields:
+  - task or benchmark item
+  - model output or exposure condition
+  - audit method
+  - detector or verifier result
+  - reported reliability metric
+  environment_or_substrate: Released paper artifact or official reproduction repository.
+  verifier_or_reward: Paper-specific contamination detector, verifier, or judge audit.
+  terminal_predicate: The audit reports whether the proposed method distinguishes shortcut or contamination behavior from
+    valid evaluation.
+recipe_metadata:
+  base_model: See the official paper for evaluated model families.
+  teacher: 'Not applicable: this is an audit/evaluation record.'
+  generator: Released or paper-described benchmark and evaluation pipeline.
+  filtering_rule: Use the paper-defined audit protocol; do not infer a clean label from a headline score.
+  sampling_protocol: See the official paper; exact sampling settings are paper-specific.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Official artifact when released.
+audit:
+  source_mixture: Official paper and linked public artifact.
+  split: Use the published split or controlled condition; inspect the artifact before downstream training.
+  decontamination: 'Central topic: benchmark leakage, verifier reliability, or judge bias.'
+  license: Check the linked official artifact before redistribution or training use.
+  lineage: Primary source -> released code/data when available -> audit result.
+  known_failure_modes:
+  - A public benchmark can become contaminated after release.
+  - A detector may depend on model access or controlled exposure assumptions.
+  - Reported audit metrics do not by themselves establish downstream safety.
+  citation_status: verified
+  confidence: high
+  notes: KDS quantifies controlled dataset-level overlap from fine-tuning-induced embedding-kernel changes.
+inclusion_reason: Measures benchmark leakage with a controlled, monotone dataset-level contamination audit.
+related: []
+tags:
+- kernel-divergence
+- audit
+- 2025-2026
+status: verified
+card: null
+needs: []
+one_line_summary: Kernel Divergence Score compares embedding-kernel structure before and after benchmark fine-tuning to quantify
+  leakage.
+why_it_matters: It exposes leakage as an empirical precondition of a benchmark result instead of assuming scores are uncontaminated.
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19T12:49:36Z'
+  verified_by: curation
+  confidence: high
+  notes: ICML 2025 paper, PMLR record, arXiv version and released code verified from the full paper.
+curation_level: L4_carded
+category_ids:
+- audit_failure_contamination_verifier_attacks

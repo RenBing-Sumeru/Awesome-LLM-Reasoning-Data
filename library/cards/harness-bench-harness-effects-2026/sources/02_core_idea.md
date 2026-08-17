@@ -1,0 +1,5 @@
+The one-sentence contribution is a benchmark that makes the evaluation harness itself a first-class variable rather than background plumbing.
+
+The core mechanism is run comparable agent workflows under different harness settings, collect trajectories and grading outputs, and measure how rankings or scores shift. The object being scored is 106 sandboxed offline tasks across 8 categories, paired with harness configurations, manifests, prompts, fixtures, oracle graders, final artifacts, execution traces, usage statistics, validator outputs, model results, and 5,194 execution trajectories, and the feedback contract is outcome, process, and security scoring through final artifacts, execution traces, usage and validator outputs, deterministic oracles where possible, and LLM rubrics for diagnostics.
+
+The closest comparisons are agent benchmarks that report a single score without isolating runner, oracle, prompt, rubric, and environment effects. Its direction label is evaluation-surface and feedback-contract curation rather than generic dataset summarization.

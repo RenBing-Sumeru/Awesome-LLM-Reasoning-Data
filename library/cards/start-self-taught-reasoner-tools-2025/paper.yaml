@@ -1,0 +1,268 @@
+id: start-self-taught-reasoner-tools-2025
+title: 'START: Self-taught Reasoner with Tools'
+year: 2025
+venue: EMNLP 2025 (Main Conference)
+authors:
+- Chengpeng Li
+- Mingfeng Xue
+- Zhenru Zhang
+- Jiaxi Yang
+- Beichen Zhang
+- Bowen Yu
+- Binyuan Hui
+- Junyang Lin
+- Xiang Wang
+- Dayiheng Liu
+source_role:
+- construction_recipe
+- agent_environment
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+domains:
+- mathematical_reasoning
+- code_reasoning
+- tool_integrated_reasoning
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.683.pdf
+  paper_pdf: https://aclanthology.org/2025.emnlp-main.683.pdf
+  arxiv: https://arxiv.org/abs/2503.04625
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  models: null
+  logs: null
+  release: null
+  dataset_card: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.683
+  venue: https://aclanthology.org/2025.emnlp-main.683/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.683/
+  pmlr: null
+  cvf: null
+  responsible_nlp_checklist: https://aclanthology.org/attachments/2025.emnlp-main.683.checklist.pdf
+  bibtex: https://aclanthology.org/2025.emnlp-main.683.bib
+data_object:
+  record_type: Selected long-chain-of-thought tool trajectory containing one reasoning problem, an inserted contextual hint,
+    Python code invocation, interpreter output or error, continued verification or debugging, and a final answer. The complete
+    record schema and records are not released.
+  prompt_source: Mathematics prompts come from AIME before 2024, MATH, and Numina-MATH. Programming prompts come from Codeforces,
+    Code Contests, and LiveCodeBench before July 2024. Printed component counts do not reconcile with the paper's reported
+    total.
+  trace_author: QwQ-32B-Preview generates initial Hint-infer trajectories. Accepted seed trajectories train START-0, which
+    generates the expanded trajectory set. The framework is separately applied to DeepSeek-R1-Distill-Qwen-32B.
+  context_state:
+  - original math or coding problem
+  - partial or completed long chain-of-thought
+  - insertion point at Wait, Alternatively, or reasoning termination
+  - one selected hint expression
+  - Python interpreter session
+  - previous code, output, and debugging history
+  action:
+  - natural-language reasoning continuation
+  - Python code emission
+  - tool invocation
+  - interpretation of stdout or exception
+  - revised code or reasoning
+  - final answer
+  observation: Python interpreter output, execution failure, test or example mismatch, and any resulting evidence used by
+    the model to verify or debug its reasoning. The environment's observation schema is not published.
+  answer_format: Long text reasoning interleaved with Python code and interpreter output, followed by a final answer. Appendix
+    I illustrates the format but does not define a machine-readable serialization contract.
+  process_fields:
+  - problem_and_source
+  - initial_reasoning_trajectory
+  - initial_final_answer_correctness
+  - hint_type_and_expression
+  - hint_insertion_position
+  - Python_code_call
+  - interpreter_output_or_error
+  - post_tool_reasoning_and_debugging
+  - post_hint_final_answer
+  - post_hint_correctness
+  - repetition_filter_result
+  - execution_filter_result
+  - acceptance_or_rejection
+  - generator_checkpoint
+  - generation_round
+  verifier_output: Conceptually includes initial and post-hint answer correctness, Python execution validity, and coding example
+    or test behavior. Exact extraction, equality, tests, exception handling, and score representation are unknown.
+  reward: No RL reward is used. Correctness and execution outcomes act as rejection-sampling selection signals; the main active
+    rule retains trajectories that turn an initially wrong solution into a successful one.
+  environment_or_substrate: A Python interpreter with libraries including sympy, math, numpy, itertools, scipy, cmath, and
+    networkx. Sandbox, package versions, network and filesystem policy, timeout, resource limits, state reset, and dependency
+    image are unknown.
+  verifier_or_reward: 'Mixed environmental and programmatic selection: execute Python and assess final-answer success before
+    and after hint intervention. The authors do not release or fully specify the verifier.'
+  terminal_predicate: Successful problem solving after hint and tool intervention, with valid code execution and a correct
+    final answer. Exact math equivalence and code-test predicates are unknown.
+  provenance: Upstream problem -> base-model long reasoning -> inserted hint -> Python interaction -> correctness, execution,
+    and repetition filters -> 10K D_seed -> START-0 -> expanded 40K D_START -> full-parameter fine-tuning of the base model
+    -> START.
+  release_surface: The paper releases aggregate source counts, transition rates, library-use counts, hyperparameters, and
+    qualitative trajectories. It releases no machine-readable prompts, accepted or rejected trajectories, verifier outputs,
+    environment, checkpoints, code, or run manifests.
+recipe_metadata:
+  base_model: QwQ-32B-Preview for START-Preview and DeepSeek-R1-Distill-Qwen-32B for START-R1.
+  teacher: Qwen-2.5-72B paraphrases the six hint types. QwQ-32B-Preview generates the initial tool trajectories, and the resulting
+    START-0 becomes the generator for expanded self-training data.
+  generator: Base reasoning model under Hint-infer for D_seed, followed by START-0 under rejection fine-tuning for D_START.
+  prompt_task_source: Printed sources are 890 pre-2024 AIME, 7,500 MATH, 28,505 Numina-MATH, 7,505 Codeforces, 2,011 Code
+    Contests, and 558 pre-July-2024 LiveCodeBench prompts. These sum to 46,969 rather than the reported 49,969.
+  filtering_rule: For the active seed stage, retain samples where a hint changes a previously wrong solution into a successful
+    one; check robustness through an undisclosed number of repeated samples; remove repetitive responses and incorrect code
+    executions. The expansion-stage acceptance rule and the Figure 1 modification step are not fully specified.
+  sampling_protocol: Insert one of six hint functions, with Qwen-2.5-72B-generated linguistic variants, after Wait or Alternatively
+    or at the end of reasoning. Generate multiple samples per hint for robustness. Exact variant counts, mixture weights,
+    rollout counts, decoding settings, and random seeds are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  top_p: unknown
+  inference_budget: Reported evaluation allows at most 32,768 generated tokens and six tool uses per reasoning process. Section
+    3.4 reports top-p 0.95 and temperature 0.6, while Appendix H reports greedy decoding. Construction-generation settings
+    are not identified separately.
+  search_or_scaffold: No tree search. Hint-infer interrupts long reasoning at cognitive-shift or termination points and can
+    repeat tool-assisted continuation; Hint-RFT selects corrective trajectories and self-trains a stronger generator.
+  selection_threshold: Binary wrong-to-correct active-learning criterion plus repetition and code execution filters. Exact
+    answer comparator, execution threshold, and repetition threshold are unknown.
+  seed_protocol: Generate and select 10,000 mathematical tool trajectories as D_seed, then full-parameter fine-tune QwQ-32B-Preview
+    to obtain START-0. Unique prompt count and source allocation within D_seed are unknown.
+  buffer_policy: unknown
+  reward_schedule: No optimization reward schedule. Correctness and execution are used for rejection selection, followed by
+    supervised full-parameter fine-tuning.
+  optimizer_or_scaffold: Three epochs, global batch 128, cosine learning-rate schedule with 3% warmup, maximum 16,384-token
+    training context, full-parameter DeepSpeed ZeRO-3, and learning rates 7e-6 for QwQ-32B-Preview and 2e-6 for DeepSeek-R1-Distill-Qwen-32B.
+    Remaining optimizer details are unknown.
+  training_scale: D_seed is reported as 10K mathematical reasoning samples and D_START as 40K. The paper does not separate
+    unique prompts from multiple trajectories and gives internally inconsistent source totals.
+audit:
+  source_mixture: 'Mathematics: AIME before 2024, MATH, and Numina-MATH. Code: Codeforces, Code Contests, and pre-July-2024
+    LiveCodeBench. Qwen-2.5-72B contributes hint paraphrases, QwQ and DeepSeek base models contribute reasoning behavior,
+    and Python libraries contribute execution semantics.'
+  split: Main math evaluation uses AMC23, AIME24, AIME25, MATH500, and GPQA. Coding training uses LiveCodeBench before July
+    2024 and evaluates 112 problems from August-November 2024. Exact prompt IDs, snapshots, split hashes, removals, and deduplication
+    manifests are not released.
+  decontamination: Authors state that they apply the Qwen2.5-Math decontamination method to minimize leakage. The local implementation,
+    normalization, similarity threshold, removed records, audit output, and coverage of GPQA and coding sources are unknown.
+  benchmark_overlap: Chronological LiveCodeBench separation is stated. No record-level overlap report is released for AIME,
+    MATH500, GPQA, Codeforces, Code Contests, or upstream base-model pretraining; self-generated traces may also reproduce
+    benchmark-like solutions.
+  license: The accepted ACL paper is distributed under the Anthology's CC BY 4.0 policy. The paper does not name licenses
+    or derivative-use conditions for the six upstream prompt sources, generated tool trajectories, Python environment, or
+    unreleased checkpoints. Checklist item B2 says licensing is covered, but the cited page contains source links rather than
+    licenses.
+  lineage: Source problem -> base-model trajectory -> Qwen-paraphrased hint insertion -> Python execution -> correctness,
+    repetition, and execution filtering -> D_seed -> START-0 -> D_START -> final full-parameter SFT. Record-level lineage,
+    generator revision, hint ID, filter outcomes, and hashes are absent.
+  release_version: unknown
+  successful_and_failed_sample_retention: No accepted or rejected records are released. The paper reports aggregate correct-to-wrong
+    10.4%, correct-to-correct 89.6%, wrong-to-correct 33.0%, and wrong-to-wrong 67.0%, but not denominators or the underlying
+    trajectories. Repetition and incorrect-execution failures are also absent.
+  privacy_or_consent: unknown
+  reuse_class: reading and audit reference only; blocked for direct data reuse
+  known_failure_modes:
+  - Hint intervention introduces errors in 10.4% of initially correct trajectories and fails to repair 67.0% of initially
+    wrong trajectories.
+  - Repeated hints can plateau or reduce accuracy for fine-tuned START, including reported regressions on GPQA and MATH500.
+  - Coding gains on hard LiveCodeBench tasks are only two points, far below the medium-difficulty gain.
+  - A 100% tool-trigger rate measures forced Python emission, not whether the call is necessary, safe, efficient, or semantically
+    correct.
+  - The final-answer checker, answer extraction and equivalence rules, code tests, repetition detector, execution-error handling,
+    and modification step are undisclosed.
+  - The Python environment is not released or pinned and has no documented sandbox, timeout, filesystem or network policy,
+    resource limits, state reset, or package versions.
+  - Table 9 components sum to 46,969 rather than the printed 49,969, and the claimed 40K math-problem total conflicts with
+    36,895 printed math-source prompts.
+  - Section 3.4 reports stochastic decoding with top-p 0.95 and temperature 0.6, whereas Appendix H reports greedy decoding;
+    generation settings for D_seed and D_START are unknown.
+  - D_seed and D_START counts do not distinguish unique prompts from repeated trajectories, and no deduplication or source-mixture
+    manifest is released.
+  - No confidence intervals, independent training reruns, seed variance, or checkpoint-selection policy is reported.
+  - No code, data, models, logs, environment, rejected samples, data card, license manifest, or immutable release is available.
+  - Responsible NLP Checklist item A2 confirms that potential risks were not discussed, including unsafe generated code and
+    tool-execution security.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the ACL Anthology record, all 42 pages of the accepted paper and Appendices A-J, the Responsible
+    NLP Checklist, arXiv v2 metadata, and the official artifact inventory. Scores and ablations are author-reported and were
+    not independently reproduced. Citation confidence is high; release completeness remains low.
+  remaining_unknowns:
+  - Exact D_seed and D_START records, schemas, unique prompt counts, source allocation, and hashes
+  - Hint paraphrase prompt, variant count, mixture weights, and retained hint library
+  - Generation rollout count, decoding settings, RNG seeds, and checkpoint revisions
+  - Answer extraction and equivalence, code tests, repetition filter, execution handling, and modification logic
+  - Python sandbox, dependency versions, package image, timeout, resource limits, and state reset
+  - Exact decontamination implementation, thresholds, removed items, and benchmark coverage
+  - Resolution of the 40K versus 36,895 and 49,969 versus 46,969 count inconsistencies
+  - Source-specific and generated-data licenses, derivative rights, and intended-use terms
+  - Official code, data, models, model cards, logs, checkpoint hashes, and immutable release
+  - Training wall time, GPU memory, GPU-hours, data-generation compute, failed runs, and statistical variance
+inclusion_reason: 'START makes a useful tool-trajectory construction recipe explicit: insert function-specific hints into
+  long reasoning, execute Python, select corrective wrong-to-right trajectories, bootstrap a 10K seed set, and use an intermediate
+  self-trained model to expand tool-use supervision to 40K reported samples.'
+related:
+- tool-zero-2025
+- opencodereasoning-advancing-data-distillation-for-competitive-coding-2025
+- v-star-training-verifiers-self-taught-reasoners-2024
+tags:
+- start
+- hint-infer
+- hint-rft
+- self-training
+- rejection-fine-tuning
+- tool-integrated-reasoning
+- Python-interpreter
+- corrective-trajectories
+- long-chain-of-thought
+- missing-release
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: START inserts diverse hints into long reasoning, filters Python-interleaved trajectories for corrective
+  success, trains a 10K-seed intermediate model, and expands to a reported 40K self-training set, while releasing none of
+  the records, code, environment, or checkpoints.
+why_it_matters: It shows how tool feedback can become reusable supervised reasoning data without a separate teacher solver,
+  but its unreleased verifier and environment, hidden rejected traces, licensing gaps, and inconsistent source totals make
+  the recipe substantially less auditable than its aggregate results suggest.
+card: null
+needs:
+- 'needs_data_release: publish D_seed, D_START, accepted and rejected trajectories, source IDs, hint IDs, generator checkpoints,
+  filter outcomes, and hashes'
+- 'needs_verifier: release answer extraction and equivalence, code tests, repetition logic, execution handling, modification
+  rules, and per-record scores'
+- 'needs_environment: release a pinned sandboxed Python image with package versions, timeout, resource limits, filesystem
+  and network policy, and reset semantics'
+- 'needs_count_reconciliation: resolve 40K versus 36,895 math prompts and 49,969 versus 46,969 printed source totals, separating
+  prompts from trajectories'
+- 'needs_decontamination: publish normalization, thresholds, removals, benchmark coverage, and record-level overlap audit'
+- 'needs_license: document upstream source terms, generated-trajectory license, checkpoint license, derivative rights, and
+  intended use'
+- 'needs_reproducibility: publish code, dependency lock, exact decoding settings, seeds, compute manifest, checkpoint hashes,
+  and immutable release'
+- 'needs_statistics: report independent runs, variance, denominators for transition rates, and checkpoint-selection policy'
+- 'needs_safety: evaluate untrusted-code execution, tool misuse, unsafe libraries, environment escapes, and failure propagation'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Formal EMNLP 2025 acceptance and the complete paper and checklist were verified. Artifact verification confirms the
+    absence of author-linked reusable code, data, models, logs, and environment from the official records; it does not upgrade
+    the work to an open release.

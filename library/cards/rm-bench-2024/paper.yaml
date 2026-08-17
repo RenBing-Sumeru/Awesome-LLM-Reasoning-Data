@@ -1,0 +1,114 @@
+id: rm-bench-2024
+title: 'RM-Bench: Benchmarking Reward Models of Language Models with Subtlety and Style'
+year: 2024
+venue: ICLR 2025 / arXiv
+authors:
+- Yantao Liu
+- Zijun Yao
+- Rui Min
+- Yixin Cao
+- Lei Hou
+- Juanzi Li
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- reward-modeling
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2410.16184
+  arxiv: https://arxiv.org/abs/2410.16184
+  doi: https://doi.org/10.48550/arXiv.2410.16184
+  code: https://github.com/THU-KEG/RM-Bench
+  data: https://huggingface.co/datasets/THU-KEG/RM-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/THU-KEG/RM-Bench
+  venue: https://iclr.cc/virtual/2025/poster/29702
+  openreview: https://openreview.net/forum?id=QEHrmQPBdd
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct subtle content/style bias preference pairs; exact split, artifact, license,
+    and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose subtle content/style bias preference pairs, prompt/task metadata, a model output
+    surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: subtle content/style bias preference pairs
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct subtle content/style bias preference pairs; exact split, artifact, license,
+    and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2410.16184;
+    https://arxiv.org/html/2410.16184; https://github.com/THU-KEG/RM-Bench; https://huggingface.co/datasets/THU-KEG/RM-Bench;
+    https://iclr.cc/virtual/2025/poster/29702; https://openreview.net/forum?id=QEHrmQPBdd'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2410.16184'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv, ICLR, OpenReview, GitHub, and Hugging Face sources verify authors, institutions, ICLR 2025 status,
+    and artifacts. Artifact/license/split/scoring details remain review targets.
+inclusion_reason: Probes reward-model sensitivity beyond easy strong-vs-weak pairs.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- reward-modeling
+one_line: RM-Bench exposes subtle content/style bias preference pairs as an auditable evaluation surface.
+why_it_matters: Probes reward-model sensitivity beyond easy strong-vs-weak pairs.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RM-Bench exposes subtle content/style bias preference pairs as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv, ICLR, OpenReview, GitHub, and Hugging Face sources verify authors, institutions, ICLR 2025 status,
+    and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,1 @@
+Han et al. (2024), “WildGuard: Open One-stop Moderation Tools for Safety Risks, Jailbreaks, and Refusals of LLMs,” arXiv:2406.18495. Primary paper: https://arxiv.org/abs/2406.18495. Official implementation and releases: https://github.com/allenai/wildguard. Cite the exact model/data revision and policy setup when reproducing reported moderation or jailbreak figures.

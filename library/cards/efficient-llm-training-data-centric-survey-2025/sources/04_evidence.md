@@ -1,0 +1,1 @@
+The official ACL Anthology record verifies the author list, ACL 2025 Long Papers venue, DOI, pages, and abstract. That abstract explicitly names the five taxonomy categories and the data-efficiency motivation. The Card therefore uses the paper as a verified field map, not as empirical evidence that any particular data-selection method dominates across tasks.

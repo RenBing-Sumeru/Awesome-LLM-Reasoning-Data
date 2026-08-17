@@ -1,0 +1,5 @@
+LAB-Bench asks whether language-model systems can handle practical biology research tasks rather than only exam-style science QA. The primary source is the July 2024 arXiv preprint by Laurent et al.; the official FutureHouse dataset card describes LAB-Bench as an evaluation dataset for capabilities foundational to scientific research in biology.
+
+The evaluation surface is a multiple-choice task record covering literature lookup, database retrieval, supplementary information, figure/table reasoning, protocol troubleshooting, sequence manipulation, and cloning scenarios. The feedback contract is answer-level scoring against the official target option or evaluator; no claim is made that it verifies real lab execution.
+
+The atlas boundary is benchmark/evaluation-surface work for biology research reasoning. It is not a training recipe, wet-lab agent environment, or biological safety verifier. Reuse should pin the public/private split, dataset revision, evaluator code or scoring notebook, and license state before comparing model scores.

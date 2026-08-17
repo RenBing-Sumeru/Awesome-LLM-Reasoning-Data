@@ -1,0 +1,5 @@
+- Positioning: TinyChartData exposes chart questions with Python program-of-thought targets and final answers for compact chart SFT.
+- Method handle: TinyChart pairs visual-token merging with ChartQA-PoT records whose targets contain executable Python reasoning and a final answer, giving a 3B model explicit numerical supervision without a much larger visual token budget.
+- Data handle: the public release includes ChartQA-PoT plus chart alignment, instruction-tuning, and evaluation splits; each record contains chart image, question, Python program-of-thought, and final answer.
+- Evidence anchor: The reported 3B TinyChart model exceeds several 13B systems and GPT-4V on ChartQA under the paper's evaluation protocol; program-of-thought ablations show that executable targets, not token merging alone, account for the numerical-reasoning gain.
+- Reuse decision: best for training a small chart model to expose and execute numerical reasoning; first audit answer agreement can hide visually ungrounded programs.

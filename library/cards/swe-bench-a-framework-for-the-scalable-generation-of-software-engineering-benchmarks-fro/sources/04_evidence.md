@@ -1,0 +1,3 @@
+On a 1,782-instance evaluation subset, the paper reports pass@10 of 36.20% for Claude Sonnet 4.5, 34.57% for GPT-5-2025-08-07, 24.92% for Gemini 2.5 Pro, and 16.89% for GPT-4o, showing that multilingual real tasks remain unsaturated. The public 500-task release uses pass@1, where its dataset card reports 26.8% for GPT-5-2025-08-07 and 26.0% for Claude Sonnet 4.5.
+
+These numbers use different subsets and sampling protocols and cannot be compared directly. Together they support benchmark discrimination, but strong-model failures may also reflect agent scaffolds, environment recovery, or context budgets rather than code reasoning alone.

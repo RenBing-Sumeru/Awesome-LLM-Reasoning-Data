@@ -1,0 +1,5 @@
+The Claude Opus 4.1 addendum asks how to document an incremental frontier-model update when the comprehensive family training account already exists elsewhere. It focuses on changed policy evaluation, agentic safety, automated behavioral auditing, prompt-injection defenses, reward-hacking monitoring, and dangerous-capability rule-out testing.
+
+This is not a standalone Opus 4.1 data recipe. The addendum directs readers to the May 2025 Claude 4 System Card for comprehensive methods and threat-model context, while leaving the exact Opus 4-to-4.1 training-data and checkpoint delta unknown. Family-level background is lineage context, not proof that every source, proportion, or reward remained unchanged.
+
+For a reasoning-data atlas, the addendum is valuable because it exposes concrete evaluation objects—human and synthetic safety prompts, long simulated transcripts, model-based audit scores, coding and computer-use environments, and reward-hacking terminal states—alongside a small number of explicit training interventions.

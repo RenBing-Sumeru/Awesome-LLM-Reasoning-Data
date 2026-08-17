@@ -1,0 +1,1 @@
+对 rollout/search/test-time-trace 轨道而言，SRA-MCTS 既是一个紧凑的代码推理 MCTS-to-SFT 配方，也是展示树被扁平化后损失何种信息的反例。可复用记录应保留 LeetCode 来源与 revision、重叠判定、模型与解码设置、node 与 parent ID、state、action、原始 self-score、rubric decision、reflection、visit count、UCT value、回传 reward、停止原因、全部 rejected siblings、选中 thinking、正则变换日志、生成代码、执行环境、tests 与终局结果。这样可支持 process-supervision 研究、搜索策略审计、SFT，以及模型判断与可执行正确性的比较，同时避免将二者混为一谈。

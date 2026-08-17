@@ -1,0 +1,3 @@
+- For auditing and repairing a visual SFT mixture before training, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of teacher agreement can be mistaken for image-grounded correctness.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: image-grounded object checks plus POPE/CHAIR-style hallucination evaluation. Do not reuse the release when its licensing or source provenance cannot be preserved.

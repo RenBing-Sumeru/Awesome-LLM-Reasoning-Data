@@ -1,0 +1,1 @@
+Praetor 可用于搭建可本地部署的中英文回答评分器：输入问题、回答、参考答案和自定义 rubric，输出分数、偏好及解释。研究者还可把 Praetor_trainset 作为 judge SFT 或 critique 模型训练数据，并测试 pointwise 与 pairwise 信号是否能互相迁移。若任务要求严格事实验证、法律或安全合规，不能只依赖生成式裁判，应加入检索证据、规则检查和人工复核，并报告不同 criteria 下的校准误差。

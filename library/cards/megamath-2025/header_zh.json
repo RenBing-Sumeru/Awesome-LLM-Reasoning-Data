@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MegaMath 是一个 371.6B tokens的开放数学语料库，具有异常详细的网络、代码和合成数据配方，但存储库级许可和精确匹配净化不能解决项目级权限或语义泄漏问题。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模数学预训练语料库及构建配方",
+  "best_for_ch": "研究人员构建或审核开放数学预训练和持续训练语料库",
+  "confidence_ch": "高",
+  "authors_ch": "周范、王增志、Nikhil Ranjan、程周军、唐丽萍、何国伟、刘正中、邢鹏",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-12T09:48:26Z"
+}

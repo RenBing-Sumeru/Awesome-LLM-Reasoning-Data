@@ -1,0 +1,1 @@
+1. 输入包括任务类、采样出来的任务参数、受控 Android emulator、已安装 app，以及 M3A 等 agent scaffold。2. 环境先设置设备和 app 状态，agent 读取 UI 状态、截图或 accessibility 信息，输出 Android 动作，直到完成或预算耗尽。3. 输出是每个任务的日志、成功/失败标签、汇总成功率和可审计轨迹。4. 反馈契约由每个任务自己的检查代码给出，论文报告 20 个 app 上 116 个任务，并以 success rate 为主指标。5. 复现或复用时要固定 Android 镜像、app 版本、任务列表、动态参数采样、Docker/运行时、prompt/scaffold、重试、timeout 和 evaluator commit。

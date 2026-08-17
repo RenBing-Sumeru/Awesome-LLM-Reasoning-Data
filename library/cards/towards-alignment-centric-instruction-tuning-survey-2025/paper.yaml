@@ -1,0 +1,106 @@
+id: towards-alignment-centric-instruction-tuning-survey-2025
+title: 'Towards Alignment-Centric Paradigm: A Survey of Instruction Tuning in Large Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Xudong Han
+- Junjie Yang
+- Tianyang Wang
+- Ziqian Bi
+- Xinyuan Song
+- Junfeng Hao
+- Junhao Song
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- alignment
+training_use:
+- sft
+- distillation
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2508.17184
+  arxiv: https://arxiv.org/abs/2508.17184
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed instruction-tuning data collection methods.
+  trace_author: Experts, larger teacher models, and self-improvement mechanisms in the surveyed taxonomy.
+  answer_format: A pipeline taxonomy spanning data collection, tuning strategies, and evaluation protocols.
+  process_fields:
+  - instruction source
+  - response author
+  - tuning method
+  - evaluation protocol
+  environment_or_substrate: Instruction-tuning and alignment settings across text, multilingual, and multimodal work as described
+    by the survey.
+  verifier_or_reward: Feedback mechanisms vary across surveyed work; no single verifier contract is introduced.
+  terminal_predicate: Not applicable to a survey; readers must inspect primary releases for concrete quality and verification
+    evidence.
+recipe_metadata:
+  base_model: Surveyed LLMs; no single base model.
+  teacher: Expert annotators, larger models, and self-improvement methods in the survey taxonomy.
+  generator: Literature survey.
+  filtering_rule: Categorize construction as expert annotation, teacher distillation, or self-improvement.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Full-parameter and parameter-efficient tuning strategies are surveyed rather than implemented.
+audit:
+  source_mixture: Official arXiv record only.
+  split: Not applicable; survey.
+  decontamination: The survey identifies data/evaluation concerns at a high level; no paper-specific contamination conclusion
+    is claimed.
+  license: unknown
+  lineage: 'Primary source: https://arxiv.org/abs/2508.17184'
+  known_failure_modes:
+  - The work is a preprint; formal publication status is unknown.
+  - Taxonomy categories do not establish provenance for individual data releases.
+  - Instruction data quality and alignment claims remain task-dependent.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv abstract confirms the three data-construction paradigms and scope.
+inclusion_reason: A contemporary alignment-oriented map of instruction-data lineages that routes readers from Track0 into
+  demonstrations, distillation, self-improvement, and evaluation evidence.
+related: []
+tags:
+- foundations-and-primers
+- instruction-tuning
+- alignment-taxonomy
+- arXiv-2025
+why_it_matters: It makes the provenance difference between expert demonstrations, teacher distillation, and self-improvement
+  explicit at the atlas entry point.
+status: verified
+needs:
+- 'needs_review: verify a venue version if one becomes official'
+one_line_summary: This survey organizes instruction tuning around data origin, tuning strategy, and evaluation rather than
+  treating all prompts and answers as one data type.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv record verified; no official project, code, or data artifact was confirmed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧱 Instruction / rationale / preference lineages

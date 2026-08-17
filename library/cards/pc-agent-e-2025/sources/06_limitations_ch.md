@@ -1,0 +1,7 @@
+- **训练反馈不是环境反馈。** 每个人工步骤的九个 Claude 替代动作从未执行，也没有 next observation、任务 evaluator 结果或 reward。语法正确的 response 仍可能点击错误控件、使用失效坐标或与隐藏应用状态冲突。把所有保留分支都当作正向 SFT target 可能产生 false positive；这是根据发布 pipeline 得出的 curator inference。
+- **终止标签受到构造规则影响。** 以失败结束的记录被删除，`refinement.py` 还可能把最后保留的 action 重写为 `finish`。因此，`finish` 部分是清洗阶段施加的终止 token，不是环境目标已经实现的证据。50 步设置下 success rate 从 36.0 降到 31.4，也表明 termination awareness 仍不稳健。
+- **失败监督被选择性移除。** 失败的人工结尾被丢弃，普通失败尝试没有作为带标签负例保留，合成分支也没有成功/失败标签。这可能让模型偏向外观合理的正向 action，并隐藏恢复行为；论文没有量化其下游影响。
+- **采集与 lineage 不完整。** 用于扩大任务池的 LLM、prompt、seed 数量和 mixture weight 为 unknown。逐记录任务来源、Claude temperature/top-p、random seed、拒绝率、成本，以及 decontamination 所用语义相似度 encoder 也未披露。
+- **发布复现性不完整。** 数据集只有一个 ZIP，GitHub 仓库没有 tagged release、不可变 manifest 或 changelog。报告分数所用 GPU 型号、固定 runtime/container、VM image、原始评测日志和 evaluator 版本没有打包。基于坐标的 GUI action 对分辨率、缩放、应用版本与初始化漂移敏感。
+- **权利与隐私尚未解决。** 代码仓库、dataset card 与 model card 的 metadata 标为 MIT，但标注者 consent、screenshot 脱敏、PII 检查、应用素材权利和第三方 benchmark 许可证均为 unknown。MIT 标签本身不能证明所有可见桌面内容都可再分发或用于训练。
+- **评测不能认证数据。** WindowsAgentArena-V2 混合使用手写、程序化、LLM-assisted 与少量人工检查，并曾修复不可行任务和 evaluator bug。benchmark 提升可以与无效训练分支、evaluator false positive/false negative 或任务分布过拟合同时存在。OSWorld 的不可行任务行为也限制了跨平台结论。

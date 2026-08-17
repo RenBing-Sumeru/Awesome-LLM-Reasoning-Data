@@ -1,0 +1,6 @@
+- 区分时间：论文于 2025 年公开，并被接收为 ICLR 2026 Oral；正式接收页有 51 位作者，而 arXiv v2 有 50 位。
+- 先把图 2 与第 4.1-4.6 节作为从 question source 到 teacher choice 的流程图，再读附录 F、H、O、Q、R，分别核查去污染、verifier 失败、compute、来源权利和详细 recipe。
+- 发布记录只有 `difficulty` + `source` + `domain` + 两条 message 的 `conversations`；没有附带 correctness、reward、step label、上游 ID、权利记录或过滤判定。
+- 不要把论文概括为“verification 无效”：表 15 在 32B 与 7B generator 上方向相反，主要 no-filter 对比也没有控制 compute。
+- 不要把 Apache-2.0 dataset label 视为充分许可；附录 Q 列出 all-rights-reserved 与无 license 的上游书籍，且不存在逐条 rights manifest。
+- 任何 fork 或复现前，都应在不复制 secret 值的前提下检查固定版本官方配置，轮换/删除 exposed credential，并要求准确 final-run manifest、rejection ledger 与 decontamination ledger。

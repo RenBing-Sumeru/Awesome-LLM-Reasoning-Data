@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Intern-S1 报告了 5T 持续预训练 token（其中超过 2.5T 为科学 token），以及 InternBootCamp 中从离线到在线的 RL 与覆盖超过 1,000 个任务的 Mixture-of-Rewards；任务、数据和奖励细节仍为 unknown。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿模型技术报告与数据披露账本",
+  "best_for_ch": "审计持续预训练、RL 任务和奖励披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Intern-S1 Team, Shanghai AI Laboratory",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T10:27:16Z"
+}

@@ -1,0 +1,1 @@
+Zhou, Zhi, Yuhao Tan, Zenan Li, Yuan Yao, Lan-Zhe Guo, Yu-Feng Li, and Xiaoxing Ma. 2025. A Theoretical Study on Bridging Internal Probability and Self-Consistency for LLM Reasoning. In Advances in Neural Information Processing Systems 38. https://papers.nips.cc/paper_files/paper/2025/hash/7e9afa9a02857bce4515247842471444-Abstract-Conference.html

@@ -1,0 +1,1 @@
+Provisional citation from the official arXiv record: Zijun Liu, Peiyi Wang, Runxin Xu, Shirong Ma, Chong Ruan, Peng Li, Yang Liu, and Yu Wu. Inference-Time Scaling for Generalist Reward Modeling. arXiv:2504.02495v3, 2025. https://arxiv.org/abs/2504.02495 · https://huggingface.co/collections/BBQGOD/deepseek-grm

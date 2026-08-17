@@ -1,0 +1,1 @@
+LaRA requires controlled perturbations and access to hidden states across layers, creating computational and deployment overhead. Its signals may also depend on model architecture, layer alignment, perturbation quality, and the particular RL setup; a geometric anomaly alone does not identify the contaminated source.

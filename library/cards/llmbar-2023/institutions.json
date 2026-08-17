@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Tsinghua University",
+    "Princeton Language and Intelligence, Princeton University",
+    "University of Illinois Urbana-Champaign"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2310.07641",
+    "https://arxiv.org/e-print/2310.07641"
+  ],
+  "verification_note": "Official arXiv page verifies ICLR 2024 status; arXiv source verifies the Tsinghua, Princeton, and UIUC author affiliations."
+}

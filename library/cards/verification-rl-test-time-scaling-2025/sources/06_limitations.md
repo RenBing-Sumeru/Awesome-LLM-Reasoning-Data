@@ -1,0 +1,1 @@
+The guarantees rely on assumptions about trajectory heterogeneity and reward distribution, and practical systems still require a verifier accurate enough to be useful. The experiments focus on didactic and math settings, so the size of the separation for open-ended tasks remains uncertain.

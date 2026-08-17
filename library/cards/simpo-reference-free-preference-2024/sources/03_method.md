@@ -1,0 +1,3 @@
+For each prompt with a preferred and dispreferred completion, the method computes the trainable policy’s length-normalized log likelihood for both completions. Their difference, shifted by a tunable target margin, is optimized with the Bradley-Terry logistic objective; no frozen reference-policy forward pass is required.
+
+The paper trains base and instruction-tuned Mistral, Llama 3, and Gemma 2 variants and compares against DPO and recent variants. It evaluates chat quality on AlpacaEval 2, MT-Bench, and Arena-Hard, while separately examining response length and a range of capability-oriented benchmarks.

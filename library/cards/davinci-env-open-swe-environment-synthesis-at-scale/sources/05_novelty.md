@@ -1,0 +1,3 @@
+SWE-bench and SWE-Gym release a limited number of manually or semi-automatically restored environments. Later data factories often treat environment construction as a hidden preprocessing step and disclose little failure diagnosis or scaling cost. daVinci-Env assigns repository exploration, Docker synthesis, test analysis, and iterative repair to multiple agents and releases tens of thousands of environments with build assets.
+
+It also connects environment quality to trajectory collection: executable tasks with useful feedback are selected before agents generate training trajectories. The novelty lies in transparent large-scale environment synthesis and the environment-to-trajectory pipeline rather than a new definition of unit tests.

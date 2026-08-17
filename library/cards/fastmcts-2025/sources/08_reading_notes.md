@@ -1,0 +1,5 @@
+- Read Sections 3.1-3.4 with Appendix D to see that simulation continuations are retained as tree nodes and terminal results are backed up.
+- Read Appendices F and H together: the judge checks complete answers, while step/branch labels are inferred from terminal success and visit counts.
+- Separate the two headlines: FastMCTS SFT gains 2.9 average points in the max-16 English comparison; 3.9 points includes Branch-DPO.
+- Table 1 reports more accepted paths at slightly lower average token counts, not a universal 30% token-cost reduction.
+- Inspect the official repository as recipe code only; paper-matched configs, synthesized outputs, licenses, and stable data schemas are still missing.

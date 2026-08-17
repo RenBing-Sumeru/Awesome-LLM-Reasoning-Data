@@ -1,0 +1,123 @@
+id: holistic-agent-evaluation-failure-diagnosis-2026
+title: Holistic Evaluation and Failure Diagnosis of AI Agents
+year: 2026
+venue: arXiv preprint
+authors:
+- Netta Madvil
+- Gilad Dym
+- Alon Mecilati
+- Edo Dekel
+- Jonatan Liberman
+- Rotem Brazilay
+- Liron Schliesser
+- Max Svidlo
+- Shai Nir
+- Orel Shalom
+- Yaron Friedman
+- David Connack
+- Amos Rimon
+- Philip Tannor
+- Shir Chorev
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- agent-evaluation
+- failure-diagnosis
+- trail-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.14865
+  arxiv: https://arxiv.org/abs/2605.14865
+  doi: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: arXiv paper
+  trace_author: Deepchecks authors and diagnostic framework
+  answer_format: benchmark runs, trajectory-level diagnostics, failure categories, evaluation summaries, and analysis outputs
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: holistic evaluation and failure diagnosis over AI-agent benchmark runs
+  verifier_or_reward: diagnostic framework and benchmark-specific evaluation criteria described by the paper
+  terminal_predicate: diagnostic framework and benchmark-specific evaluation criteria described by the paper
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: TRAIL benchmark evaluations and diagnostic categories
+  generator: holistic evaluation and failure diagnosis framework
+  filtering_rule: distinguish this framework from the TRAIL benchmark and locate official implementation before reuse
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2605.14865
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2605.14865'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: distinguish TRAIL benchmark dependency from this framework; official implementation/configuration not found
+inclusion_reason: it contributes a diagnostic view over agent trajectories and benchmark failures
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- agent-evaluation
+- failure-diagnosis
+- trail-benchmark
+one_line: This paper proposes holistic evaluation and failure diagnosis for AI agents.
+why_it_matters: it contributes a diagnostic view over agent trajectories and benchmark failures
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: This paper proposes holistic evaluation and failure diagnosis for AI agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Agent verification confirms Deepchecks affiliation and arXiv status; no official code/data release was found.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 124
+  primary_category_id: environment_agent_trajectory_data

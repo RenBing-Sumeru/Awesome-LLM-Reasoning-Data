@@ -1,0 +1,1 @@
+Suzgun, Mirac, Mert Yuksekgonul, Federico Bianchi, Dan Jurafsky, and James Zou. “Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory.” Proceedings of EACL 2026, pages 7080–7106. https://aclanthology.org/2026.eacl-long.333/. Code: https://github.com/suzgunmirac/dynamic-cheatsheet.

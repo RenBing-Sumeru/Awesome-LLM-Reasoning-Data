@@ -1,0 +1,1 @@
+在统一 scaffold 的完整 benchmark 评测中，所有广泛使用的 coding model 的 Pass@1 均低于 25%，GPT-5 最高约 23.3%；这与 SWE-bench Verified 上远高的结果形成明显差距，支持任务确实更长、更复杂。公开集的受控设置还限制最多 50 turns 和约 2 美元成本，使不同模型的资源更可比；失败轨迹显示常见问题包括需求理解不足、修改范围错误和测试后未继续修复。证据支持该 benchmark 揭示长程瓶颈，但 commercial/held-out 任务不可公开复现，模型比较会随 prompt augmentation、成本上限和 scaffold 更新而变化。

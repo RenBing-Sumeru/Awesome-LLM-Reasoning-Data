@@ -1,0 +1,5 @@
+MMLU-Pro asks whether MMLU-style broad academic evaluation can remain discriminative after the original benchmark became saturated, prompt-sensitive, and vulnerable to noisy questions. The primary source is Wang et al., "MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark," arXiv June 2024, later listed as a NeurIPS 2024 Datasets and Benchmarks spotlight; the official GitHub and Hugging Face dataset publish the evaluation assets.
+
+The collection boundary is a static benchmark upgrade, not a new model, reward model, or interactive environment. A data object is a multiple-choice question with ten options, a correct answer, category metadata, and evaluation split/package information. The feedback contract is answer-key exact match under the official evaluation pipeline.
+
+It matters for the atlas because it is an explicit hardening pass over MMLU: cleaner questions, harder retained items, more answer choices, and an audit target for whether broad academic benchmarks still separate frontier models.

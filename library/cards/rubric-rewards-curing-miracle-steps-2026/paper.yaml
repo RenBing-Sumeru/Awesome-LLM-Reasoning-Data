@@ -1,0 +1,112 @@
+id: rubric-rewards-curing-miracle-steps-2026
+title: Curing “Miracle Steps” in LLM Mathematical Reasoning with Rubric Rewards
+year: 2026
+venue: ACL 2026
+authors:
+- Youliang Yuan
+- Qiuyang Mang
+- Jingbang Chen
+- Hong Wan
+- Xiaoyuan Liu
+- Junjielong Xu
+- Jen-tse Huang
+- Wenxuan Wang
+- Wenxiang Jiao
+- Pinjia He
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- rubric-reward-modeling
+- reinforcement-learning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.844/
+  arxiv: https://arxiv.org/abs/2510.07774
+  code: https://github.com/YouliangYuan/rrm-cure-miracle-steps
+  data: https://github.com/YouliangYuan/rrm-cure-miracle-steps
+  project: https://github.com/YouliangYuan/rrm-cure-miracle-steps
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.844
+  venue: https://aclanthology.org/2026.acl-long.844/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.844/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical problems and candidate correct-answer trajectories.
+  trace_author: Candidate-solving models, rubric synthesis model, and trained Rubric Reward Model.
+  answer_format: Problem-specific rubric paired with candidate reasoning and criterion-level feedback plus a 0–10 score.
+  process_fields:
+  - problem
+  - rubric
+  - response
+  - criterion_feedback
+  - score
+  environment_or_substrate: Mathematical reasoning trajectories.
+  verifier_or_reward: Generative Rubric Reward Model using problem-specific rubrics.
+  terminal_predicate: A trajectory receives a rubric-grounded reward score.
+recipe_metadata:
+  base_model: Qwen3-4B-Base for the reported RL experiments.
+  teacher: Gemini-2.5-Pro generates problem-specific rubrics; the paper documents human verification for failure taxonomy
+    analysis.
+  generator: Rubric synthesis and scoring-data generation pipeline.
+  filtering_rule: Rubrics target identified failure modes and scoring records train a calibrated generative RRM.
+  sampling_protocol: Use the released repository configuration and paper appendices for prompt and sampling settings.
+  inference_budget: Not fully specified in the repository landing page; pin the released artifacts.
+  optimizer_or_scaffold: RRM supervised fine-tuning followed by PPO, then rubric reward in mathematical RL.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematical problems, generated problem-specific rubrics, candidate trajectories, and criterion-level scores.
+  split: The code-and-data repository should be pinned to a commit before reuse.
+  decontamination: Not fully specified in the public landing page.
+  license: Check the repository LICENSE and any upstream mathematics-data terms before reuse.
+  lineage: ACL 2026 long paper and the author repository explicitly identified by the paper as the code-and-data release.
+  known_failure_modes:
+  - Generated rubrics and RRM scores can inherit model bias or omit a valid alternative derivation.
+  - The reported results are limited to the mathematical settings and reward protocol evaluated in the paper.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL Anthology record and its affiliation block, arXiv record, and the author GitHub repository named
+    in the ACL paper as the code-and-data release.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Rubric Rewards pairs mathematical problems with problem-specific scoring rubrics so a generative reward
+  model can penalize trajectory-level logical shortcuts during RL.
+why_it_matters: It makes the feedback contract explicit at the whole-trajectory level when final-answer correctness is insufficient
+  to detect reasoning shortcuts.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL Anthology record and its affiliation block, arXiv record, and the author GitHub repository named
+    in the ACL paper as the code-and-data release.
+category_ids:
+- preference_reward_feedback_data
+- process_trace_supervision_data
+- audit_failure_contamination_verifier_attacks

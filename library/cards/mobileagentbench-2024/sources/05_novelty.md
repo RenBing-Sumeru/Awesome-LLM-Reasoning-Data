@@ -1,0 +1,5 @@
+The prior-work baseline is realistic but heavy mobile environments such as AndroidWorld or AndroidEnv, plus GUI-agent benchmarks that often focus on static perception or closed task suites. MobileAgentBench changes the reuse surface by emphasizing a benchmark that outside users can set up, run, and adapt with less friction while retaining executable Android tasks and validators.
+
+What is new is the packaging and usability contract, not the existence of Android emulators, UI automation, or task-specific validators. The direction signal is practical: mobile-agent evaluation should expose enough environment and validator machinery for repeated experiments without requiring each lab to rebuild the harness from scratch.
+
+The quality signal is the combination of paper, public project page, public code, baseline integrations, and a design centered on task reset and success validation. Before reuse, inspect the exact task inventory, license, dependency versions, emulator image, app versions, seed data, validators, hidden or private tasks, and whether any baseline results depend on non-public prompts or services.

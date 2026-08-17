@@ -1,0 +1,1 @@
+Data boundary: Math problems used for test-time adaptation; a versioned prompt/data release was not verified. Method boundary: VDS samples multiple candidate solutions, selects a high-scoring pseudo-label when available, then performs sequential LoRA test-time updates.

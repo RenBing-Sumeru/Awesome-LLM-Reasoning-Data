@@ -1,0 +1,3 @@
+引用：Linke Ouyang, Yuan Qu, Hongbin Zhou, Jiawei Zhu, Rui Zhang, Qunshu Lin, Bin Wang, Zhiyuan Zhao, Man Jiang, Xiaomeng Zhao, Jin Shi, Fan Wu, Pei Chu, Minghao Liu, Zhenxiang Li, Chao Xu, Bo Zhang, Botian Shi, Zhongying Tu, Conghui He，《OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations》，2024 / CVPR 2025 / arXiv。https://arxiv.org/abs/2412.07626
+
+官方产物：paper: https://arxiv.org/abs/2412.07626; project: https://opendatalab.com/omnidocbench; code: https://github.com/opendatalab/OmniDocBench; data: https://huggingface.co/datasets/opendatalab/OmniDocBench; doi: https://doi.org/10.48550/arXiv.2412.07626。

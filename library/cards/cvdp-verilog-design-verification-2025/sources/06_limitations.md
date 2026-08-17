@@ -1,0 +1,3 @@
+1. **Sample ceiling:** Although broad, 783 tasks leave limited counts per category and reflect workflows familiar to participating organizations. They do not represent every proprietary EDA stack, process, or design rule.  
+2. **Heterogeneous evaluation:** Compilation and simulation, BLEU, and LLM judging have different reliability. One aggregate score hides evidence strength, so results should be reported by task category and verifier type.  
+3. **Environment drift:** Erroneous RTL can generate large logs and resource consumption, and outcomes depend on simulator, timeout, memory, and dependency versions. Reproductions need fixed containers and explicit execution-failure categories.

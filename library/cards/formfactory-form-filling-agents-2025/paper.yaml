@@ -1,0 +1,120 @@
+id: formfactory-form-filling-agents-2025
+title: 'FormFactory: An Interactive Benchmarking Suite for Multimodal Form-Filling Agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Bobo Li
+- Yuheng Wang
+- Hao Fei
+- Juncheng Li
+- Wei Ji
+- Mong-Li Lee
+- Wynne Hsu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- form-filling
+- multimodal-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.01520
+  arxiv: https://arxiv.org/abs/2506.01520
+  doi: https://doi.org/10.48550/arXiv.2506.01520
+  code: https://github.com/formfactory-ai/formfactory
+  data: https://github.com/formfactory-ai/formfactory
+  project: https://formfactory-ai.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official form suite and benchmark instances
+  trace_author: official task authors and form-filling agents
+  answer_format: forms, screenshots, bounding boxes, gold JSON, user goals, filled fields, and evaluator output
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: interactive web form-filling tasks with backend evaluation
+  verifier_or_reward: backend form-state evaluator and gold field matching
+  terminal_predicate: backend form-state evaluator and gold field matching
+  dataset_scale: 'Project/paper scale: 20 web forms, 1,250 task instances, 13,800+ field-value pairs; repository README later
+    advertises 40+ form templates.'
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official FormFactory authors and gold-field annotations
+  generator: FormFactory form and instance generation
+  filtering_rule: record version differences between paper and repo before reuse
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2506.01520; https://formfactory-ai.github.io/; https://github.com/formfactory-ai/formfactory
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: GitHub repository is MIT-licensed; form assets and generated data should still be checked at artifact level before
+    redistribution.
+  lineage: 'Primary lead: https://arxiv.org/abs/2506.01520'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: 'arXiv/project/repository verify authors and artifacts. Keep version counts separate: project reports 20 forms/1,250
+    tasks/13,800+ field-value pairs; repository later advertises 40+ templates.'
+inclusion_reason: it exposes fine-grained form state and field-level action traces
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- web-browser-agents
+- form-filling
+- multimodal-agents
+one_line: FormFactory turns interactive web forms into a multimodal agent evaluation environment.
+why_it_matters: it exposes fine-grained form state and field-level action traces
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: FormFactory turns interactive web forms into a multimodal agent evaluation environment.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: 'arXiv/project/repository verify authors and artifacts. Keep version counts separate: project reports 20 forms/1,250
+    tasks/13,800+ field-value pairs; repository later advertises 40+ templates.'
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 42
+  primary_category_id: benchmarks_evaluation_surfaces

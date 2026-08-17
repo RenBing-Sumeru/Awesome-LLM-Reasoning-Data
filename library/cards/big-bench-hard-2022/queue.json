@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:20:23Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "不确定 历史引用很高，现在不怎么用，bigbench的hard版本1736ref",
+    "updated_at": "2026-07-15T12:20:23Z"
+  }
+}

@@ -1,0 +1,3 @@
+Training has two main stages: SFT and asynchronous RL. The RL mixture spans math, code, science, logic, deep research, and software engineering. `prime-rl` runs policy actors and training asynchronously, so rollouts may be slightly off-policy. Environments use the `verifiers` interface, and agentic code tasks can execute in isolated Prime Sandboxes.
+
+The full effort used 512 NVIDIA H200 GPUs across 64 nodes over roughly two months. The official release exposes the model, trainer, verifier framework, and environment ecosystem, but does not pin one immutable manifest containing every prompt, environment version, mixture weight, decoding parameter, and rollout record from the reported run.

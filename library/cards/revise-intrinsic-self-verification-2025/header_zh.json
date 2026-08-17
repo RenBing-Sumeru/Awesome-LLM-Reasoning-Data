@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ReVISE 把失败与成功的推理路径转成偏好对，用于内生的自我验证与改写。（论文未披露的发布、回放与审计细节保留为未知。）",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Hyunseok Lee、Seunghyuk Oh、Jaehyung Kim、Jinwoo Shin、Jihoon Tack",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

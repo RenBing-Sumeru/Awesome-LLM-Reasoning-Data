@@ -1,0 +1,1 @@
+Writing a program from a natural-language request is difficult because a plausible-looking answer may still fail to run or miss the requested behavior. This ACL 2023 survey asks how LLMs are being used for NL2Code, which benchmarks and metrics are available, and what a comparison can actually establish. It reviews existing work rather than releasing a new model or code dataset.

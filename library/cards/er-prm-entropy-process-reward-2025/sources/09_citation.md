@@ -1,0 +1,1 @@
+Hanning Zhang, Pengcheng Wang, Shizhe Diao, Yong Lin, Rui Pan, Hanze Dong, Dylan Zhang, Pavlo Molchanov, and Tong Zhang. 2025. Entropy-Regularized Process Reward Model. Transactions on Machine Learning Research. https://openreview.net/forum?id=cSxDH7N3x9

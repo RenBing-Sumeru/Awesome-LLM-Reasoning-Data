@@ -1,0 +1,5 @@
+- Read the Hugging Face artifact as two SFT message corpora, not as the paper's raw real and synthetic trajectory collection.
+- Keep the judges separate: Llama-3.3-70B filters training trajectories, GPT-4o evaluates benchmarks and scores WMLA rollouts, and live execution provides environmental outcomes.
+- Synthetic training uses the iteration-2 world model with the iteration-1 policy, is restricted to previously unsuccessful queries, and stops after at most seven steps.
+- WMLA samples up to three actions with temperatures 0 and 0.7, simulates depths one to three, and is an inference-time procedure rather than released training data.
+- Check for row-level lineage, rejected attempts, timestamps, browser snapshots, decontamination, checkpoints, and third-party web-content rights before claiming replayability or broad reuse.

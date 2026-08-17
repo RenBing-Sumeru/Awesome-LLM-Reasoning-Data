@@ -1,0 +1,3 @@
+An assistant may be helpful in ordinary dialogue yet unsafe when a user asks for harmful assistance. HH-RLHF studies how human comparisons distinguish useful answers from answers that should refuse or safely redirect such requests. Its boundary is context-bound helpfulness and harmlessness preference, not a formal safety proof or a guarantee for every harmful prompt.
+
+The decision surface is a dialogue context, two assistant responses, and a human choice. It includes ordinary helpfulness and red-team contexts. A response that appears maximally helpful can be wrong for a harmful request, while a refusal can be wrong for a benign request.

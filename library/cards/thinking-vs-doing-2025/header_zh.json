@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TTI 以终局成功筛选在线多模态网页 episode，再对其中的 state-action 步骤做 behavior cloning 并逐步扩大交互 horizon；但公开发布没有 rollout 语料，且划分、judge 与训练配置存在审计缺口。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "网页智能体交互扩展与在线筛选式行为克隆研究",
+  "best_for_ch": "关注环境智能体轨迹数据、终局反馈、在线筛选、replay 与交互预算审计的研究者和工程师",
+  "confidence_ch": "高",
+  "authors_ch": "Junhong Shen、Hao Bai、Lunjun Zhang、Yifei Zhou、Amrith Setlur、Shengbang Tong、Diego Caples、Nan Jiang、Tong Zhang、Ameet Talwalkar、Aviral Kumar",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

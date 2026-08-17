@@ -1,0 +1,187 @@
+id: goedel-prover-v2-2025
+title: 'Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yong Lin
+- Shange Tang
+- Bohan Lyu
+- Ziran Yang
+- Jui-Hui Chung
+- Haoyu Zhao
+- Lai Jiang
+- Yihan Geng
+- Jiawei Ge
+- Jingruo Sun
+- Jiayun Wu
+- Jiri Gesi
+- Ximing Lu
+- David Acuna
+- Kaiyu Yang
+- Hongzhou Lin
+- Yejin Choi
+- Danqi Chen
+- Sanjeev Arora
+- Chi Jin
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- formal_theorem_proving
+- lean
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.03613
+  arxiv: https://arxiv.org/abs/2508.03613
+  code: https://github.com/Goedel-LM/Goedel-Prover-V2
+  data: https://huggingface.co/datasets/Goedel-LM/MathOlympiadBench
+  project: https://blog.goedel-prover.com/
+  huggingface: https://huggingface.co/Goedel-LM/Goedel-Prover-V2-32B
+  doi: https://doi.org/10.48550/arXiv.2508.03613
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2508.03613
+data_object:
+  prompt_source: Lean 4 statements assembled from existing formal corpora, natural-language mathematics autoformalized by
+    Goedel-Formalizer-V2, formal and informal scaffolded variants, and self-correction inputs. The paper does not publish
+    a complete source manifest or per-item provenance.
+  trace_author: DeepSeek-Prover-V2-7B and DeepSeek-Prover-V2-671B produce initial whole-proof SFT traces; SFT-S1 and DeepSeek-Prover-V2-671B
+    annotate self-correction traces; later Goedel-Prover-V2 checkpoints produce expert-iteration and RL rollouts. Claude Sonnet
+    4 supplies 50K initial formalizer examples, and Qwen3-32B generates and filters informal scaffolded statements.
+  answer_format: A theorem prompt is paired with long natural-language proof planning and Lean 4 proof code. A self-correction
+    record contains the statement, a failed SFT-model output, and its Lean compiler error message; the corrected continuation
+    is the training target or RL action.
+  process_fields:
+  - Lean 4 statement
+  - long proof plan / chain of thought
+  - candidate whole proof
+  - Lean compiler verdict and error message
+  - corrected proof attempt
+  - extracted unsolved goal with preconditions
+  - formalized scaffolded statement or its negation
+  - rollout reward and pass rate
+  environment_or_substrate: Official code targets Linux and Python 3.10, follows Lean 4.9 with the corresponding Mathlib,
+    and pins a mathlib4 submodule in the repository. Exact immutable container image, hardware/runtime pins, and the environment
+    used for every training record are not published.
+  verifier_or_reward: Lean compilation supplies terminal proof reward and error messages for correction. RL uses a hybrid
+    GRPO-style objective without group normalization or KL, with clip-higher, overlong penalties, DAPO-style dynamic sampling,
+    and eight parallel rollouts per input; inputs with empirical pass rate 0 or above 0.75 are filtered from optimization.
+  terminal_predicate: A candidate is successful when the supplied Lean 4 statement compiles under the configured Lean/mathlib
+    environment. This proves the formal statement in that environment, not that an upstream natural-language problem was faithfully
+    formalized.
+recipe_metadata:
+  base_model: Qwen3-8B and Qwen3-32B
+  teacher: DeepSeek-Prover-V2-7B and DeepSeek-Prover-V2-671B for whole-proof SFT; SFT-S1 plus DeepSeek-Prover-V2-671B for
+    self-correction annotation; Claude Sonnet 4 for 50K initial formalizer examples; Qwen3-32B for informal scaffold generation
+    and filtering.
+  generator: The S1→S2→S3 pipeline first collects verified whole proofs, adds compiler-error self-correction records, then
+    augments theorem statements through formal goal extraction and informal problem variation followed by autoformalization.
+  filtering_rule: Formalizer examples must pass Lean syntax checks and repeated LLM semantic evaluation; informal scaffolded
+    statements are filtered for correctness and difficulty, trivial or incorrect statements are discarded while negations
+    of incorrect statements may be retained, and exact-match duplicates are removed. Expert-iteration proof traces require
+    Lean success. RL dynamically excludes prompts with pass rate 0 or greater than 0.75.
+  sampling_protocol: S1 is produced by large-scale inference with DeepSeek-Prover-V2-7B/671B. S2 adds self-correction data
+    annotated by SFT-S1 and DeepSeek-Prover-V2-671B. S3 adds scaffolded statements generated from SFT-S2-AVG. RL mixes whole-proof
+    generation and first-round self-correction 50/50 for one epoch.
+  rollout_count: 8
+  temperature: unknown
+  inference_budget: RL uses batch size 128, eight parallel rollouts, mini-batch size 32, up to 16K prompt tokens and 24K response
+    tokens with a 4K overlong buffer. Main self-correction evaluation uses at most two revision rounds in a 40K context; a
+    128K-context ablation uses up to five revisions.
+  optimizer_or_scaffold: 'VeRL hybrid GRPO: no group normalization, no KL or entropy term, token-averaged policy loss, clip-higher,
+    overlong penalty factor 1, DAPO-style dynamic sampling, and model averaging after SFT and RL. The paper reports about
+    46K and 64K unique RL inputs for 8B and 32B, while the main text elsewhere says 67K for 32B; that discrepancy should remain
+    visible.'
+audit:
+  source_mixture: The disclosed mixture includes existing Lean statements, autoformalized natural-language math, formal goal-extraction
+    variants, Qwen3-32B informal variants, whole-proof traces, and compiler-error correction traces. Exact corpus names, proportions,
+    licensing, and item-level source mappings are not fully published.
+  split: Training uses 50K challenging statements and 50K self-correction samples for RL preparation; about 46K inputs are
+    consumed by 8B and 64K or 67K by 32B depending on appendix versus main-text wording. The public MathOlympiadBench has
+    360 train rows as a packaging split and is an evaluation benchmark, not the training corpus.
+  decontamination: The paper reports benchmark evaluation on MiniF2F, PutnamBench, and MathOlympiadBench but does not provide
+    a released train/benchmark overlap or broader decontamination report.
+  license: The official repository badge and MathOlympiadBench card state Apache-2.0. Model pages and upstream corpora may
+    carry separate terms; the paper does not provide a per-source license matrix for the unreleased training mixture.
+  lineage: Existing or generated math problem → Lean formalization and semantic checks → scaffolded theorem variants → teacher
+    whole-proof inference → Lean-verified S1 → failed proof plus compiler error and correction annotation for S2 → scaffolded
+    S3 → SFT, RL, and checkpoint averaging. Public model weights, inference/self-correction code, Lean compiler code, and
+    MathOlympiadBench are available, but core S1/S2/S3 and RL record manifests are not.
+  known_failure_modes:
+  - Lean acceptance is conditional on the exact statement and environment; it does not validate autoformalization semantics
+    or source provenance.
+  - Formal goal extraction from an incorrect proof attempt can yield unprovable statements; adding a negation avoids assuming
+    truth but changes the data distribution.
+  - Qwen3-32B semantic and difficulty filters can reject valid hard statements or accept subtly incorrect ones.
+  - Self-correction learns from compiler messages, which may encourage environment-specific repair patterns without improving
+    mathematical planning.
+  - Dynamic RL sampling removes unsolved prompts and prompts above 75% pass rate, concentrating optimization on a moving intermediate-difficulty
+    band.
+  - Model averaging changes pass@1/pass@N diversity and makes a single-checkpoint training lineage insufficient.
+  - The paper and released model pages contain differing historical score and budget numbers; use the arXiv v1 paper for paper
+    claims and pin artifact revisions for reproduction.
+  - Core training statements, accepted and rejected traces, reward logs, per-item provenance, licenses, and decontamination
+    records are not released.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v1, author repository, official 8B/32B Hugging Face pages, and official MathOlympiadBench were checked.
+    Artifact existence is verified; the core training datasets S1/S2/S3 remain unreleased.
+inclusion_reason: A frontier formal-theorem-proving report with unusually concrete disclosure of scaffolded statement construction,
+  compiler-error correction records, verifier-backed expert iteration, RL sampling, and checkpoint averaging, together with
+  official models, inference code, and an evaluation dataset.
+related: []
+tags:
+- goedel-prover-v2
+- lean
+- formal-reasoning
+- self-correction
+- synthetic-data
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- programmatically_verifiable_outcome_data
+one_line_summary: Goedel-Prover-V2 builds Lean proof models through verified whole-proof SFT, compiler-error self-correction
+  data, scaffolded theorem synthesis, hybrid GRPO, and model averaging; public models and evaluation artifacts exist, but
+  the core S1/S2/S3 training records are not released.
+why_it_matters: For the frontier disclosure track, it exposes how theorem statements, long proof traces, compiler feedback,
+  and verifier rewards enter distinct post-training stages while preserving the gap between formal acceptance, semantic faithfulness,
+  and release completeness.
+card: null
+needs:
+- 'needs_data: release S1, S2, S3, formalizer examples, correction traces, RL rollouts, rewards, rejected attempts, and item-level
+  source lineage'
+- 'needs_metadata: publish source-corpus proportions, exact 32B RL input count, generation temperatures, seeds, checkpoint
+  averaging coefficients, and per-stage yields'
+- 'needs_audit: publish train/benchmark overlap, decontamination, autoformalization error, verifier-environment, and semantic-faithfulness
+  audits'
+- 'needs_license: provide a per-source and derivative-data license matrix for the unreleased training mixture'
+- 'needs_snapshot: pin model, code, Mathlib, environment, and dataset revisions used for each reported result'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: card_writer
+  confidence: high
+  notes: Verified against arXiv:2508.03613v1, Goedel-LM/Goedel-Prover-V2, official Goedel-LM 8B/32B model pages, and Goedel-LM/MathOlympiadBench.
+    Training-record release remains partial.

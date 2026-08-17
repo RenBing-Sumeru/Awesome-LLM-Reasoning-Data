@@ -1,0 +1,109 @@
+id: rubric-arrow-pointwise-reward-modeling-2026
+title: 'RUBRIC-ARROW: Alternating Pointwise Rubric Reward Modeling for LLM Post-training in Non-verifiable Domains'
+year: 2026
+venue: arXiv
+authors:
+- Haoxiang Jiang
+- Zihan Dong
+- Tianci Liu
+- Wanying Wang
+- Ran Xu
+- Tony Yu
+- Linjun Zhang
+- Haoyu Wang
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- general
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.29156
+  arxiv: https://arxiv.org/abs/2605.29156
+  code: null
+  data: https://huggingface.co/datasets/OpenRubrics/RubricARROW-Judge-SFT
+  project: https://huggingface.co/collections/OpenRubrics/rubricarrow
+  huggingface: https://huggingface.co/datasets/OpenRubrics/RubricARROW-Judge-SFT
+  doi: https://doi.org/10.48550/arXiv.2605.29156
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Non-verifiable open-ended instructions and candidate responses.
+  trace_author: Rubric generator and rubric-conditioned judge produce criteria, explanations, and scores.
+  answer_format: Instruction, conversation, rubric items, criterion explanations, criterion labels, and pointwise score.
+  process_fields:
+  - instruction
+  - conversation
+  - rubric
+  - output
+  - explanation
+  - criteria_met
+  - score
+  environment_or_substrate: Pointwise reward modeling for subjective, non-verifiable tasks.
+  verifier_or_reward: Rubric-conditioned judge with probability-based pointwise scoring.
+  terminal_predicate: A response is assessed against explicit rubric criteria with a calibrated pointwise score.
+recipe_metadata:
+  base_model: Qwen3-8B-based released rubric and judge models.
+  teacher: Alternating rubric generator and judge optimization using preference data.
+  generator: Generate rubrics, train a rubric-conditioned judge, and alternate policy optimization stages.
+  filtering_rule: Retain records with structured rubric-conditioned judge outputs.
+  sampling_protocol: The public Judge-SFT release contains about 119,000 records.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix rubric model, judge model, preference data, and score aggregation.
+  optimizer_or_scaffold: Alternating GRPO framework.
+audit:
+  source_mixture: Official arXiv paper and OpenRubrics Hugging Face data and model collection.
+  split: The official dataset exposes one 119k-row training split.
+  decontamination: Rubric data may be reused by models under evaluation; retain independent domains and prompts for claims.
+  license: Consult the official OpenRubrics release terms before reuse.
+  lineage: https://huggingface.co/datasets/OpenRubrics/RubricARROW-Judge-SFT
+  known_failure_modes:
+  - Generated rubrics can omit latent quality dimensions.
+  - Pointwise scores can still encode evaluator bias in non-verifiable domains.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, author list, OpenRubrics data and project collection were checked; no separate official code repository
+    was identified.
+inclusion_reason: RUBRIC-ARROW releases rubric-conditioned judge SFT records for pointwise reward modeling in non-verifiable
+  domains.
+related: []
+tags:
+- rubric
+- reward_model
+- pointwise
+- judge
+- post_training
+one_line_summary: RUBRIC-ARROW alternates rubric generation and pointwise judging to train reward models for non-verifiable
+  tasks.
+why_it_matters: It exposes a reusable rubric-conditioned judge data object instead of relying only on opaque frontier evaluators.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and OpenRubrics releases were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

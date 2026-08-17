@@ -1,0 +1,3 @@
+- **Confounded recipe.** Mixture, base model, scale, SFT, and DPO can change together, so aggregate gains do not isolate data quality; require matched ablations before making a causal claim.
+- **Heterogeneous lineage.** The mixture inherits different collection methods and licenses, and the paper reports possible evaluation overlap for DPO data; audit every source and revision before redistribution.
+- **Preference side effects.** DPO improves open-ended judgments but increases verbosity and hurts multilingual performance; test the target language and length distribution before adoption.

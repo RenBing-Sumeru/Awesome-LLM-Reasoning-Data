@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用当前策略的在线通过率衡量题目难度，仅保留成功率居中的 NuminaMath 题组，并持续补采直到组成固定大小的 GRPO 批次。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "在线 RLVR 数据筛选与扩展研究",
+  "best_for_ch": "研究难度课程、在线 rollout 筛选、GRPO 数据效率与生成成本权衡的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Sanghwan Bae、Jiwoo Hong、Min Young Lee、Hanbyul Kim、Jeongyeon Nam、Donghyun Kwak",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T08:11:06Z"
+}

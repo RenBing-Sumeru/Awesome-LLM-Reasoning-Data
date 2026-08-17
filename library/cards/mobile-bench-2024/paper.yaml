@@ -1,0 +1,120 @@
+id: mobile-bench-2024
+title: 'Mobile-Bench: An Evaluation Benchmark for LLM-based Mobile Agents'
+year: 2024
+venue: ACL 2024 Long Papers / arXiv
+authors:
+- Shihan Deng
+- Weikai Xu
+- Hongda Sun
+- Wei Liu
+- Tao Tan
+- Jianfeng Liu
+- Ang Li
+- Jian Luan
+- Bin Wang
+- Rui Yan
+- Shuo Shang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- api-ui-hybrid
+- android
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2407.00993
+  arxiv: https://arxiv.org/abs/2407.00993
+  doi: https://doi.org/10.48550/arXiv.2407.00993
+  code: https://github.com/XiaoMi/MobileBench
+  data: https://github.com/XiaoMi/MobileBench
+  project: https://github.com/XiaoMi/MobileBench
+  huggingface: null
+  venue: https://aclanthology.org/2024.acl-long.478/
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.478/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official Mobile-Bench paper and XiaoMi repository
+  trace_author: Mobile-Bench authors and mobile-agent evaluations
+  answer_format: mobile tasks, APIs, UI operations, checkpoints, evaluation records, and scripts
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: single- and multi-app mobile tasks with APIs, UI actions, and checkpoints
+  verifier_or_reward: Mobile-Bench checkpoint metric and task success checks
+  terminal_predicate: Mobile-Bench checkpoint metric and task success checks
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: Mobile-Bench authors and benchmark annotations
+  generator: Mobile-Bench API/UI task construction
+  filtering_rule: pin repo commit, data split, app/API requirements, and checkpoint metric implementation
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://aclanthology.org/2024.acl-long.478/; https://arxiv.org/abs/2407.00993; https://github.com/XiaoMi/MobileBench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2407.00993'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: repo commit, author-affiliation mapping, data split, app/API environment requirements, and checkpoint implementation
+    need audit.
+inclusion_reason: it exposes a hybrid API/UI action surface for mobile-agent evaluation
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- api-ui-hybrid
+- android
+one_line: Mobile-Bench evaluates LLM mobile agents with API/UI tasks and checkpoint metrics.
+why_it_matters: it exposes a hybrid API/UI action surface for mobile-agent evaluation
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Mobile-Bench evaluates LLM mobile agents with API/UI tasks and checkpoint metrics.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: ACL Anthology, arXiv, and XiaoMi repository verify authors, institutions, ACL 2024 status, and released artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 55
+  primary_category_id: benchmarks_evaluation_surfaces

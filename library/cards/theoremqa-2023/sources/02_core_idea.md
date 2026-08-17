@@ -1,0 +1,3 @@
+The one-sentence contribution is that TheoremQA turns theorem application into a multi-domain QA benchmark whose answers are constrained enough for automatic scoring.
+
+The mechanism combines GPT-4-assisted theorem inventory construction with expert refinement and expert-authored or expert-sourced questions. The data object is a question-theorem-answer triple, not a proof trace. The closest comparisons are MATH-style numeric reasoning, science QA, and domain exam benchmarks; TheoremQA differs by making theorem use explicit and spanning five technical domains. The direction label is benchmark / evaluation surface for theorem-use reasoning.

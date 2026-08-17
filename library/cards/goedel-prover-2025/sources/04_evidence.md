@@ -1,0 +1,3 @@
+**Whole-proof comparison.** Goedel-Prover-SFT reaches 57.6% Pass@32 on miniF2F, versus 50.0% for DeepSeek-Prover-V1.5-RL; at Pass@3200 the comparison is 62.7% versus 54.9%. Because both use whole-proof generation and the same benchmark, the result supports the combined statement/proof expansion recipe, but training data and hardware are not matched component by component.
+
+**Data and style ablations.** The mixed Formalizer A+B training set reaches 57.6% on miniF2F, 15.2% on ProofNet, and 61.2% on NuminaTest, averaging 44.7%, versus averages 43.3% and 43.8% for either style alone. The paper also shows that adding Mathlib4 raises ProofNet from 13.2% to 15.6% but lowers miniF2F from 56.1% to 54.1%, exposing distribution tradeoffs rather than a uniformly better mixture.

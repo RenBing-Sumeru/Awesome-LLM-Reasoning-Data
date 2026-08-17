@@ -1,0 +1,3 @@
+Citation: Luca Gioacchini, Giuseppe Siracusano, Davide Sanvito, Kiril Gashteovski, David Friede, Roberto Bifulco, and Carolin Lawrence. "AgentQuest: A Modular Benchmark Framework to Measure Progress and Improve LLM Agents." Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (System Demonstrations), 2024. https://aclanthology.org/2024.naacl-demo.19/
+
+Official links: ACL Anthology https://aclanthology.org/2024.naacl-demo.19/ ; arXiv https://arxiv.org/abs/2404.06411 ; code https://github.com/nec-research/agentquest

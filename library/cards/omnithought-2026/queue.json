@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多条教师轨迹，标注过程特征。数据量充足",
+    "updated_at": "2026-07-12T14:10:07Z"
+  },
+  "updated_at": "2026-07-12T14:10:07Z"
+}

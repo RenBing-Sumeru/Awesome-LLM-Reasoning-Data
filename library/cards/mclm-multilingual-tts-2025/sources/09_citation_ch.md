@@ -1,0 +1,1 @@
+Son, Guijin、Jiwoo Hong、Hyunwoo Ko 和 James Thorne。2025。《数学推理中测试时扩展的语言泛化性》。载于《第六十三届计算语言学协会年会论文集（第一卷：长文）》，第 14333–14368 页。计算语言学协会。https://aclanthology.org/2025.acl-long.699/。代码和数据：https://github.com/gauss5930/MCLM。

@@ -1,0 +1,5 @@
+- Distinguish source questions from generated search interaction trajectories.
+- HotpotQA and 2Wiki supply questions and reference answers.
+- Search behavior is generated online during reinforcement learning.
+- Bamboogle is an out-of-domain evaluation, not a training-data source.
+- Exact rollout-corpus availability and licensing remain unknown.

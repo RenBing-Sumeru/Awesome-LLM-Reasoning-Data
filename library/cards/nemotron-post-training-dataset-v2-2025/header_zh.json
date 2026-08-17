@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Nemotron-Post-Training-Dataset-v2 发布 6,341,414 条覆盖技术推理、对话和五种目标语言的 SFT 风格记录，并保留生成器与许可字段；但逐条来源、筛选判定、拒绝候选、verifier 输出和训练阶段映射仍未披露。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多领域、多语言后训练数据集发布与构造披露",
+  "best_for_ch": "构建多领域或多语言 SFT 混合数据、审计合成数据来源与许可，或研究发布元数据如何衔接 verifier 和训练阶段的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Dhruv Nathawani、Shuoyang Ding、Vitaly Lavrukhin、Igor Gitman、Somshubra Majumdar、Evelina Bakhturina、Boris Ginsburg、Jane Polak Scowcroft",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

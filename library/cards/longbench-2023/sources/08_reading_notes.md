@@ -1,0 +1,1 @@
+Do not treat a LongBench average as a single long-context capability number. Read per-task results with the metric and truncation rule beside them. Keep bilingual effects, task-family effects, and context-window effects separate. A high score on retrieval-heavy tasks does not imply robust long-form reasoning or faithful summarization.

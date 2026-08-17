@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "The University of Texas at Austin"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:55:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.11214",
+    "https://trishullab.github.io/PutnamBench/",
+    "https://github.com/TrishulLab/PutnamBench"
+  ],
+  "verification_note": "arXiv, project page, and TrishulLab/PutnamBench repository verify authors, UT Austin affiliation, NeurIPS 2024 Datasets and Benchmarks status, and public Lean/Isabelle/Coq benchmark artifacts."
+}

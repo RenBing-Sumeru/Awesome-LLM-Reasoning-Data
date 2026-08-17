@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Bamboogle 常用版本是 125 道 adversarial compositional QA，用来检查模型是否真正组合事实而不是走 single-hop 捷径。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Findings of EMNLP 2023 的 benchmark / evaluation surface",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Ofir Press 等（University of Washington、MosaicML、Meta AI、Allen Institute for Artificial Intelligence）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:39:00Z"
+}

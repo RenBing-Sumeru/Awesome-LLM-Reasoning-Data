@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用统一框架梳理检索增强生成与多步推理如何相互促进。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "RAG 与推理系统综述",
+  "best_for_ch": "需要让模型一边检索证据、一边完成复杂推理的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yangning Li 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+Difficulty-only rewards encourage a problem setter to generate invalid or ambiguous questions that a Solver cannot answer. VHG asks how to reward genuinely hard generated problems only after an independent verifier accepts the proposed problem and reference solution.

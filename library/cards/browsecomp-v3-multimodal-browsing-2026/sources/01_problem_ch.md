@@ -1,0 +1,1 @@
+BrowseComp-V3 于 2026 年 2 月提交 arXiv。它要测的是多模态浏览智能体能否完成深度搜索任务：关键证据分散在公开可搜索网页中的文本和图像之间。论文描述的数据对象包括多模态问题、图像、答案、元数据、sub-goals 和标注交互轨迹。反馈契约同时使用最终答案 Success Rate 和基于专家验证 sub-goals 的 Process Score。数据集记录为 https://huggingface.co/datasets/Halcyon-Zhang/BrowseComp-V3；代码、评测器 revision、license 和 split 细节仍需 artifact 级审计后再复用。

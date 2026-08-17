@@ -1,0 +1,12 @@
+- **“Zero”容易被夸大。** 主要 RL 阶段跳过 SFT 与蒸馏，但 Qwen2.5 Base 已包含预训练数据，RL pipeline 还消耗筛选后的 prompt/参考答案对；模板、过滤、检查器、优化器与 benchmark 都由人设计。
+- **训练对象没有发布。** 缺失完整成功/失败响应、64-way group、hard-mining 尝试、终局 reward、停止/截断状态、critic value、advantage、policy log probability、PPO ratio、失败 GRPO 轨迹和不可变日志。
+- **公开行数高估唯一 prompt。** 空白归一化后，original 的 56,878 行中有 2,503 条重复，extended 的 72,444 行中有 24,025 条，hard 的 13,451 行中有 611 条；没有重复组或加权理由。
+- **源与权利血缘缺失。** 逐行没有上游 dataset/record ID、转换、许可证、归属要求、隐私/同意字段和筛选决定。package-level MIT 元数据不能证明满足所有竞赛、数据集或 AoPS 来源条款。
+- **重叠信号尚未解决。** extended release 中有六条 MATH500 精确 prompt，但配置使用的 original 57k 中没有。缺少 129k/annealing 运行清单，无法判断它们是否进入报告 checkpoint；这是发布警告，不是污染判决。
+- **verifier 文本与代码不同。** 论文称 exact match，代码却要求 boxed-answer parsing、归一化和数学等价；没有系统报告解析失败或等价判断的 false positive/false negative。
+- **终局正确不等于过程正确。** 每个响应 token 继承同一个最终结果。critic 预测终局回报期望，可能学习表面规律，并不验证中间数学步骤。
+- **配置与 node topology 漂移。** 公开配置只指向 57k，不含完整 129k/hard-annealing 或 mixed-domain 配方。README 称 32B 使用 16 个 node，配置却声明每组 32 个 training node；精确拓扑、GPU-hours、wall time、能耗和失败运行计算量未知。
+- **没有不可变论文发布。** 审计固定了默认分支 commit，但仓库没有 tag、GitHub Release、精确依赖锁、seed、checkpoint hash 或 run-to-log 清单。
+- **hard mining 可能放大 verifier 盲点。** 按 64 次尝试中成功少于四次筛选，只表示在一个 policy/checker 下的经验难度，不代表语义重要性；这 64 次尝试和筛选决定也没有发布。
+- **报告失败不可复用。** GRPO 重复/截断崩溃与英语+中文不稳定性只在论文中描述，相关响应流、过滤样本、标签和 checkpoint 均缺失。
+- **benchmark 结果不是发布质量证明。** 分数不能证明去重、去污染、许可、reward 鲁棒性、rollout 血缘或独立可复现性；“十分之一训练步数”也不是计算量归一化比较。

@@ -1,0 +1,6 @@
+- 先读第2.1-2.5节，以区分Spatial-Temporal Extrapolation构造、公开的311条QA/image/source-reference记录，以及论文定义但未发布的search episode。
+- 区分各项规模：HF单一`train` split含311条记录、441张unique image、279个unique question、306个unique answer、94项easy与217项hard任务，另有派生的239项lite子集。
+- 把GPT-4o视为answer-level judge：它检查acceptable-answer一致性，但不检查citation support、Gemini-summary fidelity、search action或step provenance。
+- 阅读表1和第4-5节时同时看提升与退化：o3通过rollout/SoM提升，而Qwen在full rollout下降，并在45项任务中产生421次无效image-search call。
+- 区分公开数据与runtime artifact：SerpAPI result、Gemini summary、cache、SoM box、framework/evaluator code及完整成功/失败轨迹在已审计revision均未发布。
+- 复用前应固定HF revision而非过期`state.json`，并审计dynamic-search drift、judge calibration、public-canary contamination、split政策、source/redaction lineage和第三方权利。

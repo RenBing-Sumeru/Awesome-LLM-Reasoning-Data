@@ -1,0 +1,5 @@
+- Distinguish the released LIBERO-R reasoning annotations from runtime candidate-action rollouts.
+- The annotation fields describe plan progress; they are not action-success labels by themselves.
+- The VLM checks predicted outcome–plan alignment, not global task success or robot safety.
+- “Training-free” applies to runtime steering, not to construction of the underlying reasoning VLA.
+- Pin dataset, simulator, verifier, prompt, and checkpoint revisions for replay.

@@ -1,0 +1,3 @@
+Primary source: https://aclanthology.org/D16-1264/. Public status: EMNLP 2016 / ACL Anthology, 2016. The problem is to evaluate paragraph, question, gold answer span or spans, model span prediction, exact match, and token-level F1 with a feedback contract based on normalized exact match and token-level F1 over predicted answer spans.
+
+The concrete data object contains article, paragraph, question, answer span, model span, exact match, token F1, split. It is an answer-span evaluation surface, not a general factuality, instruction-following, or long-context benchmark. Its value for the collection is that it makes the task object, scorer, and reproducibility boundary explicit rather than reducing the work to a headline score.

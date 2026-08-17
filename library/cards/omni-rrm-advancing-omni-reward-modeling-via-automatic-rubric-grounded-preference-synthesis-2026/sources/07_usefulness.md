@@ -1,0 +1,2 @@
+1. **Training or data construction.** Omni-Preference can train omni-modal judges and support Best-of-N or data auditing. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** Human agreement and per-modality calibration should be measured before deployment. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

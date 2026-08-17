@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "公开 366,154 条 train-only 终端 SFT episode；论文研究的完整混合共 490,520 条，其中 124,366 条 seed-based 轨迹尚未确认发布，且公开行没有规范化 outcome、reward 或 test result。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "终端 agent 轨迹数据发布、构建配方与规模研究",
+  "best_for_ch": "关注终端 agent SFT、rollout/失败轨迹、程序化验证、容器环境与开放数据审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Renjie Pi、Grace Lam、Mohammad Shoeybi、Pooya Jannaty、Bryan Catanzaro、Wei Ping",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

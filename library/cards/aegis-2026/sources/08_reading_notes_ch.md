@@ -1,0 +1,5 @@
+- 先读论文第 4.1–4.3 节与 Appendix Table 2：一条 row 是带归因标签的失败完整 MAS episode；发布包含 9,533 条 trajectory 与 24,843 个 injected-error instance，这两个数量绝不能互换。
+- 将“Validation and Ground Truth Labeling”与 Appendix B.1 对读：样本保留依赖 benchmark-specific evaluator，其中 GAIA 使用 GPT-4o-mini semantic judge；agent/error target 来自 injected plan，而不是独立 causal annotation。
+- 用论文第 5.1–5.3 节与 Appendix C 区分三类接口：JSON-target SFT、normalized structured GRPO reward，以及对 turn bag 的 DCL。证据仅支持 SFT、RLVR、contrastive learning 与 evaluation；公开 JSONL 中是否包含 successful DCL anchor 尚未核验。
+- Table 1 与 Appendix B.3 应视为作者报告性能与样本级 label-fidelity 证据。Figure 3c 和 Appendix A.2 同样重要：它们分别显示 synthetic-style overfitting，以及所有测试模型都遗漏的细微 root cause。
+- 复用前应解决 grouped split、discarded/non-failing attempt、完整 nested schema、DyLAN refinement、evaluator/GAIA judge snapshot、上游 rights、官方 model artifact，以及绑定 arXiv v6、GitHub commit、HF revision/hash、dependency 与 seed 的 manifest。

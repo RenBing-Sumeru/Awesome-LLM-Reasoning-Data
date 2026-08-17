@@ -1,0 +1,135 @@
+id: deepresearcher-2025
+title: 'DeepResearcher: Scaling Deep Research via Reinforcement Learning in Real-world Environments'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Yuxiang Zheng
+- Dayuan Fu
+- Xiangkun Hu
+- Xiaojie Cai
+- Lyumanshan Ye
+- Pengrui Lu
+- Pengfei Liu
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- agent_training
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.22/
+  arxiv: https://arxiv.org/abs/2504.03160
+  code: https://github.com/GAIR-NLP/DeepResearcher
+  data: https://github.com/GAIR-NLP/DeepResearcher/tree/main/data
+  project: null
+  huggingface: https://huggingface.co/GAIR/DeepResearcher-7b
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.22
+  venue: https://aclanthology.org/2025.emnlp-main.22/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.22/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.22.bib
+data_object:
+  prompt_source: 80,000 filtered questions from Natural Questions, TriviaQA, HotpotQA, and 2WikiMultiHopQA in a 1:1:3:3 ratio;
+    75% are multi-hop. The repository releases train/dev/test Parquet prompt files.
+  trace_author: Qwen2.5-7B-Instruct policy rollouts under GRPO, interacting with search/browse tools and a page-reading multi-agent
+    subsystem.
+  answer_format: Episode alternating think spans with JSON search/browse actions and tool responses, followed by a tagged
+    short answer; tool observations are loss-masked.
+  process_fields:
+  - prompt
+  - dataset
+  - split
+  - policy_response
+  - think
+  - search_action
+  - browse_action
+  - tool_observation
+  - url
+  - final_answer
+  - format_valid
+  - word_f1_reward
+  environment_or_substrate: Live search plus parallel Reading Agents and a Synthesis Agent for heterogeneous pages, served
+    by concurrent handlers on a 50-node CPU cluster; query caching and retries affect state.
+  verifier_or_reward: Incorrect format receives -1; valid format receives word-level F1 against the short reference answer.
+    Tool observations are masked from the training loss.
+  terminal_predicate: Tagged final answer after at most 10 tool calls; format validity and short-answer F1 determine terminal
+    reward.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct
+  teacher: unknown; no teacher-generated trajectory corpus is described
+  generator: On-policy DeepResearcher agent with web search/browse tools, Reading Agents, and a Synthesis Agent.
+  filtering_rule: Two stages remove low-quality questions and questions answerable by the base model without search; contamination
+    screening samples 10 no-search responses and removes a question if any contains the ground-truth answer.
+  sampling_protocol: Each training step samples 256 prompts and 16 rollouts per prompt; each rollout permits up to 10 tool
+    calls; mini-batch size is 4,096.
+  rollout_count: unknown total; 4,096 rollouts are sampled per reported training step
+  temperature: unknown
+  inference_budget: Up to 10 tool calls per rollout; search top-k such as 10; a seven-day identical-query cache is described
+    in the system implementation.
+  optimizer_or_scaffold: verl implementation of GRPO with live-web environment services and loss masking for tool observations.
+audit:
+  source_mixture: 80,000 prompts in NQ:TQ:HotpotQA:2Wiki = 1:1:3:3; live web observations are not represented by an immutable
+    source manifest.
+  split: Repository exposes train.parquet, dev.parquet, and test.parquet; exact immutable commit/checksums and relation to
+    every paper experiment should be pinned.
+  decontamination: A pass@10 no-search screen removes questions the base model can answer from parameters. This is not a general
+    benchmark/web contamination audit.
+  license: Code and released model are Apache-2.0. Rights for source benchmark questions, web pages, cached observations,
+    and derivative rollouts require separate review.
+  lineage: benchmark question -> quality and pass@10 filtering -> on-policy rollout -> live search/browse -> Reading Agents/Synthesis
+    observation -> masked environment tokens -> tagged short answer -> format/F1 reward -> GRPO update
+  known_failure_modes:
+  - Short-answer F1 does not verify evidence, citations, intermediate reasoning, or long-form synthesis.
+  - Live search, page revisions, cache state, rate limits, and anti-crawl behavior prevent exact replay without snapshots.
+  - A seven-day query cache can couple rollouts and training steps.
+  - Processed prompt Parquets and a model checkpoint are released, but the original training rollout corpus and rejected siblings
+    are not verified as released.
+  - Pass@10 filtering detects memorized answers only under one base-model sampling procedure.
+  - Code/model licences do not settle rights for benchmark prompts or web content.
+  - Benchmark improvements do not establish record-level trace quality.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper, official repository, released prompt Parquets, Apache-2.0 code, and GAIR/DeepResearcher-7b checkpoint
+    checked. No immutable original training-rollout release was verified.
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: real-web search interactions reflection
+  and cross-checking traces.'
+related: []
+tags:
+- track5
+- raw_search_rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: DeepResearcher releases 80,000 filtered QA prompts, code, and a 7B checkpoint for live-web GRPO with 16
+  rollouts per prompt and short-answer F1 reward, but not a verified corpus of the original training episodes.
+why_it_matters: It makes live search, page reading, tool-observation masking, rollout allocation, and terminal reward explicit,
+  while exposing how dynamic web state limits trajectory replay and audit.
+card: null
+needs:
+- 'needs_rollout_release: original and rejected sibling episodes with actions, observations, URLs, cache/retry state, answers,
+  and rewards'
+- 'needs_snapshot: search results, page versions/hashes, handler configuration, and immutable prompt-file checksums'
+- 'needs_metadata: temperature, seeds, epochs/steps, policy revisions, retry budgets, and total rollout count'
+- 'needs_audit: citation/evidence correctness, cache coupling, reward hacking, and page-extraction error analysis'
+- 'needs_license: source benchmark, webpage, cached observation, and derivative-trajectory rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

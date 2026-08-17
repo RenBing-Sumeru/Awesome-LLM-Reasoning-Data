@@ -1,0 +1,3 @@
+Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric P. Xing, Hao Zhang, Joseph E. Gonzalez, and Ion Stoica. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena." arXiv:2306.05685, 2023; NeurIPS 2023 Datasets and Benchmarks Track comment on arXiv. https://arxiv.org/abs/2306.05685
+
+Official artifacts: FastChat `llm_judge` implementation and MT-Bench instructions, https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge ; MT-Bench human judgments dataset, https://huggingface.co/datasets/lmsys/mt_bench_human_judgments

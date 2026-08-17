@@ -1,0 +1,3 @@
+Use this paper when designing a scientific-agent reading list or clarifying the responsibility assigned to an LLM in a workflow. It helps separate a tool that automates one task from an analyst or scientist role with broader responsibilities. It should be combined with primary evidence before making claims about real-world autonomy.
+
+It is especially helpful at the start of a literature review or system specification. Write down the research stage, the model's proposed contribution, its external tools, and the human decision points; then use the taxonomy to make missing responsibilities visible. It is not a substitute for choosing a benchmark or validating a scientific result in a particular domain.

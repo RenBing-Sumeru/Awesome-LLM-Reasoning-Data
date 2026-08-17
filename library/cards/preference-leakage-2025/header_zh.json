@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "揭示生成器与 judge 的谱系关联会使 judge 偏向相关学生模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "LLM-as-a-judge 的合成数据污染、谱系偏差与评测审计研究",
+  "best_for_ch": "使用合成偏好数据和 LLM judge、需审计模型谱系偏差的研究者。",
+  "confidence_ch": "高：ICML 2025 论文、作者机构及公开代码/数据入口已核验。",
+  "authors_ch": "Dawei Li, Renliang Sun, Yue Huang, Ming Zhong, Bohan Jiang, Jiawei Han, Xiangliang Zhang, Wei Wang, Huan Liu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

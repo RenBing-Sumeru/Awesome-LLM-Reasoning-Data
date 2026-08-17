@@ -1,0 +1,8 @@
+Table 1 reports post-patch-suite pass rates from 22.1% to 64.8%. Claude Code with Claude Opus 4.7 passes 129/199 tasks (64.8%); Codex CLI with GPT-5.5 at xhigh passes 117/199 (58.8%). Claude 4.6, Codex 5.4, Codex 5.3, Gemini 3.1, and Qwen3 pass 85, 77, 72, 63, and 44 tasks respectively. These are test-suite outcomes, not independently certified feature-completion rates.
+
+The agents solve different subsets. Across all pairs, Cohen's kappa ranges from -0.07 to 0.43. The top two share only kappa = 0.046: together they solve 168/199 (84.4%), while both fail 31 tasks. The common failures concentrate in IR transformations, hierarchical sparse formats, and cross-stack infrastructure, supporting the paper's interpretation that global compiler restructuring remains harder than local extensions.
+
+Regression and failure evidence is more diagnostic than the headline ranking. Table 5 reports that Claude 4.7 breaks at least one pre-existing test on 32/199 runs (16.1%), versus 47/199 (23.6%) for Codex 5.5 and 90/199 (45.2%) for Qwen3. Failure analysis distinguishes partial or failed new tests from regressions and missing tests.
+
+The adversarial audit covers all 1,393 runs with Claude Opus 4.7 and GPT-5.5 judges. Under its binding/agreement rules, five agents have overall adversarial verdict rates at or below 1.5%; Gemini 3.1 and Qwen3 reach 5.4% and 17.0%, driven mainly by vacuous-test flag rates of 17.9% and 25.5%. Overall inter-judge agreement is 81.5%, but Cohen's kappa is only 0.367. Consequently, the audit is useful evidence about obvious grader gaming, not proof of functional correctness. No independent reproduction was verified for this Card.
+

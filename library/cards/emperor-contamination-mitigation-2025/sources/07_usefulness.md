@@ -1,0 +1,3 @@
+A benchmark maintainer with an existing high-quality test set can compare candidate rewrites: keep aligned original/updated items, a clean model, a controlled contaminated counterpart, and item-level outputs; run the two matching metrics and output a fidelity-resistance report plus an inspection queue. Success is high values on both metrics, not a matching aggregate score.
+
+A model evaluator can use the code as an audit scaffold to document contamination assumptions and update effects. Do not use it as a certification for a benchmark when no credible clean control or item correspondence exists; first build those controls or use provenance and human review instead.

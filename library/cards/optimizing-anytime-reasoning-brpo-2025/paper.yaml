@@ -1,0 +1,91 @@
+id: optimizing-anytime-reasoning-brpo-2025
+title: Optimizing Anytime Reasoning via Budget Relative Policy Optimization
+year: 2025
+venue: arXiv
+authors: []
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.13438
+  arxiv: https://arxiv.org/abs/2505.13438
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.13438
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: budget-truncated CoT traces and summaries
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: verifiable dense reward
+  terminal_predicate: BRPO optimizes across truncation budgets
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: budget-truncated CoT traces and summaries'
+  known_failure_modes:
+  - data/code and full traces not confirmed
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2505.13438'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: budget-truncated CoT traces and summaries.'
+related: []
+tags:
+- track5
+- online_ttc_trace_reuse
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Optimizing Anytime Reasoning via Budget Relative Policy Optimization records budget-truncated CoT traces
+  and summaries under verifiable dense reward.
+why_it_matters: It makes BRPO optimizes across truncation budgets and its audit boundary visible for reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

@@ -1,0 +1,3 @@
+The taxonomy describes a progression, but different scientific settings may provide very different evidence for autonomy. Robotic automation, self-improvement, and ethical governance are identified as open challenges, not solved requirements. As a survey, the paper cannot replace direct assessment of a particular system's tools, environment, and human oversight.
+
+Do not turn the progression into a promise that every later role is safer or more capable. The available environment can constrain what a system is allowed to observe or do, and scientific domains differ in stakes and acceptable error. The paper itself directs attention to governance, so claims should be bounded by the actual task and the safeguards in place.

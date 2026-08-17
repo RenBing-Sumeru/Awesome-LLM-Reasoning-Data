@@ -1,0 +1,12 @@
+{
+  "institutions": [
+    "xAI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-16T00:00:00Z",
+  "source_urls": [
+    "https://x.ai/news/grok-1.5v"
+  ],
+  "verification_note": "xAI release page verifies RealWorldQA name, purpose, over-700-image initial release, anonymized vehicle and other real-world images, CC BY-ND 4.0 statement, download link, and reported zero-shot benchmark numbers."
+}

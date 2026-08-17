@@ -1,0 +1,157 @@
+id: guided-by-gut-2025
+title: 'Guided by Gut: Efficient Test-Time Scaling with Reinforced Intrinsic Confidence'
+year: 2025
+venue: arXiv preprint
+authors:
+- Amirhosein Ghasemabadi
+- Keith G. Mills
+- Baochun Li
+- Di Niu
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+training_use:
+- rlvr
+- evaluation
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.20325
+  arxiv: https://arxiv.org/abs/2505.20325
+  code: https://github.com/Amirhosein-gh98/Guided-by-Gut
+  data: null
+  project: null
+  huggingface: https://huggingface.co/AmirhoseinGH/DS-Qwen-1.5b-GG-CalibratedConfRL
+  doi: https://doi.org/10.48550/arXiv.2505.20325
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.20325
+data_object:
+  prompt_source: LIMO supplies 817 mathematical-reasoning prompts for confidence-calibration GRPO; evaluation uses AIME 2024,
+    AIME 2025, AMC23, and MATH500.
+  trace_author: DeepSeek-R1-Distill-Qwen-1.5B and 7B generate GRPO and main search traces; Qwen2.5-Math-1.5B-Instruct is used
+    for the PRM comparison.
+  answer_format: Prompt, multiple step-level candidate continuations, token probabilities, per-step confidence and novelty,
+    intrinsic search score, retained path, final-answer candidates, chain confidence, and confidence-weighted selected answer.
+  process_fields:
+  - prompt
+  - reasoning_prefix
+  - candidate_reasoning_step
+  - token_probability
+  - step_confidence
+  - step_novelty
+  - intrinsic_search_score
+  - retained_step
+  - subtree_id
+  - termination_reason
+  - candidate_final_answer
+  - chain_confidence
+  - confidence_weighted_vote
+  - selected_answer
+  - final_answer_correctness
+  - grpo_reward
+  environment_or_substrate: Confidence-calibrated Diverse Verifier Tree Search (DVTS) over model-delimited reasoning steps;
+    no external execution environment or PRM is required for GG inference.
+  verifier_or_reward: 'At inference, candidates are ranked by geometric-mean token confidence plus token-novelty, and final
+    answers are confidence-weighted voted; these signals do not verify correctness. During GRPO, IsCorrect checks the final
+    answer and combines correctness with confidence: 1 + C(R)^4 when correct and 1 - 10*C(R)^4 otherwise.'
+  terminal_predicate: Stop a subtree on a final-answer token, maximum depth, token limit, or degeneration such as repetition;
+    near a limit, inject a model-specific finalization cue, then choose by confidence-weighted vote.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-1.5B and DeepSeek-R1-Distill-Qwen-7B are LoRA-calibrated; Qwen2.5-Math-1.5B-Instruct
+    is evaluated without a PRM under GG.
+  teacher: No teacher model is used; GRPO consumes programmatic final-answer correctness through IsCorrect.
+  generator: GRPO samples complete reasoning chains for confidence calibration; at test time, modified DVTS partitions N paths
+    into N/M independent subtrees and greedily retains the highest intrinsic-score step at each depth.
+  filtering_rule: Search retains argmax C(step) + lambda_N*N(step) within each subtree. Final answers are selected by confidence-weighted
+    voting. GRPO rewards confident correct answers and penalizes overconfident incorrect answers with the nonlinear correctness-confidence
+    reward.
+  sampling_protocol: GRPO uses G=8 generations per prompt at temperature 0.6. Main GG evaluation uses N=32 or 64 total paths,
+    beam width M=2, four runs with different seeds, and confidence-weighted voting; the PRM comparison uses N=16 or 32.
+  rollout_count: Eight GRPO generations per prompt; test-time path budgets N=16, 32, or 64 depending on experiment. The total
+    number of training rollouts and released raw traces is unknown.
+  temperature: 0.6 for GRPO generations; the repository exposes recipe-level search temperatures, but a single universal inference
+    temperature is not stated in the paper.
+  inference_budget: 'For main GG/BoN comparisons: 16k tokens, at most 200 reasoning steps, N=32 or 64, M=2. For Qwen2.5-Math
+    PRM comparisons: about 4k tokens, 50 steps, N=16 or 32.'
+  optimizer_or_scaffold: GRPO with LoRA rank 128 and alpha 128, learning rate 2e-6 with cosine schedule, prompt/completion
+    limits 768/8096, batch size 8 per device, 8 gradient-accumulation steps, bfloat16 and FlashAttention-2, trained for 3
+    epochs on two NVIDIA A100 80GB GPUs.
+audit:
+  source_mixture: LIMO 817 examples for GRPO calibration; AIME24, AIME25, AMC23, and MATH500 are evaluation surfaces. Raw
+    calibration completions and full search traces are not released as a dataset.
+  split: The released recipe names the LIMO training split; exact item manifests, held-out calibration data, and generated-completion
+    manifests are not reported.
+  decontamination: unknown
+  license: unknown
+  lineage: LIMO prompt -> G=8 complete reasoning outputs -> final-answer correctness and chain confidence -> nonlinear scalar
+    GRPO reward -> LoRA-calibrated model; evaluation prompt -> N/M DVTS subtrees -> M candidate steps per depth -> intrinsic
+    confidence/novelty score -> retained steps -> candidate answers -> confidence-weighted vote.
+  known_failure_modes:
+  - Intrinsic confidence and token novelty are search heuristics, not correctness verifiers; the paper shows high-confidence
+    incorrect arithmetic steps.
+  - The GRPO reward requires ground-truth final answers and may calibrate confidence to the LIMO task distribution rather
+    than universally.
+  - Token-count novelty can reward lexical change without semantic progress, while lambda_N and beam width materially affect
+    results.
+  - Model-specific delimiters and forced finalization prompts can change stopping behavior and answer extraction.
+  - AIME sets are small and high-variance; four-run means and maxima describe the evaluated setup, not data or verifier quality.
+  - The official repository and two model checkpoints are available, but no raw rollout dataset, score manifest, pinned environment,
+    or repository/model license was verified.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper, author repository, released recipes, and two author Hugging Face checkpoints checked. Code/model
+    availability does not establish trace completeness or reuse rights.
+inclusion_reason: 'GG exposes a concrete rollout/search record and two linked feedback layers: a correctness-conditioned confidence
+  reward for GRPO and an intrinsic confidence-plus-novelty score for step-level test-time search.'
+related: []
+tags:
+- guided-by-gut
+- intrinsic-confidence
+- step-novelty
+- dvts
+- grpo
+- confidence-calibration
+- mathematical-reasoning
+- test-time-scaling
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Guided by Gut calibrates model confidence with correctness-conditioned GRPO, then uses token confidence
+  and novelty to score step-level DVTS branches and confidence-vote final answers.
+why_it_matters: For rollout/search/test-time trace curation, it specifies the branch scores, retained paths, budgets, stopping
+  rules, and final selector, while showing why intrinsic confidence must remain distinct from verified correctness.
+card: null
+needs:
+- needs_raw_rollout_release
+- needs_score_manifest
+- needs_exact_split_manifest
+- needs_decontamination_report
+- needs_repository_license
+- needs_model_license
+- needs_pinned_reproducibility_environment
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv, author code repository, search/training recipes, and 1.5B/7B Hugging Face checkpoints verified; no
+    raw trace dataset or license was verified.

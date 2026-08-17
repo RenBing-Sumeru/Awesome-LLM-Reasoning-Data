@@ -1,0 +1,6 @@
+- 区分四种数量：2500 万收集记录、1400 万合成种子、各方法的输出条数/token 预算，以及最终模型约 140B-token 的 CPT 混合；同时注意受控研究的数学语料规模在主实验/Appendix C 中为 14.7B，在 Appendix A.1 中却为 13.7B。
+- Response diversification、query expansion、retrospective enhancement 与 tutorship amplification 产生不同 schema 和反馈信号。
+- Tutorship 的合成实验得分最高，但其 synthetic-token 暴露量也最大；这不能单独证明记录质量。
+- CPT/SFT 对比使用 1% SFT 控制 instruction following，但优化与 checkpoint 选择仍不同。
+- `accept`/`refuse`、教师 `correct`/`wrong` 和评测 compare model 都是模型判断；compare model 明确忽略 rationale 错误，只检查最终答案。
+- MathGPT-8B 权重已发布；来源、种子、合成、拒绝与决策记录均未发布。

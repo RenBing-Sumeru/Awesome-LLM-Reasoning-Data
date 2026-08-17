@@ -1,0 +1,101 @@
+id: probing-preference-representations-mrmbench-2026
+title: 'Probing Preference Representations: A Multi-Dimensional Evaluation and Analysis Method for Reward Models'
+year: 2026
+venue: AAAI 2026
+authors:
+- Chenglong Wang
+- Yifu Huo
+- Yang Gan
+- Yongyu Mu
+- Qiaozhi He
+- Murun Yang
+- Bei Li
+- Chunliang Zhang
+- Tongran Liu
+- Anxiang Ma
+- Zhengtao Yu
+- Jingbo Zhu
+- Tong Xiao
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- reward-modeling
+- preference-analysis
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/40627
+  arxiv: null
+  code: https://github.com/wangclnlp/MRMBench
+  data: https://huggingface.co/datasets/ifnoc/MRMBench
+  project: null
+  huggingface: https://huggingface.co/datasets/ifnoc/MRMBench
+  doi: null
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40627
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://ojs.aaai.org/index.php/AAAI/article/view/40627
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: MRMBench releases public multi-dimensional preference evaluation data for reward-model analysis.
+related: []
+tags:
+- reward-model
+- mrmbench
+- probing
+- aaai-2026
+one_line_summary: MRMBench probes six preference dimensions to diagnose what reward-model representations encode rather than
+  reporting a single aggregate ranking score.
+why_it_matters: It turns reward-model evaluation into dimension-level probes and links representation diagnostics to downstream
+  alignment.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data

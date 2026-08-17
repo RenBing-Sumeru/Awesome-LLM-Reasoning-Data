@@ -1,0 +1,5 @@
+HiR is useful for failure-to-data pipelines where a response satisfies an auditable subset of atomic constraints. It supplies a general question for replay design: can the outcome be relabeled without changing the response, and can the weaker terminal predicate be stated exactly? This applies beyond instruction following only when subgoals and their checks are independently meaningful.
+
+Reusable records should preserve the original task, all constraints, per-constraint decisions, checker or judge identity/version, entropy and selection scores, rewritten instruction, unchanged response, replay flag, reward, rollout group, checkpoint, and training step. Both selected and rejected partial failures are needed to audit curriculum bias.
+
+The public HIR-16K prompt-and-constraint artifact can support instruction and checker research, but it is not the online replay corpus. Reusers should repair/verify the published schema, pin upstream revisions, and avoid claiming reproduction of HiR training without policy rollouts and rewrite logs.

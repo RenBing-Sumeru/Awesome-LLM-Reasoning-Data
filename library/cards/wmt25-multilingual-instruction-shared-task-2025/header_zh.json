@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WMT25 MIST 跨 30 种语言发布推理、生成、翻译、摘要与 LLM 裁判任务及人类评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量表数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tom Kocmi、Ekaterina Artemova、Eleftherios Avramidis、Eleftheria Briakou、Pinzhen Chen、Marzieh Fadaee、Markus Freitag、Roman Grundkiewicz、Yupeng Hou、Philipp Koehn、Julia Kreutzer、Saab Mansour、Stefano Perrella、Lorenzo Proietti、Parker Riley、Eduardo Sánchez、Patrícia Schmidtová、Mariya Shmatova、Vilém Zouhar",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

@@ -1,0 +1,3 @@
+The surveyed systems may use different evidence corpora, label definitions, and retrieval conditions, so their reported outcomes are not automatically comparable. A correct-looking final label can also conceal whether evidence retrieval was complete or relevant.
+
+Readers should also resist treating the word evidence as a guarantee of truth. Evidence can be absent, poorly matched to the claim, or represented in a way that loses crucial context. The survey describes a broad English-language landscape, not a single universal standard. Before transferring a conclusion, inspect the target claim type, the evidence source, the allowed labels, and whether the task rewards explanation, a label, or both.

@@ -1,0 +1,3 @@
+- The exact training mixture is not reproducible because public 5.3M/1.6M releases exclude a private portion, and source-level rights must still be checked under the CC BY-NC 4.0 aggregation.
+- Incorrect teacher answers may be regenerated once but are not always removed, so scale should not be read as uniformly verified step-level quality.
+- Failure-driven synthesis can overfit the chosen target distribution; the paper's 150K scaling experiment improves only some benchmarks and degrades others.

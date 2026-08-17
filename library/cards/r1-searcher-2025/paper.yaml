@@ -1,0 +1,91 @@
+id: r1-searcher-2025
+title: 'R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors: []
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- agent_training
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2503.05592
+  arxiv: https://arxiv.org/abs/2503.05592
+  code: https://github.com/RUCAIBox/R1-Searcher
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2503.05592
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: search actions and retrieved evidence
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: two-stage outcome RL
+  terminal_predicate: policy chooses retrieval within reasoning
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: search actions and retrieved evidence'
+  known_failure_modes:
+  - search environment and logs are undisclosed
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2503.05592'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: search actions and retrieved evidence.'
+related: []
+tags:
+- track5
+- raw_search_rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: 'R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning records search actions
+  and retrieved evidence under two-stage outcome RL.'
+why_it_matters: It makes policy chooses retrieval within reasoning and its audit boundary visible for reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

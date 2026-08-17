@@ -1,0 +1,13 @@
+- **800-example claim 隐藏了构造规模。** Pipeline 从数千万问题开始，执行四次和 32 次 difficulty rollout，并从三个大型 reasoning teacher 采样。Generation token、rollout 总数、hardware、GPU-hours、wall time、货币成本和逐阶段接收率均为 unknown。
+- **难度相对于模型与预算。** DeepSeek-R1-Distill-Qwen-32B 下 1–3/32 的成功区间不等于内在难度。解码参数和 answer checker 未披露，因此无法重放准确筛选区间。
+- **词法分数可能奖励冗长和套话。** 长度占 30%，validation-like word 占 20%，tentative expression 与 connective phrase 各占 25%。完整 lexicon、tokenization、normalization、tie handling 和代码都不可得。Trace 可能在中间步骤数学无效时仍得高分；这是由 proxy 可观察特征支持的 curator inference。
+- **Correctness verification 不完整。** 生成 solution 的准确 final-answer checker 和 rejection gate 未发布。三个字段的记录没有 correctness output、step label、judge result 或 process reward。
+- **Selection lineage 缺失。** 记录省略 source item ID/revision、teacher identity、四次/32 次结果、candidate set、component score、rank、author-review outcome、去重决策和 rejection reason。发布无法支持 false-positive/false-negative 分析。
+- **Benchmark 去重不可审计。** 论文报告 n-gram matching 后无 overlap，但没有披露 n、normalization、threshold、benchmark revision、match candidate 或决策。Semantic overlap 和通过 base/teacher training 继承的 contamination 均未测量。
+- **V1 与 v2 容易被静默混合。** 初始官方发布含 817 行，最终 COLM/arXiv v3 发布含 800 行。已检查 GitHub training file 仍复现全部 817 条 v1，尽管 README 推广 v2。
+- **V2 training path 未接通。** 示例 YAML 使用尖括号 dataset placeholder，`dataset_info.json` 没有 LIMO entry。没有人工修改和 world-size manifest，公开 config 无法重现论文 800-row run 或 global batch 64。
+- **构造代码缺失。** 官方仓库没有 candidate ingestion、粗/细 difficulty filter、n-gram audit、teacher sampling、lexical scoring、最终 correctness checking 或 selection 的实现；只有训练/评测部分可检查。
+- **License scope 不一致。** HF v2 data/model 标为 Apache-2.0；root README 声称 MIT 并指向不存在的 root LICENSE；`train/LICENSE` 是 Apache-2.0。上游 contest/exam 权利和逐来源 redistribution terms 没有映射到记录。
+- **迁移依赖 base。** 论文 pretraining-dependence experiment 显示 Qwen1.5-32B-Chat 的 elicitation 明显更弱。Qwen2.5-32B-Instruct 的结果不能证明同样 800 行适用于更小、更弱或 pretraining 不同的模型。
+- **Evaluation 不是数据认证。** 复杂答案格式使用 LLM judge，多数比较没有 repeated-run variance 和 item-level output，headline score 同时受 data、training、decoding 和 grading 影响。它们不能证明逐条正确、无污染或 release 可复现。
+- **仍需 migration 去重。** 历史 legacy metadata 已用 `limo-2025` 指代同一论文。未来应用 V2 时必须协调身份，而不是再创建一个 legacy record。

@@ -1,0 +1,1 @@
+Bowen Jin 等：《R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning》，arXiv:2503.05592，2025。[论文](https://arxiv.org/abs/2503.05592) · [代码](https://github.com/RUCAIBox/R1-Searcher)

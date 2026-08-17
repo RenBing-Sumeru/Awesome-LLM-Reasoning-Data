@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Shepherd 将智能体动作、工具调用与耦合沙箱状态写成可逆的 Git 式执行轨迹，并以元智能体选点分支构造 Tree-GRPO 监督；但生成轨迹、模型检查点、精确划分和数据治理材料尚未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可逆智能体执行底座、元智能体框架与树式强化学习构造方法",
+  "best_for_ch": "研究环境交互轨迹、长程智能体强化学习、反事实回放、可复现性与安全审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Simon Yu, Derek Chong, Ananjan Nandi, Dilara Soylu, Jiuding Sun, Christopher D Manning, Weiyan Shi",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

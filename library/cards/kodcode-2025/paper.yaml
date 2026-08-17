@@ -1,0 +1,151 @@
+id: kodcode-2025
+title: 'KodCode: A Diverse, Challenging, and Verifiable Synthetic Dataset for Coding'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Zhangchen Xu
+- Yang Liu
+- Yueqin Yin
+- Mingyuan Zhou
+- Radha Poovendran
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- code-generation
+- algorithms
+- data-structures
+- package-use
+- competitive-programming
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.365/
+  arxiv: https://arxiv.org/abs/2503.02951
+  venue: https://aclanthology.org/2025.findings-acl.365/
+  code: https://github.com/KodCode-AI/kodcode
+  data: https://huggingface.co/datasets/KodCode/KodCode-V1-SFT-R1
+  project: https://kodcode-ai.github.io/
+  huggingface: https://huggingface.co/datasets/KodCode/KodCode-V1-SFT-R1
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.365
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.365/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-acl.365.bib
+data_object:
+  prompt_source: Twelve synthetic subsets derived from prefilling, assessment seeds, data-structure and algorithm code, documentation,
+    Magpie generations, and prior synthetic instruction sets.
+  trace_author: GPT-4o-0513 writes canonical solutions and unit tests; DeepSeek-R1 generates up to three reasoning responses
+    for the SFT release.
+  answer_format: A coding question with style and subset labels, verified solution, unit tests, coverage and trial statistics,
+    difficulty, lineage metadata, benchmark similarity, and an optional verified R1 conversation.
+  process_fields:
+  - question, style, subset, and source metadata
+  - GPT-4o solution and paired tests
+  - up to ten self-verification trials and branch coverage
+  - DeepSeek-R1 CoT/code response with three-trial pass sequence
+  - benchmark similarity and caution reason
+  environment_or_substrate: Isolated Python 3.10 execution using pytest/stdio tests and pytest-cov branch coverage.
+  verifier_or_reward: A solution-test pair must execute successfully and reach 100% branch coverage; R1 SFT responses are
+    accepted when their extracted code passes the paired tests.
+  terminal_predicate: Keep a question when one of at most ten regenerated solution-test pairs passes at full branch coverage;
+    for SFT keep a response when one of three R1 attempts passes, while publishing failures separately.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-32B-Instruct is the main SFT consumer; Qwen2.5-Coder-7B-Instruct and Qwen2.5-7B-Instruct-1M are
+    RL consumers.
+  teacher: GPT-4o-0513 synthesizes many questions, solutions, and tests; seven open models contribute Magpie questions; DeepSeek-R1
+    writes SFT responses.
+  generator: Synthesize and deduplicate questions, generate paired solutions and tests, execute up to ten fresh pairs with
+    coverage checks, convert styles, then generate three R1 responses and reject those failing tests.
+  filtering_rule: Semantic deduplication, Python/task-quality classifiers, executable pytest or stdio tests, 100% branch coverage,
+    pass-based difficulty labels, and benchmark-similarity caution flags.
+  sampling_protocol: The paper releases 447K question-solution-test triplets across 12 subsets; current V1.1 adds online-judge
+    style records and the SFT release separates verified and incorrect R1 responses.
+  rollout_count: 10
+  temperature: null
+  inference_budget: Up to ten GPT-4o solution-test generations and three DeepSeek-R1 responses per question; the paper reports
+    SFT on 32 A100 GPUs but no consolidated synthesis cost.
+  optimizer_or_scaffold: Qwen2.5-Coder-32B-Instruct SFT uses up to 50K samples, sequence length 16,384, and peak learning
+    rate 1e-5; RL uses GRPO with test-pass reward.
+audit:
+  source_mixture: Paper V1 has 447K records over Prefill, Leetcode, Codeforces, Apps, Taco, Code Contests, Algorithm, Data
+    Structure, Docs, Filter, Package, and Evol; current V1.1 counts differ because online-judge records were added.
+  split: Current KodCode-V1 exposes 484,097 train and 3,335 use-with-caution records; KodCode-V1-SFT-R1 exposes 268,211 verified
+    train, 210,787 incorrect, and 4,439 use-with-caution records.
+  decontamination: Questions are compared by all-mpnet-base-v2 cosine similarity to HumanEval, MBPP, BigCodeBench, and LiveCodeBench;
+    high-similarity records are flagged rather than silently treated as clean.
+  license: Data releases declare CC BY-NC 4.0; the generation code is Apache-2.0, and inherited seeds and documentation still
+    require source-level review.
+  lineage: Seed or generation method leads to a deduplicated question, GPT-4o solution-test trials, selected verified triplet,
+    style conversion, R1 response trials, and split/caution metadata.
+  known_failure_modes:
+  - Solutions and tests are generated by the same model, so 100% self-test coverage can still encode a shared misconception;
+    external MBPP/LiveCodeBench checks found small residual errors.
+  - Some records exceed a 0.95 benchmark-similarity threshold, and seed-derived questions may preserve semantic overlap below
+    that cutoff.
+  - Hard competitive-programming questions remain underrepresented, with limited gains on LiveCodeBench-Hard.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology paper/BibTeX, project, GitHub code/license, both Hugging Face schemas, split counts, license, affiliations,
+    and adoption counters checked on 2026-07-14.
+inclusion_reason: KodCode publishes verified DeepSeek-R1 reasoning/code conversations and their question-solution-test lineage
+  as direct SFT targets, with executable checks and failure splits rather than only an RL environment.
+related: []
+tags:
+- instruction-demonstration-rationale
+- synthetic-code-data
+- unit-test-verification
+- deepseek-r1-distillation
+- arxiv-2503.02951
+- primary-link-checked
+status: verified
+one_line_summary: KodCode releases large CC BY-NC coding triplets and 268,211 verified R1-SFT records with tests, trial statistics,
+  difficulty, and contamination fields.
+why_it_matters: It makes both synthetic-code supervision and its executable acceptance evidence inspectable across twelve
+  source families and several difficulty bands.
+reading_priority: must read
+paper_type: synthetic verified coding dataset and reasoning SFT recipe
+best_for: Researchers building test-verified coding SFT/RL data or auditing co-generated solutions and unit tests.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper, public Parquet records, schemas, split counts, CC BY-NC terms, and Apache-2.0 pipeline were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data
+batch:
+  id: batch-l4-20260714-final5
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: test-verified synthetic coding demonstrations
+  selection_priority_score: 10
+  selection_score_breakdown:
+    institution: 3
+    venue: 2
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The ACL paper lists Microsoft GenAI, University of Washington, and The University of Texas at Austin.
+    venue: ACL Anthology confirms publication in Findings of ACL 2025; no main-conference, oral, spotlight, or official award
+      distinction is claimed in the score.
+    impact: On 2026-07-14, KodCode-V1 had 4,945 downloads and 114 likes, KodCode-V1-SFT-R1 had 2,032 downloads and 39 likes,
+      and the official repository had 321 stars and 19 forks.
+    artifact: Public CC BY-NC Parquet releases include verified, incorrect, and caution splits with detailed schemas, while
+      the Apache-2.0 repository supplies generation, testing, SFT, and RL integrations.
+  selection_eligible: true
+  year_impact_threshold: 2

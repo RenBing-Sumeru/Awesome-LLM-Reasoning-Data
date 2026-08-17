@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "InSTA 用 LLM 对 100 万个 Common Crawl 排名站点进行安全筛选与任务生成，再以 live Playwright rollout 和 LLM success judge 构造 web-agent SFT 数据；论文与 v2 的精确任务数为 146,746，但当前官方发布只有约 146K 条 task rows 与 recipe code，没有论文声称的完整 multimodal trajectories、失败样本、judge rationales 或 checkpoints。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Internet-scale web-agent task/trajectory construction recipe、live-browser environment、LLM-judge filtering 与 task-data release",
+  "best_for_ch": "研究 web-agent SFT、live-site task generation、Playwright rollout、learned verifier，或审计动态网站数据隐私、安全、版权和发布完整性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Brandon Trabucco、Gunnar Sigurdsson、Robinson Piramuthu、Ruslan Salakhutdinov",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

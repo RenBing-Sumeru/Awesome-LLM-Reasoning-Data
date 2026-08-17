@@ -1,0 +1,5 @@
+- Positioning: ShareGPT4Video releases 40K long temporal captions and a captioner for scaling video-language supervision.
+- Method handle: ShareGPT4Video collects 40K detailed captions, trains a scalable video captioner, and packages temporal descriptions that can supervise both understanding models and text-to-video systems.
+- Data handle: 40,000 densely captioned videos in the public high-quality set; each record contains video id or frames, temporal event timeline, and a long detailed caption or derived instruction response.
+- Evidence anchor: Replacing short captions with the detailed set improves video QA and captioning across multiple architectures; the captioner expansion shows that supervision quality transfers beyond the seed videos.
+- Reuse decision: best for constructing temporal reasoning SFT records from public videos; first audit captioner errors may become consistent but false event narratives.

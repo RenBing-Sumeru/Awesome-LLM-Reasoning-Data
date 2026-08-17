@@ -1,0 +1,4 @@
+- Difficulty is current-policy failure rate, not a static property of a question.
+- DOTS targets about 0.5 failure probability; RR retains only mixed-outcome groups.
+- Compare savings separately across the six model-dataset settings.
+- Treat the official repository as a partial release, not a complete experiment ledger.

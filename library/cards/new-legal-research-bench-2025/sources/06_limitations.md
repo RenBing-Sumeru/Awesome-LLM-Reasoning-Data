@@ -1,0 +1,3 @@
+Correctness is only correctness relative to legal expert answer or official Vals scoring rubric; exact judge and private-set policy are needs_audit. A passing score does not automatically prove robust reasoning, safe behavior, faithful explanations, or transfer outside the benchmark's task distribution.
+
+Hidden assumptions include hidden/public split and exact task access are needs_audit; needs_audit; dependency/runtime drift; judge or evaluator version drift; and contamination risk: public example legal questions and answers may leak into future training data. The card should not be read as evidence of a training recipe unless released artifacts expose training inputs, filtering rules, and optimization use.

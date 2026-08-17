@@ -1,0 +1,9 @@
+# Method
+
+1. **Select source coverage.** Input: public math rationale datasets and their licenses. Operation: select 13 sources spanning fields and difficulty levels. Output and transition: a source ledger with questions, answers, and available rationales enters augmentation. Check / stop rule: retain sources with usable training records; license remains subset-specific.
+2. **Fill rationale gaps.** Input: questions missing desired CoT or PoT and GPT-4. Operation: prompt the teacher to write natural-language derivations or Python programs for six newly curated groups. Output and transition: candidate hybrid demonstrations join inherited records. Check / stop rule: malformed outputs are removed; unvalidated CoT remains marked by source quality.
+3. **Verify programs and serialize.** Input: generated PoT and human reference answers. Operation: execute Python, compare results with annotations, filter disagreement, and convert all subsets to Alpaca-like instruction/output records. Output and transition: 260k MathInstruct records enter SFT. Check / stop rule: execution/result mismatch rejects generated programs.
+4. **Train and evaluate.** Input: MathInstruct and LLaMA/LLaMA-2 or CodeLLaMA 7B–70B. Operation: run three-epoch causal-LM SFT; at inference try PoT and fall back to CoT if code is not executable. Output and transition: MAmmoTH checkpoints and nine-dataset scores. Check / stop rule: fixed answer graders score tasks; no RL stage is reported.
+
+**Reproducibility:** verify the official dataset revision, project, repository, source-license table, training scripts, Python environment, and checkpoints. Fix source versions, GPT-4 version, prompts, execution sandbox, random seed, and answer parser; teacher sampling parameters, full call cost, and a unified semantic decontamination threshold are unknown.
+

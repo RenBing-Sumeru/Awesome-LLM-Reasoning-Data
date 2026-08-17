@@ -1,0 +1,114 @@
+id: fasttts-edge-test-time-scaling-2026
+title: 'FastTTS: Accelerating Test-Time Scaling for Edge LLM Reasoning'
+year: 2026
+venue: ASPLOS 2026
+authors:
+- Hao Mark Chen
+- Zhiwen Mo
+- Guanxi Lu
+- Shuang Liang
+- Lingxiao Ma
+- Wayne Luk
+- Hongxiang Fan
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2509.00195
+  arxiv: https://arxiv.org/abs/2509.00195
+  venue: https://doi.org/10.1145/3779212.3790161
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1145/3779212.3790161
+data_object:
+  prompt_source: AIME 2024, AMC 2023, and MATH-500 mathematical reasoning benchmarks.
+  trace_author: Qwen2.5-Math-1.5B and Qwen2.5-Math-7B generate verifier-guided search trees.
+  answer_format: Reasoning beams with step-level verifier scores, scheduling decisions, generated tokens, latency, goodput,
+    and final answers.
+  process_fields:
+  - prompt
+  - reasoning_beams
+  - verifier_scores
+  - branching_decisions
+  - prefix_cache_state
+  - scheduler_state
+  - generated_tokens
+  - latency
+  - final_answer
+  environment_or_substrate: Verifier-guided beam search served on a memory-constrained NVIDIA RTX 4090 GPU.
+  verifier_or_reward: Math-Shepherd-Mistral-7B-PRM or Skywork-o1-Open-PRM-Qwen-2.5-1.5B scores intermediate reasoning steps.
+  terminal_predicate: The search returns the verifier-selected final reasoning path under an edge-device memory and latency
+    budget.
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B-Instruct and Qwen2.5-Math-7B-Instruct.
+  teacher: Process reward models guide beam selection; no training teacher is introduced.
+  generator: Qwen2.5-Math generator serving verifier-guided reasoning beams.
+  filtering_rule: Verifier scores select and duplicate high-scoring beams; FastTTS schedules generation and verification without
+    changing the search decision.
+  sampling_protocol: Evaluate verifier-guided beam search on edge hardware with end-to-end accuracy, latency, and goodput
+    metrics.
+  rollout_count: Multiple active beams per verifier-guided search; exact width depends on the evaluated search configuration.
+  temperature: Not specified in the official paper.
+  inference_budget: Single 24 GB consumer GPU memory, with test-time tree-search compute and latency as the principal constraints.
+  optimizer_or_scaffold: Speculative Beam Extension, Dynamic Prefix-Aware Scheduling, and Asymmetric Multi-Model Memory Allocation
+    on vLLM.
+audit:
+  source_mixture: Official ASPLOS paper version hosted on arXiv.
+  split: Benchmark evaluation uses AIME 2024, AMC 2023, and MATH-500; the artifact appendix describes automated reproduction
+    workflows.
+  decontamination: Not separately claimed; benchmark, model, and reward-model contamination should be checked before reuse.
+  license: The paper is CC BY-NC-ND 4.0; code and benchmark terms must be checked separately when released or reused.
+  lineage: https://arxiv.org/abs/2509.00195
+  known_failure_modes:
+  - edge-hardware-dependence
+  - verifier-quality
+  - speculative-work-waste
+  - cache-locality-shift
+  - search-policy-dependence
+  citation_status: verified
+  confidence: high
+  notes: Official PDF checked on 2026-07-20. It identifies ASPLOS 2026, Imperial College London and Microsoft Research affiliations,
+    and an artifact containing code and benchmark scripts, but states no public repository URL in the paper.
+inclusion_reason: It makes verifier-guided test-time search practical under fixed edge-device memory and latency constraints
+  by changing how its inference compute is scheduled.
+related: []
+tags:
+- test-time-compute
+- edge-serving
+- verifier-guided-search
+- speculative-execution
+- kv-cache
+status: verified
+one_line_summary: FastTTS accelerates verifier-guided test-time reasoning on a single edge GPU through speculative beam extension,
+  prefix-aware scheduling, and asymmetric generator-verifier memory allocation.
+reading_priority: essential
+paper_type: Test-time scaling serving-system paper
+best_for: Readers deploying verifier-guided reasoning search under strict GPU-memory and latency constraints.
+confidence: high
+why_it_matters: It treats test-time scaling as a systems scheduling problem and shows that the same search policy can be substantially
+  faster without changing its algorithmic output.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ASPLOS paper/PDF checked. The paper includes an artifact appendix for source code and benchmark scripts
+    but no public repository URL.
+category_ids:
+- scaling_rlvr_test_time_compute

@@ -1,0 +1,6 @@
+- 固定任务算术：**421 = 221项OSWorld-derived + 151项macOSWorld-derived + 49项MacArena-specific**，覆盖50个应用。
+- 联合阅读§3与runner：screenshot/action、`DONE`/`FAIL`、terminal evaluator、本地`traj.jsonl`、result、error与MP4共同定义episode表面；per-step reward始终为0。
+- 论文评测四个智能体，每项任务运行两次，每次15步；OpenAI Computer Use Preview取得最高报告总体SR 31.83%。
+- 不要把约121 GB的双VM发布等同于rollout dataset：它提供可执行UTM状态，而论文的规范化success/failure trajectory没有公开manifest。
+- 信任分数前先审计：一个Contacts instruction配有无关的Session/YouTube evaluator，run 2也只关闭应用而不重新clone VM。
+- 在evaluation与audit之外复用前，应解决`synth_generation`与人工创建措辞冲突、split/decontamination、隐私、replay、upstream版本及组件许可。

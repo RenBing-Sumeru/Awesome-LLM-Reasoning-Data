@@ -1,0 +1,138 @@
+id: majority-bests-2025
+title: 'Majority of the Bests: Improving Best-of-N via Bootstrapping'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Amin Rakhsha
+- Kanika Madan
+- Tianyu Zhang
+- Amir-massoud Farahmand
+- Amir Khasahmadi
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- science
+- commonsense_reasoning
+training_use:
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/36556567e8437f137da23047309155dd-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2511.18630
+  code: https://github.com/arakhsha/mob
+  data: https://github.com/arakhsha/mob/tree/main/data
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2511.18630
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/36556567e8437f137da23047309155dd-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=aEAbRPXV37
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2511.18630
+data_object:
+  prompt_source: Released cached pools cover 500 questions each from MATH500, GSM8K, MMLU-Pro-Math, MMLU-Pro-Chem, and CommonsenseQA,
+    organized by generator model.
+  trace_author: Qwen2.5-3B-Instruct, Llama-3.1-8B-Instruct, or Gemma-2-9B-it; the repository also contains a MATH500 GPT-4o-mini
+    pool outside the paper's main three-model grid.
+  answer_format: Each released JSONL record stores doc_id, prompt, full generation, generation_score, extracted generation_final_answer,
+    and a rewards dictionary.
+  process_fields:
+  - doc_id
+  - prompt
+  - generation
+  - generation_score
+  - generation_final_answer
+  - rewards
+  environment_or_substrate: Offline selection over a fixed pool of independently generated completions and cached reward-model
+    scores.
+  verifier_or_reward: ArmoRM-Llama3-8B-v0.1 and GRM-Llama3.2-3B-rewardmodel-ft provide scalar output rewards in the main paper;
+    released records and code also expose a Skywork reward field. Language Model Evaluation Harness extracts and scores final
+    answers.
+  terminal_predicate: Select the discrete final-answer value with maximum estimated probability under the bootstrapped Best-of-m
+    output distribution; benchmark correctness is evaluated against the gold answer.
+recipe_metadata:
+  base_model: Qwen2.5-3B-Instruct, Llama-3.1-8B-Instruct, and Gemma-2-9B-it.
+  teacher: unknown
+  generator: Hugging Face generation produces 512 independent outputs per question at temperature 1 with no additional next-token
+    sampling modification.
+  filtering_rule: Sort candidate outputs by scalar reward, compute for each discrete answer the probability that one of its
+    outputs is the maximum-reward member of an m-sample drawn with replacement, and choose the answer with the largest aggregate
+    probability.
+  sampling_protocol: MoB conceptually bootstraps Best-of-m over N outputs; the released implementation uses the closed-form
+    distribution in O(N log N), with either m=floor(sqrt(N)) or adaptive candidates floor(q^j N) at q=0.75.
+  rollout_count: 512 cached outputs per question in the reported evaluation pools; each selection run uses a budget N no greater
+    than 512.
+  temperature: 1
+  inference_budget: Main tables use N=128, scaling plots vary N, and the released runner supports N up to 512; for each N
+    the paper evaluates floor(512/N) disjoint runs per question.
+  optimizer_or_scaffold: Closed-form CPU selection over cached answers and rewards; no model training or parameter update.
+audit:
+  source_mixture: Five benchmark slices, three main generator models, and two main outcome reward models form 30 reported
+    settings; repository records also contain Skywork reward scores.
+  split: The paper randomly selects 500 questions from each benchmark and releases doc_id and prompt in per-benchmark, per-generator
+    Git LFS pools, but does not report the random selection seed.
+  decontamination: unknown
+  license: The repository has a top-level MIT license, but it does not separately document licensing or redistribution rights
+    for upstream benchmark prompts, model generations, and reward annotations.
+  lineage: Benchmark prompt -> 512 temperature-1 model generations -> extracted discrete final answers and benchmark scores
+    -> cached ArmoRM/GRM/Skywork scalar rewards -> closed-form Best-of-m output distribution -> modal final answer.
+  known_failure_modes:
+  - If the mode of the reward-ranked Best-of-m distribution is incorrect, MoB selects that wrong answer more consistently
+    than a stochastic Best-of-m draw.
+  - Reward-model misranking, reward hacking, score calibration, and reward ties can alter the estimated distribution and selected
+    answer.
+  - The method requires finite, comparable discrete final-answer values; extraction or normalization errors split equivalent
+    answers or merge distinct ones.
+  - Conventional m=N bootstrapping is inconsistent for this maximum statistic, so results depend on the m-out-of-N choice
+    and its assumptions.
+  - Generation cost remains N model samples per question; the paper estimates a few thousand H100 GPU-hours for pool generation
+    but did not track exact compute.
+  - Released pools do not establish decontamination, upstream data rights, or generalization beyond the five benchmark slices
+    and fixed generators/reward models.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings, OpenReview record, arXiv, official repository, MIT license, code, Git LFS pointers,
+    and one released JSONL record were checked on 2026-07-18 at repository commit 7925cdd66c409f03c47d7bc02cd8121ebab5dc0d.
+inclusion_reason: Releases scored completion pools and a closed-form reward-model bootstrap selector for studying how test-time
+  output aggregation changes with sampling budget.
+related: []
+tags:
+- majority-of-the-bests
+- mob
+- best-of-n
+- bootstrapping
+- reward-model-selection
+- test-time-compute
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: MoB estimates the modal answer of a reward-ranked Best-of-m distribution from a fixed completion pool and
+  releases prompts, generations, extracted answers, correctness scores, and reward scores for offline selection studies.
+why_it_matters: It exposes a reusable test-time selection object for Track 5 and separates generation budget, reward ranking,
+  answer aggregation, and final benchmark correctness, while provenance and data-rights questions remain.
+card: null
+needs:
+- needs_generation_metadata
+- needs_lineage
+- needs_data_license
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official publication, OpenReview, arXiv, code, MIT license, Git LFS data inventory, algorithm implementation, and
+    a released JSONL record were checked; upstream licenses and decontamination remain unresolved.

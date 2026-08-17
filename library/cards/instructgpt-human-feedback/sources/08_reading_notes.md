@@ -1,0 +1,1 @@
+InstructGPT links demonstrations, human rankings, reward modeling, and policy optimization into one feedback pipeline. Its lesson is that helpful behavior comes from several distinct records working together, not from a reward score or preference ranking alone.

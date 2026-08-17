@@ -1,0 +1,3 @@
+1. Collect 10,000 coding instructions. 2. Generate four responses per instruction using a diverse pool of fourteen LLMs. 3. Select one of five coding preferences for the record. 4. Ask GPT-3.5 to rate each response and provide a rationale. 5. Store the instruction, preference, model list, responses, and annotations in the released training split.
+
+The paper then uses the data to fine-tune CodeLlama-7B-Instruct with supervised fine-tuning and RLAIF using DPO. Reproduction requires the instruction source, the four candidate generators, the exact preference prompt, GPT-3.5 configuration, rating presentation, and data revision. The official release exposes one 10k-row train split; it does not itself provide a held-out split in the repository viewer.

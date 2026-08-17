@@ -1,0 +1,3 @@
+InternVL2.5-8B-RR trained on MMAT-1M improves by an average 2.7% across eight public benchmarks and by 8.8% on the Dyn-VQA retrieval benchmark. Comparisons of RR, ORR, scale, and tool information support the data design, although teacher-style distillation remains a confound. The most informative evidence holds the backbone, candidate tasks, and interaction or inference budget fixed while changing the data construction or feedback mechanism. Reproduction should report dataset size, success and failure balance, verifier versions, environment cost, and random seeds so that data gains can be separated from model or compute gains.
+
+---

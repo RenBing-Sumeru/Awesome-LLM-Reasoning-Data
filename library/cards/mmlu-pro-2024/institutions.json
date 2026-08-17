@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "University of Waterloo",
+    "University of Toronto",
+    "Carnegie Mellon University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.01574",
+    "https://arxiv.org/pdf/2406.01574"
+  ],
+  "verification_note": "arXiv v6 comments verify NeurIPS 2024 Datasets and Benchmarks Spotlight."
+}

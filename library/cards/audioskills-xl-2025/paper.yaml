@@ -1,0 +1,132 @@
+id: audioskills-xl-2025
+title: 'Audio Flamingo 3: Advancing Audio Intelligence with Fully Open Large Audio Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Arushi Goel
+- Sreyan Ghosh
+- Jaehyeon Kim
+- Sonal Kumar
+- Zhifeng Kong
+- Sang-gil Lee
+- Chao-Han Huck Yang
+- Ramani Duraiswami
+- Dinesh Manocha
+- Rafael Valle
+- Bryan Catanzaro
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- large-scale-open-audio-instruction-and-reasoning-data
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2507.08128
+  arxiv: https://arxiv.org/abs/2507.08128
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/nvidia/AudioSkills
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/AudioSkills
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public sound, music, speech, and video-audio corpora
+  trace_author: caption and QA generators expand source metadata into capability-specific conversations
+  answer_format: record id, audio waveform, duration, and ordered conversation turns
+  process_fields:
+  - record id
+  - audio waveform
+  - duration
+  - and ordered conversation turns
+  environment_or_substrate: English sound, music, speech, long-audio, and audio reasoning tasks
+  verifier_or_reward: language/audio filtering, source-specific checks, duration limits, and dataset ablations
+  terminal_predicate: language/audio filtering, source-specific checks, duration limits, and dataset ablations
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: caption and QA generators expand source metadata into capability-specific conversations
+  generator: AudioSkills-XL expands multiple audio sources into 8M capability-labeled QA pairs and separates a 250K controlled-thought
+    subset for reasoning-focused training.
+  filtering_rule: language/audio filtering, source-specific checks, duration limits, and dataset ablations
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: audio-language SFT and reasoning tuning
+audit:
+  source_mixture: public sound, music, speech, and video-audio corpora
+  split: Official release at https://huggingface.co/datasets/nvidia/AudioSkills; exact configs are described by the dataset
+    card.
+  decontamination: language/audio filtering, source-specific checks, duration limits, and dataset ablations
+  license: official NVIDIA Open Model/Data License; source audio terms also apply
+  lineage: public sound, music, speech, and video-audio corpora -> caption and QA generators expand source metadata into capability-specific
+    conversations -> language/audio filtering, source-specific checks, duration limits, and dataset ablations -> AudioSkills-XL
+    -> audio-language SFT and reasoning tuning
+  known_failure_modes:
+  - synthetic questions can exploit source captions
+  - and the aggregate license does not erase source-audio restrictions
+  citation_status: verified
+  confidence: high
+  notes: Full 61 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for audio-language SFT and reasoning tuning;
+  records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2507.08128
+- primary-link-checked
+status: verified
+one_line_summary: AudioSkills-XL expands multiple audio sources into 8M capability-labeled QA pairs and separates a 250K controlled-thought
+  subset for reasoning-focused training.
+why_it_matters: Audio-language models lack a large openly documented instruction mixture spanning sound, music, speech, and
+  reasoning instead of captioning alone.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: audio-language SFT and reasoning tuning
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: large-scale open audio instruction and reasoning data
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 2275 downloads and 102 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet audio/conversation records across eight configs records, field schema,
+      scale, and official NVIDIA Open Model/Data License; source audio terms also apply terms.
+  selection_eligible: true
+  year_impact_threshold: 2

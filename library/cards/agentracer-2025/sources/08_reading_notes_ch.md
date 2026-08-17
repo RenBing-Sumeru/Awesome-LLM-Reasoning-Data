@@ -1,0 +1,5 @@
+- 保留稳定 ID `agentracer-2025`，但正式引用应写作 ICLR 2026 Poster。
+- 区分论文报告的 2,476 对 TracerTraj-2.5K corpus 与唯一公开数据文件：127 行 coding-test parquet，而 Table 3 为 147 行。
+- DeepSeek-R1 提出纠正或变异；任务环境只验证回放是否翻转二元结果。
+- 把第 4 节、Algorithm 1、Tables 1—3 与 Figure 3 对读，并标记 Equation 4 的方向矛盾及六对七个 benchmark 名称的不一致。
+- 在完整数据、成对干预、split/decontamination 证据、回放版本固定、AgenTracer-8B 权重、RL script 与 root-level license 发布前，训练复用仍被阻塞。

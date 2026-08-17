@@ -1,0 +1,5 @@
+1. Inputs: hard source-dataset questions, two generated candidate answers, source metadata, and a judge implementation or reward model.
+2. Construction: the authors generate response pairs from strong models, retain pairs where objective correctness can decide the winner, and serialize each pair with `pair_id`, `original_id`, `source`, `question`, `response_model`, `response_A`, `response_B`, and `label`.
+3. Evaluation: `run_judge.py` calls a selected prompted judge, fine-tuned judge, multi-agent judge, or reward model on the ordered pair; for order-dependent judges it can run both answer orderings.
+4. Output: a judgment file and aggregate report comparing the model's `decision` to the objective label.
+5. Reproducibility boundary: pin the dataset split (`gpt` or `claude`), judge prompt/template, model version, API provider, concurrency, seed, order-swap policy, and any local reward-model environment. This is evaluation/audit use; treating the labels as reward training data would require a separate contamination and license review.

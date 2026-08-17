@@ -1,0 +1,1 @@
+Read one prompting method and one training-based method side by side. For each, draw the sequence “image evidence → text step → visual update → answer,” then mark which arrows have supervision or evaluation. The blank arrows are often more important than the headline score because they reveal where a claimed process remains unsupported.

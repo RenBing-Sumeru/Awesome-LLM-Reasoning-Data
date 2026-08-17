@@ -1,0 +1,3 @@
+Post-training commonly combines a small target dataset with a much larger general corpus. Static selection asks which general records to keep, but it does not express how that corpus should constrain an update aimed at a scarce target objective; target-only training can overfit, while indiscriminate mixing can pull the model away from the desired behavior.
+
+Dr. Post-Training asks how to use general data without reducing it to a selected subset. It defines target data as the desired update direction and general data as a feasible set of update directions, then projects the former onto the latter at each training step for SFT, RLHF, and RLVR.

@@ -1,0 +1,5 @@
+- Read §3 and Algorithm 1 first: the essential object is an online sequence of role-conditioned observations, complete reasoning/actions, transitions, and terminal feedback—not a static QA corpus.
+- RAE is a per-game/per-role return baseline; it stabilizes policy gradients but does not verify intermediate reasoning.
+- Table 10 is the cleanest performance check: Qwen3-4B multi-game SPIRAL reports 44.5 ± 0.5 over three seeds versus 39.6 ± 0.4 for multi-game SFT.
+- Compare Appendix D Table 6 with the current `run.sh`: the paper reports an 8,192-token maximum response, while the released example uses 4,096.
+- Do not merge the approximately 25k Qwen3-32B SFT comparison set with SPIRAL's unfrozen online rollout stream; schema, split, license, and run-level lineage remain open audit items.

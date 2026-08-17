@@ -1,0 +1,1 @@
+Prior extractive-QA protocols treat string overlap as the verdict. This work changes the decision object from overlap to contextual semantic correctness and audits it against human labels across answer types. It does not introduce a new QA dataset or new judge architecture; the useful novelty is the controlled reliability comparison for extractive QA.

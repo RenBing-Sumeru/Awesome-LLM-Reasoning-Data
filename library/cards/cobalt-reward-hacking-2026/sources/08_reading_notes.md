@@ -1,0 +1,5 @@
+- **Position:** full online multi-turn RL is costly and can amplify reward hacking from wrong feedback.
+- **Mechanism:** offline trajectories become contexts for online single-step GRPO.
+- **Artifact:** code and trajectory data are released by the authors.
+- **Evidence:** LiveCodeBench gains reach 9.0 and 6.2 Pass@1 points; perturbation cuts Qwen3 failures from 855 to 85.
+- **Decision:** use for executable iterative coding; independently audit semantic drifting before deployment.

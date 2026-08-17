@@ -1,0 +1,119 @@
+id: crosscodeeval-2023
+title: 'CrossCodeEval: A Diverse and Multilingual Benchmark for Cross-File Code Completion'
+year: 2023
+venue: NeurIPS 2023 Datasets and Benchmarks Track
+authors:
+- Yangruibo Ding
+- Zijian Wang
+- Wasi Uddin Ahmad
+- Hantian Ding
+- Ming Tan
+- Nihal Jain
+- Murali Krishna Ramanathan
+- Ramesh Nallapati
+- Parminder Bhatia
+- Dan Roth
+- Bing Xiang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- cross-file-completion
+- multilingual-code
+- retrieval
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2310.11248
+  arxiv: https://arxiv.org/abs/2310.11248
+  doi: null
+  code: https://github.com/amazon-science/cceval
+  data: https://github.com/amazon-science/cceval
+  project: https://crosscodeeval.github.io
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: CrossCodeEval paper, project, and Amazon Science repository
+  trace_author: CrossCodeEval authors and cross-file extraction pipeline
+  answer_format: cross-file contexts, retrieval corpora, completion targets, language splits, and scores
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: multilingual cross-file code-completion tasks
+  verifier_or_reward: code completion metrics and benchmark evaluation scripts
+  terminal_predicate: code completion metrics and benchmark evaluation scripts
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: repository source code and completion targets
+  generator: multilingual cross-file benchmark construction
+  filtering_rule: confirm public package coverage and raw-data access policy
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2310.11248; https://crosscodeeval.github.io; https://github.com/amazon-science/cceval
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2310.11248'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: raw data may require email access; public package coverage needs confirmation
+inclusion_reason: it supplies repository-context data relevant to agent coding environments
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- cross-file-completion
+- multilingual-code
+- retrieval
+one_line: CrossCodeEval benchmarks multilingual cross-file code completion.
+why_it_matters: it supplies repository-context data relevant to agent coding environments
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CrossCodeEval benchmarks multilingual cross-file code completion.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms NeurIPS D&B status, Columbia/AWS affiliations, project page, and code/data repository.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 114
+  primary_category_id: benchmarks_evaluation_surfaces

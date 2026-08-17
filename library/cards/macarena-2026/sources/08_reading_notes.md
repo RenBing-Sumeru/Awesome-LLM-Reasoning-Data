@@ -1,0 +1,6 @@
+- Keep the task arithmetic fixed: **421 = 221 OSWorld-derived + 151 macOSWorld-derived + 49 MacArena-specific**, spanning 50 applications.
+- Read §3 and the runner together: screenshots/actions, `DONE`/`FAIL`, terminal evaluator, local `traj.jsonl`, results, errors, and MP4 define the episode surface; per-step reward remains 0.
+- The paper evaluates four agents, two runs per task, and 15 steps per run; OpenAI Computer Use Preview reaches the highest reported overall SR, 31.83%.
+- Do not equate the roughly 121 GB two-VM release with a rollout dataset: it provides executable UTM state, while the paper's normalized success/failure trajectories are not publicly manifested.
+- Audit before trusting scores: one Contacts instruction has an unrelated Session/YouTube evaluator, and run 2 closes apps without recloning the VM.
+- Resolve `synth_generation` versus manual-creation wording, split/decontamination, privacy, replay, upstream versioning, and component licenses before reuse beyond evaluation and audit.

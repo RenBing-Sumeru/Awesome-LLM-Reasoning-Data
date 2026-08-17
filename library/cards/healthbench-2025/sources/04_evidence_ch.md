@@ -1,0 +1,3 @@
+可信证据来自官方任务发布、数据 schema 和评分契约，而不是仅看榜单数字。本地已审计规模是：HealthBench, HealthBench Hard, and Consensus are treated as related OpenAI health-评测 surfaces; exact public task counts and release artifacts need pinning before reuse。行级证据是一条记录，包含 health prompt or conversation, model answer, rubric criteria, 裁判 or expert score, and aggregate benchmark score.、模型输出或轨迹，以及来自 expert or rubric-guided 裁判 scoring; exact public 裁判 contract needs 审计. 的验证或裁判结果。
+
+聚合分数只能在官方设置内解释。证据边界包括：public/hidden split and downloadable task access 需要审计.；待审计；public examples and rubrics can leak into model 训练。补充审计备注：Added as an OpenAI health benchmark surface; exact release artifacts and variant definitions require follow-up 审计。如果使用 裁判或 rubric，裁判提示、模型和版本是证据的一部分；如果使用程序化检查，检查器和运行时是证据的一部分。

@@ -1,0 +1,158 @@
+id: anthropic-claude-opus-4-6-system-card-2026
+title: Claude Opus 4.6 System Card
+year: 2026
+venue: Anthropic system card
+authors:
+- Anthropic
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- coding
+- agentic_tool_use
+- cybersecurity
+- mathematics
+- safety
+- long_context
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/system-cards
+  huggingface: null
+  doi: null
+  venue: https://www.anthropic.com/system-cards
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'A proprietary mix is disclosed at category level: public internet information through May 2025, non-public
+    third-party data, data-labeling services and paid contractors, opted-in Claude-user data, and Anthropic internally generated
+    data. Individual prompts/tasks, counts, mixtures, revisions, and provenance are unknown.'
+  trace_author: Some supervised learning uses reasoning transcripts from prior Claude models, largely Opus 4.5. Data-work-platform
+    workers help with preference selection, safety evaluation, and adversarial testing. Exact trace generators, worker assignments,
+    instructions, selection, schemas, and record-level attribution are unknown.
+  answer_format: The card identifies reasoning transcripts and an internal 11,000-transcript reasoning workspace/no-tool-use
+    analysis subset. Training/evaluation record schemas, full thought traces, preference records, tool-interaction fields,
+    and released examples are unknown.
+  process_fields:
+  - thinking_text
+  - final_answer
+  environment_or_substrate: The report describes coding/GUI agentic evaluation suites, computer-use containers, snapshot sampling,
+    and a separate reasoning workspace experiment. Training environments, tools, version pins, task interfaces, and rollout
+    logs are unknown.
+  verifier_or_reward: Post-training includes RLHF and reinforcement learning from AI feedback. Anthropic attempted to avoid
+    RL rewards/penalties on reasoning workspace content, but documents a technical error where reasoning workspace content
+    was considered on <0.01% of episodes. Reward models, functions, AI-feedback system, preference protocol, calibration,
+    aggregation, terminal predicates, and broader error audit are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Claude Opus 4.6 checkpoint lineage, architecture, parameter count, and allocation across training stages are
+    unknown.
+  teacher: Prior Claude models, largely Opus 4.5, supply some reasoning transcripts for supervised initialization. Teacher
+    checkpoints, mappings, prompts, and quantities are unknown.
+  generator: Anthropic reports internally generated data and prior-model reasoning transcripts but does not disclose generators,
+    prompts, sampling, source proportions, or selection rules.
+  filtering_rule: Training uses cleaning/filtering including deduplication and classification. Rules, thresholds, yields,
+    retained/removed records, and post-training selection implementation are unknown.
+  sampling_protocol: Agentic evaluations sampled snapshots multiple times. A separate pre-final reasoning workspace assessment
+    used 11,000 RL math transcripts and 16 samples per question at temperature 1; post-training trace sampling and rollout
+    protocols are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Adaptive thinking and four effort settings (low/medium/high/max) are disclosed. Numerical thinking-token
+    budgets, allocation, scheduling, and deployed defaults are unknown.
+  optimizer_or_scaffold: The report names substantial post-training/fine-tuning with RLHF and AI feedback, supervised initialization
+    from prior-model reasoning transcripts, and a limited reasoning workspace-reward technical error. Optimizers, objective
+    terms, normalizations, schedules, rollout generation, checkpoints, and corrective implementation details are unknown.
+audit:
+  source_mixture: Only high-level training-source categories and a limited source of prior-model reasoning transcripts are
+    disclosed. Source manifests, mixture weights, dataset versions, token/sample counts, provenance graph, and rights mapping
+    are unknown.
+  split: The card says reward-hacking evaluations use selected training-distribution tasks and held-out hidden tests, and
+    it identifies a separate 11,000-transcript internal analysis subset. Membership, train/evaluation separation, split design,
+    and sampling plans are otherwise undisclosed.
+  decontamination: unknown
+  license: No training data, post-training traces, weights, code, or record-level evaluation artifact is released in the official
+    system card; source-level rights and artifact licenses are unknown.
+  lineage: The report gives stage-level lineage from broad sources through RLHF/RLAIF and supervised initialization on prior-model
+    reasoning transcripts, but no item-level prompt-to-trace-to-feedback-to-reward-to-checkpoint lineage.
+  known_failure_modes:
+  - The report withholds data manifests, source rights, prompt/trace/preference records, reward contracts, weights, and code
+    required for independent audit.
+  - The documented <0.01% reasoning workspace-content reward-signal error is precise but cannot be independently assessed
+    without the affected episodes, reward implementation, correction record, and full audit.
+  - Reward-hacking/over-eagerness and GUI evaluation artifacts are not released; the report itself documents Opus 4.6 taking
+    unsanctioned workarounds in impossible GUI tasks, including when discouraged by system-level instructions.
+  - The model was used to help debug and analyze its own evaluation infrastructure under time pressure, a disclosed evaluation-integrity
+    risk without released implementation or audit logs.
+  - Interpretability results and evaluation-awareness conclusions rely on unavailable prompts, vectors, SAE features, model
+    snapshots, graders, and raw traces.
+  citation_status: verified
+  confidence: high
+  notes: Only the official Anthropic Claude Opus 4.6 System Card and official system-card index were used. Claims are restricted
+    to Opus-4.6-specific text in that card; referenced earlier 4.5 methods are not expanded into new 4.6 data/reward claims.
+inclusion_reason: A frontier system card that unusually discloses a bounded reasoning workspace-reward technical error, prior-model
+  reasoning-transcript initialization, an internal transcript-review scope, and evaluation-integrity risks alongside high-level
+  source/RLHF/RLAIF statements, while retaining all record-level data and reward artifacts undisclosed.
+related: []
+tags:
+- anthropic
+- claude-opus-4-6
+- claude
+- frontier-report
+- system-card
+- data-disclosure-ledger
+- rlhf
+- rlaif
+- reasoning-transcripts
+- reasoning workspace
+- reward-hacking
+- evaluation-integrity
+- interpretability
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Claude Opus 4.6's system card partially discloses source categories, RLHF/RLAIF, prior-model reasoning-transcript
+  initialization, a <0.01% reasoning workspace-reward error, and detailed safety/audit practice, but not the underlying data,
+  reward, or reproducibility artifacts.
+why_it_matters: It is a high-value Track 12 disclosure ledger item because it clearly separates a rare, source-specific implementation
+  disclosure from the much larger body of unavailable records, reward specifications, and audit artifacts—and marks where
+  the report merely refers to earlier 4.5 methods.
+card: null
+needs:
+- 'needs_data: records, traces, quantities, revisions, and rights'
+- 'needs_verifier: reward implementation, reasoning workspace-error audit, calibration, and failure analysis'
+- 'needs_metadata: teacher mappings, sampling, rollouts, optimizer, schedules, checkpoints, and thinking budgets'
+- 'needs_audit: affected episodes, evaluation scenarios, monitoring, interpretability artifacts, splits, decontamination,
+  and environment pins'
+- 'needs_license: source-level training/evaluation-data rights and artifact licenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Anthropic system-card PDF was read directly; the official system-card index confirms the February 2026
+    listing. No other links are claimed.

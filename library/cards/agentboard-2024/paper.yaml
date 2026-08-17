@@ -1,0 +1,127 @@
+id: agentboard-2024
+title: 'AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents'
+year: 2024
+venue: NeurIPS 2024 Oral / arXiv
+authors:
+- Chang Ma
+- Junlei Zhang
+- Zhihao Zhu
+- Cheng Yang
+- Yujiu Yang
+- Yaohui Jin
+- Zhenzhong Lan
+- Lingpeng Kong
+- Junxian He
+source_role:
+- benchmark
+- agent_environment
+- audit_failure
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- trajectory_value
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2401.13178
+  arxiv: https://arxiv.org/abs/2401.13178
+  code: https://github.com/hkust-nlp/AgentBoard
+  data: https://github.com/hkust-nlp/AgentBoard
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2401.13178
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Process metrics help audit partial progress beyond final success.
+  trace_author: paper authors, synthetic generators, model agents, or human annotators as disclosed by the official source
+  answer_format: Unified multi-turn agent evaluation board with partially observable environments and fine-grained progress
+    metrics.
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: Unified multi-turn agent evaluation board with partially observable environments and fine-grained
+    progress metrics.
+  verifier_or_reward: Task success is supplemented by progress-rate metrics that capture incremental advancement during multi-turn
+    interaction.
+  terminal_predicate: Task success is supplemented by progress-rate metrics that capture incremental advancement during multi-turn
+    interaction.
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: unknown or paper-specific generator; verify the official paper before reuse
+  generator: The framework organizes diverse scenarios into an evaluation toolkit for multi-faceted analysis of agent behavior.
+  filtering_rule: Task success is supplemented by progress-rate metrics that capture incremental advancement during multi-turn
+    interaction.
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: arXiv 2401.13178 and the official paper-linked GitHub repository https://github.com/hkust-nlp/AgentBoard.
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: license for questions, traces, code, data, and generated tool records is unknown unless the linked artifact states
+    it
+  lineage: 'Primary source: https://arxiv.org/abs/2401.13178'
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: Affiliations verified from arXiv e-print TeX author block for 2401.13178; NeurIPS Oral status verified from arXiv
+    comment; code/data repository verified from the paper footnote and GitHub page.
+inclusion_reason: 'AgentBoard exposes an agent/tool environment or trajectory-like data object with a concrete feedback contract:
+  Task success is supplemented by progress-rate metrics that capture incremental advancement during multi-turn interaction.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+why_it_matters: It makes the action schema, environment state, and success predicate visible enough for reasoning-data curation
+  and audit.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: AgentBoard contributes a tool-use or agent-environment surface with an explicit evaluation or verification
+  contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary arXiv link verified through arXiv API; official GitHub code/data link verified from the paper footnote.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 19
+  candidate_title: AgentBoard
+  primary_category_id: benchmarks_evaluation_surfaces
+  processed_at: '2026-07-12'

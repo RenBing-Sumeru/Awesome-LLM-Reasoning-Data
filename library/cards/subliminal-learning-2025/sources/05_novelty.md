@@ -1,0 +1,3 @@
+Ordinary distillation work evaluates whether outputs convey task content, and safety filtering removes visible trait references. This paper changes the object of audit: it holds visible semantics out of the training set, then asks whether teacher-specific generation patterns still transfer a behavioral trait to a matched student.
+
+The novelty is the controlled teacher–student lineage comparison across number sequences, code, and reasoning traces, plus the different-base control and a general neural-network result. It does not offer a proven filter; it demonstrates why content-only filtering is an inadequate lineage check.

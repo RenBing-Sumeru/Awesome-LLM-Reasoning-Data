@@ -1,0 +1,150 @@
+id: infinitymath-2024
+title: 'InfinityMath: A Scalable Instruction Tuning Dataset in Programmatic Mathematical Reasoning'
+year: 2024
+venue: CIKM 2024
+authors:
+- Bo-Wen Zhang
+- Yan Yan
+- Lin Li
+- Guang Liu
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- program-of-thought
+- quantitative-reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://dl.acm.org/doi/10.1145/3627673.3679122
+  arxiv: https://arxiv.org/abs/2408.07089
+  venue: https://dl.acm.org/doi/10.1145/3627673.3679122
+  code: null
+  data: https://huggingface.co/datasets/BAAI/InfinityMATH
+  project: https://huggingface.co/datasets/BAAI/InfinityMATH
+  huggingface: https://huggingface.co/datasets/BAAI/InfinityMATH
+  doi: https://doi.org/10.1145/3627673.3679122
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://dblp.org/rec/conf/cikm/ZhangYLL24.html?view=bibtex
+data_object:
+  prompt_source: 101,380 retained problems from AQuA-RAT, GSM8K, MATH, NumGLUE, MathQA, TheoremQA, and DeepMind Mathematics.
+  trace_author: An LLM such as GPT-4 extracts numbers and writes a reusable function-style program with docstrings and comments;
+    deterministic rewriting instantiates the original record.
+  answer_format: Each JSONL object stores id, source, original_problem, general_problem, generated_program, variables, ori_answer,
+    and gen_answer.
+  process_fields:
+  - original mathematical problem and source
+  - number-independent problem template
+  - generated function-style program with comments
+  - variable constraints and original/generated answers
+  environment_or_substrate: A Python interpreter executes synthesized programs; deterministic rewriting substitutes constants
+    and removes no-longer-needed assignments or docstring fragments.
+  verifier_or_reward: Execute the synthesized program and compare its result with the source ground-truth answer; failed programs
+    receive interpreter feedback for one repair request.
+  terminal_predicate: Retain a record when the generated or minimally repaired program executes and its output matches the
+    known answer.
+recipe_metadata:
+  base_model: The paper evaluates 7B CodeLlama, Llama2, and Aquila2 consumers.
+  teacher: The method describes GPT-4 as the synthesis LLM.
+  generator: A multitask prompt extracts numbers, writes a generic problem, emits a function-style program, declares valid
+    variable ranges, and adds docstrings and line comments.
+  filtering_rule: Execute against the source answer, issue a second-round minimal bug-fix prompt after failure, and retain
+    only executable answer-matching outputs.
+  sampling_protocol: Create one retained generic record per successful source problem; later numeric substitutions can expand
+    a template without another LLM call.
+  rollout_count: null
+  temperature: null
+  inference_budget: One synthesis request plus at most one repair request is described; numeric expansion is programmatic.
+  optimizer_or_scaffold: SFT with global batch size 128; learning rate 2e-5 for CodeLlama/Llama2 and 1e-5 for Aquila2.
+audit:
+  source_mixture: 101,380 retained records across seven source datasets; the paper reports source-wise generation success
+    and one record per successful problem.
+  split: The official release exposes one infinitymath.jsonl file; it does not publish a separate validation or test split.
+  decontamination: No general benchmark decontamination procedure is documented. Source lineage must be compared with every
+    downstream evaluation, especially GSM8K and MATH.
+  license: Apache-2.0 in the current official Hugging Face metadata; upstream benchmark terms and generated-output rights
+    remain separate review surfaces.
+  lineage: source problem and answer -> numeric masking -> generic problem and function program -> execution check -> optional
+    minimal repair -> JSONL release -> programmatic numeric expansion -> SFT.
+  known_failure_modes:
+  - Answer matching on one numeric instance does not prove that the generic program is semantically correct over its full
+    variable range.
+  - Automatically proposed variable constraints can still admit nonsensical or domain-invalid substitutions.
+  - Executing generated Python requires sandboxing and pinned dependencies even when the released sample previously passed.
+  citation_status: verified
+  confidence: high
+  notes: CIKM DOI and paper, arXiv text, Apache-2.0 dataset metadata, full JSONL schema, two actual records, current adoption
+    metrics, and the published SPRInT follow-up were checked on 2026-07-14.
+inclusion_reason: The central artifact is an open corpus of reusable problem-template-program-answer demonstrations whose
+  verifier and expansion contract are explicit.
+related:
+- mathcoder-2024
+- mammoth-mathinstruct-2024
+- openmathinstruct-1-2024
+tags:
+- instruction-demonstration-rationale
+- program-of-thought
+- math-reasoning
+- numeric-augmentation
+- arxiv-2408.07089
+- primary-link-checked
+status: verified
+one_line: InfinityMath decouples numbers from math problems to release 101,380 executable generic program demonstrations that
+  can be expanded without repeated LLM calls.
+one_line_summary: InfinityMath releases 101,380 programmatic math demonstrations with number-independent templates, executable
+  checks, and low-cost numeric expansion.
+why_it_matters: It makes numeric robustness and reuse a property of the serialized training object rather than relying on
+  repeated free-form solution generation.
+reading_priority: high
+paper_type: open programmatic mathematical reasoning dataset and scaling study
+best_for: Researchers studying executable math supervision, numeric perturbation robustness, or low-cost template expansion.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official JSONL was anonymously downloaded; its eight-field schema and two records were inspected, and the paper,
+    license, counts, DOI, and metrics were cross-checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-math
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: number-independent executable mathematical demonstrations
+  selection_priority_score: 9
+  selection_score_breakdown:
+    institution: 2
+    venue: 2
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper is led by Beijing Academy of Artificial Intelligence with China University of Mining and Technology
+      Beijing collaborators.
+    venue: The ACM Digital Library DOI identifies the paper as a full CIKM 2024 proceedings paper; no oral, award, or best-paper
+      claim is made.
+    impact: 'On 2026-07-14 OpenAlex reported 1 citation and the official dataset had 107 downloads and 41 likes; the 2025
+      Neurocomputing paper SPRInT: Scaling Programmatic Reasoning for INstruction Tuning in mathematics (DOI 10.1016/j.neucom.2025.129868)
+      is a named published continuation of this data direction.'
+    artifact: The official Apache-2.0 JSONL is anonymously readable; all eight fields and two actual records were inspected,
+      and the release contains 101,380 executable generic demonstrations.
+  selection_eligible: true
+  year_impact_threshold: 3

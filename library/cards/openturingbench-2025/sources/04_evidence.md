@@ -1,0 +1,3 @@
+Claim: common detection success hides substantial robustness gaps, while OTBDetector is competitive across the proposed stress tests. All methods train on the same OpenTuringBench train split; the paper compares nine competing detectors using weighted F1 for TT and AA tasks.
+
+TT is easy in the conventional setting, where F1 consistently exceeds 0.90. In contrast, human continuation is extremely difficult: the best F1 is only 0.15. After self-rewriting, OTBDetector still reaches 0.871 F1 and outperforms alternatives. These results support the benchmark’s value for exposing shift, but do not show reliable attribution across languages or arbitrary generators.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以可控文本插入的开源配对模型，将记忆与污染研究变为可复现的因果实验。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大模型记忆、隐私与测试集污染的受控模型套件",
+  "best_for_ch": "研究成员推断、模型遗忘、隐私泄漏或测试集污染的研究者。",
+  "confidence_ch": "高：ICLR 2026 Oral 正式版本、作者机构及官方项目材料已核验。",
+  "authors_ch": "Johnny Tian-Zheng Wei, Ameya Godbole, Mohammad Aflah Khan, Ryan Wang, Xiaoyuan Zhu, James Flemings, Nitya Kashyap, Krishna P. Gummadi, Willie Neiswanger, Robin Jia",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T03:30:00Z"
+}

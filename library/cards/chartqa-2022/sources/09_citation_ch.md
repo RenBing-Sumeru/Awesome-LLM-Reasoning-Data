@@ -1,0 +1,3 @@
+引用：Ahmed Masry, Do Xuan Long, Jia Qing Tan, Shafiq Joty, Enamul Hoque，《ChartQA: A Benchmark for Question Answering about Charts with Visual and Logical Reasoning》，2022 / Findings of ACL 2022 / arXiv。https://arxiv.org/abs/2203.10244
+
+官方产物：paper: https://arxiv.org/abs/2203.10244; venue: https://aclanthology.org/2022.findings-acl.177/; acl: https://aclanthology.org/2022.findings-acl.177/; code: https://github.com/vis-nlp/ChartQA; data: https://github.com/vis-nlp/ChartQA; huggingface: https://huggingface.co/datasets/ahmed-masry/ChartQA; doi: https://doi.org/10.48550/arXiv.2203.10244。

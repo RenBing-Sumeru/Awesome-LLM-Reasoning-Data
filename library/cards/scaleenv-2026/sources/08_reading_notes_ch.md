@@ -1,0 +1,6 @@
+- 把 environment foundation 与 task instantiation 作为两层独立来源链阅读。
+- 要求任务绑定初始状态、intent、可执行参考路径、预期终态与 verifier。
+- 区分程序代码测试结果、simulator 对话反馈和终局数据库奖励。
+- 检查偏离参考路径的有效动作是否有状态支持；仅通过一条参考 chain 不足以服务 RL。
+- 要求同时保留成功与失败 rollout，以及生成/debug 失败，而不是只保留成功语料。
+- 将 reset、replay、许可、隐私与有害领域防护视为发布要求，而非虚拟 sandbox 的隐含属性。

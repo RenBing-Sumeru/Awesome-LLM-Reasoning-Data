@@ -1,0 +1,1 @@
+ClaimDB 覆盖 80 个真实数据库，领域包括治理、医疗、媒体、教育和自然科学；公开列表含 51,369 条 claim—数据库—证据/标签记录。每个 claim 需要对大型结构化数据进行组合运算，标签为 entailment、contradiction 或 insufficient evidence，并配套数据库 schema、执行资源和 leaderboard。它推动 factuality Judge 从“读证据文本”转为“生成可执行验证程序并允许 abstention”，适合结构化 grounding 与数据 Agent 评价。

@@ -1,0 +1,1 @@
+Yue Liu、Jiaying Wu、Yufei He、Hongcheng Gao、Hongyu Chen、Baolong Bi、Jiaheng Zhang、Zhiqi Huang、Bryan Hooi。2025。《Efficient Inference for Large Reasoning Models: A Survey》。arXiv:2503.23077。https://arxiv.org/abs/2503.23077

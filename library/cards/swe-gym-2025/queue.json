@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "任务构建方法，也有配方",
+    "updated_at": "2026-07-24T10:35:09Z"
+  },
+  "updated_at": "2026-07-24T10:35:09Z",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

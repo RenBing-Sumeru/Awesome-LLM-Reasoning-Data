@@ -1,0 +1,6 @@
+- 先读 §3.3 与 Algorithm 2：GVM 重分配候选生成，最终答案是否接受仍由 Math-Verify 决定。
+- 区分 `N'` 个 pilot 样本、总预算 `N` 与逐提示整数分配 `n_i`。
+- 表 1 支持明确的 1.5B 增益，但 7B 最终分数差异很小；图 2 的加速按 update step 计算。
+- 附录 C 与图 7–9 包含最重要的设置、计算披露和负面 pass@n 行为。
+- 官方代码把 stage-1/stage-2 采样温度固定为 1.0，但没有不可变 manifest 把每个论文运行绑定到 commit 与数据修订。
+- 建议与 RAFT/RAFT++、GRPO、DART-Math 对读；复用前审计最终答案 parsing、零接受饿死、总计算量与 rollout lineage。

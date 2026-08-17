@@ -1,0 +1,212 @@
+id: sima-2-2025
+title: 'SIMA 2: A Generalist Embodied Agent for Virtual Worlds'
+year: 2025
+venue: arXiv preprint
+authors:
+- SIMA team
+source_role:
+- model_report
+- construction_recipe
+- process_supervision
+- agent_environment
+- verifier_reward
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- state_action_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+- process_reward
+domains:
+- embodied_reasoning
+- virtual_agents
+- video_games
+- multimodal_reasoning
+- agentic_rl
+- self_improvement
+- human_computer_interaction
+training_use:
+- sft
+- reward_modeling
+- process_supervision
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.04797
+  arxiv: https://arxiv.org/abs/2512.04797
+  code: null
+  data: null
+  project: https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2512.04797
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Initial training mixes free-form human gameplay, setter-solver instructions, predefined tasks, dialogue questions,
+    Gemini-generated labels, and a small selected bridge set. Online RL uses initial saved state, text instruction, and verifier
+    tuples. Self-improvement uses Gemini to propose state-conditioned tasks in ASKA or Genie 3. Counts, mixtures, and task
+    banks are unknown.
+  trace_author: Humans produce most gameplay trajectories and post-hoc or live language annotations. Gemini supplies synthetic
+    labels and bridge reasoning/dialogue; SIMA 2 generates RL/self-improvement trajectories. Gemini also acts as task generator
+    and reward judge. Participant counts, model checkpoints, and failed-trajectory policy are unknown.
+  answer_format: Records contain 720p RGB observations, language or image instructions, optional dialogue/reasoning, and action
+    chunks parsed into 96 keyboard keys, mouse clicks, and discretized relative mouse movement. Feedback may be state/programmatic
+    success, human ratings/preferences, shaped rewards, or Gemini scores 0–100; self-improvement treats ≥50 as success.
+  process_fields:
+  - environment
+  - initial_saved_state
+  - rgb_frame_720p
+  - frame_history
+  - language_or_image_instruction
+  - optional_dialogue
+  - optional_internal_reasoning
+  - keyboard_mouse_action_chunk
+  - optional_human_success_rating
+  - optional_human_pairwise_preference
+  - optional_programmatic_verifier_output
+  - optional_environment_state_reward
+  - optional_shaped_reward
+  - optional_gemini_reward_score_0_100
+  - terminal_or_timeout
+  - optional_filter_or_quality_score
+  - optional_self_improvement_generation
+  environment_or_substrate: Training spans Construction Lab, Playhouse, WorldLab, Goat Simulator 3, Hydroneer, No Man's Sky,
+    Satisfactory, Space Engineers, Valheim, and Wobbly Life. ASKA and MineDojo/Minecraft are held out; The Gunk and Genie
+    3 are qualitative. The policy receives rendered RGB and uses ordinary keyboard/mouse controls without privileged state,
+    although verifiers may inspect state or screen/action signals. Builds, saved states, verifiers, and Genie access are closed.
+  verifier_or_reward: Research environments use state predicates; commercial games and ASKA use OCR/pixel/action checks. Online
+    RL uses completion, grounded-answer, and sometimes shaped rewards. Five-rater human video judgments are evaluation evidence,
+    not a disclosed training reward. Self-improvement uses a Gemini reward model scoring completion/directedness 0–100, calibrated
+    on a small human preference set, with ≥50 success. Code, prompts, calibration, weights, and error rates are unknown.
+  terminal_predicate: Episodes end on verifier success, participant-reported success, Gemini-threshold success, or timeout/action
+    cap. Sequential tasks require ordered subtask completion and some tests cap post-success actions. Exact timeouts, polling,
+    and RL termination are unknown.
+recipe_metadata:
+  base_model: The policy backbone is a pretrained Gemini Flash-Lite checkpoint; exact generation, model name, size, date,
+    context, and pretraining snapshot are undisclosed.
+  teacher: Gemini Pro generates bridge reasoning/dialogue and can provide hierarchical instructions/summaries. Gemini also
+    supplies labels, tasks, and rewards, but exact role-specific checkpoints, prompts, and decoding are unknown.
+  generator: Humans generate most gameplay; contractors propose feasible tasks; Gemini generates labels, reasoning, tasks,
+    and scores; SIMA 2 generates online/self-improvement experience. Counts and lineage are unknown.
+  filtering_rule: Frames are normalized, low-quality records filtered, sources remixed/reweighted, and most trajectories split
+    into instruction-centered spans. Bridge data selects successful high-quality episodes and includes post-completion no-op
+    steps. Thresholds, yields, deduplication, failure retention, and weights are unknown.
+  sampling_protocol: Mixed Gemini non-gameplay data helps retain vision/dialogue/reasoning. RL tasks come from contractor
+    proposals and verifier-matched nearby human states, only in training environments. MineDojo uses 50 tasks × 15 seeds.
+    Self-improvement samples state-conditioned tasks and can target weak skills. Distributions, replay, balance, and curriculum
+    are unknown.
+  rollout_count: MineDojo has 750 task-seed configurations. Human hours/episodes, bridge size, RL tasks/rollouts, self-improvement
+    episodes, bank size, generations, verifier calls, and Gemini queries are undisclosed.
+  temperature: unknown
+  inference_budget: Task-specific timeouts include some as short as three seconds; ASKA shelter building uses one hour. A
+    Gemini Pro controller acts every undisclosed k policy steps. Frame history, action chunk duration, policy frequency, and
+    comprehensive action/time limits are unknown.
+  optimizer_or_scaffold: Gemini Flash-Lite is SFT-trained on mixed non-gameplay/gameplay records, then optimized with online
+    RLVR in ten environments. Self-improvement loops Gemini task setting, SIMA 2 trajectories, Gemini 0–100 judging, an experience
+    bank, and further training, optionally in Genie 3. RL algorithm, hyperparameters, steps, generations, replay/acceptance,
+    and checkpoint selection are unknown.
+audit:
+  source_mixture: Ten environments, majority-by-volume human gameplay, a small bridge set, Gemini labels, and retained Gemini
+    non-gameplay data are named without per-source counts, hours, snapshots, mixture weights, demographics, bridge size, or
+    record provenance.
+  split: ASKA and MineDojo are held out and evaluation saved states are absent from training. Same-environment maps/mechanics
+    remain shared; saved-state IDs, manifests, most seeds, qualitative-case selection, and self-improvement boundaries are
+    unavailable.
+  decontamination: No content-level audit covers Gemini pretraining, public game materials, human trajectories, tasks, labels,
+    or evaluation instructions. Environment holdout does not exclude base Gemini prior exposure to games, videos, walkthroughs,
+    code, or Minecraft.
+  license: The manuscript is CC BY 4.0. Commercial games were licensed for training/evaluation and participants consented
+    under licensed agreements, but this grants no public redistribution rights. Trajectories, media, annotations, builds,
+    labels, checkpoints, tasks, verifiers, and states remain closed.
+  lineage: Human records plus Gemini labels become filtered spans and bridge episodes, then mixed SFT and online RL. Self-improvement
+    maps state → Gemini task → SIMA 2 trajectory → Gemini 0–100 score → experience bank → later policy. Immutable IDs, versions,
+    filter/reward traces, and checkpoint mapping are absent.
+  known_failure_modes:
+  - Post-hoc human annotations may describe outcomes rather than causal intent.
+  - Hand-built OCR/pixel/action verifiers have undisclosed coverage and error rates.
+  - Human video ratings disagree; rubric, agreement, adjudication, and bias are not reported.
+  - Gemini reward calibration uses a small undisclosed preference set without threshold or reward-hacking audit.
+  - One Gemini family provides tasks, labels, reasoning, instructions, and rewards, creating correlated generator/judge bias.
+  - Failed human, RL, and self-improvement trajectories may be retained, discarded, or reweighted; policy is undisclosed.
+  - ASKA/MineDojo holdout does not address base Gemini exposure to public game content.
+  - Commercial game versions, patches, settings, controls, runtime, verifiers, and saved states are unavailable.
+  - Human baselines use short agent timeouts and representative held-out subsets, limiting direct comparison.
+  - The Gunk demonstration covers only roughly 15–20 manually guided minutes.
+  - Long horizons, combat, memory, precise control, and robust 3D vision remain weak.
+  - No code, training data, model/reward checkpoint, task bank, or environment package is public.
+  - LiveCodeBench, AIME, and GPQA retention declines relative to base Gemini after embodied post-training.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, Google DeepMind report, and project page were inspected on 2026-07-24. No official public code, dataset,
+    model, task bank, reward model, verifier, or environment package was found.
+inclusion_reason: A frontier embodied-data report linking human keyboard/mouse demonstrations, Gemini process labels, online
+  RLVR, and Gemini task/reward self-improvement while leaving records, verifiers, checkpoints, environments, and budgets private.
+related: []
+tags:
+- google-deepmind
+- sima-2
+- gemini
+- embodied-agent
+- virtual-worlds
+- video-games
+- multimodal-agent
+- human-demonstrations
+- process-labels
+- keyboard-mouse-control
+- online-rlvr
+- programmatic-verifier
+- human-evaluation
+- reward-model
+- self-improvement
+- genie-3
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line: A generalist RGB-and-keyboard/mouse agent trained from human gameplay, Gemini process labels, online RLVR, and a
+  Gemini task/reward self-improvement loop.
+one_line_summary: SIMA 2 mixes human multi-game keyboard/mouse demonstrations and Gemini-generated process labels, then adds
+  online verified RL and a Gemini task-setter/reward-model self-improvement loop, while withholding trajectories, verifier
+  code, checkpoints, and reproducibility-critical environments.
+why_it_matters: It concretizes multimodal demonstration, structured action, heterogeneous verification, and self-generated
+  experience for virtual-world agents, while exposing rights, judge-bias, failure-retention, split, and environment-version
+  gaps.
+card: null
+needs:
+- 'needs_data: trajectory/video/action manifests, participant/task counts, bridge episodes, failed trajectories, Gemini labels/reasoning,
+  experience bank, filter decisions, and lineage'
+- 'needs_verifier: state/programmatic code, OCR/pixel/action predicates, human rubric/agreement, shaped rewards, Gemini judge
+  prompt/checkpoint/calibration, threshold analysis, and reward-hacking tests'
+- 'needs_metadata: Gemini checkpoints, context/action cadence, game builds/settings, mixtures, RL hyperparameters/steps, rollouts,
+  replay/acceptance, task schedule, and checkpoint selection'
+- 'needs_audit: train/dev/test and saved-state manifests, foundation-model game-content decontamination, task/judge correlation,
+  failure retention, subset selection, environment drift, and release hashes'
+- 'needs_license: reusable terms for commercial trajectories/assets/builds, participant data, Gemini labels/tasks/rewards,
+  saved states, verifiers, and checkpoints'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: No exact target-library duplicate was found. Official arXiv, report, and DeepMind project artifacts were verified;
+    public code/data/model/task/reward/verifier fields remain null.

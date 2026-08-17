@@ -1,0 +1,5 @@
+- 定位：RL 后训练需要超越似然式污染测试的 detector。
+- 抓手：比较初始与 self-critique 的 token entropy 轨迹以识别 policy collapse。
+- Artifact：RL-MIA 模拟对应成员推断设置，官方发布代码。
+- 证据：论文报告平均最多提升 30 AUC 点、双重污染最多提升 55 点。
+- 决策：必须有 logprob，并在管线匹配的对照上校准后再声称污染。

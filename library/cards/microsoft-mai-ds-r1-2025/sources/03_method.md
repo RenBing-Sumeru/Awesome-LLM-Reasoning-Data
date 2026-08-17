@@ -1,0 +1,6 @@
+For the approximately 350K blocked-topic component, Microsoft reports keyword collection and filtering, keyword-to-question expansion, multilingual translation, and bootstrapped answers and respective CoT. It identifies DeepSeek R1 and unspecified internal models for bootstrapping. Criteria for keyword filtering, question expansion, language allocation, prompts, teacher versions, response selection, editing, deduplication, human review, and yields are unknown.
+
+The 110K component is described as Safety and Non-Compliance examples from Tulu3 SFT—CoCoNot, WildJailbreak, and WildGuardMix. Microsoft does not publish selected record IDs, transformations, safety-label fields, or a complete record schema. The official data summary says publicly available data and synthetic AI-generated data were used, but supplies no complete manifest or source weights.
+
+Microsoft calls the model post-trained/fine-tuned, but does not disclose an objective, loss, optimizer, schedule, batch size, RL stage, preference construction, verifier, reward aggregation, rollout protocol, or checkpoint-selection rule. Evaluation metrics for responsiveness and harm mitigation are not treated here as a training feedback contract.
+

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作用探索中收集的回答—判定记录蒸馏跨领域生成式奖励模型，并以软奖励扩展自由文本任务的 RLVR。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨领域 RLVR 与生成式奖励模型论文",
+  "best_for_ch": "希望把自由文本参考答案转成可训练 RL 奖励的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yi Su、Dian Yu、Linfeng Song、Juntao Li、Haitao Mi、Zhaopeng Tu、Min Zhang、Dong Yu",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GPT-5-Codex 披露了面向真实项目构建、功能与测试、调试、重构和代码审查的 RL，以及继承的恶意软件安全数据和新 prompt-injection 数据；其价值是区分训练目标、人工/测试评测与部署防护，但 reward 表示、trajectory、split 和可复用 artifact 均未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿编码代理系统卡增补与数据披露账本",
+  "best_for_ch": "审计 Codex 家族 SWE 任务、代码审查反馈、评测 verifier 与版本披露差异的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

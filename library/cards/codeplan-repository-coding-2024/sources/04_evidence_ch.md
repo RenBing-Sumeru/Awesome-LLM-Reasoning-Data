@@ -1,0 +1,1 @@
+官方仓库说明这是 FSE 2024 论文的 replication package。每个编辑目录包含 source、target 和 pred；pred 中按 approach 保存编辑后 repo、blocks、metrics.json 和 diff.html。评测脚本可重算 DiffBLEU、Levenshtein distance 等文本指标，以及 matched、missing、spurious edits 的 block 指标。样本级证据是文件级 metric 记录和相对 target 的 diff/block 对比，不是 live unit-test verdict。证据边界是公开的 5 个 repo id 和指标定义。

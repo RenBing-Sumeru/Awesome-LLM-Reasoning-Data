@@ -1,0 +1,116 @@
+id: optimal-self-consistency-efficient-reasoning-llms-2025
+title: Optimal Self-Consistency for Efficient Reasoning with Large Language Models
+year: 2026
+venue: ICML 2026
+authors:
+- Austin Feng
+- Marius Alonso
+- Ambroise Odonnat
+- Vasilii Feofanov
+- Ievgen Redko
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2511.12309
+  arxiv: https://arxiv.org/abs/2511.12309
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2511.12309
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Evaluation questions from GSM8K, MATH, MMLU, and GPQA-Diamond; no version-pinned prompt/allocation manifest
+    was released.
+  trace_author: Llama-3.2-3B; Qwen2.5-Math-7B; Qwen2.5-32B
+  answer_format: Repeated chain-of-thought answers, normalized answer counts, empirical modes, top-two counts, confidence
+    values, and allocation decisions under a global budget.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Plurality voting and count-based ASC/PPR confidence are programmatic selectors; there is no external
+    online correctness verifier.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Llama-3.2-3B; Qwen2.5-Math-7B; Qwen2.5-32B
+  teacher: unknown
+  generator: The work derives fixed and dynamic self-consistency allocation strategies; Blend-ASC allocates the next sample
+    to a lowest-confidence question under a global budget before outputting empirical modes.
+  filtering_rule: Plurality voting and count-based ASC/PPR confidence are programmatic selectors; there is no external online
+    correctness verifier.
+  sampling_protocol: Experiments initially generate 100 responses per question to form empirical distributions, then compare
+    allocations including SC@64/128. No code, data, or allocation logs were confirmed.
+  rollout_count: 100 direct generations per question for empirical distributions; comparison targets SC@64/128
+  temperature: 0.4–1.0
+  inference_budget: Global sample budget T
+  optimizer_or_scaffold: The work derives fixed and dynamic self-consistency allocation strategies; Blend-ASC allocates the
+    next sample to a lowest-confidence question under a global budget before outputting empirical modes.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Evaluation questions from GSM8K, MATH, MMLU, and GPQA-Diamond; no version-pinned prompt/allocation manifest was
+    released. -> Repeated chain-of-thought answers, normalized answer counts, empirical modes, top-two counts, confidence
+    values, and allocation decisions under a global budget. -> Plurality voting and count-based ASC/PPR confidence are programmatic
+    selectors; there is no external online correctness verifier. -> reported final selection or training use. Raw lineage
+    records are not established as released.
+  known_failure_modes:
+  - Consensus can converge to wrong answers; results emphasize aligned questions, answer normalization is incomplete, and
+    100-generation empirical-distribution simulation is not a released online trace replay.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It makes repeated-answer counts and allocation history central Track 5 data objects while clearly separating
+  inference-time scaling from post-training data construction.
+related: []
+tags:
+- self-consistency
+- blend-asc
+- adaptive-allocation
+- test-time-compute
+- majority-vote
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A global self-consistency sampler that reallocates chain-of-thought calls toward uncertain questions without
+  updating the model.
+why_it_matters: It makes repeated-answer counts and allocation history central Track 5 data objects while clearly separating
+  inference-time scaling from post-training data construction.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

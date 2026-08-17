@@ -1,0 +1,6 @@
+- Lower RSR means better alignment/informativeness balance for one exact student, not mathematical truth or universal quality.
+- The public object is 33 teacher/run files x 5,000 rows plus five student-specific selected files x 5,000 rows: 190,000 records in total.
+- Default construction is 33-to-1 per prompt with r_max = 100; correctness filtering is an ablation, not the selection contract.
+- Read the 0.856 average Spearman result as correlation over 11 teacher datasets per student, not 165,000 independent evidence points.
+- Preserve rejected candidates and selection metadata: selected JSON rows alone omit teacher/run, RSR, correctness, ranking, and rejection reasons.
+- Recompute after changing the student, tokenizer, or chat formatting, and audit MATH/AIME/AMC overlap before trusting benchmark deltas.

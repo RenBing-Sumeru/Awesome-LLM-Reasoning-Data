@@ -1,0 +1,1 @@
+核心贡献是 498 个“自主调查型”性能优化任务及 expert-anchored metric。数据覆盖 NumPy、pandas、SciPy、scikit-learn、Matplotlib、xarray、SymPy、Dask 和 Astropy；每条包含 base commit、慢 workload、gold performance PR、由 coverage 找到的相关正确性测试、容器和多次运行基线。补丁只有先通过相关单元测试才计算性能，`SR = model speedup / expert speedup`，全局用 harmonic mean 聚合，1.0 表示达到专家。自动 pipeline 结合 PR 关键词、静态分析、coverage 与执行验证；官方数据和工具可用于性能 agent benchmark 与连续 reward。

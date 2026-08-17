@@ -1,0 +1,123 @@
+id: advancedif-instruction-following-2025
+title: 'AdvancedIF: Rubric-Based Benchmarking and Reinforcement Learning for Advancing LLM Instruction Following'
+year: 2025
+venue: ACL 2026
+authors:
+- Yun He
+- Wenzhe Li
+- Hejia Zhang
+- Songlin Li
+- Karishma Mandyam
+- Sopan Khosla
+- Yuanhao Xiong
+- Nanshu Wang
+- Xiaoliang Peng
+- Beibin Li
+- Shengjie Bi
+- Shishir G. Patil
+- Qi Qi
+- Shengyu Feng
+- Julian Katz-Samuels
+- Richard Yuanzhe Pang
+- Sujan Gonugondla
+- Hunter Lang
+- Yue Yu
+- Yundi Qian
+- Maryam Fazel-Zarandi
+- Licheng Yu
+- Amine Benhalloum
+- Hany Awadalla
+- Manaal Faruqui
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- instruction_following
+- alignment
+training_use:
+- evaluation
+- sft
+- reward_modeling
+- rlvr
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.10507
+  arxiv: https://arxiv.org/abs/2511.10507
+  code: https://github.com/facebookresearch/AdvancedIF
+  data: https://huggingface.co/datasets/facebook/AdvancedIF
+  project: null
+  huggingface: https://huggingface.co/datasets/facebook/AdvancedIF
+  doi: https://doi.org/10.48550/arXiv.2511.10507
+  venue: https://aclanthology.org/2026.acl-long.820/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.820/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert-authored complex, multi-turn, and system instructions
+  trace_author: Human experts and rubric-verifier annotators
+  answer_format: Prompt, conversation, rubric, criterion verdict, and justification
+  process_fields:
+  - prompt
+  - dialog
+  - rubric
+  - verdict
+  - justification
+  environment_or_substrate: Advanced instruction following
+  verifier_or_reward: Fine-tuned rubric verifier and shaped reward
+  terminal_predicate: Response satisfies the human-created instruction rubric
+recipe_metadata:
+  base_model: Llama 4 Maverick and LLM judges
+  teacher: Human experts
+  generator: Expert prompts and rubrics plus rubric-generator training
+  filtering_rule: Retain adversarial prompts triggering instruction-following failures
+  sampling_protocol: 1,645 test prompts and verifier training sets
+  rollout_count: null
+  temperature: null
+  inference_budget: Record data release, verifier, and RL configuration
+  optimizer_or_scaffold: RIFL rubric-based post-training
+audit:
+  source_mixture: Official arXiv paper, Meta GitHub, and Hugging Face data
+  split: 1,645-example test split
+  decontamination: Benchmark prompts should be held out from training
+  license: CC-BY-NC-4.0 on official data card
+  lineage: https://huggingface.co/datasets/facebook/AdvancedIF
+  known_failure_modes:
+  - Rubric verifier can be exploited without shaping.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked.
+inclusion_reason: AdvancedIF combines human rubrics with training-ready verifier supervision for instruction following.
+related: []
+tags:
+- instruction_following
+- rubric
+- reward_model
+- rl
+one_line_summary: AdvancedIF uses human-written rubrics to evaluate and train complex, multi-turn, and system-level instruction
+  following.
+why_it_matters: It turns hard-to-verify instruction following into interpretable criterion-level rewards.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official sources checked.
+category_ids:
+- judgment_rubric_domain_expert_data

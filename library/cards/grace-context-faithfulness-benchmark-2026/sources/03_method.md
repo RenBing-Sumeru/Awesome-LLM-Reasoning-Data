@@ -1,0 +1,5 @@
+1. **Select tasks:** Retain questions from MuSiQue, 2WikiMHQA, AbductionAndNegation, and ReClor whose answers are derivable from context and require multi-step reasoning.
+2. **Generate trajectories:** Prompt 10 models to produce stepwise CoTs and store the context, question, options, steps, and final answer.
+3. **Discover and label errors:** Generate open critiques for unfaithful steps, cluster their embeddings into a two-track, eight-category taxonomy, and place unanimous multi-judge labels in the training set.
+4. **Build the human test set:** Send judge disagreements and difficult examples to human review, producing step labels, categories, and explanations for 437 test trajectories; Reproduction must also fix model versions, generation prompts, judge composition, and groundedness filters because these choices change error distributions and consensus-set size.
+5. **Reproducibility:** Reproducibility: fix the four source datasets, versions of the 10 generators, trajectory prompts, judge ensemble, and consensus rule. Any undisclosed sampling budgets or filtering thresholds should be marked unknown.

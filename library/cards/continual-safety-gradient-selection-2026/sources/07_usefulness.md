@@ -1,0 +1,1 @@
+Use this as a recipe when benign domain adaptation threatens an aligned model and a task dataset can be scored before training. It is most useful for setting an explicit safety-task trade-off at the record-selection layer; evaluate the chosen ratio with the deployment's own safety tests.

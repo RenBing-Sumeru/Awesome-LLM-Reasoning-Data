@@ -1,0 +1,17 @@
+{
+  "title": "Ferret: Refer and Ground Anything Anywhere at Any Granularity",
+  "candidate_links": {
+    "paper": "https://iclr.cc/virtual/2024/poster/19537",
+    "data": "https://github.com/apple/ml-ferret#grit-dataset"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T12:00:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态数据",
+    "updated_at": "2026-07-27T12:00:29Z"
+  }
+}

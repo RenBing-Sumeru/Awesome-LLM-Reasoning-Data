@@ -1,0 +1,292 @@
+id: ui-tars-2-2025
+title: 'UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Haoming Wang
+- Haoyang Zou
+- Huatong Song
+- Jiazhan Feng
+- Junjie Fang
+- Junting Lu
+- Longxiang Liu
+- Qinyu Luo
+- Shihao Liang
+- Shijue Huang
+- Wanjun Zhong
+- Yining Ye
+- Yujia Qin
+- Yuwen Xiong
+- Yuxin Song
+- Zhiyong Wu
+- Aoyan Li
+- Bo Li
+- Chen Dun
+- Chong Liu
+- Daoguang Zan
+- Fuxing Leng
+- Hanbin Wang
+- Hao Yu
+- Haobin Chen
+- Hongyi Guo
+- Jing Su
+- Jingjia Huang
+- Kai Shen
+- Kaiyu Shi
+- Lin Yan
+- Peiyao Zhao
+- Pengfei Liu
+- Qinghao Ye
+- Renjie Zheng
+- Shulin Xin
+- Wayne Xin Zhao
+- Wen Heng
+- Wenhao Huang
+- Wenqian Wang
+- Xiaobo Qin
+- Yi Lin
+- Youbin Wu
+- Zehui Chen
+- Zihao Wang
+- Baoquan Zhong
+- Xinchun Zhang
+- Xujing Li
+- Yuanfan Li
+- Zhongkai Zhao
+- Chengquan Jiang
+- Faming Wu
+- Haotian Zhou
+- Jinlin Pang
+- Li Han
+- Qi Liu
+- Qianli Ma
+- Siyao Liu
+- Songhua Cai
+- Wenqi Fu
+- Xin Liu
+- Yaohui Wang
+- Zhi Zhang
+- Bo Zhou
+- Guoliang Li
+- Jiajun Shi
+- Jiale Yang
+- Jie Tang
+- Li Li
+- Qihua Han
+- Taoran Lu
+- Woyu Lin
+- Xiaokang Tong
+- Xinyao Li
+- Yichi Zhang
+- Yu Miao
+- Zhengxuan Jiang
+- Zili Li
+- Ziyuan Zhao
+- Chenxin Li
+- Dehua Ma
+- Feng Lin
+- Ge Zhang
+- Haihua Yang
+- Hangyu Guo
+- Hongda Zhu
+- Jiaheng Liu
+- Junda Du
+- Kai Cai
+- Kuanye Li
+- Lichen Yuan
+- Meilan Han
+- Minchao Wang
+- Shuyue Guo
+- Tianhao Cheng
+- Xiaobo Ma
+- Xiaojun Xiao
+- Xiaolong Huang
+- Xinjie Chen
+- Yidi Du
+- Yilin Chen
+- Yiwen Wang
+- Zhaojian Li
+- Zhenzhu Yang
+- Zhiyuan Zeng
+- Chaolin Jin
+- Chen Li
+- Hao Chen
+- Haoli Chen
+- Jian Chen
+- Qinghao Zhao
+- Guang Shi
+source_role:
+- model_report
+- agent_environment
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- gui-agents
+- software-environments
+- web-browsing
+- mobile
+- games
+- tool-use
+training_use:
+- sft
+- rlvr
+- agent_training
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.02544
+  arxiv: https://arxiv.org/abs/2509.02544
+  code: https://github.com/bytedance/UI-TARS
+  data: null
+  project: https://seed-tars.com/showcase/ui-tars-2
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.02544
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Continual pre-training draws on task tutorials, instructional videos, internet demonstrations, in-house data,
+    prior UI-TARS and UI-TARS-1.5 training data, open-source agent trajectories, and in-house annotations. Reinforcement-learning
+    tasks are synthesized separately for GUI-Browsing, GUI-General, and games. Item inventories, per-source counts, dates,
+    and rights are unknown.
+  trace_author: Think-aloud experts and novices create in-situ demonstrations; interactive-SFT annotators accept or replace
+    on-policy model proposals; the latest reinforcement-learning policy generates flywheel trajectories; unnamed language
+    and vision-language models help synthesize or refine tasks. Item-level attribution is unknown.
+  answer_format: A GUI episode is a sequence of ReAct steps. Each step couples a reasoning trace, a GUI or SDK action, and
+    a resulting observation under a task instruction, recent Working Memory, and compressed Episodic Memory. Outcomes and
+    rewards are episode-level. Game records additionally expose a unified JSON result with scalar reward, termination flag,
+    game version, and verification checksum; the report does not establish that this JSON schema covers every GUI domain.
+  process_fields:
+  - task_instruction
+  - working_memory
+  - episodic_memory
+  - reasoning_trace
+  - gui_action
+  - sdk_action
+  - screenshot_observation
+  - text_history
+  - final_outcome
+  - scalar_reward
+  - termination_flag
+  - verification_metadata
+  environment_or_substrate: A shared-filesystem sandbox combines cloud VMs for Windows, Ubuntu, and Android with browser,
+    file, terminal, software-development, and MCP-style tools. GUI control uses PyAutoGUI or ADB; observations include screenshots
+    and recordings. A separate browser sandbox runs HTML5/WebGL games and exposes page, score, level, and other runtime state
+    through JavaScript interfaces.
+  verifier_or_reward: Deterministic game tasks use function-based binary correctness; GUI-Browsing uses a reference-answer
+    judge, identified in the analysis as GPT-4o-as-judge; open-ended GUI-General uses UI-TARS-2 as a generative outcome reward
+    model over the full text history and last five screenshots. Some scenarios add format rewards and length penalties. Prompts,
+    thresholds, calibration, and reward-combination details are unknown.
+  terminal_predicate: 'Termination is environment-dependent: game scripts return a termination flag with runtime-state checks;
+    browsing tasks are judged against reference answers; general GUI tasks receive a scalar success score from the outcome
+    reward model. The agent can also stop or exhaust a budget, but exact success thresholds, timeout rules, and failure-code
+    semantics are unknown.'
+recipe_metadata:
+  base_model: UI-TARS-2 starts from Seed-thinking-1.6, including its post-training data. The report specifies a 532M-parameter
+    vision encoder and a Mixture-of-Experts language model with 23B active and 230B total parameters; the exact starting checkpoint
+    identifier and downloadable weights are unknown.
+  teacher: Human experts and novices provide demonstrations; interactive annotators supervise on-policy proposals; unnamed
+    language and vision-language models synthesize, score, transcribe, or refine tasks; GPT-4o judges GUI-Browsing outcomes;
+    UI-TARS-2 serves as the GUI-General outcome reward model. Versions and most teacher identities are unknown.
+  generator: The pipeline cycles continual pre-training, supervised fine-tuning, and reinforcement learning. The current policy
+    produces environment-interaction episodes; a validation function routes high-quality episodes into supervised fine-tuning
+    and lower-quality episodes into continual pre-training before the next cycle. Synthetic task construction and human annotation
+    supply cold-start and refreshed task pools.
+  filtering_rule: Continual-pre-training tasks undergo executability checks, deduplication, dual-annotator review, difficulty
+    scoring, ASR transcription, and model-assisted refinement. GUI-Browsing synthesis removes revealing attributes and tasks
+    solvable by prior knowledge or one search. GUI-General excludes inaccessible, login-gated, static-information, and casual-game
+    sites, then removes simple functions and checks executability. Numerical thresholds and acceptance yields are unknown.
+  sampling_protocol: 'Interactive supervised fine-tuning samples current-policy proposals inside controlled environments and
+    lets annotators accept or override them; the task pool and model are refreshed periodically. Reinforcement learning uses
+    asynchronous server-mode inference and a dynamic pool: training starts once completed traces reach a minimum batch threshold,
+    while incomplete stateful episodes remain for later iterations. Sampling temperature, candidate counts, allocation weights,
+    and random seeds are unknown.'
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Training rollout step caps, token limits, wall-clock timeouts, and retry budgets are unknown. The GUI-General
+    outcome reward model receives full text history but only the last five screenshots.
+  optimizer_or_scaffold: Domain-specific PPO runs use final-outcome rewards, optional format and length shaping, Decoupled
+    GAE, Length-Adaptive GAE, value-model pretraining, and asymmetric clipping. Specialized GUI-Browsing, GUI-General, game,
+    and GUI-SDK policies are merged by parameter interpolation. Coefficients, clipping values, learning rates, batch sizes,
+    minimum pool size, and training compute are unknown.
+audit:
+  source_mixture: The report names internet tutorials and demonstrations, videos, open-source trajectories, in-house annotations,
+    prior UI-TARS data, general chat/reasoning data, synthetic tasks, and on-policy episodes. It gives no total trajectory
+    count, item manifest, mixture weights, source URLs, collection dates, or per-source licenses.
+  split: Training cycles and domain-specialized runs are described, but train/validation/test splits, cross-cycle deduplication,
+    website-level holdouts, and overlap between continual pre-training, supervised fine-tuning, reinforcement learning, and
+    evaluation tasks are unknown.
+  decontamination: The report describes task filtering and deduplication but does not publish benchmark-decontamination methods,
+    matching thresholds, overlap reports, or source-level exclusions. Reported benchmark scores therefore cannot establish
+    independence of the training data.
+  license: The official UI-TARS and UI-TARS-desktop repositories use Apache-2.0, but that code license does not grant rights
+    to unreleased tasks, screenshots, videos, annotations, website content, game assets, or model outputs. Training-data licenses,
+    annotator consent terms, and redistribution rights are unknown.
+  lineage: The report provides a system-level lineage from Seed-thinking-1.6 through continual pre-training, supervised fine-tuning,
+    domain-specific PPO, rejection filtering, flywheel recycling, and parameter interpolation. Record-level provenance, accepted/rejected
+    ledgers, checkpoint-to-data mappings, and replayable environment versions are unavailable.
+  known_failure_modes:
+  - The GUI-General outcome reward model has a reported high false-positive tendency, so incorrect final states can receive
+    positive reward.
+  - Using only the last five screenshots can omit earlier visual evidence needed to verify long episodes.
+  - Stateful websites, operating systems, applications, and games can drift, so an instruction and action trace are not replayable
+    without versioned snapshots and reset scripts.
+  - Episodes collected on annotators' personal computers create privacy, consent, and redaction risks that the report does
+    not resolve.
+  - Lower-quality flywheel episodes are routed into continual pre-training; without routing thresholds or rejection logs,
+    error propagation cannot be audited.
+  - The public research repository and desktop client do not provide the reported training corpus, reward data, sandbox images,
+    or UI-TARS-2 checkpoint.
+  citation_status: verified
+  confidence: medium
+  notes: Checked arXiv v2, the official UI-TARS research repository, UI-TARS-desktop, the official showcase, and ByteDance
+    Seed Hugging Face search on 2026-07-19. The only official model matching the string UI-TARS-2B-SFT points to the earlier
+    arXiv:2501.12326 work and is not evidence of a UI-TARS-2 report checkpoint or dataset.
+inclusion_reason: A frontier GUI-agent report with unusually detailed episode, environment, data-routing, reward, and optimizer
+  descriptions, but without the assets needed to independently reconstruct or replay its training pipeline.
+related: []
+tags:
+- frontier-report
+- gui-agent
+- multi-turn-rl
+- data-flywheel
+- sandbox-rollouts
+- outcome-reward-model
+- disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: UI-TARS-2 discloses a continual-pre-training/SFT/PPO flywheel over stateful GUI episodes and three outcome-feedback
+  paths, while leaving the training corpus, reward records, model weights, and replayable environments unreleased.
+why_it_matters: 'For the frontier-report disclosure ledger, it is a strong example of method-level transparency without item-level
+  data or environment reproducibility: the episode contract can be reconstructed conceptually, but the claimed pipeline cannot
+  be independently audited end to end.'
+card: null
+needs:
+- 'needs_data: task manifests, trajectories, accepted/rejected routing records, and reward labels'
+- 'needs_metadata: source counts, mixture weights, annotator protocol, judge prompts, thresholds, and optimizer hyperparameters'
+- 'needs_artifact: UI-TARS-2 checkpoint and versioned Windows, Ubuntu, Android, browser, and game environments'
+- 'needs_audit: privacy and rights documentation, benchmark decontamination, split lineage, and replay tests'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper, DOI, official research repository, desktop client, and project showcase were verified. No official UI-TARS-2
+    training-data release, reward-data release, model checkpoint, or replayable sandbox bundle was verified.

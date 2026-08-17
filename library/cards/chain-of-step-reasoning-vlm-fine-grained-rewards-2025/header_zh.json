@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CoS-Dataset 提供视觉推理步骤与细粒度奖励，可直接用于视觉语言模型的过程奖励、重排序和强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要构建或评测视觉语言模型细粒度过程奖励与推理扩展的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Honghao Chen, Xingzhou Lou, Xiaokun Feng, Kaiqi Huang, Xinlong Wang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

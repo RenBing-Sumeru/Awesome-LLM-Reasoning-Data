@@ -1,0 +1,3 @@
+Use this Card to audit a formal-RL claim without treating a model-weight release as an end-to-end data release. It distinguishes three review questions: whether a candidate proof passes the terminal Lean predicate, whether the theorem being proved faithfully represents its source problem, and whether the data and environment make the reported pipeline reproducible.
+
+The report can inform conceptual comparisons of synthetic cold starts, subgoal curricula, expert iteration, formal proof SFT, GRPO, and rollout distillation. It is not a reusable release of the core training data, verifier environment, reward implementation, or complete provenance record.

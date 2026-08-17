@@ -1,0 +1,2 @@
+1. **Training or data construction.** The dataset can train multimodal reward models, support DPO/RLHF, and audit capability-specific alignment. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** Results should be reported by dimension and category rather than only as an average win rate. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

@@ -1,0 +1,3 @@
+Read the three roles first, then connect each role to a stage in the research lifecycle. For each system, record what it can do independently, what tools it uses, and where human decisions remain necessary. This makes “autonomy” a testable description instead of a slogan.
+
+Add two further notes while reading: what observation or result the system is expected to produce, and who can challenge or revise it. These notes keep role labels tied to concrete work. When primary papers use different names for similar systems, compare the responsibilities and feedback available rather than relying on their marketing terminology.

@@ -1,0 +1,5 @@
+- Read Sections 3 and 4 with Appendix D: BEL/MIE produce labels, whereas PS-GRPO converts a PRM warning into an outcome-reward penalty.
+- Distinguish the three released fields from the missing construction state: `image_url`, `instruction`, and `output` do not retain route, rollouts, or PRM scores.
+- Use Table 2 for selector evidence and Table 4 for gamma/rho sensitivity; neither measures step-label precision.
+- Check whether relative image paths resolve before calling a public JSONL row a reusable multimodal example.
+- Pair this card with MM-PRM when comparing Monte Carlo labels, terminal judging, and release completeness across multimodal PRM recipes.

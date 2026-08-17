@@ -1,0 +1,3 @@
+The prior baseline is SWAG and other answer-level commonsense multiple-choice datasets. HellaSwag changes the scale, source mixture, and adversarial filtering pressure so that then-current pretrained models cannot rely on the same artifacts.
+
+The direction signal is not the multiple-choice scorer itself; it is the dataset-construction loop that uses model failures and discriminator difficulty to choose harder negatives. What is not new is final-answer accuracy, public static splits, or using human validation. Before reuse, inspect split counts, label availability, source licenses, stale leaderboard claims, and whether benchmark records are in model pretraining data.

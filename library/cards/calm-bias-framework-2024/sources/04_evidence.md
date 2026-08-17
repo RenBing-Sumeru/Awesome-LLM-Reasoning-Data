@@ -1,0 +1,3 @@
+The paper's reported evidence is cross-model bias measurement over multiple popular LLM judges. The abstracted finding is that strong judges can perform well overall while still showing significant bias in specific tasks or perturbation categories, so high aggregate judge quality does not guarantee reliable unbiased scoring.
+
+Instance-level evidence is a perturbation pair and the judge outputs before and after the perturbation. The decisive audit question is whether the modified cue changed the judge decision despite preserved task-relevant quality. The evidence boundary is semantic fidelity: if a perturbation changes answer quality, difficulty, or context, the resulting bias score is not clean. Model-version drift and closed API updates also constrain reproducibility.

@@ -1,0 +1,4 @@
+Compared with many system-card summaries, this addendum exposes unusually concrete safety construction objects: malware prompts paired with code and environment configurations, perturbed and synthetic environments for missing-resource cases, and coding-specific prompt-injection data. It also states the direction of one RL signal—penalize claims inconsistent with actions and reward explicit acknowledgement of constraints—rather than only saying that safety fine-tuning occurred.
+
+The disclosure boundary remains the more important track signal. The main real-world coding-task RL corpus and reward are less specified than the safety layers, and evaluation sets are described more concretely than either training pool. The addendum therefore enables a three-way ledger—training disclosure, safety/deployment mitigation, and evaluation outcome—without treating high refusal rates, sandboxing, or Preparedness classification as proof of data quality or reproducibility.
+

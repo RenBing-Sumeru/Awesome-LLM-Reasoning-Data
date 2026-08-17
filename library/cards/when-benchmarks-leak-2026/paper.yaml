@@ -1,0 +1,104 @@
+id: when-benchmarks-leak-2026
+title: 'When Benchmarks Leak: Inference-Time Decontamination for LLMs'
+year: 2026
+venue: ACL 2026
+authors:
+- Chai Jianzhe
+- Yu Zhe
+- Jun Sakuma
+source_role:
+- benchmark
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- contamination
+- verifier-audit
+- evaluation-reliability
+training_use:
+- audit
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.2071/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.2071/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.2071/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official evaluation, benchmark, or controlled contamination records described by the primary source.
+  trace_author: Paper authors and released evaluation harnesses.
+  answer_format: Model output, verifier/detector decision, and evaluation metadata.
+  process_fields:
+  - task or benchmark item
+  - model output or exposure condition
+  - audit method
+  - detector or verifier result
+  - reported reliability metric
+  environment_or_substrate: Released paper artifact or official reproduction repository.
+  verifier_or_reward: Paper-specific contamination detector, verifier, or judge audit.
+  terminal_predicate: The audit reports whether the proposed method distinguishes shortcut or contamination behavior from
+    valid evaluation.
+recipe_metadata:
+  base_model: See the official paper for evaluated model families.
+  teacher: 'Not applicable: this is an audit/evaluation record.'
+  generator: Released or paper-described benchmark and evaluation pipeline.
+  filtering_rule: Use the paper-defined audit protocol; do not infer a clean label from a headline score.
+  sampling_protocol: See the official paper; exact sampling settings are paper-specific.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Official artifact when released.
+audit:
+  source_mixture: Official paper and linked public artifact.
+  split: Use the published split or controlled condition; inspect the artifact before downstream training.
+  decontamination: 'Central topic: benchmark leakage, verifier reliability, or judge bias.'
+  license: Check the linked official artifact before redistribution or training use.
+  lineage: Primary source -> released code/data when available -> audit result.
+  known_failure_modes:
+  - A public benchmark can become contaminated after release.
+  - A detector may depend on model access or controlled exposure assumptions.
+  - Reported audit metrics do not by themselves establish downstream safety.
+  citation_status: verified
+  confidence: medium
+  notes: Primary source pinned. Public code/data link is recorded when the official release was identified; otherwise the
+    missing artifact remains explicit.
+  author_institution_metadata:
+    source: https://aclanthology.org/2026.acl-long.2071.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Track 13 addition: its central contribution audits contamination, verifier reliability, or judge bias with
+  an explicit evaluation object.'
+related: []
+tags:
+- track13
+- audit
+- 2025-2026
+status: verified
+card: null
+needs:
+- Verify an official public code/data release before reuse.
+one_line_summary: DeconIEP suppresses memorization-driven behavior at evaluation time with bounded embedding perturbations.
+why_it_matters: It separates a contaminated model’s shortcut behavior from clean-input utility without deleting benchmark
+  items.
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19T12:49:36Z'
+  verified_by: curation
+  confidence: medium
+  notes: Official ACL paper verified. No official code or standalone data release link is provided on the paper page.
+curation_level: L4_chinese_review_ready
+category_ids:
+- audit_failure_contamination_verifier_attacks

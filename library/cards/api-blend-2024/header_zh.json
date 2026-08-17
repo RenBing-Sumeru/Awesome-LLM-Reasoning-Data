@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "API-BLEND 提供可审计的工具使用或 agent 环境评测面，核心是 Examples are evaluated through detection, argument filling, and sequencing targets rather than a full live environment.",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Agent 环境 / 工具使用数据与评测",
+  "best_for_ch": "研究 tool-use、agent trajectory、环境反馈契约和可复现评测的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Kinjal Basu、Ibrahim Abdelaziz、Subhajit Chaudhury、Soham Dan、Maxwell Crouse、Asim Munawar 等（IBM Research 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T09:40:26Z"
+}

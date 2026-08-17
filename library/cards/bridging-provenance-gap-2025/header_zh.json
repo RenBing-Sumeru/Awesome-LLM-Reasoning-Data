@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布人工审计的数据集级目录，覆盖论文表中 3,916 个文本、语音与视频数据集的来源、派生、创建者、表示、许可证和来源条款，但不提供逐记录 provenance。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态数据 provenance、许可证与来源条款审计",
+  "best_for_ch": "负责后训练数据选型、开放发布、权利复核、来源治理与版本审计的研究者和工程团队",
+  "confidence_ch": "中",
+  "authors_ch": "Shayne Longpre 等 43 位作者",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该工作以 SPCT 让通用生成式奖励模型在线生成原则和批评，再以并行采样和 Meta RM 投票扩展奖励判断的测试时计算。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zijun Liu；Peiyi Wang；Runxin Xu；Shirong Ma；Chong Ruan；Peng Li；Yang Liu；Yu Wu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

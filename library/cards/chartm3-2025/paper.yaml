@@ -1,0 +1,203 @@
+id: chartm3-2025
+title: 'ChartM3: A Multi-Stage Code-Driven Pipeline for Constructing Multi-Dimensional and Multi-Step Visual Reasoning Data
+  in Chart Comprehension'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Duo Xu
+- Hao Cheng
+- Xin Lin
+- Zhen Xie
+- Hao Henry Wang
+source_role:
+- benchmark
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- scalar_reward
+domains:
+- chart_comprehension
+- multimodal
+- data_visualization
+- business_analytics
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.701/
+  arxiv: https://arxiv.org/abs/2511.02415
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.701
+  venue: https://aclanthology.org/2025.findings-emnlp.701/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.701/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-emnlp.701.bib
+data_object:
+  prompt_source: Scenario-level key questions are authored across 60 data-visualization domains, then matched by RAG to professional
+    chart templates spanning 9 major and 62 minor chart types. The template database is derived from chart taxonomies, manually
+    refined generated templates, and styles recreated from collected real-world charts.
+  trace_author: Claude 3.5 generates structured data/code templates for the template database and recreates real-chart styles.
+    Qwen2.5-VL-72B is disclosed for visually grounded question generation. LLMs generate data code, visualization analysis,
+    rendering code, analysis code, rationales, and answers, but the model/checkpoint assignment for every stage is unknown.
+  answer_format: A paper-described lineage can contain chart-template tags, contextual narrative, generated data code and
+    CSV, visualization requirements, preprocessing/rendering code, chart image, task and question type, question/options,
+    executable analysis code/output, step-by-step explanation, final answer, quality decisions, and difficulty. Released row
+    schema is unknown because no author-confirmed data artifact was verified.
+  process_fields:
+  - domain and key question
+  - chart major/minor type and template attributes
+  - contextual narrative and data description
+  - data-generation code and structured data
+  - visualization analysis and guidance
+  - preprocessing and rendering code
+  - chart image
+  - task category and question type
+  - question and options
+  - executable analysis code and output
+  - step-by-step reasoning path
+  - final answer
+  - quality-filter decisions
+  - difficulty score
+  environment_or_substrate: An executable, primarily Python-based generation environment over 62 statistical chart subtypes.
+    Data code writes CSV; visualization code renders chart images; analytical code computes intermediate and final results.
+    Failed rendering code is iteratively repaired with its error message. Exact library versions, sandbox, timeout, seeds,
+    retry cap, and execution-isolation policy are unknown.
+  verifier_or_reward: 'Construction uses execution filtering, a Qwen2-VL-2B chart-quality classifier, multimodal judges for
+    chart relevance, data accuracy, and logical consistency, sampled-model difficulty, and manual benchmark correction. GRPO
+    uses a binary format reward plus answer accuracy: strict matching for multiple-choice/true-false and Qwen3-32B binary
+    judgment for fill-in-the-blank/short answers. Qwen-Max judges reported benchmark predictions. These are distinct contracts.'
+  terminal_predicate: A construction item survives code execution and learned/human filters; exact per-stage conjunction and
+    thresholds are not fully specified. In GRPO, the final response must use the required think/answer tags and receive either
+    exact-match or Qwen3-32B answer credit. The synthesized CoT path is not an RL reward input.
+recipe_metadata:
+  base_model: Qwen2.5-VL-3B is the base in the 30K SFT-versus-GRPO comparison and in the full-data Qwen2.5-VL CoT-SFT result;
+    LLaVA-OneVision-7B is also tested with full-data CoT-SFT. The paper's generic phrase Qwen2.5-VL should not be read as
+    one model size for every experiment.
+  teacher: Claude 3.5 is named for template/code creation and style recreation; Qwen2.5-VL-72B is named for chart-visible
+    question generation. Qwen2-VL-2B is a trained filter, Qwen3-32B is an RL judge, and Qwen-Max is an evaluation judge. Complete
+    generator assignments, model revisions, prompts outside the appendix, and sampling settings are unknown.
+  generator: Build a multi-attribute template database; generate scenario-conditioned data code with distributions, trends,
+    and noise; execute it to obtain structured data; generate visualization analysis and rendering code with a retrieved template/few-shot
+    example; execute and repair the renderer; synthesize questions and analytical code; execute the analysis; then generate
+    a rationale and answer from the code output before multi-model filtering and benchmark refinement.
+  filtering_rule: Remove abnormal generations and execution failures; iteratively repair failed rendering code; apply a Qwen2-VL-2B
+    chart-quality classifier; judge visual relevance, data accuracy, and logic; estimate difficulty from ten high-temperature
+    model attempts and remove overly easy questions; retain GRPO items with difficulty 3--9; manually verify/correct the test
+    set and remove items with inconsistent judge decisions. Exact thresholds, repair limits, full prompts/models, stage yields
+    by model, and item-level decisions are unknown.
+  sampling_protocol: Domain/key question -> RAG chart template -> contextual data-generation code -> CSV -> visualization
+    analysis and code -> executed chart -> question plus analytical code -> code execution -> rationale/answer -> quality
+    and difficulty filters. GRPO uniformly samples 30,000 questions from difficulty scores 3--9 and samples seven rollouts
+    per prompt.
+  rollout_count: 7
+  temperature: null
+  inference_budget: Ten high-temperature attempts per item for difficulty estimation and seven GRPO rollouts per prompt. Exact
+    difficulty-model identities, temperatures, token limits, retry budgets, and construction candidate counts are unknown.
+  optimizer_or_scaffold: Full-data and 30K SFT experiments freeze the vision encoder and train two epochs at learning rate
+    1e-5 with batch size 64. GRPO uses learning rate 1e-6, KL coefficient 0.04, the k2 KL approximation, seven rollouts per
+    prompt, and a global batch of seven prompts. Training uses eight NVIDIA A100 80GB GPUs. Optimizer, scheduler, warmup,
+    precision, gradient settings, seeds, and checkpoints are unknown.
+audit:
+  source_mixture: Table 2 reports 132,955 single-chart plus 8,845 multi-chart training questions (141,800 exact total) and
+    2,271 plus 600 test questions (2,871 total). It lists 31,772/6,650 training charts and 1,221/333 test charts for the two
+    subsets. The abstract rounds training scale to 38K charts and 142K Q&A. No author-confirmed files were available to recount.
+  split: 'Paper-reported train/test counts only. Table 7 retained-pool counts do not reconcile to Table 2 final splits: single
+    Q&A 140,312 versus 135,226 final train+test; multi Q&A 9,821 versus 9,445; single charts 34,064 versus 32,993; and the
+    multi-chart units also differ. No attrition ledger, immutable item IDs, split rule, seed, or released split files explain
+    the remainder.'
+  decontamination: unknown; the paper provides no overlap ledger for retrieved/recreated templates, source charts, few-shot
+    examples, generated prompts/images, or ChartQA/ReachQA/CharXiv and other evaluation benchmarks.
+  license: The ACL paper is CC BY 4.0. Corpus, template database, recreated chart styles, generated code/images, collected
+    real-world chart sources, and redistribution terms are unknown because no official data/code release or artifact license
+    was verified. The paper states that source artifact licenses were followed but gives no record-level rights manifest.
+  lineage: 60 domains and key questions -> RAG over Claude/manual template database -> LLM data code and CSV -> LLM rendering
+    analysis/code -> execution/repair and chart image -> Qwen2.5-VL-72B-visible question plus analytical code -> code output
+    -> rationale instructed to appear visually derived -> execution/classifier/MLLM/human filters -> paper-reported SFT, test,
+    and 30K final-answer GRPO subsets.
+  known_failure_modes:
+  - Executable data/rendering/analysis code proves that programs run, not that chart pixels expose every referenced value,
+    remain legible, or uniquely support the answer.
+  - The rationale prompt says to fully trust analytical code output and present it as if calculated from chart pixels without
+    mentioning code. This can create privileged-data or post-hoc traces that a vision-only solver could not reproduce.
+  - Even 72B MLLMs reportedly miss occlusion/layout defects. The Qwen2-VL-2B classifier is validated on only 107 instances;
+    learned visual filters may inherit generator/style blind spots.
+  - 'The reported 91.24% instruction accuracy comes from about 5,800 sampled items: Claude 3.5 judged them, while dual Claude/human
+    verification focused on initially incorrect cases. It is not a corpus-wide independent audit.'
+  - Qwen3-32B short-answer reward and Qwen-Max benchmark evaluation are learned judgments, not programmatic correctness proofs;
+    prompt, model version, calibration, disagreement, and adversarial robustness are incomplete.
+  - GRPO explicitly omits the supplied CoT paths and optimizes questions/final answers, so RL gains cannot validate the rationale
+    corpus. A compliant think block receives format credit regardless of faithfulness.
+  - The 30K GRPO set contains 6,958 true/false, 6,734 multiple-choice, 2,657 short-answer, and 13,651 fill-in items. The stated
+    approximately 1:1 rule/model reward balance is 13,692 versus 16,308, not an exact balance.
+  - Table 7 retained-pool totals and Table 2 final split totals leave unexplained attrition, and no record IDs or selection
+    ledger are available to audit which items moved into SFT, RL, or test subsets.
+  - Test-set manual verification/correction is reported, but annotator count, qualifications, instructions, agreement, exact
+    corrections, and per-item adjudication are not released.
+  - Collected real-world charts and recreated styles introduce provenance, copyright, and source-contamination risks; only
+    a general license-compliance statement is provided.
+  - The paper reports only statistical charts generated primarily in Python; flowcharts, relational diagrams, other visualization
+    languages, and larger-scale RL are explicitly outside the current scope.
+  - No author-confirmed repository, dataset, project page, schema, immutable snapshot, or generated-corpus license was verified.
+    A similarly named third-party Hugging Face dataset is deliberately not attributed to this paper.
+  citation_status: verified
+  confidence: medium
+  notes: The formal ACL paper, all 23 pages including appendix prompts, responsible-NLP checklist, arXiv page, DOI, and BibTeX
+    were checked on 2026-07-21. Official paper identity and recipe are verified; downloadable construction artifacts remain
+    unavailable.
+inclusion_reason: ChartM3 gives a detailed code-driven blueprint linking chart templates, data/rendering/analysis programs,
+  pixels, rationales, mixed quality controls, and final-answer RL rewards, even though the claimed corpus is not officially
+  released.
+related: []
+tags:
+- chartm3
+- chart-reasoning
+- multimodal
+- code-driven-generation
+- synthetic-data
+- rlvr
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: ChartM3 reports a code-driven pipeline for 141,800 training and 2,871 test Q&A, but execution checks, learned
+  judges, privileged code-output rationales, and unreconciled retained-versus-final counts remain unauditable without an official
+  release.
+why_it_matters: It shows how to preserve chart/data/code/question lineage for multimodal SFT and final-answer RLVR, while
+  demonstrating that executable construction and downstream gains do not mechanically certify chart visibility, reasoning
+  faithfulness, learned-judge correctness, or record-level provenance.
+card: null
+needs:
+- 'needs_release: publish author-confirmed code, data, schema, model cards, and immutable revisions'
+- 'needs_accounting: reconcile Table 7 retained pools with Table 2 final splits and publish item IDs, attrition reasons, and
+  SFT/RL/test membership'
+- 'needs_metadata: disclose stage-by-stage model checkpoints, prompts, temperatures, seeds, retry limits, execution environment,
+  and acceptance thresholds'
+- 'needs_trace_audit: test whether every code-derived rationale and answer is recoverable from visible chart pixels alone'
+- 'needs_judge_audit: publish classifier/judge validation sets, confusion matrices, agreement, prompt/model revisions, and
+  adversarial tests'
+- 'needs_license: document template, source-chart, recreated-style, generated-code/image, and redistribution rights'
+- 'needs_decontamination: audit templates, source charts, few-shot examples, prompts, and external benchmark overlap'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: medium
+  notes: ACL/arXiv/DOI/BibTeX and the full paper recipe are verified. No author-confirmed code, dataset, project, schema,
+    release snapshot, or corpus license was found; third-party similarly named artifacts were excluded.

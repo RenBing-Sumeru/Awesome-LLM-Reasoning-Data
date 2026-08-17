@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Shepherd 将代码智能体轨迹与过程级奖励配对，监督中间工程决策而非只看最终问题是否解决。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码智能体过程奖励模型与轨迹监督数据论文",
+  "best_for_ch": "训练或评测代码智能体的中间步骤奖励、搜索和轨迹筛选。",
+  "confidence_ch": "高",
+  "authors_ch": "Mahir Labib Dihan、Md Ashrafur Rahman Khan",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:49:10Z"
+}

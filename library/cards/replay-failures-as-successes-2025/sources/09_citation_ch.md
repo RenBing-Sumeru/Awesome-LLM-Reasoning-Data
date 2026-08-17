@@ -1,0 +1,1 @@
+Kongcheng Zhang 等。《Replay Failures as Successes: Sample-Efficient Reinforcement Learning for Instruction Following》。arXiv:2512.23457，2025。论文：https://arxiv.org/abs/2512.23457。代码：https://github.com/sastpg/HIR。数据：https://huggingface.co/datasets/sastpg/HIR-16K。

@@ -1,0 +1,105 @@
+id: deepseek-v3-1-release-2025
+title: DeepSeek-V3.1
+year: 2025
+venue: Official DeepSeek Hugging Face model release
+authors:
+- DeepSeek-AI
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- mathematics
+- coding
+training_use:
+- unknown
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://huggingface.co/deepseek-ai/DeepSeek-V3.1
+  arxiv: null
+  code: https://github.com/deepseek-ai/DeepSeek-V3
+  data: null
+  project: null
+  huggingface: https://huggingface.co/deepseek-ai/DeepSeek-V3.1
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The card reports additional long documents for V3.1-Base extension but no source list or post-training prompt
+    manifest.
+  trace_author: unknown
+  answer_format: Chat-template inputs with system and user messages; thinking/non-thinking output modes and documented tool-call
+    formatting.
+  process_fields:
+  - system_prompt
+  - user_query
+  - thinking_mode
+  - assistant_response
+  - tool_calls
+  environment_or_substrate: Released 671B-total/37B-activated checkpoint with 128K context; training environments are unknown.
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: DeepSeek-V3.1-Base, built from the V3 base through two long-context extension phases.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: Released chat-template controls thinking/non-thinking formatting; post-training sampling is unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: The card reports 630B tokens for 32K extension and 209B tokens for 128K extension; post-training compute
+    is unknown.
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: Only additional long documents for extension are disclosed; all post-training mixture fields are unknown.
+  split: unknown
+  decontamination: unknown
+  license: The official release states MIT terms for repository and weights; data rights are unknown.
+  lineage: V3 base -> two long-context extensions -> V3.1-Base -> V3.1 post-training; item-level lineage is unavailable.
+  known_failure_modes:
+  - Weights and interface templates do not disclose the post-training data or feedback contract.
+  - Tool formats do not establish a training environment or success predicate.
+  - No split, contamination, provenance, or rejection audit is disclosed.
+  citation_status: partial
+  confidence: medium
+  notes: The supplied BibTeX targets the earlier V3 report, not a dedicated V3.1 technical report.
+inclusion_reason: A versioned frontier release that quantifies long-context extension while leaving its post-training data
+  and feedback stack opaque.
+related:
+- deepseek-v3-technical-report-2024
+tags:
+- deepseek-v3-1
+- frontier-report
+- data-disclosure-ledger
+- model-release
+- long-context
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: DeepSeek-V3.1 releases weights, interface formats, 128K context, and base-extension token counts, but not
+  its post-training data, feedback, or audit stack.
+why_it_matters: It separates a usable model release from the missing evidence required to audit how reasoning and tool use
+  were post-trained.
+card: null
+needs:
+- 'needs_data: post-training prompts, traces, manifests, and rights'
+- 'needs_metadata: stages, teachers, filters, sampling, and compute'
+- 'needs_verifier: reward, verifier, environment, and calibration details'
+- 'needs_audit: splits, contamination, provenance, and release revision history'
+curation_level: L2_artifact_verified
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official model release and linked runtime repository were checked; no exact V3.1 paper is disclosed.

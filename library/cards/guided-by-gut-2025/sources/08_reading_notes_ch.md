@@ -1,0 +1,5 @@
+- GRPO 在 817 个 LIMO prompt 上进行校准，每题 8 个生成，奖励同时依赖正确性与整链置信度。
+- 搜索分数由 token 概率 confidence 与 token-count novelty 组成，两者都不是正确性验证器。
+- 主搜索采用 N=32 或 64、M=2，在步骤级贪心保留分支，并以置信度加权投票结束。
+- 附录中的高置信算术错误是需要审计的反例，而不是过程标签可靠性的证据。
+- 代码、配方和 1.5B/7B checkpoint 已发布；原始 rollout、score manifest、许可与去污染仍未知。

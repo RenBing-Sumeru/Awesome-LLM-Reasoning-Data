@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-26T13:04:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提出了评价一条逐步推理轨迹到底好不好的一套框架",
+    "updated_at": "2026-07-26T13:04:50Z"
+  }
+}

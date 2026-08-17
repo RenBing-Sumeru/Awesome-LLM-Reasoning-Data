@@ -1,0 +1,5 @@
+- 对象：任务与 GPT-4 回答轨迹，后者由任务专用策略 prompt 生成。
+- 机制：Prompt Erasing 在 student 读取记录前删除策略 instruction。
+- 规模：817K 条新记录在 FLAN 和 6M 条早期 Orca 1 记录之后训练。
+- 证据：Orca-2-13B 的推理宏平均为 66.92，LLaMA-2-Chat-13B 为 43.71，但配方同时改变多项因素。
+- 审计：未公开数据、隐藏映射、teacher 正确性、数据重叠和模型 judge 依赖是精确复现的主要阻碍。

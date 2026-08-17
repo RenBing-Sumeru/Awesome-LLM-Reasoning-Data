@@ -1,0 +1,6 @@
+- The upstream prompt pool, source mixture, IDs, splits, deduplication, decontamination, and licenses are undisclosed in the current artifact.
+- Exact definitions and stability of diversity, influence, difficulty, and explorability require the missing implementation and logs.
+- The answer extractor, verifier implementation, normalization rules, terminal predicate, and false-positive/false-negative analysis are not released here.
+- Filtering can remove rare but necessary skills; replay can amplify stale, noisy, or verifier-gamed samples.
+- Compute comparisons depend on rollout accounting, models, budgets, and baselines.
+- The inspected official repository did not expose an identifiable DEPO implementation, processed subset, replay buffer, or trajectory archive.

@@ -1,0 +1,3 @@
+The authors limit evaluation to public math and science benchmarks and say future work should broaden domains and adapt profiles. Results therefore do not establish judge reliability for subjective, multilingual, legal, medical, or adversarial tasks; reproduce on target data before using ranks operationally.
+
+MAJ relies on manually crafted profiles, multi-turn debate, and majority voting. Its apparent improvement may depend on prompt wording and extra inference budget rather than a transferable judge capability. Report agent count, turns, tokens, tie policy, and a compute-matched single-agent baseline.

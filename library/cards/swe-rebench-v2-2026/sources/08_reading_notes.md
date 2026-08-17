@@ -1,0 +1,5 @@
+- Remember the two release tiers: 32,079 issue-linked tasks with prebuilt images across 20 languages/3,617 repositories, versus 126,300 PR-derived rows whose paper-level description is 120,000+ and whose release has no top-level prebuilt image field.
+- Read Paper §§3.1–3.6 and Appendix A.3 together with pinned `scripts/eval.py`: construction-time pre/post full-suite validation and runtime exact F2P/P2P passed-set matching are related but distinct stages.
+- Do not call the release a trajectory corpus. It releases task/environment rows and terminal feedback; downstream agents must generate trajectories, and the seven-model diagnostic trajectories are unavailable.
+- Interpret Tables 2, 3, 5, and 6 as setup, filter-calibration, and diagnostic evidence under stated budgets—not as proof of record-level data quality or downstream training value.
+- Reuse only after pinning code/Hugging Face revisions and checking missing harvesting code, OCI digests, parser correctness, split/overlap, PR leakage, layered MIT/CC BY 4.0/source rights, privacy controls, and rejected/failure artifacts.

@@ -1,0 +1,5 @@
+- 将第 3 节与 Appendix A 一同阅读：接受 gates、temperature 增长和早停共同定义数据集。
+- PLQY 上包络约束 EQE 数值，并不认证因果推理文字。
+- 区分 PaRS acceptance 与只用于评测的外部 DeepSeek-R1 judge。
+- 将报告的 6.4 候选和 20% 丢弃率视为聚合作者证据，而不是已发布轨迹元数据。
+- 任何训练使用前都应检查湿实验来源和 split overlap。

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Grok 4 的模型卡与发布公告披露了宽泛的预训练来源、去重/分类、使用人类反馈、可验证奖励和模型评分的 SFT/RL，以及工具使用 RL，但未披露记录级数据、奖励、过滤器或评估器合约。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "闭源前沿模型卡与数据披露台账",
+  "best_for_ch": "审计和比较闭源前沿模型的后训练、工具使用与安全披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "xAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

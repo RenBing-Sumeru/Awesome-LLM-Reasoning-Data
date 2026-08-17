@@ -1,0 +1,3 @@
+The distinctive data-construction move is not simply to select correct rollouts. DAST uses repeated self-rollouts to estimate per-question difficulty, turns that estimate into a target length, and ranks responses with a feedback signal that couples correctness with length relative to the target.
+
+It further separates two same-correctness learning signals: concise-vs-concise DCP selection for correct answers and longer-within-budget DICP selection for incorrect answers. This makes the data object a length-sensitive preference recipe, with the important caveat that the complete underlying traces and pair records are not released.

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LG 发布了研究用途 EXAONE Deep 权重，并报告 1.6M 条 CoT 格式 SFT、20K 条 DPO 与 10K 条 Online-RL 样本；但未披露语料、trace/偏好来源、过滤、reward 合约、切分或数据权利。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放权重推理模型技术报告与数据披露账本",
+  "best_for_ch": "需要区分研究用途权重发布与后训练数据可复现性的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "LG AI Research",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

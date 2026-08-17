@@ -1,0 +1,3 @@
+Claim: position bias measured by this protocol is systematic rather than random. The controlled evaluation covers 15 judges, MT-Bench and DevBench, 22 tasks, roughly 40 candidate-generating models, and more than 150,000 judgment instances.
+
+In Table 2 and the main findings, capable judges generally have repetition stability above 0.85; Claude-3.5-Sonnet, GPT-4, and Llama-3.3-70B are above 0.95 on both benchmarks. Regression identifies judge series, candidate identity/quality gap, and task category as significant predictors; prompt length is weakly related while quality gap is strongly related. This supports auditing a chosen judge under the intended task distribution, not a universal bias ranking.

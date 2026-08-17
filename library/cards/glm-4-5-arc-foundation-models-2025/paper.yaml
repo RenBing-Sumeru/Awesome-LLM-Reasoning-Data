@@ -1,0 +1,175 @@
+id: glm-4-5-arc-foundation-models-2025
+title: 'GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- GLM-4.5 Team
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+- agent_environment
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- general_reasoning
+- mathematics
+- coding
+- agent
+- web_search
+- tool_use
+training_use:
+- sft
+- distillation
+- rlvr
+- preference_learning
+- reward_modeling
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2508.06471
+  arxiv: https://arxiv.org/abs/2508.06471
+  code: https://github.com/zai-org/GLM-4.5
+  data: null
+  project: https://docs.z.ai/guides/llm/glm-4.5
+  huggingface: https://huggingface.co/zai-org/GLM-4.5
+  doi: https://doi.org/10.48550/arXiv.2508.06471
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2508.06471
+data_object:
+  prompt_source: The report names crawled web pages, social media, books, papers, code repositories, GitHub issue/PR material,
+    synthetic reasoning tasks, web QA, and tool/MCP tasks. Exact source manifests, snapshots, proportions, licenses, and prompt
+    sets are unknown.
+  trace_author: Post-training traces are attributed at a high level to trained expert models, existing LLM tool-call trajectories,
+    LLM user simulators, and model-generated rollouts. Teacher identities, prompts, decoding settings, and trace counts are
+    unknown.
+  answer_format: Natural-language responses and reasoning traces; structured XML-like tool/function calls; executable code
+    patches and tests; and environment terminal states. A released sample schema is unavailable.
+  process_fields:
+  - prompt
+  - response
+  - reasoning_trace
+  - ground_truth
+  - reward_verdict
+  - tool_call
+  - tool_result
+  - action
+  - environment_state
+  - trajectory
+  - terminal_outcome
+  environment_or_substrate: The report describes real API/MCP tools, constructed or simulated tools, isolated Docker sandboxes,
+    distributed agent environments, and AgentGym. Task instances, tool inventories, environment/API versions, action schemas,
+    and execution logs are not released.
+  verifier_or_reward: Objective-answer correctness, executable unit tests, tool/function protocol checks, environment completion,
+    reward-model filtering, human RLHF, model RLAIF, and some LLM-Judge decisions are reported. Reward/judge identities, prompts,
+    weights, thresholds, calibration, and error analyses are unknown.
+  terminal_predicate: Terminal feedback is described as final-answer accuracy, test success, task completion under an environment
+    rule or LLM Judge, and strict tool-call validity. Exact aggregation, exceptions, and failure logs are unknown.
+recipe_metadata:
+  base_model: GLM-4.5 is reported as a 355B-total/32B-active MoE ARC model; the official release also includes GLM-4.5-Air.
+    The report describes multi-stage training over approximately 23T tokens but does not release the training checkpoint lineage.
+  teacher: Stage-one reasoning, agent, and general expert models supply post-training material, then feed unified self-distillation.
+    Their checkpoint identities and prompting are unknown.
+  generator: The report describes expert-model generations, existing LLM tool-call trajectories, LLM task synthesis, and LLM
+    user simulators. Generator versions, seeds, decoding settings, and quantities are unknown.
+  filtering_rule: Reported filters include source-quality scoring, MinHash and semantic deduplication, language/domain classifiers,
+    format validity, objective correctness, reward-model screening, tool-protocol adherence, and terminal-success retention.
+    Algorithms, thresholds, yields, and rejected samples are unknown.
+  sampling_protocol: One SFT scaling setting reports four responses per selected prompt. Reasoning RL uses difficulty curricula
+    and dynamic temperature adjustment; group sizes, production rollout counts, temperature values, and schedules are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The report discusses 64K reasoning-RL experiments; official model documentation states 128K context and
+    up to 96K output. Per-domain production rollout budgets are unknown.
+  optimizer_or_scaffold: The report describes SFT, expert-model self-distillation, GRPO-style reasoning RL without a KL term,
+    group-wise agent optimization, and mixed rule/human/model feedback. It names Slime, Megatron, SGLang/router, and DataBuffer
+    infrastructure, but full configurations and training code are not released.
+audit:
+  source_mixture: The paper provides source categories and nominal token-scale components, including 15T general pretraining,
+    7T code/reasoning continual pretraining, 500B repo code, 500B synthetic reasoning, and 100B long-context/agent data. Source-level
+    manifests, dates, jurisdictions, ratios, rights, and item counts are unknown.
+  split: A held-out validation set is mentioned for temperature selection. Dataset membership, split construction, overlap
+    controls, and evaluation-set partitions are unknown.
+  decontamination: The report describes MinHash and semantic deduplication for web data, but it does not disclose a benchmark-overlap/decontamination
+    protocol, matching scope, thresholds, or audit results.
+  license: Official GLM-4.5 release materials state MIT for released base, hybrid, and FP8 models. Training-data, post-training-data,
+    reward-data, tool/API-content, and environment licenses are unknown.
+  lineage: High-level lineage is disclosed from mixed sources through filtering/synthesis, expert-generated or LLM-generated
+    traces, verifier/reward/judge filtering, SFT, self-distillation, and RL. Raw manifests, transformation logs, provenance
+    records, and rejected samples are not released.
+  known_failure_modes:
+  - Released weights and inference integrations do not substitute for release of the original corpus, post-training data,
+    reward models, judge artifacts, agent environments, or audit records.
+  - Source provenance, licenses, consent, PII handling, source dates, and mixture ratios are undisclosed, preventing an independent
+    rights or data-governance audit.
+  - Teacher, reward-model, and LLM-Judge identities, prompts, calibration, and disagreement/error rates are undisclosed, creating
+    a reward-quality and reproducibility gap.
+  - Semantic deduplication is not evidence of evaluation decontamination; no benchmark-leakage audit is released.
+  - Success-only trajectory retention can bias agent data and obscure tool, environment, and failure modes.
+  - Unreleased API/MCP inventories, sandbox images, AgentGym configurations, and terminal predicates prevent replay of the
+    reported agent-training loop.
+  citation_status: verified
+  confidence: medium
+  notes: 'Only official GLM/Z.ai materials were used: arXiv, Z.ai documentation, the zai-org GitHub repository, and the zai-org
+    Hugging Face model page. This is a Track 12 partial-disclosure record and is not classified under Track 8.'
+inclusion_reason: A high-impact frontier technical report that materially describes data construction, expert iteration, mixed
+  feedback, and agent-training infrastructure while leaving the released model weights far short of a reproducible or independently
+  auditable data-and-feedback release.
+related: []
+tags:
+- glm-4-5
+- zai
+- frontier-report
+- data-disclosure-ledger
+- reasoning
+- coding
+- agent-training
+- reinforcement-learning
+- reward-model
+- tool-use
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: GLM-4.5 discloses a broad 23T-token ARC training and post-training pipeline with expert self-distillation,
+  verifier/reward/judge feedback, and agent environments, but releases weights and inference materials rather than the source
+  data, RM/Judge artifacts, replayable environments, or audit records needed for independent verification.
+why_it_matters: 'It makes the distinction Track 12 needs: a detailed frontier-model narrative and MIT model release can reveal
+  useful high-level data and feedback interfaces, yet they do not establish access to the original data, reward/judge contract,
+  environment state, provenance, licenses, decontamination evidence, or reproducible training process.'
+card: null
+needs:
+- 'needs_data: source-level manifests, dates, counts, mixture ratios, source rights, licenses, and data cards'
+- 'needs_metadata: teacher/generator identities, prompts, decoding settings, sampling schedules, and retention yields'
+- 'needs_verifier: objective verifier implementation, reward-model and LLM-Judge identities, prompts, thresholds, calibration,
+  and error analysis'
+- 'needs_audit: split definitions, benchmark-overlap/decontamination protocol, source-rights/PII audit, provenance logs, and
+  rejected-sample statistics'
+- 'needs_environment: API/MCP inventories, sandbox images, task instances, action schema, AgentGym configuration, terminal
+  rules, trajectories, and replay scripts'
+- 'needs_code: data construction, training, RL, evaluation, and deployment-compatible reproduction configurations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official arXiv, DOI, Z.ai documentation, zai-org GitHub repository, and official zai-org Hugging Face model page
+    were verified. No official release of training/post-training data, reward/judge artifacts, agent environment, or auditable
+    reproduction material was identified.

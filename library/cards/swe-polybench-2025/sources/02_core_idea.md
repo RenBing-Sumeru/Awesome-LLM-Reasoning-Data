@@ -1,0 +1,5 @@
+The core object is an executable repository repair record. `instance_id` identifies an issue-closing PR; `repo` and `base_commit` recover the pre-solution codebase; `problem_statement` and `hints_text` provide user-facing context; `patch` and `test_patch` separate implementation from test changes; and `Dockerfile`, `test_command`, F2P, and P2P define execution.
+
+The verifier is conjunctive. A candidate is resolved only if every fail-to-pass test passes after the patch and no pass-to-pass test regresses. The harness also compares changed files and Concrete Syntax Tree nodes against the gold patch to report localization precision/recall. Those retrieval scores are diagnostics; only the F2P/P2P conjunction determines resolution.
+
+The benchmark standardizes final patches rather than agent behavior. A submission minimally contains `instance_id` and string-valued `model_patch`. Agents can search, edit, and run tools internally, but intermediate actions and observations are not part of the dataset contract. Local evaluation produces raw test logs, passed/failed test lists, patch-application flags, and resolved/unresolved labels.

@@ -1,0 +1,5 @@
+AgentQuest's contribution is a modular framework for running LLM agents on benchmark environments while measuring progress and repetitive behavior rather than only terminal success.
+
+The core mechanism is to factor an evaluation into benchmark-specific drivers, actions, states, observations, and metrics. A record is therefore not only "agent answered task X"; it is a sequence of environment-mediated actions with a final score plus progress-style signals. The feedback contract is implemented by the benchmark environment and the AgentQuest metrics; success, partial progress, and repetition are properties of the run, not free-form judge impressions.
+
+Closest comparisons are monolithic agent benchmarks such as WebShop, HotPotQA-style tool tasks, or ALFWorld-style environments where final task success can dominate reporting. The direction label is environment-agent trajectory evaluation: useful for auditing where an agent fails, but not sufficient on its own to certify data quality, license safety, or benchmark freshness.

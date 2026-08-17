@@ -1,0 +1,3 @@
+For a team building code RLVR, start with prompts, candidate programs, and a trusted test suite. Apply the paper's perturbation protocol to the reward path, train the same base model under clean and noisy feedback, and output a task-specific robustness report; success is a held-out unit-test score that stays near the clean condition. Do not transfer the reported threshold if tests lack reliable ground truth.
+
+For a team considering an LLM judge, collect judge decisions and oracle labels on representative generated programs. Compute precision and recall, then use the judge only when its false-positive profile is acceptable; the output is an evidence-backed go/no-go decision or a need for stricter verification. Do not use accuracy alone to approve a judge.

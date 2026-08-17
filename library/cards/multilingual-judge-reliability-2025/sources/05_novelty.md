@@ -1,0 +1,1 @@
+Single-language judge studies often emphasize human agreement. This work changes the audit target to cross-language self-consistency over a broad grid and tests explanatory factors. It is failure analysis, not a new judging model.

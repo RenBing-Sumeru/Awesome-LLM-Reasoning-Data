@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "使用树搜索筛选过程推理中的轨迹，把轨迹与策略奖励模型的迭代协同，有一定新意。",
+    "updated_at": "2026-07-12T05:54:24Z"
+  },
+  "updated_at": "2026-07-12T05:54:24Z"
+}

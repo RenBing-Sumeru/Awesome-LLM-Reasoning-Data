@@ -1,0 +1,5 @@
+- 从官方 proceedings 与 virtual-program record 确认 ICLR 2025 Spotlight；先读 Figure 2 与 Sections 2.1–2.2。
+- 在发布 mapping manifest 前，把 10,398 条 trajectory、52,594 个 dialogue turn 与 6,000/10,000 training subset 视为不同单位。
+- 对照 44.38% 的直接计算、Appendix C 的 39.9% 和“nearly 5,000”表述；论文没有解释三者差异。
+- 解释“successful”前先读 Appendix G.1，再检查 Appendix H 的 expired-tutorial failure 与缺失的 failed-data release。
+- 与 `learn-by-interact-2025` 对读；复用前审计 text-only HF schema、缺失的 construction/training code、license、environment snapshot、rights/privacy control 与 contamination。

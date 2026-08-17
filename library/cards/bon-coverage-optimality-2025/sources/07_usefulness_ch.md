@@ -1,0 +1,2 @@
+对 Rollout, Search, and Test-Time Trace Data 轨道而言，本文给出了可执行的选择轨迹审计 schema：prompt 与 reference-policy 身份、每个 candidate response、其 policy likelihood 与 proxy-reward score、候选预算 (N)、regularization β、估计 normalizer、逐候选 rejection probability 与 acceptance event、fallback 路径、selected response，以及与选择信号分开保存的 true-evaluation outcome。这类记录可用于 selector evaluation、reward-hacking audit、coverage study 和 test-time compute policy 对比，也有助于区分生成失败、reward modeling 失败与选择失败。现有证据只支持评测与推理时构造用途；它不证明可用于 SFT/RL 训练，也不证明有权再分发 benchmark-derived prompt 或模型输出，更不代表论文实验轨迹已经发布。
+

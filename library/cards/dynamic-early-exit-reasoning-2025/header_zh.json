@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DEER 在推理的转折处试探性给出答案，当模型自信度足够高时提前退出；官方仓库只发布了论文实现的一部分，且没有可复用的采样语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Chenxu Yang、Qingyi Si、Yongjie Duan、Zheliang Zhu、Chenyu Zhu、Qiaowei Li、Minghui Chen、Zheng Lin、Weiping Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

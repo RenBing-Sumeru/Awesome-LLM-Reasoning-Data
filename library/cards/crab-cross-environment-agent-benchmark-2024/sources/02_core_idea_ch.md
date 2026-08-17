@@ -1,0 +1,1 @@
+CRAB 的贡献是一套 Python-centric 多环境 agent benchmark 框架，以及 CRAB Benchmark-v0。项目页说明 Benchmark-v0 含 Ubuntu 和 Android 两个环境中的 120 个任务，并在多个 MLM 与通信设置下测试；arXiv v4 摘要报告四个 advanced MLM，single-agent GPT-4o 最佳 completion ratio 为 38.01%。核心机制是 graph-based fine-grained evaluation：把任务成功拆成 evaluator graph 节点，而不是只看最终文本答案。最近对比对象是单环境 GUI/OS/mobile benchmark。方向标签是带结构化谓词的跨环境 agent 评测。

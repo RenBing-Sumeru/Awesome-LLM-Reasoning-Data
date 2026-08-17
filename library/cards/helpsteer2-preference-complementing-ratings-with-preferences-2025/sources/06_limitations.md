@@ -1,0 +1,1 @@
+Limitations and audit risks: The protocol covers particular tasks and values, not every language or cultural preference. Inspect label agreement, positional or verbosity effects, duplicates, language and domain coverage, subgroup retention, licenses, and benchmark contamination. A public artifact remains insufficient when its prompt, scorer, threshold, or policy is not pinned.

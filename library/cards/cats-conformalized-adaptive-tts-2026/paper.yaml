@@ -1,0 +1,28 @@
+id: cats-conformalized-adaptive-tts-2026
+title: 'CATS: Conformalized Adaptive Test-Time Scaling'
+year: 2026
+venue: CAO Workshop at ICLR 2026 Oral
+authors: [Mohammad Sadegh Akhondzadeh, Soroush H. Zargarbashi, Simone Antonelli, Aleksandar Bojchevski]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, full_episode]
+domains: [reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: 'https://openreview.net/forum?id=mXuUomGc0I', arxiv: null, venue: 'https://openreview.net/forum?id=mXuUomGc0I', code: null, data: null, project: null, huggingface: null, doi: null}
+data_object: {prompt_source: 'Reasoning-language-model evaluation tasks reported by the paper.', trace_author: 'A foundation model responds under a selected discrete reasoning-effort level.', answer_format: 'Prompt, candidate answer, success-probability estimate for each effort level, selected effort, and correctness outcome.', process_fields: [prompt, reasoning_effort, predicted_success, conformal_threshold, selected_level, answer, correctness], environment_or_substrate: 'Inference with discrete low/high reasoning-effort choices.', verifier_or_reward: 'Conformal risk control calibrates the selected reasoning level to a user-specified error tolerance.', terminal_predicate: 'Return the answer produced at the selected effort level.'}
+recipe_metadata: {base_model: 'Reasoning language models with discrete reasoning-effort options.', teacher: null, generator: 'The selected reasoning-effort configuration of the base model.', filtering_rule: 'Estimate success at each effort level and select the lowest level satisfying conformal risk control.', sampling_protocol: 'Calibrate on held-out outcomes, then adapt effort per query.', rollout_count: 'Effort levels rather than repeated full rollouts are the paper’s allocation unit.', temperature: 'See official paper settings.', inference_budget: 'Selected reasoning effort and associated latency/compute.', optimizer_or_scaffold: 'Conformalized risk-controlled effort selection.'}
+audit: {source_mixture: 'Official OpenReview record and official ICLR workshop PDF record.', split: 'Calibration and evaluation partitions are described in the official paper.', decontamination: 'No separate contamination audit is claimed.', license: 'OpenReview record is CC BY 4.0; verify any model or benchmark terms separately.', lineage: 'https://openreview.net/forum?id=mXuUomGc0I', known_failure_modes: [distribution-shift, confidence-estimation-error, calibration-set-mismatch, discrete-effort-limit], citation_status: verified, confidence: high, notes: 'Official OpenReview record and published-paper PDF checked on 2026-07-21. The PDF lists University of Cologne and CISPA Helmholtz Center for Information Security; no public code or data link is provided.'}
+inclusion_reason: 'It chooses test-time reasoning effort under an explicit, user-set statistical risk constraint rather than only optimizing average compute.'
+related: []
+tags: [test-time-compute, conformal-prediction, risk-control, adaptive-thinking, calibration]
+status: verified
+one_line_summary: 'CATS selects the least costly reasoning-effort level that satisfies a conformal bound on the probability of an incorrect answer.'
+reading_priority: useful
+paper_type: Risk-controlled adaptive test-time scaling study
+best_for: Readers who need an auditable quality-risk constraint when adapting reasoning effort.
+confidence: high
+why_it_matters: 'It turns adaptive thinking into a risk-controlled decision rather than an unconstrained heuristic for saving compute.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official OpenReview paper and workshop record verified; no code or data artifact is linked.'}
+category_ids: [scaling_rlvr_test_time_compute]

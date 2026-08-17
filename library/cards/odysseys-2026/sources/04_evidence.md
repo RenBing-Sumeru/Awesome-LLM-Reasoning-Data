@@ -1,0 +1,7 @@
+The release scale was checked directly: 200 task rows, 1,225 rubric records, and 200 generated OSWorld config files. The paper's difficulty counts—45 easy, 46 medium, and 109 hard—match the public JSON. These artifacts make task wording, rubric requirements, starting URLs, and environment launch settings inspectable, but they do not expose the episodes used for the paper's result table.
+
+Author-reported main results give Opus 4.6 a 68.9 rubric average, 44.5 perfect score, and 81.3 steps; GPT-5.4 obtains 55.4, 33.5, and 64.4, respectively, and the best reported trajectory efficiency of 1.15. With a 200-step cap, Opus perfect success rises from 44.5% to 76.5%, while 29 of 200 runs still reach the cap. These values demonstrate test-time scaling under the authors' setup, not deterministic replay.
+
+For 120 Opus 4.6 trajectories, author-reported agreement between rubric evaluation and humans is Cohen's kappa 0.788 with F1 0.949 for averaged rubric outcomes and kappa 0.849 with F1 0.934 for perfect success. A holistic Online-Mind2Web-style judgment reaches kappa 0.508 and F1 0.762. The comparison supports checkpoint decomposition, but trajectory IDs, annotator-level labels, and adjudication records are unavailable.
+
+The public scorer skips directories without a numeric `result.txt` by default unless `--include-incomplete` is used. Consequently, published aggregates cannot be independently audited for crash, timeout, empty-action, missing-screenshot, and incomplete-run accounting without the missing run corpus.

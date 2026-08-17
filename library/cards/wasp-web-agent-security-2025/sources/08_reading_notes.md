@@ -1,0 +1,6 @@
+- The canonical venue is NeurIPS 2025 Datasets and Benchmarks Track; the earlier ICML 2025 Workshop on Computer Use Agents appearance is not the publication record used by this Card.
+- Count the benchmark correctly: 21 attacker goals × 2 same-site benign goals × 2 task-related injection formats = 84 main tasks, plus 37 utility tasks; the release stores 21 base attack rows, not 84 canonical rollouts.
+- Read `ASR-intermediate` and `ASR-end-to-end` as different contracts: GPT-4o judges each action and any positive compromises the episode, while goal-specific DOM/log rules score completed harm.
+- The fixed exfiltration evaluator checks expected URL text in agent actions rather than confirmed attacker-server receipt; parser errors for the intermediate judge default to `not_compromised`.
+- Prioritize Paper §3.2–§3.4 for construction and metrics, Table 2 for model/scaffold results, Tables 3–4 for prompt/defense ablations, §4.2 for capability confounding, and the pinned evaluator files for implementation semantics.
+- Use WASP only for evaluation/audit: there is no canonical rollout corpus, no tag or release, the repository was archived on 1 July 2026, and Croissant's `sha256` value `main` is not a content digest.

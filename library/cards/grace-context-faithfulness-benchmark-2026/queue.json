@@ -1,0 +1,19 @@
+{
+  "title": "GRACE: Step-Level Benchmark for Faithful Reasoning over Context",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.16151",
+    "data": "https://anonymous.4open.science/r/grace-bench-14e8",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-18T14:06:25Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "面向上下文忠实性的步骤级 benchmark，数据量还行",
+    "updated_at": "2026-07-18T14:06:25Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Solve-Detect-Verify 在快速与慢速生成式验证之间分配预算，并用验证反馈定向修正答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jianyuan Zhong, Zeju Li, Zhijian Xu, Xiangyu Wen, Kezhi Li, Qiang Xu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

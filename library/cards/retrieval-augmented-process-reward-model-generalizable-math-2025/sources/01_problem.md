@@ -1,0 +1,3 @@
+Mathematical PRMs fail under shifts in model, problem type, or step style because they judge from local context alone. RetrievalPRM attaches semantically similar labeled questions and steps to each target.
+
+This gap directly determines whether retrieval-augmented mathematical process supervision can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on target steps, problem-level cases, step-level cases, and retrieval sources and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in cross-problem-type and cross-generator-model OOD assessment.

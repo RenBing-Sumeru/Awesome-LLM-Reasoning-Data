@@ -1,0 +1,9 @@
+输入包括 base model、一组双人 TextArena 游戏、角色/游戏 prompt、environment transition 与 action parser，以及初始状态采样器。SPIRAL 先抽取游戏与状态、确定当前角色、取得结构化 observation，再让共享策略生成同时包含 reasoning 和 action 的完整 response。parser 提取动作，environment 推进状态；双方交替行动，直到正常终局、invalid action 或实现中的 maximum-turn truncation。最终构造的是随 policy 变化的 observation、response、parsed action、transition、角色回报与 game identity 序列。（论文 §3、Algorithm 1；官方仓库 `train_spiral.py`。）
+
+对于正常游戏终局，论文定义稀疏回报 `R0 ∈ {-1,0,1}` 且 `R1 = -R0`。RAE 以 0.95 的 EMA decay 为每个游戏/角色更新独立 baseline，并把得到的 scalar advantage 施加到该角色的全部完整 response；训练不做 response-length normalization。当前官方仓库另有两个对审计很重要的分支：invalid action 会立即终止，并给行动方 -1.5、另一方 0.5；达到最大回合数则给 0/0。默认还会过滤 zero-advantage trajectory。不能把这些代码路径无条件等同于论文对正常零和终局的公式。
+
+论文主实验报告 400 个 policy-iteration step、每步 128 个 sample，使用 8 张 H100。Appendix D Table 6 固定 AdamW、1e-6 learning rate、batch size 128、discount 1.0、EMA decay 0.95、两次 proximal update epoch、policy clipping 0.2、gradient clipping 1.0、weight decay 0、temperature 1.0、top-p 1.0、top-k -1，以及两个为零的 KL coefficient；表中最大 response 为 8,192 tokens。核验的 commit `068b06f6afce2e45ae3eb5d8bf677e9d69c83642` 中，`run.sh` 是 Qwen3-4B-Base 的 Kuhn Poker 示例，设置 4,096 generated tokens、32,768 context length 与 `max_train=51200`；它是当前可运行示例，不足以证明能逐项复现论文所有实验。
+
+训练通过 on-policy policy-gradient update 消费实时 environment stream。评测除 base model 按 Qwen3 report 使用 few-shot prompt 外均为 zero-shot，采用 temperature 0.6、top-p 0.95，覆盖八个学术 benchmark 与 held-out game。论文声明 SPIRAL 训练没有使用 benchmark-related problem 或数学数据，但未提供 item-level overlap report。复现时应固定 repository commit、Oat/vLLM/TextArena 版本、model revision、game ID、prompt template、parser、seed、rollout batch、checkpoint 与 reward branch，并归档生成的 game-state JSON/pickle。
+
+单独的 SFT baseline 使用 Qwen3-32B 自博弈生成的约 25,000 条 winning trajectory。其官方 Hugging Face URL 已核验，但它不是在线 SPIRAL stream。本次整理时 Dataset Viewer endpoint 不可用，因此其精确行数、schema、split 与 license 仍未核实。

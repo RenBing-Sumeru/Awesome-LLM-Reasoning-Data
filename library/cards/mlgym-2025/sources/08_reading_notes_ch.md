@@ -1,0 +1,5 @@
+- 先读 Sections 4.1–4.5 与 Appendix D，重建 task config、single-command loop、`validate`/`submit`、container state 与 trajectory field。
+- 明确 feedback 边界：evaluator metric 存在 `info.score`，当前原生 Gym reward 在每个 transition 都是 0。
+- 不要合并数字：最终论文分析 12 个模型 × 13 个任务 × 4 个 seed = 624 条 trajectory；审计时 public main 有 676 对文件和一个 post-paper 额外模型网格。
+- 将 Appendix B 与 Best Attempt 定义一起阅读；无限次可见 test-set validation 是自适应优化通道，不是干净 held-out protocol。
+- 后续核验 tagged manifest、624 到 676 的文件映射、OCI digest、replay 确定性、split/decontamination 控制，以及逐来源 license/privacy/security 条款。

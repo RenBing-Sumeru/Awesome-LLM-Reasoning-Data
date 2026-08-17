@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Hard2Verify 以 500 余小时人工标注开放前沿数学证明的步骤正确性与首错位置，检验高难过程验证上限。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要评测开放式高难数学证明中逐步核验、首错定位与验证器泛化能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shrey Pandit, Austin Xu, Xuan-Phi Nguyen, Yifei Ming, Caiming Xiong, Shafiq Joty",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

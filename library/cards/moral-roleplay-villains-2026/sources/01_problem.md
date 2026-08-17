@@ -1,0 +1,2 @@
+Safety alignment discourages deception, manipulation, and harm, while fictional role-play may require faithful portrayal of precisely these antisocial traits. Existing character benchmarks favor benevolent personas and cannot determine whether poor performance reflects weak character understanding or suppression by safety policies. The paper asks whether LLMs systematically deviate from character definitions as morality decreases and how graded data can distinguish safety refusal, superficial aggression, and genuinely motivation-consistent villain portrayal.
+

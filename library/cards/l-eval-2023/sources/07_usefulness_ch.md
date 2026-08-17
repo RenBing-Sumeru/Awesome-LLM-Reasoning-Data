@@ -1,0 +1,1 @@
+L-Eval 可作为长上下文 benchmark 设计的 schema 和审计清单。复用时应保留 document id、完整 input、instruction list、reference outputs、source domain、声明 metric、context length、模型 context budget、truncation/retrieval policy、prompt engineering 标记、in-domain-data 标记、judge model、baseline opponent、原始 prediction、解析答案和 per-task score。只有把 closed-ended 与 open-ended 指标分开，它才适合比较长上下文系统。

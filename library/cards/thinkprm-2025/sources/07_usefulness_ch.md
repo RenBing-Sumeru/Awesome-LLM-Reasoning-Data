@@ -1,0 +1,9 @@
+对`rollout_search_test_time_trace_data`而言，ThinkPRM展示了第二个模型如何生成决定第一个模型rollout去留的轨迹。整理者应把候选解答、verification CoT、解析标签、标量分数、聚合与搜索动作视为相互链接的独立对象，而不是压缩为一个reward数字。
+
+可审计训练行应保留上游PRM800K ID与版本、MATH来源/切分、题目、完整解答、所选前缀边界、人工步骤标签与标注者元数据、教师checkpoint、全部4个原始验证候选、prompt、temperature、seed、token上限、解析结果、逐步生成标签、拒绝原因、选中CoT和内容hash。公开六字段保留了有用内容，但没有完整lineage。
+
+推理记录还应加入候选生成器checkpoint与解码设置、候选/答案ID、验证器checkpoint与tokenizer、渲染后prompt、验证文本、停止条件、最终强制解码概率、prefix score、parallel样本索引或sequential轮次、trigger phrase、延迟、token数和失败标记。决策记录应保留全部候选、答案分组、分数聚合、beam state、被剪枝路径、选中路径和tie-breaking策略。
+
+公开1K数据可用于验证器SFT复现尝试、rationale与标签分离审计、parser稳健性研究、分数校准实验，以及对固定候选池的受控重评分。它不应被当作程序化验证的证明语料，也不能证明生成批评普遍正确。在错误过程反馈代价较高时，需要独立数学检查。
+
+对atlas读者而言，该工作说明扩展候选rollout与扩展验证器推理是两条不同计算轴。Benchmark增益支持所研究验证流程的效用，但标签不平衡、rationale忠实性、污染、许可证和完整决策lineage仍是相互独立的审计义务。

@@ -1,0 +1,5 @@
+- **定位。** W²Bench 检验 reward model 能否识别细粒度写作需求，而非只判断宽泛写作质量。
+- **方法抓手。** requirement dropout 产生有序候选回答；WRL 训练 Bradley--Terry reward model，并在 GRPO 中使用它。
+- **数据抓手。** 官方代码与数据已在项目仓库发布；论文的 5 类任务覆盖内容、风格、格式和长度需求。
+- **证据锚点。** Our-RM-7B 报告 94.6 相关性、97.3 IL、78.0 PL；WRL 将 Qwen2.5-7B-Instruct 的 WritingBench 分数从 57.0 提升至 64.4。
+- **复用决定。** 适合拥有明确约束的任务；在作为奖励标签前人工核验诱导排序。

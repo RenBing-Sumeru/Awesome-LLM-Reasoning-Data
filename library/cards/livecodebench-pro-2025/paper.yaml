@@ -1,0 +1,89 @@
+id: livecodebench-pro-2025
+title: 'LiveCodeBench Pro: How Do Olympiad Medalists Judge LLMs in Competitive Programming?'
+year: 2025
+venue: arXiv
+authors:
+- LiveCodeBench maintainers
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- coding
+- programming-contests
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.11928
+  arxiv: https://arxiv.org/abs/2506.11928
+  doi: null
+  code: null
+  data: null
+  project: null
+data_object:
+  dataset_scale: harder/professional LiveCodeBench variant referenced in model reports; exact task set needs audit.
+  prompt_source: programming tasks released after model cutoffs or curated for contamination control.
+  trace_author: evaluated model and unit-test judge.
+  answer_format: problem statement, generated code, execution result, and pass/fail score.
+  process_fields:
+  - problem
+  - language
+  - generated code
+  - hidden or public tests
+  - pass/fail result
+  environment_or_substrate: programming contest/code generation harness.
+  verifier_or_reward: unit tests or official judge.
+  terminal_predicate: generated solution passes pinned tests.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark variant.
+  teacher: problem authors and test suites.
+  generator: LiveCodeBench-style task release and judge.
+  filtering_rule: separate LiveCodeBench Pro from standard LiveCodeBench.
+  sampling_protocol: Pin task window, hidden/public tests, language, timeout, retries, and scaffold.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: code_generation_eval
+audit:
+  source_mixture: model-report references and LiveCodeBench project lineage; primary Pro source needs pinning.
+  split: needs_audit
+  decontamination: post-release date and hidden tests need audit.
+  license: needs_audit
+  lineage: needs_audit
+  known_failure_modes:
+  - Pro naming can refer to model-report-specific subset
+  - hidden test policy affects comparability
+  - execution environment drift changes pass rates
+  citation_status: partial
+  confidence: medium
+  notes: Metadata shell added first; primary Pro definition needs completion.
+inclusion_reason: LiveCodeBench Pro is cited separately from standard LiveCodeBench in frontier model reporting.
+related:
+- livecodebench-contamination-free-code-2024
+tags:
+- benchmark
+- coding
+- unit-tests
+one_line: LiveCodeBench Pro is a harder or specialized LiveCodeBench-style coding evaluation surface.
+why_it_matters: It should not be conflated with the standard LiveCodeBench card.
+status: verified
+needs:
+- 'needs_audit: pin benchmark release, contest-source update window, medalist annotations, evaluator implementation, split,
+  and license'
+one_line_summary: LiveCodeBench Pro is a harder or specialized LiveCodeBench-style coding evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Metadata shell added before source generation.
+category_ids:
+- benchmarks_evaluation_surfaces

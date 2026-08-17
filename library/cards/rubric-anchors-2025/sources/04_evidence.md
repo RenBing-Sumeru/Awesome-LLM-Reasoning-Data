@@ -1,0 +1,2 @@
+The official technical report compares Rubicon-preview with Qwen3-30B-A3B on seven named open-ended benchmarks. Its Table 1 reports an average of 70.50 for Rubicon-preview versus 65.29 for the base model, while IFEval decreases from 83.55 to 81.70. The linked official model card repeats the reported table and makes a Rubicon-preview checkpoint available. These are reported benchmark results; they do not establish rubric calibration, data quality, robustness to reward hacking, or general transfer.
+

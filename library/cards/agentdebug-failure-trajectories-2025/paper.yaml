@@ -1,0 +1,153 @@
+id: agentdebug-failure-trajectories-2025
+title: Where LLM Agents Fail and How They can Learn From Failures
+year: 2025
+venue: arXiv preprint
+authors:
+- Kunlun Zhu
+- Zijia Liu
+- Bingxuan Li
+- Muxin Tian
+- Yingxuan Yang
+- Jiaxun Zhang
+- Pengrui Han
+- Qipeng Xie
+- Fuyang Cui
+- Weijia Zhang
+- Xiaoteng Ma
+- Xiaodong Yu
+- Gowtham Ramesh
+- Jialian Wu
+- Zicheng Liu
+- Pan Lu
+- James Zou
+- Jiaxuan You
+source_role:
+- benchmark
+- audit_failure
+- agent_environment
+verification_contract:
+- environmental
+- judgment_required
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+artifacts:
+  paper: https://arxiv.org/abs/2509.25370
+  arxiv: https://arxiv.org/abs/2509.25370
+  code: https://github.com/ulab-uiuc/AgentDebug
+  data: https://drive.google.com/drive/folders/1bQe6dQA85pktT63YnKIKJDTVaH3O3Vpu?usp=drive_link
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.25370
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2509.25370
+data_object:
+  prompt_source: '200 representative failed episodes: 100 ALFWorld, 50 WebShop, and 50 GAIA, selected after human analysis
+    of more than 500 failed trajectories.'
+  trace_author: LLM-agent rollouts from the three environments, then decision-step annotations by ten graduate annotators
+    with NLP/LLM-agent experience.
+  answer_format: Episode with task and environment trajectory, per-step memory/reflection/planning/action content, taxonomy
+    labels, minimal critical root cause, evidence, actionable feedback, and recovery outcome.
+  process_fields:
+  - task_type
+  - task_description
+  - trajectory_steps
+  - observation
+  - memory
+  - reflection
+  - plan
+  - action
+  - module_error_type
+  - critical_step
+  - critical_failure_module
+  - evidence
+  - corrective_feedback
+  - episode_outcome
+  - rerollout_outcome
+  environment_or_substrate: Vendored ALFWorld, WebShop, and GAIA adapters plus multi-provider LLM engines, trajectory collection,
+    and step-to-episode conversion.
+  verifier_or_reward: Environment task success is the terminal signal. Fine-grained error types, earliest/minimal root cause,
+    evidence, and corrective feedback require annotator or LLM judgment under the 17-type taxonomy.
+  terminal_predicate: ALFWorld/WebShop/GAIA success for the original or re-rolled episode, otherwise failure after the configured
+    maximum debugging attempts.
+recipe_metadata:
+  base_model: GPT-4.1 at temperature 0 is reported for critical-error detection experiments; the repository supports several
+    provider backends and rollout models.
+  teacher: Human annotations define AgentErrorBench targets; AgentDebug uses LLM analysis and feedback generation rather than
+    a disclosed teacher checkpoint.
+  generator: 'Environment rollouts, ten expert annotators for the benchmark, and a three-stage AgentDebug loop: module analysis,
+    critical-error detection, and feedback-conditioned re-rollout.'
+  filtering_rule: Curate representative failures and label every decision step; select the minimal root-cause set instead
+    of exhaustively preserving all downstream symptoms.
+  sampling_protocol: More than 500 failures were analyzed and 200 retained. The exact sampling frame, provider/model mixture,
+    selection yields, and benchmark revision are unknown.
+  rollout_count: 200 annotated benchmark episodes; more than 500 failures were examined during taxonomy development.
+  temperature: 0 for the reported GPT-4.1 critical-error detector; rollout temperatures otherwise unknown.
+  inference_budget: Recovery attempts are token-matched to baselines in experiments, but the reusable per-episode attempt
+    budget and complete retry histories are not specified as a data release contract.
+  optimizer_or_scaffold: No policy optimizer; post-hoc diagnosis and iterative feedback-conditioned re-execution.
+audit:
+  source_mixture: 100 ALFWorld, 50 WebShop, and 50 GAIA selected failures; the generating model/provider mixture and selection
+    denominator by environment are unknown.
+  split: No immutable train/dev/test manifest was verified for the released 200 episodes.
+  decontamination: unknown
+  license: Repository code is MIT. The Google Drive dataset is officially linked, but a dataset-specific licence and upstream
+    compatibility matrix were not verified.
+  lineage: environment task -> failed rollout -> per-step/module annotation -> minimal critical root -> evidence and corrective
+    feedback -> feedback-conditioned re-rollout -> environment outcome
+  known_failure_modes:
+  - The 200 representative failures are not a population sample and cannot support prevalence estimates.
+  - Module-level Cohen's kappa of 0.55 shows material annotation variability despite training and adjudication.
+  - Root-cause labels depend on causal/counterfactual judgment and may change with prompts, model, reset behavior, and tool
+    state.
+  - The paper's algorithm describes LLM critical-error detection while adjacent prose discusses counterfactual testing; released
+    implementation semantics should be checked explicitly.
+  - Environment and provider revisions can prevent exact replay.
+  - Dataset licence, immutable revision, checksums, split manifest, and upstream rights remain unverified.
+  - Recovery gains do not prove every taxonomy label or feedback item is correct.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, MIT repository, and repository-linked AgentErrorBench Google Drive were checked. Artifact availability
+    does not resolve dataset licence or replay metadata.
+inclusion_reason: A concrete failure-trace taxonomy and trace-to-root-cause-to-feedback audit pipeline.
+related: []
+tags:
+- agent-failures
+- failure-trajectories
+- debugging
+- error-taxonomy
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data
+one_line_summary: AgentErrorBench releases 200 annotated failed ALFWorld, WebShop, and GAIA episodes with a 17-type taxonomy,
+  minimal root causes, and feedback, while annotation agreement and replay metadata remain material audit limits.
+why_it_matters: It turns failed agent rollouts into structured supervision for step/module detection, causal localization,
+  feedback generation, and recovery, preserving the distinction between environment success and judgment-based diagnosis.
+card: null
+needs:
+- 'needs_dataset_license: explicit terms for AgentErrorBench and compatibility with ALFWorld, WebShop, and GAIA'
+- 'needs_snapshot: immutable data revision, checksums, and split manifest'
+- 'needs_lineage: provider/model, prompt, environment version, task ID, and selection reason per episode'
+- 'needs_annotation_protocol: released guidelines, shared-subset size, annotator/adjudication fields, and label revisions'
+- 'needs_replay: attempt budgets, reset semantics, tool state, feedback history, and all recovery outcomes'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper and code checked.

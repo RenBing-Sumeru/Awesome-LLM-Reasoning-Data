@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GameQA-140K 覆盖 30 个游戏、158 类可验证任务，每项带图像、步骤推理与标准答案，可从游戏代码复算反馈。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可验证游戏任务的多模态推理数据合成与训练论文",
+  "best_for_ch": "需要可由游戏状态和代码复核的图像、步骤推理与答案记录来训练或评估视觉语言模型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jingqi Tong, Jixin Tang, Hangcheng Li, Yurong Mou, Ming Zhang, Jun Zhao, Yanbo Wen, Fan Song, Jiahao Zhan, Yuyang Lu, Chaoran Tao, Zhiyuan Guo, Jizhou Yu, Tianhao Cheng, Zhiheng Xi, Changhao Jiang, Zhangyue Yin, Yining Zheng, Weifeng Ge, Guanhua Chen, Tao Gui, Xipeng Qiu, Qi Zhang, Xuanjing Huang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

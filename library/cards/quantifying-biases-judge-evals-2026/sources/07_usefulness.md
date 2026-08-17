@@ -1,0 +1,1 @@
+Use the package when an autograder informs a model comparison: retain item-level verdicts and candidate/judge covariates, fit the model, then report raw and corrected effects with uncertainty. Do not use it as a substitute for collecting a bias-relevant covariate or human calibration set.

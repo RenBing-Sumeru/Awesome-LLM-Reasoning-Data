@@ -1,0 +1,6 @@
+- Read §3.2–§3.3 with Appendix B.2: `k_u=40`, `k_p=192`, temperature 1.6, and `1-pass_rate` define the construction semantics more precisely than the abstract.
+- Keep three budgets separate: raw trials, accepted responses, and unique prompt coverage; equal 590k final size does not mean equal synthesis compute.
+- Table 2 shows large gains for Mistral-7B/Llama3-8B but roughly one-point average gains for DeepSeekMath-7B/Llama3-70B and several GSM8K regressions.
+- The final datasets are only `query`/`response`; inspect pool and query-info releases for provenance and sampling metadata, while noting that complete rejected-response text is not established.
+- Do not read regex/SymPy terminal-answer acceptance as process supervision; the paper itself states that answer correctness need not imply intermediate-reasoning correctness.
+- Reproduction should resolve the appendix fail-rate inconsistency and the repository's manual Prop2Diff steps before comparing implementations.

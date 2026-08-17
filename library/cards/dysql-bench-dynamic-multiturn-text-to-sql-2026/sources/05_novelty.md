@@ -1,0 +1,1 @@
+Earlier multi-turn Text-to-SQL mostly refines queries while leaving database state unchanged, allowing per-query matching. DySQL-Bench makes both user intent and database state evolve and scores by actual results and post-transaction state differences; logic trees enable scalable synthesis. The innovation lies in interaction and oracles, not a new SQL decoder.

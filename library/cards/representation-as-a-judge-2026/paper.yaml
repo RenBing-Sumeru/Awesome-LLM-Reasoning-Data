@@ -1,0 +1,98 @@
+id: representation-as-a-judge-2026
+title: 'Rethinking LLM-as-a-Judge: Representation-as-a-Judge with Small Language Models via Semantic Capacity Asymmetry'
+year: 2026
+venue: ICLR 2026
+authors:
+- Zhuochun Li
+- Yong Zhang
+- Ming Li
+- Yuelyu Ji
+- Yiming Zeng
+- Ning Cheng
+- Yun Zhu
+- Yanmeng Wang
+- Shaojun Wang
+- Jing Xiao
+- Daqing He
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=VAISvCsrvG
+  arxiv: https://arxiv.org/abs/2601.22588
+  code: https://github.com/zhuochunli/Representation-as-a-judge
+  data: https://github.com/zhuochunli/Representation-as-a-judge
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=VAISvCsrvG
+  openreview: https://openreview.net/forum?id=VAISvCsrvG
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
+  citation_status: verified
+  confidence: high
+  notes: 'Published at ICLR 2026; official OpenReview paper, code, and Hugging Face release checked.'
+inclusion_reason: 'Track 13 candidate: the central contribution audits contamination, verifier or judge failure, reward hacking,
+  or evaluation reliability.'
+related: []
+tags:
+- track13
+- audit
+- candidate-slate
+status: verified
+one_line_summary: open judge data and reproducible representation-based evaluator
+why_it_matters: It offers a concrete audit surface or failure-mode dataset for Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source and public artifact release checked; L4 reading remains pending.
+category_ids:
+- audit_failure_contamination_verifier_attacks

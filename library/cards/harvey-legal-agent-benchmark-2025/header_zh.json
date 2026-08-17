@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Harvey 法律智能体评测考察模型在文档、表格、演示文稿和文件系统工具上的法律工作产出，并按任务准则进行评分。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "关注法律智能体、专业工作流、工具使用和准则化评估边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Harvey、Vals AI",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:27:49Z"
+}

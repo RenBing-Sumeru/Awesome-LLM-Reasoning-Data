@@ -1,0 +1,4 @@
+- Keep ViLBench evaluation examples separate from ViLReward-73K training rows; they have different construction goals and schemas.
+- Treat `value` as an MCTS- and GPT-4o-conditioned target, not a released proof that a visible step is correct.
+- The verified public dataset is one 73,560-row train split with six fields; the full search tree and terminal verdicts are unavailable.
+- Benchmark gains support a targeted selection claim only; they do not establish data quality, judge calibration, or general multimodal utility.

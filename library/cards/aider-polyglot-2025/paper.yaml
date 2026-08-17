@@ -1,0 +1,91 @@
+id: aider-polyglot-2025
+title: Aider's Polyglot Coding Benchmark
+year: 2024
+venue: Aider official benchmark release
+authors:
+- Aider
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- coding
+- multilingual-programming
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aider.chat/2024/12/21/polyglot.html
+  arxiv: null
+  doi: null
+  code: https://github.com/Aider-AI/polyglot-benchmark
+  data: https://github.com/Aider-AI/polyglot-benchmark
+  project: https://aider.chat/2024/12/21/polyglot.html
+data_object:
+  dataset_scale: The official release selected 225 problems from 697 Exercism problems in six languages, choosing tasks solved
+    by three or fewer screening models.
+  prompt_source: Exercism coding exercises and Aider editing setup.
+  trace_author: Evaluated model producing edits through Aider.
+  answer_format: Patch or repository edit plus test outcome.
+  process_fields:
+  - language
+  - exercise
+  - file context
+  - model edit
+  - test result
+  - correct-edit-format result
+  environment_or_substrate: Aider coding harness over C++, Go, Java, JavaScript, Python, and Rust tasks.
+  verifier_or_reward: Problem tests and edit-format checks.
+  terminal_predicate: Submitted edit passes the exercise tests in the benchmark harness.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark/evaluation surface.
+  teacher: Official benchmark authors or platform maintainers.
+  generator: Official task construction and benchmark harness.
+  filtering_rule: See official release/version notes; do not infer unreleased filters.
+  sampling_protocol: Pin task version, scaffold, model settings, scorer, and leaderboard snapshot.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: evaluation harness or platform-specific scaffold
+audit:
+  source_mixture: Official benchmark page plus public repository/data artifact where available.
+  split: see official source; hidden/public policy may be partial
+  decontamination: public exposure and leaderboard reuse can create contamination risk
+  license: verify from official artifact before redistribution
+  lineage: tracked to official benchmark source
+  known_failure_modes: &id001
+  - separate benchmark release date from card id; official blog is dated 2024-12-21
+  - pin repository revision for reproducible comparisons
+  citation_status: verified_official_source
+  confidence: high
+  notes: Official Aider blog and GitHub repository verify language mix, 225-task selection, and benchmark purpose.
+inclusion_reason: Aider Polyglot evaluates coding-edit ability across C++, Go, Java, JavaScript, Python, and Rust using selected
+  Exercism problems and repository-level test feedback.
+related: []
+tags:
+- benchmark
+- coding
+- evaluation-surface
+- polyglot
+why_it_matters: Aider Polyglot evaluates coding-edit ability across C++, Go, Java, JavaScript, Python, and Rust using selected
+  Exercism problems and repository-level test feedback.
+status: verified
+needs: *id001
+one_line_summary: Aider Polyglot evaluates coding-edit ability across C++, Go, Java, JavaScript, Python, and Rust using selected
+  Exercism problems and repository-level test feedback.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: codex_official_source_check
+  confidence: high
+  notes: Official Aider blog and GitHub repository verify language mix, 225-task selection, and benchmark purpose.
+category_ids:
+- benchmarks_evaluation_surfaces

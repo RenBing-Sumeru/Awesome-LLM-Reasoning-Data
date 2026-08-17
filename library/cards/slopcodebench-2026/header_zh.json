@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SlopCodeBench 将 36 个公开黑盒编码问题串成 196 个有序检查点，用回归感知正确率及 erosion/verbosity 审计智能体的长期退化；公开的是任务与验证器资产，而不是论文实验的完整成功/失败轨迹语料。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长时程迭代编码智能体基准、环境与验证器审计",
+  "best_for_ch": "研究代码智能体、路径依赖环境、回归测试、静态质量指标、轨迹发布边界与污染风险的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Gabriel Orlanski, Devjeet Roy, Alexander Yun, Changho Shin, Alex Gu, Albert Ge, Dyah Adila, Nicholas Roberts, Frederic Sala, Aws Albarghouthi",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

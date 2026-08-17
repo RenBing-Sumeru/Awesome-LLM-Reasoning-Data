@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"TOPS 从不同推理努力下的候选中选择最短正确回答，训练模型按题目选择合适的测试时思考长度。","reading_priority_ch":"必读","paper_type_ch":"测试时计算分配与自改进研究（NeurIPS 2025）","best_for_ch":"研究推理长度控制、过度思考与按题分配推理预算的读者。","confidence_ch":"高","authors_ch":"Wenkai Yang、Shuming Ma、Yankai Lin、Furu Wei（机构：中国人民大学高瓴人工智能学院、Microsoft Research）","category_ids":["scaling_rlvr_test_time_compute"]}

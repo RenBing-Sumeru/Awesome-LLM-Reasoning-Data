@@ -1,0 +1,89 @@
+id: agent-diff-benchmarking-llm-agents-on-enterprise-api-tasks-via-code-execution-with-state
+title: 'Agent-Diff: Benchmarking LLM Agents on Enterprise API Tasks via Code Execution with State-Diff-Based Evaluation'
+year: 2026
+venue: KDD 2026
+authors:
+- Hubert M. Pysklo
+- Artem Zhuravel
+- Patrick D. Watson
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.11224
+  arxiv: https://arxiv.org/abs/2602.11224
+  code: https://github.com/agent-diff-bench/agent-diff
+  data: https://huggingface.co/datasets/hubertmarek/agent-diff-bench
+  project: https://agentdiff.dev
+  huggingface: https://huggingface.co/datasets/hubertmarek/agent-diff-bench
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Dataset authors and the released construction pipeline.
+  answer_format: Task input, candidate output, and the released verification surface.
+  process_fields:
+  - task
+  - candidate output
+  - verifier result
+  environment_or_substrate: The official released execution or verification environment.
+  verifier_or_reward: The paper's published executable or rule-based verifier.
+  terminal_predicate: The candidate output satisfies the released verification contract.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: The released verifier or execution environment.
+  generator: The authors' released construction pipeline.
+  filtering_rule: Use the official release and its documented acceptance rules.
+  sampling_protocol: Use the official split and version.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Programmatically verified outcome data.
+audit:
+  source_mixture: Official paper, candidate data release, and any official code link cited in the card.
+  split: Use the official release split.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
+  license: Check the official data and upstream-source terms before reuse.
+  lineage: https://huggingface.co/datasets/hubertmarek/agent-diff-bench
+  known_failure_modes:
+  - Passing a released verifier does not establish behavior outside its coverage.
+  - Public tasks can overlap with downstream model training data.
+  citation_status: verified
+  confidence: medium
+  notes: The author-maintained Hugging Face dataset and project site were checked; the authors list KDD 2026 and an ACL 2026
+    EvalEval presentation.
+inclusion_reason: The released resource exposes a reusable programmatic outcome-verification surface.
+related: []
+tags:
+- programmatic-verification
+one_line_summary: One-sentence position:** Two hundred twenty-four enterprise API tasks scored automatically from database
+  state differences before and after execution.
+why_it_matters: It exposes a reproducible terminal outcome check rather than only a textual reference.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: Official paper, author-maintained Hugging Face dataset, project site, and GitHub code release checked.
+category_ids:
+- programmatically_verifiable_outcome_data

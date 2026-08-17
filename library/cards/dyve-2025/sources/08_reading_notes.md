@@ -1,0 +1,6 @@
+- Read Appendix A.6 and A.7 before interpreting the two modes: a complex correct step can receive a System-2 explanation ending in plus.
+- Treat the approximately 50% filtering rate as a retention statistic, not a label-accuracy estimate.
+- Compare Table 1 with Table 2: System-2-only is more accurate, while Dyve reduces average verification cost by using System 1 selectively.
+- Inspect Figure 5 for the filtering ablation, but do not treat the F1 gain as direct evidence that individual released labels are correct.
+- Reconcile the paper's approximately 117,000 traces with the current 156,321-row Hugging Face split before training or reporting corpus size.
+- Pin repository, dataset, model, and dependency revisions locally because no immutable end-to-end release manifest is provided.

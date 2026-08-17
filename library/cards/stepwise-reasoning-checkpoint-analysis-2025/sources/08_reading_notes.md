@@ -1,0 +1,5 @@
+- Read §3.1 before treating a checkpoint as a reasoning step label: it is an answer completion elicited by an extra cue and then rolled back, not the model's unmodified next token.
+- Keep the three objects distinct: a continuing path, its temporary checkpoint completion, and the reconstructed prefix-plus-checkpoint candidate. Only the latter two expose a possible early answer endpoint.
+- Table 1 is a policy-plus-PRM-plus-search result. The different DeepSeek and Skywork PRM rows show that verifier choice is a major confound, not an implementation detail.
+- Read Table 3/Figure 5 alongside Table 2: CCA can recover an answer before a later reasoning error, but it can also preserve incomplete explanations. This is fault tolerance for answer selection, not proof repair.
+- Before adopting the method, obtain code and logs for delimiter detection, KV restoration, exact answer normalization, PRM formatting, cluster ties, seeds, and benchmark item IDs. The paper does not provide them.

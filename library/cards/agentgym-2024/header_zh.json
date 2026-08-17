@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentGym 将 14 个交互环境、AgentEval 评测任务、AgentTraj/AgentTraj-L 轨迹和 AgentEvol 训练方法组织成一个可审计的 agent 平台。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Agent 环境 / 工具使用数据与评测",
+  "best_for_ch": "研究多环境 agent evaluation、trajectory 数据、环境反馈契约、behavioral cloning 和 self-evolution 的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhiheng Xi、Yiwen Ding、Wenxiang Chen、Boyang Hong、Honglin Guo、Junzhe Wang、Xin Guo 等（Fudan University / Fudan NLP Lab / Fudan Vision and Learning Lab / Peng Cheng Laboratory）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T07:43:38Z"
+}

@@ -1,0 +1,1 @@
+Read the result as an allocation claim, not as proof that more computation always helps. Inspect the trace for genuine new evidence, compare total cost with a matched baseline, and separate coverage gains from selection gains. The most informative failures are cases where the extra search or coordination consumes compute but reinforces the same wrong answer.

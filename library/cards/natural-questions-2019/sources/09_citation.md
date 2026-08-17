@@ -1,0 +1,3 @@
+Tom Kwiatkowski, Jennimaria Palomaki, Olivia Redfield, Michael Collins, Ankur Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Jacob Devlin, Kenton Lee, Kristina Toutanova, Llion Jones, Matthew Kelcey, Ming-Wei Chang, Andrew M. Dai, Jakob Uszkoreit, Quoc Le, Slav Petrov. "Natural Questions: A Benchmark for Question Answering Research." 2019 / Transactions of the ACL / Google Research. https://aclanthology.org/Q19-1026/
+
+Official artifacts to check: paper: https://aclanthology.org/Q19-1026/; acl: https://aclanthology.org/Q19-1026/; project: https://ai.google.com/research/NaturalQuestions; code: https://github.com/google-research-datasets/natural-questions; data: https://ai.google.com/research/NaturalQuestions; doi: https://doi.org/10.1162/tacl_a_00276.

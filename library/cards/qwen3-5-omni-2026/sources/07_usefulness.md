@@ -1,0 +1,5 @@
+The report is useful as an omnimodal data-architecture map. It separates encoder alignment, broad pretraining, long-context extension, specialist teachers, paired-modality distillation, interaction trajectories, speech-quality curation, preference pairs, rule rewards, and speaker adaptation. That separation helps curators avoid collapsing all training into one aggregate “100M hours” claim.
+
+For reasoning-data analysis, Thinker OPD and interaction-aligned RL are the most concrete post-training objects: paired audio/text queries define a distillation target, while multi-turn trajectories define interaction-level feedback. Talker DPO and GSPO add preference and rule-bearing records, but the disclosed rules are not sufficient to reproduce an RLVR pipeline.
+
+This Card should be used as a frontier disclosure ledger, not as a reusable corpus. Reuse would require source and rights inventories, stage manifests, record schemas, teacher/checkpoint versions, prompt templates, rollout and decoding settings, reward implementations, preference annotations, and contamination audits.

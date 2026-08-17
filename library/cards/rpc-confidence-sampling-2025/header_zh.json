@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"RPC 将内部概率与自一致性结合，并裁剪低概率路径以降低推理采样成本。","reading_priority_ch":"必读","paper_type_ch":"测试时采样理论与高效推理研究","best_for_ch":"在有限推理采样数下设计置信度候选选择的读者。","confidence_ch":"高","authors_ch":"Zhi Zhou、Yuhao Tan、Zenan Li、Yuan Yao、Lan-Zhe Guo、Yu-Feng Li、Xiaoxing Ma（机构：南京大学软件新技术国家重点实验室、苏黎世联邦理工学院）","category_ids":["scaling_rlvr_test_time_compute"]}

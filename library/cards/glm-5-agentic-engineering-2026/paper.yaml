@@ -1,0 +1,263 @@
+id: glm-5-agentic-engineering-2026
+title: 'GLM-5: from Vibe Coding to Agentic Engineering'
+year: 2026
+venue: arXiv preprint
+authors:
+- GLM-5 Team
+source_role:
+- model_report
+- agent_environment
+- construction_recipe
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- software_engineering
+- terminal_agents
+- search_agents
+- tool_use
+- mathematical_reasoning
+- scientific_reasoning
+- coding
+- general_assistant
+training_use:
+- sft
+- distillation
+- reward_modeling
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.15763
+  arxiv: https://arxiv.org/abs/2602.15763
+  code: https://github.com/zai-org/GLM-5
+  data: https://huggingface.co/datasets/zai-org/terminal-bench-2-verified
+  project: https://github.com/zai-org/GLM-5
+  huggingface: https://huggingface.co/zai-org/GLM-5
+  doi: https://doi.org/10.48550/arXiv.2602.15763
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Pretraining is disclosed only at broad-source level: selected web data, refreshed code-host and code-containing-web
+    snapshots, Software Heritage files, and math/science webpages, books, and papers. Mid-training includes natural long documents,
+    synthetic long-range sequences, approximately 10 million issue-PR pairs yielding about 160B unique tokens, and a small
+    MRCR-like component. SFT spans General Chat, Reasoning, and Coding & Agent categories. Reasoning RL mixes math, science,
+    code, and tool-integrated reasoning; Agentic RL uses real SWE issues, terminal seeds/web pages, and multi-hop search questions.
+    Record manifests and exact mixtures are unknown.'
+  trace_author: Natural records come from web, code repositories, documents, books, papers, issue-PR histories, and human-authored
+    General-RL responses. LLMs generate rejection-sampled reasoning records, coding/agent trajectories, Harbor terminal tasks,
+    multi-hop search questions and answers, and refinement/verification judgments. During RL, the GLM-5 policy produces reasoning
+    and long-horizon state-action trajectories; exact generator and judge revisions are mostly unknown.
+  answer_format: SFT examples use the GLM chat format with interleaved thinking before responses/tool calls, preserved thinking
+    blocks across coding-agent turns, and turn-level thinking control. Agentic rollouts are normalized to a unified message-list
+    representation and TITO records exact token IDs plus metadata. Terminal tasks use Harbor-format descriptions, Docker environments,
+    and tests; search trajectories contain reasoning, tool actions, and observations. Complete production schemas are not
+    released.
+  process_fields:
+  - source_family
+  - prompt_or_task
+  - repository_context
+  - issue_pr_context
+  - model_token_ids
+  - model_action
+  - tool_or_environment_observation
+  - loss_mask
+  - rollout_log_probability
+  - model_weight_version
+  - environment_failure_reason
+  - domain_or_task_service
+  - binary_outcome_reward
+  - rule_reward
+  - outcome_reward_model_score
+  - generative_reward_model_score
+  - fail_to_pass_tests
+  - pass_to_pass_tests
+  - verifier_or_judge_output
+  environment_or_substrate: 'Training uses verifiable executable substrates: over 10K RepoLaunch-built SWE environments across
+    thousands of repositories and nine languages; thousands of Harbor terminal environments built from real seeds or web-grounded
+    synthesis; a search-data pipeline grounded in a Web Knowledge Graph of over two million deduplicated pages; and an HTML
+    slide-generation environment. The Multi-Task Rollout Orchestrator connects independent task microservices to slime through
+    HTTP. OpenHands, Terminus-2, Claude Code, BrowseComp tools, MCP-Atlas, and CC-Bench-V2 are evaluation scaffolds, while
+    vLLM/SGLang/Transformers/KTransformers/xLLM are deployment tools.'
+  verifier_or_reward: Reasoning RL assigns domain/source-specific judge models or evaluation systems that produce binary outcome
+    rewards. Agentic RL uses task-specific rollout and reward microservices, group-relative trajectory reward, executable
+    tests, and grounded environment feedback; only model-generated tokens enter the loss. General RL combines deterministic
+    rules, outcome reward models, and generative reward models. Judge identities, reward formulas for individual tasks, calibration,
+    mixture weights, and most reward artifacts are unknown.
+  terminal_predicate: Episode termination is task-specific and undisclosed. Executable SWE and terminal tasks can terminate
+    on tests, task completion, limits, or environment failure; search tasks use evidence-backed answer verification. The paper
+    reports filtering environment-collapse failures and stale rollouts, but exact time/token/step limits, success predicates,
+    retry rules, and abort thresholds for training are unknown.
+recipe_metadata:
+  base_model: GLM-5 is a 744B-total, 40B-active MoE with 256 experts and 80 layers, trained for 28.5T base-model tokens. The
+    report describes an initial 27T corpus followed by 32K/1T-token, 128K/500B-token, and 200K/50B-token mid-training stages.
+    Post-training proceeds through multi-task SFT, Reasoning RL, Agentic RL, General RL, and on-policy cross-stage distillation.
+    Exact checkpoint identifiers and stage boundaries are not released.
+  teacher: Stronger proprietary models such as GPT-5.2 xhigh and Gemini 3 Pro Preview are used to identify difficult but solvable
+    Reasoning-RL items. Final checkpoints from prior SFT/Reasoning-RL/General-RL stages act as teachers for on-policy cross-stage
+    distillation. Human experts provide high-quality General-RL response anchors, and LLM construction/refinement/verification
+    agents support environment and data synthesis. Exact teacher snapshots, prompts, routing, and proportions are unknown.
+  generator: GLM-family policies generate SFT/RL trajectories. Unspecified LLMs brainstorm terminal drafts, instantiate Harbor
+    tasks, refine them against rubrics, synthesize terminal tasks from web pages, parse web pages into a knowledge graph,
+    generate multi-hop questions, and verify question-answer consistency. The production generator checkpoints, decoding parameters,
+    seeds, and record counts are unknown.
+  filtering_rule: Pretraining uses DCLM-style and World Knowledge classifiers, code-language and quality-aware sampling, document
+    extraction/scoring, chunk-and-aggregate scoring, and math/science filters intended to remove synthetic, AI-generated,
+    and template content. SFT uses automatic/human role-play filtering, GLM-4.7 difficulty filtering, rejection sampling,
+    and loss masking of erroneous trajectory spans. SWE uses rule/LLM issue filtering; terminal tasks must satisfy Docker/test/rubric
+    or Harbor self-validation; search questions pass tool-free, early-agent, and bidirectional-verification filters. Thresholds,
+    yields, and retained manifests are mostly unknown.
+  sampling_protocol: Reasoning RL is on-policy with group size 32, batch size 32, β=2, ε_low=0.2, and ε_high=0.28; the four
+    domains are roughly balanced. Agentic RL asynchronously samples groups of traces from rollout policies, standardizes them
+    as message lists, records TITO tokens/log-probabilities/weight versions, masks out-of-range importance ratios, and drops
+    stale or environment-collapse samples. Cross-stage distillation uses group size 1 and batch size 1024. Sampling temperatures,
+    task ratios, and most thresholds are unknown.
+  rollout_count: Training rollout count is unknown. The orchestrator supports over 1,000 concurrent rollouts, but this is
+    capacity rather than a dataset size. Disclosed environment scale is over 10K SWE environments plus thousands of terminal
+    environments; search synthesis starts from over two million deduplicated pages. Evaluation budgets such as 131,072 generation
+    tokens, MCP-Atlas's 10-minute timeout, and Terminal-Bench run settings are evaluation-only and are not treated as training
+    rollout counts.
+  temperature: 'Training temperatures are unknown. Official evaluation settings vary by benchmark: the release card reports
+    temperature 0.7 for SWE-bench and Terminal-Bench with Terminus-2, and temperature 1.0 for HLE and Terminal-Bench/CyberGym
+    under Claude Code. These do not establish the training sampler.'
+  inference_budget: The model supports up to 202,752-token SFT/evaluation contexts. Most reported reasoning evaluations allow
+    131,072 generated tokens and HLE-with-tools uses 202,752 maximum tokens. BrowseComp keep-recent context management folds
+    observations older than five rounds; MCP-Atlas uses the 500-task public set with a 10-minute timeout. SWE-bench uses OpenHands,
+    and Terminal-Bench uses Terminus-2 or Claude Code with benchmark-specific limits. These are evaluation/inference settings,
+    not post-training budgets.
+  optimizer_or_scaffold: Post-training is sequential SFT -> Reasoning RL -> Agentic RL -> General RL -> on-policy cross-stage
+    distillation on slime. Reasoning RL builds on GRPO and IcePop without KL. Agentic RL decouples rollout and learner devices,
+    periodically synchronizes weights, resets the optimizer after rollout-policy updates, uses a Multi-Task Rollout Orchestrator,
+    TITO, direct double-sided importance masking, stale/noisy-sample dropping, and DP-aware routing. Learning rates, optimizer
+    types, total steps, clipping values for Agentic RL, staleness threshold, weight-sync interval, GPU count, and compute
+    are unknown.
+audit:
+  source_mixture: The report names web, code, math/science, books, papers, general documents, approximately 10M issue-PR pairs/160B
+    unique tokens, General Chat/Reasoning/Coding & Agent SFT, four roughly balanced Reasoning-RL domains, 10K+ SWE environments,
+    thousands of terminal environments, a 2M+ page search graph, and human response anchors. Exact source manifests, snapshot
+    dates, language/domain proportions, per-stage mixture weights, retained counts, vendor contributions, and data rights
+    are unknown.
+  split: No global train/validation/evaluation split or record IDs are disclosed. The report evaluates on public reasoning/coding/agent
+    benchmarks and internal CC-Bench-V2, and releases a corrected Terminal-Bench 2.0 evaluation dataset. Membership checks
+    between pretraining/mid-training/SFT/RL sources and HLE, AIME/HMMT, SWE-bench, Terminal-Bench, BrowseComp, MCP-Atlas,
+    τ²-Bench, CyberGym, or CC-Bench-V2 are not reported.
+  decontamination: Pretraining includes fuzzy code deduplication and long-context deduplication, and search-page collection
+    is deduplicated. The report does not provide benchmark-specific exact/near-duplicate audits, repository/commit holdouts,
+    solution-overlap checks, memorization tests, or source cutoffs. Public issue-PR and code sources create material SWE-benchmark
+    overlap risk.
+  license: The official GLM-5 GitHub repository is Apache-2.0, released model weights are labeled MIT on Hugging Face, and
+    the corrected Terminal-Bench evaluation dataset is Apache-2.0. The 27T pretraining corpus, mid-training records, SFT/RL
+    prompts and trajectories, repository issues/PRs, web pages, books/papers, human/vendor annotations, reward data, and generated
+    environments are not released with a source-level rights ledger.
+  lineage: The paper gives stage-level lineage from broad pretraining sources through three mid-training context stages, SFT,
+    Reasoning RL, Agentic RL, General RL, and cross-stage distillation. Within agentic RL it describes prompt/task services,
+    TITO token capture, environment feedback, reward, stale/failure filtering, and learner updates. No immutable IDs connect
+    source URL/repository/commit, constructed task/environment, trajectory, token/loss mask, reward/judge output, filtering
+    decision, training batch, and checkpoint.
+  known_failure_modes:
+  - The report is procedurally detailed but releases no GLM-5 training-data manifests, SFT/RL records, production reward/judge
+    artifacts, task microservices, rollout logs, or checkpoint hashes.
+  - SFT size, stage token budgets after base training, RL rollout totals, task/source proportions, optimizer schedules, total
+    updates, GPU/compute budget, and Agentic-RL clipping/staleness/synchronization values are undisclosed.
+  - Terminal web-task construction uses the constructing agent as its first-pass evaluator; passing Docker/Harbor validation
+    or achieving over 90% build accuracy does not establish semantic correctness or resistance to reward hacking.
+  - SWE training environments are mined from public repositories/issues/PRs without a released repository/commit manifest
+    or benchmark-overlap audit, creating contamination and patch-memorization risk.
+  - The search pipeline's two-million-page corpus, graph, generated QA pairs, evidence chains, rejection logs, and verifier
+    calibration are unreleased; correlated generation/verification errors and stale web evidence cannot be independently audited.
+  - Reasoning RL uses source-specific binary judges and General RL uses undisclosed ORMs/GRMs; judge identity, calibration,
+    false-positive rates, reward hacking, and cross-domain weighting are incomplete.
+  - Asynchronous RL deliberately accepts controlled off-policy bias and filters stale/noisy samples, but thresholds, discarded
+    fractions, policy-lag distribution, and ablations are not disclosed.
+  - Reported benchmark results depend on tailored prompts, different agent harnesses, context management, corrected benchmark
+    variants, timeouts, and proprietary judge models; results are not a single uniform evaluation contract.
+  - CC-Bench-V2 is internal and uses Agent-as-a-Judge plus tests; tasks, harness, judge configurations, and per-item outputs
+    are not released.
+  - No dedicated safety-training stage, refusal/harmfulness data, red-team protocol, safety benchmarks, or safety incident
+    analysis is disclosed. General correctness and emotional-intelligence RL should not be relabeled as safety alignment.
+  - Official deployment recipes and inference frameworks serve the released model but do not reproduce data construction or
+    training; the open slime framework does not include GLM-5's private production configuration and data.
+  citation_status: verified
+  confidence: high
+  notes: The complete 40-page arXiv v2 paper including appendices, the official GLM-5 repository, official Hugging Face model
+    card, official corrected Terminal-Bench dataset card, and official slime repository were inspected on 2026-07-24. This
+    entry keeps training environments, evaluation scaffolds, and deployment tools separate and treats absent safety/data-budget
+    disclosures as unknown rather than negative evidence.
+inclusion_reason: A frontier open-weight model report that unusually exposes broad pretraining and mid-training source classes,
+  multi-stage SFT/RL/distillation, long-horizon agent environment construction, reward contracts, asynchronous trajectory
+  infrastructure, and evaluation scaffolds, while leaving record-level training data, stage budgets, exact mixtures, safety
+  training, licensing, and lineage incomplete.
+related:
+- glm-4-5-arc-foundation-models-2025
+tags:
+- glm-5
+- zhipu
+- agentic-engineering
+- software-engineering
+- terminal-agent
+- search-agent
+- verifiable-environment
+- asynchronous-rl
+- slime
+- tito
+- grpo
+- outcome-reward
+- long-horizon
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: GLM-5 combines a 28.5T-token base pipeline with multi-task SFT, reasoning/agentic/general RL, cross-stage
+  distillation, and 10K+ executable SWE plus terminal/search environments, while releasing weights and slime infrastructure
+  but not the training records, exact mixtures, budgets, or safety ledger.
+why_it_matters: The report makes the frontier agent-training stack unusually legible—from issue/PR and web sources through
+  executable environments, token-correct asynchronous rollouts, judges and rewards to long-horizon evaluation—yet also shows
+  how much provenance, calibration, licensing, and record-level auditability remains missing even for an open-weight release.
+card: null
+needs:
+- 'needs_data: pretraining/mid-training/SFT/RL/distillation manifests, repository/commit and web snapshot IDs, constructed
+  environments, prompts, trajectories, TITO tokens, observations, loss masks, rewards, filter decisions, splits, and record
+  lineage'
+- 'needs_metadata: per-stage sample/token/rollout counts, exact mixture weights, generator/teacher/judge checkpoints, prompts,
+  temperatures, seeds, task ratios, optimizer and schedules, total updates, staleness/clipping/sync thresholds, compute, and
+  checkpoint hashes'
+- 'needs_verifier: executable test artifacts, reward/judge implementations, ORM/GRM identities, calibration and false-positive
+  audits, reward-hacking tests, environment-failure labels, and independent semantic validation'
+- 'needs_audit: benchmark/repository/solution overlap, temporal cutoffs, exact and near-duplicate checks, memorization, policy-lag
+  and discard statistics, contamination-resistant SWE evaluation, and independent reproduction'
+- 'needs_license: source-level rights and reuse terms for web/code/books/papers, issue-PR histories, annotations, vendor STEM
+  data, generated trajectories/environments, reward data, and derived search graph/QA records'
+- 'needs_safety: dedicated safety/refusal training disclosure, harmful-content and agent-security data, red-team protocol,
+  safety benchmarks, incident analysis, and deployment mitigations'
+- 'needs_code: production task microservices, environment builders, data assembly, reward/judge services, TITO and filtering
+  configuration, training launch files, and CC-Bench-V2 harness'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, and arXiv-ID deduplication against the target V2 Card library found no match. The official
+    arXiv v2 report, GLM-5 repository, Hugging Face weights, corrected Terminal-Bench dataset, and slime repository were verified.
+    The data artifact is evaluation-only; no GLM-5 training-data release is claimed.

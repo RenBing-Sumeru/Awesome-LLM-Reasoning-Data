@@ -1,0 +1,1 @@
+The work studies how post-training data types shape chess reasoning in a domain where moves, positions, and targets can be checked by a chess engine. It addresses the need to compare teacher-written responses with programmatically constructed search and target traces while keeping the feedback contract visible.

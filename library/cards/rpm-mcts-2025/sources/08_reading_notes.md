@@ -1,0 +1,5 @@
+- Verify whether an official code, knowledge-base, tree-log, or 2.4K-data release has appeared before claiming reproducibility or availability.
+- Audit retrieval neighbors for textual similarity without algorithmic equivalence, and report results separately by task difficulty.
+- Replay public-test execution in a pinned sandbox and independently test whether each retained prefix precedes the first actual error.
+- Separate retrieval-as-PRM scores, LLM judgments, execution rewards, and MCTS selection values in any exported trace.
+- Treat pass@1, token savings, and downstream fine-tuning gains as system-level evidence, not record-level proof of data quality.

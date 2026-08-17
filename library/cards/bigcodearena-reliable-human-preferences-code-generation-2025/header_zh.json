@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BigCodeArena 把可交互的代码执行结果接入人类两两偏好收集，使代码奖励模型能同时利用行为证据与用户判断。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "执行增强的多轮代码偏好数据集、奖励模型评测与基准",
+  "best_for_ch": "训练或审计代码奖励模型、代码偏好优化和执行感知评测的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Terry Yue Zhuo、Xiaolong Jin、Hange Liu 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T11:36:19Z"
+}

@@ -1,0 +1,3 @@
+Open MLLMs may perform well on conventional visual QA yet still produce shallow, poorly instructed, or weakly grounded answers in open-ended image conversations. The paper treats this as a multimodal preference-alignment gap: improving text-only instruction data alone did not reliably improve it and could hurt visual capability.
+
+The work addresses image-conditioned, open-ended requests rather than short-answer recognition. It builds visual question-answer data and paired responses so that models can learn to prefer detailed, instruction-following answers grounded in natural images and infographics.

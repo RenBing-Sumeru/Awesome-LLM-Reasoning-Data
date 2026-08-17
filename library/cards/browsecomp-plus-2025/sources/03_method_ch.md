@@ -1,0 +1,11 @@
+构建链从 BrowseComp 的 1,266 个 question-answer pair 开始，但 BrowseComp-Plus benchmark release 最终只包含 830 个保留条目。OpenAI o3 with web search 接收每个原始问题与答案，并被要求输出 clue、URL 与 evidence；generator snapshot 为 unknown。124 个 case 因失败、abstention 或格式不合要求被移除，剩余 1,142 个。随后用 Selenium 获取引用页面并用 Trafilatura 提取文本；只要任一引用 URL 无法抓取，就移除该 query，因此再删去 137 个，留下 1,005 个进入人工审核。
+
+14 名大学生投入超过 400 小时核验 candidate。他们为每个 clue 标注 evidence，并要求组合后的 evidence 支持完整 answer；如果一个 document 在语义上包含 final answer，就标为 gold。对于证据不足的 case，protocol 要求先修改 clue 并额外搜索网页至少 20 分钟，再决定 rejection。质量控制包括约 1 小时的 internal-development-set 训练、40 分钟演示、group support、每名 labeler 交叉检查 10 个 item、超过 80% agreement，以及发现错误后的回溯 relabeling。compensation 与 consent 为 unknown。人工审核最终保留 830 条，逐条 rejected record 未公开。
+
+hard-negative 构建使用 GPT-4o，把每个保留问题分解为约 7 个 self-contained subquery。SerpAPI 为每个 subquery 返回最多 100 个 Google result，再由同一 Selenium/Trafilatura pipeline 抓取，之后对 positive 与 negative 去重。GPT-4o snapshot、准确 deduplication method 与 threshold 为 unknown。最终 fixed corpus 含 100,195 篇文档；每个 query 平均有 6.1 篇 evidence document、2.9 篇 gold document 与 76.28 篇 negative，平均每篇文档含 5,179.2 个词、32,296.2 个字符。
+
+评测时，agent 在公开的 fixed index 上搜索。主工具返回 top-five 文档，并按当前代码中的 `Qwen/Qwen3-0.6B` tokenizer 截取每篇文档前 512 tokens。官方发布 BM25 与 Qwen3-Embedding index；论文还评测 ReasonIR 与 Jina-ColBERT。部分实验开放 `get_document` 以读取完整文档。action sequence 是 search、可选的 full-document retrieval 与 final answer；response template 要求 explanation、numeric document citation、准确答案与 confidence。
+
+producer schema 可以保留 metadata、query ID、tool-call count、usage、status、retrieved document ID，以及包含 tool call、reasoning summary 与 output text 的有序 `result` stream。返回的 non-completed response 可能被序列化，但 query-level exception 可能在记录写入前终止。当前 evaluator 先检查 `status == completed` 且存在 final answer，再以程序化方式计算 retrieval/citation metric，并用 LLM judge 计算 answer accuracy。论文使用 GPT-4.1；当前代码使用 Qwen/Qwen3-32B，参数为 temperature 0.7、top-p 0.8、top-k 20、最多 4,096 output tokens，且关闭 thinking。
+
+release component 分散在不同官方 repository：830-row query/label set、100,195-row corpus、index、code 与 4 个加密 trajectory JSONL file。四种组合是 BM25 或 Qwen3-Embedding-8B，分别搭配 GPT-5 或 o3。代码按 commit `046949032b0328319cc9a02663a759ec601d9402` 检查；query、index 与 run revision 已记录在 `paper.yaml`。目前没有统一 immutable manifest 绑定这些 revision；corpus revision、闭源 API snapshot、seed、retry policy、每个 condition 的 rollout count 与 trajectory 的穷尽 coverage 仍为 unknown。

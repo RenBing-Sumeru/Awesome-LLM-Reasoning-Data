@@ -1,0 +1,1 @@
+先前基线是 MMLU 式 multitask evaluation，通常以英文为中心或依赖翻译。CMMLU 的变化是使用中文题目，其中一些学科和答案不能在语言或地区间直接迁移。方向信号是多语言推理基准必须保留 native-language provenance、subject taxonomy、prompt mode 和 culture-specific labels。质量信号来自官方数据、评测脚本、leaderboard、harness 支持，以及清楚的四选一答案契约。它并不发明选择题考试、accuracy scoring 或 few-shot prompting。复用前要查与 C-Eval/MMLU 的重叠、来源 provenance、学科平衡、license、公开答案泄漏和中文输出解析器行为。

@@ -1,0 +1,1 @@
+The survey formalizes image-grounded chain-of-thought as a process rather than a final answer format. Its taxonomy compares prompting, supervised fine-tuning, and reinforcement learning, then links each family to benchmarks. The useful question is not only whether the final answer is right, but whether the image update makes the next textual inference better supported.

@@ -1,0 +1,1 @@
+LFS 并未新发明 tree search、LLM 状态估值或 priority queue。相较于 ToT-BFS，它不采用固定 beam width 和深度日程；相较于 BestFS，它允许模型决定何时离开当前路径；相较于 MCTS，它用提示得到的“explore-or-continue”决策替代人工设定的 PUCT exploration constant 与访问计数策略。其方向信号在于，同一个 LLM 同时生成离散搜索控制决策和用于候选排序的标量价值。该方法仍依赖任务专用提示、动作枚举、可回退的环境状态和托管模型行为，因此复用需要这些组件及精确运行设置，而不能只依赖算法名称。

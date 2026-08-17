@@ -1,0 +1,5 @@
+Static repository-repair benchmarks become easier to memorize and eventually stop representing current software practice. SWE-MERA addresses this by repeatedly mining recent public GitHub issues and merged pull requests, building executable tasks, and exposing leaderboard results over time. Freshness reduces exposure time but does not by itself prove decontamination.
+
+The benchmark object is a repository-repair record: repository and instance ID, problem statement and optional discussion hints, base commit, contributor reference patch, test patch, FAIL_TO_PASS and PASS_TO_PASS test identifiers, environment image, build/test commands, timeouts, dates, and metadata. An evaluated agent produces a candidate patch after exploring and editing the repository; its action/observation history is not a canonical field of the released dataset.
+
+The paper reports 728 available samples and a Jan–June 2025 collection funnel ending at 528 tasks. The pinned Hugging Face revision is much larger: about 6.82k rows across `dev` 10, `lite` 750, `full` 2,738, and `multilang` about 3.32k. These are release-specific counts, not interchangeable measures of the same paper-era set.

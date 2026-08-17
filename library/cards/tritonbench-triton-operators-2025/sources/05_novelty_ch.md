@@ -1,0 +1,1 @@
+KernelBench 从 PyTorch workload 评测通用 GPU kernel 生成，而早期 Triton 数据多是教程样例或单个项目代码。TritonBench 的实际变化是把 Triton 语言规范、真实开源 operator 和接口对齐任务放进同一评测，并同时记录工业 GPU 上的正确性和效率。它不是首次测量 kernel latency，但首次为 Triton operator 建立双通道、可批量运行的公开协议。相较只看 `pass@k` 的代码基准，它把性能退化视为独立失败模式。

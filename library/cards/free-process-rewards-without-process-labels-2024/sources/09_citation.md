@@ -1,0 +1,1 @@
+Citation and artifact record: https://arxiv.org/abs/2412.01981. The affiliation field is recorded as Tsinghua University, with author attribution Yuan et al.. Where the primary paper does not identify a separate official implementation or downloadable dataset,

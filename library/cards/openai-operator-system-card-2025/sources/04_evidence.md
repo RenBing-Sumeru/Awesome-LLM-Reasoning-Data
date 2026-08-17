@@ -1,0 +1,4 @@
+The primary evidence is OpenAI's [Operator System Card PDF](https://cdn.openai.com/operator_system_card.pdf), dated January 23, 2025. Its “Model data and training” section explicitly names the specialized supervised-data and reinforcement-learning stages, the broad public-data sources, and human-trainer computer-task demonstrations. Its risk-identification sections describe internal and external red teaming, including a warning that constrained mock environments may not capture worst-case real-world risks.
+
+The official [Operator System Card publication page](https://openai.com/index/operator-system-card/) confirms the report's purpose and date. The official [Computer-Using Agent page](https://openai.com/index/computer-using-agent/) describes the deployed screen-to-action loop and user-confirmation behavior. These sources support a report-level disclosure assessment; they do not provide a released dataset, code, reward/verifier artifact, or item-level lineage.
+

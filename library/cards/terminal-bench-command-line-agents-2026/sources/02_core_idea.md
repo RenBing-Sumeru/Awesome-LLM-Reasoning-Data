@@ -1,0 +1,7 @@
+The one-sentence contribution is a benchmark and execution harness for measuring autonomous agents on hard, realistic command-line tasks with programmatic tests. The core mechanism is to place an agent in a terminal sandbox, provide a task instruction, let the agent act through shell commands, and score success through task-specific verification rather than a natural-language judge.
+
+The data object is an environment episode, not just a prompt-answer pair. It contains a task instruction, initial filesystem and dependency state, command/action trace, stdout/stderr feedback, final files or state, test scripts, and an oracle or reference solution for task authorship and validation. This makes Terminal-Bench useful for studying command traces, environment interaction, tool use, and execution-grounded failure modes.
+
+The feedback contract is environmental and programmatic: commands change the sandbox state, the harness captures observations, and tests determine task success. This distinguishes the benchmark from conversational preference datasets and from static code-generation tasks where the model returns a single function body.
+
+The closest comparisons are OSWorld for desktop agents, SWE-bench for repository issue resolution, InterCode for interactive coding/game environments, AppWorld for executable app/tool tasks, and WebArena or BrowserGym for web agents. Terminal-Bench is the command-line counterpart: the model must operate through a textual terminal interface under a reproducible harness.

@@ -1,0 +1,106 @@
+id: rubrics-as-rewards-beyond-verifiable-domains-2025
+title: 'Rubrics as Rewards: Reinforcement Learning Beyond Verifiable Domains'
+year: 2025
+venue: ICLR 2026
+authors:
+- Anisha Gunjal
+- Anthony Wang
+- Elaine Lau
+- Vaskar Nath
+- Yunzhong He
+- Bing Liu
+- Sean Hendryx
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- scientific-reasoning
+- medical-reasoning
+- reward-modeling
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=c1bTcrDmt4
+  arxiv: https://arxiv.org/abs/2507.17746
+  code: null
+  data: https://huggingface.co/datasets/ScaleAI/RaR-Science
+  project: https://labs.scale.com/papers/rubrics_as_rewards
+  huggingface: https://huggingface.co/collections/ScaleAI/rar
+  doi: https://doi.org/10.48550/arXiv.2507.17746
+  venue: https://openreview.net/forum?id=c1bTcrDmt4
+  openreview: https://openreview.net/forum?id=c1bTcrDmt4
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Medicine and science prompts curated for the released RaR collections.
+  trace_author: Scale AI data curation and rubric-generation pipeline.
+  answer_format: Question, reference answer, source, checklist-style rubric, rubric scores, and rubric count.
+  process_fields:
+  - question
+  - reference_answer
+  - question_source
+  - rubric_list
+  - rubric
+  - rubric_count
+  environment_or_substrate: Open-ended medicine and science reasoning.
+  verifier_or_reward: An LLM judge evaluates a response against instance-specific rubrics and aggregates criterion feedback.
+  terminal_predicate: The response receives a rubric-grounded reward.
+recipe_metadata:
+  base_model: GRPO policy and judge configurations reported by the paper.
+  teacher: Expert guidance and stronger models produce reference answers and rubric material.
+  generator: Prompt-specific rubric synthesis and reward evaluation.
+  filtering_rule: Use the released collection and paper protocol for rubric quality controls.
+  sampling_protocol: Pin the selected RaR-Medicine or RaR-Science revision and split.
+  inference_budget: Judge size and rubric aggregation strategy materially affect reward quality.
+  optimizer_or_scaffold: On-policy GRPO with explicit or implicit rubric reward aggregation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Medical and science prompts, references, and generated structured rubrics.
+  split: RaR-Science exposes train, validation, and test splits; pin the official revision.
+  decontamination: Public prompt collections must be isolated from downstream held-out evaluation.
+  license: Confirm the license on the selected official collection before reuse.
+  lineage: ICLR 2026 paper, Scale Labs project page, and ScaleAI RaR collection.
+  known_failure_modes:
+  - Rubric quality depends on expert guidance and the generating model.
+  - A judge can still misapply a well-specified rubric to a plausible response.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICLR 2026 record, Scale AI affiliation, Scale Labs project page, and the official RaR collection and
+    RaR-Science dataset card.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RaR trains policies with instance-specific, checklist-style rubrics, releasing medicine and science data
+  for structured reward learning beyond binary verification.
+why_it_matters: The release makes the criteria behind a non-verifiable reward explicit enough to inspect, aggregate, and reuse.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICLR 2026 record, Scale AI affiliation, Scale Labs project page, and the official RaR collection and
+    RaR-Science dataset card.
+category_ids:
+- preference_reward_feedback_data

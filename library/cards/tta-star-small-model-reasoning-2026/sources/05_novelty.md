@@ -1,0 +1,3 @@
+Repeated sampling creates a flat pool of completed answers, whereas TTA* allocates computation over a tree of unfinished reasoning states. Relative to search methods that rely on a separate process reward model, it uses the small model's own self-reflection as the heuristic. The changed decision object is therefore the prioritized partial derivation, not only the final candidate.
+
+This does not eliminate the need for reliable evaluation; it moves the risk into the model-generated heuristic and critique. The contribution is most useful as a deployability-oriented design point: no retraining and no external verifier, but explicit dependence on a self-reflection signal whose failure can cause the search to amplify a bad branch.

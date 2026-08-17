@@ -1,0 +1,19 @@
+{
+  "title": "No Free Labels: Limitations of LLM-as-a-Judge Without Human Grounding",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.05061",
+    "data": "https://huggingface.co/datasets/michaelkrumdickkensho/BFF-Bench",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T13:51:30Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开BFF-Bench，含1200条金融和通用问答的专家正确性标签，引用量50+",
+    "updated_at": "2026-07-26T13:51:30Z"
+  }
+}

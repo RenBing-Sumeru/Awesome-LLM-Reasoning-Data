@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:41:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "历史性bench 现在明显下降，Google 历史上重点使用。ref2821 3.2kstar 204 项涵盖语言、知识、推理、偏见、数学和代码等任务",
+    "updated_at": "2026-07-14T19:41:29Z"
+  }
+}

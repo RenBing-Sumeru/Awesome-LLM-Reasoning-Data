@@ -1,0 +1,16 @@
+{
+  "title": "LLMs Cannot Reliably Judge (Yet?): A Comprehensive Assessment on the Robustness of LLM-as-a-Judge",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2506.09443",
+    "data": "https://github.com/S3IC-Lab/RobustJudge"
+  },
+  "review_note": "已精读：覆盖攻击面、防御权衡、模型/提示模板敏感性及部署案例。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "判定为纳入：系统量化自动评审器在多类攻击下的失效，并提供防御与真实部署证据。"
+  }
+}

@@ -1,0 +1,1 @@
+核心贡献是 185,445 条由 Wikipedia 派生并人工标注的 claims，带标签和证据要求。机制是从 Wikipedia 改写或构造 claim，标注真伪，并要求系统为 supported/refuted 标签检索证据。反馈契约通过 FEVER score 结合 label accuracy 和 evidence correctness。最近对比是文本蕴含数据集、fact-checking corpus 和后来的 claim-grounding benchmark。方向标签是 evidence-coupled factual verification。

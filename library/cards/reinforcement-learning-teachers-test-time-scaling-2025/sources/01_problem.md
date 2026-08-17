@@ -1,0 +1,3 @@
+Correctness-reward reinforcement learning can only reinforce solutions that a starting model sometimes discovers, while reasoning distillation needs explanations that a student can learn from. These objectives are not identical: a model optimized to solve a problem from scratch may produce correct but opaque, idiosyncratic, or poorly transferable traces.
+
+RLT reframes teacher training. Instead of hiding the answer and rewarding one-hot correctness, it gives a small teacher both the question and known solution, asks it to connect them with an explanation, and scores whether a frozen student can recover that solution from the explanation. The relevant atlas object is therefore an answer-conditioned teacher trace and its student-dependent dense feedback contract.

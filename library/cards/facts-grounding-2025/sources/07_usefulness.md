@@ -1,0 +1,1 @@
+Use FACTS Grounding as a schema for long-context grounding evaluation. Preserve document id, user request, context length, answer, eligibility decision, grounding decision, judge ensemble version, split, and submission date. It is useful for separating request satisfaction from factual support in RAG and long-context systems.

@@ -1,0 +1,3 @@
+1. Separate the synthetic COIG-P construction pipeline from the manual CRBench evaluation. 2. Verify the 92k-query and 1M-pair counts against the paper and release revision. 3. Sample records across all six domains and inspect candidate provenance and quality-control fields. 4. Test for duplicate queries and benchmark overlap. 5. Report DPO or CRM results by domain, not only as a pooled average.
+
+The practical decision is whether the model-generated ordering is appropriate for a stated Chinese task. If an audit finds that a domain’s labels follow a stylistic shortcut, quarantine that slice instead of interpreting the overall scale as proof of its quality.

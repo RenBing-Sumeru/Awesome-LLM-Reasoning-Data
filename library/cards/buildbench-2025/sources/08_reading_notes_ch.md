@@ -1,0 +1,5 @@
+- 先看 released object，不要先看最高 score：当前 test revision 有 385 个 candidate label，其中 148 个可编译、237 个不可编译，另有 130 个 retrieval-label record；独立 validation revision 有 70 条记录。论文中的 agent evaluation 使用 148 个 positive。
+- 不要把“Build Trajectory”理解为 agent rollout。它是 documentation-URL chain；command、execution observation、patch、binary、retry 与逐 run verdict 均未公开。
+- feedback contract 必须保持准确：Completion 表示无错误终止且至少产生一个 binary；Strict Success 要求全部人工 target filename；Flexible Success 要求至少一个。它们都不验证 binary functionality、semantic fidelity 或 security，online `Success(f_k)`/`K` 也未披露。
+- 阅读顺序：Section 2 看 sampling/manual construction，Sections 3.1–3.2 看 retrieval 与 execution loop，Section 5 看 predicate，Tables 1–2/Figure 4 看 model 与 variance evidence，Section 6.3 和 Appendices D–F 看 failure 与 source modification。score 不能证明 data quality。
+- 复用前要调和 paper-time commit `d0a2dfa8a309897f7bb299eb4fff067a58442d06`、current test `3c3fcb66ddd525219857a40c91d94a8b32c59e14` 与 validation `971b6834230b5cbc4695d42bddc5ff51cf1267c8`，随后审计 environment lock、overlap/decontamination、分层 license、failure retention 以及 root/network execution security。

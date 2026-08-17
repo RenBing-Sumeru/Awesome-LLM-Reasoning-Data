@@ -1,0 +1,5 @@
+Harness-Bench studies how harness choices change measured agent workflow performance across realistic tasks and models. The primary sources are arXiv 2605.27922, harness-bench.ai, and the Qihoo360/harness-bench repository.
+
+The concrete problem is whether benchmark conclusions about agents are stable when the surrounding harness, oracle, runner, rubric, or workflow scaffold changes. The decision boundary is harness-effects benchmark and workflow diagnosis, not a single new task family or model-training dataset.
+
+The data object or evaluation surface is 106 sandboxed offline tasks across 8 categories, paired with harness configurations, manifests, prompts, fixtures, oracle graders, final artifacts, execution traces, usage statistics, validator outputs, model results, and 5,194 execution trajectories. This is useful for the atlas because it makes the feedback contract explicit: outcome, process, and security scoring through final artifacts, execution traces, usage and validator outputs, deterministic oracles where possible, and LLM rubrics for diagnostics.

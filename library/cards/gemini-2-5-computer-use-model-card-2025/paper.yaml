@@ -1,0 +1,159 @@
+id: gemini-2-5-computer-use-model-card-2025
+title: Gemini 2.5 Computer Use - Model Card
+year: 2025
+venue: Google DeepMind model card
+authors:
+- Google DeepMind
+source_role:
+- model_report
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agentic_systems
+- computer_use
+- web_navigation
+- mobile_control
+- multimodal
+- safety
+training_use:
+- agent_training
+- safety_alignment
+- evaluation
+- audit
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Computer-Use-Model-Card.pdf
+  arxiv: null
+  code: https://github.com/google-gemini/computer-use-preview
+  data: null
+  project: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/
+  huggingface: null
+  doi: null
+  venue: https://deepmind.google/models/model-cards/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A deployed episode begins with a user goal. Evaluations use Online-Mind2Web, a date-edited 559-task WebVoyager
+    subset reduced from 643, and AndroidWorld. UI-control training tasks, counts, mixtures, provenance, and rights are unknown.
+  trace_author: The model autoregressively proposes UI actions from screenshots and recent actions. Three humans judge complete
+    web trajectories, but training-trace authorship, demonstrations, thoughts, labels, and success/failure retention are unknown.
+  answer_format: Each step maps user goal, screenshot, and recent actions to a next-action function call. The client executes
+    it and returns function_result, current URL, and a new screenshot; termination may be completion, error, safety response,
+    or user decision.
+  process_fields:
+  - user_goal
+  - screenshot
+  - recent_action_history
+  - proposed_action_function_call
+  - normalized_coordinates
+  - action_arguments
+  - function_result
+  - current_url
+  - next_screenshot
+  - safety_confirmation_request
+  - terminal_outcome
+  environment_or_substrate: Evaluation uses Anchor for Online-Mind2Web, Browserbase for normalized web comparisons, and Pixel
+    6 emulators on Android 13/API 33 for screenshot-only AndroidWorld without accessibility trees. Most browser, harness,
+    site, viewport, emulator-image, and app pins are unknown.
+  verifier_or_reward: Online-Mind2Web and WebVoyager use three independent whole-trajectory human judgments with majority-vote
+    success. Deployment uses an out-of-model per-step safety service and user confirmation. Neither is disclosed as the post-training
+    reward, which remains unknown.
+  terminal_predicate: Web-evaluation humans judge instruction following, task completion, and answer correctness; majority
+    vote defines success. Deployment ends on completion, error, safety response, or user decision. Training terminal predicate
+    is unknown.
+recipe_metadata:
+  base_model: Based on Gemini 2.5 Pro (06-2025), with additional UI-control post-training. Exact revision, specialized checkpoint,
+    parameter count, and October-preview mapping are unknown.
+  teacher: unknown
+  generator: Evaluation actions are autoregressively generated. Training task generators, demonstrators, teachers, collectors,
+    and synthetic proportions are unknown.
+  filtering_rule: High-stakes confirmation behavior is trained, but training filters, action-quality rules, thresholds, yields,
+    and failed-trajectory handling are unknown. Deployment filtering is separate.
+  sampling_protocol: Online-Mind2Web and self-reported WebVoyager use API defaults, temperature 1, include_thoughts=True,
+    autoregressive sampling, and pass@1.
+  rollout_count: One pass@1 evaluation trajectory per task is reported for Online-Mind2Web and matched WebVoyager; training
+    rollouts are unknown.
+  temperature: 1 for disclosed Online-Mind2Web/WebVoyager evaluation; training and general deployment values are unknown.
+  inference_budget: AndroidWorld uses benchmark-default maximum steps without a disclosed number. Web step limits, timeouts,
+    retries, thinking budget, screenshot frequency, and cost are unknown.
+  optimizer_or_scaffold: Only additional UI-control post-training and high-stakes confirmation training are disclosed. Objective,
+    reward/verifier, optimizer, schedules, rollouts, curriculum, update rules, compute, and lineage are unknown.
+audit:
+  source_mixture: Specialized task manifests, trajectory mixtures, counts, dates, generator ratios, provenance, consent, and
+    rights are not released.
+  split: Named benchmarks are evaluation surfaces; specialized training membership, splits, overlap, held-out policy, and
+    contamination are unknown.
+  decontamination: No Computer Use-specific decontamination, benchmark-overlap check, website-template audit, or result is
+    disclosed.
+  license: Reference code is Apache-2.0. Training data, rewards, weights, raw trajectories, and human judgments are unreleased
+    with unknown source-level rights.
+  lineage: Gemini 2.5 Pro (06-2025) -> unspecified UI-control/safety post-training -> October 2025 preview API -> client-executed
+    loop with per-step safety service. Item-level and immutable run/config lineage is absent.
+  known_failure_modes:
+  - Training tasks, trajectories, labels, reward/verifier, optimizer, rollouts, filters, quantities, and rights are undisclosed.
+  - Human benchmark votes and deployment safety gates are not evidence of the training reward.
+  - Live websites and mutable Anchor, Browserbase, browser, viewport, OS, app, and repository versions cause drift.
+  - WebVoyager uses 559 edited feasible tasks rather than the original 643.
+  - Prompt injection, unreliable page content, goal/UI misinterpretation, irreversible actions, and data exfiltration remain
+    risks.
+  - Computer Use-specific assurance prompts, transcripts, rubrics, results, and grader-error analyses are unreleased.
+  - FSF exclusion due to restricted tool scope is not a passed FSF assessment.
+  citation_status: verified
+  confidence: high
+  notes: Verified from the full Model Card, evaluation appendix, official launch/index, legacy API docs, and Google-maintained
+    repository. Scores are evaluation evidence only.
+inclusion_reason: Exposes a concrete screenshot/action/function-result episode, whole-trajectory human judgments, partial
+  environment pins, high-stakes confirmation training, and per-step safety gating while leaving training records, reward,
+  rollouts, splits, and browser versions undisclosed.
+related:
+- gemini-2-5-technical-report-2025
+- openai-operator-system-card-2025
+tags:
+- gemini-2-5-computer-use
+- gemini
+- google-deepmind
+- computer-use
+- web-agent
+- screenshot-action
+- function-calling
+- human-judgment
+- safety-confirmation
+- prompt-injection
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Gemini 2.5 Computer Use exposes a screenshot-action loop, human whole-trajectory judgments, partial environment
+  details, and high-stakes safety gating, but not UI training data, reward, rollouts, or reproducible web pins.
+why_it_matters: A public agent API and benchmark scores make deployment and evaluation concrete without revealing training
+  trajectories, feedback objectives, or environment lineage.
+card: null
+needs:
+- 'needs_data: UI prompts, demonstrations, trajectories, thoughts, safety examples, quantities, failures, revisions, and manifests'
+- 'needs_verifier: training reward/verifier, terminal contract, safety labels, calibration, thresholds, aggregation, and error
+  audit'
+- 'needs_metadata: generators, filters, rollouts, optimizer, schedules, compute, checkpoints, and API mapping'
+- 'needs_environment: immutable browser, Playwright, Anchor, Browserbase, sites, viewport, OS/emulator, apps, locale, reset,
+  timeout, and step pins'
+- 'needs_audit: split, overlap, decontamination, raw trajectories/votes, red-team artifacts, safety-service failures, and
+  version drift'
+- 'needs_license: rights for screenshots, tasks, trajectories, judgments, rewards, and weights'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official PDFs were read directly; official launch, legacy API docs, index, and Apache-2.0 repository were verified.
+    Mutable artifacts are not treated as 2025 environment pins. No training data, weights, arXiv, DOI, or BibTeX is claimed.

@@ -1,0 +1,9 @@
+既有基线包括通过提示实现的intrinsic self-correction、由外部gold或学习型outcome reward控制的自纠正、STaR/RAFT式拒绝采样微调、生成式reward model,以及面向单轮数学推理的rule-based RL。这些方向分别提供纠正、评估或verifier引导优化。
+
+论文的具体变化,是把答案生成、生成式自评、条件修订和终止串成同一个模型的训练轨迹。按组件顺序生成用于缓解完整自纠正路径稀少的问题,correct-to-correct样本则训练策略在误导性负反馈下不要破坏正确答案。第二阶段再通过PPO使用scalar正确性,或通过多轮DPO使用由正确性导出的preference。
+
+这是操作层面的数据贡献,而不是新的数学真值来源。ToRA/SymPy仍是训练oracle,NuminaMath-CoT仍是提示来源,SFT与DPO/PPO都是既有目标,`[VERIFY]`标签只是选定的控制表示。论文也明确指出,自然语言表达可以替代这些特殊标签。
+
+对`data_construction_open_release_recipes`而言,方向信号在于明确分开generator、checker、接受的控制路径、最终打包示例和下游optimizer。公开中间物使流程部分可检查,但缺少确定性selection ledger,也说明开放文件不会自动形成可审计发布。
+
+复用时应在候选与训练预算匹配下,对比STaR/RAFT、单轮SFT/RL、外部reward和intrinsic-correction控制,还应测量verifier错误、正确转错误、逐阶段接受率和拒绝候选。benchmark结果更好,不能独自证明顺序选择后的记录无污染、许可证完整或逐条正确。

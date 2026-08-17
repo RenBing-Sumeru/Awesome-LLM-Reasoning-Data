@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "EnvScaler 发布 191 个可执行工具环境、7,234 条 SFT/RL scenario 和 9,022 条 SFT trajectory，并以终态 Python check 支持 RLVR；但 RL rollout 未发布、SFT 不做终态正确性验证，默认 HF loader、代码隔离和版本回放仍有缺口。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "合成工具交互环境、训练轨迹与终态 verifier 发布",
+  "best_for_ch": "研究 agent SFT、RLVR、可执行环境扩展、终态判分与数据发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoshuai Song, Haofei Chang, Guanting Dong, Yutao Zhu, Zhicheng Dou, Ji-Rong Wen",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

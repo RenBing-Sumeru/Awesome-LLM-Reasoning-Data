@@ -1,0 +1,5 @@
+The paper's distinctive contribution is comparative rather than algorithmic: it places web selection, educational rewriting, strong-teacher distillation, failure-guided retrieval and augmentation, textbook QA extraction, and several failed ideas inside one 80/20 evaluation scaffold. Publishing negative and cross-task results makes the work more useful than a single positive dataset announcement.
+
+Math-Cosmo's educational rewrite, QwQ distillation, FAISS retrieval, answer agreement, LLM filtering, and MinHash are established components. The paper does not introduce a new correctness verifier, scaling law, or released corpus. Its direction signal is that representation, teacher, and mixture compatibility may matter more than nominal token count, while its own tables show that "better" remains task- and scaffold-dependent.
+
+The study also usefully separates future proposals from tested methods. RL-like generation with multiple solution paths, reward-like metadata, noisy successes and failures, hierarchical curricula, and multiple generators appears only as future work without experimental evidence; it must not be recorded as part of the implemented data pipeline.

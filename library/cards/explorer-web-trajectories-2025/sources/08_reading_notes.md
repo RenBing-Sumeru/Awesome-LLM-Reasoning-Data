@@ -1,0 +1,6 @@
+- Read §3, Tables 3–4, and Appendix B together: 175K raw attempts become 94K verifier-approved episodes; accepted-set averages are 7.7 steps, 720K images, 830M tokens, and 33.3M elements, at reported costs of $0.15 per attempt and $0.28 per accepted episode.
+- Keep the training subset separate from the accepted pool: 40K accepted records are sampled, episodes with more than two scroll actions are removed, and approximately 30K records train Phi-3.5-Vision and Qwen2-VL-7B variants.
+- Treat Table 10's 81% agreement on 100 human-audited trajectories as evidence of verifier noise; the matrix includes both human failures accepted by the verifier and human successes rejected by it.
+- Read Appendix A before quoting Mind2Web-Live: the main table uses 83 accessible tasks and the maximum of three runs; the all-104-task appendix result is 16.4% full-task success for both Explorer models.
+- Separate recipe release from data release: official MIT code exists, but no immutable 94K corpus, failed pool, checksums, membership/split manifests, dataset license, or historical page-state archive was identified.
+- Pair this Card with static-task, tutorial-guided, and sandboxed web-trajectory work to test whether evolving task descriptions increase useful coverage or introduce hindsight and shared-judge bias.

@@ -1,0 +1,1 @@
+核心贡献是公开并常用化一个 500 题 MATH test 代表性子集，用于 OpenAI 过程监督研究的报告。机制是 subset selection，不是新标注：论文说明它从排除 PRM test examples 后剩余的 MATH test problems 中均匀随机选出 500 题。评测面是这 500 题上的最终答案正确性。最接近的对照是完整 5,000 题 MATH test split 和其他固定数学子集。方向标签是 benchmark / evaluation surface，主要风险是污染、subset 版本和 scorer 版本。

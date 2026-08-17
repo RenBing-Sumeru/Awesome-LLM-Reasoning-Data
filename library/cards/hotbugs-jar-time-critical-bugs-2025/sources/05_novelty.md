@@ -1,0 +1,3 @@
+Prior repair benchmarks already used real Java bugs, version-control history, and executable tests. HotBugs.jar changes the object selection: the benchmark is organized around urgent hot fixes, release pressure, and issue metadata rather than generic defects.
+
+The direction signal is useful for agent evaluation because repair quality can be tested under realistic dependency and time-critical contexts. The quality signal is the combination of manual validation plus executable packaging. What is not new: patch application, unit-test pass/fail scoring, and Bugs.jar-style repository layout. Before reuse, inspect license terms, exact release tag, branch naming, flaky tests, Java/build versions, and whether public tasks have contaminated model training.

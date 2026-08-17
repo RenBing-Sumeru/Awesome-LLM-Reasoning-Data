@@ -1,0 +1,105 @@
+id: reasoning-prompting-survey-2023
+title: 'Reasoning with Language Model Prompting: A Survey'
+year: 2023
+venue: ACL 2023 (Long Papers)
+authors:
+- Shuofei Qiao
+- Yixin Ou
+- Ningyu Zhang
+- Xiang Chen
+- Yunzhi Yao
+- Shumin Deng
+- Chuanqi Tan
+- Fei Huang
+- Huajun Chen
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- language-model-prompting
+- reasoning
+- benchmarks
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2023.acl-long.294/
+  arxiv: null
+  code: https://github.com/zjunlp/Prompt4ReasoningPapers
+  data: null
+  project: https://github.com/zjunlp/Prompt4ReasoningPapers
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2023.acl-long.294
+  venue: https://aclanthology.org/2023.acl-long.294/
+  openreview: null
+  acl: https://aclanthology.org/2023.acl-long.294/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning prompts and tasks.
+  trace_author: Surveyed primary works; this paper does not release a new trace dataset.
+  answer_format: Comparisons, summaries, and resources for reasoning with language-model prompting.
+  process_fields:
+  - prompt
+  - reasoning task
+  - method comparison
+  - benchmark
+  environment_or_substrate: Language-model prompting for complex problem solving.
+  verifier_or_reward: The paper surveys evaluation practices and does not define one shared verifier.
+  terminal_predicate: Task-specific answer quality in the cited primary studies.
+recipe_metadata:
+  base_model: No single model; this is a literature survey.
+  teacher: The reviewed studies use varied prompting and supervision sources.
+  generator: Literature review, comparison, and synthesis.
+  filtering_rule: The official abstract frames the coverage as cutting-edge research on reasoning with language-model prompting.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Not a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, DOI record, and linked resource list.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2023.acl-long.294/'
+  known_failure_modes:
+  - Prompting gains can depend on model, examples, and task phrasing.
+  - Prompting studies often use different evaluation protocols.
+  citation_status: verified
+  confidence: high
+  notes: The official ACL abstract calls the work a comprehensive survey of reasoning with language-model prompting.
+inclusion_reason: An accepted ACL survey that gives readers a compact entry point to prompting-based reasoning methods, comparisons,
+  and resources.
+related: []
+tags:
+- foundations-and-primers
+- reasoning
+- prompting
+- acl-2023
+- survey
+why_it_matters: It helps readers compare reasoning methods by what the prompt changes, which task is measured, and what evidence
+  supports the claim.
+one_line_summary: An ACL 2023 survey of prompting methods used to elicit and study reasoning in language models.
+paper_type: Survey and resource overview
+reading_priority: strong
+best_for: Readers who need a structured starting point for language-model prompting and reasoning tasks.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable task protocols across the surveyed prompting papers'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, DOI, and linked resource were reviewed.
+category_ids:
+- foundations_and_primers

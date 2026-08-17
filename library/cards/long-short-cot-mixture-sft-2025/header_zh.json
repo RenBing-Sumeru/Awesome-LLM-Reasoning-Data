@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该研究将 s1K-1.1 的长推理轨迹按结构保留约束改写为短轨迹并混合用于 SFT，以把推理长度作为训练数据变量；但未发布改写 verifier 或成对溯源，无法审计压缩忠实度。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长短链式推理轨迹改写、混合构造与监督微调研究",
+  "best_for_ch": "研究推理示范数据构造、CoT 压缩、SFT 配方与数据溯源审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Bin Yu、Hang Yuan、Haotian Li、Xueyin Xu、Yuliang Wei、Bailing Wang、Weizhen Qi、Kai Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-23T03:56:34Z"
+}

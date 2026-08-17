@@ -1,0 +1,99 @@
+id: rewarding-graph-reasoning-process-generalized-reasoners-2025
+title: Rewarding Graph Reasoning Process makes LLMs more Generalized Reasoners
+year: 2025
+venue: Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2025)
+authors:
+- Miao Peng
+- Nuo Chen
+- Zongrui Suo
+- Jia Li
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- graph_reasoning
+- process_supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://doi.org/10.1145/3711896.3737109
+  arxiv: https://arxiv.org/abs/2503.00845
+  code: null
+  data: https://huggingface.co/datasets/GraphPRM/GraphSilo
+  project: null
+  huggingface: https://huggingface.co/datasets/GraphPRM/GraphSilo
+  doi: 10.1145/3711896.3737109
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and dataset.
+  trace_author: See the official paper.
+  answer_format: Step-level process-supervision records described in the official artifact.
+  process_fields:
+  - graph_problem
+  - task
+  - solution_trace
+  - reasoning_step
+  - step_label
+  - preference_pair
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official dataset.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper and dataset.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: See the official paper.
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Officially released process-supervision records.
+  split: See the official dataset.
+  decontamination: See the official paper.
+  license: See the official dataset card.
+  lineage: Candidate-pool and primary artifacts were checked.
+  known_failure_modes:
+  - See the limitations section.
+  citation_status: verified
+  confidence: high
+  notes: Checked the KDD 2025 official programme, DOI metadata, author institution, arXiv version, and GraphPRM's official
+    Hugging Face data release. No official code or separate project page was found in the checked primary sources.
+inclusion_reason: The paper releases step-level process-supervision data for training or evaluating process reward models.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: GraphSilo provides 118,189 graph-reasoning solution pairs with automatically derived step labels for training
+  GraphPRM across 13 tasks.
+why_it_matters: It provides a concrete, reusable process-level supervision object.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Official sources were checked before card creation.
+category_ids:
+- process_trace_supervision_data

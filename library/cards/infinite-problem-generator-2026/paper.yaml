@@ -1,0 +1,121 @@
+id: infinite-problem-generator-2026
+title: 'Infinite Problem Generator: Verifiably Scaling Physics Reasoning Data with Agentic Workflows'
+year: 2026
+venue: arXiv preprint (2026)
+authors:
+- Aditya Sharan
+- Sriram Hebbale
+- Dhruv Kumar
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- physics-reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2603.14486
+  arxiv: https://arxiv.org/abs/2603.14486
+  code: https://github.com/er-ads/ProblemGenerationAgent
+  data: https://huggingface.co/datasets/erads/ClassicalMechanicsV1
+  project: https://er-ads.github.io/ProblemGenerationAgent/Physics_Evaluation_Report.html
+  huggingface: https://huggingface.co/datasets/erads/ClassicalMechanicsV1
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 165 expert-written question-solution pairs from undergraduate classical-mechanics chapters.
+  trace_author: Gemini 2.5 Flash generates scenarios and executable solutions under a fixed formula library.
+  answer_format: A physics word problem paired with formula IDs, variables, executable Python solution code, and a numeric
+    result.
+  process_fields:
+  - seed question and solution
+  - executable formula IDs and target variable
+  - narrative problem and constrained variables
+  - Python solve function and numeric result
+  - execution and physical-sanity status
+  environment_or_substrate: A sandboxed Python runtime with predefined domain-validated physics axioms.
+  verifier_or_reward: Syntax, finite numeric output, range checks, signature uniqueness, and an independent Gemini 3 audit.
+  terminal_predicate: Accept only executable, finite, physically sane records with a non-duplicate formula/target signature.
+recipe_metadata:
+  base_model: Gemini 2.5 Flash.
+  teacher: Gemini 2.5 Pro digitizes formulas; Gemini 3 performs the independent semantic audit.
+  generator: Expand each seed into scenario variants constrained to three to five executable physics axioms.
+  filtering_rule: Reject runtime failures, non-finite outputs, physical-range failures, signature collisions, and records
+    with fewer than two deductive steps in the final corpus.
+  sampling_protocol: Target ten variants per seed through round-robin scenarios; retries use execution errors as feedback.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reported generation cost is 22-122 LLM calls per accepted problem.
+  optimizer_or_scaffold: Generate-then-verify agent workflow; no controlled SFT experiment is reported.
+audit:
+  source_mixture: Classical mechanics Chapters 3-10 from Concepts of Physics plus a digitized formula compilation.
+  split: 1,415 candidates are reported, with 80 shallow records pruned to a final 1,335-record corpus.
+  decontamination: The paper does not report benchmark decontamination; the corpus originates from textbook seeds.
+  license: Code repository states MIT; the dataset release license was not independently confirmed.
+  lineage: Seed expansion is bounded by textbook questions and the predefined Formula-as-Code library.
+  known_failure_modes:
+  - Numerical execution does not guarantee physical semantics or conservation-law consistency.
+  - Four-to-six-formula records show roughly 4-15% text/code or signature issues in the paper's audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv PDF, official GitHub README, Hugging Face dataset link, and evaluation report link checked on 2026-07-13. The
+    paper lists BITS Pilani, Pilani Campus; no peer-reviewed acceptance was found.
+inclusion_reason: Releases physics problem records whose formula structure and executable solution make answer verification
+  and failure auditing explicit.
+related: []
+tags:
+- physics-data-synthesis
+- executable-verification
+- formula-as-code
+status: verified
+one_line_summary: Infinite Problem Generator expands textbook physics seeds into 1,335 problem-code records whose predefined
+  formulas and executed numeric solutions make generation verifiable.
+why_it_matters: It provides an operational recipe and record schema for generating physics data with stronger checks than
+  answer-only teacher generation.
+reading_priority: recommended
+paper_type: executable physics-data generator and dataset
+best_for: Researchers constructing programmatically checked physics questions or evaluation sets.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official paper annotations link the code, dataset, and evaluation report.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-b-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: reasoning demonstrations
+  selection_priority_score: 4
+  selection_score_breakdown:
+    institution: 2
+    venue: 0
+    impact: 1
+    artifact: 1
+  selection_evidence:
+    institution: The PDF identifies BITS Pilani, Pilani Campus, a research university with an established computing program.
+    venue: Only the arXiv preprint was confirmed; no official peer-reviewed acceptance or distinguished presentation was found.
+    impact: Official APIs checked 2026-07-13; ClassicalMechanicsV1 had 88 Hugging Face downloads, while the official repository
+      had 8 stars and 1 fork.
+    artifact: The official release includes MIT-licensed generation code, the 1,335-record dataset, and an evaluation report,
+      but the dataset license remains unconfirmed.
+  selection_eligible: true
+  year_impact_threshold: 1

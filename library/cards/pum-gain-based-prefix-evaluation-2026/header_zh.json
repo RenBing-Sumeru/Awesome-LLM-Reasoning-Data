@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "282,346 条推理前缀对，以学生模型求解增益形成偏好标签，服务 BoN、搜索与 RL。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理前缀效用建模与偏好数据集论文",
+  "best_for_ch": "需要将推理前缀的后续求解价值转为成对偏好信号，并用于候选选择、搜索或强化学习的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuhang Zhou, Yixin Cao, Guangnan Ye",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T14:09:32Z"
+}

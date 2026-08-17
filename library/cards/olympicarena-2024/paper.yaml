@@ -1,0 +1,138 @@
+id: olympicarena-2024
+title: 'OlympicArena: Benchmarking Multi-discipline Cognitive Reasoning for Superintelligent AI'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Track Poster / arXiv
+authors:
+- Zhen Huang
+- Zengzhi Wang
+- Shijie Xia
+- Xuefeng Li
+- Haoyang Zou
+- Ruijie Xu
+- Run-Ze Fan
+- Lyumanshan Ye
+- Ethan Chern
+- Yixin Ye
+- Yikai Zhang
+- Yuqing Yang
+- Ting Wu
+- Binjie Wang
+- Shichao Sun
+- Yang Xiao
+- Yiyuan Li
+- Fan Zhou
+- Steffi Chern
+- Yiwei Qin
+- Yan Ma
+- Jiadi Su
+- Yixiu Liu
+- Yuxiang Zheng
+- Shaoting Zhang
+- Dahua Lin
+- Yu Qiao
+- Pengfei Liu
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- multi-science-olympiad
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.12753
+  arxiv: https://arxiv.org/abs/2406.12753
+  doi: https://doi.org/10.48550/arXiv.2406.12753
+  code: https://github.com/GAIR-NLP/OlympicArena
+  data: https://huggingface.co/datasets/GAIR/OlympicArena
+  project: https://gair-nlp.github.io/OlympicArena/
+  huggingface: https://huggingface.co/datasets/GAIR/OlympicArena
+  venue: https://openreview.net/forum?id=ayF8bEKYQy
+  openreview: https://openreview.net/forum?id=ayF8bEKYQy
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct problems from many olympic competitions, text and image; exact split,
+    artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose problems from many olympic competitions, text and image, prompt/task metadata, a
+    model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: problems from many olympic competitions, text and image
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct problems from many olympic competitions, text and image; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: domain_expert_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2406.12753;
+    https://arxiv.org/html/2406.12753; https://gair-nlp.github.io/OlympicArena/; https://github.com/GAIR-NLP/OlympicArena;
+    https://huggingface.co/datasets/GAIR/OlympicArena'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Hugging Face dataset metadata declares cc-by-nc-sa-4.0. The GitHub repository license status and source-competition
+    redistribution rights should be checked before code or derived-data reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2406.12753'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: OpenReview/proceedings, project, GitHub, and Hugging Face sources verify NeurIPS 2024 Datasets and Benchmarks Track
+    Poster status, institutions, public artifacts, validation/test split, and dataset license; test answers are withheld for
+    leaderboard-style evaluation.
+inclusion_reason: Broad contest-style scientific reasoning benchmark worth comparing to OlympiadBench.
+related: []
+tags:
+- benchmark
+- domain_expert_benchmark
+- multi-science-olympiad
+one_line: OlympicArena exposes problems from many olympic competitions, text and image as an auditable evaluation surface.
+why_it_matters: Broad contest-style scientific reasoning benchmark worth comparing to OlympiadBench.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: OlympicArena exposes problems from many olympic competitions, text and image as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: OpenReview/proceedings, project, GitHub, and Hugging Face sources verify NeurIPS 2024 Datasets and Benchmarks Track
+    Poster status, institutions, public artifacts, validation/test split, and dataset license; test answers are withheld for
+    leaderboard-style evaluation.
+category_ids:
+- benchmarks_evaluation_surfaces

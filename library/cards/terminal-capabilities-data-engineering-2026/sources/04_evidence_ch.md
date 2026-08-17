@@ -1,0 +1,7 @@
+发布物证据与论文证据回答的是不同问题。当前官方 Nemotron-Terminal-Corpus 有四个 train-only 配置，合计恰好 366,154 行：226,313 条 `dataset_adapters`、44,809 条 `skill_based_easy`、89,343 条 `skill_based_medium` 与 5,689 条 `skill_based_mixed`。这些数与论文中的 226,313 条 adapter 和 139,841 条 skill-based 轨迹完全对齐，但无法对齐 Table 5 的 490,520 条总数，因为论文还使用了 124,366 条未在公开 collection 中确认的 seed-based 轨迹。公开 schema 证实存在 conversation 与 run 元数据，但没有规范化 success、reward、test result 或 termination 字段。
+
+过滤消融为论文所选配方提供了证据。对 adapter 数据，论文比较 196,940 条 complete-only 样本与 226,313 条 no-filter 样本，并选择不按完成状态过滤。对完整 synthetic mixture，Table 7 比较 complete-only（104,603 条，Terminal-Bench 2.0 为 `6.74 ± 2.20`）、success-only（83,448 条，`5.06 ± 2.11`）与 no filter（264,207 条，`12.4 ± 2.29`）。在该实验中，no-filter mixture 表现更好，这与作者关于 error state 和 recovery behavior 可提供有用监督的解释一致。
+
+这一结果不能确定公开 366,154 行的标签构成。Table 7 同时覆盖 seed-based 与 skill-based synthetic 轨迹，其中包括缺失的 124,366 条 stream。公开 feature map 没有复现 complete/success/failure 划分所需的 completion 与 test-success 标签。因此，证据支持“论文所选训练配方保留 unsuccessful 和 incomplete 行为”，但不支持“每条公开记录都有已验证 outcome”，复用者也不能按公开标签直接选出失败轨迹。
+
+其余实验展示的是论文 SFT 设置下的关联：单阶段 mixed training 优于所测的 adapter-then-synthetic curriculum；Qwen3-8B 与 Qwen3-14B 的表现随 synthetic-data fraction 从 0%、1%、2%、5%、10% 增至 100% 而提高；默认 32,768-token SFT 配合 40,960-token evaluation 优于论文报告的 65,536-token 变体。Nemotron-Terminal 模型在 Terminal-Bench 2.0 上也优于各自的 Qwen3 base。这些 benchmark 结果支持所测配方的效用，但不能单独证明 corpus correctness、verifier quality、无污染或 exact replayability。

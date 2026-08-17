@@ -1,0 +1,181 @@
+id: nemotron-crossthink-2025
+title: 'Nemotron-CrossThink: Scaling Self-Learning beyond Math Reasoning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Syeda Nahida Akter
+- Shrimai Prabhumoye
+- Matvei Novikov
+- Seungju Han
+- Ying Lin
+- Evelina Bakhturina
+- Eric Nyberg
+- Yejin Choi
+- Mostofa Patwary
+- Mohammad Shoeybi
+- Bryan Catanzaro
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- science
+- general_reasoning
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.13941
+  arxiv: https://arxiv.org/abs/2504.13941
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Nemotron-CrossThink
+  project: https://research.nvidia.com/labs/adlr/Nemotron-CrossThink/
+  huggingface: https://huggingface.co/datasets/nvidia/Nemotron-CrossThink
+  doi: https://doi.org/10.48550/arXiv.2504.13941
+  venue: https://aclanthology.org/2026.eacl-long.43/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.13941
+data_object:
+  prompt_source: 'The paper''s 588,645-item training mixture combines MMLU train, Nemotron-CrossThink-QA, NaturalReasoning,
+    NuminaMath, Nemotron-CrossThink-Math, and MATH. The public Hugging Face release contains only the two synthetic components:
+    187,496 QA and 99,880 Math records (287,376 total at revision a4ce9a3b9434c5f231e2cbe30696d9a721c11d69).'
+  trace_author: Released records are RL prompts with rule-style ground truth, not completed policy trajectories. Synthetic
+    QA topics/examples use Nemotron-4-340B-Instruct and Qwen2.5 generators; DeepSeek-R1 generates multiple solutions whose
+    majority vote establishes answers. Book QA uses Qwen2.5-VL-72B-Instruct extraction and Mixtral-8x22B-Instruct-v0.1/Qwen2.5-72B-Instruct
+    question synthesis. Math uses Qwen2.5-72B-Instruct personas/problems and Qwen2.5-72B-Math-Instruct solutions. Online Qwen2.5
+    policies author training rollouts.
+  answer_format: Released JSONL rows contain data_source, a one-message prompt ending at <think>, reward_model with ground_truth
+    and style=rule, and meta_data. Training requires <think>...</think> reasoning and a boxed final answer inside <answer>...</answer>;
+    source tasks include MCQ and open-ended answers.
+  process_fields:
+  - data_source
+  - prompt.role
+  - prompt.content
+  - reward_model.ground_truth
+  - reward_model.style
+  - meta_data.index
+  - meta_data.question
+  - meta_data.split
+  - meta_data.persona_math_only
+  - meta_data.skills_math_only
+  - online_rollouts
+  - accuracy_reward
+  - format_reward
+  - total_reward
+  environment_or_substrate: Offline multi-source prompt construction and blending followed by online GRPO in veRL. Each generation
+    step samples 128 unique prompts and eight rollouts per prompt.
+  verifier_or_reward: Rule-based total reward requires both exact answer correctness and required output formatting. Accuracy
+    uses exact/equality-style comparison to ground truth; format requires <think>...</think> and a boxed answer. This is brittle
+    for semantically equivalent open-ended responses.
+  terminal_predicate: A rollout receives positive total reward only when both answer and format checks pass; exact dataset-specific
+    extraction/equality behavior beyond the paper's formulas requires released implementation, which is not linked.
+recipe_metadata:
+  base_model: Qwen2.5-7B and Qwen2.5-32B are the main policy models; an 8B Nemotron-H hybrid Mamba-Transformer appears in
+    an architecture-transfer appendix.
+  teacher: Nemotron-4-340B-Instruct, Qwen2.5-72B-Instruct family, Mixtral-8x22B-Instruct-v0.1, Qwen2.5-VL-72B-Instruct, Qwen2.5-72B-Math-Instruct,
+    and DeepSeek-R1 participate in synthetic-data construction with different roles.
+  generator: Synthetic QA is generated from topic/subtopic/difficulty specifications or OCR-checked textbooks; synthetic math
+    uses Common Crawl text -> persona -> math skills/problem -> solution. Online GRPO responses come from the current policy.
+  filtering_rule: Discard MCQs whose gold answer is absent from choices, MCQs that become incomplete without options, open-ended
+    items with gold answers longer than ten words, and math items without answers. A later difficulty filter keeps GPR questions
+    that Qwen2.5-7B answers incorrectly for Qwen2.5-32B experiments.
+  sampling_protocol: Construct synthetic and open-source QA pools -> apply MCQ/open templates -> verifiability filters ->
+    choose one of six data blends -> sample 128 prompts per generation step -> eight policy rollouts -> exact answer and format
+    rewards -> GRPO update for 650 fixed steps.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: Training uses maximum context length 5,000, temperature 1.0, top-p 1.0, batch and PPO minibatch size 128,
+    650 steps, and four 8x H100-80GB nodes; the paper reports approximately 48 GPU-hours per training run but the accounting
+    wording is not fully specified.
+  optimizer_or_scaffold: GRPO in veRL with constant learning rate 1e-6 and KL coefficient 0.001; no extensive hyperparameter
+    tuning is reported.
+audit:
+  source_mixture: 'Paper training pool: 99,842 MMLU train, 192,930 Nemotron-CrossThink-QA, 100,000 NaturalReasoning, 87,350
+    NuminaMath, 100,000 Nemotron-CrossThink-Math, and 8,523 MATH prompts. Public release: 187,496 synthetic QA plus 99,880
+    synthetic Math rows only.'
+  split: Released rows declare meta_data.split=train. The paper reports benchmark evaluation on MMLU, MMLU-PRO, GPQA-Diamond,
+    AGIEVAL, SUPERGPQA, MATH-500, and AMC23. The synthetic QA pipeline reports decontamination against GPQA, MMLU, and MMLU-PRO
+    test sets, but no record-level removal ledger is released.
+  decontamination: Reported for synthetic QA against GPQA, MMLU, and MMLU-PRO following a cited method; exact thresholds,
+    matches, and removals are not present in the public dataset card. Coverage for all other sources/evaluations is unknown.
+  license: Hugging Face release is CC BY 4.0. The dataset card and paper warn that models trained with Qwen-generated synthetic
+    data may be subject to Qwen License Agreement redistribution/use requirements; record-level upstream Common Crawl/book
+    provenance and compatibility are not exposed.
+  lineage: 'Source text/topic/book or open-source prompt -> generator/template -> answer or majority vote -> verifiability
+    filter -> dataset/source label -> blend -> online policy rollouts -> exact answer and format rewards -> GRPO update. Released
+    rows preserve only partial lineage: source family, prompt, ground truth, style, index/split, and math persona/skills.'
+  known_failure_modes:
+  - Exact string/equality reward rejects semantically correct paraphrases, especially for open-ended GPR answers, and can
+    incentivize short answer-space artifacts.
+  - The public release contains 287,376 synthetic records, not the full 588,645-item mixed training pool; blend membership
+    and exact training manifests are not directly reconstructible from the release.
+  - Released rows are prompts and rule ground truths, not online rollouts, reward traces, policy checkpoints, or rejected
+    examples.
+  - Majority vote over DeepSeek-R1 solutions establishes synthetic QA answers without an independent ground-truth oracle and
+    may preserve consensus errors.
+  - Difficulty filtering defines hard examples by Qwen2.5-7B failure, which is model-relative and can select ambiguity or
+    noise.
+  - The paper fixes training to 650 steps without extensive hyperparameter tuning; results may mix data effects with optimizer/schedule
+    choices.
+  - Reported synthetic-QA decontamination lacks an item-level match/removal ledger; overlap coverage for other sources and
+    evaluations is unknown.
+  - CC BY 4.0 release labeling does not by itself resolve record-level Common Crawl, book, open-source dataset, and generator-license
+    provenance.
+  - Fairness, bias, and value alignment are not evaluated; RL and selection can amplify base-model or source bias.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v3, NVIDIA project link, Hugging Face dataset card/API, fixed revision, and ranged first records from
+    both JSONL files were checked. Release existence and schema are verified; full training-mixture reproducibility remains
+    partial.
+inclusion_reason: A frontier RLVR report that explicitly extends verifiable-reward training beyond mathematics using multi-domain,
+  multi-format question-answer corpora, while leaving key source, reward, and audit fields undisclosed.
+related: []
+tags:
+- nvidia
+- nemotron-crossthink
+- frontier-report
+- data-disclosure-ledger
+- rlvr
+- verifiable-rewards
+- data-blending
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- programmatically_verifiable_outcome_data
+one_line_summary: Nemotron-CrossThink builds a 588,645-prompt multi-domain RLVR mixture with template and answer-space filters,
+  releases 287,376 synthetic QA/math prompt records, and trains Qwen2.5 policies with exact answer-plus-format GRPO rewards.
+why_it_matters: For frontier_reports_data_disclosure_ledger, it is a concrete case where the paper, public synthetic subsets,
+  reward formula, blend study, and training settings are visible, while the exact mixed training manifest, online rollout/reward
+  lineage, and record-level provenance remain incomplete.
+card: null
+needs:
+- 'needs_release_manifest: exact IDs and revisions for all six sources and every experimental blend'
+- 'needs_rollouts: online responses, parsed answers, accuracy/format rewards, rejected groups, and checkpoint lineage'
+- 'needs_code: official construction, decontamination, blending, reward, and GRPO implementation'
+- 'needs_audit: item-level decontamination, majority-vote error, exact-match false negatives, bias, and benchmark overlap'
+- 'needs_license_audit: record-level Common Crawl/book/upstream dataset provenance and Qwen-license compatibility'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv abstract and bibliographic record were checked. The Card intentionally retains undisclosed construction
+    and audit details as unknown.

@@ -1,0 +1,5 @@
+- 先读论文表 1、第 4.2 节与附录 A.4：“20K” 指纵向人类 Android episode，不是 20,000 个唯一任务或模型 rollout；论文实际报告 21,437 个 episode。
+- 阅读论文规模时必须并列查看公开发布审计：`total.csv` 只有 20,000 行、83 位用户和 482 个 app 标识，官方没有解释它与 21,437/95/506 的差异。
+- 将第 5.1 节与两个官方脚本对读：proactive 实现缺少 `SR1`，execution success 需要外部人工终态复核，而公开脚本只写入 `success=0`。
+- 谨慎区分 split 单位：suggestion 有 1,000 行但只有 996 个唯一 episode key，其中 172 个唯一键与 200 键的 execution test 重叠；主划分是在用户内部按时间完成的。
+- 复用前固定 arXiv v2、GitHub commit `e73a4dac3bd13ea32b7836525ff074a69cb047ea` 与 Kaggle version 2，并解决 code license、隐私/consent 范围、训练细节以及 live environment 的 reset/replay metadata。

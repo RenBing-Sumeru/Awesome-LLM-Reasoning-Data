@@ -1,0 +1,160 @@
+id: co-evolving-llm-coder-unit-tester-reinforcement-learning-2025
+title: Co-Evolving LLM Coder and Unit Tester via Reinforcement Learning
+year: 2025
+venue: NeurIPS 2025 (Spotlight)
+authors:
+- Yinjie Wang
+- Ling Yang
+- Ye Tian
+- Ke Shen
+- Mengdi Wang
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- code_generation
+- unit_testing
+training_use:
+- rlvr
+- test_time_compute
+- evaluation
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.03136
+  arxiv: https://arxiv.org/abs/2506.03136
+  code: https://github.com/Gen-Verse/CURE
+  data: https://huggingface.co/datasets/Gen-Verse/CodeContests_train
+  project: https://github.com/Gen-Verse/CURE
+  huggingface: https://huggingface.co/collections/Gen-Verse/reasonflux-coder
+  doi: null
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/d38653cdaa8e992549e1e9e1621610d7-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=wPdBe9zxNr
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.03136
+data_object:
+  prompt_source: 4,529 released CodeContests training tasks with problem statements, public example I/O, and private gold
+    test I/O; the paper describes selecting approximately 4.5K tasks with difficulty at most 2
+  trace_author: The same policy model alternately generates Python solution traces and task-derived unit-test traces
+  answer_format: Coder outputs a Python stdio program; tester outputs a test input, expected output, and explanation; execution
+    produces pass/fail outcomes
+  process_fields:
+  - task_id
+  - problem_statement
+  - public_examples
+  - private_gold_tests
+  - coder_rollouts
+  - tester_rollouts
+  - cross_execution_matrix
+  - gold_test_outcomes
+  - coder_reward
+  - tester_reward
+  - response_length
+  environment_or_substrate: vLLM rollout generation plus timed stdio execution of candidate Python programs against generated
+    and gold tests
+  verifier_or_reward: Coder reward counts passed private gold tests. Tester reward is derived from the code-by-test execution
+    matrix after gold tests classify sampled programs as correct or incorrect.
+  terminal_predicate: A sampled program is labeled correct for tester-reward estimation only if it passes all available private
+    gold tests; generated tests receive scalar discrimination rewards rather than direct gold labels
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct and Qwen2.5-14B-Instruct for standard CURE models; Qwen3-4B for the long-CoT variant
+  teacher: No ground-truth code teacher is used for CURE training. QwQ-32B is used only to obtain evaluation reference programs
+    for datasets lacking released reference code, by retaining programs that pass all gold tests.
+  generator: One shared policy plays coder and tester roles, producing code candidates and task-derived tests before alternating
+    role-specific policy updates
+  filtering_rule: Execution and format parsing produce the binary interaction matrix. Gold-test pass/fail partitions sampled
+    programs for reward estimation; the release does not provide a precomputed filtered rollout corpus.
+  sampling_protocol: Per task and RL sampling step, generate 16 code rollouts and 16 unit-test rollouts, then cross-execute
+    every code against every generated test and append private gold-test outcomes
+  rollout_count: 16 coder responses plus 16 tester responses per sampled task and step
+  temperature: 1.0 with top-p 1.0 for the 7B and 14B runs; 0.8 for the long-CoT 4B run
+  inference_budget: Main Best-of-N evaluation uses 16 code candidates and 16 generated tests; other agentic/test-time-scaling
+    experiments use their stated pipeline budgets, often eight samples
+  optimizer_or_scaffold: Alternating PPO/GRPO-style clipped policy updates with normalized role rewards, learning rate 1e-6
+    and KL coefficient 0.01; 350 steps for 7B/14B and 50 steps for 4B on 8 A100 GPUs
+audit:
+  source_mixture: Training uses a released CodeContests subset. Evaluation covers LiveBench, MBPP, LiveCodeBench v2, CodeContests,
+    and a 500-task CodeForces sample; the paper states the CodeForces evaluation sample does not overlap CodeContests.
+  split: The paper reports approximately 4.5K CodeContests training tasks and 200 CodeContests evaluation tasks. The current
+    public CodeContests_train dataset contains 4,529 rows; exact seed and immutable split manifest for the reported experiment
+    are not identified.
+  decontamination: The paper reports no overlap between its sampled CodeForces evaluation set and CodeContests training source.
+    It does not provide a broader train/test contamination scan for model pretraining, benchmark statements, or public/private
+    tests.
+  license: The Hugging Face CodeContests_train dataset and released ReasonFlux-Coder model cards declare MIT. The GitHub repository
+    does not display a top-level license, so code reuse terms remain unknown.
+  lineage: The public training records expose source name, question, task_id, stdio execution method, time limit, public example_input/example_output,
+    and private test_input/test_output. The paper converts functional tasks in MBPP and parts of LiveBench/LiveCodeBench to
+    stdio. Precomputed CURE rollout episodes and complete execution matrices are not released as a fixed corpus.
+  known_failure_modes:
+  - No ground-truth code is used during CURE training, but private gold tests directly reward the coder and indirectly anchor
+    the tester reward; describing the method as label-free without this qualification is misleading
+  - Incomplete gold tests can label a wrong sampled program as correct, contaminating both coder reward and the correct/incorrect
+    partition used to reward generated tests
+  - A coder and tester trained from one policy can co-adapt to shared shortcuts; the gold-test anchor reduces but does not
+    eliminate reward gaming or weak-test equilibria
+  - Generated-test correctness and discriminative power are different properties; passing a reference program does not show
+    that a test rejects plausible wrong programs
+  - The 16-by-16 cross-execution matrix requires 256 generated code-test executions per task before adding gold-test executions,
+    so environment cost and failures affect the feedback contract
+  - The release exposes tests called private in the data schema, which supports reproducibility but makes them unsuitable
+    as permanently hidden evaluation tests after public release
+  - Execution isolation, dependency pinning, random seeds, and exact reported-run configuration are not fully specified by
+    an immutable release
+  - The study focuses on Python stdio competitive-programming tasks; conclusions need not transfer to repository-level software
+    engineering or stateful test environments
+  - Benchmark gains evaluate trained models and selectors, not the completeness or quality of a reusable rollout dataset
+  citation_status: verified
+  confidence: high
+  notes: Verified against the NeurIPS proceedings record, arXiv, OpenReview identifier, the Gen-Verse/CURE repository, the
+    public Hugging Face collection, and the 4,529-row CodeContests_train release. The repository has 13 visible commits and
+    no published release.
+inclusion_reason: CURE exposes a code-RL construction recipe in which coder and tester rollouts, cross-execution outcomes,
+  gold-test anchors, and alternating scalar rewards form an auditable co-evolution episode and later support Best-of-N selection.
+related: []
+tags:
+- cure
+- reasonflux-coder
+- co-evolution
+- unit-tests
+- code-rl
+- cross-execution
+- best-of-n
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: CURE alternates one policy between coder and tester roles, using a code-by-test execution matrix and private
+  gold-test anchors to train both capabilities and to rank code at test time.
+why_it_matters: 'It makes the feedback lineage of code self-play unusually concrete while exposing the key boundary that no
+  gold code does not mean no gold supervision: hidden tests still define coder correctness and tester rewards.'
+card: null
+needs:
+- 'needs_trace_release: immutable per-step coder/tester rollouts, execution matrices, rewards, and failures'
+- 'needs_reproducibility_protocol: seeds, exact split manifest, execution isolation, dependency lock, and final-run configuration'
+- 'needs_audit: gold-test coverage and false-correct analysis for tester-reward labels'
+- 'needs_license: explicit license for the GitHub code repository'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, venue, code, data, and model-weight collection links were checked. Release artifacts are real, but
+    a fixed rollout-trace corpus and exact final-run manifest remain unavailable.

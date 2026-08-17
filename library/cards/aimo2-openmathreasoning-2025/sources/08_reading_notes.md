@@ -1,0 +1,5 @@
+- Read the official dataset-card correction beside paper Table 1: 540K is an early processing count, 306K is the released unique solution-bearing pool, and 193,170 rows are problem-only.
+- Treat Qwen2.5-32B-Instruct equivalence and teacher majority as answer-level judgments, not proof or intermediate-step verification.
+- Follow the TIR stages separately: the 15K bootstrap uses novelty/significance filters, while later 1.7M-scale generation disables them after a downstream regression.
+- Inspect the appendix's code/prose mismatch examples before assuming that Python-interleaved text is semantically verified or replayable.
+- Pin dataset revision `d3d08664755704f422af97d43a7ff0ded4bd95df` and code commit `74b8649734a6ecc2d3beca89311e1a5e02da48fa`; then audit the unavailable original AoPS scraper, the lost 137K proof questions, forum rights, and accepted/rejected manifests.

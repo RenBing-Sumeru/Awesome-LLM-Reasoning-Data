@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Prime Intellect 披露了 106B MoE 的 SFT 与大规模异步 RL 基础设施和环境，但未提供冻结的运行级数据清单。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿模型技术报告与数据披露账本",
+  "best_for_ch": "关注开放 RL 基础设施、环境反馈、异步训练和数据可复现性的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Prime Intellect Team 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T09:07:21Z"
+}

@@ -1,0 +1,5 @@
+Web-scraped chart data is hard to scale and verify because the latent table, rendering code, and exact numerical answers are usually missing.
+
+ChartVerse generates charts from executable programs and releases questions with both code solutions and long reasoning traces tied to known ground truth. The decision boundary is whether a serialized training record survives program execution, answer checking, rendering validation, and difficulty/failure-rate selection; the central artifact is data consumed by chart-reasoning SFT with a separate 40K RL subset, not a model-only release.
+
+L4 facts: primary source arXiv:2601.13606; arXiv preprint; data object ChartVerse-SFT-1.8M with 1.8M verified chart QA pairs over about 800K unique charts; evaluation surface The paper trains an 8B ChartVerse model on 600K SFT and 40K RL records and reports it outperforming the stronger compared 32B visual reasoning model on its chart suite.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

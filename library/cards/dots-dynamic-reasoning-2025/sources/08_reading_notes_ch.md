@@ -1,0 +1,5 @@
+- 应把第 2.2–2.4 节与算法 1 连起来视为一个数据契约：针对每个 solver 搜索 12 条三层动作轨迹，按 ground-truth outcome 成功率排序，并列时偏向短路径，再构造 external 或 internalized planner 的 SFT 目标。
+- 应明确保留论文预算：\(K=2\)、\(N_{\text{eval}}=4\)、\(N_1=8\)、\(N_2=3\)、\(T=0.4\) 意味着每个完整搜索问题执行 80 次候选轨迹，不含 GPT-4o 解释调用与可变 Self-Verification 重试。
+- 不要混淆计数与 artifact：5,486 是三个 solver 入选 planner 样本数之和；公开 artifact 则是一个 4.8 GB 原始 JSON，其精确 trial 数和稳定 splits 未知，最终 SFT data 与 checkpoints 也未核验。
+- 两种反馈机制必须分开：任务特定的 ground-truth checking 用于轨迹排序，而 Self-Verification 是同一 solver 产生的自然语言动作，存在相关错误风险。
+- 复现或复用前，应协调论文/代码在 evaluation 次数、温度、stage、累积评分、batch size 与 epochs 上的差异，并要求剪枝状态、稳定 manifests、去污染证据与许可证说明。

@@ -1,0 +1,3 @@
+This is not a dataset, verifier, or full recipe release. Its Track 12 value is narrower: a first-party frontier release names an outcome-feedback contract for two task families and distinguishes it from a later mixed general-reward stage. The report exposes enough to identify mathematics final-answer checking, code test execution, and the existence of a general reward-model/rule mixture.
+
+The useful comparative contribution is the sharp boundary around that disclosure. The same release leaves the actual data objects, reward implementation, test substrate, training algorithm, and audit evidence unavailable. It therefore supports a ledger entry about what a model report says and does not say, rather than a claim that the reported pipeline can be reproduced or transferred.

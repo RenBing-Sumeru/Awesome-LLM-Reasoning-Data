@@ -1,0 +1,1 @@
+Process reward modeling is predominantly developed and evaluated in English, leaving the quality of multilingual reasoning supervision uncertain. This paper asks how to build and assess PRMs that recognize valid and invalid reasoning across languages.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AGENT BANK 发布论文所报 51,287 条跨十六任务的理由、动作与观察轨迹，用于掩码式轨迹微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模多任务代理轨迹数据集与监督微调研究",
+  "best_for_ch": "适合研究代理轨迹构造、答案强制、难度偏差和跨任务泛化的数据策展者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yifan Song, Weimin Xiong, Xiutian Zhao, Dawei Zhu, Wenhao Wu, Ke Wang, Cheng Li, Wei Peng, Sujian Li",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:00:00Z"
+}

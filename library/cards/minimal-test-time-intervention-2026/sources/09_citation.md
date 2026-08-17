@@ -1,0 +1,1 @@
+Yang, Zhen, Mingyang Zhang, Feng Chen, Ganggui Ding, Liang Hou, Xin Tao, and Ying-Cong Chen. 2026. “Less is More: Improving LLM Reasoning with Minimal Test-Time Intervention.” Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 20124–20137. Official paper: https://aclanthology.org/2026.acl-long.921/.

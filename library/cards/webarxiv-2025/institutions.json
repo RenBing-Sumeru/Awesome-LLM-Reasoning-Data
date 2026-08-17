@@ -1,0 +1,13 @@
+{
+  "institutions": [
+    "University of Technology Sydney"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2507.00938",
+    "https://anonymous.4open.science/r/74E4423BVNW"
+  ],
+  "verification_note": "arXiv verifies title, authors, institution, and preprint status; the anonymous 4open artifact was recorded as the available code/project lead."
+}

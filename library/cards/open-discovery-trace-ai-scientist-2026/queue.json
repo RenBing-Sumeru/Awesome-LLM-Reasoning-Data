@@ -1,0 +1,19 @@
+{
+  "title": "OpenDiscoveryTrace: Process Traces for Evaluating AI Scientist Workflows",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=EHT3wVhCUZ",
+    "data": "https://huggingface.co/datasets/aayambansall/OpenDiscoveryTrace",
+    "code": "https://github.com/aayambansal/OpenDiscoveryTrace",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:40:56Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布科研代理的思考、工具、错误与修订完整记录",
+    "updated_at": "2026-07-17T08:40:56Z"
+  }
+}

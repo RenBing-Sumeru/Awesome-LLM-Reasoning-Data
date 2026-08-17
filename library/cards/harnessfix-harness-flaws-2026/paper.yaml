@@ -1,0 +1,113 @@
+id: harnessfix-harness-flaws-2026
+title: 'From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws'
+year: 2026
+venue: arXiv preprint
+authors:
+- Mengzhuo Chen
+- Junjie Wang
+- Zhe Liu
+- Yawen Wang
+- Qing Wang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- harness-diagnosis
+- failed-trajectories
+- agent-repair
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.06324
+  arxiv: https://arxiv.org/abs/2606.06324
+  doi: null
+  code: https://github.com/HarnessFix/HarnessFix
+  data: null
+  project: https://github.com/HarnessFix/HarnessFix
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: HarnessFix paper and GitHub repository
+  trace_author: HarnessFix authors and failure-sampling pipeline
+  answer_format: failed trajectories, harness-flaw labels, repair suggestions, sampling scripts, and evaluation results
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: failed trajectories used to diagnose and repair harness flaws
+  verifier_or_reward: diagnosis/repair pipeline checks and benchmark-specific evaluators
+  terminal_predicate: diagnosis/repair pipeline checks and benchmark-specific evaluators
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: failed trajectory analysis and harness flaw taxonomy
+  generator: HarnessFix diagnosis and repair pipeline
+  filtering_rule: record third-party benchmark/API-key data boundaries and pin four benchmark versions
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2606.06324; https://github.com/HarnessFix/HarnessFix
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2606.06324'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: raw trajectories/benchmark outputs are not fully included; pin third-party benchmark versions and sampling outputs
+inclusion_reason: it treats harness flaws as repairable data objects derived from trajectories
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- harness-diagnosis
+- failed-trajectories
+- agent-repair
+one_line: HarnessFix diagnoses failed trajectories to repair flaws in LLM-agent harnesses.
+why_it_matters: it treats harness flaws as repairable data objects derived from trajectories
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: HarnessFix diagnoses failed trajectories to repair flaws in LLM-agent harnesses.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv/GitHub metadata confirms arXiv status, a five-author citation, and public GitHub code.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 123
+  primary_category_id: environment_agent_trajectory_data

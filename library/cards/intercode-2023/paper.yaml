@@ -1,0 +1,113 @@
+id: intercode-2023
+title: 'InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback'
+year: 2023
+venue: NeurIPS 2023 Datasets and Benchmarks / arXiv
+authors:
+- John Yang
+- Akshara Prabhakar
+- Karthik Narasimhan
+- Shunyu Yao
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- interactive-coding
+- terminal-agents
+- execution-feedback
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2306.14898
+  arxiv: https://arxiv.org/abs/2306.14898
+  doi: https://doi.org/10.48550/arXiv.2306.14898
+  code: https://github.com/princeton-nlp/intercode
+  data: https://intercode-benchmark.github.io/
+  project: https://intercode-benchmark.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official InterCode paper, project, and repository
+  trace_author: InterCode authors and interactive coding agent runs
+  answer_format: interactive coding tasks, commands, environment feedback, execution outputs, and reward records
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: Docker Bash, SQL, Python, CTF, and SWE interactive coding environments
+  verifier_or_reward: execution feedback, tests, and environment-specific scoring
+  terminal_predicate: execution feedback, tests, and environment-specific scoring
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: InterCode benchmark tasks and environment definitions
+  generator: InterCode interactive environment standardization
+  filtering_rule: pin InterCode version, per-environment dataset licenses, and Docker/runtime details
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2306.14898; https://intercode-benchmark.github.io/; https://github.com/princeton-nlp/intercode
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2306.14898'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: InterCode version, per-environment licenses, PyPI/repo drift, and Docker details need audit.
+inclusion_reason: it standardizes state-action-observation coding environments with execution feedback
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- interactive-coding
+- terminal-agents
+- execution-feedback
+one_line: InterCode standardizes interactive coding environments with execution feedback for agents.
+why_it_matters: it standardizes state-action-observation coding environments with execution feedback
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: InterCode standardizes interactive coding environments with execution feedback for agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, and GitHub verify authors, Princeton institution, NeurIPS status, and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 92
+  primary_category_id: benchmarks_evaluation_surfaces

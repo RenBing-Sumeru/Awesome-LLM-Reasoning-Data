@@ -1,0 +1,192 @@
+id: glm-4-1v-4-5v-2025
+title: 'GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors:
+- GLM-V Team
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- vision_language
+- gui_agents
+- video
+- long_documents
+- stem
+training_use:
+- sft
+- preference_learning
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.01006
+  arxiv: https://arxiv.org/abs/2507.01006
+  code: https://github.com/zai-org/GLM-V
+  data: null
+  project: null
+  huggingface: https://huggingface.co/zai-org/GLM-4.5V
+  doi: https://doi.org/10.48550/arXiv.2507.01006
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2507.01006
+data_object:
+  prompt_source: 'Pre-training is described by source and capability categories rather than a record manifest: an initial
+    pool of more than 10B image-text pairs from LAION, DataComp, DFN, Wukong and web search; MINT, MMC4 and OmniCorpus web
+    interleaving; more than 100M digitized books; 220M OCR images; 40M natural-image grounding annotations; more than 140M
+    GUI question-answer pairs; and academic, web, proprietary and human-annotated video. The report also names a 50M instruction-tuning
+    mixture. SFT and RL prompts span verifiable and open-ended multimodal domains, but their counts, immutable snapshots and
+    record-level sources are not released.'
+  trace_author: The report names human annotation, factual recaptioning, synthetic rendering, pretrained vision/OCR/grounding
+    tools, the pretrained GLM-V model, prior RL checkpoints, expert difficulty labels and model-based judges across stages.
+    Exact generator and checkpoint assignments for each long-CoT SFT response or RL record are unknown.
+  answer_format: Long-CoT SFT uses a think span followed by an answer span. Verifiable final answers are enclosed by the special
+    tokens <|begin_of_box|> and <|end_of_box|> for deterministic extraction; GLM-4.5V removes the explicit answer-tag tokens.
+    GLM-4.5V also mixes thinking and /nothink examples.
+  process_fields:
+  - multimodal_input
+  - prompt
+  - domain
+  - subcategory
+  - offline_difficulty
+  - online_pass_at_k
+  - rollout
+  - think_content
+  - answer_content
+  - boxed_final_answer
+  - verifier_or_judge_score
+  - format_and_style_score
+  - selected_for_update
+  environment_or_substrate: Multi-domain RL combines exact and symbolic answer checks, tolerance checks, edit distance, IoU
+    and action matching, functional evaluation, LLM judges, and reward models across STEM, OCR, charts, long documents, grounding,
+    GUI agents, video and general VQA. The official repository releases an Apache-2.0 VLM reward-system implementation, not
+    the complete in-house RL infrastructure or training data.
+  verifier_or_reward: RLVR extracts boxed final answers and applies domain-specific rule, symbolic or functional verification;
+    RLHF scores answer segments with reward models or model judges. Shared checks include format validation, box extraction
+    and exact matching. Domain modules include SymPy with tolerance, edit distance, IoU, action matching, semantic judges
+    and style/format rewards. These signals chiefly evaluate final outputs rather than every reasoning step.
+  terminal_predicate: 'Task dependent: exact or SymPy/tolerance answer agreement, edit-distance similarity, bounding-box IoU,
+    action-plus-IoU or functional success, exact/semantic equivalence, or a model/reward score for open-ended tasks. The report
+    does not define one universal terminal predicate or publish per-record verifier decisions.'
+recipe_metadata:
+  base_model: GLM-4.1V-Thinking combines AIMv2-Huge vision initialization with GLM-4-9B-0414 and is released as GLM-4.1V-9B-Thinking
+    plus GLM-4.1V-9B-Base. GLM-4.5V combines the shared vision-language architecture with GLM-4.5-Air, a 106B-total, 12B-activated
+    MoE.
+  teacher: The pretrained GLM-V model filters SFT difficulty; established VLMs and earlier RL checkpoints provide pass@k difficulty
+    estimates; expert humans add difficulty labels; domain-specific LLM judges and reward models score non-verifiable or semantically
+    matched answers. Exact teacher model IDs, prompts and checkpoint revisions are not fully disclosed.
+  generator: Construction uses factual recaptioning, CLIP filtering, high-knowledge-density classifiers, PDF/LaTeXML parsing,
+    PaddleOCR, GLIPv2 grounding, Playwright GUI capture, synthetic rendering and human-in-the-loop video annotation. Long-CoT
+    response generators and synthetic RL question generators are not enumerated record by record.
+  filtering_rule: Pre-training applies resolution, solid-color, caption-length, deduplication, CLIP-score (>0.3), concept
+    balancing, source-specific cleaning and video integrity/embedding-deduplication filters. SFT removes very easy or very
+    hard prompts, format violations, noisy or inconsistent reasoning, mixed-language phrasing and redundant thought patterns.
+    RL preparation retains tasks that can be verified precisely, converts unique-answer multiple choice to fill-in-the-blank,
+    checks correctness, grades difficulty and runs pilot RL experiments.
+  sampling_protocol: RLCS blends domains in predetermined but undisclosed proportions. Offline pass@k from several models/checkpoints
+    plus expert labels assigns difficulty tiers; online rollout pass@k and subcategory performance update those tiers and
+    reweight sampling every training iteration, down-weighting very easy and very hard samples. Ratio-EMA expansion oversamples
+    rollouts and selects subsets with more balanced correct/incorrect outcomes.
+  rollout_count: unknown
+  temperature: Rollout top-p is reported as 1 for stability; temperature and per-prompt rollout count are not disclosed.
+  inference_budget: Multimodal pre-training uses length 8,192, global batch 1,536 and 120,000 steps; long-context continual
+    training uses length 32,768, batch 1,536 and 10,000 steps. SFT uses length 32,768 and global batch 32. RL rollout lengths,
+    total rollouts, iterations, tokens and compute are not reported.
+  optimizer_or_scaffold: Full-parameter SFT precedes multi-domain GRPO. Reported RL choices include RLCS, large batches, ratio-EMA
+    sampling expansion, forced answering by inserting a closing think token at truncation, removal of KL and entropy losses,
+    a higher upper importance-ratio clip, top-p=1 rollouts, per-sample loss, sequence/load balancing and packing. Exact learning
+    rates, batch sizes, clipping values, step counts and full infrastructure code are undisclosed.
+audit:
+  source_mixture: The report gives many source families, initial-pool or annotation counts and construction filters, but no
+    immutable final mixture table, retained unique-record counts, per-source weights, source revisions, license map, filtering
+    yields or released data manifest. Initial-pool counts such as more than 10B image-text pairs are not final training-set
+    counts.
+  split: unknown
+  decontamination: The report says all open-source instruction-tuning datasets undergo manual and automated contamination
+    review and describes image/video deduplication. It does not publish benchmark signatures, thresholds, removal counts,
+    corpus-wide overlap results or a reproducible train-evaluation ledger.
+  license: The GLM-V GitHub repository is Apache-2.0. The official Hugging Face cards label GLM-4.5V and GLM-4.1V-9B-Thinking
+    weights MIT. These licenses do not establish rights or redistribution terms for the unreleased pre-training, SFT, preference,
+    RL curriculum or rollout data, whose sources include public, web, proprietary, synthetic and human-annotated material.
+  lineage: Heterogeneous multimodal sources -> source-specific filtering, recaptioning, parsing, rendering, annotation and
+    balancing -> 120K-step multimodal pre-training -> 10K-step long-context continuation -> cleaned long-CoT SFT with thinking/non-thinking
+    formatting -> RL task identification, verification-focused curation, offline and online difficulty grading -> multi-domain
+    GRPO with RLCS and task-specific rewards -> released GLM-4.1V-9B-Thinking/Base and GLM-4.5V weights plus inference and
+    reward-system code. No record-level lineage joins these stages.
+  known_failure_modes:
+  - Final-output rewards can reinforce incorrect or hallucinated intermediate reasoning when the terminal answer passes; the
+    report explicitly identifies this limitation.
+  - Weak or hackable verifiers in one multimodal domain can destabilize or collapse joint training across domains.
+  - LLM judges and semantic reward models have undisclosed versions, prompts, calibration and failure rates.
+  - RLCS difficulty labels and domain proportions are not released, so the curriculum and selected rollout distribution cannot
+    be reconstructed.
+  - Pool and annotation counts are not final unique training counts, and source-level rights, mixture weights, filtering yields
+    and split lineage remain unavailable.
+  - Benchmark gains measure model behavior, not training-data quality, rights compliance, decontamination completeness or
+    reproducibility.
+  - The model repository lists remaining overthinking, repetition, answer restatement, counting/person-identification and
+    pure-text weaknesses.
+  - Open weights and reward/inference code do not imply release of pre-training data, SFT traces, RL prompts, rollout logs,
+    human preferences, reward-model checkpoints or the full optimizer infrastructure.
+  citation_status: verified
+  confidence: medium
+  notes: The current official arXiv report, official GLM-V GitHub repository and reward-system documentation, and official
+    GLM-4.5V and GLM-4.1V-9B-Thinking Hugging Face model cards were checked on 2026-07-19. Training-stage disclosure is substantial,
+    while record-level data and full training reproduction remain unavailable.
+inclusion_reason: A high-information multimodal frontier report that documents pre-training source categories, long-CoT SFT,
+  multi-domain verifiers, RLHF/RLVR and adaptive RL curriculum sampling while releasing model weights and reward/inference
+  code but not training records.
+related: []
+tags:
+- frontier-report
+- multimodal-reasoning
+- rlcs
+- rlhf
+- rlvr
+- long-cot
+- gui-agents
+- reward-system
+- open-weights
+- disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: GLM-V discloses a broad multimodal pre-training, long-CoT SFT and GRPO/RLCS pipeline with domain-specific
+  rewards, and releases weights plus reward/inference code while withholding the training records and curriculum ledger.
+why_it_matters: It is a useful disclosure-ledger case because model and verifier availability can be audited separately from
+  unreleased multimodal sources, long-CoT traces, difficulty labels, rollouts and selection decisions.
+card: null
+needs:
+- 'needs_data: release or manifest final pre-training mixtures, long-CoT SFT records, preferences, RL prompts, difficulty
+  labels, rollouts and accepted/rejected selections'
+- 'needs_lineage: publish stable record IDs, source revisions, generator/checkpoint mappings, filtering reasons, deduplication
+  clusters and stage joins'
+- 'needs_metadata: disclose per-domain counts and proportions, pass@k values, rollout counts, temperatures, RL batches, learning
+  rates, clipping parameters, steps, tokens and compute'
+- 'needs_reward_audit: publish judge identities/prompts, reward-model checkpoints, thresholds, unit-test coverage, false-accept/false-reject
+  rates and hacking logs'
+- 'needs_license: map source and generated-data rights independently of Apache-2.0 code and MIT weight licenses'
+- 'needs_decontamination: publish corpus-wide benchmark overlap methods, signatures, thresholds and removal results'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official report, GLM-V code/reward repository, and both official weight model cards verified; no official training-dataset
+    release or complete training implementation was confirmed.

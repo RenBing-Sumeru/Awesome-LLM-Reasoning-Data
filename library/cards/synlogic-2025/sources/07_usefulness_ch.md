@@ -1,0 +1,11 @@
+对`programmatically_verifiable_outcome_data`而言,SynLogic是异构verifier套件的具体案例。可复用记录应保留配置、`data_source`、提示index、完整`game_data_str`、generator revision、verifier revision、parser行为与预期答案表示。Verifier测试应包含格式损坏、等价替代答案、对抗字符串、歧义案例、timeout、任务专用归一化和多语言Unicode往返,而不能因函数输出二元值就假定其正确。
+
+对`data_construction_open_release_recipes`而言,该框架提供实用流程:选择任务、定义难度参数、实现生成器、检查正确性与可解性、用模型通过率校准可学习性、渲染提示、连接任务verifier,再执行在线RL。构建者可以把该模式复用于非数学领域,但应发布完整来源与决策ledger,而不只发布最终提示。
+
+可审计提示记录还应加入来源概念、上游资源ID与许可证、生成参数与seed、有效性检查、难度探针模型及精确设置、模板revision和去重结果。可审计rollout记录则应加入policy checkpoint、渲染后输入、采样设置、回答、抽取答案、格式结果、verifier结果、最终reward、拒绝原因、训练步骤和optimizer上下文。SynLogic公开了第一层的许多内容,却没有公开第二层。
+
+若把Easy与Hard视为两个明确任务表面,其差异可支持curriculum与容量研究。研究者可以检验因7B训练准确率为零而移除任务,究竟反映真实容量限制、reward稀疏、parser失败还是参数区间不当;还可比较任务均衡采样与发布中不均匀的行数,并检验由模型校准的难度能否迁移到其他checkpoint。
+
+该发布也适合verifier稳健性与版本研究。发布后修复提供重复提示和生成器/数据缺陷的真实案例,缺失Cipher生成器则暴露再生成缺口。固定`d8c527fd17edb739172619efb9b681805fc74b8d`与`bb4297b82b9c28ef39249f48386cefd5e856618a`能建立审计起点,但不能保证每项任务都正确。
+
+训练时,可在完成逐任务检查后把SynLogic用于RLVR或评估。它不是SFT回答数据集,因为没有提供目标policy轨迹。若要构造SFT或蒸馏数据,应另行生成并独立验证回答,保留拒绝候选,并记录新的authoring model与filter。Benchmark增益可以支持开展实验,但转换后的语料仍需独立执行质量、污染与许可证审计。

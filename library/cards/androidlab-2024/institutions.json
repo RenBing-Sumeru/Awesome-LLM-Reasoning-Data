@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Tsinghua University",
+    "Peking University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://aclanthology.org/2025.acl-long.107/",
+    "https://arxiv.org/abs/2410.24024",
+    "https://github.com/THUDM/Android-Lab",
+    "https://github.com/THUDM/Android-Lab/blob/main/docs/instruction_tuning.md"
+  ],
+  "verification_note": "ACL Anthology, arXiv, and official GitHub docs verify ACL 2025 Long Papers status, authors, Tsinghua/Peking institutions, repository, and instruction-tuning data entry."
+}

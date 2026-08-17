@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "PGTS 用 PPO 训练 GPS 图策略，在显式宽度、深度和搜索步数预算下导航 LLaMA 3.1 的部分推理树；代码可表示未访问或已放弃分支，但未发布论文运行的原始树、完整策略分布、checkpoint 或逐样本预算日志。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "学习式树搜索控制器、状态—动作轨迹配方与测试时计算研究",
+  "best_for_ch": "研究推理树导航策略、标量反馈、分支与回溯记录、测试时预算归因及搜索数据发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yang Li",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

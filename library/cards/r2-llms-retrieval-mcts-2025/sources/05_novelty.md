@@ -1,0 +1,3 @@
+The paper’s novelty is not MCTS or retrieval in isolation. Its distinctive move is to make retrieval operate at two different decision points in a test-time search: before search, it supplies a problem-level strategy; within search, it supplies step-level precedents for evaluating an evolving trajectory.
+
+This makes the retriever, the generator, and the process reward model jointly determine how inference compute is spent. Compared with a static few-shot prompt, the reference record changes as the tree changes; compared with a plain PRM-guided tree, the score is informed by retrieved reasoning evidence rather than only the local text.

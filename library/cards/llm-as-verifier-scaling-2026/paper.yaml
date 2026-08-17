@@ -1,0 +1,28 @@
+id: llm-as-verifier-scaling-2026
+title: 'LLM-as-a-Verifier: A General-Purpose Verification Framework'
+year: 2026
+venue: arXiv preprint
+authors: [Jacky Kwok, Shulu Li, Pranav Atreya, Yuejiang Liu, Yixing Jiang, Chelsea Finn, Marco Pavone, Ion Stoica, Azalia Mirhoseini]
+source_role: [scaling_study, infrastructure]
+verification_contract: [mixed]
+supervision_granularity: [step_level, full_episode]
+domains: [software-engineering, agentic-reasoning, mathematical-reasoning]
+training_use: [test_time_compute, evaluation, reinforcement_learning]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2607.05391, arxiv: https://arxiv.org/abs/2607.05391, venue: null, code: null, data: null, project: https://llm-as-a-verifier.com, huggingface: null, doi: https://doi.org/10.48550/arXiv.2607.05391}
+data_object: {prompt_source: 'Agent trajectories from Terminal-Bench V2, SWE-Bench Verified, RoboRewardBench, MedAgentBench, LIBERO, and MATH.', trace_author: 'Candidate agents and LLM generators.', answer_format: 'Paired trajectories, continuous verifier scores, preference probabilities, ranking pivots, and dense reward signals.', process_fields: [task, trajectory, criterion, score_logit_distribution, continuous_reward, preference_probability, pivot, ranking], environment_or_substrate: 'LLM-based trajectory verification and constrained candidate ranking.', verifier_or_reward: 'Expectation over score-token logit distributions, scaled by granularity, repeated evaluation, and criteria decomposition.', terminal_predicate: 'Selected trajectory success or benchmark-specific correctness.'}
+recipe_metadata: {base_model: 'Gemini 2.5 Flash for principal verification-scaling experiments.', teacher: null, generator: 'Agent and benchmark-specific rollout generators.', filtering_rule: 'Probabilistic Pivot Tournament concentrates pairwise verification on leading candidates.', sampling_protocol: 'Compare candidates with continuous score expectations and pairwise preference probabilities.', rollout_count: '20 trajectories per task for large-pool ranking experiments.', temperature: null, inference_budget: 'Score-token granularity, repeated verifier evaluations, criteria count, and pairwise comparison budget.', optimizer_or_scaffold: 'LLM-as-a-Verifier with Probabilistic Pivot Tournament.'}
+audit: {source_mixture: 'Official arXiv paper and project page.', split: 'See official paper for benchmark protocols.', decontamination: 'Check benchmark, agent, and verifier overlap before reuse.', license: 'Check model, project, and benchmark terms before reuse.', lineage: 'https://arxiv.org/abs/2607.05391', known_failure_modes: [logprob-access-dependence, judge-bias, criteria-prompt-bias, ranking-cost, verifier-reward-mismatch], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. It lists Stanford University, UC Berkeley, and NVIDIA Research.'}
+inclusion_reason: 'It explicitly scales verification quality and uses the resulting continuous signals for test-time candidate selection.'
+related: []
+tags: [test-time-compute, verification-scaling, ranking, agent-trajectories, reward-model]
+status: verified
+one_line_summary: 'LLM-as-a-Verifier turns score-token distributions into continuous trajectory rewards and scales verification along granularity, repetition, and criteria.'
+reading_priority: essential
+paper_type: Verification scaling and test-time ranking study
+best_for: Readers using expensive LLM verification to select or steer agent trajectories.
+confidence: high
+why_it_matters: 'It makes verifier capacity a measurable test-time scaling axis instead of treating judging as a fixed black-box step.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official arXiv PDF and project page checked.'}
+category_ids: [scaling_rlvr_test_time_compute]

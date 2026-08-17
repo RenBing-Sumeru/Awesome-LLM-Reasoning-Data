@@ -1,0 +1,3 @@
+Correctness is only correctness in the encoded Lean4 statement and environment. A compiled proof establishes the formal theorem as represented, not the fidelity of that formalization to a textbook theorem, and not the readability or pedagogical quality of the proof.
+
+The largest reuse risks are artifact-level: public code/data URLs, license, Lean4/mathlib versions, retained instance list, timeout policy, and prompt/scaffold files are not fully pinned in the current metadata. Premise conversion can also change task difficulty, and public theorem developments may already appear in model pretraining. Token-efficiency is informative only under comparable tokenizer, prompt, and proof-postprocessing settings.

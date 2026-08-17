@@ -1,0 +1,334 @@
+id: long-context-swe-rl-2025
+title: Training Long-Context, Multi-Turn Software Engineering Agents with Reinforcement Learning
+year: 2025
+venue: ICLR 2026 submission
+authors:
+- Alexander Golubev
+- Maria Trofimova
+- Sergei Polezhaev
+- Ibragim Badertdinov
+- Maksim Nekrashevich
+- Anton Shevtsov
+- Simon Karasik
+- Sergey Abramov
+- Andrei Andriushchenko
+- Filipp Fisin
+- Sergei Skvortsov
+- Boris Yangel
+source_role:
+- construction_recipe
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_agents
+- agent_trajectories
+- long_context
+- environment_interaction
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.03501
+  paper_pdf: https://arxiv.org/pdf/2508.03501v2
+  arxiv: https://arxiv.org/abs/2508.03501
+  code: null
+  training_code: null
+  data: https://huggingface.co/datasets/nebius/SWE-rebench
+  trajectories: null
+  model: null
+  project: null
+  huggingface: https://huggingface.co/datasets/nebius/SWE-rebench
+  doi: https://doi.org/10.48550/arXiv.2508.03501
+  venue: https://openreview.net/forum?id=etyJ7WjAKu
+  openreview: https://openreview.net/forum?id=etyJ7WjAKu
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2508.03501
+  environment_code: https://github.com/SWE-rebench/SWE-bench-fork
+  environment_code_revision: https://github.com/SWE-rebench/SWE-bench-fork/commit/980d0cca8aa4e73f1d9f894e906370bef8c4de8a
+  container_registry: https://hub.docker.com/repositories/swerebench
+  paper_era_data_revision: https://huggingface.co/datasets/nebius/SWE-rebench/tree/3fee35ad6b4f16d6048dd058d5797098f49e8352
+data_object:
+  unit_of_record: 'During training, one record is a complete repository-repair episode: an issue-conditioned initial observation,
+    a repository environment, an ordered action-observation history, a submitted patch, validation-test outcome, and episode
+    reward. These paper-specific records are described but not released; the public SWE-rebench artifact contains task/environment
+    rows instead.'
+  prompt_source: GitHub issue descriptions from SWE-rebench. The public upstream pool has 21,336 tasks from about 3,400 Python
+    repositories; the paper filters it to an unreleased 7,249-task training pool.
+  trace_author: Qwen2.5-72B-Instruct generates the initial RFT attempts; the RFT policy and its successive DAPO policies generate
+    later on-policy rollouts. No stronger teacher model generates the trajectories.
+  task_record:
+  - instance_id
+  - repo
+  - base_commit
+  - environment_setup_commit
+  - problem_statement
+  - ground_truth_patch
+  - test_patch
+  - FAIL_TO_PASS
+  - PASS_TO_PASS
+  - install_config
+  - requirements
+  - environment
+  - version
+  - quality_metadata
+  - repository_license_name
+  context_or_state: The hidden state is the complete sandboxed software environment, including repository files, source code,
+    and running processes. The policy conditions on the full observable history of issue text, prior actions, stdout, stderr,
+    and exit codes.
+  trace_or_actions: 'ReAct-style turns containing reasoning plus one command action: arbitrary shell, line-range edit, search/navigation,
+    file creation, or submit. The paper publishes the prompt and tool grammar but not the collected histories.'
+  observation: Initial GitHub issue text followed by command execution output, normally stdout, stderr, and exit codes, after
+    each environment action.
+  answer_format: A complete multi-turn command/observation episode ending in a repository patch submitted for executable validation.
+  answer_or_artifact: The final modified repository state and submitted patch. Upstream task rows separately contain the historical
+    gold patch; it is not an agent trajectory.
+  process_labels:
+  - assistant_turn_format_error_mask
+  - terminal_test_success
+  - trajectory_step_count
+  - length_penalty
+  - normalized_group_advantage
+  verifier_output:
+  - validation_test_pass_or_fail
+  - terminal_binary_reward
+  - trajectory_length_penalty
+  - final_scalar_reward
+  - group_normalized_advantage
+  reward: R_final equals binary validation-test success plus a step-count penalty. The penalty is zero before 10 turns and
+    decreases linearly to -1 at the maximum turn budget; the trajectory reward is normalized within a 10-rollout group and
+    broadcast to all trajectory tokens.
+  terminal_predicate: The submit command ends the episode. Before the length penalty, success is 1 only when the final proposed
+    patch passes the validation suite and 0 otherwise. The 40- or 80-turn cap can truncate a rollout; other abnormal termination
+    semantics are not disclosed.
+  provenance: Public SWE-rebench task/environment row -> paper-specific task filters -> 10 base-model attempts per selected
+    task -> retain 6,548 test-passing episodes for one-epoch RFT while masking malformed assistant turns -> synchronous on-policy
+    groups of 10 full trajectories -> test reward plus length penalty -> group-normalized DAPO update.
+  environment_or_substrate: A sandboxed Python repository snapshot with issue text, validation tests, shell/edit/search tools,
+    and submit. Official upstream rows expose repository commits and installation/test metadata, and 7,500 pre-built task
+    images were announced, but the paper's exact 7,249-task/image manifest is unavailable.
+  release_boundary: Public artifacts are task/environment rows, an execution fork, and a container registry. The paper-specific
+    RFT/RL trajectories, per-trajectory rewards, selected-task manifest, trained checkpoint, and replay bundle are unavailable.
+recipe_metadata:
+  base_model: Qwen2.5-72B-Instruct
+  teacher: No external teacher model. A single successful in-context trajectory is used only while collecting the initial
+    RFT rollouts; its provenance is unknown.
+  generator: The base Qwen2.5-72B-Instruct checkpoint generates RFT candidates. The current RFT/DAPO policy then generates
+    synchronous on-policy RL trajectories.
+  prompt_or_task_source: SWE-rebench GitHub issue tasks with repository snapshots and validation tests; Appendix F publishes
+    the system-level instruction, tool descriptions, and the RFT-collection-only one-shot demonstration.
+  filtering_rule: From 21,336 tasks, remove invalid-reference/import failures, modifications above seven files or at least
+    500 lines, tasks with an assigned LLM quality score of 3.0, and tests that vary over 50 repeated executions, leaving 7,249.
+    RFT keeps only test-passing episodes and masks formatting-error assistant turns. RL drops zero-advantage samples rather
+    than categorically dropping all failures or long loops.
+  selection_threshold:
+    maximum_modified_files: 7
+    maximum_modified_lines_exclusive: 500
+    excluded_llm_score: 3.0
+    flakiness_trials: 50
+    rft_terminal_success_required: true
+    stage_2_problem_policy: Remove tasks reported with a 2/3 success rate over training and tasks never solved; exact inequality,
+      measurement window, and manifest are unknown.
+  sampling_protocol: RFT runs the initial policy 10 times on each selected task and keeps 6,548 successful trajectories. Each
+    RL iteration samples 10 complete trajectories for each chosen problem using the current policy; rewards are normalized
+    per problem and the pipeline trains only after the whole synchronous batch is verified.
+  rollout_count:
+    rft_attempts_per_selected_task: 10
+    rft_successful_trajectories_kept: 6548
+    rl_trajectories_per_problem_per_iteration: 10
+    rl_iterations: over 100
+    total_rl_trajectories: unknown
+  temperature: 1.0
+  decoding: top_p, top_k, min_p, repetition_penalty, and other decoding filters are disabled for rollout generation; seeds
+    are unknown.
+  inference_budget: Stage 1 uses 65k context and at most 40 turns. Stage 2 uses 131k context and at most 80 turns, with a
+    length-penalty threshold of 10 turns in both stages.
+  search_or_scaffold: SWE-agent-like ReAct loop with shell commands, line-range editing, search/navigation, and submit; all
+    prior actions and observations remain in context. Exact scaffold code and revision are not released.
+  optimizer_or_scaffold: One RFT epoch at 65k context uses AdamW, learning rate 5e-6, weight decay 0.1, batch size 64, 10
+    warmup steps, cosine decay to zero, and 50 updates. RL uses synchronous full-parameter DAPO with AdamW, learning rate
+    1e-6, one epoch per iteration, gradient clipping 1.0, context parallelism, and YaRN factor 4.0. Stage 1/2 use 300/100
+    problems per iteration and batch sizes 128/256.
+  infrastructure: 16 H200 nodes with eight GPUs each; Kubernetes assigns one pod per agent; Tracto AI orchestrates evaluation;
+    an internal JAX framework trains the model; vLLM 0.7.4 performs inference.
+audit:
+  source_mixture: Real public GitHub issue/PR-derived Python repair tasks from SWE-rebench, self-generated successful RFT
+    episodes, and on-policy successful and failed RL episodes. Only the upstream task/environment rows are publicly released.
+  split: Training uses an unreleased 7,249-task subset and then a 2,028-task Stage 2 subset. SWE-rebench May and June are
+    explicitly excluded from training. Verified-50 is a disclosed random subset used repeatedly for intermediate evaluation;
+    exact train/evaluation deduplication manifests are unavailable.
+  decontamination: May/June temporal holdout is reported, but no broad source deduplication, model-pretraining contamination
+    screen, or complete SWE-bench overlap audit is disclosed.
+  benchmark_overlap: The paper does not report training on SWE-bench Verified, but a 50-instance subset is monitored across
+    more than 100 RL iterations, so checkpoint and design selection may adapt to it. The full Verified set is public and no
+    pretraining-exposure audit is provided.
+  lineage: SWE-rebench task -> task filters -> RFT attempts -> terminal-test selection and format-turn masking -> RFT checkpoint
+    -> two-stage synchronous DAPO rollout/reward/update loop. Record-level links among task IDs, containers, trajectories,
+    rewards, checkpoints, and results are not released.
+  license: The arXiv manuscript and SWE-rebench dataset card declare CC BY 4.0; the execution fork is MIT. The dataset card
+    requires respecting each source repository license. Rights for GitHub issues/comments, tests, dependencies, generated
+    trajectories, model outputs, and the unreleased trained checkpoint are not reconciled by one license manifest.
+  release_version:
+    paper: arXiv:2508.03501v2
+    paper_date: '2025-10-10'
+    openreview: etyJ7WjAKu
+    venue_state: submitted_to_ICLR_2026_acceptance_not_verified
+    paper_era_dataset: 3fee35ad6b4f16d6048dd058d5797098f49e8352
+    docker_announcement_dataset_card: 4ece23ba02fe8b68858e430134adddfd64d6f0f4
+    environment_fork_commit: 980d0cca8aa4e73f1d9f894e906370bef8c4de8a
+    current_dataset_checked_for_drift: 89cdfbab4ab1bd8f5a658bb212d1b63624f4f881
+    tagged_end_to_end_release: null
+  artifact_release_state: Paper, prompt/tool appendix, upstream 21,336-row SWE-rebench task dataset, execution fork, and a
+    registry announced as 7,500 task images are public. The exact 7,249 training manifest, 6,548 RFT episodes, failed RFT
+    attempts, online RL rollouts/rewards, training code, and model checkpoint are not.
+  released_objects:
+    paper_era_upstream_task_rows: 21336
+    upstream_repositories_reported: approximately 3,400
+    prebuilt_task_images_announced: 7500
+    exact_selected_training_task_manifest_released: false
+    rft_trajectory_corpus_released: false
+    rl_rollout_corpus_released: false
+    trained_checkpoint_released: false
+    training_code_released: false
+  environment_versioning:
+    repository: Upstream rows expose repo, base_commit, and environment_setup_commit, but the paper-specific selected-task
+      manifest is unavailable.
+    tests: Upstream rows expose test_patch plus FAIL_TO_PASS and PASS_TO_PASS lists; exact retained-suite logs and all 50-trial
+      flakiness records are unavailable.
+    container: The dataset card announces 7,500 Docker images, but the exact 7,249-task mapping, immutable OCI digests, and
+      complete paper-run image manifest are unavailable.
+    runtime: The paper identifies vLLM 0.7.4, an internal JAX trainer, Kubernetes, and Tracto AI, but does not release a complete
+      dependency or configuration lock.
+    reset_semantics: unknown
+    episode_replay: Not possible from public artifacts because the selected task/image mapping, policies, seeds, actions,
+      observations, submitted patches, rewards, and abnormal-termination/reset records are missing.
+  successful_and_failed_sample_retention: RFT retains only 6,548 test-passing full episodes and masks malformed assistant
+    turns inside those episodes; failed RFT attempts are discarded and unreleased. RL can retain both success and failure
+    when a 10-rollout group has nonzero relative advantages, while all zero-advantage samples are dropped and long episodes
+    receive a soft penalty. Whether any online rollout is persisted after synchronous training is unknown; none is publicly
+    released.
+  replayability: Upstream tasks expose repository/setup/test metadata and some task containers, but exact image digests, 7,249/2,028
+    manifests, dependency snapshots, reset semantics, seeds, action/observation logs, submitted patches, reward records, policies,
+    and the internal trainer are missing. Paper episodes are not deterministically replayable from public artifacts.
+  verifier_or_judge_failure_modes:
+  - Validation tests can be incomplete or accidentally encode identifiers not inferable from the issue; the paper removes
+    some invalid cases but publishes no false-positive/false-negative audit of the retained oracle.
+  - Test flakiness creates reward noise; 50-trial filtering reduces but does not prove deterministic behavior under dependency,
+    service, or hardware drift.
+  - One terminal scalar broadcast over a long episode provides weak credit assignment and can reward a passing patch despite
+    poor intermediate behavior.
+  - Binary success encourages patch submission at any cost and does not train calibrated abstention or uncertainty.
+  - Group-relative sampling drops homogeneous zero-advantage groups, so very easy and uniformly failed tasks contribute no
+    update under that batch.
+  - Discarding overlong looping trajectories hides negative examples; the paper identifies this failure and instead specifies
+    a soft step penalty.
+  - A vLLM upgrade that enabled top_k/min_p caused rollout-policy mismatch and degradation after 5-10 iterations, demonstrating
+    runtime/version sensitivity.
+  privacy_or_consent: Sources are public GitHub repositories, issues, comments, patches, and tests. No PII scan, contributor-consent
+    process, takedown/deletion procedure, or retained-content audit is disclosed.
+  security: The agent prompt permits arbitrary shell commands and package installation in sandboxed Kubernetes pods. Network
+    policy, credentials, syscall/capability restrictions, malicious-repository handling, and supply-chain controls are unknown.
+  known_failure_modes:
+  - RFT success-only selection discards failed attempts and can overrepresent already-solvable tasks.
+  - The exact LLM-quality metadata field behind the score-3.0 filter is not named.
+  - The 7,249-task and 2,028-task manifests are unavailable, so data selection cannot be audited record by record.
+  - Repeated Verified-50 monitoring risks benchmark-guided model or hyperparameter selection.
+  - Current SWE-rebench adds a post-paper 6,542-row filtered split; it must not be confused with the paper's 6,548 RFT trajectories.
+  - Container tags and runtime dependencies are not bound to immutable digests in a paper-specific manifest.
+  - Reported scores are author results; no independent reproduction or released checkpoint was verified.
+  citation_status: verified
+  confidence: high
+  notes: Audited arXiv v2 and Appendices A-G, the official OpenReview submission state, immutable paper-era and Docker-announcement
+    SWE-rebench card revisions, the pinned execution-fork commit, and current HF revision drift on 2026-07-20. Artifact verification
+    is scoped to upstream task/environment releases and does not imply that paper trajectories, training code, model, or replay
+    are public.
+  remaining_unknowns:
+  - Exact 7,249-task and 2,028-task instance manifests and filter implementation.
+  - Which nested LLM-quality score field is compared to 3.0 and exact Stage 2 cutoff semantics.
+  - RFT one-shot demonstration provenance and all random seeds.
+  - Complete online RL rollout count and persistence/retention policy.
+  - Paper-specific container tags/digests, repository/test snapshots, dependency locks, reset semantics, and network policy.
+  - Exact SWE-agent scaffold revision and internal JAX/DAPO training code.
+  - Released RFT/RL trajectories, rewards, selected patches, checkpoints, and run manifest.
+  - Broad duplication, benchmark-overlap, and model-pretraining contamination audit.
+  - Complete upstream rights, privacy/consent, deletion, and security audit.
+inclusion_reason: The paper gives a concrete, environment-grounded recipe for converting pinned repository tasks into successful
+  RFT episodes and on-policy long-context RL trajectories with executable terminal rewards, while its missing trajectory,
+  checkpoint, and replay release makes the audit boundary equally informative.
+related:
+- swe-rebench-v2-2026
+- swe-smith-scaling-data-construction-for-software-engineering-agents-2025
+- agent-rlvr-2025
+tags:
+- software-engineering-agents
+- repository-repair
+- agent-trajectories
+- long-context
+- rejection-fine-tuning
+- dapo
+- environment-reward
+- validation-tests
+- success-only-selection
+- sparse-terminal-reward
+- replay-risk
+- release-gap
+- version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: The paper filters 21,336 SWE-rebench tasks to 7,249, keeps 6,548 test-passing self-generated episodes for
+  RFT, then applies synchronous DAPO to 65k/131k repository interactions, but does not release the trajectories, training
+  code, or checkpoint.
+why_it_matters: It specifies how repository state, tool observations, test-based terminal reward, success-only warm-up data,
+  long-context rollout groups, and failure retention interact in SWE-agent post-training, while showing why upstream task
+  containers alone do not make the paper's learning data reusable or replayable.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  data_verified: true
+  environment_code_verified: true
+  container_registry_verified: true
+  artifact_verified: true
+  training_code_verified: false
+  trajectory_release_verified: false
+  model_release_verified: false
+  replay_verified: false
+  paper_license_verified: true
+  upstream_dataset_license_verified: true
+  complete_rights_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation, ICLR submission state, full v2 paper/appendices, paper-era upstream dataset, execution-fork commit, Docker
+    announcement, and later dataset drift were verified. `artifact_verified` means those official upstream artifacts exist;
+    it does not mean the paper-specific training data, code, checkpoint, reset protocol, or immutable replay bundle exists.
+curation_level: L3_summary_ready
+needs:
+- 'needs_training_manifest: release exact 7,249-task and 2,028-task IDs plus all filter decisions'
+- 'needs_trajectory_release: release successful and failed RFT/RL episodes with actions, observations, patches, rewards, and
+  exclusion reasons'
+- 'needs_model_and_code: release the trained checkpoint, internal JAX/DAPO code, exact scaffold revision, and configs'
+- 'needs_replay: pin container digests, dependency/test/harness/runtime versions, reset semantics, seeds, network policy,
+  and run manifest'
+- 'needs_filter_definition: identify the exact LLM score field and Stage 2 selection inequality/window'
+- 'needs_contamination_audit: quantify task duplicates, SWE-bench overlap, repeated Verified-50 selection effects, and pretraining
+  exposure'
+- 'needs_license_audit: reconcile source-repository, issue/comment, test, dependency, trajectory, model-output, and checkpoint
+  rights'
+- 'needs_privacy_and_security: document PII/consent/deletion handling and sandbox/network/supply-chain controls'
+- 'needs_venue_update: replace submission status only if an official ICLR decision or proceedings record appears'
+card: null

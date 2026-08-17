@@ -1,0 +1,5 @@
+- SCPO 按解析后的最终答案对 k 个采样回答聚类，并选择最高票组与最低票组。
+- 偏好对权重是 chosen 与 rejected 票差除以 k；训练结合加权 DPO 和 NLL。
+- 报告构造在 GSM8K/MATH 上用 k=8，在 ZebraLogic 上用 k=16，并使用依任务与 iteration 变化的阈值。
+- 共识只是可能放大共享错误的 proxy；benchmark 增益不能验证每个偏好对。
+- transductive test-query 实验，以及未发布偏好对、rollout 和代码，是主要审计边界。

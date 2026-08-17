@@ -1,0 +1,3 @@
+The core experiment evaluates HalluGuard on LLM-AggreFact against specialized hallucination detectors and larger general-purpose judges. On the RAGTruth subset, HalluGuard reaches 84.4% balanced accuracy, exceeding Granite Guardian 3.3-8B at 82.2% and slightly surpassing MiniCheck-7B at 84.0%, despite using a 4B backbone.
+
+Across the complete LLM-AggreFact benchmark, HalluGuard obtains 77.1% balanced accuracy, compared with 75.9% for GPT-4o. External evaluation, parameter-scale comparisons, label verification, and two-judge consensus filtering support its effectiveness. The results establish document-grounded classification ability, but do not prove that generated explanations are causally faithful or that the source document is factually correct.

@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "University of Mannheim"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2508.13024",
+    "https://wbsg-uni-mannheim.github.io/WebMall/",
+    "https://github.com/wbsg-uni-mannheim/WebMall"
+  ],
+  "verification_note": "Official arXiv, project, and repository sources verify corrected title, authors, SIGIR 2026/project status, and WebMall artifacts."
+}

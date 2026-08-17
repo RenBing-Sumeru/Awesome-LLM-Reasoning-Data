@@ -1,0 +1,1 @@
+核心贡献是一套把文本 LLM 和多模态 LMM 放进同一 Android action space 的环境：文本模型走 XML mode，多模态模型走带标记截图的 SoM mode，但二者都输出同一类点击、滑动、输入、长按、Home、Back、Finish 操作。它不是只发一个排行榜，而是把同一套环境用于 138 个任务的评测和 Android Instruct 轨迹数据采集。相对 AndroidWorld、AndroidEnv、AppAgent、AITW 和静态 UI 数据集，它的方向信号在于把可执行评测面和开源模型训练数据放到同一反馈契约里。

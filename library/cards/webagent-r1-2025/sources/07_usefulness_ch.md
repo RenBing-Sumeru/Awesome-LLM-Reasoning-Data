@@ -1,0 +1,4 @@
+
+对“Rollout, Search, and Test-Time Trace Data”而言，WebAgent-R1 可作为成组环境 rollout 的 schema 与审计案例。可复用记录应区分固定 BC 样本与每条 current-policy episode，并保留 task ID、起始环境状态、浏览器实例身份、cookie 或 reset 上下文、压缩前完整 observation、压缩后 context、action history、采样 response、实际执行 action、终止条件、checker 类型、二元 reward、group membership、relative advantage、交互上限以及策略/checkpoint revision。借助这些字段，整理者才能区分改进究竟来自初始化、rollout 多样性、verifier 行为、optimizer 设置还是更大的推理预算。
+
+论文直接支持四种用途：用 BC 数据做 SFT warm-up，通过程序化终局奖励进行 RLVR 风格的 agent training，在线优化 agent policy，以及通过增加交互轮数使用 test-time compute。论文没有实证 process-reward training、reward-model learning、preference learning，也没有把在线轨迹作为已发布数据集供复用。实践者可以用公开代码与超参数研究架构和实现选择，但精确复现仍需固定 WebArena 状态，并补齐未披露的 rollout、seed 与 interaction-budget 细节。因此，本 track 中最有价值的比较不是标题中的成功率，而是不同系统是否公开等价的 rollout budget、环境 snapshot、失败 episode 与 verifier contract。

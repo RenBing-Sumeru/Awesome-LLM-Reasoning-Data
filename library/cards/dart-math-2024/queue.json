@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构造用于SFT的数学样本，包含完整pipeline",
+    "updated_at": "2026-07-15T08:02:10Z"
+  },
+  "updated_at": "2026-07-15T08:02:10Z"
+}

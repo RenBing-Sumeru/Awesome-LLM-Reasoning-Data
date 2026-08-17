@@ -1,0 +1,102 @@
+id: multimodal-rewardbench-vlm-2025
+title: 'Multimodal RewardBench: Holistic Evaluation of Reward Models for Vision Language Models'
+year: 2025
+venue: arXiv 2025
+authors:
+- Michihiro Yasunaga
+- Luke Zettlemoyer
+- Marjan Ghazvininejad
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- vision-language
+- reward-modeling
+- reasoning-evaluation
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2502.14191
+  arxiv: https://arxiv.org/abs/2502.14191
+  code: https://github.com/facebookresearch/multimodal_rewardbench
+  data: https://github.com/facebookresearch/multimodal_rewardbench
+  project: https://github.com/facebookresearch/multimodal_rewardbench
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.14191
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Multimodal prompts collected from several vision-language datasets and VLM outputs.
+  trace_author: Expert annotators and source VLMs.
+  answer_format: Multimodal prompt, chosen response, rejected response, domain label, and preference annotation.
+  process_fields:
+  - prompt
+  - image
+  - chosen
+  - rejected
+  - domain
+  environment_or_substrate: Vision-language evaluation in six domains.
+  verifier_or_reward: Expert annotations determine which candidate response is preferred.
+  terminal_predicate: A VLM judge ranks the chosen response above the rejected response.
+recipe_metadata:
+  base_model: VLM judges and reward models benchmarked by the official code.
+  teacher: Expert annotators.
+  generator: Candidate answers are collected from various VLMs.
+  filtering_rule: Expert annotation and domain-specific curation retain evaluable response triplets.
+  sampling_protocol: Use data/all_data.json and pin repository commit.
+  inference_budget: Judge model and prompt configuration affect accuracy.
+  optimizer_or_scaffold: Official evaluation scripts and leaderboard.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Images, prompts, VLM responses, and expert preference annotations.
+  split: The paper reports 5,211 triplets; pin the official repository version.
+  decontamination: Source VLM evaluation data may overlap with public multimodal training corpora.
+  license: The repository states CC-BY-NC and notes additional third-party data terms.
+  lineage: arXiv paper and facebookresearch code-and-data release.
+  known_failure_modes:
+  - Expert pairs do not cover every vision-language failure mode.
+  - The benchmark is evaluation-oriented and its public release can be contaminated by reuse.
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, Meta-hosted official repository, released data path, domain coverage, and CC-BY-NC license
+    statement.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Multimodal RewardBench provides 5,211 expert-annotated multimodal preference triplets for evaluating VLM
+  reward models across six domains.
+why_it_matters: It supplies the image-conditioned chosen/rejected supervision needed to audit VLM judges beyond text-only
+  reward benchmarks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, Meta-hosted official repository, released data path, domain coverage, and CC-BY-NC license
+    statement.
+category_ids:
+- preference_reward_feedback_data

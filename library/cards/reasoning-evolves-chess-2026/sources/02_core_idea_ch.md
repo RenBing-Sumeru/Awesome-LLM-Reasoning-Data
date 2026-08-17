@@ -1,0 +1,1 @@
+它发布一个国际象棋 SFT 混合数据集及配套代码，将经筛选的 Llama 4 Maverick 回答、引导式合成的自然语言解释，以及由引擎或程序框架生成的记录结合起来；后者包括 verbalized alpha-beta pruning（VABP）、Factual Board Answering、Best Move 和 Best Line。核心反馈对象是程序化的国际象棋引擎检查或引擎导出的目标；另一项使用 gpt-oss-120b 的忠实度分析不应被视为这一核心验证器。

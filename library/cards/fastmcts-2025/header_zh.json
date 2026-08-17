@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "在 MCTS 风格的共享树中复用推理前缀，并把终端 LLM 判断回传为节点值，从而构造数学 SFT 路径与步骤/分支偏好对。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "树搜索数据合成与过程监督配方",
+  "best_for_ch": "研究推理数据合成、搜索树轨迹、终端验证、步骤偏好与 token 预算审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Peiji Li、Kai Lv、Yunfan Shao、Yichuan Ma、Linyang Li、Xiaoqing Zheng、Xipeng Qiu、Qipeng Guo",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

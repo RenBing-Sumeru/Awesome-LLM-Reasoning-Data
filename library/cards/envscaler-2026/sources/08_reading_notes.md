@@ -1,0 +1,5 @@
+- Start with the four released objects: 191 executable environments, 4,684 SFT scenarios without checks, 2,550 RL scenarios with checks, and 9,022 claimed SFT trajectories. No RL rollout corpus is public.
+- Read the feedback chain as generated terminal checklist -> Python Boolean checks -> passed fraction in [0,1]. Task Completed, ###STOP###, or an action limit terminates an episode but does not itself establish success.
+- Inspect the selector code with the paper: 191 of 266 candidates survive 100 checking rounds at not-fail >= 0.85, where warning is counted with pass; 75 rejected programs and raw votes are unavailable.
+- Treat SFT and RL evidence differently: SFT rows are filtered for syntax/completion/length and LLM-judged feasibility without terminal reward; RL uses online 64 x 8 rollouts per step, but those trajectories and rewards are not released.
+- Before reuse, separate the incompatible HF trajectory schemas, sandbox Python exec, pin commit 87e6673 and all four HF revisions, and obtain a manifest for dependencies, prompts, endpoints, seeds, failures, rights, and replay.

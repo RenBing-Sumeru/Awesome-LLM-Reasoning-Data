@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"Min-Seek 通过在定制 KV 缓存中仅保留短重构思考，稳定串行测试时扩展。","reading_priority_ch":"可读","paper_type_ch":"免训练的串行测试时扩展研究（Findings of EACL 2026）","best_for_ch":"研究长推理、推理稳定性与 KV 缓存高效扩展的读者。","confidence_ch":"高","authors_ch":"Michael R. Metel、Yufei Cui、Boxing Chen、Prasanna Parthasarathi（机构：华为诺亚方舟实验室）","category_ids":["scaling_rlvr_test_time_compute"]}

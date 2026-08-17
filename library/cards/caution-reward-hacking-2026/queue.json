@@ -1,0 +1,17 @@
+{
+  "title": "From Curiosity to Caution: Mitigating Reward Hacking for Best-of-N with Pessimism",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=EZn2TmBBfF",
+    "data": "https://openreview.net/attachment?id=EZn2TmBBfF&name=supplementary_material"
+  },
+  "review_note": "Official ICLR paper and supplementary-material link verified.",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以基于奖励模型表征预测误差的悲观扣分，直接缓解 Best-of-N 随预算增大而选中奖励黑客回答的失效。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

@@ -1,0 +1,1 @@
+LLMSQL 是约 80.3K 条记录的清洗版 WikiSQL benchmark，而非重新采集数据库。作者检测 case sensitivity、列类型、值匹配、非法 SQL 和无可执行答案等问题，自动修复可确定错误，对无法可靠修复的样本删除或重新标注，并保留 SQLite 表用于 execution accuracy。每条记录面向 LLM 提供自然语言问题、schema/table 与完整 SQL 文本；官方 Python 包统一 Transformers/vLLM 推理和执行评分。

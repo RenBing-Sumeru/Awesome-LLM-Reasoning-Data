@@ -1,0 +1,1 @@
+The paper unifies text and image leakage as a multimodal contamination audit. MM-Detect traces possible sources through white-, grey-, and black-box settings; its output is an audit signal, not a training dataset. The official repository provides code and datasets used by the workflow.

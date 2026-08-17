@@ -1,0 +1,5 @@
+- 在解读“structure-preserved”前先读附录 A.1：它是 rewrite instruction，不是 verifier，也不是已测量的忠实度保证。
+- 将附录 B 与公开 viewer 对照：作者称构造为 1,000 条长加 984 条短示例，但发布物是一个没有 pair ID 的 1,984 行 train split。
+- 将 Tables 2 和 3 视为有条件的消融：它们在本文设置下比较 direct/ThinkTwice 改写和 long-only/short-only 训练，却没有扫描 mixture ratio。
+- 将 Table 4 与 prompt template 一起读：balanced thinking 改变了推理指令，因而不隔离数据混合的因果作用。
+- 复用前应与上游 s1/s1K-1.1 文档一并阅读；不要从下游 Hugging Face 页面上的 MIT 标签推断上游来源、去污染或使用许可。

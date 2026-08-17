@@ -1,0 +1,7 @@
+The prior-work baseline is online agent reinforcement learning that repeatedly samples costly tool interactions, together with tool agents whose trajectories are expressed through fixed call formats or prompting scaffolds. Tool-R1 changes the trainable object to an executable Python-composed episode and changes sampling to a per-question cache of recent policy trajectories.
+
+The specific method-level change is the combination of three interfaces: response masking separates policy tokens from environment observations; a mixed judge/parse/execute reward scores the full episode; and a `G=16`, `g=8` dynamic queue reuses rollouts while resampling around the `0.2–0.8` difficulty band. The novelty claim should be attached to this integration and its reported ablations, not to any single inherited component.
+
+GRPO, Qwen2.5, Python execution, LLM-as-judge scoring, external tools, GAIA, and difficulty filtering are not introduced by this paper. The paper also does not release a new benchmark or a fixed trajectory dataset. Its value for reasoning-data research is a concrete agent-training contract linking episode fields, observation masking, composite reward, and online trajectory reuse.
+
+Before adopting the recipe, a builder must inspect the missing implementation, queue semantics, behavior-policy bookkeeping, judge prompt and calibration, sandbox and tool versions, retained failure records, data rights, and contamination controls. Without those artifacts, the contribution is a reconstruction target and audit reference rather than a reusable training release.

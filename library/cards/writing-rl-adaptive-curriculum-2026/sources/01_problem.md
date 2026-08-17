@@ -1,0 +1,3 @@
+Long-form writing has no single ground-truth answer, so the verifiable rewards that work for mathematics and code cannot simply be reused. Supervised writer models can imitate long responses, but their improvement is constrained by the quality ceiling of the collected demonstrations and can saturate as more similar examples are added.
+
+The paper asks how reinforcement learning can improve open-ended writing when a static reward model and a fixed reference answer give weak or stale learning signals. Its answer is to make the training set and the comparison target responsive to the current policy: retain instructions on which stronger systems reveal a meaningful gap, then raise the reference difficulty only after the policy has caught up.

@@ -1,0 +1,125 @@
+id: groma-instruct-2024
+title: 'Groma: Localized Visual Tokenization for Grounding Multimodal Large Language Models'
+year: 2024
+venue: ECCV 2024
+authors:
+- Chuofan Ma
+- Yi Jiang
+- Jiannan Wu
+- Zehuan Yuan
+- Xiaojuan Qi
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://doi.org/10.1007/978-3-031-72658-3_24
+  arxiv: https://arxiv.org/abs/2404.13013
+  code: https://github.com/FoundationVision/Groma
+  data: https://huggingface.co/datasets/FoundationVision/groma_instruct
+  project: https://github.com/FoundationVision/Groma
+  huggingface: https://huggingface.co/datasets/FoundationVision/groma_instruct
+  doi: https://doi.org/10.1007/978-3-031-72658-3_24
+  venue: https://doi.org/10.1007/978-3-031-72658-3_24
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public detection, referring-expression, and visual instruction sources converted to region-aware prompts
+  trace_author: GPT-4V generates grounded multi-turn conversations around selected regions
+  answer_format: image, region tokens or boxes, grounded user dialogue, and assistant response
+  process_fields:
+  - image
+  - region tokens or boxes
+  - grounded user dialogue
+  - and assistant response
+  environment_or_substrate: JSON records with image references, region tokens, and boxes
+  verifier_or_reward: region-box consistency, source annotations, and grounding benchmark scores
+  terminal_predicate: Retain a record only when region-box consistency, source annotations, and grounding benchmark scores
+    accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: GPT-4V generates grounded multi-turn conversations around selected regions
+  generator: Groma first represents selected regions as localized visual tokens, then uses roughly 30K GPT-4V conversations
+    that refer to those tokens so the model learns recognition, description, and grounded dialogue in one format.
+  filtering_rule: region-box consistency, source annotations, and grounding benchmark scores
+  sampling_protocol: public detection, referring-expression, and visual instruction sources converted to region-aware prompts
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: grounded multimodal instruction SFT
+audit:
+  source_mixture: public detection, referring-expression, and visual instruction sources converted to region-aware prompts
+  split: 'Official release scale: about 30,000 GPT-4V-generated grounded conversations; storage: JSON records with image references,
+    region tokens, and boxes.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository and dataset-card terms; source-image licenses remain applicable
+  lineage: public detection, referring-expression, and visual instruction sources converted to region-aware prompts -> GPT-4V
+    generates grounded multi-turn conversations around selected regions -> region-box consistency, source annotations, and
+    grounding benchmark scores -> grounded multimodal instruction SFT.
+  known_failure_modes:
+  - GPT-4V conversations can hallucinate attributes outside the annotated region
+  - region proposals inherit detector bias
+  - source-image and generated-text terms are heterogeneous.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 25 citations; this is not a Google Scholar count.'
+inclusion_reason: 'Groma Instruct is a public Track 01 training object: image, region tokens or boxes, grounded user dialogue,
+  and assistant response; it is consumed by grounded multimodal instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- region-token-grounded-conversations
+status: verified
+one_line_summary: Groma releases about 30K GPT-4V conversations that bind dialogue turns to localized visual tokens and boxes.
+why_it_matters: making localized visual tokens explicit fields that can be referenced throughout a natural dialogue
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training a multimodal assistant that can discuss user-selected image regions
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: region-token grounded conversations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include The University of Hong Kong, ByteDance Inc..
+    venue: 'The official venue URL confirms formal publication at ECCV 2024: https://doi.org/10.1007/978-3-031-72658-3_24'
+    impact: OpenAlex reported 25 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON records with image references, region tokens, and boxes records at
+      https://huggingface.co/datasets/FoundationVision/groma_instruct with terms recorded as: official repository and dataset-card
+      terms; source-image licenses remain applicable.'
+  selection_eligible: true
+  year_impact_threshold: 3

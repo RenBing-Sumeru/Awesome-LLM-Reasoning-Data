@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AM-Thinking-v1 以约 284 万条 SFT 响应和两阶段 GRPO 训练 Qwen2.5-32B，公开了任务专属奖励、16-rollout 设置、模型权重及 54.8K 条 RL 数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型报告与开放后训练配方",
+  "best_for_ch": "研究公开查询清洗、数学标注修正、规则奖励、代码沙箱、难度课程与中等规模推理模型复现的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yunjie Ji 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "data_construction_open_release_recipes"
+  ]
+}

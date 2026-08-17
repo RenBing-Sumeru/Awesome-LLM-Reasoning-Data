@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Salesforce AI Research",
+    "Singapore Management University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2410.04698",
+    "https://arxiv.org/html/2410.04698"
+  ],
+  "verification_note": "Official arXiv sources verify the Salesforce AI Research and Singapore Management University affiliations; one author appears without a visible affiliation marker and is not assigned beyond the main institution list."
+}

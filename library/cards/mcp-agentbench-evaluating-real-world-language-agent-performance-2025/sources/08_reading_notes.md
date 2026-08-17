@@ -1,0 +1,6 @@
+- Keep the date distinction explicit: arXiv v1 appeared in 2025, but the formal publisher record is AAAI 2026; the entry ID preserves the earlier batch identity.
+- Remember the object boundary: 600 query-reference-answer instances generate interaction histories, but the paper neither defines one gold execution trace nor confirms an official trajectory archive.
+- Read Appendix E before trusting Pass Rate. MCP-Eval treats specific external-looking data as evidence of tool use even though the judge cannot see the call trace or state.
+- Interpret Table 1 as a model-plus-scaffold measurement: Qwen3-235B-A22B reports 64.7% with ReAct and 40.2% with native tool calling; Kimi K2 reaches 61.0% with native tool calling.
+- Pair this paper with ComplexMCP for programmatic final-state verification and Toolathlon for task-specific evaluators and released trajectory logs; the feedback and release contracts differ more than their shared MCP/tool-use framing suggests.
+- Reuse only for reading and evaluation design until the 600 tasks, server/tool manifests, versions, rights, complete episodes, replay records, and independent judge/security calibration are verified.

@@ -1,0 +1,279 @@
+id: buildbench-2025
+title: 'BuildBench: Benchmarking LLM Agents on Compiling Real-World Open-Source Software'
+year: 2025
+venue: NeurIPS 2025 Deep Learning for Code Workshop (DL4C), Poster
+authors:
+- Zehua Zhang
+- Ati Priya Bajaj
+- Divij Handa
+- Siyu Liu
+- Arvind S Raj
+- Hongkai Chen
+- Hulin Wang
+- Yibo Liu
+- Zion Leonahenahe Basque
+- Souradip Nath
+- Vishal Juneja
+- Nikhil Chapre
+- Yan Shoshitaishvili
+- Adam Doupé
+- Chitta Baral
+- Ruoyu Wang
+source_role:
+- benchmark
+- agent_environment
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software_engineering
+- repository_level_code
+- code_agents
+- c_cpp
+- build_automation
+- environment_interaction
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.25248v1
+  arxiv: https://arxiv.org/abs/2509.25248v1
+  code: null
+  data: https://huggingface.co/datasets/STEVENZHANG904/Build_Bench_Test_Data
+  project: null
+  huggingface: https://huggingface.co/datasets/STEVENZHANG904/Build_Bench_Test_Data
+  validation_data: https://huggingface.co/datasets/STEVENZHANG904/Build_Bench_Validation_Data
+  test_revision: https://huggingface.co/datasets/STEVENZHANG904/Build_Bench_Test_Data/tree/3c3fcb66ddd525219857a40c91d94a8b32c59e14
+  validation_revision: https://huggingface.co/datasets/STEVENZHANG904/Build_Bench_Validation_Data/tree/971b6834230b5cbc4695d42bddc5ff51cf1267c8
+  doi: https://doi.org/10.48550/arXiv.2509.25248
+  venue: https://neurips.cc/virtual/2025/131679
+  openreview: https://openreview.net/forum?id=ZqFdnJLXHP
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: Repository-compilation benchmark task with a pinned source repository, manual compilability and target-binary
+    labels, optional documentation-URL retrieval labels, and an episode-level executable success predicate; it is not a released
+    agent-rollout corpus.
+  prompt_source: GitHub C/C++ repositories sampled from an April 2008-January 2024 source population. The agent receives the
+    repository, README, and root file list; an optional retriever follows repository files or external documentation URLs.
+  trace_author: Evaluated LLM agents generate Bash command batches and receive execution feedback. Human experts generated
+    task-level compilability, target-executable, and documentation-URL labels. Complete agent traces are not released.
+  released_test_fields:
+  - full_name
+  - html_url
+  - stargazers_count
+  - size
+  - language
+  - description
+  - created_at
+  - pushed_at
+  - default_branch
+  - license
+  - repo_name
+  - compilable
+  - target_executables
+  - cross_compiled_executables
+  - documentation_url_trajectory
+  - failure_reason
+  - comment
+  - commit_hash
+  released_validation_fields:
+  - repo_name
+  - github_url
+  - github_stars
+  - compilable
+  - documentation_url_trajectory
+  - build_instructions_in_readme
+  - license
+  - documentation_url_trajectory_json
+  context_or_state: A fresh Ubuntu 22.04 Docker filesystem containing the target repository, its current build state, README/file-tree
+    context, optional retrieved documentation, and prior command history. The current test labels pin repository commits,
+    but the validation rows and paper-time release do not.
+  action_or_trace: At refinement step k, Bash Command Generator emits a sequence S_k of shell commands; Execution Agent runs
+    the batch. Actions may install dependencies, navigate directories, configure a debug build, compile/install artifacts,
+    retry after errors, and patch source files.
+  answer_or_artifact: Produced executables, libraries, or cross-compiled binaries, evaluated by their file names against expert-generated
+    target lists. No functional binary test suite or semantic patch-equivalence check is reported.
+  process_labels:
+  - No released step-level correctness labels
+  - No released state-action rewards or trajectory values
+  - The released field called Build Trajectory is a documentation-URL chain, not an agent rollout
+  observation: Execution result f_k, including command output and compilation errors, is returned to the generator for iterative
+    repair. Full structured stdout/stderr logs and state snapshots are not published.
+  verifier_output: Offline evaluation reports unvalidated completion, strict filename success, and flexible filename success.
+    Per-run verifier reports are not released.
+  reward: No training reward is reported. Benchmark feedback is a terminal evaluation outcome.
+  terminal_predicate: The online loop stops when an undisclosed Success(f_k) returns true or k reaches an undisclosed maximum
+    K. Offline Completion requires error-free termination plus at least one binary; Strict Success requires every expert-listed
+    binary filename; Flexible Success requires at least one listed filename.
+  provenance: GitHub REST API population -> keyword/star/fork filters -> random 385-repository candidate pool -> 12 systems
+    graduate students manually build and label candidates -> 148 compilable evaluation tasks; a separately selected 70-popular-repository
+    validation set supports method development.
+  environment_or_substrate: Fresh Ubuntu 22.04 Docker container per repository with root access and minimal pre-installed
+    packages; agent may use apt, fetch external documentation, run repository build scripts, and alter source. Base-image
+    digest, Dockerfile, dependency/index snapshot, cache policy, network policy, and wall-clock timeout are not released.
+  release_shape: 'Paper evaluation: 148 compilable test repositories and 70 validation repositories. Current test revision:
+    385 metadata rows, 385 label rows (148 Yes, 237 No), and 130 retrieval-label records. Current validation revision: 70
+    rows (65 Yes, 5 No). Both releases expose a single Hub viewer split but are semantically benchmark/validation data, not
+    training splits.'
+recipe_metadata:
+  base_model: Experiments use GPT o3-mini and Claude 3.7 Sonnet for single-turn baselines; OSS-Build-Agent is evaluated with
+    GPT-4o, GPT o3-mini, Claude 3.7 Sonnet, Gemini 2.5 Flash, Qwen3 235B, and Qwen3 Coder 485B. CompileAgent uses GPT-4o.
+    Exact API snapshot IDs are not disclosed.
+  teacher: unknown
+  generator: 'OSS-Build-Agent: optional LLM-assisted documentation retriever followed by a two-agent Bash Command Generator/Execution
+    Agent observation-repair-rebuild loop.'
+  prompt_task_source: 2.77M C and 4.23M C++ GitHub repositories dated 2008-04-01 through 2024-01-01; after filters, 6.57M
+    remain and 385 are randomly sampled.
+  sampling_protocol: Exclude names/descriptions matching low-quality keywords, stars below 50, and forks; sample 385 for a
+    95% confidence/5% error estimate; manually build every candidate; retain 148 best-effort compilable repositories for evaluation
+    and construct a separate 70-popular-repository validation set.
+  temperature: unknown
+  rollout_count: Most reported configurations use one dataset-wide run. GPT-4o with retrieval is repeated in three independent
+    runs and is also reported as pass@1-pass@3. Per-task seed control is unknown.
+  inference_budget: Retrieval follows up to three new links per iteration for at most three iterations. The build loop stops
+    at an undisclosed K; OSS-Build-Agent averages 6.6 error-resolution attempts and CompileAgent 7.5 differently granular
+    steps. Token, cost, and wall-clock limits are not disclosed.
+  search_or_scaffold: README-first retrieval over repository files and live external web pages; fetched pages are summarized
+    and re-evaluated. Command batches execute as root inside a fresh Docker container and feed execution errors back to the
+    generator.
+  filtering_rule: Programmatic keyword/star/fork filtering followed by human best-effort compilation exclusions for non-cross-compilable
+    targets, trivial/unbuildable content, missing critical files/unresolvable dependencies, and unresolved compile/link failures.
+  selection_threshold: 148 of 385 manually evaluated candidates are labeled compilable. The exact human time/action threshold
+    for best-effort success is not operationalized.
+  optimizer_or_scaffold: Evaluation-only agent scaffold; no policy optimizer, SFT, preference-learning, or RL procedure is
+    reported.
+  reset_protocol: Fresh Ubuntu 22.04 Docker container for each repository. Submodule, dependency, external-document, and package-cache
+    reset details are unknown.
+  patch_policy: Source patching is permitted in practice; Appendix case study 1 reports an agent updating obsolete OpenCV
+    API constants. No semantic-equivalence or allowed-change policy is disclosed.
+  final_release_scale: 148 positive evaluation tasks within a released 385-candidate labeled pool; 70 validation tasks; 130
+    test retrieval-label records.
+audit:
+  source_mixture: Real GitHub C/C++ repository metadata and source snapshots, README/file-tree context, mutable external build
+    documentation, expert compilability/target-binary labels, documentation-URL chains, and terminal filename checks.
+  split: Semantic split is 148 compilable random-sample test repositories plus 70 hand-picked popular validation repositories.
+    The public test repository also retains 237 non-compilable candidates. No training split or hidden test partition is reported.
+  decontamination: No model-training-corpus contamination audit is reported. The repository date cutoff, star/keyword filters,
+    and fork removal do not establish decontamination.
+  benchmark_overlap: The paper contrasts BuildBench with the 100-project CompileAgentBench and tests CompileAgent on BuildBench,
+    but releases no instance-level overlap/deduplication report against CompileAgentBench or other repository-agent benchmarks.
+    Fork removal does not detect copied or renamed code.
+  lineage: Current test labels contain a source commit hash for all 385 rows, but the general metadata retains mutable default-branch/web
+    URLs; validation rows lack commit hashes. Submodule commits, dependency versions, external documentation snapshots, build
+    patches, generated binaries, evaluator version, and run IDs are not linked end to end.
+  license: Both HF dataset cards declare CC BY 4.0. Underlying repositories have heterogeneous licenses; in the current test
+    metadata 92/385 license cells are blank and 60 are NOASSERTION, while validation has 18/70 NOASSERTION. The dataset declaration
+    does not resolve rights for linked code, dependencies, documentation, agent patches, or binaries.
+  release_version: 'Paper: arXiv 2509.25248v1 (2025-09-27), NeurIPS DL4C poster/OpenReview ZqFdnJLXHP. Test data checked at
+    3c3fcb66ddd525219857a40c91d94a8b32c59e14 (2026-02-22); validation checked at 971b6834230b5cbc4695d42bddc5ff51cf1267c8
+    (2025-08-06). The paper-time test label commit d0a2dfa8a309897f7bb299eb4fff067a58442d06 had six fields and no commit hashes;
+    the current release adds failure metadata, commit hashes, and retrieval_labels.json without a paper-linked changelog.'
+  artifact_hashes:
+    arxiv_v1_pdf_sha256: 1a081658d7a1a38c53dd9234ea38ab5c480b40c7fdc9eb97b64b89dd5ceb02db
+    arxiv_v1_source_sha256: 102f389a32a57ac8871ffc4fc782c8cdca215dbf3539bbe20d4f5763e22fe61d
+    test_metadata_csv_sha256: 4cc7b5a6c22893cb8a783dcf5cb64cc91ff421dd76037a38daa293ac28b39e0e
+    test_labels_csv_sha256: 0ac58b9f702e026938147ee1d0d281823e9ac7dedeb3901a87102fa5e428b9ef
+    test_retrieval_json_sha256: e5b8bdcbeb996ac18c6e2d1e3c41066671d8a97e220e19defd0c7e600bc9fa29
+    validation_csv_sha256: ef945c92b8e5d23196e3581e2c0124092d42627303c18092e49af2b156d22059
+    note: Curator-computed from official immutable downloads; not author-published checksums.
+  verifier_or_judge_failure_modes:
+  - Unvalidated completion can be a false positive when a failed build leaves intermediate binaries or only a submodule/vendored
+    package builds.
+  - Strict/flexible filename matching does not establish binary functionality, semantic fidelity, security, or reproducibility
+    and can be fooled by wrong or stale artifacts with expected names.
+  - Online Success(f_k), numerical K, and the evaluator implementation are undisclosed; an agent may terminate before resolving
+    root causes.
+  - Agents can patch source code, so build success may refer to a modified program without a semantic-equivalence or allowed-change
+    check.
+  - LLM retrieval may follow different live-documentation paths, and model nondeterminism compounds over multi-turn execution.
+  - Dependency resolution, wrong directories, incorrect flags, repository errors, and insufficient troubleshooting are documented
+    failure modes; 69 inspected o3-mini cases recognized errors but failed to resolve them.
+  successful_and_failed_sample_retention: The current test label file preserves 148 positive and 237 negative repository-level
+    compilability labels, but only 126 negative rows have a non-empty failure reason. Complete successful/failed agent commands,
+    observations, patches, binaries, execution logs, retry histories, and per-run terminal verdicts are not released.
+  container_dependency_network_cache_timeout_replay: Fresh Ubuntu 22.04 per repository is disclosed. Exact image digest/Dockerfile,
+    preinstalled packages, package and dependency locks, index snapshots, submodule policy, network allowlist, fetched-page
+    snapshots, cache behavior, wall-clock timeout, numeric turn limit K, random seeds, and replay commands are unknown.
+  security: The disclosed scaffold runs untrusted repositories and build scripts as root, installs packages, follows external
+    URLs, and may edit source. No threat model, egress restriction, sandbox-hardening profile, secret policy, artifact malware
+    scan, or supply-chain isolation procedure is reported. Reuse should occur only in disposable, network-restricted sandboxes.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: The evidence supports an evaluation benchmark and release of task/terminal-label records. It does not support calling
+    the release a trajectory-training corpus or broadening training_use beyond evaluation and audit.
+  remaining_unknowns:
+  - Public OSS-Build-Agent code, evaluator implementation, exact prompts/configs, and paper-linked commit
+  - Complete successful and failed agent rollouts, logs, patches, binaries, and per-run identifiers
+  - Dockerfile/image digest, exact dependencies, package-index snapshot, network/cache/timeout policy, numeric K, and seeds
+  - Validation-repository commits and end-to-end lineage across submodules, docs, patches, binaries, and evaluator
+  - Paper-to-current-data changelog explaining the post-paper test-label expansion
+  - Instance-level benchmark overlap and model-pretraining contamination audit
+  - Rights/attribution manifest for all repositories, documentation, dependencies, patches, and binaries
+  - Threat model and safe execution policy for untrusted build inputs
+inclusion_reason: 'BuildBench makes repository compilation an environment-grounded agent episode: a model retrieves documentation,
+  emits shell-command batches, observes build errors, and is scored by expert-targeted binary predicates. Its unusually explicit
+  terminal contract and released positive/negative task labels are valuable, while the absence of public rollouts, code, environment
+  locks, and complete rights/security metadata is itself an important audit boundary.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- software-engineering-agent
+- repository-compilation
+- build-benchmark
+- executable-environment
+- terminal-predicate
+- documentation-retrieval
+- failure-analysis
+- release-version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: BuildBench turns real C/C++ repositories into executable build-agent tasks with README/web retrieval, iterative
+  shell feedback, and strict/flexible target-binary checks; the current release retains 385 candidate labels but not full
+  rollouts or a pinned public scaffold.
+why_it_matters: It cleanly separates a repository task, an interactive execution episode, and a terminal verifier, while exposing
+  how mutable dependencies, source patching, filename-only success, missing failure traces, and release drift can undermine
+  reuse of environment-agent data.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_schema_verified: true
+  release_history_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified arXiv v1 PDF/source, NeurIPS 2025 workshop poster and linked OpenReview record, both official HF dataset
+    cards, immutable revisions, file schemas/counts, release histories, licenses, and curator-computed download hashes. No
+    public paper-linked code repository was verified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_code: publish or identify OSS-Build-Agent, evaluator, prompts/configs, and the exact paper commit'
+- 'needs_replay: pin Docker image, packages/indexes, submodules, documentation snapshots, network/cache/timeout settings,
+  K, seeds, and replay commands'
+- 'needs_trajectory_release: publish successful and failed commands, observations, logs, patches, binaries, and terminal verdicts
+  with run IDs'
+- 'needs_release_mapping: provide a changelog mapping arXiv/OpenReview versions to test/validation dataset commits and schema
+  changes'
+- 'needs_license: resolve blank/NOASSERTION source licenses and document rights/attribution for code, docs, dependencies,
+  patches, and binaries'
+- 'needs_contamination_audit: report instance/code overlap with CompileAgentBench and other benchmarks plus model-corpus contamination
+  checks'
+- 'needs_security: document threat model, sandbox, privilege, egress, secret, package-supply-chain, and artifact-scan policy'
+card: null

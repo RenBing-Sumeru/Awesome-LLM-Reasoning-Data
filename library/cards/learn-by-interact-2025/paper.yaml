@@ -1,0 +1,229 @@
+id: learn-by-interact-2025
+title: 'Learn-by-interact: A Data-Centric Framework For Self-Adaptive Agents in Realistic Environments'
+year: 2025
+venue: ICLR 2025
+authors:
+- Hongjin Su
+- Ruoxi Sun
+- Jinsung Yoon
+- Pengcheng Yin
+- Tao Yu
+- Sercan Ö. Arık
+source_role:
+- construction_recipe
+- model_report
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- software_engineering_agents
+- web_navigation_agents
+- desktop_computer_use
+- data_science_engineering_agents
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- search_substrate
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/file/dd745a0c4f91fe91866fe6788be9cc28-Paper-Conference.pdf
+  paper_pdf: https://proceedings.iclr.cc/paper_files/paper/2025/file/dd745a0c4f91fe91866fe6788be9cc28-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2501.10893
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  models: null
+  release: null
+  dataset_card: null
+  doi: https://doi.org/10.48550/arXiv.2501.10893
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/dd745a0c4f91fe91866fe6788be9cc28-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=3UKOzGWCVY
+  acl: null
+  pmlr: null
+  cvf: null
+  author_page: https://hongjin-su.github.io/
+data_object:
+  record_type: Environment-specific instruction-subtrajectory pairs, where each trajectory is an alternating sequence of observations
+    and actions; no official serialized corpus was found.
+  prompt_source: Human-authored documentation, tutorials, FAQs, and SWE-bench-Lite Python files are crawled as seed resources.
+    Claude-3.5-Sonnet samples three task instructions per document.
+  trace_author: Claude-3.5-Sonnet acts in each benchmark environment to produce raw trajectories. The same model constructs
+    new summary-style or purpose-abstraction instructions from contiguous subtrajectories.
+  context_state:
+  - environment and current observation
+  - generated task instruction
+  - complete action-observation interaction history
+  - environment-specific action space and stopping condition
+  record_schema:
+    instruction: A backward-constructed natural-language summary or abstracted purpose for the observed subtrajectory, which
+      may differ from the initial task.
+    trajectory: A contiguous sequence (observation_i, action_i+1, observation_i+1, ..., action_j, observation_j).
+    provenance: Environment family and source documentation are described at aggregate level; per-record document URLs, crawl
+      timestamps, environment versions, generator revisions, and stable record IDs are undisclosed.
+    quality_metadata: Adjacent duplicate-state removal and unanimous Claude/Gemini committee acceptance are described, but
+      per-record judge rationales, votes, scores, rejection reasons, and original-task success labels are unavailable.
+  record_counts:
+    documents:
+      swe_bench: 6464
+      webarena: 3578
+      osworld: 7362
+      spider2_v: 11231
+      total: 28635
+    raw_trajectories:
+      swe_bench: 19392
+      webarena: 10734
+      osworld: 22086
+      spider2_v: 33693
+      total: 85905
+    backward_constructed_candidates:
+      swe_bench: 180752
+      webarena: 185635
+      osworld: 437635
+      spider2_v: 652786
+      total: 1456808
+    filtered_examples:
+      swe_bench: 101523
+      webarena: 109276
+      osworld: 103526
+      spider2_v: 125683
+      total: 440008
+  rejected_records: Counts can be derived from Table 1, and the appendix shows selected detour and repeated-state cases, but
+    the complete rejected set is not released.
+  downstream_conversion: For SFT, each instruction-trajectory pair is converted to next-action prediction examples. For training-free
+    use, whole examples are retrieved as demonstrations at each agent step.
+  released_payload: The paper reports aggregate counts and selected examples and prompts; no official machine-readable trajectories,
+    training examples, rejected examples, or record manifest were found.
+recipe_metadata:
+  source_resources: SWE-bench-Lite non-repeated Python files plus public documentation for GitLab, Google Maps, Amazon, Reddit,
+    Chrome, GIMP, LibreOffice, Ubuntu, Thunderbird, VLC, VS Code, dbt, Dagster, Astronomer, Airbyte, Superset, Metabase, Snowflake,
+    BigQuery, and JupyterLab.
+  environment_families:
+  - SWE-bench-Lite
+  - WebArena
+  - OSWorld
+  - Spider2-V
+  generator_model: Claude-3.5-Sonnet
+  generator_revision: unknown
+  instruction_budget: three task instructions per source document
+  interaction_budget: One raw trajectory per generated instruction, terminated by the agent's stop action or the environment
+    maximum-step limit; benchmark-specific maximum steps are undisclosed.
+  backward_construction: Enumerate every contiguous observation-action subtrajectory and ask the LLM to produce either a step
+    summary or an abstraction of its purpose, yielding quadratic candidate growth in trajectory length.
+  verifier: Remove consecutive repeated action-observation states, then retain a pair only when both Claude-3.5-Sonnet and
+    Gemini-1.5-Pro judge it coherent, natural, reasonable, and aligned with its constructed instruction.
+  verifier_revisions: unknown
+  selection_threshold: unanimous two-model committee acceptance
+  sampling:
+    temperature: 0
+    top_p: unknown
+    random_seed: unknown
+  icl_retrieval: Retrieve up to five observation-based matches and five model-based dense matches per step. An LLM writes
+    the dense query from the current instruction, history, and observation; stella_en_1.5B_v5 is the retriever.
+  sft_format: Convert accepted instruction-subtrajectory pairs into action-prediction inputs and targets.
+  optimizer_or_scaffold: LoRA fine-tuning of CodeGemma-7B and Codestral-22B with batch size 128, learning rate 2e-5, warmup
+    ratio 0.03, maximum length 8192, and three epochs. LoRA rank and other adapter settings are undisclosed.
+  compute: Experiments used 80GB H100 machines. GPU count, synthesis and training runtime, total tokens, total cost, and failed-run
+    compute are undisclosed.
+  evaluation: SWE-bench uses executed-patch pass@1; WebArena mixes Claude fuzzy matching and string matching; OSWorld uses
+    task-specific environment-state scripts; Spider2-V combines file, information, and execution checks.
+  reported_results: In the ICLR final, the largest ICL gain is +11.1 points for Claude on OSWorld, and Codestral-22B rises
+    from 4.7 to 27.8 on WebArena after SFT (+23.1 points). These are author-reported and not independently reproduced.
+audit:
+  source_mixture: 'Inputs are not annotation-free in a literal provenance sense: the recipe consumes human-authored software,
+    documentation, tutorials, FAQs, and benchmark environments, then uses proprietary LLMs for generation and filtering. Exact
+    source snapshots and rights lineage are not packaged.'
+  split: A separate synthetic pool is constructed for each evaluation environment. No immutable train/validation split, group
+    binding from raw trajectories to subtrajectories, or record-level manifest is released.
+  decontamination: unknown
+  benchmark_overlap: Synthesis deliberately uses resources associated with the four downstream benchmark environments. No
+    task-level, instruction-level, or semantic overlap analysis against evaluation instances is reported.
+  license: The paper is CC BY 4.0 through OpenReview/arXiv. The unreleased generated corpus, code, model checkpoints, third-party
+    documentation snapshots, and environment-derived observations have no disclosed artifact license.
+  lineage: Human-authored resources -> three self-instruct tasks per document -> Claude environment interactions -> all contiguous
+    subtrajectories -> backward-constructed instructions -> duplicate-state removal -> unanimous Claude/Gemini committee filter
+    -> agentic ICL retrieval or next-action SFT.
+  release_version: unknown
+  successful_and_failed_sample_retention: The original trajectory need not solve its initial task; backward construction can
+    relabel its observed behavior. The final corpus lacks released original-task success flags, per-judge votes, rejection
+    reasons, raw-to-derived lineage, and failed interaction logs.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Backward construction may turn a failed or accidental path into a superficially aligned record by changing the goal, without
+    proving the behavior is necessary, safe, or successful for the original task.
+  - Filtering depends on two proprietary LLM judges without exact API revisions, calibration, inter-judge agreement, or an
+    independently labeled quality audit.
+  - Quadratic extraction creates many correlated subtrajectories from the same raw episode; no group-aware splitting, near-duplicate
+    analysis, or trajectory-family leakage control is reported.
+  - Documentation can be incomplete or unavailable, and related-domain resources are sometimes substituted for the target
+    environment.
+  - Live external documentation and benchmark environments are not snapshot-pinned, making exact replay and rights auditing
+    difficult.
+  - No generated corpus, rejected set, implementation, environment lockfile, trained checkpoint, source snapshot, or immutable
+    release manifest was found.
+  - No confidence intervals, independent synthesis/training reruns, random seeds, total compute accounting, or task-overlap
+    study is reported.
+  - The arXiv v1 and ICLR final report different headline deltas; downstream citations must use the venue-final values.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the ICLR proceedings page and all 54 pages of the final paper, OpenReview, arXiv v1, and the first-author
+    publication page. Official release searches found no code/data/model package.
+  remaining_unknowns:
+  - Official code, generated data, rejected records, model checkpoints, and immutable release
+  - Exact Claude and Gemini API revisions, prompts as executable files, and per-record committee outputs
+  - Environment/container versions, document snapshots, crawl dates, record-level provenance, and artifact licenses
+  - Train/validation grouping, random seeds, LoRA rank, GPU count, runtime, total tokens, and cost
+  - Decontamination, task overlap, privacy review, committee accuracy, and independent reruns
+inclusion_reason: 'Learn-by-interact is a concrete construction recipe for reasoning-bearing agent data: documentation-seeded
+  tasks produce executable environment interactions, backward construction converts every subtrajectory into an aligned instruction
+  pair, and a mixed duplicate/LLM-committee filter prepares examples for agentic ICL and SFT.'
+related:
+- swe-smith-scaling-data-construction-for-software-engineering-agents-2025
+- tar-swe-trajectories-2025
+- webagent-r1-2025
+tags:
+- learn-by-interact
+- agent-trajectories
+- backward-construction
+- environment-interaction
+- synthetic-data
+- llm-committee
+- agentic-retrieval
+- supervised-fine-tuning
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: The recipe expands 85,905 documentation-seeded agent episodes into 1,456,808 instruction-subtrajectory candidates
+  and reports 440,008 committee-filtered examples, but releases neither the corpus nor its implementation.
+why_it_matters: It exposes a reusable pattern for turning imperfect environment exploration into post-training data, while
+  making clear that instruction-behavior alignment, original-task success, provenance, and open release are separate audit
+  questions.
+card: null
+needs:
+- 'needs_search: no official code repository, generated dataset, model checkpoint, project page, dataset card, or immutable
+  release was found; recheck author and venue pages before promotion'
+- 'needs_data_release: publish the 440008 accepted records, 1456808 candidates, 85905 raw trajectories, rejected records,
+  original-task success flags, and raw-to-derived lineage'
+- 'needs_reproducibility: publish executable prompts, exact Claude/Gemini revisions, environments, containers, dependency
+  lockfiles, document snapshots, seeds, and run commands'
+- 'needs_provenance: attach per-record source-document URLs and versions, environment versions, crawl timestamps, and rights/license
+  dispositions'
+- 'needs_audit: measure committee precision, goal-relabeling shortcuts, correlated-subtrajectory duplication, task overlap,
+  privacy risk, and cross-version drift'
+- 'needs_statistics: report independent runs, confidence intervals, checkpoint selection, total GPU count/runtime/tokens/cost,
+  and failed-run compute'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Citation and venue status are verified. The ICLR final PDF, OpenReview, arXiv, and author page were checked. Artifact
+    verification remains false because no official reusable code, data, model, or immutable release was found.

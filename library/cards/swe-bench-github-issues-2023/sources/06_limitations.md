@@ -1,0 +1,3 @@
+Correctness is only relative to the stated contract: The evaluator applies a submitted patch inside the SWE-bench harness and runs repository tests; success is programmatic pass/fail under the pinned split, image, and harness version. Correctness is bounded by the included tests, dependency image, split, and harness version. Passing tests can miss semantic bugs; public tasks can contaminate later model training.
+
+The paper should not be read as unrestricted real-world reliability. Public artifacts can become training data, service-backed environments can drift, and judge/evaluator implementations can change across releases.

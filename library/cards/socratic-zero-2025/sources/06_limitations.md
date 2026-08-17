@@ -1,0 +1,2 @@
+“Data-free” is nonliteral: the system uses 100 MATH seeds, 1,500 supervised Level-5 problems, reference solutions, and a powerful fixed Teacher. Teacher errors can contaminate correctness labels, preference pairs, reference solutions, refinements, and Generator imitation, creating self-reinforcement. Moderate pass rate is only a utility heuristic, and convergence is unanalyzed. Decontamination, licenses, decoding, and per-record lineage are unknown. No code, data, checkpoint, project, or curriculum log is author-linked.
+

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T09:34:15Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "OpenAI GPT-5/5.2 和 Google Gemini 3 系列明确采用 视频方向benchmark ref178",
+    "updated_at": "2026-07-15T09:34:15Z"
+  }
+}

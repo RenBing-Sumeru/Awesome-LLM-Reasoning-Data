@@ -1,0 +1,3 @@
+1. **Proposition validity:** The authors explicitly state that ATLAS does not verify whether every synthetic mathematical proposition is mathematically correct; compilation guarantees only Lean syntax and typing. Reuse should sample propositions for proof or expert review.  
+2. **Semantic-check bias:** Both back-translation and NLI rely on models and may jointly accept semantically shifted pairs. Human semantic audits and false-positive rates for each filtering stage should be reported.  
+3. **Version dependence:** Samples come from a particular Lean and Mathlib environment, and library updates can change names, dependencies, and compilability. Training and evaluation must pin commits and distinguish early 234K releases from the final 117K version.

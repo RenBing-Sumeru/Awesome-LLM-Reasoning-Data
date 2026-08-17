@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SciBench 将大学水平数学、化学和物理题做成可审计的科学推理评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICML 2024 论文的科学推理基准与评测面",
+  "best_for_ch": "关注科学推理基准、答案级评分契约、公开污染风险和评测器复现的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoxuan Wang 等（University of California, Los Angeles、California Institute of Technology、University of Washington）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T09:17:07Z"
+}

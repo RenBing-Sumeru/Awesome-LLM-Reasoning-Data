@@ -1,0 +1,1 @@
+Existing judge work compares methods on static responses. This paper changes the object to evolving response and question distributions, distinguishing future-proofing from backward compatibility. SFT/DPO are not new; the contribution is a deployment-time generalization contract.

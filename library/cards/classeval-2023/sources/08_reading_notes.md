@@ -1,0 +1,1 @@
+The key distinction is class-level success versus method-level success; do not use one as a proxy for the other. Read the benchmark format before the leaderboard. A passed test suite is an executable verdict under a particular harness, not a proof of complete class semantics.

@@ -1,0 +1,1 @@
+Use this paper when a trace-producing system has a real latency or cost limit. Define the answer-quality floor first, then select a budget rule and measurements. It helps prevent a common mistake: optimizing average trace length before checking whether removed steps carry the information that avoids an error.

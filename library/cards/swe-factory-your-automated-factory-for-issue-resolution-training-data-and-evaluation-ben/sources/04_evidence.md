@@ -1,0 +1,3 @@
+In experiments on 671 issues across four languages, SWE-Builder with GPT-4.1-mini constructs 269 valid instances at an average cost of USD 0.045 per instance. Gemini 2.5 Flash provides comparable performance at the lowest cost of USD 0.024 per instance. Exit-code grading matches manual inspection with 100% accuracy, and automated fail-to-pass validation reaches 0.92 precision and 1.00 recall.
+
+In downstream experiments, fine-tuning Qwen2.5-Coder-14B on SWE-Factory-Gym raises issue resolution from 5.8% to 21.0%. These results support both lower construction costs and useful training data, although model, data quantity, and training settings change together.

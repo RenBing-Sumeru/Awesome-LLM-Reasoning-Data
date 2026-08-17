@@ -1,0 +1,130 @@
+id: gdpval-2025
+title: 'GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks'
+year: 2025
+venue: OpenAI research publication / arXiv preprint
+authors:
+- Tejal Patwardhan
+- Rachel Dias
+- Elizabeth Proehl
+- Grace Kim
+- Michele Wang
+- Olivia Watkins
+- Simón Posada Fishman
+- Marwan Aljubeh
+- Phoebe Thacker
+- Laurance Fauconnet
+- Natalie S. Kim
+- Patrick Chao
+- Samuel Miserendino
+- Gildas Chabot
+- David Li
+- Michael Sharman
+- Alexandra Barr
+- Amelia Glaese
+- Jerry Tworek
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- professional-work-agents
+- economically-valuable-tasks
+- grading-service
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.04374
+  arxiv: https://arxiv.org/abs/2510.04374
+  doi: https://doi.org/10.48550/arXiv.2510.04374
+  code: null
+  data: https://evals.openai.com/gdpval
+  project: https://openai.com/index/gdpval/
+  huggingface: https://huggingface.co/datasets/openai/gdpval
+  venue: https://openreview.net/forum?id=hcuEdq6eKD
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: OpenAI GDPval professional work benchmark
+  trace_author: OpenAI authors, domain task designers, human professional references, and expert graders
+  answer_format: 1,320 full-set professional work tasks across 44 occupations and 9 U.S. GDP sectors, including 220 public
+    gold tasks with reference files and deliverable requirements
+  process_fields:
+  - task specification
+  - occupation and sector metadata
+  - reference files
+  - human deliverable
+  - model deliverable
+  - expert comparison or grader output
+  environment_or_substrate: one-shot professional deliverable evaluation, not full interactive trajectories
+  verifier_or_reward: expert blind comparison of AI and human deliverables; public automated grader is experimental
+  terminal_predicate: expert classifies the AI deliverable as better than, as good as, or worse than the human deliverable
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: domain experts, human professional deliverables, and OpenAI grading/evaluation pipeline
+  generator: OpenAI GDPval task and deliverable benchmark
+  filtering_rule: separate public gold tasks from held-out full set; do not treat the experimental grader as a replacement
+    for expert comparison
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: professional_work_evaluation
+audit:
+  source_mixture: https://arxiv.org/abs/2510.04374; https://openai.com/index/gdpval/; https://evals.openai.com/gdpval
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2510.04374'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: OpenAI sources verify 1,320 tasks across 44 occupations and 9 sectors plus 220 public gold tasks. Primary evidence
+    is expert blind comparison; the public grader is experimental.
+inclusion_reason: it measures economically valuable professional work tasks and grading surfaces
+related: []
+tags:
+- benchmark
+- professional-work-evaluation
+- economically-valuable-tasks
+- grading-service
+why_it_matters: It evaluates economically valuable professional deliverables with expert comparison rather than short-answer
+  scoring.
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: GDPval evaluates economically valuable one-shot professional deliverables with expert blind comparisons
+  and an experimental public grader.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: OpenAI publication, arXiv, and evals page verify authors, OpenAI institution, public subset, and grading service.
+category_ids:
+- benchmarks_evaluation_surfaces
+- judgment_rubric_domain_expert_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 89
+  primary_category_id: benchmarks_evaluation_surfaces

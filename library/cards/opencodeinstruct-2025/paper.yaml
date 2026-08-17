@@ -1,0 +1,130 @@
+id: opencodeinstruct-2025
+title: 'OpenCodeInstruct: A Large-scale Instruction Tuning Dataset for Code LLMs'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Wasi Uddin Ahmad
+- Aleksander Ficek
+- Mehrzad Samadi
+- Jocelyn Huang
+- Vahid Noroozi
+- Somshubra Majumdar
+- Boris Ginsburg
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English code generation, debugging, algorithms, and programming questions
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.04030
+  arxiv: https://arxiv.org/abs/2504.04030
+  code: null
+  data: https://huggingface.co/datasets/nvidia/OpenCodeInstruct
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/OpenCodeInstruct
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: curated seed tasks expanded through several synthetic instruction algorithms
+  trace_author: large language models generate instructions, solutions, tests, and quality judgments
+  answer_format: id, input, output, domain, generation algorithm, LLM judgment, unit tests, and execution status
+  process_fields:
+  - id
+  - input
+  - output
+  - domain
+  - generation algorithm
+  - LLM judgment
+  - unit tests
+  - and execution status
+  environment_or_substrate: English code generation, debugging, algorithms, and programming questions
+  verifier_or_reward: unit-test execution, execution-status fields, LLM quality judgments, and seed curation
+  terminal_predicate: Retain records only after unit-test execution, execution-status fields, LLM quality judgments, and seed
+    curation.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: large language models generate instructions, solutions, tests, and quality judgments
+  generator: OpenCodeInstruct scales multiple generation algorithms to five million pairs and stores unit tests, execution
+    status, and model judgments beside each solution.
+  filtering_rule: unit-test execution, execution-status fields, LLM quality judgments, and seed curation
+  sampling_protocol: curated seed tasks expanded through several synthetic instruction algorithms
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: code SFT for Llama and Qwen families
+audit:
+  source_mixture: curated seed tasks expanded through several synthetic instruction algorithms
+  split: 'Official release scale: 5 million code instruction-response pairs; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: CC-BY-4.0
+  lineage: curated seed tasks expanded through several synthetic instruction algorithms -> large language models generate
+    instructions, solutions, tests, and quality judgments -> unit-test execution, execution-status fields, LLM quality judgments,
+    and seed curation -> OpenCodeInstruct -> code SFT for Llama and Qwen families
+  known_failure_modes:
+  - generated unit tests may be weak or share assumptions with the generated solution
+  - LLM judgments can reward style and verbosity rather than semantic correctness
+  citation_status: verified
+  confidence: high
+  notes: The full 22-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: OpenCodeInstruct is a public Track 01 object containing id, input, output, domain, generation algorithm,
+  LLM judgment, unit tests, and execution status and is explicitly consumed by code SFT for Llama and Qwen families.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2504.04030
+- primary-link-checked
+status: verified
+one_line_summary: OpenCodeInstruct scales multiple generation algorithms to five million pairs and stores unit tests, execution
+  status, and model judgments beside each solution.
+why_it_matters: Public code SFT sets are much smaller than pretraining corpora and often omit tests and judgments needed to
+  distinguish executable solutions from plausible text.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: code SFT for Llama and Qwen families
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English code generation, debugging, algorithms, and programming questions
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 11497 downloads and 106 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: CC-BY-4.0.'
+  selection_eligible: true
+  year_impact_threshold: 2

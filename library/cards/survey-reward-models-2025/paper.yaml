@@ -1,0 +1,105 @@
+id: survey-reward-models-2025
+title: 'A Comprehensive Survey of Reward Models: Taxonomy, Applications, Challenges, and Future'
+year: 2025
+venue: arXiv preprint
+authors:
+- Jialun Zhong
+- Wei Shen
+- Yanzeng Li
+- Songyang Gao
+- Hua Lu
+- Yicheng Chen
+- Yang Zhang
+- Wei Zhou
+- Jinjie Gu
+- Lei Zou
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- scalar_reward
+- pairwise_preference
+domains:
+- reward-modeling
+- alignment
+- reasoning-data
+training_use:
+- reward_modeling
+- preference_learning
+- safety_alignment
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.12328
+  arxiv: https://arxiv.org/abs/2504.12328
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.12328
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed preference collection, reward-model datasets, and reward-model evaluation benchmarks.
+  trace_author: Surveyed literature; no new preference or reward dataset.
+  answer_format: Taxonomy of preference collection, reward modeling, reward use, applications, and evaluation.
+  process_fields:
+  - preference pair
+  - scalar reward
+  - reward model
+  - evaluator
+  - benchmark
+  environment_or_substrate: Alignment and reward-model training pipelines.
+  verifier_or_reward: Surveys reward models as proxies for preference, rather than releasing one.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single recipe.
+  teacher: Human or AI feedback sources described in surveyed work.
+  generator: Literature survey.
+  filtering_rule: Taxonomy spans collection, modeling, usage, applications, and benchmarks.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reward-model taxonomy.
+audit:
+  source_mixture: Official arXiv record and paper.
+  split: Not applicable.
+  decontamination: Benchmark contamination and reward-hacking claims require source-level evidence.
+  license: Dataset license not applicable; inspect source releases.
+  lineage: 'Primary source: https://arxiv.org/abs/2504.12328'
+  known_failure_modes:
+  - Preference labels can be biased
+  - Reward models can be exploited or misgeneralize
+  citation_status: verified
+  confidence: high
+  notes: Official abstract explicitly covers preference collection, reward modeling, usage, applications, and evaluation benchmarks.
+inclusion_reason: A current primer for distinguishing preference data, scalar rewards, reward models, and their evaluation.
+related: []
+tags:
+- reward-model-survey
+- preference-data
+- RLHF
+- alignment
+why_it_matters: Reward language is often overloaded; this survey routes readers to the actual data or verifier object they
+  need to audit.
+status: verified
+needs:
+- 'needs_review: verify any future venue version before replacing the arXiv citation'
+one_line_summary: A 2025 reward-model map that separates feedback collection, reward fitting, and downstream use.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv abstract and author list reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧪 RLHF / reward-model surveys

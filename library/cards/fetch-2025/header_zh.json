@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FETCH 合并语义等价推理状态，并以 TD(λ) 训练且集成的 verifier 分数引导树搜索，从而减少冗余扩展与评分方差。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理时树搜索与过程价值建模研究",
+  "best_for_ch": "需要审计测试时搜索轨迹、状态合并和 verifier 反馈的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Ante Wang、Linfeng Song、Ye Tian、Dian Yu、Haitao Mi、Xiangyu Duan、Zhaopeng Tu、Jinsong Su、Dong Yu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,3 @@
+- For a tool-use SFT builder, reuse the seven splits to compare rigid ReAct targets, natural conversations, CoT, and explicit no-tool examples under one base model. The output is a controlled mixture report; success requires both task metrics and a hallucination-mode check, and the recipe is unsuitable when tool availability cannot be represented.
+
+- For a data curator, reproduce capability-specific loss curves and re-estimate reasoning/retrieval/understanding weights on the target model. The output is a model-specific sampling plan; do not copy the 1:0.25:0.75 weights across model families without remeasurement.

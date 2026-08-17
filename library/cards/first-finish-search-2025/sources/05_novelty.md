@@ -1,0 +1,5 @@
+Most sampling-based test-time scaling waits for all candidates and then applies model probability, a verifier, or answer-frequency aggregation. FFS changes the selector and stopping rule together: it terminates the ensemble at the first EOS and uses completion order as the decision signal. This makes sequential latency and total token cost part of the method rather than only reporting them after selection.
+
+The useful direction signal is that selection metadata can be as consequential as verifier scores. Completion step, cancellation state, and scheduler mode determine which trajectory survives, so they belong in a search-trace record. The last-finish baseline and non-reasoning-model results help expose the boundary of the claimed length bias.
+
+Parallel sampling, early stopping, and length-based decoding are not new individually. The specific contribution is their minimal combination for reasoning-time scaling and the accompanying analysis of when correct and incorrect length distributions favor it. Accuracy gains must not be reinterpreted as proof that short traces are generally better data or that cancelled long traces are incorrect.

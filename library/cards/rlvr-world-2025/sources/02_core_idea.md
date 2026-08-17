@@ -1,0 +1,4 @@
+RLVR-World treats world modeling as predicting an action-conditioned transition rather than only generating fluent text. For text games, the model predicts state differences under natural-language rules and actions; for WebArena, it predicts exact changed accessibility-tree items; for video, it predicts one or more future frames from visual observations and quantized actions. It then applies task-specific rule or metric feedback to on-policy candidates.
+
+The central feedback contracts are deliberately different: complete-match or property-aware text-game reward, exact-item F1 for WebArena changes, and negative L1 plus LPIPS for decoded video frames. This makes the release valuable as a comparison of verifier designs, while not making any one reward a universal measure of semantic correctness or safe downstream control.
+

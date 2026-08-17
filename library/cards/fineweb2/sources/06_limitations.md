@@ -1,0 +1,1 @@
+The verified abstract does not provide enough Card-level evidence to record an official code URL, dataset URL, license, split policy, or benchmark-contamination result, so these fields remain unknown or null. A broadly adaptable pipeline can still encode uneven quality across languages or sources. Downstream performance evidence cannot replace source-level audit evidence.

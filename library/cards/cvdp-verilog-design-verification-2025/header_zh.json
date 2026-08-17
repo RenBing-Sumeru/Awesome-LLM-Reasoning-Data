@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CVDP 发布覆盖 RTL 生成、验证与调试的 783 个工程师编写问题，以工具执行和评分基础设施评测模型与代理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Verilog RTL 设计与验证基准",
+  "best_for_ch": "研究硬件设计代理、RTL 生成、验证和调试的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Nathaniel Pinckney、Chenhui Deng、Chia-Tung Ho、Yun-Da Tsai、Mingjie Liu、Wenfei Zhou、Brucek Khailany、Haoxing Ren",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

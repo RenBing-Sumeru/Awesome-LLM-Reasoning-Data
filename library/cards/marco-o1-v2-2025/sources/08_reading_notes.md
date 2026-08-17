@@ -1,0 +1,5 @@
+- Typed thought nodes and transition templates constrain the MCTS search space.
+- Qwen2.5-72B-Instruct generates thought content; Llama3.1-70B-Instruct handles Reflection nodes.
+- Rule-checked answers provide terminal reward, while intermediate text remains model-generated.
+- Long correct paths feed SFT; short correct and near-prefix incorrect paths form DPO pairs.
+- The verified public artifacts do not establish a complete row-level v2 tree and preference release.

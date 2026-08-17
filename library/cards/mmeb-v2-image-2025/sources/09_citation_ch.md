@@ -1,0 +1,3 @@
+引用：Rui Meng, Ziyan Jiang, Ye Liu, Mingyi Su, Xinyi Yang, Yuepeng Fu, Can Qin, Zeyuan Chen, Ran Xu, Caiming Xiong, Yingbo Zhou, Wenhu Chen, Semih Yavuz，《VLM2Vec-V2: Advancing Multimodal Embedding for Videos, Images, and Visual Documents》，2025 / TMLR 2026 / arXiv。https://arxiv.org/abs/2507.04590
+
+官方产物：paper: https://arxiv.org/abs/2507.04590; project: https://tiger-ai-lab.github.io/VLM2Vec/; code: https://github.com/TIGER-AI-Lab/VLM2Vec; data: https://huggingface.co/datasets/TIGER-Lab/MMEB-V2; huggingface: https://huggingface.co/datasets/TIGER-Lab/MMEB-V2; doi: https://doi.org/10.48550/arXiv.2507.04590。

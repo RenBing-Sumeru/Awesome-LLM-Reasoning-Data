@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多智能体辩论轨迹数据，26,624 个案例上分析初始多样性与辩论增益的相关性",
+    "updated_at": "2026-07-22T11:54:37Z"
+  },
+  "updated_at": "2026-07-22T11:54:37Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

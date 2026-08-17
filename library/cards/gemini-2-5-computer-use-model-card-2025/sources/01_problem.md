@@ -1,0 +1,7 @@
+Google DeepMind published *Gemini 2.5 Computer Use - Model Card* and its evaluation appendix on October 7, 2025. The system is based on Gemini 2.5 Pro (06-2025), adds unspecified post-training for UI control, and is primarily optimized for browser interaction rather than OS-level or mobile control.
+
+The concrete episode is unusually clear: a user goal, current screenshot, and recent actions enter the model; the model emits a function call for the next UI action; the client executes it and returns a function result, current URL, and next screenshot. Repetition ends with completion, error, a safety response, or a user decision. This deployment schema is not evidence that identical trajectories were stored for training.
+
+The report names UI-control post-training and training to request confirmation for high-stakes actions, but discloses no training tasks, demonstrations, trajectories, thoughts, labels, reward, verifier, rollouts, filters, optimizer, quantities, or lineage. Evaluation and deployment contracts are more visible: whole web trajectories receive three human judgments and majority-vote success, while an out-of-model safety service evaluates proposed actions per step.
+
+The Card belongs in the frontier disclosure ledger because it separates a public state-action API and benchmark evidence from unavailable training records. L4 rests on the complete official card, appendix, launch post, legacy API documentation, and reference repository; mutable documentation and code are not treated as immutable October 2025 environment pins.

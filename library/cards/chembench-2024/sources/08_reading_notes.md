@@ -1,0 +1,1 @@
+Do not read "superhuman chemists" as a deployment claim. First inspect the curated QA distribution and scoring code, then read the human-comparison protocol and calibration findings. Keep aggregate model ranking, per-topic score, row-level answer correctness, and confidence behavior as separate labels.

@@ -1,0 +1,1 @@
+The study is bounded by its chosen models, datasets and prompts. A reported failure does not automatically transfer to every task, while a clean result cannot prove absence of the failure. Reuse should preserve the original control and add target-domain checks.

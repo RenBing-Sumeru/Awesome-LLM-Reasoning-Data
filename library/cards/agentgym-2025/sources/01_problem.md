@@ -1,0 +1,5 @@
+Primary source: ACL 2025 long paper, published 27 July--1 August 2025. The decision boundary is the released AgentTraj-L demonstration corpus, not AgentGym as infrastructure and not the paper's later online-RL outcomes. AgentTraj-L qualifies because it exposes complete thought-action-observation episodes filtered by native environmental feedback and directly consumed by SFT.
+
+The concrete problem is that agent training corpora usually bind to one environment and cannot be compared under a consistent interface. AgentGym unifies 14 environments and constructs 14,485 high-reward demonstrations from 11 of them; the data object is the static episode, and the evaluation surface is AgentEval plus per-environment success or reward. Atlas relevance is the link between heterogeneous reward-filtered traces and a controlled SFT consumer.
+
+L4 facts: ACL acceptance, 14 environments, 89 task types, 20,494 instructions, 1,160 evaluation cases, 14,485 AgentTraj-L episodes, reward filtering, public access, and missing dataset-license declaration were verified.

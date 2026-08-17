@@ -1,0 +1,1 @@
+KernelBench 要问的是：LLM 能否写出既正确又比普通 PyTorch 实现更快的 GPU kernel。主要来源是 arXiv:2502.10517、Scaling Intelligence 官方仓库、Stanford 项目博客和 Hugging Face 数据；官方仓库标注 ICML 2025。数据对象是一个 PyTorch workload，通常是神经网络算子或模型片段，并配套 prompt 要求模型实现优化 CUDA/C++ kernel。反馈契约是可执行的：编译并加载 extension，用随机测试与 PyTorch reference 比较输出，再相对 baseline 测速度。收录边界是性能敏感的 executable code evaluation，不是自然语言代码偏好或通用编程问答。

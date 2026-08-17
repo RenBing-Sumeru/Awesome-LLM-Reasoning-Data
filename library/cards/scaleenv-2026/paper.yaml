@@ -1,0 +1,245 @@
+id: scaleenv-2026
+title: 'ScaleEnv: Scaling Environment Synthesis from Scratch for Generalist Interactive Tool-Use Agent Training'
+year: 2026
+venue: ICML 2026
+authors:
+- Dunwei Tu
+- Hongyan Hao
+- Hansi Yang
+- Yihao Chen
+- Yi-Kai Zhang
+- Zhikang Xia
+- Yu Yang
+- Yueqing Sun
+- Xingchen Liu
+- Furao Shen
+- Qi Gu
+- Hui Su
+- Xunliang Cai
+source_role:
+- agent_environment
+- construction_recipe
+- scaling_study
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- synthetic_environments
+training_use:
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=3975b88aa41ca35985e91cfea741330c1253286d
+  paper_pdf: https://openreview.net/pdf/3975b88aa41ca35985e91cfea741330c1253286d.pdf
+  paper_revision: https://arxiv.org/abs/2602.06820v1
+  arxiv: https://arxiv.org/abs/2602.06820
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.48550/arXiv.2602.06820
+  venue: https://openreview.net/forum?id=3975b88aa41ca35985e91cfea741330c1253286d
+  openreview: https://openreview.net/forum?id=3975b88aa41ca35985e91cfea741330c1253286d
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2602.06820
+data_object:
+  object_type: A generated domain foundation plus task-bound, resettable-looking database state and interactive rollout. A
+    foundation contains database/tool schemas, executable code, procedural tests, and a tool dependency graph. A task adds
+    an initial database state, distractors, user profile/intent, executable seed chain, expected final state, and rule-based
+    evaluator.
+  prompt_source: Domain keywords seed fully synthetic construction. ScaleEnv creates 2,560 tasks over 16 training domains;
+    task counts range from 64 to 512 per domain.
+  trace_author: Qwen3-8B and Qwen3-32B policies generate multi-turn trajectories during GRPO. Qwen2.5-72B-Instruct simulates
+    the user and returns natural-language feedback.
+  environment_fields:
+  - domain_keyword
+  - tool_schema
+  - database_schema
+  - executable_tool_code
+  - executable_database_code
+  - procedural_tests
+  - tool_database_mapping
+  - tool_dependency_graph
+  task_fields:
+  - initial_database_state
+  - distractor_records
+  - user_profile
+  - user_intent
+  - executable_seed_tool_chain
+  - expected_final_database_state
+  - column_matching_policy
+  episode_fields:
+  - interaction_history
+  - natural_language_response
+  - tool_call
+  - tool_result_or_error
+  - database_state_transition
+  - simulated_user_feedback
+  - terminal_database_state
+  - rule_based_reward
+  observation: The agent receives user-simulator messages and deterministic outputs or errors from executable tools; the underlying
+    database state is only indirectly observed.
+  action_space: Natural-language responses plus calls to the environment's domain-specific tools. A domain has about 50 tools
+    on average; observed counts range from about 25 to more than 70.
+  answer_format: A multi-turn user-agent-tool dialogue with state-changing tool calls and a final response, evaluated against
+    the intended terminal database state.
+  verifier_or_reward: Construction uses procedural tests with success, anticipated rejection, and unexpected failure outcomes.
+    Training reward compares the final database state with ground truth using exempt-field, hard-constraint, and semantic-alignment
+    column policies.
+  reward: A deterministic rule-based terminal reward is normalized within each GRPO rollout group. The paper does not report
+    a dense process reward.
+  terminal_predicate: Reward is computed at the terminal interaction state after the multi-turn task. A uniform maximum turn
+    count or explicit agent termination protocol is not disclosed.
+  provenance: Domain keyword -> multi-agent schema/code generation -> procedural test/debug loop -> dependency graph -> executable
+    seed chain -> initial state plus distractors -> graph expansion and re-execution -> grounded intent and final-state criterion
+    -> user-simulated rollout -> rule-based terminal reward.
+  environment_or_substrate: Fully synthetic Python-style tool sandboxes backed by mutable structured databases. Training spans
+    16 domains, about 50 tools and 5-20 tables per environment; the appendix reports ranges of about 25 to over 70 tools and
+    5 to 22 tables.
+  release_boundary: Paper, appendix examples, generation algorithm, schemas/code excerpts, statistics, and one example trajectory
+    are public. The complete 16 environments, 2,560 tasks, tests, initial/final states, rollouts, rewards, checkpoints, generator
+    prompts, and runnable framework were not verified as public artifacts.
+recipe_metadata:
+  base_model:
+  - Qwen3-8B
+  - Qwen3-32B
+  teacher: DeepSeek-V3.2, GLM-4.7, GPT-5.1, and Qwen3-32B instantiate synthesis-agent roles. Qwen3-235B-A22B serves as the
+    expansion oracle, and Qwen2.5-72B-Instruct is the rollout user simulator.
+  generator: Multiple schema, database, code, test, debug, dependency, and task agents construct each environment from a domain
+    name, repeatedly executing and repairing code.
+  prompt_or_task_source: Synthetic user intents grounded in executable seed chains and database states, distributed across
+    16 author-chosen everyday/work domains.
+  filtering_rule: Database integrity tests must pass. Tool tests accept correct execution/state transition and anticipated
+    schema rejection; unexpected runtime/state failures trigger iterative debugging. Seed chains are executed, dependency-expanded
+    tools are re-executed, and states are patched until solvable.
+  sampling_protocol: 2,560 tasks over 16 domains. Environment-scaling experiments hold 1,024 tasks fixed while varying domain
+    count over 2, 4, 8, and 16. Two non-overlapping 4-domain sets with 1,024 tasks test domain stability.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Uniform episode horizon and per-task rollout-group size are not disclosed. Rollout batch size is 1,024
+    for Qwen3-8B and 2,048 for Qwen3-32B.
+  optimizer_or_scaffold: Zero-RL GRPO trains Qwen3-8B and Qwen3-32B for 48 steps. The public HTML does not expose the numerical
+    learning rate; other optimizer, hardware, seed, and parallel scheduling details remain undisclosed.
+  scalability_or_parallelism: Synthesis decomposes into multiple agent roles and RL uses rollout batches of 1,024 or 2,048.
+    The paper reports token costs of about 546k per domain foundation and 93.2k per task, but does not disclose concurrency,
+    wall time, worker count, retry distribution, or compute cost.
+audit:
+  source_mixture: All training tasks are generated from scratch across 16 domains. Evaluation uses 7 disjoint domains from
+    tau2-Bench and VitaBench, whose tools and dialogue formats are stated to differ from training.
+  split: 'The 2,560 generated tasks are a training universe rather than a public train/dev/test split. OOD evaluation is domain-disjoint:
+    3 tau2-Bench and 4 VitaBench domains. No generated-domain validation split or task-level holdout is disclosed.'
+  decontamination: Domain names are disjoint and tool-description embeddings are visually separated, but no model pretraining-overlap,
+    prompt/template deduplication, task-semantic overlap, or generator memorization audit is reported.
+  benchmark_overlap: The paper asserts training/evaluation domain and format separation. It does not release item-level mappings
+    or a semantic overlap manifest against tau2-Bench, VitaBench, or synthesis-model training corpora.
+  lineage: Aggregate domain/task counts and the algorithmic chain are documented. Record-level IDs, generator prompts/outputs,
+    model revisions, tests, debug attempts, discarded candidates, seeds, state diffs, rollout IDs, and reward records are
+    not released.
+  license: The arXiv manuscript is CC BY-NC-SA 4.0. No verified license covers the generated environments, tasks, code, database
+    states, rollouts, checkpoints, simulator outputs, or third-party benchmark assets.
+  release_version:
+    paper: arXiv:2602.06820v1
+    arxiv_date: '2026-02-06'
+    venue: ICML_2026
+    proceedings: PMLR_306
+    tagged_end_to_end_release: null
+  artifact_release_state: Official paper/OpenReview and arXiv source are available. No official repository, dataset, model
+    collection, tagged release, environment package, or replay manifest was verified on 2026-07-20.
+  successful_and_failed_sample_retention: Procedural generation observes success, anticipated rejection, and unexpected failure,
+    using the latter to drive debugging. GRPO requires mixed-reward rollout groups. The paper does not report candidate/rollout
+    drop rates, whether all failed paths are retained, or any persistent public success/failure corpus.
+  reset_or_replayability: Each task conceptually pairs an initial database state with code and a final-state criterion, which
+    could support reset. The reset API, isolation semantics, state snapshot format, dependency lock, generator seeds, user-simulator
+    settings, and complete environment/task artifacts are not released, so exact replay is unverified.
+  verifier_or_judge_failure_modes:
+  - Hard equality can reject equivalent timestamp, numeric, or serialization forms, while fuzzy semantic matching can admit
+    incorrect free text.
+  - Exempt fields may hide task-relevant side effects if column classification is wrong.
+  - Final-state equality can miss invalid intermediate actions, unnecessary mutations, information disclosure, or paths that
+    reach the right state for the wrong reason.
+  - Generated procedural tests cover sampled cases and cannot prove correctness over the full action/state space.
+  - A user simulator can alter task difficulty or reward-aligned behavior independently of the executable database verifier.
+  privacy_or_consent: Tasks, profiles, and database records are described as synthetic; no real-user data collection is reported.
+    The paper does not document PII-pattern filters, memorization checks on generator outputs, provenance of realistic names/content,
+    or a privacy review for released examples or future generated domains.
+  safety_boundary: ScaleEnv uses virtual sandboxes rather than real APIs, reducing accidental external harm. The Impact Statement
+    warns that domain-agnostic generation could synthesize harmful or unethical environments and calls for oversight; no implemented
+    malicious- domain classifier, capability restriction, prompt-injection defense, or sandbox containment audit is described.
+  citation_status: verified
+  confidence: high
+  notes: Verified official arXiv v1/full appendix, official OpenReview/ICML PDF, authors, affiliations, data counts, construction/evaluator/training
+    evidence, OOD setup, manuscript license, and Impact Statement on 2026-07-20. No artifact release was found.
+  remaining_unknowns:
+  - official_code_data_model_environment_and_checkpoint_release
+  - record_level_generation_test_debug_state_rollout_and_reward_lineage
+  - rollout_group_size_episode_horizon_decoding_seeds_and_compute_parallelism
+  - task_level_split_dedup_pretraining_overlap_and_generator_memorization
+  - reset_api_snapshot_format_dependencies_and_deterministic_replay
+  - generated_artifact_license_privacy_filters_and_implemented_safety_controls
+inclusion_reason: 'ScaleEnv defines an auditable environment-data factory: executable tools and database states generate task-linked
+  observations and actions, while procedural tests and terminal state comparison provide programmatic feedback for large-batch
+  agentic RL.'
+related:
+- envscaler-2026
+- envfactory-2026
+tags:
+- scaleenv
+- environment-synthesis
+- tool-use
+- executable-sandbox
+- database-state
+- procedural-testing
+- final-state-verifier
+- grpo
+- environment-scaling
+- replay-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: ScaleEnv synthesizes 16 database-backed domains and 2,560 verifiable tasks for large-batch GRPO, but the
+  environments, rollouts, rewards, code, checkpoints, reset mechanism, and replay manifests are not verified as released.
+why_it_matters: It links scalable environment generation to executable verification and OOD agent training while exposing
+  the distinction between a documented recipe and a reusable, licensed, replayable environment/trajectory corpus.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  code_verified: false
+  data_verified: false
+  model_verified: false
+  replay_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: Sparse baseline materially omitted authors, arXiv/DOI/license, synthesis models, task/split structure, rollout batches,
+    feedback details, OOD evaluation, and safety.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release: publish licensed environments, tasks, code, tests, states, rollouts, rewards, checkpoints, prompts, and
+  user simulator'
+- 'needs_lineage: preserve every generator input/output, model revision, test/debug attempt, candidate decision, seed, state
+  diff, rollout, and reward'
+- 'needs_split_contamination: release task/domain splits and audit templates, semantic overlap, generator memorization, benchmark
+  leakage, and model pretraining exposure'
+- 'needs_replay: specify reset/isolation APIs and pin state snapshots, dependencies, seeds, horizons, decoding, simulator,
+  reward checker, and runtime'
+- 'needs_rights_privacy_safety: license generated artifacts and document PII/memorization filters, malicious-domain prevention,
+  injection defenses, and containment tests'
+card: null

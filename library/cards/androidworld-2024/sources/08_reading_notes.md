@@ -1,0 +1,1 @@
+Read AndroidWorld as an environment specification before reading it as a leaderboard. Dynamic parameter sampling, app state, and validator code are part of the benchmark instance. Do not compare success rates across papers unless the AndroidWorld version, task subset, app image, scaffold, and budget are aligned.

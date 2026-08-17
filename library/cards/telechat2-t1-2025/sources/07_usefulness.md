@@ -1,0 +1,1 @@
+This Card supports a stage-by-stage comparison of what a family report names and what it leaves undocumented. It is useful for avoiding the inference that each reported stage has a released or auditable data object.

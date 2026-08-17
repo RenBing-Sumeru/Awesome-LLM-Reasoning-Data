@@ -1,0 +1,1 @@
+arXiv 摘要报告 JudgeBench 比既有 judge benchmark 更难，GPT-4o 等强模型也只略高于随机猜测。官方数据卡给出可核验的发布证据：两个公开 split，分别包含 350 个 GPT-4o 回答对和 270 个 Claude-3.5-Sonnet 回答对，并公开回放 pairwise judgment 所需字段。行级证据是每个回答对的 objective label，而不是另一个 judge 的自由文本理由。证据边界是：数据规模小、英文、公开发布；分数会受 prompt 格式、回答顺序、模型/API 版本、reward model 校准方式、以及是否使用 swapped-order 决策影响。

@@ -1,0 +1,105 @@
+id: llm-confidence-calibration-survey-2024
+title: A Survey of Confidence Estimation and Calibration in Large Language Models
+year: 2024
+venue: NAACL 2024 Long Papers
+authors:
+- Jiahui Geng
+- Fengyu Cai
+- Yuxia Wang
+- Heinz Koeppl
+- Preslav Nakov
+- Iryna Gurevych
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- confidence-estimation
+- calibration
+- factuality
+- evaluation
+training_use:
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.naacl-long.366/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.naacl-long.366
+  venue: https://aclanthology.org/2024.naacl-long.366/
+  openreview: null
+  acl: https://aclanthology.org/2024.naacl-long.366/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed LLM tasks requiring an estimate of answer reliability.
+  trace_author: Surveyed primary works; this paper releases no new trace corpus.
+  answer_format: A synthesis of confidence estimation, calibration, applications, challenges, and future directions.
+  process_fields:
+  - prompt
+  - model answer
+  - confidence estimate
+  - observed correctness
+  - calibration measure
+  environment_or_substrate: LLM tasks across domains with task-specific correctness judgments.
+  verifier_or_reward: Observed task correctness and calibration measures in surveyed work; no shared verifier is released.
+  terminal_predicate: Confidence should align with observed correctness under the chosen task and evaluation protocol.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed methods use varied correctness labels and task feedback.
+  generator: Literature synthesis of confidence estimation and calibration methods.
+  filtering_rule: The official abstract summarizes challenges, technical advances, applications, and future work for LLM confidence
+    and calibration.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews existing methods rather than offering a single training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide result is stated.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.naacl-long.366/'
+  known_failure_modes:
+  - High confidence can accompany incorrect outputs
+  - calibration varies across tasks
+  - factual errors make unqualified use risky
+  citation_status: verified
+  confidence: high
+  notes: The official abstract states that the paper covers technical advances, applications, challenges, and future directions.
+inclusion_reason: A NAACL survey for readers who need to distinguish a model's confidence from its actual reliability.
+related: []
+tags:
+- survey
+- confidence-estimation
+- calibration
+- factuality
+- naacl-2024
+one_line_summary: A NAACL 2024 survey of estimating and calibrating how reliable an LLM's answer is likely to be.
+why_it_matters: It makes confidence a measurable reliability question rather than treating a model's fluent style as evidence
+  of correctness.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers designing selective answering, confidence displays, or reliability evaluations for LLMs.
+confidence: high
+status: verified
+needs:
+- unknown
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology metadata, abstract, pages, and DOI reviewed.
+category_ids:
+- foundations_and_primers

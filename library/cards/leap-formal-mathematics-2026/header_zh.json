@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LEAP 用 Gemini 3.1 Pro、Lean 编译反馈和 AND-OR 证明 DAG 生成可机器验收的形式化结果，但公开物只有成功证明，没有可重放的 agent 轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Lean 形式化数学 benchmark 与 verifier 引导的测试时证明搜索",
+  "best_for_ch": "适合研究程序化 verifier、形式化数学评测、agentic proof search 与 test-time compute 归因的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Po-Nien Kung、Linfeng Song、Dawsen Hwang、Jinsung Yoon、Chun-Liang Li、Simone Severini、Mirek Olšák、Edward Lockhart、Quoc V Le、Burak Gokturk、Thang Luong、Tomas Pfister、Nanyun Peng",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ]
+}

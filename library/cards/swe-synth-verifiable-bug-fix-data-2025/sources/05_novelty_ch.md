@@ -1,0 +1,1 @@
+传统 mutation 数据只保存变异前后代码和测试结果，SWE-bench 类真实数据则保存 issue 与 gold patch，通常缺少大量成功交互轨迹。SWE-Synth 的变化是用 LLM 重写完整函数制造“上下文合理但行为错误”的 bug，并立即让 agent 通过真实测试日志修复，把合成缺陷、工具过程和终局验证绑定在一条记录中。它不是首次用测试过滤补丁，也不是首次生成 bug，而是将 process-aware trajectory 作为主要训练对象，并通过同一仓库测试闭环同时验证 defect 与 repair。

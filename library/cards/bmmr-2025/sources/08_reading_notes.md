@@ -1,0 +1,6 @@
+- Keep three objects separate: 88,991 released BMMR-Train conversations, 20,458 released BMMR-Eval questions, and the unreleased 140k-pair BMMR-Verifier training object.
+- Dataset quality control and verifier construction both use 32 samples, but for different purposes: the former estimates answer agreement in a three-model cascade, while the latter creates rule-labeled reasoning trajectories.
+- The Train viewer exposes only `id`, `conversations`, and `image`; taxonomy, language, source, difficulty, curation decisions, trace authorship, and license lineage are not row fields.
+- Public GitHub code reproduces outcome scoring, not BMMR-Verifier process scoring; the verifier checkpoint, labels, rollouts, and training implementation are absent.
+- Treat 91.46% average step-level agreement with GPT-4o/humans as consistency evidence, not a calibrated accuracy estimate; the 1,000-case comparison set and disagreement records are not released.
+- Reconcile the final-paper CC-BY-4.0 statement with the live Hub MIT tag, and reconcile reported human annotation with the checklist's “not applicable” human-subject response before relying on the release for a governed workflow.

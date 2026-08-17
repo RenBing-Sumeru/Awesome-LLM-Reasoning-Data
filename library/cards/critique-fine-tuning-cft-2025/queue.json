@@ -1,0 +1,19 @@
+{
+  "title": "Critique Fine-Tuning: Learning to Critique is More Effective than Learning to Imitate",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2501.17703",
+    "data": "https://huggingface.co/datasets/TIGER-Lab/WebInstruct-CFT",
+    "code": "https://github.com/TIGER-AI-Lab/CritiqueFineTuning",
+    "project": "https://tiger-ai-lab.github.io/CritiqueFineTuning/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T14:16:03Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "论文使用五万自动批评记录，公开有60万，下载量不低",
+    "updated_at": "2026-07-16T14:16:03Z"
+  }
+}

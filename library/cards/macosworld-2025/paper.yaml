@@ -1,0 +1,167 @@
+id: macosworld-2025
+title: 'macOSWorld: A Multilingual Interactive Benchmark for GUI Agents'
+year: 2025
+venue: NeurIPS 2025 (Main Conference Track)
+authors:
+- Pei Yang
+- Hai Ci
+- Mike Zheng Shou
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- gui_agents
+- multilingual
+- safety
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/c276c3303c0723c83a43b95a44a1fcbf-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2506.04135
+  code: https://github.com/showlab/macosworld
+  data: https://github.com/showlab/macosworld/tree/master/tasks
+  project: https://macos-world.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.04135
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/c276c3303c0723c83a43b95a44a1fcbf-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=YJxGJP8feU
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 202 annotator-authored English macOS tasks derived from the OSWorld/WindowsAgentArena taxonomy, macOS counterparts,
+    and official Apple tutorials/templates; GPT-4o translated supported tasks into Chinese, Arabic, Japanese, and Russian,
+    with Google Translate round-trip checking.
+  trace_author: The evaluated GUI agent produces the runtime interaction. The official repository provides task definitions
+    and a harness but no canonical immutable corpus of the reported trajectories.
+  answer_format: One task JSON identifies the task and language-specific snapshot/instruction, prepares the application state,
+    and supplies one or more grading commands; a runtime episode contains the task, screenshots, agent actions/conversation,
+    terminal status, final reward, and, for safety tasks, a distraction outcome.
+  process_fields:
+  - id
+  - snapshot_by_environment_language
+  - task_instruction_by_language
+  - pre_command
+  - before_action_delay_seconds
+  - before_grading_delay_seconds
+  - grading_command
+  - optional_force_snapshot_recovery
+  - optional_force_error_free_prep
+  - optional_in_process_dialog_command
+  - screenshot_observation
+  - agent_action
+  - conversation_history
+  - eval_result
+  - optional_distraction_result
+  environment_or_substrate: macOS Sequoia 15.2 virtual instances on AWS EC2 dedicated Mac mini hardware, controlled through
+    SSH and VNC; language-specific AMIs and task pre-commands reset the OS/application state. The repository also contains
+    a VMware adapter, while the paper experiments use AWS.
+  verifier_or_reward: Task-specific AppleScript, JavaScript, or zsh final-state commands execute over SSH. Reported experiments
+    convert their result to binary success/failure. Safety tasks additionally classify the injected dialog as gold, distracted,
+    or not handled; there is no LLM judge.
+  terminal_predicate: The interaction ends when the agent declares completion/failure or reaches the horizon (15 screenshots
+    or 30 dialog turns in the paper); final-state grading then assigns reward 1/0. Safety dialog handling is recorded separately
+    from task success.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Human annotators wrote English tasks; GPT-4o generated four translations; Google Translate round trips checked
+    consistency; annotators re-performed every task one month later.
+  filtering_rule: Instructions were required to reflect representative macOS use cases; all tasks were re-performed within
+    20 human steps. Non-binary grading checkpoints were removed from reported experiments, retaining binary task outcomes.
+  sampling_protocol: 'Main release: 202 English tasks across seven categories; 183 have Chinese, Japanese, and Russian variants
+    and 171 have Arabic variants. Safety: 29 tasks randomly sampled from the main set and paired with 29 manually authored
+    deceptive dialogs, English only.'
+  rollout_count: unknown
+  temperature: Agent-specific settings are disclosed in Appendix G rather than one benchmark-wide value; no single temperature
+    applies.
+  inference_budget: Up to 15 screenshots or 30 dialog turns per task, most-recent three screenshots retained, full conversation
+    history retained, and 120-second task-step timeout in the released default.
+  optimizer_or_scaffold: Evaluation-only Python testbench orchestrating AMI/snapshot recovery, SSH preparation, VNC interaction,
+    task-specific grading, retries, result persistence, and aggregation.
+audit:
+  source_mixture: Annotator-authored macOS tasks informed by OSWorld/WindowsAgentArena taxonomy and Apple resources, GPT-4o
+    translations, Google Translate round-trip checks, language-specific AMIs, task preparation scripts, final-state evaluators,
+    and an overlapping 29-task safety subset.
+  split: unknown; no train/dev/test split is disclosed. The main 202-task set, common 171-task multilingual evaluation slice,
+    and 29-task safety subset are the only reported groupings; safety tasks are sampled from and therefore overlap the main
+    set.
+  decontamination: unknown; no model-training overlap or benchmark decontamination procedure is disclosed.
+  license: Official repository root is CC BY-NC 4.0. Record-level rights for Apple templates, application content, task assets,
+    and AMI contents are not separately enumerated, and Apple EULA compliance through AWS dedicated hardware is not itself
+    a redistribution license.
+  lineage: Annotated English task -> optional GPT-4o translation and round-trip check -> language AMI plus task pre-command
+    -> screenshot/action episode -> task-specific SSH grader -> binary result; safety tasks add an AppleScript dialog and
+    gold/distracted/not-handled outcome.
+  known_failure_modes:
+  - Binary final-state grading removes partial progress and can produce false positives or false negatives when scripts, window
+    titles, file paths, application versions, or UI state drift.
+  - Public task instructions and grading commands create evaluation leakage and verifier-gaming risk; no contamination analysis
+    is disclosed.
+  - The official release contains task/harness code but no immutable complete trajectory manifest for the reported model runs.
+  - Safety "unhandled" includes agents that did not engage with the dialog and must not be read as successful defense; capable
+    CUAs showed roughly 70% distraction rates.
+  - Translation quality relies on GPT-4o plus Google Translate round-trip checks; native-speaker validation and per-record
+    translation provenance are not disclosed.
+  - Reproduction depends on AWS Mac hardware, mutable AMIs, macOS/application versions, model APIs, and paid credentials;
+    the GitHub repository has no versioned Release binding them together.
+  citation_status: verified
+  confidence: high
+  notes: Paper, NeurIPS record, project, code, task JSONs, root license, configuration, runner, reset, evaluator, completion
+    checker, and safety scripts were verified. Repository inspection was pinned to commit e2ca8334b3765537e5c1c428ce57990248a1bb5f
+    on 2026-07-20.
+inclusion_reason: 'macOSWorld exposes a reusable, execution-verified GUI-agent evaluation object: multilingual task instructions,
+  resettable macOS state, screenshot/action interaction, terminal grading scripts, and a context-deception safety outcome.
+  It therefore directly supports both environment/trajectory-data analysis and benchmark-feedback auditing without claiming
+  an unreleased training corpus.'
+related:
+- OSWorld
+- WindowsAgentArena
+- AndroidWorld
+tags:
+- environment-agent-trajectory-data
+- gui-agent
+- interactive-benchmark
+- multilingual
+- programmatic-evaluation
+- context-deception
+status: verified
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: macOSWorld releases 202 resettable macOS GUI tasks with multilingual instructions, VNC screenshot/action
+  episodes, task-specific executable graders, and an overlapping 29-task context-deception safety subset.
+why_it_matters: It makes the environment and feedback contract auditable at task level—prompt, snapshot, preparation, action
+  surface, terminal predicate, and safety event—while revealing that binary evaluators, public graders, cloud/version drift,
+  and missing rollout/split provenance constrain training reuse.
+card: null
+needs:
+- 'needs_card_upgrade: replace the current seed Card with evidence-grounded bilingual L4 sections using this ledger'
+- 'needs_release_pin: bind code, task JSONs, AMI IDs, app versions, and results to a versioned official release'
+- 'needs_trajectory_manifest: publish immutable observation/action/conversation records for reported runs, including failures'
+- 'needs_audit: disclose split rationale, model-overlap/decontamination checks, evaluator error analysis, and record-level
+  asset rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against the NeurIPS 2025 43-page proceedings paper and official showlab/macosworld repository at commit
+    e2ca8334b3765537e5c1c428ce57990248a1bb5f. No official Hugging Face artifact or GitHub Release was found; unavailable links
+    remain null.

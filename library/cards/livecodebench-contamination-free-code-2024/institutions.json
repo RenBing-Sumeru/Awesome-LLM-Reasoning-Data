@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "UC Berkeley",
+    "MIT",
+    "Cornell University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2403.07974",
+    "https://arxiv.org/pdf/2403.07974",
+    "https://livecodebench.github.io/"
+  ],
+  "verification_note": "Sida Wang has no explicit affiliation marker in the checked arXiv/project author line."
+}

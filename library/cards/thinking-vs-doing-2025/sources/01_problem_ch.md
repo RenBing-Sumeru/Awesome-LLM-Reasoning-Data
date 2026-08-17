@@ -1,0 +1,7 @@
+可持续引用的 primary record 是 arXiv:2506.07976 v2（2025-06-10）。论文另有 SEA @ NeurIPS 2025 和 ARLET workshop 记录，但 SEA 页面明确选择不进入 archival proceedings；因此本 Card 将 venue 记为 arXiv preprint，而不是 NeurIPS proceedings paper。已核验的 primary artifacts 包括论文全文及附录、官方项目页、固定在 commit `92ec04f5e4f2e4e40b99ecb1652191030a54a74a` 的 `test-time-interaction/TTI` 仓库，以及两个作者链接的 Hugging Face checkpoints。
+
+论文研究的问题是：网页智能体能否通过增加测试时的环境交互次数来改进，而不是在每次行动前投入更多 reasoning tokens。更多交互可以暴露新的页面状态、允许回退并支持重新规划，但固定的长 horizon 也可能造成无目标探索，并让终局成功的归因更嘈杂。TTI 将这一矛盾转化为 post-training data 问题：当交互 horizon 扩大时会出现哪些成功行为，又应如何选择和 replay 这些 episodes？
+
+在方法层面，一条 episode 从 task goal 和 URL 开始。每一步，policy 接收 accessibility tree、set-of-marks screenshot、最近三步 observation 和全部历史 actions，再输出带 chain-of-thought 的文本，并以六种浏览器动作之一结束：click、type、scroll、go back、Bing/search 或 stop/ANSWER。运行时记录还包含 next observation、reward、`done`、final answer、可选 reference answer、trajectory reward、Monte-Carlo return 和 maximum horizon。episode 在 agent 主动停止或达到 horizon 时终止；success 是二元的终局结果。公开发布的对象更窄：可获得五个 task JSONL 文件、代码、prompts/configuration 和两个 checkpoints，但没有收集到的 `.pt` rollout episodes、screenshots、replay manifest 或 immutable environment snapshot。
+
+因此，该工作属于 `environment_agent_trajectory_data` 的核心条目：state、action、observation、terminal predicate、evaluator identity、replay selection 和 environment version 都会改变最终监督信号。它不提供 step-correctness labels，也不支持一般性的 robotics 结论，更没有发布可直接复用的 rollout corpus。Card 已用经核验的论文与仓库证据达到双语审阅深度，但保留 accepted metadata 中的 `L3_summary_ready`，因为 split integrity、evaluator pinning、licensing 和 rollout availability 仍未解决。

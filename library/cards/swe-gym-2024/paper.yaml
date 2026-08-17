@@ -1,0 +1,119 @@
+id: swe-gym-2024
+title: Training Software Engineering Agents and Verifiers with SWE-Gym
+year: 2024
+venue: ICML 2025 / arXiv
+authors:
+- Jiayi Pan
+- Xingyao Wang
+- Graham Neubig
+- Navdeep Jaitly
+- Heng Ji
+- Alane Suhr
+- Yizhe Zhang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- swe-agents
+- training-environments
+- repository-repair
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.21139
+  arxiv: https://arxiv.org/abs/2412.21139
+  doi: https://doi.org/10.48550/arXiv.2412.21139
+  code: https://github.com/SWE-Gym/SWE-Gym
+  data: https://huggingface.co/SWE-Gym
+  project: https://github.com/SWE-Gym/SWE-Gym
+  huggingface: https://huggingface.co/SWE-Gym
+  venue: null
+  openreview: https://openreview.net/forum?id=Cq1BNvHx74
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SWE-Gym arXiv paper, official repository, and Hugging Face artifacts
+  trace_author: SWE-Gym authors, SWE-Gym pipeline, and agent trajectories sampled from systems disclosed per experiment
+  answer_format: Python repository tasks, executable environments, tests, trajectories, verifier data, and success outcomes
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: executable Python repository tasks with tests and trajectories
+  verifier_or_reward: repository tests, verifiers, and SWE-Gym scoring
+  terminal_predicate: repository tests, verifiers, and SWE-Gym scoring
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: SWE-Gym task curation, tests, and disclosed trajectory-generating agents such as GPT-4o and Claude 3.5 Sonnet for
+    the reported OpenHands setting
+  generator: SWE-Gym environment and trajectory construction
+  filtering_rule: pin split, evaluator, trajectory versions, and verifier training data
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2412.21139; https://github.com/SWE-Gym/SWE-Gym; https://huggingface.co/SWE-Gym
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2412.21139'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: reconcile trajectory split, evaluator version, model trajectory provenance, Docker image availability, and exact
+    Hugging Face release revision
+inclusion_reason: it links executable SWE environments with verifier and trajectory data for post-training
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- swe-agents
+- training-environments
+- repository-repair
+one_line: SWE-Gym provides executable repository tasks and trajectories for training SWE agents and verifiers.
+why_it_matters: it links executable SWE environments with verifier and trajectory data for post-training
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SWE-Gym provides executable repository tasks and trajectories for training SWE agents and verifiers.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv and official GitHub README confirm ICML 2025 status, authors, UC Berkeley/UIUC/CMU/Apple affiliations, public
+    code/data links, and headline task counts; OpenReview was blocked by browser verification.
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 102
+  primary_category_id: environment_agent_trajectory_data

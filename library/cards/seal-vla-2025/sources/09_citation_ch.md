@@ -1,0 +1,1 @@
+Yilin Wu、Anqi Li、Tucker Hermans、Fabio Ramos、Andrea Bajcsy、Claudia Pérez-D’Arpino。《Do What You Say: Steering Vision-Language-Action Models via Runtime Reasoning-Action Alignment Verification》。arXiv:2510.16281，2025（2026 修订）。[论文](https://arxiv.org/abs/2510.16281) · [代码](https://github.com/NVlabs/actalign) · [LIBERO-R 数据](https://huggingface.co/datasets/nvidia/libero-r-datasets)。

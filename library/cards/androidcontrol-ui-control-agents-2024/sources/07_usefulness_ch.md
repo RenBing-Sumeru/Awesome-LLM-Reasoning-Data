@@ -1,0 +1,1 @@
+AndroidControl 适合用于研究数据规模效应、app/task split 设计、accessibility-tree 解析和层级指令在移动 agent 中的作用。复用记录应保留 episode id、可用的 app id 或类别、goal、step instruction、截图 bytes 或 path、截图尺寸、accessibility tree bytes、action JSON、action index、split membership、scale subset、parser version 和 evaluator version。对 atlas 来说，它是高价值环境-智能体轨迹数据；审计重点是泛化 split 是否完整可信。

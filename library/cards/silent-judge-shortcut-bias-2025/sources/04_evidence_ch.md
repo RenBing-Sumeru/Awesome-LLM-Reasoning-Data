@@ -1,0 +1,1 @@
+受控线索交换检验判断是否对内容不变。ELI5 上 GPT-4o 的 New–Old VSR 为 +30%，Gemini 为 +16%；LitBench 上为 +16%/+4%。GPT-4o 在 LitBench 的 Human–Unknown VSR 为 +14%，且所有设置 CAR 均严格为 0（第 3 节、表 1–5）。这证明两模型、两任务中的捷径敏感性，不代表所有 judge 或领域的发生率。

@@ -1,0 +1,1 @@
+Xiaoqiang Lin, Arun Verma, Zhongxiang Dai, Daniela Rus, See-Kiong Ng, and Bryan Kian Hsiang Low. 2026. ActiveDPO: Active Direct Preference Optimization for Sample-Efficient Alignment. International Conference on Learning Representations. https://openreview.net/forum?id=RD4XgyVyGh

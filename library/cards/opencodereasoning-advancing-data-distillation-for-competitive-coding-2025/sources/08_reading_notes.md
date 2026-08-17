@@ -1,0 +1,5 @@
+- Read Section 2 and Table 1 first: the paper corpus is 736,712 rows over 28,904 questions, not the HF 1.0 card's 735,255 rows over 28,319 questions.
+- Treat reasoning-tag, code-block, and Tree-sitter checks as format/syntax filters; they are not release-wide functional verification.
+- Read Section 4.1 and Table 3 together: the execution-filtering result is entangled with difficulty, question coverage, and the 445,618-versus-151,251 row comparison.
+- Use Table 2 with its caption: OCR results average repeated generations, while baseline rows were run once.
+- Pin code and data separately; the current `74b8649` recipe targets OCR-2 and differs from the OCR-1 paper in question pool and generation budget.

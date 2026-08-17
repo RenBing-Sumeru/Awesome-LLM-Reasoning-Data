@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Nemotron 3 Ultra 发布了权重、数据集合与训练配方，并披露多领域 SFT、每样本 16 次 rollout 的异步 RLVR 和两阶段教师蒸馏；私有输入、完整 reward 校准和逐条来源谱系仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型技术报告与数据披露账本",
+  "best_for_ch": "需要审计开放权重发布、混合数据来源和多环境 RL 复现边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "NVIDIA",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

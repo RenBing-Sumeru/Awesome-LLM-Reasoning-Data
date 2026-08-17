@@ -1,0 +1,1 @@
+正确性只相对于 curated answer key、metric code 和选定化学主题成立，不能推导为实验室或安全关键化学部署许可。人类对照依赖研究中的样本和协议。模型 endpoint、prompt 格式、temperature、package 版本都会改变结果。选择题或短答案评分可能漏掉推理质量、不确定性校准和危险用途行为。重新打包 benchmark 前必须查 artifact license 与再分发条款。

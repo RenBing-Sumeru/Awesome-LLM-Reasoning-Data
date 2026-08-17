@@ -1,0 +1,1 @@
+先前基线多是泛学科 QA 或零散化学 prompt，缺少持续维护的化学评测 harness。ChemBench 的变化是把对象做成领域专门套件：curated QA、主题报告、package runner 和化学家基线。方向信号是专家领域推理评测需要校准和信心审计，不只是 accuracy。质量信号来自公开 Python package、arXiv 论文，以及项目记录的 Zenodo/Hugging Face 式 artifact 路径。它并不发明自动 QA 评分或 prompt-based evaluation。复用前要查任务 provenance、答案 key 暴露、主题平衡、package 版本、依赖限制、license 和预训练污染。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将文本与图像泄漏统一为多模态污染审计，并提供可复现的来源分析框架。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要测量多模态基准泄漏及模型评测可信度的研究者。",
+  "confidence_ch": "高：Findings of EMNLP 正式论文，代码与审计流程公开。",
+  "authors_ch": "Dingjie Song, Sicheng Lai, Mingxuan Wang, Shunian Chen, Lichao Sun, Benyou Wang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

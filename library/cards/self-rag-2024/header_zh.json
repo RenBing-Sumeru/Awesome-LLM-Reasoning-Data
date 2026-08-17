@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Self-RAG 公开约 15 万条插入检索、相关性、支持度与效用 token 的指令输出，用于检索感知的自我批判式 SFT。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "反思 token 指令数据集与检索增强生成方法",
+  "best_for_ch": "适合构建或审计检索感知、事实性与自我批判 SFT 数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Akari Asai, Zeqiu Wu, Yizhong Wang, Avirup Sil, Hannaneh Hajishirzi",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:50:00Z"
+}

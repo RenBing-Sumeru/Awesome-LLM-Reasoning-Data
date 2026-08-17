@@ -1,0 +1,1 @@
+AndroidDaily 解决的问题是：在无法访问内部状态的闭源 Android 应用上，如何评测移动 GUI 智能体。主要来源是 arXiv 论文，HTML 元数据列出 ACM Multimedia 2026 conference 状态。它的边界是基于可观察视觉轨迹的真实 app 可核验评测，不是训练轨迹数据，也不是开源 app 模拟器。一个 benchmark item 是闭源 app 中的日常任务，智能体的屏幕-动作轨迹按外部准则判断。对 atlas 的价值是覆盖最难的移动端评测情形：不能读取 app 内部状态，只能根据可见行为和任务特定标准判定成功。

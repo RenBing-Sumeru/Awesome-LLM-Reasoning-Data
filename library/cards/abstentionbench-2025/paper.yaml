@@ -1,0 +1,104 @@
+id: abstentionbench-2025
+title: AbstentionBench
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Polina Kirichenko
+- Mark Ibrahim
+- Kamalika Chaudhuri
+- Samuel J. Bell
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- abstention
+- factuality
+- uncertainty
+training_use:
+- evaluation
+- safety_alignment
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.09038
+  arxiv: https://arxiv.org/abs/2506.09038
+  code: https://github.com/facebookresearch/AbstentionBench
+  data: https://huggingface.co/datasets/facebook/AbstentionBench
+  project: null
+  huggingface: https://huggingface.co/datasets/facebook/AbstentionBench
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fb122bfc3f0127a94ded048b5b03496f-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: benchmark questions drawn from 20 datasets plus new underspecified reasoning challenges.
+  trace_author: evaluated models produce answers or abstentions.
+  answer_format: model response, abstention decision, and correctness/abstention judgment.
+  process_fields:
+  - scenario type, source dataset, answerability label, judge/validation metadata.
+  environment_or_substrate: offline benchmark with model-evaluation harness.
+  verifier_or_reward: human-validated judges and benchmark labels for abstention scenarios.
+  terminal_predicate: answer correctly when answerable and abstain when the prompt is unanswerable or underspecified.
+recipe_metadata:
+  base_model: evaluated frontier/open models vary.
+  teacher: dataset labels and human-validated abstention judgments.
+  generator: benchmark authors assemble unanswerable and answerable prompts.
+  filtering_rule: scenario definitions for unknown answer, underspecification, false premise, subjectivity, and outdated information.
+  sampling_protocol: 20-dataset benchmark mixture should be cited with version.
+  inference_budget: prompt and instruction choices affect abstention behavior.
+  optimizer_or_scaffold: evaluation harness for answer/abstain decisions.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Are abstention and correctness judged separately?
+  split: Which scenario types dominate model failures?
+  decontamination: Does reasoning fine-tuning improve accuracy but reduce abstention?
+  license: Check official artifact license before reuse.
+  lineage: Are instruction prompts allowed, and are they reported?
+  known_failure_modes:
+  - A model can game abstention by refusing too often.
+  - Benchmark labels around subjectivity and underspecification can be ambiguous.
+  - Prompt tuning may improve benchmark score without improving epistemic reasoning.
+  citation_status: verified
+  confidence: high
+  notes: Promoted with paper-specific atlas card and official primary link review.
+  metadata_status: carded
+  author_review:
+    status: verified
+    source: https://arxiv.org/abs/2506.09038
+    reviewed_on: '2026-07-13'
+    note: 按 arXiv 官方作者栏核对；团队/超长署名保留官方集体作者并提示查看原文完整名单。
+inclusion_reason: Benchmark and failure-mode entry for epistemic boundaries, uncertainty handling, and refusal/abstention
+  evaluation.
+related: []
+tags: []
+status: verified
+card: cards/benchmarks/abstentionbench.md
+needs:
+- 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+one_line_summary: AbstentionBench evaluates whether LLMs know when not to answer across unknown, underspecified, false-premise,
+  subjective, and stale-information questions.
+why_it_matters: 'It is a direct audit surface for reasoning models: stronger reasoning can still fail if the model confidently
+  answers unanswerable questions instead of abstaining.'
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-06-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary link pinned in artifacts.
+curation_level: L5_audit_ready
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

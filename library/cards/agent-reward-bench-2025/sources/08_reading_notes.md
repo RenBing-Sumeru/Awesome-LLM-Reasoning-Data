@@ -1,0 +1,5 @@
+- Keep the publication and artifact pins together: COLM 2025; arXiv:2504.08942v2; GitHub `f838338886d723d40b586309465a38277803d9e6`; Hugging Face `b6d17e646009d6cb63d5dd7be78807b680693f61`.
+- Separate the 1,302 unique episodes from the 1,408 annotation rows. There are 106 double-annotated keys; the paper's 3,906 binary-label count excludes the released four-level optimality field.
+- Read all three feedback sources independently: expert labels are the reference, `functional` thresholds stored reward at `>0.5`, and LLM judges predict labels from configurable trajectory representations.
+- Treat 89.3% reported success agreement as an author result that is not exactly reproduced by an obvious raw-CSV exact-match calculation; optimality agreement is unreported.
+- Use the 1,302 cleaned episodes, 1,302 screenshot directories, and 15 judgments per episode for evaluation and audit only. Licensing, upstream rights, deterministic replay, decontamination, privacy, and exhaustive linkage/parsing checks remain unresolved.

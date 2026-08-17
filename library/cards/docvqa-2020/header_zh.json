@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DocVQA 用文档图像问答评估模型能否结合 OCR、版面结构和问题意图给出文本答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "WACV 2021 / DocVQA Challenge 2020 的 document VQA benchmark / evaluation surface",
+  "best_for_ch": "关注文档图像理解、OCR-layout 联合推理、ANLS 评分和数据 lineage 的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Minesh Mathew 等（IIIT Hyderabad、CVC Universitat Autonoma de Barcelona 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

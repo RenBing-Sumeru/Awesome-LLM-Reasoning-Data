@@ -1,0 +1,1 @@
+The official arXiv report, Skywork repository, dataset card, and model page establish the released report, code, data, and weights. They do not resolve the 105K-versus-110K math-count discrepancy, pin a stable item schema, or independently establish the verifier and sample-level lineage.

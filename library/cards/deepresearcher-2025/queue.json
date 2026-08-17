@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "搜索轨迹数据，数据量充足，包含配方",
+    "updated_at": "2026-07-23T05:26:55Z"
+  },
+  "updated_at": "2026-07-23T05:26:55Z"
+}

@@ -1,0 +1,5 @@
+- 论文身份以 FSE 2026 accepted title 与九名作者为准；较早的长版 SWE-Factory 标题和 Yingtian Zou 引用界面属于版本漂移，不要虚构 ACM DOI。
+- 构建契约是 environment-level gold-patch fail-to-pass，而不是 step supervision：四个代理生成 Docker/test 配方，parser 检查 nonzero-before/zero-after exit code。
+- 必须区分所有数量：2,441 个 source issue、671 条已发布 SweSetupBench task、2,877 个已构建与 2,809 个已准备训练环境、2,809 条 messages-only trajectory，以及 430 条 Gym 记录。
+- 阅读 headline result 时同时看消融与 parser 审计：337/671、单实例 $0.047；不做 binary download repair 时相关成功数为零；移除 execution feedback 后有效任务为 2/18/5；1,201 个可用 pair 中有 16 个 parser false negative。
+- 复用前解决缺失 Appendix、逐行 lineage、image digest/SBOM、model card 与 license、上游 GitHub 权利、contamination check、security control，以及论文与配置版本漂移。

@@ -1,0 +1,6 @@
+- Read §§3–4 and Appendix C first to reconstruct the task JSON, AWS/VMware reset paths, screenshot/action loop, and executable grader.
+- Keep the counts distinct: 202 main English tasks, 183 Chinese/Japanese/Russian variants, 171 Arabic variants, and 29 English safety tasks sampled from the main set.
+- Table 3's common 171-task results and Table 4's language averages are model/environment observations, not proof of task correctness or training-data quality.
+- Read Table 5 with all three safety outcomes; GPT-4o's 0% distraction accompanies 100% unhandled and therefore is not evidence of successful defense.
+- Pair this Card with OSWorld, WindowsAgentArena, and AndroidWorld to isolate the macOS-native, paired prompt/UI localization, and context-deception contributions.
+- Before reuse, verify the pinned commit, AMIs/apps, evaluator error behavior, complete rollout manifest, split/decontamination policy, and record-level rights; these remain unresolved.

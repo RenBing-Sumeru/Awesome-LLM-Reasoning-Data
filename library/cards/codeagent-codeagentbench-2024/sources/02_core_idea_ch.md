@@ -1,0 +1,1 @@
+核心贡献是一组配套对象：CodeAgentBench 给出 101 个来自 5 个 Python 项目的仓库级函数/类任务，CodeAgent 给模型提供工具化访问仓库工件的框架。新意不在发明新的 verifier，而在把文档、静态依赖抽取、sandbox 执行、5 个编程工具和 4 种工具使用策略组合成可评测的 repo-level surface。最接近的参照是 HumanEval、ClassEval、RepoEval、CodeContests 和 SWE-bench。反馈契约是程序化测试：生成代码必须在准备好的环境里通过对应测试。

@@ -1,0 +1,1 @@
+核心贡献是 AndroidDaily benchmark 和 GRADE 评测器。AndroidDaily 覆盖 94 个高频 Android 应用中的 350 个真实日常任务；GRADE 把每个任务转成可观察外部准则，并分成三层：operational obligations、output quality、negative constraints。反馈契约是过程感知轨迹判断：评测器看视觉轨迹并给诊断判断，而不是读取隐藏 app 状态。最近对比是 AndroidWorld、AITW/AndroidControl 式动作数据，以及依赖开源或模拟环境的 GUI benchmark。方向标签是真实闭源 app 上的可核验移动 agent 评测。

@@ -1,0 +1,1 @@
+Needle-in-a-Haystack 等长上下文测试主要测检索，IFEval 等指令 benchmark 的上下文又较短。LIFBench 将两者结合，专门评估复杂约束在长输入中的保持能力，并将“稳定性”设为独立指标。方法上的关键新意是沿长度、表达和变量构造配对变体，使性能波动可以归因于具体因素；LIFEval 则把自然语言 instruction 编译为 deterministic rubric，不依赖人工或 LLM 裁判。这使数据可用于精确回归测试。

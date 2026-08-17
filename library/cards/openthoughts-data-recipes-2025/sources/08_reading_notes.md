@@ -1,0 +1,6 @@
+- Keep the dates separate: the paper appeared in 2025 and is an ICLR 2026 Oral; the accepted page has 51 authors, while arXiv v2 has 50.
+- Read Figure 2 and Sections 4.1-4.6 as a map from question source through teacher choice, then use Appendices F, H, O, Q, and R for decontamination, verifier failures, compute, source rights, and exact recipe details.
+- The released row is only `difficulty` + `source` + `domain` + a two-message `conversations` object; no correctness, reward, step label, upstream ID, rights record, or filter decision is attached.
+- Do not summarize the paper as “verification does not work”: Table 15 changes sign between 32B and 7B generators, while the main no-filter comparison is not compute-controlled.
+- Treat the Apache-2.0 dataset label as unresolved rather than sufficient because Appendix Q names all-rights-reserved and no-license upstream books and no row-level rights manifest exists.
+- Before any fork or reproduction, inspect the pinned official configs for secrets without copying values, rotate/remove the exposed credential, and require an exact final-run manifest plus rejection and decontamination ledgers.

@@ -1,0 +1,3 @@
+Scalar PRMs do not learn why a step is wrong and overfit easily under limited supervision. R-PRM expands labeled seeds with step-by-step judging rationales, creates preference data among verifier traces, and reasons before judging.
+
+This gap directly determines whether mathematical step-evaluation reasoning can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on step labels, teacher-evaluation rationales, and verifier reasoning preference pairs and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in ProcessBench、PRMBench and answer selection.

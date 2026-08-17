@@ -1,0 +1,3 @@
+- For creating detailed visual grounding targets before question-answer SFT, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of teacher hallucinations may be amplified by the 1.2M synthetic expansion.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: caption consistency checks and downstream multimodal benchmark scores. Do not reuse the release when its licensing or source provenance cannot be preserved.

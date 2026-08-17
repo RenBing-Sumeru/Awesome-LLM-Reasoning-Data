@@ -1,0 +1,3 @@
+The paper evaluates TRACE on OlympiadBench, MATH500, AIME24, AMC23, and AIME25 across Qwen3, Gemini 2.5 Flash, and R1-distilled models. It compares against full-length reasoning and dynamic early-exit baselines, reporting accuracy and token compression rather than only one metric.
+
+The authors report 25–30% average token reduction while retaining accuracy within 1–2% of full-length reasoning, and report 2–4 average accuracy points over strong early-exit baselines at comparable or lower budgets. These gains depend on answer induction, window size, threshold choice, and model confidence access; the official code should be used to reproduce the full trade-off.

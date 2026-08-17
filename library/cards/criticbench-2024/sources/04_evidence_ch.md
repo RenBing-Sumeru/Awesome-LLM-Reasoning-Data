@@ -1,0 +1,1 @@
+ACL 摘要报告了几类主要发现：GQC 能力近似线性相关，critique-focused training 提升表现，correction effectiveness 依任务而变且逻辑类任务更易被修正，知识不一致随模型规模增大而下降，强模型更会 critique 弱模型但弱模型在 self-critique 中可能反超强模型。规模证据是 15 个 datasets、五个 domain、3 个 LLM families 的 responses、17 个 LLM 的评测。单条证据是 prompt、原始 response、critique、corrected answer 和 scoring result。证据受 prompt 设计、response 采样、metric 有效性和 model-as-judge 选择约束。

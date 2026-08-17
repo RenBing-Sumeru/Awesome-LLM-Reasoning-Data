@@ -1,0 +1,1 @@
+主实验对六数据集上的 32 个模型—设置组合进行评测。最佳 Qwen3-Max+Reference 的平均 accuracy 为 0.6721，32 组合平均仅 0.5627。Reference 将平均分从 Vanilla 的 0.5313 提升到 0.5843，并将 Verify 从 0.5491 提升到 0.8169，但 Reference+Rubric 降至 0.5784。这说明辅助上下文有用，却不会稳定叠加。

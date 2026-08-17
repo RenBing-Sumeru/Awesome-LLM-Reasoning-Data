@@ -1,0 +1,1 @@
+Math-Shepherd 可作为把 answer-verifiable tasks 转成近似过程监督的 recipe。记录中应保留 problem id、reference answer、generated solution、prefix boundary、sampled continuations、final-answer verdicts、reward aggregation、PRM score 和 search budget。对 atlas 设计来说，它有助于把三层分开：answer checker、pseudo process label、learned reward model。

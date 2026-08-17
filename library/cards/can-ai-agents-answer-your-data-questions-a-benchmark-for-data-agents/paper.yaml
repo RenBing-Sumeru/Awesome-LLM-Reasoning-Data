@@ -1,0 +1,95 @@
+id: can-ai-agents-answer-your-data-questions-a-benchmark-for-data-agents
+title: Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents
+year: 2026
+venue: arXiv
+authors:
+- Ruiying Ma
+- Shreya Shankar
+- Ruiqi Chen
+- Yiming Lin
+- Sepanta Zeighami
+- Rajoshi Ghosh
+- Abhinav Gupta
+- Anushrut Gupta
+- Tanmai Gopal
+- Aditya G. Parameswaran
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.20576
+  arxiv: https://arxiv.org/abs/2603.20576
+  code: https://github.com/ucbepic/DataAgentBench
+  data: https://huggingface.co/datasets/ruiyingm/DataAgentBench-data
+  project: https://ucbepic.github.io/DataAgentBench/
+  huggingface: https://huggingface.co/datasets/ruiyingm/DataAgentBench-data
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Dataset authors and the released construction pipeline.
+  answer_format: Task input, candidate output, and the released verification surface.
+  process_fields:
+  - task
+  - candidate output
+  - verifier result
+  environment_or_substrate: The official released execution or verification environment.
+  verifier_or_reward: The paper's published executable or rule-based verifier.
+  terminal_predicate: The candidate output satisfies the released verification contract.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: The released verifier or execution environment.
+  generator: The authors' released construction pipeline.
+  filtering_rule: Use the official release and its documented acceptance rules.
+  sampling_protocol: Use the official split and version.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Programmatically verified outcome data.
+audit:
+  source_mixture: Official paper, candidate data release, and any official code link cited in the card.
+  split: Use the official release split.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
+  license: Check the official data and upstream-source terms before reuse.
+  lineage: https://huggingface.co/datasets/ruiyingm/DataAgentBench-data
+  known_failure_modes:
+  - Passing a released verifier does not establish behavior outside its coverage.
+  - Public tasks can overlap with downstream model training data.
+  citation_status: verified
+  confidence: medium
+  notes: The author-released Hugging Face dataset, project site, and author GitHub benchmark release were checked.
+inclusion_reason: The released resource exposes a reusable programmatic outcome-verification surface.
+related: []
+tags:
+- programmatic-verification
+one_line_summary: One-sentence position:** Fifty-four realistic multi-database agent questions spanning 12 datasets, nine
+  domains, and four DBMSes.
+why_it_matters: It exposes a reproducible terminal outcome check rather than only a textual reference.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv paper, author-released Hugging Face dataset, project site, and GitHub release checked.
+category_ids:
+- programmatically_verifiable_outcome_data

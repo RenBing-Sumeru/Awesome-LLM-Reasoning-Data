@@ -1,0 +1,105 @@
+id: codescaler-execution-free-reward-models-code-2026
+title: 'CodeScaler: Scaling Code LLM Training and Test-Time Inference via Execution-Free Reward Models'
+year: 2026
+venue: arXiv
+authors:
+- Xiao Zhu
+- Xinyu Zhou
+- Boyu Zhu
+- Hanxu Hu
+- Mingzhe Du
+- Haotian Zhang
+- Huiming Wang
+- Zhijiang Guo
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- pairwise_preference
+domains:
+- code-generation
+- reward-modeling
+training_use:
+- preference_learning
+- reward_modeling
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.17684
+  arxiv: https://arxiv.org/abs/2602.17684
+  code: https://github.com/LARK-AI-Lab/CodeScaler
+  data: https://huggingface.co/datasets/LARK-Lab/CodeScalerPair-51K
+  project: https://lark-ai-lab.github.io/codescaler.github.io/
+  huggingface: https://huggingface.co/datasets/LARK-Lab/CodeScalerPair-51K
+  doi: https://doi.org/10.48550/arXiv.2602.17684
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Programming problems used for code-solution generation.
+  trace_author: Code LLM candidate generators and the CodeScaler construction pipeline.
+  answer_format: Programming prompt with a verified preferred and rejected solution pair.
+  process_fields:
+  - prompt
+  - chosen
+  - rejected
+  - preference metadata
+  environment_or_substrate: Code generation without execution at deployment time.
+  verifier_or_reward: Execution-free reward model trained from verified preference pairs.
+  terminal_predicate: The reward model ranks the preferred code solution above its alternative.
+recipe_metadata:
+  base_model: Code LLMs evaluated in the paper.
+  teacher: Verified preference-pair construction process.
+  generator: Code candidate generation pipeline.
+  filtering_rule: Keep the verified pair records released as CodeScalerPair-51K.
+  sampling_protocol: 51,107 pairs in the official data release.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reported in the official project and paper.
+  optimizer_or_scaffold: Execution-free reward modelling for training and test-time selection.
+audit:
+  source_mixture: Primary arXiv paper, LARK project, GitHub repository, and LARK-Lab Hugging Face dataset.
+  split: See the official dataset card and paper for split details.
+  decontamination: Audit programming-problem overlap with code generation benchmarks before evaluating downstream models.
+  license: Check the repository and Hugging Face dataset terms before reuse.
+  lineage: https://arxiv.org/abs/2602.17684
+  known_failure_modes:
+  - Execution-free scoring can disagree with actual compilation or test outcomes.
+  - Synthetic preference pairs may not reflect all software-quality dimensions.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv paper, author project, linked GitHub repository, and concrete CodeScalerPair-51K page were checked.
+inclusion_reason: CodeScaler releases verified code preference pairs and an execution-free reward-model recipe for both preference
+  training and inference-time selection.
+related: []
+tags:
+- code
+- reward-model
+- preference-pairs
+- test-time-scaling
+- '2026'
+one_line_summary: CodeScaler releases 51,107 verified code preference pairs for training execution-free reward models that
+  scale code training and test-time selection.
+why_it_matters: It targets the practical setting where executing every candidate program is too costly while retaining pairwise
+  reward supervision.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The arXiv paper, author project, linked GitHub repository, and concrete CodeScalerPair-51K page were checked.
+category_ids:
+- preference_reward_feedback_data

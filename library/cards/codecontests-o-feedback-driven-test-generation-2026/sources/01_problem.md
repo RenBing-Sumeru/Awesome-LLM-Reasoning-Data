@@ -1,0 +1,3 @@
+Competitive-programming problems are naturally suited to execution rewards, but platform tests are often unavailable. LLM-generated tests tend to cover examples and common inputs, producing both false rejection of correct programs and failure to detect boundary-condition bugs. Weak tests enable reward hacking: models learn to pass a narrow suite rather than satisfy the specification.
+
+CodeContests-O repeatedly refines test generators and commands using execution feedback from known correct and incorrect solutions, targeting both fidelity and discriminability. It releases generators, checkers, final cases, and complete iteration histories.

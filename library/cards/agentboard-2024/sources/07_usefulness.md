@@ -1,0 +1,3 @@
+AgentBoard is useful as a schema for diagnostic trajectory evaluation. A reusable record should retain task id, environment, observation/action sequence, terminal status, progress checkpoints, progress score, failure type, model/scaffold metadata, and budget. This is valuable for analyzing where an agent stops making progress, not only whether it solved the task.
+
+For atlas curation, use it as a benchmark design example for adding process metrics to environment trajectories. The main reuse boundary is that progress labels and terminal predicates must travel with the task; aggregate scores without their metric definitions are not enough.

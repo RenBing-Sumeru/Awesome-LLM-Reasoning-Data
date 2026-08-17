@@ -1,0 +1,3 @@
+Hjalmar Wijk, Tao Lin, Joel Becker, Sami Jawhar, Neev Parikh, Thomas Broadley, Lawrence Chan, Michael Chen, Josh Clymer, Jai Dhyani, Elena Ericheva, Katharyn Garcia, Brian Goodrich, Nikola Jurkovic, Megan Kinniment, Aron Lajko, Seraphina Nix, Lucas Sato, William Saunders, Maksym Taran, Ben West, Elizabeth Barnes. "RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts." 2024 / METR / arXiv preprint. https://arxiv.org/abs/2411.15114
+
+Official artifacts to check: paper: https://arxiv.org/abs/2411.15114; project: https://metr.org/AI_R_D_Evaluation_Report.pdf; code: https://github.com/METR/RE-Bench; data: https://transcripts.metr.org/; doi: https://doi.org/10.48550/arXiv.2411.15114.

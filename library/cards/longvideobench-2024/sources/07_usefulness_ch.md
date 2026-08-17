@@ -1,0 +1,1 @@
+LongVideoBench 可作为长多模态评测记录的 schema：保留 video id/引用、时长、抽帧策略、字幕/转写可用性、问题、选项、gold answer、referred context、split、模型输入策略和分数。它适合做把“找到相关时间段”和“选择答案”分开的审计。对 atlas 来说，它展示了 benchmark 如何把人工问题与客观多选评分结合，同时仍然需要证据 grounding 检查。

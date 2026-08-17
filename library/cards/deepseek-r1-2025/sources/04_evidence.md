@@ -1,0 +1,5 @@
+The official report identifies DeepSeek-V3-Base, R1-Zero GRPO, rule accuracy/format rewards, cold-start SFT, reasoning RL, rejection sampling, general SFT, and all-scenarios RL. It reports approximately 600K rejection-sampled reasoning entries, 200K non-reasoning entries, and 800K distillation rows. These figures describe training stages; the records and manifests are not an official data release.
+
+The official repository, release notice, and Hugging Face model page provide paper, code, API/release context, and model weights. They do not provide cold-start prompts, SFT rows, RL prompt distributions, rollout groups, accepted/rejected outputs, task environments, extractors, test harnesses, V3 judgments, reward-model weights, or audit logs.
+
+The evidence supports a mixed feedback contract: rule correctness and format for R1-Zero, language-consistency reward in R1, later V3 judgment, and rule plus general reward-model feedback for all-scenarios RL. It does not establish formulas, thresholds, calibration, false accepts, or reproducible terminal predicates.

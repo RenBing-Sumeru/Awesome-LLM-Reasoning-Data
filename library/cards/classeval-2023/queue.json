@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T03:41:07Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "比较老，测试生成代码是否能通过test，code方面也不算一个引用量很高的bench ref277",
+    "updated_at": "2026-07-15T03:41:07Z"
+  }
+}

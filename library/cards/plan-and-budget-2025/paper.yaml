@@ -1,0 +1,166 @@
+id: plan-and-budget-2025
+title: 'Plan and Budget: Effective and Efficient Test-Time Scaling on Reasoning Large Language Models'
+year: 2026
+venue: ICLR 2026
+authors:
+- Junhong Lin
+- Xinyue Zeng
+- Jie Zhu
+- Song Wang
+- Julian Shun
+- Jun Wu
+- Dawei Zhou
+source_role:
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- instruction_following
+- travel_planning
+- test_time_scaling
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.16122
+  arxiv: https://arxiv.org/abs/2505.16122
+  code: https://github.com/junhongmit/P-and-B
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.16122
+  venue: https://openreview.net/forum?id=ctspw4CqbS
+  openreview: https://openreview.net/forum?id=ctspw4CqbS
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The released repository evaluates MATH-500, a sampled 500-item NaturalInstructions set, and TravelPlanner;
+    it includes pre-decomposed JSON files for those evaluation inputs, while TravelPlanner additionally requires its database
+    download.
+  trace_author: An external LLM/API produces the decomposition and credit annotations during preprocessing; a selected reasoning
+    model produces the final prediction at test time. The repository's environment template leaves API_BASE and MODEL_NAME
+    blank, so the exact serving endpoint and several run-specific models are not fixed by the release.
+  answer_format: A released preprocessed item can contain id, query, reference when applicable, steps, credits, answer, and
+    level. A run writes id, query, answer, prediction, prompt_tokens, completion_tokens, total_tokens, score, and explanation;
+    these result files are generated locally rather than supplied as a checked author result manifest.
+  process_fields:
+  - id
+  - query
+  - reference
+  - steps
+  - credits
+  - level
+  - answer
+  - prediction
+  - token-usage fields
+  - score
+  - explanation
+  environment_or_substrate: Training-free Python inference/evaluation code using an OpenAI-compatible API or local vLLM. The
+    repository documents Python 3.12, vLLM installation, asynchronous workers, and a configurable endpoint; hardware, API
+    provider, model revisions, seeds, and executed-result logs are not released as a pinned experiment package.
+  verifier_or_reward: There is no training reward. MATH-500 is checked with math_verify after answer extraction; NaturalInstructions
+    uses ROUGE-L against the reference; TravelPlanner converts text to JSON with a secondary LLM and then calls the TravelPlanner
+    evaluator. E3 is a reported aggregate metric, E3 = A^2 / T, where A is task score and T is average billed completion tokens,
+    not a per-step verifier.
+  terminal_predicate: For a single evaluation record, the task-specific evaluator returns score (and sometimes an explanation);
+    the paper aggregates score and completion-token count across a dataset. TravelPlanner's LLM-based JSON conversion makes
+    its terminal scoring partly model-dependent.
+recipe_metadata:
+  base_model: Experiments cover DeepSeek-R1-Distill-Qwen-32B, QwQ-32B, DeepSeek-R1-Distill-Llama-70B, and o4-mini; the repository
+    also lists simplescaling/s1.1-32B as a supported completion model. Exact model revisions and endpoint implementations
+    are not disclosed in a run manifest.
+  teacher: LLaMA-3.3-70B-Instruct is the reported/default planner in the paper; the code's preprocessing calls the endpoint
+    named by MODEL_NAME, and a planner-sensitivity appendix replaces the default planner with LLaMA-3.3-70B. The exact model
+    used to create every distributed decomposition file is not separately versioned.
+  generator: The preprocessing script prompts an LLM to produce an ordered list of two to five sub-questions with hints, then
+    prompts it for JSON difficulty assessments and integer credits that sum to 100. The planned-local-weighted inference code
+    multiplies normalized credits by a schedule weight and allocates the total budget by flooring then distributing the remainder.
+  filtering_rule: This is an evaluation/inference framework, not a training-data construction pipeline. The checked repository
+    exposes no selected-versus-rejected rollout ledger, deduplication rule, or training-data filter.
+  sampling_protocol: The paper reports means and standard deviations over five runs, a hard 8,192-token cutoff, and uniform,
+    weighted, linear, polynomial, exponential, and cosine allocation schedules. The checked repository defaults ordinary chat/completion
+    calls to temperature 0.1 and top_p 0.9, but it does not pin all API/model settings for the published experiments.
+  rollout_count: Five runs are reported for the comparative experiments; the number of sampled candidate solutions per evaluation
+    item is not disclosed as a separate rollout count.
+  temperature: 0.1 is the repository default for ordinary chat/completion calls; experiment-specific decoding settings, including
+    reasoning-model settings, are not fully pinned.
+  inference_budget: The code maps levels 1–5 to 200, 250, 350, 450, and 600 units respectively before local allocation, while
+    the paper also applies a hard 8,192-token generation cutoff. E3 counts billed completion tokens including planning, reasoning,
+    and output tokens; a complete per-item budget and token ledger is not released.
+  optimizer_or_scaffold: No post-training optimizer is used. The scaffold is a planning prompt, a local scheduling rule, task-specific
+    scoring, and aggregate E3 reporting.
+audit:
+  source_mixture: MATH-500 is loaded from HuggingFaceH4/MATH-500; TravelPlanner is loaded from osunlp/TravelPlanner validation
+    and the repository requests an additional database download; the sampled NaturalInstructions input is bundled as a local
+    JSON file. Exact source versions, sampling seed, and item manifests are not consolidated in the release.
+  split: The paper evaluates 500 MATH-500 items, 500 sampled NaturalInstructions items, and 180 TravelPlanner QA pairs. The
+    code reads the MATH test split and TravelPlanner validation split, but a versioned mapping from every reported run to
+    every input record is unavailable.
+  decontamination: unknown
+  license: The author code repository is MIT licensed. Upstream dataset, database, model, and generated-decomposition licensing
+    must be checked at their respective releases before redistribution or training reuse.
+  lineage: Upstream evaluation item -> LLM decomposition with steps/hints -> LLM difficulty/credit annotation -> prompted
+    target-model prediction under a schedule -> task-specific score and completion-token accounting -> aggregate E3. The author
+    repository supplies code and pre-decomposed inputs but no author-produced end-to-end result manifest was verified.
+  known_failure_modes:
+  - Complexity levels and sub-question credits are model-generated annotations; errors can send too little budget to a difficult
+    part or too much to an easy part.
+  - The scheduler constrains text with prompts such as a word limit; it is not a hard per-subquestion token enforcement mechanism
+    in the checked inference code.
+  - E3 squares a task score and divides by average tokens, so rankings depend on task metric choice, token accounting, and
+    API/model behavior rather than establishing data quality.
+  - TravelPlanner uses a secondary LLM to reconstruct JSON before programmatic scoring; conversion errors, model changes,
+    and prompt sensitivity can alter scores.
+  - No decontamination analysis, decomposition provenance manifest, complete experiment configuration, or raw result trace
+    ledger was verified.
+  citation_status: verified
+  confidence: high
+  notes: The ICLR 2026 OpenReview record, arXiv v3, official author repository, repository source files, and MIT license were
+    checked. The paper and code are authoritative for method and reported results; openness of raw execution traces and full
+    experiment provenance is partial.
+  metadata_status: partial
+inclusion_reason: This is a controlled-category test-time trace and scaling study because it attaches a plan, difficulty/credit
+  allocation, budget schedule, final prediction, token usage, and task score to a reasoning episode, while exposing which
+  of those records are actually released.
+related: []
+tags:
+- plan-and-budget
+- adaptive-token-allocation
+- test-time-compute
+- planning
+- e3
+- inference-efficiency
+status: partial
+why_it_matters: 'It makes an allocation policy part of the reasoning record: credits and schedules can affect both output
+  quality and token cost. The release is useful for method inspection and evaluation replication, but absent trace/result
+  manifests and contamination evidence prevent treating it as an auditable training-data release.'
+card: null
+needs:
+- 'needs_release: author-produced per-item decomposition provenance, budgets, model outputs, token usage, scores, and failed/retried
+  calls'
+- 'needs_metadata: exact dataset revisions and sampling seed, model revisions/endpoints, prompts used for distributed decompositions,
+  run configurations, and hardware/runtime details'
+- 'needs_audit: decontamination, split/benchmark-overlap analysis, evaluator calibration for TravelPlanner JSON reconstruction,
+  and sensitivity to decomposition/credit errors'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card-repair-staging
+  confidence: high
+  notes: Verified against arXiv v3, the ICLR 2026 OpenReview record, and the linked author repository including README, license,
+    preprocessing, inference, and evaluator source files.
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Plan-and-Budget uses LLM-produced sub-question plans and credit-weighted schedules to vary test-time compute,
+  with task-specific scoring and E3 aggregation but incomplete released run provenance.

@@ -1,0 +1,6 @@
+- Read Paper §§4.1–4.3 and Appendix C together: 10.5K traces / 94.3K steps describe total collection, whereas SFT uses 726 traces / 6,208 XML steps and 6,053 SoM steps.
+- Self-exploration operation data is excluded from SFT; only its learned completion reward model is carried into the next annotation stage.
+- Inspect `evaluation/task.py`, task implementations, and `generate_result.py` before interpreting SR: operation tasks use UI/device predicates, query tasks use GPT-4o or GLM-4 judgment, and Finish is not success.
+- Treat fresh AVD/container reset and Pixel 7 Pro / API 33 configs as replay ingredients, not immutable reproduction: image, APK/app, emulator, and base-state hashes are missing.
+- Resolve the paper's five epochs versus the repository guide's three epochs, and obtain splits, overlap/decontamination, failure ledgers, archive hashes, and data rights before training reuse.
+- Read AndroidWorld, AndroidControl, and V-Droid only as separate comparisons; none supplies missing AndroidLab lineage or release facts.

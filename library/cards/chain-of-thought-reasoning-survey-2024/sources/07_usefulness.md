@@ -1,0 +1,3 @@
+Use this paper before choosing or evaluating a chain-of-thought approach. It helps turn a broad interest in reasoning chains into focused questions about method family, task, evidence, and open limitation. The resource list is useful when a reader needs the primary papers behind a branch of the taxonomy.
+
+It works well at the beginning of a literature review or experiment design. Use the categories to make a shortlist, then select primary papers whose tasks and measurements match your question. The survey is not proof that a method will transfer to a new task; it identifies the conditions that must be checked before such a transfer claim is credible.

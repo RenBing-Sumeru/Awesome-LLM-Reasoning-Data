@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "Diverse-NS 构造用于 DPO 的偏好对：入选回答更具多样性且质量更高，同时不靠缩短文本取得优势。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长度控制的偏好数据选择研究",
+  "best_for_ch": "为开放式生成构造多样化偏好数据且需要防范指标驱动的长度偏差的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Vijeta Deshpande, Debasmita Ghose, John D. Patterson, Roger Beaty, Anna Rumshisky",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-16T11:00:00Z"
+}

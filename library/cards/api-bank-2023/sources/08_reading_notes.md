@@ -1,0 +1,1 @@
+Keep three levels separate: choosing whether to use a tool, retrieving the right API, and issuing a correct call with usable arguments. API-Bank is strongest when read as a staged tool-use diagnostic. Its training set is not automatically an unbiased benchmark source, and its runnable APIs are not automatically faithful copies of live external services.

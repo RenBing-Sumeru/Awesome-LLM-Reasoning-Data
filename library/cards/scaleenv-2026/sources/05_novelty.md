@@ -1,0 +1,5 @@
+ScaleEnv's distinctive contribution is synthesizing the complete environment-task-reward loop from scratch. It derives a database schema from tool semantics, generates executable implementations and tests, builds a dependency graph, then instantiates stateful tasks whose verifier comes from the executed reference path rather than an LLM judgment alone.
+
+The method treats interaction completeness as a data property: valid off-reference actions should still return meaningful observations. Graph expansion adds reachable alternatives and distractors, reducing the gap between one demonstrated chain and the broader state-action support needed for RL. This goes beyond generating static function-call pairs.
+
+Its verification stack keeps 3 procedural outcomes and 3 terminal column policies distinct. That decomposition is reusable for future environment datasets, but programmatic verification is not a proof of full correctness. The contribution remains a recipe and scaling study until the actual environments, tests, states, and trajectories are released.

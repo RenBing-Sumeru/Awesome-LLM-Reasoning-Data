@@ -1,0 +1,97 @@
+id: skywork-reward-v2-synpref-40m-2025
+title: 'Skywork-Reward-V2: Scaling Preference Data Curation via Human-AI Synergy'
+year: 2025
+venue: arXiv
+authors:
+- Chris Yuhao Liu
+- Liang Zeng
+- Yuzhen Xiao
+- Jujie He et al.
+source_role:
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- llm-post-training
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.01352
+  arxiv: https://arxiv.org/abs/2507.01352
+  code: https://github.com/SkyworkAI/Skywork-Reward-V2
+  data: https://huggingface.co/collections/Skywork/skywork-reward-v2-6867a90eaf509dd6e591e4c1
+  project: https://github.com/SkyworkAI/Skywork-Reward-V2
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See primary paper and released artifact.
+  trace_author: Human, model, or hybrid feedback source as described in the primary paper.
+  answer_format: Prompt/candidate feedback record.
+  process_fields:
+  - prompt
+  - candidate_or_pair
+  - feedback
+  - provenance
+  - split
+  environment_or_substrate: Post-training feedback collection or curation pipeline.
+  verifier_or_reward: Paper-specific preference, judge, rubric, or reward contract.
+  terminal_predicate: Paper-specific inclusion, ranking, or score decision.
+recipe_metadata:
+  base_model: See primary paper.
+  teacher: See primary paper.
+  generator: See primary paper.
+  filtering_rule: Paper-specific construction rule; see L4 sources.
+  sampling_protocol: See primary paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See primary paper.
+  optimizer_or_scaffold: See primary paper.
+audit:
+  source_mixture: Primary paper plus the official release/project page reviewed; availability is explicitly stated in audit
+    notes.
+  split: See primary paper; verify train/evaluation separation.
+  decontamination: Verify overlap and leakage controls before reuse.
+  license: Verify from official artifact before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2507.01352'
+  known_failure_modes:
+  - Preference, judge, rubric, or reward assumptions may not transfer.
+  - Teacher, annotator, and filtering bias require audit.
+  citation_status: verified
+  confidence: high
+  notes: Official Skywork repository verifies code, eight released model variants, and the 26M-pair curated training mixture.
+    SynPref-40M itself is described in the paper; reuse requires checking the repository release terms.
+inclusion_reason: Data-related preference and reward-feedback paper selected for the local L4 collection.
+related: []
+tags:
+- preference-feedback-batch-2026
+- post-training
+- data-construction
+one_line_summary: 'Skywork-Reward-V2: Scaling Preference Data Curation via Human-AI Synergy contributes a preference/reward
+  feedback data object or construction method.'
+why_it_matters: It exposes a reusable preference or reward-feedback data surface that requires provenance and bias audit before
+  reuse.
+status: verified
+needs: []
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper review
+  confidence: high
+  notes: Primary paper, affiliations, and official artifact availability rechecked on 2026-07-12.
+category_ids:
+- preference_reward_feedback_data

@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "系统梳理语言模型跨语言推理的方法、数据资源与评测基准。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多语言推理综述",
+  "best_for_ch": "想比较不同语言中的推理训练资源、方法与评测结果的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Akash Ghosh 等",
+  "category_ids": ["foundations_and_primers"],
+  "updated_at": "2026-07-27T00:00:00Z"
+}

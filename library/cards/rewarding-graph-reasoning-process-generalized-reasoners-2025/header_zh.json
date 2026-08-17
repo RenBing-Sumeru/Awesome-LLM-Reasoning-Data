@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GraphSilo 提供 11.8 万余个图推理解答对及自动生成的步骤标签，用于在 13 类任务上训练 GraphPRM。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "图推理过程奖励模型、自动步骤标注与监督数据论文",
+  "best_for_ch": "训练或评测图算法推理的步骤判别、过程奖励和跨领域泛化。",
+  "confidence_ch": "高",
+  "authors_ch": "Miao Peng、Nuo Chen、Zongrui Suo、Jia Li",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

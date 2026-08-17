@@ -1,0 +1,64 @@
+id: rlaif-v-open-source-ai-feedback-2025
+title: 'RLAIF-V: Open-Source AI Feedback Leads to Super GPT-4V Trustworthiness'
+year: 2025
+venue: CVPR 2025
+authors:
+- Tianyu Yu
+- Haoye Zhang
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2405.17220
+  arxiv: https://arxiv.org/abs/2405.17220
+  code: https://github.com/RLHF-V/RLAIF-V
+  data: https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset
+data_object:
+  prompt_source: See the official paper and dataset release.
+  trace_author: See the official construction description.
+  answer_format: open-source visual-language-model feedback over image-text responses; synthetic labels target hallucination
+    and trustworthiness
+  verifier_or_reward: See the official paper and dataset release.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See the official paper and dataset release.
+  annotation_policy: See the official paper and dataset release.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: Dataset-specific provenance, license, contamination, and transfer risks require review.
+verification:
+  link_verified: true
+  sources:
+  - https://arxiv.org/abs/2405.17220
+  - https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset
+inclusion_reason: 开放视觉语言模型生成的图文偏好反馈，用于降低视觉幻觉并训练多模态奖励模型。
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: 'RLAIF-V: Open-Source AI Feedback Leads to Super GPT-4V Trustworthiness releases open-source visual-language-model
+  feedback over image-text responses; synthetic labels target hallucination and trustworthiness for preference learning, reward
+  modeling, evaluation, and feedback audit.'
+why_it_matters: 开放视觉语言模型生成的图文偏好反馈，用于降低视觉幻觉并训练多模态奖励模型。

@@ -1,0 +1,1 @@
+对本图谱而言，其区别性贡献是：TreeRPO is directly relevant to Track 5 because it constructs tree-sampled rollout traces and converts verifiable leaf outcomes into dense, step-level training signals without a separate PRM.。其来源角色为：construction_recipe; process_supervision；声明的训练用途为：rlvr; process_supervision。应按记录的轨迹字段、反馈契约与已披露的发布边界来比较它与其他 Track 5 条目，而不应只按标题比较。

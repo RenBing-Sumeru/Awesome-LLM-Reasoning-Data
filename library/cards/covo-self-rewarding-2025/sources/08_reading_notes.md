@@ -1,0 +1,5 @@
+- CoVo samples 16 trajectories per prompt and derives reward from current-policy state-to-answer likelihoods; no correctness label is used for optimization.
+- Consistency, volatility, exact-answer grouping, vector aggregation, and optional curiosity produce a full-episode scalar reward for Reinforce++.
+- The signal is self-reward, not a truth verifier. Math-Verify and benchmark ground truth are evaluation-only components.
+- Benchmark gains are mixed evidence about downstream behavior, not proof of reward correctness, prompt quality, or decontamination.
+- The code is public, but paper-run traces and rewards are absent; the example script diverges from paper settings, and the released train/test JSONL schemas currently fail to build together.

@@ -1,0 +1,1 @@
+《Cheems: A Practical Guidance for Building and Evaluating Chinese Reward Models from Scratch》把偏好与奖励反馈视为数据构建问题。其数据对象是“CheemsPreference 与 CheemsBench”。要解决的边界是：中文奖励模型缺少高质量人工偏好数据和本土化评测，英文或合成资源难以直接替代。 因而来源、标注者或教师身份以及数据切分不是实现细节，而是结论的一部分。

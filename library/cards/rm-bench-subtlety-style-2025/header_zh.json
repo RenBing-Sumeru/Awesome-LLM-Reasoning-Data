@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "1,327提示、11,943偏好比较含数学和代码，以细微内容差异检验奖励是否真正识别推理质量。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "奖励模型细微内容差异与风格偏差评测基准论文",
+  "best_for_ch": "需要识别奖励模型是否受写作风格干扰、能否分辨细微但关键内容差异的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yantao Liu, Zijun Yao, Rui Min, Yixin Cao, Lei Hou, Juanzi Li",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:53:20Z"
+}

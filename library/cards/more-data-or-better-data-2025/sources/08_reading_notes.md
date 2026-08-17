@@ -1,0 +1,6 @@
+- Start with the common 80/20 scaffold, then ask which model, stage, tokens, and baseline correspond to each table.
+- Keep Math-Cosmo's 0.13B OCR input, 760M rewritten output, and +1.72 MATH delta as three different facts.
+- Read NaturalReasoning-QwQ agreement as a consistency filter, not a correctness verifier.
+- Inspect cross-task regressions and the unresolved MATH seed/evaluation boundary before calling a candidate "better."
+- Preserve the negative results: raw scale, retrieval volume, Long-CoT mixing, and reasoning length did not reliably predict gains.
+- Read Tables 3–4 and Appendix Tables 6–10 before accepting the summary in Table 5; pair this Card with `advancing-math-data-synthesis-2025` to compare mixture screening with transformation-and-stage ablations, and ask whether the hidden baseline, run budget, overlap, and cross-task regressions make each delta reproducible and interpretable.

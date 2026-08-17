@@ -1,0 +1,6 @@
+- 优先阅读 §§3.1–3.2 和 Appendix C：Symbolic ReAct 是带 Thought/Action/Observation 步骤的结构化文本，不是可执行证明轨迹。
+- 分开记住三组对象数量：1,505 条轨迹 / 12,448 个步骤标签、15,412 条被接收的 SFT 记录，以及 21,472 个相对 DPO 对。
+- 按字面理解标签契约：10 个续写中有 1 个成功表示答案可达，不表示前缀在形式上正确。
+- 将 Table 1 与 Appendix B 的 Table 5 一起读：筛选在报告任务上有帮助，但 SFT 整体优于 DPO，且 Qwen 在 LogicAsker 上的筛选收益很小。
+- 与 TreeRL 和 A*-Thought 对读，比较离线前缀续写、on-policy 树奖励和 verifier 引导的路径选择；同时控制预算并比较发布边界。
+- 复用前应核验上游许可和去污染，获取或重训并校准 PRM，修复仓库脚本，并保留原始候选和分数向量。

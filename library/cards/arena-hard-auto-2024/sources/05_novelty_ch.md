@@ -1,0 +1,1 @@
+已有开放式 benchmark 常依赖人工编写 prompt，难度有限，或需要昂贵的人类评测才能刷新。Arena-Hard 的变化是用众包数据加 LLM 过滤构造 hard prompt，并用 separability 和 human-alignment 指标评估 benchmark 本身。不是新的部分包括 LLM-as-a-judge 和成对偏好打分。复用前必须检查 prompt 来源、隐私过滤、judge bias、baseline 选择、style control、公开榜单漂移，以及使用的是 v0.1、v2.0 还是其他版本。

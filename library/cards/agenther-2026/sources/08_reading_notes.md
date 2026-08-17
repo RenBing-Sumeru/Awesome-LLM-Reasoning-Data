@@ -1,0 +1,5 @@
+- Read Sections 3.1–3.6 and Algorithm 1 together: the object is a fixed failed episode relabeled with an observation-supported goal, and the `0.4` best-candidate fallback is part of the acceptance boundary.
+- Keep the experimental corpus exact: WebArena uses 3,000 failures plus 500 successes from 612 WA-TRAIN tasks, while ToolBench uses 5,000 failures plus 2,000 successes; none of these record-level corpora is publicly released.
+- Separate the signals: benchmark environments determine original success, LLM judges validate the hindsight pair, and severity weights SFT loss or the DPO margin; none is step supervision or RLVR.
+- Audit precision and selection together: MJ-X human precision is 97.1%/96.0% on WebArena/ToolBench, but 38.7%/35.8% of filter-rejected pairs are human-valid.
+- Before reuse, fix the single-`LLMClient` judge path, require `is_valid`, align severity direction, remove 300-character SFT/DPO observation truncation, and obtain data, split, scripts, rights, and replay manifests.

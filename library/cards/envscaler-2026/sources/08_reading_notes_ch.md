@@ -1,0 +1,5 @@
+- 先区分四种公开对象：191 个 executable environment、4,684 条无 check 的 SFT scenario、2,550 条带 check 的 RL scenario，以及声称共 9,022 条的 SFT trajectory。没有公开 RL rollout corpus。
+- feedback chain 应读作 generated terminal checklist -> Python Boolean check -> [0,1] 范围的通过比例。Task Completed、###STOP### 或 action limit 会结束 episode，但本身不证明成功。
+- 应把 selector code 与论文对照：266 个 candidate 中有 191 个在 100 轮检查、not-fail >= 0.85 时保留，其中 warning 与 pass 合并计算；75 个 rejected program 和 raw vote 不可得。
+- SFT 与 RL 证据必须区别处理：SFT row 只按 syntax/completion/length 和 LLM-judged feasibility 筛选，没有 terminal reward；RL 每 step online 采样 64 x 8 条 rollout，但这些 trajectory 与 reward 没有发布。
+- 复用前应拆分不兼容 HF trajectory schema，sandbox Python exec，固定 commit 87e6673 与四个 HF revision，并补充覆盖 dependency、prompt、endpoint、seed、failure、right 和 replay 的 manifest。

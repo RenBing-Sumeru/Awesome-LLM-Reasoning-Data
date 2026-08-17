@@ -1,0 +1,1 @@
+The evidence is the review's explicit coverage of reasoning, fairness, safety, explainability, multimodality, causal discovery, and effect estimation. It provides a map of claims and methods, not a single experiment that validates every connection. Individual causal assumptions and empirical measurements must be checked in the cited work.

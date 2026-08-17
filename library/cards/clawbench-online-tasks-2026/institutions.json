@@ -1,0 +1,24 @@
+{
+  "institutions": [
+    "University of British Columbia",
+    "Vector Institute",
+    "Etude AI",
+    "Carnegie Mellon University",
+    "University of Waterloo",
+    "Shanghai Jiao Tong University",
+    "UniPat AI",
+    "Zhejiang University",
+    "Hong Kong University of Science and Technology",
+    "Tsinghua University",
+    "Netmind.ai"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-16T00:00:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2604.08523",
+    "https://arxiv.org/html/2604.08523",
+    "https://claw-bench.com"
+  ],
+  "verification_note": "arXiv HTML verifies the affiliation list: University of British Columbia, Vector Institute, Etude AI, Carnegie Mellon University, University of Waterloo, Shanghai Jiao Tong University, UniPat AI, Zhejiang University, Hong Kong University of Science and Technology, Tsinghua University, and Netmind.ai."
+}

@@ -1,0 +1,5 @@
+- 先看数据卡，再看论文表格：数据卡给出发布 schema，并显露 3,112 行 / 800 对的不一致。
+- 将四阶段与 `inference/cot_dual_thinking.py` 一起读：难度分数是 routing signal，不是经认证的步骤标签。
+- 区分 System 1/System 2 selection 与最终答案过滤；后者不验证 route 或中间轨迹。
+- 阅读 Table 1 时保持 Acc、Tpi、总 Tok 分开；更低 token 数本身不是更好数据的证据。
+- 在尝试大范围 SFT 复用前，优先处理 provenance、候选、routing 和 decontamination 缺口。

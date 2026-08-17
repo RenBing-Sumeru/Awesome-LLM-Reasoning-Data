@@ -1,0 +1,114 @@
+id: rag-rewardbench-2024
+title: 'RAG-RewardBench: Benchmarking Reward Models in Retrieval Augmented Generation for Preference Alignment'
+year: 2024
+venue: arXiv preprint
+authors:
+- Zhuoran Jin
+- Hongbang Yuan
+- Tianyi Men
+- Pengfei Cao
+- Yubo Chen
+- Kang Liu
+- Jun Zhao
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- rag-alignment
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.13746
+  arxiv: https://arxiv.org/abs/2412.13746
+  doi: https://doi.org/10.48550/arXiv.2412.13746
+  code: https://github.com/jinzhuoran/RAG-RewardBench/
+  data: https://huggingface.co/datasets/jinzhuoran/RAG-RewardBench
+  project: null
+  huggingface: https://huggingface.co/datasets/jinzhuoran/RAG-RewardBench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct reward-model preferences for RAG outputs; exact split, artifact, license,
+    and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose reward-model preferences for RAG outputs, prompt/task metadata, a model output surface,
+    and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: reward-model preferences for RAG outputs
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct reward-model preferences for RAG outputs; exact split, artifact, license,
+    and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2412.13746;
+    https://arxiv.org/html/2412.13746; https://github.com/jinzhuoran/RAG-RewardBench/; https://huggingface.co/datasets/jinzhuoran/RAG-RewardBench'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2412.13746'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv, GitHub README, and Hugging Face dataset verify title, authors, UCAS/CAS affiliations, preprint status, and
+    the public HF dataset; the GitHub main branch is README-only and lacks a separate LICENSE in this check.
+inclusion_reason: Grounding, citation fidelity, conflict robustness, and abstention surface.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- rag-alignment
+one_line: RAG-RewardBench exposes reward-model preferences for RAG outputs as an auditable evaluation surface.
+why_it_matters: Grounding, citation fidelity, conflict robustness, and abstention surface.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RAG-RewardBench exposes reward-model preferences for RAG outputs as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, GitHub README, and Hugging Face dataset verify title, authors, UCAS/CAS affiliations, preprint status, and
+    the public HF dataset; the GitHub main branch is README-only and lacks a separate LICENSE in this check.
+category_ids:
+- benchmarks_evaluation_surfaces

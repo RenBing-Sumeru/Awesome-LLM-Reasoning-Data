@@ -1,0 +1,5 @@
+- Keep the bibliographic distinction straight: the stable atlas ID reflects the 2025 arXiv release, while canonical metadata uses the formal AAAI 2026 proceedings record and DOI.
+- Read the task-object and execution-framework sections before the headline scores. The key object is a repository-bound task, final artifact, and custom grader; it is not a released action-observation trajectory corpus.
+- Interpret ECR and TPR separately. `Process=true` establishes output existence/non-emptiness/parseability; terminal task success requires `Result=true` after task-specific checks.
+- Inspect arXiv Appendix B for framework/runtime settings and Appendix F for concrete failure and verifier-gaming cases; pair the paper with the fixed GitHub tree rather than the smaller HF snapshot when auditing replay.
+- Read alongside PaperBench for two environment-bound agent evaluations with different terminal contracts. Still unresolved are upstream repository commits, container digests, full run/result provenance, rollout retention, contamination controls, and component-level licensing.

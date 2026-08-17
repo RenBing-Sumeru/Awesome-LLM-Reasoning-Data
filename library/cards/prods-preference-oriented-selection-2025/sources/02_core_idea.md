@@ -1,0 +1,3 @@
+ProDS turns a target preference into a data-selection signal. A small SFT warm-up produces an instruction-following model; a DPO warm-up on constructed target pairs yields gradient directions for moving toward preferred and away from dispreferred answers. A training record is valued by how its influence correlates with both directions.
+
+The selected object remains an ordinary instruction-response triplet, augmented during curation by pairwise preference gradients and a score. GPT-4 is used to judge whether a generated target response differs from the reference when forming warm-up pairs. This is distinct from applying DPO to the final selected set: preference information is first used to decide what SFT supervision should enter training.

@@ -1,0 +1,1 @@
+JudgeLM 可作为 open judge 训练、judge bias 审计和 teacher-distillation evaluation surface 的设计参考。复用时应保留 task seed、候选回答、参考答案、GPT-4 teacher prompt/版本、teacher judgment、模型 verdict、解析分数、回答顺序、bias mitigation 设置和 split。在 atlas recipe 中，它最适合研究反馈模型如何训练和审计，而不是证明下游回答客观正确。

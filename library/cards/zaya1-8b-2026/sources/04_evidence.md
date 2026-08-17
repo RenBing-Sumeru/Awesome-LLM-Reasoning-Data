@@ -1,0 +1,5 @@
+The official [arXiv report](https://arxiv.org/abs/2605.05365) is primary evidence for the training phases, category-level mixtures, answer-preserving trimming, SFT composition, RL stage sizes, verifiers, reward gates, and the stated absence of a dedicated multi-turn agentic RL stage.
+
+The official [Zyphra project page](https://www.zyphra.com/our-work/zaya1-8b) identifies the release and links the technical report and official weights. The official [Zyphra model page](https://huggingface.co/Zyphra/ZAYA1-8B) verifies an Apache-2.0 post-trained checkpoint and documents deployment through Zyphra's vLLM and transformers forks. The [Zyphra vLLM branch](https://github.com/Zyphra/vllm/tree/zaya1-pr) is inference support, not a release of the training pipeline.
+
+None of these official sources releases the pretraining/post-training corpora, data cards, trace manifests, teacher identities, reward model, verifier implementations, configured environments, source-level rights, or decontamination audit. These are recorded as unknown or unreleased rather than inferred from public weights.

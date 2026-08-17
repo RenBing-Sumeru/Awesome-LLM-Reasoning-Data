@@ -1,0 +1,3 @@
+- Final-answer matching does not validate each prose or code step; the authors show that semantically noisy correct traces exist. Audit step consistency, shortcut use, and executable side effects before treating records as process supervision.
+- The 1.8M records come from only 14,447 source training problems, with hundreds of solutions for many easy problems. Sample by problem, report source-level effective size, and test whether duplicate reasoning patterns dominate.
+- GSM8K/MATH source formats and reference solutions shape both generation and evaluation, and broader decontamination is not reported. Preserve train/test lineage, scan any new benchmark for overlap, and verify NVIDIA plus upstream dataset terms.

@@ -1,0 +1,19 @@
+{
+  "title": "Klear-Reasoner: Advancing Reasoning Capability via Gradient-Preserving Clipping Policy Optimization",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2508.07629",
+    "data": "https://huggingface.co/datasets/Kwai-Klear/KlearReasoner-MathSub-30K",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T08:40:22Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "包含3万条数学 prompt 与可验证参考答案",
+    "updated_at": "2026-07-19T08:40:22Z"
+  }
+}

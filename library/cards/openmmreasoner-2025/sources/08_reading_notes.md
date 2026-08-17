@@ -1,0 +1,6 @@
+- Keep four objects separate: 874K SFT conversations, roughly 73K released RL training prompts, 1,724 released validation rows, and unreleased 16-way online rollout responses.
+- The SFT teacher is Qwen3-VL-235B-Instruct; the default RL/evaluation fallback judge is the distinct Qwen3-235B-A22B-Instruct-2507.
+- RL reward is terminal and mixed: rule or learned-judge answer correctness contributes 0.9 and format compliance contributes 0.1; no step-validity labels are released.
+- The live RL collection lacks the PuzzleVQA train configuration named by the launch recipe and reaches 74.7K only by including validation, so paper-run release mapping remains partial.
+- `tokens` and `avg_reward` are public fields, but their exact generating run is unknown; online responses, per-rollout scores, rejects, and judge transcripts are absent.
+- Treat benchmark gains as evidence about trained models under the reported recipe, not as proof of trace faithfulness, contamination safety, reward calibration, or license completeness.

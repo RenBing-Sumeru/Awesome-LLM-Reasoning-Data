@@ -1,0 +1,3 @@
+The construction recipe has two linked layers. Pretraining builds 8B, 70B, and 405B dense models from a 15.6T-token mixture, then progressively extends context to 128K. Post-training repeats six rounds of preference collection, reward modeling, best-of-10–30 rejection sampling, SFT, DPO, and model averaging.
+
+Capability branches turn code execution, final answers, stepwise rewards, Python, MCTS, tool calls, human edits, and safety policies into feedback. The reusable data object is therefore not just a chat pair: it can be a chosen/edited/rejected preference triple, execution trace, reasoning trajectory with step/outcome reward, tool dialog, or safety-labeled conversation.

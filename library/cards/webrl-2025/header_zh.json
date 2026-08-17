@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebRL 从 1,186 条 WebArena-Lite 种子示范出发，以失败驱动课程、学习型 ORM 和成功轨迹回放训练浏览器智能体；方法证据充分，但完整在线语料与复用许可仍未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "网页智能体在线课程强化学习、结果奖励模型与轨迹构造研究",
+  "best_for_ch": "关注浏览器智能体、在线强化学习、trajectory data、learned verifier、经验回放和发布审计的研究者与工程人员",
+  "confidence_ch": "高",
+  "authors_ch": "Zehan Qi、Xiao Liu、Iat Long Iong、Hanyu Lai、Xueqiao Sun、Wenyi Zhao、Yu Yang、Xinyue Yang、Jiadai Sun、Shuntian Yao、Tianjie Zhang、Wei Xu、Jie Tang、Yuxiao Dong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-21T10:24:25Z"
+}

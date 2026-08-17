@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R1-Onevision 先把图像形式化为文本表示，再生成并过滤多模态思维链，发布超过 155K 条视觉推理示范用于 SFT。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态推理数据构造与后训练论文",
+  "best_for_ch": "适合构建视觉思维链语料，或审计文本推理是否仍由图像证据支撑的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yi Yang, Xiaoxuan He, Hongkun Pan, Xiyan Jiang, Yan Deng, Xingtao Yang, Haoyu Lu, Dacheng Yin, Fengyun Rao, Minfeng Zhu, Bo Zhang, Wei Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T16:30:00Z"
+}

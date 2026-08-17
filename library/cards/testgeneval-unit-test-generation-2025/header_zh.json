@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TestGenEval 从真实 Python 仓库构造 1,210 个代码—测试文件对，用执行通过率、覆盖率和 mutation score 评估测试生成与补全。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "真实仓库单元测试生成与补全基准",
+  "best_for_ch": "需要评测测试代码生成、覆盖率提升或变异测试表现的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kush Jain, Gabriel Synnaeve, Baptiste Rozière",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:57:06Z"
+}

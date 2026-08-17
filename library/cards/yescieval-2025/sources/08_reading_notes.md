@@ -1,0 +1,5 @@
+- **Position.** YESciEval tests whether an open judge notices defined failures in science Q&A rather than only whether it produces plausible scores.
+- **Mechanism.** Nine 1--5 rubrics, benign answers, and rubric-specific subtle/extreme edits create the comparison signal; CPO follows QLoRA SFT for LLaMA-3.1-8B.
+- **Artifact.** The YESciEval Corpus releases ORKGSyn and BioASQ CSVs, including 348 and 73 base questions, respectively, under CC BY 4.0.
+- **Evidence anchor.** Four models score 37,584 ORKGSyn and 7,884 BioASQ records; the claimed gain is limited to controlled perturbations.
+- **Reuse decision.** Use for paper-grounded scientific QA audits; first test score/rationale consistency and performance on natural expert-labelled failures.

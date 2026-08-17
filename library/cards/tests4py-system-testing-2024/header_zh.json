@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Tests4Py 提供面向系统测试和 bug 评测的 benchmark。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "FSE 2024 / arXiv 的 system testing benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Marius Smytzek 等（CISPA Helmholtz Center for Information Security；Humboldt-Universität zu Berlin）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:43:19Z"
+}

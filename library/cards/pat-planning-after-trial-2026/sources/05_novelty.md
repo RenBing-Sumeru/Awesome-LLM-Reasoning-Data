@@ -1,0 +1,3 @@
+Static code pipelines pay planning or decomposition cost before observing whether it is needed; learned adaptive policies add another model and training burden. PaT changes the allocation trigger to a programmatic event: exhaustive direct-trial failure. The verifier is therefore not merely an evaluator at the end—it decides whether the next expensive reasoning stage should exist at all.
+
+The contribution is not a better planner in isolation. It is a reactive control rule that connects unit-test outcomes to a heterogeneous compute policy and recursive subproblem budget. Its audit boundary is clear: if the tests are weak, correlated with the generator, or unavailable, the failure signal may be a poor difficulty detector and the claimed efficiency advantage can disappear.

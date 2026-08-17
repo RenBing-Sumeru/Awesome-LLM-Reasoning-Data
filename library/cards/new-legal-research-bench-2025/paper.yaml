@@ -1,0 +1,91 @@
+id: new-legal-research-bench-2025
+title: Legal Research Benchmark
+year: 2026
+venue: Vals AI benchmark page
+authors:
+- Vals AI
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- legal-research
+- multi-hop-legal-qa
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+artifacts:
+  project: https://www.vals.ai/benchmarks/legal_research
+  paper: https://www.vals.ai/benchmarks/legal_research
+  arxiv: null
+  code: null
+  data: null
+  doi: null
+data_object:
+  prompt_source: expert-written legal research questions on a Vals AI benchmark page
+  trace_author: evaluated model or agent with legal research tools if configured
+  answer_format: legal research question, expected legal answer or rubric, submitted response, and official score
+  process_fields:
+  - legal issue or query
+  - jurisdiction or authority context if supplied
+  - source evidence
+  - final answer
+  - expert or rubric score
+  environment_or_substrate: legal research setting with possible multi-hop source retrieval
+  verifier_or_reward: legal expert answer or official Vals scoring rubric; exact judge and private-set policy are needs_audit
+  terminal_predicate: answer submitted or evaluation budget exhausted
+recipe_metadata:
+  base_model: not a training recipe
+  teacher: Vals AI legal experts or contracted domain experts
+  generator: expert-authored questions and validation
+  filtering_rule: treat the Vals page as the authoritative current surface and pin date before leaderboard reuse
+  sampling_protocol: pin page version, retrieval access, jurisdiction assumptions, judge or rubric, and model scaffold
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: legal_research_agent
+audit:
+  source_mixture: 'Official source checked: https://www.vals.ai/benchmarks/legal_research'
+  split: hidden/public split and exact task access are needs_audit
+  decontamination: public example legal questions and answers may leak into future training data
+  license: needs_audit
+  lineage: Official page observed as a 2026 Vals AI benchmark surface; requested directory slug contains 2025.
+  known_failure_modes:
+  - legal authority can depend on jurisdiction, date, and procedural posture
+  - final answer scores may hide citation quality or overbroad reasoning
+  - expert scoring details and hidden tasks must be pinned before comparison
+  citation_status: verified
+  confidence: medium
+  notes: Use official page facts only; no separate paper was verified.
+inclusion_reason: Domain expert legal research benchmark with multi-hop evidence and rubric-scored answers.
+related: []
+tags:
+- benchmark
+- legal
+- legal-research
+- agent-environment
+one_line: Legal Research Benchmark evaluates models on expert-authored legal research questions with source-sensitive answers.
+why_it_matters: It tests retrieval, authority selection, and legal synthesis rather than generic legal text fluency.
+status: verified
+needs:
+- 'needs_audit: pin task count, hidden split, rubric, judge model if any, license, and downloadable artifact status'
+- 'needs_metadata: verify individual author or expert attribution if Vals publishes it'
+one_line_summary: Legal Research Benchmark evaluates models on expert-authored legal research questions with source-sensitive
+  answers.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Vals AI benchmark page was checked; no arXiv paper was confirmed.
+category_ids:
+- benchmarks_evaluation_surfaces

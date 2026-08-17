@@ -1,0 +1,7 @@
+The contribution for this atlas is disclosure discrimination, not an open recipe. The card links high-level training statements to concrete safety/agentic evaluation conditions, while the launch announcement links large-scale RL to model-based reward claims and a real production evaluation practice.
+
+What changes relative to a generic model card is that the document makes several interfaces visible: demonstrations for refusal behavior; synthetic/production/adversarial input-filter data; an internal model-graded refusal record; public and internal safety benchmarks; and an announcement-level agentic reward-model claim. These are distinct data/feedback surfaces, not one released dataset.
+
+What is not new: SFT, RL, human feedback, verifiable rewards, model graders, filtering, refusal training, benchmark evaluation, and silent deployment testing. The sources do not identify their implementations, mixtures, or causal contributions. It is a direction signal because frontier claims increasingly span model training, filters, reward models, and live evaluations; an audit must preserve interfaces and unknowns rather than infer a unified, reproducible pipeline.
+
+Before reuse or comparison, inspect reward-model identities, traffic governance, filter/model separation, prompt and task overlap, configuration pins, score aggregation, and the relationship between safeguard-removed capability tests and deployed behavior.

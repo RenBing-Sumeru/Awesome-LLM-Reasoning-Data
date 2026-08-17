@@ -1,0 +1,119 @@
+id: mmeb-v2-image-2025
+title: 'VLM2Vec-V2: Advancing Multimodal Embedding for Videos, Images, and Visual Documents'
+year: 2025
+venue: TMLR 2026 / arXiv
+authors:
+- Rui Meng
+- Ziyan Jiang
+- Ye Liu
+- Mingyi Su
+- Xinyi Yang
+- Yuepeng Fu
+- Can Qin
+- Zeyuan Chen
+- Ran Xu
+- Caiming Xiong
+- Yingbo Zhou
+- Wenhu Chen
+- Semih Yavuz
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-embedding
+- image-retrieval
+- visual-representation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.04590
+  arxiv: https://arxiv.org/abs/2507.04590
+  doi: https://doi.org/10.48550/arXiv.2507.04590
+  code: https://github.com/TIGER-AI-Lab/VLM2Vec
+  data: https://huggingface.co/datasets/TIGER-Lab/MMEB-V2
+  project: https://tiger-ai-lab.github.io/VLM2Vec/
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/MMEB-V2
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: MMEB-V2 contains 78 datasets across images, videos, and visual documents; this entry emphasizes the image
+    evaluation slice and its relation to the full benchmark.
+  prompt_source: MMEB/MMEB-V2 task definitions and instruction-conditioned multimodal embedding queries.
+  trace_author: VLM2Vec-V2 authors and source datasets integrated into MMEB-V2.
+  answer_format: query input, candidate corpus item, modality/task metadata, embedding similarity score, ranked retrieval
+    list, and task metric.
+  process_fields:
+  - instruction or query
+  - image or text input
+  - candidate pool
+  - modality and task type
+  - embedding vector or similarity
+  - retrieval rank and metric
+  environment_or_substrate: offline multimodal embedding evaluation across image-centered and expanded visual modalities.
+  verifier_or_reward: retrieval/classification metrics computed from labeled query-candidate pairs and ranked outputs.
+  terminal_predicate: model ranking or classification is scored against MMEB-V2 ground-truth labels under the released evaluator.
+recipe_metadata:
+  base_model: Not a single benchmark-only recipe; the paper also trains VLM2Vec-V2 with instruction-guided contrastive learning.
+  teacher: source dataset labels and MMEB-V2 task definitions define positive/negative matching.
+  generator: benchmark expansion from MMEB to MMEB-V2 plus VLM2Vec-V2 training and evaluation pipeline.
+  filtering_rule: Separate image-only claims from full MMEB-V2 claims over video and visual document tasks.
+  sampling_protocol: Pin dataset revision, task subset, evaluator config, candidate corpus, model checkpoint, embedding pooling,
+    and metric implementation.
+  rollout_count: null
+  temperature: null
+  inference_budget: Embedding inference budget depends on corpus size, modality preprocessing, and batching settings.
+  optimizer_or_scaffold: multimodal_embedding_evaluation
+audit:
+  source_mixture: arXiv 2507.04590, TIGER-AI-Lab/VLM2Vec repository, project page, and TIGER-Lab/MMEB-V2 dataset page.
+  split: Pin image subset versus full MMEB-V2, plus dataset revision and candidate-pool construction.
+  decontamination: Source datasets and benchmark labels can overlap with embedding-model pretraining or supervised contrastive
+    data.
+  license: Repository is Apache-2.0; each integrated dataset in MMEB-V2 may carry separate terms.
+  lineage: 'Primary source: https://arxiv.org/abs/2507.04590'
+  known_failure_modes:
+  - full benchmark scores can hide image-specific regressions
+  - candidate-pool or preprocessing changes can move retrieval metrics
+  - training/evaluation overlap can inflate benchmark scores
+  - source dataset licenses may restrict redistribution or training use
+  citation_status: verified
+  confidence: high
+  notes: arXiv verifies title, authors, MMEB-V2 benchmark, five new task types, and broad modality scope. Official README
+    verifies TMLR 2026 status, 78 datasets, Hugging Face dataset, and Apache-2.0 repository metadata from GitHub API.
+inclusion_reason: It provides an image-centered multimodal embedding benchmark surface inside the broader MMEB-V2 suite.
+related: []
+tags:
+- benchmark
+- multimodal_embedding
+- image-retrieval
+one_line: MMEB-V2 evaluates multimodal embedding models across image, video, and visual-document tasks; the image slice keeps
+  image retrieval/classification evidence explicit.
+why_it_matters: It is a useful benchmark surface for auditing multimodal embedding labels, candidate pools, and retrieval
+  metrics.
+status: verified
+needs:
+- 'needs_audit: pin HF dataset revision, image subset definition, evaluator config, candidate pools, and source-dataset licenses'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MMEB-V2 extends multimodal embedding evaluation with 78 datasets across images, videos, and visual documents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: high
+  notes: arXiv, official README, GitHub API, and HF dataset link verified key metadata.
+category_ids:
+- benchmarks_evaluation_surfaces

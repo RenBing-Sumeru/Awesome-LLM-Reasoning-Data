@@ -1,0 +1,6 @@
+- The core object is a generated natural-language proof paired with expert judgment and feedback.
+- Most proofs have one judge; duplicate grading covers only about 10% of the corpus.
+- Reported 90.4% agreement is strong but does not eliminate label noise on subtle proofs.
+- Human proof judgment is richer than final-answer checking but is not formal verification.
+- Preserve split and best-of-N context so benchmark or selectively graded records do not become mislabeled training data.
+- Item-level source rights and exact release revision still require auditing.

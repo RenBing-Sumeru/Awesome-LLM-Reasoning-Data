@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "NC Research",
+    "NAVER Cloud"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.06551",
+    "https://arxiv.org/e-print/2407.06551",
+    "https://github.com/ncsoft/offsetbias",
+    "https://huggingface.co/datasets/NCSOFT/offsetbias"
+  ],
+  "verification_note": "Official arXiv source verifies NC Research and NAVER Cloud affiliations, with the work performed while at NC Research; arXiv comments verify Findings of EMNLP 2024 status, and official GitHub/Hugging Face sources verify code, data, and models."
+}

@@ -1,0 +1,3 @@
+1. Construct DIRECT-Manual through collaboration between humans and LLMs to obtain higher-quality teacher feedback. 2. Construct DIRECT-Generated using LLMs only as a lower-cost source. 3. Form DIRECT-Augmented mainly from DG and add a small DM portion. 4. Train or evaluate tutoring feedback with these alternatives and compare their cost-quality trade-off.
+
+The reported experiment tests adding 5–10% DM to DG rather than using only one source. Reproduction requires the tutoring prompts, feedback-generation prompts and models, human contribution protocol, selection rule for the DM portion, dataset revision, and evaluation setting. Replacing any of these choices can change both the feedback distribution and the claimed cost-quality trade-off.

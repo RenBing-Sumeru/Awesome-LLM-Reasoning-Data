@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Qwen Team",
+    "Alibaba Inc."
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2412.06559",
+    "https://arxiv.org/pdf/2412.06559"
+  ],
+  "verification_note": "PDF first page shows Qwen Team, Alibaba Inc.; arXiv comments list ACL 2025."
+}

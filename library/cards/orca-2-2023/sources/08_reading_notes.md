@@ -1,0 +1,5 @@
+- Object: a task plus a GPT-4 answer trace generated under a task-specific strategy prompt.
+- Mechanism: Prompt Erasing removes the strategy instruction before the student sees the record.
+- Scale: 817K new records are trained after FLAN and 6M earlier Orca 1 records.
+- Evidence: Orca-2-13B reaches a 66.92 reasoning macro-average versus 43.71 for LLaMA-2-Chat-13B, with multiple recipe changes combined.
+- Audit: unreleased data, hidden mappings, teacher correctness, overlap, and model-judge dependence are the main blockers to exact reproduction.

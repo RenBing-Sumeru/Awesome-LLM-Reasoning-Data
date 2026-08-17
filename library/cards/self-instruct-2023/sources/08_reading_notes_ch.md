@@ -1,0 +1,5 @@
+- 对象：一条 instruction、可选 input、生成 output 和过滤 provenance，共同构成一条 SFT 实例。
+- 规模：175 条人写种子扩展为 52,445 条指令和 82,439 条实例。
+- 过滤：最大 ROUGE-L 超过 0.7 时拒绝词汇近似项，但无法排除语义重复。
+- 证据：SUPER-NATURALINSTRUCTIONS 的 ROUGE-L 从 6.8 升至 39.9，但人工抽检中仅 54% 的记录所有字段都有效。
+- 复用：补充语义多样性检查、独立答案验证、provenance、许可证审计和匹配的现代模型 baseline。

@@ -1,0 +1,1 @@
+核心贡献是一个大型 programming-challenge benchmark，要求模型从自然语言题面生成完整 Python 程序。机制并不复杂，但验收严格：收集不同难度的编程题，提供题面和测试，通过执行候选程序给分。最近参照是 HumanEval/MBPP 式函数题，以及 CodeContests 等竞赛编程数据。方向标签是 executable benchmark surface：成功信号来自测试结果，不来自偏好 judge 或文本相似度。

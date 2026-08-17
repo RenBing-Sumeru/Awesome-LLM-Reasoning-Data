@@ -1,0 +1,108 @@
+id: webarxiv-2025
+title: 'WebArXiv: Evaluating Multimodal Agents on Time-Invariant arXiv Tasks'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zihao Sun
+- Ling Chen
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- time-invariant-web
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.00938
+  arxiv: https://arxiv.org/abs/2507.00938
+  doi: https://doi.org/10.48550/arXiv.2507.00938
+  code: https://anonymous.4open.science/r/74E4423BVNW
+  data: null
+  project: https://anonymous.4open.science/r/74E4423BVNW
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors construct time-invariant arXiv web tasks
+  trace_author: official benchmark authors and model-agent interactions
+  answer_format: arXiv web task, browser evidence, final answer, and deterministic correctness check
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: time-invariant arXiv web snapshots and deterministic answer surfaces for web agents
+  verifier_or_reward: deterministic ground-truth checks over stable arXiv task targets
+  terminal_predicate: deterministic ground-truth checks over stable arXiv task targets
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official WebArXiv authors and deterministic target construction
+  generator: WebArXiv time-invariant task construction pipeline
+  filtering_rule: verify snapshot policy, answer determinism, and anonymous artifact provenance before reuse
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2507.00938 and anonymous 4open artifact repository
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2507.00938'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies title, authors, institution, and preprint status; the anonymous 4open artifact was recorded as the
+    available code/project lead.
+inclusion_reason: it directly targets dynamic-web unreplayability with stable arXiv tasks
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- time-invariant-web
+one_line: WebArXiv builds time-invariant arXiv web tasks for more reproducible web-agent evaluation.
+why_it_matters: it directly targets dynamic-web unreplayability with stable arXiv tasks
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WebArXiv builds time-invariant arXiv web tasks for more reproducible web-agent evaluation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv verifies title, authors, institution, and preprint status; the anonymous 4open artifact was recorded as the
+    available code/project lead.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 40
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,9 @@
+- **依赖 checkpoint 的分数：** 排序取决于 warmup 后 policy、tokenizer、prompt template、pool、answer parser、projection 和 random seeds。Policy 更新后分数可能过时，论文也未证明其可跨模型 family 迁移。
+- **粗粒度稀疏反馈：** 8 条二元 rollouts 使 p 只能以 1/8 为步长变化。论文没有给出 adaptive rollout budget 或逐 prompt uncertainty interval，final-answer correctness 也不核验中间推理。
+- **Verifier 未披露：** 论文展示了 GSM8K 与 boxed-answer prompts，却没有给出精确 extractor、normalization 和 equivalence logic。Parser 的误接收或误拒绝会同时影响 p、gradients、ranking 和下游结果。
+- **Gradient approximation：** 高效 DAPO 路径每题只取一条正确 rollout，丢失 failure-gradient information。没有正确 rollout 时计算什么并未说明；random-projection dimension 与 seed 也为 unknown。
+- **发布缺失：** 尚未确认官方 implementation、selected/rejected IDs、scores、8-rollout groups、correctness labels、projected gradients、warmup membership、checkpoint hash 或 run manifest。“将发布代码”的表述不等于当前 artifact。
+- **Pool 与 split 歧义：** 主文使用 DAPO-MATH-17K，但 Appendix F/H captions 写成 DAPO-MATH-14K，没有说明有效 pool 或 mapping。论文也未报告 decontamination 或 duplicate audit。
+- **规模边界：** 显式矩阵为二次复杂度。论文在 10^3–10^4 prompts 上的 matrix step 很快，但 Nyström、cascade、LoRA-space gradients 和 learned surrogates 都是提议的扩展，不是已验证的超大规模实现。
+- **证据范围：** 模型只覆盖 Qwen2.5-1.5B/3B/7B，selection pools 以数学为主；CRUX 仅用于评估。论文没有报告 training-seed variance 或 GPU 型号，因此时间与准确率归因仍受限。
+- **权利与内容审计：** ACL paper 是 CC BY 4.0，但上游 prompt、generated rollouts、subset 和未来 code 的条款需分别核对。Responsible NLP checklist 表明没有显式检查 identifying/offensive content，而是依据数据集被广泛使用及“不含个人信息”的作者断言。

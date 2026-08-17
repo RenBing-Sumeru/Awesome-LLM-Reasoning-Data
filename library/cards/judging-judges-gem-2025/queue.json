@@ -1,0 +1,17 @@
+{
+  "title": "Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.gem-1.33/",
+    "data": null
+  },
+  "review_note": "纳入正式池：在高人类一致性的 TriviaQA 设置下量化评审与人工的偏差，并暴露宽松、提示和参考顺序脆弱性。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "纳入正式池：在高人类一致性的 TriviaQA 设置下量化评审与人工的偏差，并暴露宽松、提示和参考顺序脆弱性。",
+    "updated_at": "2026-07-21T00:00:00Z"
+  },
+  "updated_at": "2026-07-21T00:00:00Z"
+}

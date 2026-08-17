@@ -1,0 +1,7 @@
+- 核验 commit `5a4d9f7365508a9bdc23713a8250cf54b3ce14f9` 的官方 GitHub 仓库只有一行 README，没有实现、配置、数据、轨迹日志、模型 checkpoint、model card、license、tag 或 GitHub release，因此训练复用被阻断。
+- 约 1,300 条任务的 manifest、各来源数量与版本、split 归属、预处理、去重、权利和 GAIA overlap 检查均为 unknown。论文的 CC BY 4.0 许可不覆盖未发布的代码、数据、模型、工具或来源数据集。
+- Qwen2.5-3B-Instruct judge 的校准、人工一致性、解码随机性、重复采样方差与对抗鲁棒性均未报告。Judge bias 或对回答风格的敏感性可能同时产生 false-positive 和 false-negative reward。
+- 解析成功与 runtime success 不能验证语义相关性、安全性或因果用途。无关代码、无害 no-op、错误但可运行的计算都可能获得辅助奖励；`N_parsed=0`、timeout、部分执行、重试与 side effect 的处理均为 unknown。
+- 动态队列复用轨迹，但没有披露 behavior-policy probability、off-policy correction、年龄上限或不可变替换日志。陈旧轨迹和有歧义的 pass-rate 语义可能改变实际训练分布。
+- Python sandbox、依赖、restricted-import list、工具/服务版本、网络策略、资源限制和原始 observation 均未固定。Web 与模型驱动工具可能漂移、限流、失败或返回非确定 observation，因而无法精确回放。
+- GAIA 结果由作者报告，没有 seed 或方差；MAT Agent 比较改变的也不只是训练数据。报告的 benchmark 增益无法分离问题选择、奖励塑形、队列复用、scaffold 行为及其交互各自的贡献。

@@ -1,0 +1,136 @@
+id: mindloom-reasoning-data-synthesis-2026
+title: 'MindLoom: Composing Thought Modes for Frontier-Level Reasoning Data Synthesis'
+year: 2026
+venue: arXiv preprint (2026)
+authors:
+- Haiyang Shen
+- Taian Guo
+- Xuanzhong Chen
+- Mugeng Liu
+- Weichen Bi
+- Wenchun Jing
+- Sixiong Xie
+- Zhuofan Shi
+- Yudong Han
+- Chongyang Pan
+- Siqi Zhong
+- Jinsheng Huang
+- Ming Zhang
+- Yun Ma
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- stem-reasoning
+- mathematical-reasoning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2605.21630
+  arxiv: https://arxiv.org/abs/2605.21630
+  code: https://github.com/EachSheep/MindLoom
+  data: https://github.com/EachSheep/MindLoom
+  project: https://github.com/EachSheep/MindLoom
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 58,526 verified source problems from 16 STEM and reasoning datasets.
+  trace_author: DeepSeek V3.2 reverse-engineers and composes thought modes, generates rollouts, and judges correctness.
+  answer_format: A generated question paired with a judged-correct reasoning response in chat-style SFT format.
+  process_fields:
+  - seed question, answer, solution, and provenance
+  - thought-mode tuple and ordered thought-mode chain
+  - compatibility and scarcity scores
+  - evolved question and solution
+  - rollout correctness and SFT conversion status
+  environment_or_substrate: Embedding retrieval over a thought-mode bank plus LLM-based composition and judging.
+  verifier_or_reward: Compatibility checks, source-provenance filters, three rollouts, and a strict LLM correctness judge.
+  terminal_predicate: Stop on an incompatible later evolution step; retain SFT records only when at least one rollout is judged
+    correct.
+recipe_metadata:
+  base_model: Qwen3-4B/8B and Qwen3.5-4B/9B.
+  teacher: DeepSeek V3.2; Qwen3-Embedding-0.6B retrieval model.
+  generator: Extract thought modes by reverse engineering, learn retrieval, compose under similarity/scarcity scoring, and
+    filter rollouts.
+  filtering_rule: Reject incoherent or unsolvable applications, held-out-source provenance, and questions with no judged-correct
+    rollout.
+  sampling_protocol: Top-20 retrieval, three evolution steps, 12 clusters, similarity weight 0.65, selector temperature 1.0,
+    and three solution rollouts.
+  rollout_count: 3
+  temperature: 0.7
+  inference_budget: 12,636 synthesis steps produce 7,515 candidate records and 11,433 rollout records before filtering.
+  optimizer_or_scaffold: Full-parameter SFT for three epochs on 9,230 converted examples.
+audit:
+  source_mixture: 16 datasets; SuperGPQA supplies 69.1% of the final SFT set.
+  split: 58,526 references, 8,322 reverse-engineered seeds, 10,854 provenance-filtered rollouts, and 9,230 final SFT records.
+  decontamination: Records derived from HLE, SciBench, and AIME 2025 are removed; MATH-500 questions are excluded from Hendrycks-MATH.
+  license: Official repository license was not confirmed.
+  lineage: Each generated record stores its source ID and selected thought-mode provenance.
+  known_failure_modes:
+  - Output diversity cannot exceed the thought modes present in the reference corpus.
+  - Correctness and compatibility depend on an LLM judge, and the final set remains dominated by SuperGPQA provenance.
+  citation_status: verified
+  confidence: high
+  notes: arXiv PDF and its official GitHub link were checked on 2026-07-13. PDF affiliations are Peking University and Tsinghua
+    University; no peer-reviewed acceptance was found.
+inclusion_reason: Exposes thought modes as reusable data-construction objects and releases a provenance-filtered SFT conversion
+  pipeline.
+related: []
+tags:
+- thought-modes
+- compositional-synthesis
+- provenance-filtering
+status: verified
+one_line_summary: MindLoom extracts reusable thought modes from verified solutions, composes them under compatibility and
+  scarcity control, and keeps 9,230 judged-correct SFT records.
+why_it_matters: It makes reasoning-data composition auditable through mode tuples, retrieval scores, provenance filters, and
+  rollout decisions.
+reading_priority: recommended
+paper_type: compositional reasoning-data synthesis method and dataset
+best_for: Researchers generating STEM SFT data from reusable reasoning transformations.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: The paper explicitly identifies its GitHub repository as the code and dataset release.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-a-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: Track 01
+  selection_priority_score: 4
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 0
+    artifact: 1
+  selection_evidence:
+    institution: The paper PDF confirms Peking University and Tsinghua University affiliations.
+    venue: Only the arXiv preprint was confirmed; no official acceptance or distinguished presentation was found.
+    impact: GitHub API and repository search checked 2026-07-13; the official repository had 1 star, 0 forks, and no independent
+      implementation or follow-up was found.
+    artifact: The paper identifies the official repository as code and data, but the repository exposes no confirmed license
+      or independent-use evidence.
+  selection_eligible: false
+  year_impact_threshold: 1
+  defer_reason: The 2026 candidate has impact score 0; the official release alone does not establish actual adoption.

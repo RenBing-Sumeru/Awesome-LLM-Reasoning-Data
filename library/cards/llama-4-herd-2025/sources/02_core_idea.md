@@ -1,0 +1,5 @@
+The most useful contribution is a partial construction ledger. Pretraining uses early fusion over text and vision, includes image and video data, and is followed by specialized-data mid-training. For Maverick, Meta reports lightweight SFT, multimodal online RL, and lightweight DPO. More than half of SFT data tagged easy by Llama judges is removed; during online RL, training alternates with policy-driven filtering that retains medium-to-hard prompts.
+
+A separate teacher branch matters. Meta specifically documents codistilling Maverick from the still-unreleased Llama 4 Behemoth, using a loss that dynamically weights soft and hard targets. For most student data, targets are amortized through codistillation; fresh Behemoth forward passes generate targets for additional data. These are disclosed lineage operations, not released teacher traces.
+
+The feedback contract is mixed but incomplete: Llama-based difficulty judgments, an undisclosed online-RL reward, undisclosed DPO feedback, safety classifiers, and teacher targets all affect selection or learning. The report does not release the judges, prompts, reward definition, preferences, or record schemas.

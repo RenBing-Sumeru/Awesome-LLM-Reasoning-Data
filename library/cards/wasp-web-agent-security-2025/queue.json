@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "gitlab任务仓库数据与测评，属于数据集",
+    "updated_at": "2026-07-21T10:30:59Z"
+  },
+  "updated_at": "2026-07-21T10:30:59Z"
+}

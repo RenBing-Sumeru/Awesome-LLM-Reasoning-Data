@@ -1,0 +1,5 @@
+- **Position.** This is a Track 13 tokenizer-level provenance and privacy audit, not a model-quality benchmark.
+- **Signal.** Candidate membership is inferred from distinctive vocabulary tokens or their estimated training necessity.
+- **Evidence.** At 200k vocabulary, AUC is 0.771 for Vocabulary Overlap and 0.740 for Frequency Estimation.
+- **Boundary.** The attack audits tokenizer data; it implies LLM-corpus membership only with a verified lineage link.
+- **Reuse decision.** Keep it as a strong audit method with public code; combine its score with provenance evidence and never treat it as a standalone legal finding. Preserve vocabulary, corpus versions, threshold, seeds, and token evidence; stop attribution when tokenizer lineage or controls fail. Separate attack efficacy, lineage confidence, and defense cost.

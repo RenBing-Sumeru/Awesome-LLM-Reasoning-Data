@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Tulu 2 把 32.6 万条指令混合数据、可扩展 DPO、开放 checkpoint 和统一评测连接成可复现的适配套件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "开放指令微调与偏好优化配方",
+  "best_for_ch": "适合从 SFT 数据、DPO 反馈、checkpoint 和评测四个层面构建或审计开放助手的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hamish Ivison, Yizhong Wang, Valentina Pyatkin, Nathan Lambert, Matthew Peters, Pradeep Dasigi, Joel Jang, David Wadden, Noah A. Smith, Iz Beltagy, Hannaneh Hajishirzi",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-11T07:47:09Z"
+}

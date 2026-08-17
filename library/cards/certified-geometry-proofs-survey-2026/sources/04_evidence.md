@@ -1,0 +1,1 @@
+The survey reviews systems including GeoS, Inter-GPS, FormalGeo, AlphaGeometry, and AutoGPS, alongside broader neuro-symbolic approaches. It argues that answer accuracy alone is incomplete evidence: step-level soundness and robustness matter when a system claims to produce a proof.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MuSiQue 用单跳问题组合出约 25K 多跳问答，重点削弱 HotpotQA 式捷径匹配。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要多跳 QA benchmark 坐标、support evidence scorer 和数据版本审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Harsh Trivedi 等（Stony Brook University, Allen Institute for Artificial Intelligence）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

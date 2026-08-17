@@ -1,0 +1,6 @@
+- 先读 Sections 3.2、4.2 与 Algorithms 1–2：归纳正确性、充分性和 speedup 是独立标签，LLM 改写也不要求与 raw invariant 等价。
+- 严格区分三个人群：处理的 4,000 个原始不变量、curated-full 发布中的 7,763 行，以及论文 SFT 实验实际使用的 7,284 条 grade/长度过滤 V2 样本。
+- Table 4 是最有力的数据质量证据：raw V0 目标可能损害 syntax validity，V1 修复大部分问题，V2 才在多个模型族上取得最大收益。
+- “匹配 GPT-5.2”指虚拟 portfolio 下的 VBP-E2E；Qwen3-14B-V2 的 invariant correctness 明显更低。
+- grade 3 是环境相对标签，因为 verifier 版本、硬件、timeout、并发和 baseline timing 共同定义 speedup。
+- 复用前应检查按程序分组的 split、InvBench/SV-COMP lineage、dataset license、被拒候选，以及论文与当前训练配置之间的漂移。

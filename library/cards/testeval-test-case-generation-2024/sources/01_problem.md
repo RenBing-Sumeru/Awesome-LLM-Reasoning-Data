@@ -1,0 +1,3 @@
+Primary source: https://arxiv.org/abs/2406.04531. Public status: NAACL 2025 Findings / arXiv, 2024. The problem is to evaluate program under test, target coverage objective, generated test inputs or test code, execution result, and coverage metric with a feedback contract based on test execution plus coverage measurement for overall, targeted line/branch, and targeted path tasks.
+
+The concrete data object contains program, coverage objective, generated test case, execution result, line/branch/path coverage, score. It is an evaluation surface; training or reward use requires a separate artifact and license audit. Its value for the collection is that it makes the task object, scorer, and reproducibility boundary explicit rather than reducing the work to a headline score.

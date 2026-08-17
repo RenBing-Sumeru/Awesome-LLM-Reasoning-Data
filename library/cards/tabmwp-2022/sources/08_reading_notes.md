@@ -1,0 +1,5 @@
+Read Section 2 before the PromptPG method. The dataset formulation, construction filters, split sizes, answer types, and table representations are the pieces needed for benchmark curation; PromptPG in Section 3 is then best understood as one baseline family that probes in-context example selection.
+
+For scorer audit, read Section 4.1 and the official `evaluate_acc.py` workflow in the repository. The evaluation contract differs by answer type: free-text numeric answers use decimal normalization, and multiple-choice answers are mapped to the nearest option. That distinction matters when comparing language-only, program-of-thought, and tool-augmented systems.
+
+Open reading questions: which table representation did a reported system use; whether a result uses train examples, development tuning, or test-only evaluation; how answer extraction is implemented for long model outputs; whether current leaderboard results use the same scorer; and how the non-commercial dataset license affects redistribution in derived collections.

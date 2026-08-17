@@ -1,0 +1,3 @@
+Prior work usually evaluates agents on a fixed harness and treats benchmark feedback as ground truth. HarnessFix changes the unit of analysis: the harness becomes a repairable artifact, and failed trajectories become evidence for debugging evaluation infrastructure.
+
+The quality signal is the closed loop from trajectory evidence to diagnosis, repair, and benchmark-side validation. What is not new is using SWE-Bench, AppWorld, Terminal-Bench, GAIA, or execution-based scoring; those are inherited evaluation surfaces. Before reuse, inspect whether the released repairs, license, third-party benchmark terms, hidden tests, and runtime dependencies match the intended evaluation.

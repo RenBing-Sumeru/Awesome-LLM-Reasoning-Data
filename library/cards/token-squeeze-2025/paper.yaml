@@ -1,0 +1,158 @@
+id: token-squeeze-2025
+title: 'TokenSqueeze: Performance-Preserving Compression for Reasoning LLMs'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yuxiang Zhang
+- Zhengxu Yu
+- Weihang Pan
+- Zhongming Jin
+- Qiang Fu
+- Deng Cai
+- Binbin Lin
+- Jieping Ye
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- mathematical_reasoning
+- code_reasoning
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/file/8442d394d8266db6fdf92583a4783e8c-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2511.13223
+  code: https://github.com/zhangyx1122/TokenSqueeze
+  data: https://github.com/zhangyx1122/TokenSqueeze/blob/db674a53650266d7baea483e75695892a2430b2c/datasets/math14k.jsonl
+  project: null
+  huggingface: https://huggingface.co/zhangyx/TokenSqueeze-7B
+  doi: https://doi.org/10.48550/arXiv.2511.13223
+  venue: https://neurips.cc/virtual/2025/poster/117582
+  openreview: https://openreview.net/forum?id=Wc1VZ2bVJn
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The author repository includes datasets/math14k.jsonl. Step 1 requires instruction and ground_truth_answer;
+    upstream source, curation, license, original split, and stable count are not disclosed.
+  trace_author: DeepSeek-R1-Distill-Qwen-7B or -1.5B self-samples initial completions. The paper reports no external teacher
+    or manual annotation.
+  answer_format: The documented template separates <think> reasoning from <answer> with a boxed final answer. Step 1 appends
+    completions containing equal, response, and token_length; later data use chosen/rejected responses, rewrites, and KL values.
+  process_fields:
+  - instruction
+  - ground_truth_answer
+  - completions[].response
+  - completions[].equal
+  - completions[].token_length
+  - chosen response
+  - rejected response
+  - rewrite candidate / selected rewritten response
+  - local KL estimate
+  environment_or_substrate: Offline SGLang/Ray self-sampling, answer comparison, pair construction, step rewriting and KL
+    scoring, then LLaMA-Factory training. It is not an interactive environment or online RL loop.
+  verifier_or_reward: Step 1 extracts an answer and calls merged_verify. Correct traces are length ranked; selected positives
+    pair with longer incorrect completions. A rewrite selector chooses the shortest of 64 candidates under a local continuation-distribution
+    KL constraint. DPO-L also uses a relative-length term; neither signal is a step proof checker.
+  terminal_predicate: A completion is correct when merged_verify returns equal. A rewrite is eligible only when estimated
+    local KL is below epsilon; error rates for both gates are unknown.
+recipe_metadata:
+  base_model: Full-parameter fine-tuning is reported for DeepSeek-R1-Distill-Qwen-7B and DeepSeek-R1-Distill-Qwen-1.5B.
+  teacher: None reported; the paper explicitly says self-generated data without manual annotation or external teacher models.
+  generator: The target base model samples initial traces and rewrite candidates. The README example uses deepseek-ai/DeepSeek-R1-Distill-Qwen-7B.
+  filtering_rule: Classify 64 samples with merged_verify; sort correct traces by length; set q = alpha*(1-p), alpha=0.2; retain
+    the first ceil(q*c) correct traces; pair each with longer incorrect traces, up to M=64 pairs per problem. Generate 64
+    rewrites per chosen step and retain the shortest below epsilon=0.005.
+  sampling_protocol: Initial sampling uses temperature 0.9, 64 completions per input, and 8,192 maximum new tokens. Appendix
+    A.1 sets temperature 1.0 for 64 rewrite candidates per step. Seeds, retries, total generated tokens, and final retained
+    counts are not disclosed.
+  rollout_count: 64 initial completions per input; 64 rewrite candidates per selected step; at most 64 preference pairs per
+    problem.
+  temperature: 0.9 for initial sampling; 1.0 for rewriting.
+  inference_budget: Step 1 defaults to 8,192 maximum new tokens; training uses a 9,000-token context. The paper reports 8x
+    NVIDIA Tesla A100 GPUs and about one training day, but total construction compute is not disclosed.
+  optimizer_or_scaffold: LLaMA-Factory DPO pipeline, full-parameter training, Adam, learning rate 5e-6, batch 128, one epoch
+    in the README, 0.5 DPO-L plus 0.5 SFT, and lambda=1.
+audit:
+  source_mixture: math14k prompt/answer records -> self-sampled tagged completions -> equality labels -> adaptive-depth positives
+    plus longer incorrect rejections -> rewrites -> local KL filtering -> rewritten preference pairs -> SFT and DPO-L.
+  split: The repository includes an input file and test subdirectory, but no versioned training/validation split, source IDs,
+    or retained/rejected generated-data manifest was verified.
+  decontamination: No construction-data decontamination or benchmark-overlap report was verified. The LiveCodeBench date window
+    is an evaluation choice, not a training-data audit.
+  license: unknown. No repository license file or license for math14k/final generated data was verified. The NeurIPS checklist
+    claims external assets comply with terms but does not identify the upstream math14k asset or derived-data license.
+  lineage: The public recipe exposes input math14k and scripts, but not the paper-matched response, pair, rewrite, KL, or
+    final-pair files; hashes; source-output mapping; or accepted/rejected indices. Model-card documentation and model training-data
+    lineage were not verified.
+  known_failure_modes:
+  - Answer equality can accept invalid rationales or reject equivalent answers; merged_verify behavior and error rates are
+    not reported.
+  - The KL gate is a truncated, single-trajectory local continuation-distribution approximation, not a proof of logical correctness
+    or faithfulness.
+  - Difficulty is inferred from model correctness rate, hence changes with checkpoint, decoding, parser, and rollout budget.
+  - Pairs entangle correctness, relative length, and candidate availability; retention statistics are unavailable.
+  - Epsilon was selected heuristically; too small constrains compression and too large permits semantic drift. The offline
+    design cannot adapt to distribution shifts through real-time feedback.
+  - Benchmark outcomes do not certify generated-record quality, license, provenance, or contamination.
+  citation_status: verified
+  confidence: medium
+  notes: Verified 2026-07-23 against the NeurIPS paper and venue, arXiv, OpenReview, the author-designated GitHub repository,
+    its README/dataset directory/pipeline scripts, and repository-linked model pages. Repository HEAD was db674a53650266d7baea483e75695892a2430b2c.
+    This verifies a recipe and input file, not a complete released training corpus.
+  metadata_status: partial
+inclusion_reason: 'A direct rollout/search-trace construction recipe: it turns self-sampled, answer-checked traces into adaptive-depth
+  positives, longer incorrect rejections, and KL-filtered rewrites before SFT plus length-aware preference optimization.'
+related:
+- self-training-elicits-concise-reasoning-2025
+tags:
+- long2short
+- reasoning-compression
+- self-generated-data
+- preference-pairs
+- adaptive-depth-selection
+- KL-constrained-rewriting
+- dpo
+- sft
+- mathematical-reasoning
+- rollout-selection
+status: partial
+one_line_summary: TokenSqueeze self-samples answer-checked traces, selects depth-adaptive correct positives against longer
+  incorrect responses, KL-filters step rewrites, and trains concise reasoners with SFT plus length-aware DPO; the final generated
+  corpus remains unreleased.
+why_it_matters: 'It makes long-to-short reasoning a data-construction and feedback-contract problem: its efficiency depends
+  on rollout budget, answer extraction, selector, negative-pair rule, KL approximation, and objective. Missing lineage, split,
+  license, generated records, and decontamination evidence block data-level reuse claims.'
+card: null
+needs:
+- 'needs_final_data: release paper-matched response, rewrite, KL, and preference-pair files with schemas, counts, hashes,
+  and immutable revisions.'
+- 'needs_lineage: publish mappings from each math14k record through candidates, verifier results, selected/rejected pairs,
+  and rewrite decisions.'
+- 'needs_provenance: identify math14k upstream source, curation, split, redistribution rights, and license.'
+- 'needs_split: publish versioned split manifests and retention/exclusion statistics.'
+- 'needs_decontamination: report overlap checks for AIME24, MATH500, AIME25, and the selected LiveCodeBench window.'
+- 'needs_verifier_audit: document merged_verify normalization/error rates and KL-gate semantic-drift failures.'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_repair
+  confidence: medium
+  notes: Primary paper, venue PDF, OpenReview, author-designated code, input file, and repository-linked 7B/1.5B model pages
+    were checked. No official final generated corpus, reproducible data manifest, or derived-data license was verified.
+category_ids:
+- rollout_search_test_time_trace_data

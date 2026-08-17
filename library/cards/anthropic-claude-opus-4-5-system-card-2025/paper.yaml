@@ -1,0 +1,163 @@
+id: anthropic-claude-opus-4-5-system-card-2025
+title: Claude Opus 4.5 System Card
+year: 2025
+venue: Anthropic system card
+authors:
+- Anthropic
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- coding
+- agentic_tool_use
+- safety
+- cybersecurity
+- mathematics
+- vision
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www-cdn.anthropic.com/bf10f64990cfda0ba858290be7b8cc6317685f47.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/system-cards
+  huggingface: null
+  doi: null
+  venue: https://www.anthropic.com/system-cards
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'A proprietary mix is disclosed at category level: public internet information through May 2025, non-public
+    third-party data, data-labeling services and paid contractors, opted-in Claude-user data, and Anthropic internally generated
+    data. Individual prompt/task sources, mixtures, counts, revisions, and provenance are unknown.'
+  trace_author: Some earlier supervised-learning data includes reasoning text produced by prior models. Data-work-platform
+    workers help with preference selection, safety evaluation, and adversarial testing. Generator/worker identities, model
+    checkpoints, instructions, selection, and record-level attribution are unknown.
+  answer_format: The report refers to reasoning text and a controlled analysis of math transcripts with reasoning workspaces
+    and boxed answers, but does not release a training-record schema, trace corpus, preference-record format, or tool-interaction
+    fields.
+  process_fields:
+  - reasoning_text
+  - final_answer
+  environment_or_substrate: The report names coding environments for inoculation prompting and describes separate agentic
+    evaluations, but training environments, tools, versions, task interfaces, and rollout logs are unknown.
+  verifier_or_reward: Post-training includes RLHF and reinforcement learning from AI feedback. RL training did not use rewards
+    or penalties based on reasoning-text content. Reward models, AI-feedback sources, preference protocol, objectives, weights,
+    calibration, verifiers, and terminal predicates are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Claude Opus 4.5 checkpoint lineage, architecture, parameter count, and allocation across training stages are
+    unknown.
+  teacher: Prior models produced some reasoning text used in earlier supervised learning; their identities, checkpoints, and
+    teacher-student mappings are unknown.
+  generator: The report names internally generated data and prior-model reasoning text but does not disclose generation prompts,
+    sampling, filters, acceptance criteria, or source proportions.
+  filtering_rule: Training uses deduplication and classification. For evaluation decontamination, the report specifies >=5
+    exact question-answer pair substring removal, >40% 20-gram overlap removal, canary filtering, and manual inspection; training-wide
+    thresholds, yields, and retained/removed records are unknown.
+  sampling_protocol: The report says agentic evaluations sampled snapshots multiple times and a reasoning workspace analysis
+    used 11,000 math transcripts from RL training. Post-training sampling protocol, training rollout policy, and trace-selection
+    procedure are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: The hybrid reasoning model exposes an effort parameter over thinking tokens, function calls, function
+    results, and user-facing blocks; deployed budgets and allocation rules are unknown. A separate reasoning workspace evaluation
+    used 16 samples per question at temperature 1, not a deployed or training setting.
+  optimizer_or_scaffold: The report identifies post-training/fine-tuning with RLHF and reinforcement learning from AI feedback,
+    plus inoculation prompting on a significant subset of coding environments. Objectives, optimizers, schedules, update rules,
+    reward normalization, rollout generation, and checkpoints are unknown.
+audit:
+  source_mixture: Category-level training sources are disclosed, but no source manifest, per-source mixture, token/sample
+    counts, revisions, opt-in retention window, provenance graph, or rights map is released.
+  split: 'Training and evaluation memberships and sizes are generally undisclosed. The changelog corrects a prior ARC-AGI-1
+    statement: a reshuffled public train/test split was used in training, while reported results used a semi-private set on
+    which the model was not trained; this does not establish broader split separation.'
+  decontamination: The report discloses substring removal, 20-gram fuzzy matching with a >40% overlap threshold, canary filtering,
+    and manual inspection. It also reports that rephrased AIME questions, official solutions, and model-generated answers
+    persisted despite these controls; code, corpus, benchmark snapshots, yields, and full audit results are unavailable.
+  license: No training data, post-training traces, weights, code, or record-level artifact is released in the official system
+    card; source-level data rights and artifact licenses are unknown.
+  lineage: The report supplies stage-level lineage from broad source categories through RLHF/RLAIF and some prior-model reasoning
+    text, but does not release item-level prompt-to-trace-to-feedback-to-reward-to-checkpoint lineage.
+  known_failure_modes:
+  - The system card withholds the records, source manifests, rights, mixture weights, and versions required to audit its data
+    claims.
+  - RLHF/RLAIF and inoculation prompting are named without reward contracts, preference records, evaluator models, calibration,
+    environments, or optimizer details.
+  - 'The disclosed decontamination controls are imperfect: rephrased AIME questions, official solutions, and model-generated
+    answers remained in the training corpus.'
+  - An internal review found unfaithful or deceptive reasoning on roughly 1% of the STEM-question training distribution in
+    partially trained snapshots; raw transcripts and review methodology artifacts are not released.
+  - Reported capability and safety evaluations rely largely on internal or redacted artifacts, limiting independent reproduction
+    and failure analysis.
+  citation_status: verified
+  confidence: high
+  notes: Only the official Anthropic Claude Opus 4.5 System Card and Anthropic's official system-card index were used. This
+    Track 12 entry records disclosed interfaces and audit gaps; it does not treat the system card as a reusable post-training-data
+    release.
+inclusion_reason: A high-impact frontier system card with unusually concrete disclosure of training-source categories, RLHF/RLAIF,
+  prior-model reasoning text, reasoning-text reward boundaries, coding-environment inoculation prompting, training-transcript
+  review, and decontamination rules—while retaining the records and reward contract needed for audit as undisclosed.
+related: []
+tags:
+- anthropic
+- claude-opus-4-5
+- claude
+- frontier-report
+- system-card
+- data-disclosure-ledger
+- rlhf
+- rlaif
+- reasoning-text
+- decontamination
+- reward-hacking
+- safety-audit
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Claude Opus 4.5's system card discloses broad source categories, RLHF/RLAIF, prior-model reasoning text
+  in earlier supervised learning, no RL reward on reasoning-text content, selected reward-hacking safeguards, and concrete
+  decontamination rules, but not auditable records, rewards, or environments.
+why_it_matters: It is a particularly informative Track 12 ledger item because it separates disclosed frontier post-training
+  and monitoring mechanisms from the missing record-level provenance, feedback contract, reward implementation, and reproducibility
+  artifacts.
+card: null
+needs:
+- 'needs_data: source manifests, prompt/task and preference records, thought traces, worker labels, quantities, revisions,
+  and rights'
+- 'needs_verifier: RLHF/RLAIF feedback sources, reward-model and verifier implementation, calibration, preferences, and error
+  audits'
+- 'needs_metadata: prior-model generators, filtering yields, inoculation prompts/environments, sampling, rollouts, optimizer,
+  schedules, and checkpoints'
+- 'needs_audit: raw transcript-review outputs, decontamination code/results, full splits, benchmark versions, external-evaluation
+  artifacts, and environment/tool pins'
+- 'needs_license: source-level data rights and licenses for all training and evaluation artifacts'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Anthropic system-card PDF was read directly; the official Anthropic system-card index confirms the November
+    2025 listing. No other links are claimed.

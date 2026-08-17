@@ -1,0 +1,5 @@
+Use OmniGUI as an evaluation schema for omni-modal GUI agents and as an audit checklist for smartphone trajectory data. A reusable record should keep the task goal, app identity, language, dependency label, step index, screenshot, video segment, audio segment, previous actions, action primitive, action parameters, target bounding box or string, prediction JSON, and TM/EM/SR/GP results.
+
+It is useful for testing whether a model can turn transient sounds, video states, and visual UI layout into executable actions. It also helps separate three claims that are often conflated: understanding the multimodal context, selecting the correct action primitive, and grounding the action at the right coordinate or string.
+
+For atlas use, treat it as environment/agent trajectory data with deterministic labels. It is suitable for evaluation, regression testing, ablation design, prompt/interface audits, and contamination checks. Training or reward reuse requires a separate audit of licensing, privacy, media provenance, and whether expert-action matching is an acceptable reward.

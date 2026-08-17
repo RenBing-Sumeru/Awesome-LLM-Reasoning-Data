@@ -1,0 +1,74 @@
+id: verification-rl-test-time-scaling-2025
+title: Scaling Test-Time Compute Without Verification or RL is Suboptimal
+year: 2025
+venue: arXiv preprint
+authors:
+- Amrith Setlur
+- Nived Rajaraman
+- Sergey Levine
+- Aviral Kumar
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+- general-reasoning
+training_use:
+- test_time_compute
+- reinforcement_learning
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.12118
+  arxiv: https://arxiv.org/abs/2502.12118
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+audit:
+  source_mixture: Official arXiv paper.
+  split: Didactic and mathematical reasoning experiments with 3B, 8B, and 32B models.
+  decontamination: No formal audit is claimed.
+  license: Check all model and benchmark licenses.
+  lineage: https://arxiv.org/abs/2502.12118
+  known_failure_modes:
+  - verifier-error
+  - theory-assumptions
+  - reward-coverage
+  - task-specificity
+  citation_status: verified
+  confidence: high
+  notes: Official paper checked on 2026-07-21. Authors are affiliated with Carnegie Mellon University and UC Berkeley.
+inclusion_reason: It directly analyzes how verifier access changes the scaling law of test-time compute and why trace imitation
+  alone can be asymptotically inferior.
+related: []
+tags:
+- test-time-scaling
+- verification
+- reinforcement-learning
+- scaling-law
+status: verified
+one_line_summary: The paper argues that verifier-guided RL or search scales test-time compute better than cloning expert traces
+  when correct reasoning is heterogeneous.
+reading_priority: essential
+paper_type: Theoretical and empirical test-time scaling study
+best_for: Readers deciding whether to invest in verifiers rather than only synthetic reasoning traces.
+confidence: high
+why_it_matters: It identifies verification as a structural condition for sustained test-time scaling, not merely an optional
+  evaluation component.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper checked; no dedicated artifact release reported.
+category_ids:
+- scaling_rlvr_test_time_compute

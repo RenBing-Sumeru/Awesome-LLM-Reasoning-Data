@@ -1,0 +1,5 @@
+- Start from the funnel `59,029 → 54,116 → 51,581 → 24,496 → 1,000`; each transition uses a different quality, format, model-relative difficulty, or diversity decision.
+- Keep the 53.6% Claude 3.7 correctness rate beside every “high-quality s1K” claim: selection targets useful reasoning patterns, not a fully correct solution corpus.
+- Separate four artifacts: 59,029 raw questions, 58,986 public generated full-pool rows, original Gemini s1K, and later DeepSeek-R1 s1K-1.1.
+- Compare Algorithm 1 with `filter.ipynb`: the domain schedule differs, the notebook is unseeded, feature names drift, and `qfq/geminiall` is not anonymously accessible.
+- Read budget forcing only as inference-time control. Forced `Wait` can improve or degrade answers and is not part of the dataset's supervision contract.

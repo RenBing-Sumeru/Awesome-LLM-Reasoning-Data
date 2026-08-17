@@ -1,0 +1,7 @@
+- **终态验证边界：** checker 验证最终输出，不验证程序是否忠于源 CoT，也不判断中间推理是否成立。Appendix G 给出了最终答案正确但逻辑错误或不完整的已接受程序；两阶段输出与 GRPO 输出的人工逻辑通过率分别为 96/100 和 90/100。
+- **Predicate 与 reward 边界：** Stage 1 语法验证只说明定义可以编译。论文有意给“答案错误但符合 predicate 使用条件”的程序 0.5 分，而固定版本实现只检查是否与任意建议 predicate 重叠，并非论文所写的全部 predicates。
+- **Checker 风险：** 接受路径依赖 Prolog term 转换、LaTeX 解析、规范化、数值容差、prefix fallback 和手写 special cases。论文没有报告不同答案类型上的校准误接受率或误拒绝率。
+- **发布不一致：** 论文报告 6,100 个初始程序与 97.4% 并集；固定 Hub revision `0aa6c9783d698ea3fbe5e71a76cfb01d2cd0d5af` 只有一个 6,093 行 train split，但数据集文字同时声称数据被禁用且 train 有 7,923 个样本。没有官方逐行 manifest 对齐这些数字。
+- **谱系丢失：** 公开记录缺少 MATH ID、源 CoT、buffer 版本、生成器、尝试序号、执行输出、verifier 判定、reward 分量、失败候选和恢复模型。因此无法重建搜索过程，也无法区分初始样本与恢复样本。
+- **复现与权利：** 公开脚本需要用户自行配置，standalone pipeline checker 与论文方法不同。数据集标记为 MIT，论文也称 MATH 为 MIT，但固定代码树中没有 license file。论文运行的精确 temperature、random seeds 和总生成预算仍为 unknown。
+- **评测范围：** MATH train 提供构造语料，MATH-500 提供主要消融评测。论文没有报告更广泛的重复、重叠或预训练污染审计；benchmark 提升也不能证明逐条记录质量。

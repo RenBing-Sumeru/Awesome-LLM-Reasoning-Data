@@ -1,0 +1,110 @@
+id: expertlongbench-long-form-2025
+title: 'ExpertLongBench: Benchmarking Language Models on Expert-Level Long-Form Generation Tasks with Structured Checklists'
+year: 2025
+venue: ICLR 2026
+authors:
+- Jie Ruan
+- Inderjeet Nair
+- Shuyang Cao
+- Amy Liu
+- Sheza Munir
+- Micah Pollens-Dempsey
+- Tiffany Chiang
+- Lucy Kates
+- Nicholas David
+- Sihan Chen
+- Ruxin Yang
+- Yuqian Yang
+- Jasmine Gump
+- Tessa Bialek
+- Vivek Sankaran
+- Margo Schlanger
+- Lu Wang
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- long_form_generation
+- professional_work
+- cross_domain
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.01241
+  arxiv: https://arxiv.org/abs/2506.01241
+  code: null
+  data: https://huggingface.co/datasets/launch/ExpertLongBench
+  project: null
+  huggingface: https://huggingface.co/datasets/launch/ExpertLongBench
+  doi: https://doi.org/10.48550/arXiv.2506.01241
+  venue: https://openreview.net/forum?id=nJvgBolRcR
+  openreview: https://openreview.net/forum?id=nJvgBolRcR
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert-level long-form work tasks
+  trace_author: Domain experts
+  answer_format: Task, rubric, reference, checklist, output, score
+  process_fields:
+  - task
+  - rubric
+  - reference
+  - checklist
+  - score
+  environment_or_substrate: Long-form professional generation
+  verifier_or_reward: CLEAR grounded checklist framework
+  terminal_predicate: Output satisfies correct rubric checklist items
+recipe_metadata:
+  base_model: Language models
+  teacher: Domain experts
+  generator: Task-specific rubrics and references
+  filtering_rule: 11 tasks from 9 domains
+  sampling_protocol: 11 long-form tasks
+  rollout_count: null
+  temperature: null
+  inference_budget: Outputs may exceed 5,000 tokens
+  optimizer_or_scaffold: CLEAR checklist extraction and comparison
+audit:
+  source_mixture: Official arXiv and Hugging Face release
+  split: Consult data card
+  decontamination: References may be public domain material
+  license: Consult data card
+  lineage: https://huggingface.co/datasets/launch/ExpertLongBench
+  known_failure_modes:
+  - Checklist extraction can omit valid but differently expressed content.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and data checked.
+inclusion_reason: ExpertLongBench aligns long-form evaluation to expert task rubrics through grounded checklists.
+related: []
+tags:
+- long_form
+- rubric
+- checklist
+one_line_summary: ExpertLongBench scores expert-level long-form outputs with task rubrics and grounded checklist comparisons.
+why_it_matters: It separates generating required aspects from generating them correctly in long professional outputs.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and data checked.
+category_ids:
+- judgment_rubric_domain_expert_data

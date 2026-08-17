@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude Haiku 4.5 System Card 披露五类训练来源、RLHF/RLAIF、偏好选择、上下文感知 agentic RL、前代模型推理文本与后训练行为审计，但不提供来源比例、reward model、全局 split、授权账本或可复用训练记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型系统卡与训练数据披露台账",
+  "best_for_ch": "研究偏好学习、agentic RL、reasoning trace、reward hacking、安全评测与训练谱系的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

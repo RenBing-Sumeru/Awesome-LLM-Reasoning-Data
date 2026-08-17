@@ -1,0 +1,3 @@
+The paper’s contribution is a controlled map of scaling levers in an agent trajectory, rather than a new isolated search algorithm. It changes the evaluation surface from one prompt and multiple answers to tool-use episodes containing actions, observations, verifier feedback, reflection decisions, and merged candidate trajectories.
+
+What is new is the comparative decision boundary: when to branch, when to reflect, how to verify, and whether diversity should come from multiple agent models. It does not establish a universally optimal agent scaffold. Before reuse, check GAIA tool availability, prompt and model version, list-wise judge calibration, rollout correlation, and the complete cost including tools and judge calls.

@@ -1,0 +1,1 @@
+已有基线多是 prompt-only 工具演示、小规模 function-calling 测试或不可执行 API 语料。API-Bank 的变化在于把 API 文档、可运行工具、人工标注多轮对话、训练集，以及 planning/retrieval/calling 分阶段评测放在一起。质量信号来自可执行 API 行为和标注调用的一致性。API、监督微调和对话模拟本身不新；复用前要查合成数据 lineage、API 实现是否漂移、执行是否等同真实服务、数据许可、split 泄漏和公开发布后的污染。

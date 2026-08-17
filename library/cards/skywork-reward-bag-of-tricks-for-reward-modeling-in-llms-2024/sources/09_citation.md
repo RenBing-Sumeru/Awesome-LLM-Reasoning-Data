@@ -1,0 +1,1 @@
+Liu et al. (2024), “Skywork-Reward: Bag of Tricks for Reward Modeling in LLMs,” arXiv:2410.18451. Primary paper: https://arxiv.org/abs/2410.18451. Official release: https://github.com/SkyworkAI/Skywork-Reward. Consult the release/data documentation for the exact collection, model checkpoints, and current license before reproducing the 80K mixture.

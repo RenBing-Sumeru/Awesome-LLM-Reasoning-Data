@@ -1,0 +1,17 @@
+{
+  "title": "Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.ijcnlp-long.18/",
+    "data": "https://aclanthology.org/2025.ijcnlp-long.18.pdf"
+  },
+  "review_note": "以重复调用和候选换序揭示 LLM judge 的系统性位置偏差，适合作为自动评测上线前的审计依据。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以重复与换序量化 LLM judge 的系统性位置偏差，并明确其随任务、judge 和质量差距变化，适合纳入正式池。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

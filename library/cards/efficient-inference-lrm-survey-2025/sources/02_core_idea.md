@@ -1,0 +1,1 @@
+The paper separates explicit compact reasoning from implicit latent reasoning. The first keeps visible steps but tries to make them shorter; the second stores more computation in hidden representations. This distinction is useful because the two options trade different things: token cost, controllability, and the ability to inspect an intermediate argument.

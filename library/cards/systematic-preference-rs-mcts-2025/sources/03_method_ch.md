@@ -1,0 +1,7 @@
+Prompt synthesis 包含五个已报告阶段:从种子指令移除约束;每批生成 20 个额外的无约束 prompts;去除语义重复;采样兼容的 constraint set 及其 keyword arguments;把约束自然地改写进 prompt。所有基于模型的生成步骤均由 Llama-3.1-70B-Instruct 完成。若 keyword arguments 不依赖 prompt,就随机采样;需要理解上下文的参数则由 70B 模型生成。论文点名使用 all-mpnet-base-v2 和 dot-product similarity 去重,但未报告相似度阈值或 reject manifest。
+
+在主 RS 设置中,Llama-3.1-8B-Instruct 以 temperature 1.0 为每个 prompt 独立生成 N=64 个完整回答。verifier 返回 `R = |C|^-1 sum V(response, prompt, constraint)`,curator 抽取 chosen score 等于 c、rejected score 等于 r 且回答不重叠的所有 pairs。"non-overlapping responses" 未得到操作性定义,论文也没有说明一个回答能否进入多个保留 pairs。
+
+MCTS 在 token-sequence 层运行。node 是部分回答,action 是从一个 state 到另一个 state 的有长度上限的 token sequence。selection 用 Q-values、visit counts 和长度归一化 policy scores 计算 PUCT。expansion 提议 K=4 个 actions,每个 action 运行 M=4 次 rollouts。rollout 项对程序化约束满足分数取平均;policy self-evaluation 询问部分回答是否仍满足内容条件,并对 L 次生成的 yes/no 概率判断取平均。搜索 reward 对 verifier rollouts 和 self-evaluation 的权重分别为 0.8 与 0.2,并通过 visits 与 Q-values 回传。报告的最大深度为 5,c_puct=1.0,但 tree-iteration count、L、action-token limit 和详细 terminal conditions 均为 unknown。
+
+最终 MCTS pairs 来自合格的 sibling nodes,并在采样完整 rollouts 后只用 verifier V 过滤。随后 DPO 对 Llama-3.1-8B-Instruct 微调一轮,maximum sequence length 为 2,048,learning rate 为 5e-7,使用 linear scheduler 和 4 个 gradient-accumulation steps。SFT 对照只用 chosen responses,以 bf16 训练三轮,learning rate 为 2e-6,total batch size 为 32,并采用相同最大长度和累积步数。DPO batch size、beta、完整 optimizer 配置、硬件、seeds、pair count 和 unique-prompt count 均未报告。

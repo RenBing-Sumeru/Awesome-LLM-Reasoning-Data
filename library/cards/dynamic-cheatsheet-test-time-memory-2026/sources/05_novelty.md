@@ -1,0 +1,3 @@
+The distinctive contribution is to make test-time improvement persistent but lightweight. Unlike standard self-consistency, every attempt need not start over; unlike parameter-efficient adaptation, the approach does not require model access; unlike static retrieval, its knowledge store is created and revised by the model’s own experience during deployment.
+
+This changes the accounting of extra compute. The relevant artifact is not just a final answer or a sampled trajectory, but a compact memory item with a provenance in an earlier episode and a measurable effect on a later one. That makes memory quality and curation policy first-class scaling variables.

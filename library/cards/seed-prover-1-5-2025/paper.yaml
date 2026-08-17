@@ -1,0 +1,257 @@
+id: seed-prover-1-5-2025
+title: 'Seed-Prover 1.5: Mastering Undergraduate-Level Theorem Proving via Learning from Experience'
+year: 2025
+venue: arXiv preprint
+authors:
+- Jiangjie Chen
+- Wenxiang Chen
+- Jiacheng Du
+- Jinyi Hu
+- Zhicheng Jiang
+- Allan Jie
+- Xiaoran Jin
+- Xing Jin
+- Chenggang Li
+- Wenlei Shi
+- Zhihong Wang
+- Mingxuan Wang
+- Chenrui Wei
+- Shufa Wei
+- Huajian Xin
+- Fan Yang
+- Weihao Gao
+- Zheng Yuan
+- Tianyang Zhan
+- Zeyu Zheng
+- Tianxi Zhou
+- Thomas Hanwen Zhu
+source_role:
+- model_report
+- verifier_reward
+- agent_environment
+- construction_recipe
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- formal_mathematics
+- lean_theorem_proving
+- undergraduate_mathematics
+- graduate_mathematics
+- algebra
+- analysis
+- number_theory
+- combinatorics
+- mathematical_research
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.17260
+  arxiv: https://arxiv.org/abs/2512.17260
+  code: https://github.com/ByteDance-Seed/Seed-Prover
+  data: https://github.com/ByteDance-Seed/Seed-Prover/tree/main/SeedProver-1.5
+  project: https://github.com/ByteDance-Seed/Seed-Prover
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2512.17260
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Cold-start SFT uses undisclosed in-house synthetic data built on Seed-Prover 1.0. RL mixes Big-Math, NuminaMath,
+    CriticLean, Kimina-Prover Preview, Lean Workbook, and undisclosed in-house textbook formalizations including Graduate
+    Texts in Mathematics. Prompts support direct proving, natural-language-proof conditioning, and previous-failure-summary
+    conditioning. Sketch training consumes a formal statement plus a natural-language proof.
+  trace_author: Doubao-Seedprover-1.5 produces reasoning, Lean code, Mathlib-search queries, Python programs, tool decisions,
+    and summaries; Lean/LooKeng, search, and Python return responses. Sketch construction additionally uses a Doubao-Seed-1.6-initialized
+    natural-language prover, sketch translator, agentic Lean prover, natural-language lemma verifier, and Long-CoT rubric
+    judge.
+  answer_format: An experience episode contains formal statement, optional natural-language proof or failed-trajectory summary,
+    reasoning turns, ordered tool calls/arguments/responses, evolving context, cached verified lemmas/dependencies, summary/restart
+    records, final theorem, and terminal result. A sketch contains at least three candidate lemmas admitted with `sorry`,
+    transparent main-proof assembly, atomic-lemma verdicts, rubric diagnostics/scores, and binary reward.
+  process_fields:
+  - formal_statement
+  - natural_language_proof
+  - previous_failed_trajectory_summary
+  - assistant_reasoning
+  - tool_name
+  - tool_call_arguments
+  - tool_response
+  - lean_compiler_feedback
+  - mathlib_search_query
+  - mathlib_search_results
+  - python_program
+  - python_execution_result
+  - running_lean_context
+  - verified_lemma
+  - lemma_dependency
+  - self_summary
+  - restart_index
+  - final_theorem
+  - proof_verification_status
+  - episode_reward
+  - lean_sketch
+  - atomic_lemma_verdict
+  - junk_value_diagnostic
+  - strategy_alignment_score
+  - lemma_value_score
+  - lemma_utilization_factor
+  - sketch_binary_reward
+  environment_or_substrate: The agent uses unreleased LooKeng, a semantic-search index fixed to Mathlib v4.22.0, and Python
+    execution. Evaluation uses Lean v4.22.0. One trajectory is capped at 64K tokens and 28 tool calls; compiled lemmas are
+    cached in running context. The released Putnam archive pins Lean/Mathlib 4.22.0, but tools, containers, limits, and orchestration
+    are closed.
+  verifier_or_reward: 'Agentic RL gives +1 only when the final proof is Lean-verified and -1 otherwise; no step reward is
+    disclosed. Sketch Rubric RL is mixed: Lean checks structure, a natural-language verifier rejects invalid atomic lemmas,
+    and a Long-CoT LLM rubric judges alignment, decomposition, difficulty reduction, lemma value/utilization, and junk values.
+    Sketch reward is +1 iff at least three lemmas are generated, S_FL is at least 0, and S_NL is at least 0.7; otherwise -1.'
+  terminal_predicate: A direct episode stops on verified final theorem or exhaustion of 64K/28 calls. Summary-conditioned
+    Pass@k×m can restart. Hierarchical TTS gives each leaf Pass@3×3, recursively decomposes failed leaves, revises sketches
+    after disproved leaves, and succeeds only when all leaves verify. Putnam starts at depth 4 and can restart with cached
+    lemmas for effective depth 8.
+recipe_metadata:
+  base_model: Doubao-Seedprover-1.5 is post-trained from Seed-Prover 1.0; size, architecture, checkpoint hash, pretraining
+    data, and weights are undisclosed. The natural-language prover starts from Doubao-Seed-1.6; sketch-model identity and
+    weights are unknown.
+  teacher: Cold-start generator is unknown. Public formalizations and in-house textbook formalizers provide statements. A
+    Doubao-Seed-1.6-derived prover provides natural-language priors and atomic-lemma judgments; an undisclosed Long-CoT LLM
+    supplies rubric judgments; Lean supplies final correctness.
+  generator: The agent generates tool-use rollouts and summaries. The natural-language prover generates informal proofs, the
+    sketch model translates them into lemma-style Lean skeletons, and the agent fills leaves. Failed leaves can trigger recursive
+    regeneration or sketch refinement. Checkpoints, temperatures, and logs are unknown.
+  filtering_rule: Run the SFT model at Pass@4×8; remove examples solved more than three times and those never solved under
+    any prompting strategy. Retain summary-solvable/direct-unsolved items under the direct prompt. Sketches require at least
+    three lemmas, S_FL≥0, and S_NL≥0.7. Counts and yields are unknown.
+  sampling_protocol: RL interleaves policy tokens, tool calls, and real responses across 64K tokens and 28 calls. About 1,200
+    steps are plotted; step 1,055 is selected using Putnam-200. Agent evaluation uses direct Pass@8×1 and light Pass@8×8;
+    curriculum uses Pass@4×8; each TTS leaf gets Pass@3×3.
+  rollout_count: Unknown for SFT/RL. Roughly 1,200 optimization steps are reported without batches, prompts, rollouts, failures,
+    or total trajectories. Evaluation discloses Pass@8×8, Pass@3×3 per leaf, depth, and H20-days but not aggregate episodes.
+  temperature: Unknown for SFT synthesis, RL, direct/light inference, natural-language proofs, sketches, rubric judgments,
+    search queries, and hierarchical TTS.
+  inference_budget: Each trajectory has 64K tokens and at most 28 calls. Light uses Pass@8×8. TTS gives each leaf Pass@3×3,
+    starts at depth 4, and may restart with cached lemmas to effective depth 8. Full Putnam/FATE/Combi uses up to 10 H20-days/problem;
+    IMO 2025 roughly 20 H20-days/problem; Putnam 2025 up to 40 H20-days/problem and 11/12 within nine wall-clock hours. Width,
+    total tokens/calls, utilization, and branch stops are unknown.
+  optimizer_or_scaffold: Cold-start SFT settings are undisclosed. Agentic RL uses VAPO with ReTool-like tool-integrated PPO
+    and terminal +1/-1 reward. Sketch VAPO collapses mixed formal/judgment scores to +1/-1. Learning rates, clipping, advantage
+    estimator, KL, batches, packing, compute, and checkpoints are unknown.
+audit:
+  source_mixture: Five public sources plus in-house textbooks are named, but cold-start synthetic SFT, books/editions, snapshots,
+    counts, proportions, formalizers, and benchmark overlap are undisclosed.
+  split: No immutable split is released. Putnam-200 monitors about 1,200 RL steps and selects step 1,055, after which full
+    660-item PutnamBench—apparently including that subset—is reported. FATE/Combi exclusions are undocumented; 2025 no-leak
+    claims lack cutoffs.
+  decontamination: No statement, proof, textbook, repository, semantic, or trajectory decontamination is disclosed. Public/formalized
+    textbook data may overlap Putnam/FATE. Putnam-200 checkpoint selection creates evaluation adaptation even without training
+    membership.
+  license: The Apache-2.0 repository releases the paper, 11 Putnam proofs/checks, and an Erdős file. Models, training/sketch
+    records, textbook formalizations, trajectories, tools, and index are closed; source-level rights are unknown.
+  lineage: Stage-level lineage runs from prompt through reasoning, calls/responses, cached lemmas, summary/restart, terminal
+    Lean result and reward; sketch adds NL proof, skeleton, atomic judgments, rubric scores, leaves, and proof tree. Immutable
+    record-to-checkpoint lineage is absent.
+  known_failure_modes:
+  - No experience buffer, tool trajectory, failed summary, reward record, or curriculum mapping is released.
+  - Outcome-only +1/-1 gives long failed trajectories undifferentiated credit; invalid calls, timeouts, and environment faults
+    are unspecified.
+  - Sketch reward depends on undisclosed learned judges and a hand-set three-lemma/0.7 threshold.
+  - The Doubao-Seed-1.6 natural-language prior means agent-only and full-workflow scores are not interchangeable.
+  - Cached lemmas are axiom-like context entries; dependency integrity and protection of final certificates are not fully
+    exposed.
+  - LooKeng, search index, Python sandbox, tool limits, and images are closed.
+  - Difficulty filtering removes both easy and never-solved items, hiding hard-failure scale.
+  - Putnam-200 checkpoint selection makes 580/660 on full PutnamBench partly development-set adapted.
+  - No Putnam/FATE contamination audit exists; 2025 no-leak claims lack temporal/source evidence.
+  - FATE depends heavily on Mathlib retrieval, and CombiBench has acknowledged formalization issues.
+  - Mis-formalized Erdős cases show Lean verifies the encoded statement, not equivalence to the intended problem.
+  - '`VerifyStmt.lean` checks declaration-type equality only; it does not validate English-to-Lean semantic fidelity.'
+  - TTS budgets mix Pass@k×m, depth, H20-days, and wall time without normalized tokens, calls, width, or utilization.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv v1 paper, official repository, SeedProver-1.5 directory, Putnam2025 archive, and erdos_1051 source were
+    inspected on 2026-07-24. Eleven solution files were text-checked for prohibited placeholders/axioms but not independently
+    compiled. No public weights, training data, experience trajectories, LooKeng, index, or TTS code were found.
+inclusion_reason: A frontier disclosure of theorem-agent data as interleaved Lean/search/Python experience, summary-conditioned
+  curriculum, outcome-only RL, rubric-trained NL-to-Lean decomposition, and compute-scaled proof trees.
+related:
+- seed-prover-2025
+- deepseek-prover-v2-2025
+- goedel-prover-v2-2025
+- kimina-prover-preview-2025
+tags:
+- seed-prover-1-5
+- bytedance-seed
+- doubao-seedprover
+- lean4
+- agentic-rl
+- tool-use
+- experience-trajectories
+- compiler-feedback
+- mathlib-search
+- self-summarization
+- rubric-rl
+- natural-language-to-lean
+- proof-sketch
+- test-time-scaling
+- putnambench
+- fate
+- verifier-reward
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Seed-Prover 1.5 turns Lean, Mathlib search, Python calls, cached lemmas, and failure summaries into outcome-rewarded
+  trajectories, then adds rubric-trained NL-to-Lean sketches and recursive proof search; 11 Putnam 2025 proofs are open, but
+  training experience is not.
+why_it_matters: It concretizes tool-use theorem-agent experience and natural-language-to-formal decomposition while showing
+  why final Lean validity cannot settle contamination, judge-shaped decomposition, formalization fidelity, tool dependence,
+  or compute comparability.
+card: null
+needs:
+- 'needs_data: cold-start/RL records, source manifest, textbook formalizations, tool trajectories, failed summaries, lemma
+  dependencies, sketch/judge records, proof trees, rewards, splits, and lineage'
+- 'needs_metadata: books/editions, mixtures, model sizes, prompt probabilities, filter yields, tool schemas, score definitions,
+  and benchmark manifests'
+- 'needs_verifier: LooKeng, containers, search-index snapshot, Python sandbox, terminal reward code, timeout rules, judge
+  calibration, dependency/axiom audit, and English-to-Lean review'
+- 'needs_compute: SFT/RL rollouts, optimizer, tokens, hardware, checkpoints, and per-benchmark total calls/branches/width/utilization'
+- 'needs_audit: Putnam-200 selection bias, public/textbook overlap with Putnam/FATE, cutoff evidence, formalization fidelity,
+  judge correlation, retrieval dependence, and reproduction'
+- 'needs_license: source-level rights for datasets, textbooks, natural-language proofs, formalizations, trajectories, rubric
+  labels, and proofs'
+- 'needs_code: synthesis, prompt builder, tool-integrated VAPO, summary restarts, lemma cache, search/Python, Rubric RL, recursive
+  TTS, evaluation, and provenance'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, and arXiv-ID deduplication found no target-library match. Official paper, repository, Putnam
+    archive, Lean/Mathlib 4.22.0, 11 solution files, checks, Erdős artifact, and license were verified; no independent compilation
+    was performed.

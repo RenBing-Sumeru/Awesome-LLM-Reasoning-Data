@@ -1,0 +1,3 @@
+For Track 12, the useful contribution is the breadth of the disclosed ledger rather than a claim that the training artifacts are open. One report links web-scale source processing, synthetic reasoning, repository-level code, long-context/agent material, expert self-distillation, verifier and reward filtering, tool trajectories, and mixed RL feedback.
+
+This makes GLM-4.5 a useful disclosure case: it exposes enough interfaces to identify what should be audited, while also making the unreleased dependencies visible. It should not be treated as a released reasoning-data recipe merely because the weights and inference integrations are public.

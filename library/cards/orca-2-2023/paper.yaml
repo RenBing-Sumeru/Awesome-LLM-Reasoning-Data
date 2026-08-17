@@ -1,0 +1,130 @@
+id: orca-2-2023
+title: 'Orca 2: Teaching Small Language Models How to Reason'
+year: 2023
+venue: arXiv preprint (2023)
+authors:
+- Arindam Mitra
+- Luciano Del Corro
+- Shweti Mahajan
+- Andres Codas
+- Clarisse Simoes
+- Sahaj Agarwal
+- Xuxi Chen
+- Anastasia Razdaibiedina
+- Erik Jones
+- Kriti Aggarwal
+- Hamid Palangi
+- Guoqing Zheng
+- Corby Rosset
+- Hamed Khanpour
+- Ahmed Awadallah
+source_role:
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- large-language-models
+- teacher-explanation-distillation
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2311.11045
+  arxiv: https://arxiv.org/abs/2311.11045
+  code: null
+  data: null
+  project: https://aka.ms/orca-lm
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: FLAN tasks and Orca task mixtures, with 817K newly generated Orca 2 instances tailored to task-specific reasoning
+    strategies.
+  trace_author: GPT-4 and the teacher-model data from Orca 1; authors choose task-strategy prompts.
+  answer_format: A user task paired with a teacher response that may contain a direct answer, step-by-step reasoning, recall,
+    extraction, or another task-appropriate strategy.
+  process_fields:
+  - generic system instruction
+  - user task
+  - teacher response
+  - hidden generation strategy
+  environment_or_substrate: Static teacher demonstrations consumed by progressive supervised fine-tuning of LLaMA-2-7B and
+    LLaMA-2-13B.
+  verifier_or_reward: Task-specific strategy selection and teacher quality checks; many targets rely on teacher judgment rather
+    than executable correctness.
+  terminal_predicate: Generate a teacher answer under a tailored strategy prompt, erase that strategy from the student input,
+    and retain the task-answer training record.
+recipe_metadata:
+  base_model: LLaMA-2-7B and LLaMA-2-13B.
+  teacher: GPT-4 for the new Orca 2 strategy-conditioned demonstrations, plus GPT-3.5 and GPT-4 data from Orca 1.
+  generator: Choose a suitable reasoning strategy for each task, elicit it with a detailed teacher prompt, then erase that
+    prompt before student training.
+  filtering_rule: Authors map task groups to strategies intended to be useful for the smaller student; no universal programmatic
+    verifier is provided.
+  sampling_protocol: Progressive training on FLAN, 5M GPT-3.5 Orca 1 records, then about 1M GPT-4 Orca 1 plus 817K Orca 2
+    records.
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper reports 32 A100-80GB GPUs and about 17, 40, and 23 hours for the three progressive stages of
+    the 13B model.
+  optimizer_or_scaffold: Progressive supervised fine-tuning with Prompt Erasing.
+audit:
+  source_mixture: FLAN-v2, 5M GPT-3.5 records from Orca 1, 1M GPT-4 records from Orca 1, and 817K new Orca 2 records.
+  split: Training data are described in the paper, but the new 817K records are not released as an open dataset.
+  decontamination: The paper does not establish complete non-overlap between all task mixtures and downstream evaluations.
+  license: Model-weight terms must be checked at the official release; no open training-dataset license is available for the
+    817K records.
+  lineage: teacher explanation distillation lineage; extends Orca 1 by task-specific strategy selection and Prompt Erasing.
+  known_failure_modes:
+  - Teacher errors, hidden strategy prompts, unreleased training records, and benchmark overlap limit independent audit and
+    reproduction.
+  citation_status: verified
+  confidence: high
+  notes: Paper, full author list, Microsoft Research affiliation, training mixture, Prompt Erasing, compute, and official
+    model-weight entry checked.
+inclusion_reason: Orca 2 turns task-specific teacher reasoning strategies into student-visible answer traces while withholding
+  the strategy prompt, so strategy choice must be learned from the task.
+related: []
+tags:
+- teacher-explanation-distillation
+- prompt-erasing
+- arxiv-2311.11045
+- primary-link-checked
+status: verified
+one_line_summary: Orca 2 elicits task-specific reasoning strategies from GPT-4 and erases the strategy prompt during SFT so
+  a smaller model learns both how and when to reason.
+why_it_matters: It changes teacher imitation from copying one response style to training on strategy-tailored answer traces.
+reading_priority: recommended
+paper_type: teacher reasoning strategy distillation
+best_for: Readers designing teacher-generated reasoning demonstrations for smaller models.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and model-weight entry checked; training data are not an open artifact.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: teacher explanation distillation
+  selection_priority_score: 7
+  selection_score_breakdown:
+    recency: 2
+    impact: 3
+    venue: 0
+    institution: 2

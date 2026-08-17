@@ -1,0 +1,186 @@
+id: crest-consistency-rationale-self-training-2025
+title: 'Self-Training Meets Consistency: Improving LLMs'' Reasoning with Consistency-Driven Rationale Evaluation'
+year: 2025
+venue: NAACL 2025
+authors:
+- Jaehyeok Lee
+- Keisuke Sakaguchi
+- JinYeong Bak
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- logical_reasoning
+- commonsense_reasoning
+- science_reasoning
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.naacl-long.528/
+  arxiv: https://arxiv.org/abs/2411.06387
+  code: https://github.com/JaehyeokLee-119/CREST
+  data: https://github.com/JaehyeokLee-119/CREST/tree/main/resources/data
+  project: https://github.com/JaehyeokLee-119/CREST
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.naacl-long.528
+  venue: https://aclanthology.org/2025.naacl-long.528/
+  openreview: null
+  acl: https://aclanthology.org/2025.naacl-long.528/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.naacl-long.528.bib
+data_object:
+  prompt_source: The train splits contain 4,638 ReClor, 3,370 ARC and 8,520 CommonsenseQA questions. CREST processes the three
+    English multiple-choice datasets separately; their official validation and test splits are evaluation surfaces rather
+    than rationale-generation sources.
+  trace_author: For every training question, the same base checkpoint being trained samples 16 rationales. It then greedily
+    predicts the original answer from each rationale. Only rationales whose original prediction matches the label proceed
+    to one yes/no option-validity probe for every answer choice.
+  answer_format: The internal candidate object contains the source item, rationale, original predicted answer and binary score
+    z; an originally correct candidate additionally receives F option-wise predictions and their aggregate count z_tilde.
+    SFT emits (question, rationale, gold answer) records. Preference construction emits (question, preferred rationale/prediction,
+    rejected rationale/prediction) pairs. None of these derived training objects is published.
+  process_fields:
+  - id_string
+  - passage
+  - question
+  - answers
+  - label
+  - rationale
+  - prediction
+  - target_option
+  - generated_text
+  - consistency_score
+  - query
+  - response_j
+  - response_k
+  environment_or_substrate: Offline vLLM generation and behavioral probing followed by LoRA SFT and DPO with TRL on multiple-choice
+    QA. There is no external execution environment, formal checker or human annotation stage in the CREST training loop.
+  verifier_or_reward: Original-answer reward z is 1 when the rationale-conditioned predicted option equals the dataset label.
+    For an originally correct rationale, z_tilde is the number of option-wise yes/no predictions that match whether each option
+    is the labeled answer. The base checkpoint supplies all predictions; label comparison and count aggregation are programmatic.
+    GPT-4o is used only for a separate 100-item FLASK analysis.
+  terminal_predicate: SFT retains a candidate exactly when z=1 and z_tilde is at least F-t. The z preference pool ranks an
+    originally correct rationale above an incorrect one from the same question. The z_tilde pool compares two originally correct
+    rationales and requires a strict z_tilde inequality; ties are not paired.
+recipe_metadata:
+  base_model: Main experiments use Meta-Llama-3-8B and Gemma-7B; Appendix A repeats the comparison with Phi-2. Each dataset-model
+    run generates and scores its own candidate pool.
+  teacher: 'No external rationale teacher is used: the base checkpoint generates the rationales and the rationale-conditioned
+    predictions. GPT-4o is an analysis-only judge and does not create CREST training labels.'
+  generator: For each training item, sample 16 rationales with temperature 0.8, top-p 0.95 and at most 512 new tokens. The
+    released generator defaults to the first 20 records in the dataset-specific few-shot file. Then use greedy decoding for
+    the original-answer prediction and, for z=1 candidates, one binary prediction per answer option.
+  filtering_rule: For SFT, keep z=1 and z_tilde >= F-t, where t ranges from 0 to F. For DPO, create P_z from z=1 versus z=0
+    candidates and P_z_tilde from pairs with z_w=z_l=1 and z_tilde_w>z_tilde_l; randomly combine the pools so P_z_tilde contributes
+    lambda of the requested examples.
+  sampling_protocol: The 16 attempts per training question yield 74,208 ReClor, 53,920 ARC and 136,320 CommonsenseQA rationale
+    attempts per base model. The number of follow-up probes is data-dependent because only z=1 candidates are probed and F
+    is the number of answer options. DPO pair-pool sizes, selected pair IDs and generation seeds are not reported.
+  rollout_count: 16
+  temperature: 0.8
+  inference_budget: The paper uses max_new_tokens=512 for rationale generation and reports, for Llama-3-8B on ReClor using
+    an RTX A6000, 12 GPU-hours for generation, 3.2 for evaluation, 7.4 for SFT and 19.2 for preference learning. Original-question
+    evaluation accounts for about 1 hour and option-wise probing for about 2.2 hours.
+  optimizer_or_scaffold: LoRA uses rank 16, alpha 16 and gate/down/up/q/k/v/o projection targets with AdamW and cosine scheduling.
+    The paper reports SFT for 6 epochs and DPO for 4 epochs with beta 0.1; the best reported Llama/ReClor settings are t=3,
+    lambda=0.6, SFT learning rate 8e-4 and DPO learning rate 6e-6 with 5,000 maximum steps. The released stage-2 script instead
+    defaults to 4 SFT epochs, and the stage-3 script defaults to 3,000 steps.
+audit:
+  source_mixture: ReClor, ARC and CommonsenseQA are kept as separate model-specific self-training runs. The public repository
+    contains prepared copies of the upstream QA splits, few-shot examples and templates, not a merged CREST corpus.
+  split: Rationale generation uses the stated upstream train splits. ReClor validation/test and ARC validation/test remain
+    separate; for CommonsenseQA, the official development set is used as test and an equally sized subset is taken from training
+    as validation. Exact generated candidate, SFT and DPO records are not released.
+  decontamination: unknown. Neither the paper nor the repository publishes exact-match, near-duplicate or semantic-overlap
+    checks between training sources, few-shot examples and evaluation splits.
+  license: The ACL paper is CC BY 4.0 and the GitHub repository is CC BY-SA 4.0. The paper identifies CommonsenseQA as MIT
+    and ARC as CC BY-SA 4.0 and points to separate ReClor use terms. No released manifest establishes per-record license lineage
+    for a derived CREST corpus because that corpus is not published.
+  lineage: Upstream train item -> 16 same-model rationales -> greedy original predictions and z -> option-wise probes for
+    z=1 candidates and z_tilde -> tolerance-filtered SFT object -> within-question P_z and P_z_tilde pair pools -> lambda-mixed
+    DPO batches. The repository can reproduce these stages but omits the generated outputs, pair-selection ledger, checkpoints
+    and immutable release tag.
+  known_failure_modes:
+  - Option-wise outcome consistency does not establish that the written rationale faithfully caused the answer or that each
+    intermediate step is valid.
+  - The same checkpoint generates rationales and all behavioral predictions, so correlated blind spots can survive even though
+    dataset labels score the final options.
+  - The released implementation runs option-wise probes only after original-answer filtering; z=0 candidates therefore have
+    no z_tilde value and cannot enter the consistency-ranked pool.
+  - z_tilde collapses the option-wise vector to a count. Equal counts can hide different failed options, including the paper's
+    example where one rationale recognizes the correct option and another does not.
+  - The public evaluator parses a binary response with case-sensitive substring searches for 'not' or 'incorrect' and extracts
+    an answer option by the leftmost label occurrence; parser false-positive and false-negative rates are not reported.
+  - Positive tolerance deliberately admits rationales with known option-wise misses; the best t differs by dataset, and including
+    z_tilde=0 candidates reduces reported performance.
+  - Pair construction enumerates many within-question combinations and later samples training batches. The selected pair IDs,
+    per-pool yields, rejected pairs and generation randomness are not published.
+  - Paper hyperparameters and released shell defaults differ for SFT epochs and DPO maximum steps, so reproducing a table
+    requires more than running the default scripts.
+  - The main evidence covers English multiple-choice logic, science and commonsense tasks. Open-ended, mathematical and cross-lingual
+    extensions are proposed but not evaluated.
+  - Downstream accuracy and GPT-4o FLASK scores are model-training outcomes, not direct proof that individual retained rationales
+    or preference pairs are high quality.
+  citation_status: verified
+  confidence: medium
+  notes: Verified on 2026-07-19 against the NAACL proceedings PDF and BibTeX, arXiv v4, and the author repository at main
+    commit a6afada860235ef613752ee11ba2da8ba2e045c1. The repository has no GitHub release and publishes prepared upstream
+    data rather than derived CREST artifacts.
+inclusion_reason: CREST is a concrete self-training recipe that turns option-wise behavioral consistency into a tolerance-filtered
+  rationale SFT set and two-pool DPO preferences, while its open implementation exposes both reusable construction logic and
+  missing derived-data lineage.
+related: []
+tags:
+- self-training
+- rationale-filtering
+- option-wise-consistency
+- mixed-preferences
+- dpo
+- same-model-evaluation
+- missing-derived-data
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: CREST samples 16 rationales per multiple-choice item, scores originally correct candidates with option-wise
+  consistency probes, and converts the scores into tolerance-filtered SFT records and mixed DPO pairs.
+why_it_matters: It makes a denser label-derived rationale-selection recipe inspectable while showing that same-model probing,
+  aggregate counts and an unreleased decision ledger limit auditability.
+card: null
+needs:
+- 'needs_release: publish generated rationales, original and option-wise predictions, z and z_tilde values, SFT decisions,
+  both preference pools, sampled DPO pairs and trained checkpoints'
+- 'needs_lineage: retain upstream item IDs, model and tokenizer revisions, decoding seeds, template revisions, parser outputs
+  and stage-to-stage record IDs'
+- 'needs_audit: report parser error rates, option-specific failure vectors, rationale-faithfulness checks and independent
+  evaluator agreement'
+- 'needs_decontamination: publish exact, near-duplicate and semantic-overlap checks covering train, few-shot, validation and
+  test records'
+- 'needs_reproducibility: reconcile paper settings with released script defaults and publish per-dataset yields and selected
+  hyperparameters'
+- 'needs_license: provide a record-level upstream and generated-output license manifest for any redistributed CREST corpus'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: medium
+  notes: NAACL publication, DOI, arXiv v4, author code and prepared upstream datasets are verified. Generated CREST rationales,
+    score vectors, filtered SFT data, preference pairs, checkpoints, decontamination records and an immutable release remain
+    unavailable.

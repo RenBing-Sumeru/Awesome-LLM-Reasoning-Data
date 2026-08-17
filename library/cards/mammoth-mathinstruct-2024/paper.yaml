@@ -1,0 +1,144 @@
+id: mammoth-mathinstruct-2024
+title: 'MAmmoTH: Building Math Generalist Models through Hybrid Instruction Tuning'
+year: 2024
+venue: ICLR 2024
+authors:
+- Xiang Yue
+- Xingwei Qu
+- Ge Zhang
+- Yao Fu
+- Wenhao Huang
+- Huan Sun
+- Yu Su
+- Wenhu Chen
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- reasoning-data
+- mathematics
+- tool-use
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=yLClGs770I
+  arxiv: https://arxiv.org/abs/2309.05653
+  openreview: https://openreview.net/forum?id=yLClGs770I
+  venue: https://iclr.cc/virtual/2024/poster/17422
+  code: https://github.com/TIGER-AI-Lab/MAmmoTH
+  data: https://huggingface.co/datasets/TIGER-Lab/MathInstruct
+  project: https://tiger-ai-lab.github.io/MAmmoTH/
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/MathInstruct
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Thirteen public math datasets spanning arithmetic, algebra, geometry, theorem QA, formal logic, and other
+    fields.
+  trace_author: Existing human/model rationales plus GPT-4-authored CoT and PoT rationales for six newly curated subsets;
+    authors define the mixture and filters.
+  answer_format: Alpaca-style instruction paired with either a natural-language CoT or executable Python PoT rationale and
+    final answer.
+  process_fields:
+  - instruction
+  - input
+  - output
+  - source
+  - rationale_type
+  environment_or_substrate: Static instruction records; PoT outputs can be executed in a Python environment.
+  verifier_or_reward: Execute generated programs and compare results with human answers where references exist; some source
+    CoT subsets remain unvalidated.
+  terminal_predicate: Retain records whose generated program result agrees with the source answer, then merge all licensed
+    source subsets into MathInstruct.
+recipe_metadata:
+  base_model: LLaMA/LLaMA-2 and CodeLLaMA at 7B, 13B, 34B, and 70B scales.
+  teacher: GPT-4 for newly curated CoT/PoT subsets; human and prior-model annotations for inherited subsets.
+  generator: Prompt GPT-4 to add missing natural-language or program rationales to selected source questions.
+  filtering_rule: For generated PoT, execute code and remove records whose results disagree with original annotations; inherited
+    sources follow their own quality contracts.
+  sampling_protocol: Compile 13 datasets, including seven existing rationale sources and six subsets with newly generated
+    rationales.
+  rollout_count: null
+  temperature: null
+  inference_budget: Teacher-call count and token cost are not reported as a complete reproducible ledger.
+  optimizer_or_scaffold: Causal-LM SFT for three epochs; hybrid decoding tries PoT and falls back to CoT when code is not
+    executable.
+audit:
+  source_mixture: 260k records across GSM8K, GSM8K-RFT, AQuA-RAT, MATH, TheoremQA, Camel-Math, College-Math, MathQA, NumGLUE,
+    and newly curated rationale variants.
+  split: One public MathInstruct training release with source and rationale-style heterogeneity; evaluation uses nine in/out-of-domain
+    math datasets.
+  decontamination: Broad source mixture raises benchmark-family overlap; the paper does not provide a comprehensive semantic
+    decontamination report.
+  license: The official release lists subset-specific licenses, including MIT, Apache-2.0, CC-BY, CC-BY-NC, and one unlisted
+    source; redistribution must respect each subset.
+  lineage: 'instruction / demonstration / rationale data; closest comparisons: WizardMath, RFT, MetaMathQA, and single-format
+    CoT or PoT tuning.'
+  known_failure_modes:
+  - Mixed licenses and one unlisted source prevent treating the whole release as having one permissive license.
+  - Program execution validates results more strongly than unexecuted CoT, creating uneven quality across rationale types.
+  - Hybrid decoding benefits from a Python-capable environment and can fail on abstract or non-programmable problems.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR forum URL, affiliations, 260k composition, six newly curated rationale groups, record use, public dataset,
+    source-license table, and repository checked.
+inclusion_reason: MathInstruct is a public hybrid CoT/PoT demonstration dataset whose mixture and executable filtering directly
+  study reasoning SFT data design.
+related:
+- metamathqa-2024
+tags:
+- instruction-demonstration-rationale
+- mathematical-reasoning
+- program-of-thought
+- arxiv-2309.05653
+- primary-link-checked
+status: verified
+one_line_summary: MAmmoTH releases MathInstruct, a 260k-record hybrid CoT/PoT math SFT mixture with newly generated and execution-filtered
+  rationales.
+why_it_matters: It makes rationale representation and source breadth explicit data variables for math generalization.
+reading_priority: must read
+paper_type: hybrid mathematical rationale dataset and SFT study
+best_for: Readers designing mixed natural-language and executable math-demonstration corpora.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official paper/forum, project, repository, MathInstruct release, and subset-license table checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: established-track01-20260713
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: hybrid mathematical reasoning demonstrations
+  selection_priority_score: 13
+  selection_score_breakdown:
+    institution: 3
+    venue: 4
+    impact: 4
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block confirms University of Waterloo, The Ohio State University, HKUST, University
+      of Edinburgh, and 01.AI.
+    venue: The official ICLR program page at /virtual/2024/poster/17422 identifies MAmmoTH as a 2024 Spotlight Poster and
+      links OpenReview forum yLClGs770I.
+    impact: The official repository had 383 stars and 46 forks on 2026-07-13, and later MetaMathQA/DART-Math-era work repeatedly
+      uses MathInstruct or MAmmoTH as a public math-SFT comparison, showing multi-team adoption.
+    artifact: The public 260k dataset, checkpoints, training/evaluation code, executable grader, project page, and subset-by-subset
+      license table support direct reuse and auditing.
+  selection_eligible: true
+  year_impact_threshold: 3

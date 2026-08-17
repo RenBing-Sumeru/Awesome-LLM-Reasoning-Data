@@ -1,0 +1,3 @@
+Deep-research agents retrieve multiple sources and produce long reports with many valid formulations and dependence on changing web content. Citation counts, text similarity, or one holistic rating cannot identify whether facts, derivations, or implicit constraints are missing, and they make comparisons across agents and dates unstable.
+
+ResearchRubrics creates a common evaluation surface from realistic prompts and expert criteria, decomposing reports into checkable grounding, reasoning, synthesis, citation, communication, and instruction-following requirements with human and model-judge protocols.

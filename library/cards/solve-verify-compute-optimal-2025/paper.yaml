@@ -1,0 +1,110 @@
+id: solve-verify-compute-optimal-2025
+title: 'When To Solve, When To Verify: Compute-Optimal Problem Solving and Generative Verification for LLM Reasoning'
+year: 2025
+venue: COLM 2025
+authors:
+- Nishad Singhi
+- Hritik Bansal
+- Arian Hosseini
+- Aditya Grover
+- Kai-Wei Chang
+- Marcus Rohrbach
+- Anna Rohrbach
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2504.01005
+  arxiv: https://arxiv.org/abs/2504.01005
+  venue: null
+  code: https://github.com/nishadsinghi/sc-genrm-scaling
+  data: https://huggingface.co/sc-genrm-scaling
+  project: null
+  huggingface: https://huggingface.co/sc-genrm-scaling
+  doi: https://doi.org/10.48550/arXiv.2504.01005
+data_object:
+  prompt_source: MATH, AIME24, AIME25, and GPQA-Diamond problems as supported by the official repository.
+  trace_author: Solution generator and generative reward model.
+  answer_format: Solution chains, verification chains, Yes/No verdict probabilities, and selected final answers.
+  process_fields:
+  - problem
+  - solution
+  - verification_chain
+  - verdict
+  - verification_score
+  - solution_count
+  - verification_count
+  - final_answer
+  environment_or_substrate: Repeated-sampling and generative-verification inference.
+  verifier_or_reward: Generative reward model scored by the probability of the Yes verdict.
+  terminal_predicate: Benchmark success rate / answer correctness.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct, Qwen2.5-7B-Instruct, Llama-3.3-70B-Instruct, and QwQ-32B configurations reported by the
+    paper.
+  teacher: GPT-4o for synthetic verifier rationales in GenRM fine-tuning.
+  generator: Solution LLM and a prompted or fine-tuned generative verifier.
+  filtering_rule: For fine-tuning, retain synthetic verifications whose verdict matches ground-truth correctness and balance
+    Yes/No labels.
+  sampling_protocol: Sample S solutions and V verification chains per solution; average verifier scores and select the best
+    solution, or use self-consistency with V=0.
+  rollout_count: Paper varies solution and verification counts across compute budgets; repository examples expose both controls.
+  temperature: 0.7
+  inference_budget: Total solution plus verification FLOPs per problem.
+  optimizer_or_scaffold: Compute-matched analysis and fitted inference scaling laws for solution and verification counts.
+audit:
+  source_mixture: COLM 2025 paper, arXiv record, and official GitHub repository.
+  split: MATH subsets, AIME24, AIME25, and GPQA-Diamond as reported; see paper and repository for exact sizes.
+  decontamination: Not separately claimed in the primary source.
+  license: Official repository reports Apache-2.0; confirm model and benchmark terms before reuse.
+  lineage: https://arxiv.org/abs/2504.01005
+  known_failure_modes:
+  - underbudgeted_verification
+  - verifier_error
+  - correlated_samples
+  - cost_model_mismatch
+  citation_status: verified
+  confidence: high
+  notes: Title, COLM status, authors, affiliations, code, model/data links, method, and evidence checked against the official
+    paper and repository on 2026-07-20.
+inclusion_reason: It directly studies how a fixed inference budget should be divided between solution exploration and generative
+  verification.
+related: []
+tags:
+- test-time-compute
+- generative-verification
+- self-consistency
+- scaling-laws
+- compute-allocation
+status: verified
+one_line_summary: The paper shows when solution sampling beats generative verification and fits scaling laws for allocating
+  compute between them.
+reading_priority: essential
+paper_type: Compute-optimal test-time scaling analysis for solving and generative verification
+best_for: Readers designing a verifier-aware inference budget for mathematical or scientific reasoning.
+confidence: high
+why_it_matters: It measures verification cost rather than treating a stronger verifier as free, yielding an actionable solve-versus-verify
+  allocation rule.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv/COLM paper and public sc-genrm-scaling repository were checked; repository links to released models
+    and data.
+category_ids:
+- scaling_rlvr_test_time_compute

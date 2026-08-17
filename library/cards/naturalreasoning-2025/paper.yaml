@@ -1,0 +1,129 @@
+id: naturalreasoning-2025
+title: 'NATURALREASONING: Reasoning in the Wild with 2.8M Challenging Questions'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Weizhe Yuan
+- Jane Yu
+- Song Jiang
+- Karthik Padthe
+- Yang Li
+- Dong Wang
+- Ilia Kulikov
+- Kyunghyun Cho
+- Yuandong Tian
+- Jason E Weston
+- Xian Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English STEM, economics, social science, and other natural-domain reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.13124
+  arxiv: https://arxiv.org/abs/2502.13124
+  code: null
+  data: https://huggingface.co/datasets/facebook/natural_reasoning
+  project: null
+  huggingface: https://huggingface.co/datasets/facebook/natural_reasoning
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: seed concepts expanded into diverse, difficult natural questions across many disciplines
+  trace_author: Llama-3.3-70B-Instruct and other named teacher models write long responses
+  answer_format: question, reference_answer, and a list of response and response_model pairs
+  process_fields:
+  - question
+  - reference_answer
+  - and a list of response and response_model pairs
+  environment_or_substrate: English STEM, economics, social science, and other natural-domain reasoning
+  verifier_or_reward: question-quality judgments, reference-answer checks, reward-model scoring, and self-reward filtering
+  terminal_predicate: Retain records only after question-quality judgments, reference-answer checks, reward-model scoring,
+    and self-reward filtering.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: Llama-3.3-70B-Instruct and other named teacher models write long responses
+  generator: NATURALREASONING scales domain-diverse question generation, attaches reference answers and named teacher responses,
+    and exposes those records for distillation or self-training.
+  filtering_rule: question-quality judgments, reference-answer checks, reward-model scoring, and self-reward filtering
+  sampling_protocol: seed concepts expanded into diverse, difficult natural questions across many disciplines
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: reasoning SFT, knowledge distillation, and filtered self-training
+audit:
+  source_mixture: seed concepts expanded into diverse, difficult natural questions across many disciplines
+  split: 'Official release scale: 2.8 million questions with reference answers and teacher responses; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: CC-BY-NC-4.0
+  lineage: seed concepts expanded into diverse, difficult natural questions across many disciplines -> Llama-3.3-70B-Instruct
+    and other named teacher models write long responses -> question-quality judgments, reference-answer checks, reward-model
+    scoring, and self-reward filtering -> NATURALREASONING -> reasoning SFT, knowledge distillation, and filtered self-training
+  known_failure_modes:
+  - reference answers and reward-model scores can accept fluent but unsupported reasoning
+  - synthetic expansion may reproduce teacher biases or uneven domain coverage
+  citation_status: verified
+  confidence: high
+  notes: The full 25-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: NATURALREASONING is a public Track 01 object containing question, reference_answer, and a list of response
+  and response_model pairs and is explicitly consumed by reasoning SFT, knowledge distillation, and filtered self-training.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2502.13124
+- primary-link-checked
+status: verified
+one_line_summary: NATURALREASONING scales domain-diverse question generation, attaches reference answers and named teacher
+  responses, and exposes those records for distillation or self-training.
+why_it_matters: Open reasoning supervision is concentrated in math and code, so students see too few difficult questions from
+  ordinary scientific and social domains.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: reasoning SFT, knowledge distillation, and filtered self-training
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English STEM, economics, social science, and other natural-domain reasoning
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 2001 downloads and 579 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: CC-BY-NC-4.0.'
+  selection_eligible: true
+  year_impact_threshold: 2

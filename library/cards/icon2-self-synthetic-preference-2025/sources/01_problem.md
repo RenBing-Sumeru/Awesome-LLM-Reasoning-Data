@@ -1,0 +1,3 @@
+Preference datasets are expensive because common construction pipelines begin with fixed instructions, sample many candidate responses, and then ask a reward model or judge to find a usable chosen-rejected pair. Those choices can mismatch the target model and spend most computation on stochastic candidates that will be discarded.
+
+ICON2 asks whether a model can construct tailored preference records from its own representation space. It replaces external sampling-and-ranking with two linked decisions: select self-generated instructions that match an internal preference direction, then directly generate a positive and a negative response for that same direction.

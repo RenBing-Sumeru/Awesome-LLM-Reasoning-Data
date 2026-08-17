@@ -1,0 +1,5 @@
+- 应将论文中的来源混合表与官方预训练、后训练集合一起阅读；一个已报告的模型阶段本身不是来源 manifest。
+- 应将数学/代码/约束 verifier 与 Qwen3 32B 聊天 judge 分开，因为它们的错误模式和审计要求不同。
+- 应将 decon 结果视为已披露过滤流程的证据，而不是零泄漏保证。
+- 复现前应固定模型、数据集和 manifest 的 revision，并检查来源级许可证链。
+- 本卡片只属于 Track 12：它的核心价值是披露质量和明确 unknown，而不是 Track 8 的 scaling attribution。

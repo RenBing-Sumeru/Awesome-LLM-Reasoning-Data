@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:07:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "代码生成研究中的常用指标，第三方常测试御三家",
+    "updated_at": "2026-07-15T12:07:00Z"
+  }
+}

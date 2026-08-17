@@ -1,0 +1,97 @@
+id: researchqa-scholarly-qa-2025
+title: 'ResearchQA: Evaluating Scholarly Question Answering at Scale Across 75 Fields with Survey-Mined Questions and Rubrics'
+year: 2026
+venue: TACL
+authors:
+- Li S. Yifei
+- Allen Chang
+- Chaitanya Malaviya
+- Mark Yatskar
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- science
+- scholarly_qa
+- cross_domain
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.00496
+  arxiv: https://arxiv.org/abs/2509.00496
+  code: https://github.com/realliyifei/ResearchQA
+  data: https://huggingface.co/datasets/realliyifei/ResearchQA
+  project: https://researchqa.cylumn.com/
+  huggingface: https://huggingface.co/datasets/realliyifei/ResearchQA
+  doi: https://doi.org/10.1162/TACL.a.732
+  venue: https://doi.org/10.1162/TACL.a.732
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Survey article sections
+  trace_author: Survey mining and PhD annotators
+  answer_format: Question, rubric item, answer, citation, score
+  process_fields:
+  - question
+  - rubric
+  - citation
+  - answer
+  - score
+  environment_or_substrate: Multi-field scholarly question answering
+  verifier_or_reward: Rubric coverage evaluation
+  terminal_predicate: Answer covers query-specific scholarly criteria
+recipe_metadata:
+  base_model: Parametric and retrieval-augmented systems
+  teacher: 31 PhD annotators
+  generator: Survey-mined queries and rubrics
+  filtering_rule: 75 research fields
+  sampling_protocol: 21K queries and 160K rubric items
+  rollout_count: null
+  temperature: null
+  inference_budget: Survey-grounded answer context
+  optimizer_or_scaffold: Head-to-head rubric coverage
+audit:
+  source_mixture: Official arXiv and Hugging Face release
+  split: Consult data card
+  decontamination: Survey content may overlap with model training
+  license: Consult data card
+  lineage: https://huggingface.co/datasets/realliyifei/ResearchQA
+  known_failure_modes:
+  - Coverage does not guarantee correct citation support.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked.
+inclusion_reason: ResearchQA scales expert-like scholarly evaluation by mining surveys into question-specific rubrics.
+related: []
+tags:
+- scholarly_qa
+- rubric
+- science
+one_line_summary: ResearchQA turns surveys from 75 fields into 21K scholarly queries and 160K evaluation rubrics.
+why_it_matters: It exposes citation, limitation, and comparison gaps in scholarly answers across disciplines.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and data checked.
+category_ids:
+- judgment_rubric_domain_expert_data

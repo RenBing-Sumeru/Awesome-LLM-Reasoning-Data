@@ -1,0 +1,9 @@
+TTI 的核心贡献是把 interaction horizon 同时作为 curriculum 与 data-selection variable：当前 Gemma 3 12B policy 在线 rollout 网页任务，terminal success 在 episode 层面进行筛选，被选中 episode 内的 action steps 再成为 cross-entropy behavior-cloning targets。虽然论文把该方法放在 online RL 框架下并称为 online STaR，但公开实现的更新是 positive-only filtered behavior cloning，而不是 policy-gradient RLVR。
+
+监督契约分为两个层级。在 episode 层面，任务成功 reward 为 1，失败为 0；代码只保留非空且 `trajectory_reward > 0` 的 trajectories，并丢弃以 `ANSWER [N/A]` 结束的记录。在 state-action 层面，`TrajectoryStepDataset` 将每条保留 episode 展平成 processed observation messages 与当前 policy action text 的配对。因此，terminal feedback 负责选择整条 episode，却不标注哪些中间步骤有帮助、有害，或只是被成功结果所容忍。
+
+两套反馈来源是 mixed contract，不能互换。WebArena 使用 task-specific ground-truth evaluators；公开 task rows 包含 URL、string 或 program/HTML evaluation specifications。这类 programmatic/environmental verifier 能检查最终任务状态，却看不到每一步 action 的因果质量。WebVoyager 使用 prompted multimodal success judge，根据 task、final response 和 screenshots 作判断。论文指定 Gemma 3 27B，并报告其相对 WebArena ground truth 的 accuracy 为 88.9%，但未披露 class balance、calibration 或 false-positive/false-negative rates。因此，该数字只支持论文对 success detector 的检查，不能推出所有经 judge 接受的 episodes 都没有错误。
+
+horizon curriculum 从 10 次交互开始，以乘法方式逐步增加到 30。replay buffer 保留成功 trajectories，并提高新近经验的权重；公开 trainer 在 subsampling 时，以 `alpha=0.5` 混合 linear recency weights 和 inverse web-domain-frequency weights。由此，训练数据分布同时受 horizon、current-policy competence、evaluator decisions、domain frequency 和 replay age 影响。
+
+最接近的 decision boundary 是论文自身对“thinking”与“doing”的区分：提高每步 reasoning effort 或加入 prompted `check-again` pass，并不等同于获取新的 environment observations。相对于固定 long-horizon 的 online baseline，TTI 改变了长轨迹进入收集和训练的时机。其面向数据的变化在于把 horizon curriculum、terminal-success filter 和 replay-weighted state-action imitation 结合起来；browser actions、chain-of-thought prompting、binary outcome evaluation 与 behavior cloning 本身则是为 interaction-scaling 问题重新组合的已有组件。

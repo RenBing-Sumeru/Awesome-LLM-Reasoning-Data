@@ -1,0 +1,2 @@
+
+论文首先用 sample-and-evaluate query 形式化 inference-time alignment：对一个 prompt，算法可以从 πref 采样候选，并查询每个候选的 policy likelihood 与 imperfect reward ŕ，而 true reward (r^⋆) 在选择时不可见。BoN 只按 ŕ 取最大值；InferenceTimePessimism 则以 χ²-regularized response distribution 为目标，其未归一化权重为 πref(y|x) · relu(β^{-1}(ŕ(x,y)-λ(x)))，先从候选中估计 normalizer λ，再通过 rejection sampling 选出回答。核心机制是把候选预算 (N) 与 regularization β 分离：(N) 控制近似精度和计算量，β 控制对 reward-model error 的悲观程度。实验中的反馈契约是 mixed：四个标量 reward model 驱动选择；GSM8K、MMLU 与 MATH 用答案正确性做程序化评测；AlpacaEval-2.0 则由 GPT-4o-mini 给出比较判断。

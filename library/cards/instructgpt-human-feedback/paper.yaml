@@ -1,0 +1,118 @@
+id: instructgpt-human-feedback
+title: Training language models to follow instructions with human feedback
+year: 2022
+venue: NeurIPS 2022
+authors:
+- Long Ouyang
+- Jeff Wu
+- Xu Jiang
+- Diogo Almeida
+- Carroll L. Wainwright
+- Pamela Mishkin
+- Chong Zhang
+- Sandhini Agarwal
+- Katarina Slama
+- Alex Ray
+- John Schulman
+- Jacob Hilton
+- Fraser Kelton
+- Luke Miller
+- Maddie Simens
+- Amanda Askell
+- Peter Welinder
+- Paul Christiano
+- Jan Leike
+- Ryan Lowe
+source_role:
+- construction_recipe
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains: &id001
+- instruction-following
+- alignment
+- human-feedback
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2203.02155
+  arxiv: https://arxiv.org/abs/2203.02155
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2203.02155
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The paper describes labeler-written and API-submitted prompts, labeler demonstrations, rankings of model
+    outputs, and reward-model scores used in a policy-optimization stage.
+  trace_author: unknown
+  answer_format: unknown
+  process_fields: null
+  environment_or_substrate: null
+  verifier_or_reward: It first fine-tunes on demonstrations, then learns a reward model from ranked outputs, and then optimizes
+    the supervised policy with that learned reward signal.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single released training recipe.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: The official paper distinguishes prompt sourcing, human demonstration collection, pairwise ranking
+    collection, reward-model fitting, and reinforcement-learning optimization. Those objects should not be collapsed into
+    one prompt-answer table.
+audit:
+  source_mixture: Official primary paper and only paper-linked official artifacts listed above.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Primary source: https://arxiv.org/abs/2203.02155'
+  known_failure_modes:
+  - The study does not release a complete reusable training corpus. Its human-preference distribution, labeler protocols,
+    reward-model behavior, and transfer to verifiable reasoning must not be assumed from headline results.
+  citation_status: verified
+  confidence: high
+  notes: Editorial routing and audit notes are distinguished from paper facts in the Card sections.
+inclusion_reason: 'Track0 routing value: InstructGPT separates demonstrations, human rankings, reward modeling, and policy
+  optimization into a durable data lineage for instruction-following alignment.'
+related: []
+tags: *id001
+one_line: InstructGPT separates demonstrations, human rankings, reward modeling, and policy optimization into a durable data
+  lineage for instruction-following alignment.
+one_line_summary: InstructGPT separates demonstrations, human rankings, reward modeling, and policy optimization into a durable
+  data lineage for instruction-following alignment.
+why_it_matters: It first fine-tunes on demonstrations, then learns a reward model from ranked outputs, and then optimizes
+  the supervised policy with that learned reward signal. Route next to Preference and Reward Feedback Data for feedback objects,
+  Instruction, Demonstration, and Rationale Data for demonstrations, and Training Usage and Optimization Objectives for the
+  learning stages.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary source verified; optional facts remain null or unknown.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧱 Instruction / rationale / preference lineages

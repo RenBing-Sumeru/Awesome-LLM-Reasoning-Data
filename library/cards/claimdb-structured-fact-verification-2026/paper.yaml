@@ -1,0 +1,97 @@
+id: claimdb-structured-fact-verification-2026
+title: 'ClaimDB: A Fact Verification Benchmark over Large Structured Data'
+year: 2026
+venue: ACL 2026
+authors:
+- Michael Theologitis
+- Preetam Prabhu Srikar Dammu
+- Chirag Shah
+- Dan Suciu
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- factuality
+- structured_data
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.14698
+  arxiv: https://arxiv.org/abs/2601.14698
+  code: https://claimdb.github.io
+  data: https://huggingface.co/datasets/michaeltheologitis/claimdb
+  project: https://claimdb.github.io
+  huggingface: https://huggingface.co/datasets/michaeltheologitis/claimdb
+  doi: https://doi.org/10.48550/arXiv.2601.14698
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Claims grounded in real relational databases.
+  trace_author: Database-backed executable evidence and three-way verification labels.
+  answer_format: Claim, database, executable evidence, and entailed, contradicted, or insufficient-evidence label.
+  process_fields:
+  - claim
+  - database
+  - evidence
+  - label
+  environment_or_substrate: Large structured databases requiring program execution.
+  verifier_or_reward: Database execution and three-way fact-verification label.
+  terminal_predicate: The predicted label agrees with the evidence returned by the database.
+recipe_metadata:
+  base_model: Proprietary and open language models evaluated on programmatic verification.
+  teacher: Real databases and benchmark annotation protocol.
+  generator: Compose claims with evidence over multi-table databases.
+  filtering_rule: Retain claims whose labels can be established from the released database evidence.
+  sampling_protocol: 51,369 training claims across 80 databases plus public and private tests.
+  rollout_count: null
+  temperature: null
+  inference_budget: Record database version, execution environment, and abstention policy.
+  optimizer_or_scaffold: Executable query and analysis-program verification.
+audit:
+  source_mixture: Official ACL announcement, arXiv paper, project site, and Hugging Face dataset release.
+  split: 51,369 train claims; 1,000 public and 999 private test claims.
+  decontamination: Public databases and claims may enter model corpora; use the hidden-label test for comparison.
+  license: Consult the official Hugging Face dataset card for the current release terms.
+  lineage: https://huggingface.co/datasets/michaeltheologitis/claimdb
+  known_failure_modes:
+  - Models may fail to generate correct executable programs
+  - and abstention remains difficult.
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, ACL acceptance, project, and data release checked on official pages.
+inclusion_reason: ClaimDB evaluates fact verification where evidence must be computed from large relational data.
+related: []
+tags:
+- fact_verification
+- structured_data
+- executable_reasoning
+- benchmark
+one_line_summary: ClaimDB turns large-database fact verification into executable reasoning with three-way evidence labels.
+why_it_matters: It exposes failures that text-only factuality benchmarks cannot reveal.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and release pages checked.
+category_ids:
+- judgment_rubric_domain_expert_data

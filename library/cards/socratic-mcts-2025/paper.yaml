@@ -1,0 +1,118 @@
+id: socratic-mcts-2025
+title: 'Socratic-MCTS: Test-Time Visual Reasoning by Asking the Right Questions'
+year: 2025
+venue: EMNLP 2025
+authors:
+- David Acuna
+- Ximing Lu
+- Jaehun Jung
+- Hyunwoo Kim
+- Amlan Kar
+- Sanja Fidler
+- Yejin Choi
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- trajectory_value
+domains:
+- multimodal
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1230/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1230
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1230/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Visual reasoning benchmark questions, including MMMU-PRO; no new training dataset or search-trace release
+    was verified.
+  trace_author: InternVL2.5-78B
+  answer_format: A frozen InternVL2.5-78B generates subquestions and subanswers in an MCTS tree, with internal-agreement weighted
+    votes used to choose a final answer.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The contract is internal LLM agreement/voting rather than an executable external verifier; exact scoring
+    and judge calibration are paper-defined.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: InternVL2.5-78B
+  teacher: unknown
+  generator: At test time Socratic MCTS searches over decomposed visual-reasoning questions, selecting continuations with
+    agreement-aware tree statistics.
+  filtering_rule: The contract is internal LLM agreement/voting rather than an executable external verifier; exact scoring
+    and judge calibration are paper-defined.
+  sampling_protocol: The paper reports 40 MCTS iterations on MMMU-PRO and 20 on other evaluated sets. No official code, data,
+    or trace-log release was confirmed.
+  rollout_count: 40 iterations on MMMU-PRO; 20 on other reported sets
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: At test time Socratic MCTS searches over decomposed visual-reasoning questions, selecting continuations
+    with agreement-aware tree statistics.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Visual reasoning benchmark questions, including MMMU-PRO; no new training dataset or search-trace release was verified.
+    -> A frozen InternVL2.5-78B generates subquestions and subanswers in an MCTS tree, with internal-agreement weighted votes
+    used to choose a final answer. -> The contract is internal LLM agreement/voting rather than an executable external verifier;
+    exact scoring and judge calibration are paper-defined. -> reported final selection or training use. Raw lineage records
+    are not established as released.
+  known_failure_modes:
+  - Internal agreement can be confidently wrong; test-time trees, node scores, and benchmark-specific prompts are unavailable
+    for replay.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It broadens Track 5 beyond text math: visual search traces need node-level prompts, answers, agreement
+  scores, and stopping data to be auditable.'
+related: []
+tags:
+- mcts
+- visual-reasoning
+- subquestions
+- test-time-search
+- agreement
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A test-time MCTS that makes subquestion generation and agreement-weighted visual reasoning explicit.
+why_it_matters: 'It broadens Track 5 beyond text math: visual search traces need node-level prompts, answers, agreement scores,
+  and stopping data to be auditable.'
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

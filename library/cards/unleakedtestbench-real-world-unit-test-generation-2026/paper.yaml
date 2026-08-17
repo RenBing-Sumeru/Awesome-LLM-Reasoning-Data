@@ -1,0 +1,122 @@
+id: unleakedtestbench-real-world-unit-test-generation-2026
+title: Benchmarking LLMs for Unit Test Generation from Real-World Functions
+year: 2026
+venue: ACM Transactions on Software Engineering and Methodology
+authors:
+- Dong Huang
+- Jie M. Zhang
+- Mark Harman
+- Qianru Zhang
+- Mingzhe Du
+- See-Kiong Ng
+source_role:
+- benchmark
+- data_release
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- software-testing
+training_use:
+- evaluation
+- audit
+- sft
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.00408
+  arxiv: https://arxiv.org/abs/2508.00408
+  code: https://github.com/huangd1999/UnLeakedTestBench
+  data: https://github.com/huangd1999/UnLeakedTestBench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1145/3805043
+  venue: https://discovery.ucl.ac.uk/id/eprint/10223971/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real Python functions, recoverable dependencies, and original developer tests from public repositories.
+  trace_author: Benchmark curators collect and reconstruct function-level test tasks; LLMs produce candidate pytest tests
+    at evaluation time.
+  answer_format: Function, dependency context, generated pytest code, execution outcomes, coverage, and mutation results.
+  process_fields:
+  - function
+  - dependencies
+  - original_tests
+  - generated_tests
+  - execution_outcome
+  - statement_coverage
+  - branch_coverage
+  - mutation_score
+  environment_or_substrate: Isolated Python and pytest environments reconstructed from repository commits and dependency locks.
+  verifier_or_reward: Executability, original-test oracle, statement and branch coverage, and mutation score.
+  terminal_predicate: A candidate test executes against the target function and receives the benchmark's accuracy, coverage,
+    and mutation measurements.
+recipe_metadata:
+  base_model: Evaluated LLMs generate tests; no single training base model is prescribed.
+  teacher: Original developer tests act as independent oracle material.
+  generator: Extract real functions and dependencies, apply executability, complexity, and leakage controls, then evaluate
+    generated pytest tests.
+  filtering_rule: Remove functions that cannot run in isolation or lack a stable oracle; select complex functions with temporal,
+    duplicate-content, and test-visibility leakage controls.
+  sampling_protocol: ULT contains 3,909 real function-level test-generation tasks paired with a leaked control benchmark,
+    PLT.
+  rollout_count: null
+  temperature: null
+  inference_budget: Repository commits, dependency locks, test timeout, mutation tool, and the target model's knowledge cutoff
+    must be fixed.
+  optimizer_or_scaffold: Isolated execution and multi-metric scoring; the paper is a benchmark rather than an optimization
+    method.
+audit:
+  source_mixture: arXiv paper, ACM TOSEM in-press record at UCL Discovery, and official UnLeakedTestBench repository.
+  split: ULT has 3,909 real function-level tasks; PLT is its leaked counterpart. Consult the official repository for task
+    files and execution setup.
+  decontamination: Temporal, duplicate-content, and test-visibility controls reduce but cannot prove absence of training exposure;
+    re-audit for each model's cutoff.
+  license: Consult the official repository and upstream project licences; the full ground-truth tests are withheld to preserve
+    benchmark integrity.
+  lineage: https://github.com/huangd1999/UnLeakedTestBench
+  known_failure_modes:
+  - Leakage controls cannot prove every target model has never seen a function or test.
+  - Python function-level tasks omit repository state, services, concurrency, and other languages.
+  - Coverage and mutation scores depend on environment reconstruction and mutant choices.
+  citation_status: verified
+  confidence: high
+  notes: The official arXiv paper, author repository, and UCL Discovery record were checked. UCL lists ACM TOSEM 2026 as in
+    press. The official repository is the data and code entry point; no author-run Hugging Face dataset was found, and ground-truth
+    tests are intentionally withheld.
+inclusion_reason: UnLeakedTestBench supplies executable, leakage-controlled real-code test-generation tasks with multi-metric
+  programmatic evaluation and a paired contamination control.
+related: []
+tags:
+- unit-test-generation
+- benchmark-contamination
+- python
+- mutation-testing
+- executable-evaluation
+- tosem-2026
+one_line_summary: UnLeakedTestBench pairs 3,909 leakage-controlled real Python functions with a leaked counterpart and execution,
+  coverage, and mutation metrics to separate test-generation generalization from memorization.
+why_it_matters: It exposes when strong test-generation scores come from leaked benchmark knowledge rather than robust testing
+  of real, complex functions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper, in-press UCL TOSEM record, and author repository were checked; no official Hugging Face dataset
+    was located.
+category_ids:
+- programmatically_verifiable_outcome_data

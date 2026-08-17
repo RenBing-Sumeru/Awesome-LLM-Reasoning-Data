@@ -1,0 +1,256 @@
+id: ui-tars-2025
+title: 'UI-TARS: Pioneering Automated GUI Interaction with Native Agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yujia Qin
+- Yining Ye
+- Junjie Fang
+- Haoming Wang
+- Shihao Liang
+- Shizuo Tian
+- Junda Zhang
+- Jiahao Li
+- Yunxin Li
+- Shijue Huang
+- Wanjun Zhong
+- Kuanye Li
+- Jiale Yang
+- Yu Miao
+- Woyu Lin
+- Longxiang Liu
+- Xu Jiang
+- Qianli Ma
+- Jingyu Li
+- Xiaojun Xiao
+- Kai Cai
+- Chuang Li
+- Yaowei Zheng
+- Chaolin Jin
+- Chen Li
+- Xiao Zhou
+- Minchao Wang
+- Haoli Chen
+- Zhaojian Li
+- Haihua Yang
+- Haifeng Liu
+- Feng Lin
+- Tao Peng
+- Xin Liu
+- Guang Shi
+source_role:
+- model_report
+- agent_environment
+- construction_recipe
+- process_supervision
+- verifier_reward
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- step_level
+- state_action_level
+- full_episode
+- pairwise_preference
+domains:
+- computer_use
+- tool_use
+- agentic_systems
+- visual_reasoning
+- chain_of_thought
+training_use:
+- sft
+- preference_learning
+- agent_training
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.12326
+  arxiv: https://arxiv.org/abs/2501.12326
+  code: https://github.com/bytedance/UI-TARS
+  data: null
+  project: https://github.com/bytedance/UI-TARS
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2501.12326
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Prompts span reviewed PC tasks, human/model goals for online virtual-PC rollouts, standardized tasks from
+    MM-Mind2Web, GUIAct, AITW, AITZ, AndroidControl, GUI-Odyssey, and AMEX, plus GUI tutorials initially from MINT and OmniCorpus.
+    Counts, versions, URLs/apps, dates, language shares, licenses, and prompt provenance are unknown.
+  trace_author: Humans demonstrate PC tasks; latest UI-TARS checkpoints act in hundreds of virtual PCs; undisclosed VLMs synthesize
+    descriptions, captions, and action-conditioned thoughts; sampled candidates support thought bootstrapping; humans identify
+    first errors and provide corrections/recovery. Identities, proportions, prompts, temperatures, and edit history are mostly
+    unknown.
+  answer_format: The agent consumes instruction, history, and screenshot, then emits thought and normalized GUI action. Records
+    can include screenshot element metadata, captions, QA, observations, thoughts, actions, next state, heuristic/VLM signals,
+    first-error labels, corrected/recovery targets, and corrected-versus-erroneous preference pairs. Serialized schema is
+    closed.
+  process_fields:
+  - task_instruction
+  - instruction_author_or_generator
+  - screenshot
+  - interaction_history
+  - observation
+  - element_type
+  - element_depth
+  - element_bounding_box
+  - element_text
+  - element_description
+  - dense_caption
+  - state_transition_caption
+  - visual_question_answer
+  - set_of_mark_annotation
+  - thought
+  - normalized_action
+  - next_gui_state
+  - platform_or_operating_system
+  - application_or_website
+  - heuristic_filter_result
+  - vlm_quality_score
+  - human_review_result
+  - first_error_step
+  - corrected_thought
+  - corrected_action
+  - recovery_thought
+  - recovery_action
+  - preferred_and_rejected_action
+  - terminal_action
+  environment_or_substrate: Screenshot-only interaction spans websites, desktop apps, operating systems, mobile emulators,
+    and hundreds of virtual PCs. A unified schema covers click, drag, scroll, type, wait, finish, user escalation, hotkeys,
+    double/right click, and mobile navigation. VM images, OS/app/browser versions, network snapshots, wrappers, reset/security
+    policy, and allocation are unknown.
+  verifier_or_reward: Construction uses heuristic removal of anomalous/redundant/no-state-change actions, VLM scoring with
+    undisclosed threshold, partial human first-error review with valid-prefix retention, action correctness for thought selection,
+    and human correction-versus-error DPO pairs. Benchmark environment success is evaluation feedback, not established as
+    the training reward. Rules, models, prompts, thresholds, calibration, agreement, beta, and margins are unknown.
+  terminal_predicate: '`Finished()` signals completion; `CallUser()` requests intervention for login/authentication. Evaluation
+    classifies CallUser-ending or no-Finished traces as infeasible. OSWorld uses 15/50-step budgets, creating tension between
+    safe escalation and benchmark success.'
+recipe_metadata:
+  base_model: Qwen2-VL backbone with 2B, 7B, and 72B variants. Exact checkpoints, architecture changes, tokenizer, vision
+    resolution, context implementation, and parameter accounting are unknown.
+  teacher: Undisclosed VLMs synthesize perception text and thoughts; an undisclosed LLM filters/rewrites tutorials; current
+    UI-TARS checkpoints generate online traces; humans demonstrate and correct/recover actions. Identities, prompts, decoding,
+    weights, calibration, and volumes are unknown.
+  generator: Automated crawling, human exploration/demonstration, VLM perception text, action-conditioned rationales, multi-candidate
+    thought bootstrapping, model-generated goals, and latest-checkpoint VM rollouts generate data. Mixture, counts, candidates,
+    temperature, seeds, and round policies are unknown.
+  filtering_rule: Tutorials use fastText, LLM filtering, URL/LSH deduplication, ad/noise removal, and rewriting. Online traces
+    use heuristics, VLM thresholding, and partial human first-error review with suffix truncation. Cross-source dedup, thresholds,
+    yields, errors, and benchmark exclusions are unknown.
+  sampling_protocol: Training mixture and annealing weights are unknown. DPO uses corrected-versus-erroneous reflection pairs.
+    Evaluation uses three OSWorld runs, randomized AndroidWorld parameters, and System-1/System-2 Best-of-N at N=1,16,64;
+    these do not establish training sampling.
+  rollout_count: Multiple online rounds use hundreds of virtual PCs, but environments, rounds, tasks, attempts, retained traces,
+    steps, and tokens per round are unknown. OSWorld run/step counts are evaluation settings.
+  temperature: unknown
+  inference_budget: A 32K context example motivates limiting prior observations. OSWorld uses 15/50 steps; System-1/2 uses
+    Best-of-N 1/16/64. Context allocation, screenshot resolution, tokens, temperature, latency, and selector implementation
+    are unknown.
+  optimizer_or_scaffold: 'About 50B tokens span three phases: continual pretraining on all described data except reflection
+    tuning at constant undisclosed LR; annealing on high-quality perception/grounding/action/reflection subsets to UI-TARS-SFT;
+    and DPO on human correction-versus-error online pairs using SFT as reference to UI-TARS-DPO. Batches, optimizer, LR values,
+    schedules, stage tokens, losses, beta, compute, and selection are unknown.'
+audit:
+  source_mixture: Roughly 50B total tokens and source families are disclosed without per-source/stage proportions, counts,
+    dates, languages, platforms, synthetic/human or online/offline shares, licenses, or item lineage.
+  split: No global manifest exists. Mind2Web, AndroidControl, and GUI-Odyssey are explicitly in-domain because training includes
+    corresponding data. AndroidWorld is described as out-of-domain, but membership hashes, near-duplicate audits, revisions,
+    and exclusions are absent. OSWorld overlap is incomplete.
+  decontamination: URL/LSH dedup applies only to tutorial data. No cross-source screenshot/task semantic audit, benchmark-item
+    lineage, or source-version pin establishes cleanliness. 'No corresponding AndroidWorld training data' is narrower than
+    full decontamination.
+  license: The paper-linked repository URL is verified, but repository contents/license and weights were not independently
+    audited. No training corpus, trajectory/reflection dataset, source-rights ledger, or reusable environment release is verified.
+    Rights for crawled screenshots, apps/sites, source datasets, human/synthetic annotations, and VM traces are unknown.
+  lineage: High-level lineage runs from screenshot/tutorial/action sources through parsing/synthesis/filtering to continual
+    pretraining/annealing, then VM rollout → heuristic/VLM/human filtering → correction/recovery → SFT/DPO. Immutable source,
+    generator, filter, environment, round, and checkpoint IDs are unavailable.
+  known_failure_modes:
+  - Action-conditioned thought generation can rationalize the visible target action rather than capture causal reasoning.
+  - Thought bootstrapping selects by action correctness but omits candidate count, rejected thoughts, ties, and calibration.
+  - Valid-prefix retention discards post-error behavior and biases online data toward pre-failure states.
+  - Heuristic/VLM filtering can produce false accepts/rejects; rules, thresholds, and audits are closed.
+  - CallUser can be the safe action for authentication yet is scored as infeasible.
+  - In-domain benchmark data prevents clean unseen-generalization interpretation.
+  - AndroidWorld out-of-domain status lacks item-level or semantic decontamination proof; OSWorld overlap is incomplete.
+  - System 2 can underperform System 1 at Best-of-1 due to irrelevant thoughts, hallucination, or fixation; larger-N gains
+    use extra compute/selection.
+  - DPO pair counts, beta, margins, calibration, and correction-pattern overfitting are unknown.
+  - No reusable corpus, trajectories, preference pairs, verifier, environment snapshot, or complete license ledger was verified.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv abstract and full paper HTML were read on 2026-07-24. The paper-linked repository URL is verified,
+    but its contents, license, weights, and data were not independently audited. UI-TARS-2 is a related follow-up, not a duplicate.
+inclusion_reason: A high-value construction report linking GUI perception, demonstrations, synthetic thoughts, online VM collection,
+  filtering, human corrections, reflective SFT, and action-level DPO, with major mixture, rights, split, verifier, and environment
+  gaps.
+related:
+- ui-tars-2-2025
+tags:
+- bytedance
+- ui-tars
+- native-gui-agent
+- computer-use
+- qwen2-vl
+- screenshot-only
+- action-schema
+- perception-data
+- human-demonstrations
+- synthetic-thoughts
+- thought-bootstrapping
+- online-rollouts
+- virtual-machines
+- reflection-tuning
+- agent-dpo
+- system-1-system-2
+- best-of-n
+- training-data-disclosure
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line: A 50B-token screenshot-native GUI-agent pipeline combining normalized action traces, synthetic thoughts, online
+  VM rollouts, human corrections, reflective SFT, and action-level DPO.
+one_line_summary: UI-TARS discloses a roughly 50B-token native GUI-agent pipeline spanning screenshot perception, normalized
+  demonstrations, synthetic thoughts, online VM rollouts, human corrections, annealed SFT, and action-level DPO, while leaving
+  mixture, rights, split, and verifier details incomplete.
+why_it_matters: It provides concrete construction lineage for computer-use reasoning traces and preference pairs while showing
+  why in-domain benchmarks, opaque filters, terminal contracts, and unreleased environments require audit.
+card: null
+needs:
+- 'needs_data: per-source/stage manifests, counts/token shares, versions, human/synthetic and online/offline ratios, screenshots,
+  demonstrations, trajectories, error labels, corrections, recovery traces, and preference pairs'
+- 'needs_verifier: heuristic definitions, VLM identities/prompts/thresholds/calibration, action selector, human-review sampling/agreement,
+  and DPO pair quality'
+- 'needs_metadata: exact backbones, architecture, context/image policy, teachers, rollouts, candidates, temperature, optimizer,
+  learning rates, schedules, batches, compute, stage tokens, beta, and selection'
+- 'needs_audit: global membership, OSWorld/AndroidWorld overlap, screenshot/task dedup, environment pins, privacy/security,
+  terminal contract, and System-1/2 scaffold attribution'
+- 'needs_license: rights and reuse terms for screenshots, sites/apps, MINT, OmniCorpus, action datasets, human/synthetic annotations,
+  VM traces, corrections/preferences, environments, code, and weights'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: No exact duplicate found. Official arXiv and full paper HTML were verified. Repository URL is paper-linked but contents/license/releases
+    were not independently audited; data and Hugging Face remain null.

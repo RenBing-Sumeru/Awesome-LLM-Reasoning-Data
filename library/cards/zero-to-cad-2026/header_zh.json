@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Zero-to-CAD 用工具代理生成、执行、修复并验证近百万条可编辑的 CAD 构造程序。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "CAD 程序生成监督微调与代理训练",
+  "confidence_ch": "高",
+  "authors_ch": "Mohammadmehdi Ataei、Farzaneh Askari、Kamal Rahimi Malekshan、Pradeep Kumar Jayaraman",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

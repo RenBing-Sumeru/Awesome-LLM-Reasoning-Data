@@ -1,0 +1,122 @@
+id: mobile-agent-v3-gui-automation-2025
+title: 'Mobile-Agent-v3: Fundamental Agents for GUI Automation'
+year: 2025
+venue: arXiv preprint
+authors:
+- Jiabo Ye
+- Xi Zhang
+- Haiyang Xu
+- Haowei Liu
+- Junyang Wang
+- Zhaoqing Zhu
+- Ziwei Zheng
+- Feiyu Gao
+- Junjie Cao
+- Zhengxi Lu
+- Jitong Liao
+- Qi Zheng
+- Fei Huang
+- Jingren Zhou
+- Ming Yan
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- gui-agents
+- mobile-agents
+- trajectory-generation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.15144
+  arxiv: https://arxiv.org/abs/2508.15144
+  doi: https://doi.org/10.48550/arXiv.2508.15144
+  code: https://github.com/X-PLUG/MobileAgent
+  data: https://github.com/X-PLUG/MobileAgent
+  project: https://github.com/X-PLUG/MobileAgent
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official Mobile-Agent-v3 paper and X-PLUG repository
+  trace_author: Tongyi Lab authors, GUI-Owl models, and self-evolving GUI-agent runs
+  answer_format: GUI-Owl model traces, GUI automation tasks, environment states, actions, and trajectory production records
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: GUI automation framework with cloud virtual environments and self-evolving trajectories
+  verifier_or_reward: GUI automation task success checks and framework evaluation
+  terminal_predicate: GUI automation task success checks and framework evaluation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: Mobile-Agent-v3 authors and trajectory generation pipeline
+  generator: Mobile-Agent-v3 GUI automation framework
+  filtering_rule: distinguish GUI-Owl model, framework, and trajectory-production artifacts
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2508.15144; https://arxiv.org/html/2508.15144; https://github.com/X-PLUG/MobileAgent
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2508.15144'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: pin GUI-Owl model release, framework revision, cloud environment assumptions, and trajectory pipeline artifacts.
+inclusion_reason: it contributes a GUI automation flywheel with trajectory generation
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- gui-agents
+- mobile-agents
+- trajectory-generation
+one_line: Mobile-Agent-v3 builds fundamental GUI agents and trajectory generation for GUI automation.
+why_it_matters: it contributes a GUI automation flywheel with trajectory generation
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Mobile-Agent-v3 builds fundamental GUI agents and trajectory generation for GUI automation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv and X-PLUG repository verify title, authors, Tongyi Lab institution, and code/model entry.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 63
+  primary_category_id: environment_agent_trajectory_data

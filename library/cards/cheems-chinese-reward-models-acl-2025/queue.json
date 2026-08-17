@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提出高质量中文奖励模型人工偏好数据和本土化评测",
+    "updated_at": "2026-07-13T04:45:32Z"
+  },
+  "updated_at": "2026-07-13T04:45:32Z"
+}

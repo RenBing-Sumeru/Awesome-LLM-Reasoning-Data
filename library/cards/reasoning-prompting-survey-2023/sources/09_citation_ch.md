@@ -1,0 +1,1 @@
+Qiao, Shuofei；Ou, Yixin；Zhang, Ningyu；Chen, Xiang；Yao, Yunzhi；Deng, Shumin；Tan, Chuanqi；Huang, Fei；Chen, Huajun。2023。Reasoning with Language Model Prompting: A Survey。ACL 2023 Long Papers，5368–5393 页。官方记录、摘要、PDF、DOI 和链接的资源集合： https://aclanthology.org/2023.acl-long.294/

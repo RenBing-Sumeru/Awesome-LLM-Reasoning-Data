@@ -1,0 +1,223 @@
+id: tgpo-2025
+title: 'TGPO: Tree-Guided Preference Optimization for Robust Web Agent Reinforcement Learning'
+year: 2025
+venue: ICASSP 2026
+authors:
+- Ziyuan Chen
+- Zhenghui Zhao
+- Zhangye Han
+- Miancan Liu
+- Xianhang Ye
+- Yiqing Li
+- Hongbo Min
+- Jinkui Ren
+- Xiantao Zhang
+- Guitao Cao
+source_role:
+- construction_recipe
+- verifier_reward
+- process_supervision
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+- process_reward
+- pairwise_preference
+domains:
+- web_agents
+- browser_automation
+- ecommerce
+- gui_interaction
+training_use:
+- sft
+- preference_learning
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/pdf/2509.14172v2
+  arxiv: https://arxiv.org/abs/2509.14172v2
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1109/ICASSP55912.2026.11464574
+  venue: https://www.cmsworkshops.com/ICASSP2026/view_paper.php?PaperNum=4073&bare=1
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The reported task pools are 300 Online-Mind2Web tasks from 136 real websites and 50 self-constructed C-WebShop
+    Chinese e-commerce tasks from Taobao. Exact task IDs, prompts, train/dev/test partitions, source snapshots, collection
+    dates, and rights manifests are not disclosed.
+  trace_author: An agent executes each task multiple times to produce offline trajectories with terminal success/failure labels,
+    but the trajectory-generating policy, model revision, number of attempts, decoding settings, human intervention, and retained/dropped
+    counts are unknown.
+  answer_format: A full web episode contains a user instruction and a sequence of web states and actions. States are encoded
+    as screenshots or DOM trees; actions include click, type, and scroll. TGPO derives a merged state tree, per-branch process
+    rewards, cumulative branch rewards, and node-local chosen/rejected action pairs. No serialized record schema is released.
+  process_fields:
+  - user_instruction
+  - web_state_screenshot_or_dom
+  - action
+  - state_transition
+  - trajectory_success_or_failure
+  - standardized_url
+  - image_hash
+  - effective_action_sequence
+  - merged_state_node
+  - action_edge
+  - subgoal_reward
+  - redundancy_penalty
+  - action_accuracy_reward
+  - format_reward
+  - cumulative_branch_reward
+  - chosen_action
+  - rejected_action
+  - dynamic_pair_weight
+  environment_or_substrate: Browser-use with Qwen3-14B is reported for Online-Mind2Web, and SeeAct with Qwen2.5-VL-72B for
+    C-WebShop. Browser/environment commits, browser version, live-site snapshots, session state, credentials, reset procedures,
+    observation serialization, and replay containers are unknown.
+  verifier_or_reward: 'Mixed process feedback: shortest-path subgoal progress; a -1 cycle penalty; a +1 action-effectiveness
+    reward judged by an undisclosed VLM; a +1 action-format reward; and an empirical subgoal coefficient alpha in [2,5]. Cumulative
+    branch rewards rank actions into chosen/rejected pairs, and TGPO weights each pair by its reward gap divided by within-node
+    reward standard deviation.'
+  terminal_predicate: Trajectories carry success/failure labels and experiments report success rate, but exact per-site success
+    assertions, timeout or maximum-step rules, failure taxonomy, and stop-reason records are unknown.
+  preference_record: At a merged state node, two divergent action branches are ordered by cumulative reward to form a chosen/rejected
+    action pair; a reward-gap/within-node-variance weight prioritizes high-impact decisions. Tie handling, zero-variance safeguards,
+    minimum gap, pair sampling, and pair counts are unknown.
+  provenance: Named task pool -> repeated agent trajectories -> heuristic state merging -> trajectory tree -> four-component
+    process reward -> cumulative branch ranking -> weighted chosen/rejected state-action pair -> SFT-initialized TGPO update.
+    No record-level lineage manifest is released.
+recipe_metadata:
+  base_model: Qwen3-14B in Browser-use for Online-Mind2Web and Qwen2.5-VL-72B in SeeAct for C-WebShop; exact model repository
+    revisions and checksums are not disclosed.
+  teacher: null
+  generator: unknown; the paper states that each task is executed multiple times to collect trajectories but does not identify
+    a trajectory-generating checkpoint or policy.
+  prompt_or_task_source: Online-Mind2Web (300 tasks, 136 websites) and self-constructed C-WebShop (50 Chinese Taobao e-commerce
+    tasks). Exact task files and split manifest are unavailable.
+  sampling_protocol: Multiple executions per task produce success/failure trajectories. Attempt count, decoding strategy,
+    temperature, top-p, maximum steps, concurrency, browser/session reset, and seeds are not disclosed.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  search_or_scaffold: Merge semantically equivalent states into a tree when standardized URLs match and either post-URL-change
+    effective action sequences agree or image hashes match; use the tree for backtracking, cycle detection, shortest-path
+    progress, and action-branch comparison.
+  filtering_rule: Tree analysis identifies redundant/cyclic actions and converts divergent action branches into reward-ranked
+    pairs. Exact removal policy, tie rule, minimum reward gap, balancing, deduplication, and success/failure retention policy
+    are not disclosed.
+  selection_threshold: unknown
+  reward_parameters: R_red=-1 on detected cycles else 0; R_acc=+1 for VLM-judged effective action else 0; R_format=+1 for
+    valid syntax else 0; total R=R_acc+R_format+R_red+alpha*R_subgoal; alpha is reported only as an empirical range 2-5.
+  optimizer_or_scaffold: TGPO and DPO start from SFT-trained models. The TGPO loss uses a DPO-style policy/reference-policy
+    log-ratio margin and a |r_w-r_l|/sigma(R_s) pair weight. All compared RL methods are trained for 2 epochs on 8 H20 GPUs
+    with learning rate 1e-5; optimizer type, beta, batch size, scheduler, sequence length, and checkpoint selection are unknown.
+  random_seed: null
+  split_protocol: unknown
+audit:
+  source_mixture: The paper names 300 Online-Mind2Web tasks from 136 real websites and 50 C-WebShop Chinese e-commerce tasks
+    from Taobao. It does not provide task IDs, source snapshots, collection dates, raw trajectory counts, success/failure
+    counts, tree sizes, preference-pair counts, or mixture weights.
+  split: unknown; no train/validation/test map or evidence that evaluation tasks are disjoint from SFT, tree construction,
+    and preference optimization is reported.
+  decontamination: unknown; no task-level or semantic overlap audit, benchmark contamination analysis, model pretraining overlap
+    check, or live-site leakage control is reported.
+  benchmark_overlap: unknown; the paper does not disclose whether the same Online-Mind2Web/C-WebShop tasks or near-duplicates
+    appear across trajectory generation, SFT, preference training, checkpoint selection, and final evaluation.
+  license: No code, data, model, checkpoint, trajectory, tree, preference-pair, or C-WebShop license was verified. Access
+    to the paper through arXiv/IEEE does not establish reuse rights for website content, screenshots/DOM, Taobao tasks, trajectories,
+    or model outputs.
+  lineage: Task -> repeated web-agent episode with terminal label -> merged state tree -> process-reward components -> cumulative
+    branch reward -> weighted chosen/rejected action pair -> TGPO update. Record-level task IDs, generator/model versions,
+    timestamps, environment state, verifier decisions, pair IDs, optimizer steps, and checkpoint lineage are unavailable.
+  release_version: The metadata is anchored to arXiv v2 (2025-09-19). ArXiv v1 was posted 2025-09-17, and the formal ICASSP
+    2026 record/DOI appeared in 2026. No official v1-to-v2 change log, tagged code/data release, or statement pinning the
+    IEEE proceeding to a public source snapshot was verified.
+  successful_and_failed_sample_retention: The method requires successful and failed trajectories to expose cross-trajectory
+    conflicts, but exact retention/drop rules, class balance, rejected traces, tie cases, and before/after counts are not
+    disclosed or released.
+  privacy_or_consent: unknown; the paper uses tasks from real websites and Taobao but does not disclose personal-data handling,
+    credential policy, consent, terms-of-service review, screenshot/DOM redaction, or retention safeguards.
+  known_failure_modes:
+  - URL, action-sequence, and image-hash state matching can falsely merge behaviorally different pages or fail to merge equivalent
+    pages, changing conflict detection, cycle detection, shortest paths, rewards, and preference labels.
+  - The action-effectiveness reward depends on an undisclosed VLM judge; false positives or negatives can become high-weight
+    preferences, and no calibration, adjudication, attack, or robustness study is reported.
+  - Shortest-path subgoal rewards may prefer fewer interactions over necessary verification, recovery, accessibility, or safety
+    steps, especially when goal-state distance is only approximated from collected trees.
+  - A format-valid action can earn reward without being semantically useful, while a cycle penalty can punish intentional
+    revisiting or recovery if state identity is coarse.
+  - Reward-gap dynamic weighting can amplify verifier or merge errors at nodes that appear high variance.
+  - Real websites, browser state, authentication, cookies, page content, and UI structure drift over time; no immutable environment
+    snapshot or replay package is released.
+  - Missing train/evaluation splits and task IDs prevent auditing task reuse, near-duplicate leakage, and benchmark overfitting.
+  - No released raw trajectories, trees, pair records, code, checkpoints, or exact hyperparameters permit independent verification
+    of label-conflict rates or reported gains.
+  citation_status: verified
+  confidence: medium
+  notes: Identity, arXiv v2, ICASSP 2026 venue, IEEE DOI, method equations, named datasets/models/environments, reported task
+    counts, training epochs/GPUs/learning rate, and paper results were checked against official sources on 2026-07-20. Reuse
+    confidence remains medium because core data, verifier, split, environment, implementation, license, and replay artifacts
+    are absent. The assigned ID/year preserves first public release (2025) even though the formal venue is ICASSP 2026.
+inclusion_reason: 'TGPO turns repeated web-agent episodes into an explicit derived training object: a merged state-transition
+  tree whose environmental, programmatic, and VLM-judged process signals produce weighted state-action preference pairs. It
+  is valuable for the atlas as a concrete offline agent-trajectory construction recipe, while its missing split, verifier,
+  trajectory, environment, and license artifacts make replay and training reuse unsafe without further release.'
+related:
+- webagent-r1-2025
+- webrl-2025
+- online-mind2web-2025
+tags:
+- tgpo
+- web-agent
+- offline-agent-rl
+- tree-structured-trajectories
+- process-reward
+- state-action-preferences
+- dynamic-preference-weighting
+- browser-use
+- seeact
+- online-mind2web
+- c-webshop
+- release-audit
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: TGPO merges repeated web-agent episodes into state trees and derives mixed process rewards plus weighted
+  action preferences for offline training, but releases no trajectories, trees, verifier decisions, split manifest, environment
+  snapshot, code, or license.
+why_it_matters: 'It shows how terminal web-task outcomes can be converted into state-action supervision without manual step
+  labels, while exposing a central audit boundary: heuristic state merging and an undisclosed VLM judge can silently determine
+  the preference data, and current official artifacts do not support replay or safe training reuse.'
+status: partial
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv v2, IEEE DOI/Xplore metadata, and ICASSP 2026 program entry are verified. Artifact verification establishes
+    the paper and venue record only; no official code, data, model, checkpoint, project, Hugging Face release, environment
+    snapshot, or replay package was verified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release: raw successful and failed trajectories, merged trees, process-reward outputs, chosen/rejected pairs, C-WebShop
+  tasks, checkpoints, code, evaluation scripts, and immutable environment snapshots'
+- 'needs_metadata: task IDs, exact train/dev/test map, generator/model revisions, rollout counts, state/action serialization,
+  browser/session resets, timestamps, retention counts, tree/pair counts, and record-level lineage'
+- 'needs_verifier: URL canonicalization, image-hash algorithm, effective-action equivalence, cycle logic, action grammar,
+  terminal success predicates, VLM identity/prompt/calibration, alpha per run, beta, tie handling, and zero-variance safeguards'
+- 'needs_audit: benchmark/task overlap, decontamination, reward/merge false-positive and false-negative analysis, live-site
+  drift, privacy/consent, terms of service, and source/content rights'
+- 'needs_reproduction: optimizer, batch size, scheduler, sequence and step limits, decoding parameters, random seeds, checkpoint-selection
+  policy, exact repository/source snapshot, and independent rerun'
+card: null

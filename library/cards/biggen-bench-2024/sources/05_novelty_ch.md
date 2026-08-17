@@ -1,0 +1,1 @@
+已有基线是共享标准的开放生成或偏好评测。BiGGen 的变化是让每个实例携带定制 rubric、参考答案和能力标签。质量信号包括 CC-BY-SA-4.0 的 HF 数据集、GitHub 评测脚本、任务文档和 leaderboard。并不新的是 LLM-as-judge 与 Likert rubric。复用前要检查 evaluator model 选择、rubric 泄漏、分数校准、许可继承、prompt 敏感性，以及这些分数是否只用于评测而不是直接作 reward 训练。

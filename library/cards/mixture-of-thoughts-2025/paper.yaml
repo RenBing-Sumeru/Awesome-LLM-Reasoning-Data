@@ -1,0 +1,135 @@
+id: mixture-of-thoughts-2025
+title: Phi-4-reasoning Technical Report
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Marah Abdin
+- Sahaj Agarwal
+- Ahmed Awadallah
+- Vidhisha Balachandran
+- Harkirat Behl
+- Lingjiao Chen
+- Gustavo de Rosa
+- Suriya Gunasekar
+- Mojan Javaheripi
+- Neel Joshi
+- Piero Kauffmann
+- Arindam Mitra
+- Besmira Nushi
+- Dimitris Papailiopoulos
+- Guoqing Zheng
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English mathematics, coding, science, planning, and algorithmic reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.21318
+  arxiv: https://arxiv.org/abs/2504.21318
+  code: null
+  data: https://huggingface.co/datasets/open-r1/Mixture-of-Thoughts
+  project: null
+  huggingface: https://huggingface.co/datasets/open-r1/Mixture-of-Thoughts
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: curated teachable prompts from public reasoning sources
+  trace_author: o3-mini and related reasoning teachers generate detailed demonstrations
+  answer_format: messages, token count, and source
+  process_fields:
+  - messages
+  - token count
+  - and source
+  environment_or_substrate: English mathematics, coding, science, planning, and algorithmic reasoning
+  verifier_or_reward: prompt teachability, complexity and diversity selection, source-level checks, and downstream training
+    evaluation
+  terminal_predicate: Retain records only after prompt teachability, complexity and diversity selection, source-level checks,
+    and downstream training evaluation.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: o3-mini and related reasoning teachers generate detailed demonstrations
+  generator: Mixture-of-Thoughts selects teachable prompts and packages teacher reasoning from several domains into a source-labeled
+    conversation mixture.
+  filtering_rule: prompt teachability, complexity and diversity selection, source-level checks, and downstream training evaluation
+  sampling_protocol: curated teachable prompts from public reasoning sources
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: Phi-4-reasoning SFT
+audit:
+  source_mixture: curated teachable prompts from public reasoning sources
+  split: 'Official release scale: 349,317 reasoning traces across mathematics, code, and science; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: no aggregate license is declared; every upstream source term must be preserved
+  lineage: curated teachable prompts from public reasoning sources -> o3-mini and related reasoning teachers generate detailed
+    demonstrations -> prompt teachability, complexity and diversity selection, source-level checks, and downstream training
+    evaluation -> Mixture-of-Thoughts -> Phi-4-reasoning SFT
+  known_failure_modes:
+  - the closed teacher prevents complete regeneration and may embed unverifiable reasoning errors
+  - the aggregate release lacks one top-level license, so source-level reuse rights differ
+  citation_status: verified
+  confidence: high
+  notes: The full 33-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: Mixture-of-Thoughts is a public Track 01 object containing messages, token count, and source and is explicitly
+  consumed by Phi-4-reasoning SFT.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2504.21318
+- primary-link-checked
+status: verified
+one_line_summary: Mixture-of-Thoughts selects teachable prompts and packages teacher reasoning from several domains into a
+  source-labeled conversation mixture.
+why_it_matters: Reasoning distillation often maximizes trace volume without selecting prompts at a level where a student can
+  learn, causing expensive demonstrations to add little usable supervision.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: Phi-4-reasoning SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English mathematics, coding, science, planning, and algorithmic reasoning
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 9396 downloads and 325 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: no aggregate license
+      is declared; every upstream source term must be preserved.'
+  selection_eligible: true
+  year_impact_threshold: 2

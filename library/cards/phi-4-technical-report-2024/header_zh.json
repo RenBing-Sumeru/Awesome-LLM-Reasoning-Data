@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Phi-4 报告了以合成数据为主的预训练与后训练：约 50 类数据集、约 400B 合成 token、8B SFT token，以及由任务 oracle 辅助的 DPO；但未发布数据、完整血缘或 verifier 细节。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型技术报告与数据披露账本",
+  "best_for_ch": "审计合成数据、SFT 与 DPO 披露边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Marah Abdin 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "OS-Harm以150个OSWorld Ubuntu VM任务评测计算机使用智能体的误用、prompt injection与模型失当，并用GPT-4.1 AER输出安全/完成判定及首个违规步骤，但judge召回不足与50/51条注入配置漂移限制了复现。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "计算机使用智能体安全基准与轨迹审计研究",
+  "best_for_ch": "研究桌面智能体安全评测、轨迹judge、prompt injection与环境回放审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Thomas Kuntz, Agatha Duzan, Hao Zhao, Francesco Croce, Zico Kolter, Nicolas Flammarion, Maksym Andriushchenko",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-22T09:26:25Z"
+}

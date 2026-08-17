@@ -1,0 +1,3 @@
+Reflective Generative Form shares the backbone of a policy model and a lightweight self-supervised process-reward head. The policy produces several reasoning paths, while the additional head scores their steps and selects a path; the paper reports that the scoring head adds only a small number of parameters relative to the backbone.
+
+The scorer learns from final outcome rewards with dynamic filtering rather than requiring manually labeled process steps. This turns the model’s own on-policy trajectories into a training signal for selection and supplies low, medium, and high reasoning-effort modes at inference.

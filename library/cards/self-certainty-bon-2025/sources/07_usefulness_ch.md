@@ -1,0 +1,1 @@
+对于 rollout/search/test-time trace 轨道，这项工作提供了一个无需外部 judge 的 Best-of-N 选择记录模式。可复用记录应保留 prompt 与基准版本、生成器/checkpoint 版本、随机种子、temperature/top-p 与最大长度、全部候选回答、完整 token distribution 或可复算的分数摘要、抽取有效性与规范化答案、self-certainty 分数与排名、Borda p 与逐候选票数、各答案总票数、最终选中输出，以及可获得时的独立正确性标签。原始 self-certainty、答案频率共识、learned-reward 得分和可执行结果应分字段保存。这样可以比较选择器并审计校准，又不会把模型内生置信度误当作 verifier，也不会从基准成绩推断复用权利。

@@ -1,0 +1,3 @@
+ACL 于 2025 年 11 月正式出版的 EMNLP 2025 Industry Track 论文研究数学推理数据配方在统一训练 mixture 中的表现。数学推理数据研究常在"加入某语料后一个 benchmark 提升"时就把该语料称为"高质量",但这种判断把来源材料、teacher model、记录格式、过滤、混合权重、token budget、optimizer 与评估重叠混在一起。本文提出的是更窄的操作性问题:把不同候选数据放入同一工业式 mixture 后,哪些选择与合成配方会改善所得模型,哪些不会?
+
+研究同时覆盖预训练与 SFT 数据。候选对象包括抓取的数学文本、OCR 教材段落、教育化重写、蒸馏的问答推理 trace、围绕模型失败检索出的样本、LLM 增广问题,以及从教材抽取的 question-solution pair。它属于 Data Construction and Open Release Recipes,因为核心对象是从来源到训练 mixture 的构造策略及其负对照;它不是开放数据发布、逐记录 verifier 论文或通用 scaling law。论文与附录足以支持配方和结果分析,但 baseline corpus、构造记录、代码和运行 manifest 均不可得,因此本 Card 保持 L3 evidence 边界。benchmark delta 只是某个训练 mixture 的结果证据,不能证明其中记录天然正确、多样、许可清晰或未受污染。

@@ -1,0 +1,1 @@
+Earlier multimodal benchmarks usually score final answers or whole explanations. MPBench introduces earliest-error indices and error types under image-conditioned reasoning and requires judges to inspect both visual evidence and step context. The novelty is causal error localization in multimodal reasoning rather than merely adding an image field.

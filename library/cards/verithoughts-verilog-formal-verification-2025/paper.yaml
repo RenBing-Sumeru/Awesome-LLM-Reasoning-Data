@@ -1,0 +1,100 @@
+id: verithoughts-verilog-formal-verification-2025
+title: 'VeriThoughts: Enabling Automated Verilog Code Generation using Reasoning and Formal Verification'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks
+authors:
+- Yubo Wang
+- Yash Sharma
+- Hao Luo
+- Yingcong Chen
+- Prithviraj Sen
+- Sanjay Shakkottai
+- Swarup Bhunia
+source_role:
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- verilog
+- hardware-design
+- code-generation
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.20302
+  arxiv: https://arxiv.org/abs/2505.20302
+  code: https://github.com/wilyub/VeriThoughts
+  data: https://huggingface.co/datasets/wilyub/VeriThoughtsTrainSet
+  project: null
+  huggingface: https://huggingface.co/datasets/wilyub/VeriThoughtsTrainSet
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Verilog design problems and specifications.
+  trace_author: Model-generated reasoning and Verilog candidates filtered by formal verification.
+  answer_format: Reasoning trace, Verilog RTL, and verification feedback.
+  process_fields:
+  - prompt
+  - reasoning
+  - Verilog code
+  - formal result
+  environment_or_substrate: Verilog design and formal-verification tools.
+  verifier_or_reward: Formal verification.
+  terminal_predicate: The candidate RTL satisfies the released formal checks.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: Retain candidates passing the formal-verification procedure.
+  sampling_protocol: Consult the official training-set release.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official arXiv paper, author GitHub repository, and Hugging Face training-set release.
+  split: Consult the dataset card.
+  decontamination: Assess overlap with public Verilog repositories and benchmarks.
+  license: Consult the dataset card and repository license.
+  lineage: https://arxiv.org/abs/2505.20302
+  known_failure_modes:
+  - Formal checks cover the supplied specification, not all engineering requirements.
+  - The paper should be rechecked for any later archival venue.
+  citation_status: verified
+  confidence: high
+  notes: Authors, affiliation, code, and dataset were checked from the official sources.
+inclusion_reason: VeriThoughts 用形式验证反馈筛选 Verilog 推理与代码轨迹，面向可综合 RTL 生成。
+related: []
+tags:
+- verilog
+- formal-verification
+- hardware
+- '2025'
+one_line_summary: VeriThoughts filters Verilog reasoning-and-code traces with formal-verification feedback for synthesizable
+  RTL generation.
+why_it_matters: VeriThoughts filters Verilog reasoning-and-code traces with formal-verification feedback for synthesizable
+  RTL generation.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Authors, affiliation, code, and dataset were checked from the official sources.
+category_ids:
+- programmatically_verifiable_outcome_data

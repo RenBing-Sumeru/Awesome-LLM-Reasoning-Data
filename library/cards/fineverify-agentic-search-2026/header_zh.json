@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"FineVerify 将每条搜索轨迹按可检查的子问题逐项验证，再用聚合得分选择答案，从而提升轨迹扩展的有效性。","reading_priority_ch":"可读","paper_type_ch":"面向智能体搜索的细粒度测试时验证研究","best_for_ch":"设计多证据问答、网页搜索智能体与轨迹选择器的读者。","confidence_ch":"高","authors_ch":"James Xu Zhao、Hui Chen、Bryan Hooi、See-Kiong Ng（新加坡国立大学）","category_ids":["scaling_rlvr_test_time_compute"]}

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:48:29Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "数据量小、约半数内容由GPT-4扩增，不如Chatbot Arena or arena-hard",
+    "updated_at": "2026-07-14T19:48:29Z"
+  }
+}

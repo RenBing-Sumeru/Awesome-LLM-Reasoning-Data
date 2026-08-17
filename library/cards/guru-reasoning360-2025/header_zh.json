@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GURU 将约 68.49 万条候选过滤为 91,909 条六领域 RLVR 训练记录，并为不同领域配置规则、执行或模型验证奖励。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多领域 RLVR 数据发布与构建研究",
+  "best_for_ch": "适合构建、复现或审计跨领域强化学习推理数据与验证器契约的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jorge (Zhoujun) Cheng, Shibo Hao, Tianyang Liu, Fan Zhou, Yutao Xie, Feng Yao, Yuexin Bian, Nilabjo Dey, Yonghao Zhuang, Yuheng Zha, Yi Gu, Kun Zhou, Yuqi Wang, Yuan Li, Richard Fan, Jianshu She, Chengqian Gao, Abulhair Saparov, Taylor W. Killian, Haonan Li, Mikhail Yurochkin, Eric P. Xing, Zhengzhong Liu, Zhiting Hu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

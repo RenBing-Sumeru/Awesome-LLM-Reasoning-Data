@@ -1,0 +1,107 @@
+id: deepresearch-9k-deep-research-agent-2026
+title: 'DeepResearch-9K: A Challenging Benchmark Dataset of Deep-Research Agent'
+year: 2026
+venue: SIGIR 2026
+authors:
+- Tongzhou Wu
+- Yuhao Wang
+- Xinyu Ma
+- Xiuqiang He
+- Shuaiqiang Wang
+- Dawei Yin
+- Xiangyu Zhao
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- web-research
+- retrieval-agents
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/pdf/2603.01152
+  arxiv: https://arxiv.org/abs/2603.01152
+  code: https://github.com/Applied-Machine-Learning-Lab/SIGIR2026_DeepResearch-R1
+  data: https://huggingface.co/datasets/artillerywu/DeepResearch-9K
+  project: null
+  huggingface: https://huggingface.co/datasets/artillerywu/DeepResearch-9K
+  doi: https://doi.org/10.1145/3805712.3808597
+  venue: https://doi.org/10.1145/3805712.3808597
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Open-source multi-hop QA datasets transformed by a difficulty-scaled synthesis pipeline.
+  trace_author: Tongyi-DeepResearch-30B-A3B.
+  answer_format: Question, L1–L3 difficulty, interleaved reasoning, search-tool calls, tool responses, and verifiable final
+    answer.
+  process_fields:
+  - question
+  - difficulty
+  - think
+  - tool_call
+  - tool_response
+  - final_answer
+  environment_or_substrate: Multi-turn web search and deep-research interaction.
+  verifier_or_reward: Rule-based quality assurance and LLM-as-judge answer validation.
+  terminal_predicate: A verifiable final answer to the generated deep-research question.
+recipe_metadata:
+  base_model: Tongyi-DeepResearch-30B-A3B for trajectory collection; training backbones are documented in the SIGIR paper.
+  teacher: Tongyi-DeepResearch-30B-A3B plus LLM-as-judge validation.
+  generator: Entity extraction, progressive reasoning-chain construction, entity obfuscation, and rule-based quality assurance.
+  filtering_rule: Retain difficulty-calibrated questions and trajectories validated against verifiable answers.
+  sampling_protocol: Generate 3,000 instances per difficulty level from multi-hop QA seeds.
+  inference_budget: Pin the dataset and DeepResearch-R1 revisions used for reproduction.
+  optimizer_or_scaffold: Supervised fine-tuning and reinforcement learning in DeepResearch-R1.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: HotpotQA, 2WikiMultihopQA, and MuSiQue seed instances plus synthesized queries and teacher traces.
+  split: 9,000 questions across three L1–L3 difficulty levels; the paper reports 3,000 instances per level.
+  decontamination: The construction starts from public QA sources; target-benchmark overlap should be checked for each use.
+  license: The paper is CC-BY-NC-ND-4.0; verify dataset terms before redistribution.
+  lineage: SIGIR 2026 paper, official DeepResearch-R1 repository, and author dataset release.
+  known_failure_modes:
+  - Search trajectories can reflect teacher-model and search-engine behavior.
+  - Synthetic obfuscation may not match every real research workflow.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the SIGIR 2026 paper PDF, acceptance listing, author lab announcement, official code URL in the
+    paper, and author dataset release.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: DeepResearch-9K releases 9,000 difficulty-tiered web-research questions with teacher search traces, reasoning
+  chains, and verifiable answers.
+why_it_matters: It couples long-horizon retrieval traces with an explicit, controllable difficulty signal tied to search effort.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the SIGIR 2026 paper PDF, acceptance listing, author lab announcement, official code URL in the
+    paper, and author dataset release.
+category_ids:
+- process_trace_supervision_data

@@ -1,0 +1,5 @@
+- 时间线必须写清：arXiv v1 在 2025 年公开，正式发表 venue 是 ICASSP 2026；assigned ID 与 year 按首次公开时间确定。
+- 应对照阅读第 2.1–2.3 节与 Figure 1–2：重复 episode 先变成 merged state tree，四项 process reward 对分歧 branch 排序，每个 node 再产生加权 chosen/rejected action pair。
+- 四类信号不能混为一谈：shortest-path subgoal progress、`-1` cycle penalty、未披露 VLM 的 action effectiveness 与 action-format validity 具有不同的可靠性和可观测范围。
+- 规模与预算必须写准：来自 136 个网站的 300 个 Online-Mind2Web 任务，加 50 个 C-WebShop 任务；训练 2 epochs、使用 8 张 H20 GPU、learning rate 为 `1e-5`。task split 与 trajectory/pair 数量均未报告。
+- Table 1 与 Table 2 只能作为作者报告的系统证据，不能证明数据质量；复用前必须核验代码、数据、模型、环境、split、terminal check、VLM contract、license 和 replay artifact。

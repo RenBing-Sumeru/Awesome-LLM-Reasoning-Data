@@ -1,0 +1,117 @@
+id: video-mmmu-2025
+title: 'Video-MMMU: Evaluating Knowledge Acquisition from Multidisciplinary Professional Videos'
+year: 2026
+venue: ACL 2026 main / arXiv
+authors:
+- Kairui Hu
+- Penghao Wu
+- Fanyi Pu
+- Wang Xiao
+- Xiang Yue
+- Bo Li
+- Yuanhan Zhang
+- Ziwei Liu
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- video-reasoning
+- multimodal-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.13826
+  arxiv: https://arxiv.org/abs/2501.13826
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1281
+  code: https://github.com/EvolvingLMMs-Lab/VideoMMMU
+  data: https://huggingface.co/datasets/lmms-lab/VideoMMMU
+  project: https://videommmu.github.io/
+  huggingface: https://huggingface.co/datasets/lmms-lab/VideoMMMU
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1281/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate 300 expert-level educational videos across six disciplines and annotate 900 questions
+    aligned to Perception, Comprehension, and Adaptation.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose video identifiers or content, discipline and subject metadata, stage labels, questions,
+    answer options or answer targets, ground-truth answers, and model predictions.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: professional educational videos with optional transcript/audio settings and stage-aligned QA.
+  verifier_or_reward: answer-level ground truth determines question correctness; performance-gain metrics compare pre-video
+    or no-video baselines against video-conditioned answers.
+  terminal_predicate: correct answer under the official evaluator and input condition.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: NTU S-Lab and CMU authors curate videos, annotator-created QA, selected MMMU/MMMU-Pro adaptation questions for
+    several disciplines, domain-expert review, and model-assisted QA checks.
+  filtering_rule: Use only source-backed construction claims; pin video availability, dataset revision, transcript/audio policy,
+    and license before score reuse.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, frame sampling, transcript policy,
+    model context budget, and leaderboard date before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: multimodal_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, final ACL metadata, project links, dataset size, QA taxonomy,
+    and artifact links: https://aclanthology.org/2026.acl-long.1281/; https://arxiv.org/abs/2501.13826; https://arxiv.org/html/2501.13826;
+    https://videommmu.github.io/; https://github.com/EvolvingLMMs-Lab/VideoMMMU'
+  split: Public dataset revision, video availability, transcript/audio setting, answer format, and evaluator script version
+    should be pinned before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Artifact-level license and source-video redistribution constraints require review on the dataset and repository
+    pages.
+  lineage: 'Primary lead: https://arxiv.org/abs/2501.13826'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology supplies final title, author order, DOI, pages, month, venue, and abstract. The project page verifies
+    ACL 2026 Main plus code and dataset links. arXiv HTML verifies the 300-video, 900-question construction, three tracks,
+    six disciplines, annotation pipeline, and knowledge-gain framing. Hugging Face access timed out during this pass.
+inclusion_reason: Good lead for domain video reasoning rather than short clip recognition.
+related: []
+tags:
+- benchmark
+- multimodal_reasoning_benchmark
+- video-reasoning
+why_it_matters: Good lead for domain video reasoning rather than short clip recognition.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Video-MMMU exposes expert videos with perception, comprehension, and adaptation QA as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: medium
+  notes: ACL Anthology supplies final venue metadata; project and arXiv sources verify NTU S-Lab and CMU affiliations, code/data
+    links, benchmark size, QA taxonomy, and evaluation framing. The arXiv/project title says Multi-Discipline, while ACL uses
+    Multidisciplinary; this Card follows ACL. Hugging Face access timed out during this pass.
+category_ids:
+- benchmarks_evaluation_surfaces

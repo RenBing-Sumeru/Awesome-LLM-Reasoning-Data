@@ -1,0 +1,133 @@
+id: fineweb2
+title: 'FineWeb2: One Pipeline to Scale Them All -- Adapting Pre-Training Data Processing to Every Language'
+year: 2025
+venue: COLM 2025
+authors:
+- Guilherme Penedo
+- Hynek Kydlíček
+- Vinko Sabolčec
+- Bettina Messmer
+- Negar Foroutan
+- Amir Hossein Kargaran
+- Colin Raffel
+- Martin Jaggi
+- Leandro Von Werra
+- Thomas Wolf
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- multilingual-pretraining-data
+- data-curation
+- deduplication
+- data-provenance
+- reasoning-data
+training_use:
+- audit
+- unknown
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.20920
+  arxiv: https://arxiv.org/abs/2506.20920
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.20920
+  venue: https://openreview.net/forum?id=jnRBe6zatP
+  openreview: https://openreview.net/forum?id=jnRBe6zatP
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Web documents drawn from Common Crawl snapshots; the exact per-document provenance record must be checked
+    in the release artifacts.
+  trace_author: Not applicable; this is a pre-training-data curation pipeline rather than a rationale-trace corpus.
+  answer_format: A multilingual text corpus and its processing, training, and evaluation codebases.
+  process_fields:
+  - language adaptation
+  - filtering
+  - deduplication
+  - quality-aware rebalancing
+  - evaluation-task selection
+  environment_or_substrate: Nearly 100 Common Crawl snapshots, adapted across more than 1000 languages according to the official
+    arXiv abstract.
+  verifier_or_reward: Downstream evaluation tasks guide pipeline ablations; the paper does not define a reasoning-answer verifier
+    or reward model.
+  terminal_predicate: A language-adapted corpus passes the paper's selected evaluation protocol; exact release-level acceptance
+    criteria require the official code/data documentation.
+recipe_metadata:
+  base_model: Models used for pipeline ablations are described in the paper; a single universal base model is not the data
+    object's definition.
+  teacher: Not applicable.
+  generator: FineWeb-derived multilingual data-curation pipeline.
+  filtering_rule: Automatically adapted language-specific processing with filtering and deduplication; detailed thresholds
+    must be taken from the official paper or release materials.
+  sampling_protocol: Quality- and duplication-aware rebalancing is reported; exact sampling configuration is unknown from
+    the verified metadata used here.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Pre-training data curation and evaluation pipeline.
+audit:
+  source_mixture: Official arXiv record and official COLM OpenReview record.
+  split: The abstract describes evaluation-task selection and ablations over nine languages; a release split is unknown here.
+  decontamination: The official abstract reports filtering and deduplication but does not, in the verified metadata used for
+    this Card, establish benchmark-contamination results for every released document.
+  license: unknown
+  lineage: 'Primary source: https://arxiv.org/abs/2506.20920'
+  known_failure_modes:
+  - A multilingual pipeline does not by itself prove that all language-specific filters are equally effective.
+  - Corpus scale and document count do not establish provenance or licensing of every item.
+  - Downstream task improvements are not a substitute for contamination evidence on each benchmark.
+  citation_status: verified
+  confidence: high
+  notes: The official arXiv abstract reports nearly 100 Common Crawl snapshots, more than 1000 languages, a 20 TB and 5 billion-document
+    release, and accompanying pipeline, training, and evaluation codebases. Specific release URLs were not independently verified
+    for this Card and remain null.
+inclusion_reason: A recent, concrete curation pipeline that lets Track0 readers connect data provenance, filtering, deduplication,
+  language coverage, evaluation choice, and release documentation before moving to specialized data tracks.
+related:
+- common-pile-v0-1-2025
+- datasheets-for-datasets
+- towards-data-contamination-detection
+tags:
+- foundations-and-primers
+- multilingual-data
+- pretraining-data
+- data-curation
+- deduplication
+- provenance
+one_line: A multilingual data-curation pipeline whose audit value is showing that language coverage, filtering, deduplication,
+  rebalancing, and evaluation selection are linked design choices.
+why_it_matters: It gives Track0 a modern release-oriented example of why a reasoning-data reader must inspect construction
+  and audit evidence rather than treat a corpus size claim as a sufficient description.
+one_line_summary: A multilingual data-curation pipeline whose audit value is showing that language coverage, filtering, deduplication,
+  rebalancing, and evaluation selection are linked design choices.
+paper_type: Data release and construction recipe
+reading_priority: strong
+best_for: Readers building a vocabulary for data curation, multilingual corpus construction, provenance, filtering, deduplication,
+  and release auditing.
+confidence: high
+status: verified
+needs:
+- 'unknown: official code URL, official dataset URL, release license, release splits, and benchmark-contamination evidence'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv metadata and abstract were reviewed; official COLM OpenReview URL is recorded. Unverified artifact
+    URLs are null.
+category_ids:
+- foundations_and_primers
+track0_subfield: 📦 Data documentation / datasheets

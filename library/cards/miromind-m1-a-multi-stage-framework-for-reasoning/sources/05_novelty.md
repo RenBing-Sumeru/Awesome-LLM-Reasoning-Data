@@ -1,0 +1,1 @@
+Existing reasoning recipes often treat long-CoT SFT and one-shot RL as two black-box stages. MiroMind-M1 releases data for both and decomposes RL into a context-length curriculum with explicit repetition penalties. Its novelty lies in reproducible multi-stage policy optimization and the complete open stack; verifiable answers and SFT followed by RL are not themselves new.

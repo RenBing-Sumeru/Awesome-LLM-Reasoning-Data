@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "这项 ICML 2025 工作是一种树搜索加速器，接受过程奖励模型打分高于历史阈值的小模型思路，并用无损的大模型推测解码替换被拒绝的思路。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhihai Wang、Jie Wang、Jilai Pan、Xilin Xia、Huiling Zhen、Mingxuan Yuan、Jianye Hao、Feng Wu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

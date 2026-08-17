@@ -1,0 +1,16 @@
+{
+  "title": "Skill-Aware Data Selection and Fine-Tuning for Data-Efficient Reasoning Distillation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-short.49/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:42:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "按学生模型的薄弱技能选择教师推理轨迹，直接改变蒸馏数据的消费方式",
+    "updated_at": "2026-07-15T13:42:42Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该论文形式化刻画了 Best-of-N 在何时会对不完美的奖励模型过度优化，并提出以卡方正则化的拒绝采样器 InferenceTimePessimism，在数学、科学与指令遵循任务上评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Audrey Huang、Adam Block、Qinghua Liu、Nan Jiang、Akshay Krishnamurthy、Dylan J Foster",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

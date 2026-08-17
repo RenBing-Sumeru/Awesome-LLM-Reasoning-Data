@@ -1,0 +1,1 @@
+Injected errors may not represent the failures encountered after deployment, and positive-response quality depends on the source data. Benefits differ by task and error type. The paper does not release code or constructed preference pairs.

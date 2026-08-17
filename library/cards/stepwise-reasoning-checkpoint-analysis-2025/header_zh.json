@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SRCA 在推理步骤间探测 checkpoint 答案，以其聚类维持 PRM 引导搜索的多样性并扩展最终候选；但没有公开代码、轨迹或可重放选择账本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "测试时扩展、过程奖励模型与推理搜索方法研究",
+  "best_for_ch": "研究 rollout 搜索、测试时计算、过程奖励模型、推理轨迹中间状态和可复现性审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zezhong Wang、Xingshan Zeng、Weiwen Liu、Yufei Wang、Liangyou Li、Yasheng Wang、Lifeng Shang、Xin Jiang、Qun Liu、Kam-Fai Wong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

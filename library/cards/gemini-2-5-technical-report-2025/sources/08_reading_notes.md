@@ -1,0 +1,5 @@
+- Treat the report’s data modalities and post-training categories as a disclosure boundary, not as a released corpus or manifest.
+- Keep verifiable rewards and model-based generative rewards distinct from a released verifier, reward model, or calibrated feedback contract.
+- Record the named decontamination and memorization procedures as reported methods; do not infer their thresholds, coverage, or independent validity.
+- Preserve the distinction between stronger reported resilience than prior models and the report’s finding that Pro remains less resilient than Flash to its tested indirect prompt-injection attacks.
+- Compare this Card only within Track 12’s disclosure ledger; do not convert its capability or thinking-budget statements into Track 8 claims.

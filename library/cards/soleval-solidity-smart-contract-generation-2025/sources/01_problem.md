@@ -1,0 +1,3 @@
+Code-generation benchmarks mainly cover Python and Java and usually check only functional correctness. Solidity smart contracts additionally involve cross-contract calls, on-chain state, security vulnerabilities, and gas cost. An implementation that passes a few tests may remain vulnerable to reentrancy or be impractical because of excessive gas.
+
+SolEval constructs repository-level Solidity tasks combining real contract context, Foundry tests, Slither security analysis, and gas measurement. It jointly evaluates correctness, cost, and vulnerabilities, asking whether LLMs can generate executable, secure, and efficient contract code in Ethereum project environments.

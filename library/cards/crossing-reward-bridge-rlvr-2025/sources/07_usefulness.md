@@ -1,0 +1,1 @@
+Use it when tasks have reference answers but no safe exact matcher: build a separated exploration set, retain the complete answer–judgement record, train a verifier, and compare hard versus soft rewards with a fixed policy and rollout budget.

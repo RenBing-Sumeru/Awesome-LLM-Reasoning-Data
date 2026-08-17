@@ -1,0 +1,5 @@
+Medical diagnosis and treatment questions need reasoning that is not only fluent but factually grounded, because a plausible unsupported step can create life-critical errors. Existing medical CoT corpora are scarce, often generated without explicit factual guidance, and may filter only final outcomes without exposing why an explanation should be trusted.
+
+MedReason converts existing medical QA pairs into supervised rationales by mapping question and answer entities to PrimeKG, retrieving and pruning connecting paths, asking GPT-4o to write a path-guided explanation, and retaining it only when the explanation recovers the source answer. The direct release is 32,682 question-option-answer-reasoning records for SFT.
+
+L4 facts: Primary source arXiv 2504.00993v2, first released April 2025 as a preprint; the decision boundary is an open rationale dataset rather than a medical model or benchmark alone; the atlas object is a JSONL QA record with reasoning paths and step-by-step explanation; the official 115,474,386-byte release, actual record, schema, scale, source mixture, Apache-2.0 tag, generation code, model consumers, and audit gaps were checked on 2026-07-14.

@@ -1,0 +1,6 @@
+The primary source is a seven-page official xAI model card last updated on 2025-09-19. It directly supports the broad source-category, filtering, SFT/RL-feedback, safety-mitigation, and evaluation statements in this Card. The official launch announcement independently supports large-scale RL, end-to-end tool-use RL, unified reasoning/non-reasoning weights, 2M-token context, and the stated product behavior.
+
+Table 1 reports, for reasoning/non-reasoning respectively, refusal answer rates of 0.00/0.00, user-jailbreak answer rates of 0.00/0.00, system-jailbreak answer rates of 0.00/0.01, AgentHarm answer rates of 0.08/0.10, and AgentDojo attack-success rates of 0.00/0.03. Table 2 reports MASK dishonesty rates of 0.47/0.63, internal soft-bias averages of 0.79/0.89, and sycophancy rates of 0.10/0.13. Table 3 reports a MakeMeSay win rate of 0.12, BioLP-Bench accuracy of 39.0, VCT accuracy of 54.5, WMDP Bio/Chem/Cyber accuracies of 85.2/77.5/81.4, and CyBench unguided success of 30.0.
+
+These are source-reported, configuration-specific evaluation results. They are not evidence of released training data, a calibrated reward model, an independently reproducible deployment, or a general safety guarantee.
+

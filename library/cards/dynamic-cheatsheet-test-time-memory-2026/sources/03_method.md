@@ -1,0 +1,3 @@
+The paper evaluates cumulative curation and retrieval-and-synthesis variants. A queried model first consults the external memory, generates an answer with any useful strategy or code, and then performs a curation step that retains concise transferable information instead of the full chain of thought.
+
+The reported systems use Claude 3.5 Sonnet and GPT-4o on AIME, Game of 24, equation balancing, GPQA-Diamond, and MMLU-Pro. The test-time consumer is the memory controller: it allocates calls to retrieval, solving, evaluation-like reflection, and memory maintenance while preserving compatibility with black-box APIs.

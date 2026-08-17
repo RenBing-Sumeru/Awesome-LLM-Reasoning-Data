@@ -1,0 +1,93 @@
+id: hiersva-a-data-synthesis-pipeline-dataset-and-benchmark-for-llm-driven-hierarchical-hard
+title: 'HierSVA: A Data Synthesis Pipeline, Dataset, and Benchmark for LLM-Driven Hierarchical Hardware Formal Verification'
+year: 2026
+venue: arXiv
+authors:
+- Maohua Nie
+- Jiang Zhu
+- Jingqun Zhang
+- Zhichen Zeng
+- Jiayi Wang
+- Sibo Zhang
+- Jialin Wang
+- C. -J. Richard Shi
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.13706
+  arxiv: https://arxiv.org/abs/2606.13706
+  code: https://github.com/HierSVAAnon/HierSVACodeAndArtifacts
+  data: https://huggingface.co/datasets/AnonymousHierSVA/HierSVA
+  project: null
+  huggingface: https://huggingface.co/datasets/AnonymousHierSVA/HierSVA
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Dataset authors and the released construction pipeline.
+  answer_format: Task input, candidate output, and the released verification surface.
+  process_fields:
+  - task
+  - candidate output
+  - verifier result
+  environment_or_substrate: The official released execution or verification environment.
+  verifier_or_reward: The paper's published executable or rule-based verifier.
+  terminal_predicate: The candidate output satisfies the released verification contract.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: The released verifier or execution environment.
+  generator: The authors' released construction pipeline.
+  filtering_rule: Use the official release and its documented acceptance rules.
+  sampling_protocol: Use the official split and version.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Programmatically verified outcome data.
+audit:
+  source_mixture: Official paper, candidate data release, and any official code link cited in the card.
+  split: Use the official release split.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
+  license: Check the official data and upstream-source terms before reuse.
+  lineage: https://huggingface.co/datasets/AnonymousHierSVA/HierSVA
+  known_failure_modes:
+  - Passing a released verifier does not establish behavior outside its coverage.
+  - Public tasks can overlap with downstream model training data.
+  citation_status: verified
+  confidence: medium
+  notes: The official arXiv paper explicitly identifies the author code-and-artifacts repository and author-released Hugging
+    Face dataset.
+inclusion_reason: The released resource exposes a reusable programmatic outcome-verification surface.
+related: []
+tags:
+- programmatic-verification
+one_line_summary: One-sentence position:** A six-axis SVA benchmark with 342 hierarchical RTL modules and 28 deep bug pairs.
+why_it_matters: It exposes a reproducible terminal outcome check rather than only a textual reference.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv paper, author code-and-artifacts repository, and author-released Hugging Face dataset checked.
+category_ids:
+- programmatically_verifiable_outcome_data

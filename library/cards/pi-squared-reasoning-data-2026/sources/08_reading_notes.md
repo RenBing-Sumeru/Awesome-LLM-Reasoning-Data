@@ -1,0 +1,5 @@
+- **Position:** derive reliable long-context QA from structure while training on realistic unstructured evidence.
+- **Method handle:** table selection, QA/SQL generation, independent Python agreement, web-context compaction, trace back-translation.
+- **Data/artifact handle:** 1,174 validated traces, 922 training records, and a 228-item benchmark; official code and JSONL links exist.
+- **Evidence anchor:** GPT-OSS-20B averages improve 37.95 to 42.23 at low effort and 48.90 to 53.22 at high effort.
+- **Reuse decision:** useful for multi-document analytical QA after source, license, evidence-retention, and ambiguity audits.

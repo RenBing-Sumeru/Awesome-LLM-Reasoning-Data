@@ -1,0 +1,1 @@
+Prior judge benchmarks mostly test general helpfulness or isolated factual correctness. ContextualJudgeBench includes the full source document and criterion in the feedback contract and uses order-swapped consistent correctness as its main metric, exposing context neglect and positional bias.

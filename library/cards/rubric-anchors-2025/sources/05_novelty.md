@@ -1,0 +1,2 @@
+For this atlas, the distinctive disclosure is not merely that reinforcement learning is used, but that the report describes the rubric as the feedback object: criteria, score tiers, weights, critic scoring, central-quantile filtering, and an anti-reward-hacking rubric. It also links an official model release. The contribution remains a partial recipe because the rubric corpus, scorer implementation, calibration, and training records are unavailable.
+

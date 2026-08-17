@@ -1,0 +1,5 @@
+- 先看 funnel `59,029 → 54,116 → 51,581 → 24,496 → 1,000`；每次转换分别使用不同的 quality、format、model-relative difficulty 或 diversity decision。
+- 每次出现“high-quality s1K”主张时，都同时保留 Claude 3.7 的 53.6% correctness rate：选择目标是有用 reasoning pattern，不是全正确 solution corpus。
+- 分开四个 artifact：59,029 道 raw question、58,986 条公开 generated full-pool row、原始 Gemini s1K、后续 DeepSeek-R1 s1K-1.1。
+- 对照 Algorithm 1 与 `filter.ipynb`：domain schedule 不同，notebook 无 seed，feature name 发生漂移，`qfq/geminiall` 也不能匿名访问。
+- 只把 budget forcing 理解为 inference-time control。强制 `Wait` 可能改善或损害答案，而且不属于数据 supervision contract。

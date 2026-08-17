@@ -1,0 +1,3 @@
+核心贡献是在 open-domain-qa, search-queries, reading-comprehension 上提供 Common public Natural Questions release has 307,373 训练 examples, 7,830 development examples, and 7,842 test examples, about 323k total; pin public/hidden split and Wikipedia snapshot.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：long-answer and short-answer F1 under official scorer。
+
+数据对象或环境是：real user query, Wikipedia page, long-answer span, short-answer span or yes/no/no-answer label; Benchmark size: 超过 300K 个真实搜索问题；常见训练集约 307K，dev/test 各约 7.8K。最接近的对比对象是 nearby benchmark and 评测-surface datasets that share the same feedback contract。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 程序化。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

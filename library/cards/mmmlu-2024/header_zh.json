@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MMMLU 将 MMLU test set 翻译成 14 个 locale，用同一多选答案键审计多语言学科能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "OpenAI / Hugging Face dataset release 的 multilingual benchmark / evaluation surface",
+  "best_for_ch": "关注多语言评测、翻译保真、选项归一化和 benchmark 污染风险的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

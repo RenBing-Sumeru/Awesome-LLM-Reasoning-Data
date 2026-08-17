@@ -1,0 +1,1 @@
+现有迭代 RAG 系统往往依赖固定的搜索提示规则，或只在较干净的 Wikipedia 式语料环境中训练和评测。DeepDiver 研究模型能否在包含噪声、过时页面和相互冲突说法的实时网页环境里，学会何时搜索、搜索什么以及还需收集多少证据。其核心数据对象是一条 episode：WebPuzzle 问题、交替出现的推理与搜索动作、搜索查询、检索文档、最终答案和 episode 级奖励。WebPuzzle 包含 23,684 个训练问题及由专家整理的 275 个测试问题，覆盖 Cross-Page QA、Open Riddle 和 Wiki Riddle。它归入 rollout/search/test-time trace track，是因为搜索交互的次数与深度以及停止搜索的决定本身都属于被学习的轨迹，而不是固定预处理。

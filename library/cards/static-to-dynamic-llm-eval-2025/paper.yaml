@@ -1,0 +1,111 @@
+id: static-to-dynamic-llm-eval-2025
+title: 'Benchmarking Large Language Models Under Data Contamination: A Survey from Static to Dynamic Evaluation'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Simin Chen
+- Yiming Chen
+- Zexin Li
+- Yifan Jiang
+- Zhongwei Wan
+- Yixin He
+- Dezhi Ran
+- Tianle Gu
+- Haizhou Li
+- Tao Xie
+- Baishakhi Ray
+source_role:
+- benchmark
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- contamination
+- verifier-audit
+- evaluation-reliability
+training_use:
+- audit
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.511/
+  arxiv: null
+  venue: https://aclanthology.org/2025.emnlp-main.511/
+  code: https://github.com/SeekingDream/Static-to-Dynamic-LLMEval
+  data: https://github.com/SeekingDream/Static-to-Dynamic-LLMEval
+  project: null
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.511/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official evaluation, benchmark, or controlled contamination records described by the primary source.
+  trace_author: Paper authors and released evaluation harnesses.
+  answer_format: Model output, verifier/detector decision, and evaluation metadata.
+  process_fields:
+  - task or benchmark item
+  - model output or exposure condition
+  - audit method
+  - detector or verifier result
+  - reported reliability metric
+  environment_or_substrate: Released paper artifact or official reproduction repository.
+  verifier_or_reward: Paper-specific contamination detector, verifier, or judge audit.
+  terminal_predicate: The audit reports whether the proposed method distinguishes shortcut or contamination behavior from
+    valid evaluation.
+recipe_metadata:
+  base_model: See the official paper for evaluated model families.
+  teacher: 'Not applicable: this is an audit/evaluation record.'
+  generator: Released or paper-described benchmark and evaluation pipeline.
+  filtering_rule: Use the paper-defined audit protocol; do not infer a clean label from a headline score.
+  sampling_protocol: See the official paper; exact sampling settings are paper-specific.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Official artifact when released.
+audit:
+  source_mixture: Official paper and linked public artifact.
+  split: Use the published split or controlled condition; inspect the artifact before downstream training.
+  decontamination: 'Central topic: benchmark leakage, verifier reliability, or judge bias.'
+  license: Check the linked official artifact before redistribution or training use.
+  lineage: Primary source -> released code/data when available -> audit result.
+  known_failure_modes:
+  - A public benchmark can become contaminated after release.
+  - A detector may depend on model access or controlled exposure assumptions.
+  - Reported audit metrics do not by themselves establish downstream safety.
+  citation_status: verified
+  confidence: high
+  notes: Primary source pinned. Public code/data link is recorded when the official release was identified; otherwise the
+    missing artifact remains explicit.
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.emnlp-main.511.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Track 13 addition: its central contribution audits contamination, verifier reliability, or judge bias with
+  an explicit evaluation object.'
+related: []
+tags:
+- track13
+- audit
+- 2025-2026
+status: verified
+card: null
+needs: []
+one_line_summary: This survey and living repository map static and dynamic defenses against benchmark contamination.
+why_it_matters: It supplies an audit taxonomy and a maintained artifact index for deciding whether an evaluation can still
+  be trusted.
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19T12:49:36Z'
+  verified_by: curation
+  confidence: high
+  notes: Official primary link checked during Track 13 intake.
+curation_level: L4_carded
+category_ids:
+- audit_failure_contamination_verifier_attacks

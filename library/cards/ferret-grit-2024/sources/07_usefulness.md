@@ -1,0 +1,3 @@
+- For building an interface where a user circles an arbitrary region and asks for an explanation, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of models may learn annotation conventions instead of robust spatial grounding.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: region coordinates/masks, source labels, and referring/grounding benchmark scores. Do not reuse the release when its licensing or source provenance cannot be preserved.

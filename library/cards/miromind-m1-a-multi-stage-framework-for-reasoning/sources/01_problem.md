@@ -1,0 +1,3 @@
+Many open reasoning models release weights but omit the complete SFT/RL data, training configurations, and stage transitions, making it difficult to determine whether performance comes from dataset scale, trajectory filtering, or the RL algorithm. Long-CoT training also suffers from repetition, truncation, and rewards that favor length rather than correctness.
+
+MiroMind-M1 releases a complete stack from 719K verified SFT records to 62K RLVR problems and combines length-progressive training with an adaptive repetition penalty in a multi-stage optimization recipe for reproducible 7B and 32B mathematical reasoning.

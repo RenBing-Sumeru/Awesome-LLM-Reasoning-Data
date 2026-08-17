@@ -1,0 +1,10 @@
+该 pipeline 可以还原为六个相连阶段。
+
+1. **组装并规范化候选池。** 合并 Geometry3K、GeoQA、Geos、FigureQA、ScienceQA、OK-VQA、IconQA 与 TabMWP，共报告 69,997 条。FigureQA 与 IconQA 各随机限制为 10,000 条。IconQA、FigureQA、Geometry3K、TabMWP 和 OK-VQA 转为开放式回答，ScienceQA、GeoQA 与 Geos 保留多项选择。概念上的输出行为 image、ID、prompt、answer。精确上游 split 名、原始 row ID、转换代码和随机 seed 均未披露。（论文 §3.1、Figure 3）
+2. **运行目标策略特定的 MCTS。** 使用 Qwen2.5-VL-7B-Instruct 或 Qwen2.5-VL-72B-Instruct 作为 policy。state 是推理链前缀；selection 使用 visit count，`c_puct=1`；expansion 以 temperature 0.5 采样三个 action；公开 generation config 还设置 top-p 0.9。simulation 在生成 final answer 或达到十个推理步骤时停止。prompt 强制步骤边界，并含两个 in-context example。（论文 §3.2、附录 Table 6；官方 `mcts.py`）
+3. **应用构造 critic。** Qwen2.5-7B-Instruct 接收问题、ground truth 与模拟得到的 rationale/final answer，只输出生成答案为 true 或 false。true 判定终止搜索并记录从零计数的迭代号 `K`；否则继续下一轮，最多 50 轮。流程不使用 process reward model。critic prompt 不含图像，论文也未报告这些决策的准确率、校准、分歧或人工审计。（论文 §3.2、附录 Table 7）
+4. **按目标规模分别筛选。** 保留所有 `K > 5` 的行和 50 轮后仍未解的行。7B 得到 5.4K 条晚解加 5.6K 条未解记录，共 11K；独立运行的 72B selector 得到 7.5K。两者重叠 5.4K，其中 3.6K 被两个 policy 都判为未解。可复用输出应含上游 dataset/split/ID、policy 与 critic revision、所有采样步骤和 critic 决策、`K` 或未解状态、阈值与 selected/rejected 状态；现有发布未把这些字段组成完整 ledger。（论文 §§3.2、4.4）
+5. **强化微调。** 使用 Easy-R1 与 GRPO，在各自筛选 prompt 上微调对应 base VLM；论文未使用 SFT 或知识蒸馏。GRPO 使用 32 个 rollout，prompt 要求在 `think` 标签内推理，并给出 boxed final answer。训练和评测报告使用 8 张 80GB A100。实际 reward 代码、答案抽取与规范化、除 rollout 数以外的完整超参数、seed、停止规则和 checkpoint 选择均为 unknown。（论文 §§3.3–4.1、附录 Table 8）
+6. **评测与消融。** 用 vLLM 在 MathVista testmini、MathVision mini、MathVerse mini、MMMU、MMStar、MMBench、MM-Vet 和 AI2D 上评测；比较 base policy、同规模随机子集、self-consistency、全量池、仅晚解、仅未解、在线筛选、不同阈值与跨规模子集。不同 reasoning model 使用各自代码库的 thinking template，因此复现还需固定解码与答案抽取。（论文 §4、附录 B）
+
+官方实现不是完整的论文复现包。`run_mcts.sh` 启动八个分片；`mcts.py` 默认 50 轮、三个 action、temperature 0.5、top-p 0.9 与十步终止上限。关键问题是，脚本只在 `solution is not None` 时把行加入输出；未解行没有以失败状态保存，而论文最终规则恰恰保留这部分。5.6K 未解行占 7B 子集一半以上，因此公开脚本本身无法重建 Hard-11K。复现还必须固定 repository commit、Qwen revision、候选池 checksum、分片、seed、critic 输出、失败记录、Easy-R1 revision、reward 实现与评测代码。

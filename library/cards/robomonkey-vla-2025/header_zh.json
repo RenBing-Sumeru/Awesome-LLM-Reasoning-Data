@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "RoboMonkey 用基于均方根误差偏好训练的验证器，对采样出的视觉语言动作候选排序。（论文未披露的发布、回放与审计细节保留为未知。）",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jacky Kwok、Christopher Agia、Rohan Sinha、Matt Foutter、Shulu Li、Ion Stoica、Azalia Mirhoseini、Marco Pavone",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

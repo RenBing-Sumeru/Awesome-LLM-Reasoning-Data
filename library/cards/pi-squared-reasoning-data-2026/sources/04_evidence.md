@@ -1,0 +1,3 @@
+**Matched before/after SFT (Table 2).** Across LongSeal, LongBenchV2, Oolong, OfficeQA, and π²-Bench, the same GPT-OSS-20B base rises from 37.95 to 42.23 average under low reasoning effort and from 48.90 to 53.22 under high effort after LoRA on 922 records. Model, benchmark suite, and inference effort are controlled within each pair, supporting transfer from a small curated set.
+
+**Data-efficiency check (Table 3).** Training the same model on only the 100 records with the highest combined quality ratings still raises the low-effort average from 37.95 to 39.29 and the high-effort average from 48.90 to 51.75. The smaller gains than the full set support both record quality and additional coverage from scaling to 922 examples.

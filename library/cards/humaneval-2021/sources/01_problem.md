@@ -1,0 +1,3 @@
+HumanEval comes from the 2021 OpenAI arXiv paper "Evaluating Large Language Models Trained on Code." The paper needed a functional-correctness benchmark for code generation, because surface similarity to reference code is a weak proxy for whether generated programs actually solve a task.
+
+The evaluation surface is 164 handwritten Python function-completion problems. Each task gives a signature and docstring-style prompt, and a completion is accepted by executing unit tests. This Card includes HumanEval as a programmatic code-generation benchmark, not as a broad software-engineering environment or repository-level agent task.

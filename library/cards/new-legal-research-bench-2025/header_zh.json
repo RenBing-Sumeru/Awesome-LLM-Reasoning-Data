@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Legal Research Benchmark 用专家法律研究问题评测模型的检索、权威选择和法律综合能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Vals AI benchmark page",
+  "best_for_ch": "关注法律研究 agent、多跳检索、专家答案和法律评测边界的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Vals AI",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T08:00:00Z"
+}

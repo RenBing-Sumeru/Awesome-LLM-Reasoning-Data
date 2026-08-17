@@ -1,0 +1,7 @@
+本卡的规范来源是AAAI-26 proceedings文章与arXiv:2511.09157v1。ProBench处理移动GUI benchmark只判断最终屏幕的缺陷：即使智能体跳过sorting、filtering或选择location等必要中间operation，终态也可能看起来正确。因此benchmark把action-derived process evidence加入terminal evaluation，同时不规定唯一僵化gold trajectory。
+
+论文定义**34个应用上的217项任务：149项State-related与68项Process-related**。语言构成为**75项英文任务与142项中文任务**：英文包括52项State加23项Process，中文包括97项State加45项Process。34个应用由14个英文app与20个中文app组成，覆盖system、tool、news、travel、shopping/finance、media、lifestyle与social类别。
+
+评测对象是live single-app Android episode：自然语言instruction、实时screenshot、historical operation、解析后的action、可选textualized action evidence、final screenshot、completion signal与binary terminal outcome。State task由instruction加final screenshot判断；Process task还会把完整的已观察action文本序列交给terminal judge。
+
+尚未确认官方ProBench代码仓库、项目页、Hugging Face记录、machine-readable task manifest、可执行environment package、result file或公开success/failure trajectory corpus。附录表格公开task text，论文也描述runtime，但发布边界阻止把ProBench视为可复用训练数据或可复现environment artifact。支持的`training_use`仅为evaluation；canonical metadata保持`L3_summary_ready`与`status: partial`。

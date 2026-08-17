@@ -1,0 +1,99 @@
+id: personalized-rewardbench-human-aligned-personalization-2026
+title: 'Personalized RewardBench: Evaluating Reward Models with Human Aligned Personalization'
+year: 2026
+venue: COLM 2026
+authors:
+- Qiyao Ma
+- Dechen Gao
+- Rui Cai
+- Boqi Zhao
+- Hanchu Zhou
+- Junshan Zhang
+- Zhe Zhao
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- personalization
+- reward-modeling
+- alignment
+training_use:
+- reward_modeling
+- preference_learning
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.07343
+  arxiv: https://arxiv.org/abs/2604.07343
+  code: https://github.com/Martin-qyma/Personalized-RewardBench
+  data: https://huggingface.co/datasets/QiyaoMa/Personalized-RewardBench
+  project: null
+  huggingface: https://huggingface.co/datasets/QiyaoMa/Personalized-RewardBench
+  doi: https://doi.org/10.48550/arXiv.2604.07343
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://arxiv.org/abs/2604.07343
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: Personalized RewardBench supplies public preference pairs and evaluations for human-aligned, user-specific
+  reward modeling.
+related: []
+tags:
+- personalization
+- reward-benchmark
+- rubrics
+- colm-2026
+one_line_summary: Personalized RewardBench isolates user-specific rubric adherence in chosen–rejected pairs to test whether
+  reward models genuinely model individual preferences.
+why_it_matters: It controls general answer quality so the discriminative signal is the user's own rubric rather than a generic
+  preference proxy.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data

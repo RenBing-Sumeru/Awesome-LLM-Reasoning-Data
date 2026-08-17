@@ -1,0 +1,18 @@
+{
+  "title": "FreePRM: Training Process Reward Models Without Ground Truth Process Labels",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2506.03570",
+    "code": "https://github.com/sunlin-ai/FreePRM",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:37:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "在只有最终答案正确性时，以缓冲概率将噪声结果标签转为可训练的步骤级奖励监督",
+    "updated_at": "2026-07-16T07:37:50Z"
+  }
+}

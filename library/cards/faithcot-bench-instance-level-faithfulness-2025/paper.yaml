@@ -1,0 +1,117 @@
+id: faithcot-bench-instance-level-faithfulness-2025
+title: 'FaithCoT-Bench: Benchmarking Instance-Level Faithfulness of Chain-of-Thought Reasoning'
+year: 2026
+venue: ICLR 2026
+authors:
+- Xu Shen
+- Song Wang
+- Zhen Tan
+- Laura Yao
+- Xinyu Zhao
+- Kaidi Xu
+- Xin Wang
+- Tianlong Chen
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- chain-of-thought-faithfulness
+- reasoning-evaluation
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2510.04040
+  arxiv: https://arxiv.org/abs/2510.04040
+  code: https://github.com/se7esx/FaithCoT-BENCH
+  project: null
+  data: https://github.com/se7esx/FaithCoT-BENCH/blob/main/faithcot.zip
+  huggingface: null
+  venue: https://mlanthology.org/iclr/2026/
+  doi: https://doi.org/10.48550/arXiv.2510.04040
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning tasks in four domains, including AQuA, LogiQA, TruthfulQA, and HLE-BIO.
+  trace_author: Four representative LLMs generate trajectories; experts annotate unfaithfulness status, causes, and step-level
+    evidence.
+  answer_format: Question, CoT trajectory, answer, instance faithfulness label, unfaithfulness cause, and supporting step
+    evidence.
+  process_fields:
+  - cot_steps
+  - faithfulness_label
+  - unfaithfulness_cause
+  - step_evidence
+  - model_family
+  - domain
+  environment_or_substrate: Chain-of-thought reasoning and interventions on reasoning steps.
+  verifier_or_reward: Expert labels define instance-level unfaithfulness; evaluation also uses counterfactual, logit-based,
+    and LLM-as-judge methods.
+  terminal_predicate: A detector decides whether an observed trajectory faithfully reflects the model's internal reasoning
+    process.
+recipe_metadata:
+  base_model: Four source LLMs and eleven evaluated detection methods; see the paper for full configurations.
+  teacher: Expert annotation of unfaithfulness causes and step-level evidence.
+  generator: CoT trajectories produced by representative LLMs across four domains.
+  filtering_rule: Curate trajectories and expert labels under a multi-round protocol for instance-level faithfulness.
+  sampling_protocol: Evaluate counterfactual, logit-based, and LLM-as-judge detectors on faithful and unfaithful instances.
+  inference_budget: Repository configurations specify model, seed, temperature, and token settings for evaluation runs.
+  optimizer_or_scaffold: Step-removal and counterfactual faithfulness evaluation; the repository also supports ICL and fine-tuning
+    configurations.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: CoT trajectories from four LLMs in four domains with expert annotations and released evaluation assets.
+  split: FINE-CoT has more than 1,000 trajectories, including more than 300 unfaithful instances; inspect faithcot.zip for
+    exact partitions.
+  decontamination: Use the provided benchmark split and do not evaluate models trained on the public instance labels without
+    a held-out protocol.
+  license: No repository license file was found in the official GitHub view; usage terms remain to be confirmed.
+  lineage: ICLR 2026 paper, arXiv preprint, and the authors' FaithCoT-BENCH repository.
+  known_failure_modes:
+  - Faithfulness to internal reasoning is not directly observable
+  - Expert causal labels may be sensitive to the selected intervention evidence
+  - Public benchmark data can become a training target and weaken evaluation validity
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv title, author affiliations, ICLR 2026 status in the official repository and ICLR listing, plus
+    the authors' code and faithcot.zip data release. The repository view exposes no license file, so license is left unconfirmed.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: FaithCoT-Bench pairs expert-annotated CoT trajectories with step evidence to test whether a specific explanation
+  reflects a model's internal reasoning.
+why_it_matters: It operationalizes instance-level CoT faithfulness with expert evidence instead of inferring trustworthiness
+  from final-answer correctness.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv title, author affiliations, ICLR 2026 status in the official repository and ICLR listing, plus
+    the authors' code and faithcot.zip data release. The repository view exposes no license file, so license is left unconfirmed.
+category_ids:
+- process_trace_supervision_data

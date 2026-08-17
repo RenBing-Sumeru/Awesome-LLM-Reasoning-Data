@@ -1,0 +1,3 @@
+已有基线是 document, chart, multimodal QA, and visual 评测 benchmarks。DocVQA: A Dataset for VQA on Document Images 的变化点是它给出的特定任务对象和反馈契约：document image, natural-language question, one or more text answers, split/task 元数据, and evaluator output such as answer similarity.，并由 answer-level comparison, commonly ANLS-style string similarity against ground-truth answers. 验收。方向信号是这个对象-反馈组合，而不是泛泛说模型能力提升或下降。
+
+质量信号是官方产物（paper: https://arxiv.org/abs/2007.00398; project: https://www.docvqa.org/; data: https://www.docvqa.org/; doi: https://doi.org/10.48550/arXiv.2007.00398）、来源 元数据，以及 split、license、lineage、failure modes 等审计字段。并不新的部分是 benchmark 或 裁判 本身。复用前要检查 artifact version、license、split、evaluator/裁判 实现、data lineage、prompt/scaffold 设置和 contamination risk。

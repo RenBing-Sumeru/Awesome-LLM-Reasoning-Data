@@ -1,0 +1,16 @@
+{
+  "title": "Token Cleaning: Fine-Grained Data Selection for LLM Supervised Fine-Tuning",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v267/pang25a.html"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:32:59Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它是有价值的 token 级 SFT 数据选择方法，但并非专门针对 reasoning data 或 verifier/reward 训练，应作为方法补充",
+    "updated_at": "2026-07-15T12:32:59Z"
+  }
+}

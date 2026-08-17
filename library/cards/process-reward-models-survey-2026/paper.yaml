@@ -1,0 +1,127 @@
+id: process-reward-models-survey-2026
+title: 'A Comprehensive Survey of Process Reward Models: Data Generation, Model Construction, and Usage'
+year: 2026
+venue: ACL 2026 (Long Papers)
+authors:
+- Congmin Zheng
+- Jiachen Zhu
+- Zhuoying Ou
+- Yuxiang Chen
+- Kangning Zhang
+- Rong Shan
+- Zeyu Zheng
+- Mengyue Yang
+- Jianghao Lin
+- Yong Yu
+- Weinan Zhang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- step_level
+- process_reward
+- trajectory_value
+domains:
+- process-supervision
+- reward-modeling
+- reasoning-data
+- test-time-scaling
+training_use:
+- process_supervision
+- reward_modeling
+- rlvr
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.163/
+  arxiv: https://arxiv.org/abs/2510.08049
+  code: https://github.com/despzcm/Survey-of-Process-Reward-Model
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.163
+  venue: https://aclanthology.org/2026.acl-long.163/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.163/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A synthesis of process-supervision literature across math, code, text, multimodal reasoning, robotics, and
+    agents.
+  trace_author: The surveyed primary works; the survey itself does not release process-labeled trajectories.
+  answer_format: A full-loop taxonomy of process-data generation, PRM construction, and PRM use.
+  process_fields:
+  - intermediate reasoning step
+  - trajectory state
+  - process reward
+  - PRM construction
+  - test-time use
+  environment_or_substrate: Process-supervised reasoning and reinforcement-learning pipelines.
+  verifier_or_reward: The surveyed object is a process reward model that evaluates reasoning at step or trajectory level;
+    no single PRM is released.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: No single base model; the paper surveys process reward models.
+  teacher: Human annotators, model judges, and verifiers may appear in surveyed process-data generation; no single teacher
+    is used.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract organizes PRM work by data generation, model construction, and use.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Surveys PRM use for test-time scaling and reinforcement learning rather than supplying one training
+    implementation.
+audit:
+  source_mixture: Official ACL Anthology record, PDF, checklist, arXiv record, and the authors' curated GitHub reading list.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is claimed; inspect each cited process dataset, benchmark, verifier,
+    and environment.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.163/'
+  known_failure_modes:
+  - Step-level plausibility can be rewarded without improving final-answer correctness.
+  - Process labels may encode annotator, judge, or trace-style bias.
+  - PRM comparisons can confound label source, search budget, verifier, and downstream optimizer.
+  citation_status: verified
+  confidence: high
+  notes: The official ACL abstract explicitly states the full loop of process-data generation, PRM construction, and use for
+    test-time scaling and reinforcement learning. The linked GitHub repository is a curated reading list organized by the
+    same lifecycle.
+inclusion_reason: A 2026 foundation that gives Track0 readers a unified route from reasoning traces to process labels, process
+  reward models, test-time scaling, RL, and their distinct audit questions.
+related: []
+tags:
+- foundations-and-primers
+- process-reward-models
+- process-supervision
+- reasoning-traces
+- acl-2026
+why_it_matters: It explains why a reasoning trace becomes process supervision only once intermediate states receive an explicit
+  feedback contract.
+one_line_summary: A 2026 ACL survey that traces process reward models from labeled reasoning data through construction to
+  search and reinforcement-learning use.
+paper_type: Process reward model survey
+reading_priority: essential
+best_for: Readers who need to distinguish raw reasoning traces, step labels, process reward models, search selectors, and
+  outcome rewards.
+confidence: high
+status: verified
+needs:
+- 'unknown: a common license, split policy, and contamination protocol for the surveyed process-supervision releases'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, DOI, checklist, arXiv record, and the linked GitHub reading list were reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧪 RLHF / reward-model surveys

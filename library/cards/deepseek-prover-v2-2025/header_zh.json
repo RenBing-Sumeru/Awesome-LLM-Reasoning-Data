@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepSeek-Prover-V2 将 DeepSeek-V3 证明草图分解、递归求解的 Lean 子目标、Lean 验证冷启动、expert iteration 和 GRPO RL 结合起来；它公开模型和评测工件，但未公开核心训练或审计语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿形式化推理技术报告与数据披露账本",
+  "best_for_ch": "需要审计 Lean 终态验证、子目标分解 RL、形式化语义边界与训练可复现性的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Z. Z. Ren 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

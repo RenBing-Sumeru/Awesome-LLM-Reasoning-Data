@@ -1,0 +1,1 @@
+Read the direct-judgment equation and the decoupled noise detector together: one creates labels and the other decides how cautiously to learn from them. For reproduction, freeze the seed split, prompt sets, model/reference checkpoints, and the confidence fraction before final evaluation.

@@ -1,0 +1,1 @@
+论文和当前项目对多种开源与闭源 LLM 进行 execution accuracy 评测，显示清洗后数据能够稳定区分模型规模和 few-shot 设置；当前统一 leaderboard 中较强模型可超过 90%，小模型则明显较低。更关键的证据来自错误审计：原 WikiSQL 中存在会导致正确 SQL 失败或错误 SQL 通过的系统性问题，清洗后可执行 oracle 与标签更一致。由于 leaderboard 持续更新，具体分数必须绑定日期和 backend。

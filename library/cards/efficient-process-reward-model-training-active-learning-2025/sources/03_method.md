@@ -1,0 +1,5 @@
+1. **Build the candidate pool.** Mathematical problems are sampled from NuminaMath and decontaminated against ProcessBench and PRMBench. Qwen2.5-Math-7B-Instruct then generates a step-by-step chain-of-thought trajectory for each problem.
+2. **Estimate step uncertainty.** An ensemble-head PRM produces several correctness probabilities for every step. A mean prediction near the decision boundary represents aleatoric uncertainty, while a large standard deviation across heads represents epistemic uncertainty.
+3. **Select complete trajectories.** Only steps up to and including the predicted first error are examined. If any such step exceeds either uncertainty threshold, the whole trajectory is retained; confident trajectories are not sent to the annotator.
+4. **Generate process labels.** QwQ-32B identifies the first erroneous step. Labels are either all ones or ones followed by a zero at the first error; subsequent steps are left unlabeled.
+5. **Create the released dataset.** Approximately 663,000 records store `question`, `steps`, `answer`, `stds`, and `hard_labels`. PRM training is then briefly performed with binary cross-entropy on the selected labeled records.

@@ -1,0 +1,3 @@
+Llama 3.1 asks how a dense open-weight model family can scale pretraining, long context, multilinguality, coding, reasoning, tool use, instruction following, and safety without relying on a single post-training data source. The report is a key 2024 lineage anchor because it links a quantified pretraining mixture to iterative preference and synthetic-data construction.
+
+Its central audit tension is openness asymmetry. Meta releases pretrained and instruction-tuned weights, model utilities, prompt formats, Llama Guard 3, Prompt Guard, and Code Shield, but not the 15.6T-token corpus, human preferences, SFT records, reward models, rejected candidates, execution environments, or item-level lineage.

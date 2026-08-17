@@ -1,0 +1,3 @@
+Amazon Nova 2 Lite is a managed multimodal model service accepting text, image, and video inputs and returning text completions. Its official Service Card describes service behavior, training-stage labels, safety controls, and evaluation methods, but not a reusable post-training corpus or reward implementation.
+
+For the atlas, the problem is to separate concrete disclosure from implied completeness. AWS names curated source classes, SFT, RLHF, runtime prompt/completion filtering, human evaluation, automated benchmarks, and red teaming. The underlying records, feedback labels, rewards, provenance, and reproducibility artifacts remain unavailable, so this entry is a frontier-report disclosure ledger rather than a data release.

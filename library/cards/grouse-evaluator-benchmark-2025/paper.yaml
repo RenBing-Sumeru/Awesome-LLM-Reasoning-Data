@@ -1,0 +1,94 @@
+id: grouse-evaluator-benchmark-2025
+title: 'GroUSE: A Benchmark to Evaluate Evaluators in Grounded Question Answering'
+year: 2025
+venue: COLING 2025
+authors:
+- Sacha Muller
+- António Loison
+- Bilel Omrani
+- Gautier Viaud
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.coling-main.304/
+  arxiv: null
+  code: null
+  data: https://aclanthology.org/2025.coling-main.304.pdf
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.coling-main.304/
+  openreview: null
+  acl: https://aclanthology.org/2025.coling-main.304/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary page and public artifact URL recorded on 2026-07-19. A 144-unit-test meta-evaluation suite for judge
+    failures in grounded QA.
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.coling-main.304.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: Meta-evaluation benchmark for calibration and failure detection in grounded QA judges.
+related: []
+tags:
+- audit
+- round3
+status: verified
+one_line_summary: A 144-unit-test meta-evaluation suite for judge failures in grounded QA.
+why_it_matters: It tests whether a judge catches concrete grounded-answer failures rather than merely correlating with GPT-4.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

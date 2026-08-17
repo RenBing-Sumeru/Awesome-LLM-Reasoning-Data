@@ -1,0 +1,5 @@
+- Positioning: ChartVerse generates charts from executable programs and releases questions with both code solutions and long reasoning traces tied to known ground truth.
+- Data object: id, image list, chart-generating code, question, answer, executable solution, and CoT solution.
+- Author and selector: language and vision teachers write questions and long solutions against program ground truth; selection uses program execution, answer checking, rendering validation, and difficulty/failure-rate selection.
+- Evidence anchor: The paper trains an 8B ChartVerse model on 600K SFT and 40K RL records and reports it outperforming the stronger compared 32B visual reasoning model on its chart suite.
+- Reuse decision: suitable for chart-reasoning SFT with a separate 40K RL subset; first audit program templates can become shortcuts, and very long average traces may overfit synthetic rendering conventions.

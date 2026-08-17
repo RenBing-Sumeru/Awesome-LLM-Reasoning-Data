@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "FutureHouse Inc., San Francisco, CA"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.10362",
+    "https://arxiv.org/pdf/2407.10362",
+    "https://huggingface.co/datasets/futurehouse/lab-bench"
+  ],
+  "verification_note": "arXiv/PDF verify the all-author FutureHouse affiliation line and submitted/in-review status; Hugging Face verifies the dataset artifact. No official accepted conference page was found."
+}

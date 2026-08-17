@@ -1,0 +1,1 @@
+核心贡献是从 BIG-bench 中筛出 23 个任务：此前语言模型评测未超过平均人类 rater，并配套 few-shot 与 chain-of-thought prompting 基线。机制是按困难度选择 BIG-bench 任务，再在发布的 JSON 样本上使用标准 prompt 模板和答案评分。反馈契约仍是对 task target 的 answer-level scoring。最近对比对象是完整 BIG-bench、MMLU 类静态测试，以及后续对 CoT 敏感的推理 benchmark。

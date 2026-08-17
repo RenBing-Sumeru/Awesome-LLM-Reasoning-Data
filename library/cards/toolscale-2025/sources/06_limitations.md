@@ -1,0 +1,3 @@
+1. When evaluation criteria can reward benchmark-specific tool routing rather than general planning, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because tool prices, APIs, and model capabilities drift after data release, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve NVIDIA dataset license and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

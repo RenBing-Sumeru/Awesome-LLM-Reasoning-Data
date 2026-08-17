@@ -1,0 +1,5 @@
+Formal proving data is limited by the cost of translating informal mathematics into diverse, executable Lean statements and proofs.
+
+Augmented Lean Formalisation mutates seed problems, writes reasoning plans and Lean artifacts, and retains only compiler-verified proofs in a 336K-record SFT set. The decision boundary is whether a serialized training record survives Lean compilation, formal proof checking, mutation validation, and difficulty assignment; the central artifact is data consumed by autoregressive and diffusion-based theorem-prover SFT, not a model-only release.
+
+L4 facts: primary source arXiv:2606.12594; arXiv preprint; data object Pythagoras-Prover SFT Dataset with 336,596 mutated problems split into 86,715 easy, 134,049 medium, and 115,832 hard instances; evaluation surface Pythagoras-Prover-32B reaches 93.0% on MiniF2F-Test and solves 93 of 672 tested problems in the paper's harder suite; the 4B model is compared with much larger provers.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

@@ -1,0 +1,1 @@
+APPS 只要求 Python 代码通过测试，MiniF2F 等 Lean 集只要求证明给定数学定理；已有 verified coding 小集规模又较小。FVAPPS 的变化是把技术面试题中的函数实现与性质证明放进同一个 Lean 文件，用 `#eval` 保留具体行为检查，同时用 theorem 把有限测试提升为全称规范。它不是首次将 Python 翻译成 Lean，也不是首次使用 `sorry` benchmark，而是把 4,715 个通用编程任务系统转成“实现 + proof obligation”的统一数据对象，并提供 1,083 条质量控制子集。

@@ -1,0 +1,6 @@
+- 联读 §§3.1–3.3 与 Appendices A–B。核心 object flow 是 document → expression → dependency-aware query → source-extracted answer → recovered context → self-contained question → derivation filter → expert accept/reject/revise decision。
+- 区分三种 evaluation contract：expert selection 选择数据行；专家对每道 STORM-BORN 题的 3 个 model response 评分；DeepSeek-R1 在独立 NuminaMath-1.5 test 上按 0–2 derivation rubric 评分。Choice file 又增加第四种 exact-letter proxy。
+- 谨慎对待“五项原则”：论文实际只列 Q1 reasoning type、Q2 clarity、Q3 correctness、Q4 density。Human count、agreement、adjudication、threshold 与逐行 revision 均为 unknown。
+- 不要只读 method narrative，还要检查 live artifact。它有 100 行／28 个来源、随机 73/27 split、train/test 间 17 个 shared source、三个书名，以及两个超出所称截止日期的 2025 arXiv ID。
+- 完整阅读 Table 1：部分 zero-shot score 大幅提高，但 LLaMA3-8B 的 GSM8K 8-shot 与 MATH 4-shot 结果下降。Headline gain 是选定 setting 的 absolute improvement，不是普遍效果。
+- 固定 commit `1d3f0743717ccec23472692eb4e13d56f833bb2d`。复用前重建 page/equation evidence，建立 source-disjoint split，验证 distractor 与 judge，审计 source rights，并删除／撤销已暴露的 credential-like string。

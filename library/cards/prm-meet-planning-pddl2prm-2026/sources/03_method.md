@@ -1,0 +1,1 @@
+It supports scalable generation of verifiable process data and studies the boundary between symbolic planning and language reasoning. Inputs are problems, traces, and intermediate states; outputs are step labels, preferences, or continuous rewards. Reproduction should verify the generator, terminal verifier, sampling budget, and filtering rules.

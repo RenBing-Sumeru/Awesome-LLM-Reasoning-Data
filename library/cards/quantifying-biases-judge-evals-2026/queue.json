@@ -1,0 +1,13 @@
+{
+  "title": "Quantifying biases in LLM-as-Judge evals",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=eQxVeNZcYT",
+    "data": null
+  },
+  "review_note": "已精读：贝叶斯 GLM 将 judge 偏差与目标效应联合估计，并支持反事实校正。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {"search_status":"promoted","decision_reason":"提供可量化、带不确定性的 LLM judge 偏差审计和校正框架。","updated_at":"2026-07-20T00:00:00Z"}
+}

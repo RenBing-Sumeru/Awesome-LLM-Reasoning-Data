@@ -1,0 +1,366 @@
+id: websailor-v2-2025
+title: 'WebSailor-V2: Bridging the Chasm to Proprietary Agents via Synthetic Data and Scalable Reinforcement Learning'
+year: 2025
+venue: ICLR 2026 Poster
+authors:
+- Kuan Li
+- Zhongwang Zhang
+- Huifeng Yin
+- Rui Ye
+- Yida Zhao
+- Liwen Zhang
+- Litu Ou
+- Ding-Chu Zhang
+- Xixi Wu
+- Xinmiao Yu
+- Jialong Wu
+- Xinyu Wang
+- Zile Qiao
+- Zhen Zhang
+- Yong Jiang
+- Pengjun Xie
+- Fei Huang
+- Zhi-Qin John Xu
+- Shuai Wang
+- Minhao Cheng
+- Jingren Zhou
+source_role:
+- construction_recipe
+- model_report
+- agent_environment
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- information_seeking
+- web_search
+- question_answering
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://openreview.net/pdf?id=HuP16O5SJf
+  paper_pdf: https://openreview.net/pdf?id=HuP16O5SJf
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2509.13305
+  code: null
+  data: null
+  model: null
+  project: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebSailor-V2
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.13305
+  venue: https://iclr.cc/virtual/2026/poster/10010357
+  openreview: https://openreview.net/forum?id=HuP16O5SJf
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2509.13305
+  paper_revision: https://arxiv.org/abs/2509.13305v1
+  project_revision: https://github.com/Alibaba-NLP/DeepResearch/tree/3a45af965ea773fa0751f2963c4529be8c54e0a1/WebAgent/WebSailor-V2
+  current_project_revision: https://github.com/Alibaba-NLP/DeepResearch/tree/f72f75d8c3eb842f2bbbab096a12206ff66e270f/WebAgent/WebSailor-V2
+  repository_root: https://github.com/Alibaba-NLP/DeepResearch
+  repository_license: https://github.com/Alibaba-NLP/DeepResearch/blob/f72f75d8c3eb842f2bbbab096a12206ff66e270f/WebAgent/LICENSE
+  root_repository_license: https://github.com/Alibaba-NLP/DeepResearch/blob/f72f75d8c3eb842f2bbbab096a12206ff66e270f/LICENSE
+data_object:
+  unit_of_record: 'The paper links three objects: a synthetic SailorFog-QA-V2 question-answer instruction pair, a successful
+    rejection-sampled ReAct trajectory used for SFT, and a strictly on-policy ReAct rollout receiving one terminal scalar
+    reward during RL. The final ICLR paper reports more than 30,000 SailorFog-QA-V2 instruction-tuning pairs used for SFT
+    and RL, but does not establish that 30,000 complete trajectories were produced or retained, and no V2 records are publicly
+    downloadable from the official project directory.'
+  prompt_source: SailorFog-QA-V2 starts from seed entities and uses web tools to expand a dense graph of real-internet facts.
+    V2 deliberately adds cyclic connections, preserves discovery queries and source URLs internally, and stores entity statistics.
+    Random walks extract connected subgraphs; the Weisfeiler-Leman algorithm verifies non-isomorphism; orbit-node analysis
+    distributes QA focus across structural roles. Final-paper uncertainty types include semantic ambiguity, plausible distractor
+    noise, and structural constraints targeting bridges or cut vertices. Exact seeds, source manifest, prompts, generator
+    identities, and record-level graph provenance are unknown.
+  trace_author: Unspecified high-performing open-source models solve generated QA tasks to produce candidate SFT trajectories,
+    with rejection sampling used for quality control. During RL, the current WebSailor-V2 policy generates strictly on-policy
+    rollouts. Model names, revisions, prompts, decoding settings, candidate counts, acceptance rates, and retained/rejected
+    trace identifiers are not disclosed.
+  task_record:
+  - synthetic question
+  - reference answer
+  - sampled connected subgraph, not publicly released
+  - uncertainty type, record-level field not publicly verified
+  - discovery queries and source URLs, internally preserved but not released
+  episode_fields:
+  - question and reference answer
+  - thought
+  - action name and arguments
+  - observation
+  - repeated thought-action-observation rounds
+  - final-answer action
+  - terminal scalar reward during RL
+  context_or_state: At round t, the policy conditions on the entire preceding ReAct history of thoughts, actions, and observations.
+    The maximum reported context is 128k; the paper does not release serialized V2 contexts, observation logs, or a state
+    schema tied to the paper-scale corpus.
+  trace_or_actions: The action space comprises Search, Visit, Google Scholar, Python interpreter, and a terminal Final Answer
+    action. A complete episode interleaves free-form thought, one tool action, and the returned observation until Final Answer
+    or a budget/failure condition. No V2 trajectory serialization specification is released.
+  observation: Search queries Google and returns the top ten titles, snippets, and URLs per query. Visit retrieves pages with
+    Jina and uses Qwen3-30B-A3B to produce a goal-conditioned summary. Google Scholar returns scholarly search results; Python
+    runs model-generated code in a sandbox. The simulator instead uses an offline Wikipedia database and corresponding web
+    tools. Exact snapshots, parser versions, cache contents, and tool-response schemas are unknown.
+  answer_or_artifact: Each task has a reference answer, each SFT example is a successful tool-using solution selected by rejection
+    sampling, and each RL rollout ends with a final answer or an incomplete/overlength failure. The repository does not release
+    the V2 QA records, successful SFT trajectories, or RL rollouts.
+  process_labels:
+  - rejection-sampling acceptance for SFT, implementation undisclosed
+  - terminal scalar reward for RL, verifier implementation undisclosed
+  - selective exclusion of some negative trajectories from the RL loss
+  verifier_or_reward: The RL objective consumes an episode reward R_i and forms a leave-one-out group-relative advantage by
+    subtracting the other/group mean. The paper does not define how R_i is computed, name a verifier or judge, specify a correctness
+    equivalence rule, or publish reward code. Benchmark accuracy is evaluated with LLM judges, but that evaluation statement
+    does not establish the training reward contract. Accordingly the verification contract is recorded as unknown, not inferred
+    as programmatic, environmental, or judgment-based.
+  reward: One undisclosed scalar R_i per RL trajectory. It is used in a tailored GRPO objective with token-level policy gradients
+    and leave-one-out advantage estimation. Reward scale, components, verifier model or rules, calibration, and behavior on
+    alternative valid answers are unknown.
+  terminal_predicate: A normal episode terminates when the model emits Final Answer. The paper also identifies negative trajectories
+    that fail to emit a final answer after exceeding a length limit and selectively excludes some of them from the loss. The
+    final-answer correctness predicate, timeout policy, and tool-failure accounting are not disclosed.
+  provenance: Seed entity -> live-web graph expansion with denser cyclic links -> random-walk connected-subgraph extraction
+    and Weisfeiler-Leman non-isomorphism check -> orbit-aware uncertainty-rich QA generation -> open-source-model rollout
+    and rejection sampling for SFT -> Qwen3-30B-A3B-Thinking-2507 cold start -> current-policy simulator or managed-live-web
+    rollout -> undisclosed terminal reward -> token-level tailored-GRPO update. Record-level lineage is not public.
+  environment_or_substrate: A dual environment is reported. An offline Wikipedia simulator and matched tools support low-cost
+    algorithm iteration and dedicated simulation train/test tasks. Final training uses a managed live environment with multiple
+    search sources, page parsers, and a code sandbox behind QPS limits, caching, timeout/retry handling, graceful degradation,
+    and backup sources. Neither environment implementation, offline snapshot, cache, nor replay fixture is released in the
+    V2 directory.
+  release_boundary: The official V2 GitHub directory contains only README.md and two image assets at both the 2025-09-17 release
+    commit and the current inspected commit. Its README links the paper and the generic Hugging Face paper page but no V2
+    dataset, V2 checkpoint, training code, simulator, reward service, or trajectory archive. The V1 sibling directory contains
+    inference code and a 20-row SailorFog-QA example, and Alibaba-NLP publishes V1 WebSailor checkpoints; none of those V1
+    artifacts are attributed to V2 here.
+recipe_metadata:
+  base_model: Qwen3-30B-A3B-Thinking-2507 is the reported SFT foundation model and Qwen3-30B-A3B-2507 is named in the experiment
+    setup. The exact upstream revision and whether these labels denote one identical checkpoint are unknown.
+  teacher: unknown
+  generator: Undisclosed models expand the web graph and generate QAs; unspecified high-performing open-source models generate
+    candidate SFT trajectories; the latest policy produces strictly on-policy RL rollouts. Qwen3-30B-A3B is the Visit summarizer,
+    not established as the SFT trajectory teacher.
+  prompt_task_source: Dense real-internet knowledge graphs seeded by entities, plus a separate SailorFog-QA-V2 adaptation
+    built over an offline Wikipedia corpus for the simulator. The experiment section also says training data primarily includes
+    SailorFog-QA and SailorFog-QA-V2 with IterBench supplementation; stage-level counts and mixture weights are not disclosed.
+  paper_scale: More than 30,000 high-quality SailorFog-QA-V2 instruction-tuning pairs in the final ICLR paper. Connected components
+    average approximately 30 nodes and average degree 2.5. The count of complete SFT trajectories, RL task prompts, simulator
+    records, rollout episodes, and retained failure cases is unknown.
+  filtering_rule: SFT uses rejection sampling, but success criteria and thresholds are undisclosed. RL selectively excludes
+    certain negatives from the loss, including examples without a final answer because a length limit was exceeded; the full
+    exclusion rule and retained-negative rate are unknown. Training data are also synthesized and filtered dynamically from
+    training signals, but the data-policy feedback policy is not specified.
+  selection_threshold: unknown
+  sampling_protocol: Random walks sample connected subgraphs from dense graphs and the Weisfeiler-Leman algorithm checks non-isomorphism;
+    QA focus is balanced across orbit-node roles. RL samples groups strictly on-policy. The paper says it does not use dynamic
+    rollout sampling and instead relies on larger batches and groups, but group size, seeds, and per-task rollout counts are
+    unknown.
+  rollout_count: unknown
+  temperature: RL rollout temperature 1.0 with top-p 1.0. Evaluation uses temperature 0.85 and top-p 0.95. SFT teacher, graph/QA
+    generation, and Visit summarization decoding settings are unknown.
+  inference_budget: WebSailor-V2 increases context length from V1's 32k to 128k and raises the maximum ReAct iterations to
+    100. Total training tokens, per-tool response limits, wall-clock budget, hardware, API calls, retries, and monetary cost
+    are not disclosed.
+  search_or_scaffold: Vanilla ReAct with Search, Visit, Google Scholar, Python interpreter, and Final Answer. Search returns
+    top-ten Google results; Visit uses Jina plus a Qwen3-30B-A3B goal-conditioned summarizer. A managed tool layer adds QPS
+    control, caching, retry, graceful degradation, and backups.
+  optimizer_or_training_scaffold: Megatron is used for SFT with batch size 64, learning rate 5e-6 decaying to 1e-10 after
+    warmup, cosine decay, and weight decay 0.1. rLLM is used for a tailored GRPO RL objective with strict on-policy sampling,
+    token-level policy gradients, leave-one-out advantage estimation, asymmetric clipping notation, batch size 128, and learning
+    rate 1e-6. Clip bounds and group size are unknown.
+  user_simulator: null
+audit:
+  source_mixture: SailorFog-QA-V2 combines real-web graph facts, synthetic uncertainty-rich QA, open-source-model solution
+    trajectories, and on-policy simulator/live-web rollouts. The experiment section additionally lists V1 SailorFog-QA and
+    IterBench. Source proportions, language/domain mix, source URLs, crawl dates, record-level mixture tags, and stage-specific
+    allocations are not released.
+  split: The paper mentions dedicated training and testing data for the offline Wikipedia simulator but gives no counts, split
+    rule, stable IDs, or manifests. No public train/dev/test split exists for the reported 30K-plus V2 pairs or trajectory
+    populations.
+  decontamination: unknown
+  benchmark_overlap: The paper evaluates on BrowseComp-EN, BrowseComp-ZH, GAIA, xbench-DeepSearch, HLE, and DeepResearch Bench
+    and reports a direct experiment on the BrowseComp test set, but it provides no exact, semantic, entity, source-page, temporal,
+    or tool-observation overlap audit between training data and those benchmarks. The failed direct-training comparison is
+    not a decontamination analysis.
+  lineage: Method-level lineage from web graph through QA, SFT trace, on-policy rollout, and reward update is described. Stable
+    record IDs, source URLs, graph/subgraph objects, generation prompts, model snapshots, rejection decisions, rollout IDs,
+    rewards, and checkpoint-example mappings are not public.
+  license: arXiv v1 is posted under CC0 1.0 and the OpenReview record states CC BY 4.0 for the conference submission. The
+    WebAgent subtree has an MIT license while the repository root has Apache-2.0. These paper/repository terms do not establish
+    a license for the unreleased SailorFog-QA-V2 records, trajectories, offline Wikipedia snapshot, cached live-web content,
+    or generated tool observations; their reuse and redistribution rights are unknown.
+  release_version:
+    arxiv: 2509.13305v1
+    arxiv_date: '2025-09-16'
+    conference: ICLR 2026 Poster
+    openreview_last_modified: '2026-04-11'
+    v2_repository_release_commit: 3a45af965ea773fa0751f2963c4529be8c54e0a1
+    v2_repository_release_date: '2025-09-17'
+    current_repository_commit: f72f75d8c3eb842f2bbbab096a12206ff66e270f
+    current_repository_commit_date: '2026-02-27'
+    v2_directory_tree_sha: 7a3ad5b329437a01e91b4a594ed52f543fd39e54
+    github_release_tag: null
+    dataset_version: unknown
+    environment_snapshot: unknown
+  version_and_v1_boundary: 'The final ICLR record has 21 authors and adds dataset statistics absent from the 17-author arXiv
+    v1. V2 is explicitly a successor to WebSailor-V1: it uses denser cyclic graphs, random-walk rather than attempted exhaustive
+    subgraph enumeration, additional uncertainty types, a Qwen3 30B-A3B MoE rather than V1''s 72B dense model, 128k rather
+    than 32k context, up to 100 ReAct rounds, and a dual simulator/live-web RL setup. V1 code, 20 QA examples, and Alibaba-NLP
+    WebSailor checkpoints are separate artifacts and are not evidence that V2 data, training code, or trajectories are released.'
+  artifact_release_state: Paper, ICLR/OpenReview metadata, and a documentation-only V2 project directory are public. V2 QA
+    data, successful SFT trajectories, RL prompts and complete rollouts, failed/timeout/tool-error episodes, synthesis code,
+    training code, simulator, Wikipedia snapshot, reward implementation, and a V2-specific model link are not present in the
+    official V2 directory or linked by its README.
+  released_objects:
+    paper_released: true
+    documentation_readme_released: true
+    v2_qa_records_released: false
+    v2_sft_trajectories_released: false
+    v2_rl_rollouts_released: false
+    complete_successful_trajectories_released: false
+    complete_failed_trajectories_released: false
+    synthesis_code_released: false
+    training_code_released: false
+    simulator_code_released: false
+    reward_code_released: false
+    offline_wikipedia_snapshot_released: false
+    v2_specific_model_link_released: false
+  successful_and_failed_sample_retention: SFT uses rejection sampling, implying unsuccessful candidates are not part of the
+    retained supervised set, but the paper does not state whether those candidates are archived. RL samples both positive
+    and negative outcomes and selectively removes some negatives from the loss, including overlength runs without Final Answer,
+    but it does not report whether excluded negatives, tool/API failures, timeouts, retries, or all successful and failed
+    rollouts are preserved. No complete success/failure trajectory bundle is publicly available.
+  environment_versioning: Neither the offline Wikipedia dump/date/index nor the live search providers, page-parser versions,
+    cache keys/content, retry policy, backup-source routing, sandbox image, browser/network state, or service revisions are
+    pinned. The environments therefore cannot be independently replayed from public artifacts.
+  verifier_or_judge_failure_modes:
+  - The training reward R_i is undefined beyond being a terminal scalar, so answer equivalence, alternative-valid-answer handling,
+    reward hacking, and false-positive/false-negative rates cannot be audited.
+  - Benchmark accuracy uses LLM judges, but judge models, snapshots, prompts, repetitions, calibration, human agreement, and
+    robustness are not fully disclosed; this must not be conflated with the RL verifier.
+  - Live search, Jina retrieval, summary-model compression, caching, retries, degradation, and backup sources can change observations
+    and rewards across time even for nominally identical actions.
+  - Selective negative exclusion can hide overlength or non-answering failure modes and changes the effective training distribution
+    without a public exclusion ledger.
+  - The final paper reports a 30K-plus pair scale without a public manifest, so duplicate, source-overlap, contamination,
+    and per-record provenance claims cannot be independently checked.
+  privacy_or_consent: The pipeline mines real-internet information and internally preserves source URLs, but the paper discloses
+    no privacy review, personal-data policy, consent basis, source exclusion list, robots-policy handling, takedown process,
+    or redaction procedure. Wikipedia and live-web content rights require separate review from the paper and repository licenses.
+  known_failure_modes:
+  - External API latency, failure, and inconsistent returns can contaminate trajectories.
+  - Unfiltered negative trajectories can destabilize RL and cause format collapse.
+  - Some trajectories exceed the length limit without producing a final answer.
+  - Rewards are sparse enough that a weak pre-SFT policy may rarely obtain positive feedback.
+  - Live-web observations are non-stationary and prevent deterministic replay.
+  - Report-writing style is less optimized than information retrieval and synthesis.
+  citation_status: verified
+  confidence: medium
+  notes: Audited arXiv v1 full text and appendix, the final ICLR/OpenReview record and final-paper dataset-statistics text,
+    the official ICLR schedule, official V2 README, release/current GitHub trees, nested licenses, V1 sibling tree, and Hugging
+    Face searches on 2026-07-20. Confidence is medium because material reward, corpus, mixture, environment, release, and
+    replay details remain undisclosed despite strong bibliographic and high-level method evidence.
+  remaining_unknowns:
+  - exact 30K-plus record count, record schema, splits, stable IDs, checksums, languages, domains, duplicates, and stage-level
+    mixture weights
+  - QA/graph generator models, prompts, seed entities, crawl dates, source manifests, uncertainty labels, and per-record provenance
+  - SFT trajectory teacher models, revisions, prompts, decoding, candidate counts, rejection criteria, acceptance rates, and
+    retained/rejected traces
+  - RL group size, rollout population, reward definition, verifier model or rules, terminal correctness predicate, clipping
+    values, seeds, and checkpoint lineage
+  - complete successful, incorrect, overlength, timed-out, retried, and tool-failed trajectory retention and release policy
+  - simulator implementation, offline Wikipedia snapshot, tool versions, cache/retry/backup routing, dependency locks, sandbox
+    image, and replay fixtures
+  - exact allocation of SailorFog-QA, SailorFog-QA-V2, and IterBench across SFT and RL despite differing stage-level descriptions
+  - decontamination and source-overlap audit against all six evaluation benchmarks
+  - data-, trajectory-, cached-web-, and simulator-specific licenses, privacy review, and redistribution/training rights
+  - whether an official V2-specific checkpoint exists and how it relates to the separately released Tongyi-DeepResearch model
+inclusion_reason: 'WebSailor-V2 is directly relevant because it specifies a high-scale path from dense web-derived QA construction
+  to complete ReAct supervision and on-policy agent RL across simulated and live environments. Its value to this atlas is
+  equally the audit boundary: a paper-reported 30K-plus instruction-pair corpus and complete-episode training recipe coexist
+  with a documentation-only V2 release, an undisclosed reward contract, and no public successful or failed trajectory archive.'
+related:
+- websailor-2025
+- webdancer-2025
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- information-seeking
+- synthetic-data
+- dense-knowledge-graph
+- react-trajectories
+- rejection-sampling
+- on-policy-rl
+- simulated-environment
+- live-web-environment
+- undisclosed-verifier
+- partial-release
+- version-boundary
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebSailor-V2 reports 30K-plus synthetic instruction pairs, rejection-sampled ReAct SFT, and on-policy RL
+  across offline-Wikipedia and managed live-web environments, but releases no V2 data, code, verifier, or complete trajectories.
+why_it_matters: It is a strong construction-recipe case for how topology-aware web tasks, successful tool-use traces, and
+  dual-environment RL can be coupled, while sharply demonstrating why paper scale, public release scale, reward reproducibility,
+  V1/V2 provenance, and failure retention must be audited independently.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  openreview_metadata_verified: true
+  project_verified: true
+  repository_tree_verified: true
+  artifact_verified: true
+  v1_v2_boundary_verified: true
+  dataset_release_verified: false
+  code_release_verified: false
+  v2_model_release_verified: false
+  trajectory_release_verified: false
+  complete_success_failure_retention_verified: false
+  reward_contract_verified: false
+  replay_verified: false
+  complete_rights_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Bibliographic identity, ICLR 2026 Poster status, final author list, method, final-paper 30K-plus scale, documentation
+    project, unchanged V2 tree, licenses, and separation from V1 artifacts were verified. Artifact verification means the
+    available official surfaces were inspected; it does not mean V2 data, code, model, trajectories, reward, or replay artifacts
+    exist publicly.
+curation_level: L3_summary_ready
+needs:
+- 'needs_full_data_release: publish the 30K-plus V2 instruction pairs with exact count, schema, IDs, checksums, splits, language/domain
+  mix, and duplicate policy'
+- 'needs_trajectory_release: publish successful SFT traces and complete successful, failed, overlength, timed-out, retried,
+  and tool-failed RL episodes with rewards and exclusion reasons'
+- 'needs_reward_metadata: define R_i, verifier model or rules, prompts, answer-equivalence policy, scale, calibration, and
+  false-positive/false-negative audit'
+- 'needs_provenance: release seed entities, source URLs and crawl dates, graph/subgraph objects, uncertainty labels, prompts,
+  generator snapshots, and record-level lineage'
+- 'needs_mixture_and_split: reconcile SFT-entirely-V2 wording with the SailorFog-QA/V2/IterBench experiment mixture and publish
+  stage-specific counts and simulator splits'
+- 'needs_decontamination: audit exact, semantic, entity, source-page, temporal, and tool-observation overlap with all evaluation
+  benchmarks'
+- 'needs_replay: release simulator and reward code, Wikipedia snapshot, cache/retry/backup manifests, tool/parser versions,
+  dependency locks, sandbox image, seeds, and replay fixtures'
+- 'needs_license_and_privacy: provide data-, trajectory-, simulator-, and cached-web-specific terms plus source-rights and
+  privacy review'
+- 'needs_model_lineage: link an official V2-specific checkpoint or explicitly document any relationship to Tongyi-DeepResearch
+  with training-checkpoint lineage'
+card: null

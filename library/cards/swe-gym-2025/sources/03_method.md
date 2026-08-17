@@ -1,0 +1,11 @@
+Task construction begins with 64,689 extracted issue/PR instances from 358 Python repositories. Eleven repositories receive semi-manual version and dependency configuration using repository files, CI, requirements, and documentation. A candidate environment is retained only when the human gold patch passes more unit tests than the original state, leaving 2,438 validated tasks. The rejected environment-construction ledger is not public.
+
+The main row stores issue text, repo, base_commit, version, gold patch, test patch, and pass-to-pass/fail-to-pass lists. The PMLR paper and current Hugging Face Lite card contain 230 Lite tasks; the top-level README says 234, which is documentation drift rather than a second supported split. Main and Lite both expose train-style data, not held-out SWE-Gym evaluation splits.
+
+OpenHands teacher trajectories come from gpt-4o-2024-08-06 and claude-3-5-sonnet-20241022 across multiple temperatures and 30/50-turn budgets. Test-passing episodes produce 491 SFT conversations. The sampled trajectory repository separately exposes 6,055 rows with messages, tools, patch, test output, flags, and outcome: 491 success and 5,564 failure.
+
+OpenHands policy models are Qwen2.5-Coder-Instruct 7B/14B/32B trained with full SFT. A reported attempt to mix on-policy self-improvement data with the 491 off-policy successes reduced held-out performance, so self-improvement is not presented as uniformly beneficial. Moatless samples 30 trajectories per Lite task at temperature 1.0 for two iterations, keeps successes, caps two per task, and prefers fewer rounds.
+
+The OpenHands outcome verifier consumes problem statement, interleaved observations/actions, and current diff, predicts YES/NO, and uses normalized YES probability as scalar reward. Its current mixture has 1,318 positives and 1,318 negatives. At inference, up to 16 OpenHands or 8 Moatless candidates are sampled and the maximum verifier score selects Best@k.
+
+Task images are named with mutable `latest` tags. GitHub repositories have no tags/releases, and no manifest binds all 2,438 rows to image digests, harness/scaffold commits, dependencies, test bundles, trajectory IDs, subset membership, model checkpoints, and artifact licenses.

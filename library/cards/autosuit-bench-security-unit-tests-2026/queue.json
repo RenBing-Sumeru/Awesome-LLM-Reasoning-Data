@@ -1,0 +1,19 @@
+{
+  "title": "AutoSUIT Bench: Automated Security UnIt Test Benchmark for LLM Coding",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1735/",
+    "data": "https://huggingface.co/datasets/amazon/AutoSUIT",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:46:37Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 AutoSUIT：覆盖232类CWE的951个安全单测样本",
+    "updated_at": "2026-07-18T11:46:37Z"
+  }
+}

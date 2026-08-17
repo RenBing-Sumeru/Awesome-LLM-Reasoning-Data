@@ -1,0 +1,3 @@
+The authors note that concept and checklist prompts may need few-shot examples to apply numbered instructions reliably, and that only three tasks were evaluated. The framework relies on LLM generation and translation, so errors or language-specific distortions can enter before the final judgment; internal representations might capture implicit knowledge better. Its checklists are manually designed prompts rather than automatically task-specific prompts, limiting scalability. Before reuse, separately audit translation fidelity and pairwise consistency in target languages.
+
+Use of Google Translate introduces external-service availability, privacy, and reproducibility constraints that the paper does not quantify.

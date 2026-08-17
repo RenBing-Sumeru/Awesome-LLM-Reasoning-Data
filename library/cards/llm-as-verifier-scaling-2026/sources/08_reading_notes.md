@@ -1,0 +1,1 @@
+The important scaling unit is verification quality, not only number of rollouts. Granularity combats ties, repetition combats variance, and decomposition combats criterion blind spots. The pivot tournament makes those knobs usable at larger pools. Check the end-to-end cost before interpreting a verifier accuracy gain as an agent-performance gain.

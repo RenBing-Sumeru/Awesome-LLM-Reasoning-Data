@@ -1,0 +1,3 @@
+Claim: conformal intervals make rating-judge uncertainty measurable while retaining useful coverage. On SummEval, most predictors obtain coverage near the target 90%; on the smaller reasoning benchmark ROSCOE, coverage often falls below 90% or requires wider intervals (Table 1). Boundary adjustment improves every reported coverage setting (Table 2).
+
+For score estimation, the continuous R2CCP midpoint with GPT-4o mini reduces SummEval fluency MSE from 3.907 to 0.443, an 88.7% reduction (Table 3). These results support calibrated interval reporting in the studied tasks, not guaranteed calibration under arbitrary distribution shift.

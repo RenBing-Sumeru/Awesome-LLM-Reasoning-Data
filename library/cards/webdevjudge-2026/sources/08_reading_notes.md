@@ -1,0 +1,5 @@
+- **Position.** WebDevJudge asks whether automated judges reproduce expert preference for deployable web implementations.
+- **Mechanism.** It filters 10,501 source queries to 654 labelled pairs and uses query-grounded binary rubric trees over intention, static, and dynamic quality.
+- **Artifact.** Code and data are public; WebDevJudge-Unit adds 502 feasibility cases for code- and interaction-based verification.
+- **Evidence anchor.** GPT-4.1 attains 70.34% pairwise agreement against 84.56% human agreement; single-answer grading reaches 60.86%.
+- **Reuse decision.** Use for deployed web-judge audits; first pin the environment and measure functional-equivalence and feasibility errors.

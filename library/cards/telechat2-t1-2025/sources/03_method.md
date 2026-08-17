@@ -1,0 +1,1 @@
+The official abstract reports 10T high-quality and diverse tokens for TeleChat2 pretraining. It reports domain-specific continual-pretraining datasets and RL for code generation and mathematical reasoning in TeleChat2.5 and T1, but leaves data identities, feedback, filters, and stage mixtures unknown.

@@ -1,0 +1,5 @@
+- 应把表 1、表 2 与第 2 节连起来阅读：九种策略在 offline/online、black-box/white-box 与 prefill 要求上不同，而 PRM、不确定性、LLM-critic 和 ReProbe 分数具有不同证据含义。
+- 必须把预算绑定到具体模型与策略：最大生成长度分别为 4,096、32,768 和 65,536 tokens；offline Best-of-N/self-consistency 使用 8 个样本；Qwen3 beam 的 width 为 3、候选数为 5、最多 250 步；MUR 每步使用 8 个候选。
+- 应把搜索时选择同终点 grading 分开：PRM 或 confidence 可以排序轨迹，但报告的任务成功由精确匹配、EvalPlus 或 KernelBench 检查决定。
+- 应检查 debugger schema 与两个 Claude Sonnet 4 缓存示例，了解工具包能够记录什么；随后确认公共发布中没有论文运行 prompt/candidate/scorer 语料、解析后 config-hash manifest 或 W&B export。
+- 复现前应固定代码/package 与 provider，冻结移动依赖，解决缺失的 ReProbe 实现路径，审计 benchmark 和生成输出权利，并在理论 TFLOPs 之外报告 wall-clock、token 与 evaluator 成本。

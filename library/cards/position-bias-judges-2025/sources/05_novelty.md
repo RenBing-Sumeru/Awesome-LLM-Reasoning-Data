@@ -1,0 +1,3 @@
+Prior LLM-as-a-Judge audits commonly use an order swap and position consistency in pairwise comparisons, sometimes treating inconsistent outputs as ties. This paper does not introduce another judge or a debiasing algorithm; it changes the audit object from a single consistency score to a repeated, directional analysis that separates instability from primacy/recency preference and extends the setting to list-wise comparison.
+
+That distinction makes the output useful for failure analysis: a low consistency score and a stable but directional preference are different operational risks. The contribution is an exploratory diagnostic framework, not evidence that the metrics themselves eliminate bias.

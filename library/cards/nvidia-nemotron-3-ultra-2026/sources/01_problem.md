@@ -1,0 +1,4 @@
+Frontier reasoning releases can publish checkpoints, recipe code, and data collections while still leaving the reported training system only partly reproducible. For an agentic post-training pipeline, reproducibility depends on item-level source allocation, the construction of synthetic traces, environment revisions, rollout groups, task predicates, reward behavior, rejected records, and data rights—not merely on a model download.
+
+Nemotron 3 Ultra is an unusually rich release, but its own disclosures also show the boundary of that richness. NVIDIA identifies public, synthetic, private third-party, private NVIDIA, vendor, and undisclosed sources; it releases collections and recipes while not establishing an immutable end-to-end manifest from source through checkpoint. This Card records both the concrete released artifacts and the remaining disclosure gaps.
+

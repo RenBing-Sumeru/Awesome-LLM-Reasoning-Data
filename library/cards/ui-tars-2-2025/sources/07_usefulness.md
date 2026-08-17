@@ -1,0 +1,9 @@
+For the frontier reports data disclosure ledger, this card is useful precisely because disclosure depth is uneven. The report exposes the conceptual episode contract, environment topology, annotation channels, task synthesis, reward branches, and optimizer scaffold, while withholding or omitting the item-level assets needed for independent reconstruction. It should be indexed as a partial frontier disclosure, not as an available GUI trajectory dataset.
+
+Researchers designing agent data can reuse the audit schema: task instruction; Working and Episodic Memory; reasoning trace; GUI or SDK action; screenshot or tool observation; final outcome; reward route; termination flag; environment/session identifier; version and checksum; and provenance. The game JSON fields show one concrete implementation, while the missing cross-domain schema warns against assuming uniform records.
+
+The report is also a strong case study for verifier selection. It allows comparison among deterministic runtime checks, reference-answer judging, and a learned outcome reward model. A reproduction plan should evaluate false positives, temporal evidence loss from the five-screenshot window, judge consistency, and disagreements between evaluator paths before combining their rewards.
+
+For environment builders, the reported VM lease lifecycle, shared filesystem, state persistence, observation capture, browser/game state interfaces, and monitoring tools provide a useful systems checklist. Actual replication still requires versioned images, reset contracts, failure codes, and replay logs that are not public.
+
+The card is not suitable as a source of downloadable training rows, exact mixture weights, a licensed data inventory, or a reproducible baseline checkpoint. Benchmark tables may motivate follow-up experiments, but they do not upgrade the report's data quality or curation status.

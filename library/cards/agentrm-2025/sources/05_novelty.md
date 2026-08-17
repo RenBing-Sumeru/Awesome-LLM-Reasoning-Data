@@ -1,0 +1,1 @@
+Prior agent work commonly specializes a policy or process reward model to a task. AgentRM changes the supervised object: one reward model is trained from search-derived state values on three environments, then guides a policy on held-out tasks. MCTS, value regression, Best-of-N, and beam search are not individually new; the contribution is the general-reward transfer contract.

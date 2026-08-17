@@ -1,0 +1,3 @@
+Long-horizon Lean theorem proving requires an agent to decide when to reason, compile code, search Mathlib, run Python, cache a proved lemma, summarize failure, or restart. Seed-Prover 1.5 studies how these environment interactions can become outcome-rewarded experience and how natural-language proofs can be converted into recursive formal proof trees.
+
+The audit problem is that “learning from experience” describes a data object but not an open dataset. The report exposes fields, tools, rewards, filters, and inference budgets, while withholding the SFT/RL trajectories, failed summaries, model weights, LooKeng, search index, Python sandbox, and orchestration.

@@ -1,0 +1,15 @@
+- **身份与版本边界：** 本条目是 exact-title 的 arXiv:2510.11977、OpenReview `vUaY1t64ZZ`、ICLR 2026 Poster 论文，不是其他也称为 HAL 的工作。Atlas 年份是 2025，而接收会议记录是 2026；引用时必须保留该区别。
+- **规模漂移：** 论文报告 21,730 个 rollout 与超过 2.5B token，project page 后来显示 26,597 个 rollout，已审计 HF repository 则有 380 个加密 run archive、总计 113,072,877,091 bytes。它们是不同 unit 与 snapshot；没有 frozen manifest 把论文 corpus 映射到当前 archive name 与 checksum。
+- **内部计数差异：** Appendix A4 写 186 个 run，但 Appendix A10 的九个 per-benchmark count 相加为 184。未解释的两个 run 差距阻碍对 evaluation matrix 的准确重建。
+- **Schema 与 retention 不确定性：** HF 没有 dataset card、normalized viewer schema 或 corpus-level manifest。两个已解密 archive 展示了具体 config/result/evaluator/log/usage/cost/Git 字段并保留 failure，但 corpus-wide uniformity 以及 success、crash、timeout、partial log、failed upload 与可选 raw submission 的完整性都是 unknown。
+- **Verifier 与 gaming 风险：** 原生 benchmark evaluator 可能奖励 leaked answer、hard-coded output、shortcut 或 guessed submission，而不是预期 task completion。TAU-bench Few Shot demonstration 含 test example，AssistantBench agent 也检索到 benchmark answer。因此 final success label 不能证明 reasoning 有效。
+- **Judge 校准：** Docent 对 cleaned transcript 使用 GPT-5 Medium。人工检查只估计选定 positive rubric flag 的 precision，没有报告 false-negative rate 或整体 accuracy。论文时期的准确 judge snapshot、decoding setting、prompt/rubric file 与 adjudication record 未完整固定。
+- **因果性：** behavioral flag 与 outcome 相关，但不能证明修正 flagged behavior 会导致成功。论文把 checkpoint-and-corrected-replay 明确列为缺失的 causal test。
+- **Environment false negative：** browser crash、rate limit、不可用 package/file、API failure、scaffold defect 与 VM/container problem 都可能被计为 agent failure。local execution 无 sandbox，而 Docker 与 Azure 的 isolation/state behavior 也不同。
+- **统计与覆盖限制：** 由于成本，多数 evaluation 只有 single run。GAIA 与 AssistantBench 使用 public set，SWE-bench Verified Mini 只覆盖 500 个 task 中的 50 个，论文使用原始 TAU-bench 而不是 tau2-bench。variance 与更广泛 generalization 尚无法确定。
+- **Replay 缺口：** run command、Git commit、`--run_id` 与 `--continue_run` 改善 lineage，却没有冻结 dynamic website/API、benchmark mirror、proprietary model endpoint、provider-side weight/quantization 变化、credential、retry policy、dependency 或 execution image。现有证据不支持精确 deterministic replay。
+- **加密边界：** ZIP encryption 使用公开密码 `hal1234`。它可能阻碍 automated scraping，但不是 access control，也不能证明 decontamination 或施加 downstream-use restriction。
+- **权利与隐私：** OpenReview paper record 是 CC BY 4.0，但归档 code repository 没有 license，HF trace repository 既无 dataset card，也无 license metadata/file。第三方 benchmark input、model output、raw submission 与 retrieved web content 的权利未协调，也没有 corpus-level privacy、consent、redaction、sensitive-content 或 takedown policy。
+- **Artifact 维护：** harness repository 版本为 0.1.0，没有 GitHub release，于 2026-07-01 在 commit `16bb03...` 归档，并暂停通过该 harness 提交 leaderboard。当前 provider 或 benchmark 行为可能已经不同于论文设置。
+- **安全解释：** TAU-bench 中的 wrong payment method、over-budget purchase、incorrect refund 或 wrong flight detail 都发生在 simulated benchmark。它们能支持 deployment-risk audit，却不是现实金融交易记录，也不能证明完整覆盖高风险安全问题。
+- **用途边界：** 论文只展示 evaluation 与 audit，没有使用这些 trace 训练模型；benchmark performance 也不是 data quality 的证明。在 license、privacy、manifest、schema、contamination、retention 与 replay 审查完成前，SFT、preference、reward-model、RLVR 或 agent-training reuse 均应阻止。

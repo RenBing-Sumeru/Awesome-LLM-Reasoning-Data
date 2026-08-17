@@ -1,0 +1,1 @@
+论文报告 7B 与 32B 模型在 AIME24、AIME25 和 MATH 上达到 Qwen2.5 系开放模型中的领先或竞争结果，并在正确答案上使用更少 token。最关键的受控证据来自多阶段消融：长度渐进与重复惩罚共同提高稳定性和 token efficiency，而不是只延长上下文。该结论适用于论文的 719K/62K 配方与 Qwen2.5 backbone；换用更强基础模型或不同 reward parser 需重新验证。

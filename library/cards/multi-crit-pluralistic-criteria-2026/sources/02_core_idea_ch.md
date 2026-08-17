@@ -1,0 +1,1 @@
+Multi-Crit 构建同时覆盖开放式生成和可验证推理的多模态 judge benchmark，数据由具有挑战性的回答对、多个 criteria 的人工判断和维度级冲突关系组成。论文提出三类指标，分别衡量 pluralistic adherence、criteria 切换灵活性以及识别不同 criteria 偏好冲突的能力，并评测 25 个 LMM。它关注的不是 judge 是否复现一个全局标签，而是能否在给定评价标准后输出可靠的 criterion-level judgment。

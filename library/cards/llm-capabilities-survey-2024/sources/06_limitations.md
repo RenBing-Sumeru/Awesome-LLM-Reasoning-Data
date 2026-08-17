@@ -1,0 +1,1 @@
+The paper does not claim one fixed ranking of capabilities for every domain. The coverage is bounded by the surveyed literature, and a capability-to-domain connection should not be mistaken for a guarantee that a model will work reliably in a particular deployment.

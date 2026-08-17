@@ -1,0 +1,104 @@
+id: nemotron-math-proofs-v2-2026
+title: Nemotron-Math-Proofs-v2
+year: 2026
+venue: NVIDIA Hugging Face dataset release
+authors:
+- NVIDIA Corporation
+source_role:
+- data_release
+- process_supervision
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- math
+- mathematical_proofs
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2
+  arxiv: null
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2/resolve/7665d7f1d006fd89aa852a9dab8060c60b63f814/data/train.jsonl
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v2
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: AoPS-derived subset of Nemotron-Math-Proofs-v1
+  trace_author: DeepSeek-V4-Pro Max inference mode
+  answer_format: Two-turn proof, verification or meta-verification conversations
+  process_fields:
+  - messages
+  - problem
+  - subset
+  - uuid
+  environment_or_substrate: Offline proof trace release
+  verifier_or_reward: Natural-language verification with embedded boxed 0/0.5/1 judgments
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: DeepSeek-V4-Pro
+  generator: DeepSeek-V4-Pro
+  filtering_rule: unknown
+  sampling_protocol: DeepSeekMath-V2-style prompting
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: AoPS seed problems plus synthetic proof and evaluation traces
+  split: Train only; card declares 82737 records but Dataset Server partial conversion exposes 23799
+  decontamination: unknown
+  license: CC-BY-4.0 release claim; AoPS source rights unknown
+  lineage: v1 AoPS subset -> DeepSeek proof/verification/meta-verification; replaces only Cascade-2 natural-language proof
+    subset
+  known_failure_modes:
+  - No formal verifier
+  - Scores embedded in text
+  - Full count not independently enumerable
+  - Filtering and failure prevalence unknown
+  citation_status: verified
+  confidence: medium
+  notes: Official release and samples inspected at revision 7665d7f1d006fd89aa852a9dab8060c60b63f814.
+inclusion_reason: Open proof, verification and meta-verification traces with explicit lineage and release completeness limits.
+related: []
+tags:
+- math
+- proofs
+- aops
+- verification-traces
+- meta-verification
+status: partial
+one_line: NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
+one_line_summary: NVIDIA release of AoPS-derived DeepSeek proof, verification and meta-verification traces.
+why_it_matters: Makes natural-language self-verification and partial release visibility auditable.
+card: cards/releases/nemotron_math_proofs_v2.md
+needs:
+- 'needs_audit: reconcile full count with partial Dataset Server conversion'
+- 'needs_metadata: quantify scores and failed traces'
+- 'needs_license: verify AoPS provenance'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Public data artifact and sample schema verified.
+category_ids:
+- data_construction_open_release_recipes

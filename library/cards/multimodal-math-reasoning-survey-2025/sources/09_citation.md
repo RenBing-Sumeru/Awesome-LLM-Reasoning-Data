@@ -1,0 +1,3 @@
+Yibo Yan, Jiamin Su, Jianxiang He, Fangteng Fu, Xu Zheng, Yuanhuiyi Lyu, Kun Wang, Shen Wang, Qingsong Wen, and Xuming Hu. 2025. A Survey of Mathematical Reasoning in the Era of Multimodal Large Language Model: Benchmark, Method & Challenges. Findings of ACL 2025, pages 11798–11827. https://aclanthology.org/2025.findings-acl.614/
+
+Use the ACL Anthology record as the authoritative source for bibliographic metadata and the official paper. Cite this survey for its benchmark–method–challenge synthesis and its account of the reviewed field. When discussing a particular dataset, multimodal pipeline, model result, or evaluation protocol, cite the corresponding primary study as well, because this paper does not newly establish those empirical details.

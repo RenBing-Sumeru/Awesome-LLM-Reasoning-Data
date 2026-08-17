@@ -1,0 +1,5 @@
+- CWT trains one rationale chunk at a time; SBC uses the current student's loss to revise boundaries.
+- STT treats answer correctness after chunk removal as the skip decision, not as proof of step irrelevance.
+- Teacher rationales use text-davinci-002, maximum length 128, and temperature 0.7 in the reported protocol.
+- The paper evaluates seven reasoning tasks, but some tasks retain nearly the full rationale and obtain little speedup.
+- No official processed traces or deletion logs were confirmed, so benchmark gains are not data-quality evidence.

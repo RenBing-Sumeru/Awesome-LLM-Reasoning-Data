@@ -1,0 +1,3 @@
+The paper evaluates on TRAIL, which it describes as 148 OpenTelemetry traces with 841 span-level errors under a 20+ category taxonomy. Reported metrics are localization accuracy, weighted category F1, and joint localization-categorization accuracy.
+
+Table 4 reports the framework at 0.547 category F1, 0.823 localization accuracy, and 0.616 joint accuracy on TRAIL-GAIA; and 0.698, 0.860, and 0.638 on TRAIL-SWE-bench. The evidence boundary is the mapper and judge setup: framework outputs are translated into TRAIL categories, all bottom-up/top-down judging uses GPT-5.4, and TRAIL annotation consistency limits the meaning of category-level claims.

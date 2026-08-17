@@ -1,0 +1,4 @@
+This card treats Hunyuan-A13B as a data-disclosure record, not as evidence that a benchmark-leading model necessarily used high-quality data. The technical report describes an 80B-total, 13B-active MoE model trained on more than 20T foundation-corpus tokens, including a 250B-token STEM subset, followed by four post-training stages: reasoning SFT, reasoning RL, all-scenarios SFT, and all-scenarios RL. The audit question is therefore: what training objects, source classes, construction steps, verifiers, rewards, and environments can be recovered from the report, and what remains unavailable?
+
+The report gives useful aggregate counts and mechanisms but no record-level corpus. Exact prompt manifests, most mixture sizes, source URLs and licences, verifier checkpoints, rollout counts, reward logs, and replayable agent environments are unknown. Model weights and code availability must be kept separate from training-data availability.
+

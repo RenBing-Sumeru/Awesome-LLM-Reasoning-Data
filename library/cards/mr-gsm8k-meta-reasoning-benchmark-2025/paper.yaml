@@ -1,0 +1,108 @@
+id: mr-gsm8k-meta-reasoning-benchmark-2025
+title: 'MR-GSM8K: A Meta-Reasoning Benchmark for Large Language Model Evaluation'
+year: 2025
+venue: ICLR 2025
+authors:
+- Zhongshen Zeng
+- Pengguang Chen
+- Shu Liu
+- Haiyun Jiang
+- Jiaya Jia
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- meta-reasoning
+- process-evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/fc0b0e6ac2da44d5839b13f90625b357-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2312.17080
+  code: https://github.com/JIA-Lab-research/MR-GSM8K
+  project: null
+  data: https://huggingface.co/datasets/Randolphzeng/Mr-GSM8K
+  huggingface: https://huggingface.co/datasets/Randolphzeng/Mr-GSM8K
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/fc0b0e6ac2da44d5839b13f90625b357-Abstract-Conference.html
+  doi: null
+  openreview: https://openreview.net/pdf?id=br4H61LOoI
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K questions paired with model-produced solutions.
+  trace_author: Models generate candidate step-by-step solutions that are assessed as reasoning objects.
+  answer_format: Question, gold solution and answer, model-output steps, final and solution correctness, first-error location
+    and reason, and question type.
+  process_fields:
+  - model_output_steps
+  - model_output_solution_correctness
+  - model_output_solution_first_error_step
+  - model_output_solution_first_error_reason
+  environment_or_substrate: 'Meta-reasoning evaluation: judge an existing solution rather than only solve the question.'
+  verifier_or_reward: Gold solutions and task annotations support correctness and first-error assessment.
+  terminal_predicate: The candidate solution is judged correct or its first reasoning error is identified.
+recipe_metadata:
+  base_model: The benchmark evaluates a range of open and commercial LLMs.
+  teacher: Gold GSM8K solutions and benchmark annotations.
+  generator: Model-produced candidate reasoning solutions.
+  filtering_rule: The released test set distinguishes correct and incorrect solutions and records the first error for flawed
+    traces.
+  sampling_protocol: Convert GSM8K solution assessment into questions that require judging assumptions, calculations, logic,
+    and error locations.
+  inference_budget: Evaluation setting; see official repository scripts for prompting details.
+  optimizer_or_scaffold: Benchmark evaluation scripts.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: GSM8K questions and gold solutions paired with generated model solutions and meta-reasoning annotations.
+  split: The official Hugging Face release supplies a 3K-row test split.
+  decontamination: It is an evaluation benchmark built from GSM8K; do not use its test rows for training before measurement.
+  license: The official Hugging Face dataset is Apache-2.0; consult the repository for code terms.
+  lineage: ICLR 2025 proceedings, official JIA Lab repository, and Randolphzeng Hugging Face dataset.
+  known_failure_modes:
+  - First-error labels may reflect the benchmark's segmentation decisions
+  - Coverage is centered on grade-school mathematics
+  - Performance may depend on judge prompting and access to reference information
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICLR 2025 proceedings entry, author affiliations in the proceedings PDF, official JIA Lab repository,
+    and the dataset schema and license on Hugging Face.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: MR-GSM8K turns GSM8K solutions into meta-reasoning tasks that require models to score a trace and pinpoint
+  its first error, exposing process-evaluation gaps hidden by answer accuracy.
+why_it_matters: It makes explicit error localization and solution assessment a first-class evaluation target with a reusable
+  structured test schema.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICLR 2025 proceedings entry, author affiliations in the proceedings PDF, official JIA Lab repository,
+    and the dataset schema and license on Hugging Face.
+category_ids:
+- process_trace_supervision_data

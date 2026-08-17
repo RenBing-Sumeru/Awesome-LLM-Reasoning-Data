@@ -1,0 +1,1 @@
+AITW 适合作为移动端 imitation learning、离线 agent 评测和动作空间设计的基础数据。复用记录应保留任务文本、subset 名称、episode id、step id、截图或观测引用、动作类型、动作参数、文本 payload、前后状态、可用的设备元数据和评测器版本。对 atlas 来说，它提供了早期大规模移动轨迹 benchmark，审计重点是演示标签一致性和真实环境成功之间的差距。

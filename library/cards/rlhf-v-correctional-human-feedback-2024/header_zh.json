@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "以人工标出的视觉幻觉片段构造纠错式偏好监督，可用于密集多模态偏好优化。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集论文",
+  "best_for_ch": "偏好学习、奖励建模与反馈审计研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Tianyu Yu、Yucheng Wang、Yue Wang、Yunlong Zhang、Ming Liu、Zhiyuan Liu、Maosong Sun",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ]
+}

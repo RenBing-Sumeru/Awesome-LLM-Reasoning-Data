@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该研究表明，测试时推理在翻译中主要通过任务专化模型与后编辑发挥作用，而非无差别延长思考。","reading_priority_ch":"可读","paper_type_ch":"跨领域测试时扩展评测研究（EACL 2026）","best_for_ch":"检验推理预算能否迁移到数学和代码之外任务的读者。","confidence_ch":"高","authors_ch":"Zihao Li、Shaoxiong Ji、Jörg Tiedemann（机构：University of Helsinki、ELLIS Institute Finland、University of Turku）","category_ids":["scaling_rlvr_test_time_compute"]}

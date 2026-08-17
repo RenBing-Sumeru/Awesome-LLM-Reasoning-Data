@@ -1,0 +1,5 @@
+- Read §3.1 and Figure 2 first: the reusable mechanism is top-2 sibling expansion, three EOS rollouts per child, COMETKiwi mean node values, and continuation from the higher-valued branch.
+- Keep construction and release separate: the paper uses a tree, but the public schema contains only chosen/rejected translations and two undocumented scalar-score semantics.
+- Read Tables 1, 3, and 4 together: benchmark ranking, token-level versus vanilla pairs, and preference versus direct-value supervision answer different questions and do not prove data quality.
+- Treat the 0.04–0.4 filter and sole `train` splits as audit decisions; selection yield, grouped source-sentence overlap, duplicate control, and decontamination remain unknown.
+- Pair this Card with other search-trace entries by comparing retained failures, verifier independence, and equalized rollout budgets—not by comparing final metric scores alone.

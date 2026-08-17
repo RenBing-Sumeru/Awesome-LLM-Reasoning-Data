@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RBM-1M 含逾百万机器人轨迹，结合帧级进度与同任务轨迹偏好，显式纳入失败和次优行为。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "机器人轨迹比较奖励模型与百万级数据集论文",
+  "best_for_ch": "需要从机器人失败、次优与专家轨迹共同学习可泛化奖励函数的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Anthony Liang, Yigit Korkmaz, Jiahui Zhang, Minyoung Hwang, Abrar Anwar, Sidhant Kaushik, Aditya Shah, Alex S. Huang, Luke Zettlemoyer, Dieter Fox, Yu Xiang, Anqi Li, Andreea Bobu, Abhishek Gupta, Stephen Tu, Erdem Bıyık, Jesse Zhang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

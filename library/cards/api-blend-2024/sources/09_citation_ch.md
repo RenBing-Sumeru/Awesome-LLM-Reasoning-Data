@@ -1,0 +1,1 @@
+引用：Kinjal Basu, Ibrahim Abdelaziz, Subhajit Chaudhury, Soham Dan, Maxwell Crouse, Asim Munawar, Sadhana Kumaravel, Vinod Muthusamy, Pavan Kapanipathi, and Luis A. Lastras. "API-BLEND: A Comprehensive Corpora for Training and Benchmarking API LLMs." arXiv:2402.15491, 2024；arXiv comment 标注 ACL 2024 Main Conference。论文：https://arxiv.org/abs/2402.15491。已核验来源中未发现稳定官方公开 code/data 发布链接。

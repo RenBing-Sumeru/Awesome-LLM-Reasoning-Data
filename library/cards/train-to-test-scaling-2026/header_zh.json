@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"Train-to-Test 标度律在端到端预算下联合优化参数规模、训练 token 和推理采样数。","reading_priority_ch":"必读","paper_type_ch":"训练—推理联合标度律论文","best_for_ch":"需要根据重复推理需求选择预训练规模的读者。","confidence_ch":"高","authors_ch":"Nicholas Roberts 等（机构以官方论文为准）","category_ids":["scaling_rlvr_test_time_compute"]}

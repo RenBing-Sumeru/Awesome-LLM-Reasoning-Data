@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建多语言过程奖励评测数据集，但影响力一般",
+    "updated_at": "2026-07-13T13:47:34Z"
+  },
+  "updated_at": "2026-07-13T13:47:34Z"
+}

@@ -1,0 +1,6 @@
+- Read the official dataset card first: its nine split counts total 6,341,414 rows and define the released object more directly than the model report's training tables.
+- Keep the report's approximately 80B SFT tokens and Table 7 domain counts separate from the public row ledger; no row-level reconciliation is published.
+- Treat `generator` totals as overlapping contribution counts, not unique rows or unique-teacher assignments.
+- Multilingual prompts and answers target five languages, but reasoning traces stay in English; preserve and audit this asymmetry.
+- Read report Sections 3.1-3.2 for pipeline context, while remembering that their tool, guard, IFEval, WorkBench, and reward-model decisions are absent from the row schema.
+- Before reuse, pin raw files and hashes and resolve source, decontamination, verifier, rejected-candidate, rights, and stage-mapping unknowns.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ZeroSearch 发布检索模拟器训练数据与代码，在带噪多轮搜索中用答案 F1 奖励训练策略。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Hao Sun, Zile Qiao, Jiayan Guo, Xuanbo Fan, Yingyan Hou Yong Jiang, Pengjun Xie, Yan Zhang, Fei Huang, Jingren Zhou",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-17T06:07:42Z"
+}

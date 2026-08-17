@@ -1,0 +1,1 @@
+arXiv 摘要和官方项目页报告 12,751 个 text-to-SQL pair、95 个数据库、33.4GB 内容和 37 个领域。论文早期结果显示一个 chat-model baseline 的 execution accuracy 为 40.08%，人类为 92.96%，说明官方设置下差距很大。GitHub 记录了 db_id、question、evidence、SQL、database_description、sqlite 数据库和 gold SQL 文件等字段。只有固定数据库 dump 与 evaluator 时证据才可复验；随着新模型和清理 split 出现，leaderboard 数字会变化。

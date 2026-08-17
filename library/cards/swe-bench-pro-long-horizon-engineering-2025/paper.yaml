@@ -1,0 +1,126 @@
+id: swe-bench-pro-long-horizon-engineering-2025
+title: 'SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?'
+year: 2025
+venue: ICLR 2026
+authors:
+- Xiang Deng
+- Jeff Da
+- Edwin Pan
+- Yannis Yiming He
+- Charles Ide
+- Kanak Garg
+- Niklas Lauffer
+- Andrew Park
+- Nitin Pasari
+- Chetan Rane
+- Karmini Sampath
+- Maya Krishnan
+- Srivatsa Kundurthy
+- Sean Hendryx
+- Zifan Wang
+- Chen Bo Calvin Zhang
+- Noah Jacobson
+- Bing Liu
+- Brad Kenstler
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- code-generation
+- agent-evaluation
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.16941
+  arxiv: https://arxiv.org/abs/2509.16941
+  code: https://github.com/scaleapi/SWE-bench_Pro-os
+  data: https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro
+  project: https://labs.scale.com/papers/swe-bench-pro
+  huggingface: https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro
+  doi: https://doi.org/10.48550/arXiv.2509.16941
+  venue: https://openreview.net/forum?id=9R2iUHhVfr
+  openreview: https://openreview.net/forum?id=9R2iUHhVfr
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Human-augmented issue and commit records from public, held-out, and partnered repositories.
+  trace_author: Professional engineers, repository contributors, and evaluation agents.
+  answer_format: Problem statement, requirements/interface, repository environment, F2P/P2P tests, and candidate patch evaluation.
+  process_fields:
+  - issue
+  - requirements brief
+  - repository
+  - F2P tests
+  - P2P tests
+  - trajectory
+  environment_or_substrate: Docker-based professional repository environments.
+  verifier_or_reward: Human-verified fail-to-pass and pass-to-pass tests.
+  terminal_predicate: The patch passes the task's required tests without breaking preserved functionality.
+recipe_metadata:
+  base_model: Not applicable to benchmark construction.
+  teacher: Professional engineer augmentation and test validation.
+  generator: Commit harvesting plus human requirements/interface augmentation.
+  filtering_rule: Four-stage sourcing, environment construction, harvesting, and human augmentation/verification.
+  sampling_protocol: Public, held-out, and commercial subsets; only the public subset is openly released.
+  rollout_count: null
+  temperature: null
+  inference_budget: Long-horizon evaluation; report scaffold, turns and compute budget.
+  optimizer_or_scaffold: Docker evaluation harness and unified coding-agent scaffold.
+audit:
+  source_mixture: Official Scale Labs paper/project/leaderboard, GitHub harness, Hugging Face release, arXiv, and ICLR OpenReview
+    record.
+  split: 1,865 total tasks; 731 public, 858 held-out, 276 commercial in the original release.
+  decontamination: Strong-copyleft and partnered repositories reduce but do not eliminate exposure; audit the exact dataset
+    revision.
+  license: Verify dataset, harness, and individual repository terms before use.
+  lineage: https://arxiv.org/abs/2509.16941
+  known_failure_modes:
+  - Only the public subset is downloadable.
+  - OpenAI's July 2026 audit estimated roughly 30% of tasks are broken.
+  - Task scores depend on evolving tests and evaluation harness versions.
+  citation_status: verified
+  confidence: high
+  notes: Scale Labs is the official project owner; OpenReview records the paper as published at ICLR 2026. The card records
+    the subsequent official audit as a material reuse risk.
+inclusion_reason: SWE-Bench Pro provides Dockerized long-horizon engineering tasks whose patches are judged by explicit execution-based
+  tests, creating a programmatically verifiable outcome surface.
+related: []
+tags:
+- software-engineering
+- long-horizon
+- docker
+- benchmark
+- '2025'
+one_line_summary: SWE-Bench Pro offers long-horizon engineering tasks with human-augmented specifications and Dockerized F2P/P2P
+  tests, while its later audit exposes substantial task-quality risk.
+why_it_matters: It combines an executable professional-task benchmark with a concrete, consequential example of why verifier
+  and task audits must remain part of reuse decisions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Scale Labs is the official project owner; OpenReview records the paper as published at ICLR 2026. The card records
+    the subsequent official audit as a material reuse risk.
+category_ids:
+- programmatically_verifiable_outcome_data
+- benchmarks_evaluation_surfaces

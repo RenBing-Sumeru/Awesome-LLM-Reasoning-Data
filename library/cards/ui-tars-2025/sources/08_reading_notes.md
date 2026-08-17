@@ -1,0 +1,6 @@
+- Read Sections 4.2–4.4 for perception, action, tutorial, and thought construction; Section 4.5 for the online flywheel and reflection data; Section 4.6 for the roughly 50B-token continual-pretraining, annealing, and correction/error DPO phases; and Sections 5 and 5.3 for OSWorld/AndroidWorld and System-1/System-2 Best-of-N evidence.
+- The unified action schema spans desktop/mobile and includes both `Finished()` and safe escalation via `CallUser()`; evaluation treats the latter as infeasible.
+- Distinguish action-conditioned reflection from thought bootstrapping: the former sees the target action; the latter samples without it and selects by action correctness.
+- The online flywheel uses hundreds of VMs, heuristics, VLM scores, and first-error human review, but releases no counts, thresholds, environments, or trajectories.
+- System 1/2 Best-of-N 1/16/64 is evaluation-time compute and selection, not a disclosed training reward or sampler.
+- The repository URL is paper-linked, but contents/license/releases were not audited; data and Hugging Face artifacts remain null. Related Card: `ui-tars-2-2025`.

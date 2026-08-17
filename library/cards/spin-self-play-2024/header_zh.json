@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SPIN 公开基础对话及第 0 至第 3 轮策略回答，用于反复自博弈微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "在只有固定人类对话集时自举提升指令模型",
+  "confidence_ch": "高",
+  "authors_ch": "Zixiang Chen, Yihe Deng, Huizhuo Yuan, Kaixuan Ji, Quanquan Gu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

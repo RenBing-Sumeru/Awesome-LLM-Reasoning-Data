@@ -1,0 +1,3 @@
+**Method coverage.** The survey places supervised fine-tuning, prompting and in-context learning, and hybrid self-improvement in separate branches, then connects them to reasoning evaluation and analysis. This breadth supports the taxonomy as a routing tool; it is not a controlled comparison showing one branch is superior.
+
+**Interpretation boundary.** Across the literature synthesis, task accuracy and fluent chains are treated as observations whose mechanism and faithfulness require separate analysis. That distinction is the survey's decisive evidence for cautious reading, but numerical claims about a particular model, dataset, or benchmark must still be verified in the cited primary paper.

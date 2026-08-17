@@ -1,0 +1,1 @@
+一手来源是 Wang 等人的 "Math-Shepherd"，ACL 2024 long paper。论文要解决的是不用人工逐步标注，如何为数学推理构造 process reward supervision。收录边界是自动过程监督和 PRM 使用，不是新的数学题 benchmark，也不是形式化证明检查。数据对象是一个数学解答前缀或步骤，带由 sampled continuations 能否到达正确最终答案诱导出的奖励信号。它对 atlas 的价值在于反馈契约设计：步骤标签由最终答案验证支撑，而不是人工证明质量判断。

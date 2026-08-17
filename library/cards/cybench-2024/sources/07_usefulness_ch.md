@@ -1,0 +1,1 @@
+Cybench 可作为可执行 agent benchmark 的模板，其中环境、动作轨迹和终止谓词都是一等字段。复用时应保留 task ID、竞赛/来源、文件、container image、scaffold、模型、web/search 策略、命令轨迹、观察、预算、subtask checks、最终 flag 结果和安全说明。对 atlas 来说，它是 full-episode supervision 的例子，同时有稀疏最终奖励和较密的诊断检查。它也能帮助审计某个 cyber-agent 分数到底来自真实环境交互，还是只来自静态知识。

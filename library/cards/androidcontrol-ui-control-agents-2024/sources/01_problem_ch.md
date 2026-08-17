@@ -1,0 +1,1 @@
+AndroidControl 研究 UI 控制数据的规模与分布如何影响智能体对新 Android app 和新任务的泛化。主要来源是 arXiv 论文和 Google Research AndroidControl 仓库；arXiv 记录说明该工作被 NeurIPS 2024 接收。它的边界是离线 Android UI 控制演示和 app/task 泛化评测，不是带实时任务验收的在线手机环境。一个数据对象是 TFRecord episode，含 high-level goal、截图、accessibility tree、step instruction 和 JSON action。对 atlas 的价值是把数据规模、app 覆盖和 OOD split 设计作为 GUI agent 的核心评测变量。

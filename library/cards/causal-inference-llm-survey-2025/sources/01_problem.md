@@ -1,0 +1,1 @@
+Causal inference can improve predictive accuracy, fairness, robustness, and explainability by modeling causal relationships. This Findings NAACL 2025 survey asks how causal ideas can evaluate or improve language models, and how language models can assist causal tasks. It surveys both directions rather than releasing a new model or dataset.

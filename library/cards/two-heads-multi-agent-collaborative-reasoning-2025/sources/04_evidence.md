@@ -1,0 +1,1 @@
+The official primary source is https://arxiv.org/abs/2504.09772. It reports the method and the stated evaluation or artifact evidence; this Card does not infer any unreported score, release, or replay guarantee.

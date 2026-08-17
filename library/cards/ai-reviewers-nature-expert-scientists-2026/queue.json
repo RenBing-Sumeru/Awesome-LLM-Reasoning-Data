@@ -1,0 +1,19 @@
+{
+  "title": "On the limits and opportunities of AI reviewers: Reviewing the reviews of Nature-family papers with 45 expert scientists",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.20668",
+    "data": "https://huggingface.co/datasets/prometheus-eval/peerreview-bench",
+    "code": "https://github.com/prometheus-eval/peerreview-bench",
+    "project": "https://paperreview.ai/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T08:05:48Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "45 位科学家评审 82 篇论文的 2,960 条批评，形成可检验 AI 审稿意见正确性与证据性的专家数据",
+    "updated_at": "2026-07-25T08:05:48Z"
+  }
+}

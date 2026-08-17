@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepSeek-R1 报告了 cold-start/RL/SFT/RL 阶段、规则/奖励反馈和 80 万条蒸馏数据，却未公开 prompt、轨迹、verifier、reward、切分或审计 artifact。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型报告与数据披露账本",
+  "best_for_ch": "希望审计 GRPO、cold start、rejection sampling、蒸馏与开放权重复现边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "DeepSeek-AI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

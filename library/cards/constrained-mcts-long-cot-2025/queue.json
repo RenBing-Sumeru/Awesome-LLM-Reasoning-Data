@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "树搜索，无明显数据",
+    "updated_at": "2026-07-20T12:40:48Z"
+  },
+  "updated_at": "2026-07-20T12:40:48Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

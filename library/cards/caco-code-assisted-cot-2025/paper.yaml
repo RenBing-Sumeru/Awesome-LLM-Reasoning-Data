@@ -1,0 +1,187 @@
+id: caco-code-assisted-cot-2025
+title: Scaling Code-Assisted Chain-of-Thoughts and Instructions for Model Reasoning
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Honglin Lin
+- Qizhi Pei
+- Zhuoshi Pan
+- Yu Li
+- Xin Gao
+- Juntao Li
+- Conghui He
+- Lijun Wu
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematical_reasoning
+- code
+- algorithmic_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3267aa172c31ae3641c32ecc6e42e5cd-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2510.04081
+  code: https://github.com/LHL3341/Caco
+  data: https://huggingface.co/datasets/LHL3341/Caco-1.3M
+  project: https://github.com/LHL3341/Caco
+  huggingface: https://huggingface.co/datasets/LHL3341/Caco-1.3M
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3267aa172c31ae3641c32ecc6e42e5cd-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3267aa172c31ae3641c32ecc6e42e5cd-Abstract-Conference.html
+data_object:
+  prompt_source: Seed tasks are drawn from MATH (7.5K), DeepScaleR (40K), BigMath (251K), and KodCode (40K). For BigMath,
+    the paper keeps problems with reported solve rate below 0.3. Qwen2.5-72B-Instruct converts source solutions into a standardized
+    executable Python representation; execution and answer checks leave 146K seed Code CoTs, reported as 122K mathematical
+    and 24K algorithmic/code records.
+  trace_author: A Qwen2.5-Coder-7B model trained on the verified seed programs samples new Code CoTs without seeing problem
+    statements. Qwen3-8B separately reconstructs a problem from each surviving program plus representative input-output examples
+    and generates a natural-language CoT. Qwen3-32B supplies model-based solvability, answer-correctness, and code-language
+    consistency decisions.
+  answer_format: 'The current Caco-1.3M Hugging Face release has one train split with 1,348,799 rows and four string fields:
+    instruction, output, answer, and code. The output is the natural-language reasoning response, answer is the extracted
+    final answer, and code is the executable Python reasoning program used by the pipeline.'
+  process_fields:
+  - instruction
+  - output
+  - answer
+  - code
+  - execution result (pipeline-internal; not released as a separate field)
+  - model-judge decisions (pipeline-internal; not released)
+  environment_or_substrate: Python execution is the deterministic substrate for program filtering and answer production. Appendix
+    A requires syntactic validity and execution within 10 seconds, at least six non-comment lines, AST evidence that every
+    input-dictionary variable is used, and exact output agreement when a reference answer exists. Isolation, network and filesystem
+    policy, package versions, hardware limits beyond the timeout, and captured runtime logs are unknown.
+  verifier_or_reward: 'Verification is mixed rather than fully formal: source programs execute and, where reference answers
+    exist, must match them; generated programs pass executable and structural rules but generally lack an external gold answer;
+    final natural-language answers must match program output; Qwen3-32B then judges problem solvability, answer correctness,
+    and consistency between code and language CoTs. No learned scalar reward or human adjudication loop is reported.'
+  terminal_predicate: A pair is retained after its program survives execution and structural filtering, the extracted language
+    answer agrees with the execution-derived answer, and Qwen3-32B accepts the generated problem/answer and code-language
+    reasoning relation. Exact per-stage records, scores, retry policy, and borderline-decision handling are not released.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-7B is fine-tuned as the unconditional Caco-CodeGen model. Data utility is evaluated by supervised
+    fine-tuning of DeepSeekMath-7B, Qwen2.5-Math-7B, and LLaMA3-8B.
+  teacher: Qwen2.5-72B-Instruct performs seed Code-CoT conversion; Qwen3-8B performs problem reversal and natural-language
+    CoT generation; Qwen3-32B performs the final model-based checks.
+  generator: Caco-CodeGen samples programs without a prompt problem, so expansion operates on programmatic reasoning patterns
+    rather than paraphrasing existing instructions. Qwen3-8B then turns each accepted program and representative input-output
+    examples back into an instruction and separately writes its solution trace.
+  filtering_rule: Seed programs must execute and match known answers. Sampled programs must be syntactically valid, finish
+    within 10 seconds, contain at least six non-comment lines, use all input variables according to AST analysis, and match
+    a reference answer when one exists. Final pairs require execution-language answer agreement and positive Qwen3-32B judgments
+    on solvability, correctness, and reasoning consistency.
+  sampling_protocol: Seed conversion uses one Qwen2.5-72B-Instruct response at temperature 0.6. CodeGen sampling uses temperature
+    0.9 and maximum length 1024. Qwen3-8B problem reversal and language-CoT generation use temperature 0.7, top-p 0.8, top-k
+    20, min-p 0, and disabled thinking mode. Seeds, retry counts, batching, decoding backend, prompt revisions, and exact
+    numbers of samples per seed are unknown.
+  rollout_count: unknown
+  temperature: 0.9
+  inference_budget: The paper reports approximately 5.3M CodeGen samples, approximately 4.6M executable/structural survivors,
+    and approximately 1.3M final pairs; the live release contains exactly 1,348,799 rows. Table 5 reports 55 hours on one
+    eight-A100 machine across unification (2 h), scaling (8 h), question reversal (5 h), and answer generation (40 h), but
+    token counts and API-equivalent cost are unknown.
+  optimizer_or_scaffold: Downstream SFT uses LLaMA-Factory on 8 NVIDIA A100 GPUs for three epochs with AdamW, learning rate
+    5e-6, batch size 128, cosine decay, warm-up ratio 0.03, cutoff 4096, and weight decay 0.1. The current repository script
+    agrees on 5e-6 for downstream SFT. Its separate CodeGen script uses one epoch and cutoff 2048, while the paper does not
+    provide a comparably complete CodeGen-specific training table.
+audit:
+  source_mixture: MATH, DeepScaleR, BigMath, and KodCode supply the initial task/solution mixture. The final records are synthetic
+    problems and language traces reconstructed from sampled executable program patterns; an auxiliary experiment applies the
+    method to 5.2K MegaScience seeds, but those 37K generated science records are not identified as part of the Caco-1.3M
+    release.
+  split: The official release exposes only a train split with 1,348,799 rows in one JSONL file. No official validation/test
+    split, immutable split manifest, source-family grouping, or train/evaluation overlap manifest was verified.
+  decontamination: The paper samples 5K records for embedding/t-SNE/K-means diversity analysis, but reports no systematic
+    exact, near-duplicate, or semantic decontamination against MATH, GSM8K, CollegeMath, DeepMind-Mathematics, OlympiadBench,
+    TheoremQA, HumanEval+, or other evaluation sets.
+  license: The current Hugging Face dataset card declares Apache-2.0 and the official code repository is MIT. Those top-level
+    declarations do not establish record-level compatibility or attribution compliance for every upstream MATH, DeepScaleR,
+    BigMath, and KodCode item; the per-row source identity and license are not present in the released schema.
+  lineage: Four source corpora (about 339K records) to Qwen2.5-72B-Instruct conversion to 146K verified seed Code CoTs to
+    Qwen2.5-Coder-7B training to about 5.3M sampled programs to about 4.6M execution/structure survivors to Qwen3-8B problem
+    reversal and language-CoT generation to answer matching and Qwen3-32B judgments to 1,348,799 released rows. Row-level
+    source, seed/generated status, parent program, model revision, prompt revision, execution log, and acceptance decisions
+    are absent.
+  known_failure_modes:
+  - A program can execute and use all named inputs while encoding the wrong theorem, wrong units, hidden assumptions, or an
+    underspecified task.
+  - Back-translation can create an ambiguous, contradictory, or easier problem that happens to agree with the generated program
+    and language trace.
+  - The same Qwen3 model family participates in reversal/solution generation and final judging, so correlated blind spots
+    can survive all model-based checks.
+  - The visible release row about a parallelogram inscribed in a circle with a 60-degree adjacent angle appears internally
+    inconsistent, yet its code and answer treat the figure as a rhombus; this illustrates that agreement and executability
+    do not establish problem validity.
+  - Rejected candidates, judge decisions, execution outputs, source IDs, and stage-specific failure reasons are not released,
+    preventing direct estimation of selection bias and verifier error.
+  - Running released or newly sampled model-generated Python without an independently hardened sandbox can expose filesystem,
+    network, resource-exhaustion, and dependency risks; the paper documents only a 10-second limit.
+  - No systematic evaluation-set decontamination is reported, so benchmark gains must not be interpreted as proof of corpus
+    cleanliness.
+  - Aggregate Apache-2.0 labeling does not by itself resolve every upstream record's terms, attribution, or redistribution
+    rights.
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS proceedings, arXiv full text and appendix, official GitHub repository, and official Hugging Face dataset/model
+    artifacts were checked on 2026-07-21. The open data and partial code are real; the status remains partial because end-to-end
+    generation/judging code, rejection data, row-level lineage, verifier calibration, decontamination, and upstream-license
+    mapping are missing.
+inclusion_reason: Caco is a core data-construction/open-release recipe because it publishes a large instruction-CoT corpus
+  and documents a multi-stage path from heterogeneous source solutions through executable program abstraction, unconditional
+  program scaling, problem reversal, answer comparison, and model-based consistency filtering.
+related: []
+tags:
+- caco
+- code-assisted-cot
+- executable-reasoning
+- instruction-reversal
+- synthetic-data
+- math-reasoning
+- codegen
+- multi-stage-filtering
+status: partial
+one_line_summary: Caco converts four source mixtures into 146K verified seed programs, samples about 5.3M new programs, and
+  releases 1,348,799 reversed instruction-solution rows with their answers and code after multi-stage filtering.
+why_it_matters: It makes executable code a scalable intermediate data contract, while showing why program execution, model
+  agreement, incomplete lineage, and benchmark gains must be audited separately from semantic correctness and data quality.
+card: cards/releases/caco-code-assisted-cot-2025.md
+needs:
+- 'needs_metadata: publish row-level source IDs, seed/generated status, parent lineage, prompts, model revisions, execution
+  logs, and judge decisions'
+- 'needs_metadata: release rejected programs and reversals with stage-specific failure reasons and retry counts'
+- 'needs_metadata: release the complete conversion, generation, reversal, and Qwen3 judging pipeline rather than only extraction/filtering/training
+  helpers'
+- 'needs_metadata: report exact, near-duplicate, and semantic overlap against every evaluation set'
+- 'needs_metadata: independently calibrate executor, answer extraction, solvability, correctness, and consistency false-accept/false-reject
+  rates'
+- 'needs_metadata: document sandbox isolation and map every upstream record to its license and attribution requirements'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: Formal paper, full appendix, code repository, dataset rows/schema, data-file hash, and released model pages were
+    verified. The release is usable for SFT study but remains partial for full construction reproduction and audit.
+category_ids:
+- data_construction_open_release_recipes

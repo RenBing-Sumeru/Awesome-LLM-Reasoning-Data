@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentPack 收集由智能体和人类共同参与的代码变更数据。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 agent-human code change dataset",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yangtian Zi 等（Northeastern University）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T07:16:36Z"
+}

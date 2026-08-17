@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Herald 按依赖层级对 Mathlib4 进行非形式化，检索 1,000 个人工示例，并通过 tactic state 与 LLM 改写扩充数据；它公开 579,883 条 statement rows 和 44,553 条 proof rows，但未公开完整构造代码、精确源版本、逐行 lineage、rejects 与去污染证据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Lean 4 自然语言—形式语言数据发布、构造 recipe 与模型报告",
+  "best_for_ch": "研究形式推理数据构造、autoformalization、tactic-state augmentation、混合验证契约，或审计形式有效性与语义对齐之间边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Guoxiong Gao、Yutong Wang、Jiedong Jiang、Qi Gao、Zihan Qin、Tianyi Xu、Bin Dong",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

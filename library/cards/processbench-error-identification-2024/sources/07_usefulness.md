@@ -1,0 +1,5 @@
+Use ProcessBench as a schema and evaluation recipe for step-level process feedback. A reusable record should keep the original problem id/source subset, generator model, segmented steps, final-answer-correct flag, human earliest-error label, annotator agreement policy, and any prompt or threshold used by the evaluated model.
+
+For PRM work, it is useful for checking whether step scores localize a first failure rather than only correlate with final-answer success. For critic-model work, it supplies a compact contract for parsing a critique into an auditable integer decision. For data-quality work, it is a warning case: correct final answers can still carry invalid reasoning traces, especially in harder math.
+
+Atlas reuse should keep ProcessBench in the benchmark/evaluation-surface category. It can inform reward-model audits, verifier design, prompt scaffolds, and contamination checks for math reasoning data. It should not be cited as proof that expert labels are unambiguous or that the released public rows are safe for post-training without a separate split and leakage review.

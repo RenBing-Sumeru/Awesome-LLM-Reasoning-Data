@@ -1,0 +1,1 @@
+HelpSteer2 targets reward-model training data whose labels explain *why* one response is better. The paper releases roughly 10K human-rated response pairs and keeps the response-level five-axis contract of HelpSteer—helpfulness, correctness, coherence, complexity, and verbosity—rather than reducing quality to a single opaque preference bit.

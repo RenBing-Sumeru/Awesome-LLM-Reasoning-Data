@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Olmo 3 是 AI2 的前沿模型全生命周期发布：它披露了 Dolma 与 Dolci 的分阶段数据工件、构建配方、奖励合同、代码、检查点和去污流程，同时保留单源权属、谱系与 judge 风险的不确定性。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "前沿模型技术报告与数据披露台账",
+  "best_for_ch": "需要核查前沿推理模型的训练数据、SFT/DPO/RLVR 反馈合同、开放工件、去污流程及可复现性边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Team Olmo",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T07:37:36Z"
+}

@@ -1,0 +1,3 @@
+Agentic post-training needs more than static demonstrations: a learner must encounter tool schemas, tasks, multi-turn actions, environment feedback, and feedback contracts that distinguish success from failure. Frontier reports can describe these interfaces while withholding the records, source rights, filters, and calibration that would make a trajectory pipeline independently auditable.
+
+Kimi K2 is relevant because its technical report identifies a large agentic synthesis and joint-RL pipeline across simulated and real execution settings. This Card records what the report exposes about the data and feedback objects, and marks the unreleased components as unknown instead of treating public model weights or benchmark scores as a reproducible agent-data release.

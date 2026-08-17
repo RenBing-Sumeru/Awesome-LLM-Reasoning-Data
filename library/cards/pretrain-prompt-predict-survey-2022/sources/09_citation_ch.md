@@ -1,0 +1,1 @@
+Pengfei Liu、Weizhe Yuan、Jinlan Fu、Zhengbao Jiang、Hiroaki Hayashi、Graham Neubig。2022。《Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing》。ACM Computing Surveys。https://doi.org/10.1145/3560815

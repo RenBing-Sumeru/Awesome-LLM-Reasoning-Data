@@ -1,0 +1,1 @@
+ARC 由 Allen Institute for Artificial Intelligence 发布，配有 2018 年 arXiv 论文和官方数据页。它要解决的问题是：许多 QA 系统在旧 benchmark 上看似很强，但仍无法稳定回答需要广泛科学常识、多句证据或简单推理的小学科学题。一个样本是选择题科学考试题，包含题干、选项、标准选项和 Easy/Challenge split 元数据。反馈契约是 released split 和 scorer 下的 multiple-choice accuracy。它适合收录为静态 science-QA 评测面，尤其体现了如何用浅层检索/词共现基线筛出 Challenge 子集。

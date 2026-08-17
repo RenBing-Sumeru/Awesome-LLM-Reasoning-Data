@@ -1,0 +1,3 @@
+For each prompt, the method samples N responses, counts equivalent answers, and keeps only those whose empirical frequency exceeds a threshold. It then evaluates that reduced set with an imperfect reward model and submits at most k responses with the best predicted rewards.
+
+The analysis defines regret against the best ground-truth reward available in the sampled pool and makes reward error and policy coverage explicit. The authors derive a matching lower bound, choose the threshold and sampling regime accordingly, and compare the procedure with majority voting and best-of-N on mathematical reasoning tasks.

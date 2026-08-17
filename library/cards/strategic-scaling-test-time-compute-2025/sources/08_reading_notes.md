@@ -1,0 +1,5 @@
+- Each query is a bandit arm; one unit of default compute is one generated response.
+- Elimination reallocates budget after an oracle score or self-consistency signal crosses a threshold.
+- Feedback differs by task: PRM, LLM judge, self-consistency, and executable ground truth are not interchangeable.
+- Reported gains evaluate allocation policies under specified budgets; they do not validate unreleased trace quality.
+- Reuse requires per-query allocation, oracle, prompt, seed, and token-cost logs that are not confirmed as released.

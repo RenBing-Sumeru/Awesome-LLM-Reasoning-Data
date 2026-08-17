@@ -1,0 +1,128 @@
+id: rubricbench-2026
+title: 'RubricBench: Aligning Model-Generated Rubrics with Human Standards'
+year: 2026
+venue: arXiv preprint
+authors:
+- Qiyuan Zhang
+- Junyi Zhou
+- Yufei Wang
+- Fuyuan Lyu
+- Yidong Ming
+- Can Xu
+- Qingfeng Sun
+- Kai Zheng
+- Peng Kang
+- Xue Liu
+- Chen Ma
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- rubric-reward-modeling
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.01562
+  arxiv: https://arxiv.org/abs/2603.01562
+  doi: https://doi.org/10.48550/arXiv.2603.01562
+  code: https://github.com/planepig/rubricbench
+  data: https://huggingface.co/datasets/DonJoey/rubricbench
+  project: null
+  huggingface: https://huggingface.co/datasets/DonJoey/rubricbench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 1,147 difficult pairwise preference cases re-curated from public sources including HelpSteer3, PPE, and RewardBench2,
+    covering IF, STEM, CODE, SAFE, and CHAT.
+  trace_author: RubricBench authors and expert rubric annotators as described in arXiv:2603.01562 and the official repository.
+  answer_format: Each record contains case_id, instruction, response_a, response_b, A/B label, domain, source, and expert
+    atomic rubrics derived from the instruction.
+  process_fields:
+  - case_id
+  - instruction
+  - response_a
+  - response_b
+  - label
+  - domain
+  - source
+  - rubrics
+  environment_or_substrate: Rubric-aware pairwise preference evaluation over text/code/math/safety/chat responses.
+  verifier_or_reward: Official evaluator script compares a submitted A/B prediction with the gold label and reports overall
+    and grouped accuracy.
+  terminal_predicate: Prediction equals the benchmark gold A/B label; missing or invalid prediction handling follows the official
+    evaluator.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats RubricBench as an evaluation and rubric-audit surface.
+  teacher: Expert human rubrics and benchmark gold A/B labels supplied by the official RubricBench release.
+  generator: Candidate cases are selected from existing preference benchmarks; rubrics are written from the instruction and
+    decomposed into atomic criteria.
+  filtering_rule: Filter for hard preference cases involving complex inputs, output surface bias, and process failures; exclude
+    response-aware rubric writing.
+  sampling_protocol: Pin arXiv version, Git commit or Hugging Face snapshot, domain grouping, prompts, model versions, and
+    evaluator revision before score comparison.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model/prompt specific; do not infer a training budget from benchmark scores.
+  optimizer_or_scaffold: rubric-aware judge/reward-model meta-evaluation
+audit:
+  source_mixture: 'Official sources checked: arXiv abstract/HTML for paper metadata; official GitHub repository for schema,
+    evaluator, examples, and MIT code license; official Hugging Face dataset page for released data artifact.'
+  split: Official repository exposes the benchmark records and reports grouped accuracy by IF/STEM/CODE/SAFE/CHAT; downstream
+    comparisons should pin snapshot and any train/dev/test or public split policy used by the artifact.
+  decontamination: The benchmark is public and re-curated from public preference sources, so future model training contamination
+    and upstream benchmark overlap must be audited before leaderboard-style claims.
+  license: Official GitHub repository is MIT licensed; dataset and upstream-source redistribution terms still require artifact-level
+    review before reuse beyond evaluation.
+  lineage: 'Primary paper: https://arxiv.org/abs/2603.01562 ; code/evaluator: https://github.com/planepig/rubricbench ; data:
+    https://huggingface.co/datasets/DonJoey/rubricbench'
+  known_failure_modes:
+  - A/B accuracy can be high even when generated rubrics are incomplete or not faithfully executed.
+  - Scores change with prompt wording, model version, rubric formatting, invalid-output policy, and evaluator snapshot.
+  - Evaluation-only labels and rubrics should not be reused as reward-training data without separate license, contamination,
+    and feedback-contract checks.
+  citation_status: verified
+  confidence: medium
+  notes: Official sources verify 1,147 cases, public code/evaluator, Hugging Face data artifact, and MIT code license. Dataset-level
+    license/upstream redistribution terms and exact split/version policy remain reuse checks.
+inclusion_reason: Rubric-aware pairwise preference benchmark with public expert atomic rubrics, official evaluator, and code/data
+  artifacts.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- rubric-reward-modeling
+one_line: RubricBench turns hard pairwise preferences plus expert atomic rubrics into an auditable rubric-aware judge/RM benchmark.
+why_it_matters: It separates criterion induction from criterion application and exposes how much human rubrics change judge/reward-model
+  accuracy.
+status: verified
+needs:
+- 'needs_audit: inspect dataset-card and upstream source licenses before redistribution or training use'
+- 'needs_audit: pin split/version policy, evaluator implementation, prompt settings, and invalid-output handling'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RubricBench turns hard pairwise preferences plus expert atomic rubrics into an auditable rubric-aware judge/RM
+  benchmark.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: Checked arXiv:2603.01562, official GitHub planepig/rubricbench, and official Hugging Face dataset DonJoey/rubricbench;
+    dataset/upstream license details remain a reuse check.
+category_ids:
+- benchmarks_evaluation_surfaces

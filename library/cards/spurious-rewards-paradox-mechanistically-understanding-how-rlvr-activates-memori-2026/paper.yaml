@@ -1,0 +1,119 @@
+id: spurious-rewards-paradox-mechanistically-understanding-how-rlvr-activates-memori-2026
+title: 'Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs'
+year: 2026
+venue: ICML 2026
+authors:
+- Lecheng Yan
+- Ruizhe Li
+- Guanhua Chen
+- Qing Li
+- Jiahui Geng
+- Wenxi Li
+- Longyue Wang
+- Chenyang Lyu
+source_role:
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- scalar_reward
+domains:
+- math
+- rlvr
+- mechanistic-interpretability
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2601.11061
+  arxiv: https://arxiv.org/abs/2601.11061
+  code: https://github.com/idwts/How-RLVR-Activates-Memorization-Shortcuts
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH-500, MinervaMath, LiveMathBench, AIME, and AMC; leakage cases are questions wrong before and correct
+    after spurious RLVR.
+  trace_author: Qwen2.5-Math-7B base and spurious-RLVR checkpoints; matched leakage and stable samples supply activations.
+  answer_format: Mathematical final-answer tokens, layerwise residual activations, MLP key activations, and probe scores.
+  process_fields:
+  - partial-prompt completion
+  - perplexity
+  - path-patching recovery
+  - JSD
+  - logit-lens tokens
+  - NDE trajectory
+  - probe gate
+  environment_or_substrate: Qwen2.5-Math-7B Transformer MLP/residual stream; LLaMA, OLMo, and Qwen3 are comparison models.
+  verifier_or_reward: Original spurious reward checkpoints; a Layer-19 leakage probe gates inference-time suppression.
+  terminal_predicate: Shortcut-dependent success is a success removed by gated intervention; clean-control cases are left
+    unchanged when the gate does not fire.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B and its spurious-RLVR checkpoint; supplementary Qwen2.5-Math-1.5B, Qwen3-8B, LLaMA-3.1-8B, and
+    OLMo-2-1124-7B.
+  teacher: Not applicable; this is post-hoc mechanistic analysis.
+  generator: Existing base/RLVR model checkpoints generate answers and internal activations.
+  filtering_rule: Retain wrong-to-right questions on contaminated benchmarks as leakage candidates; use LiveMathBench and
+    stable samples as controls.
+  sampling_protocol: Partial-prompt and matched activation comparisons; exact corpus sizes vary by benchmark and are not released
+    as a new dataset.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Path Patching, Logit Lens, counterfactual MLP-component JSD, NDE trajectory fitting, layer reset/keep-only
+    ablations, and MLP-key steering.
+audit:
+  source_mixture: ICML/arXiv v2 paper and official code repository; RLVR training/data preparation is delegated to the earlier
+    Spurious Rewards repository.
+  split: Contaminated MATH-500/MinervaMath leakage subsets versus LiveMathBench and recent/OOD controls.
+  decontamination: Uses leakage-free controls and recent benchmarks but does not release a new decontaminated dataset.
+  license: Paper is CC BY 4.0 on arXiv; inspect code and upstream benchmark licenses separately.
+  lineage: 'Paper: https://arxiv.org/abs/2601.11061 ; code: https://github.com/idwts/How-RLVR-Activates-Memorization-Shortcuts'
+  known_failure_modes:
+  - Anchor/Adapter localization is within-family evidence, not a universal RLVR circuit.
+  - Steering can amplify contamination and is intended for offline auditing.
+  - The repository does not yet release the additional OLMo/LLaMA/Qwen3 checkpoints.
+  citation_status: verified
+  confidence: high
+  notes: ICML 2026 / arXiv v2 and official analysis code reviewed; no standalone data release or released comparison checkpoints
+    found.
+inclusion_reason: Mechanistic audit locating and selectively suppressing contamination-dependent shortcut retrieval under
+  spurious RLVR.
+related: []
+tags:
+- RLVR
+- contamination
+- mechanistic-interpretability
+- path-patching
+- ICML-2026
+status: verified
+card: cards/verifiers/spurious_rewards_paradox.md
+needs: []
+one_line_summary: Mechanistic audit showing that spurious RLVR activates a Qwen memorization shortcut through middle-layer
+  anchors and later structural adapters.
+why_it_matters: It turns suspicious RLVR gains into testable internal hypotheses and supplies a selective offline shortcut-dependence
+  audit.
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: arXiv v2 and official code repository reviewed; no public dataset or model checkpoints found.
+curation_level: L4_carded
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

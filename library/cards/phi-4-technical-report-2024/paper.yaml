@@ -1,0 +1,212 @@
+id: phi-4-technical-report-2024
+title: Phi-4 Technical Report
+year: 2024
+venue: Microsoft Research Technical Report MSR-TR-2024-57
+authors:
+- Marah Abdin
+- Jyoti Aneja
+- Harkirat Behl
+- Sébastien Bubeck
+- Ronen Eldan
+- Suriya Gunasekar
+- Michael Harrison
+- Russell J. Hewett
+- Mojan Javaheripi
+- Piero Kauffmann
+- James R. Lee
+- Yin Tat Lee
+- Yuanzhi Li
+- Weishung Liu
+- Caio C. T. Mendes
+- Anh Nguyen
+- Eric Price
+- Gustavo de Rosa
+- Olli Saarikivi
+- Adil Salim
+- Shital Shah
+- Xin Wang
+- Rachel Ward
+- Yue Wu
+- Dingli Yu
+- Cyril Zhang
+- Yi Zhang
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- general_reasoning
+- mathematics
+- code
+- science
+- instruction_following
+- multilingual
+- safety
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.08905
+  arxiv: https://arxiv.org/abs/2412.08905
+  code: null
+  data: null
+  project: https://www.microsoft.com/en-us/research/publication/phi-4-technical-report/
+  huggingface: https://huggingface.co/microsoft/phi-4
+  doi: https://doi.org/10.48550/arXiv.2412.08905
+  venue: https://www.microsoft.com/en-us/research/publication/phi-4-technical-report/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2412.08905
+data_object:
+  prompt_source: Filtered public web documents, academic papers, code repositories, educational material, licensed books,
+    public and acquired Q&A sources, and synthetic prompts. The later official data summary says multilingual data is about
+    8% and confirms commercially licensed third-party data, but source names, proportions, record IDs, and a rights matrix
+    are not released.
+  trace_author: Pretraining and SFT synthetic-generator identities are mostly unknown. The report names multi-agent generation,
+    self-revision, instruction reversal, and LLM-based SFT selection. For judge-guided DPO, responses come from GPT-4o, GPT-4t,
+    and phi-4, with GPT-4o serving as judge.
+  answer_format: No training corpus is released. Report-level objects include about 50 broad synthetic dataset types totaling
+    about 400B unweighted source tokens, a 9.8T-token final training run, about 8B chat-formatted SFT tokens, 250,297 Pivotal
+    Token Search examples, and 841,842 judge-guided DPO pairs.
+  process_fields:
+  - unknown
+  environment_or_substrate: Offline pretraining, midtraining to 16K context, one SFT round, one Pivotal Token Search DPO round,
+    and one full-length judge-guided DPO round. The official model card reports 1,920 H100-80G GPUs, 21 days, and 9.8T training
+    tokens for the released 14B checkpoint; data-generation compute is unknown.
+  verifier_or_reward: SFT candidates are selected by an undisclosed LLM-based evaluation process. Pivotal Token Search repeatedly
+    samples continuations and invokes task oracles, including code tests and mathematical answer comparison, to estimate prefix-conditioned
+    success and create single-token preference pairs. Judge-guided DPO uses GPT-4o scores for accuracy, style, and detail.
+  terminal_predicate: There is no universal dataset acceptance predicate. Pivotal Token Search retains token alternatives
+    that cross an undisclosed success-probability change threshold under a task oracle; judge-guided DPO prefers the response
+    with higher accuracy or aggregate judge score; SFT selection thresholds and rejection rules are unknown.
+recipe_metadata:
+  base_model: phi-4 is a 14B dense decoder-only Transformer with a 100,352-entry padded tiktoken vocabulary. The report describes
+    pretraining followed by context-extension midtraining, SFT, Pivotal Token Search DPO, and judge-guided DPO.
+  teacher: unknown for most pretraining and SFT synthetic data. GPT-4o and GPT-4t generate candidates for the second DPO round,
+    GPT-4o judges those pairs, and phi-4 also supplies candidates. The report contrasts phi-4 with earlier Phi-family GPT-4
+    distillation but does not identify one universal phi-4 teacher.
+  generator: About 50 synthetic dataset families use different seeds and multi-stage workflows, including seed extraction,
+    rewriting and augmentation, self-revision, instruction reversal, Q&A extraction, and code/science validation. Exact prompts,
+    generator revisions, number of candidates, and retained records per family are unknown.
+  filtering_rule: Organic sources use educational-value and reasoning-content filters, custom extraction, language identification,
+    heuristics, and classifier-based quality selection. Q&A seeds use plurality filtering that drops unanimously easy and
+    fully inconsistent questions. Code can use fidelity checks, execution loops, and tests. SFT uses LLM selection; DPO uses
+    task oracles or GPT-4o judging.
+  sampling_protocol: The released model card reports 9.8T training tokens. The report separately describes about 400B unweighted
+    synthetic source tokens, but does not publish final source weights or a token crosswalk. SFT uses about 8B tokens. Table
+    7 totals 250,297 Pivotal Token Search examples; Table 8 totals 841,842 judge-guided pairs, described in text as approximately
+    850K.
+  rollout_count: unknown
+  temperature: unknown for data construction. The report's temperature 0.5 for simple-evals is an evaluation setting and must
+    not be treated as a generation setting.
+  inference_budget: unknown for synthetic generation, SFT candidate selection, and Pivotal Token Search. The model has a 16K
+    context window, but that is not a disclosed construction rollout budget.
+  optimizer_or_scaffold: Pretraining uses linear warm-up and decay, followed by context-extension midtraining. Post-training
+    uses one SFT round, one token-local Pivotal Token Search DPO round, and one full-length judge-guided DPO round. Complete
+    optimizer values, stage token budgets, pair reuse, and ordering manifests are not released.
+audit:
+  source_mixture: The final training run is reported as 9.8T tokens from synthetic data, web rewrites, filtered web, targeted
+    acquisitions and organic data, and code. About 400B unweighted synthetic source tokens span 50 broad types; multilingual
+    data is about 8%. Exact final mixture weights, unique-record counts, repeated-epoch accounting, and source-level proportions
+    are unknown.
+  split: unknown
+  decontamination: The report describes 13-gram and 7-gram benchmark matching and acknowledges that rephrasing can evade these
+    methods. Exact thresholds are not reliably recoverable from the public HTML, and no matched-record/removal ledger is released.
+    November 2024 AMC evaluation postdates the June 2024 collection cutoff, but fresh evaluation does not prove corpus-wide
+    decontamination.
+  license: The arXiv manuscript is CC BY 4.0 and the released model weights are MIT. No training dataset license applies because
+    the training corpus is not released. The official data summary confirms public data, commercially licensed third-party
+    data, and unavailable information for some other third-party sources; record-level rights, attribution, and compatibility
+    are unknown.
+  lineage: Broad source class to filtered organic seed or direct organic record to one of about 50 synthetic pipelines or
+    direct mixture allocation to 9.8T-token pretraining/midtraining to 8B-token SFT candidate generation and LLM selection
+    to Pivotal Token Search DPO and full-length GPT-4o-judged DPO to released phi-4 weights. No released record ledger connects
+    these stages.
+  known_failure_modes:
+  - The official release contains model weights and metadata, not training records, candidate responses, preference pairs,
+    verifier outputs, or rejection decisions.
+  - The relationship between about 400B unweighted synthetic source tokens and the 9.8T-token final training run is not published
+    as a source-weight or repetition ledger.
+  - Synthetic generator identities, prompts, decoding settings, candidate counts, and per-family acceptance rates are mostly
+    unknown.
+  - Pivotal Token Search assumes that sampled continuation success estimates reveal pivotal positions; its binary search is
+    not guaranteed to find every pivotal token unless success probability is near-monotone.
+  - Code tests and mathematical answer comparison verify endpoints for selected tasks, not the validity of every reasoning
+    step or all domains.
+  - GPT-4o judging can inherit style, verbosity, position, and calibration biases; pair-level scores, disagreements, false
+    accepts, and rejected candidates are not released.
+  - The report acknowledges that n-gram decontamination can miss rephrased overlap, and no exact-match ledger or corpus-wide
+    semantic audit is public.
+  - The later data summary confirms commercially licensed and other third-party sources but withholds or lacks underlying
+    detail, preventing record-level rights review.
+  - The model is primarily English and mostly Python-oriented for code; these distribution limits are not quantified at training-record
+    level.
+  - Benchmark performance and fresh-AMC results are model evidence, not proof of training-data quality, provenance, license
+    compatibility, or verifier accuracy.
+  citation_status: verified
+  confidence: high
+  notes: The official Microsoft Research technical-report page, arXiv v1, Microsoft Hugging Face model card, six-shard weight
+    tree, MIT license label, and later official data summary were checked on 2026-07-19. Weights and report metadata are verified;
+    code and training-data artifacts remain unavailable.
+inclusion_reason: Phi-4 is a high-value frontier disclosure because it reports synthetic-data source scale, organic-seed filtering,
+  a 9.8T-token training run, 8B-token SFT, token-local oracle-assisted DPO, and full-length judge-guided DPO while releasing
+  weights but not training data or lineage.
+related: []
+tags:
+- phi-4
+- microsoft
+- frontier-report
+- disclosure-ledger
+- synthetic-data
+- pivotal-token-search
+- sft
+- dpo
+- model-weights
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Phi-4 releases MIT model weights and reports a 9.8T-token synthetic-heavy pipeline, 8B-token SFT, 250,297
+  token-local DPO examples, and about 850K judge-guided pairs, but no training corpus or stage-to-record lineage.
+why_it_matters: It lets frontier-report readers separate report-level data disclosure, released weights, unavailable training
+  records, mixed verifier and judge contracts, and downstream benchmark behavior instead of treating them as one evidence
+  claim.
+card: null
+needs:
+- 'needs_data_release: publish versioned pretraining, SFT, Pivotal Token Search, judge-guided DPO, safety, and hallucination-mitigation
+  records or auditable samples'
+- 'needs_source_ledger: disclose source names, revisions, proportions, licenses, attribution, collection dates, transformations,
+  and final 9.8T-token mixture weights'
+- 'needs_generator_ledger: identify generator and evaluator checkpoints, prompts, decoding settings, seeds, candidate counts,
+  costs, and per-family acceptance rates'
+- 'needs_pts_replay: publish oracle implementations, success-probability thresholds, rollout budgets, memoized estimates,
+  token pairs, failures, and false-accept audits'
+- 'needs_judge_audit: release GPT-4o pair prompts, order randomization, raw scores, disagreements, rejection reasons, and
+  bias/calibration analysis'
+- 'needs_decontamination: publish benchmark revisions, exact thresholds, matched and removed records, semantic-overlap checks,
+  and a corpus-wide audit'
+- 'needs_run_manifest: map source records and post-training pairs to exact training stages, checkpoints, mixture weights,
+  optimizer settings, and immutable software revisions'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, Microsoft publication record, data summary, MIT model card, and downloadable six-shard weights are
+    verified. No official training-data or code release was found; complete data lineage, generation settings, verifier replay,
+    and decontamination ledger remain unknown.

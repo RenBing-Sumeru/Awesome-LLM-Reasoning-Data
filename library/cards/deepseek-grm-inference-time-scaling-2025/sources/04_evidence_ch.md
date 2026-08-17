@@ -1,0 +1,3 @@
+论文在 Reward Bench、PPE Preference、PPE Correctness 与 RMB 上评测，同时报告 greedy decoding 和 inference-time scaling。其汇总 Table 2 中，DeepSeek-GRM-27B 在 greedy decoding 下总体得分为 69.9；32 个样本的分数求和 voting 报告为 71.0，Meta RM guided voting 为 72.8。消融实验分别移除 principle generation、rejective sampling、general instruction data，以及 hinted 或 non-hinted sampling。论文也报告在部分可验证任务设置中仍落后于 scalar reward model。
+
+这些结果证明的是奖励模型 benchmark 行为及所提聚合方式对增加采样的响应，不能验证每条生成原则或 critique，也不能证明混合训练数据质量高或 Meta RM 无偏。官方 arXiv v3 记录与 Hugging Face collection 已核实；collection 列出 DeepSeek-GRM-16B、DeepSeek-GRM-27B 和 DeepSeek-GRM-27B-MetaRM。已接受元数据中未确认官方代码或原始训练/轨迹数据集。

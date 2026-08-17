@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "NVIDIA"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:25:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2404.06654",
+    "https://arxiv.org/html/2404.06654",
+    "https://github.com/NVIDIA/RULER",
+    "https://openreview.net/forum?id=kIoBbc76Sy"
+  ],
+  "verification_note": "arXiv, OpenReview, and NVIDIA/RULER verify NVIDIA affiliation, COLM 2024 status, and public generation/evaluation code; no single immutable standalone dataset snapshot was identified."
+}

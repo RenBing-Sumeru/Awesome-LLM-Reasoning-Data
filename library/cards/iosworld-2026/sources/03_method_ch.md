@@ -1,0 +1,7 @@
+**输入与构造。** 作者围绕一个合成persona，在26个SwiftUI应用中构建互联seed记录。Claude Code在可访问完整应用源码与seed data的条件下生成175个候选任务；Python pipeline负责规范应用名称、把指令改写为第一人称并生成rubric。人类逐项端到端执行候选任务，修正其中44项，为扩大覆盖且减少重复而裁剪single-app任务，并保留全部multi-app与memory任务，最终得到133项任务、1,123条criterion。generator prompt、Claude Code snapshot、decoding setting、44项修订diff、42项移除清单、reviewer身份及record-level provenance均为unknown。
+
+**重置与rollout。** 已发布runner会关闭并启动模拟器，清除应用与共享容器数据，逐个启动全部应用恢复seed state，再终止应用并返回主屏幕。随后，被评测的provider adapter接收706x1536截图，或在截图之外接收清洗后的XCUITest tree；后者最多200个元素、15层。通用动作包括坐标tap、type、swipe、home、wait和stop；vision+XML adapter还可暴露identifier tap、launch、terminate和open URL。交互通过Appium/XCUITest执行，在智能体发出`stop`或达到50步时结束。可选MCP模式以逐应用typed tool替代部分GUI动作，同时保留截图。
+
+**输出与反馈。** 一次生成运行可以写出逐步截图/XML、计划与执行动作、执行错误、可选reasoning summary和LLM message、动作前后视图、`trajectory.json`、`events.jsonl`、`task.json`、最终状态与答案、token usage、evaluator output及run metadata。GPT-5.4 Mini随后依据完整轨迹和rubric评分。满足criterion的比例形成scalar fraction，全部criterion通过才算严格成功。runner的执行`failed`或`safety_blocked`状态不同于正常的rubric失败。
+
+**用途与复现。** 论文只把episode用于十二种model-by-modality配置的评测。主结果对每个任务/配置报告一个汇总结果，不是重复随机rollout。代码可记录simulator UDID、platform/device、Xcode、Python、Node、Appium、macOS、provider/model、temperature、budget、observation/action mode、manifest和task file，但公开结果没有绑定不可变run manifest。复现需要固定仓库提交、任务文件、应用构建、Xcode/iOS/Appium/WebDriverAgent栈、设备几何、reset manifest、provider API、temperature、seed、retry、timeout、judge snapshot和结果checksum。项目没有发布train/dev/test字段、decontamination流程、完整raw run bundle或确定性replay test。

@@ -1,0 +1,1 @@
+要把 generation、critique 和 correction 分开看。一个模型可能生成强但 critique 弱，也可能 critique 别的模型比 critique 自己更好。除非任务专属评分规则支持，不要把 critique 当 ground truth。读 aggregate GQC claim 前先看 domain-wise 结果；逻辑类任务的 correction 行为不一定迁移到常识或开放任务。

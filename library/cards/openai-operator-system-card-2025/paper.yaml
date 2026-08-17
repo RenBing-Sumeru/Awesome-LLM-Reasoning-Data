@@ -1,0 +1,130 @@
+id: openai-operator-system-card-2025
+title: Operator System Card
+year: 2025
+venue: OpenAI System Card
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- agentic_tool_use
+- computer_use
+- safety
+training_use:
+- agent_training
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/operator_system_card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/computer-using-agent/
+  huggingface: null
+  doi: null
+  venue: https://openai.com/index/operator-system-card/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The report discloses select publicly available data, mostly from industry-standard machine-learning datasets
+    and web crawls. It does not name source datasets, task/prompt inventories, proportions, counts, revisions, acquisition
+    terms, or train/evaluation allocation.
+  trace_author: The report says human trainers developed datasets demonstrating how to solve computer tasks. Trainer identities,
+    expertise, instructions, compensation, annotation protocol, demonstration selection, and whether failures were retained
+    are unknown.
+  answer_format: The deployed CUA observes screenshots/raw pixels and acts with a cursor and keyboard (the accompanying official
+    project page describes virtual mouse and keyboard). The specialized supervised-data record schema, action encoding, retained
+    observations, reasoning traces, and labels are unknown.
+  process_fields: []
+  environment_or_substrate: CUA is publicly described as operating through screenshots/raw pixels and virtual mouse/keyboard
+    in a computer-use loop. The training task environments, versions, initial states, reset/replay procedures, browser or
+    VM configuration, and trajectory storage are unknown.
+  verifier_or_reward: The report discloses reinforcement learning after specialized supervised learning, but not the reward
+    source, reward-model or verifier design, labels, success metric, calibration, aggregation, or whether any evaluation/red-teaming
+    set was used for training.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: GPT-4o is identified as the base model; the exact checkpoint, version, multimodal preparation, and pre-training
+    lineage are unknown.
+  teacher: unknown
+  generator: Human trainers developed computer-task demonstration datasets, but the task generator, task sourcing process,
+    authoring tools, and synthetic-data role are unknown.
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: The report states that CUA combines supervised learning on specialized data with reinforcement learning.
+    RL objective, reward/verifier, optimizer, rollout policy, training budget, stage allocation, and schedules are unknown.
+audit:
+  source_mixture: 'Only broad source classes are disclosed: select publicly available data, mostly industry-standard machine-learning
+    datasets and web crawls, plus human-trainer-developed demonstration datasets. No source-level manifest, mixture weights,
+    record/token counts, rights mapping, revisions, or exclusions are released.'
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: The official report establishes a report-level path from GPT-4o to CUA/Operator and names supervised computer-use
+    data plus reinforcement learning. It does not expose source-to-task-to-demonstration-to-feedback-to-checkpoint lineage.
+  known_failure_modes:
+  - The disclosed source classes cannot establish data provenance, rights, mixture balance, or benchmark-overlap controls.
+  - Human-trainer demonstrations are reported without an item schema, task provenance, quality-control protocol, or preservation
+    of failed/abandoned attempts.
+  - Reinforcement learning is disclosed without a reward, verifier, rollout, or terminal-success contract; it must not be
+    classified as RLVR.
+  - Reported red-teaming and capability-evaluation scenarios are evidence for safety assessment, not evidence that those records
+    trained the model.
+  - External red teamers were advised to avoid tasks that could cause real-world harm and sometimes used mock websites, databases,
+    or emails; the report notes that this constraint may not capture worst-case real-world risks.
+  citation_status: verified
+  confidence: high
+  notes: This is a conservative Track 12 disclosure ledger for the January 23, 2025 GPT-4o-based Operator/CUA report. It excludes
+    claims about the later o3 Operator update unless separately sourced.
+inclusion_reason: An official frontier system card that explicitly distinguishes specialized supervised computer-use data
+  and reinforcement learning, while withholding the task trajectories, reward contract, environments, and data lineage needed
+  to reproduce the post-training pipeline.
+related: []
+tags:
+- openai
+- operator
+- cua
+- computer-use
+- agentic-tool-use
+- system-card
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's Operator System Card reports specialized supervised computer-use data, broad public-data sources,
+  and reinforcement learning for a GPT-4o-based CUA, but leaves task records, rewards/verifiers, training environments, and
+  lineage undisclosed.
+why_it_matters: 'It is a clear Track 12 boundary case: the report makes the existence and broad role of computer-use demonstrations
+  and reinforcement learning auditable, yet does not provide enough data, feedback, or environment detail to reconstruct or
+  safely reuse the recipe.'
+card: null
+needs:
+- 'needs_data: named source datasets, task inventories, human-trainer record schema, counts, mixtures, versions, rights, and
+  train/evaluation allocation'
+- 'needs_verifier: reinforcement-learning objective, reward/verifier source, calibration, aggregation, terminal-success predicate,
+  and reward-hacking analysis'
+- 'needs_metadata: trainer protocol, task generation, filters, sampling, rollout counts, optimizer, schedules, and compute
+  budgets'
+- 'needs_audit: splits, decontamination, benchmark overlap, environment and VM/browser pins, replay metadata, failure retention,
+  and item-level lineage'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against OpenAI's official Operator System Card PDF, official publication page, and official Computer-Using
+    Agent project page. No official arXiv, DOI, code, data, or Hugging Face artifact was identified in the accepted sources.

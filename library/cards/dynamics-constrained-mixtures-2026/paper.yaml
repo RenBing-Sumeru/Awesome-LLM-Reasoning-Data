@@ -1,0 +1,109 @@
+id: dynamics-constrained-mixtures-2026
+title: 'DynaMiCS: Fine-tuning LLMs with Performance Constraints using Dynamic Mixtures'
+year: 2026
+venue: arXiv preprint
+authors:
+- Eleonora Gualdoni
+- Sonia Laguna
+- Louis Béthune
+- Joao Monteiro
+- Pierre Ablin
+- Marco Cuturi
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- reasoning
+- mathematics
+- code
+- safety
+training_use:
+- sft
+- safety_alignment
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2605.10770
+  arxiv: https://arxiv.org/abs/2605.10770
+  venue: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.10770
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Named target and auxiliary fine-tuning datasets across fifty scenarios.
+  trace_author: Upstream datasets listed in the paper.
+  answer_format: Source-labeled fine-tuning batch with dynamic mixture weight.
+  process_fields:
+  - source_dataset
+  - target_domain
+  - constraint_domain
+  - slope_matrix
+  - mixture_weight
+  - feasibility
+  environment_or_substrate: Constraint-aware multi-domain SFT with held-out evaluation domains.
+  verifier_or_reward: Target and constrained evaluation losses or metrics, including accuracy constraints.
+  terminal_predicate: Feasible checkpoint improves targets while all constrained domains remain at or below base reference.
+recipe_metadata:
+  base_model: Qwen2.5-3B, Qwen3-8B, and Gemma3-12B with reported LoRA configurations.
+  teacher: None.
+  generator: Upstream fine-tuning datasets.
+  filtering_rule: Optimize dynamic source weights from finite-difference slope matrix and constraint penalties.
+  sampling_protocol: Repeated temporary single-source probes, then sample SFT batches by optimized mixture until next update.
+  rollout_count: null
+  temperature: null
+  inference_budget: 2,048 steps, batch size 8, geometric update schedules; see paper.
+  optimizer_or_scaffold: Slope estimation plus constrained probability-simplex optimization.
+audit:
+  source_mixture: Fifty multi-domain scenarios with target, auxiliary, and evaluation-only constraint domains.
+  split: Constraints are evaluation-only; target/non-target dataset budgets listed by scenario.
+  decontamination: No dedicated contamination audit claimed; inspect upstream source and constraint benchmark overlap.
+  license: Verify each upstream dataset and benchmark term independently.
+  lineage: 'Primary source: https://arxiv.org/abs/2605.10770'
+  known_failure_modes:
+  - Local linear additivity may fail with long horizons or joint source interactions.
+  - Narrow constraints can miss unmeasured capability loss.
+  - No feasible mixture may exist under tight constraints.
+  - No official implementation or standalone data release declared in checked source.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv paper, affiliations, methods, fifty-scenario evaluation, results, limitations, and artifact statements
+    checked on 2026-07-15.
+inclusion_reason: It dynamically decides how source-level SFT records enter training while enforcing explicit preservation
+  constraints on held-out capabilities.
+related: []
+tags:
+- data-mixing
+- constraint-aware
+- sft
+- forgetting
+status: verified
+one_line_summary: DynaMiCS repeatedly probes data-source effects and optimizes SFT mixture weights to improve targets without
+  violating protected capabilities.
+reading_priority: essential
+paper_type: Constraint-aware dynamic SFT data-mixture optimization study
+best_for: Readers balancing specialization data against explicit safety or capability-retention constraints.
+confidence: high
+why_it_matters: It makes protected evaluation domains part of the data-consumption decision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper checked; no official code, project, or standalone data release declared in the paper.
+category_ids:
+- training_usage_optimization_objectives

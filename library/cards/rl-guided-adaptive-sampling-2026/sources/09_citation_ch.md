@@ -1,0 +1,1 @@
+Dai, Runpeng、Tong Zheng、Rui Liu、Chengsong Huang 与 Hongtu Zhu。《Small RL Controller, Large Language Model: RL-Guided Adaptive Sampling for Test-Time Scaling》。arXiv 预印本 arXiv:2606.03102，2026。https://arxiv.org/abs/2606.03102。官方代码：https://github.com/RunpengDai/RL-Guided-Adaptive-Sampling。

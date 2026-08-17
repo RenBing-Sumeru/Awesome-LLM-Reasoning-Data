@@ -1,0 +1,3 @@
+Yang Xiao, Chunpu Xu, Ruifeng Yuan, Jiashuo Wang, Wenjie Li, and Pengfei Liu. 2025. *SCALE: Selective Resource Allocation for Overcoming Performance Bottlenecks in Mathematical Test-time Scaling*. Accepted at AAAI 2026. [arXiv:2512.00466](https://arxiv.org/abs/2512.00466).
+
+Verified official artifacts: [author code](https://github.com/XiaoYang66/DualThinking) (MIT) and [YangXiao-nlp/DualThinking dataset](https://huggingface.co/datasets/YangXiao-nlp/DualThinking). The authors' repository/data card provide a BibTeX entry. No verified venue proceedings, project page, or immutable release tag is available in the checked sources.

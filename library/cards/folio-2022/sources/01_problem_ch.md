@@ -1,0 +1,1 @@
+FOLIO 关注的问题是：如何评测可以用一阶逻辑表示和检查的自然语言推理。主要来源是 arXiv:2209.00840 和 EMNLP 2024 ACL Anthology 记录。这里收录它是因为它是 logical-reasoning benchmark，而不是形式化证明语料。一个样本包含自然语言 premises、hypothesis 或 question、gold truth label，以及构造阶段用于一致性核验的一阶逻辑标注。它对 atlas 的价值是连接自然语言推理标签和可形式化语义检查。

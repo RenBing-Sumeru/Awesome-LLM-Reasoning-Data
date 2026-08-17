@@ -1,0 +1,33 @@
+{
+  "institutions": [
+    "Epoch AI",
+    "King's College London",
+    "MIT",
+    "University of Siegen",
+    "ICMC, USP",
+    "UC Berkeley",
+    "Cornell University",
+    "Harvard University",
+    "University of Leicester",
+    "University of Bristol",
+    "University of North Carolina",
+    "Knox College at Charlotte",
+    "Masaryk University",
+    "Independent",
+    "Rutgers University",
+    "ETH Zurich",
+    "RWTH Aachen University",
+    "Iowa State University",
+    "CNRS - Université Paris-Saclay",
+    "James Madison University"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2411.04872",
+    "https://arxiv.org/html/2411.04872",
+    "https://epoch.ai/frontiermath"
+  ],
+  "verification_note": "Latest checked arXiv HTML/PDF title block lists the expanded author and institution roster; Olli Järviniemi has no numbered affiliation in that title block."
+}

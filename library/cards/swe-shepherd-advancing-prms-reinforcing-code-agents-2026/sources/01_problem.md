@@ -1,0 +1,3 @@
+Code agents search, edit, and test repositories, but final patch success cannot identify useful intermediate actions. SWE-Shepherd constructs action-level process rewards from SWE-Bench trajectories.
+
+This gap directly determines whether software-engineering agent process rewards can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on issue、repository state, tool actions, patches, test evidence, and step rewards and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in SWE-Bench trajectory selection and code-agent reinforcement.

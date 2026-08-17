@@ -1,0 +1,1 @@
+既有基线是静态公开数学 benchmark，其中污染和过拟合很难与能力分开。MathArena 改变的是评测面：把题源锚定到新近发布的竞赛，并释放日志以便审计。方向信号是污染感知协议下的 live、versioned math evaluation。质量信号是官方平台 artifact 和 raw model outputs。并不新的部分是数学竞赛解题和 leaderboard scoring。复用前要检查竞赛权利、平台快照、hidden/public policy、judge prompts、parser failures、model settings，以及结果来自 2025 论文还是后续平台状态。

@@ -1,0 +1,5 @@
+- 先读论文第 3.1–3.6 节：关键对象是 `{F_opt,Q,T,C,O,A}`，构造路径是 query/file synthesis -> GPT-4o-mini ReAct rollout -> executable-code gate -> query-file judge -> trajectory judge。
+- 严格区分规模单位：论文的 23.5K candidate、约 20K 个任务和约 15K 个文件，不等于固定版本的 21,168 条 JSON row 或 19,307 个 ZIP 文件；没有 manifest 对齐它们。
+- 把表 5 视为筛选 ablation，而不是 verifier 认证：GTA 从 50.00 升至 52.56，GAIA 从 13.33 升至 15.15，但没有报告 judge precision、recall、agreement 或独立正确性审计。
+- 对照阅读附录 A.1 与表 6：正文和表格给出矛盾的人类分数。声称可复现前，还要检查只面向图像的 verifier prompt 与仓库中失效的 final prompt path。
+- 复用阻断项包括 MIT 与 CC-BY-NC-4.0 数据集冲突、单独的 CC-BY-NC-SA-4.0 模型标签、SA-1B/COCO 上游条款、HF schema 失败、缺少拒绝账本与 lineage，以及 privacy、sandbox 和 contamination 控制未披露。

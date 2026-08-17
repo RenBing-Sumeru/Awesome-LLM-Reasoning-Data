@@ -1,0 +1,26 @@
+id: self-calibration-efficient-tts-2025
+title: 'Efficient Test-Time Scaling via Self-Calibration'
+year: 2025
+venue: arXiv preprint; ICLR 2026
+authors: [Chengsong Huang, Langlin Huang, Jixuan Leng, Jiacheng Liu, Jiaxin Huang]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [full_episode]
+domains: [mathematical-reasoning, general-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold]
+artifacts: {paper: https://arxiv.org/abs/2503.00031, arxiv: https://arxiv.org/abs/2503.00031, venue: 'https://openreview.net/forum?id=RvMjxGpVOa', code: 'https://github.com/Chengsong-Huang/Self-Calibration', data: null, project: null, huggingface: null, doi: null}
+audit: {source_mixture: 'Official arXiv PDF and OpenReview record.', split: 'Three LLMs and six datasets.', decontamination: 'No formal audit is claimed.', license: 'Check all reused artifacts.', lineage: 'https://arxiv.org/abs/2503.00031', known_failure_modes: [confidence-miscalibration, threshold-choice, model-shift], citation_status: verified, confidence: high, notes: 'The arXiv PDF front page identifies Washington University in St. Louis, Carnegie Mellon University, and the University of Washington; it also links the official code repository.'}
+inclusion_reason: 'It uses a self-calibrated confidence signal to stop or continue sampling under a test-time budget.'
+related: []
+tags: [test-time-scaling, confidence-calibration, early-stopping]
+status: verified
+one_line_summary: 'Self-Calibration distills self-consistency confidence into one forward pass, enabling confidence-based early stopping for sampling.'
+reading_priority: recommended
+paper_type: Confidence-calibrated test-time scaling study
+best_for: Readers reducing fixed Best-of-N sampling cost.
+confidence: high
+why_it_matters: 'It turns calibrated confidence into an online compute-allocation signal.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official paper and OpenReview record checked.'}
+category_ids: [scaling_rlvr_test_time_compute]

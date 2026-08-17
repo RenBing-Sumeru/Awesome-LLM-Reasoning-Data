@@ -1,0 +1,1 @@
+AGIEval 是 2023 年 arXiv benchmark 论文，并有官方 GitHub 发布。它关心的是基础模型能否处理面向人的入学、资格、竞赛等高标准考试题，而不是合成 NLP 任务。一个样本是考试题记录，包含任务元数据、题干、可选选项、标准答案和评分脚本接口。反馈契约是 released evaluator 下的 answer-level correctness；zero-shot、few-shot、chain-of-thought 等 prompt 设置会直接影响可比性。它应作为公开标准化考试评测面收录，而不是训练数据或过程监督信号。

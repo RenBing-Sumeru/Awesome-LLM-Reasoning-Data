@@ -1,0 +1,9 @@
+- 训练台账在数据层不完整：任务与 prompt manifest、来源日期和比例、代码仓库 revision、privacy 或 consent 处理、来源级 license、记录数量、序列化 schema，以及成功和失败样例的保留情况均未披露。
+- 合成恶意软件与 prompt-injection generator 未被命名，其 checkpoint、prompt、sampling distribution、temperature、candidate 数、filter、threshold、拒绝产出率和隐藏 teacher 特征均无法审计。
+- Destructive-action reward 同时存在假阳性和假阴性风险。表面上的“不回退”策略可能保留有害或过时编辑，却仍显得合规；合理的冲突解决也可能因被识别为回退而受罚。Detector、partial-credit rule、reward scale、校准和错误审计均为 unknown。此项是基于已披露 feedback contract 的 curator inference。
+- Environment reward 与 hidden test 可能被未覆盖状态、脆弱 fixture、任务专用捷径或 harness exploitation 所利用。报告中的 Apollo 证据包括伪造数据、假装完成、违反规则、否认先前行为和 strategic sandbagging，说明 reward hacking 与 evaluator gaming 并非纯粹假设（§5.2.1，第 26 页）。
+- Policy grader、专家 golden set、o1-preview 生物 autograder、分层 rubric、作弊 classifier、人工复核和外部专家会引入异质判断误差。其 prompt、版本、标注者一致性、校准、不确定性、假阳性/假阴性审计和聚合规则大多不可用。
+- 评测环境存在明确脆弱性：CVE-Bench 只运行 40 题中的 34 题，Cyber Range 比真实网络更干净、加固更少，外部网络评测未充分利用 compaction，公开 CTF 还可能带来 contamination risk。高分不能自动迁移到生产代码仓库或对抗性网络。
+- 报告对特定 held-out 或 uncontaminated 生物集合作出声明，但没有提供全局训练/评测 membership 审计、代码仓库 overlap 分析、benchmark decontamination 或 memorization test。局部评测保障不能推广到完整训练混合。
+- Compaction 扩大了长程能力，却隐藏了哪些 state 被保留、总结或丢弃。算法、curriculum、threshold、context-window 数、失败模式、版本，以及训练与部署预算均为 unknown，因此不能把结果清楚归因于数据、模型或 scaffold。
+- 没有训练语料、内部评测记录、模型权重、reward 代码、grader artifact 或环境包以复用 license 发布。因此，本系统卡只适合作为阅读和审计参考，不能支持独立训练复用、环境回放、合法数据再分发或模型收益的因果归因。

@@ -1,0 +1,5 @@
+Primary source: Gioacchini et al., "AgentQuest: A Modular Benchmark Framework to Measure Progress and Improve LLM Agents," NAACL 2024 System Demonstrations, with the official ACL Anthology paper, arXiv version, and NEC Research repository as the main evidence.
+
+The problem is that agent benchmarks often report only final success or aggregate scores, which hides whether an LLM agent is making partial progress, repeating failed actions, or failing because of the environment, tool interface, or task decomposition. AgentQuest is collected here as an agent-evaluation framework and trajectory-level audit surface, not as a training-data recipe or a claim that its bundled tasks define a universal agent benchmark.
+
+The reusable object is a benchmark run over an agent/environment interface: a task, driver, action, observation/state updates, final outcome, and progress or repetition measurements. Its atlas value is the evaluation contract: it makes intermediate agent progress and repeated behavior visible enough to compare scaffolds and diagnose failure modes beyond pass/fail.

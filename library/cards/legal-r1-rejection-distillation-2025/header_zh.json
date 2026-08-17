@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Legal-R1在最多三次DeepSeek-R1尝试中保留答案匹配金标准的法律推理轨迹，报告形成96,533条中美法律SFT数据，但官方仓库核验时为空。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "法律推理拒绝蒸馏与发布审计",
+  "best_for_ch": "研究高风险领域推理数据、答案验证和双语法律模型的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yinghao Hu、Yaoyao Yu、Leilei Gan、Bin Wei、Kun Kuang、Fei Wu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T10:04:36Z"
+}

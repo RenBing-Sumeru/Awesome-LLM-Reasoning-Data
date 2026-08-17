@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TeleChat 报告披露 10T 预训练、SFT、DPO、持续预训练和 RL 阶段，但数据与反馈账本未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "模型系列技术报告",
+  "best_for_ch": "研究分阶段后训练披露的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zihan Wang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

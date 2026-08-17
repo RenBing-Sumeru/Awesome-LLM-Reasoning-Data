@@ -1,0 +1,17 @@
+{
+  "title": "HoWToBench: Holistic Evaluation for LLM’s Capability in Human-level Writing using Tree of Writing",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.317/",
+    "data": "https://github.com/ZhuoerFeng/ACL2026-Tree-of-Writing"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:47:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "HoWToBench 为 1,302 条写作指令配套分层 Tree-of-Writing rubric，将开放写作质量拆成可追溯判断",
+    "updated_at": "2026-07-26T05:47:06Z"
+  }
+}

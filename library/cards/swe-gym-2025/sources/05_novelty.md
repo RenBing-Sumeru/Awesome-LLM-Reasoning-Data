@@ -1,0 +1,5 @@
+SWE-Gym's contribution is to turn real repository issues into reusable training environments rather than static issue-patch pairs. It combines snapshot identity, dependencies, tests, action trajectories, terminal outcomes, agent fine-tuning, outcome-verifier learning, and inference-time candidate selection in one recipe.
+
+The release distinguishes policy data from verifier data. Successful episodes become behavior-cloning targets; failed episodes remain available in a separate sampled corpus and balanced reward-model mixture. This supports both learning what actions to imitate and learning which complete trajectories are likely to resolve a task.
+
+The novelty is environment-backed data lifecycle integration, not a new unit-test concept or online RL algorithm. Repository-level tests remain imperfect, and rejection-sampling SFT remains supervised filtered learning. The value for this track lies equally in the open artifacts and the visible gaps between tasks, images, trajectories, models, licenses, and manifests.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RationaleRM 衡量奖励模型的理由是否与原子化人工理由一致，并将该信号与结果准确率共同用于强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "奖励模型理由一致性与混合奖励训练论文",
+  "best_for_ch": "需要检查奖励模型是否以正确理由作出判断、并把该检查用于强化学习的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Binghai Wang、Yantao Liu、Yuxuan Liu、Tianyi Tang、Shenzhi Wang、Chang Gao、Chujie Zheng、Yichang Zhang、Le Yu、Shixuan Liu、Tao Gui、Qi Zhang、Xuanjing Huang、Bowen Yu、Fei Huang、Junyang Lin",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

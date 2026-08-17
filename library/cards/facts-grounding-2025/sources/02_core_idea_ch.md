@@ -1,0 +1,1 @@
+核心贡献是一个长文档回答 grounding leaderboard，并采用两阶段 judge 契约：先过滤未满足用户请求的回答，再判断剩余回答是否完全由源文档支持；多个 judge model 聚合以降低单一 judge 偏差。论文报告 860 个 public/open examples 和 859 个 private/blind examples。最近对比是 FActScore、FEVER 式验证、RAG factuality metric 和长上下文 QA benchmark。方向标签是长回答的 hidden-split grounding evaluation。

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LIMO-v2 用两阶段模型解题率筛选与偏好长、验证词、试探词和连接词的词法分数，从海量数学池中保留 800 条长 CoT SFT 三元组；它展示了小数据 elicitation 的可能性，但 v1/v2 漂移、构造代码与逐条 lineage 缺失使 recipe 尚不能完整重放。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "小规模高筛选数学推理数据发布、构造 recipe 与 scaling study",
+  "best_for_ch": "研究 data-efficient reasoning SFT、难度筛选、长 CoT 质量 proxy、base-model 依赖，或审计小数据发布成本与版本一致性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yixin Ye、Zhen Huang、Yang Xiao、Ethan Chern、Shijie Xia、Pengfei Liu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

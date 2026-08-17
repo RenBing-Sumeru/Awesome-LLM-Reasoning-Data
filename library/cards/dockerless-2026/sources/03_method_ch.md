@@ -1,0 +1,7 @@
+Verifier 构建从 SWE-Gym 与 Multi-SWE-RL 中带执行标签的 candidate patch 开始。对每个 `(issue, golden patch, candidate patch)` 元组，GLM-5 运行与推理阶段相同的三段流程：问题生成、`K` 条并行证据回答轨迹和最终判断。只有当 teacher verdict 与 held-out-test 标签一致时，整段序列才会保留；少于 4 turns 或多于 30 turns 的回答轨迹、格式错误与中断的交互会被删除，负样本与正样本的比例上限为 4:1。Candidate patch 文本与渲染后的问答上下文分别截断到 10,000 字符。最终语料覆盖 3.7K 个独立 issue，但保留的 Q+A+Judge 序列总数以及 train/validation 规模均为 unknown。
+
+所有保留序列共同用 next-token cross-entropy 训练一个 Qwen3.5-9B backbone，并没有单独标注的 action label。Dockerless 使用 AdamW、`1e-5` learning rate 并 cosine decay 到 `1e-6`、`0.05` warmup ratio、`0.01` weight decay、256 batch size 和 32,768 最大 sequence length；论文在未披露组成的 held-out validation split 上于 150 steps 选出最佳 checkpoint。GLM-5 与 Qwen3.5 的精确 revision、teacher decoding 设置和 verifier 生成温度均为 unknown。
+
+下游后训练中，OpenHands 在 `ubuntu:jammy-20260109` 中处理 SWE-Rebench-v2 任务；仓库被 checkout 到 base commit，但没有仓库专属依赖或测试运行器。SFT 数据以 temperature `1.0` 采样 16K 条 rollout，每个最终 patch 接受两次独立 Dockerless 评分；失败的 scoring pass 被丢弃，对剩余分数求平均后进行全局排序，排名最高的 4K 条用于 3 个 SFT epoch。GRPO 从 Dockerless-SFT-9B 初始化，以 temperature `1.0` 为每个 issue 采样 `G=8` 条 rollout，采用相同的 `M=2` 评分流程，并训练 50 steps；rollout 上限为 150 turns，actor learning rate 为 `2e-6`，batch/minibatch 为 64，clip 区间为 `[0.2,0.27]`，entropy 与 KL 系数均为 0。
+
+论文披露了仓库 base-commit 概念与镜像 tag，但 image digest、package/index snapshot、submodule policy、依赖安装行为、network 与 cache policy、文件系统 reset、权限与资源限制、hard timeout 数值、seed、命令日志和 replay script 均为 unknown。当两次 verifier 调用都失败时如何处理样本，同样为 unknown。

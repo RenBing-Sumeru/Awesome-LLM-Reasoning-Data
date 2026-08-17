@@ -1,0 +1,1 @@
+Reasoning systems often improve by generating new examples, filtering them, training a stronger model, and repeating. The difficulty is that every stage can either add useful signal or quietly recycle an earlier mistake. This ACL survey frames the problem through data evolution, model evolution, and the cycles that combine them.

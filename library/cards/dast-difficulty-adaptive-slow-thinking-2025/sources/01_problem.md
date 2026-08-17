@@ -1,0 +1,3 @@
+Slow-thinking models can spend redundant tokens on easy questions, yet a uniform reduction in reasoning length can also damage harder questions that need extended work. DAST studies how to turn this difficulty–length trade-off into an auditable training object rather than applying one global token policy.
+
+The paper uses MATH training questions and model-generated reasoning responses to build preference data whose ranking signal considers both final-answer correctness and an instance-specific token-length target. The central track-relevant gap is therefore not merely inference efficiency: it is the construction of rollout-derived traces, feedback, and pairs for difficulty-adaptive reasoning.

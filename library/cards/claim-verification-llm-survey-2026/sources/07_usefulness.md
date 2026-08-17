@@ -1,0 +1,3 @@
+Use this survey when comparing factuality systems or planning an evidence-based verification task. Its pipeline view gives a practical checklist: what is retrieved, how the model sees it, whether it is fine-tuned, and what evidence standard defines success.
+
+It is particularly valuable before selecting a benchmark or interpreting an apparent factuality improvement. Turn a proposed system into an explicit record: state the input claim, the accessible evidence, the retrieval rule, the model context, and the output decision. This record makes it possible to see whether a tool is suitable for assistance, automated screening, or another use where mistakes have different consequences.

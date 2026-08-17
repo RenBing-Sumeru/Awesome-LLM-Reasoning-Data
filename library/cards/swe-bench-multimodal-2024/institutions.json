@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "Stanford University",
+    "Princeton Language and Intelligence, Princeton University",
+    "Cornell University",
+    "Tübingen AI Center, University of Tübingen",
+    "Meta AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2410.03859",
+    "https://www.swebench.com/multimodal",
+    "https://github.com/SWE-bench/SWE-bench",
+    "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Multimodal"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF dataset verify authors, institutions, ICLR 2025 status, and artifacts."
+}

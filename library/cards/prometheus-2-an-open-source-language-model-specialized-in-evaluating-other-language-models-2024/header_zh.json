@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 Prometheus 2 开放裁判模型：接收用户自定义量规，同时输出绝对评分与成对比较，替代不透明的闭源评判器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "后训练数据、偏好、奖励或评测研究",
+  "best_for_ch": "研究 LLM 后训练反馈数据与 verifier 的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Seungone Kim、Juyoung Suk、Shayne Longpre、Bill Yuchen Lin、Jamin Shin、Sean Welleck、Graham Neubig、Moontae Lee、Kyungjae Lee、Minjoon Seo",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T09:46:59Z"
+}

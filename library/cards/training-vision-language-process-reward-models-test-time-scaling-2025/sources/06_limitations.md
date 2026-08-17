@@ -1,0 +1,3 @@
+Automated judges must understand both images and logic, so errors accumulate in first-error labels. Multi-source data may overlap evaluations. Human audits, image-license checks, and fixed judging versions are required.
+
+These limitations directly affect reuse: verifier false positives convert erroneous steps into positive supervision, while false negatives remove difficult but valuable processes. Before reuse, labels should be audited by task type, error position, and source, with agreement, unverifiable rates, duplication, and replayability reported under fixed tool or environment versions.

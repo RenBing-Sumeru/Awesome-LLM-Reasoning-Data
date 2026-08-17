@@ -1,0 +1,3 @@
+Decisive downstream experiment: Across 1B+, 3B+, and 7B+ Llama and Qwen backbones, the paper reports substantial gains on HumanEval, MBPP, LiveCodeBench, and BigCodeBench; both generation scale and filtering contribute. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 5 million code instruction-response pairs and exposes actual fields id, input, output, domain, generation algorithm, LLM judgment, unit tests, and execution status; on 2026-07-27 its page reported 11497 downloads. Usage is only an impact cross-check, not a causal experiment.

@@ -1,0 +1,1 @@
+The first DeepResearch Bench used adaptive criteria, while earlier work relied on LLM-generated rubrics. DRB2 reverse-engineers evidence-bearing hierarchical binary criteria from completed expert articles and applies extensive human verification. The novelty is anchoring evaluation in expert artefact content rather than standards invented by the judge.

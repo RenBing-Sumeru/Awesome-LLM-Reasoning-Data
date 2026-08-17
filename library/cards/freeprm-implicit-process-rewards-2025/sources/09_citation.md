@@ -1,0 +1,1 @@
+Lin Sun, Chuang Liu, Xiaofeng Ma, Tao Yang, Weijia Lu, and Ning Wu. 2025. FreePRM: Training Process Reward Models Without Ground Truth Process Labels. arXiv:2506.03570. https://arxiv.org/abs/2506.03570

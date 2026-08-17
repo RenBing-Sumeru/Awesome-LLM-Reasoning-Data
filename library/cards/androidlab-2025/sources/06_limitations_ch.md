@@ -1,0 +1,10 @@
+- 公开 SFT package 只有描述，尚未完成 record-level 审计。exact file、field name、trace ID、media/XML asset、duplicate、record provenance、Drive version 与 archive hash 均为 unknown；可变的 Google Drive link 不能提供 immutable release identity。
+- 论文和仓库对训练 epoch 的报告分别为 5 与 3。exact model revision、optimizer、scheduler、seed、compute、checkpoint selection 和 trainer commit/config 未披露，因此无法精确复现 6 个模型的 SFT。
+- 未披露 train/validation/test manifest 或 decontamination method。全部 726 条 SFT trace 来自 benchmark 相同的 9 个 app，故 app-level overlap 可以确认；item、instruction、template、state 与 task-level overlap 仍为 unknown。
+- 失败数据的可见性不完整。约 500 条 positive/negative reward-model trajectory 确实存在，self-exploration operation trace 也被移出 SFT，但 failure、infeasible task、skipped/abandoned trace、privacy-filtered sample、rejected expansion、disagreement 与 selection decision 的发布数量和 record 均为 unknown。
+- operation predicate 由人工编码且异构。XML 缺失、localization、alternate valid state、dynamic content、app/version drift 或 transient matching page 都可能造成 false positive 或 false negative。ROR 统计 screen change，而不是 semantic action correctness；agent Finish 也不等于 evaluator success。
+- query score 依赖 GPT-4o-2024-05-13 或 GLM-4，以及会发生 drift 的 judge prompt、retry、API 与 model behavior。语义正确的 paraphrase 可能被拒绝，错误答案也可能被接受；immutable judge input 与 adjudication log 不可用。
+- fresh AVD/container reset 改善了隔离性，但 release 未固定 image/base-state hash、完整 APK/app version、Android Studio/emulator version、account/network state 与全部 setup input。官方 macOS 文档警告 Android Studio 更新可能破坏 setup，screen-size 实验也表明存在 geometry sensitivity。
+- repository code 使用 MIT license，但 dataset license 为 unknown。该 code license 不构成 source task、annotation、screenshot/XML、model output、app/APK、UI content 或 preloaded record 的权利依据。consent、redaction、retention、deletion、compensation 与 redistribution detail 也不完整。
+- 官方仓库的 evaluation code 中存在 hard-coded credential-like default。该 Card 不复述其值；复用前应将其从 code/history 中移除并 rotation 或 revocation，同时提供 secret-free configuration example。
+- AndroidWorld、AndroidControl 与 V-Droid 是独立的数据和评测对象。导入它们的 count、image、reward、split 或 verifier behavior 会造成 unsupported lineage，并使 AndroidLab 审计失真。

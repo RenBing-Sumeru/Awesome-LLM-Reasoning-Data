@@ -1,0 +1,1 @@
+Existing general knowledge suites curate fixed sources with limited disciplinary depth. HLE directly commissions original questions that remain difficult in the model era and combines niche expertise with multimodal inputs. The novelty is expert-driven frontier difficulty rather than more MMLU-style multiple choice.

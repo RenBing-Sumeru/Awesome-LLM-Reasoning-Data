@@ -1,0 +1,105 @@
+id: nl2code-survey-2023
+title: 'Large Language Models Meet NL2Code: A Survey'
+year: 2023
+venue: ACL 2023 Long Papers
+authors:
+- Daoguang Zan
+- Bei Chen
+- Fengji Zhang
+- Dianjie Lu
+- Bingchao Wu
+- Bei Guan
+- Wang Yongji
+- Jian-Guang Lou
+source_role:
+- survey_background
+verification_contract:
+- programmatic
+supervision_granularity:
+- unknown
+domains:
+- nl2code
+- code-generation
+- evaluation
+training_use:
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2023.acl-long.411/
+  arxiv: null
+  code: null
+  data: null
+  project: https://nl2code.github.io
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2023.acl-long.411
+  venue: https://aclanthology.org/2023.acl-long.411/
+  openreview: null
+  acl: https://aclanthology.org/2023.acl-long.411/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed natural-language-to-code tasks and benchmarks.
+  trace_author: Surveyed primary works; this paper releases no new trace corpus.
+  answer_format: A comparison of 27 LLMs for NL2Code together with reviewed benchmarks and metrics.
+  process_fields:
+  - natural-language description
+  - generated code
+  - benchmark
+  - metric
+  - execution result
+  environment_or_substrate: NL2Code benchmarks, including HumanEval.
+  verifier_or_reward: Benchmark metrics and executable test cases discussed by the survey.
+  terminal_predicate: Task-specific generated-code correctness under the benchmark evaluation.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed works use varied pre-training data and tuning methods.
+  generator: Literature synthesis, model comparison, and benchmark review.
+  filtering_rule: The official abstract covers 27 existing LLMs for NL2Code plus benchmarks and metrics.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews existing models rather than introducing a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide result is stated.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2023.acl-long.411/'
+  known_failure_modes:
+  - Benchmark success may not transfer to open-ended programming
+  - generated code can pass narrow tests while missing intent
+  - survey coverage is time-bounded
+  citation_status: verified
+  confidence: high
+  notes: The official abstract states that the paper surveys 27 models, benchmarks, metrics, and a HumanEval comparison.
+inclusion_reason: An ACL survey that gives readers a concrete map of NL2Code models, benchmarks, and evaluation limits.
+related: []
+tags:
+- survey
+- nl2code
+- code-generation
+- evaluation
+- acl-2023
+one_line_summary: An ACL 2023 survey of LLMs for converting natural-language descriptions into code.
+why_it_matters: It helps readers separate model scale, data quality, tuning, and executable evaluation when comparing NL2Code
+  systems.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers choosing NL2Code benchmarks or comparing code-generation models.
+confidence: high
+status: verified
+needs:
+- unknown
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology metadata, abstract, pages, DOI, and project link reviewed.
+category_ids:
+- foundations_and_primers

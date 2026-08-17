@@ -1,0 +1,1 @@
+已有基线是 Defects4J 等修复/定位数据集，其中许多实例可能早于现代 LLM 训练 cutoff。ConDefects 的变化是采集较新的竞赛程序，把真实 fault 与修复和位置配对，并提供时间窗和难度过滤。方向信号是可执行代码任务在泄漏压力下的 benchmark hygiene。质量信号是测试可执行、元数据清楚、工具命令公开。AtCoder、单元测试和 coverage-based localization 本身并不新。复用前要查数据版本、AtCoder 再分发条款、CC BY-SA 数据条款、MIT 代码条款、下载测试、runtime，以及公开任务是否进入后续模型训练。

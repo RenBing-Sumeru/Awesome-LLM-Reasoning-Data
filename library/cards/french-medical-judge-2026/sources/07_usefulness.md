@@ -1,0 +1,3 @@
+For a team evaluating a French medical generator, use the paper’s record design—question, reference, answer, clinician equivalence label—and stratify agreement by generator rather than reporting one pooled score. The output is a generator-specific audit report; success requires agreement with an independently held-out clinician set.
+
+If expert labels are scarce, reproduce the SFT-then-GRPO comparison only after keeping the alignment and audit sets disjoint and checking both precision and recall. Do not use this protocol as a clinical decision system, or when semantic equivalence is too coarse to represent the task’s safety requirements.

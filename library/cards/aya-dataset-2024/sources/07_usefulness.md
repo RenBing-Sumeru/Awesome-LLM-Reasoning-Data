@@ -1,0 +1,3 @@
+- For adding human-authored multilingual supervision to an English-heavy SFT mixture, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of aggregate language scores can hide severe low-resource coverage gaps.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: review workflow, language/task metadata, and multilingual evaluation. Do not reuse the release when its licensing or source provenance cannot be preserved.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Lost in the Middle 用 multi-document QA 和 key-value retrieval 评测长上下文位置偏差，QA 覆盖 10/20/30 documents，KV 覆盖 75/140/300 keys。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Nelson F. Liu 等（Stanford University, University of California, Berkeley）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

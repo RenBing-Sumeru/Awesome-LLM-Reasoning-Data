@@ -1,0 +1,1 @@
+Track the exact judge model, prompt, decoding settings, task split, and whether rewards were stored or queried online. The comparison between RLAIF and direct-RLAIF should be read as an interface comparison as well as a score comparison: it changes which component sees the raw AI judgment.

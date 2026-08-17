@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Google DeepMind 的 Gemini 3 Pro FSF 报告披露了用于 SFT 的推理模型生成 thought traces、施加于 thought 的 RL 长度惩罚、高层 guardrails 和具体评测脚手架，但未公开底层 prompts、traces、奖励或可复现制品。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿安全框架报告与数据披露台账",
+  "best_for_ch": "需要审查前沿推理模型的后训练数据对象、奖励边界、智能体评测脚手架与可审计性缺口的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Google DeepMind",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

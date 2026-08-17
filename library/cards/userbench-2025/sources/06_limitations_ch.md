@@ -1,0 +1,12 @@
+- 发布对象不是 trajectory corpus。Parquet 行用于启动 task 与 environment；论文运行的完整 message、action、observation、raw judge output、retry、fallback、error、seed，以及成功/失败 episode 均不可用，无法审计 retention bias 与 dropped-run accounting。
+- 数量文档存在冲突。Section 3.5 写 417 个 test point，Table 2 与 release 为 471；Introduction 声称 4K+ scenario，公开 release 只有 3,122 个唯一 ID。6,244 个 Parquet 行是 single-/multi-choice variant 重复，不能当作唯一任务；10K+ 表示构造容量。
+- 论文 Figure 8 与仓库的 judge-type 编号不同。公开代码映射从首个 commit 起就已存在，因此 replay 或重新实现必须依据固定代码 revision，不能假定 appendix label 就是可执行文档。
+- GPT-4o 控制 search validity、clarification validity、preference identification、模拟用户文本与两个 0.2 reward。论文没有报告 calibration set、false-positive/false-negative rate、重复 judge variance、替代 judge sensitivity、prompt attack 或对抗审计。temperature 0 不能证明 API 行为确定。
+- passive elicitation 默认用未设 seed 的 Python `random.choice` 选择剩余偏好，而 option shuffling 使用 module-level NumPy seed 42；evaluation script 没有设置 passive seed。即使 agent 与 simulator temperature 为 0，单次运行结果也可能因环境随机性变化。
+- 精确 `best_id` reward 可能在语义并列的 correct option 中强制单一赢家。已检查的 restaurant record 承认两个选项 cost level 相同，却只指定一个 best ID。当前没有覆盖 3,122 个任务的 best-option 并列、correct/wrong/noise 语义与 rationale 一致性审计。
+- one-choice termination 不等于成功：任何提交的 option 都可能消耗一个 aspect，包括 wrong option；全部 aspect 被消耗后 episode 可能结束。reward 与 termination 必须分开分析。
+- split 证据只确认 2,651 train 与 471 test 之间 exact ID 零重叠；split rule、seed、grouping policy、语义近重复分析、外部 benchmark overlap、model-pretraining contamination 与公开后的 exposure policy 均未披露。
+- 仓库根目录采用 Apache-2.0，但没有单独 dataset card 或权利声明覆盖全部生成 scenario/option、上游 preference source、human supervision 与 model-provider output term。annotator 招募、资质、分工、agreement、adjudication、报酬与 consent 均为 unknown。
+- 环境是带静态预生成 option 的 synthetic/mock travel domain，可能奖励精确 argument matching 与 option-ID 行为，而非稳健的在线搜索或真实用户偏好处理。主结果为单次运行，也没有独立复现。
+- 论文只评测 agent。2,651 行 train split 与未来 SFT/RL 支持讨论不能证明 SFT、RLVR、PRM、reward-model 或 agent-RL 用途。benchmark score 不是训练数据质量证据。
+- artifact 没有 tag 或 GitHub Release。数据在 arXiv v1 之后加入，确切带日期 GPT-4o endpoint 为 unknown，dependency/API behavior 也未被不可变固定。复用必须固定 commit `80506d2` 或其他明确 revision，并记录 hash 与 configuration。

@@ -1,0 +1,3 @@
+Sampling more agent trajectories can improve web search and evidence gathering, but correct answers are sparse and a long trajectory can look convincing while missing one decisive condition. Majority voting is weak when the right answer occurs rarely, while a single overall confidence score is unreliable when the answer depends on several independently checkable claims.
+
+The paper asks how extra test-time trajectories can be selected without collapsing verification into one opaque score. It targets information-seeking questions that must be decomposed into factual sub-questions, so the central resource-allocation question is not only how many trajectories to sample but how to inspect them under a shared, explicit checking contract.

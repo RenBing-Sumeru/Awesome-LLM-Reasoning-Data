@@ -1,0 +1,5 @@
+Code-Feedback 把多种编程交互统一成一种可复用 target：相似查询打包训练跨轮上下文，执行模拟保留诊断和修订，显式 code-correction 记录展示调试过程，LeetCode 分支则序列化相关问题或后续约束。可执行底层只在构造时产生反馈，训练实际消费按顺序排列的 role/content message；因此本工作属于指令、示范与理由数据，而不是只发布环境或只用于评测的 benchmark。
+
+Google Scholar 引用数：317（查询于 2026-07-27；https://scholar.google.com/scholar_lookup?title=OpenCodeInterpreter%3A+Integrating+Code+Generation+with+Execution+and+Refinement&author=Tianyu+Zheng&hl=en）
+
+开源数据：有。数据集名称：Code-Feedback；过滤后的 seed 数据集：CodeFeedback-Filtered-Instruction。官方地址：https://huggingface.co/datasets/m-a-p/Code-Feedback 和 https://huggingface.co/datasets/m-a-p/CodeFeedback-Filtered-Instruction。规模：68K 条对话、192K 个 turn；核心 `Code-Feedback.jsonl` 文件为 413,476,947 字节，论文五个构造分支分别贡献约 16K、51K、0.5K、0.3K 与 0.2K 条记录。记录形式：一个 `id` 和按顺序排列的 `messages`，每条 message 含 `role` 与 `content`，内容包括请求、解释/代码、执行输出或诊断、反馈与修订。文件/存储格式：对话语料是公开 JSONL，过滤后的 instruction 在 Hugging Face 单独发布。领域/语言：主要为英文代码生成与调试，以及效率、安全、兼容性、资源使用、可扩展性和最佳实践等反馈请求。构造与筛选：Qwen-72B-Chat 把 287K 条开放查询筛成 156K 条高难 seed；GPT-3.5 写初始代码，执行器返回诊断，GPT-4 修订答案或模拟十类反馈，最多循环三次。许可/访问限制：公开、无需审批、采用 Apache-2.0；上游来源条款，以及由 GPT-4-0613/GPT-3.5-turbo-0613 生成的记录仍需单独审查 provider policy。预期用途：代码 SFT、蒸馏、执行反馈修订、多轮代码助手与反馈数据审计。

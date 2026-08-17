@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeTraceBench 提供代码代理轨迹及阶段、步骤级失败标签，用于过程诊断、奖励建模与恢复策略。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要定位代码代理失败起点和下游错误链的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Han Li, Yifan Yao, Letian Zhu, Rili Feng, Hongyi Ye, Jiaming Wang, Yancheng He, Pengyu Zou, Lehan Zhang, Xinping Lei, Haoyang Huang, Ken Deng, Ming Sun, Zhaoxiang Zhang, He Ye, Jiaheng Liu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:59:38Z"
+}

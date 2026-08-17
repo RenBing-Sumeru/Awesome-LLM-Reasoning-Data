@@ -1,0 +1,5 @@
+- 阅读分数表前先看 §2.2：foresight 信号是长度归一化的同策略 continuation log probability，不是外部正确性 verifier。
+- 区分各计量单位：25K/32K 源查询、每个查询四个 pair、论文报告的 100K/128K 偏好、两个 beam、每个 beam 四次 rollout，以及四个 foresight step。
+- 用 Tables 3–4 判断机制证据：移除 foresight 后平均分下降 3.17/3.25，greedy sampling 下降 4.10/3.10；在 foresight 数据固定时，ACO 高于受测 DPO 和 ROPO 目标。
+- 不要把 HF collection 中两个源查询数据集和两个 checkpoint 误认为精确生成偏好快照已经发布。
+- 复现前检查官方 sampler/constructor 的长度 guard，确认 `prompt` 确实作为 ACO 训练条件，固定 revision 与 manifest，并把 Appendix C 视为 embedding 分析而非去污染证明。

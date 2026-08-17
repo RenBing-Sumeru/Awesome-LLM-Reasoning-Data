@@ -1,0 +1,102 @@
+id: cvdp-verilog-design-verification-2025
+title: 'Comprehensive Verilog Design Problems: A Next-Generation Benchmark Dataset for Evaluating Large Language Models and
+  Agents on RTL Design and Verification'
+year: 2025
+venue: arXiv preprint
+authors:
+- Nathaniel Pinckney
+- Chenhui Deng
+- Chia-Tung Ho
+- Yun-Da Tsai
+- Mingjie Liu
+- Wenfei Zhou
+- Brucek Khailany
+- Haoxing Ren
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- verilog
+- hardware-design
+- agents
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.14074
+  arxiv: https://arxiv.org/abs/2506.14074
+  code: https://github.com/NVlabs/cvdp_benchmark
+  data: https://huggingface.co/datasets/nvidia/cvdp-benchmark-dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/cvdp-benchmark-dataset
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Hardware-engineer-authored RTL design and verification problems.
+  trace_author: Benchmark authors; agents generate code and tool-use trajectories.
+  answer_format: RTL, testbench, assertions, edits, or technical answers depending on category.
+  process_fields:
+  - prompt
+  - repository context
+  - RTL or agent output
+  - evaluation result
+  environment_or_substrate: Dockerized EDA and model-scoring infrastructure.
+  verifier_or_reward: Open-source tool execution, with additional metrics for some tasks.
+  terminal_predicate: The produced artifact meets the category-specific evaluation check.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: null
+  sampling_protocol: The paper reports 783 problems in 13 task categories.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official arXiv paper, NVIDIA GitHub repository, and NVIDIA Hugging Face dataset.
+  split: Consult the dataset card and repository.
+  decontamination: Engineer-authored tasks reduce but do not eliminate public RTL overlap.
+  license: Consult the dataset card and repository license.
+  lineage: https://arxiv.org/abs/2506.14074
+  known_failure_modes:
+  - Some comprehension tasks use non-executable scoring.
+  - Toolchains can differ from production EDA flows.
+  citation_status: verified
+  confidence: high
+  notes: All authors list NVIDIA on the paper's first page; official data and code were checked.
+inclusion_reason: CVDP 发布覆盖 RTL 生成、验证与调试的 783 个工程师编写问题，以工具执行和评分基础设施评测模型与代理。
+related: []
+tags:
+- verilog
+- rtl
+- hardware-agents
+- '2025'
+one_line_summary: CVDP releases 783 engineer-authored RTL generation, verification, and debugging problems with tool-backed
+  evaluation for models and agents.
+why_it_matters: CVDP releases 783 engineer-authored RTL generation, verification, and debugging problems with tool-backed
+  evaluation for models and agents.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: All authors list NVIDIA on the paper's first page; official data and code were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

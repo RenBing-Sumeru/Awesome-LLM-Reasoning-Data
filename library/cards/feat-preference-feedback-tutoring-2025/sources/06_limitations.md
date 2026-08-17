@@ -1,0 +1,3 @@
+DM, DG, and DA can differ in more than cost: they may encode different model styles, human editing practices, and tutoring assumptions. A mixture result can therefore reflect source artifacts rather than a generally better pedagogical signal. Audit examples by learner level and error type, and compare explanatory feedback with whether it is actually correct and actionable.
+
+The evidence is limited to the reported English tutoring setting. Check permissions and provenance for prompt and feedback sources, and do not transfer a preferred feedback style to other languages, age groups, or high-stakes educational decisions without separate evaluation. The paper does not establish long-term learning outcomes.

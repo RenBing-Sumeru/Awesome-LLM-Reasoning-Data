@@ -1,0 +1,1 @@
+The authors collect human correctness labels for model answers and score the same answers with 11 LLM judges plus lexical baselines. They evaluate percentage agreement, Scott's pi and system-ranking correlation, then perturb prompt detail and reference-answer order to expose whether apparent alignment is calibration, leniency or prompt sensitivity.

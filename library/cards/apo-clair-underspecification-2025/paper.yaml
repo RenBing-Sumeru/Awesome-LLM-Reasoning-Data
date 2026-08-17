@@ -1,0 +1,101 @@
+id: apo-clair-underspecification-2025
+title: 'Anchored Preference Optimization and Contrastive Revisions: Addressing Underspecification in Alignment'
+year: 2025
+venue: Transactions of the Association for Computational Linguistics
+authors:
+- Karel D’Oosterlinck
+- Winnie Xu
+- Chris Develder
+- Thomas Demeester
+- Amanpreet Singh
+- Christopher Potts
+- Douwe Kiela
+- Shikib Mehri
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- alignment
+- instruction-following
+training_use:
+- preference_learning
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.tacl-1.22/
+  arxiv: null
+  code: https://github.com/ContextualAI/CLAIR_and_APO
+  data: https://huggingface.co/datasets/ContextualAI/ultrafeedback_clair_32k
+  project: null
+  huggingface: https://huggingface.co/datasets/ContextualAI/ultrafeedback_clair_32k
+  doi: null
+  venue: https://aclanthology.org/2025.tacl-1.22/
+  openreview: null
+  acl: https://aclanthology.org/2025.tacl-1.22/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.tacl-1.22.bib
+data_object:
+  prompt_source: Instruction-following prompts with response revisions.
+  trace_author: Model-generated contrastive revisions.
+  answer_format: Prompt, original response, revision, and preference-alignment signal.
+  process_fields:
+  - prompt
+  - response
+  - revision
+  - preference
+  environment_or_substrate: General instruction following.
+  verifier_or_reward: Anchored Preference Optimization and contrastive revision supervision.
+  terminal_predicate: A revised comparison contributes to alignment training or analysis.
+recipe_metadata:
+  base_model: See official paper and repository.
+  teacher: unknown
+  generator: CLAIR contrastive revision pipeline.
+  filtering_rule: See official repository and dataset card.
+  sampling_protocol: See official dataset card.
+  rollout_count: null
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Anchored Preference Optimization.
+audit:
+  source_mixture: Instruction prompts and contrastive response revisions.
+  split: Verify against the official dataset revision.
+  decontamination: See the paper and dataset card.
+  license: Verify on the official dataset card.
+  lineage: Official ACL Anthology, GitHub, and Hugging Face links recorded in the candidate information summary.
+  known_failure_modes:
+  - Preference underspecification may remain
+  - Revision quality depends on generator and anchors
+  citation_status: verified
+  confidence: high
+  notes: Title, proceedings link, code, data, authors, and institutions are supplied in the official information summary.
+inclusion_reason: CLAIR supplies contrastive revision preference data and APO uses it to address underspecified alignment
+  feedback.
+related: []
+tags:
+- alignment
+- preference-optimization
+- contrastive-revision
+- clair
+one_line_summary: APO and CLAIR use contrastive revisions to make preference optimization more robust to underspecified alignment
+  feedback.
+why_it_matters: The dataset represents an actionable revision-based alternative to treating a single preference label as fully
+  specified.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: ACL Anthology and official candidate information summary
+  confidence: high
+  notes: Proceedings, code, data, authors, and institutions were supplied as official entries.
+category_ids:
+- preference_reward_feedback_data

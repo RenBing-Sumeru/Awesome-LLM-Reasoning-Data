@@ -1,0 +1,6 @@
+- SCS 对同一截断 multimodal trajectory 的重采样后缀按选项一致性给奖励。
+- 反馈混合 accuracy、format 与 consistency；一致性是稳定性代理，不是 step verification。
+- 论文报告约 16.1k 个过滤训练 prompt，经核对的 Qwen release 含 16,180 行 JSONL。
+- 报告的 7B RLOO 设置使用 16 个 policy sample，并在截断比例 0.8 下生成四个 SCS continuation。
+- 官方 prompt data 与代码已发布，但完整扰动、rollout 和逐奖励日志未确认为发布。
+- Benchmark 增益和抽样 faithfulness audit 不能证明 prompt data 或 trace record 的质量。

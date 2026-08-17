@@ -1,0 +1,5 @@
+- 数据对象：CoT 前缀、转折候选点、诱导试答、token 概率、置信聚合与退出决策。
+- 门控信号来自目标模型自身置信度，不是独立正确性 verifier。
+- 主要实验使用 λ = 0.95、greedy decoding 和 16,384 token 上限；基于 entropy 的候选点采用论文所报 0.672 阈值。
+- DEER-PRo 惩罚不同诱导 prompt 间的置信离散；论文还描述 branch-parallel decoding。
+- 官方 MIT 代码覆盖数学任务的 Hugging Face/vLLM 路径，但 rollout 数据、代码生成支持和 branch-parallel 代码仍未发布。

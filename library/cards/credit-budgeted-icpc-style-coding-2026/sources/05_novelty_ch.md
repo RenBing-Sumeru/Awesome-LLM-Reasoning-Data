@@ -1,0 +1,1 @@
+已有基线通常奖励最终 accepted solution，而把 tokens、测试、重试和耗时当作外部统计。USACOArena 把这些决策通过统一 credit budget 放进 benchmark 内部。方向信号是面向大规模 agent swarm 和部署成本的 resource-aware coding-agent evaluation。质量信号是开放 Hydro 集成、公开 configs、problem lists、日志/报告工具和复现文档。ICPC-style judging 和 token accounting 单独看并不新。复用前要查题目内容权利、dataset/corpus 权利、MIT 代码范围、Hydro 版本、hidden/public tests、预算参数，以及本地测试是否泄漏解题策略。

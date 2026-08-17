@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "NFT 在 DAPO-Math-17k 上进行在线训练：每个 rollout step 抽取 512 个问题、每题生成 16 个答案，并用二元正确性信号同时利用正例和负例。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Huayu Chen；Kaiwen Zheng；Qinsheng Zhang；Ganqu Cui；Lifan Yuan；Yin Cui；Haotian Ye；Tsung-Yi Lin；Ming-Yu Liu；Jun Zhu；Haoxiang Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

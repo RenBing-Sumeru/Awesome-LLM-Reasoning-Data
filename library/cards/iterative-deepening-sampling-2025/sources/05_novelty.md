@@ -1,0 +1,3 @@
+The paper does not equate scaling with either longer one-shot thinking or a larger pool of independent completions. Its distinctive decision is to use successive sampling depths to expose a model to its own previous reasoning, making self-correction part of the sampling schedule.
+
+This makes the training consumer explicit: a fixed model consumes prior traces as context at inference time, and the next rollout is chosen to deepen reflection. The contribution is therefore a test-time allocation policy for correction opportunities, rather than a dataset construction recipe or a new reward-model training method.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用双向动态核对清单引导开源 7B 模型，在不微调条件下执行多语言文本评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多语言 LLM 判别器与动态核对清单",
+  "best_for_ch": "需要低成本、可解释的多语言逐点评分或成对比较评测的研究者。",
+  "confidence_ch": "高：已核对 ACL 正文、官方作者机构和论文给出的代码仓库链接。",
+  "authors_ch": "Mohammad Ghiasvand Mohammadkhani, Hamid Beigy",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

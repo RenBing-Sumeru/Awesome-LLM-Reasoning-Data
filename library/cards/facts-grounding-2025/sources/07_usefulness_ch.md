@@ -1,0 +1,1 @@
+可把 FACTS Grounding 用作长上下文 grounding evaluation schema。复用时保留文档 id、用户请求、上下文长度、回答、eligibility decision、grounding decision、judge ensemble 版本、split 和提交日期。它适合在 RAG 与长上下文系统中区分 request satisfaction 和 factual support。

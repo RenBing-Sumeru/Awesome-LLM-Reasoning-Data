@@ -1,0 +1,3 @@
+- **Process faithfulness is not verified.** Final-answer consistency can retain plausible but incorrect intermediate reasoning. Sample traces should be checked with step-level or visual-grounding verification before reuse.
+- **Difficulty is model-relative.** The 123K subset reflects failures of Qwen3-VL-4B-Thinking, not an intrinsic ordering for every model. Recompute difficulty for a substantially different student.
+- **Mixed-source rights and leakage.** Apache-2.0 on the combined release does not replace source-level image and dataset terms, and 50-gram deduplication does not prove benchmark decontamination. Audit provenance and evaluation overlap locally.

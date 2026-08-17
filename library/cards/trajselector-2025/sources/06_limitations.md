@@ -1,0 +1,6 @@
+
+Outcome-to-step label copying is the central validity risk: correct answers may contain flawed steps, and incorrect answers may contain useful steps. The buffer class softens the objective but does not locate errors or establish reasoning faithfulness. Math-Verify can also fail through answer extraction or equivalence checking.
+
+The record boundary is formatting-dependent. Splitting only on \n\n inside the think-tagged region assumes that blank lines correspond to semantic steps; average pooling can dilute one decisive error and is sensitive to how many segments a response contains. Hidden-state inputs also couple a trained selector to the sampler architecture, representation size, tokenizer, layer, and prompting convention.
+
+The study is concentrated on mathematical Best-of-N. Monte Carlo search, adaptive N, open-ended domains, and robust cross-model transfer remain underexplored. The offline selection study uses one 1K subset and downstream fine-tuning, so it is evidence of utility under that experiment, not proof of intrinsic data quality. Training split, validation protocol, constructed-corpus decontamination, and generated-artifact license are undisclosed, and no code, checkpoint, corpus, or latent records are released.

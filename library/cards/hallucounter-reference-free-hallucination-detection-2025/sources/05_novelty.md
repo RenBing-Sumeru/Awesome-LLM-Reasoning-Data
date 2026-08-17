@@ -1,0 +1,1 @@
+SelfCheckGPT-style methods mainly detect disagreement among repeated responses. HalluCounter adds the original query, asking whether candidates agree with each other and actually answer the question, and combines detection with best-response selection. The novelty is dual alignment rather than external retrieval.

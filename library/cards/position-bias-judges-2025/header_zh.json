@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以重复查询与候选换序审计 LLM judge 的位置偏差、稳定性与偏好方向。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "LLM judge 位置偏差系统审计论文",
+  "best_for_ch": "需要选择、审计或校准自动评测 judge 的研究者。",
+  "confidence_ch": "高：IJCNLP-AACL 正式论文的设置、指标、主要结果与作者机构均已核验。",
+  "authors_ch": "Lin Shi, Chiyu Ma, Wenhua Liang, Xingjian Diao, Weicheng Ma, Soroush Vosoughi",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

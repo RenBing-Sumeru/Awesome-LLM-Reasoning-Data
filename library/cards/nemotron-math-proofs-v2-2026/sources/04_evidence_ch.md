@@ -1,0 +1,1 @@
+官方发布提供了训练集 JSONL，其中包含两轮的证明、验证或元验证对话，公开字段为 `messages`、`problem`、`subset` 和 `uuid`。数据集说明将 Nemotron-Math-Proofs-v1 的 AoPS 衍生子集列为种子来源，将 DeepSeek-V4-Pro Max 推理模式列为轨迹生成器，并使用 DeepSeekMath-V2 风格提示进行自然语言验证；生成文本中嵌有方框标记的 `0`、`0.5` 或 `1`。这些证据确认了带反馈发布物及其模式的存在，但不能证明形式化证明正确性或验证器已经过校准。

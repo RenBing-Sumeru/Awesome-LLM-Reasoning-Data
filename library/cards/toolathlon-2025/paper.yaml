@@ -1,0 +1,257 @@
+id: toolathlon-2025
+title: 'The Tool Decathlon: Benchmarking Language Agents for Diverse, Realistic, and Long-Horizon Task Execution'
+year: 2025
+venue: ICLR 2026
+authors:
+- Junlong Li
+- Wenshuo Zhao
+- Jian Zhao
+- Weihao Zeng
+- Haoze Wu
+- Xiaochen Wang
+- Rui Ge
+- Yuxuan Cao
+- Yuzhen Huang
+- Wei Liu
+- Junteng Liu
+- Zhaochen Su
+- Yiyang Guo
+- Fan Zhou
+- Lueyang Zhang
+- Juan Michelini
+- Xingyao Wang
+- Xiang Yue
+- Shuyan Zhou
+- Graham Neubig
+- Junxian He
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- long_horizon_agents
+- cross_application_workflows
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.25726
+  paper_pdf: https://arxiv.org/pdf/2510.25726v2
+  arxiv: https://arxiv.org/abs/2510.25726
+  code: https://github.com/hkust-nlp/Toolathlon
+  data: https://huggingface.co/datasets/hkust-nlp/Toolathlon-Verified_Trajectories
+  project: https://toolathlon.xyz/introduction
+  huggingface: https://huggingface.co/datasets/hkust-nlp/Toolathlon-Verified_Trajectories
+  doi: https://doi.org/10.48550/arXiv.2510.25726
+  venue: https://iclr.cc/virtual/2026/poster/10006492
+  openreview: https://openreview.net/forum?id=z53s5p0qhf
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A pool of 108 concise, fuzzy long-horizon tasks manually sourced from real-world websites or crafted by the
+    authors to reflect genuine user demands. The authors first sourced freely from more than 50 candidate applications, then
+    targeted important underrepresented applications.
+  trace_author: The language agent/model under evaluation produces the episode. Paper experiments evaluate 17 models with
+    three runs per task; the later Toolathlon-Verified trajectory release packages three complete 108-task runs for each of
+    10 newer models.
+  answer_format: An executable task bundle plus an episode log. A task bundle may include English/Chinese task and system-level
+    instructions, task_config.json, preprocess or initial-workspace assets, ground-truth workspace/state, and a task-specific
+    evaluator. Current traj_log.json records config, request/timestamps, tool catalog and choice, execution status, message
+    history, key statistics, costs, resume/session metadata; eval_res.json records pass/details/failure.
+  process_fields:
+  - task_id
+  - resolved_task_config
+  - task_instruction
+  - initial_workspace_or_state
+  - available_mcp_servers
+  - available_local_tools
+  - message_role
+  - message_content
+  - tool_calls
+  - tool_response
+  - execution_status
+  - interaction_turns
+  - tool_call_count
+  - token_statistics
+  - cost_statistics
+  - request_id
+  - initial_run_time
+  - completion_time
+  - session_id
+  - evaluator_pass
+  - evaluator_details_or_failure
+  observation: Sequential tool/environment responses and workspace/application state exposed through MCP and local tools.
+    The paper mixes remote services with locally containerized applications; 72 of 108 tasks have scripted and/or workspace-based
+    state initialization.
+  action_space: Tool calls over the task's configured set of fewer than 10 relevant MCP servers, with every tool in each selected
+    server loaded, plus configured local tools such as Python execution, web search, claim_done, sleep, overlong-output navigation,
+    and context-history management. Paper Table 2 reports 604 MCP tools and 16 local tools overall.
+  environment_or_substrate: Thirty-two MCP-server/application surfaces spanning remote services and locally containerized
+    Poste.io, Canvas, Kubernetes, WooCommerce, and other software; task execution is isolated in containers. Current reproduction
+    additionally depends on Docker/Podman, account credentials, external services, repository code, and a task container image.
+  verifier_or_reward: A unique manually written deterministic evaluator for each task compares the final workspace/application
+    state with a static ground-truth snapshot or dynamically retrieved real-time ground truth. Current TaskEvaluator returns
+    binary pass/fail only after successful execution and uses null pass when execution status is not SUCCESS.
+  verifier_output: eval_res.json with pass=true/false/null plus details or failure; run-level eval_stats.json aggregates success
+    and turn statistics.
+  reward: Terminal binary task success. No step-level reward, critique, preference, or process label is disclosed.
+  terminal_predicate: The episode is successful only when the task-specific post-execution evaluator passes against the resulting
+    state. Agent-loop termination, a final natural-language response, or claim_done alone does not establish correctness.
+  provenance: Real-world need or author-crafted need -> two-stage application-aware task sourcing -> multi-week filtering/refinement
+    -> task prompt/config/state initializer/ground truth/evaluator -> isolated model-environment interaction -> traj_log.json
+    and eval_res.json -> three-run summaries and gated Toolathlon-Verified model archives. Record-level source and contributor
+    identities are unknown.
+recipe_metadata:
+  base_model: 'Not applicable as one training recipe: Toolathlon evaluates multiple proprietary and open-weight agents and
+    does not train a base model.'
+  teacher: No teacher supplies target trajectories. Authors manually construct tasks, environment states, ground truth, and
+    evaluators.
+  generator: The evaluated agent/model generates tool-use trajectories in the released environment.
+  prompt_task_source: Authors/researchers and senior CS undergraduates source tasks from real-world websites or craft them
+    to match genuine user needs; exact source URL and author provenance per task are generally undisclosed.
+  sampling_protocol: 'Paper: each of 17 models is run three times on all 108 tasks with at most 100 turns. Toolathlon-Verified
+    trajectory release: 10 model archives, three runs per model, every run covering the same 108 tasks, nominally 3,240 task-run
+    episodes.'
+  rollout_count: Three runs per model-task for both the paper evaluation protocol and the current Toolathlon-Verified archives.
+  temperature: Paper setting unknown. Current Toolathlon-Verified README says temperature and top-p are not set by the framework
+    and inherit upstream provider defaults.
+  inference_budget: Paper experiments allow at most 100 turns. Current Toolathlon-Verified allows 5,400 seconds per task and
+    64K maximum output length per agent turn; total token/compute budgets vary by model and are not normalized.
+  search_or_scaffold: Paper uses OpenAI Agents SDK v0.0.15 with tool-error handling, 100K-character overlong-output truncation
+    plus 10K-character paging, and context-history management. Current repository also offers containerized and decoupled
+    host loops and preliminary Claude Agent SDK support.
+  filtering_rule: Tasks undergo multiple weeks of checking, filtering, and refinement, followed by review/revision by 5-6
+    experienced authors and benchmark-wide cross-checking. Toolathlon-Verified states that prompts, ground truths, and evaluators
+    were reviewed and aligned. Rejected task counts, adjudication logs, and exact acceptance thresholds are unknown.
+  selection_threshold: unknown
+  optimizer_or_scaffold: Evaluation scaffold only; no optimizer or post-training objective is part of the paper.
+audit:
+  source_mixture: Manually sourced or crafted tasks across research, campus, finance, technology, business, daily-life, and
+    e-commerce workflows; environments combine remote real services, locally containerized software, files, and dynamically
+    changing external information.
+  split: One public 108-task evaluation pool is described and released. No train/dev/test split, hidden test set, or public/private
+    partition is disclosed; every released model run covers the same 108 tasks.
+  decontamination: The gated trajectory release includes a canary GUID and points to DECONTAMINATION.md and decontamination.json,
+    but their detailed contents could not be inspected without access approval. The dataset explicitly prohibits training
+    and benchmark-answering retrieval; public task prompts, ground truths, and evaluators still create a direct contamination
+    surface.
+  benchmark_overlap: No systematic overlap or near-duplicate audit against other agent benchmarks, training corpora, or public
+    workflow templates is disclosed.
+  license: The arXiv paper is CC BY 4.0. At repository commit 3b647e60713703d653584c23ff185e3b6cd67722, GitHub reports no
+    SPDX license and the tree has no root LICENSE. The gated HF benchmark-only access policy is not a verified reusable license
+    for trajectories, task assets, ground truths, or third-party application content.
+  lineage: Task need -> prompt/config -> initial state and ground truth -> deterministic task evaluator -> evaluated model's
+    user/assistant/tool message episode -> execution status and binary evaluator result -> per-run eval_stats -> gated model
+    archive. The release lacks one immutable manifest tying paper version, code commit, container image, service versions,
+    task/evaluator revisions, and archive revision together.
+  release_version: Paper arXiv v2 (2026-02-26); Toolathlon-Verified named release (2026-06-30); repository main checked at
+    3b647e60713703d653584c23ff185e3b6cd67722 (2026-07-15); HF dataset checked at 01deb377e5179d654e4282f62c0c336539480837
+    (2026-07-16). The GitHub repository has no tag or GitHub Release for Toolathlon-Verified.
+  successful_and_failed_sample_retention: The HF card calls the release full trajectories, states that all 30 run summaries
+    cover all 108 tasks, and reports both success and failure outcomes, so it is not described as success-filtered. Exact
+    archive-level episode completeness, corrupt-run handling, and any omitted trajectories remain unknown because access is
+    gated.
+  privacy_or_consent: Paper Appendix E removes personally identifiable information from displayed examples. The HF release
+    says archives were scanned and sanitized for API credentials, endpoints/base URLs, high-confidence credential patterns,
+    and credential-bearing signed URLs, while warning downstream users to review derived subsets. Independent redaction recall,
+    consent, and third-party-content rights are unknown.
+  known_failure_modes:
+  - 'Evaluator and ground-truth drift is material: Toolathlon-Verified substantially revised task prompts, ground truths,
+    evaluators, and infrastructure after the paper, and repository review logs document later task-specific fixes.'
+  - Dynamic evaluators depend on mutable external information and services; environment/account/API changes can alter task
+    solvability or scoring even when agent behavior is unchanged.
+  - Public prompts, ground truths, evaluator code, and released trajectories create benchmark contamination and evaluator-gaming
+    risk; the official data policy therefore forbids training and benchmark-answering retrieval.
+  - A deterministic terminal script can still have task-specific false positives or false negatives; the paper does not report
+    evaluator error rates or adversarial robustness.
+  - Tool availability, credentials, reset procedures, container images, SDK/scaffold behavior, provider defaults, and external-service
+    versions are not tied together in one immutable replay manifest.
+  - The paper identifies tool-call errors, long-context degradation, premature stopping, and overlong tool outputs; 15%-35%
+    of model trajectories encounter overlong outputs, and framework truncation/context management can affect measured capability.
+  - Current trajectory summaries warn that summary.config_used may contain stale model labels and that some model runs have
+    fewer than 324 valid AvgTurns records.
+  - Repository/task/data licensing is unresolved, and the gated archive's benchmark-only policy blocks training reuse even
+    if the raw record format is technically convertible.
+  - Paper scores and current Toolathlon-Verified leaderboard scores are not directly comparable because both benchmark artifacts
+    and evaluated model generations changed.
+  citation_status: verified
+  confidence: medium
+  notes: Checked the full 36-page arXiv v2 PDF and rendered method/evaluation pages, official ICLR and OpenReview records,
+    project site, repository tree/current commit and representative prompt/config/evaluator plus trajectory/evaluation serialization
+    code, and the official HF dataset card/revision. Raw gated trajectory archives and gated decontamination files were not
+    downloaded.
+  remaining_unknowns:
+  - General-purpose licenses for code, task assets, ground truths, environment snapshots, and trajectories.
+  - Raw archive file-level completeness, hashes, exact per-episode redaction changes, and omitted/corrupt episode policy.
+  - Detailed decontamination procedure beyond the canary and benchmark-only prohibition.
+  - Train/dev/test or public/private split policy, if any.
+  - Per-task source URLs, contributor identities, rejected-task ledger, reviewer agreement, and acceptance thresholds.
+  - Task-level evaluator false-positive/false-negative rates and adversarial tests.
+  - Immutable mapping among paper snapshot, code, task image, remote-service versions, evaluators, and released trajectories.
+  - Exact provider-side decoding defaults and reproducible model endpoints for each trajectory archive.
+inclusion_reason: 'Toolathlon exposes a concrete long-horizon agent data boundary: fuzzy user tasks and initialized software
+  state produce state-action-tool trajectories, while task-specific deterministic scripts attach terminal success to the resulting
+  environment. Its later full-run trajectory archives and explicit anti-training policy make it useful for evaluation and
+  failure auditing, but not a reusable post-training corpus.'
+related:
+- mcp-agentbench-evaluating-real-world-language-agent-performance-2025
+- tau2-bench-2025
+- the-agent-company-2024
+tags:
+- toolathlon
+- agent-environment
+- agent-trajectories
+- mcp
+- tool-use
+- long-horizon
+- execution-based-evaluation
+- terminal-verifier
+- benchmark-contamination
+- do-not-train
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: Toolathlon pairs 108 fuzzy cross-application tasks with initialized software states, recorded tool-use episodes,
+  and deterministic terminal evaluators; its gated Verified trajectories are explicitly evaluation/audit-only and must not
+  be used for training.
+why_it_matters: It makes the entire agent-data contract inspectable--task, tools, observations, environment mutation, terminal
+  state check, run statistics, and failures--while illustrating why environment/evaluator version drift and contamination
+  policy can dominate whether trajectory data is reproducible or reusable.
+card: null
+needs:
+- 'needs_license: publish explicit terms for code, task assets, ground truths, environment snapshots, and trajectory archives'
+- 'needs_release_manifest: tag Toolathlon-Verified and pin paper, repository commit, container image, dependency lock, service
+  versions, task/evaluator hashes, and HF archive revision'
+- 'needs_gated_archive_audit: inspect archive inventory, episode completeness, redaction, file hashes, and dropped/corrupt-run
+  policy after authorized access'
+- 'needs_decontamination: inspect and summarize gated DECONTAMINATION.md/decontamination.json and document benchmark-overlap
+  checks'
+- 'needs_split: clarify whether any hidden/private tasks or train/dev partitions exist'
+- 'needs_evaluator_audit: report task-level false-positive/false-negative tests and dynamic-ground-truth failure handling'
+- 'needs_provenance: publish per-task source, contributor, reviewer, adjudication, and rejected-task records'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Verified citation, authors, ICLR/OpenReview venue, arXiv v2, official project, code commit, 108-task repository structure,
+    sample task/evaluator, traj_log/eval_res serialization, current Toolathlon-Verified release, HF revision/card, anti-training
+    policy, and repository license/release absence. Raw gated archives remain uninspected.

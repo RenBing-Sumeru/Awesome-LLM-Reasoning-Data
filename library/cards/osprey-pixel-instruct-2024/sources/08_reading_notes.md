@@ -1,0 +1,5 @@
+- Positioning: Osprey releases 724K conversations whose targets are conditioned on arbitrary pixel masks rather than coarse boxes.
+- Method handle: Osprey encodes a selected segmentation mask as a visual prompt and pairs it with 724K conversations that ask for recognition, detailed description, reasoning, and interaction about that precise region.
+- Data handle: 724,000 pixel-grounded visual conversations; each record contains image, mask or region, referring instruction, and grounded assistant response.
+- Evidence anchor: Across referring, region description, and grounded reasoning tasks, mask-conditioned training improves pixel-level understanding while retaining general conversation ability; the fixed backbone comparison isolates mask-aware data and representation.
+- Reuse decision: best for training an assistant to reason about an exact segmented object or part; first audit category-name leakage from source masks can overstate open-vocabulary reasoning.

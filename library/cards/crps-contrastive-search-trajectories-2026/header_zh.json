@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "CRPS 对比 MCTS 成功路径与高访问失败或低效正确路径，由 GPT-5-mini 合成终局答案可验证的轨迹；公开集实际为 27,256 条。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "对比搜索轨迹合成与开放数据发布",
+  "best_for_ch": "研究 MCTS 数据构造、失败轨迹蒸馏、SFT 扩展和发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Peiyang Liu、Zhirui Chen、Xi Wang、Di Liang、Youru Li、Zhi Cai、Wei Ye",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

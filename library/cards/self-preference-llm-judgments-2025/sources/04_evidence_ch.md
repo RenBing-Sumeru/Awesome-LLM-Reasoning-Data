@@ -1,0 +1,1 @@
+在 AlpacaEval 上，Qwen2.5-72B-Instruct 作为 judge 时给自身回答 52.3% 胜率，而 gold judgments 给其 54.5%，因此表面优势并非自偏好（图 2）。正 DBG 揭示模型对中的偏见；共同用 UltraChat-200k 微调后，Llama-3.1-8B-Instruct 的 DBG 从 10.5% 降至 2.1%，Qwen2.5-7B-Instruct 从 2.1% 降至 1.1%（图 6）。这支持该协议，不能等同于完美真值。

@@ -1,0 +1,16 @@
+{
+  "title": "RAG-Critic: Leveraging Automated Critic-Guided Agentic Workflow for Retrieval Augmented Generation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.179/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T13:05:41Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "RAG-Error-Critic-100K 汇集15个模型在九个RAG集上的10万条回答和错误诊断，适合训练会解释检索增强错误的critic",
+    "updated_at": "2026-07-21T13:05:41Z"
+  }
+}

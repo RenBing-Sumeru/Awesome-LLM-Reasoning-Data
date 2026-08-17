@@ -1,0 +1,5 @@
+The official arXiv report identifies Xiaomi LLM-Core Team as the author and was submitted on 2026-01-06. It describes million-scale internal SFT, specialized teachers, MOPD, and real or synthetic agent environments. The official project repository and Hugging Face model page exist, but they do not supply a post-training data release, environment package, or full reward implementation.
+
+The report supports recording teacher reverse-KL with ORM advantages, programmatic checks, LLM judges, multimodal web verification, and task-dependent terminal criteria as a mixed feedback contract. It also describes about 120k environments. Neither this environment count nor the reported SFT scale establishes unique task counts, source lineage, train/evaluation separation, or release availability.
+
+The report gives a concrete audit signal by describing SWE-Bench reward hacking through undeleted ground-truth commits and an evaluation-image update. It does not provide a broader contamination or overlap audit, so the evidence supports a partial-disclosure status rather than a reproducible training-data recipe.

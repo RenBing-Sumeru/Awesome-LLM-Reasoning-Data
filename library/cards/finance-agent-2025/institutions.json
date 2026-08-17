@@ -1,0 +1,13 @@
+{
+  "institutions": [
+    "Vals AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-16T08:00:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2508.00828",
+    "https://www.vals.ai/benchmarks/fabv2"
+  ],
+  "verification_note": "Vals AI is verified from the official benchmark page and author context."
+}

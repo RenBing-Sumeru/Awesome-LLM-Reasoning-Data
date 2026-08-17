@@ -1,0 +1,1 @@
+IFEval-style data use templated short constraints, while agent benchmarks focus on final task success. AGENTIF recovers system-level instructions from real applications and releases atomic criteria and verifiers. The novelty is criterion-level auditability of agent instruction following rather than more tool-use tasks.

@@ -1,0 +1,1 @@
+Fu, Yichao, Junda Chen, Siqi Zhu, Zheyu Fu, Zhongdongming Dai, Yonghao Zhuang, Yian Ma, Aurick Qiao, Tajana Rosing, Ion Stoica, and Hao Zhang. 2025. Efficiently Scaling LLM Reasoning Programs with Certaindex. In Advances in Neural Information Processing Systems 38. https://papers.nips.cc/paper_files/paper/2025/hash/d037fd021c9aace128b8ce25001cdb6c-Abstract-Conference.html

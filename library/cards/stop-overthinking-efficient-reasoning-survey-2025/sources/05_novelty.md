@@ -1,0 +1,1 @@
+The novelty is a reasoning-specific view of efficiency. Earlier serving work mainly optimized generic generation; this survey focuses on deliberate traces and the overthinking failure mode. It makes trace quality, data, and adaptive computation part of the same comparison.

@@ -1,0 +1,3 @@
+The paper reports improvements in process judging, error diagnosis, and answer selection over scalar and text-only baselines. This supports separate grounding and logic supervision, though the dataset is small and may share teacher bias.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of generative multimodal process supervision in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

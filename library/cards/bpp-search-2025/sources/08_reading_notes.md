@@ -1,0 +1,5 @@
+- Keep the two objects separate: StructuredOR releases 124 final rows (86 train, 38 test), whereas BPP-Search operates on unreleased runtime trees.
+- Read the public row as `question` + nested `label` (`set`, `parameter`, `variable`, `objective`, `constraint`) + `objective_value`; do not infer node or checker fields.
+- Interpret the search results on their stated GPT-4o-solvable subsets: 30/38 StructuredOR, 72/211 MAMO-ComplexLP, and 143/289 NL4OPT.
+- Treat 39 calls for branching factor 3, 84 for branching factor 4, and 15/21 steps for widths 2/3 as experiment-level budgets, not per-record metadata.
+- Audit the release boundary first: raw trees, pruned and rejected nodes, selector corpora and scores, checker outputs, implementation, per-example budgets, and the dataset license are absent or unknown.

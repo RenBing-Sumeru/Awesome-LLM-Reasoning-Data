@@ -1,0 +1,204 @@
+id: swebench-memory-audit-2025
+title: Does SWE-Bench-Verified Test Agent Ability or Model Memory?
+year: 2025
+venue: arXiv preprint
+authors:
+- Thanosan Prathifkumar
+- Noble Saji Mathews
+- Meiyappan Nagappan
+source_role:
+- audit_failure
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- software_engineering
+- bug_localization
+- benchmark_contamination
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.10218
+  arxiv: https://arxiv.org/abs/2512.10218
+  code: https://osf.io/q5y47/?view_only=7785a3f32db841d4bd28d680c2c1771c
+  data: https://osf.io/q5y47/?view_only=7785a3f32db841d4bd28d680c2c1771c
+  project: https://osf.io/q5y47/?view_only=7785a3f32db841d4bd28d680c2c1771c
+  huggingface: null
+  model: null
+  benchmark: null
+  supplementary: null
+  doi: https://doi.org/10.48550/arXiv.2512.10218
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: Static file-localization audit records derived from software-issue benchmarks; not state-action episodes.
+  prompt_source: All 500 SWE-Bench-Verified issues; 500 manually non-vague BeetleBox issues sampled as 100 each from Ansible,
+    Apache Airflow, PostHog, Localstack, and Langchain; and SWE-rebench January 2025 (109) and September 2025 (50) splits.
+  benchmark_record_fields:
+  - instance_id
+  - repository
+  - issue_text_or_problem_statement
+  - base_or_before_fix_commit_when_available
+  - gold_updated_files
+  input_conditions:
+    issue_only: Issue text with no repository file names, file tree, code, or execution environment.
+    issue_plus_file_structure: Issue text plus repository-relative file names and paths, without file contents; the released
+      script randomly samples at most 500 paths when a tree is larger.
+  trace_author: No trace is produced. Claude 3.5 Sonnet or Claude 3.7 Sonnet returns one localization answer per benchmark
+    item and condition.
+  answer_format: Natural-language response parsed by the released regex/list extractor into a deduplicated list of predicted
+    file paths.
+  process_fields:
+  - instance_id
+  - prompt
+  - raw_model_response
+  - predicted_files
+  - ground_truth_files
+  - hits
+  - complete_coverage
+  - partial_coverage
+  observation: Static issue text and, in one condition, a list of repository paths; no file contents or post-action observations.
+  verifier_or_reward: 'Programmatic set comparison against gold updated_files: complete coverage requires every gold path
+    in the predicted set; partial coverage requires at least one intersecting path.'
+  reward: null
+  terminal_predicate: Answer-level complete-coverage and partial-coverage booleans; there is no episode terminal state.
+  provenance: Benchmark rows are adapted from SWE-Bench-Verified, BeetleBox, and SWE-rebench; the author-linked OSF release
+    contains derived datasets, raw/prediction/metric logs, repository-path caches, and scripts.
+  environment_or_substrate: Offline Anthropic Messages API inference over static prompts. Repository clones are used only
+    to derive path lists; no patch is applied and no tests or repository environment are executed.
+  release_shape: View-only OSF project with datasets/, logs/, repo_structures/, repo_subsets/, leak_test.py, metric.py, combine_results.py,
+    swebench_metrics.py, and dataset-conversion scripts.
+recipe_metadata:
+  base_model: Claude 3.5 Sonnet (`claude-3-5-sonnet-20240620`) and Claude 3.7 Sonnet (`claude-3-7-sonnet-20250219`), as identified
+    by the paper and released log filenames.
+  teacher: null
+  generator: Anthropic Messages API called once per model-instance-condition by leak_test.py; model text is converted to path
+    lists by regex, bullet, and Python-list parsing.
+  prompt_task_source: Issue text from the three benchmark families, optionally paired with a repository file-path listing
+    derived at the instance commit when checkout succeeds.
+  sampling_protocol: All 500 SWE-Bench-Verified issues; five BeetleBox Python repositories with 100 manually non-vague issues
+    each; SWE-rebench January 2025 (109) and September 2025 (50). One released model answer per item/condition is used; repeated
+    decoding is not reported.
+  temperature: unknown
+  rollout_count: One static localization response per model × instance × input condition in the released evaluation; no multi-step
+    rollout.
+  inference_budget: leak_test.py sets max_tokens=4000. File-structure prompts include at most 500 randomly sampled paths;
+    total tokens, cost, and wall-clock budget are undisclosed.
+  search_or_scaffold: No model search or agent scaffold. The optional preprocessing scaffold shallow-clones repositories,
+    attempts commit checkout, enumerates files under 1 MB, and caches relative paths.
+  filtering_rule: The first author manually excludes vague BeetleBox issues and resamples until 500. The released helper keeps
+    `not_vague` labels and fills the remainder with a random_state=42 shuffle, but its required vagueness_results.json is
+    absent from the OSF root.
+  selection_threshold: BeetleBox issues must contain enough detail for another developer to understand, reproduce, and act
+    without follow-up; no quantitative threshold or inter-rater protocol is disclosed.
+  optimizer_or_scaffold: None; evaluation/audit only.
+audit:
+  source_mixture: Static issue records from SWE-Bench-Verified, a five-repository Python subset of BeetleBox, and January/September
+    2025 SWE-rebench splits. These are comparison evaluation sources, not training mixtures.
+  split: 'SWE-Bench-Verified: all 500 issues. BeetleBox: 100 retained issues from each of five named repositories. SWE-rebench:
+    January 2025 (109) and September 2025 (50). No train/dev split is used for model training.'
+  decontamination: No corpus-level decontamination against Claude training data is possible because the proprietary training
+    corpus is unavailable. SWE-rebench supplies newer comparison splits and BeetleBox supplies repositories outside SWE-Bench-Verified,
+    but the study remains an indirect behavioral audit.
+  benchmark_overlap: The paper deliberately compares a fixed, widely exposed benchmark with other public open-source Python
+    issue sets. Repository/task overlap with proprietary Claude pretraining is unknown, and the design does not prove per-instance
+    training inclusion.
+  license: The arXiv paper is CC BY-NC-SA 4.0. The OSF code, datasets, logs, and repository-path caches have no verified artifact
+    license; upstream benchmark and repository rights require separate review.
+  lineage: Paper §6 links the OSF project. OSF exposes derived datasets, scripts, raw responses, prediction lists, metrics,
+    subset files, and cached repository structures, but no README or manifest binds every table cell to immutable input/output
+    hashes.
+  release_version: The OSF node is view-only/private and unregistered, created 2025-07-25 and last modified 2025-10-19. Inspected
+    files report current version 1, but there is no registered snapshot, tag, dependency lock, or release manifest.
+  verifier_or_judge_failure_modes:
+  - Complete and partial coverage do not penalize extra predicted paths, so verbose path emission can inflate the headline
+    success predicates even though the code also computes precision/F1.
+  - The response regex/cleanup can omit legitimate formats, including ordinary root-level filenames without a slash, producing
+    parser-induced false negatives.
+  - Repository trees over 500 paths are sampled without a fixed seed, and failed commit checkout falls back to the repository
+    default branch, making prompts nondeterministic or version-drifted.
+  - The released script's default second model is `claude-3-7-haiku-20240307`, inconsistent with the paper and result filenames
+    for `claude-3-7-sonnet-20250219`; exact reproduction requires an explicit override.
+  - A strong performance gap is consistent with task memory but does not directly establish that specific records were present
+    in proprietary model training data.
+  - Issue difficulty, filename clues, repository composition, open-source familiarity, and path-list length remain possible
+    confounds.
+  - Tables provide percentages without confidence intervals, hypothesis tests, repeated decoding runs, or matched-difficulty
+    controls.
+  successful_and_failed_sample_retention: Released raw logs retain completed model responses, parsed predictions, gold paths,
+    and hits. API exceptions are skipped, and the paper does not report failure counts or a missing-response analysis; vague
+    BeetleBox issues are excluded rather than retained as negative examples.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: The 6× and 3× claims apply specifically to issue-only complete coverage relative to BeetleBox and SWE-rebench, respectively.
+    With issue + file structure, the paper describes about 4× versus BeetleBox and about 2× versus SWE-rebench. These are
+    behavioral contrasts, not direct contamination measurements.
+  remaining_unknowns:
+  - Claude training-corpus membership for each evaluated issue
+  - unambiguous model knowledge-cutoff metadata for the two evaluated API snapshots
+  - Anthropic API/SDK versions, temperature, top-p, total token cost, and retry effects
+  - vagueness_results.json, manual labeling rationales, and annotator agreement
+  - exact reproducible generation command for the September 2025 SWE-rebench derivative
+  - fixed random seeds and immutable hashes for all repository path-list prompts
+  - artifact README, dependency lock, environment/container, license, and registered snapshot
+  - statistical uncertainty and ablations for parser behavior and unrestricted output-list length
+inclusion_reason: This work is a direct failure-and-contamination audit showing that two Claude Sonnet snapshots localize
+  SWE-Bench-Verified edited files far more often under deliberately insufficient static context than they do on BeetleBox
+  or newer SWE-rebench splits, while releasing inspectable prompts, logs, path caches, and scoring scripts.
+related: []
+tags:
+- swe-bench-verified
+- benchmark-contamination
+- model-memory
+- bug-localization
+- file-localization
+- claude-sonnet
+category_ids:
+- audit_failure_contamination_verifier_attacks
+one_line: A minimal-context file-localization probe compares two Claude Sonnet snapshots across SWE-Bench-Verified, BeetleBox,
+  and SWE-rebench to audit whether benchmark scores may reflect memory.
+one_line_summary: The study turns issue text—optionally plus file paths—into an answer-level localization audit and finds
+  much larger all-file coverage on SWE-Bench-Verified, evidence consistent with model memory but not direct proof of training-set
+  inclusion.
+why_it_matters: It provides a concrete contamination stress test for software-agent benchmarks and exposes how static benchmark
+  familiarity can be mistaken for agent capability, while its released evaluator also reveals parser, overprediction, versioning,
+  and licensing risks that must be controlled before reuse.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against arXiv v2 (complete four-page PDF; no appendix), the arXiv license link, Paper §6, the author-linked
+    OSF node/API inventory, released model/result filenames, prompt-generation code, dataset-conversion scripts, response
+    parser, and coverage evaluator. Large parquet/log payload contents were not exhaustively re-executed, so dataset_contents_verified
+    remains false.
+curation_level: L3_summary_ready
+needs:
+- 'needs_license: declare licenses/terms for OSF code, datasets, raw logs, and cached repository path trees'
+- 'needs_release: publish a registered immutable snapshot or manifest with hashes, README, dependency lock, and exact commands'
+- 'needs_metadata: release vagueness_results.json, manual BeetleBox selection provenance, and the September SWE-rebench conversion
+  command'
+- 'needs_reproducibility: pin model/API/SDK versions, decoding parameters, random seeds, repository commits, and checkout
+  failures'
+- 'needs_audit: report confidence intervals/repeated runs and ablate parser behavior, output-list length, and benchmark-difficulty
+  confounds'
+- 'unknown: direct Claude training-corpus provenance and per-instance contamination status'
+card: null
+card_recommendation: recommended

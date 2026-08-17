@@ -1,0 +1,1 @@
+Earlier QA or refusal tests usually isolate one failure mode. AbstentionBench places six uncertainty scenarios and answerable controls in one protocol, then separates refusal quality from answer correctness. Its important finding is diagnostic: more reasoning and higher accuracy need not mean better uncertainty handling.

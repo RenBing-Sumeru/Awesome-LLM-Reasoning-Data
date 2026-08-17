@@ -1,0 +1,1 @@
+Köpf 等（2023），《OpenAssistant Conversations -- Democratizing Large Language Model Alignment》，arXiv:2304.07327。原文：https://arxiv.org/abs/2304.07327；官方实现：https://github.com/LAION-AI/Open-Assistant；规范 oasst1 发布：https://huggingface.co/datasets/OpenAssistant/oasst1。再发布派生数据前应检查所选版本的数据卡和许可。

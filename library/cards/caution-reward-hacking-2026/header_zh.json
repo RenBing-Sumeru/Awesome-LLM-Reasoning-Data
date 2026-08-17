@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以典型回答上的预测误差估计不确定性，并在 Best-of-N 选择时惩罚可疑高分。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理时奖励黑客缓解与不确定性选择",
+  "best_for_ch": "使用奖励模型做 Best-of-N 推理、需要控制过度优化和分布外选择的研究者。",
+  "confidence_ch": "高：已核对 ICLR 正文、作者机构与官方补充材料入口；未发现独立代码仓库。",
+  "authors_ch": "Zhuohao Yu, Zhiwei Steven Wu, Adam Block",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

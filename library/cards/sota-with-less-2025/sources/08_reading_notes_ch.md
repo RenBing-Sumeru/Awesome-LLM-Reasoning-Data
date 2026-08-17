@@ -1,0 +1,6 @@
+- 优先阅读 §3.1–3.2：源行是 image/ID/prompt/answer，而可审计选择记录还需要 policy/critic revision、`K` 或 unsolved status，以及 selected/rejected decision。
+- 分开两种反馈：Qwen2.5-7B-Instruct 是 text-only construction critic；精确 GRPO reward 与 answer-normalization contract 未披露。
+- Table 3 是关键同策略消融：组合后的 11K 平均 64.18，高于 random 11K 的 60.89、self-consistency 23K 的 63.15、full 70K 的 63.13 和任一单独部分。
+- Table 5 给出关键边界：匹配 policy 的子集优于跨规模子集，因此 Hard-11K 不是通用难度集。
+- 附录 Table 9 对 Iter5+Unsolved 报告 63.89，与 Tables 2–4 的 64.18 冲突；作者修正前应同时保留两个数值。
+- 复用前审计 artifact：公开脚本丢弃 unsolved row，未发现 72B 7.5K dataset 或完整 decision ledger，上游 provenance、去污染与 license mapping 仍为 unknown。

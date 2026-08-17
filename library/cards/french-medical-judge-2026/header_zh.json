@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "在法语开放式医疗问答中，LLM 评判会随答案生成器而偏移；小模型经 SFT 与 GRPO 对齐可改善但不能替代专家。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "法语医疗开放式问答中的 LLM 评判可靠性研究",
+  "best_for_ch": "需要以专家标注审计医疗 LLM 评判器的人。",
+  "confidence_ch": "高：HeaLing 2026 正式论文、作者单位、实验和限制均已核验；代码和数据链接未确认。",
+  "authors_ch": "Ikram Belmadani, Oumaima El Khettari, Pacôme Constant dit Beaufils, Richard Dufour, Benoit Favre",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

@@ -1,0 +1,1 @@
+APPS、HumanEval 以测试检查实现，FVAPPS 等形式化数据通常直接提供 specification，只评测填充实现或证明。CLEVER 的变化是把规格本身隐藏起来并要求模型先从自然语言生成，再证明生成规格与 ground truth 等价，之后才实现程序。它还通过人工策划避免 LLM annotation 与 vacuous specification。新意不是首次用 Lean 验证代码，而是建立“自然语言—正式规格—实现—证明”的双层验证链，使规格理解错误不能被后续硬编码掩盖。

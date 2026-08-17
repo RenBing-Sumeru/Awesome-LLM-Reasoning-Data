@@ -1,0 +1,19 @@
+Official arXiv v4 BibTeX (the export year is 2026, while the workshop record is from 2025):
+
+```bibtex
+@misc{lin2026learningsolveverifyselfplay,
+  title={Learning to Solve and Verify: A Self-Play Framework for Code and Test Generation},
+  author={Zi Lin and Sheng Shen and Ilia Kulikov and Jingbo Shang and Jason Weston and Yixin Nie},
+  year={2026},
+  eprint={2502.14948},
+  archivePrefix={arXiv},
+  primaryClass={cs.SE},
+  url={https://arxiv.org/abs/2502.14948}
+}
+```
+
+- arXiv v4: https://arxiv.org/abs/2502.14948v4
+- Official NeurIPS 2025 workshop record: https://neurips.cc/virtual/2025/131665
+- OpenReview: https://openreview.net/forum?id=j6tMZaPWWF
+
+No verified author-linked code, data, project, or model release is listed.

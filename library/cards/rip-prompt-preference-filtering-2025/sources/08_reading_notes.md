@@ -1,0 +1,1 @@
+Read the two score definitions together and inspect the ablation that separates rejected-response quality from reward gap. For reproduction, freeze the prompt pool, response sampling, reward model, cutoff percentile, and validation set before training; otherwise a prompt filter can silently become an evaluation-tuned data recipe.

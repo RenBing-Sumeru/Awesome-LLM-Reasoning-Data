@@ -1,0 +1,1 @@
+Lai et al. (2024), “Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs,” arXiv:2406.18629. Primary paper: https://arxiv.org/abs/2406.18629. Official code, data, and models: https://github.com/dvlab-research/Step-DPO. Use the released scripts to verify the exact step format, dataset construction, and benchmark prompting before comparing reported numbers.

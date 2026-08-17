@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "ServiceNow Research"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.05291",
+    "https://servicenow.github.io/WorkArena/",
+    "https://github.com/ServiceNow/WorkArena",
+    "https://huggingface.co/datasets/ServiceNow/WorkArena-Instances"
+  ],
+  "verification_note": "arXiv and official WorkArena artifacts verify title, authors, ServiceNow affiliation, status, and repository/dataset links."
+}

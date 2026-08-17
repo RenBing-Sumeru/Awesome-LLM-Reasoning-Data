@@ -1,0 +1,3 @@
+On AIME, the paper reports that Claude 3.5 Sonnet more than doubles its accuracy once algebraic insights can persist across questions. On Game of 24, GPT-4o rises from roughly 10% to 99% after discovering and reusing a Python solution, while the paper also reports gains on GPQA-Diamond and MMLU-Pro knowledge tasks.
+
+These results support the claim that carefully curated inference history can be more valuable than repeated independent sampling. They do not show that every stored lesson is correct or transferable: performance depends on task order, memory curation, the proprietary model, and whether a later problem genuinely shares reusable structure.

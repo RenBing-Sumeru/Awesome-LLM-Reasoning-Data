@@ -1,0 +1,147 @@
+id: agentbank-2024
+title: 'AGENT BANK: Towards Generalized LLM Agents via Fine-Tuning on 50000+ Interaction Trajectories'
+year: 2024
+venue: Findings of EMNLP 2024
+authors:
+- Yifan Song
+- Weimin Xiong
+- Xiutian Zhao
+- Dawei Zhu
+- Wenhao Wu
+- Ke Wang
+- Cheng Li
+- Wei Peng
+- Sujian Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent-reasoning
+- mathematics
+- programming
+- web
+- embodied-ai
+- tool-use
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-emnlp.116/
+  arxiv: https://arxiv.org/abs/2403.12881
+  code: null
+  data: https://huggingface.co/datasets/Solaris99/AgentBank
+  project: null
+  huggingface: https://huggingface.co/datasets/Solaris99/AgentBank
+  doi: https://doi.org/10.18653/v1/2024.findings-emnlp.116
+  venue: https://aclanthology.org/2024.findings-emnlp.116/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-emnlp.116/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-emnlp.116.bib
+data_object:
+  prompt_source: Training instances from 16 public tasks spanning reasoning, mathematics, programming, web navigation, and
+    embodied interaction.
+  trace_author: GPT-4 explores or answer-forces action sequences, heuristic search recovers discrete plans, and GPT-3.5-Turbo
+    supplies most action rationales.
+  answer_format: Chatbot-style episodes containing an instruction followed by rationale-bearing actions and environment observations
+    through termination.
+  process_fields:
+  - instruction
+  - thought
+  - action
+  - observation
+  - final answer
+  - task/config
+  environment_or_substrate: Sixteen task environments with continuous language/code actions or discrete embodied and web actions.
+  verifier_or_reward: Task-native execution, exact match, success rate, or average reward validates action sequences and terminal
+    answers.
+  terminal_predicate: Retain a gold or successfully executed trajectory; answer forcing may revise a failed exploration using
+    the known final answer.
+recipe_metadata:
+  base_model: Llama-2-Chat 7B and 13B, with additional base-model scaling checks
+  teacher: GPT-4 and GPT-3.5-Turbo, plus task-native heuristic search
+  generator: Exploration, answer forcing, heuristic action search, and trajectory reformatting are selected by action-space
+    type.
+  filtering_rule: Execute candidate actions in the real environment, retain correct paths, downsample oversized sources, and
+    re-annotate failures when a gold answer is available.
+  sampling_protocol: Balance 51,287 paper-reported trajectories across 16 tasks, then mix 10% ShareGPT and 10% Evol-CodeAlpaca
+    in the main SAMOYED recipe.
+  rollout_count: 51287
+  temperature: null
+  inference_budget: Teacher call counts, tokens, monetary cost, and unified wall time are not reported.
+  optimizer_or_scaffold: Mask instruction and observation tokens and apply autoregressive loss only to the ground-truth action
+    responses.
+audit:
+  source_mixture: The paper reports 51,287 trajectories across 16 tasks; the current Hugging Face conversion exposes 19 configurations
+    and 53,205 rows, so release revision must be pinned.
+  split: Training trajectories come from public task training splits; evaluation includes nine held-in and five held-out tasks.
+  decontamination: The paper reports 9-gram and 13-gram overlap checks against AGENT BANK, ShareGPT, and Evol-CodeAlpaca,
+    but semantic duplication remains possible.
+  license: The public Hugging Face dataset declares Apache-2.0; upstream task assets can retain their original terms.
+  lineage: The released object is directly consumed by masked-loss trajectory SFT; task rewards validate paths but do not
+    become per-token supervision.
+  known_failure_modes:
+  - Gold-answer forcing can make a path easier than genuine open-loop exploration.
+  - Generated rationales need not faithfully explain the selected gold actions.
+  - Current hosted row counts differ from the paper total and require revision-aware reporting.
+  citation_status: verified
+  confidence: high
+  notes: Proceedings metadata, paper tables, annotation prompts, public configurations, one InterCode Bash record, and license
+    were checked on 2026-07-14.
+inclusion_reason: AGENT BANK releases 51,287 paper-reported rationale-action-observation trajectories across 16 tasks for
+  masked-loss trajectory tuning.
+related:
+- agenttuning-2024
+- agent-flan-2024
+tags:
+- instruction-demonstration-rationale
+- agent-trajectories
+- answer-forcing
+- samoyed
+- arxiv-2403.12881
+status: verified
+one_line_summary: AGENT BANK releases 51,287 paper-reported rationale-action-observation trajectories across 16 tasks for
+  masked-loss trajectory tuning.
+why_it_matters: It scales agent demonstrations while separating action recovery from rationale writing and explicitly studies
+  difficulty bias and cross-task transfer.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, release surface, record form, construction details, and reported experiments were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714-round2
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: large-scale answer-forced and reformatted agent trajectories
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The official PDF confirms Peking University, University of Edinburgh, and Huawei affiliations.
+    venue: ACL Anthology confirms publication in Findings of EMNLP 2024; no award or presentation distinction is claimed.
+    impact: 'Public APIs checked 2026-07-14: AgentBank had 1,001 Hugging Face downloads and 23 likes, while OpenAlex W4404783870
+      reported 3 citations, providing both open-use and independent-citation signals.'
+    artifact: A public Apache-2.0 Hugging Face release exposes inspectable configurations and records, though its current
+      row count differs from the paper.
+  selection_eligible: true
+  year_impact_threshold: 3

@@ -1,0 +1,5 @@
+- Positioning: Zebra-CoT serializes both textual thoughts and intermediate images so a model can learn to generate visual aids during multi-step reasoning.
+- Data object: 182,384 interleaved vision-language reasoning traces across 18 domains and more than 50 tasks; each record exposes question, text reasoning trace, final answer, problem image, and one or more intermediate reasoning images.
+- Author and selector: task-specific renderers and multimodal teachers create interleaved text and intermediate images; retention uses task answer checks, renderer consistency, domain-specific validity rules, and held-out evaluation.
+- Evidence anchor: Fine-tuning Anole-7B on Zebra-CoT improves the paper's test accuracy by 12%, while Bagel-7B gains up to 13% on standard VLM benchmarks; gains vary substantially by domain.
+- Reuse decision: suitable for visual chain-of-thought SFT; first audit rendered intermediate images may expose task templates or answer-specific cues and noncommercial licensing limits deployment and source media may add further constraints.

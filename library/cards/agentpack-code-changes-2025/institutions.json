@@ -1,0 +1,13 @@
+{
+  "institutions": [
+    "Northeastern University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T16:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2509.21891",
+    "https://huggingface.co/datasets/nuprl/AgentPack"
+  ],
+  "verification_note": "核验确认 arXiv v2 状态、Northeastern 机构和 Hugging Face 数据页。"
+}

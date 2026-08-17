@@ -1,0 +1,18 @@
+{
+  "title": "Atomic Consistency Preference Optimization for Long-Form Question Answering",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.ijcnlp-long.106/",
+    "code": "https://github.com/JingfengSteven/ACPO",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:34:47Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将长回答中原子事实的一致性转化为偏好对，无需外部知识库即可服务事实性对齐",
+    "updated_at": "2026-07-16T07:34:47Z"
+  }
+}

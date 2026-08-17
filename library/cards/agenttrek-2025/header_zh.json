@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AgentTrek 将 RedPajama 教程经筛选、结构化、live-browser guided replay 与 GPT-4o judgment 转为 GUI-agent SFT 数据；论文主张 23,430 个教程产生 10,398 条成功 trajectory，但当前 HF 只发布 52,594 条无 trajectory 映射的 text turn，未提供完整 multimodal/native traces、失败数据、license 或环境 manifest。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "以网页教程驱动的智能体轨迹构造配方、数据发布与实时浏览器环境报告",
+  "best_for_ch": "研究 GUI/web agent SFT、tutorial-to-trajectory synthesis、VLM judge filtering、live-site replay，或审计 agent data release 完整性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yiheng Xu、Dunjie Lu、Zhennan Shen、Junli Wang、Zekun Wang、Yuchen Mao、Caiming Xiong、Tao Yu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

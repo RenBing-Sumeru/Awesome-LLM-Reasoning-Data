@@ -1,0 +1,6 @@
+- 优先阅读论文§§3.2–3.5、Table 1和固定`benchmark.json`：核心对象是可执行task/checkpoint specification。公开规模确实是181行与899条checkpoint，但不是181条已发布轨迹。
+- Table 2必须拆成两个指标阅读。最佳screenshot+A11y配置的`S_int`为50.32%，`S_final`只有20.44%；部分进度不能等同于完成。
+- 把Appendix Table 7与judge error讨论一起看。Qwen3-VL-Plus在样本级与人工高度一致，但遮挡与短暂状态仍会产生有方向的误差，服务snapshot也未固定。
+- 在相信论文级contract前检查`hf_run.py`：L1–L3使用截图/action的VLM judge，L4则接受空action或最后FAIL；标准reset也不传task的`environment_setup`。
+- 不要忽略release status差异：论文规模JSON内部同时存在126 approved/55 pending和160 valid/21 invalid，论文与仓库都没有解释这些flag。
+- 建议与OSWorld一起阅读环境谱系，并与ProBench、SPA-Bench等process-aware GUI benchmark比较feedback设计。WindowsWorld独特的问题是语义checkpoint约束下的跨应用状态协调。复用前应取得VM digest、task setup artifacts、状态解释、完整成功/失败/错误/重试运行、raw judge calls、split/submission policy、模型/API snapshot，以及VM/应用/资源/轨迹的明确license scope。

@@ -1,0 +1,19 @@
+{
+  "title": "SoundMind: RL-Incentivized Logic Reasoning for Audio-Language Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2506.12935",
+    "venue": "https://aclanthology.org/2025.emnlp-main.27/",
+    "code": "https://github.com/xid32/SoundMind",
+    "data": "https://huggingface.co/datasets/SoundMind-RL/SoundMindDataset"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:56:43Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态数据",
+    "updated_at": "2026-07-27T08:56:43Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Kimi k1.5 披露了包含 prompt 过滤、已验证 Long-CoT warmup、数学奖励模型、合成代码测试、long2short 偏好/RL 方法与 partial-rollout 基础设施的多模态 RL 管线，但未发布模型、训练数据、奖励数据或可执行训练栈。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态强化学习技术报告与数据披露台账",
+  "best_for_ch": "需要审计前沿推理模型的 RL prompt、奖励/验证器、Long-CoT 与 long2short 配方、代码环境及缺失发布工件的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Kimi Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T05:56:48Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "价值较低，替代性较高",
+    "updated_at": "2026-07-13T05:56:48Z"
+  }
+}

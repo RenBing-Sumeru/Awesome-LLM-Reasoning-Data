@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PSPA-Bench 引入个性化智能手机 GUI 智能体任务。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 personalized smartphone GUI-agent benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Hongyi Nie 等（Northwestern Polytechnical University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T12:10:20Z"
+}

@@ -1,0 +1,5 @@
+- 区分 16B、3T 和 240B 三个 VLM 阶段，不要把它们合并成一个已精确发布的 3.256T-token 数据集。
+- 约 5 万条多模态 SFT 会与内部纯文本和 LongCoT 数据混合，后两者的规模与记录未披露。
+- 混合 PPO 对通用提示使用 reward-model 反馈，对可验证提示使用任务 verifier；reward model 只看到最终解答。
+- 四轮 LongCoT 迭代把 verifier 确认的 RL 输出回流到后续 SFT，但没有轨迹清单和检查点映射。
+- 官方发布提供 API 访问与 Apache-2.0 示例代码/cookbook，不提供 Seed1.5-VL 权重或训练数据。

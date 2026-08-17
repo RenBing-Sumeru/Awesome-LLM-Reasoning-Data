@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "为 Challenger-Solver 自博弈加入程序级技能多样性和历史记忆惩罚，但未发布可执行流程或生成记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "记忆增强推理自博弈方法",
+  "best_for_ch": "关注自博弈课程、多样性度量、经验回放与数据审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Gengsheng Li、Jinghan He、Shijie Wang、Ruiqi Liu、Renrui Zhang、Zijun Yao、Junfeng Fang、Haiyun Guo、Dan Zhang、Jinqiao Wang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T07:48:55Z"
+}

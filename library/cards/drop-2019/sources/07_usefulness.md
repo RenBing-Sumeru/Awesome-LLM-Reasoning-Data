@@ -1,0 +1,3 @@
+Use DROP as a compact schema for discrete-reasoning QA: preserve passage id, passage text, question, answer type, gold answer components, validated aliases, split/version, prediction, normalized prediction, EM, and F1. It is useful for evaluating whether retrieval or reasoning scaffolds actually improve paragraph-grounded numerical QA.
+
+For atlas work, DROP is a benchmark coordinate for answer-level feedback rather than process supervision. It helps separate tasks where the verifier is a string/numeric answer scorer from tasks where the verifier is an execution engine, formal checker, or human rubric.

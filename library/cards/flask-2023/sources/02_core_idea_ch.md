@@ -1,0 +1,1 @@
+核心贡献是细粒度评测框架：1,740 个 evaluation instances、12 个 skills、4 类 broader abilities。机制是给模型输出分配 skill-specific rubric，并用 LLM/human-style judge 对每个 skill 做 scalar scoring。反馈契约是 judgment-required scalar score。最近对比是 HELM、MT-Bench、AlpacaEval 和 reward-model evaluation set。方向标签是 instruction-alignment evaluation 的 rubric decomposition。

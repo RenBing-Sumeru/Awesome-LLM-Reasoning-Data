@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Logics-STEM 整理数百万条 STEM 长 CoT 记录，并围绕模型失败点检索文档、合成针对性数据，用于第二阶段 SFT 或 RLVR。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "STEM 长 CoT 数据集与失败驱动后训练报告",
+  "best_for_ch": "适合整理大规模 STEM 推理数据混合或针对模型失败设计第二阶段训练的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mingyu Xu, Cheng Fang, Keyue Jiang, Yuqian Zheng, Yanghua Xiao, Baojian Zhou, Qifang Zhao, Suhang Zheng, Xiuwen Zhu, Jiyang Tang, Yongchi Zhao, Yijia Luo, Zhiqi Bai, Yuchi Xu, Wenbo Su, Wei Wang, Bing Zhao, Lin Qu, Xiaoxiao Xu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

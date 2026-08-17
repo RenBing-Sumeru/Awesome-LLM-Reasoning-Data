@@ -1,0 +1,5 @@
+私有 verifier 评测集包含 776 条正负均衡样本，其中 500 条来自 SWE-bench Verified，276 条来自 Multi-SWE-bench Flash；SWE-agent 与 OpenHands 轨迹按 1:1 混合，标签来自仓库专属 Docker 环境中的 held-out tests。Dockerless 在 Verified 和 Multi-SWE 上分别报告 81.0 与 72.1 AUC，相比对照中最强的已训练开放 verifier 分别提高 14.3 与 9.2。这些是排序结果，不能证明分数已校准、存在安全决策阈值，或 false-positive/false-negative rate 已知。
+
+SFT 筛选消融在 Verified/Multilingual/Pro 上报告：使用全部 16K 条 rollout 为 58.8/41.3/31.9，随机 4K 为 58.2/44.3/32.0，环境测试筛选的 4K 为 60.0/48.3/33.9，Dockerless 筛选的 4K 为 60.6/47.7/35.3。主要环境评测中，Dockerless-RL-9B 为 62.0/50.0/35.2，Qwen3.5-9B 为 59.6/41.3/32.3，test-execution RL 为 62.4/51.3/35.7；同一最小镜像分布下的 environment-free 评测则为 53.8/42.3/30.6。这些结果支持学习型分数在论文管线内具有用途，但 benchmark 表现不能证明每条入选轨迹都正确、可复用、许可完备或无污染。
+
+负面结果进一步界定了适用边界。Verifier AUC 从 `K=0` 时的 78.3 上升到 `K=4` 时的 81.0，随后在 `K=6` 时降到 79.6、在 `K=8` 时波动到 80.3，说明更多证据也可能引入噪声。Environment-based SFT 在 Rust 和 C 上分别领先 environment-free SFT 7.0 与 13.3 points；作者将其与无法获得 compiler diagnostics 联系起来，同时明确指出仅两个语言不足以下定论。在 7,680 条 RL rollout 中，共享的 rollout 工作平均耗时 2,308 秒，Dockerless reward 额外增加 41–180 秒，占总时间 7.2%，并出现延伸到未披露 hard timeout 的长尾。所有数字均为作者报告，未经过独立复现。

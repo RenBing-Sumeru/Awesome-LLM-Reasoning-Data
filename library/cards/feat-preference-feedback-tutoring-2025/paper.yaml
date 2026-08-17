@@ -1,0 +1,67 @@
+id: feat-preference-feedback-tutoring-2025
+title: 'FEAT: A Preference Feedback Dataset through a Cost-Effective Auto-Generation and Labeling Framework for English AI
+  Tutoring'
+year: 2025
+venue: ACL 2025
+authors:
+- Hyein Seo
+- Taewook Hwang
+- Yohan Lee
+- Sangkeun Jung
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-short.45/
+  arxiv: null
+  code: https://github.com/hyenee/FEAT
+  data: https://github.com/hyenee/FEAT
+  project: null
+  huggingface: null
+data_object:
+  prompt_source: The official paper and released records describe the task inputs and their provenance.
+  trace_author: Candidate answers and labels are created or collected under the construction process documented by the paper.
+  answer_format: Task context, competing candidate answers, preference feedback, provenance, and split metadata.
+  verifier_or_reward: feedback explains why an answer is preferable, allowing preference learning to target pedagogical quality
+    rather than answer selection alone.
+recipe_metadata:
+  dataset_revision: null
+  source_lineage: See the official paper and release.
+  annotation_policy: feedback explains why an answer is preferable, allowing preference learning to target pedagogical quality
+    rather than answer selection alone.
+  split: Use the split definition supplied by the official release.
+audit:
+  confidence: medium
+  link_verified: true
+  notes: Review provenance, licensing, and transfer limits before reuse.
+verification:
+  link_verified: true
+  sources:
+  - https://aclanthology.org/2025.acl-short.45/
+  - https://github.com/hyenee/FEAT
+inclusion_reason: Public preference, reward, or feedback data with a documented comparison contract and official release link.
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: FEAT releases tutoring prompts with candidate instructional answers, textual feedback, and human ranking
+  signals for bounded preference learning, reward modeling, evaluation, and audit.
+why_it_matters: The release supports feedback learning for 英语辅导中的教师反馈质量.

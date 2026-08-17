@@ -1,0 +1,6 @@
+- 解读两种模式前先读附录 A.6 与 A.7：复杂但正确的步骤也可能得到以加号结尾的 System-2 解释。
+- 将约 50% 的过滤比例视为 retention statistic，而不是标签准确率估计。
+- 对照表 1 与表 2：System-2-only 精度更高，Dyve 则通过选择性使用 System 1 降低平均验证成本。
+- 可用图 5 检查过滤消融，但不要把 F1 增益当作每条发布标签正确性的直接证据。
+- 在训练或报告语料规模前，先解释论文约 117,000 条轨迹与当前 Hugging Face split 156,321 条 row 的差异。
+- 由于缺少 immutable end-to-end release manifest，应在本地固定仓库、数据集、模型和依赖 revision。

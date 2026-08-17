@@ -1,0 +1,28 @@
+id: train-to-test-scaling-2026
+title: Test-Time Scaling Makes Overtraining Compute-Optimal
+year: 2026
+venue: arXiv preprint
+authors: [Nicholas Roberts, Sungjun Cho, Zhiqi Gao, Tzu-Heng Huang, Albert Wu, Gabriel Orlanski, Avi Trost, Kelly Buchanan, Aws Albarghouthi, Frederic Sala]
+source_role: [scaling_study]
+verification_contract: [unknown]
+supervision_granularity: [answer_level]
+domains: [reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2604.01411, arxiv: https://arxiv.org/abs/2604.01411, venue: null, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2604.01411}
+data_object: {prompt_source: Eight downstream tasks, trace_author: Repeated sampling policy, answer_format: pass-at-k samples and task accuracy, process_fields: [model_size, training_tokens, sample_count, pass_at_k, cost], environment_or_substrate: Fixed end-to-end compute budget, verifier_or_reward: Task accuracy, terminal_predicate: Downstream task success}
+recipe_metadata: {base_model: Heavily overtrained models studied in the paper, teacher: null, generator: Repeated inference sampling, filtering_rule: null, sampling_protocol: pass-at-k model, rollout_count: null, temperature: null, inference_budget: Jointly optimized with training cost, optimizer_or_scaffold: Train-to-Test scaling laws}
+audit: {source_mixture: Official arXiv paper, split: Eight downstream tasks, decontamination: Verify benchmark lineage, license: Verify source assets, lineage: 'Primary source: https://arxiv.org/abs/2604.01411', known_failure_modes: [Forecast extrapolation, Cost assumptions, Task-dependent pass-at-k], citation_status: verified, confidence: high, notes: Primary source checked on 2026-07-20.}
+inclusion_reason: It jointly models training and test-time sample budgets rather than treating them as independent scaling axes.
+related: []
+tags: [scaling-laws, pass-at-k, test-time-compute, overtraining]
+status: verified
+one_line_summary: Train-to-Test scaling laws jointly optimize parameter count, training tokens, and inference samples under an end-to-end budget.
+reading_priority: essential
+paper_type: Joint training and inference scaling-law study
+best_for: Readers choosing pretraining scale under expected repeated-inference demand.
+confidence: high
+why_it_matters: It makes test-time sampling cost alter the compute-optimal training regime.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: Primary paper checked.}
+category_ids: [scaling_rlvr_test_time_compute]

@@ -1,0 +1,5 @@
+- 当前 arXiv v2 定义四类动作：understanding、reflection、coding 和 summary。
+- UCT 选择节点；Qwen2.5-Math-PRM 提供 Q/V 风格过程分数；偏序规则约束转移。
+- 候选轨迹按答案投票聚合，频次并列时以 terminal reward 决胜。
+- 报告的 accuracy 增益评估搜索配置，不证明中间步骤正确或轨迹质量。
+- 论文链接官方仓库，但 release 固定、许可证、完整树日志、seed 和 PRM lineage 仍未解决。

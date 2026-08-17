@@ -1,0 +1,1 @@
+引用：Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul Arora, Steven Basart, Eric Tang, Dawn Song, Jacob Steinhardt，"Measuring Mathematical Problem Solving With the MATH Dataset"，NeurIPS 2021 Datasets and Benchmarks Track，2021。论文：https://arxiv.org/abs/2103.03874；官方仓库：https://github.com/hendrycks/math。

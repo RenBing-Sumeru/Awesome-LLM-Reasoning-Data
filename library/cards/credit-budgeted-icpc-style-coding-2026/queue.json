@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:13:17Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "新 有潜力 测试 Coding Agent 在预算限制下的策略和效率",
+    "updated_at": "2026-07-15T12:13:17Z"
+  }
+}

@@ -1,0 +1,1 @@
+Communication trajectories are a reusable Track 5 search substrate. It is useful for readers auditing how trace records, feedback, selection decisions, and missing replay artifacts bound post-training or test-time claims.

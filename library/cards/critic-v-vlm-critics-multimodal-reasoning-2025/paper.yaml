@@ -1,0 +1,103 @@
+id: critic-v-vlm-critics-multimodal-reasoning-2025
+title: 'Critic-V: VLM Critics Help Catch VLM Errors in Multimodal Reasoning'
+year: 2025
+venue: CVPR 2025
+authors:
+- Di Zhang
+- Jingdi Lei
+- Junxian Li
+- Xunzhi Wang
+- Yujie Liu
+- Zonglin Yang
+- Jiatong Li
+- Weida Wang
+- Suorong Yang
+- Jianbo Wu
+- Peng Ye
+- Wanli Ouyang
+- Dongzhan Zhou
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- full_episode
+domains:
+- multimodal-reasoning
+- vision-language
+training_use:
+- preference_learning
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Critic-V_VLM_Critics_Help_Catch_VLM_Errors_in_Multimodal_Reasoning_CVPR_2025_paper.html
+  arxiv: null
+  code: https://github.com/kyrieLei/Critic-V
+  data: https://huggingface.co/datasets/huaXiaKyrie/critique-VQA
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1109/CVPR52734.2025.00846
+  venue: https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Critic-V_VLM_Critics_Help_Catch_VLM_Errors_in_Multimodal_Reasoning_CVPR_2025_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Critic-V_VLM_Critics_Help_Catch_VLM_Errors_in_Multimodal_Reasoning_CVPR_2025_paper.html
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Critic-V_VLM_Critics_Help_Catch_VLM_Errors_in_Multimodal_Reasoning_CVPR_2025_paper.html
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: Critic-V provides a public multimodal critique-preference corpus and associated code for critic training.
+related: []
+tags:
+- vision-language
+- critic
+- dpo
+- cvpr-2025
+one_line_summary: Critic-V releases 29,012 multimodal critique preference pairs and trains a DPO critic that gives natural-language
+  feedback to refine VLM reasoning.
+why_it_matters: It replaces a scalar reward with preference-optimized textual critiques that can identify and guide correction
+  of a reasoning error.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data

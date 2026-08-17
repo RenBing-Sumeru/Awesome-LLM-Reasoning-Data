@@ -1,0 +1,7 @@
+Online-Mind2Web reports 69.0% on the official leaderboard and 65.7% in Browserbase's harness. WebVoyager reports 88.9% in the official/self-reported setting and 79.9% in Browserbase. The disclosed Online-Mind2Web and matched WebVoyager procedure uses temperature 1, `include_thoughts=True`, autoregressive pass@1, one trajectory per task, and three independent whole-trajectory human judgments with majority vote. These values evaluate a policy-environment-judge configuration; they are not evidence of the training data, reward, verifier, or rollout budget.
+
+WebVoyager is not the original fixed 643-task set: dates were edited and infeasible tasks removed, leaving 559 tasks. The appendix warns that providers may use different feasible subsets and access dates. Browserbase improves comparability by using identical queries and same-day website access across APIs, but its harness, browser, viewport, and website snapshots are not pinned.
+
+AndroidWorld reports 69.7% under a Pixel 6 emulator pool running Android 13/API 33. Observation is screenshot-only, without an accessibility tree. Eight browser functions are excluded and three mobile actions are added. Maximum steps and random seed use benchmark defaults, but their numerical values, emulator image, installed app versions, locale, and reset state are not reported. OSWorld is outside the supported scope and has no Gemini score.
+
+The reported scores are publisher results. They support evaluation claims only under the stated task adaptation, sampling, human-judgment, action-space, and environment conditions.

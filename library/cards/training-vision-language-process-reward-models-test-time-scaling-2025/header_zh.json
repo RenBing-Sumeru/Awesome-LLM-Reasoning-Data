@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VL-PRM300K 提供约 30 万条多模态推理轨迹，并标明视觉或推理错误位置，用于训练过程奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态过程监督数据集与测试时扩展研究",
+  "best_for_ch": "训练视觉语言过程奖励模型，或研究多模态推理的测试时筛选。",
+  "confidence_ch": "高",
+  "authors_ch": "Brandon Ong、Tej Deep Pala、Vernon Toh、William Chandra Tjhi、Soujanya Poria",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T11:57:11Z"
+}

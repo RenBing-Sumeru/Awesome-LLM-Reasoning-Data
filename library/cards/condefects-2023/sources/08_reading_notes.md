@@ -1,0 +1,1 @@
+Keep the version boundary visible: arXiv reports a 2021-10 to 2023-09 dataset, while the repository documents a 2024/6 update. Do not compare scores unless the subset, tests, runtime, and update date match. Fault localization and program repair are related but distinct labels; a good repair score does not imply a faithful fault-location explanation.

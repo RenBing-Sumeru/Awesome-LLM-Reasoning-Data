@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SCALE 发布带子问题、难度分数和详细步骤的 QwQ-32B 数学轨迹，并按阈值选择测试时模式；它只以最终答案匹配过滤，缺少完整选择与算力审计记录。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数学过程轨迹发布与子问题级测试时计算分配研究",
+  "best_for_ch": "需要构建、复现或审计子问题分解、难度路由、SFT 轨迹和测试时计算归因的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Yang Xiao、Chunpu Xu、Ruifeng Yuan、Jiashuo Wang、Wenjie Li、Pengfei Liu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

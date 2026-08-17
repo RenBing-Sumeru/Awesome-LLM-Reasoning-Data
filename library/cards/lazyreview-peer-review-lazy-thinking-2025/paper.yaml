@@ -1,0 +1,91 @@
+id: lazyreview-peer-review-lazy-thinking-2025
+title: 'LazyReview: A Dataset for Uncovering Lazy Thinking in NLP Peer Reviews'
+year: 2025
+venue: ACL 2025
+authors:
+- Sukannya Purkayastha
+- Zhuang Li
+- Anne Lauscher
+- Lizhen Qu
+- Iryna Gurevych
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- benchmark
+- expert_evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.165/
+  arxiv: https://arxiv.org/abs/2504.11042
+  code: https://github.com/UKPLab/arxiv2025-lazy-review
+  data: https://tudatalib.ulb.tu-darmstadt.de/items/ce21aeab-85bc-4d26-b9cc-322f34c6f64d
+  project: https://www.ukp.tu-darmstadt.de/data/lazyreview/
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.acl-long.165/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark or data release; see the linked primary artifact.
+  trace_author: Domain experts, annotators, or the official release pipeline.
+  answer_format: Benchmark prompts with reference answers, judgments, scores, or released evaluation records.
+  process_fields:
+  - prompt
+  - response
+  - label_or_verdict
+  environment_or_substrate: The task environment and evaluation protocol described in the official release.
+  verifier_or_reward: Official evaluation protocol, expert judgment, or the released verifier.
+  terminal_predicate: The released reference, judgment, score, or evaluation outcome.
+recipe_metadata:
+  base_model: See official release.
+  teacher: Domain experts or official annotators.
+  generator: Official release pipeline.
+  filtering_rule: See official paper or data card.
+  sampling_protocol: See official paper or data card.
+  rollout_count: null
+  temperature: null
+  inference_budget: See official paper or data card.
+  optimizer_or_scaffold: Evaluation protocol described in the official release.
+audit:
+  source_mixture: Official primary paper/data release and linked official artifacts.
+  split: See official release.
+  decontamination: Hold out public benchmark records where applicable.
+  license: See official artifact page.
+  lineage: https://tudatalib.ulb.tu-darmstadt.de/items/ce21aeab-85bc-4d26-b9cc-322f34c6f64d
+  known_failure_modes:
+  - Public benchmark records can enter future training data and inflate evaluation.
+  citation_status: verified
+  confidence: high
+  notes: Primary paper, venue or publication status, authors, and public artifact links were checked against official sources.
+inclusion_reason: The release supplies expert-authored, rubric-, judgment-, or reference-grounded evidence for evaluating
+  reasoning systems.
+related: []
+tags:
+- benchmark
+- expert_evaluation
+- judgment
+one_line_summary: LazyReview uses expert and silver review segments to identify shallow reasoning in NLP peer reviews.
+why_it_matters: It makes expert-grounded evaluation evidence and its audit boundary visible.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, venue or publication status, authors, and public artifact links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

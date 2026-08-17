@@ -1,0 +1,1 @@
+Traditional self-refinement regenerates critique for every sample, while memory methods often concatenate history into context. This work compresses feedback into human-readable rules and exposes memory operations as agent tools, making knowledge selective, updateable, and auditable. The novelty is feedback-to-memory transformation and tool access rather than a new base model.

@@ -1,0 +1,85 @@
+id: omni-reward-generalist-omni-modal-reward-modeling-2026
+title: 'Omni-Reward: Towards Generalist Omni-Modal Reward Modeling with Free-Form Preferences'
+year: 2026
+venue: ICLR 2026
+authors:
+- Zhuoran Jin
+- Hongbang Yuan
+- Kejian Zhu
+- Jiachun Li
+- Pengfei Cao
+- Yubo Chen
+- Kang Liu
+- Jun Zhao
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- multimodal-generation
+- reward-modeling
+training_use:
+- reward_modeling
+- preference_learning
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.23451
+  arxiv: https://arxiv.org/abs/2510.23451
+  code: https://github.com/OpenBMB/OmniReward
+  data: https://huggingface.co/datasets/jinzhuoran/OmniRewardData
+  project: https://omnireward.github.io/
+  huggingface: https://huggingface.co/datasets/jinzhuoran/OmniRewardData
+  venue: https://openreview.net/forum?id=dcb40be9ba8ab084d47f6726de02f3685aa23c43
+data_object:
+  prompt_source: Multimodal tasks across text, image, video, audio, and 3D.
+  trace_author: Dataset construction pipeline and preference annotators as documented by authors.
+  answer_format: General preference pair or instruction-tuning example with free-form preference condition.
+  verifier_or_reward: Discriminative and generative Omni-RewardModel.
+  terminal_predicate: Pair or score is released for reward-model training.
+recipe_metadata:
+  base_model: Omni-RewardModel
+  generator: Multi-modal generation and understanding systems
+  filtering_rule: Check the dataset card for modality-specific filtering and license.
+  optimizer_or_scaffold: Reward modeling and preference optimization
+audit:
+  source_mixture: Official paper, project page, and Hugging Face release.
+  split: Verify Hub splits before reuse.
+  decontamination: Audit benchmark/task overlap per modality.
+  license: Verify dataset and component licenses on the official release.
+  lineage: https://huggingface.co/datasets/jinzhuoran/OmniRewardData
+  known_failure_modes:
+  - Modality-dependent preference bias
+  - Free-form criteria ambiguity
+  - Benchmark overlap
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2026 paper and official data endpoint reviewed.
+inclusion_reason: Generalist multimodal preference data with an explicit official release.
+related: []
+tags:
+- candidate-batch
+- preference-data
+- multimodal
+- reward-model
+one_line_summary: Omni-RewardData provides multimodal preference pairs and free-form criteria for generalist reward modeling.
+why_it_matters: It makes modality and preference criterion part of the reward record instead of treating all pairwise labels
+  as interchangeable.
+status: verified
+needs: []
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: primary-paper-and-official-artifact review
+  confidence: high
+  notes: Paper, project, code and data endpoints reviewed.
+category_ids:
+- preference_reward_feedback_data

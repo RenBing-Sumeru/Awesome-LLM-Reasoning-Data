@@ -1,0 +1,207 @@
+id: sota-with-less-2025
+title: 'SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement'
+year: 2025
+venue: NeurIPS 2025 Spotlight
+authors:
+- Xiyao Wang
+- Zhengyuan Yang
+- Chao Feng
+- Hongjin Lu
+- Linjie Li
+- Chung-Ching Lin
+- Kevin Lin
+- Furong Huang
+- Lijuan Wang
+source_role:
+- construction_recipe
+- data_release
+- model_report
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- multimodal_reasoning
+- visual_mathematics
+- natural_image_understanding
+- chart_understanding
+- science_qa
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/ac3cea0be817ebac21299b77fd114ddf-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2504.07934
+  code: https://github.com/si0wang/ThinkLite-VL
+  data: https://huggingface.co/datasets/russwang/ThinkLite-VL-70k
+  project: https://github.com/si0wang/ThinkLite-VL
+  huggingface: https://huggingface.co/datasets/russwang/ThinkLite-VL-hard-11k
+  doi: https://doi.org/10.48550/arXiv.2504.07934
+  venue: https://neurips.cc/virtual/2025/loc/san-diego/poster/118230
+  openreview: https://openreview.net/forum?id=PHu9xJeAum
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The approximately 70K source pool is assembled from Geometry3K (3,001), GeoQA (5,010), Geos (66), FigureQA
+    (10,000 randomly sampled), ScienceQA (10,332), OK-VQA (9,009), IconQA (10,000 randomly sampled), and TabMWP (22,579),
+    totaling 69,997 reported rows across visual mathematics, natural-image understanding, and chart understanding.
+  trace_author: During filtering, Qwen2.5-VL-7B-Instruct or Qwen2.5-VL-72B-Instruct generates stepwise MCTS continuations,
+    while Qwen2.5-7B-Instruct judges the generated rationale and final answer against the ground truth. During RFT, each base
+    VLM generates its own GRPO rollouts; no larger teacher or knowledge-distillation stage is reported.
+  answer_format: Each source item is described in the paper as image, ID, prompt, and answer. Five source datasets are reformulated
+    to open-ended answering; ScienceQA, GeoQA, and Geos remain multiple choice. The RFT prompt requires reasoning inside think
+    tags followed by a boxed final answer.
+  process_fields:
+  - source dataset and source item
+  - image bytes
+  - prompt or problem text
+  - ground-truth answer
+  - policy-model reasoning steps during MCTS
+  - critic true-or-false judgment
+  - solved iteration index K or unsolved-after-50 status
+  - model-specific selected-or-rejected decision
+  - selected 7B subset membership
+  environment_or_substrate: Offline MCTS treats a reasoning-chain prefix as state, samples three next-step actions from the
+    selected Qwen2.5-VL policy, simulates until a final answer or ten-step limit, and asks Qwen2.5-7B-Instruct to compare
+    the completed rationale/answer with the ground truth. The released shell script shards the pool over eight GPUs.
+  verifier_or_reward: MCTS termination uses a judgment-based Qwen2.5-7B-Instruct critic prompted with the question, ground-truth
+    answer, and generated rationale/answer. The paper specifies GRPO for RFT but does not fully disclose the exact training
+    reward implementation or answer-normalization contract; therefore the end-to-end verification contract is mixed rather
+    than purely programmatic.
+  terminal_predicate: Stop MCTS when the critic labels a generated solution true and record its zero-based iteration index
+    K; otherwise declare the item unsolved after 50 iterations. Select every item with K greater than 5 plus every item unsolved
+    after 50 iterations.
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B-Instruct and Qwen2.5-VL-72B-Instruct are independently filtered and fine-tuned, producing ThinkLite-VL-7B
+    and ThinkLite-VL-72B.
+  teacher: No knowledge-distillation teacher is used. Qwen2.5-7B-Instruct serves as the separate text-only critic during MCTS
+    filtering, but its judgment is a selection signal rather than a distilled target trace.
+  generator: The corresponding base VLM is the MCTS policy. Each expansion samples three distinct next reasoning steps; simulation
+    rolls forward to a final answer or a ten-step cap.
+  filtering_rule: For each base-model scale, retain samples solved only after more than five MCTS iterations and samples still
+    unsolved after the 50-iteration budget. For the 7B policy this yields 5.4K solved-after-five plus 5.6K unsolved items,
+    totaling 11K; the 72B policy yields 7.5K, with 5.4K overlap between the two selected sets.
+  sampling_protocol: Apply model-specific MCTS filtering to the full 69,997-row source mixture. FigureQA and IconQA are randomly
+    downsampled to 10K each, but the release does not document their random seed or publish a source-to-release manifest.
+    The selected prompts are then used in one GRPO RFT stage; no recursive re-selection stage is reported.
+  rollout_count: 50
+  temperature: 0.5
+  inference_budget: At most 50 MCTS iterations per source item, expansion width 3, at most 10 reasoning steps per simulated
+    trajectory, temperature 0.5 and top-p 0.9 in the released script. The script uses eight data chunks/GPUs, but exact token
+    consumption, wall-clock filtering cost, model revision pins, and per-scale compute are unknown.
+  optimizer_or_scaffold: One offline MCTS selection stage followed by one GRPO reinforcement fine-tuning stage using Easy-R1.
+    The paper reports 32 GRPO rollouts and 8x80GB A100 GPUs for training and evaluation, but omits a complete reward, learning-rate,
+    schedule, seed, and checkpoint-selection contract.
+audit:
+  source_mixture: 'The paper reports 69,997 rows from eight upstream datasets: Geometry3K 3,001, GeoQA 5,010, Geos 66, FigureQA
+    10,000, ScienceQA 10,332, OK-VQA 9,009, IconQA 10,000, and TabMWP 22,579. The official Hugging Face account releases one
+    approximately 70K pool Parquet and one 11K 7B-selected Parquet, but the dataset cards contain almost no source, transformation,
+    field, split, or provenance documentation.'
+  split: The paper calls the collected examples a training set and reports no held-out split inside the released pool. Exact
+    upstream split names, original row IDs, the two random-sampling seeds, per-source selected counts, duplicate handling,
+    and an immutable accepted/rejected manifest are unknown.
+  decontamination: unknown. No exact-match, image-level, near-duplicate, or semantic-overlap audit is reported among the eight
+    source datasets, the eight evaluation benchmarks, or the Qwen2.5 pretraining/post-training data.
+  license: The two Hugging Face dataset repositories and released model metadata declare MIT, while the author GitHub repository
+    exposes no LICENSE file. The minimal dataset cards do not map the eight repackaged upstream datasets, their images, annotations,
+    or transformed open-ended questions to source-specific licenses or redistribution terms. The blanket MIT metadata therefore
+    does not by itself establish rights for every bundled upstream asset.
+  lineage: Eight upstream datasets are normalized into the 70K pool; five are converted to open-ended format and two are randomly
+    capped at 10K. Each 7B or 72B policy runs its own MCTS difficulty pass, recording K when the text critic accepts a solution
+    or an unsolved status after 50 iterations. The K>5 and unsolved records form model-specific RFT subsets. The public release
+    contains the 70K pool and 7B 11K subset, but no 72B 7.5K dataset, all-item K table, explicit rejected-items file, source-ID
+    mapping, failed search traces, or decision ledger was found.
+  known_failure_modes:
+  - The selection oracle is a Qwen2.5-7B-Instruct text critic judging free-form rationales and answers against ground truth;
+    no measured critic accuracy, calibration, disagreement audit, or human validation of its decisions is reported.
+  - The released mcts.py writes a row only when a solution is found. It drops unsolved rows instead of recording the paper's
+    unsolved-after-50 category, even though 5.6K such rows make up more than half of the reported 7B training subset; the
+    published script alone cannot reconstruct the stated selector output.
+  - The public Hard-11K file gives an accepted subset, but the release does not expose an explicit rejected list, per-item
+    K/unsolved decision table, selection reason, MCTS seed, or failed trajectory ledger. Rejected cases therefore cannot be
+    audited record by record.
+  - No 72B-selected 7.5K dataset was found in the official repository or five-item Hugging Face collection, despite the paper
+    stating that filtered training sets for both scales would be released.
+  - There is no separate learned selector checkpoint. Selection depends on mutable upstream Qwen checkpoints, yet the released
+    script names model repositories without immutable revisions, so reruns can drift.
+  - The 70K construction uses random sampling for FigureQA and IconQA without disclosed seeds or row manifests, preventing
+    exact reconstruction of the candidate pool from upstream sources.
+  - The Hugging Face cards declare MIT but do not document per-source licensing or redistribution compatibility for eight
+    repackaged datasets and their images; the GitHub code repository has no explicit license.
+  - No decontamination or cross-source deduplication procedure is reported, even though several training and evaluation collections
+    cover overlapping visual-mathematical and scientific reasoning domains.
+  - 'Difficulty is model-specific: only 5.4K selected samples overlap between 7B and 72B, and cross-training on the other
+    model''s subset performs worse. A single released 11K set should not be treated as universally hard.'
+  - 'The paper reports inconsistent 7B average values: Table 2 gives 64.18 for ThinkLite-VL-7B while nearby prose and Appendix
+    Table 9 report 63.89 for the nominal Iter5+Unsolved setting.'
+  - Main and ablation tables report point estimates without visible repeated-run dispersion, despite the NeurIPS checklist
+    marking the statistical-significance question yes with only a pointer to Section 4.
+  - Filtering and GRPO are compute intensive. The paper flags substantial filtering time and rollout overhead, but does not
+    publish total filtering tokens, elapsed time, hardware-hours, or cost.
+  - The exact GRPO reward functions, answer extraction/normalization rules, learning hyperparameters, seeds, training checkpoints,
+    and result bundles are not fully documented in the paper or minimal repository.
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS proceedings verify the title, authors and Main Conference Track; the official 2025 virtual poster and OpenReview
+    record verify Spotlight status. The official paper, appendix, author GitHub repository, selector scripts, Hugging Face
+    dataset/model collection and live 70K schema were inspected on 2026-07-21. Citation and artifact existence are verified;
+    decision lineage and paper-matching reproduction remain partial.
+inclusion_reason: ThinkLite-VL is a high-relevance Track 8 recipe that converts a heterogeneous 70K visual-reasoning pool
+  into model-specific RLVR subsets using search depth and failure-to-solve as difficulty signals, while its partial decision-lineage
+  and licensing release expose concrete audit gaps.
+related:
+- difficulty-targeted-online-selection-2025
+tags:
+- mcts-data-selection
+- difficulty-filtering
+- multimodal-reasoning
+- visual-rlvr
+- open-data
+- model-specific-curriculum
+- self-improvement
+- grpo
+- release-audit
+status: partial
+one_line_summary: ThinkLite-VL uses model-specific MCTS solve depth and unsolved-after-50 status to select 11K/7.5K visual-reasoning
+  prompts from a 70K pool for one-stage GRPO self-improvement.
+why_it_matters: It demonstrates a concrete search-budgeted alternative to accuracy-only filtering and releases the 70K pool
+  plus the 7B-selected subset, while also showing why selection decisions, upstream licenses, failed traces, model revisions
+  and rejected examples must be published for a difficulty-curation recipe to be reproducible and auditable.
+card: null
+needs:
+- 'needs_decision_ledger: publish stable source IDs, every item''s 7B/72B K or unsolved status, accepted/rejected decision,
+  critic output, selection reason and failed-search trace references'
+- 'needs_72b_data: release the reported 72B-selected 7.5K subset or correct the paper/repository release claim'
+- 'needs_selector_fix: preserve unsolved rows in the released MCTS pipeline and provide a deterministic script that reproduces
+  both selected subsets from the 70K pool'
+- 'needs_provenance: publish upstream dataset/split/row IDs, conversion rules, random seeds, per-source counts after selection,
+  checksums and immutable release tags'
+- 'needs_license: document each upstream dataset and image license, redistribution compatibility, transformed-data rights
+  and the scope of the Hugging Face MIT declaration; add an explicit code license'
+- 'needs_training_recipe: publish exact GRPO rewards, answer normalization, all hyperparameters, seeds, model revision hashes,
+  checkpoints and compute accounting'
+- 'needs_audit: report critic accuracy/calibration, cross-source deduplication and train/evaluation contamination checks'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Citation, NeurIPS 2025 Spotlight status, 70K/11K/7.5K scale, source mixture, MCTS threshold, released GitHub/Hugging
+    Face assets and principal ablations are verified. The 72B subset, full selector decisions, upstream license mapping, immutable
+    selector revisions and complete GRPO recipe remain missing or unknown.
+category_ids:
+- data_construction_open_release_recipes

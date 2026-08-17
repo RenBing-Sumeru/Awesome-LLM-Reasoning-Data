@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentTraj-L 公开来自十一个交互环境的 14,485 条奖励过滤示范，用于跨环境代理监督微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨环境代理轨迹数据集与交互训练框架研究",
+  "best_for_ch": "适合构建可执行代理语料、比较环境奖励和研究跨环境监督训练的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhiheng Xi, Yiwen Ding, Wenxiang Chen, Boyang Hong, Honglin Guo, Junzhe Wang, Xin Guo, Dingwen Yang, Chenyang Liao, Wei He, Songyang Gao, Lu Chen, Rui Zheng, Yicheng Zou, Tao Gui, Qi Zhang, Xipeng Qiu, Xuanjing Huang, Zuxuan Wu, Yu-Gang Jiang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:00:00Z"
+}

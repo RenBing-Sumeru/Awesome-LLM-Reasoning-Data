@@ -1,0 +1,1 @@
+This is a literature survey, not a new model recipe. Its method is to collect recent application advances, identify the fundamental capabilities involved, compare their relative importance in domains, and use the resulting map to discuss backbone-model selection.

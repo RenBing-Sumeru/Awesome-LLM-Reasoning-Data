@@ -1,0 +1,6 @@
+- 应把 Tool-R1 读作面向可执行 episode 的 agent RL 配方；GAIA 是其评测面，而不是发布的数据对象。
+- Episode 契约是 **Thought → Python Code → Observation**，带持久状态和 `final_answer`；Observation token 不进入 GRPO policy loss。
+- Qwen2.5-3B-Instruct 判断答案，parse 与 runtime-success 比例分别使用 `0.3/0.3` 权重；三者都不是逐步正确性 verifier。
+- 应成组记住采样数字：每题先生成 10 个回答、保留 pass rate `0.2–0.8`、约 1,300 对问答，并使用逐题 `G=16`、`g=8` 的队列。
+- 训练覆盖 Qwen2.5-7B-Instruct 和 Qwen2.5-14B-Instruct；表 2 中 vanilla GRPO 从 `10.30` 降至 `9.09`，与最终 `19.39` 同样值得关注。
+- 复用前应检查官方仓库 commit：其中只有 README，没有代码、数据、模型、license、tag 或 release，因此训练复用仍被阻断。

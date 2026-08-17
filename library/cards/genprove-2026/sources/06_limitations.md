@@ -1,0 +1,2 @@
+The repository lacks a top-level license, immutable release, model checkpoint, clearly isolated composite-reward implementation, and paper-matching Qwen3-8B recipe. Its SFT script names Qwen3-4B and length 4,096 rather than the reported Qwen3-8B and 2,048. Upstream snapshot, source URLs, annotation revisions, rejects, agreement, decontamination, and alternative-valid-evidence behavior are unknown.
+

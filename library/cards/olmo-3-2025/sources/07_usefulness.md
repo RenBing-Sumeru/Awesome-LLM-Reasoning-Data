@@ -1,0 +1,5 @@
+For post-training work, this release is useful as a linked set of SFT, preference-learning, RLVR, tool-use, and audit artifacts rather than as a final-model-only checkpoint. Researchers can inspect stage transitions, data collections, checkpoint manifests, and the distinction between programmatic and judgment-based reward signals.
+
+For data construction, Dolma 3 gives concrete examples of source pooling, OCR/HTML processing, PII handling, global deduplication, quality-aware upsampling, microanneals, integration tests, and release of both pools and mixes. Dolci gives examples of trace generation, preference-pair construction, verifier-backed RL data, and function-calling trajectories.
+
+For auditing, readers should turn the disclosed model flow into a checklist: identify the exact release revision; inspect source and derivative licenses; trace a model checkpoint to a mix and dataset revision; distinguish released code from independently reproducible execution; check decontamination coverage; and keep LLM-judge evidence separate from deterministic reward evidence.

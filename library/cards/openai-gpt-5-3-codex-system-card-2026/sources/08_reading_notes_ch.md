@@ -1,0 +1,5 @@
+- 唯一具体的后训练对象是第 4.1.2 节的冲突编辑 RL 干预；不要把它扩展成通用 GPT-5.3-Codex 配方。
+- 将“positive reinforcement”理解为高层反馈方向，而不是已披露的标量函数、verifier、judge 或 reward 实现。
+- 将另行报告的 destructive-actions evaluation 与训练 reward 分开；报告没有披露两者之间的映射。
+- 除非官方来源明确连接到训练，否则 Codex CLI prompting、产品沙箱、monitor、red teaming 和其他评测都应留在训练账本之外。
+- 将任务、代码仓库、user-model 规格、trajectory、环境、优化设置、数据权利和 item-level lineage 保持为 unknown。

@@ -1,0 +1,5 @@
+- Preserve the 1.3T attribution conflict: Section 2.1 places it in general pretraining, while the Table 6 discussion credits MT-oriented pretraining.
+- Read 3M and 268K as approximate SFT-stage counts; per-source, per-language, retained/rejected, and 20% denominator details are not released.
+- Do not convert WMT automatic category rank into uniform human rank; official human rankings vary by language direction.
+- Treat 33, 36, and 38 languages and 7B versus 8B as unresolved counting conventions, not interchangeable exact facts.
+- The six-slot Chimera prompt is public, but candidate-generation settings, GRPO rollouts, inference budget, reward code, and fusion training records are unknown.

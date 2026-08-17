@@ -1,0 +1,1 @@
+核心贡献是一套动态 benchmark 框架，把真实 GUI 异常嵌入 Android app 任务，并测量这些异常对 GUI agent 性能的影响。核心机制是 anomaly injection：同类任务可在正常条件和异常丰富条件下评测，从而把基础任务能力与异常鲁棒性分开。数据对象是 GUI episode，包含指令、观察、动作、异常状态和终止成功检查。反馈契约是混合环境评测：app 状态和任务谓词决定是否成功，异常设置定义压力条件。最近对比对象是静态 GUI benchmark 和理想化 mobile-agent task suite。方向标签是 GUI agent 的动态鲁棒性评测。

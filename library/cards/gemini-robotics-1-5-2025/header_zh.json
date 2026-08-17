@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Gemini Robotics 1.5 披露 ALOHA、Franka、Apollo 机器人数据与互联网多模态数据的 Motion Transfer、动作前自然语言 thinking 以及 progress/success/failure 评测契约，但未开放算法细节、thinking 标签来源、数据权利或训练工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多具身 VLA 技术报告与训练数据披露台账",
+  "best_for_ch": "研究多机器人迁移、embodied reasoning、自然语言 thinking、物理智能体评测与安全数据的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Gemini Robotics Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

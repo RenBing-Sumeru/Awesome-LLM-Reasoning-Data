@@ -1,0 +1,123 @@
+id: webcanvas-2024
+title: 'WebCanvas: Benchmarking Web Agents in Online Environments'
+year: 2024
+venue: arXiv preprint
+authors:
+- Yichen Pan
+- Dehan Kong
+- Sida Zhou
+- Cheng Cui
+- Yifei Leng
+- Bing Jiang
+- Hangyu Liu
+- Yanyi Shang
+- Shuyan Zhou
+- Tongshuang Wu
+- Zhengyang Wu
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- online-web-evaluation
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.12373
+  arxiv: https://arxiv.org/abs/2406.12373
+  doi: https://doi.org/10.48550/arXiv.2406.12373
+  code: https://github.com/iMeanAI/WebCanvas
+  data: https://huggingface.co/datasets/iMeanAI/Mind2Web-Live
+  project: https://www.imean.ai/web-canvas
+  huggingface: https://huggingface.co/datasets/iMeanAI/Mind2Web-Live
+  venue: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: Mind2Web-Live contains 542 tasks and 2,439 intermediate evaluation states, according to the arXiv abstract.
+  prompt_source: refined Mind2Web-style live web tasks with annotation tools and testing pipelines
+  trace_author: web agents interacting with online pages; authors curate key intermediate states
+  answer_format: task instruction, live page observation, action trajectory, key-node state, evaluator output, task success,
+    and completion metrics
+  process_fields:
+  - task instruction
+  - online page state
+  - action trajectory
+  - key-node target
+  - evaluation function
+  - task success
+  - completion score
+  environment_or_substrate: online web environments whose interfaces and content can change over time
+  verifier_or_reward: key-node checks over intermediate states plus task success and efficiency metrics
+  terminal_predicate: all required key nodes or task-level criteria are satisfied under the current online evaluation setup
+recipe_metadata:
+  base_model: Not a single base-model recipe unless stated in the paper; use only the disclosed training/evaluation role.
+  teacher: Official task authors, generator, tracer, simulator, or judge described by the paper.
+  generator: refined Mind2Web-style live web tasks with annotation tools and testing pipelines
+  filtering_rule: Use only source-backed construction and validation claims; do not infer hidden filters.
+  sampling_protocol: Pin release revision, split, runtime, prompt/scaffold, judge/verifier, and evaluation budget before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: online web environments whose interfaces and content can change over time
+audit:
+  source_mixture: https://arxiv.org/abs/2406.12373; https://www.imean.ai/web-canvas; https://github.com/iMeanAI/WebCanvas;
+    https://huggingface.co/datasets/iMeanAI/Mind2Web-Live
+  split: pin exact public/hidden split or train/test revision before score reuse
+  decontamination: public tasks, traces, APIs, repositories, or generated environments can enter future training data
+  license: Paper page shows CC BY 4.0, the code repository is MIT, and the Hugging Face Mind2Web-Live dataset page lists cc-by-4.0;
+    pin the dataset revision before redistribution.
+  lineage: 'Primary source: https://arxiv.org/abs/2406.12373'
+  known_failure_modes:
+  - runtime, tool, website, API, or dependency drift
+  - prompt/scaffold and budget sensitivity
+  - public-artifact contamination
+  - judge, tracer, verifier, or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: Source facts were regenerated from official paper/page artifacts; score reuse still requires pinned artifacts and
+    evaluator versions.
+inclusion_reason: WebCanvas evaluates web agents on online environments through Mind2Web-Live and key-node intermediate-state
+  checks.
+related: []
+tags:
+- agent_environment
+- benchmark
+- evaluation-surface
+- online-web-evaluation
+- web-browser-agents
+one_line: WebCanvas evaluates web agents on online environments through Mind2Web-Live and key-node intermediate-state checks.
+why_it_matters: WebCanvas evaluates web agents on online environments through Mind2Web-Live and key-node intermediate-state
+  checks.
+status: verified
+one_line_summary: WebCanvas evaluates web agents on online environments through Mind2Web-Live and key-node intermediate-state
+  checks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: medium
+  notes: Official source links and card-local artifacts were verified for L4 source regeneration.
+category_ids:
+- environment_agent_trajectory_data
+needs:
+- 'needs_version_pin: pin repository/data revision, split, runtime, prompt/scaffold, and evaluator version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'

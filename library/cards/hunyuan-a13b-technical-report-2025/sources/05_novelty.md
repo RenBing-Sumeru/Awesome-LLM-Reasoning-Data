@@ -1,0 +1,4 @@
+The useful contribution for a data atlas is the report's decomposition of one frontier post-training program into domain-specific construction and verification contracts. The five-role agent generator and its 20,000 tool/action/response format combinations expose more of the agent-data construction scaffold than a generic statement that synthetic trajectories were used. The separation between reasoning outcome reward and all-scenarios multi-service reward also makes the feedback stack auditable at a coarse level.
+
+None of these components should be described as wholly novel without a comparative literature analysis: GRPO, rejection sampling, code sandboxes, LLM judges, synthetic agent roles, and reference-based tool-call checking predate this report. The distinctive value here is the combination and the unusually concrete aggregate disclosure, not a new released corpus or a complete reproducible pipeline.
+

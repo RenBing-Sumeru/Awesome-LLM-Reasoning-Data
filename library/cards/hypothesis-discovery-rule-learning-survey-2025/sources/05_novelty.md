@@ -1,0 +1,3 @@
+The paper's contribution is an end-to-end lens that connects hypothesis generation to use and validation. It does not treat a novel-sounding statement as sufficient evidence of learning. By placing abduction, deduction, and induction in one framework, it highlights the missing connections between isolated reasoning demonstrations and sustained knowledge discovery.
+
+Its novelty is therefore a disciplined way to judge scope. It asks whether a method merely proposes candidates, can derive consequences from them, or closes the loop with evidence. This helps readers identify where a reported contribution changes the discovery process and where it inherits unresolved evaluation assumptions from earlier stages.

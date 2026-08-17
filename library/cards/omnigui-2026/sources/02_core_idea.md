@@ -1,0 +1,5 @@
+The core contribution is a step-level smartphone GUI benchmark where every decision can receive static visual state, synchronous audio, short temporal video, and action history. The official paper reports 709 expert-demonstrated episodes and 2,579 action steps across 29 applications; the current public repository and Hugging Face card report a filtered 708-episode, 2,572-step release.
+
+The mechanism is to design tasks around five HCI-oriented dimensions: Localization, Semantic Understanding, Cross-modal Discrimination, Temporal Reasoning, and Instant Response. Each episode is also labeled by objective multimodal dependency: AV-Critical, AV-Supportive, or AV-Present, depending on whether non-visual signals are necessary, helpful, or merely present.
+
+Closest comparisons include Android in the Wild, GUI-Odyssey, AndroidWorld, Mind2Web, OSWorld, ScreenSpot, GUI-World, VideoGUI, and VideoWebArena. OmniGUI's direction signal is not larger scale; it is per-step omni-modal action prediction with coordinate/string feedback. The success predicate is expert-action agreement, not natural-language answer quality.

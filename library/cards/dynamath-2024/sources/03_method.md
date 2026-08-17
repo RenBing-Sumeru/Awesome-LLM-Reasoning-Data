@@ -1,0 +1,5 @@
+1. Inputs: 501 seed questions, seed-specific Python programs, random and NumPy seeds, plotting or fixed-image functions, generated images/text, VLM predictions, and generated answer keys.
+2. Pipeline: curate seed visual-math questions; convert each seed to a Python program; generate variants under sampled numerical, geometric, symbolic, graphical, color, or contextual changes; query VLMs; parse/model-score answers; aggregate per-concrete-question and per-seed performance.
+3. Outputs: concrete visual/textual questions, generated ground-truth answers, model responses, average-case accuracy, and worst-case accuracy over seed variants.
+4. Verifier: generated answer keys and answer-matching/evaluation scripts; the program generator is the evidence boundary for ground truth.
+5. Reproducibility notes: pin repository revision, Docker environment, generation range, default random seed, default NumPy seed, plotting backend, answer parser, number of variants per seed, model snapshot, and prompt format.

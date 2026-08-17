@@ -1,0 +1,1 @@
+Across 40 Pythia and OLMo derivatives from 1B to 12B parameters, the query test obtains p-values at most 1e-8 in all but six cases. With the reshuffling observation test, retraining on the last 2% of TinyStories pretraining yields p-values below 1e-3 from 320 generated tokens. The observation test is costly and its p-values are approximate.

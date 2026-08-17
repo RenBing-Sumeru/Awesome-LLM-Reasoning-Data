@@ -1,0 +1,25 @@
+{
+  "title": "Enhancing Chat Language Models by Scaling High-quality Instructional Conversations",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2305.14233",
+    "arxiv": null,
+    "code": "https://github.com/thunlp/UltraChat",
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "reason_to_include": "sft数据合成",
+  "decision_reason": "sft数据合成",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T13:46:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "sft数据合成",
+    "updated_at": "2026-07-11T13:46:13Z"
+  }
+}

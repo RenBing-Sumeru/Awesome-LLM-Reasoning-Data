@@ -1,0 +1,142 @@
+id: nvidia-nemotron-3-2025
+title: 'NVIDIA Nemotron 3: Efficient and Open Intelligence'
+year: 2025
+venue: arXiv preprint
+authors:
+- NVIDIA
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- science
+- coding
+- software_engineering
+- search
+- general
+- agentic_tool_use
+- long_context
+training_use:
+- sft
+- preference_learning
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.20856
+  arxiv: https://arxiv.org/abs/2512.20856
+  code: https://github.com/NVIDIA-NeMo/Nemotron
+  data: null
+  project: https://research.nvidia.com/labs/nemotron/Nemotron-3/
+  huggingface: https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8
+  doi: https://doi.org/10.48550/arXiv.2512.20856
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Multi-environment tasks span math/science, competitive coding, instruction following, SWE, search, chat,
+    tools, and long context. Nano documents public, crawled, synthetic, private third-party, and NVIDIA-internal sources;
+    family-wide allocations are unknown.
+  trace_author: Nano states strong teacher models and agent systems create synthetic trajectories, solutions, and translations;
+    full teacher identities and routing across Nano, Super, and Ultra are unknown.
+  answer_format: Pretraining sequences, SFT prompt-response records, reasoning traces, candidate solutions, tool/agent trajectories,
+    and verified outputs; complete record and rollout schema is unknown.
+  process_fields:
+  - prompt_or_task
+  - generated_trace_or_solution
+  - tool_or_environment_interaction
+  - verifier_signal
+  - reward
+  - selected_output
+  environment_or_substrate: Diverse multi-environment RL with NeMo-RL, NeMo-Gym, and asynchronous train/inference decoupling;
+    environment versions, configs, and rollout logs are unknown.
+  verifier_or_reward: Task-dependent environments; Nano reports compiler, numerical, and language checks. Reference materials
+    name GRPO, GenRM, and DPO. Family-wide reward definitions, calibration, and thresholds are unknown.
+  terminal_predicate: Task-dependent environment outcome; exact predicates and thresholds are unknown.
+recipe_metadata:
+  base_model: Hybrid Mamba-Transformer MoE Nemotron 3 family; Nano base and post-trained checkpoints are public. Full family
+    checkpoint lineage is incomplete.
+  teacher: Strong teacher models and agents, including GPT-OSS-120B for some Nano math/code/science operations; exhaustive
+    identities, versions, and routing are unknown.
+  generator: Curated sources plus synthetic trajectories, solutions, translations, QA/reasoning generation, and agent rollouts;
+    prompts and yields are unknown.
+  filtering_rule: Nano documents malformed-example, repetition, political/nationalistic-content, automated-verification, and
+    license-compliance filters; thresholds, yields, and family coverage are unknown.
+  sampling_protocol: RL environments train simultaneously with asynchronous GRPO and masked importance sampling; weights,
+    allocation, rollout count, decoding, and schedules are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Up to 1M-token context and inference-time reasoning-budget control are reported; training rollout budgets
+    are unknown.
+  optimizer_or_scaffold: Multi-environment asynchronous GRPO with masked importance sampling; Nano reference materials add
+    SFT, RLVR, GenRM, and DPO. Full objectives and schedules are unknown.
+audit:
+  source_mixture: Nano model card lists 141 datasets and 10.648T tokens while separately stating approximately 25T training
+    tokens; public/crawled/synthetic/private/NVIDIA-internal sources are named but family mixture and immutable manifests
+    are unavailable.
+  split: Nano table declares Training 100 percent, testing 0 percent, validation 0 percent. Task-level public splits for all
+    data/environments are unknown.
+  decontamination: Common Crawl deduplication and permissive-license GitHub filtering are reported; no family-wide benchmark-overlap
+    protocol, thresholds, or residual-overlap results are pinned.
+  license: Nano weights use NVIDIA Nemotron Open Model License. Data terms are mixed and some data is gated; family-wide source
+    rights mapping is unknown.
+  lineage: Family/Nano artifacts are identified but source-to-sample-to-trace-to-environment-to-rollout lineage, revisions,
+    seeds, and checkpoints are incomplete.
+  known_failure_modes:
+  - Open-subset reference recipes differ from proprietary-data report results
+  - Incomplete per-environment reward definitions, calibration, and reward-hacking audit
+  - No immutable manifests, rollouts, reward logs, or environment pins
+  - Nano data table and stated training tokens differ in presentation
+  citation_status: verified
+  confidence: medium
+  notes: Track-12 disclosure ledger only, not a Track-8 reusable-RL-recipe classification.
+inclusion_reason: A frontier family report with multi-environment RL and broad official artifacts, but proprietary/gated-source
+  boundaries and reproducibility/audit gaps.
+related: []
+tags:
+- nvidia
+- nemotron-3
+- frontier-report
+- data-disclosure-ledger
+- multi-environment-rl
+- grpo
+- open-weights
+- release-audit
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Nemotron 3 documents multi-environment RL and broad weights/data/recipe releases, while retaining proprietary
+  or gated source boundaries and incomplete per-environment audit detail.
+why_it_matters: It separates official artifacts and reference recipes from the missing source allocations, environment pins,
+  rollout logs, reward calibration, and rights mapping needed to reproduce the full family.
+card: null
+needs:
+- 'needs_metadata: family source/model allocations, mixtures, teachers, rollouts, and schedules'
+- 'needs_release: environment configs, rollout/reward/rejection logs, and task manifests'
+- 'needs_audit: overlap method/results, reward calibration, and reward-hacking analysis'
+- 'needs_license: complete source-level rights and gating/redistribution mapping'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv, NVIDIA family page, NVIDIA-NeMo repository, and official Nano model card checked; family reproducibility
+    gaps remain.

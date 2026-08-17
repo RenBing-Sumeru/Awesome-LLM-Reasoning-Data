@@ -1,0 +1,9 @@
+- The HF dataset declares ODC-By, but a repository-level license does not establish that every Common Crawl page, Stack V2 repository, or derivative synthetic record can be redistributed under uniform terms.
+- Code rows retain heterogeneous detected-license metadata, including records with no detected license. Item-level source and license auditing remains necessary.
+- Exact 13-gram decontamination cannot detect paraphrased, translated, semantically equivalent, or differently formatted benchmark leakage.
+- Learned fastText, FineMath, LLM, and code filters can produce both false positives and false negatives; their training labels and temporal distributions shape the corpus.
+- LLM refinement and synthesis can introduce unsupported facts, incorrect reasoning, or homogenized style even when final outputs pass formatting or execution checks.
+- Successful code execution verifies runtime behavior for one generated program and input context; it does not prove mathematical correctness or semantic faithfulness.
+- The paper reports 215.1M samples, while the current HF viewer reports roughly 217M rows. This may reflect conversion or release evolution, but the exact reconciliation is unknown.
+- The HF repository is mutable, the GitHub repository shows no formal release tag, and immutable revisions and file hashes are not recorded in the current metadata.
+- The visible GitHub README states that some pipeline documentation remains under development. Exact synthetic-generation settings are not uniformly disclosed.

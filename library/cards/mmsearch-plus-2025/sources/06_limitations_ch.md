@@ -1,0 +1,7 @@
+- **公开对象边界：** Hugging Face在一个`train` split中发布311条QA/image/source-reference记录与decryption helper，但未发布完整成功或失败search episode、framework、evaluator、SoM box、search result、Gemini summary、cache、judge log或确定性replay manifest。GitHub README仍把framework code、evaluation script和SoM annotation列在待发布清单中。
+- **答案judge：** GPT-4o评分的是与acceptable answer的语义一致性，而非citation support或step provenance。作者报告的人工一致性没有披露sample size与raw label；judge prompt、API setting、按答案/类别校准结果及可选rule实现均不可用。其他有效答案可能被拒绝，不受证据支持的答案也可能被接受。
+- **动态substrate：** 实时SerpAPI排名、thumbnail、页面、区域可用性、query locale、失效链接与near-duplicate都会变化。Gemini生成的page/image summary可能在被测模型看到之前遗漏或扭曲证据。没有冻结response与cache，后续运行不一定接收相同observation。
+- **回放与发布漂移：** 模型/API版本、prompt、seed、browser/runtime、日期、locale、reset语义、retry和source snapshot都未完整固定。当前Hugging Face数据实际使用五个Arrow shard，而`state.json`引用两个过期名称；使用者必须固定已审计revision并检查实际文件。
+- **划分与污染：** 唯一公开split名为`train`，但没有独立dev/test或隐藏holdout，作者用途也仅限evaluation。选择新近/罕见事件、no-search过滤、抵抗Google image search、mask和公开XOR加密可减少shortcut，却不能证明完成pretraining-overlap测量、跨benchmark去重或未来污染控制。公开canary与decryptor使加密只是一道速度障碍。
+- **Lineage、隐私与权利：** 记录保留`video_url`或`arxiv_id`，但缺少source snapshot、annotator/edit/filter/redaction log、SoM mapping和逐条rights classification。论文与HF card声明CC BY 4.0，但GitHub tree没有license file，视频帧或arXiv figure/table仍具有异质第三方权利。mask、排除和takedown主张也缺少公开逐记录审计。
+- **实验归因：** SoM使用人工box，Qwen采用更低的10-call上限，error taxonomy为每项错误只分配一个dominant cause。报告分数差异因而混合模型能力、特权定位、tool policy、search/summarizer state、预算和judge行为；benchmark performance本身不能认证data object。

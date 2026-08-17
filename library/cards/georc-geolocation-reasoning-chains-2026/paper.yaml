@@ -1,0 +1,103 @@
+id: georc-geolocation-reasoning-chains-2026
+title: 'GeoRC: A Benchmark for Geolocation Reasoning Chains'
+year: 2026
+venue: ACL 2026
+authors:
+- Mohit Talreja
+- Joshua Diao
+- Jim Thannikary James
+- Radu Casapu
+- Tejas Santanam
+- Ethan Mendes
+- Alan Ritter
+- Wei Xu
+- James Hays
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- vision_language
+- geolocation
+- expert_reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1883/
+  arxiv: https://arxiv.org/abs/2601.21278
+  code: null
+  data: https://huggingface.co/datasets/mohit-talreja/GeoRC
+  project: null
+  huggingface: https://huggingface.co/datasets/mohit-talreja/GeoRC
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1883
+  venue: https://aclanthology.org/2026.acl-long.1883/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1883/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 500 GeoGuessr query scenes sampled from maps based on Google Street View.
+  trace_author: Three expert GeoGuessr players, including the 2025 world champion.
+  answer_format: Image scene, country/city conclusion, and evidence-grounded geolocation reasoning chain.
+  process_fields:
+  - image_scene
+  - expert_reasoning_chain
+  - location_conclusion
+  - visual_attributes
+  environment_or_substrate: VLM geolocation with expert-reference chain evaluation.
+  verifier_or_reward: Human scoring and tested LLM/VLM-as-judge strategies against expert chains.
+  terminal_predicate: A location prediction accompanied by auditable visual-evidence reasoning.
+recipe_metadata:
+  base_model: Evaluated VLMs and judge models are reported in the paper.
+  teacher: Champion-tier GeoGuessr experts.
+  generator: Expert-written chains with grammar-only AI assistance disclosed in the paper.
+  filtering_rule: Expert instructions require discriminative visual evidence and a conclusion.
+  sampling_protocol: 800 chains span 500 scenes; 150 locations are shared across experts.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fixed prompt across evaluated VLMs.
+  optimizer_or_scaffold: Evaluation benchmark, not a released training recipe.
+audit:
+  source_mixture: Official ACL paper, authors' Hugging Face dataset, and arXiv record.
+  split: The public HF release exposes a train-formatted dataset; benchmark protocol is in the paper.
+  decontamination: No training-data decontamination claim is made; public Street View provenance creates reuse risk.
+  license: See the Hugging Face data card.
+  lineage: Expert GeoGuessr reasoning over Google Street View scenes.
+  known_failure_modes:
+  - Expert chains are non-exhaustive
+  - English-only rationale
+  - privacy risks from image geolocation.
+  citation_status: verified
+  confidence: high
+  notes: ACL PDF confirms the full author name Jim Thannikary James and Georgia Tech affiliation.
+inclusion_reason: It releases domain-expert reasoning chains and directly studies how judges score evidence-grounded VLM reasoning.
+related: []
+tags:
+- vlm
+- expert_data
+- llm_judge
+- geolocation
+one_line_summary: GeoRC pairs 800 expert geolocation chains with 500 scenes to expose the gap between accurate location guesses
+  and auditable visual reasoning.
+why_it_matters: It makes expert visual-evidence reasoning a reusable evaluation surface rather than trusting a correct final
+  location alone.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: ACL record/PDF, arXiv, and HF dataset page were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

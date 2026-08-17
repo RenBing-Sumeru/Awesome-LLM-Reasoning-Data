@@ -1,0 +1,12 @@
+- 没有发布训练语料。模型仓库包含权重与元数据，不包含预训练文档、合成记录、SFT对话、Pivotal Token Search pair、judge-guided pair、安全记录、候选、verifier输出或拒绝决策。
+- 400B表示未加权合成源token，9.8T表示报告中的最终训练token预算。最终来源权重、重复次数、唯一记录、阶段分配和两者对照均为unknown。
+- 报告列出来源类别与示例，但没有完整来源清单、版本、记录ID、比例、署名或许可证矩阵。后续data summary确认商业及其他第三方数据，同时部分底层细节不可用。
+- 大多数合成generator与SFT evaluator的身份、提示、解码设置、seed、候选数、阈值、接受率和计算量均为unknown。“LLM-based evaluation”不是可重放选择契约。
+- Pivotal Token Search依赖采样continuation得到的含噪成功率估计。若成功率不近似单调，binary search可能漏掉pivotal token；rollout数量、阈值、方差、memoization状态和失败审计均未发布。
+- 任务oracle只覆盖部分场景。代码测试和数学最终答案比较可在某个checker下确认终点，但不能验证每一步推理、事实解释、安全回答或没有oracle的领域。
+- 第二轮DPO由GPT-4o按准确性、风格和细节生成标签。judge顺序、原始分数、分歧、校准、风格或verbosity效应、误接受和拒绝pair均不可得。
+- 去污染使用13-gram与7-gram方法，但报告承认改写重叠可能存活。公开HTML无法可靠恢复精确阈值，也没有benchmark版本、匹配或移除ledger。
+- 2024年11月AMC相对2024年6月收集截止是fresh评测，但它只测试4场竞赛上的模型行为，不能证明其他评测或训练mixture无污染。
+- 模型权重使用MIT，手稿使用CC BY 4.0。这些许可证不授予未发布公开、购得、许可或合成训练记录的权利；逐记录权利与生成输出条款仍为unknown。
+- 官方模型仓库在发布后继续演化。复用者应固定revision，因为tokenizer或generation元数据可能独立于原始训练运行发生变化。
+- benchmark提升、硬件规模和数据量属于模型开发证据，不能证明语料质量、provenance、多样性、verifier准确性、安全完整性或法律兼容性。

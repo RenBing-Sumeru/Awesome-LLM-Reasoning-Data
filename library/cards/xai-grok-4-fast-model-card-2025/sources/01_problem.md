@@ -1,0 +1,4 @@
+Frontier model reports can describe post-training, safety, and product behavior at a high level without exposing the data and feedback contracts needed to audit those claims. This Card therefore asks what xAI's official sources disclose for Grok 4 Fast and what they leave unestablished; it does not treat the report as a reusable training recipe.
+
+The [Grok 4 Fast Model Card](https://data.x.ai/2025-09-19-grok-4-fast-model-card.pdf) names broad data-source categories, filtering, supervised fine-tuning, reinforcement-learning feedback families, safety mitigations, and selected evaluations. The [official launch announcement](https://x.ai/news/grok-4-fast) adds large-scale RL, end-to-end tool-use RL, unified reasoning/non-reasoning weights, and product-level test-time-compute claims. Neither source releases record-level provenance, data manifests, rewards, graders, filters, or a full reproducibility package.
+

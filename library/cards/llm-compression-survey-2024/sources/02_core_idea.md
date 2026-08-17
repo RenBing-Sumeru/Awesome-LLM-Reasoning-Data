@@ -1,0 +1,1 @@
+The survey groups LLM compression around quantization, pruning, and knowledge distillation, then places benchmarking and evaluation metrics alongside the methods. Its key reader-facing message is that compression is meaningful only when resource savings and quality are considered together.

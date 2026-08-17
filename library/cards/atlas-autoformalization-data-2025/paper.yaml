@@ -1,0 +1,98 @@
+id: atlas-autoformalization-data-2025
+title: 'ATLAS: Autoformalizing Theorems through Lifting, Augmentation, and Synthesis of Data'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Xiaoyang Liu
+- Yicheng Hu
+- Jinghui Lu
+- Jian Guo
+- Yaochu Jin
+- Jie Zhou
+- Tao Yang
+- Mingxuan Wang
+source_role:
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-mathematics
+- lean4
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://papers.neurips.cc/paper_files/paper/2025/hash/5159aaee380391c366b27994ed225e4f-Abstract-Conference.html
+  arxiv: null
+  code: https://github.com/XiaoyangLiu-sjtu/ATLAS
+  data: https://huggingface.co/datasets/XiaoyangLiu-sjtu/ATLAS_dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/XiaoyangLiu-sjtu/ATLAS_dataset
+  doi: null
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/5159aaee380391c366b27994ed225e4f-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical statements and existing formal theorem sources.
+  trace_author: ATLAS data-construction pipeline.
+  answer_format: Natural-language statement paired with Lean formalization.
+  process_fields:
+  - informal statement
+  - Lean statement
+  - proof-related metadata
+  - checker result
+  environment_or_substrate: Lean theorem prover.
+  verifier_or_reward: Lean compilation and checking.
+  terminal_predicate: The generated formalization is accepted by Lean.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: Keep formalizations accepted by the Lean checker.
+  sampling_protocol: Consult the official dataset release for split and subset definitions.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official NeurIPS proceedings, project GitHub repository, and author Hugging Face dataset.
+  split: Consult the dataset card and repository.
+  decontamination: Evaluate overlap with public Lean libraries before held-out use.
+  license: Consult the dataset card and repository license.
+  lineage: https://papers.neurips.cc/paper_files/paper/2025/hash/5159aaee380391c366b27994ed225e4f-Abstract-Conference.html
+  known_failure_modes:
+  - Checker acceptance depends on the encoded statement.
+  - Formalization can alter an informal statement's intended meaning.
+  citation_status: verified
+  confidence: high
+  notes: Official proceedings, affiliations, code, and dataset release were checked.
+inclusion_reason: ATLAS 通过提升、增广和合成扩展自然语言—Lean 定理对，并以 Lean 检查筛选自动形式化数据。
+related: []
+tags:
+- autoformalization
+- lean4
+- theorem-proving
+- '2025'
+one_line_summary: ATLAS expands natural-language–Lean theorem pairs through lifting, augmentation, and synthesis, filtering
+  autoformalization data with Lean checking.
+why_it_matters: ATLAS expands natural-language–Lean theorem pairs through lifting, augmentation, and synthesis, filtering
+  autoformalization data with Lean checking.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings, affiliations, code, and dataset release were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

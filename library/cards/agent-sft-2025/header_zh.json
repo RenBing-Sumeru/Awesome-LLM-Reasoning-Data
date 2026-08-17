@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Nex Agent-SFT 把 69008 条代码、研究、对话、网页和工具轨迹统一为消息与工具结构。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "代理监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Nex-AGI Team",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

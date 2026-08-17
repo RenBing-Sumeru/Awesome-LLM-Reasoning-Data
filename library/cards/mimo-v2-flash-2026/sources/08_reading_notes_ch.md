@@ -1,0 +1,5 @@
+- 将报告中的约 12 万环境视为未披露的环境库存，而不是已发布 benchmark 或语料。
+- 追踪 credit assignment 时，分开记录教师 reverse-KL、ORM advantages、程序化检查、LLM judge 和多模态验证。
+- 将 MiMo-V2-Flash-Base、专门教师和学生 rollout policy 视为彼此不同但身份披露不完整的组件。
+- 将 SWE-Bench 未删除 commit 事件记录为具体的环境与 reward-hacking 风险。
+- 保留官方引用年份不一致：arXiv 记录为 2026，Hugging Face citation block 为 2025。

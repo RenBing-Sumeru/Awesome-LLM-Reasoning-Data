@@ -1,0 +1,5 @@
+The official paper and repository specify the select-then-rewrite transformation, hard/soft constraint split, curriculum inputs, and RL integration. The official HIR-16K dataset exposes prompt, criteria, checker metadata, source, and ID and declares Apache-2.0. At the time recorded by this Card, the Hugging Face viewer reports a schema-casting failure, so availability of repository files should not be conflated with a healthy viewer or a fully audited schema.
+
+The paper reports multi-backbone comparisons and ablations for selection, replay, and curriculum components. They support method utility in the tested model/evaluation settings. They do not prove that every atomic criterion is correctly specified, that the learned judge is calibrated, that hard checkers are robust, or that the public prompt mixture is uncontaminated.
+
+No checked official artifact exposes full rollout groups, per-constraint decisions for generated responses, rejected replay candidates, rewritten online samples, entropy/selection scores, or checkpoint-linked reward logs. These are the records needed to audit the failure-to-success transformation itself.

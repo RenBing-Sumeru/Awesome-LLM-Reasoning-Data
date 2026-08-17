@@ -1,0 +1,18 @@
+{
+  "title": "ActiveDPO: Active Direct Preference Optimization for Sample-Efficient Alignment",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=RD4XgyVyGh",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:50:56Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以目标策略自身的梯度不确定性主动选择偏好对，把昂贵人工判断用于更有效的 DPO 训练",
+    "updated_at": "2026-07-16T07:50:56Z"
+  }
+}

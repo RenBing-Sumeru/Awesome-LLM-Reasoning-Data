@@ -1,0 +1,5 @@
+The central transformation is hindsight instruction relabeling rather than response correction or direct partial-credit optimization. A failed response becomes successful only under an explicitly weaker instruction whose retained constraints were judged satisfied. Because response tokens do not change, the new supervision attributes success to a change in task definition rather than to an edited solution.
+
+The method creates contrast at two levels. Response-level preference distinguishes outputs under an original instruction, while instruction-level preference distinguishes the complete task from a hindsight task matched to the observed response. The scheduled mixture of entropy and constraint integrity also treats selection as a curriculum decision rather than replaying every partial failure.
+
+This design is useful precisely because it preserves failure information, but it can be misreported easily. “Replay failures as successes” does not mean the original failure label was wrong; it means the record is paired with a different terminal predicate. A high-quality release must preserve both predicates and their provenance.

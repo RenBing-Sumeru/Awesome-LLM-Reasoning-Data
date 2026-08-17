@@ -1,0 +1,4 @@
+The release's concrete technical novelty is architectural: it combines Gated DeltaNet and Gated Attention, increases MoE sparsity, adds stability-oriented design changes, and uses Multi-Token Prediction. At the post-training level, it connects GSPO to stabilizing RL for this hybrid sparse architecture. The generic GSPO contribution predates the Qwen3-Next release and should not be presented as a newly specified Qwen3-Next data recipe.
+
+For the atlas, the direction signal is the mismatch between artifact visibility and training-ledger visibility. Model weights, configurations, and inference code are inspectable, while post-training examples, feedback records, and audit manifests are not. The 15T statement is useful aggregate pretraining evidence, but it is neither a corpus manifest nor evidence about how the Instruct and Thinking post-training data were constructed.
+

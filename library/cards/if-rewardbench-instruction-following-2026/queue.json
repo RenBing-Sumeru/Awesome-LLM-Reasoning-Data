@@ -1,0 +1,19 @@
+{
+  "title": "IF-RewardBench: Benchmarking Judge Models for Instruction-Following Evaluation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1092/",
+    "data": "https://github.com/thu-coai/IF-RewardBench",
+    "code": "https://github.com/thu-coai/IF-RewardBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T09:28:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提供 842 条指令、审计清单和回答偏好图，要求裁判恢复完整回答排序",
+    "updated_at": "2026-07-25T09:28:06Z"
+  }
+}

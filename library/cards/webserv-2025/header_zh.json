@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebServ 公开了 726 条经成功筛选的 Claude 浏览器轨迹及 Incus 隔离式 GRPO 训练代码，但未公开失败轨迹、逐条结果标签、Qwen 在线 RL rollout、模型检查点或可固定复现的环境镜像。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "网页智能体环境、轨迹数据发布与强化学习训练基础设施",
+  "best_for_ch": "研究网页智能体 SFT/RL 数据、环境重置、浏览器动作可靠性、环境奖励以及论文规模与实际发布差异的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuxuan Lu, Ziyi Wang, Jing Huang, Hui Liu, Jiri Gesi, Yan Han, Shihan Fu, Tianqi Zheng, Xianfeng Tang, Chen Luo, Yisi Sang, Jin Lai, Dakuo Wang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-21T10:17:34Z"
+}

@@ -1,0 +1,6 @@
+- 分开维护四本账：报告披露、已发布MIT权重、未发布训练记录和benchmark模型行为。
+- 约400B指未加权合成源token，9.8T指最终训练token预算；没有公开对照表连接两者。
+- 后训练有三种对象：约8B SFT token、250,297条token-local Pivotal Token Search示例和841,842个完整回答judge-guided pair。
+- Pivotal Token Search使用采样continuation成功率与任务oracle；GPT-4o judging是按准确性、风格和细节运行的另一契约。
+- fresh AMC结果与n-gram过滤不能替代公开的语义污染和移除ledger。
+- 对未披露的generator身份、提示、rollout、来源权利、记录数、选择决策和阶段lineage继续标为unknown。

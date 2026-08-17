@@ -1,0 +1,21 @@
+{
+  "institutions": [
+    "Tel Aviv University",
+    "University of Pennsylvania",
+    "Allen Institute for AI",
+    "University of Washington",
+    "Princeton University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.15711",
+    "https://arxiv.org/html/2407.15711",
+    "https://assistantbench.github.io/",
+    "https://github.com/oriyor/assistantbench",
+    "https://huggingface.co/datasets/AssistantBench/AssistantBench",
+    "https://huggingface.co/spaces/AssistantBench/leaderboard"
+  ],
+  "verification_note": "Official arXiv, project, GitHub, and Hugging Face sources verify authors, affiliations, data, code, and leaderboard."
+}

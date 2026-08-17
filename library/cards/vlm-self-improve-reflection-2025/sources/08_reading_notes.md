@@ -1,0 +1,5 @@
+- Keep the feedback boundary explicit: final parsed answer or MiniWob success labels a complete solution; no step-level verifier is present.
+- Read self-refine as latest-negative-conditioned imitation of the latest answer-correct peer completion, not as verified error repair.
+- The self-select training object always has exactly three shuffled candidates, mixed labels, and at least one positive; inference has no positive-candidate guarantee.
+- Separate the published 40,457 direct-QA rows and 2,800 GPT-CoT warm-up rows per base-model variant from the unreleased self-generated rollouts, `D_REF`, `D_SEL`, checkpoints, and ledgers.
+- Treat downstream and ablation gains as evidence for the tested recipe, while using the reported 8%–70% fully correct CoT range as direct evidence that answer correctness does not certify rationale faithfulness.

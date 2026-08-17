@@ -1,0 +1,5 @@
+1. **Positioning:** OpenDiscoveryTrace exposes AI-scientist workflow quality hidden by equal final success rates.
+2. **Method handle:** It builds a task bank, runs multiple agents, records nine fields per step, and derives five process evaluations.
+3. **Data handle:** It contains 432 JSON trajectories over 124 tasks and four domains with thought, action, observation, error, revision, and confidence.
+4. **Evidence anchor:** The three models all succeed about 69%, yet Claude averages roughly 30 times more errors than GPT-5.4.
+5. **Reuse decision:** It fits scientific-agent auditing; freeze tool versions and add expert claim verification; also compare step count, tool-error rate, revision count, and evidence coverage among equally successful trajectories; the unexecuted portion of the task bank should also be preserved for future hidden evaluation; It is best for scientific-agent auditing, early failure prediction, and workflow comparison. The main risks are tool drift and self-reported labels, requiring snapshots and expert calibration.

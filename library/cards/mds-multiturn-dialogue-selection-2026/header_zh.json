@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MDS 以用户意图覆盖以及实体扎根、形式一致的结构选择完整对话轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多轮对话指令数据选择研究",
+  "best_for_ch": "为对话监督微调筛选连贯且多样的会话历史的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bo Li, Shikun Zhang, Wei Ye",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T08:00:00Z"
+}

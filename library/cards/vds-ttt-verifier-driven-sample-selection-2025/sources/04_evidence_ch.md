@@ -1,0 +1,1 @@
+证据边界：主要论文为[Continuous Self-Improvement of Large Language Models by Test-time Training with Verifier-Driven Sample Selection](https://arxiv.org/abs/2505.19475)。论文报告的实验信息已在英文段记录；未确认的官方代码、数据或轨迹 artifact 统一写为 null。

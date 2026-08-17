@@ -1,0 +1,2 @@
+
+主实验生成器为 Llama-3.1-8B-Instruct。每个 prompt 在 temperature 0.6、top-p 0.9 下采样 64 个回答，再从同一候选池评估 N=4、8、16、32、64；评测由 ZeroEval 执行，主结果取五次重复的平均值。基准包括 LiveBench-Math、GSM8K validation、MATH test、CRUXEval-O 和 LiveCodeBench。补充实验还使用 DeepSeek-R1-Distill-Llama-8B 测试 MATH Level 3，并使用 Qwen-2.5-Coder-32B-Instruct 测试 LiveCodeBench。发布的选择器会屏蔽无法抽取固定答案的响应，并把其置信度设为负无穷。固定答案任务中的 Borda 参数 p 按 N 和任务调整；论文给出 N 不超过 16 时 p=0.3、N 至少为 32 时 p=1.2 的经验值，同时建议在验证集上调参。作者仓库在 ZeroEval 基础上加入 self-certainty、Borda、USC、LiveCodeBench 解析和选择脚本，但不包含候选输出数据集。

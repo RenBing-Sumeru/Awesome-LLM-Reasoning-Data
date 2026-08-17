@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WorkArena++ 将企业 Web 智能体评测推进到组合规划轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2024 Datasets and Benchmarks Track",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Léo Boisvert 等（ServiceNow Research）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T14:46:32Z"
+}

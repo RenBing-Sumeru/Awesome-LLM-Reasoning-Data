@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T20:11:53Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "有点像是一个评测框架，不是benchmark 御三家常在测webagent时放入该环境",
+    "updated_at": "2026-07-14T20:11:53Z"
+  }
+}

@@ -1,0 +1,3 @@
+The reported configuration generates 16 candidates at temperature 0.7 without top-p sampling and performs two public-test debugging rounds. Revision stops when a candidate passes all public tests or reaches the round limit. Prompts are produced with DSPy, and candidate programs run in a sandbox.
+
+For final selection, S* synthesizes initial inputs and clusters candidates by their execution outputs. It then samples candidate pairs across clusters, asks an LLM for inputs intended to distinguish the pair, executes both programs, and returns the execution evidence to the judging prompt. The selected member receives a vote. Private tests are reserved for benchmark scoring and are not available to the method.

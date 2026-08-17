@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Seed-Coder 用外部 teacher 标注与 1.3B scorer 构造 6T-token curriculum，再加入 3M SFT、20K sandbox preference 与 250-step LongCoT GRPO，但未发布数据、scorer、测试、reward 或记录级 lineage。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码模型数据构造与推理后训练技术报告",
+  "best_for_ch": "研究代码语料过滤、synthetic SFT、execution feedback、DPO、RLVR 与数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "ByteDance Seed 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

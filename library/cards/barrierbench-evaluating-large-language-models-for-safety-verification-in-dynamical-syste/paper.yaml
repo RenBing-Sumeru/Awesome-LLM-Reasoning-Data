@@ -1,0 +1,90 @@
+id: barrierbench-evaluating-large-language-models-for-safety-verification-in-dynamical-syste
+title: 'BarrierBench: Evaluating Large Language Models for Safety Verification in Dynamical Systems'
+year: 2026
+venue: L4DC 2026
+authors:
+- Ali Taheri
+- Alireza Taban
+- Sadegh Soudjani
+- Ashutosh Trivedi
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v331/
+  arxiv: https://arxiv.org/abs/2511.09363
+  code: null
+  data: https://hycodev.com/dataset/barrierbench
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v331/
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v331/
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Dataset authors and the released construction pipeline.
+  answer_format: Task input, candidate output, and the released verification surface.
+  process_fields:
+  - task
+  - candidate output
+  - verifier result
+  environment_or_substrate: The official released execution or verification environment.
+  verifier_or_reward: The paper's published executable or rule-based verifier.
+  terminal_predicate: The candidate output satisfies the released verification contract.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: The released verifier or execution environment.
+  generator: The authors' released construction pipeline.
+  filtering_rule: Use the official release and its documented acceptance rules.
+  sampling_protocol: Use the official split and version.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Programmatically verified outcome data.
+audit:
+  source_mixture: Official paper, candidate data release, and any official code link cited in the card.
+  split: Use the official release split.
+  decontamination: Check overlap with downstream evaluation data before training or reporting results.
+  license: Check the official data and upstream-source terms before reuse.
+  lineage: https://hycodev.com/dataset/barrierbench
+  known_failure_modes:
+  - Passing a released verifier does not establish behavior outside its coverage.
+  - Public tasks can overlap with downstream model training data.
+  citation_status: verified
+  confidence: medium
+  notes: The official L4DC proceedings and arXiv record confirm the publication and author list. No author-released Hugging
+    Face dataset page was found; the official BarrierBench data portal is retained.
+inclusion_reason: The released resource exposes a reusable programmatic outcome-verification surface.
+related: []
+tags:
+- programmatic-verification
+one_line_summary: One-sentence position:** One hundred dynamical-system barrier-certificate tasks strictly verify LLM-generated
+  safety certificates with SMT.
+why_it_matters: It exposes a reproducible terminal outcome check rather than only a textual reference.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: Official L4DC proceedings, arXiv, and the BarrierBench data portal were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

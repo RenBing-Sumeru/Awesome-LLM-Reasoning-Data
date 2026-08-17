@@ -1,0 +1,3 @@
+Read the paper in this order: dataset motivation and WSC examples first, crowdsourcing and validation second, AFLite third, then baseline and transfer tables. The key boundary is that adversarial filtering makes examples harder for a family of shortcut detectors; it does not mechanically certify that a model's later answer is causally grounded in commonsense.
+
+Keep three labels separate: WinoGrande-all versus debiased subsets, dev-script accuracy versus hidden-test leaderboard accuracy, and evaluation use versus training-transfer use. Also keep paper-reported counts separate from versioned release counts when reproducing old numbers.

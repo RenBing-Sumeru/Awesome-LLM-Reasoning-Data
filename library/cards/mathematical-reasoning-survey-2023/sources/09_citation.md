@@ -1,0 +1,1 @@
+Lu, Pan; Qiu, Liang; Yu, Wenhao; Welleck, Sean; and Chang, Kai-Wei. 2023. A Survey of Deep Learning for Mathematical Reasoning. ACL 2023 Long Papers, pages 14605–14631. Official record, abstract, PDF, and DOI: https://aclanthology.org/2023.acl-long.817/

@@ -1,0 +1,1 @@
+Use this survey when designing a reasoning post-training loop. Start by writing the task distribution and terminal predicate, then choose the reward, verifier, rollout budget, and policy update. Measure answer correctness and feedback quality separately. This turns “use RL” into a reproducible sequence of data decisions.

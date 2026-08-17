@@ -1,0 +1,3 @@
+The author-linked repository, Hugging Face dataset, and collection are public. The repository describes the training release as 120M tokens; the dataset page enumerates 10,483 rejection-sampling, 10,000 VABP, 60,071 Guided Synthetic, 500,000 Factual Board Answering, 14,848,802 Best Move, and 1,604,684 Best Line records. It also supplies code, evaluation samples, final checkpoints, logs, and a visualizer; its cleaned evaluation data contains 400 samples per task.
+
+The paper reports RL inclusion experiments with 8k samples and scaled runs with 16k samples. These released artifacts establish the data families, selected feedback rules, and implementation availability; they do not establish that every retained natural-language trace is faithful or semantically correct.

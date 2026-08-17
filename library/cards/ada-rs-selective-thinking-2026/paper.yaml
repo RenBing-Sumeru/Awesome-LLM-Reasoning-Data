@@ -1,0 +1,144 @@
+id: ada-rs-selective-thinking-2026
+title: 'Ada-RS: Adaptive Rejection Sampling for Selective Thinking'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yirou Ge
+- Yixi Li
+- Alec Chiu
+- Shivani Shekhar
+- Zijie Pan
+- Avinash Thangali
+- Yun-Shiuan Chuang
+- Chaitanya Kulkarni
+- Uma Kona
+- Linsey Pang
+- Prakhar Mehrotra
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- full_episode
+domains:
+- tool_use
+- e_commerce
+- selective_reasoning
+- efficient_reasoning
+training_use:
+- preference_learning
+- rlvr
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2602.19519
+  arxiv: https://arxiv.org/abs/2602.19519
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2602.19519
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2602.19519
+data_object:
+  prompt_source: Synthetic multi-turn, multi-step e-commerce conversations and tool-call contexts; the reported training set
+    has 15,000 tool invocations across 8,026 conversations, 121 tasks, and 8 personas.
+  trace_author: For off-policy Ada-RS-DPO, a teacher policy generates multiple rollouts; for on-policy Ada-RS-DAPO, the current
+    policy generates the rollout group.
+  answer_format: A sampled completion contains an optional <think> trace and a final response, including tool calls when applicable.
+  process_fields:
+  - multiple sampled completions per context
+  - tool-call correctness
+  - reasoning-trace sentence count
+  - online solve-rate estimate
+  - adaptive length-penalized reward
+  - accepted preference pair or retained candidate group
+  environment_or_substrate: An internal simulated e-commerce tool-calling environment; detailed environment implementation
+    and a reusable release are unknown.
+  verifier_or_reward: Adaptive length-penalized reward combines correct-tool-call success with a penalty on the number of
+    sentences in <think>, scaled by an online estimate of prompt solve rate.
+  terminal_predicate: 'Per-step tool-call correctness: selecting the correct tool and producing the correct arguments.'
+recipe_metadata:
+  base_model: Qwen3-8B with LoRA adapters
+  teacher: unknown; the off-policy procedure names a teacher policy but does not identify it in the reviewed primary text.
+  generator: A teacher policy for off-policy DPO candidates or the current policy for on-policy DAPO candidates.
+  filtering_rule: 'Stochastic rejection sampling retains higher adaptive-reward candidates: pairwise candidates become chosen/rejected
+    DPO examples, while groupwise candidates are independently retained from standardized within-group reward.'
+  sampling_protocol: For each context, sample multiple thinking-enabled and thinking-disabled completions, compute correctness
+    and think-length features, then apply pairwise or groupwise rejection sampling before the respective optimizer update.
+  rollout_count: K=6 candidates per DPO context; K=8 candidates per DAPO group.
+  temperature: 1
+  inference_budget: unknown
+  optimizer_or_scaffold: Ada-RS-DPO applies DPO with accepted preference pairs and an auxiliary NLL loss; Ada-RS-DAPO applies
+    DAPO to the retained on-policy candidate group.
+audit:
+  source_mixture: 'Reported synthetic e-commerce data: 15,000 training tool invocations from 8,026 conversations across 121
+    tasks and 8 personas; evaluation has 2,510 tool calls from 367 conversations across 48 tasks and 8 personas.'
+  split: Training and evaluation counts are reported, but split construction/provenance details are unknown.
+  decontamination: unknown
+  license: The arXiv manuscript is CC BY 4.0; license for the internal simulated environment, conversations, rollouts, and
+    any training/evaluation data is unknown.
+  lineage: The setting is an internal simulated e-commerce environment. The paper describes teacher/current-policy rollout
+    generation but does not identify an off-policy teacher model or release the underlying traces.
+  known_failure_modes:
+  - The evidence is limited to one internal simulated e-commerce domain and one model size, so generality across domains and
+    scales is unverified.
+  - Per-step tool-call accuracy may not measure end-to-end multi-turn user-goal completion.
+  - Rejection sampling with the adaptive length penalty but without the DPO auxiliary NLL stabilization produced poor accuracy
+    and an always-think policy in the reported ablation.
+  - No official reusable code, data, trace, environment, or license release was identified in the reviewed primary-source
+    materials.
+  citation_status: verified
+  confidence: medium
+  notes: This is a construction/selection recipe with a material rollout and filtering contract, not a confirmed public trace-data
+    release. Claims about DPO and DAPO are limited to the paper's reported integrations; rollout count, off-policy teacher
+    identity, data license, decontamination, and environment reproducibility remain undisclosed.
+inclusion_reason: Documents a concrete rollout-selection recipe for selectively retaining correct and efficient reasoning/tool-call
+  trajectories, with explicit pairwise DPO and groupwise DAPO training paths. It is relevant to the rollout/search/test-time
+  trace track even though the underlying traces and environment are not confirmed as public releases.
+related: []
+tags:
+- rollout-selection
+- rejection-sampling
+- selective-thinking
+- preference-pairs
+- dpo
+- dapo
+- tool-calling
+- adaptive-length-penalty
+status: partial
+one_line_summary: Ada-RS filters multiple tool-use rollouts by an adaptive correctness-and-length reward, converting retained
+  candidates into DPO preference pairs or DAPO training groups for selective reasoning.
+why_it_matters: 'It makes the selection policy over multiple sampled reasoning traces explicit: correctness, reasoning length,
+  prompt difficulty, and stochastic acceptance jointly determine which trajectories train the next policy, separating data-selection
+  effects from the underlying DPO or DAPO optimizer.'
+card: null
+needs:
+- 'needs_release: no official code, data, trace, environment, project, or Hugging Face release was identified in the reviewed
+  primary-source materials.'
+- 'needs_metadata: off-policy teacher identity, remaining sampling/acceptance hyperparameters, data provenance, split construction,
+  decontamination, and data/environment licenses are not fully disclosed.'
+- 'needs_validation: findings are reported for a single internal simulated e-commerce domain and Qwen3-8B model size.'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: track5-paper-curator
+  confidence: medium
+  notes: Verified against the official arXiv abstract and full-text HTML for v1. No official venue, author project, repository,
+    dataset, or model-release URL is asserted.
+category_ids:
+- rollout_search_test_time_trace_data

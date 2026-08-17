@@ -1,0 +1,5 @@
+Correctness holds relative to the extracted benchmark record, reference answer, answer-type label, and evaluator code. It does not prove that the OCR text and image crop perfectly preserve the original contest problem, and it does not certify reasoning quality when a model reaches a correct final answer through a flawed process.
+
+The automatic verifier has known blind spots: proof problems and categorical text answers are not fully covered; physics tolerances may need problem-specific precision; symbolic equivalence can fail for expressions that are mathematically equal but not normalized in the evaluator's supported form. Public release also creates contamination risk for later model training.
+
+Reuse should not treat OlympiadBench as a hidden live benchmark, a training reward source, or a general proof-quality judge without additional controls. License and redistribution checks should distinguish repository code, Hugging Face dataset metadata, and the rights attached to original contest/exam problems.

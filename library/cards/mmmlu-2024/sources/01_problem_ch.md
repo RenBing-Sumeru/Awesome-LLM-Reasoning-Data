@@ -1,0 +1,3 @@
+Multilingual Massive Multitask Language Understanding 定义了 multilingual-评测, broad-academic, multiple-choice 的评测面：模型输出或智能体轨迹必须满足任务特定的反馈契约。主来源与产物是 paper: https://arxiv.org/abs/2009.03300; code: https://github.com/openai/simple-evals; data: https://huggingface.co/datasets/openai/MMMLU; huggingface: https://huggingface.co/datasets/openai/MMMLU; doi: https://doi.org/10.48550/arXiv.2009.03300；本地元数据记录的年份/来源为 2024 / OpenAI / Hugging Face dataset release。
+
+收录边界是 benchmarks_evaluation_surfaces，来源角色为 benchmark，验证契约为程序化。一个评测实例 里包含：translated MMLU multiple-choice question, subject/category 元数据, answer options, gold option, locale, and test split。除非官方产物另有训练数据说明，否则这张卡把它视为评测、审计，不是训练配方。它对 atlas 的价值在于把任务对象、输出和验证器/裁判/奖励/环境谓词 绑定起来，而不是只记录抽象能力结论。

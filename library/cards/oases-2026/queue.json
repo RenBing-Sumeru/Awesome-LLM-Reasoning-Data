@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "训练配方无数据集",
+    "updated_at": "2026-07-19T07:05:52Z"
+  },
+  "updated_at": "2026-07-19T07:05:52Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

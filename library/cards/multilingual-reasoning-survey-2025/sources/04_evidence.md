@@ -1,0 +1,3 @@
+The evidence offered here is breadth and organization, not a new leaderboard. The official abstract says the review covers standard training resources, evaluation benchmarks, state-of-the-art methods, and their performance. It therefore helps readers locate what has been evaluated, while leaving the comparability of individual scores to the underlying studies.
+
+Evidence should consequently be read at the level at which it was produced. A number may describe one language set, one task family, or one benchmark translation rather than multilingual reasoning in general. The survey is a reliable guide to locating comparisons, but the primary experiment remains necessary for checking language splits, prompts, and the meaning of its reported metric.

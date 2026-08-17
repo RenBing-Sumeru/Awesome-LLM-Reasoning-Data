@@ -1,0 +1,7 @@
+The paper uses 4,444 problems: 2,347 mathematics problems from eight benchmarks, 1,196 questions sampled from MMLU-Pro, and 901 natural-language reasoning questions from ReClor, FOLIO, and GPQA Diamond. Fourteen open instruction-tuned models from Qwen, Llama, Gemma, and Mistral families plus GPT-4o each act as generator and verifier.
+
+For every model-problem pair, generators sample 64 responses with default temperature 0.7 and top-p 1.0; Qwen3 non-thinking uses top-p 0.8. Released records report a 4,096-token maximum. Correctness is determined with Math-Verify, then other string-matching checkers when needed, and finally reference-based judgments from GPT-4.1-mini and Qwen2.5-72B.
+
+Verifier evaluation takes up to eight candidates from each 64-response pool, targeting four correct and four incorrect. When a class has fewer than four examples, all available examples are retained and the other class fills the pool. A verifier sees the question and candidate but no gold answer, greedily generates one rationale, and ends with `[[Correct]]` or `[[Incorrect]]`. Additional RQ2 comparisons restrict eligible problems, equalize denominators by sampling one response per class, repeat eight times, and average.
+
+The official Generator card reports about 619K released candidate records. The Verifier card describes a 15-by-15 matrix and about 9.9M verification records, although the platform currently estimates 7,346,479 rows; this count mismatch remains open.

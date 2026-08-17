@@ -1,0 +1,1 @@
+MATH-500 继承了 MATH 的 final-answer-only 局限：最终答案正确可能掩盖无效推理；等价答案也可能因归一化失败被误判。500 题规模较小，题型分布偏差和长期公开暴露都会影响解释。它已经被大量复用，对现代模型的污染风险很高。论文里的结果还常与 verifier-guided selection budget 绑定；raw model score、majority-vote score、PRM-reranked score 必须分开标注。

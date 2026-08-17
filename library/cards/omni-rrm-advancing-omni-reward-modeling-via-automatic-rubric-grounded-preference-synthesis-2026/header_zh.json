@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Omni-RRM 自动合成带模态量规和逐维理由的跨文本、图像、视频、音频偏好数据，训练全模态奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "偏好或奖励反馈数据论文",
+  "best_for_ch": "研究偏好学习、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Zicheng Kong、Dehua Ma、Zhenbo Xu、Alven Yang、Yiwei Ru 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T14:00:00Z"
+}

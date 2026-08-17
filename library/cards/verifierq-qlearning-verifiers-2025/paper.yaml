@@ -1,0 +1,104 @@
+id: verifierq-qlearning-verifiers-2025
+title: 'VerifierQ: Enhancing LLM Test Time Compute with Q-Learning-based Verifiers'
+year: 2025
+venue: AI4Math Workshop at ICML 2025 Poster
+authors:
+- Jianing Qi
+- Hao Tang
+- Zhigang Zhu
+source_role:
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+domains:
+- mathematical-reasoning
+training_use:
+- process_supervision
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2410.08048
+  arxiv: https://arxiv.org/abs/2410.08048
+  venue: https://openreview.net/forum?id=qhOT0MisId
+  code: null
+  data: https://huggingface.co/datasets/meta-math/MetaMathQA
+  project: null
+  huggingface: https://huggingface.co/datasets/meta-math/MetaMathQA
+  doi: https://doi.org/10.48550/arXiv.2410.08048
+data_object:
+  prompt_source: MetaMath for generator training; GSM8K and a 500-question MATH subset for evaluation; Math-Shepherd and PRM800K-linked
+    data are referenced for process labels.
+  trace_author: A MetaMath-trained generator produces multistep mathematical solutions.
+  answer_format: Problem, partial solution state, utterance-level action, step reward, Q-value, and final solution.
+  process_fields:
+  - prompt
+  - partial_solution
+  - utterance_action
+  - step_reward
+  - Q_value
+  - next_state
+  - final_answer
+  environment_or_substrate: Utterance-level Markov decision process over solution steps.
+  verifier_or_reward: VerifierQ predicts bounded Q-values for steps using offline Q-learning, IQL approximation, and a conservative
+    Q-learning term.
+  terminal_predicate: A selected solution is evaluated against GSM8K or MATH ground-truth answers.
+recipe_metadata:
+  base_model: TinyLlama-1.1B.
+  teacher: null
+  generator: A MetaMath-trained and answer-style fine-tuned generator.
+  filtering_rule: The verifier assigns Q-values to steps and supports selection under minimum evaluation.
+  sampling_protocol: Compare VerifierQ, PRM, majority voting, and Q-learning variants as solution count grows.
+  rollout_count: See paper figures for solution-count curves.
+  temperature: See official paper implementation details.
+  inference_budget: Number of solutions and verifier forward-pass work.
+  optimizer_or_scaffold: Offline Q-learning with modified bounded Bellman update, IQL value approximation, CQL, and Polyak
+    target averaging.
+audit:
+  source_mixture: Official arXiv PDF and official ICML workshop OpenReview record.
+  split: Full GSM8K test set and a 500-question MATH subset; training uses MetaMath and process-supervision resources noted
+    in the paper.
+  decontamination: No independent contamination audit is claimed.
+  license: Verify the terms of MetaMath, GSM8K, Math-Shepherd, PRM800K, and evaluation benchmarks before reuse.
+  lineage: https://arxiv.org/abs/2410.08048
+  known_failure_modes:
+  - q-value-overestimation
+  - model-size-limit
+  - hyperparameter-sensitivity
+  - process-label-noise
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF checked on 2026-07-21. The front page lists CUNY Graduate Center, Borough of Manhattan Community
+    College, and The City College of New York. The paper says code will be released in the future; no code link is supplied.
+inclusion_reason: It studies verifier strength as the component that makes additional test-time reasoning candidates selectable,
+  with explicit scaling comparisons.
+related: []
+tags:
+- test-time-compute
+- verifier
+- q-learning
+- process-reward-model
+- mathematical-reasoning
+status: verified
+one_line_summary: VerifierQ trains an utterance-level Q-value verifier offline, aiming to select stronger multistep mathematical
+  solutions under a test-time compute budget.
+reading_priority: useful
+paper_type: Offline Q-learning verifier study for test-time scaling
+best_for: Readers studying learned process verifiers as selectors for multiple reasoning rollouts.
+confidence: high
+why_it_matters: It exposes verifier training, not just generator sampling, as a scaling lever and tests it against PRM and
+  majority voting.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and workshop record verified; code is promised but not publicly linked.
+category_ids:
+- scaling_rlvr_test_time_compute

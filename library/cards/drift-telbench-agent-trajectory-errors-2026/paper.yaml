@@ -1,0 +1,114 @@
+id: drift-telbench-agent-trajectory-errors-2026
+title: Where Do Deep-Research Agents Go Wrong? Span-Level Error Localization in Agent Trajectories
+year: 2026
+venue: arXiv preprint
+authors:
+- Jiaming Wang
+- Ziteng Feng
+- Jiangtao Wu
+- Ruihao Li
+- Qianqian Xie
+- Yuxiang Ren
+- He Zhu
+- Xueming Han
+- Fanyu Meng
+- Junlan Feng
+- Jiaheng Liu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- deep-research-agents
+- trajectory-auditing
+- process-evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2606.02060
+  arxiv: https://arxiv.org/abs/2606.02060
+  code: null
+  project: https://nju-link.github.io/DRIFT/
+  data: https://huggingface.co/datasets/NJU-LINK/TELBench
+  huggingface: https://huggingface.co/datasets/NJU-LINK/TELBench
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2606.02060
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Deep-research tasks from GAIA, XBench, and BrowseComp executed by agent frameworks.
+  trace_author: Agent trajectories are segmented into semantic spans and harmful spans are verified through LLM-assisted expert
+    review.
+  answer_format: Ordered trajectory spans with error labels, first-error annotations, evidence, and claim-support relations.
+  process_fields:
+  - semantic_spans
+  - error_span_labels
+  - first_error
+  - claims
+  - evidence_links
+  environment_or_substrate: Search, tool use, evidence inspection, and answer synthesis trajectories.
+  verifier_or_reward: DRIFT audits claim support and conflicts against trajectory evidence.
+  terminal_predicate: A harmful trajectory span and the earliest harmful error can be localized against verified annotations.
+recipe_metadata:
+  base_model: Three backbone models across two agent frameworks; see the paper for the model list.
+  teacher: LLM-assisted expert review.
+  generator: Collected deep-research agent trajectories segmented into semantic spans.
+  filtering_rule: Retain trajectories and spans with verified harmful-error labels.
+  sampling_protocol: Evaluate span-level error localization and first-error prediction over TELBench.
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: Claim-centric DRIFT trajectory auditing.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: 2,790 real agent trajectories from two frameworks, three backbone models, and three benchmarks.
+  split: TELBench contains 1,000 expert-verified instances, with 600 easy and 400 hard instances.
+  decontamination: The benchmark preserves normal exploration and harmless noise alongside harmful errors to prevent label
+    shortcuts.
+  license: Consult the official Hugging Face dataset card.
+  lineage: arXiv paper, NJU-LINK DRIFT project page, and official TELBench dataset release.
+  known_failure_modes:
+  - Span labels can depend on evidence interpretation
+  - First-error localization is harder than detecting any error
+  - Coverage is limited to the included tasks and agent frameworks
+  citation_status: verified
+  confidence: high
+  notes: Verified the formal arXiv title and author list, NJU-LINK/JIUTIAN/OPPO affiliations on the official project page,
+    and the official TELBench release. No separate official code repository was resolved, so code is not asserted.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: TELBench labels harmful spans in deep-research trajectories, while DRIFT traces unsupported claims to localize
+  where an agent first goes wrong.
+why_it_matters: It turns opaque final-answer failures into localized, evidence-linked process errors that can supervise trajectory
+  auditing.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the formal arXiv title and author list, NJU-LINK/JIUTIAN/OPPO affiliations on the official project page,
+    and the official TELBench release. No separate official code repository was resolved, so code is not asserted.
+category_ids:
+- process_trace_supervision_data

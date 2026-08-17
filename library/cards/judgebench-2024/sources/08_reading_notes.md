@@ -1,0 +1,1 @@
+Keep three labels separate: objective pair label, judge-generated rationale, and parsed judge decision. Aggregate accuracy is not row-level proof that every source-task label is uncontested. Read the data schema and runner before the leaderboard, because prompt/order settings define what a reported judge score means.

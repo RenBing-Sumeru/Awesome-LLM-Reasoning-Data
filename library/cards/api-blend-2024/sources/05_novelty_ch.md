@@ -1,0 +1,1 @@
+已有基线多是合成 API 数据、单次调用 tool 语料，或不要求 sequencing 的数据集。API-BLEND 的新意是把多种人工标注或任务邻近数据转成统一 ordered-call 表示，并同时评测 in-distribution 和 OOD transfer。质量信号来自明确 split 表、转换规则和分阶段指标。API calling、instruction tuning、QLoRA 和源数据本身都不新；复用前要查转换后的语义忠实度、各源数据许可继承、等价参数值的 normalization、隐藏重复，以及官方代码/数据 artifact 未核验时对复现的影响。

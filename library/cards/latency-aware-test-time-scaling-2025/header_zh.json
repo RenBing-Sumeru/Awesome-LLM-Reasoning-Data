@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该文按墙钟延迟搜索候选分支数与 speculative-decoding draft length，以提升给定时间内的答案准确率；但未发布原始候选轨迹及复现实测延迟所需的硬件/运行时记录。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "延迟约束下的测试时计算与并发配置研究",
+  "best_for_ch": "研究 test-time scaling、候选轨迹选择、推理预算归因与系统复现的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zili Wang、Tianyu Zhang、Haoli Bai、Lu Hou、Xianzhi Yu、Wulong Liu、Shiming Xiang、Lei Zhu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

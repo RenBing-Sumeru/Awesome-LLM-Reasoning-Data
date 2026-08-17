@@ -1,0 +1,21 @@
+{
+  "institutions": [
+    "The Ohio State University Department of Computer Science and Engineering",
+    "The Ohio State University College of Pharmacy",
+    "University of Wisconsin-Madison Department of Geography",
+    "The Ohio State University Department of Psychology",
+    "University of Wisconsin-Madison Department of Chemistry",
+    "The Ohio State University Department of Biomedical Informatics"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:25:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2410.05080",
+    "https://osu-nlp-group.github.io/ScienceAgentBench/",
+    "https://github.com/OSU-NLP-Group/ScienceAgentBench",
+    "https://huggingface.co/datasets/osunlp/ScienceAgentBench",
+    "https://openreview.net/forum?id=6z4YKr0GK6"
+  ],
+  "verification_note": "arXiv, project, GitHub, and Hugging Face sources verify ICLR 2025 status, department-level OSU/UW-Madison affiliations, and public artifact leads; OpenReview remains linked but was not directly inspected in the 2026-07-15 source regeneration because browser verification blocked access; full benchmark redistribution has access limits."
+}

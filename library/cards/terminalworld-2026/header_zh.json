@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TerminalWorld 将公开终端录制转换为 1,530 个带 Docker 环境、参考解答与状态测试的 CLI 任务，并提供人工复核的 200-task 评测子集；该发布仅适合评测，且版本、谱系与许可证边界仍未解决。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "终端智能体可执行基准、环境与 verifier 发布",
+  "best_for_ch": "研究终端智能体评测、环境反馈契约、状态测试与可复现性审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhaoyang Chu, Jiarui Hu, Xingyu Jiang, Pengyu Zou, Han Li, Chao Peng, Peter O'Hearn, Earl T. Barr, Mark Harman, Federica Sarro, He Ye",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,1 @@
+监督信号只和 GPT-4 teacher judgment 及其 prompt 一样可靠。偏差缓解可以降低被测 artifact，但不能消除全部 position、reference 或 format 依赖。模型发布和训练依赖 LLaMA/Vicuna 许可及具体 base weights，重新分发和商业复用需要单独检查。平台支持 multimodal、multiple answers、multi-turn 等扩展，但不能默认这些扩展与主回答对 judge 设置有同等证据强度。把 JudgeLM 用作 RL reward 或数据过滤器会改变风险，需要另审 reward hacking 和领域错配。

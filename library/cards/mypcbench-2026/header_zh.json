@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MyPCBench 在模拟个人桌面环境中评测个人智能计算机使用智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv 的 personal computer-use benchmark",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lawrence Keunho Jang 等（Carnegie Mellon University）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T12:30:00Z"
+}

@@ -1,0 +1,209 @@
+id: rlvr-datasets-where-find-2026
+title: 'RLVR Datasets and Where to Find Them: Tracing Data Lineage for Better Training Data'
+year: 2026
+venue: arXiv preprint arXiv:2605.26971
+authors:
+- Hsiu-Yuan Huang
+- Weijie Liu
+- Chenming Tang
+- Sanwoo Lee
+- Kai Yang
+- Yangkun Chen
+- Saiyong Yang
+- Yunfang Wu
+source_role:
+- data_release
+- construction_recipe
+- benchmark
+- verifier_reward
+- audit_failure
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- math
+training_use:
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.26971
+  arxiv: https://arxiv.org/abs/2605.26971
+  code: https://github.com/Celine-hxy/ATLAS
+  data: https://github.com/Celine-hxy/ATLAS/blob/main/DAPO_Plus.parquet
+  project: https://github.com/Celine-hxy/ATLAS
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.26971
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The work has three distinct data objects. ATLAS analyzes 1,450,827 canonicalized RLVR question-answer instances
+    and assigns them to 20 atomic-source labels. SCA adds source-conditioned correctness-transition labels and dataset-level
+    utility features. The only final training dataset shipped in the repository is DAPO++, a 17,000-row DAPO-Math-17k variant
+    that removes detected leakage and randomly replaces removed rows with non-MCQ Stack Exchange instances labeled learnable
+    by SCA.
+  trace_author: DAPO_Plus.parquet contains no completed policy reasoning traces; GRPO responses are generated online. Record-level
+    authorship or generator identity for upstream text retained in a prompt is unknown because the release omits atomic-source
+    and transformation lineage.
+  answer_format: Each DAPO++ row contains one user-role prompt, ability=math, a rule-style reward_model object with ground_truth,
+    and extra_info containing an index and split. The inspected file has 17,000 unique prompts, 17,000 unique indices, and
+    2,392 distinct ground-truth strings.
+  process_fields:
+  - data_source
+  - prompt.role
+  - prompt.content
+  - ability
+  - reward_model.ground_truth
+  - reward_model.style
+  - extra_info.index
+  - extra_info.split
+  environment_or_substrate: The task surface is offline mathematical question answering. ATLAS canonicalizes records into
+    final question-answer pairs; lineage recovery uses chronological SHA-1 indexing, Sentence-BERT cosine retrieval, and author
+    case review. RLVR training runs GRPO in VERL with online rollouts rather than an interactive external environment.
+  verifier_or_reward: Math-Verify supplies the rule-based scalar reward for GRPO. Separately, SCA compares binary correctness
+    under a shared base checkpoint and a checkpoint trained on one atomic source, assigning each instance to 00, 01, 10, or
+    11. The composite quality score Q aggregates static verifiability, SCA learnability, contamination robustness, Math500
+    Mean@4 gain, and Math500 Pass@4 gain; Q is a dataset-ranking proxy, not the rollout reward and not a record-level correctness
+    certificate.
+  terminal_predicate: A rollout receives the mathematical correctness signal when Math-Verify accepts the extracted answer
+    against reward_model.ground_truth. Exact parser and equivalence behavior depends on the released VERL reward code and
+    Math-Verify version; a dependency lock and parser acceptance test set are not released.
+recipe_metadata:
+  base_model: Qwen3-1.7B-Base and Qwen3-8B-Base.
+  teacher: unknown
+  generator: ATLAS traces and canonicalizes existing RLVR datasets; SCA trains one counterfactual RL checkpoint per atomic
+    source and labels correctness transitions; DAPO++ removes detected leaked DAPO rows and inserts non-MCQ learnable Stack
+    Exchange rows. No offline response teacher is used for the released prompt-only object.
+  filtering_rule: Exact prompt reuse is represented by a 40-character SHA-1 key in a chronological lineage dictionary. Unmatched
+    instances are embedded with Sentence-BERT, retrieved by cosine similarity, and accepted or rejected through author case
+    review; the source pool is iteratively expanded until the unmatched count falls below a threshold. Leakage reporting emphasizes
+    similarity at or above 0.90 and notes additional risk near 0.80. DAPO++ removes detected DAPO leakage, excludes MCQ replacements,
+    and requires the SCA learnable label for replacement candidates.
+  sampling_protocol: DAPO++ replacements are randomly selected from eligible Stack Exchange instances. The random seed, candidate-pool
+    snapshot, number of removed rows, number of inserted rows, mapping from each removed row to its replacement, and rejected
+    eligible candidates are unknown from the paper and public repository.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: The paper reports a maximum prompt length of 4,096 tokens and maximum response length of 16,384 tokens.
+    It reports Mean@32 for AMC23, AIME24, AIME25, and AMO and Mean@4 for the other evaluation sets.
+  optimizer_or_scaffold: The paper reports GRPO on VERL, learning rate 1e-6, batch size 128, mini-batch size 64, 500 steps,
+    clip ratio 0.2, and KL coefficient 0.0. Both released training scripts instead set mini-batch size 16, 510 steps, and
+    KL coefficient 0.001; the 8B script also sets training batch size 32. The public recipe therefore does not pin one paper-consistent
+    execution.
+audit:
+  source_mixture: ATLAS reports 1,450,827 instances assigned across 20 atomic-source labels spanning real-world, synthetic
+    or weakly synthetic, test-leak, and no-match groups; fewer than 1% remain unknown. DAPO++ is a separate 17,000-row training
+    object derived from DAPO-Math-17k, but its exact retained-DAPO versus inserted-Stack-Exchange composition is unknown.
+  split: The released DAPO_Plus.parquet contains 17,000 unique rows, all marked split=train. No DAPO++ validation or test
+    split is released. Math500 is used for checkpoint selection and as a proxy inside Q; Average* excludes Math500, while
+    additional math benchmarks and GPQA-Diamond are used for reported evaluation.
+  decontamination: ATLAS compares RLVR corpora with 14 mathematical evaluation benchmarks and reports 36,148 high-confidence
+    leaked instances. DAPO++ removes detected leaked DAPO rows before replacement. The public repository does not ship the
+    benchmark revisions, complete pairwise match outputs, per-record removal ledger, or lower-similarity adjudications, so
+    the reported count is method- and threshold-dependent rather than exhaustive ground truth.
+  license: unknown
+  lineage: The paper's lineage dictionary stores a canonical prompt key and occurrence list, then adds semantic recovery and
+    manual source decisions. Those records support atomic-source composition, leakage analysis, SCA labeling, and DAPO++ selection.
+    The repository does not publish the complete lineage dictionary, occurrence lists, atomic-source labels, manual decisions,
+    SCA labels, or a join from DAPO++ rows to predecessor and replacement records.
+  known_failure_modes:
+  - The claimed 1,450,827-instance lineage dictionary and its occurrence, source, transformation, and review records are absent
+    from the official repository; code availability does not make the lineage audit independently inspectable.
+  - DAPO_Plus.parquet exposes only five top-level fields. data_source is DataLineage for every row, ability is math for every
+    row, split is train for every row, and indices remain dapo-prefixed; none identifies retained DAPO versus inserted Stack
+    Exchange records.
+  - Random replacement is not reproducible from the release because the seed, eligible-pool revision, exact removal and insertion
+    counts, rejected candidates, and replacement mapping are unknown.
+  - Benchmark_Scoring/analyze_features.py expects an unreleased stage4_final.json and stops after 800,000 entries, while compute_scores.py
+    hard-codes feature summaries and Math500 results. The repository therefore does not reconstruct the paper's 1.45M-record
+    scores from released inputs end to end.
+  - Semantic matching and author case review may miss rewrites or assign ambiguous ancestry. No inter-annotator agreement,
+    independent adjudication rate, or complete decision log is reported; older or unavailable source branches remain outside
+    the traced boundary.
+  - Paper Table 9 and both released GRPO scripts disagree on steps, mini-batch size, and KL coefficient; the 8B script also
+    disagrees on batch size.
+  - Paper evaluation uses top_p=0.95, top_k=20, and seed 0, whereas the training scripts configure validation top_p=0.7 and
+    top_k=50 and do not visibly pin the same seed.
+  - Q is partly constructed from Math500-derived proxy gains, and its reported Spearman correlations use only six datasets.
+    This supports a within-study ranking association, not universal data-quality validity.
+  - Dataset separability changes with model scale: Average* has cross-dataset standard deviation 0.59 at 1.7B and 2.17 at
+      8B, and non-DAPO++ rankings change across scales.
+  - No repository LICENSE file or tagged release was present at the verified commit. DAPO++ rows omit record-level source
+    and license provenance, so redistribution compatibility across upstream datasets, benchmarks, and vendored VERL code is
+    unknown.
+  - Direct inspection found an otherwise English prompt containing a stray Chinese instruction marker. This is a mixed-language
+    or text-noise observation, not evidence of byte-level encoding corruption; the release provides no broader text-quality
+    report or correction ledger.
+  - Public availability does not establish record-level consent, attribution, deletion handling, or output-redistribution
+    rights; the paper does not provide a source-by-source rights analysis.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v1, the author repository at commit d048f53f7b7ab53b2b82f5e8d5f6323333e5e0c4, DAPO_Plus.parquet, ATLAS
+    scripts, Benchmark_Scoring scripts, and both GRPO launch scripts were inspected on 2026-07-22. The Parquet observed on
+    mutable main was 3,507,245 bytes with SHA-256 3e6ecc481b4e9f51a53d210b27bff14fd9f12744ee88f5a40910f9ef0d68a2ab; this is
+    a curator-observed checksum, not an author-published release checksum.
+inclusion_reason: This work makes atomic-source lineage, contamination, source-conditioned learnability, dataset scoring,
+  and lineage-guided DAPO++ construction part of one RLVR data workflow, while its partial release exposes concrete provenance
+  and reproducibility gaps relevant to open-recipe auditing.
+related:
+- tracing-the-roots-2026
+- open-data-arena-2025
+tags:
+- rlvr
+- data-lineage
+- atomic-source-tracing
+- source-counterfactual-attribution
+- dapo-plus
+- decontamination
+- math-verify
+- grpo
+- dataset-benchmarking
+- release-audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- foundations_and_primers
+one_line_summary: ATLAS traces 1.45M RLVR instances to atomic sources and uses leakage and source-utility signals to construct
+  the released 17K-row DAPO++, while the lineage and selection ledgers remain unreleased.
+why_it_matters: It links provenance evidence to an explicit RLVR construction and benchmarking recipe, and shows why a final
+  Parquet cannot support full reuse auditing when atomic-source labels, SCA decisions, random replacement history, licenses,
+  and immutable release metadata are missing.
+card: null
+needs:
+- 'needs_lineage_artifact: release the complete lineage dictionary, occurrence lists, source assignments, transformation records,
+  and manual decisions'
+- 'needs_sca_artifact: release correctness-pair labels, source-checkpoint revisions, per-instance learnability labels, and
+  score inputs'
+- 'needs_selection_ledger: publish the DAPO++ eligible pool, seed, exact removal and insertion counts, rejected candidates,
+  and replacement mapping'
+- 'needs_release_snapshot: publish a tagged immutable code and data release with author checksums'
+- 'needs_license: state repository, DAPO++, upstream-source, benchmark, generated-output, and vendored-code licenses and compatibility'
+- 'needs_reproducibility: reconcile paper and script settings and provide an end-to-end command that rebuilds lineage, SCA
+  features, Q, and DAPO++ from pinned inputs'
+- 'needs_decontamination_ledger: publish benchmark revisions, thresholds, match scores, adjudications, and per-record removal
+  decisions'
+- 'needs_record_provenance: add atomic source, upstream dataset and revision, predecessor IDs, transformation, source URL,
+  license, and retained-or-replacement status to each DAPO++ row'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: medium
+  notes: The paper, repository, released Parquet, lineage and scoring code, and GRPO scripts are verified. Formal venue, immutable
+    release, repository and data licenses, complete lineage and SCA artifacts, deterministic DAPO++ selection, and paper-consistent
+    end-to-end reproduction remain unknown or partial.

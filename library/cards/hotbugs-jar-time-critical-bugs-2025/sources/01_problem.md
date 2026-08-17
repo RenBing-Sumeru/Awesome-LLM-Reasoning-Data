@@ -1,0 +1,3 @@
+HotBugs.jar is a 2025 arXiv benchmark paper and SBSE challenge dataset about urgent Java hot fixes. The gap is narrow and concrete: existing bug-fix benchmarks cover ordinary defects, but do not isolate fixes that were high-priority, time-critical, and close to production releases.
+
+The data object is a real Apache-project hot-fix record with Jira metadata, buggy/fixed repository states, a developer patch, tests, and build requirements; 110 cases are packaged for test-suite reproduction, while 679 validated hot fixes are released with metadata. This Card includes it as an environment and evaluation surface for software-repair agents, not as a general code-generation benchmark or a claim about all production incidents.

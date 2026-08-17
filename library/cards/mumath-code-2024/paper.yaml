@@ -1,0 +1,145 @@
+id: mumath-code-2024
+title: 'MuMath-Code: Combining Tool-Use Large Language Models with Multi-perspective Data Augmentation for Mathematical Reasoning'
+year: 2024
+venue: EMNLP 2024
+authors:
+- Shuo Yin
+- Weihao You
+- Zhilong Ji
+- Guoqiang Zhong
+- Jinfeng Bai
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- tool-use
+- python-code
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+artifacts:
+  paper: https://aclanthology.org/2024.emnlp-main.274/
+  arxiv: https://arxiv.org/abs/2405.07551
+  venue: https://aclanthology.org/2024.emnlp-main.274/
+  code: https://github.com/youweihao-tal/MuMath-Code
+  data: https://huggingface.co/datasets/weihao1/MuMath-Code-Data
+  project: https://github.com/youweihao-tal/MuMath-Code
+  huggingface: https://huggingface.co/datasets/weihao1/MuMath-Code-Data
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.274
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.274/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.emnlp-main.274.bib
+data_object:
+  prompt_source: GSM8K and MATH questions expanded by rephrasing, alteration, FOBAR, BF-Trans, and expression replacement.
+  trace_author: GPT-4 writes prefix natural-language analysis, interleaved Python code, execution feedback, debugging turns,
+    and final answers.
+  answer_format: JSONL records contain `gt` and a `messages` list with user problem and assistant reasoning/code content.
+  process_fields:
+  - ground-truth or pseudo-answer
+  - user mathematics problem
+  - prefix chain of thought
+  - Python code and execution/debugging trace
+  - final answer
+  environment_or_substrate: An external Python interpreter executes generated code and returns outputs or errors for iterative
+    correction.
+  verifier_or_reward: Known answers filter original-source problems; majority-vote pseudo-answers filter altered questions
+    without ground truth.
+  terminal_predicate: Retain answer-consistent traces after generation and debugging; inference stops at a final result or
+    maximum execution rounds.
+recipe_metadata:
+  base_model: Llama-2 and CodeLlama at 7B, 13B, 34B, and 70B scales.
+  teacher: GPT-4.
+  generator: MuMath question augmentation followed by prefix-CoT and code-interleaved solution synthesis with active debugging.
+  filtering_rule: Known-answer agreement for source problems and majority-vote pseudo-answer agreement for altered problems.
+  sampling_protocol: Request 15 solutions per GSM8K-origin question and 30 per MATH-origin question, then select 30K records
+    from each of twenty subsets for 600K total.
+  rollout_count: null
+  temperature: null
+  inference_budget: Multiple teacher calls and Python execution/debugging rounds per candidate; exact API and maximum-round
+    budgets are not fully disclosed in the dataset card.
+  optimizer_or_scaffold: 'Two-stage SFT: 751K MuMath natural-language records, then 600K MuMath-Code tool-integrated records.'
+audit:
+  source_mixture: 751K MuMath-Data records for stage 1 and 600K MuMath-Code-Data records for stage 2, derived from GSM8K and
+    MATH augmentation families.
+  split: Public JSONL files MuMath-Data.jsonl and MuMath-Code-Data.jsonl; no separate validation/test split is declared on
+    the dataset page.
+  decontamination: The paper evaluates on source test sets and out-of-domain math sets but does not report a semantic decontamination
+    pass over the augmented training records.
+  license: The official Hugging Face data card does not declare a dataset license; public access is unauthenticated and governed
+    by Hugging Face terms, while GPT-4 outputs and upstream sources require separate rights review.
+  lineage: source question -> multi-perspective augmentation -> prefix-CoT teacher response -> Python execution and debugging
+    -> ground-truth or pseudo-answer filter -> JSONL release -> two-stage SFT.
+  known_failure_modes:
+  - A majority-vote pseudo-answer can be confidently wrong and admit an incorrect tool trace.
+  - The release lacks an explicit dataset license and per-record provenance fields.
+  - Generated code can solve by shortcuts or expose unsafe interpreter behavior if replayed without isolation.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology paper and BibTeX, official repository, public JSONL file tree, two actual records and schema, access
+    terms, source affiliations, and adoption counters checked on 2026-07-14.
+inclusion_reason: The paper centrally releases reusable problem-reasoning-code-answer demonstrations whose debugging and execution
+  traces are consumed by SFT.
+related:
+- mumath-2024
+- mathcoder-2024
+tags:
+- instruction-demonstration-rationale
+- math-reasoning
+- tool-use
+- code-interpreter
+- arxiv-2405.07551
+- primary-link-checked
+status: verified
+one_line_summary: MuMath-Code releases 600K tool-integrated math demonstrations after a 751K natural-language stage, using
+  answer or pseudo-answer checks to retain traces.
+why_it_matters: It makes the transition from natural-language reasoning data to code-interpreter demonstrations explicit and
+  ablates the value of prefix reasoning and debugging traces.
+reading_priority: high
+paper_type: tool-integrated mathematical reasoning dataset and two-stage SFT recipe
+best_for: Researchers training math models to interleave natural-language reasoning, Python execution, and error correction.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: EMNLP proceedings, open JSONL records, schema, code, scale, construction pipeline, and missing-license boundary checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-math
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: tool-integrated mathematical reasoning demonstrations
+  selection_priority_score: 9
+  selection_score_breakdown:
+    institution: 2
+    venue: 3
+    impact: 3
+    artifact: 1
+  selection_evidence:
+    institution: The official EMNLP paper lists Tomorrow Advancing Life and Ocean University of China affiliations.
+    venue: ACL Anthology confirms a regular EMNLP 2024 main-conference paper; no oral, best-paper, or other distinction is
+      claimed.
+    impact: On 2026-07-14 OpenAlex reported 3 citations, the official repository had 9 stars and 2 forks, and the official
+      Hugging Face dataset had 71 downloads and 5 likes; these provide concrete citation and open-use signals.
+    artifact: The official repository and two large JSONL datasets are public with training/evaluation code, but the data
+      card does not declare a dataset license or per-record provenance.
+  selection_eligible: true
+  year_impact_threshold: 3

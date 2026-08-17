@@ -1,0 +1,19 @@
+{
+  "title": "Agent-Diff: Benchmarking LLM Agents on Enterprise API Tasks via Code Execution with State-Diff-Based Evaluation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.11224",
+    "data": "https://github.com/agent-diff-bench/agent-diff",
+    "code": "https://github.com/agent-diff-bench/agent-diff",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T10:43:03Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 Agent-Diff，含224个企业API任务和沙箱数据库",
+    "updated_at": "2026-07-19T10:43:03Z"
+  }
+}

@@ -1,0 +1,105 @@
+id: deepfakejudge-reasoning-supervision-2026
+title: 'Pixels Don’t Lie (But Your Detector Might): Bootstrapping MLLM-as-a-Judge for Trustworthy Deepfake Detection and Reasoning
+  Supervision'
+year: 2026
+venue: CVPR 2026
+authors:
+- Kartik Kuckreja
+- Parul Gupta
+- Muhammad Haris Khan
+- Abhinav Dhall
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+- pairwise_preference
+- answer_level
+domains:
+- vision_language
+- deepfake_detection
+- reasoning_supervision
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2026/html/Kuckreja_Pixels_Dont_Lie_But_Your_Detector_Might_Bootstrapping_MLLM-as-a-Judge_for_CVPR_2026_paper.html
+  arxiv: https://arxiv.org/abs/2602.19715
+  code: https://github.com/KjAeRsTuIsK/DeepfakeJudge
+  data: https://huggingface.co/datasets/MBZUAI/DeepfakeJudge-Dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/MBZUAI/DeepfakeJudge-Dataset
+  doi: null
+  venue: https://openaccess.thecvf.com/content/CVPR2026/html/Kuckreja_Pixels_Dont_Lie_But_Your_Detector_Might_Bootstrapping_MLLM-as-a-Judge_for_CVPR_2026_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2026/html/Kuckreja_Pixels_Dont_Lie_But_Your_Detector_Might_Bootstrapping_MLLM-as-a-Judge_for_CVPR_2026_paper.html
+  bibtex: null
+data_object:
+  prompt_source: Recent generative and image-editing forgeries plus real images in an out-of-distribution detection benchmark.
+  trace_author: Human annotators provide visual reasoning labels; a generator-evaluator loop bootstraps larger judge data.
+  answer_format: Image, real/fake/edited label, visual regions, reference reasoning, pointwise score or pairwise preference.
+  process_fields:
+  - image
+  - label
+  - regions
+  - rationale
+  - pointwise_score
+  - pairwise_winner
+  - human_annotation
+  environment_or_substrate: Vision-language deepfake detection and rationale evaluation.
+  verifier_or_reward: Human-annotated pointwise and pairwise meta-evaluation, used to assess an MLLM judge.
+  terminal_predicate: A rationale is faithful, grounded, and useful for the image authenticity judgment.
+recipe_metadata:
+  base_model: DeepfakeJudge models and baselines reported in the paper.
+  teacher: Human visual reasoning annotations and bootstrapped generator-evaluator supervision.
+  generator: Official reasoning-supervision pipeline.
+  filtering_rule: Human meta-evaluation subsets validate pointwise and pairwise judge outputs.
+  sampling_protocol: HF card reports 47,329 records over 5,101 images across detection, reasoning, meta, and human subsets.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pointwise and pairwise judge protocols are released in the data schema.
+  optimizer_or_scaffold: Bootstrapped generator-evaluator training for reasoning judge models.
+audit:
+  source_mixture: Official CVPR page, authors' GitHub, and MBZUAI HF data card.
+  split: HF card specifies detection, reasoning, pointwise/pairwise train/test, and human-annotated subsets.
+  decontamination: Out-of-distribution recent forgeries reduce stale-benchmark risk; the gated data must not be silently treated
+    as unrestricted.
+  license: Apache-2.0 on the gated HF dataset, subject to access conditions.
+  lineage: Detection images and human reasoning labels -> bootstrapped judge supervision -> human meta-evaluation.
+  known_failure_modes:
+  - Dataset is gated
+  - visual cue annotations may not cover every artifact
+  - synthetic/image-source shifts can affect transfer.
+  citation_status: verified
+  confidence: high
+  notes: Official CVPR metadata, authors, GitHub, and gated HF data card were checked.
+inclusion_reason: It releases grounded visual reasoning, rubric scores, and pairwise judge data for an important high-stakes
+  multimodal reasoning task.
+related: []
+tags:
+- multimodal
+- llm_judge
+- human_annotation
+- deepfake
+one_line_summary: DeepfakeJudge turns explanation faithfulness in deepfake detection into a human-anchored pointwise and pairwise
+  judge-training dataset.
+why_it_matters: It separates a detector being correct from its explanation being visually grounded and evaluable.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: CVPR official page, author list, code link, and HF dataset card were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,2 @@
+Real users do not provide one complete instruction and stop. They identify errors, add constraints, challenge claims, request details, or hint at a better direction. A model’s ability to interpret such feedback and revise its answer in the next turn differs from ordinary multi-turn dialogue. FB-Bench asks how to represent the chain of original task, deficient response, human feedback, and revised response and how to determine whether a model genuinely responds to the feedback rather than repeating itself, apologizing mechanically, or introducing new errors.
+

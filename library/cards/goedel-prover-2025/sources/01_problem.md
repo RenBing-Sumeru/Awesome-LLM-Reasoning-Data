@@ -1,0 +1,5 @@
+Formal theorem proving offers machine-checkable reasoning, but public Lean corpora contain far fewer natural-language-aligned statements and complete proofs than ordinary math corpora. The decision boundary is whether autoformalized statements preserve the source problem and whether a sampled whole proof actually compiles, not whether a natural-language judge finds it plausible.
+
+Goedel-Prover trains two statement formalizers for different Lean styles, applies compilation plus faithfulness checks, and repeatedly samples and verifies whole proofs to expand the solved set. This is atlas-relevant because the released objects expose informal/formal alignment, proof text, stable identifiers, and a Lean terminal predicate; evaluation covers miniF2F, ProofNet, Lean Workbook, NuminaTest, and PutnamBench.
+
+L4 facts: primary source arXiv:2502.07640v3; 2025 technical report; data object 1.64M public formal statements plus 29,750 released Lean Workbook proofs; evaluation surface formal theorem proving under Pass@N; collection note: both ungated Parquet schemas and actual records checked on 2026-07-14.

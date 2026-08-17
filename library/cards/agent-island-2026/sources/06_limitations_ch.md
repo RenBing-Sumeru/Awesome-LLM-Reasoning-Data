@@ -1,0 +1,11 @@
+- **Winner-only model：** Bayesian Plackett-Luce 只消费 player set 与 final winner，不把 pitch、rationale、near-win 或五次淘汰 outcome 当作分级证据。它无法区分胜利究竟来自更强社交 reasoning、deception、parser quirk、schedule composition 还是 random tie break。
+- **Matchup 假设：** ranking 不含 matchup-effect 项，但论文报告了 8.3 个百分点的 same-provider voting effect。这直接说明 opponent/provider composition 会影响 outcome，可能与单一、脱离 context 的 skill parameter 冲突。
+- **Parser 与 selection 边界：** sidebar choice 与 vote 依赖 parser extraction。只有 completed 且 final selected player 可解析的游戏进入冻结论文集，vote analysis 也要求 vote 可解析。incomplete、failed 或 unparsed attempt 的数量、ID、log 与原因均为 unknown，因此无法量化 selection bias。
+- **Environment validity：** 玩家没有获得明确 reward，游戏也被设计成低风险。获胜可能测量 persuasion、coalition behavior、provider affinity 或 game-specific adaptation，而不代表现实高风险场景中的安全、真实或有效行为。如果 frontier model 趋于同一上限并反复互有胜负，benchmark 仍可能 saturation。
+- **非均匀 schedule：** 部分模型因低 performance、不可靠或成本而被移出 active pool，但早期游戏仍保留。因此 participation frequency 与 matchup 并不均匀，需要单独审计 schedule sensitivity 与 disabling policy。
+- **冻结/live 漂移：** 论文集是 999 games/49 models；已审计 live source 则为 1,270 games/62 ranking rows/59 displayed models。live normalization、ordering、interval、model pool 与 count 都会改变。任何 live claim 都需要 retrieval date、source timestamp，最好还要 immutable hash；更早的 snapshot 已经过时。
+- **Replay binding：** 冻结 manifest 能识别 log，却没有把每场游戏绑定到准确 engine commit、dependency lock、OpenRouter/provider configuration、immutable model snapshot、decoding setting 或 retry policy。game-ID seed 只覆盖本地随机抽样，不能使闭源 model API 的采样确定化。
+- **Compute 与 failure disclosure：** total call、token、cost、worker、memory、wall-clock time、generation retry 与完整 failed-run ledger 均未披露。replication ZIP 只能复现已发布分析，不生成 episode；本卡片也没有重跑其完整 pipeline。
+- **Contamination 边界：** adaptive opponent 减少了对固定 task bank 的依赖，但没有 explicit model-training-overlap 或 decontamination audit 覆盖公开 rules prompt、engine、log 或这些 artifact 的后续使用。“Contamination-resistant”是设计主张，不是零暴露证明。
+- **许可边界：** 冻结 game-log dataset 是 CC BY 4.0，固定 commit 的 engine 是 MIT。匿名 replication ZIP 不含 license，因此其复用条款为 unknown。持续增长的 live prefix 也没有随每次更新提供独立版本化、不可变的 license manifest。
+- **用途边界：** 证据仅支持 evaluation 与 audit。benchmark ranking 与 behavioral finding 不能证明数据适合 SFT、preference、reward-model、RLVR 或 agent training；benchmark performance 也不是 data quality 的证明。

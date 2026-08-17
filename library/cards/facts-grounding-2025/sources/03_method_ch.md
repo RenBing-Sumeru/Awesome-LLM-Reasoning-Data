@@ -1,0 +1,1 @@
+1. 输入：长文档、用户请求、模型回答和 benchmark split。2. 流程：构造 grounding 任务，收集提交回答，先做 request satisfaction 的 eligibility 检查，再根据文档判断 grounding，并聚合 judge 输出为 leaderboard 分数。3. 输出：public/private split 上的 response-level 分数。4. 反馈：只有回答满足请求且实质性声明均由文档支持时才给 credit。5. 复用前要固定 Kaggle benchmark 版本、public/private split、judge ensemble、prompt、最大上下文和提交日期。

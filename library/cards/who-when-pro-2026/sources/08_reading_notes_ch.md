@@ -1,0 +1,5 @@
+- 必须区分论文规模与发布规模：论文报告 12,326 条失败轨迹，覆盖 26 个基准、9 个任务类别、15 个框架、18 种 mode 和 3 种模态；官方工件当前公开的记录与 evaluator 代码数量均为 0。
+- 要追踪四类轨迹：成功运行用作 injection seed，自然失败用于构建 taxonomy profile，被 evaluator 确认的注入失败组成基准，未失败/中止/被过滤的注入则消失。只有第三类报告了数量，而且四类均未公开。
+- 应把 Tables 2–4 连起来阅读：轨迹平均 7.5 步，人工对 step 与 agent/error 的通过率分别为 94% 和 90%，另有 2% 不清晰；frontier model 的 error-mode macro-F1 仍然很低，因此“golden”构造并不代表诊断问题已经解决。
+- 在接受精确 replay 主张前先读 Appendix F.3：静态事实调用会缓存，页面 summary 仍可变化，有状态环境需要重新执行，而 Bing DOM rotation 占论文报告的 `input_text` replay failure 的 89%。
+- Appendix A 的发布表述应视为与当前官方状态冲突：仓库称代码/数据 coming soon，除 git 元数据外只有 2 个文件，没有数据/代码许可证，也不提供 split、lineage、污染、预测或 replay 工件。

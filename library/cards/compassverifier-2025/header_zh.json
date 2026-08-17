@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该工作将 53 个模型的回答池加工为 2,817 条三分类 VerifierBench，并发布三个 CompassVerifier 检查点；但 96,832 条训练语料、投票与过滤谱系以及完整构建代码仍未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Outcome verifier、评测基准与开放发布",
+  "best_for_ch": "构建答案过滤器、基于参考答案的奖励、Verifier benchmark，或审计数学、科学、知识与通用推理 RLVR 流水线的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Shudong Liu, Hongwei Liu, Junnan Liu, Linchen Xiao, Songyang Gao, Chengqi Lyu, Yuzhe Gu, Wenwei Zhang, Derek F. Wong, Songyang Zhang, Kai Chen",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

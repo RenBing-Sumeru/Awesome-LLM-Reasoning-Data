@@ -1,0 +1,4 @@
+The card names category-level sources—public internet information through May 2025, non-public third-party data, labeling and contractor data, opted-in Claude-user data, and internally generated Anthropic data—plus cleaning, filtering, RLHF, and reinforcement learning from AI feedback. These are high-level disclosures; manifests, quantities, rights, feedback records, reward models, and recipe details are absent.
+
+For Opus 4.6 specifically, some supervised initialization uses reasoning transcripts from prior Claude models, largely Opus 4.5. Anthropic sought to avoid direct RL influence on reasoning workspace content, but reports that a technical error caused such content to be considered in reward signal on less than 0.01% of episodes. This is a bounded exception, not a disclosed general reward function. The card's references to earlier 4.5 work do not establish further 4.6 data or reward claims.
+

@@ -1,0 +1,1 @@
+Traditional math benchmarks draw from public contest archives and cannot fully exclude pretraining memory even after deduplication. AMO-Bench commissions original frontier problems while retaining final-answer verification. The novelty is balancing original extreme difficulty with automatic grading.

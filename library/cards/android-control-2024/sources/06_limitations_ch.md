@@ -1,0 +1,6 @@
+- **反馈限制：** 离线单参考匹配可能把其他有效路径或纠错动作判错，也可能奖励与轨迹一致但随后会失败的动作。该指标衡量下一动作模仿，不是在线任务成功 verifier；相对于目标 UI 控制行为，它同时可能产生 false negative 与 false positive（论文第 5 节，第 10 页；基于附录 D.3 的 curator inference）。
+- **发布与回放限制：** 虽然发布了 screenshot、accessibility tree 与动作，但 app/APK 版本、账号、重置状态、网络与服务状态、采集配套代码、预处理代码、评测代码及可执行 terminal predicate 都未固定。版本漂移可能改变动作是否仍然有效，发布的 episode 也无法进行不可变回放。
+- **选择与 lineage 限制：** failed/error episode、原始事件与废弃轨迹被删除且未发布。精确的 successful/infeasible 数量、序列化 status 字段、标注者/persona ID、审核决定与裁决记录均为 unknown，因此用户无法衡量过滤如何移除难例或使保留行为产生偏差（datasheet 第 1.1.2 与 1.1.4 节，第 2–3 页）。
+- **划分与污染限制：** 论文表 3 报告 13,604 条训练 episode，官方 `splits.json` 却只有 13,603 个训练 ID。论文未披露近重复、任务模板重叠或下游 benchmark decontamination 流程。四个 OOD 测试子集互相重叠，若将数量视为互斥相加，也会误报评测覆盖。
+- **权利与参与者限制：** README、仓库根许可证和论文 checklist 写明 Apache-2.0，而补充 datasheet 同时称数据仅可免费用于非商业目的。这一官方来源冲突，加上第三方 app/UI 内容权利不明，使本卡不能无条件建议训练复用。作者报告付费承包人员已知情并使用非个人设备，但工资数额、总报酬与逐记录 consent 审计未披露（附录 B.1，第 14 页；checklist 第 25 页）。
+- **泛化与外推限制：** 论文只微调 PaLM-2S，没有研究在线 inference 成本，app 类别并不完整，OOD 与长时程结果较弱。百万级规模目标来自 log-linear 外推和 episode 独立性假设，而非真实运行；在增加模型与在线环境验证前，不应将其直接当作采集配方（论文第 5 节及第 4.4–4.5 节）。

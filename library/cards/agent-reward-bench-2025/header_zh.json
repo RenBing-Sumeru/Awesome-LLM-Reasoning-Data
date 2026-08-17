@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AgentRewardBench 发布 1,302 条网页智能体完整轨迹、专家标签与每条轨迹 15 组自动评估输出，用于审计 LLM judge 和环境规则，但不提供已获许可的确定性环境重放。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "网页智能体轨迹评估基准与反馈审计数据发布",
+  "best_for_ch": "研究网页智能体评测、轨迹反馈契约、LLM-as-a-judge 与环境奖励审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xing Han Lù、Amirhossein Kazemnejad、Nicholas Meade、Arkil Patel、Dongchan Shin、Alejandra Zambrano、Karolina Stańczak、Peter Shaw、Christopher J. Pal、Siva Reddy",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

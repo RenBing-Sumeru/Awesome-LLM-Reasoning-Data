@@ -1,0 +1,3 @@
+Open mathematical corpora have long forced a trade-off between quality and scale. Human-written collections are reliable but small, whereas large synthetic or aggregated resources often contain multiple-choice items, proof requests, multi-part questions, unparseable answers, or evaluation contamination, making deterministic RLVR rewards unreliable. Researchers therefore repeat expensive cleaning and use incompatible training definitions.
+
+Big-Math unifies multiple open sources and retains only open-ended problems with closed-form, uniquely verifiable answers. It also systematically converts selected multiple-choice items into open-ended questions, producing question–answer records for mathematical RL, rejection sampling, and difficulty-aware training.

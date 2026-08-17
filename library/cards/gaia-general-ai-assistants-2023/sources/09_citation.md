@@ -1,0 +1,1 @@
+Grégoire Mialon, Clémentine Fourrier, Craig Swift, Thomas Wolf, Yann LeCun, and Thomas Scialom. "GAIA: a benchmark for General AI Assistants." ICLR 2024 poster / arXiv, 2023. https://arxiv.org/abs/2311.12983 Official links: https://huggingface.co/gaia-benchmark and https://huggingface.co/datasets/gaia-benchmark/GAIA .

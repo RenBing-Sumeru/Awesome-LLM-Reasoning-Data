@@ -1,0 +1,105 @@
+id: knowme-bench-person-understanding-2026
+title: 'KnowMe-Bench: Benchmarking Person Understanding for Lifelong Digital Companions'
+year: 2026
+venue: ACL 2026
+authors:
+- Tingyu Wu
+- Zhisheng Chen
+- Ziyan Weng
+- Shuhe Wang
+- Shuo Zhang
+- Sen Hu
+- Silin Wu
+- Qizhen Lan
+- Huacan Wang
+- Ronghao Chen
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- long_context
+- memory_agents
+- person_understanding
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1394/
+  arxiv: null
+  code: null
+  data: https://huggingface.co/datasets/realty2333/knowMe-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/realty2333/knowMe-Bench
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1394
+  venue: https://aclanthology.org/2026.acl-long.1394/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1394/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Long-form autobiographical narratives reconstructed into a time-anchored cognitive stream.
+  trace_author: Official multi-agent pipeline with trained-annotator and literary-expert validation.
+  answer_format: Evidence-linked factual, subjective-state, and decision/principle reasoning questions.
+  process_fields:
+  - timeline
+  - visual_observation
+  - auditory_input
+  - context
+  - background_knowledge
+  - inner_monologue
+  - evidence_set
+  environment_or_substrate: Long-horizon memory and evidence-grounded person-model inference.
+  verifier_or_reward: Expert-verified reference timelines and evidence-linked hierarchical evaluation.
+  terminal_predicate: A concise inference plus supporting event evidence for higher-tier questions.
+recipe_metadata:
+  base_model: Long-context, retrieval-augmented, memory-store, and agentic-memory baselines.
+  teacher: Multi-agent generation modules with human literary-expert final validation.
+  generator: Segmentation, atomic-unit extraction, timeline generation, and narrative generation with check agents.
+  filtering_rule: Verify-and-revise checks and expert cross-validation of deep items.
+  sampling_protocol: Approximately 4.7M tokens across long autobiographical narratives.
+  rollout_count: null
+  temperature: null
+  inference_budget: Varies by memory-agent baseline.
+  optimizer_or_scaffold: Evaluation benchmark, not a released reward-training recipe.
+audit:
+  source_mixture: Official ACL paper and authors' Hugging Face dataset page.
+  split: See the official dataset card and paper for the released task partition.
+  decontamination: The paper emphasizes public releasability and evidence links; it does not claim broad model-training exclusion.
+  license: See the HF data card.
+  lineage: Long-form autobiographical narratives transformed into aligned timelines.
+  known_failure_modes:
+  - Narrative source distribution may not represent real user histories
+  - subjective inferences remain judgment-dependent.
+  citation_status: verified
+  confidence: high
+  notes: ACL PDF verifies the 10-author list and printed affiliation abbreviations.
+inclusion_reason: It releases expert-verified, evidence-linked interpretive reasoning data rather than treating long-term
+  memory as retrieval alone.
+related: []
+tags:
+- long_context
+- expert_data
+- evidence_grounding
+- memory
+one_line_summary: KnowMe-Bench evaluates whether long-context agents infer a person's motives and principles with explicit
+  narrative evidence, not merely retrieve facts.
+why_it_matters: It gives judgment-required person understanding a three-tier, evidence-auditable benchmark surface.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL record/PDF and HF dataset link were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

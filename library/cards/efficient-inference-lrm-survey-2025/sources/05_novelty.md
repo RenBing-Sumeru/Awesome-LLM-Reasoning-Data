@@ -1,0 +1,1 @@
+The contribution is to center reasoning representation rather than generic model serving. It connects compact visible traces, latent computation, model merging, and architectural changes to the same resource question. The paper does not claim that internal latent computation is always preferable; visibility can be essential when a task needs human review or step checking.

@@ -1,0 +1,3 @@
+Correctness means matching an official multiple-choice answer, not demonstrating a faithful reasoning process. Some questions may reward memorized exam knowledge or test-taking heuristics, and answer-only accuracy cannot diagnose where reasoning failed.
+
+The benchmark is static and public, so contamination risk increases over time. Prompt language, few-shot examples, chain-of-thought policy, answer extraction, and refusal handling can change scores. Current public artifacts include test labels that were not always public in the same way; any comparison must state the artifact date and split policy. Dataset and code licenses are separate and must be checked before redistribution.

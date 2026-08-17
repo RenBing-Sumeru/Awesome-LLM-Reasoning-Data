@@ -1,0 +1,189 @@
+id: step-length-confounding-2026
+title: On the Step Length Confounding in LLM Reasoning Data Selection
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Bing Wang
+- Rui Miao
+- Chen Shen
+- Shaotian Yan
+- Kaiyuan Liu
+- Ximing Li
+- Xiaosong Yuan
+- Sinan Fan
+- Jun Zhang
+- Jieping Ye
+source_role:
+- construction_recipe
+- data_release
+- audit_failure
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- scientific_reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.918/
+  arxiv: https://arxiv.org/abs/2604.06834
+  code: https://github.com/wangbing1416/ASLEC
+  data: https://huggingface.co/datasets/wangbing1416/MSMS-LIMO-v2-SFT
+  project: https://wangbing1416.github.io/projects/acl2026_lengthbias.html
+  huggingface: https://huggingface.co/datasets/wangbing1416/MSMS-AceReason-20K-SFT
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.918
+  venue: https://aclanthology.org/2026.findings-acl.918/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.918/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-acl.918.bib
+data_object:
+  prompt_source: The construction uses all 800 mathematics problems in LIMO-v2 and a random 10,000-problem mathematics subset
+    of AceReason-1.1-SFT. The paper does not publish the exact AceReason source-row manifest, random seed, or immutable upstream
+    revision.
+  trace_author: 'Four source models generate long-chain-of-thought candidates: QwQ-32B, Qwen3-32B, DeepSeek-R1-Distill-Qwen-32B,
+    and gpt-oss-120b. LIMO-v2 requests five correct responses from each source model per problem; AceReason requests one correct
+    response from each source model per problem.'
+  answer_format: Each candidate contains a mathematics prompt, a full long-CoT response and final answer, generation-source
+    identity, and token log probabilities used to derive naturalness and ASLEC selection scores. Public dataset schemas and
+    the preservation of every score and decision field require artifact-level verification.
+  process_fields:
+  - upstream dataset and problem
+  - source model
+  - generated long-CoT response and final answer
+  - Math-Verify correctness outcome
+  - token log probabilities from the target model
+  - step segmentation and first-token positions
+  - GRACE, Local LP, ASLEC-DROP, and ASLEC-CASL scores
+  - selected or unselected decision
+  environment_or_substrate: Source models are served with SGLang and sampled with top-p 0.95, a 64K maximum generation length,
+    and source-specific temperatures. Correctness is checked dynamically with Math-Verify. Target models compute token probabilities,
+    and selected subsets are used for full-parameter SFT through LlamaFactory.
+  verifier_or_reward: 'Math-Verify supplies the programmatic answer-correctness filter during candidate generation. Selection
+    then uses model-probability scores rather than a correctness reward: ASLEC-DROP excludes the first token of each reasoning
+    step, while ASLEC-CASL fits a lightweight causal linear regression to remove the estimated first-token-ratio confounder.'
+  terminal_predicate: Sampling for a problem continues until the required number of correct responses is collected or 15 attempts
+    are exceeded; extra LIMO attempts or extra AceReason prompts are used to reach the requested correct-response counts.
+    The experiment then selects 4,000 of 16,000 LIMO candidates or 10,000 of 40,000 AceReason candidates by each ranking method.
+recipe_metadata:
+  base_model: Qwen3-4B-Base, Qwen3-8B-Base, Qwen3-4B-Instruct-2507, and Qwen2.5-7B-Instruct are separately fine-tuned on selected
+    subsets; Llama3-3B is used in an additional generalization experiment.
+  teacher: QwQ-32B, Qwen3-32B, DeepSeek-R1-Distill-Qwen-32B, and gpt-oss-120b serve as source generators. A target/student
+    model separately assigns the log probabilities used for selection.
+  generator: Generate multi-source correct long-CoT responses, compute target-model token log probabilities, split responses
+    into reasoning steps, then rank candidates with baseline naturalness scores or ASLEC-DROP/ASLEC-CASL.
+  filtering_rule: Retain only Math-Verify-correct generations before selection. ASLEC-DROP ranks by average log probability
+    after removing every step's first-token probability. ASLEC-CASL removes the estimated effect of the ratio of first-step
+    tokens through a fitted regression and ranks by the adjusted score.
+  sampling_protocol: For LIMO-v2, generate five correct responses per source model for each of 800 problems, giving 16,000
+    candidates, then select five responses per problem in aggregate, giving 4,000. For AceReason, generate one correct response
+    per source model for 10,000 problems, giving 40,000, then select 10,000. Sampling uses top-p 0.95; gpt-oss-120b uses temperature
+    1.0 and high reasoning effort, while the other source models use temperature 0.6.
+  rollout_count: Up to 75 attempts per LIMO-v2 problem across five requested responses and a 15-attempt cap per response;
+    up to 15 attempts per AceReason problem-source request.
+  temperature: 0.6 for QwQ-32B, Qwen3-32B, and DeepSeek-R1-Distill-Qwen-32B; 1.0 for gpt-oss-120b.
+  inference_budget: Generation is capped at 64K tokens and selection requires token-logit scoring by each target model. ASLEC-DROP
+    adds no model inference beyond baseline scoring; ASLEC-CASL adds a small linear regression. Total generated tokens, GPU-hours,
+    wall-clock time and monetary cost are unknown.
+  optimizer_or_scaffold: Full-parameter SFT uses LlamaFactory with packing, maximum sequence length 32K, Adam, batch size
+    32 and the paper's reported per-run configuration. The repository provides scripts/configuration fragments, but exact
+    immutable environment images, seeds and every experiment command are not fully pinned.
+audit:
+  source_mixture: The official release exposes MSMS-LIMO-v2-SFT and MSMS-AceReason-20K-SFT generated from two upstream prompt
+    sources and four source-model families. The paper reports 16K LIMO and 40K AceReason experimental candidate pools; the
+    public repositories are larger multi-source/multi-solution releases and should not be assumed to equal every experiment-specific
+    accepted subset without a manifest.
+  split: LIMO-v2 contributes 800 problems; AceReason contributes a random 10K-problem subset. Exact AceReason row IDs, source
+    revision, random seed, generation retry ledger, train split declaration for every released row, and experiment-specific
+    selected/unselected manifests are unknown.
+  decontamination: unknown. The paper evaluates on AIME 2024, AIME 2025, MATH500, OlympiadBench and GPQA but does not report
+    a paper-specific exact-match, near-duplicate or semantic-contamination audit between the two prompt sources, generated
+    data and those benchmarks.
+  license: The ACL paper is CC BY 4.0. The applicable code license and the complete license/provenance mapping for generated
+    responses and both upstream datasets were not established from the paper text; consumers must inspect each official repository
+    and upstream dataset rather than infer a blanket license.
+  lineage: Upstream prompts are sampled, four source models generate responses, Math-Verify retains correct generations, target
+    models assign token probabilities, step-aware scores are calculated, and method-specific subsets are selected for SFT.
+    The public assets improve replayability, but the release does not expose a single immutable record-level ledger linking
+    every upstream ID, generation attempt, verifier result, score, selection decision, training run and evaluation result.
+  known_failure_modes:
+  - Average-log-probability selection is confounded by reasoning-step length because low-probability first tokens are diluted
+    in longer steps; the score can prefer formatting structure rather than higher-quality reasoning.
+  - ASLEC depends on how a reasoning response is segmented into steps. The paper tests alternative splitters, but tokenizer,
+    punctuation and formatting changes can still alter first-token positions and scores.
+  - ASLEC-DROP discards all first-token information, including potentially useful content; ASLEC-CASL relies on a fitted linear
+    model and its causal assumptions rather than a direct quality oracle.
+  - Math-Verify establishes answer correctness under its normalization contract, not correctness of every intermediate reasoning
+    step, novelty, license, provenance or absence of leakage.
+  - The selected 4K and 10K sets are model-specific because probabilities come from the target model; a ranking should not
+    be treated as universally optimal across checkpoints or tokenizers.
+  - The official repository has one visible commit and no published release tag at verification time, so mutable branch state
+    does not provide an immutable reproduction anchor.
+  - The repository README says generated data will be released while the paper points to Hugging Face datasets; documentation
+    and exact experiment-to-file mapping are not synchronized into a complete release manifest.
+  - No all-candidate accepted/rejected decision ledger, per-record ASLEC and baseline score table, generation-failure log,
+    or experiment-specific checksum manifest was verified.
+  - Exact AceReason source-row sampling, retry seeds, decoding seeds, model revision hashes, environment images and total
+    compute accounting are not disclosed.
+  - No paper-specific decontamination analysis is reported against AIME, MATH500, OlympiadBench or GPQA.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology verifies the Findings of ACL 2026 publication, authors, pages and DOI. The official paper verifies
+    arXiv 2604.06834, code, datasets, construction counts and evaluation design. GitHub and author Hugging Face releases were
+    inspected on 2026-07-13; unresolved release details are recorded as unknown rather than inferred.
+inclusion_reason: ASLEC is a high-relevance Track 8 recipe and audit case because it identifies a systematic length confounder
+  in probability-based reasoning-data selection, proposes two reproducible corrections, and releases generation/scoring code
+  plus multi-source data while leaving record-level selection lineage incomplete.
+related:
+- unified-data-selection-2026
+- difficulty-targeted-online-selection-2025
+tags:
+- reasoning-data-selection
+- naturalness-filtering
+- step-length-confounding
+- causal-debiasing
+- supervised-finetuning
+- multi-source-generation
+- math-verify
+- release-audit
+status: partial
+one_line: ASLEC corrects first-token-driven step-length confounding in probability-ranked reasoning-data selection and tests
+  the corrected 4K/10K subsets across multiple target models.
+one_line_summary: ASLEC corrects first-token-driven step-length confounding in probability-ranked reasoning-data selection
+  and tests the corrected 4K/10K subsets across multiple target models.
+why_it_matters: It shows that a widely used naturalness score can encode a structural length artifact rather than reasoning
+  quality, while its official code and data make the correction inspectable even though exact experiment manifests and decision
+  lineage remain incomplete.
+card: null
+needs:
+- 'needs_decision_ledger: publish immutable upstream IDs, every generation attempt, Math-Verify result, all selection scores,
+  accepted/rejected decisions and experiment membership'
+- 'needs_revisions: pin upstream datasets, all model/tokenizer revisions, code commits, environments and released-data checksums'
+- 'needs_sampling: disclose AceReason row IDs, random seed, decoding seeds, retry/failure counts and exact stage-wise yields'
+- 'needs_license: document the code license and row-level upstream/generated-data license and redistribution boundaries'
+- 'needs_decontamination: publish exact, near-duplicate and semantic overlap checks against every evaluation benchmark'
+- 'needs_compute: report generation and logit-scoring tokens, GPU-hours, wall-clock and monetary cost'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL, arXiv, author project, GitHub and Hugging Face links are verified. Core counts, filtering logic, model
+    roles and results are supported by the official paper; immutable experiment manifests, full selection ledgers, license
+    mapping, decontamination and compute totals remain partial or unknown.
+category_ids:
+- data_construction_open_release_recipes

@@ -1,0 +1,154 @@
+id: mammoth-vl-2025
+title: 'MAmmoTH-VL: Eliciting Multimodal Reasoning with Instruction Tuning at Scale'
+year: 2025
+venue: ACL 2025 Main
+authors:
+- Jarvis Guo
+- Tuney Zheng
+- Yuelin Bai
+- Bo Li
+- Yubo Wang
+- King Zhu
+- Yizhi Li
+- Graham Neubig
+- Wenhu Chen
+- Xiang Yue
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- multimodal-reasoning
+- visual-question-answering
+- mathematics
+- charts
+- ocr
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.05237
+  arxiv: https://arxiv.org/abs/2412.05237
+  code: https://github.com/MAmmoTH-VL/MAmmoTH-VL
+  data: https://huggingface.co/datasets/MAmmoTH-VL/MAmmoTH-VL-Instruct-12M
+  project: https://mammoth-vl.github.io/
+  huggingface: https://huggingface.co/datasets/MAmmoTH-VL/MAmmoTH-VL-Instruct-12M
+  venue: https://aclanthology.org/2025.acl-long.680/
+  acl: https://aclanthology.org/2025.acl-long.680/
+  doi: https://doi.org/10.18653/v1/2025.acl-long.680
+  bibtex: https://aclanthology.org/2025.acl-long.680.bib
+  openreview: null
+  pmlr: null
+  cvf: null
+data_object:
+  prompt_source: Image-text and instruction records from 153 public multimodal datasets, manually screened into 58 keep-as-is
+    sources, 60 rewrite sources, and 35 discarded sources.
+  trace_author: InternVL2-Llama3-76B rewrites non-caption records with visual access; Llama-3-70B-Instruct rewrites caption
+    records into task-oriented instruction-response pairs.
+  answer_format: An image or image sequence paired with a task-specific instruction and a detailed response containing intermediate
+    rationale; video and text-only language records are also represented in the mixture.
+  process_fields:
+  - source dataset, category, and media reference
+  - original instruction, answer, or caption
+  - rewritten task instruction and rationale-rich response
+  - model-judge relevance, consistency, and accuracy decision
+  environment_or_substrate: Static single-image, multi-image, video, and language instruction records packaged in JSON manifests
+    and media shards.
+  verifier_or_reward: InternVL2-Llama3-76B judges whether each rewritten question-answer pair is relevant to the image, logically
+    consistent, and visually accurate, returning Yes or No.
+  terminal_predicate: Keep Group A records unchanged; keep Group B rewrites only when the model judge returns Yes; remove
+    Group C sources and malformed media.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct with SigLIP-so400m-patch14-384 and a two-layer MLP projector for the released 8B consumer.
+  teacher: InternVL2-Llama3-76B for visual rewriting/filtering and Llama-3-70B-Instruct for caption-derived tasks.
+  generator: Apply category-specific prompts to turn terse VQA or captions into complex instructions and detailed rationale-bearing
+    responses using only open-weight models.
+  filtering_rule: Manually screen 1,000 records per source, reject 35 weak sources, standardize images, and apply a Yes/No
+    visual relevance-consistency-accuracy judge to rewritten records.
+  sampling_protocol: Group A keeps 58 sources; Group B rewrites 60; final model experiments mix 70% rewritten with 30% original
+    data and train on 10M single-image plus 2M one-vision records.
+  rollout_count: 1
+  temperature: null
+  inference_budget: Rewriting and judging 12M records with 70B/76B open models requires substantial compute, but total tokens,
+    accelerators, wall time, and energy are not disclosed.
+  optimizer_or_scaffold: Three one-epoch stages align the projector on 558k LCS records, tune the full 8B model on 10M single-image
+    records, and tune it on 2M disjoint single/multi-image/video records.
+audit:
+  source_mixture: Ten categories cover Language 16.0%, General 15.4%, Chart 15.4%, OCR 13.7%, Caption 10.9%, Domain-specific
+    8.9%, Code/Math 8.3%, Multi-Image 5.8%, Detection 3.2%, and Video 2.5%.
+  split: The official release exposes mammoth_si_10M.json and mammoth_ov_2M.json plus single_image_data and multi_image_data
+    shards; Stage 3 includes about 1M new single-image examples with no Stage-2 overlap and about 1M multi-image/video examples.
+  decontamination: The paper does not report a benchmark-level exact or semantic overlap procedure across the 153 upstream
+    datasets and 23 evaluation benchmarks.
+  license: Official Hugging Face metadata identifies Apache-2.0 and WebDataset; the 153 upstream datasets and media assets
+    retain source-specific terms that require lineage review.
+  lineage: Public multimodal datasets are screened and categorized; weak records are rewritten by open models and judged for
+    image consistency before being mixed with retained originals.
+  known_failure_modes:
+  - The same 76B model often writes and filters a record, so correlated visual hallucinations can survive the judge.
+  - OCR and chart rewrites have very high rejection rates, revealing weak reliability in precisely the categories that most
+    need rationales.
+  - Source-license heterogeneity and undisclosed semantic decontamination complicate redistribution and evaluation claims.
+  citation_status: verified
+  confidence: high
+  notes: Full official arXiv HTML, ACL Anthology Main record and DOI, official project/repository, 12M release manifests/shards,
+    Apache-2.0 WebDataset metadata, impact signals, and exact ablations were checked on 2026-07-14.
+inclusion_reason: MAmmoTH-VL-Instruct-12M publishes rationale-rich multimodal instruction-response records with explicit source
+  screening, trace authors, model-judge selection, and staged SFT consumption.
+related:
+- llava-cot-2025
+tags:
+- multimodal-instruction-data
+- rationale-rewriting
+- open-model-distillation
+- visual-data-filtering
+- large-scale-sft
+status: verified
+one_line_summary: MAmmoTH-VL rewrites and filters 153 public multimodal sources into 12M rationale-rich instruction-response
+  records using open models.
+why_it_matters: It demonstrates a fully open-model path from heterogeneous visual corpora to a training-scale reasoning mixture
+  with explicit filtering ablations.
+reading_priority: must read
+paper_type: large-scale multimodal rationale dataset and construction recipe
+best_for: Researchers building or auditing large multimodal reasoning SFT mixtures with open teachers.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, ACL Anthology record, DOI, project, code, Apache-2.0 dataset metadata, JSON manifests, and downloadable
+    media shards were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-established2
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: open-model multimodal rationale rewriting
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block lists Carnegie Mellon University, Nanyang Technological University, University
+      of Waterloo, University of Manchester, and M-A-P.
+    venue: The ACL Anthology record and DOI identify the paper as ACL 2025 Main; no official oral, spotlight, or award distinction
+      is claimed.
+    impact: On 2026-07-14 the official Hugging Face dataset reported 2,622 downloads and 65 likes, the repository snapshot
+      showed 50 stars, and the independent VisualWebInstruct study used MAmmoTH-VL as an experimental backbone.
+    artifact: The release provides the paper, project, code, models, Apache-2.0 10M/2M JSON manifests, and downloadable single-image
+      and multi-image media shards.
+  selection_eligible: true
+  year_impact_threshold: 2

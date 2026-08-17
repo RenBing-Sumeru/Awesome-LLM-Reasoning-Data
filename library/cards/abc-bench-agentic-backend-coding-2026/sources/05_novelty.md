@@ -1,0 +1,3 @@
+SWE-bench-style tasks usually verify patches through existing project test commands, while function benchmarks do not require launching services. ABC-Bench expands the evaluation boundary to repository exploration, environment setup, container builds, service startup, and external API behavior, covering the full backend lifecycle.
+
+External tests interact with applications over HTTP, do not require code to match a gold implementation, and are hidden from agents. The novelty lies in a deployment-level evaluation surface and multi-framework data rather than a new coding model or ordinary unit-test reward.

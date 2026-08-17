@@ -1,0 +1,123 @@
+id: bamboogle-2022
+title: Measuring and Narrowing the Compositionality Gap in Language Models
+year: 2023
+venue: 'Findings of the Association for Computational Linguistics: EMNLP 2023'
+authors:
+- Ofir Press
+- Muru Zhang
+- Sewon Min
+- Ludwig Schmidt
+- Noah A. Smith
+- Mike Lewis
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- compositional-qa
+- multi-hop-reasoning
+- bamboogle
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2210.03350
+  arxiv: https://arxiv.org/abs/2210.03350
+  code: https://github.com/ofirpress/self-ask
+  data: https://ofir.io/The-Bamboogle-Dataset/
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2023.findings-emnlp.378
+  venue: https://aclanthology.org/2023.findings-emnlp.378/
+  openreview: null
+  acl: https://aclanthology.org/2023.findings-emnlp.378/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'compositional question, answer, and evidence-like decomposition/source information; Benchmark size: 125
+    个小规模 compositional QA 问题。'
+  dataset_scale: Commonly cited Bamboogle release is a small 125-question adversarial compositional QA set; the exact Google
+    Sheet/export version and grading policy must be pinned before leaderboard-style use.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'compositional question, answer, and evidence-like decomposition/source information; Benchmark
+    size: 125 个小规模 compositional QA 问题。'
+  verifier_or_reward: short-answer correctness, usually with human or exact-match-assisted grading
+  terminal_predicate: short-answer correctness, usually with human or exact-match-assisted grading
+  benchmark_size: 125 个小规模 compositional QA 问题。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Measuring and Narrowing the Compositionality Gap in Language Models; exact
+    curation details should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Measuring and Narrowing the Compositionality
+    Gap in Language Models, including ACL Anthology 2023 Findings publication, arXiv preprint, official self-ask repository,
+    and the Bamboogle dataset page.
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://aclanthology.org/2023.findings-emnlp.378/'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology verifies Findings of EMNLP 2023 publication metadata; the official dataset page records Bamboogle as
+    a 125-question set. Reviewer should still pin the exact sheet/export and grading policy before L5/L6 promotion.
+inclusion_reason: Bamboogle is a small 125-question adversarial compositional QA set used to test whether models combine facts
+  rather than answer single-hop shortcuts.
+related: []
+tags:
+- benchmark
+- compositional-qa
+- multi-hop-reasoning
+- bamboogle
+one_line: Bamboogle is a small 125-question adversarial compositional QA set for testing whether models combine facts rather
+  than answer single-hop shortcuts.
+why_it_matters: It supplies a reusable evaluation coordinate for compositional-qa, multi-hop-reasoning work.
+status: verified
+needs:
+- 'needs_audit: pin the exact 125-question Bamboogle sheet/export, grading policy, prompt/scaffold settings, and license'
+- 'needs_artifact_audit: pin the exact Bamboogle file and grading policy before leaderboard-style use'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Bamboogle is a small 125-question adversarial compositional QA set for testing whether models combine facts
+  rather than answer single-hop shortcuts.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

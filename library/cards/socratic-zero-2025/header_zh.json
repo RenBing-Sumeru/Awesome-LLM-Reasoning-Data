@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "固定教师把 Solver 的八次尝试转成 DPO 偏好、改写题与参考解，再以效用加权蒸馏问题生成器；“data-free”并非字面无数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多智能体共演化推理数据构建",
+  "best_for_ch": "研究失败驱动课程、自博弈、在线 DPO 和教师蒸馏风险的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Shaobo Wang、Zhengbo Jiao、Zifan Zhang、Yilang Peng、Xu Ze、Boyu Yang、Wei Wang、Hu Wei、Linfeng Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T12:26:23Z"
+}

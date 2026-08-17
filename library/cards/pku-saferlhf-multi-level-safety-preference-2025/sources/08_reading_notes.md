@@ -1,0 +1,1 @@
+Reading and replication notes: start from the primary source https://arxiv.org/abs/2406.15513, freeze the exact release revision, and reconstruct the record-level path from prompt to feedback to inclusion. Report failure slices rather than only a global mean: source, task, language, length, risk category, preference margin, and tie/disagreement cases are especially informative.

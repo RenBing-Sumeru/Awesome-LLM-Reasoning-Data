@@ -1,0 +1,102 @@
+id: mathematical-reasoning-survey-2023
+title: A Survey of Deep Learning for Mathematical Reasoning
+year: 2023
+venue: ACL 2023 (Long Papers)
+authors:
+- Pan Lu
+- Liang Qiu
+- Wenhao Yu
+- Sean Welleck
+- Kai-Wei Chang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- mathematical-reasoning
+- benchmarks
+- theorem-proving
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2023.acl-long.817/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2023.acl-long.817
+  venue: https://aclanthology.org/2023.acl-long.817/
+  openreview: null
+  acl: https://aclanthology.org/2023.acl-long.817/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed mathematical-reasoning tasks, datasets, and methods.
+  trace_author: Surveyed primary works; the paper does not publish a new training dataset.
+  answer_format: A review of key tasks, datasets, methods, benchmarks, and future directions.
+  process_fields:
+  - math problem
+  - proof or solution
+  - task
+  - dataset
+  - method
+  environment_or_substrate: Deep learning and large-scale neural language models for mathematical reasoning.
+  verifier_or_reward: The paper evaluates existing benchmarks and methods; it does not define one universal verifier.
+  terminal_predicate: Task-specific correctness for solving mathematical problems or proving theorems in language.
+recipe_metadata:
+  base_model: No single model; this is a literature survey.
+  teacher: The reviewed work spans varied mathematical data and supervision designs.
+  generator: Literature review of a decade of tasks, datasets, and methods.
+  filtering_rule: The official abstract defines the scope as mathematical reasoning and deep learning, including opportunities
+    from large-scale neural language models.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Not a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2023.acl-long.817/'
+  known_failure_modes:
+  - Mathematical benchmarks can differ in answer format, proof representation, and verification process.
+  - Surveyed results are not automatically comparable across task families.
+  citation_status: verified
+  confidence: high
+  notes: The official ACL record describes a review of tasks, datasets, methods, benchmarks, and future directions.
+inclusion_reason: An accepted ACL survey that lets readers connect mathematical-reasoning tasks and datasets with the methods
+  used to solve or prove them.
+related: []
+tags:
+- foundations-and-primers
+- mathematical-reasoning
+- benchmarks
+- acl-2023
+- survey
+why_it_matters: It turns a broad area into concrete choices about problem types, data, evaluation, and model methods.
+one_line_summary: An ACL 2023 survey of mathematical-reasoning tasks, datasets, methods, benchmarks, and future directions.
+paper_type: Survey and benchmark overview
+reading_priority: strong
+best_for: Readers who need to map mathematical reasoning problems and proof tasks to data and evaluation choices.
+confidence: high
+status: verified
+needs:
+- 'unknown: directly comparable protocols across mathematical reasoning benchmarks'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

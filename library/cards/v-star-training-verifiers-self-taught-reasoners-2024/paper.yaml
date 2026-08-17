@@ -1,0 +1,257 @@
+id: v-star-training-verifiers-self-taught-reasoners-2024
+title: 'V-STaR: Training Verifiers for Self-Taught Reasoners'
+year: 2024
+venue: COLM 2024
+authors:
+- Arian Hosseini
+- Xingdi Yuan
+- Nikolay Malkin
+- Aaron Courville
+- Alessandro Sordoni
+- Rishabh Agarwal
+source_role:
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+- code
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- test_time_compute
+construction_layer:
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2402.06457
+  arxiv: https://arxiv.org/abs/2402.06457
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2402.06457
+  venue: https://openreview.net/forum?id=stmqBSW2dV
+  openreview: https://openreview.net/forum?id=stmqBSW2dV
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Training queries and original supervised solutions come from the GSM8K training split for mathematics and
+    the MBPP training split for Python code generation. MATH Level 1 and HumanEval are transfer-evaluation sets, not stated
+    training sources. Exact upstream dataset revisions and item manifests are unknown.
+  task_object: A task is a GSM8K word problem with a reference numeric answer or an MBPP function specification whose candidate
+    program can be executed against tests. V-STaR uses the same training query repeatedly across generator iterations.
+  trace_author: The current generator self-samples complete mathematical rationales or Python programs. In the main recipe,
+    the next generator is trained on accumulated correct samples, while the final verifier is trained on accumulated correct
+    and incorrect samples. There is no external reasoning teacher or human preference annotator.
+  trajectory_object: The reusable raw verifier record is a problem, one complete generated solution, an iteration identifier,
+    and a binary outcome label. For DPO, all correct and incorrect solutions for the same problem are expanded into ordered
+    correct-versus-incorrect pairs by a Cartesian product. Original SFT solutions are also treated as correct examples in
+    both generator and verifier buffers.
+  answer_format: Mathematics outputs a chain-of-thought rationale ending in a final answer; code outputs a Python implementation.
+    The DPO verifier consumes the problem and full candidate solution, and its scalar ranking signal at inference is the likelihood
+    of that solution under the verifier, not a separately trained scalar head.
+  process_fields:
+  - source_dataset
+  - source_problem_id
+  - problem
+  - original_supervised_solution
+  - generator_iteration
+  - generated_solution
+  - extracted_final_answer_or_program
+  - binary_correctness_label
+  - correctness_check_type
+  - preferred_correct_solution
+  - dispreferred_incorrect_solution
+  - generator_buffer_membership
+  - verifier_buffer_membership
+  - verifier_sequence_likelihood_score
+  observation: The verifier observes only the task and a completed text solution or program. It does not receive step-level
+    labels, execution traces, hidden tests, counterexamples, or localized error annotations.
+  reward_object: 'Native construction feedback is binary outcome correctness: final-answer equality for GSM8K and passing
+    all available tests for MBPP. Pairwise DPO supervision is derived mechanically from that label. At deployment, the verifier
+    supplies a sequence-likelihood ranking score for Best-of-k selection.'
+  environment_or_substrate: Mathematics uses offline answer comparison. Code uses a Python test-execution harness over MBPP
+    candidates, but sandboxing, timeout, resource limits, interpreter version, dependency versions, and complete test visibility
+    are not disclosed.
+  verifier_or_reward: 'Mixed contract: programmatic answer or test checks label candidate outcomes; correct and incorrect
+    candidates become synthetic preference pairs; a DPO-trained language model learns to rank full solutions. The learned
+    verifier predicts outcome quality only and does not validate individual reasoning steps.'
+  terminal_predicate: A math completion is correct when its extracted final answer matches the reference; a code completion
+    is correct when it passes all invoked tests. Extraction rules, tolerance, equivalent-answer handling, malformed-output
+    policy, and hidden-test coverage are unknown.
+  provenance: Original GSM8K or MBPP query/solution -> base or SFT generator -> 16 candidates per query -> final-answer or
+    test label -> correct candidates accumulated in D_GEN and all candidates accumulated in D_VER -> generator retrained from
+    the base model on D_GEN -> three collection iterations -> same-problem Cartesian preference pairs -> DPO verifier -> Best-of-k
+    candidate ranking.
+recipe_metadata:
+  base_model: LLaMA2 7B and 13B for mathematics and CodeLLaMA 7B and 13B for code, all adapted with LoRA. The paper also compares
+    headline results with larger untuned baselines, but those larger models are not V-STaR training bases. Exact checkpoint
+    revisions and tokenizer versions are unknown.
+  teacher: No external teacher generates reasoning. The previous iteration's generator supplies candidates; GSM8K reference
+    answers and MBPP test executions supply binary labels. The resulting correct-over-incorrect preference is synthetic outcome
+    supervision, not a human preference.
+  generator: Fine-tune a base model on original plus accumulated correct solutions, sample new candidates, label them, and
+    repeat. The paper describes each updated generator as fine-tuning the pretrained base model on the enlarged D_GEN rather
+    than simply continuing the previous generator checkpoint.
+  prompt_task_source: GSM8K and MBPP training queries. Appendix B gives the three-shot MBPP generation prompt with task descriptions,
+    assertions, and Python examples. The complete GSM8K prompt, answer-extraction implementation, exact query IDs, and prompt
+    version are not released.
+  sampling_protocol: Main experiments run three iterations and sample 16 completions per training query from the previous
+    iteration's generator, for 48 generated candidates per query. GSM8K iteration 1 samples from a generator SFT-trained on
+    GSM8K for two epochs; MBPP iteration 1 uses three-shot prompting of pretrained CodeLLaMA.
+  rollout_count: 48
+  temperature: unknown
+  inference_budget: Main verifier results report Best-of-64 estimated from a fixed pool of 128 candidates per test problem.
+    A GSM8K scaling analysis subsamples from 1,000 generations. Best-of-k saturates at k of at least 16 in the main 7B curves,
+    and the advantage over majority vote narrows at larger k.
+  search_or_scaffold: Training-time exploration is independent repeated sampling, not tree search. At test time, generate
+    a candidate pool, score each complete candidate with the DPO verifier, and select the highest-scoring one. The main algorithm
+    does not put the verifier inside the generator-training loop.
+  filtering_rule: Correct outcomes enter D_GEN; both correct and incorrect outcomes enter D_VER. For each query, every available
+    correct solution is paired with every available incorrect solution. Exact deduplication, pair subsampling, class balancing,
+    malformed-output handling, and per-iteration buffer counts are unknown.
+  selection_threshold: Construction uses a binary terminal check, not a learned-score threshold. Inference selects the maximum
+    verifier-likelihood candidate from the sampled set. Score ties, length normalization, calibration, and abstention are
+    not specified.
+  optimizer_or_scaffold: Generators use causal language-model SFT and verifiers use DPO with an SFT reference policy; all
+    reported V-STaR models use LoRA. The DPO reference policy is trained on original GSM8K for two epochs or MBPP for three
+    epochs. Learning rates, batch sizes, LoRA ranks, selected DPO beta, schedules, sequence limits, seeds, and hardware are
+    not disclosed in the paper.
+  release_scale: The paper does not release an immutable generated-solution corpus or report exact accepted, rejected, and
+    Cartesian-pair counts. The nominal main budget is 48 generated candidates per training query, but realized pair counts
+    depend on each query's correct/incorrect balance.
+audit:
+  source_mixture: The mathematics pipeline uses GSM8K only and the code pipeline uses MBPP only for training. MATH and HumanEval
+    are transfer evaluation. Original supervised solutions and self-generated outcomes share the same buffers but are not
+    separately weighted in the disclosed recipe. Exact upstream revisions and licenses are not pinned.
+  split: Training uses GSM8K and MBPP training data; evaluation uses their full stated test sets plus 150 numeric-answer,
+    no-LaTeX, Level 1 MATH problems and the full HumanEval test set for transfer. Immutable task IDs, the exact MATH subset
+    manifest, and generation seeds are not released.
+  decontamination: unknown
+  benchmark_overlap: The paper separates named train and test splits and uses MATH/HumanEval for transfer, but reports no
+    semantic-duplicate audit, pretraining-contamination analysis, or source-level check between GSM8K and the selected MATH
+    problems or between MBPP and HumanEval.
+  lineage: Dataset query -> original or generated full solution -> binary programmatic label -> iteration-specific D_GEN/D_VER
+    membership -> accumulated correct/incorrect pools -> Cartesian DPO pair -> verifier likelihood -> Best-of-k selection.
+    No released row IDs, generation seeds, model hashes, labels, pair manifest, or final checkpoints make this lineage independently
+    replayable.
+  license: arXiv v2 declares CC BY-SA 4.0 for the paper, and the University of Edinburgh record labels its accepted manuscript
+    Creative Commons Attribution. No official code, generated dataset, or checkpoint release was confirmed, so there is no
+    artifact license for the V-STaR buffers or models. Reimplementation must separately audit GSM8K, MBPP, LLaMA2, and CodeLLaMA
+    terms.
+  release_version: arXiv:2402.06457v2, revised 2024-08-14, and the COLM 2024 conference version were reviewed. The COLM accepted-papers
+    page and OpenReview forum confirm venue status. No official repository commit, dataset revision, model revision, project
+    page, or release tag exists in the verified artifacts.
+  experimental_evidence:
+    headline: Across 7B and 13B experiments, the paper reports 6-17 percentage-point absolute gains over prior self-improvement
+      or verification methods on math tasks and 4-12 points on code tasks. These are recipe-and-model outcomes, not direct
+      measures of label or pair quality.
+    iteration: V-STaR outperforms a one-iteration baseline with the same 48-candidate budget, supporting the value of changing
+      candidate distributions across iterations. A fourth MBPP iteration adds only 0.3 points, showing diminishing marginal
+      gain in that setting.
+    verifier_objective: With the authors' LoRA setup, DPO verifiers outperform ORM-style verifiers on the same data as k grows;
+      the ORM degrades above 4 candidates on GSM8K and is worse above 16 on MBPP. This is not a general comparison across
+      all ORM architectures or tuning budgets.
+    verifier_in_loop: An MBPP variant sampling 64 candidates, retaining the top 8 by verifier score, and keeping at most 16
+      labeled examples per query reaches 53.2 Best-of-64 and 46.34 Pass@1 after three iterations; the authors conclude it
+      provides no substantial gain for that task.
+  known_failure_modes:
+  - Final-answer equality can label an invalid mathematical rationale as positive when it happens to end at the correct number.
+  - Answer extraction and formatting can create false negatives for equivalent math answers; the parser and tolerance rules
+    are not released.
+  - Passing available MBPP tests does not prove general program correctness and can reward test-specific or brittle code.
+  - Executing untrusted generated code requires sandbox, timeout, and resource controls that the paper does not document.
+  - Cartesian expansion reuses the same candidates in many correlated pairs and can overweight queries with many positives
+    or negatives.
+  - A verifier trained on the evolving generator's own errors may learn generator-specific style or shortcut features rather
+    than portable correctness.
+  - Raw sequence likelihood may depend on answer length and formatting; the paper does not specify length normalization or
+    calibration.
+  - Outcome supervision does not localize the first erroneous reasoning step or distinguish partially correct solutions.
+  - Best-of-k gains consume additional inference compute and are estimated from a fixed candidate pool under a no-tied-scores
+    formula assumption.
+  - No official code, generated buffers, pair manifests, model checkpoints, or exact hyperparameter configuration were confirmed.
+  verifier_or_judge_failure_modes:
+  - False positives arise from lucky final answers, incomplete code tests, memorized patterns, or candidate styles preferred
+    by the learned likelihood even when reasoning is invalid.
+  - False negatives arise from alternative valid derivations, equivalent formatting, correct programs outside the test harness's
+    expected form, or length/style shift.
+  - 'Ranking is not calibrated classification: the model''s sequence likelihood is used comparatively within a candidate pool,
+    with no reported probability calibration, abstention, refresh trigger, or cross-generator threshold.'
+  - The verifier is exposed to reward gaming when a generator adapts to its stylistic preferences. The main method avoids
+    using it to label training outcomes, but deployment still selects whatever completion maximizes the learned score.
+  successful_and_failed_sample_retention: The recipe retains correct and incorrect generated solutions in D_VER, which is
+    its main data-efficiency contribution. Only correct solutions enter D_GEN. Because the buffers are not released, it is
+    unknown whether malformed, duplicate, timed-out, or execution-error candidates are retained and how those cases are labeled.
+  safety_boundary: Evidence is limited to cheaply outcome-verifiable grade-school mathematics and small Python functions.
+    The method is not validated for open-ended claims, safety judgments, interactive environments, long-running code, or domains
+    where correctness cannot be reduced to a reliable terminal predicate.
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - official_code_generated_data_and_checkpoint_release
+  - exact_gsm8k_prompt_and_answer_extractor
+  - exact_mbpp_execution_sandbox_tests_timeouts_and_error_labels
+  - immutable_dataset_revisions_task_ids_and_math_subset_manifest
+  - decoding_temperature_top_p_sequence_limits_and_generation_seeds
+  - learning_rates_batches_lora_configuration_dpo_beta_and_hardware
+  - per_iteration_positive_negative_and_pair_counts
+  - pair_balancing_deduplication_subsampling_and_score_length_normalization
+  - verifier_calibration_tie_handling_refresh_and_adversarial_audit
+  notes: Full arXiv v2/COLM paper and appendices, arXiv metadata/license/DOI, COLM accepted papers, OpenReview venue URL,
+    and the University of Edinburgh publication record were checked on 2026-07-21. Targeted official-source searches found
+    no author-linked code, generated dataset, project page, Hugging Face release, or model checkpoint.
+inclusion_reason: 'V-STaR is a clean verifier-data recipe: it preserves rejected self-generated reasoning, converts programmatic
+  outcomes into synthetic same-query preferences, refreshes the negative distribution through iterative generators, and uses
+  the resulting verifier for adaptive test-time selection while exposing outcome-label and pairing risks.'
+related: []
+tags:
+- v-star
+- self-improvement
+- rejection-sampling
+- synthetic-preference-data
+- outcome-supervision
+- dpo-verifier
+- best-of-k
+- verifier-refresh
+- gsm8k
+- mbpp
+- artifact-release-incomplete
+status: partial
+category_ids:
+- preference_reward_feedback_data
+- data_construction_open_release_recipes
+one_line_summary: V-STaR keeps correct self-generated solutions for iterative generator SFT and converts correct-versus-incorrect
+  outcomes into DPO verifier pairs for Best-of-k ranking.
+why_it_matters: It shows how rejected generations can become reusable verifier supervision and how generator refresh changes
+  negative examples, while making terminal-label noise, Cartesian-pair correlation, score gaming, and inference budget explicit
+  audit objects.
+card: null
+needs:
+- 'needs_code: locate an author-confirmed implementation if one is released'
+- 'needs_data: release immutable generated-solution buffers, binary labels, iteration IDs, and DPO pair manifests'
+- 'needs_model: release generator and verifier checkpoints with base revisions and tokenizer hashes'
+- 'needs_recipe: disclose prompts, extraction and execution harnesses, generation settings, optimizer details, and seeds'
+- 'needs_audit: measure label errors, length bias, calibration, shortcut features, and adversarial verifier gaming'
+- 'needs_decontamination: publish task IDs, the MATH subset, semantic-overlap checks, and pretraining-contamination analysis'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: medium
+  notes: Citation, COLM acceptance, arXiv v2, DOI, paper license, appendices, and stated affiliations were verified. No official
+    code, generated data, project, Hugging Face release, or checkpoint was confirmed; artifact incompleteness keeps status
+    partial.

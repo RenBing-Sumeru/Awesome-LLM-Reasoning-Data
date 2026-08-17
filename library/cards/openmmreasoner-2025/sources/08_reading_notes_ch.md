@@ -1,0 +1,6 @@
+- 区分四种对象:87.4 万条 SFT 对话、约 7.3 万个公开 RL 训练 prompt、1,724 条公开 validation 记录,以及未发布的 16 路在线 rollout 回答。
+- SFT 教师是 Qwen3-VL-235B-Instruct;默认 RL/评估回退裁判则是不同的 Qwen3-235B-A22B-Instruct-2507。
+- RL 奖励是混合终局信号:规则或学习式裁判得到的答案正确性权重为 0.9,格式遵循权重为 0.1;没有发布步骤有效性标签。
+- 实时 RL collection 缺少启动配方点名的 PuzzleVQA train 配置,而且只有计入 validation 才达到约 7.47 万,因此论文运行与发布映射仍不完整。
+- `tokens` 与 `avg_reward` 是公开字段,但生成它们的精确运行仍为 unknown;在线回答、逐 rollout 分数、reject 和裁判记录均缺失。
+- Benchmark 收益只能作为所报告配方下的训练模型证据,不能证明轨迹忠实、去污染安全、奖励校准或许可完整。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Compass-Thinker-7B 以 30K 条可验证数学提示、五级难度课程和自研最终答案验证器，对 Qwen2.5-Math-7B 进行去 KL、动态采样的 GRPO 训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "紧凑数学推理模型与 RLVR 配方报告",
+  "best_for_ch": "研究可验证数学数据、难度课程、规则奖励、动态采样和验证器审计边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Anxiang Zeng 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "programmatically_verifiable_outcome_data"
+  ]
+}

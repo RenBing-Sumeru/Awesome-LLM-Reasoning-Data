@@ -1,0 +1,3 @@
+RAG systems can produce claims that sound plausible but are not supported by the retrieved document. Existing hallucination detectors often output only a binary label, depend on large proprietary judges, or fail to explain which evidence supports the decision. This limits their auditability and makes deployment expensive.
+
+HalluGuard therefore studies whether a compact reasoning model can classify a document–claim pair as grounded or hallucinated while producing an evidence-based justification. The paper addresses this through synthetic data construction, multi-stage filtering, and preference fine-tuning on a 4B model.

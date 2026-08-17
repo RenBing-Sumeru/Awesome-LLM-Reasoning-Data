@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T08:56:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过上下文内奖励和多轮自我反思改进当前回答，直接将额外推理轮次转化为性能提升",
+    "updated_at": "2026-07-20T08:56:23Z"
+  }
+}

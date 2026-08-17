@@ -1,0 +1,3 @@
+Traditional mathematics benchmarks bind correctness to one canonical answer, while open-ended answers require LLM judges or human scoring. MathConstruct changes both the answer object and the verification method: the model outputs a structured mathematical construction, and a checker verifies the problem constraints without requiring equality to the reference construction.
+
+The novelty is not the first use of programmatic mathematics checking. It systematically covers competition construction proofs and supplies automatically scalable parameter variants for part of the benchmark. A problem family can therefore yield unseen instances, precise RL rewards, and robustness tests while reducing the advantage of models specialized in producing final scalar answers.

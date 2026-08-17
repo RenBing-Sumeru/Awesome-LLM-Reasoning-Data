@@ -1,0 +1,176 @@
+id: aops-instruct-liveaopsbench-2025
+title: Leveraging Online Olympiad-Level Math Problems for LLMs Training and Contamination-Resistant Evaluation
+year: 2025
+venue: ICML 2025
+authors:
+- Sadegh Mahdavi
+- Muchen Li
+- Kaiwen Liu
+- Christos Thrampoulidis
+- Leonid Sigal
+- Renjie Liao
+source_role:
+- construction_recipe
+- data_release
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- olympiad_mathematics
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/mahdavi25a.html
+  arxiv: https://arxiv.org/abs/2501.14275
+  code: https://github.com/DSL-Lab/aops
+  data: https://huggingface.co/datasets/jojo23333/LiveAoPSBench-2024
+  project: https://livemathbench.github.io/leaderboard.html
+  huggingface: https://huggingface.co/datasets/jojo23333/LiveAoPSBench-2024
+  doi: https://doi.org/10.48550/arXiv.2501.14275
+  venue: https://icml.cc/virtual/2025/poster/44681
+  openreview: https://openreview.net/forum?id=cZi1njoRT6
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/mahdavi25a.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'AoPS forum topics: the first post supplies a candidate mathematical question, and later posts in the same
+    thread supply candidate community answers.'
+  trace_author: Community members write the source answers; Llama-3.1-70B identifies answer-bearing posts and Qwen2.5-72B
+    rewrites selected answers into formal step-by-step solutions. LiveAoPSBench additionally compares independent Llama-3.1-70B-Instruct
+    and Qwen2.5-72B-Instruct rewrites.
+  answer_format: The model-ready AoPS-Instruct view is a two-message user/assistant record containing a question and rewritten
+    solution. The checked LiveAoPSBench-2024 release contains `question`, month-level `post_time`, rewritten `solution`, extracted
+    `answer`, and integer `idx`.
+  process_fields:
+  - topic_id_in_collection_pipeline
+  - first_post_question
+  - answer_user
+  - answer_post_number
+  - raw_answer
+  - rewritten_solution
+  - boxed_final_answer
+  - post_time
+  - decontamination_decision
+  - cross_model_answer_agreement
+  environment_or_substrate: An offline crawl of public AoPS forum discussions followed by LLM classification, conversation
+    parsing, solution rewriting, substring filtering, answer normalization, and dataset packaging; there is no interactive
+    training environment.
+  verifier_or_reward: Qwen2.5-14B filters non-math first posts; Llama-3.1-70B extracts questions and answer posts; 10-gram
+    or 8-gram exact overlap rules filter records. For the live benchmark, boxed-answer heuristics and independent Llama/Qwen
+    rewrites are checked by string equality, numeric equality, or SymPy equivalence. A 386-item human sample checks final
+    answers against raw posts. No scalar reward or formal proof verifier is used.
+  terminal_predicate: A training QA pair survives question detection, answer extraction, rewriting, and 10-gram benchmark
+    decontamination. A live benchmark question also survives timestamp selection, 8-gram filtering, proof/non-boxed-answer
+    exclusion, deduplication, and agreement between two rewritten final answers.
+recipe_metadata:
+  base_model: Downstream SFT starts from DeepSeekMath-7B-Instruct, Mathstral-7B, Llama-3.2-3B-Instruct, or Llama-3.2-1B-Instruct
+    in the reported experiments.
+  teacher: Qwen2.5-14B for math-question classification, Llama-3.1-70B for question/answer extraction, and Qwen2.5-72B for
+    training-solution rewriting; LiveAoPSBench uses Llama-3.1-70B-Instruct and Qwen2.5-72B-Instruct for independent rewrites.
+  generator: AoPS crawler plus a staged LLM parsing and rewriting pipeline. Multiple valid answer posts in one topic can yield
+    multiple QA pairs.
+  filtering_rule: Reject non-math topics and topics without answer-bearing replies; decontaminate AoPS-Instruct with exact
+    10-gram matching against listed math test sets. For LiveAoPSBench, apply 8-gram matching against MATH and GSM8K training
+    data, exclude proof questions and non-boxed answers, remove inconsistent dual-model answers, and deduplicate candidates.
+  sampling_protocol: Crawl topics, classify the first post, parse the full discussion, select every answer-bearing later post
+    with user/post provenance, rewrite each selected answer, separate records by first-post timestamp, then apply task-specific
+    overlap and answer filters.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper does not disclose total generation tokens or wall-clock cost. The official reproduction README
+    states a default setup of four 80GB A100 GPUs and a minimum of two 80GB A100/H100 GPUs for parsing, but this is not a
+    measured paper-run budget.
+  optimizer_or_scaffold: Each reported SFT run uses the question as instruction, the rewritten solution as response, the model-specific
+    chat template, and three epochs. Optimizer, learning rate, batch size, seeds, and exact checkpoint revisions are not disclosed
+    in the paper.
+audit:
+  source_mixture: The crawl covers all available AoPS forum topics rather than only contest collections. Topics through December
+    2023 feed AoPS-Instruct; later records feed timestamped evaluation snapshots. Exact topic-category proportions and an
+    immutable source manifest are not released.
+  split: The paper reports 647,255 pre-January-2024 AoPS-Instruct QA pairs and a LiveAoPSBench-0824 snapshot of 3,863 questions
+    from January-August 2024. It also builds a 5,216-question 2023 retrospective split whose dates overlap the AoPS-Instruct
+    source window. The checked full-year HF benchmark revision has 5,328 test rows.
+  decontamination: AoPS-Instruct uses exact 10-gram matching against a listed set of math test datasets. LiveAoPSBench-0824
+    uses exact 8-gram matching against MATH and GSM8K training data. Exact matching cannot detect all paraphrases, reposted
+    problems, or shared mathematical templates.
+  license: The official code repository is Apache-2.0; the checked LiveAoPSBench HF page declares Apache-2.0; the third-party
+    AoPS-Instruct page declares MIT. AoPS terms say AoPS does not claim ownership of user submissions and that users grant
+    AoPS a broad sublicensable license. No reviewed artifact documents the dataset publisher's source-content license or contributor-attribution
+    arrangement; this is an unresolved rights audit, not a legal conclusion.
+  lineage: AoPS topic and first-post timestamp -> first-post question plus selected later answer user/post -> LLM rewrite
+    -> overlap and answer filters -> SFT or timestamped evaluation record. Internal prompts retain user/post references, but
+    the model-ready default public views do not expose canonical thread URLs or topic/post IDs.
+  known_failure_modes:
+  - LLM extraction can select an irrelevant or incomplete reply, and rewriting can introduce or preserve mathematical errors
+    despite instructions not to add information; the paper includes incomplete and incorrect rewrite examples.
+  - Dual-model final-answer agreement can preserve a shared error and does not verify intermediate reasoning or a proof.
+  - The human audit covers 386 benchmark questions, not the 647,255 training records; 5% of annotations were incorrect and
+    3% were no-answer.
+  - Proof questions and diagram-dependent problems are not supported by the live evaluation contract, biasing it toward text-only,
+    parseable final answers.
+  - The 2023 retrospective benchmark lies inside the AoPS-Instruct source period and is not automatically a clean held-out
+    test for an AoPS-Instruct-trained model.
+  - Current model-ready releases omit canonical topic/post URLs and contributor attribution, weakening record-level source
+    verification, correction, credit, and takedown handling.
+  - The author repository links AoPS-Instruct only as a community reproduction and disclaims liability; row-count agreement
+    does not establish record-level equivalence to the paper corpus.
+  - At checked commit 56f6bc1e670170e301f1c9ebc172124defd21e90, README commands reference `scripts/crawl_raw.sh` and `scripts/reproduce.sh`,
+    but the `scripts` directory is absent from the repository tree.
+  - Paper Figure 2 labels QA extraction as Qwen 32B, while the body and current `parse_aops.py` identify Llama-3.1-70B. The
+    paper uses Qwen2.5-14B for topic classification, while current `classify_aops.py` defaults to Llama-3.1-8B. Exact paper-run
+    configuration must be resolved before reproduction.
+  - An evolving public benchmark becomes available to future training runs; an evaluation must pin the HF revision, post-date
+    window, model checkpoint, training cutoff, and evaluation date.
+  citation_status: verified
+  confidence: medium
+  notes: PMLR/ICML paper, arXiv v2, official repository commit 56f6bc1e670170e301f1c9ebc172124defd21e90, LiveAoPSBench HF
+    revision 3ff6280f4c1d75a035698524c26ee91c70e4e2b5, third-party AoPS-Instruct revision 4fde85181ac28b48087309d708d1613d9395b03a,
+    and AoPS Terms of Service were checked on 2026-07-22. Citation and code/benchmark links are verified; author-maintained
+    training data, rights documentation, and complete reproduction metadata remain unavailable.
+inclusion_reason: Couples a large forum-to-SFT construction recipe with a timestamped evaluation recipe over the same source
+  stream, making selection, answer checking, release versioning, community-content lineage, and contamination boundaries auditable.
+related: []
+tags:
+- aops-instruct
+- liveaopsbench
+- olympiad-math
+- forum-data
+- timestamp-split
+- contamination
+- solution-rewriting
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: AoPS-Instruct turns pre-2024 forum questions and community answers into 647,255 rewritten SFT pairs, while
+  LiveAoPSBench applies stricter answer checks to newer timestamped posts.
+why_it_matters: It exposes a scalable forum-distillation and temporal-evaluation recipe while showing why model-ready records
+  still need immutable snapshots, source lineage, verifier audits, contributor attribution, and documented reuse rights.
+card: null
+needs:
+- 'needs_data: author-maintained immutable AoPS-Instruct snapshot and row-level equivalence manifest'
+- 'needs_code: restore or publish the README-referenced crawl and reproduction shell scripts'
+- 'needs_provenance: canonical topic URL, topic/post IDs, timestamps, and contributor attribution or controlled lookup per
+  record'
+- 'needs_rights: documented basis and attribution requirements for redistributing AoPS user posts and problem statements'
+- 'needs_generation: exact paper-run model revisions, Figure 2/body discrepancy resolution, decoding, retries, seeds, and
+  failure handling'
+- 'needs_snapshot: immutable LiveAoPSBench revision, exact date window, filter inventory, and source manifest for every reported
+  score'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official citation, affiliations, code, project, and LiveAoPSBench artifact are verified. AoPS-Instruct is available
+    only through an author-disclaimed third-party reproduction, and full release/reproduction/rights evidence remains partial.

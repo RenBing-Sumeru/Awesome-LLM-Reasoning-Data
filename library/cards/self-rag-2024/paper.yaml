@@ -1,0 +1,149 @@
+id: self-rag-2024
+title: 'Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection'
+year: 2024
+venue: ICLR 2024 Oral
+authors:
+- Akari Asai
+- Zeqiu Wu
+- Yizhong Wang
+- Avirup Sil
+- Hannaneh Hajishirzi
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+domains:
+- retrieval-augmented-generation
+- open-domain-question-answering
+- factuality
+- long-form-generation
+- fact-verification
+training_use:
+- sft
+- distillation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2310.11511
+  arxiv: https://arxiv.org/abs/2310.11511
+  code: https://github.com/AkariAsai/self-rag
+  data: https://huggingface.co/datasets/selfrag/selfrag_train_data
+  project: https://selfrag.github.io/
+  huggingface: https://huggingface.co/datasets/selfrag/selfrag_train_data
+  venue: https://openreview.net/forum?id=hSyW5go0v8
+  openreview: https://openreview.net/forum?id=hSyW5go0v8
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 145,619 instruction-output pairs sampled from Open-Instruct, KILT knowledge-intensive datasets, ASQA, OpenBookQA,
+    and ARC-Easy, rounded to 150K in the paper and dataset card.
+  trace_author: Original source authors or instruction teachers provide task outputs; a Llama2-7B critic distilled from GPT-4
+    judgments inserts retrieval and critique tokens plus retrieved passages.
+  answer_format: JSONL records with instruction, optional input, output, id, and dataset_name; output interleaves retrieval
+    decisions, passages, relevance/support judgments, task text, and a terminal utility token.
+  process_fields:
+  - instruction, optional input, id, and source dataset
+  - retrieval/no-retrieval token
+  - retrieved passage and relevance judgment
+  - generated segment and support judgment
+  - terminal utility score
+  environment_or_substrate: Static instruction records augmented with Contriever passages and segment-level reflection tokens.
+  verifier_or_reward: GPT-4 labels train a critic for Retrieve, ISREL, ISSUP, and ISUSE; the critic annotates the generator
+    corpus offline, and the generator later predicts the same tokens itself.
+  terminal_predicate: End a target with a utility token; when retrieval is requested, prefer passages labeled relevant and
+    fully or partially supported, falling back to a sampled passage if none satisfy the rule.
+recipe_metadata:
+  base_model: Llama2-7B and Llama2-13B generator models; Llama2-7B critic.
+  teacher: GPT-4 supplies 3,831-19,317 labels per reflection-token type, which are distilled into the local critic.
+  generator: The critic inserts retrieval, relevance, support, and utility tokens into existing instruction outputs; the final
+    LM predicts augmented text autoregressively.
+  filtering_rule: Discard malformed GPT-4 labels; retrieve up to ten passages, keep a relevant and supported candidate when
+    available, and mask passage tokens from generator loss.
+  sampling_protocol: Combine eleven source subsets into 145,619 input-output pairs and augment each output segment according
+    to critic retrieval decisions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Training retrieves up to ten passages; default inference uses top five passages, segment beam width two,
+    greedy token decoding, and retrieval threshold 0.2 except zero for citation-required ASQA.
+  optimizer_or_scaffold: Standard next-token training for the critic and generator; the generator vocabulary is expanded with
+    reflection tokens.
+audit:
+  source_mixture: GPT-4 Alpaca 26,168; Stanford Alpaca 25,153; FLAN-V2 17,817; ShareGPT 13,406; OpenAssistant 9,464; Wizard
+    of Wikipedia 17,367; Natural Questions 15,535; FEVER 9,966; OpenBookQA 4,699; ARC-Easy 2,147; ASQA 3,897.
+  split: The release exposes one 150K train JSONL; critic labels use train/development/test splits, but no reusable generator
+    validation split is disclosed.
+  decontamination: The paper does not report semantic overlap counts between the mixed instruction sources and all six downstream
+    evaluations.
+  license: The official Hugging Face release and repository identify MIT; component datasets and retrieved passages retain
+    their own terms.
+  lineage: Public instruction outputs are judged by a GPT-4-distilled critic, augmented with Contriever passages and reflection
+    tokens, serialized as JSONL, and consumed by standard generator SFT.
+  known_failure_modes:
+  - GPT-4 provides the target judgments and the critic reproduces them, so agreement is not independent evidence of factual
+    correctness.
+  - Self-predicted relevance/support/utility tokens can be miscalibrated or gamed during decoding.
+  - Mixed source licenses, retrieval-corpus provenance, and undisclosed semantic decontamination complicate redistribution
+    and evaluation attribution.
+  citation_status: verified
+  confidence: high
+  notes: Full paper and appendix, official ICLR 2024 OpenReview record, MIT repository and Hugging Face 150K JSONL release,
+    actual reflection-token record, source counts, controlled ablations, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: Self-RAG releases the exact 150K instruction-output records interleaved with passages and reflection tokens
+  that train its generator, making the serialized target and critic selection contract central rather than incidental to retrieval.
+related: []
+tags:
+- reflection-token-data
+- retrieval-augmented-generation
+- critique-distillation
+- factuality
+- instruction-tuning
+status: verified
+one_line_summary: Self-RAG releases 150K instruction outputs augmented with passages and reflection tokens for adaptive retrieval-and-critique
+  SFT.
+why_it_matters: It exposes a trainable record where retrieval decisions, passage relevance, claim support, and output utility
+  are explicit tokens.
+reading_priority: must read
+paper_type: reflection-token instruction dataset and retrieval-augmented generation recipe
+best_for: Researchers building or auditing retrieval-aware critique and factuality SFT records.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper/review, MIT code, 150K JSONL metadata, actual record fields/tokens, critic labels, and training use
+    were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-general
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: retrieval and critique token demonstrations
+  selection_priority_score: 13
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 5
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block lists University of Washington, Allen Institute for AI, and IBM Research AI.
+    venue: The official OpenReview record confirms ICLR 2024 oral presentation.
+    impact: On 2026-07-14 the repository reported 2,406 stars and 225 forks, while the dataset reported 142 downloads and
+      77 likes.
+    artifact: The release provides paper, MIT code, 150K JSONL reflection-token data, critic/generator checkpoints, training,
+      and inference code.
+  selection_eligible: true
+  year_impact_threshold: 3

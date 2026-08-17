@@ -1,0 +1,1 @@
+Can Xu, Qingfeng Sun, Kai Zheng, Xiubo Geng, Pu Zhao, Jiazhan Feng, Chongyang Tao, Qingwei Lin, Daxin Jiang. “WizardLM: Empowering Large Pre-trained Language Models to Follow Complex Instructions.” ICLR 2024。arXiv:2304.12244。https://arxiv.org/abs/2304.12244

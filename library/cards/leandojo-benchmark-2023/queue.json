@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T11:33:06Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "形式化定理证明领域利用率高 ref669",
+    "updated_at": "2026-07-16T11:33:06Z"
+  }
+}

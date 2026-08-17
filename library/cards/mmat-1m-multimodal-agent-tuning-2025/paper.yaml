@@ -1,0 +1,109 @@
+id: mmat-1m-multimodal-agent-tuning-2025
+title: 'MMAT-1M: A Large Reasoning Dataset for Multimodal Agent Tuning'
+year: 2025
+venue: ICCV 2025
+authors:
+- Tianhong Gao
+- Yannian Fu
+- Weiqun Wu
+- Haixiao Yue
+- Shanshan Liu
+- Gang Zhang
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-reasoning
+- tool-use
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openaccess.thecvf.com/content/ICCV2025/html/Gao_MMAT-1M_A_Large_Reasoning_Dataset_for_Multimodal_Agent_Tuning_ICCV_2025_paper.html
+  arxiv: https://arxiv.org/abs/2507.21924
+  code: https://github.com/VIS-MPU-Agent/MMAT-1M
+  data: https://huggingface.co/datasets/VIS-MPU-Agent/MMAT-1M
+  project: null
+  huggingface: https://huggingface.co/datasets/VIS-MPU-Agent/MMAT-1M
+  doi: null
+  venue: https://openaccess.thecvf.com/content/ICCV2025/html/Gao_MMAT-1M_A_Large_Reasoning_Dataset_for_Multimodal_Agent_Tuning_ICCV_2025_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/ICCV2025/html/Gao_MMAT-1M_A_Large_Reasoning_Dataset_for_Multimodal_Agent_Tuning_ICCV_2025_paper.html
+  bibtex: null
+data_object:
+  prompt_source: Public multimodal question-answer datasets curated by the authors.
+  trace_author: GPT-4o-driven rationale and reflection generation pipeline.
+  answer_format: Multi-turn Rationale-and-Reflection dialogues or compressed one-turn ORR records, optionally with API and
+    RAG interactions.
+  process_fields:
+  - question
+  - answer
+  - rationale
+  - reflection
+  - api_call
+  - rag_context
+  - dialogue
+  environment_or_substrate: Multimodal QA, retrieval, and API-use settings.
+  verifier_or_reward: Reflection refinement for logical consistency and accuracy.
+  terminal_predicate: A response resolves the original question-answer task.
+recipe_metadata:
+  base_model: GPT-4o for rationale and reflection generation.
+  teacher: GPT-4o with reflection refinement.
+  generator: Four-stage curation, multi-turn generation, reflection, and optional compression engine.
+  filtering_rule: Refine generated rationales through self-reflection before releasing RR and ORR formats.
+  sampling_protocol: Curate source QA pairs, then generate reasoning and dynamic tool or retrieval interactions.
+  inference_budget: Pin the official repository or Hugging Face dataset revision for reproduction.
+  optimizer_or_scaffold: Multimodal agent fine-tuning with Rationale-and-Reflection data.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Five curated public multimodal QA sources plus generated rationales, reflections, and tool or retrieval
+    interactions.
+  split: The official Hugging Face release reports 1,659,279 rows; pin the configuration and revision used.
+  decontamination: Not fully documented as a benchmark-decontamination protocol.
+  license: Refer to the official repository and the licenses of constituent source datasets.
+  lineage: ICCV 2025 paper, official VIS-MPU-Agent repository, and VIS-MPU-Agent dataset release.
+  known_failure_modes:
+  - Generated rationales and reflections can inherit GPT-4o errors.
+  - Source-dataset terms and modality coverage vary across components.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the ICCV 2025 CVF record, the official repository named by the paper, and the author Hugging Face
+    release reporting 1,659,279 rows.
+inclusion_reason: The release provides process records with step-level feedback that can train or evaluate process-aware reasoning
+  systems.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: MMAT-1M releases million-scale multimodal Rationale-and-Reflection dialogues with dynamic API and retrieval
+  interactions.
+why_it_matters: It makes both multi-turn and compressed process-supervision formats publicly available at substantially larger
+  scale than earlier multimodal agent sets.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified against the ICCV 2025 CVF record, the official repository named by the paper, and the author Hugging Face
+    release reporting 1,659,279 rows.
+category_ids:
+- process_trace_supervision_data

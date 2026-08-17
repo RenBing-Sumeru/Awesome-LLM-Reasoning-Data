@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ComplexConstraints 以专家原子化 rubric 为复杂指令跟随和 Agent 强化学习提供可解释奖励。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "专家 rubric 驱动的 RLVR 基准与训练数据",
+  "best_for_ch": "需要研究指令跟随奖励、rubric Judge 或 RLVR 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sushant Mehta, Liudas Panavas, Suhaas Garre, Edwin Chen",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T10:56:47Z"
+}

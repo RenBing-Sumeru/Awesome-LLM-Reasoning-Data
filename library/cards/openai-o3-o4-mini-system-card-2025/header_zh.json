@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI o3/o4-mini System Card 仅披露高层数据来源、过滤、CoT 强化学习与安全对齐主张；训练数据、反馈契约和具体配方仍不可复用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型报告与数据披露账本",
+  "best_for_ch": "审计闭源推理模型报告中已披露与未披露的后训练数据、反馈和复现边界",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

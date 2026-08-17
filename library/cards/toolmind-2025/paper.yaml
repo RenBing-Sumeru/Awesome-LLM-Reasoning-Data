@@ -1,0 +1,125 @@
+id: toolmind-2025
+title: 'ToolMind Technical Report: A Large-Scale, Reasoning-Enhanced Tool-Use Dataset'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Chen Yang
+- Ran Le
+- Yun Xing
+- Zhenwei An
+- Zongchao Chen
+- Wayne Xin Zhao
+- Yang Song
+- Tao Zhang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English function calling and multi-turn tool use
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.15718
+  arxiv: https://arxiv.org/abs/2511.15718
+  code: null
+  data: https://huggingface.co/datasets/Nanbeige/ToolMind
+  project: null
+  huggingface: https://huggingface.co/datasets/Nanbeige/ToolMind
+  doi: https://doi.org/10.48550/arXiv.2511.15718
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: more than 20,000 tools linked by parameter correlations plus augmented public tool data
+  trace_author: a multi-agent simulator writes user, assistant, and tool turns over a function graph
+  answer_format: multi-turn conversations and tool definitions
+  process_fields:
+  - multi-turn conversations and tool definitions
+  environment_or_substrate: English function calling and multi-turn tool use
+  verifier_or_reward: fine-grained turn-level checks plus trajectory-level quality filtering
+  terminal_predicate: Retain records only after fine-grained turn-level checks plus trajectory-level quality filtering.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: a multi-agent simulator writes user, assistant, and tool turns over a function graph
+  generator: ToolMind constructs a function graph, simulates realistic interactions, and filters each turn before retaining
+    complete self-corrective trajectories.
+  filtering_rule: fine-grained turn-level checks plus trajectory-level quality filtering
+  sampling_protocol: more than 20,000 tools linked by parameter correlations plus augmented public tool data
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: tool-use SFT
+audit:
+  source_mixture: more than 20,000 tools linked by parameter correlations plus augmented public tool data
+  split: 'Official release scale: 160,000 synthetic and 200,000 augmented open-source tool-use instances; format: Parquet
+    records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: Apache-2.0
+  lineage: more than 20,000 tools linked by parameter correlations plus augmented public tool data -> a multi-agent simulator
+    writes user, assistant, and tool turns over a function graph -> fine-grained turn-level checks plus trajectory-level quality
+    filtering -> ToolMind -> tool-use SFT
+  known_failure_modes:
+  - judge models can miss semantically wrong calls that match the expected syntax
+  - synthetic user behavior and function graphs may not reflect production failures
+  citation_status: verified
+  confidence: high
+  notes: The full 15-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: ToolMind is a public Track 01 object containing multi-turn conversations and tool definitions and is explicitly
+  consumed by tool-use SFT.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2511.15718
+- primary-link-checked
+status: verified
+one_line_summary: ToolMind constructs a function graph, simulates realistic interactions, and filters each turn before retaining
+  complete self-corrective trajectories.
+why_it_matters: Trajectory-level acceptance can hide a wrong intermediate tool call whose error propagates through every later
+  turn.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: tool-use SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+- process_trace_supervision_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English function calling and multi-turn tool use
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 2393 downloads and 167 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: Apache-2.0.'
+  selection_eligible: true
+  year_impact_threshold: 2

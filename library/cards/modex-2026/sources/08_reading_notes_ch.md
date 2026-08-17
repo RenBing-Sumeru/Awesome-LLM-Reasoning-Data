@@ -1,0 +1,5 @@
+- ModeX 把 unigram、bigram 和 trigram Jaccard 相似度相加；选择时不使用正确性 verifier。
+- conductance 低于 tau=0.8 时保留较大簇，同样大时按总边权打破平局；最终答案是最大度节点。
+- 主实验使用 N=4/8/16；ModeX-Lite 默认每 100 tokens 剪枝一次部分路径，而生成 temperature、top-p 和 seed 均为 unknown。
+- 官方 MIT 仓库包含 ModeX 与 ModeX-Lite 代码，但未核验到候选、相似度图、剪枝和种子 manifest 发布。
+- Benchmark 提升只评估特定任务指标下的 selector，不能证明模态正确、轨迹质量、发布完整性或复用权利。

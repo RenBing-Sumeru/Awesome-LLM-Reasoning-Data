@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Qwen3-VL 报告原生 256K 多模态上下文和图像、视频、文本推理能力，但未披露后训练数据、反馈契约或审计工件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿多模态模型技术报告与数据披露台账",
+  "best_for_ch": "区分上下文与能力主张、后训练数据披露不足的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T09:57:37Z"
+}

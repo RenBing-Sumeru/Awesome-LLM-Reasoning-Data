@@ -1,0 +1,160 @@
+id: mutual-taught-2025
+title: Mutual-Taught for Co-adapting Policy and Reward Models
+year: 2025
+venue: ACL
+authors:
+- Tianyuan Shi
+- Canbin Huang
+- Fanqi Wan
+- Longguang Zhong
+- Ziyi Yang
+- Weizhou Shen
+- Xiaojun Quan
+- Ming Yan
+source_role:
+- construction_recipe
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- general_reasoning
+- dialogue
+training_use:
+- preference_learning
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.794/
+  arxiv: https://arxiv.org/abs/2506.06292
+  code: https://github.com/Stycoo/Mutual-Taught
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.794
+  venue: https://aclanthology.org/2025.acl-long.794/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.794/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.794.bib
+data_object:
+  prompt_source: Approximately 60,000 UltraFeedback prompts are divided across two policy-update subsets and a reward-model-update
+    subset; a fixed 2,000-prompt UltraFeedback set is used for checkpoint selection.
+  trace_author: The current Llama-3-8B-Instruct policy samples candidates for E-step preference construction; the selected
+    updated policy and its predecessor generate the paired responses used in the M-step.
+  answer_format: The E-step stores an RM-ranked chosen/rejected response pair for each prompt; the M-step stores a prompt
+    with one response from the updated policy and one from the previous policy, provisionally ordered as updated-over-previous.
+  process_fields:
+  - prompt
+  - iteration
+  - policy_checkpoint_id
+  - candidate_responses
+  - current_reward_scores
+  - chosen_response
+  - rejected_response
+  - previous_policy_response
+  - updated_policy_response
+  - reward_margin
+  - reward_score_standard_deviation
+  - filter_decision
+  - pseudo_preference_label
+  environment_or_substrate: EM-inspired alternating on-policy DPO and Bradley-Terry reward-model training over UltraFeedback
+    prompts.
+  verifier_or_reward: The current FsfairX-Llama3-RM-v0.1-derived reward model ranks E-step candidates, selects policy checkpoints,
+    computes the M-step margin, and therefore supplies every training preference in the loop.
+  terminal_predicate: Within an iteration, retain the checkpoint with the highest current-RM win rate against the preceding
+    policy on the fixed selection set; stop if that maximum is below tau=60%. The principal experiment reports two iterations.
+recipe_metadata:
+  base_model: Llama-3-8B-Instruct policy and FsfairX-Llama3-RM-v0.1 reward model.
+  teacher: No new human annotator; the current reward model supplies E-step rankings and the updated-over-previous policy
+    assumption supplies the initial M-step pseudo-label direction.
+  generator: The current policy samples E-step candidates; the selected updated and preceding policy checkpoints each generate
+    an M-step response for the same reward-update prompt.
+  filtering_rule: The reported Low-Quality Data Filtering rule discards a policy-comparison pair when the updated response
+    scores at least one current-score standard deviation below the previous response; it retains all other pairs, including
+    mildly negative margins. The reward model is trained on mixed self-training and policy-comparison data.
+  sampling_protocol: Sample M=5 responses per prompt at temperature 0.8 and top-p 0.95; choose the shortest above-average-reward
+    response and the lowest-reward response; run DPO; select among checkpoints saved every 50 steps; construct and filter
+    updated-versus-previous policy pairs; update the reward model; repeat.
+  rollout_count: 5
+  temperature: 0.8
+  inference_budget: Two reported iterations, one epoch per policy and reward-model update, 8 NVIDIA A100 GPUs, maximum sequence
+    length 2,048; the complete wall-clock and generated-token budget is unknown.
+  optimizer_or_scaffold: DPO uses beta 0.01, batch size 128, learning rate 7e-7, cosine scheduling, and 0.1 warmup; reward
+    modeling uses Bradley-Terry loss, batch size 512, learning rate 2e-6, and reinitializes each reward-model iteration from
+    the base RM.
+audit:
+  source_mixture: UltraFeedback prompts plus preferences inherited from FsfairX-Llama3-RM-v0.1; on-policy candidates, self-training
+    pairs, and pre/post-policy comparison pairs are produced during the loop.
+  split: The paper divides approximately 60,000 UltraFeedback prompts into three subsets and reserves one third for reward-model
+    updates; it also samples a fixed 2,000-prompt UltraFeedback model-selection set. Record IDs, exact counts, and whether
+    the selection set is disjoint from training are not disclosed as a manifest.
+  decontamination: unknown
+  license: The ACL paper is distributed under CC BY 4.0. The official paper-linked GitHub repository declares Apache-2.0,
+    but its default branch contains an Alignment Handbook snapshot rather than verified Mutual-Taught implementation or data;
+    upstream UltraFeedback, model, and generated-data terms remain separate and no unified release license was found.
+  lineage: UltraFeedback prompt -> current-policy candidates -> current-RM scores -> length-controlled chosen/rejected pair
+    -> DPO checkpoint -> current-RM checkpoint selection -> updated/previous policy responses -> current-RM margin and LQF
+    decision -> mixed Bradley-Terry RM training -> next iteration.
+  known_failure_modes:
+  - The same current reward model ranks policy candidates, selects checkpoints, and filters the pseudo-pairs used to retrain
+    itself, so shared error and reward hacking can circulate through the loop.
+  - Treating an updated-policy response as preferred is not an independent ground-truth label; Low-Quality Data Filtering
+    removes only confidently negative margins and intentionally retains mildly negative pairs.
+  - The monotonic-improvement theorem assumes exact E/M optimization and unbiased pseudo-label estimates, neither of which
+    is established for the neural training run.
+  - GPT-4-Preview-1106 supplies policy evaluation judgments, and RewardBench scores reward-model agreement; these outcomes
+    do not audit pseudo-label correctness or preference-data quality.
+  - The fourth-iteration extension degrades AlpacaEval-2 LC win rate from 44.9 to 40.3 before the 60% early-stop rule selects
+    the previous checkpoint, showing an observed over-optimization boundary.
+  - No Mutual-Taught-specific implementation, configuration, data, checkpoint, dynamic pair stream, rejected-pair log, seed
+    report, or immutable release was verified in the official paper-linked repository.
+  citation_status: verified
+  confidence: high
+  notes: The ACL long paper, appendix, DOI, arXiv record, and paper-linked GitHub URL were checked on 2026-07-21. Method and
+    result claims are traceable; executable artifact completeness is not.
+inclusion_reason: Defines a dynamic preference-data loop in which a reward model labels on-policy data for DPO and policy
+  changes generate filtered pseudo-preferences for reward-model refresh, making policy-RM distribution shift and circular
+  feedback directly auditable.
+related: []
+tags:
+- mutual-taught
+- policy-reward-coadaptation
+- pseudo-preferences
+- iterative-dpo
+- reward-model-shift
+- self-training
+- model-selection
+- low-quality-data-filtering
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Alternates RM-ranked on-policy DPO with mixed reward-model self-training, using filtered updated-versus-previous
+  policy pairs to refresh the RM without new human labels.
+why_it_matters: Treats preference records, checkpoint selection, and reward-model refresh as one evolving construction pipeline
+  while exposing a circular-label risk that static preference datasets hide.
+card: null
+needs:
+- 'needs_artifact: the paper-linked repository does not contain a verified Mutual-Taught implementation, configuration, or
+  release on its only branch'
+- 'needs_data: iteration-level prompts, candidates, scores, accepted and rejected pairs, filter decisions, and checkpoint
+  identities'
+- 'needs_split: immutable UltraFeedback record IDs and proof that the 2,000-prompt selection set is disjoint from training'
+- 'needs_audit: human-judged pseudo-label error, RM calibration, reward-hacking tests, seed variance, and contamination analysis'
+- 'needs_license: generated preference pairs, checkpoints, and upstream-data license manifest'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: ACL, DOI, arXiv, BibTeX, affiliations, and the author-linked GitHub URL are verified. The GitHub default branch contains
+    Alignment Handbook material and no Mutual-Taught-specific release, so executable artifact verification remains false.

@@ -1,0 +1,303 @@
+id: hal-2025
+title: 'Holistic Agent Leaderboard: The Missing Infrastructure for AI Agent Evaluation'
+year: 2025
+venue: ICLR 2026 Poster
+authors:
+- Sayash Kapoor
+- Benedikt Stroebl
+- Peter Kirgis
+- Nitya Nadgir
+- Zachary S Siegel
+- Boyi Wei
+- Tianci Xue
+- Ziru Chen
+- Felix Chen
+- Saiteja Utpala
+- Franck Ndzomga
+- Dheeraj Oruganty
+- Sophie Luskin
+- Kangheng Liu
+- Botao Yu
+- Amit Arora
+- Dongyoon Hahm
+- Harsh Trivedi
+- Huan Sun
+- Juyong Lee
+- Tengjun Jin
+- Yifan Mai
+- Yifei Zhou
+- Yuxuan Zhu
+- Rishi Bommasani
+- Daniel Kang
+- Dawn Song
+- Peter Henderson
+- Yu Su
+- Percy Liang
+- Arvind Narayanan
+source_role:
+- infrastructure
+- benchmark
+- agent_environment
+- data_release
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- web_navigation
+- software_engineering
+- scientific_research
+- customer_service
+- cost_aware_evaluation
+- behavioral_audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=vUaY1t64ZZ
+  arxiv: https://arxiv.org/abs/2510.11977
+  code: https://github.com/princeton-pli/hal-harness
+  data: https://huggingface.co/datasets/agent-evals/hal_traces
+  project: https://hal.cs.princeton.edu/
+  huggingface: https://huggingface.co/datasets/agent-evals/hal_traces
+  doi: https://doi.org/10.48550/arXiv.2510.11977
+  venue: https://iclr.cc/virtual/2026/poster/10006806
+  openreview: https://openreview.net/forum?id=vUaY1t64ZZ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.11977
+  release: https://huggingface.co/datasets/agent-evals/hal_traces
+data_object:
+  object_type: Heterogeneous benchmark-evaluation run archives containing agent/model/tool-call traces, task-specific evaluator
+    outputs, aggregate cost/accuracy data, and run lineage. HAL is not a single normalized environment dataset.
+  prompt_source: 'Task inputs come from nine existing benchmarks in the paper: Online Mind2Web, AssistantBench, GAIA, CORE-Bench
+    Hard, ScienceAgentBench, SciCode, SWE-bench Verified Mini, USACO, and TAU-bench Airline. HAL does not claim authorship
+    of one unified prompt corpus.'
+  trace_author: Evaluated model-scaffold combinations generate interactions under benchmark-specific tools and environments.
+    The paper's headline analysis spans nine model families plus reasoning-effort variants and multiple task-specific/generalist
+    scaffolds.
+  task_record:
+  - benchmark name
+  - task identifier
+  - benchmark-specific task data or files
+  - runtime and environment constraints
+  - agent/scaffold name and arguments
+  - model endpoint or model name
+  - run identifier and command
+  - task-specific gold answer or scoring procedure
+  episode_fields:
+  - Weave call identifier
+  - operation and display name
+  - trace identifier and parent call identifier
+  - task identifier via weave_task_id
+  - start and end timestamps
+  - model or tool inputs
+  - model or tool outputs
+  - exception or error
+  - call attributes and API parameters
+  - token-usage and latency summaries
+  - task evaluator output
+  - success or failure status when supplied by the benchmark adapter
+  - aggregate accuracy, cost, and latency
+  - Git repository, commit, branch, and run command when present
+  answer_format: Benchmark-specific submission returned by an agent `run(input, **kwargs) -> dict`; HAL stores raw/structured
+    outputs and applies the selected benchmark's evaluator rather than imposing one common answer schema.
+  process_fields:
+  - task state or files
+  - agent/model call
+  - tool call
+  - environment or tool response
+  - parent-child call graph
+  - final submission
+  - task-level evaluator result
+  - success/failure list
+  - token and dollar cost
+  - latency
+  - optional Docent rubric flags
+  observation: 'Observations are benchmark-specific: browser pages and screenshots, repository/filesystem and shell results,
+    scientific code/data outputs, search results, or simulated customer-service tool/database responses.'
+  verifier_or_reward: Mixed task-specific contract. Benchmark adapters supply gold-answer comparison, unit tests, environment
+    predicates, or benchmark-specific scoring; HAL aggregates accuracy/cost/latency. For behavior audit, cleaned transcripts
+    are separately scored by GPT-5 Medium through Docent rubrics for instruction following, tool failures, environmental barriers,
+    self-correction, verification, and gaming.
+  reward: Task-level success/failure or benchmark-specific scalar/subtask score plus cost and latency. Docent flags are post-hoc
+    audit annotations, not a demonstrated policy-training reward.
+  terminal_predicate: No universal HAL terminal predicate. Each benchmark defines completion, timeout, final-answer, environment-state,
+    unit-test, or task-specific scoring conditions; the harness enforces configured timeouts and records outputs/errors.
+  provenance: Existing benchmark task and evaluator -> selected scaffold/model -> local, Docker, or per-task Azure VM execution
+    -> Weave model/tool-call capture -> benchmark-specific evaluation -> run aggregation -> encrypted Hugging Face archive;
+    selected transcripts are cleaned and analyzed with Docent.
+  environment_or_substrate: A common orchestration layer over heterogeneous browser, code-repository, scientific-computing,
+    search, and simulated customer-service environments, with local (unsandboxed), Docker, and Azure VM backends.
+  release_shape: Current official HF repository contains 380 encrypted ZIP run archives (113,072,877,091 bytes) at SHA e7dcedc82b4f4bc819a170fd6616bdb44841c71e.
+    Inspected decrypted `_UPLOAD.json` files contain config, results, raw evaluator outputs, raw Weave logs, token/cost totals,
+    and Git lineage; schemas vary by benchmark and some archives may also include raw submissions.
+recipe_metadata:
+  base_model: Paper headline analysis covers Claude Opus 4.1, Claude 3.7 Sonnet, o3, GPT-4.1, GPT-5 Medium, o4-mini, DeepSeek
+    R1, DeepSeek V3, and Gemini 2.0 Flash, with reasoning-effort variants and additional models/configurations in comprehensive
+    appendix results. Exact endpoint snapshots are not uniformly immutable.
+  teacher: null
+  generator: The evaluated model plus agent scaffold interacting with a benchmark-specific environment; not a synthetic-training-data
+    teacher pipeline.
+  prompt_task_source: Nine existing agent benchmarks across web navigation, scientific research, software engineering/coding,
+    and customer service; subset choices are benchmark-specific.
+  sampling_protocol: Paper reports 21,730 task rollouts across 186 runs, while the main analysis retains 142 model-scaffold-benchmark
+    combinations and discusses 44 incomplete-matrix additions. High evaluation cost forced single runs without statistical
+    validation for most evaluations.
+  temperature: unknown
+  rollout_count: 21,730 paper-reported rollouts and more than 2.5B model-call tokens. Current project page shows 26,597 rollouts,
+    while the mutable HF release has 380 run archives; no frozen manifest maps the current archive set exactly to the paper's
+    rollouts.
+  inference_budget: Benchmark/scaffold-specific. The HAL Generalist Agent uses a plan-act loop with planning every four steps
+    and at most 200 steps; Anthropic high reasoning is mapped to 4,096 tokens through LiteLLM, while OpenAI reasoning-token
+    budgets are undisclosed. No common token/action budget applies to all runs.
+  search_or_scaffold: Task-specific scaffolds include Browser-Use, SeeAct, Open Deep Research, CORE-Agent, SAB Self-Debug,
+    SciCode tool-calling/zero-shot, SWE-Agent, and USACO Episodic+Semantic; HAL also evaluates a smolagents CodeAgent-based
+    generalist scaffold.
+  filtering_rule: TAU-bench Few Shot results were excluded after Docent exposed test-set examples in its in-context demonstrations.
+    Section 4 also omits incomplete matrix configurations; there is no preference-data or training-data quality filter.
+  selection_threshold: Benchmark/model/scaffold coverage is chosen for cross-model, cross-scaffold, cost, and domain comparison.
+    A universal acceptance threshold is not defined; exact missing-run selection and the Appendix 186-versus-184 run-count
+    discrepancy are unresolved.
+  optimizer_or_training_scaffold: null
+  analysis_judge: GPT-5 Medium through Docent for the paper's automated qualitative transcript analysis; exact model snapshot,
+    decoding settings, and all paper-era rubric artifacts are not fully pinned in the paper.
+audit:
+  source_mixture: Nine third-party benchmarks across four domains, multiple task-specific and generalist scaffolds, proprietary
+    and hosted model endpoints, benchmark evaluators, Weave telemetry, and Docent/GPT-5 Medium post-hoc judgments. Rights
+    and record-level source metadata are heterogeneous.
+  split: 'No global HAL train/dev/test split exists. Evaluation subsets are benchmark-specific: public sets for GAIA and AssistantBench,
+    50-task SWE-bench Verified Mini, 50 public TAU-bench Airline tasks, and other benchmark-specific public/live sets. A frozen
+    task/run manifest for all 21,730 paper rollouts is not published.'
+  decontamination: Trace archives are encrypted to deter automated scraping, but the decryption password is public and no
+    formal model-pretraining, benchmark-answer, or downstream-training contamination audit is reported.
+  benchmark_overlap: 'Direct risk is demonstrated: AssistantBench agents found benchmark answers on Hugging Face/arXiv, and
+    the official TAU-bench Few Shot scaffold leaked actual test examples into demonstrations. HAL uses public benchmark subsets
+    and live web tasks, so public exposure and temporal drift remain material.'
+  lineage: Inspected run bundles include benchmark/agent config, run ID/date/command, task IDs, evaluator output, token/cost
+    summaries, and Git commit metadata. However, no corpus-level checksum/manifest maps every paper rollout to an archive
+    or proves preservation of crashes, timeouts, partial runs, and raw submissions.
+  license: Paper record is CC BY 4.0 on OpenReview. Code license is unknown because the archived GitHub repository has no
+    LICENSE and pyproject has no license field. Trace/data license is unknown because the HF repository has no dataset card,
+    license metadata, or standalone license file. Third-party benchmark, model-output, and retrieved-web-content rights are
+    not reconciled.
+  release_version: 'Paper: arXiv:2510.11977v1 (2025-10-13), accepted OpenReview/ICLR record vUaY1t64ZZ (published 2026-01-26,
+    modified 2026-05-18). Code: version 0.1.0, archived 2026-07-01 at commit 16bb03ebc11577fb5ea6dc8bb6c968387085e6aa, no
+    GitHub releases. Traces: HF SHA e7dcedc82b4f4bc819a170fd6616bdb44841c71e, last modified 2026-02-01.'
+  version_drift: Paper scale is 21,730 rollouts/2.5B tokens; current project displays 26,597 rollouts; current HF has 380
+    archives and later runs/models/benchmarks. Provider endpoints and weights can also drift behind stable names. The paper
+    corpus is not released as a separately frozen snapshot.
+  verifier_or_judge_failure_modes:
+  - Benchmark-specific evaluators can reward shortcuts, hard-coded answers, guessed outputs, or leaked gold answers rather
+    than intended task completion.
+  - Docent/GPT-5 Medium flags are model-judged and only precision, not false-negative rate or full accuracy, is manually assessed
+    for selected rubrics.
+  - Environment/scaffold failures, rate limits, unavailable packages/files, browser crashes, and API errors can create false
+    negatives attributed to the agent.
+  - Different reasoning settings, model-provider swaps, quantization routing, and API changes introduce hidden version variance.
+  - Most expensive evaluations lack repeated trials and statistical validation.
+  - Failure flags are correlational; the paper cannot establish that correcting a flagged point would cause success without
+    checkpoint-and-replay experiments.
+  - The TAU-bench Few Shot leakage and AssistantBench benchmark lookup demonstrate contamination and evaluator-gaming risks.
+  - Appendix A4 reports 186 runs, while Appendix A10 per-benchmark run counts sum to 184.
+  successful_and_failed_sample_retention: 'Verified for two inspected official archives: one SciCode bundle stores both 2
+    successful and 63 failed task IDs plus 288 raw Weave calls; one CORE-Bench bundle stores 45 failed task IDs plus 57 task-linked
+    logs. Corpus-wide completeness for all paper rollouts, crashes, timeouts, and optional raw submissions is unknown.'
+  privacy_or_consent: No corpus-level privacy, consent, redaction, or personal-data policy is published. Logs may contain
+    public-web content, model outputs, tool inputs, and benchmark task material. TAU-bench financial actions are simulated;
+    they are safety examples, not real user transactions. Training or redistribution requires separate privacy and rights
+    review.
+  safety_boundary: Paper documents simulated wrong-card charges, over-budget purchases, incorrect refunds, wrong flight origins/classes,
+    and other unsafe behavior. These support deployment-risk audit, not a claim that HAL safely covers real high-stakes use.
+  citation_status: verified
+  confidence: medium
+  notes: Paper identity, full text/appendix, ICLR venue, project, archived code, HF repository tree, and two decrypted run
+    archives were verified. The release is real and substantial but heterogeneous, mutable, unlicensed, and not mapped by
+    a frozen paper-corpus manifest.
+  remaining_unknowns:
+  - exact paper-snapshot mapping from 21,730 rollouts and 2.5B tokens to current HF archive names and checksums
+  - reconciliation of 186 Appendix A4 runs versus 184 summed Appendix A10 run counts
+  - corpus-wide schema and completeness for successes, failures, crashes, timeouts, partial runs, and raw submissions
+  - separate code and trace/dataset licenses plus third-party benchmark, model-output, and web-content rights
+  - corpus-level privacy, consent, redaction, and sensitive-content handling policy
+  - immutable benchmark data snapshots, container/VM images, provider endpoints, credentials, retry logic, and deterministic
+    replay fixtures
+  - exact Docent rubric files, GPT-5 snapshot/decoding settings, false-negative analysis, and judge calibration for paper-era
+    log analysis
+inclusion_reason: HAL is an anchor for the environment/agent-trajectory track because it releases task-linked model/tool-call
+  logs with evaluator outputs, costs, failures, and per-run lineage across nine heterogeneous agent benchmarks, while making
+  contamination, provider drift, environment failure, licensing, and replay gaps directly auditable.
+related:
+- agent-reward-bench-2025
+- online-mind2web-2025
+- tau2-bench-2025
+tags:
+- environment-agent-trajectory-data
+- agent-evaluation
+- agent-trajectories
+- tool-use
+- evaluation-harness
+- leaderboard
+- cost-aware-evaluation
+- behavioral-audit
+- benchmark-gaming
+- contamination
+- replay-risk
+- version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: HAL standardizes nine agent benchmarks into cost-aware run archives with task evaluator outputs and Weave
+  call logs; the paper reports 21,730 rollouts/2.5B tokens, but the mutable 113 GB release lacks a dataset card, license,
+  and frozen paper manifest.
+why_it_matters: 'HAL shows what an auditable agent-trajectory corpus needs beyond final accuracy: task-linked action/call
+  traces, environment and evaluator outputs, cost, errors, success/failure retention, and run lineage. It also demonstrates
+  that public logs are not automatically training-ready when rights, privacy, replay, judge calibration, and paper-snapshot
+  provenance remain unresolved.'
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_repository_verified: true
+  dataset_contents_verified: partial
+  repository_files_verified: true
+  release_manifest_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper/venue/project/code/data links were checked; the repository was inspected at its archived commit, the
+    complete HF file tree was enumerated, and two encrypted archives were decrypted and schema-inspected. A corpus-wide manifest,
+    license, privacy policy, and completeness audit remain absent.
+curation_level: L3_summary_ready
+needs:
+- 'needs_frozen_manifest: publish a paper-snapshot archive manifest mapping all 21,730 rollouts and 2.5B tokens to benchmark/task/run
+  IDs, files, sizes, and checksums'
+- 'needs_scale_reconciliation: explain the Appendix A4 186-run count versus the 184 runs summed from Appendix A10 and separate
+  paper-era from post-paper leaderboard additions'
+- 'needs_license: add explicit code and trace/data licenses and reconcile rights for third-party benchmark inputs, model outputs,
+  raw submissions, and retrieved web content'
+- 'needs_privacy: publish corpus-level privacy, consent, redaction, sensitive-content, and takedown policies before training
+  or redistribution'
+- 'needs_schema: provide a dataset card and benchmark-aware schema/manifest for config, results, evaluator outputs, Weave
+  calls, raw submissions, and missing/failed uploads'
+- 'needs_replay: pin benchmark snapshots, dependencies, container/VM images, model endpoints, provider/retry settings, credentials
+  assumptions, seeds, and record/replay fixtures'
+- 'needs_retention_audit: prove whether every successful, failed, timed-out, crashed, filtered, and partially logged paper
+  rollout is preserved'
+- 'needs_judge_audit: release paper-era Docent rubrics/prompts, GPT-5 snapshot/settings, calibration, false-negative analysis,
+  and adjudication records'
+card: null

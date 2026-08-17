@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 10 万余条带证据与决策标签的检索增强代理步骤，可训练 grounded 轨迹模型和过程奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可验证代理轨迹数据集与 RAG 仿真平台论文",
+  "best_for_ch": "需要带检索证据、动作序列与步骤验证信号的 RAG 代理训练或分析研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Saber Zerhoudi, Michael Granitzer, Jelena Mitrović",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

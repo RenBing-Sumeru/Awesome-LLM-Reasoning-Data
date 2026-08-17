@@ -1,0 +1,97 @@
+id: leaky-thoughts-2025
+title: Leaky Thoughts
+year: 2025
+venue: EMNLP 2025
+authors: []
+source_role:
+- audit_failure
+- benchmark
+verification_contract:
+- judgment_required
+- environmental
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- privacy
+- agent
+- security
+training_use:
+- evaluation
+- safety_alignment
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1347/
+  arxiv: https://arxiv.org/abs/2506.15674
+  code: https://github.com/parameterlab/leaky_thoughts
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.emnlp-main.1347/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1347/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: personal-agent tasks containing sensitive user fields and injection opportunities.
+  trace_author: reasoning models generate internal traces and final outputs during agent-style evaluation.
+  answer_format: internal reasoning trace, final answer, and leakage/extraction outcome.
+  process_fields:
+  - sensitive field, prompt-injection condition, reasoning length or budget, output leakage indicator.
+  environment_or_substrate: personal-agent evaluation setting with hidden or internal reasoning traces.
+  verifier_or_reward: extraction probes and agentic evaluations.
+  terminal_predicate: whether sensitive data appears in reasoning traces or final outputs.
+recipe_metadata:
+  base_model: evaluated large reasoning models vary.
+  teacher: not applicable; this is an audit benchmark.
+  generator: models produce reasoning traces under normal or injected prompts.
+  filtering_rule: sensitive fields and prompt-injection conditions define leakage cases.
+  sampling_protocol: compare leakage across reasoning budgets and prompt settings.
+  inference_budget: test-time compute is a first-class variable because longer reasoning can leak more.
+  optimizer_or_scaffold: privacy-evaluation harness for traces and outputs.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Are reasoning traces stored, displayed, or sent to tools?
+  split: Does increased test-time compute increase leakage?
+  decontamination: Can prompt injection extract hidden fields?
+  license: Check official artifact license before reuse.
+  lineage: Are final outputs safe even when internal traces leak?
+  known_failure_modes:
+  - Hiding thoughts from users does not make them safe.
+  - Trace logging can create a new privacy dataset.
+  - Utility improvements from more reasoning may worsen leakage risk.
+  citation_status: verified
+  confidence: high
+  notes: Promoted with paper-specific atlas card and official primary link review.
+  metadata_status: carded
+inclusion_reason: Audit/failure entry for privacy leakage in reasoning traces, agent memory, and private reasoning-buffer
+  behavior.
+related: []
+tags: []
+status: verified
+card: cards/failures/leaky-thoughts.md
+needs:
+- 'needs_artifact_review: code/data/project coverage should be expanded when official artifacts are available'
+one_line_summary: Leaky Thoughts shows that reasoning traces from personal-agent settings can expose sensitive user data through
+  prompt injection or accidental leakage.
+why_it_matters: 'It turns chain-of-thought and test-time compute into a privacy audit problem: more internal reasoning can
+  increase utility while enlarging the attack surface.'
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-06-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary link pinned in artifacts.
+curation_level: L5_audit_ready
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

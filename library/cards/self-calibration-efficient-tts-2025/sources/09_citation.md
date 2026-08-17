@@ -1,0 +1,1 @@
+Huang, Chengsong, Langlin Huang, Jixuan Leng, Jiacheng Liu, and Jiaxin Huang. 2025. “Efficient Test-Time Scaling via Self-Calibration.” arXiv:2503.00031. Official paper: https://arxiv.org/abs/2503.00031.

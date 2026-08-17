@@ -1,0 +1,5 @@
+- Treat the approximately 150B figure as token exposures after upsampling, not 150B unique tokens; the stated pre-upsampling components sum to about 90B.
+- Keep simulated file-tool interactions separate from Docker-grounded RL episodes: the former disable shell execution and synthesize observations.
+- Read the reported 5,016 SWE-smith trajectories as a paper-run claim whose immutable revision, row IDs, shuffle seed, and preprocessing are unresolved.
+- Interpret all pass rates and the \(2^{23}\) versus \(1.5\times2^{28}\) token comparison only under the paper's models, tasks, prompts, sampling, and execution conditions.
+- Do not mistake the released evaluation JSONLs, repository harness, or preprocessed-repository instructions for the unreleased training corpus, full failed-rollout archive, or reproducible internal Docker fleet.

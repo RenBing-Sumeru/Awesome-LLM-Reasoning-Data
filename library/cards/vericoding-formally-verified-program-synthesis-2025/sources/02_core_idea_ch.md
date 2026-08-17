@@ -1,0 +1,1 @@
+核心贡献是当时规模最大的跨语言 vericoding 集：12,504 个 formal specifications，其中 Dafny 3,029、Verus/Rust 2,334、Lean 7,141，作者称 6,174 个为新的未见问题。任务来自 DafnyBench、APPS、FVAPPS、VerifiedCogen、Clever、HumanEval、NumPy 文档等，统一记录 preamble、spec、code hole、postamble、source ID 和质量元数据；`specs` 保存原文件，`jsonl` 提供可编程读取，`issues` 还保留翻译后不能编译的样本供 spec repair。最终 verifier 是对应编译器/证明器，MIT 仓库同时开放 benchmark、构建脚本与 55,397 次实验结果。

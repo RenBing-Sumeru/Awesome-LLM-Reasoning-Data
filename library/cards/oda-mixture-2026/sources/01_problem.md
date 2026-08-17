@@ -1,0 +1,5 @@
+Open SFT mixtures are often assembled heuristically without feedback linking source-level data choices to downstream capability.
+
+ODA closes the loop by ranking source corpora in OpenDataArena, then deduplicating and decontaminating the best-performing 500K-record mixture. The decision boundary is whether a serialized training record survives leaderboard-based source selection, deduplication, benchmark decontamination, and mixture ablations; the central artifact is data consumed by general-purpose reasoning SFT, not a model-only release.
+
+L4 facts: primary source arXiv:2601.09733; arXiv preprint; data object ODA-Mixture-500K with about 500K selected post-training instruction-response records; evaluation surface The paper compares 100K and 500K ODA mixtures and reports broad gains across math, code, and general reasoning, while the separate ODA-Math-460K targets AIME and HMMT.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

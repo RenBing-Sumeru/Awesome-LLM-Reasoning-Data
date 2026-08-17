@@ -1,0 +1,5 @@
+源问题来自 Bespoke-Stratos-17k，论文将其描述为 17,000 条问题、长推理和答案样本。长推理 teacher 为 DeepSeek-R1，短推理 teacher 为 Qwen2.5-Math-7B-Instruct。论文研究 rejection size 0、4、8，并以 k=8 作为默认设置；仓库 README 描述生成四次或八次短答案。在正确候选中按 token length 排序；若同一 question-answer pair 同时带 long 与 easy routing annotation，则去重并保留 easy 标记版本。Exact tie handling、answer parser、失败生成处理与最终 pair 数披露不足，无法仅凭论文重建 corpus。
+
+SFT 在构造序列上训练 Llama-3.2-3B-Instruct 与 Qwen2.5-7B-Instruct。仓库报告 full-parameter training、batch size 32、三个 epoch、learning rate 1e-5；论文指定 AdamW、temperature 0.7，7B 使用四张 A100 80GB，3B 使用两张。Post-training 阶段采样自动路由的 long/short rollout，并用 clipped objective 优化 binary correctness。评测覆盖 MATH500、GPQA-Diamond、GSM8K、OlympiadBench-Math、AIME 与 MMLU-Pro，指标为输出准确率和生成 token length。
+
+官方 GitHub 仓库提供 data-curation、SFT、post-training、inference 与 evaluation 代码，但可见根目录没有 dataset release 或明确 license file。官方 Hugging Face model page 以 Apache-2.0 发布 AutoL2S-7B 权重、配置和推理示例，并说明论文 EASY token 在实现中名为 specialLong。完整复现仍需固定 code/model revision，并核对 raw long/short pair、全部被拒 attempt、prompt template、精确 split、seed、teacher revision、正确性日志，以及论文记号与实现 token 名称的映射。

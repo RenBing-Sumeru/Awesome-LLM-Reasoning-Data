@@ -1,0 +1,125 @@
+id: apps-2021
+title: Measuring Coding Challenge Competence With APPS
+year: 2021
+venue: NeurIPS 2021 Datasets and Benchmarks / arXiv
+authors:
+- Dan Hendrycks
+- Steven Basart
+- Saurav Kadavath
+- Mantas Mazeika
+- Akul Arora
+- Ethan Guo
+- Collin Burns
+- Samir Puranik
+- Horace He
+- Dawn Song
+- Jacob Steinhardt
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- competitive-programming
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2105.09938
+  arxiv: https://arxiv.org/abs/2105.09938
+  code: https://github.com/hendrycks/apps
+  data: https://github.com/hendrycks/apps
+  project: null
+  huggingface: https://huggingface.co/datasets/codeparrot/apps
+  doi: https://doi.org/10.48550/arXiv.2105.09938
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: About 10,000 programming problems in the APPS release, commonly discussed across introductory, interview,
+    and competition difficulty bands; pin train/test split and extracted test files.
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'problem statement, constraints, starter code or examples, solutions, and input/output tests; Benchmark size:
+    约 10,000 道编程竞赛题，按 introductory/interview/competition 难度组织。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'problem statement, constraints, starter code or examples, solutions, and input/output tests;
+    Benchmark size: 约 10,000 道编程竞赛题，按 introductory/interview/competition 难度组织。'
+  verifier_or_reward: execution against problem tests and pass-rate scoring
+  terminal_predicate: execution against problem tests and pass-rate scoring
+  benchmark_size: 约 10,000 道编程竞赛题，按 introductory/interview/competition 难度组织。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Measuring Coding Challenge Competence With APPS; exact curation details should
+    be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Measuring Coding Challenge Competence With
+    APPS.
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official GitHub repository is MIT-licensed; dataset redistribution and original-problem provenance still require
+    artifact-level review before training or re-release.
+  lineage: 'Primary source: https://arxiv.org/abs/2105.09938'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Scale recorded as about 10,000 programming problems; pin APPS release, split, difficulty
+    band, tests, timeout, and execution harness before comparing scores. Benchmark size: 约 10,000 道编程竞赛题，按 introductory/interview/competition
+    难度组织。'
+inclusion_reason: APPS 把代码评测推进到竞赛编程和复杂输入输出题，能暴露长程算法推理与实现能力。
+related: []
+tags:
+- benchmark
+- competitive-programming
+- code-executable-benchmark
+why_it_matters: 它提供 约 10,000 道编程竞赛题，按 introductory/interview/competition 难度组织。 的评测规模信息和 competitive-programming 方向的可复用 benchmark
+  坐标。
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, dataset scale/version, and
+  license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: APPS 把代码评测推进到竞赛编程和复杂输入输出题，能暴露长程算法推理与实现能力。
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

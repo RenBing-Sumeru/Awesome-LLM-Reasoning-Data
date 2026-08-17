@@ -1,0 +1,1 @@
+论文评测多种 LLM 后，ULT 上平均测试准确率、statement coverage、branch coverage 和 mutation score 分别仅为 41.32%、45.10%、30.22% 和 40.21%；TestEval 上对应前三项超过 82%，PLT 也明显更高。ULT 测试能力与代码生成能力的相关系数为 0.79（p=0.002），高于 TestEval 与 PLT。结果支持 ULT 更能测量真实泛化，但指标仍受环境恢复和 mutation operator 选择影响。

@@ -1,0 +1,5 @@
+- Read “self-curation” as model-centric: DeepSeek-V2-Chat supplies initial quality labels, external LLMs synthesize/evaluate SFT, and DeepSeek-R1/open traces seed LongCoT.
+- Preserve the 6T schedule and its LR conditions separately from overlapping ingredient totals; do not sum ingredient disclosures into a new corpus total.
+- Keep the 222,066-file/1.3B-scorer experiment and the 10M-candidate fastText 99%-recall/45%-precision experiment tied to their teacher-defined labels.
+- Keep 3M SFT, 20K DPO, and GRPO batch 128/temp 0.6/LR 1e-6/clip 0.28/90x16+160x32 conditions attached to their stages.
+- Audit generated-solution/generated-test correlation, fastText feedback amplification, 10-gram decontamination limits, and the fact that MIT does not cover source training data.

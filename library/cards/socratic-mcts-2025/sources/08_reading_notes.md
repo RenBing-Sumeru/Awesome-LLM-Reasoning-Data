@@ -1,0 +1,5 @@
+- Actions are subquestions and node states pair each subquestion with an isolated subanswer.
+- Value estimation uses eight wrap-up-conditioned completions and heuristic-weighted internal agreement.
+- Reported settings use temperature 0.6, UCT constant 1.4, and a 0.9 confidence gate.
+- Evaluation uses single runs with 40 iterations on MMMU-PRO and 20 on MMStar and MathVista.
+- No official tree logs or code were confirmed; benchmark gains do not validate reasoning faithfulness.

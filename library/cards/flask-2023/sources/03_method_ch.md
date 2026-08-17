@@ -1,0 +1,1 @@
+1. 输入：指令实例、模型输出、skill 定义和 scoring rubric。2. 流程：把实例映射到相关 alignment skills，收集模型回答，用 rubric 提示 judge，并聚合每个 skill 的分数。3. 输出：skill-level score、ability-level summary 和模型比较表。4. 反馈：分数是 1-5 rubric judgment，不是可执行正确性。5. 复用前要固定 rubric 文本、judge 模型、prompt template、回答生成设置、实例 split 和聚合规则。

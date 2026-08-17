@@ -1,0 +1,4 @@
+For complex risks, the report observes that dedicated classifiers trained on tens of thousands of high-quality labelled samples can outperform direct policy reasoning. It also reports that policy reasoning can be time- and compute-intensive, that the safeguard models tend to underperform their gpt-oss counterparts on reported instruction-hierarchy evaluations, and that unrestricted chains of thought can hallucinate or conflict with the policy being interpreted.
+
+The official material does not disclose policy-labelling training records, source manifests, human-expert protocol, reward implementation or calibration, exact checkpoints, optimiser, rollouts, filters, splits, decontamination, training/evaluation code, or reproducible evaluator artifacts. Apache-2.0 availability applies to released weights; it does not establish rights to or provenance of the undisclosed data and feedback pipeline.
+

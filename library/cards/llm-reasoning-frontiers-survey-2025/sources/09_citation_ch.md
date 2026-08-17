@@ -1,0 +1,1 @@
+Zixuan Ke、Fangkai Jiao、Yifei Ming 等。2025。《A Survey of Frontiers in LLM Reasoning: Inference Scaling, Learning to Reason, and Agentic Systems》。Transactions on Machine Learning Research。https://mlanthology.org/tmlr/2025/ke2025tmlr-survey/

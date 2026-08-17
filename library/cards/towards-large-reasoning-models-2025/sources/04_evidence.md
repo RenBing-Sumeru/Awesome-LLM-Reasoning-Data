@@ -1,0 +1,1 @@
+The official arXiv record describes a 36-page survey with five figures and coverage of open-source large-reasoning-model projects. The paper's evidence consists of a literature synthesis and project discussion rather than a newly released benchmark, dataset, or controlled empirical comparison.

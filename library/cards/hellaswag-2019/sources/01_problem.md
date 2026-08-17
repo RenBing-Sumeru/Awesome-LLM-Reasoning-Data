@@ -1,0 +1,3 @@
+HellaSwag is an ACL 2019 benchmark paper with an official project page and GitHub data release. It asks whether language models can select the plausible ending of a short grounded situation when superficial artifacts have been adversarially filtered away.
+
+The evaluation object is a multiple-choice instance: an ActivityNet Captions or WikiHow context, four candidate endings, and one gold ending. The feedback contract is exact-choice accuracy against the released label or hidden test label. The atlas boundary is benchmark/evaluation surface, not a reasoning-data construction recipe or reward model; its value is showing how adversarial filtering can make commonsense continuation harder while keeping a simple scorer.

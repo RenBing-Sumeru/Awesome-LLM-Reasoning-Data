@@ -1,0 +1,1 @@
+可把 USACOArena 作为 cost-aware executable coding episode 的 schema。需要保留 problem id、public/hidden test policy、judge result、本地测试调用、生成 token 数、耗时、credit ledger、模型/provider、脚手架、config 文件、Hydro/problemset 版本和最终报告。它适合比较 pass rate 接近但探索和花费模式不同的 agent 策略。做 atlas 时要把 evaluation reward、training reward 和 budget audit 分成不同字段。

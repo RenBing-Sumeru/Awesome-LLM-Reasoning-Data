@@ -1,0 +1,3 @@
+可信证据来自官方任务发布、数据 schema 和评分契约，而不是仅看榜单数字。本地已审计规模是：本地元数据尚未完整固定规模，定量复用前必须回到官方发布版本核验。行级证据是一条记录，包含 natural-language user goal, available MCP servers and tools, model tool-selection or tool-execution trajectory, final answer, and benchmark score、模型输出或轨迹，以及来自 official harness scoring; exact per-task mix of deterministic checks, execution checks, and 裁判 logic should be pinned from the 代码库修订版 的验证或裁判结果。
+
+聚合分数只能在官方设置内解释。证据边界包括：public split and any hidden/private split are 待审计；待审计；public MCP task definitions and tool schemas can become 训练 data after release。补充审计备注：Anthropic is cited only as the official source for the Model Context Protocol background, not as the benchmark publisher。如果使用 裁判或 rubric，裁判提示、模型和版本是证据的一部分；如果使用程序化检查，检查器和运行时是证据的一部分。

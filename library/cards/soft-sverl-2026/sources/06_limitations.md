@@ -1,0 +1,2 @@
+Shared parameters couple policy improvement with verifier permissiveness. Repeated votes can be correlated; checklist omissions can make incomplete responses appear correct; replay pseudo-label errors can reinforce themselves; partial credit can reward systematic incompleteness; dual thresholds hide discarded middle cases. Gold coverage, calibration, buffer history, vote logs, thresholds, prompts, licenses, and run configurations are unreleased, so the method is not independently replayable.
+

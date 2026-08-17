@@ -1,0 +1,5 @@
+- The paper collects 48 responses per question and reuses non-overlapping windows to estimate budgets 1, 2, 4, 8, and 16.
+- Oracle labels maximize empirical accuracy minus lambda-priced sample cost under an average budget.
+- A 16-feature XGBoost classifier imitates the labels; this is supervised classification, not online policy-gradient RL.
+- Four settings total 38,400 model responses, but their raw response and utility tables were not confirmed as released.
+- Reported gains test an allocator under sample-count budgets; they do not establish trace-data quality or transfer under API drift.

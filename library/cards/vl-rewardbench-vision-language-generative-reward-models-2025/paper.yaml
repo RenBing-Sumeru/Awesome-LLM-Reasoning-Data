@@ -1,0 +1,104 @@
+id: vl-rewardbench-vision-language-generative-reward-models-2025
+title: 'VL-RewardBench: A Challenging Benchmark for Vision-Language Generative Reward Models'
+year: 2025
+venue: CVPR 2025
+authors:
+- Lei Li
+- Yuancheng Wei
+- Zhihui Xie
+- Xuqing Yang
+- Yifan Song
+- Peiyi Wang
+- Chenxin An
+- Tianyu Liu
+- Sujian Li
+- Bill Yuchen Lin
+- Lingpeng Kong
+- Qi Liu
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- multimodal-reasoning
+- vision-language
+- reward-modeling
+training_use:
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2025/html/Li_VL-RewardBench_A_Challenging_Benchmark_for_Vision-Language_Generative_Reward_Models_CVPR_2025_paper.html
+  arxiv: null
+  code: null
+  data: https://huggingface.co/datasets/Zhihui/Vl-RewardBench
+  project: https://vl-rewardbench.github.io/
+  huggingface: https://huggingface.co/datasets/Zhihui/Vl-RewardBench
+  doi: https://doi.org/10.1109/CVPR52734.2025.02296
+  venue: https://openaccess.thecvf.com/content/CVPR2025/html/Li_VL-RewardBench_A_Challenging_Benchmark_for_Vision-Language_Generative_Reward_Models_CVPR_2025_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2025/html/Li_VL-RewardBench_A_Challenging_Benchmark_for_Vision-Language_Generative_Reward_Models_CVPR_2025_paper.html
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://openaccess.thecvf.com/content/CVPR2025/html/Li_VL-RewardBench_A_Challenging_Benchmark_for_Vision-Language_Generative_Reward_Models_CVPR_2025_paper.html
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: VL-RewardBench supplies human-verified multimodal preference labels for evaluating and improving vision-language
+  reward models.
+related: []
+tags:
+- vision-language
+- reward-benchmark
+- human-verification
+- cvpr-2025
+one_line_summary: VL-RewardBench is a 1,250-example human-verified benchmark that stress-tests vision-language generative
+  reward models on perception, hallucination, and reasoning.
+why_it_matters: It separates basic visual-perception failures, hallucinations, and reasoning failures in a public preference
+  benchmark.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data

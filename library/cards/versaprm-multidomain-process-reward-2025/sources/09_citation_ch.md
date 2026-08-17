@@ -1,0 +1,1 @@
+Thomas Zeng、Shuibai Zhang、Shutong Wu、Christian Classen、Daewon Chae、Ethan Ewer、Minjae Lee、Heeju Kim、Wonjun Kang、Jackson Kunde、Ying Fan、Jungtaek Kim、Hyung Il Koo、Kannan Ramchandran、Dimitris Papailiopoulos 和 Kangwook Lee。2025。《通过合成推理数据构建多领域过程奖励模型 VersaPRM》。载于第四十二届国际机器学习会议论文集，第 74197–74239 页，PMLR 267。https://proceedings.mlr.press/v267/zeng25h.html

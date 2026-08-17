@@ -1,0 +1,5 @@
+Prior multimodal mathematical training often uses answer-level SFT or outcome rewards; PRM work can use scalar step scores directly in ranking or RL. URSA changes the data contract in two ways: it pairs continuation-based logical potential with deliberately constructed visual-grounding failures, and it converts a relative PRM drop into an outcome-reward penalty rather than optimizing the PRM scalar directly.
+
+BEL, Monte Carlo estimation, synthetic corruption, PRMs, GRPO, and Best-of-N are not individually new. The distinctive direction is their combination for image-referenced mathematical traces: a record should distinguish image grounding, local process label, final outcome, learned PRM score, and RL reward. The checked release only partially preserves this contract because public rows lack route, rollouts, PRM scores, and reward events.
+
+Reuse comparisons should hold model, candidate budget, images, and terminal checker fixed; then compare outcome-only GRPO, scalar PRM variants, and drop-penalty PS-GRPO while preserving all rejected traces. Benchmark gains do not identify the correctness of the BEL/MIE labels or the portability of the PRM.

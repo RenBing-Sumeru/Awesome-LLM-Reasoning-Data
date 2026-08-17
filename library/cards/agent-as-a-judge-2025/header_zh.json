@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Agent-as-a-Judge 主动读取 workspace 证据，按分层 requirements 评测开发 agent，并以 DevAI 提供可复核的概念验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "agent 评测框架与分层需求数据集论文",
+  "best_for_ch": "需要构建、审计或复现 workspace agent 评测与过程证据判决的研究者。",
+  "confidence_ch": "高：ICML 正式论文、DevAI 数据集和 MIT 许可的公开代码仓库均已核验；跨环境泛化须自行验证。",
+  "authors_ch": "Mingchen Zhuge, Changsheng Zhao, Dylan Ashley, Wenyi Wang, Dmitrii Khizbullin, Yunyang Xiong, Zechun Liu, Ernie Chang, Raghuraman Krishnamoorthi, Yuandong Tian, Yangyang Shi, Vikas Chandra, Jürgen Schmidhuber",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T00:00:00Z"
+}

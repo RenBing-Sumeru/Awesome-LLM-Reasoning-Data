@@ -1,0 +1,95 @@
+id: autorubric-rubric-based-evaluation-2026
+title: 'Autorubric: Unifying Rubric-based LLM Evaluation'
+year: 2026
+venue: arXiv 2026
+authors:
+- Delip Rao
+- Chris Callison-Burch
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- llm_judge
+- rubric_evaluation
+training_use:
+- evaluation
+- sft
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.00077
+  arxiv: https://arxiv.org/abs/2603.00077
+  code: https://github.com/delip/autorubric
+  data: https://github.com/delip/autorubric
+  project: https://autorubric.org/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2603.00077
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official release; see the linked primary paper or data card.
+  trace_author: Human experts, annotators, or the official release pipeline.
+  answer_format: Rubric criteria, model outputs, per-criterion verdicts and explanations, including CHARM-100 ground-truth
+    labels.
+  process_fields:
+  - prompt
+  - rubric
+  - response
+  - label_or_verdict
+  environment_or_substrate: Rubric-based LLM evaluation
+  verifier_or_reward: Configurable single or ensemble LLM judges with calibration and psychometric checks.
+  terminal_predicate: The released judgment label or rubric verdict is available for evaluation or training.
+recipe_metadata:
+  base_model: See official release.
+  teacher: Human experts or official annotators.
+  generator: Official release pipeline.
+  filtering_rule: See official paper or data card.
+  sampling_protocol: See official paper or data card.
+  rollout_count: null
+  temperature: null
+  inference_budget: See official paper or data card.
+  optimizer_or_scaffold: Evaluation or post-training use described in the official release.
+audit:
+  source_mixture: Official primary paper/data release and linked official artifacts.
+  split: See official release.
+  decontamination: Public benchmark or training records should be held out where applicable.
+  license: See official artifact page.
+  lineage: https://github.com/delip/autorubric
+  known_failure_modes:
+  - Framework results depend on judge choice, calibration examples, and the validity of the supplied rubric.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv record, project site, PyPI package, and author-maintained GitHub repository were checked; no peer-reviewed
+    venue was verified.
+inclusion_reason: The release provides rubric- or judgment-grounded records that can train, evaluate, or audit LLM-based evaluators.
+related: []
+tags:
+- rubric
+- llm_judge
+- evaluation
+one_line_summary: Autorubric unifies calibrated, rubric-based LLM evaluation with mixed criterion types, ensembles, and released
+  benchmark artifacts.
+why_it_matters: It exposes rubric-grounded evaluation signals and their audit boundary.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv record, project site, PyPI package, and author-maintained GitHub repository were checked; no peer-reviewed
+    venue was verified.
+category_ids:
+- judgment_rubric_domain_expert_data

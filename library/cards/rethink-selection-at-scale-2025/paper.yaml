@@ -1,0 +1,240 @@
+id: rethink-selection-at-scale-2025
+title: 'Rethinking Data Selection at Scale: Random Selection is Almost All You Need'
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: EMNLP 2025'
+authors:
+- Tingyu Xia
+- Bowen Yu
+- Kai Dang
+- An Yang
+- Yuan Wu
+- Yuan Tian
+- Yi Chang
+- Junyang Lin
+source_role:
+- construction_recipe
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- general_reasoning
+- mathematical_reasoning
+- code_reasoning
+- instruction_following
+- reasoning_data_selection
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.146/
+  paper_pdf: https://aclanthology.org/2025.findings-emnlp.146.pdf
+  supplemental: null
+  arxiv: https://arxiv.org/abs/2410.09335
+  code: https://github.com/xiatingyu/SFT-DataSelection-at-scale
+  code_snapshot: https://github.com/xiatingyu/SFT-DataSelection-at-scale/tree/5a635e42f84640f3c6b23a526fcfb1f251765f2b
+  data: https://www.modelscope.cn/datasets/xiatingyu/wildchat-en
+  data_snapshot: null
+  dataset_card: https://www.modelscope.cn/datasets/xiatingyu/wildchat-en
+  project: null
+  huggingface: null
+  models: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.146
+  venue: https://aclanthology.org/2025.findings-emnlp.146/
+  openreview: https://openreview.net/forum?id=qUJsX3XMBH
+  acl: https://aclanthology.org/2025.findings-emnlp.146/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-emnlp.146.bib
+data_object:
+  record_type: The selection object is an existing answer-level instruction or multi-turn conversation record from OpenHermes2.5
+    or an English-filtered WildChat pool. A selector attaches a score, embedding, cluster/compression state, or token count
+    and retains 10K or 50K records for SFT; this work does not generate new response traces.
+  prompt_source: OpenHermes2.5 provides over one million multi-source synthetic and general instruction records. The paper
+    extracts more than 440K English dialogues from WildChat-1M and describes them as non-toxic. Exact immutable input revisions
+    and paper-run IDs are not disclosed.
+  trace_author: Source-dependent. OpenHermes aggregates model-generated conversations from multiple datasets; WildChat records
+    pair real-user prompts with GPT-3.5 or GPT-4 responses. The paper selects the existing assistant text rather than authoring
+    a new rationale.
+  context_state:
+  - instruction or multi-turn conversation
+  - source assistant response
+  - source-pool identity
+  - selector name
+  - model-derived quality score or embedding
+  - cluster assignment or compression state
+  - query, response, and total token counts
+  - selected or rejected membership
+  answer_format: Heterogeneous natural-language responses in the upstream conversation schemas, including general instruction
+    following, math, and code. Some rows may contain chain-of-thought-like prose, but intermediate steps are neither required
+    nor separately supervised.
+  process_fields:
+  - source_record_and_revision
+  - selector_and_implementation_variant
+  - score_or_embedding
+  - optional_cluster_assignment
+  - optional_token_counts
+  - selected_or_rejected_membership
+  - SFT_run_binding
+  - benchmark_metrics
+  observation: Selection-time observations are gradients, conditioned/direct response losses, rating-token probabilities,
+    response cross-entropy, embedding distances, compression ratios, or token counts. Public artifacts do not retain a unified
+    per-record score and membership ledger.
+  verifier_output: No independent answer-correctness verifier is used. Each method outputs a scalar rank or diversity decision,
+    and utility is judged only after SFT on BBH, GSM8K, HumanEval, MMLU, and IFEval.
+  environment_or_substrate: Qwen2-7B and Llama3-8B serve as SFT base models and, for several methods, self-scorers. Training
+    uses LLaMA-Factory 0.8.2.dev0 according to the repository; evaluation uses Open-Instruct scripts. Exact framework and
+    benchmark revisions are not pinned.
+  verifier_or_reward: 'Six tested self-scoring selectors: LESS gradient similarity, IFD conditioned/direct answer-loss ratio,
+    SelectIT rating-token uncertainty, response cross-entropy, DiverseEvol K-center distance, and ZIP compression. Random
+    sampling is the control. These are selection signals, not proof that a response is correct, safe, licensed, or uncontaminated.'
+  terminal_predicate: Main experiments retain 10K records and appendix experiments retain 50K. The proposed practical selector
+    clusters the pool, allocates selections proportionally to cluster sizes, and keeps longer records within each cluster.
+    Cluster count, rounding, ties, and an end-to-end implementation are not disclosed.
+  provenance: OpenHermes2.5 or WildChat-1M -> paper-run snapshot or English/non-toxic extraction -> method-specific score/diversity
+    feature -> 10K or 50K subset -> three-epoch SFT of Qwen2-7B or Llama3-8B -> five benchmark families -> comparison with
+    five random subsets and full-pool SFT.
+  release_surface: The repository publishes partial or adapted implementations, dependencies, token-count and clustering utilities,
+    and one SFT launch example. ModelScope hosts a 2.55 GB filtered WildChat JSONL. Exact selected subsets, selected/rejected
+    IDs, per-record scores, checkpoints, logs, evaluation outputs, and an immutable paper-run manifest are absent.
+recipe_metadata:
+  base_model: Qwen2-7B and Llama3-8B. SelectIT also uses Qwen2-1.5B with Qwen2-7B for the Qwen model-level score, while the
+    Llama branch uses only Llama3-8B sentence-level scoring because of cost.
+  teacher: No external teacher is introduced. Several selectors use the base model as a self-scorer; upstream assistant authors
+    remain source-dependent.
+  generator: None at the paper's selection stage. Existing OpenHermes and WildChat assistant responses are retained.
+  prompt_task_source: OpenHermes2.5 and more than 440K extracted English WildChat dialogues. Neither exact paper-run input
+    revision nor membership manifest is released.
+  filtering_rule: Quality methods rank by LESS, IFD, SelectIT, or response cross-entropy. Diversity methods use DiverseEvol
+    or ZIP. Five independent random selections are controls. The practical alternative uses K-means to preserve pool diversity
+    and ranks by token length within each cluster.
+  selector_details:
+    LESS: Adam/LoRA gradient similarity to validation examples; the scaled implementation uses random 1,000-example validation
+      and 10,000-example warm-up sets per source pool.
+    IFD: Ratio of answer loss conditioned on the instruction to direct-answer loss; the scaled experiment uses 1,000 instruction-embedding
+      clusters.
+    SelectIT: Uncertainty from rating-token probabilities aggregated across prompts and optionally models.
+    cross_entropy: Response cross-entropy under the base model, selecting larger values as higher quality; the paper notes
+      a bias toward long responses.
+    DiverseEvol: K-center diversity in model embedding space, adapted to select all required points per iteration to avoid
+      a matrix exceeding 1 TB.
+    ZIP: Greedy compression-ratio/redundancy selection; the paper reports about seven days for 50K selection.
+  sampling_protocol: Each method and five random controls select 10K examples for the main tables; appendix experiments select
+    50K. Runs above 50K are omitted because several baselines are too slow.
+  rollout_count: unknown
+  temperature: unknown
+  top_p: unknown
+  inference_budget: A common budget is not disclosed. DiverseEvol reportedly uses eight A100-80G GPUs for 5–7 days; ZIP needs
+    about seven days for 50K; NUGGETS is excluded for a stated requirement over 2,000 hours on 40 A100-80G GPUs; DQ is excluded
+    for over 1 TB memory.
+  search_or_scaffold: Four quality selectors, two diversity selectors, quality-plus-K-means ablations, random controls, and
+    a K-means-plus-token-length practical recipe. There is no response rollout search or new trace generation.
+  selection_threshold: Retain top-ranked 10K or 50K records. Paper-level length selection keeps longer items within proportionally
+    allocated K-means clusters. Released `token_length/kmeans_sample.py` hard-slices to the first 100 embeddings and emits
+    records nearest cluster centers, so it does not implement Table 4.
+  seed_protocol: Five random runs are reported without selected IDs or a run-to-seed map. Public KMeans and SFT examples use
+    seed 0, but paper-table selector, data-order, training, and evaluation seeds are not bound.
+  optimizer_or_scaffold: Three SFT epochs, global batch size 128, context length 4096, learning rate 7e-6, cosine scheduling,
+    weight decay 0.1, and warm-up ratio 0.01. The public four-GPU example obtains global batch 128 from per-device batch 4
+    and gradient accumulation 8.
+audit:
+  source_mixture: OpenHermes2.5 contains over one million entries from sixteen sources; WildChat contributes more than 440K
+    extracted English dialogues. Exact paper-run source revisions, mixture membership, and hashes are not pinned.
+  split: Main subsets contain 10K records, appendix subsets 50K, and five random controls are used. No selected IDs, random
+    IDs, or train-file manifests are released. The ModelScope WildChat artifact exposes one train payload but does not state
+    an exact row count in its minimal card.
+  decontamination: No exact-match, n-gram, semantic, or provenance-based audit is disclosed against BBH, GSM8K, HumanEval,
+    MMLU, or IFEval.
+  benchmark_overlap: Unknown. The source pools contain broad synthetic and web instruction data, but no benchmark hashes,
+    overlap candidates, rates, or adjudication log are released.
+  license: The ACL paper is CC BY 4.0. The author repository has no detected root license. Current WildChat is ODC-BY; current
+    OpenHermes has no detected license metadata. The filtered ModelScope WildChat card says Apache-2.0 without reconciling
+    upstream ODC-BY or publishing a source-license manifest.
+  lineage: Upstream pool -> undisclosed snapshot -> optional WildChat extraction -> adapted selector -> undisclosed IDs ->
+    LLaMA-Factory SFT -> Open-Instruct evaluation -> table. No manifest binds source/model/framework revisions, selector outputs,
+    seeds, checkpoints, and metrics.
+  release_version: Code commit 5a635e42f84640f3c6b23a526fcfb1f251765f2b from 2025-02-09 has no tag or GitHub Release. Filtered
+    WildChat revision d12162481d6ae89a093a4adbdc41ab5abeb1aa64 from 2024-12-13 contains one 2,547,377,673-byte LFS JSONL.
+    No release-wide version binding exists.
+  successful_and_failed_sample_retention: 'Public artifacts omit the unified selector ledger: per-record scores, clusters,
+    random membership, selected/rejected decisions, method failures, and records underlying Tables 1–7 cannot be recovered.'
+  privacy_or_consent: Current upstream WildChat documents removals of toxic and some PII/sensitive conversations. The paper
+    calls its extracted branch non-toxic but does not pin that revision or release an independent privacy, consent, and safety
+    audit for the exact payload.
+  known_failure_modes:
+  - 'The title exceeds the experimental boundary: six tested self-scoring selectors, two source pools, two base-model families,
+    and mainly 10K/50K subsets do not cover all data-selection methods.'
+  - LESS, IFD, SelectIT, and especially DiverseEvol are changed for scale, so differences may reflect both pool scale and
+    implementation adaptation.
+  - External scoring is omitted for cost; NUGGETS, DQ, and 100K+ subsets are omitted for compute, memory, or runtime.
+  - 'The preferred length selector is not reproducible from the released code: clustering processes only 100 embeddings and
+    selects cluster centers rather than proportional longest-within-cluster examples.'
+  - Selector scores do not verify source-answer correctness, and no correctness labels or selected-subset spot audit is public.
+  - No contamination audit is reported despite common public evaluation benchmarks and broad multi-source training pools.
+  - Private absolute paths and placeholders, external LLaMA-Factory and Open-Instruct assumptions, no tests, and no paper-ready
+    configs hinder reproduction.
+  - Code, OpenHermes, and filtered-WildChat licensing is absent or unreconciled.
+  - WildChat safety claims depend on an unpinned upstream revision, and the filtered card exposes no transformation or risk
+    ledger.
+  citation_status: verified
+  confidence: medium
+  notes: Verified against all 14 pages of the Findings paper, ACL metadata and DOI, arXiv, the complete code tree at the pinned
+    commit, the filtered WildChat git artifact, and official current OpenHermes/WildChat cards. Artifact existence is verified;
+    exact paper subsets and end-to-end reproduction are not.
+  remaining_unknowns:
+  - Exact input dataset, base-model, LLaMA-Factory, Open-Instruct, and benchmark revisions
+  - Selected and random record IDs, all seeds, cluster count, allocation rounding, and tie-breaking
+  - Exact filtered-WildChat row count and transformation/moderation code
+  - Checkpoints, logs, evaluation outputs, confidence intervals, and comparable compute profiles
+  - Benchmark-overlap candidates and semantic-contamination decisions
+  - End-to-end code and rights reconciliation for the preferred selector
+inclusion_reason: 'This is a high-value negative result and scaling recipe for SFT data construction: it tests quality- and
+  diversity-oriented self-scoring selectors on two large instruction pools, shows how compute and implementation adaptations
+  shape conclusions, and proposes a cheap token-length-plus-clustering alternative whose release mismatch is itself an important
+  audit finding.'
+related:
+- more-data-or-better-data-2025
+tags:
+- sft-data-selection
+- random-selection
+- self-scoring
+- data-diversity
+- token-length
+- k-means
+- scaling-study
+- negative-result
+- partial-code-release
+status: partial
+one_line_summary: The study selects 10K or 50K OpenHermes and English WildChat conversations with gradient, loss, uncertainty,
+  diversity, compression, random, or token-length rules, then compares Qwen2-7B and Llama3-8B SFT across five benchmark families.
+why_it_matters: It tests whether sophisticated self-scoring survives million-scale pools and real compute limits, while the
+  missing subset IDs, code/recipe mismatch, contamination audit, license reconciliation, and run manifest show what a credible
+  negative scaling claim must release.
+card: null
+needs:
+- 'needs_release: publish every 10K/50K and random subset with per-record scores, clusters, and decisions'
+- 'needs_reproducibility: implement proportional longest-within-cluster selection and remove the first-100-embedding truncation'
+- 'needs_versioning: bind datasets, models, frameworks, benchmarks, code, seeds, checkpoints, and metrics in one immutable
+  manifest'
+- 'needs_decontamination: release exact and semantic overlap candidates and decisions for all five benchmark families'
+- 'needs_license: add a code license and reconcile OpenHermes components and filtered WildChat with upstream terms'
+- 'needs_privacy: pin the WildChat revision and publish English, toxicity, PII, consent, and safety filtering records'
+- 'needs_compute: report comparable wall-clock, GPU-hours, peak memory, and preprocessing for included and excluded selectors'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: medium
+  notes: Findings publication, official BibTeX and DOI, full paper, code, source pools, and filtered WildChat artifact were
+    verified. This does not verify selected subsets, contamination safety, license completeness, or end-to-end reproduction.
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives

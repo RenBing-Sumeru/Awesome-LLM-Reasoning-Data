@@ -1,0 +1,10 @@
+- Scope is restricted to representative mathematical reasoning tasks. The paper does not establish transfer to code, science, factuality, or agent trajectories.
+- Corruption validity is inferred from sampled downstream answer success. A step can harm a particular solver because of phrasing or distribution shift rather than mathematical invalidity, and finite rollouts can misestimate success probabilities.
+- Five fixed error types, stable prompt formats, Answer tags, and balanced correct/incorrect classes can create surface shortcuts that differ from naturally occurring mistakes and class prevalence.
+- Generator and critic co-adapt. The round-2 ablation already shows that an overly strong critic creates an uninformative game; manual opponent matching is required, and behavior beyond two rounds is unknown.
+- Binary ±1 outcomes compress error severity, critique specificity, and pedagogical usefulness into one signal. A correct label does not guarantee a useful explanation.
+- The SFT lineage relies on PRM800K human annotations, GPT-4-turbo-2024-04-09, DeepSeek-R1-Distill-Qwen-7B, and GPT-4o-2024-08-06. Teacher errors or formatting preferences can propagate.
+- No decontamination or deduplication procedure against PRM800K test, ProcessBench, DeltaBench, MATH500, or AIME2024 was found in the paper or README.
+- The official data folder redirected to institutional sign-in during review. JSON keys, exact released rows, per-record provenance, checksums, and data license are therefore unknown. Code license is also unknown; MIT metadata was verified only for the Hugging Face model repositories.
+- Test-time gains use up to five retries per rejected step and, in some settings, five independent searches. Accuracy comparisons should be read together with this extra inference budget.
+- The paper itself notes potential misuse of a generalized sneaky generator to produce false or misleading information.

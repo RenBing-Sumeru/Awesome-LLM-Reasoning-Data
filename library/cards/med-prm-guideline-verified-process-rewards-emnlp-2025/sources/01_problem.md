@@ -1,0 +1,1 @@
+Medical reasoning requires evidence-grounded intermediate decisions, but generic process labels can reward clinically unsafe steps. Med-PRM asks how medical guidelines can verify and supervise reasoning steps so rewards reflect clinical validity rather than surface plausibility.

@@ -1,0 +1,1 @@
+DeepResearch Bench uses expert-authored PhD tasks, whereas DRACO begins with real user requests and makes them evaluable through filtering and augmentation, emphasising sources from forty countries and objectivity. The novelty is combining in-the-wild demand with four-dimensional expert rubrics, not a new research agent.

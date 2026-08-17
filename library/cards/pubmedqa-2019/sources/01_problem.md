@@ -1,0 +1,5 @@
+PubMedQA asks whether a biomedical QA model can answer research-question titles from PubMed abstracts when the conclusion is withheld from the input. The primary paper appeared at EMNLP-IJCNLP 2019 and is registered in ACL Anthology with DOI 10.18653/v1/D19-1259; the official project page and GitHub repository provide the release pointers, PQA-L files, and scorer.
+
+The evaluation surface is a PMID-keyed instance with a question, an abstract context, a long answer from the article conclusion, and a yes/no/maybe label. The hard setting is not open-domain retrieval or clinical decision support: the evidence passage is already supplied, and the verifier checks a three-way answer against a gold label.
+
+The practical gap is that biomedical yes/no questions often require synthesizing experimental findings rather than matching a short fact span. PubMedQA separates three evidence strengths: 1,000 expert-labeled PQA-L examples, about 61.2k unlabeled PQA-U examples, and about 211.3k artificially generated PQA-A examples. Any use of the dataset should state which subset, split, and scorer are being used.

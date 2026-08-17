@@ -1,0 +1,7 @@
+The contribution has three linked parts.
+
+First, the authors construct RandomCalculation with an open recursive generator. Atomic integers, fractions, squares, and cubes are combined with addition, subtraction, multiplication, and division. Candidate expressions are parsed and evaluated with latex2sympy2 and SymPy, filtered for real finite results and a float-conversion check, shuffled, and capped at 1,000 items per operation-count level. Direct inspection found no duplicate prompts in the checked-in files, but the public generator does not explicitly deduplicate candidates.
+
+Second, the paper uses behavioral probes on familiar and recent benchmarks. A partial-prompt test supplies the first 60% of a problem and measures exact suffix reconstruction and answer accuracy. It also compares response overlap and KL divergence before and after RL. These measures are treated here as contamination indicators: they can expose suspiciously benchmark-specific behavior, but they do not identify the exact training source.
+
+Third, the RLVR study varies the reward contract. A correct continuous numeric reward is compared with random, inverted, and majority-voted-incorrect rewards. The central comparison is whether correct rewards improve RandomCalculation while spurious rewards fail to do so, and whether this behavior differs from results on familiar benchmarks. The released data, reward ablation, and contamination audit are related evidence streams; none alone establishes data quality or general reasoning.

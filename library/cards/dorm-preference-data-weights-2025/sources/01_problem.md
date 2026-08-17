@@ -1,0 +1,3 @@
+Preference collections combine labels of unequal reliability and learning value. Hard filtering can discard difficult but informative examples, while treating every remaining record equally lets noisy labels distort a reward model. Existing heuristics also do not adapt when the reward model has learned some data sources better than others.
+
+DORM asks how preference records should contribute to reward-model training rather than whether they should be categorically retained. It learns an importance weight for each source under a validation objective: uncertain yet label-consistent examples should receive more influence, whereas examples whose labels strongly conflict with model predictions should be downweighted.

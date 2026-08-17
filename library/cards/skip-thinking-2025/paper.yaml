@@ -1,0 +1,113 @@
+id: skip-thinking-2025
+title: 'Skip-Thinking: Chunk-wise Chain-of-Thought Distillation Enable Smaller Language Models to Reason Better and Faster'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Xiaoshu Chen
+- Sihang Zhou
+- Ke Liang
+- Xiaoyu Sun
+- Xinwang Liu
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+domains:
+- reasoning
+training_use:
+- distillation
+- evaluation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.610/
+  arxiv: https://arxiv.org/abs/2505.18642
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.610/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Teacher-generated chain-of-thought reasoning; text-davinci-002 is the stated teacher. Prompt/source release
+    was not verified.
+  trace_author: unknown
+  answer_format: Chains partitioned into chunks and selectively retained or skipped using CWT, SBC, and STT compression operations.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The selection/compression rule is algorithmic, while exact correctness filtering and training data are
+    not released in the checked sources.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: text-davinci-002
+  generator: Skip-Thinking compresses reasoning by chunk-wise and selective skipping operations intended to preserve useful
+    portions of teacher CoT.
+  filtering_rule: The selection/compression rule is algorithmic, while exact correctness filtering and training data are not
+    released in the checked sources.
+  sampling_protocol: The official ACL record was verified. No official code, dataset, compressed-trace package, or training
+    model was confirmed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Skip-Thinking compresses reasoning by chunk-wise and selective skipping operations intended to preserve
+    useful portions of teacher CoT.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Teacher-generated chain-of-thought reasoning; text-davinci-002 is the stated teacher. Prompt/source release was
+    not verified. -> Chains partitioned into chunks and selectively retained or skipped using CWT, SBC, and STT compression
+    operations. -> The selection/compression rule is algorithmic, while exact correctness filtering and training data are
+    not released in the checked sources. -> reported final selection or training use. Raw lineage records are not established
+    as released.
+  known_failure_modes:
+  - Selective deletion can eliminate dependency steps; chunk boundaries, retained/skipped labels, and teacher-data provenance
+    are unavailable.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It helps audit long-to-short trace transformations, especially the need to retain chunking and deletion
+  decisions alongside resulting text.
+related: []
+tags:
+- cot-compression
+- selective-skipping
+- distillation
+- teacher-traces
+- efficiency
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A selective CoT compression approach that treats omitted intermediate steps as a controlled construction
+  decision.
+why_it_matters: It helps audit long-to-short trace transformations, especially the need to retain chunking and deletion decisions
+  alongside resulting text.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

@@ -1,0 +1,1 @@
+arXiv 摘要报告该基准用约 500 person-hours 手工构造 100 个任务，并评测 11 个 SOTA LLM。论文报告所有被测 LLM 在 class-level 生成上明显弱于 standalone method-level 基准表现，且 method-level coding ability 不能等价反映 class-level ability。README 验证了 schema、410 个 methods、平均每类 33.1 个 tests、三种 generation strategies、Hugging Face 支持和 evaluation 目录。逐样本证据是生成类或方法的测试执行结果，不是自然语言判定。

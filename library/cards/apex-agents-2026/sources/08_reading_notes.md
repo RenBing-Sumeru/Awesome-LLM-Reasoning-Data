@@ -1,0 +1,1 @@
+Do not flatten APEX-Agents into a single leaderboard score. The important unit is a world plus prompt plus rubric plus produced artifacts. Keep Pass@1, mean criterion score, file-output tasks, and professional-domain categories separate; they answer different audit questions.

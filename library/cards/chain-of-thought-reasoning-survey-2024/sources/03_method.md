@@ -1,0 +1,3 @@
+As a survey, the paper investigates prior research and summarizes methods through a taxonomy. Its useful units of analysis are a prompt, an intermediate reasoning chain, a target task, and the evaluation result associated with that setup. The linked resource collection supports readers who want to trace the summarized work back to its sources.
+
+For each cited result, reconstruct the smallest comparable record: what the model receives, what intermediate text it produces, what answer is scored, and under which task conditions it is scored. That record makes the high-level organization actionable and prevents a chain format from being mistaken for evidence about training data, sampling choices, or verification.

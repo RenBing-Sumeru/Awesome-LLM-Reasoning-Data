@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Seed-Prover 以 Lean 二值成功奖励训练 lemma-first 证明策略，并从编译反馈迭代扩展到 5,000 个猜想的重搜索；Seed-Geometry 报告了 2.3 亿问题，但公开仓库仅含成功证明 artifact，不是训练数据发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "形式化定理证明模型报告与数据披露账本",
+  "best_for_ch": "研究 Lean RLVR、失败轨迹与编译反馈、测试时搜索扩展和形式化数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Luoxin Chen、Jinming Gu、Liankai Huang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,1 @@
+It makes the path from VLM search to pairwise safety alignment concrete: candidate traces are generated at several reasoning stages, selection depends on stage-sensitive rewards, and DPO consumes only the selected/rejected outputs. The missing trees, scores, visits, and source mappings show why a pairwise release is not a complete rollout-trace release.

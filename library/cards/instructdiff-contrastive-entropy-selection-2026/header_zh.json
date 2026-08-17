@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "InstructDiff 以校准前后的负对数似然和熵变化选择监督微调记录，保留对比熵最低的例子。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "领域自适应的监督微调数据选择研究",
+  "best_for_ch": "从混合指令或推理池选择模型特异监督微调子集的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Junyou Su, He Zhu, Xiao Luo, Liyu Zhang, Hong-Yu Zhou, Yun Chen, Peng Li, Yang Liu, Guanhua Chen",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T03:00:00Z"
+}

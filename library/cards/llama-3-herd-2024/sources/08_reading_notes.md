@@ -1,0 +1,6 @@
+- Anchor pretraining claims to the official recipe: 405B, 15.6T tokens, about 3.8×10^25 FLOPs, and a 50/25/17/8 general/reasoning/code/multilingual mix.
+- Keep the six-round sequence explicit: preference collection → RM → best-of-10–30 rejection sampling → 8.5K–9K-step SFT → DPO → model averaging; PPO was not adopted.
+- Separate capability contracts: execution and generated tests for code; answer/step RMs, MCTS, and Python for math; executable APIs plus human feedback for tools; human/LLM policies and guards for safety.
+- More than 25M synthetic SFT examples and over 2.7M code examples are reported, but total human, preference, rejected, and per-round records are unknown.
+- Weights, utilities, Llama Guard 3, Prompt Guard, and Code Shield are released; the corpus, preferences, RMs, candidates, tests, and training stack are not.
+- Treat `llama-4-herd-2025` as a related successor. Preserve Llama 3's distinct dense 2024 recipe, license, contamination findings, and item-lineage gaps.

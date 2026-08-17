@@ -1,0 +1,172 @@
+id: leap-formal-mathematics-2026
+title: 'LEAP: Supercharging LLMs for Formal Mathematics with Agentic Frameworks'
+year: 2026
+venue: arXiv
+authors:
+- Po-Nien Kung
+- Linfeng Song
+- Dawsen Hwang
+- Jinsung Yoon
+- Chun-Liang Li
+- Simone Severini
+- Mirek Olšák
+- Edward Lockhart
+- Quoc V Le
+- Burak Gokturk
+- Thang Luong
+- Tomas Pfister
+- Nanyun Peng
+source_role:
+- benchmark
+- data_release
+- infrastructure
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-mathematics
+- lean4
+- theorem-proving
+training_use:
+- evaluation
+- test_time_compute
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.03303
+  arxiv: https://arxiv.org/abs/2606.03303
+  code: null
+  data: https://github.com/google-deepmind/superhuman/blob/96fa6c4cc3a9bb7450ee7b6773b659d3a030dace/imobench/lean_proof_bench.csv
+  project: https://imobench.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2606.03303
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Lean-IMO-Bench contains 60 records derived from IMO-ProofBench, split into 30 Basic and 30 Advanced problems;
+    the official CSV fields are Problem ID, Problem, Solution, Grading guidelines, Category, Level, Short Answer, Source,
+    and Lean Statement. The evaluation also uses the 12 Putnam 2025 problems and two combinatorics case studies.
+  trace_author: Gemini 3.1 Pro is the reported LEAP backend. Internally it produces informal proofs, informal blueprints,
+    Lean proof sketches, AND-OR DAG updates, candidate proofs, and revisions; the public release contains successful Lean
+    proofs, not complete trajectories.
+  answer_format: A completed Lean 4 proof artifact paired with a Lean compiler/kernel acceptance outcome. Aggregate evaluation
+    records additionally require problem identity, method, rollout or sampling budget, and solved/unsolved status.
+  process_fields:
+  - root Lean theorem and available dependencies
+  - informal proof or blueprint
+  - proposed lemma statements and formal proof sketch
+  - AND-OR DAG node, dependency, and acyclicity state
+  - candidate Lean code and compiler feedback
+  - LLM decomposition-review decision
+  - rollout, revision, and LLM-call budget
+  - final Lean proof and checker outcome
+  environment_or_substrate: Lean 4 with Mathlib, LeanSearch retrieval, an AND-OR DAG state store, simple depth-first search,
+    backtracking, and Gemini 3.1 Pro model calls. Exact Lean, Mathlib, LeanSearch-index, and model snapshot versions are not
+    disclosed.
+  verifier_or_reward: Lean compilation/type checking is the programmatic correctness verifier. A separate LLM reviewer judges
+    whether a proposed decomposition is relevant, easier, and plausible; this heuristic controls search but does not certify
+    the final proof.
+  terminal_predicate: A complete, sorry-free proof of the target theorem is accepted by Lean in the evaluation environment.
+    A proof sketch can enter the DAG only when Lean accepts the parent derivation with sorry placeholders confined to explicitly
+    proposed child lemmas.
+recipe_metadata:
+  base_model: Gemini 3.1 Pro in the reported LEAP experiments.
+  teacher: No training teacher is used. Lean compiler feedback supplies executable correction signals, while an LLM reviewer
+    supplies a non-binding decomposition-quality judgment.
+  generator: The backend model generates informal arguments, blueprints, supporting lemmas, proof sketches, full Lean proofs,
+    and revisions.
+  prompt_task_source: Lean-IMO-Bench, Putnam 2025, and the formal statements for the two reported combinatorics case studies.
+  sampling_protocol: LEAP is reported with two rollouts in Tables 2 and 4. The direct iterative component starts from one
+    attempt and allows up to 20 compiler-feedback revisions in Table 5. Exact prompts and sampling parameters are not disclosed.
+  rollout_count: Two for the reported LEAP benchmark tables; the no-reviewer Putnam A5 ablation runs eight unsuccessful rollouts.
+  temperature: null
+  inference_budget: Table 3 reports 46 to approximately 3,000 LLM calls per solved Putnam problem, 8 to 211 active DAG nodes,
+    and 300 to approximately 2,000 final proof lines. A uniform wall-clock, token, or monetary budget is not disclosed.
+  filtering_rule: Lean rejects ill-typed proofs and sketches; the LLM reviewer can reject unhelpful decompositions; the state
+    writer rejects cyclic DAG updates; search backtracks from failed branches. Only a complete Lean-accepted proof counts
+    as solved.
+  selection_threshold: Lean acceptance is binary for formal artifacts. The LLM reviewer threshold, prompt, calibration, and
+    tie policy are not disclosed.
+  optimizer_or_scaffold: Direct formalization with LeanSearch-assisted revision, followed when needed by informal blueprint
+    generation, checked proof sketches, AND-OR DAG memoization, LLM review, depth-first search, and backtracking. No model
+    optimization is performed.
+audit:
+  source_mixture: arXiv:2606.03303v2, the official IMO-Bench project, the official `superhuman` repository, the 60-row Lean-IMO-Bench
+    CSV, and the released successful Lean proof files.
+  split: Lean-IMO-Bench has 30 Basic and 30 Advanced evaluation instances. Putnam 2025 has 12 separate evaluation problems.
+    The paper describes evaluation, not a train/validation/test training split.
+  decontamination: unknown
+  benchmark_overlap: Lean-IMO-Bench is derived from IMO-ProofBench; Putnam 2025 and public benchmark exposure are explicit.
+    Pretraining overlap or decontamination for Gemini 3.1 Pro and the baselines is not reported.
+  license: The official repository states Apache-2.0 for software and CC-BY for other materials. Downstream users should still
+    preserve item-level source metadata and audit original competition-problem rights.
+  release_version: Official `superhuman` repository commit 96fa6c4cc3a9bb7450ee7b6773b659d3a030dace, dated 2026-06-05.
+  successful_and_failed_sample_retention: The release contains successful Lean proofs for all 12 Putnam problems, 42 solved
+    Lean-IMO-Bench instances, and two open-problem artifacts. Failed proofs, rejected decompositions, compiler-message histories,
+    and complete DAG/rollout traces are not released.
+  privacy_or_consent: Not applicable to the mathematical benchmark records; no personal-data collection is described.
+  lineage: IMO-ProofBench problem and source metadata to expert-authored Lean statement to LEAP search with Gemini 3.1 Pro,
+    Lean feedback, LLM review, and DAG/backtracking to a released successful Lean proof. Putnam and open-problem artifacts
+    have separate stated sources.
+  known_failure_modes:
+  - Lean acceptance establishes the encoded theorem under the active environment, not fidelity to the intended informal statement.
+  - The LLM reviewer can prefer plausible but unproductive decompositions or prune a useful branch; only one reviewer ablation
+    is reported.
+  - Search cost varies by more than an order of magnitude across Putnam problems and is not normalized to a fixed token or
+    wall-clock budget.
+  - Geometry solve rates remain 1/6 on Basic and 1/8 on Advanced for LEAP.
+  - Results can drift with Gemini, Lean, Mathlib, LeanSearch, prompt, or service changes because exact versions are not pinned.
+  - Successful-only proof release prevents auditing failed attempts, reviewer false positives/negatives, and branching efficiency.
+  - Benchmark/pretraining contamination is not measured.
+  citation_status: verified
+  confidence: high
+  remaining_unknowns:
+  - exact Gemini 3.1 Pro model/API snapshot and role-specific configuration
+  - prompts, temperature, token limits, retry caps, and LLM reviewer threshold
+  - Lean, Mathlib, and LeanSearch-index revisions and an executable environment manifest
+  - framework implementation, DAG schema, logs, and failed trajectories
+  - per-problem wall-clock, hardware, concurrency, and API cost
+  - independent reproduction under a pinned environment
+  notes: The paper and released outcomes are verified, but reproduction completeness is partial. The public `leap` directory
+    contains the paper, README, and solutions rather than the LEAP agent implementation.
+inclusion_reason: LEAP exposes a formal-mathematics evaluation surface where a long search process terminates in a mechanically
+  checked Lean artifact, while also showing why a heuristic planning reviewer must be kept separate from the correctness verifier.
+related: []
+tags:
+- programmatically-verifiable-outcome
+- formal-mathematics
+- lean4
+- agentic-proof-search
+- test-time-compute
+- benchmark
+status: verified
+needs:
+- 'needs_environment: pin Lean, Mathlib, LeanSearch, and model/API versions'
+- 'needs_code: release the LEAP implementation and exact prompts/configuration'
+- 'needs_traces: release DAG states, compiler feedback, reviewer outputs, budgets, and failed attempts'
+- 'needs_decontamination: report benchmark/pretraining overlap controls'
+- 'needs_reproduction: independently replay results under a pinned environment'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: LEAP combines Gemini 3.1 Pro, compiler-guided revision, and an AND-OR proof DAG to produce Lean-checked
+  outcomes, but releases successful proofs rather than replayable agent trajectories.
+why_it_matters: For Programmatically Verifiable Outcome Data, it separates the exact terminal label supplied by Lean from
+  the heuristic LLM judgment used to allocate search, and makes inference budget part of any fair comparison.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Checked arXiv v2, the official project page, the official repository README/license/tree, the pinned benchmark CSV
+    header, and released proof directories. No implementation or trajectory release was found.
+category_ids:
+- programmatically_verifiable_outcome_data

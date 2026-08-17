@@ -1,0 +1,3 @@
+The paper reports experiments on Math500 and AIME, comparing the success of its deeper self-correction samples under varied settings. Its stated evidence is that iterative deepening can produce a higher success rate on difficult reasoning problems than the sampled baselines it considers.
+
+The result should be read as evidence about the reported fixed models, prompts, and budgets, not as a guarantee that self-reflection is always beneficial. The paper provides ablations, but it is a preprint and no official code or data release was identified; reproductions should document sampling depth, token cost, and the fraction of revisions that actually correct an earlier answer.

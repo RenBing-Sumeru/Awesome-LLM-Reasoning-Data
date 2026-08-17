@@ -1,0 +1,3 @@
+正确性只相对于 automatic answer checking against the generated target answer. 成立。通过分数不自动证明鲁棒推理、安全行为、解释忠实，或能迁移到 benchmark 分布之外。
+
+隐藏假设包括：Public source describes three diagnostic tasks, Latent List, MRCR, and IDK; exact released generator/code artifacts were not verified in this pass.；arXiv preprint license/reuse terms should be checked before redistribution; no official code/data license was verified.；依赖或运行时漂移；裁判或评测器版本漂移；以及污染风险：Synthetic generation reduces direct leakage risk, but prompts, generated examples, and result tables can still become public benchmark contamination。除非发布版本暴露训练输入、过滤规则和优化用途，否则这张卡不能被读成训练配方证据。

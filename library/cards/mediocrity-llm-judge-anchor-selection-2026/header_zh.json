@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该研究表明，在 LLM Judge 的锚点式比较中，中等能力锚点比极强或极弱锚点更能区分模型排序。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "LLM-as-a-Judge 锚点选择分析与大规模比较判决数据",
+  "best_for_ch": "需要设计、校准或审计成对比较式 LLM Judge 与模型排行榜的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shachar Don-Yehiya, Asaf Yehudai, Leshem Choshen, Omri Abend",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

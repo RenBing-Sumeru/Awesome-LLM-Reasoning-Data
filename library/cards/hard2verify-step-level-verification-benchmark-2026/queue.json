@@ -1,0 +1,19 @@
+{
+  "title": "Hard2Verify: A Step-Level Verification Benchmark for Open-Ended Frontier Math",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1031/",
+    "data": "https://huggingface.co/datasets/Salesforce/Hard2Verify",
+    "code": "https://github.com/SalesforceAIResearch/Hard2Verify",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:44:51Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "人工标注五百小时前沿证明，检验高难推理验证上限",
+    "updated_at": "2026-07-16T11:44:51Z"
+  }
+}

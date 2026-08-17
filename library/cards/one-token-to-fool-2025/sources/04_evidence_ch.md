@@ -1,0 +1,1 @@
+主攻击实验以十个无内容字符串攻击五个基准上的专用与通用裁判。它报告 GPT-4o 对一个冒号最高有 35% 假阳性；LLaMA3-70B-Instruct、Qwen2.5-72B-Instruct 对“Thought process:”为 60–90%；General Verifier 在 MATH 上对单个空格为 66.8%。同一测试矩阵中，加入负例后的 Master-RM 假阳性接近零。其普通评判能力未显著下降：Master-RM-7B 与 GPT-4o 的 kappa 为 0.91，与 500 条人工标注的 kappa 为 0.90。这只能证明对这些字符串和协议的抗性，不能代表任意对抗回答或端到端 RL 都安全。

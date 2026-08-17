@@ -1,0 +1,115 @@
+id: processbench-error-identification-2024
+title: 'ProcessBench: Identifying Process Errors in Mathematical Reasoning'
+year: 2024
+venue: ACL 2025 / arXiv
+authors:
+- Chujie Zheng
+- Zhenru Zhang
+- Beichen Zhang
+- Runji Lin
+- Keming Lu
+- Bowen Yu
+- Dayiheng Liu
+- Jingren Zhou
+- Junyang Lin
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- math-prm
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.06559
+  arxiv: https://arxiv.org/abs/2412.06559
+  doi: https://doi.org/10.48550/arXiv.2412.06559
+  code: https://github.com/QwenLM/ProcessBench
+  data: https://huggingface.co/datasets/Qwen/ProcessBench
+  project: https://github.com/QwenLM/ProcessBench
+  huggingface: https://huggingface.co/datasets/Qwen/ProcessBench
+  venue: https://aclanthology.org/2025.acl-long.50/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: math reasoning traces and process-error annotations; exact curation details may remain unknown.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: Math problem, step-by-step solution trace, error-step label or correctness label, and evaluation score.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: earliest erroneous step identification
+  verifier_or_reward: Prediction matches the annotated earliest error step or process-correctness label.
+  terminal_predicate: Prediction matches the annotated earliest error step or process-correctness label.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: math reasoning traces and process-error annotations; exact curation details may remain unknown.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, venue, code, data, and license metadata: https://arxiv.org/abs/2412.06559;
+    https://arxiv.org/pdf/2412.06559; https://github.com/QwenLM/ProcessBench; https://huggingface.co/datasets/Qwen/ProcessBench'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Hugging Face dataset page lists apache-2.0; repository license file still should be checked before redistributing
+    code-derived artifacts.
+  lineage: 'Primary source: https://arxiv.org/abs/2412.06559'
+  known_failure_modes:
+  - annotated first error may be ambiguous; models can exploit formatting cues
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: PDF first page shows Qwen Team, Alibaba Inc.; arXiv comments list ACL 2025. Official GitHub and Hugging Face dataset
+    verify code/data artifacts; dataset page lists apache-2.0. Split revision and scoring settings remain audit targets.
+inclusion_reason: 'high: step-level process feedback benchmark with PRM/reward reuse implications.'
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- math-prm
+why_it_matters: Direct PRM/critic benchmark for step-level reasoning oversight.
+status: verified
+needs:
+- 'needs_metadata: pin official dataset/code revisions and repository license file'
+- 'needs_audit: verify annotation protocol, first-error label definition, source overlap, contamination, and judge/evaluator
+  settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ProcessBench exposes earliest erroneous step identification as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: PDF first page shows Qwen Team, Alibaba Inc.; arXiv comments list ACL 2025. Official GitHub and Hugging Face dataset
+    pages verify code/data; dataset page lists apache-2.0.
+category_ids:
+- benchmarks_evaluation_surfaces
+- preference_reward_feedback_data
+- process_trace_supervision_data

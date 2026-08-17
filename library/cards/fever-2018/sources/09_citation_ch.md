@@ -1,0 +1,1 @@
+引用：James Thorne, Andreas Vlachos, Christos Christodoulopoulos, and Arpit Mittal. "FEVER: a Large-scale Dataset for Fact Extraction and VERification." NAACL-HLT 2018，pages 809-819。DOI：https://doi.org/10.18653/v1/N18-1074。论文：https://aclanthology.org/N18-1074/。官方数据/scorer：https://fever.ai/dataset/fever.html；https://github.com/sheffieldnlp/fever-scorer。

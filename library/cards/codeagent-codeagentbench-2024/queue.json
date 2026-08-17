@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T04:00:43Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "codebench 优先使用 SWE-bench、SWE-bench Pro ref407有点历史但又不代表",
+    "updated_at": "2026-07-15T04:00:43Z"
+  }
+}

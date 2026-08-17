@@ -1,0 +1,5 @@
+- Read Sections 3.2–3.3 together: the known solution is teacher input, while the frozen student sees the explanation and is scored on recovering the solution.
+- Keep three models distinct: the trainable 7B teacher, the frozen 7B reward student, and the 7B/32B students later trained on generated traces.
+- Treat the 64 GRPO completions as an online reward group, the 16 candidates as a larger-student cropping workaround, and 16,710 as the full distillation-row count.
+- Use the reward ablation to audit failure modes; removing explanation KL causes repetition and long traces rather than merely a small score change.
+- The official Hugging Face collection contains distilled students. Do not cite it as a release of the teacher or generated trace dataset.

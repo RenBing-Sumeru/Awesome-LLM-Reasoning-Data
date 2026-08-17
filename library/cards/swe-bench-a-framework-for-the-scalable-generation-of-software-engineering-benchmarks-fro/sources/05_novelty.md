@@ -1,0 +1,3 @@
+SWE-bench manually supports fixed repositories and focuses mainly on bug fixes. SWE-Bench++ automates pull-request sourcing, environment recovery, and oracle extraction, extending coverage to 11 languages and task types including bugs and features. Unlike fully synthetic SWE data, it remains grounded in real issues and human pull requests.
+
+A second change connects evaluation difficulty to training: tasks failed by strong agents yield hint-guided trajectories rather than only gold patches. The novelty lies in a scalable multilingual benchmark-to-training factory, not a new definition of patch testing.

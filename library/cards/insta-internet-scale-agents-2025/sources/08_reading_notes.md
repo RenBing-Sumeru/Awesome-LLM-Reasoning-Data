@@ -1,0 +1,5 @@
+- Keep the units separate: the paper and v2 contain exactly 146,746 tasks, v3 contains 146,441 task rows, and the claimed approximately 150K trajectories plus 2.2M screenshots/action traces are not public artifacts.
+- Read Sections 4–6 and the prompt/code appendices together: the proposer emits a task or `N/A`, one Playwright exploration grounds a refined task, and terminal LLM success judgment selects the demonstrated 10.5K-of-20K SFT set.
+- Do not read 82.6% as environmental ground truth: it is the best reported accuracy on 100 human-labeled trajectories, while the scaled run uses a different Qwen3-235B judge and releases no calibration records or rationales.
+- Audit privacy and side effects before reuse: PII removal defaults off and, when enabled, scrubs processed text rather than raw HTML or screenshots; v3 also contains a registration task that conflicts with the no-account policy.
+- The venue is an arXiv preprint with an OpenReview record saying “Submitted to ICLR 2026,” not an accepted ICLR paper; pair this Card with AgentTrek to compare host-driven task proposal with tutorial-guided replay.

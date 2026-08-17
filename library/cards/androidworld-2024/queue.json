@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T13:58:07Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "800star 398ref 不是一定要保留，提供了一个安卓测评环境",
+    "updated_at": "2026-07-13T13:58:07Z"
+  }
+}

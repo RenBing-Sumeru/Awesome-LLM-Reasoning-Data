@@ -1,0 +1,3 @@
+For Track 12, the report's contribution is a relatively detailed disclosure ledger: it reports category-level long-CoT mixtures, data volumes, an explicit trimming rule, stage-level RL sizes, concrete executable verifier families, a behavioral reward-model gate, and environment-adaptive scheduling.
+
+That disclosure is valuable precisely because it also exposes the remaining gap. Public weights and inference support allow model use, but do not supply the source manifests, data licenses, teacher and reward artifacts, environment state, reproducible code, or leakage audit needed to validate the training claim.

@@ -1,0 +1,135 @@
+id: bfs-po-2026
+title: 'BFS-PO: Best-First Search for Large Reasoning Models'
+year: 2026
+venue: arXiv preprint
+authors:
+- Fiorenzo Parascandolo
+- Wenhui Tan
+- Enver Sangineto
+- Ruihua Song
+- Rita Cucchiara
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- trajectory_value
+domains:
+- mathematics
+training_use:
+- rlvr
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2602.14917
+  arxiv: https://arxiv.org/abs/2602.14917
+  code: https://github.com/aimagelab/BFS-PO
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2602.14917
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2602.14917
+data_object:
+  prompt_source: GSM8K or MATH-500 question-and-ground-truth-answer pairs, following the TokenSkip experimental protocol.
+  trace_author: The online policy model being fine-tuned.
+  answer_format: A complete textual output containing a chain of thought and an extracted final answer.
+  process_fields:
+  - complete_reasoning_path
+  - token_entropy
+  - shortest_correct_path
+  - backtracking_token
+  - expansion_branches
+  - terminal_correctness
+  - response_length
+  - node_reward
+  - branch_advantage
+  environment_or_substrate: Offline mathematical question answering with an online training-time search tree; inference uses
+    standard single-chain sampling without tree search.
+  verifier_or_reward: A parser/string-match verifier compares the extracted final answer with the ground truth; leaf rewards
+    use DAPO correctness plus Soft Overlong Punishment, internal rewards average descendant rewards, and branch advantages
+    compare a branch with its backtracking node.
+  terminal_predicate: The extracted final answer exactly matches the ground-truth answer; among complete correct paths, selection
+    prefers minimum token length.
+recipe_metadata:
+  base_model: Qwen2.5-3B-Instruct, Qwen2.5-7B-Instruct, and LLaMA-3.1-8B-Instruct.
+  teacher: unknown
+  generator: The current policy first samples a group of complete outputs, then samples new continuations conditioned on the
+    prefix ending at the selected maximum-entropy token of the current shortest correct path.
+  filtering_rule: Best-first selection retains the shortest verifier-correct complete path for expansion and excludes previously
+    used backtracking tokens; the paper describes DAPO's nontrivial-group filtering but does not separately specify how it
+    is applied to every BFS-PO tree.
+  sampling_protocol: Algorithm 1 performs three expansion iterations in the reported experiments; each expansion adds a group
+    of branches from a previously unused maximum-entropy token, but the paper does not disclose a reusable per-prompt rollout
+    manifest.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Training uses maximum token budgets of 512 on GSM8K and 1024 on MATH-500; testing uses 512 on GSM8K and
+    MMLU-STEM and 1024 on MATH-500, AIME'25, and MINERVA-MATH. AIME'25 is evaluated 32 times at temperature 1.
+  optimizer_or_scaffold: DAPO-style clipped policy optimization with tree-local branch advantages; LoRA rank 8 and alpha 16;
+    AdamW with learning rate 1e-6 and weight decay 0.01.
+audit:
+  source_mixture: GSM8K and MATH-500 are used as training settings; MMLU-STEM, AIME'25, and MINERVA-MATH are reported for
+    out-of-domain evaluation after MATH-500 training. No rollout mixture manifest is released.
+  split: The paper follows the TokenSkip benchmark protocol, but no immutable list of training prompts, generated trees, or
+    evaluation records is released.
+  decontamination: unknown
+  license: unknown
+  lineage: Question and ground-truth answer -> online policy rollouts -> shortest correct complete path -> maximum-entropy
+    backtracking token -> new branches -> terminal verifier and length-aware leaf reward -> recursive node rewards and branch
+    advantages -> LoRA policy update.
+  known_failure_modes:
+  - Exact-answer parsing and string matching can reject equivalent answers or accept a correct final answer attached to invalid
+    reasoning.
+  - Selecting the shortest correct path can remove explanatory or robustness-relevant steps even when the terminal answer
+    remains correct.
+  - Maximum token entropy is a heuristic for a reasoning decision point and need not identify the best semantic branch.
+  - Algorithm 1 requires a correct complete path to expand; the operational behavior when initial samples contain no correct
+    path is not separately documented beyond the inherited DAPO nontrivial-group constraint.
+  - The experiments cover mathematics/STEM and 3B-to-8B models; behavior on larger models or other domains is unknown.
+  - The linked repository currently contains only a placeholder README and figure, so implementation, checkpoints, models,
+    rollouts, seeds, and exact release completeness cannot be audited.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v1, PDF, BibTeX endpoint, DOI redirect, and author-linked repository checked on 2026-07-18; paper
+    metadata and method are verifiable, but reusable artifacts are not yet released.
+inclusion_reason: Defines a training-time RLVR search-tree recipe that converts verifier-correct complete paths, path length,
+  token entropy, and descendant rewards into branch-level optimization signals.
+related: []
+tags:
+- bfs-po
+- best-first-search
+- rlvr
+- chain-of-thought
+- overthinking
+- reasoning-efficiency
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: BFS-PO builds training-time search trees around the shortest verifier-correct path and propagates terminal
+  rewards into branch-local advantages to train shorter mathematical reasoning.
+why_it_matters: It makes the rollout tree, selector, verifier, length signal, and branch-value construction explicit for Track
+  5, while the trajectories and implementation remain unreleased.
+card: null
+needs:
+- needs_implementation
+- needs_models
+- needs_rollouts
+- needs_license
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv record, PDF, BibTeX endpoint, DOI redirect, and author-linked repository checked; the repository promises
+    future implementation and experimental resources but currently has no code, model, data, or release artifact.

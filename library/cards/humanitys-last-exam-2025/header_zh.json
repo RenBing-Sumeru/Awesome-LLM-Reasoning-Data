@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Humanity's Last Exam 汇集全球专家编写的闭合式学术难题，用多选/短答参考答案评测 frontier model 的知识与推理边界。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Nature 649, 1139-1146 / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注专家 benchmark、短答自动评分、公开题库污染、版本治理和多模态评测资产的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Long Phan 等（Center for AI Safety、Scale AI、HLE Contributors Consortium 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T08:00:33Z"
+}

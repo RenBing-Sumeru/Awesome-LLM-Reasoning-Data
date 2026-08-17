@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWT-Bench 检验代码智能体能否为真实 bug fix 生成并验证测试。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2024 / 2025 update",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Niels Mündler 等（ETH Zurich）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T06:16:00Z"
+}

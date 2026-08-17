@@ -1,0 +1,5 @@
+1. **Assign roles:** The planner decomposes a problem into subtasks and tool needs, while workers receive local tasks and execute retrieval, computation, or web tools.
+2. **Collect two-level rollouts:** Store planner decisions and worker tool trajectories, including arguments, responses, format validity, and terminal answers.
+3. **Compute role credit:** Tool-format and execution correctness provide local rewards, task outcomes provide global rewards, and relative advantages are estimated per role trajectory.
+4. **Optimize jointly:** Update both role policies within one shared LLM using role prompts and the MATPO objective while iteratively sampling about 1.487 million trajectories; During updates, advantages are normalized separately by role so planner and worker reward scales are not mixed directly.
+5. **Reproducibility:** Reproducibility: fix the three benchmarks, shared base model, role prompts, tool APIs, noise injection, role-wise advantage normalization, and rollout budget. Mark undisclosed tool versions or RL hyperparameters unknown.

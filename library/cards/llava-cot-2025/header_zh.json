@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LLaVA-CoT-100k 把 9.9 万条 VQA 样本改写为摘要、图像描述、推理和结论四阶段的多模态 SFT 示范。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多模态推理示范数据集与结构化推理模型报告",
+  "best_for_ch": "适合构建或审计分阶段视觉推理 SFT 数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Guowei Xu, Peng Jin, Ziang Wu, Hao Li, Yibing Song, Lichao Sun, Li Yuan",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T08:30:00Z"
+}

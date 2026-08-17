@@ -1,0 +1,3 @@
+BeeS first DPO-trains a small model on 2,000 random seed pairs to obtain inexpensive in-distribution implicit margins. It calculates chosen-versus-rejected margins from that model and from Skywork-Reward-Llama-3.1-8B-v0.2, calibrates the margins into probabilities, aggregates them with a Bayesian rule, and selects the highest-confidence pairs for target-model DPO.
+
+The paper applies the rule to TLDR, Helpful and Harmless, UltraFeedback, and on-policy UltraFeedback variants. Offline studies select 2,000 or 6,000 pairs; for iterative DPO, each of three rounds starts with 20,000 prompts and retains 5,000 records. The resulting subsets are also tested with IPO, KTO, and SLiC.

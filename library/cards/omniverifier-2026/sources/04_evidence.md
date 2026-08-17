@@ -1,0 +1,3 @@
+Claim: a verifier trained for visual outcomes improves universal visual verification and can make sequential refinement more effective. ViVerBench evaluates 16 task categories; the official project compares OmniVerifier with existing vision-language systems and reports a +8.3 gain on that benchmark.
+
+For test-time refinement, the paper reports gains of +3.7 on T2I-ReasonBench and +4.3 on GenEval++ over the stated comparison setting, outperforming parallel scaling methods such as Best-of-N. These numbers support the released evaluation surface and the claimed setup, but do not establish semantic ground truth because one supported evaluation path uses GPT-4.1 as judge.

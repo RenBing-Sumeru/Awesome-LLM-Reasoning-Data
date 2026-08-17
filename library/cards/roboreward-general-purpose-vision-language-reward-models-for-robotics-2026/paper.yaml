@@ -1,0 +1,101 @@
+id: roboreward-general-purpose-vision-language-reward-models-for-robotics-2026
+title: 'RoboReward: General-Purpose Vision-Language Reward Models for Robotics'
+year: 2026
+venue: arXiv
+authors:
+- Tony Lee
+- Andrew Wagenmaker
+- Karl Pertsch
+- Percy Liang
+- Sergey Levine
+- Chelsea Finn
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+- answer_level
+domains:
+- robotics
+- multimodal
+- alignment
+training_use:
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.00675
+  arxiv: https://arxiv.org/abs/2601.00675
+  code: null
+  data: https://huggingface.co/datasets/teetone/RoboReward
+  project: https://crfm.stanford.edu/helm/robo-reward-bench/v0.0.1/
+  huggingface: https://huggingface.co/datasets/teetone/RoboReward
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the paper and official dataset.
+  trace_author: Human annotators and the paper's data-construction pipeline.
+  answer_format: Feedback records described in the paper and official dataset.
+  process_fields:
+  - video
+  - task_instruction
+  - reward
+  - validation_output
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official paper and dataset.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper and dataset.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: See the official paper.
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Officially released feedback records.
+  split: See the official dataset.
+  decontamination: See the official paper.
+  license: CC BY 4.0
+  lineage: Candidate-pool links and official artifacts were checked.
+  known_failure_modes:
+  - See the limitations section.
+  citation_status: verified
+  confidence: high
+  notes: Paper title, authors, institutions, and official artifacts were checked against primary sources.
+inclusion_reason: The paper releases or uses a public feedback artifact suitable for alignment training or evaluation.
+related: []
+tags:
+- preference
+- reward
+- feedback-data
+one_line_summary: RoboReward turns real-robot videos into a five-level reward dataset and human-verified benchmark for general-purpose
+  vision-language reward models.
+why_it_matters: It makes a concrete human-feedback or reward object available for alignment research.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Official sources were verified before card creation.
+category_ids:
+- preference_reward_feedback_data

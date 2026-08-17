@@ -1,0 +1,5 @@
+- Position: GroUSE audits whether a grounded-QA judge detects the failures its score is meant to represent.
+- Mechanism: 144 labeled unit tests manipulate answer or document conditions across 16 situations.
+- Artifact: official code and materials accompany the COLING 2025 paper; the benchmark is an evaluation suite.
+- Evidence anchor: open judges can correlate with GPT-4 yet fail the proposed criteria; trace distillation improves Llama-3 calibration.
+- Reuse decision: use criterion-level failures to strengthen a RAG rubric; add local counterfactuals before deployment.

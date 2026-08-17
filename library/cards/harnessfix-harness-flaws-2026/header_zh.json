@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HarnessFix 通过诊断失败轨迹来修复 LLM 智能体 harness 缺陷。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 failed trajectory / harness repair paper",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Mengzhuo Chen 等（State Key Laboratory of Complex System Modeling and Simulation Technology）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-15T07:19:03Z"
+}

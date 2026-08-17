@@ -1,0 +1,3 @@
+The main controlled comparison keeps the synthetic training data and base model fixed and changes SFT or answer-only GRPO into LongRLVR. For Qwen2.5-14B-1M, accuracy rises from 73.17 to 88.90 on RULER-QA and from 39.8 to 46.5 on LongBench v2; this supports the claim that the added grounding reward helps in the evaluated long-context settings, not that every retrieval task needs the same reward.
+
+The paper also varies the curation choices while holding the Qwen2.5-7B-1M LongRLVR setup fixed. On LongBench v2, the best judge-rated QA records score 38.6, compared with 36.6 for median-rated and 34.8 for worst-rated records; this supports the importance of their synthetic-data filter, but the judge that supplies those quality scores is also the generator model.

@@ -1,0 +1,119 @@
+id: berkeley-function-calling-leaderboard-2024
+title: 'The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models'
+year: 2024
+venue: Official leaderboard BibTeX lists ICML 2025; no standalone paper page verified
+authors:
+- Shishir G. Patil
+- Huanzhi Mao
+- Charlie Cheng-Jie Ji
+- Fanjia Yan
+- Vishnu Suresh
+- Ion Stoica
+- Joseph E. Gonzalez
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- function-calling
+- tool-api-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  project: https://gorilla.cs.berkeley.edu/leaderboard.html
+  venue: https://gorilla.cs.berkeley.edu/leaderboard.html
+  paper: null
+  arxiv: null
+  code: https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard
+  data: https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard
+  huggingface: https://huggingface.co/spaces/gorilla-llm/berkeley-function-calling-leaderboard
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct function/API call generation with AST/execution checks; exact split,
+    artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose function/API call generation with AST/execution checks, prompt/task metadata, a
+    model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: function/API call generation with AST/execution checks
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct function/API call generation with AST/execution checks; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: tool_api_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://gorilla.cs.berkeley.edu/leaderboard.html;
+    https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html; https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard;
+    https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://gorilla.cs.berkeley.edu/leaderboard.html'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: The current official leaderboard page embeds a BibTeX entry with booktitle "Forty-second International Conference
+    on Machine Learning" and year 2025. No separate paper/PDF, PMLR, OpenReview, arXiv, DOI, or ICML proceedings page was
+    verified, and an older BFCL blog page still carries a conflicting NeurIPS 2024-style citation. Treat ICML as a citation
+    claim from the official leaderboard artifact, not as a verified standalone paper page. Artifact/license/split/scoring
+    details remain review targets.
+inclusion_reason: Traceable tool-call evaluation surface beyond chat-only scoring.
+related: []
+tags:
+- benchmark
+- tool_api_benchmark
+- function-calling
+why_it_matters: Traceable tool-call evaluation surface beyond chat-only scoring.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: BFCL / Berkeley Function Calling Leaderboard exposes function/API call generation with AST/execution checks
+  as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Current official leaderboard BibTeX lists ICML 2025, but no standalone paper/PDF, PMLR, OpenReview, arXiv, or DOI
+    page was verified. An older BFCL blog page carries a conflicting NeurIPS 2024-style citation, so the venue is recorded
+    as an official leaderboard citation claim rather than a verified paper page.
+category_ids:
+- benchmarks_evaluation_surfaces

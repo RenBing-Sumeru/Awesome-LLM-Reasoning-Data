@@ -1,0 +1,5 @@
+1. **Collect mathematical responses:** Ask multiple reasoning models to solve SAT mathematics problems and preserve complete CoTs, paragraphs, and final answers.
+2. **Adapt cognitive theory:** Define seven machine-reasoning functions from Schoenfeld Episode Theory and create positive, negative, and boundary examples.
+3. **Annotate hierarchically:** Label sentences and paragraphs as Read, Analyze, Explore, Plan, Implement, Verify, or Transition and check agreement.
+4. **Analyze process dynamics:** Build episode distributions and transition matrices for each model and compare styles, correct versus incorrect traces, and length behavior; The guidelines explicitly address cross-sentence episodes, functional transitions, and multifunction sentences to improve boundary reproducibility.
+5. **Reproducibility:** Reproducibility: fix the SAT set, model versions, prompts, sentence and paragraph segmentation, seven definitions, and human guide. Mark undisclosed annotator counts, agreement thresholds, or sampling parameters unknown.

@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "The Ohio State University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2401.01614",
+    "https://osu-nlp-group.github.io/SeeAct/",
+    "https://github.com/OSU-NLP-Group/SeeAct",
+    "https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web"
+  ],
+  "verification_note": "arXiv, project, GitHub, and HF data verify authors, OSU institution, ICML 2024 status, and artifacts; PMLR page was not independently pinned here."
+}

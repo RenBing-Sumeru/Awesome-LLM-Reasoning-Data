@@ -1,0 +1,7 @@
+The false-negative audit reports that 87K of 226K Prime-negative response pairs, or 38.5%, are actually correct by the two-judge rule; 40K of 95K prompts, or 42.1%, contain at least one missed correct answer. The 200-example manual check supports high precision for this consensus-positive subset, but it is small, positive-only, and also exposes three wrong source ground truths.
+
+During the paper's offline re-judgment of GRPO rollouts, 46.7% of Qwen2.5-7B prompts and 50.5% of Qwen2.5-Math-7B prompts encounter at least one false-negative rollout by the end of training; false negatives average roughly 20% of rollouts. These results support the claim that a fixed rule verifier can become stale as policy answers diversify.
+
+On HardVerify-Math, the reported verifier comparisons favor TinyV, and GRPO with the add-on reward improves average downstream benchmark results over Prime. The gain is not uniform: the table shows lower AMC accuracy for Qwen2.5-7B and lower Olympiad accuracy for Qwen2.5-Math-7B than the Prime-reward counterparts. Runtime is reported as 143.23 seconds per step with TinyV versus 135.04 with Prime, about 6% overhead.
+
+This evidence demonstrates utility under the reported construction and RL settings, not intrinsic data quality. The paper reports no source-disjoint held-out TinyV precision, recall, false-positive rate, calibration, or confusion matrix. Downstream policy accuracy cannot substitute for those verifier diagnostics, especially because a TinyV false positive directly creates positive reward for a wrong answer.

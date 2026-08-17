@@ -1,0 +1,21 @@
+{
+  "institutions": [
+    "The University of Hong Kong",
+    "Peking University",
+    "Stanford University",
+    "UC Berkeley",
+    "University of Washington",
+    "Meta AI",
+    "Carnegie Mellon University"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2211.11501",
+    "https://ds1000-code-gen.github.io/",
+    "https://github.com/xlang-ai/DS-1000",
+    "https://huggingface.co/datasets/xlangai/DS-1000"
+  ],
+  "verification_note": "Official arXiv/project/GitHub/Hugging Face sources verify authors, institution groups, ICML 2023 status, and data science code benchmark artifacts."
+}

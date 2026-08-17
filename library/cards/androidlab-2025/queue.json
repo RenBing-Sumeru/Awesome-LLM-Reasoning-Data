@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "10.5K 条 trace / 94.3K 个 step， 726 条 Android SFT 轨迹",
+    "updated_at": "2026-07-20T11:37:54Z"
+  },
+  "updated_at": "2026-07-20T11:37:54Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

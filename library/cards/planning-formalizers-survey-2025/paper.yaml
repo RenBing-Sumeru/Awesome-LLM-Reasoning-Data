@@ -1,0 +1,104 @@
+id: planning-formalizers-survey-2025
+title: 'LLMs as Planning Formalizers: A Survey for Leveraging Large Language Models to Construct Automated Planning Models'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Marcus Tantakoun
+- Christian Muise
+- Xiaodan Zhu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- planning
+- structured-reasoning
+- neuro-symbolic
+training_use:
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1291/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1291
+  venue: https://aclanthology.org/2025.findings-acl.1291/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1291/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed research using language models to construct automated planning models.
+  trace_author: The surveyed primary works; this survey does not release a new trace collection.
+  answer_format: A survey of methodologies, challenges, and future directions for planning formalization.
+  process_fields:
+  - natural-language specification
+  - planning formalization
+  - automated planner
+  - plan
+  - refinement
+  environment_or_substrate: Automated planning supported by language models and off-the-shelf planners.
+  verifier_or_reward: Reliable automated planning solvers are the intended downstream formal evaluation component; the survey
+    supplies no single verifier.
+  terminal_predicate: Planner-specific plan validity or goal achievement; no universal predicate is supplied.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed works use varied formalizations and planners.
+  generator: Literature review and synthesis.
+  filtering_rule: The official abstract centers language models used to formalize and refine planning specifications for automated
+    planners.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes planning-formalization research rather than a new optimizer.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.1291/'
+  known_failure_modes:
+  - Long-horizon planning requires structured reasoning that language models often struggle to provide.
+  - Formalization errors can make a reliable planner solve the wrong problem.
+  - Deployment frameworks introduce additional design challenges.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract positions language models as tools for formalizing and refining planning specifications.
+inclusion_reason: A peer-reviewed survey explaining how language models can support formal model construction for automated
+  planning.
+related: []
+tags:
+- foundations-and-primers
+- planning
+- structured-reasoning
+- neuro-symbolic
+- acl-2025
+- survey
+why_it_matters: It clarifies the boundary between generating a plan in prose and constructing a formal model that a planner
+  can reliably use.
+one_line_summary: A Findings ACL 2025 survey of using language models to formalize planning specifications for automated planners.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers exploring language-model assistance for long-horizon planning and formal planning-model construction.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable evaluation of formalization quality and planner outcomes across surveyed systems'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

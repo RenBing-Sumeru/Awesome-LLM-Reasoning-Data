@@ -1,0 +1,1 @@
+对 atlas 来说，核心贡献是把一个小规模、高难度、带答案键的官方竞赛考试复用为固定模型评测面。机制很简单：向模型输入每道 AIME 题，只按最终整数答案计分，通常对应竞赛使用的 000-999 答案格式。最接近的对比是 MATH、GSM8K、OlympiadBench 等竞赛数学 benchmark；AIME 更小，但作为年度官方考试切片更干净。方向标签是带 exact-answer verifier 的静态 benchmark。审计边界很重：必须固定年份、AIME I 还是 II、题目来源、答案键、prompt 格式、pass@k 或 majority-vote 策略，以及污染 cutoff。

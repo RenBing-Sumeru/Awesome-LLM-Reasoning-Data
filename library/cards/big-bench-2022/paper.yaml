@@ -1,0 +1,111 @@
+id: big-bench-2022
+title: 'Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models'
+year: 2022
+venue: Transactions on Machine Learning Research / arXiv
+authors:
+- Aarohi Srivastava
+- Abhinav Rastogi
+- Abhishek Rao
+- BIG-bench authors
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- general-reasoning
+- static-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2206.04615
+  arxiv: https://arxiv.org/abs/2206.04615
+  doi: https://doi.org/10.48550/arXiv.2206.04615
+  code: https://github.com/google/BIG-bench
+  data: https://github.com/google/BIG-bench
+  project: https://github.com/google/BIG-bench/blob/main/docs/doc.md
+  huggingface: null
+  venue: null
+  openreview: https://openreview.net/forum?id=uyTL5Bvosj
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct collaborative suite of diverse language-model tasks; exact split, artifact,
+    license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose collaborative suite of diverse language-model tasks, prompt/task metadata, a model
+    output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: collaborative suite of diverse language-model tasks
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct collaborative suite of diverse language-model tasks; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: static_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2206.04615;
+    https://arxiv.org/pdf/2206.04615; https://github.com/google/BIG-bench; https://github.com/google/BIG-bench/blob/main/bigbench/benchmark_tasks/README.md'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2206.04615'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv/PDF lists 450 alphabetic authors and states 132 institutions; the checked official sources do not
+    enumerate a complete per-author affiliation table or full institution set in machine-usable form. This Card records the
+    consortium disposition rather than inventing institution entries. Artifact/license/split/scoring details remain review
+    targets.
+inclusion_reason: Canonical broad benchmark; lower priority due age and heterogeneity.
+related: []
+tags:
+- benchmark
+- static_reasoning_benchmark
+- general-reasoning
+why_it_matters: Canonical broad benchmark; lower priority due age and heterogeneity.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: BIG-bench exposes collaborative suite of diverse language-model tasks as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv/PDF lists 450 alphabetic authors and states 132 institutions; the checked official sources do not
+    enumerate a complete per-author affiliation table or full institution set in machine-usable form. This Card records the
+    consortium disposition rather than inventing institution entries.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,3 @@
+Magistral separates two training lineages. Magistral Medium starts from Mistral Medium 3 Instruct and receives online RL without a reasoning-trace cold start. Magistral Small first learns from correct, later-stage Medium RL traces and additional Medium responses on diverse prompts, then receives online RL. This creates a useful comparison between pure exploration and teacher-trace bootstrapping.
+
+Both lineages couple the data object to its feedback contract. A response must first satisfy a strict reasoning-and-answer format. Math is graded by rule-based normalization, parsers, and SymPy; code is compiled and must pass sampled tests. Soft length penalties and a fastText language-consistency signal shape the response without replacing the terminal correctness check.

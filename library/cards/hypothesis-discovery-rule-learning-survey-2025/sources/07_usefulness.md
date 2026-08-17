@@ -1,0 +1,3 @@
+Use this survey when a project claims to discover rules, explanations, or scientific hypotheses. It helps specify which stage is actually supported: generating candidates, applying a candidate, or testing it against evidence. That separation is useful for choosing data, environments, and evaluation criteria before interpreting a discovery claim.
+
+Turn its cycle into an experiment plan: state the observations, specify the hypothesis format, decide what consequences should follow, and define the evidence that evaluates them. This makes a discovery claim inspectable. The survey supplies the vocabulary for this plan; the underlying papers are still needed for usable datasets, systems, and evaluation implementations.

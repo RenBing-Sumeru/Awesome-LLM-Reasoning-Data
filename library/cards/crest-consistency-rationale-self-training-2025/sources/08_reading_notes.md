@@ -1,0 +1,6 @@
+- Keep the 16 rationale attempts separate from the option count `F`: the former is a fixed candidate budget, while the latter is four or five behavioral probes for each `z=1` candidate.
+- Read `z` and `z_tilde` as different objects. `z` covers every candidate's original answer; `z_tilde` is computed only for originally correct candidates in the public implementation.
+- SFT uses a hard acceptance predicate, `z=1` and `z_tilde >= F-t`; DPO uses two pair pools, and the consistency pool requires both candidates to have `z=1` plus a strict score inequality.
+- Compare paper and code settings before reproducing results: reported SFT epochs and best DPO steps differ from the public shell defaults.
+- Treat option consistency as behavioral evidence, not step verification or faithfulness; preserve the complete option vector and audit the parser.
+- The public `resources/data` directory contains prepared upstream QA splits. Generated rationales, scores, filtered SFT records, preference pairs and checkpoints are not released.

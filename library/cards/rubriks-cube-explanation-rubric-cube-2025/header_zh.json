@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "CUBE 含约 2.6 万解释及人类、六类模型的量规质量标注，覆盖推理和语言任务，可训练可解释的质量评判器。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "解释质量量规、标注数据集与评测研究",
+  "best_for_ch": "需要训练或评测解释质量判别器、可解释性反馈模型的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Diana Galvan-Sosa、Gabrielle Gaudeau、Pride Kavumba、Yunmeng Li、Hongyi Gu、Zheng Yuan、Keisuke Sakaguchi、Paula Buttery",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-18T12:29:43Z"
+}

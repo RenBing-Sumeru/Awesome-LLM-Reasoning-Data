@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "把 16 条策略轨迹转换为一致性、波动性和好奇心奖励，用于无需外部正确性标签的 Reinforce++。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "自奖励推理强化学习配方",
+  "best_for_ch": "关注内在奖励、轨迹评价和奖励攻击审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Kongcheng Zhang、Qi Yao、Shunyu Liu、Yingjie Wang、Baisheng Lai、Jieping Ye、Mingli Song、Dacheng Tao",
+  "category_ids": [
+    "data_construction_open_release_recipes",
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T04:20:28Z"
+}

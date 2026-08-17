@@ -1,0 +1,128 @@
+id: search-o1-2025
+title: 'Search-o1: Agentic Search-Enhanced Large Reasoning Models'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Xiaoxi Li
+- Guanting Dong
+- Jiajie Jin
+- Yuyao Zhang
+- Yujia Zhou
+- Yutao Zhu
+- Peitian Zhang
+- Zhicheng Dou
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.276/
+  arxiv: https://arxiv.org/abs/2501.05366
+  code: https://github.com/RUC-NLPIR/Search-o1
+  data: null
+  project: https://search-o1.github.io/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.276
+  venue: https://aclanthology.org/2025.emnlp-main.276/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.276/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.276.bib
+data_object:
+  prompt_source: Evaluation prompts come from GPQA, MATH500, AMC2023, AIME2024, LiveCodeBench, Natural Questions, TriviaQA,
+    HotpotQA, 2WikiMultiHopQA, MuSiQue, and Bamboogle; no training-prompt corpus is claimed.
+  trace_author: QwQ-32B-Preview generates the main reasoning and queries; the same reasoning model is invoked separately as
+    Reason-in-Documents to analyze retrieved pages and emit a refined knowledge block.
+  answer_format: Inference episode containing task instruction, question, long reasoning, delimited search queries, retrieved
+    snippets/pages, a Reason-in-Documents analysis and refined result, and final answer.
+  process_fields:
+  - instruction
+  - question
+  - reasoning_prefix
+  - search_query
+  - ranked_results
+  - raw_page_content
+  - reason_in_documents_analysis
+  - refined_knowledge
+  - final_answer
+  environment_or_substrate: Bing Web Search API in US-EN, top-10 retrieval, and Jina Reader page fetching, orchestrated by
+    a batch inference loop.
+  verifier_or_reward: No training reward or trajectory-quality verifier is introduced. Retrieval output is transformed by
+    the Reason-in-Documents model; benchmark answer metrics evaluate the final system.
+  terminal_predicate: Generation ends at EOS/final response or the 32,768-token maximum; a back-off uses direct reasoning
+    when no final answer is produced.
+recipe_metadata:
+  base_model: QwQ-32B-Preview
+  teacher: No teacher is reported; Reason-in-Documents reuses the original reasoning model in a separate generation pass.
+  generator: QwQ-32B-Preview plus the Search-o1 batch inference scaffold, Bing Web Search, Jina Reader, and Reason-in-Documents.
+  filtering_rule: 'Raw retrieval is not accepted directly: the model analyzes the current reasoning, query, and pages and
+    emits a concise knowledge block. No corpus-level trace filtering or human factuality audit is reported.'
+  sampling_protocol: Main generation uses maximum 32,768 tokens, temperature 0.7, top-p 0.8, top-k 20, and repetition penalty
+    1.05. Search uses US-EN and top 10; the reasoning model may trigger search repeatedly.
+  rollout_count: unknown
+  temperature: 0.7 for reported generation
+  inference_budget: 32,768-token maximum and top-10 retrieval per search call; the maximum number of search calls is unknown.
+  optimizer_or_scaffold: Inference-only agentic RAG scaffold with batched generation and a separate document-refinement pass;
+    no Search-o1 policy training is reported.
+audit:
+  source_mixture: Evaluation benchmark mixture is named, but the live web source mixture is query- and time-dependent and
+    no page manifest is released.
+  split: Evaluation splits are described in the paper; no reusable trajectory split exists.
+  decontamination: LiveCodeBench uses a recent date window, but no trace-level web/benchmark overlap ledger or retrieved-page
+    contamination analysis is released.
+  license: Repository code is MIT. Rights for search results, fetched pages, refined text, and any derivative trajectory redistribution
+    are unknown.
+  lineage: question -> reasoning prefix -> delimited query -> Bing ranked result -> Jina page content -> Reason-in-Documents
+    analysis/refinement -> inserted result -> continued reasoning -> final answer
+  known_failure_modes:
+  - Live search and page content are not replayable without timestamps, result IDs, and snapshots.
+  - Reason-in-Documents can omit, distort, or synthesize claims, and no human audit is reported.
+  - Top-10 retrieval and page fetching can fail or miss evidence; failed-tool traces are not released.
+  - The fallback to direct reasoning changes the terminal path and should be logged separately.
+  - Benchmark performance does not establish provenance, licensing, factuality, or quality of intermediate traces.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL Anthology record, arXiv, project page, and canonical RUC-NLPIR repository checked. The repository releases
+    inference code, not an immutable rollout dataset.
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: queries retrieved snippets and document-reasoning
+  rewrites.'
+related: []
+tags:
+- track5
+- raw_search_rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Search-o1 interleaves QwQ-32B-Preview reasoning with live top-10 web retrieval and a separate Reason-in-Documents
+  rewrite, but releases no versioned trajectory corpus or web snapshot.
+why_it_matters: It exposes a useful test-time trace schema and transformation boundary between raw retrieval and model-written
+  evidence, while making replay, provenance, and rights gaps explicit.
+card: null
+needs:
+- 'needs_trace_release: versioned episodes with queries, ranked result IDs, raw pages, refinements, final answers, and tool
+  failures'
+- 'needs_snapshot: retrieval timestamps, page revisions, content hashes, and search-backend configuration'
+- 'needs_audit: factuality checks for refined knowledge and attribution to raw page spans'
+- 'needs_license: document-level rights and derivative-trace redistribution terms'
+- 'needs_metadata: exact search-call cap, seeds, batch behavior, and failure/back-off counts'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

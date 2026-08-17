@@ -1,0 +1,4 @@
+The [official system card](https://www-cdn.anthropic.com/bbd8ef16d70b7a1665f14f306ee88b53f686aa75/Claude%20Sonnet%204.6%20System%20Card.pdf) names five broad proprietary training-source categories: public Internet information up to May 2025, non-public third-party data, labeling-service and paid-contractor data, opted-in Claude-user data, and internally generated data. It also reports cleaning and filtering, substantial post-training and fine-tuning, and reinforcement from AI feedback in the [Transparency Hub](https://www.anthropic.com/transparency).
+
+For Track 12, the useful object is the boundary of this disclosure. The report identifies high-level feedback and worker roles, including preference selection, safety evaluation, adversarial testing, and automatic screening of a significant fraction of reinforcement-learning training transcripts, but it does not release the corresponding records, reward/verifier, or optimization recipe.
+

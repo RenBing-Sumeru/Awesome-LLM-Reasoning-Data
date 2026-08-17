@@ -1,0 +1,201 @@
+id: storm-born-2025
+title: 'STORM-BORN: A Challenging Mathematical Derivations Dataset Curated via a Human-in-the-Loop Multi-Agent Framework'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Wenhao Liu
+- Zhenyi Lu
+- Xinyu Hu
+- Jierui Zhang
+- Dailin Li
+- Jiacheng Cen
+- Huilin Cao
+- Haiteng Wang
+- Yuhan Li
+- Kun Xie
+- Dandan Li
+- Pei Zhang
+- Chengbo Zhang
+- Yuxiang Ren
+- Xiaohong Huang
+- Yan Ma
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- mathematical_derivation
+- scientific_papers
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1227/
+  arxiv: https://arxiv.org/abs/2506.01531
+  code: https://github.com/lwhere/STORM-BORN
+  data: https://github.com/lwhere/STORM-BORN/tree/main/data
+  project: https://github.com/lwhere/STORM-BORN
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1227
+  venue: https://aclanthology.org/2025.findings-acl.1227/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1227/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-acl.1227.bib
+data_object:
+  prompt_source: The paper describes selecting arXiv-hosted, peer-reviewed papers dated May 2023 through October 2024, with
+    OpenReview scores above weak accept and more than five occurrences of derivation markers such as assume, derive, and proof.
+    The live 100-row release instead names 28 sources and includes three book titles, an older named paper, and arXiv identifiers
+    from January and February 2025; it does not publish the candidate-paper manifest, review scores, or filter decisions.
+  trace_author: A six-agent STORM pipeline extracts mathematical expressions, drafts derivation/proof questions, retrieves
+    answers from the source document, collects missing context, refines questions to be self-contained, and filters definition-like
+    answers. GPT-o1-Pro is reported for the difficult query and answer stages; human mathematicians then retain, reject, or
+    revise candidates. The released answer is therefore source-grounded and potentially human-edited, but row-level agent
+    and editor attribution is absent.
+  answer_format: The canonical release `storm-born.jsonl` contains exactly 100 JSONL records with string fields `paper`, `question`,
+    and `whole_label`; `whole_label` is a long natural-language/LaTeX derivation or proof. Derived files provide a 73/27 random
+    train/test split and four-option variants with fields `A` through `D` plus `ground-truth`. The shipped blank-format file
+    is empty (`[]`).
+  process_fields:
+  - paper
+  - question
+  - whole_label
+  - A/B/C/D (derived multiple-choice files)
+  - ground-truth (derived multiple-choice files)
+  environment_or_substrate: The source paper or book is the retrieval environment. Agents inspect full documents; Appendix
+    B states that GPT-o1-Pro lacked a PDF API, so papers were converted to page screenshots and gradually uploaded through
+    the web interface. The final release preserves only a coarse source identifier, not page/equation spans, screenshots,
+    extracted formula records, or supporting evidence fields.
+  verifier_or_reward: Verification is expert judgment rather than an executable or formal reward. Mathematicians assess reasoning
+    type, problem clarity, derivation correctness, and reasoning density, and may accept, reject, or revise an item. For benchmark
+    responses, experts score full correctness as 1 and partial credit by the fraction of key steps; a separate DeepSeek-R1
+    prompt scores correctness, completeness, and similarity from 0 to 2 for a NuminaMath-1.5 derivation test. Neither score
+    is released as a reusable per-row reward.
+  terminal_predicate: A generated question-answer pair enters the top-100 set when expert review retains it, possibly after
+    manual revision, as sufficiently complex, clear, correct, and reasoning-dense. The paper does not disclose numeric thresholds,
+    annotator assignment, adjudication, agreement, or per-item decisions, so the predicate cannot be replayed exactly.
+recipe_metadata:
+  base_model: Downstream full-fine-tuning experiments use TinyLLaMA-1.1B-Chat, LLaMA2-7B, LLaMA3-8B, Qwen2.5-7B, and Qwen2.5-32B
+    in different tables; a Qwen2.5-7B model is used for the separate formula-derivation evaluation.
+  teacher: Source-document derivations are the intended answer authority. GPT-o1-Pro drafts queries and retrieves source answers
+    for difficult stages, simpler agents handle expression extraction and filtering, and human mathematicians provide final
+    selection and revision feedback.
+  generator: STORM comprises Math Expression Extractor, Query Draft, Answer Retriever, Context Collector, Question Refiner,
+    and Answer Filter agents. The paper reports GPT-o1-Pro for Query Draft and Answer Retriever; current scripts default mostly
+    to `gemini-2.0-flash-exp` and use `deepseek-chat` for the derivation-versus-definition filter, so the public code is not
+    an exact manifest of the reported run.
+  filtering_rule: Paper-level filtering uses publication/review status, a May 2023–October 2024 window, and derivation keywords
+    appearing more than five times. Answer retrieval skips questions without source support. A classifier keeps derivation/proof
+    answers over definitions, and experts apply reasoning type, clarity, correctness, and density criteria to reduce 2,000
+    generated pairs to 100. Stage counts and decisions before 2,000 are unknown.
+  sampling_protocol: The paper reports about three weeks of prompt engineering but no complete decoding configuration for
+    GPT-o1-Pro, which was used manually via the web. Current Gemini-based scripts use temperature 0.0 for formula extraction,
+    query generation, answer retrieval, and question refinement, and 0.05 for context collection; these values document the
+    repository implementation, not necessarily the paper run.
+  rollout_count: unknown
+  temperature: null
+  inference_budget: The authors report a one-month GPT-o1-Pro subscription costing about USD 200, roughly 20 minutes per paper
+    for the multi-agent system, about 15 minutes of expert processing for roughly 30 question-answer samples per paper, occasional
+    two- or three-attempt retries, and three weeks of prompt engineering. The number of candidate papers, total model calls/tokens,
+    expert count/hours, and total end-to-end cost are unknown.
+  optimizer_or_scaffold: The paper says models are fully fine-tuned on STORM-BORN but does not disclose optimizer, learning
+    rate, batch size, epochs, scheduler, seeds, or compute. The repository contains no training implementation; its README
+    shows an explicitly typical Axolotl command with an unrelated example model, so those illustrative values are not treated
+    as paper-run hyperparameters.
+audit:
+  source_mixture: 'The live final file contains 100 unique questions from 28 distinct `paper` values. Most are arXiv identifiers,
+    but the list also contains `Convex Optimization`, `Numerical Optimization`, `Real Analysis: Modern Techniques and Their
+    Applications`, and `A Connection Between Score Matching and Denoising Autoencoders`, plus `arxiv:2501.18922` and `arxiv:2502.16894`.
+    This does not match a literal recent-arXiv-only May 2023–October 2024 source rule.'
+  split: '`storm_born_train.jsonl` has 73 rows and `storm_born_test.jsonl` 27; together they exactly partition the 100 unique
+    questions with no question overlap. The data README calls it a random split but gives no seed. Seventeen of the test set''s
+    18 source identifiers also occur in train, so the split is not source-document-disjoint.'
+  decontamination: The paper argues that recent sources reduce contamination, but no exact, near-duplicate, memorization,
+    or benchmark-overlap audit is reported. The live release includes sources outside the stated date range and source type,
+    and the source-overlapping train/test split further prevents treating freshness as decontamination evidence.
+  license: The repository README claims MIT, but the checked Git tree contains no LICENSE file and the GitHub API reports
+    no detected license. The released rows reproduce or lightly edit derivation text from third-party papers/books without
+    per-source license or attribution fields. Repository code license, dataset license, and compatibility with every source
+    therefore remain unknown.
+  lineage: Intended lineage is candidate document to formula/expression to draft query to source-retrieved answer to collected
+    context to self-contained question to derivation/definition filter to expert retain/reject/revise decision to top-100
+    row and derived splits/options. The public row retains only a coarse `paper` identifier, final question, and final answer;
+    intermediate expressions, evidence spans, prompts/models, revision history, reviewer decision, and parent option-generation
+    records are absent.
+  known_failure_modes:
+  - A source-grounded answer can inherit an error, unstated assumption, notation dependency, or later correction from the
+    source document.
+  - Extracted derivations may lose page-local definitions, citation dependencies, diagrams, or equation context when converted
+    to a self-contained question.
+  - Expert review is necessary but not independently reproducible without annotator count, qualifications per topic, assignments,
+    agreement, adjudication, thresholds, and revision logs.
+  - The paper says selection follows five principles but enumerates only four, leaving the rubric specification internally
+    inconsistent.
+  - The current source list contradicts the described arXiv/date filter and lacks review-score evidence, so source-selection
+    claims cannot be reconstructed from the artifact.
+  - Random item splitting leaves 17 source documents shared across train and test, allowing document-specific concepts, notation,
+    or phrasing to leak across the evaluation boundary.
+  - Multiple-choice distractor-generation provenance and validation are not published; a model can exploit option artifacts
+    rather than derive the answer.
+  - The 2,000 generated pool, top-500 subset, unfiltered full set, rejected items, and expert revisions used in the quality
+    ablation are not released.
+  - The repository exposes a hard-coded Google API-key-like credential in a generation script; it is not reproduced in this
+    Card, and users should treat it as compromised and use environment-based secrets.
+  - The README's MIT statement is unsupported by a license file, while third-party derivation text creates separate copyright
+    and attribution obligations.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper, appendix, DOI/BibTeX, repository tree/code, and every released data file were checked on 2026-07-21 at
+    commit `1d3f0743717ccec23472692eb4e13d56f833bb2d`. The final 100-row artifact is real, but source-filter mismatch, incomplete
+    lineage, missing 2K/rejections, source-overlapping split, unspecified human protocol, and unresolved licensing justify
+    `partial`.
+inclusion_reason: STORM-BORN is a relevant open construction recipe because it converts mathematical derivations in full research
+  documents into source-grounded natural-language supervision through modular extraction/retrieval/refinement stages and expert
+  selection, while its artifact exposes concrete provenance, judgment, split, and rights risks.
+related: []
+tags:
+- storm-born
+- mathematical-derivations
+- multi-agent
+- human-in-the-loop
+- expert-curation
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: A 100-row expert-selected derivation dataset built from a 2,000-pair multi-agent pool, released with source
+  IDs, long answers, a 73/27 split, and four-option variants but without full lineage or the candidate pool.
+why_it_matters: STORM-BORN makes full scientific documents and expert judgment central to reasoning-data construction, while
+  the live source mismatch, shared-source split, missing review history, partial code, and unresolved licensing show the audit
+  cost of document-derived supervision.
+card: null
+needs:
+- 'needs_metadata: publish the candidate-source manifest, exact source URLs/versions, review scores, filter decisions, and
+  per-source rights'
+- 'needs_metadata: map each final row to formula/equation/page evidence, agent/model/prompt revisions, retries, and human
+  edits'
+- 'needs_metadata: release the 2,000-pair pool, top-500 and fullset ablation artifacts, rejected items, and stage-level dispositions'
+- 'needs_metadata: document expert count, topical qualifications, assignments, rubric thresholds, agreement, adjudication,
+  and revision history'
+- 'needs_metadata: provide source-document-disjoint splits and exact/near/semantic contamination audits'
+- 'needs_metadata: publish a valid code/data license and remove or revoke exposed credentials'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: The ACL publication and current 100-row GitHub release are verified. The artifact is usable for inspected SFT/evaluation
+    experiments but is incomplete for end-to-end reproduction, independent verifier replay, source-disjoint benchmarking,
+    and rights audit.

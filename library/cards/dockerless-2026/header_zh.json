@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Dockerless 以执行测试标签训练依赖 golden patch 的 Qwen3.5-9B agentic verifier，再用仓库证据评分从 16K 条环境精简 rollout 中筛出 4K 条用于 SFT，并为 GRPO 提供 dense reward。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "软件工程 Agent 验证器与轨迹构建方法",
+  "best_for_ch": "研究软件工程 Agent 轨迹、学习型 verifier、SFT 筛选、RLVR 奖励与环境复现审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Wenhao Zeng、Yuling Shi、Xiaodong Gu、Chao Hu、Chaofan Wang、Yuhao Cui、Hongting Zhou、Mengnan Qi、Jianqiao Wangni、Zhaojian Yu、Shuzheng Gao、Kai Cai、Shilin He",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

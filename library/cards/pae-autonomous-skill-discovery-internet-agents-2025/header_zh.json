@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PAE 让提案器自动发现网页任务、让智能体执行，并以视觉结果评估器产生 RL 奖励，公开任务与示例轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "互联网智能体的自主任务发现、结果奖励与网页操作轨迹论文",
+  "best_for_ch": "需要研究自主任务提案、视觉结果评价或网页智能体强化学习过程数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yifei Zhou, Qianlan Yang, Kaixiang Lin, Min Bai, Xiong Zhou, Yu-Xiong Wang, Sergey Levine, Li Erran Li",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

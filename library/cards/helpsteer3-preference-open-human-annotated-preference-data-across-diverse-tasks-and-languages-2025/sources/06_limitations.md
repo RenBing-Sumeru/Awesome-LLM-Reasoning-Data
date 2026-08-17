@@ -1,0 +1,1 @@
+Country count is not demographic representativeness. Annotation instructions, translation, model-response style, and aggregation can erase minority preferences; lower-resource languages may have smaller or noisier slices. Check per-language counts, inter-rater agreement, tie policy, and whether code preferences are assessed by executable correctness or perceived quality.

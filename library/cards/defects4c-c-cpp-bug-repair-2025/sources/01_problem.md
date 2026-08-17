@@ -1,0 +1,3 @@
+Mainstream automated-program-repair benchmarks focus on Python and Java. C/C++ resources are often small, irreproducible, or provide vulnerable code without tests that reliably trigger the defect. Compilers, build systems, memory safety, and project dependencies make real C/C++ repair harder to evaluate uniformly.
+
+Defects4C mines real ordinary defects and security vulnerabilities from large-scale open-source commit histories, restores defective versions, patches, and reproduction tests, and freezes environments with Docker. It supplies an executable function-level C/C++ repair benchmark in which model outputs are judged through compilation and testing rather than textual similarity.

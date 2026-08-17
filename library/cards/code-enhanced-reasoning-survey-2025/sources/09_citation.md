@@ -1,0 +1,3 @@
+Dayu Yang, Tianyang Liu, Daoan Zhang, Antoine Simoulin, Xiaoyi Liu, Yuwei Cao, Zhaopu Teng, Xin Qian, Grey Yang, Jiebo Luo, and Julian McAuley. 2025. Code to Think, Think to Code: A Survey on Code-Enhanced Reasoning and Reasoning-Driven Code Intelligence in LLMs. EMNLP 2025, pages 2586–2616. https://aclanthology.org/2025.emnlp-main.130/
+
+The ACL Anthology entry provides the bibliographic record and official abstract. Follow individual method claims to the cited primary papers, since this survey organizes their ideas and does not report a single common execution environment or evaluation result.

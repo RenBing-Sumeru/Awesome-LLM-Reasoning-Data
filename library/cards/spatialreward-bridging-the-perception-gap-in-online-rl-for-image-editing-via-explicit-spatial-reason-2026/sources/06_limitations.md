@@ -1,0 +1,2 @@
+1. **Primary limitation.** Region and reasoning labels may be automatically generated and can miss global or nonlocal edits. Localization, semantic judgment, and content preservation should be evaluated separately.
+2. **Curator audit risk.** A localization error can systematically corrupt the final reward. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

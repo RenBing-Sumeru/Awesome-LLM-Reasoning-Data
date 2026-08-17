@@ -1,0 +1,276 @@
+id: userbench-2025
+title: 'UserBench: An Interactive Gym Environment for User-Centric Agents'
+year: 2025
+venue: NeurIPS 2025 Workshop on Scaling Environments for Agents
+authors:
+- Cheng Qian
+- Zuxin Liu
+- Akshara Prabhakar
+- Zhiwei Liu
+- Jianguo Zhang
+- Haolin Chen
+- Heng Ji
+- Weiran Yao
+- Shelby Heinecke
+- Silvio Savarese
+- Caiming Xiong
+- Huan Wang
+source_role:
+- benchmark
+- agent_environment
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- environment_interaction
+- conversational_agents
+- tool_use
+- travel_planning
+- user_preference_elicitation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2507.22034
+  paper_pdf: https://arxiv.org/pdf/2507.22034v1
+  arxiv: https://arxiv.org/abs/2507.22034
+  code: https://github.com/SalesforceAIResearch/UserBench
+  data: https://github.com/SalesforceAIResearch/UserBench/tree/80506d2ab484cab843e60a2401ff3e0290d05b87/data
+  environment_data: https://github.com/SalesforceAIResearch/UserBench/tree/80506d2ab484cab843e60a2401ff3e0290d05b87/travelgym/data
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.22034
+  venue: https://neurips.cc/virtual/2025/loc/san-diego/124531
+  openreview: https://openreview.net/forum?id=iJS7nvlGPd
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/SalesforceAIResearch/UserBench/blob/80506d2ab484cab843e60a2401ff3e0290d05b87/README.md#citation
+  release: https://github.com/SalesforceAIResearch/UserBench/tree/80506d2ab484cab843e60a2401ff3e0290d05b87
+  license: https://github.com/SalesforceAIResearch/UserBench/blob/80506d2ab484cab843e60a2401ff3e0290d05b87/LICENSE.txt
+  leaderboard: null
+data_object:
+  object_type: Versioned travel-planning task and executable environment specifications that generate multi-turn preference-elicitation,
+    search, and recommendation episodes at runtime; the release does not contain a complete corpus of paper-run trajectories.
+  prompt_source: Authors curate travel preferences and indirect expressions across flight, hotel, apartment, rental-car, and
+    restaurant aspects; random preference combinations form difficulty-tiered scenarios, and GPT-4o generates ideal arrangement
+    text. Exact upstream sources and per-item curator provenance are undisclosed.
+  trace_author: No fixed released trace author. During evaluation, each tested model produces `thought` plus action/search/answer
+    tool calls while GPT-4o judges requests and simulates the user. Complete evaluated episodes are not released.
+  task_record:
+  - scenario ID
+  - initial travel request
+  - difficulty and preference-count composition
+  - travel dimensions
+  - per-dimension structured search arguments
+  - explicit preference and implicit elicitation statements
+  - option-generation guidance
+  - correct, wrong, and noise options with IDs and reasons
+  - correct option IDs
+  - one designated best option ID and rationale
+  released_parquet_record:
+  - data_source
+  - system and initial-user prompt messages
+  - ability label
+  - environment name
+  - ground-truth option IDs
+  - scenario/environment ID
+  - reward style
+  - row index and train/test split
+  - tool environment creation kwargs
+  runtime_episode_fields:
+  - task description and goal
+  - step count and episode status
+  - agent thought
+  - action choice and content
+  - search database or simulated-user observation
+  - conversation and action history
+  - elicited and remaining preferences
+  - active and passive elicitation counts
+  - per-step scalar reward
+  - accumulated reward
+  - termination or truncation state
+  answer_format: Every turn must call `interact_with_env` with `thought`, one of `search`/`action`/`answer`, and textual content.
+    Answers submit one option ID at a time; the main setting permits one choice per travel aspect.
+  process_fields:
+  - observation
+  - state
+  - action/search/answer tool call
+  - environment response
+  - preference elicitation state
+  - judge classification
+  - scalar reward
+  - terminal or truncation flag
+  observation: The agent sees the initial underspecified request, simulated-user replies, search success/errors, and a shuffled
+    set of pre-generated options after a valid search; labels, preference inventory, and option reasons remain hidden from
+    the tested model.
+  action_space: One required `interact_with_env` function call per turn containing thought, choice in {action, answer, search},
+    and content.
+  environment_or_substrate: A Gymnasium TravelGym environment backed by eight static JSON scenario databases, OpenAI-compatible
+    GPT-4o judge/user calls, pre-generated mock search results, configurable search failures, passive preference elicitation,
+    and one-/multi-choice evaluation modes.
+  verifier_or_reward: GPT-4o judges whether searches match all ground-truth arguments and whether clarification utterances
+    target an available preference. Rule-based code parses answer IDs and looks them up in correct/best sets. Default rewards
+    are 0.2 for a newly valid search, 0.2 for a newly elicited preference, 1.0 for the designated best option, 0.8 for another
+    correct option, and 0.0 for a wrong option.
+  verifier_output: Natural-language feedback, newly elicited preference IDs, step reward, elicitation counters, remaining
+    correct/best option state, and episode termination/truncation state. Raw GPT-4o judge responses and paper-run replay logs
+    are not released as a dataset.
+  reward: Mixed per-transition scalar feedback with terminal answer quality. Paper scores normalize best/correct/wrong option
+    rewards per aspect; complete episode return semantics for training are not demonstrated in this paper.
+  terminal_predicate: The environment terminates when all best-option IDs are removed or, in one-choice mode, when one option
+    has been submitted for every aspect; it truncates at the configured maximum steps. Termination can occur after wrong aspect
+    choices and therefore is not itself a success predicate.
+  provenance: Curated preference inventory and implicit utterances -> random cross-aspect combination -> GPT-4o ideal scenario
+    and option generation under human supervision -> structured JSON task/options/labels -> train/test and single-/multi-choice
+    Parquet wrappers -> runtime model/GPT-4o/environment episode -> mixed judge/rule rewards.
+  release_shape: 'At commit 80506d2, eight environment JSON files plus 32 small Parquet files. Each choice variant contains
+    the same 3,122 unique task IDs: 2,651 train and 471 test; total serialized Parquet rows are 6,244 because single- and
+    multi-choice variants duplicate task identities.'
+recipe_metadata:
+  base_model: Not a training recipe. The paper evaluates GPT-4o, Gemini-2.5-Pro, Claude-4-Sonnet, Deepseek-V3, Qwen3-14B/32B/8B,
+    Llama-3.3-70B, GPT-4o-mini, Llama-3.1-8B, and Gemini-2.5-Flash.
+  teacher: unknown
+  generator: GPT-4o generates ideal travel-arrangement statements and option databases under human supervision. At evaluation
+    time GPT-4o also judges searches and clarification utterances and generates simulated-user replies.
+  prompt_task_source: Five author-selected travel aspects, 82 final preference categories/items reported in Table 2, and 902
+    implicit elicitation ways; exact external source lineage is unknown.
+  sampling_protocol: Randomly combine preferences across aspects into Travel-22, 2222, 33, 233, 333, 44, 334, and 444 compositions,
+    then split into 2,651 train and 471 test IDs. Main evaluation uses one rollout/sample per model-task at temperature 0.
+  temperature: 0.0 for evaluated agents and the GPT-4o simulator/judge. Scenario/option construction temperature is unknown.
+  rollout_count: One run per model-task for main reported results; pass-k is studied only as an analysis ablation, with the
+    exact sampled trajectory release unavailable.
+  inference_budget: Maximum 20 interaction turns and 2,048 output tokens per turn; paper reports 8 NVIDIA H200 GPUs for the
+    whole evaluation, mainly to host open-source models.
+  search_or_scaffold: Gymnasium reset/step interface; required function calling; three action types; pre-generated mock option
+    databases; every fifth search simulates failure; passive elicitation after three off-topic turns; single- and multi-choice
+    modes.
+  filtering_rule: Implicit expressions are curated/validated to be indirect but unambiguous; GPT-4o options are human supervised;
+    wrong options violate at least one preference and noise options are irrelevant or unrealistic. Exact rejection counts,
+    reviewer protocol, and automated checks are unknown.
+  selection_threshold: unknown
+  optimizer_or_training_scaffold: null
+  user_simulator: GPT-4o at temperature 0.0 with a 15-second timeout, prompt-based search/action judging, implicit preference
+    response generation, and fallback responses. Exact dated model endpoint is unknown.
+audit:
+  source_mixture: Author-curated preference concepts and indirect phrasings, GPT-4o-generated scenario/option content, human-supervised
+    option review, static mock travel databases, and runtime outputs from tested models plus a GPT-4o judge/user simulator.
+    Per-record human/model attribution is not released.
+  split: 'Verified release: 2,651 train and 471 test unique IDs with no ID overlap, duplicated across single- and multi-choice
+    Parquet variants. Paper §3.5 says 417 test, but Table 2 and the official release both support 471. Split seed, grouping
+    policy, and semantic-near-duplicate audit are undisclosed.'
+  decontamination: unknown
+  benchmark_overlap: The paper compares benchmark traits with prior environments but discloses no systematic prompt, preference,
+    option, code, or model-pretraining overlap search. Public tasks, labels, prompts, and evaluator code create future contamination
+    and benchmark-specific optimization risk.
+  lineage: Preference/elicitation source -> random combination -> GPT-4o scenario and option generation -> human supervision
+    -> structured JSON with labels/reasons -> Parquet task wrapper -> runtime environment interaction. The release lacks per-record
+    source attribution, construction prompts, random seeds, reviewer records, and an immutable run manifest.
+  license: Repository root is Apache-2.0 and the paper uses arXiv's non-exclusive distribution license. No separate dataset
+    card or rights statement clarifies generated scenario/option outputs, underlying preference-source rights, model-provider
+    terms, or whether every data artifact is covered by the root license.
+  release_version: Paper arXiv v1 (2025-07-29); repository data added 2025-08-05; current official main freeze 80506d2ab484cab843e60a2401ff3e0290d05b87
+    (2026-06-02). No Git tag or GitHub Release exists.
+  version_drift: 'Three material inconsistencies require a pin and note: paper §3.5 says 417 test while Table 2/release have
+    471; the paper claims 4K+ scenarios while the verified release has 3,122 unique IDs; and paper Figure 8''s judge type
+    numbering differs from the public prompt/code mapping present since the first repository commit.'
+  verifier_or_judge_failure_modes:
+  - GPT-4o classifications control search validity, clarification validity, preference IDs, simulated-user text, and two 0.2
+    rewards; no judge calibration, variance, or adversarial audit is reported.
+  - The paper's judge-type numbering does not match the repository prompt/code mapping, so implementations copied from the
+    appendix can invert behavior.
+  - Default passive preference selection uses unseeded Python `random.choice`, while the paper attributes one-run reproducibility
+    to temperature 0; API calls at temperature 0 are also not guaranteed bitwise deterministic.
+  - A representative released `best_id_thought` explicitly says two restaurant options have the same cost level and either
+    could be chosen, yet only one receives best reward 1.0; semantic label ties can create false penalties.
+  - One-choice termination counts an aspect after any submitted option, including a wrong one; environment termination is
+    not equivalent to successful completion.
+  - Public scenario IDs, correct/best option labels, option reasons, judge prompts, and evaluator code permit direct gaming
+    and future contamination.
+  - Static synthetic search results improve stability but may reward benchmark-specific argument matching and option-ID strategies
+    rather than robust real-world preference handling.
+  successful_and_failed_sample_retention: No complete successful/failed rollout archive was found. The release retains correct,
+    wrong, and noise task options and the paper shows two positive and one negative case study, but full model episodes, judge
+    outputs, retries, fallbacks, and dropped-run accounting are unavailable.
+  privacy_or_consent: Travel scenarios/options are described as curated and synthetic/mock. The paper mentions human supervision
+    but does not disclose curator recruitment, consent, compensation, agreement, or whether any implicit phrasings derive
+    from real user text.
+  citation_status: verified
+  confidence: medium
+  notes: 'Use the NeurIPS workshop venue only, not the main conference. Treat 3,122 as the verified unique released task count
+    and 6,244 only as variant-duplicated Parquet rows. Restrict actual `training_use` to evaluation: the named train split
+    and discussion of possible SFT/RL are prospective in this paper.'
+  remaining_unknowns:
+  - exact GPT-4o construction and runtime model versions
+  - construction prompts, temperatures, sampling counts, retries, seeds, and rejected items
+  - human curator/supervisor identities, counts, qualifications, agreement, adjudication, compensation, and consent
+  - split-generation rule, seed, and semantic duplicate leakage across train/test
+  - reconciliation of the 4K+ paper claim with 3,122 unique released IDs
+  - complete best-ID tie and option-label correctness audit
+  - judge false-positive/false-negative rates and sensitivity to model/prompt changes
+  - dataset-specific rights and provider-output reuse terms
+  - successful/failed rollout corpus, raw judge outputs, fallbacks, and run manifest
+  - decontamination and post-publication benchmark-exposure controls
+inclusion_reason: 'UserBench makes user-centric agent feedback inspectable as an environment contract: underspecified prompts
+  lead to clarification/search/answer transitions, GPT-4o and rules attach step and outcome rewards, and public task labels
+  expose concrete replay and reward-quality risks.'
+related:
+- tau2-bench-2025
+tags:
+- userbench
+- environment-agent-trajectory-data
+- agent-benchmark
+- conversational-agent
+- user-simulator
+- preference-elicitation
+- tool-use
+- mixed-verification
+- synthetic-travel
+- version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: UserBench releases 3,122 unique travel-planning tasks and a mixed GPT-4o/rule Gym environment for preference
+  elicitation, but not the paper's rollout trajectories, and its counts, judge labels, randomness, and best-option ties require
+  a pinned audit.
+why_it_matters: It shows how an interactive agent benchmark can turn clarifying questions, searches, implicit user responses,
+  and option choices into state/action rewards, while also demonstrating why prospective train splits are not training evidence
+  and why judge, label, split, and replay metadata determine reuse safety.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Verified arXiv v1 and rendered key method/table/appendix pages, official NeurIPS workshop listing, official repository/current
+    commit and history, Apache license/ethics notice, all Parquet files and split IDs, representative environment JSON, and
+    evaluator/config/data-loader/tool-schema code. No full replay or exhaustive 3,122-record semantic label audit was performed.
+curation_level: L3_summary_ready
+needs:
+- 'needs_version_pin: create a tagged release pinning code, all data hashes, dependency lock, exact GPT-4o endpoint, prompts,
+  seeds, and evaluation configuration'
+- 'needs_count_reconciliation: explain 417 versus 471 and 4K+ versus 3,122, and distinguish 6,244 variant rows from unique
+  tasks'
+- 'needs_documentation_fix: reconcile paper Figure 8 judge type numbering with repository prompt/code semantics'
+- 'needs_replay: release complete successful/failed episodes, raw judge outputs, retries/fallbacks, seeds, and environment/API
+  manifests'
+- 'needs_verifier_audit: measure judge error/variance and audit best-ID ties, false rewards, one-choice termination, and shortcut
+  strategies'
+- 'needs_split_and_decontamination: publish split construction, semantic deduplication, overlap checks, and public-exposure
+  policy'
+- 'needs_license: publish data-specific rights covering generated content, upstream sources, human work, and provider outputs'
+- 'needs_provenance: disclose construction prompts/models/settings and per-record human/model review lineage'
+card: null

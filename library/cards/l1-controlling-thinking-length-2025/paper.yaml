@@ -1,0 +1,179 @@
+id: l1-controlling-thinking-length-2025
+title: 'L1: Controlling How Long A Reasoning Model Thinks With Reinforcement Learning'
+year: 2025
+venue: COLM 2025
+authors:
+- Pranjal Aggarwal
+- Sean Welleck
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- logical_reasoning
+- general_knowledge
+training_use:
+- rlvr
+- test_time_compute
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=4jdIxXBNve
+  arxiv: https://arxiv.org/abs/2503.04697
+  code: https://github.com/cmu-l3/l1
+  data: null
+  project: https://cmu-l3.github.io/l1/
+  huggingface: https://huggingface.co/collections/l3lab/l1
+  doi: https://doi.org/10.48550/arXiv.2503.04697
+  venue: https://openreview.net/forum?id=4jdIxXBNve
+  openreview: https://openreview.net/forum?id=4jdIxXBNve
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2503.04697
+data_object:
+  prompt_source: DeepScaleR-Preview-Dataset, described as 40K mathematical question-answer pairs drawn from AIME, AMC, Omni-Math,
+    and STILL. The public preprocessing script loads the DeepScaleR training split and appends an exact-length or maximum-length
+    instruction; no immutable paper-matched row manifest or source-version map was verified.
+  trace_author: The current on-policy L1 policy generates the reasoning response during GRPO. LCPO requires only source prompts
+    and final answers, not teacher-written intermediate traces; however, the starting DeepScaleR-1.5B-Preview policy inherits
+    DeepSeek-R1-Distill-Qwen-1.5B and prior DeepScaleR RL lineage.
+  answer_format: A user prompt asks the model to reason and return the final answer in \boxed{}, followed by either an exact
+    token request (for example, "Think for 512 tokens") or a maximum token request. The response contains the model-generated
+    reasoning and a boxed final answer; the reward code extracts the answer after the reasoning delimiter and compares it
+    with the reference.
+  process_fields:
+  - source_problem
+  - ground_truth_answer
+  - length_mode
+  - requested_token_count
+  - generated_response
+  - realized_token_count
+  - extracted_final_answer
+  - correctness_signal
+  - length_adherence_signal
+  - composite_reward
+  environment_or_substrate: Offline mathematical question answering trained with GRPO in VeRL. A token counter supplies the
+    budget signal, while the released reward code uses boxed-answer extraction plus mathd/SymPy equivalence checks for mathematical
+    correctness. Training uses a 4K maximum context and evaluation extends to 8K.
+  verifier_or_reward: L1-Exact combines a binary final-answer correctness term with a penalty proportional to absolute deviation
+    from the requested token count; the paper fixes the trade-off coefficient at 0.0003. L1-Max applies a soft maximum-length
+    reward and retains dual exact/max objectives depending on the prompt. The public implementation exposes programmatic answer
+    extraction, mathd/SymPy grading, token-length scoring, and alternative reward forms; it does not make intermediate reasoning
+    correctness part of the reward.
+  terminal_predicate: LCPO does not use a correctness-triggered environment terminal state or an inference-time hard truncator.
+    Generation ends through the model/runtime stopping condition or context limit, after which correctness and realized length
+    are scored. L1-Max penalizes budget violations softly rather than guaranteeing that every response stays below the requested
+    ceiling.
+recipe_metadata:
+  base_model: DeepScaleR-1.5B-Preview, a 1.5B model previously RL-fine-tuned from DeepSeek-R1-Distill-Qwen-1.5B on the DeepScaleR-Preview
+    data with a 24K context. The paper also reports an appendix extension to DeepSeek-R1-Distill-7B; the main L1-Exact/L1-Max
+    recipe uses the 1.5B base.
+  teacher: No separate teacher generates LCPO target traces. The inherited base-model lineage includes DeepSeek-R1 distillation,
+    but LCPO itself operates on final-answer supervision and on-policy rollouts.
+  generator: DeepScaleR-1.5B-Preview initializes the on-policy generator; 700 LCPO-Exact GRPO steps produce L1-Exact, followed
+    by 120 additional RL steps with the maximum-length objective to produce L1-Max.
+  filtering_rule: The paper identifies the 40K DeepScaleR-Preview question-answer collection as the training source. The released
+    preprocessing script extracts ground-truth answers, appends a sampled length instruction, and serializes prompt/reward
+    metadata, but the paper and repository do not pin a paper-matched retained-row count, exclusion ledger, deduplication
+    rule, or contamination filter.
+  sampling_protocol: During training, an exact or maximum token request is appended to each problem and the target length
+    is sampled uniformly. The released preprocessing script samples integer targets from 100 to 4,000 by default and also
+    exposes logarithmic, unconstrained, and mixed exact/max modes. The paper evaluates fixed requests of 512, 1,024, 2,048,
+    and 3,600 tokens. Per-prompt GRPO group size, complete rollout counts, seeds, and a paper-pinned decoding configuration
+    were not verified.
+  rollout_count: unknown
+  temperature: The main training and evaluation decoding temperature was not identified in the paper metadata. An appendix
+    robustness study varies inference temperature from 0.0 to 1.0; this sweep is evidence about robustness, not a replacement
+    for the paper-matched training setting.
+  inference_budget: Training is capped at a 4K context and evaluation at 8K. Reported control curves use requested budgets
+    of 512, 1,024, 2,048, and 3,600 tokens; public preprocessing supports sampled integer requests from 100 to 4,000. Realized
+    output length remains model-generated and can violate the requested budget.
+  optimizer_or_scaffold: VeRL-based GRPO with learning rate 1e-6 and batch size 128. L1-Exact trains for 700 steps with the
+    exact-length objective and coefficient 0.0003; L1-Max continues for 120 steps with a soft maximum-length objective and
+    dual exact/max prompting. The paper states that hyperparameters were not extensively tuned.
+audit:
+  source_mixture: DeepScaleR-Preview 40K question-answer records (drawn from AIME, AMC, Omni-Math, and STILL) -> append a
+    sampled exact/max token instruction -> on-policy GRPO rollouts from DeepScaleR-1.5B-Preview -> programmatic final-answer
+    and token-length reward -> L1-Exact -> additional maximum-length RL -> L1-Max. A row-level lineage and rollout/reward
+    ledger was not verified.
+  split: Training uses the DeepScaleR-Preview source. Evaluation covers AIME 2025, MATH, AMC, Olympiad-Bench, GPQA, LSAT,
+    and MMLU. Exact source revisions, train/evaluation item manifests, and overlap accounting were not verified; this matters
+    because the training source itself includes AIME- and AMC-derived items.
+  decontamination: unknown
+  license: The official code repository is MIT-licensed. A single license covering the upstream DeepScaleR source mixture,
+    generated rollouts, released model collection, and all evaluation material was not verified.
+  lineage: Qwen2.5-1.5B-Instruct -> DeepSeek-R1-Distill-Qwen-1.5B -> DeepScaleR-1.5B-Preview using DeepScaleR-Preview math
+    data -> LCPO-Exact on sampled token requests -> L1-Exact -> LCPO-Max continuation -> L1-Max. The public Hugging Face collection
+    exposes multiple 1.5B, 7B, and 8B Exact/Max model artifacts, but not a complete versioned training-rollout corpus.
+  known_failure_modes:
+  - Exact-length optimization can reward padding, repetition, or distorted reasoning merely to hit the requested token count.
+    L1-Max reduces forced filling, but its reward still treats length as an optimization target rather than a semantic quality
+    measure.
+  - The released programmatic checker verifies an extracted final answer and token count, not the validity or faithfulness
+    of intermediate reasoning. A correct final answer can coexist with unsupported or circular reasoning.
+  - 'Reward-function choice is consequential: the paper reports that an additive L1-Max ablation collapses to extremely short
+    outputs that satisfy the ceiling while degrading reasoning performance.'
+  - Training is concentrated on mathematical question-answer data. The paper reports about 3% mean length deviation on math
+    tasks but 20-40% on out-of-domain tasks, so prompt-level budget control does not transfer uniformly.
+  - The official repository exposes code, preprocessing, evaluation scripts, model outputs, and model checkpoints, but no
+    verified paper-complete ledger of all target requests, GRPO rollouts, component rewards, failures, seeds, or retained/rejected
+    records.
+  - Benchmark comparisons remain vulnerable to lineage and contamination effects. The paper itself flags significant contamination
+    in one short-CoT model comparison, while comprehensive decontamination and source/evaluation overlap manifests remain
+    undisclosed.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the COLM 2025/OpenReview record, arXiv:2503.04697, the official CMU L3 project page, the cmu-l3/l1
+    repository, and the l3lab Hugging Face collection. Code and model artifacts are public; a complete reusable LCPO rollout/reward
+    dataset was not verified, so release completeness remains partial.
+  metadata_status: partial
+inclusion_reason: 'A direct Track 5 test-time-compute recipe: it converts a sampled token budget into prompt conditioning
+  and an online reward contract, producing full reasoning rollouts whose correctness and budget adherence are scored without
+  gold intermediate traces.'
+related: []
+tags:
+- length-control
+- lcpo
+- grpo
+- rlvr
+- test-time-compute
+- budget-conditioning
+- reasoning-traces
+- exact-length
+- maximum-length
+status: partial
+one_line_summary: L1 trains DeepScaleR-based policies with programmatic final-answer and token-budget rewards so a prompt
+  can request either an exact reasoning length or a maximum token ceiling.
+why_it_matters: 'It makes inference budget a first-class field of the rollout and reward contract: each source problem is
+  paired with a requested length, the policy generates an on-policy trace, and correctness plus realized length determine
+  reward. For Track 5, this separates learned budget-conditioned trajectories from hard truncation, while the missing complete
+  rollout/reward ledger limits data-level reuse and audit.'
+card: null
+needs:
+- 'needs_rollouts: paper-matched prompts, sampled exact/max requests, full responses, realized lengths, component rewards,
+  failures, and seeds for every GRPO group'
+- 'needs_provenance: immutable DeepScaleR source revision, retained-row manifest, source licenses, deduplication, and train/evaluation
+  overlap accounting'
+- 'needs_reproduction: pinned repository commit, exact GRPO group size and decoding settings, runtime termination rules, and
+  paper-matched environment versions'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, arXiv, project, code, and Hugging Face model collection verified. The code exposes preprocessing
+    and reward logic, but a complete paper-matched rollout/reward dataset and immutable experiment manifest were not verified.
+category_ids:
+- rollout_search_test_time_trace_data

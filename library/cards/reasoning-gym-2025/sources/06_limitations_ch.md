@@ -1,0 +1,9 @@
+- **范围。** 论文覆盖具有结构化或其他可算法检查 outcome 的单轮文本任务。知识密集、创造性、非结构化答案、持久多轮和多模态环境不在已验证范围内（论文 §7）。
+- **没有不可变数据集。** 该 artifact 是持续变化的 generator-scorer 库。精确重放需要代码/包版本、完整配置、seed/index、虚拟规模或重播种状态、混合权重、curriculum 迁移和 scorer 依赖。论文时期的精确 Reasoning Gym commit 为 unknown。
+- **Verifier 的健全性与完备性。** 自动检查仍可能产生假阳性和假阴性。当前基础 scorer 在较长回答包含 oracle 字符串时给部分分；任务 override 可能存在格式、容差、畸形输出或多解边缘情况。没有发布逐任务校准的 verifier 审计。
+- **论文后 scorer 漂移。** 当前 revision `49b07130b3fcd12f2d064bba7c43869543a0e7e7` 新增 cascade，可通过 LaTeX 清理、不区分大小写的相等、数值容差与可选符号匹配升级分数。缺少 `math-verify` 会静默禁用符号步骤。不能把这些当前行为倒推到论文实验。
+- **Reward 混杂。** 论文训练 reward 是 accuracy 与 0.2 的 format 组成之和，早期 reward 增长部分来自格式学习。即使评测表分离了 accuracy，模型仍可以在正确率不等比提高时提高曲线上的 reward。
+- **难度与 mixture 校准。** 只有部分任务提供 curriculum 属性，不同环境的等级含义不可直接比较。Count Primes 未离开初始 curriculum 等级。均匀任务采样还假设 IID mixture，将非平稳流与灾难性遗忘留作开放问题。
+- **评测不确定性。** 迁移实验使用 3 次运行和 50 题评测集。部分效应很小或为负，例如 GSM8K +0.5 与跨域 ARC -2.3 个百分点。实验未证明结果可在更大冻结集、不同 policy 或 verifier revision 上稳健。
+- **污染与 lineage。** 新表面形式不能排除共享模板、语义重叠或对外部 benchmark 的泄漏。没有发布完整模板/语义重叠 ledger；即使主仓库使用 Apache-2.0，任务级外部资产来源仍需审查。
+- **缺少 RL 经验数据。** 官方发布能重新生成 prompt 并评分，但不提供成功/失败 policy 回答、reward 组成、异常、checkpoint 和训练步决策的标准 ledger。重新生成 prompt 流不能还原论文的精确在线经验。

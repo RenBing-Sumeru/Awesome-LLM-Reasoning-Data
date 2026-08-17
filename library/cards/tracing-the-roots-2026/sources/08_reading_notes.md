@@ -1,0 +1,5 @@
+- Keep the objects separate: the released JSONL describes dataset-level graph edges and metadata; the reported 570K Alpaca-style corpus is not present in the inspected official repository.
+- Read the scale chain exactly: 83 seeds expand to 430 nodes and 971 edges; 212 unique leaves are filtered to 31 sources; about 8.7M normalized rows are deduplicated to a reported 570K instructions.
+- Inspect Figure 2 and Appendix A first: sourcing/tracing use GPT-5.1, extraction uses Gemini-2.5-Flash, and aggregation uses Gemini-2.5-Pro; the current repository's `gpt-5.4` default is later version drift.
+- Treat exact benchmark matches as auditable lower-bound evidence and leaf status as an observed-graph property, not proof of semantic independence or complete decontamination.
+- Read Table 4 only as an embedding-diversity comparison: Vendi Score 452.44 and Centroid Distance 0.6385 do not establish answer quality or downstream training gains.

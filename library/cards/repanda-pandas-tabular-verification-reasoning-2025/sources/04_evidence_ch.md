@@ -1,0 +1,1 @@
+RePanda 在 TabFact 测试集达到 84.09% 准确率；不额外微调时，在由 WikiTableQuestions 重解释得到的 WikiFact 上达到 84.72%，接近 671B DeepSeek-Chat 的零样本表现；在 PanWiki 训练后的直接答案检索准确率为 75.1%。这些结果说明小模型可以蒸馏可执行表格推理，但比较同时涉及训练数据、模型类型和输出接口，不能只归因于 pandas 表示。

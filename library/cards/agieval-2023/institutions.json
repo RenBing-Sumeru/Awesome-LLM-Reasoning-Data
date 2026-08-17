@@ -1,0 +1,13 @@
+{
+  "institutions": [
+    "Microsoft"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2304.06364",
+    "https://github.com/ruixiangcui/AGIEval"
+  ],
+  "verification_note": "arXiv and official repository sources verify authors, shared Microsoft affiliation line, arXiv preprint status, and released code/data. No official conference page was verified."
+}

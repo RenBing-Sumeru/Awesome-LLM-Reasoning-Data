@@ -1,0 +1,1 @@
+Do not read CRUXEval scores as HumanEval-style code-writing scores. The model is usually answering about a fixed function, and the verifier checks I/O consistency. Read the task construction and answer parser before comparing leaderboard numbers. Keep input prediction and output prediction separate: inverse reasoning can have ambiguity that forward execution may not.

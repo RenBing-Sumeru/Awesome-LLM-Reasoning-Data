@@ -1,0 +1,5 @@
+- 应将论文第 2.1–2.3 节连贯阅读：value target、56-pair 采集单元和 block-wise search 消费端共同构成一个数据契约。
+- 严格区分三个规模：44,509 个公开提示组、每组 56 个 pair、post-filter 后约 250 万个 pair；推理预算 \(N\) 是第四个不同量。
+- 过滤/截断选择看附录 D，128 张 H100 的 value-model 训练看附录 E，预算化比较看表 2，失败与效率边界看附录 C.7 和 H。
+- OpenR1-VM 只在入选提示组内部保留错误和未完成 rollout；全失败组、完整拒绝清单及历史丢弃搜索分支均未发布。
+- 建议与 PRM、best-of-N/多数投票及搜索生成 trace 相关工作对读；复用前核验生成设置、validation split 身份、许可证、模型打包和 value 校准。

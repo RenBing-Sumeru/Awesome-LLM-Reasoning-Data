@@ -1,0 +1,5 @@
+- Start with Section 3.1 and Figure 14 for the strongest record interface: current-scene images plus a natural-language instruction are mapped to executable action chunks.
+- Read Section 4.2 and Figure 24 for the re-labelled reasoning intermediate: left- and right-arm trajectories for approximately the next one second.
+- Keep evaluation and training separate: binary success, scalar progress, repeated trials, and ERQA answer keys are reported evaluation contracts, not disclosed RL rewards.
+- Attribute 2M and 1M appendix training steps only to diffusion baselines; Gemini Robotics training steps, optimizer, loss, and batch size are unknown.
+- Treat the 400-item CC BY 4.0 ERQA release as an answer-level benchmark, not as release evidence for proprietary ALOHA 2 demonstrations or Gemini weights.

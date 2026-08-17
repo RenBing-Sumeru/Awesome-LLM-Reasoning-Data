@@ -1,0 +1,1 @@
+论文在多个 reward-model benchmark 和下游策略训练任务上比较 pointwise、pairwise 及 rubric 基线。RUBRIC-ARROW 在奖励准确率上达到有竞争力结果，并在不同 policy 后训练设置中持续带来提升；概率聚合降低布尔求和造成的平局，交替训练消融表明 generator 与 Judge 共同更新优于只训练一方。由于模型规模、偏好来源和 RL 预算会影响结果，不能把全部增益归于公开 SFT 数据。

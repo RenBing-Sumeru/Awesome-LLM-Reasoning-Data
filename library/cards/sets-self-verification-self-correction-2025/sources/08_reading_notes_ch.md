@@ -1,0 +1,5 @@
+- SETS 采样 m 条分支，每条最多 self-verify 与 correct n 轮，再对最终答案 majority vote。
+- 在线 verifier 是同一模型加短语解析规则；benchmark checker 只用于评测。
+- 报告默认 temperature 为 0.7，n 最高为 10，thinking model 的 m 搜索范围更小。
+- Scaling curve 为每个模型、数据集和 token 预算选择测试过的最佳 m/n 配置。
+- 未确认官方代码或分支级轨迹发布，因此准确率增益不是数据质量证明。

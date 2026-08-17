@@ -1,0 +1,3 @@
+The paper reports improved calibration and best-of-N selection relative to isolated scoring. Its streaming variant reaches a stated target accuracy with roughly half the latency of the isolated-verifier counterpart, supporting the claim that set-level evidence can be useful before all parallel generations end.
+
+The evidence is about the tested candidate distributions and parallel serving setup. A speedup must be interpreted with the cost of joint scoring, synchronization, and cancelled sequences included; an accuracy–latency curve is more informative than one number because the appropriate stopping point depends on the product constraint.

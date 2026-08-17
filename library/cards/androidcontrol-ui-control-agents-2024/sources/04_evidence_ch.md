@@ -1,0 +1,1 @@
+官方 README 报告数据含 15,000+ 条演示、833 个 app、40 个 app 类别，并列出精确 TFRecord 字段：episode id、goal、screenshots、accessibility trees、截图尺寸、actions 和 step instructions。公共 bucket 与 split file 是复用的关键 artifact 证据。论文报告规模与泛化发现，但行级证据仍是存储演示上的参考动作一致性，而不是当前 app 的实时任务成功。证据边界取决于 GCS snapshot、split file 完整性、parser 版本，以及实验使用 high-level goal、low-level step instruction 还是两者。

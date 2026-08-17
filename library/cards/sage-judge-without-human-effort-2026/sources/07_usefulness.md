@@ -1,0 +1,1 @@
+Use Sage when answer sets are available but human labels are scarce: obtain pairwise verdicts, calculate stability and transitivity, then investigate low-consistency judges or add rubrics. The result is a label-free reliability report. Do not use it alone to certify safety, factuality or human preference.

@@ -1,0 +1,5 @@
+The public corpus is a flattened view of a search process. Without tree identity, parent/child edges, visit counts, terminal answer, or the GPT-4o verdict, a user cannot recompute the published scalar or distinguish a locally flawed step from one that happened to lead to successful continuations. This is a material constraint for reward-model training audits.
+
+The label source is also indirect. A terminal proprietary-model judgment and sampled MCTS futures can encode judge bias, answer-equivalence mistakes, and policy-specific exploration effects. No human-label comparison, judge error rate, prompt release, or calibration analysis was found in the checked official paper, repository, or dataset card.
+
+The paper itself reports that the benefits of PRM are not uniform: on MathVerse, text-dominant examples improve while visual-dominant examples decline under the reported setting. ViLBench is selected for PRM preference, so its scores should not be generalized to ordinary multimodal workloads. Upstream image/question rights, decontamination against training corpora, demographic coverage, and exact construction seeds remain undisclosed.

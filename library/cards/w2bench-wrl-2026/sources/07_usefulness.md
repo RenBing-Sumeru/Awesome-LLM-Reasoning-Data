@@ -1,0 +1,3 @@
+For a writing-model team with explicit constraints, convert each prompt into named requirements, generate controlled requirement-dropout candidates, and benchmark reward rankings against the induced order. Retain the original prompt, dropped requirements, generator, and ranking with each record.
+
+If the audit shows acceptable expert agreement, train a reward model on the pairs and compare GRPO against the same base model, prompt mix, and rollout budget. Do not use the method when requirements cannot be stated or deleting one changes the requested task; success is constraint satisfaction under held-out prompts, not merely stylistic preference.

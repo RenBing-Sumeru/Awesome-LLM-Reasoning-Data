@@ -1,0 +1,3 @@
+Medical open-ended QA cannot be reliably judged by lexical overlap: clinically valid paraphrases may look different, while fluent answers can omit or distort medical facts. Expert review is the relevant standard but is costly, and multiple-choice benchmarks do not test this free-form setting.
+
+The paper evaluates LLMs as binary semantic-equivalence judges for French medical answers, asking whether agreement with a clinician depends on the answer generator. It also tests whether limited expert labels can align a compact evaluator through supervised fine-tuning (SFT) followed by Group Relative Policy Optimization (GRPO).

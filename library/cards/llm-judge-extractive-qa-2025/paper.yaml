@@ -1,0 +1,95 @@
+id: llm-judge-extractive-qa-2025
+title: 'LLM-as-a-Judge: Reassessing the Performance of LLMs in Extractive QA'
+year: 2025
+venue: arXiv preprint
+authors:
+- Xanh Ho
+- Jiahao Huang
+- Florian Boudin
+- Akiko Aizawa
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.11972
+  arxiv: https://arxiv.org/abs/2504.11972
+  code: https://github.com/Alab-NII/llm-judge-extract-qa
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://arxiv.org/abs/2504.11972
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Judge agreement is lower for ambiguous job answers; validate on the target answer types before reuse.
+  citation_status: verified
+  confidence: medium
+  notes: Full paper and official code repository reviewed; no formal venue found during the verification pass.
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2504.11972.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Controlled audit of LLM-judge reliability against human labels for extractive QA.'
+related: []
+tags:
+- llm-as-a-judge
+- extractive-qa
+- audit
+status: verified
+one_line_summary: Audits LLM judging against human labels for extractive QA where EM and F1 can miss valid paraphrases.
+why_it_matters: It provides a reproducible reliability test for replacing lexical QA metrics with contextual judgments.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary paper page recorded; artifact availability stated without inference.
+category_ids:
+- audit_failure_contamination_verifier_attacks
+category:
+- audit_failure_contamination_verifier_attacks

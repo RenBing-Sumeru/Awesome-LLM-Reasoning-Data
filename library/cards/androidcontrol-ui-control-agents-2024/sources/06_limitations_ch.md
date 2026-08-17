@@ -1,0 +1,1 @@
+正确性只相对于日志演示和离线评测规则成立。README 的动作空间包括 click、long_press、scroll、open_app、input_text、navigate_home、navigate_back 和 wait；策略匹配这些 JSON 标签，也可能在语义等价的实时任务中失败。accessibility tree 解析依赖 android_env proto 工具，app UI 漂移会破坏截图或树节点假设。仓库 BibTeX 标题与 arXiv/card 标题不完全一致，正式引用应以当前 arXiv 或会议记录为准。公开 app 轨迹可能污染后续训练，不能在没有 lineage 检查时混入 held-out 评测。

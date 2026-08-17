@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentBoard 提供带明确评测契约的智能体环境评测面，除任务成功率外还用进度指标刻画多轮交互中的逐步推进。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Agent 环境 / 工具使用数据与评测",
+  "best_for_ch": "研究 tool-use、agent trajectory、环境反馈契约和可复现评测的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Chang Ma、Junlei Zhang、Zhihao Zhu、Cheng Yang、Yujiu Yang、Yaohui Jin 等（The University of Hong Kong 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T06:49:04Z"
+}

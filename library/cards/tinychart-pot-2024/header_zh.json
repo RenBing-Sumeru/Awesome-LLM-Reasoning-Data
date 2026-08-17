@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TinyChartData 公开图表问题、Python 思维程序与最终答案，用于紧凑图表模型的指令微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "训练能够展示并执行数值步骤的小型图表模型",
+  "confidence_ch": "高",
+  "authors_ch": "Liang Zhang, Anwen Hu, Haiyang Xu, Ming Yan, Yichen Xu, Qin Jin, Ji Zhang, Fei Huang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

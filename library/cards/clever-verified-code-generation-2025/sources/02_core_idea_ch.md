@@ -1,0 +1,1 @@
+核心贡献是把 specification generation 与 verified implementation generation 组合为一个严格 benchmark。161 条记录包含函数签名、docstring、测试、自然语言规格、隐藏形式真值、生成规格、同构定理及证明、实现、正确性定理和辅助 lemma。数据避免把实现逻辑直接写入规格，也不使用 LLM 自动标注；规格需通过与隐藏真值之间的等价/同构证明，代码则需通过 correctness theorem。所有对象由 Lean 类型检查器验证，因此验证的是形式语义，不是有限输入上的行为相似。

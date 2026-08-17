@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "3,000条 MR-GSM8K 解答及逐步有效性/冗余反馈，能筛选高质量推理轨迹并训练过程评估器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学推理过程质量评测、标注数据与评估器论文",
+  "best_for_ch": "需要在最终答案之外诊断数学推理步骤的有效性与冗余性，或筛选高质量链式推理数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Shijie Xia, Xuefeng Li, Yixin Liu, Tongshuang Wu, Pengfei Liu",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:42:17Z"
+}

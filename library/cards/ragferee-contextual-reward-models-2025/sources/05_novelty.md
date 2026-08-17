@@ -1,0 +1,1 @@
+General preference data treats the answer as the main object. RAGferee makes retrieval evidence part of the reward-model input and constructs contrasts around RAG-specific failure modes, particularly supported answer versus attractive but unsupported answer. The novelty is contextual preference construction, not a new proof system for retrieved passages.

@@ -1,0 +1,5 @@
+The main controlled test attacks Mistral-7B judges on MT-Bench and LLMBar with 10 target question-response pairs and 500 clean responses per dataset. With the same target pairs and candidate-position protocol, JudgeDeceiver obtains 90.8% ASR and 83.4% position-consistent ASR on MT-Bench; the strongest manually designed prompt-injection baseline reaches at most 40.7% ASR and 19.0% position-consistent ASR (Table 1). This supports effectiveness in that white-box setting, not security against closed or differently prompted judges.
+
+For defenses, Table 11 reports that known-answer detection misses 90% and 100% of attacks on MT-Bench and LLMBar respectively; Mistral-7B PPL/PPL-W detection still has 40%–70% false-negative rates at low false-positive rates. These measurements show that the tested filters are insufficient, not that no effective defense exists.
+
+The authors also demonstrate search, RLAIF, and tool-selection cases, but those small constructed studies support transfer examples rather than replacing the main controlled comparison.

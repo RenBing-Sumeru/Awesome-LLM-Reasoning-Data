@@ -1,0 +1,1 @@
+Bercovich, Akhiad, et al. “Llama-Nemotron: Efficient Reasoning Models.” arXiv:2505.00949, 2025. Paper: https://arxiv.org/abs/2505.00949. Official BibTeX: https://arxiv.org/bibtex/2505.00949. Official dataset: https://huggingface.co/datasets/nvidia/Llama-Nemotron-Post-Training-Dataset.

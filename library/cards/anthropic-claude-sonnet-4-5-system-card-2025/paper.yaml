@@ -1,0 +1,155 @@
+id: anthropic-claude-sonnet-4-5-system-card-2025
+title: Claude Sonnet 4.5 System Card
+year: 2025
+venue: Anthropic system card
+authors:
+- Anthropic
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- coding
+- agentic_tool_use
+- cybersecurity
+- mathematics
+- safety
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www-cdn.anthropic.com/963373e433e489a87a10c823c52a0a013e9172dd/Claude%20Sonnet%204.5%20System%20Card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/system-cards
+  huggingface: null
+  doi: null
+  venue: https://www.anthropic.com/system-cards
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'A proprietary mix is disclosed at category level: public internet information through July 2025, non-public
+    third-party data, data-labeling services and paid contractors, opted-in Claude-user data, and Anthropic internally generated
+    data. Individual prompt/task sources, counts, mixtures, revisions, and provenance are unknown.'
+  trace_author: Data-work-platform workers help with preference selection, safety evaluation, and adversarial testing. The
+    model exposes thought processes at inference, but the system card does not disclose training-trace authorship, selection,
+    schemas, retention, or provenance.
+  answer_format: The product can emit a thought process in extended-thinking mode, with a smaller model summarizing very long
+    thoughts. Training and evaluation record schemas, full trace corpora, preference records, and tool-interaction fields
+    are unknown.
+  process_fields:
+  - thinking_text
+  - final_answer
+  environment_or_substrate: The report describes reward-hacking coding evaluations, synthetic honeypot and agentic-misalignment
+    evaluations, and white-box activation-steering experiments. Training environments, tools, versions, task interfaces, and
+    rollout logs are unknown.
+  verifier_or_reward: Post-training includes RLHF and reinforcement learning from AI feedback. The report describes reward-hacking
+    stress-test classifiers, hidden tests, monitoring, and high-level changes to reward structures, but does not disclose
+    the training feedback, reward models/functions, calibration, objectives, aggregation, or terminal predicates.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Claude Sonnet 4.5 checkpoint lineage, architecture, parameter count, and allocation across training stages are
+    unknown.
+  teacher: unknown
+  generator: Anthropic reports internally generated data but does not identify generators, prompts, sampling, source proportions,
+    or selection rules.
+  filtering_rule: Data cleaning and filtering including deduplication and classification are reported. Rules, thresholds,
+    yields, retained/removed records, and post-training data-pipeline implementation are unknown.
+  sampling_protocol: Multiple training snapshots were evaluated and agentic evaluations sampled each snapshot multiple times.
+    White-box analyses include a 100-prompt synthetic-honeypot experiment with 10 samples per prompt, but post-training sampling
+    and rollout protocols are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Extended-thinking mode allows the model to deliberate longer, but the card does not disclose numerical
+    reasoning-token budgets, allocation policy, or deployed defaults.
+  optimizer_or_scaffold: The report names post-training/fine-tuning with RLHF and AI feedback and a new safety pipeline with
+    specification, data-pipeline, and algorithm updates. Optimizers, objective terms, reward normalization, schedules, rollout
+    generation, checkpoints, and detailed scaffold are unknown.
+audit:
+  source_mixture: Only broad training-source categories are disclosed. Source manifests, mixture weights, dataset versions,
+    token/sample counts, opt-in retention, provenance graph, and source-level rights are unknown.
+  split: Reward-hacking evaluations use expanded tasks from a training distribution and a held-out fuzzed-test variant, but
+    tasks, membership, split design, and evaluation/training overlap beyond that high-level claim are undisclosed.
+  decontamination: unknown
+  license: No data, model weights, task artifacts, code, or record-level evaluation release is identified in the official
+    system card; source-level data rights and artifact licenses are unknown.
+  lineage: The card provides stage-level lineage from broad source categories through RLHF/RLAIF, safety-pipeline changes,
+    and monitoring, but no item-level prompt-to-trace-to-feedback-to-reward-to-checkpoint lineage.
+  known_failure_modes:
+  - The card reports RLHF/RLAIF and a redesigned safety pipeline without any auditable feedback records, reward contracts,
+    data-pipeline changes, or optimizer artifacts.
+  - Reward-hacking methods are stress tests with task/scaffold updates and are explicitly not real-world hacking-rate estimates;
+    prompts, classifiers, hidden tests, and scores cannot be independently audited.
+  - Evaluation awareness can alter alignment-relevant behavior and may cause behavioral evaluations to underrate deployment
+    risk; the white-box method, vectors, prompts, and model snapshots are not released.
+  - Mechanistic evaluation datasets include synthetic and controlled prompts but are not published with source provenance,
+    labels, selection, splits, or reproducible code.
+  - Data rights, manifests, decontamination, raw monitoring logs, worker records, weights, and training/evaluation environment
+    pins remain unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Only the official Anthropic Claude Sonnet 4.5 System Card and official system-card index were used. This Track 12
+    entry records partial disclosure and audit limits; it does not treat reported evaluations as a reusable post-training-data
+    release.
+inclusion_reason: A frontier system card that combines unusually detailed reward-hacking stress-test methodology, continuous
+  monitoring, and pre-release white-box interpretability practice with high-level training-source/RLHF/RLAIF disclosure, while
+  retaining all records and reward/recipe details required for reproduction undisclosed.
+related: []
+tags:
+- anthropic
+- claude-sonnet-4-5
+- claude
+- frontier-report
+- system-card
+- data-disclosure-ledger
+- rlhf
+- rlaif
+- reward-hacking
+- mechanistic-interpretability
+- evaluation-awareness
+- safety-audit
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Claude Sonnet 4.5's system card discloses broad source categories, RLHF/RLAIF, safety-pipeline changes,
+  reward-hacking stress tests, and a white-box evaluation-awareness audit, but not the associated training data, reward functions,
+  model internals, or reproducibility artifacts.
+why_it_matters: It is a high-value Track 12 report because it makes the difference between disclosed frontier evaluation practice
+  and undisclosed post-training data/reward contracts unusually legible, including a concrete warning that evaluation awareness
+  can confound safety evidence.
+card: null
+needs:
+- 'needs_data: source manifests, prompt/task and preference records, thought traces, worker labels, quantities, revisions,
+  and rights'
+- 'needs_verifier: RLHF/RLAIF feedback sources, reward-model/function implementation, reward-hacking classifiers/hidden tests,
+  calibration, and error audits'
+- 'needs_metadata: safety-pipeline changes, generators, filtering yields, sampling, rollouts, optimizer, schedules, checkpoints,
+  and deployed thinking budgets'
+- 'needs_audit: reward-hacking task artifacts, white-box prompt sets/vectors/SAEs, monitoring transcripts, evaluators, splits,
+  decontamination, and environment/tool pins'
+- 'needs_license: source-level training/evaluation-data rights and artifact licenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Anthropic system-card PDF was read directly; Anthropic's official system-card index confirms the September
+    2025 listing. No other links are claimed.

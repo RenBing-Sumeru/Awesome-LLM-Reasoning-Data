@@ -1,0 +1,113 @@
+id: agentprocessbench-step-level-tool-agents-2026
+title: 'AgentProcessBench: Diagnosing Step-Level Process Quality in Tool-Using Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Shengda Fan
+- Xuyan Ye
+- Yupeng Huo
+- Zhi-Yuan Chen
+- Yiju Guo
+- Shenzhi Yang
+- Wenkai Yang
+- Shuqi Ye
+- Jingwen Chen
+- Haotian Chen
+- Xin Cong
+- Yankai Lin
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- tool-using-agents
+- process-reward-modeling
+- agent-evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2603.14465
+  arxiv: https://arxiv.org/abs/2603.14465
+  code: https://github.com/RUCBM/AgentProcessBench
+  project: https://rucbm.github.io/AgentProcessBench-Homepage/
+  data: https://huggingface.co/datasets/LulaCola/AgentProcessBench
+  huggingface: https://huggingface.co/datasets/LulaCola/AgentProcessBench
+  venue: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Agent trajectories sampled from HotpotQA, GAIA, BFCL, and tau2.
+  trace_author: Five source models generate tool-use trajectories; human experts label their steps.
+  answer_format: Multi-turn messages, tool definitions, tool-use traces, reference outputs, and ternary process labels.
+  process_fields:
+  - messages
+  - tools
+  - tool_trace
+  - reference_output
+  - step_label
+  environment_or_substrate: Tool-using agent evaluation across retrieval, function calling, and multi-turn interaction.
+  verifier_or_reward: Human experts assign ternary labels under an error-propagation rule.
+  terminal_predicate: Step correctness and earliest-error identification.
+recipe_metadata:
+  base_model: Five source models generate the released trajectories; evaluate other models with the official scripts.
+  teacher: Human expert annotators using the authors' annotation platform.
+  generator: Tool-using agents operating on four representative benchmarks.
+  filtering_rule: A ternary scheme preserves exploration states and an error-propagation rule reduces labeling ambiguity.
+  sampling_protocol: 1,000 trajectories, 250 per benchmark subset, in the released benchmark data.
+  inference_budget: Model API settings and concurrency are configured by the official evaluation scripts.
+  optimizer_or_scaffold: Step-level and first-error evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Benchmark tasks, model-generated tool trajectories, reference outputs, and human step labels.
+  split: 1,000 trajectories and 8,509 labeled steps; 250 examples from each of four subsets.
+  decontamination: Do not train on released trajectories before reporting AgentProcessBench StepAcc or FirstErrAcc.
+  license: Refer to the official GitHub and Hugging Face releases for applicable terms.
+  lineage: arXiv paper, author project page, official RUCBM repository, and official dataset card.
+  known_failure_modes:
+  - Ternary labels require a subjective exploration boundary
+  - The benchmark covers four selected agent settings
+  - Irreversible tool effects are represented through traces rather than live execution
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, first-page affiliations on the author project page, official GitHub repository, and AgentProcessBench
+    Hugging Face dataset.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- agent-trajectories
+- reasoning
+one_line_summary: AgentProcessBench supplies 1,000 tool-agent trajectories with 8,509 human ternary step labels for evaluating
+  local process quality and first-error localization.
+why_it_matters: It moves process supervision from closed-world reasoning to tool trajectories where a bad action can have
+  irreversible effects.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, first-page affiliations on the author project page, official GitHub repository, and AgentProcessBench
+    Hugging Face dataset.
+category_ids:
+- process_trace_supervision_data

@@ -1,0 +1,6 @@
+- 数据对象：重复 query-response 候选、raw/normalized verifier score、binary vote、拟合的 TPR/TNR、后验正确性分数和选中回答。
+- 主要契约：judgment-required 的 answer-level selection；Weaver 不是 programmatic oracle。
+- 主比较使用 100 个候选和异构 weak-verifier ensemble；约 1% 带标签开发数据提供先验与阈值信息。
+- 官方版本结果必须分开：NeurIPS 报告平均 86.2%，当前可访问 arXiv Table 1 报告 87.7%。
+- 蒸馏用 Weaver 后验分数训练 396M ModernBERT cross-encoder；保留率指标不能认证每个伪标签。
+- 复用前审计 verifier 相关性、类别先验与阈值漂移、无正确候选情形、发布 lineage、decontamination 和 license。

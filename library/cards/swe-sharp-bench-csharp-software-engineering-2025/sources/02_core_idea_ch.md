@@ -1,0 +1,1 @@
+核心贡献是首个专门面向 C#/.NET 的可复现 SWE-bench 风格 benchmark。150 条数据以 CSV/Hugging Face 形式公开，字段围绕 repository、base commit、issue/problem statement、patch、测试与环境配置组织；代码仓库提供候选挖掘、solution 构建和评测脚本。实例来自 17 个活跃 C# 项目，使用 `dotnet`/MSBuild 和项目原生测试框架重放，补丁只有通过目标与回归测试才算 resolved。数据许可为 CDLA-Permissive-2.0，可用于 coding agent 跨语言评测、.NET 环境适配和 C# repository retrieval 研究，主要定位是 test benchmark 而非训练集。

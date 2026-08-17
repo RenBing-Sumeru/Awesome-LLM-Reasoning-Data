@@ -1,0 +1,3 @@
+- Use the open corpus as a large STEM long-CoT starting point, but retain provenance and rerun decontamination against the exact evaluation suite.
+- Use failure-driven retrieval when a first-stage model and objective answer checker are available; synthesize around error regions rather than resampling easy source data.
+- Tune source mixture and scale on held-out domains, because more targeted synthetic data can reduce performance outside the selected failure distribution.

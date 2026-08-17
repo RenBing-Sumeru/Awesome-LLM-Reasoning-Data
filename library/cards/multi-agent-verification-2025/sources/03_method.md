@@ -1,0 +1,3 @@
+The method samples several answers for an input, obtains scores from a set of aspect verifiers, and aggregates those scores to choose an answer. The paper also studies weak-to-strong and self-improvement settings, so the verifier configuration is part of the inference design rather than a fixed external oracle.
+
+A proper experimental record therefore includes the candidate count, the identities or prompts of each verifier, the aspect assigned to each one, the aggregation rule, and the total verifier calls. Those details distinguish an improvement from better generation from an improvement caused by spending more computation on judgment.

@@ -1,0 +1,3 @@
+The contribution is a 120-task benchmark for terminal-use agents across five task families. TUA-Bench reframes many computer-use tasks that would normally be done through a GUI as terminal-first workflows, while also including professional scientific and engineering tasks co-designed with PhD-level experts.
+
+The core mechanism is standardized task packaging: each task has a concrete terminal environment, setup procedure, expected artifact or state, and verifier. The feedback contract is execution-based scoring rather than a subjective answer judgment. Closest comparisons are Terminal-Bench, OSWorld, SWE-agent-style repository tasks, and GUI computer-use benchmarks. The direction label is general-purpose CLI environment evaluation with executable artifact checking.

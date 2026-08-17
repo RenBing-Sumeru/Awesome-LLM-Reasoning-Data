@@ -1,0 +1,7 @@
+Exact-length optimization can reward padding, repetition, or unnatural expansion/compression because meeting the token count is part of the objective. L1-Max removes the requirement to fill the budget, but the paper's additive Max-reward ablation collapses to extremely short CoTs that satisfy the ceiling while harming performance. Reward design therefore changes what trajectories are generated, not just their length.
+
+Correctness is attached to the extracted final answer, while intermediate reasoning receives no direct validity signal. A rollout can pass mathd/SymPy checking despite unsupported intermediate claims. Conversely, extraction or symbolic-normalization failures can mark a semantically correct response wrong. Token count measures resource use, not information content.
+
+Training is concentrated on DeepScaleR mathematical QA. Length deviation rises from about 3% on math evaluations to 20-40% on reported OOD tasks, so control does not transfer uniformly. The paper states that hyperparameters were not extensively tuned, and 4K training contexts change the regime of a 24K-context base.
+
+No complete paper-matched ledger of source versions, target requests, GRPO groups, rollouts, component rewards, seeds, failures, or rejected records was verified. Comprehensive decontamination and overlap manifests are also absent; the source mixture contains AIME/AMC-derived material, and the paper itself flags significant contamination in one short-CoT comparison.

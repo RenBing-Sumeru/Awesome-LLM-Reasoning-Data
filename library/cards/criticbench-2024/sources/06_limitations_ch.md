@@ -1,0 +1,1 @@
+正确性只相对于任务专属标签或指标成立。流畅 critique 可能错误、不完整，或虽然有说服力却没有改善 corrected answer。GQC aggregate correlation 不能证明单条 critique 可作为可靠 reward signal。公开 reasoning datasets 和生成 responses 可能进入后续模型训练。各 domain 指标异质，数学、代码、常识、符号和算法分数不能在未检查评分契约时直接合并。

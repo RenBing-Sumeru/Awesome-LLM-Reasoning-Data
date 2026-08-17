@@ -1,0 +1,152 @@
+id: opencodereasoning-advancing-data-distillation-for-competitive-coding-2025
+title: 'OpenCodeReasoning: Advancing Data Distillation for Competitive Coding'
+year: 2025
+venue: COLM 2025
+authors:
+- Wasi Uddin Ahmad
+- Sean Narenthiran
+- Somshubra Majumdar
+- Aleksander Ficek
+- Siddhartha Jain
+- Jocelyn Huang
+- Vahid Noroozi
+- Boris Ginsburg
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- code
+- competitive_programming
+- python
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2504.01943
+  arxiv: https://arxiv.org/abs/2504.01943
+  code: https://github.com/NVIDIA-NeMo/Skills/tree/main/recipes/opencodereasoning
+  data: https://huggingface.co/datasets/nvidia/OpenCodeReasoning
+  project: https://nvidia-nemo.github.io/Skills/releases/opencodereasoning/
+  huggingface: https://huggingface.co/collections/nvidia/opencodereasoning
+  doi: https://doi.org/10.48550/arXiv.2504.01943
+  venue: https://colmweb.org/2025/AcceptedPapers.html
+  openreview: https://openreview.net/forum?id=aykM7KUVJZ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://huggingface.co/datasets/nvidia/OpenCodeReasoning
+data_object:
+  prompt_source: Competitive-programming questions from TACO, APPS, CodeContests, and OpenR1 CodeForces after exact-match
+    deduplication; the paper reports 28,904 questions, while the HF 1.0 card reports 28,319.
+  trace_author: DeepSeek-R1 generates multiple reasoning-and-code responses per question.
+  answer_format: A DeepSeek-R1 response with a tagged reasoning trace and final Python code block, plus an extracted solution
+    field; C++ responses were generated for an ablation.
+  process_fields:
+  - id
+  - input
+  - output
+  - solution
+  - dataset
+  - license
+  - split
+  - source
+  - difficulty
+  - index
+  environment_or_substrate: Offline competitive-programming SFT corpus; source metadata supports question reconstruction,
+    and execution against CodeContests tests is used for an ablation rather than as the release-wide acceptance environment.
+  verifier_or_reward: Reasoning-tag and code-block checks, rejection of code blocks inside the reasoning trace, Tree-sitter
+    syntax parsing, and benchmark-overlap screening by cosine similarity, two LLM judges, and manual inspection. Unit tests
+    label only the CodeContests ablation/evaluation subset.
+  terminal_predicate: A released row passes format and syntax post-processing. This does not certify semantic correctness
+    or unit-test success.
+recipe_metadata:
+  base_model: Qwen2.5 base and instruct models at 7B, 14B, and 32B in the paper's SFT experiments.
+  teacher: DeepSeek-R1
+  generator: DeepSeek-R1 generations served with SGLang.
+  filtering_rule: Exact-match question deduplication; benchmark-overlap screening at cosine similarity 0.7 followed by Llama-3.3-70B-Instruct,
+    Qwen2.5-32B-Instruct, and manual review; require reasoning tags and a final code block; reject code blocks inside reasoning;
+    parse syntax with Tree-sitter. Functional execution is not the main release filter.
+  sampling_protocol: Generate multiple solutions per question, primarily in Python, with nucleus sampling, temperature 0.6,
+    top-p 0.95, and an injected reasoning-start tag.
+  rollout_count: null
+  temperature: 0.6
+  inference_budget: Paper generation maximum output sequence length is 16k tokens; SFT uses maximum sequence length 32,768
+    and evaluation generates up to 30,720 tokens.
+  optimizer_or_scaffold: Three-epoch SFT with AdamW, global batch 256, learning rate 5e-5 selected from a five-value grid,
+    cosine schedule, warmup ratio 0.1, BF16, sequence packing, and tensor/context parallelism on NVIDIA H100-80GB GPUs.
+audit:
+  source_mixture: TACO, APPS, CodeContests, and OpenR1 CodeForces, spanning ten competitive-programming platforms in the paper's
+    Table 1.
+  split: The HF card exposes split_0 and split_1 configurations and retains source split metadata; split_1 reconstructs APPS/TACO
+    prompts through dataset/split/index. CodeContests and OpenR1 CodeForces test splits are excluded. The paper does not publish
+    a model-training item manifest.
+  decontamination: For LiveCodeBench, CodeContests, HumanEval, and MBPP, the paper uses nearest-neighbor cosine similarity
+    threshold 0.7, two LLM judges, and manual review of 90 flagged pairs (at most 0.3%); the decision log is not released.
+  license: The HF release is labeled CC BY 4.0 and explicitly requires users to check each underlying dataset license. The
+    current NVIDIA-NeMo/Skills code is Apache-2.0.
+  lineage: Public question source -> exact-match deduplication -> DeepSeek-R1 multi-sample generation -> reasoning/code extraction
+    and syntax filtering -> released row -> Qwen2.5 answer-level SFT. A paper-to-HF revision manifest is unavailable.
+  known_failure_modes:
+  - Syntax-valid code may be semantically wrong; release rows do not include release-wide unit-test outcomes.
+  - The execution-filtering ablation confounds correctness with problem difficulty and instruction coverage; it does not establish
+    that incorrect targets are generally beneficial.
+  - Exact-match deduplication can retain semantic duplicates across overlapping public sources.
+  - The contamination audit does not release nearest-neighbor, judge-output, or manual-decision manifests.
+  - The paper reports 736,712 samples and 28,904 questions, while the HF 1.0 card reports 735,255 and 28,319; reuse requires
+    a pinned revision.
+  - The current official recipe is OCR-2-oriented and uses 32 random seeds and 28,768 generated tokens, so it is not a frozen
+    OCR-1 reproduction manifest.
+  - Release-level CC BY 4.0 does not eliminate per-source and platform license review.
+  - OCR results are averaged over repeated runs while Table 2 says baselines were run once, leaving asymmetric uncertainty.
+  citation_status: verified
+  confidence: high
+  notes: 'COLM/OpenReview, arXiv full text and appendix, HF dataset/collection, and NVIDIA-NeMo/Skills recipe were checked.
+    Current recipe commit: 74b8649734a6ecc2d3beca89311e1a5e02da48fa.'
+inclusion_reason: A large open competitive-programming reasoning release that exposes question sourcing, teacher generation,
+  format/syntax filtering, contamination screening, SFT scaling, and an execution-filtering failure case for the Data Construction
+  & Open Release Recipes track.
+related: []
+tags:
+- opencodereasoning
+- competitive-programming
+- deepseek-r1-distillation
+- code-sft
+- execution-filtering
+- data-scaling
+status: verified
+card: null
+needs:
+- 'needs_audit: pin the exact HF revision and reconcile the paper''s 736,712/28,904 counts with the release card''s 735,255/28,319
+  counts'
+- 'needs_metadata: publish the original OCR-1 rollout count, seeds, job manifests, accepted/rejected yields, and checkpoint
+  hashes'
+- 'needs_audit: release per-row execution labels and contamination judge/manual decision logs'
+- 'needs_license: verify every underlying dataset and platform license for the intended reuse'
+one_line_summary: OpenCodeReasoning releases DeepSeek-R1 competitive-programming traces for Qwen2.5 SFT and shows a diversity-versus-execution-filtering
+  trade-off, but the main rows are not functionally certified and the current recipe has moved toward OCR-2.
+why_it_matters: It makes a large code-reasoning distillation pipeline inspectable and provides a concrete negative result
+  about execution-only selection, while exposing why row-level verification, rights, decontamination logs, and revision pinning
+  remain necessary.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Verified against COLM/OpenReview, arXiv full text plus appendix, HF dataset/collection, and NVIDIA-NeMo/Skills recipe/docs.
+category_ids:
+- data_construction_open_release_recipes
+- instruction_demonstration_rationale_data

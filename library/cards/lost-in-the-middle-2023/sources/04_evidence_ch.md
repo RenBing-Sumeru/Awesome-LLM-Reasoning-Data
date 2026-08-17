@@ -1,0 +1,1 @@
+论文在 multi-document QA 和 synthetic key-value retrieval 上报告了同一种失败模式：相关信息在上下文开头或结尾时模型更容易答对，放在中间时更差。公开实现中可见 QA 的 10/20/30 document 设置，以及 KV 的 75/140/300 key 等设置。行级证据是同一标准答案在不同证据位置下被 answer checker 判定正确或错误。证据边界也很清楚：这些曲线只诊断所测模型、prompt、上下文长度和 scorer 下的位置偏差，不能外推成所有长上下文任务的能力结论。

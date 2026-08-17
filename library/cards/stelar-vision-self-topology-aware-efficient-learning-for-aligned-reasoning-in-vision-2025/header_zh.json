@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "STELAR-VISION 发布拓扑感知的视觉推理偏好数据，以兼顾多模态推理正确性与输出效率。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "视觉推理偏好数据与对齐训练论文",
+  "best_for_ch": "研究视觉语言模型、合成偏好数据或高效推理的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chen Li、Han Zhang、Zhantao Yang、Fangyi Chen、Zihan Wang、Anudeepsekhar Bolimera、Marios Savvides",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T09:49:42Z"
+}

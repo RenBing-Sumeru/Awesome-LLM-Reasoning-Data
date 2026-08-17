@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T08:56:24Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "MMLU-Redux mmlu复核纠错后的版本，但是利用不高",
+    "updated_at": "2026-07-14T08:56:24Z"
+  }
+}

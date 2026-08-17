@@ -1,0 +1,16 @@
+{
+  "title": "SparsePO: Controlling Preference Alignment of LLMs via Sparse Token Masks",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-emnlp.1389/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:47:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过稀疏词元掩码控制偏好训练中哪些位置接收奖励与 KL 约束，方法辨识度高",
+    "updated_at": "2026-07-15T14:47:58Z"
+  }
+}

@@ -1,0 +1,1 @@
+FLASK 关注的问题是：如何把 instruction-following model 的对齐能力拆成细粒度 skill 来评估，而不是只给一个总分。主要来源是 arXiv:2307.10928 和 KAIST AI 官方仓库/项目页，官方记录为 ICLR 2024 Spotlight。这里收录它是因为它提供 rubric-based model-evaluation surface，而不是 pairwise preference 数据。一个记录包含指令、模型回答、skill rubric，以及相关 skill 的 1-5 judge 分数。它对 atlas 的价值是把宽泛 alignment 映射成可审计的 skill-level feedback。

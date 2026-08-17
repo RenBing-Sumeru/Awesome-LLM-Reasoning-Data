@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodePlan 研究用 LLM 规划完成仓库级编码。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "FSE 2024 的 repository-level coding and planning paper",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ramakrishna Bairi 等（Microsoft Research, India）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T03:42:45Z"
+}

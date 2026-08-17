@@ -1,0 +1,1 @@
+Peiyi Wang, Lei Li, Zhihong Shao, Runxin Xu, Damai Dai, Yifei Li, Deli Chen, Yu Wu, and Zhifang Sui. "Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations." Proceedings of ACL 2024, long papers, 2024. ACL Anthology: https://aclanthology.org/2024.acl-long.510/. DOI: https://doi.org/10.18653/v1/2024.acl-long.510. arXiv: https://arxiv.org/abs/2312.08935.

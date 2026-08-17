@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DOTS预测当前策略难度并采样失败率接近0.5的问题，RR重放混合结果轨迹组，在六套设置中报告显著数据节省。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "在线RL数据选择与rollout重放配方",
+  "best_for_ch": "研究RLVR数据效率、课程采样和离策略重放的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yifan Sun、Jingyan Shen、Yibin Wang、Tianyu Chen、Zhendong Wang、Mingyuan Zhou、Huan Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T12:26:26Z"
+}

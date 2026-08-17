@@ -1,0 +1,1 @@
+Separate three levels: passing a visible sample, passing the APPS tests, and solving the full underlying programming problem. Aggregate pass rates hide which failure mode occurred. Read the evaluator and split details before comparing numbers across papers, because prompt format, sample count, and timeout can move results without changing the benchmark tasks.

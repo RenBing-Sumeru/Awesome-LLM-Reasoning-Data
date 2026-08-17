@@ -1,0 +1,1 @@
+Jia Zhang, Yao Liu, Chen-Xi Zhang, Yi Liu, Yi-Xuan Jin, Lan-Zhe Guo, and Yu-Feng Li. 2026. Data Selection for LLM Alignment Using Fine-Grained Preferences. International Conference on Learning Representations. https://arxiv.org/abs/2508.07638

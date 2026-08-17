@@ -1,0 +1,7 @@
+The primary evidence is release completeness, not a single leaderboard score. The full Hugging Face test split contains 2,110 rows and the four language counts sum exactly to that total: 165 + 1,017 + 729 + 199. PB500 contains 500 rows with 125 per language and a 200/200/100 task-category allocation. The current Verified artifact contains 382 rows: Java 69, JavaScript 100, Python 113, and TypeScript 100.
+
+The verifier implementation stores `all_f2p_passed`, `no_p2p_failed`, and `resolved`. It also preserves passed and failed test lists, whether a patch was applied, whether generation existed, and whether logs were available. This gives an explicit binary outcome contract and keeps local execution failures distinguishable from test failures.
+
+Environment evidence is weaker than a fully immutable release. The repository says its per-instance GHCR images are frozen and documents tag v1.1; a 2025-09-18 update says selected Dockerfiles were corrected and gold patches reached 100% pass rate on pre-built images. However, the repository has no formal Release and publishes no dataset-to-image digest manifest.
+
+The paper's multi-agent comparison also reveals operational failures: SWE-agent compatibility problems affected 129 instances; predictions were obtained for 111, and the remaining 18 were treated as empty. This is evidence that environment compatibility can alter a benchmark score even when the task record itself is valid.

@@ -1,0 +1,1 @@
+The formal PDDL world is far from open natural-language tasks, and automatic truth does not guarantee that a verbalised explanation is also correct. Process scores support training or search but do not replace executable checks, human review, or domain expertise; transfer requires sample audits.

@@ -1,0 +1,6 @@
+- Distinguish 194,925 source questions, nine intended paths, 1,291,181 Correct verdicts, approximately 370K accepted rationales, and 1,111,555 formatted rows.
+- Figures 4/6 cover 192,628 questions, 2,297 fewer than the source table; the paper does not reconcile the gap.
+- CoTMed, ReasonMed, and ResponseMed have 370,022, 369,983, and 371,550 rows and no public pairing ID.
+- The verifier sees the supplied answer; judge agreement is not independent clinical evidence, and public rows retain no verdict or error log.
+- Physician review finds 68% citation insufficiency and 35% missing clinical specifics, while its reviewer protocol remains undisclosed.
+- Use only for research: recheck invalid options, medical claims, lineage, contamination, and source licenses before training or redistribution.

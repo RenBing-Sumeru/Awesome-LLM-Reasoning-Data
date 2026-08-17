@@ -1,0 +1,19 @@
+{
+  "title": "LLMSQL: Upgrading WikiSQL for the LLM Era of Text-to-SQL",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2510.02350",
+    "data": "https://huggingface.co/datasets/llmsql-bench/llmsql-benchmark",
+    "code": "https://github.com/llmsql-bench/llmsql",
+    "project": "https://llmsql.github.io/llmsql-benchmark/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:19:43Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "LLMSQL 清洗出10K至100K级WikiSQL样本并附SQLite表，正确性由SQL执行决定，适合作为Text-to-SQL训练和评测数据",
+    "updated_at": "2026-07-19T12:19:43Z"
+  }
+}

@@ -1,0 +1,3 @@
+Hosseini, Arian, Xingdi Yuan, Nikolay Malkin, Aaron Courville, Alessandro Sordoni, and Rishabh Agarwal. “V-STaR: Training Verifiers for Self-Taught Reasoners.” Proceedings of the 2024 Conference on Language Modeling, 2024. OpenReview: stmqBSW2dV. arXiv:2402.06457.
+
+Use the BibTeX exposed by the official OpenReview record when importing the conference citation. The arXiv record provides DOI `10.48550/arXiv.2402.06457` and identifies v2 as the 2024-08-14 revision. Cite the paper for the method and separately document any third-party implementation because no author-confirmed code or data release was verified.

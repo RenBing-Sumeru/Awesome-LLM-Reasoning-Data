@@ -1,0 +1,110 @@
+id: think-rm-long-horizon-generative-reward-models-2025
+title: 'Think-RM: Enabling Long-Horizon Reasoning in Generative Reward Models'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Ilgee Hong
+- Changlong Yu
+- Liang Qiu
+- Weixiang Yan
+- Zhenghao Xu
+- Haoming Jiang
+- Qingru Zhang
+- Qin Lu
+- Xin Liu
+- Chao Zhang
+- Tuo Zhao
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- preference-modeling
+- reward-modeling
+- long-horizon-reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fe9f0dcf515c331b124e4f49f760f85e-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.16265
+  code: https://github.com/IlgeeHong/Think-RM
+  data: https://huggingface.co/datasets/ilgee/hs2-naive-reasoning-binary-max
+  project: https://github.com/IlgeeHong/Think-RM
+  huggingface: https://huggingface.co/datasets/ilgee/hs2-naive-reasoning-binary-max
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/fe9f0dcf515c331b124e4f49f760f85e-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Paired response-comparison tasks used for reward modeling.
+  trace_author: Long chain-of-thought generators and the Think-RM training pipeline.
+  answer_format: Chosen/rejected response comparison with a reasoning process and final preference decision.
+  process_fields:
+  - prompt
+  - chosen
+  - rejected
+  - thinking_trace
+  - verdict
+  environment_or_substrate: Preference evaluation and reward-model benchmarks.
+  verifier_or_reward: Rule-based reinforcement learning for preference prediction and pairwise reward output.
+  terminal_predicate: The reward model reaches a preference verdict for the candidate pair.
+recipe_metadata:
+  base_model: Think-RM configurations reported in the NeurIPS paper and GitHub release.
+  teacher: Long CoT training data and rule-based preference feedback.
+  generator: Self-guided internal reasoning traces before a preference decision.
+  filtering_rule: Use the official dataset and repository preprocessing configuration.
+  sampling_protocol: Pin long-CoT construction and RL settings before reproduction.
+  inference_budget: Long-horizon reasoning length is an important experimental control.
+  optimizer_or_scaffold: SFT warm-up on long CoT followed by rule-based RL and pairwise RLHF.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Long-CoT preference comparisons and model-generated deliberations.
+  split: The cited Hugging Face dataset revision should be pinned before reuse.
+  decontamination: Not fully specified in the public release material.
+  license: Confirm from the official repository and dataset card before reuse.
+  lineage: NeurIPS 2025 paper, author GitHub code/dataset release, and ilgee Hugging Face artifacts.
+  known_failure_modes:
+  - Internal reasoning traces can be verbose without improving judgment fidelity.
+  - Pairwise preference performance may not transfer to pointwise reward use without the proposed pipeline.
+  citation_status: verified
+  confidence: high
+  notes: Verified the NeurIPS 2025 proceedings record and affiliation block, the official GitHub repository named by the paper,
+    and the listed ilgee dataset release.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Think-RM releases long-chain preference judgments that train a generative reward model to deliberate before
+  issuing a pairwise verdict.
+why_it_matters: It exposes preference feedback alongside the reward model's reasoning process and an optimization route that
+  consumes pairwise signals directly.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the NeurIPS 2025 proceedings record and affiliation block, the official GitHub repository named by the paper,
+    and the listed ilgee dataset release.
+category_ids:
+- preference_reward_feedback_data

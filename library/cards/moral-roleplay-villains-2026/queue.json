@@ -1,0 +1,17 @@
+{
+  "title": "Too Good to be Bad: On the Failure of LLMs to Role-Play Villains",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.282/",
+    "data": "https://huggingface.co/datasets/Zihao1/Moral-RolePlay"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:48:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "覆盖 800 个不同道德层级角色，用细粒度标签评测角色一致性与安全对齐冲突",
+    "updated_at": "2026-07-26T05:48:42Z"
+  }
+}

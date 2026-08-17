@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepResearch Bench 用博士级研究任务、适应性准则和引文评估，衡量深度研究 Agent 的报告质量与检索能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "深度研究 Agent 的专家任务、适应性 rubric 与引文评测基准",
+  "best_for_ch": "研究开放网页深度研究、长报告 Judge 与引用质量评估的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mingxuan Du, Benfeng Xu, Chiwei Zhu, Xiaorui Wang, Zhendong Mao",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

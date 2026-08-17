@@ -1,0 +1,19 @@
+{
+  "title": "ReTraceQA: Evaluating Reasoning Traces of Small Language Models in Commonsense Question Answering",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1798/",
+    "data": "https://huggingface.co/datasets/sapienzanlp/ReTraceQA",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:56:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "专家标注常识首错，能发现答案正确但过程失真的问题",
+    "updated_at": "2026-07-16T11:56:09Z"
+  }
+}

@@ -1,0 +1,124 @@
+id: am-deepseek-r1-distilled-2025
+title: 1.4 Million Open-Source Distilled Reasoning Dataset to Empower Large Language Model Training
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Han Zhao
+- Haotian Wang
+- Yiping Peng
+- Sitong Zhao
+- Xiaoyu Tian
+- Shuaiting Chen
+- Yunjie Ji
+- Xiangang Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- Chinese and English mathematics, code, science, and general reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.19633
+  arxiv: https://arxiv.org/abs/2503.19633
+  code: null
+  data: https://huggingface.co/datasets/a-m-team/AM-DeepSeek-R1-Distilled-1.4M
+  project: null
+  huggingface: https://huggingface.co/datasets/a-m-team/AM-DeepSeek-R1-Distilled-1.4M
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: many open problem datasets cleaned and semantically deduplicated against tests
+  trace_author: primarily DeepSeek-R1 writes long reasoning responses
+  answer_format: chat messages containing a user problem and a distilled long reasoning response
+  process_fields:
+  - chat messages containing a user problem and a distilled long reasoning response
+  environment_or_substrate: Chinese and English mathematics, code, science, and general reasoning
+  verifier_or_reward: reference-answer matching for math, executable tests for code, and reward-model review for other domains
+  terminal_predicate: Retain records only after reference-answer matching for math, executable tests for code, and reward-model
+    review for other domains.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: primarily DeepSeek-R1 writes long reasoning responses
+  generator: AM-Distilled unifies 1.4 million R1 responses and routes math, code, and other tasks through answer checks, execution,
+    or reward-model review.
+  filtering_rule: reference-answer matching for math, executable tests for code, and reward-model review for other domains
+  sampling_protocol: many open problem datasets cleaned and semantically deduplicated against tests
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: reasoning SFT and distillation
+audit:
+  source_mixture: many open problem datasets cleaned and semantically deduplicated against tests
+  split: 'Official release scale: 1.4 million bilingual reasoning traces; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: CC-BY-NC-4.0
+  lineage: many open problem datasets cleaned and semantically deduplicated against tests -> primarily DeepSeek-R1 writes
+    long reasoning responses -> reference-answer matching for math, executable tests for code, and reward-model review for
+    other domains -> AM-DeepSeek-R1-Distilled-1.4M -> reasoning SFT and distillation
+  known_failure_modes:
+  - reward-model review is weaker than execution for open-domain reasoning
+  - noncommercial terms limit redistribution and commercial training
+  citation_status: verified
+  confidence: high
+  notes: The full 14-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: AM-DeepSeek-R1-Distilled-1.4M is a public Track 01 object containing chat messages containing a user problem
+  and a distilled long reasoning response and is explicitly consumed by reasoning SFT and distillation.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2503.19633
+- primary-link-checked
+status: verified
+one_line_summary: AM-Distilled unifies 1.4 million R1 responses and routes math, code, and other tasks through answer checks,
+  execution, or reward-model review.
+why_it_matters: Large reasoning teachers are useful for distillation, but public students lack a bilingual, cross-domain corpus
+  whose verification rule changes with the task type.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: reasoning SFT and distillation
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: Chinese and English mathematics, code, science, and general reasoning
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 2393 downloads and 182 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: CC-BY-NC-4.0.'
+  selection_eligible: true
+  year_impact_threshold: 2

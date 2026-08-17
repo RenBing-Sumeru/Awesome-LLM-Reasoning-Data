@@ -1,0 +1,1 @@
+Prompt results can be brittle. A wording change, different demonstrations, label order, or answer mapping may change the result without changing the underlying model. The survey predates recent long reasoning models, so use it for prompt design principles rather than as a complete account of modern test-time reasoning.

@@ -1,0 +1,6 @@
+The paper's training table contains 99,842 MMLU train, 192,930 synthetic Nemotron-CrossThink-QA, 100,000 NaturalReasoning, 87,350 NuminaMath, 100,000 synthetic Nemotron-CrossThink-Math, and 8,523 MATH prompts. QA construction uses topic/subtopic/difficulty generation, Common Crawl, and OCR-checked OpenStax/Formal Logic books. Named generators include Nemotron-4-340B-Instruct, Qwen2.5 models, Mixtral-8x22B-Instruct-v0.1, Qwen2.5-VL-72B-Instruct, DeepSeek-R1, and Qwen2.5-72B-Math-Instruct. Synthetic QA answers use majority vote over multiple DeepSeek-R1 solutions.
+
+Filters remove MCQs whose gold answer is not among choices, incomplete option-dependent questions, open answers longer than ten words, and math items without answers. A harder-data experiment retains GPR prompts that Qwen2.5-7B misses. Main policies are Qwen2.5-7B/32B. veRL GRPO uses eight rollouts, temperature and top-p 1.0, 128 unique prompts per step, batch/PPO minibatch 128, context 5,000, learning rate 1e-6, KL 0.001, and 650 steps.
+
+The Hugging Face v1 release at fixed revision a4ce9a3b9434c5f231e2cbe30696d9a721c11d69 has train_qa=187,496 and train_math=99,880, totaling 287,376 rows. It is smaller than the paper table and omits the four open-source components, blend manifests, online rollouts, and reward logs.
+

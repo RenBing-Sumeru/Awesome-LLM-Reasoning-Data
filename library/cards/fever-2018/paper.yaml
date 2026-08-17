@@ -1,0 +1,119 @@
+id: fever-2018
+title: 'FEVER: a Large-scale Dataset for Fact Extraction and VERification'
+year: 2018
+venue: NAACL 2018 / arXiv
+authors:
+- James Thorne
+- Andreas Vlachos
+- Christos Christodoulopoulos
+- Arpit Mittal
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- fact-verification
+- evidence-retrieval
+- factuality
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1803.05355
+  arxiv: https://arxiv.org/abs/1803.05355
+  code: https://github.com/sheffieldnlp/fever-scorer
+  data: https://fever.ai/dataset/fever.html
+  project: https://fever.ai/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/N18-1074
+  venue: https://aclanthology.org/N18-1074/
+  openreview: null
+  acl: https://aclanthology.org/N18-1074/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'claim, supported/refuted/not-enough-info label, and evidence sentences; Benchmark size: 185,445 条由 Wikipedia
+    派生的事实验证 claims。'
+  dataset_scale: '185,445 claims: 145,449 train, 9,999 dev, 9,999 test, and 19,998 reserved.'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'claim, supported/refuted/not-enough-info label, and evidence sentences; Benchmark size: 185,445
+    条由 Wikipedia 派生的事实验证 claims。'
+  verifier_or_reward: 'FEVER score: correct label plus sufficient evidence for SUPPORTS/REFUTES claims, using the official
+    scorer'
+  terminal_predicate: 'FEVER score: correct label plus sufficient evidence for SUPPORTS/REFUTES claims, using the official
+    scorer'
+  benchmark_size: 185,445 条由 Wikipedia 派生的事实验证 claims。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for FEVER: a Large-scale Dataset for Fact Extraction and VERification; exact
+    curation details should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: https://aclanthology.org/N18-1074/; https://arxiv.org/abs/1803.05355; https://fever.ai/dataset/fever.html;
+    https://github.com/sheffieldnlp/fever-scorer
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/1803.05355'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology verifies NAACL-HLT 2018 status, pages 809-819, and DOI; official FEVER pages verify dataset/scorer
+    and split policy.
+inclusion_reason: FEVER links 185,445 factual claims to Wikipedia evidence and labels, making fact verification an evidence-grounded
+  evaluation task.
+related: []
+tags:
+- benchmark
+- fact-verification
+- evidence-retrieval
+- factuality
+why_it_matters: It supplies a reusable evaluation coordinate for fact-verification, evidence-retrieval work.
+status: verified
+needs:
+- 'needs_audit: pin FEVER release, split counts, evidence scorer, label policy, prompt/scaffold settings, and license'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: FEVER links 185,445 factual claims to Wikipedia evidence and labels, making fact verification an evidence-grounded
+  evaluation task.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: ACL Anthology verifies NAACL-HLT 2018 status, pages 809-819, and DOI; official FEVER pages verify dataset/scorer
+    and split policy.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

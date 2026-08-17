@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Artificial Analysis 智能指数把多个评测按权重合成为单一的模型质量分数。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark methodology / aggregate index",
+  "best_for_ch": "需要审计聚合 benchmark、组件权重、混合 verifier 和 leaderboard 可复现边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Artificial Analysis",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T11:19:46Z"
+}

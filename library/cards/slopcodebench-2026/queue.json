@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "长程编码任务，benchmark和数据，数据还可以",
+    "updated_at": "2026-07-29T04:07:50Z"
+  },
+  "updated_at": "2026-07-29T04:07:50Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

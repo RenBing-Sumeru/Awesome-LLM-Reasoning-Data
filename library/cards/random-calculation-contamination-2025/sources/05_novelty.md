@@ -1,0 +1,5 @@
+The distinctive element is not procedural arithmetic generation by itself. The paper couples a post-release, programmatically checkable data construction with reward ablations and contamination-oriented behavioral probes. This makes the procedural data serve as an experimental control: apparent RLVR improvement on familiar benchmarks is compared with learning behavior on newly sampled arithmetic under correct and deliberately corrupted feedback.
+
+The release is also useful as a compact audit case. The prompt-answer object, generator, numerical terminal predicate, and reward variants are inspectable, while missing seeds, split identities, derivation trees, and release licensing remain visible rather than being hidden behind an aggregate benchmark score.
+
+Several components are established techniques rather than novel claims: recursive expression generation, SymPy-based answer computation, GRPO/TTRL-style training, partial-prompt completion, and response-distribution comparisons. The contribution is their integration into a controlled test of whether an RLVR result is compatible with reward-driven learning or may be inflated by benchmark familiarity.

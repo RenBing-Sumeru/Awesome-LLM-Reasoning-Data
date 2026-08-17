@@ -1,0 +1,7 @@
+The contribution is a cross-modal provenance audit that treats dataset licenses and upstream source restrictions as separate objects. Earlier catalogues often stop at a dataset card or one modality; this work follows derivation chains and adds source-policy categories, creator geography, language, task, and longitudinal sourcing signals across text, speech, and video.
+
+The catalogue also separates collection- from dataset-level analysis. This matters for post-training text mixtures: one collection can contain both permissive and restrictive components, and a collection-level label can hide filterable subsets. The strictest-constituent rule makes the aggregation policy inspectable instead of silently averaging incompatible rights claims.
+
+Publishing structured JSON, constants, filter/normalization tools, analysis plots, and an Attribution Card makes the audit operational. A data builder can create a review queue or select components by declared attributes rather than relying only on prose. At the same time, modality-specific schemas and a living repository mean that operational availability is not equivalent to a frozen, uniform paper release.
+
+For reasoning-data research, the novelty is governance infrastructure rather than a new reasoning dataset or verifier. The text scope explicitly includes SFT and preference-alignment collections, including reasoning and tool-use sources, but the audit supplies metadata about those sources—not their traces, rewards, correctness labels, or benchmark decontamination.

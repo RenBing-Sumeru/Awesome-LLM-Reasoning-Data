@@ -1,0 +1,5 @@
+- 把[论文 HTML](https://ar5iv.labs.arxiv.org/html/2508.15763v2) 的 4.1 与 4.2 节连起来读：5T/2.5T 聚合数字之下还有 page-level PDF parsing、domain-centric web 决策、科学数据召回 classifier，以及单独的 250B 图文阶段。
+- 阅读 5.1 节时，应把“offline RL”还原成具体对象：由 best-of-N 筛选出的指令响应，再用常规 SFT 目标训练；生成器、N、阈值、记录数和最终混合仍为 unknown。
+- 在 5.2.1 与 5.2.2 节按任务追踪奖励路由：Internbootcamp verifier、passrate@64 指令筛选、用于多模态正确性的 CompassVerifier 加规则，以及用于开放式对话的 POLAR-7B。
+- 核对 5.2.3 与 5.2.4 节中的 8-rollout 过滤、OREAL/KL-Cov 目标、冻结 ViT/router、600 step，以及约 3% 高 gradient-norm 样本被删除的设置。
+- 对照官方[仓库](https://github.com/InternLM/Intern-S1)与[模型卡](https://huggingface.co/internlm/Intern-S1)：它们确认权重和推理工具已发布，并不代表 5T 语料、指令/RL 记录、任务清单或完整奖励栈已经开放。

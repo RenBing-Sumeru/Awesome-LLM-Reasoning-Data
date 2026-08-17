@@ -1,0 +1,19 @@
+{
+  "title": "ResearchRubrics: A Benchmark of Prompts and Rubrics For Evaluating Deep Research Agents",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2511.07685",
+    "data": "https://huggingface.co/datasets/ScaleAI/researchrubrics",
+    "code": "https://scale.com/research/researchrubrics",
+    "project": "https://scale.com/research/researchrubrics"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T13:13:48Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ResearchRubrics 为100余个真实研究任务配2,500余条人工标准，能细粒度评判深度研究代理的报告质量",
+    "updated_at": "2026-07-21T13:13:48Z"
+  }
+}

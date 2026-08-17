@@ -1,0 +1,3 @@
+For an input, the system proposes a decomposition and uses a budget-allocation model to assign reasoning tokens across subquestions. It then executes the scheduled reasoning process and combines the partial work into a final answer, with the allocation depending on estimated complexity rather than a fixed length.
+
+The evaluation uses token-aware comparisons and the paper’s correctness–efficiency measure. To reproduce it, preserve the plan, subquestion list, estimates, token assignments, actual generated tokens, and final outcome; a nominal maximum length alone cannot reveal whether a method saved computation or merely truncated attempts.

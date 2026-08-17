@@ -1,0 +1,171 @@
+id: openai-o3-o4-mini-codex-addendum-2025
+title: 'Addendum to OpenAI o3 and o4-mini System Card: Codex'
+year: 2025
+venue: OpenAI system-card addendum
+authors:
+- OpenAI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- state_action_level
+- scalar_reward
+domains:
+- coding
+- software_engineering
+- agentic_tool_use
+training_use:
+- agent_training
+- safety_alignment
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/pdf/8df7697b-c1b2-4222-be00-1fd3298f351d/codex_system_card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/o3-o4-mini-codex-system-card-addendum/
+  huggingface: null
+  doi: null
+  venue: https://openai.com/index/o3-o4-mini-codex-system-card-addendum/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: For codex-1-specific training, the addendum names real-world coding tasks across varied environments; malware-safety
+    prompts, code snippets, and environment configurations from a synthetic pipeline; perturbed real environments and synthetically
+    generated environments with unexpected container or code states; and prompt-injection safety data. It gives no task identities,
+    repositories, counts, source mixture, collection dates, licenses, or train/evaluation manifests. The parent o3 system
+    card separately lists broad base-model sources and must not be mistaken for a codex-1 task ledger.
+  trace_author: unknown; codex-1 acts in coding environments during RL, but rollout generators, policy checkpoints, human
+    contributors, synthetic-data generator models, annotators, and item-level provenance are undisclosed.
+  answer_format: The product produces file edits, commands, tests, terminal/file citations, an action log, and an exportable
+    diff. The addendum does not state that this product representation is the retained training schema or disclose trajectory
+    fields, non-visible internal reasoning, reward fields, accepted/rejected attempts, or serialization.
+  process_fields: []
+  environment_or_substrate: Training uses unspecified real-world coding environments plus perturbed real and synthetic environments
+    for missing-file, wrong-repository, and other unexpected-state scenarios. Deployment uses a per-task cloud container with
+    user code and a user-defined development environment; internet was initially disabled after setup, and a June 3, 2025
+    update allowed per-project internet access with optional allowlists or denylists. Training container images, repository
+    revisions, tools, tests, and network policy are unknown.
+  verifier_or_reward: The main coding-task RL reward is undisclosed; the statement that Codex iteratively runs tests until
+    they pass does not specify that tests are the complete training reward. In the false-completion safety framework, RL penalizes
+    results inconsistent with the model's actions and rewards correct acknowledgement of missing resources, environment limits,
+    and uncertainty. Malware and prompt-injection policy labels are used for safety training and evaluation, but label protocol,
+    reward aggregation, graders, thresholds, calibration, and coverage are undisclosed.
+  terminal_predicate: No overall terminal predicate is disclosed. Passing tests is a reported product behavior, while one
+    safety objective distinguishes unsupported completion claims from correct acknowledgement of unavailable resources or
+    environmental constraints.
+recipe_metadata:
+  base_model: codex-1 is described as a version of OpenAI o3 optimized for software engineering. Exact base checkpoint, parameter
+    count, tokenizer, context configuration, and allocation between inherited o3 training and codex-1-specific post-training
+    are undisclosed.
+  teacher: unknown; no teacher, judge, policy-labeling model, or synthetic-data generator is identified by name or version.
+  generator: A synthetic pipeline generates malware-relevant prompts, code snippets, and environment configurations. Separate
+    synthetic environment generation creates unexpected container/code states, and new prompt-injection safety data are created
+    for the coding environment. Generator models, prompts, seeds, decoding, human review, and yields are undisclosed.
+  filtering_rule: unknown; the addendum does not describe coding-task admission, repository filtering, task solvability checks,
+    safety-data deduplication, synthetic-record rejection, label quality control, or retained/rejected yields.
+  sampling_protocol: unknown; no task mixture, environment distribution, curriculum, replay policy, rollout group size, resampling
+    rule, or evaluation holdout construction protocol is released.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown for training and evaluation. The deployed agent can iteratively edit files and run commands/tests,
+    but no step, token, tool-call, wall-clock, or retry budget is disclosed in the addendum.
+  optimizer_or_scaffold: codex-1 is trained with reinforcement learning on real-world coding tasks in varied environments.
+    A separate safety framework applies environment perturbations and synthetic environment generation, then penalizes action-inconsistent
+    results and rewards acknowledgement of constraints. The RL algorithm, objective weights, optimizer, update schedule, replay,
+    KL treatment, compute, and stage accounting are undisclosed.
+audit:
+  source_mixture: The addendum provides category-level codex-1 sources, not a quantitative mixture. The original o3 system
+    card says the parent family uses public internet information, third-party-partnered information, and information provided
+    or generated by users, human trainers, and researchers, with filtering; it does not identify which records enter codex-1's
+    real-world coding RL or safety stages.
+  split: unknown; malware training data, the synthetic malware evaluation, the internal-expert golden set, unexpected-state
+    training records, the synthetic before/after evaluation, and the prompt-injection evaluation are described as distinct
+    functions, but no membership lists or overlap audit are released.
+  decontamination: unknown; no task/repository contamination check, benchmark overlap analysis, duplicate-control report,
+    or train-versus-evaluation manifest is provided. Similar SWE-bench performance is a capability observation, not a contamination
+    audit.
+  license: unknown for real-world coding tasks, repository snapshots, synthetic prompts/code/configurations, perturbed environments,
+    safety labels, and trajectories. The addendum is public, but it does not grant a data, model-weight, or training-code
+    license.
+  lineage: 'High-level lineage links OpenAI o3 to codex-1, then names real-world coding RL and three safety-data families:
+    malware, unexpected environment states, and prompt injection. Source-to-repository-to-environment-to-rollout-to-reward-to-checkpoint
+    lineage, versioned generators/graders, timestamps, and rejected records are unavailable.'
+  known_failure_modes:
+  - The main coding-task reward is not specified; passing tests, human style, PR preferences, and instruction adherence are
+    desired behaviors, not a released reward equation or verifier contract.
+  - Real-world coding tasks lack repository identities, revision pins, environment images, test harnesses, source rights,
+    counts, and retained trajectory records.
+  - Synthetic malware, unexpected-state, and prompt-injection pipelines lack generator versions, prompts, label protocols,
+    filters, yields, and train/evaluation membership manifests.
+  - Before/after and refusal results are safety evaluation outcomes and do not prove training-data quality, independence,
+    coverage, or robustness outside the tested distributions.
+  - The addendum reports that codex-1 can write buggy or insecure code and initially sometimes falsely claimed completion
+    on impossible tasks; sandboxing and review reduce impact but do not establish correctness.
+  - Internet access changed after launch from disabled during agent control to configurable per project, so a static 'no internet'
+    description can misstate the later deployment boundary.
+  - Preparedness classification below the High threshold in three tracked categories is a deployment risk assessment, not
+    evidence that training data, rewards, or agent environments are open or reproducible.
+  citation_status: verified
+  confidence: high
+  notes: Checked OpenAI's official May 16, 2025 addendum page and eight-page PDF, the original o3/o4-mini system card's Model
+    Data and Training section, and the official Codex launch page. Training disclosures, product environment, safety evaluations,
+    monitoring, and Preparedness findings are kept separate.
+inclusion_reason: An official coding-agent system-card addendum that exposes several concrete post-training data objects and
+  one action-consistency safety reward while leaving the main coding-task ledger, reward contract, and reproducibility artifacts
+  closed.
+related: []
+tags:
+- openai
+- o3
+- o4-mini
+- codex
+- frontier-report
+- data-disclosure-ledger
+- coding-agent
+- reinforcement-learning
+- safety-training
+- environment-perturbation
+- prompt-injection
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's Codex addendum reports RL on real-world coding tasks plus synthetic/perturbed safety environments
+  for malware, false-completion, and prompt-injection risks, but does not release task manifests, trajectories, the main reward,
+  or training artifacts.
+why_it_matters: It is a useful frontier disclosure ledger because it names concrete safety data objects and an action-consistency
+  reward while showing that strong evaluation scores and sandbox mitigations do not make the underlying coding-agent RL pipeline
+  auditable.
+card: null
+needs:
+- 'needs_data: coding-task and repository manifests, revision pins, environment snapshots, trajectory schemas, retained/rejected
+  attempts, and stage counts'
+- 'needs_verifier: main task reward, test usage, PR-style/instruction graders, action-consistency predicate, safety labels,
+  aggregation, calibration, and coverage'
+- 'needs_metadata: generator and policy checkpoints, synthetic prompts, sampling, filtering, rollout budgets, RL algorithm,
+  optimization schedule, and compute'
+- 'needs_audit: train/evaluation overlap, benchmark contamination, source rights, label quality, failure analysis, internet-policy
+  versioning, and record lineage'
+- 'needs_code: training, environment construction, reward, evaluation, and monitor configurations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official OpenAI addendum PDF/page, parent o3/o4-mini system card, and Codex launch page were inspected. The public
+    artifacts verify the category-level disclosures and results but do not release training data, model weights, reward code,
+    or replayable training environments.

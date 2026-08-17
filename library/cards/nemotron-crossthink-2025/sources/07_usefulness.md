@@ -1,0 +1,4 @@
+For `frontier_reports_data_disclosure_ledger`, this work is useful because a curator can compare three layers directly: the 588,645-item paper mixture, the 287,376-row public synthetic release, and the missing online GRPO traces. Reusers can inspect prompt and reward schemas, test alternative semantic answer judges, rebuild blends, and measure how answer-space restrictions change learning.
+
+An auditable reuse should pin the Hugging Face revision, preserve upstream source IDs and rights, publish every blend's exact record list, retain all eight rollouts with parsed answers and separate accuracy/format rewards, and record policy/checkpoint/seed/step lineage. The public data can seed RLVR after those checks; it should not be described as a released reasoning-trace corpus or as evidence that exact-match verification is reliable across domains.
+

@@ -1,0 +1,11 @@
+**输入与采集。** 中国大陆 95 名 crowdworker 被要求在产生真实手机使用 intent 时主动打开采集 app，记录该 intent 和地点/场景类别，并在日常使用的 Android 手机上示范操作。每位参与者采集一个月，每天最多上传 12 个 episode。记录器保存 user ID、时间戳、app/activity、screenshot、accessibility tree 和动作；单独的 profile 表还包含性别、年龄、职业、地址、婚姻/家庭状况与手机品牌（论文第 4.2 节、图 3、附录 A.1/A.3/A.4；官方 README 与 CSV）。
+
+**交互与输出。** 每张 screenshot 与一个动作对齐，动作空间包括 `click`、`long_click`、`type`、`scroll`、`press_back`、`press_home`、`press_recent`、`wait` 和终止动作 `finish/finished`；发布内容也保存相应的 accessibility-tree XML。episode 目录以用户和时间戳为键，包含 intent 描述、上下文、JPG/XML 观测和 JSONL 动作轨迹。采集程序在最后一张 screenshot 上增加 `finish`，但 schema 没有 dense reward，也没有经独立验证的逐 episode 成功字段（论文表 2、附录 A.4/A.7；官方仓库）。
+
+**质量与隐私过滤。** 采集者接受培训，被要求避免歧义 intent、冗余或无用操作，以及过快或重复动作。定期人工检查删除低质量 episode，但保留少量真实交互错误。参与者签署数据使用协议，被告知不要上传隐私信息，在采集期间可检查/删除上传内容，并且只有主动调用 app 时才采集。明显隐私样本先由人工删除，再由 Qwen-VL-Max 检查首尾 screenshot，最后人工复核被标记的 episode。量化拒绝阈值、删除数量、隐私 rubric 与协议文本均未披露（附录 A.3）。
+
+**划分与发布审计。** 论文报告 train 16,000/177,674 张 screenshot、validation 4,411/32,859、suggestion test 1,000/10,412、execution test 200/2,074；测试样本来自每位用户按时间排序的最后 20%，训练从前 60% 采样，因此主划分并非 user-disjoint。官方 CSV 中，`train_set.csv` 有 16,000 个唯一键；`test_suggestion.csv` 有 1,000 行，但四行是完全重复项，因此只有 996 个唯一 `(user_id,time)` 键；`test_execution.csv` 有 200 个唯一键。两个测试集共享 172 个唯一键；由于其中两个 suggestion 键自身重复，按 suggestion 行计为 174 次重叠。官方未发布 validation CSV，也未披露 corpus-wide deduplication/decontamination 流程（论文附录 A.5、表 7；官方 CSV 审计）。
+
+**Benchmark pipeline。** Suggestion 将画像、时间、场景、最多 20 条历史 intent 和 0–3 张 screenshot 组成一次 prompt，再用 `Sim1` 和只在论文中实现的 `SR1` 评价中文 intent 句子。Execution 按 intent 相似度检索一条同用户早期动作序列，结合当前 screenshot/accessibility element 与动作历史发起 prompt，通过 ADB/uiautomator2 执行预测动作，直到 `finished()` 或达到 2.5× 步数上限。`SR2` 仍需人工检查最终手机状态；公开结果写入逻辑只是初始化并写入 `success=0`，并没有执行人工复核。
+
+**训练与复现。** 作者分别为两个 track 格式化数据，用 LoRA 对 Qwen-2.5-VL-7B 做 SFT，rank 为 4 或 64，使用按比例抽样的 1,000 个 episode 或全部 16,000 个 episode；论文还报告 joint-model ablation。没有证据支持 RL、RLVR、preference modeling、reward modeling 或 PRM training。Loss、optimizer、learning rate、batch size、epoch、seed、训练代码、配置与 checkpoint 都是 unknown。复现时必须固定 arXiv v2、GitHub commit `e73a4dac3bd13ea32b7836525ff074a69cb047ea` 与 Kaggle version 2，再单独重建训练及 live device/app 状态；公开发布既没有 resettable environment，也没有 deterministic replay bundle。

@@ -1,0 +1,1 @@
+Author-stated limitation: InterMT covers vision and language, while human communication also uses video and audio; applying its labels to those modalities is unsupported. Curator risk: agent-generated trajectories and NSFW filtering may not represent real conversations; audit tool traces and sensitive-content failures before reuse.

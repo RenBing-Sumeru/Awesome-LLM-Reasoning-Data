@@ -1,0 +1,6 @@
+- 预训练结论绑定官方配方：405B、15.6T token、约 3.8×10^25 FLOPs，以及通识/推理/代码/多语言 50/25/17/8 配比。
+- 明确六轮顺序：偏好收集→RM→best-of-10–30 rejection sampling→8.5K–9K-step SFT→DPO→模型平均；PPO 未被采用。
+- 区分能力契约：代码依赖执行和生成测试；数学依赖答案/step RM、MCTS 与 Python；工具依赖可执行 API 加人类反馈；安全依赖人类/LLM policy 与 guard。
+- 报告超过 25M 合成 SFT 和超过 2.7M 代码样本，但人类、偏好、淘汰和逐轮记录总量未知。
+- 权重、工具、Llama Guard 3、Prompt Guard、Code Shield 已发布；语料、偏好、RM、候选、测试和训练栈未发布。
+- 将 `llama-4-herd-2025` 视为相关后继；保留 Llama 3 独立的 2024 dense 配方、许可证、污染发现和 item-lineage 缺口。

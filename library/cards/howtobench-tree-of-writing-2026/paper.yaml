@@ -1,0 +1,108 @@
+id: howtobench-tree-of-writing-2026
+title: 'HoWToBench: Holistic Evaluation for LLM’s Capability in Human-level Writing using Tree of Writing'
+year: 2026
+venue: ACL 2026
+authors:
+- Andrew Zhuoer Feng
+- Cunxiang Wang
+- Yu Luo
+- Lin Fan
+- Yilin Zhou
+- Zikang Wang
+- Xiaotao Gu
+- Jie Tang
+- Hongning Wang
+- Minlie Huang
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- writing
+- llm_judge
+- chinese
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- filtering_curation
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.317/
+  arxiv: null
+  code: https://github.com/ZhuoerFeng/ACL2026-Tree-of-Writing
+  data: https://github.com/ZhuoerFeng/ACL2026-Tree-of-Writing
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.317
+  venue: https://aclanthology.org/2026.acl-long.317/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.317/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Publicly licensed, human-written Chinese writing from specialized literary and writing-guide sites.
+  trace_author: Human writers and expert annotators; models generate candidate writings for evaluation.
+  answer_format: Instruction, optional grounding, human reference, tree-structured rubric plan, leaf scores, and aggregate
+    score.
+  process_fields:
+  - instruction
+  - grounding
+  - reference
+  - rubric_tree
+  - leaf_score
+  - edge_weight
+  - overall_score
+  environment_or_substrate: Open-ended Chinese writing across completion, guided, and open tasks.
+  verifier_or_reward: Tree-of-Writing combines rubric LLM judges, rule/regex checks, and explicit aggregation weights.
+  terminal_predicate: Weighted overall writing score plus interpretable sub-feature scores.
+recipe_metadata:
+  base_model: Ten flagship LLMs are evaluated.
+  teacher: Human writing experts, GPT-4o tagger/back-constructor, and an LLM quality filter.
+  generator: Web collection and reverse instruction construction.
+  filtering_rule: Genre-specific 1–5 filtering retains examples scored at least 4; human check pass rate is 96.85%.
+  sampling_protocol: 1,302 instructions, 12 genres, three task formats.
+  rollout_count: null
+  temperature: null
+  inference_budget: Per-instruction tree planning and depth-first rubric scoring.
+  optimizer_or_scaffold: Evaluation framework, not a released training objective.
+audit:
+  source_mixture: Official ACL paper and authors' GitHub release.
+  split: Task and genre protocols are documented in the paper/repository.
+  decontamination: Public web sources and LLM-assisted construction require downstream train/evaluation overlap checks.
+  license: Sources are described as publicly licensed; inspect repository for redistribution terms.
+  lineage: Human-written web texts -> reverse-constructed instructions -> expert and rubric evaluation.
+  known_failure_modes:
+  - Chinese-only core benchmark
+  - web-source provenance and LLM-generated construction steps can limit transfer.
+  citation_status: verified
+  confidence: high
+  notes: ACL PDF corrects the anthology display name to Yilin Zhou and verifies Tsinghua University and Z.ai.
+inclusion_reason: It provides a detailed rubric and human-reference evaluation surface for long, open-ended LLM writing.
+related: []
+tags:
+- rubric
+- writing
+- llm_judge
+- chinese
+one_line_summary: HoWToBench evaluates 1,302 Chinese writing instructions with a transparent Tree-of-Writing rubric that makes
+  score aggregation explicit.
+why_it_matters: It addresses opaque rubric aggregation and tests robustness to disturbance rather than equating quality with
+  fluent long text.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL PDF and authors' GitHub link were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,3 @@
+Models often violate length, structure, keyword, delimiter, or nested-format requirements even when their content is correct. Traditional instruction-following data relies on humans or LLM judges, which is expensive and inconsistent, while existing format benchmarks use only a small set of fixed templates and do not provide large-scale training signals.
+
+The paper introduces Verifiable Format Following (VFF), which represents format requirements as instantiable constraints with deterministic Python verification functions. This enables automatic generation of instructions at different difficulty levels, response labeling, and construction of SFT and DPO data.

@@ -1,0 +1,135 @@
+id: zebra-cot-2025
+title: 'Zebra-CoT: A Dataset for Interleaved Vision-Language Reasoning'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Ang Li
+- Charles Wang
+- Deqing Fu
+- Kaiyu Yue
+- Zikui Cai
+- Wang Bill Zhu
+- Ollie Liu
+- Peng Guo
+- Willie Neiswanger
+- Furong Huang
+- Tom Goldstein
+- Micah Goldblum
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- geometry, physics, algorithms, 2D and 3D reasoning, embodied planning, logic, games, and visual search
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.16746
+  arxiv: https://arxiv.org/abs/2507.16746
+  code: null
+  data: https://huggingface.co/datasets/multimodal-reasoning-lab/Zebra-CoT
+  project: null
+  huggingface: https://huggingface.co/datasets/multimodal-reasoning-lab/Zebra-CoT
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: programmatic and curated visual tasks where sketches or intermediate images support reasoning
+  trace_author: task-specific renderers and multimodal teachers create interleaved text and intermediate images
+  answer_format: question, text reasoning trace, final answer, problem image, and one or more intermediate reasoning images
+  process_fields:
+  - question
+  - text reasoning trace
+  - final answer
+  - problem image
+  - and one or more intermediate reasoning images
+  environment_or_substrate: geometry, physics, algorithms, 2D and 3D reasoning, embodied planning, logic, games, and visual
+    search
+  verifier_or_reward: task answer checks, renderer consistency, domain-specific validity rules, and held-out evaluation
+  terminal_predicate: Retain records only after task answer checks, renderer consistency, domain-specific validity rules,
+    and held-out evaluation.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: task-specific renderers and multimodal teachers create interleaved text and intermediate images
+  generator: Zebra-CoT serializes both textual thoughts and intermediate images so a model can learn to generate visual aids
+    during multi-step reasoning.
+  filtering_rule: task answer checks, renderer consistency, domain-specific validity rules, and held-out evaluation
+  sampling_protocol: programmatic and curated visual tasks where sketches or intermediate images support reasoning
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: visual chain-of-thought SFT
+audit:
+  source_mixture: programmatic and curated visual tasks where sketches or intermediate images support reasoning
+  split: 'Official release scale: 182,384 interleaved vision-language reasoning traces across 18 domains and more than 50
+    tasks; format: multi-configuration Parquet records with image assets.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: CC-BY-NC-4.0
+  lineage: programmatic and curated visual tasks where sketches or intermediate images support reasoning -> task-specific
+    renderers and multimodal teachers create interleaved text and intermediate images -> task answer checks, renderer consistency,
+    domain-specific validity rules, and held-out evaluation -> Zebra-CoT -> visual chain-of-thought SFT
+  known_failure_modes:
+  - rendered intermediate images may expose task templates or answer-specific cues
+  - noncommercial licensing limits deployment and source media may add further constraints
+  citation_status: verified
+  confidence: high
+  notes: The full 37-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: Zebra-CoT is a public Track 01 object containing question, text reasoning trace, final answer, problem image,
+  and one or more intermediate reasoning images and is explicitly consumed by visual chain-of-thought SFT.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2507.16746
+- primary-link-checked
+status: verified
+one_line_summary: Zebra-CoT serializes both textual thoughts and intermediate images so a model can learn to generate visual
+  aids during multi-step reasoning.
+why_it_matters: Text-only CoT cannot demonstrate sketching, visual search, or intermediate spatial transformations, and off-the-shelf
+  VLMs are too weak to bootstrap such traces reliably.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: visual chain-of-thought SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: geometry, physics, algorithms, 2D and 3D reasoning, embodied planning, logic, games, and visual search
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 5495 downloads and 72 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual multi-configuration Parquet records with image assets records with the checked
+      schema and terms: CC-BY-NC-4.0.'
+  selection_eligible: true
+  year_impact_threshold: 2

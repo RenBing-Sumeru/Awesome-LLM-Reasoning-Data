@@ -1,0 +1,5 @@
+- 把官方数据卡更正与论文 Table 1 对照阅读：540K 是早期 processing count，306K 是公开的唯一 solution-bearing pool，另有 193,170 行 problem-only 数据。
+- 把 Qwen2.5-32B-Instruct equivalence 与 teacher majority 视为 answer-level judgment，不要视为 proof 或 intermediate-step verification。
+- 分开跟踪 TIR 阶段：15K bootstrap 使用 novelty/significance filter，后续约 1.7M 规模生成则因下游 regression 关闭这些 filter。
+- 假设 Python-interleaved text 经过语义验证或可重放之前，先检查 appendix 中 code/prose mismatch 样例。
+- 固定 dataset revision `d3d08664755704f422af97d43a7ff0ded4bd95df` 与 code commit `74b8649734a6ecc2d3beca89311e1a5e02da48fa`，再审计不可用的原始 AoPS scraper、丢失的 137K 道 proof question、论坛权利与 accepted/rejected manifest。

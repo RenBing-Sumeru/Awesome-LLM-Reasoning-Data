@@ -1,0 +1,152 @@
+id: seed1-5-vl-technical-report-2025
+title: Seed1.5-VL Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- ByteDance Seed Team
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- multimodal
+- general_reasoning
+training_use:
+- sft
+- preference_learning
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.07062
+  arxiv: https://arxiv.org/abs/2505.07062
+  code: https://github.com/ByteDance-Seed/Seed1.5-VL
+  data: null
+  project: https://seed.bytedance.com/en/tech/seed1_5_vl
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.07062
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.07062
+data_object:
+  prompt_source: Pre-training combines web image-text pairs, public and internally collected image/video data, open-source
+    datasets, crawled and manually annotated STEM material, synthetic OCR/chart/table/diagram data, and UI-TARS-derived GUI
+    records. Post-training uses crowdsourced and selected open-source SFT prompts, self-instruct and LongCoT prompts, multimodal
+    preference prompts, and hard verifiable visual tasks. An exhaustive record-level source manifest is not released.
+  trace_author: Human annotators, Seed1.5-VL and earlier internal VLM/LLM checkpoints generate or revise responses; multi-step
+    GUI traces combine in-house and standardized open-source trajectories. Exact checkpoint-to-record mappings are unknown.
+  answer_format: General concise answers and system-prompt-selected LongCoT responses; hybrid RL requires a tagged reasoning
+    block followed by a solution. Verifiable tasks use boxed answers, normalized boxes or points, regular-expression-constrained
+    outputs, or executable game outcomes.
+  process_fields:
+  - image_or_video
+  - prompt
+  - system_prompt
+  - reasoning_trace
+  - final_answer_or_action
+  - reference_answer_or_annotation
+  - reward_model_score
+  - verifier_score
+  environment_or_substrate: Rule and symbolic verifiers for visual STEM, grounding, pointing, constrained instructions and
+    puzzles; interactive visual games; verl-based PPO infrastructure with vLLM rollout generation.
+  verifier_or_reward: A generative pairwise VLM reward model for general prompts and task-specific verifiers for verifiable
+    prompts. Final-output rewards include SymPy equivalence, bounding-box IoU, point accuracy, regular-expression constraints,
+    string matching and environment success; chain-of-thought is not directly supervised.
+  terminal_predicate: 'Task-dependent final-output success: symbolic answer equivalence, geometric agreement with reference
+    boxes or points, constraint or string match, or a verifiable visual-game outcome. General prompts instead receive a reward-model
+    preference score.'
+recipe_metadata:
+  base_model: A 532M-parameter SeedViT, an MLP adapter, and an internal decoder-only MoE language model with about 20B active
+    parameters; total MoE parameters and the internal language checkpoint are not disclosed.
+  teacher: Previous internal VLMs, top-performing in-house models, LLM judges, the reward model and successive Seed1.5-VL
+    RL iterations contribute annotations or selected traces; exact teacher versions are unknown.
+  generator: Internal VLM/LLM checkpoints, rendering pipelines, Grounding DINO, Molmo, CountGD, Depth Anything V2, a diffusion
+    inpainting model, and programmatic SVG/chart/table generators are used across construction stages.
+  filtering_rule: Pre-training uses similarity, image/text, deduplication, URL/domain, annotation-quality and capability-balancing
+    filters. SFT selection uses clustering, targeted downsampling, multiple rollouts, LLM judging, reward-model ranking and
+    manual verification. RLHF prompts use capability stratification and reward-variance filtering. RLVR removes trivial, unsolved,
+    text-only-solvable and verifier-incompatible tasks.
+  sampling_protocol: Visual STEM difficulty selection generates 16 SFT responses per question and retains questions solved
+    more than 0% but no more than 75%. Preference and RLHF curation use K candidate responses with K undisclosed. Hybrid RL
+    samples general reward-model prompts once and verifier prompts 4 or 8 times.
+  rollout_count: 4,096 rollouts per hybrid-RL episode; per-prompt count is 1 for reward-model prompts and 4 or 8 for verifier
+    prompts. Total episodes and total rollouts are unknown.
+  temperature: Human-preference candidates use nucleus sampling, but top-p and temperature are unknown; other generation temperatures
+    are not disclosed.
+  inference_budget: Hybrid RL uses context length 8,192 and maximum output length 16,384. SFT uses sequence length 131,072.
+    Pre-training stages use 32,768, 32,768 and 131,072 sequence lengths.
+  optimizer_or_scaffold: A PPO variant mixes RLHF and RLVR prompts, uses a shared critic initialized from the reward model,
+    normalizes both reward sources to [0,1], applies KL coefficients 1e-5 for general prompts and 0 for verifiable prompts,
+    and performs 8 updates of minibatch size 512 per episode.
+audit:
+  source_mixture: The report gives capability categories and many subset counts for more than 3T multimodal pre-training tokens,
+    but not a complete immutable mixture table, record manifest, source revisions, deduplication ledger or rights map. Post-training
+    gives aggregate SFT/RLVR counts but not released records.
+  split: unknown
+  decontamination: The report says synthetic visual puzzles were decontaminated against benchmarks such as PuzzleVQA. A corpus-wide
+    decontamination method and train-evaluation overlap ledger are not disclosed.
+  license: The official GitHub cookbook/sample-code repository is Apache-2.0. That repository license does not license Seed1.5-VL
+    model weights, API service outputs, training data or generated traces; no public data or weight license is established.
+  lineage: Internal text-only MoE LLM plus independently trained SeedViT -> 16B adapter alignment -> 3T-token full-model multimodal
+    pre-training -> 240B-token balanced long-context stage -> about 50k multimodal SFT plus internal text-only and LongCoT
+    SFT -> hybrid PPO with reward-model and verifier feedback -> four rounds of verifier-confirmed rejection-sampling SFT
+    and RL iteration -> API-served Seed1.5-VL.
+  known_failure_modes:
+  - Final-output rewards do not verify the faithfulness or visual grounding of every LongCoT step.
+  - The generative reward model can inherit judge and annotation bias; evaluating both response orders addresses positional
+    bias only.
+  - SymPy, string, regex, IoU and point rewards cover bounded task semantics and can reward shortcut solutions.
+  - Most source-level provenance, mixture weights, filtering yields, licenses and record-level lineage remain unavailable.
+  - PuzzleVQA-specific decontamination does not establish contamination control for the full pre-training, SFT, preference
+    or evaluation corpus.
+  - Internal benchmarks and benchmark gains do not independently establish training-data quality or reproducibility.
+  citation_status: verified
+  confidence: high
+  notes: The official arXiv report and source, ByteDance Seed release page, official GitHub repository and official Hugging
+    Face API demo were checked. The GitHub release is sample code/cookbooks, not model weights or training code.
+inclusion_reason: A detailed multimodal frontier report covering source categories, synthetic construction, SFT selection,
+  human and model preference feedback, task verifiers, hybrid PPO and iterative trace reuse, while withholding the underlying
+  corpus and weights.
+related: []
+tags:
+- bytedance-seed
+- seed1-5-vl
+- frontier-report
+- data-disclosure-ledger
+- multimodal
+- sft
+- rlhf
+- rlvr
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Seed1.5-VL discloses a 3T-scale multimodal pipeline and hybrid RLHF/RLVR recipe, while releasing API access
+  and sample code rather than model weights or training records.
+why_it_matters: It is a high-information disclosure ledger for multimodal post-training because it connects images, prompts,
+  LongCoT traces, preference rewards and rule verifiers without making the hidden data reusable.
+card: null
+needs:
+- 'needs_data: record-level source, mixture, rights, filtering, deduplication and split manifests'
+- 'needs_verifier: verifier implementations, thresholds, tests, reward calibration and failure logs'
+- 'needs_metadata: exact internal checkpoints, teacher versions, K values, prompt counts and total RL episodes'
+- 'needs_audit: corpus-wide decontamination, benchmark overlap, annotation quality and release revisions'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official report, ByteDance Seed project/release pages, GitHub cookbook repository and Hugging Face API demo checked.

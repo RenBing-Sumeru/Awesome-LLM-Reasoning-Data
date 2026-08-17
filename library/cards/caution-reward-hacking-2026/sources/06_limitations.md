@@ -1,0 +1,3 @@
+Caution assumes predictor error on frozen reward features tracks uncertainty about true reward; an atypical but genuinely excellent response can still be penalized. The method needs representative prompts and sampled responses to train the predictor, and its λ trades off exploitation against conservatism. Reported evidence centers on mathematical and reasoning benchmarks with exact-answer rewards; subjective, multilingual, or adversarial preferences may behave differently. The theory is explicitly a simplified linear setting, so it does not establish general neural-network guarantees.
+
+Before deployment, compare reward-only, caution-only, and combined curves instead of assuming a fixed mixture is best.

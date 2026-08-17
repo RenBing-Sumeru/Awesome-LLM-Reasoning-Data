@@ -1,0 +1,129 @@
+id: pspa-bench-2026
+title: 'PSPA-Bench: A Personalized Benchmark for Smartphone GUI Agent'
+year: 2026
+venue: arXiv preprint
+authors:
+- Hongyi Nie
+- Xunyuan Liu
+- Yudong Bai
+- Yaqing Wang
+- Yang Liu
+- Quanming Yao
+- Zhen Wang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- personalized-gui
+- smartphone-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.29318
+  arxiv: https://arxiv.org/abs/2603.29318
+  doi: https://doi.org/10.48550/arXiv.2603.29318
+  code: https://anonymous.4open.science/status/PSPA-Bench
+  data: https://anonymous.4open.science/status/PSPA-Bench
+  project: https://anonymous.4open.science/status/PSPA-Bench
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: PSPA-Bench authors construct TDG-derived templates and instantiate flexible slots from synthetic user/persona
+    preferences, including long-term and short-term preference weights.
+  trace_author: PSPA-Bench authors, synthetic personas, and evaluated smartphone GUI agents
+  answer_format: personalized instructions, user/persona context, TDG fixed/flexible nodes, GUI states, action traces, selected
+    TDG path, APR/PPR/CT/CPT metrics, and long-term delta metrics
+  process_fields:
+  - task instruction
+  - user/persona profile and preference weights
+  - TDG nodes and dependencies
+  - fixed versus flexible node labels
+  - GUI screenshot or observation state
+  - agent action trace
+  - LLM trace-to-TDG alignment result
+  - APR/PPR/CT/CPT and delta metrics
+  environment_or_substrate: Android-oriented personalized smartphone GUI-agent tasks over third-party mobile apps
+  verifier_or_reward: graph-trace alignment against TDG checklists, with LLM alignment validated against human annotations
+  terminal_predicate: selected TDG path completion determines APR/PPR; CT and CPT measure time and token-cost efficiency rather
+    than binary success alone.
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: PSPA-Bench authors
+  generator: PSPA-Bench personalized task construction
+  filtering_rule: wait for durable repository/data, privacy terms, code/data license, TDG/checklist version, and evaluator
+    prompts before reuse
+  sampling_protocol: Pin release version, task split, app/runtime versions, TDG/checklist revision, evaluator model/prompt,
+    temperature, and date of any live service before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2603.29318; https://anonymous.4open.science/status/PSPA-Bench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: arXiv HTML marks the paper as CC BY 4.0; code/data license and redistribution terms for the anonymous artifact
+    remain unverified.
+  lineage: 'Primary lead: https://arxiv.org/abs/2603.29318'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  - synthetic persona mismatch with real users
+  - manually constructed TDG omissions
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies title, authors, institutions, CC BY 4.0 paper license, PSPA-Bench scale claims, TDG/APR/PPR evaluation
+    design, and the anonymous code/data status link. Durable repo/data, artifact license, privacy policy, split, runtime,
+    and evaluator implementation still need audit.
+inclusion_reason: it focuses on personalized smartphone GUI-agent evaluation
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- personalized-gui
+- smartphone-benchmark
+one_line: PSPA-Bench introduces personalized smartphone GUI tasks for mobile agents.
+why_it_matters: it focuses on personalized smartphone GUI-agent evaluation
+status: verified
+needs:
+- 'needs_audit: pin code/data license, split, evaluator prompts/model, Android/app runtime, TDG/checklist version, and artifact
+  version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: PSPA-Bench introduces personalized smartphone GUI tasks for mobile agents.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv verifies title, authors, institutions, preprint status, CC BY 4.0 paper license, benchmark scale, and TDG metric
+    design; anonymous code/data status page is not a durable artifact release.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 57
+  primary_category_id: benchmarks_evaluation_surfaces

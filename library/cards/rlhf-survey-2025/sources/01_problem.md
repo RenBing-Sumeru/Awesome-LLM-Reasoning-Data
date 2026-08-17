@@ -1,0 +1,5 @@
+“RLHF” often collapses several different decisions into one label: which behavior is queried, how a human expresses feedback, how that feedback becomes a reward estimate, and how a policy consumes the estimate. Without separating these objects, a policy result can be mistaken for evidence that the preference data or reward model is reliable.
+
+This survey builds a cross-domain map of RLHF, with its most detailed coverage in control and robotics and a dedicated treatment of language-model fine-tuning. It decomposes the field into feedback acquisition, reward learning, and policy learning, then catalogs assumptions, algorithms, applications, datasets, and open problems at each stage.
+
+L4 facts: primary sources https://openreview.net/forum?id=f7OkIurx4b and https://arxiv.org/abs/2312.14925; TMLR 2025; boundary: survey and audit framework, not a new preference dataset or algorithm; atlas value: routes feedback records to reward and policy consumers; coverage: control, robotics, LLMs, image/music generation, and games.

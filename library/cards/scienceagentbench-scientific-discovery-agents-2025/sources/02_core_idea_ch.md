@@ -1,0 +1,1 @@
+ScienceAgentBench 含 102 个任务，来源于 44 篇同行评议论文，覆盖四个科学学科，并由九名 subject-matter experts 多轮验证。每题要求 Agent 生成可执行 Python 程序以完成真实数据分析，评价代码、运行产物、成本和自主完成率。HF 主要发布 annotation sheet；完整数据与环境通过项目仓库获取，2026 年另发布 verified split。

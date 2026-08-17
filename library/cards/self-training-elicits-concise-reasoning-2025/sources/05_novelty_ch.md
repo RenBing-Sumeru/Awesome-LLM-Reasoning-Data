@@ -1,0 +1,8 @@
+既有方法包括“be concise”等zero-shot prompt、显式token预算、外部简洁示例，以及使用utility reward和迭代expert training的Rational Metareasoning。论文发现不同模型家族对prompt的响应不一致，尤其是任务专用数学模型。
+
+其具体构造变化是逐问题“最短且正确”的自选择。它不对一条既定rationale逐token压缩，也不施加单一全局长度阈值，而是在目标模型自身分布中搜索，并为每个可解来源问题保留一条简洁且parser正确的路径。
+
+Few-shot conditioning与BoN search被视为近似可加的候选生成机制；蒸馏再把它们的测试时开销摊销进模型权重，从而使用greedy evaluation。FS-Self还展示程序化答案反馈与模型判断可位于同一配方的不同层。
+
+必须明确哪些不是新贡献：论文没有提出BoN、SFT、GSM8K、MATH、最终答案解析、few-shot prompting或token长度测量，也没有证明最短就意味着faithful或最优；主要证据仍限于任务专用数学。可靠复用测试应匹配构造计算，并比较random-correct、shortest-correct、utility-based、length-stratified和step-verified selector。
+

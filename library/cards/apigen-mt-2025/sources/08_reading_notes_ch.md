@@ -1,0 +1,5 @@
+- 必须区分两种对象：论文中的 blueprint/verifier record 比公开行丰富；公开行只有 `conversations`、`system` 与 `tools`。
+- 发布边界必须写准：APIGen-MT-5k 是 gated、采用 CC-BY-NC-4.0 的单一 `train` split，共 5,000 条 success-only 记录；失败的 Phase-2 轨迹会被丢弃。
+- 规模与 mixture 边界必须写准：实验中的 APIGen-MT 样本最高达到 8k，xLAM 训练还加入 APIGen 和其他 xLAM/ActionStudio data，因此 5k 不是完整训练混合。
+- 版本漂移必须保留：最终论文报告 5 个 read API 与 13 个 write API，当前项目页报告 15 个 read API 与 13 个 write API；应固定 HF card/file commit 和 SHA-256。
+- 复用前仍需核验代码、environment/reset 与 replay manifest、blueprint-to-row lineage、verifier calibration、失败尝试、decontamination、mixture mapping、annotation protocol 和 license restriction。

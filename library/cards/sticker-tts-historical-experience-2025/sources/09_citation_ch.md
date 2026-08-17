@@ -1,0 +1,1 @@
+Chen, Jie，Jinhao Jiang，Yingqian Min，Zican Dong，Shijie Wang，Wayne Xin Zhao，Ji-Rong Wen。2025。《Sticker-TTS：利用历史经验的贴纸驱动测试时扩展框架》。载于《2025 年自然语言处理实证方法会议论文集》，第 12328–12338 页，中国苏州。计算语言学协会。https://aclanthology.org/2025.emnlp-main.621/

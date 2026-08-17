@@ -1,0 +1,5 @@
+- 先结合 Appendix C 阅读 Sections 2.1-2.3：这些部分定义了真实 episode、Action Reduction 与 State-Action Matching 转换、标注者组成、同意与隐私复核、规模和成本。
+- 严格区分三种数量口径：22,625 个获接收任务；约 12K 个 Windows、5K 个 macOS 和 5K 个 Ubuntu 任务；以及不同模型配方使用的 41,428 或 27,804 条训练轨迹。
+- 阅读 Section 3 时要注意 teacher 究竟看到了什么。generator 看得到目标动作代码，reflector 看得到下一张截图，因此 reflective CoT 是有用的事后监督，而不是人类认知过程的演示。
+- 将 AgentNetBench 和 OSWorld-Verified 视为不同合同：前者在 100 条留出轨迹上匹配预测的底层动作，后者则在 369 个任务上运行 agent，并使用任务特定的环境脚本。
+- 复用前固定 GitHub `dfc91ba89f700d10f26ec50362d308571482ab8b`、AgentNet `d76ee50a63fad81cfdbe576416757d7c2091ed50` 和 OpenCUA-7B `a2efb7d2b104d477a4a2666a357e79550a28aafc`，再处理训练代码缺失、HF schema 混合、环境漂移和第三方 UI 权利问题。

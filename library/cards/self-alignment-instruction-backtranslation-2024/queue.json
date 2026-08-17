@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:31:49Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将未标注网页文本转化为可筛选的指令数据，代表自生成指令训练的经典路线",
+    "updated_at": "2026-07-17T12:31:49Z"
+  }
+}

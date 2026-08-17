@@ -1,0 +1,5 @@
+Repository-level coding tasks are environment problems, not only code-generation prompts. A valid evaluation needs the issue context, exact repository revision, build dependencies, candidate patch, tests, and a terminal rule. Python-only suites underrepresent the engineering needed for Java, JavaScript, and TypeScript package managers, parsers, and runtime images.
+
+SWE-PolyBench releases test tasks from 21 repositories, totaling 2,110 rows: Java 165, JavaScript 1,017, TypeScript 729, and Python 199. The tasks cover bug fixes, feature additions, and refactoring. The natural-language source is primarily English GitHub issue/PR material; “multi-language” refers to programming languages, not translated prompts.
+
+Each task connects a problem statement to a base commit, gold code patch, test patch, F2P/P2P test identifiers, a task-specific test command, and an instance Dockerfile. The benchmark therefore exposes the environment and final-patch feedback boundary. It does not release a standardized state/action/observation trajectory, so it supports evaluation but not direct trajectory SFT or RL from the public table.

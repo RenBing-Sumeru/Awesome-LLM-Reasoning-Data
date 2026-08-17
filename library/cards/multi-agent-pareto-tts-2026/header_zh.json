@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该研究表明，混合智能体在等预算下可优于单智能体扩展，并给出并行与顺序计算分配的具体规则。","reading_priority_ch":"可读","paper_type_ch":"测试时扩展效率对比研究","best_for_ch":"需要在固定准确率、延迟或硬件预算下选择实际多智能体推理配置的读者。","confidence_ch":"高","authors_ch":"Florian Valentin Wunderlich、Lars Benedikt Kaesberg、Jan Philip Wahle、Terry Ruas、Bela Gipp（机构：哥廷根大学）","category_ids":["scaling_rlvr_test_time_compute"]}

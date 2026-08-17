@@ -1,0 +1,17 @@
+{
+  "title": "Hubble: a Model Suite to Advance the Study of LLM Memorization",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=ZfdnZhOP0k",
+    "data": "https://openreview.net/attachment?id=ZfdnZhOP0k&name=supplementary_material"
+  },
+  "review_note": "已按 ICLR 2026 Oral 正式论文完成双语精读卡片，并核对开源模型套件与扰动数据。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开的配对模型和已知插入记录支持对记忆、隐私和测试集污染进行可复现的因果审计。",
+    "updated_at": "2026-07-24T03:30:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T03:30:00Z"
+}

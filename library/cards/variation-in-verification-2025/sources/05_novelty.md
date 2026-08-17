@@ -1,0 +1,3 @@
+The main contribution is a controlled behavioral map rather than a new verifier architecture. Separating TPR from TNR reveals why one aggregate score can hide difficulty-dependent false rejection and generator-dependent false acceptance. Linking those rates to conditional pass rate makes the consequences for verifier-filtered test-time sampling explicit.
+
+For data curation, the later artifact release is equally important: it preserves both sides of the feedback contract. Candidate CoTs and their ground-truth labels are joinable to the verifier's generated rationale and verdict across generator-verifier pairs, enabling audits that would be impossible from aggregate plots alone.

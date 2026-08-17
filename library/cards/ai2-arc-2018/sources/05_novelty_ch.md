@@ -1,0 +1,1 @@
+已有基线是选择题科学 QA 或开放域 QA，用答案键打分。ARC 的变化是把简单 solver 明确用于数据构造，筛出抵抗检索和词关联的 Challenge 子集。质量信号来自真实考试题和公开 train/dev/test split；方向信号是把 baseline failure condition 写进数据 lineage 的 benchmark 设计。并不新的部分是选择题评分、静态答案键和考试题来源。复用前要检查版本、split、license、答案标签格式、污染风险，以及目标 claim 是否只针对 ARC-Challenge。

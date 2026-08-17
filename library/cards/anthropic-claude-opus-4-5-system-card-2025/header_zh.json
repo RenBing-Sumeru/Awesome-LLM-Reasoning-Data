@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude Opus 4.5 的系统卡披露了宽泛来源类别、RLHF/RLAIF、早期监督学习中的先前模型 reasoning text、RL 不按 reasoning-text 内容奖惩、部分 reward-hacking 防护和具体去污染规则，但没有公开可审计的记录、奖励或环境。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型系统卡与数据披露台账",
+  "best_for_ch": "需要审查闭源前沿模型中后训练数据、反馈奖励、推理文本监测、去污染和可复现性边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

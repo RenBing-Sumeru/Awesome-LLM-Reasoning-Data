@@ -1,0 +1,1 @@
+官方仓库报告 AitZ 含 18,643 个带 CoAT 语义标签的 screen，以及 2,500+ 指令，截图和 JSON 标注约占 2.6GB。仓库给出 split 统计：1,998 个 train episodes / 13,919 张 train screens，以及 506 个 test episodes / 4,724 张 test screens；Single 子集只有 train 无 test。仓库还在 50 条 AITW episode 的比较表里报告 CoAT 在 GPT-4V action-type accuracy 上高于 CoA 和 CoT。这些证据支持 prompting 与标注设计，但不是每条 AitZ 标注语义正确的证书，也不证明 CoAT 能提升在线任务完成率。

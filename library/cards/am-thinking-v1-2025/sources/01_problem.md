@@ -1,0 +1,1 @@
+Reasoning performance at 32B scale depends not only on an open base model, but on which prompts, generated traces, filters, verifiers, and curriculum enter post-training. AM-Thinking-v1 asks whether a dense Qwen2.5-32B model can approach much larger reasoning systems using public queries and a concretely described SFT-to-RL pipeline.

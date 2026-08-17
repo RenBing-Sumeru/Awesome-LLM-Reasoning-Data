@@ -1,0 +1,117 @@
+id: codeplan-repository-coding-2024
+title: 'CodePlan: Repository-level Coding using LLMs and Planning'
+year: 2023
+venue: FSE 2024
+authors:
+- Ramakrishna Bairi
+- Atharv Sonwane
+- Aditya Kanade
+- Vageesh D C
+- Arun Iyer
+- Suresh Parthasarathy
+- Sriram Rajamani
+- B. Ashok
+- Shashank Shet
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- repository-coding
+- planning
+- code-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2309.12499
+  arxiv: https://arxiv.org/abs/2309.12499
+  doi: null
+  code: https://github.com/microsoft/CodePlan
+  data: https://github.com/microsoft/CodePlan
+  project: https://aka.ms/CodePlan
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: CodePlan paper, official short link, and Microsoft repository
+  trace_author: Microsoft Research authors and CodePlan planning pipeline
+  answer_format: repository tasks, plans, code edits, execution checks, metrics, and replication artifacts
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: repository-level coding tasks solved with planning
+  verifier_or_reward: repository metrics, tests, and CodePlan replication scripts
+  terminal_predicate: repository metrics, tests, and CodePlan replication scripts
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: repository coding tasks and planning decomposition
+  generator: planning-based repository coding benchmark/replication pipeline
+  filtering_rule: note archived repository and distinguish editing/metrics replication from interactive environment
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2309.12499; https://aka.ms/CodePlan; https://github.com/microsoft/CodePlan
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2309.12499'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: repository is archived; data is closer to editing/metrics replication than an interactive agent environment
+inclusion_reason: it records planning structure for repository-level coding agents
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- repository-coding
+- planning
+- code-agents
+one_line: CodePlan studies repository-level coding with LLM planning.
+why_it_matters: it records planning structure for repository-level coding agents
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CodePlan studies repository-level coding with LLM planning.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms FSE 2024 status, Microsoft Research India affiliation, and official repository.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 115
+  primary_category_id: benchmarks_evaluation_surfaces

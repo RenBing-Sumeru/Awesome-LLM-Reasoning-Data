@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "审计代码 LLM 判别器对语义等价表层改写的偏差。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码 LLM 判别器鲁棒性审计",
+  "best_for_ch": "需要用 LLM 进行无参考代码正确性评测的研究者与工程团队。",
+  "confidence_ch": "高：已核对 EACL 正文、作者机构和正式论文页。",
+  "authors_ch": "Jiwon Moon, Yerin Hwang, Dongryeol Lee, Taegwan Kang, Yongil Kim, Kyomin Jung",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

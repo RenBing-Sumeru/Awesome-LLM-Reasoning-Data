@@ -1,0 +1,7 @@
+MobileWorldBench的核心思想是把semantic world modeling从完整agent control中分离出来。给定静态current screenshot和一次人类action的自然语言描述，模型要么生成预期state change，要么回答关于next state的二元问题。source next screenshot用于构造reference，并在generation评分时对judge可见；被评模型不与app交互，也不接收多步history。
+
+反馈契约是mixed。对Next-State-Generation，GPT-4o judge把prediction与ground-truth next screenshot及reference change description比较，分别给**accuracy、completeness与relevance**打1–5分，总分最高15。对Next-State-QA，程序化评测计算精确Yes/No answer accuracy。对3,000个抽样model-output match进行的人类pairwise comparison属于附加分析，不是主要发布metric。
+
+该反馈能观察与reference transition的语义一致性和二元事实正确性，却不能验证已执行的environment outcome、long-horizon recovery、安全或terminal task completion。系统没有episode terminal predicate：每条独立记录在输出一次description或Yes/No answer后结束。AndroidWorld只出现在另行开展的downstream planning实验中，不能反推为benchmark的发布反馈契约。
+
+相对完整mobile-agent trajectory，本文贡献是一个紧凑的transition-level prediction target，可扩展为SFT数据并离线评测；相对仅预测future frame，它以action-conditioned semantic text为target。最接近的内部对照是MobileWorldBench evaluation row与MobileWorld training annotation：二者共享单步对象，但source portion、filtering、scale与human review不同。缺少逐记录split ID使零重叠无法独立核验。

@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T10:30:30Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统比较生成器、过程奖励模型和题目难度如何决定最优搜索策略",
+    "updated_at": "2026-07-20T10:30:30Z"
+  }
+}

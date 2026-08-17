@@ -1,0 +1,2 @@
+HoWToBench can compare long-form generators, calibrate judges for open writing, or train multidimensional rubric reward models. Its tree structure supports decomposing rewards into leaf-level scores and studying trade-offs among fluency, narrative logic, and task objectives. Reuse should preserve every node definition, weight, and rationale rather than only the final score. Extension to English or other languages requires new local expert ratings and validation of the tree structure instead of assuming translated Chinese rubrics remain valid.
+

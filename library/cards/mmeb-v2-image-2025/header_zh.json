@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MMEB-V2 在 78 个多模态 embedding 数据集上评估 image、video 和 visual document 检索/分类能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / multimodal embedding dataset",
+  "best_for_ch": "需要审计 image retrieval、candidate pool、embedding metric、数据集 license 和 MMEB-V2 子集边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Rui Meng、Ziyan Jiang、Ye Liu 等",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

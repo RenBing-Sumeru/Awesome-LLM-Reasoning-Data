@@ -1,0 +1,1 @@
+核心贡献是一个基于 Codeforces 的标准化基准：模型解答直接提交到官方平台，再把竞赛表现换算为可与人类比较的 Elo。机制避免重建 hidden tests 或 special judges，由平台 judge 给 accepted/rejected 反馈。最接近的参照是 LiveCodeBench、USACO 类基准、APPS、CodeContests 和 AlphaCode 的 Codeforces 模拟。反馈契约是 Codeforces 判定加作者的 Elo 计算；方向标签是带外部 judge 的 live/抗污染评测。

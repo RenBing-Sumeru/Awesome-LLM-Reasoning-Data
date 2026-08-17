@@ -1,0 +1,240 @@
+id: s1-simple-test-time-scaling-2025
+title: 's1: Simple test-time scaling'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Niklas Muennighoff
+- Zitong Yang
+- Weijia Shi
+- Xiang Lisa Li
+- Li Fei-Fei
+- Hannaneh Hajishirzi
+- Luke Zettlemoyer
+- Percy Liang
+- Emmanuel Candès
+- Tatsunori Hashimoto
+source_role:
+- model_report
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- math
+- science
+- code
+- logic
+- quantitative-reasoning
+training_use:
+- sft
+- distillation
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1025/
+  arxiv: https://arxiv.org/abs/2501.19393
+  code: https://github.com/simplescaling/s1
+  data: https://huggingface.co/datasets/simplescaling/s1K
+  project: https://github.com/simplescaling/s1
+  huggingface: https://huggingface.co/datasets/simplescaling/s1K
+  full_pool: https://huggingface.co/datasets/simplescaling/data_ablation_full59K
+  raw_pool: https://huggingface.co/datasets/qfq/train
+  feature_pool: https://huggingface.co/datasets/qfq/train_featurized
+  tokenized_data: https://huggingface.co/datasets/simplescaling/s1K_tokenized
+  model: https://huggingface.co/simplescaling/s1-32B
+  results: https://huggingface.co/datasets/simplescaling/results
+  s1_prob: https://huggingface.co/datasets/simplescaling/s1-prob
+  s1_teasers: https://huggingface.co/datasets/simplescaling/s1-teasers
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1025
+  venue: https://aclanthology.org/2025.emnlp-main.1025/
+  openreview: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.1025/
+data_object:
+  prompt_source: 'A paper-reported pool of 59,029 questions from 16 sources: NuminaMATH (30,660), MATH (11,999), OlympicArena
+    (4,250), OmniMath (4,238), AGIEval (2,385), xword (999), OlympiadBench (896), AIME 1983-2021 (890), TheoremQA (747), USACO
+    (519), JEEBench (515), GPQA (348), SciEval (227), the authors'' s1-prob (182), LiveCodeBench (151), and s1-teasers (23).
+    The final s1K is a 1,000-question subset selected for quality, difficulty, and diversity.'
+  trace_author: Original s1K reasoning traces and responses are distilled from Google Gemini 2.0 Flash Thinking Experimental.
+    The paper cites the `gemini-2.0-flash-thinking-exp-1219` revision, while the released generator calls the unversioned
+    `gemini-2.0-flash-thinking-exp` API alias. The later s1K-1.1 release replaces these traces with DeepSeek-R1 traces and
+    is not the original s1 training object.
+  answer_format: Public s1K rows contain `question`, source `solution`, `cot_type`, `source_type`, stringified source `metadata`,
+    null `cot`, a one-element `thinking_trajectories` sequence holding Gemini's internal reasoning trace, and `attempt` holding
+    Gemini's response. The tokenized release adds a rendered `text` field using explicit think/answer delimiters.
+  process_fields:
+  - source question
+  - source reference solution
+  - source dataset/subtype
+  - source metadata
+  - Gemini reasoning trace
+  - Gemini response
+  - Gemini trace token length, retained only in an intermediate feature table
+  - Qwen2.5-7B correctness judgment, retained only as a Boolean intermediate
+  - Qwen2.5-32B correctness judgment, retained only as a Boolean intermediate
+  - Gemini-response correctness judgment, retained only as a Boolean intermediate
+  - Claude-assigned MSC-style domain, retained only in an intermediate
+  - formatting/API-failure filter decision, not released per row
+  - decontamination and exact-dedup decision, not released per row
+  - final selection probability/rank and random seed, not released
+  environment_or_substrate: 'Offline data construction rather than interactive search: collect and normalize answer-keyed
+    questions, apply word-level overlap and exact deduplication, call Gemini for a trace/response, run two Qwen difficulty
+    probes, call Claude for correctness and domain labels, then sample a compact multi-domain training table. Budget forcing
+    is a separate decoding-time intervention over the trained model''s think/answer delimiters.'
+  verifier_or_reward: Construction uses programmatic 8-gram decontamination, exact deduplication, API-success checks, and
+    string-format heuristics, plus Claude 3.5 Sonnet judgments of Qwen attempts against source solutions and Claude MSC-style
+    domain classification. Correctness of the final 1,000 Gemini generations is measured later with Claude 3.7, which judges
+    only 53.6% correct. These are selection/judgment contracts, not formal proof verification or an RL reward.
+  terminal_predicate: There is no search terminal or RL episode predicate. After retaining questions that neither Qwen probe
+    can solve, the recipe seeds the final set with judged-correct AIME/GPQA and long judged-correct MATH generations, then
+    samples unique domain-balanced questions favoring longer Gemini traces until 1,000 are selected. Sampled non-seed generations
+    need not be judged correct and remain valid SFT records.
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct
+  teacher: Google Gemini 2.0 Flash Thinking Experimental authors the original traces and answers. Qwen2.5-7B-Instruct and
+    Qwen2.5-32B-Instruct act as difficulty probes, while Claude 3.5 Sonnet judges their correctness and labels domains. Claude
+    3.7 is used for the reported post-hoc correctness rate of s1K.
+  generator: '`data/gemini.py` submits each raw question to `gemini-2.0-flash-thinking-exp` and stores the first returned
+    thinking part and answer part. The code does not pin temperature, top-p, seed, or a dated API snapshot beyond the paper''s
+    textual `-1219` citation.'
+  filtering_rule: Start from 59,029 source questions; remove Gemini API failures to obtain 54,116; remove formatting-defect
+    patterns to obtain 51,581; run Qwen2.5-7B and Qwen2.5-32B and remove every question that either model is judged by Claude
+    to solve, leaving 24,496. Seed 384 final examples using judged-correct AIME/GPQA generations and judged-correct MATH generations
+    whose Gemini trace exceeds 5,600 Qwen-tokenizer tokens, then sample by Claude-assigned domain and trace-length rank until
+    1,000 unique examples.
+  sampling_protocol: The paper and Algorithm 1 describe uniformly sampling an available domain and weighted sampling within
+    it with probability proportional to `2^-rank`, where longer Gemini traces have smaller ranks. The checked notebook instead
+    samples domains uniformly only until the selected set reaches 700 and then uses an AIME/GPQA-derived domain distribution
+    for the final 300; it sets no NumPy random seed. A deterministic paper-exact final-selection manifest is therefore not
+    identified.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Construction calls Gemini for up to the full 59,029 pool, both Qwen models for difficulty attempts, and
+    Claude for correctness/domain judgments; API token, dollar, and retry totals are not reported. Main SFT takes 26 minutes
+    on 16 H100 GPUs, about 7 H100 GPU-hours. The full-pool ablation uses 394 H100 GPU-hours.
+  optimizer_or_scaffold: Supervised fine-tuning for five epochs and 315 steps with global batch size 16, bf16, AdamW beta1
+    0.9/beta2 0.95, learning rate 1e-5, 5% linear warmup followed by cosine decay to zero, weight decay 1e-4, and maximum
+    sequence length 32,768. Loss is masked on the question and computed on the assistant reasoning trace and answer. Budget
+    forcing at inference either appends the end-of-thinking delimiter at a maximum budget or suppresses it and appends `Wait`
+    one or more times to extend thinking.
+audit:
+  source_mixture: Sixteen heterogeneous sources cover competition mathematics, university science, standardized-test law/logic,
+    programming, crosswords, and quantitative puzzles. Exact source and subtype survive in released rows, but no per-row upstream
+    license identifier, transformation record, or immutable source revision is provided. The current standalone s1-teasers
+    release has 24 rows while the paper pool contains 23.
+  split: Original s1K and s1K_tokenized expose only a 1,000-row `train` split. `qfq/train` and `qfq/train_featurized` expose
+    59,029 train rows. The current `data_ablation_full59K` card exposes 58,986 train rows, 43 fewer than the paper/raw pool.
+    No source-disjoint validation/test split or rejected-record split is released.
+  decontamination: 'Paper: word-level 8-gram overlap against MATH500, GPQA Diamond, and AIME24, excluding questions with an
+    overlap, followed by exact question deduplication. Checked code additionally loads LiveCodeBench test questions and appends
+    already accepted source questions to the comparison set. The release does not include matched n-grams, removed IDs, false-match
+    review, or semantic-near-duplicate analysis.'
+  license: Repository code, original s1K, tokenized s1K, full-pool data, and s1-32B declare Apache-2.0. The paper lists upstream
+    licenses spanning Apache-2.0, MIT, CC BY 4.0, and OlympicArena's CC BY-NC-SA 4.0 and states they are compatible with its
+    use. The release lacks a per-row license map and does not independently reconcile redistribution of all mixed-source derivatives
+    under one Apache label. Public `qfq/train` and `qfq/train_featurized` cards declare no license; the later s1K-1.1 card
+    declares MIT despite the paper's blanket Apache statement.
+  lineage: Upstream answer-keyed question -> source-specific normalization and subsampling -> 8-gram evaluation/cross-source
+    filtering -> exact question deduplication -> Gemini trace/answer generation -> API/format quality filters -> Qwen7B/Qwen32B
+    attempts -> Claude correctness judgments -> removal of questions solved by either Qwen -> Claude domain assignment ->
+    fixed high-quality seeds plus domain/length-weighted sampling -> 1,000-row original s1K -> delimiter-aware tokenization
+    -> Qwen2.5-32B SFT -> optional decoding-time budget forcing. Public final rows do not retain the full decision path, sampling
+    rank/probability, or random seed.
+  release_version: Official repository `main` commit 77272c6e925d610257a50b520bad15330b513389; original s1K revision 278d72baaa2b887a7e76a70a0ae254a5a45536e4;
+    full-pool revision aa735bbf5129eb7948ee528438a0554fb1eb1585; tokenized s1K revision bd41c1e1caf2abec9535b9bbac1f2db7e960b77d;
+    s1-32B revision 569f1b8dc020ebf57c9996462f3b58b1eb8aec8f; verified 2026-07-23.
+  released_vs_claimed: Released artifacts include the original 1,000-row Gemini-trace dataset, tokenized training data, original
+    s1-32B weights, a 58,986-row generated full pool, public 59,029-row raw and feature intermediates, data/training/ evaluation
+    code, result files, and licenses. A paper-exact reproduction is still incomplete because the generated release is 43 rows
+    short, the notebook's named Gemini intermediate is inaccessible, public feature names do not match notebook expectations,
+    the sampler is unseeded and differs from Algorithm 1, judge attempts/rationales and rejected-record reasons are absent,
+    and API/model/data revisions are not unified in one immutable run manifest.
+  known_failure_modes:
+  - Long reasoning traces are only a difficulty proxy; verbosity, looping, or an early wrong approach can produce long traces
+    without a hard problem or valid solution.
+  - Claude judgments against source solutions can produce false accepts or rejects, especially for proof, code, multiple-choice,
+    and underspecified tasks; the released Boolean labels omit the evidence needed to re-audit those calls.
+  - Filtering on failures of Qwen2.5-7B/32B is base-model-specific and can over-select examples that are idiosyncratically
+    difficult for Qwen rather than broadly useful.
+  - s1K intentionally retains generations judged incorrect; SFT may learn useful reasoning patterns but can also imitate invalid
+    intermediate steps or wrong answers.
+  - The paper's sampler and released notebook differ, and the notebook has no NumPy seed, so the exact final 1,000 cannot
+    be regenerated deterministically.
+  - The public full-pool count is 58,986 rather than the paper's 59,029, and the missing 43 rows are not identified.
+  - Public intermediate feature spellings do not match the notebook, while the notebook's `qfq/geminiall` dependency is not
+    publicly readable.
+  - Word-level 8-grams catch literal overlap but can miss paraphrases and translated or structurally equivalent problems;
+    they can also remove benign boilerplate matches.
+  - Budget forcing can trigger self-correction, but repeated `Wait` injection can also create repetition, overthinking, context
+    exhaustion, and non-monotonic accuracy.
+  - vLLM evaluation is reported as sensitive to batch size, continuation, and tensor parallelism even under greedy decoding,
+    limiting exact score reproducibility.
+  - A top-level Apache label does not by itself resolve per-source attribution, non-commercial, share-alike, or derivative-data
+    obligations.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL Anthology metadata/PDF, arXiv, the full proceedings paper and appendix, official GitHub code at a pinned
+    commit, repository/license files, Hugging Face cards/APIs/schemas/counts/revisions for original and later artifacts, and
+    the current Card corpus were checked. Citation and artifact presence are verified; paper-exact selection/release completeness
+    and source-level licensing remain partial.
+inclusion_reason: s1 is a high-value Data Construction and Open Release Recipes entry because it makes a compact reasoning-data
+  selection pipeline unusually explicit, validates quality/difficulty/diversity choices against random, diversity-only, longest-trace,
+  and full-pool ablations, and releases the original data/model/ code while exposing concrete audit gaps between a 59,029-item
+  construction claim, a 58,986-row full-pool artifact, and the final 1,000-row training set.
+related: []
+tags:
+- primary-link-checked
+- artifact-verified
+- emnlp-2025
+- supervised-finetuning
+- reasoning-distillation
+- data-selection
+- sample-efficiency
+- test-time-scaling
+- budget-forcing
+- open-data
+category_ids:
+- data_construction_open_release_recipes
+- programmatically_verifiable_outcome_data
+- instruction_demonstration_rationale_data
+one_line_summary: s1 filters a 59,029-question mixed-source pool by generation quality, Qwen difficulty, Claude-labeled diversity,
+  and trace length into the 1,000-example Gemini-distilled s1K, then combines SFT with inference-time budget forcing.
+why_it_matters: The work demonstrates that careful selection can match a 59K-data ablation with roughly 1/59 as many training
+  examples, and it cleanly separates a reusable data recipe from a decoding intervention while revealing how much lineage,
+  judgment evidence, and determinism an apparently open release can still omit.
+status: partial
+card: null
+needs:
+- 'needs_release_reconciliation: identify and explain the 43 rows missing from `data_ablation_full59K` relative to the 59,029
+  paper/raw pool and the one-row s1-teasers drift'
+- 'needs_determinism: publish the exact final 1,000 item IDs, random seed, domain schedule, ranks, weights, and immutable
+  sampler code matching the accepted paper'
+- 'needs_judge_evidence: release Qwen attempts, Claude prompts/responses, grader rationales, API revisions, and calibrated
+  human audit samples'
+- 'needs_lineage: add per-row source revision, license, transformation, decontamination match, filter decision, and final
+  selection mapping'
+- 'needs_reproduction: replace inaccessible or schema-mismatched intermediates with public pinned artifacts and provide an
+  immutable environment/run manifest'
+- 'needs_license: reconcile upstream attribution and CC BY-NC-SA/share-alike implications instead of relying only on dataset-level
+  Apache metadata'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title/ID/arXiv/ACL-ID search found no existing Card. Verified the official EMNLP 2025 ACL Anthology record
+    and DOI; full 47-page proceedings paper; repository commit 77272c6; Apache code license; original s1K revision 278d72b
+    with 1,000 rows; full-pool revision aa735bb with 58,986 rows versus 59,029 in the paper; tokenized data revision bd41c1e;
+    and original model revision 569f1b8. Artifact presence is verified; exact selection/release completeness is not.

@@ -1,0 +1,1 @@
+Hao Wen, Yuanchun Li, Guohong Liu, Shanhui Zhao, Tao Yu, Toby Jia-Jun Li, Shiqi Jiang, Yunhao Liu, Yaqin Zhang, and Yunxin Liu. "AutoDroid: LLM-powered Task Automation in Android." ACM MobiCom 2024; arXiv:2308.15272. Paper: https://arxiv.org/abs/2308.15272. Official project/code: https://autodroid-sys.github.io/ and https://github.com/MobileLLM/AutoDroid.

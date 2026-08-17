@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该受控研究表明更强教师或更长轨迹可能损害小模型，而仅按答案过滤及论文到制品映射不完整限制了因果与复现主张。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "蒸馏失败研究与推理数据混合配方",
+  "best_for_ch": "为小模型 SFT 选择推理教师、轨迹长度和混合比例的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Yuetai Li, Xiang Yue, Zhangchen Xu, Fengqing Jiang, Luyao Niu, Bill Yuchen Lin, Bhaskar Ramasubramanian, Radha Poovendran",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-12T03:43:37Z"
+}

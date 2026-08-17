@@ -1,0 +1,6 @@
+- 将 §3.1、Figure 1 和附录 A.1 一起读。核心决策是 q=alpha*(1-p)，而不是“选短轨迹”；p 依赖 64 条答案核验 rollout。
+- 在解读“信息保持”前读 §3.2 与附录 B。gate 是针对未来 token 分布的单轨迹、512-token-window KL 近似，不是 semantic 或 proof verifier。
+- 将 Tables 1-4 视为有条件证据：Table 1 给出作者报告的准确率/长度权衡；Tables 2-4 分离 selection、refinement 与 objective。没有一张表审计生成记录。
+- 检查仓库 Steps 1-6 并固定 commit。命名中间文件不在公共树中；这是发布事实，不是其内容证据。
+- 与 *Self-Training Elicits Concise Reasoning* 一起读：两者都把 search 摊销进训练，但 TokenSqueeze 增加自适应多正例选择、更长错误负例、KL rewriting 和 DPO-L。
+- 未解问题：math14k lineage；merged_verify 错误；prompt/pair 保留；benchmark overlap；对 checkpoint/tokenizer revision 的稳健性。

@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-21T02:28:45Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "在等预算下比较多智能体与单智能体扩展，给出并行和顺序计算分配规律",
+    "updated_at": "2026-07-21T02:28:45Z"
+  }
+}

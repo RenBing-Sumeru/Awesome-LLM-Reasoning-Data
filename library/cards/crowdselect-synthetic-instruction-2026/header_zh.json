@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CrowdSelect 利用多个语言模型回复和奖励模型评估提供的互补信号选择合成指令对。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "训练数据选择或奖励设计论文",
+  "best_for_ch": "研究后训练数据消费与优化目标的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yisen Li, Lingfeng Yang, Wenxuan Shen, Pan Zhou, Yao Wan, Weiwei Lin, Dongping Chen",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T20:30:00Z"
+}

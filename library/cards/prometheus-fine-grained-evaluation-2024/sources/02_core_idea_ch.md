@@ -1,0 +1,1 @@
+论文构建 Feedback Collection：包含 1,000 个细粒度 score rubric、20,000 条 instruction、100,000 个回答及对应的 GPT-4 自然语言 feedback。基于该数据训练 Prometheus-13B，使输入显式包含 instruction、candidate response、reference answer 与 rubric，输出反馈和 1–5 分。模型、数据和代码全部开放，目标是提供可复现、低成本且支持自定义评价维度的通用 evaluator。

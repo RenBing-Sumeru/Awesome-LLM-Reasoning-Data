@@ -1,0 +1,109 @@
+id: beyond-theorem-proving-formal-problem-solving-2026
+title: 'Beyond Theorem Proving: Formulation, Framework and Benchmark for Formal Problem-Solving'
+year: 2026
+venue: ICML 2026 Spotlight
+authors:
+- Qi Liu
+- Xinhao Zheng
+- Renqiu Xia
+- Xingzhi Qi
+- Qinxiang Cao
+- Junchi Yan
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- formal-mathematics
+- lean4
+training_use:
+- evaluation
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.04528
+  arxiv: https://arxiv.org/abs/2505.04528
+  code: https://github.com/Purewhite2019/formal_problem_solving_main
+  data: https://huggingface.co/collections/purewhite42/formal-problem-solving
+  project: null
+  huggingface: https://huggingface.co/collections/purewhite42/formal-problem-solving
+  doi: https://doi.org/10.48550/arXiv.2505.04528
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH500, MiniF2F, and PutnamBench problems reformulated in Lean.
+  trace_author: Benchmark authors construct Lean formal problem-solving instances.
+  answer_format: Informal problem and answer, Lean hypotheses and conclusions, formal answer predicate, and solver trajectory
+    outcome.
+  process_fields:
+  - informal_problem
+  - informal_answer
+  - header
+  - independent_variables
+  - hypotheses
+  - conclusions
+  - formal_answer
+  - formal_answer_type
+  - metainfo
+  environment_or_substrate: Lean 4 v4.15.0, Mathlib 4 v4.15.0, Aesop, and Pantograph.
+  verifier_or_reward: Lean state-transition checking and Restricted Propositional Equivalence.
+  terminal_predicate: All Lean proof goals are closed and the answer satisfies RPE when required.
+recipe_metadata:
+  base_model: Evaluated formal theorem-proving models and prompted generalist models.
+  teacher: Formal benchmark construction and Lean checker.
+  generator: Refactor existing mathematics and theorem-proving benchmarks into formal problem-solving tasks.
+  filtering_rule: Retain problems with formal answer predicates and replayable Lean environments.
+  sampling_protocol: FormalMath500 has 387 examples, MiniF2F-Solving 375, and PutnamBench-Solving 324.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix Lean, Mathlib, tactic/search budget, and answer normalization.
+  optimizer_or_scaffold: FPS/D-FPS tactics over Lean state transitions with RPE terminal comparison.
+audit:
+  source_mixture: Official arXiv paper, author GitHub repository, and author-maintained Hugging Face collection.
+  split: Three released JSONL benchmarks totaling 1,086 instances.
+  decontamination: Audit overlap with source datasets and Lean-library exposure before using results as unseen generalization.
+  license: Source benchmark licences are retained in the official repository; inspect each derived set before reuse.
+  lineage: https://github.com/Purewhite2019/formal_problem_solving_main
+  known_failure_modes:
+  - Formalization remains expert-intensive and the three benchmarks are limited in size.
+  - Some open-ended or approximate tasks do not fit a deterministic Lean MDP.
+  - Results depend on tactic set, search budget, Mathlib version, and RPE automation.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, repository, author-maintained Hugging Face collection, authors, and ICML 2026 Spotlight designation
+    in the repository were checked.
+inclusion_reason: The released Lean benchmarks expose stepwise state transitions and programmatically verified terminal outcomes
+  for formal problem solving.
+related: []
+tags:
+- lean4
+- formal-problem-solving
+- rlvr
+- benchmark
+- icml-2026
+one_line_summary: FPS turns unknown-answer mathematics into replayable Lean state transitions, with RPE checking whether a
+  completed formal answer is equivalent to the target.
+why_it_matters: It evaluates answer discovery and proof jointly instead of treating the answer as already given to the prover.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Paper, code/data repository, author Hugging Face collection, and published release information were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

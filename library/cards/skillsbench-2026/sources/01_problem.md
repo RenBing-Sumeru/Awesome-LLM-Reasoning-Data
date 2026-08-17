@@ -1,0 +1,3 @@
+The primary source lead is https://arxiv.org/abs/2602.12670. The release context is arXiv, 2026. The concrete problem is to provide a reusable evaluation surface for task, model output, skill label, checker/judge result, and score.
+
+The decision boundary is evaluation and audit. It should not be read as a training recipe, a general claim about model reliability, or a reusable reward signal unless the official source separately discloses the scoring contract, split, license, and artifact version. A benchmark instance should be read through its task input, expected answer or rubric, model output, scoring metadata, and aggregate reporting policy.

@@ -1,0 +1,5 @@
+- Treat the object as an inference-time search record, not as a released reasoning dataset.
+- Keep PRM-threshold acceptance, large-model distribution-preserving correction, and final-answer correctness as separate fields.
+- Default settings are width 6, depth 50, beam size 2, MATH-psa, and EMA weight 0.9; decoding temperature, seed, item manifest, and initial threshold remain unknown.
+- Read the theory under its score-distribution and descending-quality assumptions; it does not certify every accepted thought.
+- Benchmark latency and accuracy support the tested selector, not the intrinsic quality or reuse rights of unreported traces.

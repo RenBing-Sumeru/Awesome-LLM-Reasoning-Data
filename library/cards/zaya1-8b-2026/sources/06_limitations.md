@@ -1,0 +1,3 @@
+The report omits individual dataset names for its principal midtraining/SFT mixtures and does not release source manifests, dates, licenses, consent or PII treatment, source-level transformations, rejected samples, teacher identities, reward-model data, reward calibration, or aggregation-trace provenance. It does not disclose a benchmark decontamination protocol.
+
+Configured RLVE and code environments are also unavailable: task instances, competitive-programming references, test suites, containers, version pins, scheduler state, and replay logs cannot be inspected. The report itself notes no dedicated multi-turn agentic RL stage, so tool/SWE traces in SFT should not be overread as evidence of a released or replayable agent-training environment.

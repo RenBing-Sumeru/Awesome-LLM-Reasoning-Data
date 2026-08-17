@@ -1,0 +1,253 @@
+id: itbench-2025
+title: 'ITBench: Evaluating AI Agents across Diverse Real-World IT Automation Tasks'
+year: 2025
+venue: ICML 2025
+authors:
+- Saurabh Jha
+- Rohan R. Arora
+- Yuji Watanabe
+- Takumi Yanagawa
+- Yinfang Chen
+- Jackson Clark
+- Bhavya Bhavya
+- Mudit Verma
+- Harshit Kumar
+- Hirokuni Kitahara
+- Noah Zheutlin
+- Saki Takano
+- Divya Pathak
+- Felix George
+- Xinbo Wu
+- Bekir O Turkkan
+- Gerard Vanloo
+- Michael Nidd
+- Ting Dai
+- Oishik Chatterjee
+- Pranjal Gupta
+- Suranjana Samanta
+- Pooja Aggarwal
+- Rong Lee
+- Jae-Wook Ahn
+- Debanjana Kar
+- Amit Paradkar
+- Yu Deng
+- Pratibha Moogi
+- Prateeti Mohapatra
+- Naoki Abe
+- Chandrasekhar Narayanaswami
+- Tianyin Xu
+- Lav R. Varshney
+- Ruchi Mahindru
+- Anca Sailer
+- Laura Shwartz
+- Daby Sow
+- Nicholas C. M. Fuller
+- Ruchir Puri
+source_role:
+- benchmark
+- agent_environment
+- infrastructure
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent-trajectories
+- environment-interaction
+- tool-use
+- site-reliability-engineering
+- compliance-and-security-operations
+- finops
+- kubernetes
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.mlr.press/v267/jha25a.html
+  paper_pdf: https://raw.githubusercontent.com/mlresearch/v267/main/assets/jha25a/jha25a.pdf
+  arxiv: https://arxiv.org/abs/2502.05352
+  code: https://github.com/itbench-hub/ITBench
+  data: https://huggingface.co/datasets/ibm-research/ITBench-Lite
+  trajectories: https://huggingface.co/datasets/ibm-research/ITBench-Trajectories
+  agent_code: https://github.com/itbench-hub/ITBench-SRE-Agent
+  project: https://research.ibm.com/publications/itbench-evaluating-ai-agents-across-diverse-real-world-it-automation-tasks
+  huggingface: https://huggingface.co/datasets/ibm-research/ITBench-Trajectories
+  doi: null
+  venue: https://proceedings.mlr.press/v267/jha25a.html
+  openreview: https://openreview.net/forum?id=jP59rz1bZk
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/jha25a.html
+  cvf: null
+  bibtex: https://proceedings.mlr.press/v267/jha25a.html#bibtex
+data_object:
+  object_type: A versioned family consisting of live IT benchmark scenarios and agent episodes, plus later official offline
+    scenario snapshots and released SRE interaction traces.
+  prompt_source: Final-paper scenarios comprise 42 SRE, 50 CISO, and 10 FinOps cases. The paper says SRE cases are based on
+    incidents observed in the authors' SaaS products, CISO cases on CIS benchmarks, and FinOps cases on FinOps Foundation
+    domains and capabilities. Incident-level provenance and the mapping to later releases are unknown.
+  trace_author: Baseline agents interacting with provisioned IT environments. The later official trajectory release currently
+    identifies GPT-OSS-120B as the generator for 105 SRE sessions; its card marks other models and CISO/FinOps trajectories
+    as future releases.
+  task_record: 'Scenario tuple <M,E,T,D>: metadata M (name, description, domain, class, complexity, deployment descriptors,
+    and task ground truth), operational environment E, triggering event(s) T, and desired outcome D.'
+  answer_format: Domain-specific structured result. Released SRE outputs contain diagnosed entities with contributing factors/reasoning/evidence,
+    propagation edges with conditions/effects, and alerts with explanations; CISO and FinOps use their own policy, posture,
+    diagnosis, anomaly, and mitigation outputs.
+  process_fields:
+  - scenario and benchmark identifiers
+  - environment manifest and service endpoints
+  - partial observation or telemetry
+  - ReAct thought or plan when logged
+  - tool name and arguments
+  - tool response or execution result
+  - generated code or policy artifact when present
+  - structured final answer
+  - final environment state
+  - stop or FINISH event
+  - evaluator output, justification, and scalar metrics
+  observation_space: Domain-dependent partial observations including alerts, logs, traces, metrics, Kubernetes objects/events,
+    security-policy evidence, and cost/anomaly data.
+  action_space: Domain tools plus a stop action. SRE/FinOps expose natural-language trace, metric, log, Kubernetes, and summarization
+    tools; CISO agents can generate and execute Kyverno, OPA Rego, and script artifacts through GitOps-style access.
+  environment_or_substrate: A benchmark runner provisions isolated operational testbeds, deploys scenarios, injects faults,
+    passes a manifest to the agent, evaluates the run, deletes the scenario, and aggregates results. The SRE example uses
+    Kubernetes, OpenTelemetry Astronomy Shop, Grafana, Loki, Jaeger, Prometheus, and fault mechanisms.
+  verifier_or_reward: Mixed and domain-specific. The paper evaluates final state/output against scenario ground truth with
+    environmental and programmatic metrics. The later SRE trajectory release also stores Gemini-2.5-Pro semantic-judge output
+    together with structured precision, recall, F1, localization, ranking, and completeness calculations.
+  terminal_predicate: The agent terminates by selecting stop or emitting FINISH at t*. Task success is a separate predicate
+    that compares terminal/next state or structured output with the scenario's desired outcome and ground truth; a finished
+    episode is not automatically successful.
+  provenance: Incident/CIS/FinOps source -> scenario specification and ground truth -> provisioned environment -> trigger/fault
+    -> observation/action/tool-response episode -> final output/state -> evaluator and leaderboard. Later releases materialize
+    selected scenarios as static snapshots and selected SRE runs as session/output/judge files.
+recipe_metadata:
+  recipe_scope: Evaluation and trajectory-generation recipe, not a disclosed policy-training recipe.
+  base_model: Paper baselines include GPT-4o (checkpoint 2024-11-20), Llama-family, Granite-family, and other evaluated models.
+    The later official trajectory release currently identifies GPT-OSS-120B for its 105 SRE sessions.
+  teacher: No teacher model is disclosed for training. Scenario ground truth and domain evaluators supervise evaluation; later
+    released judge files identify GCP/gemini-2.5-pro for semantic diagnosis scoring in inspected runs.
+  generator: CrewAI-based paper baselines with task prompts, in-context examples, domain tools, and planning/reflection components;
+    the later SRE release uses a ReAct agent with Bash, Python, and file tools from the linked ITBench-SRE-Agent repository.
+  filtering_rule: The runner may randomly select scenarios subject to agent type and level filters. The exact selection rule
+    connecting the final paper's 42 SRE scenarios to the later 35-scenario Lite/trajectory subset is unknown; no success-only
+    filter is documented.
+  sampling_protocol: Paper SRE evaluation uses 42 scenarios, split 21 with traces and 21 without, with 10 runs per scenario/model.
+    CISO uses 50 scenarios with 8 runs/model. FinOps covers 10 scenarios with task-dependent repeated runs; Data Insight temperature
+    is reported as zero. The later trajectory release uses 35 SRE scenarios with 3 runs each.
+  rollout_count: 'Paper: 10 runs per SRE scenario/model and 8 per CISO scenario/model; FinOps is task-dependent. Later trajectory
+    release: 105 sessions = 35 SRE scenarios x 3 runs.'
+  temperature: Zero is reported for the paper's FinOps Data Insight setup; other task/model temperatures are unknown.
+  inference_budget: Paper experiments allow up to a 128K-token model context; complete per-domain token, wall-clock, retry,
+    and tool-call budgets are unknown.
+  optimizer_or_scaffold: No optimizer or policy update is reported. The scaffold is the benchmark runner, environment lifecycle,
+    CrewAI/ReAct agent loop, domain tools, evaluator, and leaderboard.
+audit:
+  source_mixture: Final PMLR paper; earlier arXiv version; current official ITBench framework; later ITBench-Lite static data;
+    later ITBench-Trajectories sessions; and linked SRE agent code. These are related official artifacts but do not represent
+    one frozen release.
+  split: 'Final paper: 102 scenarios by domain (42 SRE, 50 CISO, 10 FinOps), with 11 public and 91 held for submitted-agent
+    evaluation. Lite: 65 scenarios (35 SRE, 15 FinOps, 15 CISO) packaged in `scenarios` configurations, not a train/test split.
+    Trajectories: one Hugging Face split named `train`, containing 35 SRE scenarios x 3 runs; no randomized leakage-controlled
+    train/evaluation partition is documented.'
+  release_scale: At trajectory revision c3093ee33b4f16a8eed97ade1266d0d7e88b2dec, the official tree has 35 scenario directories
+    and 105 session logs, but only 90 final agent outputs and 90 judge outputs. This conflicts with the dataset card's description
+    of 105 complete trajectories and must not be collapsed into 105 fully scored episodes.
+  success_failure_retention: The paper logs and analyzes successful and unsuccessful runs internally. The later release retains
+    scored failures (including a zero-score inspected run) and all 105 session logs; 15 session directories lack both final
+    output and judge files, showing that incomplete/failed episodes were not uniformly discarded. Their precise failure taxonomy
+    is unknown.
+  decontamination: unknown
+  benchmark_overlap: Eleven scenarios were publicly exposed in the final-paper access policy, and later releases expose more
+    snapshots and traces. No model-pretraining overlap audit or protocol preventing released traces from contaminating subsequent
+    benchmark use was found.
+  license: 'ITBench framework and ITBench-Lite: Apache-2.0. ITBench-Trajectories: CC-BY-NC-4.0. The paper is copyrighted by
+    its authors under PMLR publication terms. A unified rights analysis for incident-derived evidence, upstream CIS/FinOps
+    material, generated code, and all dependencies is unknown.'
+  lineage: 'Primary publication: https://proceedings.mlr.press/v267/jha25a.html . Official releases: https://github.com/itbench-hub/ITBench
+    , https://huggingface.co/datasets/ibm-research/ITBench-Lite , and https://huggingface.co/datasets/ibm-research/ITBench-Trajectories
+    .'
+  release_version: Early arXiv reports 94 scenarios; final PMLR reports 102. Current framework main was audited at 73040c0539b39f11e63abd4e848316c841559487
+    and identifies version 1.4.1, after later scenario, telemetry, persistence, dependency, schema, and ground-truth changes.
+    Exact paper-experiment commit, image digests, seeds, and dependency lock are unknown.
+  reset_and_replay: Paper workflow provisions, deploys, injects, evaluates, and deletes a scenario per run, providing reset-like
+    isolation. Lite supplies static snapshots and explicitly omits live runtime state/non-determinism and active remediation.
+    Deterministic replay of the paper runs from the current framework or released snapshots is unknown.
+  privacy_or_consent: No human annotation/subject study is reported. SRE scenarios are said to be based on incidents observed
+    in the authors' SaaS products, but incident-level anonymization, customer/user consent, privacy review, PII scanning,
+    and redistribution review are undisclosed. Runtime manifests can contain cluster credentials and service URLs, so exported
+    sessions require secret and identity scrubbing.
+  safety: Agents can generate destructive commands, and malicious evaluation infrastructure can inject instructions or code.
+    The paper mitigates this with containerized agents and self-contained Kubernetes environments, and warns against direct
+    deployment into real systems. Sandbox boundaries, least-privilege credentials, egress control, and log/code scanning remain
+    necessary for reuse.
+  artifact_versions:
+    framework_main_sha: 73040c0539b39f11e63abd4e848316c841559487
+    framework_version: 1.4.1
+    lite_revision: d0916b08ba421ce5e672e9ad68aa947d938dfef0
+    trajectories_revision: c3093ee33b4f16a8eed97ade1266d0d7e88b2dec
+    paper_experiment_commit: unknown
+  known_failure_modes:
+  - Invalid tool selection, incorrect arguments, repeated calls, syntax errors, and execution failures.
+  - Nondeterministic model behavior, telemetry availability, and live environment state.
+  - Metric gaming or partial credit that does not imply the desired operational outcome.
+  - LLM-judge false positives, false negatives, or drift in semantic diagnosis scoring.
+  - Ground-truth and dependency drift across scenario/framework versions.
+  - Static Lite snapshots omit interactive diagnosis, runtime non-determinism, and active remediation.
+  - Fifteen released sessions lack final outputs and judge files despite the complete-trajectory claim.
+  - Public scenario/trajectory exposure can contaminate later evaluation without lineage controls.
+  - Generated commands, policies, code, credentials, and logs create security and privacy risks.
+  citation_status: verified
+  confidence: high
+  notes: Paper identity and official artifacts are verified. Confidence is high in the enumerated facts and measured file
+    counts, but status remains partial because cross-release alignment, replay, contamination, privacy review, and component-level
+    rights are unresolved.
+inclusion_reason: ITBench makes the agent-data contract concrete across task specification, partial observation, tool action,
+  environment transition, stop condition, final-state evaluation, and later released success/failure traces in operational
+  IT environments.
+related: []
+tags:
+- agent-environment
+- state-action-trajectories
+- tool-use
+- environmental-verification
+- mixed-verifier
+- failure-retention
+- SRE
+- CISO
+- FinOps
+- Kubernetes
+- ICML-2025
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: ITBench packages live IT incidents and controls as tool-using agent episodes with explicit stop/success
+  contracts, then extends them with versioned offline snapshots and SRE traces.
+why_it_matters: It exposes the full reasoning-data interface—scenario provenance, partial observations, executable actions,
+  environment feedback, terminal predicates, and failed/incomplete episodes—while also showing why release version, replay,
+  judge, and contamination metadata must travel with any trajectory corpus used for training or evaluation.
+status: partial
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Final PMLR paper and all linked official artifacts were inspected. Counts for trajectory sessions/outputs/judges
+    are curator measurements over the official repository tree at the pinned revision; unresolved cross-release claims are
+    marked unknown or partial.
+curation_level: L3_summary_ready
+needs:
+- 'needs_review: verify the 40-author spelling/order against the final PMLR BibTeX during Card promotion'
+- 'needs_release_alignment: obtain the paper-experiment commit and map final-paper scenarios to Lite/Trajectories'
+- 'needs_data_clarification: resolve why 15 trajectory sessions lack final output and judge files'
+- 'needs_replay_metadata: document images, dependency locks, seeds, reset guarantees, and replay limits'
+- 'needs_audit: document decontamination, privacy/secret scanning, and component-level licensing'
+card: null

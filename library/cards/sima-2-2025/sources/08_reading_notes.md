@@ -1,0 +1,6 @@
+- Keep all ten training environments explicit: three research worlds and seven licensed commercial games; ASKA and MineDojo are held out only from initial environment training.
+- The policy input/output is 720p RGB plus ordinary keyboard/mouse action chunks; external verifiers may still access privileged state or screen/action signals.
+- Human gameplay dominates volume, while selected successful bridge episodes receive Gemini process reasoning/dialogue; exact counts and failed-trajectory retention are unknown.
+- Separate online RLVR from self-improvement: the latter uses a Gemini task generator, SIMA 2 actor, Gemini 0–100 reward model, experience bank, and retraining.
+- Preserve 65% human-evaluated and 66% automatic success, ASKA/MineDojo transfer gains, and MineDojo's 750 task-seed configurations alongside base-reasoning retention declines.
+- No reusable code/data/model/environment artifact is public; commercial rights, Gemini role correlation, base-model prior, and version/save-state drift dominate audit risk.

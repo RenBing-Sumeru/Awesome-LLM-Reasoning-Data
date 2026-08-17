@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"FreePRM 仅从最终答案标签学习步骤奖励，并用缓冲状态吸收轨迹级伪监督中的不确定性。","reading_priority_ch":"必读","paper_type_ch":"弱监督过程标签构造与过程奖励模型训练研究","best_for_ch":"适合在只能廉价获得最终答案正确性时构建过程奖励监督的读者。","confidence_ch":"中","authors_ch":"Lin Sun、Chuang Liu、Xiaofeng Ma、Tao Yang、Weijia Lu、Ning Wu（UAES AI Lab）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T20:30:00Z"}

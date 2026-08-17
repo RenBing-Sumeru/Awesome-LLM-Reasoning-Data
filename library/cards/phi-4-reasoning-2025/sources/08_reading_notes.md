@@ -1,0 +1,3 @@
+- Separate Phi-4-reasoning from Plus.
+- Treat o3-mini as a reported teacher, not a released corpus.
+- Keep reward details unknown.

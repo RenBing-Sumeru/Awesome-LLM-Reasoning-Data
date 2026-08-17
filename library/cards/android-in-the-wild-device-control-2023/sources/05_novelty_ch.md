@@ -1,0 +1,1 @@
+既有工作多是较小 UI 控制数据，或网页/模拟 GUI 环境。AITW 的变化在于规模和载体：真实 Android 设备 episode、自然语言目标、逐步底层动作。它的方向信号是一种公开移动控制轨迹 schema：instruction、screen observation、action 和 next-state context。不是新的部分包括行为克隆、动作匹配、截图式 UI 感知和人类演示采集。复用前要查数据 license/条款、bucket 可用性、子集定义、重复或泄漏任务、坐标归一化、app/version 漂移，以及报告分数是否使用同一数据转换。

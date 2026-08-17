@@ -1,0 +1,5 @@
+- Position: Medical CoT can be fluent without a factual anchor; MedReason inserts PrimeKG paths between source QA and teacher-written explanations.
+- Mechanism: Entity extraction and node mapping determine coverage, shortest-path pruning supplies up to three factual guides, and answer recovery decides which rationales reach SFT.
+- Data/artifact: The non-gated Apache-2.0-tagged release has one 115,474,386-byte JSONL file with 32,682 records and fields for source, question, options, answer, and detailed reasoning; one real row was read directly.
+- Evidence anchor: Matched SFT raises Llama-3.1-Instruct-8B average accuracy from 45.8 to 51.2 and Mistral-Instruct-7B from 36.1 to 44.7, while answer filtering adds 1.1 average points but hurts MedXpert.
+- Reuse decision: Use it to study knowledge-grounded medical supervision, not as verified clinical guidance; first audit KG coverage, source licenses, teacher reproducibility, and step-level false positives.

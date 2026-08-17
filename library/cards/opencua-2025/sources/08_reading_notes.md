@@ -1,0 +1,5 @@
+- Read Sections 2.1-2.3 with Appendix C first: they define the actual episode, action-reduction and state-matching transformations, annotator composition, consent, privacy review, scale, and cost.
+- Keep three count regimes separate: 22,625 accepted tasks; about 12K Windows, 5K macOS, and 5K Ubuntu tasks; and 41,428 or 27,804 training trajectories for different model recipes.
+- In Section 3, note exactly what the teacher observes. The generator sees the target action code and the reflector sees the next screenshot, so reflective CoT is useful post-hoc supervision, not demonstrated human cognition.
+- Read AgentNetBench and OSWorld-Verified as different contracts: the former matches a predicted low-level action on 100 held-out trajectories, while the latter executes agents on 369 tasks with task-specific environment scripts.
+- Before reuse, pin GitHub `dfc91ba89f700d10f26ec50362d308571482ab8b`, AgentNet `d76ee50a63fad81cfdbe576416757d7c2091ed50`, and OpenCUA-7B `a2efb7d2b104d477a4a2666a357e79550a28aafc`; then account for missing training code, mixed HF schemas, environment drift, and third-party UI rights.

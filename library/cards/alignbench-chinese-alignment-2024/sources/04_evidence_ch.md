@@ -1,0 +1,1 @@
+作者比较人工评分与自动评分，证明 rule-calibrated 多维 judge 比简单总体提示更稳定且更可解释；专门训练的中文 evaluator CritiqueLLM 可恢复约 95% 的 GPT-4 评价能力。AlignBench 也被多种中文模型团队采用，说明任务覆盖具有实际区分度。证据支持中文原生数据和证据化 reference 的价值，但 benchmark 只有 683 题，模型频繁针对公开榜单优化后，长期区分力和污染风险需要持续监控。

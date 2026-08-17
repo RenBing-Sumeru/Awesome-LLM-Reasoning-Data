@@ -1,0 +1,5 @@
+- 唯一 full trajectory 总数应保持为 1,527,259：Kimi-K2 518,516 + OSS 457,130 + Qwen3 551,613。
+- HF 的 1,646,546 个存储行应解释为三个 full config 加上重复托管的 119,287 行 SFT 子集，而不是相互独立的轨迹。
+- 按五阶段阅读：MCP 接入、任务合成、Kimi-K2 任务评审、真实 rollout，再到规则/目标工具/GPT-OSS-120B 轨迹评审与打包。
+- 把反馈契约视为 mixed、full-episode/state-action supervision；真实工具响应没有提供通用任务正确性谓词或标量 reward。
+- 已展示的训练复用仅限 Qwen2.5-7B/14B/32B 的 SFT；复用前审计版本绑定、回放、拒绝 lineage、权利、PII、污染与工具名匹配。

@@ -1,0 +1,197 @@
+id: rstar-coder-2025
+title: 'rStar-Coder: Scaling Competitive Code Reasoning with a Large-Scale Verified Dataset'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yifei Liu
+- Li Lyna Zhang
+- Yi Zhu
+- Bingcheng Dong
+- Xudong Zhou
+- Ning Shang
+- Fan Yang
+- Cheng Li
+- Mao Yang
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code
+- competitive-programming
+- algorithmic-reasoning
+training_use:
+- sft
+- distillation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/54e847e1dffc87a8063844b149148557-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.21297
+  code: https://papers.nips.cc/paper_files/paper/2025/file/54e847e1dffc87a8063844b149148557-Supplemental-Conference.zip
+  data: https://huggingface.co/datasets/microsoft/rStar-Coder
+  project: https://github.com/microsoft/rStar
+  huggingface: https://huggingface.co/datasets/microsoft/rStar-Coder
+  doi: null
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/54e847e1dffc87a8063844b149148557-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://papers.nips.cc/paper_files/paper/32518-/bibtex
+data_object:
+  prompt_source: Expert-written competitive-programming problems from TACO, APPS, CodeContests, CodeContests-Python-Submission,
+    OpenR1 Codeforces, USACO 2011-2023, and IOI 2002-2023. Public synthetic rows preserve a platform-level seed_source and
+    seed_question, but not the original item URL.
+  trace_author: QWQ-32B generates long-reasoning solution candidates. GPT-4o is the primary new-problem generator; the paper
+    and appendix name GPT-4o and DeepSeek-V3 for test-input utility generation.
+  answer_format: SFT rows contain a programming question, a long-reasoning response, and extracted implementation code. RL-oriented
+    rows separate problems from input-output test cases. Seed rows can also carry starter_code and verified/is_passed booleans.
+  process_fields:
+  - question_id
+  - question
+  - seed_question
+  - seed_source
+  - starter_code
+  - response
+  - code
+  - verified
+  - is_passed
+  - inputs
+  - outputs
+  - is_synthesized
+  - test_case_type
+  - func_name
+  - class_name
+  environment_or_substrate: Competitive-programming execution for standard-input/output and function-based Python tasks over
+    generated inputs at multiple scales. The released scripts execute generated or candidate code and therefore require an
+    external untrusted-code sandbox for reuse.
+  verifier_or_reward: For seeds, the supplied oracle labels generated inputs. For synthetic problems, 16 QWQ-32B candidate
+    solutions execute on at least 50 shared inputs; agreement supplies both accepted outputs and accepted solutions. The public
+    script implements per-input plurality followed by all-input consistency, which is not identical to the paper's complete-output-set
+    prose.
+  terminal_predicate: Under the paper recipe, a synthetic problem is retained when accepted solutions agree on the shared
+    tests at the 60% threshold, lowered to 40% for Codeforces-derived problems with rating above 1600; selected solutions
+    must match the accepted outputs across retained tests. Seed SFT rows are not uniformly covered because all generated seed
+    solutions are retained when none passes.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-Instruct at 1.5B, 7B, and 14B in the paper's downstream SFT experiments.
+  teacher: GPT-4o for problem synthesis; GPT-4o and DeepSeek-V3 for test-input utility functions; QWQ-32B for long-reasoning
+    candidate solutions.
+  generator: A seed problem plus its reference solution grounds transformed-problem synthesis; generated utility functions
+    produce and validate multi-scale inputs; QWQ-32B candidates are then executed for output labeling and trace selection.
+  filtering_rule: Deduplicate across sources and drop seeds without reference solutions; apply agreement filtering at 60%,
+    or 40% for Codeforces-derived items rated above 1600; keep the fastest passing synthetic solution; remove 16-gram overlaps
+    with six evaluation benchmarks.
+  sampling_protocol: Start from 37,754 reference-bearing seeds, generate 1,565,632 synthetic candidates, retain 380,560, and
+    sample 16 QWQ-32B solutions with at least 50 test inputs per synthetic problem. Exact production decoding settings and
+    random seeds are undisclosed.
+  rollout_count: 16
+  temperature: null
+  inference_budget: Sixteen candidate solutions and at least fifty shared test inputs per synthetic problem; total construction
+    tokens, API calls, retries, and monetary cost are unknown.
+  optimizer_or_scaffold: Six-epoch SFT with AdamW, batch size 96, 16K maximum sequence length, cosine-decayed 4e-5 learning
+    rate, FlashAttention-2, and DeepSpeed ZeRO-0. The 1.5B/7B runs use 8 MI300X GPUs and the 14B run 32 MI300X GPUs. Public
+    RL-oriented configs are released, but the paper does not report RL training.
+audit:
+  source_mixture: Table 1 reports 57,215 collected seeds, 37,754 unique seeds with references, 1,565,632 generated candidates,
+    380,560 retained synthetic problems, and an exact total of 418,314. Platform totals are reported, but record-level original
+    URLs are absent.
+  split: At Hugging Face revision 3a7a0a0636ec96e3c1ec42ebe79ade467caa040d, complete counts are 591,660 seed_sft, 398,107
+    synthetic_rl, and 398,183 synthetic_sft. Partial indexing estimates 7,801 seed_testcase and 463,540 synthetic_rl_testcase
+    rows. All configs are train-only, and no manifest reconstructs the paper's 580K SFT mixture.
+  decontamination: The paper removes problem statements with 16-gram overlap against HumanEval, HumanEval+, MBPP, MBPP+, LiveCodeBench,
+    and USACO 2025. Per-benchmark removals, matched strings, and a residual-overlap audit are not released.
+  license: The Microsoft Hugging Face release declares CC BY 4.0. A source-by-source rights matrix and original problem URLs
+    are unavailable. The NeurIPS supplemental ZIP has no standalone license; the MIT license on the separate, currently rStar2-Agent-focused
+    repository should not be assumed to cover the ZIP or data.
+  lineage: Public competition sources -> seed deduplication/reference filter -> GPT-4o transformed problems -> LLM-written
+    generation/validation utilities -> multi-scale test inputs -> oracle or QWQ-32B output labeling -> agreement filtering
+    -> fastest synthetic solution -> 16-gram decontamination -> five Hugging Face configs. Exact paper-row-to-release mapping
+    is unknown.
+  known_failure_modes:
+  - Candidate solutions from one teacher can share a systematic bug and converge on the same wrong outputs; calibration accuracy
+    falls from 96.8% on 3,150 oracle-labeled tests to 92.8% on 27,613 tests.
+  - The 40% threshold used for harder Codeforces-derived items is below a strict majority.
+  - When no generated solution passes a seed problem's tests, all generated solutions are retained; seed_sft is therefore
+    not uniformly execution-verified.
+  - Fastest-passing selection introduces an execution-efficiency preference and may favor brittle or hardware-specific solutions.
+  - LLM-generated input generators and validators can encode incomplete or mistaken constraints, especially when constraints
+    are implicit.
+  - The public mutual-verification code votes per input, uses strict greater-than thresholding, and drops constant-output
+    problems, differing from the paper's prose contract.
+  - 'The supplemental archive is incomplete as an executable pipeline: the LLM call is a stub, cyaron_docs.md is absent, and
+    the synthesis CLI references an undeclared batch_size argument.'
+  - Generated utilities and function-based candidate code are executed with Python exec; the supplied controls do not constitute
+    a hardened sandbox.
+  - synthetic_sft lacks question_id, testcase links, and verification flags, preventing a direct key join to synthetic RL
+    testcases.
+  - Public synthetic config counts exceed the paper's 380,560 retained synthetic problems; Appendix Table 6 reports 480K rather
+    than Table 1's 418,314 unique problems.
+  - No source-level rights manifest, verifier-calibration split, per-row vote record, or official rStar-Coder checkpoint is
+    linked.
+  citation_status: verified
+  confidence: medium
+  notes: The NeurIPS proceedings paper and full appendix, official supplemental ZIP, Microsoft Hugging Face repository/API,
+    arXiv record, and linked Microsoft project repository were checked on 2026-07-21. Artifact existence is verified; exact
+    release lineage, upstream rights, construction decoding settings, and end-to-end code reproducibility remain partial.
+inclusion_reason: rStar-Coder belongs in Data Construction & Open Release Recipes because it exposes a large competitive-programming
+  pipeline that links source curation, transformed-problem synthesis, multi-scale testcase construction, executable cross-solution
+  agreement, trace selection, SFT packaging, and RL-ready problem/test exports.
+related: []
+tags:
+- code-reasoning
+- competitive-programming
+- synthetic-data
+- long-cot
+- testcase-generation
+- mutual-verification
+- execution-verifier
+- rejection-sampling
+- rlvr
+- data-scaling
+status: partial
+one_line_summary: rStar-Coder expands reference-bearing competition problems into synthesized problems, executable tests,
+  and long-reasoning solutions through LLM generation, program execution, agreement filtering, and decontamination, while
+  its public configs and supplemental code do not fully reconstruct the paper run.
+why_it_matters: It makes problem synthesis, testcase generation, executable verification, SFT traces, and RL-ready exports
+  visible as separate data contracts, and it provides calibrated evidence that agreement is useful but weaker than a trusted
+  oracle.
+card: null
+needs:
+- 'needs_audit: publish a paper-row-to-Hugging-Face revision manifest and reconcile 380,560/398K synthetic counts plus the
+  418K/480K unique-problem discrepancy'
+- 'needs_metadata: disclose construction model snapshots, decoding settings, random seeds, retry policy, accepted/rejected
+  yields, and total compute/API cost'
+- 'needs_audit: release per-row votes, execution outcomes, testcase provenance, contamination matches, and a clean verifier-calibration
+  split'
+- 'needs_license: provide original problem URLs and a source-by-source license and platform-terms matrix'
+- 'needs_code: supply a runnable frozen pipeline, missing dependencies/files, sandbox specification, and official model checkpoint
+  hashes'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: medium
+  notes: Verified against the final NeurIPS proceedings record and PDF/appendix, official supplemental ZIP, Microsoft Hugging
+    Face data/API at revision 3a7a0a0636ec96e3c1ec42ebe79ade467caa040d, arXiv, and the linked Microsoft project repository.
+    Exact mixture reconstruction, upstream rights, production generation settings, and an end-to-end runnable code path remain
+    unresolved.
+category_ids:
+- data_construction_open_release_recipes
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data

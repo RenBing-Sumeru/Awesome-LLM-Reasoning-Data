@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "350 道双语奥赛题统一数值答案和 Lean 两类验证，并开放 582K+ 轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Haoxiang Sun, Yingqian Min, Zhipeng Chen, Wayne Xin Zhao, Ji-Rong Wen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

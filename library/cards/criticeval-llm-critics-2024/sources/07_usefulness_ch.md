@@ -1,0 +1,1 @@
+CriticEval 适合评估 critique model、self-refinement agent 与自动数据过滤器。研究者可分别报告四类分数，判断系统失败在“没发现问题”“反馈不可执行”还是“修正无效”；还可用其质量梯度样本训练 critic 或 meta-critic。若用于训练，应与公开测试严格分离，并优先保留人工 critique 与客观 verifier。产品部署中也不应只看 critique 文本质量，而要验证修改后答案是否真正改善。

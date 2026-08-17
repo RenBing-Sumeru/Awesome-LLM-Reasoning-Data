@@ -1,0 +1,5 @@
+- Read Sections 3.1–3.3 first for the POMDP, action grammar, terminal predicate, reward normalization, and the distinction between environment feedback and token supervision.
+- Pair Section 4 with Appendices C, D, and F: the main text gives the 7,249/6,548 construction flow, while the appendices supply hyperparameters, infrastructure, prompt, tools, and the RFT-only one-shot example.
+- Do not conflate three counts: 7,249 selected training tasks, 6,548 successful RFT trajectories, and the later upstream 6,542-row `filtered` split are different objects.
+- Read Section 5.2 as a data-versioning result: both deleting looping failures and silently enabling `top_k`/`min_p` changed the learning signal.
+- Verify next the exact task/image manifests, reset/network semantics, selected trajectories and rewards, checkpoint/trainer release, broad contamination, and rights/privacy/security controls.

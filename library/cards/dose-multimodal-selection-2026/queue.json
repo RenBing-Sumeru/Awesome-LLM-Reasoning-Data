@@ -1,0 +1,18 @@
+{
+  "title": "DOSE: Data Selection for Multi-Modal LLMs via Off-the-Shelf Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.45/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:51:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它以现成模型联合评估文本质量与图文对齐，并以分布感知抽样决定视觉指令训练子集",
+    "updated_at": "2026-07-15T14:51:50Z"
+  }
+}

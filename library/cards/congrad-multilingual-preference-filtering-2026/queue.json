@@ -1,0 +1,18 @@
+{
+  "title": "CONGRAD: Conflicting Gradient Filtering for Multilingual Preference Alignment",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.eacl-long.299/",
+    "code": "https://github.com/KagamiBaka/CONGRAD",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:12:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用跨语言梯度一致性筛选偏好回答对，直接减少多语言训练互相干扰",
+    "updated_at": "2026-07-16T07:12:19Z"
+  }
+}

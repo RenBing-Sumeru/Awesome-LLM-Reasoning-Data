@@ -1,0 +1,3 @@
+**Reuse class: reading/audit reference only.** It provides a checklist for scientific trace construction: retain recipe ID/version, all candidates, temperatures, gate values, wet-lab provenance/uncertainty, acceptance order, halting reason, tokens, and selected trace. Without those artifacts, neither SFT reuse nor independent reward use is supported.
+
+For this track, compare a physics envelope with an outcome-only filter under identical teacher and token budgets, then measure false acceptance, false rejection, calibration, and distribution shift. Keep the empirical envelope separate from a claim of formal physical proof.

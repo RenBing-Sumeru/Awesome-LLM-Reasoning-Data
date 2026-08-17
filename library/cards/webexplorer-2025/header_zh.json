@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "WebExplorer 先合成约 40K 条演化式网页搜索 QA，再用约 13K 条仅保留正确答案的 ReAct 轨迹做 SFT、用约 12K 条 QA 做 format 与 DeepSeek-V3 混合奖励的在线 RL；当前公开物只有 100 条 QA，没有论文规模轨迹或训练代码。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "网页智能体数据构建、训练配方与部分数据发布",
+  "best_for_ch": "研究长程网页智能体数据合成、ReAct 轨迹 SFT、LLM judge 奖励与发布完整性审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Junteng Liu, Yunji Li, Chi Zhang, Jingyang Li, Aili Chen, Ke Ji, Weiyu Cheng, Zijia Wu, Chengyu Du, Qidi Xu, Jiayuan Song, Zhengmao Zhu, Wenhu Chen, Pengyu Zhao, Junxian He",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

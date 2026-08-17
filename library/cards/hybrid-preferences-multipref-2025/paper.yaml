@@ -1,0 +1,75 @@
+id: hybrid-preferences-multipref-2025
+title: 'Hybrid Preferences: Learning to Route Instances for Human vs. AI Feedback'
+year: 2025
+venue: ACL 2025
+authors:
+- Lester James V. Miranda
+- Yizhong Wang
+- Yanai Elazar
+- Sachin Kumar
+- Valentina Pyatkin
+- Faeze Brahman
+- Noah A. Smith
+- Hannaneh Hajishirzi
+- Pradeep Dasigi
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.355/
+  arxiv: null
+  code: https://github.com/allenai/hybrid-preferences
+  data: https://huggingface.co/datasets/allenai/multipref
+  project: null
+  huggingface: https://huggingface.co/datasets/allenai/multipref
+data_object:
+  prompt_source: See the official paper and dataset card.
+  trace_author: See the official construction description.
+  answer_format: Prompts, response pairs, overall and aspect-specific preferences, annotation reasons, and annotator-source
+    metadata.
+  verifier_or_reward: Each instance has repeated crowdworker and expert labels plus LM annotations; their provenance must
+    remain distinct.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See official paper and dataset card.
+  annotation_policy: Each instance has repeated crowdworker and expert labels plus LM annotations; their provenance must remain
+    distinct.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: The dataset is small relative to general alignment corpora and annotator disagreement is signal, not noise to be
+    silently collapsed.
+verification:
+  link_verified: true
+  sources:
+  - https://aclanthology.org/2025.acl-long.355/
+  - https://huggingface.co/datasets/allenai/multipref
+inclusion_reason: MultiPref pairs the same response comparisons with crowdworker, expert, and LM annotations for feedback-routing
+  research.
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: Hybrid Preferences releases MultiPref, where the same response comparisons carry crowdworker, expert, and
+  language-model feedback for studying when human annotation is worth its additional cost.
+why_it_matters: MultiPref pairs the same response comparisons with crowdworker, expert, and LM annotations for feedback-routing
+  research.

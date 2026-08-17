@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以生成分布方差检测释义与结构变体污染。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "变体数据污染检测方法",
+  "best_for_ch": "需要审计非逐字基准泄漏的 LLM 评测研究者。",
+  "confidence_ch": "中到高：已核对 OpenReview 公开论文页和补充材料；该投稿为 withdrawn，作者机构未公开。",
+  "authors_ch": "Renzhao Liang, Jingru Chen, Bo Jia, Yidong Wang, Jin Ke, Linfeng Zhang, Xin Wang, Bo Deng, Cunxiang Wang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

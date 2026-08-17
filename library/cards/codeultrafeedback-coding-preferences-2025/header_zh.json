@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "为编程指令的多模型回答提供五维裁判评分和文字反馈，可训练代码偏好与奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集论文",
+  "best_for_ch": "偏好学习、奖励建模与反馈审计研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Martin Weyssow、Aton Kamanda、Xin Zhou、Houari Sahraoui",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T11:20:34Z"
+}

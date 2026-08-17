@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"这项大规模视觉语言模型研究发现，标准测试时扩展能显著帮助有能力的小模型，但额外推理也可能使模型失去视觉焦点并损害感知任务。","reading_priority_ch":"可读","paper_type_ch":"多模态测试时扩展基准与分析","best_for_ch":"需要在视觉语言模型尺寸与推理策略之间分配推理预算的读者。","confidence_ch":"高","authors_ch":"Fawaz Sammani、Tzoulio Chamiti、Nikos Deligiannis（机构：布鲁塞尔自由大学、imec）","category_ids":["scaling_rlvr_test_time_compute"]}

@@ -1,0 +1,7 @@
+- **Verifier 范围与误判。** Deterministic 不等于完整。Text matching 可能拒绝等价表述，也可能在没有正确检索的情况下接受匹配字符串；database/storage/callback 只检查选定字段，可能漏掉有害副作用。官方 changelog 记录 2026 年 4 月修复前，Mattermost session 过期会造成 false negative，直接说明 verifier 会受环境状态影响。
+- **用户模拟。** GPT-4.1 能看到隐藏任务上下文，并遵循受限响应 prompt；分数因而依赖其版本、拒答边界、措辞和可用性。真实用户可能给出不完整、矛盾或敏感信息，benchmark UIQ 不能直接证明真实人机交互质量。
+- **MCP replay 与安全。** 外部 schema、endpoint、credential、search index、仓库内容和返回文档都可能变化。工具输出可能撑爆 context，恶意或被攻陷的内容还可能 prompt-inject agent。论文评测 orchestration accuracy，但没有给出对抗 MCP 安全套件或不可变 response cache。
+- **Split 与污染。** 论文只公开一套 201-task evaluation set，没有 train/validation/test partition，也没有 near-duplicate 或预训练污染审计。Fixture 包含互联网材料，MCP task 还查询公开实时来源。若用这些任务或公开轨迹训练，未来 MobileWorld 评测将被污染，除非另建 held-out split。
+- **发布漂移。** 没有 GitHub tag/Release 把代码、Docker image、AVD/backend snapshot、task/evaluator、MCP config 与 trajectory log 绑定到 ACL 结果。公开 trajectory bundle 与 leaderboard 更新均晚于论文；Mattermost 修复和浮动 “latest” image workflow 表明，仅固定 commit 仍不足以 replay。
+- **轨迹完整性与编码。** 不同模型 bundle 覆盖不同 task subset，未确认每个论文模型都有完整的 paper-era 201-task 成功/失败 manifest。所检查 bundle 保留 101 条成功和 60 条失败，但部分 record 可见文本编码损坏；训练复用前必须修复编码并检查 provenance。
+- **权利、隐私与安全。** 根仓库是 Apache-2.0，但 forked app、Docker component、互联网 fixture、第三方 asset、MCP output 与社区提交 trace 可能有独立条款。Fixture 含简历、联系人、邮件、日历和消息样式记录；record-level 来源、consent、redaction 与外部 API 数据处理政策均未披露。破坏性任务即使可 snapshot reset，也必须在 sandbox 中运行。

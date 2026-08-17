@@ -1,0 +1,5 @@
+- Read Section 4 as a set of different data contracts, not one homogeneous “agent dataset”; each domain has distinct sources, artifacts, and acceptance signals.
+- For SWE and Terminal-Gym, trace the full chain from noisy source through environment synthesis to executable tests; environment validity is part of the label.
+- Separate deterministic rewards (tests, values, tool evidence) from model, rubric, agent, and visual judgments; the latter require calibration that is not disclosed.
+- Read Sections 5–6 together: SFT retains interleaved trajectories by rejection sampling, while RL assigns episode-level credit with process and time shaping.
+- Treat Section 8 as model evaluation only. It does not report corpus counts, verifier error rates, or a controlled data-quality ablation.

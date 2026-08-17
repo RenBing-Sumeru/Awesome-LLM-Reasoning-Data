@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用搜索状态价值训练通用过程奖励，以测试时搜索提升智能体跨任务表现。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体过程奖励与测试时搜索评测论文",
+  "best_for_ch": "需要审计奖励信号迁移性和智能体搜索可靠性的研究者。",
+  "confidence_ch": "高：已据 ACL 2025 原文核对方法、九任务结果与局限。",
+  "authors_ch": "Yu Xia, Jingru Fan, Weize Chen, Siyu Yan, Xin Cong, Zhong Zhang, Yaxi Lu, Yankai Lin, Zhiyuan Liu, Maosong Sun",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

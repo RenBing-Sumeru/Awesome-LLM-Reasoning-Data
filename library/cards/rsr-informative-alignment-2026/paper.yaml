@@ -1,0 +1,197 @@
+id: rsr-informative-alignment-2026
+title: Which Reasoning Trajectories Teach Students to Reason Better? A Simple Metric of Informative Alignment
+year: 2026
+venue: ACL 2026
+authors:
+- Yuming Yang
+- Mingyoung Lai
+- Wanxu Zhao
+- Xiaoran Fan
+- Zhiheng Xi
+- Mingqi Wu
+- Chiyue Huang
+- Jun Zhao
+- Haijun Lv
+- Jian Tong
+- Yunhua Zhou
+- Yicheng Zou
+- Qipeng Guo
+- Tao Gui
+- Qi Zhang
+- Xuanjing Huang
+source_role:
+- construction_recipe
+- data_release
+- scaling_study
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- trajectory_value
+domains:
+- math
+- reasoning-distillation
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1950/
+  arxiv: https://arxiv.org/abs/2601.14249
+  code: https://github.com/UmeanNever/RankSurprisalRatio
+  data: https://huggingface.co/datasets/Umean/RSR_data
+  project: https://github.com/UmeanNever/RankSurprisalRatio
+  huggingface: https://huggingface.co/datasets/Umean/RSR_data
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1950
+  venue: https://aclanthology.org/2026.acl-long.1950/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1950/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.1950.bib
+data_object:
+  prompt_source: A fixed 5,000-problem set is sampled from the Sky-T1 difficulty-labeled NuminaMath corpus, balancing 1,667
+    MATH problems above difficulty 3, 1,667 Olympiad problems above difficulty 8, and 1,666 AIME/AMC problems.
+  trace_author: Eleven reasoning teacher models each generate three independent long-chain-of-thought responses for every
+    problem, producing 33 teacher-run datasets. The released assistant trajectories are model-generated; the original problem
+    authors and upstream record identifiers are not exposed per released row.
+  answer_format: Each released JSON item contains a three-message conversation with a fixed system instruction, the original
+    math problem as the user message, and one teacher-generated reasoning trajectory with a requested boxed final answer as
+    the assistant message.
+  process_fields:
+  - messages.role
+  - messages.content
+  - system instruction
+  - math problem
+  - teacher reasoning trajectory
+  - boxed final answer request
+  environment_or_substrate: Offline student-conditioned scoring requires a forward pass through the exact student causal language
+    model and its tokenizer/chat template to obtain response-token logits, negative log-likelihoods and vocabulary ranks.
+  verifier_or_reward: Rank-Surprisal Ratio is a programmatic suitability score, not a correctness verifier. For each response
+    token, the student-conditioned rank is clipped at r_max=100; trajectory RSR is the sum of clipped token ranks divided
+    by the sum of token surprisals. Lower RSR is preferred. Math-Verify is used for downstream benchmark evaluation, while
+    correctness filtering appears only as an ablation.
+  terminal_predicate: For each problem and target student, select the one trajectory with minimum RSR from 33 candidates generated
+    by 11 teachers across three runs. The selected trajectory need not be mathematically correct under the default recipe.
+recipe_metadata:
+  base_model: 'Five pretrained base students are evaluated and receive separate selected datasets: Qwen-3-14B, LLaMA-3.1-8B,
+    Qwen-2.5-7B, Qwen-3-4B, and Qwen-2.5-3B.'
+  teacher: DeepSeek-R1-0528; Qwen-3-235B-Thinking-2507; GPT-OSS-120B high; LLaMA-3.3-Nemotron-Super-49B-v1.5; QwQ-32B; Qwen-3-30B-Thinking-2507;
+    Magistral-Small-2506; GPT-OSS-20B high; Phi-4-Reasoning-Plus; Qwen-3-8B thinking; Qwen-3-4B-Thinking-2507.
+  generator: Each teacher is prompted via vLLM using its officially recommended chat template and sampling settings to produce
+    three independent trajectories for every one of the 5,000 fixed problems.
+  filtering_rule: Source problems are difficulty-filtered and balanced across MATH, Olympiads and AIME/AMC. During trajectory
+    generation, outputs exceeding 31,000 tokens are resampled up to ten times and finally truncated if all attempts exceed
+    the budget. Student-specific construction then selects the minimum-RSR trajectory; correctness is not a default filter.
+  sampling_protocol: The released candidate pool contains 11 teachers x 3 runs x 5,000 problems = 165,000 trajectory records.
+    A 33-to-1 competition chooses one trajectory per problem for each of five students, yielding five separate 5,000-record
+    selected datasets. Teacher selection instead scores 200 sampled trajectories from each of six candidate teachers.
+  rollout_count: 3
+  temperature: Teacher-specific officially recommended sampling settings are used; the paper gives Qwen as temperature 0.6,
+    top-p 0.95, top-k 20 and min-p 0, but does not enumerate every teacher's exact settings.
+  inference_budget: Teacher trajectories have a 31,000-token generation budget. RSR and SFT use up to 32,768 tokens. The authors
+    report that scoring 5,000 trajectories with a 7B student takes under one hour on one H200 with FlashAttention, while one
+    7B SFT run takes about seven hours on eight H200 GPUs.
+  optimizer_or_scaffold: Full details beyond SFT are not disclosed. LLaMA-Factory with FlashAttention-2 uses batch size 64,
+    maximum sequence length 32,768, learning rate 2e-5 for the 14B/8B/7B/4B students and 5e-5 for Qwen-2.5-3B, with 8 epochs
+    for Qwen-3-14B and 10 epochs for the other students.
+audit:
+  source_mixture: One balanced 5,000-problem NuminaMath-derived prompt set is paired with 165,000 long-CoT generations from
+    11 teacher models spanning 4B to 671B parameters and multiple model families. Five 5,000-row student-conditioned subsets
+    reuse selected rows from that candidate pool.
+  split: The Hugging Face release exposes teacher/run files and selected student files but no train, validation or test split.
+    SFT uses the 5,000 selected trajectories; evaluation is on AIME 2024, AIME 2025, AMC 2023, MATH500 and, in an additional
+    analysis, GPQA-Diamond.
+  decontamination: unknown. The paper does not report exact-match, near-duplicate or semantic-overlap checks between the NuminaMath-derived
+    MATH/AIME/AMC/Olympiad training problems and AIME, AMC or MATH500 evaluation items, and the release contains no contamination
+    ledger.
+  license: The GitHub code and Hugging Face dataset metadata are labeled MIT, and the ACL paper is CC BY 4.0. The paper says
+    source artifacts are publicly available for academic research, but does not provide record-level upstream license provenance
+    or a compatibility analysis covering NuminaMath sources and all teacher-generated outputs.
+  lineage: A balanced NuminaMath-derived prompt set is sent to 11 named teachers in three independent runs; the resulting
+    33 files encode teacher and generation run only in their paths. For each target student, logits over each assistant response
+    produce clipped token ranks and surprisals; minimum trajectory RSR selects one response per prompt. The published selected
+    JSON rows retain only messages and omit the source teacher/run, source record ID, RSR score, correctness label, candidate
+    rankings and rejection reason.
+  known_failure_modes:
+  - 'RSR is student-conditioned: a subset selected for one exact base model and tokenizer is not established as optimal for
+    another checkpoint, instruction-tuned variant, tokenizer or chat template.'
+  - The default selector does not verify mathematical correctness. The correctness-filtering ablation did not improve mean
+    performance, but that aggregate result does not make individual incorrect trajectories safe or correct.
+  - Selection is bounded by the candidate pool; if none of the 33 trajectories is suitable, minimum RSR still returns one,
+    and the paper explicitly identifies candidate diversity and quality as a limitation.
+  - The five selected files omit per-record teacher/run provenance, RSR components, correctness and candidate ranking. All
+    raw candidates are released, but no explicit rejected-candidate ledger or deterministic join key maps each selected row
+    to the 32 rejected alternatives.
+  - Training prompts are drawn from MATH, AIME/AMC and Olympiad portions of NuminaMath while evaluation includes MATH500,
+    AMC 2023 and AIME 2024/2025; without a published decontamination check, benchmark overlap remains unresolved.
+  - RSR correlation is estimated across only 11 teacher-level points per student, and absolute Spearman correlations summarize
+    monotonic association rather than proving that low RSR causally improves every trajectory.
+  - Rank clipping, tokenization, response-span detection and context truncation affect scores. The clean code currently recognizes
+    Qwen and LLaMA3 assistant markers and was expanded after the paper to multimodal and agent data without reported paper-level
+    validation.
+  - Less than 1% of teacher generations are ultimately truncated after repeated over-budget attempts; those trajectories may
+    have incomplete reasoning or missing final answers.
+  - The released selected sets can be strongly concentrated in one teacher style, with QwQ supplying 45.1% to 76.6% of rows
+    depending on student in the full 11-teacher experiment.
+  - Experiments focus on mathematical reasoning with five Qwen/LLaMA-family base students; GPQA is evaluation-only, and code,
+    commonsense, newly generated data and general-text subset selection are not validated.
+  - Dataset license metadata is present, but per-record source attribution, upstream licenses, consent basis and teacher-output
+    terms are absent, so MIT labeling alone does not establish a complete redistribution chain.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology paper/checklist page, official author repository, current RSR implementation, and Hugging Face dataset
+    card/API tree were inspected on 2026-07-22. The accepted metadata draft additionally records prior ranged inspection of
+    one raw teacher file and one selected file. GitHub main was 59a7c4cdbbb7c26b93f91472da5d79498e29b5c0 with no GitHub releases;
+    Hugging Face revision was 8f24ed4aa8a69173b04833e5adba7e8b9413e933 and reported 5.11 GB total.
+inclusion_reason: This work contributes a student-conditioned, verifier-free trajectory selection recipe, releases the complete
+  165,000-candidate multi-teacher pool and five selected SFT datasets, and provides unusually broad teacher-student evidence
+  for how data suitability affects reasoning distillation.
+related:
+- teaching-assistant-reasoning-distillation-2025
+- off-policy-reasoning-distillation-2025
+tags:
+- rank-surprisal-ratio
+- informative-alignment
+- trajectory-selection
+- teacher-selection
+- student-conditioned-data
+- reasoning-distillation
+- long-cot
+- open-release
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: RSR scores each teacher trajectory under the target student and selects one of 33 candidates per math problem
+  by balancing clipped token rank against surprisal.
+why_it_matters: It operationalizes student-specific reasoning-data construction and releases both the candidate pool and five
+  selected datasets, while showing why selection quality, correctness, contamination and decision-lineage records must be
+  audited separately.
+card: null
+needs:
+- 'needs_selection_ledger: publish per selected row the teacher, generation run, source record ID, RSR components, complete
+  candidate ranking and rejected-candidate reasons'
+- 'needs_correctness: publish parser/verifier outputs and final-answer correctness labels for all raw and selected trajectories'
+- 'needs_decontamination: compare the exact 5,000 training prompts against every evaluation benchmark version and release
+  the match/removal ledger'
+- 'needs_lineage: expose upstream NuminaMath record identifiers, source subset, difficulty label, original source URL and
+  transformation history'
+- 'needs_license_audit: document upstream prompt licenses, teacher model/output terms and compatibility with the released
+  dataset license'
+- 'needs_reproducibility: pin every teacher endpoint/checkpoint, chat template, decoding setting, seed, software revision
+  and student scoring configuration'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: curation
+  confidence: medium
+  notes: ACL acceptance, DOI, official code, MIT license and public Hugging Face release are verified; record-level selection
+    provenance, correctness, decontamination, upstream license chain and immutable tagged release remain partial.

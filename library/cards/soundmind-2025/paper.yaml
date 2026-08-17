@@ -1,0 +1,150 @@
+id: soundmind-2025
+title: 'SoundMind: RL-Incentivized Logic Reasoning for Audio-Language Models'
+year: 2025
+venue: EMNLP 2025 Main Conference
+authors:
+- Xingjian Diao
+- Chunhui Zhang
+- Keyi Kong
+- Weiyi Wu
+- Chiyu Ma
+- Zhongyu Ouyang
+- Peijun Qing
+- Soroush Vosoughi
+- Jiang Gui
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- audio-logical-reasoning
+- multimodal-chain-of-thought
+- natural-language-inference
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2506.12935
+  arxiv: https://arxiv.org/abs/2506.12935
+  venue: https://aclanthology.org/2025.emnlp-main.27/
+  code: https://github.com/xid32/SoundMind
+  data: https://huggingface.co/datasets/SoundMind-RL/SoundMindDataset
+  project: https://github.com/xid32/SoundMind
+  huggingface: https://huggingface.co/datasets/SoundMind-RL/SoundMindDataset
+  doi: null
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.27/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.27.bib
+data_object:
+  prompt_source: LogiQA 2.0-NLI major-premise, minor-premise, and conclusion triplets.
+  trace_author: DeepSeek-R1 writes a colloquial chain of thought and final entailment answer; MegaTTS 3 synthesizes the prompt
+    and response audio.
+  answer_format: A sample directory with JSON fields id, user_content, answer, and label, plus aligned question.wav and answer_<label>.wav
+    files.
+  process_fields:
+  - sample id
+  - colloquialized user content
+  - long chain-of-thought answer with final entailment decision
+  - binary label
+  - input speech audio
+  - output reasoning speech audio
+  environment_or_substrate: Static spoken natural-language-inference problems with text and audio inputs and text or audio
+    outputs.
+  verifier_or_reward: Rule rewards check final-answer formatting, exact agreement with the entailed/not-entailed label, and
+    response length relative to the reference annotation.
+  terminal_predicate: A rollout receives the correctness component only when its extracted final answer matches the ground-truth
+    entailment label; format and length components are scored separately.
+recipe_metadata:
+  base_model: Qwen2.5-Omni-7B.
+  teacher: DeepSeek-R1 generates the text reasoning target and MegaTTS 3 renders both sides as speech.
+  generator: Colloquialize each logical triplet, generate a detailed reasoning answer, then synthesize aligned input and output
+    audio.
+  filtering_rule: Preserve the known LogiQA label, require a complete JSON/audio bundle, and use explicit answer-format, label-correctness,
+    and length rules during reinforcement learning.
+  sampling_protocol: The paper reports one released reasoning/audio target per logical instance and does not disclose alternative
+    teacher rollouts per item.
+  rollout_count: null
+  temperature: null
+  inference_budget: Dataset-generation token, sampling, and synthesis budgets are not reported; reproduction must pin the
+    teacher and TTS revisions.
+  optimizer_or_scaffold: Supervised fine-tuning followed by REINFORCE++ with clipped policy updates, normalized advantages,
+    and a KL penalty to the SFT reference.
+audit:
+  source_mixture: 6,446 LogiQA 2.0-NLI instances converted from structured logical triplets into colloquial text and paired
+    speech.
+  split: 5,184 training, 656 test, and 606 validation samples; class counts are reported for every split.
+  decontamination: Splits inherit the selected logical examples; the paper does not report a separate semantic decontamination
+    audit against external audio or language benchmarks.
+  license: MIT for the official Hugging Face release and repository.
+  lineage: LogiQA 2.0-NLI triplet -> colloquialized prompt -> DeepSeek-R1 reasoning and final label -> MegaTTS 3 prompt/answer
+    audio -> SoundMind records -> SFT and rule-reward reinforcement learning.
+  known_failure_modes:
+  - Synthetic speech and teacher-written chains of thought can carry artifacts that do not occur in natural spoken reasoning.
+  - Exact final-label agreement and response length do not establish that each intermediate reasoning statement is faithful.
+  - Reinforcement learning improves accuracy while increasing output word error rate in both speech-output settings.
+  citation_status: verified
+  confidence: high
+  notes: Full paper, ACL Anthology record, official repository, MIT dataset metadata, an actual JSON/audio record layout,
+    split counts, and exact result tables were checked on 2026-07-27.
+inclusion_reason: SoundMind releases aligned spoken prompts, long reasoning targets, and final entailment labels that can
+  be consumed directly by audio-language SFT and rule-reward training.
+related: []
+tags:
+- audio-reasoning-data
+- multimodal-chain-of-thought
+- rule-reward
+- arxiv-2506.12935
+- primary-link-checked
+status: verified
+one_line_summary: SoundMind converts 6,446 logical triplets into aligned text and speech chain-of-thought demonstrations with
+  entailment labels for audio-language SFT and rule-reward training.
+why_it_matters: Audio-language reasoning lacked an open corpus that aligns spoken questions, long spoken reasoning, text annotations,
+  and objectively checkable final labels.
+reading_priority: must read
+paper_type: open audio reasoning dataset and reinforcement-learning study
+best_for: building and auditing spoken chain-of-thought SFT or rule-reward training data
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, proceedings, repository, public dataset files, license, schema, split counts, and controlled experiments
+    were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: aligned audio-text chain-of-thought demonstrations
+  selection_priority_score: 10
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: The primary paper affiliation block identifies Dartmouth College and Shandong University.
+    venue: ACL Anthology confirms the paper in the EMNLP 2025 Main Conference proceedings; no higher presentation distinction
+      is used for scoring.
+    impact: On 2026-07-27 the official repository exposed 1,110 stars and 131 forks, while the ungated Hugging Face dataset
+      reported 202 downloads, meeting the 2025 early-use threshold.
+    artifact: The official MIT release exposes all JSON annotations and aligned WAV files for 6,446 samples, together with
+      preprocessing and training code.
+  selection_eligible: true
+  year_impact_threshold: 2

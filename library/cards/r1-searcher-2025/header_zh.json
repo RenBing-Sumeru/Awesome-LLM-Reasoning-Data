@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R1-Searcher 以两阶段终局奖励训练模型调用和利用检索，但未核验原始搜索 rollout 的公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Lucas Dionisopoulos; Nicklas Majamaki; Prithviraj Ammanabrolu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-18T13:11:47Z"
+}

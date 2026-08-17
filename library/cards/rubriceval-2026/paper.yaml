@@ -1,0 +1,125 @@
+id: rubriceval-2026
+title: 'RubricEval: A Rubric-Level Meta-Evaluation Benchmark for LLM Judges in Instruction Following'
+year: 2026
+venue: arXiv preprint
+authors:
+- Tianjun Pan
+- Xuan Lin
+- Wenyan Yang
+- Qianyu He
+- Shisong Chen
+- Licai Qi
+- Wanqing Xu
+- Hongwei Feng
+- Bo Xu
+- Yanghua Xiao
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- rubric-judging
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.25133
+  arxiv: https://arxiv.org/abs/2603.25133
+  doi: https://doi.org/10.48550/arXiv.2603.25133
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 1,989 instructions and 3,486 rubric-level instances from prior instruction-following benchmarks across Constrained,
+    Compositional, Multi-turn, and System categories.
+  trace_author: RubricEval authors construct RAF labels using base-judge agreement, o3/DeepSeek-R1 meta-judge arbitration,
+    and sampled human validation.
+  answer_format: Each evaluation item is instruction, response, one rubric criterion, and a binary satisfy/not-satisfy label;
+    reported metrics include balanced accuracy and macro-F1.
+  process_fields:
+  - instruction
+  - response
+  - rubric
+  - binary_label
+  - source_benchmark
+  - rubric_category
+  - easy_or_hard_subset
+  - judge_rationale_or_arbitration_provenance
+  environment_or_substrate: Rubric-level instruction-following judge evaluation over model responses.
+  verifier_or_reward: RAF label produced by base-judge agreement or meta-judge consensus, with sampled human validation; no
+    mechanical verifier is provided.
+  terminal_predicate: A judge prediction matches the RAF satisfy/not-satisfy label for the single rubric-response pair.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats RubricEval as a rubric-level judge meta-evaluation surface.
+  teacher: RAF construction pipeline, o3 and DeepSeek-R1 meta-judge consensus for hard cases, and sampled human annotator
+    validation.
+  generator: Instructions/rubrics are collected from prior IF benchmarks and paired with model responses before rubric-level
+    re-evaluation.
+  filtering_rule: Easy cases come from unanimous base-judge agreement; Hard cases require o3 and DeepSeek-R1 meta-judge consensus;
+    non-consensus cases are discarded.
+  sampling_protocol: Pin arXiv version, source benchmark versions, response-generation model pool, judge prompts, RAF/meta-judge
+    versions, Easy/Hard split, and metric definitions.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget depends on the judge and prompt; no training-time budget should be inferred.
+  optimizer_or_scaffold: rubric-level instruction-following judge meta-evaluation
+audit:
+  source_mixture: 'Official sources checked: arXiv abstract/HTML for paper metadata and benchmark construction. No official
+    code, dataset, or project page was found in checked sources.'
+  split: Paper reports 2,034 Easy and 1,452 Hard rubric-level instances; exact released split files cannot be pinned because
+    no official artifact was found.
+  decontamination: Source benchmarks and rubric text may be public; contamination and overlap with model training data require
+    source-by-source audit before leaderboard claims.
+  license: No official artifact license found beyond the arXiv paper; source benchmark redistribution and any future dataset
+    license must be checked before reuse.
+  lineage: 'Primary paper: https://arxiv.org/abs/2603.25133'
+  known_failure_modes:
+  - RAF/meta-judge labels are model-arbitrated rather than mechanically verified and may encode judge bias.
+  - Sampled human validation does not certify every rubric-level label.
+  - Results depend on prompt templates, model versions, Easy/Hard construction, source benchmark licenses, and artifact availability.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv source verifies title, authors, date, benchmark size, Easy/Hard split, RAF construction, human validation,
+    and main metric framing. Official artifact availability remains unresolved.
+inclusion_reason: Rubric-level instruction-following judge benchmark that evaluates a single response-rubric satisfaction
+  decision.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- rubric-judging
+one_line: RubricEval evaluates LLM judges at the single-rubric instruction-following judgment level.
+why_it_matters: It exposes whether a judge can ground one rubric criterion to one response before rubric judgments are reused
+  as scores, filters, or rewards.
+status: verified
+needs:
+- 'needs_artifact: no official code/data/project page found in checked sources'
+- 'needs_audit: pin source benchmark licenses, response model pool, RAF prompts, meta-judge versions, and Easy/Hard split
+  if artifacts are released'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RubricEval evaluates LLM judges at the single-rubric instruction-following judgment level.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: Checked arXiv:2603.25133 and web search for official code/data/project links; no official artifact was found.
+category_ids:
+- benchmarks_evaluation_surfaces

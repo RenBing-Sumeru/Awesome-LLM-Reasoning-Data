@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SuperGLUE 用 8 个更难 NLU 任务加 diagnostic set 接替 GLUE，常用口径约 150K+ query/example units。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要困难 NLU 评测、ReCoRD 计数口径和聚合 scorer 审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Alex Wang 等（New York University, DeepMind）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

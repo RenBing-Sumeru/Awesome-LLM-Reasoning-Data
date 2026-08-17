@@ -1,0 +1,110 @@
+id: minimax-m2-2026
+title: 'The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence'
+year: 2026
+venue: arXiv preprint
+authors:
+- MiniMax
+source_role:
+- model_report
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+domains:
+- agentic_coding
+- agentic_cowork
+- software_environment
+training_use:
+- agent_training
+- rlvr
+construction_layer:
+- frontier_pipeline
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.26494
+  arxiv: https://arxiv.org/abs/2605.26494
+  code: https://github.com/MiniMax-AI/MiniMax-M2
+  data: null
+  project: null
+  huggingface: https://huggingface.co/MiniMaxAI/MiniMax-M2
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Agent-driven data pipelines produce trajectories for agentic coding and agentic cowork; task sources and
+    rights are undisclosed.
+  trace_author: Agents operating in executable workspaces; model/checkpoint lineage for trajectory generation is undisclosed.
+  answer_format: Large-scale, verifiable agent trajectories grounded in executable workspaces; the action/state/artifact record
+    schema is undisclosed.
+  process_fields: []
+  environment_or_substrate: Executable workspaces with artifact-aligned rewards; report also describes long-horizon agent
+    trajectories.
+  verifier_or_reward: Artifact-aligned reward is reported; reward implementation, validator coverage, and false-positive behavior
+    are undisclosed.
+  terminal_predicate: Artifact-aligned reward is named, but the terminal success predicate is undisclosed.
+recipe_metadata:
+  base_model: MiniMax-M2 is reported as a Mixture-of-Experts family; the flagship M2 has 229.9B total parameters and 9.8B
+    activated per token.
+  teacher: unknown
+  generator: Agent-driven data pipelines in executable workspaces.
+  filtering_rule: unknown
+  sampling_protocol: The report describes windowed-FIFO scheduling and prefix-tree merging in the RL system, but task allocation
+    and trajectory-selection rules are undisclosed.
+  rollout_count: null
+  temperature: null
+  inference_budget: Inference optimization is named as part of Forge, but a comparable rollout/inference budget is undisclosed.
+  optimizer_or_scaffold: Forge, a scalable agent-native RL system, with windowed-FIFO scheduling, prefix-tree merging, inference
+    optimization, and training-inference-agent decoupling.
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: The official MiniMax-M2 GitHub repository exposes an MIT license; data, workspace, and model-release terms require
+    separate artifact-level checking.
+  lineage: Agentic task to executable workspace to trajectory to artifact reward is a system-level claim without record-level
+    manifests.
+  known_failure_modes:
+  - Artifact-aligned reward can be over-read without validator definition or coverage
+  - Workspace/task versions and replayability are undisclosed
+  - Open code/model artifacts do not establish trajectory, task, or reward provenance
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv report verifies the agent pipeline, executable workspace, artifact-aligned reward, and Forge system;
+    official MiniMax GitHub and model card verify released artifacts.
+inclusion_reason: A 2026 agentic frontier report with unusually concrete environment/reward language that still lacks the
+  trajectory and validator ledger needed for reproducibility.
+related: []
+tags:
+- frontier-report
+- minimax
+- agentic-rl
+- executable-workspace
+- artifact-aligned-reward
+- forge
+- disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: MiniMax-M2 reports executable-workspace trajectories and artifact-aligned rewards under Forge agent RL,
+  but not the task corpus, validator implementation, or replayable trajectory ledger.
+why_it_matters: It is a clear case where environmental reward language is valuable evidence but not a substitute for auditable
+  task, trajectory, and verifier artifacts.
+card: null
+needs:
+- 'needs_data: task, workspace, trajectory, and accepted/rejected manifests'
+- 'needs_metadata: artifact validators, reward aggregation, task selection, and rollout budgets'
+- 'needs_audit: environment versions, replayability, rights, splits, and decontamination'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: arXiv report, official MiniMax repository, and official MiniMax Hugging Face model page checked.

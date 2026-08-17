@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude Opus 4.1 增量系统卡披露 human/synthetic safety prompts、290 seeds 扩展为每模型 1,160 条 24–64-turn 审计轨迹、专门 prompt-injection RL 与 agentic 环境，但基础数据 delta、生成/评分偏差、reward 和记录均未开放。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型增量系统卡与训练审计台账",
+  "best_for_ch": "研究模型生成审计、agentic safety、prompt injection、reward hacking 与增量模型披露的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

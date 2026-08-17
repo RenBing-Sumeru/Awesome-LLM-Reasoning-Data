@@ -1,0 +1,112 @@
+id: arc-agi-2-2025
+title: 'ARC-AGI-2: A New Challenge for Frontier AI Reasoning Systems'
+year: 2025
+venue: arXiv preprint
+authors:
+- Francois Chollet
+- Mike Knoop
+- Gregory Kamradt
+- Bryan Landers
+- Henry Pinkard
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- abstract-reasoning
+- grid-transformation
+- fluid-intelligence-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.11831
+  arxiv: https://arxiv.org/abs/2505.11831
+  code: https://github.com/arcprize/ARC-AGI-2
+  data: https://github.com/arcprize/ARC-AGI-2/tree/main/data
+  project: https://arcprize.org/
+  technical_report: https://arcprize.org/blog/arc-agi-2-technical-report
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: human-curated ARC-AGI-2 grid-transformation tasks released by ARC Prize.
+  trace_author: task authors provide demonstration input/output grids and hidden expected outputs; solvers produce output
+    grids for test inputs.
+  answer_format: JSON task with train demonstration pairs and test input/output pairs over integer grids with symbols 0-9.
+  process_fields:
+  - task id and split
+  - train input/output pairs
+  - test input grid
+  - predicted output grid dimensions and cell values
+  - exact-match correctness over all test inputs
+  environment_or_substrate: small 2D colored grids, minimum 1x1 and maximum 30x30.
+  verifier_or_reward: exact grid comparison; a task is solved only if every test output grid exactly matches the expected
+    grid.
+  terminal_predicate: all test inputs in the task are solved within the allowed attempts under the pinned split and scoring
+    policy.
+recipe_metadata:
+  base_model: Not a training recipe; the work is a benchmark and exact-answer evaluation surface.
+  teacher: human task designers and controlled human testing establish task format and human baseline.
+  generator: ARC Prize task curation for ARC-AGI-2, preserving ARC input-output pair format.
+  filtering_rule: public evaluation tasks in the repository were solved by at least two people in controlled testing according
+    to the official README.
+  sampling_protocol: Pin repository commit, split, attempt policy, public versus private test tier, and whether any evaluation
+    tasks were seen during development.
+  rollout_count: null
+  temperature: null
+  inference_budget: Solver-dependent; report sampling/search budget and number of submitted attempts per test input.
+  optimizer_or_scaffold: exact_grid_benchmark
+audit:
+  source_mixture: arXiv paper record, official ARC Prize GitHub repository, official README, and ARC Prize technical-report
+    page.
+  split: Official repository README states 1,000 public training tasks and 120 public evaluation tasks; semi-private and fully-private
+    test sets are not included in the repository.
+  decontamination: Public training/evaluation JSON files can leak into model training; private-tier claims require competition
+    or hosted-evaluation evidence.
+  license: GitHub repository metadata reports Apache-2.0; downstream redistribution should pin the repository revision.
+  lineage: 'Primary sources: https://arxiv.org/abs/2505.11831 ; https://github.com/arcprize/ARC-AGI-2'
+  known_failure_modes:
+  - exact grid match does not reveal whether a solver inferred the intended abstraction
+  - repeated tuning on public evaluation tasks leaks evaluation feedback
+  - public and private tiers have different leakage risk
+  - README has inconsistent wording about two versus three trials; pin the official scoring policy used
+  citation_status: verified
+  confidence: high
+  notes: arXiv verifies title, authors, date, and benchmark purpose. Official GitHub README verifies task counts, JSON schema,
+    grid sizes, exact-match success criterion, human baseline statement, and public/private tier structure.
+inclusion_reason: ARC-AGI-2 is a public exact-answer benchmark for few-shot abstract grid transformation and fluid-intelligence
+  style reasoning.
+related:
+- ai2-arc-2018
+tags:
+- benchmark
+- abstract-reasoning
+- grid-transformation
+- exact-match
+why_it_matters: It provides a high-signal benchmark for abstraction, rule induction, and public/private leakage-aware evaluation.
+status: verified
+needs:
+- 'needs_audit: pin repository commit, task split, attempt policy, and whether results use public, semi-private, or fully-private
+  sets'
+- 'needs_audit: report solver search budget and avoid tuning on public evaluation feedback'
+one_line_summary: ARC-AGI-2 evaluates few-shot abstract grid transformation with exact output-grid scoring.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary_source_addition
+  confidence: high
+  notes: arXiv API and official GitHub/README were checked; exact private-set contents are intentionally unavailable.
+category_ids:
+- benchmarks_evaluation_surfaces

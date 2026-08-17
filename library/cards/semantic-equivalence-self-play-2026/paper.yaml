@@ -1,0 +1,144 @@
+id: semantic-equivalence-self-play-2026
+title: Improving LLM Code Reasoning via Semantic Equivalence Self-Play with Formal Verification
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Poon Tsz Nok
+- Antonio Valerio Miceli Barone
+source_role:
+- construction_recipe
+- data_release
+- verifier_reward
+- agent_environment
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+- scalar_reward
+- full_episode
+domains:
+- code
+- haskell
+- formal_verification
+- semantic_equivalence
+training_use:
+- sft
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1615/
+  arxiv: https://arxiv.org/abs/2604.17010
+  code: https://github.com/Baki-0501/llm-self-play-liquidhaskell
+  data: https://huggingface.co/datasets/Trevor0501/OpInstruct-HSx
+  project: https://github.com/Baki-0501/llm-self-play-liquidhaskell
+  huggingface: https://huggingface.co/datasets/Trevor0501/OpInstruct-HSx
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1615
+  venue: https://aclanthology.org/2026.findings-acl.1615/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1615/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-acl.1615.bib
+data_object:
+  prompt_source: OpenCodeInstruct self-instruct rows were translated from Python-oriented problems into Haskell; the released
+    reference pool contains 28,253 runnable programs.
+  trace_author: DeepSeek-R1-Distill-Llama-70B generated the Haskell translations; DeepSeek-R1-Distill-Qwen-7B served as both
+    Alice and Bob in self-play.
+  answer_format: Released OpInstruct-HSx rows contain code, one generated input, execution status, observed output, and code
+    size. The paper's self-play records additionally contain P/Q programs, Alice reasoning and a proof or counterexample,
+    Bob responses, difficulty, and curriculum decisions, but those records are not released as a dataset.
+  process_fields:
+  - source_translation
+  - generated_input
+  - ghc_result
+  - seq_or_sinq
+  - proof_or_counterexample
+  - bob_votes
+  - difficulty
+  - curriculum_decision
+  environment_or_substrate: GHC compilation and execution, Liquid Haskell reflection and PLE, and a subprocess-based divergence
+    harness.
+  verifier_or_reward: Liquid Haskell acceptance certifies an SEQ proof in the supported fragment; differing executions on
+    Alice's proposed input accept a SINQ instance; ten sampled Bob judgments yield a 0-10 difficulty score.
+  terminal_predicate: A released reference must compile and execute on its synthesized input. A self-play pair must pass the
+    branch-specific machine check before it can enter difficulty scoring and training selection.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-7B
+  teacher: DeepSeek-R1-Distill-Llama-70B for Haskell translation; no separate self-play teacher is reported.
+  generator: Alice generates an equivalent Q plus Liquid Haskell proof or an inequivalent Q plus diverging input; Bob judges
+    P/Q equivalence without Alice's witness.
+  filtering_rule: The construction code deduplicates generated Haskell strings, extracts a callable function/type, synthesizes
+    an input, and applies GHC compile/run checks. Self-play then requires Liquid Haskell proof acceptance for SEQ or witnessed
+    execution divergence for SINQ, followed by difficulty-aware rejection sampling.
+  sampling_protocol: The released pool has a 90/10 train/test split with seed 42. The main E0 run attempts 500 reference programs
+    per round for seven rounds with nominal 50/50 SEQ/SINQ branching.
+  rollout_count: 10
+  temperature: 0.6
+  inference_budget: The reported main run used top-p 0.95, top-k 20, presence penalty 1.5, a 32,768-token context, and about
+    three days on four NVIDIA L40S GPUs.
+  optimizer_or_scaffold: Rejection-sampling LoRA SFT; Alice is regenerated with the previous round's adapter but each round's
+    cumulative-data fine-tune starts from the base model, while Bob is fine-tuned once after round seven.
+audit:
+  source_mixture: OpInstruct-HSx is the public reference-program pool, not the verified SEQ/SINQ interaction corpus used to
+    train the agents.
+  split: 25,427 train rows and 2,826 test rows. The dataset card reports no exact code overlap; source-problem or semantic
+    leakage was not evaluated.
+  decontamination: unknown beyond exact-string deduplication during construction and the reported exact-code split check.
+  license: The repository and Hugging Face dataset declare MIT. The upstream OpenCodeInstruct dataset is CC BY 4.0; the release
+    does not provide row-level provenance needed to audit inherited obligations.
+  lineage: Released rows omit upstream row identifiers, original instructions and Python solutions, translator outputs before
+    filtering, rejection reasons, and the exact teacher model revision.
+  known_failure_modes:
+  - One synthesized input establishes only a runnable translation, not semantic equivalence to the upstream Python solution.
+  - The verified SEQ/SINQ corpus and trained adapters are not published in the checked release.
+  - The main-paper difficulty threshold is 3, the inspected run script passes 1, and the CLI default is 5.
+  - In the inspected SEQ.py revision, candidate generation already requires difficulty at least the threshold, leaving the
+    subsequent easy-example sampler no easy generation examples to draw from.
+  - Main-run SEQ verification succeeded for only 34 of 1,750 attempts, versus 903 of 1,750 SINQ attempts.
+  citation_status: verified
+  confidence: high
+  notes: ACL metadata and affiliations, the 20-page paper including appendices, repository revision 490fe084d705cb501e0fe34e592f17db2eb44a7b,
+    and dataset revision 57f52ef2f46d24f3b6155648e9a895e544b2455d were checked on 2026-07-21. The release remains partial
+    because the central self-play data and adapters are absent.
+inclusion_reason: Provides an auditable mixed-verifier recipe for executable Haskell references and proof/counterexample self-play,
+  while exposing important release and lineage gaps.
+related: []
+tags:
+- semantic-equivalence
+- self-play
+- liquid-haskell
+- execution-counterexample
+- open-data
+- release-audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- process_trace_supervision_data
+one_line_summary: Releases 28,253 runnable Haskell references and specifies proof/counterexample self-play, but not the central
+  verified interaction corpus or adapters.
+why_it_matters: Shows how formal positive evidence and executable negative witnesses can be combined in a data curriculum,
+  while making the verification-yield and reproducibility trade-offs measurable.
+card: null
+needs:
+- source-row lineage for OpInstruct-HSx
+- released verified self-play records and adapters
+- resolution of the difficulty-threshold mismatch
+- immutable environment and end-to-end reproduction bundle
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Paper, appendices, ACL metadata, code, and released reference dataset were verified. The derived self-play corpus
+    and adapters were not available in the checked artifacts.

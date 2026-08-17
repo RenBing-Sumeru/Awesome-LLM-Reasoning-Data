@@ -1,0 +1,1 @@
+Use FLASK as a schema for rubric-level evaluation. Preserve instruction, model answer, skill id, rubric text, judge prompt, judge model, raw 1-5 score, aggregation rule, and split. It is useful for diagnosing why a model wins or loses beyond a single overall preference label.

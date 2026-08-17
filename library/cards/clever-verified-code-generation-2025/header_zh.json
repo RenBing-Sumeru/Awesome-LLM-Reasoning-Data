@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CLEVER 包含 161 个手工审校任务，要求生成与保留规格一致的 Lean 实现，并由类型检查器在事后验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "手工审校的 Lean 形式验证代码生成基准",
+  "best_for_ch": "需要联合评测规格生成与可证明 Lean 实现生成的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Amitayush Thakur, Jasper Lee, George Tsoukalas, Meghana Sistla, Matthew Zhao, Stefan Zetzsche, Greg Durrett, Yisong Yue, Swarat Chaudhuri",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:31:11Z"
+}

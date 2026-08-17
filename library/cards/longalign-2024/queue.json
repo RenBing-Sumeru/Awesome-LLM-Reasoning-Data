@@ -1,0 +1,17 @@
+{
+  "title": "LongAlign: A Recipe for Long Context Alignment of Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-emnlp.74/",
+    "data": "https://huggingface.co/datasets/THUDM/LongAlign-10k"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T11:30:04Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "long context data",
+    "updated_at": "2026-07-27T11:30:04Z"
+  }
+}

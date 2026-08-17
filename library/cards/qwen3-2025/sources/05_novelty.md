@@ -1,0 +1,3 @@
+The report is not a standalone dataset release. Its value for this atlas is that it exposes multiple interfaces of a frontier reasoning pipeline in one primary source: aggregate pre-training composition, a cold-start answer/test contract, model-assisted filtering and generation, a stated 3,995-pair RL interface, fusion-SFT construction, and a distillation path.
+
+Its contribution to a disclosure ledger is therefore comparative rather than a claim of full reproducibility. The useful novelty is the coexistence of concrete stage-level facts with explicit missing evidence: no released data records, complete verifier specification, rejected-output log, source-license account, or complete contamination audit.

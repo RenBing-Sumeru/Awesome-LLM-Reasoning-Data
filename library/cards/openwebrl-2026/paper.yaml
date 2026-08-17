@@ -1,0 +1,276 @@
+id: openwebrl-2026
+title: 'OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Rui Yang
+- Qianhui Wu
+- Yuxi Chen
+- Hao Bai
+- Wenlin Yao
+- Hao Cheng
+- Baolin Peng
+- Huan Zhang
+- Tong Zhang
+- Jianfeng Gao
+source_role:
+- data_release
+- agent_environment
+- verifier_reward
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+- judgment_required
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- web_agents
+- browser_automation
+- multimodal_agents
+training_use:
+- sft
+- distillation
+- reward_modeling
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.02031v2
+  arxiv: https://arxiv.org/abs/2606.02031v2
+  code: https://github.com/OpenWebRL/OpenWebRL
+  data: https://huggingface.co/datasets/OpenWebRL/OpenWebRL-SFT-Trajectories
+  project: https://openwebrl.github.io/
+  huggingface: https://huggingface.co/OpenWebRL
+  doi: https://doi.org/10.48550/arXiv.2606.02031
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'WebGym supplies the starting task pool. The paper reports filtering 292K raw tasks by evaluation overlap,
+    decomposed-subtask status, website stability/popularity, and semantic near-duplication, producing 15,601 SFT-candidate
+    tasks and roughly 2.2K RL tasks. The official RL-task JSONL contains 2,198 records: 1,464 `insta-v3` and 734 `pae-webvoyager`;
+    the repository''s default training parquet contains a further filtered 2,102-task snapshot.'
+  trace_author: Qwen3-VL-235B-A22B-Thinking generates four teacher trajectories per filtered SFT seed task; GPT-4.1 judges
+    completion and the shortest successful trajectory is selected. During MM-GRPO, the current OpenWebRL policy generates
+    approximately 54K online browser trajectories, but a canonical public corpus of those RL rollouts was not confirmed.
+  answer_format: The public SFT object is 3,085 turn-level prompt/response examples derived from 412 successful complete trajectories.
+    A policy turn contains a `<think>` block followed by one or more structured `<tool_call>` blocks; the final `done` call
+    emits a plain-text response. RL-task records are task specifications, not trajectories.
+  process_fields:
+  - rollout_idx
+  - group_index
+  - serialized_prompt
+  - assistant_reasoning_and_tool_calls
+  - response_length
+  - screenshot
+  - message_history
+  - task_id
+  - task_instruction
+  - start_url
+  - domain
+  - difficulty
+  - evaluator_reference
+  - turn_index
+  - is_last_turn
+  - total_steps
+  - terminate_reason
+  - format_reward
+  - judge_reward
+  - combined_reward
+  observation: Current browser screenshot plus active URL, viewport, tabs, and rule-derived textual environment feedback.
+    The main context policy keeps one current screenshot while retaining prior assistant reasoning and environment feedback
+    as textual history.
+  action_space:
+  - click
+  - hover
+  - drag
+  - write
+  - press_keys
+  - scroll
+  - goto_url
+  - go_back
+  - wait
+  - new_tab
+  - switch_tab
+  - close_tab
+  - done
+  environment_or_substrate: Playwright with Chromium on live websites. Paper training uses isolated per-rollout Kubernetes/Orchard
+    sandboxes; the public framework also supports local-process and Browser-Use-hosted browser modes. Each task supplies an
+    instruction and start URL.
+  verifier_or_reward: A hybrid trajectory-level contract gates a binary VLM judge with deterministic response-format and status
+    checks. Completed valid episodes are judged from the task, final answer, three recent screenshots, tool-call history,
+    and environment feedback. Malformed-format termination is penalized; other incomplete trajectories receive zero; judge/infrastructure
+    failures can be loss-masked.
+  terminal_predicate: 'An episode terminates when the agent calls `done`, reaches the step budget, or an environment/infrastructure/generation/format
+    failure occurs. Calling `done` is not sufficient for success: the extracted answer and trajectory evidence must receive
+    a SUCCESS verdict after rule checks.'
+  provenance: WebGym task pool -> overlap/stability/subtask/dedup filtering -> teacher live-browser rollouts -> GPT-4.1 success
+    judgment -> shortest-success SFT curation -> SFT warm start -> current-policy grouped live-browser rollouts -> format
+    and VLM-judge reward -> MM-GRPO updates. Public record-level lineage is strongest for the SFT turns and RL prompts; the
+    complete main-run online rollout lineage remains unreleased.
+recipe_metadata:
+  base_model: Qwen3-VL-4B-Thinking for the main OpenWebRL-4B system; an 8B variant is also reported.
+  teacher: Qwen3-VL-235B-A22B-Thinking generates SFT candidate trajectories; GPT-4.1 labels SFT success and is the default
+    online-RL success judge. OpenWebRL-Judge-8B is distilled from GPT-4.1-labeled online rollouts.
+  generator: Live-browser interaction through the OpenWebRL ReAct-style harness. Four independent teacher trajectories are
+    sampled for each filtered SFT seed; online MM-GRPO samples groups of five trajectories per RL task from the current policy.
+  prompt_task_source: WebGym-derived PAE-WebVoyager and InSTA-v3 task sources. The default released SFT trajectories use 412
+    PAE-WebVoyager tasks across 70 websites; the released RL task pool contains 2,198 tasks across the two sources.
+  filtering_rule: Remove evaluation-overlapping tasks, decomposed subtasks, long-tail or unstable websites, and near-duplicate
+    intents using Qwen3-Embedding-8B similarity. For the default SFT set, keep the shortest successful trajectory per task
+    group, break ties by shorter response length, and cap tasks per website. Exact rejected-record ledger and immutable overlap
+    hashes are unknown.
+  sampling_protocol: Teacher SFT generation samples four independent trajectories per seed task. Main RL uses trajectory-level
+    dynamic sampling with groups of five and collects until 48 effective groups per iteration; groups with identical rewards
+    are discarded. Paper-bound random seeds and exact model/API revisions are unknown.
+  rollout_count: 412 selected successful SFT trajectories represented by 3,085 turn-level examples; approximately 54K online
+    trajectories reported for the main RL training run. The latter were not confirmed as a public rollout corpus.
+  temperature: 0.8 for training rollout sampling in Appendix Table 7. Evaluation uses 0.6 for official-score runs and 0.0
+    for success-rate-without-aborted runs.
+  inference_budget: A 15-step then 30-step rollout curriculum; maximum response length 1,024 and context length 32,768 during
+    RL. The paper reports about 300 B200 GPU-hours, 80-100 concurrent sandboxes, and multiple explicit browser/model/sandbox
+    timeouts.
+  selection_threshold: SFT retains GPT-4.1-judged successful trajectories under shortest-path and website-cap curation. MM-GRPO
+    loss uses group-relative advantages and excludes identical-reward groups; judge/infrastructure failures may be zero-masked.
+    Exact numeric embedding thresholds should be recovered from a paper-bound source/config manifest.
+  optimizer_or_scaffold: Three-epoch LLaMAFactory SFT warm start followed by multimodal multi-turn GRPO on live browser episodes.
+    The reported recipe uses Adam, asymmetric PPO clipping, two PPO epochs, global optimization batch 256, no KL or entropy
+    regularization, SGLang rollouts, Megatron optimization, format gating, and GPT-4.1 or the distilled 8B judge.
+  reset_protocol: Paper training assigns each rollout its own isolated Kubernetes sandbox/browser server to prevent stale
+    cookies, crashes, leaks, and site effects from contaminating other trajectories. Exact browser image, cookie/locale/region/time
+    state and paid Browser-Use session replay parameters for the reported runs are not pinned.
+audit:
+  source_mixture: WebGym-derived tasks, 412 success-filtered PAE-WebVoyager SFT trajectories, a 2,198-record RL-task release,
+    live current-policy rollouts, deterministic format checks, GPT-4.1 judgments, distilled judge data/weights, and three
+    live-web evaluation benchmarks. The 2,102-task parquet is the repository's default RL launcher input.
+  split: SFT Trajectories exposes one train split with 3,085 turn rows from 412 tasks. RL Tasks exposes one train split with
+    2,198 specifications, while code defaults to a 2,102-task filtered parquet and includes a separate WebVoyager validation
+    parquet. Judge-13K exposes train and 500-example test files. A unified paper-bound split manifest across upstream tasks,
+    SFT selection, RL tasks and all evaluations is unknown.
+  decontamination: The paper reports removing evaluation-overlapping tasks and embedding-based near-duplicate intents before
+    SFT/RL construction. No immutable task-level overlap report, exact benchmark snapshots, rejected-record ledger, or base-model
+    pretraining exposure audit was confirmed, so decontamination remains partial.
+  benchmark_overlap: SFT and RL tasks derive from WebGym/PAE-WebVoyager/InSTA-v3, while evaluation uses WebVoyager, Online-Mind2Web,
+    and DeepShop. The authors explicitly filter evaluation overlap, but public prompts and mutable live sites still create
+    semantic and temporal overlap risks that are not fully enumerated.
+  license: The official code repository, SFT Trajectories dataset card, and RL Tasks dataset card specify Apache-2.0. The
+    Judge-13K API exposes no dataset card/license, and the individual released model APIs expose no model-card/license metadata;
+    their rights are therefore unknown rather than assumed from the code license. Website content, screenshots, benchmark
+    sources, and third-party service terms may carry separate rights.
+  lineage: The paper provides the high-level construction chain and public SFT/RL task fields, but does not publish a complete
+    immutable mapping from 292K source records through every filter, teacher attempt, success/failure, selected SFT trace,
+    online RL rollout, reward call, optimizer step, and final checkpoint.
+  release_version: Paper audited at arXiv v2. Code inspected at `72d7faf89ef533b60b79025caccb64f1ee54533f` on 2026-07-20;
+    no GitHub release tag exists and no paper-bound code commit was stated. SFT, RL-task and Judge-13K HF revisions were respectively
+    `735cfa66dfdc92147169600f5f9172b64305e690`, `6234e14bf74ed3f2ac62d89bbfe14646e5d333e5`, and `31f6544f89aaff040cb6520940ad0f72529a5e97`.
+  successful_and_failed_sample_retention: 'The public SFT release contains only successful completed trajectories: all 3,085
+    turn rows have reward 1 and represent 412 successful tasks. Training generates both successful and unsuccessful online
+    rollouts, but identical-reward groups are dropped and infrastructure/judge failures can be loss-masked; the approximately
+    54K rollout corpus was not confirmed public. Judge-13K has train/test files, but its success/failure balance is undisclosed.
+    The paper''s 100 manually categorized failed evaluation traces are reported only in aggregate.'
+  privacy_or_consent: Dataset cards say private user data is not intended. SFT records nevertheless include screenshots, URLs,
+    message histories and model responses from live sites, and users are told to review them for privacy/copyright/security
+    concerns. No systematic PII detection, redaction, consent, copyright, data-subject or takedown audit is disclosed.
+  safety: Appendix G identifies abusive scraping, bot-detection circumvention, inauthentic accounts/engagement, long-horizon
+    errors in purchases or forms, and traffic imposed on third-party sites. Reported mitigations are research-oriented task
+    distributions, rate limiting, bounded released model scale, documentation, ToS/legal compliance, and downstream human
+    confirmation or domain restriction. These are guidance rather than an enforced safety layer in the released agent.
+  known_failure_modes:
+  - Live-site drift, loading errors, access restrictions, CAPTCHA/bot blocking, redirects, personalization, cookies and region
+    can change observations, completion and replay.
+  - 'The judge is fallible and vulnerable to reward hacking: the base-VLM judge showed high training reward with collapsing
+    evaluation; even the distilled judge is measured primarily by agreement with GPT-4.1 rather than independent human truth.'
+  - Format/status gating and zero-masking mean malformed, aborted and infrastructure-failed rollouts do not provide a uniform
+    negative-example contract; full retention is unavailable.
+  - Public SFT supervision is success-only and turn-level, so it omits failed recovery paths and can obscure trajectory boundaries
+    if rows are used without metadata grouping.
+  - The public 2,198 RL task JSONL differs from the 2,102-task default training parquet; exact paper-run membership requires
+    a pinned manifest.
+  - Official evaluation depends on a paid Stealth Browser service and benchmark-recommended judges; success excluding aborted
+    tasks is a different metric and may inflate comparability.
+  - No self-hosted website snapshots or complete environment-state capsules support exact deterministic replay of live-web
+    trajectories.
+  - Judge/model licenses and site/screenshot rights are incomplete, while privacy review is advisory rather than demonstrated
+    by a systematic audit.
+  citation_status: verified
+  confidence: medium
+  notes: Verified against arXiv:2606.02031v2, the rendered 37-page PDF, official project page, official repository/code/API,
+    official SFT/RL task dataset cards and Hugging Face API records for judge data and weights. Identity and core recipe are
+    strong; reuse confidence is reduced by unreleased online rollouts, mutable web replay, partial decontamination, incomplete
+    model/judge rights, and privacy/audit gaps.
+  remaining_unknowns:
+  - Canonical release and exact composition of the approximately 54K online RL trajectories
+  - Paper-bound code/config/container/model/API revisions, seeds, and dependency lock
+  - Record-level filter, rejection, overlap, teacher-attempt, reward-call, and checkpoint lineage
+  - Exact benchmark/site snapshots and base-model exposure or contamination audit
+  - Judge-13K class balance, complete indexed record count, construction card, privacy audit, and license
+  - Explicit licenses/model cards for policy, SFT, and judge weights
+  - Systematic screenshot/URL/response PII, copyright, consent, and takedown audit
+  - Deterministic replay state for locale, time, cookies, personalization, anti-bot and paid browser sessions
+inclusion_reason: 'OpenWebRL exposes an unusually complete environment-to-optimization boundary for visual web agents: success-only
+  supervised trajectories, released RL task specifications, live-browser rollout code, environment feedback, hybrid trajectory
+  reward, distilled judge data/weights, MM-GRPO scaffolding and trained policy weights. Its value for this track depends on
+  preserving the distinction between released traces, task prompts and unreleased ephemeral online rollouts.'
+related:
+- online-mind2web-2025
+tags:
+- environment-agent-trajectory-data
+- visual-web-agent
+- browser-agent
+- online-reinforcement-learning
+- multimodal-trajectory
+- trajectory-level-reward
+- vlm-judge
+- sft-trajectories
+- live-web
+- verifier-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: OpenWebRL releases 412 success-only SFT trajectories, 2,198 RL task specifications, live-browser MM-GRPO
+  code, hybrid trajectory judging and model weights, while its roughly 54K online training rollouts and exact live-web replay
+  remain unavailable.
+why_it_matters: It makes the full causal chain from browser task and observation through actions, environment feedback, terminal
+  judgment and policy optimization inspectable, while showing why task prompts, selected demonstrations and runtime online
+  rollouts must be tracked as different data objects with different success balance, replay and rights risks.
+card: null
+needs:
+- 'needs_online_rollout_manifest: release immutable success, failure, abort, mask, reward and checkpoint-step records for
+  the approximately 54K RL trajectories'
+- 'needs_split_lineage: publish exact membership and hashes for the 292K source, 15,601 SFT candidates, 412 selected traces,
+  2,198 task JSONL, and 2,102 training parquet'
+- 'needs_decontamination: publish evaluation-overlap, near-duplicate, benchmark-snapshot and base-model exposure audits'
+- 'needs_replay: pin code, containers, browser image, models/APIs, seeds, site snapshots or replay capsules, locale, cookies,
+  region and Browser-Use settings'
+- 'needs_judge_audit: document Judge-13K schema, class balance, human validation, error slices, full counts and reward-hacking
+  tests'
+- 'needs_rights: state licenses for judge data and all model weights plus screenshot/site/benchmark redistribution and training
+  rights'
+- 'needs_privacy: document PII/copyright scanning, screenshot and history redaction, consent basis, takedown process and live-site
+  data handling'
+- 'needs_safety: add enforced rate/host/action controls and evaluation for scraping, access-control bypass, purchases, forms
+  and other state-changing actions'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Verified against arXiv v2 and official OpenWebRL project, GitHub and Hugging Face artifacts. Code inspection was
+    pinned to commit `72d7faf89ef533b60b79025caccb64f1ee54533f`; SFT/RL-task/Judge HF revisions are recorded in `audit.release_version`.
+    The target Card remained unmodified.

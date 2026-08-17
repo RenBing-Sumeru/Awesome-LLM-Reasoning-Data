@@ -1,0 +1,3 @@
+The progress metric is only as valid as the task decomposition behind it. If partial steps are hand-designed, incomplete, or too coarse, the metric may reward apparent progress that does not correspond to robust task solving. Terminal success and progress scores also depend on parsers, environment implementations, turn limits, and API/tool behavior.
+
+AgentBoard should not be read as a universal measure of agent intelligence or as a stable result independent of release date. License terms, hidden or changed task sets, dependency versions, model snapshots, prompts, and public-data contamination remain separate audit targets.

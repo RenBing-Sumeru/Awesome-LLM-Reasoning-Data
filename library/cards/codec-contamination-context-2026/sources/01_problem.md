@@ -1,0 +1,3 @@
+Contamination makes benchmark scores look like generalization even when a language model has memorized the evaluated distribution. Existing loss, membership, and overlap checks often need the training corpus, tuning, or hard-to-interpret thresholds, so they are difficult to use across models.
+
+CoDeC turns in-context learning into a dataset-level audit. It asks whether same-dataset context improves or instead lowers confidence on a target sequence, and aggregates that signed change into an interpretable contamination percentage. It targets systematic score inflation from a dataset or a related distribution entering training, rather than whether one question is answered correctly; the audit unit is the candidate dataset.

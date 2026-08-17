@@ -1,0 +1,1 @@
+DataSciBench 可作为数据科学 agent 评测 schema：每个任务都带自己的 function 和 metric。复用时应保留 prompt、数据文件、任务类型、GT provenance、metric function、metric 验证说明、模型代码、执行日志、依赖包版本、随机种子、timeout/error 状态和分数。对 atlas 来说，它能帮助设计区分生成代码、执行结果、metric 输出和已验证 GT 的 benchmark 记录。它也适合作为审计清单：一个数据科学 benchmark 只是有简单答案键，还是有真实可执行反馈契约。

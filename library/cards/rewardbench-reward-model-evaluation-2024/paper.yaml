@@ -1,0 +1,117 @@
+id: rewardbench-reward-model-evaluation-2024
+title: 'RewardBench: Evaluating Reward Models for Language Modeling'
+year: 2024
+venue: 'Findings of ACL: NAACL 2025 / arXiv'
+authors:
+- Nathan Lambert
+- Valentina Pyatkin
+- Jacob Morrison
+- LJ Miranda
+- Bill Yuchen Lin
+- Khyathi Chandu
+- Nouha Dziri
+- Sachin Kumar
+- Tom Zick
+- Yejin Choi
+- Noah A. Smith
+- Hannaneh Hajishirzi
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- reward-modeling
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2403.13787
+  arxiv: https://arxiv.org/abs/2403.13787
+  code: https://github.com/allenai/reward-bench
+  doi: https://doi.org/10.48550/arXiv.2403.13787
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: benchmark authors curate reward-model evaluation subsets; exact curation details may remain unknown.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: Prompt, chosen response, rejected response, subset/category metadata, reward-model scores, and pairwise correctness
+    outcome.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: prompt/chosen/rejected reward-model comparisons
+  verifier_or_reward: A reward model succeeds on an instance when it assigns a higher score to the preferred/chosen response
+    than the rejected response.
+  terminal_predicate: A reward model succeeds on an instance when it assigns a higher score to the preferred/chosen response
+    than the rejected response.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: benchmark authors curate reward-model evaluation subsets; exact curation details may remain unknown.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://aclanthology.org/2025.findings-naacl.96/;
+    https://aclanthology.org/2025.findings-naacl.96.pdf'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2403.13787'
+  known_failure_modes:
+  - reward models may overfit style or verbosity rather than true preference; subset mixture can change rankings
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: 'ACL Anthology verifies Findings of ACL: NAACL 2025, pages 1755-1797. Remaining artifact/license/split/scoring questions
+    stay in needs.'
+inclusion_reason: 'high: reward-model feedback contracts are central and can be misused as training reward without audit.'
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- reward-modeling
+one_line: RewardBench exposes prompt/chosen/rejected reward-model comparisons as an auditable evaluation surface.
+why_it_matters: Core open reward-model evaluation dataset with structured preference failures.
+status: verified
+needs:
+- 'needs_metadata: verify official dataset/leaderboard URL, license, and subset versioning'
+- 'needs_audit: inspect prompt/response provenance and reward-score aggregation details'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RewardBench exposes prompt/chosen/rejected reward-model comparisons as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: 'ACL Anthology verifies Findings of ACL: NAACL 2025, pages 1755-1797.'
+category_ids:
+- benchmarks_evaluation_surfaces

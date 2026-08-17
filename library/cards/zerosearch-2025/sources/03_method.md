@@ -1,0 +1,1 @@
+The evidence-bounded trace object is simulated retrieval documents and curriculum rollouts. The official source describes feedback as outcome feedback under retrieval simulation, then applies curriculum changes synthetic-document quality. Any fields beyond this description remain unknown unless an official release is linked.

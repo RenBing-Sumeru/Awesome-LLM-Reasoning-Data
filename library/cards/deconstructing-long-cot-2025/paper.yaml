@@ -1,0 +1,171 @@
+id: deconstructing-long-cot-2025
+title: 'Deconstructing Long Chain-of-Thought: A Structured Reasoning Optimization Framework for Long CoT Distillation'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yijia Luo
+- Yulin Song
+- Xingyao Zhang
+- Jiaheng Liu
+- Weixun Wang
+- GengRu Chen
+- Wenbo Su
+- Bo Zheng
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- math
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2503.16385
+  arxiv: https://arxiv.org/abs/2503.16385
+  code: https://github.com/elena-luo/SODE
+  data: https://github.com/elena-luo/SODE/blob/main/data/20250209_deepseek_r1_math_26K.jsonl
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.16385
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2503.16385
+data_object:
+  prompt_source: The paper uses about 16K NuminaMath-derived mathematics prompts and about 17K Bespoke-Stratos items. For
+    the first component, QwQ-32B-Preview and DeepSeek-R1 generate answers; for the second, QwQ-32B-Preview answers are paired
+    with open Bespoke-Stratos R1 responses. The repository separately exposes a Git LFS object named 20250209_deepseek_r1_math_26K.jsonl
+    as Step 1 inference input, not as the final optimized corpus.
+  trace_author: QwQ-32B-Preview and DeepSeek-R1 author the paper's long-CoT traces; Bespoke-Stratos supplies part of the R1
+    response pool. The released processing recipe invokes additional LLMs to parse, label, cluster, and reconstruct traces.
+  answer_format: The experimental object is a mathematical problem with a teacher long-CoT response and final answer. DLCoT
+    derives macro partitions, approach and verification units, correctness/error labels, similarity clusters, deletion choices,
+    and a reconstructed optimized trace. The repository does not publish a completed collection of those final optimized traces.
+  process_fields:
+  - input record ID and task tag
+  - mathematical prompt and ground-truth answer
+  - long-CoT response embedded in an LLM-processing prompt
+  - externally generated result field
+  - macro-structure partitions
+  - parsed approach and verification units
+  - completeness, final-answer, and derivation-error labels
+  - approach cluster assignments
+  - redundancy or incorrectness reduction choice
+  - coherence-reconstructed optimization output
+  environment_or_substrate: Offline mathematical trace generation, rule-based final-answer checking, LLM-driven decomposition
+    and labeling, similarity clustering, redundancy pruning, minimal-edit reconstruction, and student SFT.
+  verifier_or_reward: Rule-based validation filters teacher responses by final-answer correctness. Later stages use LLM judgments
+    for structural parsing, approach labeling, and clustering; lexical alignment checks in the released parser test whether
+    decompositions preserve the source text. These components are construction filters and judges, not a released formal proof
+    verifier or an online reward.
+  terminal_predicate: A response enters the paper's distillation pool only after rule-based final-answer validation. In the
+    released parser, decompositions are retained when source-text similarity passes the implemented thresholds; redundancy
+    reduction keeps at least one approach per cluster. A complete row-level manifest of final retained optimized traces is
+    unknown.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B, Qwen2.5-14B, Qwen2.5-32B, Llama3.1-8B, and Llama3.1-70B are reported student models.
+  teacher: QwQ-32B-Preview and DeepSeek-R1 generate teacher long-CoT responses; the second data component also uses open Bespoke-Stratos
+    R1 responses.
+  generator: The paper reports 33K QwQ-32B-Preview traces and 16K DeepSeek-R1 traces. The repository README assigns Qwen-2.5-72B-Instruct
+    to processing steps 1, 2, 3, and 5 and GPT-4o to step 4, with several stages requiring users to run inference and append
+    a result field.
+  filtering_rule: Retain teacher responses that pass rule-based final-answer validation; decompose macro and substructures;
+    discard structurally misaligned parses; label and cluster approaches; remove redundant approaches in reverse order while
+    retaining at least one member per cluster; optionally test removal of erroneous approaches; reconstruct edited traces
+    with minimal changes.
+  sampling_protocol: QwQ-32B-Preview and DeepSeek-R1 use top-k 1, top-p 0.5, temperature 0.5, and 32768 maximum new tokens.
+    QwQ uses the paper's stated system-level instruction and DeepSeek-R1 uses no system-level instruction.
+  rollout_count: unknown
+  temperature: 0.5
+  inference_budget: 32768 maximum new tokens for teacher trace generation; total processing-stage calls, retry counts, and
+    compute are unknown.
+  optimizer_or_scaffold: DLCoT performs macro parsing, approach/verification parsing, redundancy analysis, optimized integration,
+    and coherence reconstruction. Reported student SFT uses six epochs, cosine annealing, initial learning rate 1e-5, and
+    batch size 96.
+audit:
+  source_mixture: About 16K NuminaMath-derived prompts plus about 17K Bespoke-Stratos items, with QwQ-32B-Preview and DeepSeek-R1
+    teacher outputs. The repository's separately named 26K Step 1 input is not accompanied by a source-to-paper-run mapping
+    or final-output manifest.
+  split: The paper reports a stratified 6K sample from its first data component for small-batch distillation analysis and
+    evaluates on AIME2024, MATH500, and GSM8K, with OMNIMATH also shown in the systematic-distillation table. A versioned
+    train/validation split and retained-index manifest were not identified.
+  decontamination: unknown
+  license: The arXiv record links CC0 1.0 for the manuscript. The SODE repository has no detected repository license, and
+    code, input-data, generated-trace, and upstream redistribution terms are unknown.
+  lineage: NuminaMath-derived and Bespoke-Stratos problems/responses -> QwQ-32B-Preview or DeepSeek-R1 long-CoT generation
+    -> rule-based final-answer filtering -> LLM-driven macro and substructure parsing -> approach labels and clusters -> redundancy
+    pruning or optional incorrectness removal -> minimal-edit reconstruction -> student SFT. The repository exposes code and
+    a Step 1 LFS input, but not an immutable final optimized-corpus release or row-level source-to-output lineage.
+  known_failure_modes:
+  - Final-answer validation does not establish the validity or faithfulness of intermediate derivations.
+  - LLM parsing, classification, and clustering can introduce judge errors; lexical preservation thresholds do not validate
+    mathematical semantics.
+  - Removing erroneous approaches or erroneous steps after redundancy pruning reduces several reported scores and can delete
+    later-corrected self-reflection.
+  - The README's model assignment and defaults visible in individual scripts do not fully pin the executed model revisions,
+    prompts, retries, or inference service.
+  - The repository requires external inference between stages and does not release final optimized rows, rejected-row logs,
+    retained indices, hashes, or source-to-output mappings.
+  - Cross-architecture generalization remains limited, and downstream reinforcement-learning use is not tested.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v1, official arXiv BibTeX, the paper-linked SODE repository, its README, scripts, data directory,
+    and Git LFS pointer were checked on 2026-07-18. Citation, paper recipe, processing code, and Step 1 input artifact are
+    verified; the final optimized training corpus, release manifest, splits, decontamination, and code/data licenses remain
+    unresolved.
+  metadata_status: partial
+inclusion_reason: This rollout/search/trace-data entry turns long teacher reasoning into explicit structural units and tests
+  which branches to retain for SFT, while exposing a release boundary between an input artifact, a multi-stage recipe, and
+  an unconfirmed final optimized corpus.
+related:
+- deepseek-r1-2025
+tags:
+- long-cot
+- distillation
+- trace-segmentation
+- redundancy-pruning
+- teacher-traces
+- math
+- rule-based-validation
+status: partial
+why_it_matters: DLCoT makes trace structure, filtering, clustering, and deletion choices auditable construction variables,
+  but its public repository is a recipe plus Step 1 input rather than a reusable release of the final optimized distillation
+  data.
+card: null
+needs:
+- 'needs_final_data: publish the complete optimized training corpus with immutable revisions, hashes, schemas, and record
+  counts.'
+- 'needs_lineage: publish row-level mappings across paper inputs, the 26K processing input, intermediate LLM outputs, retained/deleted
+  approaches, and final traces.'
+- 'needs_license: state code, input-data, generated-trace, and upstream-source redistribution terms.'
+- 'needs_split: publish train/validation splits and evaluation-overlap manifests.'
+- 'needs_decontamination: document overlap checks against evaluation benchmarks and upstream mathematics sources.'
+- 'needs_reproducibility: pin all processing-model revisions, prompts, decoding settings, retries, and executed stage outputs.'
+one_line_summary: DLCoT parses long mathematical teacher traces into structured approaches and verifications, prunes redundant
+  branches for SFT, and releases processing code plus a Step 1 input rather than a confirmed final optimized corpus.
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv metadata and BibTeX plus the paper-linked SODE repository, scripts, README, data listing, and LFS
+    pointer were verified. The final optimized data release and reuse-critical metadata remain partial.
+category_ids:
+- rollout_search_test_time_trace_data

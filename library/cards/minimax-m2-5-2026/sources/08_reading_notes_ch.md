@@ -1,0 +1,6 @@
+- 将 20 万+软件环境视为定义不明的作者规模主张，而不是公开语料或 20 万个独立仓库。
+- Forge 分离 agent、LLM、环境、奖励、rollout 与训练服务；树合并声称约 40× 加速，但缺少语义和复现。
+- CISPO 组合未来 performance 与 speed reward 再减 baseline；process reward 也被提及，但定义、权重、校准和代码封闭。
+- 保留官方 SWE-Bench 冲突：README 80.2，HF 评测附件 75.80，未作解释。
+- 发布模型是 229B FP8 MoE，最大位置 196,608；可推理不等于复现预训练、SFT、RL 或环境。
+- 代码与权重采用不同 modified-MIT/模型许可；两者都不授予封闭工作空间、轨迹或奖励数据的权利。

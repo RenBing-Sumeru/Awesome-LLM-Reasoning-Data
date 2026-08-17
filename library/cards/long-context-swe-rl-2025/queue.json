@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数据量充足，强化学习训练软件智能体",
+    "updated_at": "2026-07-22T10:24:34Z"
+  },
+  "updated_at": "2026-07-22T10:24:34Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

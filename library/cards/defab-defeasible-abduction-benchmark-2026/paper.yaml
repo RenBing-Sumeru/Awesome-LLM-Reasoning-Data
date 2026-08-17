@@ -1,0 +1,107 @@
+id: defab-defeasible-abduction-benchmark-2026
+title: 'DeFAb: A Verifiable Benchmark for Defeasible Abduction in Foundation Models'
+year: 2026
+venue: arXiv
+authors:
+- Patrick Cooper
+- Alvaro Velasquez
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- logical-reasoning
+- formal-mathematics
+- knowledge-reasoning
+training_use:
+- evaluation
+- rlvr
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.18557
+  arxiv: https://arxiv.org/abs/2606.18557
+  code: null
+  data: https://huggingface.co/datasets/PatrickAllenCooper/DeFAb
+  project: null
+  huggingface: https://huggingface.co/datasets/PatrickAllenCooper/DeFAb
+  doi: https://doi.org/10.48550/arXiv.2606.18557
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Publicly funded taxonomic and behavioral knowledge bases, including OpenCyc, YAGO, Wikidata, ConceptNet,
+    and UMLS.
+  trace_author: The DeFAb construction pipeline and its rule-based solver.
+  answer_format: A defeater-rule hypothesis for an anomalous observation.
+  process_fields:
+  - knowledge-base provenance
+  - rules
+  - anomaly
+  - candidate hypothesis
+  - level
+  - surface rendering
+  environment_or_substrate: Rule-based logical inference over materialized knowledge-base rules.
+  verifier_or_reward: Polynomial-time checks of derivation, conservativity, and minimality.
+  terminal_predicate: The submitted rule derives the anomaly while preserving unrelated consequences and meeting the minimality
+    criterion.
+recipe_metadata:
+  base_model: Frontier language models are evaluated; the released construction is solver-driven.
+  teacher: Rule-based logic solver.
+  generator: Conversion of knowledge bases into defeasible-abduction instances.
+  filtering_rule: Keep instances with valid programmatically checked gold hypotheses.
+  sampling_protocol: Three difficulty levels and four equivalent renderings are released; consult the paper for the exact
+    sampling procedure.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not applicable to the deterministic verifier.
+  optimizer_or_scaffold: The exact verifier can supply rewards for DPO, RLVR, or GRPO.
+audit:
+  source_mixture: Official arXiv paper, author-linked Hugging Face dataset, and author affiliation record.
+  split: 372,648+ instances from 18 sources, plus DeFAb-Hard and the CONJURE Lean subset; consult the dataset for split-level
+    details.
+  decontamination: Audit overlap between source knowledge bases, evaluation prompts, and model training corpora before interpreting
+    generalization claims.
+  license: The paper states an MIT release; verify the dataset card and each upstream knowledge-base license before reuse.
+  lineage: https://arxiv.org/abs/2606.18557
+  known_failure_modes:
+  - A valid logical hypothesis may not reflect natural-language plausibility outside the encoded knowledge base.
+  - Surface rendering changes can substantially affect model performance.
+  - Upstream knowledge-base coverage constrains the kinds of anomalies represented.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and Hugging Face dataset were checked; no author-maintained code or project page was identified.
+inclusion_reason: DeFAb exposes a deterministic terminal check for each theory-revision hypothesis, so logical outcomes can
+  be reused as programmatically verified supervision.
+related: []
+tags:
+- defeasible-abduction
+- logical-reasoning
+- verifier
+- rlvr
+- '2026'
+one_line_summary: DeFAb turns public knowledge bases into more than 372,000 defeasible-abduction tasks whose hypotheses are
+  checked for derivation, conservativity, and minimality.
+why_it_matters: It makes minimal theory revision an executable acceptance condition instead of relying on a subjective language-model
+  judge.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and Hugging Face dataset were checked; no author-maintained code or project page was identified.
+category_ids:
+- programmatically_verifiable_outcome_data

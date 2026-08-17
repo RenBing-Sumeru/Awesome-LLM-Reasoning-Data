@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"RAFT 从多个策略候选中保留奖励最高的回答，并用该回答迭代监督微调模型。","reading_priority_ch":"必读","paper_type_ch":"奖励排序驱动的数据选择与生成模型对齐研究","best_for_ch":"适合研究奖励模型如何作为训练样本选择器的读者。","confidence_ch":"高","authors_ch":"Junxian He、Chunting Zhou、Xuezhe Ma、Taylor Berg-Kirkpatrick、Graham Neubig","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-17T11:45:00Z"}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "CMCTS 用受约束动作集合、过程奖励模型和偏序规则引导数学推理树，目标是增加状态多样性并避免不合理转移。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qingwen Lin；Boyan Xu；Guimin Hu；Zijian Li；Zhifeng Hao；Keli Zhang；Ruichu Cai",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

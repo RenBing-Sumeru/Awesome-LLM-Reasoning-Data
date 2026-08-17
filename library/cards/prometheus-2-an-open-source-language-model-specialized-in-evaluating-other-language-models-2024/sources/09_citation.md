@@ -1,0 +1,1 @@
+Kim et al. (2024), “Prometheus 2: An Open Source Language Model Specialized in Evaluating Other Language Models,” arXiv:2405.01535. Primary paper: https://arxiv.org/abs/2405.01535. Official models, code, and data entry points: https://github.com/prometheus-eval/prometheus-eval. Cite the paper version and repository commit together when reporting an evaluation result.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将强化推理、自动数据构建与推理期扩展纳入同一概念图的综述。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大推理模型与强化推理综述",
+  "best_for_ch": "涵盖推理轨迹、奖励、搜索与推理预算关系的大推理模型综述。",
+  "confidence_ch": "高",
+  "authors_ch": "Fengli Xu 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

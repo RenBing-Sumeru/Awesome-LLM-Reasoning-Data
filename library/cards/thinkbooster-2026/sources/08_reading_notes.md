@@ -1,0 +1,5 @@
+- Read Tables 1 and 2 with Section 2: the nine strategies differ in offline/online operation, black-box/white-box access, and prefill requirements, while PRM, uncertainty, LLM-critic, and ReProbe scores have different evidential meanings.
+- Keep each budget attached to its model and strategy: maximum generation lengths are 4,096, 32,768, and 65,536 tokens; offline Best-of-N/self-consistency use 8 samples; Qwen3 beam uses width 3, 5 candidates, and 250 steps; MUR uses 8 candidates per step.
+- Separate search-time selection from terminal grading: PRM or confidence can rank trajectories, but exact match, EvalPlus, or KernelBench checks determine reported task success.
+- Inspect the debugger schema and the two Claude Sonnet 4 cached examples to see what the toolkit can record, then verify that no paper-run prompt/candidate/scorer corpus, resolved config-hash manifest, or W&B export is public.
+- Before reproduction, pin the code/package and provider, freeze moving dependencies, resolve the missing ReProbe implementation path, audit benchmark and generated-output rights, and report wall-clock plus token/evaluator costs in addition to theoretical TFLOPs.

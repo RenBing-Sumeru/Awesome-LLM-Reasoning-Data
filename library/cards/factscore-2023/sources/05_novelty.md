@@ -1,0 +1,5 @@
+The prior baseline was mostly answer-level or coarse claim-level factuality evaluation. Such metrics can hide mixed-quality long-form answers because one paragraph may contain many independently checkable facts. FActScore changes the evaluation unit to atomic facts and makes factual precision a count over supported claims.
+
+The new signal is the explicit data object and feedback contract: long response -> atomic facts -> retrieved/source evidence -> support labels -> aggregate precision. Retrieval-based verification and claim labels are not new by themselves. The novelty is packaging them into a reusable long-form factuality protocol with human annotations, automatic estimators, released model outputs, a Python package, and custom knowledge-source support.
+
+Before reuse, inspect whether atomic facts are too fine or too coarse, whether unsupported labels are caused by retrieval miss rather than falsehood, whether the knowledge source is complete for the domain, whether abstentions are counted consistently, whether the length penalty is appropriate, and whether the automatic judge has changed since the reported package version.

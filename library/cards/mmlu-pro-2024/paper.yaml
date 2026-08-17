@@ -1,0 +1,117 @@
+id: mmlu-pro-2024
+title: 'MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Spotlight / arXiv
+authors:
+- Yubo Wang
+- Xueguang Ma
+- Ge Zhang
+- Yuansheng Ni
+- Abhranil Chandra
+- Shiguang Guo
+- Weiming Ren
+- Aaran Arulraj
+- Xuan He
+- Ziyan Jiang
+- Tianle Li
+- Max Ku
+- Kai Wang
+- Alex Zhuang
+- Rongqi Fan
+- Xiang Yue
+- Wenhu Chen
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- broad-academic
+- static-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.01574
+  arxiv: https://arxiv.org/abs/2406.01574
+  code: https://github.com/TIGER-AI-Lab/MMLU-Pro
+  data: https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro
+  doi: https://doi.org/10.48550/arXiv.2406.01574
+  project: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: cleaning, filtering, and option expansion pipeline for MMLU-style tasks; exact curation details may remain
+    unknown.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: Multiple-choice question, ten answer options, correct option, subject/category metadata, and score.
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: harder cleaned MMLU-style questions with 10 answer choices
+  verifier_or_reward: Model selects the correct option under the benchmark answer key.
+  terminal_predicate: Model selects the correct option under the benchmark answer key.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: cleaning, filtering, and option expansion pipeline for MMLU-style tasks; exact curation details may remain unknown.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: static_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2406.01574;
+    https://arxiv.org/pdf/2406.01574'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2406.01574'
+  known_failure_modes:
+  - multiple-choice option artifacts can create shortcuts; MMLU overlap may persist after cleaning
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v6 comments verify NeurIPS 2024 Datasets and Benchmarks Spotlight. Remaining artifact/license/split/scoring
+    questions stay in needs.
+inclusion_reason: 'medium-high: representative static benchmark but less interactive than live/hidden agent surfaces.'
+related: []
+tags:
+- benchmark
+- static_reasoning_benchmark
+- broad-academic
+why_it_matters: Useful upgraded baseline for saturation, option-count, and quality-audit work.
+status: verified
+needs:
+- 'needs_metadata: verify final NeurIPS proceedings link and dataset license'
+- 'needs_audit: inspect overlap/decontamination and answer-option normalization details'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MMLU-Pro exposes harder cleaned MMLU-style questions with 10 answer choices as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv v6 comments verify NeurIPS 2024 Datasets and Benchmarks Spotlight.
+category_ids:
+- benchmarks_evaluation_surfaces

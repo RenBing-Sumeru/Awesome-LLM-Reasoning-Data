@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "PC Agent-E 将 312 条人工 Windows 完整轨迹扩展为 action-level 多模态 SFT 数据，但每步九个 Claude 分支均未执行，也没有经过环境成功验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "计算机使用智能体数据发布与构造配方",
+  "best_for_ch": "研究 GUI agent 轨迹构造、多模态 SFT、环境反馈契约与合成动作审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yanheng He, Jiahe Jin, Pengfei Liu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

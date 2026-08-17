@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Stanford University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-17T08:07:09Z",
+  "source_urls": [
+    "https://aclanthology.org/D16-1264/",
+    "https://rajpurkar.github.io/SQuAD-explorer/",
+    "https://github.com/rajpurkar/SQuAD-explorer",
+    "https://rajpurkar.github.io/SQuAD-explorer/"
+  ],
+  "verification_note": "Institution names follow card-local verified source metadata; check final PDF for publication-grade affiliation details."
+}

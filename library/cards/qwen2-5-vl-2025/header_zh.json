@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen2.5-VL 部分披露了 4.1T 规模多模态训练、约 200 万条 SFT 混合数据、过滤、拒绝采样推理与 SFT/DPO，但未公开可复用数据、reward、lineage 或审计工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态模型技术报告与数据披露台账",
+  "best_for_ch": "需要审计多模态推理、视觉 agent 训练对象、SFT/DPO 与数据披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

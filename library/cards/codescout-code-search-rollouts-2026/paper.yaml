@@ -1,0 +1,217 @@
+id: codescout-code-search-rollouts-2026
+title: 'CodeScout: An Effective Recipe for Reinforcement Learning of Code Search Agents'
+year: 2026
+venue: ACM CAIS 2026 Workshop on Agentic Software Engineering (non-archival)
+authors:
+- Lintang Sutawika
+- Aditya Bharat Soni
+- Bharath Sriraam R R
+- Apurva Gandhi
+- Taha Yassine
+- Sanidhya Vijayvargiya
+- Yuchen Li
+- Xuhui Zhou
+- Yilin Zhang
+- Leander Melroy Maben
+- Graham Neubig
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_level_code
+- code_localization
+- agent_tool_use
+training_use:
+- rlvr
+- agent_training
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.17829
+  arxiv: https://arxiv.org/abs/2603.17829
+  code: https://github.com/OpenHands/codescout
+  data: https://huggingface.co/datasets/OpenHands/CodeScout_Training_Rollouts
+  project: https://huggingface.co/collections/OpenHands/codescout
+  huggingface: https://huggingface.co/datasets/OpenHands/CodeScout_Training_Rollouts
+  doi: https://doi.org/10.48550/arXiv.2603.17829
+  venue: https://agenticse-cais.github.io/
+  openreview: https://openreview.net/forum?id=oquwFIjhR9
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2603.17829
+data_object:
+  prompt_source: Python issue-localization tasks processed from SWE-Smith. The paper reports a filtered pool of about 39K
+    instances across 128 repositories; the pinned official processed task artifact has 39,287 rows. Each task supplies an
+    issue description, repository state, and gold-patch-derived file, module/class, and function/method targets. The rollout
+    release contains subsets encountered during the 14B and 4B RL runs rather than all source tasks.
+  trace_author: 'Current-policy CodeScout agents sampled online during RL: Qwen3-14B with thinking disabled and a modified
+    chat template, and Qwen3-4B-Instruct-2507. The public rollout artifact has no 1.7B configuration. CodeScout-14B separately
+    acts as the trajectory generator for the paper''s success-only 1.7B rejection-sampling warm start.'
+  answer_format: One released row contains an instance ID, training step, rollout number, structured chat messages and tool
+    definitions, and a reward dictionary. The chat preserves terminal commands, tool observations, and any final LocalizationFinish
+    call whose locations are objects with required file and optional class_name/function_name fields.
+  process_fields:
+  - instance_id
+  - step
+  - rollout_number
+  - chat_messages.messages.role
+  - chat_messages.messages.content
+  - chat_messages.messages.tool_calls
+  - chat_messages.messages.tool_call_id
+  - chat_messages.tools
+  - reward_dict.multilevel_localization_f1_reward
+  - reward_dict.file_reward
+  - reward_dict.module_reward
+  - reward_dict.entity_reward
+  - reward_dict.multiturn_reward
+  environment_or_substrate: OpenHands-Bash exposes a Unix terminal with standard repository-search utilities, including ripgrep,
+    over a cloned pre-PR Python repository. For SWE-Smith, the bug-inducing patch is applied to construct the faulty state.
+    Repository dependencies are not installed and tests are not executed because the task is localization, not repair. A structured
+    LocalizationFinish tool terminates and submits predicted locations.
+  verifier_or_reward: A valid structured terminal prediction is compared with gold patch-derived sets at file, module/class,
+    and function/method granularity. The three F1 values are summed, yielding a localization reward in [0,3]. CodeScout-14B
+    adds a separate binary reward equal to 1 only for exactly four turns. Missing, duplicated, malformed, or otherwise invalid
+    finish calls receive zero localization reward; no learned or human judge is used.
+  terminal_predicate: Success is graded when the agent calls LocalizationFinish exactly once with parseable existing relative
+    locations; each submitted set is scored against patch-derived gold locations. A trajectory that exhausts the turn budget
+    without a valid finish call receives zero reward and is masked out of the policy loss, although its zero-reward trace
+    can remain in the public release.
+recipe_metadata:
+  base_model: Qwen3-4B-Instruct-2507 and Qwen3-14B for direct RL; Qwen3-1.7B is first warm-started by rejection-sampling fine-tuning
+    and then trained with RL.
+  teacher: 'No teacher generates the direct 4B/14B online RL rollouts. CodeScout-14B generates a separate 1.7B RFT pool: rollouts
+    over 7.7K tasks are filtered to 4K trajectories with perfect file, module, and function F1.'
+  generator: An asynchronous SkyRL/OpenHands generator clones or constructs the repository state, prompts the current policy
+    to search using terminal commands, enforces a structured finish action, computes localization rewards, and logs full chats.
+    Training permits trajectories from checkpoints up to four optimizer steps stale.
+  filtering_rule: 'Task curation discards issues whose pull requests create or delete files, ignores non-Python files in target
+    extraction, drops empty issue descriptions, and excludes the evaluation repositories. The public 4B/14B rollout release
+    is not correctness-filtered: it retains 8,281 zero-localization-reward rows as well as positive attempts. Only the separate
+    1.7B RFT stage filters for perfect reward at all three granularities.'
+  sampling_protocol: Paper-side CodeScout-14B samples four rollouts for each member of a batch of 32 over 300 steps; CodeScout-4B
+    samples eight per member of a batch of eight over 200 steps. Both use temperature 1.0. The release preserves 9,760 four-attempt
+    14B groups and 1,979 4B groups, of which 1,973 have eight attempts and six contain one through six attempts.
+  rollout_count: 54845
+  temperature: 1.0 for all reported RL training rollouts
+  inference_budget: The paper gives 40K context and six turns for 4B, 50K context with YaRN and four turns for 14B, and 32K
+    context and four turns for 1.7B RL. Released scripts cap generated response tokens at 8,192, but their default turn/rollout
+    values do not reproduce all paper settings. Per-row token counts, seeds, checkpoint identifiers, stop reasons, and logprobs
+    are not released.
+  optimizer_or_scaffold: Modified asynchronous GSPO in SkyRL with sequence-level importance ratios, no KL or entropy loss,
+    no advantage standard-deviation normalization, AdamW, constant learning rate 1e-6, clip low/high 3e-4/4e-4, one update
+    epoch per batch, maximum policy staleness four, and eight H100 GPUs. The agent scaffold is OpenHands-Bash with Terminal
+    and LocalizationFinish.
+audit:
+  source_mixture: 'The paper''s RL training source is a processed SWE-Smith pool of about 39K Python issue tasks from 128
+    repositories. The rollout release has two policy configurations: 39,040 CodeScout-14B rows from 9,760 unique task IDs
+    and 15,805 CodeScout-4B rows from 1,640 unique task IDs. Evaluation trajectories and the separate 1.7B RFT/RL data are
+    not part of this artifact.'
+  split: 'Two single-file train splits only: CodeScout_14B/train-00000-of-00001.parquet has 39,040 rows and CodeScout_4B/train-00000-of-00001.parquet
+    has 15,805 rows. These configuration names identify generating policies, not conventional train/validation/test partitions.'
+  decontamination: The paper states that none of the 128 SWE-Smith training repositories overlap repositories used by SWE-Bench
+    Verified, Lite, or the Python subset of Pro. No broader audit is disclosed for issue-text similarity, patch/code overlap,
+    near duplicates, or model-pretraining contamination.
+  license: The paper is CC BY 4.0 and the code repository is MIT. The pinned HF rollout release and processed SWE-Smith code-search
+    artifact have no dataset license field or license file, so data reuse terms are unknown. Rights for source repositories,
+    issues, patches, and generated chats are not separately documented.
+  lineage: SWE-Smith issue and bug-inducing patch -> patch parser extracts gold file/module/function targets -> faulty pre-PR
+    repository state -> current-policy terminal-search attempts -> structured LocalizationFinish prediction -> summed terminal
+    F1 and optional exact-turn reward -> asynchronous GSPO update -> logged rollout row. The public row keeps only instance_id
+    as the task join key and omits repository URL/commit, applied patch, gold targets, policy checkpoint, seed, stop reason,
+    loss mask, and immutable environment identity.
+  known_failure_modes:
+  - The public total is 54,845 rows, 3,645 above the paper-side nominal 51,200 4B+14B rollouts. The release has 160 extra
+    14B groups and 379 extra 4B groups; retries, resumes, evaluations, or logging duplication are not documented.
+  - Six 4B instance-step groups are incomplete, containing one, two, three, four, five, and six rows instead of eight, and
+    no error/retry manifest explains the missing siblings.
+  - 'Current code defaults do not reproduce the paper configuration: the 14B script defaults to eight rollouts and six turns
+    versus the paper''s four/four, and the 4B script defaults to ten turns versus the paper''s six.'
+  - The release preserves 8,281 zero-localization-reward rows (15.10%); this is valuable failure evidence, but absent stop
+    reasons and loss masks make invalid finish calls, budget exhaustion, environment errors, and genuinely wrong localization
+    difficult to distinguish.
+  - Patch-modified locations are only a practical proxy for relevance and can omit unmodified code needed to understand or
+    solve an issue.
+  - Gold extraction and reported experiments are largely Python-specific even though the terminal scaffold itself is language-agnostic.
+  - Exact reward recomputation requires joining the rollout to a separate task artifact because the row lacks gold targets
+    and repository state; exact regeneration additionally lacks checkpoint SHA, seed, and sampling/replay metadata.
+  - The CodeScout-14B turn bonus can reward exact-budget termination independently of localization quality, while no-finish
+    maximum-step rollouts are zero-reward and policy-loss-masked.
+  - Dataset and upstream derivative-data licenses are undisclosed, and the training README remains incomplete rather than
+    providing an end-to-end replay procedure.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv v1 and Appendices A-H, official non-archival workshop page and OpenReview attachment, GitHub commit 34789dcb21cc9e6595c2d27ad832f69ab146006f,
+    HF rollout commit 65a3599683b901be691621f9eab7cd932a9a2c5f, processed task commit b1e6864f1c847455ea64c7ebdb4164da2b902bb6,
+    all Parquet metadata, and all released scalar reward/group columns were checked on 2026-07-25. Reported benchmark gains
+    are author-reported and not independently reproduced.
+inclusion_reason: 'CodeScout releases a rare auditable RL agent data object: grouped repository-search attempts with full
+  terminal conversations, structured terminal predictions, component rewards, training-step indices, and both successful and
+  zero-reward siblings, making rollout retention, verifier design, training budgets, and replay gaps directly inspectable.'
+related:
+- swe-smith-scaling-data-construction-for-software-engineering-agents-2025
+- open-swe-traces-2026
+tags:
+- codescout
+- code-localization
+- software-engineering-agents
+- openhands
+- terminal-tool-use
+- multi-attempt-rollouts
+- zero-reward-failures
+- gspo
+- rlvr
+- patch-derived-verifier
+- full-episode-traces
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Releases 54,845 full terminal-search RL rollouts for CodeScout-14B and CodeScout-4B, preserving grouped
+  attempts, component localization rewards, and 8,281 zero-reward failures rather than publishing only successful trajectories.
+why_it_matters: It exposes how repository-search attempts, a patch-derived terminal verifier, multiple rollouts, and asynchronous
+  GSPO interact, while the count mismatch, incomplete groups, missing replay lineage, and absent data license show exactly
+  what an auditable agent-trajectory release still needs.
+card: null
+needs:
+- 'needs_count_reconciliation: explain 54,845 released rows versus the nominal 51,200 4B+14B training rollouts and identify
+  retries, resumes, evaluation rows, or duplicates'
+- 'needs_group_manifest: explain the six incomplete CodeScout-4B attempt groups and publish per-group expected/observed counts'
+- 'needs_replay_lineage: add repository URL, exact base/applied-patch commit, gold targets, environment identity, policy checkpoint
+  SHA, seed, stop reason, loss mask, and sampling logprobs per row'
+- 'needs_paper_config: publish exact launch commands that match the paper and reconcile current script turn/rollout defaults'
+- 'needs_license: declare rollout/task dataset licenses and document source repository, issue, patch, and generated-trace
+  rights'
+- 'needs_failure_labels: distinguish wrong localization, invalid finish formatting, budget exhaustion, environment error,
+  cancellation, and retry for zero-reward rows'
+- 'needs_decontamination: report issue-text, patch/code, near-duplicate, and model-pretraining overlap checks beyond repository-level
+  benchmark separation'
+- 'needs_1.7b_artifacts: map and release the success-only 1.7B RFT pool and 1.7B RL rollouts or state why they are excluded'
+- 'card_recommendation: create a release/recipe Card centered on grouped attempt retention, zero-reward failures, terminal
+  localization verification, paper-versus-release budget reconciliation, and replayability'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, full appendices, non-archival venue page, OpenReview attachment, pinned code, model/data collection,
+    processed task artifact, rollout schema, exact row/group counts, and complete scalar reward distributions were verified.
+    Status remains partial because license, count reconciliation, paper-matching launches, failure causes, and per-row replay
+    lineage are unresolved.

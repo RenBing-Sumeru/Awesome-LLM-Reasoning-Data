@@ -1,0 +1,1 @@
+ClassEval 问的是单函数代码基准上的能力能否迁移到 class-level Python 编程，主来源是 2023 年 8 月 arXiv 论文和 FudanSELab 官方 release。它要补的缺口是 HumanEval/MBPP 式任务通常只测独立函数，而真实类代码需要 constructor、fields、方法依赖、import 和整类测试。一个样本是 JSON task，包含 class skeleton、tests、ground-truth class code、method metadata、dependencies 和可执行测试验收。它应作为 code-executable evaluation surface 收录，不是训练数据。atlas 价值在于终止谓词清楚：生成的类代码是否通过官方 tests。

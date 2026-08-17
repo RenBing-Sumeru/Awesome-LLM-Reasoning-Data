@@ -1,0 +1,1 @@
+ARES 解决的是 RAG 系统评测成本问题：比较不同检索器、切块、生成模型或提示设置时，传统做法需要为目标域重新标注检索内容和回答质量。主要来源是 arXiv 论文、NAACL 2024 版本以及 Stanford Future Data 官方仓库/包。它的评测对象是一条 query、检索到的 context、生成 answer，以及 context relevance、answer faithfulness、answer relevance 三个二分类判断之一。它应归入 RAG 评测与 judge-feedback contract，而不是新的 QA 数据集、检索模型或通用奖励模型。对 atlas 的价值在于：它把合成训练、少量人工偏好验证集和 PPI 置信区间组合成可审计的 RAG 配置比较面。

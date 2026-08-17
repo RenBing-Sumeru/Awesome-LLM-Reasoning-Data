@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Shanghai AI Laboratory",
+    "Beihang University",
+    "Nanjing University",
+    "The Chinese University of Hong Kong"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2405.12209",
+    "https://github.com/open-compass/MathBench",
+    "https://open-compass.github.io/MathBench/"
+  ],
+  "verification_note": "Official arXiv/OpenCompass sources verify authors, Shanghai AI Lab/Beihang/Nanjing/CUHK affiliations, Findings of ACL 2024 status, leaderboard, and data/code release."
+}

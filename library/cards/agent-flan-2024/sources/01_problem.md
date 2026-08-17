@@ -1,0 +1,5 @@
+Existing agent SFT corpora entangle ReAct/JSON formatting with reasoning, retrieval, and argument understanding, so a model can overfit the easy syntax while still failing to choose valid tools; they also omit negative cases that teach when not to call a tool.
+
+Agent-FLAN redesigns inherited AgentInstruct and ToolBench traces into natural conversations, decomposes and reweights capability-specific targets, and adds explicit tool-use negatives. The public output is a 24,703-record, seven-split SFT mixture rather than only the Agent-H benchmark or a new agent runtime.
+
+L4 facts: Primary source ACL Anthology; Findings of ACL 2024, 11-16 August 2024; decision boundary is redesigned trainable conversations rather than the Agent-H evaluation surface; atlas relevance is auditable capability balancing; data object is a conversation with rationale, tool choice, arguments, observations, and negative conditions; collected after proceedings, actual JSONL, Apache-2.0 terms, counts, and filters were verified.

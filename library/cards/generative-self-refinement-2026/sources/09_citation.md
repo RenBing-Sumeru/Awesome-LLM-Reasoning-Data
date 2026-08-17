@@ -1,0 +1,1 @@
+Wang, Qibin, Pu Zhao, Shaohan Huang, Fangkai Yang, Lu Wang, Furu Wei, Qingwei Lin, Saravan Rajmohan, and Dongmei Zhang. 2026. “Learning to Refine: Self-Refinement of Parallel Reasoning in LLMs.” Findings of the Association for Computational Linguistics: ACL 2026, pages 25904–25921. Official paper: https://aclanthology.org/2026.findings-acl.1291/.

@@ -1,0 +1,3 @@
+Generalist virtual-world agents must interpret rendered scenes, follow language, remember goals, and execute low-level controls across very different games. SIMA 2 addresses this through human demonstrations, Gemini-generated process annotations, online reinforcement learning from heterogeneous verifiers, and self-generated tasks and rewards.
+
+The data challenge is unusually difficult because observations contain commercial-game imagery, actions depend on exact builds and controls, and success may be judged by state predicates, pixels, humans, or Gemini. The report describes the pipeline but releases no trajectories, code, checkpoint, task bank, verifier package, saved states, or executable environment.

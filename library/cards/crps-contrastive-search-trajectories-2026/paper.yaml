@@ -1,0 +1,188 @@
+id: crps-contrastive-search-trajectories-2026
+title: 'Learning from Contrasts: Synthesizing Reasoning Paths from Diverse Search Trajectories'
+year: 2026
+venue: ACL 2026
+authors:
+- Peiyang Liu
+- Zhirui Chen
+- Xi Wang
+- Di Liang
+- Youru Li
+- Zhi Cai
+- Wei Ye
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical_reasoning
+- code_generation
+- commonsense_reasoning
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.501/
+  arxiv: https://arxiv.org/abs/2604.11365
+  code: https://github.com/PeiYangLiu/CRPS
+  data: https://huggingface.co/datasets/PeiyangLiu/CRPS-30K
+  project: null
+  huggingface: https://huggingface.co/datasets/PeiyangLiu/CRPS-30K
+  doi: https://doi.org/10.18653/v1/2026.acl-long.501
+  venue: https://aclanthology.org/2026.acl-long.501/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.501/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.501.bib
+data_object:
+  prompt_source: Approximately 15K distinct training problems drawn from the GSM8K and MATH training splits; the paper describes
+    roughly 7.5K from each. The released CRPS-30K card instead reports 9,939 unique problems among 27,256 examples, so the
+    exact seed-selection and attrition manifest is not released.
+  trace_author: Qwen2.5-Math-7B-Instruct explores math reasoning trees with MCTS. GPT-5-mini analyzes a selected positive
+    trajectory against hard or soft negative trajectories and synthesizes a fresh solution conditioned on global and local
+    contrastive critiques.
+  answer_format: The released record has two strings, problem and solution. Solutions are step-structured mathematical reasoning
+    paths ending with a boxed final answer; the dataset card reports 100% boxed-answer coverage.
+  process_fields:
+  - seed problem
+  - MCTS node state
+  - candidate action
+  - visit count
+  - node value
+  - terminal reward
+  - positive trajectory
+  - hard negative trajectory
+  - soft negative trajectory
+  - global critique
+  - local divergence critique
+  - synthesized solution
+  - verified final answer
+  environment_or_substrate: UCT-based Monte Carlo tree search with c_puct=1.4, maximum depth 16 semantic reasoning steps,
+    at most three actions per node, and ten rollouts per problem. The math explorer is Qwen2.5-Math-7B-Instruct; Appendix
+    experiments substitute Qwen2.5-Coder-7B for code and LLaMA3-8B for commonsense.
+  verifier_or_reward: Math tree terminals receive binary reward from strict ground-truth answer matching, and synthesized
+    answers are retained only after answer extraction plus exact or SymPy-equivalence verification. Code uses unit tests and
+    commonsense uses exact-answer matching in appendix experiments.
+  terminal_predicate: A synthesized math path is retained when its extracted final answer matches the reference answer under
+    exact or SymPy equivalence; this validates the terminal answer, not the faithfulness or correctness of every intermediate
+    step or critique.
+recipe_metadata:
+  base_model: The primary explorer is Qwen2.5-Math-7B-Instruct. SFT targets are DeepSeekMath-7B-Base, LLaMA3-8B, and Mistral-7B-v0.1.
+  teacher: GPT-5-mini is the proprietary analyst and synthesizer for global/local contrastive analysis and fresh path generation.
+  generator: Run MCTS, select the shortest correct trajectory as the positive anchor (breaking ties by maximum node Q), sample
+    high-visit incorrect hard negatives and longer correct soft negatives, analyze global strategy and the first local divergence,
+    synthesize a new critique-informed solution, then verify its final answer.
+  filtering_rule: Use binary terminal correctness to separate correct and incorrect paths; choose a shortest correct anchor;
+    sample incorrect paths proportional to accumulated visit counts or use correct paths longer than the anchor as soft negatives;
+    discard malformed analyst outputs and synthesized paths whose final answer fails exact or SymPy verification.
+  sampling_protocol: The paper reports K=10 contrastive pairs per problem and ten MCTS rollouts per problem. Hard negatives
+    are sampled proportional to trajectory visit mass, and verified synthesized paths are uniformly sampled into nominal 15K,
+    30K, and 60K training sets. Pair reuse, replacement, yields at each stage, and the precise hard/soft mixture are undisclosed.
+  rollout_count: 10
+  temperature: 0.7
+  inference_budget: Released configuration sets MCTS expansion temperature 0.7 with 256-token actions, simulations up to 2,048
+    tokens, ten rollouts, analyst temperature 0.7 with 1,024 tokens, and synthesis temperature 0 with 2,048 tokens. The paper
+    does not provide complete API-token or monetary cost accounting.
+  optimizer_or_scaffold: Standard full-parameter SFT with AdamW (beta1=0.9, beta2=0.95), peak learning rate 2e-5, 3% warmup,
+    cosine decay to zero, global batch size 128, and three epochs on eight A800 80GB GPUs using ZeRO-3 offload.
+audit:
+  source_mixture: GSM8K train and MATH train supply the primary math seeds. Code and commonsense appendix studies change the
+    explorer and verifier, but their seed snapshots, counts, and full construction budgets are not disclosed.
+  split: Training data are generated from GSM8K/MATH training seeds and evaluated on GSM8K, MATH, and out-of-domain math benchmarks.
+    The paper reports nominal CRPS-15K/30K/60K pools; the public CRPS-30K artifact contains 27,256 train rows over 9,939 unique
+    problems and no validation/test split.
+  decontamination: unknown
+  license: The ACL paper is CC BY 4.0. The Hugging Face dataset card labels CRPS-30K as MIT. The GitHub README says the code
+    project is MIT, but the official repository tree checked on 2026-07-22 contains no LICENSE file; upstream GSM8K and MATH
+    terms and the rights status of generated derivatives require separate review.
+  lineage: GSM8K/MATH seed problem -> Qwen2.5-Math MCTS tree -> shortest correct anchor plus visit-weighted incorrect or longer-correct
+    contrast -> GPT-5-mini global/local critique -> GPT-5-mini synthesized path -> exact/SymPy final-answer filter -> uniform
+    sampling -> two-field problem/solution SFT release. The public dataset omits tree nodes, selected contrasts, critiques,
+    verifier records, rejects, and per-record seed identifiers, so final records cannot be audited end to end.
+  known_failure_modes:
+  - Binary terminal rewards are practical only in verifiable domains and do not establish the validity of intermediate reasoning.
+  - A final-answer match can retain spurious, unfaithful, or critique-inconsistent reasoning paths.
+  - The analyst can hallucinate divergence explanations or improvement rationales, and no independent critique-faithfulness
+    verifier is reported.
+  - The method depends on proprietary GPT-5-mini behavior and incurs substantial upfront inference cost omitted from the reported
+    SFT GPU-hour comparison.
+  - The abstract states that 60K versus 590K is a 20x reduction, but 590K/60K is about 9.8x; the approximately 20x comparison
+    is supported by CRPS-30K versus 590K and by the reported 10 versus 192 SFT GPU-hours.
+  - The public artifact named CRPS-30K has 27,256 examples, not 30,000, and reports only 9,939 unique problems versus the
+    approximately 15K seed problems described in the paper.
+  - The release contains only final problem/solution pairs, not MCTS trees, negative trajectories, critiques, verification
+    logs, rejection counts, or record-level provenance.
+  - The paper reports K=10 contrastive pairs from ten rollouts per problem but does not disclose pair reuse, replacement,
+    or the yield and mixture of hard versus soft negatives.
+  - The repository configuration routes a model named gpt-5-mini through an Anthropic backend and environment variables; this
+    released configuration requires clarification before it can be treated as executable replication evidence.
+  - The GitHub README claims an MIT LICENSE file that is absent from the checked repository tree.
+  - No explicit benchmark decontamination or immutable source/release revisions are reported.
+  citation_status: verified
+  confidence: medium
+  notes: ACL 2026 publication, arXiv 2604.11365, author-linked GitHub repository at commit 0d8a807c7783e1e15c24668e17a8450dc028c6a9,
+    public Hugging Face dataset, released configuration, and dataset card row/schema metadata checked on 2026-07-22. The recipe
+    and final data are available, but exact counts, licensing, configuration fidelity, cost accounting, and intermediate lineage
+    remain incomplete.
+inclusion_reason: CRPS is a direct data-construction recipe that turns both successful and failed search trajectories into
+  critique-conditioned SFT traces, with an official code repository and final dataset release that also expose important open-release
+  audit gaps.
+related: []
+tags:
+- crps
+- mcts
+- contrastive-trajectories
+- hard-negatives
+- soft-negatives
+- critique-synthesis
+- math-reasoning
+- sft
+- open-data
+- release-audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: CRPS contrasts successful MCTS paths with high-confidence failures or inefficient successes, uses GPT-5-mini
+  to synthesize verified reasoning traces, and releases 27,256 final math problem/solution pairs.
+why_it_matters: It operationalizes failure-aware search-trace distillation and shows favorable SFT scaling, while its missing
+  intermediate artifacts and count, cost, configuration, and license inconsistencies make it a useful release-audit case.
+card: null
+needs:
+- 'needs_counts: reconcile the approximately 15K seeds and nominal 30K set with 9,939 unique released problems and 27,256
+  rows'
+- 'needs_lineage: release seed IDs, MCTS trees, selected positive/negative paths, critiques, verification decisions, rejects,
+  and stage-wise yields'
+- 'needs_protocol: disclose hard/soft-negative mixture, pair reuse or replacement, analyst prompts/decoding revisions, random
+  seeds, and retry policy'
+- 'needs_cost: report explorer GPU hours, analyst/synthesis API tokens and monetary cost, verification cost, and total end-to-end
+  construction cost'
+- 'needs_license: add a repository LICENSE, reconcile code/data licensing, and document upstream GSM8K/MATH derivative-data
+  obligations'
+- 'needs_config: clarify the gpt-5-mini Anthropic-backend configuration and publish a tested paper-matching environment or
+  lockfile'
+- 'needs_decontamination: document benchmark-overlap checks and immutable source dataset revisions'
+- 'needs_claim_correction: distinguish the approximately 20x CRPS-30K versus 590K comparison from the approximately 9.8x CRPS-60K
+  versus 590K comparison'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official publication, arXiv, code repository, and public dataset are verified; full reproducibility is limited by
+    missing intermediate artifacts, unresolved count/license/configuration issues, and incomplete end-to-end cost metadata.

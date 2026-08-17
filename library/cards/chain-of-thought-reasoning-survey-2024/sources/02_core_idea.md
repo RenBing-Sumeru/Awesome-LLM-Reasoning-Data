@@ -1,0 +1,3 @@
+The survey's central organizing device is a taxonomy of advanced chain-of-thought research. It combines that taxonomy with a discussion of current frontiers, challenges, future directions, and open questions. For readers, this makes it easier to ask whether two papers change the same part of a reasoning setup or merely share a familiar label.
+
+The taxonomy separates the object being changed from the outcome being reported. A paper may alter the prompt, the form of intermediate reasoning, the task, or the evaluation, and those choices answer different questions. Keeping these dimensions visible prevents a reader from treating a result in one setting as evidence of an unrestricted capability improvement.

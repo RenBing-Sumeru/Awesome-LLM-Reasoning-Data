@@ -1,0 +1,1 @@
+Use LeMAJ as an audit template when legal outputs must be reviewed without a single reference answer: preserve claim-level records, retain the scoring rationale, and compare a sample against qualified human reviewers. Do not use its aggregate score as unsupervised legal advice or a substitute for jurisdiction-specific review.

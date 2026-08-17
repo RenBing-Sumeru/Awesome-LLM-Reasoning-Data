@@ -1,0 +1,1 @@
+一手来源是 Hendrycks 等人的 "Measuring Mathematical Problem Solving With the MATH Dataset"，NeurIPS 2021 Datasets and Benchmarks。论文解决的是语言模型缺少高难度、标准化竞赛数学 benchmark 的问题。收录边界是 answer-level mathematical problem solving，不是形式化定理证明，也不是过程标签监督。数据对象是一道竞赛风格数学题，带 subject、difficulty、完整解答和最终 boxed answer。它对 atlas 的价值是根节点：后续大量 math reasoning、PRM、verifier 论文都继承 MATH 作为题源或评测面。

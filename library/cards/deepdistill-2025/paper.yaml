@@ -1,0 +1,131 @@
+id: deepdistill-2025
+title: 'DeepDistill: Enhancing LLM Reasoning Capabilities via Large-Scale Difficulty-Graded Data Training'
+year: 2025
+venue: arXiv preprint
+authors:
+- Xiaoyu Tian
+- Sitong Zhao
+- Haotian Wang
+- Shuaiting Chen
+- Yiping Peng
+- Yunjie Ji
+- Han Zhao
+- Xiangang Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+- science
+- instruction_following
+- general_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2504.17565
+  arxiv: https://arxiv.org/abs/2504.17565
+  code: null
+  data: https://huggingface.co/datasets/a-m-team/AM-DeepSeek-Distilled-40M
+  project: https://github.com/a-m-team/a-m-models
+  huggingface: https://huggingface.co/datasets/a-m-team/AM-DeepSeek-Distilled-40M
+  doi: https://doi.org/10.48550/arXiv.2504.17565
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Named public math, code, science, instruction-following, multi-turn, and general-reasoning corpora from Section
+    2.1
+  trace_author: DeepSeek-R1-Distill-Qwen-1.5B; DeepSeek-R1-Distill-Qwen-7B; DeepSeek-R1
+  answer_format: Question plus a generated response containing think and answer spans, with provenance, verifier, difficulty,
+    and PPL metadata
+  process_fields:
+  - question_source
+  - answer_source
+  - category
+  - ground_truth
+  - test_case
+  - instruction_constrain
+  - pass_rate_r1
+  - pass_rate_7b
+  - pass_rate_1.5b
+  - verify_score
+  - ppl
+  - model_name
+  environment_or_substrate: Category-specific answer checking, sandboxed public tests, ifeval constraints, or learned judges
+  verifier_or_reward: Math-Verify with Qwen fallback; code tests; Qwen science judge; ifeval; Decision-Tree-Reward-Llama judge
+  terminal_predicate: Response score above its category threshold; per-query pass rate is the mean of four binary outcomes
+recipe_metadata:
+  base_model: Qwen2.5-32B; Qwen2.5-72B
+  teacher: DeepSeek-R1-Distill-Qwen-1.5B; DeepSeek-R1-Distill-Qwen-7B; DeepSeek-R1
+  generator: Three teachers with four independent responses per query
+  filtering_rule: Exact deduplication; content filters; AIME2024 exact/semantic decontamination; PPL at most 20; repeated-string
+    and format filters; category thresholds plus CV selection
+  sampling_protocol: Four responses per query from each teacher; prompts and decoding parameters undisclosed
+  rollout_count: 12
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Two-stage difficulty-aware SFT with CV-based annealing selection
+audit:
+  source_mixture: Thirty named or grouped public sources; source-by-source license compatibility is not established
+  split: Public files are organized by category, teacher size, and pass index; train/dev/test splits are undisclosed
+  decontamination: AIME2024 exact/near matching and bge-m3 similarity above 0.9; broader benchmark decontamination unknown
+  license: CC-BY-NC-4.0 on the official Hugging Face dataset card
+  lineage: Question source, answer source, category, model name, and per-teacher pass rates are included
+  known_failure_modes:
+  - Official dataset card says only a subset of the complete dataset is open-sourced
+  - Dataset card warns that some ground-truth labels may be inaccurate
+  - Learned judges and generated instruction constraints may introduce evaluator bias
+  - Code checking uses at most ten available public tests
+  - Teacher decoding settings and category-specific CV thresholds are undisclosed
+  - Documented decontamination targets AIME2024 only
+  - Paper and dataset card disagree on the model size used for PPL scoring
+  citation_status: verified
+  confidence: high
+  notes: The official GitHub link is a project hub containing papers and assets, not a released end-to-end DeepDistill implementation.
+inclusion_reason: Large difficulty-graded reasoning-data release and construction recipe with prompt provenance, multi-teacher
+  responses, heterogeneous verification, and pass-rate metadata.
+related: []
+tags:
+- difficulty-graded-data
+- reasoning-distillation
+- multi-teacher
+- open-data
+- data-filtering
+- mixed-verification
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Builds about 40M mixed-domain teacher responses for roughly 3.34M sourced queries and grades them with category-specific
+  verification, while the official data card says the public release is only a subset.
+why_it_matters: Exposes a large trace-and-feedback object for studying difficulty-aware data selection, together with enough
+  caveats to audit verifier dependence and release completeness.
+card: null
+needs:
+- 'unknown: teacher decoding parameters and prompts'
+- 'unknown: category-specific CV thresholds'
+- 'unknown: exact released-versus-complete coverage'
+- 'unknown: source-license compatibility'
+- 'unknown: rejected examples'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Verified against arXiv v3 and source, the official Hugging Face card/API, and the linked AM Team GitHub tree.

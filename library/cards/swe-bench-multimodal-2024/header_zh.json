@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-bench Multimodal 将仓库修复任务扩展到视觉软件领域。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2025 / arXiv 的 multimodal SWE benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "John Yang 等（Stanford University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T13:36:22Z"
+}

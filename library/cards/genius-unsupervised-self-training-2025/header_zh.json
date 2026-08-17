@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Genius 将通用查询转换为由同一策略的未来 continuation 分数排序的步骤级轨迹偏好并用于 ACO；该分数不是正确性 verifier，完整偏好数据也未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "无监督自我训练与步骤级偏好构造方法",
+  "best_for_ch": "研究推理数据构造、自奖励、步骤级偏好学习与数据审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Fangzhi Xu、Hang Yan、Chang Ma、Haiteng Zhao、Qiushi Sun、Kanzhi Cheng、Junxian He、Jun Liu、Zhiyong Wu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

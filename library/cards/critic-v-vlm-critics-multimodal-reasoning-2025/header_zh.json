@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布按规则奖励排序的多模态批评偏好数据，用自然语言 critique 修正视觉推理路径，可直接训练 critic 与策略模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态 critic 偏好数据与 DPO 方法",
+  "best_for_ch": "需要训练视觉语言 critic、自然语言反馈或多模态推理纠错模型的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Di Zhang、Jingdi Lei、Junxian Li、Xunzhi Wang、Yujie Liu、Zonglin Yang、Jiatong Li、Weida Wang、Suorong Yang、Jianbo Wu、Peng Ye、Wanli Ouyang、Dongzhan Zhou",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Tool-R1 用 response-masked GRPO 训练 Thought-Code-Observation 工具轨迹，并以回答 judge、代码解析/执行奖励和动态队列复用 episode；官方仓库尚未发布可复用实现或训练工件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能体工具使用强化学习配方与轨迹反馈研究",
+  "best_for_ch": "研究 agent RL、工具环境反馈、在线轨迹复用与发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yabo Zhang, Yihan Zeng, Qingyun Li, Zhen Hu, Kavin Han, Wangmeng Zuo",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

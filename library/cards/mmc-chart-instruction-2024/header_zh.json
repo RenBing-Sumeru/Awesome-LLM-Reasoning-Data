@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MMC 汇集超过 40.9 万条图表问答记录与 25 万条对齐样本，覆盖科学图表和非科学图表。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "训练覆盖科学与日常可视化的通用图表助手",
+  "confidence_ch": "高",
+  "authors_ch": "Fuxiao Liu, Xiaoyang Wang, Wenlin Yao, Jianshu Chen, Kaiqiang Song, Sangwoo Cho, Yaser Yacoob, Dong Yu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

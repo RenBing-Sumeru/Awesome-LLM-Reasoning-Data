@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PPE 将 12 个领域的人类偏好与可验证正确性代理指标连接到真实 RLHF 后效，适合检验奖励数据是否真正有训练价值。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "奖励模型后效预测评测与偏好代理数据论文",
+  "best_for_ch": "需要以较低成本预测奖励模型是否能带来真实 RLHF 下游人类偏好改善的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Evan Frick, Tianle Li, Connor Chen, Wei-Lin Chiang, Anastasios N. Angelopoulos, Jiantao Jiao, Banghua Zhu, Joseph E. Gonzalez, Ion Stoica",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:17:22Z"
+}

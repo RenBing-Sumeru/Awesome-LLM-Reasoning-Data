@@ -1,0 +1,170 @@
+id: stepwise-reasoning-checkpoint-analysis-2025
+title: 'Stepwise Reasoning Checkpoint Analysis: A Test Time Scaling Method to Enhance LLMs'' Reasoning'
+year: 2025
+venue: Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing
+authors:
+- Zezhong Wang
+- Xingshan Zeng
+- Weiwen Liu
+- Yufei Wang
+- Liangyou Li
+- Yasheng Wang
+- Lifeng Shang
+- Xin Jiang
+- Qun Liu
+- Kam-Fai Wong
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematics
+- reasoning
+- test_time_compute
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.866/
+  arxiv: https://arxiv.org/abs/2505.17829
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.866
+  venue: https://aclanthology.org/2025.emnlp-main.866/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.866/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.866.bib
+data_object:
+  prompt_source: Evaluation prompts come from GSM8K, MATH500, AIME1, and the English, mathematical, no-image subset of OlympiadBench.
+    SRCA does not release a new prompt or trace manifest; the paper describes 8,500 GSM8K items, 500 MATH500 questions, 933
+    AIME1 problems, and 674 evaluated OlympiadBench questions.
+  trace_author: 'The evaluated policy model generates step-delimited reasoning paths and checkpoint completions at test time:
+    Llama-3.2-1B-Instruct in main experiments and Qwen3-0.6B in an additional experiment. No public trace release was verified.'
+  answer_format: At a detected reasoning-step boundary, the current prefix is paired with the fixed cue "So, the answer is
+    " and the immediate continuation is recorded as a checkpoint answer. Candidate records in the described method include
+    a reasoning prefix/path, checkpoint answer, step-level PRM score, cluster membership/aggregate score, reconstructed prefix-plus-answer
+    candidate, and final selected candidate; the precise serialization is unknown.
+  process_fields:
+  - prompt
+  - step-delimited reasoning prefix or path
+  - checkpoint answer
+  - step-level PRM score
+  - answer cluster and aggregate cluster score
+  - selected beam/path
+  - reconstructed candidate
+  - final PRM score and final choice
+  environment_or_substrate: Training-free autoregressive tree search with policy KV-cache rollback, a process reward model,
+    sampling budget N, beam width M, and optional threshold-based early stopping. It is not an external tool environment and
+    has no released environment image, source repository, or reset manifest.
+  verifier_or_reward: 'Two external PRMs are used: Llama3.1-8B-PRM-Deepseek-Data, scored as the probability of "+" after dialogue
+    formatting, and Skywork-o1-Open-PRM-Qwen-2.5-7B, whose last-token 0–1 value-head score is used. PRM scores select paths/clusters
+    and score reconstructed candidates; gold benchmark correctness is only used for evaluation, not the online selector.'
+  terminal_predicate: Among complete natural paths and checkpoint-augmented prefix-plus-answer candidates, return the candidate
+    with highest PRM score. With early stopping, stop when a checkpoint answer score exceeds threshold tau; this is a search-stop
+    rule, not a proof of answer correctness.
+recipe_metadata:
+  base_model: Llama-3.2-1B-Instruct is the main policy; Llama-3.1-70B-Instruct is an independent-sampling comparison; Qwen3-0.6B
+    is used in Appendix B.3. The paper does not train a new policy.
+  teacher: unknown
+  generator: The policy LLM generates N step-delimited paths and immediate checkpoint completions. Checkpoint Injection saves
+    the generation state, appends the answer cue, records the answer, and restores the original state/KV cache.
+  filtering_rule: Answer-Clustered Search groups paths with identical checkpoint answers, sums PRM path scores within each
+    cluster, sorts clusters, and selects top-scored paths round-robin across clusters until M beams survive. Candidate augmentation
+    keeps all checkpoint completions as PRM-scored endpoints. Exact answer normalization and implementation details beyond
+    equality in the algorithm are not disclosed.
+  sampling_protocol: Sampling methods use temperature 0.8 and top_p 0.9. The paper varies N over 16, 32, 64, and 128; the
+    main Table 1 setting uses N=128 and M=4. At later steps each of M survivors generates N/M subpaths. Random seeds, decoding
+    implementation, stop-token handling, and released run manifests are unknown.
+  rollout_count: Per prompt, the search budget N is 16–128 sampled paths at each step; no aggregate number of prompts, checkpoint
+    completions, paths, or retained candidates is released by SRCA.
+  temperature: '0.8'
+  inference_budget: top_p=0.9; N=16, 32, 64, or 128; M=4 for path-selection methods. Early stopping tests tau from 0.5 to
+    1.0, with tau=1 meaning no early stop. Appendix cost analysis assumes 256 input tokens and 4,096 output tokens.
+  optimizer_or_scaffold: Training-free PRM-guided search; no optimizer. ACS uses PRM-scored answer clusters and CCA rescoring
+    of reconstructed candidates. Path score in main experiments is the last step's PRM score.
+audit:
+  source_mixture: Four public math evaluation sources and policy-generated test-time reasoning/checkpoint completions. The
+    exact item versions, prompts, formatting exclusions, and per-run sample/trace composition are not released as an SRCA
+    manifest.
+  split: SRCA reports evaluation across GSM8K, MATH500, AIME1, and a 674-question OlympiadBench subset. It defines no train/dev/test
+    split or new dataset split, and does not release the precise item IDs or evaluation prompts used.
+  decontamination: The paper does not report policy-pretraining, PRM-training, benchmark, prompt-template, or test-time trace
+    overlap controls. The use of public math benchmarks makes such exposure a material unknown.
+  benchmark_overlap: SRCA evaluates on public benchmark items, but no released checkpoint/trace manifest enables an audit
+    of overlap with PRM training data, policy training data, or other evaluation suites.
+  license: No SRCA code or data release and no artifact-specific license were verified. The ACL paper page's CC BY license
+    applies to the publication, not automatically to benchmark prompts, model traces, PRMs, or a future implementation.
+  lineage: Benchmark prompt -> policy path prefix at a detected delimiter -> injected answer cue -> checkpoint completion
+    -> restored continuing path -> PRM step score -> answer cluster/round-robin survival -> reconstructed candidate -> PRM
+    final selection. Record-level prompt IDs, checkpoint strings, state identity, score logs, and provenance are unavailable.
+  release_version: No official code, data, project, or Hugging Face release was verified as of 2026-07-23. The citable paper
+    artifacts are ACL Anthology 2025.emnlp-main.866 and arXiv:2505.17829v1.
+  successful_failed_retention: The method conceptually generates discarded and surviving paths, but no complete log shows
+    which branches, checkpoint candidates, PRM failures, or early-stop decisions were retained or dropped.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Step delimiters may not coincide with semantic reasoning units and may be absent in conversational or slow-thinking output
+    formats.
+  - Checkpoint-augmented candidates can be incomplete, reducing explanation quality and transparency; this is an author-stated
+    limitation.
+  - PRM error, calibration, formatting sensitivity, and last-step aggregation can change path survival and final selection.
+  - Exact-answer clustering can split equivalent forms or merge superficial matches; answer normalization is not specified
+    in the released paper algorithm.
+  - The inserted answer cue and KV rollback are implementation-sensitive, and no code/trace release permits independent verification
+    of state restoration.
+  - Accuracy gains on public benchmarks do not validate every checkpoint as a correct process label or establish decontamination.
+  citation_status: verified
+  confidence: high
+  notes: The final EMNLP paper, its appendix, ACL bibliography, and arXiv v1 were checked on 2026-07-23. Searches found no
+    author-maintained code/data release; this is an evidence boundary, not proof that no future release exists.
+inclusion_reason: A concrete test-time search recipe that turns normally discarded intermediate reasoning states into answer-conditioned
+  diversity signals and PRM-scored final candidates, while making the dependence on step formatting and process-reward behavior
+  auditable.
+related: []
+tags:
+- stepwise-reasoning
+- checkpoint
+- answer-clustered-search
+- process-reward-model
+- test-time-scaling
+- candidate-augmentation
+- mathematical-reasoning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: SRCA probes a reasoning prefix with a temporary answer cue, uses checkpoint answers to diversify PRM-guided
+  search and augment final candidates, but releases no code, traces, or replay ledger.
+why_it_matters: It gives the rollout-search track an explicit intermediate-state object and selection contract, while showing
+  that test-time accuracy cannot establish checkpoint-label quality, PRM calibration, or reproducibility.
+card: null
+needs:
+- 'needs_code: official implementation of checkpoint injection, KV rollback, clustering, scoring, early stopping, and decoding'
+- 'needs_trace_release: prompt IDs, full paths, checkpoint answers, PRM score sequences, clusters, candidates, selections,
+  and failed branches'
+- 'needs_reproducibility: model/PRM revisions, prompt templates, seeds, stop rules, normalization, hardware, runtime, and
+  exact benchmark manifests'
+- 'needs_prm_audit: calibration, error analysis, formatting sensitivity, version/license, and overlap with evaluation data'
+- 'needs_decontamination: policy/PRM training exposure and benchmark-overlap analysis'
+- 'needs_license: artifact-specific license and benchmark/trace reuse terms'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Official ACL proceedings and arXiv full text were verified. The paper is citable and method details are auditable,
+    but no official code, data, or execution artifact was verified.

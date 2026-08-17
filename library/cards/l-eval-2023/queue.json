@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T09:18:40Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "暂缓 中等，较经典但利用率下降 现在用Longbench比较多",
+    "updated_at": "2026-07-15T09:18:40Z"
+  }
+}

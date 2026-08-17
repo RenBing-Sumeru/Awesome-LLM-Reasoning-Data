@@ -1,0 +1,1 @@
+Read the two axes first, then place one familiar paper in a cell. Ask what it changes at input time and output time, and who or what judges success. Keep a separate note for fixed learned behavior and added test-time computation. This makes later comparisons much less misleading.

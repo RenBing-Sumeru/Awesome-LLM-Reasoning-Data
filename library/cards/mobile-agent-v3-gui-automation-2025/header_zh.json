@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Mobile-Agent-v3 构建 GUI 自动化基础智能体和轨迹生成流程。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 GUI automation agent paper",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiabo Ye 等（Tongyi Lab, Alibaba Group）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-14T10:11:07Z"
+}

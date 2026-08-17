@@ -1,0 +1,8 @@
+- **公开评测面：** 没有train/dev/test或hidden partition。goal、golden-step数、key node与规则材料均公开，可被用于记忆、任务特定调优和XPath verifier gaming。从零编写任务只能降低直接复制任务的风险，不等同于训练语料重叠审计。
+- **Verifier误差：** 表12包含5个false positive和22个false negative。XPath谓词观察选定GUI元素/动作，而不是完整任务语义、屏外服务器状态、隐私或有害中间副作用。显式Complete信号还会使实际任务完成与最终标签发生分离。
+- **重置与状态泄漏：** 人类判定reset成功率高于90%，但并非完美。task/app逆操作无法保证设备、账户、cache、推荐、库存、消息或服务器状态完全一致。infeasible任务通过放宽成功条件处理，这会改变基准实际奖励的行为。
+- **环境漂移与回放：** 论文使用三台物理手机、带版本应用、已验证账户和远程平台，但准确phone/OS镜像、credentials政策、账户fixture、服务器状态、dependency lock及公开平台snapshot均为unknown。论文承诺80个APK，但检查的官方仓库没有可核实APK bundle。
+- **轨迹发布边界：** 每项任务至少五条路径参与规则验证，baseline episode产生所有报告结果，但完整成功、失败、reset失败、超时、retry及discarded trajectory语料没有发布。README描述的是本地生成轨迹，不是不可变的论文结果发布。
+- **噪声与预算混杂：** 干扰以每步20%概率发生，但seed和event manifest未知。retry次数会显著改变pass rate；三倍golden-step上限和固定等待时间还可能把scaffold效率差异表现成reasoning差异。
+- **数据/发布质量：** 仓库没有semantic release或checksum manifest，GitHub还报告`longtail.csv`第118行存在非法引号。parser行为、可变`main`与应用更新都可能改变task或label；论文自身观察到版本更新后分数最多波动5%。
+- **权利、隐私与范围：** 数据采用CC BY-NC-SA 4.0，代码采用Apache-2.0，但第三方APK/内容/账户权利并不会被这两种许可证自动解决。作者称已移除可能暴露隐私的数据，但filter规格和账户安全审计未发布。基准缺少cross-app任务，也不能证明部署安全性。

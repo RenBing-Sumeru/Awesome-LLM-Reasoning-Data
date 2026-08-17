@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentBench 提供带明确评测契约的工具使用与智能体环境评测面，用各环境特有的成功与失败信号量化推理、决策和指令遵循行为。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "ICLR 2024 的 benchmark / evaluation surface",
+  "best_for_ch": "研究 tool-use、agent trajectory、环境反馈契约和可复现评测的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiao Liu 等（Tsinghua University、The Ohio State University、UC Berkeley）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T06:45:49Z"
+}

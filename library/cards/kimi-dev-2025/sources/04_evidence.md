@@ -1,0 +1,9 @@
+The development environment pool is reported as 2,356 SWE-Gym tasks, 3,846 SWE-bench-extra tasks, and 3,671 R2E-Gym-Lite tasks, totaling 9,873. The internal platform is described as Kubernetes-based, with more than 10,000 concurrent sandboxes and more than 25,000 Docker images. Those counts describe scale under the paper's system; they do not supply image identity or reproducibility.
+
+On SWE-bench Verified, the adapted model reports 48.6% pass@1 and 74.0% pass@10 under the paper's agent evaluation. The nested-data study uses 100, 200, 500, 1,000, 2,000, and full trajectory subsets. A 200-trajectory SFT-prior point degrades, while the RL prior remains more effective at low adaptation-token budgets. These comparisons are conditional on the reported shuffle, prompts, model checkpoints, and execution setup.
+
+Long-horizon analysis reports that the adapted RL prior continues improving beyond 70 turns, whereas SFT, mid-trained, and base priors plateau at roughly 70, 60, and 50 turns. A Kimi-K2 stage annotator provides a coarse analysis of behavior, and the reflection category includes test-writing activity; it should not be read as a ground-truth causal decomposition.
+
+At test time, self-play samples 40 candidate patches and 40 tests per issue, drops tests that do not fail on the buggy repository, and cross-executes retained tests before and after candidate patches. Under the reported protocol, SWE-bench Verified moves from 48.0% at 1-by-1 sampling to 60.4% at 40-by-40. This is evaluation-time selection evidence, not additional training evidence.
+
+The official resources expose four evaluation JSONL files with generated patches, tests, logs, and results, plus rollout/evaluation code and preprocessed-repository instructions. The official Hugging Face release provides the final 73B BF16 Agentless model. It does not separately release the agent-adapted checkpoint, mid-training/cold-start/RL corpora, internal Docker fleet, or paper-run training code.

@@ -1,0 +1,1 @@
+Single-domain agent benchmarks usually use environment-specific error labels. AgentRx normalizes several log types into a shared failure taxonomy and requires the decisive step and an explanation. The change is a cross-environment diagnostic interface rather than a reward function for one tool. It evaluates transfer of both error categories and step localization in one task.

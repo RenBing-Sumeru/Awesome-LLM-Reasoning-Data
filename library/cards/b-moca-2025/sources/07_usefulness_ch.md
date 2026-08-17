@@ -1,0 +1,1 @@
+B-MoCA 可作为 mobile-agent benchmark schema：保存 task ID、instruction、目标 app、environment ID、随机化配置字段、observation modality、action representation、detector rule、terminal status、run seed 和 agent prompt/checkpoint。它适合审计泛化，因为同一任务可在多种设备配置下评测。用于 atlas 时要把训练环境、测试环境、human demonstration 和 detector outcome 分开。复用清单应包括版本化任务列表、被删除的高随机任务、detector 源码、emulator image、模型 API 日期和 app/network 依赖。

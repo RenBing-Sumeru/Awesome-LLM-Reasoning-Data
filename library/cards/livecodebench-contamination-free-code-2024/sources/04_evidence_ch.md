@@ -1,0 +1,1 @@
+论文的关键证据是：四类代码场景中的模型排序和绝对表现并不等价，只看 code generation 会漏掉重要能力差异。官方发布包含项目榜单、GitHub 仓库和 Hugging Face 数据集子集，包括 lite code-generation 子集。单条证据是可执行或可匹配的：生成/修复的程序通过 evaluator，或预测输出与期望答案一致。证据边界是 harness：分数受任务时间范围、来源平台规则、hidden tests、runtime 限制、prompt 模板、pass@k、依赖版本，以及公开发布后是否进入训练数据影响。

@@ -1,0 +1,3 @@
+PaRS studies construction of SFT supervision for QD-LED recipe-to-maximum-EQE prediction. An internal 11k device-recipe dataset is split 10k/1k; a teacher produces a rationale and JSON EQE prediction for each recipe. The paper treats a trace as usable only if its numerical prediction is close to an unreleased wet-lab target and respects simple physics constraints.
+
+This is a Rollout/Search/Test-Time Trace entry because each prompt has a candidate sequence, acceptance contract, early stop, and selected-or-discarded outcome. The actual records are not released: readers cannot inspect prompts, recipes, candidate traces, rejected traces, or gate outputs. The paper is therefore a construction recipe and audit reference, not a reusable materials dataset.

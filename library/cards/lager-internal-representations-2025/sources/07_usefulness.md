@@ -1,0 +1,1 @@
+For an open-weight evaluator audit, keep the backbone and prompt fixed, reserve a human-labelled calibration split, and compare last-layer, expected-score and cross-layer scores with confidence distributions. Re-run calibration after changing rubric or scale, and separately red-team prompt and reference sensitivity; the reported alignment gain alone is not a safety guarantee.

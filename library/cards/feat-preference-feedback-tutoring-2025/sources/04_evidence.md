@@ -1,0 +1,3 @@
+The paper reports that adding a small 5–10% portion of DIRECT-Manual to DIRECT-Generated yields better performance than using 100% DIRECT-Manual alone. This is the key experimental evidence for the proposed cost-effective mixture. It supports the authors’ English-tutoring tasks, generation procedures, and evaluation configuration, not a general law that small human mixtures always dominate fully human data.
+
+The three named datasets are also direct evidence of differing provenance: DM is human–LLM collaborative, DG is LLM-only, and DA mixes DG with DM. The paper’s abstract does not disclose every dataset size, annotator detail, or classroom outcome, so those facts should be marked unverified unless checked in the paper or release.

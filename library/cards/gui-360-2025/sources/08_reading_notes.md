@@ -1,0 +1,5 @@
+- Read §3 and Appendix B first to map one Office episode: shared request/template identifiers, synchronized visual and accessibility state, textual observation/thought, hybrid GUI/API action, status, and EvaAgent evaluation fields.
+- Keep three boundaries separate: EvaAgent's whole-trajectory GPT-4.1 judgment, the released static step scorers, and an executable terminal-state verifier. Only the first two are documented; the third is absent.
+- Remember the scale decomposition: 17,189 successful plus 62,170 failed equals 79,359 trajectories, with 1,225,177 total steps and an approximately 574 GB release.
+- Inspect Tables 7–10 together: SFT improves reported grounding and action-prediction scores, but visual+A11y action prediction remains below visual-only SFT, and none of these static scores certifies data quality or replay.
+- Pin GitHub commit `a9f9d2e6f125c8cbc176b46a74aeef76ed16f0f6` and the HF files, then audit query-count conflicts, split/template leakage, failure lineage, EvaAgent errors, third-party UI rights, and privacy controls before reuse.

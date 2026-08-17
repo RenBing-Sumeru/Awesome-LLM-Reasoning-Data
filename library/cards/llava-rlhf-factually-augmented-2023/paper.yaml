@@ -1,0 +1,63 @@
+id: llava-rlhf-factually-augmented-2023
+title: Aligning Large Multimodal Models with Factually Augmented RLHF
+year: 2023
+venue: ACL 2024 Findings
+authors:
+- Zhuqing Jiang
+- Yue Zhang
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2024.findings-acl.775/
+  arxiv: https://arxiv.org/abs/2309.14525
+  code: https://github.com/llava-rlhf/LLaVA-RLHF
+  data: https://huggingface.co/datasets/zhiqings/LLaVA-Human-Preference-10K
+  project: null
+  huggingface: https://huggingface.co/datasets/zhiqings/LLaVA-RLHF-Data
+data_object:
+  prompt_source: See the official paper and dataset release.
+  trace_author: See the official construction description.
+  answer_format: image-text conversations with human preferences over answers and factually augmented reward-learning context
+  verifier_or_reward: See the official paper and dataset release.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See the official paper and dataset release.
+  annotation_policy: See the official paper and dataset release.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: Dataset-specific provenance, license, contamination, and transfer risks require review.
+verification:
+  link_verified: true
+  sources:
+  - https://arxiv.org/abs/2309.14525
+  - https://huggingface.co/datasets/zhiqings/LLaVA-RLHF-Data
+inclusion_reason: 图文问答的人类偏好比较结合图像事实信息，可用于降低多模态奖励模型的幻觉。
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: Aligning Large Multimodal Models with Factually Augmented RLHF releases image-text conversations with human
+  preferences over answers and factually augmented reward-learning context for preference learning, reward modeling, evaluation,
+  and feedback audit.
+why_it_matters: 图文问答的人类偏好比较结合图像事实信息，可用于降低多模态奖励模型的幻觉。

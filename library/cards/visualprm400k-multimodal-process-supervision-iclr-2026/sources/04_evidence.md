@@ -1,0 +1,1 @@
+Evidence should be checked against the primary paper for tasks, sample counts, step segmentation, label provenance, metrics, and outcome-supervision baselines. Official code and downloadable data are recorded only when the primary source identifies them; a paper URL is not itself an artifact link.

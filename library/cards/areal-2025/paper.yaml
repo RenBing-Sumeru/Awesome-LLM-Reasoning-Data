@@ -1,0 +1,188 @@
+id: areal-2025
+title: 'AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Wei Fu
+- Jiaxuan Gao
+- Xujie Shen
+- Chen Zhu
+- Zhiyu Mei
+- Chuyi He
+- Shusheng Xu
+- Guo Wei
+- Jun Mei
+- Jiashu Wang
+- Tongkai Yang
+- Binhang Yuan
+- Yi Wu
+source_role:
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- code_generation
+- asynchronous_rl_systems
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.24298
+  arxiv: https://arxiv.org/abs/2505.24298
+  code: https://github.com/areal-project/AReaL
+  data: null
+  project: https://areal-project.github.io/AReaL/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.24298
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/33c00862bfa29ac72ecf630a41e19352-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The NeurIPS experiment uses open-source DeepScaleR data for math and DeepCoder data for code training. These
+    named upstream inputs are paper-reported experiment sources; AReaL does not publish a canonical reasoning dataset, exact
+    sample manifests, paper-run prompt files or a unified source-mixture ledger.
+  trace_author: AReaL rollout workers continuously generate policy responses. In-flight weight updates can interrupt decoding,
+    discard the old-weight KV cache, recompute it and continue an unfinished sequence; a stored trajectory can therefore contain
+    segments from multiple policy versions. No public paper-run rollout, token-logprob, policy-version or reward-event export
+    was verified.
+  answer_format: Single-turn prompt-to-reasoning-response trajectories. The policy state is the question followed by previously
+    generated tokens; math answers are rule-checked and coding responses are parsed/executed against unit tests by the reward
+    service.
+  process_fields:
+  - prompt
+  - generated_token
+  - reasoning_response
+  - final_answer
+  - extracted_code
+  - unit_test_result
+  - reward
+  - behavior_policy_version
+  - proximal_policy_version
+  - staleness
+  - trajectory
+  environment_or_substrate: AReaL is an asynchronous systems substrate, not a released canonical environment. Separate GPU
+    clusters host interruptible rollout workers and trainer workers; a CPU-side reward service and TCP transfer are overlapped
+    with generation. The paper implementation uses Python/PyTorch, SGLang 0.4.6, Megatron-Core 0.11.0 and SLURM.
+  verifier_or_reward: 'The paper uses rule-based final-token outcome feedback: +5 when an answer is correct and -5 otherwise.
+    Math uses string matching; coding extracts code and executes unit tests. The reward service evaluates responses, but task-specific
+    parsing, unit-test suite versions, edge cases, raw decision traces and verifier release state are not supplied as a single
+    audit artifact.'
+  terminal_predicate: Reported rewards are non-zero only at the final action, corresponding to answer correctness. Rollouts
+    otherwise stop at generation completion or configured limits; interrupting a rollout to load new weights is not itself
+    a disclosed task-success predicate. The paper does not release per-record terminal reasons.
+recipe_metadata:
+  base_model: DeepSeek-R1 distilled Qwen-series models (R1-Distilled-Qwen) spanning 1.5B to 32B parameters; Appendix C additionally
+    evaluates DeepSeek-Distilled-Llama-8B.
+  teacher: null
+  generator: Dedicated rollout workers generate continuously from the policy. A controller reads prompts, sends generation
+    requests, sends responses to the reward service, stores trajectory-plus-reward in a replay buffer and calls weight updates
+    after trainer updates.
+  filtering_rule: Staleness control rate-limits/rejects new generation requests that would violate the maximum permitted staleness;
+    older buffered trajectories are prioritized and each replay-buffer item is used once. No disclosed answer-quality filtering,
+    per-record exclusion rationale or retained/rejected sample manifest was verified.
+  sampling_protocol: Appendix B reports a 512-prompt batch, 16 answers per prompt, temperature 1.0, top-p 1.0, fixed seed
+    1, and staleness settings eta=8 for math / eta=4 for code unless otherwise specified. The paper reports a maximum generated
+    length of 27,648 in its configuration table, while Table 1 describes a 32K maximum generation length; this draft preserves
+    the discrepancy rather than resolving it by inference.
+  rollout_count: 16
+  temperature: 1.0
+  inference_budget: 'Configuration table: maximum prompt length 1,024 and maximum generation length 27,648; Table 1 states
+    32K maximum generation length. The paper does not supply a per-run immutable configuration export to reconcile these descriptions.'
+  optimizer_or_scaffold: 'Staleness-aware decoupled PPO: behavior policy and proximal policy are separated, and the parameters
+    before each model update serve as the proximal policy. PPO uses no critic or reference model, GAE lambda=1, gamma=1, global-batch
+    advantage normalization, four minibatches, Adam and distributed parameter storage. System scaffolding includes separate
+    rollout/training clusters, an interruptible rollout worker, replay buffer, controller, reward service, dynamic padding-free
+    packing and asynchronous CPU reward/TCP work.'
+audit:
+  source_mixture: 'Only two upstream training-source names are stated: DeepScaleR math data and DeepCoder code data. The report
+    does not publish source-row IDs, prompt counts, math/code mixing rules, preprocessing, deduplication, rejected instances,
+    source versions or checksums.'
+  split: The paper evaluates math with the Qwen protocol and code with LiveCodeBench (2024-08-01 to 2025-02-01) using official
+    protocol, with additional named benchmarks in Appendix C. It does not provide an immutable source-ID-level training/evaluation
+    map, training split file, or paper-run prompt manifest.
+  decontamination: LiveCodeBench is named as an official evaluation protocol, but no dedicated semantic contamination, train/evaluation-overlap,
+    answer-leakage, benchmark-source or reward-verifier leakage audit was verified for DeepScaleR/DeepCoder inputs or the
+    generated rollouts.
+  license: AReaL repository code is Apache-2.0. The paper says its data and base models come from the open-source community
+    and cites the original sources, but the inspected paper/repository do not provide one source-level rights and license
+    ledger for all training rows, model artifacts, unit-test suites, generated chain-of-thought trajectories or reward outputs.
+  lineage: Named upstream math/code data -> asynchronous prompts -> one or more policy-version rollout segments -> CPU reward
+    service -> single-use replay-buffer trajectory -> staleness-aware decoupled PPO update -> rollout-worker weight update.
+    Per-record source, model-version spans, reward decisions, buffer order, update association and final-checkpoint provenance
+    are not released as an immutable ledger.
+  known_failure_modes:
+  - Unbounded or excessive staleness harms final performance even with the decoupled PPO objective; the paper reports a throughput-performance
+    trade-off rather than staleness invariance.
+  - Interruptible rollouts join segments generated by different policy versions; reproducing or auditing their off-policy
+    correction requires behavior/proximal-policy metadata and token-level evidence that are not released as a run ledger.
+  - Exact math string matching and code unit tests can be incomplete or brittle proxies for semantic reasoning correctness,
+    security, robustness or general program validity.
+  - The reported large-scale end-to-end results are single trials under fixed seed 1 and contain no error bars, according
+    to the paper checklist.
+  - The 27,648-token configuration-table limit and Table 1's 32K statement are not reconciled by a paper-run configuration
+    artifact.
+  - The current public AReaL repository has evolved beyond the 2025 paper and links a broad Models & Data collection; neither
+    fact establishes a versioned release of the NeurIPS experiment's exact prompts, trajectories, rewards or checkpoints.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings paper, arXiv record, AReaL project documentation, areal-project/AReaL repository and
+    Apache-2.0 license were checked on 2026-07-16. They verify an asynchronous RL systems release and paper-level experimental
+    recipe, not a released reasoning dataset, rollout/reward ledger, canonical verifier bundle or final-checkpoint package.
+inclusion_reason: A NeurIPS 2025 systems contribution that makes the policy-version, staleness, reward-service and replay-buffer
+  contracts of asynchronous RL explicit, while showing the large provenance and verification gap between runnable infrastructure
+  and an auditable reasoning-data release.
+related: []
+tags:
+- areal
+- asynchronous-rl
+- systems
+- ppo
+- decoupled-ppo
+- staleness
+- rollout
+- reasoning
+- programmatic-reward
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: AReaL releases Apache-2.0 infrastructure and a NeurIPS asynchronous PPO recipe for math/code RL, but no
+  canonical reasoning corpus, paper-run rollout/reward ledger, immutable data split or final-checkpoint provenance package
+  was verified.
+why_it_matters: It makes asynchronous RL's operational feedback contract inspectable—especially stale and cross-version rollouts—while
+  demonstrating that high-throughput code and reported hyperparameters do not by themselves disclose source rights, reward
+  decisions, trajectory lineage or evaluator validity.
+card: null
+needs:
+- 'needs_release: immutable paper-run source/prompt manifests, preprocessing and filtering decisions, train/evaluation split
+  maps, version hashes and checksums'
+- 'needs_audit: rollout-level token/logprob/policy-version spans, replay-buffer order, staleness decisions, reward/terminal
+  events and update-to-checkpoint lineage'
+- 'needs_verifier: exact math parser/string-match contract, code extraction and unit-test versions/sandboxes, decision logs
+  and reward-hacking robustness analysis'
+- 'needs_audit: source-level rights/licenses and semantic contamination/overlap analysis for DeepScaleR, DeepCoder, base models,
+  evaluations and generated reasoning traces'
+- 'needs_reproduction: a version-pinned paper release, reconciled generation budget, cluster/dependency images, scheduler
+  settings, seeds, multi-run statistics and final/intermediate checkpoints'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official NeurIPS, arXiv and AReaL project/repository links are verified. They establish code and a detailed systems
+    recipe; the absent data/trajectory/verifier/checkpoint artifacts remain unresolved rather than inferred.

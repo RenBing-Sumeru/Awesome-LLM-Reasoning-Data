@@ -1,0 +1,131 @@
+id: socratic-zero-2025
+title: 'Socratic-Zero: Bootstrapping Reasoning via Data-Free Agent Co-evolution'
+year: 2025
+venue: arXiv preprint
+authors:
+- Shaobo Wang
+- Zhengbo Jiao
+- Zifan Zhang
+- Yilang Peng
+- Xu Ze
+- Boyu Yang
+- Wei Wang
+- Hu Wei
+- Linfeng Zhang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- mathematics
+- general_reasoning
+training_use:
+- sft
+- preference_learning
+- distillation
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2509.24726
+  arxiv: https://arxiv.org/abs/2509.24726
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.24726
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 100 MATH training questions plus a 1,500-problem Level-5 SFT initialization set; later Teacher refinements
+    or Generator imitations
+  trace_author: Solver generates attempts; fixed Qwen3-235B Teacher verifies and refines failures; Qwen3-32B Generator imitates
+    refinement
+  answer_format: Question/reference pair, Solver trajectories, correctness labels, preference pairs, refined questions, and
+    utility weights
+  process_fields:
+  - question
+  - reference_solution
+  - solver_trajectory
+  - correctness
+  - winning_solution
+  - losing_solution
+  - failed_trajectory
+  - refined_question
+  - refined_reference_solution
+  - solver_success_rate
+  - curriculum_utility
+  environment_or_substrate: Three-agent closed loop coupling online Solver optimization and offline Generator distillation
+  verifier_or_reward: Teacher verification plus rule-based extraction and semantic validation; Gaussian utility centered at
+    success rate 0.5
+  terminal_predicate: Teacher-verified correct trajectory; problem utility peaks at pass rate 0.5
+recipe_metadata:
+  base_model: Qwen3-8B/14B and GLM4-9B Solvers; Qwen3-32B Generator
+  teacher: Qwen3-235B-A22B-Instruct-2507
+  generator: Fixed Teacher refines failures; trainable Qwen3-32B distills refinements
+  filtering_rule: Partition k attempts into Teacher-verified winners/losers; use reference if all fail; weight imitation by
+    Gaussian utility; replay 25% history
+  sampling_protocol: k=8 trajectories per problem; batches mix new curriculum with 25% historical replay
+  rollout_count: 8
+  temperature: null
+  inference_budget: Generator validity evaluation uses 4,096 tokens and 600 seconds; training limits incomplete
+  optimizer_or_scaffold: Online DPO for Solver plus offline value-weighted SFT for Generator over three stages
+audit:
+  source_mixture: 100 MATH seeds, 1,500 Level-5 SFT items, evolving synthetic curriculum, and Teacher references
+  split: MATH train seeds; seven math and three transfer benchmarks; contamination controls undisclosed
+  decontamination: unknown
+  license: unknown
+  lineage: Roles and transitions described, but no per-record curriculum, preference, or refined-problem release
+  known_failure_modes:
+  - '''Data-free'' still relies on seeds, SFT data, references, and a frontier Teacher'
+  - Teacher errors can compound through Solver and Generator updates
+  - Generator imitates one Teacher's question-design strategy
+  - Moderate pass rate does not ensure novelty, validity, or pedagogy
+  - No convergence analysis for co-evolution
+  - No author-linked code, data, checkpoint, or curriculum log
+  citation_status: verified
+  confidence: high
+  notes: Preprint under review; 'data-free' means no large fixed task corpus during co-evolution, not literal absence of data
+    or supervision.
+inclusion_reason: Closed-loop recipe converting Solver failures into adaptive questions, preferences, Teacher refinements,
+  and utility-weighted Generator records.
+related: []
+tags:
+- agent-coevolution
+- adaptive-curriculum
+- self-play
+- online-dpo
+- value-weighted-distillation
+- synthetic-math-data
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Co-evolves a Solver and question Generator under a fixed Teacher by turning eight-attempt failures into
+  DPO pairs, refined questions, references, and weighted curriculum records.
+why_it_matters: Exposes a rich failure-to-curriculum loop while making Teacher dependence and the nonliteral data-free claim
+  auditable.
+card: null
+needs:
+- 'needs_url: author-linked code, data, models, and logs'
+- 'unknown: source and license of 1,500-item SFT set'
+- 'unknown: decontamination, decoding, and per-record provenance'
+- 'unknown: accepted venue or review outcome'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against arXiv v1 and PDF; no author-linked artifact or venue.

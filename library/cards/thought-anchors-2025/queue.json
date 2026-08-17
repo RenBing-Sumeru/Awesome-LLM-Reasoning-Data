@@ -1,0 +1,8 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "主分析在问题数量上较小，但条件生成规模很大，20k。",
+    "updated_at": "2026-07-28T03:47:18Z"
+  },
+  "updated_at": "2026-07-28T03:47:18Z"
+}

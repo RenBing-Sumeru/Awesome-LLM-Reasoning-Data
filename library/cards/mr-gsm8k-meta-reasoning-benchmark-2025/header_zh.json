@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MR-GSM8K 将 GSM8K 解答转为评判推理与定位首错的元推理任务，揭示仅看最终答案会掩盖的过程评估差距。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要评测模型能否审阅数学推理、定位首错，或构建过程判别器基准的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhongshen Zeng、Pengguang Chen、Shu Liu、Haiyun Jiang、Jiaya Jia",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:38:57Z"
+}

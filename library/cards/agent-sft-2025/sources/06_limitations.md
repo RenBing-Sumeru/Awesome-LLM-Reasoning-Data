@@ -1,0 +1,3 @@
+1. When regenerated traces can imitate teacher shortcuts instead of environment-grounded recovery, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because the paper does not isolate the contribution of each of six splits, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve ODC-BY and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

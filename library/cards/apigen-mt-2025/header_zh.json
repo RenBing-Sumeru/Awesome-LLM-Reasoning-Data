@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "APIGen-MT 发布 gated 的 5,000 条 Retail/Airline 成功轨迹，用蓝图验证与模拟交互构造 SFT 数据，但未公开失败运行、重放状态、验证日志或完整 xLAM 训练混合。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多轮工具调用轨迹数据发布与构造配方",
+  "best_for_ch": "研究环境型 agent trajectory、模拟用户、成功筛选、SFT 数据构造与发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Akshara Prabhakar、Zuxin Liu、Ming Zhu、Jianguo Zhang、Tulika Manoj Awalgaonkar、Shiyu Wang、Zhiwei Liu、Haolin Chen、Thai Hoang、Juan Carlos Niebles、Shelby Heinecke、Weiran Yao、Huan Wang、Silvio Savarese、Caiming Xiong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

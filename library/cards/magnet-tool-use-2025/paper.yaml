@@ -1,0 +1,173 @@
+id: magnet-tool-use-2025
+title: 'Magnet: Multi-turn Tool-use Data Synthesis and Distillation via Graph Translation'
+year: 2025
+venue: 'Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)'
+authors:
+- Fan Yin
+- Zifeng Wang
+- I-Hung Hsu
+- Jun Yan
+- Ke Jiang
+- Yanfei Chen
+- Jindong Gu
+- Long T. Le
+- Kai-Wei Chang
+- Chen-Yu Lee
+- Hamid Palangi
+- Tomas Pfister
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- pairwise_preference
+domains:
+- tool_use
+- function_calling
+- multi_turn_agents
+training_use:
+- sft
+- preference_learning
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1566/
+  arxiv: https://arxiv.org/abs/2503.07826
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1566
+  venue: https://aclanthology.org/2025.acl-long.1566/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1566/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.1566/
+data_object:
+  prompt_source: Synthetic multi-turn user queries are back-translated from function signature paths drawn from StableToolBench
+    source-code functions and BFCL-v3 multi-turn implementations. The paper collects 5,011 APIs; it rewrites BFCL-v3 function
+    names/descriptions so only the implementation is retained, and labels function category/class with an assistant LLM.
+  trace_author: Gemini-1.5-pro-002 is the stated assistant LLM for graph judgments, back-and-forth translation, and positive
+    trajectory generation. An SFT model produces ten candidate trajectories per instance; Gemini-1.5-pro-002 judges erroneous
+    turns to supply misleading hints for negative-trajectory sampling.
+  answer_format: A trajectory is a sequence of user queries, model actions, and tool responses. Model actions may contain
+    function calls, verbal reasoning, and textual summaries; the training prompt asks for function-call-only outputs. mDPO
+    receives paired positive and negative trajectories.
+  process_fields:
+  - function name, documentation, parameter and response information
+  - function signature path and dependency-graph relation
+  - synthetic per-turn user query
+  - executable reference function call and tool output
+  - positive trajectory action sequence
+  - SFT candidate action and teacher error judgment
+  - negative hint and negative trajectory
+  environment_or_substrate: A synthetic function-call substrate built from executable functions, their input/output dependencies,
+    reference calls, and returned outputs. Selected StableToolBench functions are simulation-tested, but the complete function
+    implementations, service versions, runtime, and replay logs are not released.
+  verifier_or_reward: The pipeline has two distinct checks. Executable simulation filters selected StableToolBench functions
+    before graph construction. For negatives, Gemini-1.5-pro-002 compares an SFT-model action to a reference response and
+    returns a yes/no judgment plus one of five error types if incorrect. Keyword filtering removes some failed calls. These
+    are construction filters, not a public trajectory-level reward or complete correctness verifier.
+  terminal_predicate: No machine-readable episode-success predicate or replayable terminal-state rule is disclosed for the
+    synthesized trajectories.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-7B-Instruct and Qwen2.5-Coder-14B-Instruct.
+  teacher: Gemini-1.5-pro-002 is the default assistant/teacher. The ablation also uses GPT-4o and Qwen2.5-Coder-14B-Instruct
+    for self-improvement.
+  generator: Build local dependency graphs, enhance function signature paths with Merge, Insert, and Split, back-translate
+    paths to user queries, forth-translate executable calls with prior outputs, then use hint-based context distillation for
+    positive and negative trajectory sampling.
+  filtering_rule: Shuffle available-function order in system-message instructions; discard trajectories containing failed-call
+    keywords such as Bad request or does not match; retain SFT action errors only when the teacher judge identifies an enumerated
+    error. Completeness and false-positive/negative rates of this filter are not reported.
+  sampling_protocol: For each API, sample 30 same-category/class candidates, ask the assistant to identify input/output dependencies,
+    random-walk the graph to form initial paths, then apply Merge, Insert, and Split. Prompts cap parallel calls at three.
+    Path length, exact operation probabilities, model decoding settings, seeds, and retry policy are not disclosed in the
+    accessible paper text.
+  rollout_count: 10
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: 'SFT on 34,000 positive trajectories uses peak learning rate 1e-5, warmup and linear decay, batch
+    size 64. mDPO uses 4,556 pairs plus MLE: full 7B tuning at 5e-7 and batch 32; 14B LoRA at 1e-6. Appendix B reports 16
+    Nvidia A100 GPUs, maximum length 8,172, Adam, 0.1 warmup, and hyperparameter searches; it generally selects one SFT epoch.
+    The mDPO 14B LoRA rank/alpha are 32/64.'
+audit:
+  source_mixture: StableToolBench executable function source code plus rewritten BFCL-v3 multi-turn implementations -> 5,011-API
+    pool -> LLM-labelled dependency graphs and enhanced signature paths -> synthetic queries, executable references, and outputs
+    -> teacher positive trajectories plus SFT rollout errors -> teacher-selected wrong hints and negative trajectories ->
+    34,000 SFT records and 4,556 mDPO pairs.
+  split: Table 1 reports 20,000 single-turn, 7,800 multi-turn, and 6,200 irrelevance SFT samples; mDPO has 1,556, 2,250, and
+    750 respectively. No trajectory-level train/validation/test manifest, stable record IDs, or released records are linked.
+  decontamination: 'Appendix C considers BFCL-v3 multi-turn implementation use: it reports 0.3% exact function-signature-path
+    matches for basic multi-turn test cases, 0% for the other BFCL-v3 multi-turn categories, and 5.3% 2-gram path overlap.
+    It does not constitute a complete data-release or benchmark-overlap audit, and no ToolQuery item-level manifest is available.'
+  license: unknown
+  lineage: Function implementation -> modified/relabelled signature -> graph relation and enhanced path -> query/reference/output
+    sequence -> positive action trajectory or SFT rollout -> teacher error judgment -> negative hint/trajectory -> SFT or
+    mDPO record. IDs, API versions, prompt executions, model revisions, decoding logs, and split assignments are not released.
+  known_failure_modes:
+  - Reference calls and simulated function executability do not prove that teacher-generated natural-language queries, paths,
+    summaries, or full trajectories are correct.
+  - Gemini judgments can misclassify model actions, and the negative generator may learn artifacts of deliberately wrong hints
+    rather than realistic failures.
+  - Keyword-based failed-call filtering is incomplete by design and can retain malformed calls or remove valid edge cases.
+  - BFCL-v3 implementations are deliberately rewritten and source APIs are not released with an immutable version manifest,
+    limiting environment replay and contamination checks.
+  - The paper states that English pure-text signatures limit language/modality generalization; it also observes conflict between
+    tool output and model internal knowledge, and lacks reflection/restart training examples.
+  - Reported benchmark gains do not establish quality, licensing, or safety of an unreleased training corpus.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology paper, BibTeX, DOI, arXiv full text/appendices, and affiliations were checked. No official code, training
+    data, environment package, checkpoint, split manifest, or license-bearing release link was located; those artifact links
+    remain null.
+  metadata_status: partial
+inclusion_reason: 'MAGNET is a documented construction recipe for multi-turn function-call trajectories: it exposes a graph-derived
+  tool substrate, executable reference calls, teacher-conditioned positive episodes, and contrastive negative episodes for
+  SFT plus mDPO. It belongs to environment and agent trajectory data because the unit is a multi-turn interaction with calls
+  and observations.'
+related: []
+tags:
+- magnet
+- tool-use
+- function-calling
+- multi-turn-agent
+- synthetic-trajectories
+- graph-translation
+- context-distillation
+- mdpo
+status: partial
+one_line_summary: MAGNET synthesizes graph-derived multi-turn function-call episodes and positive/negative trajectory pairs
+  for SFT and mDPO, but the paper does not release the traces, executable environment, or replay metadata needed to audit
+  the recipe end to end.
+why_it_matters: 'It makes the data-construction interface unusually explicit: function dependencies, calls, outputs, teacher
+  hints, SFT errors, and preference pairs are separate objects. The absence of released episodes, API versions, prompts-as-executed,
+  licenses, and full verifier audits prevents treating the published scores as evidence of a reusable dataset.'
+card: null
+needs:
+- 'needs_release: the 34,000 SFT trajectories, 4,556 mDPO pairs, stable IDs, schema, split manifest, and rejected records'
+- 'needs_environment: executable function implementations, API/service versions, tool-output replay procedure, and runtime
+  dependencies'
+- 'needs_reproducibility: executed prompts, Gemini/model revisions, decoding settings, seeds, graph/path operations, and complete
+  training configuration'
+- 'needs_verification: per-turn execution/correctness outcomes, teacher-judge calibration, filter error analysis, and preference-pair
+  quality audit'
+- 'needs_provenance: upstream StableToolBench/BFCL-v3 lineage, transformation mapping, redistribution terms, and license evidence'
+- 'needs_audit: complete benchmark-overlap analysis beyond the reported BFCL-v3 FSP statistics'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-23'
+  verified_by: card-repair-curator
+  confidence: medium
+  notes: Verified ACL 2025 record/PDF/BibTeX/DOI and arXiv:2503.07826v1 including appendices. The checked official paper surfaces
+    provide no author code, data, model, environment, or project release URL.
+category_ids:
+- environment_agent_trajectory_data

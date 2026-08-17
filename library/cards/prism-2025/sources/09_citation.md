@@ -1,0 +1,1 @@
+Nanxi Li, Zhengyue Zhao, G. Edward Suh, Marco Pavone, Chaowei Xiao (2025). PRISM: Robust VLM Alignment with Principled Reasoning for Integrated Safety in Multimodality. arXiv preprint. Official record: https://arxiv.org/abs/2508.18649. Citation details are provisional unless a verified BibTeX record is listed.

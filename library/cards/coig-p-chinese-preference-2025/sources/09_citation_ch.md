@@ -1,0 +1,1 @@
+Siwei Wu 等，2026 年，《COIG-P: A High-Quality and Large-Scale Chinese Preference Dataset for Alignment with Human Values》，Findings of EACL 2026，第 5420–5447 页。论文：https://aclanthology.org/2026.findings-eacl.288/ 。数据集：https://huggingface.co/datasets/m-a-p/COIG-P 。代码：https://github.com/multimodal-art-projection/COIG-P 。

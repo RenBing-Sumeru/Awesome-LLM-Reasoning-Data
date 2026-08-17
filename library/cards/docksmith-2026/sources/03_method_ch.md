@@ -1,0 +1,9 @@
+输入包括带版本的 GitHub 仓库、包含实质代码和测试相关修改的已合并 PR、仓库/issue/ground-truth patch 上下文，以及可选的语言模型改写问题描述。来源筛选要求仓库至少有 500 stars 和 200 forks，面向十种语言并覆盖超过 15,000 个仓库。用于描述改写的模型及其忠实性审计均为 unknown。论文声称对所有评测 benchmark 做仓库级去重，但没有披露 benchmark 快照、哈希、匹配代码或 PR/issue 的语义重叠检查。（论文 §2.1）
+
+生成阶段由四类 agent 协同完成。Context Retrieval 搜索依赖、构建、CI 和测试证据；Dockerfile 与 Eval Script agent 创建或修复可执行产物；Test Analysis 把构建/测试输出转成失败摘要与后续动作。每次迭代用文件修改、命令、日志和诊断更新仓库/环境状态。loop detector 会在 agent 组合连续没有改进时推动多样化，success memory 可以引入其他任务已验证的 Dockerfile/evaluation-script 示例。所有生成模型的身份和版本、prompt、解码参数、rollout 数、各 agent 预算、循环阈值、success-memory 配置和通用超时策略都未披露。（论文 §2.2 与 Figure 1）
+
+筛选先只保留执行验证成功的实例。随后剔除重复调用同一 agent、turn 过多或消息数量异常的冗长/重复成功 rollout；所有数值阈值均为 unknown。每种语言还有未公开的 token 上限。Dockerfile 复杂度分数为 `0.5 * 非空行数 + 5 * RUN 指令数 + 3 * 不同 apt-get/apt 包数`，Easy、Medium、Hard 桶按 1:2:2 采样。失败终止的 rollout 出现在评测与错误分析中，但没有被记录为 SFT 样本。因此，SFT 语料提供成功的构造与修复路径，却没有保留完整的负面尝试账本。（论文 §2.3.1 与 Equation 1）
+
+筛选后的 Docker 数据用于监督微调，可单独训练，也可与 Nex Agent-SFT 的通用 SWE/代码轨迹按 token 混合。训练从 Qwen3-Coder-30B-A3B-Instruct 初始化，global batch size 为 32，learning rate 为 `1e-5`，训练两轮；Docker-only 最大序列长度为 32K，混合训练为 64K。optimizer、scheduler、precision、hardware、gradient 设置、seed、准确 token 数、checkpoint 选择和发布模型采用的混合比例均为 unknown。证据只支持 `sft` 与 `agent_training`，不支持 RLVR、偏好学习、reward-model training 或 process-supervision training。（论文 §§2.3、3.1、3.3）
+
+固定版本的公开数据有九个 JSON 对话 shard 和九个 index 文件。对话样本是由 `role`、`content`、`loss_mask` 组成的消息列表；index 行还含 `index`、`sample_id`、`instance_id`、`agent_type`、`source_file` 和 `num_assistants`。多个 fragment 可以共享一个 `instance_id`。复用时必须分别固定 dataset content commit `b847dad7371e172fedc44c1510b7619ee1a6f23b`、当前 dataset revision `1d44cd3be604a339bcdad5e60844a23e4b1eeada`、model revision `1404f4daa0694c3ab2575f2dd8a7b6bbd40848e3`，以及 ICML 最终版与 arXiv v2 的论文边界。精确重放还需要当前缺失的 fragment-to-episode assembler、仓库和 evaluator 哈希、image digest、dependency lock，以及 network/cache/timeout/reset policy。

@@ -1,0 +1,5 @@
+- Keep the objects separate: 60,671 mirrored tasks, 6,431 successful SWE-Mirror episodes, 6,025 successful SWE-rebench episodes, and a 12,456-episode SFT mixture.
+- Read Sections 2.2–2.3 and Figure 1 for the `test.patch -> mirror.patch -> fix.patch` construction and the `Run.log -> Test.log -> Fix.log` verifier.
+- Table 4 is the key semantic audit: 156/177 majority-labeled tasks are high or moderate consistency, while 21 are inconsistent and 7 of 184 have no majority.
+- Error Masking keeps erroneous turns inside successful episodes but masks their response loss; it is not evidence that fully failed rollouts were released or trained on.
+- Read with SWE-Smith and SWE-rebench, then verify release URLs, commits/images, splits, overlap, licenses, privacy/secret scans, and replay before reuse.

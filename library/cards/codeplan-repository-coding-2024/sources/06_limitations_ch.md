@@ -1,0 +1,1 @@
+公开反馈是编辑指标；高 DiffBLEU 或 block match 不证明行为正确。replication package 更接近离线编辑对比，不是交互式 agent environment。GitHub 仓库标注 MIT license 且已 archived，但依赖、模型访问、精确 prompt/运行设置仍需固定。静态依赖分析可能漏掉语义依赖、动态行为、生成代码或框架约定。公开 source/target 对可能污染后续代码编辑模型。

@@ -1,0 +1,3 @@
+For teams evaluating repository or workspace agents, represent each user task as explicit requirements with dependencies, retain the resulting file tree and execution artifacts, and use locate/read/ask to produce per-requirement decisions with cited evidence. Compare the evaluator against blinded expert consensus on a held-out task set; the output is an auditable failure report rather than only a pass rate.
+
+DevAI can be used as an agent-evaluation benchmark or as a template for a task-specific rubric. Do not treat its labels as training rewards without validating label reliability, licensing, target-environment access, and whether the evaluator can safely read untrusted artifacts.

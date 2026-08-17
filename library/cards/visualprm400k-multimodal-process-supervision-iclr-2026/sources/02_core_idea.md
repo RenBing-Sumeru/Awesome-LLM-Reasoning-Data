@@ -1,0 +1,1 @@
+VisualPRM400K releases 400,000 multimodal process-supervision examples for step-reward training in visual reasoning, covering image conditions, candidate derivations, labels, and answer outcomes. It localises sparse outcome feedback to reasoning steps for training and diagnosis.

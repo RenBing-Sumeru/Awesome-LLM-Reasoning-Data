@@ -1,0 +1,1 @@
+The controlled cue-swap experiment tests content invariance. On ELI5, GPT-4o’s New-versus-Old VSR is +30% and Gemini’s +16%; on LitBench they are +16% and +4%. GPT-4o’s LitBench Human-versus-Unknown VSR is +14%, and CAR is exactly 0 across all settings (Sec. 3, Tables 1–5). This establishes shortcut sensitivity in these judges/tasks, not prevalence across all models or domains.

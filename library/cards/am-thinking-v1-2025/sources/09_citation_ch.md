@@ -1,0 +1,1 @@
+官方 arXiv 引文：Yunjie Ji、Xiaoyu Tian、Sitong Zhao、Haotian Wang、Shuaiting Chen、Yiping Peng、Han Zhao、Xiangang Li。《AM-Thinking-v1: Advancing the Frontier of Reasoning at 32B Scale》。arXiv:2505.08311，2025。https://doi.org/10.48550/arXiv.2505.08311

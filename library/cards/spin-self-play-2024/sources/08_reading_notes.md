@@ -1,0 +1,5 @@
+- Positioning: SPIN releases base dialogues and iteration 0-3 policy responses that support repeated self-play fine-tuning.
+- Method handle: SPIN repeatedly samples responses from the current policy, pairs them with human responses to form iteration-specific training records, and updates the same model to distinguish and improve over its previous behavior.
+- Data handle: about 50,000 base dialogues plus generated response datasets for iterations 0 through 3; each record contains prompt, human response, current-policy response, and self-play iteration.
+- Evidence anchor: Across successive SPIN iterations, the same base model improves reported chat preference scores over one-pass SFT and approaches stronger systems without new human annotations; the iteration ablation ties gains to refreshed self-play responses.
+- Reuse decision: best for bootstrapping an instruction model when a fixed human dialogue set is available; first audit later iterations may optimize the discriminator objective without improving factual quality.

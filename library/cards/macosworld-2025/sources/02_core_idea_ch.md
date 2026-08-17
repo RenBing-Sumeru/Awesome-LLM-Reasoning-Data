@@ -1,0 +1,7 @@
+本文的贡献是一个macOS原生、多语言闭环基准：任务定义固定初始状态与可执行反馈契约，被评智能体生成交互轨迹。环境在AWS EC2专用Apple Mac mini硬件上运行macOS Sequoia 15.2；SSH负责snapshot、任务准备与grading，VNC提供截图和鼠标/键盘交互。语言特定AMI让任务指令和操作系统界面同时本地化，而不是仅在英文UI上翻译文字。
+
+反馈契约分两层。对202项主任务，任务特定AppleScript、JavaScript或zsh命令经SSH检查最终应用/系统状态；发布的二值evaluator保留权重为100的grading entry，返回第一个成功值，否则返回0。论文实验把它化为reward 1/0与success rate。对29项安全任务，真实的AppleScript生成对话框与agent loop并行运行，并单独把对话处理分类为`gold`、`distracted`或未处理。系统没有LLM judge。
+
+这些grader能观察脚本定义的终态属性与明确的对话响应；在论文移除非二值checkpoint后，它们不能衡量部分进度，不能在脚本之外证明语义意图，也不能在安全标签为“未处理”时区分真正的安全推理与未能交互。任务文件和grading command公开后，还存在verifier gaming与评测泄漏风险。
+
+相对OSWorld、WindowsAgentArena和AndroidWorld，具体变化是组合macOS原生substrate、成对的prompt/UI多语言化，以及交互式上下文欺骗子集。本文并非单独提出基于截图的电脑使用、可执行终态grading、虚拟化或多语言翻译；其方向价值在于把本地化任务、可重置环境、轨迹接口和任务/安全双层反馈绑定为可审计对象。

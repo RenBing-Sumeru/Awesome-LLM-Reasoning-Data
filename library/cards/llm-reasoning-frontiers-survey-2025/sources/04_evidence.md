@@ -1,0 +1,1 @@
+The official TMLR abstract states the two dimensions and covers supervised learning, reinforcement learning, reasoners, verifiers, and agentic workflows. It supports a field map, not one global performance ranking. Recover the original task and tool contract before comparing two entries that happen to share a reasoning label.

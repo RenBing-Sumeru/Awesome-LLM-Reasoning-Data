@@ -1,0 +1,28 @@
+id: rpc-confidence-sampling-2025
+title: "A Theoretical Study on Bridging Internal Probability and Self-Consistency for LLM Reasoning"
+year: 2025
+venue: NeurIPS 2025
+authors: [Zhi Zhou, Yuhao Tan, Zenan Li, Yuan Yao, Lan-Zhe Guo, Yu-Feng Li, Xiaoxing Ma]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [full_episode]
+domains: [mathematical-reasoning, code-reasoning, general-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://papers.nips.cc/paper_files/paper/2025/hash/7e9afa9a02857bce4515247842471444-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2510.15444, venue: https://papers.nips.cc/paper_files/paper/2025/hash/7e9afa9a02857bce4515247842471444-Abstract-Conference.html, code: https://github.com/WNJXYK/RPC, data: https://huggingface.co/collections/WNJXYK/neurips-2025-rpc-resources, project: https://zhouz.dev/RPC/, huggingface: https://huggingface.co/spaces/WNJXYK/RPC, doi: null}
+data_object: {prompt_source: "Mathematical, code, commonsense, and R1 reasoning benchmarks evaluated in the paper.", trace_author: "Language models sampled repeatedly at inference time.", answer_format: "Reasoning paths, extracted answers, internal probabilities, consistency estimates, pruning decisions, and final selected answers.", process_fields: [prompt, reasoning_path, parsed_answer, path_probability, consistency_score, pruning_decision, final_answer], environment_or_substrate: "Sampling-based reasoning evaluation pipeline.", verifier_or_reward: "Confidence estimation from self-consistency and internal token probability.", terminal_predicate: "Task correctness and calibrated confidence under a fixed sampling budget."}
+recipe_metadata: {base_model: "Reported mathematical and reasoning language models, including R1-style models.", teacher: null, generator: "The language model sampled for multiple reasoning paths.", filtering_rule: "Prune low-probability reasoning paths while combining probability with answer-level consistency.", sampling_protocol: "Sample multiple reasoning paths, parse answers, calculate Perplexity Consistency, prune low-probability paths, and select by confidence.", rollout_count: "Varied by benchmark; see official code and paper.", temperature: null, inference_budget: "Number of sampled reasoning paths and associated inference calls.", optimizer_or_scaffold: "Reasoning-pruning Perplexity Consistency controller."}
+audit: {source_mixture: "Official NeurIPS proceedings, project site, and official GitHub repository.", split: "See primary paper and repository for benchmark-specific protocols.", decontamination: "Not separately claimed.", license: "Repository is MIT; separately verify benchmark and model terms before reuse.", lineage: "https://zhouz.dev/RPC/", known_failure_modes: [miscalibrated_internal_probability, incorrect_answer_parsing, premature_path_pruning, low_diversity_samples], citation_status: verified, confidence: high, notes: "NeurIPS status, Nanjing University and ETH Zurich affiliations, code, data collection, and demo checked on 2026-07-20."}
+inclusion_reason: "It reduces the sampling budget of test-time reasoning by combining candidate confidence estimation with low-probability path pruning."
+related: []
+tags: [test-time-compute, self-consistency, confidence-estimation, reasoning-pruning, sampling]
+status: verified
+one_line_summary: "RPC combines internal probability with self-consistency and prunes low-probability paths to reduce sampling cost in reasoning."
+reading_priority: essential
+paper_type: Test-time sampling theory and efficient reasoning study
+best_for: Readers designing confidence-based candidate selection under limited reasoning samples.
+confidence: high
+why_it_matters: "It gives both a theory and an implementation for spending fewer inference samples without reverting to a pure perplexity selector."
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official proceedings, project, GitHub code, Hugging Face collection, and demo checked."}
+category_ids: [scaling_rlvr_test_time_compute]

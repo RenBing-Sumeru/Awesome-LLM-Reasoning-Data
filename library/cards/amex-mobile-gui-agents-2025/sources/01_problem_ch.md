@@ -1,0 +1,1 @@
+AMEX 解决的问题是：移动 GUI 智能体不能只靠坐标动作学习，还需要可审计的界面元素、功能语义和分步动作链。主要来源是 ACL Anthology 的 Findings 2025 正式条目、arXiv、项目页、GitHub 和 Hugging Face 数据卡。它收的是 Android 第三方应用上的 GUI 控制数据，不是 API 调用环境，也不是在线 RL 环境。一个样本可包含截图、交互元素框、屏幕/元素功能描述、自然语言指令和逐步 GUI 动作链；对 atlas 的价值在于把移动端轨迹拆成可复用的视觉 grounding 与过程监督对象。

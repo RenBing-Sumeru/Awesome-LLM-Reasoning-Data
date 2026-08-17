@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "University of Washington",
+    "University of Massachusetts Amherst",
+    "Meta AI",
+    "Allen Institute for AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2305.14251",
+    "https://arxiv.org/pdf/2305.14251",
+    "https://aclanthology.org/2023.emnlp-main.741/",
+    "https://github.com/shmsw25/FActScore",
+    "https://pypi.org/project/factscore/"
+  ],
+  "verification_note": "ACL Anthology verifies EMNLP 2023 main-conference status and DOI; official PDF verifies UW, UMass Amherst, Meta AI, and Allen Institute for AI affiliations; GitHub/PyPI verify artifacts."
+}

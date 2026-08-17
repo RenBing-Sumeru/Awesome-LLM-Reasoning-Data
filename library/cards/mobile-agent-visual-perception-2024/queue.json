@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-14T10:18:24Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "组合 OCR、图标检测与多模态模型，使 Agent 在不读取 XML 的情况下依据截图操作手机 不算benchmark也不算agent感觉",
+    "updated_at": "2026-07-14T10:18:24Z"
+  }
+}

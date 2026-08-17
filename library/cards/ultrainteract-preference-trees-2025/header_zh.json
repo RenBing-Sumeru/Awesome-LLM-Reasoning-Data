@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UltraInteract 把经过客观检查的推理动作与纠错轨迹转成公开的 SFT 示范，并同时发布偏好对。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理示范数据集与偏好树构造配方",
+  "best_for_ch": "适合构建或审计数学、代码与逻辑推理 SFT 数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lifan Yuan, Ganqu Cui, Hanbin Wang, Ning Ding, Xingyao Wang, Boji Shan, Zeyuan Liu, Jia Deng, Huimin Chen, Ruobing Xie, Yankai Lin, Zhenghao Liu, Bowen Zhou, Hao Peng, Zhiyuan Liu, Maosong Sun",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T14:25:18Z"
+}

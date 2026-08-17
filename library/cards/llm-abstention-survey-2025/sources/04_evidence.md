@@ -1,0 +1,3 @@
+The evidence is the survey's organization of prior methods, benchmarks, and metrics, not a new leaderboard. Its official abstract also identifies an open question: whether abstention can become a capability that transfers across tasks and domains.
+
+That open question is a practical caution. An approach that looks well calibrated on one benchmark may depend on that benchmark's answer format, error distribution, or cost assumptions. The survey offers a way to inspect such evidence: record the task, what counts as an abstention, the comparison policy, and the metric. Only then can reported coverage or accuracy be interpreted as evidence for a broader deployment decision.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VRPRM 先以少量教师生成的视觉 CoT 评审激活过程推理，再用普通步骤标签强化学习，以较低数据成本训练多模态 PRM。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要构造多模态 CoT-PRM 监督，或比较小规模解释数据与大规模普通步骤标签协同作用的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xinquan Chen、Chongying Yue、Bangwei Liu、Xuhong Wang、Yingchun Wang、Chaochao Lu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

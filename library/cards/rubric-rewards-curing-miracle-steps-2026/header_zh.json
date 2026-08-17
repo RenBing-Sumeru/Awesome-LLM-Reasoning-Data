@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "14.3K 数学题—rubric 样本，以问题级准则评估整条推理轨迹并作 RL 奖励，直接针对推理投机。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "问题特定评分准则与轨迹级奖励建模论文",
+  "best_for_ch": "需要用问题特定评分准则诊断推理投机、训练生成式奖励模型或开展数学强化学习的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Youliang Yuan, Qiuyang Mang, Jingbang Chen, Hong Wan, Xiaoyuan Liu, Junjielong Xu, Jen-tse Huang, Wenxuan Wang, Wenxiang Jiao, Pinjia He",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T18:26:30Z"
+}

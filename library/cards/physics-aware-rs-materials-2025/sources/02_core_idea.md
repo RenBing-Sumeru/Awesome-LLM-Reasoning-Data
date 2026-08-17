@@ -1,0 +1,3 @@
+PaRS replaces outcome-only trace selection with three gates: valid EQE range, tolerance to the recipe's wet-lab EQE, and a recipe-specific upper envelope constructed from film PLQY. It accepts the first candidate passing every gate; failing rounds either stop when diversity/improvement is low or raise temperature and sample again.
+
+The feedback contract is programmatic but only partly observable. Gates assess the final numerical EQE, not every causal claim in the rationale. An external DeepSeek-R1 judge is used for a reported trace-quality metric, but it is distinct from PaRS acceptance. This distinction prevents calling PaRS a step-level verifier.

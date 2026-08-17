@@ -1,0 +1,5 @@
+- 必须明确时间线：arXiv v1 日期为 2025 年 6 月 9 日，最接近论文的官方 release 是 2025 年 6 月 12 日的 `v0.1.0`，正式 venue 则是 ICML 2026、PMLR 306。
+- 应把 2,285 个 telecom 完整组合、114 个抽样任务与 generator 对照阅读：15 个 atomic subtask group 先组合和检查，再按 intent、subtask count 与 persona 抽样；论文报告 115 个 retail task，而 `v0.1.0` 只有 114 个。
+- 必须区分 termination 与 success。STOP、TRANSFER、OUT-OF-SCOPE 或 runner guard 会结束 episode；选中的 DB/assertion/action/communication/NL component 才决定 reward。
+- simulator audit 应被视为警告：Table 2 报告 telecom 有 3/50 个 critical error 与 5/50 个 benign error，尽管论文另一处出现与之矛盾的“没有 critical error”表述。
+- 发布的成功/失败 trace 只应用于固定版本的 evaluation 与 audit。后续 Gym、split、RL、voice、knowledge 与 tau3 变化不能反向把论文变成 agent-training 研究。

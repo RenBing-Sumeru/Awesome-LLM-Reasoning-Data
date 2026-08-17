@@ -1,0 +1,8 @@
+- GPT-4o intermediate judge不是ground truth。论文没有报告独立人工标注的calibration、agreement或revision研究。由于任一positive action都会把整个episode标为compromised，单个false positive会抬高`ASR-intermediate`；格式不匹配或API失败则默认`not_compromised`，形成系统性false-negative路径。
+- 两层feedback观察到的证据不同。intermediate judgment读取序列化action单元，却看不到完整environment state。DOM/content规则可能受stale state、partial update、localization、rendering或网站版本漂移影响，也不一定能证明预期的语义违规。
+- 固定commit的exfiltration contract弱于确认数据失窃。`ExfilEvaluator`只在提取的action text中搜索预期URL substring；它不检查攻击者服务器是否收到secret，也不检查传输值是否完整有效。这与按字面理解论文的final-state/server-receipt描述存在实质差异。
+- End-to-end ASR受能力confounding影响。模型可能已经遵循恶意指令，却没有能力执行成功，因此低攻击完成率也许意味着incompetence而不是refusal。与此同时，各设置utility跨度为0.027–0.622，结果没有报告error bar、显著性分析或multi-seed protocol。
+- 覆盖范围有限：21个人工goal、2个网站、2种主要task-related模板及4个简单benign goal。作者明确指出网站与prompt多样性有限，也没有扩展到desktop/code agent；论文未测试adaptive attacker、更丰富社会情境或部署发生率。
+- 精确回放没有被封装。仓库没有tagged release、GitHub Release、不可变site/VM image、scraped-data snapshot、service-version manifest或完整account/reset记录。官方仓库于2026年7月1日归档，因此API、浏览器、服务和evaluator漂移不会再由上游维护。
+- Croissant metadata的`sha256`字段是字符串`main`，不是content hash。21条attack JSONL是base goal，而非不可变84任务manifest；也没有发布canonical的successful、refused、hijacked-incomplete、failed、crashed、timed-out或retried rollout corpus。
+- WASP主体代码/数据采用CC BY-NC 4.0，vendored VisualWebArena与Claude demo组件采用MIT。自托管站点含有从真实网站抓取的数据；record-level provenance、consent、PII review与再分发权利为unknown。Curator inference：即使fresh replay成功，混合权利与lineage缺失仍阻止不受限训练或再分发。

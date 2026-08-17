@@ -1,0 +1,1 @@
+Read the bias taxonomy before reading aggregate scores. Keep three labels separate: the candidate answer's real quality, the bias cue being tested, and the evaluator's observed judgment. A higher debiasing score is not evidence of a generally better assistant; it is evidence about a specific judge surface.

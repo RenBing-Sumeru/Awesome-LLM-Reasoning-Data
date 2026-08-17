@@ -1,0 +1,373 @@
+id: browsecomp-plus-2025
+title: 'BrowseComp-Plus: A Fair and Disentangled Evaluation Benchmark for Deep Search Agents'
+year: 2026
+venue: ACL 2026
+authors:
+- Zijian Chen
+- Xueguang Ma
+- Shengyao Zhuang
+- Ping Nie
+- Kai Zou
+- Sahel Sharifymoghaddam
+- Andrew Liu
+- Joshua Green
+- Kshama Patel
+- Ruoxi Meng
+- Mingyi Su
+- Yanxi Li
+- Haoran Hong
+- Xinyu Shi
+- Xuye Liu
+- Hosna Oyarhoseini
+- Nandan Thakur
+- Crystina Zhang
+- Luyu Gao
+- Wenhu Chen
+- Jimmy Lin
+source_role:
+- benchmark
+- data_release
+- agent_environment
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+- web_search
+- information_retrieval
+- question_answering
+- deep_research
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1023/
+  paper_pdf: https://aclanthology.org/2026.acl-long.1023.pdf
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1023
+  arxiv: https://arxiv.org/abs/2508.06600
+  arxiv_doi: https://doi.org/10.48550/arXiv.2508.06600
+  project: https://texttron.github.io/BrowseComp-Plus/
+  code: https://github.com/texttron/BrowseComp-Plus
+  code_snapshot: https://github.com/texttron/BrowseComp-Plus/tree/046949032b0328319cc9a02663a759ec601d9402
+  data: https://huggingface.co/datasets/Tevatron/browsecomp-plus
+  corpus: https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus
+  indexes: https://huggingface.co/datasets/Tevatron/browsecomp-plus-indexes
+  trajectories: https://huggingface.co/datasets/Tevatron/browsecomp-plus-runs
+  bibtex: null
+  openreview: null
+  pmlr: null
+  cvf: null
+  data_doi: null
+data_object:
+  object_type: fixed-corpus deep-search benchmark with document supervision and a partially released set of full agent episodes
+  benchmark_record:
+    unit: one filtered BrowseComp query
+    count: 830
+    split: test
+    fields:
+    - query_id
+    - query
+    - answer
+    - evidence_docs
+    - gold_docs
+    - negative_docs
+    disclosure: All payload fields except query_id are reversibly obfuscated in the public query release.
+  corpus_record:
+    unit: one scraped web document
+    count: 100195
+    fields:
+    - docid
+    - text
+    - url
+    hf_split_label: train
+    split_interpretation: Packaging label only; it is not evidence of model training use.
+  qrel_record:
+    evidence_definition: A human-labeled passage/document span supporting one or more clues needed for the answer.
+    gold_definition: A human-labeled document that semantically contains the final answer.
+    hard_negative_definition: A scraped result from GPT-4o-decomposed subqueries that was not retained as positive after deduplication
+      and labeling.
+  released_episode_record:
+    availability: partial
+    released_combinations:
+    - retriever: BM25
+      agent: GPT-5
+      file: bm25/gpt5.jsonl
+    - retriever: BM25
+      agent: o3
+      file: bm25/o3.jsonl
+    - retriever: Qwen3-Embedding-8B
+      agent: GPT-5
+      file: qwen3-embed-8b/gpt5.jsonl
+    - retriever: Qwen3-Embedding-8B
+      agent: o3
+      file: qwen3-embed-8b/o3.jsonl
+    fields:
+    - metadata
+    - query_id
+    - tool_call_counts
+    - usage
+    - status
+    - retrieved_docids
+    - result
+    event_types:
+    - tool_call
+    - reasoning
+    - output_text
+    coverage_verified: false
+  prompt_source: The 830 retained questions are filtered from BrowseComp's 1,266 question-answer pairs.
+  trace_author: Evaluated search agents; only four GPT-5/o3 trajectory combinations are publicly archived.
+  answer_format: Short final answer plus explanation with numeric document citations and confidence.
+  process_fields: Ordered tool calls, tool outputs, reasoning summaries when exposed, usage, retrieved document IDs, terminal
+    status, and final output.
+  observation: Top-5 fixed-corpus search results truncated to the first 512 tokens; optional full-document retrieval is available
+    in get_document experiments.
+  action_space:
+  - search
+  - get_document_optional
+  - final_answer
+  environment_or_substrate: A frozen 100,195-document corpus with released BM25 and Qwen3-Embedding indexes; ReasonIR and
+    Jina-ColBERT are also evaluated.
+  verifier_or_reward:
+    answer: 'LLM semantic-equivalence judge: GPT-4.1 in the archival paper; Qwen/Qwen3-32B in current public evaluation code.'
+    retrieval: Programmatic Recall@k and nDCG@k against human evidence/gold qrels.
+    citation: Programmatic cited-document-ID match against evidence qrels; not sentence-level entailment.
+    terminal: status must equal completed and a final answer must be present before answer judging.
+  reward_or_evaluation_outputs:
+  - answer_accuracy
+  - recall_at_k
+  - ndcg_at_k
+  - citation_recall
+  - cited_ratio
+  - calibration
+  - tool_call_counts
+  provenance: BrowseComp questions; o3 web-search evidence mining; Selenium/Trafilatura scraping; 14-student human verification;
+    GPT-4o/SerpAPI hard-negative mining.
+  release_shape: Query labels, fixed corpus, indexes, code, and four encrypted trajectory files are separate official repositories
+    without one binding release manifest.
+recipe_metadata:
+  task_source: BrowseComp question-answer pairs
+  initial_query_count: 1266
+  final_query_count: 830
+  evidence_candidate_generator: OpenAI o3 with web search
+  evidence_candidate_generator_snapshot: unknown
+  evidence_collection_prompt_output: clue, URL, and evidence table
+  evidence_collection_filtering:
+    o3_failure_or_abstention_or_format_removed: 124
+    remaining_after_generation: 1142
+    scrape_failure_removed: 137
+    sent_to_human_review: 1005
+    final_human_verified: 830
+  scraping:
+    browser: Selenium
+    parser: Trafilatura
+    version: unknown
+  human_verification:
+    annotators: 14
+    annotator_population: university students
+    total_hours: '>400'
+    evidence_rule: Mark evidence for every clue and require the combined evidence to support the full answer.
+    gold_rule: Mark a document gold when it semantically contains the final answer.
+    escalation_rule: Revise clues and search the web for at least 20 minutes before rejecting an inadequate case.
+    quality_control: Approximately one hour of internal-development-set training, a 40-minute demo, group support, 10 cross-checked
+      items per labeler, >80% agreement, and retrospective relabeling after detected mistakes.
+    compensation: unknown
+    consent: unknown
+  hard_negative_mining:
+    decomposer: GPT-4o
+    model_snapshot: unknown
+    subqueries_per_question: approximately 7
+    search_provider: SerpAPI Google Search
+    maximum_results_per_subquery: 100
+    scraping_pipeline: same Selenium/Trafilatura pipeline
+    deduplication_method: unknown
+    deduplication_threshold: unknown
+  final_statistics:
+    queries: 830
+    corpus_documents: 100195
+    mean_evidence_documents: 6.1
+    mean_negative_documents: 76.28
+    mean_gold_documents: 2.9
+    mean_document_words: 5179.2
+    mean_document_characters: 32296.2
+  agent_environment:
+    top_k: 5
+    returned_tokens_per_document: 512
+    tokenizer_in_current_code: Qwen/Qwen3-0.6B
+    optional_tool: get_document
+  current_judge_configuration:
+    model: Qwen/Qwen3-32B
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    max_output_tokens: 4096
+    thinking: false
+  paper_judge: GPT-4.1
+  rollout_count_per_condition: unknown
+  sampling_seed: unknown
+  retry_policy: unknown
+  optimizer_or_training_scaffold: null
+  training_recipe: null
+audit:
+  source_mixture: Questions and answers originate in BrowseComp; evidence/corpus text comes from scraped public web pages;
+    hard negatives come from GPT-4o-decomposed Google/SerpAPI searches.
+  split:
+    benchmark_questions: 830-row test-only release
+    corpus: 100,195 rows labeled train by Hugging Face for packaging
+    train_dev_test_policy: No benchmark train or development split is released.
+    selection_lineage: 830 filtered from 1,266 BrowseComp questions
+  decontamination:
+    mechanism: Public canary plus reversible base64/XOR obfuscation derived from a public SHA-256 key.
+    strength: deterrence_only
+    limitation: The key and decryptor are public; this cannot remove benchmark knowledge from model weights.
+  benchmark_overlap:
+    direct_parent: BrowseComp
+    overlap: Questions are reused, then filtered and augmented with a fixed corpus, evidence/gold qrels, negatives, and controlled
+      retrieval.
+    post_release_risk: 'High: public questions, answers, decryption instructions, and trajectories may enter future model
+      corpora.'
+    parametric_only_signal: The paper reports roughly 20% o3 and 26% GPT-5 parametric-only accuracy and discusses possible
+      BrowseComp exposure.
+  lineage:
+    parent_entry: browsecomp-2025
+    do_not_merge: true
+    distinction: BrowseComp-Plus contributes retrieval environment, document labels, corpus, indexes, graders, and selected
+      trajectories; BrowseComp remains the source QA benchmark.
+  licenses:
+    archival_paper: unknown
+    arxiv_v1: CC BY 4.0
+    code: MIT
+    query_dataset_card: MIT
+    corpus_dataset_card: MIT
+    indexes_dataset_card: MIT
+    trajectories: unknown
+    scraped_source_content: unknown
+    caution: Repository-level MIT metadata does not establish permission to relicense all third-party scraped page text.
+  release_versions:
+    inspected_at: '2026-07-20'
+    code_commit: 046949032b0328319cc9a02663a759ec601d9402
+    code_release_tag: null
+    query_dataset_revision: 144cff8e35b5eaef7e526346aa60774a9deb941f
+    query_data_update_revision: a1a391f70734f511f96e2c93622a59977481fdbe
+    indexes_revision: b3f37f70c33829eb09d04784a54277a31871fd63
+    trajectories_revision: 3c2b136c6382d2f7d43587bbc0a77f68b024c339
+    corpus_revision: unknown
+    unified_manifest: null
+  query_release_lfs_sha256:
+  - 4ff9e93054eaee61b8d079a89b7ec4d02f16c9d05fa6e2fef7185b0786427a3a
+  - 70cc3a6781693bb013c6855f231d15159222dddf826eb19947f6f85fcabccd4e
+  - f4fab28dcd293231da1b9da48680a19c7cdcb831df889d0691304de66016d194
+  - e738eb7a2e76feebe60632fc279a99773586d75ce5344e205c9c53fc3071c126
+  - 25535ff3d41be25d8b213b903c478f34c18082af3cbfe0a4a3925989b84c87e4
+  - 3a87031c5214322344b358db1d5f44d773b4d634ae43c60ce53ad582ccc47646
+  version_drift:
+    bibliographic: arXiv v1 (2025) has an older title and 20 authors; ACL 2026 has the canonical title and 21 authors.
+    judge: Archival scores use GPT-4.1; current code defaults to Qwen3-32B.
+    code: The mutable repository postdates the first arXiv release and has no GitHub Release tag.
+  verifier_or_judge_failure_modes:
+  - LLM semantic-equivalence decisions depend on judge family/version and prompting.
+  - Appendix G reports non-identical substring, GPT-4.1, and Qwen3 scores.
+  - Citation scoring checks document IDs, not whether the cited text entails the claim.
+  - Incomplete qrels create false negatives, especially after corpus expansion.
+  - Non-completed status and missing output are collapsed to failure/parse-error treatment.
+  successful_and_failed_sample_retention:
+    released_successful_and_incomplete_responses: Current OpenAI producer code can serialize returned responses with status,
+      including non-completed statuses.
+    exception_failures: Query-level exceptions may terminate before a record is persisted.
+    construction_rejections: Only aggregate counts are published for generation, scrape, and human-review rejects.
+    released_run_coverage: unknown
+    note: Four full-trajectory archives are visible, but their per-file row counts and success/failure distributions were
+      not exhaustively decrypted and audited.
+  privacy_or_consent:
+    source_pages: Publicly accessible web pages according to the paper.
+    pii_scan: unknown
+    robots_or_terms_audit: unknown
+    takedown_process: unknown
+    annotator_compensation: unknown
+    annotator_consent: unknown
+  replay:
+    strengths: Fixed corpus, public indexes, executable clients, qrels, prompts, evaluator, dependency lock, and four trajectory
+      archives improve controlled replay.
+    limits: No unified manifest binds all revisions; proprietary API snapshots, seeds, retry state, some package/service versions,
+      and full trajectory coverage are undisclosed.
+    exact_replay: false
+  known_failure_modes:
+  - Evidence qrels are incomplete and can mark genuinely relevant new documents as negatives.
+  - o3-generated candidate URLs bias the evidence pool.
+  - Text extraction omits interactive pages, dynamic layouts, multimedia, and some PDF content.
+  - The task evaluates short answers and document citations rather than a full deep-research report.
+  - Some original questions were map/distance-dependent, ambiguous, or lacked recoverable evidence and were removed.
+  - Public release introduces future model-contamination risk.
+  experimental_checks:
+    gpt5_bm25_accuracy: 55.9
+    gpt5_qwen3_embed_8b_accuracy: 70.12
+    gpt4_1_bm25_accuracy: 14.58
+    gpt4_1_qwen3_embed_8b_accuracy: 35.42
+    searchr1_32b_bm25_accuracy: 3.86
+    searchr1_32b_qwen3_embed_8b_accuracy: 10.36
+    oracle_positive_documents_gpt4_1_accuracy: 93.49
+    gpt4_1_with_get_document_accuracy: 43.61
+    qwen3_32b_with_get_document_accuracy: 11.69
+    note: Paper-reported evaluation numbers, not independently rerun in this curation pass.
+  evidence_ledger: evidence/browsecomp-plus-2025.md
+  citation_status: verified
+  confidence: medium-high
+inclusion_reason: BrowseComp-Plus makes deep-search evaluation materially more auditable than a live-web QA score by fixing
+  the corpus, releasing query/answer and human evidence/gold-document labels, defining retrieval/citation/answer verification,
+  publishing executable agent clients and indexes, and releasing four representative full-trajectory archives. It belongs
+  in the environment/agent-trajectory track as an evaluation substrate and partial trajectory release, not as evidence of
+  post-training use.
+related:
+- browsecomp-2025
+tags:
+- browsecomp-plus
+- deep-search
+- web-agent
+- retrieval-agent
+- fixed-corpus
+- agent-trajectory
+- qrels
+- citation-evaluation
+- llm-as-judge
+- benchmark-contamination
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: A fixed-corpus BrowseComp derivative with 830 answerable queries, 100,195 web documents, human evidence/gold
+  qrels, mixed answer/retrieval/citation grading, and four released frontier-agent trajectory archives.
+why_it_matters: It disentangles the search agent from live-web drift and exposes whether failures arise from retrieval, citation,
+  terminal status, or answer synthesis. The fixed substrate and partial episode release support replay and audit, while judge
+  drift, incomplete qrels, public reversible obfuscation, and unresolved web-content licensing remain important limits.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_schema_verified: true
+  repository_files_verified: true
+  trajectory_inventory_verified: true
+  trajectory_contents_exhaustively_verified: false
+  experimental_numbers_source_checked: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium-high
+  notes: Canonical ACL metadata and official artifacts are verified. Status remains partial because the four encrypted run
+    files were not exhaustively decoded/count-checked, their repository has no visible license, API snapshots are incomplete,
+    and no unified immutable release manifest exists.
+curation_level: L3_summary_ready
+needs:
+- Decode and count-check all four released run archives, including completed/incomplete/error distributions.
+- Obtain or clarify a license for the trajectory repository and source-level rights/privacy handling for scraped pages.
+- Pin a unified artifact manifest plus proprietary model/judge snapshots, prompts, seeds, and retry settings where possible.
+- Preserve the BrowseComp-versus-BrowseComp-Plus boundary in the Card and cross-link the parent entry.
+card: null

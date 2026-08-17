@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "University of Illinois at Urbana-Champaign",
+    "University of California, Berkeley"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2411.00836",
+    "https://dynamath.github.io/",
+    "https://github.com/DynaMath/DynaMath",
+    "https://huggingface.co/datasets/DynaMath/DynaMath_Sample"
+  ],
+  "verification_note": "arXiv, project, GitHub, and Hugging Face sources verify authors, UIUC/UC Berkeley affiliations, ICLR 2025 status as stated by the official sources, and public sample dataset/code. No independent OpenReview/ICLR page was located in this pass."
+}

@@ -1,0 +1,195 @@
+id: limo-less-is-more-reasoning-2025
+title: 'LIMO: Less is More for Reasoning'
+year: 2025
+venue: COLM 2025
+authors:
+- Yixin Ye
+- Zhen Huang
+- Yang Xiao
+- Ethan Chern
+- Shijie Xia
+- Pengfei Liu
+source_role:
+- data_release
+- construction_recipe
+- model_report
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- competition_mathematics
+- multilingual_mathematics
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.03387
+  arxiv: https://arxiv.org/abs/2502.03387
+  code: https://github.com/GAIR-NLP/LIMO
+  data: https://huggingface.co/datasets/GAIR/LIMO-v2
+  project: https://github.com/GAIR-NLP/LIMO
+  huggingface: https://huggingface.co/GAIR/LIMO-v2
+  doi: https://doi.org/10.48550/arXiv.2502.03387
+  venue: https://colmweb.org/2025/AcceptedPapers.html
+  openreview: https://openreview.net/forum?id=T2TZ0RY4Zk
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A tens-of-millions candidate pool assembled from NuminaMath-CoT, DeepScaleR, pre-2024 AIME, MATH, and unspecified
+    Chinese elementary, middle-school, high-school, undergraduate exercises and exam papers. Exact source rows and mixture
+    counts are not released.
+  trace_author: DeepSeek R1, DeepSeek-R1-Distill-Qwen-32B, and QwQ-32B each generate multiple candidate reasoning solutions;
+    all authors examine filtered solutions, after which a rule-based lexical score selects one solution per question.
+  answer_format: The final LIMO-v2 release contains 800 English-language training rows with `question`, a long natural-language
+    `solution`, and `answer`. The row does not identify source, teacher, selection score, or verifier result.
+  process_fields:
+  - question
+  - solution
+  - answer
+  environment_or_substrate: Offline mathematical-reasoning SFT corpus. Difficulty is estimated by model solve counts and solutions
+    are ranked offline; the release contains no interactive environment, tool trajectory, or step-state representation.
+  verifier_or_reward: 'Question selection uses whether Qwen2.5-Math-7B-Instruct solves a problem within four attempts and
+    a 1-3/32 success band from DeepSeek-R1-Distill-Qwen-32B. Benchmark overlap is checked by unspecified n-gram matching.
+    Solution selection uses a weighted lexical score: length 30%, validation-word frequency 20%, tentative-expression frequency
+    25%, and connective-phrase frequency 25%, normalized by length. The final solution-correctness checker is undisclosed.'
+  terminal_predicate: After difficulty filtering and benchmark deduplication produce 2,125 questions, select the highest-scoring
+    candidate solution per question, rank the pairs, and retain the top 800. The paper does not expose the exact final-answer
+    validation gate, score implementation, tie handling, or item-level decisions.
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct for the main LIMO-v2 model; Qwen1.5-32B-Chat and Qwen2.5-Instruct at 3B, 7B, 14B, 32B,
+    and 72B appear in controlled backbone ablations.
+  teacher: DeepSeek R1, DeepSeek-R1-Distill-Qwen-32B, and QwQ-32B generate candidate solutions. Qwen2.5-Math-7B-Instruct and
+    DeepSeek-R1-Distill-Qwen-32B also serve as question-difficulty filters.
+  generator: Each of the three reasoning teachers samples multiple solutions for the 2,125-question LIMO-Pool; the highest
+    rule-scoring solution per question becomes the candidate pair before top-800 selection.
+  filtering_rule: Exclude questions solved by Qwen2.5-Math-7B-Instruct within four attempts; retain questions solved in only
+    1-3 of 32 DeepSeek-R1-Distill-Qwen-32B attempts; run n-gram deduplication against all evaluation benchmarks; choose the
+    highest weighted lexical-quality solution per question and keep the top 800 pairs.
+  sampling_protocol: Four short-CoT attempts for the coarse problem filter and 32 attempts for the fine difficulty filter
+    are specified. Multiple solutions are sampled from each of three teachers, but their per-question counts, temperatures,
+    top-p values, token caps, and seeds are unknown.
+  rollout_count: Four attempts for the coarse difficulty filter; 32 attempts for the fine filter; teacher-solution rollout
+    count unknown.
+  temperature: unknown
+  inference_budget: SFT cutoff is 16,384 tokens. Evaluation allows 32,768 output tokens, using greedy decoding on larger benchmarks
+    and four temperature-0.6 samples on benchmarks with fewer than 50 problems. Construction-generation token budgets are
+    unknown.
+  optimizer_or_scaffold: Full-parameter SFT of Qwen2.5-32B-Instruct with DeepSpeed ZeRO-3, FlashAttention-2, learning rate
+    5e-6, cosine decay, no warmup, 15 epochs, and paper-reported batch size 64. The public YAML does not include the distributed
+    world size needed to recover that global batch.
+audit:
+  source_mixture: NuminaMath-CoT, DeepScaleR, pre-2024 AIME, MATH, and unspecified Chinese school/university exercises and
+    exams feed a tens-of-millions pool. The release does not provide source item IDs, snapshots, per-source counts, transformations,
+    or source-specific rights.
+  split: LIMO-v2 exposes one 800-row train split with three columns and no held-out development/test split. The paper evaluates
+    on separate benchmark files. Legacy LIMO v1 exposes 817 train rows and must not be conflated with the final COLM dataset.
+  decontamination: The paper reports n-gram matching against all evaluation benchmarks and claims no overlap. It does not
+    disclose n-gram size, normalization, similarity threshold, benchmark revisions, candidate pairs, or final decisions; semantic
+    and pretraining contamination remain unmeasured.
+  license: The LIMO-v2 dataset and model are labeled Apache-2.0. The GitHub root README claims MIT but the referenced root
+    LICENSE is absent at commit 2284c6a0e6653aa8894bd12fdecc1212ba706c3a, while `train/LICENSE` is Apache-2.0. Upstream problem/exam
+    rights are not mapped row by row.
+  lineage: Named public and unspecified Chinese problem sources -> tens-of-millions candidate pool -> four-attempt Qwen2.5-Math-7B
+    filter -> 32-attempt DeepSeek-R1-Distill-Qwen-32B difficulty filter -> 2,125-question LIMO-Pool -> n-gram benchmark deduplication
+    -> three-teacher multi-solution generation -> author examination and weighted lexical scoring -> best solution per question
+    -> top 800 `question`/`solution`/`answer` rows -> full-parameter Qwen2.5-32B-Instruct SFT. Item-level lineage is not released.
+  known_failure_modes:
+  - The 800-example headline excludes the cost of filtering tens of millions of prompts and generating repeated attempts with
+    multiple 32B-scale reasoning models; no token, GPU-hour, or monetary accounting is reported.
+  - Released rows omit source IDs, source licenses, teacher identity, difficulty counts, lexical component scores, selection
+    rank, dedup decisions, and human review outcomes.
+  - Length and reasoning-style keywords are proxies that can reward verbosity or stock phrases without establishing mathematical
+    validity or step correctness.
+  - The exact final-answer checker and correctness-rejection rule for generated solutions are undisclosed, so the mixed verification
+    contract cannot be replayed.
+  - The solution-generation rollout count, decoding parameters, seeds, full keyword lexicons, normalization implementation,
+    tie-breaking, and rejected candidates are unknown.
+  - The n-gram benchmark audit lacks parameters and a decision log and cannot exclude semantic overlap or contamination inherited
+    from the Qwen/teacher pretraining and post-training corpora.
+  - LIMO-v1 has 817 rows and LIMO-v2 has 800. The checked GitHub commit's `train/data/limo.json` still contains all 817 legacy
+    v1 records even though the README promotes v2.
+  - The public training YAML sets `dataset` to an angle-bracket placeholder reading "the limo dataset", and `train/data/dataset_info.json`
+    has no LIMO mapping, so the final v2 training command is not directly runnable.
+  - The official repository does not include the candidate-pool, difficulty-filter, teacher-generation, n-gram audit, or lexical-score
+    construction scripts.
+  - The repository's root MIT claim, absent root LICENSE, Apache-2.0 training-subtree license, and Apache-2.0 HF artifacts
+    leave code-license scope unclear; the blanket data license does not document rights for every upstream contest or exam
+    item.
+  - The LIMO hypothesis is explicitly conditioned on a knowledge-rich base model. Strong results on Qwen2.5-32B-Instruct do
+    not show the 800 examples will transfer to smaller, weaker, or differently pretrained models.
+  - Evaluation uses an LLM judge for complex answer formats and reports point estimates without a released item-level result
+    bundle or repeated-run variance for most comparisons.
+  - A historical legacy `data/papers.yaml` already contains the same paper as `limo-2025`; it is absent from the canonical
+    V2 Cards, so later application must reconcile the ID and migrate rather than append another legacy record.
+  citation_status: verified
+  confidence: high
+  notes: Verified on 2026-07-23 against the full arXiv v3/COLM paper, COLM accepted-paper list, OpenReview publication record,
+    pinned GitHub tree, both v1/v2 HF datasets, and both v1/v2 model cards. Official venue is COLM 2025.
+inclusion_reason: A prominent small-data reasoning recipe that turns a massive mixed mathematics pool into 800 long-CoT SFT
+  triples through model-estimated difficulty and lexical trace scoring, while its v1/v2 drift and missing construction lineage
+  make it especially relevant to the Data Construction & Open Release Recipes track.
+related:
+- limopro-2025
+- guided-by-gut-2025
+- lppo-progressive-optimization-2025
+- step-length-confounding-2026
+- cot-valve-2025
+tags:
+- limo
+- data-efficient-reasoning
+- mathematical-reasoning
+- long-cot
+- difficulty-filtering
+- lexical-quality-scoring
+- supervised-fine-tuning
+- teacher-distillation
+- release-audit
+status: partial
+card: null
+one_line_summary: LIMO-v2 distills a massive mixed mathematics pool into 800 long-reasoning SFT triples using model solve-rate
+  difficulty filters and a lexical quality score, achieving data-efficient elicitation while leaving the original pool, item
+  lineage, rejects, and construction implementation unreleased.
+why_it_matters: 'It offers a concrete, influential argument that carefully chosen reasoning demonstrations can matter more
+  than raw SFT volume. It also shows why final row count is an incomplete measure of data efficiency: hidden cost, provenance,
+  verifier semantics, version alignment, and rejected examples determine whether the recipe can be trusted and reproduced.'
+needs:
+- 'needs_construction_code: release candidate ingestion, four-attempt and 32-attempt difficulty filters, answer checker, n-gram
+  deduplicator, teacher-generation jobs, and weighted lexical scorer'
+- 'needs_lineage: publish source dataset/split/item IDs, transformations, teacher ID, difficulty counts, component scores,
+  rank, accepted/rejected decision, and dedup outcome for every candidate'
+- 'needs_version_alignment: replace or clearly label the 817-row GitHub training file, wire LIMO-v2 into dataset_info.json,
+  remove the dataset placeholder, and publish a command that reproduces the final 800-row run'
+- 'needs_recipe_metadata: disclose solution rollout counts, temperatures, top-p, token caps, seeds, full keyword lists, score
+  normalization, tie handling, global batch topology, and checkpoint selection'
+- 'needs_audit: publish benchmark revision pins, n-gram parameters, overlap candidates and decisions, item-level evaluation
+  outputs, judge decisions, and repeated-run uncertainty'
+- 'needs_license: add an unambiguous root code license and map upstream contest/exam sources to item-level rights and redistribution
+  terms'
+- 'needs_compute_accounting: report filtering and generation tokens, hardware, wall time, and GPU-hours rather than only final
+  SFT row count'
+- 'needs_migration_dedup: reconcile this V2 ID with historical legacy entry `limo-2025`; do not create a second legacy record'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Citation and COLM acceptance, v3 paper, v2 data/model, legacy v1 artifacts, current GitHub tree, training YAML, bundled
+    data, and evaluation code were checked. Construction reproducibility and rights remain partial.
+category_ids:
+- data_construction_open_release_recipes
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data

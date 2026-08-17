@@ -1,0 +1,6 @@
+- 固定算术：**217 = 149项State + 68项Process**；**75项英文 + 142项中文**任务覆盖34个应用。
+- Process Provider从a11y node或screenshot变化生成evaluator-facing action evidence；它不是gold process supervision、agent-visible feedback或第二个reward。
+- 主要实验使用Structure Description Converter加Gemini 2.5 Pro终局判断；Gemini 2.5 Pro summarization出现在validation comparison中。
+- Success要求`COMPLETE`且judge满意；15步内无completion为Uncompleted，连续五次相同operation触发early failure。
+- 人工清除app history不能保证不同运行间device、account、server、cookie、locale、network或content等价。
+- 未确认官方code、task manifest、environment、trajectory/result corpus、split或artifact license；不能把AAAI论文权利推及不存在的data发布。

@@ -1,0 +1,164 @@
+id: genius-unsupervised-self-training-2025
+title: 'Genius: A Generalizable and Purely Unsupervised Self-Training Framework For Advanced Reasoning'
+year: 2025
+venue: ACL
+authors:
+- Fangzhi Xu
+- Hang Yan
+- Chang Ma
+- Haiteng Zhao
+- Qiushi Sun
+- Kanzhi Cheng
+- Junxian He
+- Jun Liu
+- Zhiyong Wu
+source_role:
+- construction_recipe
+- process_supervision
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- pairwise_preference
+- trajectory_value
+domains:
+- general-reasoning
+- mathematics
+- code
+training_use:
+- preference_learning
+- process_supervision
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.644/
+  arxiv: https://arxiv.org/abs/2504.08672
+  code: https://github.com/xufangzhi/Genius
+  data: https://huggingface.co/collections/xufangzhi/genius
+  project: https://github.com/xufangzhi/Genius
+  huggingface: https://huggingface.co/collections/xufangzhi/genius
+  doi: https://doi.org/10.18653/v1/2025.acl-long.644
+  venue: https://aclanthology.org/2025.acl-long.644/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.644/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.644.bib
+data_object:
+  prompt_source: The paper randomly selects 25K queries from Magpie and 32K queries from OpenHermes-2.5 for separate self-training
+    runs. Exact selected item manifests and immutable source revisions are unknown. The official HF source repositories contain
+    instruction-response records, although the method claims to consume only the queries.
+  trace_author: The current policy model proposes candidate next steps, generates same-policy future continuations, selects
+    paths, and supplies the log-probability-derived value proxy. Main experiments use LLaMA3.1-8B-Instruct; Qwen2.5-3B-Instruct
+    and Qwen2.5-7B-Instruct appear in transfer experiments.
+  answer_format: The paper describes a step-local quintuple consisting of the current context, positive and negative trajectories,
+    and their advantage information. The official constructor emits JSONL fields `prompt`, `chosen`, `rejected`, `chosen_weights`,
+    `rejected_weights`, and `chosen_average_weights`; the chosen and rejected values are assistant-message lists containing
+    complete sampled trajectories.
+  process_fields:
+  - source query and source corpus
+  - policy checkpoint
+  - response prefix and decision step
+  - candidate next steps
+  - same-policy future continuations
+  - normalized continuation log probabilities
+  - foresight distribution and selected beam indices
+  - positive and negative trajectories
+  - chosen and rejected advantage weights
+  - selected final response and all retained beams
+  environment_or_substrate: Offline natural-language generation with vLLM; there is no task executor, answer checker, human
+    judge, or external reward model in the construction loop.
+  verifier_or_reward: A candidate's foresight score is the length-normalized cumulative log probability of a same-policy future
+    continuation. Scores define a sampling distribution, and advantages subtract the preceding step value. This is a policy-internal
+    trajectory-value proxy, not a calibrated probability of correctness.
+  terminal_predicate: No external correctness predicate is applied. Path selection stops through the generation scaffold,
+    and preference labels come from relative foresight scores.
+recipe_metadata:
+  base_model: LLaMA3.1-8B-Instruct in the main experiments; Qwen2.5-3B-Instruct and Qwen2.5-7B-Instruct in transfer experiments.
+  teacher: No external teacher in the Genius construction loop; the current policy generates candidates, future continuations,
+    and the value proxy.
+  generator: Stepwise beam exploration followed by future-continuation simulation, foresight-score sampling, preference re-sampling,
+    and ACO training.
+  filtering_rule: Retain next-step beams by sampling from the normalized foresight-score distribution. For exploitation, take
+    the highest-scoring trajectory as chosen and re-sample a rejected trajectory from the remaining candidates; attach advantage
+    values relative to the preceding step.
+  sampling_protocol: 'Paper setup: step beam size 2, four rollouts per beam, four foresight steps, generation temperature
+    0.6. The released sampler uses seed 0 by default and a hard-coded softmax temperature of 0.1 for foresight selection;
+    the preference constructor seeds rejected-path sampling with 42.'
+  rollout_count: 4
+  temperature: 0.6
+  inference_budget: Paper sampling used 32 A100 80GB GPUs with vLLM. The authors keep four preference pairs per query, producing
+    100K pairs from 25K Magpie queries and 128K pairs from 32K OpenHermes-2.5 queries.
+  optimizer_or_scaffold: Advantage-Calibrated Optimization with a reference model. Paper training used 8 A100 80GB GPUs, DeepSpeed
+    ZeRO-3, FlashAttention2, total batch size 128, learning rate 5e-7, and alpha 1. The released shell shows one epoch, warmup
+    ratio 0.1, maximum sequence length 1300, and default beta 0.1, but leaves model, data, and output paths blank.
+audit:
+  source_mixture: Separate Magpie-25K and OpenHermes-2.5-32K query runs with policy-generated candidate steps, future continuations,
+    scores, preferences, and ACO updates. The official source repositories also expose responses and upstream generator metadata
+    that the paper does not claim to use as supervision.
+  split: The paper reports random 25K/32K selections and 100K/128K constructed training pairs. Exact selected IDs, train/validation
+    manifests, pair-level splits, and the mapping from paper runs to released checkpoints are unknown.
+  decontamination: unknown. Appendix C visualizes t-SNE distributions and embedding distances for 500 samples per dataset,
+    but reports no item-level deduplication or benchmark decontamination procedure.
+  license: The two official model repositories and two source-dataset repositories declare Apache-2.0. A license for the GitHub
+    code and for the unreleased generated preference corpus is unknown.
+  lineage: Source record to selected query to policy prefix to candidate steps to future continuations to normalized log probabilities
+    and advantages to chosen/rejected trajectories to ACO checkpoint. Exact experiment manifests and immutable hashes are
+    not released.
+  known_failure_modes:
+  - Same-policy log probability can reward fluency, brevity, or self-consistency rather than correctness
+  - Correlated continuations can confidently preserve one misconception
+  - Difficult but valid branches can be rejected because their futures are uncertain
+  - Local step ranking can miss globally better paths
+  - The policy can learn to improve its own proxy without improving semantic correctness
+  - The released sampler and preference constructor have incompatible process-array length checks
+  - The released constructor stores `prompt` separately while the shown training encoder consumes only chosen and rejected
+    messages
+  - Source records include responses copied to an output `ground_truth` field, requiring an end-to-end leakage audit
+  - Exact pair snapshots, rejected-sample manifests, code revision, decontamination, and full license chain are unavailable
+  citation_status: verified
+  confidence: medium
+  notes: ACL paper, full appendices, DOI, official repository, two official model repositories, and two official source-dataset
+    repositories were checked on 2026-07-21. The repository `main` branch was not tied to the paper experiments by a tag or
+    release. No complete 100K/128K preference release was verified.
+inclusion_reason: Genius is a concrete open recipe for turning general queries into policy-internal step-level preferences
+  without an answer label or auxiliary verifier, while its release gaps and code-path mismatches make it an instructive audit
+  case.
+related: []
+tags:
+- unsupervised-self-training
+- self-reward
+- foresight-sampling
+- step-level-preferences
+- aco
+- model-release
+status: partial
+one_line_summary: Genius converts general queries into same-policy foresight-ranked trajectory pairs for ACO, but the score
+  is not a correctness verifier and the exact preference data is not released.
+why_it_matters: It exposes a label-free construction path from queries to step-local preferences and a policy checkpoint,
+  while showing why lineage, proxy validation, code-version pinning, and rejected-sample retention are necessary for reasoning-data
+  reuse.
+card: cards/recipes/genius-unsupervised-self-training-2025.md
+needs:
+- 'needs_snapshot: pin the exact code, model, source-dataset, and paper-experiment revisions'
+- 'needs_data: release or verify the 100K and 128K preference snapshots and selected query manifests'
+- 'needs_reproduction: resolve the process-array length guard and prompt-conditioning path in the released code'
+- 'needs_license: verify code and generated preference-corpus licensing'
+- 'needs_decontamination: item-level overlap checks are not reported'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: medium
+  notes: Primary paper and official code/model/source-query surfaces are verified. Full generated preferences, immutable experiment
+    revisions, end-to-end reproducibility, and the complete license chain remain partial.
+category_ids:
+- data_construction_open_release_recipes

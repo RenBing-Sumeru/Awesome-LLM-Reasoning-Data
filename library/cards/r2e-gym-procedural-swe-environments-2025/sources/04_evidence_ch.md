@@ -1,0 +1,1 @@
+数据训练实验中，R2E-Gym 的 32B agent 在 SWE-bench Verified 达到 34.4% Pass@1，高于使用 SWE-Gym 训练的约 20.6%，说明 commit 反向构建环境能提供有效监督。推理扩展实验显示，execution-based 和 execution-free verifier 单独扩大候选时都在约 42–43% 附近饱和，而混合策略达到 51%，支持二者错误互补。消融还表明只用回归测试约 47.4%，加入生成测试可到 51%。这些结果依赖特定开放模型、专家轨迹和 Best@26 预算；51% 不是单次 agent 能力，且测试与 learned verifier 都可能偏置。

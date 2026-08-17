@@ -1,0 +1,105 @@
+id: reasoning-intensive-retrieval-survey-2026
+title: 'A Survey of Reasoning-Intensive Retrieval: Progress and Challenges'
+year: 2026
+venue: ACL 2026
+authors:
+- Yiyang Wei
+- Tingyu Song
+- Siyue Zhang
+- Yilun Zhao
+source_role:
+- survey_background
+verification_contract:
+- programmatic
+supervision_granularity:
+- unknown
+domains:
+- retrieval
+- reasoning
+- evaluation
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1949/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1949
+  venue: https://aclanthology.org/2026.acl-long.1949/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1949/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning-intensive retrieval benchmarks and methods.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A taxonomy of benchmark, retriever, and reranker approaches for retrieval supported by inference.
+  process_fields:
+  - query
+  - supporting evidence
+  - inferential link
+  - retrieved result
+  environment_or_substrate: Retrieval benchmarks and retrieval pipelines.
+  verifier_or_reward: Relevance and task evaluation reported by the surveyed primary studies; no shared verifier is released.
+  terminal_predicate: Retrieval quality or downstream task performance as defined by each benchmark.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed studies use varied language models and retrieval systems.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract selects settings where relevance depends on latent inferential links rather than semantic
+    similarity alone.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews methods rather than supplying one training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.1949/'
+  known_failure_modes:
+  - Inferential relevance can be hard to distinguish from topical similarity.
+  - Benchmark conclusions may not transfer across domains or modalities.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract states that the survey organizes benchmarks, pipeline locations for reasoning, trade-offs,
+    applications, and future challenges.
+inclusion_reason: An ACL 2026 survey that makes inference-dependent retrieval methods and their benchmarks easier to compare.
+related: []
+tags:
+- foundations-and-primers
+- retrieval
+- reasoning
+- acl-2026
+- survey
+why_it_matters: It helps readers separate ordinary semantic retrieval from retrieval that needs multi-step or latent-link
+  reasoning.
+one_line_summary: An ACL 2026 survey of retrieval tasks where finding evidence depends on an inferential connection, not only
+  semantic similarity.
+paper_type: Reasoning-intensive retrieval survey
+reading_priority: strong
+best_for: Readers designing retrieval benchmarks, retrievers, or rerankers that must connect a question to indirectly relevant
+  evidence.
+confidence: high
+status: verified
+needs:
+- 'unknown: directly comparable budgets and metrics across surveyed retrieval settings'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, and DOI record were reviewed.
+category_ids:
+- foundations_and_primers

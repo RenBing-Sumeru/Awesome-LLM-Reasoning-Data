@@ -1,0 +1,1 @@
+Read the training-resource sections before the algorithm list. Make one record per method with data, feedback, update, budget, and result. The key reading habit is to ask which component supplies the learning signal. That question is more informative than asking only whether the method uses PPO, GRPO, or another named update.

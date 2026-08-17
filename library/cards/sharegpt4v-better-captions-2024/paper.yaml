@@ -1,0 +1,128 @@
+id: sharegpt4v-better-captions-2024
+title: 'ShareGPT4V: Improving Large Multi-Modal Models with Better Captions'
+year: 2024
+venue: ECCV 2024
+authors:
+- Lin Chen
+- Jinsong Li
+- Xiaoyi Dong
+- Pan Zhang
+- Conghui He
+- Jiaqi Wang
+- Feng Zhao
+- Dahua Lin
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://doi.org/10.1007/978-3-031-72643-9_22
+  arxiv: https://arxiv.org/abs/2311.12793
+  code: https://github.com/InternLM/InternLM-XComposer/tree/main/projects/ShareGPT4V
+  data: https://huggingface.co/datasets/Lin-Chen/ShareGPT4V
+  project: https://sharegpt4v.github.io/
+  huggingface: https://huggingface.co/datasets/Lin-Chen/ShareGPT4V
+  doi: https://doi.org/10.1007/978-3-031-72643-9_22
+  venue: https://doi.org/10.1007/978-3-031-72643-9_22
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 100K images captioned by GPT-4V, followed by a captioner that expands supervision to 1.2M images
+  trace_author: GPT-4V for seed captions and Share-Captioner for scale-up
+  answer_format: image id, dense factual caption or visual question, and assistant target
+  process_fields:
+  - image id
+  - dense factual caption or visual question
+  - and assistant target
+  environment_or_substrate: JSON/Parquet metadata with image references and dense captions
+  verifier_or_reward: caption consistency checks and downstream multimodal benchmark scores
+  terminal_predicate: Retain a record only when caption consistency checks and downstream multimodal benchmark scores accepts
+    it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: GPT-4V for seed captions and Share-Captioner for scale-up
+  generator: ShareGPT4V first collects 100K detailed GPT-4V descriptions, trains Share-Captioner on them, and then generates
+    a 1.2M dense-caption expansion used before visual instruction tuning.
+  filtering_rule: caption consistency checks and downstream multimodal benchmark scores
+  sampling_protocol: 100K images captioned by GPT-4V, followed by a captioner that expands supervision to 1.2M images
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: multimodal pretraining followed by instruction SFT
+audit:
+  source_mixture: 100K images captioned by GPT-4V, followed by a captioner that expands supervision to 1.2M images
+  split: 'Official release scale: 100,000 GPT-4V captions for SFT and a 1.2M-caption pretraining expansion; storage: JSON/Parquet
+    metadata with image references and dense captions.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official dataset-card terms; source images retain their original licenses
+  lineage: 100K images captioned by GPT-4V, followed by a captioner that expands supervision to 1.2M images -> GPT-4V for
+    seed captions and Share-Captioner for scale-up -> caption consistency checks and downstream multimodal benchmark scores
+    -> multimodal pretraining followed by instruction SFT.
+  known_failure_modes:
+  - GPT-4V omissions and hallucinations are distilled at scale
+  - image-source terms are heterogeneous
+  - dense captions can reward exhaustive description rather than task-focused reasoning.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 177 citations; this is not a Google Scholar count.'
+inclusion_reason: 'ShareGPT4V is a public Track 01 training object: image id, dense factual caption or visual question, and
+  assistant target; it is consumed by multimodal pretraining followed by instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- dense-caption-supervision-for-visual-instruction-tuning
+status: verified
+one_line_summary: ShareGPT4V distills 100K GPT-4V captions into a captioner that expands dense visual supervision to 1.2M
+  images.
+why_it_matters: turning caption quality into an explicit, scalable data stage before multimodal SFT
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: creating detailed visual grounding targets before question-answer SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: dense-caption supervision for visual instruction tuning
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include University of Science and Technology of China, Shanghai AI Laboratory.
+    venue: 'The official venue URL confirms formal publication at ECCV 2024: https://doi.org/10.1007/978-3-031-72643-9_22'
+    impact: OpenAlex reported 177 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON/Parquet metadata with image references and dense captions records
+      at https://huggingface.co/datasets/Lin-Chen/ShareGPT4V with terms recorded as: official dataset-card terms; source images
+      retain their original licenses.'
+  selection_eligible: true
+  year_impact_threshold: 3

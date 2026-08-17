@@ -1,0 +1,5 @@
+- Positioning: HuatuoGPT-o1 filters medical exams into 40K verifiable problems, distills complex traces for half, and uses the remaining half for answer-reward RL.
+- Data object: medical problem, complex reasoning trace, final response, language, and source split.
+- Author and selector: GPT-4o searches and writes complex reasoning for the SFT half; selection uses known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards.
+- Evidence anchor: Using 40K verifiable problems, the 8B model gains 8.5 points on the paper's medical benchmark aggregate; the 70B model also exceeds the compared open medical and general models.
+- Reuse decision: suitable for medical CoT SFT followed by verifiable RL; first audit multiple-choice correctness does not validate diagnostic reasoning, and exam distributions differ from real clinical decision making.

@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"RL-Guided Sampling 用可在 CPU 部署的小型策略网络，决定何时停止或追加并行推理样本。","reading_priority_ch":"可读","paper_type_ch":"强化学习引导的自适应测试时采样研究","best_for_ch":"设计成本敏感的停止策略与并行采样策略的推理系统研究者。","confidence_ch":"高","authors_ch":"Runpeng Dai、Tong Zheng、Rui Liu、Chengsong Huang、Hongtu Zhu（机构：北卡罗来纳大学教堂山分校、马里兰大学帕克分校、圣路易斯华盛顿大学）","category_ids":["scaling_rlvr_test_time_compute"]}

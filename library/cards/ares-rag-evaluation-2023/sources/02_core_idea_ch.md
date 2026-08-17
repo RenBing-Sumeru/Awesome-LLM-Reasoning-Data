@@ -1,0 +1,1 @@
+核心贡献是一套自动化 RAG 评测框架：先用目标域 passage 合成训练数据，训练轻量级领域 judge，再用少量标注验证集通过 PPI 校正聚合分数并给出置信区间。机制不是直接让一个大模型打分，而是分别训练 context relevance、answer faithfulness、answer relevance 三个二分类 judge。反馈契约是明确的三元组判定：query-document-answer 对某一准则为正或负，PPI 再用人工标签估计 judge 误差。最接近的对比是 RAGAS、few-shot GPT-3.5 judge、抽样人工标注基线和 EXAM 类 RAG metric。方向标签是“带统计校准的 RAG evaluator 构造”。

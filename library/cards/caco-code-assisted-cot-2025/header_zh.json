@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Caco 将四类来源数据转为 146K 条已验证种子程序，再采样约 5.3M 个程序，并在多级过滤后发布 1,348,799 条带答案与代码的反向构造指令—解答记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可执行推理数据发布与合成构建流水线",
+  "best_for_ch": "研究可执行中间表示、合成推理数据扩展、SFT 语料构建与 verifier/谱系审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Honglin Lin, Qizhi Pei, Zhuoshi Pan, Yu Li, Xin Gao, Juntao Li, Conghui He, Lijun Wu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

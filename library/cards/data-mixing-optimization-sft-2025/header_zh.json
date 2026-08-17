@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "拟合迁移—缩放损失模型，在固定词元预算下选择监督微调的领域权重。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "监督微调数据混合优化研究",
+  "best_for_ch": "为昂贵的多领域监督微调选择领域比例的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuan Li, Zhengzhong Liu, Eric Xing",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T00:10:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SiriuS 用终局成功筛选角色级 SFT 记录，并通过 ground-truth-guided critique、regeneration、rephrasing 与下游 replay 修复失败轨迹；当前只公开五条 physics sample input，未公开论文 experience library、失败账本、feedback、模型或日志。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多智能体 outcome-supervised 数据构建与失败轨迹修复配方",
+  "best_for_ch": "研究角色级 SFT、终局 credit propagation、feedback repair、Actor-Critic 与 negotiation，以及 experience-library 发布和污染审计",
+  "confidence_ch": "高",
+  "authors_ch": "Wanjia Zhao、Mert Yuksekgonul、Shirley Wu、James Y. Zou",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

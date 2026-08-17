@@ -1,0 +1,152 @@
+id: phi-4-reasoning-vision-15b-2026
+title: Phi-4-reasoning-vision-15B Technical Report
+year: 2026
+venue: Microsoft Research Technical Report (MSR-TR-2026-10)
+authors:
+- Jyoti Aneja
+- Michael Harrison
+- Neel Joshi
+- Tyler LaBonte
+- John Langford
+- Eduardo Salinas
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- multimodal
+- mathematics
+- science
+- document_understanding
+- computer_use
+- safety
+training_use:
+- sft
+- agent_training
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www.microsoft.com/en-us/research/publication/phi-4-reasoning-vision-15b-technical-report/
+  arxiv: https://arxiv.org/abs/2603.03975
+  code: https://github.com/microsoft/Phi-4-reasoning-vision-15B
+  data: null
+  project: https://www.microsoft.com/en-us/research/blog/phi-4-reasoning-vision-and-the-lessons-of-training-a-multimodal-reasoning-model/
+  huggingface: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B
+  doi: https://doi.org/10.48550/arXiv.2603.03975
+  venue: https://www.microsoft.com/en-us/research/publication/phi-4-reasoning-vision-15b-technical-report/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2603.03975
+data_object:
+  prompt_source: Public vision-language sources listed in the report appendix, plus undisclosed Microsoft domain datasets
+    and targeted acquisitions; final source weights, internal data, and acquired-data terms are unknown.
+  trace_author: Public source authors plus synthetic/corrected records. GPT-4o and o4-mini regenerate some answers/captions
+    and are sometimes used in verification or majority-voting pipelines; prompts, allocation, and outputs are unknown.
+  answer_format: Image and text context with task prompt; reasoning records contain <think>...</think> chain-of-thought before
+    final answer, while perception-oriented records begin with <nothink>. Grounding coordinates are normalized relative to
+    image dimensions.
+  process_fields:
+  - image_context
+  - text_prompt
+  - think_or_nothink_mode
+  - chain_of_thought
+  - final_answer
+  - normalized_coordinates
+  environment_or_substrate: 'Three-stage multimodal SFT: MLP image-text alignment, full-model single-image instruction tuning,
+    then long-context/multi-image/RAI specialization.'
+  verifier_or_reward: No RL reward or executable training verifier is disclosed. Quality control includes manual dataset review,
+    GPT-4o/o4-mini answer or caption regeneration, and where appropriate model verification or majority voting; implementations
+    and calibration are unknown.
+  terminal_predicate: Excellent data is generally retained; datasets or records with wrong answers, poor captions, low-quality
+    questions/images, or formatting/logical errors are corrected, repurposed, or excluded. Exact thresholds, dataset-level
+    decisions, and rejected logs are unknown.
+recipe_metadata:
+  base_model: Phi-4-Reasoning language-model backbone plus SigLIP-2 vision encoder, connected by a mid-fusion MLP projector.
+  teacher: GPT-4o and o4-mini for some answer/caption regeneration and, where appropriate, verification or majority voting;
+    full teacher policy is unknown.
+  generator: Programmatic synthetic text-rich image data, regenerated captions/answers, detailed image descriptions, caption/VQA
+    derived from existing images, and multi-image/screenshot transformations; exact generator mapping is unknown.
+  filtering_rule: Manual classification of data quality; retain excellent records, correct wrong answers/poor captions, exclude
+    high-error datasets and fundamentally flawed images, and repair formatting/logical errors. Full criteria, prompts, thresholds,
+    and yields are unavailable.
+  sampling_protocol: 'Stage 1: 2.0M samples/1.4B tokens; Stage 2: 62.8M/188.5B; Stage 3: 3.2M/12B. Stage 2 is mixed single-image
+    instruction tuning; Stage 3 specializes in long context, multi-image, and RAI. Per-source sampling weights are unknown.'
+  rollout_count: null
+  temperature: null
+  inference_budget: Official model card reports 16,384 context tokens and up to 3,600 visual tokens. Evaluation uses greedy
+    decoding, temperature 0.0, and 4,096 max output tokens; these are not training settings.
+  optimizer_or_scaffold: Stage 1 trains only MLP; Stages 2 and 3 train MLP, vision encoder, and language model. All stages
+    use AdamW, bf16 mixed precision, DeepSpeed ZeRO-1, and one epoch. Learning-rate values and full optimizer configuration
+    are unknown.
+audit:
+  source_mixture: Public sources in the report appendix include Bunny, Pixmo, LLaVA-OneVision/NeXT, Docmatix, Open Images,
+    IAM, NuminaMath, OpenThoughts, MMR1, Eedi, AGUVis, MultiUI, BigDocs, PhiGround, SeeClick, WebSight, Hateful Memes, Think-in-Safety,
+    WildGuard, M4-Instruct, VisualWebInstruct, and VLGuard; the mixture also includes undisclosed internal and acquired data.
+  split: Training/validation split membership and source-level partitioning are unknown. Public benchmark evaluation is described
+    separately from the training mixture.
+  decontamination: unknown
+  license: Weights and official repository are MIT. The mixed public, internal, acquired, regenerated, and synthetic training
+    inputs do not have a unified released license or rights manifest.
+  lineage: Public/internal/acquired source to manual review and correction or exclusion to synthetic expansion/reformatting
+    to Stages 1-3 SFT to released model. Item-level lineage, rejected records, and immutable data revisions are unavailable.
+  known_failure_modes:
+  - Training data has not been released; the report only plans to release a portion in the future.
+  - Synthetic-teacher prompts, verification/majority-vote rules, error rates, thresholds, and retention yields are unavailable.
+  - Internal and acquired data block full source, rights, split, and contamination audit.
+  - The learned thinking/non-thinking switch can select an unsuitable mode; the stated 20/80 mix may not generalize.
+  - Fine-grained visual interpretation, multilingual performance, reliability, bias, and harmful-output risks remain.
+  - The official Hugging Face and GitHub README citation incorrectly identifies arXiv:2511.19663, which is Fara-7B; use MSR-TR-2026-10
+    and arXiv:2603.03975 instead.
+  - The model card's referenced full data card remains an RRRR_nnnn placeholder.
+  citation_status: verified
+  confidence: high
+  notes: Only Microsoft Research publication/blog, Microsoft-owned Hugging Face model card, Microsoft GitHub repository, and
+    the author technical report on arXiv were used. This is a Track 12 disclosure record, not a Track 8 scaling entry.
+inclusion_reason: A detailed frontier multimodal reasoning report that discloses stage counts, public source families, filtering/synthetic
+  transformations, mixed reasoning modes, and safety data while retaining material release and audit gaps.
+related: []
+tags:
+- phi-4
+- multimodal-reasoning
+- frontier-report
+- data-disclosure-ledger
+- sft
+- synthetic-data
+- computer-use
+- safety-alignment
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Phi-4-reasoning-vision-15B reports a 200B-token, three-stage mixed-reasoning SFT pipeline with public source
+  families and data-quality transformations, but withholds training records, internal/acquired data, verification details,
+  and full audit artifacts.
+why_it_matters: It shows how a frontier report can disclose useful construction interfaces without turning public weights,
+  aggregate counts, or a source list into evidence of reproducible data lineage, feedback, rights, or auditability.
+card: null
+needs:
+- 'needs_data: released training records, synthetic outputs, accepted/rejected samples, manifests, and immutable versions'
+- 'needs_metadata: source weights, internal/acquired dataset details, teacher prompts, verifier settings, sampling, and full
+  optimizer values'
+- 'needs_audit: splits, decontamination, contamination measurements, rejection yields, and model-to-example lineage'
+- 'needs_license: per-source, acquired-data, synthetic-output, and internal-data rights'
+- 'needs_code: unambiguous fine-tuning and benchmark-log locations plus reproducible training configuration'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Microsoft Research report/blog, author arXiv technical report, Microsoft-owned model page, and Microsoft GitHub repository
+    verified. The wrong 2511.19663 citation in release materials was excluded.

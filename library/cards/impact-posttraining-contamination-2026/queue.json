@@ -1,0 +1,17 @@
+{
+  "title": "The Impact of Post-training on Data Contamination",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=GFDSGlEks2",
+    "data": "https://openreview.net/attachment?id=GFDSGlEks2&name=supplementary_material"
+  },
+  "review_note": "已按 NeurIPS 2025 正式论文完成双语精读卡片与训练生命周期污染审计核对。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "受控配对实验显示后训练会重新暴露污染，并区分 SFT 的局部虚高与 GRPO 的外部迁移。",
+    "updated_at": "2026-07-24T03:30:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T03:30:00Z"
+}

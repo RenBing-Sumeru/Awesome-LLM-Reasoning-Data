@@ -1,0 +1,5 @@
+- Positioning: DeepAnalyze synthesizes complete multi-turn analyst trajectories and packages 500K instruction records that interleave planning, code execution, observations, and final reporting.
+- Data object: record id, multi-turn messages, input/output token counts, and execution evaluation.
+- Author and selector: an agentic synthesis pipeline writes plans, code, tool calls, observations, and reports; selection uses sandbox execution, artifact inspection, and task-level evaluation metadata.
+- Evidence anchor: The paper evaluates an 8B end-to-end agent trained on the 500K trajectories and reports stronger autonomous analysis than prior workflow and general-agent baselines across its data-science task suite.
+- Reuse decision: suitable for agentic SFT for autonomous data analysis; first audit successful code execution does not guarantee a correct analytical conclusion, and synthetic files may underrepresent messy organizational data.

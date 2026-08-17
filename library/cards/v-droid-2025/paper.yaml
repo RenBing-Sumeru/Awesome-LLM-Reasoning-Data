@@ -1,0 +1,298 @@
+id: v-droid-2025
+title: 'V-Droid: Advancing Mobile GUI Agent Through Generative Verifiers'
+year: 2026
+venue: ACM MobiCom 2026
+authors:
+- Gaole Dai
+- Shiqi Jiang
+- Ting Cao
+- Yuanchun Li
+- Yuqing Yang
+- Rui Tan
+- Mo Li
+- Lili Qiu
+source_role:
+- model_report
+- verifier_reward
+- process_supervision
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- pairwise_preference
+- scalar_reward
+domains:
+- agent_trajectories
+- mobile_gui_control
+- android
+- action_verification
+training_use:
+- preference_learning
+- reward_modeling
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://doi.org/10.1145/3795866.3796681
+  arxiv: https://arxiv.org/abs/2503.15937
+  code: https://github.com/V-Droid-Agent/V-Droid
+  data: null
+  project: https://v-droid-agent.github.io/
+  huggingface: https://huggingface.co/V-Droid/V-Droid-8B-0323
+  doi: https://doi.org/10.1145/3795866.3796681
+  venue: https://www.sigmobile.org/mobicom/2026/accepted.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mobile task instructions are drawn from the paper's cited AndroidControl/On-the-Effects-of-Data-Scale source
+    and Android in the Wild, then augmented with LLM-synthesized instructions based on App Store descriptions and manually
+    verified. Exact item IDs, source versions, mixture weights, synthesis model, prompts, and acceptance rubric are unknown.
+  task_object: A mobile task consists of a user goal, the current Android UI state, a working memory of prior actions and
+    state changes, and an extracted candidate-action set containing UI-dependent actions plus default actions such as open
+    app, wait, home, back, complete, and answer.
+  trace_author: Round 1 trajectories are labeled by humans selecting the correct action at each step. In later rounds, the
+    current V-Droid verifier executes out-of-domain tasks and marks stepwise correctness; humans inspect uncertain/error regions,
+    correct actions, and allow execution to resume until successful completion.
+  trajectory_object: The internal object is a successful multi-step Android execution trace with a task goal, per-step UI
+    state, working memory, extracted candidate-action set, one labeled correct action, rejected alternatives, score distribution/entropy,
+    executed action, next UI state, and occasional human correction. The full serialized schema and corpus are unreleased.
+  released_pair_object: The official repository exposes five example JSON records. Each record has only `chosen` and `rejected`,
+    both complete verifier prompt strings containing the user goal, action history, current UI description, and a candidate-action
+    query. It does not serialize episode/task/app IDs, next observations, score vectors, annotator source, terminal evidence,
+    or provenance.
+  answer_format: P3 training consumes a chosen prompt for the labeled correct action and a rejected prompt for one alternative
+    action. At inference the generative verifier projects first-token logits/probabilities through an MLP to a scalar action
+    score; the highest-scoring candidate is selected, while open-app, type-text, and answer actions require separate LLM completion.
+  process_fields:
+  - user_goal
+  - task_instruction_source
+  - action_history_or_working_memory
+  - current_ui_xml_or_html_description
+  - candidate_action_set
+  - labeled_correct_action
+  - rejected_action
+  - chosen_verification_prompt
+  - rejected_verification_prompt
+  - verifier_action_score
+  - score_distribution_entropy
+  - human_or_agent_annotation_source
+  - executed_action
+  - next_ui_state
+  - self_correction_reverse_action
+  - task_completion_signal
+  observation: Executing the selected/completed action produces the next Android UI state. A step summary derived from the
+    executed action and UI change updates working memory; the paper's current implementation uses GPT-4 for this memory update.
+    Exact observation serialization and the GPT-4 snapshot/settings are unknown.
+  reward_object: The learned feedback is a scalar helpfulness score for each candidate action. Training uses a logistic pairwise
+    loss that increases the labeled correct-action score relative to each rejected alternative at the same step. This is a
+    learned process score, not a direct environment-success reward or an RLVR policy reward.
+  environment_or_substrate: Android applications executed on an emulator cluster with UI state obtained through Android Accessibility
+    Service and actions executed through Android interactions/commands. Evaluation uses AndroidWorld, AndroidLab, and MobileAgentBench;
+    the public preview documents only an AndroidWorld setup with Pixel 6, Android Tiramisu/API 33, and gRPC port 8554.
+  verifier_or_reward: 'Mixed contract: humans/previous-round V-Droid label which action is correct at each trace step; P3
+    converts this into pairwise preferences and a scalar learned verifier score; downstream agent quality is measured separately
+    by each benchmark''s end-to-end task-success contract. The verifier cannot observe future terminal success when it scores
+    an action.'
+  terminal_predicate: V-Droid iterates until it selects the explicit `complete task` action, while benchmark evaluation assigns
+    task success under AndroidWorld, AndroidLab, or MobileAgentBench. For the collected 90-plus-app training corpus, the exact
+    external success checker, timeout, abandonment, retry, and human-adjudication rules are unknown.
+  provenance: Public/source and LLM-synthesized task instructions -> manual instruction verification -> emulator execution
+    -> per-step correct-action labeling by humans or current V-Droid with human correction -> all correct-versus-alternative
+    P3 pairs plus a 2.5% self-correction subset -> Q-LoRA verifier training -> verifier-driven agent evaluation.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct-4-bit with an attached MLP action-score head. The released adapter config pins `unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit`
+    as the base model.
+  teacher: Human annotators provide the 9K cold-start labels and correct later trajectories; the verifier checkpoint from
+    the preceding round acts as the agent annotator. GPT-4 constructs working memory in the evaluated implementation. The
+    LLM used to synthesize task instructions and the LLM used for action completion are not disclosed.
+  generator: Task instructions come from two cited public sources or are synthesized from App Store descriptions; the tasks
+    are executed on an emulator cluster to generate stepwise trajectories. Human-agent joint annotation supplies one correct
+    action per step and P3 expands a step with N candidates into N-1 preference pairs.
+  prompt_task_source: The paper cites *On the Effects of Data Scale on Computer Control Agents* and *Android in the Wild*
+    for public task instructions, plus manually verified LLM-generated instructions derived from App Store descriptions. Exact
+    source counts, revisions, and prompt templates are unknown.
+  sampling_protocol: Four cumulative annotation/training rounds expand from 9K to 27K to 55K to 110K pairs. Later-round tasks/apps
+    are described as out of domain to the current verifier. Score entropy triages likely errors for human correction. Erroneous
+    states are randomly subsampled so self-correction pairs form about 2.5% of the final training set.
+  rollout_count: Reported cumulative pair counts are 9K, 27K, 55K, and 110K. Total tasks, episodes, raw states, candidate
+    actions, agent attempts, retries, discarded rollouts, and per-round newly added counts are unknown.
+  temperature: unknown
+  inference_budget: The verifier scores one first-token output per candidate in batches with prefix caching and evaluates
+    50.3 actions per step on average. Paper latency uses two RTX 4090 GPUs unless stated otherwise. Token limits, completion
+    decoding, timeout/retry budgets, and exact serving concurrency are unknown; the public training preview sets max length
+    2800.
+  search_or_scaffold: Rule-based accessibility-tree action extraction, default-action supplementation, per-candidate prompt
+    construction, batched prefilling-only scoring, vLLM automatic prefix caching, LLM completion for open/type/answer actions,
+    Android execution, and working-memory update.
+  filtering_rule: Task instructions synthesized from App Store descriptions are manually verified. A score-entropy heuristic
+    filters steps likely to be wrong for human review. AndroidLab and MobileAgentBench applications are excluded from training.
+    Excess erroneous states are randomly downsampled because too many reverse-action pairs collapse the policy toward repeated
+    back actions. Exact instruction acceptance and entropy thresholds used in collection are unknown.
+  selection_threshold: Table 1 evaluates entropy using the median entropy as threshold; the paper otherwise calls the operational
+    threshold conservative but does not publish its exact per-round values.
+  preference_objective: For each state, minimize the negative log-sigmoid of the correct-action score minus an incorrect-action
+    score over all correct-versus-alternative pairs.
+  optimizer_or_scaffold: Q-LoRA rank 16 with learning rate 1e-4, 10 warm-up steps, gradual reduction to 1e-6, and 20 epochs
+    in round 4. The final 110K-pair run took about 90 hours on 16 Nvidia A100 40GB GPUs. The released adapter config records
+    LoRA alpha 32 and dropout 0.05, but the paper does not establish that every current artifact default matches the reported
+    run.
+  cold_start: Humans manually selected correct actions from extracted lists for the initial 9K pairs; the paper reports roughly
+    four minutes per task and five hours total for this round.
+  release_preview: Current `train.sh` is a one-GPU demo and the repository provides only five example pairs. Its batch size
+    and random 99/1 split behavior must not be attributed to the 16-GPU paper run without additional evidence.
+  undisclosed_training_fields:
+  - task_synthesis_model_and_decoding
+  - action_completion_model_and_decoding
+  - exact_GPT4_snapshot_and_memory_prompt
+  - full_batch_and_gradient_accumulation_configuration
+  - scheduler_type_and_optimizer_betas
+  - random_seeds_and_checkpoint_selection
+  - per_round_data_additions_and_duplicate_handling
+  - entropy_thresholds_and_human_review_rubric
+  - exact_train_validation_split_for_reported_model
+audit:
+  source_mixture: Public task instructions from two cited sources plus manually checked LLM-synthesized App Store tasks, executed
+    across more than 90 applications in seven categories. Exact task/app IDs, source counts, source revisions, mixture weights,
+    app licenses, language distribution, and per-round membership are unknown.
+  split: The paper reports four cumulative training-pair scales. AndroidWorld is an in-domain test benchmark; AndroidLab and
+    MobileAgentBench are OOD and their applications are excluded from collection. No immutable train/validation/test manifest,
+    task IDs, app/version split, or round-level split is released. The preview code's random 99/1 split is not confirmed as
+    the paper split.
+  decontamination: unknown
+  benchmark_overlap: Application exclusion is stated only for AndroidLab and MobileAgentBench. No item-level or semantic overlap
+    audit is disclosed for task instructions, generated paraphrases, supporting models, or AndroidWorld, which is explicitly
+    designated in domain.
+  lineage: Source/synthetic instruction -> manual verification -> Android emulator trace -> human or current-verifier action
+    label plus human correction -> P3 chosen/rejected pairs and sampled reverse-action pairs -> round-specific Q-LoRA verifier
+    -> action scoring in the deployed agent -> benchmark task-success and latency evaluation.
+  license: The camera-ready paper states CC BY 4.0; the project website states CC BY-SA 4.0 for the site; the HF model card
+    declares Apache-2.0. The official GitHub repository has no LICENSE/SPDX metadata, so code and the five example data records
+    are license-unknown. None of these licenses establishes rights for source tasks, Android apps, UI content, annotations,
+    or the unreleased 110K corpus.
+  release_version: arXiv v5 dated 2026-02-21 was reviewed. GitHub `main` was inspected at `8d549027634abe65a5721fe6bc3b5e84475db2f6`
+    (2026-02-02); it has no tag or GitHub release, calls itself a public preview, and exposes 211 tree paths but only five
+    P3 example records. HF model revision `4b2ed82d9f10486dd02376b1ccbad92842e3dc7a` (2025-10-14) contains LoRA adapter weights,
+    adapter config, tokenizer files, and `v_head.pth`, not a standalone full base checkpoint.
+  version_drift: ArXiv v1 and the still-current project/README headline report the old title, a 9.5-point AndroidWorld margin,
+    and 0.7 seconds per step. ArXiv v5/camera-ready changes the title and publication year and reports a 5.2-point margin,
+    4.3 seconds total per step, and about 0.7 seconds per decision. V1 and the released examples/model card describe HTML
+    UI input, while v5 describes XML. Results and replay claims must therefore pin paper and artifact revisions.
+  experimental_evidence:
+    task_success_rates: ArXiv v5 reports 59.5% on AndroidWorld, 38.3% on AndroidLab, and 49.0% on MobileAgentBench, with absolute
+      margins of 5.2, 2.1, and 9.0 percentage points over the cited prior best values.
+    latency: V5 reports 4.3 seconds total per step and about 0.7 seconds per decision; Table 2 lists 0.74-second decision
+      latency. The breakdown attributes 3.03 seconds to GPT-4 working-memory construction.
+    scale: AndroidWorld success rises 15.0 -> 37.5 -> 47.4 -> 59.5 across 9K -> 27K -> 55K -> 110K pairs, while MobileAgentBench
+      rises 17.0 -> 49.0. Pair volume, data diversity, annotator mixture, and verifier checkpoint all change, so this is not
+      an isolated data-volume causal estimate.
+    self_correction: The paper reports AndroidWorld success 52.2% -> 59.5% with self-correction data and average trajectory
+      length 10.3 -> 11.6 steps.
+    entropy_triage: Table 1 gives median-threshold accuracies 0.51, 0.76, and 0.71 at 27K, 55K, and 110K; Fig. 13 gives AUC
+      0.55, 0.83, and 0.78. Final-round quality is not monotonic.
+  verifier_or_judge_failure_modes:
+  - P3 marks the one labeled action positive and every other candidate negative. States with multiple valid/helpful paths
+    can therefore create false-negative preference pairs; no alternative-valid-action audit is reported.
+  - Entropy is an imperfect triage signal with both false positives and false negatives and non-monotonic final-round accuracy/AUC,
+    so human review around flagged steps may miss confidently wrong actions.
+  - Random reverse-action construction is heuristic. The paper directly observes that excessive self-correction data collapses
+    behavior toward repeated navigate-back actions and limits these pairs to about 2.5%.
+  - A high learned helpfulness score is not an environment proof. Hallucinated decisions remain a major failure category,
+    and the rule-based action space can omit actions when accessibility information is inaccurate.
+  - Text-only accessibility input cannot interpret image/video content; v1/artifacts say HTML while v5 says XML, leaving preprocessing
+    and checkpoint compatibility ambiguous.
+  - GPT-4 working-memory construction materially affects success and dominates step latency, but the exact snapshot, prompt,
+    decoding, API, retries, and caching are unpinned. The separate action-completion LLM is also undisclosed.
+  - The scaling curves conflate pair count with new tasks/apps, changing annotator mixture, and iterative model updates.
+  - Public evaluation support is AndroidWorld-oriented; complete AndroidLab/MobileAgentBench adapters, app states, and table-reproduction
+    scripts were not verified in the official preview.
+  - The model release includes `v_head.pth`, a PyTorch serialized artifact. Reusers should inspect the loading path and use
+    isolated infrastructure rather than treating the file as equivalent to safetensors.
+  successful_and_failed_sample_retention: The core dataset is built from corrected trajectories carried to successful completion.
+    Erroneous states are sampled only for an approximately 2.5% self-correction component. Exact failed-task/timeout counts,
+    abandoned traces, unflagged verifier errors, rejected synthetic instructions, correction histories, and drop logs are
+    unknown and unreleased.
+  privacy_or_consent: Unknown. The paper says execution-time security/privacy checks follow prior work, while P3 safety-guideline
+    training is future work. It does not disclose annotator consent, app-content rights, handling of phone numbers/messages/files
+    or other sensitive UI text, redaction, retention, or a privacy review for training records.
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - complete_110K_data_and_round_manifests
+  - task_trajectory_and_candidate_counts
+  - immutable_splits_and_record_level_provenance
+  - task_synthesis_model_prompts_and_acceptance_rubric
+  - annotator_count_qualifications_agreement_and_adjudication
+  - alternative_valid_action_policy
+  - failed_trajectory_and_timeout_retention
+  - exact_GPT4_and_action_completion_configuration
+  - emulator_app_benchmark_and_UI_serializer_versions
+  - item_level_overlap_deduplication_and_contamination_audit
+  - code_data_source_task_and_app_content_licenses
+  - privacy_consent_and_PII_controls
+  - tagged_release_mapping_paper_code_data_model_and_results
+  notes: Full arXiv v5 and v1 PDFs, the MobiCom accepted-paper page, project page, official GitHub tree and training/data
+    preview, GitHub tag/release/license state, HF model card/files/history, and adapter config were checked on 2026-07-20.
+    Artifact verification confirms a partial code/model preview, not release of the reported training corpus or full reproduction.
+inclusion_reason: V-Droid provides a concrete mobile-agent reasoning-data recipe in which full Android task traces are converted
+  into step-level correct-versus-alternative preferences, a learned scalar verifier selects actions, and entropy-guided human-agent
+  annotation scales the data over four rounds. Its incomplete release and version drift are themselves important audit lessons
+  for trajectory and feedback datasets.
+related:
+- android-control-2024
+- androidlab-2025
+tags:
+- v-droid
+- mobile-gui-agent
+- android
+- agent-trajectory
+- generative-verifier
+- pairwise-process-preference
+- process-supervision
+- human-agent-annotation
+- self-correction
+- release-incomplete
+- version-drift
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: V-Droid trains a Llama-3.1-8B action verifier on 110K human-agent-annotated P3 preference pairs derived
+  from Android trajectories, using entropy to target corrections and a small reverse-action subset for self-correction; the
+  full corpus, replay state, licenses, and exact experiment-to-artifact mapping remain unavailable.
+why_it_matters: It makes the feedback interface for mobile reasoning explicit - task state plus history and a candidate action
+  maps to a learned scalar score - while showing how alternative-action labeling, uncertainty triage, environment replay,
+  external memory models, and release/version drift determine whether an agent trajectory recipe can actually be reused.
+card: null
+needs:
+- 'needs_data: release the complete 110K pairs, source/task/app/round manifests, corrections, and failed traces'
+- 'needs_schema: publish task, state, action-set, score, entropy, annotator, observation, terminal, and provenance fields'
+- 'needs_split: pin train/validation/test IDs and audit AndroidWorld and semantic task overlap'
+- 'needs_replay: pin emulator, Android/app/benchmark/UI-serializer versions, resets, credentials, network, and all three evaluators'
+- 'needs_models: pin GPT-4 memory and action-completion models/prompts/settings and map the exact HF revision to paper results'
+- 'needs_training_recipe: disclose batch/optimizer/scheduler/seeds/checkpoint selection, entropy thresholds, and annotation
+  rubric'
+- 'needs_license_privacy: clarify code/data/source-task/app rights, consent, sensitive UI handling, and retention'
+- 'needs_release: create immutable code/data/model tags and a table/figure reproduction manifest'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: arXiv:2503.15937v5
+  official_publication_title: 'V-Droid: Advancing Mobile GUI Agent Through Generative Verifiers'
+  prior_preprint_title: 'Advancing Mobile GUI Agents: A Verifier-Driven Approach to Practical Deployment'
+  repository_commit: 8d549027634abe65a5721fe6bc3b5e84475db2f6
+  model_revision: 4b2ed82d9f10486dd02376b1ccbad92842e3dc7a
+  duplicate_check: Exact arXiv ID and title search found only the assigned `v-droid-2025` Card in the target repository.
+  notes: Citation, MobiCom acceptance, camera-ready DOI, code preview, five-pair example file, training preview, and HF adapter
+    are verified. `artifact_verified` does not mean the reported 110K dataset, complete replay environment, or all benchmark
+    reproduction paths are available; those remain explicit blockers and keep status partial/L3.

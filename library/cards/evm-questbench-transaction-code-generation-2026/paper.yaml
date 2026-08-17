@@ -1,0 +1,102 @@
+id: evm-questbench-transaction-code-generation-2026
+title: 'EVM-QuestBench: An Execution-Grounded Benchmark for Natural-Language Transaction Code Generation'
+year: 2026
+venue: ACL 2026
+authors:
+- Pei Yang
+- Wanyi Chen
+- Ke Wang
+- Lynn Ai
+- Eric Yang
+- Tianyu Shi
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- code
+- reasoning
+training_use:
+- evaluation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1642/
+  arxiv: https://arxiv.org/abs/2601.06565
+  code: https://github.com/OpenEdgeHQ/EVM-quest-bench
+  data: https://github.com/OpenEdgeHQ/EVM-quest-bench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1642
+  venue: https://aclanthology.org/2026.acl-long.1642/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1642/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Natural-language transaction templates with dynamic chain objects and numeric parameters.
+  trace_author: Benchmark authors write task templates, runners, and state validators.
+  answer_format: Task definitions, generated TypeScript transaction scripts, execution traces, and validator outcomes.
+  process_fields:
+  - instruction_template
+  - sampled_parameters
+  - transaction_script
+  - call_trace
+  - terminal_state
+  - validator_result
+  environment_or_substrate: Isolated Anvil snapshots over a forked BSC EVM environment.
+  verifier_or_reward: Task-specific terminal-state validators plus composite-workflow step-efficiency decay.
+  terminal_predicate: The generated transaction script reaches the requested on-chain asset and contract state.
+recipe_metadata:
+  base_model: Twenty evaluated language models.
+  teacher: Task templates, forked-chain state, and task-specific validators.
+  generator: Dynamically instantiate instructions, execute scripts on fork snapshots, and validate terminal state.
+  filtering_rule: Score only scripts whose observed terminal state satisfies the task validator.
+  sampling_protocol: '107 tasks: 62 atomic scenarios and 45 composite workflows, evaluated in five independent rounds.'
+  rollout_count: 5
+  temperature: null
+  inference_budget: Fix fork blocks, RPC providers, contract addresses, wallet permissions, and random seeds.
+  optimizer_or_scaffold: TypeScript runner with Anvil snapshot isolation and validator-based scoring.
+audit:
+  source_mixture: Official ACL paper and authors' public GitHub release.
+  split: 62 atomic tasks and 45 composite tasks; evaluation dynamically samples task instances.
+  decontamination: Dynamic sampling reduces fixed-answer matching but does not rule out learning task-template structure.
+  license: Consult the official repository before reuse.
+  lineage: https://github.com/OpenEdgeHQ/EVM-quest-bench
+  known_failure_modes:
+  - Forked test wallets do not represent mainnet MEV, slippage, RPC failures, or malicious contracts.
+  - State validators can miss unsafe side effects if their invariants are incomplete.
+  - Protocol and chain coverage remain limited despite dynamic instantiation.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL metadata, author affiliations, and the public code-and-benchmark release were checked.
+inclusion_reason: EVM-QuestBench supplies execution-grounded transaction-code tasks with terminal-state validators on forked
+  EVM snapshots.
+related: []
+tags:
+- evm
+- blockchain
+- transaction-code
+- execution
+- benchmark
+one_line_summary: EVM-QuestBench scores generated transaction scripts by the on-chain states they achieve on forked EVM snapshots.
+why_it_matters: It replaces string-level transaction-code checks with programmatic validation of asset and contract state.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: The official ACL record and author repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

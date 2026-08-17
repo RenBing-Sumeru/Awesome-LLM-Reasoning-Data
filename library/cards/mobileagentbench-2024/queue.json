@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:07:04Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "仅100个任务 无数据轨迹，不够solid",
+    "updated_at": "2026-07-14T10:07:04Z"
+  }
+}

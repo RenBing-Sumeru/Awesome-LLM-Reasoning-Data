@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MobileLLM-R1 用 capability probe 与 influence estimate 形成分阶段数据配比，并以 4T 预训练、200B 蒸馏式中训练和分阶段 SFT 训练 140M-950M 模型，但未发布抽样语料或完整数据筛选流水线。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "小模型推理的数据筛选、混合与全栈训练配方",
+  "best_for_ch": "研究推理数据配比、影响函数筛选、知识蒸馏、小模型课程与开放配方审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Changsheng Zhao, Ernie Chang, Zechun Liu, Chia-Jung Chang, Wei Wen, Chen Lai, Rick Cao, Yuandong Tian, Raghuraman Krishnamoorthi, Yangyang Shi, Vikas Chandra",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

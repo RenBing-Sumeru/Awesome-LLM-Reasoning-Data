@@ -1,0 +1,3 @@
+Closest data store action text, one screenshot, or terminal labels. ExeVR synchronizes full execution videos with actions and explicit step negatives.
+
+The substantive change is therefore not a generic SFT, DPO, BCE, or RL objective, but the construction of tasks, screen recordings, action timestamps, outcome rewards, and step-level negative examples as a learnable and auditable data object. By storing feedback evidence that would otherwise remain hidden in scripts or environment execution, the work allows later studies to replace labelers, filters, or negative-example sources independently.

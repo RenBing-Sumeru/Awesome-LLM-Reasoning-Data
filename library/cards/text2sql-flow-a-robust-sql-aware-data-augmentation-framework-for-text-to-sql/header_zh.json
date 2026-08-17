@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用六维 SQL-aware 扩增和数据库执行验证构建 89,544 条 Text-to-SQL 数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Qifeng Cai, Hao Liang, Chang Xu, Tao Xie, Wentao Zhang, Bin Cui",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

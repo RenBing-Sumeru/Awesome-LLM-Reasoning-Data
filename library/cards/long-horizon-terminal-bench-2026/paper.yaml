@@ -1,0 +1,301 @@
+id: long-horizon-terminal-bench-2026
+title: 'Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading'
+year: 2026
+venue: arXiv preprint
+authors:
+- Zongxia Li
+- Zhongzhi Li
+- Yucheng Shi
+- Ruhan Wang
+- Junyao Yang
+- Zhichao Liu
+- Xiyang Wu
+- Anhao Li
+- Yue Yu
+- Ninghao Liu
+- Lichao Sun
+- Haotao Mi
+- Leowei Liang
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+- agent_environment
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- terminal_agents
+- shell_and_cli
+- docker_environments
+- agent_trajectories
+- software_engineering
+- scientific_computing
+- multimodal_analysis
+- games_and_puzzles
+- professional_workflows
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2607.08964
+  paper_pdf: https://arxiv.org/pdf/2607.08964v2
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2607.08964
+  code: https://github.com/zli12321/LHTB
+  code_snapshot: https://github.com/zli12321/LHTB/tree/6a347090593bfc20ba41b5968427fe1486348c82
+  data: https://huggingface.co/datasets/IntelligenceLab/Long-Horizon-Terminal-Bench
+  data_snapshot: https://huggingface.co/datasets/IntelligenceLab/Long-Horizon-Terminal-Bench/tree/79c090bf7a034ca33f291abc039413c6d6f20f5c
+  project: https://zli12321.github.io/LHTB/
+  leaderboard: https://zli12321.github.io/LHTB/leaderboard.html
+  leaderboard_data: https://huggingface.co/datasets/IntelligenceLab/LHTB-leaderboard
+  huggingface: https://huggingface.co/datasets/IntelligenceLab/Long-Horizon-Terminal-Bench
+  doi: https://doi.org/10.48550/arXiv.2607.08964
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2607.08964
+data_object:
+  object_type: A test-only collection of 46 Harbor/Terminal-Bench-style task specifications and containerized terminal environments
+    with deterministic subtask graders. Evaluation generates state-action-observation episodes, but a reusable corpus of the
+    paper's model trajectories is not part of the verified release.
+  prompt_source: Natural-language terminal goals derived from realistic professional engineering, scientific, multimodal,
+    game, puzzle, security and APEX-style workflows. Some are adapted from or inspired by APEX-Agents and others are newly
+    created; record-level source and rights annotations are not published.
+  trace_author: The evaluated model plus agent harness produces each shell interaction trajectory. Paper v2 evaluates 17 models
+    mostly through Terminus-2, with GPT-5.3 using Codex. Current example configs record terminal sessions, but the paper's
+    complete baseline job/trajectory corpus was not verified as publicly released.
+  task_record:
+  - task_id
+  - name
+  - category
+  - difficulty
+  - keywords
+  - description
+  - instruction
+  - docker_image
+  - allow_internet
+  - cpus
+  - memory_mb
+  - gpus
+  - agent_timeout_min
+  - expert_time_estimate_min
+  - task.toml
+  - environment/Dockerfile_and_assets
+  episode_fields:
+  - task_id_and_instruction
+  - initial_container_state
+  - shell_command_or_file_action
+  - stdout_stderr_or_environment_observation
+  - file_and_environment_state_change
+  - recorded_terminal_session_when_enabled
+  - final_artifacts_or_move_log
+  - timeout_early_exit_or_harness_error
+  - subtask_verifier_outputs
+  - aggregate_scalar_reward
+  answer_format: Task-dependent final files, code, reports, metrics, services or recorded game moves produced through a terminal
+    session. The 46-row HF table serializes task metadata and instructions, not the runtime action-observation episode.
+  process_fields:
+  - instruction
+  - terminal_action
+  - terminal_observation
+  - evolving_container_state
+  - intermediate_artifact
+  - final_container_evidence
+  - normalized_subtask_score
+  - subtask_weight
+  - aggregate_reward
+  - termination_cause
+  observation: Terminal stdout/stderr, filesystem contents, script/test output, simulator responses and other effects of prior
+    commands inside the task container. The paper does not provide online correctness labels for individual observations or
+    actions.
+  action_space: Shell commands, file inspection/editing, script execution and task-specific CLI interactions issued by an
+    agent harness in a stateful Docker environment.
+  environment_or_substrate: Harbor task folders executed in Docker. Current HF rows reference dated Docker image tags, expose
+    task-specific CPU/memory/network/time metadata, and use no GPUs. Checked example configs delete trial containers but allow
+    cached image/build reuse.
+  verifier_or_reward: A deterministic grader runs at rollout end and assigns binary, continuous/thresholded or episode-aggregated
+    subtask scores from final-state evidence or task-specific replay. The weighted mean R is dense across subtasks but is
+    not step-level online reward.
+  verifier_output: Normalized subtask scores r_k in [0,1], their task-specific weights, aggregate R = sum(w_k*r_k)/sum(w_k),
+    and resolved/perfect indicators at R >= 0.95 and R = 1.0.
+  reward: Evaluation-only scalar reward in [0,1] plus pass thresholds. Timeouts and early exits retain scoreable partial progress
+    when the final/replayed evidence supports it; harness errors are scored as zero in paper aggregates.
+  terminal_predicate: After agent exit or timeout, the task grader inspects/replays the produced evidence. A run is counted
+    resolved at R >= 0.95 and perfectly complete at R = 1.0. The exact checks are task-specific; there is no universal per-action
+    success predicate.
+  provenance: Professional or benchmark-inspired workflow -> one of 120 candidate broken projects -> author quality filtering
+    and repeated DeepSeek-V4-Pro calibration -> 46 selected Harbor tasks with gold solution and grader -> agent terminal episode
+    -> end-of-rollout subtask scores and aggregate reward. Per-candidate rejection and record-level source lineage are unknown.
+  release_shape: HF publishes 46 test rows and task folders containing task.toml, instruction.md and environment/. Its card
+    says tests/ and solution/ are held out. At the checked GitHub commit all 46 task directories publicly contain both tests/
+    and solution/, while the paper's complete model-run trajectories remain unreleased.
+recipe_metadata:
+  base_model: Not a training recipe. Paper v2 evaluates 17 frontier models; exact immutable API or checkpoint snapshots are
+    not supplied for all systems.
+  teacher: Gold solutions or simulation engines validate task solvability and grader behavior; they are not documented as
+    teacher targets for policy training.
+  generator: Authors construct deliberately broken terminal projects from professional workflows. Whether and how LLMs generated
+    candidate task content is not disclosed.
+  prompt_task_source: Professional engineering/data-processing workflows, some adapted from or inspired by APEX-Agents, plus
+    newly designed terminal tasks across nine paper-level categories.
+  filtering_rule: Public checks receive low weight, hidden stress cases receive most reward, and the gold solution must score
+    1.0. Authors quality-filter 120 candidates to 46 and iteratively calibrate difficulty; exact rejection, repair and acceptance
+    rules are unknown.
+  sampling_protocol: Paper evaluation uses one pass@1 attempt for each of 17 models on each of 46 tasks, yielding 782 model-task
+    runs. Difficulty construction repeatedly runs DeepSeek-V4-Pro under a 1.5-hour budget, but the number of calibration attempts
+    is unknown.
+  rollout_count: 1 paper evaluation attempt per model-task pair; calibration rollout count unknown.
+  temperature: Paper production/evaluation decoding temperature is unknown. Current public example configs use temperature
+    1, but those mutable defaults are not treated as proof of the paper run.
+  inference_budget: Paper text specifies a nominal 90-minute task timeout and reports 239 episodes, 9.79M tokens and 88.9
+    minutes per task on average. Current HF task timeouts range from 60 to 480 minutes and Table 1 includes a 176.1-minute
+    model average, requiring protocol reconciliation.
+  search_or_scaffold: Harbor provides Docker task execution. Terminus-2 mediates most paper runs; GPT-5.3 uses Codex. Current
+    example Terminus-2 configs use JSON action parsing, proactive summarization and full terminal-session recording.
+  selection_threshold: Final benchmark contains 46 of 120 candidates after undisclosed quality filtering and difficulty calibration;
+    gold solutions must earn 1.0. Exact candidate acceptance thresholds and rejection reasons are unknown.
+  optimizer_or_training_scaffold: null
+  seeds: Deterministic seeds are task-specific where replay requires them, such as 2048. A suite-wide seed policy for model
+    calls and all environments is not disclosed.
+audit:
+  source_mixture: Forty-six terminal tasks spanning nine paper-level categories and finer live metadata categories, mixing
+    new professional workflows with APEX-inspired adaptations. Public task-level lineage and rights annotations are absent.
+  split: HF exposes one test split with 46 rows. There is no train or validation split, and the paper's evaluated trajectories
+    are not a released split.
+  decontamination: unknown
+  benchmark_overlap: Intentional Terminal-Bench/Harbor format lineage and partial inspiration/adaptation from APEX are disclosed.
+    No reproducible task deduplication, model-training-corpus screen or record-level benchmark-overlap analysis is published.
+  license: The arXiv paper is CC BY 4.0; GitHub and HF assert Apache-2.0 for code/dataset. A record-level manifest does not
+    reconcile third-party assets, packages, base images, source papers, APEX-derived material or professional documents, so
+    those inherited rights remain unknown.
+  lineage: Aggregate construction and task/runtime lineage is documented, but individual source workflows, all 120 candidate
+    decisions, repair histories, calibration runs, image digests and baseline-run artifacts are not tied into an immutable
+    manifest.
+  release_version: Paper arXiv:2607.08964v2, PDF SHA-256 f1a79d471a34503799b548f301dc27e9ea6ed1601374acd27dc8e2ec955467b8;
+    GitHub main 6a347090593bfc20ba41b5968427fe1486348c82 with no Release; HF task dataset 79c090bf7a034ca33f291abc039413c6d6f20f5c;
+    empty checked leaderboard dataset 60a98c09068f8f02078cf5ec7d5f1ca5604b7d5a.
+  release_completeness: HF publishes 46 task/environment records but withholds tests and solutions by policy. Current GitHub
+    exposes tests and solutions for all 46 tasks. Neither surface provides a complete frozen corpus of the paper's 782 terminal
+    sessions and result artifacts.
+  successful_and_failed_sample_retention: The paper retains and reports aggregate outcomes for successes, partial progress,
+    timeouts, early exits and harness errors. Raw successful/failed/calibration sessions, full job directories and discarded
+    candidate tasks are not verified as released.
+  container_and_reset: Current full config uses Docker, one attempt, environment delete=true and force_build=false. This implies
+    per-trial cleanup but permits cache/image reuse; exact clean-reset semantics, volumes, external services and build caches
+    are not pinned.
+  dependency_and_network: Current HF rows mark 25 tasks internet-enabled and 21 offline, with 1-4 CPUs, 1,024-8,192 MB memory
+    and no GPU. Docker images are tag-pinned rather than digest-pinned; inspected Dockerfiles mix exact, ranged and unpinned
+    apt/pip inputs.
+  replay: Some tasks deterministically replay logged actions in fresh seeded engines, while others score final-state tests.
+    No universal replay schema or complete cold-build manifest binds Docker digests, dependencies, Harbor/agent commits, API
+    snapshots, seeds, caches and paper result files.
+  safety: The suite includes exploit crafting, systems/security, legal, investment-banking and medical-imaging workflows,
+    and more than half of current task records allow internet. Containerization is documented, but no comprehensive egress,
+    credential, malware, professional-advice, hazardous-output or abuse-handling policy is disclosed.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - HF says tests and gold solutions are hidden, while current official GitHub exposes them for all 46 tasks, enabling contamination
+    and direct verifier/solution gaming.
+  - Dense subtask reward can be incomplete or gameable if checks omit intended semantics; gold-solution success proves satisfiability,
+    not verifier completeness.
+  - The reward is computed at rollout end, so it does not localize which action caused progress or failure despite process-reward
+    language.
+  - Seventy-nine percent of unresolved paper runs time out, while false finishes show weak self-verification; fixed budgets
+    therefore mix capability with execution speed and stopping policy.
+  - Paper, project, GitHub and HF surfaces drift in model counts, category vocabulary, difficulty labels, time budgets and
+    hidden-artifact policy.
+  - Most models use Terminus-2 but GPT-5.3 uses Codex, so observed scores are not purely model-comparable under a literally
+    identical harness.
+  - Mutable Docker base tags, apt indexes, package ranges, cached builds and non-digest image tags can change environment
+    behavior and verifier outcomes.
+  - Internet-enabled tasks can introduce live dependency drift, data exfiltration or benchmark-site access; the leaderboard
+    forbids some access but task-level enforcement was not audited.
+  - No complete baseline trajectory corpus, discarded-candidate ledger or failure replay archive is released for independent
+    analysis or training reuse.
+  - Apache-2.0 release labels do not establish rights for every bundled or fetched third-party component and professional
+    artifact.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v2/full appendix, project page, GitHub repository tree/configs/license/task files, HF card/viewer/tree/commit
+    and leaderboard surfaces were checked. Representative Dockerfiles and verifiers were inspected, but the 1.18 GB release
+    was not cold-built and all 46 verifier implementations were not semantically audited.
+  remaining_unknowns:
+  - Exact human/LLM authorship, prompts and generation tooling for the 120 candidates.
+  - Candidate rejection/repair ledger, per-task source lineage and calibration rollout counts.
+  - Exact paper-run Harbor, Terminus-2 and Codex commits, model/API snapshots, prompts, seeds, retries and cache state.
+  - Reconciliation of 90-minute paper/leaderboard claims with 60-480 minute task metadata and the 176.1-minute Table 1 row.
+  - Authoritative hidden-verifier policy after current GitHub publication of tests and solutions.
+  - Complete successful, partial, failed, timed-out, early-exit and harness-error trajectory release.
+  - Container image digests, complete dependency locks, external service snapshots and universal reset/replay contract.
+  - Task-level deduplication, benchmark overlap and evaluated-model contamination audit.
+  - Record-level third-party licensing, privacy/consent, provenance and safety review.
+inclusion_reason: Long-Horizon-Terminal-Bench packages 46 stateful terminal environments whose end-of-rollout deterministic
+  subtask graders turn long action-observation episodes into partial scalar rewards, making it a central evaluation object
+  for environment-grounded reasoning while exposing contamination, replay and release-boundary risks.
+related:
+- terminalworld-2026
+tags:
+- long-horizon-terminal-bench
+- terminal-agents
+- docker
+- harbor
+- agent-trajectories
+- environment-feedback
+- deterministic-verifier
+- dense-subtask-reward
+- partial-credit
+- replay
+- evaluation-only
+- contamination-risk
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: LHTB releases 46 test-only containerized terminal tasks with deterministic end-of-rollout subtask rewards,
+  but not the paper's model trajectories, and its current GitHub exposure of tests/solutions conflicts with the HF held-out
+  policy.
+why_it_matters: It makes long-horizon terminal progress measurable without collapsing every incomplete run to zero, while
+  showing that dense environmental rewards are only trustworthy when verifier secrecy, trajectory retention, container replay,
+  version binding and rights are audited together.
+card: null
+needs:
+- 'needs_release_boundary: reconcile HF-held-out tests/solutions with their public availability in the official GitHub repository'
+- 'needs_trajectory_release: publish immutable successful, partial, failed, timed-out, early-exit and harness-error job/trajectory
+  bundles'
+- 'needs_protocol_reconciliation: align model counts, category/difficulty taxonomies, time budgets and harness claims across
+  paper, project, GitHub and HF'
+- 'needs_replay_manifest: pin Docker digests, dependencies, Harbor/agent commits, model/API snapshots, seeds, caches, reset
+  rules and result hashes'
+- 'needs_construction_ledger: disclose candidate generation, 120-to-46 filters, repair/rejection reasons, calibration attempts
+  and per-task source lineage'
+- 'needs_decontamination: document deduplication, public verifier/solution exposure, model-training overlap and benchmark-overlap
+  controls'
+- 'needs_license_audit: establish record-level rights for third-party assets, dependencies, base images, source papers and
+  APEX-derived materials'
+- 'needs_safety_and_privacy: document network/egress controls, exploit/professional-task safeguards, credentials, provenance,
+  consent and deletion policy'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Citation, arXiv v2, authors, project, code/data links, pinned GitHub/HF heads, 46-task test release, repository tree,
+    configs, representative task/verifier/ Docker files, network/resource fields, licenses and leaderboard release state were
+    verified. Artifact verification does not imply exact paper replay, hidden-verifier integrity or availability of a training
+    trajectory corpus.

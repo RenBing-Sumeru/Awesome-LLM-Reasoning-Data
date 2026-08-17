@@ -1,0 +1,3 @@
+What is new is the role-centered framing of LLMs in scientific discovery, from automation to autonomy. Rather than presenting a single new scientific model, the paper offers a conceptual architecture for comparing responsibilities across the research lifecycle. It is useful when claims of autonomy need to be made more specific.
+
+Its novelty is consequently in the vocabulary for comparison, rather than in a newly reported system result. This framing lets readers discuss capability, authority, and accountability separately. That separation is helpful because a system may perform a difficult subtask while its ability to select goals, evaluate evidence, or carry responsibility remains limited.

@@ -1,0 +1,191 @@
+id: pc-agent-e-2025
+title: Efficient Agent Training for Computer Use
+year: 2025
+venue: ICLR 2026
+authors:
+- Yanheng He
+- Jiahe Jin
+- Pengfei Liu
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- computer-use-agents
+- windows-gui
+- visual-agent-training
+training_use:
+- sft
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.13909
+  arxiv: https://arxiv.org/abs/2505.13909
+  code: https://github.com/GAIR-NLP/PC-Agent-E
+  data: https://huggingface.co/datasets/henryhe0123/PC-Agent-E
+  project: https://gair-nlp.github.io/PC-Agent-E/
+  huggingface: https://huggingface.co/henryhe0123/PC-Agent-E
+  model: https://huggingface.co/henryhe0123/PC-Agent-E
+  benchmark: https://github.com/GAIR-NLP/WindowsAgentArena-V2
+  doi: https://doi.org/10.48550/arXiv.2505.13909
+  venue: https://iclr.cc/virtual/2026/poster/10008530
+  openreview: https://openreview.net/pdf/3a571e16879ca3002519650171a042fa677a5d56.pdf
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: Human computer-use episodes with synthetic single-step action alternatives, flattened into action-level multimodal
+    SFT samples.
+  prompt_source: A manually composed multi-application task seed set enlarged with undisclosed LLMs; 312 retained tasks were
+    decontaminated against WindowsAgentArena-V2.
+  trace_author: Two human annotators provide the executed main-trunk actions; Claude 3.7 Sonnet reconstructs thoughts and
+    supplies nine unexecuted alternative thought-action decisions per step.
+  episode_fields:
+  - task description stored in a companion Markdown file
+  - per-step screenshot path
+  - normalized keyboard or mouse action
+  - optional GUI element description
+  - optional bounding rectangle
+  - marked screenshot path
+  - Claude-completed thought
+  - up to nine Claude boost responses
+  training_instance:
+    input:
+    - current 1280x720 screenshot
+    - task description
+    - textual history of prior human-trunk thoughts and actions
+    target: One thought plus one action from either the human node or a synthetic branch node.
+    serialization: LLaMA-Factory `messages` plus one-element `images` list.
+  answer_format: ReAct-style thought followed by one normalized PyAutoGUI action, including `finish` or `fail` when emitted.
+  process_fields:
+  - thought
+  - action
+  - screenshot observation
+  - textual human-trunk history
+  - synthetic branch alternatives
+  observation: Current screenshot only; past screenshots and post-action observations for synthetic branches are absent.
+  verifier_or_reward: No training-time reward or environment verifier is attached. Human traces are accepted after annotator
+    self-review and rule filtering; benchmark evaluation separately uses task-specific environment evaluators and limited
+    human judgment.
+  reward: unknown
+  terminal_predicate: In released/training traces, `finish` is a terminal action token and failed-ending records are removed;
+    the cleaning script can rewrite the last surviving action to `finish`. In WindowsAgentArena-V2 evaluation, success is
+    determined separately by the task evaluator over resulting environment state.
+  provenance: 312 human Windows episodes recorded with PC Tracker; synthetic thoughts and action alternatives use `claude-3-7-sonnet-20250219`
+    in the released code.
+  environment_or_substrate: Human trajectories were executed on annotators' own Windows computers. Training branches are offline
+    and not replayed. Evaluation uses WindowsAgentArena-V2 virtual machines; OSWorld provides Linux cross-platform evaluation.
+  release_shape: The official 1.57 GB ZIP contains 312 JSONL episodes, 312 companion Markdown task files, and 4,503 PNG screenshots;
+    it does not contain a ready-made 27K SFT JSON or environment replay snapshots.
+recipe_metadata:
+  base_model: Qwen/Qwen2.5-VL-72B-Instruct
+  teacher: Claude 3.7 Sonnet without extended thinking; released code names `claude-3-7-sonnet-20250219`.
+  generator: Claude reconstructs each human action's latent thought and generates nine alternative single-step thought-action
+    decisions per human step.
+  prompt_task_source: Manual seed tasks enlarged with undisclosed LLMs, then executed by two human annotators across Windows
+    applications.
+  sampling_protocol: Nine separate Claude responses per human step; synthetic decisions use the current screenshot and prior
+    human-trunk history and are not executed in an environment.
+  temperature: unknown
+  rollout_count: Nine single-step alternatives per human action; not nine end-to-end rollouts.
+  inference_budget: Repository code sets `max_tokens=1000`, 18 concurrent workers, and at most 30 prior entries for synthesis;
+    temperature/top-p and total token cost are undisclosed.
+  search_or_scaffold: No search is used for training-data generation; the inference scaffold consumes screenshot, task, and
+    textual history and executes normalized actions with PyAutoGUI.
+  filtering_rule: Human failed-ending/null-action records and redundant or meaningless steps are removed; decontamination
+    thresholds are 13-gram overlap 0, 3-gram overlap below 0.7, and semantic cosine similarity below 0.85. Synthetic targets
+    are syntax-refined, placeholder coordinates are rejected, and finish-node alternatives must contain `finish`.
+  selection_threshold: Decontamination thresholds are disclosed; no environment-quality threshold for synthetic alternatives
+    is disclosed.
+  optimizer_or_scaffold: Full-parameter SFT in LLaMA-Factory with frozen visual tower, 8192-token cutoff, batch size 128,
+    learning rate 2e-6, cosine schedule, 0.05 warmup ratio, two epochs, 32 GPUs, and about five reported hours.
+  final_training_scale: 27K action-level samples generated from the 312 augmented episodes.
+audit:
+  source_mixture: 312 retained Windows task episodes from two human annotators; task prompts began from a manual seed set
+    enlarged with undisclosed LLMs; thoughts and nine branch alternatives per step come from Claude 3.7 Sonnet.
+  split: The Hugging Face release exposes one train split. No training dev/test split is disclosed; WindowsAgentArena-V2 and
+    OSWorld are separate evaluation surfaces.
+  decontamination: Task descriptions are filtered against every WindowsAgentArena-V2 test task at 13-gram overlap 0, 3-gram
+    overlap below 0.7, and semantic cosine similarity below 0.85.
+  benchmark_overlap: Exact lexical/semantic thresholds are reported, but the semantic encoder and released decontamination
+    implementation are unknown.
+  lineage: Official paper, GAIR code, HF dataset/model, and WindowsAgentArena-V2 repository are linked. Per-record task-source
+    ancestry and LLM task-generation metadata are unknown.
+  license: Main code repository, HF dataset card, and HF model card state MIT; screenshot/application-content rights and third-party
+    component licenses require separate review.
+  release_version: No GitHub release or tag is published. HF `data.zip` blob OID observed on 2026-07-20 is `1ccad6200f66aa85e4c1c541d185e334a6e7dc62`;
+    reuse should pin immutable commits/blobs.
+  verifier_or_judge_failure_modes:
+  - Claude boost branches are never executed and can be plausible but invalid actions.
+  - '`finish` in training data is partly rule-constructed and is not an independent proof of goal completion.'
+  - WindowsAgentArena evaluators can contain bugs or reward unintended state changes; the paper reports correcting such cases.
+  - At 50 steps, weak termination awareness causes agents to continue acting and undo completed work.
+  - OSWorld infeasible tasks can reward indiscriminate `fail` actions.
+  successful_and_failed_sample_retention: Failed-ending human trajectories are removed by the released refinement code; ordinary
+    failed attempts and environment transitions are therefore not retained as negative supervision. Synthetic branches have
+    no observed success/failure label.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: The headline 141% is the relative gain from 14.9 to 36.0 over the Qwen2.5-VL-72B base on 141 WindowsAgentArena-V2
+    tasks with a 30-step cap. It is not the gain over Claude; the gain over non-thinking Claude 3.7 Sonnet is about 10% relative,
+    while the margin over extended-thinking Claude is 0.6 percentage points.
+  remaining_unknowns:
+  - task-expansion LLMs, prompts, seed count, and mixture weights
+  - semantic-similarity model and decontamination implementation
+  - Claude temperature/top-p, random seeds, rejection rate, and cost
+  - independent replay verification of human episodes
+  - correctness verification for unexecuted synthetic alternatives
+  - annotator recruitment, compensation, consent, and screenshot redaction
+  - GPU model and fully pinned runtime/container
+  - per-record lineage and immutable release manifest
+inclusion_reason: 'The work releases a rare inspectable computer-use data recipe in which 312 human Windows episodes are expanded
+  into action-level multimodal SFT targets, while also exposing a crucial audit boundary: the nine Claude alternatives per
+  step are not executed or environment-verified.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- computer-use-agent
+- trajectory-augmentation
+- multimodal-sft
+- synthetic-actions
+- WindowsAgentArena-V2
+- ICLR-2026
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: PC Agent-E turns 312 human Windows demonstrations into action-level screenshot-history-to-thought/action
+  SFT data, but its Claude-generated branch actions are never environment-validated.
+why_it_matters: It is a compact, released example of trajectory-to-SFT construction whose gains can be tied to a concrete
+  data object, while clearly showing why synthetic agent actions should not be mistaken for verified environment episodes.
+status: verified
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Current arXiv v2, accepted ICLR/OpenReview record, official repositories, release cards, dataset ZIP directory/sample,
+    license, post-processing code, training config, model card, and benchmark evaluator tree were inspected.
+curation_level: L3_summary_ready
+needs:
+- 'needs_privacy_review: desktop screenshot consent, redaction, and third-party content rights are undisclosed'
+- 'needs_replay_audit: human episodes and Claude alternatives lack released independent environment-success labels'
+- 'needs_version_pin: no tagged release or immutable manifest is published'
+- 'needs_lineage: task-generation model/prompt mixture and per-record ancestry are undisclosed'
+card: null

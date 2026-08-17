@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:12:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "利用推理链的时间动态来决定何时继续思考，直接研究测试时预算分配",
+    "updated_at": "2026-07-20T13:12:02Z"
+  }
+}

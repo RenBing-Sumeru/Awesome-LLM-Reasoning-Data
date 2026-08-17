@@ -1,0 +1,1 @@
+CHEEMS combines CheemsBench, a fully human-annotated Chinese RM benchmark, with CheemsPreference, a human-machine preference dataset for RM training. CheemsBench has 2,492 prompts and 17,600 comparisons; CheemsPreference has 27,861 human instructions and 37,618 comparisons. The official repository releases code and data for evaluation and reward-model training.

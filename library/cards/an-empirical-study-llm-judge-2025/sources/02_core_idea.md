@@ -1,0 +1,3 @@
+The paper treats a fine-tuned judge as an object of reliability audit: hold the released judges fixed, change the evaluation scheme, task property, adversarial surface, and prompt, then compare them with proprietary baselines. Across JudgeLM, PandaLM, Auto-J, and Prometheus, the evidence supports the authors’ diagnosis that single-task fine-tuning with fixed templates turns a general LLM into a task-specific classifier. The official repository releases code and test-set preparation for this audit; the paper does not present a new downloadable dataset as its contribution.
+
+This shifts the relevant evidence from a single agreement score to robustness under controlled changes in the evaluation contract.

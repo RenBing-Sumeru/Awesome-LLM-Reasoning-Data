@@ -1,0 +1,11 @@
+Benchmark separation is materially compromised. FLORES-200 dev and past WMT test sets are intentionally included in stage-one SFT, while evaluation again uses FLORES-derived pairs and WMT24pp/WMT25 development material. Without exact years, row IDs, pair manifests, source-target overlap checks, or checkpoint-selection logs, reported scores cannot be treated as clean held-out estimates.
+
+Teacher and judge dependence is correlated. DeepSeek-V3-0324 generates synthetic SFT translations and also filters or rewards outputs through GEMBA-style scoring. XCOMET-XXL and CometKiwi add learned metric dependence rather than independent ground truth. Judge prompts, revisions, weights, normalization, calibration, adversarial tests, and reward-hacking audits are closed.
+
+The data rights gap is greatest for low-resource, minority-language, and dialect material. The report does not release source-level licenses, provenance, annotator identities or qualifications, compensation, informed consent, community consultation, privacy review, cultural-governance conditions, attribution, derivative rights, or takedown procedures. Public corpus names do not resolve rights for each record or translation.
+
+Core budgets remain unknown. The six Chimera candidate settings, attempted and retained candidate counts, translation-GRPO and fusion-GRPO prompt/rollout counts, group sizes, steps, token limits, compute, seeds, failures, and checkpoint selection are absent. The public prompt reproduces the interface, not the training pipeline or cost.
+
+Metadata contradictions prevent precise scope claims. The 1.3T tokens are assigned to general pretraining and later credited to MT CPT; supported-language surfaces report 33, 36, or 38 depending on whether dialect/script entries are counted; official models are branded 7B while Hugging Face metadata reports 8B. No authoritative reconciliation is provided.
+
+The release is not permissively open source. The Tencent Hunyuan Community License excludes the EU, UK, and South Korea, requires separate licensing above 100M monthly active users, and restricts using the model or outputs to improve non-Hunyuan models. Generic finetuning code and public weights do not supply training-data rights, paper-specific rewards, GRPO configs, evaluation outputs, or end-to-end reproducibility.

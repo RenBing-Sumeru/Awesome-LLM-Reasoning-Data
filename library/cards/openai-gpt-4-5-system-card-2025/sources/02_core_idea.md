@@ -1,0 +1,4 @@
+The [official system card](https://cdn.openai.com/gpt-4-5-system-card-2272025.pdf) describes GPT-4.5 as a research preview that scales pre-training further and uses new supervision techniques alongside supervised fine-tuning (SFT) and reinforcement learning from human feedback (RLHF), similar to methods used for GPT-4o. It says scalable alignment techniques enable training with data derived from smaller models.
+
+The report also says pre-training and post-training use diverse public data, proprietary data from partnerships, and custom in-house datasets. It therefore exposes broad stages and source classes, but no records or formal feedback contract. For this card, SFT and RLHF are method-family disclosures, not evidence of released pairwise preferences, scalar rewards, process supervision, or a reproducible recipe.
+

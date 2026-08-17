@@ -1,0 +1,113 @@
+id: online-difficulty-filtering-rorl-2025
+title: Online Difficulty Filtering for Reasoning Oriented Reinforcement Learning
+year: 2026
+venue: EACL
+authors:
+- Sanghwan Bae
+- Jiwoo Hong
+- Min Young Lee
+- Hanbyul Kim
+- Jeongyeon Nam
+- Donghyun Kwak
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.eacl-long.30/
+  arxiv: https://arxiv.org/abs/2504.03380
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.eacl-long.30
+  venue: https://aclanthology.org/2026.eacl-long.30/
+  openreview: null
+  acl: https://aclanthology.org/2026.eacl-long.30/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.eacl-long.30.bib
+data_object:
+  prompt_source: NuminaMath; 1,024 held out as validation
+  trace_author: Current Qwen2.5 policy generates online rollouts; DeepSeek-R1 supplies 1.1K cold-start solutions
+  answer_format: Math prompt with trajectories, binary correctness, format/language rewards, and pass rate
+  process_fields:
+  - prompt
+  - rollout
+  - binary_correctness_reward
+  - format_reward
+  - language_reward
+  - prompt_pass_rate
+  - visit_count
+  - acceptance_band
+  environment_or_substrate: Asynchronous GRPO rollout/batch loop
+  verifier_or_reward: Binary answer correctness plus format/language rewards
+  terminal_predicate: Retain group when pass rate is in threshold band; stop at fixed batch size N
+recipe_metadata:
+  base_model: Qwen2.5-3B base; Qwen2.5-7B scaling
+  teacher: DeepSeek-R1 for cold-start SFT
+  generator: Current online policy
+  filtering_rule: Retain TLow <= mean correctness <= THigh; symmetric bands around 0.5; resample until fixed batch full
+  sampling_protocol: 16 rollouts for each of 16 prompts before replacements
+  rollout_count: 16
+  temperature: null
+  inference_budget: Replacement rollouts depend on threshold and policy state
+  optimizer_or_scaffold: GRPO with asynchronous pass-rate filtering, fixed accepted batch, visit-count queue
+audit:
+  source_mixture: NuminaMath prompts plus DeepSeek-R1 cold-start solutions
+  split: 1,024 validation; exact remaining pool and split artifact unreleased
+  decontamination: unknown
+  license: unknown
+  lineage: Sources named at corpus level; no training-data or rollout artifact
+  known_failure_modes:
+  - Difficulty shifts with checkpoint, decoding, sample count, and verifier
+  - Aggressive thresholds increase replacement rollout cost
+  - Only mathematics empirically validated
+  - No code, splits, logs, or rejected rollouts
+  - Binary verifier can inherit answer-normalization errors
+  citation_status: verified
+  confidence: high
+  notes: Algorithmic recipe, not an open rollout-data release; official publication year is 2026.
+inclusion_reason: Formal and empirical recipe for constructing learnable RLVR batches from current-policy success.
+related: []
+tags:
+- online-data-filtering
+- difficulty-aware-curriculum
+- rlvr
+- grpo
+- pass-rate
+- reward-variance
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Constructs fixed-size GRPO batches online by retaining NuminaMath prompts with intermediate current-policy
+  pass rates and replacing filtered groups.
+why_it_matters: Turns rollout-derived difficulty into an explicit RLVR selection contract and quantifies update-versus-rollout
+  cost.
+card: null
+needs:
+- 'needs_url: no author-linked implementation artifacts'
+- 'unknown: decoding and answer normalization'
+- 'unknown: broader decontamination'
+- 'unknown: batch and rollout logs'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against EACL proceedings and arXiv; no implementation artifact.

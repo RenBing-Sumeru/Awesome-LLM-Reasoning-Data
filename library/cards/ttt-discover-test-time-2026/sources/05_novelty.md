@@ -1,0 +1,3 @@
+Conventional test-time scaling searches with a frozen model. TTT-Discover changes the optimization boundary by updating the model from reward experience during the active task. This is not generic fine-tuning for later users: the learned state is deliberately optimized to solve one problem and may be discarded afterward.
+
+The distinctive decision object is the problem-specific training trajectory. It includes which variants to generate, which rewards to trust, which updates to take, and when to stop. Before reuse, readers should examine whether the reward measures the real scientific objective, whether test-time updates exploit benchmark artifacts, and whether expert review validates the claimed solution beyond the optimization metric.

@@ -1,0 +1,5 @@
+- 把“self-curation”读作 model-centric：DeepSeek-V2-Chat 提供初始质量 label，外部 LLM 合成/评价 SFT，DeepSeek-R1/open trace 初始化 LongCoT。
+- 分别保留 6T schedule 与 LR 条件及可能重叠的 ingredient total；不要把 ingredient 披露相加成新的 corpus total。
+- 222,066-file/1.3B-scorer 实验和 10M-candidate fastText 99%-recall/45%-precision 实验都必须绑定 teacher-defined label。
+- 3M SFT、20K DPO，以及 GRPO batch 128/temp 0.6/LR 1e-6/clip 0.28/90x16+160x32 条件必须绑定相应阶段。
+- 重点审计 generated-solution/generated-test 相关性、fastText feedback amplification、10-gram decontamination 边界，以及 MIT 不覆盖源训练数据。

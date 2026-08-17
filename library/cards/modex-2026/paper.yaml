@@ -1,0 +1,143 @@
+id: modex-2026
+title: 'ModeX: Evaluator-Free Best-of-N Selection for Open-Ended Generation'
+year: 2026
+venue: ACL 2026
+authors:
+- Hyeong Kyu Choi
+- Sharon Li
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- summarization
+- code
+- mathematics
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.655/
+  arxiv: https://arxiv.org/abs/2601.02535
+  code: https://github.com/deeplearning-wisc/ModeX
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.655
+  venue: https://aclanthology.org/2026.acl-long.655/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.655/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.655.bib
+data_object:
+  prompt_source: CNN/DailyMail v3.0.0 test split (first 300 items), full HumanEval test set (164 items), and Math-500 test
+    split (first 300 items); appendix experiments additionally use AIME2025.
+  trace_author: Qwen2.5-7B-Instruct and Llama3.1-8B-Instruct generate summarization and math paths; Qwen2.5-7B-Instruct and
+    CodeLlama-7B-Instruct generate code paths, with larger models used in appendix experiments.
+  answer_format: A set of complete or partially decoded candidate responses, their weighted similarity graph and partition
+    decisions, and one retained centroid response.
+  process_fields:
+  - prompt
+  - candidate_id
+  - candidate_response_or_prefix
+  - unigram_jaccard
+  - bigram_jaccard
+  - trigram_jaccard
+  - weighted_adjacency
+  - fiedler_partition
+  - conductance
+  - retained_cluster
+  - tie_break_weight
+  - pruning_step
+  - centroid_degree
+  - selected_candidate_id
+  - final_answer
+  environment_or_substrate: Inference-only multi-path generation followed by post-hoc ModeX graph selection, or ModeX-Lite
+    online pruning at fixed token intervals.
+  verifier_or_reward: No correctness verifier or reward is used for selection; pairwise unigram, bigram, and trigram Jaccard
+    similarities, spectral bipartitioning, conductance, cluster size, and weighted degree determine the retained response.
+  terminal_predicate: Standard ModeX stops recursive partitioning when the proposed cut has conductance at least tau, then
+    returns the maximum-weighted-degree node; ModeX-Lite prunes periodically until remaining paths emit EOS, then selects
+    a centroid.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct and Llama3.1-8B-Instruct; CodeLlama-7B-Instruct replaces Llama3.1-8B for code generation.
+  teacher: unknown
+  generator: The target language model independently samples N candidate paths; ModeX-Lite instead advances active paths in
+    parallel and prunes non-representative prefixes during decoding.
+  filtering_rule: If a spectral cut has conductance below tau, retain the larger partition; break equal-size ties by total
+    edge weight and recurse. ModeX-Lite applies one non-recursive partition at each pruning interval.
+  sampling_protocol: Evaluate N in 4, 8, and 16; use conductance threshold tau 0.8 and a default ModeX-Lite pruning interval
+    of 100 generated tokens. Generation temperature, top-p, and random seeds are unknown.
+  rollout_count: 4, 8, or 16 generation paths per prompt before standard ModeX selection; ModeX-Lite begins with the same
+    path counts and prunes active paths online.
+  temperature: unknown
+  inference_budget: Candidate count N plus generation length; ModeX-Lite additionally exposes pruning interval T, defaulting
+    to 100 tokens. Exact per-task token limits are unknown.
+  optimizer_or_scaffold: Inference-only graph procedure; no selector training or optimizer. The official implementation provides
+    batched generation, task wrappers, logging, and ModeX/ModeX-Lite scripts.
+audit:
+  source_mixture: 'Public benchmark test items only: 300 CNN/DailyMail v3.0.0 items, all 164 HumanEval items, and 300 Math-500
+    items in the main setup; no reusable candidate-response corpus was verified.'
+  split: First 300 items of the CNN/DailyMail and Math-500 test splits and the full HumanEval test split; item-order provenance,
+    sampling seeds, and generated-candidate manifests are unknown.
+  decontamination: unknown
+  license: Official code is MIT and the ACL paper is CC BY 4.0; benchmark, model-output, candidate-log, and derived graph
+    reuse terms remain unknown.
+  lineage: Benchmark prompt -> N target-model response paths -> pairwise n-gram Jaccard sums -> weighted graph -> Fiedler
+    bipartition -> conductance and size/weight retention -> recursive cluster or online pruning -> maximum-degree centroid
+    -> task-specific post-hoc evaluation.
+  known_failure_modes:
+  - Lexical Jaccard can separate valid paraphrases whose surface forms differ and can favor repetitive lexical overlap.
+  - The most common or densest cluster can encode a shared hallucination or systematic model bias, so modal selection is not
+    correctness verification.
+  - ModeX-Lite can prune a promising path from an incomplete prefix, and its result depends on pruning interval, threshold,
+    and candidate pool.
+  - Multi-path generation increases energy use and latency before any selection benefit is known.
+  - Candidate responses, similarity matrices, partitions, pruning traces, seeds, and evaluation manifests were not verified
+    as released.
+  citation_status: verified
+  confidence: high
+  notes: Final ACL proceedings metadata, paper PDF, arXiv record, and official MIT-licensed repository checked; no candidate
+    or graph-trace release was verified.
+inclusion_reason: ModeX turns candidate similarity graphs, spectral cuts, cluster retention, and centroid selection into explicit
+  evaluator-free Best-of-N trace objects.
+related: []
+tags:
+- best-of-n
+- evaluator-free-selection
+- spectral-clustering
+- modal-generation
+- open-ended-generation
+- early-pruning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: ModeX selects an existing open-ended response by recursively isolating a dense n-gram-similarity cluster
+  and returning its maximum-degree centroid; ModeX-Lite applies the same idea during decoding.
+why_it_matters: It supplies the rollout/search/test-time trace track with a deterministic selection recipe whose graph and
+  pruning decisions can be audited separately from task scores, while modal consensus remains weaker than correctness verification.
+card: null
+needs:
+- needs_candidate_trace_release
+- needs_similarity_graph_logs
+- needs_pruning_trace_release
+- needs_sampling_seed_manifest
+- needs_selection_calibration_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: ACL proceedings, arXiv, and official MIT-licensed code verified; candidate outputs, graph logs, pruning traces, and
+    seed manifests were not verified as released.

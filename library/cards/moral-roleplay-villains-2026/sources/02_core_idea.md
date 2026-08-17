@@ -1,0 +1,2 @@
+The paper releases the Moral RolePlay benchmark, balancing 800 characters across four moral levels with 200 per level: moral paragons, flawed-but-good characters, egoists, and villains. Each character is represented by background, persona, and moral traits and evaluated with a standardized actor-framed prompt. Evaluation focuses on character consistency and moral fidelity, especially traits such as deceitfulness, manipulation, and selfishness that conflict with safety principles. The resource turns the “alignment tax” on characterization into measurable judgment data.
+

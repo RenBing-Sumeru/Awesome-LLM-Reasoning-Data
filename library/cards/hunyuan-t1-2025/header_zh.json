@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Hunyuan-T1 披露了重 RL 的后训练、课程和混合奖励，但未公开数据与奖励账本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿推理模型官方发布",
+  "best_for_ch": "研究 RL、奖励披露与推理模型系统报告的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Tencent Hunyuan Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T10:29:20Z"
+}

@@ -1,0 +1,1 @@
+Junsoo Park, Seungyeon Jwa, Meiying Ren, Daeyoung Kim, and Sanghyuk Choi. "OffsetBias: Leveraging Debiased Data for Tuning Evaluators." Findings of EMNLP 2024 / arXiv:2407.06551. Paper: https://arxiv.org/abs/2407.06551. Official code and data: https://github.com/ncsoft/offsetbias and https://huggingface.co/datasets/NCSOFT/offsetbias.

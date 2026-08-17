@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "PRM-BiasBench 含数千受控扰动对与三层攻击，反馈奖励变化，揭示通用数学推理奖励的可被利用性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程奖励模型鲁棒性评测、攻击审计与公开基准论文",
+  "best_for_ch": "需要在将过程奖励模型投入训练、搜索或评测前检查其对逻辑错误、对抗优化和奖励投机的敏感性的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Rishabh Tiwari, Aditya Tomar, Udbhav Bamba, Monishwaran Maheswaran, Heng Yang, Michael W. Mahoney, Kurt Keutzer, Amir Gholami",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:43:45Z"
+}

@@ -1,0 +1,1 @@
+Jiajie Zhang, Nianyi Lin, Lei Hou, Ling Feng, and Juanzi Li. “AdaptThink: Reasoning Models Can Learn When to Think.” EMNLP 2025, pp. 3574–3595. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.184/) · [Code](https://github.com/THU-KEG/AdaptThink)

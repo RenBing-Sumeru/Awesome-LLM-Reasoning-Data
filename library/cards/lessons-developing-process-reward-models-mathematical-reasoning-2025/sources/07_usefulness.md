@@ -1,0 +1,5 @@
+For Track 12, this work supplies a compact checklist for reading process-reward releases: identify the query source and golden-answer contract, response generator, step separator, completion count, answer matcher, critic, consensus rule, retained/rejected yield, reward interface, and step-level evaluation. It shows why these fields should not be collapsed into the statement that a PRM checkpoint is open.
+
+It is useful for process-supervision and reward-model audits because it separates MC outcome estimates from direct step verification and requires response-level selection results to be read alongside error-localization evidence. The official checkpoint can be used to score steps, but the report does not support claims that its training corpus or verification pipeline can be reproduced or reused.
+
+This Card deliberately does not use the paper's scaling comparisons, candidate counts, or search experiments as a Track 8 contribution. Its scope is the process-reward data-disclosure boundary and associated audit risks.

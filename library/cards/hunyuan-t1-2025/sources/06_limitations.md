@@ -1,0 +1,6 @@
+Data disclosure stops at domain labels. There is no item inventory, source count, source license ledger, synthetic-data share, collection date, prompt/reference schema, reasoning-trace policy, stage yield, split manifest, or accepted/rejected record. Decontamination and benchmark-overlap procedures are unknown, so the reported scores cannot rule out leakage.
+
+The feedback contract is not reproducible. “Ground-truth real feedback” does not identify a verifier or terminal rule. The early T1-preview evaluator and reward model are not versioned or released, and their prompts, rubrics, weights, aggregation, thresholds, calibration, and failure behavior are absent. Replay and policy reset likewise lack buffer semantics, cadence, and ablations; the claimed stability gain has no published metric definition or baseline.
+
+The official GitHub repository contains release-page material rather than training implementation, and the official Hugging Face artifact is a demo Space rather than downloadable weights or a substantive model card. Exact T1 parameter count, base snapshot, maximum context, training compute, model license, safety data, and deployment-time inference budget remain unknown. The later TurboS report should be treated as related context, not as proof of these T1-specific facts.
+

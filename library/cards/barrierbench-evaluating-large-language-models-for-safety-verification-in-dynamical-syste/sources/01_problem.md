@@ -1,0 +1,3 @@
+Safety verification for dynamical systems requires discovering barrier certificates satisfying systems of inequalities. Traditional methods depend on manual choices of templates, solvers, hyperparameters, and sampling strategies and scale poorly to nonlinear systems. Expert strategies for proposing and refining functions are usually linguistic knowledge rather than reusable agent evaluations.
+
+BarrierBench provides diverse dynamical systems with SMT-verifiable safety conditions and an LLM-agent framework that proposes and refines barriers or jointly synthesizes controllers, with formal solvers providing strict judgments.

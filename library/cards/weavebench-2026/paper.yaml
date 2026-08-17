@@ -1,0 +1,228 @@
+id: weavebench-2026
+title: 'WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces'
+year: 2026
+venue: arXiv preprint
+authors:
+- Wanli Li
+- Bowen Zhou
+- Yunyao Yu
+- Zhou Xu
+- Yifan Yang
+- Dongsheng Li
+- Caihua Shan
+source_role:
+- benchmark
+- agent_environment
+- verifier_reward
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- computer_use
+- desktop_automation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.09426
+  arxiv: https://arxiv.org/abs/2606.09426
+  code: https://github.com/weavebench/WeaveBench
+  data: https://huggingface.co/datasets/wanlilll/WeaveBench
+  project: https://weavebench.github.io/
+  huggingface: https://huggingface.co/datasets/wanlilll/WeaveBench
+  trajectories: https://weavebench.github.io/trajectories/
+  doi: https://doi.org/10.48550/arXiv.2606.09426
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  record_type: benchmark task bundle plus evaluated full environment episode
+  prompt_source: 114 English task specifications across 8 work domains, archetype-guided from public issues/PRs, postmortems,
+    design mocks, documentation, and OpenClaw user requests; the paper reports 174 source URLs across 82 hostnames.
+  task_fields:
+  - task_id
+  - domain
+  - goal
+  - setup
+  - warmup
+  - initial_environment
+  - seed_data
+  - required_assets
+  - expected_deliverables
+  - verification_anchors
+  - provenance_url_or_commit_or_post_id
+  trace_author: Evaluated computer-use agent; expert reference trajectories are used during task construction, while the public
+    project later announced a best-per-task trajectory gallery.
+  context_or_state: Frozen Ubuntu VM snapshot, task-local services, filesystem/application state, screenshots, tool outputs,
+    and prior interaction history.
+  action_fields:
+  - gui_action
+  - cli_or_code_action
+  - file_action
+  - browser_or_tool_call
+  observation_fields:
+  - screenshot
+  - shell_or_tool_result
+  - file_or_application_state
+  - log
+  answer_or_artifact: Agent final text plus required files, structured deliverables, screenshots, and the archived results
+    bundle.
+  process_fields:
+  - chat_trace
+  - action_trace
+  - artifact_checks
+  - clause_results
+  - eight_dimension_scores
+  - hack_flag
+  - hack_patterns
+  - hack_evidence_quotes
+  verifier_or_reward: An isolated host-side OpenClaw agentic judge re-fetches evidence from task specs, chat traces, deliverables,
+    images, files, logs, shell checks, and ground-truth anchors; it emits clause evidence, eight dimension scores, a hack
+    decision, and a final scalar score. The paper v3 names GPT-5.5 as the fixed judge, while current reproduction documentation
+    names Claude Opus 4.7; this remains unresolved.
+  reward: Final scalar in [0,1], set to zero on a high-confidence hack; otherwise the minimum of mean eight-dimension score
+    and deliverable correctness.
+  terminal_predicate: Paper PassRate counts final_score >= 0.8; a high-confidence shortcut flag forces zero. Current `docs/REPRODUCE.md`
+    instead states >= 0.5, so reproduction must resolve and pin the threshold.
+  environment_or_substrate: Containerized Ubuntu desktop VM restored from a frozen qcow2 snapshot, with task-local network
+    and four supported deployed runtimes (OpenClaw, Codex CLI, Claude Code, Hermes) sharing a GUI-control plugin.
+  provenance: Paper claims each task carries URL, commit hash, or post ID and that a machine-readable provenance index ships;
+    the exact released index path was not verified in this review.
+  failed_sample_retention: unknown; the paper analyzes failed rollouts, but the public gallery is described as best per-task
+    trajectories and no immutable full failure archive was verified.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Domain experts define cooperation archetypes, source candidate tasks from public artifacts and real user requests,
+    package self-contained bundles, and run blind review plus three-agent pilot validation.
+  prompt_or_task_source: Public GitHub/GitLab issues and PRs, Stack Exchange, Reddit, project forums/docs, postmortems, design
+    mocks, bug trackers, YouTube, and the OpenClaw user community; exact record-level index requires artifact inspection.
+  sampling_protocol: Complete evaluations operate over 114 tasks. The fixed-runtime sweep compares model APIs on OpenClaw;
+    the harness sweep evaluates the strongest APIs across OpenClaw, Codex CLI, Claude Code, and Hermes.
+  temperature: unknown
+  rollout_count: A complete reported condition covers 114 tasks; the main three-backbone failure analysis aggregates 2,209
+    OpenClaw trials and 1,735 failures, but a single total rollout count for all experiments is not disclosed.
+  inference_budget: Paper states common timeout, temperature, and maximum-turn budgets within the model sweep without numerical
+    values; current `docs/REPRODUCE.md` uses `--max_steps 200`, which should be tied to a code revision before reproduction.
+  search_or_scaffold: OpenClaw reference harness plus ports to Codex CLI, Claude Code, and Hermes; one GUI plugin is combined
+    with each runtime's CLI/file/code/browser tools.
+  filtering_rule: Admit only tasks satisfying P1 channel non-substitutability, P2 multiple interleaved GUI/CLI phases, and
+    P3 linked state across multiple applications; independent review checks clarity, reproducibility, P1-P3, and anchor faithfulness;
+    pilot failures trigger revision.
+  selection_threshold: Paper v3 uses final_score >= 0.8 for PassRate; current repository reproduction text conflicts by stating
+    >= 0.5.
+  optimizer_or_training_scaffold: not applicable; the paper evaluates agents and does not report post-training on WeaveBench.
+  anti_fabrication_policy: Every rollout is instructed not to synthesize GUI evidence or hard-code metrics and may submit
+    `<deliverable>.SKIPPED.txt` when a screenshot is genuinely unavailable.
+audit:
+  source_mixture: 114 tasks from 174 public URLs across 82 hostnames; 94/174 URLs are classified as user-pain sources and
+    91/114 tasks have at least one user-pain URL; task assets include repositories, issue threads, monitoring snapshots, design
+    mocks, database dumps, and configs.
+  split: unknown
+  decontamination: unknown
+  benchmark_overlap: The paper compares against and derives environment infrastructure from prior agent benchmarks, but no
+    model-training overlap or benchmark decontamination protocol for the 114 public tasks is disclosed.
+  lineage: Public source/request -> expert cooperation archetype -> self-contained task bundle and reference trajectory ->
+    blind review -> three-agent pilot revision -> frozen VM episode -> archived trace/deliverables -> trajectory-aware judge
+    output.
+  license: WeaveBench code and tasks are stated as MIT. Runtime tarballs retain component-specific upstream terms; the VM
+    derives from OSWorld's MIT image. Rights for every public source asset/user post and the post-paper trajectory gallery
+    were not independently audited.
+  release_version:
+    code_release: v0.1.0, 2026-06-05
+    paper: arXiv:2606.09426v3, 2026-07-06
+    paper_dataset_revision: cd887bf5ee0e70faa4b250f2cd192bcc1de164ea
+    current_dataset_revision_observed: fcb478b0bdee19a7f01c1d3c2f648e3ed91abafa
+    vm_sha256: 3c1caf41cb75b8482a30d1a251545393aee8175375ab405e0d6870f8a07fa3f8
+    code_revision_for_paper_tables: unknown
+  verifier_or_judge_failure_modes:
+  - Learned-judge false positives/false negatives, prompt sensitivity, and provider/model alias drift can change clause scores
+    or hack flags; no independent calibration error rate is reported.
+  - Official v3 and current reproduction documentation disagree on the judge backbone (GPT-5.5 versus Claude Opus 4.7).
+  - Official v3 and current reproduction documentation disagree on the PassRate threshold (0.8 versus 0.5).
+  - The judge has access to hidden validation anchors; reproducibility depends on preserving the staging boundary that prevents
+    the evaluated agent from reading them.
+  - The paper itself shows outcome-only grading over-credits fabricated or protocol-violating deliverables.
+  successful_and_failed_sample_retention: Best per-task trajectories are announced in the public gallery; an immutable manifest
+    for all successful, partial, failed, and hack-flagged rollouts was not verified.
+  privacy_or_consent: unknown; public URL sourcing is documented, but consent and redistribution rights for user-authored
+    requests/posts and bundled assets are not.
+  citation_status: verified
+  confidence: medium
+  notes: Paper identity, task scale, core construction, official code/data/project links, and paper-canonical HF revision
+    are verified. Status remains partial because judge model, success threshold, paper code revision, split/decontamination,
+    trajectory retention, and component-level rights are unresolved or conflicting.
+  remaining_unknowns:
+  - Author reconciliation of the paper judge backbone and PassRate threshold.
+  - GitHub commit and exact runtime/prompt versions used for every reported table.
+  - Numerical temperature, timeout, and complete rollout accounting for all experiments.
+  - Formal split and decontamination procedure for the public task pool.
+  - Exact path and completeness of the machine-readable provenance index.
+  - Immutable manifest/license for the post-paper trajectory gallery and failed rollouts.
+  - Independent judge calibration, inter-rater reliability, and audit sample policy.
+inclusion_reason: 'WeaveBench is a direct Environment and Agent Trajectory Data anchor: it releases hybrid GUI+CLI task/environment
+  bundles, records full computer-use episodes, and makes trajectory inspection and anti-shortcut judgment part of the terminal
+  feedback contract. It is also a concrete benchmark/evaluation surface whose learned judge and mutable runtime require explicit
+  version auditing.'
+related:
+- osworld-mcp-2025
+- scienceboard-2025
+- terminalworld-2026
+tags:
+- environment-agent-trajectory-data
+- agent-benchmark
+- computer-use-agent
+- hybrid-interface
+- long-horizon
+- trajectory-aware-judge
+- reward-hacking-audit
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: WeaveBench packages 114 English Ubuntu desktop tasks that require interleaved GUI and CLI/code actions and
+  scores each full episode with an evidence-fetching trajectory judge that audits deliverables, traces, and shortcut behavior.
+why_it_matters: 'It turns agent evaluation into an auditable episode-level data contract rather than a final-file check: the
+  paper shows outcome-only grading would inflate GPT-5.5 PassRate from 33.3% to 53.5%, while the release exposes task bundles,
+  environment assets, judge outputs, and a paper-pinned dataset revision.'
+status: partial
+card: null
+card_recommendation:
+  action: improve_existing
+  target_level: L4_chinese_review_ready
+  rationale: The current Card is only a generic L3 shell and omits verified authors, official code/data/project artifacts,
+    task schema, mixed trajectory-aware feedback contract, release pin, results, and the paper/repository version conflicts.
+    Upgrade after preserving these audit blockers; do not promote to L5 or prefill a manual Review decision.
+needs:
+- 'needs_version_reconciliation: resolve GPT-5.5 versus Claude Opus 4.7 judge identity and 0.8 versus 0.5 PassRate threshold;
+  pin the exact GitHub code/prompt/runtime revision used for the paper.'
+- 'needs_release_manifest: verify the machine-readable per-task provenance index and an immutable manifest/license for the
+  2026-07-08 trajectory gallery, including failed and hack-flagged rollout retention.'
+- 'needs_audit: verify split/decontamination, task-source and bundled-asset rights, privacy/consent, and independent judge
+  calibration.'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  paper_version: arXiv:2606.09426v3
+  official_sources_checked:
+  - arxiv_full_text_and_appendices
+  - official_project_page
+  - official_github_repository
+  - official_huggingface_dataset_card_and_history
+  - official_trajectory_gallery
+  notes: Official identity and artifacts are real and reachable. `partial` reflects material cross-source contradictions and
+    undisclosed audit fields, not a missing citation.

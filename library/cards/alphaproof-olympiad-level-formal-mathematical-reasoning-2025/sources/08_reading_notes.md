@@ -1,0 +1,4 @@
+- Track state–tactic transitions, proof/disproof/timeout outcomes, budgets, and replay inclusion as separate fields.
+- Distinguish the 300K Mathlib SFT pairs, approximately 80M formal RL statements, and target-specific TTRL variants.
+- Note that failed attempts are filtered from network updates and the replay buffer is not released.
+- Treat IMO and benchmark results as evidence for the compute-intensive method, not proof of data fidelity or openness.

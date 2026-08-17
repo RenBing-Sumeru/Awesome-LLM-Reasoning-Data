@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以微调前后样本嵌入核矩阵的结构变化，量化候选基准的数据集级泄漏。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "审计、污染或验证器鲁棒性论文",
+  "best_for_ch": "需要复盘基准污染、评估偏差、验证器失效或奖励投机风险的研究者。",
+  "confidence_ch": "高：已逐页核对 ICML 正式论文、作者机构及公开代码。",
+  "authors_ch": "Hyeong Kyu Choi, Maxim Khanov, Hongxin Wei, Yixuan Li",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

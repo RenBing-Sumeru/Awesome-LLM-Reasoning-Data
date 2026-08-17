@@ -1,0 +1,5 @@
+The contribution is a biomedical yes/no/maybe QA benchmark whose labels are tied to PubMed article conclusions and whose core evaluation set is expert annotated. Instead of asking models to retrieve arbitrary biomedical facts, PubMedQA fixes the article context and tests whether the model can infer the stance of the conclusion.
+
+The mechanism has three coordinated releases. PQA-L supplies 1,000 expert-labeled examples for reliable evaluation. PQA-U filters question-form PubMed titles into a larger unlabeled pool. PQA-A converts declarative titles into questions and assigns heuristic yes/no labels, giving a noisy but large training resource.
+
+The feedback contract is answer-level classification: a system predicts yes, no, or maybe for each PMID, and the official evaluator reports accuracy and macro-F1. Closest comparisons include BioASQ-style biomedical QA and reading-comprehension datasets, but PubMedQA is narrower: it tests conclusion-level biomedical reasoning over a supplied abstract rather than retrieval breadth or free-form answer generation.

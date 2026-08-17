@@ -1,0 +1,1 @@
+论文提出 CLAIR：由 AI reviser 对原回应进行最小必要改进，使 chosen 与 rejected 高度对比；同时提出 Anchored Preference Optimization（APO），显式控制训练中两个回应概率应如何变化。作者开放 UltraFeedback-CLAIR-32K 和代码。数据贡献是 32K 个最小修订偏好对，其差异更容易归因于质量；APO 则根据初始策略质量选择相应的优化方向。

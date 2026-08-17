@@ -1,0 +1,1 @@
+正确性只和公开 tests 的覆盖能力一样强；通过 tests 不等于与参考类完全行为等价。公开 tests 和 solutions 可能进入训练语料。结果受 generation strategy、sampling budget、Python/package 版本和执行 timeout 影响。基准只覆盖 Python，且规模是 100 个手工类，主题和库覆盖有限。数据是 CC BY-NC 4.0，仓库代码是 MIT，不能混淆二者 license。

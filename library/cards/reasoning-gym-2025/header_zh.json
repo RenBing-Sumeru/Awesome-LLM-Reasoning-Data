@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Reasoning Gym 将 100 多种可配置程序化推理生成器与任务专用可执行奖励组合起来，使带版本的“生成器—verifier”而非固定语料库成为可复用 RLVR 数据对象。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "程序化推理环境与 RLVR 构造基础设施",
+  "best_for_ch": "构建动态 RLVR 课程、可执行验证评测或版本化推理环境的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Zafir Stojanovski, Oliver Stanley, Joe Sharratt, Richard Jones, Abdulhakeem Adefioye, Jean Kaddour, Andreas Köpf",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

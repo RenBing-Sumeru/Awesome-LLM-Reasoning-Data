@@ -1,0 +1,3 @@
+Boyu Gou; Zanming Huang; Yuting Ning; Yu Gu; Michael Lin; Weijian Qi; Andrei Kopanev; Botao Yu; Bernal Jimenez Gutierrez; Yiheng Shu; Chan Hee Song; Jiaman Wu; Shijie Chen; Hanane Nour Moussa; Tianshu Zhang; Jian Xie; Yifei Li; Tianci Xue; Zeyi Liao; Kai Zhang; Boyuan Zheng; Zhaowei Cai; Viktor Rozgic; Morteza Ziyadi; Huan Sun; Yu Su. Mind2Web 2: Evaluating Agentic Search with Agent-as-a-Judge. NeurIPS 2025 Datasets and Benchmarks / arXiv, 2025. Paper: https://arxiv.org/abs/2506.21506.
+
+Official links most relevant for reuse: project: https://osu-nlp-group.github.io/Mind2Web-2/; code: https://github.com/OSU-NLP-Group/Mind2Web-2; data: https://huggingface.co/datasets/osunlp/Mind2Web-2; OpenReview: https://openreview.net/forum?id=AUaW6DS9si.

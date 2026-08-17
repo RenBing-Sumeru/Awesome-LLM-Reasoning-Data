@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Agent Lightning 是微软的 MIT 智能体优化框架，它将用户运行的智能体执行转换为 LightningRL 所需的状态/动作/奖励转移和 trace span；官方发布的是框架代码与示例，不是规范语料、奖励账本、环境包或基准数据发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体强化学习框架、可观测性轨迹接口与数据披露边界审计",
+  "best_for_ch": "关注智能体后训练、状态动作转移、OpenTelemetry 追踪、奖励设计、用户数据治理和隐私的研究者与工程人员",
+  "confidence_ch": "高",
+  "authors_ch": "Xufang Luo、Yuge Zhang、Zhiyuan He、Zilong Wang、Siyun Zhao、Dongsheng Li、Luna K. Qiu、Yuqing Yang",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "environment_agent_trajectory_data"
+  ]
+}

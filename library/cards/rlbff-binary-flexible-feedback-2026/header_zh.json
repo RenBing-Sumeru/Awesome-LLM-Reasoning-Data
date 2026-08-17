@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "4.08万带人类文字反馈的样本被转为二元原则满足标签，可让 RM 按准确性、代码质量等维度推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可解释二元反馈、奖励模型与强化学习对齐论文",
+  "best_for_ch": "需要把自然语言反馈转换为可配置的二元原则标签，并训练可按原则进行判断的奖励模型的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhilin Wang, Jiaqi Zeng, Olivier Delalleau, Ellie Evans, Daniel Egert, Hoo-Chang Shin, Felipe Soares, Yi Dong, Oleksii Kuchaiev",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:14:01Z"
+}

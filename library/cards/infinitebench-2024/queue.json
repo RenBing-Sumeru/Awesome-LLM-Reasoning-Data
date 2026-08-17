@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T11:54:44Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "超长上下文研究中常见 ref334",
+    "updated_at": "2026-07-15T11:54:44Z"
+  }
+}

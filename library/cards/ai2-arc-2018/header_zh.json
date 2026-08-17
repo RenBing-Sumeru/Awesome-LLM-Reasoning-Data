@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ARC 是 7,787 道小学科学选择题 benchmark，其中 Challenge 子集 2,590 题，用来压测检索捷径和浅层模式匹配。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Peter Clark 等（Allen Institute for Artificial Intelligence）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T07:46:06Z"
+}

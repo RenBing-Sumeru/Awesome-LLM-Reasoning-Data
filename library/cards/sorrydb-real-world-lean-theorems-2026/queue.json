@@ -1,0 +1,19 @@
+{
+  "title": "SorryDB: Can AI Provers Complete Real-World Lean Theorems?",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.02668",
+    "data": "https://github.com/SorryDB/SorryDB",
+    "code": "https://github.com/SorryDB/SorryDB",
+    "project": "https://sorrydb.org/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:37:15Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布动态更新的 SorryDB，从78个真实 Lean 项目收集2,601个未完成证明，并以1,000题划分评测 AI prover",
+    "updated_at": "2026-07-18T11:37:15Z"
+  }
+}

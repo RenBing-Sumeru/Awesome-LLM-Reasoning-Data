@@ -1,0 +1,9 @@
+General pretraining reportedly combines Chinese and English with 1.3T tokens spanning 112 other languages and dialects. A proprietary model assigns 0, 1, or 2 scores for Knowledge Value, Authenticity, and Writing Style with provenance-dependent weighting. Discipline, 24-way industry, and 24-way theme tags shape balance and content controls.
+
+MT continued pretraining draws monolingual text from mC4 and OSCAR and parallel data from source families such as OPUS and ParaCrawl. fastText language identification, minLSH document deduplication, KenLM perplexity, and reference-free QE including CometKiwi filter the pool. A RegMix-inspired small-model experiment predicts the lowest-loss mixture, and 20% original-pretraining replay is added; the candidate ratios and denominator are unknown.
+
+Stage-one SFT contains about 3M pairs from FLORES-200 dev, past WMT test sets, human-annotated Mandarin-minority data, DeepSeek-V3-0324 synthetic translations, and a reported 20% general/MT instruction component. CometKiwi and DeepSeek-V3-0324 GEMBA scores filter it. Stage two retains about 268K pairs via repeated many-shot evaluation and expert review when scores disagree across rounds.
+
+Translation GRPO combines learned translation quality, LLM-judge feedback, terminology alignment, and repetition penalties. The report notes late repetition and possible collapse, motivating the penalty. Optimizer settings, group size, rollout count, prompt count, steps, reward aggregation, compute, and checkpoint selection remain unknown.
+
+Weak-to-strong training samples multiple Hunyuan-MT-7B translations under varied undisclosed settings and trains Hunyuan-MT-Chimera-7B to fuse them with GRPO. The published prompt provides six candidate slots, but neither the training-record schema nor generation, retention, and rejection logs are released.

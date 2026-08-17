@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T06:31:26Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "验证语言模型提出的假设",
+    "updated_at": "2026-07-28T06:31:26Z"
+  }
+}

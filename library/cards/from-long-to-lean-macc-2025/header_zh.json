@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MACC 用可见最终答案的外部 API compressor 对数学 CoT 逐轮顺序改写，仅以 token 长度回弹选择压缩轨迹并用于 SFT；论文披露概念配方和汇总实验，但官方仓库只有 README，不含代码、原始/中间/被拒绝轮次、最终语料、schema、splits 或许可证。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长到短推理轨迹顺序改写、长度选择与 SFT 构造配方",
+  "best_for_ch": "研究 long2short 推理数据、答案条件化压缩、顺序修订选择、SFT 谱系、预算审计与 release boundary 的读者",
+  "confidence_ch": "高",
+  "authors_ch": "JianZhi Yan、Le Liu、Youcheng Pan、Shiwei Chen、Zike Yuan、Yang Xiang、Buzhou Tang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

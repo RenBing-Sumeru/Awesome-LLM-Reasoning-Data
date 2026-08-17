@@ -1,0 +1,119 @@
+id: theorembench-2026
+title: 'TheoremBench: Evaluating LLMs on Theorem Proving in Formal Mathematics'
+year: 2026
+venue: arXiv preprint
+authors:
+- QuocViet Pham
+- Elvir Karimov
+- Andrey Galichin
+- Ivan Oseledets
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- structured-formal-math
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.09450
+  arxiv: https://arxiv.org/abs/2606.09450
+  doi: https://doi.org/10.48550/arXiv.2606.09450
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Lean4 formalizations of classical mathematical theorems inspired by Wiedijk's list of 100 theorems, as described
+    in arXiv:2606.09450v1
+  trace_author: benchmark instances are extracted by the TheoremBench authors from Lean4 developments; model proofs are generated
+    by evaluated Lean4-capable provers.
+  answer_format: Lean4 theorem-proving task with theorem group ID, main theorem or subtheorem declaration, explicit premise
+    binders, Lean context/imports, ground-truth proof, and generated proof evaluated by Lean4; candidate proof attempts, compile
+    verdicts, and metrics are evaluation records rather than raw task fields.
+  process_fields:
+  - theorem group ID
+  - plain-main or premised task view
+  - Lean declaration name
+  - explicit premise binders
+  - Lean context/imports
+  - ground-truth Lean proof
+  - generated proof attempt
+  - Lean4 compile verdict
+  - pass@k / coverage / token-efficiency metrics
+  environment_or_substrate: Lean4 proof assistant and mathlib-backed formal mathematics
+  verifier_or_reward: Lean4 acceptance of candidate proofs; metrics include pass@k, fully proved parent theorem, theorem-level
+    coverage, average subtheorems proved, and token-efficiency
+  terminal_predicate: candidate proof compiles in Lean4; a parent theorem is fully proved only when the main theorem and required
+    associated subtheorems are accepted
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: existing Lean4 formalizations and ground-truth proofs of classical theorem developments
+  generator: extraction pipeline that parses Lean4 source files into theorem groups, reconstructs context, converts dependencies
+    to explicit premise binders, and keeps only Lean4-compilable snippets
+  filtering_rule: retain only instances verified by Lean4; keep artifact/license/toolchain gaps in audit notes until a public
+    release is confirmed
+  sampling_protocol: Pin arXiv version, dataset release, Lean4/mathlib version, prompt/scaffold policy, timeout/resource limits,
+    and kmax before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official arXiv sources checked for author, institution, benchmark construction, metrics, and results: https://arxiv.org/abs/2606.09450;
+    https://arxiv.org/pdf/2606.09450'
+  split: Plain-main and premised views are described in the PDF; exact released files, retained instance list, and versioned
+    split policy remain unconfirmed.
+  decontamination: Underlying Lean4 theorem formalizations and any future public release can leak into prover training data.
+  license: No artifact license was confirmed in the PDF or search results; redistribution terms remain unknown.
+  lineage: 'Primary lead: https://arxiv.org/abs/2606.09450'
+  known_failure_modes:
+  - public release, Lean4/mathlib version, prompt/scaffold settings, timeout policy, and license can affect reuse.
+  - Scores can change with prompt format, sampling budget, model checkpoint, dependency environment, or tokenization.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official PDF/HTML verify Skoltech, HSE University, AIRI, and Sberbank affiliations; 83 theorem groups; 1,142 premised
+    Lean4 proving instances; Lean4 verification; pass@k with kmax=64; theorem-level coverage; and token-efficiency. Code/data/license/toolchain
+    release details remain unknown.
+inclusion_reason: Provides a Lean4-verified formal-math benchmark that evaluates dependency-aware theorem proving beyond standalone
+  contest statements.
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- structured-formal-math
+one_line: TheoremBench evaluates Lean4 theorem provers with plain-main and premised classical-theorem tasks.
+why_it_matters: Provides a Lean4-verified formal-math benchmark that evaluates dependency-aware theorem proving beyond standalone
+  contest statements.
+status: verified
+needs:
+- 'needs_artifact: verify public dataset/code URL, license, Lean4 version, mathlib commit, and prompt/scaffold files'
+- 'needs_audit: inspect retained instance list, contamination controls, timeout policy, sampling budget, and tokenization'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: TheoremBench evaluates Lean4 theorem provers with plain-main and premised classical-theorem tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv/PDF/HTML verify authors, affiliations, 83 theorem groups, 1,142 premised Lean4 proving instances,
+    Lean4 acceptance, pass@k with kmax=64, theorem-level coverage, and token-efficiency. Public code/data/license/toolchain
+    artifacts were not confirmed.
+category_ids:
+- benchmarks_evaluation_surfaces

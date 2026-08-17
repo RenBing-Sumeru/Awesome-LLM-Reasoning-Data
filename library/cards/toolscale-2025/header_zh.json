@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ToolScale 把 4063 个困难工具编排任务写成场景、初始状态与评估条件，供小型编排器训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "强化学习与任务条件化工具编排训练",
+  "confidence_ch": "高",
+  "authors_ch": "Hongjin Su、Shizhe Diao、Ximing Lu、Mingjie Liu、Jiacheng Xu、Xin Dong、Yonggan Fu、Peter Belcak、Hanrong Ye、Hongxu Yin、Yi Dong、Evelina Bakhturina、Tao Yu、Yejin Choi、Jan Kautz、Pavlo Molchanov",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

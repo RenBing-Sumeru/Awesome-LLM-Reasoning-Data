@@ -1,0 +1,113 @@
+id: depo-2026
+title: Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward
+year: 2026
+venue: ICLR 2026
+authors:
+- Xinyu Tang
+- Zhenduo Zhang
+- Yurou Liu
+- Wayne Xin Zhao
+- Zujie Wen
+- Zhiqiang Zhang
+- Jun Zhou
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematical_reasoning
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=sruA4AZmZI
+  arxiv: https://arxiv.org/abs/2509.01321
+  code: https://github.com/RUCAIBox/DEPO
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=sruA4AZmZI
+  openreview: https://openreview.net/forum?id=sruA4AZmZI
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Existing RLVR training samples; exact upstream corpus and split manifest are undisclosed.
+  trace_author: Current RL policy during online RLVR.
+  answer_format: Answer-level rollout with verifiable reward; serialized schema is unknown.
+  process_fields:
+  - offline_diversity_signal
+  - offline_influence_signal
+  - offline_difficulty_signal
+  - online_explorability_signal
+  - replay_status
+  environment_or_substrate: Offline subset selection plus online filtering and replay around RLVR.
+  verifier_or_reward: The paper assumes verifiable reward but does not expose its concrete verifier or error analysis.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Current RLVR policy.
+  filtering_rule: Offline diversity, influence, and difficulty selection; online low-explorability filtering with replay of
+    under-explored samples.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Data-Efficient Policy Optimization combines offline selection, explorability filtering, and replay.
+audit:
+  source_mixture: Unspecified upstream RLVR pool plus online rollouts and replay.
+  split: unknown
+  decontamination: unknown
+  license: Paper is CC-BY-4.0 on OpenReview; repository/data/trajectory licenses are unknown.
+  lineage: Upstream pool -> offline subset -> online explorability filtering -> replay -> RLVR updates; selected IDs and trajectories
+    are unreleased.
+  known_failure_modes:
+  - Selection may bias coverage
+  - low-explorability filtering can remove rare skills
+  - replay can amplify stale or verifier-gamed samples
+  - DEPO-specific artifacts were not found in the linked repository.
+  citation_status: verified
+  confidence: medium
+  notes: Official ICLR paper and author-linked repository checked on 2026-07-10; no DEPO-specific implementation, subset,
+    replay log, or trajectory release identified.
+inclusion_reason: Treats offline curation, online rollout allocation, and replay as a single RLVR data-construction recipe.
+related: []
+tags:
+- rlvr
+- data-selection
+- online-filtering
+- explorability
+- replay
+status: partial
+one_line: A two-stage RLVR recipe that curates an offline subset and dynamically filters or replays online samples using explorability.
+one_line_summary: A two-stage RLVR recipe that curates an offline subset and dynamically filters or replays online samples
+  using explorability.
+why_it_matters: It makes selection and rollout allocation auditable parts of RLVR, while preserving missing dynamic-data and
+  verifier evidence.
+card: cards/recipes/depo.md
+needs:
+- 'needs_code: release DEPO-specific implementation and configuration'
+- 'needs_data: release selected IDs and selection scores'
+- 'needs_trajectories: release explorability, replay, retained and rejected rollout logs'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-10'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Paper and linked repository verified; DEPO-specific artifacts remain unconfirmed.
+category_ids:
+- data_construction_open_release_recipes

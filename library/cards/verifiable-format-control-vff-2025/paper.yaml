@@ -1,0 +1,98 @@
+id: verifiable-format-control-vff-2025
+title: Verifiable Format Control for Large Language Model Generations
+year: 2025
+venue: Findings of NAACL 2025
+authors:
+- Zhaoyang Wang
+- Jinqi Jiang
+- Huichi Zhou
+- Wenhao Zheng
+- Xuchao Zhang
+- Chetan Bansal
+- Huaxiu Yao
+source_role:
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- structured-generation
+- format-control
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-naacl.194/
+  arxiv: null
+  code: null
+  data: https://huggingface.co/datasets/jinqij/VFF
+  project: null
+  huggingface: https://huggingface.co/datasets/jinqij/VFF
+  doi: null
+  venue: https://aclanthology.org/2025.findings-naacl.194/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-naacl.194/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Format-constrained generation instructions.
+  trace_author: Dataset authors and generation pipeline.
+  answer_format: Text outputs constrained by target formats.
+  process_fields:
+  - instruction
+  - format constraint
+  - reference output
+  - validator result
+  environment_or_substrate: Format parsers and rule checks.
+  verifier_or_reward: Deterministic format validation.
+  terminal_predicate: An output satisfies the specified structural constraints.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: null
+  sampling_protocol: Consult the official Hugging Face release for configurations and splits.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: ACL Anthology paper page and author Hugging Face dataset release.
+  split: Consult the dataset card.
+  decontamination: Check overlap with deployed schemas and public instruction corpora.
+  license: Consult the dataset card.
+  lineage: https://aclanthology.org/2025.findings-naacl.194/
+  known_failure_modes:
+  - Format validity does not establish semantic correctness.
+  - Validators may omit intended natural-language constraints.
+  citation_status: verified
+  confidence: high
+  notes: ACL record, author list, affiliations, and official dataset were checked; no official code or project page was identified.
+inclusion_reason: VFF 构造可自动判定的格式控制任务，以严格语法约束评估并训练模型遵循输出格式。
+related: []
+tags:
+- format-control
+- structured-output
+- verification
+- '2025'
+one_line_summary: VFF builds automatically checkable format-control tasks that train and evaluate strict adherence to output
+  constraints.
+why_it_matters: VFF builds automatically checkable format-control tasks that train and evaluate strict adherence to output
+  constraints.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: ACL record, author list, affiliations, and official dataset were checked; no official code or project page was identified.
+category_ids:
+- programmatically_verifiable_outcome_data

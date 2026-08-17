@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T11:59:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "从数据和评测角度讲解RL推理",
+    "updated_at": "2026-07-28T11:59:23Z"
+  }
+}

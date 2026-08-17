@@ -1,0 +1,110 @@
+id: aa-intelligence-index-2026
+title: Artificial Analysis Intelligence Index v4.1
+year: 2026
+venue: Artificial Analysis methodology
+authors:
+- Artificial Analysis
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- mixed
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- model-evaluation
+- aggregate-intelligence-index
+- agentic-and-coding-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+- reward_verifier_layer
+artifacts:
+  paper: https://artificialanalysis.ai/methodology/intelligence-benchmarking
+  arxiv: null
+  doi: null
+  code: null
+  data: null
+  project: https://artificialanalysis.ai/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: v4.1 combines 9 evaluations with disclosed task counts, repeats, response types, scoring rules, and weights.
+  prompt_source: Artificial Analysis methodology page and its maintained evaluation suite.
+  trace_author: Artificial Analysis evaluation operators and the underlying benchmark authors for the component evaluations.
+  answer_format: component benchmark outputs, per-evaluation pass or judge scores, category weights, and an aggregate Intelligence
+    Index.
+  process_fields:
+  - evaluation name
+  - category and weight
+  - question or task count
+  - repeat count
+  - response type
+  - scoring rule
+  - tool-usage flag
+  environment_or_substrate: text-only English language model evaluation suite spanning agents, coding, scientific reasoning,
+    and general knowledge tasks.
+  verifier_or_reward: mixture of test-suite pass/fail, official grading server, regex extraction, equality-checker model,
+    backend state evaluation, and judge-panel comparisons.
+  terminal_predicate: weighted average across component evaluation scores under the published v4.1 weights.
+recipe_metadata:
+  base_model: Not a training recipe; it is a third-party aggregate evaluation index.
+  teacher: Artificial Analysis methodology and component benchmark verifiers define the scoring contract.
+  generator: maintained benchmark runner and reporting pipeline.
+  filtering_rule: Treat each component score and suite version as a separate audit item before using the aggregate number.
+  sampling_protocol: Pin methodology version, component benchmark versions, repeats, model API snapshot, temperature, token
+    limits, tool access, and leaderboard date.
+  rollout_count: null
+  temperature: null
+  inference_budget: The methodology publishes general temperature and output-token settings, but component-specific budgets
+    and API-provider changes must be pinned for reuse.
+  optimizer_or_scaffold: benchmark_suite_index
+audit:
+  source_mixture: Official Artificial Analysis Intelligence Benchmarking methodology page.
+  split: Public method page discloses components and weights; internal dataset copies and some AA variants are not fully downloadable.
+  decontamination: Component benchmarks can be public, private, or internally modified; contamination claims require per-component
+    evidence.
+  license: Method page is public documentation; artifact redistribution and internal dataset copies are not automatically
+    licensed.
+  lineage: 'Primary source: https://artificialanalysis.ai/methodology/intelligence-benchmarking'
+  known_failure_modes:
+  - aggregate index can hide component-specific strengths and failures
+  - methodology, weights, and included evaluations can change over time
+  - private or internally modified component copies can limit reproducibility
+  - judge-panel, equality-checker, API-provider, and tool-access changes can move scores
+  - English text-only scope excludes image, speech, and multilingual performance
+  citation_status: verified
+  confidence: medium
+  notes: Official methodology verifies v4.1 components, weights, general testing parameters, and confidence-interval claim;
+    downloadable row-level data and exact internal dataset snapshots were not verified.
+inclusion_reason: It is a visible aggregate model benchmark whose weights and mixed verifier contracts need explicit audit.
+related: []
+tags:
+- benchmark
+- aggregate-evaluation
+- model-evaluation
+why_it_matters: It is useful as a benchmark-of-benchmarks example where the aggregate number is less reusable than its component
+  contracts.
+status: verified
+needs:
+- 'needs_audit: pin methodology version, component snapshots, model API date, and access to any internal benchmark copies'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Artificial Analysis Intelligence Index aggregates multiple evaluations into a weighted model-quality score.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: medium
+  notes: Official method page verified; row-level datasets, internal copies, and exact runner code were not verified.
+category_ids:
+- benchmarks_evaluation_surfaces

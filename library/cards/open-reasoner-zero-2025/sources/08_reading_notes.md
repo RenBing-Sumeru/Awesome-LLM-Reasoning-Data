@@ -1,0 +1,6 @@
+- Interpret “zero” as **RL directly from a pretrained base model without prior SFT or distillation**. It does not mean zero upstream pretraining data, prompts, reference answers, or human-designed training infrastructure.
+- Keep public rows and online PPO objects separate: 56,878 original, 72,444 extended, and 13,451 hard prompt/reference rows are released; the 64-way responses, rewards, critic values, advantages, failures, and logs are not.
+- Deduplication changes the data ledger: original/extended/hard contain 2,503, 24,025, and 611 whitespace-normalized exact duplicate rows, leaving 54,375, 48,419, and 12,840 unique prompt strings.
+- Code expects a boxed answer inside answer tags and tests normalized mathematical equivalence, whereas the paper describes exact matching. Treat parser and equivalence behavior as part of the verifier contract.
+- Six exact MATH500 prompts appear in the extended release but not the configured original 57k file. Without a paper-run 129k/annealing manifest, this is a release-surface warning rather than proof that reported models trained on them.
+- Audit the missing run binding: released configs point to 57k, the paper describes 129k plus hard annealing, README/config node counts differ, and no tagged release fixes data, seeds, logs, rollouts, compute, or checkpoint hashes.

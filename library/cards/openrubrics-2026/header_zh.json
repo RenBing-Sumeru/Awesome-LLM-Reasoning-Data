@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用对比偏好生成并验证 rubric，把隐式偏好转为可训练的显式奖励依据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "rubric 生成、偏好数据与奖励模型论文",
+  "best_for_ch": "需要构造可解释成对奖励信号，或审计 rubric 是否忠实反映偏好的研究者。",
+  "confidence_ch": "高：ACL 正式论文、数据和权重发布页均可核验；下游许可与源数据继承关系仍须复查。",
+  "authors_ch": "Tianci Liu, Ran Xu, Tony Yu, Ilgee Hong, Carl Yang, Tuo Zhao, Haoyu Wang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

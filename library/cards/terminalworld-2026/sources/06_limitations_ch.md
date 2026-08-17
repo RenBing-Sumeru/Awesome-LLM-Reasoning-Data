@@ -1,0 +1,8 @@
+- **Verifier 覆盖与 gaming：** state test 只能观察任务套件编码的 predicate。条件遗漏会导致 false positive，过严预期会拒绝替代有效终态，公开测试还可能诱发 verifier gaming。reference/no-op/partial validation 提高了敏感性，但没有报告逐任务 false-positive/false-negative rate 或对抗鲁棒性；这是依据已披露反馈契约得到的 curator risk inference。
+- **评测基础设施：** Harbor/tmux race、container startup timeout 与第三方智能体安装失败会产生非任务错误。约 10% 的任务使用 end-of-life Ubuntu、CentOS 或 Debian image；可变 package mirror、cached image、`force_build` 行为与未固定的 base-image digest，都可能在智能体推理不变时改变结果（附录 C）。
+- **版本与 taxonomy 漂移：** arXiv v1 报告 18 个类别，稳定 README 报告 19 个，已检查的 live manifest 包含 20 个 `terminal_domain`。GitHub `main` 与 HF `main` 都可变，没有 tagged GitHub Release，也没有 task-archive hash manifest 绑定论文、代码、数据行、image、test 与 evaluator version。
+- **许可证冲突：** HF card metadata/prose 写 CC BY 4.0，HF `LICENSE` 文件及已检查的全部 1,530 条 manifest 记录却写 CC BY-NC 4.0；附录 A 还把用途限制为 strictly non-commercial academic research。arXiv 论文的 CC BY 4.0 分发许可适用于论文，GitHub 的 Apache-2.0 适用于代码；两者都不能解决数据集条款或源录制继承权利。
+- **谱系与来源删除：** 附录 A 表示发布不托管原始 `.cast` 文件，而是提供指向源录制的直接链接；但当前 8 字段 manifest 已删除 `source_url`，HF history 也记录了这一变化。单个 task archive 是否仍保留可核验来源链接为 unknown。这削弱了逐记录 provenance、source-removal handling、consent review 与 right-to-be-forgotten 审计能力。
+- **构建不透明与失败保留：** 当前 script 暴露模型和预算默认值，但 production model、prompt、temperature、seed、override、retry、repair step、discard decision 与 log 的确切配置均为 unknown。被拒候选、完整修复历史及完整成功/失败评测轨迹不在顶层 manifest 中，限制了 selection-bias 与 hidden-teacher-trait 分析。
+- **隐私与污染：** 针对 PII、credential 与恶意命令的 regex/LLM filter 降低了已知风险，但不能证明完全移除。canary 警告不得用于训练，却不是去重或模型暴露审计；发布没有披露带 threshold 的可复现逐任务、训练语料或下游 benchmark decontamination 流程。
+- **泛化边界：** Verified-200 有意按 complexity/diversity 选择。论文报告的 49.0%–62.5% pass-rate 范围取决于所选任务、被测模型、6 种 scaffold、可变环境与论文时期 harness。benchmark 性能既不是数据质量证明，也不是对完整发布的无偏估计。

@@ -1,0 +1,1 @@
+Of 54 judges, 36 meet r≥0.80 but only 27 meet Tier 1 after kappa and z-score testing. This shows correlation alone admits judges that do not match human scoring behavior. Human-human kappa averages 0.801; Qwen3-30B-A3B has kappa 0.780 and z=-0.04, while Mixtral-8x22B has kappa 0.813 and z=1.45. These results classify agreement patterns, not which pattern is normatively better.

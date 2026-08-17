@@ -1,0 +1,1 @@
+Existing code-preference sets usually treat an entire program with more passing tests as positive. This work reduces the preference unit to the error region that actually changes along a debugging trajectory and forms pairs from causally connected before/after versions rather than unrelated samples.

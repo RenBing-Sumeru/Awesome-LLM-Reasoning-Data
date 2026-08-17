@@ -1,0 +1,3 @@
+Decisive downstream experiment: Nex-N1 consistently beats the open-source baselines reported on SWE-bench and tau2 and approaches proprietary systems; the paper evaluates the wider ecosystem, not Agent-SFT in isolation. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 69,008 records across agentic code, agent, chat, deep research, HTML, and tool-calling splits and exposes actual fields messages, tool definitions, uuid, and generator; on 2026-07-27 its page reported 1281 downloads. Usage is only an impact cross-check, not a causal experiment.

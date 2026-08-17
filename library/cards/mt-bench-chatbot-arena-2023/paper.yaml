@@ -1,0 +1,124 @@
+id: mt-bench-chatbot-arena-2023
+title: Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena
+year: 2023
+venue: NeurIPS 2023 Datasets and Benchmarks / arXiv
+authors:
+- Lianmin Zheng
+- Wei-Lin Chiang
+- Ying Sheng
+- Siyuan Zhuang
+- Zhanghao Wu
+- Yonghao Zhuang
+- Zi Lin
+- Zhuohan Li
+- Dacheng Li
+- Eric P. Xing
+- Hao Zhang
+- Joseph E. Gonzalez
+- Ion Stoica
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- chat-instruction
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2306.05685
+  arxiv: https://arxiv.org/abs/2306.05685
+  doi: https://doi.org/10.48550/arXiv.2306.05685
+  code: https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge
+  data: https://huggingface.co/datasets/lmsys/mt_bench_human_judgments
+  project: null
+  huggingface: https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 80 manually designed two-turn MT-Bench questions plus crowdsourced Chatbot Arena prompts from anonymous model
+    battles; the paper states that MT-Bench questions, about 3K expert votes, and about 30K human-preference conversations
+    were released through the FastChat llm_judge artifacts.
+  trace_author: LMSYS authors designed MT-Bench, collected expert pairwise preferences for controlled comparisons, and collected
+    crowd votes through anonymous Chatbot Arena battles.
+  answer_format: MT-Bench and Arena records expose prompts or conversation context, two candidate model answers, response
+    order, human or GPT-4 judge preference, optional tie/win/loss outcome, and aggregate score or win-rate metadata.
+  process_fields:
+  - multi-turn prompt or arena user prompt
+  - model A and model B responses
+  - response ordering metadata
+  - human vote, expert preference, GPT-4 pairwise judgment, or GPT-4 scalar grade
+  - aggregate win-rate, agreement, or score table
+  environment_or_substrate: GPT-4 pairwise/multi-turn judging and human arena votes
+  verifier_or_reward: human preference is the reference signal for judge agreement; GPT-4 pairwise or single-answer prompts
+    are the scalable judge being audited.
+  terminal_predicate: preference outcome, agreement with human labels, average score, or arena-style win rate under a pinned
+    judge prompt and data snapshot.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: expert human raters, Chatbot Arena crowd voters, and GPT-4 judge prompts used as the evaluated judge.
+  generator: LMSYS/FastChat MT-Bench and Chatbot Arena release pipeline.
+  filtering_rule: For pairwise judging, swap answer order and treat order-sensitive inconsistent decisions conservatively;
+    audit position bias, verbosity bias, self-enhancement bias, and reasoning failures before reuse.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: https://arxiv.org/abs/2306.05685; https://arxiv.org/html/2306.05685; https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge;
+    https://huggingface.co/datasets/lmsys/mt_bench_human_judgments; https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: FastChat code license and each released judgment dataset or leaderboard artifact need separate reuse checks before
+    redistribution or training use.
+  lineage: 'Primary lead: https://arxiv.org/abs/2306.05685'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv sources verify the NeurIPS 2023 Datasets and Benchmarks status, 80-question MT-Bench surface, GPT-4
+    judge audit, 3K expert votes, and 30K human-preference conversations; code/data/license versions still need pinning before
+    score reuse.
+inclusion_reason: Canonical LLM-as-judge bias and agreement analysis.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- chat-instruction
+why_it_matters: Canonical LLM-as-judge bias and agreement analysis.
+status: verified
+needs:
+- 'needs_audit: pin FastChat llm_judge commit, prompt templates, answer files, judge model version, and Arena/MT-Bench snapshot'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MT-Bench / Chatbot Arena exposes GPT-4 pairwise/multi-turn judging and human arena votes as an auditable
+  evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv and FastChat/Hugging Face artifact links verify the paper, judge harness entry point, and public human-judgment
+    surfaces; precise release commit, dataset checksum, and license remain L5 audit items.
+category_ids:
+- benchmarks_evaluation_surfaces

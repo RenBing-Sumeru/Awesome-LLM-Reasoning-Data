@@ -1,0 +1,3 @@
+The paper reports that ORPO works across the studied model sizes and that fine-tuning Phi-2, Llama 2, and Mistral on UltraFeedback can outperform larger compared models on several alignment evaluations. The reported Mistral variants are assessed with AlpacaEval 2, IFEval, and MT-Bench, and the authors release code and checkpoints.
+
+This evidence supports the practical feasibility of a one-stage objective, but it does not remove dependence on the quality and coverage of the upstream chosen/rejected pairs. The conclusions also depend on the selected odds-ratio weight and on evaluations centered on chat alignment, rather than all possible downstream capabilities.

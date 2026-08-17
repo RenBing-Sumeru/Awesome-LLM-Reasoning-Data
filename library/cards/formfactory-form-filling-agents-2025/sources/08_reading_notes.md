@@ -1,0 +1,1 @@
+Keep paper/project counts and repository-template counts separate. Read the evaluator and gold JSON format before comparing models. Field-level success is stricter than visual plausibility but may still miss equivalent human-valid inputs.

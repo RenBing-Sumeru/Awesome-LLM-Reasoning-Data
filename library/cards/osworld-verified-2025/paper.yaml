@@ -1,0 +1,130 @@
+id: osworld-verified-2025
+title: Introducing OSWorld-Verified
+year: 2025
+venue: XLANG Lab blog / OSWorld release
+authors:
+- Tianbao Xie
+- Mengqi Yuan
+- Danyang Zhang
+- Xinzhuang Xiong
+- Zhennan Shen
+- Zilong Zhou
+- Xinyuan Wang
+- Yanxu Chen
+- Jiaqi Deng
+- Junda Chen
+- Bowen Wang
+- Haoyuan Wu
+- Jixuan Chen
+- Junli Wang
+- Dunjie Lu
+- Hao Hu
+- Tao Yu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- computer-use-agents
+- os-agents
+- desktop-environments
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://xlang.ai/blog/osworld-verified
+  arxiv: https://arxiv.org/abs/2404.07972
+  doi: https://doi.org/10.48550/arXiv.2404.07972
+  code: https://github.com/xlang-ai/OSWorld
+  data: https://github.com/xlang-ai/OSWorld/tree/main/evaluation_examples
+  project: https://os-world.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: In-place verified upgrade of OSWorld after addressing 300+ issues; original OSWorld benchmark structure remains
+    the base task/evaluator family.
+  prompt_source: OSWorld task instructions, environment configs, and verified examples maintained in the xlang-ai/OSWorld
+    repository.
+  trace_author: XLANG Lab maintainers, OSWorld task authors, community feedback, and evaluated computer-use agents.
+  answer_format: desktop task instruction, VM/provider setup, action trajectory, observations, evaluator result, success rate,
+    and verified leaderboard metadata.
+  process_fields:
+  - task instruction
+  - desktop environment state
+  - agent action and observation
+  - evaluator output
+  - success or failure status
+  - provider and runtime metadata
+  environment_or_substrate: OSWorld desktop-computer environments with VMware, Docker, and AWS execution support.
+  verifier_or_reward: OSWorld task evaluators and verified task-quality fixes.
+  terminal_predicate: task success under the verified evaluator and environment version.
+recipe_metadata:
+  base_model: Not a training recipe; it is a benchmark infrastructure and task-quality update.
+  teacher: OSWorld maintainers and community issue reports define the verified corrections.
+  generator: OSWorld-Verified refinement process over existing OSWorld examples, infrastructure, and evaluator code.
+  filtering_rule: Use verified task suites and public evaluation guidance; do not mix old OSWorld scores with verified scores.
+  sampling_protocol: Pin OSWorld commit, verified leaderboard date, provider, VM/image, task files, evaluator revision, step
+    budget, and agent implementation.
+  rollout_count: null
+  temperature: null
+  inference_budget: Step budget and provider/runtime settings are agent-specific and must be reported with scores.
+  optimizer_or_scaffold: computer_use_agent_environment
+audit:
+  source_mixture: XLANG Lab OSWorld-Verified blog, xlang-ai/OSWorld README, OSWorld project page, and original OSWorld paper.
+  split: Verified release is an in-place upgrade; compare only against the verified section or a pinned old OSWorld version.
+  decontamination: Public tasks, trajectories, and leaderboard implementations can leak into training data.
+  license: OSWorld repository reports Apache-2.0; task assets, third-party software, and cloud images need separate reuse
+    checks.
+  lineage: 'Primary source: https://xlang.ai/blog/osworld-verified'
+  known_failure_modes:
+  - desktop provider, VM image, hosted web state, and credentials can drift
+  - old OSWorld scores are not directly comparable to verified scores
+  - evaluator fixes can change apparent model ranking
+  - public agent implementations and trajectories can become contamination
+  - cloud parallelization can hide runtime or retry differences
+  citation_status: verified
+  confidence: high
+  notes: Official blog verifies July 28 2025 date, 300+ issue fixes, AWS/parallelization upgrade, public evaluation platform,
+    and verified leaderboard policy; README verifies the release announcement and repository link.
+inclusion_reason: It is the maintained verified OSWorld benchmark line for computer-use agents.
+related:
+- osworld-computer-environment-benchmark-2024
+- osworld-2-0-2026
+tags:
+- benchmark
+- agent_environment
+- computer-use
+one_line: OSWorld-Verified is a maintained OSWorld upgrade that repairs task and infrastructure issues for more reliable computer-use
+  agent evaluation.
+why_it_matters: It separates old OSWorld scores from a verified benchmark line with corrected tasks and public evaluation
+  guidance.
+status: verified
+needs:
+- 'needs_audit: pin repository commit, verified task suite, provider, VM image, evaluator revision, and leaderboard date'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: OSWorld-Verified repairs and reruns OSWorld for more reliable computer-use agent evaluation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: high
+  notes: XLANG blog and OSWorld README verified release details and artifact links.
+category_ids:
+- benchmarks_evaluation_surfaces
+- environment_agent_trajectory_data

@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该工作预测每个提示从额外解码中获得的边际收益，并在共享计算预算下分配采样次数或强模型调用。","reading_priority_ch":"必读","paper_type_ch":"输入自适应测试时计算分配研究","best_for_ch":"构建共享推理服务、且并非每个请求都应获得相同样本数或昂贵解码路径的读者。","confidence_ch":"高","authors_ch":"Mehul Damani、Idan Shenfeld、Andi Peng、Andreea Bobu、Jacob Andreas（机构：麻省理工学院）","category_ids":["scaling_rlvr_test_time_compute"]}

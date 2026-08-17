@@ -1,0 +1,1 @@
+Bobo Li, Yuheng Wang, Hao Fei, Juncheng Li, Wei Ji, Mong-Li Lee, and Wynne Hsu. "FormFactory: An Interactive Benchmarking Suite for Multimodal Form-Filling Agents." arXiv:2506.01520, 2025. Paper: https://arxiv.org/abs/2506.01520. Official project/code: https://formfactory-ai.github.io/ and https://github.com/formfactory-ai/formfactory.

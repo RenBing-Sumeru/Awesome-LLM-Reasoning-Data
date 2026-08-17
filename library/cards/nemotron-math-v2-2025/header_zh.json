@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Nemotron-Math 为奥数与社区数学题生成 750 万条多推理预算、可选 Python 工具的长解答。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "长上下文数学推理监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Du, Wei、Toshniwal, Shubham、Kisacanin, Branislav、Mahdavi, Sadegh、Moshkov, Ivan、Armstrong, George、Ge, Stephen、Minasyan, Edgar、Chen, Feng、Gitman, Igor",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

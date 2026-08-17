@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MineDojo 构建结合互联网规模知识的开放式 Minecraft 具身智能体环境。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2022 Datasets and Benchmarks Track / arXiv 的 embodied agent environment",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Linxi Fan 等（NVIDIA）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T16:40:00Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "IFEval 用规则可检查的指令约束评测模型是否真的遵循格式、长度、关键词、语言等要求。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jeffrey Zhou 等（Google Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

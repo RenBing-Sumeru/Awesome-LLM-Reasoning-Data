@@ -1,0 +1,115 @@
+id: seal-vla-2025
+title: 'Do What You Say: Steering Vision-Language-Action Models via Runtime Reasoning-Action Alignment Verification'
+year: 2026
+venue: ICRA 2026
+authors:
+- Yilin Wu
+- Anqi Li
+- Tucker Hermans
+- Fabio Ramos
+- Andrea Bajcsy
+- Claudia Pérez-D'Arpino
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- agent_environment
+verification_contract:
+- environmental
+- judgment_required
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- embodied_ai
+- visual_reasoning
+- household_robotics
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.16281
+  arxiv: https://arxiv.org/abs/2510.16281
+  code: https://github.com/NVlabs/actalign
+  data: https://huggingface.co/datasets/nvidia/libero-r-datasets
+  project: https://yilin-wu98.github.io/steering-reasoning-vla/
+  huggingface: https://huggingface.co/datasets/nvidia/libero-r-datasets
+  doi: https://doi.org/10.48550/arXiv.2510.16281
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning-annotated LIBERO-100 and OOD variations; breakdown unknown.
+  trace_author: Reasoning VLA generates plan and action sequences.
+  answer_format: Instruction/observation, text plan, action sequences, simulated outcome, alignment score, selected actions.
+  process_fields:
+  - instruction
+  - observation
+  - textual_plan
+  - candidate_actions
+  - simulated_outcome
+  - alignment_score
+  - selected_actions
+  environment_or_substrate: LIBERO simulation/OOD variants.
+  verifier_or_reward: Pretrained VLM rates simulated outcome/text-plan alignment.
+  terminal_predicate: Execute sequence selected for plan alignment, then return at next reasoning switch.
+recipe_metadata:
+  base_model: pi_0-reason, pi_0-V-GPS, pi_0 comparisons.
+  teacher: null
+  generator: Same VLA emits plans and candidates.
+  filtering_rule: Best plan-aligned simulated outcome; threshold unknown.
+  sampling_protocol: Plan -> batch actions -> simulate -> VLM rank -> execute.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Training-free runtime steering.
+audit:
+  source_mixture: Exact reasoning-LIBERO source/split/count unknown.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: task -> plan -> action sequences -> simulation -> VLM rank -> execution
+  known_failure_modes:
+  - Plan alignment is not success/safety.
+  - Sim-to-real errors.
+  - VLM brittleness under OOD.
+  - Rollout scores/rejections/seeds/weights unknown.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv/project/code/data checked; venue proceeding unverified.
+inclusion_reason: Embodied text-plan/simulation/alignment fields form a direct Track 5 trace-selection contract.
+related: []
+tags:
+- seal-vla
+- vla
+- runtime-steering
+- action-verification
+- libero
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: SEAL simulates candidate actions and selects the sequence best aligned with the VLA's textual plan.
+why_it_matters: It separately audits reasoning text, predicted physical outcome, and selected actions.
+card: null
+needs:
+- needs_rollout_logs
+- needs_score_manifest
+- needs_split_provenance
+- needs_sim_to_real_audit
+- needs_model_release
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Project-linked code/data official; proceedings/logs/weights unknown.

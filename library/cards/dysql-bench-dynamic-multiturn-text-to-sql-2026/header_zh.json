@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DySQL-Bench 在数据库快照中执行多轮 SQL 的 CRUD 操作，并同时检查查询结果和状态变化来评估代理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行的多轮 Text-to-SQL 交互基准",
+  "best_for_ch": "研究数据库代理、多轮 SQL 交互或执行式奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Linzhuang Sun, Tianyu Guo, Hao Liang, Ruitong Liu, Yuying Li, Qifeng Cai, Jingxuan Wei, Yuchen Wu, Bihui Yu, Xiangxiang Zhang, Wentao Zhang, Bin Cui",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:18:57Z"
+}

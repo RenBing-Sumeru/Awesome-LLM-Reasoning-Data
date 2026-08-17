@@ -1,0 +1,5 @@
+The underlying pre-training, SFT, reinforcement-learning, distillation, safety, and tool-trajectory records are not released. Source names, mixture weights, data rights, per-stage counts, prompts, decoding settings, filtering thresholds and yields, teachers, rollout counts, optimizer details, reward functions, verifier implementations, and calibration measurements are absent or incomplete.
+
+The release reports that unfiltered chain of thought can contain hallucinated or safety-inconsistent reasoning and advises against exposing it raw. It also reports that gpt-oss can hallucinate more than o4-mini without browsing, has weaker instruction-hierarchy resistance than o4-mini, and can have safety refusals weakened by downstream fine-tuning. The reported safety mitigations and evaluations do not substitute for release of the associated training/evaluation data or an independently auditable protocol.
+
+Apache-2.0 availability of weights and reference tools does not establish rights to, provenance of, or reproducibility for the undisclosed training and feedback data. This is therefore a partial report-level disclosure record.

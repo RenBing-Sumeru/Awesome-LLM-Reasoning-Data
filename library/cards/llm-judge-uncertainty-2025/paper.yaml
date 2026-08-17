@@ -1,0 +1,96 @@
+id: llm-judge-uncertainty-2025
+title: 'Analyzing Uncertainty of LLM-as-a-Judge: Interval Evaluations with Conformal Prediction'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Huanxin Sheng
+- Xinyi Liu
+- Hangfeng He
+- Jieyu Zhao
+- Jian Kang
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.569/
+  arxiv: null
+  code: https://github.com/BruceSheng1202/Analyzing-Uncertainty-of-LLM-as-a-Judge
+  data: https://github.com/BruceSheng1202/Analyzing-Uncertainty-of-LLM-as-a-Judge
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.emnlp-main.569/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.569/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
+  citation_status: verified
+  confidence: high
+  notes: 'Official paper/project and public artifact URL checked on 2026-07-18. Focus: judge uncertainty evaluation data and
+    conformal prediction code.'
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.emnlp-main.569.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: '该工作用保形预测量化 LLM judge 的评分不确定性，并审计其覆盖率与校准边界。'
+related: []
+tags:
+- judge-reliability
+- uncertainty-quantification
+- candidate-slate
+status: verified
+one_line_summary: judge uncertainty evaluation data and conformal prediction code
+why_it_matters: It makes uncertainty in LLM-as-a-judge evaluation measurable and auditable.
+curation_level: L2_artifact_verified
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: Official final paper and public code/data release checked; L4 Chinese review completed.
+category_ids:
+- audit_failure_contamination_verifier_attacks

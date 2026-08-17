@@ -1,0 +1,5 @@
+- Distinguish answer stability from correctness and from rationale faithfulness.
+- Preserve all prefix answers and normalization rules, not only the selected stopping point.
+- Audit false early stops separately on easy and hard tasks and across model sizes.
+- Treat Learn-to-Stop labels as self-derived agreement labels rather than gold process supervision.
+- Verify release of chunked traces, activations, thresholds, and stopper weights before claiming reuse.

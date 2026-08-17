@@ -1,0 +1,3 @@
+- The authors train only on existing static trajectories and leave fully online RL untested. Before reuse, test whether the static filters still predict success under the target site's live state distribution.
+- The final SFT mixture is 85.7% mobile and rare actions remain scarce. Audit source/action frequencies and collect missing web or rare-action trajectories before claiming broad GUI coverage.
+- A single demonstrated action cannot enumerate all valid next moves. Measure false-negative reward rates on alternative actions before using this verifier for aggressive RL updates.

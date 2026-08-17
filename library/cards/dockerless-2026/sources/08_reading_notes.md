@@ -1,0 +1,6 @@
+- Keep the scales separate: 3.7K unique issues underpin verifier training, 16K downstream rollouts are ranked to 4K for SFT, and 776 private examples evaluate verifier ranking.
+- Track three feedback layers independently: held-out-test execution labels, learned binary verdict/logit scores, and group-normalized GRPO rewards.
+- “Environment-free” removes repository-specific dependencies and test runners during downstream training; OpenHands still executes shell commands in a minimal Ubuntu image.
+- Both question generation and final judging require a golden/reference patch, creating an applicability and leakage boundary for new or alternative-correct solutions.
+- Rust/C gaps, question-count degradation, failed scoring passes, and the unreleased rejected/timeout trajectories are essential negative evidence, not footnotes.
+- Before reuse, require release, replay, decontamination, license/privacy, and sandbox-security manifests; all remain unavailable or unknown in arXiv v1.

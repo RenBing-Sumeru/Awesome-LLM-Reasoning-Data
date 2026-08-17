@@ -1,0 +1,3 @@
+The lightweight corpus verifier improves factual process judging and reinforcement while reducing expensive LLM judging. Evidence is traceable to passages, but conclusions do not extend to open-world facts outside the corpus.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of corpus-grounded factual process supervision in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

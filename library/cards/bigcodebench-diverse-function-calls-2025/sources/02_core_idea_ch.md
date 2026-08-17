@@ -1,0 +1,1 @@
+BigCodeBench 包含 1,140 个细粒度 Python 编程任务，覆盖七个领域和 139 个库；每题平均 5.6 个测试，平均分支覆盖率为 99%。BigCodeBench-Complete 提供结构化 docstring、参数、返回值、异常和需求，BigCodeBench-Instruct 自动压缩为只保留必要信息的自然语言指令。记录由提示、标准实现、依赖环境与可执行测试组成，用于严格评测复杂 API 组合和 instruction following。

@@ -1,0 +1,93 @@
+id: vibe-code-bench-2025
+title: 'Vibe Code Bench v1.1: Evaluating AI Models on End-to-End Web Application Development'
+year: 2025
+venue: Vals AI benchmark page
+authors:
+- Vals AI
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- coding
+- web-generation
+- product-prototyping
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://www.vals.ai/benchmarks/vibe-code
+  arxiv: https://arxiv.org/abs/2603.04601
+  doi: https://doi.org/10.48550/arXiv.2603.04601
+  code: null
+  data: null
+  project: https://www.vals.ai/benchmarks/vibe-code
+data_object:
+  dataset_scale: Official page describes Vibe Code Bench v1.1; exact released task count should be read from the current Vals
+    page/version notes.
+  prompt_source: Web application/product-style task prompts curated by Vals AI.
+  trace_author: Evaluated model or coding agent running in the benchmark harness.
+  answer_format: Generated application files plus rendered behavior under browser-based checks.
+  process_fields:
+  - task prompt
+  - generated code files
+  - browser interaction result
+  - test outcome
+  - application-level score
+  environment_or_substrate: Full development environment for building web applications.
+  verifier_or_reward: Point-and-click tests, edge-case workflow checks, and engineer-verified criteria.
+  terminal_predicate: Application-specific tests and critical user workflows pass under the official harness.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark/evaluation surface.
+  teacher: Official benchmark authors or platform maintainers.
+  generator: Official task construction and benchmark harness.
+  filtering_rule: See official release/version notes; do not infer unreleased filters.
+  sampling_protocol: Pin task version, scaffold, model settings, scorer, and leaderboard snapshot.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: evaluation harness or platform-specific scaffold
+audit:
+  source_mixture: Official benchmark page plus public repository/data artifact where available.
+  split: see official source; hidden/public policy may be partial
+  decontamination: public exposure and leaderboard reuse can create contamination risk
+  license: verify from official artifact before redistribution
+  lineage: tracked to official benchmark source
+  known_failure_modes: &id001
+  - pin exact v1.1 task count and any non-public split policy before higher-level promotion
+  - treat model scores as harness- and date-specific
+  citation_status: verified_official_source
+  confidence: high
+  notes: Public page verifies the benchmark surface and scoring style; full prompt/test release boundary should be checked
+    against the current Vals release.
+inclusion_reason: Vibe Code Bench evaluates whether models can build functioning web applications in a full development environment,
+  scored through point-and-click functional tests and review criteria.
+related: []
+tags:
+- benchmark
+- coding
+- evaluation-surface
+- web-generation
+why_it_matters: Vibe Code Bench evaluates whether models can build functioning web applications in a full development environment,
+  scored through point-and-click functional tests and review criteria.
+status: verified
+needs: *id001
+one_line_summary: Vibe Code Bench evaluates whether models can build functioning web applications in a full development environment,
+  scored through point-and-click functional tests and review criteria.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: codex_official_source_check
+  confidence: high
+  notes: Public page verifies the benchmark surface and scoring style; full prompt/test release boundary should be checked
+    against the current Vals release.
+category_ids:
+- benchmarks_evaluation_surfaces

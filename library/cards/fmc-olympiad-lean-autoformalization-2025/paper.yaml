@@ -1,0 +1,105 @@
+id: fmc-olympiad-lean-autoformalization-2025
+title: 'FMC: Formalization of Natural Language Mathematical Competition Problems'
+year: 2025
+venue: AI for Math Workshop at ICML 2025
+authors:
+- Jiaxuan Xie
+- Chengwu Liu
+- Ye Yuan
+- Siqi Li
+- Zhiping Xiao
+- Ming Zhang
+source_role:
+- data_release
+- construction_recipe
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-mathematics
+- lean4
+- autoformalization
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.11275
+  arxiv: https://arxiv.org/abs/2507.11275
+  code: https://github.com/JadeXie1205/FMC
+  data: https://huggingface.co/datasets/JadeXie1205/FMC
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.11275
+  venue: https://icml.cc/virtual/2025/52460
+  openreview: https://openreview.net/forum?id=7oRr1DQ8Gk
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Olympiad-level natural-language problems collected from IMOmath.
+  trace_author: LLM autoformalization pipeline with verification-error feedback.
+  answer_format: Natural-language problem paired with one or more Lean formal statements.
+  process_fields:
+  - natural-language problem
+  - Lean statement
+  - verification error
+  - back translation
+  - consistency result
+  - quality score
+  environment_or_substrate: Lean theorem-proving environment.
+  verifier_or_reward: Lean syntactic checking and consistency-oriented filtering.
+  terminal_predicate: The produced Lean statement is accepted by Lean and passes the pipeline's consistency checks.
+recipe_metadata:
+  base_model: Large language models are used without task-specific training in the reported pipeline.
+  teacher: Lean verifier and back-translation consistency check.
+  generator: Translation, verification, back translation, and consistency checking with error feedback.
+  filtering_rule: Retain syntactically valid, semantically consistent formalizations.
+  sampling_protocol: 3,922 natural-language problems align to 9,787 Lean formalizations.
+  rollout_count: null
+  temperature: null
+  inference_budget: Sampling count and error-feedback rounds affect formalization quality; pin settings for reproduction.
+  optimizer_or_scaffold: Training-free error-feedback autoformalization pipeline.
+audit:
+  source_mixture: Official arXiv paper, AI4Math ICML workshop record, OpenReview page, and author GitHub repository.
+  split: Dataset contains multiple Lean formalizations per natural-language problem; repository defines release splits.
+  decontamination: Olympiad sources and public Lean statements can enter training corpora.
+  license: Verify repository license and IMOmath source terms before redistribution.
+  lineage: https://github.com/JadeXie1205/FMC
+  known_failure_modes:
+  - Lean acceptance does not alone establish equivalence to the intended natural-language problem.
+  - LLM quality ratings are not a formal semantic guarantee.
+  - Multiple sampled formalizations can introduce duplicates or varying difficulty.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, workshop publication, affiliations, OpenReview record, and repository were checked.
+inclusion_reason: FMC provides natural-language-to-Lean records filtered by executable Lean verification.
+related: []
+tags:
+- autoformalization
+- lean4
+- olympiad-math
+- formal-verification
+- '2025'
+one_line_summary: FMC aligns 3,922 Olympiad problems with 9,787 Lean formalizations using an error-feedback pipeline and Lean
+  validation.
+why_it_matters: It exposes Lean validation within a large-scale natural-language formalization pipeline.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, workshop publication, affiliations, OpenReview record, and repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "推理时树搜索与过程价值建模研究，效果好",
+    "updated_at": "2026-07-19T13:55:49Z"
+  },
+  "updated_at": "2026-07-19T13:55:49Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

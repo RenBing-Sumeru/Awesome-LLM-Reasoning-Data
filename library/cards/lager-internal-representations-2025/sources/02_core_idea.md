@@ -1,0 +1,1 @@
+LAGER reads score-token logits at every transformer layer, linearly aggregates them, softmaxes only over allowed scores, and returns the expected score. It can use equal layer weights or tune only L+1 weights on 1,000 held-out HelpSteer examples with CE+MAE while the judge remains frozen. Middle-upper layers provide complementary, more human-aligned evidence.

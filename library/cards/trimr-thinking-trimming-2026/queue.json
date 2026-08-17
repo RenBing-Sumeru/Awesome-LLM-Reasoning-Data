@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:01:25Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以轻量验证器在线裁剪冗余思维，在不训练主模型的条件下降低推理成本",
+    "updated_at": "2026-07-20T13:01:25Z"
+  }
+}

@@ -1,0 +1,3 @@
+The paper reports mining 10 active Apache projects with more than 190K commits and 150K issue reports, yielding 746 candidate patches, 679 manually confirmed hot fixes, and 110 reproducible test-suite cases. The repository exposes project folders, hot-fix branches, `.bugs-dot-jar` metadata, developer patches, and test results.
+
+Instance-level evidence is not an aggregate score: it is whether a named branch can be built, the buggy version exhibits the recorded test behavior, and the developer patch moves the case to the expected passing state. The evidence boundary is the released repository state, project dependency stack, and manual hot-fix label policy.

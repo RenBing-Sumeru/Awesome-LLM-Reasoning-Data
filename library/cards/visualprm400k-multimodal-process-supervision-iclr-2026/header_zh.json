@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布约 40 万条 VisualPRM400K 多模态过程监督数据，并基于它训练 VisualPRM、构建 VisualProcessBench 评测步骤纠错。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "VisualPRM400K authors",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z"
+}

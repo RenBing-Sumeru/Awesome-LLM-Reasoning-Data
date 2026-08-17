@@ -1,0 +1,19 @@
+{
+  "title": "Beyond Theorem Proving: Formulation, Framework and Benchmark for Formal Problem-Solving",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.04528",
+    "data": "https://huggingface.co/collections/purewhite42/formal-problem-solving",
+    "code": "https://github.com/Purewhite2019/formal_problem_solving_main",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:08:22Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "FormalMath500 及两个求解集构成500余道形式问题benchmark",
+    "updated_at": "2026-07-19T12:08:22Z"
+  }
+}

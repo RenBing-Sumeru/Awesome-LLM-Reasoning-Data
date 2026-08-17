@@ -1,0 +1,1 @@
+证据不只是论文表格，而是 artifact-backed：arXiv 论文定义了 uncontaminated competition 的动机，官方网站、GitHub 和 Hugging Face 组织提供 live platform、code、datasets 和 model logs。核心经验判断是，新近竞赛题能暴露旧公开数学 benchmark 可能掩盖的前沿模型差异。行级证据是一道题、官方目标、模型原始输出、parser 或 judge 决策，以及分数。边界是：live leaderboard 数字会随新增竞赛、模型更新和 scoring policy 变化。

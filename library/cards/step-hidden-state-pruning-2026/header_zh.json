@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"STEP 在 KV 缓存压力上升时，根据步骤末端隐藏状态剪去低前景推理轨迹，以降低并行测试时延迟而不牺牲准确率。","reading_priority_ch":"必读","paper_type_ch":"高效并行测试时扩展研究","best_for_ch":"部署自一致性类推理、且 GPU 内存压力与排队而非单纯词元数决定延迟的读者。","confidence_ch":"高","authors_ch":"Zhixiang Liang、Beichen Huang、Zheng Wang、Minjia Zhang（机构：伊利诺伊大学厄巴纳—香槟分校）","category_ids":["scaling_rlvr_test_time_compute"]}

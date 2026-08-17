@@ -1,0 +1,17 @@
+{
+  "title": "R3: Robust Rubric-Agnostic Reward Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.13388",
+    "data": "https://huggingface.co/datasets/rubricreward/R3-Dataset-20K"
+  },
+  "review_note": "L4 材料已准备，等待人工判定。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T09:48:26Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "整合45个来源，发布约1.38万条及3950条带rubric、评分和评价推理的多格式奖励数据",
+    "updated_at": "2026-07-15T09:48:26Z"
+  }
+}

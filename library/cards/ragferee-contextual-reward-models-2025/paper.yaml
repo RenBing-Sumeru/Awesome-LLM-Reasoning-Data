@@ -1,0 +1,68 @@
+id: ragferee-contextual-reward-models-2025
+title: 'RAGferee: Contextual Reward Models for RAG'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Andrei C. Coman
+- Ionut-Teodor Sorodoc
+- Leonardo F. R. Ribeiro
+- Bill Byrne
+- James Henderson
+- Adrià de Gispert
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.414/
+  arxiv: null
+  code: https://github.com/amazon-science/RAGferee
+  data: https://github.com/amazon-science/RAGferee
+  project: null
+  huggingface: null
+data_object:
+  prompt_source: The official paper and released records describe the task inputs and their provenance.
+  trace_author: Candidate answers and labels are created or collected under the construction process documented by the paper.
+  answer_format: Task context, competing candidate answers, preference feedback, provenance, and split metadata.
+  verifier_or_reward: the comparison contract judges groundedness, relevance, refusal, completeness, and conciseness against
+    the supplied context.
+recipe_metadata:
+  dataset_revision: null
+  source_lineage: See the official paper and release.
+  annotation_policy: the comparison contract judges groundedness, relevance, refusal, completeness, and conciseness against
+    the supplied context.
+  split: Use the split definition supplied by the official release.
+audit:
+  confidence: medium
+  link_verified: true
+  notes: Review provenance, licensing, and transfer limits before reuse.
+verification:
+  link_verified: true
+  sources:
+  - https://aclanthology.org/2025.emnlp-main.414/
+  - https://github.com/amazon-science/RAGferee
+inclusion_reason: Public preference, reward, or feedback data with a documented comparison contract and official release link.
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: RAGferee releases retrieval-grounded question answering contexts paired with competing answers and contextual
+  quality choices for bounded preference learning, reward modeling, evaluation, and audit.
+why_it_matters: The release supports feedback learning for 检索证据约束下的回答质量.

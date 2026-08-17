@@ -1,0 +1,19 @@
+{
+  "title": "Faithfulness Metrics Don't Measure Faithfulness: A Meta-Evaluation with Ground Truth",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.25052",
+    "data": "https://huggingface.co/datasets/yoavgurarieh/BonaFide-Extended",
+    "code": "https://github.com/yoavgurarieh/BonaFide",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:02:26Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "3,066 条带步骤级和整链真值的 CoT，共 19,459 条扩展记录",
+    "updated_at": "2026-07-17T08:02:26Z"
+  }
+}

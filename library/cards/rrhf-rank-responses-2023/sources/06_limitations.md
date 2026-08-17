@@ -1,0 +1,1 @@
+RRHF is constrained by candidate diversity and quality, and its ranking loss may favor length or surface style when rankings encode those artifacts. It does not solve disagreement among judges, so the provenance of candidates and rank labels must be retained for auditing.

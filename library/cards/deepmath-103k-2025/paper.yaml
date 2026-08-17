@@ -1,0 +1,136 @@
+id: deepmath-103k-2025
+title: 'DeepMath-103K: A Large-Scale, Challenging, Decontaminated, and Verifiable Mathematical Dataset for Advancing Reasoning'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- He, Zhiwei
+- Liang, Tian
+- Xu, Jiahao
+- Liu, Qiuzhi
+- Chen, Xingyu
+- Wang, Yue
+- Song, Linfeng
+- Yu, Dian
+- Liang, Zhenwen
+- Wang, Wenxuan
+- Zhang, Zhuosheng
+- Wang, Rui
+- Tu, Zhaopeng
+- Mi, Haitao
+- Yu, Dong
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English competition and advanced mathematics
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.11456
+  arxiv: https://arxiv.org/abs/2504.11456
+  code: https://github.com/zwhe99/DeepMath
+  data: https://huggingface.co/datasets/zwhe99/DeepMath-103K
+  project: null
+  huggingface: https://huggingface.co/datasets/zwhe99/DeepMath-103K
+  doi: https://doi.org/10.48550/arXiv.2504.11456
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public math corpora filtered toward difficult problems and decontaminated against evaluation sets
+  trace_author: DeepSeek-R1 generates three long solutions for each retained problem
+  answer_format: question, final_answer, difficulty, topic, and r1_solution_1 through r1_solution_3
+  process_fields:
+  - question
+  - final_answer
+  - difficulty
+  - topic
+  - and r1_solution_1 through r1_solution_3
+  environment_or_substrate: English competition and advanced mathematics
+  verifier_or_reward: answer verification, difficulty scoring, topic labeling, deduplication, and benchmark decontamination
+  terminal_predicate: Retain records only after answer verification, difficulty scoring, topic labeling, deduplication, and
+    benchmark decontamination.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: DeepSeek-R1 generates three long solutions for each retained problem
+  generator: DeepMath-103K retains difficult decontaminated questions, stores a verified final answer, and supplies three
+    independent R1 reasoning traces for each problem.
+  filtering_rule: answer verification, difficulty scoring, topic labeling, deduplication, and benchmark decontamination
+  sampling_protocol: public math corpora filtered toward difficult problems and decontaminated against evaluation sets
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: mathematical reasoning SFT and RL prompt preparation
+audit:
+  source_mixture: public math corpora filtered toward difficult problems and decontaminated against evaluation sets
+  split: 'Official release scale: 103,000 math questions with three DeepSeek-R1 solutions per record; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: MIT
+  lineage: public math corpora filtered toward difficult problems and decontaminated against evaluation sets -> DeepSeek-R1
+    generates three long solutions for each retained problem -> answer verification, difficulty scoring, topic labeling, deduplication,
+    and benchmark decontamination -> DeepMath-103K -> mathematical reasoning SFT and RL prompt preparation
+  known_failure_modes:
+  - final-answer agreement does not certify every intermediate step in three long traces
+  - difficulty scoring and public benchmark matching can favor competition-style mathematics
+  citation_status: verified
+  confidence: high
+  notes: The full 18-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: DeepMath-103K is a public Track 01 object containing question, final_answer, difficulty, topic, and r1_solution_1
+  through r1_solution_3 and is explicitly consumed by mathematical reasoning SFT and RL prompt preparation.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2504.11456
+- primary-link-checked
+status: verified
+one_line_summary: DeepMath-103K retains difficult decontaminated questions, stores a verified final answer, and supplies three
+  independent R1 reasoning traces for each problem.
+why_it_matters: Many open math corpora contain easy, duplicated, contaminated, or unverifiable problems, obscuring whether
+  training gains come from reasoning quality or leakage.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: mathematical reasoning SFT and RL prompt preparation
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English competition and advanced mathematics
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 11900 downloads and 373 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: MIT.'
+  selection_eligible: true
+  year_impact_threshold: 2

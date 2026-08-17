@@ -1,0 +1,3 @@
+The work treats agentic test-time scaling as four coupled controls. Parallel sampling explores multiple whole or step-wise trajectories; a reflection agent summarizes recent actions only when a verifier score indicates poor progress; verification and result merging choose among candidates; heterogeneous agents diversify the rollout distribution.
+
+The central empirical message is that allocation must respect trajectory structure. Whole-trajectory BoN is stronger than several deeper searches in the reported setting, reflection helps when triggered selectively rather than every step, and list-wise comparison is more useful than independent scalar scoring or majority voting when candidates contain complementary evidence.

@@ -1,0 +1,5 @@
+MM-PRM adapts automated process supervision from text-only mathematics to image-conditioned reasoning. The construction preserves the image for the rollout policy, uses an OmegaPRM-style tree to search partial multimodal solutions, and trains a multimodal critic on real-valued continuation-success estimates. This is more specific than applying an outcome reward only at the end of a response.
+
+Two design choices define the contribution. First, binary-search expansion spends rollouts around failed paths instead of exhaustively labeling every prefix. Second, the PRM is trained with continuous Monte Carlo targets and emits a score after every prm marker token, enabling several explicit path-aggregation rules at Best-of-N inference.
+
+The method does not introduce direct human step judgments, a symbolic visual-math verifier, or a guarantee that a high Monte Carlo value means the current step is valid. Its novelty is an automated multimodal outcome-to-process conversion and a released scorer, not an externally grounded proof-validity dataset.

@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "BIG-bench consortium: 132 institutions verified by official paper"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2206.04615",
+    "https://arxiv.org/pdf/2206.04615",
+    "https://github.com/google/BIG-bench",
+    "https://github.com/google/BIG-bench/blob/main/bigbench/benchmark_tasks/README.md"
+  ],
+  "verification_note": "Official arXiv/PDF lists 450 alphabetic authors and states 132 institutions; the checked official sources do not enumerate a complete per-author affiliation table or full institution set in machine-usable form. This Card records the consortium disposition rather than inventing institution entries."
+}

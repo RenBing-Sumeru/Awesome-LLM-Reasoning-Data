@@ -1,0 +1,1 @@
+Use RLAIF-V to prototype open-source hallucination-oriented preference learning when human visual annotation is unavailable. Record the claim splitter, labeler, and selection budget, and evaluate against independent human or evidence-grounded checks. Do not report its labels as human judgments or use them unreviewed in high-stakes visual decisions.

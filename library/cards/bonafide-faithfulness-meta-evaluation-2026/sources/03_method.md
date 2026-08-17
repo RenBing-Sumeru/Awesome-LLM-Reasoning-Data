@@ -1,0 +1,5 @@
+1. **Design recoverable tasks:** Construct tasks whose outputs depend on specific hidden intermediate computations, allowing the final answer to reveal the path used.
+2. **Sample CoTs:** Ask 10 models to solve 13 task types and store full reasoning, answers, and decisive latent variables.
+3. **Generate ground truth:** Use task mechanics to label whether each step participated in the actual computation and whether the whole CoT is faithful, producing 3,066 BonaFide examples.
+4. **Extend and evaluate:** Generate 19,459 additional records with the same mechanism and compare deletion, counterfactual, causal, and LLM-judge metrics using AUROC and transfer tests; The key design makes alternative computational paths produce distinguishable outputs, allowing the used path to be recovered without reading hidden activations.
+5. **Reproducibility:** Reproducibility: fix the recoverable-bottleneck generators, versions of the 10 models, CoT sampling parameters, and metric implementations. Mark undisclosed counterfactual budgets, thresholds, or task details unknown and preserve task-level splits.

@@ -1,0 +1,1 @@
+Benchmark scores can be inflated when a model has seen test data during pretraining, but conventional membership signals are noisy at dataset scale. The paper asks for a contamination score that changes monotonically with controlled overlap and is stable across sampled benchmark subsets.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将多轮代码 RL 化为离线轨迹上的上下文 bandit 学习，并用扰动轨迹缓解错误反馈诱发的奖励投机。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多轮代码强化学习与奖励投机审计论文",
+  "best_for_ch": "需要降低多轮代码 RL 成本、分析错误执行反馈或训练抗奖励投机代理的研究者。",
+  "confidence_ch": "高：COLM 正式版本、arXiv 全文及官方代码和数据发布均已核验。",
+  "authors_ch": "Ziru Chen, Dongdong Chen, Ruinan Jin, Yingbin Liang, Yujia Xie, Huan Sun",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

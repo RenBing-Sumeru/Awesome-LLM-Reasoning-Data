@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SedarEval 为每道题生成带加分与扣分项的自适应量表，并用其训练更贴近人工评分的裁判。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量表数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhiyuan Fan、Weinong Wang、Xing Wu、Debing Zhang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

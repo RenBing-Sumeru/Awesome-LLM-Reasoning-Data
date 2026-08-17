@@ -1,0 +1,1 @@
+Process reward models ask whether a reasoning step is moving in a useful direction, rather than waiting only for the final answer. They make feedback more detailed, but a good-looking step score does not automatically add up to a correct solution. Where the labels come from and how fine-grained they are changes what the score means.

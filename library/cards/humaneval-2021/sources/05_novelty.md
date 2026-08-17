@@ -1,0 +1,3 @@
+The prior baseline for many code-LM evaluations included next-token loss, code similarity, or less standardized programming tasks. HumanEval changes the quality signal by making task success executable and by packaging a small, hand-written set of Python problems with tests.
+
+The direction signal is the move from text overlap to functional correctness. What is not new: unit testing, Python programming tasks, and sampling multiple completions. Reuse checks should cover official repository commit, test visibility, modifications such as EvalPlus-style extra tests, sandbox security, timeout policy, and benchmark contamination after public release.

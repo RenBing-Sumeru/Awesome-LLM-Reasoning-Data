@@ -1,0 +1,5 @@
+- 必须区分计数单位：312 条已执行人工 episode 包含 4,503 张 screenshot，经九路分支和展平后形成约 27K 条 action-level SFT 样本。
+- 建议把论文 §3.2–§3.5 与 `postprocess/refinement.py`、`boost.py`、`prepare.py` 对读；`finish` 重写、未执行分支和样本序列化都在这些位置显现。
+- Table 3 的 141% 只表示在 141 项可行 WindowsAgentArena-V2 任务、默认 30-step cap 下，相对 Qwen2.5-VL-72B 从 14.9 到 36.0；不能解释为相对 Claude 的提升或数据质量证明。
+- 应把 Figure 7 的仅人工与 direct-distillation ablation 同 Appendix E 的 Table 8 一起读：分支增强在报告设置中有帮助，但更长交互暴露出脆弱的终止行为。
+- 复用前仍需核验 screenshot consent 与权利、逐记录任务 lineage、Claude 解码与拒绝日志、分支可执行性、语义 decontamination 代码，以及不可变的数据与 benchmark 版本。

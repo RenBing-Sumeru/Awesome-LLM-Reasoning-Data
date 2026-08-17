@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Carnegie Mellon University",
+    "University of Michigan",
+    "Northeastern University",
+    "The University of Hong Kong"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.08184",
+    "https://MobileAgentBench.github.io",
+    "https://github.com/MobileAgentBench/mobile-agent-bench"
+  ],
+  "verification_note": "arXiv, project, and GitHub verify authors, institutions, and public benchmark artifacts."
+}

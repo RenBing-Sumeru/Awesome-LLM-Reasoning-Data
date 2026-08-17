@@ -1,0 +1,4 @@
+The official technical report directly supports the 1.2M SFT count and one-third/two-thirds modality split, 32K-to-256K curriculum, two-stage filtering, Long-CoT 1:1 balance and visual-necessity test, off-/on-policy distillation, approximately 30K Reasoning-RL queries, 16-response filters, >90% easy threshold, SAPO, and hybrid General-RL rewards.
+
+Official repositories and dense/MoE Instruct/Thinking checkpoints allow architecture and capability checks. They do not reproduce source records, SFT/CoT responses, teacher generations or logits, manual annotations, RL queries, all 16 rollouts, rejected sources, reward services, or stage-to-checkpoint mapping. Benchmark tables support performance claims under the authors' setup; they do not validate corpus provenance, licenses, decontamination, or record-level reward correctness.
+

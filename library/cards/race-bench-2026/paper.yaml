@@ -1,0 +1,303 @@
+id: race-bench-2026
+title: A Benchmark for Evaluating Repository-Level Code Agents with Intermediate Reasoning on Feature Addition Task
+year: 2026
+venue: arXiv preprint
+authors:
+- Shuhan Liu
+- Zhiyi Zhao
+- Xing Hu
+- Kui Liu
+- Xiaohu Yang
+- Xin Xia
+source_role:
+- benchmark
+- agent_environment
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- code_agents
+- software_engineering
+- repository_level_code_generation
+- benchmark_evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.26337
+  paper_pdf: https://arxiv.org/pdf/2603.26337
+  arxiv: https://arxiv.org/abs/2603.26337
+  code: null
+  code_snapshot: null
+  data: null
+  project: null
+  huggingface: null
+  model: null
+  reward_model: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  license: null
+  replay_code: null
+data_object:
+  object_type: A repository-level feature-addition benchmark instance binding a public GitHub issue-derived feature request
+    and optional discussion hints to a repository release/base commit, executable container setup, gold and test patches,
+    FTP/PTP tests, and five modules of structured intermediate-reasoning reference annotations. The paper also evaluates complete
+    agent runs, but no official run-level trajectory release was verified.
+  prompt_source: Merged PRs linked to GitHub issues in the same 12 open-source Python repositories used by SWE-bench. PRs
+    must change test-related files and link an issue; DeepSeek classifies intent, and retained feature-addition candidates
+    are manually rechecked. The paper reports 14,333 attribute-filtered PRs, 2,931 intent-filtered candidates, 580 execution-valid
+    candidates, and 528 post-audit instances.
+  task_record:
+  - feature_request_from_github_issue
+  - optional_hints_text_from_developer_discussion
+  - repository_release_and_base_commit
+  - environment_setup
+  - gold_patch
+  - test_patch
+  - fail_to_pass_tests
+  - pass_to_pass_tests
+  - structured_reasoning_ground_truth
+  trace_author: Evaluated code agents generate interaction traces with their base LLM and repository tools. DeepSeek V3.2
+    summarizes those traces into the benchmark schema, and apply-success patches can supplement file/task/step fields through
+    patch-driven back-inference. These experimental traces are described as evaluation evidence; public release and record-level
+    retention were not verified.
+  reasoning_ground_truth_fields:
+  - concept_explanations
+  - goal_expectation
+  - necessary_code_files
+  - other_files
+  - test_files
+  - specific_tasks_with_entity_location_change_type_purpose_and_necessity
+  - ordered_task_steps_with_closed_step_type_taxonomy
+  answer_format: The agent's terminal artifact is a repository patch. Functional success requires that the patch apply and
+    pass every FTP and PTP test. For reasoning assessment, the run trace and, when applicable, generated patch are normalized
+    into concept, goal, file, task, and step modules aligned to the benchmark reference schema.
+  observation: Agents observe the feature request and FTP tests inside an isolated repository environment and receive outputs
+    from repository navigation, static-analysis, edit, and test tools. PTP tests, gold/test patches, and reasoning references
+    are evaluation-side assets rather than stated agent inputs.
+  action_space:
+  - repository_and_file_search
+  - static_analysis
+  - code_editing
+  - test_execution
+  - final_patch_generation
+  environment_or_substrate: Independent Environment Docker images are built per stable repository release, and each instance
+    runs in an isolated Instance Docker. Evaluation resets to the base commit, clones the target project, and performs required
+    setup such as editable installation. Public image digests, dependency locks, and replayable environment artifacts were
+    not verified.
+  verifier_or_reward: 'Patch evaluation is programmatic: the patch must apply and pass all FTP and PTP tests. Reasoning evaluation
+    is mixed: exact entity/location and structured candidate matching are used where possible, while LLM-based semantic judgments
+    score concept/goal quality and align new tasks and task steps. The paper uses DeepSeek V3.2 as the summarizer; exact versioned
+    judge prompts and reusable evaluator code were not verified.'
+  verifier_output:
+  - patch_apply_rate
+  - first_attempt_resolved_rate
+  - recall_at_concept
+  - accuracy_at_concept
+  - score_at_goal_expectation
+  - recall_and_overprediction_at_files
+  - recall_and_overprediction_at_specific_tasks
+  - recall_and_overprediction_at_task_steps
+  reward: No agent-training reward API is demonstrated. For evaluation, terminal executable correctness is binary at the instance
+    level, while intermediate reasoning receives module-specific scalar recall, over-prediction, accuracy, and 10-point goal-understanding
+    scores.
+  terminal_predicate: The evaluated run ends when the agent emits a final patch. A benchmark instance is resolved only if
+    the patch applies and all FTP and PTP tests pass on the single reported attempt; apply-success/test-fail remains a distinct
+    failure group.
+  provenance: GitHub issue/linked merged PR -> attribute and DeepSeek intent filtering plus manual feature recheck -> base-commit
+    Docker execution check -> gold/test patch and FTP/PTP derivation -> DeepSeek and patch-analysis reasoning annotation ->
+    GPT-5.2 audit plus targeted two-author validation -> 528-instance full benchmark -> outcome-matched 100-instance Lite.
+  release_shape: The paper describes 528 full and 100 Lite evaluation instances, container environments, executable tests,
+    patches, reasoning references, and experimental traces. As of this audit, only the official arXiv paper was verified;
+    no author-controlled code, dataset, project, image, evaluator, or trajectory release URL was found in the paper.
+recipe_metadata:
+  base_model: 'Full benchmark: DeepSeek V3.2 with AutoCodeRover, TraeAgent, and mini-SWE-Agent. Lite additionally evaluates
+    GLM-4.7 and GPT-5.2. DeepSeek V3.2 is also the trace summarizer; DeepSeek assists construction and GPT-5.2 audits references.'
+  teacher: No single teacher. DeepSeek generates or semantically annotates several reasoning-reference fields, gold/test patch
+    analysis supplies structural fields, and GPT-5.2 audits candidates with targeted two-author validation.
+  generator: DeepSeek generates concept explanations and goal expectations, annotates entity purposes and necessity, and selects
+    ordered minimal task steps from a closed taxonomy. File and entity anchors are derived from gold/test patches and program/test
+    analysis.
+  prompt_or_task_source: Original GitHub issue feature request, optional discussion hints, repository README, gold/test patches,
+    patch-local code, and FTP tests, with inputs varying by annotation module. Exact prompts are not included in a verified
+    release.
+  filtering_rule: Require test-directory changes and a linked issue; use DeepSeek to classify feature intent and manually
+    recheck retained candidates; then require successful environment setup, at least one FTP test before gold patch, and passing
+    execution after gold patch. GPT-5.2 removes semantic/necessity/structural failures.
+  sampling_protocol: Full-benchmark evaluation uses exactly one attempt per agent-instance, temperature 0, top-p 1, maximum
+    4,096 agent inference tokens, and 8,192 tokens for summarization. Lite is chosen by randomized local search to match patch-success
+    and apply-success rates across the three full-benchmark agent configurations.
+  rollout_count:
+    full_instances: 528
+    lite_instances: 100
+    full_agent_configurations: 3
+    attempts_per_agent_instance: 1
+  temperature: 0
+  inference_budget: 4,096 maximum generation tokens for agent inference and 8,192 for the summarizer. The paper reports no
+    universal action-step, wall-time, dollar-cost, or tool-call cap for every agent configuration.
+  search_or_scaffold: AutoCodeRover, TraeAgent, and mini-SWE-Agent use their documented default configurations with repository
+    search, analysis, editing, and tests. Exact revision pins and unified action-space configuration were not verified.
+  selection_threshold: Candidate instances must survive execution and semantic audits; the final GPT-5.2 audit excludes 52
+    of 580 candidates. No trajectory-quality threshold is used to retain experimental runs for a training corpus.
+  optimizer_or_training_scaffold: null
+audit:
+  source_mixture: Real issues and merged PRs from 12 public Python repositories shared with SWE-bench. The paper does not
+    publish a record-level repository/issue/PR/base-commit table or rights manifest, so source proportions, repository-specific
+    filtering losses, and complete lineage cannot be independently audited from the verified artifact.
+  split: No train/dev/test partition is reported. RACE-bench Lite is a 100-instance evaluation subset chosen using outcomes
+    from three agent configurations on the full benchmark, so it is an outcome-matched cost subset rather than an independently
+    held-out split.
+  decontamination: Not disclosed. No temporal cutoff, model-pretraining exposure test, issue/PR memorization audit, or instance-overlap
+    analysis with SWE-bench, FEA-bench, or other repository benchmarks is reported. Public GitHub provenance creates a material
+    contamination risk for evaluated models.
+  benchmark_overlap: RACE-bench intentionally uses the same 12 repository families as SWE-bench, but targets feature additions
+    and linked issue/PR pairs. The paper does not report instance-, commit-, issue-, patch-, or test-level overlap with other
+    benchmarks.
+  lineage: The paper explains aggregate lineage from issue/PR through base commit, patches/tests, generated reasoning references,
+    and audit. Record-level source IDs, construction prompts/outputs, rejected candidate reasons, checksums, and a correction/replacement
+    ledger were not verified.
+  license: Unknown for the benchmark as a released data object. The arXiv distribution license covers the paper, not necessarily
+    GitHub issue/PR text, upstream code, gold/test patches, tests, generated reasoning annotations, agent traces, or Docker
+    images. No benchmark-wide license or upstream rights matrix was verified.
+  release_version:
+    arxiv: 2603.26337v1
+    arxiv_date: '2026-03-27'
+    repository_commit: null
+    dataset_version: null
+    container_digests: null
+  successful_and_failed_sample_retention: The paper reports aggregate Success, Failure, and apply-success/test-fail groups
+    and analyzes failed runs. It does not provide a verified public record-level corpus of successful/failed traces, patches,
+    evaluator logs, or terminal states, so release retention and deletion/replacement policy remain unknown.
+  replayability: 'Methodology-level reset is explicit: use the repository base commit in an isolated per-instance container.
+    Public deterministic replay is unverified because no code/data/image release, immutable OCI digest, dependency lock, agent
+    revision manifest, evaluator bundle, or replay test was found.'
+  verifier_or_judge_failure_modes:
+  - Reasoning references are partly DeepSeek-generated and GPT-5.2-audited, so correlated model priors can survive both construction
+    and filtering despite the 96/100 targeted human agreement result.
+  - LLM semantic matching can vary with prompt, endpoint, model revision, and decoding implementation; these were not published
+    as a versioned evaluator artifact in the verified sources.
+  - A single gold implementation is not unique. The paper itself finds successful alternative patches with task/step recall
+    below 1, so low reference alignment does not necessarily mean poor or invalid reasoning.
+  - FTP/PTP tests can miss behavior outside their coverage, making executable success a test-suite contract rather than proof
+    of full feature correctness or absence of regressions.
+  - Lite selection directly optimizes similarity to observed outcomes of three agent configurations, so it may preserve those
+    agents' difficulty profile without generalizing to new architectures or future models.
+  - Single-attempt, temperature-zero evaluation reduces one randomness source but does not estimate run variance or environment/API
+    nondeterminism.
+  - Trace summarization and patch back-inference mix expressed reasoning with behavior reconstructed after the fact; resulting
+    scores do not measure only the agent's contemporaneous internal reasoning.
+  privacy_or_consent: Source material comes from public GitHub issues, PRs, and developer discussions. No benchmark-wide PII
+    scan, author consent, attribution requirement, deletion/takedown process, or policy for usernames/emails and quoted discussion
+    was reported.
+  security: Isolated Docker execution is described, but network access, secret handling, Linux capabilities, dependency pinning,
+    malicious setup scripts, supply-chain defenses, resource limits, and host escape protections are not reported as a reusable
+    security contract.
+  experimental_evidence:
+    patch_results: AutoCodeRover 28.79% resolved / 96.21% apply; TraeAgent 52.65% / 78.98%; mini-SWE-Agent 70.08% / 95.83%
+      on 528 instances with DeepSeek V3.2.
+    reasoning_result: Across agents, apply-success/test-fail cases show 35.7% lower average recall and 94.1% higher over-prediction
+      than successful cases; these are author-reported aggregate associations, not causal or independently reproduced results.
+    validation_result: Two authors inspected 50 GPT-5.2-accepted and 50 rejected candidate instances and agreed with the auditor
+      decision on 96/100; the paper does not report a full human relabeling of all 580 candidates.
+  known_failure_modes:
+  - Semantic judge and synthetic-reference bias are not eliminated by targeted validation.
+  - Alternative correct implementations can be penalized by single-reference task/step alignment.
+  - Test passing is bounded by FTP/PTP coverage and can miss untested regressions.
+  - Lite is outcome-matched to three evaluated agents rather than independently held out.
+  - No public artifact release was verified, blocking independent schema, replay, rights, and failure-retention audit.
+  - Public GitHub source history creates unresolved pretraining and benchmark-overlap contamination risk.
+  citation_status: verified
+  confidence: medium
+  notes: Audited arXiv:2603.26337v1 in full, including benchmark construction, evaluation workflow, metrics, experiments,
+    and threats to validity. Citation and paper claims are high confidence; overall artifact confidence is medium because
+    no official code/data/project/container release was verified and no independent execution was performed.
+  remaining_unknowns:
+  - Official code, data, project, evaluator, container, and trajectory release URLs.
+  - Record-level source lineage, schema, rejected candidates, corrections, and checksums.
+  - Versioned construction, summarization, auditor, matcher, and judge prompts and outputs.
+  - Immutable Docker images, dependency locks, agent revisions, timeouts, and replay tests.
+  - Split, temporal cutoff, overlap, pretraining contamination, and post-release leakage audits.
+  - Benchmark-wide license, upstream rights, PII/consent, takedown, and security policies.
+  - Record-level retention of successful and failed traces, patches, logs, and evaluator outputs.
+inclusion_reason: RACE-bench defines a concrete repository-agent episode boundary linking issue-derived tasks, base-commit
+  container state, tool-mediated execution, final patches, executable FTP/PTP feedback, and structured intermediate-reasoning
+  judgments. It is directly relevant to environment/trajectory evaluation, while its synthetic single-reference annotations,
+  LLM-judge dependence, contamination exposure, and unverified release are essential audit constraints.
+related: []
+tags:
+- environment-agent-trajectory-data
+- repository-level-code-agents
+- feature-addition
+- executable-tests
+- intermediate-reasoning-evaluation
+- llm-as-judge
+- docker-environment
+- single-reference-risk
+- no-verified-public-release
+category_ids:
+- environment_agent_trajectory_data
+one_line: RACE-bench describes 528 Docker-backed feature-addition tasks with FTP/PTP patch tests and five structured reasoning
+  references, but no official benchmark artifact release, split/decontamination audit, or reusable judge package was verified.
+one_line_summary: RACE-bench describes 528 Docker-backed feature-addition tasks with FTP/PTP patch tests and five structured
+  reasoning references, but no official benchmark artifact release, split/decontamination audit, or reusable judge package
+  was verified.
+why_it_matters: It evaluates both what a repository agent changes and how its run maps to issue understanding, localization,
+  tasks, and implementation steps, exposing a richer feedback contract than pass/fail tests alone. The same design also shows
+  why synthetic references, post-hoc trace normalization, single-reference alignment, and missing release controls must be
+  audited before treating benchmark records as training data.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: false
+  venue_verified: false
+  code_verified: false
+  data_verified: false
+  task_environment_verified: false
+  trajectory_release_verified: false
+  failed_sample_retention_verified: false
+  replay_code_verified: false
+  license_file_verified: false
+  complete_rights_verified: false
+  evaluation_and_audit_use_verified: true
+  agent_training_verified: false
+  deterministic_replay_verified: false
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: arXiv:2603.26337v1
+  repository_commit: null
+  notes: Official arXiv metadata and full paper were verified. Methodology statements about instances, containers, tests,
+    reasoning references, and experiments are paper-verified, but no public implementation/data/container artifact was found
+    in the paper or verified through exact-title searches; replay, rights, and record-level retention remain open.
+curation_level: L3_summary_ready
+needs:
+- 'needs_url: provide an official code, dataset, project, evaluator, container, and trajectory release'
+- 'needs_release_audit: publish a version tag, checksums, schema, source manifest, correction ledger, and failure-retention
+  policy'
+- 'needs_replay: pin base commits, OCI digests, dependencies, agent revisions, evaluator versions, timeouts, and replay tests'
+- 'needs_split_audit: document train/dev/test use and keep outcome-matched Lite distinct from an independent holdout'
+- 'needs_decontamination: audit temporal cutoffs, model pretraining exposure, and issue/PR/patch/test overlap'
+- 'needs_judge_audit: release prompts, model revisions, calibration data, human labels, and judge stability results'
+- 'needs_license_audit: reconcile upstream repository, issue/PR, patch/test, annotation, trace, and container rights'
+- 'needs_privacy_security: document PII/consent/takedown and sandbox/network/secret/supply-chain controls'
+card: null

@@ -1,0 +1,4 @@
+- 先读编程模型：类型化 tasks、意图/结果 effects、耦合 scopes 和持久提交图共同定义数据对象；三个消费者分别是运行时监督、Counterfactual Replay Optimization 与 Meta-Agent-Guided Tree-RL。
+- 把局限性视为方法契约的一部分：应用均为概念验证，强元智能体增加成本，广泛耦合编辑会消除回放收益，可逆性也是分层契约而非普遍保证。
+- 不要把框架仓库等同于论文运行。持续维护的 `shepherd-agents/shepherd` 处于 early alpha；`shepherd-agents/shepherd-experiments` 冻结论文底座并包含 `framework-perf`、`live-intervention`、`cbo`、`mcts-rl` 与 `trajprune`，但没有 GitHub Release，也未声称发布轨迹或检查点。
+- 可审计训练链为：2,492 个 Endless Terminals 任务；每任务 8 条基础策略筛选 rollout；分别保留 442 个 Qwen3.5 或 530 个 Nemotron-3 任务；每步 16 个 prompts、每 prompt 8 条根样本；8-turn、每 turn 1,024 输出 token、16,384 输入 token 上限；Claude Opus 4.7 选择 fork；结果奖励；两级 advantages；1,120 个优化 steps；held-out Endless Terminals 验证与 Terminal-Bench 2.0 分布外测试。精确任务 ID、随机种子、branch factor、轨迹、奖励和检查点仍不可得。

@@ -1,0 +1,118 @@
+id: vds-ttt-verifier-driven-sample-selection-2025
+title: Continuous Self-Improvement of Large Language Models by Test-time Training with Verifier-Driven Sample Selection
+year: 2025
+venue: arXiv preprint
+authors:
+- Mohammad Mahdi Moradi
+- Hossam Amer
+- Sudhir Mudur
+- Weiwei Zhang
+- Yang Liu
+- Walid Ahmed
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- process_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2505.19475
+  arxiv: https://arxiv.org/abs/2505.19475
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Math problems used for test-time adaptation; a versioned prompt/data release was not verified.
+  trace_author: Skywork-o1-Open-PRM-1.5B selector; adapted base model not confirmed
+  answer_format: For each prompt, 2/4/8/16 candidate solutions, their Skywork-o1-Open-PRM-1.5B scores, threshold decision,
+    and at-most-one selected pseudo-label.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The process reward model is the programmatic selector; stated thresholds are 0.99 for math and 0.9 for
+    AIME, and unselected candidates are not described as a released negative set.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: Skywork-o1-Open-PRM-1.5B selector; adapted base model not confirmed
+  teacher: unknown
+  generator: VDS samples multiple candidate solutions, selects a high-scoring pseudo-label when available, then performs sequential
+    LoRA test-time updates.
+  filtering_rule: The process reward model is the programmatic selector; stated thresholds are 0.99 for math and 0.9 for AIME,
+    and unselected candidates are not described as a released negative set.
+  sampling_protocol: The reported candidate counts are N=2,4,8,16; code, pseudo-label corpus, traces, and implementation details
+    were not confirmed as official releases.
+  rollout_count: N in {2,4,8,16}
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: VDS samples multiple candidate solutions, selects a high-scoring pseudo-label when available, then
+    performs sequential LoRA test-time updates.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Math problems used for test-time adaptation; a versioned prompt/data release was not verified. -> For each prompt,
+    2/4/8/16 candidate solutions, their Skywork-o1-Open-PRM-1.5B scores, threshold decision, and at-most-one selected pseudo-label.
+    -> The process reward model is the programmatic selector; stated thresholds are 0.99 for math and 0.9 for AIME, and unselected
+    candidates are not described as a released negative set. -> reported final selection or training use. Raw lineage records
+    are not established as released.
+  known_failure_modes:
+  - PRM thresholding can admit incorrect pseudo-labels or exclude correct low-scoring solutions; sequential adaptation risks
+    order dependence and test leakage.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It exposes a compact selection contract—candidate set, PRM score, threshold, and retained label—whose omitted
+  negatives and update order materially affect auditability.
+related: []
+tags:
+- test-time-training
+- pseudo-labels
+- process-reward-model
+- lora
+- sample-selection
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A verifier-gated pseudo-label selection pipeline for sequential test-time LoRA adaptation.
+why_it_matters: It exposes a compact selection contract—candidate set, PRM score, threshold, and retained label—whose omitted
+  negatives and update order materially affect auditability.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

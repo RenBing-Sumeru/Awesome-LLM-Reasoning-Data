@@ -1,0 +1,7 @@
+The closest baseline is final-state-only GUI evaluation, where any trajectory reaching a visually acceptable screen receives credit. ProBench changes the evaluator input by adding textual evidence of the evaluated agent's own critical operations. This can distinguish outcomes that look alike but differ in whether sorting, filtering, or another required process condition occurred.
+
+The second change is a two-path Process Provider. Accessibility-tree conversion supplies programmatic node evidence, while a before/after screenshot summarizer supplies model-generated action descriptions. Both feed the same terminal Gemini judgment; neither is a separate reward function or an expected action trace.
+
+For reasoning-data research, the direction signal is that action-level records can support a trajectory-level judge without becoming step supervision. The benchmark highlights the difference among observation/history, evaluator-facing evidence, terminal label, and agent-visible training signal. That distinction is especially important because no demonstrations or process-label dataset is released.
+
+The work does not newly introduce Android control, accessibility trees, screenshot comparison, MLLM judging, or binary success metrics individually. The 217-task bilingual scope and reported model gaps are evaluation coverage, not data-quality certificates. Reuse requires released tasks/code, evaluator tests, device/app snapshots, automated reset, split/exposure policy, trajectory retention, privacy/safety controls, and clear rights.

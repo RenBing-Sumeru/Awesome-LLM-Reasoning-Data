@@ -1,0 +1,2 @@
+Best-of-N（BoN）通过从 reference policy 采样 (N) 个回答，并返回 imperfect reward model 评分最高的候选来使用测试时算力。论文追问：为什么增大 (N) 可能使 proxy score 上升却让真实任务回报下降，以及能否设计一种不会随算力增加而发生同类 overoptimization 的推理时选择器。其形式化记录单元是一个固定 prompt (x)、reference policy πref、带有 πref likelihood 与标量 proxy reward 的候选回答、被选回答，以及仅用于评测的 true reward。这使它成为 Track 5 的评测与构造表面：关键对象是给定计算预算下的 rollout 集合及 selector signal，而不是单个答案或已经发布的训练数据集。该文发表于 ICML 2025，收录于 PMLR 267，第 25075–25126 页。
+

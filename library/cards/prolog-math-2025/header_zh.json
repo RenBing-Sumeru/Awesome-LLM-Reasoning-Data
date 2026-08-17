@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Prolog-MATH 将 7,500 道 MATH 训练题及 CoT 转成 predicate-guided SWI-Prolog 候选，以终态符号等价筛选并用 SFT/GRPO 恢复失败；论文所述 97.4% 并集尚无可核对的公开清单。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可执行符号推理数据发布与构造配方",
+  "best_for_ch": "研究数学数据构造、程序执行验证、predicate 复用与 RLVR 反馈边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jiajun Chen、Yik-Cheung Tam",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

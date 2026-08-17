@@ -1,0 +1,99 @@
+id: mlalgo-bench-machine-learning-algorithms-2025
+title: 'MLAlgo-Bench: Can Machines Implement Machine Learning Algorithms?'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Yunfei Wang
+- Yeqin Zhang
+- Yuyang Wu
+- Liang Lu
+- Phi Le Nguyen
+- Xiaoliang Wang
+- Cam-Tu Nguyen
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- machine-learning
+- programmatic-evaluation
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.772/
+  arxiv: null
+  code: null
+  data: https://drive.google.com/drive/folders/1qUWlvXX-VCZL9p3vn70a1svfOiZjsYCk
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.findings-emnlp.772/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.772/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public tasks and repository contexts released by the authors.
+  trace_author: Dataset curators and the underlying project sources.
+  answer_format: An ML algorithm or application task with executable evaluation and performance references.
+  process_fields:
+  - task
+  - repository or formal context
+  - candidate artifact
+  - verifier result
+  environment_or_substrate: The released executable or formal-verification environment.
+  verifier_or_reward: Sandboxed execution, functional tests, and reported performance or runtime checks.
+  terminal_predicate: The implementation runs and meets the benchmark's functional and performance checks.
+recipe_metadata:
+  base_model: The benchmark evaluates model-generated artifacts; consult the paper for model-specific settings.
+  teacher: Sandboxed execution, functional tests, and reported performance or runtime checks.
+  generator: The authors' collection and curation pipeline.
+  filtering_rule: Retain records that satisfy the published executable or formal validation procedure.
+  sampling_protocol: Use the official split and evaluation configuration.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin the released environment, toolchain, and sampling configuration when reproducing results.
+  optimizer_or_scaffold: Programmatically verified outcome evaluation and, where released, training data.
+audit:
+  source_mixture: Official paper, official data release, and official code or project page where available.
+  split: Use the split packaged with the official release.
+  decontamination: Public source repositories, problem statements, and tests can overlap with model training data.
+  license: Check the official data and upstream-source licences before redistribution or commercial use.
+  lineage: https://drive.google.com/drive/folders/1qUWlvXX-VCZL9p3vn70a1svfOiZjsYCk
+  known_failure_modes:
+  - Passing the released verifier does not establish behavior outside its covered specification or tests.
+  - Public tasks and repositories can create training-data contamination or benchmark-overfitting risk.
+  citation_status: verified
+  confidence: high
+  notes: The EMNLP Findings paper and official data-drive link were checked.
+inclusion_reason: The release pairs tasks with an executable or formal terminal verification contract.
+related: []
+tags:
+- programmatic-verification
+- benchmark
+- '2025'
+one_line_summary: MLAlgo-Bench tests machine-learning algorithm implementation with sandboxed execution, performance references,
+  and runtime-aware validation.
+why_it_matters: It exposes a rerunnable outcome-verification surface rather than a text-only reference answer.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: The EMNLP Findings paper and official data-drive link were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

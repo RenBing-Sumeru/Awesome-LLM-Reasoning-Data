@@ -1,0 +1,3 @@
+The contribution is a chart-to-code benchmark with 4,800 human-curated figure-instruction-code triplets spanning scientific domains, 18 regular chart types, 4 advanced types, and 201 subcategories. The core mechanism asks an LMM to generate executable chart-rendering code from visual input and instruction, then evaluates both the code and the rendered chart.
+
+Compared with ChartQA, chart captioning, data-extraction, and text-to-code benchmarks, ChartMimic changes the output object from an answer or caption to executable reconstruction. The feedback contract combines execution validity, code-level properties, and visual/chart quality metrics. The direction label is multimodal executable evaluation for chart reasoning.

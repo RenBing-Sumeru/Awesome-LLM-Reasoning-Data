@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PubMedQA 用 PubMed 摘要评测生物医学 yes/no/maybe 推理，核心评测集是 1,000 个 expert-labeled PQA-L 样本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Qiao Jin 等（University of Pittsburgh, Carnegie Mellon University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

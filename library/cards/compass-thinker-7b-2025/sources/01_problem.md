@@ -1,0 +1,1 @@
+Large-scale R1-Zero-style experiments are expensive, making it difficult to iterate on data curricula, reward verification, and RL algorithms. Compass-Thinker-7B asks whether a 7B mathematics model and a carefully staged set of verifiable prompts can provide a lower-cost test bed for reasoning RL recipes.

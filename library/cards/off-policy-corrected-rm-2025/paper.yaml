@@ -1,0 +1,158 @@
+id: off-policy-corrected-rm-2025
+title: Off-Policy Corrected Reward Modeling for Reinforcement Learning from Human Feedback
+year: 2025
+venue: COLM 2025
+authors:
+- Johannes Ackermann
+- Takashi Ishida
+- Masashi Sugiyama
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- summarization
+- dialogue
+- preference_alignment
+training_use:
+- reward_modeling
+- preference_learning
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=0zxugBcgF5
+  arxiv: https://arxiv.org/abs/2507.15507
+  code: https://github.com/JohannesAck/OffPolicyCorrectedRewardModeling
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://colmweb.org/2025/AcceptedPapers.html
+  openreview: https://openreview.net/forum?id=0zxugBcgF5
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: TL;DR summarization prompts from the Huang et al. reproduction dataset and length-filtered Alpaca-Instructions
+    prompts from Alpaca-Farm
+  trace_author: A fixed SFT behavior policy samples the original response pairs; the evolving PPO policy generates RL rollouts
+    and supplies stage-specific likelihood ratios, but OCRM adds no new reward-model comparison records or labels
+  answer_format: Each fixed reward-model record contains a prompt, an SFT-policy winning completion, an SFT-policy losing
+    completion, and a synthetic pairwise label; each OCRM stage computes behavior-policy and current-policy sequence likelihoods,
+    a density ratio, and an effective loss weight
+  process_fields:
+  - prompt
+  - chosen_response
+  - rejected_response
+  - preference_label
+  - behavior_logprob
+  - current_policy_logprob
+  - density_ratio
+  - effective_weight
+  environment_or_substrate: Multi-stage PPO-RLHF that alternates importance-weighted reward-model retraining with blocks of
+    policy optimization
+  verifier_or_reward: Skywork-Reward-Llama-3.1-8B-v0.2 deterministically selects the higher-scored completion in the main
+    gold-model experiments; GPT 4.1 Nano supplies pairwise labels and evaluation in an additional TL;DR experiment
+  terminal_predicate: At a refresh boundary, retrain the reward model on the unchanged preference pairs under stage-specific
+    weights for the current policy distribution, then use that reward model for the next policy-update block
+recipe_metadata:
+  base_model: Pythia-1B-deduped for the principal TL;DR experiments and Qwen2.5-1.5B for the principal Alpaca experiments;
+    additional Pythia 2.8B and 6.9B configurations are reported
+  teacher: Skywork-Reward-Llama-3.1-8B-v0.2 as the main synthetic gold reward model; GPT 4.1 Nano in an additional experiment
+  generator: The one-epoch SFT policy generates the fixed reward-model comparison pairs; the current PPO policy generates
+    RL rollouts and is evaluated on the fixed pairs to obtain stage-specific likelihood ratios
+  filtering_rule: For each fixed pair, form the current-to-SFT joint response density ratio, then use the flattened relative
+    weight (P_current / (alpha * P_SFT + (1 - alpha) * P_current))^eta; LM experiments use eta=0.001 and alpha=0.9
+  sampling_protocol: Train SFT for one epoch -> sample 278496 fixed pairs at temperature 1.0 -> label each pair -> train the
+    initial Bradley-Terry reward model -> run a policy block -> compute current and SFT likelihoods on the same pairs -> retrain
+    a weighted reward model -> reset PPO value-network parameters and optimizer state -> repeat
+  rollout_count: null
+  temperature: 1.0 for fixed SFT-pair generation, 0.7 for PPO rollouts, and 0.01 for evaluation generation in the language-model
+    experiments
+  inference_budget: 278496 fixed preference pairs; main OCRM language-model runs refresh after each 100000 generated policy-training
+    samples and report two or three iterations, with a five-iteration single-seed extension
+  optimizer_or_scaffold: Bradley-Terry reward modeling with flattened relative importance weighting, alternating with PPO
+    (or GRPO for Pythia 6.9B); the KL reference changes to the previous stage policy, and the PPO value network and optimizer
+    state are reset after reward-model replacement
+audit:
+  source_mixture: TL;DR from the Huang et al. summarization-from-feedback reproduction pipeline and a length-filtered Alpaca-Instructions
+    variant derived from Alpaca-Farm; the official repository links the processed prompt datasets and generation scripts
+  split: All SFT models train for one epoch on a training split. TL;DR reports on the referenced validation split. For Alpaca-Instructions,
+    the original SFT, reward-modeling, and PPO training splits are combined into one training set, while long train and validation
+    examples are filtered; reporting uses the length-filtered Alpaca-Farm validation split, not AlpacaEval
+  decontamination: unknown
+  license: MIT for the official implementation and CC BY 4.0 for the paper; upstream datasets, models, and generated artifacts
+    retain their own terms, and no unified generated-pair license manifest is provided
+  lineage: Upstream prompt data -> one-epoch SFT behavior policy -> 278496 fixed paired completions -> synthetic pairwise
+    labels -> initial reward model -> stage-specific current/SFT sequence likelihoods -> flattened relative importance weights
+    -> refreshed reward model -> PPO or GRPO policy
+  known_failure_modes:
+  - Importance weighting needs target-policy support to lie within behavior-policy support; softmax policies provide formal
+    nonzero support, but finite fixed data can still give poor practical coverage of responses favored by later policies.
+  - Sequence-level density ratios can have high variance. Flattening and relative weighting reduce variance by deliberately
+    reintroducing bias, and performance is sensitive to the flattening hyperparameter.
+  - OCRM does not acquire new reward-model samples or labels, so it cannot correct erroneous synthetic preferences or cover
+    response modes absent from the original SFT pair set.
+  - The method requires the behavior policy that generated the comparisons, or at least its reliable sequence likelihoods
+    for every fixed pair; the paper explicitly identifies unknown behavior density as a limitation.
+  - Refreshing after every policy update is computationally infeasible, while infrequent refresh leaves the reward model stale;
+    small blocks can also destabilize advantage estimates after value-network resets.
+  - The main experiments use Skywork-Reward-Llama-3.1-8B-v0.2 both to label preference pairs and to judge final responses,
+    so measured wins may reflect evaluator-specific agreement rather than human preference quality.
+  - Changing the KL reference and resetting the optimizer/value network are part of the full scaffold and independently improve
+    results in ablations, so the reported gain is not attributable to importance weighting alone.
+  - Only the principal Pythia-1B TL;DR comparison uses three seeds; most other model-task settings and several ablations use
+    one seed, and selected large-model baselines are omitted for compute reasons.
+  - An Alpaca-Farm diversity analysis reports a small reduction in semantic output clusters for OCRM relative to PPO, and
+    the paper does not establish how this behaves under human evaluation.
+  - The repository releases generation and training code but no immutable snapshot of the 278496 labeled pairs, stage-specific
+    weights, effective sample sizes, or complete run outputs.
+  - At the inspected main-branch commit, the shell launchers invoke a summarize_from_feedback_details path that is absent
+    from the repository tree, whose corresponding modules live under ocrm; the released commands therefore require a path
+    correction or equivalent packaging step that the README does not document.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv paper, official COLM 2025 accepted-paper list, OpenReview identifier, and author repository at commit 89d4d19a41bcaa187c43dac2e23eb3fafba59e45
+    were checked. The fixed-data versus effective-weighted-distribution distinction is explicit in the paper and implementation
+    sequence; the repository has no tagged release and its launchers need the documented path mismatch resolved.
+inclusion_reason: Provides an open reward-model refresh recipe that constructs a stage-specific effective training distribution
+  by reweighting fixed preference records, without presenting that reweighted distribution as newly acquired data.
+related: []
+tags:
+- ocrm
+- off-policy-correction
+- reward-model-refresh
+- importance-weighting
+- rlhf
+- distribution-shift
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Retrains reward models on one fixed preference dataset using stage-specific current-to-SFT importance weights
+  between blocks of policy optimization.
+why_it_matters: Separates preference-data acquisition from effective-distribution construction and makes the support, variance,
+  behavior-likelihood, cadence, and evaluator assumptions of off-policy reward-model correction auditable.
+card: null
+needs:
+- 'needs_snapshot: immutable snapshots of the fixed labeled pairs, stage-specific weights, and experiment outputs'
+- 'needs_audit: effective sample size, weight-tail diagnostics, practical support coverage, and label-error sensitivity'
+- 'needs_evaluation: human or independent-judge validation beyond the synthetic annotators used in the paper'
+- 'needs_license: unified provenance and license manifest for processed TLDR/Alpaca prompts and generated preference pairs'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official source modules and launch scripts cover dataset generation and training, but no standalone immutable OCRM
+    weighted-dataset release or run log is linked. At inspected commit 89d4d19a41bcaa187c43dac2e23eb3fafba59e45, launcher
+    module paths do not match the repository's ocrm directory.

@@ -1,0 +1,17 @@
+{
+  "title": "ChartAssistant: A Universal Chart Multimodal Language Model via Chart-to-Table Pre-training and Multitask Instruction Tuning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-acl.463/",
+    "data": "https://huggingface.co/datasets/FanqingM/ChartAssistant"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T12:05:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多模态数据",
+    "updated_at": "2026-07-27T12:05:42Z"
+  }
+}

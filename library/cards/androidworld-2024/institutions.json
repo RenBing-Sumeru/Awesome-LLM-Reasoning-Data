@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Google DeepMind",
+    "Google"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2405.14573",
+    "https://google-research.github.io/android_world/",
+    "https://github.com/google-research/android_world",
+    "https://google-research.github.io/android_world/task_list.html"
+  ],
+  "verification_note": "arXiv v5, project, GitHub, and task-list pages verify ICLR 2025 status, authors, Google/DeepMind institutions, and executable AndroidWorld artifacts."
+}

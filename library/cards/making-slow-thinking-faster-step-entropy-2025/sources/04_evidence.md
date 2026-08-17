@@ -1,0 +1,4 @@
+The official [ICLR 2026 poster record](https://iclr.cc/virtual/2026/poster/10008526), [OpenReview record](https://openreview.net/forum?id=cGLqQfS5wH), and [arXiv v2 paper](https://arxiv.org/abs/2508.03346) verify the title, authors, acceptance, and disclosed recipe. The author-linked [code repository](https://github.com/staymylove/COT_Compresstion_via_Step_entropy) verifies a code surface for generation, masking, SFT, and GRPO, rather than a downloadable paper-matched trace dataset.
+
+The paper reports that low-entropy pruning remains stable up to 80% in its controlled experiments, whereas high-entropy and random pruning degrade. It evaluates static pruning with DeepSeek-R1 7B/14B and Qwen3-8B, and reports math benchmarks plus selected MMLU domains. These are reported results from the coupled data, selector, filtering, SFT, GRPO, and inference pipeline; they do not establish independently reusable data quality or isolate every component's causal effect.
+

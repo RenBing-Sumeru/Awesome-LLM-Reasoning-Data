@@ -1,0 +1,178 @@
+id: gemma-3-technical-report-2025
+title: Gemma 3 Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Gemma Team
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- language_modeling
+- multimodal_reasoning
+- mathematical_reasoning
+- code_generation
+- instruction_following
+- multilingual
+- safety_alignment
+- privacy
+training_use:
+- sft
+- distillation
+- preference_learning
+- reward_modeling
+- rlvr
+- evaluation
+- audit
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.19786
+  arxiv: https://arxiv.org/abs/2503.19786
+  code: https://github.com/google/gemma_pytorch
+  data: null
+  project: https://ai.google.dev/gemma/docs/core/model_card_3
+  huggingface: https://huggingface.co/google/gemma-3-27b-it
+  doi: https://doi.org/10.48550/arXiv.2503.19786
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Pretraining uses broad web, code, mathematics, multilingual monolingual/parallel text, and images. IT covers
+    chat, math, code, reasoning, multilingual, attribution, hedging, refusals, and safety. RL prompts feed human-feedback
+    RMs, code execution, or math ground truth; manifests/counts are unknown.
+  trace_author: Each pretraining token receives 256 sampled teacher logits from an undisclosed teacher. Post-training uses
+    an undisclosed large IT teacher, human feedback, code execution, and math ground truth. Annotators, generators, CoT targets,
+    and online/on-policy rollout authorship are unknown.
+  answer_format: 4B/12B/27B accept text/images and emit text; 1B is text-only. Feedback objects include sparse teacher distributions,
+    human-derived RM scores, code execution, math correctness, and safety preferences; exact vectors/aggregation are unknown.
+  process_fields:
+  - source_text_or_image
+  - language_or_domain
+  - tokenized_input
+  - sampled_teacher_logit_ids
+  - sampled_teacher_probabilities
+  - student_target_distribution
+  - optional_instruction
+  - optional_model_response
+  - optional_human_preference_or_policy_label
+  - optional_reward_model_score
+  - optional_code_execution_feedback
+  - optional_math_ground_truth_reward
+  - optional_safety_label
+  - optional_filter_or_duplicate_flag
+  environment_or_substrate: Pretraining uses JAX/Pathways/GSPMD/MegaScale XLA and TPUv4/v5e/v5p. Code sandbox and math checker
+    are undisclosed. Public inference/fine-tuning libraries do not reproduce internal distillation, RM, or RL.
+  verifier_or_reward: Post-training combines weight-averaged human-feedback RMs, code execution, math ground truth, and safety
+    SFT/RLHF under improved BOND/WARM/WARP-style RL. Components, scales, weights, tests, equivalence rules, and calibration
+    are private.
+  terminal_predicate: Code/math completion implies executable or ground-truth correctness; preference/safety use learned/human
+    judgment. Tests, parser, equivalence, partial credit, refusal policy, and RL termination are unknown.
+recipe_metadata:
+  base_model: Decoder-only 1B/4B/12B/27B; larger three use a frozen ~400M SigLIP encoder. Budgets are 2T/4T/12T/14T tokens;
+    larger models extend 32K training sequences to 128K late in pretraining.
+  teacher: Pretraining teacher unknown; 256 logits/token. Post-training large IT teacher identity/checkpoint/query protocol
+    and online/on-policy status unknown. QAT teacher is the non-quantized checkpoint.
+  generator: Training generators undisclosed; human feedback, code execution, and math checker provide signals.
+  filtering_rule: Unsafe/sensitive/CSAM filtering, evaluation decontamination, quality reweighting, and IT removal of personal
+    information, unsafe/toxic output, mistaken identity, and duplicates. Thresholds/errors/yields unknown.
+  sampling_protocol: Sample 256 teacher logits/token by teacher probability, zero others, renormalize, cross-entropy. Corpus
+    sampling, IT candidates, online rollouts, best-of-N, and BOND/WARM/WARP selection/merge unknown.
+  rollout_count: 2T/4T/12T/14T token budgets; post-training examples, teacher queries, RL rollouts, comparisons, executions,
+    and verifier calls unknown. QAT typically 5,000 steps.
+  temperature: unknown
+  inference_budget: 1B context 32K; 4B/12B/27B 128K. Pan & Scan is inference-only image cropping, not training/test-time reasoning
+    rollout.
+  optimizer_or_scaffold: Large-IT-teacher distillation then improved BOND/WARM/WARP RL with weight-averaged RMs, code execution,
+    and math rewards. Modifications, optimizer, KL, weights, batch, LR, steps, merges, and selection unknown.
+audit:
+  source_mixture: Web/code/math/images and >140 languages disclosed with token totals; datasets, snapshots, weights, image
+    counts, rights, licenses, quality scores, and provenance unknown.
+  split: Pretraining evaluation decontamination and held-out assurance prompts stated; full membership, inventory, teacher/post-training
+    overlap, RM/code/math splits, and seeds unreleased.
+  decontamination: Method, thresholds, removals, and artifacts absent; report warns residual contamination may remain. No
+    teacher/RM/code/math contamination audit.
+  license: Paper CC BY 4.0; official PyTorch code Apache 2.0; weights use Gemma-specific Terms of Use. Training data, feedback,
+    logits, RMs, tests, and verifier artifacts have no reusable release.
+  lineage: Filtered/reweighted data -> sparse-logit PT -> large-IT-teacher distillation and BOND/WARM/WARP-style RL -> IT
+    -> ~5,000-step QAT -> releases. Record-level and immutable hashes unknown.
+  known_failure_modes:
+  - Online/on-policy post-training rollout is not disclosed.
+  - Teacher identities, checkpoints, query modes, temperatures, and budgets are unknown.
+  - Human preferences and weight-averaged RM components/weights/calibration are unreleased.
+  - Code sandbox/tests/languages/timeouts/leakage/aggregation are unknown.
+  - Math parser/equivalence/partial credit/contamination are unknown.
+  - BOND/WARM/WARP modifications, coefficients, rollouts, optimizer, order, and merge rules are absent.
+  - Decontamination is asserted but residual contamination is acknowledged.
+  - Memorization uses a private subsample and comparative/log-scale reporting.
+  - CC BY, Apache 2.0, and Gemma weight terms must not be conflated.
+  citation_status: verified
+  confidence: high
+  notes: Verified from arXiv/PDF/TeX, official model card/terms/checkpoint, and official PyTorch/JAX repositories. Later model-card
+    facts are separated from the March 2025 report; online distillation is not inferred.
+inclusion_reason: An open-weight frontier report disclosing token scale, sparse teacher-logit distillation, mixed human/code/math
+  rewards, safety alignment, QAT, and memorization audit while withholding record-level data and reward assets.
+related: []
+tags:
+- google-deepmind
+- gemma-3
+- open-weights
+- multimodal
+- knowledge-distillation
+- sparse-logits
+- instruction-tuning
+- human-feedback
+- reward-model
+- code-execution-reward
+- math-ground-truth
+- bond
+- warm
+- warp
+- memorization-audit
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Gemma 3 discloses 2T-14T pretraining, 256 teacher logits per token, large-IT-teacher distillation, mixed
+  human/code/math RL rewards, QAT, and open weights, but not corpora, preferences, RMs, teachers, rollouts, or verifiers.
+why_it_matters: It shows that open weight access is much broader than the underlying data, distillation, reward, and verifier
+  disclosure.
+card: null
+needs:
+- 'needs_data: manifests, source/mixture weights, IT records, preferences, RM records, tests, math data, safety labels, and
+  lineage'
+- 'needs_verifier: RM components/weights, rubrics/agreement, sandbox/tests, math equivalence, aggregation, calibration, and
+  overoptimization'
+- 'needs_metadata: teacher identity, online/on-policy status, rollouts, temperatures, BOND/WARM/WARP changes, optimizer, KL,
+  batch, LR, steps, merges, and selection'
+- 'needs_audit: splits, decontamination artifact, leakage, memorization records, privacy errors, reward hacking, version drift,
+  and hashes'
+- 'needs_license: terms for corpora, images, feedback, synthetic data, logits, RMs, tests, verifier, and safety data'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper/PDF/TeX, card, terms, checkpoint, and repositories verified. No dataset, preferences, teacher logits,
+    RM, or verifier package is claimed.

@@ -1,0 +1,100 @@
+id: thinking-optimal-scaling-2025
+title: Towards Thinking-Optimal Scaling of Test-Time Compute for LLM Reasoning
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Wenkai Yang
+- Shuming Ma
+- Yankai Lin
+- Furu Wei
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- sft
+construction_layer:
+- scaling_report
+- filtering_curation
+artifacts:
+  paper: https://arxiv.org/abs/2502.18080
+  arxiv: https://arxiv.org/abs/2502.18080
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/file/3e22bea3b170f4c2aebb9c48d98ae64d-Paper-Conference.pdf
+  code: https://github.com/RUCBM/TOPS
+  data: https://github.com/RUCBM/TOPS
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.18080
+data_object:
+  prompt_source: NuminaMath subsets for seed and additional problems; GSM8K, MATH500, and AIME2024 for evaluation.
+  trace_author: QwQ-32B-Preview and reasoning-effort-conditioned tag models.
+  answer_format: Responses labeled by low, medium, or high reasoning effort; selected shortest correct response.
+  process_fields:
+  - problem
+  - reasoning_effort
+  - response
+  - length
+  - correctness
+  - selected_response
+  - training_split
+  environment_or_substrate: Mathematical reasoning generation and answer checking.
+  verifier_or_reward: Correctness filtering identifies the shortest correct response across effort levels.
+  terminal_predicate: Correct mathematical answer under the paper evaluation protocol.
+recipe_metadata:
+  base_model: Qwen2.5-32B-Instruct; additional experiments on LLaMA3.1-8B-Instruct.
+  teacher: QwQ-32B-Preview for seed responses at three effort levels.
+  generator: Reasoning-effort-conditioned tag model.
+  filtering_rule: Select the shortest correct response among outputs at the available effort levels.
+  sampling_protocol: One response per reasoning effort per additional problem in the stated main construction.
+  rollout_count: Three effort-conditioned responses per problem in the reported main dataset construction.
+  temperature: 1.0 at inference in the reported experiment.
+  inference_budget: Reasoning-token length conditioned by low, medium, or high effort; maximum generation length 16,384.
+  optimizer_or_scaffold: 'TOPS: format imitation, effort-conditioned generation, and supervised self-improvement.'
+audit:
+  source_mixture: Official NeurIPS 2025 paper PDF, arXiv record, and official GitHub repository.
+  split: 1.3K NuminaMath seed problems, 50K additional NuminaMath problems, and held-out GSM8K/MATH500/AIME2024 evaluation
+    as reported.
+  decontamination: Not separately claimed in the checked source.
+  license: Verify NuminaMath, QwQ, and repository terms before reuse.
+  lineage: 'Primary sources: https://arxiv.org/abs/2502.18080 and https://github.com/RUCBM/TOPS'
+  known_failure_modes:
+  - The shortest correct response is selected using correctness information not generally available at deployment.
+  - Results focus on mathematical reasoning and three discrete effort levels.
+  - Length is only a proxy for actual serving latency and cost.
+  citation_status: verified
+  confidence: high
+  notes: 'Official PDF checked on 2026-07-20. First-page affiliations: Gaoling School of Artificial Intelligence, Renmin University
+    of China; Microsoft Research.'
+inclusion_reason: It studies the allocation of reasoning length at test time and trains a model to use task-dependent effort
+  rather than monotonically longer chains.
+related: []
+tags:
+- test-time-compute
+- reasoning-effort
+- overthinking
+- chain-of-thought
+- data-selection
+status: verified
+one_line_summary: TOPS selects shortest correct effort-conditioned reasoning traces to train task-dependent test-time thinking
+  length.
+reading_priority: essential
+paper_type: Test-time compute allocation and self-improvement study
+best_for: Readers training a reasoning model to choose an appropriate effort level per problem.
+confidence: high
+why_it_matters: It treats reasoning length as an allocation variable that can hurt accuracy when extended indiscriminately.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS PDF, author affiliations, reported data construction, and official GitHub code/data link checked.
+category_ids:
+- scaling_rlvr_test_time_compute

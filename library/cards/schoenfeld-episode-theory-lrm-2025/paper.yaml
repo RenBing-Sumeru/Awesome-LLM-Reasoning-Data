@@ -1,0 +1,110 @@
+id: schoenfeld-episode-theory-lrm-2025
+title: 'Understanding the Thinking Process of Reasoning Models: A Perspective from Schoenfeld''s Episode Theory'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Ming Li
+- Nan Zhang
+- Chenrui Fan
+- Hong Jiao
+- Yanbin Fu
+- Sydney Peters
+- Qingshu Xu
+- Robert Lissitz
+- Tianyi Zhou
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- reasoning-models
+- cognitive-episodes
+- math-traces
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2509.14662
+  arxiv: https://arxiv.org/abs/2509.14662
+  code: https://github.com/MingLiiii/Schoenfeld_Reasoning
+  project: null
+  data: https://github.com/MingLiiii/Schoenfeld_Reasoning
+  huggingface: null
+  venue: https://neurips.cc/virtual/2025/129726
+  doi: https://doi.org/10.48550/arXiv.2509.14662
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SAT Suite Question Bank mathematics items.
+  trace_author: DeepSeek-R1 produces reasoning responses; trained human annotators label them.
+  answer_format: Paragraph and sentence episode labels, guidebook, trace text, and model-label outputs.
+  process_fields:
+  - paragraph_label
+  - sentence_label
+  - episode
+  - trace
+  - rationale
+  environment_or_substrate: SAT mathematics reasoning.
+  verifier_or_reward: Human annotation, LLM/SLM label evaluations, and detailed guidebooks.
+  terminal_predicate: Episode-labeled reasoning process for a math problem.
+recipe_metadata:
+  base_model: DeepSeek-R1 trace generator; GPT-4.1 and other classifiers.
+  teacher: Trained human annotators.
+  generator: DeepSeek-R1 solutions to SAT math.
+  filtering_rule: Guidebook refinement and annotator training precede full labeling.
+  sampling_protocol: Thousands of sentence and paragraph annotations; consult official release for files.
+  inference_budget: See repository.
+  optimizer_or_scaffold: Schoenfeld Episode Theory annotation framework.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: SAT math questions, DeepSeek-R1 traces, human labels, and labeling-model comparisons.
+  split: Repository provides the corpus and guidebooks.
+  decontamination: Hold out questions and human-label test subsets.
+  license: Consult official repository.
+  lineage: NeurIPS 2025 paper and official GitHub project.
+  known_failure_modes:
+  - SAT-only scope
+  - Automatic labels remain imperfect
+  - Cognitive alignment is an analytical abstraction
+  citation_status: verified
+  confidence: high
+  notes: Verified authors, UMD affiliation, formal title, NeurIPS 2025 status, code/data and annotation protocol from arXiv,
+    NeurIPS, and official repository.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: This benchmark applies Schoenfeld’s cognitive episodes to human-annotated DeepSeek-R1 math traces at paragraph
+  and sentence levels.
+why_it_matters: It provides an early theory-grounded corpus and annotation guide for decomposing reasoning traces into functional
+  steps.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified authors, UMD affiliation, formal title, NeurIPS 2025 status, code/data and annotation protocol from arXiv,
+    NeurIPS, and official repository.
+category_ids:
+- process_trace_supervision_data

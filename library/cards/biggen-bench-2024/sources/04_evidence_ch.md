@@ -1,0 +1,1 @@
+官方来源报告数据集包含 765 个实例、77 个任务和 9 类能力。arXiv 摘要称评测了 103 个前沿 LM，并使用 5 个 evaluator LMs；HF 数据集字段包括 id、capability、task、system_prompt、input、reference_answer、score_rubric。最强证据是逐条保留 response、rubric、evaluator prompt 和 evaluator output。聚合分数受 judge model 可靠性、rubric 解读、API 漂移影响；开放生成没有确定性 ground-truth verifier。

@@ -1,0 +1,1 @@
+Yin, Zhangyue，Qiushi Sun，Zhiyuan Zeng，Zhiyuan Yu，Qipeng Guo，Xuanjing Huang，Xipeng Qiu。2026。《ARISE: An Adaptive Resolution-Aware Metric for Test-Time Scaling Evaluation in Large Reasoning Models》。收录于《Findings of the Association for Computational Linguistics: ACL 2026》，第 5828–5848 页。Association for Computational Linguistics。https://aclanthology.org/2026.findings-acl.289/

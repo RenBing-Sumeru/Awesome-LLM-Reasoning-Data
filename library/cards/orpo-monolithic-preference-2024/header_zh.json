@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"ORPO 在监督微调中加入优选/拒选回答的赔率比惩罚，统一完成指令学习和偏好优化而不使用参考模型。","reading_priority_ch":"必读","paper_type_ch":"无参考模型的监督微调与偏好优化一体化研究","best_for_ch":"适合理解如何让偏好对直接改写监督微调目标、而不另设对齐阶段的读者。","confidence_ch":"高","authors_ch":"Jiwoo Hong、Noah Lee、James Thorne（KAIST AI）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-17T10:00:00Z"}

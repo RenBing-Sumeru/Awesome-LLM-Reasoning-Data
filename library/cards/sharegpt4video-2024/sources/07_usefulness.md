@@ -1,0 +1,3 @@
+- For constructing temporal reasoning SFT records from public videos, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of captioner errors may become consistent but false event narratives.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: caption detail/temporal consistency review and downstream video benchmarks. Do not reuse the release when its licensing or source provenance cannot be preserved.

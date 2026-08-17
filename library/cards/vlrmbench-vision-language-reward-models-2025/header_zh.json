@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VLRMBench 含 12,634 个视觉语言问题，覆盖过程理解、结果判断与批评生成，可系统评测视觉奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要全面评测视觉语言奖励模型与过程判别能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiacheng Ruan, Wenzhen Yuan, Xian Gao, Ye Guo, Daoxin Zhang, Zhe Xu, Yao Hu, Ting Liu, Yuzhuo Fu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

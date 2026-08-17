@@ -1,0 +1,1 @@
+CMMLU 评估 LLM 在中文语言和文化语境下的多学科知识与推理能力，主来源是 2023 年 6 月 arXiv 论文、2024 年 1 月修订版，以及官方 GitHub/Hugging Face 数据链接。它补的缺口是英文中心或翻译式 benchmark 容易漏掉中文措辞、语境和中国特定答案。一个样本是 CSV 中的单项选择题，包含四个选项且只有一个正确答案，并按学科组织。它是静态 evaluation surface，不是训练或 reward 数据。对 atlas 的价值是清楚的 answer-level accuracy 契约，可用于多语言/文化特定 benchmark 审计。

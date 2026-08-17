@@ -1,0 +1,5 @@
+Inputs are a domain policy, initial database, tool/API definitions, hidden user instruction, agent prompt or scaffold, and action budget. Outputs are a transcript of messages and tool calls, tool observations, the final database state, and pass/fail reward.
+
+The benchmark builds airline and retail tasks that require policy-constrained state changes such as booking, order, refund, or account operations. The simulated user reveals information over turns; the agent must gather missing fields, choose tool calls, and avoid invalid operations. The paper reports 115 retail tasks and 50 airline tasks in the original benchmark.
+
+The verifier is the terminal reward computed from final database state and any required response substrings. Reproduction must pin the original repository version because the official README later warns that the initial airline and retail tasks are outdated and points users to the tau2/tau3 repository. Scores also depend on user simulator model, prompts, tool schema, retry budget, dependency versions, and whether the evaluated tasks are the original paper set or later fixed variants.

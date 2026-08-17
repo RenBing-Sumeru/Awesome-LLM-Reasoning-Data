@@ -1,0 +1,1 @@
+正确性只相对于 BFCL 的 schema 和 evaluator 类别成立，不证明 agent 可以安全使用任意外部工具。AST 匹配可能漏掉语义等价调用；execution check 又可能受包版本、sandbox 状态或 live API 行为影响。托管模型输出可能在模型名不变时变化，leaderboard 类别也会迭代。公开样本有污染风险；hidden 或 live 组件若没有官方 harness 快照，很难完全复现。

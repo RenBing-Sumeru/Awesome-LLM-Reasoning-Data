@@ -1,0 +1,6 @@
+- Start with Figure 3 and Appendix A/Table 6: they expose the full five-stage pipeline and the decisive `Solution Verification Strategy: None` setting.
+- Read Table 1 together with Appendix D.3/Table 12. Coverage helps at varying size, but the solvability filter also rejects 30.2% of MATH500 and 49.3% of level-5 items.
+- Table 11, not the abstract, defines the final mixture: 50% Suggester-Editor, 20% IQC, 20% Taxonomy Key Concepts, and 10% Distraction Insertion.
+- Table 4/Table 10 shows transfer across students but not uniform wins; Qwen2.5-Math-7B is slightly lower on OlympiadBench than refreshed ScaleQuest despite a higher overall average.
+- Keep problem quality, solution quality, and downstream checkpoint accuracy separate. The final recipe retains the first teacher solution, so benchmark gains cannot certify record correctness.
+- Appendix F provides only part of the prompt surface, and official pages provide no FLAMES data/code release. The Card is `L4_chinese_review_ready`, while the canonical release status remains `partial`.

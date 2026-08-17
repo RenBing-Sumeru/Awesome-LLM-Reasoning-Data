@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "量化 LLM 评审与人工的一致性，并揭示提示词、参考答案顺序和宽松偏差造成的失稳。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要核查推理数据与自动评测可靠性的研究者。",
+  "confidence_ch": "高：已逐页核对 GEM² 正式论文、作者机构和实验设置。",
+  "authors_ch": "Aman Singh Thakur, Kartik Choudhary, Venkat Srinik Ramayapally, Sankaran Vaidyanathan, Dieuwke Hupkes",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

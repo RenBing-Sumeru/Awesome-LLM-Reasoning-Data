@@ -1,0 +1,1 @@
+The official abstract states that the survey traces post-training across five paradigms and presents a taxonomy of techniques and datasets. It reports 87 pages, 21 figures, and nine tables on its arXiv record. These are scope indicators, not evidence that any individual method or dataset is valid.

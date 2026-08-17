@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ScienceWorld 为语言智能体提供交互式科学任务环境。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "EMNLP 2022 main proceedings / arXiv 的 interactive science environment benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ruoyao Wang 等（University of Arizona）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T16:40:00Z"
+}

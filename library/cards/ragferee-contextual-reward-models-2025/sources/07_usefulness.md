@@ -1,0 +1,1 @@
+Use RAGferee to train or audit a reward model that sees query, retrieved passages, and candidate answer together. Report groundedness and refusal separately, and retain an ablation without context to detect shortcut scoring. Do not use it as a general QA preference set once the evidence input is absent or unrelated.

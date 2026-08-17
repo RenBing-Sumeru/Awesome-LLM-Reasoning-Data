@@ -1,0 +1,9 @@
+**输入与构造。** 最终论文汇集**42个SRE、50个CISO和10个FinOps场景**。SRE输入源于作者在其SaaS产品中观察到的事件，CISO输入源于CIS benchmarks，FinOps输入源于FinOps Foundation的domains/capabilities。每个场景编码为`M/E/T/D`四元组；metadata包括名称、描述、domain、class、complexity、deployment descriptor与ground truth。SRE ground truth可包含诊断entity、故障传播及条件、合理mitigation action。逐事件sampling、anonymization和精确selection rule均为unknown。
+
+**部署与交互。** runner可按agent type/level筛选场景，部署隔离testbed、加载场景并注入故障或条件。智能体通过observation proxy接收部分telemetry或policy/cost证据，再输出领域tool call或stop。论文baseline使用带planning/reflection和in-context example的CrewAI；被评模型包括GPT-4o、Llama-family、Granite-family等。SRE用42个场景——21个有trace、21个无trace——每个场景/模型运行10次；CISO用50个场景、每个模型运行8次；FinOps用10个场景，重复次数随任务变化。上下文最多128K tokens；大多数temperature以及完整retry/tool/time budget均为unknown。
+
+**反馈与输出。** 智能体停止后，benchmark记录最终系统状态或结构化结果，并以领域指标和场景ground truth比较。生命周期随后删除场景并汇总结果。实验instrumentation记录planning agent与tool的input/output，包括ReAct thought；论文分析成功与失败运行，但没有证据表明这些论文实验日志已全部公开。
+
+**后续离线发布。** Apache-2.0许可的ITBench-Lite把65个静态`scenarios`打包为35个SRE、15个FinOps和15个CISO。SRE snapshot包括alert、Prometheus metric、ground truth、Kubernetes event/object，以及OpenTelemetry log/trace；它明确省略live observability、runtime nondeterminism、interactive debugging/human-in-the-loop行为和active remediation。CC-BY-NC-4.0许可的ITBench-Trajectories声称提供35个场景×3次运行、共105个由GPT-OSS-120B生成的SRE session。每个运行预期含`session.jsonl`、`agent_output.json`、`judge_output.json`及可选generated code。
+
+**发布审计与复现边界。** 在trajectory revision `c3093ee33b4f16a8eed97ade1266d0d7e88b2dec`上，官方树有105个session log，却只有90个agent output和90个judge output，因此不能把105表述为105条完整已评分轨迹。复现应固定最终论文、framework commit `73040c0539b39f11e63abd4e848316c841559487` / version 1.4.1、Lite revision `d0916b08ba421ce5e672e9ad68aa947d938dfef0`、上述trajectory revision、场景配置、环境image/dependency、模型endpoint/checkpoint、prompt、budget、evaluator配置与保留文件manifest。论文实验的精确commit、image digest、seed、dependency lock、确定性replay保证，以及论文42个SRE场景与后续35个场景的映射均为unknown；未披露optimizer或policy update。

@@ -1,0 +1,5 @@
+Across human-evaluated tasks, reported success rises from SIMA 1's 33% to SIMA 2's 65%; across automatic tasks it rises from 30% to 66%. Same-timeout humans score 76% and 78%, while no-timeout humans score 86% in both aggregates. Human comparisons are constrained by short agent timeouts and representative subsets.
+
+On held-out environments, SIMA 2 improves by 12 percentage points over SIMA 1 on ASKA and 13 points on MineDojo. MineDojo covers 50 tasks × 15 seeds = 750 task-seed configurations; SIMA 2 succeeds in 26 of 50 categories versus 2 for SIMA 1. These are environment-level transfer results, not evidence that base Gemini lacked prior public game or Minecraft knowledge.
+
+Embodied post-training does not uniformly preserve base reasoning: relative to base Gemini, SFT/SFT+RL change LiveCodeBench by -4.0%/-8.4%, AIME by -25.5%/-15.4%, and GPQA Diamond by -16.3%/-19.5%. Self-improvement shows large selected gains in ASKA and Genie 3, but task counts, generations, and statistical uncertainty are not released.

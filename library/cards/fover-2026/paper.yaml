@@ -1,0 +1,164 @@
+id: fover-2026
+title: Efficient PRM Training Data Synthesis via Formal Verification
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Ryo Kamoi
+- Yusen Zhang
+- Nan Zhang
+- Sarkar Snigdha Sarathi Das
+- Ranran Haoran Zhang
+- Wenpeng Yin
+- Rui Zhang
+source_role:
+- data_release
+- verifier_reward
+- process_supervision
+- construction_recipe
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- formal_logic
+- theorem_proving
+- mathematical_reasoning
+- natural_language_reasoning
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.403/
+  arxiv: https://arxiv.org/abs/2505.15960
+  code: https://github.com/psunlpgroup/FoVer
+  data: https://huggingface.co/datasets/ryokamoi/FoVer-FormalLogic-FormalProof-Qwen-2.5-7B-LastStepBalanced-40k
+  project: https://fover-prm.github.io/
+  huggingface: https://huggingface.co/collections/ryokamoi/fover
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.403
+  venue: https://aclanthology.org/2026.findings-acl.403/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.403/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.findings-acl.403.bib
+data_object:
+  prompt_source: Formal-logic entailment problems from FLDx2 and formalized GSM8K-level math problems from GSM8K, MetaMathQA,
+    and Big-Math. FLDx2 cases involving assump-style proof by contradiction are excluded.
+  trace_author: Llama 3.1 8B and Qwen 2.5 7B generate formal-logic traces; Qwen 2.5 7B generates Isabelle-compatible statements
+    and proofs.
+  answer_format: Each record contains a formal problem, ordered solution_steps, aligned Boolean error_labels, conversation-form
+    training/prediction representations, base_dataset, and task-specific formula metadata.
+  process_fields:
+  - id
+  - problem
+  - solution_steps
+  - error_labels
+  - problem_witout_definition
+  - messages
+  - base_dataset
+  - messages_for_prediction
+  - hypothesis_formula
+  - facts_formula
+  environment_or_substrate: Z3 first-order-logic checking and Isabelle/HOL theorem proving. Isabelle syntax is checked with
+    sorry placeholders and each target step is verified while other proof steps are replaced by sorry.
+  verifier_or_reward: Z3 or Isabelle emits binary correctness per formal step. The trained PRM predicts correct/incorrect
+    tokens and their normalized logits become step-level reward scores.
+  terminal_predicate: A formal-logic conclusion is entailed by permitted premises and preceding results under Z3, or Isabelle
+    accepts the target proof step in the generated theorem environment. This establishes formal validity relative to the constructed
+    formal problem, not semantic fidelity to the source text.
+recipe_metadata:
+  base_model: meta-llama/Llama-3.1-8B-Instruct and Qwen/Qwen2.5-7B-Instruct as trace generators and PRM backbones.
+  teacher: No human or LLM teacher supplies error labels; Z3 and Isabelle provide programmatic labels while Llama and Qwen
+    generate candidate traces.
+  generator: Few-shot prompts elicit verifier-compatible formal solutions; the pipeline retries until syntactically valid
+    and then applies step-level Z3/Isabelle wrappers.
+  filtering_rule: Remove syntactically invalid solutions, exclude assump-style FLDx2 cases, retain logically incorrect but
+    syntactically valid steps with false labels, and truncate traces so the final supervised step is balanced.
+  sampling_protocol: The paper reports 10K Llama formal-logic, 10K Qwen formal-logic, and 20K Qwen theorem-proving steps.
+    Retry counts, acceptance rates and production decoding settings are undisclosed.
+  rollout_count: null
+  temperature: null
+  inference_budget: Z3 checks each logical step and Isabelle runs once per theorem step; total prover runtime, timeout policy,
+    failed jobs and retry budget are not reported.
+  optimizer_or_scaffold: Full-parameter LLaMA-Factory training with mask_history=true, one epoch, sequence cutoff 2048, AdamW
+    and DeepSpeed ZeRO-3; only the final balanced label contributes to loss.
+audit:
+  source_mixture: ACL Table 1 defines 10K Llama FLDx2/Z3, 10K Qwen FLDx2/Z3 and 20K Qwen GSM8K/MetaMathQA/Big-Math Isabelle
+    steps. Official HF also exposes raw Llama formal-proof data and model-specific 40K sets whose cards describe a previous
+    paper version, so exact alignment is partial.
+  split: Each LastStepBalanced release has one 40K train split; four raw releases each have train 10K, validation 360 and
+    test 360. Hyperparameter-selection tasks are external Orca-Math/BBH data, not a documented FOVER-40K split.
+  decontamination: unknown
+  license: Official project license releases datasets under CC BY 4.0 and code under Apache-2.0; PRM models follow Qwen or
+    Llama base licenses. Upstream compatibility is not discussed in detail.
+  lineage: Source problem to verifier-compatible formal statement to Llama/Qwen trace to syntax filtering to per-step Z3/Isabelle
+    verification to retained correct/incorrect labels to last-step balancing to PRM fine-tuning to Best-of-K scoring.
+  known_failure_modes:
+  - A generated Isabelle statement can misformalize the natural-language problem while still receiving formally correct labels.
+  - Parser, type, tactic, timeout, dependency or prover-environment failures may be mapped to Boolean labels without an error-type
+    field or prover log.
+  - Isabelle independent-step verification replaces other steps with sorry and can miss dependency-chain or scoping errors.
+  - The Z3 wrapper excludes proof-by-contradiction cases, narrowing the formal-reasoning distribution.
+  - Only the final target label is balanced and used for loss; intermediate error labels are not demonstrated to be balanced
+    or calibrated.
+  - Invalid-format generations are filtered without released attempts, rejection reasons, retry counts or diagnostics.
+  - No decontamination analysis is reported despite related math/logic evaluation domains.
+  - Formal-to-informal transfer is based on limited Best-of-7 experiments and is not uniformly positive across every benchmark.
+  - Official dataset cards reference a previous paper version and variants differ from ACL Table 1, leaving version alignment
+    partial.
+  citation_status: verified
+  confidence: medium
+  notes: ACL paper, metadata, official GitHub/project, author HF datasets/models, schemas, licenses and configs were checked
+    on 2026-07-10. Release-version alignment, rejected traces, construction budget, decontamination and prover failure taxonomy
+    remain unresolved.
+inclusion_reason: FoVer is a core reasoning-data recipe because it converts formal prover outcomes into reusable step-level
+  PRM supervision, releases labeled process data and trained PRMs, and provides an alternative to human annotation and Monte
+  Carlo rollout labels.
+related: []
+tags:
+- process-reward-model
+- formal-verification
+- step-level-labels
+- z3
+- isabelle
+- formal-logic
+- theorem-proving
+- verifier-training
+- formal-to-informal-transfer
+- best-of-k
+status: partial
+one_line_summary: FOVER-40K pairs formal reasoning traces with Boolean step labels produced by Z3 and Isabelle, then trains
+  Llama- and Qwen-based PRMs for process-level verification and Best-of-K selection.
+why_it_matters: It demonstrates a low-LLM-call route to process supervision while making formalization fidelity, prover wrappers,
+  step-dependency assumptions, dataset versioning and informal-domain transfer explicit audit boundaries.
+card: cards/verifiers/fover.md
+needs:
+- 'needs_metadata: reconcile ACL Table 1 with the two model-specific 40K balanced datasets and four raw HF variants'
+- 'needs_metadata: identify exact final-paper dataset revisions'
+- 'needs_metadata: report invalid-format retries, acceptance rates, construction temperature and generation budget'
+- 'needs_metadata: release or document rejected invalid traces, reasons, prover logs and environment-error categories'
+- 'needs_metadata: document Z3/Isabelle timeout and failure-handling policies'
+- 'needs_metadata: report decontamination and source/evaluation overlap checks'
+- 'needs_metadata: audit semantic fidelity of generated Isabelle statements'
+- 'needs_metadata: clarify upstream-source license compatibility'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: medium
+  notes: ACL publication, DOI, official arXiv, GitHub, project, two 40K datasets, four raw datasets, two PRMs, schemas, licenses
+    and training configs were verified. Release version alignment remains partial.
+category_ids:
+- data_construction_open_release_recipes

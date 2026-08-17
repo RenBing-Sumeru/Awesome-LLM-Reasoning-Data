@@ -1,0 +1,3 @@
+引用：Federico Cassano, John Gouwar, Daniel Nguyen, Sydney Nguyen, Luna Phipps-Costin, Donald Pinckney, Ming-Ho Yee, Yangtian Zi, Carolyn Jane Anderson, Molly Q Feldman, Arjun Guha, Michael Greenberg, Abhinav Jangda，《MultiPL-E: A Scalable and Extensible Approach to Benchmarking Neural Code Generation》，2022 / IEEE Transactions on Software Engineering / arXiv。https://arxiv.org/abs/2208.08227
+
+官方产物：paper: https://arxiv.org/abs/2208.08227; venue: https://ieeexplore.ieee.org/document/10103177; code: https://github.com/nuprl/MultiPL-E; data: https://huggingface.co/datasets/nuprl/MultiPL-E; huggingface: https://huggingface.co/datasets/nuprl/MultiPL-E; doi: https://doi.org/10.1109/TSE.2023.3267446。

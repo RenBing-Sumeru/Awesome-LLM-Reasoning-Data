@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "测试时扩展方法",
+    "updated_at": "2026-07-29T04:10:39Z"
+  },
+  "updated_at": "2026-07-29T04:10:39Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

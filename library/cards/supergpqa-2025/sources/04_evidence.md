@@ -1,0 +1,5 @@
+The main scale evidence is explicit: the paper reports 26,529 questions spanning 13 disciplines, 72 fields, and 285 subfields. It also reports discipline counts in the official README and paper tables, with Science and Engineering contributing the largest shares and non-STEM areas still represented.
+
+The main difficulty evidence is model performance. The paper and README report DeepSeek-R1 as the highest-scoring model in the initial table with 61.82 overall sample accuracy, 62.61 subfield average, 61.23 field average, and 59.95 discipline average. The reported difficulty split for DeepSeek-R1 is 63.59 easy, 63.63 middle, and 56.87 hard, showing that even the best listed reasoning model leaves substantial error mass.
+
+The instance-level evidence is answer-key matching after response parsing, not an open-ended expert judge at evaluation time. The evidence boundary is important: results depend on prompt wording, zero-shot versus five-shot mode, answer parser, model snapshot, and whether public questions or response records have entered later training data.

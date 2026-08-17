@@ -1,0 +1,1 @@
+JudgeLM 和 Auto-J 等工作已训练开放裁判，但 Prometheus 更明确地把自定义 score rubric 和 reference answer 作为条件，并发布大规模“评分+自然语言反馈”数据。它不是单纯学习人类总体偏好，而是学习在不同评价函数下给出解释和分数。新的核心不是 SFT 技术，而是 Feedback Collection 的数据设计及 rubric-conditioned evaluator 定位，后来成为多项 judge 研究的基础。

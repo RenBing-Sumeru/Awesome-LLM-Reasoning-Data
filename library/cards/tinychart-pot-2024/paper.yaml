@@ -1,0 +1,129 @@
+id: tinychart-pot-2024
+title: 'TinyChart: Efficient Chart Understanding with Visual Token Merging and Program-of-Thoughts Learning'
+year: 2024
+venue: EMNLP 2024
+authors:
+- Liang Zhang
+- Anwen Hu
+- Haiyang Xu
+- Ming Yan
+- Yichen Xu
+- Qin Jin
+- Ji Zhang
+- Fei Huang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.emnlp-main.112/
+  arxiv: https://arxiv.org/abs/2404.16635
+  code: https://github.com/X-PLUG/mPLUG-DocOwl/tree/main/TinyChart
+  data: https://huggingface.co/datasets/mPLUG/TinyChartData
+  project: https://github.com/X-PLUG/mPLUG-DocOwl/tree/main/TinyChart
+  huggingface: https://huggingface.co/datasets/mPLUG/TinyChartData
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.112
+  venue: https://aclanthology.org/2024.emnlp-main.112/
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.112/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public chart QA and chart-to-table tasks augmented with executable solution programs
+  trace_author: templates and language models translate chart reasoning into Python programs
+  answer_format: chart image, question, Python program-of-thought, and final answer
+  process_fields:
+  - chart image
+  - question
+  - Python program-of-thought
+  - and final answer
+  environment_or_substrate: JSONL and image archives with chart questions, programs, and answers
+  verifier_or_reward: program execution and final-answer agreement
+  terminal_predicate: Retain a record only when program execution and final-answer agreement accepts it and required schema
+    fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: templates and language models translate chart reasoning into Python programs
+  generator: TinyChart pairs visual-token merging with ChartQA-PoT records whose targets contain executable Python reasoning
+    and a final answer, giving a 3B model explicit numerical supervision without a much larger visual token budget.
+  filtering_rule: program execution and final-answer agreement
+  sampling_protocol: public chart QA and chart-to-table tasks augmented with executable solution programs
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: chart instruction SFT with program-of-thought supervision
+audit:
+  source_mixture: public chart QA and chart-to-table tasks augmented with executable solution programs
+  split: 'Official release scale: the public release includes ChartQA-PoT plus chart alignment, instruction-tuning, and evaluation
+    splits; storage: JSONL and image archives with chart questions, programs, and answers.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository and dataset-card terms; upstream chart sources retain their licenses
+  lineage: public chart QA and chart-to-table tasks augmented with executable solution programs -> templates and language
+    models translate chart reasoning into Python programs -> program execution and final-answer agreement -> chart instruction
+    SFT with program-of-thought supervision.
+  known_failure_modes:
+  - Programs can be correct despite extracting the wrong visual evidence
+  - OCR failures propagate into code
+  - the release inherits chart-source licenses and synthetic template bias.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 16 citations; this is not a Google Scholar count.'
+inclusion_reason: 'TinyChartData is a public Track 01 training object: chart image, question, Python program-of-thought, and
+  final answer; it is consumed by chart instruction SFT with program-of-thought supervision.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- executable-chart-program-demonstrations
+status: verified
+one_line_summary: TinyChartData exposes chart questions with Python program-of-thought targets and final answers for compact
+  chart SFT.
+why_it_matters: making executable chart programs a released instruction target for a compact chart model
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training a small chart model to expose and execute numerical reasoning
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: executable chart program demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Renmin University of China, Alibaba Group.
+    venue: 'The official venue URL confirms formal publication at EMNLP 2024: https://aclanthology.org/2024.emnlp-main.112/'
+    impact: OpenAlex reported 16 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSONL and image archives with chart questions, programs, and answers records
+      at https://huggingface.co/datasets/mPLUG/TinyChartData with terms recorded as: official repository and dataset-card
+      terms; upstream chart sources retain their licenses.'
+  selection_eligible: true
+  year_impact_threshold: 3

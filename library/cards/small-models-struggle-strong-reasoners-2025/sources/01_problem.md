@@ -1,0 +1,3 @@
+Reasoning distillation often assumes that the strongest available teacher and its longest chain of thought provide the best supervision. The paper tests this assumption across student sizes and identifies a failure mode: students at or below roughly 3B parameters do not consistently benefit from long CoT or outputs from larger teachers. They may learn better from shorter traces or smaller teachers whose output distribution is closer to their own capacity.
+
+This matters for reasoning-data curation because answer correctness alone does not determine whether a trace is learnable. Teacher size, trace complexity, response distribution, and student capacity can change the value of the same prompt-answer supervision.

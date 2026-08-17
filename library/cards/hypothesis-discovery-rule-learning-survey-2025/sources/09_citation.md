@@ -1,0 +1,3 @@
+Kaiyu He and Zhiyu Chen. 2025. From Reasoning to Learning: A Survey on Hypothesis Discovery and Rule Learning with Large Language Models. Transactions on Machine Learning Research. https://openreview.net/forum?id=d7W38UzUg0
+
+Use the official OpenReview or TMLR record for the authoritative title, authorship, venue, and paper version. Cite this survey for its abduction–deduction–induction framework and its synthesis of the field. Cite primary work separately for a particular hypothesis representation, dataset, validation procedure, or empirical result, since those are not newly introduced by the survey.

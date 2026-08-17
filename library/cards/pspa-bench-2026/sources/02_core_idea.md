@@ -1,0 +1,5 @@
+The one-sentence contribution is: PSPA-Bench turns personalized phone use into a TDG-based benchmark with synthetic persona-driven instructions and process-level metrics for immediate and long-term GUI-agent performance.
+
+The core mechanism is to decompose each mobile task into a directed acyclic graph of unit instructions. Fixed nodes represent user-invariant steps such as launching an app; flexible nodes represent preference-sensitive choices such as category, price range, route, or dining preference. Templates preserve the fixed backbone and fill flexible slots from user profiles and time-varying preference weights.
+
+The feedback contract is graph-trace alignment. APR measures completed unit instructions on the selected path, PPR measures completed flexible nodes, CT measures completion time, and CPT measures token-cost-based monetary cost; long-term variants measure deltas after experience accumulation. Closest comparisons include SPA-Bench, AndroidWorld, MobileAgentBench, and generic GUI-agent benchmarks, but PSPA-Bench adds personalization, persona evolution, and TDG process metrics.

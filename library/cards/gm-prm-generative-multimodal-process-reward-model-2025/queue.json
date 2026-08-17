@@ -1,0 +1,17 @@
+{
+  "title": "GM-PRM: A Generative Multimodal Process Reward Model for Multimodal Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.alvr-main.11/",
+    "data": "https://huggingface.co/datasets/zijinghuafen/GM-PRM-20K"
+  },
+  "review_note": "L4 材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:28:56Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布两万条视觉数学首错诊断与纠错记录",
+    "updated_at": "2026-07-17T08:28:56Z"
+  }
+}

@@ -1,0 +1,7 @@
+本卡的主要来源是arXiv:2508.21475v3、ICLR 2026 Poster官方条目、官方项目页、在提交`fd8137d43677f88c1ed8c8c75b2a22587049950c`上检查的仓库，以及在revision `161a60d469b67cd14a0621ae2ab66d902df02df9`上检查的Hugging Face数据集。虽然已核实venue为ICLR 2026，但论文条目年份仍保留2025。
+
+MMSearch-Plus关注一类多模态问题：给定图像只是线索，并不直接包含完整答案。其Spatial-Temporal Extrapolation设计要求寻找画面、裁剪区域或时刻之外的事实，使智能体必须先定位事件或实体，再从更广的网页证据中检索。基准从公开视频平台内容和开放获取学术资源构建311项任务，共含441张unique image、279个unique question、306个unique answer、8个primary category和43个secondary category。
+
+可公开复用的对象是一条image-grounded QA记录，包括acceptable answer序列、一至五张图像、`num_images`、`video_url`或`arxiv_id`来源引用、category、difficulty和subtask。Hugging Face把全部311条记录放在一个名为`train`的split中。这个存储标签不代表训练协议：论文评测冻结模型，没有报告使用这些记录进行SFT、RL、distillation、reward-model训练或agent-policy training。
+
+评测时，智能体还会围绕SerpAPI搜索、Gemini生成的摘要、crop/zoom操作、缓存结果和累积hypothesis生成长state-action episode。论文分析了这些episode，但它们不在公开记录schema中。已检查的官方GitHub revision只有`README.md`与`decrypt_after_load.py`；其待发布清单仍列有rollout framework、evaluator和SoM box，而search cache及完整成功/失败轨迹不可用。这一边界使该工作属于`environment_agent_trajectory_data`：它定义了动态交互表面，同时表明QA表并不等同于轨迹语料。双语正文达到L4筛选深度，但accepted workflow metadata仍正确保持`L3_summary_ready`。

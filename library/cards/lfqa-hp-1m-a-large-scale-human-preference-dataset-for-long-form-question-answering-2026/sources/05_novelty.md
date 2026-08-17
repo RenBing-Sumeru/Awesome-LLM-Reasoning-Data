@@ -1,0 +1,1 @@
+Closest resources retain broad community preferences without operationally restricting question form. LFQA-HP-1M changes the data object by filtering for long-form questions and preserving source lineage and expertise fields; it does not collect a new million human judgments.

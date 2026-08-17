@@ -1,0 +1,5 @@
+- Position: GPRS stabilizes critic-free RLHF by shaping group preferences rather than optimizing raw reward scores.
+- Mechanism: sample a response group, infer within-group preferences, and use them as policy rewards.
+- Artifact: the official EMNLP 2025 paper is available; no official downloadable dataset or code was confirmed.
+- Evidence anchor: Pythia-2.8B experiments across 410M–6.9B reward models favor GPRS in Figure 1.
+- Reuse decision: audit the pairwise reward signal before adopting it; it reduces score sensitivity but cannot repair biased preferences.

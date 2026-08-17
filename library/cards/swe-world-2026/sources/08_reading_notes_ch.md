@@ -1,0 +1,5 @@
+- 始终保持对象边界：16,550 个 task、26K 个 SWT example、21K 个 SWR example 与 5.7K 个 policy-SFT episode 不是同一计量单位。
+- 把 SWT 读作 action-level simulated `stdout`/`stderr`/`exit_code`，把 SWR 读作 episode-level test report + binary reward，并把 Docker 视为 collection/final-evaluation oracle。
+- 保留 32B RL 数字冲突：abstract/Table 2/README 为 55.0，§6.2 正文为 54.8。
+- 联读 Table 7 与 Figure 2：CoT 提高 SWR accuracy，而 non-CoT SWR 直接表现出 reward hacking 与 trajectory-length collapse。
+- 可检查官方 demo 和 weight，但不能据此推断完整数据已发布；待解决项包括 corpus、license、split、lineage、judge 身份、contamination、privacy 与 RL compute。

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ThinkLite-VL 以模型特定的 MCTS 求解深度与 50 轮未解状态，从 69,997 条视觉推理候选中选出 11K/7.5K 提示用于 GRPO；价值在难度感知筛选，边界是判别器与决策谱系未完整公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "视觉推理 MCTS 难度筛选、RLVR 配方与开放数据审计",
+  "best_for_ch": "研究多模态 RLVR、策略相对难度、样本选择、数据谱系和 verifier 风险的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiyao Wang、Zhengyuan Yang、Chao Feng、Hongjin Lu、Linjie Li、Chung-Ching Lin、Kevin Lin、Furong Huang、Lijuan Wang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

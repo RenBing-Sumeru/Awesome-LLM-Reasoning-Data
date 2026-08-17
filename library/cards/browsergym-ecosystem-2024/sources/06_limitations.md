@@ -1,0 +1,3 @@
+Correctness is inherited from the wrapped benchmark and adapter. A BrowserGym success value proves only that the adapter's evaluator returned success under that run; it does not prove semantic task completion beyond the original benchmark contract.
+
+The ecosystem can standardize logging while still comparing non-equivalent tasks, live services, action abstractions, prompts, and hidden-test policies. Browser versions, site dependencies, login state, captchas, network failures, and model API changes can shift outcomes. Public logs and task configurations can contaminate future agents, and adapter code must be audited before using trajectories as training or reward data.

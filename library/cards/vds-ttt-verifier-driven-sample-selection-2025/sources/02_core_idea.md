@@ -1,0 +1,1 @@
+VDS samples multiple candidate solutions, selects a high-scoring pseudo-label when available, then performs sequential LoRA test-time updates. The stated feedback/selection contract is: The process reward model is the programmatic selector; stated thresholds are 0.99 for math and 0.9 for AIME, and unselected candidates are not described as a released negative set.

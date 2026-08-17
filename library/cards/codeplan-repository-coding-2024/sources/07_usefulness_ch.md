@@ -1,0 +1,1 @@
+它可作为仓库编辑轨迹 schema：保留 source commit、target commit 或 patch、变更请求、依赖图快照、受影响符号、生成 edit chunks、合并后的仓库状态、block 分类、diff.html、metrics.json、approach name 和 metric script 版本。它适合研究代码智能体中的规划和影响分析。atlas 使用时要把基于指标的编辑相似度、基于测试的正确性和人类语义意图审查分开。

@@ -1,0 +1,3 @@
+# Evidence
+
+**Claim:** reflection-token augmentation contributes beyond using the same raw instruction outputs with retrieval. **Controlled setup:** Figure 3a uses the same 7B family and 50K training instances; Self-RAG is compared with a No Retriever target (ordinary instruction pairs) and a No Critic target (always prepend the top passage without reflection tokens). **Result:** on PopQA, Self-RAG scores 45.5 versus 43.6 and 42.6; on the sampled ASQA set, exact match is 32.1 versus 31.0 and 18.1. **Boundary:** this isolates the training target design at 50K scale, but the critic labels distill GPT-4 and ASQA uses only 150 sampled evaluation instances.

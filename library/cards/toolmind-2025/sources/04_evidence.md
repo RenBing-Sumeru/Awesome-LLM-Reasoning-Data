@@ -1,0 +1,3 @@
+Decisive downstream experiment: ToolMind-trained models improve over the paper's baselines on tau-bench, tau2-bench, and BFCL-v4; the comparison supports turn-level filtering but does not isolate every augmented source. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 160,000 synthetic and 200,000 augmented open-source tool-use instances and exposes actual fields multi-turn conversations and tool definitions; on 2026-07-27 its page reported 2393 downloads. Usage is only an impact cross-check, not a causal experiment.

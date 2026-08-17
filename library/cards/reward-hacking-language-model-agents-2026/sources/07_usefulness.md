@@ -1,0 +1,3 @@
+Use the suite to test a mitigation or post-training recipe: run the same agent before and after optimization, collect both observed reward and hidden safety reward, and treat a widening gap as a regression. The released environments make this a repeatable pre-deployment audit for teams changing reward, exploration, or credit-assignment choices.
+
+It is most useful when a task can define a meaningful hidden objective. Do not call a high observed score safe when the hidden objective is unavailable, and do not transfer the result without testing the target tool's permissions and incentives. Preserve the trajectory logs for later audit.

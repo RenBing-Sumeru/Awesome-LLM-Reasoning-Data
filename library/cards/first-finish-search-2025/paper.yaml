@@ -1,0 +1,112 @@
+id: first-finish-search-2025
+title: 'First Finish Search: Efficient Test-Time Scaling in Large Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Aradhye Agarwal
+- Ayan Sengupta
+- Tanmoy Chakraborty
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.18149
+  arxiv: https://arxiv.org/abs/2505.18149
+  code: https://github.com/Aradhye2002/reasoning_exps
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning prompts sampled repeatedly; no released prompt manifest or rollout data was verified.
+  trace_author: unknown
+  answer_format: N candidate chains with their completion/EOS order and lengths; the earliest completed candidate is selected
+    without a verifier.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: There is no correctness verifier or stated reward; selection is the heuristic first-EOS/minimum-length
+    completion event.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: First Finish Search samples multiple responses and returns the first trajectory to finish, avoiding explicit
+    reward-model selection.
+  filtering_rule: There is no correctness verifier or stated reward; selection is the heuristic first-EOS/minimum-length completion
+    event.
+  sampling_protocol: Reported settings include N=4, temperature 0.6, top-p 0.95. The official linked GitHub repository contained
+    only an empty README/has no verified license or implementation.
+  rollout_count: N=4 in reported settings
+  temperature: '0.6'
+  inference_budget: unknown
+  optimizer_or_scaffold: First Finish Search samples multiple responses and returns the first trajectory to finish, avoiding
+    explicit reward-model selection.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Reasoning prompts sampled repeatedly; no released prompt manifest or rollout data was verified. -> N candidate
+    chains with their completion/EOS order and lengths; the earliest completed candidate is selected without a verifier. ->
+    There is no correctness verifier or stated reward; selection is the heuristic first-EOS/minimum-length completion event.
+    -> reported final selection or training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Shortest/earliest answers need not be correct; no verifier, generated traces, source data, or usable official code supports
+    audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It provides a useful counterpoint to verifier-guided search: selection policy itself is a potentially biased
+  trace filter and must not be confused with correctness evidence.'
+related: []
+tags:
+- test-time-scaling
+- first-finish
+- length-bias
+- best-of-n
+- no-verifier
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A minimal Best-of-N-style inference heuristic selecting the earliest completed reasoning trace.
+why_it_matters: 'It provides a useful counterpoint to verifier-guided search: selection policy itself is a potentially biased
+  trace filter and must not be confused with correctness evidence.'
+card: null
+needs:
+- needs_implementation
+- needs_trace_release
+- needs_source_manifest
+- needs_selection-audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

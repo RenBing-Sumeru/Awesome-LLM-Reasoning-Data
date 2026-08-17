@@ -1,0 +1,3 @@
+INTELLECT-3 is a 106B-parameter Mixture-of-Experts model with 12B active parameters, post-trained from GLM-4.5-Air-Base by supervised fine-tuning followed by large-scale asynchronous reinforcement learning. The reusable data object is an environment episode: prompt, model reasoning and actions, tool or sandbox observations, and an environment-defined reward or terminal outcome.
+
+Prime Intellect connects these episodes through `prime-rl`, the `verifiers` library, the Environments Hub, and Prime Sandboxes. The report is consequently both a model report and a partial disclosure ledger for an open environment-based RL stack.

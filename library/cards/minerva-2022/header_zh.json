@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Minerva 是早期量化推理模型报告，但它的重要性在于把数学/科学 benchmark 组合成推理评测谱系。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Ethan Dyer 等（Google Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T08:50:32Z"
+}

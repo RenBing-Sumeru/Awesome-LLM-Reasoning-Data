@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布前给基准题目加秘密水印，并用有确定假阳性率的白盒统计检验发现模型是否记住该基准。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "基准污染检测与评测可靠性审计论文",
+  "best_for_ch": "在发布前设计可审计基准、且可访问待测模型权重的维护者。",
+  "confidence_ch": "高：已精读官方论文并核验 ICLR 2025 workshop 发表与公开代码。",
+  "authors_ch": "Tom Sander, Pierre Fernandez, Saeed Mahloujifar, Alain Durmus, Chuan Guo",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T10:45:00Z"
+}

@@ -1,0 +1,1 @@
+This is useful for auditing probability-ranked reasoning datasets. Any release using naturalness scores should publish tokenizer/model revisions, step boundaries, raw token scores, corrected scores, selection decisions, verifier outcomes, and rejected candidates.

@@ -1,0 +1,5 @@
+- 子问题计划、levels 和 credits 由 LLM 生成。看似合理的分解可能漏掉依赖，不准确的 credits 可能系统性地错配计算；论文没有发布这些标注的校准或错误标签。
+- 在所检查的 weighted 实现中，局部限制是以 words 表达的自然语言指令。API 调用仍可生成至其总体最大值，因此该实现没有证明每个子问题的 token 使用被严格隔离。
+- E3 依赖异质的任务分数与平均计费 completion tokens。A 的平方使分数差异影响很大，而 provider tokenization、reasoning-token 报告和 planning-token 计入方式均可改变 T。它是比较指标，不是更好轨迹或数据记录的证据。
+- TravelPlanner 在评分前需要第二个 LLM 重建 JSON。其 model/version 通过环境提供，而非由发布物固定，这会带来 judge/conversion drift，以及 false failure 或 false pass 的可能。
+- 仓库发布了代码和预分解输入，但未发布实际 predictions、scores、seeds、endpoint/model revisions、完整 prompts、失败调用或去污染分析。curator inference：缺少这些 artifact 时，即使源码能运行，性能归因和审计重放仍受限。

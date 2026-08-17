@@ -1,0 +1,115 @@
+id: agentpack-code-changes-2025
+title: 'AgentPack: A Dataset of Code Changes, Co-Authored by Agents and Humans'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yangtian Zi
+- Zixuan Wu
+- Aleksander Boruch-Gruszecki
+- Jonathan Bell
+- Arjun Guha
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- code-changes
+- agent-human-collaboration
+- software-engineering
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.21891
+  arxiv: https://arxiv.org/abs/2509.21891
+  doi: https://doi.org/10.48550/arXiv.2509.21891
+  code: null
+  data: https://huggingface.co/datasets/nuprl/AgentPack
+  project: null
+  huggingface: https://huggingface.co/datasets/nuprl/AgentPack
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: AgentPack paper and Hugging Face dataset
+  trace_author: AgentPack authors and repository/code-change mining pipeline
+  answer_format: code changes, authorship signals, repository metadata, agent/human co-author labels, and dataset records
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: agent-and-human co-authored code-change records
+  verifier_or_reward: dataset provenance checks and code-change metadata audits
+  terminal_predicate: dataset provenance checks and code-change metadata audits
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: agent/human co-authored code-change histories
+  generator: AgentPack code-change dataset construction
+  filtering_rule: pin Hugging Face revision and reconcile data-scale mismatch between paper and dataset card
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2509.21891; https://huggingface.co/datasets/nuprl/AgentPack
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2509.21891'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: dataset requires Hugging Face access conditions; arXiv v2 reports 1.8M edits through early October 2025, while the
+    Hugging Face dataset card reports an earlier 1.3M-commit snapshot through mid-August 2025
+inclusion_reason: it records agent-involved code changes as software-engineering trajectory evidence
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- code-changes
+- agent-human-collaboration
+- software-engineering
+one_line: AgentPack collects code changes co-authored by agents and humans.
+why_it_matters: it records agent-involved code changes as software-engineering trajectory evidence
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AgentPack collects code changes co-authored by agents and humans.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Agent verification confirms arXiv v2 status, Northeastern affiliation, arXiv DOI, and Hugging Face dataset access
+    page.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 119
+  primary_category_id: environment_agent_trajectory_data

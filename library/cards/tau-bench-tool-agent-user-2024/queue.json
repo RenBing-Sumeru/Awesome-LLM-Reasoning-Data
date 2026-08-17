@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T11:22:52Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "ref704 工具调用与客服 Agent 的",
+    "updated_at": "2026-07-18T11:22:52Z"
+  }
+}

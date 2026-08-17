@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以 15 类攻击和 7 类防御审计 LLM-as-a-Judge 的稳健性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要核查推理数据与自动评测可靠性的研究者。",
+  "confidence_ch": "高：已核对 arXiv 论文、作者机构及公开代码仓库。",
+  "authors_ch": "Songze Li, Chuokun Xu, Jiaying Wang, Xueluan Gong, Chen Chen, Jirui Zhang, Jun Wang, Kwok-Yan Lam, Shouling Ji",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

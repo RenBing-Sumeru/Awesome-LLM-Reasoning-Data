@@ -1,0 +1,1 @@
+JudgeBench 要回答的问题是：LLM judge 面对困难回答对时，能否判断客观正确性，而不只是复现人类偏好。主要来源是 2024-10-16 提交、后修订为 ICLR 2025 conference paper 的 arXiv 论文，以及 ScalerLab 官方 GitHub 和 Hugging Face 数据发布。一个样本包含问题、两个模型回答、来源任务、回答模型和 `B>A` 这类客观偏好标签。收录边界是 judge/reward 元评测；它不是普通聊天偏好数据，也不是训练助手的 recipe。它对 atlas 的价值在于把知识、推理、数学、代码任务里的 correctness 做成可审计的 pairwise feedback contract。

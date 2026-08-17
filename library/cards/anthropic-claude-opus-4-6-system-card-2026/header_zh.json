@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Claude Opus 4.6 的系统卡部分披露了来源类别、RLHF/RLAIF、先前模型 reasoning-transcript 初始化、小于 0.01% 的 reasoning workspace-reward 错误以及细致的安全/审计实践，但没有公开底层数据、奖励或可复现制品。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型系统卡与数据披露台账",
+  "best_for_ch": "审查前沿后训练中有界实现披露、奖励例外、评测完整性和 4.6 与 4.5 证据边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

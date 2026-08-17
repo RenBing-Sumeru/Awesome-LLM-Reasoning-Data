@@ -1,0 +1,3 @@
+The paper compares three sources of process labels: Monte Carlo completion estimates, LLM-as-a-judge, and human annotation. Its released Qwen2.5-Math PRMs use a consensus filter: a record is retained only when MC estimation and a Qwen2.5-72B-Instruct critic agree on the location of erroneous reasoning steps.
+
+The disclosed data object is a mathematical problem with a golden final answer and a generated, step-separated response. Its feedback object combines eight continuation outcomes from each step with a critic's stepwise review and a retained consensus label. The released PRM then emits a scalar score for every step, rather than generating an answer.

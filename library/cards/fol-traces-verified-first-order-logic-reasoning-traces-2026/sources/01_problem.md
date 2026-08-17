@@ -1,0 +1,3 @@
+Formal-logic datasets often provide only formulas and answers. FOL-Pretrain builds a complexity-annotated corpus and releases FOL-Traces with algorithmic solution processes.
+
+This gap directly determines whether first-order logic reasoning trajectories can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on formulas, answers, solver states, derivation operations, and complexity metadata and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in formal-logic generalization and difficulty curricula.

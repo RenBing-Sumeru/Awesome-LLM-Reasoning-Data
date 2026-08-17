@@ -1,0 +1,3 @@
+Primary source: https://arxiv.org/abs/2406.12373. Public status: arXiv preprint, 2024. Static web benchmarks miss the fact that real websites update interface layout, content, and state. WebCanvas asks how to evaluate web agents when the target environment is online and changing.
+
+The evaluation object is task instruction, live page observation, action trajectory, key-node state, evaluator output, task success, and completion metrics. The feedback contract is key-node checks over intermediate states plus task success and efficiency metrics. This belongs in the collection as an auditable benchmark or environment surface; it is not by itself proof of deployable reliability, and training use should be inferred only where the paper explicitly releases data for that purpose.

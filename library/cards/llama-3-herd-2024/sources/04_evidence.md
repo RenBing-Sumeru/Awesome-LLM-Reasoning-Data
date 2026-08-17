@@ -1,0 +1,5 @@
+The paper reports a concrete scale anchor: 15.6T tokens for 405B, about 3.8×10^25 FLOPs, progressive 128K context, more than 25M synthetic fine-tuning examples, and six post-training rounds. The official model card reports 405B Instruct results including MMLU 87.3, GPQA 50.7, HumanEval 89.0, MATH 73.8, API-Bank 92.0, and BFCL 88.5; these are end-model outcomes, not attribution to one data stage.
+
+Safety artifacts are materially open: Llama Guard 3 weights, Prompt Guard, Code Shield, model utilities, and 8B/70B/405B PT/IT weights are released. The paper reports average violation reduction around 65% for Llama Guard 3, while the full English guard setup shows -86% relative violations and +102% relative false refusals, exposing the safety/helpfulness tradeoff.
+
+The contamination analysis estimates overlap of 98% AGIEval, 95% BBH, 96% BoolQ, 85% HellaSwag, 99% QuaC, and 52% Natural Questions. HumanEval, MBPP, MMLU, and MMLU-Pro cannot be usefully assessed by the selected 8-gram method. These findings require caveats around headline benchmarks.

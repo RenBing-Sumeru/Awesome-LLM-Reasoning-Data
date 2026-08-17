@@ -1,0 +1,2 @@
+RL from verifiable rewards is easiest where an answer can be checked by an exact answer, test, or other deterministic predicate. The report frames open-ended tasks as a gap because their outputs are subjective or multi-dimensional and therefore lack that inexpensive contract. It proposes rubric-based automatic scoring as an alternative; this is the authors' reported approach, not evidence that its scores are generally reliable.
+

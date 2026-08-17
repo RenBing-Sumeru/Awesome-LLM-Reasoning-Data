@@ -1,0 +1,101 @@
+id: multimodal-rewardbench-2-interleaved-2025
+title: 'Multimodal RewardBench 2: Evaluating Omni Reward Models for Interleaved Text and Image'
+year: 2025
+venue: CVPR 2026
+authors:
+- Yushi Hu
+- Reyhane Askari-Hemmat
+- Melissa Hall
+- Emily Dinan
+- Luke Zettlemoyer
+- Marjan Ghazvininejad
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- omni-models
+- interleaved-generation
+- reward-modeling
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Multimodal_RewardBench_2_Evaluating_Omni_Reward_Models_for_Interleaved_Text_CVPR_2026_paper.html
+  arxiv: https://arxiv.org/abs/2512.16899
+  code: https://github.com/facebookresearch/MMRB2
+  data: https://huggingface.co/datasets/rl-research/multimodal-rewardbench-2
+  project: null
+  huggingface: https://huggingface.co/datasets/rl-research/multimodal-rewardbench-2
+  doi: null
+  venue: https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Multimodal_RewardBench_2_Evaluating_Omni_Reward_Models_for_Interleaved_Text_CVPR_2026_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Multimodal_RewardBench_2_Evaluating_Omni_Reward_Models_for_Interleaved_Text_CVPR_2026_paper.html
+  bibtex: null
+data_object:
+  prompt_source: Twenty-one source tasks and newly created practical prompts.
+  trace_author: Twenty-three models and agents generate candidates; human experts annotate preferences.
+  answer_format: Interleaved text/image prompt, two multimodal responses, chosen side, source metadata, and human annotations.
+  process_fields:
+  - pair_id
+  - prompt_content
+  - response_a
+  - response_b
+  - chosen
+  - human_annotations
+  environment_or_substrate: Text-to-image, image editing, interleaved generation, and multimodal reasoning.
+  verifier_or_reward: Human-expert consensus, curated with ensemble filtering, selects the preferred response.
+  terminal_predicate: A reward model selects the human-preferred multimodal response.
+recipe_metadata:
+  base_model: Multimodal LLM judges and reward models under a standardized evaluation protocol.
+  teacher: Human experts provide consensus preference labels.
+  generator: Twenty-three frontier models and agents supply candidate outputs.
+  filtering_rule: Ensemble filtering retains pairs with strong human-expert agreement.
+  sampling_protocol: Use all four 1,000-pair test subsets and retain task-specific modality structure.
+  inference_budget: Interleaved images and text increase evaluation context and judge cost.
+  optimizer_or_scaffold: Official scripts generate judgments and compute task and aggregate accuracy.
+audit:
+  source_mixture: 4,000 expert-annotated preference pairs across four task categories.
+  split: Each of text-to-image, image editing, interleaved generation, and reasoning has a 1,000-pair test subset.
+  decontamination: The release is benchmark-only and explicitly should not be used for training models.
+  license: CC BY-NC 4.0; third-party prompt and image content carries separate terms.
+  lineage: CVPR 2026 paper, Meta FAIR MMRB2 repository, and hosted Hugging Face dataset.
+  known_failure_modes:
+  - Benchmark scores may vary by modality and task-specific judging protocol.
+  - Image and prompt sources bring external licensing constraints.
+  citation_status: verified
+  confidence: high
+  notes: Verified CVPR 2026 paper, FAIR affiliation, official facebookresearch repository, data schema, dataset release, and
+    benchmark-only license notice.
+inclusion_reason: The public benchmark provides expert multimodal preference pairs for evaluating omni reward models across
+  interleaved text and images.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: MMRB2 tests one reward-model interface across image generation, editing, interleaved outputs, and image
+  reasoning using 4,000 expert preference pairs.
+why_it_matters: It reveals whether a judge can carry one preference contract across both understanding and generation.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified CVPR 2026 paper, FAIR affiliation, official facebookresearch repository, data schema, dataset release, and
+    benchmark-only license notice.
+category_ids:
+- preference_reward_feedback_data

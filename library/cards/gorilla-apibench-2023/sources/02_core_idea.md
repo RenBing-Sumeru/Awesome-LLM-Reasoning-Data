@@ -1,0 +1,5 @@
+The one-sentence contribution is a retrieval-augmented API-calling benchmark and Gorilla model family for documentation-grounded tool use.
+
+The core mechanism is API documentation ingestion, synthetic instruction generation, retrieval over API docs, model generation of calls, and AST-based evaluation. The object being scored is APIBench records built from HuggingFace, TorchHub, and TensorHub/TensorFlow Hub documentation; the paper reports 1,645 filtered API calls with 10 synthetic instruction-API pairs per API and metadata such as API name, arguments, domain, framework, requirements, examples, and descriptions, and the feedback contract is AST subtree matching of generated API calls and arguments, with hallucination counted when the call matches no API in the database.
+
+The closest comparisons are tool-use benchmarks, function-calling datasets, and retrieval-augmented generation without strict API-call matching. Its direction label is evaluation-surface and feedback-contract curation rather than generic dataset summarization.

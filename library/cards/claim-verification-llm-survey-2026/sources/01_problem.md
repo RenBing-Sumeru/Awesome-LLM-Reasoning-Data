@@ -1,0 +1,3 @@
+Manual checking of claims is laborious while online information keeps growing. This ACL 2026 survey examines LLM-based claim verification, including retrieval-augmented generation, and explains the task as a pipeline from a claim to evidence and a verification output.
+
+For a reader, the important boundary is that verification is not simply asking a model whether a sentence sounds plausible. A system must decide what the claim means, obtain material that can bear on it, and apply a task-specific decision label. The same final label can arise from strong evidence or from a lucky guess, so the evidence path remains part of the problem rather than background detail.

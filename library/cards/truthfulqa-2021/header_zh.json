@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TruthfulQA 检查模型是否复述常见误解和虚假信念，而不是给出真实回答。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Stephanie Lin 等（University of Oxford, OpenAI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

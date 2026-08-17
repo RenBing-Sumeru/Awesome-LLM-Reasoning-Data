@@ -1,0 +1,5 @@
+- Start with Figure 2 and §§3.3-3.6: the construction object is a chain from function graph to reference call/output to trajectory, not a generic chat transcript.
+- Read Appendix A's negative-hint prompt carefully: Gemini judges an SFT action against a reference response and assigns one of five error types; this is a teacher filter, not execution-grounded proof.
+- Table 1 is the key scale record: 34,000 positive SFT instances and 4,556 mDPO pairs, with different single-turn, multi-turn, and irrelevance mixtures.
+- Read Table 4 alongside Table 2: positive context distillation and negative context distillation have separate within-paper ablations, but no public pair-level audit.
+- Read Appendix C as a bounded BFCL-v3 FSP-overlap study, not as a general no-contamination claim; retain the missing environment and API-version records as the main audit boundary.

@@ -1,0 +1,124 @@
+id: agentquest-2024
+title: 'AgentQuest: A Modular Benchmark Framework to Measure Progress and Improve LLM Agents'
+year: 2024
+venue: NAACL-HLT 2024 / arXiv
+authors:
+- Luca Gioacchini
+- Giuseppe Siracusano
+- Davide Sanvito
+- Kiril Gashteovski
+- David Friede
+- Roberto Bifulco
+- Carolin Lawrence
+source_role:
+- benchmark
+- agent_environment
+- audit_failure
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- trajectory_value
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2404.06411
+  arxiv: https://arxiv.org/abs/2404.06411
+  code: https://github.com/nec-research/agentquest
+  data: https://github.com/nec-research/agentquest
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.naacl-demo.19
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2024.naacl-demo.19/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Candidate for reusable agent evaluation harness design.
+  trace_author: paper authors, synthetic generators, model agents, or human annotators as disclosed by the official source
+  answer_format: Modular benchmark framework with extensible benchmark APIs and progress/failure metrics for LLM agents.
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: Modular benchmark framework with extensible benchmark APIs and progress/failure metrics for LLM
+    agents.
+  verifier_or_reward: New metrics track agent progress while solving tasks, exposing failure points beyond aggregate success.
+  terminal_predicate: New metrics track agent progress while solving tasks, exposing failure points beyond aggregate success.
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: unknown or paper-specific generator; verify the official paper before reuse
+  generator: Benchmarks and metrics are implemented as modular components and demonstrated on two agent-evaluation use cases.
+  filtering_rule: New metrics track agent progress while solving tasks, exposing failure points beyond aggregate success.
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: arXiv 2404.06411, candidate source lead, and official artifact links when disclosed in the abstract or arXiv
+    comment.
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: license for questions, traces, code, data, and generated tool records is unknown unless the linked artifact states
+    it
+  lineage: 'Primary source: https://arxiv.org/abs/2404.06411'
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: Affiliation and NAACL-HLT 2024 status verified from arXiv HTML/comment.
+inclusion_reason: 'AgentQuest exposes an agent/tool environment or trajectory-like data object with a concrete feedback contract:
+  New metrics track agent progress while solving tasks, exposing failure points beyond aggregate success.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+one_line: AgentQuest is a tool-use or agent-environment source centered on Modular benchmark framework with extensible benchmark
+  APIs and progress/failure metrics for LLM agents.
+why_it_matters: It makes the action schema, environment state, and success predicate visible enough for reasoning-data curation
+  and audit.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: AgentQuest contributes a tool-use or agent-environment surface with an explicit evaluation or verification
+  contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary arXiv link verified through arXiv API; artifact links are included only when found in official abstract,
+    comment, or source lead.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 20
+  candidate_title: AgentQuest
+  primary_category_id: environment_agent_trajectory_data
+  processed_at: '2026-07-12'

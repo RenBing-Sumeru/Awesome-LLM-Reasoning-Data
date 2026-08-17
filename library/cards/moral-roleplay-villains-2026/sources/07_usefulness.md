@@ -1,0 +1,2 @@
+The data can study conflicts among contextual safety, creative generation, and character consistency in fiction, historical simulation, and game NPCs. It can also train judges that distinguish fictional character fidelity from actionable real-world harm or support safety-conditioned rewards. Reuse should not treat villain responses as unconditional SFT data. Fictional context, moral level, and safety boundaries must be preserved, with character consistency and real-world harm risk evaluated separately.
+

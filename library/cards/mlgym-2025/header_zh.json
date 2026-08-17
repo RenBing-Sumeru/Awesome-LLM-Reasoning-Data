@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MLGym 将 13 个容器化 ML 研究任务表示为 thought/action/observation/state 与 evaluator score 轨迹；论文分析 624 条运行，而当前仓库为 676 对轨迹/结果文件，但无限 test-set validate、恒为 0 的 Gym reward、可变 latest 镜像与混合许可限制其复用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "AI 研究智能体环境、评测基准与轨迹发布论文",
+  "best_for_ch": "研究环境交互轨迹、科学智能体评测、程序化 evaluator、失败样本保留、replay 与数据发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Deepak Nathani、Lovish Madaan、Nicholas Roberts、Nikolay Bashlykov、Ajay Menon、Vincent Moens、Mikhail Plekhanov、Amar Budhiraja、Despoina Magka、Vladislav Vorotilov、Gaurav Chaurasia、Dieuwke Hupkes、Ricardo Silveira Cabral、Tatiana Shavrina、Jakob Nicolaus Foerster、Yoram Bachrach、William Yang Wang、Roberta Raileanu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

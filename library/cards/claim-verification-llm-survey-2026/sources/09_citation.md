@@ -1,0 +1,1 @@
+Alphaeus Dmonte, Roland R Oruche, Marcos Zampieri, Prasad Calyam, and Isabelle Augenstein. 2026. Claim Verification in the Age of Large Language Models: A Survey. ACL 2026 Student Research Workshop, pages 15–29. https://aclanthology.org/2026.acl-srw.2/

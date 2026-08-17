@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FS-Researcher 把资料存档与笔记保存在共享的文件系统工作区中，以支撑长程研究任务。（论文未披露的发布、回放与审计细节保留为未知。）",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Rollout、搜索或测试时轨迹研究",
+  "best_for_ch": "需要审计推理轨迹、反馈契约、选择机制与复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Chiwei Zhu、Benfeng Xu、Mingxuan Du、Shaohan Wang、Xiaorui Wang、Zhendong Mao、Yongdong Zhang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

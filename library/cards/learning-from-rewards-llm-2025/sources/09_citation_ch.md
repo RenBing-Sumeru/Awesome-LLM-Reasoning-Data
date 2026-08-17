@@ -1,0 +1,1 @@
+Wu, Xiaobao，《A Comprehensive Survey on Learning from Rewards for Large Language Models: Reward Models and Learning Strategies》，Findings of EMNLP 2025，2025。https://aclanthology.org/2025.findings-emnlp.970/

@@ -1,0 +1,8 @@
+- GRADE 是 fallible learned judge，不是特权状态 verifier。在 879-session 可靠性样本上，其最佳报告配置仍有 86 个 FP 与 25 个 FN，且 evaluator backbone 不同时准确率从 65.64% 变到 87.37%（论文 Table 5）。
+- 截图与可用 accessibility metadata 无法揭示所有后端提交、隐藏约束、延迟副作用或屏外状态。因此，视觉上合理的轨迹可能通过 GRADE，但真实任务仍未完成；报告中的 FP 支持这一反馈可观察性限制。
+- 闭源应用会因版本更新、A/B test、个性化、弹窗、网络条件和账号状态而漂移。论文称 controlled APK version 与标准化账号可缓解漂移，却未披露 app/APK/device/account/reset manifest，因此报告分数只是特定时间的快照（论文第 5 节）。
+- 评测采用 pass@1、没有 multi-seed 方差；每个 session 最长可运行 40 分钟；没有官方配置的模型会被调至最佳表现，但完整 prompt、temperature、decoding 与 seed 未披露。仅凭论文无法恢复模型排序的不确定性和精确复现成本。
+- 论文声称已发布任务定义、guideline 与评估代码，却没有提供可核实的当前版本 URL、许可、哈希或 tag；原始轨迹明确不发布。因此，成功/失败样本保留、evaluator 输入、干预日志与不可变 session lineage 无法接受外部审计（论文第 5 节）。
+- Benchmark split、任务来源引用、逐记录作者、去重、decontamination，以及与 235-task 前身或其他 GUI benchmark 的重合均为 unknown。879-session judge 样本与 100-session challenging subset 是 evaluator validation 样本，不是已披露的 train/dev/test 划分。
+- 论文报告使用作者自有专门账号，不涉及终端用户账号或第三方数据，对论文截图进行审查与 PII 脱敏，以 negative constraints 限制不可逆操作，并由人工监控中止风险运行。即便如此，下游访问仍须遵守应用条款，而且没有日志就无法复现干预决定（论文第 5 节）。
+- 专业、企业与 accessibility-specific workflow 不在报告范围内。Curator inference：如果未来 agent 直接针对 GRADE 优化，视觉上可信的部分完成或诊断盲点可能成为 verifier-gaming 目标；本文只做模型评测，没有测试这种训练场景。

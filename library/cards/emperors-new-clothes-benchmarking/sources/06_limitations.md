@@ -1,0 +1,1 @@
+Limitations and hidden assumptions: The evaluation is bounded by selected benchmarks, model versions, strategies, and controlled contamination recipes. Full prompt and generation logs are not confirmed as a public release.

@@ -1,0 +1,1 @@
+Filtering, deduplication, and language balancing shape the world a model sees. FineWeb2 illustrates that data processing is not a minor pre-training detail: it can affect coverage, quality, and later capabilities.

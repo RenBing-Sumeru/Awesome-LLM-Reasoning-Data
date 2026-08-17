@@ -1,0 +1,1 @@
+Bingbing Wen、Jihan Yao、Shangbin Feng 等。2025。《Know Your Limits: A Survey of Abstention in Large Language Models》。Transactions of the Association for Computational Linguistics，13:529–556。https://aclanthology.org/2025.tacl-1.26/

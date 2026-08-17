@@ -1,0 +1,5 @@
+The one-sentence contribution is an integrated platform for evaluating, training, and improving LLM-based agents across diverse interactive environments. The core mechanism is to wrap environments behind a unified interaction interface, run agents in a ReAct-style loop, collect high-quality trajectories, and use environment feedback both for benchmark evaluation and for training methods such as self-improvement or reinforcement learning.
+
+The data object is not only a prompt-answer pair. It is an executable episode with task state, action choices, environment response, and a terminal or per-step feedback signal. The feedback contract is environmental: each benchmark module decides success through reward, correctness checks, task-specific scores, or maximum-round termination.
+
+Closest comparisons include AgentBench and AgentBoard as multi-environment evaluation suites, plus single-environment agent-training systems. AgentGym's direction label is environment-agent trajectory data: it connects evaluation, trajectory release, and trainable feedback while requiring strict split, license, and contamination audits.

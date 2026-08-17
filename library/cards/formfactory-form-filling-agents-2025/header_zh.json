@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FormFactory 将交互式网页表单做成多模态智能体环境。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 multimodal form-filling agent benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Bobo Li 等（National University of Singapore）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:27:24Z"
+}

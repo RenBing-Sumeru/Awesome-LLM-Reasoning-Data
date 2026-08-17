@@ -1,0 +1,5 @@
+The official PMLR record, ICML 2025 paper, arXiv v3, author repository, and gated Waymo release are the primary sources for this Card. PMLR records the paper in Proceedings of the 42nd International Conference on Machine Learning, volume 267, pages 34288–34311.
+
+WOMD provides trajectories, HD maps, and traffic-control state, but these structured fields do not directly supply natural-language supervision for reasoning about non-proximate interactions caused by right-of-way rules or driver intentions. WOMD-Reasoning addresses this gap by translating selected scenes into text and using Microsoft Azure GPT-4 Turbo to generate factual and reasoning Q&As.
+
+The data object comprises 63,000 WOMD scenes and 2.94 million Q&As: 229,000 map, 326,000 ego-agent, 1.976 million surrounding-agent, 346,000 interaction, and 63,000 intention Q&As. It is relevant to `instruction_demonstration_rationale_data` as question–answer supervision and to `environment_agent_trajectory_data` because every record is grounded in a multi-agent motion scene. Collection value depends on retaining scene lineage and distinguishing present-state facts from future-conditioned interaction labels.

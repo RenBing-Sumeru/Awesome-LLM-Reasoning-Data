@@ -1,0 +1,1 @@
+Average log-probability is widely used to select natural-looking reasoning traces, but it can confound quality with reasoning-step length. A low-probability first token is diluted by more later tokens in a longer step, systematically favoring longer steps.

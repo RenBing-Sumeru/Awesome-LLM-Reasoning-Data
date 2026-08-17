@@ -1,0 +1,1 @@
+正式论文名为 CriticEval，而候选表中的“CriticBench: Evaluating Large Language Models as Critic”并非正式标题。CriticEval 将 critic 能力划分为 feedback、comparison、refinement 和 meta-feedback 四个维度，覆盖翻译、对话、问答、安全、摘要、数学和代码等 9 类场景。数据同时包含标量判断与文本 critique，并加入不同质量层级的回答、人工参考反馈和自动评价流程，用于系统比较开源与闭源 LLM。

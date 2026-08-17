@@ -1,0 +1,85 @@
+id: sage-judge-without-human-effort-2026
+title: 'Sage: A Scalable Framework for Evaluating LLM-as-a-Judge Without Human Effort'
+year: 2026
+venue: ICLR 2026 submission
+authors: [Yuanning Feng, Sinan Wang, Zhengxiang Cheng, Yao Wan, Dongping Chen]
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=JFTSZa2stt
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=JFTSZa2stt
+  openreview: https://openreview.net/forum?id=JFTSZa2stt
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Paper-page-backed curation; inspect the primary source before reusing results.
+  citation_status: verified
+  confidence: medium
+  notes: Introduces consistency-based judge evaluation without human labels; status is explicitly recorded as submission.
+inclusion_reason: 'Track 13: evaluator/reward/verifier reliability, attack, uncertainty, or reward-hacking research.'
+related: []
+tags:
+- track13
+- paper-page-backed
+- audit
+status: verified
+one_line_summary: Introduces consistency-based judge evaluation without human labels; status is explicitly recorded as submission.
+why_it_matters: It adds a paper-backed reliability or failure-mode surface to Track 13.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary paper page recorded; artifact availability stated without inference.
+category_ids:
+- audit_failure_contamination_verifier_attacks

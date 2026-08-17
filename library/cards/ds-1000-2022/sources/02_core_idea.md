@@ -1,0 +1,3 @@
+DS-1000's contribution is a natural, executable benchmark for data-science code generation with library-specific tasks and multi-criteria checking. The core mechanism is to collect realistic problems, perturb them away from original StackOverflow sources to reduce memorization, and accept a model output only when it satisfies both functional tests and optional surface-form constraints.
+
+Compared with HumanEval-style algorithmic tasks, the changed surface is API-heavy data manipulation, plotting, ML, and numeric-library code. The feedback contract is programmatic: `test_execution(solution)` checks behavior using generated test cases and reference outputs, while `test_string(solution)` can restrict APIs or keywords. Direction label: executable data-science code benchmark.

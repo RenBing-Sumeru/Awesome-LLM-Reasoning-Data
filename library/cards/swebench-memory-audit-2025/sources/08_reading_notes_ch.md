@@ -1,0 +1,5 @@
+- 应把论文第 3.3–3.4 节与 OSF 的 `leak_test.py`、`metric.py` 对照阅读：数据对象是一个静态路径列表答案及其答案级集合反馈，不是 agent trajectory。
+- 模型快照必须写准：Claude 3.5 Sonnet 为 `claude-3-5-sonnet-20240620`，Claude 3.7 Sonnet 为 `claude-3-7-sonnet-20250219`；公开脚本默认的 3.7 Haiku 必须被覆盖。
+- 摘要倍数必须保留条件：相对 BeetleBox 约 6×、相对 SWE-rebench 约 3× 指 issue-only complete coverage；file-structure 条件被描述为约 4× 和 2×。
+- 结论应视为与记忆相符的行为证据，而不是某条 SWE-Bench-Verified issue 出现在 Claude 训练数据中的证明。
+- 复用前应解决 OSF 许可与快照问题，补齐 BeetleBox 缺失标签和 9 月生成配方，固定仓库路径清单，并审计解析器与多报路径的影响。

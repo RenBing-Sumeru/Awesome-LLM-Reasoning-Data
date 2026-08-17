@@ -1,0 +1,1 @@
+Remember that efficiency comes from a data construction decision: each long trace receives a structure-preserving short partner, and the student learns both. The useful replication checks are whether the paired rewrite remains correct and whether shorter outputs retain accuracy under the same evaluation contract.

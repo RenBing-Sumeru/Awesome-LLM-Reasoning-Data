@@ -1,0 +1,111 @@
+id: rmb-comprehensive-reward-model-benchmark-2025
+title: 'RMB: Comprehensively Benchmarking Reward Models in LLM Alignment'
+year: 2025
+venue: ICLR 2025
+authors:
+- Enyu Zhou
+- Guodong Zheng
+- Binghai Wang
+- Zhiheng Xi
+- Shihan Dou
+- Rong Bao
+- Wei Shen
+- Limao Xiong
+- Jessica Fan
+- Yurong Mou
+- Rui Zheng
+- Tao Gui
+- Qi Zhang
+- Xuanjing Huang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- reward-modeling
+- preference-learning
+- evaluation
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=kmgrlG9TR0
+  arxiv: https://arxiv.org/abs/2410.09893
+  code: https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark
+  data: https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark
+  project: https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2410.09893
+  venue: https://openreview.net/forum?id=kmgrlG9TR0
+  openreview: https://openreview.net/forum?id=kmgrlG9TR0
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Forty-nine real-world scenarios in the repository's benchmark collection.
+  trace_author: Benchmark curators and source response generators.
+  answer_format: Prompt, response comparisons, preference label, scenario metadata, and Best-of-N candidates.
+  process_fields:
+  - prompt
+  - responses
+  - preference_label
+  - scenario
+  - best_of_n
+  environment_or_substrate: LLM alignment scenarios including reasoning and code.
+  verifier_or_reward: Pairwise preference and Best-of-N evaluation protocols score reward models.
+  terminal_predicate: A reward model ranks the preferred response or selects the best candidate.
+recipe_metadata:
+  base_model: State-of-the-art and generative reward models evaluated by the paper.
+  teacher: Scenario preference data and benchmark construction process.
+  generator: Multi-scenario response collection and evaluation packaging.
+  filtering_rule: Repository protocol defines pairwise and Best-of-N tests.
+  sampling_protocol: Pin repository commit and selected scenario configuration.
+  inference_budget: Best-of-N candidate count and judge configuration affect results.
+  optimizer_or_scaffold: Public RMB evaluation code.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Real-world scenarios, response comparisons, and Best-of-N candidate groups.
+  split: Use the released repository configuration and pin its commit.
+  decontamination: Public evaluation scenarios need separation from downstream training.
+  license: Check the repository license and upstream sources before reuse.
+  lineage: ICLR 2025 paper and Zhou-Zoey code-and-data release.
+  known_failure_modes:
+  - Coverage of 49 scenarios remains incomplete for all alignment uses.
+  - Best-of-N outcomes depend on candidate generation and selection budget.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICLR 2025 OpenReview record, formal title, authors, and official Zhou-Zoey repository that releases
+    code and datasets.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RMB evaluates reward models across 49 real-world scenarios with both pairwise and Best-of-N preference tests.
+why_it_matters: It connects offline reward-model comparison to the two selection modes commonly used in alignment workflows.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICLR 2025 OpenReview record, formal title, authors, and official Zhou-Zoey repository that releases
+    code and datasets.
+category_ids:
+- preference_reward_feedback_data

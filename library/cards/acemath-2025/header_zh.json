@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AceMath 发布三阶段通用到数学监督微调数据，以统一教师解答、跨模型答案核对和数据筛选支撑后训练。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "分阶段数学指令数据发布与后训练研究",
+  "best_for_ch": "适合构建大规模数学监督微调混合，或比较题目演化、答案交叉核对与分阶段课程。",
+  "confidence_ch": "高",
+  "authors_ch": "Zihan Liu、Yang Chen、Mohammad Shoeybi、Bryan Catanzaro、Wei Ping",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T14:30:00Z"
+}

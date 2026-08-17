@@ -1,0 +1,7 @@
+**Terminal-only anchoring.** A correct final answer can coexist with invalid, irrelevant, or copied intermediate reasoning. Tree-derived rewards estimate success frequency under this policy and finite search budget; they are not an independent verifier of semantic step validity. This is a curator inference from the stated feedback contract.
+
+**Unreleased verifier and trace boundary.** The checked launcher requires private extractor and binary-judge endpoints. Their models, prompts, versions, retry behavior, and calibration are unknown. Although code can represent parent links, tokens, scores, and terminal data, no public raw-tree, rejected-branch, or leaf-to-training-trace record was verified; reconstruction and audit cannot recover them from prompt-answer rows.
+
+**Budget and attribution.** The paper states that EPTree needs at least two generation rounds and is approximately twice as slow as multi-chain sampling without dedicated tree inference optimization. Its selected setup uses 30 leaves and a 480 training batch versus 16 and 256 for ChainRL. Matched generation-token comparisons therefore do not isolate the effect of the process reward from extra search paths or optimizer computation.
+
+**Data governance.** The paper names MATH-train and NuminaMath but does not provide a release manifest, source proportions, decontamination analysis, benchmark-overlap analysis, row-level splits, or upstream-rights mapping for the input JSONL. Code Apache-2.0 does not resolve dataset or generated-trace reuse rights.

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该 Findings of EMNLP 2025 研究在 OpenHermes 与 English WildChat 两个大池上比较六种 self-scoring selector、五次 random control 及 10K/50K SFT subset，显示复杂选择很少稳定胜过随机；其 token-length+K-means 实用 recipe 虽强，但公开代码只处理前 100 个 embedding 并选择 cluster center，不能复现论文的按 cluster 比例选择最长样本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模 SFT data selection 的 construction recipe、scaling negative result 与 release audit",
+  "best_for_ch": "研究 SFT subset selection、self-scoring、diversity、token-length heuristic、随机基线及 data-selection 可复现性的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Tingyu Xia、Bowen Yu、Kai Dang、An Yang、Yuan Wu、Yuan Tian、Yi Chang、Junyang Lin",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

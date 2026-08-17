@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "机制审计显示，伪 RLVR 可经中层 Anchor 与后层 Adapter 激活 Qwen 的污染记忆捷径，而非稳定提升推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "ICML 2026 的 RLVR 污染与机制可解释性审计论文",
+  "best_for_ch": "想复盘验证器、基准污染、奖励投机或可复现性风险的研究者。",
+  "confidence_ch": "高：已核对 ICML/arXiv v2 与作者代码；无独立数据或比较模型 checkpoint 发布。",
+  "authors_ch": "Lecheng Yan, Ruizhe Li, Guanhua Chen, Qing Li, Jiahui Geng, Wenxi Li, Longyue Wang, Chenyang Lyu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

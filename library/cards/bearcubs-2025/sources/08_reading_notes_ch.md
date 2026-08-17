@@ -1,0 +1,5 @@
+- 先读论文第 3–4 节与 Appendix B：内部完整对象包含 question、简短 gold answer、category、可行人工路径与访问链接，但公开 ZIP 只有按 ID 索引的 111 条 question string。
+- 应把 answer contract 与 trajectory analysis 分开阅读：人工 entailment 与 four-way GPT autorater 只判 final answer，不判 source authority、modality use、action validity 或 path fidelity。
+- 必须保留 protocol 不对称：computer-use agent 通常限时 15 分钟，OpenAI Chat GPT Agent 产品限时 45 分钟，而且各轮评测分别发生在 2/3 月、5 月和 7 月，所面对的网页持续变化。
+- autorater ZIP 只能视为 partial：四个文件都已逐一检查并计算 hash，但它需要受限 gold answer 与外部 GPT API，且没有 license、lockfile、retry fixture 或固定 offline output。
+- 在 gold、category/split、URL、provenance、完整人工与 agent episode、replay state、license 和不可变 version manifest 可得前，复用范围仍仅限 evaluation/audit。

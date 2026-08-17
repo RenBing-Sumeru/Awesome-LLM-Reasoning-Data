@@ -1,0 +1,3 @@
+Use this dataset to train a code preference model or to audit how a judge values complexity, style, explanation, and the other released preference dimensions. Keep each instruction with all four responses and all annotations; converting it to one winner loses the multi-candidate evidence. Build a local held-out evaluation set, report performance by preference label, and compare judge-ranked answers with tests or human review where available.
+
+Before fine-tuning, deduplicate instructions and code snippets against local training and evaluation pools. It is useful for studying LLM-judge supervision in code, but not as a stand-alone source for secure-code certification, regression testing, or claims about real-world developer satisfaction.

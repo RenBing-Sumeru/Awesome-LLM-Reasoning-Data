@@ -1,0 +1,7 @@
+- 宽泛来源类别与更严格过滤没有披露具体来源、provenance、权利、混合权重、数量、阈值、保留比例、split 或 contamination control。
+- 未发布 prompt、task definition、多模态训练记录、reasoning trace、tool trajectory、observation、action、环境响应、被接受或拒绝的 rollout、replay log 或 terminal rule。
+- 异步 RL 说明省略了优化算法、objective、reward/verifier contract、校准、false-positive analysis、reward-hacking control、rollout 数、decoding、optimizer、系数、schedule 与 seed。
+- “Million-agent environments”没有标明环境、tool、simulator、版本、访问条件、reset rule、container、确定性或可回放性；“million”统计的单位本身也未定义。
+- Apache-2.0 适用于已发布模型仓库。训练数据、环境/任务内容、teacher output、第三方工具与后训练记录的权利仍为 unknown。
+- 开放权重、官方信息仓库、benchmark 结果与部署示例，不能确立已发布的后训练数据集、可复现智能体训练程序或有效训练/评估分离。
+- 没有公开论文或训练工件可独立归因：报告增益究竟来自数据组成、RL feedback、基础设施、模型架构还是推理设置。

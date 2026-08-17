@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以 tokenizer 词表为攻击面推断语料成员关系，提供更可控的 LLM 预训练数据泄漏审计路径。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "预训练数据成员推断与 tokenizer 隐私审计论文",
+  "best_for_ch": "需要审计预训练语料来源、污染或 tokenizer 隐私泄漏的研究者。",
+  "confidence_ch": "高：arXiv 全文、USENIX 页面与 Apache-2.0 官方代码均已核验。",
+  "authors_ch": "Meng Tong, Yuntao Du, Kejiang Chen, Weiming Zhang, Ninghui Li",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T10:44:21Z"
+}

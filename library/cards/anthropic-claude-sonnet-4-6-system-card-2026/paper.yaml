@@ -1,0 +1,141 @@
+id: anthropic-claude-sonnet-4-6-system-card-2026
+title: Claude Sonnet 4.6 System Card
+year: 2026
+venue: Anthropic system card
+authors:
+- Anthropic
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- pairwise_preference
+domains:
+- general_reasoning
+- safety
+- coding
+- agentic_tool_use
+training_use:
+- safety_alignment
+construction_layer:
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www-cdn.anthropic.com/bbd8ef16d70b7a1665f14f306ee88b53f686aa75/Claude%20Sonnet%204.6%20System%20Card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/research/claude-sonnet-4-6
+  huggingface: null
+  doi: null
+  venue: https://www.anthropic.com/transparency
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The report discloses a proprietary mixture of public Internet information up to May 2025, non-public third-party
+    data, data from labeling services and paid contractors, opted-in Claude-user data, and data generated internally at Anthropic.
+    Record-level prompt sources, proportions, manifests, revisions, and rights mapping are unknown.
+  trace_author: The system card says data-work-platform workers help improve models through preference selection, safety evaluation,
+    and adversarial testing. It does not identify which records were used for post-training, their authorship, worker instructions,
+    internally generated-data producers, or item-level provenance.
+  answer_format: The report does not release post-training record schemas, response candidates, preference pairs, reasoning
+    traces, tool trajectories, labels, or retained fields.
+  process_fields: []
+  environment_or_substrate: The card reports several evaluation settings, including GUI/CLI sandboxed computer-use tasks and
+    internally constructed browser environments. Training environments, post-training tool traces, task versions, containers,
+    and replay artifacts are unknown.
+  verifier_or_reward: The Transparency Hub reports reinforcement from AI feedback; the system card says workers support preference
+    selection, safety evaluation, and adversarial testing, and that a significant fraction of reinforcement-learning training
+    transcripts was automatically screened. Reward-model/verifier identity, record schema, calibration, thresholds, aggregation,
+    coverage, and terminal predicates are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: The pretrained checkpoint lineage, initialization, and allocation across training stages are unknown.
+  teacher: unknown
+  generator: Anthropic discloses internally generated data as a source category, but the generating model(s), prompts, sampling
+    settings, selection process, and role in post-training are unknown.
+  filtering_rule: The system card reports data cleaning and filtering including deduplication and classification. Methods,
+    classifier identities, thresholds, ordering, removal yields, and any post-training-specific filters are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: Extended and adaptive thinking are product modes with a user-directed effort parameter. Training rollout
+    budgets, allocation policy, and a reproducible evaluation inference protocol are unknown.
+  optimizer_or_scaffold: Anthropic reports substantial post-training and fine-tuning, and its Transparency Hub lists reinforcement
+    from AI feedback and selected character-trait training. Objectives, reward construction, optimizer, schedules, rollout
+    policy, checkpoint selection, and reward mixing are unknown.
+audit:
+  source_mixture: The official report names five broad source categories and data cleaning, but does not release weights,
+    item/token counts, source manifests, revisions, provenance records, or rights mapping.
+  split: Training, validation, safety-evaluation, and deployment split membership, counts, revision pins, and policies are
+    unknown.
+  decontamination: The card states that online evaluation material may have been included in training data and points to the
+    Claude Opus 4.5 System Card for its general decontamination approach. A Sonnet-4.6-specific source-matching protocol,
+    blocklist, coverage, and quantified results are not disclosed.
+  license: Licenses and reuse rights for public-web, third-party, labeling/contractor, opted-in-user, internally generated,
+    post-training, and evaluation data are unknown.
+  lineage: The system card establishes report-level lineage from broad source categories through cleaning, post-training,
+    and evaluation, but no source-to-record-to-feedback-to-checkpoint ledger is released.
+  known_failure_modes:
+  - Broad source categories and named filters cannot establish item-level provenance, permissions, deduplication effectiveness,
+    or benchmark-overlap controls.
+  - The reported AI-feedback and worker-preference signals omit reward/verifier versions, data sources, calibration, thresholds,
+    coverage, candidate counts, rejected records, and optimization details.
+  - The card reports training-snapshot issues including hallucinated tool results, ignored or misrepresented tool failures,
+    over-eager actions, answer thrashing, fabricated citations, and unreported prompt-injection attempts; their incidence
+    and mitigation logs are not released.
+  - Automated behavioral-audit scenarios inform high-level training decisions, but the card says they are not training scenarios
+    or environments specifically targeting the audit metrics; the scenario records and complete audit artifacts are unavailable.
+  - The card acknowledges potential evaluation contamination from online material, while Sonnet-specific decontamination evidence
+    and release-grade reproducibility artifacts remain unavailable.
+  citation_status: verified
+  confidence: medium
+  notes: This conservative Track 12 entry records an official disclosure ledger, not a reusable data release or complete post-training
+    recipe. The official sources support high-level source, cleaning, post-training, AI-feedback, worker-role, and audit claims
+    only.
+inclusion_reason: A 2026 Anthropic system card that explicitly discloses broad training-source categories, deduplication/classification,
+  post-training and fine-tuning, reinforcement from AI feedback, worker preference/safety roles, and some reinforcement-learning
+  transcript screening while leaving the underlying data and feedback contracts largely undisclosed.
+related: []
+tags:
+- anthropic
+- claude-sonnet-4-6
+- system-card
+- reinforcement-from-ai-feedback
+- preference-selection
+- safety-evaluation
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: The Claude Sonnet 4.6 System Card reports broad proprietary training-source categories, deduplication/classification,
+  post-training, reinforcement from AI feedback, and worker preference/safety roles, while record-level data, reward, and
+  recipe details remain undisclosed.
+why_it_matters: 'It provides an auditable closed-frontier baseline: readers can distinguish the disclosed source categories,
+  high-level feedback methods, and safety-audit practice from the missing data lineage, reward contract, rollout policy, and
+  reproducibility evidence needed to reuse or independently assess a reasoning-data pipeline.'
+card: null
+needs:
+- 'needs_data: source manifests, proportions, rights, revisions, post-training records, preference examples, reasoning/tool
+  traces, and item-level lineage'
+- 'needs_verifier: AI-feedback and worker-feedback protocols, reward/verifier versions, training data, calibration, thresholds,
+  coverage, aggregation, and false-positive/false-negative analysis'
+- 'needs_metadata: stage allocation, generator/teacher identity, candidate counts, sampling and rollout settings, objectives,
+  reward mixing, optimizer, schedules, checkpoint selection, and data yields'
+- 'needs_audit: split membership, Sonnet-specific decontamination evidence, benchmark-overlap results, evaluation prompts,
+  task/tool/harness pins, sample budgets, audit logs, and mitigation records'
+- 'needs_code: post-training, reward/verifier, evaluation, and mitigation implementations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Anthropic Claude Sonnet 4.6 System Card PDF, official Transparency Hub, and official release page were
+    checked. No official data, code, reward-model, or reproducibility artifact was identified.

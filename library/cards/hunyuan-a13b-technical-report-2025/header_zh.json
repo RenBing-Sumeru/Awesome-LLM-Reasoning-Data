@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Hunyuan-A13B 报告了 20T 级数据、250B STEM 数据、四个 SFT/RL 阶段、GRPO 及 sandbox/GRM 反馈；但来源清单、教师模型、奖励权重和审计工件仍未披露或未核验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿模型技术报告与数据披露账本",
+  "best_for_ch": "需要审计大规模 STEM 数据、GRPO、sandbox/GRM 反馈及后训练可复现性边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Tencent Hunyuan Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T10:32:24Z"
+}

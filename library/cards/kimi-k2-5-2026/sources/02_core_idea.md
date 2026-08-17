@@ -1,0 +1,5 @@
+Kimi K2.5 extends Kimi K2 with native multimodal training, zero-vision SFT, joint text-vision RL, and Agent Swarm. It builds on K2's MoE language model with MoonViT-3D and an MLP projector, then uses early joint visual/text training rather than late visual adaptation. The report states that approximately 15T mixed visual and text tokens are processed across visual-encoder, joint-pretraining, and long-context stages.
+
+Zero-vision SFT uses text-only SFT to activate visual reasoning and tool use, with image operations represented through programmatic IPython actions. Joint RL then covers both text and visual abilities. The feedback mix includes verifiable outcome rewards, token-budget reward, GRMs, task-specific visual reward functions, and a Kimi K2 LLM verifier for synthesized visual puzzles.
+
+Agent Swarm adds Parallel-Agent RL (PARL): a trainable orchestrator decomposes work and creates frozen subagents, whose trajectories are treated as environmental observations. This is a disclosed coordination and feedback contract, not a release of the underlying agent tasks, tools, subagents, or RL environment.

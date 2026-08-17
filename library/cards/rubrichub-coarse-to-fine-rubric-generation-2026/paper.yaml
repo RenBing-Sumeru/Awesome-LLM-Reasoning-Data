@@ -1,0 +1,111 @@
+id: rubrichub-coarse-to-fine-rubric-generation-2026
+title: 'RubricHub: A Comprehensive and Highly Discriminative Rubric Dataset via Automated Coarse-to-Fine Generation'
+year: 2026
+venue: ACL 2026
+authors:
+- Sunzhu Li
+- Jiale Zhao
+- Huimin Ren
+- Zhenlin Wei
+- Yang Zhou
+- Jingwen Yang
+- Shunyu Liu
+- Kaike Zhang
+- Wei Chen
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- open-ended-generation
+- rubric-reward-modeling
+- alignment
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1445/
+  arxiv: https://arxiv.org/abs/2601.08430
+  code: null
+  data: https://huggingface.co/datasets/sojuL/RubricHub_v1
+  project: null
+  huggingface: https://huggingface.co/datasets/sojuL/RubricHub_v1
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1445
+  venue: https://aclanthology.org/2026.acl-long.1445/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1445/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Multi-domain open-ended prompts and response sources.
+  trace_author: Automated coarse-to-fine rubric generation and evaluation pipeline.
+  answer_format: RuFT examples with query, answer, rubrics, aggregate score, and judge details; RuRL examples with VeRL-compatible
+    reward specification.
+  process_fields:
+  - query
+  - answer
+  - rubrics
+  - weights
+  - rubric_score
+  - rubric_judge_details
+  environment_or_substrate: Open-ended response evaluation and post-training.
+  verifier_or_reward: Principle-guided synthesis, multi-model aggregation, difficulty evolution, and weighted rubric evaluation.
+  terminal_predicate: A weighted rubric score and per-criterion judgment are produced.
+recipe_metadata:
+  base_model: Post-training model configurations documented in the ACL paper.
+  teacher: Automated multi-model rubric-generation and judging pipeline.
+  generator: Coarse-to-fine rubric generation with principle guidance and difficulty evolution.
+  filtering_rule: Use the released RuFT and RuRL data configurations and paper protocol.
+  sampling_protocol: Pin source mixture and dataset revision before reproduction.
+  inference_budget: Multi-model aggregation and rubric evaluation are material construction costs.
+  optimizer_or_scaffold: Rubric-based rejection-sampling fine-tuning and rubric-based reinforcement learning.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Cross-domain prompts, responses, automated rubrics, weighted scores, and detailed judgments.
+  split: The official RubricHub_v1 release should be pinned to a revision.
+  decontamination: Not fully documented on the public data card.
+  license: Confirm from the current official dataset card before reuse.
+  lineage: ACL 2026 paper, its formal affiliation block, and RubricHub_v1 data release.
+  known_failure_modes:
+  - Automated criteria and weights can preserve model bias.
+  - Cross-domain aggregate scores may conceal domain-specific calibration errors.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ACL 2026 long-paper record and affiliation block and the official RubricHub_v1 dataset README documenting
+    RuFT/RuRL schemas and citation.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: RubricHub releases roughly 110K cross-domain, weighted rubric evaluations for fine-tuning and rubric-based
+  RL on open-ended generation.
+why_it_matters: It preserves the criterion, weight, score, and judge-detail fields needed to audit how an open-ended reward
+  was produced.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ACL 2026 long-paper record and affiliation block and the official RubricHub_v1 dataset README documenting
+    RuFT/RuRL schemas and citation.
+category_ids:
+- preference_reward_feedback_data
+- judgment_rubric_domain_expert_data

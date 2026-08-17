@@ -1,0 +1,136 @@
+id: sol-ver-2025
+title: 'Learning to Solve and Verify: A Self-Play Framework for Code and Test Generation'
+year: 2025
+venue: NeurIPS 2025 Workshop on Deep Learning for Code in the Agentic Era
+authors:
+- Zi Lin
+- Sheng Shen
+- Ilia Kulikov
+- Jingbo Shang
+- Jason Weston
+- Yixin Nie
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- code_generation
+- test_generation
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2502.14948
+  arxiv: https://arxiv.org/abs/2502.14948
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.14948
+  venue: https://neurips.cc/virtual/2025/131665
+  openreview: https://openreview.net/forum?id=j6tMZaPWWF
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2502.14948
+data_object:
+  prompt_source: 103,280 deduplicated Python problem descriptions generated from OSS-Instruct code snippets with prompt templates
+    adapted from MBPP, APPS, and CodeContests training sets
+  trace_author: One Llama 3.1 8B model alternates as code Solver and unit-test Verifier
+  answer_format: problem description, function signature, candidate code with explanatory comments, generated test inputs
+    and expected outputs, execution scores, accepted SFT records, and Solver/Verifier preference pairs
+  process_fields:
+  - source_code_snippet
+  - problem_description
+  - function_signature
+  - candidate_code
+  - candidate_test_input
+  - candidate_expected_output
+  - branch_coverage
+  - execution_pass_fraction
+  - chosen_response
+  - rejected_response
+  - role
+  - iteration
+  environment_or_substrate: Python function execution against self-generated unit-test suites; exact sandbox policy is unknown
+  verifier_or_reward: fraction of generated tests passed by candidate code, reduced to a full-pass agreement rule for the
+    default SFT and DPO selection
+  terminal_predicate: at least one candidate solution passes all generated tests; the passing solution-test tuple is treated
+    as chosen
+recipe_metadata:
+  base_model: Llama 3.1 8B
+  teacher: No larger external teacher; the same model supplies Solver and Verifier outputs
+  generator: Llama 3.1 8B generates problem descriptions, function signatures, commented code solutions, test inputs, reasoning,
+    and expected outputs
+  filtering_rule: deduplicate problem descriptions; select test subsets for branch coverage and diverse outputs; retain full-pass
+    solution-test tuples for SFT; pair them with failing code or alternative expected outputs for DPO
+  sampling_protocol: three iterative rounds of synthetic generation followed by joint Solver/Verifier SFT and DPO; the third
+    round uses agreement between Iter 1 and Iter 2 verifier outputs
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: fairseq2 for SFT and DPO, vLLM for inference, and alternating SFT then DPO updates for both roles
+audit:
+  source_mixture: OSS-Instruct code snippets plus problem-format templates from MBPP, APPS, and CodeContests; exact source
+    revisions and mixture weights are unknown
+  split: evaluated on MBPP and LiveCodeBench; generated training split, iteration partitions, and overlap controls are unknown
+  decontamination: unknown
+  license: The paper uses the arXiv perpetual non-exclusive distribution license; licenses for an unreleased Sol-Ver codebase,
+    generated corpus, and checkpoints are unknown
+  lineage: paper and workshop records disclose the recipe, prompts, aggregate counts, and results, but no author-linked implementation,
+    generated dataset, checkpoint, or record-level iteration ledger was verified
+  known_failure_modes:
+  - generated tests can be incomplete, incorrect, or underspecified, accepting wrong code
+  - one model supplies both roles, so Solver and Verifier may share correlated blind spots
+  - a full pass establishes agreement with generated tests, not semantic correctness against the intended specification
+  - Solver and Verifier DPO pairs inherit errors from the assumed chosen solution-test tuple
+  - branch coverage and output diversity do not guarantee behavioral adequacy
+  - exact training splits, decontamination, decoding settings, sandboxing, retained/rejected counts, and record-level licenses
+    are undisclosed
+  - current arXiv v4 metadata differs from the earlier workshop version in title wording and author list
+  - the abstract's 17.49% test-generation figure matches relative false-positive-rate reduction rather than relative accuracy
+    gain in Table 1
+  citation_status: verified
+  confidence: high
+  notes: Use arXiv v4 title and six-author list, including Ilia Kulikov. The official 2025 NeurIPS workshop page reflects
+    an earlier five-author version and the title 'A Self-Play Framework for Mutually Improving Code and Test Generation'.
+inclusion_reason: Sol-Ver is a concrete self-play construction recipe in which generated code and tests are executed together,
+  full-pass pairs create SFT records, failures create Solver and Verifier DPO pairs, and the updated model regenerates both
+  sides over three rounds.
+related: []
+tags:
+- solver-verifier
+- code-self-play
+- unit-test-generation
+- execution-filtering
+- synthetic-preferences
+- iterative-sft-dpo
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Sol-Ver uses one Llama 3.1 8B model to co-generate Python solutions and unit tests, turning execution agreement
+  into Solver/Verifier SFT records and DPO pairs over three self-play rounds.
+why_it_matters: It makes executable feedback a closed-loop data-construction contract while exposing how weak generated tests,
+  correlated roles, and unreleased lineage can turn selection errors into training data.
+card: null
+needs:
+- 'needs_url: author-linked code, generated data, and checkpoints'
+- 'unknown: training splits, decontamination, licenses, and record-level lineage'
+- 'unknown: main-generation decoding, candidate counts, sandbox policy, and compute budget'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against arXiv v4, the official NeurIPS workshop page, and OpenReview; no author-linked implementation, generated-data,
+    or checkpoint artifact was verified.

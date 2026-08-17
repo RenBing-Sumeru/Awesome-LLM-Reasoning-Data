@@ -1,0 +1,112 @@
+id: vrprm-process-reward-visual-reasoning-2026
+title: 'VRPRM: Process Reward Modeling via Visual Reasoning'
+year: 2026
+venue: ICLR 2026 Poster
+authors:
+- Xinquan Chen
+- Chongying Yue
+- Bangwei Liu
+- Xuhong Wang
+- Yingchun Wang
+- Chaochao Lu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-reasoning
+- process-reward-modeling
+- visual-reasoning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2508.03556
+  arxiv: https://arxiv.org/abs/2508.03556
+  code: null
+  project: null
+  data: https://huggingface.co/datasets/two-tiger/VRPRM3.6K
+  huggingface: https://huggingface.co/datasets/two-tiger/VRPRM3.6K
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2508.03556
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Visual reasoning problems, images, candidate rationales, and process annotations.
+  trace_author: Claude-3.7-Sonnet generates long-horizon CoT PRM reviews over selected VisualPRM400K examples.
+  answer_format: A visual problem, candidate solution, explicit review reasoning, stepwise scores, and a terminal judgment.
+  process_fields:
+  - image
+  - candidate_rationale
+  - stepwise_scores
+  - terminal_judgment
+  environment_or_substrate: Multimodal PRM training and Best-of-N response selection.
+  verifier_or_reward: Structured step-score labels support SFT; format and process-accuracy rewards support GRPO on non-CoT
+    PRM data.
+  terminal_predicate: The final process judgment and step scores match the reference annotations.
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B in the original reported setup; later release includes other VRPRM checkpoints.
+  teacher: Claude-3.7-Sonnet for synthetic CoT-PRM reviews.
+  generator: Strong-model visual reasoning reviews over candidate solutions.
+  filtering_rule: Discard outputs that fail the required format or disagree with reference labels.
+  sampling_protocol: Select roughly 10K labeled examples, synthesize and filter 3.6K CoT-PRM records for SFT, then use about
+    50K non-CoT process-labeled examples for RL.
+  inference_budget: The paper reports temperature 0.2 and 4096 maximum tokens for reasoning, then temperature 0 for final
+    scoring.
+  optimizer_or_scaffold: LoRA SFT followed by GRPO reinforcement learning.
+  rollout_count: null
+  temperature: 0.2
+audit:
+  source_mixture: VisualPRM400K-derived visual problems, candidate rationales, Claude-generated CoT reviews, and ordinary
+    process labels.
+  split: VRPRM3.6K is the released CoT SFT dataset; consult the official collection for its file layout.
+  decontamination: Keep test benchmark images and questions out of the corresponding training examples.
+  license: Consult the official two-tiger Hugging Face collection for dataset and checkpoint terms.
+  lineage: arXiv v4, ICLR 2026 Poster listing, and the official two-tiger Hugging Face VRPRM collection.
+  known_failure_modes:
+  - Synthetic reviews can transfer teacher style and errors
+  - The small CoT dataset has limited visual-task coverage
+  - Best-of-N gains depend on candidate pool size and baseline accuracy
+  citation_status: verified
+  confidence: high
+  notes: Verified the current arXiv title and six-author list, ICLR 2026 Poster listing, author affiliation information available
+    with the paper, and official two-tiger data/model collection. No official code repository was identified, so no code URL
+    is asserted.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: VRPRM uses a small set of teacher-written visual CoT reviews to initialize process reasoning, then scales
+  with ordinary step labels through RL for efficient multimodal reward modeling.
+why_it_matters: It cleanly separates expensive explanatory supervision from cheaper process labels and releases the former
+  as a reusable training set.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the current arXiv title and six-author list, ICLR 2026 Poster listing, author affiliation information available
+    with the paper, and official two-tiger data/model collection. No official code repository was identified, so no code URL
+    is asserted.
+category_ids:
+- process_trace_supervision_data

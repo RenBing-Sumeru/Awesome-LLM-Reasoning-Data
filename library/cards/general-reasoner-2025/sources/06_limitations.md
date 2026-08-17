@@ -1,0 +1,3 @@
+1. When a generative verifier can share factual errors with the policy model, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because web crawling creates provenance, duplication, and contamination risks, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve Apache-2.0 and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

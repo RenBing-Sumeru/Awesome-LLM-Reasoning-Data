@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"VerifierQ 用离线 Q-learning 训练步骤级验证器，在增加推理候选时更有效地评估和选择数学解答。","reading_priority_ch":"可读","paper_type_ch":"面向测试时扩展的离线 Q-learning 验证器研究","best_for_ch":"研究过程验证器、数学推理候选选择与验证器标度的读者。","confidence_ch":"高","authors_ch":"Jianing Qi（CUNY 研究生中心）；Hao Tang（CUNY 研究生中心、曼哈顿社区学院）；Zhigang Zhu（CUNY 研究生中心、纽约市立学院）","category_ids":["scaling_rlvr_test_time_compute"]}

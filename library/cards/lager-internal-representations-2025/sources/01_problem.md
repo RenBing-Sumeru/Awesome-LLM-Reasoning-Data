@@ -1,0 +1,1 @@
+Point-wise LLM judges usually emit the most likely discrete score from the final decoder layer. That discards score-distribution uncertainty and can miss judgment-relevant information carried in intermediate representations. The paper asks whether a frozen judge can better align with human scalar ratings without a chain-of-thought prompt or backbone fine-tuning.

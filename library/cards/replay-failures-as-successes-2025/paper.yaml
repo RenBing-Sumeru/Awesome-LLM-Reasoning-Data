@@ -1,0 +1,116 @@
+id: replay-failures-as-successes-2025
+title: 'Replay Failures as Successes: Sample-Efficient Reinforcement Learning for Instruction Following'
+year: 2025
+venue: arXiv preprint
+authors:
+- Kongcheng Zhang
+- Qi Yao
+- Shunyu Liu
+- Wenjian Zhang
+- Min Cen
+- Yang Zhou
+- Wenkai Fang
+- Yiru Zhao
+- Baisheng Lai
+- Mingli Song
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- preference_learning
+- rlvr
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2512.23457
+  arxiv: https://arxiv.org/abs/2512.23457
+  code: https://github.com/sastpg/HIR
+  data: https://huggingface.co/datasets/sastpg/HIR-16K
+  project: https://github.com/sastpg/HIR
+  huggingface: https://huggingface.co/datasets/sastpg/HIR-16K
+  doi: https://doi.org/10.48550/arXiv.2512.23457
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Complex instruction-following prompts; upstream data unknown.
+  trace_author: RL policy generates failed attempts and replay rewrites examples.
+  answer_format: Original trajectories plus prompts rewritten around hindsight-satisfied constraints.
+  process_fields:
+  - prompt
+  - response
+  - dense_constraint_feedback
+  - satisfied_constraints
+  - rewritten_prompt
+  - replay_indicator
+  environment_or_substrate: RL rollout/replay for complex instruction following.
+  verifier_or_reward: Binary outcome reward is derived from per-constraint checks. Hard constraints use deterministic rules
+    or code; soft constraints use DeepSeek-V3.1 in non-thinking mode as a learned judge. Dense constraint satisfaction in
+    (0,1) identifies partial failures for replay selection.
+  terminal_predicate: Original samples succeed only when all constraints pass. Replayed responses succeed only against the
+    rewritten pseudo-instruction containing the subset already judged satisfied; generation stop conditions are unknown.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Select-then-rewrite turns partial successes into replay examples.
+  filtering_rule: Selects dense feedback in (0,1), ranks by dense feedback and entropy, then rewrites prompts.
+  sampling_protocol: Original and replayed samples enter RL.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Dual-preference learning at instruction and response levels.
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: The HIR repository and HIR-16K dataset declare Apache-2.0. Compatibility with each upstream prompt source and rights
+    for generated judge/replay outputs were not independently established.
+  lineage: failed rollout -> partial constraint feedback -> selection -> prompt rewrite -> replay plus original RL
+  known_failure_modes:
+  - Rewrites shift distribution away from full constraints.
+  - Judge and provenance are unconfirmed.
+  - No independent data URL was verified.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv and repository checked.
+inclusion_reason: An explicit transformation from partially successful failure trajectories into replay data.
+related: []
+tags:
+- failure-replay
+- hindsight-replay
+- instruction-following
+- constraints
+- rl
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: HiR selects partially successful failed rollouts, rewrites them from satisfied constraints, and replays
+  them during RL.
+why_it_matters: Selection and rewriting signals need retention to audit failure-to-data transformations.
+card: null
+needs:
+- needs_dataset_url
+- needs_constraint_judge_specification
+- needs_trace_release
+- needs_license
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper and code checked; data link incomplete.

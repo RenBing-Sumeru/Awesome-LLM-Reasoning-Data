@@ -1,0 +1,126 @@
+id: osworld-computer-environment-benchmark-2024
+title: 'OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments'
+year: 2024
+venue: NeurIPS 2024 / arXiv
+authors:
+- Tianbao Xie
+- Danyang Zhang
+- Jixuan Chen
+- Xiaochuan Li
+- Siheng Zhao
+- Ruisheng Cao
+- Toh Jing Hua
+- Zhoujun Cheng
+- Dongchan Shin
+- Fangyu Lei
+- Yitao Liu
+- Yiheng Xu
+- Shuyan Zhou
+- Silvio Savarese
+- Caiming Xiong
+- Victor Zhong
+- Tao Yu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- os-agents
+- desktop-agents
+- computer-use
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2404.07972
+  arxiv: https://arxiv.org/abs/2404.07972
+  doi: https://doi.org/10.48550/arXiv.2404.07972
+  code: https://github.com/xlang-ai/OSWorld
+  data: https://github.com/xlang-ai/OSWorld
+  project: https://os-world.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official OSWorld paper, project, and repository
+  trace_author: OSWorld authors and computer-use agent runs
+  answer_format: desktop tasks, VM/app states, setup configs, actions, execution traces, and success checks
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: real computer environments for open-ended OS tasks
+  verifier_or_reward: OSWorld task evaluators and execution-based checks
+  terminal_predicate: OSWorld task evaluators and execution-based checks
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: OSWorld task authors and evaluation configs
+  generator: OSWorld real computer environment benchmark
+  filtering_rule: pin OSWorld/OSWorld-Verified version, task files, credentials, and VM image
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2404.07972; https://os-world.github.io/; https://github.com/xlang-ai/OSWorld
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2404.07972'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: OSWorld vs OSWorld-Verified version relation, Google Drive tasks, proxy/credential tasks, and exclusion policy need
+    audit.
+inclusion_reason: it is a canonical real-computer environment for multimodal OS agents
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- os-agents
+- desktop-agents
+- computer-use
+one_line: OSWorld benchmarks multimodal agents on open-ended tasks in real computer environments.
+why_it_matters: it is a canonical real-computer environment for multimodal OS agents
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: OSWorld benchmarks multimodal agents on open-ended tasks in real computer environments.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, and xlang-ai repository verify authors, institutions, NeurIPS 2024 status, and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 74
+  primary_category_id: environment_agent_trajectory_data

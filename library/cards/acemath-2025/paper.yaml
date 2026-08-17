@@ -1,0 +1,157 @@
+id: acemath-2025
+title: 'AceMath: Advancing Frontier Math Reasoning with Post-Training and Reward Modeling'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Zihan Liu
+- Yang Chen
+- Mohammad Shoeybi
+- Bryan Catanzaro
+- Wei Ping
+source_role:
+- model_report
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- mathematical-reasoning
+- code
+- general-instruction-following
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.206/
+  arxiv: https://arxiv.org/abs/2412.15084
+  venue: https://aclanthology.org/2025.findings-acl.206/
+  code: null
+  data: https://huggingface.co/datasets/nvidia/AceMath-Instruct-Training-Data
+  project: https://research.nvidia.com/labs/adlr/acemath/
+  huggingface: https://huggingface.co/datasets/nvidia/AceMath-Instruct-Training-Data
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.206
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.206/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-acl.206.bib
+data_object:
+  prompt_source: Deduplicated prompts from NuminaMath, OrcaMathWordProblems, MathInstruct, MetaMathQA, coding and general
+    instruction corpora, plus about one million NuminaMath-seeded synthetic math prompts.
+  trace_author: Qwen2.5-Math-72B-Instruct writes math responses; GPT-4o-mini-2024-07-18 writes coding and general responses
+    and independently cross-checks math final answers.
+  answer_format: Official Parquet records expose messages as role-content structures and a separate answer string; math responses
+    use step-by-step reasoning with a boxed final answer.
+  process_fields:
+  - ordered role-content messages
+  - answer or solution target
+  - split-level stage membership
+  - implicit source mixture described by the paper
+  environment_or_substrate: Prompt synthesis, exact-prompt deduplication, model generation, format and length filters, cross-model
+    final-answer agreement, overlap decontamination, and staged SFT.
+  verifier_or_reward: Formatting and repetition heuristics plus agreement between Qwen2.5-Math-72B-Instruct and two GPT-4o-mini
+    responses for the 800K high-quality math subset; this is not proof verification.
+  terminal_predicate: Keep generations with the required response structure and boxed answer, at most 2,500 words, no detected
+    repetition, and for the selected high-quality subset, matching final answers across model families.
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B/7B/72B-Base for AceMath-Instruct; additional general-SFT studies use DeepSeekCoder, Llama
+    3.1, and Qwen2.5 bases.
+  teacher: Qwen2.5-Math-72B-Instruct for math; GPT-4o-mini-2024-07-18 for coding, general prompts, synthetic prompt creation,
+    and math answer cross-checking.
+  generator: Greedy single-response generation for the main corpus, with in-breadth and in-depth prompt evolution for synthetic
+    mathematics.
+  filtering_rule: Lowercase exact-prompt deduplication; remove synthetic prompts over 300 words, malformed or over-2,500-word
+    responses, repetitions, and evaluation overlaps; select 800K math items by cross-model answer agreement for high-quality
+    stages.
+  sampling_protocol: 'The release publishes the exact three stage files consumed by the paper: two general-SFT stages followed
+    by math-specific SFT.'
+  rollout_count: null
+  temperature: 0.0
+  inference_budget: One Qwen response per math prompt; two GPT-4o-mini responses per prompt for final-answer cross-checking;
+    one response per coding and general prompt.
+  optimizer_or_scaffold: AdamW for one epoch, sequence length 4,096, global batch 128 except 256 at 72B; learning rates 5e-6
+    for general SFT and 3e-6 for math SFT.
+audit:
+  source_mixture: The official files contain 2,261,687 code-and-math stage-1 rows, 1,634,573 code, math, and general stage-2
+    rows, and 1,661,094 math-SFT rows; stages intentionally reuse selected material and must not be summed as unique examples.
+  split: One default configuration with general_sft_stage1, general_sft_stage2, and math_sft Parquet splits.
+  decontamination: Math prompts are normalized and removed when they have a 13-gram overlap with test data and longest common
+    subsequence over 60%; non-math prompts use the 13-gram rule alone.
+  license: CC-BY-NC-4.0 and non-commercial use; the official card additionally subjects OpenAI-generated data to OpenAI terms
+    of use, while upstream source terms remain separate.
+  lineage: open prompts -> exact deduplication -> synthetic math prompt evolution -> teacher response generation -> structural
+    and repetition filters -> optional cross-model answer agreement -> overlap decontamination -> staged Parquet release ->
+    SFT consumers.
+  known_failure_modes:
+  - Cross-model final-answer agreement can retain a shared wrong answer and does not validate intermediate reasoning.
+  - Prompt-level source and transformation provenance are not exposed by the minimal public record schema.
+  - The non-commercial license and OpenAI output terms constrain redistribution and downstream use.
+  citation_status: verified
+  confidence: high
+  notes: Findings ACL record, DOI, full paper, official dataset README, three exact split counts, public schema, license,
+    files, and current Hugging Face metadata checked on 2026-07-14. Full Parquet row extraction was not completed because
+    the first row group is unusually large; schema and example form are authoritative release metadata.
+inclusion_reason: AceMath releases the complete staged supervision used by its math SFT models and directly tests prompt synthesis,
+  answer cross-checking, data selection, and general-before-math training choices.
+related:
+- openmathinstruct-2-2025
+- numinamath-2024
+tags:
+- instruction-demonstration-rationale
+- math-reasoning
+- staged-sft
+- synthetic-data
+- cross-model-filtering
+- arxiv-2412.15084
+- primary-link-checked
+status: verified
+one_line_summary: AceMath releases 2.26M, 1.63M, and 1.66M-row SFT stages for general-to-math post-training with explicit
+  synthesis and filtering controls.
+why_it_matters: It makes a strong general-before-math SFT curriculum and its synthetic-data quality decisions reusable instead
+  of reporting only the final models.
+reading_priority: must read
+paper_type: staged mathematical instruction-data release and post-training study
+best_for: Researchers constructing large math SFT mixtures or comparing prompt evolution, cross-model answer checks, and staged
+  curricula.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings, data card, Parquet file tree, split counts, schema, terms, construction recipe, model consumers,
+    and controlled results checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-math
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: staged general-to-math instruction demonstrations
+  selection_priority_score: 9
+  selection_score_breakdown:
+    institution: 3
+    venue: 2
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: The paper and all official artifacts are an NVIDIA research release.
+    venue: ACL Anthology records the paper in Findings of ACL 2025 with DOI 10.18653/v1/2025.findings-acl.206.
+    impact: The official dataset had 65 likes and 325 downloads in current Hugging Face metadata on 2026-07-14, and it exposes
+      the training data for three public model sizes.
+    artifact: The non-gated official repository exposes three documented Parquet splits, exact row counts, schema, license,
+      model links, paper, and project page.
+  selection_eligible: true
+  year_impact_threshold: 2

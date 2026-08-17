@@ -1,0 +1,5 @@
+- Positioning: SoundMind is an aligned audio-text rationale release plus a rule-reward training study, not merely a speech benchmark.
+- Data object: each record joins user text, long reasoning text, binary entailment label, question audio, and spoken reasoning audio.
+- Author and selector: DeepSeek-R1 writes the reasoning, MegaTTS 3 renders speech, and known labels plus format and length rules provide the training feedback.
+- Evidence anchor: audio-to-text accuracy improves by 3.81 points, but speech-output word error rate rises in both generative settings.
+- Reuse decision: suitable for spoken reasoning SFT and controlled RL ablations after auditing synthetic artifacts, step faithfulness, and speech-quality trade-offs.

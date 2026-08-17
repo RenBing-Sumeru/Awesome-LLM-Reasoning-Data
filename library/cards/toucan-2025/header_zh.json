@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TOUCAN 发布 1,527,259 条经 495 个真实 MCP 服务生成的工具 agent 轨迹，并从中筛出 119,287 行 SFT 子集；混合规则与模型评审及可变远程环境限制了任务正确性保证和精确回放。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "真实 MCP 环境合成工具 agent 轨迹数据发布与 SFT 配方",
+  "best_for_ch": "关注工具 agent SFT、MCP 轨迹构造、混合评审契约、环境回放与数据审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Zhangchen Xu、Adriana Meza Soria、Shawn Tan、Anurag Roy、Ashish Sunil Agrawal、Radha Poovendran、Rameswar Panda",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

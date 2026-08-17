@@ -1,0 +1,105 @@
+id: agentrm-2025
+title: 'AgentRM: Enhancing Agent Generalization with Reward Modeling'
+year: 2025
+venue: ACL 2025
+authors:
+- Yu Xia
+- Jingru Fan
+- Weize Chen
+- Siyu Yan
+- Xin Cong
+- Zhong Zhang
+- Yaxi Lu
+- Yankai Lin
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- pairwise_preference
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+- reward_modeling
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.945/
+  arxiv: null
+  code: https://github.com/thunlp/AgentRM
+  data: https://github.com/thunlp/AgentRM
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.acl-long.945/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.945/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official benchmark or reward-model release
+  trace_author: unknown
+  answer_format: prompt, candidate response(s), and reward or preference judgment
+  process_fields:
+  - prompt
+  - candidate response
+  - judgment signal
+  - outcome
+  environment_or_substrate: released evaluation or reward-model pipeline
+  verifier_or_reward: paper-defined reward model, judge, or verifiable signal
+  terminal_predicate: paper-specific reliability or preference outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: see official paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see official paper
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: not yet fully read
+  license: see official artifact
+  lineage: official proceedings page and public artifact
+  known_failure_modes:
+  - 'L2 candidate only: full-paper reading, affiliation verification, and L4 bilingual analysis remain pending.'
+  citation_status: verified
+  confidence: high
+  notes: 'Official accepted-paper page and public artifact URL verified on 2026-07-19. Focus: reward-model generalization
+    and robustness to paraphrased task instructions.'
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.acl-long.945.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Track 13 addition: it exposes a concrete reward, judge, or evaluation-reliability surface with a public
+  official artifact.'
+related: []
+tags:
+- track13
+- audit
+- reward-model
+- public-artifact
+status: verified
+one_line_summary: An 8B reward model with released code and data for testing whether reward-guided search generalizes across
+  unseen agent tasks.
+why_it_matters: It provides an auditable public surface for measuring or mitigating reward and judge reliability failures.
+curation_level: L2_artifact_verified
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings page and public artifact URL verified; L4 reading remains pending.
+category_ids:
+- audit_failure_contamination_verifier_attacks

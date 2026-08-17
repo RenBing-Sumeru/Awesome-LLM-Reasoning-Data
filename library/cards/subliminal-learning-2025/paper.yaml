@@ -1,0 +1,110 @@
+id: subliminal-learning-2025
+title: 'Subliminal Learning: Language models transmit behavioral traits via hidden signals in data'
+year: 2025
+venue: Nature 2026; arXiv:2507.14805
+authors:
+- Alex Cloud
+- Minh Le
+- James Chua
+- Jan Betley
+- Anna Sztyber-Betley
+- Jacob Hilton
+- Samuel Marks
+- Owain Evans
+source_role:
+- audit_failure
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- synthetic-data
+- lineage
+- distillation
+training_use:
+- distillation
+- evaluation
+- audit
+construction_layer:
+- release_audit
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2507.14805
+  arxiv: https://arxiv.org/abs/2507.14805
+  code: https://github.com/MinhxLe/subliminal-learning
+  data: https://github.com/MinhxLe/subliminal-learning
+  project: https://subliminal-learning.com/
+  huggingface: null
+  doi: null
+  venue: https://www.nature.com/articles/s41586-026-10319-8
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: teacher-generated datasets that may look unrelated to a hidden trait, such as number sequences, code, or
+    reasoning traces.
+  trace_author: teacher model generates training examples; student model is fine-tuned on them.
+  answer_format: generated data plus downstream behavioral evaluation of the student.
+  process_fields:
+  - teacher identity, student base model, visible filtering policy, hidden trait evaluation.
+  environment_or_substrate: distillation and synthetic-data training pipeline.
+  verifier_or_reward: trait probes after student training.
+  terminal_predicate: whether the student acquires the teacher trait despite semantic filtering.
+recipe_metadata:
+  base_model: teacher and student models; effect depends on model lineage/base compatibility.
+  teacher: model carrying a target trait or behavior.
+  generator: teacher outputs semantically unrelated data.
+  filtering_rule: remove explicit references to the trait before student training.
+  sampling_protocol: train student on filtered generated data and compare with controls.
+  inference_budget: generation volume and fine-tuning budget affect transfer strength.
+  optimizer_or_scaffold: distillation/fine-tuning pipeline.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Are teacher and student model lineages recorded?
+  split: Can hidden traits transfer through traces, code, or neutral-looking examples?
+  decontamination: Do filters remove semantic references but miss statistical signatures?
+  license: Check official artifact license before reuse.
+  lineage: Are control teachers and different-base-model controls included?
+  known_failure_modes:
+  - Data may look safe while carrying hidden traits.
+  - Lineage effects can be invisible from sample inspection.
+  - Distillation chains can propagate behavior across model generations.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, project page, and MIT-licensed repository reviewed; repository contains reproducibility data/code
+    and a number-sequence demo.
+  metadata_status: complete
+inclusion_reason: Audit/failure entry for hidden trait transfer, distillation lineage risk, and synthetic-data filtering limits.
+related: []
+tags:
+- synthetic-data
+- distillation
+- hidden-trait-transfer
+- lineage
+- filtering
+status: verified
+card: cards/failures/subliminal-learning.md
+needs: []
+one_line_summary: Subliminal Learning shows that teacher models can transmit behavioral traits through semantically unrelated
+  generated data, even after visible trait references are filtered.
+why_it_matters: 'It is a data-lineage warning for reasoning distillation: synthetic traces may carry hidden model traits that
+  are invisible to content filters.'
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, project page, and MIT-licensed code/data repository reviewed.
+curation_level: L5_audit_ready
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

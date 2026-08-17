@@ -1,0 +1,9 @@
+一句话贡献是：WindowsWorld把论文规模的专业跨应用任务与允许多种有效路径的状态checkpoint结合，使一个GUI episode同时获得部分进度反馈和terminal decision，而不是只有全有或全无的成功率。
+
+任务面经过结构化设计。五类领域中的16种persona产生覆盖Word、Excel、PowerPoint、Acrobat、Thunderbird、Chrome、文件资源管理器、系统工具、多媒体工具、VS Code、PowerShell和Windows Terminal等应用的工作流。L1到L3逐步增加应用协调和条件推理；L4通过缺失文件、无效URL、认证等不可行因素，使FAIL成为可能的正确terminal behavior（论文§3.2，Figure 2）。
+
+feedback contract是mixed。对可行的L1–L3任务，Qwen3-VL-Plus接收指令、有序action列表、保留截图、中间状态谓词和最终成功标准，并输出二值判断与理由；`S_int`汇总checkpoint满足比例，`S_final`表示最终完成。checkpoint经过改写，去除特定动作约束，并由人工确认其是path-essential，因此菜单、快捷键或其他有效路径都可以被接受。对L4，公开`hf_run.py`绕过VLM，只要action列表为空或最后动作被识别为FAIL就返回成功。
+
+该judge能观察可见轨迹证据和语义任务标准，却不能看到全部底层应用状态。论文验证发现：轨迹历史看似成功但当前GUI状态被遮挡时会出现false positive；目标状态曾短暂达到、随后因最小化或切换窗口而不可见时会出现false negative。L4规则观察得更少，只验证FAIL标记而不验证不可行原因。因此，中间标签是诊断性的状态判断，不是逐action的因果ground truth。
+
+OSWorld是最接近的环境谱系：WindowsWorld复用OSWorld-derived infrastructure，但集中于专业跨应用协调和显式过程checkpoint。ProBench、SPA-Bench与A3提供了process-aware或step-state evaluation的近邻背景；WindowsWorld的关键差异是把Windows VM、多应用任务、允许替代路径的语义checkpoint和不可行任务层整合为一个接口。创新点在这个联合evaluation surface，而PyAutoGUI、VM、LLM任务生成、VLM判分和checkpoint分解本身并非首次出现。

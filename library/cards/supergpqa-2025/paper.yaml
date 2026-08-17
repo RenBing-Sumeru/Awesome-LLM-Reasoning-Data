@@ -1,0 +1,116 @@
+id: supergpqa-2025
+title: 'SuperGPQA: Scaling LLM Evaluation across 285 Graduate Disciplines'
+year: 2025
+venue: arXiv preprint
+authors:
+- M-A-P Team
+- Xinrun Du
+- Yifan Yao
+- Kaijing Ma
+- Bingli Wang
+- Tianyu Zheng
+- Kang Zhu
+- Minghao Liu
+- and 89 additional listed authors
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- specialized-academic-knowledge
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.14739
+  arxiv: https://arxiv.org/abs/2502.14739
+  doi: https://doi.org/10.48550/arXiv.2502.14739
+  code: https://github.com/SuperGPQA/SuperGPQA
+  data: https://huggingface.co/datasets/m-a-p/SuperGPQA
+  project: https://supergpqa.github.io/
+  huggingface: https://huggingface.co/datasets/m-a-p/SuperGPQA
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: experts collect credible graduate-level sources, annotators transcribe or revise them into multiple-choice
+    questions, and Human-LLM collaborative filtering removes trivial, ambiguous, or malformed items.
+  trace_author: over 80 expert annotators plus crowd-sourcing annotators, with expert review of suspicious candidates as described
+    by the paper and official README.
+  answer_format: multiple-choice questions with options, one correct answer, discipline/field/subfield metadata, difficulty,
+    and evaluation records scored by answer matching.
+  data_scale: 26,529 questions across 13 disciplines, 72 fields, and 285 subfields.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: graduate-level multiple-choice QA benchmark with official inference scripts, evaluation scripts,
+    leaderboard, Hugging Face dataset, and response-record release.
+  verifier_or_reward: official evaluator parses model answers and scores accuracy sample-wise, subfield-wise, field-wise,
+    discipline-wise, and by difficulty split.
+  terminal_predicate: a prediction is correct when the parsed answer matches the keyed option under the official evaluation
+    script; aggregate reports average across samples and hierarchy levels.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate graduate-level QA across many disciplines; exact artifact, split, and license
+    details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: domain_expert_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2502.14739;
+    https://arxiv.org/pdf/2502.14739; https://github.com/SuperGPQA/SuperGPQA; https://huggingface.co/datasets/m-a-p/SuperGPQA'
+  split: Official release exposes the dataset and leaderboard records; before reuse, pin Hugging Face revision, evaluation
+    mode, prompt set, response parser, and any public/hidden leaderboard policy.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official GitHub README states ODC-BY for the composite dataset and warns that referenced third-party datasets retain
+    their own attribution and license requirements.
+  lineage: 'Primary lead: https://arxiv.org/abs/2502.14739'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official paper, GitHub README, project page, and Hugging Face dataset verify scale, construction pipeline, evaluator
+    scripts, leaderboard, ODC-BY notice, and referenced-dataset license caveats.
+inclusion_reason: Broad expert-domain coverage can complement GPQA after source/artifact audit.
+related: []
+tags:
+- benchmark
+- domain_expert_benchmark
+- specialized-academic-knowledge
+why_it_matters: Broad expert-domain coverage can complement GPQA after source/artifact audit.
+status: verified
+needs:
+- 'needs_audit: pin Hugging Face revision, leaderboard date, prompt variant, parser revision, and response-record version'
+- 'needs_audit: check referenced third-party dataset licenses before redistribution or training reuse'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SuperGPQA exposes graduate-level QA across many disciplines as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official sources verify M-A-P, ByteDance Seed, and 2077.AI; per-author affiliation mapping and some romanized names
+    differ across arXiv/GitHub.
+category_ids:
+- benchmarks_evaluation_surfaces

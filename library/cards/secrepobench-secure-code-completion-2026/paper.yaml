@@ -1,0 +1,108 @@
+id: secrepobench-secure-code-completion-2026
+title: 'SecRepoBench: Benchmarking Code Agents for Secure Code Completion in Real-World Repositories'
+year: 2026
+venue: LLM4Code 2026
+authors:
+- Chihao Shen
+- Connor Dilgren
+- Purva Chiniya
+- Luke Griffith
+- Yu Ding
+- Yizheng Chen
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- software-security
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.21205
+  arxiv: https://arxiv.org/abs/2504.21205
+  code: https://github.com/ai-sec-lab/SecRepoBench
+  data: https://huggingface.co/datasets/ai-sec-lab/SecRepoBench
+  project: https://secrepobench.github.io/
+  huggingface: https://huggingface.co/datasets/ai-sec-lab/SecRepoBench
+  doi: https://doi.org/10.48550/arXiv.2504.21205
+  venue: https://conf.researchr.org/details/icse-2026/llm4code-2026-papers/3/SecRepoBench-Benchmarking-Code-Agents-for-Secure-Code-Completion-in-Real-World-Repos
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real C/C++ repositories and security fixes.
+  trace_author: Benchmark curators extract masked secure-completion tasks.
+  answer_format: Repository revision, masked function, target location, reference patch, build/test assets, and CWE identifier.
+  process_fields:
+  - project_name
+  - repo_addr
+  - fixing_commit
+  - changed_file
+  - masked_func
+  - CWE_ID
+  environment_or_substrate: Containerized real C/C++ repositories.
+  verifier_or_reward: Developer-written functional tests and OSS-Fuzz proof-of-concept security tests.
+  terminal_predicate: A patch compiles, passes developer tests, and does not trigger the designated security failure.
+recipe_metadata:
+  base_model: Standalone LLMs and code agents are evaluated.
+  teacher: Developer tests, reference patches, and security validation assets.
+  generator: Extract real security tasks, mask implementations, and retain repository context.
+  filtering_rule: Broken baseline must fail; reference completion must compile, pass developer tests, and survive security
+    validation.
+  sampling_protocol: 318 tasks from 27 repositories spanning 15 CWE classes.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix containers, compilers, fuzzer seeds, timeouts, and repository revisions.
+  optimizer_or_scaffold: Dual-oracle evaluation of function and security behavior.
+audit:
+  source_mixture: Official arXiv paper, LLM4Code/ICSE program record, author Hugging Face release, code repository, and project
+    site.
+  split: The official release has one code_completion split with 318 rows.
+  decontamination: Audit repository exposure before interpreting results as unseen secure coding.
+  license: MIT on the Hugging Face dataset page; retain upstream repository licences.
+  lineage: https://github.com/ai-sec-lab/SecRepoBench
+  known_failure_modes:
+  - Developer tests and fuzzing do not prove absence of unvisited vulnerabilities.
+  - Coverage is limited to C/C++ repositories and selected CWE classes.
+  - Container construction and fuzzing can be costly and nondeterministic.
+  citation_status: verified
+  confidence: high
+  notes: Paper, LLM4Code 2026 acceptance record, authors and affiliations, data release, repository, and project site were
+    checked.
+inclusion_reason: SecRepoBench provides executable repository-level security-completion tasks with functional and security
+  outcomes as a joint programmatic contract.
+related: []
+tags:
+- secure-code
+- repository-benchmark
+- c-cpp
+- cwe
+- executable-evaluation
+one_line_summary: SecRepoBench uses paired developer tests and exploit checks on 318 real C/C++ repository holes to measure
+  whether code agents produce both functional and secure completions.
+why_it_matters: It turns security-sensitive completion into a joint executable outcome rather than a text-match or compilation-only
+  task.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, venue program, data, code, and project links were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

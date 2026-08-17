@@ -1,0 +1,103 @@
+id: healthbench-2025
+title: HealthBench
+year: 2025
+venue: OpenAI benchmark release
+authors:
+- OpenAI
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- scalar_reward
+- answer_level
+domains:
+- healthcare
+- medical-advice
+- safety-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openai.com/index/healthbench/
+  arxiv: null
+  doi: null
+  code: null
+  data: null
+  project: https://openai.com/index/healthbench/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: HealthBench, HealthBench Hard, and Consensus are treated as related OpenAI health-evaluation surfaces; exact
+    public task counts and release artifacts need pinning before reuse.
+  prompt_source: OpenAI health benchmark prompts and expert/rubric evaluation material.
+  trace_author: evaluated model responses, health-domain raters or judge pipeline, and benchmark maintainers.
+  answer_format: health prompt or conversation, model answer, rubric criteria, judge or expert score, and aggregate benchmark
+    score.
+  process_fields:
+  - health query or conversation
+  - model response
+  - rubric or expert criterion
+  - judge or expert score
+  - HealthBench, Hard, or Consensus surface label
+  environment_or_substrate: healthcare advice and medical-safety evaluation surface.
+  verifier_or_reward: expert or rubric-guided judge scoring; exact public judge contract needs audit.
+  terminal_predicate: score under the pinned HealthBench variant and scoring pipeline.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark and safety evaluation surface.
+  teacher: health-domain experts, rubric authors, and OpenAI evaluation pipeline.
+  generator: OpenAI benchmark construction and scoring workflow.
+  filtering_rule: Separate HealthBench, HealthBench Hard, and Consensus results; do not combine them without variant labels.
+  sampling_protocol: Pin benchmark variant, prompt set, judge/rubric version, model scaffold, refusal policy, and evaluation
+    date.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: health_safety_benchmark
+audit:
+  source_mixture: OpenAI HealthBench release and model-report references.
+  split: public/hidden split and downloadable task access need audit.
+  decontamination: public examples and rubrics can leak into model training.
+  license: needs_audit
+  lineage: 'Primary source: https://openai.com/index/healthbench/'
+  known_failure_modes:
+  - medical advice quality depends on jurisdiction, emergency context, and user details
+  - judge or rubric scores may miss harmful omissions
+  - aggregate score can hide safety-critical failure modes
+  - public examples may become contamination
+  citation_status: partial
+  confidence: medium
+  notes: Added as an OpenAI health benchmark surface; exact release artifacts and variant definitions require follow-up audit.
+inclusion_reason: OpenAI health benchmark family is repeatedly cited in frontier-model safety and usefulness reporting.
+related: []
+tags:
+- benchmark
+- healthcare
+- safety
+one_line: HealthBench evaluates health-related model responses with rubric or expert-guided scoring surfaces.
+why_it_matters: It is a high-stakes health benchmark where variant labels and judge contracts must be explicit.
+status: partial
+needs:
+- 'needs_audit: pin HealthBench, HealthBench Hard, and Consensus definitions, artifacts, judge/rubric, split, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: HealthBench evaluates health-related model responses with rubric or expert-guided scoring surfaces.
+curation_level: L4_carded
+verification:
+  link_verified: false
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: gap_fill
+  confidence: medium
+  notes: Metadata shell added first to prevent partial-card failures; source-level audit still required.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,3 @@
+Code models can often produce code for the latest API but fail to switch implementations when a user specifies an older or newer dependency version. Existing code-evolution benchmarks mainly study migration patches or rely on textual matching, without executing candidate code in the exact requested environment. They therefore cannot establish true compatibility.
+
+GitChameleon 2.0 places version constraints directly in code-completion tasks and supplies pinned dependencies and executable tests. It evaluates LLMs, agents, coding assistants, and RAG systems by whether generated code actually runs under the target library version.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GPT-5 System Card 报告路由器持续利用模型切换、偏好率和测得正确性训练，以及 safe-completions 和 thinking-pro 的并行测试时计算；其支撑数据和训练配方仍未披露。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿系统卡与数据披露账本",
+  "best_for_ch": "需要审计路由训练、安全完成、测试时计算及前沿模型披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-16T10:34:59Z"
+}

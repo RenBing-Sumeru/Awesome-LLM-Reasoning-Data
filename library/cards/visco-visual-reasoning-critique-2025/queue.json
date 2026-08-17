@@ -1,0 +1,19 @@
+{
+  "title": "VISCO: Benchmarking Fine-Grained Critique and Correction Towards Self-Improvement in Visual Reasoning",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/CVPR2025/html/Wu_VISCO_Benchmarking_Fine-Grained_Critique_and_Correction_Towards_Self-Improvement_in_Visual_Reasoning_CVPR_2025_paper.html",
+    "data": "https://huggingface.co/datasets/uclanlp/VISCO",
+    "code": "https://github.com/PlusLabNLP/VISCO",
+    "project": "https://visco-benchmark.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:57:07Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "覆盖 18 个数据集、8 类视觉任务，为推理链标注步骤正确性、批评和修正目标",
+    "updated_at": "2026-07-25T10:57:07Z"
+  }
+}

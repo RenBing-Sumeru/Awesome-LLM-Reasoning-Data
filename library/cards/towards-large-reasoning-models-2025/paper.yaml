@@ -1,0 +1,114 @@
+id: towards-large-reasoning-models-2025
+title: 'Towards Large Reasoning Models: A Survey of Reinforced Reasoning with Large Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Fengli Xu
+- Qianyue Hao
+- Zefang Zong
+- Jingwei Wang
+- Yunke Zhang
+- Jingyi Wang
+- Xiaochong Lan
+- Jiahui Gong
+- Tianjian Ouyang
+- Fanjin Meng
+- Chenyang Shao
+- Yuwei Yan
+- Qinglong Yang
+- Yiwen Song
+- Sijian Ren
+- Xinyuan Hu
+- Yu Li
+- Jie Feng
+- Chen Gao
+- Yong Li
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- reinforced-reasoning
+- reasoning-data
+training_use:
+- unknown
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.09686
+  arxiv: https://arxiv.org/abs/2501.09686
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2501.09686
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning tasks, prompts, automated data-construction methods, and evaluation settings.
+  trace_author: Surveyed systems and papers; no new trace corpus is released.
+  answer_format: Taxonomy of reasoning paradigms, reinforced learning-to-reason methods, and test-time scaling.
+  process_fields:
+  - reasoning trajectory
+  - reward signal
+  - search procedure
+  - test-time budget
+  - evaluator
+  environment_or_substrate: LLM reasoning training and inference pipelines.
+  verifier_or_reward: Reviews reward design and reinforced reasoning; not a verifier or reward release.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single training recipe.
+  teacher: unknown
+  generator: Literature survey.
+  filtering_rule: Organizes work around automated data construction, learning to reason, and test-time scaling.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Taxonomy of reinforced reasoning systems.
+audit:
+  source_mixture: Official arXiv record and paper.
+  split: Not applicable.
+  decontamination: The survey does not provide contamination results for the individual benchmarks or trace releases it discusses.
+  license: No dataset license applies because the paper does not release a dataset; the paper license is listed on its arXiv
+    record.
+  lineage: 'Primary source: https://arxiv.org/abs/2501.09686'
+  known_failure_modes:
+  - Survey categories overlap
+  - Reasoning results depend on task and compute budget
+  citation_status: verified
+  confidence: high
+  notes: The official abstract emphasizes automated data construction, learning-to-reason, and test-time scaling.
+inclusion_reason: A 2025 survey that connects chain-of-thought and reinforcement learning with automated reasoning-trajectory
+  construction and test-time scaling.
+related: []
+tags:
+- reasoning-survey
+- reasoning-trajectories
+- reinforcement-learning
+- test-time-scaling
+why_it_matters: It distinguishes reasoning trajectories, reward design, policy learning, and inference-time computation as
+  related but different parts of a large reasoning model.
+status: verified
+needs: []
+one_line_summary: A 2025 survey of reinforced reasoning that brings automated trajectory construction, learning-to-reason,
+  and test-time scaling into one account.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv abstract and author list reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧠 Reasoning LLM surveys

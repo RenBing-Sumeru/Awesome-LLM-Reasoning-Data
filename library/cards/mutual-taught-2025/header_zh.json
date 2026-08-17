@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "交替用当前 RM 排序的 on-policy 偏好训练策略，再用策略更新前后的响应构造经低质量过滤的混合偏好数据刷新 RM；机制可核验，但官方代码链接当前没有 Mutual-Taught 专用实现。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "动态偏好数据构造与策略—奖励模型协同训练配方",
+  "best_for_ch": "研究迭代 DPO、奖励模型分布漂移、伪偏好筛选和闭环奖励风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Tianyuan Shi、Canbin Huang、Fanqi Wan、Longguang Zhong、Ziyi Yang、Weizhou Shen、Xiaojun Quan、Ming Yan",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,129 @@
+id: mmc-chart-instruction-2024
+title: 'MMC: Advancing Multimodal Chart Understanding with Large-scale Instruction Tuning'
+year: 2024
+venue: NAACL 2024
+authors:
+- Fuxiao Liu
+- Xiaoyang Wang
+- Wenlin Yao
+- Jianshu Chen
+- Kaiqiang Song
+- Sangwoo Cho
+- Yaser Yacoob
+- Dong Yu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.naacl-long.70/
+  arxiv: https://arxiv.org/abs/2311.10774
+  code: https://github.com/FuxiaoLiu/MMC
+  data: https://huggingface.co/datasets/xywang1/MMC
+  project: https://github.com/FuxiaoLiu/MMC
+  huggingface: https://huggingface.co/datasets/xywang1/MMC
+  doi: https://doi.org/10.18653/v1/2024.naacl-long.70
+  venue: https://aclanthology.org/2024.naacl-long.70/
+  openreview: null
+  acl: https://aclanthology.org/2024.naacl-long.70/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: charts mined from arXiv plus non-arXiv chart datasets and synthetic chart-text alignment tasks
+  trace_author: templates and language models generate diverse chart questions and answers from extracted chart content
+  answer_format: chart image, question or alignment instruction, and answer
+  process_fields:
+  - chart image
+  - question or alignment instruction
+  - and answer
+  environment_or_substrate: JSONL metadata with chart images distributed in TAR archives
+  verifier_or_reward: source tables or captions, answer checks, and chart benchmark evaluation
+  terminal_predicate: Retain a record only when source tables or captions, answer checks, and chart benchmark evaluation accepts
+    it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: templates and language models generate diverse chart questions and answers from extracted chart content
+  generator: MMC mines arXiv and non-arXiv charts, constructs 409,887 question-answer records plus 250K alignment examples,
+    and trains chart assistants across extraction, comparison, and numerical reasoning tasks.
+  filtering_rule: source tables or captions, answer checks, and chart benchmark evaluation
+  sampling_protocol: charts mined from arXiv plus non-arXiv chart datasets and synthetic chart-text alignment tasks
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: chart alignment and multimodal instruction SFT
+audit:
+  source_mixture: charts mined from arXiv plus non-arXiv chart datasets and synthetic chart-text alignment tasks
+  split: 'Official release scale: 300,000 arXiv chart QA records, 109,887 non-arXiv QA records, and 250,000 alignment records;
+    storage: JSONL metadata with chart images distributed in TAR archives.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository terms and component-source conditions; the release does not grant one uniform license for every
+    image
+  lineage: charts mined from arXiv plus non-arXiv chart datasets and synthetic chart-text alignment tasks -> templates and
+    language models generate diverse chart questions and answers from extracted chart content -> source tables or captions,
+    answer checks, and chart benchmark evaluation -> chart alignment and multimodal instruction SFT.
+  known_failure_modes:
+  - Automatically extracted chart-text pairs can be misaligned
+  - OCR and table recovery errors contaminate numeric answers
+  - source-document licenses and benchmark overlap require per-source audit.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 22 citations; this is not a Google Scholar count.'
+inclusion_reason: 'MMC is a public Track 01 training object: chart image, question or alignment instruction, and answer; it
+  is consumed by chart alignment and multimodal instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- large-scale-chart-question-answer-instructions
+status: verified
+one_line_summary: MMC packages more than 409K chart QA records and 250K alignment examples from scientific and non-scientific
+  charts.
+why_it_matters: combining scientific-chart mining with a large unified chart instruction and alignment mixture
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training a general chart assistant across scientific and everyday visualizations
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: large-scale chart question-answer instructions
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include University of Maryland, College Park, Tencent AI Lab.
+    venue: 'The official venue URL confirms formal publication at NAACL 2024: https://aclanthology.org/2024.naacl-long.70/'
+    impact: OpenAlex reported 22 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSONL metadata with chart images distributed in TAR archives records at
+      https://huggingface.co/datasets/xywang1/MMC with terms recorded as: official repository terms and component-source conditions;
+      the release does not grant one uniform license for every image.'
+  selection_eligible: true
+  year_impact_threshold: 3

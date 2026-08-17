@@ -1,0 +1,121 @@
+id: minedojo-2022
+title: 'MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge'
+year: 2022
+venue: NeurIPS 2022 Datasets and Benchmarks Track / arXiv
+authors:
+- Linxi Fan
+- Guanzhi Wang
+- Yunfan Jiang
+- Ajay Mandlekar
+- Yuncong Yang
+- Haoyi Zhu
+- Andrew Tang
+- De-An Huang
+- Yuke Zhu
+- Anima Anandkumar
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- embodied-agents
+- minecraft
+- open-ended-environments
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2206.08853
+  arxiv: https://arxiv.org/abs/2206.08853
+  doi: null
+  code: https://github.com/MineDojo/MineDojo
+  data: https://minedojo.org/knowledge_base
+  project: https://minedojo.org/
+  huggingface: null
+  venue: null
+  openreview: https://openreview.net/forum?id=rc8o_j8I8PX
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MineDojo paper, project page, GitHub repository, knowledge base, and OpenReview
+  trace_author: MineDojo authors and environment/data construction pipeline
+  answer_format: Minecraft tasks, simulator interfaces, knowledge base resources, videos/wiki data, MineCLIP signals, and
+    agent results
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: open-ended Minecraft embodied-agent environments with internet-scale knowledge
+  verifier_or_reward: MineDojo task success metrics, environment predicates, and benchmark scripts
+  terminal_predicate: MineDojo task success metrics, environment predicates, and benchmark scripts
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: Minecraft tasks, internet knowledge resources, and MineCLIP/MineAgent components
+  generator: MineDojo environment, knowledge base, and benchmark construction
+  filtering_rule: pin Minecraft backend, JDK/Docker/PyPI versions, and knowledge-base release/DOI
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2206.08853; https://minedojo.org/; https://github.com/MineDojo/MineDojo; https://minedojo.org/knowledge_base;
+    https://openreview.net/forum?id=rc8o_j8I8PX
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2206.08853'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: pin Minecraft backend/JDK/Docker/PyPI versions and large knowledge-base DOI/release/access
+inclusion_reason: it is a major embodied-agent environment with tasks, simulator feedback, and large external knowledge resources
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- embodied-agents
+- minecraft
+- open-ended-environments
+one_line: MineDojo builds open-ended Minecraft environments for embodied agents with internet-scale knowledge.
+why_it_matters: it is a major embodied-agent environment with tasks, simulator feedback, and large external knowledge resources
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MineDojo builds open-ended Minecraft environments for embodied agents with internet-scale knowledge.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms NeurIPS 2022 D&B status, multi-institution affiliations, project page, code, knowledge
+    base, and OpenReview entry.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 126
+  primary_category_id: environment_agent_trajectory_data

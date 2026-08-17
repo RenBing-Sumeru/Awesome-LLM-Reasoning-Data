@@ -1,0 +1,1 @@
+Rewards may come from people, AI, rules, or environments, and they can guide training, inference, or post-processing. Understanding learning from rewards starts with separating where a reward comes from, what it represents, and what part of a system it actually changes.

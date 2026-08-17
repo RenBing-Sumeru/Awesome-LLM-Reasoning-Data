@@ -1,0 +1,17 @@
+The paper supports the following construction and use pipeline.
+
+1. **Extract Mathlib4 objects.** Lean-Jixia analyzes declarations, structural context, dependency relations, tactic lines, and proof states. The exact Mathlib revision and complete source declaration manifest are not disclosed.
+2. **Order statement translation.** Build a dependency DAG and translate lower-level declarations before the theorems that depend on them. Supply head statements, declaration kind, docstrings, neighbors, and already translated dependencies.
+3. **Retrieve a manual precedent.** Embed 1,000 manually annotated formal statements and retrieve the nearest example by cosine similarity. The embedding model, vector-index version, retrieval code, and per-row neighbor are unknown.
+4. **Refine prompting with experts.** Five pure-mathematics PhD students with Lean expertise conduct six feedback rounds and produce more than twelve prompt principles. Appendix prompts contain ellipses and are not executable job specifications.
+5. **Informalize statements.** An undisclosed LLM generates natural-language counterparts. Its identity, checkpoint, provider terms, decoding, seeds, retries, and run IDs are unknown.
+6. **Informalize tactic proofs.** Extract tactic lines and before/after proof states, add human explanations of tactic logic, translate each line, and integrate the pieces into a whole informal proof. Term-style proofs are excluded.
+7. **Create tactic-state statements.** Convert local hypotheses and goals into formal declarations and compile them with Lean. Randomly sample related states to a count equal to the selected originals; the similarity rule and random seed are absent.
+8. **Create informal variants.** Generate equivalence rewrites, abstract substitutions, implicit-condition omissions, and Chinese, French, or Russian translations. Sample the branch to the original-set size. Per-row branch labels and candidate ledgers are not released.
+9. **Assemble public releases.** Publish 579,883 statement rows and 44,553 proof rows, each in one `train` split under Apache-2.0. No validation or test split, row-level source revision, generator record, validation log, or rejection history is included.
+10. **Train the translator.** Reverse the statement pairs to construct both directions, mix with OpenHermes2.5, and fine-tune DeepSeek-Prover-V1.5-Base 7B. The paper gives warm-up, epochs, learning rate, and mixture ratios but not complete optimizer, batch, hardware, seed, or checkpoint-selection details.
+11. **Evaluate with a two-layer gate.** Generate 128 candidates per item at temperature 0.99. Lean REPL rejects severity `error`; surviving candidates are back-translated by InternLM2-Math-Plus-7B and compared to the input by DeepSeek-V2.5, whose parsed `same` decision supplies the learned semantic gate.
+
+The linked `herald_translator` repository implements translator inference, Lean checking, back-translation, NLI, and evaluation configurations. It does not implement Mathlib ingestion, dependency scheduling, retrieval-index construction, generation, augmentation, proof integration, sampling, or release packaging. The public artifact is therefore sufficient to inspect released rows and replay parts of evaluation, not to rebuild Herald end to end.
+
+The linked Lean test repository pins Lean 4.11.0, Mathlib commit `20c73142afa995ac9c8fb80a9bb585a55ca38308`, and REPL commit `adbbfcb9d4e61c12db96c45d227de92f21cc17dd`. Those pins provide a concrete evaluation substrate, but no manifest ties every released row to that exact environment.

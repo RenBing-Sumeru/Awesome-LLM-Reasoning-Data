@@ -1,0 +1,106 @@
+id: swe-flow-test-driven-software-engineering-data-2025
+title: Synthesizing Software Engineering Data in a Test-Driven Manner
+year: 2025
+venue: ICML 2025
+authors:
+- Lei Zhang
+- Jiaxi Yang
+- Min Yang
+- Jian Yang
+- Mouxiang Chen
+- Jiajun Zhang
+- Zeyu Cui
+- Binyuan Hui
+- Junyang Lin
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- code
+- software-engineering
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/zhang25cn.html
+  arxiv: https://arxiv.org/abs/2506.09003
+  code: https://github.com/Hambaobao/SWE-Flow
+  data: https://github.com/Hambaobao/SWE-Flow
+  project: https://github.com/Hambaobao/SWE-Flow
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v267/zhang25cn.html
+  openreview: https://openreview.net/forum?id=P9DQ2IExgS
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/zhang25cn.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real GitHub repositories, their unit tests, and runtime function dependencies.
+  trace_author: SWE-Flow dynamic tracing and test-guided task synthesis pipeline.
+  answer_format: Partial codebase, stage tests, target modification, executable Docker environment, and development step.
+  process_fields:
+  - partial_repository
+  - stage_tests
+  - rdg
+  - development_schedule
+  - gold_patch
+  - docker_environment
+  environment_or_substrate: Dockerized repository environments with dynamically instrumented unit tests.
+  verifier_or_reward: Stage test outcomes before and after applying the target modification.
+  terminal_predicate: The target stage tests pass after the candidate implementation is applied.
+recipe_metadata:
+  base_model: Open code models fine-tuned on SWE-Flow data.
+  teacher: Repository unit tests and runtime dependency tracing.
+  generator: Build RDGs from test execution, derive schedules, revert target code, and package stage-specific tests and patches.
+  filtering_rule: Retain reproducible stages whose target tests fail before and pass after the gold change.
+  sampling_protocol: 16,061 training and 2,020 test instances from real GitHub projects.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix commits, tracing, test selection, container images, and execution timeouts.
+  optimizer_or_scaffold: Incremental test-driven development schedule with execution feedback.
+audit:
+  source_mixture: Official ICML paper, OpenReview PDF, and official GitHub release.
+  split: 16,061 train and 2,020 test instances; preserve repository isolation.
+  decontamination: Audit repository and file overlap between training stages and evaluation projects.
+  license: Audit every source repository licence before reuse.
+  lineage: https://github.com/Hambaobao/SWE-Flow
+  known_failure_modes:
+  - Untested functionality and dynamic calls outside the RDG are omitted.
+  - A dependency-valid development order is not the only valid order.
+  - Stable unit-test projects do not represent integration-heavy or distributed systems.
+  citation_status: verified
+  confidence: high
+  notes: Official ICML paper, all authors, affiliations, project, and release contents were checked.
+inclusion_reason: SWE-Flow provides executable, stage-level TDD records derived from tests and verified by Dockerized execution.
+related: []
+tags:
+- software-engineering
+- tdd
+- runtime-dependency-graph
+- execution
+- icml-2025
+one_line_summary: SWE-Flow turns unit tests and runtime dependency graphs into executable, incremental software-development
+  tasks.
+why_it_matters: It creates process-oriented software-engineering supervision where every stage has a concrete test verifier.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ICML publication, OpenReview first page, and official project repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

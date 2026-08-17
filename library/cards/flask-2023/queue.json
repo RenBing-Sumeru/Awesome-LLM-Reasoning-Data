@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:05:38Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "暂缓研究面比较窄 主要是细粒度对齐评测方法",
+    "updated_at": "2026-07-15T12:05:38Z"
+  }
+}

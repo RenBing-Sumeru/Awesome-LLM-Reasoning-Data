@@ -1,0 +1,3 @@
+For an LLM-as-a-Judge evaluator, collect paired responses, obtain independent panel judgments, and report DBG beside raw win rate; the output is a bias audit rather than a new reward model. Check panel–human agreement and use task-matched position/length controls. Do not use the metric when reliable independent judgments cannot be obtained.
+
+Keep the paired outputs, individual panel votes, position swaps, and model versions, so a later reader can distinguish a panel shift from a changed self-preference estimate. The success criterion is stable DBG under those controls and acceptable agreement with human judgments.

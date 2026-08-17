@@ -1,0 +1,1 @@
+论文报告 benchmark 含 800 个 3-13 行 Python 函数，并评测 20 个代码模型。作者报告 GPT-4 加 chain-of-thought 在 input prediction / output prediction 上分别达到 75% 和 81% pass@1，而 Code Llama 34B 分别为 50% 和 46%，说明该任务尚未饱和且闭源/开源模型差距明显。逐样本决定性证据是可执行 I/O 一致性：候选答案必须满足官方 evaluator 中的参考关系。证据边界是：聚合 pass@1 受 prompt、解析器、执行环境和确定性 I/O 设置约束；它不衡量仓库上下文、多文件行为或修复能力。

@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "把大模型评测拆成评什么、在哪里评、怎样评的高影响力综述。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大语言模型评测综述",
+  "best_for_ch": "设计评测套件或解读推理基准分数的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yupeng Chang 等",
+  "category_ids": ["foundations_and_primers"],
+  "updated_at": "2026-07-28T00:00:00Z"
+}

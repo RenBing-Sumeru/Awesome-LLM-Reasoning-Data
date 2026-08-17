@@ -1,0 +1,5 @@
+- Data object: full thoughts, truncated prefixes, sampled summaries, and 0/1 answer rewards.
+- Training budgets are 2K, 4K, 6K, and 8K tokens.
+- Eight thoughts and four summaries per budget are sampled per question.
+- Dense means selected budget points, not labels for every token.
+- Raw rollout and rejection-log release remains unconfirmed.

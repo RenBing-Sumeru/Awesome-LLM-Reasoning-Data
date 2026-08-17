@@ -1,0 +1,1 @@
+OffsetBias 关注的问题是：如何发现并降低 LLM evaluator 的系统性偏差，而不是只追求平均相关性。主要来源是 arXiv:2407.06551、NCSoft 官方 GitHub 和 NCSOFT Hugging Face 数据集；arXiv 记录标注为 Findings of EMNLP 2024。这里收录它是因为它把 judge bias case 和 debiased tuning data 做成可审计对象，而不是普通聊天质量排行榜。一个样本包含评价 prompt、候选回答、偏差类别或去偏目标以及判断标签。它对 atlas 的价值在于把 evaluator 本身的反馈契约暴露出来，便于检查位置、冗长、格式等偏差是否进入奖励信号。

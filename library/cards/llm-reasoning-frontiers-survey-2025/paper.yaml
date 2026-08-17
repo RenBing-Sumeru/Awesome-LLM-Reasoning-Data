@@ -1,0 +1,112 @@
+id: llm-reasoning-frontiers-survey-2025
+title: 'A Survey of Frontiers in LLM Reasoning: Inference Scaling, Learning to Reason, and Agentic Systems'
+year: 2025
+venue: Transactions on Machine Learning Research
+authors:
+- Zixuan Ke
+- Fangkai Jiao
+- Yifei Ming
+- Xuan-Phi Nguyen
+- Austin Xu
+- Do Xuan Long
+- Minzhi Li
+- Chengwei Qin
+- Peifeng Wang
+- Silvio Savarese
+- Caiming Xiong
+- Shafiq Joty
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- reasoning-data
+- inference-scaling
+- reinforcement-learning
+- agents
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://mlanthology.org/tmlr/2025/ke2025tmlr-survey/
+  arxiv: https://arxiv.org/abs/2504.09037
+  code: null
+  data: null
+  project: https://llm-reasoning-ai.github.io/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2504.09037
+  venue: https://mlanthology.org/tmlr/2025/ke2025tmlr-survey/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning prompts, tasks, trajectories, tools, and benchmarks.
+  trace_author: Primary studies covered by the survey; no new dataset is released.
+  answer_format: A two-axis taxonomy by reasoning regime and system architecture.
+  process_fields:
+  - reasoning regime
+  - architecture
+  - input-level method
+  - output-level method
+  - feedback
+  - benchmark
+  environment_or_substrate: Standalone LLMs, tool-using agents, and multi-agent reasoning systems.
+  verifier_or_reward: Reviews reasoners, verifiers, reward learning, and task-specific evaluation.
+  terminal_predicate: The cited task or environment defines success.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Reviewed studies use varied supervision and feedback.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: Crosses inference versus training regimes with standalone, single-agent, and multi-agent architectures.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new recipe is proposed.
+audit:
+  source_mixture: Official TMLR record, arXiv record, and project page.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is provided.
+  license: Check individual primary resources before reuse.
+  lineage: 'Primary source: https://mlanthology.org/tmlr/2025/ke2025tmlr-survey/'
+  known_failure_modes:
+  - A taxonomy can hide differences in task data and feedback
+  - Agent outcomes depend on tool and environment access
+  citation_status: verified
+  confidence: high
+  notes: The official TMLR abstract describes the regime-by-architecture taxonomy.
+inclusion_reason: A TMLR 2025 survey from Salesforce AI Research, NUS, NTU, and A*STAR that connects reasoning data, training,
+  inference, and agentic systems.
+related: []
+tags:
+- foundations-and-primers
+- llm-reasoning
+- agentic-systems
+- tmlr-2025
+- survey
+why_it_matters: It prevents data, training, inference, and agent design from being compared as if they were the same intervention.
+one_line_summary: A TMLR survey that maps reasoning by when it is achieved and which system components perform it.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers choosing between trace data, training, test-time scaling, tools, and multi-agent designs.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable evaluation across standalone and agentic reasoning systems'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official TMLR entry, author affiliations, and abstract were checked.
+category_ids:
+- foundations_and_primers

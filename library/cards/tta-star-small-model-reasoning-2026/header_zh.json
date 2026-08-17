@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"TTA* 以 A* 风格优先级搜索部分解答，让小语言模型在测试时把计算投入最有希望的自我修订分支。","reading_priority_ch":"可读","paper_type_ch":"面向小语言模型的无训练 A* 测试时扩展研究","best_for_ch":"设计资源受限推理搜索、且不希望依赖外部过程奖励模型的读者。","confidence_ch":"中","authors_ch":"Alexander Braverman（康奈尔大学）；Weitong Zhang（北卡罗来纳大学教堂山分校）；Quanquan Gu（加州大学洛杉矶分校）","category_ids":["scaling_rlvr_test_time_compute"]}

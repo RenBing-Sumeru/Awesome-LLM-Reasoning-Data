@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Superfiltering 发布带 GPT-2 指令跟随难度分数的 Alpaca 系列记录及其小比例筛选子集。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "在筛选与训练预算有限时挑选小规模高效指令子集",
+  "confidence_ch": "高",
+  "authors_ch": "Ming Li, Yong Zhang, Shwai He, Zhitao Li, Hongyu Zhao, Jianzong Wang, Ning Cheng, Tianyi Zhou",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

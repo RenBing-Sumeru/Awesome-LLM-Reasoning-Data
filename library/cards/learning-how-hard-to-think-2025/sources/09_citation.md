@@ -1,0 +1,1 @@
+Damani, Mehul, Idan Shenfeld, Andi Peng, Andreea Bobu, and Jacob Andreas. 2025. “Learning How Hard to Think: Input-Adaptive Allocation of LM Computation.” International Conference on Learning Representations 2025. Official paper: https://proceedings.iclr.cc/paper_files/paper/2025/file/ff414825df833edb8b1839e3d5d495e9-Paper-Conference.pdf. arXiv: https://arxiv.org/abs/2410.04707.

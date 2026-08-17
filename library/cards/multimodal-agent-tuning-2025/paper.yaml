@@ -1,0 +1,235 @@
+id: multimodal-agent-tuning-2025
+title: 'Multi-modal Agent Tuning: Building a VLM-Driven Agent for Efficient Tool Usage'
+year: 2025
+venue: ICLR 2025 Spotlight
+authors:
+- Zhi Gao
+- Bofei Zhang
+- Pengxiang Li
+- Xiaojian Ma
+- Tao Yuan
+- Yue Fan
+- Yuwei Wu
+- Yunde Jia
+- Song-Chun Zhu
+- Qing Li
+source_role:
+- construction_recipe
+- data_release
+- agent_environment
+verification_contract:
+- environmental
+- judgment_required
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- multimodal_agents
+- tool_use
+- visual_reasoning
+- code_generation
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/238747e153a84f50b43fd50fa8504f33-Abstract-Conference.html
+  paper_pdf: https://proceedings.iclr.cc/paper_files/paper/2025/file/238747e153a84f50b43fd50fa8504f33-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2412.15606
+  code: https://github.com/mat-agent/MAT-Agent
+  data: https://huggingface.co/datasets/PengxiangLi/MAT
+  model: https://huggingface.co/PengxiangLi/MAT
+  project: https://mat-agent.github.io/
+  huggingface_collection: null
+  doi: https://doi.org/10.48550/arXiv.2412.15606
+  venue: https://iclr.cc/virtual/2025/poster/31249
+  openreview: https://openreview.net/forum?id=0bmGL4q7vJ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.iclr.cc/paper_files/paper/541-/bibtex
+data_object:
+  record_type: 'An MM-Traj episode is represented in the paper as {F_opt, Q, T, C, O, A}: optional multimodal files, a query,
+    stepwise thoughts, executable Python tool-call code, tool observations, and a final answer. The pinned HF JSON instead
+    serializes a stable row ID, an `image` reference value, an `answer` string, and system/user/assistant conversations.'
+  prompt_source: Human-brainstormed and double-checked seed queries are sampled as in-context examples; GPT-4o mini expands
+    them using tool descriptions. The exact seed inventory, source membership, prompt inputs, and sampling seed used for the
+    paper run are not released.
+  trace_author: A zero-shot ReAct agent controlled by GPT-4o mini solves generated query-file tasks. Only trajectories whose
+    code executes proceed to GPT-4o-mini query-file and trajectory judgments.
+  answer_format: Paper schema is {F_opt, Q, T, C, O, A}. Released `answer` values are strings, sometimes encoding Python-like
+    dictionaries or lists rather than a normalized typed answer.
+  process_fields:
+  - id
+  - image
+  - answer
+  - conversations
+  - optional_files
+  - query
+  - thoughts
+  - tool_call_code
+  - observations
+  - final_answer
+  observation: Python execution results and outputs from web search, image QA, file inspection, segmentation, localization,
+    image generation or editing, face detection, and other allowed packages become ReAct observations.
+  verifier_output: Query-file and trajectory judgments exist during construction, but their per-record responses, scores,
+    confidence, and rejection reasons are not present in the public training payload.
+  reward: No trained reward model or RL reward is reported. Executability and two affirmative GPT-4o-mini judgments are selection
+    signals for SFT data.
+  environment_or_substrate: A Python-executing ReAct tool environment supports web search, image QA, file inspection, segmentation,
+    object localization, image generation and editing, face detection, and a broad package allowlist. Inputs include images
+    plus PDF, DOCX, PPTX, XLSX, CSV, audio, and other files.
+  verifier_or_reward: A GPT-4o-mini query-file judge checks relevance, information sufficiency, and solvability with available
+    tools. A GPT-4o-mini trajectory judge checks tool relevance, reasoning, consistency, arguments, observation-grounded synthesis,
+    and final-answer relevance. There is no reported independent programmatic answer checker.
+  terminal_predicate: Retention requires executable trajectory code and approval by both GPT-4o-mini judges. Execution establishes
+    that code ran, not that the observation or final answer is semantically correct.
+  released_payload: At HF revision 360ab42fa086277c037bd4c1d3f8a0a61c96018e, `mat_train.json` has exactly 21,168 rows with
+    unique IDs and the four fields `id`, `image`, `answer`, and `conversations`; `data.zip` has 19,307 regular files in 11
+    top-level directories. The HF viewer fails because the declared schema does not accommodate heterogeneous `image` values.
+  failed_records: The paper reports filtering 23.5K candidates to about 20K retained records and evaluates a mixture of retained
+    and filtered examples, but the release contains no rejected split, verifier outputs, rejection reasons, executable-status
+    ledger, or accepted/rejected manifest.
+  provenance: Manual seed queries -> GPT-4o-mini query generation -> BGE image retrieval or GPT-4o-mini file generation ->
+    GPT-4o-mini zero-shot ReAct rollout -> executable-code gate -> GPT-4o-mini query-file judgment -> GPT-4o-mini trajectory
+    judgment -> conversation SFT export. Row-level source rights, generator/verifier decisions, and file mappings are incomplete.
+recipe_metadata:
+  base_model: T3-Agent controllers are MiniCPM-V-8.5B and Qwen2-VL-7B. MM-Traj is mixed with Cauldron and open-LLaVA-NeXT;
+    the vision encoder and compressor are frozen, with rank-64 LoRA on language-model q/k/v projections.
+  teacher: GPT-4o mini
+  generator: GPT-4o mini generates queries and non-image file content/code and controls the zero-shot ReAct rollout; BGE retrieves
+    images. The checked configuration names `gpt-4o-mini-2024-07-18`.
+  prompt_or_task_source: Manually brainstormed, double-checked seed queries; tool descriptions; and a 93K image-caption pool
+    from ChartQA, COCO, LLaVA, SAM, TextVQA, Web-Celebrity, Web-Landmark, and WikiArt, captioned with ShareGPT4V.
+  filtering_rule: Keep trajectories whose code executes, then retain a record only when the query-file judge finds the files
+    relevant, sufficient, and solvable and the trajectory judge approves the tool-use path and final answer.
+  sampling_protocol: Seed demonstrations are randomly sampled and BGE retrieves top-similar images. Checked scripts use Python
+    random sampling and temperature 1 but set no fixed seed; no paper-run prompt ledger, candidate order, retry ledger, or
+    retrieval-index digest is released.
+  rollout_count: 'Paper funnel: 23.5K generated data points -> about 20K retained tasks with about 15K files. Pinned release:
+    exactly 21,168 JSON rows and 19,307 regular ZIP files. No manifest reconciles these distinct units.'
+  temperature: The paper says query-generation temperature is tuned but does not disclose it. Current generation and verifier
+    scripts set temperature 1; an immutable binding between those scripts and the paper run is absent.
+  inference_budget: Most paper trajectories have two to six steps, with some seven or eight. Maximum construction steps, token
+    budget, timeouts, retries, and tool-cost budget are not disclosed. Fine-tuning context length is 10,240.
+  optimizer_or_scaffold: Five epochs; AdamW with cosine schedule; learning rate 1e-6; per-device batch size 2; context length
+    10,240; frozen vision encoder/compressor; and rank-64 LoRA on language-model q/k/v. Cross-entropy covers thought and code
+    tokens across steps; final answer A is excluded from the loss.
+  verifier_training: No verifier is trained. GPT-4o mini is prompted for both judgment stages. Thirty programmers each rate
+    20 blindly mixed retained/filtered examples in a 600-sample human study.
+  selection_rule: Executable rollout plus both GPT-4o-mini approvals. Per-row verifier responses, rejection causes, confidence,
+    and a reproducible manifest are not released.
+audit:
+  source_mixture: The paper names ChartQA, COCO, LLaVA, SAM, TextVQA, Web-Celebrity, Web-Landmark, and WikiArt. The ZIP has
+    11 top-level directories, adding `cocoqa`, `share_textvqa`, and generated `multimodal_file` material. No per-source count
+    and rights manifest explains this drift.
+  split: One JSON training payload is public. There is no train/validation/test, accepted/rejected, source, modality, difficulty,
+    or benchmark-overlap manifest. The HF viewer is broken by heterogeneous `image` types.
+  decontamination: unknown
+  benchmark_overlap: No exact or semantic audit is reported against GTA, GAIA, Cauldron, open-LLaVA-NeXT, model pretraining,
+    or the eight upstream image corpora.
+  license: 'Dataset authority is unresolved: HF YAML front matter says MIT, while the card body says CC-BY-NC-4.0. Code is
+    MIT and the released model is labeled CC-BY-NC-SA-4.0, but neither grant covers the dataset or upstream images. SA-1B
+    is governed by a limited Dataset Research License; COCO states it does not own image copyrights and requires compliance
+    with Flickr terms. No row-level rights reconciliation is published.'
+  lineage: Released rows lack prompt/seed IDs, generator request IDs, source item IDs and licenses, file hashes, tool/environment
+    versions, verifier decisions, rejection reasons, and bindings to training examples or checkpoints.
+  release_version: 'Checked pins: code 121e1a425a0c464ed43f25576e7caf2885e4c827; dataset 360ab42fa086277c037bd4c1d3f8a0a61c96018e;
+    model 4f867c028be566584cc6d3c7b1b3ae1e62b89b56. The repository has no tag or GitHub Release and no signed release-wide
+    manifest.'
+  successful_and_failed_sample_retention: The public payload is retained-data only. Filtered records used in the human study
+    are not released with stable IDs, trajectories, verifier outputs, executable status, or rejection reasons.
+  immutable_manifest: Individual revisions can be pinned, but no manifest binds seed queries, source assets and rights, captions/embeddings,
+    generated files, tool versions, trajectories, judgments, membership, subsets, checkpoints, and evaluations.
+  privacy_or_consent: unknown
+  reuse_class: reading, construction, and audit reference; blocked for direct training reuse
+  known_failure_modes:
+  - Generator and both judges use GPT-4o mini, creating correlated-error and style-selection risk.
+  - The query-file verifier prompt speaks only of images despite the dataset's non-image files.
+  - Heterogeneous `image` types break the declared HF schema and viewer.
+  - Paper and release counts use unreconciled task, row, reference, and file units.
+  - Appendix prose and Table 6 report contradictory human-quality scores.
+  - Final verifier scripts reference prompt paths absent at the checked commit.
+  - Random sampling has no fixed seed and external APIs, search, and tools drift.
+  - Executable code does not independently establish semantic answer correctness.
+  - Source-image rights, attribution, consent, privacy review, and takedown handling are absent.
+  - Sandboxing, network policy, malicious-file screening, and generated-code safety are undisclosed.
+  - The paper acknowledges that intermediate multimodal trajectory results are not handled.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR proceedings and spotlight records, the full 32-page paper, project page, pinned code/data/model revisions,
+    release payloads, and primary SA-1B and COCO rights pages were checked on 2026-07-24. Artifact existence is verified;
+    license authority, row/file reconciliation, verifier independence, rejected data, safety, and exact reproduction remain
+    partial.
+  remaining_unknowns:
+  - Authoritative dataset license and source-by-source rights reconciliation
+  - Stable mappings among candidates, retained tasks, JSON rows, file references, and archive files
+  - Seed inventory, sampling records, retrieval digest, generator requests, and per-row judge outputs
+  - Rejected records, retry history, rejection reasons, and accepted/rejected ledger
+  - Corrected human-study report, raw ratings, agreement, and judge error analysis
+  - Runnable paper-run environment, fixed seeds, service revisions, timeouts, retries, and cost
+  - Validated schema for missing, single-image, multi-image, and non-image attachments
+  - Privacy, consent, attribution, takedown, sandbox, network, and malicious-file controls
+  - Exact and semantic contamination audit
+  - Signed immutable release manifest
+inclusion_reason: 'MM-Traj is a concrete construction-recipe case: it combines seed prompting, multimodal file retrieval/generation,
+  executable ReAct rollouts, and dual LLM filtering into tool-use SFT data. Its public release exposes correlated verification,
+  heterogeneous source rights, schema drift, count reconciliation, rejected-data, lineage, privacy, and execution-safety risks.'
+related: []
+tags:
+- multimodal-agent-tuning
+- mm-traj
+- t3-agent
+- multimodal-agents
+- tool-use
+- react
+- gpt-4o-mini
+- synthetic-trajectories
+- executable-code
+- llm-as-judge
+- dual-verification
+- sft
+- source-rights
+- license-conflict
+- schema-drift
+- rejected-data-gap
+- release-completeness
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- process_trace_supervision_data
+one_line_summary: Multi-modal Agent Tuning synthesizes queries and files, executes GPT-4o-mini-controlled ReAct trajectories,
+  applies query-file and trajectory judges, and fine-tunes VLM controllers on thought-and-code supervision.
+why_it_matters: It documents an unusually inspectable multimodal agent-data pipeline while showing why executable traces and
+  two judges are insufficient without independent correctness checks, source-rights inheritance, stable row/file lineage,
+  rejected examples, and reproducible release manifests.
+card: null
+needs:
+- 'needs_license: publish one authoritative dataset license and per-source rights records'
+- 'needs_metadata: reconcile 23.5K candidates, about 20K tasks, 21,168 JSON rows, about 15K files, 19,307 archived files,
+  and file references'
+- 'needs_lineage: add stable seed, query, source, file, trajectory, verifier, training, and checkpoint bindings'
+- 'needs_rejections: release failed records, executable status, both judgments, reasons, retries, and a complete ledger'
+- 'needs_schema: validate heterogeneous attachment fields and repair the HF viewer'
+- 'needs_code: repair verifier prompt paths and pin a runnable paper-run environment'
+- 'needs_verifier_audit: add independent answer checks and release corrected human-rating evidence'
+- 'needs_safety: document sandbox, network, malicious-file, generated-code, and incident controls'
+- 'needs_privacy: document consent, face and identity review, redaction, takedown, and deletion'
+- 'needs_contamination_audit: test exact and semantic overlap across training and evaluation sources'
+- 'needs_manifest: publish a signed immutable release-wide manifest'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Official identity, ICLR 2025 Spotlight status, affiliations, project, code, data, model, and pinned artifact surfaces
+    were verified. This does not certify license clearance, source rights, schema correctness, verifier validity, complete
+    lineage, safety, or exact reproducibility.

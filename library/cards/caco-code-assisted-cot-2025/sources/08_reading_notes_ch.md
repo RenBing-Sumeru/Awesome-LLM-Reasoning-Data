@@ -1,0 +1,6 @@
+- 先联读 §§3.1–3.3 与 Appendix A，并跟踪每个阶段的对象边界：source solution、standardized seed program、unconditional generated program、execution/structure survivor、reversed problem、language CoT、final accepted row。
+- 严格区分 verifier layer。Gold-answer comparison 只适用于存在外部答案的情况；syntax/runtime/AST check 约束程序行为与结构；language-answer matching 只是 agreement；Qwen3-32B 属于 model judgment。任何一层都不能单独证明数学真值。
+- 记住 release schema 是 `instruction`、`output`、`answer` 与 `code`，并非只有 instruction/output；但 execution log、representative test、source/parent ID 与 judge decision 仍然缺失。
+- 把 Table 1 读作 downstream SFT scaling evidence，把 Table 4 读作同一 Qwen3 family 的 verification ablation，把 Table 5 读作四舍五入的 construction-cost evidence，把 Appendix C control 读作部分替代对照。不要把任何一项提升为总体 data-quality 证明。
+- 复用前检查 live HF preview。自相矛盾的 cyclic-parallelogram 示例说明，即使 code 可执行且 code-language 一致，仍需要独立 semantic validation。
+- 固定 GitHub commit `ceb525c57a9fea22dd2d0cf84bfc9dc2f5169375`、HF revision `664f036126e9b82533c769b74ef27c7c0ccd1398` 与数据文件 SHA-256 `919050aa7495d1811999c1ff0f7eec1675abaf061ffa5eedddc96168d8d5e946`，再审计 source rights、lineage、sandboxing、judge error、duplicate 与 evaluation overlap。

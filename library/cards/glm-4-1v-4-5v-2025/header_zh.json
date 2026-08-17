@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GLM-V 报告以 RLCS 扩展多模态推理，但样本与奖励来源仍未充分披露。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态推理模型技术报告",
+  "best_for_ch": "研究多模态 RL 与披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "GLM-V Team 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

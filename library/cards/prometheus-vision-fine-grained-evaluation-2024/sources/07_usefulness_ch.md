@@ -1,0 +1,1 @@
+Perception Collection 可用于训练多模态 judge、视觉 reward model 和自动 critique 系统。复用时应保留图像、rubric、reference、反馈和分数全部字段，并按视觉技能分层评测，而不是只报告总相关。模型可用于图片问答、caption 和视觉助理的离线评价，但在 OCR、图表或安全审核中应加入专用检测器与人工复核。若扩展到视频，应重新构建时序 rubric，不能直接假设静态图像能力迁移。

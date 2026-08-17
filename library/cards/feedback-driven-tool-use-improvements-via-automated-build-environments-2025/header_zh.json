@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FTRL 将 2,415 个合成的本地 Python 工具环境转化为带可执行反馈和标量奖励的当前策略交互状态，用于 GRPO 或 Reinforce++；但论文运行轨迹、数据权利与安全可重放包均未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行工具环境与反馈驱动智能体训练论文",
+  "best_for_ch": "研究环境型 agent trajectory、工具反馈、RLVR reward、可执行数据安全与发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Junjie Ye, Changhao Jiang, Zhengyin Du, Yufei Xu, Xuesong Yao, Zhiheng Xi, Xiaoran Fan, Qi Zhang, Tao Gui, Xuanjing Huang, Jiecao Chen",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

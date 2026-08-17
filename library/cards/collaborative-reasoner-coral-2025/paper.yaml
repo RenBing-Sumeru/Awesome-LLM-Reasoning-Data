@@ -1,0 +1,280 @@
+id: collaborative-reasoner-coral-2025
+title: 'Collaborative Reasoner: Self-Improving Social Agents with Synthetic Conversations'
+year: 2025
+venue: NeurIPS 2025 Main Conference Track
+authors:
+- Ansong Ni
+- Ruta Desai
+- Yang Li
+- Xinjie Lei
+- Dong Wang
+- Jiemin Zhang
+- Jane Yu
+- Ramya Raghavendra
+- Gargi Ghosh
+- Shang-Wen Li
+- Asli Celikyilmaz
+source_role:
+- construction_recipe
+- model_report
+- benchmark
+verification_contract:
+- mixed
+- judgment_required
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- collaborative_reasoning
+- multi_agent_reasoning
+- mathematical_reasoning
+- code_reasoning
+- scientific_reasoning
+- social_reasoning
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://papers.neurips.cc/paper_files/paper/2025/file/221ae0f5de12f7b9803af2656ee7902d-Paper-Conference.pdf
+  paper_pdf: https://papers.neurips.cc/paper_files/paper/2025/file/221ae0f5de12f7b9803af2656ee7902d-Paper-Conference.pdf
+  supplemental: https://papers.neurips.cc/paper_files/paper/2025/file/221ae0f5de12f7b9803af2656ee7902d-Supplemental-Conference.zip
+  code: https://github.com/facebookresearch/collaborative-reasoner
+  code_snapshot: https://github.com/facebookresearch/collaborative-reasoner/tree/bd18e0f5b149f250830f459d7fa7a42a2b8e2c22
+  matrix: https://github.com/facebookresearch/matrix
+  matrix_snapshot: https://github.com/facebookresearch/matrix/tree/6d11f4ac604a34593906174a8e99a223a2ba6020
+  project: https://ai.meta.com/research/publications/collaborative-reasoner-self-improving-social-agents-with-synthetic-conversations/
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/221ae0f5de12f7b9803af2656ee7902d-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=dye9w8IOV0
+  arxiv: null
+  data: null
+  dataset_card: null
+  models: null
+  huggingface: null
+  release: null
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  record_type: A raw Coral object is a tree-sampled, free-form two-agent reasoning conversation with alternating turns, same-prefix
+    sibling candidates, extracted beliefs, gold-correctness annotations, usage/error metadata, stopping flags, and conversation
+    metrics. A final DPO object is one same-prefix chosen/rejected next-turn pair.
+  prompt_source: 'Existing tasks provide a problem and gold answer: MATH, MMLU-Pro, ExploreToM, and derived MBPP-CR for training;
+    GPQA and Hi-ToM are evaluation-only. A collaboration prompt asks agents to propose solutions, inspect steps, challenge
+    errors, ask clarifying questions, and stay concise.'
+  trace_author: In self-training, the same instruction-tuned model authors both sides of the conversation. Llama-3.1-8B/70B-Instruct,
+    Qwen-2.5-7B-Instruct, and Ministral-8B-Instruct are trained on their respective self-generated data.
+  context_state:
+  - task input and gold answer
+  - shared task-specific collaboration role instruction
+  - alternating full conversation prefix
+  - current active role
+  - five same-prefix candidate next turns
+  - per-candidate extracted belief and correctness
+  - agreement or maximum-turn stopping state
+  role_schema: Code names the two agents `teacher` and `student` only to distinguish the question starter from the first responder.
+    They are symmetric generalist collaborators under the same prompt, not distinct pedagogical roles.
+  communication_schema: Agent A opens with a templated problem utterance. Agents alternate free-form responses, each seeing
+    the full prefix, until extracted beliefs agree or the 20-turn limit is reached.
+  raw_turn_fields:
+  - role
+  - content
+  - token_usage_or_error_status
+  - extracted_answer_or_not_sure
+  - task_correctness_annotation
+  - sampled_sibling_turns
+  - agreement_and_stop_flags
+  raw_conversation_fields:
+  - initial_problem_prompt
+  - ordered_turns
+  - task_and_gold_metadata
+  - teacher_and_student_system_prompts
+  - agreement_correctness
+  - social_behavior_metrics
+  - total_turns_and_lengths
+  - conversation_error_status
+  preference_record: '`src` is the active agent''s role instruction rendered with the conversation prefix; `tgt_chosen` is
+    a sibling whose extracted belief matches gold; `tgt_rejected` is a same-prefix sibling whose belief does not; `pairwise`
+    is true.'
+  sft_record: '`src` is the role instruction plus conversation prefix and `tgt` is a sampled next turn whose extracted belief
+    matches the gold answer.'
+  answer_format: 'Natural multi-turn dialogue with task-specific final-answer conventions: boxed LaTeX for MATH, option letters
+    for multiple choice, short answers for theory-of-mind tasks, and a binary correctness decision for MBPP-CR.'
+  process_fields:
+  - problem_and_gold_answer
+  - agent_role
+  - system_prompt
+  - conversation_prefix
+  - candidate_next_turn
+  - sibling_candidates
+  - extracted_belief
+  - gold_match
+  - agreement
+  - persuasiveness
+  - assertiveness
+  - persuasion_quality
+  - chosen_or_rejected_label
+  observation: The next agent observes the full conversation prefix. After each candidate turn, a separately prompted same-family
+    LLM extracts a normalized belief or `not sure yet`; task-specific matching yields binary correctness.
+  verifier_output: Per-turn extracted belief, valid-answer status, and gold match; plus per-conversation agreement, agreement
+    correctness, extraction validity, social metrics, lengths, and error status.
+  environment_or_substrate: Offline multi-agent generation through the paper-pinned Matrix Ray/Slurm/vLLM infrastructure.
+    Conversation history is the state substrate, and task gold answers anchor correctness.
+  verifier_or_reward: A same-family LLM judge extracts each candidate's final-answer belief, then a programmatic task matcher
+    compares it with gold. This mixed contract creates chosen/rejected turns without a scalar reward model. Social metrics
+    are measured but not used for reported data selection.
+  terminal_predicate: Stop when the latest valid normalized beliefs of both agents are equal or after 20 turns. Main success
+    additionally requires the common belief to match the task gold answer.
+  provenance: benchmark problem and gold -> collaboration prompt -> same-model two-agent tree sampling -> LLM belief extraction
+    -> task-specific gold matching -> correct/incorrect sibling pairing or correct-turn SFT -> DPO/SFT -> Coral-trained model
+    evaluation.
+  release_surface: Public artifacts expose generation, annotation, filtering, evaluation, and training code. They do not expose
+    conversation trees, SFT targets, DPO pairs, beliefs, rejected turns, failures, logs, prepared splits, or trained Coral
+    checkpoints.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct, Llama-3.1-70B-Instruct, Qwen-2.5-7B-Instruct, and Ministral-8B-Instruct are self-trained
+    and evaluated. Llama-3.1-405B-Instruct generates MBPP-CR code candidates.
+  teacher: No stronger conversation teacher is used in main self-play. The same model plays both roles and, under a separate
+    prompt, extracts beliefs. Llama-3.1-405B-Instruct is used only for MBPP-CR code synthesis before execution labeling.
+  generator: Two instances of the current instruction-tuned model alternate free-form turns under the same task-specific collaboration
+    prompt.
+  prompt_task_source: MATH uses 7.5K train problems; MMLU-Pro re-splits its roughly 12K original test examples into 10.8K
+    train and 1.2K test; ExploreToM uses 10.4K/1.5K/1.5K; MBPP-CR executes Llama-3.1-405B-Instruct code candidates.
+  filtering_rule: Extract a final-answer belief or uncertainty from every candidate, normalize by task, and compare with gold.
+    Correct-belief turns are positive and all others negative. Pair positive and negative siblings sharing the same prefix.
+    Social metrics are not used for reported selection.
+  sampling_protocol: At every turn, sample five candidates, randomly retain one as the continuing branch, and preserve its
+    siblings for pair construction. Independently sample five trees per problem. Stop on belief agreement or after 20 turns.
+    Sibling nodes are not recursively expanded, so this is not MCTS.
+  rollout_count: Five independent conversation trees per problem with five next-turn candidates at every level; SFT comparison
+    uses 25 independently sampled conversations per problem.
+  temperature: unknown
+  top_p: unknown
+  inference_budget: At most 20 turns or 10 rounds. Released consolidated code sets maximum 1,024 tokens per generated turn
+    and temperature 0.8, but no immutable command binds those defaults to every reported run.
+  search_or_scaffold: One randomly continued branch with same-level siblings retained, repeated over five independent trees.
+    No recursive sibling expansion, MCTS, external planner, or learned reward model.
+  selection_threshold: Positive requires an extracted belief matching gold; a preference pair requires differing binary scores.
+    The paper caps two pairs per turn and 20 per problem, while consolidated-script defaults are one per turn and ten per
+    problem.
+  seed_protocol: Task YAML files set seed 333, but no complete paper-run seed manifest maps random state to every reported
+    model and task.
+  buffer_policy: No persistent online replay buffer is reported. Sampling results become local training files. Optional iterative
+    code can stack iterations, but the paper reports no additional benefit from iterative DPO.
+  reward_schedule: No scalar reward schedule. Binary gold-match labels define pair ordering and DPO directly optimizes chosen
+    versus rejected turns. Social metrics are analysis signals only.
+  optimizer_or_scaffold: Full-parameter SFT or DPO with fairseq2/TRL for 1,000-3,000 steps and batch size 20-50. The paper
+    states 8,192 input-plus-output tokens, covering over 90% of rows. Released DPO configs use beta 0.1, learning rate 1e-6,
+    weight decay 0.1, 50 warmup steps, and the instruction model as reference. Experiments use AWS p5.48xlarge instances with
+    eight H100 80GiB GPUs.
+  reported_scale: 'Table 9 reports 379.6K accepted turns for Llama-3.1-8B: 33.8K MBPP-CR, 85.1K MATH, 160.6K MMLU-Pro, and
+    100.1K ExploreToM. Llama-3.1-70B uses 311.3K turns: 33.3K, 88.5K, 99.8K, and 89.7K. Qwen/Ministral scale is unknown.'
+audit:
+  source_mixture: Training prompts come from four established reasoning sources. GPQA and Hi-ToM are evaluation-only. Exact
+    upstream revisions, checksums, prepared manifests, and all source-specific licenses are not bound to the runs.
+  split: MATH uses 7.5K train and the first 1K test items for evaluation. MMLU-Pro is re-split 10.8K/1.2K from its original
+    test pool. ExploreToM uses 10.4K/1.5K/1.5K. MBPP-CR samples ten solutions per train task and two per test task, producing
+    about 4K/1K records. Prepared split files and exact split-generation scripts are not released.
+  decontamination: unknown
+  benchmark_overlap: No exact, semantic, or upstream-pretraining decontamination is reported. Training directly uses benchmark
+    questions and reuses MMLU-Pro's original test pool as a new train/test split; base-model exposure is unmeasured.
+  license: Coral code and paper-pinned Matrix are MIT. No license is available for the unreleased synthetic conversations,
+    preference rows, derived MBPP-CR corpus, or trained Coral checkpoints. Upstream rights are not reconciled in one manifest.
+  lineage: Upstream item -> local split -> two same-model agents -> five-candidate/ five-tree sampling -> belief extraction
+    -> gold correctness -> SFT target or DPO pair -> training -> local checkpoint. Public artifacts omit item-level bindings
+    from sources through candidates and weights.
+  release_version: Coral has one public commit, bd18e0f5b149f250830f459d7fa7a42a2b8e2c22 from 2025-04-17, with no tag or GitHub
+    release. It pins Matrix commit 6d11f4ac604a34593906174a8e99a223a2ba6020. No immutable final-NeurIPS data/model package
+    exists.
+  release_count: Zero public paper-run conversation rows, zero public DPO/SFT rows, and zero official Coral checkpoints were
+    found. Table 9's 379.6K and 311.3K are author-reported accepted turn counts, not release counts.
+  successful_and_failed_sample_retention: Local raw outputs can retain branches, siblings, beliefs, metrics, usage, and errors.
+    Public artifacts retain none of those outputs. Final local SFT/DPO conversion keeps selected text but omits the full reject/failure
+    population.
+  privacy_or_consent: Synthetic conversations use public benchmark prompts and model outputs. Human evaluation covers 100
+    paired MMLU-Pro conversations with three annotators per pair; the paper reports C2 English proficiency and pay above local
+    minimum wage. Participant-level records are not released.
+  known_failure_modes:
+  - The same model family extracts beliefs from its own turns; long reasoning and long contexts cause extraction failures.
+  - Useful partial progress without an explicit correct answer receives the same negative label as a fully wrong turn.
+  - Agreement can stop on a shared wrong belief; agreement correctness detects but does not repair it.
+  - Same-model self-play can amplify correlated reasoning and social errors without an independent verifier or human training
+    labels.
+  - The reported filter does not optimize persuasion, assertion, verbosity, or politeness; excessive agreement, politeness,
+    and verbosity remain.
+  - No synthetic data, rejects, extraction/network failures, splits, logs, or checkpoints are released.
+  - Consolidated code presets cover only MATH, MMLU-Pro, and ExploreToM; MBPP-CR construction/configuration is absent and
+    GPQA is misspelled `gqpa`.
+  - 'Installation is not self-contained: requirements are non-exhaustive, Matrix uses an SSH Git URL, and MATH grading requires
+    unpinned external scripts.'
+  - 'Paper and defaults differ: two versus one pair per turn, 20 versus ten per problem, and 8,192 versus 4,096 tokens for
+    the 70B DPO config.'
+  - No error bars are reported; checklist text mentions about 1% variance without per-result statistics.
+  - No benchmark decontamination or base-model pretraining-overlap audit is provided.
+  - Release-state checklist text is inconsistent, but current official artifacts contain neither data nor models.
+  - 'Author surfaces differ: the final PDF uses Daniel Li where proceedings metadata uses Shang-Wen Li, and the Meta page
+    omits two authors.'
+  citation_status: verified
+  confidence: medium
+  notes: Verified against the NeurIPS proceedings record, final 29-page paper, supplemental, Meta project page, one-commit
+    Coral repository, pinned Matrix dependency, and current release surfaces. Verification establishes a code recipe, not
+    a released conversation corpus or checkpoint.
+  remaining_unknowns:
+  - Exact generation temperature, top-p, seeds, retries, candidate count, acceptance rate, and compute
+  - Raw trees, beliefs, siblings, failures, selected pairs, and source-item bindings
+  - Model/task training settings, checkpoints, hashes, logs, and wall times
+  - Qwen and Ministral synthetic-data scale and construction settings
+  - Exact MMLU-Pro re-split manifest and MBPP-CR construction files
+  - Data/model licenses and intended-use terms
+  - Semantic contamination and upstream base-model exposure
+inclusion_reason: Coral turns two symmetric agents' tree-sampled conversations into same-prefix answer-correct versus answer-incorrect
+  next-turn preferences, exposing the role, communication, belief-extraction, filtering, scale, and DPO contracts needed for
+  synthetic social-reasoning post-training.
+related: []
+tags:
+- collaborative-reasoner
+- coral
+- multi-agent-reasoning
+- synthetic-conversations
+- self-play
+- tree-sampling
+- belief-extraction
+- dpo
+- code-only-release
+status: partial
+one_line_summary: Collaborative Reasoner uses symmetric same-model agents, five-way turn sampling, LLM belief extraction,
+  and gold-answer matching to create next-turn SFT targets and DPO pairs for collaborative reasoning.
+why_it_matters: It makes the conversational object and feedback contract explicit, while binary answer-only labels, absent
+  rejects/data/checkpoints, and public-config gaps show why open code is not an auditable data release.
+card: null
+needs:
+- 'needs_data_release: publish raw trees, sibling candidates, beliefs, metrics, SFT/DPO rows, rejects, and failures'
+- 'needs_model_release: publish Coral checkpoints with cards, licenses, hashes, intended use, limitations, and lineage'
+- 'needs_reproducibility: release exact commands, configs, seeds, dependencies, containers, splits, logs, checkpoint selection,
+  and compute'
+- 'needs_pipeline: add MBPP-CR construction/training, correct the GPQA key, and make every paper task runnable'
+- 'needs_consistency: reconcile paper/code pair caps and sequence lengths and bind settings to reported tables'
+- 'needs_audit: release belief-extractor errors, verifier false positives/negatives, social distributions, and failed conversations'
+- 'needs_decontamination: publish source revisions, split manifests, overlap checks, and pretraining-contamination analysis'
+- 'needs_license: document synthetic data/model terms and upstream license lineage separately from MIT code'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official acceptance, paper, supplemental, project page, Coral code, paper-pinned Matrix commit, licenses, affiliations,
+    and release state were checked. This verifies a recipe, not the missing conversation data, logs, preference rows, or trained
+    weights.
+category_ids:
+- data_construction_open_release_recipes

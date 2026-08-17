@@ -1,0 +1,3 @@
+Correctness is only relative to the benchmark's own scoring contract: mixed checker or judge scoring. It does not prove broad competence outside the task distribution, and it may not expose reasoning errors that still lead to a correct final answer.
+
+Important limits are: needs_audit: pin task/skill release, deterministic verifiers, trajectory schema, agent configurations, split, and license. Public or widely cited benchmarks can become training contamination. Hidden or vendor-hosted benchmarks can improve freshness but reduce reproducibility. Judge-based or rubric-based scores can carry position, verbosity, domain, and model-family bias unless calibration details are disclosed.

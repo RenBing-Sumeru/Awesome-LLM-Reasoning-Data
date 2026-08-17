@@ -1,0 +1,1 @@
+BIRD 于 2023 年 5 月发布 arXiv，论文状态为 NeurIPS 2023。它要回答的是 text-to-SQL 系统能否处理更接近真实应用的大型关系数据库，其中数据库值、脏数据、外部 evidence 和 SQL 效率都会影响答案。一个样本由自然语言问题、database id、schema/content、可选 evidence 和 gold SQL 组成。反馈契约是官方 evaluator 的 execution accuracy 与 valid efficiency score。它应作为 database-grounded reasoning benchmark 收录，不是对话式 DB agent，也不是通用 SQL 训练配方。

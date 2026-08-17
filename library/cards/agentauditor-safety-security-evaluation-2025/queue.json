@@ -1,0 +1,19 @@
+{
+  "title": "AgentAuditor: Human-Level Safety and Security Evaluation for LLM Agents",
+  "candidate_links": {
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/3dc85735f6e2fcf093e67b134fa00d21-Abstract-Conference.html",
+    "data": "https://github.com/Astarojth/AgentAuditor-ASSEBench",
+    "code": "https://github.com/Astarojth/AgentAuditor-ASSEBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T07:31:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "Human-Level Safety and Security Evaluation for LLM Agen",
+    "updated_at": "2026-07-25T07:31:27Z"
+  }
+}

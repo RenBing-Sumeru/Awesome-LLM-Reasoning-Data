@@ -1,0 +1,1 @@
+Official arXiv citation: Anxiang Zeng, Haibo Zhang, Kaixiang Mo, Long Zhang, Shuman Liu, Yanhui Huang, Yawen Liu, Yuepeng Sheng, and Yuwei Huang. “Compass-Thinker-7B Technical Report.” arXiv:2508.08909, 2025. https://doi.org/10.48550/arXiv.2508.08909

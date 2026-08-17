@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"Plan-and-Budget 按子问题复杂度分配 token 预算，以避免简单问题过度思考、困难问题思考不足。","reading_priority_ch":"必读","paper_type_ch":"自适应 token 预算分配与测试时扩展论文（ICLR 2026）","best_for_ch":"设计推理计划、token 预算或审计过度思考的读者。","confidence_ch":"高","authors_ch":"Junhong Lin、Xinyue Zeng 等（MIT CSAIL、Virginia Tech、弗吉尼亚大学、密歇根州立大学）","category_ids":["scaling_rlvr_test_time_compute"]}

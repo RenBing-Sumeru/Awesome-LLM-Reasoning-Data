@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LongRePS 自举并筛选长文档中的显式证据推理路径，训练模型基于上下文完成推理而非只预测最终答案。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要为长上下文问答构造证据路径监督或评估过程监督跨领域泛化的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dawei Zhu、Xiyu Wei、Guangxiang Zhao、Wenhao Wu、Haosheng Zou、Junfeng Ran、Xun Wang、Lin Sun、Xiangzheng Zhang、Sujian Li",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:36:14Z"
+}

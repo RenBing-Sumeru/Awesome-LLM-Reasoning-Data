@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:21:20Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "暂缓 RAG评测和统计校准方向的代表性框架，ref425 724star 自动评估 RAG 的检索上下文相关性、答案忠实性和答案相关性。不确定是否和后训练有关",
+    "updated_at": "2026-07-15T12:21:20Z"
+  }
+}

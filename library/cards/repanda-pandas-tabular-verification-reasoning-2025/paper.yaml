@@ -1,0 +1,101 @@
+id: repanda-pandas-tabular-verification-reasoning-2025
+title: 'RePanda: Pandas-powered Tabular Verification and Reasoning'
+year: 2025
+venue: ACL 2025
+authors:
+- Atoosa Malemir Chegini
+- Keivan Rezaei
+- Hamid Eghbalzadeh
+- Soheil Feizi
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- tabular-reasoning
+- fact-verification
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1549/
+  arxiv: https://arxiv.org/abs/2503.11921
+  code: null
+  data: https://huggingface.co/datasets/AtoosaChegini/PanTabFact
+  project: null
+  huggingface: https://huggingface.co/datasets/AtoosaChegini/PanTabFact
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1549
+  venue: https://aclanthology.org/2025.acl-long.1549/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1549/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: TabFact statements and tables, with a companion WikiTableQuestions-derived resource.
+  trace_author: DeepSeek-Chat query generation followed by automated correction.
+  answer_format: Table, claim or question, executable pandas query, and execution result.
+  process_fields:
+  - table
+  - claim or question
+  - pandas query
+  - execution result
+  - label or answer
+  environment_or_substrate: Python pandas execution over the supplied table.
+  verifier_or_reward: Execution of the generated pandas query.
+  terminal_predicate: The query executes and yields the table-grounded truth value or requested answer.
+recipe_metadata:
+  base_model: DeepSeek-Coder-7B-Instruct-v1.5 is used in the reported fine-tuning experiment.
+  teacher: DeepSeek-Chat generated queries and pandas execution.
+  generator: Claim-to-pandas-query translation with automated error correction.
+  filtering_rule: Keep syntactically valid, executable queries that realize the intended table operation.
+  sampling_protocol: Use PanTabFact for verification and the separately released PanWiki resource for question answering where
+    appropriate.
+  rollout_count: null
+  temperature: null
+  inference_budget: Consult the paper for generation configuration.
+  optimizer_or_scaffold: Execution-grounded supervised fine-tuning.
+audit:
+  source_mixture: ACL Anthology paper and the official Hugging Face PanTabFact release.
+  split: PanTabFact is derived from the TabFact training set; consult the dataset card for release details.
+  decontamination: The resource inherits source-table and benchmark exposure; do not use an overlapping TabFact split for
+    evaluation.
+  license: Check the dataset card and upstream TabFact terms before redistribution.
+  lineage: https://huggingface.co/datasets/AtoosaChegini/PanTabFact
+  known_failure_modes:
+  - A query can execute while encoding an incorrect interpretation of a claim.
+  - Pandas coverage does not represent all forms of tabular reasoning.
+  citation_status: verified
+  confidence: high
+  notes: The ACL proceedings paper, author affiliations, and official Hugging Face PanTabFact release were checked.
+inclusion_reason: PanTabFact pairs tabular claims with executable pandas programs, allowing outcomes to be verified by rerunning
+  the program against the table.
+related: []
+tags:
+- tables
+- pandas
+- fact-verification
+- execution
+- acl-2025
+one_line_summary: RePanda converts table claims into executable pandas queries so fact verification is determined by rerunnable
+  table operations rather than a black-box label.
+why_it_matters: The record exposes the executable operation that establishes the table-grounded answer.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: The ACL proceedings paper, author affiliations, and official Hugging Face PanTabFact release were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

@@ -1,0 +1,3 @@
+This is a frontier model report rather than a standalone data release. Its distinctive value is unusually concrete disclosure of an agent-data interface: real MCP specifications and synthetic tools, generated agents and rubric-backed tasks, multi-turn trajectories, simulated state transitions, real code execution, several verifier types, and a critic-refinement loop that connects verifiable signals to subjective pairwise judgment.
+
+For a disclosure ledger, the important novelty is the boundary between these named interfaces and missing evidence. The report identifies how feedback is intended to flow, but does not make the inputs, intermediate trajectories, rejection decisions, rubric contents, verification implementation, or audit results independently inspectable.

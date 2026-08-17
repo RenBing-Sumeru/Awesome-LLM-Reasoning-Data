@@ -1,0 +1,5 @@
+- Treat RMSE preference as proximity to one demonstrated action, not task-success ground truth.
+- Separate the released training comparisons from runtime proposal and execution traces.
+- The paper reports 20 million comparisons; verify the public artifact revision before assuming identical contents.
+- Candidate count and latency numbers are configuration-specific.
+- The current dataset and model endpoints confirm artifacts but provide incomplete documentation.

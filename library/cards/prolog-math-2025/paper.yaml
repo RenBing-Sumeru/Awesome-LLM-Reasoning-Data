@@ -1,0 +1,146 @@
+id: prolog-math-2025
+title: Predicate-Guided Generation for Mathematical Reasoning
+year: 2025
+venue: EMNLP 2025
+authors:
+- Jiajun Chen
+- Yik-Cheung Tam
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- logic_programming
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.462/
+  code: https://github.com/Tinyyhope/Prolog-MATH
+  data: https://huggingface.co/datasets/Tinyhope/Prolog-MATH
+  huggingface: https://huggingface.co/datasets/Tinyhope/Prolog-MATH
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.462
+  venue: https://aclanthology.org/2025.emnlp-main.462/
+  acl: https://aclanthology.org/2025.emnlp-main.462/
+  bibtex: https://aclanthology.org/2025.emnlp-main.462.bib
+data_object:
+  prompt_source: The 7,500 MATH training problems with natural-language chain-of-thought solutions and gold answers.
+  trace_author: DeepSeek-V3 is the primary predicate and program generator; SFT/GRPO recovery is reported with Qwen2.5-3B-Instruct,
+    Llama-3.1-8B-Instruct, Qwen2.5-Math-7B-Instruct, and DeepSeek-R1-Distill-Qwen-7B.
+  answer_format: The paper-level object pairs a problem and source CoT with predicates, a typed executable Prolog program,
+    and a checked symbolic answer. The pinned public release exposes instruction, input, output, domain, answer, and predicates
+    only.
+  process_fields:
+  - instruction
+  - input
+  - output
+  - domain
+  - answer
+  - predicates
+  environment_or_substrate: SWI-Prolog execution followed by symbolic-answer comparison adapted from Math-Verify.
+  verifier_or_reward: Final program output is compared with the gold answer after structured-term conversion, normalization,
+    parsing, symbolic equivalence, or numerical tolerance. GRPO adds program-level correctness, singleton-warning, and suggested-predicate-use
+    signals; no intermediate step is independently supervised.
+  terminal_predicate: A candidate executes and its parsed final output matches the gold answer under the configured checker.
+    This does not certify that its predicates implement their names, that its intermediate logic is sound, or that it follows
+    the source CoT.
+recipe_metadata:
+  base_model: The primary recovery run starts from a rank-32 LoRA-finetuned Qwen2.5-3B-Instruct model loaded in 4-bit; additional
+    7B/8B recovery backbones are reported.
+  teacher: DeepSeek-V3 for the primary two-stage construction; GPT-4o is evaluated as an alternative generator.
+  generator: Stage 1 proposes predicates from the problem, CoT, predefined operators, and a shared predicate buffer. Syntax-valid
+    definitions can enter the buffer and frequently reused predicates can become canonical. Stage 2 conditions on the problem,
+    CoT, selected predicates, and candidate symbolic answer types to synthesize a complete program.
+  filtering_rule: Execute with SWI-Prolog, compare final output to gold with the adapted symbolic checker, retry each failed
+    instance up to K=3 decoding attempts with varied temperature, and retain verified programs. The released standalone pipeline
+    script instead uses substring matching, so it is not an exact executable specification of the paper checker.
+  sampling_protocol: The first pass verifies 6,100 of 7,500 MATH training items. GRPO searches the failed set; verified successes
+    from four recovery models are unioned, with the paper reporting a 16.1-point gain and 97.4% total coverage.
+  rollout_count: Six generations per prompt in the pinned public GRPO training script; whether this exactly matches every
+    paper run is unknown.
+  temperature: Varied across paper retries; exact values are unknown. The released generation scripts set 0.3 for their API
+    calls.
+  inference_budget: Paper retries are capped at three decoding attempts per failed instance and the primary comparison is
+    reported at 2,000 training steps. Seeds and total corpus-generation calls are unknown.
+  optimizer_or_scaffold: The pinned training script uses TRL/Unsloth GRPO, rank-32 LoRA, 4-bit loading, six generations, a
+    6-example device batch, eight-step accumulation, 3e-6 learning rate, and 20 epochs. The paper reward values are 2.0, 1.9,
+    0.5, and 0 according to terminal correctness and predicate structure.
+audit:
+  source_mixture: MATH train is the stated sole prompt backbone. Public rows omit original MATH IDs, source CoTs, generator
+    identity, attempt number, predicate-buffer version, and recovery-model lineage.
+  split: The paper reports 6,100 initial verified programs and a 97.4% recovery union. At pinned Hugging Face revision 0aa6c9783d698ea3fbe5e71a76cfb01d2cd0d5af,
+    the live viewer exposes one 6,093-row train split, while the dataset prose says both that the release is disabled and
+    that train has 7,923 examples. No immutable item-level manifest reconciles these surfaces.
+  decontamination: MATH train supplies construction prompts and MATH-500 supplies the main ablation evaluation. No broader
+    source-overlap, duplicate, or pretraining-contamination audit is reported.
+  license: The paper describes the MATH source as MIT and the Hugging Face release is tagged MIT. No license file appears
+    in the pinned code repository tree, so code reuse rights are not established by this Card.
+  lineage: MATH problem, CoT, and gold answer to predicate proposal and syntax validation to shared-buffer reuse to typed
+    program synthesis to SWI-Prolog execution and symbolic filtering to retries to SFT/GRPO recovery to verified union. The
+    public six-column table flattens this lineage.
+  known_failure_modes:
+  - Final-answer equivalence can accept a program with flawed or incomplete reasoning; Appendix G documents coincidentally
+    correct examples in both the two-stage and GRPO samples.
+  - Predicate compilation checks syntax, not whether a definition is mathematically faithful to its name or source CoT.
+  - The paper grants 0.5 reward to an incorrect program that invokes all suggested predicates; the pinned code grants partial
+    credit when any suggested predicate is detected, a release-versus-paper mismatch.
+  - Structured-term conversion, LaTeX parsing, numerical tolerance, prefix fallbacks, and hand-coded special cases define
+    the acceptance boundary and can create false accepts or rejects.
+  - Manual review judged 96 of 100 two-stage programs and 90 of 100 Qwen2.5-3B GRPO programs mathematically reasonable, so
+    automatic acceptance is not semantic certification.
+  - Counts conflict and the release omits failed candidates, execution logs, verifier components, retry settings, and recovery
+    provenance.
+  - Public scripts retain unresolved user-supplied paths and endpoints; the standalone generation checker also differs from
+    the paper's adapted Math-Verify description.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the full ACL paper and appendices, ACL metadata, pinned GitHub commit d01ae636df27f5ae52b6d59616cb757555a7862c,
+    and pinned Hugging Face revision 0aa6c9783d698ea3fbe5e71a76cfb01d2cd0d5af. ACL metadata is authoritative where the repository
+    README has a conflicting page range.
+inclusion_reason: Prolog-MATH is an inspectable construction recipe for converting natural-language mathematics into reusable
+  predicates and executable programs, filtering by terminal symbolic equivalence, and recovering failures with program-level
+  RL feedback.
+related: []
+tags:
+- prolog-math
+- predicate-guided-generation
+- swi-prolog
+- math-verify
+- symbolic-equivalence
+- grpo
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- programmatically_verifiable_outcome_data
+one_line_summary: Prolog-MATH translates 7,500 MATH training problems and CoTs into predicate-guided SWI-Prolog candidates,
+  filters terminal answers symbolically, and applies SFT/GRPO recovery; the 97.4% paper union is not present as a reconciled
+  public manifest.
+why_it_matters: It makes predicate reuse, typed outputs, execution filtering, retries, and program-level RL feedback concrete
+  while exposing the difference between terminal correctness and faithful reasoning.
+needs:
+- 'needs_metadata: reconcile 6,100 initial programs, the 97.4% union, the 6,093-row viewer, and the dataset prose total'
+- 'needs_lineage: publish MATH IDs, source CoTs, generator and recovery model, attempt number, predicate-buffer version, and
+  per-row construction stage'
+- 'needs_release: publish rejected programs, execution logs, parsed outputs, verifier verdict components, rewards, and a union
+  manifest'
+- 'needs_audit: independently measure false acceptance, hard-coded answers, predicate semantics, and program-to-CoT faithfulness'
+- 'needs_license: publish an explicit code-repository license'
+- 'unknown: exact paper-run retry temperatures, random seeds, total generation budget, and whether all released scripts match
+  the reported runs'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Full paper, appendices, official repository implementation, and live dataset schema and size were checked.

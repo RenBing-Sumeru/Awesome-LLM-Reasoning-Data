@@ -1,0 +1,5 @@
+- 先读论文第 3.1–3.2 节、Figure 1 与 Appendix Table 8–9：数据对象是 query 加 1,228-tool catalog 上完整参数化的 parallel set 或 sequential chain，而不只是 answer benchmark。
+- 必须保留数量冲突：第 3.2 节写 5,670，Table 9 合计 5,870；当前 HF raw data 缺少 sequential Email，28-configuration Viewer 还缺少 parallel Mapping。
+- 应把论文第 4.1 节与 `utils/metrics.py` 对照阅读：程序化 name/argument/order check、LLM trajectory judge、LLM answer judge 与 live ReAct execution 是盲点各异、不能互换的反馈契约。
+- Table 4 的 hard-query retrieval/EM 差距与 Figure 2 的长度退化应被视为指定模型和 budget 下的诊断，不能作为发布轨迹是高质量训练 example 的证据。
+- 建议与 Toolathlon、$\tau^2$-Bench 和 MCP-AgentBench 对读；任何复用前都应解决 version pin、offline replay、judge calibration、failure retention、decontamination 与 RapidAPI/provider rights。复用仍仅限 evaluation/audit。

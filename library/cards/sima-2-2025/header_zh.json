@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SIMA 2 将十个虚拟环境中的人类键鼠示范与 Gemini 过程标注结合，再加入 online RLVR 和 Gemini task setter/reward model 自改进循环；轨迹、验证器、checkpoint 与可复现环境仍未开放。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "具身 Agent 模型报告与数据披露账本",
+  "best_for_ch": "研究多模态示范、虚拟世界 Agent、在线 RLVR、自生成经验与商业环境审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "SIMA team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

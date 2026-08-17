@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MathSmith 用 PlanetMath 衍生概念训练并发布 Qwen3-8B 出题器，以结构、教师推理长度和同教师答案一致性奖励生成题目与构造 rationale；这些信号仍不是独立数学验证。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "强化式困难数学数据构建与开放发布",
+  "best_for_ch": "研究合成难题、数据生成 RL、难度奖励、长 CoT 与弱点定向训练的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Shaoxiong Zhan、Yanlin Lai、Ziyu Lu、Dahua Lin、Ziqing Yang、Fei Tan",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,125 @@
+id: qwen3-2025
+title: Qwen3 Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Qwen Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematics
+- code
+- reasoning
+- stem
+- multilingual
+- general
+training_use:
+- sft
+- distillation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.09388
+  arxiv: https://arxiv.org/abs/2505.09388
+  code: https://github.com/QwenLM/Qwen3
+  data: null
+  project: https://qwenlm.github.io/blog/qwen3/
+  huggingface: https://huggingface.co/Qwen/Qwen3-235B-A22B
+  doi: https://doi.org/10.48550/arXiv.2505.09388
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Long-CoT cold-start queries span mathematics, code, logical reasoning, and general STEM; original sources
+    and per-domain counts are unknown.
+  trace_author: QwQ-32B makes cold-start candidates; Qwen2.5-72B-Instruct filters and labels queries; human assessment is
+    reported for repeated failures.
+  answer_format: Query, verified answer/code test, candidate reasoning trace, final response, verifier outcome, and domain
+    label; exact released record schema unknown.
+  process_fields:
+  - query
+  - reference_answer_or_code_test
+  - candidate_reasoning_response
+  - final_answer
+  - verifier_outcome
+  - domain_label
+  environment_or_substrate: Long-CoT SFT, GRPO reasoning RL, continual fusion SFT, general RL, and strong-to-weak logits distillation.
+  verifier_or_reward: Verified answers/code tests and 3,995 query-verifier pairs; reward formula and verifier calibration
+    are undisclosed.
+  terminal_predicate: Filtering removes incorrect, repetitive, unsupported, inconsistent, or suspected-validation-similar
+    responses; thresholds and yields are unknown.
+recipe_metadata:
+  base_model: Qwen3 dense and MoE family; per-stage checkpoints incomplete.
+  teacher: Qwen2.5-72B-Instruct, QwQ-32B, and larger Qwen3 teachers for distillation; exact mapping and checkpoints unknown.
+  generator: QwQ-32B cold-start candidates and Stage-2 rejection-sampled thinking data; non-thinking generators unknown.
+  filtering_rule: Two-phase cold-start filtering plus RL learnability, difficulty, and sub-domain coverage criteria; complete
+    rules absent.
+  sampling_protocol: Large batches, many rollouts, and off-policy training are reported without counts or settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Long-CoT cold start, GRPO reasoning RL, SFT fusion, general RL, and logits-based distillation.
+audit:
+  source_mixture: About 36T pretraining tokens across code, STEM, reasoning, books, multilingual, and synthetic content; raw
+    sources, proportions, and manifests unknown.
+  split: A validation query set is mentioned but its size, membership, and provenance are unknown.
+  decontamination: Suspected validation-item similarity filtering is described; no full contamination protocol or results
+    are disclosed.
+  license: Model weights Apache-2.0; underlying source and synthetic-training rights unknown.
+  lineage: Stage-level lineage is reported but item-level lineage and counts are unavailable.
+  known_failure_modes:
+  - No released training, RL, or query-verifier data.
+  - Mixture, filters, and retention yields are undisclosed.
+  - Reward calibration cannot be independently verified.
+  - Validation-similarity disclosure is partial.
+  - The human-annotation protocol is incomplete.
+  citation_status: verified
+  confidence: medium
+  notes: Official report, code, project, and model pages verified; encoded as a disclosure ledger rather than a Track 8 scaling
+    claim.
+inclusion_reason: High-impact frontier report with partial 36T, long-CoT, 3,995-pair RL, fusion-SFT, and distillation disclosure.
+related: []
+tags:
+- qwen3
+- frontier-report
+- data-disclosure-ledger
+- long-cot
+- grpo
+- query-verifier-pairs
+- sft
+- distillation
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3 partially discloses 36T pretraining, long-CoT filtering, 3,995 GRPO query-verifier pairs, fusion SFT,
+  and distillation while withholding underlying data and verifier/audit details.
+why_it_matters: It exposes useful pipeline interfaces and explicit unknowns without making thinking-budget or scaling claims
+  a reproducible recipe.
+card: null
+needs:
+- 'needs_data: pretraining/cold-start/SFT/RL/query-verifier/rejected outputs'
+- 'needs_metadata: sources/weights/counts/prompts/teachers/rollouts'
+- 'needs_verifier: implementation/calibration/error audit'
+- 'needs_audit: contamination/splits'
+- 'needs_license: per-source rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official paper, code, project, and model release checked; no training data or full construction/audit artifacts.

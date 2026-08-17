@@ -1,0 +1,326 @@
+id: webdancer-2025
+title: 'WebDancer: Towards Autonomous Information Seeking Agency'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jialong Wu
+- Baixuan Li
+- Runnan Fang
+- Wenbiao Yin
+- Liwen Zhang
+- Zhenglin Wang
+- Zhengwei Tao
+- Ding-Chu Zhang
+- Zekun Xi
+- Robert Tang
+- Yong Jiang
+- Pengjun Xie
+- Fei Huang
+- Jingren Zhou
+source_role:
+- construction_recipe
+- model_report
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- web_search
+- information_seeking
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://papers.neurips.cc/paper_files/paper/2025/file/af043aee9cb137785d93195c6cf4cd96-Paper-Conference.pdf
+  paper_pdf: https://papers.neurips.cc/paper_files/paper/2025/file/af043aee9cb137785d93195c6cf4cd96-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2505.22648
+  code: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebDancer
+  data: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebDancer/datasets
+  model: https://huggingface.co/Alibaba-NLP/WebDancer-32B
+  project: https://github.com/Alibaba-NLP/DeepResearch/tree/main/WebAgent/WebDancer
+  huggingface: https://huggingface.co/Alibaba-NLP/WebDancer-32B
+  doi: null
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/af043aee9cb137785d93195c6cf4cd96-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=quJdphBcdP
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  code_revision: https://github.com/Alibaba-NLP/DeepResearch/tree/24b23a44d5c167bcfc085ab864bd35b23c43c7a0/WebAgent/WebDancer
+  data_revision: https://github.com/Alibaba-NLP/DeepResearch/tree/24b23a44d5c167bcfc085ab864bd35b23c43c7a0/WebAgent/WebDancer/datasets
+  license: https://github.com/Alibaba-NLP/DeepResearch/blob/main/WebAgent/LICENSE
+  qa_samples: https://github.com/Alibaba-NLP/DeepResearch/blob/main/WebAgent/WebDancer/datasets/sample_qa.jsonl
+  trajectory_samples: https://github.com/Alibaba-NLP/DeepResearch/blob/main/WebAgent/WebDancer/datasets/sample_traj.jsonl
+data_object:
+  unit_of_record: The paper uses two linked objects. A QA record contains a short-answer information-seeking question, its
+    reference answer, and a source-family tag. An SFT trajectory is a multi-turn ChatML episode containing task context and
+    alternating model Thought, structured search/visit Action, web Observation, and a final Answer. During RL, one QA pair
+    conditions a group of 16 on-policy agent executions, each receiving one terminal scalar reward; the complete paper training
+    corpus and RL rollout groups are not public.
+  prompt_source: CRAWLQA contributes 60,000 QA pairs synthesized by GPT-4o from recursively visited pages rooted at official
+    or knowledgeable sites such as arXiv, GitHub, and Wikipedia, with requested types including COUNT, MULTI-HOP, and INTERSECTION.
+    E2HQA contributes 40,000 pairs made by repeatedly replacing an entity in a SimpleQA-style question with a web-retrieved
+    subproblem while preserving the concise answer. The paper also uses RAG-filtered MuSiQue, Bamboogle, PopQA, 2Wiki, and
+    HotpotQA questions as an open-only comparison.
+  trace_author: GPT-4o generates Short-CoT ReAct trajectories. QwQ-Plus generates Long-CoT decisions from prior actions and
+    observations while previous thoughts are withheld from subsequent calls; its reasoning_content is retained as the current
+    Thought. Each QA can undergo up to five rejection-sampling attempts.
+  qa_record:
+  - question
+  - reference_answer
+  - source_family_tag
+  trajectory_record:
+  - type
+  - task
+  - system_message
+  - user_question_and_tool_schema
+  - thought
+  - tool_call_name
+  - tool_call_parameters
+  - tool_response
+  - final_answer
+  - reference_answer
+  - source_family_tag
+  context_or_state: The history H_t contains all earlier Thought, Action, and Observation tuples. Search accepts query and
+    filter_year and returns top-10 titles and snippets; visit accepts goal and URL and returns evidence plus a Qwen-2.5-72B-generated
+    summary. The released ChatML sample serializes tool responses as user messages and model thoughts/actions as assistant
+    messages.
+  trace_or_actions: A ReAct episode interleaves free-form Thought with JSON-formatted search or visit calls. The model can
+    repeat these rounds and then emits an answer action. SFT masks observation tokens so the loss attaches to model-generated
+    thoughts, actions, and the final answer rather than external web feedback.
+  observation: Search observations contain live top-10 result titles and snippets. Visit observations contain evidence and
+    a summarizer-model digest of the requested page. Neither immutable page snapshots nor a paper-bound search index is released,
+    so the observed state is not deterministically replayable.
+  answer_or_artifact: A concise final answer enclosed by answer tags in the paper format. The public QA sample stores question,
+    answer, and tag; the public trajectory sample stores full ChatML messages, tool schemas, reference answer, and source-family
+    tag.
+  process_labels:
+  - short_or_long_cot_source
+  - source_family_tag
+  - format_validity
+  - llm_judged_answer_correctness
+  - group_relative_terminal_reward
+  verifier_output: SFT trajectory selection first discards invalid ReAct output, then uses GPT-4o to retain answers judged
+    correct, and finally applies rule- and prompt-based checks for repetition/hallucination, information non-redundancy, goal
+    alignment, and logical reasoning/accuracy. RL computes a binary format score and a binary answer score from a Qwen-72B-Instruct
+    judge; no step-correctness labels are used.
+  reward: The DAPO terminal reward is 0.1 times binary format validity plus 0.9 times binary LLM-judged answer correctness.
+    Dynamic sampling drops prompt groups for which all 16 executions are correct or all are incorrect before policy updates.
+  terminal_predicate: 'Interaction terminates when the model emits the answer action. Reward success is not an environmental
+    ground-truth predicate: it requires valid output/tool JSON and a positive Qwen-72B-Instruct judgment against the reference
+    answer.'
+  provenance: Web roots or SimpleQA-style seeds -> GPT-4o QA synthesis or iterative E2HQA rewriting -> GPT-4o/QwQ-Plus ReAct
+    trajectory sampling -> validity, correctness, and quality filtering -> Short-CoT or Long-CoT SFT -> unused QA pairs sampled
+    in live-web DAPO rollouts -> format and LLM-judge terminal reward.
+  environment_or_substrate: Qwen-Agents ReAct over two live-web tools, search and visit. Search is backed by web retrieval;
+    visit returns page evidence summarized by Qwen-2.5-72B. The official demo scripts require external Serper, Jina, and DashScope
+    credentials.
+  release_boundary: The official repository releases 200 QA examples, a 3.62 MB trajectory sample described by maintainers
+    as 200 cold-start trajectories, demo/inference scripts, and the WebDancer-32B checkpoint. It does not release the full
+    100,000 QA pool, all 14,228 reported SFT trajectories, on-policy RL rollouts/rewards, rejected examples, the modified
+    verl training implementation, or a frozen web substrate.
+recipe_metadata:
+  base_model: Reported experiments train Qwen2.5-7B-Instruct and Qwen2.5-32B-Instruct on Short-CoT trajectories and QwQ-32B
+    on Long-CoT trajectories. The released WebDancer-32B model card identifies QwQ-32B, itself derived from Qwen2.5-32B, as
+    its immediate base lineage.
+  teacher: GPT-4o supplies Short-CoT trajectories and SFT correctness judgments; QwQ-Plus supplies Long-CoT thoughts/actions.
+    Qwen-2.5-72B summarizes visited pages, and Qwen-72B-Instruct supplies the RL answer reward.
+  generator: GPT-4o synthesizes CRAWLQA pairs and participates in E2HQA rewriting, then GPT-4o or QwQ-Plus generates ReAct
+    trajectories. The current policy generates 16 candidate executions per QA during on-policy DAPO.
+  prompt_or_task_source: 60,000 CRAWLQA and 40,000 E2HQA synthetic short-answer tasks, plus selected open-source QA tasks
+    for comparison. Exact root-site manifests, SimpleQA seed corpus revision, and record-level source URLs are not released.
+  filtering_rule: Use up to five trajectory samples per QA; discard invalid ReAct records; retain GPT-4o-judged correct answers;
+    apply repetition/hallucination rules and prompted quality criteria; constrain repeated 10-grams to at most four occurrences.
+    During DAPO, exclude all-correct and all-wrong 16-rollout groups. The paper's prose about filtering trajectories with
+    more than two actions conflicts with Table 4 mean action counts above two, so that threshold direction is unknown.
+  selection_threshold: Binary correctness is required for retained SFT trajectories; prompted quality criteria must also pass.
+    Numeric thresholds for the prompted quality checks are not disclosed.
+  sampling_protocol: Rejection-sampling count N is 5. Table 4 reports 7,678 Short-CoT trajectories with 4.56 mean actions
+    and 510.03 mean thought tokens, and 6,550 Long-CoT trajectories with 2.31 mean actions and 1,599.39 mean thought tokens.
+    RL uses 16 executions per QA; Appendix A says only a small subset, for example 5,000 QA pairs, can be used because of
+    compute and stability constraints.
+  rollout_count: 16
+  temperature: Non-RL inference uses temperature 0.6 and top-p 0.95; repetition penalty is 1.1 for the LRM and 1.0 for the
+    LLM. RL rollouts use temperature 1.0 and top-p 1.0.
+  inference_budget: All experiments use 32 nodes with eight NVIDIA H20 96GB GPUs per node. The paper discloses no maximum
+    episode steps, token cap, search-call budget, random seeds, wall-clock cost, or exact number of RL training QA pairs.
+  search_or_scaffold: ReAct implemented on Qwen-Agents with search and visit; the released demo uses SGLang plus Serper search,
+    Jina page access, and DashScope. Paper-bound service versions, index state, API responses, and dependency commits are
+    not pinned.
+  optimizer_or_scaffold: Cold-start SFT uses multi-turn ChatML and masks external observation tokens. Agent RL uses DAPO implemented
+    on a modified verl stack, optimizing only model-generated tokens while tool responses remain in the conditioning context.
+audit:
+  source_mixture: Synthetic CRAWLQA from crawled web pages, synthetic E2HQA from iteratively rewritten SimpleQA-style entity
+    questions, and an open-only mixture of MuSiQue, Bamboogle, PopQA, 2Wiki, and HotpotQA. Record-level source proportions,
+    domains, root URLs, rejected seeds, and deduplication decisions are not public.
+  split: QA pairs absent from the SFT trajectory set are eligible for RL. The exact SFT/RL membership manifest and randomization
+    are not released. Evaluation uses 103 text-only GAIA validation questions and 680 WebWalkerQA test questions; no immutable
+    train/dev/test ledger linking constructed data to evaluations is public.
+  decontamination: unknown. The paper does not report string, semantic, source-page, or template overlap checks between CRAWLQA/E2HQA/open-only
+    tasks and GAIA, WebWalkerQA, or BrowseComp. A separate 69-example GAIA memorization stress test does not establish decontamination
+    of the main training mixture.
+  benchmark_overlap: The open-only comparison explicitly draws from established public QA datasets. Potential overlap of web
+    pages, entities, answer strings, or generated templates with GAIA, WebWalkerQA, and BrowseComp is not quantified.
+  lineage: Aggregate construction stages, generators, filters, and data counts are documented, and public samples expose source-family
+    tags. The full records do not have a released root URL, crawl timestamp, page snapshot, teacher request, judge decision,
+    rejection reason, or SFT/RL membership ledger.
+  license: The WebAgent subdirectory carries an MIT license and the official WebDancer-32B model card also lists MIT. No dataset-specific
+    card or terms clarify rights for copied web content, generated QA/trajectory records, tool observations, or upstream public-QA
+    sources, so training and redistribution rights for the samples require separate review.
+  release_version:
+    paper: NeurIPS 2025 proceedings paper
+    arxiv: arXiv:2505.22648; mutable version link
+    repository_commit: 24b23a44d5c167bcfc085ab864bd35b23c43c7a0
+    repository_commit_date: '2025-09-24'
+    github_release_tag: null
+    dataset_release_tag: null
+    model_revision: unknown
+    search_backend_version: unknown
+    page_snapshot_manifest: null
+  artifact_release_state: Official proceedings paper, arXiv record, WebDancer repository directory, QA and trajectory samples,
+    demo scripts, and WebDancer-32B weights are public. Full training data, failed/rejected traces, RL rollout/reward logs,
+    reward-judge outputs, modified verl training code/configuration, and replayable web snapshots are not public.
+  released_objects:
+    paper_reported_crawlqa_pairs: 60000
+    paper_reported_e2hqa_pairs: 40000
+    paper_reported_short_cot_trajectories: 7678
+    paper_reported_long_cot_trajectories: 6550
+    public_qa_samples: 200
+    public_trajectory_samples: 200
+    model_checkpoint_released: true
+    demo_and_inference_code_released: true
+    full_training_corpus_released: false
+    full_training_code_released: false
+    rl_rollouts_and_rewards_released: false
+    rejected_and_failed_samples_released: false
+  environment_versioning:
+    substrate: live web search and page visit
+    qwen_agents_commit: unknown
+    search_provider_version: unknown
+    page_reader_version: unknown
+    summarizer_snapshot: Qwen-2.5-72B; exact revision unknown
+    crawl_timestamps: unknown
+    page_snapshot_hashes: unknown
+    deterministic_replay: false
+  successful_and_failed_sample_retention: SFT construction explicitly retains correct trajectories and discards invalid outputs;
+    DAPO excludes all-correct and all-wrong groups from updates. The public sample contains selected trajectories but no rejected,
+    failed, timed-out, malformed, judge-disagreement, or excluded-rollout ledger.
+  privacy_or_consent: No human-subject or crowdsourcing study is reported. CRAWLQA and trajectories contain crawled live-web
+    material and model-generated summaries, but the paper does not describe PII screening, robots/terms compliance, consent,
+    takedown, or retention policy for source pages and tool observations.
+  verifier_or_judge_failure_modes:
+  - GPT-4o selection and Qwen-72B-Instruct reward can produce false positives or false negatives; no calibration set, inter-judge
+    agreement, frozen outputs, or adversarial judge audit is released.
+  - The 0.9 answer-reward weight makes a judge shortcut dominate the binary format signal and cannot identify which search
+    or reasoning step failed.
+  - Dynamic sampling removes all-correct and all-wrong groups from gradient updates, changing the effective prompt distribution
+    without a released per-prompt exclusion ledger.
+  - Live search and summarizer drift can change observations and therefore both trajectories and judge outcomes even when
+    the same question is replayed.
+  - Format validity checks syntax and tool-call JSON, not factual grounding, source quality, citation faithfulness, or absence
+    of unnecessary actions.
+  known_failure_modes:
+  - Only search and visit are available; richer browser interaction and code execution are outside the reported environment.
+  - Experiments center on short-answer information seeking; document-level synthesis and open-ended long-form reward modeling
+    remain unresolved.
+  - The authors report high rollout cost and limited RL data utilization, with only a small subset of the collected QA pool
+    usable in RL.
+  - Long-CoT transfer raises invalid/repetition rates, especially for smaller instruction models.
+  - The live web is non-stationary; the paper attributes performance fluctuation partly to environment changes.
+  - Tool hallucination and over-action can occur, including calls to nonexistent tools or redundant actions after the answer
+    is known.
+  - The public artifacts are samples rather than the complete corpus, so reported filtering, counts, and RL membership cannot
+    be independently audited record by record.
+  citation_status: verified
+  confidence: high
+  notes: Audited the NeurIPS 2025 proceedings record and 29-page paper including Appendices A, D, and E; arXiv:2505.22648;
+    official DeepResearch/WebAgent repository, sample files, subdirectory license, and maintainer release statement; and the
+    Alibaba-NLP WebDancer-32B model card on 2026-07-20. The NeurIPS record lists Robert Tang while the proceedings PDF prints
+    Xiangru Tang; this draft follows the venue metadata. The arXiv/repository citation has a different, shorter author list
+    and should not override the formal proceedings record.
+  remaining_unknowns:
+  - Complete CRAWLQA/E2HQA and SFT/RL membership manifests, record-level sources, crawl timestamps, and transformations
+  - Exact SFT and RL hyperparameters beyond disclosed sampling settings, including steps, batch sizes, learning rates, seeds,
+    and episode/token caps
+  - Paper-bound modified verl code, reward prompt, judge revision, tool implementations, service versions, and dependency
+    commits
+  - Rejected, failed, timed-out, malformed, all-correct, and all-wrong trajectory/rollout records with exclusion reasons
+  - Decontamination and overlap against GAIA, WebWalkerQA, BrowseComp, public QA sources, and crawled web pages
+  - Dataset-specific license and rights lineage for source pages, public QA inputs, summaries, and trajectories
+  - Immutable web snapshots and a deterministic replay contract
+inclusion_reason: 'WebDancer makes the full data-to-policy boundary unusually concrete for a live-web agent: synthetic short-answer
+  tasks become filtered ReAct trajectories for SFT, while unused QA pairs seed on-policy episodes scored by format validity
+  and an LLM answer judge. It belongs in the environment-and-agent-trajectory category, but its sample-only release and non-replayable
+  web substrate prevent treating the reported corpus as a complete reusable trajectory dataset.'
+related:
+- webagent-r1-2025
+- websailor-2025
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- information-seeking
+- react-trajectories
+- synthetic-qa
+- trajectory-sft
+- agent-rl
+- llm-judge
+- live-web
+- partial-data-release
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebDancer turns 100,000 synthetic web QA pairs into filtered ReAct SFT trajectories and LLM-judged on-policy
+  agent rollouts, but publicly releases only 200 QA and 200 trajectory examples rather than the complete corpus.
+why_it_matters: It exposes how task synthesis, trajectory teachers, observation masking, rejection filters, dynamic rollout
+  selection, and judge-based terminal rewards jointly define web-agent post-training data, while showing why live-web drift
+  and sample-only releases block record-level replay and audit.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  openreview_verified: true
+  code_verified: true
+  data_samples_verified: true
+  model_verified: true
+  license_verified: true
+  artifact_verified: true
+  full_training_data_verified: false
+  full_training_code_verified: false
+  failed_sample_release_verified: false
+  replay_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Formal citation and venue metadata are verified against NeurIPS. Official code, sample data, and model artifacts
+    are verified, but artifact verification means only that these partial releases exist; it does not verify the unreleased
+    full corpus, RL logs, modified training stack, or deterministic replay.
+curation_level: L3_summary_ready
+needs:
+- 'needs_full_release: publish the complete 100K QA pool, 14,228 SFT trajectories, SFT/RL membership, and immutable manifests
+  with hashes'
+- 'needs_training_stack: release the paper-bound modified verl code, Qwen-Agents integration, reward prompt, configs, hyperparameters,
+  seeds, and dependency revisions'
+- 'needs_failure_ledger: retain and release invalid, incorrect, rejected, all-correct, all-wrong, crashed, timed-out, and
+  judge-disagreement episodes'
+- 'needs_replay: pin search/page-reader services, web snapshots, crawl timestamps, summarizer revision, tool schemas, and
+  episode budgets'
+- 'needs_contamination: publish string, semantic, source-page, and template overlap audits against evaluation benchmarks and
+  public QA inputs'
+- 'needs_rights: clarify dataset-specific licensing and record-level rights/provenance for crawled pages, public QA sources,
+  summaries, and trajectories'
+- 'needs_citation_resolution: preserve the NeurIPS proceedings author list while documenting the PDF and arXiv/repository
+  name-list variants'
+card: null

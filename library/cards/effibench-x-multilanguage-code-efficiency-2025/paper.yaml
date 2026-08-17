@@ -1,0 +1,111 @@
+id: effibench-x-multilanguage-code-efficiency-2025
+title: 'EffiBench-X: A Multi-Language Benchmark for Measuring Efficiency of LLM-Generated Code'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Yuhao Qing
+- Boyu Zhu
+- Mingzhe Du
+- Zhijiang Guo
+- Terry Yue Zhuo
+- Qianru Zhang
+- Jie M. Zhang
+- Heming Cui
+- Siu-Ming Yiu
+- Dong Huang
+- See-Kiong Ng
+- Luu Anh Tuan
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6b8198f777d1ba87a8250368db2ea16a-Abstract-Datasets_and_Benchmarks_Track.html
+  arxiv: https://arxiv.org/abs/2505.13004
+  code: https://github.com/EffiBench/EffiBench-X
+  data: https://huggingface.co/datasets/EffiBench/effibench-x
+  project: https://github.com/EffiBench/EffiBench-X
+  huggingface: https://huggingface.co/datasets/EffiBench/effibench-x
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6b8198f777d1ba87a8250368db2ea16a-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Recent competitive-programming problems from Aizu, AtCoder, CodeChef, Codeforces, and LeetCode.
+  trace_author: Benchmark authors, human expert solutions, and test-suite construction pipeline.
+  answer_format: Problem, test cases, language templates, canonical solutions, and performance measurements.
+  process_fields:
+  - problem
+  - generated_tests
+  - evaluator
+  - test_runners
+  - canonical_solutions
+  - time
+  - peak_memory
+  - memory_integral
+  environment_or_substrate: Docker sandbox with language-specific images and CPU pinning.
+  verifier_or_reward: Functional test pass followed by normalized execution time, peak memory, and memory integral.
+  terminal_predicate: Candidate passes all tests before receiving an efficiency score relative to expert baselines.
+recipe_metadata:
+  base_model: Evaluated code LLMs, including Qwen3-32B and other proprietary and open models.
+  teacher: Human expert contest solutions and LLM-generated test components validated by execution.
+  generator: Curate recent problems, collect or translate canonical solutions, generate test assets, and validate across languages.
+  filtering_rule: Retain problems and language assets whose canonical solutions pass all generated tests.
+  sampling_protocol: 623 test tasks, 100 tests per task, and six programming languages.
+  rollout_count: null
+  temperature: 0
+  inference_budget: Fix CPU, Docker images, compilers, runtimes, warm-up, test seed, and timeout.
+  optimizer_or_scaffold: Correctness-gated sandbox evaluation with repeated resource profiling.
+audit:
+  source_mixture: Official NeurIPS paper, official GitHub release, and author Hugging Face dataset.
+  split: Official dataset contains a 623-row test split.
+  decontamination: Problem collection emphasizes releases after October 2023; verify model-specific training exposure before
+    claims.
+  license: Apache-2.0 for the dataset release; audit source-platform terms for reused problem materials.
+  lineage: https://huggingface.co/datasets/EffiBench/effibench-x
+  known_failure_modes:
+  - Runtime and memory depend on fixed hardware and language runtimes.
+  - Contest tasks do not represent repository, GPU, or service performance.
+  - Human baselines may not be theoretically optimal across every language.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS paper, PDF affiliations, GitHub code, and Hugging Face dataset were checked.
+inclusion_reason: EffiBench-X supplies code records with programmatic correctness gates and resource-efficiency scores across
+  six languages.
+related: []
+tags:
+- code-efficiency
+- multilingual
+- sandbox
+- benchmark
+- neurips-2025
+one_line_summary: EffiBench-X tests whether correct code approaches expert runtime and memory efficiency across six languages.
+why_it_matters: It turns code efficiency into a verifiable outcome rather than treating functional correctness as sufficient.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS record, first-page affiliations, code, and dataset were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

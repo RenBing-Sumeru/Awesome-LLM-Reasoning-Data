@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该工作发布一个约 1.20 亿 token 的国际象棋 SFT 数据集和代码；数据涵盖经筛选的 Llama 4 Maverick 回答、程序化的类 alpha-beta 搜索轨迹，以及引擎生成的最佳走法和最佳线路目标，并研究其下游 RL 行为。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "国际象棋推理数据发布与后训练实证研究",
+  "best_for_ch": "需要审计 rollout、搜索轨迹、程序化验证、SFT/RL 数据谱系及其复现边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Lucas Dionisopoulos、Nicklas Majamaki、Prithviraj Ammanabrolu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

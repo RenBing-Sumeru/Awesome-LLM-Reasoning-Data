@@ -1,0 +1,1 @@
+核心贡献是一个同时衡量 LLM 生成 GPU kernel 功能正确性和速度的 benchmark 与 harness。机制是把 250 个 PyTorch ML workload 转成 kernel-writing 任务，按从单个算子到完整架构的 level 分组，再用固定 harness 检查生成代码。评测面不只是代码 pass/fail：候选 kernel 即使能编译且输出一致，如果比 PyTorch 慢，也没有完成优化目标。相近工作包括 HumanEval/MBPP 式代码生成、EvalPlus 式可执行检查和 GPU kernel autotuning；KernelBench 的变化是把语义等价与延迟提升合并为同一反馈契约。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "贯通过程数据生成、过程奖励模型构建与使用的 2026 年 ACL 综述。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程奖励模型与过程监督综述",
+  "best_for_ch": "希望系统理解过程监督如何从数据走向训练与推理使用的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Congmin Zheng 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

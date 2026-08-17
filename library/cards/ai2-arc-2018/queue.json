@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T14:00:12Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "历史性，高引5307ref",
+    "updated_at": "2026-07-13T14:00:12Z"
+  }
+}

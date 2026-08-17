@@ -1,0 +1,33 @@
+{
+  "institutions": [
+    "Stanford University",
+    "Laude Institute",
+    "Anthropic",
+    "Independent",
+    "Northeastern University",
+    "University of California Santa Barbara",
+    "Cornell University",
+    "Snorkel AI",
+    "Reflection AI",
+    "Carnegie Mellon University",
+    "MIT",
+    "Peking University",
+    "LAION",
+    "JSC/FZJ",
+    "Tencent",
+    "University of California Berkeley",
+    "University of Washington",
+    "University of Wisconsin-Madison",
+    "Allen Institute for AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2601.11868",
+    "https://www.tbench.ai/",
+    "https://github.com/laude-institute/terminal-bench",
+    "https://openreview.net/forum?id=a7Qa4CcHak"
+  ],
+  "verification_note": "arXiv、项目站点、公开仓库与仓库 citation 核验标题、作者/机构线索、ICLR 2026/OpenReview 状态和公开 benchmark entry；本地 card 保留 leading authors 的缩短列表。"
+}

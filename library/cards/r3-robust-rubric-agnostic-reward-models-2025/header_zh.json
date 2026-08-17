@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R3 让奖励模型根据输入量规生成可解释评分与理由，使奖励判断可控且可迁移。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "偏好或奖励反馈数据论文",
+  "best_for_ch": "研究偏好学习、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "David Anugraha、Zilu Tang、Lester James V. Miranda、Hanyang Zhao、Mohammad Rifqi Farhansyah 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T14:00:00Z"
+}

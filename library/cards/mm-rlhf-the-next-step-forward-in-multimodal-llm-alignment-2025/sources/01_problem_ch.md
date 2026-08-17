@@ -1,0 +1,3 @@
+现有MLLM对齐多聚焦幻觉或安全单点问题，缺少覆盖通用能力、细粒度属性和安全的高质量人工偏好数据。论文研究大规模人工比较能否系统提升多模态模型。
+
+MM-RLHF发布120K细粒度人工偏好对，并提出先生成critique再评分的Critique-BasedRewardModel与DynamicRewardScaling，形成数据、奖励模型和偏好优化闭环。

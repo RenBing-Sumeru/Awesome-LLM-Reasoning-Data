@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "University of California, Berkeley",
+    "Berkeley Gorilla project"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-14T10:35:00Z",
+  "source_urls": [
+    "https://gorilla.cs.berkeley.edu/leaderboard.html",
+    "https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html",
+    "https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard",
+    "https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard"
+  ],
+  "verification_note": "Official BFCL pages and linked Berkeley/Gorilla artifacts verify the leaderboard and UC Berkeley context. The current leaderboard page embeds an ICML 2025 BibTeX citation, but no standalone paper/PDF, PMLR, OpenReview, arXiv, or DOI page was verified; an older BFCL blog page carries a conflicting NeurIPS 2024-style citation."
+}

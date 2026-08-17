@@ -1,0 +1,16 @@
+{
+  "title": "From Selection to Refinement: Iterative Optimization for Instruction Data",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1889/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:28:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将低质量指令从简单剔除改为“评估—改写—复核”的迭代优化，为训练数据从选择到修复提供完整闭环",
+    "updated_at": "2026-07-15T12:28:42Z"
+  }
+}

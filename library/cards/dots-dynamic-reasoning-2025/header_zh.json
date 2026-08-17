@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DOTS 对 12 条三层推理动作轨迹进行 solver 条件化重复搜索和真值评分，用选中路径构造 planner SFT 数据；公开的 4.8 GB MATH 原始 JSON 保留成功与失败对话、轨迹、预测答案和二值分数，但缺少稳定计数、splits、剪枝清单、最终 SFT 数据与 checkpoints。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理动作轨迹搜索配方与原始 scored rollout 数据发布",
+  "best_for_ch": "研究搜索生成推理数据、轨迹级 outcome feedback、动态 test-time compute、失败样本复用及 paper-code 配置审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Murong Yue、Wenlin Yao、Haitao Mi、Dian Yu、Ziyu Yao、Dong Yu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

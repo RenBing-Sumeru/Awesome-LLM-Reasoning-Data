@@ -1,0 +1,5 @@
+- The public release is one 1,266-row, four-column test CSV: obfuscated `problem` and `answer`, plus plaintext `problem_topic` and `canary`; the canary and XOR decryptor are public, so obfuscation is reversible.
+- BrowseComp scores semantic agreement with one reference answer. The paper grader checkpoint is unknown, and the judge cannot verify searches, evidence, citations, or browsing trajectories.
+- The current official `browsecomp_eval.py` returns `correct: yes/no` but compares with bare `yes/no`; repair and test this reference scorer before using it, without treating the bug as proof that the paper results are invalid.
+- Table 3 and the 64-sample analyses show difficulty, overconfidence, and test-time-compute effects under reported systems; they do not prove dataset quality or release completeness.
+- Read with the live-web and contamination limits in view: no replay substrate or run traces are released, public decryption enables leakage, and supported use remains evaluation, audit, and test-time-compute analysis.

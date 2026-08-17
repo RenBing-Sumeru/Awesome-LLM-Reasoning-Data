@@ -1,0 +1,97 @@
+id: swe-shepherd-advancing-prms-reinforcing-code-agents-2026
+title: 'SWE-Shepherd: Advancing PRMs for Reinforcing Code Agents'
+year: 2026
+venue: arXiv
+authors:
+- Mahir Labib Dihan
+- Md Ashrafur Rahman Khan
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- code_agents
+- process_supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.10493
+  arxiv: https://arxiv.org/abs/2604.10493
+  code: https://github.com/mahirlabibdihan/swe-shepherd
+  data: https://huggingface.co/datasets/mahirlabibdihan/swe-prm-collection
+  project: null
+  huggingface: https://huggingface.co/datasets/mahirlabibdihan/swe-prm-collection
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and dataset.
+  trace_author: See the official paper.
+  answer_format: Step-level process-supervision records described in the official artifact.
+  process_fields:
+  - repository
+  - task
+  - agent_state
+  - action_or_step
+  - step_reward
+  - trajectory
+  environment_or_substrate: See the official paper.
+  verifier_or_reward: See the official paper.
+  terminal_predicate: See the official dataset.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official paper and dataset.
+  sampling_protocol: See the official paper.
+  rollout_count: null
+  temperature: See the official paper.
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Officially released process-supervision records.
+  split: See the official dataset.
+  decontamination: See the official paper.
+  license: See the official dataset card.
+  lineage: Candidate-pool and primary artifacts were checked.
+  known_failure_modes:
+  - See the limitations section.
+  citation_status: verified
+  confidence: high
+  notes: Checked the primary arXiv record, official GitHub repository, official Hugging Face dataset, and authors' affiliation
+    as presented with the work; no accepted venue was found in the checked official sources.
+inclusion_reason: The paper releases step-level process-supervision data for training or evaluating process reward models.
+related: []
+tags:
+- process-supervision
+- trace-data
+- reward-modeling
+one_line_summary: SWE-Shepherd pairs code-agent trajectories with process-level rewards to reinforce intermediate engineering
+  decisions rather than only final issue resolution.
+why_it_matters: It provides a concrete, reusable process-level supervision object.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Official sources were checked before card creation.
+category_ids:
+- process_trace_supervision_data

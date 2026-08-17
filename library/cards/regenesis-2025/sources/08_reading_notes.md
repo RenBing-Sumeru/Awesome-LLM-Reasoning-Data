@@ -1,0 +1,5 @@
+- Read Figure 1 and §3.1 first: the important object is the lineage from a general guideline through an adapted guideline and non-solving structure to a complete path, not merely “synthetic CoT.”
+- Keep the feedback boundary precise: main filtering checks only the final answer; failed items receive the answer during adaptation and structure generation, never directly in the final path prompt.
+- Use Tables 2–4 for utility and ablation, but inspect negative cells in Table 3; the reported +6.1-point OOD result is an aggregate, not a universal gain.
+- Read Appendix A.1 and A.8.2 critically: hint-position evidence uses hints for every GSM8K item, and strategy diversity is judged and clustered by Mistral itself.
+- Pair with STaR, LMSI, and Self-Discover; still unknown are official code/data/checkpoints, source revisions, item-level lineage, decontamination, generation budget, and derived-data licensing.

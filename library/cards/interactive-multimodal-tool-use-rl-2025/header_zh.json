@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TARL 为约3,000个零售任务的文本与语音工具使用 rollout 组合规则终局奖励和 GPT-4.1 逐轮评分，但稳定训练实际优化聚合后的轨迹标量，且论文承诺的 sandbox、任务、rollout 与 checkpoint 尚无已核验发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "交互式多模态工具使用强化学习与轨迹奖励研究",
+  "best_for_ch": "研究智能体强化学习、轨迹奖励、语音工具使用和 verifier 审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Weiting Tan, Xinghua Qu, Ming Tu, Meng Ge, Andy T. Liu, Philipp Koehn, Lu Lu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把合成竞赛题、多难度测试和长推理依据放在同一可执行互验证管线中扩展。数据量巨大，内容充实",
+    "updated_at": "2026-07-12T05:47:23Z"
+  },
+  "updated_at": "2026-07-12T05:47:23Z"
+}

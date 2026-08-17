@@ -1,0 +1,105 @@
+id: r2-llms-retrieval-mcts-2025
+title: Enhancing Test-Time Scaling of Large Language Models with Hierarchical Retrieval-Augmented MCTS
+year: 2025
+venue: arXiv preprint
+authors:
+- Alex ZH Dou
+- Zhongwei Wan
+- Dongfei Cui
+- Xin Wang
+- Jing Xiong
+- Haokun Lin
+- Chaofan Tao
+- Shen Yan
+- Mi Zhang
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- prompt_sourcing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2507.05557
+  arxiv: https://arxiv.org/abs/2507.05557
+  venue: null
+  code: https://github.com/SUSTechBruce/R2LLM
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.05557
+data_object:
+  prompt_source: MATH500, GSM8K, OlympiadBench-TO, and external mathematical reference questions.
+  trace_author: A policy model proposes reasoning steps; retrieval supplies examples and a process reward model scores search
+    nodes.
+  answer_format: Problem, retrieved coarse template and fine-grained steps, MCTS trace, process scores, and final answer.
+  process_fields:
+  - problem
+  - retrieved_template
+  - retrieved_step
+  - tree_node
+  - process_score
+  - final_answer
+  environment_or_substrate: Hierarchical retrieval-augmented Monte Carlo Tree Search.
+  verifier_or_reward: A process reward model evaluates intermediate reasoning steps.
+  terminal_predicate: Select the highest-value reasoning trajectory and answer under the search budget.
+recipe_metadata:
+  base_model: Llama-3.1-8B and Qwen2-7B in the reported experiments.
+  teacher: DeepSeek-70B is used to extract conceptual units for retrieval.
+  generator: The policy model expands nodes during MCTS.
+  filtering_rule: Retrieve coarse problem templates and fine-grained analogous solution steps relevant to the active node.
+  sampling_protocol: Use hierarchical retrieval together with PRM-guided MCTS.
+  rollout_count: See the official paper for search settings.
+  temperature: See the official implementation.
+  inference_budget: Search-budget dependent; the paper reports comparative MCTS experiments.
+  optimizer_or_scaffold: R2-LLMs with Deep Logical Retrieval and Hierarchical Augmented Reasoning MCTS.
+audit:
+  source_mixture: Official arXiv PDF and official code repository.
+  split: Evaluation on MATH500, GSM8K, and OlympiadBench-TO.
+  decontamination: External reference questions may overlap semantically with evaluation distributions; use the paper’s retrieval
+    setup and data terms when reproducing.
+  license: Check code, model, PRM, and reference-dataset licenses separately.
+  lineage: https://arxiv.org/abs/2507.05557
+  known_failure_modes:
+  - retrieval-mismatch
+  - process-reward-error
+  - search-cost
+  - reference-data-contamination
+  citation_status: verified
+  confidence: high
+  notes: Official PDF checked on 2026-07-21. Its first page lists Ohio State, Case Western Reserve, Duke, Hong Kong, City
+    University of Hong Kong, and ByteDance.
+inclusion_reason: It changes the test-time search budget by retrieving problem-level and step-level evidence inside PRM-guided
+  MCTS, directly addressing how extra inference compute is allocated.
+related: []
+tags:
+- test-time-compute
+- mcts
+- retrieval
+- process-reward-model
+- mathematical-reasoning
+status: verified
+one_line_summary: R2-LLMs uses coarse-to-fine retrieval inside PRM-guided MCTS so additional test-time compute explores reasoning
+  paths with relevant external evidence.
+reading_priority: recommended
+paper_type: Retrieval-augmented test-time search study
+best_for: Readers comparing search-time retrieval and process verification for mathematical reasoning.
+confidence: high
+why_it_matters: It makes retrieval an active component of the test-time compute allocation rather than a static prompt prefix.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and code link verified.
+category_ids:
+- scaling_rlvr_test_time_compute

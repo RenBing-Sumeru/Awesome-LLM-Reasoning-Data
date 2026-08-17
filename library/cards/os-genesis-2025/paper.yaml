@@ -1,0 +1,136 @@
+id: os-genesis-2025
+title: 'OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis'
+year: 2025
+venue: ACL 2025
+authors:
+- Qiushi Sun
+- Kanzhi Cheng
+- Zichen Ding
+- Chuanyang Jin
+- Yian Wang
+- Fangzhi Xu
+- Zhenyu Wu
+- Chengyou Jia
+- Liheng Chen
+- Zhoumianze Liu
+- Ben Kao
+- Guohao Li
+- Junxian He
+- Yu Qiao
+- Zhiyong Wu
+source_role:
+- data_release
+- agent_environment
+- construction_recipe
+verification_contract:
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- environment_interaction
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.277/
+  arxiv: https://arxiv.org/abs/2412.19723
+  code: https://github.com/OS-Copilot/OS-Genesis
+  data: https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data
+  project: https://qiushisun.github.io/OS-Genesis-Home/
+  huggingface: https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data
+  doi: https://doi.org/10.18653/v1/2025.acl-long.277
+  venue: https://aclanthology.org/2025.acl-long.277/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.277/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: High-level GUI tasks reverse-synthesized from observed pre-state/action/post-state triples.
+  trace_author: GPT-4o executes synthesized tasks in mobile and web environments; released mobile SFT rows pair screenshots
+    and accessibility trees with planning or action targets.
+  answer_format: High-level instruction, action history, screenshot and filtered accessibility tree, paired with a low-level
+    instruction and/or structured GUI action.
+  process_fields:
+  - state
+  - screenshot
+  - accessibility_tree
+  - high_level_instruction
+  - low_level_instruction
+  - action_history
+  - action
+  - trajectory_reward
+  environment_or_substrate: Virtualized Android GUI environments and WebArena websites; the public mobile dataset exposes
+    AndroidWorld-derived training rows.
+  verifier_or_reward: A GPT-4o Trajectory Reward Model scores completion and coherence from low-level instructions and the
+    final three states on a 1-5 scale; scores determine trajectory sampling probability.
+  terminal_predicate: Environment task completion is judged during evaluation, while construction retains both complete and
+    incomplete trajectories through graded TRM sampling rather than a binary acceptance predicate.
+recipe_metadata:
+  base_model: InternVL2-4B, InternVL2-8B, and Qwen2-VL-7B-Instruct are the reported SFT backbones.
+  teacher: GPT-4o
+  generator: Rule-based GUI exploration collects state-action-state triples; GPT-4o supplies typed text, reverse-synthesizes
+    low- and high-level instructions, executes tasks, and scores resulting trajectories.
+  filtering_rule: No binary failure discard is used for the main TRM condition; trajectories are sampled proportionally to
+    their 1-5 reward.
+  sampling_protocol: Main OS-Genesis experiments sample 1,000 trajectories; the public mobile release currently exposes one
+    train split with approximately 51,100 SFT rows.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Full VLM supervised fine-tuning with planning and action objectives; exact optimizer, schedule, epochs,
+    and random seed are undisclosed in the paper.
+audit:
+  source_mixture: Virtual Android and web UI states, rule-based interactions, GPT-4o-authored text and rollouts, screenshots,
+    filtered accessibility trees, and GPT-4o trajectory scores.
+  split: The Hugging Face mobile release exposes a single train split; no task/app-disjoint construction split is documented.
+  decontamination: unknown
+  license: The Hugging Face mobile dataset card declares MIT; rights for screenshots, apps, websites, model outputs, and Google
+    Drive raw triples are not separately documented.
+  lineage: GUI state -> rule-selected action -> post-state -> GPT-4o low-level instruction -> GPT-4o high-level task -> GPT-4o
+    environment rollout -> 1-5 TRM score -> reward-proportional SFT sampling/release.
+  known_failure_modes:
+  - Task materialization and reward scoring depend on proprietary GPT-4o behavior, and weaker task-executing models limit
+    the number of successfully constructed trajectories.
+  - Incomplete trajectories remain eligible for training; this preserves exploratory steps but can also reinforce dead ends
+    or incorrect partial plans.
+  - Environment versions, deterministic reset/replay instructions, construction/evaluation leakage controls, and a complete
+    release manifest are not reported.
+  citation_status: verified
+  confidence: medium
+  notes: ACL paper, official project and repository, and the official mobile Hugging Face release were checked. Paper-level
+    1K trajectories and release-level ~51.1K SFT rows are different units.
+inclusion_reason: Directly relevant Track 6 environment or trajectory-feedback surface with executable GUI interactions, full-episode
+  trajectories, a graded feedback contract, and released training rows.
+related: []
+tags:
+- environment-agent-trajectory-data
+- agent-trajectories
+- evaluation
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: OS-Genesis explores virtual GUIs first, reverse-synthesizes executable tasks from state-action-state triples,
+  and uses graded trajectory rewards to sample mobile and web agent trajectories for SFT.
+why_it_matters: It reverses instruction-first collection and preserves incomplete but potentially useful interaction evidence
+  through reward-weighted sampling instead of binary filtering.
+card: null
+needs:
+- 'needs_manifest: pinned environment/app versions, task split, reset/replay protocol, asset rights, release revision, and
+  leakage audit'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: main_agent
+  confidence: medium
+  notes: ACL metadata, DOI, author list, project/repository, and mobile dataset page were verified; unresolved audit fields
+    remain explicit.

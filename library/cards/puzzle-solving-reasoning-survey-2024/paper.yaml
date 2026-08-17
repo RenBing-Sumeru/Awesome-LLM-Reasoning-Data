@@ -1,0 +1,105 @@
+id: puzzle-solving-reasoning-survey-2024
+title: 'Puzzle Solving using Reasoning of Large Language Models: A Survey'
+year: 2024
+venue: EMNLP 2024
+authors:
+- Panagiotis Giadikiaroglou
+- Maria Lymperaiou
+- Giorgos Filandrianos
+- Giorgos Stamou
+source_role:
+- survey_background
+verification_contract:
+- programmatic
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- puzzles
+- evaluation
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2024.emnlp-main.646/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.646
+  venue: https://aclanthology.org/2024.emnlp-main.646/
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.646/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed puzzle datasets, benchmarks, and primary studies.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A taxonomy of rule-based and rule-less puzzles, methods, datasets, and benchmarks.
+  process_fields:
+  - puzzle statement
+  - constraints or clues
+  - proposed solution
+  - solution check
+  environment_or_substrate: Puzzle-solving datasets and benchmarks for language models.
+  verifier_or_reward: Puzzle-specific correctness measures reported by primary studies; no common verifier is released.
+  terminal_predicate: A correct solution under the task's stated constraints.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed studies use varied prompting, neuro-symbolic systems, and fine-tuning methods.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract divides puzzles into rule-based and rule-less categories and reviews prompting, neuro-symbolic
+    approaches, and fine-tuning.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews methods rather than supplying one training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2024.emnlp-main.646/'
+  known_failure_modes:
+  - A plausible answer can violate a hidden puzzle constraint.
+  - Performance differs sharply between puzzle families and evaluation setups.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract reports a taxonomy, a review of datasets and benchmarks, and a gap on puzzles requiring advanced
+    logical inference.
+inclusion_reason: An EMNLP 2024 survey that connects puzzle families, methods, datasets, and evaluation limitations for language-model
+  reasoning.
+related: []
+tags:
+- foundations-and-primers
+- reasoning
+- puzzles
+- emnlp-2024
+- survey
+why_it_matters: It offers a concrete way to choose puzzle evaluations and distinguish a convincing-looking answer from constraint-respecting
+  reasoning.
+one_line_summary: An EMNLP 2024 survey of language-model puzzle solving, organized around rule-based and rule-less puzzles.
+paper_type: Puzzle-solving reasoning survey
+reading_priority: strong
+best_for: Readers selecting puzzle datasets, comparing prompting with neuro-symbolic methods, or studying logical inference
+  limits.
+confidence: high
+status: verified
+needs:
+- 'unknown: directly comparable scoring conventions across puzzle benchmarks'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP metadata, abstract, and DOI record were reviewed.
+category_ids:
+- foundations_and_primers

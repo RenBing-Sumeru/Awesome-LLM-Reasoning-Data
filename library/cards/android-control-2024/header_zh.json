@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AndroidControl 发布 15,283 条带高层目标与逐动作指令的人类 Android 示范，并以离线下一动作匹配研究数据规模；其分数不等同于在线任务成功，复用仍受许可证冲突与不可回放环境限制。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "移动 UI 智能体轨迹数据集与规模研究",
+  "best_for_ch": "研究移动智能体 SFT、离线动作评测、轨迹数据规模效应与环境复现审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Wei Li, William Bishop, Alice Li, Chris Rawles, Folawiyo Campbell-Ajala, Divya Tyamagundlu, Oriana Riva",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "data_construction_open_release_recipes"
+  ]
+}

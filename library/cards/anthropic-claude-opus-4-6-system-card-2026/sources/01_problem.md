@@ -1,0 +1,4 @@
+Frontier system cards can disclose a bounded implementation issue without releasing the records and reward artifacts needed to assess its prevalence or correction. For reasoning models, it is essential to separate a source-specific reward exception, internal monitoring, and evaluation practice from a general training formula or reproducible data release.
+
+Claude Opus 4.6 matters to Track 12 because the official card identifies both prior-model reasoning-transcript initialization and a narrowly scoped technical error in which reasoning workspace content affected reward signal on less than 0.01% of training episodes. It also withholds the episodes, reward implementation, correction record, and full audit. This Card preserves the 4.6-specific evidence and does not project references to 4.5 methods into new 4.6 disclosures.
+

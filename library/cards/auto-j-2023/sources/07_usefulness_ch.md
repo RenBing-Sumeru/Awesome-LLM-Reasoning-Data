@@ -1,0 +1,1 @@
+Auto-J 适合作为 judge dataset schema 参考：应保留 query、候选回答、评测协议、scenario ID、criteria 版本、teacher 来源、最终 judgment、critique 文本、parser 状态，以及样本属于训练还是测试。需要“分数 + 解释”的 reward-model 或 evaluator 审计可借鉴它。用于 atlas 时要区分 evaluation-only claim 和 training-use claim：论文训练了 judge，但下游把它当 reward model 还需要重新校准和偏差审计。它也是多协议 generative judge 的紧凑对照点。

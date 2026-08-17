@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "Nemotron Nano 2 使用约 80B token 的 SFT、规则与奖励模型反馈、在线 DPO、GRPO 和 RLHF 对齐 12B 模型，再剪枝蒸馏至 9B，并发布模型与大部分训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放推理模型数据、对齐与压缩技术报告",
+  "best_for_ch": "研究推理轨迹构造、工具验证、偏好优化、思考预算与蒸馏复现的读者",
+  "confidence_ch": "高",
+  "authors_ch": "NVIDIA（集体署名）",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

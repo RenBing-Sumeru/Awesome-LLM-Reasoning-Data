@@ -1,0 +1,3 @@
+Structured planning data outperform linear CoT in state prediction, search, and multistep reasoning. Results remain tied to the synthetic tasks, teachers, and environments.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of structured-planning process supervision in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

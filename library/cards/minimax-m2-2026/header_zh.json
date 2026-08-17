@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MiniMax-M2 报告了由可执行工作区、工件对齐奖励和 Forge 驱动的长程智能体 RL，但未公开任务、环境、奖励实现或轨迹台账。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿智能体模型技术报告与数据披露账本",
+  "best_for_ch": "审计可执行工作区、智能体轨迹和长程 RL 披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "MiniMax",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

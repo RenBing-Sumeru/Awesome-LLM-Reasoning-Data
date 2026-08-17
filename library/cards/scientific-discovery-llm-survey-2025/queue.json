@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T16:07:22Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "重点关注 LLM 在科学研究中的角色变化以及不断增强的能力，感觉和后训练关系不大",
+    "updated_at": "2026-07-27T16:07:22Z"
+  }
+}

@@ -1,0 +1,1 @@
+Do not collapse compile success, correctness pass, and speedup into one label. A correct kernel can be slower; a fast kernel that fails tolerance is not a valid solution. Read the environment and timing policy before comparing leaderboard numbers.

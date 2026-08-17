@@ -1,0 +1,3 @@
+Machine-generated text threatens provenance, misinformation control, and future training-data hygiene, yet detectors are often tested only on familiar generators and clean in-domain prose. Such results do not show whether a detector survives rewrites, human–machine mixtures, new model families, or a domain shift.
+
+OpenTuringBench supplies a public evaluation and training resource for both binary human-versus-machine detection and multi-class authorship attribution. It also introduces a contrastive detector so that the benchmark exposes concrete failure modes rather than merely reporting one easy classification score.

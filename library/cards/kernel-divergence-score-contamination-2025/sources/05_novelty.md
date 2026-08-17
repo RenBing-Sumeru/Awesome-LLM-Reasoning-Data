@@ -1,0 +1,1 @@
+Instead of scoring each sequence statically, KDS makes adaptation response the leakage signal and measures the global geometry of pairwise embeddings. The pre-tuning kernel acts as a soft gate, so the score is not merely a distance between two fine-tuning snapshots. It is a dataset-level ranking metric, not a sample-level proof of memorization.

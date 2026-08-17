@@ -1,0 +1,13 @@
+{
+  "title": "Benchmarking LLM-as-a-Judge for Long-Form Output Evaluation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.01629",
+    "data": "https://arxiv.org/pdf/2606.01629"
+  },
+  "review_note": "该文系统揭示长文本 LLM 评审跨场景、跨协议不稳定，并提供针对 rubric 与参考文本的可靠性检验，适合纳入正式池。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {"search_status": "promoted", "decision_reason": "该文系统揭示长文本 LLM 评审跨场景、跨协议不稳定，并提供针对 rubric 与参考文本的可靠性检验，适合纳入正式池。", "updated_at": "2026-07-20T14:00:00Z"},
+  "updated_at": "2026-07-19T00:00:00Z"
+}

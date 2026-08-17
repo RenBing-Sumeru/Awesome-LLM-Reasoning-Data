@@ -1,0 +1,6 @@
+- Read Tool-R1 as an agent RL recipe over executable episodes; GAIA is its evaluation surface, not the released data object.
+- The episode contract is **Thought → Python Code → Observation**, with persistent state and `final_answer`; Observation tokens are masked from the GRPO policy loss.
+- Qwen2.5-3B-Instruct judges the answer, while parse and runtime-success fractions receive weights `0.3/0.3`; none is a step-correctness verifier.
+- Remember the sampling numbers together: 10 initial responses per question, retain pass rate `0.2–0.8`, about 1,300 QA pairs, and a per-question queue with `G=16`, `g=8`.
+- Training covers Qwen2.5-7B-Instruct and Qwen2.5-14B-Instruct; Table 2's vanilla GRPO regression (`9.09` versus `10.30`) is as important as the final `19.39` score.
+- Inspect the official repository commit before reuse: it contains only README, with no code, data, model, license, tag, or release, so training reuse remains blocked.

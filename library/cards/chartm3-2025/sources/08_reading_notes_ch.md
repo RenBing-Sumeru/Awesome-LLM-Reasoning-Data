@@ -1,0 +1,6 @@
+- 将 §3 与附录 A.7 一起读。Prompt 表明问题与分析程序使用源数据/图表代码，随后又要求 rationale 隐藏代码依赖并表现为视觉推导。
+- 保持报告单位精确：141,800 条训练问答、2,871 条测试问答；摘要中的 142K 条问答和 38K 张训练图表是取整数。还应对照表 7 的保留池与表 2 的最终 split；无法解释的差额是审计问题，不是额外发布数据的证据。
+- 分开理解各项契约：程序执行、Qwen2-VL-2B 图表分类、多模态一致性 judge、十次采样难度估计、人工测试集修订、exact-match RL reward、Qwen3-32B 开放答案 reward 和 Qwen-Max benchmark 判断。
+- 联读表 3 与表 4。完整 CoT-SFT 在 ChartM3/ChartM3-Multi 上为 62.88/51.67；30K 对比中的 SFT 为 58.17/47.17，GRPO 为 52.40/40.33。GRPO 在域内并非始终更强。
+- 记住 GRPO 忽略所提供的 CoT path。七条 rollout 和二元 think/answer format reward 都不能认证 explanation 质量。
+- 不要关联同名第三方 Hugging Face 数据集。在出现作者确认产物前，code/data/project/license 都应保持不可用。

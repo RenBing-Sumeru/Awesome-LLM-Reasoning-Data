@@ -1,0 +1,5 @@
+- 先读论文第 2.1–2.2 节和 Hugging Face schema：公开行是 `id/question/response/token_num_qwen`，不是带 short/long 标签或经过验证的程序轨迹。
+- 应在 74M-token 预算下阅读表 2；longest-greedy 的样本数少于 shortest-greedy，因此轨迹长度与样本数量必须一起解释。
+- 把约 3% 的移除视为重复过滤，而不是正确性验证或已记录的语义去重；检测器和被拒绝行均未发布。
+- 将表 3 与附录 D.3 一起阅读：STW 可以在达到上限后促使模型回答，但 2,048-token 预算会截断必要推理并把正确答案变成错误答案。
+- 复用前需解决数据集和代码许可证、上游 revision 与逐行血缘、去污染与提示重叠、teacher 生成设置、截断标志和缺失的被拒绝生成清单。

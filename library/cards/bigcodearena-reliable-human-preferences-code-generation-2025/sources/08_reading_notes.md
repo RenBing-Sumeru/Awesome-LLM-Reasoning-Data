@@ -1,0 +1,1 @@
+1. Execution is an observation channel, not a complete reward. 2. Keep the four-way vote semantics instead of forcing every record into a binary win. 3. Preserve sandbox and output fields with the preference label. 4. Compare reward judges with and without execution evidence. 5. Audit splits for repeated tasks, frameworks, and conversations before training.

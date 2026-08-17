@@ -1,0 +1,1 @@
+AitZ 适合作为移动 GUI agent 过程监督的 schema。复用记录应保留 episode id、episode length、step id、screenshot path、instruction、prior actions、target action、coat_screen_desc、coat_action_think、coat_action_desc、coat_action_result、subset、train/test split、parser version，以及可用的标注 provenance。对 atlas 来说，它是把 GUI 轨迹转成可审计推理痕迹的小而清晰样例，但审计 caveat 是：reasoning trace 是待检查标签，不是独立 verifier。

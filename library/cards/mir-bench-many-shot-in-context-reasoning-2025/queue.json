@@ -1,0 +1,19 @@
+{
+  "title": "MIR-Bench: Can Your LLM Recognize Complicated Patterns via Many-Shot In-Context Reasoning?",
+  "candidate_links": {
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/796076672b00f54fb01d05a2e5fde363-Abstract-Datasets_and_Benchmarks_Track.html",
+    "data": "https://huggingface.co/datasets/kaiyan289/MIR-Bench",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T09:14:16Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建 MIR-Bench benchmark，含 693 个可执行函数任务，用确定性输入输出测试长上下文归纳推理",
+    "updated_at": "2026-07-24T09:14:16Z"
+  }
+}

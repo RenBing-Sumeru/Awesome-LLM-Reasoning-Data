@@ -1,0 +1,5 @@
+Section 3.3 明确 Agent JSK 与 PlugInject 是训练数据 split，因此其结果不衡量 unseen prompt-injection generalization。Section 3.8 另称 cyber policy-compliance evaluation 不与训练重叠。Sections 5.1.1.1–5.1.1.4 给出更窄边界：350-question virology set 完全 held out；Gryphon 为内部、未发布且被描述为 uncontaminated；TroubleshootingBench 有 52 个专家协议、每个三道题、独立复核和 12 个 PhD baseline。任何一个都不是全局 decontamination 结果。
+
+Preparedness 分数依赖明确预算与 predicate。Section 5.1.2.1 对 professional CTF 每题使用 16 rollouts 并报告 pass@12；Section 5.1.2.2 对 40 个挑战中的 34 个使用 CVE-Bench pass@1；Section 5.1.2.3 使用 16 次 Cyber Range trial，任一成功即通过；外部 Irregular 评测允许 1,000 turns。Section 5.1.3.1 要求 internal-PR rollout 的所有 task-specific hidden unit tests 通过。这些是评测契约，不是训练 rollout/reward 证据。
+
+Living page 的 Section 4 于 2026 年 4 月 24 日加入，覆盖 13 项评测与 24 个 environment，使用 GPT-5 Thinking monitor、g-mean-squared aggregation 和 cross-fit filtering。它报告 GPT-5.2 Thinking aggregate monitorability 低于 GPT-5 Thinking，并讨论 Memory/Sandbagging regression、label mismatch、model-grading dependence、真实 false negative 与 CoT-length confounding。该证据不在 2025 PDF 中，必须保留 2026 日期。

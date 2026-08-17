@@ -1,0 +1,68 @@
+id: rlhf-v-correctional-human-feedback-2024
+title: 'RLHF-V: Towards Trustworthy MLLMs via Behavior Alignment from Fine-grained Correctional Human Feedback'
+year: 2024
+venue: CVPR 2024
+authors:
+- Tianyu Yu
+- Yucheng Wang
+- Yue Wang
+- Yunlong Zhang
+- Ming Liu
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- preference_reward_feedback_data
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2312.00849
+  arxiv: https://arxiv.org/abs/2312.00849
+  code: https://github.com/RLHF-V/RLHF-V
+  data: https://huggingface.co/datasets/openbmb/RLHF-V-Dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/openbmb/RLHF-V-Dataset
+data_object:
+  prompt_source: See the official paper and dataset release.
+  trace_author: See the official construction description.
+  answer_format: image-text responses with segment-level human corrections for hallucinated content and dense preference supervision
+  verifier_or_reward: See the official paper and dataset release.
+recipe_metadata:
+  dataset_revision: unknown
+  source_lineage: See the official paper and dataset release.
+  annotation_policy: See the official paper and dataset release.
+  split: See official dataset release.
+audit:
+  confidence: high
+  link_verified: true
+  notes: Dataset-specific provenance, license, contamination, and transfer risks require review.
+verification:
+  link_verified: true
+  sources:
+  - https://arxiv.org/abs/2312.00849
+  - https://huggingface.co/datasets/openbmb/RLHF-V-Dataset
+inclusion_reason: 以人工标出的视觉幻觉片段构造纠错式偏好监督，可用于密集多模态偏好优化。
+related: []
+tags:
+- preference
+- reward-modeling
+- feedback-data
+status: verified
+curation_level: L4_carded
+category_ids:
+- preference_reward_feedback_data
+one_line_summary: 'RLHF-V: Towards Trustworthy MLLMs via Behavior Alignment from Fine-grained Correctional Human Feedback
+  releases image-text responses with segment-level human corrections for hallucinated content and dense preference supervision
+  for preference learning, reward modeling, evaluation, and feedback audit.'
+why_it_matters: 以人工标出的视觉幻觉片段构造纠错式偏好监督，可用于密集多模态偏好优化。

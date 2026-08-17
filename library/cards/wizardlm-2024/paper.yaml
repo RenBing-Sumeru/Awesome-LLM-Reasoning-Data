@@ -1,0 +1,124 @@
+id: wizardlm-2024
+title: 'WizardLM: Empowering large pre-trained language models to follow complex instructions'
+year: 2024
+venue: ICLR 2024
+authors:
+- Can Xu
+- Qingfeng Sun
+- Kai Zheng
+- Xiubo Geng
+- Pu Zhao
+- Jiazhan Feng
+- Chongyang Tao
+- Qingwei Lin
+- Daxin Jiang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- large-language-models
+- synthetic-instruction-generation
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2304.12244
+  arxiv: https://arxiv.org/abs/2304.12244
+  code: https://github.com/nlpxucan/WizardLM
+  data: https://github.com/nlpxucan/WizardLM
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Alpaca's 52K instructions plus five depth-evolution prompts and a breadth-evolution prompt.
+  trace_author: An OpenAI dialogue model rewrites the instruction and produces the target response; Alpaca seeds originate
+    from Self-Instruct.
+  answer_format: A single evolved instruction paired with a free-form teacher response.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Offline instruction evolution and response generation followed by LLaMA supervised fine-tuning.
+  verifier_or_reward: A teacher model creates instructions and responses; rule-based checks and benchmark or human evaluations
+    assess the resulting student.
+  terminal_predicate: Rule checks reject uninformative or malformed evolutions; benchmarks and human/model judges assess the
+    trained student.
+recipe_metadata:
+  base_model: LLaMA 13B for the matched main experiment; later experiments also cover other LLaMA-family sizes and Mistral
+    7B.
+  teacher: An OpenAI dialogue model for instruction evolution and response generation.
+  generator: Repeatedly rewrites instructions to add constraints, deepen reasoning, increase breadth, or replace weak items,
+    then asks OpenAI dialogue model to produce responses.
+  filtering_rule: A teacher model creates instructions and responses; rule-based checks and benchmark or human evaluations
+    assess the resulting student.
+  sampling_protocol: Four evolution rounds produce 250K candidates; the matched main experiment randomly samples 70K for SFT.
+  rollout_count: null
+  temperature: null
+  inference_budget: Four instruction-evolution rounds plus one OpenAI-teacher response generation for each accepted evolved
+    instruction.
+  optimizer_or_scaffold: Repeatedly rewrites instructions to add constraints, deepen reasoning, increase breadth, or replace
+    weak items, then asks OpenAI dialogue model to produce responses.
+audit:
+  source_mixture: Seed instructions, evolution prompts, rewritten complex instructions, teacher responses, filtering decisions,
+    and the Evol-Instruct training set.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'synthetic instruction generation lineage; closest comparisons: self-instruct-2023, ultrachat-2023.'
+  known_failure_modes:
+  - Complexity prompts can create verbosity rather than genuine difficulty, teacher errors persist, and proprietary teacher
+    behavior limits reproducibility.
+  citation_status: verified
+  confidence: high
+  notes: Official paper metadata checked for ICLR 2024; official PDF affiliations are Microsoft and Peking University; the
+    WizardLM repository was checked as the artifact source.
+inclusion_reason: WizardLM evolves seed instructions through explicit complexity and breadth transformations before generating
+  teacher answers.
+related:
+- self-instruct-2023
+- ultrachat-2023
+tags:
+- synthetic-instruction-generation
+- arxiv-2304.12244
+- primary-link-checked
+status: verified
+one_line_summary: WizardLM turns 52K seed instructions into a 250K candidate pool through explicit depth and breadth operations
+  before teacher answering.
+why_it_matters: It makes the intended increase in instruction difficulty traceable before the response becomes SFT supervision.
+reading_priority: recommended
+paper_type: Evolved instruction-response data construction
+best_for: Researchers expanding simple seed instructions into more difficult SFT tasks with an auditable lineage.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official paper metadata and the WizardLM code/data repository were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: synthetic instruction generation
+  selection_priority_score: 11
+  selection_score_breakdown:
+    recency: 3
+    impact: 3
+    venue: 3
+    institution: 2

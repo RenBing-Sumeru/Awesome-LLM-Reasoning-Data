@@ -1,0 +1,19 @@
+{
+  "institutions": [
+    "KAIST AI",
+    "NAVER AI Lab",
+    "NAVER Cloud",
+    "University of Washington",
+    "MIT"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2310.08491",
+    "https://prometheus-eval.github.io/prometheus/",
+    "https://github.com/prometheus-eval/prometheus",
+    "https://huggingface.co/datasets/prometheus-eval/Feedback-Collection"
+  ],
+  "verification_note": "Official arXiv/project/code/data sources verify the authors, KAIST/NAVER/UW/MIT institution set, ICLR 2024 venue, and Feedback Collection release."
+}

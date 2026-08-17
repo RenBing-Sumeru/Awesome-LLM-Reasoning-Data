@@ -1,0 +1,5 @@
+1. **One-sentence position:** RoboReward addresses the dependence of real-robot rewards on human labeling or hand-crafted objectives and the shortage of negative examples in successful demonstrations, producing a general-purpose reward dataset, benchmark, and 4B/8B models.
+2. **Method handle:** It normalizes task text, generates counterfactual instructions and clipped videos, and validates them under a fixed five-level rubric; rejection-based VLM validation is the step that most directly determines label quality.
+3. **Data handle:** The dataset contains 54,135 video–task–reward records, including 2,831 human-verified test examples, and is released under CC BY 4.0.
+4. **Evidence anchor:** The 8B model reaches 0.665 MAE on the benchmark and improves base-policy success by 45 and 70 percentage points on two real-robot tasks.
+5. **Reuse decision:** It is best suited to short-horizon manipulation tasks with visibly judgeable final states; automated label errors are the main risk, so samples should be manually audited separately for each reward level.

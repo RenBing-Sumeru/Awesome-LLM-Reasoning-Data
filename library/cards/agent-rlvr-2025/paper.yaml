@@ -1,0 +1,160 @@
+id: agent-rlvr-2025
+title: 'Agent-RLVR: Training Software Engineering Agents via Guidance and Environment Rewards'
+year: 2025
+venue: arXiv preprint
+authors:
+- Jeff Da
+- Clinton Wang
+- Xiang Deng
+- Yuntao Ma
+- Nikhil Barhate
+- Sean Hendryx
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- software_engineering
+- agentic_reasoning
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- rlvr
+- agent_training
+- test_time_compute
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2506.11425
+  arxiv: https://arxiv.org/abs/2506.11425
+  code: null
+  data: null
+  project: https://labs.scale.com/papers/agent_rlvr
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.11425
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.11425
+data_object:
+  prompt_source: GitHub issue descriptions, repository snapshots, and test suites from 817 reported software-engineering environments
+    across 27 repositories; the paper separately reports 593 SWE-Gym and 219 self-collected problems, which sum to 812 rather
+    than 817.
+  trace_author: Qwen-2.5 agent policies generate on-policy trajectories; claude-3-7-sonnet-20250219 generates guidance and
+    also contributes off-policy trajectories.
+  answer_format: A multi-turn agent trajectory ending in a repository patch, its unit-test result, optional natural-language
+    guidance, a guided reattempt, and preference or scalar reward records.
+  process_fields:
+  - issue_description
+  - repository_snapshot
+  - docker_environment
+  - test_suite
+  - initial_agent_trajectory
+  - generated_patch_or_empty_patch
+  - unit_test_result
+  - plan_guidance
+  - environment_feedback_guidance
+  - environment_interaction_guidance
+  - guided_trajectory
+  - positive_negative_trajectory_pair
+  - terminal_binary_reward
+  environment_or_substrate: A complete Python repository snapshot in a Docker container, operated through a simplified Agentless
+    scaffold retaining localization and repair; SWE-Bench Verified evaluation uses the official harness and Modal.
+  verifier_or_reward: 'Environment unit tests provide a binary terminal signal: a winning patch passes all tests and a losing
+    patch fails at least one test or is absent. DPO consumes winning/losing trajectory pairs; a separate Qwen-2.5-Coder-32B
+    pairwise reward model scores problem-statement/patch inputs for test-time selection.'
+  terminal_predicate: The generated patch passes the task test suite; failures include a failed test or no generated patch.
+recipe_metadata:
+  base_model: Qwen-2.5-Coder-14B, Qwen-2.5-Coder-32B, and Qwen-2.5-72B-Instruct are trained; Qwen-2.5-Coder-32B is the reward-model
+    base.
+  teacher: claude-3-7-sonnet-20250219
+  generator: The agent first attempts each task without guidance. Failed or empty-patch trajectories are supplied to the external
+    teacher, which produces plan, environment-feedback, and environment-interaction hints; the agent then reattempts with
+    the hint during training only.
+  filtering_rule: Patches are executed against task tests. Positive non-guided trajectories supply the SFT subset; a correct
+    trajectory is paired with an incorrect trajectory for the same task for DPO, including correct guided reattempts paired
+    with failed non-guided attempts.
+  sampling_protocol: The paper reports sampling 16 trajectories per problem during guidance and non-guidance collection, but
+    does not disclose collection temperature, random seeds, or the exact accounting that yields the final total.
+  rollout_count: 8,186 total trajectories, including 4,093 positive trajectories; 16 trajectories are sampled per problem
+    during guidance and non-guidance collection.
+  temperature: unknown
+  inference_budget: PASS@1 evaluation uses greedy decoding; for PASS@k and BEST@1, the first generation is greedy and later
+    generations use temperature 0.6. Reward-model selection ranks k=32 generated patches.
+  optimizer_or_scaffold: 'One offline iteration: 20% of positive non-guided trajectories are used for SFT (5 epochs, learning
+    rate 1e-5, sequence length 8k), followed by DPO on the full preference dataset (1 epoch, learning rate 1e-6). The reward
+    model uses pairwise loss for 500 steps at learning rate 1e-5 with warmup ratio 0.05.'
+audit:
+  source_mixture: The paper reports 817 environments from 27 repositories, with 593 problems from SWE-Gym and 219 self-collected;
+    these components sum to 812, so five environments are not reconciled in the text.
+  split: The same problem set is used for SFT and DPO. The authors state that training repositories do not overlap repositories
+    in the SWE-Bench test set; an item-level split and the exact task/repository list are not released.
+  decontamination: Repository-level train/test non-overlap is asserted, but the paper explicitly says pretraining contamination
+    may still exist.
+  license: unknown
+  lineage: Issue and repository environment -> unguided rollouts -> patch execution and binary test outcome -> teacher guidance
+    for failures -> guided reattempt and execution -> positive/negative same-task trajectory pairs -> SFT plus offline DPO;
+    the same problem/patch data also trains a pairwise reward model for k=32 selection.
+  known_failure_modes:
+  - Unit-test success is a terminal task predicate, not evidence that intermediate reasoning, guidance, or patches are uniformly
+    correct.
+  - Guidance generation has privileged access to the reference patch and, for environment-feedback guidance, the failed trajectory
+    and stack trace; hidden-answer leakage and reliance on teacher localization must be audited before reuse.
+  - The paper reports 817 environments but its two stated source counts sum to 812.
+  - Six SWE-Bench Verified evaluation instances could not be compiled, yet all were retained in the metric denominator.
+  - Training is Python-only, spans 27 repositories, and is a single offline iteration; transfer to other languages, repositories,
+    scaffolds, or online RL is not established.
+  - No official code, dataset, trajectory, model, task list, seed, or license release was found.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2, arXiv BibTeX, and Scale Labs project page checked. The project page exposes the paper but no reusable
+    code or data release.
+inclusion_reason: The paper specifies an environment-grounded construction recipe that turns failed software-agent rollouts
+  into teacher-guided reattempts, test-verified trajectory pairs, offline DPO data, and patch-ranking reward-model data.
+related: []
+tags:
+- agent-rlvr
+- software-engineering-agents
+- environment-rewards
+- unit-tests
+- guided-trajectories
+- offline-dpo
+- swe-bench-verified
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Agent-RLVR collects test-verified software-agent trajectories and teacher-guided reattempts, then reuses
+  same-task positive/negative pairs for SFT, offline DPO, and a test-time patch reward model.
+why_it_matters: For the rollout/search/test-time trace track, it exposes how repository states, execution outcomes, guidance,
+  reattempts, and pairwise patch feedback can be joined into training and selection records, while leaving the underlying
+  dataset and trajectories unreleased.
+card: null
+needs:
+- needs_code_release
+- needs_data_release
+- needs_trajectory_release
+- needs_model_release
+- needs_license
+- needs_exact_task_list
+- needs_source_count_reconciliation
+- needs_collection_temperature_and_seeds
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv v2 and Scale Labs project page verified; artifact verification means the official project page exists,
+    not that code, data, trajectories, or models were released.

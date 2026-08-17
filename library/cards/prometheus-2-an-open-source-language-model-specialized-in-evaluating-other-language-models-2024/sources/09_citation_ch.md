@@ -1,0 +1,1 @@
+Kim 等（2024），《Prometheus 2: An Open Source Language Model Specialized in Evaluating Other Language Models》，arXiv:2405.01535。原文：https://arxiv.org/abs/2405.01535。官方模型、代码和数据入口：https://github.com/prometheus-eval/prometheus-eval。报告评估结果时应同时注明论文版本和仓库提交。

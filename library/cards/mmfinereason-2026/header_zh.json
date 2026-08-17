@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MMFineReason 蒸馏并筛选出 181 万条多模态长思维链样本，再选出 12.3 万条难例，以较少数据保留大部分训练收益。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态推理数据构造与筛选",
+  "best_for_ch": "适合构建或筛选多模态长思维链数据，并用于 SFT 和后续 RL 的研究人员。",
+  "confidence_ch": "高",
+  "authors_ch": "Honglin Lin, Zheng Liu, Yun Zhu, Chonghan Qin, Juekai Lin, Xiaoran Shang, Conghui He, Wentao Zhang, Lijun Wu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T12:30:00Z"
+}

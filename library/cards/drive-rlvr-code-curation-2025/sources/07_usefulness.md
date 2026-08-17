@@ -1,0 +1,2 @@
+DRIVE is useful as a curriculum-design blueprint for executable code RLVR: use broad prompts to restore exploration, then spend larger rollout budgets on dynamically identified hard cases. Reuse requires naming and licensing all sources, pinning prompt splits, resolving rollout counts, documenting sandbox and tests, and reporting exposed V6 separately from held-out LiveCode08-11, V5, and post-cutoff contests.
+

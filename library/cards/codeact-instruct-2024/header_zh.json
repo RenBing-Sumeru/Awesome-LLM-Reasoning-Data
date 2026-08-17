@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeActInstruct 将五类任务改造成 7,139 条可执行 Python action、环境反馈与自我纠错的多轮示范，用于智能体监督微调。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可执行智能体示范数据集与 SFT 配方",
+  "best_for_ch": "适合用代码 action、执行反馈与自我调试轨迹训练工具型智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xingyao Wang, Yangyi Chen, Lifan Yuan, Yizhe Zhang, Yunzhu Li, Hao Peng, Heng Ji",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

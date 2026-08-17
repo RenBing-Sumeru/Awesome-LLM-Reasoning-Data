@@ -1,0 +1,133 @@
+id: mimo-v2-flash-2026
+title: MiMo-V2-Flash Technical Report
+year: 2026
+venue: arXiv preprint
+authors:
+- Xiaomi LLM-Core Team
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- process_reward
+- scalar_reward
+- state_action_level
+- full_episode
+domains:
+- reasoning
+- mathematics
+- code
+- agent
+- tool-use
+- web
+- safety
+training_use:
+- sft
+- distillation
+- process_supervision
+- rlvr
+- agent_training
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.02780
+  arxiv: https://arxiv.org/abs/2601.02780
+  code: null
+  data: null
+  project: https://github.com/XiaomiMiMo/MiMo-V2-Flash
+  huggingface: https://huggingface.co/XiaomiMiMo/MiMo-V2-Flash
+  doi: https://doi.org/10.48550/arXiv.2601.02780
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Internal, real, and synthetic SFT and agent-RL tasks; the report names GitHub issues, Stack Overflow/Exchange,
+    terminal tasks, web/search tasks, and synthetic function calls but not full provenance.
+  trace_author: In-house specialized checkpoints generate SFT responses; the student produces on-policy rollouts; teacher
+    identity and routing are unknown.
+  answer_format: SFT responses, reasoning responses, and multi-turn tool trajectories with execution, judge, ORM, and teacher-KL
+    feedback.
+  process_fields:
+  - task
+  - student_response_or_trajectory
+  - tool_action
+  - observation
+  - feedback_signal
+  - teacher_kl_signal
+  environment_or_substrate: Unreleased code, terminal, Playwright web, search, and synthetic function-calling environments.
+  verifier_or_reward: Teacher reverse-KL plus ORM advantages; programmatic code/tool checks; LLM judges; multimodal web verification;
+    exact models, rubrics, and thresholds are unknown.
+  terminal_predicate: Task-dependent test or verifier success; acceptance thresholds are undisclosed.
+recipe_metadata:
+  base_model: MiMo-V2-Flash-Base
+  teacher: Domain-specialized RL/SFT teachers; names, checkpoints, and domain routing are unknown.
+  generator: In-house checkpoints plus student on-policy rollouts; synthetic environment generators are not released.
+  filtering_rule: Difficulty, reliability, pass-rate, environment validation, and visual discrimination are reported; exact
+    thresholds and yields are unknown.
+  sampling_protocol: On-policy MOPD uses importance sampling; the report describes about 120k environments but omits allocation
+    and decoding parameters.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: General SFT, specialized-teacher RL/SFT, then MOPD combining reverse-KL teacher and ORM advantages.
+audit:
+  source_mixture: Complete mixture, provenance, record counts, and snapshots are unavailable.
+  split: unknown
+  decontamination: Reports SWE-Bench image leakage from undeleted commits and an evaluation-image update; no broader overlap
+    audit is disclosed.
+  license: Weights are MIT on Hugging Face and the repository is Apache-2.0; post-training data and environment rights are
+    unknown.
+  lineage: Internal, real, and synthetic prompts lead to generated data or rollouts with mixed feedback; upstream sources
+    and teacher checkpoints are missing.
+  known_failure_modes:
+  - Unreleased environments and reward package
+  - Undisclosed teacher routing/KL/ORM/judge details
+  - Missing source/split/contamination audit
+  - Concrete SWE-Bench reward-hacking route
+  citation_status: verified
+  confidence: medium
+  notes: ArXiv assigns year 2026 while the official Hugging Face citation block says 2025; this record uses the arXiv bibliographic
+    year.
+inclusion_reason: A frontier technical report with unusually concrete but incomplete MOPD, feedback-contract, and agent-environment
+  disclosure.
+related: []
+tags:
+- mimo-v2-flash
+- frontier-report
+- data-disclosure-ledger
+- mopd
+- agentic-rl
+- token-level-feedback
+- reward-hacking
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: MiMo-V2-Flash describes MOPD plus agentic RL with teacher-KL, programmatic, judge, and multimodal feedback
+  but withholds data, environments, teachers, and reward implementation.
+why_it_matters: Discloses feedback and environment surfaces that are often absent while demonstrating why unreleased multi-teacher/RL
+  pipelines are not reproducible data recipes.
+card: null
+needs:
+- 'needs_release: post-training data/environments/verifiers/rewards'
+- 'needs_metadata: teacher routing/MOPD weights/ORM integration'
+- 'needs_provenance: upstream source lineage'
+- 'needs_audit: reward thresholds/train-eval separation/decontamination'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official arXiv, Xiaomi repository, and model page were checked; data, environment, reward, and training artifacts
+    are absent.

@@ -1,0 +1,5 @@
+- CoT-Valve controls chain length through a scaled parameter update rather than a length-only prompt.
+- MixChain groups several different-length solutions under the same question.
+- The official collection releases GSM8K, PRM12K, and LIMO variants under Apache-2.0 labels.
+- PRM12K retains incorrect solutions and exposes answer-correctness flags; it is not a fully filtered corpus.
+- Token and benchmark gains do not prove step faithfulness or release reproducibility.

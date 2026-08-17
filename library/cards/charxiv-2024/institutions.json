@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "Princeton Language and Intelligence, Princeton University",
+    "University of Wisconsin, Madison",
+    "The University of Hong Kong"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.18521",
+    "https://charxiv.github.io/",
+    "https://github.com/princeton-nlp/CharXiv",
+    "https://huggingface.co/datasets/princeton-nlp/CharXiv",
+    "https://openreview.net/forum?id=cy8mq7QYae"
+  ],
+  "verification_note": "arXiv, project, repository, Hugging Face, and OpenReview sources verify authors, Princeton/UW-Madison/HKU affiliation mapping, NeurIPS Datasets and Benchmarks status, and artifacts."
+}

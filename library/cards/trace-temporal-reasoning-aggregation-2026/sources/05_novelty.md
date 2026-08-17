@@ -1,0 +1,3 @@
+Prior early-exit methods commonly ask whether the model is confident at the current step. TRACE asks whether an answer and its confidence have remained stable over a recent temporal interval. It therefore explicitly addresses transient overconfidence, a failure case where one high-confidence intermediate prediction would prematurely stop reasoning.
+
+The contribution is a training-free convergence criterion combining answer persistence and confidence evolution, together with online step segmentation and answer induction. This makes the new unit of allocation a stable window of reasoning behavior, rather than a fixed token count or a single local confidence value.

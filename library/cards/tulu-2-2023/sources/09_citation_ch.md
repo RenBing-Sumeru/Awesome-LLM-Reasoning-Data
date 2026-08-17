@@ -1,0 +1,1 @@
+Hamish Ivison、Yizhong Wang、Valentina Pyatkin、Nathan Lambert、Matthew Peters、Pradeep Dasigi、Joel Jang、David Wadden、Noah A. Smith、Iz Beltagy、Hannaneh Hajishirzi，《Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2》，arXiv:2311.10702，2023。https://arxiv.org/abs/2311.10702

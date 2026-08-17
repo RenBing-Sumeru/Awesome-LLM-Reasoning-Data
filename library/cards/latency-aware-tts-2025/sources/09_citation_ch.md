@@ -1,0 +1,1 @@
+Wang, Zili，Tianyu Zhang，Haoli Bai，Lu Hou，Xianzhi Yu，Wulong Liu，Shiming Xiang，Lei Zhu。2025。《Faster and Better LLMs via Latency-Aware Test-Time Scaling》。收录于《Findings of the Association for Computational Linguistics: EMNLP 2025》，第 17124–17137 页。Association for Computational Linguistics。https://aclanthology.org/2025.findings-emnlp.928/

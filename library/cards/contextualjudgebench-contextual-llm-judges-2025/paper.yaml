@@ -1,0 +1,94 @@
+id: contextualjudgebench-contextual-llm-judges-2025
+title: Does Context Matter? ContextualJudgeBench for Evaluating LLM-based Judges in Contextual Settings
+year: 2025
+venue: ACL 2025
+authors:
+- Austin Xu
+- Srijan Bansal
+- Yifei Ming
+- Semih Yavuz
+- Shafiq Joty
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- rag
+- summarization
+- contextual-evaluation
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.470/
+  arxiv: null
+  code: https://github.com/SalesforceAIResearch/ContextualJudgeBench
+  data: https://huggingface.co/datasets/Salesforce/ContextualJudgeBench
+  project: null
+  huggingface: https://huggingface.co/datasets/Salesforce/ContextualJudgeBench
+  doi: https://doi.org/10.18653/v1/2025.acl-long.470
+  venue: https://aclanthology.org/2025.acl-long.470/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.470/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the primary paper and official release.
+  trace_author: Dataset construction pipeline described by the authors.
+  answer_format: Feedback or evaluation record described in the official release.
+  process_fields:
+  - See official dataset documentation
+  environment_or_substrate: Task setting described in the primary paper.
+  verifier_or_reward: Preference, reward, or judging signal described in the official release.
+  terminal_predicate: The released record's official label or ranking.
+recipe_metadata:
+  base_model: See the primary paper.
+  teacher: Official data-construction and annotation process.
+  generator: Authors' reported construction pipeline.
+  filtering_rule: See the paper and official release.
+  sampling_protocol: See the paper and official release.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper.
+  optimizer_or_scaffold: See the primary paper.
+audit:
+  source_mixture: Primary paper and the concrete official data or repository page.
+  split: See official release documentation.
+  decontamination: Audit overlap with downstream training and evaluation corpora before reuse.
+  license: Check the official release terms before reuse.
+  lineage: https://aclanthology.org/2025.acl-long.470/
+  known_failure_modes:
+  - Released feedback can reflect the limits of its annotation or judging process.
+  citation_status: verified
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+inclusion_reason: ContextualJudgeBench publicly releases context-grounded preference evaluation data for LLM judges.
+related: []
+tags:
+- llm-as-a-judge
+- rag
+- summarization
+- acl-2025
+one_line_summary: ContextualJudgeBench supplies 2,000 context-dependent response pairs that test whether LLM judges apply
+  conditional factuality, completeness, refusal, and conciseness criteria.
+why_it_matters: It makes explicit the evidence and conditional criteria a judge must use, rather than scoring isolated answers.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The primary paper and a concrete official artifact page were checked.
+category_ids:
+- preference_reward_feedback_data
+- judgment_rubric_domain_expert_data

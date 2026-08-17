@@ -1,0 +1,3 @@
+Speech-generation systems are commonly assessed with mean opinion scores or isolated automatic metrics. Human ratings are costly and subjective, while WER, similarity, and MOS predictors each expose only part of quality; existing AudioLLM judges also cover narrow utterance or single-turn settings.
+
+UniSRM addresses this by constructing a unified, reasoning-supervised speech-evaluation dataset and benchmark spanning pairwise, pointwise, contextual-style, and multi-turn dialogue assessment. It trains one speech reward model to emit dimension-level evidence and a final preference or score rather than an opaque scalar.

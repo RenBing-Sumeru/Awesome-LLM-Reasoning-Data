@@ -1,0 +1,5 @@
+- Open the data card before the paper tables: it gives the released schema and reveals the 3,112-row / 800-pair mismatch.
+- Read the four stages with `inference/cot_dual_thinking.py`: difficulty score is a routing signal, not a certified step label.
+- Separate System 1/System 2 selection from final-answer filtering; the latter does not validate the route or intermediate trace.
+- In Table 1, keep Acc, Tpi, and total Tok distinct; a lower token number alone is not evidence of better data.
+- Prioritize provenance, candidate, routing, and decontamination gaps before attempting broad SFT reuse.

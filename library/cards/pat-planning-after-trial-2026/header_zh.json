@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"PaT 先用低成本模型直接生成并执行验证，仅在全部失败时才调用规划器分解问题，从而改善代码生成的成本—性能前沿。","reading_priority_ch":"可读","paper_type_ch":"验证失败触发的自适应测试时代码生成研究","best_for_ch":"设计带沙箱反馈、且不同模型成本差异显著的代码智能体的读者。","confidence_ch":"高","authors_ch":"Youngsik Yoon、Sungjae Lee、Seockbean Song、Jungseul Ok（浦项科技大学）；Siwei Wang、Wei Chen（微软亚洲研究院）","category_ids":["scaling_rlvr_test_time_compute"]}

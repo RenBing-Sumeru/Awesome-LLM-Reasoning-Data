@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T14:13:23Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "化学专项中较有代表性 ref111",
+    "updated_at": "2026-07-15T14:13:23Z"
+  }
+}

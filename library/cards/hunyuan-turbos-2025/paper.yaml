@@ -1,0 +1,208 @@
+id: hunyuan-turbos-2025
+title: 'Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought'
+year: 2025
+venue: arXiv preprint
+authors:
+- Tencent Hunyuan Team
+source_role:
+- model_report
+- construction_recipe
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+- code
+- science
+- logic
+- multilingual
+- safety
+- finance
+- legal
+- medical
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- rlvr
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.15431
+  arxiv: https://arxiv.org/abs/2505.15431
+  code: null
+  data: null
+  project: https://github.com/Tencent-Hunyuan/Hunyuan-TurboS
+  huggingface: https://huggingface.co/spaces/tencent/hunyuan-turbos
+  doi: https://doi.org/10.48550/arXiv.2505.15431
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.15431
+data_object:
+  prompt_source: 'Pre-training uses varied-format raw sources processed by URL filtering, block pruning, topic classification,
+    content extraction, heuristics, and semantic deduplication, but the report does not name a complete source manifest. SFT
+    sources are described by domain: educational mathematics, open-source code, public or licensed logic material, science
+    questions, open-source and procured dialogue data, synthetic instructions, and expert-labeled finance, legal, medical,
+    multilingual, and safety material. Record-level sources, proportions, dates, and rights are unknown.'
+  trace_author: Hunyuan-Base produces initial short-CoT responses; Hunyuan-T1 repeatedly extends failed attempts until a correct
+    response is obtained, after which failed attempts and the correct response are concatenated for an adaptive long-short
+    teacher. Exact checkpoint identifiers, generation instructions, candidate budgets, stopping caps, and decoding settings
+    are unknown.
+  answer_format: The report describes problem-response SFT records with reasoning or direct responses, adaptive traces that
+    can include failed attempts followed by a correct response, pairwise candidate answers with human preference labels for
+    GRM training, reference answers, and executable code with unit tests. No downloadable training schema or row examples
+    were located.
+  process_fields:
+  - prompt
+  - response
+  - reference_answer
+  - short_cot_attempt
+  - failed_attempts
+  - corrected_response
+  - candidate_pair
+  - human_preference_label
+  - reward_score
+  - unit_tests
+  environment_or_substrate: Offline SFT, adaptive-CoT RL, multi-model deliberation, and two-stage GRPO run on proprietary
+    Hunyuan infrastructure. The disclosed execution environment is a 36-language sandbox on a distributed CPU cluster supporting
+    more than 1,000 concurrent executions with file and network isolation. Angel-RL integrates training and inference, but
+    its implementation, dependency versions, and run configurations are not released here.
+  verifier_or_reward: The General Reward System covers 16 subtopics through more than 30 scoring services. It combines a reference-conditioned
+    Generative Reward Model, an optional GRM-CoT variant, an Answer Consistency Model, a tool-using critic, the multilingual
+    code sandbox, classifiers, refusal heuristics, constraint and hallucination checks, domain rules, repetition penalties,
+    and score fusion. Model checkpoints, prompts, service weights, thresholds, calibration sets, and error rates are mostly
+    unknown.
+  terminal_predicate: Depending on the stage, acceptance can require answer-reference consistency, a unit-test outcome, a
+    multi-judge or human preference decision, instruction-constraint satisfaction, or positive aggregate reward. Adaptive-teacher
+    generation repeats Hunyuan-T1 continuation until a correct answer is obtained, while GRPO drops zero-advantage samples
+    and consistently solved or failed prompts. Exact caps and retained decision records are unknown.
+recipe_metadata:
+  base_model: Hunyuan-TurboS is a 56B-active, 560B-total hybrid Transformer-Mamba2-MoE model with 128 layers and a 256K context
+    window. The adaptive-teacher pipeline starts from Hunyuan-Base; exact downloadable checkpoint identifiers are unavailable.
+  teacher: Hunyuan-T1 extends incorrect short-CoT attempts. A separately trained adaptive long-short teacher generates first-stage
+    SFT data. Hunyuan Large, Hunyuan Turbo, and Hunyuan T1 serve as competitors in deliberation learning, and a panel of Hunyuan-TurboS-based
+    judges scores responses. Exact versions, prompts, and training corpora are unknown.
+  generator: Domain pipelines collect, rewrite, procure, augment, back-translate, or synthesize instructions; models and experts
+    construct responses; adaptive-CoT generation joins failed attempts with a correct solution; deliberation learning mines
+    weakness profiles from pairwise model competition; and executable-code synthesis attaches unit tests before sandbox execution.
+  filtering_rule: The report names URL-level filtering, block pruning, heuristic filtering, semantic deduplication, topic
+    and quality models, critic and verifier checks, sandbox execution, human review, model consistency checks, online rejection
+    sampling, difficulty-aware selection, exclusion of consistently solved or failed RL prompts, and removal of zero-advantage
+    samples. Thresholds, yields, and rejected-record manifests are unknown.
+  sampling_protocol: Adaptive-CoT RL samples responses with different reasoning depths and uses online rejection sampling
+    to infer prompt difficulty. General GRPO uses dynamic sampling; RL response temperature is 1.0. Candidate counts per prompt,
+    top-p, random seeds, maximum lengths, and most other decoding settings are unknown.
+  rollout_count: unknown
+  temperature: 1.0 for RL response generation; unknown for other generation stages.
+  inference_budget: Unknown for data construction and training rollouts. The report evaluates inference efficiency on a separate
+    6,000-prompt set with each request repeated five times, but that evaluation budget is not a training-data generation budget.
+  optimizer_or_scaffold: Two-stage token-level GRPO uses Angel-RL. Stage I mixes 300K reasoning records in a Code:Mathematics:Logic-and-Science
+    ratio of 2:2:1. Stage II trains on 160K general RL instructions while retaining 10 percent Stage I reasoning data. The
+    recipe clips approximate K3 KL to [0,10], applies Best-of-N loss only to positive-advantage samples, uses dynamic sampling,
+    group reward adjustment, and a larger KL coefficient in Stage II. Exact learning rates, clip ranges other than K3, group
+    sizes, epochs, and checkpoints are unknown.
+audit:
+  source_mixture: The report states 16T base pre-training tokens, followed by a 300B-token annealing phase and long-context
+    phases of 30B tokens at 32K and 20B tokens at 256K. Post-training disclosures include 3M SFT samples, about 200K high-confidence
+    human preference annotations for GRM training with reported agreement above 93 percent, more than 800K executable unit-tested
+    code samples, 300K Stage I reasoning-RL records, and 160K Stage II general-RL instructions. These quantities describe
+    different objects and stages, may overlap, and must not be added into one corpus size.
+  split: unknown
+  decontamination: Pre-training describes URL-level deduplication and global semantic deduplication. The checked report does
+    not publish benchmark-specific match thresholds, benchmark revisions, overlap counts, removed-record ledgers, or a corpus-wide
+    contamination audit for SFT, GRM, executable-code, deliberation, or RL data.
+  license: Training-data source and synthetic-output rights are unknown. The arXiv manuscript uses the arXiv non-exclusive
+    distribution license. The checked official GitHub root contains the report, README, and figures but no license file, and
+    the official Hugging Face surface is an API demo rather than a weight or dataset license. None of these licenses establishes
+    reuse rights for the unreleased training records.
+  lineage: 'Partial: broad sources, generators, judges, verifiers, sandbox, and optimizer stages are named, but record-level
+    source IDs, transformations, model revisions, prompts, candidates, rejected outputs, reward-component values, final mixture
+    membership, and run checkpoints are unavailable.'
+  known_failure_modes:
+  - Aggregate counts cover different stages and may overlap; no immutable stage-to-record ledger reconciles them.
+  - Teacher and judge checkpoints, generation instructions, decoding settings, candidate counts, stopping caps, and training-data
+    lineage are incomplete.
+  - Repeating Hunyuan-T1 generation until a correct endpoint may retain invalid intermediate reasoning; the stop cap and process-quality
+    checks are unknown.
+  - Reference-conditioned GRM, majority or weighted judge consensus, and Answer Consistency Model decisions can inherit reference
+    errors, judge bias, or reward hacking; calibration and false-accept audits are not released.
+  - Pairwise agreement above 93 percent is reported without the annotation rubric, sampling frame, adjudication protocol,
+    or disagreement breakdown.
+  - The 36-language sandbox is described operationally, but implementation, images, package versions, timeouts, unit-test
+    provenance, and per-record execution logs are not released.
+  - Dynamic prompt filtering changes the RL distribution over time, but retained and discarded prompt histories are unavailable.
+  - URL and semantic deduplication do not establish benchmark decontamination or cross-source rights compliance.
+  - The official GitHub repository is a report repository rather than training code, and the official Hugging Face Space calls
+    a hosted API rather than distributing model weights.
+  - Benchmark performance and token-efficiency measurements describe model behavior under stated evaluations; they do not
+    prove training-record quality, provenance, rights, verifier accuracy, or contamination control.
+  citation_status: verified
+  confidence: medium
+  notes: The current arXiv v3 report, official Tencent-Hunyuan GitHub report repository, official Tencent Hugging Face demo
+    Space, and Tencent Cloud service documentation were checked on 2026-07-19. Paper, report repository, and hosted-service
+    surfaces are verified; no official downloadable Hunyuan-TurboS weights, training dataset, construction code, reward checkpoints,
+    or Angel-RL release was located on those checked surfaces.
+inclusion_reason: Hunyuan-TurboS is a useful frontier disclosure because it reports separate pre-training, SFT, adaptive-teacher,
+  deliberation, GRM, executable-code, and two-stage GRPO objects, while its official artifacts also make the absence of open
+  weights, datasets, training code, and replay metadata auditable.
+related: []
+tags:
+- hunyuan-turbos
+- tencent-hunyuan
+- frontier-report
+- data-disclosure-ledger
+- adaptive-cot
+- sft
+- grm
+- grpo
+- reward-system
+- code-sandbox
+- hosted-model
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Hunyuan-TurboS reports 16T pre-training tokens, 3M SFT samples, adaptive teacher-generated traces, about
+  200K human preference labels, more than 800K executable code samples, and 300K plus 160K two-stage GRPO inputs, but releases
+  no training corpus, weights, construction code, reward checkpoints, or replay ledger.
+why_it_matters: It shows how a frontier report can disclose substantial stage-level data and feedback contracts while a hosted
+  model demo and report repository remain fundamentally different from open weights, reusable data, and a reproducible training
+  pipeline.
+card: null
+needs:
+- 'needs_data: release item-level SFT, adaptive-CoT, deliberation, GRM preference, executable-code, and RL records with stable
+  identifiers'
+- 'needs_weights: publish exact Hunyuan-TurboS, Hunyuan-Base, Hunyuan-T1, teacher, judge, reward, consistency, and critic
+  checkpoints or mark them permanently unavailable'
+- 'needs_code: release the construction pipelines, Angel-RL and AngelHCF revisions, reward services, sandbox configuration,
+  and executable environments'
+- 'needs_metadata: publish source proportions, model revisions, generation instructions, decoding parameters, candidate counts,
+  stopping caps, filtering thresholds, yields, and stage membership'
+- 'needs_rl_data: release rollout groups, sampled responses, component rewards, fused rewards, advantages, discarded prompts,
+  policy revisions, and optimizer state'
+- 'needs_audit: publish benchmark decontamination ledgers, reward and judge calibration, annotation protocols, sandbox execution
+  logs, and failure analysis'
+- 'needs_license: publish record-level source rights, procurement terms, attribution, synthetic-output policy, and redistribution
+  terms'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv, Tencent-Hunyuan report repository, Tencent Hugging Face demo Space, and Tencent Cloud service surfaces
+    are live. Artifact verification covers the paper, report repository, and hosted demo only; it does not imply released
+    model weights, training data, training code, or replay artifacts.

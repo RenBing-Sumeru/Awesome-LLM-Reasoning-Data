@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以 LLM 作为判别器的能力间接评测生成对齐。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "对齐评测基准与生成—评测一致性研究",
+  "best_for_ch": "需要低成本、可复用人类偏好对齐评测的研究者。",
+  "confidence_ch": "高：已核对 NeurIPS/OpenReview 正文、作者机构和官方 AlignEval 仓库链接。",
+  "authors_ch": "Yixin Liu, Pengfei Liu, Arman Cohan",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

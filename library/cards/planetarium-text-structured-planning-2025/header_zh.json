@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Planetarium 以对象重命名不变的 PDDL 语义等价检查，区分可求解的规划输出与真正表达同一初始状态和目标的输出。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "语义验证的 text-to-PDDL 基准",
+  "best_for_ch": "研究文本规划、PDDL 生成或可验证奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Max Zuo, Francisco Piedrahita Velez, Xiaochen Li, Michael L. Littman, Stephen H. Bach",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:10:20Z"
+}

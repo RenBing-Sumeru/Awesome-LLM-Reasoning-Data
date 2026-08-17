@@ -1,0 +1,9 @@
+For dataset builders, Kimi-Dev offers a concrete schema for repository reasoning data: issue context, base revision, constrained patch, localization trace, tool interaction, generated test, execution transcript, binary result, and replay status. The strongest reusable lesson is to retain these fields as linked provenance rather than flattening everything into instruction-response text.
+
+For RLVR designers, the paired roles show how one environment can verify different objects with explicit predicates. Reuse requires publishing the selected tests, exact repository and image revisions, resource policies, infrastructure-error labels, and per-rollout outcomes. Without those artifacts, the binary reward definition is understandable but the training run is not reproducible.
+
+For agent builders, the paper motivates a staged curriculum: learn patch and repository skills under constrained interaction, ground them with executable feedback, then adapt to an open-ended tool protocol. The 5,016-trajectory result suggests a potentially efficient bridge, while the 200-example regression warns that adaptation data composition and optimization must be validated at several scales.
+
+For evaluators, the 40-by-40 patch/test matrix is a reusable ranking design. It should be reported separately from single-sample capability, with compute and candidate-generation conditions fixed. Independent test generators, held-out human tests, and correlated-failure analyses would make the verifier evidence substantially stronger.
+
+The public artifacts currently support paper reading, checkpoint inference, and partial evaluation replay. They do not support reconstruction of the mid-training corpus, SFT/RL flow, task split, internal Docker environment, failed-rollout population, or agent-adapted checkpoint; downstream users should classify exact training reproduction as unavailable.

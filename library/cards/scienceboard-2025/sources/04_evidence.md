@@ -1,0 +1,7 @@
+The current arXiv v3 reports 169 unique tasks and the 38/33/98 GUI/CLI/hybrid distribution. Human performance is 60.27% overall. Under screenshot plus accessibility-tree observations, Claude-3.7-Sonnet reaches the best reported overall model success rate of 15.79%; GPT-4o reaches 14.45%, Gemini-2.0-Flash 12.32%, Qwen2.5-VL-72B 11.74%, and InternVL3-78B 3.20%.
+
+Results vary materially with observation mode. Claude-3.7-Sonnet scores 10.48% using screenshots, 12.12% using accessibility trees, 15.79% using both, and 11.93% using Set-of-Marks. This supports the claim that environment representation affects agent performance, but it does not isolate data quality from model capability, prompt format, application reliability, or run variance.
+
+The strongest verifier evidence is procedural rather than statistical: task evaluators query application/VM internal states; two annotators execute each task on separate VMs; and intentional adversarial attempts are included in validation. The paper does not report per-evaluator false-positive/false-negative rates, inter-run stability, or a complete evaluator test suite.
+
+Artifact inspection confirms a public 17.1 GB VM archive with MIT metadata and five trajectory ZIPs totaling about 9.42 GB. The trajectory viewer exposes image/label examples and one train split, but viewer structure is not a benchmark train split and does not prove complete retention of all model successes, failures, timeouts, or evaluator outputs.

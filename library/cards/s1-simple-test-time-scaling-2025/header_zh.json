@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "s1 从 59,029 道混合来源题目经生成成功、格式、Qwen 难度与 Claude 领域筛选得到 1,000 条 Gemini 蒸馏 s1K，再用 inference-time budget forcing 控制思考长度；但 s1K 仅 53.6% 被 judge 判对，公开 full59K 还缺 43 行。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "紧凑推理数据选择、监督蒸馏与测试时预算控制",
+  "best_for_ch": "研究小规模高选择性 SFT、judge 驱动的数据筛选、发布可复现性，或区分训练数据 recipe 与推理期控制的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Niklas Muennighoff、Zitong Yang、Weijia Shi、Xiang Lisa Li、Li Fei-Fei、Hannaneh Hajishirzi、Luke Zettlemoyer、Percy Liang、Emmanuel Candès、Tatsunori Hashimoto",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,6 @@
+- Read §3.3 and Algorithm 2 first: GVM reallocates candidate generation; Math-Verify still decides final-answer acceptance.
+- Keep `N'` pilot samples, global budget `N`, and prompt-specific integer `n_i` distinct.
+- Table 1 supports clear 1.5B gains but only small 7B final-score differences; Figure 2 speedups are update-step claims.
+- Appendix C and Figures 7–9 contain the most important settings, compute disclosure, and negative pass@n behavior.
+- The official code fixes stage-1/stage-2 sampling temperature at 1.0, yet no immutable manifest binds every paper run to a commit and data revision.
+- Read with RAFT/RAFT++, GRPO, and DART-Math; audit final-answer parsing, zero-accept starvation, total compute, and rollout lineage before reuse.

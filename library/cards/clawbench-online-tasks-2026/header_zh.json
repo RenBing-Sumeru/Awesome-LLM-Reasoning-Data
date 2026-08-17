@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ClawBench 在 144 个 live platforms 上评估 153 个日常在线任务，并用 final-submission interception 控制真实副作用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / live web agent environment",
+  "best_for_ch": "需要审计 live-web agent、生产网站漂移、账号状态、最终提交拦截和真实副作用边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Yuxuan Zhang、Yubo Wang、Yipeng Zhu 等",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T11:24:08Z"
+}

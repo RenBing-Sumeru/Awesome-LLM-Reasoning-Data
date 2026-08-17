@@ -1,0 +1,7 @@
+SWE-World 的核心局限是 proxy error。SWR-72B 报告 accuracy 0.770，意味着 false reward 与 missed success 均存在；60.2% 对 68.4% 的 SWT/Docker transition comparison 也显示 simulated observation 会改变下游行为。non-CoT reward-hacking 案例证明 policy 可通过简短无效提交利用 SWR。跨 repository、dependency stack、command 与 test 的 distribution shift 还可能生成貌似合理但错误的 `stdout` 或 test report。这些 failure 会直接污染 SFT filtering、RL 与 TTS 所优化的信号。
+
+Gold-patch conditioning 带来独立 audit risk。SWT/SWR 与 reverse-CoT generation 可观察 policy 看不到的隐藏 `gold_patch`。**Curator inference：** 即使生成文本没有复制 patch，模型也可能学习 shortcut，或把与 solution 相关的 cue 泄露进 observation/reward。论文使用 LLM-as-a-judge filter 移除无效或泄露输出的 CoT，但 judge 身份、prompt/runtime revision、threshold 与 rejection statistics 都是 unknown，因此无法独立评估该控制。
+
+发布限制阻断直接 corpus reuse。已核验的只有 trajectory、SFT 与 RL demo record；尚未找到 16,550 个 task pool、26K SWT corpus、21K SWR corpus 或 5.7K policy-SFT set 的独立完整发布。代码为 MIT，但 dataset/model license，以及 GitHub issue、PR、patch、comment、dependency 与 generated reasoning 的权利均为 unknown。精确 train/validation/held-out split size、repository/time isolation、crawl query、bot regex、bug keyword、deduplication implementation、逐行 source manifest、更广泛 contamination audit，以及 privacy/consent、redaction、deletion、takedown procedure 也未披露。
+
+实验范围仍限于论文报告的 SWE setting。最终评测位于 500-instance SWE-bench Verified benchmark；simulator 在新 command 或 adversarial policy 下的 robustness 尚未建立。总 RL steps/rollouts、seed、hardware、compute 和 checkpoint-to-table mapping 为 unknown。32B RL 结果在 55.0 与 54.8 之间冲突。version drift 也需要注意：arXiv 仍是 v1，已检查代码 commit 日期为 2026-03-06，而发布于 2026-03-23 的 72B SWT/SWR weight 晚于论文与代码快照。

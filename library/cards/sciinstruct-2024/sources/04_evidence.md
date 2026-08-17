@@ -1,0 +1,3 @@
+# Evidence
+
+**Claim:** the full rationale mixture improves a fixed scientific SFT consumer. **Controlled setup:** Table 4 compares ChatGLM3-6B-Base with the same base after SciInstruct SFT across CEval, MMLU, SciEval, SciBench, GPQA, and math tasks. **Result:** weighted average science rises from 38.12 to 41.40, mathematics from 42.56 to 49.24, and combined science-plus-math from 40.34 to 45.32. **Filtering evidence:** with the same 6B setup, removing the bottom 10% by quality score raises combined average from 46.03 to 46.54. **Boundary:** SFT changes the model behavior, but the paper does not compare equal-token mixtures against every source-only baseline, and the filter gain is small.

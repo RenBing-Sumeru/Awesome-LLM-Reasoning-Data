@@ -1,0 +1,3 @@
+Correctness is only correctness relative to the encoded domain policy, user simulator, database schema, and reward function. A passing final state does not prove conversational quality, safety, or robustness outside the two benchmark domains; a failing final state may hide partially correct information gathering or tool use.
+
+The original task set is now version-sensitive because the repository points users toward successor fixed tasks. Scores can drift with simulator behavior, prompt/scaffold design, tool implementation, dependency versions, action budget, and random seeds. Public tasks create contamination risk, and evaluation-only terminal rewards should not be reused as training rewards without a separate audit of license, task exposure, and reward hacking.

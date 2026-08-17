@@ -1,0 +1,3 @@
+1. OpenMath-CodeLlama-70B reaches 84.6 on GSM8K and 50.7 on MATH with greedy decoding, versus 76.9 and 41.8 for MAmmoTH's Llama-2-70B model; with self-consistency at 50 samples it reaches 90.8 and 60.4. This supports the quality and diversity of the open-teacher traces, although base-model and training-recipe differences limit direct attribution across systems.
+
+2. Matched Mistral-7B ablations isolate two data decisions. On 128K samples, fair rather than naive downsampling moves GSM8K/MATH validation from 74.3/35.0 to 75.3/37.0; masked-reference rather than default prompting moves 73.8/36.9 to 77.7/37.4. These results support both coverage-oriented prompting and problem-balanced selection, not merely raw sample count.

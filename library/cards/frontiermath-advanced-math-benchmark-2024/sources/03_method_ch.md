@@ -1,0 +1,1 @@
+1. 输入：专家命题、期望答案、领域/层级元数据和答案检查规则。2. 流程：原创命题并评审，按难度和新颖性筛选，保留受控访问层级，用期望答案或 verifier 评测模型回答，并报告汇总解题率。3. 输出：benchmark tiers、模型分数、部分公开/open-problem 材料和访问政策说明。4. 反馈：当 benchmark checker 或 adjudication rule 接受某版本问题的答案时才算成功。5. 复用前要固定 benchmark 版本、tier、访问政策、verifier coverage、answer normalizer，以及是否把 Open Problems 与 Tiers 1-4 混用。

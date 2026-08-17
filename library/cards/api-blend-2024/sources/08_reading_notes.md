@@ -1,0 +1,1 @@
+Do not read API-BLEND as a simulator or API execution benchmark. It is a sequence-labeling and generation benchmark over converted data. Keep API-F1, Parameter-F1, and LCS-F1 separate: a model can find the right tool family while still failing the argument values or call order.

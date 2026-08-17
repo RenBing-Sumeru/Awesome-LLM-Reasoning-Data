@@ -1,0 +1,1 @@
+Evidence boundary: The official proceedings abstract reports improvements across the evaluated reasoning tasks and illustrates that few demonstrations can include explicit intermediate steps. This is evidence for the reported setting, not a substitute for an independent provenance or contamination audit of a later dataset.

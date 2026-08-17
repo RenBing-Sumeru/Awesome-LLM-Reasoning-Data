@@ -1,0 +1,1 @@
+引用：Alex Wang, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, Samuel R. Bowman. “GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding.” ICLR 2019 / arXiv, 2018. https://arxiv.org/abs/1804.07461 官方链接：https://gluebenchmark.com/ 和 https://github.com/nyu-mll/GLUE-baselines 。

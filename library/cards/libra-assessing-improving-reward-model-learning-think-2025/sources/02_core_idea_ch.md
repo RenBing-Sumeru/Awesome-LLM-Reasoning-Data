@@ -1,0 +1,1 @@
+论文以“可验证推理转为可验证评判”的 V2V 策略构建 Libra Bench，并用同类数据通过拒绝采样、SFT 与规则奖励 RL 训练具有长思考能力的 Libra-RM。Libra Bench 含 3,740 条英文样本，来自 204 道 MATH-500 Level 5、AIME 2024 和 AIME 2025 题目以及 5 个推理模型；字段包括 question、response、二值 label、generator model、reference、subset 和保留完整 CoT 的 response_with_cot，MIT 许可。

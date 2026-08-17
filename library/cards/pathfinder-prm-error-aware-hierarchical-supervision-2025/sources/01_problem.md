@@ -1,0 +1,1 @@
+Flat step labels do not capture how an early error propagates through a long solution. Pathfinder asks how hierarchical, error-aware supervision can locate failures at different granularities and provide better credit assignment for PRMs.

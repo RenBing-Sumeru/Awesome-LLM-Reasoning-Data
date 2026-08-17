@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Magpie 只向已对齐模型输入聊天模板中的用户角色前缀，就能无种子地采样指令与回答，并开放数百万条示范及其筛选版 SFT 数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "合成指令数据集与自动构造流程",
+  "best_for_ch": "适合研究大规模合成指令、教师分布继承与 SFT 数据筛选的构建者和审计者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhangchen Xu, Fengqing Jiang, Luyao Niu, Yuntian Deng, Radha Poovendran, Yejin Choi, Bill Yuchen Lin",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "异步 RL 系统",
+    "updated_at": "2026-07-20T11:50:32Z"
+  },
+  "updated_at": "2026-07-20T11:50:32Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

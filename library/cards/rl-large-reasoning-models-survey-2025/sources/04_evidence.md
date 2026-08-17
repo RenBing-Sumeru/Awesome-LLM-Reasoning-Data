@@ -1,0 +1,1 @@
+The official abstract explicitly covers foundational components, core problems, training resources, and downstream applications after DeepSeek-R1. It is a strong index for locating source papers and resource lists. It does not make different reward functions or benchmark scores directly comparable; those studies use different tasks, feedback, and budgets.

@@ -1,0 +1,3 @@
+Monte Carlo process annotation estimates a step’s value by continuing from that point and measuring final success. It avoids human step labeling but requires many rollouts, while small-sample estimates both underestimate valid steps and overrate invalid ones. Training directly on such noisy labels makes PRMs memorize accidental fluctuations near the first error, and scaling data also scales supervision errors.
+
+SCAN introduces self-denoising Monte Carlo annotation and noise-tolerant learning. Lightweight models generate continuations, systematic under- and overestimation are identified, and labels near earliest-error boundaries are softened to construct the low-cost SCAN-Pro supervision data.

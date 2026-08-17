@@ -1,0 +1,111 @@
+id: dysql-bench-dynamic-multiturn-text-to-sql-2026
+title: 'Rethinking Text-to-SQL: Dynamic Multi-turn SQL Interaction for Real-world Database Exploration'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Linzhuang Sun
+- Tianyu Guo
+- Hao Liang
+- Ruitong Liu
+- Yuying Li
+- Qifeng Cai
+- Jingxuan Wei
+- Yuchen Wu
+- Bihui Yu
+- Xiangxiang Zhang
+- Wentao Zhang
+- Bin Cui
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+domains:
+- code
+- database
+- reasoning
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1654/
+  arxiv: https://arxiv.org/abs/2510.26495
+  code: https://github.com/Aurora-slz/DySQL-Bench
+  data: https://github.com/Aurora-slz/DySQL-Bench
+  project: https://github.com/Aurora-slz/DySQL-Bench
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1654
+  venue: https://aclanthology.org/2026.findings-acl.1654/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1654/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: BIRD and Spider 2 relational schemas, table contents, and logic-tree-derived user intents.
+  trace_author: LLM task generators and verifier committee, followed by human expert review.
+  answer_format: Multi-turn intent, SQL action, execution result, database state difference, and terminal oracle.
+  process_fields:
+  - database_snapshot
+  - user_intent
+  - sql_action
+  - execution_result
+  - state_diff
+  - terminal_state
+  environment_or_substrate: Isolated executable relational database snapshots with a simulated user.
+  verifier_or_reward: SQL execution, result comparison, and post-transaction database state differences.
+  terminal_predicate: The agent reaches the target result and database state throughout the interaction.
+recipe_metadata:
+  base_model: LLM task synthesizer, verifier committee, simulated user, and evaluated SQL agent.
+  teacher: Human experts audit final trajectories after automatic verify-and-refine.
+  generator: Transform databases into hierarchical logic trees and synthesize evolving multi-turn SQL interactions.
+  filtering_rule: Retain tasks that pass semantic alignment, schema-validity, executability, and human-review checks.
+  sampling_protocol: 1,072 tasks across 13 domains and the full CRUD operation spectrum.
+  rollout_count: 5
+  temperature: null
+  inference_budget: Fix database snapshots, transaction isolation, agent and user models, trial count, and random seeds.
+  optimizer_or_scaffold: Simulated user-agent-database loop evaluated by per-turn, terminal, and Pass^k execution outcomes.
+audit:
+  source_mixture: Official ACL paper and official GitHub repository containing data pipeline, databases, and runner.
+  split: Consult the official repository for task files and database-download workflow.
+  decontamination: Audit overlap with public BIRD and Spider 2 source databases before training or evaluation.
+  license: Check upstream BIRD, Spider 2, and official repository terms before reuse.
+  lineage: https://github.com/Aurora-slz/DySQL-Bench
+  known_failure_modes:
+  - The simulated user may not reflect ambiguity and correction patterns of real analysts.
+  - Write operations must only run in isolated snapshots, never against production data.
+  - The benchmark omits permissions, concurrency, stored procedures, and cross-database transactions.
+  citation_status: verified
+  confidence: high
+  notes: ACL 2026 paper, first-page affiliations, DOI, and the redirected official GitHub repository were checked.
+inclusion_reason: DySQL-Bench supplies executable multi-turn SQL trajectories whose query results and state changes provide
+  programmatic outcome labels.
+related: []
+tags:
+- text-to-sql
+- database
+- multiturn
+- execution
+- acl-2026
+one_line_summary: DySQL-Bench evaluates multi-turn SQL agents by executing their CRUD actions on database snapshots and checking
+  both query results and state changes.
+why_it_matters: It moves Text-to-SQL evaluation from static query matching to stateful, executable database interaction.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: ACL publication, PDF affiliations, official repository redirect, and project contents were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

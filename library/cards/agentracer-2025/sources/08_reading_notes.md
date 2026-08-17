@@ -1,0 +1,5 @@
+- Keep the stable ID `agentracer-2025`, but cite the official publication as an ICLR 2026 Poster.
+- Separate the reported 2,476-pair TracerTraj-2.5K corpus from the only public data file: a 127-row coding-test parquet versus 147 rows in Table 3.
+- DeepSeek-R1 proposes corrections or mutations; task environments verify only whether replay flips the binary outcome.
+- Read Section 4, Algorithm 1, Tables 1-3, and Figure 3 together; flag Equation 4's direction mismatch and the six-versus-seven benchmark list.
+- Training reuse remains blocked until full data, paired interventions, split/decontamination evidence, replay pins, AgenTracer-8B weights, RL scripts, and root-level licensing are published.

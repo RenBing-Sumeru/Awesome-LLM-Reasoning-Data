@@ -1,0 +1,95 @@
+id: ranking-reasoning-tts-2026
+title: Ranking Reasoning LLMs under Test-Time Scaling
+year: 2026
+venue: ACL 2026
+authors:
+- Mohsen Hariri
+- Michael Hinczewski
+- Jing Ma
+- Vipin Chaudhary
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1544/
+  arxiv: https://arxiv.org/abs/2603.10960
+  venue: https://aclanthology.org/2026.acl-long.1544/
+  code: https://github.com/mohsenhariri/scorio
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1544
+data_object:
+  prompt_source: AIME’24, AIME’25, HMMT’25, and BrUMO’25 mathematical-reasoning benchmarks.
+  trace_author: Twenty evaluated reasoning language models.
+  answer_format: Repeated binary-correctness trials and model rankings.
+  process_fields:
+  - model
+  - prompt
+  - trial
+  - correctness
+  - ranking_method
+  - ranking
+  environment_or_substrate: Dense repeated-sampling benchmark evaluation.
+  verifier_or_reward: Benchmark correctness outcomes.
+  terminal_predicate: Correctness per sampled response.
+recipe_metadata:
+  base_model: Twenty reasoning models evaluated in the paper.
+  teacher: null
+  generator: Repeated stochastic model sampling.
+  filtering_rule: Statistical ranking rule chosen from implemented method families.
+  sampling_protocol: Up to 80 trials per model–question pair; see paper.
+  rollout_count: 80
+  temperature: null
+  inference_budget: Number of repeated test-time trials.
+  optimizer_or_scaffold: Scorio statistical-ranking library.
+audit:
+  source_mixture: Official ACL 2026 paper, ACL Anthology record, arXiv primary record, and public Scorio repository.
+  split: Four Olympiad-style mathematical benchmarks reported in the paper.
+  decontamination: Not separately claimed.
+  license: Verify benchmark and repository terms before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.1544/
+  known_failure_modes:
+  - low_trial_variance
+  - biased_greedy_prior
+  - binary_only_outcomes
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue, DOI, affiliation, reported data, and code link checked on 2026-07-20.
+inclusion_reason: It studies how repeated inference trials and low-budget sampling alter the reliable evaluation of test-time
+  scaling systems.
+related: []
+tags:
+- test-time-compute
+- evaluation
+- ranking
+- repeated-sampling
+- mathematical-reasoning
+status: verified
+one_line_summary: Scorio evaluates how statistical ranking remains stable when reasoning models receive different test-time
+  sampling budgets.
+reading_priority: useful
+paper_type: Test-time scaling evaluation and statistical-ranking study
+best_for: Readers benchmarking or selecting reasoning models under repeated inference.
+confidence: high
+why_it_matters: It treats the number of test-time trials as part of the evaluation protocol, not a hidden implementation detail.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL and paper-linked Scorio repository checked.
+category_ids:
+- scaling_rlvr_test_time_compute

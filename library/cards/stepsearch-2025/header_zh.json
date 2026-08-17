@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "StepSearch 以检索信息增益与冗余惩罚为每一步搜索提供 PPO 反馈，处理后的监督语料仍未核验公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xuhui Zheng, Kang An, Ziliang Wang, Yuhang Wang, Yichao Wu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-18T11:36:32Z"
+}

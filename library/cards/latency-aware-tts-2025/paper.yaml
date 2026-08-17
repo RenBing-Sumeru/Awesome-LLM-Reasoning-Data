@@ -1,0 +1,101 @@
+id: latency-aware-tts-2025
+title: Faster and Better LLMs via Latency-Aware Test-Time Scaling
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Zili Wang
+- Tianyu Zhang
+- Haoli Bai
+- Lu Hou
+- Xianzhi Yu
+- Wulong Liu
+- Shiming Xiang
+- Lei Zhu
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.928/
+  arxiv: null
+  venue: https://aclanthology.org/2025.findings-emnlp.928/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.928
+data_object:
+  prompt_source: MATH-500, AIME24, AIME25, and GPQA-Diamond evaluations.
+  trace_author: Evaluated reasoning models.
+  answer_format: Sequential traces, parallel branches, speculative drafts, and majority-vote outputs.
+  process_fields:
+  - prompt
+  - branch_count
+  - draft_length
+  - token_count
+  - latency
+  - accuracy
+  environment_or_substrate: Latency-constrained GPU inference.
+  verifier_or_reward: Majority voting and benchmark correctness.
+  terminal_predicate: Benchmark answer correctness under a wall-clock budget.
+recipe_metadata:
+  base_model: Models from 3B to 32B reported in the paper.
+  teacher: null
+  generator: Sequential and parallel reasoning with speculative decoding.
+  filtering_rule: Greedy search allocates branch-wise and sequence-wise concurrency.
+  sampling_protocol: Latency-bounded evaluation; see paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: Wall-clock latency, branch count, and speculative draft length.
+  optimizer_or_scaffold: Latency-aware concurrency allocation.
+audit:
+  source_mixture: Official Findings of EMNLP 2025 paper and ACL Anthology record.
+  split: Reported mathematical and science benchmark splits.
+  decontamination: Not separately claimed.
+  license: Verify models and benchmarks before reuse.
+  lineage: https://aclanthology.org/2025.findings-emnlp.928/
+  known_failure_modes:
+  - hardware_dependence
+  - batch_size_dependence
+  - speculative_acceptance
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue, DOI, affiliations, methods, and experimental figures checked against the official ACL PDF
+    on 2026-07-20.
+inclusion_reason: It allocates test-time computation under wall-clock latency, rather than treating generated token count
+  as the only budget.
+related: []
+tags:
+- test-time-compute
+- latency
+- concurrency
+- speculative-decoding
+- parallel-scaling
+status: verified
+one_line_summary: Latency-aware TTS allocates parallel branches and speculative decoding capacity to maximize reasoning accuracy
+  under a time limit.
+reading_priority: essential
+paper_type: Systems-aware test-time scaling study
+best_for: Readers deploying reasoning models under service-level latency constraints.
+confidence: high
+why_it_matters: It shows that token-optimal inference strategies can be slower than concurrent alternatives at the same accuracy.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL primary record checked; no official code or dataset artifact link identified on the primary record.
+category_ids:
+- scaling_rlvr_test_time_compute

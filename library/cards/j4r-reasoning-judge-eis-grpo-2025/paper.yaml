@@ -1,0 +1,105 @@
+id: j4r-reasoning-judge-eis-grpo-2025
+title: 'J4R: Learning to Judge with Equivalent Initial State Group Relative Policy Optimization'
+year: 2025
+venue: arXiv 2025
+authors:
+- Austin Xu
+- Yilun Zhou
+- Xuan-Phi Nguyen
+- Caiming Xiong
+- Shafiq Joty
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- reasoning-evaluation
+- llm-as-a-judge
+- preference-learning
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2505.13346
+  arxiv: https://arxiv.org/abs/2505.13346
+  code: https://github.com/SalesforceAIResearch/ReasoningJudgeBench
+  data: https://huggingface.co/datasets/Salesforce/ReasoningJudgeBench
+  project: https://github.com/SalesforceAIResearch/ReasoningJudgeBench
+  huggingface: https://huggingface.co/datasets/Salesforce/ReasoningJudgeBench
+  doi: https://doi.org/10.48550/arXiv.2505.13346
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Eight source reasoning benchmarks spanning four evaluation splits.
+  trace_author: GPT-4o generates both responses; outcome determines the correct versus incorrect response.
+  answer_format: Instruction, positive response, negative response, source identifier, and binary pairwise label.
+  process_fields:
+  - problem_id
+  - source_id
+  - instruction
+  - positive_response
+  - negative_response
+  - label
+  environment_or_substrate: Multi-hop, mathematics, domain, and everyday reasoning.
+  verifier_or_reward: Outcome correctness identifies the preferred response; EIS-GRPO trains a judge to avoid positional bias.
+  terminal_predicate: The judge selects the correct response from the pair.
+recipe_metadata:
+  base_model: A 7B Judge for Reasoning model trained with EIS-GRPO.
+  teacher: GPT-4o produces candidate answers and outcome checking supplies pair orientation.
+  generator: Source tasks and GPT-4o response-pair generation.
+  filtering_rule: Retain pairs with one correct and one incorrect outcome.
+  sampling_protocol: Pin the official 1,483-example dataset and four split configurations.
+  inference_budget: Judge generation and pair-order controls affect comparison results.
+  optimizer_or_scaffold: Equivalent Initial State Group Relative Policy Optimization for position-robust judge training.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Eight reasoning benchmarks and GPT-4o response pairs with outcome-derived labels.
+  split: The dataset card exposes 1,483 rows across four reasoning splits; pin the revision.
+  decontamination: Do not train a judge on benchmark pairs later used as its held-out score.
+  license: Check the Salesforce dataset card, repository license, and original source benchmark terms before reuse.
+  lineage: arXiv paper, Salesforce AI Research repository, and Salesforce ReasoningJudgeBench dataset.
+  known_failure_modes:
+  - Outcome correctness does not measure all qualitative aspects of an explanation.
+  - The pair distribution is limited to GPT-4o-generated responses and eight source benchmarks.
+  citation_status: verified
+  confidence: high
+  notes: Verified the formal arXiv title, authors, Salesforce dataset card, 1,483-pair schema, and linked Salesforce AI Research
+    repository.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: J4R trains a position-robust reasoning judge and releases 1,483 outcome-oriented response pairs across eight
+  source benchmarks.
+why_it_matters: It provides a concrete pairwise supervision contract for testing whether a judge recognizes reasoning correctness
+  rather than response position.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the formal arXiv title, authors, Salesforce dataset card, 1,483-pair schema, and linked Salesforce AI Research
+    repository.
+category_ids:
+- preference_reward_feedback_data

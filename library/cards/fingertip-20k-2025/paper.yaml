@@ -1,0 +1,211 @@
+id: fingertip-20k-2025
+title: 'FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents'
+year: 2026
+venue: ICLR 2026 Poster
+authors:
+- Qinglong Yang
+- Haoming Li
+- Haotian Zhao
+- Xiaokai Yan
+- Jingtao Ding
+- Fengli Xu
+- Yong Li
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- mobile_gui
+- proactive_task_suggestion
+- personalized_task_execution
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openreview.net/pdf?id=n3iFV0gLMc
+  arxiv: https://arxiv.org/abs/2507.21071
+  code: https://github.com/tsinghua-fib-lab/FingerTip-20K
+  data: https://www.kaggle.com/datasets/qinglongyang/fingertip-20k/data
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.21071
+  venue: https://iclr.cc/virtual/2026/poster/10007512
+  openreview: https://openreview.net/forum?id=n3iFV0gLMc
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  unit: One longitudinal human Android interaction episode/demonstration; this is not a unique task template or a model rollout.
+  prompt_source: A participant's self-recorded real current intent during daily phone use, with timestamp and a selected location/scenario
+    category.
+  context:
+  - user_id
+  - user_profile
+  - timestamp
+  - scenario
+  - app_activity_name
+  - historical_intents
+  - retrieved_same_user_historical_action_sequence
+  observation:
+  - Chronologically ordered JPG screenshots.
+  - Android accessibility-tree XML associated with screenshots.
+  trace_author: Human participant using their own Android phone.
+  trace: A JSONL sequence over click, long_click, type, scroll, press_back, press_home, press_recent, wait, and terminal finish
+    actions; each screenshot corresponds to an action.
+  answer_or_artifact:
+    proactive_track: One Chinese intent sentence naming the app and desired final effect.
+    execution_track: A sequence of next-action predictions executed in a live phone loop.
+  process_fields:
+  - screenshot
+  - accessibility_tree_xml
+  - action_json
+  - intent_description
+  - user_id
+  - time
+  - scenario
+  - app
+  - user_profile
+  process_labels: []
+  observation_after_action: A new screenshot and accessibility tree are captured by the live ADB/uiautomator2 evaluation loop;
+    the static release stores the human episode's observation/action sequence.
+  verifier_output:
+    proactive_track: Sim1 from embedding plus edit similarity and SR1 from a DeepSeek-V3 binary same-intent judgment.
+    execution_track: Manual final-state success label, automatic failure beyond 2.5x golden steps, Sim2 action-sequence similarity
+      ratio, and step ratio.
+  reward: null
+  terminal_predicate: Human demonstrations end with an added finish marker. Evaluation execution ends when the model emits
+    finished() or exceeds 2.5x the human action length; task success still requires manual final-state inspection.
+  provenance: Participant -> FingerTip collection app -> manual quality/privacy review plus Qwen-VL-Max privacy screening
+    -> released episode and benchmark split indexes.
+  environment_or_substrate: Live personal Android phones and third-party Chinese apps; public execution code uses ADB/uiautomator2,
+    but no pinned/resettable device image or app-version bundle is released.
+recipe_metadata:
+  base_model: Qwen-2.5-VL-7B for the paper's fine-tuning experiment.
+  teacher: not applicable; targets are participant-recorded intents and human action demonstrations
+  generator: 95 recruited Android users according to the paper; the current release index contains 83 users.
+  prompt_task_source: Self-recorded real-life user intents, followed by participant demonstrations on daily-use phones.
+  collection_protocol: One month per participant, at most 12 uploaded episodes per day; the app records intent, time, location
+    category, screenshots, accessibility trees, and actions.
+  sampling_protocol: Paper reports 21,437 episodes from 95 users across 506 apps. Official GitHub total.csv has 20,000 rows
+    from 83 users across 482 app identifiers; the reduction is unexplained.
+  temperature: 0 for benchmark model inference; not applicable to human trajectory collection
+  rollout_count: One collected human demonstration per episode; no model-rollout generation is used for the released corpus.
+  inference_budget: Proactive track uses one query with 0-3 initial screenshots. Execution is capped at 2.5x the human demonstration's
+    action length.
+  search_or_scaffold: No search during data generation. Personalized evaluation retrieves the most intent-similar earlier
+    action sequence from the same user and runs a live ADB phone loop.
+  filtering_rule: Timed manual quality checks delete low-quality records; minor realistic mistakes remain. Privacy review
+    manually removes obvious cases, then Qwen-VL-Max checks first/last screenshots and humans recheck flagged episodes.
+  selection_threshold: unknown
+  optimizer_or_training_scaffold: LoRA on Qwen-2.5-VL-7B with rank 4 or 64, using either 1,000 proportionally sampled training
+    episodes or all 16,000; separate models are trained for the two tracks. Loss, optimizer, learning rate, batch size, epochs,
+    and seed are undisclosed, and no training script is released.
+audit:
+  source_mixture: Human-authored intents and Android state-action demonstrations with user/context metadata; DeepSeek-V3 supplies
+    intent-category labels and an evaluation judgment, while Qwen-VL-Max is used for privacy screening.
+  count_scope: 'Paper: 21,437 episodes / 95 users / 506 apps / 11.1 average steps. Official repository index: total.csv has
+    20,000 rows / 83 users / 482 apps; user_profile.csv has 83 profiles. The reason for the gap is unknown.'
+  split: Paper Table 7 reports train 16,000, validation 4,411, test-suggestion 1,000, and test-execution 200, with the test
+    sets partially overlapping. Main train/test assignment is temporal within every user, not user-disjoint. In the released
+    CSVs, suggestion has 996 unique episode keys because four rows are duplicated; execution has 200 unique keys; 172 unique
+    keys overlap; no validation CSV is released.
+  decontamination: unknown
+  benchmark_overlap: The main training and test sets share users and may share apps, intent classes, and recurring habitual
+    intents by design. The two test tracks overlap by 172 unique released episode keys. No corpus-wide benchmark decontamination
+    is disclosed.
+  lineage: 95 crowdworkers reported in the paper -> real-life mobile episodes -> manual low-quality removal -> manual/model
+    privacy screening -> paper split; current public index exposes only 83 users and 20,000 rows, with no mapping explaining
+    omissions.
+  license:
+    dataset: Kaggle version 2 declares CC BY 4.0.
+    paper: arXiv v2 declares CC BY 4.0.
+    code: unknown
+    rights_boundary: The dataset license does not by itself resolve participant-consent scope or third-party app UI/content
+      rights for every downstream use.
+  release_version: Paper arXiv v2 (2026-03-16); GitHub main commit e73a4dac3bd13ea32b7836525ff074a69cb047ea inspected 2026-07-20
+    with no published release; Kaggle dataset version 2 dated 2025-05-16.
+  replayability: Partial/offline only. Screenshots, XML, and actions are released, but app/APK versions, account and initial
+    phone state, Android build per episode, reset logic, and deterministic replay manifests are not pinned.
+  verifier_or_judge_failure_modes:
+  - DeepSeek-V3 same-intent judgments can be judge-biased and the released proactive script does not implement SR1.
+  - Execution success is manually inspected and the released script writes success=0 without implementing adjudication.
+  - Levenshtein-based action similarity can reward surface-sequence resemblance rather than functional personalization.
+  - The 2.5x golden-length cutoff can reject valid but longer alternative paths.
+  - Live app/UI drift and grounding errors change the terminal state independently of high-level reasoning quality.
+  successful_and_failed_sample_retention: The release contains human demonstrations intended to complete tasks, not model
+    rollout pools. Low-quality episodes are removed, minor interaction noise is retained, no explicit per-episode success/failure
+    label is released, and failed model rollouts/results are absent. A final finish marker is not an independently verified
+    success label.
+  privacy_or_consent: Participants signed a data-usage agreement, were warned not to upload private information, and could
+    inspect/delete uploads during collection. Manual plus Qwen-VL-Max privacy filtering was applied, but exact agreement text,
+    deletion availability after release, removal counts, and privacy rubric are undisclosed. Fine-grained screenshots and
+    longitudinal profiles retain re-identification risk.
+  safety_boundary: Continuous screenshots, explicit profiles, locations/scenarios, and usage history can reveal sensitive
+    behaviors, contacts, or locations; downstream training should not assume anonymization eliminates re-identification risk.
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - Why the paper reports 21,437 episodes / 95 users / 506 apps while current GitHub indexes expose 20,000 rows / 83 users
+    / 482 apps.
+  - Validation split index and exact mapping from all 21,437 paper episodes to released files.
+  - Training loss, optimizer, learning rate, batch size, epochs, seed, and training code/checkpoints.
+  - Code license and full third-party app-content rights boundary.
+  - Per-episode Android/app versions, initial/account state, reset procedure, and deterministic replay support.
+  - Corpus-wide deduplication/decontamination procedure and low-quality/privacy removal counts.
+  - Whether every retained human demonstration reached its intended final state.
+  notes: Use the paper-scale and release-index counts side by side. Do not silently convert 21,437 paper episodes into 20,000
+    released unique tasks or claim deterministic replay.
+inclusion_reason: 'FingerTip 20K makes the post-training object unusually concrete for mobile agents: a longitudinal, user-conditioned
+  screenshot/XML/action episode is reused both as an SFT target and as the basis of two evaluation tracks. It belongs in the
+  atlas because its human trajectory schema and mixed feedback contract are reusable, while the paper/release count mismatch,
+  manual success labeling, privacy exposure, and non-pinned live environment are material audit findings.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- mobile-gui-agent
+- human-demonstrations
+- longitudinal-user-context
+- proactive-task-suggestion
+- personalized-execution
+- mixed-verification
+- privacy-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: A longitudinal Android benchmark of human state-action episodes for intent anticipation and preference-conditioned
+  execution, with a verified gap between the paper's 21,437-episode corpus and the public 20,000-row index.
+why_it_matters: It shows how user profiles, time, location, intent history, screenshots, accessibility trees, and human action
+  traces can become both supervised agent data and a benchmark surface; it also exposes why episode counts, manual terminal
+  judgments, privacy filtering, and live-app replay metadata must be audited before reuse.
+status: partial
+card: null
+needs:
+- 'needs_count_reconciliation: obtain an official mapping for 21,437 paper episodes versus the 20,000-row/83-user GitHub index'
+- 'needs_split_metadata: obtain the validation index and explain duplicate/overlapping test rows'
+- 'needs_training_metadata: obtain training code and optimizer/hyperparameter details'
+- 'needs_replay_metadata: pin Android/app versions, initial state, accounts, reset procedure, and collection-app source'
+- 'needs_license_review: determine code license and third-party UI/content reuse boundary'
+- 'needs_privacy_review: inspect consent text, removal statistics, post-release deletion policy, and re-identification controls'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  official_primary_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  paper_version: OpenReview ICLR 2026 accepted paper; arXiv v2 dated 2026-03-16
+  repository_revision: e73a4dac3bd13ea32b7836525ff074a69cb047ea
+  dataset_version: Kaggle version 2 dated 2025-05-16
+  confidence: medium
+  notes: Citation, venue, code, dataset link, release license metadata, CSV counts, and evaluation scripts were verified.
+    Status remains partial because release cardinality, validation mapping, training implementation, replay state, and code
+    licensing are unresolved.

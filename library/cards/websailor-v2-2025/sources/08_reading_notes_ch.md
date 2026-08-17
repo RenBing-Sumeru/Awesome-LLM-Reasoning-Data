@@ -1,0 +1,6 @@
+- 先读最终稿 §§3.1–3.4。3 万余条指 SailorFog-QA-V2 instruction-tuning pair，不能把它无声地改写成完整 trajectory 数。
+- §4.1 定义 SFT 对象：未具名的开源 solver、成功 ReAct trajectory、rejection sampling、Qwen3-30B-A3B-Thinking-2507 和 128k context。teacher 身份及保留/拒绝数量仍未知。
+- §4.2 要与 Equation 2 一起读。优化器有说明，但 terminal reward `R_i` 没有定义，因此不能只靠目标函数审计选择性排除 negative 的影响。
+- SFT 到 RL 的增益看 Table 1 和 Figure 6；context/action budget scaling 看 Figure 5。作者报告的 benchmark performance 与独立证据要分开。
+- 必须区分四个发布面：arXiv v1、最终 ICLR/OpenReview 论文、只有文档的 V2 目录，以及更丰富的 V1 目录/模型 collection。只有明确 provenance 才允许跨版本归因。
+- 建议与前作 `websailor-2025` 及相邻的 `webdancer-2025` 对读，但不能用它们填补 V2 unknown。应优先核验 reward correctness、SailorFog-QA/V2/IterBench 的阶段混合、完整成功/失败保留、benchmark overlap、环境版本化，以及数据/轨迹权利。

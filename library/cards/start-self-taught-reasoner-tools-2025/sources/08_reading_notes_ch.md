@@ -1,0 +1,6 @@
+- 先读图 1 与论文第 2.2 节：关键对象是由 hint 诱发、从错误转为正确的 Python 轨迹，随后是 `D_seed=10K`、START-0 和报告的 `D_START=40K` 扩展。
+- 不要自行解决规模单位：表 9 六个来源合计 46,969 而不是 49,969，打印的数学来源合计 36,895 而不是 40K math-problem claim；unique prompt、candidate、accept 和 reject 没有分开。
+- 把表 5 当作 failure ledger：hint 修复 33.0% 的初始错误案例，仍留下 67.0% 错误，并把 10.4% 的初始正确案例变错。底层轨迹和 denominator 均未发布。
+- 不要把 100% Python triggering 或更高 benchmark score 等同于数据质量。checker、sandbox、modification logic、解码 protocol、被拒样本、license 和去污染 ledger 都不可得。
+- 对照阅读附录 H 与第 3.4 节：前者写 greedy decoding，后者给出 temperature 0.6 和 top-p 0.95。还应检查附录 A/表 9 的计数矛盾，以及附录 J.1 的 library-use 数量。
+- 与 V-STaR、OpenCodeReasoning 和 Tool Zero 一起做机制比较，同时记住 START 没有官方代码、数据、模型、环境、日志、项目页或不可变 release。

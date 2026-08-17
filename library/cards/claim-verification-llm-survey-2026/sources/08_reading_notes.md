@@ -1,0 +1,3 @@
+Read the pipeline components before comparing named systems and datasets. For each result, keep the claim, evidence source, retrieval method, and output label together; this makes it easier to tell a reasoning failure from a missing-evidence failure.
+
+Then use a two-pass reading strategy. First, identify the task contract: what counts as support, contradiction, or insufficient information? Second, trace the information path from source to model output. If a paper reports high accuracy, ask whether the retrieved evidence was given, whether retrieval itself was evaluated, and whether the label set matches the decision you need. These questions prevent fluent explanations from substituting for supported verification.

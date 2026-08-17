@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeltaBench 为 1,236 条长推理轨迹提供细粒度过程标注，用于检验批评器能否发现终局答案之外的过程错误。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要诊断长链推理、评测首错定位与过程批评能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yancheng He, Shilong Li, Jiaheng Liu, Weixun Wang, Xingyuan Bu, Ge Zhang, Zhongyuan Peng, Zhaoxiang Zhang, Zhicheng Zheng, Wenbo Su, Bo Zheng",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T11:45:12Z"
+}

@@ -1,0 +1,3 @@
+Benchmark contamination can inflate an LLM's apparent reasoning ability, yet model users rarely have access to the training corpus, parameters, or logits needed by overlap and probability-based checks. Directly asking a model to reproduce an item is also noisy and can trigger copyright filters.
+
+Data Contamination Quiz (DCQ) recasts detection as multiple-choice recognition. It hides one original dataset item among meaning-preserving word-level variants, measures whether the model selects it, and compensates for position preferences before estimating a contamination range. It limits evidence to anomalous recognition of exact wording rather than treating high scores or common-sense answers as direct proof of leakage, reducing post-hoc ambiguity.

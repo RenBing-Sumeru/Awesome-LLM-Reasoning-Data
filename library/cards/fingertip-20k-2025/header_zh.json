@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FingerTip 20K 以纵向用户画像和真实 Android 状态—动作示范支持主动意图预测与个性化执行，但论文的 21,437 个 episode 与公开索引的 20,000 行无法对齐，终态成功还依赖未编码进脚本的人工判断。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "移动 GUI 智能体纵向轨迹数据集与混合反馈基准",
+  "best_for_ch": "研究移动智能体 SFT、个性化交互评测、轨迹发布审计、隐私风险与 live environment 复现边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qinglong Yang, Haoming Li, Haotian Zhao, Xiaokai Yan, Jingtao Ding, Fengli Xu, Yong Li",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

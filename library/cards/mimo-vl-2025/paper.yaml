@@ -1,0 +1,119 @@
+id: mimo-vl-2025
+title: MiMo-VL Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Xiaomi LLM-Core Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- multimodal
+- visual_reasoning
+training_use:
+- sft
+- unknown
+construction_layer:
+- trace_writing
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.03569
+  arxiv: https://arxiv.org/abs/2506.03569
+  code: https://github.com/XiaomiMiMo/MiMo-VL
+  data: null
+  project: https://github.com/XiaomiMiMo/MiMo-VL
+  huggingface: https://huggingface.co/XiaomiMiMo/MiMo-VL-7B-RL
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Diverse queries are mentioned for synthetic reasoning-data curation; the source inventories, counts, licenses,
+    and query-level manifests are undisclosed.
+  trace_author: Large reasoning models regenerate long chain-of-thought responses; the teacher identities and model versions
+    are undisclosed.
+  answer_format: Long chain-of-thought reasoning responses are described, but the released report does not specify an item
+    schema or trace serialization.
+  process_fields: []
+  environment_or_substrate: Vision-language pre-training followed by mixed on-policy reinforcement learning across text, image,
+    and video modalities.
+  verifier_or_reward: MORL combines reward signals for perception accuracy, visual-grounding precision, logical reasoning,
+    and human/AI preferences; reward formulas, weights, calibrations, and per-sample decisions are undisclosed.
+  terminal_predicate: Synthetic reasoning data is retained through rejection sampling, but acceptance criteria, yields, and
+    rejected-sample records are undisclosed.
+recipe_metadata:
+  base_model: MiMo-VL-7B, comprising a native-resolution ViT encoder, MLP projector, and MiMo-7B language model; the report
+    does not identify the initial checkpoint lineage in the inspected source.
+  teacher: Large reasoning models for long-CoT regeneration; exact teacher checkpoints are unknown.
+  generator: Four-stage pre-training includes projector warm-up, vision-language alignment, general multimodal pre-training,
+    and long-context SFT; later pre-training incorporates regenerated long-CoT reasoning data, followed by MORL.
+  filtering_rule: Rejection sampling is stated for synthetic long-CoT reasoning data; the rule, thresholds, reject rates,
+    and deduplication procedure are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Mixed On-policy Reinforcement Learning (MORL) integrates diverse signals across perception, grounding,
+    reasoning, and preference alignment; optimizer and stage settings are undisclosed.
+audit:
+  source_mixture: 'High-level disclosure only: four-stage pre-training uses 2.4T tokens and later pre-training includes synthetic
+    long-CoT reasoning data. Component sources and mixture weights are unknown.'
+  split: unknown
+  decontamination: unknown
+  license: The official GitHub repository declares Apache-2.0, while the official MiMo-VL-7B-RL Hugging Face page declares
+    MIT. The license of the training corpus and generated reasoning traces is unknown.
+  lineage: Diverse queries to unspecified large-reasoning-model regeneration to rejection sampling to later pre-training to
+    MORL. Item-level provenance, teacher version, and retained/rejected lineage are not released.
+  known_failure_modes:
+  - The report states mixed RL across domains remains challenging because of cross-domain interference.
+  - Reward components, weights, calibration, and per-sample feedback records are not disclosed, so MORL cannot be audited
+    as a reusable reward contract.
+  - Training-data sources, rights, splits, decontamination, and item-level lineage are undisclosed.
+  - The released repository includes checkpoints and an evaluation framework, not a released post-training corpus or rejection
+    ledger.
+  - The repository and checkpoint license labels differ; downstream reuse needs license reconciliation.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv report, XiaomiMiMo repository, and XiaomiMiMo/MiMo-VL-7B-RL model page were checked on 2026-07-14.
+inclusion_reason: Official frontier report with unusually concrete high-level disclosure of long-CoT synthesis, rejection
+  sampling, MORL, checkpoints, and evaluation, while the evidence ledger keeps the missing item-level data and reward contract
+  visible.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- multimodal-reasoning
+- long-cot
+- morl
+- rejection-sampling
+- open-checkpoint
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: MiMo-VL reports synthetic long-CoT regeneration with rejection sampling in later pre-training and mixed
+  on-policy RL, but does not release the underlying traces, reward contract, or corpus audit.
+why_it_matters: It provides a useful disclosure ledger for a frontier multimodal reasoner because it separates released checkpoints
+  and evaluation prompts from undisclosed data provenance, acceptance decisions, and mixed-RL feedback details.
+card: null
+needs:
+- 'needs_data: publish synthetic reasoning-data manifests, retained/rejected records, source rights, and item-level lineage'
+- 'needs_reward: document MORL reward components, weights, calibration, and per-sample feedback'
+- 'needs_audit: disclose corpus mixture, splits, decontamination, and license reconciliation'
+- 'needs_reproducibility: publish teacher versions, generation prompts/decoding, filtering thresholds, yields, and training
+  configurations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper, repository, released checkpoint page, evaluation-framework claim, and license labels are verified;
+    item-level training and reward artifacts are not.

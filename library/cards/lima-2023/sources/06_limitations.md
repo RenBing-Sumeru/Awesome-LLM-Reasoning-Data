@@ -1,0 +1,3 @@
+- **Capable-backbone assumption:** the result uses LLaMA-65B, so it does not establish the same data efficiency for weaker or knowledge-poor models. Reuse should include a matched backbone-size or base-capability comparison.
+- **Preference is not correctness:** evaluators judge helpfulness and writing quality, which can favor polished but false answers. Add task-specific factual or executable checks when correctness matters.
+- **Provenance and coverage:** community Q&A is narrow and may carry copyright or redistribution constraints. Audit every source, license, duplication path, and missing domain before releasing a derivative set.

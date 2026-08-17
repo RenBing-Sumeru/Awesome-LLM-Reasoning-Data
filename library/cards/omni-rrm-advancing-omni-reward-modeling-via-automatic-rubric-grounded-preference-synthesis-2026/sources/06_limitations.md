@@ -1,0 +1,2 @@
+1. **Primary limitation.** The entire corpus inherits teacher-model bias, and an anonymous repository limits long-term provenance. Human agreement and per-modality calibration should be measured before deployment.
+2. **Curator audit risk.** Shared formatting does not guarantee calibration across modalities. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

@@ -1,0 +1,3 @@
+- For training an assistant to reason about an exact segmented object or part, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of category-name leakage from source masks can overstate open-vocabulary reasoning.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: mask grounding, source labels, and pixel-level benchmark scoring. Do not reuse the release when its licensing or source provenance cannot be preserved.

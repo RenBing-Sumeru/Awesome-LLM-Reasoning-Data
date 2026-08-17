@@ -1,0 +1,125 @@
+id: quilt-llava-2024
+title: 'Quilt-LLaVA: Visual Instruction Tuning by Extracting Localized Narratives from Open-Source Histopathology Videos'
+year: 2024
+venue: CVPR 2024
+authors:
+- Mehmet Saygin Seyfioglu
+- Wisdom O. Ikezogwo
+- Fatemeh Ghezloo
+- Ranjay Krishna
+- Linda Shapiro
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openaccess.thecvf.com/content/CVPR2024/html/Seyfioglu_Quilt-LLaVA_Visual_Instruction_Tuning_by_Extracting_Localized_Narratives_from_Open-Source_CVPR_2024_paper.html
+  arxiv: https://arxiv.org/abs/2312.04746
+  code: https://github.com/aldraus/quilt-llava
+  data: https://huggingface.co/datasets/wisdomik/QUILT-LLaVA-Instruct-107K
+  project: https://quilt-llava.github.io/
+  huggingface: https://huggingface.co/datasets/wisdomik/QUILT-LLaVA-Instruct-107K
+  doi: https://doi.org/10.1109/CVPR52733.2024.01252
+  venue: https://openaccess.thecvf.com/content/CVPR2024/html/Seyfioglu_Quilt-LLaVA_Visual_Instruction_Tuning_by_Extracting_Localized_Narratives_from_Open-Source_CVPR_2024_paper.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: https://openaccess.thecvf.com/content/CVPR2024/html/Seyfioglu_Quilt-LLaVA_Visual_Instruction_Tuning_by_Extracting_Localized_Narratives_from_Open-Source_CVPR_2024_paper.html
+  bibtex: null
+data_object:
+  prompt_source: open histopathology educational videos aligned at frame and transcript-segment level
+  trace_author: localized expert narration, transformed into questions and answers with language-model assistance
+  answer_format: pathology image crop, localized narrative or question, and diagnostic/explanatory response
+  process_fields:
+  - pathology image crop
+  - localized narrative or question
+  - and diagnostic/explanatory response
+  environment_or_substrate: Parquet records with image pointers, questions, and answers
+  verifier_or_reward: temporal/text localization, pathology terminology checks, and downstream VQA evaluation
+  terminal_predicate: Retain a record only when temporal/text localization, pathology terminology checks, and downstream VQA
+    evaluation accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: localized expert narration, transformed into questions and answers with language-model assistance
+  generator: The pipeline aligns video narration to selected pathology frames, converts localized narratives into 107K instruction-response
+    records, and tunes LLaVA on the resulting evidence-rich domain conversations.
+  filtering_rule: temporal/text localization, pathology terminology checks, and downstream VQA evaluation
+  sampling_protocol: open histopathology educational videos aligned at frame and transcript-segment level
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: domain visual instruction SFT
+audit:
+  source_mixture: open histopathology educational videos aligned at frame and transcript-segment level
+  split: 'Official release scale: 107,000 histopathology visual-instruction records; storage: Parquet records with image pointers,
+    questions, and answers.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: dataset-card research terms; open-video and image-source terms remain applicable
+  lineage: open histopathology educational videos aligned at frame and transcript-segment level -> localized expert narration,
+    transformed into questions and answers with language-model assistance -> temporal/text localization, pathology terminology
+    checks, and downstream VQA evaluation -> domain visual instruction SFT.
+  known_failure_modes:
+  - Video narration can be loosely aligned to the displayed field
+  - diagnoses reflect educational-video selection bias
+  - the data is not a substitute for clinical validation.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 46 citations; this is not a Google Scholar count.'
+inclusion_reason: 'QUILT-LLaVA-Instruct-107K is a public Track 01 training object: pathology image crop, localized narrative
+  or question, and diagnostic/explanatory response; it is consumed by domain visual instruction SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- localized-expert-video-visual-demonstrations
+status: verified
+one_line_summary: Quilt-LLaVA converts localized narration from open pathology videos into 107K image-question-explanation
+  records.
+why_it_matters: mining expert temporal narration as localized visual demonstrations
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training a pathology assistant to explain visible morphology
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: localized expert-video visual demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include University of Washington.
+    venue: 'The official venue URL confirms formal publication at CVPR 2024: https://openaccess.thecvf.com/content/CVPR2024/html/Seyfioglu_Quilt-LLaVA_Visual_Instruction_Tuning_by_Extracting_Localized_Narratives_from_Open-Source_CVPR_2024_paper.html'
+    impact: OpenAlex reported 46 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual Parquet records with image pointers, questions, and answers records at
+      https://huggingface.co/datasets/wisdomik/QUILT-LLaVA-Instruct-107K with terms recorded as: dataset-card research terms;
+      open-video and image-source terms remain applicable.'
+  selection_eligible: true
+  year_impact_threshold: 3

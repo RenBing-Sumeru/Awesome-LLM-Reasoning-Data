@@ -1,0 +1,1 @@
+The main contribution is PUM-MATH, containing 282,346 mathematical prefix-preference pairs. Its central data object is mathematical reasoning prefixes. The construction mechanism is estimating the solve-rate gain of lightweight student models with and without each prefix, which converts coarse or unstable feedback into structured records for training or evaluation.

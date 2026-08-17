@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以 System 1 到 System 2 为主线，梳理推理大模型的构建方法、基准、指标与开放问题。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理大模型综述与资源索引",
+  "best_for_ch": "需要选择推理数据配方、验证机制或评测基准的研究者。",
+  "confidence_ch": "高：已核对 arXiv v6、论文源文件和作者维护的资源仓库；它不是可直接训练的数据集。",
+  "authors_ch": "Zhong-Zhi Li, Duzhen Zhang, Ming-Liang Zhang, Jiaxin Zhang, Zengyan Liu, Yuxuan Yao, Haotian Xu, Junhao Zheng, Pei-Jie Wang, Xiuyi Chen, Yingying Zhang, Fei Yin, Jiahua Dong, Zhiwei Li, Bao-Long Bi, Ling-Rui Mei, Junfeng Fang, Xiao Liang, Zhijiang Guo, Le Song, Cheng-Lin Liu",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

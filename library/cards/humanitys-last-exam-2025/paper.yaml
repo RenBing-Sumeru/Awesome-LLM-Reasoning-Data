@@ -1,0 +1,123 @@
+id: humanitys-last-exam-2025
+title: A benchmark of expert-level academic questions to assess AI capabilities
+year: 2026
+venue: Nature 649, 1139-1146 (2026) / arXiv:2501.14249
+authors:
+- Center for AI Safety
+- Scale AI
+- HLE Contributors Consortium
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- frontier-academic-reasoning
+- multimodal
+- science
+- mathematics
+- humanities
+- contamination-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.14249
+  arxiv: https://arxiv.org/abs/2501.14249
+  code: https://github.com/centerforaisafety/hle
+  data: https://huggingface.co/datasets/cais/hle
+  project: https://lastexam.ai/
+  huggingface: https://huggingface.co/datasets/cais/hle
+  doi: https://doi.org/10.1038/s41586-025-09962-4
+  venue: https://www.nature.com/articles/s41586-025-09962-4
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert-written closed-ended academic questions across mathematics, humanities, natural sciences, and multimodal
+    domains.
+  trace_author: Global subject-matter experts contribute questions; organizers filter, review, and maintain released benchmark
+    artifacts.
+  answer_format: Multiple-choice or short-answer benchmark record with question text, answer key, subject/modality metadata,
+    and grading rule.
+  process_fields:
+  - question
+  - subject
+  - modality
+  - answer type
+  - answer key
+  - rubric or exact-answer rule
+  - dataset version
+  - public or private release status
+  environment_or_substrate: lastexam.ai project, Center for AI Safety GitHub repository, and Hugging Face dataset release.
+  verifier_or_reward: 'Mixed automatic grading: multiple-choice exact match and short-answer reference matching/normalization;
+    exact grading code and private/public policy need version-specific audit.'
+  terminal_predicate: A model answer is correct when the HLE grader accepts it against the reference answer under that dataset
+    version.
+recipe_metadata:
+  base_model: Not a training recipe; the paper evaluates frontier LLMs.
+  teacher: Subject-matter expert question writers and reviewers.
+  generator: Global expert contribution, filtering, review, and post-release maintenance.
+  filtering_rule: Retain closed-ended questions with unambiguous, verifiable answers that are not easily solved by quick internet
+    retrieval.
+  sampling_protocol: Record dataset version, public/private status, answer type, grader revision, and whether the sample is
+    multimodal.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget, prompting, tool access, and calibration scoring must be reported per model run.
+  optimizer_or_scaffold: Expert benchmark construction plus released evaluation code/dataset artifacts.
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://lastexam.ai/; https://www.nature.com/articles/s41586-025-09962-4;
+    https://arxiv.org/abs/2501.14249'
+  split: Public/final/rolling or private-set policy must be pinned for the exact dataset version used; the public release
+    can contaminate later models.
+  decontamination: Expert-written closed-ended questions reduce but do not remove contamination risk after public release;
+    web-search resistance and answer-key exposure need ongoing audit.
+  license: GitHub API reports MIT license for centerforaisafety/hle; dataset license/terms should be checked directly on Hugging
+    Face before redistribution.
+  lineage: 'Primary source: https://arxiv.org/abs/2501.14249'
+  known_failure_modes:
+  - Short-answer normalization may accept or reject borderline equivalent answers.
+  - Public release of questions and answer keys can become future training data.
+  - Very broad contributor metadata complicates citation and provenance review.
+  - Multimodal items need separate asset, license, and rendering checks.
+  citation_status: verified
+  confidence: high
+  notes: Official Nature byline is Center for AI Safety, Scale AI & HLE Contributors Consortium; the full contributor set
+    is hundreds-long and spans many institutions. Remaining artifact/license/split/scoring questions stay in needs.
+inclusion_reason: Humanity's Last Exam is a frontier expert benchmark with broad academic coverage, mixed closed-ended scoring,
+  public artifacts, and major contamination/versioning audit needs.
+related: []
+tags:
+- benchmark
+- expert-written
+- frontier-evaluation
+- multimodal
+- contamination-audit
+why_it_matters: It exposes the audit tension between public expert benchmarks, short-answer grading, version drift, and future
+  training contamination.
+status: verified
+needs:
+- 'needs_metadata: verify complete author/contributor metadata and final citation venue'
+- 'needs_audit: verify dataset license, exact version, public/private split, grading code, and multimodal asset terms'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Humanity's Last Exam releases an expert-written frontier academic benchmark with closed-ended multimodal
+  and text questions graded by reference answers.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official Nature byline is Center for AI Safety, Scale AI & HLE Contributors Consortium; the full contributor set
+    is hundreds-long and spans many institutions.
+category_ids:
+- benchmarks_evaluation_surfaces

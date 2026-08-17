@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ViLBench 同时提供面向过程奖励的多模态评测集与公开的 ViLReward-73K：后者把图像条件下 MCTS 的部分推理过程及其连续价值写成 73,560 行数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态过程奖励建模、MCTS 轨迹构造与测试时选择研究",
+  "best_for_ch": "需要审计多模态推理轨迹、终局裁判如何传导为步骤价值，以及 PRM 用于 Best-of-N 选择边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Haoqin Tu、Weitao Feng、Hardy Chen、Hui Liu、Xianfeng Tang、Cihang Xie",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

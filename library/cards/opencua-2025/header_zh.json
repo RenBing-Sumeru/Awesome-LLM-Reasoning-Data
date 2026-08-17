@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenCUA 将 22,625 个人类桌面任务处理为对齐的截图—动作轨迹并加入 Claude 合成的反思式监督，已发布数据、模型、工具和离线评测器，但完整训练与环境复现仍不完备。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨平台计算机使用轨迹数据与开放构造配方",
+  "best_for_ch": "研究 computer-use agent、跨平台人类演示、多模态轨迹构造、反思式监督与数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xinyuan Wang 等 42 位作者",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

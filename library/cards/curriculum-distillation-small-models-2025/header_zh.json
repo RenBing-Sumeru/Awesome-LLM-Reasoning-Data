@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该工作以 Math-Verify 筛得 6,445 道题的匹配教师池，并按难度在两阶段 SFT 中切换轨迹类型，但未发布语料与构建产物。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "难度感知的课程蒸馏数据构建方案",
+  "best_for_ch": "研究小模型推理蒸馏、教师轨迹筛选与课程数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Wangyi Jiang、Yaojie Lu、Hongyu Lin、Xianpei Han、Le Sun",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

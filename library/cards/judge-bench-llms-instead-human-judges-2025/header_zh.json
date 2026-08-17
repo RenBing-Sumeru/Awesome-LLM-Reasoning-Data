@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "JUDGE-BENCH 汇聚 20 个带人类评分的数据集，覆盖事实性、推理、对话和生成质量，用于定位 LLM judge 与专家判断偏离的条件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集与评测论文",
+  "best_for_ch": "需要细粒度事实性、安全性或评审反馈资源的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Anna Bavaresco、Raffaella Bernardi、Leonardo Bertolazzi、Desmond Elliott、Raquel Fern?ndez、Albert Gatt、Esam Ghaleb、Mario Giulianelli、Michael Hanna、Alexander Koller、Andre Martins、Philipp Mondorf、Vera Neplenbroek、Sandro Pezzelle、Barbara Plank、David Schlangen、Alessandro Suglia、Aditya K Surikuchi、Ece Takmaz、Alberto Testoni",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:21:04Z"
+}

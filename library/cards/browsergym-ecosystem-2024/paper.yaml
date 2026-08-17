@@ -1,0 +1,130 @@
+id: browsergym-ecosystem-2024
+title: The BrowserGym Ecosystem for Web Agent Research
+year: 2025
+venue: Transactions on Machine Learning Research / arXiv
+authors:
+- Thibault Le Sellier De Chezelles
+- Maxime Gasse
+- Alexandre Drouin
+- Massimo Caccia
+- Léo Boisvert
+- Megh Thakkar
+- Tom Marty
+- Rim Assouel
+- Sahar Omidi Shayegan
+- Lawrence Keunho Jang
+- Xing Han Lù
+- Ori Yoran
+- Dehan Kong
+- Frank F. Xu
+- Siva Reddy
+- Quentin Cappart
+- Graham Neubig
+- Ruslan Salakhutdinov
+- Nicolas Chapados
+- Alexandre Lacoste
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- benchmark-infrastructure
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.05467
+  arxiv: https://arxiv.org/abs/2412.05467
+  doi: https://doi.org/10.48550/arXiv.2412.05467
+  code: https://github.com/ServiceNow/BrowserGym
+  data: null
+  project: https://github.com/ServiceNow/BrowserGym
+  huggingface: https://huggingface.co/spaces/ServiceNow/browsergym-leaderboard
+  venue: https://openreview.net/forum?id=5298fKGmv3
+  openreview: https://openreview.net/forum?id=5298fKGmv3
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official ecosystem integrates multiple web-agent benchmarks behind a common browser interface and adapter
+    API
+  trace_author: benchmark-specific authors plus BrowserGym adapter maintainers
+  answer_format: task instruction, browser observation, action trace, final outcome, and benchmark score
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: a gym-like browser automation ecosystem with benchmark adapters, actions, observations, AgentLab
+    experiment management, and leaderboard hooks
+  verifier_or_reward: adapter-specific environment predicates, answer checks, or benchmark evaluators
+  terminal_predicate: adapter-specific environment predicates, answer checks, or benchmark evaluators
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official benchmark maintainers and adapter authors
+  generator: BrowserGym ecosystem adapters over existing and new web benchmarks
+  filtering_rule: verify each adapter, dependency, and benchmark license before treating scores as comparable
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://github.com/ServiceNow/BrowserGym;
+    https://arxiv.org/abs/2412.05467; https://ar5iv.labs.arxiv.org/html/2412.05467'
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Official repository license should be checked per package and benchmark adapter; wrapped benchmarks can carry separate
+    terms.
+  lineage: 'Primary lead: https://arxiv.org/abs/2412.05467'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, OpenReview, and repository sources verify the BrowserGym artifact, TMLR 2025 status, and institution
+    set. Adapter license/split/scoring details remain review targets.
+inclusion_reason: it standardizes browser-agent research around a reusable environment API
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- benchmark-infrastructure
+one_line: BrowserGym provides a shared browser environment layer for reproducible web-agent research.
+why_it_matters: it standardizes browser-agent research around a reusable environment API
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: BrowserGym provides a shared browser environment layer for reproducible web-agent research.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, OpenReview, and repository sources verify the BrowserGym artifact, TMLR 2025 status, and institution
+    set. Adapter license/split/scoring details remain review targets.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 24
+  primary_category_id: benchmarks_evaluation_surfaces

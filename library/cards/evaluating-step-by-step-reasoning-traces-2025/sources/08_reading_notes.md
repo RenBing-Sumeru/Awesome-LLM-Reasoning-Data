@@ -1,0 +1,1 @@
+A reasoning trace is not simply good or bad. Factuality, validity, coherence, and usefulness ask different questions; a correct final answer does not guarantee that its intermediate reasoning succeeds on all four.

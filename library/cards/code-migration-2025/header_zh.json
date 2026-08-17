@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Code Migration 评测模型能否把真实程序迁移到另一种语言，并在离线沙箱中通过隐藏行为测试。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "关注代码迁移、跨语言重实现、隐藏测试和工程等价性评估的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Vals AI",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:28:57Z"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Lost in Translation: Do LVLM Judges Generalize Across Languages?",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1746/",
+    "data": "https://huggingface.co/datasets/tahmedge/MM-JudgeBench",
+    "code": null,
+    "project": "https://huggingface.co/datasets/tahmedge/MM-JudgeBench"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:21:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "六万跨语言图文偏好，直接检验多语多模态Judge迁移",
+    "updated_at": "2026-07-16T13:21:42Z"
+  }
+}

@@ -1,0 +1,137 @@
+id: toolscale-2025
+title: 'ToolOrchestra: Elevating Intelligence via Efficient Model and Tool Orchestration'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Hongjin Su
+- Shizhe Diao
+- Ximing Lu
+- Mingjie Liu
+- Jiacheng Xu
+- Xin Dong
+- Yonggan Fu
+- Peter Belcak
+- Hanrong Ye
+- Hongxu Yin
+- Yi Dong
+- Evelina Bakhturina
+- Tao Yu
+- Yejin Choi
+- Jan Kautz
+- Pavlo Molchanov
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English model routing, web search, code execution, and multi-tool orchestration
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.21689
+  arxiv: https://arxiv.org/abs/2511.21689
+  code: null
+  data: https://huggingface.co/datasets/nvidia/ToolScale
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/ToolScale
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: synthetic hard tasks designed around heterogeneous models and tools
+  trace_author: a task-generation pipeline writes scenarios, initial states, and executable evaluation criteria
+  answer_format: id, task description, user scenario, initial state, and evaluation criteria
+  process_fields:
+  - id
+  - task description
+  - user scenario
+  - initial state
+  - and evaluation criteria
+  environment_or_substrate: English model routing, web search, code execution, and multi-tool orchestration
+  verifier_or_reward: environment evaluation criteria plus outcome, efficiency, and user-preference rewards
+  terminal_predicate: Retain records only after environment evaluation criteria plus outcome, efficiency, and user-preference
+    rewards.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: a task-generation pipeline writes scenarios, initial states, and executable evaluation criteria
+  generator: ToolScale serializes difficult tool-routing scenarios with initial state and evaluation actions, supplying the
+    task substrate for ToolOrchestra training.
+  filtering_rule: environment evaluation criteria plus outcome, efficiency, and user-preference rewards
+  sampling_protocol: synthetic hard tasks designed around heterogeneous models and tools
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: reinforcement learning and task-conditioned orchestration training
+audit:
+  source_mixture: synthetic hard tasks designed around heterogeneous models and tools
+  split: 'Official release scale: 4,063 synthetic tool-orchestration tasks; format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: NVIDIA dataset license
+  lineage: synthetic hard tasks designed around heterogeneous models and tools -> a task-generation pipeline writes scenarios,
+    initial states, and executable evaluation criteria -> environment evaluation criteria plus outcome, efficiency, and user-preference
+    rewards -> ToolScale -> reinforcement learning and task-conditioned orchestration training
+  known_failure_modes:
+  - evaluation criteria can reward benchmark-specific tool routing rather than general planning
+  - tool prices, APIs, and model capabilities drift after data release
+  citation_status: verified
+  confidence: high
+  notes: The full 21-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: ToolScale is a public Track 01 object containing id, task description, user scenario, initial state, and
+  evaluation criteria and is explicitly consumed by reinforcement learning and task-conditioned orchestration training.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2511.21689
+- primary-link-checked
+status: verified
+one_line_summary: ToolScale serializes difficult tool-routing scenarios with initial state and evaluation actions, supplying
+  the task substrate for ToolOrchestra training.
+why_it_matters: Small orchestrators need explicit tasks and evaluation criteria to learn when to invoke expensive models or
+  tools rather than always selecting the strongest option.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: reinforcement learning and task-conditioned orchestration training
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English model routing, web search, code execution, and multi-tool orchestration
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 1768 downloads and 202 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: NVIDIA dataset
+      license.'
+  selection_eligible: true
+  year_impact_threshold: 2

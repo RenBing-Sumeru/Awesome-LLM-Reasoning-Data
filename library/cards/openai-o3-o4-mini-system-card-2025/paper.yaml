@@ -1,0 +1,112 @@
+id: openai-o3-o4-mini-system-card-2025
+title: OpenAI o3 and o4-mini System Card
+year: 2025
+venue: OpenAI System Card
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- tool_use
+- safety
+training_use:
+- agent_training
+- safety_alignment
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/o3-o4-mini-system-card/
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Only high-level source classes are disclosed: publicly available internet information, information accessed
+    through third parties, and information users, human trainers, and researchers provide or generate. Members, proportions,
+    counts, and terms are unknown.'
+  trace_author: unknown
+  answer_format: The models can produce a long internal chain of thought before responding to users; training-example schema,
+    released traces, and visibility policy are unknown.
+  process_fields: []
+  environment_or_substrate: Deployment supports web browsing, Python, image/file analysis, image generation, canvas, automations,
+    file search, and memory. The training environment, task distribution, and tool trajectories are unknown.
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: The System Card states high-level quality/risk filtering, advanced filtering to reduce personal information,
+    and use of the Moderation API and safety classifiers for harmful or sensitive content. Thresholds, implementation, yields,
+    and stage allocation are unknown.
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Large-scale reinforcement learning on chains of thought and deliberative alignment are disclosed.
+    The RL algorithm, objective, reward/verifier, optimizer, post-training mixture, and rollout scaffold are unknown.
+audit:
+  source_mixture: Three broad data-source classes are stated, but source identities, proportions, counts, acquisition terms,
+    user-data treatment details, and example-level provenance are unknown.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: unknown
+  known_failure_modes:
+  - Training data, prompts, chain-of-thought records, reward/verifier contract, and training code are not released
+  - Browsing can contaminate capability evaluations; the card reports no-browsing models where relevant
+  - Evaluation results are lower bounds and may change with prompting, fine-tuning, longer rollouts, or scaffolding
+  - Some strategic-deception evaluation results remain private
+  citation_status: verified
+  confidence: high
+  notes: The System Card reports autograded safety evaluations, but does not state that these autograders are training rewards.
+    This is Track 12 disclosure evidence, not an RLVR or reusable-data claim.
+inclusion_reason: Official closed-frontier System Card disclosing high-level source classes, filtering claims, chain-of-thought
+  reinforcement learning, deliberative alignment, and material reproducibility boundaries.
+related:
+- introducing-openai-o3-and-o4-mini-2025
+tags:
+- openai
+- o3
+- o4-mini
+- official-system-card
+- closed-model
+- frontier-report
+- data-disclosure-ledger
+- deliberative-alignment
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's o3/o4-mini System Card discloses high-level data-source and filtering claims plus CoT reinforcement
+  learning and safety alignment, while withholding reusable data, feedback contracts, and recipe details.
+why_it_matters: 'It is a Track 12 disclosure-boundary case: official claims permit an audit of what a frontier report exposes,
+  but not reconstruction of the post-training data or reward pipeline.'
+card: null
+needs:
+- 'needs_data: source identities, manifests, prompts, records, counts, and rights'
+- 'needs_metadata: source proportions, post-training stages, teachers, generators, sampling, rollouts, and optimizer'
+- 'needs_verifier: reward objective, verifier/autograder relation, calibration, and terminal predicate'
+- 'needs_audit: splits, decontamination, data governance, lineage, license, and immutable revisions'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official OpenAI System Card PDF, publication page, and release page verified. No official arXiv, DOI, code, data,
+    or weight artifact is supplied by this Card.

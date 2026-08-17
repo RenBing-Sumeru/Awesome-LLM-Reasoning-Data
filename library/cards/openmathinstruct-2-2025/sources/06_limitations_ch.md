@@ -1,0 +1,11 @@
+- **Threshold-zero majority 是较弱的正确性契约。** 增强题的 proxy answer 来自 32 个 solution 中最常见的非 null 表面形式，但被选阈值为 0，不要求固定最低共识。等价答案可能以不同形式分票，tie 和 no-valid-answer 情况在公开记录中不可见，重复的 teacher error 也可能成为 target。
+- **最终答案一致不能验证推理。** 论文发现中间步骤错误而最终答案正确的案例；对 20 个 flagged example 的人工检查中约 60% 被判断为确实错误。无论 source-answer matching 还是 majority voting，都不提供 step-level supervision 或 faithfulness evidence。
+- **投票与拒绝记录缺失。** 公开行省略 `majority_votes`、`total_votes`、全部 32 个 candidate、extraction failure、parser diagnostic、judge/reward-model label、filter reason，以及被拒 solution/question。该发布无法支持逐条 false-accept/false-reject 审计。
+- **去污染 benchmark 列表有边界。** Top-5 embedding retrieval 加双向 405B paraphrase judgment 可能 false-accept 或 false-reject。原流程只覆盖 GSM8K、MATH、AMC 2023 和 AIME 2024。Omni-MATH 后来才发布，未被过滤；作者报告约 1.4% test question 与 training data 重叠。
+- **准确问题统计不可得。** Release manifest 核实 13,972,791 行，而附录表 5 报告四舍五入后的 607.3K 个 unique question。准确整数 unique-question 和逐组件接收/拒绝数量均为 unknown。
+- **Subset 相互重叠。** `train_1M`、`train_2M` 和 `train_5M` 是完整 train split 的 fair downsampling，不是独立 split。把它们与 `train` 相加，或将其作为 clean evaluation data，都不正确。
+- **Recipe/release drift 已被直接观察。** 发布数据保留 564 个超过 1024 Llama token 的问题并建议过滤；当前 Skills conversion command 会删除过长问题和解答。运行当前文档不一定重现发布字节。
+- **历史重放不完整。** Dataset HEAD 固定到 2024 commit，而已检查 Skills main 是 2026 commit。没有确认 OpenMathInstruct-2 专用 historical tag、准确 teacher revision、source revision、prompt/config hash、random-seed ledger、container image、retry record 或阶段 yield manifest。
+- **权利是 release-level 而不是 row-level。** Dataset 声明 CC BY 4.0，Skills code 使用 Apache-2.0。记录没有附带上游 source license/attribution、source revision、transformation provenance 或 teacher-model terms，因此这些标签本身不能为每条记录和每种 use case 补全权利链。
+- **消融不能自动迁移。** 20% noise tolerance 只在特定规模和 final-answer perturbation 下测量，不能证明任意 rationale noise 都无害。作者还报告，在 8B 上调优的 design choice 对 70B student 的迁移较弱。
+- **Benchmark score 不是数据认证。** 报告的模型提升同时受 release、optimizer、checkpoint averaging、decoding、majority@256 和 GPT-4o answer judging 影响，不能证明逐条正确性、process validity、无污染、权利完整或独立可复现。

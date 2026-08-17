@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DeepSeek-V3.2 报告 scalable GRPO、专家蒸馏以及覆盖 1,800+ 环境、85K+ 指令的合成 agentic 训练；数据、环境、奖励契约和审计资产未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理与智能体模型报告和数据披露账本",
+  "best_for_ch": "审计合成 agentic 训练、GRPO、思考工具调用与开放权重背后的未公开数据和反馈边界",
+  "confidence_ch": "高",
+  "authors_ch": "DeepSeek-AI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

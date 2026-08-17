@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "统一二元、序数与名义 rubric 的校准、集成评审和可靠性度量，并发布 CHARM-100 等数据制品。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测框架与数据论文",
+  "best_for_ch": "需要构建可校准 rubric Judge 或复用 CHARM-100 类评测数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Delip Rao、Chris Callison-Burch",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:39:08Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Toolathlon 将 108 个模糊的跨应用长程任务、初始化软件状态、工具调用 episode 与确定性终态 evaluator 绑定；其 gated Toolathlon-Verified 轨迹仅允许评测与审计，不得用于训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长程工具智能体基准、环境与评测轨迹发布",
+  "best_for_ch": "研究环境智能体轨迹、MCP 工具调用、终态 verifier、基准漂移与污染审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Junlong Li, Wenshuo Zhao, Jian Zhao, Weihao Zeng, Haoze Wu, Xiaochen Wang, Rui Ge, Yuxuan Cao, Yuzhen Huang, Wei Liu, Junteng Liu, Zhaochen Su, Yiyang Guo, Fan Zhou, Lueyang Zhang, Juan Michelini, Xingyao Wang, Xiang Yue, Shuyan Zhou, Graham Neubig, Junxian He",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

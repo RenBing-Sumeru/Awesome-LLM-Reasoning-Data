@@ -1,0 +1,283 @@
+id: mimo-embodied-2025
+title: 'MiMo-Embodied: X-Embodied Foundation Model Technical Report'
+year: 2025
+venue: arXiv preprint
+authors:
+- Xiaoshuai Hao
+- Lei Zhou
+- Zhijian Huang
+- Zhiwen Hou
+- Yingbo Tang
+- Lingfeng Zhang
+- Guang Li
+- Zheng Lu
+- Shuhuai Ren
+- Xianhui Meng
+- Yuchen Zhang
+- Jing Wu
+- Jinghui Lu
+- Chenxu Dang
+- Jiayi Guan
+- Jianhua Wu
+- Zhiyi Hou
+- Hanbing Li
+- Shumeng Xia
+- Mingliang Zhou
+- Yinan Zheng
+- Zihao Yue
+- Shuhao Gu
+- Hao Tian
+- Yuannan Shen
+- Jianwei Cui
+- Wen Zhang
+- Shaoqing Xu
+- Bing Wang
+- Haiyang Sun
+- Zeyu Zhu
+- Yuncheng Jiang
+- Zibin Guo
+- Chuhong Gong
+- Chaofan Zhang
+- Wenbo Ding
+- Kun Ma
+- Guang Chen
+- Rui Cai
+- Diyun Xiang
+- Heng Qu
+- Fuli Luo
+- Hangjun Ye
+- Long Chen
+source_role:
+- model_report
+- verifier_reward
+- process_supervision
+- construction_recipe
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- state_action_level
+- scalar_reward
+domains:
+- multimodal_reasoning
+- embodied_ai
+- autonomous_driving
+- affordance_prediction
+- task_planning
+- spatial_understanding
+- visual_grounding
+- trajectory_planning
+- status_prediction
+- environmental_perception
+- robotic_navigation
+- robotic_manipulation
+training_use:
+- sft
+- distillation
+- process_supervision
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.16518
+  arxiv: https://arxiv.org/abs/2511.16518
+  code: https://github.com/XiaomiMiMo/MiMo-Embodied
+  data: null
+  project: https://github.com/XiaomiMiMo/MiMo-Embodied
+  huggingface: https://huggingface.co/XiaomiMiMo/MiMo-Embodied-7B
+  doi: https://doi.org/10.48550/arXiv.2511.16518
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Stage 1 combines inherited MiMo-VL general data with embodied affordance, planning, and spatial sources.
+    Stage 2 carries prior data forward and adds autonomous-driving perception, prediction, and planning sources. Stage 3 adds
+    generated CoT over an undisclosed subset. Stage 4 uses an undisclosed curated rule-verifiable RL set. Selected counts,
+    source ratios, versions, and rows are unknown.
+  trace_author: Public dataset authors and human annotators supply media, grounding labels, actions, justifications, and trajectories.
+    DeepSeek-R1 generates long physical reasoning in Cosmos-Reason1. Automatically generated QA contributes to several sources.
+    The Stage-3 CoT teacher is unknown. Expert human drivers supply proprietary demonstrations under undisclosed protocols.
+  answer_format: Objects include captions, free-text or multiple-choice answers, points, masks, 2D/3D boxes, spatial relations,
+    route and action plans, traffic intent, meta-actions, justifications, CoT rationales, and continuous future ego trajectories
+    in downstream planner experiments.
+  process_fields:
+  - source_dataset
+  - source_media_id
+  - image_or_video
+  - camera_view
+  - camera_parameters
+  - rgb_d
+  - ego_state
+  - navigation_command
+  - task_goal
+  - history_observations
+  - object_attributes
+  - object_state
+  - affordance
+  - point_coordinate
+  - bounding_box_2d
+  - bounding_box_3d
+  - segmentation_mask
+  - placement_region
+  - spatial_relation
+  - action_candidate
+  - next_action
+  - action_sequence
+  - traffic_intent
+  - interaction_prediction
+  - ego_meta_action
+  - driving_justification
+  - chain_of_thought
+  - future_trajectory
+  - exact_match_reward
+  - iou_reward
+  - point_in_mask_reward
+  - format_reward
+  - navsim_subscores
+  environment_or_substrate: Main SFT/GRPO operates on offline images, video, RGB-D, calibrated-camera, QA, grounding, and
+    trajectory records, not an interactive robot or closed-loop driving environment. A separate downstream NAVSIM experiment
+    trains a diffusion planner with imitation learning and DiffGRPO; proprietary trajectories are evaluated open loop.
+  verifier_or_reward: Main GRPO uses exact answer match for multiple-choice reasoning, box IoU, point-in-mask, and strict
+    format checks. Thresholds, weights, invalid-output policy, and code are unknown. NAVSIM reports collision, drivable-area,
+    time-to-collision, comfort, progress, and PDMS metrics, but DiffGRPO reward code is unreleased. LingoQA evaluation depends
+    on an unspecified local classifier judge.
+  terminal_predicate: Main RL success depends on answer equality, geometric overlap or containment, and format compliance
+    under undisclosed thresholds. NAVSIM uses weighted offline metrics, not a disclosed hard terminal predicate. No physical
+    task-completion or closed-loop deployment-safety contract is released.
+recipe_metadata:
+  base_model: Vision encoder, projector, and LLM initialize from MiMo-VL 7B-SFT-2508. The checkpoint is branded 7B while Hugging
+    Face displays 8B parameters. Intermediate Stage-1/2/3/4 and downstream planner checkpoints are not identified.
+  teacher: DeepSeek-R1 supplies some long embodied reasoning. The Stage-3 CoT teacher is unknown. Expert drivers provide proprietary
+    demonstrations. LingoQA evaluation uses an unspecified local text-classification judge, not a disclosed training teacher.
+  generator: Public/proprietary media are transformed into QA, grounding, action, reasoning, and trajectory records. Some
+    sources use automatic QA; self-curated data create camera-coordinate 3D grounding; Stage 3 generates CoT; the downstream
+    planner generates diffusion trajectories. Production code is unreleased.
+  filtering_rule: The report names curated/high-quality subsets, filters short Cosmos-Reason1 videos, selects an EgoPlan-IT
+    subset, and directs Stage-4 RL toward corner cases and prior failures. Thresholds, deduplication, privacy/safety filters,
+    failure-mining rules, and retained/rejected counts are unknown.
+  sampling_protocol: Stage 1 mixes general and embodied data; Stage 2 carries them forward and adds driving; Stage 3 carries
+    them forward and adds CoT; Stage 4 samples RL data. Ablations approximately equalize loss tokens. Exact mixtures, replay
+    proportions, balancing, curricula, shuffle seeds, and total tokens are unknown.
+  rollout_count: Main GRPO and DiffGRPO rollout group sizes, prompts, attempted/retained outputs, steps, and total counts
+    are unknown.
+  temperature: Data generation, Stage-3 CoT, main GRPO, and DiffGRPO decoding are unknown. Public LingoQA evaluation uses
+    temperature 0 only in that adapter.
+  inference_budget: All stages use 32,768 maximum sequence length. Current evaluation defaults include 4,096 image tokens,
+    4,096 per-video, 16,384 total video tokens, 2 FPS, at most 256 frames, and up to 32,768 generated tokens. Exact paper-run
+    budgets and control frequency are unknown.
+  optimizer_or_scaffold: Stages 1-3 train all components with batch 512, AdamW, learning rate 2e-6, weight decay 0.05, cosine
+    schedule, and 32,768 context. Stage 4 uses batch 32, AdamW, learning rate 1e-6, weight decay 0, cosine, and the same context.
+    Steps, warmup, precision, KL, hardware, compute, and seeds are unknown.
+audit:
+  source_mixture: Many source families and stage order are named, but no selected samples, hours, frames, images, QA pairs,
+    tokens, CoT traces, trajectories, RL rollouts, or per-source/domain ratios are disclosed. The proprietary driving set
+    is merely called large scale.
+  split: No immutable stage or benchmark row manifest exists. Training and evaluation families overlap or share derivatives,
+    including RoboRefIt, RoboAfford, EgoPlan, Cosmos-Reason1, EmbSpatial, RefSpatial, CODA-LM, DriveLM, MME-RealWorld, IDKB,
+    and nuScenes/egocentric sources. Row, video, scene, route, subject, geography, and near-duplicate separation are unknown.
+  decontamination: No exact, perceptual, temporal, scene, route, translated, synthetic, or inherited MiMo-VL decontamination
+    audit is disclosed. Shared media, derivative QA, benchmark variants, proprietary scenes, and development-time evaluation
+    may overlap.
+  license: Weights are labeled MIT; inherited evaluation code is MIT and Xiaomi additions Apache-2.0. These labels do not
+    resolve rights to public/proprietary datasets, web or egocentric media, synthetic CoT, human annotation, camera records,
+    trajectories, faces, plates, locations, or bystanders. No attribution, consent, privacy, retention, access, or takedown
+    ledger is released.
+  lineage: A four-stage graph plus separate planner training is recoverable, but source revision/media/row -> transformation/filter
+    -> teacher output -> split -> reward/rollout -> batch -> checkpoint -> evaluation output joins are absent.
+  known_failure_modes:
+  - Training scale and mixture ratios are absent.
+  - Training and evaluation families overlap or share media, so contamination and cross-domain leakage remain unresolved.
+  - Inherited MiMo-VL exposures are unaudited.
+  - Stage-3 CoT teacher, prompts, counts, correctness checks, and rejects are unknown.
+  - Main rule rewards verify labels and formatting, not physical task success or safety.
+  - NAVSIM IL+DiffGRPO reward, simulator revision, rollouts, code, and planner checkpoint are unreleased.
+  - NAVSIM and proprietary trajectory results are offline/open-loop and do not establish closed-loop robustness or sim-to-real
+    transfer.
+  - Real-world robot evidence is qualitative target visualization, not controlled execution.
+  - Proprietary sensor data omit scale, geography, dates, drivers, consent, faces/plates/location handling, retention, access,
+    labor, and terms.
+  - Open-loop L2 and limited front-frame inputs may hide multimodal futures and compounding control error.
+  - LingoQA requires an unspecified Lingo-Judge-safetensors placeholder checkpoint and a 0.5 threshold.
+  - The model is branded 7B while Hugging Face displays 8B.
+  - Only final weights and evaluation code are public; training, failures, CoT/RL records, safety environments, and planner
+    artifacts are closed.
+  citation_status: verified
+  confidence: high
+  notes: Verified from arXiv v2 and appendix, official Xiaomi repository/evaluation suite and licenses, official checkpoint,
+    Table 1 source, and LingoQA configuration. Main rlvr denotes deterministic exact/geometric/format feedback, not closed-loop
+    safety verification.
+inclusion_reason: A cross-embodiment report spanning affordance, spatial, action, driving, and trajectory objects in a four-stage
+  SFT-to-CoT-to-rule-GRPO curriculum, with a separate NAVSIM planner path and major disclosure gaps around scale, splits,
+  privacy, safety, and artifacts.
+related:
+- mimo-vl-2025
+- mimo-reasoning-pretraining-posttraining-2025
+- gemini-robotics-physical-world-2025
+tags:
+- mimo-embodied
+- xiaomi-mimo
+- embodied-ai
+- autonomous-driving
+- affordance
+- spatial-reasoning
+- trajectory-planning
+- chain-of-thought-sft
+- grpo
+- rule-based-reward
+- exact-match
+- iou-reward
+- point-in-mask
+- navsim
+- diffgrpo
+- open-loop-evaluation
+- sensor-privacy
+- train-eval-overlap-risk
+- sim-to-real-gap
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: MiMo-Embodied stages embodied, driving, generated-CoT, and deterministic-GRPO supervision, then separately
+  studies NAVSIM IL+DiffGRPO, but discloses no training scale, mixtures, immutable splits, sensor ledger, rollouts, or planner
+  artifacts.
+why_it_matters: It maps heterogeneous embodied data objects into one curriculum while showing why offline geometric rewards,
+  open-loop planning, and open weights do not substitute for provenance, privacy, closed-loop safety, and environment verification.
+card: null
+needs:
+- 'needs_data: versioned row/media manifests, counts, mixtures, CoT traces, RL prompts/rollouts/rewards, sensor metadata,
+  trajectories, and predictions'
+- 'needs_split: immutable joins across shared sources, derivatives, videos, scenes, routes, subjects, geographies, proprietary
+  data, and all benchmarks'
+- 'needs_code: acquisition/transformation/filtering, all four stages, CoT generation, main GRPO, NAVSIM DiffGRPO, rewards,
+  launch configs, and checkpoint selection'
+- 'needs_reward: IoU thresholds, point/mask rules, reward weights, invalid outputs, GRPO groups, NAVSIM safety rewards, simulator
+  revision, and hacking tests'
+- 'needs_privacy: faces, plates, bystanders, drivers, vulnerable road users, precise time/location, retention, access, consent,
+  labor, redaction, geography, and deletion'
+- 'needs_safety: closed-loop environments, interventions, collisions, task success, ODD, calibration, sensor/actuator faults,
+  long-tail scenarios, and fail-safe behavior'
+- 'needs_release: stage checkpoints, planner weights, Lingo-Judge hash, paper-run results, and external asset/environment
+  revisions'
+- 'needs_metadata_consistency: reconcile 7B branding with 8B metadata and publish immutable base/checkpoint hashes'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper, appendix, official evaluation code/licenses, model files, and LingoQA placeholder are confirmed. Training
+    data/code, CoT/RL records, rewards, planner artifacts, proprietary data, and closed-loop environments remain unverified.

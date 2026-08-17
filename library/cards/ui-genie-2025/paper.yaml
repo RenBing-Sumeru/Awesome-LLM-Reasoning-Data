@@ -1,0 +1,152 @@
+id: ui-genie-2025
+title: 'UI-Genie: A Self-Improving Approach for Iteratively Boosting MLLM-based Mobile GUI Agents'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Han Xiao
+- Guozhi Wang
+- Yuxiang Chai
+- Zimu Lu
+- Weifeng Lin
+- Hao He
+- Lue Fan
+- Liuyang Bian
+- Rui Hu
+- Liang Liu
+- Shuai Ren
+- Yafei Wen
+- Xiaoxin Chen
+- Aojun Zhou
+- Hongsheng Li
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- mobile_gui
+- multimodal_agents
+training_use:
+- sft
+- reward_modeling
+- agent_training
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- reward_verifier_layer
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2505.21496
+  arxiv: https://arxiv.org/abs/2505.21496
+  code: https://github.com/Euphoria16/UI-Genie
+  data: https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k
+  project: https://github.com/Euphoria16/UI-Genie
+  huggingface: https://huggingface.co/datasets/HanXiao1999/UI-Genie-RM-517k
+  doi: https://doi.org/10.48550/arXiv.2505.21496
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/dd1577afd396928ed64216f3f1fd5556-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://papers.nips.cc/paper_files/paper/2025/hash/dd1577afd396928ed64216f3f1fd5556-Bibtex-Conference.html
+data_object:
+  prompt_source: AndroidControl, AMEX, and AndroidLab tasks; later rounds add DeepSeek-V3-generated tasks and manually crafted
+    long-horizon scenarios
+  trace_author: Source datasets supply recorded actions; UI-Genie agents generate exploration trajectories; controlled corruption
+    and hard-negative mining create negative reward examples
+  answer_format: Reward records contain image-text message histories, image paths, and a binary positive label; agent records
+    contain task/progress context, a screenshot, and one executable mobile action
+  process_fields:
+  - messages
+  - images
+  - positive
+  - task_instruction
+  - task_progress
+  - action
+  - action_desc
+  - screenshot_path
+  environment_or_substrate: Android mobile GUIs explored through an executable action interface; AndroidLab and Android Arena
+    provide dynamic evaluation environments
+  verifier_or_reward: Rule checks for action type, coordinates, and typed-text semantics; controlled corruptions; mined hard
+    negatives; and UI-Genie-RM binary step/task judgments
+  terminal_predicate: A terminate action is judged success or failure by task-level UI-Genie-RM/environment checks; exact
+    per-task executable predicates are not released
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B for UI-Genie-RM and the iterative agent; final agents are trained at 3B, 7B, and 72B scales
+  teacher: Rule-verified source actions, environment outcomes, DeepSeek-V3 task/action-description generation, and the prior-round
+    UI-Genie-RM
+  generator: Current-round UI-Genie agent with reward-guided beam search
+  filtering_rule: Keep rule-verified positives, synthesize controlled negatives, retain RM-misclassified hard negatives, accept
+    RM-verified successful trajectories for SFT, and relabel explored steps with five continuation trials
+  sampling_protocol: Build 458K initial reward examples, add 59K exploration examples, alternate reward-model training and
+    reward-guided exploration for three rounds, then mix accepted UI-Genie data with AndroidControl, AMEX, and AndroidLab
+    for agent SFT
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: RM and agent use AdamW/full fine-tuning at learning rate 1e-5 and global batch 160 in the paper;
+    72B uses RSLoRA with rank 64 and alpha 256
+audit:
+  source_mixture: Paper Table 1 attributes nominal RM data to AndroidControl (263K), AMEX (170K), AndroidLab (24K), and exploration
+    (59K); agent training mixes those three sources with UI-Genie-Agent-16k
+  split: The RM Hub viewer exposes one train split; generation-wise, application-wise, task-wise, account-wise, and deduplication
+    splits are not disclosed, and the Agent viewer does not build successfully
+  decontamination: unknown
+  license: Both Hugging Face dataset cards label their contents MIT; the repository README claims MIT but the root license
+    file is absent, while bundled ms-swift code carries Apache-2.0; upstream dataset, app, screenshot, and account-state rights
+    remain separate
+  lineage: The RM release exposes messages, image paths, and a positive boolean, while the agent release preserves screenshot-directory
+    identifiers; source dataset, corruption operator, generation, verifier version/score, environment image, and acceptance
+    reason are not consistently present per record
+  known_failure_modes:
+  - Controlled corruptions can create shortcut artifacts rather than realistic mistakes
+  - Hard-negative mining inherits blind spots from the initial reward model
+  - Reward-model false positives can enter SFT and then influence later reward data
+  - Task completion judgments can miss side effects or drift with app and Android versions
+  - Screenshots and typed content can contain personal, account, or application-sensitive information
+  - The paper's 517K/16K names do not match every released count or unit without qualification
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings, arXiv paper and appendix, supplemental demonstrations, author repository, and both
+    official Hugging Face datasets were checked on 2026-07-21.
+inclusion_reason: Releases binary GUI reward examples and accepted agent action data together with a controlled-corruption,
+  hard-negative, and iterative reward-guided construction recipe.
+related: []
+tags:
+- ui-genie
+- gui-agents
+- mobile-agents
+- trajectory-corruption
+- hard-negative-mining
+- reward-model-data
+- iterative-self-improvement
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- preference_reward_feedback_data
+one_line_summary: Builds mobile-GUI reward data from rule checks, controlled corruptions, and mined hard negatives, then uses
+  a learned verifier to collect step-level agent SFT data over three rounds.
+why_it_matters: Makes an iterative verifier-guided mobile-agent data engine inspectable while exposing count drift, verifier
+  feedback loops, privacy, licensing, and replay risks.
+card: null
+needs:
+- 'needs_snapshot: immutable repository, dataset, model, and Android environment revisions'
+- 'needs_audit: reconcile the paper-scale 517K RM data with 472,769 released viewer rows'
+- 'needs_audit: document why the Agent-16k repository also contains AMEX_Agent_34K.jsonl'
+- 'unknown: per-record source, generation, corruption, verifier score/version, and acceptance provenance'
+- 'unknown: privacy/redaction review and upstream screenshot/application redistribution rights'
+- 'unknown: full self-improvement, reward-model training, AndroidLab, and Android Arena execution code'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Claims were checked against the full paper and appendix, official NeurIPS artifacts, repository contents, and pinned
+    Hub metadata.

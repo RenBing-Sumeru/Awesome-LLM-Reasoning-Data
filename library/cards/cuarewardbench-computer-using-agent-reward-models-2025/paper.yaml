@@ -1,0 +1,113 @@
+id: cuarewardbench-computer-using-agent-reward-models-2025
+title: 'CUARewardBench: A Benchmark for Evaluating Reward Models on Computer-using Agent'
+year: 2025
+venue: arXiv preprint
+authors:
+- Haojia Lin
+- Xiaoyu Tan
+- Yulei Qin
+- Zihan Xu
+- Yuchen Shi
+- Zongyi Li
+- Gang Li
+- Shaofei Cai
+- Siqi Cai
+- Chaoyou Fu
+- Ke Li
+- Xing Sun
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- computer-using-agents
+- reward-model-evaluation
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2510.18596
+  arxiv: https://arxiv.org/abs/2510.18596
+  code: https://github.com/Tencent/CUARewardBench
+  project: null
+  data: https://github.com/Tencent/CUARewardBench/tree/main/data/annotations
+  huggingface: null
+  venue: null
+  doi: null
+  openreview: https://openreview.net/forum?id=Xj7V0wKlE5
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Computer-use trajectories collected for reward-model evaluation across ten software categories.
+  trace_author: Agent trajectories and their annotations are distributed by the authors' official repository.
+  answer_format: Trajectory records with step- and trajectory-level reward annotations.
+  process_fields:
+  - trajectory
+  - step annotation
+  - trajectory annotation
+  - software category
+  environment_or_substrate: Computer-using agents operating across seven agent architectures and ten software categories.
+  verifier_or_reward: Human-aligned step and trajectory reward annotations used to score reward models.
+  terminal_predicate: Reward-model agreement with the released annotations.
+recipe_metadata:
+  base_model: The benchmark evaluates reward models rather than prescribing a single training base model.
+  teacher: Official trajectory annotations serve as the evaluation supervision.
+  generator: Computer-using agent trajectories from seven agent architectures.
+  filtering_rule: Use the repository release and its documented annotation files; detailed collection filters are described
+    in the paper.
+  sampling_protocol: Follow the official repository's data download and evaluation instructions.
+  inference_budget: Not disclosed in the public repository README.
+  optimizer_or_scaffold: Reward-model benchmarking at step and trajectory levels.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Computer-use trajectories, step-level annotations, trajectory-level annotations, and software-category metadata.
+  split: Refer to the official release files for the benchmark split and release version.
+  decontamination: Do not train a reward model on the released annotation set before reporting CUARewardBench results.
+  license: Apache-2.0 for the official repository; verify any component-level data terms before redistribution.
+  lineage: arXiv paper, official Tencent repository, and the repository's annotations directory.
+  known_failure_modes:
+  - Coverage is limited to ten selected software categories
+  - Reward-model results can depend on the represented agent architectures
+  - Offline annotations may not capture every consequence of live computer interaction
+  citation_status: verified
+  confidence: high
+  notes: Verified the formal arXiv title, author list, first-page affiliations, official Tencent repository, Apache-2.0 license,
+    and annotations directory.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- agent-trajectories
+- reasoning
+one_line_summary: CUARewardBench evaluates whether reward models can judge computer-use trajectories at both the step and
+  whole-trajectory levels across diverse software tasks.
+why_it_matters: It supplies a public evaluation surface for reward models in computer-use settings, where process mistakes
+  can compound through an action trajectory.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the formal arXiv title, author list, first-page affiliations, official Tencent repository, Apache-2.0 license,
+    and annotations directory.
+category_ids:
+- process_trace_supervision_data

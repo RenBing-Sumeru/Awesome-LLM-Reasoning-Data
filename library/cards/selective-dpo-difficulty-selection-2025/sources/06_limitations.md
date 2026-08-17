@@ -1,0 +1,1 @@
+The method needs several preliminary reference-model trainings, so it trades final-DPO data efficiency for significant curation cost. Validation loss can confound difficulty with distribution shift or imperfect reference training, and the best threshold changes with model capacity. It also does not replace upstream checks for label correctness, licenses, or benchmark leakage.

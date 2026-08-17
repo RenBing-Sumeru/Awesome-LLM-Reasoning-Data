@@ -1,0 +1,1 @@
+《Skywork-Reward-V2: Scaling Preference Data Curation via Human-AI Synergy》把偏好与奖励反馈视为数据构建问题。其数据对象是“SynPref-40M 与筛选后的 2,600 万偏好对”。要解决的边界是：开放奖励模型常受限于窄任务、纯合成标签和缺少质量控制的偏好数据。 因而来源、标注者或教师身份以及数据切分不是实现细节，而是结论的一部分。

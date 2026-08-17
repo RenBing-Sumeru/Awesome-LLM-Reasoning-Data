@@ -1,0 +1,1 @@
+《PKU-SafeRLHF: Towards Multi-Level Safety Alignment for LLMs with Human Preference》把偏好与奖励反馈视为数据构建问题。其数据对象是“4.46 万精炼提示、26.5 万问答与 16.68 万安全/帮助偏好数据”。要解决的边界是：安全对齐把“有用”和“无害”合成一维偏好时，会掩盖两者的冲突与风险严重度。 因而来源、标注者或教师身份以及数据切分不是实现细节，而是结论的一部分。

@@ -1,0 +1,3 @@
+The released R-PRM data contain SFT examples with step-evaluation reasoning and DPO examples pairing preferred and rejected judging traces. A strong LLM expands limited labeled seeds, after which consistency and format filters retain valid rationales and multiple analyses are paired by correctness and quality.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around step labels, teacher-evaluation rationales, and verifier reasoning preference pairs, making the verifier, judge, environment, or execution source traceable for ProcessBench、PRMBench and answer selection. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

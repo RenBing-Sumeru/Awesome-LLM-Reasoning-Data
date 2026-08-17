@@ -1,0 +1,1 @@
+The closest multimodal preference datasets focus on a single image–text response. InterMT changes the feedback object to competing interleaved conversation trajectories, and separates local from global helpfulness in nine dimensions. Agent-based construction is not itself the novelty; the changed supervision granularity is.

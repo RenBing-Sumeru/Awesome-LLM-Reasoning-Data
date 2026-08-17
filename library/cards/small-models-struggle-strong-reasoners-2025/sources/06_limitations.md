@@ -1,0 +1,7 @@
+- **Answer-only process validation:** Rejection sampling verifies final answers, not the correctness, necessity, or faithfulness of intermediate reasoning steps.
+- **Judge dependence:** Qwen2.5-32B-Instruct resolves non-exact evaluation matches, introducing model-judge error and family bias.
+- **Narrow domain:** The experiments focus on mathematical reasoning; transfer to code, science, agents, or open-ended judgment tasks is unknown.
+- **Ratio portability:** The 1:4 mixture and the observed capacity boundary are empirical choices centered on the tested models. They should not be treated as universal thresholds.
+- **Residual confounding:** Teacher size changes more than capability, including style, token distribution, training data, and alignment behavior. Pairwise correctness does not remove all such differences.
+- **Incomplete artifact mapping:** The official project links an MIT code repository and UWNSL Hugging Face releases, but the exact paper-matched trace dataset, retained row manifest, checkpoint revisions, and generation configuration still require artifact-level confirmation.
+- **Incomplete audit metadata:** Teacher revisions, full decoding metadata beyond default greedy generation, upstream output licenses, and decontamination are unreported.

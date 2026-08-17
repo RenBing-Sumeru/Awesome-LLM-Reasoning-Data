@@ -1,0 +1,3 @@
+The contribution is a benchmark-release protocol that couples watermark-preserving rephrasing with a calibrated contamination test. A keyed red/green-list watermark biases question wording without intentionally changing answers; the later test replays the key and asks whether the suspect model preferentially predicts green-list tokens. The resulting binomial-test p-value has a defined false-positive rate for the narrower claim that the model memorized the watermark.
+
+The paper releases code in Meta's `meta-seal` repository, but it does not present a separately packaged benchmark dataset, a license, or a universal detector for closed models. Its essential data object is the provider-held watermarked benchmark plus its secret key.

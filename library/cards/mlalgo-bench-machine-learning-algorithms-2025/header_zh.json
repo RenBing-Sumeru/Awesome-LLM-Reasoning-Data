@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MLAlgo-Bench 以算法实现和真实应用两类任务检验机器学习代码，使用沙箱执行、性能参照和时间开销自动验证。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "机器学习算法实现与运行验证基准",
+  "best_for_ch": "需要评估机器学习算法代码生成、性能约束或可执行实验复现的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yunfei Wang, Yeqin Zhang, Yuyang Wu, Liang Lu, Phi Le Nguyen, Xiaoliang Wang, Cam-Tu Nguyen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:48:13Z"
+}

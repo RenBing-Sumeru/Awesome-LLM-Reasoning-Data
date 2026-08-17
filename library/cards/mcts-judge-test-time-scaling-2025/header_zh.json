@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MCTS-Judge 将代码正确性判断分解为树搜索，结合历史动作自评、UCT 和单元测试级奖励机制形成测试时 LLM-as-a-Judge 轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yutong Wang；Pengliang Ji；Chaoqun Yang；Kaixin Li；Ming Hu；Jiaoyang Li；Guillaume Sartoretti",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

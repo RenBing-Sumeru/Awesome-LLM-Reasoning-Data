@@ -1,0 +1,317 @@
+id: iosworld-2026
+title: 'iOSWorld: A Benchmark for Personally Intelligent Phone Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Lawrence Keunho Jang
+- Mareks Woodside
+- Geronimo Carom
+- Andrew Keunwoo Jang
+- Jing Yu Koh
+- Ruslan Salakhutdinov
+source_role:
+- benchmark
+- agent_environment
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- mobile_ui
+- ios
+- gui_control
+- multimodal_agents
+- personalization
+- tool_use
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.09764
+  paper_pdf: https://arxiv.org/pdf/2606.09764
+  arxiv: https://arxiv.org/abs/2606.09764
+  code: https://github.com/ljang0/iOSWorld
+  code_snapshot: https://github.com/ljang0/iOSWorld/tree/e91f4cb2ef4c9dd48fef83a894477b41fd5e209d
+  data: https://github.com/ljang0/iOSWorld/blob/e91f4cb2ef4c9dd48fef83a894477b41fd5e209d/tasks.json
+  project: https://iosworld.io/
+  tasks: https://iosworld.io/tasks/
+  trajectories_gallery: https://iosworld.io/trajectories/
+  leaderboard: https://iosworld.io/leaderboard/
+  mcp_docs: https://github.com/ljang0/iOSWorld/blob/e91f4cb2ef4c9dd48fef83a894477b41fd5e209d/mcps/README.md
+  aws_runner_docs: https://github.com/ljang0/iOSWorld/blob/e91f4cb2ef4c9dd48fef83a894477b41fd5e209d/docs/aws_ec2_mac.md
+  license: https://github.com/ljang0/iOSWorld/blob/e91f4cb2ef4c9dd48fef83a894477b41fd5e209d/LICENSE
+  huggingface: null
+  model: null
+  reward_model: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2606.09764
+data_object:
+  object_type: An executable native-iOS benchmark specification paired with runner-generated computer-use episodes. The released
+    canonical object is a task/rubric plus 26-app seeded simulator environment; an executed episode adds screenshots or screenshot-plus-XCUITest
+    observations, model actions, optional reasoning/messages, final answer/state, criterion judgments, rubric fraction, and
+    strict pass/fail.
+  prompt_source: '`tasks.json` contains 133 first-person tasks grounded in the authors'' app source and synthetic seed data:
+    27 single-app, 60 multi-app, and 46 memory/personalization tasks. Claude Code generated candidates with full source/seed
+    access, a Python pipeline normalized them and generated rubrics, and humans executed every task end-to-end. Exact generator
+    prompt/model snapshot and record-level candidate/reviewer lineage are unknown.'
+  task_record:
+  - name
+  - goal
+  - apps
+  - category
+  - difficulty
+  - memory_type_when_applicable
+  - rubric_criteria
+  trace_author: The evaluated model produces actions and final text while interacting with Appium/XCUITest. The runner records
+    the resulting episode. The official repository can generate such runs, but it does not publish the full experimental trajectory
+    corpus; the project site displays 16 curated Opus 4.6 vision+XML examples.
+  episode_fields:
+  - task_name_and_goal
+  - step_index
+  - pre_action_screenshot
+  - accessibility_xml_when_enabled
+  - annotated_screenshot_when_available
+  - planned_and_executed_actions
+  - action_arguments_and_execution_errors
+  - optional_model_reasoning_or_summary
+  - optional_llm_request_response_metadata
+  - post_action_screenshot
+  - final_state_screenshot
+  - agent_final_answer
+  - events_and_status
+  - token_usage_when_available
+  - rubric_results
+  - rubric_fraction
+  - strict_pass_or_fail
+  answer_format: A multi-step GUI episode terminating when the agent emits `stop` or reaches 50 steps. A task may also require
+    a final natural-language report; success requires every rubric criterion to be accepted by the trajectory judge.
+  observation: Vision-only supplies a 706x1536 screenshot resized from 1206x2622. Vision+XML additionally supplies a cleaned
+    XCUITest accessibility tree with element type, label/name, value, normalized center, and accessibility identifier, capped
+    at 200 elements and 15 levels. Screenshot remains the stated visual ground truth.
+  action_space:
+  - tap_xy
+  - type
+  - swipe
+  - home
+  - wait
+  - stop
+  - tap_by_accessibility_identifier_in_vision_xml
+  - launch_app_in_vision_xml
+  - terminate_app_in_vision_xml
+  - open_url_in_vision_xml
+  environment_or_substrate: macOS plus Xcode-managed iPhone Simulator controlled by Appium's XCUITest driver, with 26 purpose-built/adapted
+    SwiftUI apps and one connected fictional persona. Official defaults are iPhone 17 Pro and iOS 26.2; README requires Xcode
+    26+ and an iOS 26 runtime.
+  state_reset: Before each normal task, the runner shuts down and boots the simulator, wipes data containers for all apps
+    in the machine-local manifest plus the shared workspace app-group container, launches every app to recreate deterministic
+    seed state, terminates them, and returns to the home screen. Wrappers normally skip a full erase because it would remove
+    installed apps.
+  verifier_or_reward: GPT-5.4 Mini reviews the goal, full screenshot/action trajectory, final answer, and 4-13 task-specific
+    rubric criteria. It returns binary overall success plus per-criterion satisfied flags and reasoning. The rubric fraction
+    is the number satisfied divided by the number of criteria; strict pass requires every criterion. This is judgment-based
+    evaluation, not a programmatic end-state verifier or a demonstrated training reward.
+  reward: Episode-level rubric fraction and strict pass/fail. A per-step max-over-screenshots evaluator was studied but rejected
+    as the primary contract because it was more lenient and agreed less with humans.
+  terminal_predicate: 'Generation stops on agent `stop` or the 50-step cap, but benchmark success is separate and post hoc:
+    all rubric criteria must be judged satisfied from the trajectory/final answer. Runner-level `failed` or `safety_blocked`
+    status represents execution/API failure and is not equivalent to normal rubric failure.'
+  provenance: Synthetic connected app state and app source -> Claude Code task candidates -> Python normalization and rubric
+    generation -> human end-to-end feasibility/correction -> final `tasks.json` -> per-task simulator wipe/reseed -> model
+    GUI or MCP episode -> GPT-5.4 Mini trajectory/rubric judgment -> aggregate benchmark metrics. Candidate, reviewer, published-run,
+    and raw trajectory provenance are not record-level released.
+  release_shape: Apache-2.0 repository with app source/seed fixtures, 133-task JSON, rubrics, runners, evaluator, MCP servers,
+    and AWS EC2 Mac setup. Generated runs contain rich local artifacts, but `results/` and `artifacts/` are ignored and the
+    full experiment trajectory set is not committed; the official site exposes 16 curated trajectory views.
+recipe_metadata:
+  base_model: Evaluation covers Claude Opus 4.6, Claude Sonnet 4.6, GPT-5.4, GPT-5.4 Mini, Gemini 3 Flash, and Qwen3.5 35B-A3B
+    under vision-only and vision+XML. Exact immutable API/model revisions are unknown.
+  teacher: null
+  generator: Claude Code generated task candidates from complete app source and seed data; a Python pipeline normalized app
+    names, rewrote first-person instructions, and generated criteria; human annotators corrected and executed tasks. Evaluated
+    agents generate episodes online in the simulator.
+  prompt_task_source: Author-built synthetic personal records and workflows distributed across 26 apps. The initial pool had
+    175 grounded candidates; source proportions by app/workflow and record-level generator provenance are unknown.
+  sampling_protocol: Twelve model-by-modality configurations cover the 133-task suite. The paper reports a single aggregate
+    cell for each configuration and no repeated stochastic trials. A separate Qwen MCP ablation holds the model, 133 tasks,
+    judge, and 50-step budget fixed.
+  rollout_count: One reported pass-rate outcome per task in each main model-by-modality cell; repeated rollouts, retries retained
+    as samples, and failed API-call accounting are not disclosed.
+  temperature: unknown
+  inference_budget: Maximum 50 interaction steps per task; screenshot longest edge capped at 1536 pixels; XML capped at 200
+    elements and 15 levels. Exact output-token caps, wall-clock timeout, provider retry policy, and seed used for the published
+    runs are unknown even though current repository defaults expose configurable values.
+  search_or_scaffold: Reset/reseed -> home-screen observation -> model plan/action through provider adapter -> Appium/XCUITest
+    transition -> repeat until stop/limit -> final screenshot and answer -> trajectory-level rubric judge. Optional MCP mode
+    substitutes typed app-specific tools while keeping screenshots available.
+  filtering_rule: Humans manually executed all candidate tasks, corrected 44 of 175 for issues such as nonexistent routes,
+    mismatched items, or unreachable rubric states, trimmed single-app tasks for broad app coverage with minimal duplication,
+    and retained all multi-app and memory tasks, yielding 133. Exact rejected-task IDs and rejection/revision logs are unknown.
+  selection_threshold: End-to-end simulator feasibility plus human correction and coverage judgment; no numeric threshold
+    or independent adjudication protocol is disclosed.
+  optimizer_or_training_scaffold: null
+audit:
+  source_mixture: One synthetic persona and interconnected author-built seed data across 26 apps in ten life domains; two
+    apps are described as adapted from open-source foundations. Tasks are Claude-Code-generated and human-corrected. Per-record
+    source, generator, reviewer, correction, and rejection tags are absent.
+  split: No train/dev/test split is released or described. `tasks.json` has category and difficulty fields but no split field;
+    27 single-app, 60 multi-app, and 46 memory are evaluation categories, not training partitions.
+  decontamination: unknown
+  benchmark_overlap: The paper contrasts iOSWorld with AndroidWorld, AndroidLab, SPA-Bench, B-MoCA, GUI Odyssey, and other
+    agent benchmarks, but discloses no task/template/model-pretraining overlap audit. Tasks and rubrics are public, creating
+    future memorization, evaluator-gaming, and leaderboard contamination risk.
+  lineage: Aggregate task/environment/episode lineage is documented, but immutable record-level task revision history, complete
+    seed-asset attribution, published-run configuration, raw trajectory IDs, judge calls, and selection decisions are not
+    released.
+  license: Root repository and project declare Apache-2.0. Several nested app directories preserve MIT licenses and must retain
+    their notices. Cinephile documents MovieSwiftUI/MIT ancestry. Notes says it was rewritten and points to a root `ATTRIBUTIONS.md`
+    that is absent from the pinned tree, so complete source/asset attribution should be reviewed before redistribution. Scope
+    over generated model trajectories is not separately stated.
+  release_version: Paper is arXiv:2606.09764v1 (2026-06-08). Repository was inspected at the sole initial commit `e91f4cb2ef4c9dd48fef83a894477b41fd5e209d`
+    (commit date 2026-06-08; committer date 2026-06-09), with no tag or GitHub release. Machine-generated app manifests and
+    benchmark results are gitignored and have no official checksum bundle.
+  successful_and_failed_sample_retention: The paper analyzes 422 failed frontier vision+XML runs and 119 Qwen vision+XML failures,
+    so failures were retained for author analysis. The local runner writes both normal and execution-failed artifacts. However,
+    the official repository does not publish the complete raw experimental runs; the site shows only 16 curated Opus 4.6 vision+XML
+    trajectories. Exact public success/failure counts, selection policy, timeouts, safety blocks, judge errors, and discarded
+    retries are unknown.
+  privacy_or_consent: Authors state all data is synthetic, Jordan Avery is fictional, and no real user data, accounts, services,
+    or external databases are used. Human-user consent is therefore not applicable to the benchmark persona. Complete provenance
+    and rights for every bundled visual/media asset are not itemized.
+  replay: Source supports per-task app-data wipe/reseed, environment-version logging, rich trajectory capture, and re-judging
+    of saved runs. Exact replay remains partial because there is no immutable simulator image, built-app digest, machine manifest,
+    Xcode/iOS/Appium/WebDriverAgent lock, API-model snapshot, seed/retry manifest, full raw run bundle, or end-to-end deterministic
+    replay test. Current code pins status-bar appearance but not a complete OS state.
+  safety_boundary: The environment is a controlled simulator with fictional data, yet tasks include payments, purchases, messages,
+    reservations, and other side effects. Authors warn about surveillance, unauthorized transactions, social engineering,
+    exfiltration, wrong-recipient messages, unintended purchases, and cross-app leakage. MCP prepare/confirm pairs exist but
+    are off by default; legacy direct risky verbs remain available. Results must not be treated as real-device deployment
+    readiness.
+  experimental_evidence:
+    benchmark_scale: 133 tasks, 1,123 rubric criteria, 26 apps, one fictional persona.
+    task_categories: 27 single-app, 60 multi-app, 46 memory/personalization.
+    best_result: 'Opus 4.6 vision+XML: 51.9% overall, 81.5% single-app, 36.7% multi-app, 54.3% memory.'
+    judge_validation: '128 Opus trajectories: task agreement 89%, Cohen kappa 0.77, F1 0.86; rubric accuracy 86%, kappa 0.69,
+      F1 0.90.'
+    mcp_ablation: 'Qwen3.5 35B: pass rate 12.8% -> 24.8%; mean rubric score 0.33 -> 0.683.'
+    released_trajectory_views: 16 curated Opus 4.6 vision+XML examples; no full raw experimental trajectory corpus.
+  verifier_or_judge_failure_modes:
+  - Trajectory success depends on a closed GPT-5.4 Mini judge and unpinned API snapshot; prompt/model drift can change labels.
+  - Human validation still finds 79 criterion false positives and 69 false negatives; semantic/report criteria have roughly
+    13-16% error.
+  - The judge over-accepts some single-app tasks and over-rejects some multi-app tasks, so category comparisons inherit direction-dependent
+    bias.
+  - Rubrics may omit valid alternate paths or fail to require harmful intermediate side effects; full-rubric satisfaction
+    is only as complete as the criteria.
+  - The judge observes screenshots/actions/final answer rather than a programmatic database predicate, allowing visually plausible
+    but state-incorrect outcomes or missed off-screen state.
+  - Public tasks, rubrics, evaluator prompts, and seed data permit future prompt memorization and evaluator gaming.
+  - Vision+XML is privileged XCUITest access unavailable to a normal deployed consumer agent and should not be compared directly
+    with deployable vision-only capability.
+  - Reset/reseed is source-level and manifest-dependent rather than an immutable simulator snapshot; OS, Xcode, Appium, accessibility-tree,
+    and API drift can alter replay.
+  - Only selected trajectory views are public, preventing independent audit of all successes, failures, timeouts, retries,
+    and judge errors.
+  - MCP direct persistence-layer tools and default availability of legacy risky verbs can bypass human-visible UI and confirmation
+    assumptions.
+  citation_status: verified
+  confidence: medium
+  notes: Full arXiv v1 text and appendices, rendered key PDF pages, official project/tasks/leaderboard pages, repository task
+    manifest, runner/reset/trajectory/evaluator code, MCP documentation, repository tree, and licenses were inspected. No
+    benchmark was executed on a Mac/iOS simulator and no complete author run corpus was available. Artifact verification means
+    the executable source release exists, not that published results are bitwise replayable.
+  remaining_unknowns:
+  - exact_ICML_2026_AIWILD_forum_URL_and_final_publication_status
+  - task_generator_prompt_model_snapshot_temperature_and_candidate_revision_rejection_ledger
+  - exact_published_run_model_API_revisions_temperature_seeds_retries_timeouts_cost_and_hardware_manifest
+  - immutable_app_binaries_checksums_simulator_snapshot_and_Xcode_iOS_Appium_WebDriverAgent_locks
+  - full_success_failure_timeout_safety_block_judge_error_and_retry_trajectory_release
+  - train_dev_test_or_explicit_evaluation_only_split_manifest
+  - decontamination_prompt_leakage_and_future_submission_policy
+  - complete_third_party_source_asset_attribution_and_missing_ATTRIBUTIONS_md
+  - explicit_license_scope_for_seed_fixtures_rubrics_gallery_assets_and_generated_trajectories
+  - default_real_device_confirmation_consent_and_irreversible_action_policy
+inclusion_reason: iOSWorld makes persistent cross-app personal state, GUI observations/actions, task-level reset, trajectory
+  capture, and a rubric-based episode judge jointly inspectable in a native iOS environment. It is a core Track 6 entry because
+  it also exposes how privileged accessibility input, judge error, simulator/version drift, selective trajectory release,
+  and risky-action confirmation determine whether mobile-agent episodes are trustworthy reasoning-data objects.
+related:
+- android-control-2024
+- androidlab-2025
+- mobileworld-2025
+- macosworld-2025
+tags:
+- environment-agent-trajectory-data
+- iosworld
+- ios
+- mobile-ui
+- computer-use-agent
+- multimodal-agent
+- persistent-persona
+- cross-app-reasoning
+- llm-as-judge
+- rubric-evaluation
+- simulator-reset
+- mcp-tools
+- replay-partial
+- trajectory-release-incomplete
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: iOSWorld releases 26 connected SwiftUI apps and 133 rubric-scored tasks with reproducible reset/trajectory
+  tooling, but its GPT-5.4 Mini feedback is judgment-based and only 16 curated runs, not the full success/failure corpus,
+  are public.
+why_it_matters: It turns a persistent fictional phone identity into an executable environment/data contract linking task,
+  seeded state, screenshot or XML observation, GUI/MCP action, final answer, rubric labels, and pass/fail, while making simulator
+  versioning, judge calibration, confirmation safety, split policy, and raw failure retention first-class audit concerns.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  project_verified: true
+  artifact_verified: true
+  task_manifest_verified: true
+  repository_files_verified: true
+  published_trajectory_corpus_verified: false
+  replay_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: arXiv:2606.09764v1
+  repository_commit: e91f4cb2ef4c9dd48fef83a894477b41fd5e209d
+  duplicate_check: Exact-title, arXiv-ID, and proposed-ID search found only the assigned existing `iosworld-2026` placeholder
+    in the target checkout; no second iOSWorld record was identified. AndroidWorld/AndroidControl, AndroidLab, MobileWorld,
+    and MacOSWorld are distinct works.
+  notes: Citation, full paper/appendix, project, task JSON, seed/app source, runner/reset/trajectory code, judge implementation,
+    MCP documentation, repository version, and licenses were checked. The full author trajectory corpus and immutable simulator/result
+    bundle are unavailable, and no run was replayed, so status remains partial and curation stays L3.
+curation_level: L3_summary_ready
+needs:
+- 'needs_trajectory_release: publish all successful, failed, timed-out, safety-blocked, judge-error, and retried runs with
+  task/model/modality IDs, screenshots/XML/actions/final answers, evaluator outputs, and checksums'
+- 'needs_split_policy: publish a train/dev/test or explicit evaluation-only manifest and a future leaderboard exposure/decontamination
+  policy'
+- 'needs_replay: pin Xcode, iOS runtime, Appium/XCUITest/WebDriverAgent, device geometry, app builds/digests, simulator snapshot,
+  reset manifest, model APIs, seeds, retries, and end-to-end replay tests'
+- 'needs_judge_audit: release exact judge prompt/model snapshot/call settings, raw human labels, disagreement cases, calibration
+  by category/criterion, and programmatic end-state checks where feasible'
+- 'needs_construction_lineage: release Claude Code prompt/snapshot/settings, 175-candidate ledger, 44 correction diffs, 42
+  removals, reviewers, and record-level provenance'
+- 'needs_license_attribution: clarify license scope for tasks/seeds/gallery/generated trajectories, preserve nested MIT notices,
+  inventory asset rights, and add the missing ATTRIBUTIONS.md referenced by Notes'
+- 'needs_safety_policy: define default confirmation/consent behavior for irreversible actions and distinguish simulator-only
+  direct persistence tools from deployable real-device actions'
+card: null

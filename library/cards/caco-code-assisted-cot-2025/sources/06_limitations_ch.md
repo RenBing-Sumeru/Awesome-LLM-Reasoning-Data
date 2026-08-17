@@ -1,0 +1,10 @@
+- 程序可执行不等于语义证明。一个程序可能在 10 秒内运行结束、使用全部输入变量，并与自己生成的语言 trace 一致，但仍然编码错误前提、错误公式、单位错误或非预期任务。
+- 一个具体 release-row 审计展示了该边界：Hugging Face preview 中有一道“平行四边形内接于圆且相邻角为 60 度”的题，其 code 与 answer 却按边长为 3 的菱形计算面积。圆内接平行四边形必须是矩形，因此 60 度条件自相矛盾；该记录仍通过了 execution、answer agreement 与论文所述 judge pipeline。
+- Problem reversal 可能丢失约束、简化原始程序，或产生模糊／矛盾 specification。作者也承认，预定义 program type 会限制非常规问题，back-translation 可能丢失细节或简化题目。
+- 最终 semantic verification 与生成过程存在相关性：Qwen3-8B 编写 reversed problem 与 language CoT，Qwen3-32B 判断 solvability、correctness 与 consistency；报告的 100K verification audit 同样使用 Qwen3-32B。论文没有提供独立 human/formal calibration、confusion matrix、adversarial set，或 false-accept/false-reject estimate。
+- Release 没有逐行 upstream ID、parent seed/program、seed-versus-generated flag、representative test、execution output、generator/judge revision、prompt revision、judge decision、rejection reason 或 retry count。因此，无法从公开文件重建某条记录为何通过，也无法估计逐阶段 selection bias。
+- Repository 不足以端到端重新生成数据。它提供 extraction/execution、answer filtering、training script 与 evaluation toolkit，但缺少完整 seed conversion、5.3M sampling、Qwen3 reversal、Qwen3-32B judging、rejection manifest 与 release packaging。检查时仓库只有 4 个 commit 且无 release tag。
+- 单 split release 没有 validation/test partition。论文报告 embedding-based diversity，而没有针对全部 evaluation set 的系统 exact、near-duplicate 或 semantic overlap 检查。因此，benchmark gain 不能作为 corpus clean 的证据。
+- 论文描述 controlled Python runtime 与 10 秒时限，却没有说明 process/container isolation、network/filesystem restriction、dependency allowlist、memory/CPU limit 或 malicious-code review。使用者不得在缺少 hardened sandbox 时执行 release 或新生成的程序。
+- Dataset card 声明 Apache-2.0，code repository 使用 MIT，但最终 row 不含 upstream source 或 license field。全部 MATH、DeepScaleR、BigMath 与 KodCode 输入的 compatibility、attribution 与 redistribution condition 仍需逐记录审计。
+- 论文 future work 中称 executable trace 可支持 RLVR，但这不是已经实现的训练契约。没有发布 RL reward definition、rollout budget、policy training code 或 RL result，因此 `rlvr` 复用尚无证据支持。

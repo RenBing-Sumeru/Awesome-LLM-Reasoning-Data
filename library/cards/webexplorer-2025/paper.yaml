@@ -1,0 +1,261 @@
+id: webexplorer-2025
+title: 'WebExplorer: Explore and Evolve for Training Long-Horizon Web Agents'
+year: 2025
+venue: arXiv preprint; submitted to ICLR 2026
+authors:
+- Junteng Liu
+- Yunji Li
+- Chi Zhang
+- Jingyang Li
+- Aili Chen
+- Ke Ji
+- Weiyu Cheng
+- Zijia Wu
+- Chengyu Du
+- Qidi Xu
+- Jiayuan Song
+- Zhengmao Zhu
+- Wenhu Chen
+- Pengyu Zhao
+- Junxian He
+source_role:
+- construction_recipe
+- model_report
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- web_navigation
+- information_seeking
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.06501
+  arxiv: https://arxiv.org/abs/2509.06501
+  code: https://github.com/hkust-nlp/WebExplorer
+  data: https://huggingface.co/datasets/hkust-nlp/WebExplorer-QA
+  project: null
+  huggingface: https://huggingface.co/hkust-nlp/WebExplorer-8B
+  doi: null
+  venue: https://openreview.net/forum?id=qlS7iZ6pXk
+  openreview: https://openreview.net/forum?id=qlS7iZ6pXk
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: https://github.com/hkust-nlp/WebExplorer/commit/3ca019e88a33898a9e526bedf5d64e791054acfe
+data_object:
+  object_type: 'The paper uses three linked objects: a final evolved query-answer pair for task sourcing, a correct ReAct
+    search trajectory for SFT, and an online RL episode scored after the final response; the public dataset exposes only 100
+    query-answer-id rows rather than trajectories.'
+  prompt_source: Wikipedia seed entities are explored with search and browse tools, with three BrowseComp-en question-answer
+    pairs included as synthesis exemplars; five rounds of long-to-short evolution remove or obscure salient clues while retaining
+    the same answer.
+  trace_author: An undisclosed powerful LLM performs model-based exploration and query evolution. An undisclosed commercial
+    model generates SFT trajectories, and WebExplorer-8B generates online GRPO rollouts during RL.
+  episode_fields:
+  - query
+  - thought
+  - action
+  - action_parameters
+  - observation
+  - final_answer
+  - format_reward
+  - correctness_reward
+  released_fields:
+  - id
+  - query
+  - answer
+  answer_format: The released QA object is an exact-answer record with id, query, and answer. A training trajectory follows
+    ReAct and serializes thoughts in think tags, search or browse calls in tool_call tags, tool observations in tool_response
+    tags, and a final answer.
+  process_fields:
+  - multi-round thought-action-observation sequence for SFT and online RL
+  - search queries and returned title-url-snippet results
+  - browse URL, extraction query, and generated observation
+  - final answer
+  - response-format score
+  - LLM-judge correctness score
+  observation: Search returns the top 10 Google results with title, URL, and snippet. Browse uses Jina to retrieve page content
+    and Gemini 2.5 Flash to answer a URL-specific extraction query.
+  verifier_or_reward: RL uses R = 0.2 * R_format + R_correct. The format component checks thought/tool-call structure, while
+    DeepSeek-V3 judges final-response correctness against the ground-truth answer; this is not a purely environmental terminal
+    verifier.
+  reward: A scalar composite of format compliance weighted by 0.2 and DeepSeek-V3 final-answer correctness. The judge prompt,
+    exact output scale, model snapshot, and calibration are not disclosed.
+  terminal_predicate: No executable web-environment terminal predicate is specified. Episode success for RL is operationalized
+    by the DeepSeek-V3 judgment of the final response against the reference answer, plus a separate response-format reward.
+  provenance: Wikipedia entity -> model-driven web exploration -> initial query-answer pair -> five query-evolution rounds
+    -> approximately 40K final QA pairs -> approximately 13K rejection-sampled correct trajectories for SFT and approximately
+    12K QA prompts for online GRPO -> WebExplorer-8B.
+  environment_or_substrate: A ReAct web-search scaffold with search and browse tools. The released inference stack depends
+    on external Google/Serper search, Jina extraction, and LLM APIs, so observations are live and version-sensitive rather
+    than a resettable packaged environment.
+  release_shape: The paper reports approximately 40K final QA pairs, about 13K SFT trajectories, and about 12K RL questions.
+    The official artifacts provide the same 100 QA records through a public GitHub JSONL sample and an auto-gated Hugging
+    Face dataset, plus WebExplorer-8B weights and inference/evaluation code; paper-scale QA, SFT/RL trajectories, synthesis
+    code, and training code are not released.
+recipe_metadata:
+  base_model: Qwen3-8B, used for both SFT and RL to produce WebExplorer-8B; exact upstream model revision is not disclosed,
+    while the released model card identifies Qwen/Qwen3-8B as the base.
+  teacher: An undisclosed commercial model supplies correct SFT trajectories. The identities and snapshots of the LLMs used
+    for exploration and evolution are also undisclosed; DeepSeek-V3 is the RL/evaluation judge, not established as the trajectory
+    teacher.
+  generator: An undisclosed LLM explores from Wikipedia seeds and synthesizes initial QA pairs, then performs five rounds
+    of clue removal, obfuscation, or terminology replacement. An undisclosed commercial model generates candidate SFT trajectories.
+  prompt_task_source: Wikipedia seed entities plus three BrowseComp-en exemplar QA pairs. The full seed list, domain mixture,
+    source-page manifest, and record-level exemplar lineage are not released.
+  sampling_protocol: The synthesis process runs five evolution iterations per retained QA construction. SFT collection uses
+    rejection sampling and keeps only correct trajectories, but candidate count, judge/checker, retries, and acceptance rate
+    are unknown. GRPO uses groups of eight online rollouts.
+  temperature: unknown
+  rollout_count: Eight rollouts per GRPO group are reported. The number of candidates sampled for rejection-sampled SFT trajectory
+    collection and for initial/evolved QA construction is unknown.
+  inference_budget: RL progressively increases maximum response length and tool-call limit from 64K/50 to 96K/75 and then
+    128K/100. Total generation tokens, API calls, wall-clock time, compute hardware, and monetary cost are not disclosed.
+  search_or_scaffold: ReAct with search and browse. Search returns top-10 Google results; browse uses Jina retrieval plus
+    Gemini 2.5 Flash extraction. The released inference code requires external API keys and is not a frozen offline environment.
+  filtering_rule: Final evolved QA pairs preserve the original answer through five prompted evolution rounds. SFT keeps only
+    trajectories deemed correct through rejection sampling; the correctness checker and all other keep/drop rules are not
+    disclosed.
+  selection_threshold: unknown
+  optimizer_or_training_scaffold: SFT uses approximately 13K samples, batch size 32, learning rate 1e-5, and four epochs.
+    RL uses GRPO on approximately 12K samples, batch size 64, eight rollouts per group, learning rate 1e-6, the composite
+    format/correctness reward, and progressive 64K-to-128K context expansion.
+audit:
+  source_mixture: Approximately 40K QA pairs are synthesized from Wikipedia seeds with three BrowseComp-en exemplars. About
+    13K records become SFT trajectories and about 12K QA pairs enter RL; exact overlap, source-domain proportions, selection
+    yields, and the remaining records' disposition are unknown.
+  split: unknown
+  decontamination: unknown
+  benchmark_overlap: BrowseComp-en directly contributes three synthesis exemplars and inspires query evolution, while BrowseComp-en
+    and BrowseComp-zh are evaluation benchmarks. No record-level overlap, near-duplicate, answer-overlap, or source-page contamination
+    audit is reported.
+  lineage: Aggregate construction lineage is described from Wikipedia entity through exploration, initial QA synthesis, five
+    evolution rounds, SFT rejection sampling, and online GRPO. The public rows retain only id/query/answer and omit seed entity,
+    source URLs, exploration/evolution traces, teacher identity, acceptance decision, split, and training assignment.
+  license: The Hugging Face dataset and model cards declare Apache-2.0. OpenReview exposes the submission under CC BY 4.0.
+    At official GitHub head 3ca019e88a33898a9e526bedf5d64e791054acfe, the repository has an Apache-2.0 badge but no LICENSE
+    file and GitHub reports no detected license; upstream web-content and source-page rights are not documented.
+  release_version: Audited official GitHub master HEAD 3ca019e88a33898a9e526bedf5d64e791054acfe, HF dataset revision fcc84b0eec0d83a40e8676cd932f7afd17b33bec,
+    and HF model revision c7296358b988ffa5d47679f0d6fc165bfd19243a. The GitHub repository has no tags or releases.
+  version_drift: arXiv v3 and the official GitHub/HF citation list 15 authors including Zijia Wu, while the current OpenReview
+    forum metadata lists 14 and omits Zijia Wu. The OpenReview revision also uses "deep research agents" in the PDF title
+    while the forum/arXiv/repository retain "web agents."
+  verifier_or_judge_failure_modes:
+  - DeepSeek-V3 judges free-form final answers against references, so answer normalization, verbosity, evidence quality, ambiguity,
+    and judge prompt/model-version bias can create false positives or false negatives; no calibration or adversarial audit
+    is reported.
+  - A 0.2 format reward can favor protocol-conforming traces even when their reasoning or web evidence is weak, and the paper
+    does not report reward-component ablations or reward-hacking tests.
+  - Live Google/Serper results, Jina extraction, webpage changes, and Gemini-based browse observations make episodes time-
+    and API-dependent; no immutable observation cache, reset contract, or deterministic replay fixture is released.
+  - SFT retains only trajectories judged correct, while rejected, failed, timeout, and tool-error episodes are omitted; this
+    hides the acceptance boundary and limits failure analysis.
+  - The public 100-row release is 0.25% of the reported approximately 40K QA pairs and contains no trajectories, reward fields,
+    source URLs, or splits, preventing paper-scale data and training reproduction.
+  - The synthesis model identities, snapshots, decoding settings, source-page manifest, uniqueness checks, and factuality
+    verification procedure are undisclosed, so teacher artifacts and unsupported reference answers cannot be audited.
+  - Direct use of BrowseComp-en exemplars together with evaluation on BrowseComp variants creates a material overlap risk
+    that is not addressed by a published decontamination or deduplication procedure.
+  successful_and_failed_sample_retention: The SFT pipeline explicitly uses only correct trajectories after rejection sampling.
+    Failed candidates, rejected QA evolutions, RL rollouts and per-rollout rewards, timeouts, and tool failures are not released.
+    The public artifact contains only 100 final QA pairs.
+  privacy_or_consent: Unknown. The construction system browses public web pages, but the paper and official artifacts do not
+    disclose source-page rights, robots/terms compliance, personal-data handling, consent, or a takedown process.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v3 full text and appendices, OpenReview submission metadata, official GitHub tree/code, the 100-row sample
+    release, and HF dataset/model cards were checked. Citation and limited artifacts are verified; the paper-scale data, synthesis/training
+    implementation, replay contract, split, and contamination controls are not.
+  remaining_unknowns:
+  - complete approximately 40K QA corpus, approximately 13K SFT trajectories, approximately 12K RL prompt set, and immutable
+    split manifests
+  - exploration/evolution and SFT teacher model identities, exact revisions, prompts beyond the appendix templates, temperatures,
+    candidate counts, and acceptance yields
+  - SFT correctness checker, DeepSeek-V3 judge snapshot and prompt, reward output scale, calibration, and failure analysis
+  - synthesis and training code, exact Qwen3-8B revision, tokenizer, optimizer details beyond those reported, hardware, seeds,
+    checkpoints, and total compute/API cost
+  - source URLs and page snapshots, record-level lineage, licensing/rights for web content, privacy handling, and takedown
+    policy
+  - decontamination, deduplication, BrowseComp overlap controls, failed/rejected rollout retention, and deterministic replay
+    fixtures
+inclusion_reason: 'WebExplorer connects a concrete web-agent data-construction recipe to two post-training objects: rejection-sampled
+  ReAct trajectories for SFT and QA-conditioned online RL episodes with format and judge rewards. Its 100-row QA-only public
+  release also makes the gap between a reported trajectory pipeline and reusable trajectory data explicit.'
+related:
+- explorer-web-trajectories-2025
+- webdancer-2025
+- websailor-2025
+tags:
+- environment-agent-trajectory-data
+- web-agent
+- information-seeking
+- synthetic-qa
+- long-horizon
+- react-trajectory
+- sft
+- reinforcement-learning
+- llm-as-judge
+- partial-release
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: WebExplorer synthesizes about 40K evolved web-search QA pairs and trains Qwen3-8B with correct ReAct trajectories
+  plus judge-rewarded online episodes, but releases only 100 QA rows rather than the paper-scale trajectories or training
+  pipeline.
+why_it_matters: It shows how hard-query construction, full-trajectory imitation, live search/browse observations, and answer-level
+  model judgment interact in long-horizon agent training, while exposing why release shape, judge calibration, replayability,
+  and benchmark-overlap evidence must be audited separately.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  code_verified: true
+  data_verified: true
+  model_weights_verified: true
+  artifact_verified: true
+  repository_files_verified: true
+  dataset_contents_verified: true
+  full_release_verified: false
+  synthesis_code_verified: false
+  training_code_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Venue verification means that OpenReview confirms submission to ICLR 2026, not acceptance. Artifact verification
+    is limited to the official 100-row QA subset, model weights, and inference/evaluation code; it does not establish release
+    of paper-scale trajectories, synthesis code, training code, or a replayable environment.
+curation_level: L3_summary_ready
+needs:
+- 'needs_full_data: release the approximately 40K QA pairs, approximately 13K SFT trajectories, approximately 12K RL prompts,
+  source-page lineage, and immutable split manifests'
+- 'needs_training_artifacts: publish synthesis, SFT, and GRPO code/configs; pin the Qwen3 base, teachers, judge, tokenizer,
+  seeds, checkpoints, and compute/API budget'
+- 'needs_verifier_metadata: disclose the SFT correctness checker and DeepSeek-V3 judge prompt/version/scale, plus calibration,
+  ambiguity handling, and reward-hacking tests'
+- 'needs_replay: pin search/browse providers, API/model versions, webpage snapshots, reset semantics, observation caches,
+  and deterministic replay fixtures'
+- 'needs_decontamination: publish deduplication and record-level overlap checks for BrowseComp exemplars, evaluation variants,
+  source pages, questions, and answers'
+- 'needs_retention: document and release rejected QA evolutions, failed SFT candidates, RL rollout rewards, timeouts, tool
+  errors, and keep/drop decisions'
+- 'needs_license_and_governance: add an explicit repository license and document web-content rights, privacy/consent review,
+  terms compliance, and takedown policy'
+- 'needs_metadata_reconciliation: reconcile the arXiv/GitHub/HF 15-author list with OpenReview''s 14-author list and clarify
+  title/version drift'
+card: null

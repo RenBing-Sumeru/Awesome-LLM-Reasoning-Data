@@ -1,0 +1,1 @@
+Wu, Menghua、Cai Zhou、Stephen Bates 和 Tommi Jaakkola。2025。《思考校准：高效且自信的测试时扩展》。载于《2025 年自然语言处理实证方法会议论文集》，第 14291–14305 页。计算语言学协会。https://aclanthology.org/2025.emnlp-main.722/。代码和数据：https://github.com/rmwu/thought-calibration。

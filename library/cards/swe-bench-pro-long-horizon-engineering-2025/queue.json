@@ -1,0 +1,19 @@
+{
+  "title": "SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2509.16941",
+    "data": "https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro",
+    "code": "https://github.com/scaleapi/SWE-bench_Pro-os",
+    "project": "https://labs.scale.com/papers/swe-bench-pro"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:39:46Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布731个长程工程任务及金补丁测试，覆盖真实依赖和完整修复流程，下载量巨大",
+    "updated_at": "2026-07-18T07:39:46Z"
+  }
+}

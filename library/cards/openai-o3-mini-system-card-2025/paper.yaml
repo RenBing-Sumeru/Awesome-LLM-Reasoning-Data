@@ -1,0 +1,134 @@
+id: openai-o3-mini-system-card-2025
+title: OpenAI o3-mini System Card
+year: 2025
+venue: OpenAI System Card
+authors:
+- OpenAI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- coding
+- safety
+training_use:
+- safety_alignment
+- evaluation
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/o3-mini-system-card-feb10.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/o3-mini-system-card/
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: OpenAI reports that o3-mini was pre-trained on diverse datasets mixing publicly available data and custom
+    in-house datasets; it also reports public and internally constructed safety evaluations. Source identities, proportions,
+    manifests, licenses, and record-level provenance are unknown.
+  trace_author: The report says reasoning models can produce a long chain of thought before responding. Whether training records
+    include, retain, or release such traces, and who authored any training traces, is unknown.
+  answer_format: No training-record or released evaluation-record schema is disclosed. The report describes model completions
+    in several safety and Preparedness evaluations, but their retained fields and formats are unknown.
+  process_fields: []
+  environment_or_substrate: The report describes evaluation/red-team settings with browsing, code execution, custom model
+    training, scaffolding, prompting, and named task scaffolds. The post-training environment, tool interfaces, task distribution,
+    and trajectory-retention policy are unknown.
+  verifier_or_reward: Large-scale reinforcement learning is reported, but its reward/verifier contract is unknown. Separately,
+    the card reports evaluation autograders (including not_unsafe/not_overrefuse), human/expert safety judgments, and a Gray
+    Swan success criterion using the Moderation API plus a harmful-content classifier; it does not state that these are training
+    rewards.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: The report distinguishes o3-mini-near-final-checkpoint and launched o3-mini, and says they share a base model.
+    Architecture, pretraining checkpoint lineage, parameterization, and stage allocation are unknown.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: OpenAI reports rigorous quality/risk filtering, processes to reduce personal information, and use of the
+    Moderation API and safety classifiers to prevent harmful or sensitive pretraining content. It also reports harmful-data
+    filtering and a PII input filter as o-series mitigations. Thresholds, implementation, yields, and stage allocation are
+    unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: The official release exposes low, medium, and high reasoning-effort options, and the system card says
+    the o-series leverages test-time compute. Token, wall-clock, allocation, and decoding budgets are unknown.
+  optimizer_or_scaffold: The report identifies large-scale reinforcement learning, deliberative alignment, generated new safety
+    data, and additional safety training for launched models. RL objective/algorithm, reward or verifier, optimizer, safety-data
+    provenance, rollout policy, schedule, and compute are unknown.
+audit:
+  source_mixture: 'Only high-level source categories are disclosed: publicly available data and custom in-house datasets.
+    Source identities, proportions, counts, acquisition terms, rights, revisions, and manifests are unknown.'
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'The card supports only coarse lineage: broad pretraining sources and filtering, followed by reasoning-model reinforcement
+    learning and deliberative-alignment/safety stages. Source-to-record-to-feedback-to-checkpoint lineage is unknown.'
+  known_failure_modes:
+  - Broad data-source categories do not establish provenance, licensing, mixture composition, benchmark-overlap controls,
+    or reproducible training data.
+  - The reinforcement-learning objective, reward/verifier, safety-data provenance, sampling, rollout policy, and optimization
+    schedule are undisclosed.
+  - Autograders, moderation/classifier criteria, and human/expert judgments are reported for evaluation; treating them as
+    training rewards would be unsupported.
+  - Production performance may vary with system updates, final parameters, and system-level instructions; Preparedness results
+    are lower bounds that can change with elicitation, fine-tuning, rollouts, interactions, and scaffolding.
+  citation_status: verified
+  confidence: medium
+  notes: Official OpenAI publication and PDF are directly verified. This Track 12 record preserves only category-level data
+    and alignment disclosures; it is not a claim that o3-mini training data, reward contracts, or a reproducible RL recipe
+    are released.
+inclusion_reason: An official frontier system card that discloses broad pretraining sources, filtering, large-scale reasoning
+  RL, deliberative alignment, generated safety data, and safety evaluation procedures while leaving the underlying data, reward,
+  and post-training ledger materially undisclosed.
+related: []
+tags:
+- openai
+- o3-mini
+- system-card
+- frontier-report
+- data-disclosure-ledger
+- deliberative-alignment
+- reinforcement-learning
+- safety-evaluation
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's o3-mini System Card reports broad pretraining-source categories, data filtering, large-scale reasoning
+  RL, deliberative alignment, and safety evaluations, but not reusable records, the RL reward contract, or a reproducible
+  post-training recipe.
+why_it_matters: 'It is a high-impact Track 12 disclosure boundary: the official report makes some frontier post-training and
+  safety claims auditable while clearly not supplying the data, feedback, lineage, or environment detail needed to reconstruct
+  them.'
+card: null
+needs:
+- 'needs_data: source identities, manifests, counts, provenance, rights, prompts, traces, and retained-record schemas'
+- 'needs_verifier: reinforcement-learning reward/verifier, safety-data labels, calibration, coverage, false-positive/negative
+  analysis, and terminal predicates'
+- 'needs_metadata: teachers/generators, filtering thresholds and yields, sampling, rollouts, objective, optimizer, training
+  schedule, checkpoints, and compute'
+- 'needs_audit: train/evaluation splits, decontamination, benchmark-overlap controls, version pins, licenses, and source-to-checkpoint
+  lineage'
+- 'needs_code: training, filtering, evaluation, monitoring, and scaffold implementations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official OpenAI system-card landing page, system-card PDF, and linked official release page were checked. No official
+    arXiv, DOI, code, data, weight, venue, or BibTeX artifact was established from these sources.

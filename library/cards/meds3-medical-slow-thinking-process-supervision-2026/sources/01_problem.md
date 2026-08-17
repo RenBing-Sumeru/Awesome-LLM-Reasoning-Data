@@ -1,0 +1,3 @@
+Medical long-chain reasoning data usually retain only final success or a completed answer, so they cannot reveal which step in planning, retrieval, tool selection, environment execution, or evidence synthesis creates value or introduces an error. Step-level human annotation is costly, and directly imitating a strong model can also write ineffective steps and generation bias into the training set.
+
+Rather than merely adding complete successful trajectories, this work records medical questions, MCTS reasoning nodes, rule-verification outcomes, node-value changes, dual-sided process labels, and filtered correct trajectories, allowing each local behavior to be accepted, rejected, or corrected for an explicit reason.

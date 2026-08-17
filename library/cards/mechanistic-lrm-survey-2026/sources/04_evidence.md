@@ -1,0 +1,1 @@
+The official ACL abstract states the survey's three dimensions and frames its goal as bridging black-box performance with mechanistic transparency. That makes it a strong starting point for building a reading list, but not proof that every reviewed explanation is causal. Keep the reported task, intervention, and comparison baseline together when extracting a claim.

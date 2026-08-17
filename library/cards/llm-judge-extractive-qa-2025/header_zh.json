@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "审计大语言模型评审能否修正 EM 与 F1 对抽取式问答有效改述的误判。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "大语言模型评审可靠性实证研究",
+  "best_for_ch": "需要核查问答自动评测可靠性的研究者。",
+  "confidence_ch": "高：已核对原文、官方代码与作者机构；正式发表信息未找到。",
+  "authors_ch": "Xanh Ho, Jiahao Huang, Florian Boudin, Akiko Aizawa",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+- Long-rollout 干预没有披露任务来源、simulator 身份、change-ownership 表示、episode 长度、trace field、成功与失败样例、preservation detector、reward scale、aggregation、calibration、假阳性、假阴性或 terminal rule。表面策略可能保留 diff 却消除用户意图，而合理 cleanup 也可能被误判为回退；此项是 curator inference。
+- Dynamic adversarial conversation 与 production-like final-turn resampling 是评测数据，不是已披露 safety-training trajectory。Production-like estimate 只重建采样 context，省略完整部署 safety stack，属于 point-in-time 估计，并会随 traffic、model snapshot、labeling pipeline 和 product policy 漂移。
+- Connector 与 function-call prompt-injection 评测是训练数据 split。其分数不能确立对未见攻击的泛化；报告也没有提供 membership hash、overlap rate、attack diversity、false-negative analysis 或独立 held-out prompt-injection suite。
+- Monitorability 存在 label 与 evaluator mismatch。GPT-5 Thinking 监控 CoT，而 task-specific 或 model answer grader 定义 outcome。Anti-Scheming 与 Memory 中 mismatch、monitor mistake、短 CoT 和少量 positive sample 足够严重，以至 OpenAI 计划在修订前移除这些环境。
+- CoT monitorability 依赖 monitor checkpoint、observation surface、CoT 长度、positive-sample prevalence、grader quality、g-mean-squared aggregation 和 cross-fit filtering。低分可能来自任一因素。CoT-Control 的合成 format instruction 和强 length confound，使低 controllability 只能作为审计信号，不能证明模型无法隐藏 reasoning。
+- Policy grader、production-like automatic label、task answer grader、GPT-4o fairness rating、example-specific rubric、hidden unit test、cyber flag、pass metric、medal threshold 和 expert review 是不同 evaluation contract。把它们合并为一个 verifier 或视为 reasoning-RL reward 都没有证据。
+- Cyber evaluation non-overlap 范围有限。其去标识 production 加合成 rare-case 混合有意偏难，不代表常规 traffic；classifier selection 与 embedding clustering 会产生 coverage 和 sampling bias。它不能确立全局训练/评测分离。
+- Programmatic environment 是不完整 proxy。CVE-Bench 只运行 40 题中的 34 题，Cyber Range 对 16 次 trial 使用 any-success 规则，Monorepo-Bench hidden test 也可能漏掉语义或安全失败。分数依赖工具、scaffold、重复尝试预算、环境版本和 grader。
+- 两级 cyber classifier 与 safety-reasoner monitor、异步 block、actor control、trusted access 和人工复核都是部署 safeguard。其假阳性/假阴性率、threshold、版本、升级延迟和与 product traffic 的交互均未发布；安全结果不能只归因于模型训练。
+- Living document 可变。3 月 5 日封面当前包含 3 月 17 日 mini appendix 和 4 月 24 日 CoT 更新。缺少不可变 revision 与 retrieval date 时，比较会无意倒填后续证据或混合 model snapshot。
+- 没有训练语料、long-rollout 记录、模拟用户工作、dynamic/resampled conversation、CoT trace、grader、monitor、hidden test、权重、reward 代码、全局 decontamination ledger、来源 license 或 item-level checkpoint lineage 被发布。

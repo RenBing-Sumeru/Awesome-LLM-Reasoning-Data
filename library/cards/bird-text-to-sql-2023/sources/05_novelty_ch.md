@@ -1,0 +1,1 @@
+已有基线是 Spider/WikiSQL 式语义解析，数据库较小或不强调内容值。BIRD 的新意是把数据库值、外部 evidence、脏内容和查询效率放到评测核心。质量信号包括官方项目页、代码、train/dev 链接、leaderboard，以及官方仓库中的 CC BY-SA 4.0 许可说明。并不新的是 SQL execution accuracy 和监督式 text-to-SQL 训练。复用前要检查 split 清洁度、数据库再分发条款、方言假设、evidence 是否可用、VES timeout 策略和公开答案污染。

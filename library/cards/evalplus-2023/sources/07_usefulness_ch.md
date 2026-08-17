@@ -1,0 +1,1 @@
+可把 EvalPlus 当作可执行任务的 benchmark-audit recipe。复用时保留原题 id、prompt、参考解、base tests、plus tests、运行时、timeout、失败日志和 package 版本。它特别适合处理“benchmark 看似饱和，但 verifier 可能太弱”的场景。对 atlas 来说，EvalPlus 是在不改变任务 prompt 的情况下增强反馈契约的清晰例子。

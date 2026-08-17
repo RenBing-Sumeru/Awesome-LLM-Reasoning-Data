@@ -1,0 +1,1 @@
+已核验引用：Yifan Sun 等，《Improving Data Efficiency for LLM Reinforcement Fine-tuning Through Difficulty-targeted Online Data Selection and Rollout Replay》，NeurIPS 2025。官方论文：https://arxiv.org/abs/2506.05316。会场页：https://neurips.cc/virtual/2025/loc/san-diego/poster/115452

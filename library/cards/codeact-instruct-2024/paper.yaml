@@ -1,0 +1,155 @@
+id: codeact-instruct-2024
+title: Executable Code Actions Elicit Better LLM Agents
+year: 2024
+venue: ICML 2024
+authors:
+- Xingyao Wang
+- Yangyi Chen
+- Lifan Yuan
+- Yizhe Zhang
+- Yunzhu Li
+- Hao Peng
+- Heng Ji
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent-reasoning
+- tool-use
+- code
+- mathematics
+- information-seeking
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2402.01030
+  arxiv: https://arxiv.org/abs/2402.01030
+  venue: https://proceedings.mlr.press/v235/wang24h.html
+  code: https://github.com/xingyaoww/code-act
+  data: https://huggingface.co/datasets/xingyaoww/code-act
+  project: https://github.com/xingyaoww/code-act
+  huggingface: https://huggingface.co/datasets/xingyaoww/code-act
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v235/wang24h.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Challenging training instances sampled from HotpotQA, MATH, APPS, WikiTableQuestion, and ALFWorld, repurposed
+    as interactive tool-use tasks.
+  trace_author: GPT-3.5, Claude 1 Instant, Claude 2, and GPT-4 generate multi-turn trajectories under the CodeAct protocol.
+  answer_format: A serialized multi-turn conversation containing an instruction, thought, executable Python action, environment
+    observation or error, revised actions, and a terminal solution.
+  process_fields:
+  - source task and domain
+  - thought and executable-code action
+  - environment observation or traceback
+  - self-correction turns
+  - terminal answer and success outcome
+  environment_or_substrate: Python execution plus task-specific search, table, mathematics, coding, and ALFWorld interfaces
+    exposed as functions or packages.
+  verifier_or_reward: Original task metrics and environment outcomes determine trajectory success; parsing, error-recovery,
+    and turn-structure heuristics perform final selection.
+  terminal_predicate: Retain successful trajectories that obey code-as-action syntax, contain useful interactions, and, for
+    the self-improvement subset, recover from an earlier execution error.
+recipe_metadata:
+  base_model: Llama-2 7B and Mistral 7B are supervised-fine-tuned as CodeActAgent consumers.
+  teacher: GPT-3.5 Turbo, Claude 1 Instant, Claude 2, and GPT-4-0613.
+  generator: MINT runs teachers against executable task environments for multiple turns and records thoughts, code actions,
+    observations, corrections, and submitted solutions.
+  filtering_rule: Keep successful, parseable CodeAct trajectories; reject malformed actions, all-error episodes, and odd-turn
+    records that fail to answer the user; emphasize episodes that correct an earlier error.
+  sampling_protocol: Down-sample each source toward harder tasks, use three primary teacher families, and send tasks unsolved
+    by them to GPT-4-0613.
+  rollout_count: null
+  temperature: null
+  inference_budget: The release contains 7,139 trajectories and 10,581,681 Llama-2 tokens; teacher call counts, token prices,
+    and total generation cost are not reported as one budget.
+  optimizer_or_scaffold: Full-parameter SFT on CodeActInstruct mixed with 69,230 general-conversation records; context length
+    is 4,096 for Llama-2 and 16,384 for Mistral.
+audit:
+  source_mixture: 1,664 HotpotQA, 1,732 MATH, 647 APPS, 1,065 WikiTableQuestion, and 2,031 ALFWorld trajectories.
+  split: The official release packages 7,139 training trajectories; the paper evaluates separately on in-domain and out-of-domain
+    MINT tasks but does not define a standalone held-out split for the released SFT set.
+  decontamination: Source-task train subsets are used for synthesis and some MINT evaluation domains overlap with MATH and
+    ALFWorld, so the paper reports ID and OD results separately rather than claiming universal decontamination.
+  license: The official dataset card declares Apache-2.0 and the code repository declares MIT; upstream HotpotQA, MATH, APPS,
+    WikiTableQuestion, and ALFWorld terms still apply to derived records.
+  lineage: Static SFT demonstrations generated from five task datasets through executable interaction; the closest neighboring
+    category is agent/environment trajectories, but the released serialized episodes are explicitly consumed as instruction-tuning
+    targets.
+  known_failure_modes:
+  - Success metrics validate terminal task outcomes, not the faithfulness or safety of every intermediate thought and code
+    action.
+  - Teacher-specific syntax, self-correction style, and error patterns can be distilled into the student along with useful
+    behavior.
+  - Executable actions create sandbox-escape and unsafe-code risks if the release is replayed outside a hardened environment.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v4 full text and acceptance comment, ICML record, repository, dataset link, mixture counts, selection
+    heuristics, and current repository adoption were checked on 2026-07-14. The official paper view did not disclose affiliations,
+    so no institution is inferred.
+inclusion_reason: CodeActInstruct releases static, multi-turn code-action demonstrations with explicit teachers, environment
+  feedback, success filtering, and SFT consumers rather than only proposing an online agent scaffold.
+related: []
+tags:
+- instruction-demonstration-rationale
+- agent-trajectories
+- executable-code-actions
+- self-debugging
+- arxiv-2402.01030
+- primary-link-checked
+status: verified
+one_line_summary: CodeActInstruct turns five task suites into 7,139 filtered multi-turn demonstrations of executable Python
+  actions, observations, and self-corrections for SFT.
+why_it_matters: It makes the usually hidden interaction and recovery trace a reusable training object while exposing the task
+  mixture and acceptance rules.
+reading_priority: must read
+paper_type: executable agent demonstration dataset and SFT recipe
+best_for: Researchers building tool-using agents from serialized code-action and self-debugging demonstrations.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv, ICML acceptance, GitHub repository, and Hugging Face dataset link checked; inherited source-dataset
+    terms require downstream review.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-final5
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: executable agent demonstrations with self-correction
+  selection_priority_score: 10
+  selection_score_breakdown:
+    institution: 0
+    venue: 3
+    impact: 5
+    artifact: 2
+  selection_evidence:
+    institution: The official arXiv HTML and paper view list authors but do not disclose affiliations; no institution is inferred,
+      so this component scores 0.
+    venue: The arXiv record explicitly states acceptance by ICML 2024 and the official PMLR proceedings record confirms a
+      regular ICML paper; no oral, spotlight, or award distinction is claimed.
+    impact: The official repository had 1,685 stars and 141 forks on 2026-07-14, documents an Ollama integration, and has
+      become a widely adopted reference implementation, meeting the 2024 impact threshold with multiple concrete use signals.
+    artifact: The MIT-licensed repository publishes generation, training, evaluation, model, and deployment code; the Apache-2.0
+      Hugging Face release provides CodeAct and general-mixture Parquet files and recorded 637 downloads and 76 likes on 2026-07-14.
+  selection_eligible: true
+  year_impact_threshold: 3

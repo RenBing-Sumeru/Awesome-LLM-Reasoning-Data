@@ -1,0 +1,1 @@
+核心思路：Two Heads releases M500 and adapts multi-agent discussion depth with a CEO agent.。可复用的轨迹对象是：Multi-agent discussions; exact schema requires dataset inspection.；其已披露的反馈契约为：Formal M500 verifier/reward not established.。

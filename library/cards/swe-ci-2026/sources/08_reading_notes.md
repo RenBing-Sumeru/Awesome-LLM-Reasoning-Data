@@ -1,0 +1,6 @@
+- Read arXiv v4 and treat its 100-task, 68-repository, iFlow/TDD protocol as the paper baseline; do not silently mix later release settings into paper results.
+- Inspect live manifests separately: lite has 50 tasks, default has 100, default_v2 has 100, and full has 226, despite the dataset card's stale 137 count.
+- Follow one 20-epoch record from base state through requirement.xml, code snapshots, pytest JSON, iteration.jsonl, and terminal status before interpreting EvoScore.
+- Distinguish runner completion, Resolved, Zero_regression, ZRR, timeout, invalid report, and archive presence; they are not interchangeable success labels.
+- Treat the 115 GB trajectory release as valuable but incompletely documented until archive schema, per-task coverage, failure retention, and sanitization checks are published.
+- Audit replay and security together: Python 3.11, Docker images, apt/npm builds, API keys, network policy, upstream licenses, public tests, and mutable v1/v2 splits can all change reuse conclusions.

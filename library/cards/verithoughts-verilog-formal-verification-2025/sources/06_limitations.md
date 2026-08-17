@@ -1,0 +1,3 @@
+1. **Question validity:** Formal checking compares `V` and `V*` but cannot prove that generated `Q` uniquely and completely describes `V`. Human analysis finds that many inconsistencies come from question–reference mismatches, so prompt faithfulness must be audited separately.  
+2. **Equivalence boundary:** Verification is limited by supported syntax, state space, timeout, and tool configuration. Unknown or failed results must not be interpreted directly as non-equivalence; verifier status should be retained rather than collapsed into one error label.  
+3. **Source bias:** Public RTL differs from industrial designs in style and complexity, and related modules may leak across splits. Deduplication should use project, structural fingerprints, and functional families.

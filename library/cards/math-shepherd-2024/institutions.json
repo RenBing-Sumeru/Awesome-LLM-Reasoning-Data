@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Peking University",
+    "The University of Hong Kong",
+    "Tsinghua University",
+    "DeepSeek-AI",
+    "The Ohio State University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://aclanthology.org/2024.acl-long.510/",
+    "https://doi.org/10.18653/v1/2024.acl-long.510"
+  ],
+  "verification_note": "ACL Anthology verifies title, authors, ACL 2024 long-paper venue, DOI, and paper artifact; affiliation groups are verified from the official paper front matter."
+}

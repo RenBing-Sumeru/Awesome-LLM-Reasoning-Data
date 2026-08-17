@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Hunyuan-MT 将论文所述 1.3T 多语基础，经 RegMix-style CPT、3M→268K SFT 漏斗、judge-based GRPO 与六候选 Chimera fusion 串成完整路线，但未发布训练 manifest、reward、rollout、split 或 paper-run lineage。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多语机器翻译数据构造与强化学习技术报告",
+  "best_for_ch": "研究多语语料配比、翻译 SFT/GRPO、弱到强融合、少数民族语言数据权利与评测污染的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Mao Zheng 等（Tencent Hunyuan）",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

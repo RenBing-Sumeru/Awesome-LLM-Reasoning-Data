@@ -1,0 +1,89 @@
+id: badjudge-2025
+title: 'BadJudge: Backdoor Vulnerabilities of LLM-As-A-Judge'
+year: 2025
+venue: ICLR 2025 (Poster)
+authors:
+- Terry Tong
+- Fei Wang
+- Zhe Zhao
+- Muhao Chen
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=eC2a2IndIt
+  arxiv: https://arxiv.org/abs/2503.00596
+  code: https://github.com/TerryTong-Git/badjudge
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=eC2a2IndIt
+  openreview: https://openreview.net/forum?id=eC2a2IndIt
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Paper-page-backed curation; inspect the primary source before reusing results.
+  citation_status: verified
+  confidence: high
+  notes: Studies backdoor threats against LLM evaluators and defenses for compromised judges.
+inclusion_reason: 'Exposes and mitigates data-centric backdoors in LLM evaluator pipelines.'
+related: []
+tags:
+- track13
+- paper-page-backed
+- audit
+status: verified
+one_line_summary: Defines data-centric backdoors against LLM judges and evaluates model merging as a mitigation.
+why_it_matters: It shows that a compromised judge can distort model selection while retaining plausible clean behavior.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary paper page recorded; artifact availability stated without inference.
+category_ids:
+- audit_failure_contamination_verifier_attacks

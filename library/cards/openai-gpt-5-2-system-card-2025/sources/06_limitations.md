@@ -1,0 +1,7 @@
+Training disclosure remains coarse: no GPT-5.2 records, retained CoTs, cyber-safety labels, reward/verifier, objective weights, rollouts, optimizer, filtering yields, compute, or variant/checkpoint lineage. The report's many graders, monitors, hidden tests, rubrics, and environments are evaluation contracts, not evidence of training signals.
+
+Overlap claims are local. Prompt-injection sets overlap training and may overstate unseen-attack robustness; cyber non-overlap and held-out biology claims do not establish global separation. Hard production cases are selected around prior failures and cannot estimate average prevalence. Production A/B sampling frame, period, monitor checkpoint, calibration, and labels are unavailable.
+
+Model-based grading has acknowledged errors. The 2026 monitorability update finds label mismatch, model-grading dependence, genuine false negatives, and CoT-length confounding. Lower monitorability cannot be attributed to training data or one model property. Preparedness confidence intervals and repeated-attempt metrics depend on small sets, elicitation, scaffolds, tools, and attempt budgets.
+
+Deployment safeguards, age protections, monitoring, enforcement, and Preparedness mitigations are separate controls. Safety outcomes cannot be assigned to undisclosed model training alone. Finally, the living page changed after the 2025 PDF; undated retrieval silently mixes release and later audit evidence.

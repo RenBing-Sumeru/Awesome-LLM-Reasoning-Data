@@ -1,0 +1,1 @@
+问题取自 HotpotQA 和 2WikiMultiHopQA 的训练集。作者让配备本地检索器的 Qwen-2.5-7B-Instruct 多次 rollout 做数据筛选：少于 10 次即可答对为 easy，10–20 次为 medium，多于 20 次为 difficult。第一阶段使用 200 条 HotpotQA medium 和 150 条 2Wiki medium；第二阶段报告使用 2,561 条 medium 加 2,000 条 difficult HotpotQA，以及 1,087 条 medium 加 2,500 条 difficult 2Wiki。这里的标签来自 rollout 行为难度分箱，不是人工过程标注。

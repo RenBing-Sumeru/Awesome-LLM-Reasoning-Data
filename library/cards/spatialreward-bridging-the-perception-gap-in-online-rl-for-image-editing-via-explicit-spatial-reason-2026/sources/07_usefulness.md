@@ -1,0 +1,2 @@
+1. **Training or data construction.** SpatialReward-Train can train editing reward models, spatial verifiers, and online RL systems. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** Localization, semantic judgment, and content preservation should be evaluated separately. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

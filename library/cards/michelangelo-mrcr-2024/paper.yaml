@@ -1,0 +1,132 @@
+id: michelangelo-mrcr-2024
+title: 'Michelangelo: Long Context Evaluations Beyond Haystacks via Latent Structure Queries'
+year: 2024
+venue: arXiv preprint
+authors:
+- Kiran Vodrahalli
+- Santiago Ontanon
+- Nilesh Tripuraneni
+- Kelvin Xu
+- Sanil Jain
+- Rakesh Shivanna
+- Jeffrey Hui
+- Nishanth Dikkala
+- Mehran Kazemi
+- Bahare Fatemi
+- Rohan Anil
+- Ethan Dyer
+- Siamak Shakeri
+- Roopali Vij
+- Harsh Mehta
+- Vinay Ramasesh
+- Quoc Le
+- Ed Chi
+- Yifeng Lu
+- Orhan Firat
+- Angeliki Lazaridou
+- Jean-Baptiste Lespiau
+- Nithya Attaluri
+- Kate Olszewska
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- long-context
+- synthetic-reasoning
+- coreference
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2409.12640
+  arxiv: https://arxiv.org/abs/2409.12640
+  code: null
+  data: null
+  project: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Michelangelo Latent Structure Queries framework; MRCR is the Multi-Round Co-reference Resolution task.
+  trace_author: benchmark generator creates long contexts with repeated references; evaluated models answer queries about
+    latent co-reference structure.
+  answer_format: long synthetic context, query about a referenced entity or structure, and exact expected answer.
+  process_fields:
+  - context length
+  - latent-structure task type
+  - synthetic context and distractors
+  - query
+  - model answer
+  - exact or automatically scored correctness
+  environment_or_substrate: synthetic long-context natural-language benchmark with controlled latent structure.
+  verifier_or_reward: automatic answer checking against the generated target answer.
+  terminal_predicate: model answer matches the generated ground truth for the queried latent structure under the pinned prompt
+    and scorer.
+recipe_metadata:
+  base_model: Not a training recipe; the work is a long-context evaluation framework and benchmark suite.
+  teacher: synthetic generator and exact target answer define the feedback contract.
+  generator: Latent Structure Queries constructs contexts that require filtering irrelevant information to recover latent
+    structure.
+  filtering_rule: avoid tasks that can be solved by single-needle retrieval or leaked background knowledge; pin context length
+    and task generator.
+  sampling_protocol: Pin arXiv version, task type, context-length buckets, prompt template, model decoding settings, and scorer.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and context-length-specific; report context length and answer format.
+  optimizer_or_scaffold: long_context_benchmark
+audit:
+  source_mixture: arXiv record/API and arXiv HTML text for Michelangelo, including the section list naming MRCR.
+  split: Public source describes three diagnostic tasks, Latent List, MRCR, and IDK; exact released generator/code artifacts
+    were not verified in this pass.
+  decontamination: Synthetic generation reduces direct leakage risk, but prompts, generated examples, and result tables can
+    still become public benchmark contamination.
+  license: arXiv preprint license/reuse terms should be checked before redistribution; no official code/data license was verified.
+  lineage: 'Primary source: https://arxiv.org/abs/2409.12640'
+  known_failure_modes:
+  - exact answer scoring can miss partially correct reasoning
+  - synthetic contexts may not represent real long-document workloads
+  - task generator or prompt details must be pinned for comparable scores
+  - models may exploit formatting shortcuts if generation parameters are not controlled
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies title, authors, v2 date, Google DeepMind/Google Research affiliations in HTML, and MRCR as one of
+    the three Michelangelo tasks. Official code/data release was not verified.
+inclusion_reason: MRCR is a diagnostic long-context benchmark for latent co-reference structure rather than simple needle
+  retrieval.
+related:
+- longbench-2023
+- ruler-2024
+tags:
+- benchmark
+- long-context
+- coreference
+- synthetic-reasoning
+one_line: Michelangelo MRCR evaluates whether long-context models can recover multi-round co-reference structure in synthetic
+  contexts.
+why_it_matters: It stresses long-context synthesis beyond single-needle retrieval with automatic scoring.
+status: verified
+needs:
+- 'needs_audit: verify whether official generator/code/data are released and pin the exact artifact if available'
+- 'needs_audit: pin context-length buckets, prompt templates, scorer, and model decoding settings before comparing results'
+one_line_summary: Michelangelo MRCR evaluates whether long-context models can recover multi-round co-reference structure in
+  synthetic contexts.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: primary_source_addition
+  confidence: medium
+  notes: arXiv API and HTML were checked; no official code/data repository was confirmed.
+category_ids:
+- benchmarks_evaluation_surfaces

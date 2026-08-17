@@ -1,0 +1,176 @@
+id: generative-verifiers-next-token-prediction-2025
+title: 'Generative Verifiers: Reward Modeling as Next-Token Prediction'
+year: 2025
+venue: ICLR
+authors:
+- Lunjun Zhang
+- Arian Hosseini
+- Hritik Bansal
+- Seyed Mehran Kazemi
+- Aviral Kumar
+- Rishabh Agarwal
+source_role:
+- verifier_reward
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- algorithmic-reasoning
+training_use:
+- sft
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2408.15240
+  arxiv: https://arxiv.org/abs/2408.15240
+  code: null
+  data: https://github.com/genrm-star/genrm-critiques
+  project: https://sites.google.com/view/generative-reward-models
+  huggingface: null
+  doi: null
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/214308a2d5e3f83ef9ad2739e1cbc46d-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.iclr.cc/paper_files/paper/2727-/bibtex
+data_object:
+  prompt_source: Last Letter Concatenation and BBH Word Sorting are generated from their original word pools; GSM8K uses the
+    original train, validation, and test split. MATH500 and four MMLU mathematics subsets are evaluation-only transfer surfaces.
+  trace_author: Gemma-2B generates algorithmic candidate solutions; Gemini 1.0 Pro generates GSM8K candidate solutions and
+    reference-guided verification rationales; programmatic oracles generate algorithmic verification rationales.
+  answer_format: A direct record maps a serialized problem, candidate solution, and verification instruction to a Yes or No
+    token. A GenRM-CoT record maps the same input plus a step-by-step verification instruction to a natural-language verification
+    rationale ending in a Yes or No verdict.
+  released_record_fields:
+  - inputs
+  - targets
+  - question_id
+  - model_output_id
+  serialized_input_components:
+  - task instruction
+  - question
+  - candidate solution
+  - verification prompt
+  serialized_target_variants:
+  - direct Yes or No token
+  - verification rationale followed by final Yes or No verdict
+  process_fields:
+  - candidate reasoning serialized inside inputs
+  - step checks serialized inside rationale targets
+  - final answer-correctness verdict
+  environment_or_substrate: Offline string-manipulation checks and known-answer mathematics grading; there is no interactive
+    environment or independently executed proof checker.
+  verifier_or_reward: Direct GenRM uses the next-token probability of Yes. GenRM-CoT conditions the Yes probability on a sampled
+    verification rationale; majority voting averages that score across sampled rationales.
+  terminal_predicate: Candidate correctness is determined from the task answer. During synthetic-rationale construction, a
+    rationale is retained only when its final Yes or No decision matches that known correctness label.
+recipe_metadata:
+  base_model: Gemma-2B for algorithmic verifiers; Gemma 2B, Gemma 7B, and Gemma-2 9B for GSM8K verifiers.
+  teacher: Programmatic rationale generators for algorithmic tasks and Gemini 1.0 Pro for GSM8K solution generation, reference-guided
+    rationale generation, and the LLM-as-a-Judge baseline.
+  generator: Generate task queries and candidate solutions, label candidates by answer correctness, generate optional verification
+    rationales, filter rationale verdicts, balance answer labels, and mix verification targets with correct-solution targets.
+  prompt_task_source: Last Letter Concatenation, BBH Word Sorting, and GSM8K; the exact GSM8K rationale-generation prompt
+    is in Appendix A, Table A.2.
+  sampling_protocol: Last Letter uses 350 queries at each training length 2, 3, and 4 with 128 Gemma-2B attempts per query.
+    Word Sorting uses 4,096 queries at each length with 64 attempts. GSM8K uses 50 Gemini 1.0 Pro solutions per training problem
+    before random caps of 16 correct and 16 incorrect solutions.
+  rollout_count: Candidate counts are 128 per Last Letter query, 64 per Word Sorting query, and 50 per GSM8K training problem.
+    Some GSM8K data-scaling experiments use four training rationales per solution; the paper varies this quantity.
+  temperature: unknown
+  inference_budget: GenRM-CoT normally uses 32 sampled verification rationales per candidate and averages their conditional
+    Yes probabilities.
+  search_or_scaffold: Reference-guided grading is used only to synthesize GSM8K training rationales; Best-of-N uses a fixed
+    solution generator and selects the candidate with the highest verifier score.
+  filtering_rule: Use a 50/50 correct/incorrect mixture; deduplicate algorithmic records; remove invalid Word Sorting responses;
+    randomly cap GSM8K at 16 correct and 16 incorrect candidates per problem; discard rationales whose final verdict conflicts
+    with the label.
+  selection_threshold: No numeric rationale threshold is reported. Retention requires verdict-label agreement, and Best-of-N
+    selects the maximum verifier score.
+  optimizer_or_scaffold: Next-token SFT with a verification loss plus lambda times correct-solution SFT; lambda is 1/3 for
+    algorithmic tasks and 1/4 for GSM8K. Appendix B reports 300K steps, batch size 64, 1,000 warmup steps, Adam with decoupled
+    weight decay 1e-2, gradient clipping 1.0, no dropout, and a 200K-step cosine-decay period.
+audit:
+  source_mixture: Programmatically generated algorithmic data plus GSM8K candidates and Gemini 1.0 Pro reference-guided rationales.
+    The checked repository release contains GSM8K rationale and direct-verification records, not a confirmed algorithmic release.
+  split: Last Letter trains on lengths 2-4 and evaluates length 6; Word Sorting trains on lengths 2-4 and evaluates length
+    5. GSM8K follows about 7.2K train, 128 validation, and 1.3K test problems; MATH500 and MMLU mathematics are transfer tests.
+  decontamination: unknown
+  benchmark_overlap: GSM8K supplies both training and test partitions under its original split. No MATH500 or MMLU training
+    is reported, but no broader pretraining or synthetic-teacher decontamination analysis is provided.
+  license: The official repository README says GSM8K data are available under the MIT License, and its license text carries
+    OpenAI's 2021 copyright. Separate license scope for the generated verification rationales is not stated.
+  release_version: Official repository main commit 083c3a24db0560a31c9ec70675d566671b386e22, checked 2026-07-21; no tagged
+    release was confirmed.
+  lineage: Task query to model-generated candidate solution to answer-correctness label to programmatic or Gemini-generated
+    verification rationale to verdict filtering and label balancing to next-token verifier SFT to Yes-probability scoring.
+  known_failure_modes:
+  - Model-generated verification rationales may contain reasoning errors
+  - Reference-guided synthesis exposes privileged correct solutions to the rationale teacher
+  - Correct final answers can conceal invalid intermediate reasoning
+  - Alternative valid derivations may be rejected
+  - Yes-token scores may shift with task, prompt, length, or model version
+  - Rationale votes share a model and prompt, so their errors can be correlated
+  - Candidate generators may learn styles or phrases that game the verifier
+  successful_and_failed_sample_retention: Correct and incorrect candidate-solution families are both released. Rationales
+    with a wrong final verification decision are filtered out; rejected rationales, rejection reasons, and exact retention
+    rates are not released.
+  privacy_or_consent: The paper uses public benchmark-style mathematics and string tasks and does not discuss personal-data
+    review or consent.
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - Training and rationale-generation temperatures and random seeds
+  - Decontamination beyond the stated task splits and deduplication
+  - Full license scope for generated critiques
+  - Official training implementation and trained verifier checkpoints
+  - Immutable packaged release with checksums and per-file manifests
+  - Rejected-rationale counts and item-level generation lineage
+  notes: Official ICLR paper, arXiv v3, project page, and data repository were checked. Benchmark performance is evidence
+    about the evaluated verifier pipeline, not proof of per-rationale quality or safe data reuse.
+inclusion_reason: The work belongs in Data Construction and Open Release Recipes because it exposes a concrete pipeline from
+  task and candidate generation through correctness labeling, rationale synthesis, verdict filtering, balanced SFT, and a
+  public GSM8K feedback-data release, while leaving license scope and reproducibility gaps visible.
+related: []
+tags:
+- generative-verifier
+- reward-modeling
+- verification-rationales
+- synthetic-critiques
+- reference-guided-grading
+- majority-voting
+status: partial
+one_line_summary: Generative Verifiers turns answer verification into next-token SFT over direct verdicts or generated critiques
+  and releases GSM8K feedback records, but full license scope, code, checkpoints, and decontamination remain unresolved.
+why_it_matters: It makes the verifier's language target, teacher, reference guidance, filtering rule, and inference budget
+  explicit data-design choices that can be audited independently of Best-of-N scores.
+card: null
+needs:
+- needs_license_scope_for_generated_critiques
+- needs_code_and_checkpoint_verification
+- needs_decontamination_details
+- needs_immutable_release_manifest
+- needs_rejected_rationale_statistics
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_card_curator
+  confidence: high
+  notes: Official paper, venue, project, and data release are verified; artifact completeness and training-reuse clearance
+    remain partial.
+category_ids:
+- data_construction_open_release_recipes

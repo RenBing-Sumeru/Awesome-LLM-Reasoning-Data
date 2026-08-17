@@ -1,0 +1,125 @@
+id: qwq-32b-2025
+title: 'QwQ-32B: Embracing the Power of Reinforcement Learning'
+year: 2025
+venue: Qwen official blog
+authors:
+- Qwen Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+- reasoning
+- general
+- agents
+training_use:
+- sft
+- rlvr
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://qwenlm.github.io/blog/qwq-32b/
+  arxiv: null
+  code: https://github.com/QwenLM/QwQ
+  data: null
+  project: https://qwenlm.github.io/blog/qwq-32b/
+  huggingface: https://huggingface.co/Qwen/QwQ-32B
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Initial RL covers mathematics and coding tasks; the second RL stage targets general capabilities. Underlying
+    sources, counts, language mix, and licences are unknown.
+  trace_author: RL training episodes are generated from an undisclosed cold-start checkpoint or policy; trace release and
+    any human or teacher attribution are unknown.
+  answer_format: The deployed API exposes separate reasoning_content and final content streams; the training-record schema
+    is unknown.
+  process_fields:
+  - final_solution_or_code
+  - verifier_or_reward_outcome
+  environment_or_substrate: Stage one uses mathematics accuracy checking and a code-execution server against predefined tests;
+    the general-RL environment is unknown.
+  verifier_or_reward: Stage one uses an accuracy verifier for mathematics and code-execution test outcomes rather than traditional
+    reward models. Stage two uses a general reward model and some rule-based verifiers; implementations and calibration are
+    unknown.
+  terminal_predicate: Mathematics final-solution correctness and code passing predefined tests produce stage-one outcome rewards;
+    stage-two predicates, thresholds, aggregation, and retention rules are unknown.
+recipe_metadata:
+  base_model: Qwen/Qwen2.5-32B
+  teacher: unknown
+  generator: Training-policy generation within RL episodes is implied; generator checkpoints, prompts, and decoding settings
+    are unknown.
+  filtering_rule: unknown
+  sampling_protocol: A cold-start checkpoint undergoes outcome-based mathematics/code RL, followed by general-capability RL.
+    Task allocation, data mixture, counts, rollouts, and seeds are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: The model card reports 131,072-token context; the official blog demonstrates max_new_tokens=32,768. Training
+    compute and rollout budgets are unknown.
+  optimizer_or_scaffold: The model card reports SFT and RL post-training. The blog discloses cold start, stage-one outcome-based
+    mathematics/code RL, then stage-two general RL; algorithm, objective, KL, batch, step, and reward-weight details are unknown.
+audit:
+  source_mixture: 'Only task families are disclosed: mathematics, coding, and general capabilities. Dataset membership, source
+    proportions, provenance, and manifests are unknown.'
+  split: unknown
+  decontamination: unknown
+  license: Released QwQ-32B weights and the QwenLM/QwQ repository are Apache-2.0; training data, test cases, rollouts, and
+    reward-model rights are unknown.
+  lineage: Qwen2.5-32B base to undisclosed cold-start checkpoint to outcome-based mathematics/code RL to general-RL stage
+    to QwQ-32B; item-level lineage and revisions are unavailable.
+  known_failure_modes:
+  - Training prompts, data, rollouts, accepted/rejected samples, and counts are not released.
+  - Mathematics parsing, code-execution environment, test cases, verifier thresholds, and false-accept audit are unavailable.
+  - The stage-two general reward model and rule-based verifiers lack implementation, calibration, and rights disclosure.
+  - No split, decontamination, or source-rights audit is published.
+  - Official deployment guidance warns of endless repetitions or significant performance issues.
+  citation_status: verified
+  confidence: medium
+  notes: Only Qwen's official blog, QwenLM GitHub repository, and Qwen-owned Hugging Face model page were used. The Qwen2.5
+    arXiv report is base-model context, not a QwQ-32B paper.
+inclusion_reason: A high-impact open-weight reasoning-model report that explicitly identifies two outcome/reward-feedback
+  stages while leaving data, reward, verifier, and audit artifacts largely undisclosed.
+related: []
+tags:
+- qwq-32b
+- qwen
+- frontier-report
+- data-disclosure-ledger
+- rlvr
+- outcome-based-reward
+- code-execution-verifier
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: QwQ-32B discloses cold-start, outcome-based mathematics/code RL and a later general-RL stage, but withholds
+  the training data, verifier implementations, reward calibration, and audit artifacts.
+why_it_matters: It cleanly separates a public model-weight release and high-level RL narrative from the unavailable data lineage,
+  executable feedback stack, and reproducibility evidence required for reuse.
+card: null
+needs:
+- 'needs_data: mathematics/code/general prompts, rollouts, accepted/rejected outputs, and manifests'
+- 'needs_metadata: cold-start construction, SFT data, task mixture, rollout counts, decoding, optimizer, and stage budgets'
+- 'needs_verifier: math parser, code-execution environment, test cases, general reward model, rules, thresholds, and calibration
+  audit'
+- 'needs_audit: splits, decontamination, source rights, retention yields, and item-level lineage'
+- 'needs_code: training and verifier implementation beyond released evaluation code'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official Qwen release blog, QwenLM repository, and Qwen-owned model page verified; no primary paper, training-data
+    release, or feedback/audit implementation is available.

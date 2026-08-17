@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "benchmark，在线中文智能体基准，数据1080个",
+    "updated_at": "2026-07-22T09:46:58Z"
+  },
+  "updated_at": "2026-07-22T09:46:58Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

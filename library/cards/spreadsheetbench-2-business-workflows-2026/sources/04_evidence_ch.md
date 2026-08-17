@@ -1,0 +1,3 @@
+可信证据是一个公开、难度很高的 workflow-level benchmark，以及现有模型在其上的低 accuracy。论文报告 321 个任务平均有 11.8 个 worksheet、429.0 个 instruction words 和 593.5 个 modified cells；Financial Modeling 平均 15.3 sheets / 1,164.5 modified cells，Debugging 平均 21.1 sheets。
+
+主结果中最高的 Claude Opus 4.6 overall Accuracy 为 34.89%，overall Modification 为 77.20%，但 Debugging Accuracy 只有 12.00%。其他 overall Accuracy 包括 GPT-5.2 26.79%、Gemini 3.1 Pro 23.68%、GLM-5 17.14%、Deepseek-V3.2 15.58%、Kimi K2.5 14.64%、Qwen3.5-397B-A17B 11.22%、MiniMax M2.5 7.17%。GLM-5 scaffold 对比中，作者的 SWE-agent-based scaffold 为 46.32 Modification / 15.45 Accuracy，Claude Code 为 43.47 / 14.20。Spreadsheet products 只在 30-example subset 上评测，不能当成全量 benchmark 分数。证据边界包括官方 harness、API 模型版本、无网络 Docker 设置、VLM checklist judge，以及没有报告置信区间。

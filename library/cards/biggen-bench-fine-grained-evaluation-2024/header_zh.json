@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BiGGen Bench 为 77 类生成任务提供实例专属标准，以多裁判细粒度测量九种语言模型能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量表数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Seungone Kim、Juyoung Suk、Ji Yong Cho、Shayne Longpre、Chaeeun Kim、Dongkeun Yoon、Guijin Son、Yejin Cho、Sheikh Shafayat、Jinheon Baek、Sue Hyun Park、Hyeonbin Hwang、Jinkyung Jo、Hyowon Cho、Haebin Shin、Seongyun Lee、Hanseok Oh、Noah Lee、Namgyu Ho、Se June Joo、Miyoung Ko、Yoonjoo Lee、Hyungjoo Chae、Jamin Shin、Joel Jang、Seonghyeon Ye、Bill Yuchen Lin、Sean Welleck、Graham Neubig、Moontae Lee、Kyungjae Lee、Minjoon Seo",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

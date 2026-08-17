@@ -1,0 +1,5 @@
+LEAP 的贡献是在 inference time 让 Gemini 3.1 Pro 在非形式化数学规划与机器检查的 Lean artifact 之间往返，并用可复用的 AND-OR DAG 保存证明进度。系统先尝试“非形式化论证到形式化证明”的直接路径，并依据 compiler feedback 修订；若失败，则提出 informal blueprint，将其转换成 Lean proof sketch。只有 sketch 通过类型检查且状态更新保持无环，候选 lemma 才会成为子目标。共享 lemma node 可跨分支 memoization；随后以简单 DFS 和 backtracking 继续搜索，直至根目标被证明或搜索终止。（论文 §§2.2-2.5、Figures 1-2。）
+
+反馈契约包含两个不可互换的部分。Lean 能观察语法、类型、依赖，以及完整 proof 是否在当前环境中通过；对于 proof sketch，它核验“若显式提出的子 lemma 成立，则 parent goal 成立”，且 `sorry` 只能出现在这些子 lemma 的 statement 中。Lean 不能判断编码后的 theorem 是否忠实表达原始自然语言题目，也不能判断某次分解是否有搜索价值。LLM reviewer 用相关性、难度降低和可行性等 heuristic judgment 处理后一个问题，但它不能认证数学正确性，论文也未报告校准。
+
+最接近的实证对照包括 one-shot Gemini 3.1 Pro、专用 Goedel-Prover-V2-32B、将通用模型与专用 prover 结合的递归 agentic search 系统 Hilbert，以及闭源 Aristotle。LEAP 的关键差别并非新 checker 或新训练语料，而是使用 general-purpose backend、经检查的 blueprint decomposition、全局 DAG memory 和 test-time planning reviewer。Lean Blueprint、informal-to-formal planning、retrieval、compiler revision 与 proof search 均非新组件；其方向信号在于把这些组件同精确 terminal verifier 与显式计算量记录结合起来。

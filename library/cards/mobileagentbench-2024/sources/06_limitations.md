@@ -1,0 +1,5 @@
+Correctness is only as strong as each task validator and the emulator state it observes. A success label means that the validator detected the expected state under the configured task; it does not prove that every plausible user interpretation was satisfied, nor that the path was efficient or safe.
+
+The benchmark is vulnerable to runtime drift: Android image, app versions, account state, local files, seed data, UI layout changes, dependency versions, and action coordinate behavior can all change results. Visual-only and accessibility-assisted agents may see different observation channels, so their scores should not be compared without recording the interface.
+
+Official public materials do not make every reuse question explicit. The data license, full task split policy, hidden-test policy, and live-service dependence should be treated as unknown unless verified in the exact repository release being used. Public tasks can contaminate training data, and validators may miss semantic errors outside their scripted checks.

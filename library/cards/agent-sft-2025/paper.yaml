@@ -1,0 +1,121 @@
+id: agent-sft-2025
+title: 'Nex-N1: Agentic Models Trained via a Unified Ecosystem for Large-Scale Environment Construction'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Nex-AGI Team
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- English coding, research, chat, HTML generation, and tool-using agents
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.04987
+  arxiv: https://arxiv.org/abs/2512.04987
+  code: null
+  data: https://huggingface.co/datasets/nex-agi/agent-sft
+  project: null
+  huggingface: https://huggingface.co/datasets/nex-agi/agent-sft
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: queries selected from Nex-N1 environments and six capability splits
+  trace_author: DeepSeek-V3.1-Nex-N1 regenerates tool-aware multi-turn responses
+  answer_format: messages, tool definitions, uuid, and generator
+  process_fields:
+  - messages
+  - tool definitions
+  - uuid
+  - and generator
+  environment_or_substrate: English coding, research, chat, HTML generation, and tool-using agents
+  verifier_or_reward: environment-grounded trajectory generation, split-specific validity checks, and downstream agent evaluation
+  terminal_predicate: Retain records only after environment-grounded trajectory generation, split-specific validity checks,
+    and downstream agent evaluation.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: DeepSeek-V3.1-Nex-N1 regenerates tool-aware multi-turn responses
+  generator: Nex Agent-SFT reselects tasks from the Nex ecosystem, regenerates responses with a tool-capable teacher, and
+    publishes six splits under one message-and-tools contract.
+  filtering_rule: environment-grounded trajectory generation, split-specific validity checks, and downstream agent evaluation
+  sampling_protocol: queries selected from Nex-N1 environments and six capability splits
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: agent SFT
+audit:
+  source_mixture: queries selected from Nex-N1 environments and six capability splits
+  split: 'Official release scale: 69,008 records across agentic code, agent, chat, deep research, HTML, and tool-calling splits;
+    format: Parquet records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: ODC-BY
+  lineage: queries selected from Nex-N1 environments and six capability splits -> DeepSeek-V3.1-Nex-N1 regenerates tool-aware
+    multi-turn responses -> environment-grounded trajectory generation, split-specific validity checks, and downstream agent
+    evaluation -> Nex Agent-SFT -> agent SFT
+  known_failure_modes:
+  - regenerated traces can imitate teacher shortcuts instead of environment-grounded recovery
+  - the paper does not isolate the contribution of each of six splits
+  citation_status: verified
+  confidence: high
+  notes: The full 14-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: Nex Agent-SFT is a public Track 01 object containing messages, tool definitions, uuid, and generator and
+  is explicitly consumed by agent SFT.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2512.04987
+- primary-link-checked
+status: verified
+one_line_summary: Nex Agent-SFT reselects tasks from the Nex ecosystem, regenerates responses with a tool-capable teacher,
+  and publishes six splits under one message-and-tools contract.
+why_it_matters: Agent data is fragmented by environment and schema, making it hard to train one model across coding, research,
+  browsing, and tool calling.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: agent SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: English coding, research, chat, HTML generation, and tool-using agents
+  selection_priority_score: 4
+  selection_score_breakdown:
+    institution: 0
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: The primary paper did not disclose a separate institutional affiliation, so no institution score is claimed.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 1281 downloads and 119 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual Parquet records records with the checked schema and terms: ODC-BY.'
+  selection_eligible: true
+  year_impact_threshold: 2

@@ -1,0 +1,5 @@
+- Data object: an on-policy two-turn episode with both attempts, the fixed correction instruction, `r1`, `r2`, and the Stage II progress bonus.
+- Stage I improves the second turn while KL-constraining the first turn to the base model; Stage II jointly optimizes both turns.
+- Feedback is binary, answer-level, and programmatic: ground-truth matching for MATH and all-tests-pass for code, not process supervision.
+- The MATH result uses MATH train plus 4,500 former test problems for training and the remaining MATH500 for evaluation.
+- Benchmark gains test the optimization recipe; official code, raw traces, checkpoints, exact split manifest, license, and decontamination remain unconfirmed.

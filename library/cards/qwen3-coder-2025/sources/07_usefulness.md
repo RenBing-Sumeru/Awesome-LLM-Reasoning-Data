@@ -1,0 +1,3 @@
+This release is useful for auditing coding-agent announcements that offer model weights but only a high-level view of post-training. It motivates recording token scale, code share, cleaning model, task source, test construction, execution feedback, environment count, environment image, terminal predicate, reward definition, and audit artifacts as separate fields.
+
+For reuse, the official blog, repository, and model page should be treated as release context rather than as a data or environment package. A reproducible follow-up would need task and test records, images and provisioners, source and license manifests, splits and contamination controls, test and verifier error analysis, trajectory logs, and complete RL configuration.

@@ -1,0 +1,4 @@
+- The confound is driven by dilution of low-probability step-first tokens.
+- Compare DROP and CASL assumptions separately.
+- Treat selected sets as target-model and tokenizer dependent.
+- Do not equate the public multi-source datasets with exact experiment manifests.

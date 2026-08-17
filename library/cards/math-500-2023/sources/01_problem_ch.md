@@ -1,0 +1,1 @@
+一手来源是 Lightman 等人的 "Let's Verify Step by Step"（2023 年 arXiv）和 OpenAI 官方 `prm800k` 仓库。MATH-500 要解决的是用较低成本、固定的 MATH test 子集报告数学推理准确率。边界很窄：它是 evaluation subset，不是新的题源，也不是过程监督标注集。数据对象是一道 MATH 题，带最终答案和来自 MATH 的题目/解答字段，反馈契约是 final-answer grading。它的实际价值是给 verifier、PRM、推理模型论文提供常用 held-out math 坐标。

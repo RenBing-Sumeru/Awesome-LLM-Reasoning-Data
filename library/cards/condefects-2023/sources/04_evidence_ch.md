@@ -1,0 +1,1 @@
+论文层证据是 AtCoder 来源时间窗，以及每个 fault 配套 location 与 repaired code。官方仓库给出子集 checkout、执行和 coverage 收集命令，并说明 `covMatrix.txt`、`results.txt`、`testList.txt` 等输出文件。单条样本层面的决定性证据是发布测试在修复前失败、按记录修复后通过，并且 fault 元数据对应。证据受 AtCoder 数据谱系、测试可得性、选择的时间窗和 2024/6 数据更新约束。

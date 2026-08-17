@@ -1,0 +1,143 @@
+id: logics-stem-failure-driven-2026
+title: 'Logics-STEM: Empowering LLM Reasoning via Failure-Driven Post-Training and Document Knowledge Enhancement'
+year: 2026
+venue: arXiv preprint (2026)
+authors:
+- Mingyu Xu
+- Cheng Fang
+- Keyue Jiang
+- Yuqian Zheng
+- Yanghua Xiao
+- Baojian Zhou
+- Qifang Zhao
+- Suhang Zheng
+- Xiuwen Zhu
+- Jiyang Tang
+- Yongchi Zhao
+- Yijia Luo
+- Zhiqi Bai
+- Yuchi Xu
+- Wenbo Su
+- Wei Wang
+- Bing Zhao
+- Lin Qu
+- Xiaoxiao Xu
+source_role:
+- construction_recipe
+- data_release
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- stem-reasoning
+training_use:
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2601.01562
+  arxiv: https://arxiv.org/abs/2601.01562
+  code: null
+  data: https://huggingface.co/datasets/Logics-MLLM/Logics-STEM-SFT-Dataset-Open-5.3M
+  project: null
+  huggingface: https://huggingface.co/Logics-MLLM
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Aggregated public STEM questions plus document-derived synthetic questions.
+  trace_author: Qwen3-235B-A22B-Thinking-2507 distills long-CoT responses after Qwen3-235B-Instruct annotation.
+  answer_format: Question, metadata, long-CoT response, and a final answer or verifiable-answer field.
+  process_fields:
+  - source question and provenance
+  - domain, level, answer type, and validity annotations
+  - distilled long reasoning response
+  - final answer and optional verification result
+  - sampling stratum
+  environment_or_substrate: Static STEM corpora and educational documents parsed by Logics-Parsing.
+  verifier_or_reward: Validity annotation, exact/near deduplication, benchmark decontamination, optional Math-Verify, and
+    RLVR answer reward.
+  terminal_predicate: Invalid or ambiguous questions and repetitive responses are removed; incorrect distilled answers may
+    be regenerated once but are not categorically discarded.
+recipe_metadata:
+  base_model: Qwen3-8B and Qwen3-32B.
+  teacher: Qwen3-235B-Instruct-2507 for annotation and Qwen3-235B-A22B-Thinking-2507 for response distillation.
+  generator: Aggregate, annotate, deduplicate, decontaminate, distill, then stratify by response length; second-stage data
+    target model failures through document retrieval.
+  filtering_rule: MD5 and MinHash deduplication, 13-gram benchmark decontamination, repetition filtering, and length-based
+    stratified sampling.
+  sampling_protocol: Keep all records above the 75th response-length percentile, 50% of the 50th-75th band, and 10% of the
+    20th-50th band.
+  rollout_count: 16
+  temperature: null
+  inference_budget: Competition benchmarks use 16 generations; larger or easier sets use up to four.
+  optimizer_or_scaffold: First-stage SFT followed by failure-driven SFT or RLVR with retrieved document synthesis.
+audit:
+  source_mixture: Public Hugging Face sources and document-derived questions; early synthetic and multimodal subsets are excluded.
+  split: 7.2M curated records before stratified sampling, 2.2M selected for SFT; open releases contain 5.3M and 1.6M records
+    after private exclusions/downsampling.
+  decontamination: MinHash-bucket and identical 13-gram overlap with evaluation samples are removed.
+  license: Hugging Face dataset card declares CC BY-NC 4.0.
+  lineage: Source aggregation is reduced from 15.25M questions through curation and teacher distillation.
+  known_failure_modes:
+  - The open release excludes a private portion, so the exact training mixture is not fully reproducible.
+  - Incorrect teacher responses are not always filtered, and failure-driven synthesis can overfit benchmark-shaped regions.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v3 PDF and the official Hugging Face dataset/model links embedded in the PDF were checked on 2026-07-13. PDF
+    affiliations were used; no peer-reviewed acceptance was found.
+inclusion_reason: Provides a large long-CoT corpus and a failure-driven recipe that turns model errors plus retrieved documents
+  into targeted second-stage data.
+related: []
+tags:
+- long-cot-data
+- stem
+- failure-driven-post-training
+status: verified
+one_line_summary: Logics-STEM curates millions of long-CoT STEM records and uses model failures to retrieve documents and
+  synthesize targeted data for a second SFT or RLVR stage.
+why_it_matters: It links large-scale data curation, explicit decontamination, sampling, and failure-targeted post-training
+  in one disclosed pipeline.
+reading_priority: recommended
+paper_type: STEM long-CoT dataset and failure-driven post-training report
+best_for: Researchers curating large STEM reasoning mixtures or targeting second-stage training at model failures.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Paper, two public dataset variants, and 8B SFT/RL model pages are directly linked from the official PDF.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-c-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: failure-driven STEM long-CoT SFT data
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: The PDF lists Alibaba Group, Fudan University, Georgia Institute of Technology, and Nankai University.
+    venue: Only the arXiv preprint was confirmed; no official peer-reviewed acceptance or distinguished presentation was found.
+    impact: Official API checked 2026-07-13; the public 5.3M-record dataset had 118 Hugging Face downloads, an early use signal
+      for a 2026 release.
+    artifact: The official Hugging Face release provides 5.3M and 1.6M dataset variants, model pages, scale and use documentation,
+      and a CC BY-NC 4.0 license.
+  selection_eligible: true
+  year_impact_threshold: 1

@@ -1,0 +1,1 @@
+1. Define six code-expressible criteria. 2. Prompt an LLM to synthesize diverse executable judge programs. 3. Run programs locally over answer pairs. 4. Use weak supervision to combine noisy, complementary program labels; optionally distill judgments into a model. Program correctness, sandboxing, criteria, and aggregation model are the critical reproducibility checks.

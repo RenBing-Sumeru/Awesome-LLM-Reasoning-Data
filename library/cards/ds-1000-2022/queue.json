@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:08:30Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数据科学代码生成中的经典指标 ref571",
+    "updated_at": "2026-07-15T12:08:30Z"
+  }
+}

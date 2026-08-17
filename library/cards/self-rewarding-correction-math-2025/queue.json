@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "自纠正相关，数据量充足，有代码和数据",
+    "updated_at": "2026-07-14T14:02:40Z"
+  },
+  "updated_at": "2026-07-14T14:02:40Z"
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AndroidDaily 在 94 个闭源 Android 应用上以 350 项真实设备任务评测移动 GUI agent，并用 GRADE 将准则约束与完整视觉动作轨迹转成步骤诊断和最终成败判定，但当前发布入口与许可尚未核实。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "移动 GUI agent 基准与轨迹评估方法",
+  "best_for_ch": "研究移动 agent 环境、轨迹反馈契约、VLM judge 与可复现实机评测的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yifan Sui, Xin Huang, Hongbing Li, Fang Xu, Jiahe Lv, Haolong Yan, Yeqing Shen, Litao Liu, Zhimin Fan, Ziyang Meng, Jia Wang, Junbo Qi, Kaijun Tan, Zheng Ge, Xiangyu Zhang, Daxin Jiang, Osamu Yoshie",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

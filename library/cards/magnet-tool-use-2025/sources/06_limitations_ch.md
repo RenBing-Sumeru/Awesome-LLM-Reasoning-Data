@@ -1,0 +1,6 @@
+- **环境回放受阻。** 论文描述可执行调用，却未发布 API 实现/版本清单、tool service、response snapshot 或 replay log。改写 BFCL-v3 名称/描述也使发布记录无法直接与原环境匹配。
+- **反馈可能失效。** 经模拟测试的函数可用性不能验证生成的 query、参数值、摘要或多轮状态。Gemini 的相对参考判断可能产生 false positive/negative，关键词过滤也只是粗略排除。没有发布校准结果或逐轮接受记录。
+- **偏好对溯源不完整。** 每个实例采样 10 条 SFT rollout，但其 ID、解码设置、被拒动作、judge 决定以及最终负轨迹链接均不可得。无法区分自然模型失败的覆盖与错误 hint 造成的 artifact。
+- **范围有限且作者披露了行为失败。** 作者称 signature 主要是英语和纯文本；他们观察到训练后的模型可能偏向内部知识而忽视冲突的 tool output，且训练中没有 reflection-and-restart exploration 数据。（Limitations）
+- **评测不是数据质量证明。** BFCL-v3 和 ToolQuery 分数是聚合结果。附录 C 的 FSP 研究不能证明没有 query/trajectory overlap；ToolQuery 的 unseen-function 断言也无法在没有构造记录时检查。
+- **权利 unknown。** 作者发布物未披露经转换的 StableToolBench/BFCL-v3 函数、生成轨迹、teacher 输出和模型 artifact 的许可及再分发条款。

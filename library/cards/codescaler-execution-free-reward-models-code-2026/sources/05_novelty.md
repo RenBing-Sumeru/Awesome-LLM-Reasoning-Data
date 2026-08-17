@@ -1,0 +1,1 @@
+Prior code rewards either execute tests online or use generic RMs without code-specific constraints. CodeScaler first uses execution offline to define reliable preferences, then learns a deployable execution-free proxy with explicit handling of code extraction and invalid outputs.

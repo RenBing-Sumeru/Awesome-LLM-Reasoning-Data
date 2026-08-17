@@ -1,0 +1,9 @@
+最强的 release evidence 来自结构，而不是 model score。在审计的 commit `7022ef0529bbff4901084f17e452eb49cad5fffc` 上，official repository 包含 raw train/test environment JSONL、有状态 trajectory sampler、substring verifier 与 deterministic reward implementation、6 个 Qwen2.5/Qwen3 GRPO/Reinforce++ script，以及 evaluation data/code。200-row custom test file 经解析后确认四种 scenario structure 各 50 条。更大的 train file 与公开 row schema 一致，而论文 Table 1 报告 2,215 个 train environment，分布为 500/500/500/715。这核验了 task/environment release shape，并不证明存在 2,215 条完整 trajectory。
+
+论文 Table 2 报告：所有展示的 7B/14B 训练 variant 的 overall tool-use average 都高于对应 base。一个具体条件是 Qwen3-8B non-reasoning mode 使用 GRPO 训练后为 **45.43 overall，而 base model 为 31.01**。该比较覆盖作者设置下的 custom in-domain test surface 与所报告的 external tool-use evaluation。它支持这套 environment/reward recipe 的 policy-performance claim；不能据此证明公开 row 已正确授权、无 contamination、经 semantic verification，或足以重放论文结果。
+
+reward ablation 提供了更具诊断性的结果。作者报告，precision-only objective 会使 task 保持未完成，而 completion-only objective 会鼓励过量 tool use；组合 reward 在 tool-call precision 与 completion 之间取得更好平衡（Section 6，Figure 4）。这直接解释了 `2q/(p+1)` 的设计：奖励新解决的 subquestion，同时通过分母惩罚额外 call。它也记录了一种 reward-gaming mode：单独使用 completion signal 可能改变调用频率，却不一定改善有约束的 tool selection。
+
+关于 general capability，作者报告在 6 个 public benchmark 上没有退化（Table 4 与 Figure 3）。这是 author-reported claim，本 Card 没有独立复现。只能在论文测试的 model、checkpoint、metric 与 budget 范围内理解，不能外推为广泛保持 reasoning、safety 或 factuality。
+
+negative 与 boundary evidence 同样重要。论文 limitations 指出，该方法对 tool invocation 的改善大于对底层 reasoning 的改善，现有 reasoning pattern 与 tool use 仍缺乏良好对齐。repository 还显示，final-answer substring containment 可能在没有证明 semantic correctness 时给出正 reward，而 sampler 不保留 terminal no-tool response。没有生成 trajectory corpus、准确 trained checkpoint 或 immutable run manifest，可供独立重编码 success、failure 或 paper-table result。

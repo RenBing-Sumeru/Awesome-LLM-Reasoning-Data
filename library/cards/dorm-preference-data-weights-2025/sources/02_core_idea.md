@@ -1,0 +1,3 @@
+DORM distinguishes informative uncertainty from likely annotation noise. Monte Carlo dropout estimates whether a reward model is uncertain about a record; disagreement measures the gap between the expected prediction and the provided label. Its prior weight grows with uncertainty but shrinks with disagreement, so a hard reliable example is not treated like a suspicious label.
+
+The prior is only a starting point. A bilevel procedure learns weights that improve a high-quality validation set while regularizing them toward those quality estimates. Data importance is therefore a dynamic training variable, and the reward model consumes a weighted mixture rather than a fixed curated subset.

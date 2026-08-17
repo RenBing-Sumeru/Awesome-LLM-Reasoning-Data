@@ -1,0 +1,3 @@
+Zhen Huang, Zengzhi Wang, Shijie Xia, Xuefeng Li, Haoyang Zou, Ruijie Xu, Run-Ze Fan, Lyumanshan Ye, Ethan Chern, Yixin Ye, Yikai Zhang, Yuqing Yang, Ting Wu, Binjie Wang, Shichao Sun, Yang Xiao, Yiyuan Li, Fan Zhou, Steffi Chern, Yiwei Qin, Yan Ma, Jiadi Su, Yixiu Liu, Yuxiang Zheng, Shaoting Zhang, Dahua Lin, Yu Qiao, and Pengfei Liu. "OlympicArena: Benchmarking Multi-discipline Cognitive Reasoning for Superintelligent AI." NeurIPS 2024 Datasets and Benchmarks Track Poster / arXiv:2406.12753, 2024. https://arxiv.org/abs/2406.12753
+
+Official artifacts: project page, https://gair-nlp.github.io/OlympicArena/ ; repository, https://github.com/GAIR-NLP/OlympicArena ; dataset, https://huggingface.co/datasets/GAIR/OlympicArena

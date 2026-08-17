@@ -1,0 +1,5 @@
+- Read Section 4.2 with Appendix A.1 and Table 10: `h(c)` is not specified consistently, so the critique reward cannot be reconstructed from prose alone.
+- Keep the two data phases separate: 60K teacher-generated/post-validated Pair-SFT examples initialize the policy; Numina-CoT prompts then produce on-policy PPO episodes.
+- Interpret 4 critiques times 8 corrections as 32 correction rollouts per reasoning episode, not as 32 independent source questions.
+- Read Table 2 as both benefit and failure evidence: wrong-to-correct transitions rise, but correct-to-wrong transitions remain 3.0% for DeepSeek and 6.4% for Qwen.
+- Treat GitHub commit `4a24ea4` as a placeholder release containing only a license and gitignore; do not infer code, data, checkpoints, or an implemented verifier.

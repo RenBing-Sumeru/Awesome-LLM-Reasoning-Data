@@ -1,0 +1,5 @@
+- Read Algorithm 1 and Table 1 together: Error triggers repair, whereas False drives data routing; the two states are not interchangeable.
+- Compare the 60%→87% execution result with Table 4 and Appendix J: executable formalisation can still be semantically misaligned.
+- Use Table 8 to reconcile the data object: 2,562 SFT responses plus 473 DPO pairs (946 responses) equals 3,508 records.
+- Treat Table 2 as mixed downstream evidence; several model-task combinations decline, and most reported numbers lack multi-seed uncertainty.
+- Before reuse, resolve the unavailable repository, exact Lean environment, paper-internal procedural discrepancies, inherited licenses, and missing lineage/decontamination manifests.

@@ -1,0 +1,6 @@
+- 区分部署时自行生成的`[VERIFY]`标签与训练时ToRA/SymPy正确性oracle。
+- 把含`gt`与三条消息`conversations`的31,990行视为最终公开IFT对象,不要当作全部候选或RL数据。
+- 不要用50K、40K、16.3K和31,990相减推导拒绝数;官方artifact没有对照清单。
+- 跟踪DPO仅40%-60%的提示利用率,以及错误答案识别远低于正确答案识别的问题。
+- 把修改后PPO的reward-hacking结果视为警告:多轮正确性bonus可能诱发故意首步失败。
+- 将rollout数量、构造解码、去污染、许可证、checkpoint映射和端到端lineage保留为unknown;把官方仓库视为partial recipe而非turnkey build,因为核验到的首个提示准备脚本有语法错误,后续脚本还需要替换路径。

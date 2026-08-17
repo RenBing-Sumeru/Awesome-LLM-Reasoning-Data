@@ -1,0 +1,150 @@
+id: openai-deep-research-system-card-2025
+title: Deep Research System Card
+year: 2025
+venue: OpenAI system card
+authors:
+- OpenAI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- general_reasoning
+- web_browsing
+- agentic_tool_use
+- safety
+training_use:
+- rlvr
+- safety_alignment
+- evaluation
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/deep-research-system-card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/introducing-deep-research/
+  huggingface: null
+  doi: null
+  venue: https://openai.com/index/deep-research-system-card/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: OpenAI says new browsing datasets were created specifically for research use cases, alongside existing safety
+    datasets reused from o1 training and new browsing-specific safety datasets. Task sources, prompt authorship, corpus membership,
+    proportions, licenses, revisions, and manifests are unknown.
+  trace_author: The report says the deep research model produces responses on browsing tasks and that a chain-of-thought model
+    grades responses. Task authors, browsing-trajectory retention, response-generator checkpoint details, grader identity,
+    and item-level provenance are unknown.
+  answer_format: Disclosed training-task elements are objective auto-gradable tasks with ground-truth answers and open-ended
+    tasks with grading rubrics; the exact record schema, browser observations/actions, Python inputs/outputs, report/citation
+    format, and retained fields are unknown.
+  process_fields:
+  - task
+  - ground_truth_answer_or_rubric
+  - model_response
+  - grader_output
+  environment_or_substrate: The model learns searching, clicking, scrolling, file interpretation, and sandboxed Python use
+    for calculations, analysis, and plotting. Browser/tool schemas, web snapshots, sandbox/container versions, action logs,
+    reset behavior, and replay artifacts are unknown.
+  verifier_or_reward: During RL training on browsing tasks, responses are graded against ground-truth answers or rubrics using
+    a chain-of-thought model as grader. The reward representation, aggregation, grader checkpoint/prompt, calibration, thresholds,
+    error rates, and relationship to separate safety evaluations are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: An early version of OpenAI o3 optimized for web browsing; checkpoint identity, model size, initialization, and
+    post-training allocation are unknown.
+  teacher: unknown
+  generator: The report identifies model responses on browsing tasks but does not identify task generators, prompt writers,
+    browser-state generators, or trajectory-generation policy.
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: The report evaluates several capability-elicitation settings, including with and without browsing, but
+    does not disclose training rollout budgets, search limits, decoding parameters, or a reproducible inference-budget protocol.
+  optimizer_or_scaffold: Reinforcement learning on browsing tasks is disclosed. The objective, optimizer, reward mixing, rollout
+    policy, safety-data schedule, gradient settings, and checkpoint-selection procedure are unknown.
+audit:
+  source_mixture: 'The card names three high-level groups: new browsing datasets, existing o1 safety datasets, and new browsing-specific
+    safety datasets. Dataset counts, task families, source-level mixture, provenance, rights, revision pins, and item-level
+    manifests are unknown.'
+  split: The card describes safety, red-team, and Preparedness evaluations, but no training/validation/test memberships, split
+    sizes, revision pins, or separation policy for the browsing datasets are released.
+  decontamination: The report analyzes browsing-based contamination in CTF evaluations and filters evaluation trajectories
+    that found online hints or solutions. This is an evaluation-specific analysis, not a disclosed training-data decontamination
+    procedure.
+  license: No browsing-training dataset, safety-data, trajectory, grader, code, or reproduction package is released in the
+    cited official sources; their licenses and underlying source rights are unknown.
+  lineage: The system card supports report-level lineage from an early o3 version through browsing-task RL and added safety
+    training to the launched post-mitigation deep research model, but provides no source-to-task-to-trajectory-to-grade-to-checkpoint
+    records.
+  known_failure_modes:
+  - Browsing exposes the model to malicious instructions; the card reports prompt-injection attacks and residual post-mitigation
+    attack success on some text and multimodal tests.
+  - External red teamers circumvented some refusals with targeted jailbreaks and adversarial tactics; examples, prevalence,
+    and post-deployment incidence are not released.
+  - 'Browsing can contaminate evaluation: the report found trajectories retrieving online CTF hints or full flags, and performance
+    declined after such trajectories were removed.'
+  - The chain-of-thought grader, rubrics, browser-task data, safety datasets, and reward transformation are not released,
+    preventing independent verification of feedback quality, calibration, or reward-hacking exposure.
+  - The card notes hallucinations about external-tool access or native capabilities and says some evaluation test-set facts
+    were outdated.
+  citation_status: verified
+  confidence: high
+  notes: This conservative Track 12 ledger separates disclosed training feedback (ground truth/rubric grading during browsing-task
+    RL) from safety mitigations and evaluation datasets. It does not treat the system card as a released browsing corpus,
+    trajectory dataset, environment, or reproducible training recipe.
+inclusion_reason: A frontier system card that directly discloses browsing-task RL, answer/rubric grading by a chain-of-thought
+  model, reused and browsing-specific safety datasets, and browser-contamination analysis while withholding the records and
+  controls required to audit the data/reward pipeline.
+related: []
+tags:
+- openai
+- deep-research
+- o3
+- system-card
+- frontier-report
+- data-disclosure-ledger
+- web-browsing
+- reinforcement-learning
+- prompt-injection
+- safety
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's Deep Research System Card discloses browsing-task reinforcement learning with ground-truth or rubric
+  grading by a chain-of-thought model and added browsing safety data, but not the datasets, trajectories, graders, reward
+  design, or reproducibility artifacts.
+why_it_matters: 'It is a direct Track 12 disclosure of an agentic browsing post-training interface: it identifies the high-level
+  task and feedback contracts while making the missing provenance, reward, environment, and contamination evidence explicit.'
+card: null
+needs:
+- 'needs_data: browsing tasks, safety datasets, task/rubric sources, browser/Python trajectories, manifests, revisions, source
+  rights, and split membership'
+- 'needs_verifier: ground-truth extractors, rubric specifications, chain-of-thought grader identity/prompts/versions, reward
+  transformation, calibration, and error analysis'
+- 'needs_metadata: sampling and rollout budgets, browser/tool schemas, web snapshots, sandbox/container pins, optimizer settings,
+  data yields, and checkpoint selection'
+- 'needs_audit: training-data decontamination, benchmark overlap, retained failure trajectories, prompt-injection corpus provenance,
+  evaluation instances, and reproducible logs'
+- 'needs_code: training, browser environment, sandbox, grader, mitigation, and evaluation implementations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official OpenAI system-card landing page, official PDF, and official launch announcement were checked. No official
+    code, data, or reproducibility artifact is claimed.

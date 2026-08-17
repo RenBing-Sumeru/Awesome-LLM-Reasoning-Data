@@ -1,0 +1,1 @@
+The contribution is an inspectable mixture that places filtered teacher rollouts beside programmatic, engine-valued search traces and short engine targets, then connects these data objects to SFT and chess-engine-verifiable RL. Its value for this track is the explicit distinction between selection rules, generated targets, and an LLM-based faithfulness analysis.

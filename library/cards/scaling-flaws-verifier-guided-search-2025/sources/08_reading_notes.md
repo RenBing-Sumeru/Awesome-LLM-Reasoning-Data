@@ -1,0 +1,3 @@
+- An audit of how imperfect outcome and process verifiers fail when their scores drive larger reasoning searches.
+- Feedback boundary: Outcome verifiers and process reward models score candidates programmatically, but the paper studies cases where their selections and pruning decisions are wrong.
+- Audit boundary: Scores are imperfect proxies for correctness; selection and pruning can discard correct traces, and code/data/trace releases were not confirmed.

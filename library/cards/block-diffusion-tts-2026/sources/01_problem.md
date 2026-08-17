@@ -1,0 +1,3 @@
+Most test-time scaling studies add autoregressive samples, branches, or verifier calls. Block diffusion language models offer parallel denoising and flexible generation blocks, but long reasoning makes their trade-off sharper: too much denoising is slow, while large blocks can accumulate errors and too little exploration can miss a solution.
+
+This paper asks how a block diffusion reasoner should spend inference work on difficult chain-of-thought tasks. It treats both local decoding effort and the granularity of a reasoning block as allocation choices, seeking a procedure that accelerates easy portions without sacrificing the fine correction needed near an uncertain conclusion.

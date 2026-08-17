@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "围绕约 334 万条有来源的查询生成约 4000 万条多教师响应，并以分类型验证器给出难度信号；但官方数据卡说明公开内容仅是完整数据的子集。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理数据发布与构造配方",
+  "best_for_ch": "研究开放推理数据、教师蒸馏、难度分级、混合验证器与数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoyu Tian、Sitong Zhao、Haotian Wang、Shuaiting Chen、Yiping Peng、Yunjie Ji、Han Zhao、Xiangang Li",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

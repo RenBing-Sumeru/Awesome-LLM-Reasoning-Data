@@ -1,0 +1,7 @@
+AgentTrek is useful as a tutorial-to-trajectory construction blueprint. A builder can separate source discovery, task structuring, environment execution, episode judgment, and SFT serialization, then define a measurable contract for each stage. The paper directly supports supervised fine-tuning and agent training for text and vision GUI agents; it does not support preference learning, reward-model training, process supervision, or RLVR.
+
+The Card clarifies that release units must be named precisely. A trajectory release needs stable episode IDs, source/task provenance, ordered observations/actions, outcomes, failures, environment timestamps, and subset membership. A turn-level `messages` table can support SFT, but cannot answer episode-level audit questions without a mapping manifest.
+
+For verifier research, the published GPT-4o prompt shows how operational success criteria shape accepted data. Releasing the 1,081/558 human-reviewed records, numeric confusion matrix, site/category slices, and false-positive/negative examples would make the judge auditable and clarify exact completion versus useful partial progress.
+
+Reuse class: **reading/audit reference and independent reconstruction blueprint; direct use of the HF text turns requires separate license, provenance, privacy, contamination, and schema review, while faithful paper reproduction is blocked**. Paper, code, data, and model URLs exist, but artifact presence must not be conflated with a complete trajectory release, reproducibility, or safe reuse.

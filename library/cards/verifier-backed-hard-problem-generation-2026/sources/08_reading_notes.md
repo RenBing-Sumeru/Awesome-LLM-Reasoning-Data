@@ -1,0 +1,5 @@
+- Keep hard SymPy verification separate from soft GPT-5.4 judgment.
+- Read Solver failure as local difficulty, not intrinsic hardness.
+- Follow every funnel count and note the unexplained selection stage.
+- Verifier gating moves reward hacking to the acceptance boundary.
+- Aggregate counts do not substitute for released accepted/rejected records.

@@ -1,0 +1,1 @@
+Use it to compare rollout/search/selection contracts. It exposes a compact selection contract—candidate set, PRM score, threshold, and retained label—whose omitted negatives and update order materially affect auditability.

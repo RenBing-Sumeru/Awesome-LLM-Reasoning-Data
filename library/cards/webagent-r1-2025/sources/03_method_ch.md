@@ -1,0 +1,6 @@
+
+WebArena-Lite 在一个接近真实、可自托管的浏览器环境中覆盖 Reddit、GitLab、CMS、Map 和 Shopping。每个任务被表述为 POMDP。每一轮中，模型读取纯文本 HTML 与交互 history，输出一个 Python 风格 action，例如 Click、Type、Search、Scroll、Switch Tab 或 exit，并接收下一页面状态。默认 prompt 用 `think` 标签包裹简短推理，用 `answer` 标签包裹 action。episode 在成功、达到交互上限或执行 exit 时结束。较早的 HTML 会被动态压缩为“Simplified HTML”表示，但完整 action history 仍被保留。
+
+Warm-up 使用公开的 9,460 条轨迹，它们来自 1,186 个有效 program-solver 样本。主 RL split 包含 647 个任务，另有 165 个人工核验任务留作评估。多个浏览器实例从同一起始页面出发，为每个任务生成一组彼此独立的 current-policy episode。rollout temperature 与 top-p 都为 1.0，但论文正文没有报告 group size、在线轨迹总数、随机种子、任务调度和默认最大交互次数。每个 episode 由 task-specific string、URL 或终局状态程序检查器返回二元奖励；M-GRPO 据此计算组内相对 advantage，且论文未报告 replay-buffer 或 rollout-filter 阶段。
+
+两个 backbone 都使用 instruction-tuned 版本。论文在单节点 8 张 80 GB NVIDIA A100 上做全参数训练，并使用 DeepSpeed ZeRO-3 offload、gradient checkpointing、FlashAttention-2 与 bf16。SFT 的 learning rate 为 5e-5、batch size 为 128，使用 cosine schedule 与 5% warm-up；RL 的 learning rate 为 1e-6、batch size 为 16、KL coefficient 为 0.001、clip ratio 为 0.2，maximum context 为 16,384，maximum new tokens 为 1,024。QwQ-32B 只在 WebAgent-R1-CoT 变体中，为现有 BC 字段补写第一人称解释性 CoT。官方仓库提供嵌套的环境搭建、训练、verifier 与评估代码，但 README 没有给出固定 revision 的运行清单、在线轨迹、训练后 checkpoint 或不可变 WebArena snapshot。

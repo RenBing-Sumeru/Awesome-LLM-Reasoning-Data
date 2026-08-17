@@ -1,0 +1,2 @@
+Existing geolocation benchmarks usually measure distance error or country/city accuracy, while visual chain-of-thought data is often generated automatically by models. GeoRC instead provides multiple auditable reasoning chains from genuine domain experts and evaluates the reliability of the judges themselves. It does more than add an “explain your answer” field: the evaluation surface combines expert evidence chains, step matching, human scores, and judge correlation to detect cases where the location is correct but the visual justification is false.
+

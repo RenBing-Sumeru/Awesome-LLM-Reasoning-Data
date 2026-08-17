@@ -1,0 +1,119 @@
+id: zero-shot-cot-2022
+title: Large Language Models are Zero-Shot Reasoners
+year: 2022
+venue: NeurIPS 2022
+authors:
+- Takeshi Kojima
+- Shixiang Shane Gu
+- Machel Reid
+- Yutaka Matsuo
+- Yusuke Iwasawa
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- large-language-models
+- chain-of-thought-and-rationale-targets
+training_use:
+- sft
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2205.11916
+  arxiv: https://arxiv.org/abs/2205.11916
+  code: https://github.com/kojima-takeshi188/zero_shot_cot
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A task question, a generic cue such as 'Let's think step by step,' a generated rationale, and an extracted
+    final answer.
+  trace_author: The queried frozen language model generates both the free-form rationale and extracted answer.
+  answer_format: A free-form rationale followed by a task-specific final answer extracted in a second model call.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Answer-keyed arithmetic, symbolic, commonsense, and logical reasoning benchmarks evaluated at
+    inference time.
+  verifier_or_reward: Task answer matching supplies the only correctness signal; the generated rationale is neither human-authored
+    nor step-verified.
+  terminal_predicate: The parsed final answer matches the benchmark's gold answer; rationale steps are not checked.
+recipe_metadata:
+  base_model: text-davinci-002 for the main reported results, with additional GPT-3-family scale comparisons.
+  teacher: The same frozen queried model supplies the rationale and final answer; no separate teacher is trained.
+  generator: First prompts the model to generate a rationale with a generic cue, then uses that rationale in a second prompt
+    to extract the answer.
+  filtering_rule: Task answer matching supplies the only correctness signal; the generated rationale is neither human-authored
+    nor step-verified.
+  sampling_protocol: 'Two-stage zero-shot prompting: generate reasoning with a generic cue, then condition on that reasoning
+    to extract the answer.'
+  rollout_count: null
+  temperature: null
+  inference_budget: One rationale-generation call and one answer-extraction call per question under task-specific decoding
+    limits.
+  optimizer_or_scaffold: First prompts the model to generate a rationale with a generic cue, then uses that rationale in a
+    second prompt to extract the answer.
+audit:
+  source_mixture: A task question, a generic cue such as 'Let's think step by step,' a generated rationale, and an extracted
+    final answer.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'chain-of-thought and rationale targets lineage; closest comparisons: chain-of-thought-prompting-2022, automatic-cot-2022.'
+  known_failure_modes:
+  - Performance is prompt- and model-sensitive, answer extraction can fail, and plausible rationales may rationalize an incorrect
+    process.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS 2022 paper, arXiv version, and authors' code repository checked; affiliations are The University
+    of Tokyo and Google Research.
+inclusion_reason: Zero-shot-CoT shows that a short reasoning cue can elicit step-by-step traces without hand-written exemplars.
+related:
+- chain-of-thought-prompting-2022
+- automatic-cot-2022
+tags:
+- chain-of-thought-and-rationale-targets
+- arxiv-2205.11916
+- primary-link-checked
+status: verified
+one_line_summary: Zero-shot-CoT uses a generic cue and a second answer-extraction call to elicit test-time rationales without
+  demonstrations.
+why_it_matters: It defines a minimal visible-rationale baseline while exposing the gap between answer accuracy and step validity.
+reading_priority: must read
+paper_type: Zero-shot chain-of-thought elicitation
+best_for: Researchers establishing a minimal inference-time rationale baseline without hand-written demonstrations.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS 2022 paper, arXiv version, and authors' code repository were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: chain-of-thought and rationale targets
+  selection_priority_score: 11
+  selection_score_breakdown:
+    recency: 1
+    impact: 5
+    venue: 3
+    institution: 2

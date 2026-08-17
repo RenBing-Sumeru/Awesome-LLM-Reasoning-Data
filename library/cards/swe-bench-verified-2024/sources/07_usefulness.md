@@ -1,0 +1,3 @@
+This card is useful for readers studying terminal, SWE, office, desktop/web automation, and professional-work agent environments. It helps compare how benchmarks define state, action, tools, trajectories, feedback, and success predicates.
+
+Practical reuse starts from official artifacts: project: https://openai.com/index/introducing-swe-bench-verified/; code: https://github.com/SWE-bench/SWE-bench; data: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified; huggingface: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified. Run a minimal task first and confirm that the environment starts, actions execute, and scoring reproduces.

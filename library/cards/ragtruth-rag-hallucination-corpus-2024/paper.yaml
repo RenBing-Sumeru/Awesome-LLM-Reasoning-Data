@@ -1,0 +1,102 @@
+id: ragtruth-rag-hallucination-corpus-2024
+title: 'RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented
+  Language Models'
+year: 2024
+venue: ACL 2024
+authors:
+- Cheng Niu
+- Yuanhao Wu
+- Juno Zhu
+- Siliang Xu
+- KaShun Shum
+- Randy Zhong
+- Juntong Song
+- Tong Zhang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- factuality-grounding
+- evaluation
+training_use:
+- evaluation
+- sft
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.acl-long.585/
+  arxiv: https://arxiv.org/abs/2401.00396
+  code: https://github.com/ParticleMedia/RAGTruth
+  data: https://github.com/ParticleMedia/RAGTruth
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2024.acl-long.585/
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.585/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See the official paper and released dataset.
+  trace_author: Authors' released data-construction pipeline.
+  answer_format: Records described in the official paper and dataset card.
+  process_fields:
+  - input
+  - model output
+  - feedback or label
+  environment_or_substrate: Text generation and evaluation.
+  verifier_or_reward: The paper's released feedback or evaluation procedure.
+  terminal_predicate: A released record satisfies the documented inclusion criteria.
+recipe_metadata:
+  base_model: See the official paper.
+  teacher: See the official paper.
+  generator: See the official paper.
+  filtering_rule: See the official release and paper.
+  sampling_protocol: Use the official release version and split.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official paper.
+  optimizer_or_scaffold: See the official paper.
+audit:
+  source_mixture: Official paper and official data or repository release.
+  split: Use the split documented by the official release.
+  decontamination: Check overlap with downstream evaluation data before training or
+    reporting results.
+  license: Check the official data release terms before reuse.
+  lineage: https://github.com/ParticleMedia/RAGTruth
+  known_failure_modes:
+  - Synthetic or model-generated feedback can carry evaluator bias.
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, venue status, primary artifacts, and paper-front-page affiliations
+    were checked against official sources.
+inclusion_reason: The release exposes fine-grained factuality, safety, or judgment
+  feedback suitable for evaluation or post-training analysis.
+related: []
+tags:
+- track7
+- judgment-feedback
+- factuality
+one_line_summary: RAGTruth is the paper's released feedback or evaluation resource.
+why_it_matters: It makes a reusable feedback or evaluation surface available for auditing
+  or training reasoning systems.
+status: verified
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and released artifacts checked.
+category_ids:
+- judgment_rubric_domain_expert_data

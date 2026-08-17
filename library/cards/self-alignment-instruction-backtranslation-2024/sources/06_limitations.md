@@ -1,0 +1,1 @@
+Generated instructions can misrepresent a document, and self-curation can systematically favor the seed model’s own style. Web data introduces quality, privacy, licensing, and contamination risks; iteration can improve labeling but can also magnify early selection bias unless corpus provenance and held-out evaluation are carefully controlled.

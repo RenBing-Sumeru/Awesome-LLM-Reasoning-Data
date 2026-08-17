@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SmolTalk 用统一对话结构汇集约 110 万条指令记录，并通过消融与人工复核调整小模型的后训练配比。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "SmolLM2 的指令监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Loubna Ben Allal、Anton Lozhkov、Elie Bakouch、Gabriel Martín Blázquez、Guilherme Penedo、Lewis Tunstall、Andrés Marafioti、Hynek Kydlíček、Agustín Piqueres Lajarín、Vaibhav Srivastav、Joshua Lochner、Caleb Fahlgren、Xuan-Son Nguyen、Clémentine Fourrier、Ben Burtenshaw、Hugo Larcher、Haojun Zhao、Cyril Zakka、Mathieu Morlon、Colin Raffel、Leandro von Werra、Thomas Wolf",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

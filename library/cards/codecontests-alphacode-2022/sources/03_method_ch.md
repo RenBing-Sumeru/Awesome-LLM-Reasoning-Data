@@ -1,0 +1,1 @@
+1. 输入：来自 Aizu、AtCoder、CodeChef、Codeforces、HackerEarth 的竞赛题面，配套输入输出测试和人类提交。2. 数据发布：记录是 Riegeli 编码的 ContestProblem protocol buffers，含 train/valid/test split，完整数据约 3 GiB。3. AlphaCode 系统：训练模型，大量采样候选程序，执行/过滤候选，按行为聚类相似程序，最终最多提交 10 个。4. verifier：在发布 sandbox 或竞赛 judge 中编译执行。5. 复用：固定 split、来源 lineage、编译器/解释器版本、Python 路径、sandbox 策略和第三方许可证。

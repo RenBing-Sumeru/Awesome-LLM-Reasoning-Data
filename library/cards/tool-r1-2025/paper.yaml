@@ -1,0 +1,204 @@
+id: tool-r1-2025
+title: 'Tool-R1: Sample-Efficient Reinforcement Learning for Agentic Tool Use'
+year: 2025
+venue: arXiv preprint
+authors:
+- Yabo Zhang
+- Yihan Zeng
+- Qingyun Li
+- Zhen Hu
+- Kavin Han
+- Wangmeng Zuo
+source_role:
+- agent_environment
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- tool_use_agents
+- multi_step_question_answering
+- web_search
+- multimodal_file_understanding
+training_use:
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2509.12867
+  arxiv: https://arxiv.org/abs/2509.12867
+  code: https://github.com/YBYBZhang/Tool-R1
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.12867
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Approximately 1,300 moderately difficult question-answer pairs selected from MAT-Agent and the cited multi-hop
+    QA sources 2WikiMultiHopQA and HotpotQA; item IDs, source counts, versions, and splits are unknown.
+  task_object: A user question or file-grounded task, a reference answer used by the answer judge, available tool descriptions,
+    and any attached GAIA-style file/context required by the episode.
+  trace_author: The current Tool-R1 policy samples online trajectories; recent trajectories are cached and reused in a per-question
+    dynamic queue during GRPO training.
+  trajectory_object: Up to 10 interaction steps of model-generated Thought and executable Python Code, tool-generated Observation,
+    persistent variables across executions, and a final_answer call. The released paper does not define a serialized schema.
+  answer_format: The final_answer tool accepts any data type as the concluding answer; open-ended correctness is judged against
+    the reference answer rather than by exact string format alone.
+  process_fields:
+  - question
+  - reference_answer
+  - thought
+  - python_code_action
+  - tool_observation
+  - persistent_execution_state
+  - final_answer
+  - answer_judge_label
+  - parse_success_counts
+  - execution_success_counts
+  - scalar_trajectory_reward
+  - question_or_queue_pass_rate
+  observation: Tool responses such as search results, parsed document or multimedia content, webpage answers, visual analysis,
+    Python outputs, exceptions, and the final-answer acknowledgement. Observation tokens are masked from policy loss.
+  reward_object: R_answer in {1, 0.5, 0} from a Qwen2.5-3B-Instruct judge, R_parse=N_parsed/N_total, R_exec=N_executed/N_parsed,
+    and total R=R_answer+0.3*R_parse+0.3*R_exec for the full trajectory.
+  environment_or_substrate: A controlled Python interpreter with persistent variables, restricted imports, protected namespace,
+    sequential execution, user-defined tools, standard libraries, and named web/document/visual/final-answer tools. Exact
+    versions and sandbox implementation are unknown.
+  verifier_or_reward: 'Mixed outcome contract: learned final-answer judgment plus programmatic parsing and environmental runtime-success
+    fractions. The paper provides no step-correctness labels or calibrated semantic tool-use verifier.'
+  terminal_predicate: The episode normally terminates when the policy calls final_answer and is capped at 10 interaction steps;
+    task success is then assigned by the answer judge. Timeout, missing-final-answer, and exception termination rules are
+    unknown.
+  provenance: Source QA task -> 10-sample difficulty estimate -> retain pass rate 0.2-0.8 -> current-policy online episodes
+    -> per-question FIFO queue -> composite trajectory reward -> response-masked GRPO update.
+recipe_metadata:
+  base_model:
+  - Qwen2.5-7B-Instruct
+  - Qwen2.5-14B-Instruct
+  teacher: unknown
+  generator: The initial policy generates 10 responses per question for difficulty estimation; the current policy generates
+    online Thought-Code-Observation episodes during GRPO. The initial-policy checkpoint is unknown.
+  prompt_task_source: MAT-Agent, 2WikiMultiHopQA, and HotpotQA are cited as the source pool; the released 1,300-item manifest
+    and mixture weights are unknown.
+  sampling_protocol: Retain questions whose initial 10-sample pass rate is 0.2-0.8. For each question maintain G=16 cached
+    trajectories, generate g=8 fresh trajectories per step, enqueue them FIFO, evict the eight oldest, and resample items
+    described as outside the 0.2-0.8 pass-rate band.
+  rollout_count: 10 responses per question for initial difficulty filtering; queue size 16 and 8 fresh trajectories per question
+    per training step. Total rollouts over the run are unknown.
+  temperature: Inference temperature is 0.6. Training-rollout temperature and other decoding parameters are unknown.
+  inference_budget: Maximum sequence length 2048 and at most 10 interaction steps per sample; exact tool timeout, token accounting,
+    retry budget, and evaluation call budget are unknown.
+  search_or_scaffold: Thought-Code-Observation loop over a persistent Python environment, external tools, variable sharing,
+    a per-question dynamic sample queue, and response masking for tool observations.
+  filtering_rule: Keep moderately difficult questions with pass rate 0.2-0.8 and replace cached samples described as falling
+    outside that band. Exact sample-level semantics and record retention logs are unknown.
+  selection_threshold: pass rate in [0.2, 0.8]
+  reward_weights:
+    answer: 1.0
+    parse: 0.3
+    execution: 0.3
+  optimizer_or_scaffold: Response-masked GRPO with AdamW, learning rate 1e-6, effective batch size 256, 2 epochs, KL coefficient
+    0.001, four A100 GPUs for training and four A100 GPUs for online sampling.
+  cold_start: No cold-start initialization or trajectory annotations are reported.
+  undisclosed_training_fields:
+  - random_seeds
+  - GRPO_clip_epsilon
+  - AdamW_betas
+  - training_rollout_decoding_parameters
+  - checkpoint_schedule
+  - exact_dependency_versions
+audit:
+  source_mixture: A curated 1,300-pair subset from MAT-Agent and cited multi-hop QA datasets; exact counts, item IDs, source
+    versions, preprocessing, and mixture weights are unknown.
+  split: unknown
+  decontamination: unknown
+  benchmark_overlap: GAIA validation is used for evaluation, but no item-level overlap, semantic deduplication, or contamination
+    check against the training sources, supporting models, or web tools is disclosed.
+  lineage: Source question/reference answer -> initial-policy difficulty filter -> online policy episodes -> per-question
+    FIFO dynamic queue -> Qwen judge plus parse/execution rewards -> response-masked GRPO -> GAIA validation evaluation.
+  license: The arXiv paper is linked under CC BY 4.0. The official repository has no LICENSE and releases no code, data, model,
+    or trajectories; those licenses and the rights of underlying task/tool content remain unknown.
+  release_version: arXiv v1 submitted 2025-09-16. Official GitHub master inspected at commit 5a4d9f7365508a9bdc23713a8250cf54b3ce14f9;
+    the tree contains only a one-line README and has no tag or release.
+  verifier_or_judge_failure_modes:
+  - Qwen2.5-3B-Instruct judgment may be biased, inconsistent, or vulnerable to answer style because no calibration, human
+    agreement, repeated sampling, or adversarial evaluation is reported.
+  - Parsing and runtime success do not establish that code is relevant, safe, semantically correct, or causally useful for
+    the final answer, so runnable no-ops or wrong computations can receive auxiliary reward.
+  - The paper does not specify R_exec handling when N_parsed is zero or the treatment of timeouts, partial execution, exceptions,
+    retries, and side effects.
+  - Live web/model-backed tools can drift or fail; unpinned observations make exact replay and reward reproduction brittle.
+  - Reusing cached trajectories may introduce stale/off-policy data, while behavior-policy probabilities, queue-age limits,
+    and correction details are not disclosed.
+  successful_and_failed_sample_retention: Recent trajectories in the moderate pass-rate region are retained/reused in per-question
+    queues, but exact success/failure counts, replacement logs, dropped trajectories, and an immutable released corpus are
+    unavailable.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - exact training-item manifest, source counts, versions, splits, deduplication, and rights
+  - initial-policy checkpoint and all training-rollout decoding settings
+  - serialized task, episode, queue, reward, execution-log, and provenance schema
+  - judge calibration, agreement, randomness, and attack robustness
+  - sandbox, Python, package, tool, service, network, timeout, and resource-limit versions
+  - GAIA version and training/evaluation contamination checks
+  - public code, configs, train/eval scripts, data, checkpoints, model card, release, and licenses
+  notes: The official repository link is genuine but is only a placeholder. Artifact URL verification must not be converted
+    into a claim that a usable PyTorch implementation or trainable trajectory release exists.
+inclusion_reason: 'Tool-R1 exposes a concrete full-episode agent-training object: executable Python tool trajectories receive
+  a mixed LLM-judge and code-execution reward, are reused through a difficulty-aware dynamic queue, and train a policy with
+  response-masked GRPO. This is directly relevant to environment and agent trajectory data despite the absent release.'
+related:
+- search-r1-2025
+tags:
+- tool-use-agent
+- python-tool-chain
+- agentic-rl
+- response-masked-grpo
+- dynamic-sample-queue
+- llm-as-judge
+- execution-reward
+- trajectory-reuse
+- release-incomplete
+category_ids:
+- environment_agent_trajectory_data
+one_line: Tool-R1 trains full Python tool-use episodes with a judge-plus-execution reward and a reusable per-question queue,
+  but its official repository still contains no implementation or training artifacts.
+one_line_summary: Tool-R1 uses response-masked GRPO to train Thought-Code-Observation trajectories from mixed answer-judge
+  and code rewards while a dynamic queue reuses recent episodes; the code, data, checkpoints, and replay records remain unreleased.
+why_it_matters: It makes sample-efficient online trajectory reuse and mixed feedback concrete for agent RL, while demonstrating
+  why an official repository URL must be audited separately from actual code/data availability.
+status: partial
+card: null
+card_recommendation: Recommended for a core L4 Card focused on the executable episode schema, mixed reward contract, queue
+  reuse, and the explicit release boundary; do not present it as a benchmark-only paper or an open implementation/data release.
+needs:
+- 'needs_code_release: implementation, dependencies, configs, reward/queue logic, and train/eval scripts'
+- 'needs_data: exact 1,300-task manifest, splits, lineage, preprocessing, and trajectory/queue records'
+- 'needs_model: Tool-R1 checkpoints and model card'
+- 'needs_replay: pinned Python sandbox, tools/services, observations, errors, seeds, and behavior-policy metadata'
+- 'needs_audit: judge calibration, queue staleness, reward gaming, contamination, rights, and licenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: arXiv:2509.12867v1
+  repository_commit: 5a4d9f7365508a9bdc23713a8250cf54b3ce14f9
+  notes: Full PDF including appendices and Tables 1-2 was reviewed. The official author-linked GitHub repository was exhaustively
+    inspected and contains only README.md, so no implementation/data/model artifact is considered verified or reusable.

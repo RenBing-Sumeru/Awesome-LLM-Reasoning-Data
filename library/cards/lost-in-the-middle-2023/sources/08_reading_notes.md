@@ -1,0 +1,1 @@
+Keep three labels separate: context length, evidence position, and answer correctness. The core result is not "longer context is bad"; it is that models can underuse information placed in the middle even when it is inside the context window. Read the task construction before reading model tables, because prompt geometry is the experimental object.

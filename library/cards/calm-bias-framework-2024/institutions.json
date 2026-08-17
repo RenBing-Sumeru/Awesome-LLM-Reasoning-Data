@@ -1,0 +1,20 @@
+{
+  "institutions": [
+    "University of Notre Dame",
+    "Independent researcher",
+    "University of Washington",
+    "Peking University",
+    "IBM Research",
+    "University of Hong Kong"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2410.02736",
+    "https://arxiv.org/html/2410.02736",
+    "https://llm-judge-bias.github.io/",
+    "https://github.com/Y0oMu/LLM-Judge-Bias-Dataset"
+  ],
+  "verification_note": "Official project page and arXiv source verify Notre Dame, independent researcher footnotes, UW, PKU, IBM Research, and HKU affiliations. Minor source discrepancy remains for Jiayi Ye and Yanbo Wang regarding numeric affiliation plus independent-researcher footnote."
+}

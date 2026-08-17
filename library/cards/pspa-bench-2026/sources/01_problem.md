@@ -1,0 +1,5 @@
+PSPA-Bench is a 2026 arXiv benchmark for personalized smartphone GUI agents. The primary source is arXiv:2603.29318, released on March 31, 2026, with an arXiv HTML license marker of CC BY 4.0 and an anonymous 4open.science artifact link.
+
+The problem is that mobile GUI-agent benchmarks usually measure generic task completion, while real phone use depends on user-specific preferences, histories, and workflows. PSPA-Bench draws a boundary around personalized GUI-agent evaluation: it is not a generic Android automation benchmark, not a real-user log release, and not a training recipe.
+
+The evaluation object is a personalized GUI task represented through a Task Decomposition Graph (TDG). A task instance includes a user/persona context, a template-instantiated personalized instruction, observable GUI states, actions, an execution trace, and a TDG path with fixed nodes and flexible preference-sensitive nodes. This is valuable for the atlas because the feedback contract measures both task progress and preference satisfaction rather than only a binary end state.

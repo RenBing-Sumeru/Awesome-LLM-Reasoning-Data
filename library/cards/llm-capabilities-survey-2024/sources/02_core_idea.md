@@ -1,0 +1,1 @@
+The paper reviews domain applications to summarize fundamental capabilities and their collaboration. It then connects capabilities to specific domains and proposes that domain users choose a more robust backbone model using those relationships rather than relying on a single generic evaluation.

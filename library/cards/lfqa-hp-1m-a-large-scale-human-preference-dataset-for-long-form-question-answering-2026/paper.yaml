@@ -1,0 +1,131 @@
+id: lfqa-hp-1m-a-large-scale-human-preference-dataset-for-long-form-question-answering-2026
+title: 'LFQA-HP-1M: A Large-Scale Human Preference Dataset for Long-Form Question Answering'
+year: 2026
+venue: LREC 2026
+authors:
+- Rafid Ishrak Jahan
+- Fahmid Shahriar Iqbal
+- Sagnik Ray Choudhury
+source_role:
+- data_release
+- verifier_reward
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- long-form-question-answering
+- llm-evaluation
+- llm-post-training
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.23603
+  arxiv: https://arxiv.org/abs/2602.23603
+  code: https://github.com/nlpatunt/lfqa-eval-lrec-2026
+  data: https://huggingface.co/datasets/nlpatunt/LFQA-HP-1M
+  project: null
+  huggingface: https://huggingface.co/datasets/nlpatunt/LFQA-HP-1M
+  doi: https://doi.org/10.48550/arXiv.2602.23603
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LFQ-filtered prompts and their pre-existing human pairwise judgments from SHP-2 (Reddit and Stack Exchange),
+    LFQA Eval, and Chatbot Arena.
+  trace_author: Candidate long-form answers and preference labels originate in the upstream datasets; LFQA-HP-1M filters and
+    standardizes their retained pairs rather than recollecting one million new judgments.
+  answer_format: question_id, question_text, answer_1, answer_2, human_judgment, human_expert, domain, language, turn, and
+    source.
+  process_fields:
+  - question_id
+  - question_text
+  - answer_1
+  - answer_2
+  - human_judgment
+  - human_expert
+  - domain
+  - language
+  - turn
+  - source
+  environment_or_substrate: English long-form, multi-sentence explanatory question answering; source forums and chat arena
+    rather than an executable environment.
+  verifier_or_reward: Original human pairwise choice of answer_1 or answer_2. The paper additionally extracts nine rubric
+    scores for a sampled evaluation set; these are evaluation features, not a released replacement for the human label.
+  terminal_predicate: Retain an upstream answer pair only when its prompt satisfies the authors' operational LFQ definition
+    and passes high-confidence Llama-4 prompt-based filtering.
+recipe_metadata:
+  base_model: Logistic regression over rubric differences; LLM-as-judge baselines include GPT-4o, Gemini-2.5-flash, and Llama-4-Scout.
+  teacher: Five English-proficient student annotators iteratively define LFQ for filter evaluation; human preferences themselves
+    are inherited from the named upstream releases.
+  generator: Upstream answer generators vary by source and are not a single disclosed teacher model.
+  filtering_rule: Refine a human-tested LFQ definition, then run Llama-4-Scout in batches of 10; retain only log_score = 0
+    (100% confidence) predictions mapped back to answer pairs.
+  sampling_protocol: About 900K unique source prompts yield 300K unique LFQs and 1,326,356 retained preference records. The
+    paper's rubric/judge experiments use a carefully sampled subset, LFQA-HP-Sample.
+  rollout_count: null
+  temperature: 0
+  inference_budget: Three independent deterministic judge attempts with majority vote in the main evaluation; filtering batches
+    10 prompts per call.
+  optimizer_or_scaffold: Pairwise preference prediction with rubric-difference logistic regression, compared against prompted
+    LLM judges; no policy-training result is claimed.
+audit:
+  source_mixture: 902,635 SHP-2 Reddit, 397,689 SHP-2 Stack Exchange, 19,941 LFQA Eval, and 6,091 Chatbot Arena records.
+  split: Confirm the exact Hugging Face revision and any train/dev/test files before using it as training or evaluation data;
+    the public dataset viewer currently fails to parse the large JSONL file.
+  decontamination: Dataset aggregates public, previously released preference sources. Audit upstream licenses, duplicated
+    prompts/answers, and overlap with evaluation sets or models trained on Reddit, Stack Exchange, Chatbot Arena, SHP-2, or
+    LFQA Eval.
+  license: 'The Hugging Face card declares license: other and says the release is for research purposes; reuse requires checking
+    the repository and all upstream source licenses rather than assuming a permissive training license.'
+  lineage: 'Primary paper: https://arxiv.org/abs/2602.23603; code: https://github.com/nlpatunt/lfqa-eval-lrec-2026; data:
+    https://huggingface.co/datasets/nlpatunt/LFQA-HP-1M.'
+  known_failure_modes:
+  - A pairwise preference is not a fact-verification label and may retain source-community, style, and model-generation biases.
+  - LFQ filtering is LLM-mediated and high-confidence filtering can exclude legitimate but borderline long-form questions.
+  - The release is English-only and overwhelmingly non-expert (1,055 expert-flagged records versus 1,325,301 non-expert records).
+  - LLM judges show transitivity violations, answer-position sensitivity, verbosity bias, and reduced performance under TextFooler
+    or DeepWordBug perturbations.
+  citation_status: verified
+  confidence: high
+  notes: Primary arXiv HTML, official Hugging Face dataset card, and official code repository reviewed on 2026-07-13.
+inclusion_reason: Public, large-scale, human pairwise preference data for long-form QA, with explicit source lineage, record
+  schema, rubric-based evaluation, and judge-robustness analysis.
+related: []
+tags:
+- post-training
+- preference-data
+- human-feedback
+- long-form-qa
+- reward-modeling
+- llm-as-a-judge
+one_line_summary: LFQA-HP-1M filters and unifies 1,326,356 public human preference pairs for English long-form QA, then uses
+  nine rubrics to audit interpretable and LLM-based judges.
+why_it_matters: It makes long-form QA preference feedback reusable as a traceable data object while demonstrating that a transparent
+  rubric model can approach strong LLM judges and that those judges remain vulnerable to consistency, position, length, and
+  perturbation failures.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: primary-paper and official-release review
+  confidence: high
+  notes: Verified authors and UNT affiliation, LREC 2026 acceptance, paper, public code, data schema, record count, source
+    mixture, and stated release/license boundary.
+category_ids:
+- preference_reward_feedback_data

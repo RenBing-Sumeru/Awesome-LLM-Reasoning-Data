@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "采样搜索相关",
+    "updated_at": "2026-07-18T11:42:07Z"
+  },
+  "updated_at": "2026-07-18T11:42:07Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

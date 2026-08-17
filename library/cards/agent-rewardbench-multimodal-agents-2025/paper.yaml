@@ -1,0 +1,99 @@
+id: agent-rewardbench-multimodal-agents-2025
+title: 'Agent-RewardBench: Towards a Unified Benchmark for Reward Modeling across Perception, Planning, and Safety in Real-World
+  Multimodal Agents'
+year: 2025
+venue: ACL 2025
+authors:
+- Tianyi Men
+- Zhuoran Jin
+- Pengfei Cao
+- Yubo Chen
+- Kang Liu
+- Jun Zhao
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- multimodal-agents
+- step-level-reward
+- safety
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.857/
+  arxiv: https://arxiv.org/abs/2506.21252
+  code: https://github.com/Quester-one/Agent-RewardBench
+  data: https://huggingface.co/datasets/MultimodalAgent/Agent-RewardBench
+  project: null
+  huggingface: https://huggingface.co/datasets/MultimodalAgent/Agent-RewardBench
+  doi: https://doi.org/10.18653/v1/2025.acl-long.857
+  venue: https://aclanthology.org/2025.acl-long.857/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.857/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Seven multimodal agent scenarios covering perception, planning, and safety.
+  trace_author: Ten agent models, followed by small-model filtering and human verification.
+  answer_format: Image-conditioned task step, two candidate actions or responses, scenario label, and preference.
+  process_fields:
+  - image
+  - instruction
+  - response_a
+  - response_b
+  - scenario
+  - label
+  environment_or_substrate: Real-world-inspired web and embodied agent scenarios.
+  verifier_or_reward: A two-stage filter and human verification produce step-level comparison labels.
+  terminal_predicate: A reward model selects the better action or response at an agent step.
+recipe_metadata:
+  base_model: Multimodal reward models evaluated under the official protocol.
+  teacher: Human verifiers validate filtered examples.
+  generator: Ten multimodal models generate candidate agent responses.
+  filtering_rule: Difficulty control, smaller-model filtering, and manual verification retain comparison pairs.
+  sampling_protocol: Use the official release revision and report the scenario split.
+  inference_budget: Image encoding and step context determine scoring cost.
+  optimizer_or_scaffold: Pairwise step-level reward evaluation across three dimensions.
+audit:
+  source_mixture: Multimodal agent prompts, model responses, and manually verified preference comparisons.
+  split: The paper reports 1,136 high-quality step-level samples across seven scenarios.
+  decontamination: Keep public scenarios and task assets separated from reward-model training evaluation.
+  license: Confirm the Hugging Face dataset card and repository LICENSE before reuse.
+  lineage: ACL 2025 paper, Quester-one official repository, and MultimodalAgent dataset release.
+  known_failure_modes:
+  - Step-level preferences may not measure long-horizon task completion.
+  - Scenario coverage does not exhaust deployment safety failures.
+  citation_status: verified
+  confidence: high
+  notes: Verified ACL paper PDF, author affiliations, official repository referenced by the paper, and dataset release.
+inclusion_reason: The public release provides human-verified multimodal agent comparisons that serve as reward-model feedback.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Agent-RewardBench evaluates whether multimodal reward models can choose better agent steps across perception,
+  planning, and safety.
+why_it_matters: It makes reward quality measurable at the point where an agent’s trajectory can still be corrected.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified ACL paper PDF, author affiliations, official repository referenced by the paper, and dataset release.
+category_ids:
+- preference_reward_feedback_data

@@ -1,0 +1,6 @@
+- Keep the verifier boundary explicit: scores `0`, `0.5`, and `1` are learned natural-language judgments; only the format check is programmatic, and no Lean/Isabelle proof certificate is produced.
+- Read Sections 2.1–2.3 together: expert proof labels train the verifier, expert analysis-quality labels train the meta-verifier, and the last two iterations use symbolic `n/m/k` multi-sampling to replace human labels.
+- Treat the 0.85-to-0.96 analysis-quality result as meta-verifier-rated on an unspecified validation split, not independent proof-correctness evidence.
+- Bind headline contest scores to high-compute conditions: one model generates and verifies, 64 proofs receive 64 analyses each, refinement runs up to 16 rounds, and experts grade selected highest-scoring proofs.
+- “Passes all 64” is an LLM-agreement stopping rule; Appendix A.3's no-defect rule and shared model lineage leave correlated false-negative risk.
+- Model weights, inference/evaluation code, selected inputs, and predictions are open artifacts, but the AoPS crawl, expert labels, automatic hard-proof records, GRPO/RFT pipeline, and training licenses are not released.

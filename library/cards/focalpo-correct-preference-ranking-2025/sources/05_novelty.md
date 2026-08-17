@@ -1,0 +1,3 @@
+Prior DPO variants use margins or alternate objectives, but FocalPO makes the model's current ranking state an explicit record-level weight. Its surprising choice is to prioritize pairs already ranked correctly, rather than treating misranked pairs as automatically more informative. This turns a diagnosis of implicit-reward reliability into a direct optimization decision.
+
+The contribution also isolates the two directions experimentally. By showing that the conventional emphasis on incorrect pairs underperforms while the proposed emphasis succeeds, the paper makes a narrower claim than generic hard-example mining. It says that in this preference-learning setting, difficult pairs can be less useful before the model has a reliable ranking signal.

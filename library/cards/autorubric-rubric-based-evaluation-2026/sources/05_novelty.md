@@ -1,0 +1,1 @@
+Existing rubric tools are tied to one benchmark or output only an average score. Autorubric unifies criterion schemas, judge calls, aggregation, and reliability analysis and supports binary, ordinal, and nominal scales. The novelty is evaluation infrastructure and calibration protocol rather than a new judge model.

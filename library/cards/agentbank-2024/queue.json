@@ -1,0 +1,16 @@
+{
+  "title": "AGENT BANK: Towards Generalized LLM Agents via Fine-Tuning on 50000+ Interaction Trajectories",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-emnlp.116/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T14:02:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "agentic data",
+    "updated_at": "2026-07-14T14:02:38Z"
+  }
+}

@@ -1,0 +1,7 @@
+对于 `environment_agent_trajectory_data`，按已核验证据，CAR 仅适合 evaluation 与 audit。它可作为记录 `state_before`、typed action、observation provenance、final output、调用方 outcome 和根/分支 lineage 的 schema 参考；可作为 replay audit，用于区分 message reconstruction、action-match 与 live-environment fidelity；也可作为受控实验 harness，在有 seed 的 mocked SCM 上比较 contrastive point-of-commitment attribution 与能处理交互的 Shapley value。
+
+一项可执行的审计流程是：记录一次 factual run；验证 request reconstruction；重复 deterministic policy call 以测量 action-signature stability；在 mocked 或 snapshot-safe Environment 中从每个合格 step 建立分支；保留每条 child outcome 与 failure；报告 K、confidence interval、abstention、budget stop 和 branch hash。Outcome function 需要单独验证：当确定性任务规则覆盖预期 predicate 时优先使用该规则；任何 `JudgeOutcome` 都应先做校准或 adversarial test。在 snapshot、reset、permission、timeout/retry、idempotency 与 rollback contract 齐备前，应禁止真实 tool execution。
+
+没有证据表明 CAR 可安全作为 training data。当前不存在已发布 CAR corpus、split、LICENSE 文本、privacy policy、decontamination audit，也没有 SFT、RLVR、reward-model、process-supervision 或 policy training 证据。若把 branch 转成训练样本，必须先补齐 immutable record manifest；task 与 environment version；successful、failed、rejected、timed-out 与 errored branch retention；train/evaluation separation；记录级 provenance 与 redaction；兼容的权利；以及从 outcome effect 到 training target 的显式映射。
+
+在本 track 中，可把 CAR 与 Who&When Pro、AgenTracer 或 TraceElephant 配对阅读，以判断 failure label 来自 static judgment、replayed terminal flip，还是 sampled counterfactual outcome distribution。仅存在于仓库的 Who&When 扩展应作为“原始 policy 缺失时的 surrogate replay”审计案例，不能当作 CAR data release 或真实工具保真度证明。

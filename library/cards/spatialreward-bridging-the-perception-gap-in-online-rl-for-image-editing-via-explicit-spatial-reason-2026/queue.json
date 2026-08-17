@@ -1,0 +1,17 @@
+{
+  "title": "SpatialReward: Bridging the Perception Gap in Online RL for Image Editing via Explicit Spatial Reasoning",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.07458",
+    "data": "https://huggingface.co/datasets/SpatialReward/SpatialReward-Train"
+  },
+  "review_note": "L4 材料已准备，等待人工判定。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T09:26:26Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开26万条含编辑区域、空间推理与评分的图像编辑奖励数据，可训练多模态奖励模型并支持在线RL，数据规模大且场景高度相关",
+    "updated_at": "2026-07-15T09:26:26Z"
+  }
+}

@@ -1,0 +1,95 @@
+id: fragility-benchmark-contamination-detection-2025
+title: On the Fragility of Benchmark Contamination Detection in Reasoning Models
+year: 2026
+venue: ICLR 2026
+authors:
+- Han Wang
+- Haoyu Li
+- Brian Ko
+- Huan Zhang
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=bhR00j6Mku
+  arxiv: https://arxiv.org/abs/2510.02386
+  code: https://github.com/ASTRAL-Group/LRM_Conta_Detection_Arena
+  data: https://github.com/ASTRAL-Group/LRM_Conta_Detection_Arena
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=bhR00j6Mku
+  openreview: https://openreview.net/forum?id=bhR00j6Mku
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: benchmark item, model behavior, audit label, and detection or reward outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation setup
+  verifier_or_reward: contamination detector, judge, rubric, or hidden objective
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: official release
+  filtering_rule: see official artifact
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: paper-specific audit object
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - 'L2 candidate only: full paper reading is required before interpreting a detector score or reusing the data.'
+  citation_status: verified
+  confidence: high
+  notes: 'Official paper/project and public artifact URL checked on 2026-07-18. Focus: member/non-member reasoning-benchmark
+    datasets and contamination arena.'
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2510.02386.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'The central contribution audits contamination-detection failure in reasoning-model evaluation.'
+related: []
+tags:
+- audit
+- benchmark-contamination
+- iclr-2026
+status: verified
+one_line_summary: PPO-style RL can erase contamination-detection signals after contaminated SFT, while CoT contamination of mature LRMs drives existing detectors toward chance.
+why_it_matters: It demonstrates that conventional contamination detectors can fail exactly in practical reasoning-model training pipelines.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR 2026 paper and public artifact release checked; full-paper card completed.
+category_ids:
+- audit_failure_contamination_verifier_attacks

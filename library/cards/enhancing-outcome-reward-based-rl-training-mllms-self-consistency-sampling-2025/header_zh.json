@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SCS 对视觉推理轨迹作小视觉扰动、截断和重采样，以轨迹一致性分数降低“猜对但推理错误”的结果奖励影响。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jiahao Wang；Weiye Xu；Aijun Yang；Wengang Zhou；Lewei Lu；Houqiang Li；Xiaohua Wang；Jinguo Zhu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

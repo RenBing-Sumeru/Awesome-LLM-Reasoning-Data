@@ -1,0 +1,141 @@
+id: smoltalk-2025
+title: 'SmolLM2: When Smol Goes Big - Data-Centric Training of a Small Language Model'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Loubna Ben Allal
+- Anton Lozhkov
+- Elie Bakouch
+- Gabriel Martín Blázquez
+- Guilherme Penedo
+- Lewis Tunstall
+- Andrés Marafioti
+- Hynek Kydlíček
+- Agustín Piqueres Lajarín
+- Vaibhav Srivastav
+- Joshua Lochner
+- Caleb Fahlgren
+- Xuan-Son Nguyen
+- Clémentine Fourrier
+- Ben Burtenshaw
+- Hugo Larcher
+- Haojun Zhao
+- Cyril Zakka
+- Mathieu Morlon
+- Colin Raffel
+- Leandro von Werra
+- Thomas Wolf
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- primarily English chat, mathematics, code, rewriting, constraints, and everyday instruction following
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.02737
+  arxiv: https://arxiv.org/abs/2502.02737
+  code: null
+  data: https://huggingface.co/datasets/HuggingFaceTB/smoltalk
+  project: null
+  huggingface: https://huggingface.co/datasets/HuggingFaceTB/smoltalk
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public instruction sets plus newly generated MagPie, self-OSS-instruct, and specialized subsets
+  trace_author: source annotations and synthetic teachers write assistant turns
+  answer_format: messages with role and content, plus a source label
+  process_fields:
+  - messages with role and content
+  - plus a source label
+  environment_or_substrate: primarily English chat, mathematics, code, rewriting, constraints, and everyday instruction following
+  verifier_or_reward: subset-specific filtering, source balancing, benchmark decontamination, and manual mixture refinement
+  terminal_predicate: Retain records only after subset-specific filtering, source balancing, benchmark decontamination, and
+    manual mixture refinement.
+recipe_metadata:
+  base_model: See the paper for the stage-specific base checkpoint.
+  teacher: source annotations and synthetic teachers write assistant turns
+  generator: SmolTalk combines inherited and newly generated conversations under one message schema, then tunes source weights
+    through ablations and manual mixture review.
+  filtering_rule: subset-specific filtering, source balancing, benchmark decontamination, and manual mixture refinement
+  sampling_protocol: public instruction sets plus newly generated MagPie, self-OSS-instruct, and specialized subsets
+  rollout_count: null
+  temperature: null
+  inference_budget: The paper does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: SmolLM2 instruction SFT
+audit:
+  source_mixture: public instruction sets plus newly generated MagPie, self-OSS-instruct, and specialized subsets
+  split: 'Official release scale: about 1.1 million instruction-response conversations; format: multi-configuration Parquet
+    records.'
+  decontamination: Use the paper's stated checks; no release-wide guarantee beyond those checks is inferred.
+  license: new subsets are Apache-2.0; inherited subsets retain their upstream licenses
+  lineage: public instruction sets plus newly generated MagPie, self-OSS-instruct, and specialized subsets -> source annotations
+    and synthetic teachers write assistant turns -> subset-specific filtering, source balancing, benchmark decontamination,
+    and manual mixture refinement -> SmolTalk -> SmolLM2 instruction SFT
+  known_failure_modes:
+  - the end-to-end comparison changes several data stages, so SmolTalk's isolated effect is limited
+  - inherited subsets carry heterogeneous licenses and contamination risks
+  citation_status: verified
+  confidence: high
+  notes: The full 24-page paper, official dataset README, schema, terms, and an actual public record were checked on 2026-07-27.
+    Google Scholar was unavailable, so no Scholar count is written.
+inclusion_reason: SmolTalk is a public Track 01 object containing messages with role and content, plus a source label and
+  is explicitly consumed by SmolLM2 instruction SFT.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2502.02737
+- primary-link-checked
+status: verified
+one_line_summary: SmolTalk combines inherited and newly generated conversations under one message schema, then tunes source
+  weights through ablations and manual mixture review.
+why_it_matters: Small language models need broad instruction coverage, but existing open chat mixtures were too small or uneven
+  for the paper's compact-model training budget.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: SmolLM2 instruction SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper and actual public dataset records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: primarily English chat, mathematics, code, rewriting, constraints, and everyday instruction following
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Only the arXiv primary source was confirmed; no formal acceptance is claimed.
+    impact: On 2026-07-27 the official dataset page reported 20596 downloads and 420 likes, and the paper reports a downstream
+      training experiment.
+    artifact: 'The public release exposes actual multi-configuration Parquet records records with the checked schema and terms:
+      new subsets are Apache-2.0; inherited subsets retain their upstream licenses.'
+  selection_eligible: true
+  year_impact_threshold: 2

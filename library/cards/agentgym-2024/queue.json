@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T14:05:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "评测工具发现、工具组合、噪声与不完整输入下的 Agent 能力 811star 151ref, 横向工作AgentGym-RL 中了ICLR2026 oral",
+    "updated_at": "2026-07-13T14:05:00Z"
+  }
+}

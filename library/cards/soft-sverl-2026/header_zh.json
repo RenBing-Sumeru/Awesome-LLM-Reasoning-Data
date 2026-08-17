@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用gold与双阈值replay协同训练共享响应策略/checklist验证器，并以partition penalty抑制自生成奖励膨胀。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "自验证RL与在线验证器刷新配方",
+  "best_for_ch": "关注soft RLVR、checklist奖励、replay伪标签和reward inflation的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Saurabh Dash、Pierre Clavier、John Dang、Matthias Galle、Marzieh Fadaee、Ahmet Üstün、Beyza Ermis",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T12:21:11Z"
+}

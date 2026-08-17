@@ -1,0 +1,5 @@
+- Read the method as three data views: privileged construction, edited or dummy-masked training, and unassisted inference. The available fields and leakage risks differ in each view.
+- Countdown subgoal augmentation changes the retained trace itself; audit both the pre-edit trace and the injected node, not only the final successful trajectory.
+- Code interaction uses public-test feedback, but the official preparation code filters SFT rows by a score computed from all task ground-truth tests. Interaction stopping and dataset acceptance are distinct contracts.
+- Keep Guided-ReST SFT separate from operation-level PPO. The code experiment has no PPO stage, and pass@k is reported as a proxy rather than direct RL evidence.
+- Read Paper Tables 1-3 and Figures 3, 5, and 6 first; then inspect the supplement prompt figures and repository masking/filtering code. Generated buffers, rejection statistics, decontamination, and upstream license compatibility remain unresolved.

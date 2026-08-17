@@ -1,0 +1,3 @@
+Its evidence is a synthesis of existing work and the gaps that remain across the three stages. The official abstract does not show that LLMs already perform autonomous discovery reliably; it says the survey identifies achievements and critical gaps. A cited result should therefore be read together with its representation, evidence source, and validation procedure.
+
+This is evidence about what the literature has attempted and where it remains incomplete, not a single controlled demonstration of autonomous learning. A reported success may depend on whether hypotheses are formal or expressed in natural language, and on how new evidence is defined. Check the primary study before comparing claims made under different validation designs.

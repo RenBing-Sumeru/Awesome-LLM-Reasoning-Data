@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenCodeInterpreter 公开 68K 条多轮代码对话和 192K 个 turn，把解释、执行反馈、模拟用户指导与修订组合成可用于 SFT 的静态记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "执行反馈代码示范数据集与 SFT 配方",
+  "best_for_ch": "适合训练能根据运行诊断修订程序的代码模型，或审计合成多轮反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tianyu Zheng、Ge Zhang、Tianhao Shen、Xueling Liu、Bill Yuchen Lin、Jie Fu、Wenhu Chen、Xiang Yue",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T11:00:00Z"
+}

@@ -1,0 +1,11 @@
+- 公开最终集经过选择和打包,并非raw数据。它省略上游提示ID、候选ID、逐阶段样本、verifier输出、结构化评估标签、轨迹类型、拒绝原因,以及到16.3K raw和turn-level伴随发布的确定性join。
+- 论文与发布计数无法对齐:论文报告50K IFT提示和约32K条接受轨迹,官方仓库则公开40K SFT提示、16.3K raw示例和31,990条最终记录。由于这些对象不一定是嵌套分区,不能通过相减恢复逐阶段拒绝数。
+- 顺序采样的rollout数量、解码温度、seed、总候选量、token量、计算量和货币成本均为unknown。评估温度与greedy decoding属于另一契约,不能用于补全构造字段。
+- ToRA/SymPy检查最终答案等价性,而不验证每一步推理。parser与格式错误可能造成误接受或误拒绝,发布中没有逐记录checker输出或verifier错误审计。
+- 精确、近重复和语义去污染均为unknown。训练来自NuminaMath-CoT,评估包含MATH500、OlympiadBench和Minerva Math,但没有发布重叠/移除ledger。
+- arXiv手稿使用CC BY-NC-SA 4.0,但仓库、数据集、生成输出和上游提示的许可证均为unknown。空白dataset card与公开代码仓库不能建立再分发兼容性。
+- DPO只使用能产生不同正确性分数的40%到60%提示。这种选择改变了提示分布,也使DPO与PPO的数据利用率不能等同。
+- 自评存在分类别不对称:报告的Qwen结果中,错误答案识别明显弱于正确答案识别。聚合最终准确率可能掩盖在错误答案上过早终止的问题。
+- 论文展示了一种修改后PPO bonus的reward hacking:它鼓励先错后对的路径。仅使用正确性不能保证所有多轮reward设计稳健。
+- 主要公开数据是Qwen2.5-Math-7B-base示例。Llama实验使用不同模型、格式和大得多的合成集,因此其结果不能验证每条公开Qwen记录,也不能确立向其他领域迁移。
+- GitHub没有tagged release,论文又把DPO和部分PPO委托给其他仓库。在核验的commit中,首个提示准备脚本含未闭合字符串,其他脚本仍保留未解析的用户路径哨兵值。精确checkpoint到论文表格的映射以及无需修改的不可变端到端构建仍为unknown。

@@ -1,0 +1,5 @@
+The official [arXiv record](https://arxiv.org/abs/2508.06471) is the primary evidence for the data categories, 23T-token training claim, expert-model iteration, SFT filtering, reasoning RL, agentic RL, and mixed general-RL feedback summarized in this Card.
+
+The official [Z.ai GLM-4.5 documentation](https://docs.z.ai/guides/llm/glm-4.5) confirms the public model family and its documented deployment characteristics. The official [zai-org/GLM-4.5 repository](https://github.com/zai-org/GLM-4.5) and [zai-org/GLM-4.5 model page](https://huggingface.co/zai-org/GLM-4.5) verify that model releases and inference/integration material are public and state MIT for the released model variants.
+
+These sources do not verify a public release of the training corpora, post-training prompts or traces, reward models, judge prompts or calibration, tool/API snapshots, agent environments, raw experiment logs, source-level licenses, or a decontamination audit. Those items are therefore recorded as unknown or unreleased, rather than inferred from released weights.

@@ -1,0 +1,1 @@
+Many multimodal surveys discuss capabilities at the model level. This paper centers the alternating intermediate process: verbal steps plus a changing visual state. That is a practical data contribution because it exposes missing fields that final-answer datasets usually omit, such as where a state came from and whether it was used by a later step.

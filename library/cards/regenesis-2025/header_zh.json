@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ReGenesis 用 25 条通用推理准则逐层生成任务准则、结构与答案筛选轨迹，展示了跨任务自生成 SFT 配方，但终局匹配不能验证步骤且官方语料与代码尚未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "自生成推理轨迹构造与 SFT 配方",
+  "best_for_ch": "研究推理数据合成、答案筛选、自训练与跨任务泛化的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiangyu Peng, Congying Xia, Xinyi Yang, Caiming Xiong, Chien-Sheng Wu, Chen Xing",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

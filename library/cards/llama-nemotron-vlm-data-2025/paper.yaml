@@ -1,0 +1,148 @@
+id: llama-nemotron-vlm-data-2025
+title: 'Eagle 2: Building Post-Training Data Strategies from Scratch for Frontier Vision-Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zhiqi Li
+- Guo Chen
+- Shilong Liu
+- Shihao Wang
+- Vibashan VS
+- Yishen Ji
+- Shiyi Lan
+- Hao Zhang
+- Yilin Zhao
+- Subhashree Radhakrishnan
+- Nadine Chang
+- Karan Sapra
+- Amala Deshmukh
+- Tuomas Rintamaki
+- Matthieu Le
+- De-An Huang
+- Ilia Karmanov
+- Lukas Voegtle
+- Philipp Fischer
+- Timo Roman
+- Tong Lu
+- Jose M. Alvarez
+- Bryan Catanzaro
+- Jan Kautz
+- Andrew Tao
+- Guilin Liu
+- Zhiding Yu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- data-centric-frontier-VLM-post-training
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2501.14818
+  arxiv: https://arxiv.org/abs/2501.14818
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Llama-Nemotron-VLM-Dataset-v1
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/Llama-Nemotron-VLM-Dataset-v1
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public vision-language datasets audited and regrouped by capability
+  trace_author: source labels and synthetic conversations are reformatted and selectively rewritten
+  answer_format: record id, image, conversation turns, and provenance metadata
+  process_fields:
+  - record id
+  - image
+  - conversation turns
+  - and provenance metadata
+  environment_or_substrate: visual QA, OCR, captioning, grounding, document and chart understanding
+  verifier_or_reward: data-source quality studies, deduplication, task balancing, and fixed-model ablations
+  terminal_predicate: data-source quality studies, deduplication, task balancing, and fixed-model ablations
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: source labels and synthetic conversations are reformatted and selectively rewritten
+  generator: Eagle 2 studies each data strategy from scratch and releases the resulting capability-labeled conversation mixture
+    with per-source licensing metadata.
+  filtering_rule: data-source quality studies, deduplication, task balancing, and fixed-model ablations
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: frontier VLM post-training SFT
+audit:
+  source_mixture: public vision-language datasets audited and regrouped by capability
+  split: Official release at https://huggingface.co/datasets/nvidia/Llama-Nemotron-VLM-Dataset-v1; exact configs are described
+    by the dataset card.
+  decontamination: data-source quality studies, deduplication, task balancing, and fixed-model ablations
+  license: CC-BY-4.0 at the aggregate release; component terms are listed per source
+  lineage: public vision-language datasets audited and regrouped by capability -> source labels and synthetic conversations
+    are reformatted and selectively rewritten -> data-source quality studies, deduplication, task balancing, and fixed-model
+    ablations -> Llama-Nemotron-VLM-Dataset-v1 -> frontier VLM post-training SFT
+  known_failure_modes:
+  - source-level licensing and contamination remain heterogeneous
+  - and benchmark-driven source selection may overfit the public evaluation suite
+  citation_status: verified
+  confidence: high
+  notes: Full 30 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for frontier VLM post-training SFT; records
+  name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2501.14818
+- primary-link-checked
+status: verified
+one_line_summary: Eagle 2 studies each data strategy from scratch and releases the resulting capability-labeled conversation
+  mixture with per-source licensing metadata.
+why_it_matters: Frontier VLM reports rarely disclose how raw multimodal sources are selected, reformatted, balanced, and filtered
+  into a competitive post-training mixture.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: frontier VLM post-training SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: data-centric frontier VLM post-training
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 1841 downloads and 167 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet conversation records with image assets records, field schema, scale,
+      and CC-BY-4.0 at the aggregate release; component terms are listed per source terms.
+  selection_eligible: true
+  year_impact_threshold: 2

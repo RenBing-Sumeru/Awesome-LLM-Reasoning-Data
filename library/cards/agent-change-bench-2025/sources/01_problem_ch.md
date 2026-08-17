@@ -1,0 +1,7 @@
+AgentChangeBench 研究 tool-use 对话 agent 在 episode 进行期间遇到用户目标变化后能否继续有效完成任务。稳定的主要记录是 2025 年 10 月 20 日提交的 arXiv:2510.18170v1；论文以 poster 形式被 NeurIPS 2025 Workshop on Multi-Turn Interactions in Large Language Models (MTI-LLM) 接收。arXiv、NeurIPS virtual page 与 MTI-LLM OpenReview 官方页面共同支持这条书目信息。另一个 LAW @ NeurIPS 2025 OpenReview 版本属于版本漂移，不作为第二篇论文处理。
+
+benchmark 包含 315 个声明式客服任务：banking 50 个、airline 100 个、retail 165 个。每个 task 指定 persona、已知与未知信息、有序 goals、required shift 数量、初始 environment state、允许的 action/tool、evaluation criteria、natural-language assertion 以及 assistant 必须传达的信息。评测 episode 随后加入 user/assistant turn、仅由 assistant 发起的 tool call、API observation、goal-shift event、变更后的 acknowledgment/tool/outcome 时间点、transfer event 与 metric output。正是这种 task-plus-episode 结构，使论文归入 `environment_agent_trajectory_data`。
+
+相邻问题是普通的静态 task success；AgentChangeBench 则把对话中途的变化变成可观察评测事件，并分开衡量 communication、action execution、重复 tool use 与 recovery timing。不过，其 shift 预先声明、按顺序发生且通常有明确提示；论文不覆盖 implicit、ambiguous、interleaved 或 adversarial goal drift，也不涉及 code、browser、OS 或 robotic tool。因此它是聚焦的 evaluation surface，而不是对不断变化用户意图的通用建模。
+
+论文报告 2,835 条 task sequence，但可访问材料没有 manifest 将这一数字映射到 task ID 或 run record。315 个 task × 3 个闭源模型 × 3 次运行恰好等于 2,835，但这只是 curator inference，不是论文明确给出的 serialization contract。论文与 appendix 足以支持对 task schema、构造 pipeline、environment、metric、结果和风险做 L4 深度分析；accepted metadata 仍保持 `L3_summary_ready`，因为官方列出的 supplementary ZIP 无法取回，其内容、license、split、checksum、failure retention 与 replay completeness 均未核验。

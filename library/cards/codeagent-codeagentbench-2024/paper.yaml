@@ -1,0 +1,113 @@
+id: codeagent-codeagentbench-2024
+title: 'CodeAgent: Enhancing Code Generation with Tool-Integrated Agent Systems for Real-World Repo-level Coding Challenges'
+year: 2024
+venue: arXiv preprint
+authors:
+- Kechi Zhang
+- Jia Li
+- Ge Li
+- Xianjie Shi
+- Zhi Jin
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- repo-level-coding
+- tool-integrated-agents
+- code-generation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2401.07339
+  arxiv: https://arxiv.org/abs/2401.07339
+  doi: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: CodeAgent arXiv paper
+  trace_author: CodeAgent authors and CodeAgentBench construction
+  answer_format: repo-level coding tasks, tool calls, generated code, execution feedback, and benchmark outcomes
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: tool-integrated real-world repository-level coding challenges
+  verifier_or_reward: task tests and repository-level evaluation described by the paper
+  terminal_predicate: task tests and repository-level evaluation described by the paper
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: repo-level tasks and tool-integrated agent scaffold
+  generator: CodeAgent and CodeAgentBench task pipeline
+  filtering_rule: locate official code/data before reusing the 101-task benchmark
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2401.07339
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2401.07339'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: paper claims benchmark release but official code/data URL was not verified
+inclusion_reason: it records repo-level coding tasks with tool-using agent behavior
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- repo-level-coding
+- tool-integrated-agents
+- code-generation
+one_line: CodeAgentBench evaluates tool-integrated agents on real-world repository-level coding challenges.
+why_it_matters: it records repo-level coding tasks with tool-using agent behavior
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CodeAgentBench evaluates tool-integrated agents on real-world repository-level coding challenges.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Agent verification confirms title, authors, PKU affiliations, and arXiv status; no official code/data URL was verified.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 111
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,19 @@
+{
+  "title": "AlignBench: Benchmarking Chinese Alignment of Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.acl-long.624/",
+    "data": "https://github.com/THUDM/AlignBench",
+    "code": "https://github.com/THUDM/AlignBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T08:06:22Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建 683 个原生中文问题及人工核验参考答案，以分维规则评测中文模型对齐质量",
+    "updated_at": "2026-07-25T08:06:22Z"
+  }
+}

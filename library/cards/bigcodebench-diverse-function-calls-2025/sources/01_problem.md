@@ -1,0 +1,3 @@
+Widely used code benchmarks such as HumanEval and MBPP contain short, self-contained algorithmic functions and are approaching saturation. Real programming requires combining multiple library calls, handling exceptions, interpreting complex requirements, and following output constraints. Simple tests may also miss branch behavior across APIs.
+
+BigCodeBench constructs expert-annotated Python tasks requiring multiple function calls and provides high-branch-coverage tests. It includes both detailed docstring prompts and a more natural, less structured Instruct variant to compare models under structured and conversational requirements.

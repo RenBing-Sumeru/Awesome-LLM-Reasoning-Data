@@ -1,0 +1,19 @@
+{
+  "title": "ABC-Bench: Benchmarking Agentic Backend Coding in Real-World Development",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.1142/",
+    "data": "https://huggingface.co/datasets/OpenMOSS-Team/ABC-Bench",
+    "code": "https://github.com/OpenMOSS/ABC-Bench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T12:09:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 ABC-Bench，含224个覆盖8种语言、19个框架的后端任务",
+    "updated_at": "2026-07-18T12:09:13Z"
+  }
+}

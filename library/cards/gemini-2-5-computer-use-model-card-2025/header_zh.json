@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Gemini 2.5 Computer Use Model Card 披露截图—动作—客户端执行闭环、整轨人类多数票和高风险动作安全门控，但未公开 UI 后训练数据、reward、rollout 或可复现的浏览器环境 pin。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿 computer-use agent 模型卡与环境披露台账",
+  "best_for_ch": "设计或审计截图型 web/mobile agent 数据、反馈契约、环境复现与安全确认机制的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Google DeepMind",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

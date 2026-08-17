@@ -1,0 +1,132 @@
+id: alphaproof-olympiad-level-formal-mathematical-reasoning-2025
+title: Olympiad-level formal mathematical reasoning with reinforcement learning
+year: 2025
+venue: Nature 651 (2026)
+authors:
+- Thomas Hubert
+- Rishi Mehta
+- Laurent Sartran
+- Miklós Z. Horváth
+- Goran Žužić
+- Eric Wieser
+- Aja Huang
+- Julian Schrittwieser
+- Yannick Schroecker
+- Hussain Masoom
+- Ottavia Bertolli
+- Tom Zahavy
+- Amol Mandhane
+- Jessica Yung
+- Iuliya Beloshapka
+- Borja Ibarz
+- Vivek Veeriah
+- Lei Yu
+- Oliver Nash
+- Paul Lezeau
+- Salvatore Mercuri
+- Calle Sönne
+- Bhavik Mehta
+- Alex Davies
+- Daniel Zheng
+- Fabian Pedregosa
+- Yin Li
+- Ingrid von Glehn
+- Mark Rowland
+- Samuel Albanie
+- Ameya Velingker
+- Simon Schmitt
+- Edward Lockhart
+- Edward Hughes
+- Henryk Michalewski
+- Nicolas Sonnerat
+- Demis Hassabis
+- Pushmeet Kohli
+- David Silver
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://www.nature.com/articles/s41586-025-09833-y
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1038/s41586-025-09833-y
+  venue: https://www.nature.com/articles/s41586-025-09833-y
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: Lean tactic-state search and verified proof/disproof outcomes
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: Lean checker feedback
+  terminal_predicate: budgeted tree search with replay of discovered proofs/disproofs
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: Lean tactic-state search and verified proof/disproof outcomes'
+  known_failure_modes:
+  - internal experience buffer cannot be treated as open data
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://www.nature.com/articles/s41586-025-09833-y'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: Lean tactic-state search and verified
+  proof/disproof outcomes.'
+related: []
+tags:
+- track5
+- programmatic_code_formal
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Olympiad-level formal mathematical reasoning with reinforcement learning records Lean tactic-state search
+  and verified proof/disproof outcomes under Lean checker feedback.
+why_it_matters: It makes budgeted tree search with replay of discovered proofs/disproofs and its audit boundary visible for
+  reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

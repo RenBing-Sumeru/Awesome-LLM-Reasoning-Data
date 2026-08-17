@@ -1,0 +1,5 @@
+- The only concrete post-training object is the conflicting-edit RL intervention in Section 4.1.2; do not broaden it into a general GPT-5.3-Codex recipe.
+- Read "positive reinforcement" as a high-level feedback direction, not a disclosed scalar function, verifier, judge, or reward implementation.
+- Keep the separately reported destructive-actions evaluation distinct from the training reward; no mapping between them is disclosed.
+- Keep Codex CLI prompting, product sandboxes, monitors, red teaming, and other evaluations outside the training ledger unless an official source explicitly links them.
+- Preserve as unknown the tasks, repositories, user-model specification, trajectories, environment, optimization settings, data rights, and item-level lineage.

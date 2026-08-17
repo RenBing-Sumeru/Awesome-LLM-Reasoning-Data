@@ -1,0 +1,220 @@
+id: tree-search-agent-rl-2026
+title: Tree Search for LLM Agent Reinforcement Learning
+year: 2026
+venue: ICLR 2026
+authors:
+- Yuxiang Ji
+- Ziyu Ma
+- Yong Wang
+- Guanhua Chen
+- Xiangxiang Chu
+- Liaoni Wu
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- knowledge_intensive_question_answering
+- multi_hop_question_answering
+- web_agent_question_answering
+- retrieval_augmented_reasoning
+- tool_use
+- agentic_reasoning
+training_use:
+- rlvr
+- agent_training
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=ZpQwAFhU13
+  arxiv: https://arxiv.org/abs/2509.21240
+  code: https://github.com/AMAP-ML/Tree-GRPO
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.21240
+  venue: https://iclr.cc/virtual/2026/poster/10008772
+  openreview: https://openreview.net/forum?id=ZpQwAFhU13
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2509.21240
+data_object:
+  prompt_source: 'Three paper-reported training settings: 79,168 Natural Questions training pairs for single-hop QA; 90,447
+    HotpotQA training pairs for multi-hop QA; and 2,200 web-agent QA pairs composed of 2,000 sampled ASearcher-35K records
+    plus 200 released WebDancer records. Exact source revisions, file hashes, the ASearcher row IDs and sampling seed, and
+    immutable processed Parquets are not released.'
+  trace_author: The current policy model generates every online tree trajectory. Experiments cover Qwen2.5 Base/Instruct and
+    Llama3.2 Base/Instruct at 1.5B, 3B, 7B, and 14B scales; released local-QA scripts default to Qwen2.5-3B, while the web-agent
+    script defaults to Qwen2.5-14B. No separate teacher generates the rollouts.
+  answer_format: A ReAct trajectory alternates tagged <think> reasoning, <search> textual tool actions, environment-supplied
+    <information> observations, and a final <answer>. The runtime tree node represents one complete thought-action-observation
+    step; a completed leaf contains the full shared-prefix trajectory and terminal answer.
+  process_fields:
+  - prompt and ground-truth answer targets
+  - tree_uid and node_uid
+  - parent-child pointers and node depth
+  - complete thought-action-observation agent step
+  - shared prefix and expanded continuation
+  - response, information mask, and turn mask
+  - valid-action and valid-search statistics
+  - completed leaf and terminal EM/F1-plus-format score
+  - intra-tree and inter-tree group membership
+  - summed tree-relative advantages and returns
+  - selected-leaf payload consumed by the online update
+  environment_or_substrate: Search-only ReAct environments. Single-hop and multi-hop QA query an E5-based local retriever
+    over a Wikipedia-2018 corpus and return the top three passages. Web-agent QA queries a Bing/web-search API and returns
+    the top ten passages. Paper-run corpus/index hashes, Bing responses and cache, endpoint versions, and replayable environment
+    snapshots are unavailable.
+  verifier_or_reward: Single-hop and multi-hop QA use deterministic normalized exact match; web-agent QA uses normalized answer-token
+    F1. Invalid trajectory structure incurs a 0.2 format penalty. Selected leaves are normalized once within each tree and
+    once across all trees for the prompt; Tree-GRPO sums the intra-tree and inter-tree relative advantages. No learned reward
+    model or independently annotated process verifier is used.
+  terminal_predicate: Generation ends on </answer> or EOS, or at the maximum action/tool-call budget. The paper caps local
+    QA at three tool calls and web-agent QA at five. Outcome success is exact-match correctness for local QA; web-agent reward
+    is graded F1 rather than a binary terminal predicate.
+recipe_metadata:
+  base_model: Qwen2.5 Base/Instruct and Llama3.2 Base/Instruct across reported 1.5B, 3B, 7B, and 14B settings; Qwen2.5-3B
+    is the default budget study and released local-QA configuration.
+  teacher: No separate teacher is used; the current policy produces online ReAct trees, and programmatic answer/format functions
+    supply rewards.
+  generator: For each prompt, initialize M independent complete chains as tree roots, randomly sample N non-answer nodes from
+    every tree, reuse each root-to-node prefix, and generate a new suffix to a terminal leaf; repeat expansion L times. The
+    resulting group contains M * (L * N + 1) completed trajectories while reusing token and tool-call prefixes.
+  filtering_rule: Expansion nodes are sampled randomly rather than selected by value or correctness. The released manager
+    samples K leaves per tree, prunes unselected leaves/subtrees in memory, scores the selected leaves, and then deletes the
+    tree. Default scripts set M=2, N=2, L=1, K=3, so all three generated leaves per tree are selected; no quality-based rejection
+    filter or public retained/rejected manifest is provided.
+  sampling_protocol: Default paper configuration M=2, N=2, L=1 produces six leaves in two trees under an expected token/tool-call
+    cost of about four independent complete trajectories per prompt. Table 3 studies expected budgets about 2, 4, 8, and 16;
+    Appendix B.4 varies M, N, and L. Released scripts use random expansion and temperature 1, but do not publish complete
+    top-p, top-k, seed, or realized per-record cost settings.
+  rollout_count: 6
+  temperature: 1.0 in the released Tree-GRPO training scripts; a complete paper-run decoding contract is unknown.
+  inference_budget: This is a training-time rollout budget, not test-time search. Default expected cost is approximately four
+    complete trajectories per prompt, yielding six shared-prefix leaves. The paper reports maximum response lengths of 4,096
+    tokens for local QA and 8,000 for web-agent QA, with three and five tool calls respectively. Released scripts instead
+    set data.max_response_length to 500 for local QA and 2,000 for web-agent QA; how these per-generation limits map to the
+    paper-level caps is not documented.
+  optimizer_or_scaffold: Tree-GRPO implemented on Search-R1 and VeRL with AdamW, learning rate 1e-6, K3 KL coefficient 0.001,
+    GRPO policy loss, and summed intra-tree plus inter-tree group-relative advantages. The paper reports 180 training steps
+    for local QA and 34 steps/two epochs for web-agent QA.
+audit:
+  source_mixture: Training uses Natural Questions, HotpotQA, ASearcher-35K, and WebDancer. Evaluation spans NQ, TriviaQA,
+    PopQA, HotpotQA, 2WikiMultiHopQA, Musique, Bamboogle, SimpleQA, a 103-item text-only GAIA subset, WebWalkerQA, and BrowseComp.
+    The repository provides local preprocessing scripts but no immutable paper-run mixture or processed-data release.
+  split: NQ train is evaluated on NQ/TriviaQA/PopQA; HotpotQA train is evaluated on HotpotQA/2WikiMultiHopQA/Musique/Bamboogle;
+    ASearcher/WebDancer web training is evaluated on SimpleQA/GAIA/WebWalkerQA/BrowseComp. Exact source revisions, row manifests,
+    sampling seed, duplicate controls, and processed split hashes are unknown.
+  decontamination: unknown
+  license: The official code repository is Apache-2.0. The paper and repository do not provide a consolidated license or rights
+    ledger for upstream QA datasets, Wikipedia-derived retrieval content, Bing results, processed Parquets, or policy-generated
+    tree trajectories; those reuse rights remain unknown.
+  lineage: Named QA source row -> local prompt/ground-truth preprocessing -> current policy ReAct forest -> local-Wikipedia
+    or Bing observations -> completed leaves -> EM/F1 plus format score -> intra-tree and inter-tree relative advantages ->
+    Tree-GRPO policy update. The public runtime assigns tree/node IDs and parent pointers, but returns only selected full
+    responses, masks, scores/statistics, and tree_uid before deleting the in-memory tree. No public artifact connects source
+    revisions, retrieval states, all branches, per-leaf decisions, optimizer updates, and checkpoints record by record.
+  known_failure_modes:
+  - Raw trees are not released. After selected leaves are packed and scored, the implementation deletes parent/child structures;
+    public artifacts therefore cannot reconstruct shared prefixes, expansion choices, local branch comparisons, or tree-relative
+    process signals.
+  - Under non-default K or larger trees, unselected leaves and descendant structure can be pruned in memory. No retained/rejected
+    manifest or raw selected-trajectory dataset is published.
+  - Outcome-derived step credit can misattribute success or failure to a branch when later reasoning, retrieval noise, or
+    a downstream action determines the terminal answer. The step-DPO equivalence additionally assumes binary outcomes, whereas
+    web-agent training uses graded F1.
+  - Few leaves within a tree produce a high-variance intra-tree baseline and can cause training collapse; the paper uses inter-tree
+    normalization as a fallback rather than eliminating this risk.
+  - More shared prefixes improve rollout efficiency but reduce independent exploration. The paper reports that too-small M
+    or excessive N/L relative to task depth yields diminishing or degraded performance.
+  - Exact match, F1, and format checks do not establish evidence grounding, retrieval correctness, source attribution, or
+    factual robustness and can reward lexical answer overlap despite a flawed path.
+  - Local retrieval and live web search are environment-dependent. The paper-run E5/Wikipedia index, Bing responses/cache,
+    and endpoint versions are not released, so trajectories and rewards are not replay-auditable.
+  - The paper and released scripts expose different response-length numbers without documenting their mapping; complete decoding
+    parameters, seeds, realized token/tool-call budgets, and paper-run environment configuration are also unavailable.
+  - The web-agent training/test files are still described as forthcoming, and no official processed data, model, raw trajectory,
+    reward ledger, result bundle, or immutable GitHub release was verified.
+  - No decontamination, semantic-overlap, duplicate-prompt, or search-corpus leakage audit is reported, and upstream/data-output
+    licenses are not consolidated.
+  - The paper's failed cases show early commitment to a partially satisfying path, failure to reconsider after new evidence,
+    and an incorrect final answer.
+  citation_status: verified
+  confidence: high
+  notes: The 27-page arXiv v3/ICLR paper and all appendices, official ICLR poster, OpenReview identity, arXiv record, and
+    official repository at commit 19bf3fa0c74d8b9ba70619a09a2fd480c31b9d59 were checked on 2026-07-25. Official code and its
+    Apache-2.0 license are verified; reusable data/tree artifacts, complete release lineage, data rights, and environment
+    snapshots are not.
+inclusion_reason: 'Tree-GRPO makes an online agent-RL rollout forest an explicit training-data object: complete ReAct steps
+  form shared-prefix branches, programmatic outcome labels score leaves, and tree-relative groups convert terminal feedback
+  into implicit process supervision under disclosed rollout budgets. Its in-memory-only trees and missing branch/reward release
+  make it especially useful for auditing the boundary between a search recipe and reusable trace data.'
+related:
+- search-r1-2025
+- tree-rl-2025
+tags:
+- tree-grpo
+- agent-step-tree-search
+- shared-prefix-rollouts
+- agentic-rl
+- react
+- online-rlvr
+- outcome-reward
+- implicit-process-supervision
+- intra-tree-advantage
+- inter-tree-advantage
+- retrieval-agent
+- rollout-budget
+- unreleased-raw-trees
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Tree-GRPO builds shared-prefix forests of complete ReAct agent steps during online RL, scores terminal leaves
+  with EM/F1 and format rules, and derives intra-/inter-tree process signals, but it releases code rather than the raw trees,
+  discarded branches, or reward lineage.
+why_it_matters: It shows how search structure itself can turn a fixed token/tool budget into more agent trajectories and finer
+  credit assignment, while exposing why parent-child lineage, all leaf outcomes, environment snapshots, split manifests, and
+  retention decisions are necessary before such runtime trees can be treated as auditable reasoning data.
+card: null
+needs:
+- 'needs_trace_release: publish stable prompt/tree/node IDs, parent-child links, shared prefixes, expansion choices, every
+  completed leaf, terminal scores, masks, group membership, and intra-/inter-tree advantages'
+- 'needs_rejection_manifest: publish every selected, unselected, pruned, invalid, and failed trajectory with the retention
+  decision and reason'
+- 'needs_data_release: publish immutable processed train/test Parquets, including the promised web-agent data, with source
+  revisions, row IDs, sampling seed, hashes, and split manifests'
+- 'needs_environment_snapshot: release the paper-run E5/Wikipedia index metadata, Bing queries/responses/cache, endpoint versions,
+  retrieval parameters, and replay instructions'
+- 'needs_reproducibility: reconcile paper/script response-length limits and disclose complete decoding settings, seeds, realized
+  token/tool-call costs, hardware/runtime, configuration files, result bundle, and checkpoint lineage'
+- 'needs_decontamination: report exact, near-duplicate, semantic-overlap, benchmark-contamination, and search-corpus leakage
+  checks'
+- 'needs_license: document upstream and derivative rights for every QA source, Wikipedia/search observation, processed row,
+  and generated trajectory'
+- 'card_recommendation: create a recipe/audit Card diagramming the in-memory agent-step tree, outcome-to-advantage propagation,
+  selected-leaf return payload, and tree-deletion/release boundary'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ICLR/OpenReview/arXiv identity, full paper and appendices, official code, reward functions, data processors,
+    training scripts, runtime tree implementation, and Apache-2.0 license were verified. Status remains partial because no
+    official raw-tree/trajectory/data release, record-level reward lineage, exact split manifest, decontamination report,
+    consolidated data license, or replayable environment snapshot was found.

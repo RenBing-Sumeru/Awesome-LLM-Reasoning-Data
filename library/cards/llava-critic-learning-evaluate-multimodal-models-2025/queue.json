@@ -1,0 +1,19 @@
+{
+  "title": "LLaVA-Critic: Learning to Evaluate Multimodal Models",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/CVPR2025/html/Xiong_LLaVA-Critic_Learning_to_Evaluate_Multimodal_Models_CVPR_2025_paper.html",
+    "data": "https://huggingface.co/datasets/lmms-lab/llava-critic-113k",
+    "code": "https://github.com/llava-vl/LLaVA-Critic",
+    "project": "https://llava-vl.github.io/blog/2024-10-03-llava-critic"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:27:18Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 LLaVA-Critic-113K：46K图像、113K评分/偏好/理由记录，覆盖多类视觉任务",
+    "updated_at": "2026-07-18T12:27:18Z"
+  }
+}

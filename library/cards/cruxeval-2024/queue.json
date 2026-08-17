@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:11:39Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "代码推理常用指标 比较有价值的代码bench ref354",
+    "updated_at": "2026-07-15T12:11:39Z"
+  }
+}

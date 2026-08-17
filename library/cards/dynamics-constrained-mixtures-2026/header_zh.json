@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DynaMiCS 反复探测数据来源效应并优化监督微调混合权重，在改善目标的同时不违反受保护能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "带约束的动态监督微调数据混合优化研究",
+  "best_for_ch": "在专门化数据与明确安全或能力保持约束间取平衡的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Eleonora Gualdoni, Sonia Laguna, Louis Béthune, Joao Monteiro, Pierre Ablin, Marco Cuturi",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T01:05:00Z"
+}

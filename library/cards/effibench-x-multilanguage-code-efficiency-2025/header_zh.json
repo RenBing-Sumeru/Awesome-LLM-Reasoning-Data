@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "EffiBench-X 检验通过功能测试的代码能否在六种语言中接近专家的运行时间与内存效率。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "跨语言、执行式代码效率基准",
+  "best_for_ch": "研究代码优化、效率奖励和跨语言代码生成的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yuhao Qing, Boyu Zhu, Mingzhe Du, Zhijiang Guo, Terry Yue Zhuo, Qianru Zhang, Jie M. Zhang, Heming Cui, Siu-Ming Yiu, Dong Huang, See-Kiong Ng, Luu Anh Tuan",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T13:01:43Z"
+}

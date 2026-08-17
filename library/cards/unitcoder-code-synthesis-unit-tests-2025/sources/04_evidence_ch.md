@@ -1,0 +1,1 @@
+在相同基座上，加入 UnitCoder 数据后 Llama3.1-8B 的 BigCodeBench 从 31.0% 升至 40.4%，BigCodeBench-Hard 从 5.4% 升至 14.2%；InternLM2.5-7B 从 27.9% 升至 39.3%，Hard 从 10.1% 升至 17.6%。受控消融中，一般代码数据为 29.4%，加入仅验证数据升至 35.2%，完整 verified-and-refined 数据达 39.3%。结果支持测试验证和 refinement 均有贡献，但训练混合比例与源语料差异仍影响归因。

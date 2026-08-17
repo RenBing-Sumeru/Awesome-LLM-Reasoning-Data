@@ -1,0 +1,136 @@
+id: megamath-2025
+title: 'MegaMath: Pushing the Limits of Open Math Corpora'
+year: 2025
+venue: COLM 2025
+authors:
+- Fan Zhou
+- Zengzhi Wang
+- Nikhil Ranjan
+- Zhoujun Cheng
+- Liping Tang
+- Guowei He
+- Zhengzhong Liu
+- Eric P. Xing
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- unknown
+domains:
+- math
+- code
+training_use:
+- unknown
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=SHB0sLrZrh
+  arxiv: https://arxiv.org/abs/2504.02807
+  code: https://github.com/LLM360/MegaMath
+  data: https://huggingface.co/datasets/LLM360/MegaMath
+  project: https://github.com/LLM360/MegaMath
+  huggingface: https://huggingface.co/datasets/LLM360/MegaMath
+  doi: https://doi.org/10.48550/arXiv.2504.02807
+  venue: https://openreview.net/forum?id=SHB0sLrZrh
+  openreview: https://openreview.net/forum?id=SHB0sLrZrh
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: English mathematical web documents from 99 Common Crawl snapshots, math-related Stack V2 code, and synthetic
+    records derived from web or code sources.
+  trace_author: Original web and code authors for recalled records; multiple disclosed Qwen and Llama teachers generate or
+    refine synthetic subsets.
+  answer_format: Mathematical text, source code, question-answer records with worked solutions, translated Python, or interleaved
+    text-expression-result-code blocks.
+  process_fields:
+  - extracted mathematical text
+  - source code metadata
+  - question
+  - answer with reasoning
+  - translated Python
+  - interleaved text and code
+  - component metadata
+  environment_or_substrate: Offline corpus construction from Common Crawl WARC and Stack V2 with LLM synthesis and restricted
+    code execution.
+  verifier_or_reward: fastText and FineMath classifiers, LLM judgments, a learned code filter, MinHash-LSH deduplication,
+    and AST-gated execution checks.
+  terminal_predicate: Records pass component-specific extraction, filtering, deduplication, safety and decontamination rules;
+    text-code blocks additionally pass execution checks.
+recipe_metadata:
+  base_model: TinyLlama-1B for proxy ablations; Llama-3.2-1B and Llama-3.2-3B for larger demonstrations.
+  teacher: Llama-3.1-70B-Instruct, Llama-3.3-70B-Instruct, Qwen-2.5-72B-Instruct and Qwen2.5-Coder-32B-Instruct in disclosed
+    component roles.
+  generator: Two-stage web extraction, code recall, Q&A extraction/refinement, code translation, and executable interleaved
+    text-code generation.
+  filtering_rule: English and URL filtering, fastText math filtering, MinHash-LSH deduplication, FineMath/LLM refinement,
+    learned code filtering, AST/execution checks, and exact 13-gram decontamination.
+  sampling_protocol: Web data spans 99 Common Crawl snapshots; exact settings for every synthetic component are not uniformly
+    disclosed.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Offline corpus curation validated by proxy-model pre-training ablations.
+audit:
+  source_mixture: 215.1M samples and 371.6B tokens comprising 279.0B web, 28.1B code, and 64.5B synthetic tokens.
+  split: Current HF viewer exposes one train split; immutable component mapping and count reconciliation require audit.
+  decontamination: Exact 13-gram matching against 12 math benchmarks removes about 0.01%; semantic contamination is not ruled
+    out.
+  license: HF declares ODC-By and GitHub code Apache-2.0; item-level source rights remain heterogeneous.
+  lineage: Common Crawl and Stack V2 records pass component pipelines and seed synthetic variants before decontamination and
+    release.
+  known_failure_modes:
+  - learned filters can misclassify records
+  - LLM refinement can introduce errors
+  - execution does not prove mathematical correctness
+  - exact matching misses semantic leakage
+  - source licenses are heterogeneous
+  - mutable release counts differ
+  - some pipeline documentation is incomplete
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, COLM OpenReview, GitHub and HF dataset verified on 2026-07-11; item provenance and immutable versioning
+    remain partial.
+inclusion_reason: MegaMath is a large open mathematical corpus with documented extraction, filtering, code recall, synthesis,
+  execution checking and decontamination recipes.
+related: []
+tags:
+- math-pretraining
+- open-release
+- common-crawl
+- code-data
+- synthetic-data
+- filtering
+- deduplication
+- decontamination
+- data-lineage
+status: partial
+one_line: MegaMath releases a 371.6B-token math corpus spanning filtered web text, recalled code, and synthetic Q&A and text-code
+  records.
+one_line_summary: MegaMath releases a 371.6B-token math corpus spanning filtered web text, recalled code, and synthetic Q&A
+  and text-code records.
+why_it_matters: It exposes a large-scale open recipe for extraction, learned filtering, deduplication, teacher synthesis,
+  execution checks and release variants upstream of reasoning training.
+card: cards/releases/megamath-2025.md
+needs:
+- 'needs_snapshot: pin immutable HF revision'
+- 'needs_provenance: audit item-level lineage and licenses'
+- 'needs_recipe: pin incomplete generation settings'
+- 'needs_decontamination: assess semantic overlap'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official citation and artifacts verified; release internals remain partial.
+category_ids:
+- data_construction_open_release_recipes

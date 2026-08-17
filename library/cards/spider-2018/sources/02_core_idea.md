@@ -1,0 +1,3 @@
+The contribution is a large human-labeled text-to-SQL dataset that separates databases across train, dev, and test so models must generalize to new schemas. Spider contains 10,181 questions, 5,693 unique complex SQL queries, 200 databases, and 138 domains in the commonly cited release.
+
+The data object is a question-schema-SQL record. The feedback contract is programmatic: predicted SQL is scored by exact-set matching over SQL components and by execution accuracy when appropriate. Closest comparisons are ATIS, GeoQuery, WikiSQL, and later text-to-SQL benchmarks such as BIRD. The direction label is cross-domain semantic parsing with SQL verifier metrics.

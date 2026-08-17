@@ -1,0 +1,3 @@
+The prior baseline is a collection of separate benchmarks and leaderboards, each with its own task framing and scoring convention. HELM changes the evaluation object from isolated task score to a standardized, multi-metric run matrix.
+
+The direction signal is auditability: scenario adapters, model adapters, metrics, and run metadata are first-class objects. What is not new is the underlying tasks or every individual metric; HELM often wraps existing datasets and established scorers. Before reuse, inspect the exact HELM release, scenario provenance, model access terms, metric definitions, and whether the online "latest" page matches the cited paper.

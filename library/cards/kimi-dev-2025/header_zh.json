@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Kimi-Dev 将 GitHub 补丁与模拟文件工具数据训练成 Agentless 技能先验，再用完整任务测试的二元 RLVR 和论文所述 5,016 条 agent 轨迹连接 SWE-Agent；但训练语料、Docker 谱系、精确划分、失败 rollout 与适配后 checkpoint 未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程智能体数据构造与可验证强化学习技术报告",
+  "best_for_ch": "研究 repository issue-to-patch 数据、Docker verifier、Agentless 技能先验到 agent 的迁移，以及数据披露审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zonghan Yang 等（Moonshot AI）",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

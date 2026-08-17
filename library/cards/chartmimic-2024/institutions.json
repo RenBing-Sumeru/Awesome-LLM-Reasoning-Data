@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Tsinghua University",
+    "Tencent AI Lab"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.09961",
+    "https://arxiv.org/html/2406.09961",
+    "https://chartmimic.github.io/",
+    "https://github.com/ChartMimic/ChartMimic",
+    "https://huggingface.co/datasets/ChartMimic/ChartMimic"
+  ],
+  "verification_note": "Official arXiv/project/GitHub/Hugging Face sources verify authors, Tsinghua/Tencent affiliations, ICLR 2025 status, artifacts, 4,800 triplets, 201 subcategories, and reported model-evaluation scale; an undefined project-page superscript is not treated as a separate institution."
+}

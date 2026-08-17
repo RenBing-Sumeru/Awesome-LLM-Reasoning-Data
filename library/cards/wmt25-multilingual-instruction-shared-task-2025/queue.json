@@ -1,0 +1,19 @@
+{
+  "title": "Findings of the WMT25 Multilingual Instruction Shared Task: Persistent Hurdles in Reasoning, Generation, and Evaluation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.wmt-1.23/",
+    "data": "https://www2.statmt.org/wmt25/multilingual-instruction.html",
+    "code": null,
+    "project": "https://www2.statmt.org/wmt25/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T11:03:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布近 2 万条、覆盖 30 种语言的提示及人类评分和系统提交，兼顾生成能力与裁判评测",
+    "updated_at": "2026-07-25T11:03:50Z"
+  }
+}

@@ -1,0 +1,3 @@
+- Read Section 2 together: verify how sampling accuracy, correct-response length, and maximum length enter TLB before interpreting the calibrated reward.
+- In Section 2.3, distinguish DCP from DICP and note that correct-vs-incorrect pairs were reported as unhelpful; inspect the margin filtering and one-pair-per-class constraint.
+- Cross-check Section 3.1/Table 1 and the Limitations section against the linked repository; do not assume that its evaluation utilities release the 20-rollout corpus, preference pairs, or checker.

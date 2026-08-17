@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "测试时轨迹数据",
+    "updated_at": "2026-07-19T03:08:12Z"
+  },
+  "updated_at": "2026-07-19T03:08:12Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

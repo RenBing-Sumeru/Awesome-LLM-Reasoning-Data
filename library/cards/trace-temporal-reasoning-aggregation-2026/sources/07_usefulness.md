@@ -1,0 +1,1 @@
+Use TRACE when serving long reasoning traces from a model whose intermediate answers and token probabilities are accessible. Log reasoning steps, induced answers, both component scores, exit threshold, saved tokens, induction overhead, and correctness. Compare against full reasoning and single-step early exit at matched accuracy targets, not only at a common threshold.

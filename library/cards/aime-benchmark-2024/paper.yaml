@@ -1,0 +1,114 @@
+id: aime-benchmark-2024
+title: AIME Benchmark for Mathematical Reasoning
+year: 2024
+venue: Mathematical Association of America exam source / benchmark subset
+authors:
+- Mathematical Association of America
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- competition-math
+- olympiad-style-evaluation
+- contamination-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://maa.org/math-competitions/american-invitational-mathematics-examination-aime
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'contest problem statement, year/test identifier, integer answer, and sometimes official solution; AIME has
+    15 problems per exam, while common AIME 2024 benchmark usage often combines AIME I and II for 30 problems; Benchmark size:
+    AIME 每套试卷 15 道整数答案题；模型评测通常按年份和 AIME I/II 固定集合，单年两套合计 30 题。'
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'AIME contest exams with 15 integer-answer problems per exam; common 2024 benchmark subset is
+    30 problems if AIME I and AIME II are both included; Benchmark size: AIME 每套试卷 15 道整数答案题；模型评测通常按年份和 AIME I/II 固定集合，单年两套合计
+    30 题。'
+  verifier_or_reward: integer exact match; evaluation must pin year, problem set, prompt format, and contamination boundary
+  terminal_predicate: integer exact match; evaluation must pin year, problem set, prompt format, and contamination boundary
+  benchmark_size: AIME 每套试卷 15 道整数答案题；模型评测通常按年份和 AIME I/II 固定集合，单年两套合计 30 题。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for AIME Benchmark for Mathematical Reasoning; exact curation details should be
+    checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for AIME Benchmark for Mathematical Reasoning.
+  split: Pin exact year and exam. A single AIME exam has 15 problems; common AIME 2024 reports often use 30 problems from
+    AIME I + AIME II, but this must be verified against the benchmark source.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://maa.org/math-competitions/american-invitational-mathematics-examination-aime'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: partial
+  confidence: medium
+  notes: 'Scale depends on benchmark convention: 15 problems for one AIME exam, commonly 30 for AIME 2024 if I+II are combined.
+    Reviewer should pin exact year/exam, source, and scorer details before L5/L6 promotion. Benchmark size: AIME 每套试卷 15 道整数答案题；模型评测通常按年份和
+    AIME I/II 固定集合，单年两套合计 30 题。'
+inclusion_reason: AIME 是高难度竞赛数学评测源，题量不大但区分度高，常用来观察 frontier reasoning 的上限。
+related: []
+tags:
+- benchmark
+- competition-math
+- olympiad-style-evaluation
+- contamination-audit
+why_it_matters: 它提供 AIME 每套试卷 15 道整数答案题；模型评测通常按年份和 AIME I/II 固定集合，单年两套合计 30 题。 的评测规模信息和 competition-math 方向的可复用 benchmark
+  坐标。
+status: partial
+needs:
+- 'needs_source_audit: treat as exam-source benchmark rather than a standalone paper; pin exact AIME year/exam and whether
+  the subset is 15 or 30 problems'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AIME 是高难度竞赛数学评测源，题量不大但区分度高，常用来观察 frontier reasoning 的上限。
+curation_level: L4_carded
+verification:
+  link_verified: false
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

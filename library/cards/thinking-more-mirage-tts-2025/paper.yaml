@@ -1,0 +1,28 @@
+id: thinking-more-mirage-tts-2025
+title: 'Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models'
+year: 2025
+venue: NeurIPS 2025
+authors: ['Soumya Suvra Ghosal', 'Souradip Chakraborty', 'Avinash Reddy', 'Yifu Li', 'Mengdi Wang', 'Dinesh Manocha', 'Furong Huang', 'Mohammad Ghavamzadeh', 'Amrit Singh Bedi']
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, full_episode]
+domains: [mathematical-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2506.04210, arxiv: https://arxiv.org/abs/2506.04210, venue: https://nips.cc/virtual/2025/poster/115605, code: null, data: null, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2506.04210}
+data_object: {prompt_source: 'GSM8K, MATH-500, and AIME 2024 benchmark prompts.', trace_author: 'DeepSeek-R1-Distill-Qwen-1.5B, DeepSeek-R1-Distill-Qwen-7B, and DeepSeek-R1-Distill-Llama-8B.', answer_format: 'Sequential extended-thinking traces or independently sampled parallel reasoning traces with final answers.', process_fields: [prompt, thinking_tokens, trace, answer, majority_vote, accuracy, budget], environment_or_substrate: 'Open-source reasoning-model inference.', verifier_or_reward: 'Benchmark correctness and majority vote over independent final answers.', terminal_predicate: 'Answer correctness under the benchmark protocol.'}
+recipe_metadata: {base_model: 'DeepSeek-R1-Distill-Qwen-1.5B, DeepSeek-R1-Distill-Qwen-7B, and DeepSeek-R1-Distill-Llama-8B.', teacher: null, generator: 'Sequential Wait-and-Think-More control or parallel independent reasoning paths.', filtering_rule: 'Majority vote selects the most consistent parallel final answer.', sampling_protocol: 'Token-budget-controlled generation.', rollout_count: 'Budget-dependent number of parallel paths.', temperature: null, inference_budget: 'Average thinking-token budget.', optimizer_or_scaffold: 'Test-Time Budget Control and parallel-thinking comparison.'}
+audit: {source_mixture: 'Official NeurIPS 2025 poster page and official arXiv paper PDF.', split: 'Official benchmark evaluation protocols; see paper for details.', decontamination: 'Not separately claimed in the checked source.', license: 'Verify benchmark terms before reuse.', lineage: 'Primary sources: https://nips.cc/virtual/2025/poster/115605 and https://arxiv.org/abs/2506.04210', known_failure_modes: ['The variance explanation is a simplified model and not a causal proof for every reasoning system.', 'The evaluation concerns three distilled open models and mathematics benchmarks.', 'Majority voting may be less useful when paths are highly correlated or the budget cannot support several paths.'], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. First-page affiliations: University of Maryland; Princeton University; Capital One; Amazon AGI; University of Central Florida.'}
+inclusion_reason: 'It directly measures when additional inference thinking helps or hurts, then compares an alternative allocation of the same test-time token budget.'
+related: []
+tags: [test-time-compute, reasoning, overthinking, parallel-thinking, budget-allocation]
+status: verified
+one_line_summary: 'The paper diagnoses overthinking under sequential test-time scaling and compares it with parallel allocation of the same reasoning-token budget.'
+reading_priority: essential
+paper_type: Test-time scaling analysis and budget-allocation study
+best_for: Readers choosing between longer chains and multiple independent reasoning paths.
+confidence: high
+why_it_matters: It turns the vague instruction to think longer into an explicit, measurable budget-allocation decision with a documented failure regime.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: false, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official NeurIPS record, arXiv PDF, author list, venue, and affiliation block checked; no code or data release was verified.'}
+category_ids: [scaling_rlvr_test_time_compute]

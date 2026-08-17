@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Fudan University",
+    "Huawei Inc."
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2403.02713",
+    "https://github.com/IMNearth/CoAT"
+  ],
+  "verification_note": "arXiv and CoAT repository verify authors, Fudan/Huawei institutions, Findings of EMNLP 2024 status, and data/code entry."
+}

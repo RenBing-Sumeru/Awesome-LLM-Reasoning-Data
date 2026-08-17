@@ -1,0 +1,3 @@
+HalluGuard is a 4B Small Reasoning Model that evaluates whether a claim is supported by a supplied document and generates an evidence-grounded justification. Its core supervision object is not merely a binary label but a preferred or rejected reasoning response containing classification, explanation, and cited document evidence.
+
+The authors release `HalluGuard-Preferences-76k`, an English Apache-2.0 dataset containing 76,708 synthetic preference tuples. Each record includes a prompt with instructions, document, and claim, together with chosen and rejected reasoning responses, and is intended for ORPO-based hallucination-detection training.

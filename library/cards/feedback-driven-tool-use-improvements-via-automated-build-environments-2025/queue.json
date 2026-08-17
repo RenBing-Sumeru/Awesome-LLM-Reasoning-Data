@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "2,215 个 train environment，工具调用智能体轨迹",
+    "updated_at": "2026-07-22T10:43:04Z"
+  },
+  "updated_at": "2026-07-22T10:43:04Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

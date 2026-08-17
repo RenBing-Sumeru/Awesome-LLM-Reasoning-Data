@@ -1,0 +1,5 @@
+NaturalThoughts treats reasoning-trace selection as a measurable data decision: compare random scaling with policies based on reasoning-strategy diversity, teacher-model disagreement, and trace length, then test which serialized DeepSeek-R1 demonstrations best train a smaller student. Relative to LIMO, s1K, and OpenThoughts3, its contribution is a broader general-STEM selection study rather than one fixed small-data recipe.
+
+Google Scholar citations: 23（checked 2026-07-27；https://scholar.google.com/scholar_lookup?title=NaturalThoughts%3A+Selecting+and+Distilling+Reasoning+Traces+for+General+Reasoning+Tasks&author=Yang+Li&hl=en）
+
+Open dataset: not confirmed. The paper describes the NaturalThoughts construction and experimental subsets, but no official downloadable NaturalThoughts dataset, code repository, record count for a released artifact, file format, or license was found in the checked primary source. NaturalReasoning is an input pool, not automatically the NaturalThoughts output release.

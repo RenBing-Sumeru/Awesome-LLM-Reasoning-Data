@@ -1,0 +1,9 @@
+- Pilot 估计对稀有成功提示很脆弱。发布的分配代码在 `p_i==0` 或 `G_i==0` 时给出零原始分配权重，因此一次不走运的 pilot 可能饿死该提示，而无法发现后续成功。
+- `G_i` 依赖 checkpoint 与实现。梯度层、求和或按长度归一化、精度、回答长度、clipping 和刷新频率都会改变调度；它不是可迁移的提示质量标签。
+- Math-Verify 检查抽取的最终答案，而非中间推理。Parser/归一化错误、猜中答案或不忠实 rationale 都可能变成被接受的训练目标。
+- 附录 C 报告 Qwen2.5-Math-7B 的 pass@n 随训练恶化。GVM 在部分曲线上提高分配效率，但不能修复 RAFT++ 或 GRPO 继承的 distribution collapse。
+- 形式化收敛分析针对满足 smoothness 与调度假设的 EM/RAFT 形式。把同一调度用于 GRPO 主要由实验支持，没有同等完整的理论保证。
+- “2–4 倍加速”按 update step 测量。Pilot rollout 与梯度估计会增加 inference/backward 工作，论文没有给出匹配的端到端 wall-clock 或总计算量加速。
+- 精确 Numina 修订、item split、语义 decontamination、benchmark overlap、论文运行 commit/configuration 与完整 seed 均未知。仓库中存在多个数据路径，因此不可变 run manifest 尤其重要。
+- 代码采用 Apache-2.0，但没有发布版本化 pilot/追加 rollout 包、分配日志、checkpoint bundle 或数据许可证。来源数据、生成轨迹、基础模型和 benchmark 的权利彼此独立。
+- Curator inference：若只发布被接受回答，会隐藏 false negative、浪费的预算和 verifier 失败。官方脚本能在本地保存全部 pilot 输出，但论文报告运行的这些记录并未公开。

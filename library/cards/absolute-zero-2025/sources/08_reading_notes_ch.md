@@ -1,0 +1,5 @@
+- 解读“zero data”前，先把 §§2.2–3.3 与 Appendix A 对照阅读：该主张针对 AZR 的 RL 阶段外部任务答案数据，不包括预训练、人工 prompt、executor 设计或 benchmark。
+- 分别记录三种 terminal predicate：deduction 的 value equality、abduction 的 execution equivalence，以及 induction 在全部五组 hidden I/O 上成功。
+- 信任 curriculum 难度前先读 Appendix E。global variable 会泄露答案，comment/docstring 形成作者观察到的 proposer-to-solver 提示通道。
+- 使用 `paper` 分支而非持续漂移的默认分支，并且只在 hardened、可销毁 sandbox 中运行 executor；官方 README 明确说原始实现不适用于生产。
+- 把 `data/` 视为公开 seed initialization，而不是论文运行语料。在线 buffer、八次尝试 verifier trace、reward、failure 和精确 checkpoint/run lineage 仍不可用。

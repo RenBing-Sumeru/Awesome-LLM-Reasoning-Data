@@ -1,0 +1,5 @@
+- Keep two objects separate: the paper's blueprint and verifier record are richer than the public row, which contains only `conversations`, `system`, and `tools`.
+- Keep the release boundary exact: APIGen-MT-5k is gated, CC-BY-NC-4.0, 5,000 success-only rows in one `train` split; failed Phase-2 trajectories are discarded.
+- Keep the scale and mixture boundary exact: experiments reach 8k APIGen-MT samples, and xLAM training also includes APIGen and other xLAM/ActionStudio data, so 5k is not the full mixture.
+- Keep version drift visible: the final paper reports 5 read and 13 write APIs, while the current project page reports 15 read and 13 write APIs; freeze the HF card/file commits and SHA-256.
+- Before reuse, verify code, environment/reset and replay manifests, blueprint-to-row lineage, verifier calibration, failed attempts, decontamination, mixture mapping, annotation protocol, and license restrictions.

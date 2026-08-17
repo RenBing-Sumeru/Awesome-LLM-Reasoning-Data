@@ -1,0 +1,4 @@
+- Treat the Hugging Face page as the primary V3.1 release record; there is no dedicated V3.1 technical report in the verified sources.
+- Keep 630B/209B long-context extension tokens separate from unknown post-training data.
+- Read the chat-template section for thinking, non-thinking, tool-call, and search-agent runtime contracts.
+- Do not transfer R1 distillation, GRPO, or reward details from the earlier V3 report to V3.1.

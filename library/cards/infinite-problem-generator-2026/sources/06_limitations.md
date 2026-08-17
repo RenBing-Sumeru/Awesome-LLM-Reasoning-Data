@@ -1,0 +1,3 @@
+- Execution proves numerical consistency with the encoded axioms, not that the narrative models real physics; the independent audit still finds more errors in complex records.
+- The 165 seeds and fixed formula library bound topical diversity, while benchmark decontamination and textbook-rights analysis are not reported.
+- Generation is expensive at 22-122 LLM calls per accepted problem, and no downstream controlled SFT improvement is reported.

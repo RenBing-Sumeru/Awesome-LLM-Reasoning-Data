@@ -1,0 +1,1 @@
+论文公开 RubricARROW-Judge-SFT，约 119,120 条记录包含指令、rubric、候选输出与分项/总评分，可训练非可验证领域的 rubric-conditioned pointwise Judge。算法侧交替优化 rubric generator 和 Judge：前者生成区分候选质量的准则，后者输出每条准则满足概率，并以概率聚合减少平局；RL 阶段只需 pairwise preference，不要求人工绝对分。数据贡献和方法共同把成对偏好转成可解释的单回答 reward。

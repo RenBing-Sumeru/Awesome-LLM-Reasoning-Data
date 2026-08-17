@@ -1,0 +1,4 @@
+The primary technical report supports the modality categories, the Phase-2 800B/300B/100B totals, the three pre-training-stage outline, the four Thinker instruction-data groupings, and the three named Talker stages. It also explicitly gives the DPO tuple variables and states that samples are ranked using reward scores associated with WER and punctuation-pause error. The official Qwen repository links the report, release blog, code, and official model page; the repository itself declares Apache-2.0.
+
+These are disclosures from the authors, not independently reproduced data-pipeline results. The report contains extensive benchmark results, but those results do not establish the provenance of the training data, the correctness of a preference pair, the validity or calibration of the reward scores, or resistance to contamination. Public weights and code similarly do not make the reported data assets public.
+

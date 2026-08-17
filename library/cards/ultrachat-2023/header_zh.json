@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UltraChat 同时生成 147 万段主题引导对话的双方发言，把明确的用户需求类别转成多轮 SFT 数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "合成多轮对话数据构造",
+  "best_for_ch": "适合生成或审计大规模多轮聊天 SFT 语料的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ning Ding, Yulin Chen, Bokai Xu, Yujia Qin, Zhi Zheng, Shengding Hu, Zhiyuan Liu, Maosong Sun, Bowen Zhou",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-11T07:47:09Z"
+}

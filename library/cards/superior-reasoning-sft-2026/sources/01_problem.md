@@ -1,0 +1,5 @@
+Small reasoning models often imitate long traces token by token even when the teacher and student sequence distributions are badly mismatched.
+
+Distribution-aligned sequence distillation selects and stages 435K teacher traces to reduce this mismatch before training a 4B reasoning student. The decision boundary is whether a serialized training record survives sequence-level distribution alignment, answer checks, staged temperature sampling, and deduplication; the central artifact is data consumed by 4B long-CoT SFT distillation, not a model-only release.
+
+L4 facts: primary source arXiv:2601.09088; arXiv preprint; data object Superior-Reasoning-SFT-gpt-oss-120b with 435K released long-CoT samples in low- and high-temperature stages; evaluation surface The 4B student is trained with roughly 435K-448K samples and reaches results competitive with several reported 32B-scale models, an order of magnitude larger.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

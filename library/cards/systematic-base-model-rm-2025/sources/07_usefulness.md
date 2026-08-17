@@ -1,0 +1,1 @@
+Use this before committing to an RM base: train a fixed pilot recipe on size-matched candidate bases, report RewardBench categories and top-k selection coverage, then retain a base only if gains persist under the same data and budget. It is unsuitable as a shortcut for tasks whose reward data, deployment language, or verifier differs from the paper’s setting.

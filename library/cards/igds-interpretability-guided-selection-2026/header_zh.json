@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该方法先用因果干预确认模型内部的任务特征，再选择最能激活这些特征的监督微调样本。","reading_priority_ch":"必读","paper_type_ch":"可解释性驱动的数据选择与监督微调研究","best_for_ch":"适合希望把模型内部机制转化为推理训练数据筛选规则的读者。","confidence_ch":"高","authors_ch":"Ling Shi、Xinwei Wu、Xiaohu Zhao 等（天津大学、阿里巴巴集团）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T12:00:00Z"}

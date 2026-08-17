@@ -1,0 +1,5 @@
+- 应把 Hugging Face artifact 视为两个 SFT message corpus，而不是论文中的原始真实与合成 trajectory collection。
+- 必须区分不同 judge：Llama-3.3-70B 筛选训练轨迹，GPT-4o 负责 benchmark evaluation 与 WMLA rollout scoring，真实执行则提供 environmental outcome。
+- 合成训练使用 iteration-2 world model 与 iteration-1 policy，只处理此前未成功的 query，并在最多七步后停止。
+- WMLA 最多采样三个动作，使用 temperature 0 与 0.7，模拟一至三层深度；它是 inference-time procedure，不是公开训练数据。
+- 在声称可重放或广泛复用之前，应核查逐 row lineage、rejected attempt、timestamp、browser snapshot、decontamination、checkpoint 与第三方网页内容权利。

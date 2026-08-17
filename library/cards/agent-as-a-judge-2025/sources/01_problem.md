@@ -1,0 +1,3 @@
+Agent benchmarks often score only final success, which hides where a long-horizon developer agent failed; full human review of files, outputs, and trajectories is costly. Existing coding benchmarks also inadequately represent complete AI-development requests and their dependent intermediate requirements.
+
+Agent-as-a-Judge uses an agentic evaluator to inspect an agentic system. The paper introduces DevAI, a benchmark of realistic AI-development workspaces with hierarchical requirements, then evaluates developer agents requirement by requirement using collected workspace evidence and, optionally, trajectories.

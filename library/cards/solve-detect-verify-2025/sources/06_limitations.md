@@ -1,0 +1,5 @@
+The Detect module depends on a fixed hesitation lexicon and on calibration of the solver’s Yes/No completion probabilities. A missed trigger can preserve overthinking, while a false positive can truncate necessary reasoning. FlexiVe’s output localizes the first predicted error, not a formally proved error, and generative feedback can be persuasive but wrong.
+
+The Flex risk bound assumes conditionally independent fast runs with per-run accuracy above one half; repeated samples from one model may be correlated. Fast consensus can therefore be confidently wrong, while slow escalation remains costly. Evaluation is concentrated on mathematical reasoning, ProcessBench, BIG-Bench Mistake, and AIME, so transfer to other domains is unknown.
+
+The accepted artifact record does not verify released training instances, SDV trajectories, prompts, random seeds, model checkpoints, rejected outputs, decontamination, or a complete license matrix. Benchmark improvements measure a verifier/pipeline under selected protocols; they must not be promoted to proof of trace-label quality or a reusable data release.

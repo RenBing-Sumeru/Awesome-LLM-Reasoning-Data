@@ -1,0 +1,5 @@
+No official release is pinned for the training tasks, trajectories, Docker images, verifier data, rejected records, environment manifests, or audit logs. The report names source classes but not source inventories, rights, mixture weights, repository revisions, prompts, generated-data lineage, or image digests. Apache-2.0 applies to the released weights, not necessarily to GitHub, web, proprietary, synthetic, or trajectory materials.
+
+Execution tests can be superficial, nonfunctional, misaligned, or vulnerable to hidden solution recovery. The report describes controls for git or network reward hacking, but their exact blocker rules, scope, and error analysis are unavailable. Terminal completion also does not prove that all intermediate tool use was sound, and cross-scaffold transfer is only partially characterized.
+
+The stated SFT/RL prompt disjointness and overlap-removal procedures lack public splits, benchmark lists, thresholds, residual-overlap results, and reproducible logs. As a result, the reported executable-task scale, verification structure, and RL stages should not be taken as evidence of a public or independently auditable training corpus.

@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Google Research",
+    "Google DeepMind"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://proceedings.neurips.cc/paper_files/paper/2023/hash/bbbb6308b402fe909c39dd29950c32e0-Abstract-Datasets_and_Benchmarks.html",
+    "https://arxiv.org/abs/2307.10088",
+    "https://github.com/google-research/google-research/tree/master/android_in_the_wild"
+  ],
+  "verification_note": "NeurIPS proceedings, arXiv, and Google Research repository verify authors, Google/DeepMind institutions, NeurIPS 2023 Datasets and Benchmarks Track status, and dataset/code entry."
+}

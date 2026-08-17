@@ -1,0 +1,3 @@
+正确性只相对于 程序化 execution, 任务特定 scoring rubrics, gold/评测 programs, cost metrics, and GPT-4o judging for some visualization outputs determine success. 成立。通过分数不自动证明鲁棒推理、安全行为、解释忠实，或能迁移到 benchmark 分布之外。
+
+隐藏假设包括：Public Hugging Face sheet provides annotation/input fields; full scoring assets are controlled. The README announces a 2026-04-30 verified split to mitigate false negatives, so score reuse must pin verified split and benchmark_verified.zip.；README states most tasks are CC BY 4.0, code is MIT, and tasks adapted from rasterio/matminer retain original licenses; unzipped benchmark data must not be redistributed online.；依赖或运行时漂移；裁判或评测器版本漂移；以及污染风险：公开评测记录可能泄漏进未来训练数据；实时、隐藏或截断后分数声明需要版本化证据。除非发布版本暴露训练输入、过滤规则和优化用途，否则这张卡不能被读成训练配方证据。

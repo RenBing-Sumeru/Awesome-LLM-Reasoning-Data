@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以 9 项 rubric、对抗变体和开源 judge 审计科学问答回答的可靠性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "科学问答 LLM-as-a-judge 评测、对抗审计与对齐论文",
+  "best_for_ch": "需要审计科学问答 judge 或构建 rubric 条件化评测集的研究者。",
+  "confidence_ch": "高：ACL 2025 正式论文、代码和 CC BY 4.0 数据集均已核验；自然错误上的外推仍需另测。",
+  "authors_ch": "Jennifer D’Souza、Hamed Babaei Giglou、Quentin Münch",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

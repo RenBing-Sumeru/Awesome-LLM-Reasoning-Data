@@ -1,0 +1,1 @@
+The survey maps reward-model research across preference collection, model construction, usage, applications, and benchmarks. It distinguishes a preference record from a learned reward model and from the optimizer or evaluator that later consumes the model's output. No individual reward model or preference dataset is released.

@@ -1,0 +1,3 @@
+1. **Code SFT construction:** Extract functions from a private codebase, generate tests, repair failures, and output executable training records.  
+2. **Pretraining-corpus screening:** Without creating new problem statements, label raw code by test outcome and repair count for weighted sampling.  
+3. **Repair-agent training:** Retain failure traces, before-and-after code, and final test states as execution-feedback trajectories. When functions depend on external networks, uncontrolled state, or lack trustworthy behavioral specifications, automated tests do not provide a stable verifier and human or environment-level validation is needed.

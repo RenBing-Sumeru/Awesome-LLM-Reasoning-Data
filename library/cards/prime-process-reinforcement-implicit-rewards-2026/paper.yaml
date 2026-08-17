@@ -1,0 +1,125 @@
+id: prime-process-reinforcement-implicit-rewards-2026
+title: Process Reinforcement through Implicit Rewards
+year: 2026
+venue: Transactions on Machine Learning Research 2026
+authors:
+- Ganqu Cui
+- Lifan Yuan
+- Zefan Wang
+- Hanbin Wang
+- Yuchen Zhang
+- Jiacheng Chen
+- Wendi Li
+- Bingxiang He
+- Yuchen Fan
+- Tianyu Yu
+- Qixin Xu
+- Weize Chen
+- Jiarui Yuan
+- Huayu Chen
+- Kaiyan Zhang
+- Xingtai Lv
+- Shuo Wang
+- Yuan Yao
+- Xu Han
+- Hao Peng
+- Yu Cheng
+- Zhiyuan Liu
+- Maosong Sun
+- Bowen Zhou
+- Ning Ding
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- code-reasoning
+- reinforcement-learning
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2502.01456
+  arxiv: https://arxiv.org/abs/2502.01456
+  code: https://github.com/PRIME-RL/PRIME
+  data: https://huggingface.co/datasets/PRIME-RL/EurusPRM-Stage1-Data
+  project: https://huggingface.co/blog/ganqu/prime
+  huggingface: https://huggingface.co/datasets/PRIME-RL/EurusPRM-Stage1-Data
+  doi: https://doi.org/10.48550/arXiv.2502.01456
+  venue: https://openreview.net/forum?id=9SkkifLopZ
+  openreview: https://openreview.net/forum?id=9SkkifLopZ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematics and code instruction collections described in the official release.
+  trace_author: Eight model responses per instruction.
+  answer_format: Instruction-response conversation, binary chosen/rejected label, source dataset, and generator model.
+  process_fields:
+  - messages
+  - chosen
+  - rejected
+  - source
+  - generator_model
+  environment_or_substrate: Verifiable mathematical and coding reasoning tasks.
+  verifier_or_reward: Answer matching or rule parsing for mathematics and test execution for code; implicit PRM gives token-level
+    rewards.
+  terminal_predicate: The response passes the outcome verifier.
+recipe_metadata:
+  base_model: Eurus-2-7B-SFT / Qwen2.5-Math-7B-Base configurations in the paper.
+  teacher: Outcome verifiers rather than human step annotators.
+  generator: Current policy rollouts and Stage-1 response generators.
+  filtering_rule: Outcome-verifier pass/fail determines chosen or rejected labels.
+  sampling_protocol: Eight responses per Stage-1 instruction; online RL uses current-policy rollouts.
+  inference_budget: Pin the paper's rollout and training-step configuration.
+  optimizer_or_scaffold: Online implicit PRM update combined with PPO/RLOO-style advantage estimation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematics and code instructions with generated responses and verifier-derived outcome labels.
+  split: Use the revision and configuration exposed by the official dataset page.
+  decontamination: Not fully documented on the public dataset card.
+  license: Check the current official dataset and repository licenses before reuse.
+  lineage: TMLR 2026 paper, author repository, author Hugging Face article, and PRIME-RL dataset release.
+  known_failure_modes:
+  - Outcome labels do not prove that every intermediate reasoning step is valid.
+  - Online reward learning can inherit false positives from the outcome verifier.
+  citation_status: verified
+  confidence: high
+  notes: Verified the formal TMLR/OpenReview record, the author-maintained PRIME repository, and the PRIME-RL Stage-1 dataset
+    page.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: PRIME trains an online implicit process reward model from verifier-derived outcome labels and releases response-level
+  preference data for math and code reasoning.
+why_it_matters: It makes a concrete connection between inexpensive outcome labels, dense token-level reward estimates, and
+  publicly reusable response records.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the formal TMLR/OpenReview record, the author-maintained PRIME repository, and the PRIME-RL Stage-1 dataset
+    page.
+category_ids:
+- preference_reward_feedback_data

@@ -1,0 +1,109 @@
+id: chain-of-x-survey-2025
+title: 'Beyond Chain-of-Thought: A Survey of Chain-of-X Paradigms for LLMs'
+year: 2025
+venue: COLING 2025
+authors:
+- Yu Xia
+- Rui Wang
+- Xu Liu
+- Mingyan Li
+- Tong Yu
+- Xiang Chen
+- Julian McAuley
+- Shuai Li
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- chain-of-thought
+- reasoning-traces
+- prompting
+- agents
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.coling-main.719/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.coling-main.719/
+  openreview: null
+  acl: https://aclanthology.org/2025.coling-main.719/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed Chain-of-X methods and their application tasks.
+  trace_author: The surveyed primary works; the survey does not release new reasoning traces.
+  answer_format: Taxonomies of the X nodes in Chain-of-X methods and the tasks to which they are applied.
+  process_fields:
+  - prompt
+  - chain node
+  - intermediate structure
+  - application task
+  - final output
+  environment_or_substrate: Chain-based LLM prompting and broader sequential reasoning designs.
+  verifier_or_reward: The paper surveys varied approaches and does not introduce a single verifier or reward.
+  terminal_predicate: Task-specific success in the surveyed primary works.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: The surveyed methods use varied prompting and feedback designs; the survey has no single teacher.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract classifies methods by the type of node represented by X and by application task.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews chain-based paradigms rather than providing a training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and PDF.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide contamination conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.coling-main.719/'
+  known_failure_modes:
+  - A sequential intermediate structure can look explanatory without improving correctness.
+  - Different Chain-of-X methods use different components and tasks.
+  - The taxonomy does not make their results directly comparable.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly calls this a comprehensive survey and gives the two taxonomies.
+inclusion_reason: An accepted COLING survey that broadens Chain-of-Thought into a clear vocabulary for different intermediate
+  structures and uses.
+related: []
+tags:
+- foundations-and-primers
+- chain-of-thought
+- reasoning-traces
+- coling-2025
+- survey
+why_it_matters: It helps readers distinguish a chain's representation from the task for which that chain is used.
+one_line_summary: A COLING 2025 survey that classifies Chain-of-X methods by their intermediate nodes and their application
+  tasks.
+paper_type: Chain-of-X survey
+reading_priority: strong
+best_for: Readers who know Chain-of-Thought and want a structured view of its extensions across reasoning, tools, and other
+  tasks.
+confidence: high
+status: verified
+needs:
+- 'unknown: controlled comparisons that isolate the effect of the chain structure from model, prompting, and task choice'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, and pages were reviewed.
+category_ids:
+- foundations_and_primers

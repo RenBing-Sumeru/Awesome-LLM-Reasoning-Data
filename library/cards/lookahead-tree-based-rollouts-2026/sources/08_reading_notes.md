@@ -1,0 +1,5 @@
+- Read Sections 3.1–3.3 and Algorithm 1 as one contract: probability-gated branch birth, trajectory-level lookahead/pruning, stochastic completion, and hybrid mixing jointly define the online data object.
+- Keep the two artifacts separate: the runtime object is a width-eight rollout tree/group with branch and reward decisions; the HF release is four processed prompt/reward Parquet files and contains no raw trees or rejected/pruned paths.
+- For results, pair Tables 1–3 with Tables 4–5 and Appendix C.4: the score gains coexist with about 10% slower steps, a 70.9-versus-68.9 stochastic/LATR decoding reversal, and ablations showing that arbitrary branches are insufficient.
+- Before reproduction, reconcile paper thresholds and exponential mixing with the released math scripts’ 0.15/0.25 gates, suffix/ROUGE pruning, and piecewise schedule; pin both the Git and HF commits.
+- Before reuse, require exact row/source manifests, Gemini rewrite logs, serialized branch/reward records, decontamination evidence, and explicit code/data licenses; benchmark performance is not a substitute for these audits.

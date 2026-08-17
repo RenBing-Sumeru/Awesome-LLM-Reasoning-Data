@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "论文从 21,336 个 SWE-rebench 任务筛出 7,249 个任务，以测试通过的 6,548 条自生成 episode 做 RFT，再以终局测试奖励训练长上下文 DAPO agent；其训练轨迹、代码与模型均未发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程智能体强化学习与轨迹构造方法论文",
+  "best_for_ch": "研究环境交互轨迹、软件工程 agent、RFT/RLVR、终局验证器、长上下文训练与可重放性审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Alexander Golubev、Maria Trofimova、Sergei Polezhaev、Ibragim Badertdinov、Maksim Nekrashevich、Anton Shevtsov、Simon Karasik、Sergey Abramov、Andrei Andriushchenko、Filipp Fisin、Sergei Skvortsov、Boris Yangel",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

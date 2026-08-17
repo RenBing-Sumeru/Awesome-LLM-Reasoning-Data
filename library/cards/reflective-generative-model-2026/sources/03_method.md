@@ -1,0 +1,3 @@
+The model segments a generated reasoning trajectory into steps, extracts step representations from the shared backbone, and combines step scores into a trajectory score. Policy optimization uses GRPO, while the self-supervised process-reward loss relates selected step signals to final-answer correctness and filters inconsistent pseudo-labels.
+
+At inference, it samples reasoning trajectories, scores them with the shared process head, selects a high-scoring trajectory, and produces the answer under a chosen thinking-length mode. The resulting audit record includes trajectories, outcome labels, step scores, selected path, and generated-token budget; a final answer alone cannot establish why scaling helped.

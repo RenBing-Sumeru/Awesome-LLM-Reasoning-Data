@@ -1,0 +1,3 @@
+Advanced mathematical-reasoning systems use Lean for algebra and number theory, while geometry often relies on domain-specific languages and external solvers. This enlarges the trusted computing base and prevents unified training. Native Mathlib formalization must explicitly encode non-degeneracy, positional, and topological assumptions, yet previous datasets contain fewer than roughly 1,100 problems.
+
+Euclean applies a four-stage autoformalization and unified Lean verification pipeline to convert natural-language plane geometry into native Mathlib theorems and releases large-scale statements plus proof attempts.

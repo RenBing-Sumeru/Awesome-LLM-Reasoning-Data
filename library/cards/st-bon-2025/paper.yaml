@@ -1,0 +1,115 @@
+id: st-bon-2025
+title: 'Sampling-Efficient Test-Time Scaling: Self-Estimating the Best-of-N Sampling in Early Decoding'
+year: 2025
+venue: NeurIPS 2025 Spotlight
+authors:
+- Yiming Wang
+- Pei Zhang
+- Siyuan Huang
+- Baosong Yang
+- Zhuosheng Zhang
+- Fei Huang
+- Rui Wang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2503.01422
+  arxiv: https://arxiv.org/abs/2503.01422
+  code: https://github.com/Alsace08/ST-BoN
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Reasoning prompts used to generate N candidates; input provenance and full evaluation manifest were not established.
+  trace_author: unknown
+  answer_format: Hidden-state Chain-of-Embedding representations and early-selection scores for Best-of-N candidates; no textual
+    reward-model trace is required.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The selector is an internal learned/algorithmic representation score rather than an external reward
+    model; its calibration logs are not released.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: ST-BoN uses self-taught Chain-of-Embedding representations to stop or select among candidate reasoning traces
+    early, reducing Best-of-N test-time compute.
+  filtering_rule: The selector is an internal learned/algorithmic representation score rather than an external reward model;
+    its calibration logs are not released.
+  sampling_protocol: Official code is Alsace08/ST-BoN (Apache-2.0) with a data directory. No complete rollout, score, or input-provenance
+    log was verified.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: ST-BoN uses self-taught Chain-of-Embedding representations to stop or select among candidate reasoning
+    traces early, reducing Best-of-N test-time compute.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: Apache-2.0
+  lineage: Reasoning prompts used to generate N candidates; input provenance and full evaluation manifest were not established.
+    -> Hidden-state Chain-of-Embedding representations and early-selection scores for Best-of-N candidates; no textual reward-model
+    trace is required. -> The selector is an internal learned/algorithmic representation score rather than an external reward
+    model; its calibration logs are not released. -> reported final selection or training use. Raw lineage records are not
+    established as released.
+  known_failure_modes:
+  - Hidden representations are hard to audit from final answers; lack of score traces and prompt provenance limits replay
+    and safety analysis.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: It demonstrates that a test-time trace record must include selector state/score definitions even when the
+  ranking mechanism is not a traditional reward model.
+related: []
+tags:
+- best-of-n
+- test-time-scaling
+- chain-of-embedding
+- early-selection
+- hidden-states
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A Best-of-N selector that replaces explicit reward scoring with hidden-state Chain-of-Embedding information.
+why_it_matters: It demonstrates that a test-time trace record must include selector state/score definitions even when the
+  ranking mechanism is not a traditional reward model.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

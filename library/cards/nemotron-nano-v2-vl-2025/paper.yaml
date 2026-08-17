@@ -1,0 +1,181 @@
+id: nemotron-nano-v2-vl-2025
+title: NVIDIA Nemotron Nano V2 VL
+year: 2025
+venue: arXiv preprint
+authors:
+- NVIDIA
+source_role:
+- model_report
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- vision_language
+- documents
+- video
+- reasoning
+- code
+- long_context
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.03929
+  arxiv: https://arxiv.org/abs/2511.03929
+  code: https://github.com/NVIDIA-NeMo/Curator/tree/experimental/experimental/nvpdftex
+  data: https://huggingface.co/datasets/nvidia/Nemotron-VLM-Dataset-v2
+  project: https://research.nvidia.com/labs/adlr/files/NVIDIA-Nemotron-Nano-V2-VL-report.pdf
+  huggingface: https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-12B-v2-VL-BF16
+  doi: https://doi.org/10.48550/arXiv.2511.03929
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2511.03929
+data_object:
+  prompt_source: The report combines retained text-reasoning data from Nemotron Nano V2 with public, internal, private, crawled,
+    and synthetic image, document, video, code, safety, function-calling, and long-context sources. Stage 1 names many upstream
+    datasets; Stage 2 adds video, multi-image, and CommonCrawl PDF tasks. The released Nemotron VLM Dataset V2 exposes 51
+    subdatasets, but there is no record-level manifest mapping every released row to a training stage or to the unreleased
+    mixture.
+  trace_author: Human annotators and several model families supply labels or reasoning traces. The report names Qwen2.5-VL-32B-Instruct,
+    GLM-4.1V, and GLM-4.5V for reasoning traces, Qwen2.5 and Qwen3 models for synthetic question-answer pairs, and Qwen2.5-VL-72B-Instruct
+    for selected Stage 2 relabeling. The release card labels rows as human-, Qwen-, GLM-, or rule-produced where applicable;
+    a universal per-row generator revision is not disclosed.
+  answer_format: Released rows are multimodal conversations with an id and messages. Message content can contain text, image,
+    video, or audio references and optional metadata such as dimensions, duration, frame count, page number, PDF, URL, or
+    video identifier. Some subdatasets ship media in tar shards, while others ship JSONL annotations plus instructions for
+    retrieving upstream media. Field presence varies by subset.
+  process_fields:
+  - record id
+  - conversation role and content
+  - text, image, video, or audio reference
+  - optional media metadata
+  - optional PDF, page, URL, or video source field
+  - subdataset provenance and processing tag
+  - license and media-included indicator at subdataset level
+  environment_or_substrate: Offline multimodal supervised fine-tuning in Megatron with Megatron Energon loading, dynamic image
+    tiling, sampled video frames, online sequence packing, and staged context extension from 16,384 to 311,296 training tokens.
+  verifier_or_reward: 'No reinforcement-learning reward or universal correctness verifier is reported. Supervision is mixed:
+    human labels, model-generated reasoning traces and question-answer pairs, rule-based conversions, existing source annotations,
+    and synthetic OCR ground truth. Dataset-specific acceptance rules, judge prompts, thresholds, rejected candidates, and
+    calibration results are mostly unknown.'
+  terminal_predicate: No single terminal predicate is disclosed. A retained row may be an existing annotation, a template
+    conversion, a model-generated question-answer pair or reasoning trace, a human annotation, or compiler-derived OCR ground
+    truth. The exact per-subdataset completion and acceptance conditions are unknown unless documented by that subdataset.
+recipe_metadata:
+  base_model: Nemotron Nano V2, a hybrid Mamba-Transformer language model, combined with a c-RADIOv2-VLM-H vision encoder
+    and an MLP connector.
+  teacher: Multiple label generators are named rather than one teacher. They include Qwen2.5-VL-32B-Instruct, GLM-4.1V, GLM-4.5V,
+    Qwen2.5 and Qwen3 family models, and Qwen2.5-VL-72B-Instruct for selected relabeling. Exact checkpoints, prompts, and
+    assignments for all rows are unknown.
+  generator: The pipeline mixes source annotations, human annotation, model labeling, template conversion, and programmatic
+    synthesis. NVPDFTex compiles LaTeX into page images plus bounding boxes, labels, and text for OCR ground truth. A separate
+    CommonCrawl PDF workflow uses NeMo Retriever Parse extractions to create multi-page question-answer data.
+  filtering_rule: The model card reports filtering or fixing malformed reasoning-tag entries in the 2025-11-05 dataset update
+    and scanning image datasets against known CSAM. It does not publish a complete corpus-wide quality filter, deduplication
+    rule, reasoning-correctness check, acceptance threshold, or rejected-record ledger.
+  sampling_protocol: Stage 0 uses a diverse 2.2M-sample subset of Stage 1. Stage 2 reuses 25 percent of Stage 1 and adds about
+    1.4M video and multi-image samples. Videos are sampled at two frames per second up to 128 frames, or uniformly to 128
+    frames when longer than 64 seconds. Other dataset weights, epoch counts, and row-level sampling decisions are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Training sequences progress from 16,384 tokens in Stages 0-1 to 49,152 in Stages 2-3 and 311,296 in Stage
+    4. Inference evaluation uses separate output budgets and is not part of the training-data contract. Aggregate construction-generation
+    token cost is unknown.
+  optimizer_or_scaffold: Five stages use FP8 supervised fine-tuning with selected layers kept in BF16, AdamW, cosine annealing
+    with linear warmup, online balance-aware sequence packing, and loss square-averaging. Stage 0 trains only the connector;
+    all components are unfrozen thereafter. Context parallelism is 2-way in Stages 2-3 and 8-way in Stage 4. Some table values
+    are not recoverable from the rendered report, and exact code/config revisions for every run are unknown.
+audit:
+  source_mixture: The paper reports stage consumption of about 2.2M samples/36B tokens, 32.5M/112.5B, 11M/55B, 1M/15B, and
+    74K/12B, with deliberate reuse between stages. Separately, the model card inventories 39,486,703 samples across 270 datasets
+    and 27.7 TB. The public Nemotron VLM Dataset V2 contains 8,147,599 samples across 51 subdatasets. These are different
+    ledgers and are not reconciled by a row-to-stage manifest.
+  split: The model card labels the training inventory as 100 percent training with no training-inventory validation or test
+    partition. The public release is organized by subdataset and exposes a train split for loading. No immutable manifest
+    maps released rows, duplicates, reuse, ordering, epochs, or weights to Stages 0-4.
+  decontamination: unknown
+  license: The public dataset collection is labeled CC BY 4.0 except ten Wikimedia subsets labeled CC BY-SA 4.0. Media is
+    redistributed only for subsets whose terms allow it; other subsets provide annotations and acquisition instructions. The
+    model weights use the NVIDIA Open Model License. Upstream media rights, attribution duties, and model-generated-label
+    terms still require subset- and use-specific review.
+  lineage: Upstream public, internal, private, crawled, or synthetic source -> existing, human, model, rule, parser, or compiler
+    annotation -> multimodal conversation formatting -> stage-specific mixture and context schedule -> BF16 model -> FP8 post-training
+    quantization or NVFP4 quantization-aware distillation. The public release provides useful subset tags, but record-level
+    generator revisions, rejected candidates, exact stage membership, and full unreleased-source lineage remain incomplete.
+  known_failure_modes:
+  - The paper's stage-consumption counts, the model card's 39,486,703-sample inventory, and the 8,147,599-sample public release
+    are not interchangeable and lack a reconciliation manifest.
+  - The release card's composition table totals 4,470.46 GB while its quantification section reports 4,301.82 GB.
+  - A large part of the OCR mixture cannot be redistributed; releasing NVPDFTex enables regeneration for compatible LaTeX
+    sources but does not recreate every withheld source or transformation.
+  - NVPDFTex is on an experimental branch and its documented rules do not cover every valid LaTeX page structure.
+  - Model-produced reasoning traces and question-answer labels can contain plausible but incorrect intermediate steps; no
+    universal trace verifier or false-accept audit is disclosed.
+  - Corpus-wide deduplication, benchmark decontamination, thresholds, matched-record ledgers, and removals are unknown.
+  - Some released annotations depend on separately acquired media and upstream terms, so the collection-level license does
+    not by itself establish a complete rights chain.
+  - The dataset was updated to repair malformed reasoning-tag entries and instructions, showing that revision pinning matters
+    for audit and reproduction.
+  - Image-data scanning against known CSAM is a specific safety check, not evidence of comprehensive safety, privacy, or rights
+    review.
+  - Benchmark scores and stage ablations measure model behavior under stated evaluation settings; they do not prove record-level
+    provenance, label correctness, license compatibility, or data quality.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv report, NVIDIA research PDF, NVIDIA Hugging Face model and dataset cards, model files, and NVPDFTex
+    repository were checked on 2026-07-19. Weights, a substantial data release, and OCR tooling are real; complete release
+    accounting, immutable run manifests, verifier details, exact training-code revisions, and decontamination remain incomplete.
+inclusion_reason: This report is a useful frontier data-disclosure case because it pairs a five-stage multimodal SFT recipe
+  with weights, a large but partial dataset release, and OCR tooling while leaving auditable gaps between reported consumption,
+  inventory accounting, released rows, and exact lineage.
+related: []
+tags:
+- frontier-report
+- nvidia
+- multimodal
+- document-understanding
+- video
+- long-context
+- reasoning-traces
+- synthetic-data
+- sft
+- partial-release
+- disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+- instruction_demonstration_rationale_data
+one_line_summary: NVIDIA Nemotron Nano V2 VL discloses a five-stage multimodal SFT schedule, weights, an 8.15M-row dataset,
+  and OCR tooling, but the public release is not reconciled with the 39.49M-sample inventory or exact stage lineage.
+why_it_matters: It shows how to audit a frontier report by separating reported training consumption, model-card inventory,
+  released artifacts, and evaluation evidence instead of treating a broad release statement or benchmark result as a complete
+  data recipe.
+card: null
+needs:
+- 'needs_release_ledger: reconcile paper stage counts, model-card inventory, public subdatasets, reuse, and revisions with
+  immutable checksums'
+- 'needs_stage_manifest: publish per-record stage membership, source revision, sampling weight, order, epoch, and reuse history'
+- 'needs_verifier: publish generator prompts, exact model revisions, acceptance rules, rejected candidates, trace checks,
+  and false-accept audits'
+- 'needs_decontamination: disclose deduplication, benchmark revisions, match thresholds, matched-record ledgers, and removals'
+- 'needs_license_audit: provide record-level upstream media terms, attribution, transformations, and generator-license lineage'
+- 'needs_code_revision: pin exact training, packing, parsing, compiler, and dataset-build commits and configurations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper, NVIDIA model weights, Nemotron VLM Dataset V2, and NVPDFTex are live. The artifact set is substantial
+    but does not disclose a complete stage-to-record or source-to-decision ledger.

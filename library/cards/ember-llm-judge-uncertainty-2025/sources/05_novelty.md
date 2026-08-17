@@ -1,0 +1,1 @@
+Prior judge-bias studies test position, self-enhancement, or presentation effects. EMBER instead holds answer semantics fixed and perturbs epistemic wording in reference-based QA and pairwise instruction following. It contributes a counterfactual robustness surface for honesty-oriented language, not another general judge leaderboard or a calibration method.

@@ -1,0 +1,105 @@
+id: scan-self-denoising-monte-carlo-annotation-2025
+title: 'SCAN: Self-Denoising Monte Carlo Annotation for Robust Process Reward Learning'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yuyang Ding
+- Xinyu Shi
+- Juntao Li
+- Xiaobo Liang
+- Zhaopeng Tu
+- Min Zhang
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- process-reward-modeling
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2509.16548
+  arxiv: https://arxiv.org/abs/2509.16548
+  code: https://github.com/yyDing1/SCAN-PRM
+  data: https://huggingface.co/datasets/dyyyyyyyy/SCAN-Pro
+  project: https://scan-prm.github.io/
+  huggingface: https://huggingface.co/datasets/dyyyyyyyy/SCAN-Pro
+  doi: https://doi.org/10.48550/arXiv.2509.16548
+  venue: https://neurips.cc/virtual/2025/loc/san-diego/poster/121138
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH training questions with gold answers.
+  trace_author: Model-generated mathematical solution trajectories.
+  answer_format: Question, ordered reasoning steps, and one correctness score per step.
+  process_fields:
+  - question
+  - steps
+  - scores
+  environment_or_substrate: Mathematical chain-of-thought reasoning.
+  verifier_or_reward: Selective Monte Carlo step annotation with self-confidence-based denoising.
+  terminal_predicate: Whether sampled continuations reach the gold answer.
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B-Instruct; SCAN-Pro also uses Qwen2.5-Math-7B-Instruct and Llama-3.2-3B-Instruct.
+  teacher: Monte Carlo completer models rather than a human or external judge.
+  generator: The annotation model generates solution trajectories from MATH questions.
+  filtering_rule: Retain high-self-confidence positives and selectively annotate informative negative trajectories.
+  sampling_protocol: Use the released SCAN-Pro training split and report rollout settings.
+  inference_budget: Eight rollouts per step in the reported SCAN-Base construction.
+  optimizer_or_scaffold: Self-confidence reweighting and noise-tolerant labels near the predicted first error.
+  rollout_count: Eight per step for the reported base construction.
+  temperature: null
+audit:
+  source_mixture: MATH questions, model-generated reasoning steps, Monte Carlo scores, and self-confidence values.
+  split: Official SCAN-Pro default train split with 197K rows.
+  decontamination: Training on the release can contaminate ProcessBench and best-of-N comparisons; keep held-out evaluation
+    separate.
+  license: Apache-2.0 on the Hugging Face dataset and official repository.
+  lineage: NeurIPS 2025 paper, author project page, official GitHub repository, and SCAN-Pro dataset page.
+  known_failure_modes:
+  - Monte Carlo labels inherit completer-model error
+  - The corpus is restricted to mathematical reasoning
+  - Label quality depends on rollout and confidence settings
+  citation_status: verified
+  confidence: high
+  notes: Verified the NeurIPS 2025 status on the official project and repository, the author affiliations, and the official
+    code and SCAN-Pro dataset pages.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: SCAN-Pro releases 197K mathematical trajectories with step scores, using confidence-guided Monte Carlo denoising
+  for robust PRM training.
+why_it_matters: It makes the annotation noise model and the released step-score records explicit enough to reproduce a scalable
+  PRM-training pipeline.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the NeurIPS 2025 status on the official project and repository, the author affiliations, and the official
+    code and SCAN-Pro dataset pages.
+category_ids:
+- process_trace_supervision_data

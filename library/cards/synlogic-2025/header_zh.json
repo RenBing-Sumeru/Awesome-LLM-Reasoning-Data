@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SynLogic 开放 35 类逻辑任务的可配置生成器、任务专用验证器和 Easy/Hard RLVR 提示数据，而其修订历史也说明可执行数据仍需版本化审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "合成逻辑推理数据发布与 RLVR 构造配方",
+  "best_for_ch": "构造可控非数学 RLVR 任务和审计规则奖励的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Junteng Liu, Yuanxiang Fan, Zhuo Jiang, Han Ding, Yongyi Hu, Chi Zhang, Yiqi Shi, Shitong Weng, Aili Chen, Shiqi Chen, Yunan Huang, Mozhi Zhang, Pengyu Zhao, Junjie Yan, Junxian He",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data",
+    "data_construction_open_release_recipes"
+  ]
+}

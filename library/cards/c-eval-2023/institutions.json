@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "Shanghai Jiao Tong University",
+    "Tsinghua University",
+    "University of Edinburgh",
+    "The Hong Kong University of Science and Technology"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2305.08322",
+    "https://arxiv.org/e-print/2305.08322",
+    "https://github.com/SJTU-LIT/ceval",
+    "https://huggingface.co/datasets/ceval/ceval-exam"
+  ],
+  "verification_note": "Official arXiv source verifies SJTU/Tsinghua/Edinburgh/HKUST affiliations and NeurIPS 2023 status; project, GitHub, and Hugging Face sources verify artifacts."
+}

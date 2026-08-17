@@ -1,0 +1,1 @@
+Earlier RL summaries often treated language models broadly. This survey centers on the reasoning-model era and places training resources beside algorithms. That is important because synthetic problems, verifiable answers, process feedback, and self-generated rollouts produce different learning signals even when the optimizer name is unchanged.

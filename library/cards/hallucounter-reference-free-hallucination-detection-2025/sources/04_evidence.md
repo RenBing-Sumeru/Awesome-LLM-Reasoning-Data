@@ -1,0 +1,1 @@
+HalluCounter substantially outperforms response-consistency-only reference-free baselines across datasets, reports over 90% average confidence, and returns a better candidate response. This indicates value from query alignment, but high confidence is not the same as calibrated accuracy. When several samples share the same error, consistency methods can still be confidently wrong.

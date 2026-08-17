@@ -1,0 +1,1 @@
+该记录是两轮证明、验证或元验证对话。它的公共字段是“messages”、“problem”、“subset”和“uuid”；种子是 Nemotron-Math-Proofs-v1 的 AoPS 衍生子集，轨迹在 DeepSeek-V4-Pro Max 推理模式下生成。该版本不会公开行级正式证明工件、接受/拒绝标志或用于分数提取的记录模式。

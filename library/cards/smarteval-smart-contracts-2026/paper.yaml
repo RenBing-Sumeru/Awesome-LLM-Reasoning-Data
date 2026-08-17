@@ -1,0 +1,98 @@
+id: smarteval-smart-contracts-2026
+title: 'SmartEval: A Benchmark for Evaluating LLM-Generated Smart Contracts from Natural Language Specifications'
+year: 2026
+venue: arXiv
+authors:
+- Abhinav Goel
+- Agostino Capponi
+- Alfio Gliozzo
+- Chaitya Shah
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- code
+- security
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.09610
+  arxiv: https://arxiv.org/abs/2605.09610
+  code: null
+  data: https://zenodo.org/records/20046037
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.5281/zenodo.20046037
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Natural-language smart-contract specifications
+  trace_author: Language models and human experts
+  answer_format: Specification, generated contract, reference implementation, rubric, audit
+  process_fields:
+  - specification
+  - contract
+  - rubric
+  - audit
+  environment_or_substrate: Solidity smart contracts
+  verifier_or_reward: Five-dimensional quality evaluator
+  terminal_predicate: Contract satisfies functional, state, logic, and code-quality criteria
+recipe_metadata:
+  base_model: Language models
+  teacher: Expert contract authors
+  generator: SmartEval evaluation pipeline
+  filtering_rule: Validated Solidity generation cases
+  sampling_protocol: 9000 generated contracts
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Five-dimensional deterministic composite score
+audit:
+  source_mixture: Official arXiv and Zenodo release
+  split: Consult Zenodo record
+  decontamination: Reference implementations derive from FSM-SCG
+  license: Consult Zenodo record
+  lineage: https://zenodo.org/records/20046037
+  known_failure_modes:
+  - Static and LLM audits can miss semantic vulnerabilities.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and persistent data record checked.
+inclusion_reason: SmartEval couples generated contracts with reference implementations, expert-validated rubrics, audits,
+  and compilation outcomes.
+related: []
+tags:
+- smart_contracts
+- solidity
+- security
+- rubric
+one_line_summary: SmartEval evaluates 9,000 LLM-generated Solidity contracts using references, audits, and a five-dimensional
+  quality rubric.
+why_it_matters: It provides grounded, reproducible quality signals for code-generation and security judges.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and persistent data record checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,3 @@
+Decisive downstream experiment: Across 12 benchmarks including MMLU-Pro, GPQA, SuperGPQA, TheoremQA, BBEH, and MATH AMC, General-Reasoner outperforms the paper's existing RL baselines while preserving math ability. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 228,736 training and 1,000 test question-answer records and exposes actual fields id, question, answer, answer type, category, and difficulty; on 2026-07-27 its page reported 1192 downloads. Usage is only an impact cross-check, not a causal experiment.

@@ -1,0 +1,118 @@
+id: webforge-browser-agent-benchmark-2026
+title: 'WebForge: Breaking the Realism-Reproducibility-Scalability Trilemma in Browser Agent Benchmark'
+year: 2026
+venue: arXiv preprint
+authors:
+- Peng Yuan
+- Yuyang Yin
+- Yuxuan Cai
+- Zheng Wei
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- synthetic-web-environments
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.10988
+  arxiv: https://arxiv.org/abs/2604.10988
+  doi: https://doi.org/10.48550/arXiv.2604.10988
+  code: https://github.com/yuandaxia2001/WebForge
+  data: https://huggingface.co/datasets/yuandaxia/WebForge
+  project: https://github.com/yuandaxia2001/WebForge
+  huggingface: https://huggingface.co/datasets/yuandaxia/WebForge
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 934 validated tasks spanning 7 domains and 3 difficulty levels, according to the arXiv abstract.
+  prompt_source: Plan-Generate-Refine-Validate pipeline creates task instructions and self-contained websites.
+  trace_author: Evaluated browser agents running in generated static websites; validation rollouts are produced by the official
+    pipeline.
+  answer_format: task instruction, website files, ground truth, answer type, solution steps, browser actions, observations,
+    final answer, and judge result
+  process_fields:
+  - task instruction
+  - domain and difficulty vector
+  - website files
+  - ground truth
+  - solution steps
+  - browser action
+  - observation
+  - final answer
+  - judge result
+  environment_or_substrate: self-contained static websites served locally and executed in Chromium-like browser evaluation
+  verifier_or_reward: validation replay and final-state or submitted-answer comparison against ground truth
+  terminal_predicate: the browser run reaches the expected final state or answer under the official judge and action budget
+recipe_metadata:
+  base_model: Not a single base-model recipe unless stated in the paper; use only the disclosed training/evaluation role.
+  teacher: Official task authors, generator, tracer, simulator, or judge described by the paper.
+  generator: Plan-Generate-Refine-Validate pipeline creates task instructions and self-contained websites.
+  filtering_rule: Use only source-backed construction and validation claims; do not infer hidden filters.
+  sampling_protocol: Pin release revision, split, runtime, prompt/scaffold, judge/verifier, and evaluation budget before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: self-contained static websites served locally and executed in Chromium-like browser evaluation
+audit:
+  source_mixture: https://arxiv.org/abs/2604.10988; https://github.com/yuandaxia2001/WebForge; https://github.com/yuandaxia2001/WebForge;
+    https://huggingface.co/datasets/yuandaxia/WebForge
+  split: pin exact public/hidden split or train/test revision before score reuse
+  decontamination: public tasks, traces, APIs, repositories, or generated environments can enter future training data
+  license: Official GitHub repository LICENSE is Apache-2.0; arXiv paper page lists CC BY 4.0; the Hugging Face dataset page
+    lists apache-2.0. Pin the dataset revision before redistribution.
+  lineage: 'Primary source: https://arxiv.org/abs/2604.10988'
+  known_failure_modes:
+  - runtime, tool, website, API, or dependency drift
+  - prompt/scaffold and budget sensitivity
+  - public-artifact contamination
+  - judge, tracer, verifier, or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: Source facts were regenerated from official paper/page artifacts; score reuse still requires pinned artifacts and
+    evaluator versions.
+inclusion_reason: WebForge generates self-contained browser environments and WebForge-Bench tasks to evaluate browser agents
+  without relying on drifting live websites.
+related: []
+tags:
+- agent_environment
+- benchmark
+- evaluation-surface
+- synthetic-web-environments
+- trajectory_data
+- web-browser-agents
+why_it_matters: WebForge generates self-contained browser environments and WebForge-Bench tasks to evaluate browser agents
+  without relying on drifting live websites.
+status: verified
+needs:
+- 'needs_version_pin: pin repository/data revision, split, runtime, prompt/scaffold, and evaluator version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'
+one_line_summary: WebForge generates self-contained browser environments and WebForge-Bench tasks to evaluate browser agents
+  without relying on drifting live websites.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official source links and card-local artifacts were verified for L4 source regeneration.
+category_ids:
+- benchmarks_evaluation_surfaces

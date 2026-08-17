@@ -1,0 +1,5 @@
+Fixed-retrieval RAG fetches passages even when retrieval is unnecessary and offers no trained signal for whether a passage is relevant or a generated claim is supported. The resulting context can reduce versatility, introduce off-topic evidence, and leave unsupported text looking equally trustworthy.
+
+Self-RAG augments instruction outputs with retrieval, relevance, support, and utility reflection tokens, then trains one generator to predict both task text and those control/critique decisions. Its 150K public JSONL records are the central generator supervision, not merely logs from an inference-only retrieval system.
+
+L4 facts: Primary source: arXiv:2310.11511; venue/date: ICLR 2024 Oral, official OpenReview record; decision boundary: released reflection-token SFT targets rather than a retriever or reward-model-only paper; atlas object/evaluation: instruction, retrieved passage, segmented output, retrieval/relevance/support/utility tokens, evaluated on six factuality/reasoning/generation tasks; collection note: `L4_carded`, one Track 01 category.

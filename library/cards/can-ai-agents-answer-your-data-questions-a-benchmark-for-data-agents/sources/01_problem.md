@@ -1,0 +1,3 @@
+Real enterprise data questions often span heterogeneous databases, contain inconsistent key formats, require extracting fields from free text, and depend on domain knowledge. Existing Text-to-SQL and table-QA benchmarks evaluate single databases, single queries, or small in-context tables and do not cover full workflows of discovery, joining, cleaning, computation, and explanation.
+
+The Data Agent Benchmark (DAB) uses multi-database tasks derived from enterprise workloads and executable `validate.py` scripts to evaluate whether agents can complete end-to-end analysis from natural-language goals and return correct results.

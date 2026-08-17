@@ -1,0 +1,3 @@
+The release is informative because it makes two scales explicit that are often hidden in coding-agent announcements: 7.5T tokens with a stated 70-percent-code share, and a reported 20,000 parallel agent environments. It also names a concrete divide between execution-driven Code RL and long-horizon Agent RL, rather than presenting all post-training as a single opaque process.
+
+For this atlas, the novelty is a partial disclosure pattern. It gives enough information to distinguish pretraining-scale claims, cleaning, execution feedback, and environment feedback, but it withholds the records and implementation detail required to treat those descriptions as an open or fully auditable recipe.

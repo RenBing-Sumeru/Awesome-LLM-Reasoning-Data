@@ -1,0 +1,4 @@
+- Read sections 2 and 3 of the technical report together. The reported RL objectives only become interpretable alongside the data-construction, filtering, and expert-iteration path.
+- Keep feedback types separate: objective checks and executable tests are not equivalent to reward-model scores, human preferences, or LLM-Judge outcomes.
+- Treat “semantic deduplication” as corpus processing, not as proof of benchmark decontamination.
+- Treat the MIT release as a fact about released model variants. It is not evidence that upstream data, generated traces, reward artifacts, environments, or audit records are licensed or public.

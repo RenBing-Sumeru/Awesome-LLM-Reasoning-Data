@@ -1,0 +1,2 @@
+Post-training datasets are usually compared through inconsistent model families, hyperparameters, evaluation suites, and reporting conventions. Dataset size or an intrinsic quality score alone does not establish training value, while downstream scores can hide contamination, benchmark saturation, and evaluator bias. OpenDataArena asks how to compare many public SFT datasets under a common training and evaluation scaffold while also exposing their intrinsic properties and genealogy.
+

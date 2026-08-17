@@ -1,0 +1,100 @@
+id: lemaj-legal-judge-2025
+title: 'LeMAJ (Legal LLM-as-a-Judge): Bridging Legal Reasoning and LLM Evaluation'
+year: 2025
+venue: NLLP 2025
+authors:
+- Joseph Enguehard
+- Morgane Van Ermengem
+- Kate Atkinson
+- Sujeong Cha
+- Arijit Ghosh Chowdhury
+- Prashanth Kallur Ramaswamy
+- Jeremy Roghair
+- Hannah R Marlowe
+- Carina Suzana Negreanu
+- Kitty Boxall
+- Diana Mincu
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.nllp-1.23/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.nllp-1.23
+  venue: https://aclanthology.org/2025.nllp-1.23/
+  openreview: null
+  acl: https://aclanthology.org/2025.nllp-1.23/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Paper-page-backed curation; inspect the primary source before reusing results.
+  citation_status: verified
+  confidence: medium
+  notes: Claim-level legal decomposition is evaluated against expert judgments on proprietary data and LegalBench.
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.nllp-1.23.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Reference-free legal judging with explicit claim-level decomposition and expert-alignment evaluation.'
+related: []
+tags:
+- legal-llm-judge
+- legal-reasoning
+- audit
+status: verified
+one_line_summary: Decomposes legal answers into claims for reference-free judging validated against legal experts.
+why_it_matters: It makes the judgment unit and its legal-review assumptions inspectable.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary paper page recorded; artifact availability stated without inference.
+category_ids:
+- audit_failure_contamination_verifier_attacks

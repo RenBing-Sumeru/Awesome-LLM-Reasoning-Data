@@ -1,0 +1,1 @@
+arXiv 摘要的核心证据是：frontier single agents 和 swarms 仍不能在准确率与预算约束之间达到最优平衡，并出现路径依赖的分化行为。官方仓库通过 paper-aligned competition configs、competitor configs、problem lists、benchmark scripts、report export 和 metric timeline export 支撑可复查运行。单条样本证据是 judged submission trace 加 credit ledger，而不是最终 solved/unsolved 状态本身。证据受 Hydro 设置、公开 problemset release、USACO/第三方内容可得性、预算规则、API 模型版本和脚手架决策约束。

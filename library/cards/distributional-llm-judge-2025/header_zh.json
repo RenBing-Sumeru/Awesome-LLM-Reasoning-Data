@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "让 LLM 输出与人类分歧结构对齐的分布式判别器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "分布式 LLM 判别训练方法",
+  "best_for_ch": "需要保留人类评审分歧与不确定性的自动评测研究者。",
+  "confidence_ch": "高：已核对 NeurIPS 正式论文、作者机构和 OpenReview 条目。",
+  "authors_ch": "Luyu Chen, Zeyu Zhang, Haoran Tan, Quanyu Dai, Hao Yang, Zhenhua Dong, Xu Chen",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

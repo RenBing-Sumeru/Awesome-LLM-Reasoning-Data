@@ -1,0 +1,1 @@
+引用与工件核验：https://arxiv.org/abs/2305.20050。机构信息按主论文署名单位记录为 OpenAI；作者字段为 Lightman et al.。官方实现或项目页：https://huggingface.co/datasets/openai/prm800k。 主论文页面未标注独立官方下载数据；卡片不把论文链接误记为数据链接。 本卡将未公开工件与可访问工件分开记录，方便后续维护者重新核验链接状态和许可证。

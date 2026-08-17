@@ -1,0 +1,10 @@
+{
+  "institutions": [],
+  "has_more": true,
+  "no_institution": true,
+  "updated_at": "2026-07-16T00:00:00Z",
+  "source_urls": [
+    "https://aclanthology.org/D18-1260/"
+  ],
+  "verification_note": "Institution metadata is conservative and should be verified before L6."
+}

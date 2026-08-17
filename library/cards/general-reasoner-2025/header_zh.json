@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "General-Reasoner 从网页整理 22.8 万条跨领域可验证问答，并用生成式验证器处理多种等价答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "跨领域推理强化学习",
+  "confidence_ch": "高",
+  "authors_ch": "Xueguang Ma、Qian Liu、Dongfu Jiang、Ge Zhang、Zejun MA、Wenhu Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

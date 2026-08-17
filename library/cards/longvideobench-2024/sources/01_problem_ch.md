@@ -1,0 +1,1 @@
+LongVideoBench 关注的是：视频语言模型在长视频中是否能跨时间、字幕和视觉内容定位并组合证据。主要来源是 2024 年 arXiv 论文、官方项目页、GitHub 仓库、Hugging Face 数据集，以及项目页标注的 NeurIPS 2024 Datasets and Benchmarks 状态。它的边界是 long-context multimodal evaluation，不是视频预训练数据，也不是视频 agent 环境。一个样本包含视频或视频引用、时长元数据、问题、多个选项、答案键和 referred-context 证据字段。对 atlas 的价值是提供显式的长视频时序证据评测面。

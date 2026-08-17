@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T06:08:08Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "首篇面向 NL2Code 大语言模型的综述",
+    "updated_at": "2026-07-28T06:08:08Z"
+  }
+}

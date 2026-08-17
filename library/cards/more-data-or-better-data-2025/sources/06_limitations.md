@@ -1,0 +1,10 @@
+The paper explicitly limits its claims to representative mathematical-reasoning methods, relatively small base models, and case studies without confidence intervals or p-values (Limitations). The following release and feedback risks are curator inferences grounded in the described data objects and missing artifacts:
+
+- The 80% validated code-and-math baseline is not released or itemized. Its composition, licenses, duplication with candidates, and per-stage sampling can change every measured delta.
+- DeepSeek-V2-Lite and Qwen2.5-3B are both named, but exact table-to-checkpoint and pretraining/SFT mappings are incomplete. Optimizer, steps, token budgets, epochs, resampling, seeds, and repeated runs are undisclosed.
+- Candidate recipes are not factorial controls: source, domain, teacher, record format, volume, filter, and mixture compatibility often change together. A delta cannot identify which factor caused it.
+- MATH is an evaluation benchmark and model failures on MATH are also used as weakness-guided seeds. The exact split and whether seed or generated-neighbor items overlap evaluation are not disclosed, creating an unresolved training-evaluation contamination risk.
+- Answer consistency can retain concordant wrong answers. LLM quality filters are unnamed and uncalibrated; prompts, thresholds, disagreement policy, rejected pools, and false-positive/negative rates are unavailable.
+- MinHash is reported for deduplicating textbook QA, not for benchmark-wide decontamination. Web, NaturalReasoning, OCR books, retrieval corpora, and generated outputs lack a common overlap audit.
+- The source books, page provenance, OCR corrections, record IDs, teacher generations, and license manifest are not released. CC BY 4.0 covers the paper, not necessarily the constructed data or source content.
+- No constructed corpus, code, checkpoint mapping, generation log, or rejection record is public. The small base models and absence of confidence intervals limit generalization and statistical interpretation.

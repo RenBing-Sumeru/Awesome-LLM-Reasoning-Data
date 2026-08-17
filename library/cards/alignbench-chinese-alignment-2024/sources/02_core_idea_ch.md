@@ -1,0 +1,1 @@
+AlignBench 通过 human-in-the-loop 流程构建 683 条源于真实场景的中文 query，覆盖 8 个主类别，并为每题提供人工核验的参考答案。知识密集型问题还附可靠网页的 URL 与原文引用，降低 reference 幻觉。自动评测采用 rule-calibrated、multi-dimensional、带 CoT 解释的 LLM-as-a-judge，对不同类别使用相应评分规则；官方仓库开放数据、模型回答和评价代码。

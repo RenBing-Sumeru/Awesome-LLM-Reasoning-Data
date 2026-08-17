@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "论文以双向 BEq 验证、依赖检索和 961 题 Con-NF，将自动形式化的评测从可编译性推进到可验证的语义等价。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "语义验证与依赖检索的 Lean 自动形式化基准",
+  "best_for_ch": "研究 Lean 自动形式化、语义等价验证或定理检索的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Qi Liu, Xinhao Zheng, Xudong Lu, Qinxiang Cao, Junchi Yan",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:12:05Z"
+}

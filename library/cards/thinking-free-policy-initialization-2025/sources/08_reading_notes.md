@@ -1,0 +1,5 @@
+- ThinkingFree appends an empty think block; it does not change the ground-truth answer or reward.
+- Reported TFPI uses DAPO, Polaris-53K, eight rollouts per prompt, and staged length limits.
+- The official repository releases code, evaluation data, and intermediate/direct-RL checkpoints.
+- Raw rollout texts, rejected samples, reward logs, and dynamic-sampling decisions are not established as complete.
+- Lower token use and benchmark gains are not proof of trace faithfulness or data quality.

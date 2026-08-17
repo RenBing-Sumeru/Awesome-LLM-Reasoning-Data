@@ -1,0 +1,6 @@
+- Read the final PMLR paper, not only the earlier arXiv version: the canonical total is **102 = 42 SRE + 50 CISO + 10 FinOps**, not 94.
+- Read §§3.1–3.2 and the appendix workflow first; the `M/E/T/D` tuple, partial observation, stop, success, provisioning, fault injection, evaluation, and cleanup define the episode contract.
+- Keep release populations separate: paper 102; paper-era access 11 public / 91 held; Lite 65 static scenarios; Trajectories 35 SRE scenarios × 3 runs.
+- Audit Trajectories at file level: 105 session logs coexist with only 90 outputs and 90 judges; zero-score and incomplete sessions are evidence, not noise to silently drop.
+- Interpret Table 4 precisely: GPT-4o reports 13.81% diagnosis pass@1 and 11.43% mitigation pass@1 under the paper setup; neither number proves data quality.
+- Before training or renewed evaluation, resolve scenario mapping, replay/version pins, contamination, judge drift, privacy/secret handling, and the Apache-2.0 versus CC-BY-NC-4.0 boundary.

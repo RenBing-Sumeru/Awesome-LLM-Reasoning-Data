@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "1,483组跨八基准的正负推理答案，提供偏好标签，适合训练可泛化的推理结果判别器。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理判别器强化学习与成对偏好评测基准论文",
+  "best_for_ch": "需要训练或评估自动评审模型在多跳、数学、领域与常识推理中区分正确和错误答案的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Austin Xu, Yilun Zhou, Xuan-Phi Nguyen, Caiming Xiong, Shafiq Joty",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:50:23Z"
+}

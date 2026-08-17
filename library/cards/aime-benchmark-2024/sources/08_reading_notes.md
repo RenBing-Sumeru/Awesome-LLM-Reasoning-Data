@@ -1,0 +1,1 @@
+Always ask whether the score is on AIME I, AIME II, or both. Also separate one-sample exact-match scores from pass@k or majority-vote scores. AIME is a sharp final-answer surface, but it does not certify proof quality, novelty, or absence of memorization.

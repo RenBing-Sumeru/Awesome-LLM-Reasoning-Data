@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "受控配对实验表明，SFT 与 GRPO 会重新暴露预训练污染，且外部迁移边界不同。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "训练生命周期的数据污染审计论文",
+  "best_for_ch": "维护推理基准、评估后训练模型或设计污染审计的研究者。",
+  "confidence_ch": "高：NeurIPS 2025 正式版本、作者与原文实验配置已核验。",
+  "authors_ch": "Muhammed Yusuf Kocyigit, Caglar Yildirim",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T03:30:00Z"
+}

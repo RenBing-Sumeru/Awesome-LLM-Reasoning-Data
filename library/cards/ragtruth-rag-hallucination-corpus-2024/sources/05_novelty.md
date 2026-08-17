@@ -1,0 +1,1 @@
+Earlier RAG factuality data often provide only answer-level labels or inject artificial errors. RAGTruth annotates naturally occurring errors from several real LLMs under evidence constraints and provides response labels plus word spans, types, and severity. The novelty is dense human supervision of natural cross-task errors rather than a new retrieval architecture.

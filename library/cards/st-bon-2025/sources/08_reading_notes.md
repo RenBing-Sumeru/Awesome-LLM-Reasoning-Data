@@ -1,0 +1,5 @@
+- ST-BoN starts scoring when all sampled token prefixes have first become pairwise different.
+- CoE distance is an internal selector signal; lower average distance is preferred, but it is not a correctness label.
+- The main setup uses top-k 20, top-p 0.95, temperature 0.7, and a buffer length tau=c, with N varied from 3 to 80.
+- The repository exposes code, several benchmark inputs, and final timing/stopping fields, but not a verified complete per-candidate score log.
+- Cost and accuracy gains evaluate the decoding rule; they do not prove trace-release completeness or data quality.

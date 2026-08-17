@@ -1,0 +1,1 @@
+Answer stabilization is not answer correctness: a model can confidently settle on a wrong response, and probe formatting may affect detected stability. Thresholds also need calibration for a model, task, and serving stack. The reported efficiency gains therefore should not be read as a universal license to truncate every long reasoning trace.

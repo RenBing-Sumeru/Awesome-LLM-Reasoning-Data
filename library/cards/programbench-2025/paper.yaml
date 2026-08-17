@@ -1,0 +1,84 @@
+id: programbench-2025
+title: 'ProgramBench: Can Language Models Rebuild Programs From Scratch?'
+year: 2026
+venue: arXiv
+authors:
+- ProgramBench authors
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- coding
+- program-reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.03546
+  arxiv: https://arxiv.org/abs/2605.03546
+  doi: null
+  code: null
+  data: null
+  project: null
+data_object:
+  dataset_scale: programming benchmark surface; exact source and task count need audit.
+  prompt_source: program synthesis, execution, or reasoning tasks.
+  trace_author: benchmark authors and evaluated models.
+  answer_format: programming prompt, generated answer/code, checker output, and score.
+  process_fields:
+  - prompt
+  - code or program artifact
+  - test/check result
+  environment_or_substrate: programming evaluation harness.
+  verifier_or_reward: programmatic tests or exact answer checks.
+  terminal_predicate: output passes pinned checker.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark surface.
+  teacher: task authors and checkers.
+  generator: benchmark construction workflow.
+  filtering_rule: pin primary source before interpreting benchmark name.
+  sampling_protocol: Pin task set, language, checker, timeout, and dependency environment.
+  rollout_count: null
+  temperature: null
+  inference_budget: model-specific
+  optimizer_or_scaffold: programming_eval
+audit:
+  source_mixture: primary source needs audit.
+  split: needs_audit
+  decontamination: public programming tasks can leak.
+  license: needs_audit
+  lineage: needs_audit
+  known_failure_modes:
+  - benchmark name may refer to multiple releases
+  - tests may under-specify correctness
+  - environment drift can change scores
+  citation_status: partial
+  confidence: low
+  notes: Metadata shell added first; source disambiguation required.
+inclusion_reason: ProgramBench was requested as a benchmark gap and needs disambiguated tracking.
+related: []
+tags:
+- benchmark
+- coding
+one_line: ProgramBench tracks programming benchmark tasks under a programmatic checking contract.
+why_it_matters: It needs an independent entry so source and version ambiguity can be audited.
+status: verified
+needs:
+- 'needs_audit: pin task release, agent-driven fuzzing tests, reference executable versions, scaffolds, timeouts, and license'
+one_line_summary: ProgramBench tracks programming benchmark tasks under a programmatic checking contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: low
+  notes: Metadata shell added before source generation.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,1 @@
+Compared with large anonymous preference pools, HelpSteer2 makes the annotation axes explicit and emphasizes data quality over raw volume. The direction signal is reusable attribute-level provenance for a pairwise objective. It is not a new preference-optimization loss and it does not turn response ratings into universally calibrated utilities.

@@ -1,0 +1,3 @@
+# Novelty
+
+Earlier VQA instruction sets usually preserve a question and direct answer, while multimodal CoT prompting often leaves the stage structure implicit. LLaVA-CoT changes the training object into four explicitly ordered and tagged targets that separate planning, relevant visual description, derivation, and final response. This makes stage identity trainable and inspectable and lets inference search operate at semantic boundaries rather than fixed token spans. GPT-4o distillation, SFT, beam-style search, and final-answer filtering are not individually new; the direction signal is their alignment around a released staged-rationale record.

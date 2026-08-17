@@ -1,0 +1,1 @@
+The surveyed pipeline starts from text and possibly a diagram, converts them into formal constraints, searches for a plan or proof steps, and sends candidate steps to a checker. The reviewed backends include numeric testing, algebraic provers, synthetic provers, and proof-assistant kernels; a failed check can expose what needs repair.

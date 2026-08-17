@@ -1,0 +1,5 @@
+- Positioning: LLaVA-OneVision-1.5 releases a 22M instruction mixture and an efficient full training stack, separating the instruction stage from its 85M mid-training corpus and 67K RL set.
+- Data object: record id, image reference, ordered user/assistant conversations, and data-source label.
+- Author and selector: source annotations and model-generated conversations are normalized into one dialogue contract; selection uses source-specific checks, mixture balancing, decontamination, and benchmark ablations.
+- Evidence anchor: The 8B model beats Qwen2.5-VL-7B on 18 of 27 reported benchmarks, while the 4B model beats Qwen2.5-VL-3B on all 27 under the paper's evaluation setup.
+- Reuse decision: suitable for full-model multimodal SFT before optional RL; first audit the 22M mixture inherits heterogeneous media licenses and benchmark overlap, and source scale can dominate smaller reasoning-rich subsets.

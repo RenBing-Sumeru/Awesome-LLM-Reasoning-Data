@@ -1,0 +1,3 @@
+Akash Ghosh, Debayan Datta, Sriparna Saha, and Chirag Agarwal. 2025. A Survey of Multilingual Reasoning in Language Models. Findings of the Association for Computational Linguistics: EMNLP 2025, pages 8920–8936. https://aclanthology.org/2025.findings-emnlp.474/
+
+The ACL Anthology entry is the authoritative citation source for the title, authors, venue, pages, and DOI record. Cite this paper for the field overview and its organization of resources, benchmarks, methods, and challenges. Cite a primary work separately when discussing a specific multilingual dataset, system, language result, or evaluation protocol, because those details are not newly established by the survey.

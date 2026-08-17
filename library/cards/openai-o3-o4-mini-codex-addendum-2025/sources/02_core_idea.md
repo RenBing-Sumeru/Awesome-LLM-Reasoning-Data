@@ -1,0 +1,6 @@
+The addendum describes a layered post-training picture rather than one homogeneous dataset. The main layer is RL on real-world coding tasks, targeting human-like coding style and pull-request preferences, instruction adherence, and iterative testing behavior. OpenAI does not specify whether tests, human preferences, model graders, or other signals supply the main reward, so the primary verifier contract remains unknown.
+
+Three safety-data families are more concrete. A synthetic malware pipeline generates prompts, code snippets, and environment configurations, including adversarial and dual-use cases. A false-completion framework perturbs real environments and generates synthetic ones with missing files, wrong repositories, or other unexpected states. Prompt-injection training creates coding-environment attacks under the Instruction Hierarchy approach.
+
+Only the false-completion framework exposes a reward direction: during RL, codex-1 is penalized when its claimed result conflicts with its actions and rewarded for acknowledging missing resources, environment limits, and uncertainty. This is state/action-level scalar feedback for a safety objective, not a published definition of the entire coding-agent reward.
+

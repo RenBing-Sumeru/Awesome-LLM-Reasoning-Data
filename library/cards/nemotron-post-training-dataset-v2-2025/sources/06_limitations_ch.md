@@ -1,0 +1,10 @@
+- **访问与版本：** 原始 Parquet 受联系信息门控。可复现快照需要准确的仓库 revision、文件名、行数、hash 和配置清单；在未获访问权限时无法核实这些信息。
+- **统计口径不一致：** 九个发布 split 合计 6,341,414 行，而报告表 7 和 800 亿 token 的说法描述更大的 SFT 阶段统计面。官方没有发布逐条对齐关系。
+- **来源与污染：** 记录缺少通用的上游来源 ID/版本和变换历史。精确的去重与 benchmark 重叠流程、命中记录、删除结果和 false-negative 分析均为 unknown。
+- **筛选不可观测：** 可见 schema 没有 verifier 身份/版本、分数、阈值、失败码或拒绝候选。发布级检查不是逐条正确性证书。
+- **生成器歧义：** 多个模型可能共同贡献一条记录，因此 generator 数量会重叠。没有候选与变换日志时，`generator` 无法恢复唯一 teacher 或筛选路径。
+- **多语言不对称：** 目标语言 prompt 与回答仍搭配英语推理轨迹。这可能引入翻译伪影、code-switching、隐藏的英语 teacher 风格和语言间监督质量不均；这是 curator inference，而不是论文测得的失败率。
+- **权利链：** 仓库级 CC-BY-4.0 与逐条 ODC-BY、CC-BY-SA 标签以及 Qwen/DeepSeek 模型条款并存。单个标签不能提供上游 URL、版本、必需署名，也不能自动给出下游发布的兼容性结论。
+- **过度解读 RL：** 报告描述了 IFEval RL、WorkBench DPO 和 GRPO/RLHF，但发布缺少阶段归属、rollout 分组、reward、log probability、偏好对和 optimizer 状态。把可见记录视为可重放 RL 数据没有证据支持。
+- **Verifier 失败风险：** 规则检查可能 false-accept 表面合规但实质错误的输出；模型 judge 与 guard 可能有偏差或错误拒绝；数据库状态成功也可能忽略不良动作路径。发布没有校准或失败保留审计。
+- **评测范围：** benchmark 提升衡量的是论文设置下的 checkpoint 行为，不能证明数据正确性、安全性、来源、污染控制、许可兼容性或独立可复现性。

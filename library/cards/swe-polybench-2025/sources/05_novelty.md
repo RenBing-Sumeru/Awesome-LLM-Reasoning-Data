@@ -1,0 +1,5 @@
+SWE-PolyBench extends repository repair along two axes that are often conflated. The first is programming-language diversity: Java, JavaScript, TypeScript, and Python require different package managers, parsers, test reporters, and base environments. The second is task diversity: the source PRs include bug fixes, feature additions, and refactoring instead of only defect repair.
+
+Its data contribution is the executable coupling among issue, commit, patch, test transition, and container. F2P identifies behavior restored by the solution, while P2P guards against regression. File and CST node retrieval metrics then separate localization quality from end-to-end resolution without changing the terminal predicate.
+
+The release is task-centric, not trajectory-centric. That boundary is important: a final patch can be checked reproducibly even when two agents reached it through different tools and actions, but the public benchmark cannot supervise or audit those intermediate choices. It is therefore a strong evaluation surface and a potential environment for future trajectory collection, not an existing agent-trajectory dataset.

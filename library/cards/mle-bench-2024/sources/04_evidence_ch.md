@@ -1,0 +1,3 @@
+可信证据来自官方任务发布、数据 schema 和评分契约，而不是仅看榜单数字。本地已审计规模是：本地元数据尚未完整固定规模，定量复用前必须回到官方发布版本核验。行级证据是一条记录，包含 官方记录 expose Kaggle-style ML engineering tasks with competition metrics, along with prompt/task 元数据 and an 评测 target.、模型输出或轨迹，以及来自 官方评测器、裁判、答案键、环境谓词或任务指标给出的验证结果。
+
+聚合分数只能在官方设置内解释。证据边界包括：复用分数前，需要钉住精确切分、隐藏/公开策略、实时刷新策略或子集版本。；除非官方来源已明确记录，否则许可证和再分发条款需要做产物级审查。；公开评测记录可能泄漏进未来训练数据；实时、隐藏或截断后分数声明需要版本化证据。补充审计备注：Official PDF verifies OpenAI affiliation and ICLR 2025 conference-paper status; Neil Chowdhury and Lilian Weng are noted as work done while at OpenAI. 产物、许可证、切分和评分细节仍是审核目标。如果使用 裁判或 rubric，裁判提示、模型和版本是证据的一部分；如果使用程序化检查，检查器和运行时是证据的一部分。

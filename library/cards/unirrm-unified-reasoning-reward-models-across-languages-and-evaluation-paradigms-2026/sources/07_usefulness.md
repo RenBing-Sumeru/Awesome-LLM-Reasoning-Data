@@ -1,0 +1,2 @@
+1. **Training or data construction.** MixReward can train general-purpose multilingual judges, and UniRRM-RL supports reasoning-RL studies. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** Calibration should be reported separately by language and paradigm. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

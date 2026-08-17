@@ -1,0 +1,3 @@
+**Controlled SFT claim (Table 1).** Every fine-tuned baseline uses exactly 9,230 records with identical hyperparameters. On Qwen3.5-9B, MindLoom raises MedQA pass@1 from the base model's 78.71 to 86.80 and reaches the best pass@1 on almost all nine reported benchmarks. This supports the final data pipeline, but the base comparison combines all construction stages.
+
+**Filtering claim (Table 2).** With the same Qwen3.5-9B setup, removing rollout-based filtering drops MedQA pass@1 from 86.80 to 70.38; the full pipeline also exceeds random retrieval and no reverse engineering across most metrics. The large drop shows that generated-question volume alone is not sufficient and that judged-correct response selection is a central quality gate.

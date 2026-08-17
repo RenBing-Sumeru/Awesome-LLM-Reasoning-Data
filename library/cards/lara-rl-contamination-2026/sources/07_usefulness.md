@@ -1,0 +1,1 @@
+Use it as a pre-release audit for RL-trained reasoning models: retain perturbation seeds, hidden-state extraction settings, per-layer metrics, and a clean comparison population. Escalate suspicious cases to data-lineage and behavioral checks rather than treating the detector as proof of exposure.

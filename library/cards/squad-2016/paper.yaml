@@ -1,0 +1,118 @@
+id: squad-2016
+title: 'SQuAD: 100,000+ Questions for Machine Comprehension of Text'
+year: 2016
+venue: EMNLP 2016 / ACL Anthology
+authors:
+- Pranav Rajpurkar
+- Jian Zhang
+- Konstantin Lopyrev
+- Percy Liang
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- reading-comprehension
+- span-extraction
+- qa
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/D16-1264/
+  arxiv: https://arxiv.org/abs/1606.05250
+  code: https://github.com/rajpurkar/SQuAD-explorer
+  data: https://rajpurkar.github.io/SQuAD-explorer/
+  project: https://rajpurkar.github.io/SQuAD-explorer/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/D16-1264
+  venue: https://aclanthology.org/D16-1264/
+  openreview: null
+  acl: https://aclanthology.org/D16-1264/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: 107,785 questions over 536 Wikipedia articles in SQuAD v1.1; train/dev public counts should be pinned from
+    official files.
+  prompt_source: Wikipedia passages selected by benchmark authors with crowd-written questions and answer spans
+  trace_author: crowd workers write questions and mark answer spans; models return answer spans
+  answer_format: paragraph, question, gold answer span or spans, model span prediction, exact match, and token-level F1
+  process_fields:
+  - article
+  - paragraph
+  - question
+  - answer span
+  - model span
+  - exact match
+  - token F1
+  - split
+  environment_or_substrate: static span-extraction reading-comprehension dataset
+  verifier_or_reward: normalized exact match and token-level F1 over predicted answer spans
+  terminal_predicate: predicted span exactly matches or overlaps gold answer spans under the official scorer
+recipe_metadata:
+  base_model: Not a single model-training recipe unless stated by the paper; treat the record as evaluation/audit by default.
+  teacher: Official authors, annotators, tests, repositories, or benchmark construction pipeline described by the source.
+  generator: Wikipedia passages selected by benchmark authors with crowd-written questions and answer spans
+  filtering_rule: Use only source-backed construction and validation claims; keep unknown artifact details in audit.
+  sampling_protocol: Pin source version, split, runtime, scorer, prompt/scaffold, and release snapshot before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: static span-extraction reading-comprehension dataset
+audit:
+  source_mixture: https://aclanthology.org/D16-1264/; https://rajpurkar.github.io/SQuAD-explorer/; https://github.com/rajpurkar/SQuAD-explorer;
+    https://rajpurkar.github.io/SQuAD-explorer/
+  split: pin exact train/dev/test or public/hidden split before score reuse
+  decontamination: public benchmark records, repositories, tests, questions, or traces can enter future training data
+  license: Official SQuAD explorer states the dataset is distributed under CC BY-SA 4.0; downstream packaged copies still
+    require provenance review.
+  lineage: 'Primary source: https://aclanthology.org/D16-1264/'
+  known_failure_modes:
+  - dependency/runtime drift
+  - prompt or scaffold sensitivity
+  - public-artifact contamination
+  - scorer/evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: SQuAD v1.1 assumes answerable questions and extractive spans; it does not test unanswerability, multi-hop reasoning,
+    long-context retrieval, or calibrated abstention.
+inclusion_reason: SQuAD v1.1 is the canonical span-extraction reading-comprehension benchmark with crowd-written questions
+  over Wikipedia passages.
+related: []
+tags:
+- benchmark
+- evaluation-surface
+- qa
+- reading-comprehension
+- span-extraction
+one_line: SQuAD v1.1 is the canonical span-extraction reading-comprehension benchmark with crowd-written questions over Wikipedia
+  passages.
+why_it_matters: SQuAD v1.1 is the canonical span-extraction reading-comprehension benchmark with crowd-written questions over
+  Wikipedia passages.
+status: verified
+needs:
+- 'needs_version_pin: pin source artifact, split, runtime, prompt/scaffold, and scorer version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'
+one_line_summary: SQuAD v1.1 is the canonical span-extraction reading-comprehension benchmark with crowd-written questions
+  over Wikipedia passages.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official source metadata and card-local artifacts were checked for regeneration.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

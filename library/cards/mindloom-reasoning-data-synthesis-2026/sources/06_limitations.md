@@ -1,0 +1,3 @@
+- The method cannot create transformations absent from the 58,526-problem reference corpus, and the final SFT set remains heavily dominated by SuperGPQA provenance.
+- Compatibility, difficulty, and correctness depend on DeepSeek V3.2 generation and LLM judging rather than programmatic verification for every domain.
+- The repository is linked as code/data, but release license and exact artifact completeness were not confirmed; source-dataset rights also remain inherited.

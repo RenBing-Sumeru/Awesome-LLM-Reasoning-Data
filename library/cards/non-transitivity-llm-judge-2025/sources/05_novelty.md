@@ -1,0 +1,3 @@
+Conventional AlpacaEval-style evaluation fixes a baseline and assumes pairwise wins compose transitively. This paper changes the decision object to the full comparison graph, diagnoses cycles, and aggregates a tournament with Bradley--Terry; Swim changes match selection rather than the judge itself. The contribution is ranking protocol reliability, not a new judge model.
+
+The nearest convention is a baseline-centred leaderboard. The innovation moves from an implicit scalar win rate to graph-aware inference, then adds a budget-conscious scheduling approximation. It neither replaces response generators nor claims to remove judge bias. It makes one hidden ranking assumption observable and testable before results are reported or used as a training signal.

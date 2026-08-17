@@ -1,0 +1,120 @@
+id: survey-post-training-llms-2025
+title: A Survey on Post-training of Large Language Models
+year: 2025
+venue: arXiv preprint
+authors:
+- Guiyao Tie
+- Zeli Zhao
+- Dingjie Song
+- Fuyang Wei
+- Rong Zhou
+- Yurou Dai
+- Wen Yin
+- Zhejian Yang
+- Jiangyue Yan
+- Yao Su
+- Zhenhan Dai
+- Yifeng Xie
+- Yihan Cao
+- Lichao Sun
+- Pan Zhou
+- Lifang He
+- Hechang Chen
+- Yu Zhang
+- Qingsong Wen
+- Tianming Liu
+- Neil Zhenqiang Gong
+- Jiliang Tang
+- Caiming Xiong
+- Heng Ji
+- Philip S. Yu
+- Jianfeng Gao
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- post-training
+- reasoning-data
+- alignment
+training_use:
+- unknown
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.06072
+  arxiv: https://arxiv.org/abs/2503.06072
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.06072
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A survey of post-training methods and the datasets, feedback signals, and evaluation settings they use.
+  trace_author: The surveyed literature; this paper does not release a new reasoning-trace corpus.
+  answer_format: A taxonomy and narrative synthesis of fine-tuning, alignment, reasoning, efficiency, and integration/adaptation.
+  process_fields:
+  - data provenance
+  - supervision signal
+  - reward or verifier
+  - training stage
+  - evaluation setting
+  environment_or_substrate: Post-training pipelines for large language models.
+  verifier_or_reward: Discusses reward, preference, and verifier signals as surveyed objects; it is not itself a reward release.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Not a single model recipe; a survey of post-training literature.
+  teacher: unknown
+  generator: Literature review and taxonomy construction.
+  filtering_rule: Papers are organized into five post-training paradigms according to the official abstract.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Taxonomy of fine-tuning, alignment, reasoning, efficiency, and integration/adaptation.
+audit:
+  source_mixture: Official arXiv record and paper.
+  split: Not applicable to a survey.
+  decontamination: The paper is background material; downstream data releases still require their own contamination evidence.
+  license: The paper's arXiv license is linked on its official arXiv record; a dataset license is not applicable.
+  lineage: 'Primary source: https://arxiv.org/abs/2503.06072'
+  known_failure_modes:
+  - Taxonomy categories can overlap in multi-stage post-training systems.
+  - Survey coverage is bounded by its publication date and selection criteria.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract describes a taxonomy of techniques and datasets across five post-training paradigms.
+inclusion_reason: A field-level map for readers who need to locate instruction data, preference signals, reasoning traces,
+  verifiers, and evaluation within a post-training pipeline.
+related: []
+tags:
+- post-training-survey
+- taxonomy
+- alignment-data
+- reasoning-data
+why_it_matters: It makes the provenance and role of a post-training signal an explicit routing question rather than treating
+  all fine-tuning data alike.
+status: verified
+needs:
+- 'needs_review: verify any future venue version before replacing the arXiv citation'
+one_line_summary: A 2025 map of post-training that connects data, feedback, reasoning, and system stages before readers enter
+  specialized tracks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv abstract and author list reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧭 Post-training surveys

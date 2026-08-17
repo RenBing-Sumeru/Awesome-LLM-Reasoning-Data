@@ -1,0 +1,1 @@
+LongBench 可作为长上下文 benchmark record 的 schema：保留 context、问题或任务 prompt、答案、任务族、原始数据集、语言、输入长度、截断规则、prompt 模板、指标和子集。它适合比较长上下文模型 harness，也适合设计把 context retrieval、aggregation、summarization、code completion 分开的审计。对 atlas 来说，它是一个 baseline evaluation surface：反馈是自动的，但异质；metric 字段和 answer 字段同样重要。

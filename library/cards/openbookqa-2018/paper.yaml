@@ -1,0 +1,92 @@
+id: openbookqa-2018
+title: 'OpenBookQA: A New Dataset for Open Book Question Answering'
+year: 2018
+venue: EMNLP 2018
+authors:
+- Todor Mihaylov
+- Peter Clark
+- Tushar Khot
+- Ashish Sabharwal
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- science-qa
+- commonsense-reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/D18-1260/
+  acl: https://aclanthology.org/D18-1260/
+  arxiv: https://arxiv.org/abs/1809.02789
+  doi: https://doi.org/10.18653/v1/D18-1260
+  code: null
+  data: https://allenai.org/data/open-book-qa
+  project: https://allenai.org/data/open-book-qa
+data_object:
+  dataset_scale: multiple-choice elementary science questions with an open-book science fact set; exact split counts need
+    source-file pinning.
+  prompt_source: AI2 elementary science facts and authored questions requiring facts plus commonsense.
+  trace_author: dataset authors and answer labels.
+  answer_format: question, choices, correct option, and supporting open-book fact.
+  process_fields:
+  - question
+  - answer choices
+  - gold answer
+  - supporting fact
+  environment_or_substrate: multiple-choice open-book science QA.
+  verifier_or_reward: exact multiple-choice answer match.
+  terminal_predicate: selected option equals gold answer.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark dataset.
+  teacher: dataset authors and gold labels.
+  generator: science fact set plus crowd/authored distractor-question process.
+  filtering_rule: separate answer-only accuracy from evidence-use claims.
+  sampling_protocol: Pin dataset version, split, answer-choice order, and evaluator.
+  rollout_count: null
+  temperature: null
+  inference_budget: model-specific
+  optimizer_or_scaffold: multiple_choice_qa_eval
+audit:
+  source_mixture: ACL paper, arXiv record, and AI2 data page.
+  split: train/dev/test split needs exact source revision.
+  decontamination: public classic benchmark likely appears in pretraining corpora.
+  license: needs_audit from AI2 data page.
+  lineage: 'Primary source: https://aclanthology.org/D18-1260/'
+  known_failure_modes:
+  - high scores can reflect memorization or test contamination
+  - supporting fact does not guarantee faithful reasoning use
+  - multiple-choice format enables shortcut elimination
+  citation_status: verified
+  confidence: high
+  notes: Metadata source is stable; exact dataset artifact revision still needs pinning.
+inclusion_reason: Classic open-book elementary science QA benchmark used in model reports and sanity checks.
+related:
+- ai2-arc-2018
+tags:
+- benchmark
+- science-qa
+- multiple-choice
+one_line: OpenBookQA evaluates multiple-choice science QA that combines an open-book fact with commonsense reasoning.
+why_it_matters: It is a classic AI2 science QA benchmark with a simple answer-level verifier.
+status: verified
+needs:
+- 'needs_audit: pin dataset revision, split counts, license, and contamination status'
+one_line_summary: OpenBookQA evaluates multiple-choice science QA with open-book facts and commonsense.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: gap_fill
+  confidence: high
+  notes: ACL, arXiv, and AI2 data links recorded; artifact revision not pinned.
+category_ids:
+- benchmarks_evaluation_surfaces

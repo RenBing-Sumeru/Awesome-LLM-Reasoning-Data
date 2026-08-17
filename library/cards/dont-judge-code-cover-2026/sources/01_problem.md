@@ -1,0 +1,1 @@
+代码 LLM 判别器是否会被语义等价的表层改写误导 is difficult to audit when a single score hides its assumptions or sensitivity. This paper studies that reliability problem directly and frames its output as evidence for safer evaluation.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UniRRM 以多语种混合奖励数据训练一个能处理成对、列表和单点评审的推理型奖励模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "偏好或奖励反馈数据论文",
+  "best_for_ch": "研究偏好学习、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Peng Lai、Yichao Du、Junchao Wu、Weibo Gao、Linan Yue 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T14:00:00Z"
+}

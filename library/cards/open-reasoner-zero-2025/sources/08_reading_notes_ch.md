@@ -1,0 +1,6 @@
+- 将“zero”理解为**不经过 SFT 或蒸馏，直接从预训练 base model 启动 RL**。它不表示没有上游预训练数据、prompt、参考答案或人工设计的训练基础设施。
+- 区分公开行与在线 PPO 对象：公开 56,878 条 original、72,444 条 extended 和 13,451 条 hard prompt/参考记录；64-way 响应、reward、critic value、advantage、失败和日志没有发布。
+- 去重会改变数据账本：original/extended/hard 分别有 2,503、24,025 和 611 条空白归一化精确重复，对应 54,375、48,419 和 12,840 个唯一 prompt。
+- 代码要求 answer tags 内有 boxed answer，并检查归一化数学等价；论文则描述 exact match。parser 与 equivalence 行为都属于 verifier 契约。
+- extended release 中有六条 MATH500 精确 prompt，但配置使用的 original 57k 中没有。缺少论文运行的 129k/annealing 清单，因此这是发布表面警告，不是报告模型使用这些样本训练的证据。
+- 审计缺失的运行绑定：公开配置指向 57k，论文描述 129k 加 hard annealing，README/config node 数不同，也没有 tag 固定数据、seed、日志、rollout、compute 或 checkpoint hash。

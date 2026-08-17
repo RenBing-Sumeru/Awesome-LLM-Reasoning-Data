@@ -1,0 +1,157 @@
+id: agentgym-2025
+title: 'AGENT GYM: Evaluating and Training Large Language Model-based Agents across Diverse Environments'
+year: 2025
+venue: ACL 2025 Long Papers
+authors:
+- Zhiheng Xi
+- Yiwen Ding
+- Wenxiang Chen
+- Boyang Hong
+- Honglin Guo
+- Junzhe Wang
+- Xin Guo
+- Dingwen Yang
+- Chenyang Liao
+- Wei He
+- Songyang Gao
+- Lu Chen
+- Rui Zheng
+- Yicheng Zou
+- Tao Gui
+- Qi Zhang
+- Xipeng Qiu
+- Xuanjing Huang
+- Zuxuan Wu
+- Yu-Gang Jiang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent-reasoning
+- web
+- embodied-ai
+- games
+- tool-use
+- programming
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1355/
+  arxiv: https://arxiv.org/abs/2406.04151
+  code: https://github.com/WooooDyy/AgentGym
+  data: https://huggingface.co/datasets/AgentGym/AgentTraj-L
+  project: https://agentgym.github.io/
+  huggingface: https://huggingface.co/datasets/AgentGym/AgentTraj-L
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1355
+  venue: https://aclanthology.org/2025.acl-long.1355/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1355/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.acl-long.1355.bib
+data_object:
+  prompt_source: 20,494 gathered, rule-generated, or model-generated instructions across 14 interactive environments and 89
+    task types.
+  trace_author: Rule solvers and human traces provide some actions; GPT-4-Turbo adds thoughts or explores, with crowdsourcing
+    for selected environments.
+  answer_format: ReAct-style episodes containing task instruction, thought, environment action, observation, and terminal
+    reward.
+  process_fields:
+  - environment
+  - instruction
+  - thought
+  - action
+  - observation
+  - reward
+  environment_or_substrate: Fourteen separately deployed environments behind standardized create, reset, observation, available-action,
+    and step interfaces.
+  verifier_or_reward: Environment-specific success rates or numeric rewards filter completed trajectories.
+  terminal_predicate: Retain trajectories that pass reward and correctness filtering; the public AgentTraj-L set represents
+    the larger high-quality SFT pool.
+recipe_metadata:
+  base_model: Llama-2-Chat 7B for the main trajectory SFT comparison
+  teacher: GPT-4-Turbo, rule solvers, existing human traces, and crowdsourced annotators
+  generator: Gather-and-filter collection over unified live environments, with rule-based or model-based instruction expansion.
+  filtering_rule: Execute trajectories and filter by task reward and correctness; manually verify model-generated instructions
+    for feasibility.
+  sampling_protocol: Expand from 6,130 AgentTraj demonstrations to 14,485 AgentTraj-L demonstrations across 11 trainable environments.
+  rollout_count: 14485
+  temperature: null
+  inference_budget: The paper reports environment and training hardware details but no complete teacher-call or collection-cost
+    ledger.
+  optimizer_or_scaffold: Three-epoch SFT on collected trajectories; the broader paper also studies online and offline reward-based
+    improvement.
+audit:
+  source_mixture: AgentTraj-L contains 14,485 trajectories from 11 of 14 environments; WebShop, ALFWorld, SciWorld, and BIRD
+    are the largest components.
+  split: AgentEval contains 1,160 evaluation instructions; train and evaluation pools are sampled or inherited per environment.
+  decontamination: No unified semantic decontamination audit across all inherited and generated instructions is reported.
+  license: The dataset page does not declare a dedicated data license; the associated AgentGym repository is MIT licensed
+    and upstream environments retain their own terms.
+  lineage: This Card covers the static high-reward AgentTraj-L demonstrations used in SFT, not online AgentSTaR rollouts as
+    the primary object.
+  known_failure_modes:
+  - Reward functions and action semantics differ sharply across environments.
+  - Successful trajectories can overrepresent easy instances and teacher-specific styles.
+  - The absence of a dedicated dataset license complicates redistribution decisions.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper, repository, project, public dataset page, environment statistics, reward filtering, and SFT experiments
+    were checked.
+inclusion_reason: AgentTraj-L releases 14,485 reward-filtered ReAct demonstrations from 11 interactive environments for cross-environment
+  agent SFT.
+related:
+- agentbank-2024
+- agenttuning-2024
+tags:
+- instruction-demonstration-rationale
+- agent-trajectories
+- environment-reward
+- agentgym
+- arxiv-2406.04151
+status: verified
+one_line_summary: AgentTraj-L releases 14,485 reward-filtered ReAct demonstrations from 11 interactive environments for cross-environment
+  agent SFT.
+why_it_matters: It pairs static trainable traces with standardized live environments, making reward provenance and cross-environment
+  comparisons unusually explicit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, release surface, record form, construction details, and reported experiments were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714-round2
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: reward-filtered cross-environment agent demonstrations
+  selection_priority_score: 10
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 1
+  selection_evidence:
+    institution: The official PDF confirms Fudan University and Pengcheng Laboratory affiliations.
+    venue: ACL Anthology confirms a main-conference ACL 2025 long paper; no award distinction is claimed.
+    impact: 'Public APIs checked 2026-07-14: WooooDyy/AgentGym had 812 stars and 114 forks, AgentTraj-L had 289 Hugging Face
+      downloads and 25 likes, and OpenAlex W4412889815 reported 3 citations.'
+    artifact: Code, environments, checkpoints, and AgentTraj-L are publicly readable, but the dataset page does not declare
+      a dedicated license.
+  selection_eligible: true
+  year_impact_threshold: 2

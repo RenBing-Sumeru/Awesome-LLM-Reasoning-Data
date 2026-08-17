@@ -1,0 +1,3 @@
+Translating natural-language theorems into Lean statements requires large parallel corpora, but existing datasets usually start from a small number of human-written problems, have limited scale and topical coverage, or require continuous Lean-expert correction. Directly synthesizing formal statements from natural language can also produce outputs that fail compilation or drift semantically.
+
+ATLAS instead starts from verifiable formal concepts in Mathlib. Through data lifting, teacher-student synthesis, and formal-structure augmentation, it iteratively constructs natural-language–Lean parallel statements and filters them with compilation and back-translation consistency checks.

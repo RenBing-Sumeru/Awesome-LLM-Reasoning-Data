@@ -1,0 +1,134 @@
+id: skywork-or1-2025
+title: Skywork Open Reasoner 1 Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Jujie He
+- Jiacai Liu
+- Chris Yuhao Liu
+- Rui Yan
+- Chaojie Wang
+- Peng Cheng
+- Xiaoyu Zhang
+- Fuxiang Zhang
+- Jiacheng Xu
+- Wei Shen
+- Siyuan Li
+- Liang Zeng
+- Tianwen Wei
+- Cheng Cheng
+- Bo An
+- Yang Liu
+- Yahui Zhou
+source_role:
+- model_report
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.22312
+  arxiv: https://arxiv.org/abs/2505.22312
+  code: https://github.com/SkyworkAI/Skywork-OR1
+  data: https://huggingface.co/datasets/Skywork/Skywork-OR1-RL-Data
+  project: https://github.com/SkyworkAI/Skywork-OR1
+  huggingface: https://huggingface.co/Skywork/Skywork-OR1-32B
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The official dataset card names open-source NuminaMath-1.5, DeepScaleR-Preview-Dataset, STILL-3-Preview-RL-Data,
+    Omni-Math, pre-2024 AIME problems, LeetCodeDataset, and TACO as sources.
+  trace_author: unknown
+  answer_format: The release contains math problems and coding questions; the inspected dataset page does not expose a stable
+    item schema because its viewer is unavailable.
+  process_fields: []
+  environment_or_substrate: Large-scale rule-based RL for math and code reasoning.
+  verifier_or_reward: Rule-based reinforcement learning is reported; exact reward functions and verifier implementations are
+    not fully specified in the inspected sources.
+  terminal_predicate: Offline and online difficulty-based filtering and rejection sampling are reported; exact thresholds
+    and sample-level decisions are not released.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-7B and DeepSeek-R1-Distill-Qwen-32B are listed as bases for the released 7B and 32B
+    models.
+  teacher: unknown
+  generator: Model-aware difficulty estimation plus multi-stage RL with adaptive entropy control.
+  filtering_rule: The dataset card reports difficulty estimation per problem/model, human and LLM-as-a-Judge quality assessment,
+    within-dataset deduplication, and removal of problems similar to AIME24, AIME25, and LiveCodeBench. Offline and online
+    difficulty-based filtering and rejection sampling are reported for training.
+  sampling_protocol: Difficulty is scored 0--16 relative to DeepSeek-R1-Distill-Qwen-{1.5,7,32}B; for each variant, difficulty
+    0 and 16 problems are excluded. Further stage settings are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Customized GRPO with data-wise/training-wise improvements and adaptive entropy control.
+audit:
+  source_mixture: The official dataset card reports 105K math problems and 14K coding questions, while the model page says
+    110K math and 14K coding questions. This version/count discrepancy is retained as an audit issue.
+  split: The dataset card says similar problems from AIME24, AIME25, and LiveCodeBench were removed; a deterministic split/source
+    manifest is not reported.
+  decontamination: Deduplication within the dataset and removal of similar AIME24/AIME25/LiveCodeBench problems are reported;
+    methods, thresholds, and audit artifacts are unknown.
+  license: unknown
+  lineage: Named open-source pools to cleaning/quality assessment/difficulty estimation to filtered RL data to multi-stage
+    GRPO. Item-level source, decision, and rejected-sample lineage is not disclosed.
+  known_failure_modes:
+  - An early dataset version briefly exposed incorrect difficulty fields; the official card directs users to a newer version
+    or a specified commit.
+  - Dataset-count statements differ between official pages.
+  - Item schema, verifier implementation, source rights, filtering yields, and sample-level provenance are incomplete.
+  - Evaluation gains do not verify the reproducibility or correctness of difficulty labels and quality judgments.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv report, Skywork GitHub repository, official dataset card, and official 32B model page were checked
+    on 2026-07-14.
+inclusion_reason: A notably open frontier report that releases code, weights, and an RL dataset while retaining material ledger
+  gaps and a disclosed dataset-version issue.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- rlvr
+- math
+- code
+- difficulty-filtering
+- entropy-control
+- open-data
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Skywork-OR1 releases code, weights, and an RL dataset with named source pools and difficulty filtering,
+  but leaves verifier details, item lineage, rights, and a count/version discrepancy unresolved.
+why_it_matters: It is a useful disclosure ledger because it contains more reusable artifacts than a report-only release while
+  documenting what is still required to audit the rule-based RL pipeline.
+card: null
+needs:
+- 'needs_audit: immutable data version, item schema, source/decision/reject lineage, and count reconciliation'
+- 'needs_verifier: rule/reward implementation and calibration'
+- 'needs_license: source and dataset rights'
+- 'needs_reproducibility: complete stage configurations and seeds'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper, code, data, and model pages are verified; detailed feedback and audit fields remain partial.

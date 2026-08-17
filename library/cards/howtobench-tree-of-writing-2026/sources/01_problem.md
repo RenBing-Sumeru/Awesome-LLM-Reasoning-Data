@@ -1,0 +1,2 @@
+Thousand-word open-ended writing simultaneously involves language, logic, structure, plot, style, and task goals. Overlap metrics cannot evaluate these qualities, while ordinary LLM judges often average multiple subdimensions and implicitly change which features matter across runs. The paper asks how to build a professional writing benchmark across diverse genres and use an explicit tree-structured rubric with weighted aggregation so that long-form evaluation can explain how local scores produce the final judgment.
+

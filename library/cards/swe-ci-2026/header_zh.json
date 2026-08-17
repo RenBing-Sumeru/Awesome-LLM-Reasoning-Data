@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-CI 以 68 个公开 Python 仓库中的 100 个长期演化任务构造最长 20 轮 Architect–Programmer CI 轨迹，并已发布任务、Docker 环境、代码及 115 GB 轨迹；但版本漂移、测试验证器、归档完整性、回放、权利、隐私和凭据隔离仍需审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "持续集成驱动的长时程代码维护基准与轨迹发布",
+  "best_for_ch": "关注软件工程智能体、CI 反馈、可执行奖励、失败轨迹、容器回放与公开轨迹复用边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jialong Chen, Xander Xu, Hu Wei, Chuan Chen, Bing Zhao",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

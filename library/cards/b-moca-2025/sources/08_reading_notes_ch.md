@@ -1,0 +1,1 @@
+关键边界是 release version：70、138、131 个任务对应不同项目阶段；CoLLAs 论文和当前项目页以 ver.2/3 的 131 任务为中心。没有相同 environment ID、task list、action parser 和模型 API 版本时，不要比较 success rate。detector success 是环境级 terminal predicate，不等于人类对有用性的判断。它对 atlas 的主要信号是可执行 Android 控制下的配置泛化。

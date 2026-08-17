@@ -1,0 +1,3 @@
+The report describes a multi-stage path from broad pre-training to code/reasoning, long-context, and agent-oriented data, followed by separate reasoning, agent, and general expert models. A second stage unifies those experts by self-distillation into hybrid thinking and direct-response behavior.
+
+Its feedback contract is explicitly mixed. Objective answers, executable tests, function-call rules, and environment completion contribute rule-based signals; reward models filter subjective cases; human preference annotations support RLHF; model feedback supports RLAIF; and some end-to-end agent tasks rely on an LLM Judge. The disclosed architecture of the contract is useful, while its executable specifications remain unavailable.

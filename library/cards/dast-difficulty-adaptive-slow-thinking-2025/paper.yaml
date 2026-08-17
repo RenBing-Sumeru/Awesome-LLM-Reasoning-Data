@@ -1,0 +1,143 @@
+id: dast-difficulty-adaptive-slow-thinking-2025
+title: 'DAST: Difficulty-Adaptive Slow-Thinking for Large Reasoning Models'
+year: 2025
+venue: EMNLP 2025 Industry Track
+authors:
+- Yi Shen
+- Jian Zhang
+- Jieyun Huang
+- Shuming Shi
+- Wenjing Zhang
+- Jiangze Yan
+- Ning Wang
+- Kai Wang
+- Zhaoxiang Liu
+- Shiguo Lian
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+training_use:
+- preference_learning
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-industry.160/
+  arxiv: https://arxiv.org/abs/2503.04472
+  code: https://github.com/AnonymousUser0520/AnonymousRepo01
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-industry.160
+  venue: https://aclanthology.org/2025.emnlp-industry.160/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-industry.160/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH training-set questions used to construct the preference data.
+  trace_author: The respective backbone reasoning model, DeepSeek-R1-Distill-Qwen-7B or DeepSeek-R1-Distill-Qwen-32B, generates
+    candidate responses.
+  answer_format: A question with sampled Chain-of-Thought response candidates, ranked winner and loser responses, and answer-correctness-derived
+    preference labels.
+  process_fields:
+  - question
+  - candidate_response
+  - final_answer_correctness
+  - response_token_length
+  - token_length_budget
+  - calibrated_reward
+  - pair_type
+  - winner_response
+  - loser_response
+  environment_or_substrate: Offline rollout collection from the MATH training set; each candidate response is capped at 4096
+    tokens during preference-data construction.
+  verifier_or_reward: Rule-based correctness reward calibrated by each response's relative deviation from the Token Length
+    Budget; the exact answer-extraction and checking implementation is undisclosed.
+  terminal_predicate: The paper classifies candidates as correct or incorrect for reward calibration, but does not disclose
+    the exact correctness-checking procedure.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-7B (DS-7B) and DeepSeek-R1-Distill-Qwen-32B (DS-32B).
+  teacher: The current backbone reasoning model supplies self-rollouts; no external teacher is reported for construction.
+  generator: Sample responses per MATH training question, compute a Token Length Budget from sampling accuracy and correct-response
+    length, calibrate rewards, rank candidates, and form contrastive pairs.
+  filtering_rule: Select maximal-margin dual-correct and dual-incorrect pairs per question, remove the bottom delta fraction
+    by margin, then retain at most one pair of each class per question.
+  sampling_protocol: 20 candidate responses per MATH training question, maximum sequence length 4096 tokens; delta is 0.18
+    for DS-7B and 0.15 for DS-32B.
+  rollout_count: 20
+  temperature: unknown
+  inference_budget: Preference-data rollouts use a 4096-token maximum; evaluation uses greedy decoding with a 32768-token
+    maximum generation length.
+  optimizer_or_scaffold: SimPO fine-tuning for one epoch with AdamW at 5e-6; beta=200 and gamma=1. The retained training sets
+    contain 10295 DS-7B pairs and 9813 DS-32B pairs.
+audit:
+  source_mixture: MATH training questions plus 20 self-generated candidate responses per question from the respective backbone;
+    retained datasets contain 10295 DS-7B and 9813 DS-32B contrastive pairs.
+  split: MATH training set is used for construction; MATH-500, AIME2024, and GPQA are reported only as evaluation benchmarks.
+  decontamination: unknown
+  license: unknown
+  lineage: MATH training question -> 20 backbone rollouts -> correctness and token-length statistics -> Token Length Budget
+    -> calibrated rule-based rewards -> ranked dual-correct or dual-incorrect pairs -> margin filtering -> SimPO.
+  known_failure_modes:
+  - exact correctness-checking and answer extraction are undisclosed
+  - preference pairs and complete rollout records are not released
+  - code repository provides evaluation utilities rather than the documented construction pipeline
+  - truncation threshold is sensitivity-critical
+  - low-discriminability long dual-incorrect pairs can cause reward hacking
+  - evaluation is restricted to STEM domains
+  - off-policy preference learning may limit performance relative to online RL
+  citation_status: verified
+  confidence: medium
+  notes: Official ACL and arXiv records verify the bibliographic facts and paper method. The paper-linked public GitHub repository
+    supplies evaluation instructions and points to a ModelScope model clone, but does not release the constructed preference
+    pairs, rollout corpus, reward/checker implementation, training code, licenses, or immutable data revision.
+inclusion_reason: DAST is a directly relevant rollout-to-preference recipe that converts multiple self-generated reasoning
+  traces into difficulty-conditioned ranked pairs for efficient test-time reasoning behavior.
+related: []
+tags:
+- reasoning-efficiency
+- adaptive-compute
+- self-rollouts
+- token-budget
+- preference-pairs
+- simpo
+- test-time-compute
+- reward-shaping
+status: partial
+one_line_summary: DAST samples 20 self-rollouts per MATH question, uses correctness and a difficulty-conditioned token budget
+  to rank candidates, and trains SimPO on the resulting preference pairs.
+why_it_matters: It makes the rollout budget, token-budget construction, reward-shaped pair ranking, and length-sensitive preference
+  optimization visible, while leaving the reusable records and checker implementation unavailable.
+card: null
+needs:
+- 'needs_data: release preference pairs, candidate rollouts, and retained-pair IDs'
+- 'needs_code: release construction, correctness-checking, reward-calibration, and SimPO training code'
+- 'needs_verifier: disclose answer extraction, correctness checker, and false-positive or false-negative behavior'
+- 'needs_metadata: disclose sampling temperature, seed, prompt format, and rejected-pair statistics'
+- 'needs_license: state licenses for data, derived pairs, model, and code'
+- 'needs_snapshot: publish an immutable model and data revision'
+- 'needs_decontamination: document overlap controls for training data and evaluation benchmarks'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official ACL publication, arXiv preprint, and the paper-linked public GitHub repository were checked. The public
+    repository is an evaluation/model-access artifact, not a verified release of preference data or the construction pipeline.
+category_ids:
+- rollout_search_test_time_trace_data

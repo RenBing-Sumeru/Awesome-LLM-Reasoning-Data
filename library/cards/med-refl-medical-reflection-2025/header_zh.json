@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "Med-REFL 将细粒度自我反思转化为医学推理的偏好对，用于纠错式偏好优化。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "医学推理偏好数据与自我反思方法论文",
+  "best_for_ch": "研究医学大模型、推理纠错或偏好优化的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Hongxian Yang、Jiayu Qian、Segao Peng、Haoyu Zhang、Lu-An Huang、MC Tan、Shi-An Huang",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T10:35:35Z"
+}

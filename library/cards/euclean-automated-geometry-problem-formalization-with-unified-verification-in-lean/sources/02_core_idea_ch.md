@@ -1,0 +1,1 @@
+论文版本构建 OMNI-Geometry 768 题与 Numina-Geometry 177,597 题；当前官方重生成发布分别为 780 条和 183,796 条，使用 Lean/Mathlib 4.28.0 与 Codex GPT-5.4。Numina 记录含非形式陈述、证明、答案、来源与 `formal_statement`；Omni 还含 `formal_proof` 和完成标记，525/780 个一次证明通过。数据以 Parquet、Apache-2.0 发布，但编译只保证形式语法成立，不自动保证语义忠实。

@@ -1,0 +1,1 @@
+{"category_ids":["audit_failure_contamination_verifier_attacks"],"manual_annotation":{"search_status":"promoted","decision_reason":"在五类安全域、11 个 judge 和五种 artifact 上证明人类一致性不能替代对安全评测器鲁棒性的审计。","updated_at":"2026-07-20T00:00:00Z"}}

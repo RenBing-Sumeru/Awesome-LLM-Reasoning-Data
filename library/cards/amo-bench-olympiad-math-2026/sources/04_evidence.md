@@ -1,0 +1,1 @@
+The paper evaluates twenty-six LLMs; the best reaches only 52.4% and most score below 40%, while additional test-time compute yields continued but unsaturated improvement. The repository leaderboard may later change with new models and problem revisions, so paper-era results and current rankings must not be mixed. The evidence supports difficulty and originality.

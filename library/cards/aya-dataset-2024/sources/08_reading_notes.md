@@ -1,0 +1,5 @@
+- Positioning: Aya publishes 204,114 human-authored instruction-response pairs across 65 languages with task provenance.
+- Method handle: Aya coordinates a global contributor workflow, localizes task templates, collects responses in 65 languages, and packages 204,114 attributable instruction records.
+- Data handle: 204,114 human-written instruction-response pairs across 65 languages; each record contains language and task id, instruction, optional input, and human-authored response.
+- Evidence anchor: Models tuned on Aya improve multilingual instruction following across represented languages; the human-curated 65-language collection separates local authorship from automatic translation.
+- Reuse decision: best for adding human-authored multilingual supervision to an English-heavy SFT mixture; first audit aggregate language scores can hide severe low-resource coverage gaps.

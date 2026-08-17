@@ -1,0 +1,6 @@
+- Keep the version boundary explicit: this paper studies 350 tasks across 94 apps with GRADE; the official StepFun 235-task release belongs to 2025 predecessor papers and is not the current artifact.
+- Read Sections 3.2-3.3 and Algorithm 1 first: the essential object is instruction plus three-tier guideline plus observable trajectory plus Evidence/Verdict outputs, not a task title and success score alone.
+- Treat GRADE as a fallible learned judge. Its best reported 87.37% accuracy on 879 sessions includes 86 false positives and 25 false negatives, and backbone accuracy spans 65.64-87.37% (Table 5).
+- Use Table 2 for model results and complexity slices, Tables 3-5 for evaluator reliability, and Figures 5-6 for observed failure modes; none independently certifies task or trajectory quality.
+- The paper's only demonstrated use is evaluation. RLVR reward, process-supervision, SFT, and recovery-data uses are possible research directions, not reported training uses.
+- Before reuse, resolve the current release URL and license, split and predecessor overlap, app/device/account pins, evaluator prompt/backbone, raw trajectory access, intervention logs, and immutable session lineage.

@@ -1,0 +1,5 @@
+- Data object: CoT prefix, transition candidate, induced trial answer, token probabilities, confidence aggregation, and exit decision.
+- The gate is the target model's self-confidence, not an independent correctness verifier.
+- Main experiments use λ = 0.95, greedy decoding, and a 16,384-token cap; entropy-based candidates use a reported 0.672 threshold.
+- DEER-PRo penalizes confidence dispersion across inducing prompts; branch-parallel decoding is described in the paper.
+- Official MIT code covers mathematical Hugging Face/vLLM paths, but rollout data, code-generation support, and branch-parallel code remain unreleased.

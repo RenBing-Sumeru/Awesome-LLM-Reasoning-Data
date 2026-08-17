@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FActScore 将长回答拆成 atomic facts，并用知识源支持标签评估 factual precision。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "EMNLP 2023 main 的 benchmark / evaluation surface",
+  "best_for_ch": "关注长文本事实性、grounding 评测、atomic claim 审计和自动 factuality metric 复用边界的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sewon Min 等（University of Washington、University of Massachusetts Amherst、Meta AI、Allen Institute for AI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

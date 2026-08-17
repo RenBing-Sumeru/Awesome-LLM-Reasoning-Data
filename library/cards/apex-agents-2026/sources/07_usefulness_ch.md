@@ -1,0 +1,1 @@
+它适合作为专业工作 agent 评测 schema：记录 world id、职业类别、prompt、文件清单、工具、预期输出类型、gold output、rubric criteria、judge model、criterion labels、被修改 artifact、动作/时间预算和访问/许可条款。对 atlas 最有用的是把可执行 workplace environment、rubric-graded deliverable，以及“公开可见但禁止训练使用”的数据资产区分开。

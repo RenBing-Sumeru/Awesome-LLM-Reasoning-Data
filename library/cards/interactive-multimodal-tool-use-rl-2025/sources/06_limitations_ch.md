@@ -1,0 +1,6 @@
+- 尚未核验到论文专属的官方code、sandbox、任务集、rollout corpus、checkpoint、model card或project page。实验部分只说整理后的任务与ground-truth call“will”开源，`paper.tex`还保留`Code: To be`等被注释的placeholder；因此code、data、project与model链接均保持null。
+- 规则verifier只对照ground truth检查成功的数据库写调用，却省略tau-bench中对措辞敏感的expected-output check。trajectory即使满足写操作谓词，也可能给出不完整、误导或其他低质量的对话回复（论文§2.1；附录output-check表）。
+- GPT-4.1 adjudication没有披露模型snapshot、temperature、校准、judge间一致性或成本。每条trajectory最多只允许一个`-1`，可能不足以惩罚多个重大偏离；后续错误也可能只得到`0`（附录“LLM Judge Setup for Turn-Level Evaluation”）。
+- 稳定的GRPO/PPO消费聚合trajectory scalar，而不是真正局部的process reward。直接在每轮最后一个token上赋值不稳定，因此报告方法并未证明每个被判断的turn都获得可靠局部credit（论文§3.2、§5.1）。
+- 训练仅使用零售任务，tau-bench只有两个domain，向airline的泛化较弱。精确split manifest、APIGen-MT/tau-bench overlap检查、任务去重、decontamination、成功/失败rollout保留、数据库hash、hardware、compute hour、seed、variance和checkpoint选择均为unknown。
+- 由于TTS难以准确处理`name_number`标识符，语音评测移除了authentication并直接提供user profile，从而改变了任务；其分数不能与其他条件完全相同的文本protocol直接比较（论文§4.3–§4.4）。

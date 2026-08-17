@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "rollout、搜索与测试时计算数据的构造和评估配方",
+    "updated_at": "2026-07-22T11:46:42Z"
+  },
+  "updated_at": "2026-07-22T11:46:42Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

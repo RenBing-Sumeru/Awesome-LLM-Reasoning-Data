@@ -1,0 +1,5 @@
+- FFS returns the first of n stochastic traces to emit EOS and cancels the rest.
+- The reported default is n=4, temperature 0.6, and top-p 0.95 with separate total- and sequential-token accounting.
+- Selection uses completion order, not a correctness verifier; ground truth appears only in evaluation.
+- Gains are conditional on correct traces having a favorable length distribution and do not hold uniformly.
+- The linked GitHub repository did not expose a usable implementation, license, or rollout release when checked.

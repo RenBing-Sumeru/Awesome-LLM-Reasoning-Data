@@ -1,0 +1,3 @@
+- For bootstrapping an instruction model when a fixed human dialogue set is available, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of later iterations may optimize the discriminator objective without improving factual quality.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: a preference-style objective separates human responses from current-policy responses. Do not reuse the release when its licensing or source provenance cannot be preserved.

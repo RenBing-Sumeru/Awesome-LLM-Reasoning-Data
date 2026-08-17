@@ -1,0 +1,5 @@
+- Positioning: DocOwl 1.5 combines four million structure records with 25K answer-filtered document explanations.
+- Method handle: DocOwl 1.5 first trains on DocStruct4M for parsing and localization, then consumes DocReason25K explanations and a 570K downstream mixture for document conversation tuning.
+- Data handle: 25,000 rationale-bearing document QA records plus roughly 4 million structure-learning samples; each record contains document image, question or structure instruction, concise answer or detailed reasoning response.
+- Evidence anchor: A fixed backbone trained with unified structure learning improves across ten document benchmarks; adding 25K teacher explanations yields the chat variant without replacing the structure stage.
+- Reuse decision: best for training an OCR-free assistant to answer and explain document questions; first audit answer-filtered explanations may contain unsupported intermediate claims.

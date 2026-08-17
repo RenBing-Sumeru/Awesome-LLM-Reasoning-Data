@@ -1,0 +1,99 @@
+id: plan-rewardbench-trajectory-reward-modeling-2026
+title: 'Aligning Agents via Planning: A Benchmark for Trajectory-Level Reward Modeling'
+year: 2026
+venue: ACL 2026
+authors:
+- Jiaxuan Wang
+- Yulan Hu
+- Wenjin Yang
+- Zheng Pan
+- Xin Li
+- Lan-Zhe Guo
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- agents
+- trajectory-preference
+- reward-modeling
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1062/
+  arxiv: https://arxiv.org/abs/2604.08178
+  code: https://github.com/wyy-1112/Plan-RewardBench
+  data: https://huggingface.co/datasets/wyy1112/Plan-RewardBench
+  project: null
+  huggingface: https://huggingface.co/datasets/wyy1112/Plan-RewardBench
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1062
+  venue: https://aclanthology.org/2026.acl-long.1062/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1062/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tool-using agent tasks from four planning and safety task families.
+  trace_author: Multiple agent models, rule-based perturbations, and minimal-edit LLM perturbations.
+  answer_format: Task context, preferred trajectory, distractor trajectory, task family, and pairwise label.
+  process_fields:
+  - task
+  - preferred_trajectory
+  - distractor_trajectory
+  - family
+  - label
+  environment_or_substrate: Tool-integrated agent planning scenarios.
+  verifier_or_reward: Validated positive trajectories and hard negatives define the pairwise preference.
+  terminal_predicate: A judge selects the trajectory that handles the task safely and correctly.
+recipe_metadata:
+  base_model: Generative, discriminative, and LLM-as-judge reward models.
+  teacher: Validated positive trajectories provide the preferred side of each comparison.
+  generator: Natural rollouts, rule perturbations, and minimal LLM edits create negatives.
+  filtering_rule: Validation checks preserve task-family semantics while making negatives confusable.
+  sampling_protocol: Use official seven splits and report trajectory length and task family.
+  inference_budget: Longer trajectories raise judge context and evaluation cost.
+  optimizer_or_scaffold: Unified pairwise reward-model evaluation protocol.
+audit:
+  source_mixture: Positive agent trajectories and adversarial or minimally edited distractor trajectories.
+  split: 1,171 pairwise comparisons across seven splits and four task families.
+  decontamination: Public tool trajectories should not be reused in a model’s held-out judge evaluation.
+  license: Confirm the current Hugging Face dataset card and repository LICENSE.
+  lineage: ACL 2026 paper, official Plan-RewardBench repository, and dataset release.
+  known_failure_modes:
+  - Synthetic or edited negatives may not cover all real agent failures.
+  - Long context can confound a judge independently of planning quality.
+  citation_status: verified
+  confidence: high
+  notes: Verified ACL paper PDF, affiliations, official code URL, and Plan-RewardBench dataset release.
+inclusion_reason: The public benchmark supplies trajectory-level preferred/distractor pairs for reward-model evaluation and
+  training studies.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Plan-RewardBench evaluates whether a judge can prefer safe, recoverable tool-use trajectories over closely
+  confusable alternatives.
+why_it_matters: It shifts feedback from isolated answers to long-horizon agent decisions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified ACL paper PDF, affiliations, official code URL, and Plan-RewardBench dataset release.
+category_ids:
+- preference_reward_feedback_data
+- process_trace_supervision_data

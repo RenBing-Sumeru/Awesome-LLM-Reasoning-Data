@@ -1,0 +1,3 @@
+LLM-as-a-Judge systems increasingly decide benchmark scores, reward signals, and red-team outcomes, but adversarial content can alter a verdict without improving an answer. Existing studies often test one attack or one judge, leaving developers unable to tell whether a reported evaluation is robust to prompt, format, and model changes.
+
+RobustJudge treats the judge as a security-critical evaluation component. It systematically audits attacks, defenses, prompt templates, judge models, and one production deployment, producing an attack-and-defense robustness report rather than training a new judge.

@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Zhejiang University",
+    "Tencent AI Lab",
+    "Westlake University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2401.13919",
+    "https://arxiv.org/html/2401.13919",
+    "https://aclanthology.org/2024.acl-long.371/",
+    "https://github.com/MinorJerry/WebVoyager"
+  ],
+  "verification_note": "ACL verifies the final venue and DOI; arXiv verifies the affiliation mapping. This update preserves the existing environment card and adds the benchmark category mirror."
+}

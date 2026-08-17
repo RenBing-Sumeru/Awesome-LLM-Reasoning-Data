@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "WebSailor 用 2,000 余条成功的重构 ReAct 轨迹和 DUPO 的混合格式/答案奖励训练网页搜索 agent，但官方目前只发布了 20 条 QA 示例，并未发布完整成功或失败轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "复杂信息检索 agent 的数据构造与 RFT/RL 训练方法",
+  "best_for_ch": "研究 web agent、轨迹重构、agentic RL、混合 verifier 与训练数据发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Kuan Li, Zhongwang Zhang, Huifeng Yin, Liwen Zhang, Litu Ou, Jialong Wu, Wenbiao Yin, Baixuan Li, Zhengwei Tao, Xinyu Wang, Weizhou Shen, Junkai Zhang, Dingchu Zhang, Xixi Wu, Yong Jiang, Ming Yan, Pengjun Xie, Fei Huang, Jingren Zhou",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

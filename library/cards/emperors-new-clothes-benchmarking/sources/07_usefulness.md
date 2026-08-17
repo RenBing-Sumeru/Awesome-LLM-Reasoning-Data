@@ -1,0 +1,1 @@
+The paper evaluates benchmark-contamination mitigations by separating fidelity to the original measurement target from resistance to exposure to the original items. Its controlled setting compares original and mitigation-updated instances under clean and deliberately contaminated models. It is a methodological analysis of mitigation strategies, not a new benchmark release.

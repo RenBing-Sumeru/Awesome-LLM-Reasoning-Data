@@ -1,0 +1,97 @@
+id: code-generation-differential-test-time-scaling-2026
+title: Code Generation by Differential Test Time Scaling
+year: 2026
+venue: arXiv preprint
+authors:
+- Yifeng He
+- Ethan Wang
+- Jicheng Wang
+- Xuanxin Ouyang
+- Hao Chen
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2605.20473
+  arxiv: https://arxiv.org/abs/2605.20473
+  code: https://github.com/SecurityLab-UCD/DiffCodeGen
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.20473
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2605.20473
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: programs fuzzed inputs coverage behaviors and behavior clusters
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: dynamic execution/coverage feedback
+  terminal_predicate: maximum-cluster medoid selection
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: programs fuzzed inputs coverage behaviors and behavior clusters'
+  known_failure_modes:
+  - fuzz coverage and clustering do not establish correctness
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2605.20473'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: programs fuzzed inputs coverage behaviors
+  and behavior clusters.'
+related: []
+tags:
+- track5
+- programmatic_code_formal
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Code Generation by Differential Test Time Scaling records programs fuzzed inputs coverage behaviors and
+  behavior clusters under dynamic execution/coverage feedback.
+why_it_matters: It makes maximum-cluster medoid selection and its audit boundary visible for reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

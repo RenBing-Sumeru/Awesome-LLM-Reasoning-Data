@@ -1,0 +1,175 @@
+id: genselect-best-of-n-2025
+title: 'GenSelect: A Generative Approach to Best-of-N'
+year: 2025
+venue: 2nd AI for Math Workshop @ ICML 2025 (poster)
+authors:
+- Shubham Toshniwal
+- Ivan Sorokin
+- Aleksander Ficek
+- Ivan Moshkov
+- Igor Gitman
+source_role:
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- competition_mathematics
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=8LhnmNmUDb
+  arxiv: https://arxiv.org/abs/2507.17797
+  code: https://github.com/NVIDIA-NeMo/Skills/tree/main/recipes/openmathreasoning/scripts/genselect
+  data: https://huggingface.co/datasets/nvidia/OpenMathReasoning
+  project: https://nvidia-nemo.github.io/Skills/releases/openreasoning/evaluation/
+  huggingface: https://huggingface.co/datasets/nvidia/OpenMathReasoning
+  doi: https://doi.org/10.48550/arXiv.2507.17797
+  venue: https://openreview.net/forum?id=8LhnmNmUDb
+  openreview: https://openreview.net/forum?id=8LhnmNmUDb
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2507.17797
+data_object:
+  prompt_source: The target paper evaluates on Comp-Math-24-25, a 256-problem collection from AIME 2024/2025 and HMMT 2024/2025
+    after excluding proof and estimated-partial-credit questions. The related official OpenMathReasoning `genselect` release
+    instead derives from AoPS-centered training problems and must not be treated as the target paper's exact evaluation pool.
+  trace_author: QwQ-32B and DeepSeek-R1-0528 generate candidate solutions and act as self-selectors in the target paper; Qwen2.5-32B-Instruct
+    regenerates QwQ solution summaries. In the related public split, QwQ-32B authors the selector reasoning and Qwen2.5-32B-Instruct
+    produces cleaned summaries of accepted comparisons.
+  answer_format: 'A math problem followed by zero-indexed candidate-solution summaries; the selector generates comparative
+    reasoning and ends with `Judgment: [IDX]`. In the public OpenMathReasoning schema, the full candidate group is packed
+    into `problem` and the selector rationale plus chosen index is packed into `generated_solution`.'
+  process_fields:
+  - expected_answer
+  - problem_type
+  - problem_source
+  - generation_model
+  - pass_rate_72b_tir
+  - problem
+  - generated_solution
+  - inference_mode
+  - used_in_kaggle
+  environment_or_substrate: Offline Best-of-N aggregation over independently sampled mathematical solutions. Direct N-way
+    comparison is used when context permits; larger pools are reduced through N-ary knockout tournaments and repeated selection
+    under random candidate permutations.
+  verifier_or_reward: A reasoning model serves as a generative comparative verifier that returns a selected candidate index
+    rather than a scalar score. AIME-style evaluation uses final-answer correctness, while HMMT uses the paper's cited LLM-judge
+    setup. The related training release keeps only comparison traces that selected an answer-correct candidate.
+  terminal_predicate: A selector output is format-valid when its final judgment names an in-range candidate. It is evaluation-correct
+    when the selected candidate reaches the benchmark answer or passes the HMMT judge. The related OpenMathReasoning release
+    retains only selectors that chose a candidate labeled correct during construction.
+recipe_metadata:
+  base_model: QwQ-32B and DeepSeek-R1-0528 for the target paper's generation and self-selection experiments
+  teacher: unknown
+  generator: QwQ-32B or DeepSeek-R1-0528 generates candidate solutions and acts as its own GenSelect verifier; Qwen2.5-32B-Instruct
+    produces fresh QwQ solution summaries. The related OpenMathReasoning split uses QwQ-32B for GenSelect traces.
+  filtering_rule: Comp-Math-24-25 excludes proof-based and estimated-partial-credit questions. The target paper summarizes
+    candidates before comparison but reports no correctness-based filtering of the 64-solution evaluation pools. The related
+    release constructs groups with at least one correct and one incorrect summary and filters roughly 1M QwQ selections to
+    565,620 rows by removing selectors that chose an incorrect candidate.
+  sampling_protocol: Target-paper candidate generation and verification use temperature 0.6; the final evaluation also uses
+    top-p 0.95 and random candidate permutations. The related release samples 2-16 summaries per group, creates eight distinct
+    groups per problem, and uses QwQ-32B to select among them; its selector-generation temperature is undisclosed.
+  rollout_count: The main target-paper evaluation uses 64 candidate solutions per problem. Table 3 repeats GenSelect once
+    or eight times; the final Self-GenSelect setup repeats the tournament 32 times. The related hosted split contains 565,620
+    accepted GenSelect rows after filtering about 1M selection generations.
+  temperature: Target-paper generation and verification use 0.6; related OpenMathReasoning GenSelect data-generation temperature
+    is unknown.
+  inference_budget: For 64 candidates, the paper's 16-way tournament uses four first-round comparisons and one final comparison,
+    while the final N=8 setup uses two rounds and repeats selection 32 times. The budget ablation compares 2N solution generations
+    against N solution generations plus N GenSelect generations and explicitly notes added selection latency; equal token
+    use is not established.
+  optimizer_or_scaffold: The target paper uses prompt-only N-ary tournament selection and majority aggregation without selector
+    training or parameter optimization. The related OpenMathReasoning artifact was used as SFT data in its prior release paper,
+    which is recorded as lineage rather than broadened into this entry's `training_use`.
+audit:
+  source_mixture: The target evaluation contains 256 competition-math questions from AIME 2024, AIME 2025, HMMT November 2024,
+    HMMT February 2024, and HMMT February 2025. The related 565,620-row release is AoPS-centered OpenMathReasoning training
+    data rather than those Comp-Math evaluation records.
+  split: The target paper reports an evaluation-only Comp-Math-24-25 collection and does not release its exact candidate pools.
+    OpenMathReasoning exposes `genselect` as a 565,620-row mode split within the larger dataset, not as an independent train/validation/test
+    partition.
+  decontamination: Undisclosed for the target paper's candidate pools. The related OpenMathReasoning pipeline reports LLM-based
+    benchmark decontamination of source problems, but candidate pairs, judge outputs, and final decision logs are not released.
+  license: The OpenReview record is labeled CC BY-NC-SA 4.0. The official OpenMathReasoning dataset is labeled CC BY 4.0 and
+    NVIDIA-NeMo/Skills code is Apache-2.0. The release-level dataset license does not document row-level AoPS source-post
+    rights.
+  lineage: Competition problem -> 64 temperature-0.6 QwQ-32B or DeepSeek-R1-0528 solutions -> final-answer extraction and
+    solution summaries -> direct or tournament GenSelect reasoning -> selected candidate index -> repeated random-permutation
+    selections -> majority-selected answer -> benchmark correctness or HMMT LLM judgment. Related release lineage is AoPS-centered
+    problem -> answer-labeled solution pool -> 2-16-summary mixed-correctness group -> QwQ-32B comparison reasoning -> correct-selection
+    filtering -> Qwen2.5-32B-Instruct cleanup -> packed nine-field OpenMathReasoning row.
+  known_failure_modes:
+  - Replacing full reasoning traces with summaries can omit errors, backtracking, or evidence relevant to selection.
+  - Self-selection can preserve generator-specific biases and correlated errors because the same model family generates and
+    judges candidates.
+  - Tournament brackets and candidate order can affect the winner; repeated random permutations reduce but do not remove this
+    sensitivity and multiply compute.
+  - The equal-budget ablation counts generation calls but does not establish equal token usage or latency; the paper explicitly
+    notes additional selection latency.
+  - HMMT correctness depends on an LLM judge rather than a fully programmatic verifier.
+  - No exact Comp-Math candidate pools, selector traces, correctness-label manifests, chosen-index records, or random seeds
+    were verified as released.
+  - The related OpenMathReasoning rows include complete indexed candidate-summary groups and non-selected summaries, but the
+    public nine-field schema omits explicit per-candidate correctness labels and a standalone chosen-index field.
+  - The related release contains candidate summaries rather than the original full reasoning traces, so it cannot support
+    a full audit of errors discarded during summarization.
+  - Decontamination and possible generator pretraining overlap with the 2024-2025 competition problems are undisclosed.
+  citation_status: verified
+  confidence: high
+  notes: Verified on 2026-07-25 against the OpenReview venue record, full 9-page arXiv paper and appendix, the full official
+    OpenMathReasoning release paper, the NVIDIA Hugging Face schema and public sample rows, the NVIDIA-NeMo/Skills recipe
+    and prompt, and the official OpenReasoning-Nemotron model card/example. The OpenMathReasoning rows are attributable GenSelect
+    artifacts but not the target paper's exact Comp-Math evaluation release.
+inclusion_reason: GenSelect exposes a concrete Best-of-N trace object consisting of candidate summaries, generative selector
+  reasoning, a chosen index, tournament structure, repeated-selection budget, and final correctness, while the related public
+  split enables partial audit of full candidate groups and non-selected summaries.
+related:
+- aimo2-openmathreasoning-2025
+- learning-generative-selection-2026
+tags:
+- genselect
+- best-of-n
+- generative-verifier
+- n-ary-tournament
+- self-selection
+- selector-trace
+- rejected-candidates
+- test-time-compute
+- competition-mathematics
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: GenSelect asks a reasoning model to compare indexed solution summaries, emit a chosen candidate index, and
+  scale selection over 64-solution pools through repeated N-ary knockout tournaments; a related official release exposes 565,620
+  packed selector rows.
+why_it_matters: It separates candidate generation, comparative selector reasoning, chosen index, tournament budget, and final
+  correctness, while the difference between the unreleased paper evaluation pools and the packed public training split shows
+  exactly which rejected candidates, labels, and compute records remain auditable.
+card: null
+needs:
+- 'needs_release: publish the exact Comp-Math-24-25 candidate pools, selector traces, chosen indices, and random seeds'
+- 'needs_schema: expose standalone selected-index and per-candidate correctness-label fields for the public GenSelect rows'
+- 'needs_trace: link packed candidate summaries back to original full reasoning traces and stable source-row identifiers'
+- 'needs_budget: report token-level and latency-normalized generation-versus-selection compute'
+- 'needs_audit: disclose target-pool decontamination and HMMT judge outputs'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation, workshop-poster status, full paper and appendix, official recipe and prompt, official HF schema/sample
+    rows, and attributable NVIDIA artifacts were verified. No exact paper-specific evaluation-pool release was found.

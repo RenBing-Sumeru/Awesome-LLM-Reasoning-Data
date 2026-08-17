@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Stanford University",
+    "Princeton University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:35:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2502.10517",
+    "https://github.com/ScalingIntelligence/KernelBench",
+    "https://huggingface.co/datasets/ScalingIntelligence/KernelBench",
+    "https://scalingintelligence.stanford.edu/blogs/kernelbench/"
+  ],
+  "verification_note": "arXiv, official repository, Stanford blog, and Hugging Face dataset verify authors, Stanford/Princeton affiliations, and artifacts; the repository labels ICML 2025, but no stable ICML/PMLR/OpenReview page was verified in this pass."
+}

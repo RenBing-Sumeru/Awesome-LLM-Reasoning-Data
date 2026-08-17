@@ -1,0 +1,18 @@
+{
+  "title": "MuMath: Multi-perspective Data Augmentation for Mathematical Reasoning in Large Language Models",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2024.findings-naacl.185/",
+    "data": "https://huggingface.co/datasets/weihao1/MuMath-Data",
+    "code": "https://github.com/youweihao-tal/MuMath"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:53:57Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "math data改写",
+    "updated_at": "2026-07-14T13:53:57Z"
+  }
+}

@@ -1,0 +1,93 @@
+id: feedback-memory-as-a-tool-2026
+title: Distilling Feedback into Memory-as-a-Tool
+year: 2026
+venue: ICLR 2026 MemAgents Workshop
+authors:
+- Víctor Gallego
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- llm_judge
+- rubric_evaluation
+training_use:
+- evaluation
+- sft
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=hvfhz64q0O
+  arxiv: https://arxiv.org/abs/2601.05960
+  code: https://github.com/vicgalle/feedback-memory-as-a-tool
+  data: https://huggingface.co/datasets/vicgalle/rubric-feedback-bench
+  project: null
+  huggingface: https://huggingface.co/datasets/vicgalle/rubric-feedback-bench
+  doi: https://doi.org/10.48550/arXiv.2601.05960
+  venue: https://openreview.net/forum?id=hvfhz64q0O
+  openreview: https://openreview.net/forum?id=hvfhz64q0O
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official release; see the linked primary paper or data card.
+  trace_author: Human experts, annotators, or the official release pipeline.
+  answer_format: Task prompt, rubric, quantitative or textual feedback, and reusable memory guideline.
+  process_fields:
+  - prompt
+  - rubric
+  - response
+  - label_or_verdict
+  environment_or_substrate: Rubric-based LLM evaluation
+  verifier_or_reward: Task evaluators provide rubric scores and critiques that are distilled into memory rules.
+  terminal_predicate: The released judgment label or rubric verdict is available for evaluation or training.
+recipe_metadata:
+  base_model: See official release.
+  teacher: Human experts or official annotators.
+  generator: Official release pipeline.
+  filtering_rule: See official paper or data card.
+  sampling_protocol: See official paper or data card.
+  rollout_count: null
+  temperature: null
+  inference_budget: See official paper or data card.
+  optimizer_or_scaffold: Evaluation or post-training use described in the official release.
+audit:
+  source_mixture: Official primary paper/data release and linked official artifacts.
+  split: See official release.
+  decontamination: Public benchmark or training records should be held out where applicable.
+  license: See official artifact page.
+  lineage: https://huggingface.co/datasets/vicgalle/rubric-feedback-bench
+  known_failure_modes:
+  - Incorrect feedback can be consolidated and propagated through persistent memory.
+  citation_status: verified
+  confidence: high
+  notes: Official OpenReview workshop record, paper affiliation, GitHub code, and Hugging Face Rubric Feedback Bench were
+    checked.
+inclusion_reason: The release provides rubric- or judgment-grounded records that can train, evaluate, or audit LLM-based evaluators.
+related: []
+tags:
+- rubric
+- llm_judge
+- evaluation
+one_line_summary: Memory-as-a-Tool distils recurring rubric feedback into retrievable, updateable files to amortize refinement
+  cost.
+why_it_matters: It exposes rubric-grounded evaluation signals and their audit boundary.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official OpenReview workshop record, paper affiliation, GitHub code, and Hugging Face Rubric Feedback Bench were
+    checked.
+category_ids:
+- judgment_rubric_domain_expert_data

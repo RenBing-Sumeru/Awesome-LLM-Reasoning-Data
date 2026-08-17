@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenMathInstruct-1 以开放 Mixtral teacher 生成并公开 1.8M 条经答案校验的 GSM8K/MATH 代码解释器示范，同时保留 6.6M 条错误轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放数学推理示范数据集与 SFT 配方",
+  "best_for_ch": "适合用开放模型合成数学 CoT，或审计只按最终答案验收的代码解释器轨迹。",
+  "confidence_ch": "高",
+  "authors_ch": "Shubham Toshniwal、Ivan Moshkov、Sean Narenthiran、Daria Gitman、Fei Jia、Igor Gitman",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T10:15:00Z"
+}

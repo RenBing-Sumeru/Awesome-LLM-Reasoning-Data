@@ -1,0 +1,151 @@
+id: mulberry-reasoning-reflection-2025
+title: 'Mulberry: Empowering MLLM with o1-like Reasoning and Reflection via Collective Monte Carlo Tree Search'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Huanjin Yao
+- Jiaxing Huang
+- Wenhao Wu
+- Jingyi Zhang
+- Yibo Wang
+- Shunyu Liu
+- Yingjie Wang
+- Yuxin Song
+- Haocheng Feng
+- Li Shen
+- Dacheng Tao
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+domains:
+- multimodal-reasoning
+- visual-question-answering
+- mathematics
+- charts
+- science
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2412.18319
+  arxiv: https://arxiv.org/abs/2412.18319
+  code: https://github.com/HJYao00/Mulberry
+  data: https://huggingface.co/datasets/HuanjinYao/Mulberry-SFT
+  project: https://github.com/HJYao00/Mulberry
+  huggingface: https://huggingface.co/datasets/HuanjinYao/Mulberry-SFT
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/2b0c4fc1bd52329279c51ad2ddec9ace-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=lwOV2ACEK9
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 260K image-question records drawn from public mathematical, chart/document, science, medical, natural-world,
+    and general visual-question-answering datasets.
+  trace_author: GPT-4o, Qwen2-VL-7B, Llama-3.2-11B-Vision-Instruct, and Qwen2-VL-72B jointly propose and score nodes through
+    Collective Monte Carlo Tree Search.
+  answer_format: A ShareGPT-style image conversation whose assistant target contains an image description, rationales, numbered
+    reasoning steps, and a final answer; the search substrate also represents positive and negative reasoning nodes.
+  process_fields:
+  - image references and user question
+  - assistant image description and rationales
+  - numbered reasoning steps and final answer
+  - effective path, reflective path, and searched reasoning tree in the construction procedure
+  environment_or_substrate: Static multimodal questions expanded into a question-dependent reasoning tree by CoMCTS.
+  verifier_or_reward: Four MLLMs jointly score candidate nodes; nodes below threshold t=0 are pruned, UCB selects the next
+    leaf, and the search stops when a ground-truth-correct path is found or the iteration cap is reached.
+  terminal_predicate: Keep an effective path when it reaches the correct answer; otherwise stop after at most 20 search iterations.
+recipe_metadata:
+  base_model: Qwen2-VL-2B/7B, LLaVA-NeXT-8B, and Llama-3.2-11B-Vision-Instruct are separately fine-tuned as Mulberry consumers.
+  teacher: GPT-4o, Qwen2-VL-7B, Llama-3.2-11B-Vision-Instruct, and Qwen2-VL-72B form the collective search group.
+  generator: Each teacher expands one complete candidate continuation from the selected leaf per search iteration.
+  filtering_rule: Average collective node judgments, prune nodes scoring below zero and their descendants, backpropagate values,
+    and choose the highest-UCB surviving leaf.
+  sampling_protocol: Search one effective path for each of 260K raw questions; sample 15K records for reflective-path training.
+  rollout_count: null
+  temperature: null
+  inference_budget: At most 20 iterations per question, with four candidate continuations and collective node scoring each
+    iteration.
+  optimizer_or_scaffold: Collective SFT for two epochs, batch size 128, learning rate 1e-5 except 5e-6 for Qwen2-VL-7B.
+audit:
+  source_mixture: 55K mathematical, 116K figure-understanding, 41K math-word-problem, 2K medical, 17K science, and 24K natural-world
+    visual questions from the sources listed in Appendix A.
+  split: The release is a 260K SFT corpus; the paper does not disclose a reusable train/validation split for Mulberry-260K.
+  decontamination: No semantic benchmark decontamination procedure or overlap counts are reported for the many reused source
+    datasets.
+  license: The official Hugging Face release is Apache-2.0; upstream image and question sources retain their own terms.
+  lineage: Public multimodal questions are expanded by four-model CoMCTS, converted into effective and optional reflective
+    paths, serialized as ShareGPT image conversations, and consumed by collective SFT.
+  known_failure_modes:
+  - Collective model judgments can share correlated visual or reasoning errors, so a positive node score is not step-level
+    proof.
+  - Reflective paths insert a sampled negative sibling and a fixed rethink prompt, which can teach a reflection style without
+    faithful error diagnosis.
+  - Reused benchmark-like sources and undisclosed semantic decontamination make evaluation overlap a material audit risk.
+  citation_status: verified
+  confidence: high
+  notes: The full paper, official NeurIPS 2025 proceedings page, official repository, Apache-2.0 Hugging Face release metadata,
+    ShareGPT field mapping, source mixture, exact ablations, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: Mulberry-260K publishes multimodal rationale and reflection demonstrations authored by collective tree search,
+  exposes their SFT record format, and measures both search selection and downstream training effects.
+related:
+- llava-cot-2025
+tags:
+- multimodal-rationale-data
+- reflection-data
+- collective-tree-search
+- teacher-distillation
+- visual-reasoning
+status: verified
+one_line_summary: Mulberry-260K uses four-model tree search to release image-grounded reasoning and reflection demonstrations
+  for multimodal SFT.
+why_it_matters: It makes positive paths, sampled error-to-correction transitions, search budgets, and an SFT-ready release
+  visible in one multimodal recipe.
+reading_priority: must read
+paper_type: multimodal reasoning-and-reflection dataset and collective search recipe
+best_for: Researchers building or auditing image-grounded rationale and reflection SFT data.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official NeurIPS proceedings, arXiv paper, repository, dataset metadata, Apache-2.0 tag, files, and ShareGPT schema
+    were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-round2-general
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: multimodal reasoning and reflection demonstrations
+  selection_priority_score: 12
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 4
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block lists Nanyang Technological University, Tsinghua University, Baidu Inc., and
+      Sun Yat-sen University.
+    venue: The official NeurIPS 2025 proceedings index and paper page confirm formal acceptance; no Spotlight distinction
+      is claimed here.
+    impact: On 2026-07-14 the official repository reported 1,244 stars and 113 forks, and the dataset reported 229 downloads
+      and 11 likes.
+    artifact: The release provides paper, Apache-2.0 260K ShareGPT-style data, model checkpoints, training configuration,
+      and search code.
+  selection_eligible: true
+  year_impact_threshold: 2

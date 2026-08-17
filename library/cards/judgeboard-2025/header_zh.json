@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "面向多个数据集评测推理类评审模型的公开基准页面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "污染、验证器、奖励或评测可靠性审计",
+  "best_for_ch": "需要核查推理数据与自动评测可靠性的研究者。",
+  "confidence_ch": "中：已记录官方论文页与公开 artifact 入口；复用前需核对发布内容。",
+  "authors_ch": "Zhenyu Bi, Gaurav Srivastava, Yang Li, Meng Lu, Swastik Roy, Morteza Ziyadi, Xuan Wang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

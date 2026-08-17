@@ -1,0 +1,1 @@
+Read the learned-step and validation-loss analyses before the final benchmark table. For reproduction, separately record the reference-model splits, target-model size, loss-ranking procedure, selected fraction, and whether the evaluation data were held out from every selection decision.

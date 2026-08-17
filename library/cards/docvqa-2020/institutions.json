@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "IIIT Hyderabad",
+    "CVC, Universitat Autonoma de Barcelona",
+    "Amazon"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-16T00:00:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2007.00398",
+    "https://www.docvqa.org/"
+  ],
+  "verification_note": "arXiv verifies WACV 2021 paper, authors, size, and human accuracy; official DocVQA site verifies challenge context, people, and dataset/challenge portal."
+}

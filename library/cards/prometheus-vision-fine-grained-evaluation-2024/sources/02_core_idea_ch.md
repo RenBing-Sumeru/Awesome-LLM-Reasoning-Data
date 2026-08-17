@@ -1,0 +1,1 @@
+论文构建 Perception Collection，包含约 15K 个定制视觉 score rubric 及相应图像、指令、候选回答、参考材料和反馈，随后训练 Prometheus-Vision。该模型沿用 Prometheus 的“rubric + reference + critique + score”接口，但将原始图像纳入条件，使评价标准可以针对对象识别、关系、细节描述和指令遵循。作者开放数据、模型和代码，为细粒度 VLM-as-a-judge 提供可复现基线。

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MiMo-Embodied 以四阶段课程串联 embodied、driving、generated-CoT 与规则 GRPO，并另行研究 NAVSIM IL+DiffGRPO；但训练规模/比例、不可变 split、传感器账本、rollout 与 planner artifact 均未披露。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "跨具身多模态模型与自动驾驶训练技术报告",
+  "best_for_ch": "研究 embodied/driving 数据对象、规则奖励、轨迹规划、传感器隐私与 open-loop 安全审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoshuai Hao 等（Xiaomi MiMo）",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

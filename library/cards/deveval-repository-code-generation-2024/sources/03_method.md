@@ -1,0 +1,5 @@
+1. Inputs: real repositories, target function or method locations, requirement annotations, reference code, dependency records, tests, and model completions in JSONL format.
+2. Pipeline: select repository targets, annotate requirements and dependency fields, choose a context condition such as no context, local-file completion, or local-file infilling, ask a model for code, replace the original body at the recorded position, and run the supplied tests.
+3. Outputs: per-sample completion logs, test outcomes, Pass@k scores, dependency-recall diagnostics, released prompts, and released model predictions.
+4. Verifier: repository tests executed by the DevEval scripts; failures, environment errors, and simultaneous modification of the same repository can invalidate a run.
+5. Reproducibility notes: pin the GitHub/data artifact, downloaded source-code bundle, dependency data, conda environment, model decoding settings, context condition, and Pass@k implementation. The paper and repository disagree on released counts, so report the exact artifact version before comparing scores.

@@ -1,0 +1,19 @@
+{
+  "title": "daVinci-Env: Open SWE Environment Synthesis at Scale",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.13023",
+    "data": "https://github.com/GAIR-NLP/OpenSWE",
+    "code": "https://github.com/GAIR-NLP/OpenSWE",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T10:36:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 OpenSWE：来自12,800余仓库的45,320个Docker软件环境及脚本，下载量还行",
+    "updated_at": "2026-07-19T10:36:52Z"
+  }
+}

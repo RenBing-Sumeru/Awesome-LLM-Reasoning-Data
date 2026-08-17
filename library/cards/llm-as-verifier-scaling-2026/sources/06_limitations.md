@@ -1,0 +1,1 @@
+The method depends on a capable verifier and, in its primary form, accessible score-token logprobs. More granularity, repetitions, and criteria improve judgment but add latency and may amplify shared prompt bias. Continuous scores are not ground truth, so unsafe or adversarial trajectories still require domain checks.

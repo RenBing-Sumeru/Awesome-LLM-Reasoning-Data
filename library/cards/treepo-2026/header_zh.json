@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TreePO以共享前缀分段树替代独立数学rollout，并用终局答案奖励构造层级子组优势；官方发布了代码、提示与检查点，但没有发布可重建论文训练过程的完整树记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "树结构在线RLVR与推理效率研究",
+  "best_for_ch": "研究推理rollout数据、共享前缀搜索、RLVR信用分配、测试时计算与可复现性审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yizhi LI、Qingshui Gu、Zhoufutu Wen、Ziniu Li、Ruibin Yuan、Tianshun Xing、Shuyue Guo、Tuney Zheng、Xin Zhou、Xingwei Qu、Wangchunshu Zhou、Zheng Zhang、Wei Shen、Wei Xue、Qian Liu、Chenghua Lin、Jian Yang、Ge Zhang、Wenhao Huang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

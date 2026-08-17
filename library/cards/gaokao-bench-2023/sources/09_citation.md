@@ -1,0 +1,1 @@
+Xiaotian Zhang, Chunyang Li, Yi Zong, Zhengyu Ying, Liang He, Xipeng Qiu, and collaborators. "Evaluating the Performance of Large Language Models on GAOKAO Benchmark." arXiv, 2023. https://arxiv.org/abs/2305.12474 Official links: https://github.com/OpenLMLab/GAOKAO-Bench .

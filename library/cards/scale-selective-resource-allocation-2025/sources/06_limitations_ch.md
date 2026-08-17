@@ -1,0 +1,5 @@
+- 八大纲选择和 0–1 难度分数是模型自评，可能错误、偏向文风，或随模型与 prompt 改变而不一致。
+- 最终答案匹配只过滤 outcome。通过的答案仍可含无效步骤；若 normalization 脆弱，等价答案也可能被丢弃。
+- `steps_scores` 被发布，但实际 System 1/System 2 decision、逐步骤 token count、endpoint、revision、latency 和 seed 未发布。curator inference：这阻碍直接审计分配成本主张。
+- 被拒绝的候选及答案不匹配轨迹未出现，无法从公开行中测量 selection bias 和 failure modes。
+- 论文的 800 个 SFT pairs 未映射到四个共 3,112 行的文件。来源版本、上游 rights、deduplication 及 AIME/AMC contamination controls 仍为 unknown。

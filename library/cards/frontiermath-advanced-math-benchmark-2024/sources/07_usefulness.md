@@ -1,0 +1,1 @@
+Use FrontierMath as an audit checklist for hard hidden benchmarks. Preserve problem id, version, domain, tier, statement, expected answer, verifier type, normalization rule, access status, release date, and correction history. It is useful for deciding whether a math benchmark is evaluating reasoning ability or merely enforcing a scarce hidden answer set.

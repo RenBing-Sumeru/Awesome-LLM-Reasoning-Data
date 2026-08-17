@@ -1,0 +1,99 @@
+id: llmsql-wikisql-modern-text-to-sql-2025
+title: 'LLMSQL: Upgrading WikiSQL for the LLM Era of Text-to-SQL'
+year: 2025
+venue: 2025 IEEE International Conference on Data Mining Workshops (ICDMW)
+authors:
+- Dzmitry Pihulski
+- Karol Charchut
+- Viktoria Novogrodskaia
+- Jan Kocoń
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code
+- database
+training_use:
+- evaluation
+- sft
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.02350
+  arxiv: https://arxiv.org/abs/2510.02350
+  code: https://github.com/llmsql-bench/llmsql
+  data: https://huggingface.co/datasets/llmsql-bench/llmsql-benchmark
+  project: https://llmsql.github.io/llmsql-benchmark/
+  huggingface: https://huggingface.co/datasets/llmsql-bench/llmsql-benchmark
+  doi: https://doi.org/10.1109/ICDMW69685.2025.00066
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: WikiSQL natural-language questions, single-table schemas, and table values.
+  trace_author: LLMSQL authors repair and re-annotate legacy WikiSQL records.
+  answer_format: Question, schema, table, and complete SQL text with executable result oracle.
+  process_fields:
+  - question
+  - table_schema
+  - table_rows
+  - sql
+  - execution_result
+  environment_or_substrate: SQLite tables and official execution-evaluation package.
+  verifier_or_reward: Execute generated SQL on the corresponding SQLite table and compare result sets.
+  terminal_predicate: Generated SQL returns the target result set for the released table.
+recipe_metadata:
+  base_model: Multiple open and proprietary LLMs are evaluated through the official package.
+  teacher: Rule-based cleaners and SQLite execution validation.
+  generator: Classify WikiSQL defects, repair deterministically resolvable cases, and expand action labels into SQL text.
+  filtering_rule: Remove records that cannot be reliably repaired or have no executable answer.
+  sampling_protocol: About 80.3K cleaned single-table records released through Hugging Face.
+  rollout_count: null
+  temperature: 0
+  inference_budget: Fix LLMSQL version, SQLite, few-shot examples, inference backend, and decoding parameters.
+  optimizer_or_scaffold: Unified Transformers and vLLM execution-accuracy harness.
+audit:
+  source_mixture: Official arXiv paper, ICDMW citation, Hugging Face dataset, project site, and Python package.
+  split: Consult the official dataset for current train, development, and test files.
+  decontamination: Inherited WikiSQL data should be checked for training-set overlap before evaluation claims.
+  license: Check the official dataset card and upstream WikiSQL terms before reuse.
+  lineage: https://huggingface.co/datasets/llmsql-bench/llmsql-benchmark
+  known_failure_modes:
+  - Single-table queries and small schemas do not represent enterprise databases.
+  - Automatic repairs can alter intent where multiple interpretations are plausible.
+  - Sparse tables can admit accidental execution-equivalent SQL.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, ICDMW DOI, project, package, and Hugging Face release were checked.
+inclusion_reason: LLMSQL provides cleaned, executable Text-to-SQL records with SQLite result-set verification.
+related: []
+tags:
+- text-to-sql
+- wikisql
+- sqlite
+- execution
+- icdmw-2025
+one_line_summary: LLMSQL repairs and re-releases WikiSQL as complete SQL records scored by executable SQLite result sets.
+why_it_matters: It makes a legacy Text-to-SQL dataset usable for modern full-SQL generation while preserving programmatic
+  checking.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official publication, release, project, and package metadata were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

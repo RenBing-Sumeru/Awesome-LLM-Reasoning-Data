@@ -1,0 +1,140 @@
+id: bon-coverage-optimality-2025
+title: Is Best-of-N the Best of Them? Coverage, Scaling, and Optimality in Inference-Time Alignment
+year: 2025
+venue: ICML 2025 (PMLR 267)
+authors:
+- Audrey Huang
+- Adam Block
+- Qinghua Liu
+- Nan Jiang
+- Akshay Krishnamurthy
+- Dylan J. Foster
+source_role:
+- construction_recipe
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- reasoning
+- mathematics
+- science
+- instruction_following
+- inference_time_alignment
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://proceedings.mlr.press/v267/huang25c.html
+  arxiv: https://arxiv.org/abs/2503.21878
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.mlr.press/v267/huang25c.html
+  openreview: https://openreview.net/forum?id=QnjfkhrbYK
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/huang25c.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K test split; MMLU college-math and college-chemistry splits; 512 sampled MATH test questions; 128 sampled
+    AlpacaEval-2.0 prompts.
+  trace_author: Reference policies GEMMA-2-2B, LLAMA-3-3B, Mistral-7B, Phi-3-Mini, and Phi-3-Small, with task-dependent subsets.
+  answer_format: Per-prompt candidate responses with reference-policy likelihoods and scalar reward-model scores, followed
+    by one selected response and an evaluation-only true-reward outcome.
+  process_fields:
+  - prompt
+  - candidate_response
+  - reference_policy_likelihood
+  - imperfect_reward_model_score
+  - candidate_budget_N
+  - regularization_beta
+  - normalization_constant
+  - rejection_acceptance
+  - selected_response
+  - evaluation_true_reward
+  environment_or_substrate: Per-prompt sample-and-evaluate access to a fixed reference policy and imperfect reward model;
+    Best-of-N argmax or chi-squared-regularized rejection sampling.
+  verifier_or_reward: Proxy scores from OASST, GEMMA-RM, LLAMA-RM, or ARMO-RM; evaluation uses answer correctness for GSM8K/MMLU/MATH
+    and GPT-4o-mini win-rate judgments for AlpacaEval-2.0.
+  terminal_predicate: Best-of-N returns the highest proxy-reward candidate; InferenceTimePessimism returns the first accepted
+    rejection-sampling candidate within budget and falls back to Best-of-N if sampling does not terminate.
+recipe_metadata:
+  base_model: GEMMA-2-2B, LLAMA-3-3B, Mistral-7B, Phi-3-Mini, and Phi-3-Small, with task-dependent subsets.
+  teacher: unknown
+  generator: The selected reference policy samples candidate responses independently for each prompt.
+  filtering_rule: Best-of-N maximizes the imperfect reward-model score; InferenceTimePessimism estimates a chi-squared-regularized
+    normalizer and performs rejection sampling with regularization beta.
+  sampling_protocol: About 20,000 responses per prompt and reference policy at temperature 1, followed by bootstrap subsets
+    of N candidates; 50 replicates except 5 for AlpacaEval-2.0.
+  rollout_count: About 20,000 stored experimental candidates per prompt-policy pair; N varies by analysis, with N=8192 in
+    fixed-budget comparisons.
+  temperature: '1'
+  inference_budget: N sample-and-evaluate queries; the same N samples are reused for normalizer estimation and rejection sampling
+    in the experiments.
+  optimizer_or_scaffold: Inference-only chi-squared regularization, normalization-constant estimation, and rejection sampling;
+    no policy training is reported.
+audit:
+  source_mixture: GSM8K, MMLU college math/chemistry, MATH, and AlpacaEval-2.0, crossed with task-dependent subsets of five
+    reference policies and four reward models.
+  split: GSM8K test; MMLU college-math and college-chemistry; 512 sampled MATH test questions; 128 sampled AlpacaEval-2.0
+    prompts.
+  decontamination: unknown
+  license: unknown
+  lineage: Benchmark prompt -> approximately 20K temperature-1 reference-policy candidates -> proxy reward and policy likelihood
+    -> bootstrap subset of size N -> Best-of-N or InferenceTimePessimism selection -> evaluation-only correctness or LM-judge
+    outcome.
+  known_failure_modes:
+  - Best-of-N can select reward-model tail errors and lose true task reward as N increases.
+  - Optimal guarantees depend on coverage and reward-error quantities that are unknown in deployment, and beta still requires
+    tuning.
+  - InferenceTimePessimism can be conservative when the proxy reward is already reliable; failed rejection sampling falls
+    back to Best-of-N.
+  - Binary-answer experiments do not test finer-grained proof or reasoning quality, and AlpacaEval-2.0 results are small-scale
+    and noisy.
+  - No official code, response-trace dataset, seeds, data license, or decontamination report was verified.
+  citation_status: verified
+  confidence: high
+  notes: Official PMLR paper, arXiv record, and PMLR-linked OpenReview forum verified; no official code or data release was
+    located.
+inclusion_reason: Provides a formal and empirical audit of reward overoptimization in Best-of-N and an inference-time rejection-sampling
+  alternative whose candidate, score, likelihood, budget, and acceptance fields define an auditable Track 5 trace object.
+related: []
+tags:
+- track5
+- best-of-n
+- inference-time-alignment
+- reward-hacking
+- coverage
+- inference-time-pessimism
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: The paper formalizes when Best-of-N overoptimizes imperfect reward models and proposes InferenceTimePessimism,
+  a chi-squared-regularized rejection sampler evaluated across math, science, and instruction-following tasks.
+why_it_matters: It separates rollout coverage, proxy reward, true evaluation, candidate budget, and rejection decisions, exposing
+  the fields needed to audit test-time selection traces instead of treating a final benchmark score as data-quality evidence.
+card: null
+needs:
+- needs_code_release
+- needs_response_trace_release
+- needs_data_license
+- needs_decontamination_report
+- needs_seed_and_environment_metadata
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official PMLR, arXiv, and PMLR-linked OpenReview records checked; paper and citation are verified, but no reusable
+    code or trace release was verified.

@@ -1,0 +1,3 @@
+Because multiple LLMs generate and judge the data, model-family preferences, prompt sensitivity, and shared blind spots can be amplified rather than removed. Audit examples by domain and inspect whether a chosen response wins for genuine task quality or for model-recognizable style. Source licensing, contamination with Chinese benchmarks, and query provenance also need checking before reuse.
+
+The paper’s no-human-intervention statement applies to construction, not to its CRBench evaluation. Users should not present COIG-P labels as human annotation. The one-million-pair scale may obscure imbalance across the six domains or duplicated query patterns; measure counts, duplicates, and outcome changes per domain before downstream training.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenDiscoveryTrace 开放 AI 科学家从思考、工具调用到错误修正和结论的完整工作流轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "研究 AI 科学家过程评测、错误定位和工作流质量建模的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "匿名作者（公开版本未披露）",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:40:48Z"
+}

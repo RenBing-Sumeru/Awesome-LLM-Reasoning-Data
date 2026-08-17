@@ -1,0 +1,2 @@
+1. **Training or data construction.** The RL records can support research on reasoning reward models, stable reinforcement fine-tuning, and inference scaling. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** They should not be treated as independent human preference ground truth. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

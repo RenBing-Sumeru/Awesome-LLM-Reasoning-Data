@@ -1,0 +1,3 @@
+Jia, Hongrui, Jitong Liao, Xi Zhang, Haiyang Xu, Tianbao Xie, Chaoya Jiang, Ming Yan, Si Liu, Wei Ye, and Fei Huang. “OSWorld-MCP: Benchmarking MCP Tool Invocation In Computer-Use Agents.” ICLR 2026. arXiv:2510.24563.
+
+Primary artifacts checked: arXiv v2 paper; ICLR 2026 OpenReview forum; official project/leaderboard; official `X-PLUG/OSWorld-MCP` repository, including `evaluation_examples`, environment reset/evaluator integration, MCP client/server, tool schemas/code, and repository release/license state. Repository tree `f5d6aacadf01ea90b7c7af193b8120bf9028358b` was inspected on 2026-07-20. Current leaderboard numbers can differ from the paper because the project continues to add models and tool fixes.

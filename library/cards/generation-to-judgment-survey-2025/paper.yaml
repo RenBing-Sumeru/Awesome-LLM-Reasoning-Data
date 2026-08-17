@@ -1,0 +1,105 @@
+id: generation-to-judgment-survey-2025
+title: 'From Generation to Judgment: Opportunities and Challenges of LLM-as-a-Judge'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Dawei Li
+- Bohan Jiang
+- Liangjie Huang
+- Alimohammad Beigi
+- Chengshuai Zhao
+- Zhen Tan
+- Amrita Bhattacharjee
+- Yuxuan Jiang
+- Canyu Chen
+- Tianhao Wu
+- Kai Shu
+- Lu Cheng
+- Huan Liu
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.138/
+  arxiv: https://arxiv.org/abs/2411.16594
+  code: null
+  data: https://aclanthology.org/2025.emnlp-main.138.pdf
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.138
+  venue: https://aclanthology.org/2025.emnlp-main.138/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.138/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary page and public artifact URL recorded on 2026-07-19. Top-conference survey mapping judge inputs,
+    outputs, benchmarks, and reliability risks.
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.emnlp-main.138.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: Systematic review of LLM judge designs, evaluation benchmarks, and reliability risks.
+related: []
+tags:
+- audit
+- round3
+status: verified
+one_line_summary: Top-conference survey mapping judge inputs, outputs, benchmarks, and reliability risks.
+why_it_matters: It maps where LLM judges are used and which biases, vulnerabilities, and benchmarking gaps constrain their
+  reliability.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks
+- foundations_and_primers

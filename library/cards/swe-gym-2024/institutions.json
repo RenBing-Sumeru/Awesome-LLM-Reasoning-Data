@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "UC Berkeley",
+    "UIUC",
+    "CMU",
+    "Apple"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T16:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2412.21139",
+    "https://openreview.net/forum?id=Cq1BNvHx74",
+    "https://github.com/SWE-Gym/SWE-Gym",
+    "https://huggingface.co/SWE-Gym"
+  ],
+  "verification_note": "核验确认 ICML 2025 状态、作者、UC Berkeley/UIUC/CMU/Apple 机构，以及公开代码和数据入口。"
+}

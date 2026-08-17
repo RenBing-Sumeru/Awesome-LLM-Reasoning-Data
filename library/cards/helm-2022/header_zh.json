@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HELM 把语言模型评测组织成“场景 × 指标”的矩阵，不只看准确率，也看校准、鲁棒性、公平性、毒性、效率等维度。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Percy Liang 等（Stanford CRFM, Stanford University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

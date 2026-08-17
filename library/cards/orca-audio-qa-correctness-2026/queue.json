@@ -1,0 +1,19 @@
+{
+  "title": "ORCA: Open-ended Response Correctness Assessment for Audio Question Answering",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2512.09066",
+    "data": "https://huggingface.co/datasets/BUT-FIT/orca-audio-qa-annotations",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T09:50:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建 3,580 个音频问答对和 11,721 条人类评分，训练带不确定性的开放回答正确性裁判",
+    "updated_at": "2026-07-25T09:50:23Z"
+  }
+}

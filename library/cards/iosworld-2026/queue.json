@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "数据构造方法，性能提升，26个应用、seed data、133项任务、1,123条criterion",
+    "updated_at": "2026-07-22T10:27:40Z"
+  },
+  "updated_at": "2026-07-22T10:27:40Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

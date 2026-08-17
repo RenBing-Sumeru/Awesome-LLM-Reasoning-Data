@@ -1,0 +1,6 @@
+- 将 PDF 第 1 页与发布页一起阅读：addendum 确立真实编码 RL 和目标行为，发布页补充项目构建、功能/测试、调试、重构与 review 任务 taxonomy。
+- 将 code-review 训练与近期 open-source commit 上由工程师判断 correctness 和 importance 的评测分开；本评测没有披露 hidden-test contract。
+- 除非明确连接到训练，否则所有 test、SWE-bench task、refactor task、mobile preference、golden set、prompt injection、traffic telemetry、CTF 和 Cyber Range 结果都按 evaluation 或 observation 处理。
+- 比较披露增量：GPT-5 给出宽泛来源与 router 背景；o3/o4-mini Codex 给出 unexpected-state reward；GPT-5-Codex 增加任务和 review 细节；GPT-5.1/5.2-Codex 后续才加入 conflicting-edit preservation reward 和内部 PR hidden test。
+- 让每个数字附着于条件：表 3–4 是安全评测，500 道 SWE-bench 任务来自基础设施修复，七小时运行是测试观察，token-decile 结果是员工 telemetry。
+- 复用前索取 task/commit manifest、trajectory record、preference/review label、reward/test mapping、失败 episode、全局 split、decontamination、license 和 checkpoint lineage。

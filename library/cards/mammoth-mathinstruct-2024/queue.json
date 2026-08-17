@@ -1,0 +1,16 @@
+{
+  "title": "MAmmoTH: Building Math Generalist Models through Hybrid Instruction Tuning",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=yLClGs770I"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:10:25Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "自然语言推理和程序推理混合的数学reasoning数据",
+    "updated_at": "2026-07-14T12:10:25Z"
+  }
+}

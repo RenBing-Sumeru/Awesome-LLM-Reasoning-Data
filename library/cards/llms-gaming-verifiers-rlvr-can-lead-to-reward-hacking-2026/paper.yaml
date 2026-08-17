@@ -1,0 +1,121 @@
+id: llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026
+title: 'LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking'
+year: 2026
+venue: LLM Reasoning Workshop @ ICLR 2026
+authors:
+- Lukas Helff
+- Quentin Delfosse
+- David Steinmann
+- Ruben Härle
+- Hikaru Shindo
+- Patrick Schramowski
+- Wolfgang Stammer
+- Kristian Kersting
+- Felix Friedrich
+source_role:
+- benchmark
+- infrastructure
+- model_report
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- inductive-logic-programming
+- reward-hacking
+- verifier-audit
+training_use:
+- rlvr
+- audit
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.15149
+  arxiv: https://arxiv.org/abs/2604.15149
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SLR-Bench inductive-logic-programming tasks about train classification, spanning 20 increasing complexity
+    levels.
+  trace_author: Frontier model single outputs; controlled OLMo-3-7B-Think-DPO RLVR rollouts under two reward verifiers.
+  answer_format: A logic hypothesis/rule in a Prolog-like representation, which may be general relational rules or instance-level
+    enumerations.
+  process_fields:
+  - background knowledge B
+  - positive and negative examples
+  - model hypothesis H
+  - extensional verifier result
+  - bijective object-identifier renaming
+  - isomorphic verifier result
+  - shortcut flag
+  environment_or_substrate: SLR-Bench; controlled training uses the default OLMo-3 RLVR setup (Olmo-core plus Open-Instruct),
+    64 H100 GPUs for about 48 hours.
+  verifier_or_reward: Extensional completeness/consistency versus isomorphic completeness/consistency after bijective object
+    renaming; controlled RL differs only in which verifier supplies reward.
+  terminal_predicate: A genuine induced rule passes both original and isomorphic verification; a shortcut passes extensional
+    verification but fails the isomorphic one.
+recipe_metadata:
+  base_model: OLMo-3-7B-Think-DPO for the controlled experiment; black-box frontier models for monitoring.
+  teacher: 'The reward verifier, not a teacher model: either extensional or isomorphic verification.'
+  generator: A model outputs one logic hypothesis per SLR-Bench task; the controlled run fine-tunes two identical base models.
+  filtering_rule: IPT labels a sample as a reward shortcut only when extensional verification passes and isomorphic verification
+    fails.
+  sampling_protocol: One inference pass per task; 250 tasks per Basic, Easy, Medium, and Hard tier in the reported table.
+  rollout_count: 1
+  temperature: null
+  inference_budget: Reported reasoning effort varies by frontier model; controlled training runs about 500 steps.
+  optimizer_or_scaffold: OLMo-3 RLVR pipeline; two matched runs differing solely in verifier reward.
+audit:
+  source_mixture: SLR-Bench synthetic inductive reasoning tasks, black-box frontier outputs, and two controlled OLMo-3 RLVR
+    runs.
+  split: Four complexity tiers, each containing five levels; results report 250 tasks per tier.
+  decontamination: Not a conventional train/test contamination study; the central audit is behavioral invariance under a fresh
+    bijective renaming of object identifiers.
+  license: Code/data release is not identified in the paper; verify SLR-Bench and OLMo resource licenses before reuse.
+  lineage: SLR-Bench task -> model hypothesis -> original extensional check plus isomorphic perturbation check -> shortcut
+    audit; controlled RL swaps only the reward verifier.
+  known_failure_modes:
+  - Only one ILP/train-classification benchmark domain is studied.
+  - Closed frontier models are observed only through black-box outputs.
+  - IPT identifies behavioral non-invariance but cannot identify the internal causal representation.
+  - The causal training experiment uses a 7B model, so scaling to frontier sizes remains unverified.
+  citation_status: verified
+  confidence: high
+  notes: 'Seeded from BibTeX key helff2026gamingverifiers. Deduplicated title collision; dropped lower-confidence id: llms-gaming-verifiers-rlvr-can-lead-to-reward-hacking-2026.'
+inclusion_reason: Provides a concrete verifier-audit protocol and controlled evidence that a weak RLVR reward can train output-level
+  reward shortcuts.
+related: []
+tags:
+- seeded-from-bib
+status: verified
+card: null
+needs: []
+one_line_summary: IPT detects when an RLVR model passes an original logic-task verifier by enumerating labels yet fails under
+  a logically isomorphic object renaming.
+why_it_matters: It separates executable answer acceptance from the intended invariant rule-learning objective, and shows how
+  verifier choice changes RLVR behavior.
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-06-15'
+  verified_by: curation
+  confidence: high
+  notes: Official primary link pinned in artifacts.
+curation_level: L4_carded
+category_ids:
+- audit_failure_contamination_verifier_attacks
+batch:
+  primary_category_id: audit_failure_contamination_verifier_attacks
+  imported_at: '2026-07-12T14:04:50Z'
+  import_source: desktop-curated-tracks

@@ -1,0 +1,1 @@
+BABILong 关注的问题是：当少量相关事实被插入到很长的自然语言干扰文本中时，长上下文模型是否还能检索并组合这些事实来回答问题。一手来源是 arXiv 论文、NeurIPS 2024 Datasets and Benchmarks 页面、官方 GitHub、RMT-team 的 Hugging Face 数据集和 leaderboard。一个样本包含 bAbI 风格任务事实、问题、被 PG19/Wiki 类背景文本扩展到指定长度的上下文，以及参考答案。收录边界是长上下文 reasoning-in-a-haystack 评测；它不是开放域文档问答数据集，也不证明模型真正理解真实长文档。

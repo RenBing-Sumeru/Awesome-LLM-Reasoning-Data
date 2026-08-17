@@ -1,0 +1,129 @@
+id: ainsteinbench-scientific-repository-agents-2025
+title: 'AInsteinBench: Benchmarking Coding Agents on Scientific Repositories'
+year: 2025
+venue: arXiv
+authors:
+- Titouan Duston
+- Shuo Xin
+- Yang Sun
+- Daoguang Zan
+- Aoyan Li
+- Shulin Xin
+- Kai Shen
+- Yixiao Chen
+- Qiming Sun
+- Ge Zhang
+- Jiashuo Liu
+- Huan Zhou
+- Jingkai Liu
+- Zhichen Pu
+- Yuanheng Wang
+- Bo-Xuan Ge
+- Xin Tong
+- Fei Ye
+- Zhi-Chao Zhao
+- Wen-Biao Han
+- Zhoujian Cao
+- Yueran Zhao
+- Weiluo Ren
+- Qingshen Long
+- Yuxiao Liu
+- Anni Huang
+- Yidi Du
+- Yuanyuan Rong
+- Jiahao Peng
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- scientific-computing
+- software-engineering
+- agent-evaluation
+training_use:
+- evaluation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2512.21373
+  arxiv: https://arxiv.org/abs/2512.21373
+  code: https://github.com/ByteDance-Seed/AInsteinBench
+  data: https://huggingface.co/datasets/ByteDance-Seed/AInsteinBench
+  project: null
+  huggingface: https://huggingface.co/datasets/ByteDance-Seed/AInsteinBench
+  doi: https://doi.org/10.48550/arXiv.2512.21373
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Maintainer-authored pull requests and scientific software tasks from six research codebases.
+  trace_author: Repository maintainers, benchmark curators, and domain-expert reviewers.
+  answer_format: Repository task description, runnable environment, tests, and target modification metadata.
+  process_fields:
+  - repository
+  - task description
+  - environment
+  - tests
+  - difficulty
+  - execution result
+  environment_or_substrate: Containerized scientific software environments.
+  verifier_or_reward: Execution of task-specific software tests.
+  terminal_predicate: The agent's repository modification passes the benchmark's executable tests.
+recipe_metadata:
+  base_model: The work benchmarks agents rather than releasing a teacher model.
+  teacher: Maintainer pull requests and domain-expert review.
+  generator: Pull-request collection, multi-stage filtering, execution validation, and expert review.
+  filtering_rule: Keep tasks with runnable tests, adequate coverage, and calibrated scientific difficulty.
+  sampling_protocol: The current dataset card describes 244 scientific-computing tasks and 1,566 rows across subsets; pin
+    the chosen revision.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin container images, scientific dependencies, and test configuration when reproducing results.
+  optimizer_or_scaffold: Agent evaluation in executable repository environments.
+audit:
+  source_mixture: Official arXiv paper, author GitHub repository, and ByteDance Seed Hugging Face dataset card.
+  split: The dataset has multiple task subsets and a changing row count; use a specific Hub revision for reproducibility.
+  decontamination: Audit public source repositories and maintainer pull requests for model-training exposure.
+  license: Dataset card states CC0-1.0, while adapted source repositories retain their own licenses.
+  lineage: https://huggingface.co/datasets/ByteDance-Seed/AInsteinBench
+  known_failure_modes:
+  - Test success may not capture all scientific-validity conditions.
+  - Scientific dependencies can make container reproduction fragile.
+  - Public repository history can contaminate coding-agent evaluations.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, author repository, dataset card, and PDF affiliations were checked; no accepted venue was found.
+inclusion_reason: AInsteinBench provides executable scientific-repository tasks whose agent modifications are checked by runnable
+  tests.
+related: []
+tags:
+- scientific-computing
+- software-engineering
+- agent-evaluation
+- unit-tests
+- '2025'
+one_line_summary: AInsteinBench evaluates coding agents on executable scientific-repository tasks derived from maintainer
+  pull requests and checked by task-specific tests.
+why_it_matters: It evaluates edits in runnable scientific environments rather than abstract programming questions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, author repository, dataset card, and PDF affiliations were checked; no accepted venue was found.
+category_ids:
+- programmatically_verifiable_outcome_data

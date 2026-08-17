@@ -1,0 +1,1 @@
+一手来源是 arXiv 2407.18901、官方 AppWorld 项目页/仓库；arXiv 注明 ACL 2024 camera-ready。它解决的问题是：交互式 coding agent 需要一个可控、状态化的 app world，在真实 API 调用后检查世界状态，而不能只评最终文本。收录边界是带程序化状态验证的 agent-environment benchmark，不是普通 function-calling 数据集。评测面包括任务指令、模拟用户和 app、agent 写出的 API 调用、世界状态变化，以及状态化单元测试结果。

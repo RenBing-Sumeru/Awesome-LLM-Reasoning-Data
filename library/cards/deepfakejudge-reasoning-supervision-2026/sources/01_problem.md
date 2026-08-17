@@ -1,0 +1,2 @@
+Deepfake detection usually reports only real/fake accuracy, yet a model may rely on the wrong region, hallucinate visual artifacts, or provide an untrustworthy explanation even when its classification is correct. Writing full reasoning for every image and comparing many candidate rationales by hand is expensive. The paper asks how to build data covering detection, visual-evidence reasoning, and judge meta-evaluation, and how to bootstrap a multimodal judge from a small amount of human visual annotation into pointwise and pairwise supervision.
+

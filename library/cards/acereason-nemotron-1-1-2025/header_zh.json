@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AceReason-Nemotron 1.1 发布四字段、由 DeepSeek-R1 生成的数学/代码 SFT 语料与模型权重，并报告分阶段、规则验证的严格 on-policy GRPO；但实际使用的 SFT 子集、完整代码 RL 任务/测试和样本到检查点谱系仍不可得。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型报告、数据发布与训练配方披露",
+  "best_for_ch": "需要审计数学/代码 SFT、RLVR 反馈合同、分阶段课程与发布边界的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Zihan Liu、Zhuolin Yang、Yang Chen、Chankyu Lee、Mohammad Shoeybi、Bryan Catanzaro、Wei Ping",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

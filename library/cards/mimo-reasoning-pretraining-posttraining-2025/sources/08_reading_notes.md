@@ -1,0 +1,5 @@
+- Keep five ledgers separate: 25T-token pretraining, 500K/6M distilled SFT, 100K-math plus 30K-code RL, open weights/inference code, and benchmark or systems evaluation.
+- The RL reward is programmatic, but data curation also uses model filtering and difficulty assessment; the full construction contract is mixed.
+- Difficulty filtering uses 16 rollouts, original RL uses temperature/top-p 1.0, and easy-pool sampling is 10%; test-calibration rollout counts and RL response-group size remain unknown.
+- Official MiMo-7B weights and a XiaomiMiMo vLLM inference fork are available. Training corpora, task/tests, verifiers, trajectories, and complete training code are not linked by the checked official surfaces.
+- Preserve `partial` and L4: the report is detailed enough for a Chinese-reviewed disclosure ledger, but not for exact data or training replay.

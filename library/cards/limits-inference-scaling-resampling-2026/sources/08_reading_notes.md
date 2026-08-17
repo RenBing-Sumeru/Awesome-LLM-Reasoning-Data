@@ -1,0 +1,6 @@
+- Read the verifier as part of the data-generating process: original tests decide retention, while extended tests only audit retained candidates.
+- Distinguish pass probability from conditional correctness. More passes can coexist with a persistent or rising false-positive rate.
+- Treat Figure 3 as a ceiling for a specific generator-verifier pair, not a universal ranking of models or datasets.
+- Treat the K<=5 result at cost-benefit ratio 4 as an experimental scenario, not a default stopping rule.
+- Check the appendix exclusions before reusing aggregate counts: the final analyzed sets contain 150 HumanEval+ and 321 MBPP+ tasks.
+- For reuse, obtain or create an immutable manifest with model snapshots, sample order, paired test outcomes, seeds, archive hashes, and explicit output-data licensing.

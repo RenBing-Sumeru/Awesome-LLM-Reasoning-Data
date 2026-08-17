@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Android in the Zoo 为 Android GUI 动作加入 chain-of-action-thought 标注。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Findings of EMNLP 2024 / arXiv 的 GUI-agent annotation paper",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiwen Zhang 等（Fudan University）",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T09:27:06Z"
+}

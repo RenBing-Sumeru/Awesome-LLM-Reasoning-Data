@@ -1,0 +1,3 @@
+英文LLMjudge的成功难以迁移到非英语，低资源语言缺少偏好、rubric与奖励推理数据。论文研究怎样的数据和课程能训练广覆盖多语RM。
+
+mR3将rubric-agnosticrewardreasoning扩展到72种语言，并开放模型、蒸馏数据和代码；重点研究目标语言reasoning数据与课程选择。

@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Toloka AI",
+    "Gradarius",
+    "Stevens Institute of Technology"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2412.03205",
+    "https://arxiv.org/e-print/2412.03205"
+  ],
+  "verification_note": "Official arXiv source verifies Toloka AI, Gradarius, and Stevens Institute of Technology author groups."
+}

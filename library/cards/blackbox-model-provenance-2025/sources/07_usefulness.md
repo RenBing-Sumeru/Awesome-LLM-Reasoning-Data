@@ -1,0 +1,1 @@
+Use it when a developer retains shuffled training order and needs evidence about a suspect derivative. Provide transcript samples and model probabilities, or sufficiently long observed text; report the p-value with null and access assumptions. Do not use it when order is unavailable or an exact observational p-value is required.

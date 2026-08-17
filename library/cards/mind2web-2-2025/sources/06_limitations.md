@@ -1,0 +1,3 @@
+Correctness is only relative to the stated contract: Agent-as-a-Judge applies task-specific rubric trees to score answer correctness and source attribution; reported metrics include Partial Completion, Success Rate, and Pass@3. Results depend on rubric design, judge model/prompt, split policy, web freshness, and source availability. Public development tasks must not be mixed with private-test claims, and automatic judging is not a proof of factual truth outside the rubric.
+
+The paper should not be read as unrestricted real-world reliability. Public artifacts can become training data, service-backed environments can drift, and judge/evaluator implementations can change across releases.

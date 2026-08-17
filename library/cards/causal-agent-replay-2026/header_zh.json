@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Causal Agent Replay 将已记录的智能体 episode 按步骤干预并生成反事实分支，以带不确定性的结果分布定位失败决策；但实时工具状态、回滚契约和论文/代码/包版本漂移限制端到端回放。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能体轨迹反事实回放与失败归因方法",
+  "best_for_ch": "研究智能体轨迹、环境回放、因果失败归因与评测审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jaineet Shah",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

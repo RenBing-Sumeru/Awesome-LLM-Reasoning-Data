@@ -1,0 +1,221 @@
+id: embodied-reasoner-2026
+title: 'Embodied-Reasoner: Synergizing Visual Search, Reasoning, and Action for Embodied Interactive Tasks'
+year: 2026
+venue: ACL 2026
+authors:
+- Wenqi Zhang
+- Mengna Wang
+- Gangao Liu
+- Huixin Xu
+- Yiwei Jiang
+- Yongliang Shen
+- Guiyang Hou
+- Zhe Zheng
+- Hang Zhang
+- Xin Li
+- Jiajun Liu
+- Weiming Lu
+- Peng Li
+- Yueting Zhuang
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+- verifier_reward
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- step_level
+- state_action_level
+- full_episode
+domains:
+- embodied_ai
+- visual_reasoning
+- household_robotics
+training_use:
+- sft
+- distillation
+- process_supervision
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1910/
+  arxiv: https://arxiv.org/abs/2503.21696
+  code: https://github.com/zwq2018/embodied_reasoner
+  data: https://huggingface.co/datasets/zwq2018/embodied_reasoner
+  project: https://embodied-reasoner.github.io/
+  huggingface: https://huggingface.co/datasets/zwq2018/embodied_reasoner
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1910
+  venue: https://aclanthology.org/2026.acl-long.1910/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1910/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.1910.bib
+data_object:
+  prompt_source: English household-object instructions from four AI2-THOR task families (search, manipulate, transport, and
+    composite) and ten training subtasks. Simulator metadata constrains valid objects and containers; GPT-4o supplies constraint-checking
+    code/object choices, rewrites instantiated templates into varied requests, and combines simple tasks.
+  trace_author: GPT-4o writes Stage-1 step thoughts after receiving the prior interaction history and the already selected
+    upcoming action. Embodied-Interactor, a Stage-1 Qwen2-VL-7B-Instruct derivative, produces Stage-2 self-exploration rollouts.
+    Stage-3 records are built from Embodied-Explorer successes and failures using injected anomalies, reflective text, first-error
+    localization, and corrective continuations.
+  answer_format: A multi-turn, image-text-interleaved Observation-Thought-Action episode. User turns contain an egocentric
+    AI2-THOR observation and simulator feedback; assistant turns contain reasoning and one discrete high-level action. The
+    origin release additionally stores scene/task identifiers, templates and query variants, key actions, object identifiers,
+    per-action rewards, total reward, trajectory strings, and ordered image paths.
+  process_fields:
+  - task id
+  - task family and subtask
+  - scene id
+  - instruction template and query variants
+  - egocentric observation image
+  - situation analysis
+  - task planning
+  - spatial reasoning
+  - self-reflection
+  - double verification
+  - discrete high-level action
+  - object id and object type
+  - ordered key-action sequence
+  - simulator feedback and final state
+  - per-action reward and total reward
+  environment_or_substrate: AI2-THOR indoor simulation. The paper uses 107 training scenes from the 120-scene simulator, covering
+    about 2,100 objects and 2,600 containers, and exposes high-level Observe, Move Forward, Navigate to, Put in, Pickup, Toggle,
+    Close, Open, and Termination actions. The repository requirements pin ai2thor==5.0.0.
+  verifier_or_reward: Stage 2 uses the task-and-trajectory engine as a process/terminal checker. An episode is accepted when
+    its synthesized key actions occur in the required order and its final AI2-THOR state satisfies the task. Stage 3 compares
+    failures with synthesized key actions to identify the first incorrect action; the erroneous partial trajectory is masked
+    and loss is applied only to the reflective and corrected continuation. Non-key exploratory actions are permitted.
+  terminal_predicate: Ordered coverage of all task-specific key actions plus satisfaction of the final simulator state. Search
+    Efficiency and Task Completeness are evaluation metrics, not additional Stage-2 acceptance predicates.
+recipe_metadata:
+  base_model: Qwen2-VL-7B-Instruct is the base for the paper's main 7B Embodied-Interactor, Embodied-Explorer, and Embodied-Reasoner
+    pipeline. The project page also reports 2B and 3B results, but an official author-owned model-weight repository and checkpoint
+    license were not verified.
+  teacher: GPT-4o is used for constraint code/object selection, instruction rewriting, composite-task construction, and Stage-1
+    step-thought generation. Later stages use the preceding trained policy for rollouts. The exact GPT-4o API snapshot, prompt
+    set, and decoding configuration are unknown.
+  generator: Instantiate simulator-valid tasks; derive a minimum ordered key-action path from an object-affiliation graph;
+    add optional exploratory search; execute actions to collect egocentric images; and ask GPT-4o to insert five thought-pattern
+    types. Then perform Stage-1 imitation learning, Stage-2 high-temperature self-exploration with environmental rejection,
+    and Stage-3 reflection tuning from injected anomalies or failed prefixes and corrective suffixes.
+  filtering_rule: Stage 2 retains self-generated episodes that contain every key action in order and reach the correct final
+    state, producing 6,246 accepted trajectories. Stage 3 selects successes for injected navigation/manipulation anomalies
+    and failures for first-error correction. Candidate totals, rejection counts, failure taxonomy, acceptance rate, and the
+    proportions of the two Stage-3 sources are unknown.
+  sampling_protocol: Stage 1 contributes 1,128 GPT-4o-synthesized trajectories. Stage 2 samples multiple high-temperature
+    trajectories per new task over iterative rounds and retains 6,246 successes. Stage 3 contributes 2,016 correction trajectories.
+    Temperature, top-p, candidates per task, total rollout count, retry budget, seeds, maximum steps/tokens, and round schedule
+    are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown; the paper discloses multiple high-temperature Stage-2 samples and iterative rounds but not candidates
+    per task, total sampled/rejected episodes, token limits, or simulator-step budget.
+  optimizer_or_scaffold: All three stages use multi-turn SFT-style objectives with loss on assistant reasoning/action tokens;
+    Stage 3 additionally masks the erroneous prefix. The repository points to a custom LLaMA-Factory branch and exposes generic
+    train/evaluation launchers, but paper-matching stage configs, optimizer, hardware, batch schedule, learning rates, epochs,
+    checkpoints, and seeds are unknown.
+audit:
+  source_mixture: The 9,390 released training trajectories comprise 1,128 Stage-1 episodes with 4,636 images, 6,246 Stage-2
+    accepted self-exploration episodes with about 45.8K images, and 2,016 Stage-3 correction episodes with about 13.8K images.
+    The paper separately reports about 64K images, 8M thought tokens, and about 90K reasoning-pattern occurrences. These are
+    different units; 90K is not an example count.
+  split: The 809-case manually curated simulator test set covers 12 scenes described as novel relative to the 107 training
+    scenes, four task families, eleven test subtasks, and about 4.9K images; 25 cases are ultra-long tasks with 14--27 key
+    actions. The release includes test_809.json and agent_positions.json, but not an immutable split manifest or task-family
+    leakage analysis.
+  decontamination: Training and test scenes are reported disjoint. Textual near-duplicate, template-family, object-combination,
+    teacher-output, and benchmark contamination audits are unknown.
+  license: The ACL paper is CC BY 4.0, the official code repository is MulanPSL-2.0, and the Hugging Face dataset card declares
+    Apache-2.0. No asset-level provenance/NOTICE reconciliation is published for every simulator render; GPT-4o output terms,
+    Qwen2-VL derivative terms, and any unverified model-weight license require separate review.
+  lineage: AI2-THOR scene/object metadata -> constrained task and ordered key-action synthesis -> optional exploratory actions
+    -> simulator execution and egocentric images -> GPT-4o post-hoc thought insertion -> 1,128 Stage-1 records -> Embodied-Interactor
+    rollouts -> ordered-action/final-state filter -> 6,246 Stage-2 successes -> Embodied-Explorer success and failure rollouts
+    -> anomaly injection or first-error correction -> 2,016 Stage-3 records -> 9,390 origin and dialogue records plus images.
+    The current HF viewer error identifies revision e498d661e45b1ccf5694e4e8bfd825eee58e0051.
+  known_failure_modes:
+  - The Stage-2 checker verifies ordered key-action coverage and final state, not thought grounding, causal faithfulness,
+    rationality of intermediate actions, minimality, or all alternative valid plans.
+  - GPT-4o receives the already selected upcoming action when writing a Stage-1 thought, so a fluent rationale may be a post-hoc
+    explanation rather than evidence that the reasoning caused the action.
+  - First-error localization uses synthesized key actions as ground truth and can label an alternative successful plan as
+    incorrect when the environment admits multiple solutions.
+  - The final corpus reports only the 6,246 accepted Stage-2 rollouts; total candidates, rejects, pass rates, rejection reasons,
+    and the complete raw failure pool are unknown.
+  - Stage-3 keeps selected erroneous prefixes inside correction examples, but the selection policy, source proportions, anomaly
+    distribution, and first-error-label accuracy are unknown.
+  - Oracle simulator metadata creates task constraints and key actions even though model inputs are visual, which can narrow
+    supervision to engine-defined plans and obscure perceptual or action alternatives.
+  - Scene/object IDs, image paths, actions, and an AI2-THOR version aid inspection, but immutable Unity/build hashes, initial
+    state and randomization seeds, and complete execution logs needed for deterministic replay are missing.
+  - The Hugging Face page reports 157 GB and lists origin, dialogue, image, and test files, but its Dataset Viewer currently
+    fails because test_809.json has a 15-field evaluation schema while dialogue data use id/messages/images. Users need an
+    explicit loader or separate configurations; a public page alone does not establish loadability.
+  - The simulator images do not show private real-world homes or people, but the dataset card does not publish a privacy assessment;
+    the 30-task human-mediated real-world evaluation is not documented as part of the training release.
+  - Code and dataset licenses are declared separately, but an asset-level rights manifest and upstream NOTICE reconciliation
+    for the 157 GB rendered-image release are absent.
+  - The repository exposes the task engine and generic launch scripts, but not a pinned, stage-specific, paper-matching reproduction
+    manifest or verified author-owned model weights.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper and appendix, formal project page, official repository, and the 157 GB Hugging Face release were
+    checked on 2026-07-21. The paper, recipe, code, and data links are verified; candidate accounting, deterministic replay,
+    model weights, release loadability, and asset-level rights remain partial.
+inclusion_reason: Embodied-Reasoner connects simulator task synthesis, GPT-4o thought writing, environment-filtered policy
+  exploration, failed-prefix correction, and an open multimodal state-action release across a single three-stage recipe.
+related: []
+tags:
+- embodied-reasoner
+- observation-thought-action
+- ai2-thor
+- multimodal-trajectories
+- rejection-sampling
+- reflection-tuning
+- self-exploration
+- state-action-supervision
+- visual-reasoning
+- open-data
+status: partial
+one_line_summary: Embodied-Reasoner releases 9,390 AI2-THOR Observation-Thought-Action episodes built from GPT-4o imitation
+  traces, environment-filtered self-exploration, and failure-aware reflection tuning, with about 64K images and 8M thought
+  tokens.
+why_it_matters: It provides an auditable example of turning simulator state checks and failed prefixes into multimodal process
+  supervision, while showing why candidate attrition, alternative valid paths, trace faithfulness, replay, and release loadability
+  must be checked separately from benchmark gains.
+card: null
+needs:
+- 'needs_candidate_accounting: publish Stage-2/3 total rollouts, accepted/rejected counts, per-task pass rates, failure taxonomy,
+  selection logs, and raw rejected trajectories'
+- 'needs_sampling_metadata: disclose temperature, top-p, candidates per task, seeds, maximum steps/tokens, iteration schedule,
+  and retry policy'
+- 'needs_verifier_audit: release the exact ordered-action/final-state checker, alternative-valid-plan tests, and first-error
+  localization accuracy'
+- 'needs_replay: publish immutable AI2-THOR/Unity build hashes, initial-state and randomization seeds, action execution logs,
+  and a replay verification report'
+- 'needs_release_schema: separate train and evaluation configurations or publish a tested loader and immutable data manifest'
+- 'needs_rights: publish asset-level provenance/NOTICE mapping and clarify GPT-4o/Qwen derivative terms'
+- 'needs_training_recipe: publish stage-specific configs, checkpoints, optimizer/hardware/batch metadata, and immutable tags'
+- 'needs_model_release: provide official model repositories, checkpoint hashes, model cards, lineage, and weight licenses'
+- 'needs_privacy_statement: document the simulator-only scope of released images and whether real-world evaluation media are
+  distributed'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: high
+  notes: The formal paper, code, project page, and dataset release are verified. Artifact verification does not extend to
+    claimed model weights, raw rejected candidates, deterministic replay, or a working default Dataset Viewer.
+category_ids:
+- data_construction_open_release_recipes

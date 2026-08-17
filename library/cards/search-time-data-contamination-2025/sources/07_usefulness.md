@@ -1,0 +1,1 @@
+Before evaluating a web-search agent, save its full search trace and scan retrieved pages for question–answer matches. Re-run flagged items with a documented blocklist and report both scores; the output is an auditable contamination ledger. Do not treat a single domain block as a clean-room evaluation when other answer-bearing pages remain reachable.

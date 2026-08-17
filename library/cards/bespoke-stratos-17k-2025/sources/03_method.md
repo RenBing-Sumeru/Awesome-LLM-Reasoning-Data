@@ -1,0 +1,2 @@
+Bespoke Curator ports Sky-T1's generation and rejection pipeline. DeepSeek-R1 replaces QwQ as teacher and its traces are kept without GPT-4o-mini reformatting. GPT-4o-mini judges math correctness, while APPS/TACO code is executed against tests with Ray-assisted verification. Accepted records are combined into one train split. Generation temperature, attempts, seed, token limit, retry budget, complete sandbox settings, and per-row verifier outcome are unknown.
+

@@ -1,0 +1,1 @@
+Arena-Hard 的核心贡献是 BenchBuilder：从众包对话数据中自动筛出困难开放式 prompt，并用 LLM-as-a-judge 评测模型。机制是构造 hard prompt，生成候选模型回答，让配置好的 judge 与 baseline 或对手答案成对比较，再汇总胜率和置信区间。最近参照是 MT-Bench、AlpacaEval 式自动偏好 benchmark 和 Chatbot Arena 人类偏好排名。方向标签是 judge/reward meta-evaluation，并显式检查 separability 与 human-alignment。

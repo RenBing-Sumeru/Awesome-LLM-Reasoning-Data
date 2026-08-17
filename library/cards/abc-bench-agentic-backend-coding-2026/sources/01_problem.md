@@ -1,0 +1,3 @@
+Existing coding benchmarks often verify local code or unit tests in static repositories while ignoring the full backend-development lifecycle. An agent must identify languages and frameworks, configure dependencies, implement business logic across files, write Dockerfiles, launch services, and handle real HTTP requests. Passing local tests does not mean an application can be deployed and served.
+
+ABC-Bench constructs executable backend tasks in which agents proceed from repository exploration to containerized deployment and are judged by external end-to-end API tests. It evaluates agentic backend coding with environment setup, service startup, and interface behavior rather than isolated functions.

@@ -1,0 +1,5 @@
+- 区分当前步骤正确性标签与未来最终答案可达性的 MC estimate。
+- 记录报告中的每 query 6--8 条 responses、每步骤 8 次 continuations 和 critic-consensus rule，但不要推断未公开的解码设置或最终语料组成。
+- 将报告中的 40-percent 与 1.5M retention 示例视为特定 pool 的披露，而非完整 final-data manifest。
+- 用 Best-of-N 与 ProcessBench 式的 step-error localization 一起评估 PRM 主张；论文记录了任一单独指标为何不足。
+- 公开 PRM weights 和 per-step scoring interface 并不发布 queries、traces、labels、calibration、rejected data 或 source rights。

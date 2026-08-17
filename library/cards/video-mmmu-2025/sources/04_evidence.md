@@ -1,0 +1,5 @@
+The primary evidence is the benchmark construction and evaluation reported in the arXiv paper and the final ACL Anthology record. ACL records the paper as an ACL 2026 long paper with DOI 10.18653/v1/2026.acl-long.1281, pages 27798-27828. The project page confirms ACL 2026 Main and links to the paper, Hugging Face dataset, and GitHub code repository.
+
+The arXiv paper reports 300 videos and 900 human-annotated questions across six disciplines. It evaluates models across Perception, Comprehension, and Adaptation, and introduces a knowledge or performance gain metric to quantify improvement after video viewing rather than only final accuracy. The paper reports a substantial gap between human learners and current LMMs, especially as questions move toward adaptation.
+
+The evidence supports topic screening because the benchmark object, artifact path, evaluation tracks, and failure surface are clear. The evidence does not by itself prove that the benchmark is robust to public-video leakage, transcript differences, unavailable source videos, or prompt/frame-sampling changes.

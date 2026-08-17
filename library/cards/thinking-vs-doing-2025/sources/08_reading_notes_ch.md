@@ -1,0 +1,5 @@
+- 优先阅读 Sections 3、5 和 Algorithm 1：关键机制是 terminal-success selection 后进行 state-action cross-entropy，因此公开 recipe 属于 filtered BC/online STaR，而不是 RLVR。
+- 必须区分两条反馈路径：WebArena 使用 task-specific programmatic ground truth，WebVoyager 使用论文报告为 Gemma 3 27B 的 prompted multimodal judge；二者都不提供 step-correctness labels。
+- 应把论文与发布当作不同对象审计：仓库公开五个 task JSONL 文件、code/configs 和两个 checkpoints，但没有 rollout corpus、screenshots 或 replay manifest。
+- 默认将公开 WebArena split 视为不安全，因为全部 733 个 train IDs/questions 都出现在 812-row test file 中；这一发布审计结果不能证明原始论文运行使用了完全相同的 split。
+- 复现前应对齐 evaluator、iteration 和 GPU settings，并阅读 repeated checking、long-horizon wandering、Bing resets 与 weak final-step self-verification 的 failure analyses。

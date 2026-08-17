@@ -1,0 +1,1 @@
+The official abstract explicitly names the two reasoning categories and reports analysis from performance and efficiency perspectives. It supports a structured literature map, not a universal winner. Reported gains can depend on task difficulty, hardware, batching, context length, and whether a verifier is available.

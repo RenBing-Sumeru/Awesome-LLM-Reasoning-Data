@@ -1,0 +1,1 @@
+BiGGen Bench 包含 765 个开放生成实例，组织为九类能力和 77 个任务。每个实例提供 system message、输入提示、参考答案和专属 scoring rubric，平均每个任务约十条样本。作者使用五个 evaluator LLM 评价 103 个前沿语言模型，并公开数据、模型响应、人工分数和 judge 分数。其数据贡献不以规模取胜，而以覆盖设计和 instance-specific criteria 为核心，使每个分数能够追溯到具体要求。

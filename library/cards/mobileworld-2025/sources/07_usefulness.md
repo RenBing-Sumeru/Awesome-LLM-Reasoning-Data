@@ -1,0 +1,9 @@
+For `environment_agent_trajectory_data`, MobileWorld is a strong environment-contract example: package task ID/goal, initial AVD and backend snapshots, screenshot stream, parsed GUI/user/MCP actions, external responses, model/scaffold metadata, budget, terminal score/reason, and all artifact versions. The current logger and viewer provide a practical starting schema, and public failures support recovery, memory, and verifier-error analysis.
+
+For benchmark builders, the four verifier modes support useful cross-checks. Reimplement a subset with two independent predicates, mutate backend/local state, test alternate valid answers, and record side-effect fields. The Mattermost session-expiry incident should become a regression test for authentication freshness and snapshot validity.
+
+For agent research, the 45 interaction tasks can evaluate ambiguity detection and query efficiency, while the 40 MCP tasks expose tool-name/argument accuracy, output compression, context management, and GUI/tool handoff. Compare a GUI-only policy, a tool-only policy, and a hybrid policy under identical terminal predicates; log failed tool calls and redundant questions rather than only SR.
+
+For training research, the public bundles can seed failure taxonomies or offline analysis, but direct behavior cloning/RL reuse is blocked pending component licenses, encoding repair, external-response provenance, and a new held-out evaluation split. The paper itself provides evaluation evidence only and does not validate a training objective.
+
+Reuse class: safe as a version-pinned evaluation and audit reference; useful for environment/replay engineering with full container and snapshot pins. Public trajectories are reading/audit material and conditional research data, not an unrestricted, contamination-safe training corpus.

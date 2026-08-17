@@ -1,0 +1,5 @@
+# Evidence
+
+**Claim 1:** Mulberry-260K improves the same consumer without changing its architecture. **Controlled setup:** Table 1 compares LLaVA-NeXT-8B directly with Mulberry-LLaVA-8B after SFT on the released search-derived records across the same eight benchmarks. **Result:** the reported average rises from 39.7 to 50.7, an absolute gain of 11.0 points; MathVista rises from 37.5 to 56.3. **Boundary:** this supports the utility of the full data-and-SFT recipe, but it does not isolate search from extra training compute or prove every rationale step correct.
+
+**Claim 2:** collective search, rather than GPT-4o alone, raises path-finding success. **Controlled setup:** Table 2 uses 1K Geo3K/GeoQA-Plus samples and progressively adds Qwen2-VL-7B, Llama-3.2-11B-Vision-Instruct, and Qwen2-VL-72B to the same CoMCTS procedure. **Result:** direct GPT-4o succeeds on 58.2%, GPT-4o-only CoMCTS on 63.8%, and the four-model collective on 80.2%. **Boundary:** the judge and generator families overlap, so higher search success does not measure independent step-verification accuracy.

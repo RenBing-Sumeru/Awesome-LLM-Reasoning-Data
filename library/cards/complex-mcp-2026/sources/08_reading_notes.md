@@ -1,0 +1,5 @@
+- Keep the scale and object together: 47 tasks, 15 MCP servers, 315 tools, and one seven-field parquet row per task linking seed/query/applications to an accepted reference trajectory and target final state.
+- Separate the two trajectory populations. The release has 47 successful human gold/reference demonstrations; it does not release all model successes and failures from three independent runs, while Appendix C shows only three correct and two incorrect examples.
+- Read the verifier as code, not as an oracle: completion and collateral-change accounting are concrete, but fuzzy content matching, the apparent `rid`/`oid` comma omission, and unrecognized `internel error` status need calibrated tests.
+- Interpret Table 2 within its contract: Gemini-3-Flash reports `55.31 ± 0.00%` success versus `93.61 ± 1.74%` for humans, but benchmark performance is not evidence of training-data quality.
+- Reuse only for version-pinned evaluation and audit; paper-era code identity, complete replay manifests, separate data/output rights, decontamination, and prompt-injection calibration remain unknown.

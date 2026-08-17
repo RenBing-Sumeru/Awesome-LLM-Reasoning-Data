@@ -1,0 +1,89 @@
+id: caution-reward-hacking-2026
+title: 'From Curiosity to Caution: Mitigating Reward Hacking for Best-of-N with Pessimism'
+year: 2026
+venue: ICLR 2026
+authors:
+- Zhuohao Yu
+- Zhiwei Steven Wu
+- Adam Block
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=EZn2TmBBfF
+  arxiv: https://arxiv.org/abs/2604.04648
+  code: null
+  data: https://openreview.net/attachment?id=EZn2TmBBfF&name=supplementary_material
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=EZn2TmBBfF
+  openreview: https://openreview.net/forum?id=EZn2TmBBfF
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or evaluation release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: high
+  notes: Accepted ICLR study with official supplementary evaluation materials for reward-hacking mitigation.
+inclusion_reason: 'Mitigates reward hacking from reward-model over-optimization in Best-of-N selection.'
+related: []
+tags:
+- track13
+- audit
+- final-slate
+status: verified
+one_line_summary: Uses a learned uncertainty penalty to make Best-of-N reward selection pessimistic on atypical responses.
+why_it_matters: It turns uncertainty about atypical responses into an inference-time safeguard against reward-model exploitation.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary page and public artifact recorded.
+category_ids:
+- audit_failure_contamination_verifier_attacks

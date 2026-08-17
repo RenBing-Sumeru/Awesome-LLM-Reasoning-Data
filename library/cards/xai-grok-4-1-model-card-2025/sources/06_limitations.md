@@ -1,0 +1,6 @@
+- Broad source categories omit proportions, manifests, consent/rights, retention, revisions, source provenance, and production-data boundary.
+- Named feedback types omit reward definitions, grader identities, calibration, thresholds, error behavior, coverage, and optimization weight; a benchmark or refusal score is not proof of reward quality.
+- Filter training uses synthetic and production data, but filter generator, mixture, labels, selection, version, audit trail, and relationship to main-model training are unknown.
+- Internal refusal, filter, and jailbreak sets plus separate-model graders lack prompts, labels, instances, versions, and logs.
+- Earlier English-only evaluation error blocks direct historical comparison. Safeguard-removed dual-use results and production-prompt/filter deployment results answer different questions without a reproducible harness.
+- The announcement's live-traffic rollout and production-query evaluation introduce privacy, consent, retention, selection-bias, and train/evaluation-separation questions; the sources do not resolve them. These are curator audit inferences, not claims of misuse.

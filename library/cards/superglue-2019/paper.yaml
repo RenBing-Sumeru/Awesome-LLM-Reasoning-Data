@@ -1,0 +1,125 @@
+id: superglue-2019
+title: 'SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems'
+year: 2019
+venue: NeurIPS 2019 / arXiv
+authors:
+- Alex Wang
+- Yada Pruksachatkun
+- Nikita Nangia
+- Amanpreet Singh
+- Julian Michael
+- Felix Hill
+- Omer Levy
+- Samuel R. Bowman
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- nlu-benchmark
+- hard-language-understanding
+- benchmark-infrastructure
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1905.00537
+  arxiv: https://arxiv.org/abs/1905.00537
+  code: https://super.gluebenchmark.com/
+  data: https://super.gluebenchmark.com/
+  project: https://super.gluebenchmark.com/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.1905.00537
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SuperGLUE curates eight existing or adapted English NLU tasks after public task proposal, BERT-baseline,
+    and human-baseline screening.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: task-specific classification, multiple-choice, coreference, and reading-comprehension predictions scored
+    by official task metrics.
+  data_scale: eight main tasks plus broad-coverage and Winogender diagnostics; paper Table 1 reports train/dev/test counts
+    for BoolQ, CB, COPA, MultiRC, ReCoRD, RTE, WiC, and WSC.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: English NLU benchmark with private test labels, evaluation server, public leaderboard, diagnostic
+    sets, and the jiant-based software toolkit described by the paper.
+  verifier_or_reward: task metrics are accuracy, macro-F1, F1a, exact match, F1/EM, and MCC diagnostics, averaged into an
+    overall SuperGLUE score after within-task metric averaging.
+  terminal_predicate: official evaluator accepts task predictions, computes task-specific metrics, and aggregates non-diagnostic
+    task scores for leaderboard comparison.
+  benchmark_size: eight main tasks plus broad-coverage and Winogender diagnostics.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding
+    Systems; exact curation details should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for SuperGLUE: A Stickier Benchmark for General-Purpose
+    Language Understanding Systems.'
+  split: Paper describes public train/dev data, private test data, evaluation-server submission limits, and task-specific
+    train/dev/test sizes; reuse should pin the exact downloaded release and scorer revision.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: SuperGLUE aggregates datasets with task-specific upstream terms; redistribution and data-use restrictions must
+    be checked per task and against the current official site.
+  lineage: 'Primary source: https://arxiv.org/abs/1905.00537'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: Primary paper and official site verify task set, scorer style, leaderboard, diagnostics, and jiant tooling; exact
+    current download files and per-task licenses remain artifact-level audit items.
+inclusion_reason: SuperGLUE succeeded GLUE with harder language understanding tasks and a more demanding public leaderboard.
+related: []
+tags:
+- benchmark
+- nlu-benchmark
+- hard-language-understanding
+- benchmark-infrastructure
+one_line: SuperGLUE succeeded GLUE with harder language understanding tasks and a more demanding public leaderboard.
+why_it_matters: It supplies a reusable evaluation coordinate for nlu-benchmark, hard-language-understanding work.
+status: verified
+needs:
+- 'needs_audit: pin SuperGLUE task versions, ReCoRD counting unit, hidden-test policy, and scorer aggregation before score
+  reuse'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SuperGLUE succeeded GLUE with harder language understanding tasks and a more demanding public leaderboard.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,21 @@
+{
+  "title": "A Primer in Post-Training Reasoning Data: What We Know About How It Works",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2606.02113",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-12T13:11:12Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "Post-Training Reasoning Data survey",
+    "updated_at": "2026-07-12T13:11:12Z"
+  }
+}

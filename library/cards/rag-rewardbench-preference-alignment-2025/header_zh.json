@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "1,485组偏好对覆盖多跳推理、引用与冲突处理，以偏好标签训练或评估检索增强推理奖励。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "检索增强生成奖励模型评测与偏好数据基准论文",
+  "best_for_ch": "需要选择或审计检索增强生成系统的奖励模型，并覆盖引用、拒答和冲突证据情形的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhuoran Jin, Hongbang Yuan, Tianyi Men, Pengfei Cao, Yubo Chen, Jiexin Xu, Huaijun Li, Xiaojian Jiang, Kang Liu, Jun Zhao",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T18:50:23Z"
+}

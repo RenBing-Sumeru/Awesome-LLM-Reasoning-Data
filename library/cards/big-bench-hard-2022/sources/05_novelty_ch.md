@@ -1,0 +1,1 @@
+既有基线是完整且异构的 BIG-bench，hard reasoning 信号可能被更容易或无关任务稀释。BBH 的变化是筛选此前模型低于平均人类表现的任务，并打包用于 CoT 评测的 prompt。方向信号是一个紧凑的 reasoning-style prompt 压力集。并不新的部分是底层任务大多来自 BIG-bench，answer-level scoring 也继承自原任务。复用前要检查任务谱系、prompt 模板、答案抽取、license、版本，以及 BBH 是否已成为训练污染。

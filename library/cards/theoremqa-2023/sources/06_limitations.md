@@ -1,0 +1,3 @@
+TheoremQA checks final answers, not formal proof validity or the full reasoning path. A correct answer does not certify that the model invoked the intended theorem, and an incorrect extracted answer can reflect formatting failure rather than reasoning failure.
+
+The constrained answer formats make automatic scoring possible but exclude many natural theorem-use outputs such as symbolic derivations, matrices, diagrams, or long proofs. The dataset is public, so contamination risk grows over time. The official GitHub repository and Hugging Face dataset display MIT license metadata, but redistribution should still pin the exact artifact revision and preserve attribution.

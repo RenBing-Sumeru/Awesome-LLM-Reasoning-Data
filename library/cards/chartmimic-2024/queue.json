@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T12:17:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "常用于多模态开源模型报告  ref121",
+    "updated_at": "2026-07-15T12:17:02Z"
+  }
+}

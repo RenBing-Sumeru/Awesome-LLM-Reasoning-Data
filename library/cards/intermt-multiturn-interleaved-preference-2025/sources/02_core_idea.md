@@ -1,0 +1,1 @@
+InterMT combines 15,604 seed questions, 52.6K multi-turn interleaved vision-language instances, and 32,459 multi-dimensional human preference annotations. The contract separates four local and five global helpfulness dimensions, with critiques, suggestions, and rationales; it therefore preserves both a turn decision and a trajectory decision.

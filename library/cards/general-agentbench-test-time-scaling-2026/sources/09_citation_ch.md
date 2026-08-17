@@ -1,0 +1,1 @@
+Li, Xiaochuan、Ryan Ming、Pranav Setlur、Abhijay Paladugu、Andy Tang、Hao Kang、Shuai Shao、Rong Jin 与 Chenyan Xiong。2026。“Benchmark Test-Time Scaling of General LLM Agents”。arXiv 预印本 arXiv:2602.18998。官方论文：https://arxiv.org/abs/2602.18998。官方代码：https://github.com/cxcscmu/General-AgentBench。

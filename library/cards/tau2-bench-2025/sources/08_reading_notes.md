@@ -1,0 +1,5 @@
+- Keep the timeline explicit: arXiv v1 is dated 2025-06-09, the closest official release is `v0.1.0` from 2025-06-12, and the archival venue is ICML 2026, PMLR 306.
+- Read the 2,285 telecom full combinations and 114 sampled tasks together with the generator: 15 atomic subtask groups are composed, checked, then sampled by intent, subtask count, and persona; the paper reports 115 retail tasks while `v0.1.0` contains 114.
+- Separate termination from success. STOP, TRANSFER, OUT-OF-SCOPE, or runner guards end an episode; selected DB/assertion/action/communication/NL components determine reward.
+- Treat the simulator audit as a warning: Table 2 reports 3/50 critical and 5/50 benign telecom errors despite a contradictory “no critical errors” phrase elsewhere.
+- Use the released success/failure traces for version-pinned evaluation and audit only. Later Gym, split, RL, voice, knowledge, and tau3 changes do not retroactively make the paper an agent-training study.

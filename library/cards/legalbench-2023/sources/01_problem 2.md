@@ -1,0 +1,5 @@
+LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models asks how model capability should be measured through legal reasoning task suite. The primary source is https://arxiv.org/abs/2308.11462; the verified venue or status recorded in this Card is arXiv preprint / open-science project (2023).
+
+The decision boundary is benchmark and evaluation-surface curation. This Card treats the work as a scoring, verifier, judge, environment, or benchmark surface rather than as a generic model result. The concrete object to inspect is benchmark records expose legal reasoning task suite, prompt/task metadata, a model output surface, and a score or success target.
+
+L4 collection note: author, institution, venue/status, and public artifact metadata have been checked against official sources where available. The main audit boundary is: arXiv, project, GitHub, and Hugging Face sources verify long author/institution metadata and public task/evaluation artifacts. No official NeurIPS venue claim was verified in this pass.

@@ -1,0 +1,1 @@
+Zhuo, Terry Yue 等，2025，《BigCodeArena: Unveiling More Reliable Human Preferences in Code Generation via Execution》，arXiv:2510.08697。论文：https://arxiv.org/abs/2510.08697；DOI：https://doi.org/10.48550/arXiv.2510.08697；数据：https://huggingface.co/datasets/bigcode/bigcodearena-preference-5k；代码：https://github.com/bigcode-project/bigcodearena。

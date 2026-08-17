@@ -1,0 +1,1 @@
+树搜索推理需要扩展大量中间 thought；论文在所测的 Beam Search 与 MCTS 设置中报告，thought 生成占总运行时间的 91% 以上。标准 token 级 speculative decoding 能加速单次生成，但没有利用“thought 即树节点”的结构。SpecSearch 聚焦加速节点扩展，同时尽量保留由 PRM 定义的大模型 thought 生成质量。对本图谱而言，关键对象不是已发布数据集，而是每次扩展中的候选 thought、PRM 分数、动态拒绝阈值、接受或纠正决策、搜索状态与最终选定路径。

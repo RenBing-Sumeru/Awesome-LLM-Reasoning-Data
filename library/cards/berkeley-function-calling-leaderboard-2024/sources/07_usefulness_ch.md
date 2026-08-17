@@ -1,0 +1,1 @@
+BFCL 可作为 tool-call 评测记录 schema：保留 prompt、可用 schema、期望调用、预测调用、解析错误、executor 结果、类别、轮次状态和 evaluator 版本。它也适合用来区分语法有效性、工具选择和执行正确性。对 atlas 来说，BFCL 提供了 function-calling 模型的具体环境反馈契约，也提供了比较 agent/tool benchmark 时不要只看 overall 分的检查表。

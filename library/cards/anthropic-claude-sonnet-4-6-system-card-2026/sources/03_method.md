@@ -1,0 +1,6 @@
+The card reports a general-purpose web crawler that respects robots.txt and does not access password-protected, sign-in-protected, or CAPTCHA-protected pages. It reports cleaning and filtering that include deduplication and classification. It names the broad source mixture but does not provide source manifests, weights, counts, revisions, rights mapping, classifier versions, thresholds, ordering, or removal yields.
+
+The official materials state that Sonnet 4.6 underwent substantial post-training and fine-tuning for helpfulness, honesty, and harmlessness. The Transparency Hub lists reinforcement from AI feedback and selected character-trait training. The system card says data-work-platform workers help through preference selection, safety evaluation, and adversarial testing; it also says automatic screening covered a significant fraction of reinforcement-learning training transcripts. These statements do not identify which data entered post-training, the feedback record schema, candidate sets, reward/verifier, calibration, aggregation, RL objective, optimizer, rollout policy, schedules, or checkpoint selection.
+
+The card describes extended and adaptive thinking with a user-directed effort parameter, but that is a deployment interface. It does not disclose the training rollout budget, allocation policy, or a reproducible inference protocol.
+

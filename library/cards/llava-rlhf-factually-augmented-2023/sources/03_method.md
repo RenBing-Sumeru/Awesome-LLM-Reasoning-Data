@@ -1,0 +1,3 @@
+1. Fine-tune a LLaVA-based assistant, then resample held-out conversations to obtain response pairs for crowd comparison. 2. Train a pairwise reward model to score the chosen response higher, using the image and conversation. 3. Supply captions, rationales, or answer options to the same reward model, and add correctness and length penalties where the task exposes an answer. 4. Optimize the policy with PPO and a KL penalty on 50,000 held-out conversations plus VQA-v2 and A-OKVQA questions.
+
+The output is a policy and an augmented reward model; acceptance is measured by LLaVA-Bench, MMHal-Bench, MMBench, and POPE. Reproduction requires the released model/data/code and the factual side information available at training and scoring time.

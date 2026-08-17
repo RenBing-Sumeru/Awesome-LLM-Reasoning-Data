@@ -1,0 +1,19 @@
+{
+  "title": "BarrierBench: Evaluating Large Language Models for Safety Verification in Dynamical Systems",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2511.09363",
+    "data": "https://hycodev.com/dataset/barrierbench",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T11:41:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 BarrierBench，含100个动力系统安全证书任务及SMT工具链",
+    "updated_at": "2026-07-19T11:41:02Z"
+  }
+}

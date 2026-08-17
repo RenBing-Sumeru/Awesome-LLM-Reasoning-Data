@@ -1,0 +1,3 @@
+Llama 3's report is unusually specific about aggregate data composition and alignment sequencing. It connects web-scale domain mixing, progressive long-context training, human preference editing, learned ranking, best-of-K distillation, SFT, DPO, execution-based code filtering, process-filtered mathematics, tool trajectories, and deployable safeguards in one lineage.
+
+Its value relative to the later Llama 4 Herd report is historical and architectural: Llama 3 is the 2024 dense-model recipe and predecessor disclosure. Llama 4 is a successor with different architecture and data recipe, so the two Cards form lineage rather than duplicate coverage.

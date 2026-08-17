@@ -1,0 +1,1 @@
+Instead of treating data generation and post-training as unrelated chapters, the survey puts their feedback loop at the center. For reasoning-data work, that is the important shift: a trace is not just an example to store; it is an input to the next model and therefore needs provenance, quality criteria, and a comparison that checks whether the loop truly improved the task.

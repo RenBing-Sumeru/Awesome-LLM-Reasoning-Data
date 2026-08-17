@@ -1,0 +1,3 @@
+Alexandre Drouin; Maxime Gasse; Massimo Caccia; Issam H. Laradji; Manuel Del Verme; Tom Marty; Leo Boisvert; Megh Thakkar; Quentin Cappart; David Vazquez; Nicolas Chapados; Alexandre Lacoste. WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?. ICML 2024 / PMLR 235 / arXiv, 2024. Paper: https://arxiv.org/abs/2403.07718.
+
+Official links most relevant for reuse: PMLR: https://proceedings.mlr.press/v235/drouin24a.html; project: https://servicenow.github.io/WorkArena/; code: https://github.com/ServiceNow/WorkArena; gated instances: https://huggingface.co/datasets/ServiceNow/WorkArena-Instances.

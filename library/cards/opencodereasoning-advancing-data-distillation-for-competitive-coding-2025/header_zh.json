@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenCodeReasoning 将 DeepSeek-R1 的竞赛编程推理与 Python 解答蒸馏为 Qwen2.5 的 SFT 数据，并揭示多样性与执行过滤的取舍；但主发布集只通过格式和语法检查，当前官方配方也已转向 OCR-2。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "竞赛编程推理数据发布、蒸馏配方与执行过滤消融",
+  "best_for_ch": "构建代码推理 SFT 数据、研究教师蒸馏与执行筛选，或审计开放数据版本、许可和污染控制的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Wasi Uddin Ahmad、Sean Narenthiran、Somshubra Majumdar、Aleksander Ficek、Siddhartha Jain、Jocelyn Huang、Vahid Noroozi、Boris Ginsburg",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "STORM-BORN 从 2,000 条多智能体生成问答中由专家筛选出 100 条数学推导记录，并发布 73/27 切分与四选一变体；但完整谱系、候选池、人工协议与许可仍缺失。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学推导数据集、专家评测基准与人机协同构建配方",
+  "best_for_ch": "研究文档溯源推理数据、多智能体构造、专家判断、SFT 与科学数学评测审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Wenhao Liu、Zhenyi Lu、Xinyu Hu、Jierui Zhang、Dailin Li、Jiacheng Cen、Huilin Cao、Haiteng Wang、Yuhan Li、Kun Xie、Dandan Li、Pei Zhang、Chengbo Zhang、Yuxiang Ren、Xiaohong Huang、Yan Ma",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

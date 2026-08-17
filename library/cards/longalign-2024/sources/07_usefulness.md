@@ -1,0 +1,3 @@
+- For aligning an extended-context base model to follow long-document instructions, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of models can exploit position and document-template cues without integrating distant evidence.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: length and format checks, response review, and long-context benchmark evaluation. Do not reuse the release when its licensing or source provenance cannot be preserved.

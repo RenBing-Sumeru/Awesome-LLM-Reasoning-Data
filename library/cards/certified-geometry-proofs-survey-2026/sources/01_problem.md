@@ -1,0 +1,3 @@
+Geometry answers can look persuasive while containing an invalid inference, an unstated condition, or a mistaken reading of a diagram. This survey asks how language models and symbolic tools can jointly turn a natural-language geometry problem into a proof artifact that can be independently checked.
+
+For readers, the key distinction is between producing a plausible solution and producing an artifact whose stated checker accepts it. The former can aid exploration; the latter supplies stronger evidence about formal validity. Neither removes the need to verify that the original text and diagram were converted into the intended geometric assumptions.

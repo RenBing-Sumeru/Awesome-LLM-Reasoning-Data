@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TokenSqueeze 用自采样、答案核验的推理轨迹构造自适应深度的正例与更长的错误负例，再以 KL 约束筛选逐步改写并结合 SFT 与长度感知 DPO 训练短推理；最终生成语料尚未发布，因而只能审计其配方而非逐条数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理轨迹压缩与偏好数据构造方法",
+  "best_for_ch": "需要审计 Long2Short、rollout 筛选、答案级 verifier、偏好对与长度正则化目标的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuxiang Zhang、Zhengxu Yu、Weihang Pan、Zhongming Jin、Qiang Fu、Deng Cai、Binbin Lin、Jieping Ye",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-23T00:00:00Z"
+}

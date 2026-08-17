@@ -1,0 +1,19 @@
+{
+  "title": "Visual-ERM: Reward Modeling for Visual Equivalence",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.13224",
+    "data": "https://huggingface.co/datasets/internlm/VC-RewardBench",
+    "code": "https://github.com/InternLM/Visual-ERM",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T14:12:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 VC-RewardBench，含位置、类型、严重度反馈，补充视觉代码生成的细粒度奖励",
+    "updated_at": "2026-07-18T14:12:09Z"
+  }
+}

@@ -1,0 +1,1 @@
+Metel, Michael R.，Yufei Cui，Boxing Chen，Prasanna Parthasarathi。2026。《Thinking Long, but Short: Stable Sequential Test-Time Scaling for Large Reasoning Models》。收录于《Findings of the Association for Computational Linguistics: EACL 2026》，第 2942–2951 页。Association for Computational Linguistics。https://aclanthology.org/2026.findings-eacl.153/

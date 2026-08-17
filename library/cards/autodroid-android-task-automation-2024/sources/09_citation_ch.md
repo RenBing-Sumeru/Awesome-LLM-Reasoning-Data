@@ -1,0 +1,1 @@
+引用：Hao Wen、Yuanchun Li、Guohong Liu、Shanhui Zhao、Tao Yu、Toby Jia-Jun Li、Shiqi Jiang、Yunhao Liu、Yaqin Zhang、Yunxin Liu，《AutoDroid: LLM-powered Task Automation in Android》，ACM MobiCom 2024；arXiv:2308.15272。论文：https://arxiv.org/abs/2308.15272。官方项目/代码：https://autodroid-sys.github.io/，https://github.com/MobileLLM/AutoDroid。

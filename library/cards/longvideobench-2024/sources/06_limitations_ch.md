@@ -1,0 +1,1 @@
+正确性是 answer-key correctness，不保证证据忠实性。模型可能靠先验、语言线索或选项 artifacts 选对，而没有使用目标视频片段。网络视频的可用性和解码结果会随时间变化。结果强烈依赖抽帧率、时序覆盖、转写可用性、模态预算和 prompt 格式。Referred-context 标注有助于审计时序 grounding，但如果作为输入也可能泄漏答案相关信息。这套 benchmark 不能被当成通用 video-agent 环境，也不能证明模型有稳健长程视觉记忆。

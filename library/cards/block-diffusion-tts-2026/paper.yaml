@@ -1,0 +1,28 @@
+id: block-diffusion-tts-2026
+title: 'Advancing Block Diffusion Language Models for Test-Time Scaling'
+year: 2026
+venue: arXiv preprint
+authors: [Yi Lu, Deyang Kong, Jianing Wang, Linsen Guo, Xue Wang, Qi Guo, Tao Gui, Xuanjing Huang, Wei Ye, Shikun Zhang, Wei Wang]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [full_episode]
+domains: [mathematical-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2602.09555, arxiv: https://arxiv.org/abs/2602.09555, venue: null, code: 'https://github.com/LuLuLuyi/TDAR', data: null, project: null, huggingface: null, doi: 'https://doi.org/10.48550/arXiv.2602.09555'}
+data_object: {prompt_source: 'Mathematical reasoning benchmarks including AIME24.', trace_author: 'TDAR-8B generates block-diffusion reasoning trajectories at inference time.', answer_format: 'Long chain-of-thought blocks, denoising states, candidate answers, and block-size choices.', process_fields: [prompt, reasoning_block, confidence, denoising_step, block_size, candidate_answer, token_per_forward], environment_or_substrate: 'Block diffusion language-model decoding with parallel denoising and variable block sizes.', verifier_or_reward: 'A critic-fine refinement procedure and benchmark answer accuracy; no separately trained external verifier is claimed.', terminal_predicate: 'The decoder completes the response after its allocated block-generation and refinement procedure.'}
+recipe_metadata: {base_model: 'TDAR-8B-Thinking.', teacher: null, generator: 'A block diffusion language model with Bounded Adaptive Confidence Decoding and Think Coarse, Critic Fine.', filtering_rule: 'BACD adjusts denoising according to model confidence; TCCF allocates coarse blocks for exploration and fine blocks for refinement.', sampling_protocol: 'Compare diffusion baselines and TDAR variants with fixed token-per-forward budgets.', rollout_count: 'Reported through average-at-8 and decoding-budget comparisons.', temperature: 'See official repository and paper settings.', inference_budget: 'Token per forward and decoding speed/accuracy trade-offs.', optimizer_or_scaffold: 'Progressive Block Size Extension plus inference-time decoding and block-size control.'}
+audit: {source_mixture: 'Official arXiv PDF and official GitHub repository linked on the PDF front page.', split: 'Reasoning benchmark evaluations; see paper for exact splits.', decontamination: 'No separate contamination audit is claimed.', license: 'Verify repository, model, and benchmark licenses before reuse.', lineage: 'https://arxiv.org/abs/2602.09555', known_failure_modes: [confidence-miscalibration, diffusion-decoding-error, block-size-transfer, benchmark-specific-tuning], citation_status: verified, confidence: high, notes: 'Official arXiv PDF checked on 2026-07-21. It lists Fudan University, Peking University, and Meituan LongCat Team, and links the TDAR repository.'}
+inclusion_reason: 'It explicitly studies how decoding and reasoning-block budgets alter the efficiency and quality of inference-time scaling.'
+related: []
+tags: [test-time-compute, block-diffusion, adaptive-decoding, reasoning, inference-efficiency]
+status: verified
+one_line_summary: 'The paper makes block-diffusion reasoning scale at test time by adapting denoising and using coarse exploration followed by fine-grained critique.'
+reading_priority: useful
+paper_type: Block diffusion test-time scaling study
+best_for: Readers comparing test-time scaling mechanisms beyond autoregressive repeated sampling.
+confidence: high
+why_it_matters: 'It measures an alternative compute unit—block size and denoising work—while exposing the accuracy-speed trade-off on long reasoning.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official PDF and linked code repository verified.'}
+category_ids: [scaling_rlvr_test_time_compute]

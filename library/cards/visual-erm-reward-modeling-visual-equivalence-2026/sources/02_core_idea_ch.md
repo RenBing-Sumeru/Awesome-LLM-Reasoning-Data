@@ -1,0 +1,1 @@
+Visual-ERM 训练一个直接比较目标图像与候选渲染图的生成式奖励模型，输出错误类别、位置、严重度与解释；同时发布 VC-RewardBench，用细粒度视觉差异标注测试 reward model 的等价性判断。VC-RewardBench 的论文主 benchmark 含 1,335 个精心构造的 chart、table 与 SVG 实例；每条包含目标图像、正确或受扰动的候选渲染，以及错误类型、位置、严重度和描述等反馈。当前 Hugging Face viewer 可能显示多个配置合计约 2.67K 行，不能与 1,335 个独立 benchmark case 直接等同，许可为 Apache-2.0。

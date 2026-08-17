@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PAJAMA 将 LLM 的判决逻辑合成为可执行程序，以降低成本并改善偏差与一致性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行程序式 LLM judge、弱监督聚合与评测审计研究",
+  "best_for_ch": "需要低成本、可审计地重复执行固定 rubric 评测的研究者。",
+  "confidence_ch": "高：ICML 2025 PRAL workshop 论文、作者和 University of Wisconsin–Madison 机构已核验。",
+  "authors_ch": "Tzu-Heng Huang、Harit Vishwakarma、Frederic Sala",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

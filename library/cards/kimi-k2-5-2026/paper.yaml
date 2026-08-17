@@ -1,0 +1,142 @@
+id: kimi-k2-5-2026
+title: 'Kimi K2.5: Visual Agentic Intelligence'
+year: 2026
+venue: arXiv preprint
+authors:
+- Kimi Team
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+- coding
+- software_engineering
+- search
+- agentic_tool_use
+- vision
+- video
+- computer_use
+- long_context
+training_use:
+- sft
+- distillation
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.02276
+  arxiv: https://arxiv.org/abs/2602.02276
+  code: https://github.com/MoonshotAI/Kimi-K2.5
+  data: null
+  project: https://www.kimi.com/blog/kimi-k2-5
+  huggingface: https://huggingface.co/moonshotai/Kimi-K2.5
+  doi: https://doi.org/10.48550/arXiv.2602.02276
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated web text, code, math, knowledge, retrieved/crawled STEM, image-code pairs, GUI screenshots/actions,
+    video, grounding data, and synthetic search prompts; source manifests, weights, rights, and splits are unknown.
+  trace_author: K2, K2 Thinking, proprietary in-house experts, human annotation, prompt engineering, multi-stage validation,
+    and generated visual-RL/RFT traces; models, routing, prompts, and yields are unknown.
+  answer_format: Text/image/video inputs, response/reasoning traces, code/tool actions, sandbox observations, agent/subtask
+    trajectories, and task outcomes/rewards.
+  process_fields:
+  - task_or_prompt
+  - text_image_or_video_input
+  - response_or_reasoning_trace
+  - tool_action
+  - environment_observation
+  - subtask_trajectory
+  - verifier_or_reward
+  - terminal_outcome
+  environment_or_substrate: Unreleased Unified Agentic RL Environment with Gym-like interface, sandboxed tools, judge module,
+    asynchronous coroutines, environment pool, and claimed up to 100,000 concurrent tasks.
+  verifier_or_reward: Rule-based outcomes, token-budget reward, GRMs aligned to internal value criteria, visual F1/IoU/edit-distance/counting
+    rewards, and Kimi K2 LLM visual-puzzle verifier; rubrics, thresholds, calibration, and errors are unknown.
+  terminal_predicate: Task-specific verified solution/outcome, quality assessment, and PARL task/subtask completion; rules,
+    timeouts, and partial credit are unknown.
+recipe_metadata:
+  base_model: Kimi K2 MoE (report gives 1.04T total/32B active) plus MoonViT-3D and MLP projector for K2.5.
+  teacher: K2, K2 Thinking, and proprietary experts for SFT candidates; Kimi K2 also verifies visual puzzles. Full inventory/routing
+    is unknown.
+  generator: Synthetic responses/puzzles, STEM reformulations, image-code, GUI/action records, and search prompts; configurations
+    and provenance are unknown.
+  filtering_rule: Correctness/quality validation, data experiments, filtering, deduplication, multi-stage verification, and
+    outcome-based visual RL/RFT are stated; thresholds, rejection reasons, yields, and per-source application are unknown.
+  sampling_protocol: About 15T mixed vision-text continual-pretraining tokens over ViT, joint, and long-context stages; joint
+    RL. Mixture, rollouts, decoding, and schedules are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: 256K evaluation context and release blog claims up to 1,500 calls/100 subagents; training budgets are
+    unknown.
+  optimizer_or_scaffold: Token-level log-ratio clipping, MuonClip, text-vision RL, GRMs, Toggle efficiency heuristic, PARL,
+    and Unified Agentic RL Environment; objective coefficients and schedules are unknown.
+audit:
+  source_mixture: Approximately 15T mixed vision/text tokens with named modalities/domains but no source inventory, proportions,
+    records, immutable snapshots, or rights mapping.
+  split: unknown
+  decontamination: Filtering/deduplication is stated but methods, overlap protocol, thresholds, and residual results are unknown.
+  license: Checkpoint/repository are marked modified-mit; data, teacher outputs, crawled/retrieved material, environments,
+    tools, and third-party rights are unknown.
+  lineage: K2 base, K2.5 report/repository/checkpoint, and selected teachers are identified; item-level source-to-generation-to-filter-to-environment-to-rollout
+    lineage is unknown.
+  known_failure_modes:
+  - No SFT/RL data, teachers, environments, sandboxes, rollouts, reward logs, or GRM rubrics
+  - Private experts/internal value criteria prevent reconstruction
+  - PARL needs anti-spurious-parallelism defenses without released calibration audit
+  - Filtering/deduplication lacks source/split/overlap evidence
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv citation pin confirmed. Track-12 disclosure ledger only, not a Track-8 reusable-RL-recipe classification.
+inclusion_reason: A 2026 frontier report with explicit multimodal SFT/RL, reward, agent-environment, and Agent Swarm disclosures
+  but material data/reproducibility gaps.
+related:
+- kimi-k2-thinking-2025
+tags:
+- kimi-k2-5
+- frontier-report
+- data-disclosure-ledger
+- multimodal-rl
+- agent-swarm
+- parl
+- grm
+- zero-vision-sft
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Kimi K2.5 reports 15T multimodal continual pretraining, zero-vision SFT, joint RL, GRMs, and PARL but not
+  data, teachers, environments, rollouts, or reward calibration artifacts.
+why_it_matters: It exposes a sophisticated multimodal/multi-agent feedback contract while showing why a checkpoint and report
+  do not make post-training reusable or fully auditable.
+card: null
+needs:
+- 'needs_data: SFT/RL prompts, trajectories, visual tasks, filters, rejects, and manifests'
+- 'needs_release: agent-RL environments, tools/sandboxes, containers, rollout manager, and logs'
+- 'needs_metadata: teachers, prompts, mixtures, rollout/decoding, objective coefficients, and schedules'
+- 'needs_audit: source rights, splits, decontamination, GRM calibration, and reward-hacking analysis'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official arXiv, Kimi blog, Moonshot repository/license, and official checkpoint verified; no post-training data or
+    reusable agent-RL environment release found.

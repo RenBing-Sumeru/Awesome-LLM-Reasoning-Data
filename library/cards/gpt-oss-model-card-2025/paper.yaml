@@ -1,0 +1,140 @@
+id: gpt-oss-model-card-2025
+title: gpt-oss-120b & gpt-oss-20b Model Card
+year: 2025
+venue: arXiv preprint
+authors:
+- OpenAI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+domains:
+- mathematics
+- coding
+- science
+- agentic_tool_use
+- safety
+training_use:
+- sft
+- distillation
+- rlvr
+- agent_training
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.10925
+  arxiv: https://arxiv.org/abs/2508.10925
+  code: https://github.com/openai/gpt-oss
+  data: null
+  project: https://openai.com/index/introducing-gpt-oss/
+  huggingface: https://huggingface.co/openai/gpt-oss-120b
+  doi: https://doi.org/10.48550/arXiv.2508.10925
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2508.10925
+data_object:
+  prompt_source: Mostly English, text-only pretraining data focused on STEM, coding, and general knowledge, plus undisclosed
+    post-training problems. Source manifests, quantities, rights, and prompt records are unknown.
+  trace_author: Large-scale distillation and reinforcement learning train chain-of-thought and tool use. Individual trace
+    writers, teacher checkpoints, and trace provenance are undisclosed.
+  answer_format: Harmony conversations with System, Developer, User, Assistant, and Tool roles; analysis chain of thought;
+    commentary tool calls and intermediate messages; tool responses; and final answers.
+  process_fields:
+  - system_message
+  - developer_message
+  - user_message
+  - assistant_analysis
+  - commentary_tool_call
+  - tool_response
+  - final_answer
+  - reasoning_effort
+  environment_or_substrate: Public interfaces cover browsing, stateful Python in a Jupyter environment, and developer-defined
+    functions. The released repository provides reference tools, but exact training environments and rollout substrate are
+    unknown.
+  verifier_or_reward: Unknown for core post-training. The report describes high-compute CoT RL similar to o3/o4-mini but not
+    reward models, verifiers, formulas, thresholds, or tool-trajectory filtering.
+  terminal_predicate: Unknown for training. Benchmark pass@1 and tool use are described, but no common post-training completion
+    predicate or partial-credit policy is released.
+recipe_metadata:
+  base_model: Autoregressive MoE transformers building on GPT-2 and GPT-3 architectures; exact pretrained checkpoint lineage
+    unknown.
+  teacher: Internal-model-informed large-scale distillation is reported, but teacher checkpoint identities, mappings, and
+    targets are unknown.
+  generator: unknown
+  filtering_rule: CBRN-related harmful pretraining data is filtered with GPT-4o CBRN filters. Remaining filters, post-training
+    rejection criteria, yields, and safety-data filters are undisclosed.
+  sampling_protocol: Low, medium, and high reasoning-effort settings are disclosed through system-prompt keywords. Temperatures,
+    rollout counts, batches, and domain allocation are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Low, medium, and high reasoning-effort support is disclosed; numerical training and inference budgets
+    are unknown.
+  optimizer_or_scaffold: SFT then high-compute CoT RL using techniques similar to o4-mini/o3; deliberative alignment and instruction
+    hierarchy are used for safety. Optimizer, RL algorithm, reward coefficients, and configuration are unknown.
+audit:
+  source_mixture: Broad text-only mostly English STEM/coding/general pretraining plus undisclosed post-training problems.
+    No source manifests, per-source proportions, provenance, or records are provided.
+  split: unknown
+  decontamination: unknown
+  license: Weights, tokenizer, inference implementations, and released tool environments are Apache-2.0. Training, post-training,
+    safety, and evaluator data rights are unknown.
+  lineage: Architecture, tokenizer, broad domains, CoT RL, and internal-model-informed distillation are disclosed, but checkpoint-level
+    lineage, teachers, data provenance, and item derivations are not.
+  known_failure_modes:
+  - Reported hallucination is higher than o4-mini without browsing.
+  - Reported instruction-hierarchy resistance is weaker than o4-mini.
+  - Unfiltered CoT can hallucinate or conflict with safety policy and should not be shown raw.
+  - Downstream fine-tuning can weaken safety refusals.
+  - Unreleased data, reward, and audit records prevent reproduction.
+  citation_status: verified
+  confidence: medium
+  notes: Track 12 model-card disclosure entry, not a reusable Track 8 recipe. Weights and reference tool code do not release
+    the training or feedback pipeline.
+inclusion_reason: Official OpenAI model card for open-weight reasoning models with concrete data-domain, CoT/tool-interface,
+  safety, release, and risk disclosures alongside substantial opacity in training artifacts.
+related: []
+tags:
+- gpt-oss
+- frontier-report
+- data-disclosure-ledger
+- open-weights
+- model-card
+- harmony
+- chain-of-thought
+- tool-use
+- safety-alignment
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: gpt-oss discloses broad pretraining, CoT-RL/tool interfaces, safety mitigation, and Apache-2.0 weights/tool
+  references while withholding source-level training, reward, rollout, and audit artifacts.
+why_it_matters: It distinguishes a real open-weight inference release from an unreleased post-training pipeline whose data
+  provenance, reasoning traces, reward contract, and contamination evidence cannot be audited.
+card: null
+needs:
+- 'needs_data: pretraining, SFT, RL, distillation, safety, and tool-trajectory records'
+- 'needs_metadata: teachers, manifests, mixture weights, generator details, filters, rollouts, temperatures, and rewards'
+- 'needs_audit: splits, decontamination, reward/verifier calibration, safety-data provenance, and evaluation scaffolds'
+- 'needs_license: training and evaluator data rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official arXiv card, OpenAI release, OpenAI GitHub, and OpenAI model release establish public model/tools but not
+    the data or feedback pipeline.

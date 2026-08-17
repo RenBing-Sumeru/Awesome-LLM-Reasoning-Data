@@ -1,0 +1,1 @@
+论文公开 BFF-Bench 与 VERDICTS。BFF-Bench 含 160 个由金融专业人士编写的高难问题和长答案；专家随后对 BFF-Bench 与 MT-Bench 困难子集上的 1,200 个模型回答标注正确性。记录保留问题、候选回答、专家参考与 verdict，可直接测试 Judge 的 correctness，而不是总体风格偏好。核心发现是 Judge 能否答对题与能否判对回答强相关，高质量人类参考比更强 Judge 配合合成参考更有效。

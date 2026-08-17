@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T06:34:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "研究大模型流程提高回答的正确性",
+    "updated_at": "2026-07-28T06:34:58Z"
+  }
+}

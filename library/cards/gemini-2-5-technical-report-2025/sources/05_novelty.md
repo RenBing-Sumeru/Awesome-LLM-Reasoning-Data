@@ -1,0 +1,3 @@
+This is not a data release. Its distinctive Track 12 value is the unusual conjunction of disclosure and restraint: the report names broad multimodal data modalities, curated instruction-response data, human preferences, tool-use data, SFT/RM/RL, verifiable rewards, model-generated rewards, tool-use RL, Flash distillation, benchmark decontamination, adversarial training, and memorization measurement without pretending that the associated artifacts are public.
+
+That structure makes the Card a useful frontier-report comparison point. It separates a genuine lifecycle disclosure from a reusable dataset or fully specified feedback stack, and it preserves the withheld interfaces that matter for data lineage, reward verification, reproducibility, and independent safety review.

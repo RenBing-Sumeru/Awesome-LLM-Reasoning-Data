@@ -1,0 +1,11 @@
+- 论文报告六位专家、3,906 个 binary annotation 和 89.3% success agreement；固定 CSV 却有八个 annotator identifier、1,408 行、1,302 个唯一 key、106 个双标 key，以及第四个 ordinal optimality 字段。从原始行经讨论/adjudication 到报告统计的映射 unknown。
+- annotation protocol 没有披露招募、报酬、逐任务分配、是否盲评、独立标签保留方式或不可变 adjudication log。论文没有报告 optimality 的 agreement statistic，原始数据中还有一行 `Unsure`。
+- functional evaluator 的累计 reward `>0.5` 阈值是 environment proxy，不是语义成功证明。相对专家参考，其 recall 只有 55.9%，存在大量 false negative。LLM judge 仍会受到 grounding、instruction detail、过度相信 reasoning 与 action intent 误判影响；side-effect positive 又过少，难以形成稳定结论。
+- Hugging Face 文件 inventory 确认 1,302 个 cleaned JSON、1,302 个 screenshot directory 与每个 episode 15 个 judgment file，但不能证明每个序列化 screenshot path 都可解析，也不能证明每个 provider response 都成功 parse。相应的穷举验证报告缺失。
+- task-level dev/test manifest 必须手工连接，因为 Hugging Face viewer 将 annotation 暴露为单一 `full` configuration。论文没有报告 model-pretraining 去污染、public-task exposure 分析或未来污染政策。公开 benchmark task 被有意复用；AssistantBench 因 test set 私有而使用公开 validation set。
+- release 支持离线检查，却不能确定性重放 environment。真实网站会漂移；上游 benchmark、AgentLab 与 BrowserGym commit 并未全部固定；database/site snapshot 与 container 缺失；requirements 只给出 `browsergym` 下界；runner 还设置 `strict_reproducibility=False`。
+- GitHub repository 没有检测到代码许可证。dataset 使用定制 Hugging Face terms，而不是标准 open-data license；research use 受适用 fair use 法律与第三方条款约束，derivative 还必须传递这些条款。五个 benchmark、website、ServiceNow content、screenshot 与 model output 的逐组件权利链没有闭合。
+- AssistantBench episode 与 screenshot 会观察真实网站，可能包含第三方内容。release 没有 PII、privacy 或 consent audit。这表示复核缺失，不表示已发现个人信息。
+- 官方 setup 文档包含 credential-like 默认示例与 endpoint template。本卡片有意不复述任何值。复用者应移除或轮换 default，并确保 credential 不进入衍生 dataset、log 或 documentation。
+- source-agent 设置只能部分重建：record-level model argument、flag、seed、package version 与 statistic 已发布，但冻结的 Claude endpoint、全部 provider behavior、environment snapshot 与 aggregate decoding setting 不完整。两个持续 timeout 的尝试没有发布，因此完成前失败尝试并未全部保留。
+- 论文评估的是自动 evaluator，没有报告使用该 release 进行 SFT、preference learning、reward-model training、process supervision、RLVR 或 agent-policy training 的实验。benchmark 结果不能证明 trajectory 或 label 适合作为训练数据。

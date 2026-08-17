@@ -1,0 +1,3 @@
+The benchmark is not a pure deterministic verifier. Data-analysis scoring can depend on a judge step that uses an OpenAI key, while modeling scores depend on each competition's metric and processed data snapshot. Version drift in judge models, Kaggle data, or source files can change results.
+
+The repository disclaimer restricts the dataset to educational and research purposes, requires non-commercial use unless permission is granted, and disclaims ownership of original data. Reuse must therefore track source rights and compliance. Reported performance should not be read as a universal measure of data-science expertise outside the covered tasks and file formats.

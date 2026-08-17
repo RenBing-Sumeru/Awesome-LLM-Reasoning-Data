@@ -1,0 +1,9 @@
+The reconstructable pipeline is:
+
+1. **Acquire and filter code.** Apply SHA256 exact deduplication, MinHash near deduplication, and Tree-sitter parsing to GitHub data. Train the 1.3B quality regressor for one epoch on 222,066 DeepSeek-V2-Chat-labeled files; remove the relative bottom ~10%. The retained GitHub corpus is about 1T unique tokens over 89 languages.
+2. **Construct commit/web/continued data.** Build about 100B commit tokens from 74M commits in 140K repositories meeting popularity/maintenance thresholds. Recall web code from 10M candidates with fastText (99% recall, 45% precision), then LLM-score/category-filter to about 1.2T tokens. Expand about 100K high-quality seeds for 2-3 rounds to about 130B tokens. Build about 1T long-context continued-pretraining tokens and extend context 8K to 32K.
+3. **Pretrain 6T tokens.** Train the 8.2B Base on 1T code/math web at LR 3e-4, then 4T curated code at the same LR; reduce LR by sqrt(10) for 400B continued tokens and use 3e-5 for the final 600B.
+4. **SFT and DPO.** Filter synthesized records by syntax, correctness, and difficulty >=3/10; self-correct difficult examples against generated tests. Retain about 3M SFT pairs and train three epochs at LR 2e-5 with packing. Sample hundreds of on-policy candidates per prompt and retain about 20K sandbox-derived DPO pairs; DPO beta, LR, epochs, and selection details are unknown.
+5. **LongCoT warmup and RL.** Rejection-sample DeepSeek-R1/open CoT solutions, retain thousands, and warm Base at LR 2e-5. GRPO via verl uses batch 128, LR 1e-6, temperature 0.6, no KL, clip 0.28, token-wise loss, overlong filtering, and removal of prompts above 87.5% correctness. Run 90 steps at 16K with 16 rollouts/prompt, then 160 at 32K with 32 rollouts/prompt.
+
+Total GRPO trajectories cannot be reconstructed without prompt batching, discarded groups, failures, and resampling. No reward formula or sandbox implementation is inferred.

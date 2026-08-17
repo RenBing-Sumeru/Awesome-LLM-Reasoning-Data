@@ -1,0 +1,1 @@
+The paper audits 11 judges from five families over five safety domains and five artifacts: apology, authority, halo, verbosity and position. It contrasts tie detection, real-world win-rate shifts, repeated runs and human agreement, then aggregates artifact-aware juries. It does not release a new dataset.

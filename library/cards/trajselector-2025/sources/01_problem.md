@@ -1,0 +1,3 @@
+External Best-of-N reasoning spends extra inference compute to generate several candidate trajectories and then needs a reliable selector. Majority voting ignores how a solution was reached, while mainstream process reward models can add a second model near the sampler's scale. The paper targets this selection bottleneck and the unused information already present in the sampler's hidden states.
+
+The data problem is equally important: step-level process labels are costly, but final-answer checks do not directly label intermediate reasoning. TrajSelector therefore constructs weak process supervision from generated math traces and a programmatic answer checker; its main audit question is whether outcome-level correctness can support trustworthy step scoring.

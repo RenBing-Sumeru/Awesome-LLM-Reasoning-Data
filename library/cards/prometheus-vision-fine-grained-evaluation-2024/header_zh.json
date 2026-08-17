@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Prometheus-Vision 用 1.5 万条面向用户的量规训练开源视觉语言评判模型，进行图像依据的细粒度评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Seongyun Lee、Seungone Kim、Sue Hyun Park、Geewook Kim、Minjoon Seo",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

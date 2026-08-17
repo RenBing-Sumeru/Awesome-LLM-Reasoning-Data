@@ -1,0 +1,124 @@
+id: claw-swe-bench-openclaw-harnesses-2026
+title: 'Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks'
+year: 2026
+venue: arXiv preprint
+authors:
+- Mengyu Zheng
+- Kai Han
+- Boxun Li
+- Haiyang Xu
+- Yuchuan Tian
+- Wei He
+- Hang Zhou
+- Jianyuan Guo
+- Hailin Hu
+- Lin Ma
+- Chao Xu
+- Guohao Dai
+- Lixue Xia
+- Yunchao Wei
+- Yunhe Wang
+- Yu Wang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- swe-agents
+- agent-harnesses
+- coding-tasks
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.12344
+  arxiv: https://arxiv.org/abs/2606.12344
+  doi: null
+  code: https://github.com/opensquilla/claw-swe-bench
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Claw-SWE-Bench paper and OpenSquilla repository
+  trace_author: Claw-SWE-Bench authors and OpenClaw-style harness construction
+  answer_format: coding tasks, harness configurations, agent runs, patches, logs, and benchmark outcomes
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: OpenClaw-style agent harnesses for coding and repository tasks
+  verifier_or_reward: OpenClaw-style harness scoring and task-specific tests
+  terminal_predicate: OpenClaw-style harness scoring and task-specific tests
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: benchmark tasks and harness validators
+  generator: OpenClaw-style coding-task benchmark construction
+  filtering_rule: pin full versus Lite subset, Hugging Face revision, patch extraction, and workspace contract
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2606.12344; https://github.com/opensquilla/claw-swe-bench
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2606.12344'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: pin full/Lite subset versions, patch extraction/workspace contract, and dataset revision
+inclusion_reason: it exposes harness-level choices as part of the SWE-agent evaluation surface
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- swe-agents
+- agent-harnesses
+- coding-tasks
+one_line: Claw-SWE-Bench evaluates OpenClaw-style agent harnesses on coding tasks.
+why_it_matters: it exposes harness-level choices as part of the SWE-agent evaluation surface
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Claw-SWE-Bench evaluates OpenClaw-style agent harnesses on coding tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms arXiv title, author list, multi-institution affiliations, and OpenSquilla repository.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 105
+  primary_category_id: environment_agent_trajectory_data

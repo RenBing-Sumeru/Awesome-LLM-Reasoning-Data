@@ -1,0 +1,28 @@
+id: step-hidden-state-pruning-2026
+title: 'Hidden States as Early Signals: Step-level Trace Evaluation and Pruning for Efficient Test-Time Scaling'
+year: 2026
+venue: Findings of ACL 2026
+authors: [Zhixiang Liang, Beichen Huang, Zheng Wang, Minjia Zhang]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [step_level, full_episode]
+domains: [mathematical-reasoning, general-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://aclanthology.org/2026.findings-acl.1336/, arxiv: null, venue: https://aclanthology.org/2026.findings-acl.1336/, code: https://github.com/Supercomputing-System-AI-Lab/STEP, data: null, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2026.findings-acl.1336}
+data_object: {prompt_source: 'AIME-25, HMMT-24/25, GPQA Diamond, EquiBench, and DivLogicEval prompts.', trace_author: 'Reasoning models generate multiple parallel chains whose step-boundary hidden states are captured during inference.', answer_format: 'Prompt, reasoning trace, step boundaries, hidden states, step scores, trace score, pruning event, KV-cache status, final answer, and correctness.', process_fields: [prompt, trace, step_hidden_states, step_scores, trace_score, gpu_memory, prune_event, final_answer, correctness], environment_or_substrate: 'Parallel reasoning generation on GPU inference systems whose KV cache can saturate.', verifier_or_reward: 'A two-layer MLP predicts trace correctness from step-end hidden states; benchmark metrics score final answers.', terminal_predicate: 'The retained final answer is scored correct by the corresponding benchmark.'}
+recipe_metadata: {base_model: 'Qwen3-4B-Thinking-2507, DeepSeek-R1-0528-Qwen3-8B, and Phi-4-reasoning-plus 14B.', teacher: 'Not applicable; trace-level correctness pseudo-labels supervise the step scorer.', generator: 'Parallel reasoning traces are generated and dynamically pruned during decoding.', filtering_rule: 'When GPU memory reaches saturation, prune the active trace with the lowest running average step score and release its KV cache.', sampling_protocol: 'Compare against self-consistency, Slim-SC, and DeepConf across multiple reasoning benchmarks.', rollout_count: 'See the official paper for model- and benchmark-specific parallel trace budgets.', temperature: 'See official code/configuration.', inference_budget: 'Multiple concurrent traces constrained by GPU KV-cache capacity.', optimizer_or_scaffold: 'Weighted binary-cross-entropy step scorer over hidden states plus memory-aware pruning controller.'}
+audit: {source_mixture: 'Official ACL paper and official GitHub repository.', split: 'The paper evaluates five challenging reasoning benchmarks and multiple model scales.', decontamination: 'No formal contamination audit is claimed.', license: 'Validate model, benchmark, and repository licenses before reuse.', lineage: 'https://aclanthology.org/2026.findings-acl.1336/', known_failure_modes: [pseudo-label-noise, hidden-state-model-shift, correct-trace-pruning, gpu-specific-trigger, kv-cache-overhead], citation_status: verified, confidence: high, notes: 'Official ACL PDF and GitHub link checked on 2026-07-21. All authors list the University of Illinois Urbana-Champaign.'}
+inclusion_reason: 'It controls the number of active parallel reasoning traces from early hidden-state evidence and GPU-memory pressure, directly optimizing the inference accuracy-latency trade-off.'
+related: []
+tags: [test-time-scaling, trace-pruning, hidden-states, kv-cache, latency]
+status: verified
+one_line_summary: 'STEP prunes low-promise reasoning traces using step-end hidden states when KV-cache pressure rises, reducing parallel test-time latency without sacrificing accuracy.'
+reading_priority: essential
+paper_type: Efficient parallel test-time scaling study
+best_for: Readers deploying self-consistency-like reasoning at scale where GPU memory pressure and queuing, rather than token count alone, determine latency.
+confidence: high
+why_it_matters: 'It connects trace-quality signals to an actual serving-system trigger, showing that compute allocation must consider KV-cache scheduling as well as model reasoning.'
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-21', verified_by: curation, confidence: high, notes: 'Official ACL paper and official code repository checked.'}
+category_ids: [scaling_rlvr_test_time_compute]

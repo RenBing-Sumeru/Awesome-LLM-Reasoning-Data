@@ -1,0 +1,184 @@
+id: limits-inference-scaling-resampling-2026
+title: The Limits of Inference Scaling Through Resampling
+year: 2026
+venue: ICLR 2026
+authors:
+- Benedikt Stroebl
+- Sayash Kapoor
+- Arvind Narayanan
+source_role:
+- scaling_study
+- audit_failure
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- code
+training_use:
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=j8H84v6AZ1
+  arxiv: https://arxiv.org/abs/2411.17501
+  code: https://github.com/benediktstroebl/inference-scaling-limits
+  data: https://www.dropbox.com/scl/fi/je3d9lrmu36g5x3alugsa/humaneval_evalplus.zip?dl=0&rlkey=del4cd36kfyyseaw7r9zs8gn0&st=6ixn93qb
+  data_mbpp: https://www.dropbox.com/scl/fi/ks8ml79rapst8ebgce6wz/mbpp_evalplus.zip?dl=0&rlkey=tm1uk56l7onv1wsyb2a9x9ist&st=szk5toba
+  data_code_quality: https://www.dropbox.com/scl/fi/wwevjlo1u30jxt5bdyra7/humaneval_race.zip?dl=0&rlkey=4j3hmhwuq87ndfnh4apxeil9n&st=l23miy3q
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=j8H84v6AZ1
+  openreview: https://openreview.net/forum?id=j8H84v6AZ1
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  unit_of_record: A benchmark-task/model candidate record containing a generated Python solution, its sampling attempt, pass/fail
+    outcomes under the original and extended test suites, and the resulting true-positive or false-positive label. The separate
+    code-quality branch also records the requested style property and compliance.
+  prompt_source: HumanEval+ and MBPP+ programming tasks. Original HumanEval and MBPP unit tests act as limited acceptance
+    verifiers; extended EvalPlus tests act as the stronger retrospective correctness audit.
+  trace_author: Vicuna 7B, Mistral 7B, CodeT5p 16B, CodeGen, CodeGen2, Code Llama 7B and 13B, Llama 3.1, Phi-3, GPT-4o, and
+    Cohere Command-family models, combining prior EvalPlus samples with newly generated API samples.
+  context_or_state: The programming prompt, model identity, candidate order within the resampling budget, and previous verifier
+    rejections for that task.
+  trace_or_actions: Repeatedly sample a Python program and run the original benchmark tests until a candidate passes or the
+    budget K is exhausted.
+  answer_or_artifact: The first candidate within K that passes the original tests, or no accepted answer if every candidate
+    is rejected.
+  process_fields:
+  - benchmark_task
+  - generator_model
+  - candidate_solution
+  - sampling_attempt
+  - original_test_pass
+  - extended_test_pass
+  - true_positive_or_false_positive
+  - code_quality_instruction
+  - code_quality_compliance
+  observation: Binary outcomes from executable Python unit tests, plus measured compliance with camelCase, snake_case, line-length,
+    and line-comment instructions in the RACE-based code-quality branch.
+  verifier_output: The original tests emit the binary acceptance decision. The extended suite is not part of selection; it
+    labels accepted candidates as true or false positives for the audit.
+  reward: The finite-budget analysis assigns a true positive benefit of 1, no-pass value 0, and false-positive costs corresponding
+    to cost-benefit ratios 0, 1, 2, 4, and 8. These are analytic utilities, not rewards used to train an LLM.
+  terminal_predicate: Stop at the first original-test pass or after K candidates. When false-positive cost is modeled, K itself
+    is selected to maximize expected utility and may be 0.
+  provenance: Benchmark prompt -> repeated model samples -> original-test accept/reject -> extended-test true/false-positive
+    audit -> conditional-accuracy, scaling-curve, and expected-utility analysis.
+  environment_or_substrate: EvalPlus execution for HumanEval+/MBPP+ and a RACE-based setup for code-quality instruction compliance.
+  release_boundary: The official repository releases analysis code and three linked sample bundles for HumanEval+, MBPP+,
+    and code quality. It has no tagged release, checksums, or consolidated manifest, and the output-data license is not stated
+    explicitly.
+recipe_metadata:
+  base_model: Multiple proprietary and open code-generation model families; the work is an evaluation and audit rather than
+    a training recipe for one base model.
+  teacher: null
+  generator: Multiple code-generation LLMs sampled through APIs or inherited from the prior EvalPlus sample release.
+  prompt_or_task_source: HumanEval+ and MBPP+ programming tasks.
+  sampling_protocol: Temperature 0.8 with EvalPlus defaults otherwise. HumanEval+ uses at least 200 samples per task/model
+    for most models and 1,000 for Command Light; MBPP+ uses 50 samples per task/model. Finite-K estimates repeat random permutations
+    of the available sample set 1,000 times.
+  filtering_rule: Select the first candidate passing the original HumanEval or MBPP tests; use the corresponding extended
+    suite only to audit whether that accepted sample is actually correct.
+  selection_threshold: first_original_test_pass
+  rollout_count: unknown
+  temperature: 0.8
+  inference_budget: From 50 to 1,000 stored samples per task/model depending on the experiment; reported analyses cover K
+    up to 200, the infinite-budget limit, and utility- optimal stopping under different false-positive costs.
+  search_or_scaffold: Sequential rejection sampling with executable unit-test feedback; no repair, critique, diversity selection,
+    or verifier refinement is applied.
+  optimizer_or_scaffold: No LLM training is performed. The study computes conditional correctness, resampling curves, false-positive
+    utility, and code-quality diagnostics.
+audit:
+  source_mixture: HumanEval/HumanEval+ and MBPP/MBPP+ with candidate samples from multiple open and proprietary model families;
+    some samples are inherited from EvalPlus and others are newly generated through APIs.
+  split: The analysis retains 150 HumanEval+ tasks after excluding 14 suspected oracle- mismatch tasks. For MBPP+, EvalPlus
+    first removes 21 broken tasks, then the authors exclude 57 suspected mismatch tasks, leaving 321.
+  decontamination: unknown
+  benchmark_overlap: The study does not report model-training contamination or memorization audits for HumanEval, MBPP, or
+    their extended tests.
+  lineage: Task and model -> ordered candidate samples -> original-test acceptance -> extended-test audit -> resampling and
+    utility statistics. Released bundles are linked from the official repository, but immutable lineage manifests were not
+    identified.
+  license: The paper is CC BY 4.0. The official repository code is MIT-licensed and its EvalPlus-derived directory carries
+    Apache-2.0 text. These notices do not clearly establish reuse terms for all newly generated output bundles.
+  release_version: arXiv v3, ICLR 2026 OpenReview, and the official GitHub main branch were checked on 2026-07-22. GitHub
+    showed no tagged release.
+  successful_and_failed_sample_retention: Released sample bundles support accepted/rejected and true/false-positive analyses,
+    but no signed manifest or completeness statement was identified for every model/task/attempt used in the paper.
+  verifier_or_judge_failure_modes:
+  - Limited original unit tests accept incorrect programs as false positives.
+  - Weaker generators can have lower conditional correctness after acceptance.
+  - Rejection shifts the remaining task mixture toward harder tasks, raising later false-positive risk.
+  - Evaluating with the same weak tests used for selection would hide the generalization gap.
+  - Extended suites are treated as stronger oracles but also contain suspected mismatches requiring exclusions.
+  environment_failure_modes:
+  - dependency and Python-runtime drift can change execution outcomes
+  - API model versions and sampling behavior can change over time
+  - missing seeds and incomplete run manifests limit exact replay
+  privacy_or_consent: No personal data is intentionally collected; the released objects are benchmark prompts and model-generated
+    code. API-provider retention terms are not discussed.
+  known_failure_modes:
+  - false positives persist or increase as sampling continues
+  - optimal K can be small or zero when false positives are costly
+  - empirical evidence is limited to code and human-authored unit tests
+  - code-quality compliance does not establish general correctness or maintainability
+  - benchmark performance is not evidence that the released sample data are complete or well licensed
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2026/OpenReview, arXiv v3 and appendices, the official author repository, its license files, and its three linked
+    sample bundles were checked on 2026-07-22. The repository corrects the earlier metadata claim that no dedicated code or
+    data artifact was confirmed.
+  remaining_unknowns:
+  - exact API model snapshots, dates, seeds, and full generation configuration
+  - immutable checksums and a consolidated task/model/sample manifest
+  - explicit license covering every newly generated output bundle
+  - verifier-precision thresholds for safe use in training-data selection
+  - transfer to LLM-generated tests, non-code reasoning, and agent environments
+inclusion_reason: A direct audit of verifier-gated rejection sampling that shows why data builders must retain attempt order,
+  weak- and strong-verifier outcomes, false-positive costs, and stopping budgets instead of treating every accepted rollout
+  as correct.
+related: []
+tags:
+- imperfect-verifier
+- rejection-sampling
+- verifier-filtering
+- false-positives
+- inference-scaling
+- code-reasoning
+- data-curation-audit
+- evalplus
+- optimal-stopping
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Audits verifier-gated code resampling with weak and extended unit tests, showing that more attempts can
+  preserve false positives and make a finite or zero budget optimal.
+why_it_matters: Rejection-sampled reasoning data are only as reliable as their acceptance gate; this work makes verifier precision,
+  generator capability, task difficulty, and sampling budget explicit audit dimensions.
+card: null
+needs:
+- 'needs_metadata: immutable checksums and a complete task/model/attempt manifest'
+- 'needs_license: explicit reuse terms for all released generated-output bundles'
+- 'needs_metadata: exact API model snapshots, dates, seeds, and generation configuration'
+- 'needs_evidence: evaluation with LLM-generated tests and non-code reasoning verifiers'
+- 'needs_evidence: empirically grounded false-positive costs and safe verifier thresholds'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper and venue pages, arXiv v3, author repository, license files, and repository-linked sample bundles
+    were checked. artifact_verified covers the presence of code and sample downloads, not complete reproducibility or data
+    rights.

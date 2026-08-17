@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "FoVer 用 Z3 与 Isabelle/HOL 为形式逻辑和形式证明轨迹生成二元步骤标签，组成 FOVER-40K 并训练用于步骤判错与 Best-of-K 选择的 PRM。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "形式验证驱动的过程监督数据合成",
+  "best_for_ch": "研究可程序验证过程标签、PRM 数据配方与形式到非形式迁移的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Ryo Kamoi, Yusen Zhang, Nan Zhang, Sarkar Snigdha Sarathi Das, Ranran Haoran Zhang, Wenpeng Yin, Rui Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

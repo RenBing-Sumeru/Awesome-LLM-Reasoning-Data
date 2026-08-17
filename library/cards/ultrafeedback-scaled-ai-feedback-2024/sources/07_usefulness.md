@@ -1,0 +1,1 @@
+Use this paper when designing a feedback dataset that must serve several consumers, such as a reward model, a response selector, or an aligned policy. It is especially useful for deciding which intermediate artifacts—candidate sets, rubrics, critiques, dimension scores, and ranks—should remain available instead of being collapsed into a binary preference pair.

@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "OSWorld 在真实计算机环境中评测多模态智能体的开放任务。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2024 / arXiv 的 OS-agent benchmark",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tianbao Xie 等（The University of Hong Kong）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T12:30:00Z"
+}

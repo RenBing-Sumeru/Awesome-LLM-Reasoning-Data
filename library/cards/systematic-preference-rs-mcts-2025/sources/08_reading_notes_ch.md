@@ -1,0 +1,5 @@
+- 将 48K 视为实验数量约数;附录表 7 精确合计为 47,198 个 prompts,但未确认官方 prompt dataset、pairs、verifier code、trees、logs、rejects、checkpoints 或不可变 release manifest。
+- RS 在 temperature 1.0 下独立采样 64 个完整回答;MCTS 构建部分回答树,并选择共享 parent prefix 的 sibling branches。
+- 区分 MCTS 的混合搜索 reward——80% rollout verifier score 与 20% policy self-evaluation——和最终 pair eligibility;后者只使用程序化 verifier。
+- verifier score 是 prompt constraints 满足比例。对这 23 类约束而言,它是分级且确定性的,但不是一般语义质量或人类偏好判断。
+- 只有在匹配 training-pair count 和 unique-prompt count 后才能比较 RS 与 MCTS,因为两者的搜索拓扑、产量、pair contrast 和 compute 不同;共享前缀、回答对比度、prompt difficulty 与 scaling 消融也应分别阅读,报告中的 MCTS 收益较小,且 RS scaling 在 N≈32 附近饱和。

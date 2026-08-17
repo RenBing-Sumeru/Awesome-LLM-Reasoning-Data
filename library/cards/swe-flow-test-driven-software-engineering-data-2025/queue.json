@@ -1,0 +1,19 @@
+{
+  "title": "Synthesizing Software Engineering Data in a Test-Driven Manner",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v267/zhang25cn.html",
+    "data": "https://github.com/Hambaobao/SWE-Flow",
+    "code": "https://github.com/Hambaobao/SWE-Flow",
+    "project": "https://github.com/Hambaobao/SWE-Flow"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:59:46Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "SWE-Flow 生成16,061条训练和2,020条测试修复实例",
+    "updated_at": "2026-07-19T12:59:46Z"
+  }
+}

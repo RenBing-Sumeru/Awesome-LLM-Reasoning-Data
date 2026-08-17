@@ -1,0 +1,9 @@
+{
+  "one_line_summary_ch": "Best-of-Majority 在有限采样和提交预算下，以频率筛选结合奖励排序实现可随样本数稳定扩展的 pass@k 推理策略。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "测试时推理扩展理论与数学推理评测论文（ICLR 2026）",
+  "best_for_ch": "设计 pass@k 评测、奖励模型选择或有限推理预算分配的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Qiwei Di、Kaixuan Ji、Xuheng Li、Heyang Zhao、Quanquan Gu（加州大学洛杉矶分校）",
+  "category_ids": ["scaling_rlvr_test_time_compute"]
+}

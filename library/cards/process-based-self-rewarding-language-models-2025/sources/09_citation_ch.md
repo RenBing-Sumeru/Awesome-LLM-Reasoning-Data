@@ -1,0 +1,1 @@
+Zhang 等（2025），《Process-based Self-Rewarding Language Models》，arXiv:2503.03746。原文：https://arxiv.org/abs/2503.03746；官方代码和数据：https://github.com/Shimao-Zhang/Process-Self-Rewarding。应查阅 ACL Findings 最终版本的实验协议，不要把此过程式方法与更早的结果导向 Self‑Rewarding Language Models 混同。

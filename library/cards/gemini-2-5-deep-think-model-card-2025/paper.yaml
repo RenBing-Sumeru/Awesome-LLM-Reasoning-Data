@@ -1,0 +1,169 @@
+id: gemini-2-5-deep-think-model-card-2025
+title: Gemini 2.5 Deep Think - Model Card
+year: 2025
+venue: Google DeepMind model card
+authors:
+- Google DeepMind
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- general_reasoning
+- mathematics
+- theorem_proving
+- code
+- scientific_reasoning
+- multimodal
+- safety
+- cybersecurity
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+- safety_alignment
+- evaluation
+- audit
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Deep-Think-Model-Card.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://blog.google/products-and-platforms/products/gemini/gemini-2-5-deep-think/
+  huggingface: null
+  doi: null
+  venue: https://deepmind.google/models/model-cards/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Pre-training uses broad classes of public web documents, code, images, audio, and video. Post-training uses
+    vetted multimodal instruction-response pairs, human-preference and tool-use data, with additional multi-step reasoning,
+    problem-solving, theorem-proving material and a curated corpus of high-quality mathematics solutions. Dataset names, prompt
+    provenance, proportions, quantities, dates, and source-level rights are unknown.
+  trace_author: At inference, Deep Think generates multiple hypotheses and critiques, revises, or combines them before a final
+    answer. The sources do not disclose whether these branches or critiques are retained as training traces, who or what generated
+    the added reasoning records, or how any traces were selected.
+  answer_format: Disclosed record classes include multimodal paired instructions and responses, human-preference comparisons,
+    tool-use data, multi-step reasoning/problem-solving/theorem-proving examples, and mathematics solutions. Exact schemas,
+    context fields, trace serialization, labels, and released examples are unknown.
+  process_fields:
+  - instruction
+  - multimodal_context
+  - response
+  - human_preference
+  - tool_use
+  - multi_step_reasoning
+  - theorem_proof
+  - mathematics_solution
+  environment_or_substrate: Deep Think uses parallel thinking at inference to explore multiple hypotheses and can use code
+    execution and Google Search in the Gemini app. Training RL environments, tools, task interfaces, branch orchestration,
+    and retained trajectories are unknown; product tool access is not evidence of the training substrate.
+  verifier_or_reward: The Model Card names reinforcement learning from human and critic feedback but does not define the reasoning-specific
+    reward. The Gemini 2.5 family report describes a Data Reward Model amortizing human preferences plus a prompted Critic
+    that grades responses against predefined rubrics; whether that family-level contract is the full or exclusive reward for
+    Deep Think's special reasoning RL is unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: An enhanced Gemini 2.5-family sparse MoE reasoning model with native multimodal support. Parameter count, expert
+    configuration, exact base checkpoint, and mapping among app, FSF-evaluation, and IMO variants are unknown.
+  teacher: unknown
+  generator: The sources name curated mathematics solutions and added multi-step reasoning, problem-solving, and theorem-proving
+    data but do not identify human/model generators, teacher checkpoints, prompts, or synthetic proportions.
+  filtering_rule: Deduplication, safety filtering, and quality filtering are reported. Rules, thresholds, stage placement,
+    removed samples, and yields are unknown.
+  sampling_protocol: Parallel thinking generates and considers multiple ideas and may revise or combine them. Branch count,
+    distribution, selection, critique schedule, stopping rule, and training reuse are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The interface supports a 1M-token context and 192K-token text output, but these limits do not disclose
+    hidden thinking allocation, branch count, aggregation cost, or per-query compute. IMO 2025 uses pass@1; other matharena.ai
+    results use best-of-32.
+  optimizer_or_scaffold: Novel RL is reported for extended reasoning paths, with JAX and ML Pathways named as infrastructure.
+    Objective, rewards, RL algorithm, optimizer, schedules, rollout generation, updates, compute, and checkpoint lineage are
+    unknown.
+audit:
+  source_mixture: Only broad source classes and added reasoning-data types are disclosed. Manifests, mixture weights, counts,
+    dates, revisions, provenance, consent, and source-level rights are unknown.
+  split: Held-out assurance prompts and multiple internal/external evaluations are described, but post-training/evaluation
+    membership, split sizes, overlap, and Deep Think-specific construction are unknown.
+  decontamination: The Model Card reports deduplication but no Deep Think-specific benchmark decontamination. Family-level
+    n-gram, semantic-similarity, and model-based checks do not separately audit the added Deep Think reasoning, theorem, or
+    mathematics corpora.
+  license: No training data, parallel traces, preference records, rewards, model weights, code, or evaluation corpus is released.
+    Source-level rights and artifact licenses are unknown.
+  lineage: Stage-level lineage is disclosed, but prompt-to-branch-to-critique-to-feedback-to-reward-to-checkpoint lineage
+    and mapping among preliminary FSF, app, and IMO variants are absent.
+  known_failure_modes:
+  - Training records, manifests, quantities, source rights, generators, filters, and item lineage are withheld.
+  - Deep Think-specific reward, critic, rubrics, human-preference protocol, calibration, weighting, optimizer, and rollouts
+    are unknown.
+  - Parallel thinking lacks branch counts, trace records, selection and aggregation rules, stopping criteria, and deployed
+    compute budgets.
+  - Capability scores mix pass@1 and best-of-32 and therefore are not a single-budget comparison.
+  - FSF evaluations used a preliminary implementation with a different thinking prompt and serving configuration; the app
+    model also differs from the hours-long IMO variant.
+  - Hallucination, occasional slowness/timeouts, and over-refusal are reported; external deceptive-alignment testing and final
+    CBRN CCL assessment were incomplete.
+  - Most safety prompts, trajectories, expert judgments, grading artifacts, threat models, and full external-test results
+    are withheld.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the complete August 1, 2025 Model Card, official model-card index, official launch post, and Gemini
+    2.5 family report. Family-level RL*F and decontamination are context, not complete Deep Think-specific disclosure.
+inclusion_reason: A frontier model card disclosing parallel hypothesis generation, novel RL over added reasoning and theorem-proving
+  data, curated mathematics solutions, human/critic feedback, and frontier-safety evaluation while exposing missing rewards,
+  budgets, records, version mapping, and lineage.
+related:
+- gemini-2-5-technical-report-2025
+tags:
+- gemini-2-5-deep-think
+- gemini
+- google-deepmind
+- frontier-report
+- model-card
+- data-disclosure-ledger
+- parallel-thinking
+- reinforcement-learning
+- critic-feedback
+- test-time-compute
+- theorem-proving
+- safety-audit
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Deep Think discloses parallel hypothesis generation, added reasoning and mathematics data, novel RL, human/critic
+  feedback, and frontier-safety tests, but not its records, reasoning reward, branch budget, or checkpoint lineage.
+why_it_matters: It separates Deep Think-specific disclosures from family-level context and identifies unavailable data objects,
+  feedback contracts, inference budgets, and safety artifacts.
+card: null
+needs:
+- 'needs_data: prompt/task records, hypotheses and critiques, preferences, tool-use records, theorem/proof and mathematics
+  corpora, schemas, counts, revisions, and manifests'
+- 'needs_verifier: reasoning reward, Critic identity and rubric, Data Reward Model applicability, human-feedback protocol,
+  weighting, calibration, thresholds, and error audit'
+- 'needs_metadata: generators, filtering yields, sampling, branches, rollouts, temperature, stopping, aggregation, optimizer,
+  compute, and checkpoint mapping'
+- 'needs_audit: splits, decontamination, raw evaluation trajectories and graders, expert instruments, external-test artifacts,
+  reward-hacking checks, and version equivalence'
+- 'needs_license: source-level rights and licenses for training, feedback, trace, weight, and evaluation artifacts'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Model Card PDF and Google DeepMind index were opened directly; the launch post and Gemini 2.5 family
+    report corroborate identity and scope boundaries. No code, data, weights, arXiv, DOI, or BibTeX is claimed.

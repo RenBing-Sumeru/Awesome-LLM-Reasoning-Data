@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "使用数据集解码多条路径",
+    "updated_at": "2026-07-19T07:37:13Z"
+  },
+  "updated_at": "2026-07-19T07:37:13Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

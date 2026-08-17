@@ -1,0 +1,1 @@
+与直接蒸馏单条长 teacher trace 相比，Marco-o1 v2 在带类型、可配置的 reasoning graph 下从头构造多条路径，并利用规则结果回溯。与只保留最佳轨迹或训练 process reward model 的 MCTS 配方相比，它明确复用路径长度与分支重叠关系，形成不同的 SFT target 和细粒度 DPO pair。最重要的方向信号是搜索结构与训练记录之间的连接：节点角色、终局规则结果、相对长度、共同前缀边界以及 chosen/rejected 状态各有不同含义。MCTS、reflection prompting、DPO、cDPO 与 SFT-偏好联合目标都是既有组件；论文贡献在于其 CoT-aware 组合与分析。论文没有证明预定义节点角色等同于人类推理，也没有证明较短正确路径始终是更好的监督。

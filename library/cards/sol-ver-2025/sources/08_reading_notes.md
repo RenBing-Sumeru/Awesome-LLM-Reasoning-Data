@@ -1,0 +1,5 @@
+- Use arXiv v4 metadata: six authors including Ilia Kulikov; the 2025 workshop page preserves an earlier five-author title/version.
+- Construction object: 103,280 deduplicated prompts, candidate code, generated inputs/expected outputs, execution scores, SFT positives, and Solver/Verifier DPO pairs; none of this corpus is released.
+- Default feedback contract: at least one solution must pass all generated tests; only 45% of Iter 1 examples form such an agreed pair.
+- The abstract's 17.49% test-generation number corresponds to average relative false-positive-rate reduction in Table 1; always name the metric.
+- Temperature 0.6 and top-p 0.9 belong only to evaluation flawed-code generation. For reuse, prioritize Sections 3.1-3.2 and Tables 1, 2, and 5, then audit shared blind spots, reversed preferences, sandboxing, decontamination, lineage, licenses, and rejected-example retention.

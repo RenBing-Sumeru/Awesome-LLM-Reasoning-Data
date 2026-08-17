@@ -1,0 +1,5 @@
+- Position: audits pre-training leakage in 83 SE benchmarks and releases cleaned records.
+- Lever: MinHash+LSH proposes pairs; eight annotators decide the leakage label.
+- Artifact: 6,691 verified pairs expose contents, language, source benchmark, similarity, and binary label.
+- Evidence: average leakage is low but QuixBugs reaches 100%; leaked APPS samples yield 4.9x StarCoder-7B Pass@1.
+- Reuse: filter exact release records and state the corpus-coverage limit before comparing models.

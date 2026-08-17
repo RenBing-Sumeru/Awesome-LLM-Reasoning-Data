@@ -1,0 +1,6 @@
+- 优先阅读第3.2-3.3节、第4节、附录A、附录C-D及附录G，以重建任务组成、截图/XML observation、规范化action、XPath规则、终止标签、reset类别与评测预算。
+- 始终明确计数边界：1,080个评测项=770个独立任务规格+310个由Base任务派生的Noise-Robust评测项，而不是1,080个互不重复prompt。
+- 把反馈解释为`environmental`、`full_episode`和`scalar_reward`：完整成功需要全部规则条件加Complete；Sub-SR是部分谓词覆盖，而不是step-level supervision。
+- 在信任自动化前先读表12-13：Auto-Eval存在5个false positive和22个false negative；逆任务reset的人类成功率超过90%，但不能完美恢复状态。
+- 区分可执行发布与轨迹/环境发布：任务CSV、evaluator代码和本地轨迹写出已公开；论文完整轨迹、APK bundle、设备/账户/服务器snapshot及被拒绝尝试均未核实。
+- 比较或复用前，应固定应用/设备版本、task/rule hash、retry预算、噪声event、模型/API snapshot、reset结果及异常Long-Tail CSV的parser行为，并标记contamination状态。

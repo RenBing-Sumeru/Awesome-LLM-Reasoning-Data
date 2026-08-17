@@ -1,0 +1,3 @@
+The contribution is a unified view of two directions often discussed separately: using code to support reasoning and using reasoning to support code intelligence. It highlights execution as a concrete bridge between an intermediate plan and observable feedback, rather than treating all intermediate text as equally informative.
+
+This changes the unit of comparison from a final answer to an interaction with an executable artifact. It gives readers a vocabulary for asking whether code is merely output, an internal representation, or a source of feedback. That distinction matters when a system is said to reason with code but the role of execution is unspecified.

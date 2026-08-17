@@ -1,0 +1,199 @@
+id: thinkprm-2025
+title: Process Reward Models That Think
+year: 2025
+venue: Transactions on Machine Learning Research (TMLR), 2026
+authors:
+- Muhammad Khalifa
+- Rishabh Agarwal
+- Lajanugen Logeswaran
+- Jaekyeom Kim
+- Hao Peng
+- Moontae Lee
+- Honglak Lee
+- Lu Wang
+source_role:
+- verifier_reward
+- process_supervision
+- construction_recipe
+- data_release
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+- process_reward
+domains:
+- math
+- science
+- code
+training_use:
+- sft
+- reward_modeling
+- process_supervision
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.16828
+  arxiv: https://arxiv.org/abs/2504.16828
+  code: https://github.com/mukhal/thinkprm
+  data: https://huggingface.co/datasets/launch/thinkprm-1K-verification-cots
+  project: https://mukhal.github.io/thinkprm/
+  huggingface: https://huggingface.co/datasets/launch/thinkprm-1K-verification-cots
+  doi: null
+  venue: https://openreview.net/forum?id=FPVCb0WMuN
+  openreview: https://openreview.net/forum?id=FPVCb0WMuN
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.16828
+data_object:
+  prompt_source: The public 1K dataset samples problem-prefix pairs from the PRM800K train split, which is based on MATH.
+    The final set contains 1,000 prefixes from 869 unique questions, approximately balanced by overall prefix correctness.
+  trace_author: QwQ-32B-Preview generates four verification chains per sampled prefix. Each chain critiques successive solution
+    steps and emits boxed correct/incorrect judgments; accepted chains are synthetic teacher outputs, not human-written rationales.
+  answer_format: The Hugging Face train split contains 1,000 rows with `problem`, `prefix`, `cot`, `prefix_steps`, `gt_step_labels`,
+    and `prefix_label`. The verification CoT contains critiques and boxed step judgments, while `prefix_label` is true only
+    when every labeled step is correct.
+  process_fields:
+  - problem
+  - prefix
+  - cot
+  - prefix_steps
+  - gt_step_labels
+  - prefix_label
+  - boxed step judgments
+  - generated verification text
+  environment_or_substrate: Offline generative verification of solution prefixes. ThinkPRM produces a verification CoT and
+    a final correctness probability, which can score ProcessBench prefixes, weight Best-of-N answer votes, rank beam-search
+    expansions, or be aggregated across parallel or sequential verifier calls.
+  verifier_or_reward: A judgment-requiring generative PRM. At inference it generates up to 8,192 verification tokens, then
+    the implementation obtains a prefix score from the forced final correctness query. Parallel scaling averages scores from
+    independent verification CoTs; sequential scaling prompts the verifier to revisit its earlier judgment.
+  terminal_predicate: During data construction, retain a chain only if every required boxed step judgment is parseable and
+    matches the corresponding PRM800K label, the chain is at most 4,096 tokens, and the accepted set remains roughly balanced
+    by overall prefix correctness. During use, the resulting scalar prefix score ranks or prunes candidate solutions rather
+    than proving correctness.
+recipe_metadata:
+  base_model: ThinkPRM variants are trained from DeepSeek-R1-Distill-Qwen 1.5B, 7B and 14B models and QwQ-32B-Preview. The
+    official repository releases ThinkPRM-1.5B, ThinkPRM-7B and ThinkPRM-14B checkpoints.
+  teacher: QwQ-32B-Preview generates the 1K public synthetic verification chains; PRM800K human step labels are the rejection-filter
+    reference rather than rationale supervision.
+  generator: For each PRM800K train problem-prefix pair, QwQ-32B-Preview is prompted to critique steps in order, emit a boxed
+    correct/incorrect label for each reviewed step, and stop after the first incorrect step.
+  filtering_rule: Reject malformed or missing boxed decisions, any chain whose generated judgments disagree with PRM800K ground-truth
+    labels, and chains longer than 4,096 tokens. Standardize boxed notation, remove content after the final verification decision,
+    add think delimiters, and approximately balance correct versus incorrect prefixes.
+  sampling_protocol: Sample four teacher chains per prefix until 1,000 chains pass the filters. The paper reports that roughly
+    20% of initial samples satisfy the format and label-agreement criteria, requiring about 5,000 raw generations for the
+    public 1K set. Rejected samples and their reasons are not released.
+  rollout_count: 4
+  temperature: unknown
+  inference_budget: Data-generation chains are capped at 4,096 tokens. Verification at evaluation allows up to 8,192 generated
+    tokens. Parallel scaling samples multiple independent verifier CoTs and averages scores; sequential scaling uses up to
+    four rounds with distinct re-verification trigger phrases. Exact total FLOPs and wall-clock budgets for every experiment
+    are not disclosed.
+  optimizer_or_scaffold: The 1.5B and 7B variants use full finetuning for three epochs; 14B variants use three-epoch LoRA
+    and QwQ-32B-Preview uses five-epoch LoRA. Reported effective batch sizes are 32 for 1.5B/7B and 16 for the LoRA runs.
+    The paper reports one A100 80GB for the 14B/QwQ runs and four RTX A6000 48GB GPUs for 1.5B/7B, but some LoRA ranks and
+    learning rates are missing from the rendered HTML and must remain unknown here.
+audit:
+  source_mixture: The released set contains 1,000 QwQ-32B-Preview verification CoTs over PRM800K-train mathematical problem-prefix
+    pairs from 869 unique questions. It has 486 correct and 514 incorrect prefixes, 7,474 positive and 625 negative step labels,
+    and verification chains ranging from 207 to 3,669 tokens. A separate 65K process-filtered expansion is studied but was
+    not verified as part of the public 1K release.
+  split: Hugging Face exposes one 1,000-row train split and no validation or test split. Evaluation uses ProcessBench, a 100-problem
+    MATH-500 subset, AIME 2024, 86 GPQA-Diamond physics questions, and a 200-problem LiveCodeBench v5 subset; the exact benchmark
+    item lists and run manifests are not all stored with the dataset.
+  decontamination: unknown. The paper and dataset card do not publish exact-match, near-duplicate, or semantic-overlap ledgers
+    between PRM800K/MATH-derived training prompts and ProcessBench, MATH-500, AIME 2024, GPQA-Diamond, or LiveCodeBench evaluation
+    items.
+  license: The Hugging Face dataset repository added an MIT LICENSE on 2026-04-18, but its copyright-holder placeholder remains
+    unfilled. The release does not clarify whether MIT covers only repository material or also the PRM800K/MATH-derived inputs
+    and QwQ-generated outputs; record-level upstream compatibility therefore remains unknown. A code license was not verified.
+  lineage: PRM800K-train provides a problem, model-generated solution prefix, and human step labels; QwQ-32B-Preview generates
+    four candidate verification CoTs per prefix; format, length, process-label agreement, and class-balance filters select
+    1,000 chains; standardized rows retain the source text, synthetic CoT, parsed prefix steps, ground-truth labels, and overall
+    label; SFT produces generative PRMs whose final correctness probabilities drive verification and search.
+  known_failure_modes:
+  - Exact agreement between generated boxed judgments and PRM800K labels does not verify that every natural-language critique
+    is factually correct, faithful, or causally responsible for the judgment.
+  - The public rows omit an upstream PRM800K record identifier, teacher-generation seed, raw candidate IDs, rejected chains,
+    rejection reasons, and per-record model/config revision, limiting deterministic lineage reconstruction.
+  - Positive step labels comprise 92.3% of released step labels even though prefix correctness is roughly balanced; accuracy,
+    F1, prefix scores, and search behavior therefore reflect different class and aggregation contracts.
+  - Generative PRM scores can be overconfident and cluster near zero or one; the paper does not establish calibration across
+    domains, model sizes, or changing candidate generators.
+  - Step-label interference can propagate an early verification mistake to later steps, and autoregressive generation can
+    prematurely commit to an incorrect judgment.
+  - Long verifier generations can loop, overthink, omit parseable labels, or consume substantially more inference compute
+    than discriminative PRMs; finetuning reduces but does not eliminate invalid outputs, especially for QwQ.
+  - Parallel and sequential verifier scaling depend on sampling temperature, trigger phrases, round count, and token budget;
+    the paper finds no universal winner, and additional verifier compute can plateau.
+  - The 65K math expansion improves reported MATH-500 results but can reduce out-of-domain performance, so more synthetic
+    data is not evidence of universally better verifier data.
+  - Benchmark gains under ProcessBench, Best-of-N, and guided search do not establish item-level rationale correctness, absence
+    of contamination, license compatibility, or robustness outside the evaluated generators and tasks.
+  - The public dataset has only a train split; no held-out validation split, immutable release tag, signed checksum manifest,
+    or complete software/environment lockfile is attached as a data audit package.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v5 HTML, the official author repository, the public Hugging Face dataset card/viewer, released model links,
+    and the official OpenReview TMLR forum were inspected on 2026-07-19. TMLR acceptance, authors, and exact forum URL are
+    verified; the dataset repository's incomplete MIT notice, DOI, 65K release, decontamination ledger, and complete generation
+    lineage remain partial or unverified.
+inclusion_reason: ThinkPRM exposes a concrete synthetic process-supervision object and a generative verifier whose reasoning,
+  scalar score, parallel resampling, and sequential re-verification directly shape Best-of-N and search trajectories. It is
+  relevant to rollout/search trace curation because verifier outputs and aggregation choices determine which candidate paths
+  are retained even when the candidate generator is unchanged.
+related: []
+tags:
+- thinkprm
+- generative-prm
+- verification-cot
+- process-supervision
+- rejection-sampling
+- best-of-n
+- verifier-guided-search
+- test-time-verifier-scaling
+- open-release
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data
+one_line_summary: ThinkPRM trains generative process verifiers on 1,000 QwQ-generated, PRM800K-label-filtered verification
+  CoTs and spends additional verifier compute to score or select reasoning paths.
+why_it_matters: It makes verifier reasoning a first-class test-time trace and shows how process-label filtering, score extraction,
+  repeated verification, and search aggregation jointly determine candidate selection, while leaving rationale validity and
+  release lineage as separate audit questions.
+card: null
+needs:
+- 'needs_license: replace the MIT copyright placeholder, state code licensing, and clarify coverage and compatibility for
+  PRM800K/MATH inputs and QwQ-generated outputs'
+- 'needs_lineage: publish upstream record IDs, raw teacher candidate IDs, seeds, rejection reasons, and exact row-to-source
+  mappings'
+- 'needs_decontamination: compare every training prompt and prefix against all evaluation versions and release the match/removal
+  ledger'
+- 'needs_rejected_data: release or summarize the roughly 4,000 rejected teacher generations with structured filter outcomes'
+- 'needs_65k_release: identify and version the 65K process-filtered and 128K outcome-filtered expansions studied in the paper'
+- 'needs_reproducibility: pin all model revisions, sampling temperatures, seeds, LoRA ranks, learning rates, search recipes,
+  and environments'
+- 'needs_rationale_audit: evaluate critique factuality and faithfulness separately from boxed-label agreement and downstream
+  benchmark utility'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official paper, exact TMLR forum, code repository, public 1K dataset, and 1.5B/7B/14B model releases are verified;
+    the dataset MIT notice has an unfilled copyright placeholder, while code/upstream compatibility, immutable releases, 65K
+    data, decontamination, rejected candidates, and complete generation/training settings remain partial.

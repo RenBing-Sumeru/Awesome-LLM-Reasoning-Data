@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MultiChallenge tracks mixed reasoning or instruction-following tasks under a combined scoring contract.",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要审计 benchmark 对象、反馈契约、artifact 版本、split 和污染风险的读者。",
+  "confidence_ch": "低",
+  "authors_ch": "MultiChallenge authors",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

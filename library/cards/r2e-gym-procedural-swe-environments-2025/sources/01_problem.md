@@ -1,0 +1,3 @@
+Open-weight SWE agents face two bottlenecks: too few real GitHub issues with executable environments and unreliable verifiers for selecting among sampled patches. Regression tests often have low distinguishability, generated tests may be wrong, and execution-free reward models can depend on style or reasoning text rather than actual patch behavior.
+
+R2E-Gym uses SYNGEN to reverse-construct executable repair tasks from ordinary commits and introduces hybrid verifier scaling at inference. On the data side, test generation and back-translation produce issues, environments, and training trajectories. At inference, execution-based test signals are combined with an execution-free learned verifier, scaling both training data and candidate selection for open models.

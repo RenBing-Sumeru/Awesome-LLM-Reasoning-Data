@@ -1,0 +1,5 @@
+- Keep the counting units separate: 39,719 public records are per-agent chat fragments linked to 2,876 instances; the number of complete post-filter training episodes is unknown.
+- Read §2.2 and Figure 1 for the four-agent state-action-observation loop, then §2.3.1 for execution-success selection, redundancy filtering, language caps, and the 1:2:2 complexity curriculum.
+- Only verified-success trajectories are described as entering SFT; failed rollouts appear in evaluation and error analysis, not as a documented negative training corpus.
+- Pin the ICML final for the 11-author citation, arXiv v2 for section evidence, dataset content commit `b847dad...`, current dataset revision `1d44cd3...`, and model revision `1404f4d...` as distinct version boundaries.
+- Before reuse, audit episode reconstruction, Docker/test predicate validity, repository and dependency rights, model licensing, secrets, network isolation, and the missing immutable replay manifest.

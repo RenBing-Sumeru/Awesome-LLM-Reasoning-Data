@@ -1,0 +1,3 @@
+- Preserve GRPO-RoC and Resample-on-Correct.
+- Request environment pins and test coverage.
+- Separate 510 steps from per-episode cost.

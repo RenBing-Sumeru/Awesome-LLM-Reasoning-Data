@@ -1,0 +1,19 @@
+{
+  "title": "How to Evaluate Reward Models for RLHF",
+  "candidate_links": {
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/2e01083b381b4865919b4915ef32e3d2-Abstract-Conference.html",
+    "data": "https://github.com/lmarena/PPE",
+    "code": "https://github.com/lmarena/PPE",
+    "project": "https://github.com/lmarena/PPE"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:17:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将偏好评测与RLHF后效相连，能判断奖励数据是否真有效",
+    "updated_at": "2026-07-16T13:17:29Z"
+  }
+}

@@ -1,0 +1,1 @@
+Ghosal, Soumya Suvra、Souradip Chakraborty、Avinash Reddy、Yifu Li、Mengdi Wang、Dinesh Manocha、Furong Huang、Mohammad Ghavamzadeh 和 Amrit Singh Bedi。2025。《更多思考总是有帮助吗？推理模型测试时扩展的幻象》。第三十九届神经信息处理系统大会（NeurIPS 2025）。论文：https://arxiv.org/abs/2506.04210。官方记录：https://nips.cc/virtual/2025/poster/115605。

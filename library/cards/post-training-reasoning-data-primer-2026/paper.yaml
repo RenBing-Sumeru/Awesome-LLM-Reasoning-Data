@@ -1,0 +1,115 @@
+id: post-training-reasoning-data-primer-2026
+title: 'A Primer in Post-Training Reasoning Data: What We Know About How It Works'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yaoming Li
+- Guangxiang Zhao
+- Qilong Shi
+- Lin Sun
+- Xiangzheng Zhang
+- Tong Yang
+source_role:
+- survey_background
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- post-training-reasoning-data
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.02113
+  arxiv: https://arxiv.org/abs/2606.02113
+  code: null
+  data: null
+  project: https://github.com/RenBing-Sumeru/Awesome-LLM-Reasoning-Data
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: More than 150 public papers, datasets, system reports, and training recipes about post-training reasoning
+    data.
+  trace_author: Not one generator; the primer compares programmatic, environmental, and judgment-required supervision contracts
+    across studies.
+  answer_format: A question-driven evidence map linking data objects, construction choices, utility signals, scaling behavior,
+    and disclosure requirements.
+  process_fields:
+  - source study and data object
+  - construction and verification contract
+  - reported utility, scaling, lineage, and caveats
+  environment_or_substrate: Literature synthesis across supervised fine-tuning, reinforcement learning, reward and verifier
+    design, evaluation, and system reports.
+  verifier_or_reward: Evidence is interpreted relative to each paper's verifier, base model, trajectory, and data lineage
+    rather than collapsed into one universal score.
+  terminal_predicate: Use a claim only within the data object, training setup, verifier, and scale actually supported by its
+    primary source.
+recipe_metadata:
+  base_model: Heterogeneous across the surveyed literature.
+  teacher: Heterogeneous human, model, environment, and programmatic trace sources.
+  generator: Organize the literature around what reasoning data is, what makes it useful, how it is constructed, and how it
+    scales.
+  filtering_rule: Prefer claims with identifiable primary sources and preserve verifier-relative, model-relative, trajectory-relative,
+    and lineage-relative boundaries.
+  sampling_protocol: Question-driven synthesis of more than 150 public studies and system reports; not a formal systematic
+    review or meta-analysis.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not applicable to the primer itself.
+  optimizer_or_scaffold: A conceptual atlas for choosing data sources, generators, search substrates, verifiers, and scaling
+    policies.
+audit:
+  source_mixture: Public datasets, RL recipes, reward-model studies, benchmarks, and system reports.
+  split: No empirical train/test split; claims retain the boundaries of their source studies.
+  decontamination: The primer discusses lineage and leakage but does not itself decontaminate a released corpus.
+  license: The companion Awesome-LLM-Reasoning-Data repository declares MIT; no new paper dataset is released.
+  lineage: Each synthesis claim should be followed back to its cited primary source and concrete data contract.
+  known_failure_modes:
+  - The review is based on publicly visible evidence and may omit private industrial practice.
+  - It is question-driven rather than a formal systematic review or quantitative meta-analysis.
+  - Heterogeneous sources use different models, verifiers, budgets, and benchmarks, limiting direct comparison.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv PDF, authors, affiliations, stated scope, limitations, and companion repository were checked on 2026-07-13.
+inclusion_reason: The primer supplies a decision framework for identifying, constructing, evaluating, and scaling post-training
+  reasoning-data objects.
+related: []
+tags:
+- arxiv-2606.02113
+- foundations_and_primers
+- post-training-data-primer
+status: verified
+one_line_summary: This primer organizes more than 150 studies into a practical map of reasoning-data objects, utility signals,
+  construction choices, and scaling limits.
+why_it_matters: It prevents data recipes from being compared without their verifier, base model, trajectory, scale, and lineage
+  context.
+reading_priority: recommended
+paper_type: post-training reasoning-data primer
+best_for: Researchers deciding what reasoning data to collect, how to verify it, and which scaling claims transfer to their
+  setting.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Paper, authors, affiliations, survey scope, claims, limitations, and companion repository were checked.
+category_ids:
+- foundations_and_primers
+batch:
+  id: batch-a-20260712
+  primary_category_id: foundations_and_primers
+  direction_label: Track 00

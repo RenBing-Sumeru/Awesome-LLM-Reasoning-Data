@@ -1,0 +1,6 @@
+- 书目信息以 ACL Anthology `2026.findings-eacl.3` 为准：正式论文发表于 2026 年 Findings of EACL，尽管 arXiv ID 与 Card ID 源于 2025 年。
+- 牢记对象边界：330 指保留的训练配置数量。论文没有披露已接收完整轨迹数、派生单步记录数、拒绝数量或 GRPO 候选总数，这些记录也都没有公开。
+- 反馈链应读作 `WorkArena 配置 -> BrowserGym cheat()/Playwright 成功 oracle 轨迹 -> 单步记录 -> 采样 reasoning/action -> 精确/部分规则分数`。任务级环境成功是评测反馈，不是每个 RL 候选的奖励。
+- 推荐阅读顺序：§4.1 看数据构造，§4.3.3 看奖励公式，Table 1 与 Table 2 看模型结果，Figures 6–8 看优化器/奖励失败，再读 Limitations 和 Privacy statement 确认边界。
+- 最容易产生的误读是把它当作端到端交互式 RL。论文明确因为动态观测和远程反馈昂贵而把导航拆成独立下一动作决策。
+- 可与 WorkArena、BrowserGym 一起阅读，以理解任务/oracle 来源；再与 GRPO、TinyZero、veRL 对照，把优化脚手架与论文特有 verifier 分开。复用前还需解决 split 行为、论文/代码奖励差异、teacher/run 精确版本、license、环境 snapshot 和完整成功/失败 ledger。

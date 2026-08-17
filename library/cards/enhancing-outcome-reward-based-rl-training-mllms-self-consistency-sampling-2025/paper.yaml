@@ -1,0 +1,120 @@
+id: enhancing-outcome-reward-based-rl-training-mllms-self-consistency-sampling-2025
+title: Enhancing the Outcome Reward-based RL Training of MLLMs with Self-Consistency Sampling
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jiahao Wang
+- Weiye Xu
+- Aijun Yang
+- Wengang Zhou
+- Lewei Lu
+- Houqiang Li
+- Xiaohua Wang
+- Jinguo Zhu
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- multimodal
+- reasoning
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2511.10648
+  arxiv: https://arxiv.org/abs/2511.10648
+  code: https://github.com/GenuineWWD/SCS
+  data: null
+  project: null
+  huggingface: https://huggingface.co/datasets/GenuineWWD/SCS_data
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Visual reasoning prompts used for online RL; source manifests and exact training-data counts show discrepancies
+    between paper and release evidence.
+  trace_author: unknown
+  answer_format: Truncated/perturbed visual-reasoning rollouts, resampled continuations, self-consistency signals, outcome
+    rewards, and format rewards.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: The contract mixes outcome reward, format reward, and answer-consistency signals; no released per-rollout
+    reward/score logs were verified.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: SCS improves outcome-reward RL for MLLMs by resampling visual reasoning trajectories after truncation or perturbation
+    and adding consistency-aware rewards.
+  filtering_rule: The contract mixes outcome reward, format reward, and answer-consistency signals; no released per-rollout
+    reward/score logs were verified.
+  sampling_protocol: Official code is GenuineWWD/SCS and HF data is GenuineWWD/SCS_data, both reported Apache. Paper/repository
+    counts and scripts/configuration need careful reconciliation.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: SCS improves outcome-reward RL for MLLMs by resampling visual reasoning trajectories after truncation
+    or perturbation and adding consistency-aware rewards.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: Apache-2.0 reported for code/data
+  lineage: Visual reasoning prompts used for online RL; source manifests and exact training-data counts show discrepancies
+    between paper and release evidence. -> Truncated/perturbed visual-reasoning rollouts, resampled continuations, self-consistency
+    signals, outcome rewards, and format rewards. -> The contract mixes outcome reward, format reward, and answer-consistency
+    signals; no released per-rollout reward/score logs were verified. -> reported final selection or training use. Raw lineage
+    records are not established as released.
+  known_failure_modes:
+  - Self-consistency can amplify correlated mistakes; paper/release count and configuration discrepancies, plus missing rollout/reward
+    logs, block full reproduction.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It is valuable because it exposes where multimodal trace construction needs stronger provenance: perturbations,
+  resampling seeds, outcome/format rewards, and dataset-count reconciliation.'
+related: []
+tags:
+- mllm
+- rlvr
+- self-consistency
+- resampling
+- outcome-reward
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A multimodal online-RL rollout/resampling recipe with official code and data links.
+why_it_matters: 'It is valuable because it exposes where multimodal trace construction needs stronger provenance: perturbations,
+  resampling seeds, outcome/format rewards, and dataset-count reconciliation.'
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

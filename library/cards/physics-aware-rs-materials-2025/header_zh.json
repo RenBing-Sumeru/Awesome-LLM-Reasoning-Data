@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "PaRS 为 QD-LED 配方采样教师推理轨迹，仅保留同时通过范围、湿实验误差和 PLQY 上包络门的早期候选，再蒸馏 Qwen3-32B；但轨迹与门控审计记录未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "材料配方推理的物理约束拒绝采样与 SFT 蒸馏研究",
+  "best_for_ch": "需要审计科学领域 teacher traces、物理 verifier、拒绝采样与早停归因的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Lee Hyun、Sohee Yoon、Jinwoo Park、Sue In Chae、Seongeon Park、Jooyeon Ahn、Yebin Jung、Youjung Chung、Hogeun Chang、Sujin Park、Myeonginn Kang、Jina Kim、Ho-Gyeong Kim、Myeonghun Jeong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

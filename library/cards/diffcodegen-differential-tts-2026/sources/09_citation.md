@@ -1,0 +1,1 @@
+He, Yifeng, Ethan Wang, Jicheng Wang, Xuanxin Ouyang, and Hao Chen. 2026. “Code Generation by Differential Test Time Scaling.” arXiv preprint arXiv:2605.20473. Official paper: https://arxiv.org/abs/2605.20473.

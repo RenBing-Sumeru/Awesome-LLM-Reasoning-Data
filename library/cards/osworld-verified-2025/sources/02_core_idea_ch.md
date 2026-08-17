@@ -1,0 +1,3 @@
+核心贡献是在 computer-use-agents, os-agents, desktop-environments 上提供 In-place verified upgrade of OSWorld after addressing 300+ issues; original OSWorld benchmark structure remains the base task/evaluator family.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：OSWorld task evaluators and verified task-quality fixes。
+
+数据对象或环境是：OSWorld desktop-computer environments with VMware, Docker, and AWS execution support。最接近的对比对象是 agent-environment, tool-use, and benchmark-harness papers in the same atlas category。方向标签是 benchmarks_evaluation_surfaces, environment_agent_trajectory_data，反馈方式是 environmental, 混合。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

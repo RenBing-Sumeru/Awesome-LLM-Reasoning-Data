@@ -1,0 +1,3 @@
+Reasoning models often continue generating after they have effectively reached a stable answer. A fixed length budget wastes tokens on easy cases, but single-step confidence early exit is unsafe because a model can be transiently confident in an incorrect intermediate answer.
+
+The paper asks how an online stopping rule can distinguish genuine convergence from a short-lived confidence spike. It treats the decision as temporal: the system should examine whether answers persist and whether confidence remains coherent across several recent reasoning steps before it releases the remaining compute budget.

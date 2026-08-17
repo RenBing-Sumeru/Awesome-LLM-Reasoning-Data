@@ -1,0 +1,1 @@
+Li, Zihao, Shaoxiong Ji, and Jörg Tiedemann. 2026. Test-Time Scaling of Reasoning Models for Machine Translation. In Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers), pages 2902–2917. Association for Computational Linguistics. https://aclanthology.org/2026.eacl-long.133/

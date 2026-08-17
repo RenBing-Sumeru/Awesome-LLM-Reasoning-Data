@@ -1,0 +1,101 @@
+id: towards-data-contamination-detection
+title: 'Towards Data Contamination Detection for Modern Large Language Models: Limitations, Inconsistencies, and Oracle Challenges'
+year: 2025
+venue: COLING 2025
+authors:
+- Vinay Samuel
+- Yue Zhou
+- Henry Peng Zou
+source_role:
+- audit_failure
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- llm-evaluation
+- data-contamination
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.coling-main.338/
+  arxiv: https://arxiv.org/abs/2409.09927
+  code: https://github.com/vsamuel2003/data-contamination
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.coling-main.338/
+  openreview: null
+  acl: https://aclanthology.org/2025.coling-main.338/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Eight evaluation datasets used to probe contamination in modern LLMs.
+  trace_author: Five contamination-detection approaches applied to model responses and likelihood signals.
+  answer_format: Detection outcomes and cross-method comparisons, not a reusable training-label release.
+  process_fields:
+  - benchmark instance
+  - detection method
+  - model response or score
+  - contamination judgment
+  environment_or_substrate: Black-box and model-access settings described in the paper; exact training corpora remain undisclosed.
+  verifier_or_reward: No ground-truth universal contamination oracle is available; the paper studies detector agreement and
+    limits.
+  terminal_predicate: A detector result is an audit signal, not proof that a model did or did not see a benchmark item.
+recipe_metadata:
+  base_model: Four state-of-the-art LLMs evaluated by the paper; model identities and access conditions are in the official
+    paper.
+  teacher: unknown
+  generator: Five existing contamination-detection methods.
+  filtering_rule: Compare methods across datasets and identify inconsistent judgments and answer-augmentation failure cases.
+  sampling_protocol: Model-access conditions, prompts, and detector parameters are specified in the paper and linked repository.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Evaluation/audit study; no post-training optimizer is proposed.
+audit:
+  source_mixture: Official ACL Anthology paper, arXiv preprint, and paper-linked GitHub repository.
+  split: Eight evaluation datasets; no new training/test split is released by this paper.
+  decontamination: The work is itself a contamination-method audit and reports limitations of detector assumptions and consistency.
+  license: unknown
+  lineage: 'Primary source: https://aclanthology.org/2025.coling-main.338/'
+  known_failure_modes:
+  - Detector outputs are not a contamination oracle.
+  - Instruction-tuning answer augmentation can be difficult to detect.
+  - Results depend on methods, access assumptions, and benchmark format.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract reports five detection approaches, four LLMs, and eight datasets.
+inclusion_reason: A COLING 2025 study of contamination-detection assumptions, detector disagreement, and answer-augmentation
+  failures in modern LLM evaluation.
+related: []
+tags:
+- foundations-and-primers
+- data-contamination
+- evaluation-audit
+- COLING-2025
+one_line: A COLING 2025 study showing that contamination-detector outputs are method-dependent signals rather than universal
+  evidence about an LLM's hidden training corpus.
+why_it_matters: The study compares five detection approaches on four LLMs and eight datasets, documenting assumption limits,
+  answer-augmentation difficulties, and limited agreement between techniques.
+status: verified
+needs: []
+one_line_summary: A COLING 2025 study showing that contamination-detector outputs are method-dependent signals rather than
+  universal evidence about an LLM's hidden training corpus.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL Anthology, arXiv, and paper-linked code repository verified.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧯 Contamination / evaluation surveys

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MobileRL 用 97.9k 步 action-only SFT、23.6k 步 reasoning SFT 和 3,103 个在线 Android 训练任务构建移动端 RL pipeline，并以混合终局 verifier、路径长度 shaping、正向 replay 和失败课程控制轨迹分布，但训练代码、数据和 replay 尚未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "移动 GUI 智能体在线强化学习 recipe 与混合 verifier 研究",
+  "best_for_ch": "研究移动端 agentic RL、轨迹 replay、失败筛选、终局 reward 与可复现 Android 环境的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yifan Xu, Xiao Liu, Xinghan Liu, Jiaqi Fu, Hanchen Zhang, Bohao Jing, Shudan Zhang, Yuting Wang, Wenyi Zhao, Yuxiao Dong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentRx 从执行轨迹中诊断 AI 智能体失败。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 AI agent failure diagnosis paper",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Shraddha Barke 等（Microsoft Research）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T07:26:35Z"
+}

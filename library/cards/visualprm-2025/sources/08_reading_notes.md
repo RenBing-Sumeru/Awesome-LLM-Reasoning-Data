@@ -1,0 +1,6 @@
+- Keep three objects separate: VisualPRM400K is automatic training data, VisualPRM-8B is the learned scorer, and VisualProcessBench is a human-labeled test set.
+- The exact paper recipe is four initial solutions per image-question pair, at most 12 stored/merged steps, and 16 continuations per prefix.
+- A positive training label means mc_i > 0: at least one of 16 continuations passed the terminal checker. It does not mean a human verified the current step.
+- The original public data stores derived `+/-` conversation targets; later v1.1-Raw scalar/count fields belong to a changed release and are not an original rollout ledger.
+- Default Best-of-N uses N=8 at policy temperature 0.7, but its candidate and rejection traces are not released; report sampling and selector budgets together.
+- Read benchmark F1 and Best-of-N gains as model evaluation, not as proof of source cleanliness, decontamination, label correctness, or license completeness.

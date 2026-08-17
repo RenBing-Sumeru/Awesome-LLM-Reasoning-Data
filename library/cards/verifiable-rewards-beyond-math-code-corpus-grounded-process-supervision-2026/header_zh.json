@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CorVer 提供基于语料库的句子级奖励及 6.25 万条事实问答训练记录，无需在奖励环中调用神经验证器。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "面向事实问答的语料库验证过程奖励与训练数据论文",
+  "best_for_ch": "研究低成本事实性过程监督、句子级归因和强化学习奖励设计。",
+  "confidence_ch": "高",
+  "authors_ch": "Shicheng Fan、Haochang Hao、Dehai Min、Weihao Liu、Philip S. Yu、Lu Cheng",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:01:15Z"
+}

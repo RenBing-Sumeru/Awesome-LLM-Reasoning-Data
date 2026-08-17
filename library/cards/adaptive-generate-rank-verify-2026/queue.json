@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-21T11:46:37Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把生成、排序和昂贵验证器调用统一为可证明的测试时预算分配问题",
+    "updated_at": "2026-07-21T11:46:37Z"
+  }
+}

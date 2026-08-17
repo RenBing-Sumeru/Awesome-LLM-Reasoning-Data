@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ScPO 对同一问题采样多份答案，依据答案频次把更一致的回答作为偏好对的正例，用 DPO 训练模型偏向一致答案。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Archiki Prasad；Weizhe Yuan；Richard Yuanzhe Pang；Jing Xu；Maryam Fazel-Zarandi；Mohit Bansal；Sainbayar Sukhbaatar；Jason E. Weston；Jane Yu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

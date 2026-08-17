@@ -1,0 +1,5 @@
+- Keep four ledgers separate: continued-pretraining and post-training data disclosure, SFT and RL methods, downloadable weights and inference code, and benchmark behavior.
+- Read Table 1 as 85,267 prompts across four task families; only the general branch gives 1,827 synthetic environments, and no trajectory count or downloadable task manifest is provided.
+- Match each branch to its own feedback: search verification plus rubrics, code F2P/P2F tests, general Python verification plus non-zero pass@100, and mixed-RL outcome, length, language, or generative rewards.
+- Pin final weight revision `a7e62ac...`, Speciale revision `c562883...`, and inference commit `87e509a...`; none contains the missing SFT corpus, rollouts, reward history, or environment bundles.
+- Treat internal evaluation environments, context management, 128K truncation, and Speciale's larger token budget as score conditions; benchmarks do not certify data provenance or quality.

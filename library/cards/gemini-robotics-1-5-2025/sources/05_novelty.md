@@ -1,0 +1,5 @@
+Gemini Robotics 1.5 is notable for joining three usually separate data problems: cross-embodiment action transfer, explicit language-before-action reasoning, and long-horizon orchestration with online success detection. The data object is therefore richer than an instruction–action pair: it can include perception, embodiment, sensor state, language plan or thought, continuous action, environment feedback, progress, and failure type.
+
+Motion Transfer makes the embodiment axis explicit. Instead of treating each robot as an independent finetuning target, the report asks whether action knowledge can be aligned and reused across ALOHA, Franka, and Apollo. The ablation and zero-shot task design provide evidence for transfer even though the mechanism itself is under-specified.
+
+The report also offers a concrete adversarial-data recipe for physical agents. Prompt attacks, scene corruption, and environment disturbances are generated from ordinary tasks and judged for correctness and safety. This extends safety auditing beyond dialogue-only red teaming, although the generated corpus and verification process remain closed.

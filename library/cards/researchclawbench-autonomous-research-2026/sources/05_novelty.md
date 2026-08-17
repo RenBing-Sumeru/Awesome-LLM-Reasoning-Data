@@ -1,0 +1,1 @@
+Earlier science benchmarks ask paper questions, complete code, or reproduce metrics. ResearchClawBench hides target papers and evaluates complete research artefacts rather than one number; multimodal rubrics inspect protocols, figures, and evidence. It measures end-to-end rediscovery rather than code execution alone.

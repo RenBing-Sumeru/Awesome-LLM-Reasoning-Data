@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PPO 类强化学习可在污染 SFT 后抹去检测信号，而成熟推理模型的 CoT 污染会让既有检测器接近随机猜测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理模型基准污染检测脆弱性审计论文",
+  "best_for_ch": "需要审计推理模型训练污染和检测器失效的研究者。",
+  "confidence_ch": "高：ICLR 2026 正式论文、作者单位和公开代码入口均已核验。",
+  "authors_ch": "Han Wang, Haoyu Li, Brian Ko, Huan Zhang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

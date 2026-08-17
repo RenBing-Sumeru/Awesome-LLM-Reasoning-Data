@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-bench 将真实 GitHub issue 转化为可执行仓库修复任务。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "ICLR 2024 Oral / arXiv 的 SWE agent benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Carlos E. Jimenez 等（Princeton University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T13:25:17Z"
+}

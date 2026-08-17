@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LHTB 发布 46 个仅用于测试的容器化终端任务及确定性回合末子任务评分器，但未发布论文基线轨迹；当前 GitHub 公开全部任务的 tests/ 与 solution/，与 HF 的保留声明冲突。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "长时程终端智能体基准与环境发布",
+  "best_for_ch": "研究环境反馈、长时程智能体评测、确定性 verifier、轨迹审计与基准污染的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zongxia Li、Zhongzhi Li、Yucheng Shi、Ruhan Wang、Junyao Yang、Zhichao Liu、Xiyang Wu、Anhao Li、Yue Yu、Ninghao Liu、Lichao Sun、Haotao Mi、Leowei Liang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

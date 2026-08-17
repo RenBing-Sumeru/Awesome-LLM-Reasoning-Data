@@ -1,0 +1,1 @@
+PRISM releases multimodal DPO pairs derived from four-stage MCTS reasoning paths selected with UCB and safety/helpfulness feedback, while releasing code and test-time search tooling but not the full search trees or node values.

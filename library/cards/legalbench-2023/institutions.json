@@ -1,0 +1,34 @@
+{
+  "institutions": [
+    "Stanford University",
+    "University of Chicago",
+    "Maxime Tools",
+    "Dartmouth College",
+    "LawBeta",
+    "South Texas College of Law Houston",
+    "University of Toronto",
+    "St. Thomas University Benjamin L. Crump College of Law",
+    "Harvard Law School",
+    "Stanford Center for Legal Informatics - CodeX",
+    "University of Southern California",
+    "Georgetown University Law Center",
+    "Stanford Law School",
+    "University of Virginia",
+    "Télécom Paris, Institut Polytechnique de Paris",
+    "Osgoode Hall Law School, York University",
+    "Harvard Kennedy School",
+    "Golden Gate University School of Law",
+    "Luddy School of Informatics - Indiana University Bloomington",
+    "Casetext"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:55:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2308.11462",
+    "https://hazyresearch.stanford.edu/legalbench/",
+    "https://github.com/HazyResearch/legalbench",
+    "https://huggingface.co/datasets/nguha/legalbench"
+  ],
+  "verification_note": "arXiv, project, GitHub, and Hugging Face sources verify long author/institution metadata and public task/evaluation artifacts. No official NeurIPS venue claim was verified in this pass."
+}

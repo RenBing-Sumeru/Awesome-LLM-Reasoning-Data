@@ -1,0 +1,5 @@
+- Separate released weights and inference forks from unreleased training and audit artifacts.
+- Read the category-level mixture table as a disclosure of proportions, not as a dataset manifest or license record.
+- Treat math/code verifiers as concrete feedback interfaces, but not as released verifier implementations or environments.
+- The answer-preserving trimming rule preserves a final answer by cutting reasoning tails; its induced distribution shift and source-level effects remain unauditable.
+- TTC/RSA appears only to explain aggregation-trace construction and its missing artifacts. This Card remains Track 12 only.

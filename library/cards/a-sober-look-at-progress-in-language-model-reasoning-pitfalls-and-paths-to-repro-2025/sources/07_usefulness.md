@@ -1,0 +1,4 @@
+If you are evaluating a new math-reasoning model, use the released Docker/LightEval recipe, task definitions, templates, and seed schedule to produce mean±standard-deviation Pass@1 rather than one leaderboard score. The required inputs are a pinned model revision, the six benchmark datasets, comparable decoding budget, and compatible hardware; the output is an auditable evaluation report. Success means the run is reproducible and its confidence interval is reported.
+
+If you curate a reasoning-training claim, use the CSV logs to inspect whether a gain survives across seeds and newer AIME'25. Do not reuse this protocol unchanged for non-math tasks or claim causal superiority of RL/SFT when base model, data scale, or tuning budget differ.
+For a paper review, the minimum audit artifact is therefore a runnable command plus raw per-seed outputs, not only an aggregate table or a screenshot of a leaderboard.

@@ -1,0 +1,6 @@
+- 先读第3.1-3.3节与附录H，以重建seeded state、Appium/XCUITest loop、observation/action mode、task/rubric schema和trajectory judge。
+- 把发布规模放在一起理解：26个互联应用、按27/60/46划分的133项任务、共1,123条criterion且每项4-13条；这些是benchmark object，不是已发布训练语料。
+- 把反馈解释为`judgment_required`、`full_episode`和`scalar_reward`；严格pass表示GPT-5.4 Mini接受全部criterion，而非程序化state predicate执行成功。
+- 比较任务类别前先读附录J：judge一致性并不完美，存在79个criterion false positive、69个false negative及方向随类别变化的任务级偏差。
+- 区分可执行发布与轨迹发布：seed state、runner、evaluator、MCP server和task JSON已公开，但公众只能看到16条精选run，而非完整成功/失败语料。
+- 复用前需核实仓库/工具链/API snapshot、replay manifest、split与decontamination政策、raw failure与retry、高风险动作确认默认值，以及缺失的第三方归因细节。

@@ -1,0 +1,5 @@
+- 将“multi-language”理解为四种编程语言，而不是翻译后的自然语言任务：源 issue/PR 文本主要为英文。
+- 区分 2,110 行完整 test split、500 行 PB500 子集和当前 382 行 Verified artifact；PB500 与 Verified 都是评测子集，不是训练 split。
+- 把任务行与 verifier 一起阅读：base commit、Dockerfile、test command、F2P/P2P 测试与 candidate patch 共同定义 resolution；文件/CST retrieval 分数只是诊断指标。
+- 不要推断存在 agent trajectory 发布。harness 会保存本地日志和成功/失败结果，但没有发布标准 state/action/observation corpus、不可变 image-digest 清单或公共 run bundle。
+- 明确记录版本漂移：Verified 当前有 Java 69、JavaScript 100、Python 113、TypeScript 100 行，总计 382，而部分官方文案仍写 394。

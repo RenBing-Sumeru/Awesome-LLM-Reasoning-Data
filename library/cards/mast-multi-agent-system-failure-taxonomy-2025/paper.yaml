@@ -1,0 +1,116 @@
+id: mast-multi-agent-system-failure-taxonomy-2025
+title: Why Do Multi-Agent LLM Systems Fail?
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Mert Cemri
+- Melissa Z. Pan
+- Shuyi Yang
+- Lakshya A. Agrawal
+- Bhavya Chopra
+- Rishabh Tiwari
+- Kurt Keutzer
+- Aditya Parameswaran
+- Dan Klein
+- Kannan Ramchandran
+- Matei Zaharia
+- Joseph E. Gonzalez
+- Ion Stoica
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multi-agent-systems
+- failure-taxonomy
+- trace-diagnosis
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2503.13657
+  arxiv: https://arxiv.org/abs/2503.13657
+  code: https://github.com/multi-agent-systems-failure-taxonomy/MAST
+  project: https://sites.google.com/berkeley.edu/mast/
+  data: https://huggingface.co/datasets/mcemri/MAST-Data
+  huggingface: https://huggingface.co/datasets/mcemri/MAST-Data
+  venue: https://arxiv.org/abs/2503.13657
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Coding, mathematical-reasoning, and general-agent tasks executed across seven multi-agent frameworks.
+  trace_author: Multi-agent frameworks produce execution traces; human experts derive MAST and an LLM judge scales annotation.
+  answer_format: MAS and model metadata, benchmark task, raw trace reference, and structured MAST failure annotations.
+  process_fields:
+  - mas
+  - llm
+  - benchmark_task
+  - raw_trace
+  - failure_category
+  - failure_mode
+  environment_or_substrate: Seven popular multi-agent-system frameworks across coding, mathematics, and general-agent workloads.
+  verifier_or_reward: Expert human annotation establishes MAST; a released LLM-as-a-judge pipeline applies it at scale.
+  terminal_predicate: Structured assignment of one of 14 MAST failure modes to an execution trace.
+recipe_metadata:
+  base_model: See the official paper and released implementation for the generating and evaluated models.
+  teacher: Expert human annotators; the released labels are the supervision signal.
+  generator: Agent systems running the released benchmark tasks.
+  filtering_rule: Use the paper's trace-selection and annotation-adjudication protocol.
+  sampling_protocol: More than 1,600 annotated traces; the taxonomy was developed from 150 traces with three expert annotators
+    per study.
+  inference_budget: Use the official evaluation configuration.
+  optimizer_or_scaffold: Trace-level diagnosis and process-supervision evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Task instances, agent execution traces, human process annotations, and benchmark metadata.
+  split: More than 1,600 annotated traces; the taxonomy was developed from 150 traces with three expert annotators per study.
+  decontamination: Do not train on released evaluation traces before reporting results on the same benchmark.
+  license: CC-BY-4.0 for the official Hugging Face dataset; consult the repository for implementation terms.
+  lineage: NeurIPS 2025 Datasets and Benchmarks paper, Berkeley project page, official MAST repository, and MAST-Data card.
+  known_failure_modes:
+  - The 14-mode taxonomy is not exhaustive
+  - LLM-judge scaling can propagate taxonomy ambiguity
+  - Framework and task mixtures affect observed failure rates
+  citation_status: verified
+  confidence: high
+  notes: Verified the NeurIPS 2025 Datasets and Benchmarks affiliation block, Berkeley project page, official MAST repository,
+    and MAST-Data card.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- agent-trajectories
+- reasoning
+one_line_summary: MAST-Data scales a human-derived 14-mode failure taxonomy to more than 1,600 multi-agent execution traces
+  for structured diagnosis and judge evaluation.
+why_it_matters: It turns trace diagnosis into a reusable taxonomy-aligned supervision problem across multiple multi-agent
+  frameworks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the NeurIPS 2025 Datasets and Benchmarks affiliation block, Berkeley project page, official MAST repository,
+    and MAST-Data card.
+category_ids:
+- process_trace_supervision_data

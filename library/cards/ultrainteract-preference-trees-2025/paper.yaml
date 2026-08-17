@@ -1,0 +1,172 @@
+id: ultrainteract-preference-trees-2025
+title: Advancing LLM Reasoning Generalists with Preference Trees
+year: 2025
+venue: ICLR 2025
+authors:
+- Lifan Yuan
+- Ganqu Cui
+- Hanbin Wang
+- Ning Ding
+- Xingyao Wang
+- Boji Shan
+- Zeyuan Liu
+- Jia Deng
+- Huimin Chen
+- Ruobing Xie
+- Yankai Lin
+- Zhenghao Liu
+- Bowen Zhou
+- Hao Peng
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- pairwise_preference
+domains:
+- mathematical-reasoning
+- code-generation
+- logical-reasoning
+- tool-use
+training_use:
+- sft
+- preference_learning
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=2ea5TNVR0c
+  arxiv: https://arxiv.org/abs/2404.02078
+  code: https://github.com/OpenBMB/Eurus
+  data: https://huggingface.co/datasets/openbmb/UltraInteract_sft
+  project: https://github.com/OpenBMB/Eurus
+  huggingface: https://huggingface.co/collections/openbmb/eurus-660bc40bec5376b3adc9d1c5
+  venue: https://iclr.cc/virtual/2025/poster/31127
+  openreview: https://openreview.net/forum?id=2ea5TNVR0c
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 85,918 instructions selected from twelve math, coding, and logic datasets, emphasizing problems that GPT-3.5-Turbo
+    fails and datasets with ground-truth solutions.
+  trace_author: GPT-3.5-Turbo is the default actor; a pool of open actors supplies diverse incorrect actions, stronger actors
+    up to GPT-4 Turbo are used when correct actions are hard to obtain, and GPT-4 writes critiques with ground-truth references.
+  answer_format: The SFT release stores task, source dataset, instruction, step-by-step response, id, and parent_id; the companion
+    preference release stores the interaction trajectory plus chosen and rejected actions.
+  process_fields:
+  - task and source-dataset labels
+  - instruction and step-marked text or code response
+  - preference-tree id and parent_id
+  - environment observation and critique in multi-turn trajectories
+  - chosen and rejected actions in the companion pair release
+  environment_or_substrate: Python execution for tool-using math and coding, Wikipedia search for selected logic tasks, and
+    textual critique conditioned on interaction history and ground truth.
+  verifier_or_reward: Dataset ground-truth answers or test cases and Python execution provide objective correctness; GPT-4
+    Turbo judges Magicoder-Evol-Instruct records, which are excluded from preference pairs because that judgment is less rigorous.
+  terminal_predicate: A correct action closes its branch; an incorrect action may be expanded with observation and critique,
+    with each preference tree capped at five turns.
+recipe_metadata:
+  base_model: Mistral-7B for Eurus-7B-SFT and CodeLLaMA-70B for Eurus-70B-SFT.
+  teacher: GPT-3.5-Turbo is the default actor, GPT-4 supplies critiques, and stronger actors up to GPT-4 Turbo support difficult
+    correct-action sampling.
+  generator: The actor decomposes a problem, samples a CoT or modular-programming plan, and writes marked text or executable-code
+    actions; incorrect branches receive environment and critique feedback before another turn.
+  filtering_rule: Retain objectively correct actions for SFT, pair correct and syntax-valid incorrect actions for preference
+    learning, exclude Magicoder from pairs, and remove benchmark instructions with exact or 8-gram overlap.
+  sampling_protocol: Sample 20 actions per attempt, retry up to three rounds with progressively stronger actors, then expose
+    ground-truth rationales or answers for remaining hard problems; expand incorrect branches for at most five turns.
+  rollout_count: 20
+  temperature: null
+  inference_budget: Up to three 20-action sampling rounds before ground-truth-assisted elicitation; preference trees stop
+    after at most five turns.
+  optimizer_or_scaffold: Eurus SFT runs one epoch at learning rate 2e-5 with cosine decay and 0.1 warmup; the 7B mixture adds
+    32K UltraChat, 30K ShareGPT, and 50K OpenOrca examples.
+audit:
+  source_mixture: UltraInteract draws from GSM8K, MATH, MathQA, NumGLUE, TabMWP, CodeContest, TACO, WikiTableQuestions, Magicoder-Evol-Instruct,
+    ReClor, HotpotQA, and StrategyQA.
+  split: The official Hugging Face SFT release exposes one train split with 288,579 Parquet rows; the pair release exposes
+    one train split with 219,522 rows.
+  decontamination: LeetCode uses exact-substring matching; other same-task test sets use 8-gram exact matching, and overlapping
+    instructions are removed.
+  license: Both official Hugging Face releases are tagged MIT; component prompts, answers, and environments inherit source-specific
+    terms that require separate review.
+  lineage: Public reasoning instructions are challenge-filtered, expanded into preference trees by actor models, checked against
+    ground truth or execution, and exported as correct SFT actions plus a companion chosen/rejected trajectory corpus.
+  known_failure_modes:
+  - Final-answer or execution correctness does not prove that every intermediate rationale step is valid.
+  - GPT-4 Turbo rather than an objective checker judges Magicoder-Evol-Instruct actions, so those records are unsuitable for
+    the paper's preference-pair contract.
+  - The released SFT row count, 288,579, is 1,600 above the paper's 286,979 correct-answer count, and the release does not
+    document that delta.
+  - MIT metadata on the aggregate release does not replace a component-by-component license and provenance audit of the twelve
+    source datasets.
+  citation_status: temporary
+  confidence: high
+  notes: The ICLR 2025 official paper list and poster page, OpenReview id, arXiv full paper, repository, both Hugging Face
+    dataset cards, actual SFT Parquet schema and first row, current adoption signals, and Table 5 data ablation were checked
+    on 2026-07-14. The arXiv v1 affiliation block predates the final ICLR author list and is used only for the displayed institution
+    set.
+inclusion_reason: UltraInteract makes correct reasoning actions and interaction-conditioned trajectories into released SFT
+  demonstrations, exposes their record schema and selection rules, and directly tests their contribution to downstream reasoning
+  training.
+related:
+- codeact-instruct-2024
+tags:
+- reasoning-demonstrations
+- preference-trees
+- tool-augmented-rationales
+- multi-turn-correction
+- alignment-data
+status: verified
+one_line_summary: UltraInteract turns objectively checked reasoning actions and correction trajectories into public SFT demonstrations
+  and companion preference pairs.
+why_it_matters: It exposes how instructions, actor-generated rationales, execution feedback, critiques, and correctness decisions
+  become reusable reasoning post-training records.
+reading_priority: must read
+paper_type: reasoning demonstration dataset and preference-tree construction recipe
+best_for: Researchers constructing or auditing math, code, and logic rationale data for SFT.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: ICLR and OpenReview identifiers, arXiv text, official repository, non-gated MIT dataset metadata, Parquet row counts,
+    schema, and one actual SFT row were verified.
+category_ids:
+- instruction_demonstration_rationale_data
+- preference_reward_feedback_data
+batch:
+  id: batch-l4-20260714-round2-general
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: preference-tree reasoning demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block lists Tsinghua University, University of Illinois Urbana-Champaign, Northeastern
+      University, ModelBest Inc., Renmin University of China, Beijing University of Posts and Telecommunications, and Tencent.
+    venue: The ICLR 2025 official paper list and poster page 31127 identify the work as an accepted Poster and link OpenReview
+      forum 2ea5TNVR0c.
+    impact: On 2026-07-14 Semantic Scholar reported 208 citations including 13 influential citations; Hugging Face reported
+      1,239 SFT downloads and 2,313 pair-release downloads.
+    artifact: The official release provides non-gated MIT SFT and preference Parquet files, code, model checkpoints, record
+      schemas, training details, and an actual readable SFT row.
+  selection_eligible: true
+  year_impact_threshold: 2

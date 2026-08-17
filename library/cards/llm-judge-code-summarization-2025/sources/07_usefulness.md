@@ -1,0 +1,1 @@
+Use this protocol when evaluating a code generator or summarizer with a candidate LLM judge: first clean the executable oracle or assemble triple human labels, then measure false positives, failures, and bias before automating selection. The output is a calibrated evaluation report, not a trusted reward signal. Do not use it when no independent oracle or review budget exists.

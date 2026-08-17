@@ -1,0 +1,3 @@
+Prior semantic-parsing datasets often used one domain or a small number of fixed schemas, while WikiSQL simplified SQL structure. Spider changes the evaluation surface by combining complex SQL with cross-domain database splits.
+
+The quality signal is human annotation, broad domain coverage, official evaluation scripts, and a long-running leaderboard ecosystem. What is not new is SQL execution or supervised question-SQL pairs. Before reuse, inspect CC BY-SA data terms, Apache-2.0 code terms, exact data zip, post-release corrections, hidden test policy, evaluator version, and contamination from public benchmark examples.

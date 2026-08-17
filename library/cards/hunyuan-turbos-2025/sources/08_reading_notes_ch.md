@@ -1,0 +1,5 @@
+- 分开记录各阶段数量：16T 基础预训练 token、300B annealing token、30B 与 20B 上下文扩展 token、300 万条 SFT、约 20 万条 GRM 偏好标签、超过 80 万条可执行代码、30 万条 Stage I RL 记录和 16 万条 Stage II 指令；它们不是一个可相加的语料总量。
+- 自适应监督使用 Hunyuan-Base 的短回答尝试，并在失败后由 Hunyuan-T1 继续生成；精确 checkpoint、生成指令、候选数、停止上限和正确性检查均为 unknown。
+- General Reward System 覆盖 16 个子主题和超过 30 个服务，包括 GRM、Answer Consistency Model、critic、沙箱执行、分类器、规则和分数融合；checkpoint 与校准没有发布。
+- 官方 GitHub 是报告仓库，官方 Hugging Face Space 是托管 API 演示；两者都不能证明 Hunyuan-TurboS 权重或训练语料可下载。
+- 基准与 token 效率结果只能作为模型行为证据，不能验证来源、权利、推理质量、verifier 可靠性或去污染。

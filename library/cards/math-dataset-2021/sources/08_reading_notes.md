@@ -1,0 +1,1 @@
+Read MATH as an answer-level benchmark first and a solution-text corpus second. Keep full MATH, MATH test, and MATH-500 separate. When later papers report "MATH" scores, check whether they used the original 5,000-test split, a filtered subset, additional search, or a custom grader.

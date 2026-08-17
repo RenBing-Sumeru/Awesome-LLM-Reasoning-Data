@@ -1,0 +1,3 @@
+Reported evidence: The paper reports 1M+ open-web trajectories, models at 8B/14B/32B scale, support for 30+ turns, two WebWorld-Bench metrics across nine dimensions, 8000 synthesized trajectories, and a +9.2% WebArena gain after finetuning Qwen3-14B.
+
+Instance-level evidence: For one simulated transition, decisive evidence is whether the predicted next state is factually consistent with the action effect and whether it resembles a real browser observation under the benchmark judge. Aggregate numbers should be reused only with their evaluator version, split, budget, and environment state attached.

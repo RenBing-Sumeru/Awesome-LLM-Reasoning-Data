@@ -1,0 +1,1 @@
+Yang, Jinlong. 2026. 《Heteroskedastic Signals in Budgeted LLM Verification: Structural Heterogeneity Limits Optimization Gains》. arXiv 预印本 arXiv:2606.15841。官方一手来源为 arXiv 摘要页和 PDF：https://arxiv.org/abs/2606.15841。PDF 标明作者机构为西北工业大学，并且是本卡记录的方法、理论以及 MBPP/MATH 实验结果的依据。

@@ -1,0 +1,67 @@
+id: plan-and-budget-2026
+title: 'Plan and Budget: Effective and Efficient Test-Time Scaling on Large Language Model Reasoning'
+year: 2026
+venue: ICLR 2026
+authors: [Junhong Lin, Xinyue Zeng, Jie Zhu, Song Wang, Julian Shun, Jun Wu, Dawei Zhou]
+source_role: [scaling_study]
+verification_contract: [unknown]
+supervision_granularity: [answer_level]
+domains: [reasoning, mathematics]
+training_use: [test_time_compute]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts:
+  paper: https://arxiv.org/abs/2505.16122
+  arxiv: https://arxiv.org/abs/2505.16122
+  venue: https://iclr.cc/virtual/2026/poster/10008460
+  code: https://github.com/junhongmit/P-and-B
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.16122
+data_object:
+  prompt_source: Reasoning tasks evaluated in the paper.
+  trace_author: A reasoning language model generates planned subquestion traces.
+  answer_format: Prompt, plan, subquestions, complexity estimate, allocated token budget, and answer.
+  process_fields: [prompt, plan, subquestions, complexity, token_budget, answer]
+  environment_or_substrate: Adaptive test-time planning and token scheduling.
+  verifier_or_reward: Task correctness and the E3 correctness-efficiency metric.
+  terminal_predicate: Benchmark final-answer correctness under a token budget.
+recipe_metadata:
+  base_model: DS-Qwen-32B and DS-LLaMA-70B are reported comparison models.
+  teacher: null
+  generator: Plan-and-Budget inference framework.
+  filtering_rule: Schedule budget by estimated subquestion complexity.
+  sampling_protocol: Adaptive per-subquestion token allocation.
+  rollout_count: null
+  temperature: null
+  inference_budget: Explicit token budget allocated across a planned decomposition.
+  optimizer_or_scaffold: Bayesian Budget Allocation Model and adaptive scheduling.
+audit:
+  source_mixture: Official ICLR 2026 record, arXiv paper, and public code repository.
+  split: Consult the paper for benchmark protocols.
+  decontamination: No dedicated audit stated; verify benchmark overlap before reuse.
+  license: Verify base-model, benchmark, and repository licenses separately.
+  lineage: 'Primary sources: https://arxiv.org/abs/2505.16122; https://iclr.cc/virtual/2026/poster/10008460'
+  known_failure_modes: [Complexity estimates can be wrong, Decomposition can add overhead, Token accounting must include planning]
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR record, arXiv source, affiliations, and repository link checked on 2026-07-20.
+inclusion_reason: It explicitly allocates finite token budgets across reasoning subproblems and evaluates the correctness-efficiency trade-off.
+related: []
+tags: [test-time-compute, budget-allocation, planning, reasoning-efficiency]
+status: verified
+one_line_summary: Plan-and-Budget decomposes a query and adaptively assigns token budgets to subquestions instead of using a fixed thinking length.
+reading_priority: essential
+paper_type: Adaptive token-budget allocation and test-time scaling study
+best_for: Readers designing efficient planning or auditing overthinking under a fixed inference budget.
+confidence: high
+why_it_matters: It makes token allocation an observable decision rather than treating longer reasoning as a free improvement.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ICLR record, primary paper, and linked repository checked.
+category_ids: [scaling_rlvr_test_time_compute]

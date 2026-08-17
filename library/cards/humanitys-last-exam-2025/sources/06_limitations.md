@@ -1,0 +1,3 @@
+Correctness is relative to the accepted answer specification and grader. Exact-answer tasks can have equivalent formulations that are hard to normalize, and LLM-judge grading introduces model, prompt, and version dependence.
+
+Public release creates rapid contamination risk, especially when questions, answers, and rationales are mirrored into training corpora. Broad contributor provenance improves coverage but complicates lineage and rights audits. Multimodal items require separate asset checks. HLE should not be read as measuring open-ended research ability, long-horizon tool use, or all forms of expert reasoning.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MLR 将长推理拆为规划器生成的认知子目标和执行器生成的细节，并以 Step-DPO 把结果反馈转化为可扩展的步骤偏好。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要层级轨迹监督、自动步骤描述，或研究长 CoT 信用分配的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Siheng Xiong、Ali Payani、Faramarz Fekri",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

@@ -1,0 +1,4 @@
+Temperature sampling allocates uniformly, beam search concentrates on top scores, DVTS separates fixed subtrees, and REBASE allocates by solution-level PRM softmax. DORA's specific change is a multiplicity correction: it discounts a high-quality candidate when many semantically similar candidates already represent the same direction, approximating direction-level allocation without hard clustering.
+
+The contribution is a conditional resource-allocation theory plus a practical PRM-and-embedding search rule. It is not a new reasoning dataset, PRM, embedding model, majority-vote rule, or universal proof of optimal test-time search. The direction abstraction is useful precisely because it creates an audit target: whether similarity, uniqueness, rounding, and score calibration actually correspond to the search behavior claimed.
+

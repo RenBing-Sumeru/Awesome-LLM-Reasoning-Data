@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ProfBench 为科学、金融和咨询报告提供专家撰写的细粒度准则，可同时评估回答模型与 Judge。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多专业领域的回答与 Judge rubric 基准",
+  "best_for_ch": "需要训练或比较专业报告 Judge、奖励模型和长文本回答系统的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhilin Wang, Jaehun Jung, Ximing Lu, Shizhe Diao, Ellie Evans, Jiaqi Zeng, Pavlo Molchanov, Yejin Choi, Jan Kautz, Yi Dong",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

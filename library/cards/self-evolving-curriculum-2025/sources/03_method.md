@@ -1,0 +1,2 @@
+Problems are partitioned by difficulty, type, or domain. At each step, the scheduler softmax-samples a category from its current value estimates, samples a problem, obtains on-policy Qwen2.5 rollouts and task-specific verifiable rewards, performs a GRPO update, aggregates absolute advantages by category, and applies a TD(0)/EMA-style value update. The next sampling distribution therefore depends on the entire preceding policy and curriculum trajectory.
+

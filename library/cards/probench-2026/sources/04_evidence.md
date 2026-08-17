@@ -1,0 +1,9 @@
+All model and evaluator results are author-reported and were not independently reproduced. Human comparison reports Gemini 2.5 Pro evaluator correctness of **96.0% on State tasks**, **89.7% on Process tasks with Structure Description Converter**, and **94.1% on Process tasks with MLLM Summarizer** (Paper Table 2). The paper does not disclose validation sample size, sampling protocol, annotator count, agreement, or adjudication, so these values do not establish category-complete false-positive/negative rates.
+
+Table 3 reports the best overall agent result for Gemini 2.5 Pro at **40.1%**, with **45.6% on State tasks and 27.9% on Process tasks**. Every evaluated model scores lower on Process than State tasks. This supports the claim that path-sensitive requirements make the evaluation harder; it does not prove that action descriptions are process supervision or that the judge is always correct.
+
+The paper reports GPT-4o and Claude 4 Sonnet at 0, largely attributing failure to coordinate grounding limitations; UI-R1-E-3B never emits `COMPLETE`. Error analysis identifies grounding failure, insensitivity to action history/repetitive loops, and oversimplified planning. These findings are based on paper tables and selected cases because record-level results and trajectories are not released.
+
+The benchmark count is internally consistent: **217 = 149 State + 68 Process**, with **75 English = 52 State + 23 Process** and **142 Chinese = 97 State + 45 Process**, across 34 applications. These strata describe evaluation coverage, not train/dev/test partitions.
+
+Evidence is strongest for publication identity, counts, prompts, and the described evaluation contract. It is weak for independent artifact audit: no official implementation, task manifest, environment package, Process Provider output, judge response, or success/failure episode corpus was confirmed.

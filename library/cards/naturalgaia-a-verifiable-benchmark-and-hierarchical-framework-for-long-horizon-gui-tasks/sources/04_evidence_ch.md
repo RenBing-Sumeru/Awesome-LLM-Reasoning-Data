@@ -1,0 +1,1 @@
+ACL 正式版中，LightManus-Jarvis 的 Weighted Pathway Success Rate 为 45.6%，明显高于对比基线的 21.1%，同时 token 消耗降低 75%、执行时间降低 76%。早期实验也显示 benchmark 对强闭源模型仍有明显难度，并且小模型通过轨迹 RFT 后在复杂任务上仍存在能力上限。结果支持因果路径评分和层级协作，但模型改进不能全部归因于数据集本身。

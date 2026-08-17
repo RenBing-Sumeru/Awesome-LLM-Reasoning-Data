@@ -1,0 +1,1 @@
+Yuksekgonul, Mert, Daniel Koceja, Xinhao Li, Federico Bianchi, Jed McCaleb, Xiaolong Wang, Jan Kautz, Yejin Choi, James Zou, Carlos Guestrin, and Yu Sun. “Learning to Discover at Test Time.” ICML 2026 Spotlight. arXiv:2601.16175. https://arxiv.org/abs/2601.16175. Project: https://test-time-training.github.io/discover/.

@@ -1,0 +1,1 @@
+正确性和质量都相对于 metric 成立。Closed-ended 分数会受答案格式解析影响；open-ended 分数依赖 reference length、judge prompt、judge model 和比较 baseline。长输入不保证模型真的做了长上下文推理，因为系统可能使用 retrieval、truncation 或任务特定 prompt engineering；leaderboard 因此要求暴露这些设置。数据公开且含既有 corpus 来源文档，用作干净 post-training 或 evaluation holdout 前必须查污染和许可。不能把 L-Eval 解读成证明模型使用了全部 200K tokens，除非具体任务和 prediction trace 支持。

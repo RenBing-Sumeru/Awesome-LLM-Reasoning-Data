@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ReFACT 以专家标注的科学错误位置配对答案，评测幻觉检测、定位与纠正。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "研究科学事实性、细粒度错误定位和 LLM 评审可靠性的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yindong Wang、Martin Preiß、Margarita Bugueño、Jan Vincent Hoffbauer、Abdullatif Ghajar、Tolga Buz、Gerard de Melo",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T08:44:30Z"
+}

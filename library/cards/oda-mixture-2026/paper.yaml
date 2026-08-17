@@ -1,0 +1,126 @@
+id: oda-mixture-2026
+title: 'Closing the Data Loop: Using OpenDataArena to Engineer Superior Training Datasets'
+year: 2026
+venue: arXiv preprint
+authors:
+- Gao, Xin
+- Wang, Xiaoyang
+- Zhu, Yun
+- Cai, Mengzhang
+- He, Conghui
+- Wu, Lijun
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- evaluation-guided-open-SFT-mixture-engineering
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2601.09733
+  arxiv: https://arxiv.org/abs/2601.09733
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/OpenDataArena/ODA-Mixture-500k
+  project: null
+  huggingface: https://huggingface.co/datasets/OpenDataArena/ODA-Mixture-500k
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: top-performing open corpora ranked through OpenDataArena
+  trace_author: existing open reasoning responses are retained or rewritten during mixture refinement
+  answer_format: id, source, instruction, and response
+  process_fields:
+  - id
+  - source
+  - instruction
+  - and response
+  environment_or_substrate: English mathematics, code, science, and general reasoning
+  verifier_or_reward: leaderboard-based source selection, deduplication, benchmark decontamination, and mixture ablations
+  terminal_predicate: leaderboard-based source selection, deduplication, benchmark decontamination, and mixture ablations
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: existing open reasoning responses are retained or rewritten during mixture refinement
+  generator: ODA closes the loop by ranking source corpora in OpenDataArena, then deduplicating and decontaminating the best-performing
+    500K-record mixture.
+  filtering_rule: leaderboard-based source selection, deduplication, benchmark decontamination, and mixture ablations
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: general-purpose reasoning SFT
+audit:
+  source_mixture: top-performing open corpora ranked through OpenDataArena
+  split: Official release at https://huggingface.co/datasets/OpenDataArena/ODA-Mixture-500k; exact configs are described by
+    the dataset card.
+  decontamination: leaderboard-based source selection, deduplication, benchmark decontamination, and mixture ablations
+  license: Apache-2.0
+  lineage: top-performing open corpora ranked through OpenDataArena -> existing open reasoning responses are retained or rewritten
+    during mixture refinement -> leaderboard-based source selection, deduplication, benchmark decontamination, and mixture
+    ablations -> ODA-Mixture-500K -> general-purpose reasoning SFT
+  known_failure_modes:
+  - leaderboard selection can overfit the arena's model and task mix
+  - and inherited response errors survive if not caught by source checks
+  citation_status: verified
+  confidence: high
+  notes: Full 43 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for general-purpose reasoning SFT; records
+  name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2601.09733
+- primary-link-checked
+status: verified
+one_line_summary: ODA closes the loop by ranking source corpora in OpenDataArena, then deduplicating and decontaminating the
+  best-performing 500K-record mixture.
+why_it_matters: Open SFT mixtures are often assembled heuristically without feedback linking source-level data choices to
+  downstream capability.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: general-purpose reasoning SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: evaluation-guided open SFT mixture engineering
+  selection_priority_score: 6
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 96 downloads and 123 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet records records, field schema, scale, and Apache-2.0 terms.
+  selection_eligible: true
+  year_impact_threshold: 1

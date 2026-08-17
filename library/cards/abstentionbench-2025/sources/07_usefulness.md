@@ -1,0 +1,1 @@
+Use it before deploying a question-answering or reasoning model: run the released prompts, record abstention recall, precision, and answer accuracy, then inspect false-premise and underspecified failures. It is useful for comparing prompting or post-training choices. Do not use its score alone as a safety clearance for clinical, legal, or other high-stakes deployment.

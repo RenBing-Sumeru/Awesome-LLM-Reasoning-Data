@@ -1,0 +1,101 @@
+id: videorewardbench-video-understanding-2025
+title: 'VideoRewardBench: Comprehensive Evaluation of Multimodal Reward Models for Video Understanding'
+year: 2025
+venue: arXiv 2025
+authors:
+- Zhihong Zhang
+- Xiaojian Huang
+- Jin Xu
+- Zhuodong Luo
+- Xinzhi Wang
+- Jiansheng Wei
+- Xuejin Chen
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- video-understanding
+- multimodal-reward
+- preference-evaluation
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2509.00484
+  arxiv: https://arxiv.org/abs/2509.00484
+  code: null
+  data: https://huggingface.co/datasets/zhang123434/videorewardbench
+  project: https://videorewardbench.github.io/
+  huggingface: https://huggingface.co/datasets/zhang123434/videorewardbench
+  doi: https://doi.org/10.48550/arXiv.2509.00484
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Video understanding questions covering perception, knowledge, reasoning, and safety.
+  trace_author: AI-assisted curation pipeline with annotated preference triplets.
+  answer_format: Video-text prompt, chosen response, rejected response, and evaluation dimension.
+  process_fields:
+  - video
+  - prompt
+  - chosen
+  - rejected
+  - dimension
+  environment_or_substrate: Video understanding and response quality judgment.
+  verifier_or_reward: Annotations define the preferred response in each video-conditioned triplet.
+  terminal_predicate: A reward model selects the chosen response over the rejected response.
+recipe_metadata:
+  base_model: Twenty-eight multimodal reward models from generative, discriminative, and semi-scalar families.
+  teacher: AI-assisted curation and annotation pipeline.
+  generator: Video prompts and candidate answers are assembled into preference triplets.
+  filtering_rule: The curation pipeline retains high-quality annotated comparisons.
+  sampling_protocol: Pin the official dataset revision and report the four evaluation dimensions.
+  inference_budget: Video frame count and reward-model family change evaluation behavior and cost.
+  optimizer_or_scaffold: Pairwise accuracy evaluates video-conditioned reward judgments.
+audit:
+  source_mixture: 1,563 annotated preference triplets over 1,482 unique videos and 1,559 questions.
+  split: Use the versioned Hugging Face release and its documented subset configuration.
+  decontamination: Public videos and preference pairs must be kept out of reward-model training when used as held-out evaluation.
+  license: Confirm the current Hugging Face dataset card before reuse.
+  lineage: arXiv paper, VideoRewardBench project site, and official dataset release.
+  known_failure_modes:
+  - Current reward models remain weak across several video-understanding dimensions.
+  - Different frame counts have model-family-specific effects.
+  citation_status: verified
+  confidence: high
+  notes: Verified arXiv record, official project affiliation, dataset URL, scale, and preference-triplet schema; no separately
+    verified code repository was found.
+inclusion_reason: The public release provides video-conditioned chosen/rejected response pairs for training or evaluating
+  reward models.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: VideoRewardBench exposes whether a reward model can rank answers to real videos across perception, knowledge,
+  reasoning, and safety.
+why_it_matters: It extends multimodal preference feedback from still images to temporal understanding.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified arXiv record, official project affiliation, dataset URL, scale, and preference-triplet schema; no separately
+    verified code repository was found.
+category_ids:
+- preference_reward_feedback_data

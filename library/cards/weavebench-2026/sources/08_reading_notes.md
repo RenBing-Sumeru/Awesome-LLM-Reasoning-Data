@@ -1,0 +1,6 @@
+- Read paper sections 3.1-3.4 and Appendices A-B first: they define P1-P3, C1-C4, the task/episode object, the active evidence-fetching judge, and scalar aggregation.
+- Keep the scale exact: 114 English tasks, 8 work domains, and 23 subcategories; author-reported P1 coverage is 114 with both GUI/CLI atoms, 103 with a non-anchor atom, and 50 with at least two atoms on each side.
+- Preserve both official conflicts: paper v3 says GPT-5.5 and `τ = 0.8`, while current `docs/REPRODUCE.md` says Claude Opus 4.7 and threshold 0.5.
+- Reproduce with Hugging Face revision `cd887bf5ee0e70faa4b250f2cd192bcc1de164ea`, not the newer observed main `fcb478b0bdee19a7f01c1d3c2f648e3ed91abafa`; also obtain an exact GitHub code/prompt/runtime pin.
+- Interpret 35.1%, 41.2%, the 33.3%-to-53.5% grading ablation, and the 35.2% reward-hacking share as setup-specific evidence, never as proof of task or data quality.
+- Reuse only for evaluation and audit until split/decontamination, judge calibration, record-level rights, provenance-index path, and full successful/failed/hack-flagged trajectory retention are verified.

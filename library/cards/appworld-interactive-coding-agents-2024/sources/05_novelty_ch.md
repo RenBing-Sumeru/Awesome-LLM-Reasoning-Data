@@ -1,0 +1,1 @@
+已有 tool-use benchmark 常见问题是调用无状态、只评最终答案，或依赖不够可控的 live web 环境。AppWorld 的变化是构造一个合成但状态化的 app 生态，agent 操作后可以检查数据库状态。方向信号是可控的 interactive coding-agent evaluation，并带程序化副作用审计。不是新的部分包括 API calling、单元测试和模拟环境。复用前要检查任务生成、split 泄漏、单元测试覆盖、API 文档忠实度、package 版本和 license。

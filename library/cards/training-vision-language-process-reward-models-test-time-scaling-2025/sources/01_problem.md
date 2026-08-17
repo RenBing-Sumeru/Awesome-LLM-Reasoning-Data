@@ -1,0 +1,3 @@
+Multimodal test-time scaling needs reliable step rewards, but current VL-PRM data are small, lack negatives, and use inconsistent first-error labels. The paper constructs VL-PRM300K and studies data and labeling choices.
+
+This gap directly determines whether large-scale multimodal step supervision can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on multi-source image problems, multi-model trajectories, first-error labels, and positive/negative step ratios and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in Best-of-N and tree search.

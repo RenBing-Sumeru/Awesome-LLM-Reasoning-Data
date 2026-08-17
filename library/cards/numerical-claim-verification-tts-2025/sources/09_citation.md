@@ -1,0 +1,1 @@
+Chungkham, Primakov, Venktesh V, Vinay Setty, and Avishek Anand. 2025. Think Right, Not More: Test-Time Scaling for Numerical Claim Verification. In Findings of the Association for Computational Linguistics: EMNLP 2025, pages 24345–24363. Association for Computational Linguistics. https://aclanthology.org/2025.findings-emnlp.1322/

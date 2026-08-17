@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-21T07:50:47Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "提出微调，引数为11",
+    "updated_at": "2026-07-21T07:50:47Z"
+  }
+}

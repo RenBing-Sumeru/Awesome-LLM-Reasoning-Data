@@ -1,0 +1,1 @@
+已有 LLM-as-judge 评测多看与人类偏好或强 teacher judge 的一致性。JudgeBench 的新意是把目标改成困难回答对上的客观正确性，judge 需要判断哪一个答案更对，而不是哪一个更流畅。质量信号来自公开的 pair schema、官方 runner、leaderboard space，以及对多类 judge 和 reward model 的支持。不新的部分是 pairwise judging、回答顺序偏差检查、reward model 评测这些组件本来就存在。复用前要检查来源数据谱系、公开样本是否进入模型训练、MIT 数据许可、prompt 模板、order-swap 统计口径，以及该 objective label 在目标领域是否真的能判定该回答对。

@@ -1,0 +1,1 @@
+已有 AI scientist benchmark 通常只保存最终报告、分数或少量工具日志，难以比较模型如何研究。OpenDiscoveryTrace 将完整科学工作流标准化为逐步 ReAct 扩展 schema，并同时保存错误、修订动机和自报置信度，使“相同结果、不同过程”可被定量分析。新意在开放的端到端科学 Agent 过程记录及多任务评测面，而不是新 Agent 算法。 这使成功率相同的模型仍可依据错误来源、修订效率和证据使用形成不同可靠性画像。 每步九字段还使研究者能够重建策略改变的原因和错误后的恢复过程。 并不新的是保存Agent日志；真正变化是统一科学工作流schema，并同时记录error、revision trigger、confidence与final claim，使同成功结果的过程成本和风险可比较。

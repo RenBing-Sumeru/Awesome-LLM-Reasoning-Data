@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWE-Sharp-Bench 提供 150 个 C#/.NET 真实仓库任务，并以 .NET 测试执行验证智能体修复。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序验证的仓库级性能优化基准",
+  "best_for_ch": "需要以正确性测试和可复现运行时共同评测代码智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sanket Mhatre, Yasharth Bajpai, Sumit Gulwani, Emerson Murphy-Hill, Gustavo Soares",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

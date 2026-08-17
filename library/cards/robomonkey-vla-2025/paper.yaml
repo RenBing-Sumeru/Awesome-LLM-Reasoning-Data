@@ -1,0 +1,120 @@
+id: robomonkey-vla-2025
+title: 'RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models'
+year: 2025
+venue: CoRL 2025
+authors:
+- Jacky Kwok
+- Christopher Agia
+- Rohan Sinha
+- Matt Foutter
+- Shulu Li
+- Ion Stoica
+- Azalia Mirhoseini
+- Marco Pavone
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- scalar_reward
+domains:
+- embodied_ai
+- visual_reasoning
+- household_robotics
+training_use:
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://proceedings.mlr.press/v305/kwok25a.html
+  arxiv: https://arxiv.org/abs/2506.17811
+  code: https://github.com/robomonkey-vla/RoboMonkey
+  data: https://huggingface.co/datasets/robomonkey-vla/action_preference_bridge
+  project: https://robomonkey-vla.github.io/
+  huggingface: https://huggingface.co/datasets/robomonkey-vla/action_preference_bridge
+  doi: https://doi.org/10.48550/arXiv.2506.17811
+  venue: https://proceedings.mlr.press/v305/kwok25a.html
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v305/kwok25a.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Imitation-learning data; composition unknown.
+  trace_author: Generalist VLA samples actions.
+  answer_format: Instruction/observation, action samples, clusters, RMSE preference, verifier score, selected action.
+  process_fields:
+  - instruction
+  - observation
+  - sampled_actions
+  - clusters
+  - representative_actions
+  - ground_truth_action
+  - rmse_preference
+  - verifier_score
+  - selected_action
+  environment_or_substrate: Simulated/real robot control.
+  verifier_or_reward: RMSE-to-ground-truth synthetic preferences train VLM action verifier.
+  terminal_predicate: Highest-scored action executed; environment-specific terminal.
+recipe_metadata:
+  base_model: CogACT, Octo, OpenVLA, SpatialVLA examples.
+  teacher: Imitation ground-truth action.
+  generator: VLA samples + Gaussian perturbation + majority voting.
+  filtering_rule: Cluster to K representatives; compare RMSE.
+  sampling_protocol: Sample -> cluster -> preferences -> verifier -> runtime proposals -> rank.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: 16 candidates/650ms in one configuration.
+  optimizer_or_scaffold: VLM verifier fine-tuning.
+audit:
+  source_mixture: Exact imitation sources unknown.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: state/action -> samples -> cluster -> RMSE preferences -> verifier -> runtime ranking
+  known_failure_modes:
+  - RMSE is a proxy, not success.
+  - VLM may misinterpret state.
+  - Unsafe sampled actions possible.
+  - Data/traces/seeds/checkpoints unverified.
+  citation_status: verified
+  confidence: high
+  notes: Official PMLR/arXiv/project checked.
+inclusion_reason: Embodied action rollout selection with synthetic verifier-training traces.
+related: []
+tags:
+- robomonkey
+- vla
+- action-verification
+- robotics
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: RoboMonkey ranks sampled VLA actions with a verifier trained on RMSE-derived preferences.
+why_it_matters: It separates action proposal, proxy preference, ranking, and execution trace contracts.
+card: null
+needs:
+- needs_dataset_manifest
+- needs_verifier_release
+- needs_action_trace_release
+- needs_safety_audit
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official PMLR paper, project page, author repository, and released action-preference dataset were verified; immutable
+    revisions and some training details remain unresolved.

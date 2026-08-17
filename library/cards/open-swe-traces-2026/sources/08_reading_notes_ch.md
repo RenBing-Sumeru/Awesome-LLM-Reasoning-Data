@@ -1,0 +1,5 @@
+- 区分四个分母：20,000 个唯一 PR 任务、207,489 条公开轨迹、160,731 条已知 outcome，以及 65,244 条 resolved 轨迹。
+- 严格按数据卡解释 `resolved`：`1` 为已解决、`0` 为未解决、`-1` 为不可用；报告的 40.6% 排除了 `-1`。
+- 把 thinking/non-thinking 教师与 OpenHands/SWE-agent configuration 看作四种来源模式，而不是 train/validation/test split。
+- 检查运行时、patch、工具 schema、修改测试和 git-history 过滤，同时注意其代码与淘汰台账没有公开。
+- 重放或评测前固定 HF revision `9c0e4579a4ee0effa3e5f7a552494a045f29377d` 或更新的已审计 revision，并恢复 PR/commit/container lineage。

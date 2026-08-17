@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "从内部几何收缩解释污染推理，并用干预部分恢复与基础模型的一致性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "污染推理机制分析与干预研究",
+  "best_for_ch": "需要诊断泄露样本中的记忆化推理、比较污染模型与基础模型的人。",
+  "confidence_ch": "中：官方论文页与代码已核验；独立数据集发布细节、许可证和完整资源预算未披露。",
+  "authors_ch": "Jiakuan Xie, Pengfei Cao, Kang Liu, Jun Zhao",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

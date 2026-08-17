@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Phi-4-reasoning-vision-15B 披露了约 200B token、三阶段混合推理 SFT、公开源类别与数据质量转换，但未发布训练记录、内部/采购数据、验证细节或完整审计工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态推理技术报告与数据披露台账",
+  "best_for_ch": "需要审查多模态推理模型的数据构造、混合思考模式、反馈边界与可复现性缺口的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jyoti Aneja、Michael Harrison、Neel Joshi、Tyler LaBonte、John Langford、Eduardo Salinas",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

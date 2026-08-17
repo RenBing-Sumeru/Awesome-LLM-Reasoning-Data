@@ -1,0 +1,3 @@
+PaCoRe changes the main source of scaling from one long chain to coordinated breadth. In each round, the model receives the problem plus compact messages distilled from the prior round, generates K parallel reasoning trajectories, then turns their findings into a new bounded message set. A final round with one trajectory is the answer-synthesis stage.
+
+The authors train the model with large-scale outcome-based reinforcement learning so it learns to use the messages instead of ignoring them. The key object is therefore not raw trajectory accumulation: it is the message interface between rounds, which preserves selected findings under a fixed context limit while allowing total work across all branches to become very large.

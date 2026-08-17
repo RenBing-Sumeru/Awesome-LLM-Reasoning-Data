@@ -1,0 +1,5 @@
+- 保留 1.3T 归属冲突：Section 2.1 将其置于 general pretraining，而 Table 6 讨论将其计入 MT-oriented pretraining 增益。
+- 3M 与 268K 是近似 SFT-stage 数量；各 source/language、retained/rejected 记录与 20% denominator 未发布。
+- 不要把 WMT automatic category rank 改写为统一 human rank；官方人评名次随 language direction 变化。
+- 33、36、38 种语言以及 7B/8B 都是未解决的计数口径，不能互换为同一精确事实。
+- 六槽位 Chimera prompt 已公开，但 candidate setting、GRPO rollout、inference budget、reward code 与 fusion training record 均未知。

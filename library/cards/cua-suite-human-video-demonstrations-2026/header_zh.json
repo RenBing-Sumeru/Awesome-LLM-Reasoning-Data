@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CUA-Suite 发布约 1 万条专家桌面操作视频、时间戳动作和稠密 UI 链接，保留完整交互轨迹以支持计算机使用训练与过程评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要把连续桌面视频和操作日志转成智能体轨迹，用于模仿学习、离线强化学习或基于视频的奖励建模的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiangru Jian、Shravan Nayak、Kevin Qinghong Lin、Aarash Feizi、Kaixin Li、Patrice Bechard、Spandana Gella、Sai Rajeswar",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

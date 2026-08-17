@@ -1,0 +1,1 @@
+这篇适合作为位置敏感 benchmark 的设计 recipe。可复用记录应保留 question 或 key、标准答案或 value、完整 prompt、证据索引、总 document/key 数、上下文长度、干扰项来源、模型输出、scorer 版本和随机种子。对 atlas 来说，它给长上下文能力声明加了一个简洁审计项：声称模型 robust at long context 前，先按证据位置报告准确率。

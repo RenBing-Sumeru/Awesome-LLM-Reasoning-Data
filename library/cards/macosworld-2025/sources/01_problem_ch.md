@@ -1,0 +1,7 @@
+本卡的主要来源是NeurIPS 2025 Main Conference的43页论文、官方proceedings与项目页，以及在固定提交`e2ca8334b3765537e5c1c428ce57990248a1bb5f`上检查的官方仓库。OSWorld、WindowsAgentArena和AndroidWorld之后，交互式GUI智能体评测仍缺少macOS原生表面；macOSWorld填补的是同时覆盖macOS专属应用、任务指令本地化与界面本地化的空缺。
+
+主发布包含七类202项英文任务，覆盖30个应用，其中28个为macOS专属应用。中文、日文和俄文各覆盖183项；由于Xcode仅支持英文且iMovie不支持阿拉伯文，阿拉伯文覆盖171项；英文覆盖全部202项。安全评测从主数据随机抽取29项任务，并为每项配一段人工撰写的欺骗性对话，因此安全子集与主集合重叠，并非独立split（论文§4、图3、附录F表9）。
+
+可复用评测对象不只是一条指令。每个task JSON把多语言指令绑定到语言特定snapshot或AMI、准备命令、必要的计时/重置flag，以及一个或多个AppleScript、JavaScript或zsh grading command。运行时，harness再记录1024×768 screenshot observation、VNC鼠标/键盘action、conversation history、终止状态、二值`eval_result`，安全任务另有`distraction_result`。官方发布提供任务定义与runner，但没有六个被评智能体完整轨迹的不可变语料。
+
+它是`environment_agent_trajectory_data`的锚点，因为环境状态、观察/动作交互、重置和终态反馈被联合定义；它也属于`benchmarks_evaluation_surfaces`，因为成功由可执行终态grader判定。正文内容已达到待人工审核的L4深度，但训练数据复用不在已有证据范围内：论文只评测智能体，非二值reward和RL训练仅列为未来工作。

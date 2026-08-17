@@ -1,0 +1,4 @@
+Qwen3-VL must align several post-training contracts in one multimodal family: standard instruction following, explicit long CoT, long documents/videos, compact-model distillation, deterministic reasoning rewards, open-ended preference rewards, grounding, and agent behavior. Treating the report as a single model scorecard hides the distinct data objects and feedback risks.
+
+The report discloses meaningful aggregate recipes—a roughly 1.2M-sample SFT mixture and about 30K Reasoning-RL queries—but no reusable post-training dataset. Exact sources, rights, splits, teachers, mixture weights, reward configurations, rejected records, and item-to-checkpoint lineage remain unknown. This Card belongs to `frontier_reports_data_disclosure_ledger`: it records disclosed construction boundaries without turning released checkpoints or benchmark results into data-quality evidence.
+

@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "GUI智能体在线强化学习，数据量大",
+    "updated_at": "2026-07-22T09:43:14Z"
+  },
+  "updated_at": "2026-07-22T09:43:14Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

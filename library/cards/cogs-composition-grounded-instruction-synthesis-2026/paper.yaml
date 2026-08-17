@@ -1,0 +1,113 @@
+id: cogs-composition-grounded-instruction-synthesis-2026
+title: Composition-Grounded Instruction Synthesis for Visual Reasoning
+year: 2026
+venue: ICLR 2026
+authors:
+- Xinyi Gu
+- Jiayuan Mao
+- Zhang-Wei Hong
+- Zhuoran Yu
+- Pengyuan Li
+- Dhiraj Joshi
+- Rogerio Feris
+- Zexue He
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- visual-reasoning
+- synthetic-data
+- process-reward
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2510.15040
+  arxiv: https://arxiv.org/abs/2510.15040
+  code: https://github.com/gxy000/COGS
+  project: https://cogsynthesis.github.io/
+  data: https://www.dropbox.com/scl/fo/db29pn3bya6n6l3pzs9yo/ALu7ecV3LgH-gcvfyESW8vQ/data?dl=0&rlkey=fl4ty5oovx8xvo48k2dhx58q1&st=njr870c9&subfolder_nav_tracking=1
+  huggingface: null
+  venue: null
+  doi: https://doi.org/10.48550/arXiv.2510.15040
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Small seed sets of chart and webpage reasoning questions plus new source images.
+  trace_author: A multimodal LLM decomposes seed questions and generates recomposed questions with subquestions and intermediate
+    answers.
+  answer_format: Image-grounded complex QA paired with factors, subquestions, intermediate answers, and final answer.
+  process_fields:
+  - perception_factors
+  - reasoning_factors
+  - subquestions
+  - intermediate_answers
+  - final_answer
+  environment_or_substrate: Chart, document, and webpage visual reasoning.
+  verifier_or_reward: Factor-level subquestion correctness shapes GRPO rewards alongside final-answer correctness.
+  terminal_predicate: The generated final answer is correct for the composed visual question.
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B in the reported experiments.
+  teacher: A multimodal LLM performs factor decomposition and grounded question synthesis.
+  generator: Recomposition of sampled perception and reasoning factors with a new image.
+  filtering_rule: Grounded generation retains examples with subquestions, intermediate answers, and final answers suitable
+    for process rewards.
+  sampling_protocol: Decompose seeds, aggregate factors, sample and recompose them with images, then train with GRPO and factor-level
+    reward models.
+  inference_budget: See the official project and code for generation budgets.
+  optimizer_or_scaffold: GRPO with StandardRM, ProcessRM-sum, or ProcessRM-max.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Human-curated seed questions, image sources, MLLM-generated factor decompositions and recomposed QA.
+  split: The project holds out portions of ChartQAPro and uses VisualWebBench seeds; preserve the stated held-out evaluation
+    splits.
+  decontamination: Keep seed/evaluation splits separate from synthesized training examples.
+  license: Consult the official data download and the licenses of source image benchmarks.
+  lineage: ICLR 2026 COGS project, arXiv paper, official repository, and project-linked data download.
+  known_failure_modes:
+  - Synthetic factors can be incomplete or incorrectly grounded
+  - Factor recombination can create unnatural questions
+  - Performance depends on seed quality and visual-domain coverage
+  citation_status: verified
+  confidence: high
+  notes: Verified the official project page's accepted ICLR 2026 status, author affiliations, paper, code, and project-linked
+    data release.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: COGS decomposes a few difficult visual questions into reusable perception and reasoning factors, then recomposes
+  them with new images to synthesize QA data with factor-level process rewards.
+why_it_matters: It releases a practical path from scarce seed supervision to image-grounded intermediate-answer supervision
+  without manually labeling every trajectory.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the official project page's accepted ICLR 2026 status, author affiliations, paper, code, and project-linked
+    data release.
+category_ids:
+- process_trace_supervision_data

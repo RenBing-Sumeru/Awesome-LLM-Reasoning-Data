@@ -1,0 +1,129 @@
+id: api-blend-2024
+title: 'API-BLEND: A Comprehensive Corpora for Training and Benchmarking API LLMs'
+year: 2024
+venue: ACL 2024 / arXiv
+authors:
+- Kinjal Basu
+- Ibrahim Abdelaziz
+- Subhajit Chaudhury
+- Soham Dan
+- Maxwell Crouse
+- Asim Munawar
+- Sadhana Kumaravel
+- Vinod Muthusamy
+- Pavan Kapanipathi
+- Luis A. Lastras
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- sft
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2402.15491
+  arxiv: https://arxiv.org/abs/2402.15491
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2402.15491
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Candidate for API sequence and slot-level tool trace construction.
+  trace_author: paper authors, synthetic generators, model agents, or human annotators as disclosed by the official source
+  answer_format: API detection, slot filling, and API sequencing corpora transformed from task-adjacent datasets.
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: API detection, slot filling, and API sequencing corpora transformed from task-adjacent datasets.
+  verifier_or_reward: Examples are evaluated through detection, argument filling, and sequencing targets rather than a full
+    live environment.
+  terminal_predicate: Examples are evaluated through detection, argument filling, and sequencing targets rather than a full
+    live environment.
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: unknown or paper-specific generator; verify the official paper before reuse
+  generator: Existing datasets are identified, curated, and transformed into API/tool tasks for training and benchmarking.
+  filtering_rule: Examples are evaluated through detection, argument filling, and sequencing targets rather than a full live
+    environment.
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: arXiv 2402.15491, candidate source lead, and official artifact links when disclosed in the abstract or arXiv
+    comment.
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: license for questions, traces, code, data, and generated tool records is unknown unless the linked artifact states
+    it
+  lineage: 'Primary source: https://arxiv.org/abs/2402.15491'
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: Affiliation and ACL 2024 main status verified from arXiv HTML/comment and official IBM repository.
+inclusion_reason: 'API-BLEND exposes an agent/tool environment or trajectory-like data object with a concrete feedback contract:
+  Examples are evaluated through detection, argument filling, and sequencing targets rather than a full live environment.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+one_line: API-BLEND is a tool-use or agent-environment source centered on API detection, slot filling, and API sequencing
+  corpora transformed from task-adjacent datasets.
+why_it_matters: It makes the action schema, environment state, and success predicate visible enough for reasoning-data curation
+  and audit.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: API-BLEND contributes a tool-use or agent-environment surface with an explicit evaluation or verification
+  contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary arXiv link verified through arXiv API; artifact links are included only when found in official abstract,
+    comment, or source lead.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 8
+  candidate_title: API-BLEND
+  primary_category_id: benchmarks_evaluation_surfaces
+  processed_at: '2026-07-12'

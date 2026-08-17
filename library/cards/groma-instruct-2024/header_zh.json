@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Groma 发布约 3 万条 GPT-4V 定位对话，把会话中的指代绑定到局部视觉 token 与边界框。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "训练能够讨论用户指定图像区域的多模态助手",
+  "confidence_ch": "高",
+  "authors_ch": "Chuofan Ma, Yi Jiang, Jiannan Wu, Zehuan Yuan, Xiaojuan Qi",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

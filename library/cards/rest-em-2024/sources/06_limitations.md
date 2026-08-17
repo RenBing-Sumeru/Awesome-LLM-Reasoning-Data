@@ -1,0 +1,3 @@
+- **Verifier requirement:** the loop needs an automatic reward accurate enough to prevent false positives from becoming targets. Before reuse, measure checker precision on sampled accepted solutions, including reasoning validity rather than only terminal answers.
+- **Prompt-set overfitting:** repeated rounds reuse only 7,500 MATH or 2,342 APPS prompts; APPS regresses in round two. Hold out validation prompts, track train-test gaps, and stop before accepted-data volume is mistaken for generalization.
+- **Incomplete search coverage:** self-training improves pass@K but does not close the gap to all potentially correct trajectories, and rejected samples provide no learning signal. Report generation budget and compare alternatives that use negative or process feedback.

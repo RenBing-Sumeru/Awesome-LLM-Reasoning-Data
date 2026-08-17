@@ -1,0 +1,2 @@
+The curriculum starts from 100 MATH train questions, while Solvers are first LoRA-SFT-trained on 1,500 Level-5 problems. For each curriculum item, the Solver produces k=8 attempts. Qwen3-235B labels winners and losers; if all fail, the reference solution becomes the sole winner. Online DPO updates the Solver. Failed trajectories condition Teacher refinements, and Qwen3-32B learns question generation with Gaussian weights centered at success rate 0.5 (sigma 0.2). Training mixes new items with 25% historical replay across three stages.
+

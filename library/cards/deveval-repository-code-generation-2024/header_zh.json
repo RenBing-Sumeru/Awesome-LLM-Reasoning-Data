@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DevEval 提供人工标注、对齐真实仓库的代码生成任务。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 real-world repository code generation benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jia Li 等（School of Computer Science, Peking University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T04:11:06Z"
+}

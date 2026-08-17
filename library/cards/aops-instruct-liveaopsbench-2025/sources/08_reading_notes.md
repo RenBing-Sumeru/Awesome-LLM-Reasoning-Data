@@ -1,0 +1,6 @@
+- Separate the artifacts: the authors maintain pipeline/evaluation code, officially link LiveAoPSBench, and label AoPS-Instruct as a third-party community reproduction with a liability disclaimer.
+- Keep the paper snapshots distinct: 647,255 pre-2024 SFT pairs, 3,863 January-August 2024 benchmark questions, 5,216 retrospective 2023 questions, and 5,328 full-2024 HF rows.
+- Read §3.1-§3.2 with Appendix A.1 and Appendix G: the source roles, 10/8-gram rules, dual rewrites, and answer agreement define the data more precisely than the abstract.
+- The 92% correct annotation rate covers a 386-question benchmark sample; it does not validate the 647,255 training rationales, and the paper publishes concrete rewrite failures.
+- Resolve reproduction gaps before rerunning: Figure 2's Qwen-32B extraction label conflicts with the text/code's Llama-3.1-70B, current classifier defaults differ from the paper, and the checked repository lacks the README-referenced shell scripts.
+- Pin source IDs, commits, post windows, model revisions, filter manifests, content-rights records, attribution, and deletion/takedown procedures before training or reporting a live score.

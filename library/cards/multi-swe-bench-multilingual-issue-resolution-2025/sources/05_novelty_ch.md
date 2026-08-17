@@ -1,0 +1,1 @@
+SWE-bench 提供真实 PR 与执行测试，但集中于 Python；后续多语言数据常依赖自动构建，质量容易受工具链失败影响。Multi-SWE-bench 的变化不是只把语言列表扩大，而是为每个生态重建容器化执行协议，并在自动三态测试后加入 68 人专家核验；同时将评测集与可扩展 Multi-SWE-RL 社区分开，避免直接把 benchmark 当训练数据。它保留 SWE-bench 的 issue-resolution contract，但改变了语言覆盖、质量控制规模和训练/评测 artifact 的组织方式。

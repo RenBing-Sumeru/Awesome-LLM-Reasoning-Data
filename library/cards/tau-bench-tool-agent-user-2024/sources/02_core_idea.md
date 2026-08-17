@@ -1,0 +1,3 @@
+The contribution is to benchmark agents in a realistic loop where they must converse, call tools, obey policies, and update backend state. tau-bench instantiates this loop in airline and retail domains instead of scoring isolated API-call accuracy.
+
+The data surface is a customer-support episode. The agent receives policy and tools, the simulated user has a hidden instruction, and the environment exposes stateful Python tools over a database. The feedback contract checks final state against annotated goal conditions and required natural-language outputs. The closest comparisons are ToolBench-style tool APIs, WebArena-style environment tasks, and later tau2/tau3 benchmarks. The direction label is stateful tool-user interaction with terminal reward.

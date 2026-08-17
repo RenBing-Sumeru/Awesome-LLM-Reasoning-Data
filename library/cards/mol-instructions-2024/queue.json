@@ -1,0 +1,17 @@
+{
+  "title": "Mol-Instructions: A Large-Scale Biomolecular Instruction Dataset for Large Language Models",
+  "candidate_links": {
+    "paper": "https://iclr.cc/virtual/2024/poster/18554",
+    "data": "https://huggingface.co/datasets/zjunlp/Mol-Instructions"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:43:35Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "生物数据",
+    "updated_at": "2026-07-27T09:43:35Z"
+  }
+}

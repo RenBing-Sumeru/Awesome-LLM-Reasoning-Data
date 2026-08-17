@@ -1,0 +1,103 @@
+id: factory-long-form-factuality-2025
+title: 'FACTORY: A Challenging Human-Verified Prompt Set for Long-Form Factuality'
+year: 2025
+venue: ICLR 2026
+authors:
+- Mingda Chen
+- Yang Li
+- Xilun Chen
+- Adina Williams
+- Gargi Ghosh
+- Scott Yih
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- factuality
+- long_form_generation
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.00109
+  arxiv: https://arxiv.org/abs/2508.00109
+  code: null
+  data: https://huggingface.co/datasets/facebook/FACTORY
+  project: null
+  huggingface: https://huggingface.co/datasets/facebook/FACTORY
+  doi: https://doi.org/10.48550/arXiv.2508.00109
+  venue: null
+  openreview: https://openreview.net/forum?id=1fgZxUoZB6
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Model-expanded Wikipedia topics refined by human annotators.
+  trace_author: Human annotators verify prompts and claim-level factuality evidence.
+  answer_format: Prompt, long-form response, claim labels, evidence URLs, and evidence snippets.
+  process_fields:
+  - prompt
+  - response
+  - claim
+  - label
+  - evidence_url
+  - evidence_snippet
+  environment_or_substrate: Open-book long-form factuality evaluation.
+  verifier_or_reward: Human claim-level factuality verification.
+  terminal_predicate: A response's claims are supported by the linked evidence.
+recipe_metadata:
+  base_model: Six contemporary language models evaluated in the paper.
+  teacher: Human factuality annotators.
+  generator: Model-in-the-loop prompt creation followed by human refinement.
+  filtering_rule: Keep fact-seeking, answerable, unambiguous, and difficult prompts.
+  sampling_protocol: Released prompts and human-verified response-level claims.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fix prompt release, generation model, and human-label protocol.
+  optimizer_or_scaffold: Claim decomposition and evidence-backed factuality assessment.
+audit:
+  source_mixture: Official arXiv paper, ICLR OpenReview paper, and Meta Hugging Face dataset.
+  split: Consult the official dataset configuration for current split details.
+  decontamination: Open-web evidence and Wikipedia-derived topics may be memorized; preserve held-out prompts and evidence
+    links.
+  license: Consult the official Hugging Face dataset card for the current release terms.
+  lineage: https://huggingface.co/datasets/facebook/FACTORY
+  known_failure_modes:
+  - Evidence availability and changing web pages can affect claim verification.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, venue record, FAIR affiliation, and data release checked.
+inclusion_reason: FACTORY supplies human-verified prompts and claim-level evidence for long-form factuality assessment.
+related: []
+tags:
+- factuality
+- long_form
+- human_verification
+- benchmark
+one_line_summary: FACTORY pairs difficult human-refined long-form prompts with claim-level evidence annotations.
+why_it_matters: It separates model factuality failures from defects in automatically generated prompts.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper
+  OpenReview: null
+  and data release checked.: null
+category_ids:
+- judgment_rubric_domain_expert_data

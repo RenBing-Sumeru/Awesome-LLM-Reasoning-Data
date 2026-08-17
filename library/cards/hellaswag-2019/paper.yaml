@@ -1,0 +1,119 @@
+id: hellaswag-2019
+title: 'HellaSwag: Can a Machine Really Finish Your Sentence?'
+year: 2019
+venue: ACL 2019 / arXiv
+authors:
+- Rowan Zellers
+- Ari Holtzman
+- Yonatan Bisk
+- Ali Farhadi
+- Yejin Choi
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- commonsense-reasoning
+- adversarial-filtering
+- multiple-choice
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1905.07830
+  arxiv: https://arxiv.org/abs/1905.07830
+  code: https://github.com/rowanz/hellaswag
+  data: https://github.com/rowanz/hellaswag/tree/master/data
+  project: https://rowanzellers.com/hellaswag/
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/P19-1472
+  venue: https://aclanthology.org/P19-1472/
+  openreview: null
+  acl: https://aclanthology.org/P19-1472/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'context, four candidate endings, correct continuation, and source metadata; Benchmark size: 约 70K 个常识补全样本。'
+  data_scale: approximately 70K adversarially filtered multiple-choice continuation examples; common public mirrors expose
+    about 60K train/validation/test instances, so release counts should be pinned.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'context, four candidate endings, correct continuation, and source metadata; Benchmark size: 约
+    70K 个常识补全样本。'
+  verifier_or_reward: multiple-choice accuracy over candidate endings
+  terminal_predicate: multiple-choice accuracy over candidate endings
+  benchmark_size: 约 70K 个常识补全样本。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for HellaSwag: Can a Machine Really Finish Your Sentence?; exact curation details
+    should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for HellaSwag: Can a Machine Really Finish Your
+    Sentence?.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/1905.07830'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Benchmark size: 约 70K 个常识补全样本。'
+inclusion_reason: HellaSwag tests grounded commonsense continuation by adversarially filtering easy artifacts from video-caption
+  and activity data.
+related: []
+tags:
+- benchmark
+- commonsense-reasoning
+- adversarial-filtering
+- multiple-choice
+why_it_matters: It supplies a reusable evaluation coordinate for commonsense-reasoning, adversarial-filtering work.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin HellaSwag data mirror, split counts, label availability, and multiple-choice scoring harness before comparing
+  reported accuracy'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: HellaSwag tests grounded commonsense continuation by adversarially filtering easy artifacts from video-caption
+  and activity data.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

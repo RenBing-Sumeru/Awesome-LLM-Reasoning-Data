@@ -1,0 +1,3 @@
+Preference optimization for reasoning normally assumes gold answers, human labels, or curated unit tests. Those signals are scarce for difficult mathematics and programming problems, while simply choosing a frequently sampled final answer does not extend cleanly to programs that must work across many inputs.
+
+PFPO asks how unlabeled reasoning prompts can yield executable preference pairs. It reformulates solution labeling as testing: a candidate solution is evaluated against one answer check or a set of input-output cases. The central training object is therefore not an unexamined model response, but a response paired with a pseudo test score and a comparison rule.

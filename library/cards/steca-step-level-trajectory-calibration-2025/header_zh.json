@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "通过定位偏离专家轨迹的动作并生成反思与校准轨迹，STeCa 将终局环境回报转化为可用于智能体学习的步骤级监督。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "基于环境回报的智能体步骤级轨迹校准方法与数据资源论文",
+  "best_for_ch": "需要把失败智能体轨迹转化为可训练步骤级纠错样本的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Hanlin Wang, Jian Wang, Chak Tou Leong, Wenjie Li",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

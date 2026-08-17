@@ -1,0 +1,18 @@
+{
+  "title": "OpenMathInstruct-1: A 1.8 Million Math Instruction Tuning Dataset",
+  "candidate_links": {
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/3d5aa9a7ce28cdc710fbd044fd3610f3-Abstract-Datasets_and_Benchmarks_Track.html",
+    "data": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-1",
+    "code": "https://github.com/NVIDIA-NeMo/Skills"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T11:55:08Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "NVIDIA数学sft数据",
+    "updated_at": "2026-07-14T11:55:08Z"
+  }
+}

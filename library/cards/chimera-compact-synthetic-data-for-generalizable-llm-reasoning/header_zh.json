@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CHIMERA 用层级 taxonomy 和多模型交叉验证构造约 9K 条覆盖八学科的紧凑推理数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Xinyu Zhu, Yihao Feng, Yanchao Sun, Xianzhi Du, Pingzhi Li, Olli Saarikivi, Yun Zhu, Yu Meng",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

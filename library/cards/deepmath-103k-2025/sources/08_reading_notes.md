@@ -1,0 +1,5 @@
+- Positioning: DeepMath-103K retains difficult decontaminated questions, stores a verified final answer, and supplies three independent R1 reasoning traces for each problem.
+- Data object: 103,000 math questions with three DeepSeek-R1 solutions per record; each record exposes question, final_answer, difficulty, topic, and r1_solution_1 through r1_solution_3.
+- Author and selector: DeepSeek-R1 generates three long solutions for each retained problem; retention uses answer verification, difficulty scoring, topic labeling, deduplication, and benchmark decontamination.
+- Evidence anchor: The paper reports state-of-the-art results on challenging math benchmarks for models trained with DeepMath; its strongest causal handle is the controlled difficulty, decontamination, and verification pipeline rather than raw scale.
+- Reuse decision: suitable for mathematical reasoning SFT and RL prompt preparation; first audit final-answer agreement does not certify every intermediate step in three long traces and difficulty scoring and public benchmark matching can favor competition-style mathematics.

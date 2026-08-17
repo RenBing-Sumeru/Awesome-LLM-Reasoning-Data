@@ -1,0 +1,188 @@
+id: android-daily-2026
+title: 'AndroidDaily: A Verifiable Benchmark for Mobile GUI Agents on Real-World Closed-Source Applications'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yifan Sui
+- Xin Huang
+- Hongbing Li
+- Fang Xu
+- Jiahe Lv
+- Haolong Yan
+- Yeqing Shen
+- Litao Liu
+- Zhimin Fan
+- Ziyang Meng
+- Jia Wang
+- Junbo Qi
+- Kaijun Tan
+- Zheng Ge
+- Xiangyu Zhang
+- Daxin Jiang
+- Osamu Yoshie
+source_role:
+- benchmark
+- verifier_reward
+- agent_environment
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mobile_gui_agents
+- agent_trajectories
+- closed_source_applications
+- llm_as_judge
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.27761
+  arxiv: https://arxiv.org/abs/2605.27761
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.27761
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 350 natural-language daily-use tasks allocated by app usage frequency across 94 closed-source Android applications;
+    exact ranking sources and record-level task authorship are unknown.
+  trace_author: One evaluated mobile GUI agent per model-task session under pass@1; raw trajectories are not released.
+  answer_format: Task instruction, three-tier guideline, multimodal chain-of-action trajectory, structured evidence bundle,
+    per-tier checks, final Boolean completion verdict, and diagnostic signals.
+  process_fields:
+  - task_instruction
+  - operational_obligations
+  - output_quality_criteria
+  - negative_constraints
+  - session_id
+  - screenshot_observation
+  - accessibility_metadata
+  - agent_action
+  - step_evidence
+  - working_memory
+  - evidence_bundle
+  - obligation_verdict
+  - quality_verdict
+  - negative_constraint_verdict
+  - final_verdict
+  - diagnostic_signals
+  observation: A sequence of screenshots plus available accessibility metadata from real Android-device interaction.
+  action_or_tool_call: ADB-executed mobile GUI actions produced under each agent's released or tuned inference protocol.
+  verifier_output: GRADE evidence traces, obligation/quality/negative-constraint checks, arbitration, a True/False terminal
+    verdict, and diagnostic failure signals.
+  reward: No training reward is reported; the final verdict is used as an evaluation success label.
+  environment_or_substrate: Physical Android devices running evolving closed-source commercial apps with prepared accounts,
+    content, and task-specific state.
+  verifier_or_reward: GRADE, a VLM-based two-layer Evidence/Verdict judge; Gemini 3 Pro is the strongest reported evaluator
+    backbone.
+  terminal_predicate: A judgment-required full-episode pass/fail decision after checking operational obligations, output quality,
+    negative constraints, and blockers; not a privileged-state programmatic assertion.
+  provenance: App usage/download evidence -> frequency-weighted task authoring -> three-tier guideline -> pass@1 agent rollout/session
+    ID -> GRADE evidence and verdict; record-level source and version pins are unknown.
+recipe_metadata:
+  base_model: unknown
+  teacher: Three-round calibrated human labels are used as evaluator ground truth on 879 sessions; they are not a training
+    teacher for the evaluated agents.
+  generator: Twelve evaluated GUI-agent models generate benchmark rollouts; task authorship/generator identities are not disclosed.
+  prompt_or_task_source: Core functions and recurring intents of high-frequency apps selected from app-store rankings and
+    public active-user statistics.
+  sampling_protocol: pass@1 on real devices; official model inference protocols where available, otherwise tuned configurations.
+  temperature: unknown
+  rollout_count: One rollout per model-task evaluation under pass@1; total valid-session count is not disclosed.
+  inference_budget: Maximum 60 interaction steps and 40 minutes wall-clock time per session.
+  search_or_scaffold: Real-device ADB execution with prepared account/app state and a human monitor limited to unexpected
+    device/system interruptions.
+  filtering_rule: Frequency-weighted task allocation; GRADE's Evidence Layer filters uninformative trajectory steps before
+    building its evidence bundle. Exact task inclusion and quality-control rules are unknown.
+  selection_threshold: unknown
+  evaluator_backbone: Gemini 3 Pro for the reported 87.37% GRADE result; four alternative VLM backbones are ablated.
+  optimizer_or_scaffold: Evaluation scaffold only; no SFT, preference optimization, reward modeling, RLVR, or agent-training
+    objective is reported for AndroidDaily.
+audit:
+  source_mixture: '350 tasks: 173 Information & Decision, 99 Creation & Communication, and 78 Execution & Operations; 124
+    tasks have at most two constraints and 226 have three or more.'
+  split: unknown; no benchmark train/dev/test or public/private split is disclosed. Evaluator reliability uses 879 manually
+    calibrated sessions and a 100-session challenging subset.
+  decontamination: unknown
+  benchmark_overlap: unknown; no item-level overlap or deduplication audit is reported against other GUI benchmarks or the
+    earlier 235-task AndroidDaily release.
+  lineage: App rankings/active-user statistics -> 94 selected apps -> frequency-weighted task design -> per-task guidelines
+    -> pass@1 agent trajectory -> GRADE step evidence and terminal verdict. Exact source citations, authorship, predecessor
+    mapping, and immutable record IDs are unknown.
+  license: unknown for the 350-task/GRADE release. The arXiv distribution license is not a code/data reuse license; the predecessor
+    StepFun 235-task dataset's Apache-2.0 metadata and gelab-zero's MIT license do not establish this version's terms.
+  release_version: Paper arXiv:2605.27761v1 (2026-05-26); no official tagged 350-task/GRADE code or data release was verified.
+  verifier_or_judge_failure_modes:
+  - 'GRADE is backbone-sensitive: accuracy ranges from 65.64% with GPT-4o to 87.37% with Gemini 3 Pro on the same 879 sessions.'
+  - Subtle visual mistakes or unmet constraints produce false positives; Gemini 3 Pro still has 86 false positives and 25
+    false negatives on 879 sessions.
+  - Closed-source app updates, A/B tests, personalization, pop-ups, and dynamic content can change both agent behavior and
+    observable evidence.
+  successful_and_failed_sample_retention: Raw trajectories are explicitly not released. Internal reliability and failure analyses
+    use both outcomes, but the full retention policy and session manifest are unknown.
+  privacy_or_consent: Authors report dedicated research accounts, no end-user accounts or third-party data, redacted PII in
+    paper screenshots, negative constraints on irreversible actions, and human abort monitoring.
+  statistical_limits: pass@1 only with no multi-seed variance; scores are snapshots of a time-varying commercial-app environment.
+  scope_limits: Professional, enterprise, and accessibility-specific workflows are not covered.
+  citation_status: verified
+  confidence: medium
+  notes: The paper and source are verified. The paper claims release of task definitions, guidelines, and evaluation code
+    but supplies no URL. The official StepFun HF/GitHub artifacts inspected are the earlier 235-task release tied to 2025
+    papers and are not substituted for the current artifacts.
+inclusion_reason: 'AndroidDaily makes a closed-source mobile episode and its fallible learned feedback contract explicit:
+  GRADE converts task-specific obligations, quality criteria, and negative constraints plus a visual action trajectory into
+  step diagnostics and a terminal judgment.'
+related:
+- androidlab-2025
+- mobileworld-2025
+- mobilegym-2026
+tags:
+- environment-agent-trajectory-data
+- mobile-gui-agent
+- closed-source-apps
+- benchmark
+- process-aware-evaluation
+- llm-as-judge
+- grade
+category_ids:
+- environment_agent_trajectory_data
+one_line: AndroidDaily evaluates 350 tasks across 94 closed-source Android apps with GRADE, a guideline-grounded VLM judge
+  over full visual action trajectories.
+one_line_summary: AndroidDaily pairs real-device mobile tasks with obligation, quality, and safety guidelines, then uses a
+  two-layer VLM judge to turn screenshot-action trajectories into step diagnostics and a final success label.
+why_it_matters: It exposes how judgment-based feedback can replace inaccessible app-state assertions for closed-source agent
+  evaluation, while quantifying the judge's false positives, backbone sensitivity, and environment-drift risks.
+status: partial
+card: null
+needs:
+- 'needs_artifact: locate and verify the official 350-task task definitions, three-tier guidelines, and GRADE evaluation-code
+  release claimed in Section 5.'
+- 'needs_license: verify reuse terms for the current tasks, guidelines, evaluator code, screenshots, and closed-source-app
+  interactions.'
+- 'needs_venue: verify whether the TeX source''s ACM Multimedia 2026 declaration has a corresponding official proceedings
+  or DOI page.'
+- 'needs_replay: obtain app/APK versions, device image, account-state/reset recipe, evaluator prompt/config, intervention
+  logs, and immutable session manifest.'
+- 'needs_audit: document split, predecessor overlap, item-level provenance, deduplication, and model-training contamination
+  checks.'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official arXiv abstract, HTML full text, TeX source, DOI, StepFun GitHub tree/releases, and StepFun Hugging Face
+    predecessor dataset/card/files/license metadata were inspected. Current-version code/data/project links remain unverified
+    and therefore null.

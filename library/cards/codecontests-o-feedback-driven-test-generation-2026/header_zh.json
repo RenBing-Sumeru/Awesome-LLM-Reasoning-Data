@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeContests-O 利用正确与错误解池的执行反馈迭代改进竞赛编程测试用例，从而增强代码结果核验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "反馈驱动的竞赛编程测试数据集",
+  "best_for_ch": "需要高区分度单测、代码 RLVR 奖励或竞赛编程验证数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jianfeng Cai, Jinhua Zhu, Ruopei Sun, Kangwen Zhao, Dongyun Xue, Mingxiao Feng, Wengang Zhou, Houqiang Li",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T08:25:56Z"
+}

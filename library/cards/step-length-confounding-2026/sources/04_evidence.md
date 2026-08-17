@@ -1,0 +1,1 @@
+The official paper evaluates four LLMs on five benchmarks and reports that ASLEC-selected subsets improve over uncorrected naturalness selection. The experimental pools are reported as 16K LIMO and 40K AceReason candidates. Public repositories are larger multi-source/multi-solution assets and are not automatically identical to every experiment subset.

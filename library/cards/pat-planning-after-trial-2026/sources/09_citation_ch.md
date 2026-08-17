@@ -1,0 +1,1 @@
+Yoon, Youngsik、Sungjae Lee、Seockbean Song、Siwei Wang、Wei Chen 与 Jungseul Ok。《PaT: Planning-after-Trial for Efficient Test-Time Code Generation》。ACL 2026，页 36738–36755。https://aclanthology.org/2026.acl-long.1703/。

@@ -1,0 +1,5 @@
+- Decision: treat curation quality, not merely low sample count, as LIMA's intervention.
+- Record: one instruction plus one selected answer is the SFT target; rejected alternatives are absent.
+- Evidence: the headline result is human preference for LLaMA-65B responses, not verified factual accuracy.
+- Boundary: do not transfer the 1,000-example budget without checking base-model capability and domain coverage.
+- Audit: pin source provenance, access terms, duplicates, evaluator instructions, and an independent correctness signal when needed.

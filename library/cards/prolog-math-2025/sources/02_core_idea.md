@@ -1,0 +1,5 @@
+The construction has two generation stages. Stage 1 asks DeepSeek-V3 to propose problem-specific predicates from the problem, its CoT, predefined operators, and an evolving library. Definitions that pass a SWI-Prolog syntax check enter a shared buffer; names can be reused in later prompts, and frequently invoked predicates can be promoted into the canonical set.
+
+Stage 2 supplies the problem, CoT, selected predicates, and candidate symbolic answer types, then generates a complete program. SWI-Prolog executes the program and an adapted Math-Verify checker compares the output with the gold answer using structured-term conversion, normalization, parsing, symbolic equivalence, or numerical tolerance. A failed item receives up to three decoding attempts with varied temperature.
+
+This initial pipeline verifies 6,100 of 7,500 problems, or 81.3%. SFT followed by GRPO searches the failed set, and verified successes from four recovery models are unioned. The paper reports a further 16.1 percentage points and 97.4% total coverage; the live public release at the pinned revision contains 6,093 rows rather than an item-level manifest of that union.

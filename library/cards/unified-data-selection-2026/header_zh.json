@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Unified Data Selection以回答内最高熵0.5%词元的熵和排序轨迹，并将其用于SFT、正确性过滤RFT和在线GRPO选择。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "跨阶段高熵数据选择研究",
+  "best_for_ch": "研究SFT、RFT、GRPO数据效率和不确定性筛选的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaoyuan Li、Yubo Ma、Chengpeng Li、Fengbin Zhu、Yiyao Yu、Keqin Bao、Wenjie Wang、Fuli Feng、Dayiheng Liu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

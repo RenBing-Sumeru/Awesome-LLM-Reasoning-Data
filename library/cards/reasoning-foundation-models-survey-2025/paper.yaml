@@ -1,0 +1,134 @@
+id: reasoning-foundation-models-survey-2025
+title: 'A Survey of Reasoning with Foundation Models: Concepts, Methodologies, and Outlook'
+year: 2025
+venue: ACM Computing Surveys
+authors:
+- Jiankai Sun
+- Chuanyang Zheng
+- Enze Xie
+- Zhengying Liu
+- Ruihang Chu
+- Jianing Qiu
+- Jiaqi Xu
+- Mingyu Ding
+- Hongyang Li
+- Mengzhe Geng
+- Yue Wu
+- Wenhai Wang
+- Junsong Chen
+- Zhangyue Yin
+- Xiaozhe Ren
+- Jie Fu
+- Junxian He
+- Yuan Wu
+- Qi Liu
+- Xihui Liu
+- Yu Li
+- Hao Dong
+- Yu Cheng
+- Ming Zhang
+- Pheng Ann Heng
+- Jifeng Dai
+- Ping Luo
+- Jingdong Wang
+- Ji-Rong Wen
+- Xipeng Qiu
+- Yike Guo
+- Hui Xiong
+- Qun Liu
+- Zhenguo Li
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- foundation-models
+- reasoning-data
+- benchmarks
+- evaluation
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://dl.acm.org/doi/10.1145/3729218
+  arxiv: https://arxiv.org/abs/2312.11562
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1145/3729218
+  venue: https://dl.acm.org/doi/10.1145/3729218
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning tasks, prompts, benchmarks, and multimodal inputs.
+  trace_author: The primary studies summarized by the survey; no new trace set is released.
+  answer_format: A map of reasoning concepts, tasks, methods, benchmark families, and open questions.
+  process_fields:
+  - reasoning task
+  - model modality
+  - method family
+  - benchmark
+  - evaluation result
+  environment_or_substrate: Foundation models used for language, multimodal, agent, and alignment-related reasoning.
+  verifier_or_reward: The survey compares task-specific evaluators and feedback mechanisms without introducing one shared
+    judge.
+  terminal_predicate: Success is defined by the underlying task or benchmark in each cited study.
+recipe_metadata:
+  base_model: No single model; this is a literature survey.
+  teacher: The surveyed studies use heterogeneous data and supervision.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: The article organizes seminal foundation models, reasoning tasks, methods, benchmarks, and outlooks.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new optimization recipe is proposed.
+audit:
+  source_mixture: Official ACM article page and official arXiv record.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion is made for all cited benchmarks.
+  license: The ACM article is open access under CC BY 4.0; no dataset is released.
+  lineage: 'Primary source: https://dl.acm.org/doi/10.1145/3729218'
+  known_failure_modes:
+  - Broad labels can conceal different inputs, supervision, and scoring rules.
+  - Reported results from heterogeneous benchmarks are not a single ranking.
+  citation_status: verified
+  confidence: high
+  notes: Official ACM metadata identifies this work as a survey published in 2025.
+inclusion_reason: A 2025 survey from CUHK, HKU, HKUST, PKU, THU, and collaborators that gives a wide but structured entry
+  point to reasoning data and evaluation.
+related: []
+tags:
+- foundations-and-primers
+- reasoning
+- survey
+- acm-computing-surveys
+- 2025
+why_it_matters: It helps readers separate a reasoning claim from the particular prompt, data, model, and score behind that
+  claim.
+one_line_summary: A 2025 survey that connects reasoning tasks to the models, data, methods, and benchmarks used to study them.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers who need a broad, structured map before choosing a reasoning-data topic or benchmark.
+confidence: high
+status: verified
+needs:
+- 'unknown: one common protocol for comparing reasoning results across modalities and benchmarks'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official publication page, author affiliations, abstract, and article type were checked.
+category_ids:
+- foundations_and_primers

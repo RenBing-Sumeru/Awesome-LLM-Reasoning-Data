@@ -1,0 +1,1 @@
+LLMs are used in many domains, but a benchmark score does not directly tell a reader which underlying abilities produced success in practice. This ACL survey asks how fundamental capabilities work together in domain applications and how their importance changes across settings.

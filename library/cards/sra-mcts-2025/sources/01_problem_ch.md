@@ -1,0 +1,1 @@
+代码模型可以完成简单任务，但当问题需要先分解再实现时往往表现不足。发表于 IJCAI 2025 Main Track 的 SRA-MCTS 针对缺失的中间数据对象：在代码之前生成自然语言“thinking”路径，并将其作为 SFT target 复用。方法使用 Monte Carlo Tree Search 提议、打分、反思和选择推理步骤，再要求同一 backbone 把最终 thinking 转成代码。对本图谱而言，关键区别在于内部搜索记录与扁平化发布记录：前者包含 state、action、自评 reward、reflection 和 rejected branches，后者主要是 question-solution。最终 benchmark 执行可以给代码评分，但不能反向验证每个由模型打分的推理步骤。

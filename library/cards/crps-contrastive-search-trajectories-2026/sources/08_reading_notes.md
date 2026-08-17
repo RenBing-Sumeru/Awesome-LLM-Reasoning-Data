@@ -1,0 +1,6 @@
+- Keep three objects separate: the MCTS tree, the positive/negative pair plus critiques, and the released synthesized `problem`/`solution` row.
+- Hard negatives are incorrect high-visit paths; soft negatives are correct paths longer than the shortest-correct anchor. Neither type is present in public rows.
+- Local critiques address an analyst-identified semantic divergence step, but only the synthesized final answer receives exact/SymPy verification.
+- Nominal CRPS-30K reports 27,256 examples and 9,939 unique problems; the approximately 15K seed-to-release attrition and duplication trail is missing.
+- Read the 20x statement carefully: 30K versus 590K and 10 versus 192 GPU-hours are approximately 20x comparisons; 60K versus 590K is approximately 9.8x.
+- Code and final data are official, but trees, contrasts, critiques, rejection logs, end-to-end costs, a tagged code release, a repository LICENSE, and a paper-matching locked configuration remain unresolved.

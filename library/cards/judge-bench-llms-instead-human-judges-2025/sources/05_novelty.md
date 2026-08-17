@@ -1,0 +1,1 @@
+Earlier LLM-judge studies usually test one benchmark or quality property and generalise local high agreement too broadly. This study unifies twenty real human-evaluation datasets and eleven models and analyses task, label, human expertise, and text source. The novelty is breadth and conditional reliability analysis rather than a new scoring prompt.

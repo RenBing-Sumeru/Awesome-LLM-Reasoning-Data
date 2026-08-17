@@ -1,0 +1,3 @@
+Correctness is only correctness under the gold SQL/evaluator contract. Exact-set match can reject semantically equivalent SQL with different structure, while execution accuracy can accept queries that coincide on the current database but are not logically equivalent.
+
+Spider is now a public and heavily used benchmark, so contamination is a major concern for LLM evaluation. Scores are sensitive to evaluator version, value grounding, database package, SQL dialect, prompt/scaffold, and hidden test access. It should not be treated as fresh training data or as a general database-agent benchmark without additional environment and interaction metadata.

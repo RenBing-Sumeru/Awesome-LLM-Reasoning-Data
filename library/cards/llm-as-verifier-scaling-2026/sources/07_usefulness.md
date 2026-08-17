@@ -1,0 +1,1 @@
+Use this paper when candidate generation already has pass-at-k headroom but selection is the bottleneck. Record the verifier budget separately from generation, sweep granularity/repetition/criteria, and compare the pivot tournament with full round robin and a fixed judge. Treat score distributions and comparison provenance as deployable audit records.

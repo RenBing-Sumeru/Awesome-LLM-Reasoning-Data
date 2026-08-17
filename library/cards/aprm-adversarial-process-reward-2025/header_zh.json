@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"APRM 训练生成器制造能欺骗过程奖励模型的错误步骤，并持续把这些难负样本反馈给过程奖励模型训练。","reading_priority_ch":"必读","paper_type_ch":"对抗式过程监督构造与过程奖励模型训练研究","best_for_ch":"适合设计步骤级奖励模型自适应负样本课程的读者。","confidence_ch":"中","authors_ch":"Gurusha Juneja、Deepak Nathani、William Yang Wang（加州大学圣塔芭芭拉分校）","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T20:00:00Z"}

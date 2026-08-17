@@ -1,0 +1,145 @@
+id: guided-rest-2025
+title: Learning to Better Search with Language Models via Guided Reinforced Self-Training
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Seungyong Moon
+- Bumsoo Park
+- Hyun Oh Song
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- general_reasoning
+- post-training
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2410.02992
+  arxiv: https://arxiv.org/abs/2410.02992
+  code: https://github.com/snu-mllab/guided-rest
+  data: null
+  project: https://github.com/snu-mllab/guided-rest
+  huggingface: null
+  doi: null
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/f4ff9a0cbd424dc6a30342e356e7659a-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=Awl3ZhDHuQ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Countdown questions use four input integers and targets from 10 to 100 under the Stream of Search setup;
+    code self-repair uses 16,000 PrimeIntellect SYNTHETIC-1 problems drawn from APPS, CodeContests, and TACO with at least
+    one reference solution.
+  trace_author: The current policy authors the search trace or multi-turn repair episode. Optimal Countdown paths and reference
+    programs are privileged construction-time landmarks rather than inference-time inputs.
+  answer_format: Countdown records are language-form tree-search traces containing generation, exploration, verification,
+    and backtracking operations. Code records are multi-turn messages containing full reasoning-and-code attempts plus execution
+    feedback.
+  process_fields:
+  - task prompt and source metadata
+  - current policy response or search operation
+  - Countdown arithmetic state and operation history
+  - code attempt, public-test feedback, and revision instruction
+  - privileged optimal subgoal or reference-program provenance
+  - dummy-masked training view for guided code feedback
+  - programmatic score and terminal status
+  - sampling seed, iteration, and turn boundary in generated files
+  environment_or_substrate: Iterative offline trajectory generation followed by SFT. Countdown uses a parser and arithmetic
+    transition checker; code self-repair executes extracted Python in the repository's test harness and feeds a public-test
+    subset back between turns.
+  verifier_or_reward: Countdown receives binary reward from grade_search_path when a legal trace reaches the target. Code
+    generation receives public-test feedback, while the released implementation scores the candidate against all ground-truth
+    tests attached to the task and the data-preparation step retains only rows with score greater than zero.
+  terminal_predicate: Countdown succeeds when the trace legally reaches the target. A code interaction stops when the detected
+    public tests pass or the four-turn limit is reached; acceptance into SFT additionally requires the programmatic all-tests
+    score to be positive.
+recipe_metadata:
+  base_model: Llama-3.2-1B-Instruct for Countdown; Qwen2.5-7B-Instruct for code self-repair
+  teacher: Ground-truth Countdown solutions and reference programs provide training-only landmarks. No learned reward model
+    or human preference judge supplies the acceptance signal.
+  generator: current policy
+  filtering_rule: Apply progressive subgoal or episode augmentation, then retain only successful rows. The official preparation
+    scripts filter on score greater than zero; Countdown score checks legal target reachability, and code score requires passing
+    the task's ground-truth execution tests.
+  sampling_protocol: Countdown samples one trace for each of 200,000 problems per iteration at temperature 1.0, top-p 1.0,
+    and at most 4,096 response tokens. Code samples eight episodes for each of 16,000 problems, with at most four turns, temperature
+    1.0, top-p 1.0, and at most 16,384 response tokens. Each generate-and-SFT cycle is repeated three times.
+  rollout_count: 1 per Countdown problem; 8 per code problem
+  temperature: 1.0
+  inference_budget: Countdown evaluation varies the response budget up to 4,096 tokens. Code episodes allow up to four turns
+    and 16,384 response tokens; total project-wide generation tokens and wall-clock cost are not disclosed.
+  optimizer_or_scaffold: Two-epoch SFT with AdamW is repeated for three Guided-ReST iterations. Countdown optionally continues
+    with operation-level PPO using binary outcome reward; the code experiment does not run PPO.
+audit:
+  source_mixture: Countdown tasks are generated under the Stream of Search recipe. Code training problems come through SYNTHETIC-1
+    from APPS, CodeContests, and TACO, but per-source counts and exact upstream revisions for the selected 16,000 problems
+    are not disclosed.
+  split: Countdown target values from 10 to 100 are split 90 percent for training and 10 percent for unseen-target testing;
+    seen-target and unseen-target evaluation each use 10,000 examples. CodeContests evaluation has 165 problems and is near-distribution;
+    CodeForces evaluation has 408 more recent problems and is reported as out-of-distribution. A frozen generated-trajectory
+    split and record manifest are not released.
+  decontamination: unknown
+  license: The official implementation is Apache-2.0. Licenses and compatible redistribution terms for the upstream Countdown
+    and SYNTHETIC-1-derived task records, reference programs, and any generated trajectories require separate verification.
+  lineage: Answer-keyed task and optimal artifact -> current-policy search or repair episode -> localized privileged guidance
+    -> programmatic outcome scoring -> successful-record filtering -> iterative SFT -> optional Countdown PPO.
+  known_failure_modes:
+  - Privileged Countdown subgoals remain in augmented traces and can transmit solution-template structure.
+  - The code generator sees only selected public-test feedback, but final SFT selection uses all attached tests; weak or overlapping
+    tests can admit shortcuts.
+  - Binary outcome success does not establish that every textual reasoning or search operation is faithful, minimal, safe,
+    or robust.
+  - A policy can overfit public-test feedback, and code execution can be sensitive to harness, timeout, dependency, and sandbox
+    versions.
+  - Failed and rejected trajectories, acceptance rates, duplicate rates, and trace-length distributions are not published
+    as a frozen release.
+  - The official repository has no tag or GitHub release and does not publish trained checkpoints or generated rollout buffers.
+  - Decontamination and overlap analysis across SYNTHETIC-1, APPS, CodeContests, TACO, and CodeForces are not disclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Paper identity, venue, affiliations, method, supplement, and code were checked against the NeurIPS proceedings, arXiv
+    v2, OpenReview, and official repository commit 05d0c89b53f5a605b3140aecbbca853128f46f57. The repository loader points
+    to author-hosted Hugging Face input datasets, but no standalone release of Guided-ReST-generated trajectories was verified;
+    artifacts.data and artifacts.huggingface therefore remain null.
+inclusion_reason: Provides a concrete, inspectable recipe for converting privileged optimal artifacts and failed policy search
+  into filtered SFT trajectories for arithmetic reasoning and code self-repair.
+related: []
+tags:
+- reinforced-self-training
+- subgoals
+- reference-code
+- reward-filtering
+status: partial
+one_line_summary: Guided-ReST uses optimal solutions as training-time landmarks to repair, verify, and distill current-policy
+  search traces.
+why_it_matters: It makes the privileged construction view, the filtered or masked training view, and the unassisted inference
+  view explicit, which is central to auditing search-generated reasoning data.
+card: null
+needs:
+- 'needs_snapshot: release generated buffers, checkpoints, record manifests, and exact source revisions'
+- 'needs_leakage_audit: document the privileged-guidance boundary, overlap checks, test exposure, and rejection statistics'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official NeurIPS proceedings and supplement, arXiv v2, OpenReview record, repository code, Apache-2.0 license, and
+    absence of repository tags or releases were checked; a frozen Guided-ReST trajectory release remains unavailable.
+category_ids:
+- data_construction_open_release_recipes

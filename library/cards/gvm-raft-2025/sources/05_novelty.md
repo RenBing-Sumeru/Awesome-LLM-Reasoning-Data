@@ -1,0 +1,7 @@
+The prior-work baseline is fixed best-of-`n` acquisition: RAFT-style methods generate equal candidate counts for every prompt and keep correct or top-reward responses; difficulty-aware rejection recipes can allocate by observed pass behavior. These approaches do not necessarily minimize the variance of an online gradient estimator or continuously update a prompt-specific schedule as the policy changes.
+
+GVM changes the acquisition interface. It treats prompts as strata in a Monte Carlo estimator, combines acceptance probability with accepted-sample gradient magnitude, and chooses `n_i` under a fixed global budget. The same schedule is used in an EM-motivated RAFT++ pipeline and transplanted empirically to GRPO, separating the sampler from the downstream optimizer.
+
+The direction signal for reasoning-data research is concrete: a rollout budget is part of data construction and creates per-iteration lineage. Quality is not represented by a single static score; acquisition depends on the current checkpoint, verifier behavior, pilot size, gradient implementation, and allocation refresh frequency.
+
+Several components are inherited rather than new: Numina-Math prompts and oracle answers, chain-of-thought generation, Math-Verify, rejection sampling, RAFT++, GRPO, importance weighting, and clipping. The work does not release a new dataset or prove that accepted traces are faithful. Reuse should therefore compare uniform, pass-rate-only, gradient-only, and combined allocation at matched generations and compute, while logging every acquisition decision.

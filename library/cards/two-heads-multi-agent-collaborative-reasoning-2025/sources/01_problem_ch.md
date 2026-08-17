@@ -1,0 +1,1 @@
+《Two Heads are Better Than One: Test-time Scaling of Multi-agent Collaborative Reasoning》处理的可核查问题是：Two Heads releases M500 and adapts multi-agent discussion depth with a CEO agent.。论文报告的提示或任务来源为：M500 has 500 collaborative reasoning traces; task provenance unknown.。

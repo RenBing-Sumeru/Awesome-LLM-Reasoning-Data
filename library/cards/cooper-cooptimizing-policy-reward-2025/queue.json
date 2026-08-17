@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "利用保守规则锚点和当前策略行为，在每个训练步刷新学习式奖励模型。数据量充足，但效果不明显",
+    "updated_at": "2026-07-15T13:50:30Z"
+  },
+  "updated_at": "2026-07-15T13:50:30Z"
+}

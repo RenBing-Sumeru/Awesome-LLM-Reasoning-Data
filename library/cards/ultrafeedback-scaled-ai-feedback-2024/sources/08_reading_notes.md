@@ -1,0 +1,1 @@
+When reproducing or extending the work, inspect the provenance and mixture weights of the instruction sources, the exact candidate-model pool, the GPT-4 prompt and scoring schema, and how ties or inconsistent feedback are handled. Also separate evidence about reward-model quality from evidence about the final policy, because the two stages can fail for different reasons.

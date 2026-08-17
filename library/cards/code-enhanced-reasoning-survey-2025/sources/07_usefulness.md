@@ -1,0 +1,3 @@
+Use this survey to decide whether a task benefits from executable intermediates. It is useful when comparing a free-form rationale with a program, tool call, test, or debugging loop, and when identifying what kind of runtime feedback is available before investing in an agent design.
+
+For a concrete reading exercise, list the task goal, the proposed code artifact, and the feedback it can return. Then ask whether that feedback exposes a meaningful error or merely confirms syntax. This turns the survey into a design checklist for choosing between text-only reasoning and a workflow involving execution.

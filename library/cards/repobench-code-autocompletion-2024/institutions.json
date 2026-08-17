@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "University of California, San Diego"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T16:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2306.03091",
+    "https://github.com/Leolty/repobench",
+    "https://huggingface.co/datasets/tianyang/repobench_python_v1.1",
+    "https://huggingface.co/datasets/tianyang/repobench_java_v1.1"
+  ],
+  "verification_note": "核验确认 ICLR 2024 状态、UCSD 机构、GitHub 代码和 Hugging Face 数据。"
+}

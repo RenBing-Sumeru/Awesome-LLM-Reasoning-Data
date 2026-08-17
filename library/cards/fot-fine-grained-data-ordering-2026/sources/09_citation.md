@@ -1,0 +1,1 @@
+Hu, Xiaomeng, Yixuan Tang, Haoze Li, Hao Chen, Qi Zhang, Zhanming Shen, Yiming Zhang, Haobo Wang, and Junbo Zhao. 2026. *Fine-Grained Data Ordering Improves Fine-Tuning for Large Language Models*. In Findings of the Association for Computational Linguistics: ACL 2026, pages 20406–20418. https://aclanthology.org/2026.findings-acl.1021/

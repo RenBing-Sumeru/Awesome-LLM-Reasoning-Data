@@ -1,0 +1,1 @@
+As a systematic survey, it compares prompt construction methods rather than training one model. To use its lens, list the raw task input, template, verbalizer or answer mapping, demonstrations, tuning choices, and evaluation metric. Hold these fields fixed before deciding that one reasoning technique is better than another.

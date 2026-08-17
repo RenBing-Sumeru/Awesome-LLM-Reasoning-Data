@@ -1,0 +1,121 @@
+id: olympiadbench-2024
+title: 'OlympiadBench: A Challenging Benchmark for Promoting AGI with Olympiad-Level Bilingual Multimodal Scientific Problems'
+year: 2024
+venue: ACL 2024 main / arXiv
+authors:
+- Chaoqun He
+- Renjie Luo
+- Yuzhuo Bai
+- Shengding Hu
+- Zhen Leng Thai
+- Junhao Shen
+- Jinyi Hu
+- Xu Han
+- Yujie Huang
+- Yuxiang Zhang
+- Jie Liu
+- Lei Qi
+- Zhiyuan Liu
+- Maosong Sun
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- math-physics-olympiad
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2402.14008
+  arxiv: https://arxiv.org/abs/2402.14008
+  doi: https://doi.org/10.48550/arXiv.2402.14008
+  code: https://github.com/OpenBMB/OlympiadBench
+  data: https://huggingface.co/datasets/Hothan/OlympiadBench
+  project: https://opencompass.org.cn/leaderboard-multimodal
+  huggingface: https://huggingface.co/datasets/Hothan/OlympiadBench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors construct or curate bilingual olympiad-level math and physics, including multimodal cases;
+    exact artifact, split, and license details require source review.
+  trace_author: Official benchmark authors or task curators; exact annotator/generator details require source review.
+  answer_format: benchmark records expose bilingual olympiad-level math and physics, including multimodal cases, along with
+    prompt/task metadata and an evaluation target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: bilingual olympiad-level math and physics, including multimodal cases
+  verifier_or_reward: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+  terminal_predicate: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate bilingual olympiad-level math and physics, including multimodal cases; exact
+    artifact, split, and license details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: domain_expert_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2402.14008;
+    https://arxiv.org/html/2402.14008; https://github.com/OpenBMB/OlympiadBench'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: GitHub repository code is released under MIT; the Hugging Face dataset card declares apache-2.0. Reuse should still
+    check redistribution rights for the underlying contest and exam problems.
+  lineage: 'Primary lead: https://arxiv.org/abs/2402.14008'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv HTML and OpenBMB repository verify ACL 2024 main status and the Tsinghua, Beihang, and Wisdom Way
+    AI Lab affiliations. OpenBMB GitHub and Hugging Face verify public code/data artifacts; source-rights, split, and scoring
+    settings remain reuse-time audit targets.
+inclusion_reason: High-difficulty contest source with multilingual and multimodal slices.
+related: []
+tags:
+- benchmark
+- domain_expert_benchmark
+- math-physics-olympiad
+why_it_matters: High-difficulty contest source with multilingual and multimodal slices.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: OlympiadBench exposes bilingual olympiad-level math and physics, including multimodal cases as an auditable
+  evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv HTML and OpenBMB repository verify ACL 2024 main status and the Tsinghua, Beihang, and Wisdom Way
+    AI Lab affiliations. OpenBMB GitHub and Hugging Face verify public code/data artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+- judgment_rubric_domain_expert_data

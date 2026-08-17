@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "1,250 个经人工核验的图文偏好样本覆盖感知、幻觉与数学推理，是多模态生成奖励模型的核心评测数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "视觉语言生成奖励模型基准",
+  "best_for_ch": "需要评测多模态奖励模型、judge 或候选答案重排器的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Lei Li、Yuancheng Wei、Zhihui Xie、Xuqing Yang、Yifan Song、Peiyi Wang、Chenxin An、Tianyu Liu、Sujian Li、Bill Yuchen Lin、Lingpeng Kong、Qi Liu",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:22:54Z"
+}

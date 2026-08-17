@@ -1,0 +1,2 @@
+Training uses 817 LIMO expert-solution problems plus MATH level 3–5 prompts, about 9.2K samples overall. For a zero-pass LIMO example, LPPO samples 30%–80% of its expert solution, clips at a complete line, and asks the policy to continue. It uses 32 rollouts at temperature 1.0. Per-sample progress is the change in EMA pass rate, transformed as sigmoid(8 × progress) + 0.5 to weight GRPO advantages. Current-step 0%- and 100%-pass samples are excluded, and solved samples leave the next epoch's active set.
+

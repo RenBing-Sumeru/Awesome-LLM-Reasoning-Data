@@ -1,0 +1,259 @@
+id: agentracer-2025
+title: 'AgenTracer: Who Is Inducing Failure in the LLM Agentic Systems?'
+year: 2026
+venue: ICLR 2026 Poster
+authors:
+- Guibin Zhang
+- Junhao Wang
+- Junjie Chen
+- Wangchunshu Zhou
+- Kun Wang
+- Shuicheng Yan
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- process_supervision
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- process_reward
+domains:
+- agent_trajectories
+- multi_agent_systems
+- environment_interaction
+- code
+- mathematics
+- general_agentic_tasks
+training_use:
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=l05DseqvuD
+  arxiv: https://arxiv.org/abs/2509.03312
+  code: https://github.com/bingreeky/AgenTracer
+  data: https://github.com/bingreeky/AgenTracer/blob/bc6bcd94c2e18f62d6712ca70ba268f6684b894f/data/tracertraj-code-test.parquet
+  project: https://bingreeky.github.io/atracer/
+  huggingface: null
+  doi: null
+  venue: https://iclr.cc/virtual/2026/poster/10007726
+  openreview: https://openreview.net/forum?id=l05DseqvuD
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: https://github.com/bingreeky/AgenTracer/commit/bc6bcd94c2e18f62d6712ca70ba268f6684b894f
+data_object:
+  object_type: A failed multi-agent execution episode paired with the responsible agent and earliest decisive error step;
+    the public artifact is a coding-only test parquet rather than the complete TracerTraj-2.5K corpus.
+  prompt_source: The paper reports trajectories from coding, mathematical-reasoning, and general-agentic benchmarks. Section
+    5.1 names MBPP+, KodCode, Blackjack, GAIA, MATH, and GSM8K, while Appendix Table 3 additionally names HotpotQA; the paper
+    therefore conflicts on whether six or seven benchmark names contribute.
+  trace_author: MetaGPT, AutoGen, Smolagents, AgentPrune, AFlow, and OWL-Workforce generate raw trajectories. Failed traces
+    receive DeepSeek-R1-proposed corrections followed by environment replay; successful traces receive DeepSeek-R1-proposed
+    programmatic fault injections followed by replay.
+  episode_fields:
+  - question_ID
+  - question
+  - ground_truth
+  - history
+  - mistake_agent
+  - mistake_step
+  - mistake_reason
+  history_item_fields:
+  - content
+  - name
+  - role
+  - step
+  answer_format: Each public row contains a task ID, task prompt, reference solution, a full ordered list of named-agent messages/actions,
+    the labeled responsible agent, a string-valued decisive-step ID, and a natural-language mistake reason.
+  process_fields:
+  - task or query
+  - state/action trajectory history
+  - acting agent name
+  - ordered step id
+  - ground-truth answer or solution
+  - environmental success or failure outcome during construction
+  - responsible-agent label
+  - decisive-step label
+  - attribution reason
+  observation: The paper's analyzer observes the complete failed trajectory, task ground truth, and environmental feedback
+    such as code-execution or tool errors. The public parquet embeds the trace text but does not serialize terminal test output
+    or replay pairs as separate fields.
+  verifier_or_reward: 'Annotation is mixed: a DeepSeek-R1 analyzer or perturbation operator proposes a correction/mutation,
+    and a task-specific binary environment evaluator checks whether replay flips failure to success or success to failure.
+    RL uses a strict output-format gate and a 0.5/0.5 mixture of binary agent accuracy and Gaussian step-distance reward with
+    sigma 1.'
+  reward: The GRPO scalar reward is zero when output formatting fails; otherwise it combines exact responsible-agent credit
+    with smooth credit based on distance from the labeled decisive step.
+  terminal_predicate: The task-specific evaluator Omega returns binary success/failure after resimulation. For a failed trace,
+    the retained label is the earliest tested correction that produces success; for a successful trace, the retained injection
+    is the first sampled mutation that produces failure.
+  provenance: benchmark task -> one of six multi-agent frameworks -> complete successful or failed trajectory -> DeepSeek-R1
+    correction or mutation proposal -> environment replay and binary outcome -> responsible-agent/decisive-step pair -> 9:1
+    train/test sampling -> online GRPO or attribution evaluation.
+  environment_or_substrate: The paper spans six frameworks and multiple benchmark evaluators, but the public repository provides
+    only a MetaGPT-centered coding pipeline. Its executable path depends on local MetaGPT, EvalPlus/KodCode assets, Python,
+    Node.js/pnpm, external model APIs, and task workspaces.
+  release_shape: At pinned commit bc6bcd94c2e18f62d6712ca70ba268f6684b894f, the only released data file has 127 code-test
+    rows and seven columns. The paper reports 147 coding-test rows and 2,476 labeled pairs overall; complete train data, Math/Agentic
+    subsets, paired replay artifacts, model weights, and RL training scripts are absent.
+recipe_metadata:
+  base_model: Qwen3-8B for AgenTracer-8B; exact checkpoint revision and tokenizer snapshot are unknown.
+  teacher: DeepSeek-R1 is the analyzer agent for failed-trajectory correction and the perturbation operator for successful-trajectory
+    fault injection; exact API/checkpoint snapshot and decoding configuration are unknown.
+  generator: Six multi-agent systems generate raw episodes. AgenTracer converts failed episodes through counterfactual correction/replay
+    and successful episodes through targeted fault injection/replay.
+  prompt_task_source: MBPP+, KodCode, Blackjack, GAIA, MATH, and GSM8K are named in Section 5.1; Table 3 also names HotpotQA.
+    Record-level dataset IDs and source-framework fields are absent from the public parquet.
+  sampling_protocol: For each failed trace, test corrections sequentially and retain the earliest step whose replay succeeds.
+    For each successful trace, randomly sample K injection points and stop at the first mutation whose replay fails. K, seeds,
+    ordering rules, retry policy for the paper-scale collection, and per-source acceptance yields are unknown.
+  temperature: unknown
+  rollout_count: Online GRPO uses eight candidate rollouts per training item. Appendix Table 3 reports 4,655 raw curated trajectories,
+    2,476 labeled TracerTraj pairs, and 266 held-out test items; the exact number of replay attempts used to construct them
+    is unknown.
+  inference_budget: Training used one server with eight NVIDIA H100 80GB GPUs. Total optimizer steps, wall-clock/API budget,
+    generation length, context length, replay count, and collection cost are unknown.
+  search_or_scaffold: Counterfactual replay scans failed-trajectory steps; programmatic fault injection samples successful-trajectory
+    steps; task-specific evaluators execute the altered episode. The public MetaGPT example defaults to three rounds and separates
+    attack and diagnosis work directories.
+  filtering_rule: Keep a failed episode only when a proposed local correction replays to success, labeling the earliest such
+    step; keep an injected episode only when the mutation makes a previously successful trace fail, stopping after the first
+    successful injection.
+  selection_threshold: Binary replay outcome is the keep/drop threshold. The number K of sampled injection points, analyzer
+    retry thresholds, ambiguous/multi-cause handling, and exclusions are undisclosed.
+  optimizer_or_training_scaffold: Online GRPO on verl with no KL term, a dynamically decreasing clipping bound, batch size
+    32, eight rollouts, learning rate 1e-6, format gating, agent reward weight 0.5, step reward weight 0.5, and Gaussian sigma
+    1.
+audit:
+  source_mixture: Table 3 reports 2,170 raw coding trajectories, 1,185 mathematical trajectories, and 1,300 general-agentic
+    trajectories; 1,288, 630, and 558 respectively become labeled TracerTraj pairs. Exact task/framework cross-tabulation,
+    correction-versus-injection proportions, and per-source yields are not disclosed.
+  split: The paper says TracerTraj is divided 9:1 and reports test counts of 147 coding, 63 math, and 56 agentic. The public
+    code-test parquet contains 127 rows, has no split field or immutable manifest, and therefore does not reconcile with the
+    paper.
+  decontamination: unknown
+  benchmark_overlap: Who&When is stated to be unseen relative to training, but no task-ID deduplication, family-grouped split,
+    near-duplicate audit, benchmark-contamination study, or record-level source manifest is released. TracerTraj itself draws
+    from public benchmark families.
+  lineage: Aggregate lineage is described from benchmark task through framework rollout, analyzer-proposed correction or mutation,
+    environment replay, decisive agent/step labeling, and train/test sampling. Public rows omit source framework/version,
+    original outcome, correction/injection branch, mutation/correction text, replay outcome, evaluator version, split, seed,
+    and keep/drop history.
+  license: Unknown for AgenTracer code and TracerTraj data. The repository has no root license and GitHub detects none. The
+    nested MetaGPT/LICENSE applies to the vendored MetaGPT subtree and must not be treated as a license for the entire repository
+    or parquet.
+  release_version: Audited official repository main HEAD bc6bcd94c2e18f62d6712ca70ba268f6684b894f (2025-11-12). The repository
+    has three commits, no tags, and no GitHub releases; the data file was introduced in commit 30544fd08ce3d046f234d456466e39a5f5a6b12e.
+  version_drift: The arXiv v2 paper predates the ICLR 2026 final venue metadata. The paper reports 147 coding-test rows, but
+    the pinned public parquet has 127. Section 5.1 says six benchmarks while Table 3 lists seven names. Equation 4 reverses
+    the original-failure/corrected-success direction used by the prose and Algorithm 1.
+  verifier_or_judge_failure_modes:
+  - DeepSeek-R1 correction and mutation proposals are model judgments; they can miss a causal step, introduce multiple changes,
+    leak ground truth, or encode the teacher's style even when replay flips the final outcome.
+  - A replay outcome is only as reliable as the evaluator, environment reset, tool/API state, dependency versions, and stochastic
+    agent behavior; none is pinned across the six paper frameworks.
+  - Selecting the earliest correction that succeeds does not prove uniqueness or isolate a single causal error when several
+    downstream steps are regenerated or when multiple faults interact.
+  - Fault injection establishes that a mutation can induce failure, but without paired released trajectories and mutation
+    records it cannot be audited for realism, minimality, or unintended side effects.
+  - The 127-versus-147 release discrepancy, missing full train/Math/Agentic data, and absent model/training artifacts block
+    paper-scale reproduction.
+  - Public tasks and evaluator exposure create contamination and reward-gaming risk; no decontamination or task-family split
+    audit is reported.
+  - 'The public code supports only a subset of the claimed collection surface: KodCode evaluation is implemented, while generic/MBPP+
+    paths are incomplete or placeholders and the other paper frameworks are absent.'
+  successful_and_failed_sample_retention: The paper constructs labels from both original failures and original successes transformed
+    into failures. The public pipeline has separate local directories for attacks that still succeed and corrected replays
+    that still fail, but the released parquet contains only one labeled failure history per row and omits original-success
+    traces, correction/mutation records, replayed trajectories, rejected attempts, and terminal outputs.
+  privacy_or_consent: Not disclosed. The public subset appears to contain synthetic coding tasks and model-generated agent
+    messages, but the paper and repository do not publish a privacy, consent, human-annotation, or data-governance statement.
+  citation_status: verified
+  confidence: medium
+  notes: Official ICLR metadata, OpenReview identity, arXiv full text and appendix, project page, repository tree/code, commit
+    history, and the released parquet schema/content were checked. Citation and the limited artifact are verified; complete
+    release, licensing, split integrity, and replayability are not.
+  remaining_unknowns:
+  - complete TracerTraj-2.5K train/dev/test files, manifests, checksums, and the missing 20 coding-test rows
+  - Math and General Agentic data, record-level benchmark/framework provenance, and correction-versus-injection branch labels
+  - AgenTracer-8B weights, tokenizer/config revision, training code, full verl config, seeds, total steps, and checkpoints
+  - DeepSeek-R1 snapshot, prompts beyond Appendix B's examples, temperature, K injection points, retry counts, and API budget
+  - exact environment/framework commits, tool/API snapshots, evaluator versions, reset semantics, and deterministic replay
+    fixtures
+  - dataset/code license, upstream benchmark rights, and rights for generated trajectories and model outputs
+  - split construction, decontamination, near-duplicate/task-family overlap checks, and benchmark exposure policy
+  - paired original/corrected/injected trajectories, rejected attempts, timeouts, evaluator failures, and complete failure
+    retention
+inclusion_reason: AgenTracer makes a full agent episode plus decisive-agent/decisive-step attribution into an explicit post-training
+  data object and grounds labels in counterfactual environment replay, while its incomplete and internally inconsistent public
+  release is itself an important audit example for trajectory-data reuse.
+related:
+- agentdebug-failure-trajectories-2025
+- who-when-pro-2026
+- aegis-2026
+tags:
+- environment-agent-trajectory-data
+- multi-agent-systems
+- failure-attribution
+- counterfactual-replay
+- fault-injection
+- decisive-step
+- process-reward
+- rlvr
+- release-gap
+- replay-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: AgenTracer turns successful and failed multi-agent episodes into decisive-agent/step labels through DeepSeek-R1-guided
+  mutation or correction plus environment replay, but only a 127-row coding test subset of the reported 2,476 pairs is public
+  and its license/replay contract is incomplete.
+why_it_matters: It separates an environment's terminal pass/fail signal from the causal attribution target used for training
+  a failure tracer, showing both how replay can create grounded process labels and why released trajectories need paired interventions,
+  pinned environments, split lineage, and explicit rights before training reuse.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  project_verified: true
+  artifact_verified: true
+  repository_files_verified: true
+  dataset_contents_verified: true
+  full_release_verified: false
+  training_code_verified: false
+  model_weights_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: The official paper and limited public artifact are verified at a pinned commit. Artifact verification means the 127-row
+    parquet and MetaGPT example were inspected; it does not mean the paper-scale corpus, RL implementation, or model is released.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release_reconciliation: explain and publish the 147 paper coding-test rows versus 127 released rows, plus immutable
+  manifests and checksums'
+- 'needs_full_data: release the 2,476 labeled pairs, train split, Math/Agentic subsets, and record-level framework/benchmark
+  lineage'
+- 'needs_training_artifacts: publish AgenTracer-8B weights, exact Qwen3 revision, tokenizer, RL code/config, seeds, steps,
+  checkpoints, and dependency lock'
+- 'needs_license: add explicit AgenTracer code and TracerTraj data licenses and document upstream benchmark/model-output rights'
+- 'needs_replay: pin all framework/environment/evaluator commits, API model snapshots, reset semantics, tool state, seeds,
+  and replay fixtures'
+- 'needs_retention: release paired originals, corrections/mutations, replayed outcomes, rejected attempts, timeouts, and evaluator
+  failures'
+- 'needs_split_and_decontamination: publish task-family-aware split manifests, deduplication, Who&When isolation evidence,
+  and public-benchmark overlap checks'
+- 'needs_paper_reconciliation: resolve the six-versus-seven benchmark list and Equation 4 direction mismatch'
+card: null

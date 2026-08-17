@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AgentHER 用 LLM 生成的后见目标重标可恢复的 WebArena 与 ToolBench 失败 episode，并封装为 severity-weighted SFT、DPO 或 ShareGPT 记录，但公开代码与实验发布仍存在关键缺口。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能体失败轨迹后见目标重标与训练数据构造方法",
+  "best_for_ch": "研究 agent trajectory 数据构造、LLM judge、SFT/DPO 复用与环境可重放性审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Liang Ding",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

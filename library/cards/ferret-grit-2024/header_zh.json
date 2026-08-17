@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Ferret 的 GRIT 语料把点、框和自由形状区域序列化为约 110 万条定位对话。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "构建允许用户圈选任意区域并提问的视觉界面",
+  "confidence_ch": "高",
+  "authors_ch": "Haoxuan You, Haotian Zhang, Zhe Gan, Xianzhi Du, Bowen Zhang, Zirui Wang, Liangliang Cao, Shih-Fu Chang, Yinfei Yang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

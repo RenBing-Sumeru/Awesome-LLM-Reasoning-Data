@@ -1,0 +1,7 @@
+**Labels are conditional, not ground truth.** BEL value is a finite-rollout success estimate under URSA-8B and an undisclosed terminal checker. A sound step can have low value when later rollouts fail; an erroneous step can have nonzero value when a continuation repairs it. MIE's policy of labeling all later steps negative can also label a valid recovery negative. These are curator inferences from the construction contract.
+
+**Visual release is incomplete.** Public rows contain relative `image_url` paths and text fields. DualMath exposes only its JSONL and README in the checked dataset repository, not image archives. A user must not assume that all image assets resolve, that image/question pairs are redistributable, or that the text table reproduces the multimodal context.
+
+**PRM and RL remain vulnerable.** The authors find scalar PRM rewards reward-hackable and length-biased. A score drop can be due to a model's uncertainty or label bias, not necessarily a real error. The reported gamma/rho sensitivity includes degradation when gamma is too high or rho too extreme; no independent PRM calibration or false-positive/false-negative audit was verified.
+
+**Lineage and reproducibility gaps.** Public releases omit upstream IDs, BEL/MIE route, continuation samples, tree topology, terminal verdicts, rejected generations, PRM scores, 15K prompt manifest, seeds, decontamination, and full Stage-II/III code. Dataset/card licenses do not settle all upstream image or derivative rights.

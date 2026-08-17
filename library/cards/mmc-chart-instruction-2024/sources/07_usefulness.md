@@ -1,0 +1,3 @@
+- For training a general chart assistant across scientific and everyday visualizations, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of template and OCR artifacts can masquerade as numerical reasoning.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: source tables or captions, answer checks, and chart benchmark evaluation. Do not reuse the release when its licensing or source provenance cannot be preserved.

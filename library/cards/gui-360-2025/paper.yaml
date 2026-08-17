@@ -1,0 +1,312 @@
+id: gui-360-2025
+title: 'GUI-360°: A Comprehensive Dataset and Benchmark for Computer-Using Agents'
+year: 2025
+venue: arXiv preprint; submitted to ICLR 2026 (no acceptance decision verified)
+authors:
+- Jian Mu
+- Chaoyun Zhang
+- Chiming Ni
+- Lu Wang
+- Bo Qiao
+- Kartik Mathur
+- Qianhui Wu
+- Yuhang Xie
+- Xiaojun Ma
+- Mengyu Zhou
+- Si Qin
+- Liqun Li
+- Yu Kang
+- Minghua Ma
+- Qingwei Lin
+- Saravan Rajmohan
+- Dongmei Zhang
+source_role:
+- data_release
+- benchmark
+- construction_recipe
+- model_report
+verification_contract:
+- programmatic
+- judgment_required
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- desktop_gui_control
+- windows_office
+- gui_grounding
+- screen_parsing
+- action_prediction
+training_use:
+- sft
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.04307
+  arxiv: https://arxiv.org/abs/2511.04307
+  code: https://github.com/2020-qqtcg/GUI-360
+  data: https://huggingface.co/datasets/vyokky/GUI-360
+  project: null
+  huggingface: https://huggingface.co/datasets/vyokky/GUI-360
+  doi: https://doi.org/10.48550/arXiv.2511.04307
+  venue: null
+  openreview: https://openreview.net/forum?id=JLEneHy8qC
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Natural-language Office tasks are mined from built-in application help/tutorials, online forums/Q&A/community
+    sites, and search-engine queries for Word, Excel, and PowerPoint. An unspecified LLM matches them to one of 66 manually
+    instantiated environment templates and rewrites them as concrete executable requests. Exact source URLs, crawl dates,
+    per-record provenance, licenses, and deduplication are unknown.
+  task_object: A task contains a concrete user request, application domain, environment-template reference, and an Office
+    document or presentation state instantiated in a Windows VM. The released train/test corpus contains GPT-4.1-judged successful
+    executions; unsuccessful executions are stored separately under `fail/`.
+  trace_author: 'TrajAgent generates the trajectories: GPT-4o handles the first execution round and GPT-4.1 retries failures.
+    A master agent decomposes the concrete request into subtasks, execution agents perceive the GUI, choose GUI or app-API
+    actions, and a recorder logs each state-action transition.'
+  trajectory_object: A raw episode is a sequence of JSON step records sharing `execution_id`, `app_domain`, `request`, and
+    `template`. Each record includes `step_id/total_steps`, an evaluation object, synchronized screenshot paths, UI/accessibility
+    state, textual subtask/observation/thought, the executed GUI or API action with arguments and spatial target, and a continuation
+    or finish status. The current HF card documents two screenshot fields, while the paper lists four variants.
+  released_training_object: The HF release also exposes four Qwen2.5-VL-7B-oriented processed views. Grounding maps a screenshot
+    plus the agent's current-step thought to target coordinates; screen parsing maps a screenshot to actionable controls with
+    names and bounding boxes; action prediction maps the user goal, screenshot, history, and optional accessibility context
+    to the next function, arguments, and status.
+  answer_format: Raw output is an environment-linked GUI/API action and status embedded in a full trajectory. Processed SFT
+    output is a conversation-style target for coordinates, structured controls, or a structured next action. Static benchmark
+    scorers compare those outputs with logged accessibility-derived labels; they do not replay predicted actions.
+  process_fields:
+  - execution_id
+  - app_domain
+  - request
+  - template
+  - step_id
+  - total_steps
+  - evaluation_reason
+  - evaluation_evidence
+  - evaluation_sub_scores
+  - evaluation_complete
+  - screenshot_clean
+  - screenshot_annotated
+  - ui_tree
+  - application_windows_info
+  - uia_controls_info
+  - subtask
+  - observation
+  - thought
+  - action_type
+  - control_text
+  - control_label
+  - function
+  - args
+  - rectangle
+  - coordinate_x
+  - coordinate_y
+  - status
+  - task_tags
+  observation: At each execution step, TrajAgent captures the current full-resolution application screenshot and Windows UI
+    Automation accessibility tree/control metadata, renders a Set-of-Mark view, and records the environment response after
+    the chosen GUI or MCP-backed app action. The current release does not pin a live observation server or VM image.
+  reward_object: There is no verified RL reward object. Collection attaches EvaAgent's GPT-4.1 rationale, evidence, sub-scores,
+    and binary completion judgment to an episode. Benchmark feedback is separately computed per step by point-in-box grounding,
+    IoU/text-based screen parsing, or function/argument/status action matching.
+  environment_or_substrate: Fifteen Windows 11 virtual machines with four CPU cores each execute Word, Excel, and PowerPoint
+    tasks using 30 Word, 30 Excel, and 6 PowerPoint templates. Actions combine mouse/keyboard GUI operations with Word/Excel/PowerPoint
+    APIs exposed through MCP servers. Windows build, Office versions, locale, resolution, VM image, credentials, and reset
+    artifacts are unknown.
+  verifier_or_reward: Mixed feedback boundary. EvaAgent is a GPT-4.1 LLM-as-judge that inspects the complete trajectory, screenshots,
+    accessibility data, actions, thoughts, and final app state and accepts only trajectories satisfying all undisclosed fine-grained
+    criteria; the paper reports 86% agreement with humans on 100 sampled trajectories. Released benchmark code supplies programmatic
+    static metrics, not an executable environment-success reward.
+  terminal_predicate: Raw steps carry `CONTINUE`, `FINISH`, or `OVERALL_FINISH`, while EvaAgent assigns final completeness
+    after judging the terminal app state. No version-pinned executable terminal-state checker, judge prompt, rubric, timeout
+    rule, or replay harness is released.
+  provenance: Publicly sourced prototypical query -> template matching and LLM concretization -> five-way LLM task-quality
+    filter -> GPT-4o TrajAgent execution -> GPT-4.1 retry of failures -> GPT-4.1 EvaAgent whole-trajectory judgment -> removal
+    of incomplete steps -> successful 80/20 train/benchmark split plus separately retained failures -> task-specific SFT views
+    and static evaluation.
+recipe_metadata:
+  base_model: Qwen2.5-VL-7B is the principal open model used for processed-data SFT and action-prediction experiments; the
+    grounding table also reports a UI-TARS-1.5-7B SFT variant. Exact checkpoint revisions and paper-result mappings are unknown.
+  teacher: GPT-4o generates first-round trajectories, GPT-4.1 retries failed tasks, and GPT-4.1 powers EvaAgent validation.
+    The LLM used for query-template matching, concretization, and the five-way query-quality gate is not identified.
+  generator: TrajAgent combines a master planner, execution agents, screenshot/accessibility perception, a hybrid GUI+MCP
+    action executor, a Windows Office environment, and a recorder that emits temporally aligned episode records.
+  prompt_task_source: Built-in application help/tutorial content, online forums/Q&A/community websites, and search-engine
+    queries. Table 2 reports 27,903 Word, 28,552 Excel, and 21,698 PowerPoint raw queries, but these sum to 78,153 while the
+    narrative states 79,075 candidates; source-level reconciliation is unknown.
+  sampling_protocol: After LLM filtering, the paper states that 59,553 candidate tasks are retained. Each task is first attempted
+    by GPT-4o; failures are attempted again by GPT-4.1. Successful/executable trajectories pass EvaAgent and sanitization
+    before an 80/20 trajectory split; failed executions are retained separately. Task order, retry/timeout logic, seeds, and
+    exact attempt manifests are unknown.
+  rollout_count: The final release is reported as 17,189 successful trajectories with 131,652 steps plus 62,170 failed trajectories
+    with 1,093,525 steps, for 79,359 trajectories and 1,225,177 steps in total. The number of model attempts, discarded attempts,
+    timeouts, and multiple attempts per source task is unknown.
+  temperature: Appendix D reports temperature 0.0 for GPT-4o and GPT-4.1 collection/evaluation calls. Top-p, max tokens, stop
+    rules, response retries, and query-pipeline decoding settings are unknown.
+  inference_budget: Collection uses 15 Windows 11 VMs with four CPU cores each and at most two described model stages per
+    task. The paper does not disclose per-task step caps, token budgets, wall-clock time, API cost, or timeout policy.
+  search_or_scaffold: Master-agent subtask decomposition, parallel execution-agent dispatch, screenshot plus accessibility/Set-of-Mark
+    perception, GUI-or-MCP action selection, environment observation, and persistent recording. This is an orchestration scaffold,
+    not tree search or best-of-N selection.
+  filtering_rule: Reject tasks labeled non-executable, cross-application, version-management, template-missing, or otherwise
+    invalid; retain `NORMAL`. After execution, EvaAgent keeps only whole trajectories satisfying all fine-grained criteria,
+    and sanitization removes steps lacking an executed action, screenshot, or essential metadata. Exact prompts, thresholds,
+    and stage-wise removal counts are unknown.
+  selection_threshold: EvaAgent requires all fine-grained completion criteria, but the criteria, sub-score scale, threshold,
+    disagreement policy, and human escalation rule are not disclosed. The query filter is categorical rather than a published
+    numeric threshold.
+  optimizer_or_scaffold: Reported SFT and stated RL experiments use 4 NVIDIA A100 40GB GPUs, FP16, gradient accumulation,
+    checkpointing, and a learning-rate search over 1e-5, 5e-6, and 1e-6. Optimizer, batch size, epochs, scheduler, seeds,
+    chosen setting per run, checkpoint IDs, and all RL algorithm/reward/rollout details are unknown; no RL training code was
+    verified.
+  release_scale: HF currently reports about 574 GB and exposes raw `train`, `test`, and `fail` trees, 66 Office templates,
+    and four processed SFT directories. The full artifact was not downloaded or independently recounted, and HF's dataset
+    viewer currently fails with an Arrow offset-overflow error.
+audit:
+  source_mixture: Query mixture combines application help, online community/Q&A content, and search queries across Word (41.0%),
+    Excel (31.6%), and PowerPoint (27.4%), then instantiates tasks from 66 manually curated templates. Exact websites, query
+    text ownership, language/geography, crawl dates, source weights after filtering, and record-level lineage are unknown.
+  split: Successful trajectories are split 80% train (13,750 trajectories, 105,368 steps) and 20% GUI-360-Bench (3,439 trajectories,
+    26,284 steps), and all three derived tasks share the partition. No immutable ID manifest, grouping key, random seed, template/source-family
+    separation, validation split, or cross-split near-duplicate audit is disclosed.
+  decontamination: unknown
+  benchmark_overlap: No benchmark decontamination or semantic-duplicate audit is disclosed. Because task variants share a
+    small set of 66 templates and are split by trajectory, train/bench leakage through template, source query, paraphrase,
+    or near-identical UI state is plausible and unquantified.
+  lineage: Public query source -> manually instantiated Office template family -> LLM match/concretization/filter label ->
+    staged GPT-4o/GPT-4.1 TrajAgent attempt -> step screenshots/UI tree/reasoning/action/status -> GPT-4.1 EvaAgent judgment
+    -> sanitization -> successful train/bench or released failure tree -> grounding/parsing/action SFT transformations.
+  license: GitHub code is MIT licensed and the HF metadata/dataset card declares MIT. The HF root tree does not visibly include
+    a separate dataset LICENSE file, and neither declaration resolves record-level rights for crawled query text, Microsoft
+    Office screenshots/templates, fonts, icons, or other third-party UI content.
+  release_version: arXiv v2 dated 2025-11-10 was reviewed. GitHub `main` commit `a9f9d2e6f125c8cbc176b46a74aeef76ed16f0f6`
+    (2025-11-10) has no tag or release. HF mutable `main` was inspected on 2026-07-20; its dataset-card commit `1c46362efaae836c601004e77b98a1aba89a530f`
+    is visible, but no immutable whole-dataset release tag or DOI was verified.
+  version_drift: Appendix B lists clean, full-desktop, annotated, and selected-control screenshots. The current HF card documents
+    only clean and annotated screenshots, and commit 1c46362 removes the other fields from the card. Reusers must inspect
+    raw records and pin revisions rather than assuming the paper schema and current card are identical.
+  experimental_evidence:
+    grounding: Table 7 reports Qwen2.5-VL-7B 35.78% -> 82.30% after SFT and UI-TARS-1.5-7B 62.27% -> 82.49% after SFT.
+    action_prediction: Table 9 reports Qwen2.5-VL-7B visual-only step success 17.52% -> 50.08% after SFT and visual+A11y 14.18%
+      -> 25.78%. The A11y SFT score is much lower than visual-only SFT, so accessibility is not uniformly beneficial under
+      this setup.
+    screen_parsing: Table 8 reports OmniParser-v2 overall F1 0.408 / mean IoU 0.735 versus the strongest listed general model
+      o3 at F1 0.128 / mean IoU 0.578.
+    limitation: These are author-reported static benchmark results. The paper provides no human baseline protocol, uncertainty,
+      independent reproduction, or isolated RL result despite abstract-level RL language.
+  verifier_or_judge_failure_modes:
+  - EvaAgent is a single GPT-4.1 judge with only a 100-trajectory calibration sample and 86% human agreement. The paper does
+    not report confusion matrices, false-positive/false-negative rates, annotator agreement, or adversarial tests.
+  - The judge observes generated reasoning traces as well as screenshots/actions, so persuasive or self-consistent text can
+    influence a completeness judgment without constituting environment proof; the prompt/rubric is unavailable.
+  - Static action prediction requires matching one logged function/argument/status tuple and does not model alternative valid
+    actions or execute the prediction, creating false negatives for multi-path tasks and false confidence about end-to-end
+    success.
+  - Grounding uses accessibility-derived boxes, so missing/stale accessibility metadata or bounding-box errors become ground
+    truth. The release does not quantify label error across apps.
+  - Screen-parsing code uses greedy IoU matching and a separate generic `success` flag at recall >= 0.1; this flag should
+    not be interpreted as task completion or substituted for the paper's macro F1/IoU metrics.
+  - 'Query counts conflict internally: Table 2 sums to 78,153 while §3.1 states 79,075, and the published filter percentages
+    do not transparently reproduce the stated 59,553 retained tasks.'
+  - The abstract mentions RL gains, but no RL objective, reward, policy, rollout budget, result table, or code is released.
+    Failed trajectories therefore cannot be assumed to provide a ready RLVR contract.
+  - The GitHub evaluator defaults include environment-specific service endpoints/model paths and the repository omits the
+    collection stack, so a clean checkout is not a complete reproduction of Tables 7-10 or trajectory generation.
+  successful_and_failed_sample_retention: The official release retains 17,189 successful trajectories in train/test and reports
+    62,170 failed trajectories in a separate HF `fail/` tree. This is unusually strong failure visibility, but the exact failure
+    taxonomy, timeout/abort policy, rejected query set, attempt-to-task mapping, sanitizer drop log, and whether every failed
+    attempt is preserved remain unknown.
+  privacy_or_consent: The Ethics Statement says no human subjects were directly involved, no PII or sensitive user data is
+    included, queries were derived from publicly accessible non-sensitive educational/tutorial sites, and data are limited
+    to non-sensitive Word/Excel/PowerPoint contexts. No source URL list, consent/terms analysis, PII detector, redaction procedure,
+    audit sample, or retention policy is released, so these remain author claims rather than independently auditable controls.
+  safety_boundary: Construction filters cross-application and version-management tasks, and the paper says privacy/security/safety-risk
+    scenarios were excluded. The resource therefore covers bounded Office productivity behavior, not general desktop or security-sensitive
+    deployment. Hybrid API/file actions still require sandboxing when reused.
+  environment_replay: Static JSON, images, templates, converters, and benchmark scorers are released. The confirmed GitHub
+    tree does not contain TrajAgent/EvaAgent collection code, VM provisioning, Office/MCP version manifests, state reset scripts,
+    timeout rules, or an executable terminal checker. Faithful environment replay is therefore unavailable from the verified
+    artifacts.
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - query_count_reconciliation_and_record_level_source_provenance
+  - query_instantiation_and_filter_models_prompts_thresholds
+  - office_vm_mcp_locale_display_and_reset_versions
+  - evaagent_prompt_rubric_subscores_and_error_rates
+  - immutable_split_ids_seed_deduplication_and_contamination_audit
+  - complete_attempt_failure_timeout_and_sanitizer_drop_manifests
+  - rl_algorithm_reward_rollouts_results_and_code
+  - exact_sft_optimizer_batch_epochs_seeds_and_checkpoint_mapping
+  - third_party_data_screenshot_template_and_font_rights
+  - privacy_consent_PII_detection_redaction_and_audit_evidence
+  - immutable_code_data_release_tags_and_file_hash_manifest
+  notes: Full arXiv v2 including appendices and ethics/reproducibility statements, arXiv metadata/DOI, OpenReview submission
+    status, the complete official GitHub tree and key evaluator/converter files, GitHub license/release state, and the HF
+    dataset card/file trees/failure shards/processed-data directories were checked on 2026-07-20. Artifact verification establishes
+    a substantial static release, not faithful environment or RL reproduction.
+inclusion_reason: GUI-360° is directly useful to the environment-and-agent-trajectory track because it exposes a concrete
+  multimodal Windows Office episode schema, a hybrid GUI/API action trace, successful and failed rollouts, a whole-trajectory
+  judge, and derived step-level SFT/evaluation objects. Its missing replay stack, judge prompt, provenance controls, and RL
+  contract are equally important audit boundaries.
+related:
+- os-genesis-2025
+- opencua-2025
+- android-control-2024
+tags:
+- gui-360
+- desktop-gui-agent
+- windows-office
+- agent-trajectory
+- multimodal-trajectory
+- hybrid-gui-api
+- llm-as-judge
+- failure-trajectories
+- sft
+- benchmark
+- environment-replay-incomplete
+- release-version-drift
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: GUI-360° releases 17,189 successful and 62,170 failed Windows Office trajectories with screenshots, accessibility
+  state, reasoning, and GUI/API actions, then derives grounding, screen-parsing, and action-prediction SFT/benchmark data;
+  the collector, replay environment, judge prompt, and claimed RL setup remain incomplete.
+why_it_matters: It makes the full environment-data chain unusually visible - real-query sourcing, template instantiation,
+  executed multimodal episodes, success/failure retention, whole-trajectory judgment, and step-level training views - while
+  showing why static trajectory availability is not the same as replayable agent training or a verified RL feedback contract.
+card: null
+needs:
+- 'needs_metadata: reconcile Table 2/§3.1 query counts and publish record-level source/template/attempt lineage'
+- 'needs_replay: release and pin VM image, Windows/Office/MCP versions, display/locale, resets, timeouts, and terminal checker'
+- 'needs_verifier: release EvaAgent prompt/rubric/sub-score schema, annotator study details, and false-positive/negative audit'
+- 'needs_split: publish immutable train/bench/fail IDs, grouping key, seed, deduplication, and contamination audit'
+- 'needs_training_recipe: disclose exact SFT optimizer/batch/epochs/seeds/checkpoints and all RL reward/algorithm/rollout/results/code
+  details'
+- 'needs_license_privacy: clarify third-party query/UI/template rights and publish PII/consent/redaction controls'
+- 'needs_release: tag immutable code/data versions, fix the HF viewer, and publish a paper-table reproduction manifest'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: arXiv:2511.04307v2
+  repository_commit: a9f9d2e6f125c8cbc176b46a74aeef76ed16f0f6
+  dataset_revision: HF mutable main inspected; dataset-card commit `1c46362efaae836c601004e77b98a1aba89a530f` is visible,
+    but no immutable whole-release revision/tag was verified.
+  duplicate_check: Exact assigned ID, title, and arXiv-ID checks identify the existing `gui-360-2025` Card directory in the
+    target checkout; no alternate entry ID was proposed.
+  notes: Citation, DOI, ICLR submission status, code, dataset, processed SFT views, failure directory, and evaluator contracts
+    are verified. `artifact_verified` means these official artifacts exist and were inspected; it does not mean complete collection
+    replay, independent count reproduction, RL reproduction, or rights/privacy audit. Keep status partial and L3.

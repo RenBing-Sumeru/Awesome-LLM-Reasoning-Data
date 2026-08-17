@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MobileGym 以可配置、可分叉的结构化 JSON 状态承载移动 GUI episode，并用确定性终局检查同时支持评测与在线 GRPO；其公开物是模拟器、任务和训练代码，而非论文实验的完整 rollout 语料。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "移动 GUI 模拟环境、可验证基准与在线强化学习案例",
+  "best_for_ch": "研究移动 GUI agent、环境反馈、RLVR、并行 rollout、sim-to-real 与 verifier 审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Dingbang Wu, Rui Hao, Haiyang Wang, Shuzhe Wu, Han Xiao, Zhenghong Li, Bojiang Zhou, Zheng Ju, Zichen Liu, Lue Fan, Zhaoxiang Zhang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

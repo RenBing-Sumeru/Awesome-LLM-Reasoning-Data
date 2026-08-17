@@ -1,0 +1,3 @@
+Frontier model reports can describe strong final models while leaving the data objects, feedback contracts, selection rules, and audit evidence too incomplete to reproduce or evaluate. A Track 12 Card must separate an announced model outcome from a disclosed data recipe.
+
+Olmo 3 addresses that gap unusually directly: the report and AI2 release describe a model flow from Dolma 3 pretraining pools and mixes through Dolci post-training data, intermediate checkpoints, model variants, and supporting code. This Card records what is actually disclosed and preserves the remaining provenance, license, judge, and contamination boundaries rather than inferring a fully risk-free pipeline.

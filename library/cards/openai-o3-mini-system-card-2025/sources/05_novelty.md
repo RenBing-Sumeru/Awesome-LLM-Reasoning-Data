@@ -1,0 +1,2 @@
+For this atlas, the useful contribution is not a released data artifact or a fully specified learning method. The System Card provides a source-backed boundary between disclosed category-level ingredients—data classes, filtering, reasoning RL, deliberative alignment, safety-data generation, and evaluations—and undisclosed record-level data and feedback mechanics. That distinction prevents a closed-model safety report from being mistaken for an open reasoning-data recipe.
+

@@ -1,0 +1,139 @@
+id: deepseek-r1-2025
+title: 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors:
+- DeepSeek-AI
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- coding
+- science
+- reasoning
+- general
+- safety
+training_use:
+- sft
+- distillation
+- rlvr
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.12948
+  arxiv: https://arxiv.org/abs/2501.12948
+  code: https://github.com/deepseek-ai/DeepSeek-R1
+  data: null
+  project: https://api-docs.deepseek.com/news/news250120/
+  huggingface: https://huggingface.co/deepseek-ai/DeepSeek-R1
+  doi: https://doi.org/10.48550/arXiv.2501.12948
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2501.12948
+data_object:
+  prompt_source: Thousands of undisclosed cold-start prompts, curated reasoning prompts, and portions of DeepSeek-V3 SFT mixture;
+    task families but not source membership/counts are disclosed.
+  trace_author: Cold starts use several undisclosed methods including readable R1-Zero outputs and human post-processing;
+    RL checkpoint writes rejection-sampled trajectories; DeepSeek-V3 participates in later generation/judgment; R1 creates
+    distillation targets.
+  answer_format: Long CoT followed by final summary/answer with a readable cold-start pattern; special-token schema and released
+    records are unknown.
+  process_fields:
+  - prompt
+  - chain_of_thought
+  - final_summary_or_answer
+  - accuracy_reward
+  - format_reward
+  - language_consistency_reward
+  environment_or_substrate: Offline rule-evaluated math/code/logic tasks plus DeepSeek-V3 generative judgment for later SFT
+    and reward-model general alignment; exact environments, tests, judges, and prompt distribution are unknown.
+  verifier_or_reward: R1-Zero uses rule accuracy/format reward. R1 adds language-consistency reward; later data uses DeepSeek-V3
+    judgment; final all-scenarios RL uses rules and general reward models. Formulas, coefficients, thresholds, calibration,
+    and error rates are unknown.
+  terminal_predicate: Eligible math/code/logic outputs pass task rule correctness and required format; extractors, compiler/test
+    harnesses, and predicates are unknown.
+recipe_metadata:
+  base_model: DeepSeek-V3-Base
+  teacher: R1 teaches released dense distills. Cold-start teachers are unknown; DeepSeek-V3 has later generation/judgment
+    roles.
+  generator: RL checkpoint produces rejection-sampled reasoning; DeepSeek-V3 produces/judges parts of general SFT.
+  filtering_rule: Correct rejection-sampled responses retained; mixed-language, long-paragraph, and code-block CoT filtered.
+    Full rule/judge thresholds, yields, and versions are unknown.
+  sampling_protocol: Multiple responses sampled for later reasoning prompts and correct retained; training rollouts, temperature,
+    top-p, seeds, and domain allocation are unknown. Evaluation temperature 0.6/top-p 0.95 is not training evidence.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation caps 32,768 tokens and uses 4–64 samples by benchmark; training budgets are unknown.
+  optimizer_or_scaffold: GRPO for R1-Zero; R1 uses cold-start SFT, reasoning RL, rejection-SFT, and all-scenarios RL. Optimizer,
+    KL, learning rate, batches, and reward coefficients are unknown.
+audit:
+  source_mixture: Thousands of cold starts, about 600K rejection-sampled reasoning, 200K non-reasoning partly reused/generated
+    via V3, and 800K R1 distillation rows; manifests, rights, and item provenance are not released.
+  split: unknown
+  decontamination: unknown
+  license: Repository/weights are MIT. Qwen distills retain Apache lineage and Llama distills their base terms; rights for
+    cold starts, V3 SFT, rewards, prompts, rollouts, and 800K samples are unknown.
+  lineage: V3 Base to R1-Zero GRPO and R1 cold-start SFT to reasoning RL to rejection/V3 SFT to all-scenarios RL to R1 to
+    800K rows to dense distills; item mappings/revisions are unavailable.
+  known_failure_modes:
+  - R1-Zero readability/language mixing and R1 language mixing beyond Chinese/English
+  - Rule checks can accept flawed reasoning
+  - Later neural/generative judgments lack calibration
+  - Prompt sensitivity/few-shot degradation
+  - Weaker function calling/multiturn/roleplay/JSON than V3
+  - Released weights/counts do not reproduce pipeline
+  citation_status: verified
+  confidence: high
+  notes: Track-12 frontier disclosure entry only; stage-level disclosure does not release primary data, feedback, or audit
+    stack.
+inclusion_reason: Canonical report with GRPO, rule reward, cold start, rejection sampling, alignment RL, distillation, weights,
+  and explicit release boundaries.
+related: []
+tags:
+- deepseek-r1
+- frontier-report
+- data-disclosure-ledger
+- grpo
+- rlvr
+- cold-start
+- rejection-sampling
+- distillation
+- reward-modeling
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: DeepSeek-R1 reports cold-start/RL/SFT/RL stages, rule/reward feedback, and 800K-row distillation while withholding
+  prompts, traces, verifiers, rewards, splits, and audit artifacts.
+why_it_matters: It separates public weights and stage narrative from unavailable data lineage, reward calibration, terminal
+  predicates, and reproducibility evidence.
+card: null
+needs:
+- 'needs_data: cold starts, SFT rows, RL rollouts, accepted/rejected candidates, 800K rows, and manifests'
+- 'needs_metadata: task mix, teachers, prompts, rollouts, decoding, GRPO/optimizer, reward weights, and yields'
+- 'needs_verifier: extractors, test environments, rules, V3 judgment, rewards, and calibration audit'
+- 'needs_audit: splits, decontamination, rights, checkpoint-to-example lineage, and immutable revisions'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official arXiv, DeepSeek repository/release notice, and official model page verified; data, feedback, and audit artifacts
+    are absent.

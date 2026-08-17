@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "WorkArena 用有状态企业知识工作任务评测 Web 智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICML 2024",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Alexandre Drouin 等（ServiceNow Research / Mila 等）",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:46:50Z"
+}

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开约百万条可验证的过程奖励训练样本数据集",
+    "updated_at": "2026-07-13T07:47:12Z"
+  },
+  "updated_at": "2026-07-13T07:47:12Z"
+}

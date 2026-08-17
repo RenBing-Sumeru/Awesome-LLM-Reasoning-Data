@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MacArena发布421项可执行macOS GUI任务、两套UTM环境及本地截图/action/reward/video记录能力，但未发布规范化rollout语料，且存在evaluator错配、第二次运行未重克隆和provenance冲突。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "macOS电脑使用智能体在线基准与可执行评测环境",
+  "best_for_ch": "研究GUI智能体环境轨迹、终态程序化反馈、复现与verifier审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Victor Muryn, Maksym Shamrai, Sofiia Mazepa, Yehor Khodysko",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

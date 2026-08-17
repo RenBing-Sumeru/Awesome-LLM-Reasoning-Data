@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "γ-PO 将每个偏好对的奖励间隔转为动态目标边界，强化清晰监督并平滑模糊监督。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "动态目标边界的偏好优化研究",
+  "best_for_ch": "适合已拥有偏好回答对、但需要降低模糊标签影响且不希望直接删样本的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jie Sun 等（蚂蚁集团、上海数据科学重点实验室、国立新加坡大学）",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-15T18:40:00Z"
+}

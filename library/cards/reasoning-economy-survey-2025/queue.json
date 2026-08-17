@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-28T08:34:36Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "被引用数41，讲解长推理的效率和能力",
+    "updated_at": "2026-07-28T08:34:36Z"
+  }
+}

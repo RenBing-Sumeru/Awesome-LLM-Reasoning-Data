@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "TraceElephant 发布 220 条 Captain-Agent、Magentic-One 与 SWE-Agent 失败 episode，保留可观察的完整输入、输出和工具轨迹并标注负责组件与决定性步骤；但数据包修复历史和环境漂移限制精确回放。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多智能体失败归因基准与轨迹数据集",
+  "best_for_ch": "研究智能体轨迹、失败归因、回放评测与数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Mengzhuo Chen、Junjie Wang、Fangwen Mu、Yawen Wang、Zhe Liu、Huanxiang Feng、Qing Wang",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,197 @@
+id: bmmr-2025
+title: 'BMMR: A Large-Scale Bilingual Multimodal Multi-Discipline Reasoning Dataset'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Zhiheng Xi
+- Guanyu Li
+- Yutao Fan
+- Honglin Guo
+- Yufang Liu
+- Xiaoran Fan
+- Jiaqi Liu
+- Jingchao Ding
+- Wangmeng Zuo
+- Zhenfei Yin
+- Lei Bai
+- Tao Ji
+- Tao Gui
+- Qi Zhang
+- Xuanjing Huang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- process_reward
+domains:
+- multimodal
+- multidisciplinary
+- bilingual
+- college_level
+training_use:
+- sft
+- evaluation
+- process_supervision
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/5acd3c628aa1819fbf07c39ef73e7285-Paper-Datasets_and_Benchmarks_Track.pdf
+  arxiv: https://arxiv.org/abs/2507.03483
+  code: https://github.com/WooooDyy/BMMR
+  data: https://huggingface.co/datasets/guanyu615/BMMR
+  project: https://bmmr.pages.dev/
+  huggingface: https://huggingface.co/datasets/guanyu615/BMMR
+  doi: https://doi.org/10.48550/arXiv.2507.03483
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/5acd3c628aa1819fbf07c39ef73e7285-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: https://openreview.net/forum?id=2XstFOMwp4
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: More than two million college-level examples collected from open print and digital information sources, including
+    books, examinations, quiz collections, websites, existing datasets, and repurposed material; record-level sources are
+    not disclosed.
+  trace_author: unknown; the paper begins curation from question, reasoning-path, and answer triples and reports human-in-the-loop
+    review and revision, but does not identify the original or revised reasoning-path author per row.
+  answer_format: Bilingual image-conditioned multiple-choice, fill-in-the-blank, and open-ended questions paired with a reasoning
+    path and final answer.
+  process_fields:
+  - id
+  - conversations
+  - image
+  - question
+  - answer
+  - task_type
+  - cot
+  - language
+  - category_id
+  environment_or_substrate: Chinese and English college-level multimodal questions organized under 8 top-level disciplines,
+    16 second-level disciplines, 40 third-level areas, and 300 UNESCO-defined subfields.
+  verifier_or_reward: Dataset curation uses model agreement against annotated answers plus human verification. Benchmark code
+    applies format-dependent final-answer rules. BMMR-Verifier is trained from multi-model trajectories with rule-based outcome
+    labels and inserted step +/- labels, then predicts the probability of the next '+' token for each newline-delimited reasoning
+    step.
+  terminal_predicate: A dataset item survives the agreement-threshold cascade or final manual verification; benchmark correctness
+    is decided by multiple-choice matching or normalized mathematical answer equivalence, while BMMR-Verifier produces learned
+    step and aggregate response scores rather than a hard environment success state.
+recipe_metadata:
+  base_model: Qwen2.5-VL-3B/7B and InternVL2.5-8B/38B/78B are used in BMMR-Train SFT experiments; the base architecture and
+    size of BMMR-Verifier are unknown.
+  teacher: unknown; GPT-4o performs hierarchical subject tagging, safety/objectivity screening, and three reasoning/multimodality
+    checks, but the paper does not identify it or another model as the author of the released reference reasoning paths.
+  generator: Qwen2.5-7B-Instruct, Qwen2.5-72B-Instruct, and GPT-4o form the dataset-quality cascade. BMMR-Verifier uses 32
+    rollouts per sample from multiple models whose exact identities and revisions are undisclosed.
+  filtering_rule: Remove incomplete or mismatched question-answer records; filter subjective, unsafe, common-sense-only, single-step,
+    and weakly image-grounded items; transform selected formats; keep model-agreement bands, escalate very-low-agreement items
+    through stronger models and 40 annotators, then rebalance disciplines.
+  sampling_protocol: UNESCO taxonomy -> collect more than 2M examples -> integrity and pairing checks -> hierarchical GPT-4o
+    tagging -> safety/objectivity and three self-consistency checks -> format transformation and fact-verification augmentation
+    -> three-model 32-response agreement cascade -> manual verification -> discipline balancing -> BMMR-Train/BMMR-Eval split.
+    Separately, multi-model rollouts and rule outcomes create the BMMR-Verifier training set.
+  rollout_count: 32
+  temperature: null
+  inference_budget: Dataset quality control samples 32 responses per escalated model and item. Verifier training uses 140k
+    question-response pairs, one epoch, global batch size 64, learning rate 2e-5, and warmup ratio 0.05. Main evaluation uses
+    greedy decoding; generation temperatures, seeds, and total sampled tokens are unknown.
+  optimizer_or_scaffold: LlamaFactory is used for Qwen2.5-VL SFT, the InternVL codebase for InternVL2.5 SFT, MS-Swift for
+    BMMR-Verifier, and vLLM for evaluation generation. The public GitHub repository contains final-answer evaluation scripts,
+    not verifier training code.
+audit:
+  source_mixture: College-level Chinese and English print and digital material from books, examinations, quizzes, websites,
+    existing datasets, and repurposed sources. The paper reports 29 image types but no record-level source, license, image-rights,
+    or transformation ledger.
+  split: The paper reports 109,449 total questions, with 88,991 BMMR-Train and 20,458 BMMR-Eval. The live Dataset Viewer exposes
+    one 88,991-row train split with id, conversations, and image fields. The raw Hub tree separately exposes full BMMR.tsv
+    and BMMR_mini.tsv test files.
+  decontamination: Rewriting and augmentation are intended to reduce memorization and guessing, but no exact, near-duplicate,
+    or semantic overlap audit against training corpora, source collections, BMMR-Train, BMMR-Eval, or evaluated models is
+    released.
+  license: The NeurIPS checklist says BMMR is CC-BY-4.0 and its sources are public domain; the live Hugging Face dataset is
+    tagged MIT, while the GitHub code is Apache-2.0. The conflict and record-level upstream text/image rights are unresolved.
+  lineage: Source material -> question/reasoning-path/answer triples -> integrity checks -> GPT-4o taxonomy and safety/reasoning/multimodality
+    filters -> format transformation/augmentation -> model-agreement cascade -> human verification and balancing -> released
+    Train/Eval. A separate branch samples verifier trajectories, applies rule outcomes and under-specified step labeling,
+    filters/rebalances 140k pairs, and trains BMMR-Verifier.
+  known_failure_modes:
+  - Released training rows expose only id, conversations, and image, omitting source identity, UNESCO tags, question type,
+    language, quality-control decisions, trace author, and license lineage.
+  - The paper does not disclose who authored each original or revised reference reasoning path, which model or human changed
+    it, or which alternatives were rejected.
+  - The exact identities, revisions, prompts, decoding parameters, seeds, and per-trajectory outputs for the 32 verifier rollouts
+    are unknown.
+  - The paper starts from rule-based trajectory outcomes but does not fully specify how those outcomes become differentiated
+    step-level +/- targets; process-label semantics and leakage risk are therefore unresolved.
+  - BMMR-Verifier's base checkpoint, training data, per-step labels, model weights, training code, calibration set, and inference
+    implementation are not present in the checked official repository or dataset release.
+  - Public evaluation code scores final answers through extraction, multiple-choice matching, and mathematical normalization;
+    it does not reproduce the paper's BMMR-Verifier process evaluation.
+  - Agreement with GPT-4o and 1,000 human-annotated trajectories measures consistency, not verifier correctness, calibration,
+    robustness, or resistance to shared errors.
+  - The cascade preferentially retains intermediate-agreement questions and dynamically changes thresholds, but item-level
+    thresholds, survival counts, discarded IDs, and source-specific distribution shifts are not released.
+  - The methods report 40 annotators for data verification and college-student annotations for 1,000 verifier cases, while
+    the NeurIPS checklist marks crowdsourcing and human-subject involvement as not applicable; whether the annotation arrangement
+    falls outside those categories, and its recruitment, compensation, consent, and oversight details, are unknown.
+  - The NeurIPS checklist's CC-BY-4.0 statement conflicts with the live Hub MIT tag, and a blanket public-domain statement
+    does not establish rights for every book, exam, website, dataset, image, or derived reasoning path.
+  - No contamination audit or immutable release manifest ties the paper's exact data, code, model, prompts, and sampling configuration
+    to checksums.
+  - Main benchmark results are single runs without error bars; proprietary models are evaluated on the 5.4k TestMini subset
+    because of cost, limiting direct comparability with full-set results.
+  - The released data cover English and Chinese only and do not cover all UNESCO subjects; the paper itself identifies both
+    limits.
+  citation_status: verified
+  confidence: medium
+  notes: Checked the official NeurIPS 2025 proceedings page and 27-page final paper, arXiv v2, project page, GitHub repository
+    and evaluation code, Hugging Face raw tree, Dataset Viewer schema/size endpoints, and leaderboard page on 2026-07-21.
+    Venue, both dataset subsets, and final-answer evaluation code are verified; verifier artifacts and record-level lineage
+    remain unavailable.
+  metadata_status: partial
+inclusion_reason: Releases a broad bilingual multimodal SFT corpus and evaluation benchmark while documenting a six-stage
+  data-curation recipe and a distinct process-verifier training recipe, making it useful for studying both construction and
+  missing audit lineage.
+related: []
+tags:
+- bmmr
+- multimodal-reasoning
+- multidisciplinary
+- bilingual
+- process-verifier
+- human-in-the-loop
+- model-agreement-filtering
+- partial-lineage
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Releases 88,991 bilingual multimodal SFT records and a 20,458-item evaluation set, and describes a 32-rollout
+  process-verifier recipe whose training artifacts and decision lineage remain unreleased.
+why_it_matters: It broadens reasoning post-training beyond mathematics and makes the separation among curated reference traces,
+  benchmark outcomes, model-agreement filters, and learned process scores explicit enough to audit.
+card: null
+needs:
+- 'needs_release: BMMR-Verifier checkpoint, training data, per-step labels, training and inference code, and rollout records'
+- 'needs_lineage: row-level source, trace author, model/human revision, filtering, augmentation, split, and rejection decisions'
+- 'needs_license: reconcile CC-BY-4.0 with the Hub MIT tag and document record-level text/image/derived-output rights'
+- 'needs_decontamination: exact, near-duplicate, and semantic train-evaluation overlap ledger'
+- 'needs_human_annotation: recruitment, compensation, consent, oversight, annotator agreement, and checklist reconciliation'
+- 'needs_snapshot: immutable data, code, model, prompt, and configuration revisions with checksums'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official venue, paper, project, code, 88,991-row train viewer, raw full/mini evaluation files, and final-answer evaluation
+    scripts are available. The verifier model and its construction artifacts, complete per-row provenance, license reconciliation,
+    and immutable paper-run manifest are not available.

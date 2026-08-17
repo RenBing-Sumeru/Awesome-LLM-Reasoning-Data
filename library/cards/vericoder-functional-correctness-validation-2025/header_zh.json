@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VeriCoder 通过教师生成测试、仿真反馈和迭代修复，把 RTL 种子扩展为 125,777 条功能验证的规格—实现—测试三元组。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "功能验证的 RTL 代码数据与生成模型",
+  "best_for_ch": "研究 RTL 代码生成、硬件验证或执行式奖励的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Anjiang Wei, Huanmi Tan, Tarun Suresh, Daniel Mendoza, Thiago S. F. X. Teixeira, Ke Wang, Caroline Trippel, Alex Aiken",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T11:53:23Z"
+}

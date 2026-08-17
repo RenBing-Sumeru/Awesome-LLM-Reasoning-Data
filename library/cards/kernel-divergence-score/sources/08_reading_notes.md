@@ -1,0 +1,1 @@
+Kernel Divergence uses changes in representations before and after controlled exposure to reveal possible contamination. It is an indirect signal, not a window into a model's full training corpus; a larger score only says the model looks more exposed under the tested conditions.

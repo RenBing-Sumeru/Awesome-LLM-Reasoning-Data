@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GSM8K 提供 8,792 道小学数学应用题，用最终数值答案检查，并研究 verifier models。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "OpenAI / arXiv 的 math word-problem benchmark",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Karl Cobbe 等（OpenAI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

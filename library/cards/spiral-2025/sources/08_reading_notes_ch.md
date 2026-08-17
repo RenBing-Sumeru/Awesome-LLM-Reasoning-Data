@@ -1,0 +1,5 @@
+- 先读 §3 与 Algorithm 1：核心对象是 role-conditioned observation、完整 reasoning/action、transition 与 terminal feedback 组成的在线序列，而不是静态 QA corpus。
+- RAE 是每个游戏/角色单独维护的 return baseline；它稳定 policy gradient，却不验证 intermediate reasoning。
+- Table 10 是最干净的性能核验：Qwen3-4B multi-game SPIRAL 三随机种子平均为 44.5 ± 0.5，multi-game SFT 为 39.6 ± 0.4。
+- 对照 Appendix D Table 6 与当前 `run.sh`：论文报告最大 response 为 8,192 tokens，而公开示例使用 4,096。
+- 不要把约 25k 的 Qwen3-32B SFT 对比集与未冻结的 SPIRAL 在线 rollout stream 混为一谈；schema、split、license 与 run-level lineage 都仍是待审计项。

@@ -1,0 +1,1 @@
+Read the access and version notes before the headline solve rate. Keep Tiers 1-4, Open Problems, public examples, and v2-corrected problems separate. The under-2% result is a release-time benchmark fact, not a timeless property of advanced math reasoning.

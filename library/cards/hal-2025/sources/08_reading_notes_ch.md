@@ -1,0 +1,5 @@
+- 阅读前先消歧：本卡片对应 exact-title 的 **Holistic Agent Leaderboard: The Missing Infrastructure for AI Agent Evaluation**，即 arXiv:2510.11977、OpenReview `vUaY1t64ZZ`、ICLR 2026 Poster；Atlas ID/年份仍为 `hal-2025`/2025。
+- 优先阅读 Appendix A2 与 Figure A1 来确定系统边界：benchmark task/evaluator -> `run(input, **kwargs) -> dict` agent -> local/Docker/Azure runner -> Weave model/tool-call graph -> benchmark outcome 与 cost/latency aggregation -> 加密 run archive。
+- 三个规模必须分开：论文报告 21,730 个 rollout 与超过 2.5B token；project 后来显示 26,597 个 rollout；HF 当前含 380 个加密 run archive、总计 113,072,877,091 bytes。archive 不是 rollout，也没有 frozen mapping 连接这些 snapshot。
+- 优先检查 Appendix A5 与 A7：TAU-bench Few Shot scaffold 泄漏 test example，约 1,000 美元的 run 被删除；Docent/GPT-5 Medium flag 只有选定 positive 的 precision 检查，没有报告 false-negative analysis 或 causal replay。
+- 复用仅限 evaluation/audit。任何 training 或 redistribution 前，都必须补齐 paper-snapshot manifest、schema/data card、code 与 trace license、第三方权利审查、privacy/redaction policy、完整 retention ledger、replay environment，并解释 Appendix A4 的 186 个 run 与 Appendix A10 合计 184 个 run 的差异。

@@ -1,0 +1,17 @@
+{
+  "title": "AgentRM: Enhancing Agent Generalization with Reward Modeling",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.945/",
+    "data": "https://github.com/thunlp/AgentRM"
+  },
+  "review_note": "已按 ACL 2025 原文完成双语精读卡片；审计过程奖励跨环境迁移与测试时搜索边界。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "纳入正式池：以公开代码和受控九任务比较检验过程奖励的跨任务迁移，并明确环境奖励与覆盖范围边界。",
+    "updated_at": "2026-07-24T12:00:00Z"
+  },
+  "updated_at": "2026-07-24T12:00:00Z"
+}

@@ -1,0 +1,7 @@
+最接近的基线OSWorld、WindowsAgentArena和AndroidWorld已经建立交互式桌面/移动环境、截图/action loop和可执行任务检查。macOSWorld改变的是评测对象：把macOS本身作为substrate，覆盖30个应用（其中28个为macOS专属），并把任务语言翻译与对应的本地化OS/应用snapshot配对，而不是始终使用一个英文界面。
+
+第二项具体变化是在同一实时loop中嵌入安全任务对象。从主集合抽取的29项任务各配一段独特的人工欺骗性对话。环境记录智能体选择任务一致的`gold`响应、服从distracting instruction，还是未处理该事件。这在终态任务成功之外形成独立安全反馈通道，也说明“未处理”必须保留为第三种状态，不能并入安全行为。
+
+对推理数据研究而言，方向信号来自可检查的完整链条：指令provenance与语言AMI，经过准备、截图/action，到终态脚本和安全标签。它可用于分析监督附着在完整episode的哪个位置，以及公开可执行反馈如何同时增强审计性并带来gaming风险。202项任务规模、AWS整合和六智能体实验属于工程与评测广度，并非逐记录正确性的独立证据。
+
+本文并未新提出VNC控制、AWS Mac硬件、AppleScript、截图观察、API模型prompting、GPT-4o翻译、二值success rate或终态grading。复用前仍需检查固定的task/AMI/app bundle、翻译provenance、版本漂移下的evaluator行为、split与重叠政策、成功/失败rollout的完整保留、decontamination及资产级权利。

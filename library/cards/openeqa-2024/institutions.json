@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Fundamental AI Research (FAIR), Meta",
+    "Carnegie Mellon University",
+    "Georgia Institute of Technology",
+    "MIT"
+  ],
+  "has_more": true,
+  "no_institution": false,
+  "updated_at": "2026-07-16T00:00:00Z",
+  "source_urls": [
+    "https://open-eqa.github.io/",
+    "https://github.com/facebookresearch/open-eqa",
+    "https://ai.meta.com/blog/openeqa-embodied-question-answering-robotics-ar-glasses/"
+  ],
+  "verification_note": "Official project page verifies title, authors, FAIR Meta note, CVPR 2024 citation, 1600+ questions, 180+ environments, EM-EQA/A-EQA settings, code/benchmark links, and LLM-Match description."
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AppAgent 将多模态智能体作为手机用户，通过演示和探索学习操作。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "CHI 2025 / arXiv 的 smartphone-agent paper",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Chi Zhang 等（Tencent）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T10:19:46Z"
+}

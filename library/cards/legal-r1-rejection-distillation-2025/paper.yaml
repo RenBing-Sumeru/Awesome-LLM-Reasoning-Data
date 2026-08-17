@@ -1,0 +1,158 @@
+id: legal-r1-rejection-distillation-2025
+title: 'Evaluating Test-Time Scaling LLMs for Legal Reasoning: OpenAI o1, DeepSeek-R1, and Beyond'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Yinghao Hu
+- Yaoyao Yu
+- Leilei Gan
+- Bin Wei
+- Kun Kuang
+- Fei Wu
+source_role:
+- construction_recipe
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- legal_reasoning
+- chinese_law
+- us_law
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.742/
+  arxiv: https://arxiv.org/abs/2503.16040
+  project: https://github.com/YinghaoHu/Legal-R1-14B
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.742
+  venue: https://aclanthology.org/2025.findings-emnlp.742/
+  acl: https://aclanthology.org/2025.findings-emnlp.742/
+  bibtex: https://aclanthology.org/2025.findings-emnlp.742.bib
+data_object:
+  prompt_source: Chinese inputs cover legal calculation, legal multi-hop reasoning, identifying applicable legal provisions,
+    legal judgment prediction, and multi-defendant legal judgment prediction. U.S. inputs come from 143 LegalBench tasks after
+    excluding the seven English evaluation tasks listed in Table 9. Exact Chinese source dataset revisions, per-task counts,
+    collection dates, and an item manifest are not disclosed.
+  trace_author: DeepSeek-R1, reported as the 2025-01 version, generates candidate legal reasoning paths and responses. The
+    exact checkpoint, API or serving configuration, prompts at record level, and decoding settings are unknown.
+  answer_format: The construction formalism begins with a task instruction, question, and ground-truth answer and retains
+    the teacher's reasoning path when its response matches that answer. A retained record is described conceptually as instruction,
+    question, generated reasoning process, and ground-truth answer. A serialized schema, chat template, language and jurisdiction
+    fields, effective-law date, citations, and answer-normalization fields are not published.
+  process_fields:
+  - task_instruction
+  - question
+  - ground_truth_answer
+  - teacher_reasoning_path
+  - teacher_response
+  - answer_match_decision
+  - attempt_index_up_to_three
+  - retained_or_discarded
+  environment_or_substrate: Offline teacher generation and answer-based filtering over static Chinese and U.S. legal tasks,
+    followed by supervised fine-tuning; there is no interactive legal environment or tool-grounded execution loop.
+  verifier_or_reward: During construction, a task-specific comparison checks each teacher response against the source ground-truth
+    answer. Up to three attempts are allowed and a matched response admits its associated reasoning path. The paper does not
+    disclose the exact parsers, normalization, numerical tolerances, label mappings, or semantic-equivalence rules across
+    heterogeneous tasks. Authors also report random human checks of reasoning, cited legal articles, and professional language,
+    without sample rates or adjudication details.
+  terminal_predicate: Retain a candidate when its final response matches the ground-truth answer; otherwise retry until at
+    most three attempts have been made, then discard the example if every attempt fails. Whether generation stops at the first
+    match and how multiple successful attempts are handled are unknown.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-14B, reported as the 2025-01 version.
+  teacher: DeepSeek-R1, reported as the 2025-01 version; exact checkpoint hash, endpoint, top-level instruction text, and
+    serving revision are unknown.
+  generator: The teacher is prompted with legal terminology dictionaries and structured task templates to produce reasoning
+    and an answer for each sourced legal input.
+  filtering_rule: Compare the generated response with the source answer. Retain the generated reasoning path only on a match;
+    permit at most three attempts and discard an example after three failures. Exact equality functions and per-task acceptance
+    yields are unknown.
+  sampling_protocol: Apply the rejection-distillation loop to five reported Chinese task families and 143 LegalBench tasks,
+    while reserving LRC, CPC, NYSJE, Sara_N, Sara_E, Scalr, and LAR for English evaluation. Temperature, top-p, maximum generation
+    length, stop conditions, random seeds, concurrency, and retry-level logs are unknown.
+  rollout_count: 3
+  temperature: unknown
+  inference_budget: At most three DeepSeek-R1 generations per sourced input are reported. Total attempted generations, token
+    consumption, per-task acceptance rates, and compute cost are unknown; the paper reports 96,533 retained records across
+    eight tasks.
+  optimizer_or_scaffold: Progressive SFT first trains DeepSeek-R1-Distill-Qwen-14B on legal judgment prediction data to obtain
+    an intermediate Mcore, then trains on the remaining Chinese and English legal tasks. Reported settings are eight NVIDIA
+    A800 GPUs, learning rate 1e-5, cutoff length 8192, bfloat16, and three epochs. Optimizer, batch size, scheduler, stage-specific
+    counts, checkpoint selection, and seeds are unknown.
+audit:
+  source_mixture: The paper reports five Chinese legal task families and 143 U.S. LegalBench tasks, but does not provide exact
+    Chinese source revisions, per-source licenses, per-task retained counts, or a mapping that reconciles these sources with
+    the statement that 96,533 records span eight tasks.
+  split: 'Seven English evaluation tasks are excluded from LegalBench training: LRC, CPC, NYSJE, Sara_N, Sara_E, Scalr, and
+    LAR. Item-level train, development, and test manifests, Chinese split rules, and teacher-generation partitions are unavailable.'
+  decontamination: The English task-level exclusion is documented, but no Chinese train-test overlap manifest or broader exact,
+    near-duplicate, semantic, or teacher-pretraining contamination audit is reported.
+  license: The ACL Anthology paper is distributed under CC BY 4.0. The linked GitHub project is public but empty and exposes
+    no repository license, data files, code, model files, or releases. Rights for the source datasets, generated traces, and
+    model derivatives therefore cannot be established from the verified artifacts.
+  lineage: Source task -> instruction and question with gold answer -> up to three DeepSeek-R1 attempts -> response-to-gold
+    comparison -> retained reasoning path or discard -> first-stage legal judgment SFT -> remaining bilingual-task SFT. Record-level
+    source IDs, law versions, teacher attempt logs, rejected outputs, verifier decisions, audit decisions, and model-ready
+    manifests are unavailable.
+  known_failure_modes:
+  - A correct final answer can admit legally invalid, fabricated, outdated, or irrelevant reasoning because construction verification
+    is answer-level.
+  - Discarding all examples that the teacher misses within three attempts selects for teacher-solvable inputs and hides rejected-case
+    difficulty.
+  - Unspecified task-specific comparison rules can create false accepts or false rejects across labels, calculations, and
+    free-form answers.
+  - Missing jurisdiction and effective-date fields make temporal or cross-jurisdiction legal confusion difficult to detect.
+  - Human quality checks lack sample rates, rubrics, agreement, adjudication, and item-level decisions.
+  - The paper's error analysis still finds fabricated content, article misidentification, omissions, outdated references,
+    and citation factual errors.
+  - Reported benchmark gains do not validate the correctness, provenance, or licensing of the training records.
+  - The claimed release cannot be independently audited because the verified project repository is empty.
+  citation_status: verified
+  confidence: high
+  notes: The ACL publication, arXiv record, DOI, authorship, construction description, training setup, evaluation tables,
+    appendix prompts, and empty project repository are verified. No reusable data, model, code, schema, rejected outputs,
+    or release manifest was available at verification time.
+inclusion_reason: Provides a concrete answer-matched rejection-distillation recipe for bilingual legal reasoning and a useful
+  case where claimed release availability diverges from the independently auditable artifact state.
+related: []
+tags:
+- legal-r1
+- rejection-distillation
+- legal-reasoning
+- deepseek-r1
+- progressive-sft
+- legalbench
+- release-audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Legal-R1 retains legal reasoning traces whose answers match gold labels within up to three DeepSeek-R1 attempts,
+  reporting 96,533 bilingual SFT records while the verified official repository remains empty.
+why_it_matters: The paper makes its rejection-distillation and staged-training logic inspectable, while exposing the answer-level
+  verifier, lineage, legal-validity, licensing, and release gaps that must be resolved before the data can be audited or reused.
+card: null
+needs:
+- 'needs_data: release the 96,533 accepted records and the rejected candidates with immutable manifests'
+- 'needs_metadata: disclose source revisions, per-task counts, schemas, law versions, prompts, decoding, parsers, yields,
+  and generation logs'
+- 'needs_code: release construction, answer-matching, filtering, audit, and progressive-SFT implementations'
+- 'needs_license: provide source-by-source rights and explicit terms for generated traces and model artifacts'
+- 'needs_audit: report false-accept rates, human-audit sampling and agreement, contamination tests, and time-aware legal validation'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official paper and project URL are verified, but the GitHub repository is empty and has no releases or license;
+    no data, model, or code artifact could be verified.

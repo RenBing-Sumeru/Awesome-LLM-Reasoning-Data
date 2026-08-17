@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FEVER 把 185,445 条 factual claims 绑定到 Wikipedia 证据句和三分类标签，是证据约束 fact verification 的经典 benchmark。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NAACL-HLT 2018 / arXiv 的 fact-verification benchmark",
+  "best_for_ch": "需要补齐基础 benchmark 坐标、评测契约、contamination 和 scorer 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "James Thorne 等（University of Sheffield, Amazon）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

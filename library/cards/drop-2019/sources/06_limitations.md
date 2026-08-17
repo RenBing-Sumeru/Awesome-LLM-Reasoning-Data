@@ -1,0 +1,3 @@
+Correctness is only answer-level: a model can receive credit for the right answer with the wrong reasoning, and a semantically equivalent answer can be penalized if normalization or alias handling misses it. The benchmark does not supply executable programs, formal derivations, or checked reasoning traces.
+
+The official source record has version-sensitive scale and score numbers between the ACL page and arXiv v2. Public examples are old enough to be likely training-contaminated for modern LLMs. Numeric and date scoring depends on the evaluator implementation, and hidden/test split access or leaderboard policy must be checked before using DROP as a current capability claim.

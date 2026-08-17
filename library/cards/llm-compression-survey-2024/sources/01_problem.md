@@ -1,0 +1,1 @@
+Large language models can be too large and computationally demanding for resource-limited deployment. This TACL survey asks how compression methods reduce those costs while preserving enough task quality for a chosen practical use.

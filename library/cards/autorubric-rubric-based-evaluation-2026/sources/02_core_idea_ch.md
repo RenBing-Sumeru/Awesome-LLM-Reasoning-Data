@@ -1,0 +1,1 @@
+Autorubric 支持 binary、ordinal 和 nominal criterion，可配置权重、few-shot 校准、选项随机化、长度惩罚以及 majority、weighted、unanimous、any-vote 等聚合。作者构建 CHARM-100：100 个单轮聊天样本、六类标准与人工真值，并在 RiceChem、ResearcherBench 等任务验证。项目页提供框架、示例与可复现实验入口。

@@ -1,0 +1,1 @@
+Instead of treating every factual error alike, the paper makes the source of conflict a first-class comparison unit. Its contribution is a common vocabulary spanning contextual and parametric knowledge, not a new model or dataset.

@@ -1,0 +1,3 @@
+The contribution is to provide scientific coding benchmark with subproblems; exact count and release need audit. for scientific-coding, code-generation under a reusable evaluation surface. The core mechanism is the pairing of task inputs and model outputs with the following feedback contract: unit tests or official scientific-code judge.
+
+The data object or environment is Python scientific coding environment. The closest comparisons are code-generation and executable-program benchmarks with unit-test or judge feedback. The direction label is benchmarks_evaluation_surfaces with a programmatic feedback contract. The main thing to preserve is not only the headline score, but the task object, evaluator, split/version, and artifact lineage.

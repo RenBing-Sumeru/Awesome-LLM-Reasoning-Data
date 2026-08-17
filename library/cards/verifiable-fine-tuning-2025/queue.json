@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "缺失数据和pipeline",
+    "updated_at": "2026-07-14T05:53:43Z"
+  },
+  "updated_at": "2026-07-14T05:53:43Z"
+}

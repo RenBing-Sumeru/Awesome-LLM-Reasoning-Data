@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "Tsinghua University",
+    "Zhipu AI",
+    "University of California, Berkeley",
+    "California Institute of Technology"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2502.13897",
+    "https://arxiv.org/e-print/2502.13897",
+    "https://github.com/THUDM/DataSciBench",
+    "https://huggingface.co/datasets/zd21/DataSciBench"
+  ],
+  "verification_note": "Official arXiv source verifies Tsinghua, Zhipu AI, UC Berkeley, and Caltech affiliations; official GitHub and Hugging Face sources verify code/data artifacts. No conference venue was verified."
+}

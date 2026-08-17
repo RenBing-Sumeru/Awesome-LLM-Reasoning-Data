@@ -1,0 +1,142 @@
+id: kimi-k2-open-agentic-intelligence-2025
+title: 'Kimi K2: Open Agentic Intelligence'
+year: 2025
+venue: arXiv preprint
+authors:
+- Kimi Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+- pairwise_preference
+domains:
+- agentic_tool_use
+- software_engineering
+- coding
+- mathematics
+- reasoning
+- safety
+- general
+training_use:
+- sft
+- rlvr
+- agent_training
+- preference_learning
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.20534
+  arxiv: https://arxiv.org/abs/2507.20534
+  code: https://github.com/MoonshotAI/Kimi-K2
+  data: null
+  project: https://moonshotai.github.io/Kimi-K2/
+  huggingface: https://huggingface.co/moonshotai/Kimi-K2-Instruct
+  doi: https://doi.org/10.48550/arXiv.2507.20534
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 3,000+ real MCP tools from GitHub plus 20,000+ synthetic tools seed agents, tasks, rubrics, and trajectories;
+    RL additionally uses expert, internal, open, synthetic, GitHub, and preference sources whose records and rights are unknown.
+  trace_author: K1.5 and in-house experts generate candidates; personas, agents, and a tool simulator generate trajectories;
+    exact checkpoints, prompts, decoding, and human protocol unknown.
+  answer_format: Tool specifications, multi-turn messages/calls/results, task rubrics, environment states/tests, judge outcomes/rewards,
+    and critic rankings; no released record schema.
+  process_fields:
+  - tool_spec
+  - agent_prompt
+  - task
+  - task_rubric
+  - trajectory
+  - tool_call
+  - tool_result
+  - environment_state
+  - test
+  - judge_verdict
+  - scalar_reward
+  - pairwise_ranking
+  environment_or_substrate: Stateful simulator plus targeted real coding/SWE sandboxes; Kubernetes SWE sandbox reportedly
+    supports 10,000+ instances but is unreleased.
+  verifier_or_reward: Rubric judge; executable tests; deterministic checks; LLM, hack, faithfulness, and safety judges; self-critic
+    pairwise rubrics. Implementations, calibration, and thresholds unknown.
+  terminal_predicate: Rubric success, test success, or task-specific RL selection; thresholds, yields, and error rates unknown.
+recipe_metadata:
+  base_model: Kimi K2 1.04T MoE with 32B activated parameters; per-stage checkpoints incomplete.
+  teacher: K1.5 and in-house specialists; critic derived from preference data and verifiable on-policy signals; exact mappings
+    unknown.
+  generator: Tool, agent, task, persona, and trajectory synthesis with expert candidates and simulation; prompts, models,
+    and volumes unknown.
+  filtering_rule: LLM rubric success, pass@k moderate-difficulty selection, deterministic checks, judges, and hack detection;
+    full rubrics, thresholds, and yields unavailable.
+  sampling_protocol: Agent/tool/task sampling and trajectory simulation are stated but unquantified; some temperature decay
+    is mentioned without values.
+  rollout_count: null
+  temperature: Temperature decay is mentioned for selected tasks but values and schedules are unknown.
+  inference_budget: Task-type token budgets with truncation and penalties; values unknown.
+  optimizer_or_scaffold: Muon, joint RL, PTX auxiliary loss, budget control, and critic refinement; exact objectives and configurations
+    unknown.
+audit:
+  source_mixture: Aggregates include 3,000+ real MCP tools, 20,000+ synthetic tools, and mixed agent/RL sources, but no manifests,
+    provenance, weights, or rights.
+  split: unknown
+  decontamination: unknown
+  license: Code and weights Modified MIT; data, tool, GitHub, test, preference, and synthetic rights unknown.
+  lineage: Stage-level tool-to-agent/task/trajectory-to-filter/SFT and environment-to-RL/critic lineage is disclosed; item-level
+    lineage unavailable.
+  known_failure_modes:
+  - Source, license, and version data are undisclosed.
+  - Judge, rubric, and reward-hacking calibration audits are unpublished.
+  - The report acknowledges simulator-fidelity limits.
+  - Trajectory, environment, split, and decontamination artifacts are unreleased.
+  - The report identifies excessive tokens, truncation, and incomplete tool calls.
+  citation_status: verified
+  confidence: medium
+  notes: Track 12 disclosure ledger, not a Track 8 scaling entry.
+inclusion_reason: Frontier agentic report with concrete MCP, rubric-trajectory, environment, RLVR, and self-critique disclosures
+  but unresolved artifacts and audit boundaries.
+related: []
+tags:
+- kimi-k2
+- frontier-report
+- data-disclosure-ledger
+- mcp
+- agentic-trajectories
+- execution-sandbox
+- rlvr
+- self-critique
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Kimi K2 reports 3,000+ real MCP and 20,000+ synthetic tools feeding rubric-filtered trajectories, execution
+  environments, RLVR, and self-critique without releasing data, verifier implementation, or audit artifacts.
+why_it_matters: Gives unusually concrete interfaces for agent-data and feedback construction while separating public weights
+  from source provenance, calibration, rights, and reproducibility.
+card: null
+needs:
+- 'needs_data: tool/task/trajectory/environment/RL/preference artifacts and lineage'
+- 'needs_metadata: sources/teachers/prompts/rubrics/counts/yields/rollouts'
+- 'needs_verifier: environments/judges/calibration/error/reward-hacking audit'
+- 'needs_license: source and synthetic-output rights'
+- 'needs_audit: splits/decontamination/simulator-to-real evaluation'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official paper, repository, project, and model endpoints checked; data, environment, full verifier, and audit artifacts
+    unavailable.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AIME 是高难度竞赛数学评测源，题量不大但区分度高，常用来观察 frontier reasoning 的上限。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Mathematical Association of America 等（Mathematical Association of America）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T08:03:42Z"
+}

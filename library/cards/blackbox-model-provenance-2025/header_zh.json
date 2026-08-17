@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以训练样本随机顺序的相关性，为黑盒衍生模型或文本提供可量化来源证据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "黑盒模型来源与训练谱系统计审计论文",
+  "best_for_ch": "需要审计模型衍生关系、训练谱系与来源证据的研究者。",
+  "confidence_ch": "高：已据 NeurIPS 2025 原文核对统计检验、实验结果和限制。",
+  "authors_ch": "Rohith Kuditipudi, Jing Huang, Sally Zhu, Diyi Yang, Christopher Potts, Percy Liang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "224 个企业 API 任务用执行前后数据库状态差分自动判分。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Hubert M. Pysklo, Artem Zhuravel, Patrick D. Watson",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

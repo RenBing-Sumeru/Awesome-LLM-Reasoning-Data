@@ -1,0 +1,18 @@
+{
+  "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2310.11511",
+    "venue": "https://openreview.net/forum?id=hSyW5go0v8",
+    "data": "https://huggingface.co/datasets/selfrag/selfrag_train_data"
+  },
+  "review_note": "L4 材料已准备，等待人工决定。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:41:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "rag sft 数据",
+    "updated_at": "2026-07-14T13:41:58Z"
+  }
+}

@@ -1,0 +1,135 @@
+id: tree-rpo-2025
+title: 'TreeRPO: Tree Relative Policy Optimization'
+year: 2025
+venue: arXiv preprint
+authors:
+- Zhicheng Yang
+- Zhijiang Guo
+- Yinya Huang
+- Xiaodan Liang
+- Yiwei Wang
+- Jing Tang
+source_role:
+- construction_recipe
+- process_supervision
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+- trajectory_value
+domains:
+- mathematics
+- reasoning
+training_use:
+- rlvr
+- process_supervision
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2506.05183
+  arxiv: https://arxiv.org/abs/2506.05183
+  code: https://github.com/yangzhch6/TreeRPO
+  data: https://github.com/yangzhch6/TreeRPO/tree/master/data_qwen25_math_cot
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.05183
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.05183
+data_object:
+  prompt_source: The paper reports using the 7.5k-sample MATH training split. The author repository exposes a data_qwen25_math_cot
+    directory with train and test subdirectories, but an item-level source manifest is not established.
+  trace_author: The policy model generates an N-ary sampled reasoning tree during RL training; released raw generated training
+    trees are not established.
+  answer_format: Token-length-segmented reasoning-tree branches with leaf verifiable rewards, back-propagated intermediate
+    step values, sibling-group advantages, and final answers.
+  process_fields:
+  - prompt
+  - tree_node_or_step
+  - candidate_continuation
+  - leaf_verifiable_reward
+  - back_propagated_step_reward
+  - sibling_group
+  - group_advantage
+  - pruning_decision
+  - final_answer
+  environment_or_substrate: An inference-time N-ary tree sampler used inside an RL training pipeline. Each branch stops on
+    a stop token or the maximum depth; all leaf paths are evaluated and rewards are propagated upward.
+  verifier_or_reward: A verifiable reward function evaluates complete leaf paths. TreeRPO does not use a separate process
+    reward model; it estimates step values from descendant leaf rewards.
+  terminal_predicate: A branch terminates on a stop token or when the maximum tree depth is reached.
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B
+  teacher: unknown
+  generator: For each prompt, TreeRPO samples an N-ary tree, evaluates leaf trajectories with a verifiable reward, back-propagates
+    rewards to intermediate nodes, and turns children of a common parent into step-level relative-reward groups for policy
+    optimization.
+  filtering_rule: A sibling group is retained only when its reward distribution passes the stated variance-threshold criterion.
+    The reported default pruning coefficient is 0.1.
+  sampling_protocol: The reported RL setting uses temperature 0.6 and eight rollouts per question. TreeRPO uses maximum prompt
+    length 512, maximum step length 384, maximum depth 3, and branching factor 8.
+  rollout_count: 8 responses per question in the reported RL setting
+  temperature: '0.6'
+  inference_budget: Maximum prompt length 512, maximum step length 384, maximum tree depth 3, and branching factor 8 in the
+    reported setting.
+  optimizer_or_scaffold: A GRPO-style clipped policy objective with a directly imposed KL penalty, trained from tree-derived
+    group-relative advantages.
+audit:
+  source_mixture: Reported training uses the MATH training split (7.5k samples); reported evaluation uses MATH-500, OlympiadBench,
+    MinervaMath, and AIME24. The repository contains train/test parquet directories, but a full item-level provenance manifest
+    is not established.
+  split: The paper identifies MATH training data and four evaluation benchmarks. The repository lists train and test directories,
+    with test parquet files for AIME, AMC, MATH, Minerva, and OlympiadBench; exact row-level splits are not established.
+  decontamination: unknown
+  license: The repository publishes an MIT License. Whether that license independently resolves rights or upstream terms for
+    every included parquet data item is unknown.
+  lineage: MATH training prompt -> policy-generated token-segmented N-ary reasoning tree -> verifiable leaf reward -> bottom-up
+    expected step reward -> sibling-group advantage -> variance-based group pruning -> TreeRPO RL update. Raw per-instance
+    tree traces are not established as released.
+  known_failure_modes:
+  - Step segmentation is based on a fixed token length; the authors identify more precise step segmentation as future work.
+  - The authors state that tree sampling is time-consuming and their implementation is not optimized for KV-cache efficiency.
+  - Reported experiments are limited to the Qwen2.5-Math 1.5B model; larger-model scaling remains unreported.
+  - Released raw tree traces and an item-level data provenance/decontamination manifest are not established.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv paper and author-linked repository were read. Code, a repository data directory, and an MIT repository
+    license were verified; undisclosed trace and provenance facts remain unknown.
+inclusion_reason: TreeRPO is directly relevant to Track 5 because it constructs tree-sampled rollout traces and converts verifiable
+  leaf outcomes into dense, step-level training signals without a separate PRM.
+related: []
+tags:
+- tree-sampling
+- rlvr
+- process-reward
+- group-relative-optimization
+- rollout-traces
+- mathematical-reasoning
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: An RLVR method that tree-samples reasoning rollouts, back-propagates verifiable leaf rewards, and optimizes
+  sibling step groups with dense relative advantages.
+why_it_matters: 'It makes a concrete test-time trace-to-training contract auditable: leaf correctness signals are transformed
+  into intermediate rewards and filtered sibling groups, while the lack of released raw trees limits independent trace analysis.'
+card: null
+needs:
+- needs_tree_trace_release
+- needs_item_level_data_manifest
+- needs_decontamination
+- needs_large_model_replication
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv record, author-linked code repository, repository data directory, and repository MIT license were
+    verified. Raw generated tree traces remain unverified.

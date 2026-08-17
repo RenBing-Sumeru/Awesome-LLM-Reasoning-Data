@@ -1,0 +1,3 @@
+Correctness is relative to TRAIL annotations and the framework's mapping from metric rationales to TRAIL categories. The paper itself notes annotation issues: inconsistent span localization, ambiguous category boundaries, and examples where annotation reasoning conflicts with marked-span evidence.
+
+Aggregation is another hidden assumption. The described default propagates any span-level failure upward, which can over-penalize minor local issues that do not affect task success. No official code or data release was found in the local metadata, so implementation details, prompts, and license terms remain reuse blockers unless disclosed elsewhere.

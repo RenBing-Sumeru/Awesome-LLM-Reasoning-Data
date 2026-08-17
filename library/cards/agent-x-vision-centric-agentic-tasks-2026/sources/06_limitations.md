@@ -1,0 +1,1 @@
+First, 828 tasks cannot cover all visual applications, video lengths, and tool combinations, producing high variance in narrow categories. Second, tool or web updates can make trajectories unreplayable. Third, human failure locations in long chains may be causally ambiguous; evaluation should preserve environment snapshots and distinguish root causes from downstream symptoms.

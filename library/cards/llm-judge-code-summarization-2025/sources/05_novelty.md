@@ -1,0 +1,1 @@
+Earlier code-judge work largely tests a single task or prompt. This study changes the comparison into a two-task audit with filtered executable or human reference signals, multiple model sizes, prompt variants, self-bias, and error analysis. The novelty is breadth of validation, not the idea of prompting an LLM to judge code.

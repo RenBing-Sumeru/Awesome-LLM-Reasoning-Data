@@ -1,0 +1,1 @@
+本卡已记录 BrowseComp-V3 的 Hugging Face 数据集链接，但 artifact 级复用仍需检查数据 revision、license、split、图像权利和 evaluator 实现。即使要求公开可搜索，网页证据仍会漂移。Process Score 取决于专家 sub-goals 的完整性和粒度，可能奖励未得到最终答案的部分进展。工具增强结果依赖专有网页服务、maximum reasoning mode、Serper/Jina 行为和 OmniSeeker 实现。论文不能被解读为模型已经具备稳健通用多模态浏览能力；模型 SR 仍明显低于人类。

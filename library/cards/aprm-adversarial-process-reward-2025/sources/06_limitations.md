@@ -1,0 +1,1 @@
+The validity oracle is heuristic, so it can mistake a subtle but valid reformulation for an error or miss an invalid derivation. Adversarial PPO also costs more than static-data training, and the theoretical policy-space guarantees do not ensure stable large neural-model training. The evaluation is centered on mathematical reasoning and the paper is still under review.

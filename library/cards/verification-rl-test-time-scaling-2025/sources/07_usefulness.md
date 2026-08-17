@@ -1,0 +1,1 @@
+Use this paper to justify evaluating verifier quality as part of a test-time scaling stack. It is especially relevant when choosing between collecting more polished traces and collecting cheaper rollout-correctness annotations.

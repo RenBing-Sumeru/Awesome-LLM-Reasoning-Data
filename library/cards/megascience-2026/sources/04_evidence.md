@@ -1,0 +1,3 @@
+Experiment 1: The paper trains Llama 3.1, Qwen 2.5, and Qwen 3 base families and reports consistent science-reasoning gains from the 1.25M mixture; the 650K textbook component spans seven disciplines.
+
+Experiment 2: The released artifact contains 1.25M science reasoning instances, including a 650K TextbookReasoning component from about 12.8K textbook questions; on 2026-07-27 the official Hub page exposed an actual record with fields question, generated answer, subject, reference answer, and source and reported 2872 downloads. Artifact use does not by itself validate the paper's causal claim.

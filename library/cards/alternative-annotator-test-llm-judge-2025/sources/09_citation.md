@@ -1,0 +1,1 @@
+Calderon, Nitay, Roi Reichart, and Rotem Dror. “The Alternative Annotator Test for LLM-as-a-Judge: How to Statistically Justify Replacing Human Annotators with LLMs.” In *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*, 2025. https://aclanthology.org/2025.acl-long.782/

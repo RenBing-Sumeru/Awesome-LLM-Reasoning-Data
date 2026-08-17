@@ -1,0 +1,106 @@
+id: claim-verification-llm-survey-2026
+title: 'Claim Verification in the Age of Large Language Models: A Survey'
+year: 2026
+venue: ACL 2026 Student Research Workshop
+authors:
+- Alphaeus Dmonte
+- Roland R Oruche
+- Marcos Zampieri
+- Prasad Calyam
+- Isabelle Augenstein
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- claim-verification
+- retrieval
+- factuality
+training_use:
+- evaluation
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-srw.2/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-srw.2
+  venue: https://aclanthology.org/2026.acl-srw.2/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-srw.2/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed English claim-verification datasets and claim queries.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A pipeline view covering retrieval, prompting, fine-tuning, and verification output.
+  process_fields:
+  - claim
+  - evidence-retrieval
+  - prompt
+  - model-output
+  - verification-label
+  environment_or_substrate: Automated claim verification with LLM-based frameworks and retrieval-augmented generation.
+  verifier_or_reward: The survey describes prior verification systems and does not introduce one common verifier.
+  terminal_predicate: Claim status depends on the evidence and task-specific label definition.
+recipe_metadata:
+  base_model: No single base model; literature survey.
+  teacher: Surveyed works use varied datasets, retrieval sources, and supervision.
+  generator: Literature synthesis and pipeline description.
+  filtering_rule: The official abstract names retrieval, prompting, fine-tuning, and public English datasets.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Describes prior frameworks rather than a new training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-srw.2/'
+  known_failure_modes:
+  - Retrieved evidence can be incomplete
+  - Prompts can alter verification behavior
+  - Dataset labels and evidence standards vary
+  citation_status: verified
+  confidence: high
+  notes: The official abstract describes a claim-verification pipeline and available English datasets.
+inclusion_reason: An ACL survey that explains the components readers must distinguish when evaluating LLM-based claim verification.
+related: []
+tags:
+- foundations-and-primers
+- claim-verification
+- acl-2026
+- survey
+why_it_matters: It separates evidence retrieval from the model's final decision, which prevents a single score from hiding
+  the cause of failure.
+one_line_summary: An ACL 2026 survey of LLM claim-verification pipelines, including retrieval, prompting, fine-tuning, and
+  English datasets.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers studying factuality, retrieval-augmented generation, and automated verification.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable evidence standards and evaluation protocols across datasets'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata
+  abstract: null
+  venue: null
+  pages: null
+  and DOI were reviewed.: null
+category_ids:
+- foundations_and_primers

@@ -1,0 +1,1 @@
+Chinese reward-model work lacks large, reliable preference data and a Chinese evaluation surface; English-centric synthetic resources may not represent real Chinese preferences. CHEEMS constructs a human-centered benchmark and preference dataset, then uses them to measure this reliability gap and train a Chinese reward model.

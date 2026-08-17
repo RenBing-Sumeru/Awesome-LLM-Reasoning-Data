@@ -1,0 +1,5 @@
+- "35项任务"指框架与Hard配置;Easy在移除8项零准确率任务后只含27项。
+- 发布行是提示加序列化verifier状态,不是教师示范,也不是每个提示用于训练的16个在线policy rollout。
+- 公开`reward_model`字段可能为空;官方指导依据`extra_info.game_data_str`和任务身份计算奖励。
+- 最终reward是二元格式结果乘以任务正确性;仓库参考对标签位置与数量的要求比论文文字摘要更严格。
+- DeepSeek R1与OpenAI-o3-mini用于校准难度上界而非生成回答轨迹,下界模型身份与完整设置仍为unknown;同时固定GitHub与Hugging Face hash,因为修复已经改变发布、Cipher生成器仍缺失、抽样Hard Campsite行暴露中文乱码,且表2至表3只是下游训练证据,不是数据质量证明。

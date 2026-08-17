@@ -1,0 +1,5 @@
+- 所有结论都应锚定 arXiv:2606.13608v2（2026 年 6 月 14 日）。不同标题的 ICML Position Paper 是相关官方材料，不是该标题已核验的 venue record。
+- 数据对象必须具体：delegator request 与 role/endpoint configuration -> judge task/data/environment -> A2A/MCP interaction -> response/artifact/final state -> metric、score 与 assessment-specific JSON report。
+- 应把 298-judge/467-subject 的 field-study snapshot 与 coding case 分开阅读；后者使用 731 个 SWE-Bench Pro、89 个 Terminal-Bench 2.0 和 1,222 个过滤后的 DevEval task，两者都不是已发布 trajectory corpus。
+- 复现必须调和 deprecated v1.2.6 SDK、较晚发布的论文与滚动更新的 tutorial/template/dashboard stack，并固定 commit、image、benchmark snapshot、model/API setting、timeout、output 与 failure retention。
+- 复用仅限 evaluation/audit：manuscript 是 CC BY-NC-ND 4.0，repository 与统一 trace/result 许可不清楚，benchmark score 也不能认证 data quality。

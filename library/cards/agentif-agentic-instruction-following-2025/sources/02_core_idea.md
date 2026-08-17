@@ -1,0 +1,1 @@
+AGENTIF contains 707 human-annotated instructions from fifty real agent applications, including forty open-source GitHub agents and ten industrial workflows. Instructions average about 1,723 words and reach 15,630 words, with 8,415 constraints in total and 11.9 per task on average. Constraints are checked by code, LLM, or hybrid verifiers, and bilingual fields are released.

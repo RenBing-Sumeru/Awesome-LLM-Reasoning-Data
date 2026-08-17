@@ -1,0 +1,5 @@
+- Treat Thinking and NoThinking as policy-controlled output modes, not human difficulty labels.
+- The frozen reference policy is sampled 16 times per problem; its pass-rate estimate is therefore sampling-dependent.
+- On-policy sampling forces a balanced mode mixture, while the feedback itself remains binary answer correctness.
+- Inspect source IDs, normalized answers, mode tokens, importance weights, and policy versions before reusing any rollout records.
+- Accuracy and response-length gains evaluate compute routing; they do not certify the reasoning traces or unreleased training data.

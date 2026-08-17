@@ -1,0 +1,1 @@
+已有基线多是最终成功率、普通 LLM-as-judge 打分，或不保证定位“第一个不可恢复错误”的失败标签。AgentRx 的变化是把对象从终局结果换成 step-indexed causal failure record，把反馈契约从单分数换成约束违规证据加 taxonomy-guided adjudication。它对 reasoning-data atlas 的方向信号在于：每条诊断应给出失败 step、证据和类别。并不新的部分包括 LLM judge、工具 schema 检查和 grounded theory coding。复用前要检查轨迹再分发权、Flash 数据是否私有、judge prompt 和模型版本是否固定，以及 9 类 taxonomy 是否覆盖目标 agent 域。

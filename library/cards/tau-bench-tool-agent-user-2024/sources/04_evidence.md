@@ -1,0 +1,3 @@
+The evidence is the released benchmark and the paper's finding that success falls sharply when an agent must satisfy a stateful policy over multiple turns. Instance-level evidence is not an answer string; it is the full transcript plus the final database state checked by reward code.
+
+The original scale, 115 retail tasks and 50 airline tasks, is small enough that versioning matters. Reported model scores are only comparable when the same domain files, user simulator, prompt format, tool implementations, and reward functions are used. The later repository warning that the original tasks are outdated is itself an evidence boundary: tau-bench remains important as a feedback-contract design, but paper-era scores should not be mixed with later tau2/tau3 task fixes.

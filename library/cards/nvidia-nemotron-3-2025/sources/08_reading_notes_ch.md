@@ -1,0 +1,5 @@
+- 将公开权重和软件与已发布、门控、私有第三方及 NVIDIA 内部训练材料分开记录。
+- 将开发者 recipe 视为开源子集的 reference implementation，而不是报告中专有数据结果可复现的证据。
+- 按任务族、环境版本、终止谓词、reward、rollout policy 和校准记录多环境 RL；其中大部分在此仍不完整。
+- 保留两种 Nano 数据规模陈述：表中为 141 个数据集和 10.648T token，正文为约 25T 训练 token。
+- 将其保留为 Track 12 披露账本，而不是 Track 8 可复用 RL recipe 分类。

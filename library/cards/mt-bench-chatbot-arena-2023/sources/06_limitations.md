@@ -1,0 +1,5 @@
+Correctness is only relative to a specified human-preference sample and judge configuration. A GPT-4 judgment that agrees with many humans is not a proof that the answer is factually correct, safe, or optimal; it is evidence about preference alignment under the tested prompts, model set, and task categories.
+
+MT-Bench is public and small, so contamination and overfitting are major risks for later model comparisons. Chatbot Arena is broader but depends on live user traffic, anonymous model exposure, vote filtering, bot or duplicate controls, and date/version snapshots. Arena votes are preferences from crowd users, not calibrated expert rubrics for every domain.
+
+The judge has known blind spots: position bias, verbosity bias, self-enhancement bias, vulnerability to distracting repetitive content, and limited mathematical reasoning. License is partly artifact-specific: the Hugging Face MT-Bench human judgment dataset is cc-by-4.0, but reuse of all related conversations, leaderboard data, model outputs, and dependencies should be checked at the artifact level.

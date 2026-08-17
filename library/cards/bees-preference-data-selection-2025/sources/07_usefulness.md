@@ -1,0 +1,1 @@
+This work is useful when a team has a large preference corpus, several imperfect scoring signals, and a limited DPO training budget. It supplies an auditable preprocessing policy: preserve a record only after recording the margin sources, their calibrated probabilities, the aggregate decision, and the source of each response pair.

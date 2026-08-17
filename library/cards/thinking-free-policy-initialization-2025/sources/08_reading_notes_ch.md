@@ -1,0 +1,5 @@
+- ThinkingFree 追加空 think block，不改变 ground-truth answer 或 reward。
+- 论文中的 TFPI 使用 DAPO、Polaris-53K、每题八条 rollout 和分阶段长度上限。
+- 官方仓库发布了代码、评测数据以及中间阶段/direct-RL checkpoint。
+- 原始 rollout 文本、被拒样本、reward log 和 dynamic-sampling 决策未证实完整。
+- token 更少和 benchmark 提升不是轨迹忠实性或数据质量证明。

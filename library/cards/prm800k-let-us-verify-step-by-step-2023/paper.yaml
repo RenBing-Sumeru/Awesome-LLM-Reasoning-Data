@@ -1,0 +1,122 @@
+id: prm800k-let-us-verify-step-by-step-2023
+title: Let's Verify Step by Step
+year: 2023
+venue: arXiv preprint / OpenAI publication
+authors:
+- Hunter Lightman
+- Vineet Kosaraju
+- Yura Burda
+- Harri Edwards
+- Bowen Baker
+- Teddy Lee
+- Jan Leike
+- John Schulman
+- Ilya Sutskever
+- Karl Cobbe
+source_role:
+- benchmark
+- verifier_reward
+- process_supervision
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+- scalar_reward
+domains:
+- math-process-supervision
+- judge-reward-meta-evaluation
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2305.20050
+  arxiv: https://arxiv.org/abs/2305.20050
+  doi: https://doi.org/10.48550/arXiv.2305.20050
+  code: https://github.com/openai/prm800k
+  data: https://github.com/openai/prm800k
+  project: https://openai.com/index/improving-mathematical-reasoning-with-process-supervision/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MATH problems and OpenAI PRM800K released process-supervision records
+  trace_author: OpenAI generator models produce step-by-step solutions; human annotators provide per-step ratings.
+  answer_format: JSONL records with problem text, ground truth, generated steps, candidate completions, human ratings, flags,
+    final answers, answer-grader results, split metadata, and optional PRM scores
+  process_fields:
+  - MATH problem and subject metadata
+  - generated solution steps
+  - per-step candidate completion
+  - human rating or flag
+  - chosen continuation
+  - final answer and answer-grader result
+  - split and data-version metadata
+  environment_or_substrate: MATH problem-solving traces with human process-supervision labels
+  verifier_or_reward: human step labels train or evaluate process reward models; final-answer grader supports outcome comparisons.
+  terminal_predicate: final-answer grader determines terminal correctness for outcome-supervision comparisons.
+recipe_metadata:
+  base_model: Not a fully reproducible public model-training recipe; the paper trains PRMs internally while this Card treats
+    the public release as data, reward, and evaluation surface.
+  teacher: Human annotators following OpenAI PRM800K annotation instructions.
+  generator: OpenAI-generated step-by-step solutions for MATH problems, with active learning used to target plausible mistakes.
+  filtering_rule: Use source-backed construction claims; pin label semantics, split, answer grader, Git LFS data version,
+    and whether released labels are used for training or evaluation.
+  sampling_protocol: Pin PRM800K commit, MATH split, generator provenance, solution sampling count, PRM scoring rule, answer
+    grader revision, and evaluation subset before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: process_reward_model_best_of_n_selection
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2305.20050;
+    https://arxiv.org/pdf/2305.20050; https://openai.com/index/improving-mathematical-reasoning-with-process-supervision/;
+    https://github.com/openai/prm800k'
+  split: Pin PRM800K data version, MATH split files, and the nonstandard representative MATH test subset before score reuse.
+  decontamination: Public PRM800K labels and generated reasoning traces can leak into future training data; evaluation use
+    requires split and training-data audits.
+  license: The official GitHub repository includes an MIT license; third-party MATH dataset terms still need separate review.
+  lineage: 'Primary lead: https://arxiv.org/abs/2305.20050'
+  known_failure_modes:
+  - Human step labels depend on annotation instructions and are not formal proof certificates.
+  - Scores can change with split choice, generator model, sampling count, answer grader, PRM scoring rule, or data version.
+  - Released labels can be used for training or evaluation, so contamination and protocol boundaries must be explicit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv, OpenAI publication page, and archived PRM800K repository verify authors, OpenAI affiliation, MIT repository
+    license, and released data/instructions/grading files. No official ICLR 2024 venue page was confirmed in this pass.
+inclusion_reason: Canonical process-supervision data source and old formal entry reset point.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- math-process-supervision
+one_line: PRM800K / Let us Verify Step by Step exposes human step labels for process rewards as an auditable evaluation surface.
+why_it_matters: Canonical process-supervision data source and old formal entry reset point.
+status: verified
+needs:
+- 'needs_audit: inspect split/version policy, evaluator implementation, contamination risk, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: PRM800K / Let us Verify Step by Step exposes human step labels for process rewards as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, OpenAI publication page, and archived PRM800K repository verify authors, OpenAI affiliation, and released
+    data/instructions/grading files. No official ICLR 2024 venue page was confirmed in this pass.
+category_ids:
+- benchmarks_evaluation_surfaces

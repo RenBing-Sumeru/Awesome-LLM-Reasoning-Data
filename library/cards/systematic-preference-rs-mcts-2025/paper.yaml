@@ -1,0 +1,203 @@
+id: systematic-preference-rs-mcts-2025
+title: A Systematic Examination of Preference Learning through the Lens of Instruction-Following
+year: 2025
+venue: NAACL 2025
+authors:
+- Joongwon Kim
+- Anirudh Goyal
+- Aston Zhang
+- Bo Xiong
+- Rui Hou
+- Melanie Kambadur
+- Dhruv Mahajan
+- Hannaneh Hajishirzi
+- Liang Tan
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- pairwise_preference
+domains:
+- instruction_following
+- constrained_generation
+training_use:
+- preference_learning
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.naacl-long.552/
+  arxiv: https://arxiv.org/abs/2412.15282
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.naacl-long.552
+  venue: https://aclanthology.org/2025.naacl-long.552/
+  openreview: null
+  acl: https://aclanthology.org/2025.naacl-long.552/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.naacl-long.552.bib
+data_object:
+  prompt_source: Seed instruction-following prompts such as IFEval are stripped of their original constraints with Llama-3.1-70B-Instruct.
+    The same model generates new unconstrained base prompts, which are deduplicated against seed and generated prompts with
+    all-mpnet-base-v2 embeddings before receiving sampled combinations of four, five, or six constraints.
+  trace_author: Llama-3.1-8B-Instruct generates candidate responses for rejection sampling and token-sequence MCTS. RS candidates
+    are independent full responses; MCTS candidates arise as sibling branches with a shared partial-response prefix and complete
+    rollouts sampled from each branch.
+  answer_format: Each preference record conceptually contains a synthetic constrained instruction plus chosen and rejected
+    full responses. The paper does not publish a machine-readable record schema or disclose whether constraint IDs, keyword
+    arguments, scores, shared-prefix boundaries, or MCTS statistics are stored with each pair.
+  process_fields:
+  - base instruction
+  - selected constraint IDs
+  - constraint keyword arguments
+  - natural-language constrained prompt
+  - candidate response
+  - per-constraint verifier outcomes
+  - aggregate correctness score
+  - chosen response
+  - rejected response
+  - shared prefix
+  - MCTS partial state
+  - MCTS action
+  - visit count
+  - Q-value
+  - rollout reward
+  environment_or_substrate: General-purpose instruction following under 23 code-verifiable structural, lexical, capitalization,
+    formatting, and ordering constraints. Prompt difficulty is controlled by composing k in {4,5,6} non-conflicting constraints.
+  verifier_or_reward: For final response quality and pair eligibility, a code verifier returns the fraction of prompt constraints
+    satisfied. MCTS expansion reward mixes averaged rollout verifier scores with the policy model's self-evaluation of non-programmatic
+    content using lambda=0.2; final pair extraction uses verifier scores only.
+  terminal_predicate: RS selects a chosen response with exact score c and a rejected response with exact score r. MCTS selects
+    sibling branches meeting the same correctness criteria and samples complete rollouts; the condition that ends MCTS traversal
+    is not specified beyond reaching a terminal node.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct is the response policy and DPO/SFT target model.
+  teacher: Llama-3.1-70B-Instruct removes seed constraints, generates new base prompts, produces context-dependent constraint
+    keyword arguments, and rewrites prompts with constraints in natural language. The 8B policy also supplies MCTS self-evaluation
+    scores.
+  generator: Generate unconstrained base prompts, remove semantic duplicates, sample a non-conflicting set of four to six
+    constraints and their keyword arguments, rewrite each prompt in natural language, then obtain scored candidate responses
+    with either independent rejection sampling or shared-prefix MCTS.
+  filtering_rule: Deduplicate base prompts using all-mpnet-base-v2 embeddings and dot-product similarity, but the threshold
+    is undisclosed. For preference mining, retain pairs whose chosen and rejected verifier scores equal requested c and r;
+    RS additionally requires non-overlapping responses, while MCTS uses sibling nodes and final verifier scores rather than
+    the blended search reward.
+  sampling_protocol: The exact table counts are 15,900 prompts for k=4, 15,739 for k=5, and 15,559 for k=6, totaling 47,198,
+    which the paper rounds to about 48K. RS generates N=64 independent responses per prompt at temperature 1.0. MCTS uses
+    maximum depth 5, four actions per expansion, four rollouts per action, c_puct=1.0, and lambda=0.2, then samples rollouts
+    from eligible sibling nodes.
+  rollout_count: 4
+  temperature: 1.0
+  inference_budget: RS uses 64 full generations per prompt in the main experiments; an ablation tests N in {4,8,16,32,64}
+    and reports saturation around 32. MCTS specifies depth 5, K=4 actions, M=4 rollouts, and repeated self-evaluation over
+    L generations, but the number of tree iterations, L, maximum action length, terminal condition, token limits, and total
+    compute are undisclosed.
+  optimizer_or_scaffold: DPO on Llama-3.1-8B-Instruct for one epoch, maximum sequence length 2,048, learning rate 5e-7 with
+    a linear scheduler, and four gradient-accumulation steps. The SFT comparison uses bf16 for three epochs, maximum sequence
+    length 2,048, learning rate 2e-6, linear scheduling, four accumulation steps, and total batch size 32. DPO batch size
+    and beta are not reported.
+audit:
+  source_mixture: Constraint-stripped seed instruction-following prompts, including IFEval as an example source, plus Llama-3.1-70B-Instruct-generated
+    base prompts. The exact seed datasets, source counts, revisions, few-shot examples, and per-record lineage are not disclosed.
+  split: 'The generated prompt pool contains 47,198 prompts: 15,900/15,739/15,559 for k=4/5/6. Evaluation uses IFEval plus
+    about 500 new prompts at each k in {4,5,6} generated with the paper''s pipeline but using IFEval constraints. The numeric
+    DPO training-pair size, unique-prompt count per configuration, and immutable split manifests are undisclosed.'
+  decontamination: Base prompts are semantically deduplicated with all-mpnet-base-v2, but the similarity threshold and retained/rejected
+    manifest are not reported. The paper deliberately uses its own training constraints and IFEval constraints for synthetic
+    evaluation, yet no broader benchmark contamination audit is provided.
+  license: The NAACL paper is CC BY 4.0. No official code or data release was confirmed, so there is no reusable artifact
+    license to audit; Llama, IFEval, any other seed datasets, and future generated-prompt or preference-pair releases retain
+    separate terms.
+  lineage: Seed prompt -> Llama-3.1-70B constraint removal -> base-prompt generation -> embedding deduplication -> non-conflicting
+    constraint/keyword sampling -> natural-language constrained prompt -> Llama-3.1-8B RS or MCTS candidates -> programmatic
+    constraint scores -> selected chosen/rejected pair -> DPO. This lineage is described at method level only; prompts, pairs,
+    trees, scores, rejects, and source identifiers were not found in an official release.
+  known_failure_modes:
+  - Constraint verifiers measure structural and lexical compliance rather than response usefulness, factuality, safety, or
+    semantic quality.
+  - MCTS partly relies on the policy's own content self-evaluation, which can be biased or poorly calibrated, even though
+    final pair eligibility uses the code verifier only.
+  - MCTS gives only marginal average gains over RS in the reported setting and is explicitly described as more complex and
+    expensive.
+  - Low-yield high-difficulty prompts can skew the available training distribution toward easier topics or model-compatible
+    constraint combinations.
+  - The comparison fixes training-pair and unique-prompt counts but does not disclose those numeric counts, making selection
+    pressure and effective sample efficiency hard to audit.
+  - The paper says 48K unique prompts, while Appendix Table 7 sums to 47,198; 48K should be treated as a rounded count, not
+    an exact release size.
+  - The semantic-deduplication threshold and reject list are undisclosed, so uniqueness cannot be independently reproduced.
+  - RS 'non-overlapping responses' is not operationally clarified, including whether responses may be reused across multiple
+    pairs.
+  - MCTS omits tree-iteration count, self-evaluation sample count L, action token limit, detailed terminal conditions, and
+    total compute.
+  - No official code, generated prompts, verifier implementation, preference pairs, tree logs, rejected responses, model checkpoints,
+    or immutable release manifest was confirmed.
+  - Experiments are limited to Llama-3.1-8B-Instruct and verifiable instruction-following constraints, so scaling and open-ended
+    preference conclusions remain uncertain.
+  citation_status: verified
+  confidence: medium
+  notes: Official NAACL publication and arXiv 2412.15282 were checked on 2026-07-22. The paper gives strong method-level evidence
+    but no official reusable artifacts were confirmed, and several selection, budget, and lineage details remain undisclosed.
+inclusion_reason: The paper offers a controlled recipe for synthesizing verifiable instruction-following prompts and mining
+  preference pairs with either independent rejection sampling or shared-prefix MCTS, directly testing how pair structure,
+  contrast, and prompt difficulty affect DPO.
+related: []
+tags:
+- preference-data
+- rejection-sampling
+- mcts
+- shared-prefix
+- response-contrast
+- instruction-following
+- verifiable-constraints
+- dpo
+- data-ablation
+- release-audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives
+one_line_summary: A 47,198-prompt synthetic constraint suite is used to compare independent RS pairs with shared-prefix MCTS
+  pairs and isolate the effects of pair contrast and prompt difficulty on DPO.
+why_it_matters: It converts preference-data design choices into controlled experimental variables, while the absence of released
+  prompts, pairs, verifiers, trees, and rejects demonstrates the gap between a documented recipe and an auditable open release.
+card: null
+needs:
+- 'needs_release: publish the 47,198 prompts, constraint ontology and keyword arguments, verifier code/tests, RS and MCTS
+  pairs, split manifests, and checkpoints'
+- 'needs_lineage: preserve seed source IDs, generator prompts, deduplication decisions, per-constraint scores, shared-prefix
+  boundaries, and pair-selection records'
+- 'needs_search_logs: release MCTS nodes, actions, visit counts, Q-values, rollout scores, self-evaluations, terminal reasons,
+  and failed trees'
+- 'needs_rejects: retain unselected RS responses, ineligible sibling pairs, malformed generations, low-yield prompts, and
+  stage-wise yield counts'
+- 'needs_budget: disclose MCTS tree iterations, self-evaluation L, action token limit, termination policy, API/GPU hours,
+  seeds, and end-to-end token counts'
+- 'needs_training_metadata: disclose DPO pair count, unique-prompt count, batch size, beta, optimizer details, hardware, seeds,
+  and checkpoint selection'
+- 'needs_deduplication: publish all-mpnet-base-v2 revision, similarity threshold, clustering rule, and rejected duplicate
+  manifest'
+- 'needs_license: declare licenses for any future code/data release and document all upstream seed and Llama terms'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Publication identity and paper claims are verified from ACL/arXiv; no official code, data, project, Hugging Face
+    artifact, tree logs, or reject retention was confirmed.

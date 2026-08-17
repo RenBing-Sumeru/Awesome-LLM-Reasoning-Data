@@ -1,0 +1,3 @@
+- Coverage is limited to QA, data-to-text, and summarization; creative writing and other long-context domains are untested. Evaluate a new domain rather than extrapolating the 81% agreement.
+- Labels depend on o3 and majority vote. Human agreement on sampled pairs is not an error-free ground truth; retain individual votes and audit disagreements.
+- Mixing with other preference datasets is not systematically optimized. Verify data availability, license, domain balance, and chat-performance trade-offs before production use.

@@ -1,0 +1,11 @@
+- Parser-correct final answers do not establish that intermediate reasoning is valid, necessary, faithful, or free of shortcut artifacts.
+- The shortest candidate can exploit formatting or answer extraction. The paper notes model-specific parsing adjustments for some MATH evaluation paths, so parser revision is part of the contract.
+- Questions with no correct generated path are excluded. Retention therefore depends on model capability and rollout budget and can shift the training distribution toward easier prompts.
+- Per-question selection preserves more coverage than global shortest selection, but still chooses from a finite candidate pool and always prefers token count once correctness passes.
+- FS-Self depends on GPT-4o ACCEPT/REJECT judgments, and FS-GPT4o examples receive manual filtering. Exact model revision, rater records, calibration, and disagreements are not released.
+- No complete candidate/selected/rejected trace corpus, immutable generation manifest, source-row mapping, or run-level seed log is verified.
+- Decontamination and generated-trace overlap analysis are unknown. Using original dataset splits does not by itself rule out model pretraining or prompt contamination.
+- The reported 30% reduction hides model/task variation and accounts for output tokens after fine-tuning, not the large training-time generation budget.
+- Generation dominates the paper's timing example and main experiments use about 1,000 H100 GPU-hours; deployment savings should be amortized against construction cost.
+- Scaling above 8B, non-mathematical tasks, multitask training, and advanced RL schemes remain unestablished. Incorrect test paths can also remain long because the training set contains only correct selected paths.
+

@@ -1,0 +1,4 @@
+- Read §3.1 for domain counts, synthetic teachers, tool simulation, translation, and safety filters.
+- Read §3.2 for the three SFT stages, IFEval rule reward, WorkBench on-policy DPO, HelpSteer3 GRPO, and checkpoint merging.
+- Read §4.3 for the exact pruning/KD token and sequence-length schedule and post-RL recovery.
+- Audit the official dataset’s per-item licenses and upstream Qwen/DeepSeek conditions before reuse.

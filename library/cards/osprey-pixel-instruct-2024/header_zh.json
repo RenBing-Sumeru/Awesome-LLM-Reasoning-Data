@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Osprey 发布 72.4 万条以任意像素掩码而非粗框为条件的视觉对话。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "训练能够围绕精确分割物体或部件进行解释的助手",
+  "confidence_ch": "高",
+  "authors_ch": "Yuqian Yuan, Wentong Li, Jian Liu, Dongqi Tang, Xinjie Luo, Chi Qin, Lei Zhang, Jianke Zhu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

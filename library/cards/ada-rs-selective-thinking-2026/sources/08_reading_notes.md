@@ -1,0 +1,5 @@
+- Separate the candidate-generation policy from the adaptive acceptance rule; the off-policy teacher identity is unknown.
+- Inspect correctness, reasoning-sentence count, solve-rate estimate, adaptive reward, and acceptance outcome as distinct fields.
+- Do not treat tool-call benchmark accuracy as evidence for provenance, licensing, trace validity, or environment replayability.
+- Reproduction requires the unreleased candidate groups, acceptance hyperparameters, environment implementation, and split manifest.
+- The paper's always-think ablation is a concrete warning that the auxiliary NLL term is part of the reported DPO recipe.

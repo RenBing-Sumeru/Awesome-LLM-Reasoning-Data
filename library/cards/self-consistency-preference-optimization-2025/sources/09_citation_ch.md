@@ -1,0 +1,1 @@
+Archiki Prasad、Weizhe Yuan、Richard Yuanzhe Pang、Jing Xu、Maryam Fazel-Zarandi、Mohit Bansal、Sainbayar Sukhbaatar、Jason E. Weston、Jane Yu。《Self-Consistency Preference Optimization》。Proceedings of the 42nd International Conference on Machine Learning，Proceedings of Machine Learning Research 267:49737–49751，2025。https://proceedings.mlr.press/v267/prasad25a.html。

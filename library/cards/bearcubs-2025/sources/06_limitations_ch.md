@@ -1,0 +1,10 @@
+- 公开发布完整性：BearCubs_20250310.json.zip 只有 111 条 question-only record。gold answer、text/multimodal label、URL、可行人工路径、模型输出、运行时间、outcome label 与完整 agent trajectory 均缺失，因此公开 artifact 不是 episode corpus。
+- 划分与 lineage：论文报告 56 个 text-based 和 55 个 multimodal item、65 个作者编写与 46 个 freelancer 编写条目，以及 108 个顶级 URL，但这些逐记录标签与 provenance field 都未公开，也没有定义 train/dev/test split。
+- 成功/失败保留：论文发布了 correct、wrong、uncertain/abstaining 和 no-answer/loop 的聚合计数，但完整成功路径、失败路径、loop、screenshot、output、timestamp、source label、retry 与 discarded run 均不可得。一个问题的三条示例不能构成有代表性的 corpus。
+- 回放：底层是通过 proprietary product interface 使用的可变公开网页。没有发布 browser image、HTML 或 screenshot snapshot、account/network state、CAPTCHA policy、reset fixture、action API、executable terminal checker 或 deterministic replay environment。
+- judge 可复现性：可选 autorater 需要受限 gold answer 和 model output，依赖一个有日期但外部托管的 GPT API，且没有 artifact license、dependency lock、retry/error contract、API snapshot 或 expected-output fixture。temperature 0 与 seed 1130 不能阻止 backend 或 model drift。
+- verifier 范围：final-answer entailment 不验证预期 source、modality 或 path。单一短答案任务排除了 unanswered、multiple-answer 与 long-form case，还可能惩罚有效替代表达或格式，同时掩盖 evidence quality。
+- 比较混杂：商业 agent revision、decoding setting、seed、tool budget、UI configuration 与 retry 都未固定。OpenAI Chat GPT Agent 产品获得 45 分钟而不是 15 分钟，系统又分别在 2/3 月、5 月和 7 月面对不同 web 与 product state 运行。
+- 污染与版本漂移：question 已公开，作者也承认未来 contamination risk。3 月日期的 question file、7 月网站/论文更新、1–129 之间缺 18 个编号，以及 Operator 24.3% 与 23.4% 的变化，都没有由 semantic version、changelog、replacement map、immutable manifest、official checksum、tag 或 repository commit 调和。
+- 权利：OpenReview 论文页显示 CC BY-NC-SA 4.0，但两个 ZIP 都没有 license。gold access 仅按 non-commercial research 逐案提供，并禁止 redistribution/open-sourcing。论文 license 不能转移给 question data、autorater code、web content、gold answer、model output 或 trajectory。
+- 人工与隐私审计：论文披露了 freelancer 报酬和部分多语言人类研究细节，但 consent、IRB 或 ethics review、demographic、总劳动量、被拒工作的报酬、privacy review，以及所捕获实时网页或 proprietary-agent content 的权利仍为 unknown。

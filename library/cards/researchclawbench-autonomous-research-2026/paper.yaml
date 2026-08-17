@@ -1,0 +1,110 @@
+id: researchclawbench-autonomous-research-2026
+title: 'ResearchClawBench: A Benchmark for End-to-End Autonomous Scientific Research'
+year: 2026
+venue: arXiv
+authors:
+- Wanghan Xu
+- Yuhao Zhou
+- Yifan Zhou
+- Qinglong Cao
+- Shuo Li
+- Jia Bu
+- Bo Liu
+- Yixin Chen
+- Xuming He
+- Xiangyu Zhao
+source_role:
+- benchmark
+- data_release
+- agent_environment
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- full_episode
+domains:
+- science
+- agent_workflows
+training_use:
+- evaluation
+- reward_modeling
+- agent_training
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.07591
+  arxiv: https://arxiv.org/abs/2606.07591
+  code: https://github.com/InternScience/ResearchClawBench
+  data: https://huggingface.co/datasets/InternScience/ResearchClawBench
+  project: https://internscience.github.io/ResearchClawBench-Home/
+  huggingface: https://huggingface.co/datasets/InternScience/ResearchClawBench
+  doi: https://doi.org/10.48550/arXiv.2606.07591
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real published scientific studies with related literature and raw data
+  trace_author: Domain experts assemble task packages and rubrics
+  answer_format: Task package, code, artifacts, report, rubric scores
+  process_fields:
+  - task
+  - literature
+  - data
+  - trajectory
+  - artifact
+  - report
+  - rubric
+  - score
+  environment_or_substrate: End-to-end autonomous scientific research
+  verifier_or_reward: Reference-Anchored Discovery Score via expert rubrics
+  terminal_predicate: Research output recovers or advances target-paper scientific artifacts
+recipe_metadata:
+  base_model: Autonomous agents and native LLMs
+  teacher: Scientific-domain experts
+  generator: Select papers, hide targets, package data and build rubrics
+  filtering_rule: Keep accessible high-value research tasks
+  sampling_protocol: 40 tasks across 10 scientific domains
+  rollout_count: null
+  temperature: null
+  inference_budget: Record task package, environment, tools, and judge setup
+  optimizer_or_scaffold: ResearchHarness
+audit:
+  source_mixture: Official arXiv, project, GitHub, and Hugging Face releases
+  split: 40 tasks across ten domains
+  decontamination: Target paper is hidden during evaluation
+  license: Consult official release pages
+  lineage: https://huggingface.co/datasets/InternScience/ResearchClawBench
+  known_failure_modes:
+  - A rubric score above 50 is not a validated scientific discovery.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked; full author list is available in the linked paper.
+inclusion_reason: ResearchClawBench evaluates research agents through hidden-paper re-discovery and expert artifacts.
+related: []
+tags:
+- science
+- agents
+- rubric
+- discovery
+one_line_summary: ResearchClawBench grades end-to-end scientific re-discovery from raw data using hidden-paper, expert-weighted
+  artifacts.
+why_it_matters: It evaluates a scientific workflow rather than isolated question answering or code generation.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official sources checked.
+category_ids:
+- judgment_rubric_domain_expert_data

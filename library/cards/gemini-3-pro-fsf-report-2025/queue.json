@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "gemini3pro报告，价值高",
+    "updated_at": "2026-07-19T13:44:55Z"
+  },
+  "updated_at": "2026-07-19T13:44:55Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

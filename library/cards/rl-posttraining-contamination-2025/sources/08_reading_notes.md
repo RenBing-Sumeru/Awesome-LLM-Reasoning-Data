@@ -1,0 +1,5 @@
+- Position: RL post-training needs a detector beyond likelihood-based contamination tests.
+- Lever: compare initial and self-critique token entropy trajectories for policy collapse.
+- Artifact: RL-MIA models the relevant membership-inference setting; code is released officially.
+- Evidence: up to 30 AUC points average and 55 points dual-contamination improvement are reported.
+- Decision: require logprobs and calibrate on pipeline-matched controls before claiming contamination.

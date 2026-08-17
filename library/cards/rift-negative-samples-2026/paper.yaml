@@ -1,0 +1,136 @@
+id: rift-negative-samples-2026
+title: 'RIFT: Repurposing Negative Samples via Reward-Informed Fine-Tuning'
+year: 2026
+venue: arXiv preprint
+authors:
+- Zehua Liu
+- Shuqi Liu
+- Tao Zhong
+- Mingxuan Yuan
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematical_reasoning
+- post_training
+training_use:
+- sft
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2601.09253
+  arxiv: https://arxiv.org/abs/2601.09253
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2601.09253
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Two off-policy buffers constructed from 3,000 randomly sampled MATH problems and 4,000 NuminaMath problems.
+  trace_author: The reported base model self-generates candidate responses for every source problem; no separate teacher is
+    used for the math-buffer construction.
+  answer_format: A mathematical problem, a model-generated candidate response/trajectory, final-answer correctness, and its
+    signed scalar reward.
+  process_fields:
+  - source problem
+  - self-generated candidate response or trajectory
+  - final-answer correctness
+  - positive or negative reward label
+  - signed scalar reward
+  environment_or_substrate: Offline self-generation and reward-informed fine-tuning on mathematical-reasoning problems.
+  verifier_or_reward: For the reported math buffers, final-answer correctness assigns a positive reward to correct candidates
+    and a negative reward to incorrect candidates; RIFT reweights learning with that signed scalar feedback.
+  terminal_predicate: The candidate final answer is correct for the source mathematical problem.
+recipe_metadata:
+  base_model: Reported mathematical experiments use Qwen2.5-Math-1.5B, Qwen2.5-Math-7B, Qwen3-1.7B (non-thinking mode), and
+    DeepSeek-R1-Distill-Qwen-1.5B.
+  teacher: null
+  generator: The base model samples candidate responses for each source problem.
+  filtering_rule: RIFT retains the complete signed-reward buffer; unlike rejection-sampling fine-tuning, it does not discard
+    negative-reward candidates or require explicit preference pairs.
+  sampling_protocol: For each source problem, sample 8 candidate responses; the paper reports a maximum candidate sequence
+    length of 4,096. Temperature is not recoverable from the reviewed HTML rendering.
+  rollout_count: 8
+  temperature: null
+  inference_budget: 'Maximum candidate response sequence length: 4,096 tokens.'
+  optimizer_or_scaffold: 'RIFT uses a stabilized signed-reward objective: log-likelihood for positive samples and a bounded
+    linear probability surrogate for negative samples. Reported optimization uses AdamW, cosine learning-rate scheduling with
+    5% warmup, global batch size 64, and three epochs.'
+audit:
+  source_mixture: MATH and NuminaMath prompts paired with self-generated candidate responses and answer-correctness-derived
+    positive/negative rewards. The paper reports 24,000 MATH-buffer candidates (3,000 problems x 8) and 32,000 NuminaMath-buffer
+    candidates (4,000 problems x 8) per reported base-model setting.
+  split: The paper reports randomly sampled source-problem counts and aggregate positive/negative candidate counts, but does
+    not provide a public row-level buffer, split manifest, or immutable revision in the official primary source reviewed.
+  decontamination: unknown
+  license: The arXiv manuscript is CC BY 4.0. License and redistribution terms for the constructed buffers and generated responses
+    are unknown because no official data release was identified.
+  lineage: MATH or NuminaMath problem -> eight base-model candidate responses -> final-answer correctness -> positive/negative
+    signed scalar reward -> complete mixed-reward buffer -> RIFT stabilized loss fine-tuning.
+  known_failure_modes:
+  - The quality of the training signal depends on the discriminative power of the reward source; the paper identifies reward
+    noise as a remaining concern.
+  - Evidence is primarily from objective mathematical reasoning; transfer to subjective or open-ended generation is explicitly
+    unresolved.
+  - Answer-level rewards cannot identify partially correct steps in a long failed trajectory.
+  - No official reusable code, mixed-reward buffer, checkpoint, row-level provenance manifest, or release license was identified
+    in the official primary source reviewed.
+  - 'Greater sampling is not monotonically beneficial: the paper reports diminished performance at 16 sampled responses per
+    MATH problem relative to 8 in its ablation.'
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2 verifies the citation and reported construction/loss contract. This is a paper-described mixed-reward
+    trace construction and training recipe, not a confirmed public data release; unavailable artifact links are intentionally
+    null.
+inclusion_reason: 'RIFT makes an explicit rollout-to-training contract for mixed-quality mathematical traces: retain all eight
+  self-generated candidates per problem, attach final-answer-derived signed rewards, and use a stable objective that learns
+  from both accepted and rejected trajectories.'
+related: []
+tags:
+- mixed-reward-traces
+- negative-samples
+- self-generated-rollouts
+- rejection-sampling-alternative
+- scalar-reward
+- mathematical-reasoning
+- reward-informed-fine-tuning
+- no-confirmed-release
+status: partial
+one_line_summary: RIFT retains eight self-generated mathematical candidates per problem, labels them with signed answer-correctness
+  rewards, and fine-tunes on the full mixed-reward buffer using a stabilized positive/negative loss.
+why_it_matters: It exposes the usually discarded negative side of rejection-sampling data as a first-class training signal,
+  while recording that the outcome verifier, reward magnitudes, sampling budget, and loss stabilization jointly determine
+  the usable trace distribution.
+card: null
+needs:
+- 'needs_release: no official code, data, mixed-reward-buffer, checkpoint, project, or Hugging Face release URL was identified
+  in the reviewed primary source.'
+- 'needs_metadata: publish immutable row-level buffers with source IDs, model/checkpoint revisions, prompts, full candidate
+  outputs, reward values, verifier outputs, seeds, and acceptance/rejection lineage.'
+- 'needs_metadata: document generated-data and upstream-source licenses, split manifests, reward magnitudes, complete decoding
+  settings, and decontamination or evaluation-overlap checks.'
+- 'needs_validation: evaluate the answer-level mixed-reward recipe on subjective or open-ended tasks and test whether step-level
+  rewards improve attribution for partly correct long trajectories.'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: track5-paper-curator
+  confidence: high
+  notes: Verified against official arXiv abstract and v2 full-text HTML. No venue, author project, repository, data, model,
+    or Hugging Face URL is asserted without an official source.
+category_ids:
+- rollout_search_test_time_trace_data

@@ -1,0 +1,5 @@
+- Read Sections 3.1–3.4 together: task filtering and patch-derived targets define what the terminal F1 means; the OpenHands-Bash scaffold defines the observable trajectory; asynchronous GSPO defines how the grouped rows enter training.
+- Keep three artifacts separate: the 54,845-row public release covers direct CodeScout-14B/4B training rollouts; the 4K perfect-score 1.7B RFT set is a separate filtered pool; evaluation rollouts are released outside this dataset.
+- Audit groups, not only rows: 14B has 9,760 complete four-attempt groups; 4B has 1,973 complete eight-attempt groups and six incomplete groups of sizes 1–6; 2,317 groups mix zero and positive outcomes.
+- Reconcile the paper's nominal 51,200 rollouts with the released 54,845 and the paper's four/four 14B and eight/six 4B settings with current script defaults before claiming reproduction.
+- Treat reward and rights conservatively: F1 validates patch-location overlap rather than repairs or intermediate reasoning, and the public rollout/task data licenses plus row-level repository/checkpoint lineage are unknown.

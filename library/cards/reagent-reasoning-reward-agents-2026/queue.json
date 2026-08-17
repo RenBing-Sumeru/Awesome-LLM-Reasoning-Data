@@ -1,0 +1,19 @@
+{
+  "title": "Exploring Reasoning Reward Model for Agents",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2601.22154",
+    "data": "https://huggingface.co/datasets/bunny127/Reagent-RRM-RL-90K",
+    "code": "https://github.com/kxfan2002/Reagent"
+  },
+  "review_note": "L4 材料已准备，等待人工判定。",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T09:40:36Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布11.8万条含评价推理、错误批评与整体评分的Agent轨迹奖励数据，可训练生成式奖励模型并支持Agent在线RL",
+    "updated_at": "2026-07-15T09:40:36Z"
+  }
+}

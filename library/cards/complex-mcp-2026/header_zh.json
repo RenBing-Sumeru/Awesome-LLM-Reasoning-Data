@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ComplexMCP 将 47 个手工任务、15 个 MCP server 的 315 个工具、成功参考轨迹与状态差分 verifier 组合为可执行评测对象，但未发布完整模型 rollout、论文时期版本锁与独立 rights 声明。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行 MCP 智能体基准与成功参考轨迹发布",
+  "best_for_ch": "研究环境智能体轨迹、状态差分 verifier、工具检索与可复现评测审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yuanyang Li, Xue Yang, Longyue Wang, Weihua Luo, Hongyang Chen",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,111 @@
+id: sai-dpo-self-aware-sampling-2026
+title: 'Dynamic Sampling that Adapts: Self-Aware Iterative Data Persistent Optimization for Mathematical Reasoning'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Jun Rao
+- Xuebo Liu
+- Hexuan Deng
+- Zepeng Lin
+- Zixiong Yu
+- Jiansheng Wei
+- Xiaojun Meng
+- Min Zhang
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- mathematics
+training_use:
+- preference_learning
+- rlvr
+construction_layer:
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1412/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1412/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1412
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1412/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 400K Numina-Math prompt pool for main preference-learning experiments.
+  trace_author: Current learner generates repeated candidate answers; correct and incorrect outputs create preference pairs.
+  answer_format: Math prompt, repeated rollouts, correctness labels, knowledge cluster, self-aware difficulty, and chosen/rejected
+    answers.
+  process_fields:
+  - prompt
+  - pass_rate
+  - knowledge_cluster
+  - step_count
+  - answer_length
+  - chosen_answer
+  - rejected_answer
+  environment_or_substrate: Iterative offline preference optimization for mathematical reasoning.
+  verifier_or_reward: Answer correctness used to identify preferred and rejected rollouts; benchmark accuracy is downstream
+    evidence.
+  terminal_predicate: Selected data improves iterative post-training on specified mathematical benchmarks.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Math-Base/SFT, Qwen3-8B, and Llama3.1-8B-Instruct.
+  teacher: No fixed teacher; learner rollouts and a DeepSeek-R1-Distill-Qwen knowledge-tag annotator are used.
+  generator: Knowledge semantic alignment plus self-aware difficulty sampler.
+  filtering_rule: Remove all-correct and all-incorrect prompts, then retain top 70% of remaining instances by self-aware difficulty.
+  sampling_protocol: Eight iterations; main setup explores 20K prompts per iteration with eight responses each.
+  rollout_count: '8'
+  temperature: '1'
+  inference_budget: Maximum generation length 3,000; reported main Qwen base run uses 48K training samples.
+  optimizer_or_scaffold: Offline DPO, with additional rejection-sampling SFT analysis.
+audit:
+  source_mixture: Numina-Math pool; selected preference pairs are built from model rollouts.
+  split: Eight public mathematical benchmarks, including GSM8K, MATH, Minerva, Gaokao, Olympiad, College Math, AIME24, and
+    AMC23.
+  decontamination: No dedicated contamination audit claimed; inspect upstream pool and benchmark overlap.
+  license: Follow upstream Numina-Math, models, and evaluator licenses.
+  lineage: 'Primary source: https://aclanthology.org/2026.findings-acl.1412/'
+  known_failure_modes:
+  - Offline-only validation.
+  - Mathematics-only evaluation.
+  - Repeated rollout and clustering costs.
+  - Noise in correctness, clustering, or knowledge tags.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, method, experiments, and limitations checked on 2026-07-16; no official project, code,
+    or new data release link was claimed in the paper.
+inclusion_reason: It reconstructs which prompts and generated preference pairs are consumed by iterative post-training from
+  the learner’s current weaknesses and difficulty frontier.
+related: []
+tags:
+- dynamic-sampling
+- preference-optimization
+- mathematical-reasoning
+- dpo
+status: verified
+one_line_summary: SAI-DPO repeatedly selects preference-training records using model-relative knowledge weaknesses and self-aware
+  difficulty.
+reading_priority: essential
+paper_type: Dynamic mathematical-reasoning data selection for offline preference optimization
+best_for: Readers building learner-adaptive preference datasets for iterative mathematical reasoning training.
+confidence: high
+why_it_matters: It turns changing learner competence into an explicit policy for which preference pairs enter the next optimization
+  round.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper was checked; it does not claim an official project, code, or new dataset release.
+category_ids:
+- training_usage_optimization_objectives

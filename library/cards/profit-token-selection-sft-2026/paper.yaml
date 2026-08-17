@@ -1,0 +1,104 @@
+id: profit-token-selection-sft-2026
+title: 'ProFit: Leveraging High-Value Signals in SFT via Probability-Guided Token Selection'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Tao Liu
+- Taiqiang Wu
+- Runming Yang
+- Shaoning Sun
+- Junjie Wang
+- Yujiu Yang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- step_level
+domains:
+- instruction-tuning
+- reasoning
+- mathematics
+training_use:
+- sft
+- rlvr
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.755/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.755/
+  code: https://github.com/Utaotao/ProFit
+  data: null
+  project: https://github.com/Utaotao/ProFit
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.755
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.755/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A curated 2,000-sample high-reward subset of BAAI-InfinityInstruct.
+  trace_author: Upstream InfinityInstruct sources.
+  answer_format: Instruction-response pair with online probability and retain/mask decision for each reference token.
+  process_fields:
+  - instruction
+  - reference_response
+  - token_probability
+  - mask
+  - token_loss
+  environment_or_substrate: SFT and GRPO initialization for reasoning models.
+  verifier_or_reward: Online model token probability gates the SFT loss; task benchmarks evaluate outcomes.
+  terminal_predicate: Benchmark-specific accuracy; probability is not a correctness verifier.
+recipe_metadata:
+  base_model: Qwen3, Llama-3.1, OLMo-2, and Qwen2.5-Instruct families.
+  teacher: Gemini-3-Pro only for semantic analysis; not required for ProFit training.
+  generator: Upstream InfinityInstruct sources.
+  filtering_rule: Retain a token loss only if its detached online probability exceeds static threshold tau.
+  sampling_protocol: 2,000 high-reward InfinityInstruct samples for main SFT; DeepScaleR prompts for GRPO initialization analysis.
+  rollout_count: null
+  temperature: null
+  inference_budget: AIME 2024 averages 32 generations; other reported main evaluations average 8.
+  optimizer_or_scaffold: Hard token mask with stop-gradient gate; GRPO in later RL initialization analysis.
+audit:
+  source_mixture: Curated high-reward subset of BAAI-InfinityInstruct; separate DeepScaleR prompts for RL analysis.
+  split: Main SFT subset has 2,000 samples; benchmarks and settings listed in paper.
+  decontamination: No dedicated contamination audit claimed; inspect upstream source and benchmark overlap.
+  license: Check official code and upstream InfinityInstruct/DeepScaleR terms independently.
+  lineage: 'Primary sources: https://aclanthology.org/2026.findings-acl.755/; https://github.com/Utaotao/ProFit'
+  known_failure_modes:
+  - Low-probability tokens can be valuable for creative style.
+  - Static threshold cannot adapt to instance difficulty.
+  - Token probability is not a universal importance or correctness label.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, affiliations, methods, experiments, limitations, and official code link checked on 2026-07-15.
+inclusion_reason: It changes which tokens within retained SFT records are consumed by the training objective and evaluates
+  the effect on a later RL consumer.
+related: []
+tags:
+- token-selection
+- sft
+- probability
+- reasoning
+status: verified
+one_line_summary: ProFit masks low-probability reference tokens during SFT so high-probability semantic anchors dominate the
+  training signal.
+reading_priority: essential
+paper_type: Probability-guided token-level supervised fine-tuning study
+best_for: Readers designing token-level selection or masking for reasoning-oriented SFT.
+confidence: high
+why_it_matters: It makes the token-level boundary of the SFT supervision record explicit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and code repository linked in the paper were checked; no new standalone data release is claimed.
+category_ids:
+- training_usage_optimization_objectives

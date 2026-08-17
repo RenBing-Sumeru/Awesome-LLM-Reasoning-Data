@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "UnPRM 发布约 4 万条数学过程样本，以不确定性筛选和自动验证赋予步骤正确性标签，直接服务 PRM 训练与答案聚合。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要用不确定性信号自动构造数学过程奖励数据，并比较过程奖励与答案频次聚合的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiuzhou Han、Wray Buntine、Ehsan Shareghi",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:31:24Z"
+}

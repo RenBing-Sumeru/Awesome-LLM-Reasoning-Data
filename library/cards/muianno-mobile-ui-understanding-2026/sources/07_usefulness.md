@@ -1,0 +1,5 @@
+Use MUIAnno as a schema and audit reference for mobile GUI grounding evaluations. A reusable record should preserve screenshot ID, app/category provenance, image resolution, element taxonomy version, bounding-box coordinate convention, nested-element policy, annotator/validation status if available, prompt template, model output JSON, IoU threshold, label-matching rule, and evaluator version.
+
+For atlas recipes, it is most useful as an observation-level evaluation surface or as a label source for studying UI perception errors. It can inform GUI-agent data schemas by separating screen state, visual elements, semantic class, model prediction, and scoring evidence. It should not be reused as a reward signal or training corpus without a separate license, contamination, and label-quality audit.
+
+The practical audit checklist is: pin artifact revision, confirm license and screenshot rights, run evaluator on a small sample, inspect difficult categories such as icons and nested controls, record API model versions, and keep aggregate scores separate from per-element match records.

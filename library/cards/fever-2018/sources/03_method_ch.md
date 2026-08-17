@@ -1,0 +1,1 @@
+1. 输入：Wikipedia 页面、构造 claim、人工标签和证据句标注。2. 流程：生成或改写 claim，标注 SUPPORTS/REFUTES/NOT ENOUGH INFO，为可验证 claim 标注证据，并用标签加证据评测系统。3. 输出：train/dev/test/reserved split、证据标注和 scorer 输出。4. 反馈：FEVER score 只有在预测标签正确且 supported/refuted claim 检索到足够证据时给 credit。5. 复用前要固定数据 release、Wikipedia 快照假设、scorer 版本、最大证据预测数和 split policy。

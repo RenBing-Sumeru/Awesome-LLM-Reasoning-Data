@@ -1,0 +1,130 @@
+id: chartassistant-chartsft-2024
+title: 'ChartAssistant: A Universal Chart Multimodal Language Model via Chart-to-Table Pre-training and Multitask Instruction
+  Tuning'
+year: 2024
+venue: Findings of ACL 2024
+authors:
+- Fanqing Meng
+- Wenqi Shao
+- Quanfeng Lu
+- Peng Gao
+- Kaipeng Zhang
+- Yu Qiao
+- Ping Luo
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-acl.463/
+  arxiv: https://arxiv.org/abs/2401.02384
+  code: https://github.com/OpenGVLab/ChartAst
+  data: https://huggingface.co/datasets/FanqingM/ChartAssistant
+  project: https://github.com/OpenGVLab/ChartAst
+  huggingface: https://huggingface.co/datasets/FanqingM/ChartAssistant
+  doi: https://doi.org/10.18653/v1/2024.findings-acl.463
+  venue: https://aclanthology.org/2024.findings-acl.463/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-acl.463/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: synthetic and real charts covering bars, pies, radar, bubble and other chart families
+  trace_author: programmatic chart generation, source answers, and task templates
+  answer_format: chart image, task instruction, and chart-to-table, QA, extraction, or reasoning target
+  process_fields:
+  - chart image
+  - task instruction
+  - and chart-to-table
+  - QA
+  - extraction
+  - or reasoning target
+  environment_or_substrate: JSON conversations with chart images and table/QA targets
+  verifier_or_reward: table reconstruction checks, source answers, and chart benchmark scoring
+  terminal_predicate: Retain a record only when table reconstruction checks, source answers, and chart benchmark scoring accepts
+    it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: programmatic chart generation, source answers, and task templates
+  generator: ChartAssistant aligns vision and language through chart-to-table pretraining, then applies ChartSFT multitask
+    instructions spanning extraction, QA, summarization, and numerical reasoning.
+  filtering_rule: table reconstruction checks, source answers, and chart benchmark scoring
+  sampling_protocol: synthetic and real charts covering bars, pies, radar, bubble and other chart families
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: chart-to-table alignment followed by multitask SFT
+audit:
+  source_mixture: synthetic and real charts covering bars, pies, radar, bubble and other chart families
+  split: 'Official release scale: a large multi-task chart corpus covering basic and specialized chart types; official per-file
+    counts are in the release manifest; storage: JSON conversations with chart images and table/QA targets.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official dataset-card terms and licenses of component chart sources
+  lineage: synthetic and real charts covering bars, pies, radar, bubble and other chart families -> programmatic chart generation,
+    source answers, and task templates -> table reconstruction checks, source answers, and chart benchmark scoring -> chart-to-table
+    alignment followed by multitask SFT.
+  known_failure_modes:
+  - The release mixes generated and inherited charts with uneven licenses
+  - OCR errors can contaminate numeric targets
+  - exact generator seeds are not fully disclosed.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 37 citations; this is not a Google Scholar count.'
+inclusion_reason: 'ChartSFT is a public Track 01 training object: chart image, task instruction, and chart-to-table, QA, extraction,
+  or reasoning target; it is consumed by chart-to-table alignment followed by multitask SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- chart-to-table-aligned-multitask-instructions
+status: verified
+one_line_summary: ChartAssistant couples chart-to-table alignment with a released multitask ChartSFT conversation corpus.
+why_it_matters: using table reconstruction as an explicit bridge into a universal chart instruction mixture
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: building one assistant for chart extraction, QA, and reasoning
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: chart-to-table aligned multitask instructions
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Shanghai AI Laboratory, Shanghai Jiao Tong University, The University
+      of Hong Kong, Nanjing University.
+    venue: 'The official venue URL confirms formal publication at Findings of ACL 2024: https://aclanthology.org/2024.findings-acl.463/'
+    impact: OpenAlex reported 37 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON conversations with chart images and table/QA targets records at https://huggingface.co/datasets/FanqingM/ChartAssistant
+      with terms recorded as: official dataset-card terms and licenses of component chart sources.'
+  selection_eligible: true
+  year_impact_threshold: 3

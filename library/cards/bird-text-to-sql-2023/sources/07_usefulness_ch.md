@@ -1,0 +1,1 @@
+可用 BIRD 设计 database-grounded SQL 评测 schema。复用时保留 question、db_id、schema、数据库快照、evidence、gold SQL、predicted SQL、执行结果、VES、timeout、evaluator 版本和 split label。它适合审计模型是否理解数据库值，而不是只看 schema 名；也适合比较 EX 与效率感知 SQL 生成。train、dev、test、mini-dev、cleaned split 要视为不同 artifact。

@@ -1,0 +1,142 @@
+id: openeqa-2024
+title: 'OpenEQA: Embodied Question Answering in the Era of Foundation Models'
+year: 2024
+venue: CVPR 2024
+authors:
+- Arjun Majumdar
+- Anurag Ajay
+- Xiaohan Zhang
+- Pranav Putta
+- Sriram Yenamandra
+- Mikael Henaff
+- Sneha Silwal
+- Paul Mcvay
+- Oleksandr Maksymets
+- Sergio Arnaud
+- Karmesh Yadav
+- Qiyang Li
+- Ben Newman
+- Mohit Sharma
+- Vincent Berges
+- Shiqi Zhang
+- Pulkit Agrawal
+- Yonatan Bisk
+- Dhruv Batra
+- Mrinal Kalakrishnan
+- Franziska Meier
+- Chris Paxton
+- Sasha Sax
+- Aravind Rajeswaran
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- embodied-ai
+- open-vocabulary-qa
+- agent-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://open-eqa.github.io/
+  arxiv: null
+  code: https://github.com/facebookresearch/open-eqa
+  data: https://github.com/facebookresearch/open-eqa
+  project: https://open-eqa.github.io/
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: human-generated open-vocabulary questions over more than 180 real-world environments, with episodic memory
+    and active EQA settings.
+  trace_author: Official authors, annotators, validators, or dataset curators disclosed by the primary source.
+  answer_format: episodic memory or active-exploration setting, environment/video or scan context, open-vocabulary question,
+    ground-truth answer, model answer, and LLM-Match evaluation output.
+  dataset_scale: project page reports over 1,600 human-generated questions over more than 180 real-world environments; HM3D
+    questions are shared across EM-EQA and A-EQA settings.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: embodied question-answering benchmark over videos, scans, real-world environments, and simulation
+    settings
+  verifier_or_reward: LLM-Match automatic evaluation protocol correlated with human judgment, plus human judgment as reference.
+  terminal_predicate: model answer is judged semantically correct for the open-vocabulary question under the evaluation protocol.
+  benchmark_size: project page reports over 1,600 human-generated questions over more than 180 real-world environments; HM3D
+    questions are shared across EM-EQA and A-EQA settings.
+recipe_metadata:
+  base_model: Not a training recipe; this entry treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the primary source.
+  generator: human-generated open-vocabulary questions over more than 180 real-world environments, with episodic memory and
+    active EQA settings.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary sources checked: https://open-eqa.github.io/; https://github.com/facebookresearch/open-eqa; https://ai.meta.com/blog/openeqa-embodied-question-answering-robotics-ar-glasses/'
+  split: Exact split, hidden/public policy, live-refresh policy, and subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; post-release score claims require versioned
+    contamination evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://open-eqa.github.io/'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, evaluator version, split, model version, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: Official project page verifies title, authors, FAIR Meta note, CVPR 2024 citation, 1600+ questions, 180+ environments,
+    EM-EQA/A-EQA settings, code/benchmark links, and LLM-Match description.
+inclusion_reason: It turns environment understanding into a question-answer evaluation surface with an explicit LLM-powered
+  judging protocol.
+related: []
+tags:
+- benchmark
+- embodied-ai
+- open-vocabulary-qa
+- agent-evaluation
+one_line: OpenEQA evaluates open-vocabulary embodied question answering over episodic memory and active exploration settings.
+why_it_matters: It turns environment understanding into a question-answer evaluation surface with an explicit LLM-powered
+  judging protocol.
+status: verified
+needs:
+- 'needs_audit: pin GitHub commit, benchmark split, environment assets, and LLM-Match prompt/model version'
+- 'needs_audit: inspect licenses for environment sources and generated questions'
+- 'needs_review: evaluate whether answer judging is stable enough for downstream feedback reuse'
+one_line_summary: OpenEQA evaluates open-vocabulary embodied question answering over episodic memory and active exploration
+  settings.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Official project page verifies title, authors, FAIR Meta note, CVPR 2024 citation, 1600+ questions, 180+ environments,
+    EM-EQA/A-EQA settings, code/benchmark links, and LLM-Match description.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-16'
+  primary_category_id: benchmarks_evaluation_surfaces

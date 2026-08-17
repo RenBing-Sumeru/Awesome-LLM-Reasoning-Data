@@ -1,0 +1,104 @@
+id: chain-of-step-reasoning-vlm-fine-grained-rewards-2025
+title: Unveiling Chain of Step Reasoning for Vision-Language Models with Fine-grained Rewards
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Honghao Chen
+- Xingzhou Lou
+- Xiaokun Feng
+- Kaiqi Huang
+- Xinlong Wang
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-reasoning
+- mathematical-reasoning
+- process-reward-modeling
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/a68120d2eb2f53f7d9e71547591aef11-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2509.19003
+  code: https://github.com/baaivision/CoS
+  data: https://huggingface.co/datasets/Lauch1ng/CoS-Dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/Lauch1ng/CoS-Dataset
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/a68120d2eb2f53f7d9e71547591aef11-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Vision-language reasoning problems in the official CoS construction pipeline.
+  trace_author: Vision-language model solution trajectories.
+  answer_format: Image-text problem, chain-of-step reasoning, and fine-grained rewards.
+  process_fields:
+  - image
+  - question
+  - steps
+  - step_rewards
+  environment_or_substrate: Vision-language reasoning.
+  verifier_or_reward: Fine-grained process reward model signals.
+  terminal_predicate: Step quality used for PRM scoring and RL.
+recipe_metadata:
+  base_model: The released CoS process reward model and vision-language policy configuration.
+  teacher: Automatically constructed process supervision.
+  generator: Vision-language chain-of-step data construction pipeline.
+  filtering_rule: Use the released data and documented filtering configuration.
+  sampling_protocol: Keep released training data distinct from reported benchmark evaluation.
+  inference_budget: Match the paper's evaluation settings.
+  optimizer_or_scaffold: Official process-reward-model training and evaluation code.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Images, questions, stepwise reasoning, and fine-grained rewards.
+  split: The official CoS-Dataset provides raw JSONL, image archive, and converted 300K SFT JSONL.
+  decontamination: Keep the released evaluation benchmarks separate from fine-tuning data.
+  license: Apache-2.0 for the official CoS-Dataset.
+  lineage: NeurIPS 2025 proceedings, BAAI Vision CoS repository, and official CoS-Dataset page.
+  known_failure_modes:
+  - Reward quality depends on vision-language perception
+  - Step segmentation affects supervision
+  - Release-backed data remains task-distribution specific
+  citation_status: verified
+  confidence: high
+  notes: Verified the NeurIPS 2025 proceedings page and affiliation block, the official CoS repository, and the Apache-2.0
+    CoS-Dataset release.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: CoS-Dataset releases fine-grained reward supervision for vision-language reasoning steps, supporting VLM
+  process rewards, reranking, and reinforcement learning.
+why_it_matters: It couples a released VLM reasoning corpus with step rewards, a PRM, and the training path that uses them.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the NeurIPS 2025 proceedings page and affiliation block, the official CoS repository, and the Apache-2.0
+    CoS-Dataset release.
+category_ids:
+- process_trace_supervision_data

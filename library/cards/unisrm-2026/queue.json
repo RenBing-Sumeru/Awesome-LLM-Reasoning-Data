@@ -1,0 +1,9 @@
+{
+  "category_ids": ["judgment_rubric_domain_expert_data"],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以四类语音任务、公开模型与逐维一致性奖励提供可审计的语音评委方案，但复用前仍需核验复杂声学条件上的人工一致性。",
+    "updated_at": "2026-07-24T00:00:00Z"
+  },
+  "updated_at": "2026-07-24T00:00:00Z"
+}

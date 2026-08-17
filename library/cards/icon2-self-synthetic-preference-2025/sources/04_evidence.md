@@ -1,0 +1,3 @@
+On AlpacaEval 2.0, the General plus 3H setting reaches length-controlled and raw win rates of 23.22 and 16.40 for Llama3-8B, and 20.00 and 12.73 for Qwen2-7B. On Arena-Hard, it reports 16.4 and 17.0 raw win rate respectively, exceeding the listed manual, sampling-ranking, self-rewarding, and self-refine baselines.
+
+The cost comparison for Llama3-8B reports 61.6 GPU hours and 149.1 dollars for ICON2, compared with 123.8 hours and 269.9 dollars for sampling-ranking. Filtering also improves the paper's 20K-instruction study for both its controlled construction and sampling-ranking, while MT-Bench results improve both first- and second-turn scores.

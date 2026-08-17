@@ -1,0 +1,6 @@
+- Record the venue neutrally as **ICML 2026**. The ICML poster landing page links an Oral presentation page, while an OpenReview author profile says `ICML 2026 spotlight`; these official surfaces do not support an exclusion claim among presentation labels.
+- The main artifact is **817 complete selected responses**, one for each GAIR/LIMO prompt. The 8,890-prompt MATH study with 16 candidates per prompt is a separate within-teacher sanity check.
+- Read Equations 1–3 together: GALP scores the full prefix; LocalLP scores each step under only `k` preceding steps; LALP averages those step scores and selects the whole response.
+- Do not call LALP step correctness or process supervision. Final-answer matching admits candidates, GLM-4.5-Air supplies boundaries, and student likelihood ranks already admitted complete responses.
+- Table 3 reports `.440` versus `.412` for LALP versus GALP on the 7B student and `.726` versus `.632` on the 32B student, but no independent seeds or selected/candidate ledger support record-level attribution.
+- Before reuse, resolve the unavailable anonymous repository, answer checker, segmentation/parser details, exact run-to-`k` and hyperparameter mapping, embedding model, contamination, seeds, output license, and unpublished 817-response corpus.

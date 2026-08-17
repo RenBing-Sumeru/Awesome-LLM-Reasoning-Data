@@ -1,0 +1,9 @@
+- Pilot estimates are fragile on rare-success prompts. In the released allocation code, `p_i==0` or `G_i==0` produces zero raw allocation weight, so an unlucky pilot can starve a prompt rather than discover a later success.
+- `G_i` is checkpoint- and implementation-dependent. Gradient layer, sum versus length-normalized reduction, precision, response length, clipping, and update frequency can change the schedule; it is not a portable prompt-quality label.
+- Math-Verify checks extracted final answers, not intermediate reasoning. Parser/normalization errors, lucky answers, or unfaithful rationales can become accepted training targets.
+- Appendix C reports Qwen2.5-Math-7B pass@n degradation across training. GVM improves allocation efficiency in some curves but does not repair distribution collapse inherited from RAFT++ or GRPO.
+- The formal convergence analysis targets the EM/RAFT formulation under smoothness and scheduling assumptions. Applying the same schedule to GRPO is empirically supported, not covered by an equivalent complete guarantee.
+- “2–4× speedup” is measured in update steps. Pilot rollouts and gradient estimation add inference/backward work, and the paper does not report a matched end-to-end wall-clock or total-compute speedup.
+- Exact Numina revision, item split, semantic decontamination, benchmark overlap, paper-run commit/configuration, and complete seed set are unknown. Multiple data paths in the repository make an immutable run manifest especially important.
+- Code is Apache-2.0, but no versioned pilot/additional rollout package, allocation log, checkpoint bundle, or data license is released. The rights of source datasets, generated traces, base models, and benchmarks remain separate.
+- Curator inference: publishing only accepted responses would hide false negatives, wasted budget, and verifier failure. The official script can store all pilot outputs locally, but those records are not available for the reported runs.

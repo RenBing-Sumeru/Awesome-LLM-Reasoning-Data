@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "发布 88,991 条双语多模态 SFT 记录和 20,458 题评测集，并给出 32 路采样、规则终局标签到 BMMR-Verifier 的过程评分配方；验证器产物与逐条谱系仍未公开。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "双语多模态推理数据集、评测基准与过程验证器配方",
+  "best_for_ch": "关注跨学科多模态 SFT、评测、过程监督、模型一致性过滤及数据权利审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhiheng Xi、Guanyu Li、Yutao Fan、Honglin Guo、Yufang Liu、Xiaoran Fan、Jiaqi Liu、Jingchao Ding、Wangmeng Zuo、Zhenfei Yin、Lei Bai、Tao Ji、Tao Gui、Qi Zhang、Xuanjing Huang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

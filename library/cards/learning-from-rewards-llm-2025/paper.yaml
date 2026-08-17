@@ -1,0 +1,109 @@
+id: learning-from-rewards-llm-2025
+title: 'A Comprehensive Survey on Learning from Rewards for Large Language Models: Reward Models and Learning Strategies'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Xiaobao Wu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- reward-modeling
+- preference-learning
+- post-training
+- reasoning-data
+training_use:
+- preference_learning
+- reward_modeling
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.970/
+  arxiv: https://arxiv.org/abs/2505.02686
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.970
+  venue: https://aclanthology.org/2025.findings-emnlp.970/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.970/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A synthesis of reward-model and learning-strategy literature across training, inference, and post-inference
+    stages.
+  trace_author: The surveyed primary works; no new preference or reward dataset is released.
+  answer_format: A taxonomy covering reward models, learning strategies, benchmarks, and applications.
+  process_fields:
+  - reward signal
+  - reward model
+  - learning stage
+  - reward-model benchmark
+  environment_or_substrate: LLM post-training, reward-guided decoding, and post-hoc correction.
+  verifier_or_reward: The subject of the survey is reward signals and reward models; no single reward implementation is released.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: No single base model; the work surveys LLM reward-learning methods.
+  teacher: Human and AI feedback sources appear in the surveyed literature; no single teacher is used.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: Organizes work by reward models and learning strategies across training, inference, and post-inference.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Surveys RLHF, RLAIF, DPO, GRPO, reward-guided decoding, and post-hoc correction rather than implementing
+    one optimizer.
+audit:
+  source_mixture: Official ACL Anthology record, paper, and arXiv record.
+  split: Not applicable to a survey.
+  decontamination: No paper-specific contamination result is claimed; primary reward benchmarks and data releases require
+    separate audit.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.970/'
+  known_failure_modes:
+  - A reward signal can encode preference or style rather than task correctness.
+  - Reward-model quality and downstream optimization quality are different claims.
+  - Survey categories do not prove that reward data is transferable across domains.
+  citation_status: verified
+  confidence: high
+  notes: The official ACL abstract explicitly covers reward models, learning strategies, reward-model benchmarks, and applications
+    across multiple stages.
+inclusion_reason: A recent foundation for distinguishing preference pairs, scalar rewards, trained reward models, reward-guided
+  inference, and post-hoc feedback before entering specialized feedback-data tracks.
+related: []
+tags:
+- foundations-and-primers
+- reward-models
+- preference-data
+- learning-from-rewards
+- emnlp-2025
+why_it_matters: It prevents Track0 readers from collapsing preference data, reward models, optimization objectives, and judge
+  outputs into one undifferentiated “RLHF” label.
+one_line_summary: A 2025 EMNLP Findings survey that maps reward signals from feedback collection through training, inference,
+  and post-inference correction.
+paper_type: Reward-model and learning-strategy survey
+reading_priority: strong
+best_for: Readers who need to separate feedback data, reward-model construction, reward-guided decoding, and preference optimization.
+confidence: high
+status: verified
+needs:
+- 'unknown: common license, split, and contamination conventions across the surveyed reward datasets and benchmarks'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, DOI, and arXiv record were reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧪 RLHF / reward-model surveys

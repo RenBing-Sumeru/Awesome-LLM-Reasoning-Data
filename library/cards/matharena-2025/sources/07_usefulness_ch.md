@@ -1,0 +1,1 @@
+MathArena 适合作为 live benchmark governance 的 schema：source date、contest provenance、problem statement、official answer/proof target、model version、prompt、raw output、parser 或 judge result、adjudication notes 和 leaderboard snapshot。对 atlas 来说，它是污染感知数学评测的审计清单，也能帮助区分 final-answer tasks 和 proof-judged tasks。

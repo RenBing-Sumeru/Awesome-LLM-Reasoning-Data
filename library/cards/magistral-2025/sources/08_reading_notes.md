@@ -1,0 +1,5 @@
+- Keep the three releases distinct: Magistral Medium is described as an enterprise model, Magistral Small weights are released under Apache-2.0, and no Magistral training dataset is released.
+- Do not confuse 16 math re-grading responses or 20 code tests with the undisclosed GRPO rollout-group size.
+- The reported construction funnel is 699k to 501k to 38k math items, plus 35k code problems; record-level sources remain unknown.
+- Medium uses pure online RL, whereas Small uses Medium-derived SFT followed by RL.
+- Treat benchmark and ablation gains as evidence about trained-model behavior, not proof of prompt, trace, test, or reward quality.

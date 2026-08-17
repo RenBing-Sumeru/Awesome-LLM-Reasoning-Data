@@ -1,0 +1,6 @@
+- AutoL2S pairs a DeepSeek-R1 long trace with the shortest correct Qwen2.5-Math-7B short candidate for each eligible question.
+- Rejection size k=8 is the paper's default; rejected candidates and the final pair corpus were not confirmed as released.
+- SFT learns an EASY routing decision, and a clipped GRPO-style stage reinforces answer-correct routed rollouts without an explicit length reward.
+- The 7B result reports 71.7% shorter average output with a 1.7-point average accuracy drop relative to Bespoke-Stratos-7B.
+- Official code and Apache-2.0 model weights exist, but model release is not evidence of complete training-data lineage.
+- Paper and implementation token names differ, so exact routing semantics require a pinned revision.

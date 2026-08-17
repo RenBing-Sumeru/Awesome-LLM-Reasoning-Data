@@ -1,0 +1,5 @@
+- 应把第 3.1–3.4 节、算法 1 与附录 A 连起来阅读：根节点是提示容器，每次 expansion 增加一个完整且已评分的答案，Thompson sampling 在全新 `GEN` 分支和通向反馈驱动修订的遍历之间选择。
+- 必须分开预算：主协议每个任务最多 128 次生成 API call，扩展 ARC-AGI 分析达到 512 个节点，较后的 ARC-AGI-2 多模型实验使用 250 次调用。
+- 阅读 benchmark 曲线时应同时检查反馈契约：公开测试、ARC demonstrations 或 MLE validation metric 引导搜索，隐藏测试或 held-out output 决定最终成功；搜索分数不是过程质量真值。
+- 应检查 supplemental 中的 `MCTSResult`、`Node`、solver 与 OpenAI-compatible 日志代码，理解本地可以保留什么；随后确认公共发布没有实际论文运行树、全部回答、未选分支或 API 日志。
+- 复现或复用前，应固定模型版本，保留完整树且不要虚构剪枝阶段，除调用数外报告 token/evaluator/墙钟成本，并解决 benchmark 权利与 unknown 的 supplemental-bundle license。

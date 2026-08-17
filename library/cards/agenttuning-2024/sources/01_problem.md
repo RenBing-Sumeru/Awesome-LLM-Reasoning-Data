@@ -1,0 +1,5 @@
+Open LLMs could follow ordinary instructions yet repeatedly emitted invalid actions, duplicated commands, or refusals when placed in interactive agent tasks; tuning one specialized environment did not establish transferable agent behavior and could erode general language capability.
+
+AgentTuning addresses this by releasing AgentInstruct, 1,866 reward-filtered ReAct conversations from six environments, and mixing them with general conversations for supervised fine-tuning. The direct output is a static set of instructions, thoughts, actions, observations, corrections, and terminal decisions rather than only an agent scaffold.
+
+L4 facts: Primary source ACL Anthology; Findings of ACL 2024, 11-16 August 2024; decision boundary is serialized SFT demonstrations rather than environment-only episodes; atlas relevance is reward-filtered tool reasoning; data object is a multi-turn ReAct conversation; collected as an L4 Card after proceedings, public splits, actual records, reward rules, and access terms were checked.

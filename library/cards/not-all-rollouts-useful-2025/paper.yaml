@@ -1,0 +1,115 @@
+id: not-all-rollouts-useful-2025
+title: 'Not All Rollouts are Useful: Down-Sampling Rollouts in LLM Reinforcement Learning'
+year: 2026
+venue: TMLR
+authors:
+- Yixuan Even Xu
+- Yash Savani
+- Fei Fang
+- J. Zico Kolter
+source_role:
+- construction_recipe
+- infrastructure
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- scalar_reward
+- full_episode
+domains:
+- mathematics
+- reasoning
+training_use:
+- rlvr
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://openreview.net/forum?id=MfHOmgqVXM
+  arxiv: https://arxiv.org/abs/2504.13818
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=MfHOmgqVXM
+  openreview: https://openreview.net/forum?id=MfHOmgqVXM
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical RLVR reasoning prompts; exact public mixture is not pinned
+  trace_author: Current policy generates n rollouts per prompt
+  answer_format: Prompt with n reasoning episodes and scalar/verifiable rewards, reduced to an m-rollout update subset
+  process_fields:
+  - prompt
+  - rollout
+  - reward
+  - selected_for_update
+  - generation_batch_size
+  - update_subset_size
+  environment_or_substrate: Decoupled rollout generation and GRPO update across inference and training hardware
+  verifier_or_reward: Verifiable task reward; max-variance selection preserves reward-extreme rollouts
+  terminal_predicate: Retain the size-m subset maximizing selected reward variance
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Current RL policy
+  filtering_rule: Sort n rewards and select m items from low and high extremes to maximize reward variance; binary rewards
+    preserve success/failure contrast
+  sampling_protocol: Generate n rollouts per prompt, then update GRPO on m<n selected rollouts; exact n/m vary by experiment
+    and hardware
+  rollout_count: null
+  temperature: null
+  inference_budget: Generation n and update m are independently configurable; recommended values are experiment-dependent
+  optimizer_or_scaffold: PODS around GRPO with O(n log n) max-variance down-sampling
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: Membership and rewards are defined conceptually; no versioned rollout-selection artifact
+  known_failure_modes:
+  - Reward extremes can displace moderate but useful trajectories
+  - Selection inherits verifier errors
+  - Answer rewards do not validate reasoning faithfulness
+  - Efficiency depends on hardware asymmetry and n/m ratio
+  - No official code/data/rollout logs
+  - Results cover selected benchmarks and hardware only
+  citation_status: verified
+  confidence: high
+  notes: arXiv v5, TMLR OpenReview, and author page confirm TMLR 2026; no implementation artifact verified.
+inclusion_reason: Provides a precise rollout-level rule for retaining reward-diverse trajectories while decoupling generation
+  from policy updates.
+related: []
+tags:
+- pods
+- rollout-downsampling
+- max-variance-selection
+- grpo
+- rlvr-efficiency
+- reward-diversity
+status: verified
+category_ids:
+- rollout_search_test_time_trace_data
+- data_construction_open_release_recipes
+one_line_summary: Generates large rollout batches but updates GRPO on an O(n log n) maximum-reward-variance subset selected
+  from reward extremes.
+why_it_matters: Treats the update subset as a first-class reasoning-data object and exposes systems tradeoffs in selective
+  retention.
+card: null
+needs:
+- 'needs_url: implementation and versioned rollout-selection artifacts'
+- 'unknown: dataset mixture, splits, licenses, and decontamination'
+- 'unknown: reusable experiment-level n/m budgets and decoding parameters'
+curation_level: L3_curated
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Publication verified; no author-verified implementation artifact.

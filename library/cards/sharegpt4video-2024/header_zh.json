@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ShareGPT4Video 发布 4 万条长时序描述，并提供可扩展视频语言监督的描述器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放指令数据集与构造方法研究",
+  "best_for_ch": "从公开视频构造时序推理指令记录",
+  "confidence_ch": "高",
+  "authors_ch": "Lin Chen, Xilin Wei, Jinsong Li, Xiaoyi Dong, Pan Zhang, Yuhang Zang, Zehui Chen, Haodong Duan, Bin Lin, Zhenyu Tang, Li Yuan, Yu Qiao, Dahua Lin, Feng Zhao, Jiaqi Wang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

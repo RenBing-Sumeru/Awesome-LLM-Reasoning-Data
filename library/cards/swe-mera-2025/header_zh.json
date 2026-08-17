@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-MERA 持续发布带 base commit、补丁、测试和环境命令的仓库修复任务，但固定版本的公开 checker 仅检查 PASS_TO_PASS，没有强制 FAIL_TO_PASS。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "动态仓库修复基准、执行环境与终端验证审计",
+  "best_for_ch": "研究 SWE agents、动态基准、Docker 重放、测试验证和污染控制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Pavel Adamenko、Mikhail Ivanov、Aidar Valeev、Rodion Levichev、Pavel Zadorozhny、Ivan Lopatin、Dmitrii Babaev、Alena Fenogenova、Valentin Malykh",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

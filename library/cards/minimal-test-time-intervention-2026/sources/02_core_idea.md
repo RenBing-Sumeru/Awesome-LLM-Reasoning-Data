@@ -1,0 +1,3 @@
+Minimal Test-Time Intervention treats token entropy as a local allocation signal. Normal decoding continues at low-entropy positions. When the predictive distribution becomes diffuse, the method applies classifier-free guidance to reshape the next-token distribution, targeting positions where a small local uncertainty is most likely to propagate into a global reasoning error.
+
+To make this selective guidance inexpensive, the method does not retain a full second KV cache for an unconditional branch. It reuses the conditional cache and temporarily appends the negative cue “OUTPUT ERROR” to approximate a contrastive distribution. Thus the amount of additional computation is proportional to the fraction of high-entropy tokens, not to the length of the whole response.

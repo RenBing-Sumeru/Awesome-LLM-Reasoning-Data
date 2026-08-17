@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:24:43Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "HumanEval，历史及当前利用率仍较高，但已趋于饱和",
+    "updated_at": "2026-07-15T07:24:43Z"
+  }
+}

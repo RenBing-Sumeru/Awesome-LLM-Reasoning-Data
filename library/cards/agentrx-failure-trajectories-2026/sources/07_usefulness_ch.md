@@ -1,0 +1,1 @@
+这张卡可作为 agent failure card 的字段模板：保留 trajectory id、task、step index、actor/tool、observation、violation evidence、是否恢复、critical-step label 和 root-cause taxonomy label。它也给出 verifier-assisted agent debugging 的 recipe：先由约束产生证据，再由 judge 做最终归因。对 atlas 的价值是把 evaluation、diagnosis 和 training reuse 分开；这些轨迹可用于审计 agent，但要转成 reward/filter 数据还需单独核查标签质量、隐私和 license。

@@ -1,0 +1,292 @@
+id: tinyv-verifier-refresh-2025
+title: 'TinyV: Reducing False Negatives in Verification Improves RL for LLM Reasoning'
+year: 2025
+venue: 2nd AI for Math Workshop @ ICML 2025 (Poster)
+authors:
+- Zhangchen Xu
+- Yuetai Li
+- Fengqing Jiang
+- Bhaskar Ramasubramanian
+- Luyao Niu
+- Bill Yuchen Lin
+- Radha Poovendran
+source_role:
+- verifier_reward
+- construction_recipe
+- data_release
+- benchmark
+- model_report
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematical_reasoning
+training_use:
+- sft
+- reward_modeling
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://openreview.net/pdf?id=scPETXuAiY
+  paper_pdf: https://openreview.net/pdf?id=scPETXuAiY
+  arxiv: https://arxiv.org/abs/2505.14625
+  code: https://github.com/uw-nsl/TinyV
+  code_snapshot: https://github.com/uw-nsl/TinyV/tree/4a9d2c720c161e2ccc0e492cc59ed5f9c226ec5f
+  data: https://huggingface.co/datasets/zhangchenxu/TinyV_Training_Data_Balanced
+  data_balanced: https://huggingface.co/datasets/zhangchenxu/TinyV_Training_Data_Balanced
+  data_rl_prompts: https://huggingface.co/datasets/zhangchenxu/bigmath_tinyv_filtered
+  benchmark: https://huggingface.co/datasets/zhangchenxu/HardVerify-Math
+  project: https://github.com/uw-nsl/TinyV
+  huggingface: https://huggingface.co/collections/zhangchenxu/tinyv
+  models: https://huggingface.co/collections/zhangchenxu/tinyv
+  model_main: https://huggingface.co/zhangchenxu/TinyV-1.5B
+  release: null
+  dataset_card: https://huggingface.co/datasets/zhangchenxu/TinyV_Training_Data_Balanced
+  doi: https://doi.org/10.48550/arXiv.2505.14625
+  venue: https://icml.cc/virtual/2025/52372
+  openreview: https://openreview.net/forum?id=scPETXuAiY
+  later_tmlr_version: https://openreview.net/forum?id=HMGsqApBM3
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.14625
+data_object:
+  record_type: 'A release family rather than one corpus: 159,136 balanced answer-verifier SFT records, 7,009 false-negative-prone
+    Big-Math prompt records for RL sampling, a 250-question HardVerify-Math benchmark with paired false-negative and true-negative
+    outputs, and public TinyV verifier checkpoints.'
+  prompt_source: Big-Math-RL-Verified supplies more than 250K mathematical problems, reference answers, source metadata, and
+    64-response Llama-3.1-8B solve rates. HardVerify additionally uses manually selected Olympiad and MATH benchmark questions.
+  trace_author: DeepSeek-R1-Distill-Qwen-7B generates four candidate answers per Big-Math problem. Qwen2.5-72B-Instruct generates
+    semantically equivalent synthetic answers and acts as one correctness annotator; Grok-3-Mini-High is the second annotator
+    for real false negatives.
+  verifier_training_record:
+    count: 159136
+    split: train
+    fields:
+    - data_source
+    - question
+    - index
+    - prime_correctness
+    - llm_verifier_is_correct
+    - llm_verifier_reasoning
+    - ground_truth_answer
+    - model_answer
+    - synthetic_data
+    - conversations
+    composition: Exactly 79,568 True and 79,568 False labels; 139,432 real records and 19,704 synthetic records. All rows
+      name SynthLabsAI/Big-Math-RL-Verified as data_source, and every prime_correctness value is false.
+    answer_format: A two-turn conversation asks whether the model answer is correct given the question and reference answer;
+      the assistant target is the literal binary text True or False.
+  rl_prompt_record:
+    count: 7009
+    split: train
+    fields:
+    - problem
+    - answer
+    - source
+    - domain
+    - llama8b_solve_rate
+    - prime_correctness
+    - llm_verifier_is_correct
+    - output_scores
+    composition: All 7,009 rows are Prime-negative and LLM-verifier-positive. Each output_scores list has length four. Released
+      Llama-3.1-8B solve rates range from 0.0625 to 0.1875, consistent with the intended 0.05 < p <= 0.2 band.
+  benchmark_record:
+    count: 250
+    split: train
+    fields:
+    - id
+    - split
+    - source
+    - question
+    - ground_truth
+    - fn_output
+    - tn_output
+    - metadata
+    composition: The row-level split field contains 125 benchmarks and 125 big_math records. Public source statistics show
+      110 Olympiad and 15 Math_500 rows in the benchmark half, differing from the paper's 115 Olympiad plus 10 MATH description.
+  process_fields:
+  - source problem and reference answer
+  - source and 64-sample Llama-3.1-8B solve rate
+  - four DeepSeek-distilled candidate responses
+  - boxed-answer format-pass flag
+  - Prime Verifier decision
+  - Qwen2.5-72B correctness judgment and rationale
+  - Grok-3-Mini-High correctness judgment and rationale
+  - real or synthetic provenance flag
+  - optional synthetic equivalent-answer generation
+  - balanced True or False SFT target
+  - TinyV terminal verifier decision
+  - GRPO terminal reward
+  observation: Prime extracts the last boxed answer and applies rule-based mathematical matching. In add-on mode, only Prime-negative
+    answers are sent to TinyV. The released reward manager writes the score at the final valid response token; no stepwise
+    reasoning observation is checked.
+  verifier_output: 'Prime returns correctness, format status, and an extracted answer. TinyV returns text parsed by substring
+    matching: output containing true maps to 1, else output containing false maps to 0; invalid output or exhausted inference
+    retries maps to 0.'
+  reward: 'The paper-default add-on reward is binary and terminal: Prime acceptance yields 1 without querying TinyV; Prime
+    rejection yields TinyV''s 0/1 decision multiplied by tinyv_weight, default 1.0. Released code also offers tinyv_only and
+    weighted mixed modes.'
+  environment_or_substrate: A vendored veRL/PRIME reward stack with vLLM serves TinyV over an OpenAI-compatible localhost
+    endpoint while GRPO trains Qwen2.5-7B or Qwen2.5-Math-7B. LlamaFactory is vendored for verifier SFT.
+  verifier_or_reward: 'A mixed hierarchy: a programmatic Prime matcher checks the extracted final answer first, then a learned
+    1.5B judgment model re-evaluates only rejected answers. TinyV is trained from LLM-as-judge labels, so recovered reward
+    is not programmatically certified.'
+  terminal_predicate: An answer receives positive reward when Prime accepts it, or when Prime rejects it and TinyV emits a
+    parseable True classification. The contract evaluates the extracted final answer, not the derivation.
+  provenance: Big-Math-RL-Verified problem/reference -> four DeepSeek-R1-Distill-Qwen-7B responses -> boxed-answer retention
+    -> Prime rejection -> Qwen/Grok re-judgment -> real and synthetic FN/TN pool -> balanced 159,136-row SFT release -> TinyV-1.5B
+    -> Prime-gated online GRPO reward. A 7,009-row hard-prompt pool and 250-row HardVerify benchmark are released alongside
+    the verifier.
+  release_surface: Public releases include balanced SFT Parquet, hard-prompt Parquet, HardVerify Parquet, four verifier checkpoints,
+    prompts, labeling scripts, SFT launcher, and GRPO reward integration. The full reported 638K pool, exact 5K sampled RL
+    manifest, per-row two-judge ledger, rejected synthetic candidates, paper-run trajectories, and immutable experiment bundle
+    are not public.
+recipe_metadata:
+  source_corpus: Big-Math-RL-Verified, described by the paper as Apache-2.0 and containing over 250K problems from nine named
+    source families. HardVerify also draws from Olympiad and MATH evaluation material.
+  base_model: Qwen2.5-1.5B-Instruct for TinyV and TinyV-Think; Qwen2.5-7B and Qwen2.5-Math-7B for the main GRPO experiments.
+  teacher: Qwen2.5-72B-Instruct in non-thinking mode and Grok-3-Mini-High in thinking mode form the real false-negative consensus.
+    Qwen2.5-72B-Instruct also generates synthetic equivalent answers. Exact provider snapshots, prompt-run identifiers, and
+    the public balanced row's second-judge fields are unavailable.
+  generator: DeepSeek-R1-Distill-Qwen-7B generates four audit responses per source prompt at temperature 1 and top-p 1. Qwen2.5-72B-Instruct
+    generates at least five equivalent-answer variants for synthetic augmentation.
+  prompt_task_source: Big-Math-RL-Verified problems and answers; released SFT records retain source-row index but not an immutable
+    upstream revision or file hash.
+  filtering_rule: Retain generated responses containing a boxed answer that Prime marks wrong. For real false negatives, require
+    both Qwen and Grok to judge the answer correct. Synthetic candidates are re-annotated by LLMs. Balance the final SFT release
+    across True and False labels.
+  sampling_protocol: Generate four responses for every source problem. For RL, select challenging Big-Math prompts with 0.05
+    < Llama-3.1-8B solve rate <= 0.2 and DeepSeek-distilled solve rate <= 0.25, then sample 5,000. The public candidate release
+    has 7,009 rows; sampled IDs and random seed are absent.
+  rollout_count: Four DeepSeek-distilled responses per Big-Math problem for the offline audit; eight policy rollouts per prompt
+    in GRPO.
+  temperature: Audit generation uses 1.0 with top-p 1.0. Labeler and synthetic-generation decoding settings are not fully
+    reported.
+  inference_budget: Audit generation uses a 32,768-token context. GRPO uses prompt length 1,024, response length 4,096 for
+    Qwen2.5-7B and 3,072 for Qwen2.5-Math-7B, 12 epochs, and eight A100s. Total annotation tokens, labeling retries, and end-to-end
+    construction compute are unknown.
+  search_or_scaffold: No tree search. The pipeline uses difficulty filtering, two-model consensus re-judgment, synthetic equivalence
+    augmentation, label balancing, and a hierarchical Prime-then-TinyV reward gate.
+  selection_threshold: Prime must return false after boxed-answer extraction. Real positive labels require unanimous acceptance
+    by both large annotators. RL prompts use the stated pass-rate bands; HardVerify's Big-Math half uses Llama-3.1-8B pass
+    rate below 0.05 plus expert judgment.
+  seed_protocol: unknown
+  buffer_policy: Offline fixed SFT and prompt pools feed online GRPO; no evolving construction buffer is described. Exact
+    row order, sample seed, and sampled-5K binding are unavailable.
+  optimizer_or_scaffold: TinyV SFT uses full fine-tuning for two epochs at learning rate 1e-5, AdamW, cosine decay, warmup
+    0.1, eight devices, per-device batch 8, gradient accumulation 8, effective batch 512, and paper max length 4,096. Main
+    GRPO uses batch 128, eight rollouts, mini-batch 64, learning rate 1e-6, KL coefficient 0.001, and 12 epochs.
+  implementation_drift: The TinyV-1.5B model card matches the paper's batch 8, gradient accumulation 8, eight-device SFT.
+    The current root SFT launcher instead sets cutoff 2,048, per-device batch 64, and gradient accumulation 2. The current
+    GRPO launcher fixes response length 4,096 for all bases, whereas the paper reports 3,072 for Qwen2.5-Math-7B. No tagged
+    paper release identifies the result-producing revision.
+audit:
+  source_mixture: 'The public balanced release contains 159,136 Big-Math-derived rows: 139,432 real and 19,704 synthetic,
+    with 79,568 positive and 79,568 negative labels. The reported 638K precursor pool is not released. The 7,009-row RL pool
+    spans nine source labels, led by CN_K12, Olympiads, and ORCA-Math.'
+  split: All three public datasets expose only a Hugging Face train split. The 250 HardVerify rows carry an internal 125/125
+    benchmarks/big_math field, not separate HF splits. No verifier validation/test partition, group-aware split, deduplication
+    manifest, or exact 5K RL sample manifest is released.
+  decontamination: unknown
+  benchmark_overlap: The paper separates the 125 Big-Math HardVerify prompts at p < 0.05 from the RL pool at 0.05 < p <= 0.2
+    and says this avoids overlap. This supports intended disjointness for that subset, but no exact-hash or semantic scan
+    covers all HardVerify, MATH500, AMC, Olympiad Bench, upstream Big-Math sources, or base-model pretraining.
+  license: The code repository declares MIT, and public TinyV checkpoint pages declare Apache-2.0. The paper describes upstream
+    Big-Math-RL-Verified as Apache-2.0. None of the three TinyV dataset cards declares a dataset license, and no per-source
+    attribution/license ledger is included.
+  lineage: The balanced release preserves source name/index, Prime decision, one LLM label/rationale, real-versus-synthetic
+    flag, answers, and SFT conversation. It omits upstream commit, candidate-generation run, second judge identity/output,
+    prompt version, selection decision, balancing seed, and rejected candidates. The RL pool omits generated responses and
+    sampled-5K binding.
+  release_version: Code HEAD 4a9d2c720c161e2ccc0e492cc59ed5f9c226ec5f (2025-06-23), with 11 commits, no tags, and no GitHub
+    releases. Balanced SFT data HEAD 8e5705702ea50787be39b3ceb91414de45e24c4b; RL prompt data HEAD 78dcfc4cc0b77ae31b91d76c3cd27ad386524465;
+    HardVerify HEAD 8afc00dbb909beeefc42afab302f341c8df9114a; TinyV-1.5B HEAD 8733b55454c21153618cd42f29a95269b7fe00f2. No
+    manifest binds these heads to one paper run.
+  successful_and_failed_sample_retention: The balanced release retains Prime-negative examples with positive and negative
+    learned labels. It does not retain all four raw generations, format failures, annotator disagreements, malformed labels,
+    rejected synthetic variants, complete 638K pool, GRPO trajectories, verifier requests/responses, or runtime failures.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - TinyV checks the extracted final answer, not reasoning steps or faithfulness.
+  - A learned judgment false positive can reward an actually wrong solution.
+  - The paper reports no held-out TinyV precision, recall, calibration, false-positive rate, or confusion matrix; downstream
+    GRPO scores are not a verifier-quality certificate.
+  - Public SFT rows expose one LLM label/rationale, not the Qwen/Grok ledger required to audit consensus.
+  - The paper's 115 Olympiad plus 10 MATH HardVerify composition conflicts with the release's 110 Olympiad plus 15 Math_500.
+  - The 7,009-row public pool is not bound to the sampled 5,000 or a random seed.
+  - Current SFT and GRPO launchers drift from paper hyperparameters, with no tagged paper-exact revision.
+  - Synthetic equivalence can change semantics; rejected variants and judge disagreements are absent.
+  - All public datasets are train-only and lack declared licenses, decontamination reports, source-level ledgers, and immutable
+    upstream revisions.
+  - Main experiments cover mathematical answer verification with GRPO only.
+  - TinyV is not uniformly better than Prime across every reported benchmark/base pair.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the official 2025 workshop page, 33-page arXiv v2 paper, OpenReview/arXiv records, pinned code and
+    reward implementation, exact public dataset schemas/counts/revisions, and checkpoint pages. The later TMLR June 2026 publication
+    is version history and does not replace the seven-author 2025 workshop record.
+  remaining_unknowns:
+  - Full 638K pool, exact sampled 5K IDs, seeds, and paper-run reward logs
+  - Per-row Qwen/Grok judgments, disagreements, malformed outputs, and retries
+  - Exact upstream Big-Math revision and source-level licenses/attribution
+  - Held-out verifier split, classification metrics, calibration, and online false-positive rate
+  - Complete decontamination and semantic-overlap results
+  - Paper-exact code/config/environment revision and artifact manifest
+  - Dataset licenses, privacy/consent review, and generator/provider terms
+inclusion_reason: TinyV is a verifier-refresh case that audits stale rule-based rewards, constructs balanced real/synthetic
+  answer-equivalence supervision, trains a compact learned verifier, and places it behind a programmatic gate during GRPO,
+  with public data/models/code but incomplete run binding and lineage.
+related: []
+tags:
+- tinyv
+- false-negatives
+- verifier-refresh
+- learned-verifier
+- prime-verifier
+- answer-equivalence
+- synthetic-augmentation
+- llm-as-judge
+- grpo
+- rlvr
+- hardverify-math
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- audit_failure_contamination_verifier_attacks
+one_line_summary: TinyV refreshes a rule-based verifier by re-judging rejected answers with two large models, augmenting equivalent-answer
+  variants, training a small binary judge, and querying it only after Prime rejection.
+why_it_matters: It exposes verifier refresh as a concrete data lifecycle and shows that learned reward recovery must be audited
+  for false positives, split leakage, license, missing lineage, and paper-code drift.
+card: null
+needs:
+- 'needs_full_pool: release the complete 638K pool with candidate generations, both judge outputs, disagreements, prompt versions,
+  retries, and rejected synthetic variants'
+- 'needs_run_binding: publish exact sampled 5K IDs, random seeds, configs, environment lock, checkpoint hashes, and trajectory/reward
+  logs'
+- 'needs_verifier_eval: publish a source-disjoint held-out split with precision, recall, FPR, calibration, abstention, and
+  adversarial ground-truth-error analysis'
+- 'needs_license: declare dataset licenses and provide upstream source-level attribution, revisions, and compatibility analysis'
+- 'needs_split_audit: reconcile HardVerify paper/release composition and publish exact and semantic overlap checks'
+- 'needs_release_pin: create a named paper release that reconciles launchers with the paper and binds code, data, weights,
+  prompts, and results'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: The 2025 workshop acceptance, paper identity, public code, datasets, schemas/counts, model checkpoints, and pinned
+    artifact heads were checked. Artifact verification covers available releases, not missing construction lineage, exact
+    experiment reproducibility, data licensing, or decontamination.

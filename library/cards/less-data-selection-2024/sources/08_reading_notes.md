@@ -1,0 +1,5 @@
+- Positioning: LESS releases gradient influence scores and task-specific instruction subsets selected from larger public pools.
+- Method handle: LESS trains a lightweight warmup model, embeds source and target examples by their gradients, ranks source records by estimated target influence, and releases the scores and task-specific subsets used for tuning.
+- Data handle: public instruction pools, gradient features, influence scores, and task-specific selected subsets; each record contains instruction-response record, gradient or influence score, target task, and selected split.
+- Evidence anchor: With matched model and evaluation settings, LESS selects about 5 percent of the source pool while matching or exceeding full-data and existing selection baselines on several target tasks; controlled comparisons isolate gradient-based ranking from dataset size.
+- Reuse decision: best for building a small task-targeted SFT subset from a large instruction pool; first audit selection can overfit a tiny target validation set and erase coverage.

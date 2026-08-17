@@ -1,0 +1,1 @@
+Erhan Zhang、Yiqun Chen、Zechun Niu、Wei Yang、Xiaochi Wei、Yan Gao、Yi Wu、Yao Hu、Jiaxin Mao。《OASES: Outcome-Aligned Search-Evaluation Co-Training for Agentic Search》。arXiv:2604.03675，v3，2026。https://arxiv.org/abs/2604.03675 · https://arxiv.org/bibtex/2604.03675。早期标题 PRAISE 属于先前版本；本卡未确认作者官方代码或数据发布。

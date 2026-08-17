@@ -1,0 +1,1 @@
+既有基线是完整 MATH evaluation：5,000 道 test problems，评分成本和报告摩擦较高。MATH-500 改变的是评测工作流，用一个固定小子集和公开 grader 提供更容易复用的报告坐标。方向信号是让 math-verifier 论文更方便做可比评测。质量信号来自它与 MATH 的谱系关系和 OpenAI 发布的 split。并不新的部分是题源、答案格式和评分哲学。复用前要检查 subset lineage、MATH license、grader 精确性、答案抽取、污染风险，以及报告的 solver 是否使用额外搜索。

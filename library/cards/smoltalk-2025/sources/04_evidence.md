@@ -1,0 +1,3 @@
+Decisive downstream experiment: The complete SmolLM2 recipe outperforms Qwen2.5-1.5B and Llama-3.2-1B on the paper's aggregate evaluation; the attribution boundary is the full staged data recipe rather than SmolTalk alone. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains about 1.1 million instruction-response conversations and exposes actual fields messages with role and content, plus a source label; on 2026-07-27 its page reported 20596 downloads. Usage is only an impact cross-check, not a causal experiment.

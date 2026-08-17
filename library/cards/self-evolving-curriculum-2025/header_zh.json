@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以类别平均绝对策略优势作为学习增益代理，通过非平稳 bandit 在线调整推理 RL 的类别采样分布；ICLR 2026 投稿已撤回。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "在线类别课程与 RLVR 数据选择",
+  "best_for_ch": "研究动态课程、类别 bandit、GRPO 数据调度和策略依赖训练分布的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaoyin Chen、Jiarui Lu、Minsu Kim、Dinghuai Zhang、Jian Tang、Alexandre Piché、Nicolas Gontier、Yoshua Bengio、Ehsan Kamalloo",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-13T12:30:04Z"
+}

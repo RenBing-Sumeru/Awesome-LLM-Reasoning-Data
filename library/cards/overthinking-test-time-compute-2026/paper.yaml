@@ -1,0 +1,110 @@
+id: overthinking-test-time-compute-2026
+title: 'When More Thinking Hurts: Overthinking in LLM Test-Time Compute Scaling'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Shu Zhou
+- Rui Ling
+- Junan Chen
+- Xin Wang
+- Tao Fan
+- Hao Wang
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+- scientific-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- scaling_report
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1199/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1199/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1199
+data_object:
+  prompt_source: AIME 2024/2025, MATH-500, and GPQA Diamond evaluation prompts.
+  trace_author: DeepSeek-R1-32B and s1-32B generate budget-forced and naturally long reasoning traces.
+  answer_format: Prompt, forced token budget, complete reasoning trace, final answer, correctness, answer-flip event, and
+    token-level log probabilities.
+  process_fields:
+  - prompt
+  - compute_budget
+  - reasoning_trace
+  - final_answer
+  - correctness
+  - positive_flip
+  - negative_flip
+  - confidence
+  environment_or_substrate: vLLM inference on four H100 GPUs.
+  verifier_or_reward: No reward model; benchmark answers determine correctness and analysis tracks answer changes across budgets.
+  terminal_predicate: Exact answer or benchmark-specific evaluation identifies correct final answers.
+recipe_metadata:
+  base_model: DeepSeek-R1-32B and s1-32B.
+  teacher: Not applicable; this is an evaluation and analysis study.
+  generator: Budget forcing appends “Wait” when a model finishes early and forces the end-of-thinking delimiter at the assigned
+    limit.
+  filtering_rule: No data filtering; each prompt is evaluated across 500–16,000-token budgets in 500-token increments.
+  sampling_protocol: Temperature-zero evaluations compare accuracy, marginal utility, flip events, and cost-aware utility
+    across budgets.
+  rollout_count: One deterministic trace per problem and budget; 32 budget points per problem.
+  temperature: '0.'
+  inference_budget: 500 to 16,000 reasoning tokens in 500-token increments.
+  optimizer_or_scaffold: Budget-forced decoding, marginal-utility analysis, flip-event tracking, and cost-aware utility evaluation.
+audit:
+  source_mixture: Official ACL paper.
+  split: AIME 2024/2025, difficulty-labeled MATH-500, and GPQA Diamond; a natural-long-trace validation uses 560 samples.
+  decontamination: No formal contamination audit is claimed.
+  license: Check benchmark and model licenses before reproduction.
+  lineage: https://aclanthology.org/2026.findings-acl.1199/
+  known_failure_modes:
+  - budget-forcing-artifact
+  - limited-model-family
+  - math-and-science-scope
+  - causal-mechanism-uncertainty
+  - no-released-code
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF checked on 2026-07-21. Authors are affiliated with Nanjing University, Baidu, and Nanjing University
+    of Finance & Economics. No dedicated code or data release is linked in the paper.
+inclusion_reason: It measures the marginal value of additional reasoning tokens and shows why a compute-allocation policy
+  needs stopping criteria rather than assuming monotonic gains from longer chains.
+related: []
+tags:
+- test-time-scaling
+- overthinking
+- adaptive-stopping
+- compute-budget
+- evaluation
+status: verified
+one_line_summary: This study shows that longer reasoning can reverse correct answers and proposes marginal-utility and flip-event
+  analysis for selecting test-time budgets.
+reading_priority: recommended
+paper_type: Test-time compute scaling evaluation and efficiency analysis
+best_for: Readers choosing stopping budgets or evaluating adaptive reasoning systems that need accuracy-cost curves rather
+  than a single maximum-budget score.
+confidence: high
+why_it_matters: It supplies a concrete failure mode for indiscriminate test-time scaling and turns “when to stop” into a measurable
+  allocation decision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper checked; no dedicated code, dataset, or project link is reported.
+category_ids:
+- scaling_rlvr_test_time_compute

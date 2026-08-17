@@ -1,0 +1,1 @@
+He et al. (2025), “Breaking the Reasoning Barrier A Survey on LLM Complex Reasoning through the Lens of Self-Evolution,” Findings of ACL 2025, pages 7377–7417. Official record: https://aclanthology.org/2025.findings-acl.386/ .

@@ -1,0 +1,9 @@
+- **使用接收版 publication identity。** ICLR 2025 proceedings record 确认题名、作者、venue 与接收版结果。ArXiv `2410.10878v2` 适合追踪版本历史，但其 abstract 仍保留旧分数，因此报告性能时不能让它无说明地取代 proceedings version。
+
+- **区分 release counts 与 training counts。** 公开发布精确包含 **579,883** 条 statement rows 与 **44,553** 条 proof rows，二者都只有一个 `train` split。同一批 579,883 pairs 同时用于 NL-to-FL 与 FL-to-NL 后得到 **116 万** 个有方向的 training examples，而不是 116 万个不同的发布 pairs。论文中的 291K originals、580K statements、44K 或 45K proofs 等近似数有助于解释 recipe，但不能覆盖 release schemas。所报 1:2:1 original:tactic:informal mixture 也无法逐行恢复，因为公开 rows 没有 component label。
+
+- **分层解释 validation。** Lean compilation 是形式文本能在特定环境 elaboration 的强证据；对 complete proof 来说，它还能检查证明，但它不是 NL-FL equivalence test。以 `:= sorry` 结尾的 statement 可在没有 proof 时编译。Back-translation 加 DeepSeek-V2.5 NLI 是依赖判断的 semantic proxy，因此任何声称组合 pipeline 能验证含义的论述都应同时报告 Table 4 人工审计：151 个 Herald outputs 通过，只有 101 个完全正确。
+
+- **按 scope 与 revision 阅读 repositories。** `herald_translator` 包含 translator inference、Lean REPL check、back-translation、NLI 及 evaluation data/configuration，并不是 corpus builder；论文关联的 Lean-Jixia URL 在核验时不可用。已核验 revisions 为 statements `d8d849682ecfba92dda26026a97e10a662187f4c`、proofs `2d31b459df74d730bff85682de237d894b4eecfa`、model `c819f8707ef7486befcac64b7ce907afa7fb7dd4`、code `f03f6c40e57baae4ed084f29e0511364f41a2370`、Lean environment `25a1d0527272e24bc88f0aec08db74e69b5db4b3`；没有 manifest 将它们绑定到一个 named release。Test environment 固定 Lean 4.11.0、Mathlib `20c73142afa995ac9c8fb80a9bb585a55ca38308` 与 REPL `adbbfcb9d4e61c12db96c45d227de92f21cc17dd`；这些是 runtime pins，不是已证明的逐行 construction provenance。
+
+- **保留 unknowns。** 最关键的缺失信息包括精确 Mathlib revision 与 declaration manifest、generator 与 checkpoint、embedding model 与 index、完整 prompts 与 decoding、construction code、row lineage、random seeds、candidate 与 reject ledgers、semantic audit labels、split logic 以及 decontamination results。它们应保留为 unknown，不能用假设补齐。

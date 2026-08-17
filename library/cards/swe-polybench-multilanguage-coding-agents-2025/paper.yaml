@@ -1,0 +1,120 @@
+id: swe-polybench-multilanguage-coding-agents-2025
+title: 'SWE-PolyBench: A multi-language benchmark for repository level evaluation of coding agents'
+year: 2025
+venue: arXiv
+authors:
+- Muhammad Shihab Rashid
+- Christian Bock
+- Yuan Zhuang
+- Alexander Buchholz
+- Tim Esler
+- Simon Valentin
+- Luca Franceschi
+- Martin Wistuba
+- Prabhu Teja Sivaprasad
+- Woo Jung Kim
+- Anoop Deoras
+- Giovanni Zappella
+- Laurent Callot
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- code-generation
+- agent-evaluation
+training_use:
+- evaluation
+- agent_training
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.08703
+  arxiv: https://arxiv.org/abs/2504.08703
+  code: https://github.com/amazon-science/SWE-PolyBench
+  data: https://huggingface.co/datasets/AmazonScience/SWE-PolyBench
+  project: https://amazon-science.github.io/SWE-PolyBench/
+  huggingface: https://huggingface.co/datasets/AmazonScience/SWE-PolyBench
+  doi: https://doi.org/10.48550/arXiv.2504.08703
+  venue: null
+  openreview: https://openreview.net/forum?id=n577FC6CKk
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Issues and pull requests from 21 real repositories.
+  trace_author: Repository contributors and benchmark constructors.
+  answer_format: Problem statement, repository revision, gold patch, F2P/P2P test sets, Dockerfile, test command, language
+    and syntax-tree metadata.
+  process_fields:
+  - issue
+  - gold patch
+  - F2P tests
+  - P2P tests
+  - Dockerfile
+  - test command
+  - CST metadata
+  environment_or_substrate: Language-specific containerized repository environments.
+  verifier_or_reward: F2P/P2P test execution in the supplied environment.
+  terminal_predicate: A patch passes required fail-to-pass and pass-to-pass tests.
+recipe_metadata:
+  base_model: Not applicable to benchmark construction.
+  teacher: Repository tests and gold pull requests.
+  generator: Repository issue and pull-request mining with environment packaging.
+  filtering_rule: Curated tasks are retained with executable environments and test contracts.
+  sampling_protocol: Full 2,110-task release plus stratified PB500 and verified subsets.
+  rollout_count: null
+  temperature: null
+  inference_budget: Container execution and model sampling budget must be controlled in comparisons.
+  optimizer_or_scaffold: Automated evaluation harness with file and concrete-syntax-tree retrieval metrics.
+audit:
+  source_mixture: Official arXiv paper, Amazon Science GitHub repository, Amazon Science project page, AWS announcement, and
+    Hugging Face dataset card.
+  split: Full 2,110-task set, PB500, and a separately curated verified subset.
+  decontamination: Audit public issue/PR leakage, Docker image version, tests that changed after the target commit, and cross-split
+    repository overlap.
+  license: Official code and Hugging Face dataset documentation list MIT; verify upstream repository terms before reuse.
+  lineage: https://arxiv.org/abs/2504.08703
+  known_failure_modes:
+  - Public repository history can leak gold patches.
+  - Test-based success can miss untested regressions.
+  - The original release is uneven across languages and repositories.
+  citation_status: verified
+  confidence: high
+  notes: Official Amazon Science repositories/pages verify code, dataset, project, and AWS affiliation. The OpenReview record
+    is submitted to ICLR 2026; no acceptance claim was found.
+inclusion_reason: SWE-PolyBench supplies repository tasks with Dockerfiles and F2P/P2P tests, enabling executable verification
+  of generated patches across four languages.
+related: []
+tags:
+- software-engineering
+- multilingual
+- unit-tests
+- docker
+- '2025'
+one_line_summary: SWE-PolyBench pairs 2,110 multi-language repository tasks with Dockerized F2P/P2P tests to measure whether
+  coding-agent patches really resolve an issue.
+why_it_matters: Its paired pass/fail test partitions and frozen environment make patch correctness auditable across different
+  language ecosystems.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official Amazon Science repositories/pages verify code, dataset, project, and AWS affiliation. The OpenReview record
+    is submitted to ICLR 2026; no acceptance claim was found.
+category_ids:
+- programmatically_verifiable_outcome_data

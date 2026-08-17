@@ -1,0 +1,5 @@
+- Start with Paper §§2.1–2.2 and the Hugging Face schema: the released row is `id/question/response/token_num_qwen`, not a labeled short/long or verified program trace.
+- Read Table 2 under its 74M-token budget; longest-greedy has fewer samples than shortest-greedy, so length and count must be interpreted together.
+- Treat the approximately 3% removal as repetition filtering, not correctness verification or documented semantic deduplication; the detector and rejected rows are absent.
+- Use Table 3 and Appendix D.3 together: STW can recover answers after a cap, but a 2,048-token budget can truncate necessary reasoning and change a correct answer to a wrong one.
+- Before reuse, resolve the dataset/code license, upstream revision and per-row lineage, decontamination and prompt overlap, teacher-generation settings, truncation flags, and missing rejected-generation manifest.

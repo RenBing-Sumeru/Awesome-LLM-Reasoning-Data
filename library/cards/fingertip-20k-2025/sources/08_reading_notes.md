@@ -1,0 +1,5 @@
+- Read Table 1, §4.2, and Appendix A.4 first: “20K” refers to longitudinal human Android episodes, not 20,000 unique tasks or model rollouts; the paper reports 21,437 episodes.
+- Keep the public-release audit beside the paper statistics: `total.csv` exposes 20,000 rows, 83 users, and 482 app identifiers, with no official explanation for the 21,437/95/506 gap.
+- Read §5.1 with both official scripts: `SR1` is absent from the proactive implementation, while execution success requires external manual final-state review and the public script writes `success=0`.
+- Treat split units carefully: suggestion has 1,000 rows but 996 unique episode keys, and 172 unique keys overlap the 200-key execution test; the main split is temporal within users.
+- Before reuse, pin arXiv v2, GitHub commit `e73a4dac3bd13ea32b7836525ff074a69cb047ea`, and Kaggle version 2, then resolve code licensing, privacy/consent scope, training details, and live-environment reset/replay metadata.

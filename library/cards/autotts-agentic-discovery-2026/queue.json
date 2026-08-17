@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-21T02:29:18Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将分支、探测、剪枝与停止的测试时计算分配变为可自动搜索的控制策略",
+    "updated_at": "2026-07-21T02:29:18Z"
+  }
+}

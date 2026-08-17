@@ -1,0 +1,16 @@
+{
+  "title": "LongRLVR: Long-Context Reinforcement Learning Requires Verifiable Context Rewards",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.02146"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:33:26Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它把可验证的证据块选择显式写入长上下文 RLVR 奖励，且有 ICLR 论文、代码、数据、模型与较完整的训练/审计信息",
+    "updated_at": "2026-07-15T12:33:26Z"
+  }
+}

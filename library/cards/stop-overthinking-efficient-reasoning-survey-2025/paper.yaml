@@ -1,0 +1,111 @@
+id: stop-overthinking-efficient-reasoning-survey-2025
+title: 'Stop Overthinking: A Survey on Efficient Reasoning for Large Language Models'
+year: 2025
+venue: Transactions on Machine Learning Research
+authors:
+- Yang Sui
+- Yu-Neng Chuang
+- Guanchu Wang
+- Jiamu Zhang
+- Tianyi Zhang
+- Jiayi Yuan
+- Hongyi Liu
+- Andrew Wen
+- Shaochen Zhong
+- Na Zou
+- Hanjie Chen
+- Xia Hu
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- reasoning-data
+- chain-of-thought
+- inference-efficiency
+- evaluation
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2503.16419
+  arxiv: https://arxiv.org/abs/2503.16419
+  code: https://github.com/Eclipsess/Awesome-Efficient-Reasoning-LLMs
+  data: null
+  project: https://github.com/Eclipsess/Awesome-Efficient-Reasoning-LLMs
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.16419
+  venue: https://openreview.net/forum?id=HvoG8SxggZ
+  openreview: https://openreview.net/forum?id=HvoG8SxggZ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed complex reasoning tasks and their explicit reasoning traces.
+  trace_author: Primary studies reviewed by the survey; no new trace corpus is released.
+  answer_format: A taxonomy of model-, output-, and prompt-based ways to improve reasoning efficiency.
+  process_fields:
+  - input difficulty
+  - reasoning trace
+  - length budget
+  - efficiency method
+  - task score
+  environment_or_substrate: Large language models that produce explicit reasoning before an answer.
+  verifier_or_reward: Summarizes task-specific correctness and efficiency measurements; releases no shared verifier.
+  terminal_predicate: Task-specific quality together with a stated efficiency measure.
+recipe_metadata:
+  base_model: No single model; this is a literature survey.
+  teacher: Reviewed work uses heterogeneous supervision.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: Organizes model-based, reasoning-output-based, and input-prompt-based efficiency methods.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new training recipe.
+audit:
+  source_mixture: Official arXiv record, TMLR publication record, and linked project repository.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion for all reviewed benchmarks.
+  license: Check the source paper and repository terms before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2503.16419'
+  known_failure_modes:
+  - A shorter trace can discard a necessary inference step.
+  - Aggregate efficiency can hide poor behavior on difficult inputs.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract calls this the first structured survey of efficient reasoning in LLMs.
+inclusion_reason: A TMLR 2025 survey from Rice University and University of Houston that directly covers reasoning traces,
+  efficient training data, and evaluation.
+related: []
+tags:
+- foundations-and-primers
+- efficient-reasoning
+- chain-of-thought
+- tmlr-2025
+- survey
+why_it_matters: It links trace data, adaptive budgets, and evaluation rather than treating efficiency as mere token reduction.
+one_line_summary: A TMLR survey of how to reduce redundant reasoning without treating trace length as the only goal.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers comparing efficient reasoning methods, data, and evaluation protocols.
+confidence: high
+status: verified
+needs:
+- 'unknown: a shared protocol for accuracy, trace quality, latency, and cost'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official title, abstract, TMLR publication record, and repository were checked.
+category_ids:
+- foundations_and_primers

@@ -1,0 +1,172 @@
+id: debuglm-2026
+title: 'DebugLM: Learning Traceable Training Data Provenance for LLMs'
+year: 2026
+venue: arXiv preprint
+authors:
+- Wenjie Jacky Mo
+- Qin Liu
+- Xiaofei Wen
+- Wenxuan Zhou
+- Zhe Zhao
+- Muhao Chen
+source_role:
+- construction_recipe
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- data-provenance
+- safety
+- factual-qa
+- medical-qa
+- hazardous-knowledge
+training_use:
+- sft
+- rlvr
+- audit
+- safety_alignment
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.17884
+  arxiv: https://arxiv.org/abs/2603.17884
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2603.17884
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Stage 1 uses instruction-response records from TOFU, ChatDoctor, TruthfulQA, and Beavertails; Stage 2 applies
+    GRPO on WMDP. A separate multi-source study derives 1,254 instances from QuoteSum.
+  trace_author: The main five-dataset study retains existing dataset targets and adds provenance and control labels. GPT-4o-mini
+    synthesizes single-source QA pairs only for the QuoteSum study, and Llama-3.1-70B constructs only the semantic-perturbation
+    evaluation set.
+  answer_format: Ordinary mode emits the task response. Diagnostic mode emits that response plus one dataset-level provenance
+    tag. Remediation mode emits a standardized refusal when the requested quarantine tag matches the record source and otherwise
+    retains the task response.
+  process_fields:
+  - instruction
+  - target response
+  - operating-mode trigger
+  - source provenance tag
+  - quarantine control tag
+  - ordinary or refusal target
+  - training stage membership
+  environment_or_substrate: 'An offline two-stage optimization pipeline: instruction tuning on four heterogeneous datasets,
+    then GRPO alignment on WMDP, with tracing and remediation objectives added to ordinary task training. The data object
+    is not a multi-step debugging episode and contains no tool execution, environment observation, or persisted runtime state.'
+  verifier_or_reward: Tracing is evaluated by exact-match Tracing Success Rate against known source tags; remediation is evaluated
+    with an intervention matrix of refusal rates. Free-form utility uses Llama-3-70B-Instruct as judge, while WMDP and academic
+    benchmark utility use exact match. The Stage 2 GRPO reward implementation is unknown, and no execution feedback is part
+    of the reported record schema.
+  terminal_predicate: The main diagnostic interface produces one response and tag in one forward pass. Evaluation counts tracing
+    success when the ground-truth tag is emitted; the two-source study requires all relevant tags to appear at least once
+    across ten sampled outputs. Remediation seeks refusal on the quarantined source and ordinary generation elsewhere. No
+    episodic training stop condition is reported.
+recipe_metadata:
+  base_model: Llama-3-8B and Qwen-3-8B.
+  teacher: No teacher is reported for the main five-dataset training mixture. GPT-4o-mini is used only to synthesize QuoteSum-derived
+    single-source QA pairs, Llama-3.1-70B only to synthesize a semantic-perturbation evaluation set, and Llama-3-70B-Instruct
+    only as a free-form utility judge.
+  generator: For each source instruction-response pair, create an ordinary example and a diagnostic example whose target appends
+    the source tag. For remediation, sample a control tag and train a refusal target when it matches the true source; otherwise
+    retain the ordinary response.
+  filtering_rule: unknown
+  sampling_protocol: Each source receives one dedicated tag. The QuoteSum study trains on isolated single-source pairs, then
+    evaluates queries requiring two sources by aggregating tags across ten generations. The control-tag sampling distribution
+    and ordinary-to-diagnostic example ratio are unknown.
+  rollout_count: unknown
+  temperature: 1.0
+  inference_budget: The main tracing interface uses one forward pass. Multi-source tracing uses ten samples with top-p 0.95
+    and temperature 1.00; this is an evaluation-specific decoding budget, not a disclosed training rollout budget.
+  optimizer_or_scaffold: Stage 1 instruction tuning on TOFU, ChatDoctor, TruthfulQA, and Beavertails is followed by Stage
+    2 GRPO on WMDP. A weighted dual-mode tracing loss and conditional remediation loss augment the ordinary objectives. The
+    tracing-loss weight, optimizer settings, batch sizes, epoch counts, and GRPO reward details are unknown.
+audit:
+  source_mixture: TOFU, ChatDoctor, TruthfulQA, and Beavertails in Stage 1; WMDP in Stage 2; QuoteSum in a separate 1,254-instance
+    multi-source study.
+  split: Tracing uses held-out test sets, and the semantic-perturbation study uses 576 held-out TOFU development instances.
+    Exact split counts for the main mixture and immutable source revisions are unknown.
+  decontamination: unknown
+  license: The arXiv paper is CC BY 4.0. No official DebugLM code, checkpoint, or transformed-data license is available because
+    no such release was confirmed; each upstream dataset retains its own terms.
+  lineage: Known source dataset and training stage -> assign a source tag -> construct ordinary, diagnostic-tagged, and control-tagged
+    training variants -> sequential instruction tuning and GRPO -> developer-triggered source self-report or source-targeted
+    refusal. This is designed dataset-level lineage, not authenticated proof that one record caused one output.
+  known_failure_modes:
+  - The method requires control of training and a known source mixture; it cannot be attached retroactively to a frozen black-box
+    model.
+  - The primary unit is an instruction-response record with source labels, not a debugging episode with actions, observations,
+    execution feedback, and a runtime terminal state.
+  - The paper does not release per-example failure records that connect a bad output, its diagnostic tag, the selected remediation,
+    and a replay result.
+  - Replayability is limited by absent official code, checkpoints, transformed records, immutable dataset revisions, and full
+    training configuration.
+  - Dataset-level tags do not establish record-level causality, and overlapping sources may make a unique source label conceptually
+    ambiguous.
+  - Training emits one tag per sequence; multi-source recovery depends on repeated stochastic sampling and its success definition.
+  - Later fine-tuning can weaken or spoof the learned tag mapping, while self-reported tags are not independently authenticated
+    evidence.
+  - The developer trigger and quarantine tags create an access-control and misuse surface that the paper does not operationally
+    secure.
+  - Scaling to very many fine-grained or overlapping sources may introduce capacity pressure and tag interference.
+  - Free-form utility depends on one model judge, whose rubric, calibration, and disagreement analysis are unknown.
+  - Table 5 reports non-trivial Llama-based utility drops, including 58.57 to 52.11 on MMLU and 79.18 to 73.55 on ARC-Challenge.
+  - Decontamination, source revision pinning, filtering, core optimization hyperparameters, and the Stage 2 GRPO reward implementation
+    are unknown.
+  citation_status: verified
+  confidence: high
+  notes: The official arXiv v1, HTML paper, and author publication pages were checked on 2026-07-19. Method and bibliographic
+    claims are well specified, but reproducibility and released-artifact evidence remain partial.
+inclusion_reason: DebugLM makes dataset provenance part of the post-training record and model output through explicit source
+  tags, then converts the same labels into a tracing and selective-refusal interface across sequential instruction tuning
+  and GRPO stages.
+related: []
+tags:
+- data-provenance
+- lineage
+- source-tags
+- multi-stage-training
+- traceability
+- test-time-remediation
+- targeted-refusal
+- audit
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: DebugLM augments ordinary post-training records with dataset-level provenance and quarantine labels so a
+  trained model can self-report a source tag or selectively refuse source-associated behavior.
+why_it_matters: It is a concrete construction pattern for carrying source identity through post-training into deployment-time
+  diagnosis, while exposing the audit gap between a trained self-report and independently replayable lineage.
+card: null
+needs:
+- 'needs_artifacts: no official DebugLM code, checkpoint, transformed dataset, or project release was confirmed'
+- 'needs_training_metadata: loss weight, optimizer settings, batch size, epochs, and Stage 2 reward details are unknown'
+- 'needs_replayability: publish immutable source revisions, transformed records, stage manifests, configurations, and deterministic
+  evaluation scripts'
+- 'needs_failure_records: retain output, emitted tag, quarantine choice, refusal outcome, and replay result for each diagnosed
+  failure'
+- 'needs_lineage_audit: validate tags under overlapping sources, record-level influences, later fine-tuning, and adversarial
+  spoofing'
+- 'needs_license: audit each upstream dataset and any future transformed-data release separately'
+- 'needs_decontamination: no overlap or contamination procedure is reported'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv citation, full paper contents, and author publication pages verified; no official reusable implementation,
+    checkpoint, or transformed-data artifact was confirmed.

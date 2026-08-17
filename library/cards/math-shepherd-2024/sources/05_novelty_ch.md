@@ -1,0 +1,1 @@
+既有基线要么是 PRM 类数据集里的昂贵人工步骤标签，要么是只监督最终答案的廉价 outcome labels。Math-Shepherd 改变的是反馈层：用 continuation success 自动诱导 step rewards。方向信号是无需人工逐步标注的可扩展过程监督。质量信号是每个伪标签都能追溯到被答案检查的 rollouts。并不新的部分是 final-answer grading 和 verifier-guided selection。复用前要检查 rollout budget、answer checker 错误、标签校准、generator 与 PRM 使用场景的分布偏移，以及 license/artifact 可得性。

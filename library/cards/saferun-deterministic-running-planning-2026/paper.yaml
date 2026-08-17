@@ -1,0 +1,101 @@
+id: saferun-deterministic-running-planning-2026
+title: 'SafeRun: Enabling Determinism in LLM Planning for Running'
+year: 2026
+venue: ICML 2026 LM4Plan Workshop
+authors:
+- Meilin Chen
+- Zepeng Zhai
+- Jiaxuan Zhao
+- Yuan Lu
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- planning
+- safety
+training_use:
+- evaluation
+- sft
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.09027
+  arxiv: https://arxiv.org/abs/2606.09027
+  code: null
+  data: https://huggingface.co/datasets/zzp-seeker/SafeRun-RunPlanning-Benchmark
+  project: null
+  huggingface: https://huggingface.co/datasets/zzp-seeker/SafeRun-RunPlanning-Benchmark
+  doi: https://doi.org/10.48550/arXiv.2606.09027
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Human-curated multi-week running requests paired with runner profiles.
+  trace_author: Ten human experts curate requests; SafeRun produces solver-constrained plans.
+  answer_format: Natural-language request, runner profile, constrained plan, and rule-based scores.
+  process_fields:
+  - runner_profile
+  - planning_request
+  - solver_api_calls
+  - plan
+  - safety_score
+  environment_or_substrate: OR-Tools CP-SAT deterministic solver and predefined planning APIs.
+  verifier_or_reward: Rule-based checks of intensity, rest, weekly mileage, and per-session mileage constraints.
+  terminal_predicate: Every hard running-safety constraint is satisfied by the generated plan.
+recipe_metadata:
+  base_model: Five proprietary and open-source LLMs are evaluated as language interfaces.
+  teacher: Ten human experts curate queries and profiles; the deterministic solver supplies validity feedback.
+  generator: LLM parses a request into calls to predefined planning APIs; CP-SAT returns a plan or conflict.
+  filtering_rule: Retain feasible profile-query pairs that conform to the prescribed safety rules.
+  sampling_protocol: 100 curated queries, 10 profiles, and four random profile pairings per query yield 400 evaluation combinations.
+  rollout_count: 5
+  temperature: null
+  inference_budget: Fix planning APIs, CP-SAT implementation, rules, model version, profiles, and iteration cap.
+  optimizer_or_scaffold: Decoupled CodeAct-style generate-execute loop with deterministic constraint enforcement.
+audit:
+  source_mixture: Official arXiv paper and author Hugging Face benchmark release.
+  split: 100 queries, 10 profiles, and 400 profile-query combinations; consult the release for file-level splits.
+  decontamination: Audit potential overlap between public running plans and model pretraining data before use.
+  license: Check the official dataset card before reuse.
+  lineage: https://huggingface.co/datasets/zzp-seeker/SafeRun-RunPlanning-Benchmark
+  known_failure_modes:
+  - The benchmark includes feasible profile-query pairs only and does not test conflicting requests.
+  - The hard constraints are manually designed for running and may not generalize to other domains.
+  - A solver can only enforce constraints correctly parsed from the user request.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, first-page affiliations, workshop venue statement, and author Hugging Face release were checked.
+inclusion_reason: SafeRun releases solver-checked planning tasks whose terminal plans are accepted only when hard safety constraints
+  are satisfied.
+related: []
+tags:
+- planning
+- deterministic-solver
+- safety
+- benchmark
+- icml-2026
+one_line_summary: SafeRun pairs running-plan requests with a CP-SAT solver so every accepted plan is checked against explicit
+  safety constraints.
+why_it_matters: It provides a narrow but fully programmatic planning surface for studying hard-constraint enforcement.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, workshop venue statement, author affiliations, and benchmark release were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

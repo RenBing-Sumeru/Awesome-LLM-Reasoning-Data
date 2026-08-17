@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T08:54:16Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将历史推理经验作为可检索记忆用于后续任务，使智能体能在运行时以经验提升推理效果",
+    "updated_at": "2026-07-20T08:54:16Z"
+  }
+}

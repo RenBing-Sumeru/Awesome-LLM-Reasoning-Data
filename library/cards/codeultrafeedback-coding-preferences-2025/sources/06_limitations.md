@@ -1,0 +1,3 @@
+All annotations are produced by GPT-3.5, so ratings and rationales can inherit judge-model blind spots, outdated programming knowledge, or preference for familiar style. Check cases where compilation, tests, security, or user requirements disagree with the rating. Candidate generators also create a restricted model distribution; a reward model may learn generator identity or response style rather than the stated preference.
+
+The public viewer shows a training split only. Users need a separate evaluation protocol, contamination check against HumanEval+ and local code benchmarks, and license review for instructions and generated code. Do not infer that the release covers proprietary APIs, production constraints, or all five preferences equally.

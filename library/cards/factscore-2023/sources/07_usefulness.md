@@ -1,0 +1,5 @@
+Use FActScore as an audit schema for long-form factuality. The reusable fields are topic, generation text, sentence boundaries if used, atomic facts, knowledge-source identifier, retrieved evidence, support label, abstain flag, length-penalty setting, estimator name, package version, and final aggregate scores.
+
+It is especially useful when a single answer-level factuality label is too coarse: biographies, entity descriptions, long summaries, retrieval-augmented responses, and grounded generation can all contain a mixture of supported and unsupported statements. The metric helps identify whether a model is verbose but inaccurate, terse but precise, or high-coverage with many unsupported claims.
+
+For downstream data work, keep human FActScore, automatic FActScore, retrieved evidence, and model outputs separate. Human labels can be audit evidence; automatic labels can support scalable evaluation; neither should be treated as a reward model or training target without a separate analysis of judge error and source coverage.

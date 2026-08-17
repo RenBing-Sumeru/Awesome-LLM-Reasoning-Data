@@ -1,0 +1,166 @@
+id: swe-smith-scaling-data-construction-for-software-engineering-agents-2025
+title: 'SWE-smith: Scaling Data for Software Engineering Agents'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- John Yang
+- Kilian Lieret
+- Carlos E. Jimenez
+- Alexander Wettig
+- Kabir Khandpur
+- Yanzhe Zhang
+- Binyuan Hui
+- Ofir Press
+- Ludwig Schmidt
+- Diyi Yang
+source_role:
+- data_release
+- construction_recipe
+- agent_environment
+- scaling_study
+verification_contract:
+- programmatic
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- software_engineering
+- code
+- python
+- agents
+training_use:
+- agent_training
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/8b86cf5ace600c48fd188efbb8dedec8-Abstract-Datasets_and_Benchmarks_Track.html
+  arxiv: https://arxiv.org/abs/2504.21798
+  code: https://github.com/SWE-bench/SWE-smith
+  data: https://huggingface.co/datasets/SWE-bench/SWE-smith
+  project: https://swesmith.com/
+  huggingface: https://huggingface.co/datasets/SWE-bench/SWE-smith
+  doi: https://doi.org/10.48550/arXiv.2504.21798
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/8b86cf5ace600c48fd188efbb8dedec8-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: https://openreview.net/forum?id=63iVrXc8cC
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Synthetic repair issues built from bug-inducing diffs, one sampled Fail-to-Pass test source, and execution
+    output in 128 Python repositories; the paper excludes the 12 SWE-bench test repositories.
+  trace_author: SWE-agent runs with Claude 3.7 Sonnet for most trajectories and smaller Claude 3.5 Sonnet and GPT-4o comparison
+    subsets.
+  answer_format: Task rows contain instance_id, bug-inducing patch, FAIL_TO_PASS, PASS_TO_PASS, image_name, repo, and problem_statement;
+    trajectory rows contain an agent message sequence linked by instance_id.
+  process_fields:
+  - instance_id
+  - patch
+  - FAIL_TO_PASS
+  - PASS_TO_PASS
+  - image_name
+  - repo
+  - problem_statement
+  - trajectory messages
+  - resolved, model, traj_id, and submitted patch in the later trajectory revision
+  environment_or_substrate: A Docker image shared by tasks from one repository and pinned commit, with repository-specific
+    install, test, and output-parsing instructions.
+  verifier_or_reward: Candidate bugs are retained only when they make at least one previously passing test fail; repair outcomes
+    are graded by Fail-to-Pass and Pass-to-Pass tests in the executable environment.
+  terminal_predicate: A submitted repair is resolved when all target failing tests recover and the designated preservation
+    tests continue to pass; timeouts and harness errors are not successful resolutions.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-Instruct-7B and Qwen2.5-Coder-Instruct-32B; the main released model uses 32B.
+  teacher: Claude 3.7 Sonnet (claude-3-7-sonnet-20250219) for most trajectories, with smaller Claude 3.5 Sonnet and GPT-4o
+    comparison subsets.
+  generator: LM Modify, LM Rewrite, procedural AST transformations, patch combination, and PR Mirror create bug candidates;
+    an LM writes issue text from the diff, a sampled failing test, and test output.
+  filtering_rule: Require a repository image with more than 80% of existing tests passing; discard bug candidates that break
+    no previously passing test or whose test run exceeds two minutes; cap successful training trajectories at three per task.
+  sampling_protocol: Select eligible Python repositories, build one reusable environment per repository commit, synthesize
+    diff candidates, execute tests, retain test-breaking candidates, generate issue text, run SWE-agent teachers, and keep
+    resolved episodes for rejection-sampling fine-tuning.
+  rollout_count: 17906
+  temperature: 0.0
+  inference_budget: Expert runs use at most 75 steps and a USD 2 cost limit; the paper reports 17,906 attempts over 8,686
+    unique tasks and a 6,457-success pool before capping to 5,016 training episodes.
+  optimizer_or_scaffold: SWE-agent with bash, str_replace_editor, and submit actions; teacher function-call records are converted
+    to the XML-style action representation used for student fine-tuning.
+audit:
+  source_mixture: 50,137 synthetic Python repair tasks from 128 real repositories, spanning LM-generated mutations, procedural
+    mutations, combined patches, and mirrored pull-request edits.
+  split: The paper-time task release has 50,137 rows; the paper-time trajectory revision 470d6f28b7219c95f43c47843cc7c69f63e077f0
+    has 5,016 training rows. Later mutable revisions have different schemas and counts and must be pinned.
+  decontamination: The 12 SWE-bench test repositories were excluded from task construction, but no broader code, issue-text,
+    model-pretraining, or benchmark contamination audit is reported.
+  license: The toolkit and Hugging Face dataset cards declare MIT; licenses and redistribution terms of every source repository,
+    dependency, test, pull request, and generated issue still require downstream review.
+  lineage: Eligible PyPI repository to verified repository image to bug-inducing diff to test-breaking task plus generated
+    issue to SWE-agent attempt to executable outcome to capped successful SFT subset.
+  known_failure_modes:
+  - Existing tests are visible in the task repository, so SWE-smith as presented is training data rather than a hidden-test
+    evaluation set.
+  - Passing the repository tests establishes an executable contract but does not prove that a synthetic issue is realistic,
+    unambiguous, or free of solution leakage.
+  - Shared images reduce storage but replay still depends on image availability, repository state, parser behavior, harness
+    versions, and exact agent configuration.
+  - The paper-time successful SFT subset omits failed attempts; a later trajectory revision exposes resolved labels and includes
+    at least some unresolved rows, but completeness of failed-attempt retention is unknown.
+  - Current Hugging Face task metadata reports 59,136 examples while its prose still says 50,137, and later language-specific
+    releases are outside the original Python paper snapshot.
+  - SWE-bench Verified performance is evidence of downstream model utility, not proof that every task or trajectory is high
+    quality.
+  citation_status: primary_sources_linked
+  confidence: high
+  notes: Official NeurIPS paper, arXiv v2, OpenReview, GitHub, and immutable Hugging Face task and trajectory revisions checked
+    on 2026-07-19.
+inclusion_reason: An open environment-first recipe for scaling executable software-engineering task construction and successful
+  agent-trajectory distillation, with released code, task rows, environments, trajectories, and models.
+related: []
+tags:
+- curated-card
+- primary-link-checked
+- artifact-verified
+- swe
+- agents
+- executable-tests
+- synthetic-data
+- open-release
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives
+- programmatically_verifiable_outcome_data
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+- instruction_demonstration_rationale_data
+one_line_summary: SWE-smith builds 50,137 executable Python repair tasks from test-breaking synthetic diffs and distills 5,016
+  successful SWE-agent episodes selected from 17,906 attempts.
+why_it_matters: It makes the environment, task-construction contract, executable feedback, and trajectory-selection boundary
+  inspectable for the data-construction and open-release track.
+card: null
+needs:
+- 'needs_snapshot: pin task revision ea6d7173829c7ec8fa16c22055699ff2e9188091 or the paper-time release needed for reuse'
+- 'needs_snapshot: pin trajectory revision 470d6f28b7219c95f43c47843cc7c69f63e077f0 for the 5,016-row SFT set, or 08e109b4a59eaeebf80e4675cd125d42e7ac99a4
+  for the later schema'
+- 'needs_replay: record Docker image digests, source commits, harness and SWE-agent versions, parser versions, and exact run
+  configuration'
+- 'needs_lineage: audit source-repository, dependency, test, pull-request, and generated-issue licensing per task'
+- 'needs_outcome_audit: enumerate which failed attempts are present in the later trajectory release and which were discarded'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: card_writer
+  confidence: high
+  notes: NeurIPS proceedings paper and official GitHub, project, OpenReview, and Hugging Face artifacts were checked; mutable
+    releases are separated from the paper snapshot.

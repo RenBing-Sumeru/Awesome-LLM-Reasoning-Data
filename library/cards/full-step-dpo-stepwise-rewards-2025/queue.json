@@ -1,0 +1,18 @@
+{
+  "title": "Full-Step-DPO: Self-Supervised Preference Optimization with Step-wise Rewards for Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.1249/",
+    "code": "https://github.com/Anna7355/Full-Step-DPO",
+    "data": "https://github.com/Anna7355/Full-Step-DPO"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:51:42Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "它将整条推理链的逐步奖励都转化为偏好优化信号，显著细化过程监督的训练利用方式",
+    "updated_at": "2026-07-15T14:51:42Z"
+  }
+}

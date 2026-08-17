@@ -1,0 +1,5 @@
+Nemotron 3 is a Nano, Super, and Ultra model family based on a hybrid Mamba-Transformer mixture-of-experts architecture. The family report states that models are post-trained with a diverse collection of RL environments for reasoning, multi-step tool use, and inference-time reasoning-budget control. Rather than using separate task stages, the report says these environments are optimized simultaneously.
+
+The disclosed feedback surface is mixed and task-dependent. The family report specifies asynchronous RL with training and inference decoupled, GRPO, and masked importance sampling. Nano release material adds examples of automated compiler, numerical, and language checks, while NVIDIA reference documentation names additional Nano components such as GenRM and DPO. A complete mapping from each environment to its reward, verifier, dataset, and model is not disclosed.
+
+The central Track 12 contribution is therefore a release and disclosure ledger. It distinguishes a publicly visible software and artifact stack from the still-partial record of data allocation, gating, private inputs, environment state, and feedback calibration.

@@ -1,0 +1,1 @@
+VHG separates validity from difficulty in a three-party data loop and exposes unusually detailed aggregate rejection funnels. Its central principle is verifier-gated hard-data generation, not that every soft-judged example is exact.

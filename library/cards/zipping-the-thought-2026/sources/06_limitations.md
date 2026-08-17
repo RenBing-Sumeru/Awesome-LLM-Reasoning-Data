@@ -1,0 +1,3 @@
+- Results come from linear modulo-23 dependency chains; branching search, natural-language knowledge, diagrams, and domain shift may respond differently to compression.
+- Experiments cover selected Transformer families and length extrapolation, so the proposed rules are not universal across architectures or reasoning tasks.
+- The repository releases generators rather than a frozen dataset, and its license was not confirmed; exact replication depends heavily on seeds and templates.

@@ -1,0 +1,1 @@
+既有基线是 AITW 以及更小或没有显式 split 设计的 UI 数据集。AndroidControl 的变化是把截图、accessibility tree、high-level/step-level 指令、JSON action、大范围 app 覆盖和 app/task 泛化 split 结合成同一 benchmark 对象。方向信号是 GUI agent 评测必须记录数据规模和 OOD app 组成，而不能只看聚合动作准确率。不是新的部分包括人类演示、TFRecord、accessibility tree 和监督式动作预测。复用前要查 bucket 版本、split 泄漏、重复 app 状态、license 范围、Android app 可用性、accessibility-tree parser 依赖、坐标归一化和数据规模采样协议。

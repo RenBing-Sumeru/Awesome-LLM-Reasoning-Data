@@ -1,0 +1,138 @@
+id: reasonmed-2025
+title: 'ReasonMed: A 370K Multi-Agent Generated Dataset for Advancing Medical Reasoning'
+year: 2025
+venue: EMNLP
+authors:
+- Yu Sun
+- Xingyu Qian
+- Weiwen Xu
+- Hao Zhang
+- Chenghao Xiao
+- Long Li
+- Deli Zhao
+- Wenbing Huang
+- Tingyang Xu
+- Qifeng Bai
+- Yu Rong
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- medical_reasoning
+- medical_question_answering
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1344/
+  arxiv: https://arxiv.org/abs/2506.09513
+  code: https://github.com/alibaba-damo-academy/ReasonMed
+  data: https://huggingface.co/datasets/lingshu-medical-mllm/ReasonMed
+  project: https://github.com/alibaba-damo-academy/ReasonMed
+  huggingface: https://huggingface.co/datasets/lingshu-medical-mllm/ReasonMed
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1344
+  venue: https://aclanthology.org/2025.emnlp-main.1344/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1344/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.1344.bib
+data_object:
+  prompt_source: 194,925 non-test medical multiple-choice questions from MedQA, MedMCQA, PubMedQA, and six medical MMLU subsets
+  trace_author: Qwen2.5-72B, HuatuoGPT-o1-70B, and DeepSeek-R1-Distill-Llama-70B generate initial paths; GPT-4o-mini refines/summarizes
+    and GPT-o1 regenerates difficult items
+  answer_format: CoTMed stores a six-part rationale, ReasonMed wraps that rationale in think tags and follows it with a summary,
+    and ResponseMed stores the concise summary; each public row has instruction, blank input, and output strings
+  process_fields:
+  - instruction
+  - input
+  - output
+  environment_or_substrate: Static answer-key-conditioned medical multiple-choice QA; no clinical environment or evidence-retrieval
+    substrate is released
+  verifier_or_reward: Qwen2.5-72B emits Correct/Error plus an error reason and ranks accepted paths; GPT-4o provides 1-10
+    quality scores; a 100-case physician pilot supplies limited expert review
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Qwen2.5-7B and Qwen2.5-14B for reported full-parameter SFT experiments
+  teacher: Qwen2.5-72B, HuatuoGPT-o1-70B, DeepSeek-R1-Distill-Llama-70B, GPT-4o-mini, and GPT-o1
+  generator: Three initial teachers each sample one path at temperatures 0.7, 0.9, and 1.0, producing nine intended paths
+    per source question
+  filtering_rule: Count verifier errors across nine paths; easy items keep the ranker's top two, medium items refine the top
+    two with verifier feedback, and difficult items are regenerated with GPT-o1
+  sampling_protocol: Initial generation uses temperatures 0.7/0.9/1.0; released code sets top-p 0.9 and max_tokens 8192, then
+    applies answer-key-conditioned verification, ranking, EMD routing, refinement, regeneration, and summarization
+  rollout_count: 9
+  temperature: 0.7, 0.9, and 1.0
+  inference_budget: Released generator code allows 8,192 tokens per initial path; aggregate retry and API budgets are not
+    disclosed
+  optimizer_or_scaffold: Reported SFT uses three epochs, learning rate 1e-5 with cosine schedule and 10% warmup, context 4096,
+    bf16, DeepSpeed ZeRO-2, and 16 H20 GPUs
+audit:
+  source_mixture: MedQA train/dev (10,178/1,272), MedMCQA train (182,822), PubMedQA train/val (450/50), and dev/val portions
+    of six medical MMLU subsets, totaling 194,925 questions
+  split: Named benchmark test splits are excluded, but the HF release concatenates all three formulations into one train split
+    without source, difficulty, or pairing IDs
+  decontamination: Named test-split exclusion is reported; semantic overlap, duplicate-question, answer-leakage, and model-pretraining
+    contamination checks are unknown
+  license: The HF dataset card labels the release Apache-2.0; the GitHub repository has no license file, and source-by-source
+    question/derivative compatibility is not established
+  lineage: Public rows expose only instruction/input/output; source dataset, original ID, answer key, teacher/temperature,
+    verifier verdict/reason, difficulty tier, refiner, rejected paths, and cross-view linkage are absent
+  known_failure_modes:
+  - Answer-key-conditioned LLM judges can approve plausible rationales with unsupported or incorrect intermediate medical
+    claims
+  - The same Qwen2.5-72B family verifies and ranks, creating correlated selection errors
+  - Invalid, outdated, or ambiguous source questions can survive while generated text is forced toward a supplied option
+  - The three public views have unequal row counts and no stable identifier for one-to-one alignment
+  - Pilot physician review covers only 100 cases and omits reviewer count, instructions, agreement, and adjudication details
+  - Long rationales can state that none of the options is correct and still recommend an option, or invoke uncited guidelines
+    and studies
+  citation_status: verified
+  confidence: high
+  notes: ACL paper, appendix, Responsible NLP Checklist, official repository at commit 58eed958ba734056ead8cc80cd87e386d36f9577,
+    and HF release at f0eb606624bbbd6be88901f400eeec58fb19f700 were checked on 2026-07-21. Paper figures process 192,628 of
+    194,925 source questions; the difference is not explained.
+inclusion_reason: Releases three medical-reasoning SFT formulations and an explicit multi-teacher, answer-key verification,
+  difficulty-routing, refinement, and regeneration recipe.
+related: []
+tags:
+- medical-reasoning
+- multi-agent-data-generation
+- chain-of-thought
+- llm-as-judge
+- difficulty-routing
+- expert-audit
+- open-data
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Routes nine candidate paths per medical MCQ through answer-key-conditioned verification and easy/medium/difficult
+  repair, then releases three unequal SFT views totaling 1,111,555 rows.
+why_it_matters: Provides a concrete high-risk-domain construction recipe whose open rows also expose judge dependence, missing
+  lineage, count reconciliation, and medical-validity limits.
+card: null
+needs:
+- 'needs_audit: reconcile 194,925 source questions with 192,628 questions in Figures 4/6'
+- 'needs_audit: reconcile and pair CoTMed 370,022, ReasonMed 369,983, and ResponseMed 371,550 rows'
+- 'unknown: per-record source/original ID/answer/teacher/temperature/verdict/difficulty/refiner lineage'
+- 'unknown: source-by-source license compatibility and GitHub code license'
+- 'unknown: physician-review protocol, reviewer count, agreement, and adjudication'
+- 'unknown: semantic decontamination, duplicate control, and independent clinical fact verification'
+- 'needs_release: training/evaluation code, public checkpoints, and immutable end-to-end run manifests'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Verified against ACL Anthology proceedings and checklist, the complete paper/appendix, current GitHub repository,
+    and current Hugging Face release.

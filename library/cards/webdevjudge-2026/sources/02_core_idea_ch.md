@@ -1,0 +1,1 @@
+WebDevJudge 把开放式网页任务转为带 query 条件化 rubric tree 的成对人工偏好记录：意图、静态质量和动态行为被拆为二元检查。公开的代码/数据基准含 654 个标注对，另有 502 个可行性测试的 WebDevJudge-Unit。它测试 LLM、MLLM 与 planner--executor--summarizer 工作流，说明貌似合理的批评并不能证明网页质量或功能可执行。

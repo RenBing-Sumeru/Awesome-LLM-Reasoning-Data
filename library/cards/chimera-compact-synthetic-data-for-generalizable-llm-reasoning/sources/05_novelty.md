@@ -1,0 +1,1 @@
+Earlier compact reasoning sets such as LIMO rely on human curation and focus on mathematics, while large synthetic corpora prioritize count. CHIMERA first defines the coverage space through an automatic taxonomy and then retains only a few multi-model-consensus examples per fine-grained topic. The novelty is coverage-first compact data design rather than a new reasoning model.

@@ -1,0 +1,154 @@
+id: olmo-2-32b-2025
+title: 'OLMo 2 32B: First fully open model to outperform GPT 3.5 and GPT 4o mini'
+year: 2025
+venue: Ai2 technical release
+authors:
+- Ai2
+source_role:
+- model_report
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+- scalar_reward
+domains:
+- general
+- mathematics
+- instruction_following
+training_use:
+- sft
+- preference_learning
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://allenai.org/blog/olmo2-32b
+  arxiv: null
+  code: https://github.com/allenai/OLMo-core
+  data: https://huggingface.co/datasets/allenai/tulu-3-sft-olmo-2-mixture-0225
+  project: https://allenai.org/olmo
+  huggingface: https://huggingface.co/allenai/OLMo-2-0325-32B-Instruct
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: OLMo 2 32B uses the disclosed OLMo-Mix-1124 pretraining mix, Dolmino mid-training mix, a released 0225 SFT
+    mix, released 0325 on-policy preference mix, and released RLVR mix. The release names DCLM, Dolma, StarCoder, Proof Pile
+    II, math/instruction sources, GSM8K, IFEval, and MATH, but an item-level source-to-stage allocation is unknown.
+  trace_author: The release states that mid-training contains synthetic and human-generated instruction data, and that synthetic-math
+    answers are majority-selected over five completions. Exact synthetic generator identities, human contribution, and record-level
+    author/teacher mappings for the 32B SFT and preference mixes are unknown.
+  answer_format: Released SFT records expose `messages` and `source`; the RLVR mix exposes `messages`, `ground_truth`, `dataset`,
+    `constraint_type`, and `constraint`. The preference mixture is released, but its complete chosen/rejected record schema
+    is not established in the checked card.
+  process_fields:
+  - prompt_or_task
+  - messages
+  - ground_truth
+  - constraint
+  - preference_signal
+  environment_or_substrate: No interactive environment is established for the 32B release. RLVR uses prompts with verifiable
+    answers/constraints; environment versions and execution harnesses are unknown.
+  verifier_or_reward: The release says 32B uses GRPO RLVR on GSM8K, IFEval, and MATH prompts. The released mix carries ground-truth
+    and constraint fields, but the answer parser, per-task reward function, reward weighting, calibration, error rates, and
+    aggregation are unknown.
+  terminal_predicate: A correct or constraint-satisfying output is implied by the RLVR dataset and release description; exact
+    acceptance predicates and no-answer/error handling are unknown.
+recipe_metadata:
+  base_model: OLMo 2 0325 32B base model; 32B is trained for 1.5 epochs up to 6T tokens after pretraining and mid-training.
+  teacher: Synthetic-math majority voting over five completions is disclosed, but the producing model(s), versions, and mappings
+    are unknown.
+  generator: Synthetic and human-generated instruction data are disclosed at a high level; exact generators, prompts, sampling
+    settings, and revision mapping are unknown.
+  filtering_rule: 32B filters SFT instructions and chosen preference responses that mention a synthetic-generation date cutoff.
+    Persona MATH and Grade School Math retain only prompt/completion groups with a majority vote over five completions. Other
+    filtering rules, thresholds, and yields are unknown.
+  sampling_protocol: 32B base training uses 1.5 epochs up to 6T tokens. Post-training uses released SFT, on-policy preference,
+    and RLVR mixtures; exact 32B sampling weights, preference-generation sampling, GRPO rollouts, and run seeds are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: SFT, DPO, and GRPO-based RLVR are directly disclosed. Exact 32B optimizer configuration, reward code,
+    loss weights, schedules, batch sizes, and checkpoint-selection procedure are unknown.
+audit:
+  source_mixture: The release identifies OLMo-Mix-1124 (3.9T tokens), Dolmino (843B tokens), and explicit SFT/preference/RLVR
+    dataset versions. The linked artifact cards expose selected records and source names, but a complete immutable item-level
+    manifest and exact stage allocations for 32B are unknown.
+  split: The linked SFT dataset viewer shows 866K train records; the RLVR viewer shows 29.9K train records. Complete train/dev/test
+    definitions, held-out sets, source-specific splits, and contamination exclusions for the 32B run are unknown.
+  decontamination: unknown
+  license: The 32B model/code are Apache 2.0. OLMo-Mix, Dolmino, and RLVR cards show ODC-BY; the preference-mix card says
+    ODC-BY-1.0 with different subset licences and some non-commercial portions. A complete source-level rights and redistribution
+    mapping is unknown.
+  lineage: Ai2 links checkpoints, OLMo-core, released data mixtures, and intermediate RL checkpoints. Prompt-to-synthetic-output-to-filter/preference/reward-to-checkpoint
+    lineage, generator versions, and training-run identities are incomplete or unknown.
+  known_failure_modes:
+  - The 32B release does not establish complete GRPO reward parsing, calibration, error analysis, rollout logs, or environment/harness
+    configuration, limiting independent RLVR reproduction.
+  - The preference mixture has subset-specific licences and some non-commercial portions, so broad open-artifact claims do
+    not establish uniform downstream data rights.
+  - No 32B-specific decontamination or benchmark-overlap method/results are established in the checked release artifacts.
+  - Ai2 documents evaluation-tooling and formatting/extraction caveats for selected family comparisons, which limits interpreting
+    reported evaluation deltas as a pure data-recipe effect.
+  citation_status: verified
+  confidence: high
+  notes: Evidence is limited to the official Ai2 OLMo 2 32B release and directly linked Ai2/AllenAI GitHub and `allenai` Hugging
+    Face artifacts. The release links arXiv:2501.00656 as a supporting OLMo 2 family report, but this draft intentionally
+    leaves the 32B release's `arxiv` field null rather than infer it is a 32B-specific paper.
+inclusion_reason: A high-disclosure open-weight frontier release that names and links pretraining, mid-training, SFT, preference,
+  and RLVR artifacts, while also disclosing a concrete synthetic-date filter, five-sample math majority selection, task families,
+  and GRPO use for the 32B RLVR stage.
+related: []
+tags:
+- ai2
+- allenai
+- olmo-2
+- olmo-2-32b
+- frontier-report
+- data-disclosure-ledger
+- sft
+- dpo
+- rlvr
+- grpo
+- open-data
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Ai2's OLMo 2 32B release links its data, weights, and recipe, and discloses SFT filtering, five-completion
+  math majority selection, on-policy preference data, and GRPO-RLVR task families, while leaving reward implementation and
+  complete provenance/audit details unresolved.
+why_it_matters: 'It is an unusually inspectable frontier model release: readers can distinguish released mixtures and checkpoints
+  from the still-unresolved generator, reward, provenance, licence, and contamination details required to reproduce or audit
+  the entire 32B post-training path.'
+card: null
+needs:
+- 'needs_metadata: exact 32B data-stage allocations, source weights, synthetic generators, prompt templates, sampling settings,
+  and run/checkpoint selection'
+- 'needs_verifier: GRPO reward/parser implementation, constraint handling, calibration, error rates, and rollout-level outcomes'
+- 'needs_release: full preference chosen/rejected schema, raw generation/rejection/majority-vote traces, and 32B run configurations/logs
+  mapped to artifacts'
+- 'needs_audit: 32B-specific decontamination/overlap method, results, frozen splits, exclusion manifests, and source-level
+  provenance'
+- 'needs_license: complete source/subset rights and redistribution/derivative-data mapping'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Read Ai2's official 32B release and directly linked `allenai` model/data cards and OLMo-core repository. No unverified
+    or inferred official link is recorded.

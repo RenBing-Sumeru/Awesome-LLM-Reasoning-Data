@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:21:43Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "软件修复专项的新 benchmark 利用率比较低",
+    "updated_at": "2026-07-15T07:21:43Z"
+  }
+}

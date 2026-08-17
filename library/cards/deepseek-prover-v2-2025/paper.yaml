@@ -1,0 +1,166 @@
+id: deepseek-prover-v2-2025
+title: 'DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition'
+year: 2025
+venue: arXiv preprint
+authors:
+- Z. Z. Ren
+- Zhihong Shao
+- Junxiao Song
+- Huajian Xin
+- Haocheng Wang
+- Wanjia Zhao
+- Liyue Zhang
+- Zhe Fu
+- Qihao Zhu
+- Dejian Yang
+- Z. F. Wu
+- Zhibin Gou
+- Shirong Ma
+- Hongxuan Tang
+- Yuxuan Liu
+- Wenjun Gao
+- Daya Guo
+- Chong Ruan
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- formal_theorem_proving
+- lean4
+- subgoal_decomposition
+training_use:
+- sft
+- distillation
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.21801
+  arxiv: https://arxiv.org/abs/2504.21801
+  code: null
+  data: https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench
+  project: https://github.com/deepseek-ai/DeepSeek-Prover-V2
+  huggingface: https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B
+  doi: https://doi.org/10.48550/arXiv.2504.21801
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.21801
+data_object:
+  prompt_source: Formal Lean theorem prompts from autoformalization, unspecified open-source datasets, and subgoal-derived
+    variants; miniF2F-valid contributes to curriculum. Exact source manifests and prompt membership are unknown.
+  trace_author: DeepSeek-V3 writes natural-language sketches and Lean proof skeletons; a 7B prover recursively solves subgoals;
+    successful current-policy proofs are added through expert iteration. Full trace lineage is unavailable.
+  answer_format: Formal theorem prompt, DeepSeek-V3 chain-of-thought/proof sketch, Lean have-style subgoals, candidate Lean
+    proof, Lean verification result, binary reward, and optional structural-consistency signal.
+  process_fields:
+  - formal_theorem
+  - informal_proof_sketch
+  - lean_subgoal
+  - preceding_subgoal_premise
+  - formal_proof
+  - candidate_proof
+  - lean_verification
+  - binary_reward
+  - consistency_reward
+  environment_or_substrate: Lean proof-assistant verification. Evaluation uses Lean 4.9.0-rc2; the training Lean environment,
+    mathlib snapshot, imports, invocation, and execution images are unknown.
+  verifier_or_reward: Lean-verified successful proofs receive binary reward 1; failed proofs receive 0. Early RL also applies
+    a structural consistency reward that penalizes divergence from the chain-of-thought decomposition.
+  terminal_predicate: A complete generated Lean proof is verified as correct by Lean. Exact verifier configuration and whether
+    proof-data formalizations preserve the intended informal source semantics are not fully auditable.
+recipe_metadata:
+  base_model: DeepSeek-V3-Base-671B for the 671B model; DeepSeek-Prover-V1.5-Base-7B extended from 4,096 to 32,768 tokens
+    for the 7B model.
+  teacher: DeepSeek-V3 for natural-language proof sketches and formalized subgoal decomposition.
+  generator: DeepSeek-V3 generates proof sketches and Lean skeletons; a 7B prover recursively solves subgoals; the current
+    best policy generates expert-iteration proof attempts.
+  filtering_rule: Cold starts retain hard problems unsolved end-to-end by the 7B prover but with every decomposed subgoal
+    resolved. Expert iteration retains Lean-verified successes. RL uses problems sufficiently challenging yet solvable by
+    SFT; exact thresholds and yields are unknown.
+  sampling_protocol: GRPO samples 256 distinct theorem prompts per iteration, 32 candidate proofs per theorem, up to 32,768
+    tokens.
+  rollout_count: 32
+  temperature: unknown
+  inference_budget: RL candidate sequence length is at most 32,768 tokens. Published evaluation reports Pass@1 through Pass@8192;
+    full training compute is unknown.
+  optimizer_or_scaffold: Non-CoT expert iteration and curriculum, followed by SFT at constant 5e-6 learning rate and 16,384-token
+    context, then GRPO RL with binary reward and early structural consistency reward. Other optimizer and KL details are unknown.
+audit:
+  source_mixture: Autoformalized problems, unspecified open-source datasets, subgoal-derived theorems, miniF2F-valid curriculum
+    items, DeepSeek-V3 sketches, and current-policy successful proof attempts; exact mixture and licenses are unknown.
+  split: miniF2F-test is reserved for evaluation; miniF2F-valid enters curriculum. Global train/validation partitions and
+    item membership are unknown.
+  decontamination: unknown
+  license: Official model use is governed by the DeepSeek License Agreement. The agreement does not license training data;
+    rights for sources, autoformalizations, DeepSeek-V3 traces, rollouts, and derived training records are unknown.
+  lineage: High-level lineage runs from theorem source to DeepSeek-V3 sketch/subgoals, recursive 7B proof resolution, composed
+    cold start, expert-iteration successes, GRPO rollouts, and 7B distillation. Item-level mappings and rejected attempts
+    are unavailable.
+  known_failure_modes:
+  - Core prompts, subgoals, cold starts, rollouts, rewards, and accepted/rejected samples are not released.
+  - Terminal Lean success depends on an undisclosed training environment and does not by itself audit semantic faithfulness
+    of an autoformalized theorem.
+  - The structural consistency reward may favor adherence to a proposed decomposition over alternative valid proof structures;
+    weighting and effects are undisclosed.
+  - No released decontamination protocol or overlap analysis establishes leakage boundaries.
+  - The official repository contains release materials and proof artifacts, not a reproducible data-construction or RL implementation.
+  - Public ProverBench and miniF2F solutions do not establish training-data provenance or source/derivative rights.
+  citation_status: verified
+  confidence: medium
+  notes: This V2 artifact migrates the pre-existing legacy canonical entry `deepseek-prover-v2-advancing-formal-mathematical-reasoning-via-reinforcement-lea-2025`;
+    it is not a second paper. Only official arXiv, DeepSeek GitHub, and DeepSeek Hugging Face sources were used. Track 12
+    only.
+inclusion_reason: A frontier formal-reasoning report that discloses recursive subgoal cold starts, Lean-terminal RL, expert
+  iteration, and distillation while leaving core prompts, verifier environment, rollout artifacts, and provenance unavailable.
+related: []
+tags:
+- deepseek-prover-v2
+- lean4
+- formal-reasoning
+- subgoal-decomposition
+- grpo
+- rlvr
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: DeepSeek-Prover-V2 combines DeepSeek-V3 proof-sketch decomposition, recursively solved Lean subgoals, Lean-verified
+  cold starts, expert iteration, and GRPO RL, while releasing models and evaluation artifacts but not the core training or
+  audit corpus.
+why_it_matters: It makes a frontier formal-RL pipeline legible while separating programmatic proof success from missing source
+  lineage, environment reproducibility, semantic-formalization audit, and data-rights evidence.
+card: null
+needs:
+- 'needs_data: source/prompt/subgoal/cold-start/expert-iteration/RL/distillation records with item lineage'
+- 'needs_code: recursive decomposition, Lean verification, expert iteration, GRPO, and distillation implementation'
+- 'needs_metadata: prompts, source mixture, thresholds, temperatures, optimizer/KL settings, yields, and run logs'
+- 'needs_audit: Lean/mathlib/import/version pins, split manifests, decontamination, semantic-formalization checks, and verifier
+  failures'
+- 'needs_license: source, synthetic-trace, rollout, and derivative-data rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official publication, repository, public 7B/671B model release, ProverBench, and model-license boundary verified;
+    full training, feedback, and environment artifacts remain undisclosed.

@@ -1,0 +1,5 @@
+The paper reports 371 examples, and the official GitHub README points users to the Hugging Face dataset for experiments. The GitHub repository carries an MIT license. The paper's Table 3 reports that Davinci-code-002 with prompt retrieval reaches 45.2 typecheck rate and 16.1 statement-autoformalization accuracy, while in-context Code-davinci-002 reaches 23.7 typecheck rate and 13.4 accuracy.
+
+The key evidence is not just aggregate accuracy. Instance-level evidence comes from whether a generated statement typechecks in Lean 3, and from expert judgment of whether it matches the natural-language theorem. The paper also reports that prompt retrieval improves Code-davinci-002 accuracy by 2.7 points and typecheck rate by 21.5 points, while decreasing BLEU, supporting the warning that BLEU is a poor proxy for formalization quality.
+
+Evidence boundary: typechecking only proves a Lean expression is well formed, not that it encodes the intended textbook theorem. Expert semantic judgments are costly and not replaced by the public dataset. Lean 3 and mathlib version drift matter, and public rows may contaminate later model training.

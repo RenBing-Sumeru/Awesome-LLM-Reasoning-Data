@@ -1,0 +1,5 @@
+- MCTS actions are perspective-specific code-evaluation subtasks plus a null action.
+- Node selection blends UCT with an LLM assessment of the current trajectory history.
+- The reward uses GPT-4o-generated tests and repeated LLM-simulated execution, not actual code execution.
+- Main settings are depth 9, eight rollouts, three sampled tests, and seven simulations per test.
+- The paper promises a future code/data-flywheel release; no official trace artifact was confirmed.

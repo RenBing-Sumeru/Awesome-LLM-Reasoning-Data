@@ -1,0 +1,1 @@
+Author-stated limitation: high-confidence LLM filtering can exclude legitimate borderline long-form questions; audit retained and rejected prompts around the boundary. Curator risk: the corpus is English-only and overwhelmingly non-expert, so do not generalize its choices to multilingual or expert QA without stratified evaluation.

@@ -1,0 +1,1 @@
+Scientific QA checks knowledge answers, while coding-agent benchmarks focus on software repositories. ScienceAgentBench converts authentic paper analyses into end-to-end executable tasks and has experts validate both scientific questions and programs. The novelty is scientific workflow with executable and expert acceptance.

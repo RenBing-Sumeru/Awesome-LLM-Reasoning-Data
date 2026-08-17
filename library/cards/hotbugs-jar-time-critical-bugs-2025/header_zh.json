@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "HotBugs.jar 将时间敏感 hot fix 打包为可复现的 bug-fix benchmark 数据。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv / SBSE challenge dataset 的 hot-fix benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Carol Hanna 等（University College London）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:21:31Z"
+}

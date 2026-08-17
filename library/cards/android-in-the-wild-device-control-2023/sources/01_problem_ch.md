@@ -1,0 +1,1 @@
+Android in the Wild 关注的问题是：如何用自然语言指令和人类演示来训练/评测真实 Android 设备控制智能体。主要来源是 NeurIPS 2023 Datasets and Benchmarks 会议论文、arXiv 版本和 Google Research 仓库。它的边界是离线移动设备演示与动作预测，不是可保证重放当前 app 状态的在线手机 benchmark。一个数据对象是一条 episode，包含指令、截图或可访问性 UI 观测、底层 Android 动作和状态序列。对 atlas 的价值是把真实设备移动控制做成了大规模轨迹评测面，而不只是玩具模拟器任务。

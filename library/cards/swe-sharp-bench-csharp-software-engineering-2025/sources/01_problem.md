@@ -1,0 +1,3 @@
+Mainstream repository-level agent benchmarks focus on Python, and some multilingual work adds Java, JavaScript, or C and C++, but enterprise C# and .NET remain underrepresented. NuGet dependencies, MSBuild, solution and project structures, and xUnit or NUnit tests differ greatly from Python, so strong SWE-bench Verified results do not establish .NET competence.
+
+SWE-Sharp-Bench constructs 150 real C# issue-resolution tasks from 17 open-source repositories. Each provides a base commit, problem statement, gold patch, test information, and reproducible .NET environment, and repository tests judge agent patches. The authors release both data and the full curation pipeline and compare C# with Python under identical model and agent configurations.

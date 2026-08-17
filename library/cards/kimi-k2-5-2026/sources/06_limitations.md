@@ -1,0 +1,5 @@
+The report does not release the SFT/RL datasets, visual task records, teacher outputs, proprietary expert models, prompt templates, filters, rejection decisions, or exact data mixture. It gives no source-level rights map, public split, benchmark-overlap audit, immutable dataset snapshot, or reproducible lineage from source item through synthesized trace and RL rollout.
+
+The Unified Agentic RL Environment is described but not released as a reusable artifact. Environment configurations, task instances, containers, tool backends, judge implementation, rollout manager, white-box and black-box environments, and request/response logs remain unavailable. The claimed concurrency and Agent Swarm behavior therefore cannot be independently reproduced from the checkpoint and documentation alone.
+
+GRMs are aligned to internal value criteria, and the report uses multiple alternative rubrics to mitigate reward hacking, but the rubrics, weights, calibration, false-accept/false-reject rates, and residual reward-hacking analysis are undisclosed. PARL's final answer or subtask completion signals also do not prove that each frozen subagent action was correct.

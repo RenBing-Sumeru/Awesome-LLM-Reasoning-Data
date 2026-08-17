@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "形式化地构造数据，且包含审计部分。符合track",
+    "updated_at": "2026-07-13T03:02:22Z"
+  },
+  "updated_at": "2026-07-13T03:02:22Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Robo-Dopamine 发布多视角机器人状态进展监督，用于通用过程奖励建模与操作任务中的策略不变奖励塑形。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "机器人操作的多视角过程奖励建模与进展监督数据论文",
+  "best_for_ch": "训练或评测细粒度机器人进展奖励、单样本任务适应和稠密强化学习。",
+  "confidence_ch": "高",
+  "authors_ch": "Huajie Tan、Sixiang Chen、Yijie Xu 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

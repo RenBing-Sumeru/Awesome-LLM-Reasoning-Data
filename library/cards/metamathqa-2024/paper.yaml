@@ -1,0 +1,145 @@
+id: metamathqa-2024
+title: 'MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models'
+year: 2024
+venue: ICLR 2024
+authors:
+- Longhui Yu
+- Weisen Jiang
+- Han Shi
+- Jincheng Yu
+- Zhengying Liu
+- Yu Zhang
+- James T. Kwok
+- Zhenguo Li
+- Adrian Weller
+- Weiyang Liu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- reasoning-data
+- mathematics
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=N8N0hgNDRt
+  arxiv: https://arxiv.org/abs/2309.12284
+  openreview: https://openreview.net/forum?id=N8N0hgNDRt
+  code: https://github.com/meta-math/MetaMath
+  data: https://huggingface.co/datasets/meta-math/MetaMathQA
+  project: https://meta-math.github.io/
+  huggingface: https://huggingface.co/datasets/meta-math/MetaMathQA
+  venue: null
+  doi: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K and MATH training questions, transformed through answer augmentation, rephrasing, self-verification,
+    and forward-backward reasoning.
+  trace_author: GPT-3.5-Turbo writes augmented questions and worked solutions; the authors design transformation prompts and
+    final-answer filtering.
+  answer_format: An instruction containing a math question plus a worked rationale ending in a tagged final answer.
+  process_fields:
+  - type
+  - query
+  - response
+  - original_question
+  - original_response
+  environment_or_substrate: Static mathematical instruction-response records released for causal-language-model supervised
+    fine-tuning.
+  verifier_or_reward: Generated rationales are retained when their extracted final answers match known GSM8K or MATH answers;
+    question transformations preserve or derive answer constraints.
+  terminal_predicate: Merge answer augmentation and three question-bootstrapping views into the 395k-record MetaMathQA training
+    set.
+recipe_metadata:
+  base_model: LLaMA-2 7B, 13B, and 70B; additional Mistral-7B and Llemma-7B transfer checks appear in the appendix.
+  teacher: GPT-3.5-Turbo.
+  generator: Generate multiple reasoning paths and multiple forward/backward reformulations of seed math problems.
+  filtering_rule: Keep answer-augmented reasoning paths with correct final answers and construct rephrasing, self-verification,
+    and FOBAR examples around known answers.
+  sampling_protocol: The four released subsets contain 155k answer-augmentation, 130k rephrasing, 55k self-verification, and
+    55k FOBAR examples.
+  rollout_count: null
+  temperature: null
+  inference_budget: Teacher-call totals and reproducible dollar cost are not fully reported as a single reusable figure.
+  optimizer_or_scaffold: Standard supervised fine-tuning on Alpaca-style instruction-output records.
+audit:
+  source_mixture: 240k GSM8K-derived and 155k MATH-derived examples, totaling 395k.
+  split: The official dataset release exposes one training split with transformation type and links to the original prompt/response
+    lineage.
+  decontamination: The paper uses training questions from evaluation families and does not establish broad semantic deduplication
+    against unrelated math benchmarks.
+  license: The official MetaMath repository declares Apache-2.0; downstream users must also honor GSM8K, MATH, and teacher-service
+    terms.
+  lineage: 'instruction / demonstration / rationale data; closest comparisons: RFT, WizardMath, MAmmoTH, DART-Math, and vanilla
+    answer augmentation.'
+  known_failure_modes:
+  - GPT-3.5-generated rationales can contain locally invalid steps even when their final answers match.
+  - Rephrasing may create near-duplicates, and backward transformations may leak answer structure into the prompt.
+  - Results are concentrated on elementary and competition mathematics rather than general reasoning.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR paper, OpenReview forum, affiliations, 395k composition, record transformations, repository license,
+    and public dataset link checked.
+inclusion_reason: MetaMathQA is a large, public worked-solution SFT dataset whose central contribution is explicit question
+  and rationale bootstrapping.
+related:
+- dart-math-2024
+tags:
+- instruction-demonstration-rationale
+- mathematical-reasoning
+- question-bootstrapping
+- arxiv-2309.12284
+- primary-link-checked
+status: verified
+one_line_summary: MetaMathQA bootstraps both math questions and their worked solutions into a 395k-record public SFT dataset.
+why_it_matters: It made question transformation, not only response sampling, a first-class axis of synthetic mathematical
+  reasoning data.
+reading_priority: must read
+paper_type: mathematical question bootstrapping and rationale data release
+best_for: Readers tracing the lineage of synthetic math SFT data or comparing question diversity with response diversity.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official OpenReview/arXiv paper, Apache-2.0 repository, project page, and MetaMathQA dataset release checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: established-track01-20260713
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: synthetic mathematical reasoning demonstrations
+  selection_priority_score: 12
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 4
+    artifact: 2
+  selection_evidence:
+    institution: The official paper affiliation block confirms University of Cambridge, SUSTech, HKUST, Huawei Noah's Ark
+      Lab, The Alan Turing Institute, and Max Planck Institute for Intelligent Systems.
+    venue: The official OpenReview forum and conference-formatted paper establish ICLR 2024 publication; the arXiv record
+      says Spotlight, but no separate official program evidence was available during verification, so only regular top-conference
+      credit is assigned.
+    impact: The official repository had 455 stars and 42 forks on 2026-07-13, and later public data papers including DART-Math
+      treat MetaMathQA as a principal open mathematical-SFT baseline, showing multi-team downstream use.
+    artifact: The Apache-2.0 official repository, public 395k MetaMathQA release, model checkpoints, project page, and training
+      code document record construction and use.
+  selection_eligible: true
+  year_impact_threshold: 3

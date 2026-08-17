@@ -1,0 +1,5 @@
+- Freeze the evidence timeline: arXiv v1 is dated 2025-07-29, benchmark data were added on 2025-08-05, and the inspected official repository state is commit `80506d2`; there is no tag or GitHub Release.
+- Count by identity, not rows: 3,122 unique tasks equal 2,651 train plus 471 test. The 6,244 Parquet rows repeat those IDs across single- and multi-choice variants; 417, 4K+, and 10K+ are conflicting or differently scoped paper claims.
+- Read the evaluator as mixed. GPT-4o judges searches and clarification utterances and simulates the user; code parses option IDs, assigns 1.0/0.8/0.0 answer rewards, updates state, and terminates episodes.
+- Audit replay before comparing scores: Figure 8 and repository judge-type numbering differ, passive elicitation is unseeded by default, and at least one official record forces one `best_id` despite an acknowledged cost tie.
+- Keep the use boundary strict: the paper reports evaluation only, Parquet files are task launch records, and no complete successful/failed trajectory archive was verified. A train split and future SFT/RL discussion are not training evidence.

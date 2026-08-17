@@ -1,0 +1,3 @@
+# Novelty
+
+CoT data serializes natural-language reasoning, while PAL/PoT and concurrent MAmmoTH records often serialize code separately from explanation. MathCoder changes the auditable target to an LCE sequence in which text produces code, execution produces an observation, and later text consumes that observation. It also separates ground-truth-filtered GPT-4 seeds from answer-consistent self-distilled interpolation records and tests both interpolation and execution decisions. SFT, Python tools, self-consistency, GSM8K/MATH aggregation, and code-specialized base models are not individually new.

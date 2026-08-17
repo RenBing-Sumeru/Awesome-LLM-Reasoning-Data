@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Infinite Problem Generator 将教材物理题扩展为 1,335 条题目与代码记录，并用预定义公式和实际执行的数值解验证生成结果。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行物理数据生成器与数据集",
+  "best_for_ch": "适合构造可程序检查的物理训练题或评测集的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Aditya Sharan, Sriram Hebbale, Dhruv Kumar",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

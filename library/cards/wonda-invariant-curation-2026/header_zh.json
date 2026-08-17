@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "WONDA 将 UAutomizer 原始循环不变量整理为紧凑 SFT 目标，并分别记录归纳正确性、充分性与 verifier 加速，但复用时必须区分 7,763 行 curated 表和 7,284 条实验训练集，并补查 lineage、许可与版本漂移。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "形式化 verifier 驱动的循环不变量数据构造、开放发布与 SFT 实证",
+  "best_for_ch": "构建程序验证训练数据、研究 programmatic feedback，或审计 verifier 标签与运行时归因的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Ido Pinto、Yizhak Yisrael Elboher、Haoze Wu、Nina Narodytska、Guy Katz",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

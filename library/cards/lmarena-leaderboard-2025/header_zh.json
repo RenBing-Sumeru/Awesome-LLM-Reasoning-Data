@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LMArena 是持续运行的人类偏好排行榜基础设施，通过匿名双模型对战和用户投票聚合模型排名，而不是固定答案正确率。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "关注开放式对话偏好评测、排行榜基础设施、模型排名方法和人类投票偏差的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Arena AI、LMArena",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:25:55Z"
+}

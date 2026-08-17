@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ClaimDB 以真实多表数据库和三类证据标签，测试模型能否用可执行程序完成大规模事实核验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "大规模结构化数据上的可执行事实核验基准",
+  "best_for_ch": "需要评估数据库推理、事实核验或证据不足判断的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Michael Theologitis, Preetam Prabhu Srikar Dammu, Chirag Shah, Dan Suciu",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

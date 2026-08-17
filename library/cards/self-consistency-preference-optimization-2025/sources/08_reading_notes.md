@@ -1,0 +1,5 @@
+- SCPO clusters k sampled responses by parsed final answer and selects highest-vote versus lowest-vote groups.
+- Pair weight is the chosen–rejected vote margin divided by k; training combines weighted DPO and NLL.
+- The reported construction uses k=8 for GSM8K/MATH and k=16 for ZebraLogic with task- and iteration-specific thresholds.
+- Consensus is a proxy that can amplify shared errors; benchmark gains do not validate each pair.
+- The transductive test-query experiment and the absence of released pairs, rollouts, and code are major audit boundaries.

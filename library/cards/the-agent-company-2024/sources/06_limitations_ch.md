@@ -1,0 +1,10 @@
+- 175 个任务构成一个公开 evaluation set；论文没有披露 train/validation/test partition，也没有针对模型预训练或 agent development 的去污染协议。虽然 task image 中的 evaluator 代码在运行时加密，公开 task prompt 与 evaluator 源码仍会增加未来暴露和 benchmark-specific gaming 风险。
+- 反馈有效性受任务特定 predicate 限制。确定性检查可能奖励非预期状态修改或漏掉语义失败；51 个 LLM-evaluated 任务还继承 judge-model 方差与 rubric bias。发布中没有独立 judge-calibration corpus 或重复 judge 方差估计。论文观察到的重命名 user shortcut 是 verifier gaming 的例子，不只是智能体能力失败。
+- 复现依赖不止仓库代码：task image、service backup、OpenHands 版本、browser 行为、模型 API、Claude-3-5-Sonnet-20241022 NPC/judge 与 run configuration 都可能漂移。release 1.0.0 和 run path 已知，但不可变 container/service-image digest 与完整逐 run manifest 为 unknown。
+- 2024 年 24.0% 结果与正式论文 30.3% 结果使用不同模型和 OpenHands 配置。把它解释为受控提升会混淆模型、harness 与论文版本变化。experiments 仓库还是持续更新的 leaderboard，因此未固定的“best score”不是稳定论文结果。
+- 已检查的 2024-12-17 baseline 保留成功、部分得分和零分 trajectory，但尚未独立确认所有历史第三方 run 的完整性。失败 episode 缺失或不一致可能使下游 error analysis 产生偏差。现有证据也没有为训练适用性设计的日志选择或过滤策略。
+- 主 benchmark 与环境备份仓库声明 MIT，当前 arXiv 手稿采用 CC BY 4.0，但官方 experiments 仓库没有已确认 license。这些许可证不会自动覆盖第三方服务、真实项目材料、截图或模型输出。在完成记录级权利审查前，trajectory 训练或再分发应视为 blocked。
+- 虚构公司环境同时使用 mock/manual material 与“real-world software project data”。逐记录 source lineage、权利、redaction、consent、删除政策与截图内容均为 unknown。模拟同事并不会让隐私审查变成不适用，因为 seeded source material 仍可能涉及真实人物或项目。
+- 任务构造使用未披露的 LLM brainstorming 与大量人工劳动。模型、prompt、sampling、拒绝率与 seed 为 unknown，逐任务 review log 也不可用，因此无法重建 source mixture 或测量 selection bias。
+- 环境覆盖特定的自托管软件公司场景。任务并不穷尽职业，也不具代表性，且没有收集人类性能 baseline。向其他组织、工具、语言、无障碍设置或真实工作后果的泛化没有证据；job-automation 结论会超出论文边界。
+- 发布证据只支持 evaluation 与 audit，不支持 SFT、preference learning、reward modeling、process supervision 或 agent RL。benchmark 性能不能证明轨迹是高质量训练数据，论文也没有报告使用这些轨迹的训练消融。

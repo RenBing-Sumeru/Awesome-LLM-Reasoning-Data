@@ -1,0 +1,3 @@
+WebPuzzle 候选来自 Wiki-corpus 页面，以及已部署智能助手中的真实用户查询和相应检索网页。LLM 从多个开放网页抽取事实，再反向生成问题、答案和 checklist，形成 Cross-Page QA；Open Riddle 与 Wiki Riddle 则由 LLM 选择实体属性并进行模糊化或泛化，同时保留原实体作为标签。LLM 过滤器删除冒犯性、政治敏感、伦理风险、NSFW、歧义、争议、多项选择、布尔判断和不可解条目。DeepSeek-R1 对每个剩余问题作答四次，据 pass@4 划分 easy、medium、hard 或 outlier；五位专家再按答案唯一、必须联网、多次搜索推理和可解性等原则，将 500 个测试种子整理为 275 条。
+
+冷启动 SFT 蒸馏 DeepSeek-R1 的回答，混合 2,000 条 WebPuzzle、300 条已部署助手的真实用户问题、2,200 条通用推理问题和 1,000 条与检索文档拼接的真实用户查询；另有 5,000 条 WebPuzzle 用于 RL。每个 RL 样本以 temperature 0.9 生成 14 条 rollout，最多七轮工具调用，报告的序列上限为 20k tokens，检索文本在策略损失中被 mask。训练采用一轮 iterative-RAG GRPO，batch size 32、学习率 1e-6、KL 系数 0.001。论文公开了提示和汇总配置，但未核验到官方代码、模型、数据包、rollout 语料、检索快照或完整拒绝日志。

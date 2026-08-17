@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GLM-5 披露了 28.5T base-token 路线、三类 SFT、四域 Reasoning RL 与全异步 Agentic RL，以及 10K+ SWE、数千 terminal 和 2M+ 网页 WKG 环境，但未开放训练记录、完整 reward、精确预算、污染审计或安全训练账本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型技术报告与智能体训练数据披露台账",
+  "best_for_ch": "研究长程智能体训练、可执行环境、异步 RL、软件工程数据与前沿模型数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "GLM-5 Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

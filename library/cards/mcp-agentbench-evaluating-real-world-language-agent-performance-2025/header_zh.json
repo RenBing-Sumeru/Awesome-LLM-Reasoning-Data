@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MCP-AgentBench 用 600 个均衡分类 query 评测 33 个无状态文本 MCP server 上的工具智能体，但 MCP-Eval 只对 final answer 做 o3-mini-high 二元判断，且未核实到可重放的官方任务、server 或轨迹 release。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "MCP 工具智能体评测基准与 answer-level judge 研究",
+  "best_for_ch": "研究 MCP 智能体评测、LLM-as-a-judge、轨迹可见性和可重放性审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Zikang Guo, Benfeng Xu, Chiwei Zhu, Wentao Hong, Xiaorui Wang, Zhendong Mao",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

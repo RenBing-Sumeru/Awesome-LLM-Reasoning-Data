@@ -1,0 +1,3 @@
+The central record joins 720p RGB history, language or image instructions, optional dialogue and reasoning, and chunks of ordinary keyboard/mouse actions. Human demonstrations provide behavioral traces; Gemini adds labels and selected causally consistent reasoning/dialogue; online RL adds task-grounded reward.
+
+SIMA 2 extends this into a self-improvement loop: a Gemini task generator observes current state and proposes achievable or weakness-targeted goals, SIMA 2 acts, a Gemini reward model scores completion and directedness from 0 to 100, successful or useful experience enters a bank, and later policy training repeats the cycle.

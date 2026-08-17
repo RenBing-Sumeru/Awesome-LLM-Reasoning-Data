@@ -1,0 +1,3 @@
+Safety findings may not transfer unchanged across models, tasks, attack settings, and deployment contexts. A taxonomy clarifies what has been studied, but it does not by itself establish that every defense works against every risk. Because the paper is a survey, quantitative strength and reproducibility must be checked in the underlying studies.
+
+Avoid treating a defense tested under one threat model as a guarantee in another. Differences in model behavior, user interaction, task constraints, and evaluation construction can change both attack success and mitigation effects. The survey maps these sources of variation, but only the cited work can show what was controlled, measured, and reproduced in a particular safety claim.

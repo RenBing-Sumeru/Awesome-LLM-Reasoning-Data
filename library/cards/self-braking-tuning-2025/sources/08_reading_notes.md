@@ -1,0 +1,5 @@
+- Verify the source-to-derived record map and the actual availability of SBT-E/SBT-D data.
+- Audit first-correct-answer extraction and step segmentation before trusting braking boundaries.
+- Treat marker matches and overthink scores as heuristics, not process-correctness labels.
+- Preserve masked segments and loss masks so truncation decisions remain inspectable.
+- Compare token savings with accuracy, faithfulness, and licensing rather than using benchmark averages as data proof.

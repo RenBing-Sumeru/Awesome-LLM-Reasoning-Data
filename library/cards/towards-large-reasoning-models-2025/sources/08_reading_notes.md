@@ -1,0 +1,1 @@
+The data-construction and reward-design discussions are closely linked. A reasoning trace becomes a training signal only through the procedure that selects, scores, or otherwise uses it; the survey repeatedly connects trajectory generation with reinforcement learning and inference-time search.

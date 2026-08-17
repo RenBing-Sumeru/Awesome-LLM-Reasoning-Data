@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "BigCodeBench 用高覆盖单元测试考察模型在多库函数调用与复杂指令下生成可执行 Python 程序的能力。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "复杂函数调用代码生成基准",
+  "best_for_ch": "研究实用代码生成、库调用、复杂指令与单元测试评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Terry Yue Zhuo、Minh Chien Vu、Jenny Chim、Han Hu、Wenhao Yu、Ratnadira Widyasari、Imam Nur Bani Yusuf、Haolan Zhan、Junda He、Indraneil Paul、Simon Brunner、Chen Gong、Thong Hoang、Armel Zebaze、Xiaoheng Hong、Wen-Ding Li、Jean Kaddour、Ming Xu、Zhihan Zhang、Prateek Yadav、Naman Jain、Alex Gu、Zhoujun Cheng、Jiawei Liu、Qian Liu、Zijian Wang、Binyuan Hui、Niklas Muennighoff、David Lo、Daniel Fried、Xiaoning Du、Harm de Vries、Leandro von Werra",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

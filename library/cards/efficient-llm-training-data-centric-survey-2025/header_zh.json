@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "一篇把数据选择、质量增强、合成、蒸馏压缩和自进化分开讨论的 2025 ACL 后训练综述。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据中心的大模型后训练综述",
+  "best_for_ch": "关于数据质量、教师生成、筛选和训练预算的数据中心训练综述。",
+  "confidence_ch": "高",
+  "authors_ch": "Junyu Luo 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T10:25:05Z"
+}

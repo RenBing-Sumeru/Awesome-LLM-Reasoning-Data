@@ -1,0 +1,1 @@
+论文报告 115 条失败轨迹：tau-bench 从 115 次运行中取 29 条失败轨迹，Flash 有 42 条含至少一个 agent failure 的轨迹，Magentic-One/Who&When 有 44 条失败轨迹。强证据不是单一总分，而是逐条轨迹中的失败事件、关键 step、rationale、category，以及能把约束违规连接回轨迹片段的 validation log。报告的 aggregate 结果包括失败定位提升 23.6 个百分点、根因归类提升 22.9 个百分点；tau-bench 最佳设置的 step accuracy 从 32.2% 到 54.0%。这些数字只在三个来源域、GPT-5 judge 设置、作者 taxonomy 和可用轨迹范围内成立。

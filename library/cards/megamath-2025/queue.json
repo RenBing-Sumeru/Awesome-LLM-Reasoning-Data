@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "一个巨大的数学领域类型的数据构造方法，其数据容量值得推荐",
+    "updated_at": "2026-07-13T02:35:28Z"
+  },
+  "updated_at": "2026-07-13T02:35:28Z"
+}

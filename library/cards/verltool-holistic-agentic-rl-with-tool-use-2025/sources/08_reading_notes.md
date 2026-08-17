@@ -1,0 +1,5 @@
+- Start with paper §§3.2–3.3: `tau={a0,o0,...,a_(n-1),o_(n-1),a_n}`, action-only optimization, a stateful Tool Server, and asynchronous trajectory scheduling define the reusable interface.
+- Read Appendix A.1–A.6 and Table 8 together. The six domains use different task sources, rewards, models, rollout multiplicities `16/16/5/8/16/8`, and maximum turns `1/2/5/3/5/100`; there is no single global recipe.
+- Keep validity, termination, and correctness separate: `valid` and `done` are environment-control fields, while semantic success comes from answer match, execution, shaped reward, or verification tests.
+- Treat Tables 2–6 as author-reported system and task evidence, not evidence that the generated trajectories form a high-quality released dataset. The 1.97× timing result and task-score gains do not establish lineage, licenses, or replayability.
+- Verify future releases for a paper-pinned code/environment bundle, six-domain episode manifest, successful/failed retention, exact SQL checkpoint identity, unified split/decontamination audit, and source-by-source license chain.

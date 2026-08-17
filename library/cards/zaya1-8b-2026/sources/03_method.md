@@ -1,0 +1,5 @@
+The report specifies 8T and 4T token base-pretraining phases at 4K context, a 1.2T-token reasoning-focused 32K midtraining phase, and 660B-token SFT at 131K context. It reports midtraining/SFT category weights, but omits individual data sources: long-CoT accounts for 86.1%/75.0%, web/synthetic-web/multilingual 5.7%/9.8%, long-context 0.8%/6.4%, code 3.0%/5.0%, math/STEM 3.0%/2.6%, and short instruction 1.4%/1.2%.
+
+SFT mixes chat, instruction following, code, math, reasoning, tool traces, and reasoning-tail aggregation examples. RL then proceeds through a 232-step math/puzzle warmup, a 400-step curriculum over 400 adaptive environments, two math/code aggregation phases of 384 and 464 steps, and a 384-step behavioral stage. Code environments derive executable prediction, reconstruction, and falsification tasks from competitive-programming references.
+
+Reasoning-tail aggregation examples are constructed from expert-model or self rollouts. TTC/RSA is recorded here only as a trace-construction and verifier-reward interface: it does not change this Card's Track 12-only classification.

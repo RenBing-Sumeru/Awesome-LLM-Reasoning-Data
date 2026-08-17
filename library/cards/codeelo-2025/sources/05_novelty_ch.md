@@ -1,0 +1,1 @@
+已有基准多提供离线测试或公开样例；CodeElo 把 verifier 改成 live 的 Codeforces 官方 judge，并把结果映射到可与人类比较的 Elo。方向信号是面向困难代码推理的外部平台评测，覆盖 hidden tests、special judges 和对齐运行时。质量信号包括近期竞赛选择、division/rating/tag 元数据、公开 Elo/ranking 逻辑和项目 leaderboard。并不新的部分是 Codeforces 题和 Elo。复用要查平台许可、提交限流、token 访问、竞赛更新、许可证和污染。

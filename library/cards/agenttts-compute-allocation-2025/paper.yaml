@@ -1,0 +1,28 @@
+id: agenttts-compute-allocation-2025
+title: 'AgentTTS: Large Language Model Agent for Test-time Compute-optimal Scaling Strategy in Complex Tasks'
+year: 2025
+venue: NeurIPS 2025
+authors: ['Fali Wang', 'Hui Liu', 'Zhenwei Dai', 'Jingying Zeng', 'Zhiwei Zhang', 'Zongyu Wu', 'Chen Luo', 'Zhen Li', 'Xianfeng Tang', 'Qi He', 'Suhang Wang']
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [full_episode]
+domains: [general-reasoning, software-engineering]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2508.00890, arxiv: https://arxiv.org/abs/2508.00890, venue: https://papers.neurips.cc/paper_files/paper/2025/hash/8d9bbba8cac9cabb54e85ee7f21441c8-Abstract-Conference.html, code: https://github.com/FairyFali/AgentTTS, data: https://github.com/FairyFali/AgentTTS/tree/main/data, project: null, huggingface: null, doi: https://doi.org/10.48550/arXiv.2508.00890}
+data_object: {prompt_source: 'Multi-stage task inputs from 2WikiMultiHopQA, HotpotQA, CWQ, WebQSP, TaskBench, and ChatDev settings.', trace_author: 'The AgentTTS search agent and candidate language models.', answer_format: 'Per-subtask model choices, sample budgets, candidate responses, fusion outputs, and final task results.', process_fields: [task, subtask, candidate_model, sample_budget, normalized_budget, trial, feedback, guideline, task_outcome], environment_or_substrate: 'Executable task platforms for retrieval-based QA, knowledge-graph QA, task automation, and automated software development.', verifier_or_reward: 'Task-specific evaluation metrics returned by the execution environment.', terminal_predicate: 'Best evaluated allocation under the specified total compute budget.'}
+recipe_metadata: {base_model: 'Candidate models from 3B to 72B; GPT-o3-mini is the reported LLM search agent.', teacher: null, generator: 'Repeated sampling with fusion for each selected model and subtask.', filtering_rule: 'The agent retains trial feedback and guidelines, then returns the best-performing archived trial.', sampling_protocol: 'Fifty search iterations on 50 training samples, followed by evaluation on 500 test samples in the reported experiments.', rollout_count: 'Model and subtask budget dependent.', temperature: '0.9 for diverse repeated samples.', inference_budget: 'A fixed total budget normalized by inference FLOPs; a configuration allocates models and sample counts across dependent subtasks.', optimizer_or_scaffold: 'AgentTTS feedback loop of Agent, Archive, and Environment.'}
+audit: {source_mixture: 'Official NeurIPS 2025 paper, arXiv record and official code-and-data repository.', split: 'Reported search uses 50 training samples and evaluation uses 500 test samples; inspect task-specific releases before reuse.', decontamination: 'Not separately claimed in the checked source.', license: 'Official repository reports Apache-2.0; verify each bundled dataset and adapted implementation before redistribution.', lineage: 'Primary sources: https://arxiv.org/abs/2508.00890 and https://github.com/FairyFali/AgentTTS', known_failure_modes: ['Search outcomes depend on the model pool, cost normalization, and limited training-set feedback.', 'FLOPs-normalized budgets do not capture all deployment latency or API pricing effects.', 'More samples can degrade fusion quality after a task-specific optimum.', 'Upstream subtask failures shift downstream allocation needs.'], citation_status: verified, confidence: high, notes: 'Official paper and repository checked on 2026-07-20. Paper affiliations: The Pennsylvania State University and Amazon.'}
+inclusion_reason: 'It explicitly searches how a fixed inference budget should be allocated across dependent subtasks, models, and repeated samples.'
+related: []
+tags: [test-time-compute, budget-allocation, multi-stage-tasks, agent, repeated-sampling, fusion]
+status: verified
+one_line_summary: 'AgentTTS uses an LLM agent and execution feedback to find compute-optimal model and sampling allocations across dependent stages of a complex task.'
+reading_priority: essential
+paper_type: Multi-stage test-time compute allocation study
+best_for: Readers designing compute budgets across multi-step LLM workflows.
+confidence: high
+why_it_matters: It turns test-time scaling from one-model sampling into a joint decision over stage order, model size, and sampling budgets.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official NeurIPS acceptance, paper, authors, affiliations, code, data directory, and Apache-2.0 repository license checked.'}
+category_ids: [scaling_rlvr_test_time_compute]

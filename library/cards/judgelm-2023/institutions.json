@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Huazhong University of Science and Technology",
+    "Beijing Academy of Artificial Intelligence"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2310.17631",
+    "https://arxiv.org/e-print/2310.17631",
+    "https://github.com/baaivision/JudgeLM",
+    "https://huggingface.co/datasets/BAAI/JudgeLM-100K"
+  ],
+  "verification_note": "Official arXiv, repository, and OpenReview-linked sources verify HUST/BAAI affiliations, ICLR 2025 Spotlight status, and JudgeLM code/data/model artifacts."
+}

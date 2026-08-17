@@ -1,0 +1,98 @@
+id: ls-mixture-efficient-reasoning-2025
+title: Long-Short Chain-of-Thought Mixture Supervised Fine-Tuning Eliciting Efficient Reasoning in Large Language Models
+year: 2025
+venue: arXiv preprint
+authors:
+- Bin Yu
+- Hang Yuan
+- Haotian Li
+- Xueyin Xu
+- Yuliang Wei
+- Bailing Wang
+- Weizhen Qi
+- Kai Chen
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- instruction-tuning
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2505.03469
+  arxiv: https://arxiv.org/abs/2505.03469
+  venue: null
+  code: https://github.com/ZGCA-AI4Edu/LS-Mixture
+  data: https://github.com/ZGCA-AI4Edu/LS-Mixture
+  project: https://github.com/ZGCA-AI4Edu/LS-Mixture
+  huggingface: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper and release.
+  trace_author: Teacher/rewrite model described in the Card.
+  answer_format: Training record described in Card sources.
+  process_fields:
+  - prompt
+  - response
+  - selection_signal
+  environment_or_substrate: Reasoning tasks described in paper.
+  verifier_or_reward: Paper-specific filtering signal.
+  terminal_predicate: See paper.
+recipe_metadata:
+  base_model: See paper.
+  teacher: See paper.
+  generator: See paper.
+  filtering_rule: See paper.
+  sampling_protocol: See paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See paper.
+  optimizer_or_scaffold: SFT and alignment described in paper.
+audit:
+  source_mixture: Official paper and release.
+  split: See paper.
+  decontamination: Verify before reuse.
+  license: Check release terms.
+  lineage: 'Primary source: https://arxiv.org/abs/2505.03469'
+  known_failure_modes:
+  - Teacher or rewrite quality can affect training records.
+  citation_status: verified
+  confidence: high
+  notes: Full paper and official artifact checked 2026-07-15.
+inclusion_reason: It changes how reasoning records are selected, structured, or consumed by supervised post-training.
+related: []
+tags:
+- post-training
+- training-usage
+- reasoning-data
+status: verified
+one_line_summary: LS-Mixture SFT pairs long reasoning traces with structure-preserving short rewrites to train efficient reasoning.
+reading_priority: essential
+paper_type: Reasoning-data construction and supervised fine-tuning study
+best_for: Readers studying how reasoning records enter post-training.
+confidence: high
+why_it_matters: It makes a reasoning-data consumption decision explicit.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Full paper and official artifact checked.
+category_ids:
+- training_usage_optimization_objectives

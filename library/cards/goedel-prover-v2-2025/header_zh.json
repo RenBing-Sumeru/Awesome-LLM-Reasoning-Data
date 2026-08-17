@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Goedel-Prover-V2 报告了支架式合成任务生成、基于 Lean 编译器反馈的自我修正、expert iteration 与强化学习；但本 Card 尚未核验其逐条数据、验证环境及具体发布工件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿形式化定理证明技术报告与数据披露账本",
+  "best_for_ch": "需要审计合成形式化数据、Lean 反馈、自我修正与后训练披露边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yong Lin 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

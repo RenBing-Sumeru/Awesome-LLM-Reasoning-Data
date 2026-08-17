@@ -1,0 +1,17 @@
+{
+  "title": "Detecting Data Contamination in LLMs via In-Context Learning",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=YlpaaYxx4t",
+    "data": "https://openreview.net/attachment?id=YlpaaYxx4t&name=supplementary_material"
+  },
+  "review_note": "Official OpenReview page, author-posted PDF, and public supplementary-material link verified.",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以同分布上下文造成的置信度下降构造可解释污染分数，并在已知训练语料模型上以 99.9% 数据集级 AUC 区分已见与未见数据。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

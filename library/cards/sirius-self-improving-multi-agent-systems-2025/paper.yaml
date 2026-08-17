@@ -1,0 +1,176 @@
+id: sirius-self-improving-multi-agent-systems-2025
+title: 'SiriuS: Self-improving Multi-agent Systems via Bootstrapped Reasoning'
+year: 2025
+venue: NeurIPS 2025 (Main Conference Track)
+authors:
+- Wanjia Zhao
+- Mert Yuksekgonul
+- Shirley Wu
+- James Y. Zou
+source_role:
+- construction_recipe
+- verifier_reward
+- agent_environment
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- multi_agent_reasoning
+- scientific_reasoning
+- biomedical_qa
+- negotiation
+training_use:
+- sft
+- agent_training
+construction_layer:
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/file/b45279ac82cb017a5f55ea7d3653193a-Paper-Conference.pdf
+  paper_pdf: https://papers.nips.cc/paper_files/paper/2025/file/b45279ac82cb017a5f55ea7d3653193a-Paper-Conference.pdf
+  supplement: https://papers.nips.cc/paper_files/paper/2025/file/b45279ac82cb017a5f55ea7d3653193a-Supplemental-Conference.zip
+  arxiv: https://arxiv.org/abs/2502.04780
+  code: https://github.com/zou-group/sirius
+  code_snapshot: https://github.com/zou-group/sirius/tree/16643cdc484b07d4d20419ba785a32a9845639b7
+  data: https://github.com/zou-group/sirius/blob/16643cdc484b07d4d20419ba785a32a9845639b7/dataset/phy_train.jsonl
+  project: null
+  huggingface: null
+  models: null
+  logs: null
+  release: null
+  dataset_card: null
+  doi: https://doi.org/10.48550/arXiv.2502.04780
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/b45279ac82cb017a5f55ea7d3653193a-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=IDSTtDw4Cs
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2502.04780
+data_object:
+  record_type: Successful multi-agent episodes decomposed into role-conditioned SFT records; successfully repaired failures
+    contribute regenerated selected-role and downstream messages.
+  prompt_source: College Physics from MMLU/GPQA/TheoremQA, Chemistry from MMLU/GPQA, PubMedQA labeled data, and three configured
+    negotiation games; exact row manifests are absent.
+  trace_author: Specialized GPT-3.5-turbo-0125, GPT-4o-mini-2024-07-18, or Llama-3.2-3B-Instruct agents; an external LLM critic
+    writes ground-truth-conditioned repair feedback.
+  answer_format: Free-form role messages ending in parsed multiple-choice, numeric, yes/no, or game moves.
+  process_fields:
+  - task_input
+  - agent_role
+  - role_instruction
+  - predecessor_messages
+  - original_response
+  - terminal_outcome
+  - selected_agent
+  - critic_feedback
+  - regenerated_response
+  - rephrased_response
+  - successor_messages
+  - repaired_outcome
+  environment_or_substrate: Python orchestration for sequential QA, Actor-Judgment-Critic, and negotiation games with provider-hosted
+    inference and OpenAI SFT.
+  verifier_or_reward: Mixed final-answer/game-utility checks plus LLM critic and learned Judgment feedback.
+  terminal_predicate: QA parsed answer equals ground truth; repaired trajectory retained only after successor replay succeeds;
+    games use utility and terminal state.
+  provenance: benchmark/game input -> multi-agent rollout -> terminal evaluation -> direct success or feedback repair -> role
+    SFT -> next iteration.
+  release_surface: Current repository releases code, prompts, games, and five MMLU-physics input rows, but no paper-run experience
+    libraries, full trajectories, failures, feedback, logs, or checkpoints.
+recipe_metadata:
+  base_model: GPT-3.5-turbo-0125, GPT-4o-mini-2024-07-18, and Llama-3.2-3B-Instruct.
+  teacher: No teacher for direct successes; repaired failures use a critic privileged with the correct answer.
+  generator: Each role samples from task and predecessor outputs; repair regenerates one selected role then all successors.
+  filtering_rule: All role messages from terminal successes are retained; repaired selected/downstream roles are retained
+    only if final correctness is restored.
+  sampling_protocol: Full directed graph at temperature 0; retry maxima maxsol, maxf, and maxre are symbolic but undisclosed.
+  rollout_count: Paper reports outcomes for 212 physics, 128 chemistry, and 500 PubMedQA training tasks per backbone; exact
+    role-row counts are unknown.
+  temperature: 0
+  top_p: unknown
+  inference_budget: Current code commonly caps 4,096 response tokens; total compute/cost and retries are unknown.
+  selection_threshold: Symbolic epsilon is undisclosed; released QA code operationalizes parsed final-answer equality.
+  seed_protocol: unknown
+  buffer_policy: Separate per-role/per-iteration success libraries; deduplication, balancing, persistence, and exact cardinalities
+    are unknown.
+  optimizer_or_scaffold: Independent role-specific SFT through OpenAI Fine-tuning API; complete hyperparameters and provider
+    defaults are unknown.
+audit:
+  source_mixture: Public benchmark pools and configured games; no row-level immutable source ledger.
+  split: Physics 212/107, chemistry 128/65, PubMedQA 500/500; IDs, revisions, seed, ordering, and duplicate policy absent.
+  decontamination: unknown
+  benchmark_overlap: No exact/semantic train-test or pretraining-contamination audit.
+  license: Current code MIT; supplement unlicensed; upstream repositories currently MIT but revisions unpinned; derived trajectories
+    and fine-tuned models have no stated license.
+  lineage: Exact paper-run records, feedback, iteration membership, provider fine-tune IDs, and models are not released.
+  release_version: Inspected commit 16643cdc484b07d4d20419ba785a32a9845639b7 postdates proceedings; no tags/releases or paper
+    commit.
+  trajectory_scale: 1,446 initial successes plus 444 repaired failures across nine QA cells equals 1,890 case-level episodes,
+    not role-row count.
+  successful_and_failed_sample_retention: Only successes and successfully repaired failures train; unrepaired failures and
+    paper-run provenance are absent.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Terminal success labels every upstream role message good despite lucky or flawed reasoning.
+  - Credit assignment across agents is unresolved.
+  - Rephrasing erases mistake and feedback provenance.
+  - Judgment false decisions can damage correct answers or preserve wrong ones.
+  - Parsers are format brittle.
+  - Splits and contamination evidence are unpinned.
+  - Retry budgets, epsilon, SFT settings, seeds, IDs, and cost are incomplete.
+  - Scripts contain placeholder paths and inconsistent conventions.
+  - No experience library, failure ledger, weights, logs, dataset card, tag, or immutable manifest is public.
+  citation_status: verified
+  confidence: high
+  notes: Verified against NeurIPS final paper, supplement, arXiv, OpenReview ID, current repository, license, code, and five-row
+    sample.
+  remaining_unknowns:
+  - exact source IDs and revisions
+  - retry limits and epsilon
+  - per-role rows and iteration membership
+  - paper code commit
+  - fine-tuned model identifiers and compute
+  - derived-data license and contamination audit
+inclusion_reason: SiriuS is a strong multi-agent construction recipe converting terminal outcomes into role-specific SFT libraries
+  and repairing failed episodes, with a central gap between its selection contract and absent trajectory release.
+related: []
+tags:
+- sirius
+- multi-agent
+- bootstrapped-reasoning
+- experience-library
+- trajectory-augmentation
+- role-specific-sft
+- outcome-supervision
+- negotiation
+- release-incomplete
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: SiriuS turns terminally successful interactions into per-role SFT records and repairs failed QA episodes
+  through critique, regeneration, rephrasing, and downstream replay, but does not release the libraries.
+why_it_matters: It operationalizes outcome-supervised multi-agent self-improvement while exposing coarse credit assignment
+  and absent failure/library provenance.
+card: null
+needs:
+- needs_data_release
+- needs_split_manifest
+- needs_reproducibility_pin
+- needs_license
+- needs_credit_audit
+- needs_failure_audit
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Formal venue, paper, code, supplement, five-row sample, and release absence verified; this is an open recipe, not
+    an experience-library release.

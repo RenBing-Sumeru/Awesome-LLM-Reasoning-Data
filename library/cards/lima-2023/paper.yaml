@@ -1,0 +1,128 @@
+id: lima-2023
+title: 'LIMA: Less Is More for Alignment'
+year: 2023
+venue: NeurIPS 2023
+authors:
+- Chunting Zhou
+- Pengfei Liu
+- Puxin Xu
+- Srini Iyer
+- Jiao Sun
+- Yuning Mao
+- Xuezhe Ma
+- Avia Efrat
+- Ping Yu
+- Lili Yu
+- Susan Zhang
+- Gargi Ghosh
+- Mike Lewis
+- Luke Zettlemoyer
+- Omer Levy
+source_role:
+- data_release
+- construction_recipe
+- audit_failure
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- large-language-models
+- practical-alignment-and-data-quality-primers
+training_use:
+- sft
+- audit
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2305.11206
+  arxiv: https://arxiv.org/abs/2305.11206
+  code: null
+  data: https://huggingface.co/datasets/GAIR/lima
+  project: null
+  huggingface: https://huggingface.co/datasets/GAIR/lima
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: About 750 training prompts come from Stack Exchange and wikiHow; the remainder were written by the authors
+    or sourced from community Q&A.
+  trace_author: Community contributors and the paper authors.
+  answer_format: One user instruction paired with one curated natural-language answer.
+  process_fields:
+  - instruction
+  - response
+  - source provenance
+  environment_or_substrate: Static instruction-response records consumed by supervised fine-tuning.
+  verifier_or_reward: Human preference evaluation of helpfulness and writing quality; no per-record factual verifier is provided.
+  terminal_predicate: A demonstration is retained through author curation, and model quality is judged through pairwise human
+    preference.
+recipe_metadata:
+  base_model: LLaMA-65B.
+  teacher: Community contributors and paper authors; no single teacher model writes the training set.
+  generator: Curate 1,000 high-quality instruction-response pairs and fine-tune LLaMA-65B on them.
+  filtering_rule: Author selection for quality, diversity, and response style.
+  sampling_protocol: The paper's human-preference protocol; unreported decoding details remain unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not reported as a reusable construction budget.
+  optimizer_or_scaffold: Supervised fine-tuning without a new optimizer or reward model.
+audit:
+  source_mixture: About 750 community examples plus author-written and other curated examples, totaling 1,000 training demonstrations.
+  split: The official gated Hugging Face repository provides train.jsonl and test.jsonl; pin the accessed revision before
+    reuse.
+  decontamination: The paper does not establish semantic non-overlap with all downstream evaluations.
+  license: The official Hugging Face card marks the dataset license as other and requires access approval; redistribution
+    rights must be checked separately.
+  lineage: 'practical alignment and data-quality primers lineage; closest comparisons: false-promise-imitation-2023, tulu-2-2023.'
+  known_failure_modes:
+  - The result depends on a capable base model, narrow curated sources, and a preference signal that does not verify factual
+    correctness.
+  citation_status: verified
+  confidence: high
+  notes: Paper, author affiliations, NeurIPS 2023 venue, and official gated dataset page checked; institution evidence comes
+    from the paper PDF affiliation block.
+inclusion_reason: LIMA isolates curation quality as the main variable in small-data supervised alignment and exposes the limits
+  of preference-only data evaluation.
+related:
+- false-promise-imitation-2023
+- tulu-2-2023
+tags:
+- practical-alignment-and-data-quality-primers
+- arxiv-2305.11206
+- primary-link-checked
+status: verified
+one_line_summary: LIMA uses 1,000 curated instruction-response pairs to test whether a capable base model needs data quality
+  more than data volume to learn an assistant style.
+why_it_matters: It turns the quality-versus-quantity claim into a concrete small-data SFT comparison while keeping the preference-only
+  evidence boundary visible.
+reading_priority: must read
+paper_type: practical alignment and data-quality primer
+best_for: Readers designing or auditing small, curated instruction-tuning datasets.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and gated Hugging Face dataset page checked; the artifact license remains restrictive or unspecified
+    rather than inferred.
+category_ids:
+- foundations_and_primers
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: foundations_and_primers
+  direction_label: practical alignment and data-quality primers
+  selection_priority_score: 12
+  selection_score_breakdown:
+    recency: 2
+    impact: 5
+    venue: 3
+    institution: 2

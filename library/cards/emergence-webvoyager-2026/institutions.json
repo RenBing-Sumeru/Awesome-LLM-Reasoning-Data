@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Emergence AI",
+    "Northwestern University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2603.29020",
+    "https://github.com/EmergenceAI/EmergenceWebVoyager",
+    "https://github.com/EmergenceAI/EmergenceWebVoyager/tree/main/tasks"
+  ],
+  "verification_note": "arXiv and GitHub sources verify title, authors, institutions, preprint status, and task artifact links."
+}

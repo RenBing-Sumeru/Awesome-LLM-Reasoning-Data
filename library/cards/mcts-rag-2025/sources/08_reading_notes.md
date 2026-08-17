@@ -1,0 +1,6 @@
+- Read §§3.2-3.4 first: the six A1-A6 actions define the state/action object, while semantic grouping and model likelihood define the feedback contract.
+- Keep the main search budget distinct from the ablation: four rollouts, depth 5, at most two subquestions, and top-10 retrieval are the main setting; 8, 12, and 16 rollouts are scaling conditions.
+- Treat the repository's `data/` directory as limited benchmark input, not as a release of paper-run MCTS trees or traces.
+- Inspect the generator and discriminator writers before assuming completeness: terminal and per-rollout JSON omit an all-node structured tree, and persisted correctness fields omit full selector scores.
+- Audit retrieval as a mutable environment: the paper's Bing/LangChain setup and the public Cohere/Azure/FAISS plus GPT-4o helper path are not a pinned equivalent.
+- Do not infer training use from a possible trace schema; the supported uses are test-time compute and evaluation.

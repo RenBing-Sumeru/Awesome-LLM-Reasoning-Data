@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenBookQA evaluates multiple-choice science QA with open-book facts and commonsense.",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要审计 benchmark 对象、反馈契约、artifact 版本、split 和污染风险的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Todor Mihaylov、Peter Clark、Tushar Khot、Ashish Sabharwal",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

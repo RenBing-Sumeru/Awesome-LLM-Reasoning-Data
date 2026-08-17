@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "V-STaR 将正确的自生成解用于迭代式 generator SFT，并把同题正确—错误结果转换为 DPO verifier pairs，以支持 Best-of-k 排序。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "迭代自训练与结果验证器数据配方",
+  "best_for_ch": "研究 rejection sampling、synthetic preference、outcome verifier、DPO 与 test-time compute 的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Arian Hosseini、Xingdi Yuan、Nikolay Malkin、Aaron Courville、Alessandro Sordoni、Rishabh Agarwal",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "data_construction_open_release_recipes"
+  ]
+}

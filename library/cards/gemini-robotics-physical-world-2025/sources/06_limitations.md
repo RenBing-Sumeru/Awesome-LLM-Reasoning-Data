@@ -1,0 +1,11 @@
+The proprietary action corpus is described only at aggregate level. Episode, frame, and action counts; task and object manifests; cameras and calibration; proprioception; controller versions; operators, sites, dates, privacy and consent treatment; failures; and source-level rights are unknown. The wider web/code/media/embodied/VQA mixture likewise lacks proportions, filtering, deduplication, and licenses.
+
+Success and progress are task-specific evaluation judgments, not a stated RL reward. Scorer identity, complete rubrics, blinding, inter-rater agreement, raw trials, false positives, and false negatives are unavailable. As a curator inference, a partial physical state may satisfy a progress milestone while concealing unsafe or brittle behavior, and binary success can miss path quality, collisions, recovery cost, or intervention.
+
+The reasoning intermediate is not reproducible. The report says the action dataset is re-labelled with future arm trajectories, but does not identify the relabeller, coordinate frame, temporal sampling, occlusion handling, coverage, validation, or whether labels are human-, model-, or geometry-generated. A visually plausible keypoint path need not encode causal or faithful reasoning.
+
+Physical trials are limited and sensitive to hardware wear, calibration, lighting, object placement, latency, and operator resets. Randomized back-to-back A/B testing reduces some variation but does not supply replayable states or independent replication. Generalist initialization, distillation, diverse data, model capacity, and specialization demonstrations remain causally entangled.
+
+The report does not disclose Gemini Robotics batch size, loss, optimizer, training steps, schedule, checkpoint selection, or compute. The appendix's 2M and 1M step values are diffusion-baseline budgets; assigning them to Gemini Robotics would be incorrect. Inference latency and 50 Hz effective control are also not training budgets.
+
+ERQA's 400 records and CC BY 4.0 license apply to an answer-level benchmark and its harness. They do not open the ALOHA 2 demonstrations, relabelled trajectories, multimodal training sources, model weights, or training code. No global train/evaluation split, duplicate-trajectory audit, scene/task/object overlap ledger, decontamination, or item-level lineage is released.

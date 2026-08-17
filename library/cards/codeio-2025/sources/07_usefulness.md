@@ -1,0 +1,3 @@
+- Use the released JSONL when the goal is to teach a base model to express executable procedures as natural-language reasoning and to respond to concrete correction feedback before general instruction tuning.
+- A training input is the `prompt`; the target is the first trace plus feedback and, when present, the revised trace plus final check. Success should be measured against a stage-two-only baseline across non-code as well as code benchmarks.
+- Reuse the pipeline for new deterministic functions by preserving source ID, cleaned code, generator seed, I/O pair, teacher version, all execution outcomes, and sandbox digest. Do not use it when only faithful process supervision or a fully redistributable copy of the paper's complete mixture is acceptable.

@@ -1,0 +1,7 @@
+核心贡献是一套通过Spatial-Temporal Extrapolation构建的provenance-aware多模态搜索基准：标注者选择视频keyframe或学术论文的figure/table，再询问可见区域或时刻之外的信息。候选问题会交给至少两个闭源MLLM测试；无需搜索即可回答的条目被移除或混淆，关键区域可被blur或mask，仍然过于简单的条目会被丢弃。确切模型组合、prompt、output、拒绝数量和逐条决策均未发布。
+
+公开data object是311条QA/image/source-reference记录。论文定义的评测对象更宽：初始问题与图像进入threaded agent state，其中包含text/image search、URL与title、Gemini生成的webpage或related-image summary、crop、hypothesis及final answer。动作表面由text search、image search、基于人工SoM box的indexed zoom/crop和final answer组成。实验中的SoM box由人工整理与核验，但仓库仍把其列入待发布清单。
+
+主要反馈附着在answer level。GPT-4o把最终预测与acceptable answer variant比较并给出二值correctness；论文提及可选lightweight rule matching，但实现未发布也未详细说明。因此accepted verification contract是`mixed`，而实际公开结果仍主要依赖LLM judgment。judge不会验证检索页面是否支持答案、citation是否正确、Gemini summary是否保留证据，也不会验证每次search/crop transition是否具有有效provenance。state-action结构存在于评测episode中，但没有发布step-level provenance label或training reward。
+
+相对MMSearch、BrowseComp-VL和MM-BrowseComp，具体变化是让弱视觉定位与超出画面时空范围的检索同时成为必要条件，并在公开记录中保留来源引用。live search、visual QA、LLM answer judge、cropping和Set-of-Mark本身都不是新组件。其方向信号来自这些组件与provenance-oriented任务对象的耦合，以及该任务对象与审计provenance所需、但未发布的动态episode之间的明显缺口。

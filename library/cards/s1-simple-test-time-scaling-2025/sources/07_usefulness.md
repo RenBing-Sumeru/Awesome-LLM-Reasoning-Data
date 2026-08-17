@@ -1,0 +1,11 @@
+For the **Data Construction and Open Release Recipes** track, s1 is useful as a compact-selection baseline and as an audit case for how an apparently open pipeline can remain non-replayable.
+
+1. **Reproduce the five-stage funnel.** Preserve stable IDs through 59,029, 54,116, 51,581, 24,496, and 1,000 stages. Release every exclusion reason, Gemini failure, format rule, Qwen attempt, Claude decision, domain, rank, weight, and sampler seed.
+2. **Evaluate selection proxies separately.** Compare source quality, Qwen-relative difficulty, domain balance, trace length, and answer correctness under matched training and inference budgets. Do not assume long or incorrect traces transfer across model families.
+3. **Audit judge reliability.** Sample strata where Claude and source answers disagree; use independent human or programmatic checks where available. Publish confusion estimates and rationales before treating Boolean feature columns as ground truth.
+4. **Reconcile the open release.** Identify the 43 missing full-pool rows, publish an accessible replacement for `qfq/geminiall`, align feature names with notebook code, and tag a deterministic end-to-end manifest.
+5. **Keep original and derivative data separate.** Use Gemini s1K for reproducing s1-32B; use DeepSeek-R1 s1K-1.1 only for s1.1 experiments. Record teacher/model/data revision and license in every result.
+6. **Use budget forcing as an inference ablation.** Compare forced stopping, repeated `Wait`, ordinary continuation, and equal-token baselines; report loops, context exhaustion, latency, and vLLM configuration. Do not tag it as training supervision.
+7. **Build a rights-aware mixture.** Attach upstream source revision and license per row and explicitly review non-commercial/share-alike constraints before redistribution or commercial training.
+
+Reuse classification is **conditional training and evaluation reuse**. Original s1K, tokenized data, s1-32B, and training scripts are directly usable when pinned, but paper-exact reconstruction is blocked by inaccessible/schema-mismatched intermediates, unseeded sampler drift, missing judge evidence, and the 43-row discrepancy. The full 59K artifact is an ablation corpus, not the original model's training set.

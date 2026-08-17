@@ -1,0 +1,1 @@
+Do not treat CMMLU as a translation of MMLU. Read the subject list and prompt preprocessing before comparing scores. Keep zero-shot, five-shot, direct-answer, CoT, overall average, and China-specific subset metrics separate.

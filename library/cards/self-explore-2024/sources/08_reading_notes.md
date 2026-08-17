@@ -1,0 +1,6 @@
+- “First pit” means the earliest tested step with zero correct recoveries among four samples from the RFT explorer; it is not a proof of the first mathematical error.
+- The pipeline samples 100 full rationales per problem, keeps programmatically verified positives for RFT, forms outcome pairs, then explores rejected prefixes. GSM8K additionally checks embedded arithmetic equations for retained positives.
+- A granular row has only `prompt/chosen/rejected`: the prompt contains the accepted prefix, chosen is a recovery completion, and rejected is the localized pit step. The intermediate evidence needed to audit that transformation is not released.
+- Paper and code differ on chosen selection: the paper says random correct recovery, while current code chooses the shortest eligible unused recovery. The eight-pair cap also has a reported Mistral/GSM8K exception.
+- Downstream gains coexist with selective problem coverage, reduced sampled-answer diversity, and rapidly saturated preference rewards. Benchmark performance is not a first-pit accuracy audit.
+- The repository releases source task files and construction code, not the paper-run generated corpora; repository licensing, generated-data terms, decontamination, and clean checkpoint mapping remain unresolved.

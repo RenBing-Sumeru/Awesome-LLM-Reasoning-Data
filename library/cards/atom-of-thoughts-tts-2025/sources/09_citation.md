@@ -1,0 +1,1 @@
+Teng, Fengwei, Quan Shi, Zhaoyang Yu, Jiayi Zhang, Yuyu Luo, Chenglin Wu, and Zhijiang Guo. 2025. “Atom of Thoughts for Markov LLM Test-Time Scaling.” Advances in Neural Information Processing Systems 38 (NeurIPS 2025). Paper: https://arxiv.org/abs/2502.12018. Code: https://github.com/qixucen/atom.

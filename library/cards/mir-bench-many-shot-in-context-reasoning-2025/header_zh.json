@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MIR-Bench 以多示例上下文中的复杂模式归纳任务，评估模型从大量演示中提炼规则的能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多示例上下文模式推理基准",
+  "best_for_ch": "研究长上下文、模式归纳与 many-shot 推理的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kai Yan、Zhan Ling、Kang Liu、Yifan Yang、Ting-Han Fan、Lingfeng Shen、Zhengyin Du、Jiecao Chen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

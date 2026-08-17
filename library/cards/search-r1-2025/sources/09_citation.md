@@ -1,0 +1,1 @@
+Bowen Jin, Hansi Zeng, Zhenrui Yue, Jinsung Yoon, Sercan Ö. Arık, Dong Wang, Hamed Zamani, and Jiawei Han. “Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning.” arXiv:2503.09516, 2025. [Paper](https://arxiv.org/abs/2503.09516) · [Official BibTeX](https://arxiv.org/bibtex/2503.09516) · [Code](https://github.com/PeterGriffinJin/Search-R1).

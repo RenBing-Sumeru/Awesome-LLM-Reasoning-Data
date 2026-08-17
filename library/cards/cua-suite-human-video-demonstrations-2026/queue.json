@@ -1,0 +1,19 @@
+{
+  "title": "CUA-Suite: Massive Human-annotated Video Demonstrations for Computer-Use Agents",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=IgTUGrZfMr",
+    "data": "https://huggingface.co/datasets/ServiceNow/VideoCUA",
+    "code": "https://github.com/ServiceNow/GroundCUA/tree/main/VideoCUA",
+    "project": "https://cua-suite.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:58:13Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提供约1万条桌面任务的人类连续视频、鼠标轨迹与推理标注，属于高价值 Agent 轨迹示范数据",
+    "updated_at": "2026-07-16T12:58:13Z"
+  }
+}

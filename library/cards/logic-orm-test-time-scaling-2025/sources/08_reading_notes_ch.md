@@ -1,0 +1,5 @@
+- 应把 Section 2 与 Appendix Table 2 连读：feedback pipeline 依次包含 gold-label equality、针对错误 Echo 轨迹的 GPT-4o filter，以及学习得到的 Qwen2.5 标量 ORM；三者是不同 contract。
+- 需要准确区分 release 计数：10,009 条 CoT、19,105 条合并 Echo-CoT、恰好 9,096 条新增 Echo，且新增记录全部为 reward 0；合并文件没有原生标记其来源。
+- 报告的 Best-of-N 改进是特定模型和预算下的 evaluation evidence，不能证明公开轨迹在逻辑上有效、许可明确、经过 decontamination 或发布完整。
+- 主要复现阻碍包括：缺少 raw Echo candidate 与 filter decision、缺少 ProverQA/JustLogic 文件、没有带分 rollout pool 和 rejected candidate、没有稳定 split manifest，也没有 dataset-specific license。
+- 两处冲突应解决而非隐藏：JustLogic Table 4 印为 49,197，但类别计数之和为 69,197；论文和 shell 指定 3 epoch，而 trainer 硬编码为 2。

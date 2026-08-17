@@ -1,0 +1,1 @@
+正确性只限于 harness 使用的随机测试和数值容差，不能证明所有 shape、dtype 或边界情况等价。速度只相对于选定 PyTorch baseline 和 benchmark 环境成立，不是与架构无关的属性。公开 workload 可能进入后续代码模型训练，模型也可能过拟合 prompt 或接口约定。CUDA 代码可能有未定义行为、race condition、内存安全问题或 precision 假设，即使能通过抽样测试。没有额外 profiling、fuzzing 和人工 code review，不能把它解读为生成 kernel 可生产部署。

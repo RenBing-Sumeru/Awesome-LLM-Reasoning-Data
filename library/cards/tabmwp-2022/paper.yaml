@@ -1,0 +1,124 @@
+id: tabmwp-2022
+title: Dynamic Prompt Learning via Policy Gradient for Semi-structured Mathematical Reasoning
+year: 2022
+venue: ICLR 2023
+authors:
+- Pan Lu
+- Liang Qiu
+- Kai-Wei Chang
+- Ying Nian Wu
+- Song-Chun Zhu
+- Tanmay Rajpurohit
+- Peter Clark
+- Ashwin Kalyan
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- table-reasoning
+- math-word-problems
+- multimodal-structured-data
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2209.14610
+  arxiv: https://arxiv.org/abs/2209.14610
+  code: https://github.com/lupantech/PromptPG
+  data: https://github.com/lupantech/PromptPG/tree/main/data/tabmwp
+  project: https://promptpg.github.io
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2209.14610
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: table, question, optional choices or unit, gold answer, natural-language solution, answer type, split metadata,
+    and table representations as image, semi-structured text, and structured table.
+  dataset_scale: 38,431 table-based math word problems split 23,059 train / 7,686 development / 7,686 test, with 28,719 free-text
+    questions and 9,712 multiple-choice questions.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: table-grounded mathematical reasoning records with image, semi-structured text, and structured
+    table forms.
+  verifier_or_reward: answer-level accuracy; numeric answers are normalized to two-decimal values, and multiple-choice outputs
+    are mapped to the closest option.
+  terminal_predicate: generated answer matches the gold answer under the official answer-type-specific scorer.
+  benchmark_size: 38,431 problems; 23,059 train, 7,686 development, 7,686 test.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Dynamic Prompt Learning via Policy Gradient for Semi-structured Mathematical
+    Reasoning; exact curation details should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: ICLR 2023 paper, arXiv:2209.14610, official project page, and official PromptPG GitHub repository.
+  split: Paper reports a 6:2:2 split with 23,059 train, 7,686 development, and 7,686 test examples; official JSON files are
+    published under data/tabmwp in the PromptPG repository.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official repository has an MIT code license file; README states the TabMWP dataset is licensed under CC BY-NC-SA
+    4.0, so code and dataset reuse should be separated.
+  lineage: 'Primary source: https://arxiv.org/abs/2209.14610'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: Dataset scale, split counts, official repository, project page, and scorer behavior were refreshed from the ICLR
+    paper and official PromptPG README; leaderboard comparability still depends on table representation and answer extraction.
+inclusion_reason: TabMWP evaluates mathematical reasoning over 38,431 semi-structured table word problems, mixing text, tables,
+  and arithmetic answers.
+related: []
+tags:
+- benchmark
+- table-reasoning
+- math-word-problems
+- multimodal-structured-data
+one_line: TabMWP evaluates mathematical reasoning over 38,431 semi-structured table word problems.
+why_it_matters: It supplies a reusable evaluation coordinate for table-reasoning, math-word-problems work.
+status: verified
+needs:
+- 'needs_audit: pin exact PromptPG repository commit, evaluator implementation, answer extraction behavior, prompt/scaffold
+  settings, and table representation used by each reported result'
+- 'needs_audit: separate MIT code license from CC BY-NC-SA 4.0 dataset license before redistribution or derived release'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: TabMWP evaluates mathematical reasoning over 38,431 semi-structured table word problems.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary paper, official project page, GitHub data directory, split counts, authors, venue, and README license statements
+    were checked during L4 source regeneration; exact repository commit remains unpinned.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeScalerPair-51K 含 51,107 个经验证的代码候选偏好对，以无执行奖励模型支持代码推理训练与 test-time 选择。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码偏好数据、无执行奖励模型与推理时选择方法",
+  "best_for_ch": "需要代码偏好对、代码奖励模型或免执行候选重排方法的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Xiao Zhu、Xinyu Zhou、Boyu Zhu、Hanxu Hu、Mingzhe Du、Haotian Zhang、Huiming Wang、Zhijiang Guo",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:17:45Z"
+}

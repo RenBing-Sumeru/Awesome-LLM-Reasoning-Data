@@ -1,0 +1,3 @@
+The key change is to make generation and process selection two functions of one shared model, rather than pairing a policy with a separately trained reward model. It also treats outcome-only supervision as sufficient to bootstrap a process scorer through self-supervised filtering.
+
+That is distinct from merely applying best-of-N: the contribution changes the verifier architecture and its learning signal. It remains a selection-oriented method, so its usefulness depends on whether the shared scorer genuinely discriminates trajectory quality rather than simply echoing the generator’s preferences.

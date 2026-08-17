@@ -1,0 +1,112 @@
+id: vericoder-functional-correctness-validation-2025
+title: 'VeriCoder: Enhancing LLM-Based RTL Code Generation through Functional Correctness Validation'
+year: 2025
+venue: arXiv
+authors:
+- Anjiang Wei
+- Huanmi Tan
+- Tarun Suresh
+- Daniel Mendoza
+- Thiago S. F. X. Teixeira
+- Ke Wang
+- Caroline Trippel
+- Alex Aiken
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- hardware-design
+training_use:
+- sft
+- reward_modeling
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.15659
+  arxiv: https://arxiv.org/abs/2504.15659
+  code: https://github.com/Anjiang-Wei/VeriCoder
+  data: https://huggingface.co/datasets/LLM4Code/expanded_origen_126k
+  project: https://anjiang-wei.github.io/VeriCoder-Website/
+  huggingface: https://huggingface.co/datasets/LLM4Code/expanded_origen_126k
+  doi: https://doi.org/10.48550/arXiv.2504.15659
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Existing natural-language RTL specification and implementation pairs.
+  trace_author: GPT-4o-mini generates testbenches and repairs implementations from simulator feedback.
+  answer_format: Natural-language specification, Verilog RTL implementation, testbench, and functional simulation outcome.
+  process_fields:
+  - specification
+  - rtl
+  - testbench
+  - compilation_feedback
+  - waveform_feedback
+  - final_pass
+  environment_or_substrate: HDL simulator for Verilog/RTL modules.
+  verifier_or_reward: Testbench compilation and simulation pass outcome.
+  terminal_predicate: The final RTL implementation passes the final testbench in the simulator.
+recipe_metadata:
+  base_model: VeriCoder is fine-tuned on accepted functionally validated records.
+  teacher: GPT-4o-mini.
+  generator: Generate testbench, simulate, repair RTL from logs, revise faulty tests when needed, then accept final passes.
+  filtering_rule: Only specification–RTL–testbench triplets whose final implementation passes are accepted.
+  sampling_protocol: The expanded_origen_126k release contains approximately 126K records.
+  rollout_count: null
+  temperature: null
+  inference_budget: Simulator, timeout, teacher version, maximum repair iterations, interfaces, and seed-data licences must
+    be fixed for reproduction.
+  optimizer_or_scaffold: Feedback loop over compilation or waveform logs; standard supervised fine-tuning on accepted triplets.
+audit:
+  source_mixture: arXiv paper, official VeriCoder repository and project site, and the expanded_origen_126k Hugging Face release.
+  split: Consult the release and repository for split details.
+  decontamination: Audit seed RTL sources and benchmark overlap before treating results as unseen functional generalization.
+  license: Check the dataset and seed-source licences before reuse; the paper does not establish one combined licence in the
+    checked sources.
+  lineage: https://github.com/Anjiang-Wei/VeriCoder
+  known_failure_modes:
+  - Tests and RTL repairs driven by the same teacher can share an error.
+  - Finite simulation inputs do not establish full temporal or boundary correctness.
+  - The scope excludes repository dependencies, synthesis constraints, power/timing, and full FPGA/ASIC backends.
+  citation_status: verified
+  confidence: high
+  notes: Title, authors, and affiliations were checked against the arXiv PDF; official repository, project site, and candidate-supplied
+    Hugging Face release were checked. No accepted venue was verified, so the venue remains arXiv.
+inclusion_reason: VeriCoder releases RTL specification–implementation–testbench records accepted through executable functional
+  simulation, enabling SFT and simulation-derived rewards.
+related: []
+tags:
+- rtl
+- verilog
+- hardware-design
+- simulation
+- executable-verification
+- 2025
+one_line_summary: VeriCoder turns natural-language RTL seeds into 125,777 simulation-passing specification–RTL–test triplets
+  through teacher-guided test-and-repair loops.
+why_it_matters: It changes RTL data acceptance from compilation to behavior under an executable testbench while preserving
+  the validation evidence in each record.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper, author repository, project site, and Hugging Face data release were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

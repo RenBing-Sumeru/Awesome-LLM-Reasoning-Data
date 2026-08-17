@@ -1,0 +1,135 @@
+id: trajselector-2025
+title: 'TrajSelector: Harnessing Latent Representations for Efficient and Effective Best-of-N in Large Reasoning Model'
+year: 2025
+venue: arXiv preprint
+authors:
+- Bin Yu
+- Xinming Wang
+- Shijie Lian
+- Haotian Li
+- Changti Wu
+- Ruina Hu
+- Bailing Wang
+- Yuliang Wei
+- Kai Chen
+source_role:
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- process_supervision
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2510.16449
+  arxiv: https://arxiv.org/abs/2510.16449
+  project: https://zgca-ai4edu.github.io/TrajSelector/
+  doi: https://doi.org/10.48550/arXiv.2510.16449
+  bibtex: https://arxiv.org/bibtex/2510.16449
+data_object:
+  prompt_source: Questions and ground-truth answers from OpenR1-Math-220K and DeepMath-103K
+  trace_author: Frozen Qwen3-8B sampler
+  answer_format: A math prompt paired with one generated response containing a <think> trajectory, a final answer, sampler
+    hidden states at step boundaries, an outcome label, copied pseudo-labels, and verifier scores
+  process_fields:
+  - prompt
+  - ground_truth
+  - candidate_trace
+  - final_answer
+  - step_boundary
+  - step_final_hidden_state
+  - trajectory_outcome_label
+  - pseudo_step_label
+  - right_buffer_wrong_probabilities
+  - step_score
+  - mean_trajectory_score
+  - selected_final_answer
+  environment_or_substrate: Qwen3-8B generation through vLLM for offline corpus construction and external Best-of-N math inference;
+    the sampler remains frozen
+  verifier_or_reward: Math-Verify supplies binary final-answer correctness for training; a fully trained Qwen3-0.6B-Base process
+    score model maps sampler hidden states to wrong, buffer, and right probabilities
+  terminal_predicate: Split the <think> span on the literal '\n\n' delimiter, average each trajectory's step-level right probabilities,
+    and return the candidate with the maximum mean
+recipe_metadata:
+  base_model: Qwen3-0.6B-Base process score model with a frozen Qwen3-8B sampler
+  teacher: Ground-truth answers checked by rule-based Math-Verify; no teacher LLM
+  generator: Qwen3-8B
+  filtering_rule: Retain every incorrect response, downsample correct responses to a 1:1 positive-negative ratio, then shuffle
+  sampling_protocol: Thinking enabled; temperature 0.6; top-p 0.95; top-k 20; min-p 0; maximum 10,000 generated tokens; vLLM
+  rollout_count: One generated response per retained training record; evaluation reports Best-of-N for N=1, 5, 10, 16, 32,
+    48, and 64
+  temperature: 0.6
+  inference_budget: Up to 10,000 generated tokens per response; candidate count N is the external test-time compute budget
+  optimizer_or_scaffold: Full process score model trained for 3 epochs with AdamW, learning rate 1e-4, weight decay 0.1, DeepSpeed
+    ZeRO-2, bfloat16, per-device batch size 2, gradient accumulation 4, and 8 NVIDIA H100 GPUs
+audit:
+  source_mixture: 23,184 retained DeepMath-103K records and 110,516 retained OpenR1-Math-220K records; 66,850 positive and
+    66,850 negative overall
+  split: unknown
+  decontamination: The paper does not report decontamination of the constructed 133,700-response corpus against its evaluation
+    benchmarks
+  license: The arXiv manuscript is CC BY 4.0; licensing for the generated traces, hidden states, and trained selector artifact
+    is not specified because those artifacts are not released
+  lineage: Public math question and ground truth -> Qwen3-8B response and sampler hidden states -> Math-Verify outcome ->
+    outcome copied to every step -> three-class process-score training -> mean step score -> Best-of-N selection
+  known_failure_modes:
+  - A correct final answer does not establish that every intermediate step is correct; copying the outcome label creates systematic
+    step-label noise
+  - The buffer class can absorb uncertainty but does not identify which step is actually invalid
+  - Literal blank-line segmentation is sensitive to response formatting and may not match semantic reasoning boundaries
+  - Hidden-state features couple the selector to the sampler architecture, tokenizer, layer representation, and boundary convention
+  - Arithmetic-mean pooling can dilute a decisive bad step or favor trajectories with different step segmentation
+  - Math-Verify inherits answer-extraction and equivalence-checking errors
+  - The method is evaluated mainly on mathematical answer selection; open-ended domains and integration with Monte Carlo search
+    are untested
+  - No official code, checkpoint, constructed training corpus, raw traces, or hidden-state artifact is available for independent
+    audit
+  citation_status: verified
+  confidence: high
+  notes: The abstract says five benchmarks, while Section 5.1 and the result tables enumerate six; this card follows the tables
+    and records the inconsistency
+inclusion_reason: Defines a reproducible weakly supervised process-scoring and Best-of-N selection contract over reasoning
+  traces and sampler latent states, with a preliminary offline data-selection use
+related: []
+tags:
+- track5
+- best-of-n
+- trajectory-selection
+- latent-representations
+- process-scoring
+- weak-supervision
+- test-time-scaling
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Trains a 0.6B process selector on outcome-labeled Qwen3-8B math traces and ranks Best-of-N candidates by
+  the mean of step-level right probabilities derived from sampler hidden states.
+why_it_matters: For the rollout/search track, it makes candidate traces, latent step features, weak outcome labels, and the
+  final selection rule explicit, while showing that the same selector can rank offline SFT data.
+needs:
+- 'needs_url: official code and trained process-score checkpoint'
+- 'needs_url: constructed 133,700-record corpus, raw traces, and hidden-state records'
+- 'needs_metadata: training split, validation protocol, corpus decontamination, and generated-artifact license'
+- 'partial: offline data-selection evidence is limited to one 1K-sample study'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv record, full paper, and linked project page verified; no code, data, checkpoint, or raw trace artifact
+    was found.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "PeerReviewBench 由领域科学家逐条评定人类与 AI 评审意见的正确性、重要性和证据充分性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Seungone Kim、Dongkeun Yoon、Kiril Gashteovski、Juyoung Suk、Jinheon Baek、Pranjal Aggarwal、Ian Wu、Viktor Zaverkin、Spase Petkoski、Daniel R. Schrider、Ilija Dukovski、Francesco Santini、Biljana Mitreska、Yong Jeong、Kyeongha Kwon、Young Min Sim、Dragana Manasova、Arthur Porto、Biljana Mojsoska、Makoto Takamoto、Marko Shuntov、Ruoqi Liu、Hyunjoo Jenny Lee、Niyazi Ulas Dinç、Yehhyun Jo、Sunkyu Han、Chungwoo Lee、Huishan Li、Esther H. R. Tsai、Ergun Simsek、Khushboo Shafi、Yeonseung Chung、Jihye Park、Aleksandar Shulevski、Henrik Christiansen、Yoosang Son、Elly Knight、Amanda Montoya、Jeongyoun Ahn、Christian Langkammer、Heera Moon、Changwon Yoon、Nikola Stikov、Mooseok Jang、Edward Choi、Junhan Kim、Yeon Sik Jung、Woo Youn Kim、Jae Kyoung Kim、Ishraq Md Anjum、Hyun Uk Kim、Drew Bridges、Carolin Lawrence、Xiang Yue、Alice Oh、Akari Asai、Sean Welleck、Graham Neubig",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

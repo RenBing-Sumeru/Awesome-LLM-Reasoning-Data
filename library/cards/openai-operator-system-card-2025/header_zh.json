@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI 的《Operator System Card》披露：基于 GPT-4o 的 CUA 使用专门的计算机操作监督数据、广义公开数据来源和强化学习；任务记录、奖励/验证器、训练环境及数据谱系均未披露。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型系统卡与数据披露账本",
+  "best_for_ch": "需要审计闭源计算机使用智能体报告中已披露与未披露的后训练数据、反馈和复现边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

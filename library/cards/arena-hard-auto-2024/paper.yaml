@@ -1,0 +1,117 @@
+id: arena-hard-auto-2024
+title: 'From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline'
+year: 2024
+venue: arXiv preprint
+authors:
+- Tianle Li
+- Wei-Lin Chiang
+- Evan Frick
+- Lisa Dunlap
+- Tianhao Wu
+- Banghua Zhu
+- Joseph E. Gonzalez
+- Ion Stoica
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- chat-reasoning
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  code: https://github.com/lmarena/arena-hard-auto
+  data: https://huggingface.co/datasets/lmarena-ai/arena-hard-auto
+  venue: null
+  paper: https://arxiv.org/abs/2406.11939
+  arxiv: https://arxiv.org/abs/2406.11939
+  project: https://huggingface.co/spaces/lmarena-ai/arena-hard-viewer
+  huggingface: https://huggingface.co/collections/lmarena-ai/arena-hard-auto-680998796296d1462c729b6c
+  doi: https://doi.org/10.48550/arXiv.2406.11939
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct automatic pairwise judge set from hard arena prompts; exact split, artifact,
+    license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose automatic pairwise judge set from hard arena prompts, prompt/task metadata, a model
+    output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: automatic pairwise judge set from hard arena prompts
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct automatic pairwise judge set from hard arena prompts; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2406.11939;
+    https://github.com/lmarena/arena-hard-auto; https://huggingface.co/datasets/lmarena-ai/arena-hard-auto'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official GitHub repository is Apache-2.0-licensed; Hugging Face dataset terms and prompt-source rights should still
+    be checked per release before redistribution or training reuse.
+  lineage: 'Primary lead: https://github.com/lmarena/arena-hard-auto'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: arXiv and official lmarena/Hugging Face sources verify authors, the shared UC Berkeley affiliation line, arXiv status,
+    and Arena-Hard-Auto artifacts; no official conference page was verified. Artifact/license/split/scoring details remain
+    review targets.
+inclusion_reason: Harder judge-based alternative to broad chat eval.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- chat-reasoning
+why_it_matters: Harder judge-based alternative to broad chat eval.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Arena-Hard-Auto exposes automatic pairwise judge set from hard arena prompts as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv and official lmarena/Hugging Face sources verify authors, the shared UC Berkeley affiliation line, arXiv status,
+    and Arena-Hard-Auto artifacts; no official conference page was verified.
+category_ids:
+- benchmarks_evaluation_surfaces

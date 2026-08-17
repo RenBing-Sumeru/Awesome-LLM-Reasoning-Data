@@ -1,0 +1,3 @@
+Reasoning research is often split by task names—chain-of-thought, multi-hop, math, code, retrieval, tools, or agents—while the data and evaluation assumptions beneath those names remain easy to miss. The primary source is the 2026 arXiv preprint https://arxiv.org/abs/2606.11470. It asks how reasoning capabilities emerge across paradigms and where they fail.
+
+The paper reports a systematic analysis of more than 300 recent papers and places reasoning paradigms, methodological trends, benchmarks, and failure modes in one structured survey. Its decision boundary is field orientation rather than an individual data release. The official arXiv record documents the survey.

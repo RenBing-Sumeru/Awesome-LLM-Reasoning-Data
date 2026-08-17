@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "scaling_rlvr_test_time_compute"
+  ],
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-20T13:04:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过逐步加深自我纠错采样，把额外测试时计算投入已有推理的修复而非单纯重复采样",
+    "updated_at": "2026-07-20T13:04:58Z"
+  }
+}

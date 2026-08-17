@@ -1,0 +1,11 @@
+Training begins from the five named source classes, followed by deduplication and classification. The report supplies a February 2025 cutoff only for public Internet information. It does not name datasets, provide sample or token counts, quantify language/domain balance, partition contractor and opt-in contributions, or release source-level rights metadata.
+
+Supervised stages include some reasoning text produced by prior models. Teacher checkpoints, prompts, temperatures, budgets, selection, edits, and retained volumes are unknown. Because the complete training-record schema is absent, the strongest supported abstraction is a prompt or conversation paired with an answer and, for some records, model-generated reasoning text.
+
+Post-training uses RLHF and RLAIF. Data-work-platform workers perform preference selection, while an undisclosed AI-feedback source also contributes. The preference schema, rater assignment, adjudication, reward-model or constitution identity, objective mixture, normalization, calibration, RL algorithm, optimizer, and stage sizes are all unknown.
+
+Agentic RL adds explicit context-window usage information to the state available during training. The system card says this teaches Haiku 4.5 to conclude near the limit and continue when budget remains. It does not disclose tools, tasks, state encoding, rollout counts, termination, or rewards. The 200K context limit is a release context, not a training rollout count.
+
+Anthropic also performs a later-stage behavioral audit: all later-stage training behavior is recursively summarized, and Claude Sonnet 4 judges every summary for surprising or concerning patterns. Excessive tool use, overengineering, and hallucinations are reported, but raw transcripts, recursive summaries, judge prompts, counts, scores, calibration, and checkpoint identifiers are not released.
+
+Safety evaluations run automatically throughout training, allowing trend monitoring and possible intervention. However, named policy rubrics, VM/MCP prompt-injection predicates, SHADE-Arena monitoring, classifiers, visible/hidden tests, and Impossible Tasks are evaluation contracts unless the report explicitly identifies them as training rewards.

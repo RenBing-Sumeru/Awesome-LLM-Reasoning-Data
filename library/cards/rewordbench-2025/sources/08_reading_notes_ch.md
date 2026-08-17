@@ -1,0 +1,5 @@
+- 定位：奖励模型准确率可掩盖语义不变改写下的脆弱性。
+- 抓手：变换输入暴露分数翻转，paraphrase consistency 可减少翻转。
+- Artifact：reWordBench 与实现由官方 RewardBench 仓库链接。
+- 证据：Chat Hard 退化约减半；robust-RM 对齐最多胜出 59%。
+- 决策：把分数翻转判为失败前，先验证变换不变性。

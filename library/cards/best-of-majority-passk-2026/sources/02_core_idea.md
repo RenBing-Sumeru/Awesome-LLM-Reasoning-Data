@@ -1,0 +1,3 @@
+Best-of-Majority first uses repeated samples as evidence about which responses are sufficiently supported by the reference policy. It removes rare candidates before consulting the reward model, so an isolated high reward cannot by itself promote a response that the generator almost never produces.
+
+Among the surviving candidates, the method returns the highest-scored subset permitted by the Pass@k budget. Frequency supplies a conservative coverage filter and the reward model supplies a quality ranking; combining them is intended to preserve the strengths of voting and reranking without inheriting their worst-case failures.

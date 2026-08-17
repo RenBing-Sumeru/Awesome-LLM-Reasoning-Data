@@ -1,0 +1,5 @@
+- Positioning: NATURALREASONING scales domain-diverse question generation, attaches reference answers and named teacher responses, and exposes those records for distillation or self-training.
+- Data object: 2.8 million questions with reference answers and teacher responses; each record exposes question, reference_answer, and a list of response and response_model pairs.
+- Author and selector: Llama-3.3-70B-Instruct and other named teacher models write long responses; retention uses question-quality judgments, reference-answer checks, reward-model scoring, and self-reward filtering.
+- Evidence anchor: On the paper's matched question-quality evaluation, NATURALREASONING obtains a mean score of 6.45 versus 5.92 for the second-best source, and its distillation studies improve broad reasoning benchmarks.
+- Reuse decision: suitable for reasoning SFT, knowledge distillation, and filtered self-training; first audit reference answers and reward-model scores can accept fluent but unsupported reasoning and synthetic expansion may reproduce teacher biases or uneven domain coverage.

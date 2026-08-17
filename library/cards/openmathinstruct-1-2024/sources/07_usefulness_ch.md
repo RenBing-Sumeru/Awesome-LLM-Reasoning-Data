@@ -1,0 +1,3 @@
+- 需要商业使用许可和开放 teacher 的数学 SFT 时使用 correct JSONL；incorrect split 适合 outcome verifier 或错误分析，不能当作未标记正监督。
+- 训练输入是来源问题，target 是包含执行输出和 boxed answer 的混合文字/代码解答；成功标准应是在保留数学任务上相对 base model 提升，并按来源问题分层统计。
+- 复用配方时应保存问题 ID、来源、prompt family、掩码参考、种子、teacher revision、代码/输出事件、预测/期望答案、正确性、错误和选择权重。不适合必须使用忠实人工推导或要求覆盖 GSM8K/MATH 之外广泛领域的场景。

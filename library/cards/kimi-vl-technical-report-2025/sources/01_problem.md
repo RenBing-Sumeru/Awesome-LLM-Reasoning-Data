@@ -1,0 +1,3 @@
+Kimi-VL is a frontier vision-language model report whose reasoning-relevant data pipeline spans multimodal pre-training, instruction SFT, long chain-of-thought (CoT) activation, reinforcement learning (RL), and computer-use demonstrations. For an auditable reasoning-data atlas, the key issue is not whether the released model performs well, but which training objects and feedback interfaces are actually disclosed and reusable.
+
+The report describes data categories and post-training mechanisms, while the official release provides model weights and inference/deployment material rather than a training-data release. This Card records that boundary: public weights and code are not evidence that the underlying data, reward system, agent environment, or audits are available.

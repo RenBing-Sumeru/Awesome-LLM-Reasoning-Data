@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "WOMD-Reasoning 将 6.3 万个 Waymo 运动场景转成 294 万条规则支撑与 LLM 撰写的问答，但生成式交互叙述和未来感知标签必须分别进行因果与质量审计。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "驾驶交互推理数据集与构造配方",
+  "best_for_ch": "研究驾驶语言监督、交互推理和 hindsight 泄漏的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yiheng Li, Cunxin Fan, Chongjian Ge, Seth Z. Zhao, Chenran Li, Chenfeng Xu, Huaxiu Yao, Masayoshi Tomizuka, Bolei Zhou, Chen Tang, Mingyu Ding, Wei Zhan",
+  "category_ids": [
+    "instruction_demonstration_rationale_data",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-11T10:06:59Z"
+}

@@ -1,0 +1,1 @@
+成功只相对于 graph evaluator 和配置好的环境状态成立。GUI 任务会随 app 版本、OS 设置、模拟器镜像、网络状态、屏幕分辨率和模型 API 行为漂移。graph 节点能证明可观察进度，不自动证明更宽泛的用户意图。公开任务和轨迹可能污染后续 agent 训练。仓库 license 在 `licenses/` 目录而非根目录；下游应分别核验代码、文档、benchmark 数据和第三方 app 资产。

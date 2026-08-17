@@ -1,0 +1,9 @@
+**任务来源与构造。** 仓库包含421个task JSON：221项由OSWorld人工移植、151项源于macOSWorld、49项为MacArena-specific。自定义任务覆盖Advanced Apps 9、File Management 6、Productivity 14、System and Interface 8和System Apps 12，共20个应用。论文称所有任务均由人工创建并审核executability、无歧义与规范正确性；但49个自定义JSON都使用`source: "synth_generation"`，且未披露generator model、prompt、sampling process、adjudication、annotator count或rejected-task统计来解释该标签与论文措辞的关系。
+
+**环境设置与重置。** `MacArena.utm`与`osworld.utm`通过Apple Silicon上的Apple Virtualization framework运行aarch64 macOS，使用1920×1200动态显示、8192 MB内存与shared networking；检查到的app manifest声明macOS Sequoia 15.5。论文描述copy-on-use：每个episode前clone干净base VM，结束后discard。provider实现clone/delete reset，但two-run helper只对run 1完整重置；run 2前仅关闭应用，并以`reset_env=False`调用runner。因此残留文件、preference或process可能影响第二次结果。
+
+**交互与评估。** 四个智能体——UI-TARS-1.5 7B、Qwen3-VL 2B、Qwen3-VL 4B与OpenAI Computer Use Preview——在**每项任务上各运行两次，每次上限15步**。每个实验步骤向模型提供screenshot并接收原始鼠标/键盘action。episode在`DONE`、`FAIL`或horizon时结束。最终evaluator检查VM状态并返回`[0,1]`区间scalar；整个过程中`env.step`返回0，因此监督是terminal且full-episode。two-run helper保留`run_1`与`run_2`目录，但聚合最大分数。
+
+**运行时输出。** 对每次本地attempt，runner能够写入逐步screenshot PNG与`traj.jsonl`，后者包含`step_num`、timestamp、action、reward、done、info与screenshot filename。它还写入model response history、runtime log、最终`result.txt`和MP4 recording；exception path追加error object。这些是本地生成数据的能力，不是已发布的规范化语料：尚未确认论文success、failure、timeout、screenshot、action、reward、response与video记录的不可变公开manifest。
+
+**复现边界。** 复现应固定repository commit `dcdc7d366da12641578ab90f085d69db91651c58`、两套UTM image及hash、macOS/app版本、task JSON与upstream revision、evaluator script、host/hypervisor配置、model/API snapshot、prompt/action adapter、decoding setting、seed、retry policy、reset flag与external URL。论文运行的seed、精确model/API snapshot、decoding setting、实际meta-file、deterministic replay manifest与公开rollout hash均为unknown。附录A限制一台Apple Silicon host最多运行两个guest VM，更高并行度需要增加host。

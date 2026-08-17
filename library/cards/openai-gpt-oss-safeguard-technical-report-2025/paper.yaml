@@ -1,0 +1,133 @@
+id: openai-gpt-oss-safeguard-technical-report-2025
+title: gpt-oss-safeguard technical report
+year: 2025
+venue: OpenAI technical report
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- safety
+- content_moderation
+- reasoning
+training_use:
+- safety_alignment
+- evaluation
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/pdf/08b7dee4-8bc6-4955-a219-7793fb69090c/Technical_report__Research_Preview_of_gpt_oss_safeguard.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/introducing-gpt-oss-safeguard/
+  huggingface: https://huggingface.co/collections/openai/gpt-oss-safeguard
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: At inference, a developer supplies a policy and content to classify. The provenance, mixture, and schema
+    of policy-labelling training inputs are undisclosed.
+  trace_author: The released model generates a full chain of thought. The authorship, supervision, retention, and provenance
+    of post-training traces are undisclosed.
+  answer_format: A policy decision/conclusion with reasoning; Structured Outputs are supported. Exact output schema and label
+    ontology are developer- and policy-dependent.
+  process_fields:
+  - policy
+  - content_to_classify
+  - chain_of_thought
+  - policy_decision
+  environment_or_substrate: The report describes inference-time policy classification and evaluations, but not the post-training
+    environment, tool interface, or trajectory substrate.
+  verifier_or_reward: OpenAI says its Safety Reasoner approach began with reinforcement fine-tuning on policy-labelling tasks
+    that rewarded mirroring correct human-expert judgments. It calls gpt-oss-safeguard an open-weight implementation of that
+    approach, but does not disclose the released model's reward implementation, labels, calibration, or acceptance thresholds.
+  terminal_predicate: For internal multi-policy evaluation, success is exact matching of golden-set labels for all included
+    policies. No post-training termination or acceptance predicate is disclosed.
+recipe_metadata:
+  base_model: The models are post-trained / fine-tuned from their corresponding gpt-oss models; exact checkpoint lineage is
+    unknown.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: Low, medium, and high reasoning-effort modes are reported; sampling parameters and post-training sampling
+    protocol are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: Reasoning effort is configurable as low, medium, or high. Numerical budgets and training-time compute
+    allocation are unknown.
+  optimizer_or_scaffold: The report establishes post-training from gpt-oss. The official release describes the Safety Reasoner
+    approach as beginning with reinforcement fine-tuning on policy-labelling tasks, but exact applicability to the release,
+    RL algorithm, objective, optimizer, and schedule are undisclosed.
+audit:
+  source_mixture: No training or post-training source manifests, proportions, item counts, policy corpus, or source rights
+    are disclosed. The report only states that no additional biological or cybersecurity data were used.
+  split: Internal multi-policy evaluation has golden-set labels, but memberships, split construction, and leakage controls
+    are undisclosed.
+  decontamination: unknown
+  license: The released model weights are Apache 2.0 according to OpenAI. Training, post-training, human-feedback, and evaluation-data
+    rights are unknown.
+  lineage: Official sources establish gpt-oss-to-gpt-oss-safeguard fine-tuning and no additional biological or cybersecurity
+    data. Checkpoint-level lineage, policy examples, human judgments, reward history, and item-level derivation are unknown.
+  known_failure_modes:
+  - For complex risks, dedicated classifiers trained on tens of thousands of high-quality labelled samples can outperform
+    policy-based reasoning.
+  - Policy reasoning can be time- and compute-intensive, limiting platform-wide scaling.
+  - The safeguard models tend to underperform their gpt-oss counterparts on the reported instruction-hierarchy evaluations.
+  - Unrestricted chains of thought can hallucinate content or conflict with the policy being interpreted.
+  - The public report does not release training data, policy-labelling records, reward implementation, split/decontamination
+    evidence, or reproducible evaluation artifacts.
+  citation_status: verified
+  confidence: medium
+  notes: This is a Track 12 disclosure ledger. It records an open-weight policy-classification model and its official report
+    without treating available weights or evaluations as a released post-training dataset or fully reproducible safety recipe.
+inclusion_reason: Official OpenAI technical report for open-weight safety-reasoning models that exposes an inference-time
+  policy-and-content classification object, high-level policy-labelling feedback lineage, weights, and evaluations while preserving
+  substantial training-data, reward, and audit unknowns.
+related:
+- gpt-oss-model-card-2025
+tags:
+- openai
+- gpt-oss-safeguard
+- technical-report
+- frontier-report
+- data-disclosure-ledger
+- safety-classification
+- policy-reasoning
+- chain-of-thought
+- open-weights
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's gpt-oss-safeguard report describes open-weight models that classify developer-supplied policy/content
+  pairs with chain-of-thought and a high-level human-judgment policy-labelling lineage, while withholding training records,
+  reward details, and reproducibility artifacts.
+why_it_matters: It is a concrete Track 12 case where released weights and transparent inference interfaces coexist with material
+  gaps in data provenance, policy-label supervision, reward calibration, and evaluation auditability.
+card: null
+needs:
+- 'needs_data: policy-labelling training records, source manifests, counts, provenance, rights, and source mixture'
+- 'needs_verifier: human-expert protocol, reward implementation, calibration, error analysis, acceptance thresholds, and terminal
+  predicate'
+- 'needs_metadata: base checkpoint, teachers, generators, filters, sampling, rollouts, optimizer, and compute allocation'
+- 'needs_audit: splits, decontamination, policy revisions, LLM-grader details, evaluation memberships, and reproducible artifacts'
+- 'needs_code: post-training and evaluation implementation'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official OpenAI report page, linked technical-report PDF, official product release, and OpenAI Hugging Face collection
+    were checked. The public weights do not establish a data or post-training-code release.

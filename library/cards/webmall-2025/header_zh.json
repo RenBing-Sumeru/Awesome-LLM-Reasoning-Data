@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WebMall 用可复现的多商店比较购物任务评测网页智能体。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "ACM SIGIR 2026 / arXiv 的 multi-shop web-agent benchmark",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ralph Peeters 等（University of Mannheim / Web Data Commons 相关来源）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T12:57:52Z"
+}

@@ -1,0 +1,125 @@
+id: ai2-arc-2018
+title: Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge
+year: 2018
+venue: arXiv / AI2
+authors:
+- Peter Clark
+- Isaac Cowhey
+- Oren Etzioni
+- Tushar Khot
+- Ashish Sabharwal
+- Carissa Schoenick
+- Oyvind Tafjord
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- science-qa
+- commonsense-reasoning
+- multiple-choice
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1803.05457
+  arxiv: https://arxiv.org/abs/1803.05457
+  code: null
+  data: null
+  project: https://allenai.org/data/arc
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.1803.05457
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'science exam question, answer choices, correct option, and Easy/Challenge split; Benchmark size: 7,787 道小学科学考试题；Challenge
+    集约 2,590 题。'
+  dataset_scale: 7,787 multiple-choice science questions in the original ARC release; ARC-Easy has 5,197 questions and ARC-Challenge
+    has 2,590, with train/dev/test split details to pin from the official artifact.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'science exam question, answer choices, correct option, and Easy/Challenge split; Benchmark size:
+    7,787 道小学科学考试题；Challenge 集约 2,590 题。'
+  verifier_or_reward: multiple-choice accuracy under official scorer
+  terminal_predicate: multiple-choice accuracy under official scorer
+  benchmark_size: 7,787 道小学科学考试题；Challenge 集约 2,590 题。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge;
+    exact curation details should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for Think you have Solved Question Answering?
+    Try ARC, the AI2 Reasoning Challenge.
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/1803.05457'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Dataset scale recorded as 7,787 total questions, including 5,197 Easy and 2,590 Challenge items; reviewer should
+    pin official release, split files, and scorer details before L5/L6 promotion. Benchmark size: 7,787 道小学科学考试题；Challenge
+    集约 2,590 题。'
+inclusion_reason: ARC provides 7,787 grade-school science multiple-choice questions, with a Challenge set designed to resist
+  retrieval and shallow methods.
+related: []
+tags:
+- benchmark
+- science-qa
+- commonsense-reasoning
+- multiple-choice
+one_line: ARC provides 7,787 grade-school science multiple-choice questions, with 2,590 Challenge items designed to resist
+  retrieval and shallow methods.
+why_it_matters: It supplies a reusable evaluation coordinate for science-qa, commonsense-reasoning work.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin ARC release files, Easy/Challenge split counts, evaluator implementation, prompt/scaffold settings, and
+  license'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: ARC provides 7,787 grade-school science multiple-choice questions, with 2,590 Challenge items designed to
+  resist retrieval and shallow methods.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

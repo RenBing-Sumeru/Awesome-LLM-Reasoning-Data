@@ -1,0 +1,1 @@
+Existing detectors usually perform binary judgment or use separate models for localisation and rewriting. HAD trains detection, span identification, and correction as one generative task under a shared eleven-type taxonomy and provides both large synthetic training data and a human test set. The novelty is the unified output contract rather than one new backbone.

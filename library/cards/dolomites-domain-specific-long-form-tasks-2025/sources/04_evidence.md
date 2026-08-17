@@ -1,0 +1,1 @@
+Evaluation on the concrete instances shows that professional methodical writing remains difficult: models must follow procedures, use supplied context, and apply domain knowledge, with frequent missing steps and implausible professional inferences. Expert revisions provide direct evidence, but 1,857 examples are spread across 519 task types, leaving few examples per task.

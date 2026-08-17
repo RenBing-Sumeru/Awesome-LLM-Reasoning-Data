@@ -1,0 +1,12 @@
+{
+    "one_line_summary_ch": "EMBER 证明 LLM 评判器会因不确定性措辞偏离正确性判决，并提供可复用的反事实审计基准。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "奖励模型、评估器或验证可靠性审计论文",
+  "best_for_ch": "需要检查奖励、评估或偏好信号可靠性的研究者。",
+    "confidence_ch": "高：NAACL 正式论文、机构、代码数据和五个评判器实验均已核验。",
+  "authors_ch": "Dongryeol Lee, Yering Hwang, Yongil Kim, Joonsuk Park, Kyomin Jung",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

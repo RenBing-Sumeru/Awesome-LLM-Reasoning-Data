@@ -1,0 +1,13 @@
+构造与评测 pipeline 如下：
+
+1. **来源与任务设计。** 作者定义 banking、airline 与 retail workflow。论文报告 50 个 original banking task、50 个复用的 tau-bench airline template、114 个复用的 tau-bench retail template，以及由 human writing 与 LLM assistance 创建的 additional original scenario。已披露组成相加为 314 而不是 315，因此有一个 record，或“50 newly generated scenarios”表述的含义，需要在 release 层调和。
+2. **Schema-guided generation。** Appendix A 描述 domain analysis、tool definition、task-template creation、persona integration 与 goal-shift integration。一个未披露的 generator 接收 JSON schema 与 5 个 Markdown reference file，每个 batch 产生 10 个 candidate task。其 model、prompt、decoding setting、batch 数、acceptance yield 与 rejected candidate 均为 unknown。
+3. **人工过滤与 QA。** 每个生成 batch 都会检查 tool parameter 与 database consistency、user simulator 所需的 `known_info` 是否充分，以及 `communicate_info` 是否仅包含由 tool response 得到的事实。Appendix B 还报告对 10% task 做 manual review、交叉检查 evaluation criteria、进行 inter-rater reliability analysis 并定期更新，但没有给出 annotator 数量、sampling rule、reliability statistic、adjudication protocol 或 revision log。
+4. **Goal-shift annotation。** 每个 task 都附有 ordered goals、initial state、allowable actions、assertion、information to communicate 与 `required_shifts`。transition 遵循 progression rule，marker 对被评测 assistant 隐藏。
+5. **Episode generation。** persona-conditioned LLM user simulator 只揭示 known information 并依次执行 ordered goals；被评测 assistant 参与对话且独自调用受控 domain tool。tau-bench-derived harness 每轮允许一个 tool call，根据 API response 验证调用，并在 independent run 之间重置 environment state。
+6. **Post-hoc scoring。** harness 从 communication、action、assertion、parameter、API result 与 exact-call pattern 计算 TSR、TUE、TCRR。`gpt-4o-mini` 提供 communication judgment；未披露的 LLM detector 为 GSRT 识别变更后的 acknowledgment、relevant-tool 与 outcome turn。
+7. **输出与用途。** 输出是带分数的 episode/shift record 与 aggregate benchmark result。标准闭源模型协议对每个 task 运行 3 次；Appendix E 的 Qwen2.5-14B-Instruct 每个 domain 仅运行 1 次。论文只报告 evaluation，没有 SFT、preference learning、reward-model training、RLVR、process supervision 或 agent training。
+
+复现所需信息远超声明式 task JSON。可信的 replay freeze 必须固定准确的 tau-bench-derived harness commit、banking/airline/retail database snapshot 与 API、user-simulator prompt/model/seed、被评测 model API snapshot、judge 与 shift-detector prompt/snapshot、tool schema、turn/token/retry budget、sampling parameter、逐 run seed 与 metric code。可访问来源没有完整固定这些项目。
+
+MTI-LLM OpenReview 官方记录列出一个 supplementary ZIP；论文称其包含 full benchmark、evaluation-harness configuration 与 experimental artifact。该 ZIP 在本次整理中无法取回。因此其 file inventory、task-to-sequence manifest、code revision、dependency lock、database snapshot、train/dev/test 或 old/new split manifest、checksum、data/code license、保留的 success/failure run 与 deterministic replay instruction 都必须保持 unknown，不能推断。

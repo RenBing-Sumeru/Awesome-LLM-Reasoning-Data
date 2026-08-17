@@ -1,0 +1,5 @@
+- The training pool contains 1,819 medium/hard LeetCode prompts after a 10-gram overlap filter against the named test sets; broader contamination control remains unknown.
+- Search nodes store State, Action, Reward, and Reflection; rewards come from LLM self-evaluation.
+- The reported search expands three children and stops after an end signal or five iterations.
+- The public dataset uses a question-solution schema and a CC-BY-NC-4.0 label; the code repository is Apache-2.0.
+- Pass@1 and GPT-4o quality judgments do not validate intermediate search steps.

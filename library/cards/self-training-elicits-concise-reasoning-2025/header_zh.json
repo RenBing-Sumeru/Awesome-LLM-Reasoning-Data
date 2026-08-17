@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该方法从目标模型在数学题上生成的多个推理路径中选择最终答案经解析器核验的最短路径（可结合少样本条件），再用于 SFT 以获得更简洁的推理。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "自训练推理轨迹构造与简洁推理微调方法",
+  "best_for_ch": "关注训练时搜索、best-of-N 轨迹选择、答案验证和推理 token 成本的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Tergel Munkhbat、Namgyu Ho、Seo Hyun Kim、Yongjin Yang、Yujin Kim、Se-Young Yun",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-18T11:57:48Z"
+}

@@ -1,0 +1,256 @@
+id: agent-change-bench-2025
+title: 'AgentChangeBench: A Multi-Dimensional Evaluation Framework for Goal-Shift Robustness in Conversational AI'
+year: 2025
+venue: NeurIPS 2025 Workshop on Multi-Turn Interactions in Large Language Models (MTI-LLM)
+authors:
+- Manik Rana
+- Calissa Man
+- Anotida Expected Msiiwa
+- Jeffrey Paine
+- Kevin Zhu
+- Sunishchal Dev
+- Vasu Sharma
+- Ahan M R
+source_role:
+- benchmark
+- agent_environment
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- conversational_agents
+- customer_service
+- banking
+- airline
+- retail
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.18170
+  arxiv: https://arxiv.org/abs/2510.18170
+  code: null
+  data: https://openreview.net/attachment?id=ZCi58UP9uR&name=supplementary_material
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2510.18170
+  venue: https://neurips.cc/virtual/2025/128008
+  openreview: https://openreview.net/forum?id=ZCi58UP9uR
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2510.18170
+  release: https://openreview.net/attachment?id=ZCi58UP9uR&name=supplementary_material
+data_object:
+  object_type: Goal-shift customer-service task specifications and model-generated tool-use evaluation episodes with mixed
+    programmatic and LLM-judged metrics.
+  prompt_source: 315 task specifications across banking (50), airline (100), and retail (165). The paper says 50 airline and
+    114 retail templates are inherited from tau-bench; banking is original; additional airline, retail, and banking scenarios
+    combine human writing and LLM generation. Record-level source tags are unverified.
+  trace_author: A persona-conditioned LLM user simulator and the evaluated assistant model jointly generate each conversation;
+    only the assistant calls domain tools. Exact simulator model, prompt, and decoding configuration are unknown.
+  task_record:
+  - task id
+  - domain and purpose
+  - persona
+  - known information
+  - unknown information
+  - ordered goals
+  - required goal-shift count
+  - initial environment state
+  - allowed action sets and tools
+  - evaluation criteria
+  - natural-language assertions
+  - information to communicate
+  episode_fields:
+  - ordered user and assistant turns
+  - assistant tool-call name and arguments
+  - API or tool observation
+  - goal-shift event
+  - acknowledgment turn
+  - first relevant tool turn
+  - outcome turn
+  - transfer-to-human event
+  - task-success components
+  - tool-correctness and parameter-validity components
+  - redundancy metric
+  - recovery metric
+  answer_format: A multi-turn simulated customer-service dialogue over a controlled domain API, with assistant tool calls
+    and observations, followed by TSR, TUE, TCRR, GSRT, and component outputs.
+  process_fields:
+  - persona-conditioned state
+  - current ordered goal
+  - user message
+  - assistant message or action
+  - tool arguments
+  - API observation
+  - environment state transition
+  - shift detection timestamps
+  - verifier or judge outputs
+  - scalar metrics
+  observation: The assistant receives user messages and domain-tool/API responses. The evaluator processes the full transcript
+    and tool-call records post hoc.
+  verifier_or_reward: 'Mixed evaluation contract: API execution and schema checks support tool correctness/parameter validity;
+    exact-call comparison supports TCRR; gpt-4o-mini judges communication quality; an unspecified LLM detector extracts goal-shift
+    acknowledgment/tool/outcome turns; TSR combines communication 0.25, action 0.45, and natural-language assertions 0.30.'
+  reward: 'Episode and shift metrics rather than a demonstrated training reward: TSR, TUE, TCRR, GSRT recovery/turns, retention/drop,
+    and component scores.'
+  terminal_predicate: Task success is summarized by TSR components. A goal shift counts as recovered when the agent acknowledges
+    it and does not transfer to a human; first relevant tool use and outcome are timed separately and do not determine binary
+    recovery.
+  provenance: tau-bench templates plus original human/LLM-assisted scenarios -> manual schema/tool/database review -> persona
+    and ordered goal-shift annotation -> controlled user-agent-tool rollout -> post-hoc programmatic and LLM-judged metrics.
+  environment_or_substrate: A tau-bench-derived banking/airline/retail harness with domain APIs, one tool call per turn, persona-driven
+    user simulation, state reset between runs, and API-response validation. Exact code/database revision was not retrievable.
+  release_shape: The paper and MTI-LLM OpenReview record claim/list a supplementary ZIP containing the benchmark, evaluation-harness
+    configurations, and experimental artifacts. ZIP inventory and serialization were not verified.
+recipe_metadata:
+  base_model: Not a training recipe. Evaluated systems include GPT-4o, Claude-3.7-Sonnet, Gemini-2.5-Flash, and a single-run
+    Qwen2.5-14B-Instruct baseline; immutable API/model snapshots are unknown.
+  teacher: unknown
+  generator: Hand-converted exemplars, inherited tau-bench templates, human-written tasks, and an undisclosed LLM that receives
+    the JSON schema plus five Markdown references and generates ten candidates per batch; a persona-conditioned LLM simulator
+    generates user turns during evaluation.
+  prompt_task_source: Realistic banking, airline, and retail customer-service workflows; 50 airline and 114 retail templates
+    are stated as tau-bench-derived, while banking and added scenarios are original. Per-record lineage is unknown.
+  sampling_protocol: The undisclosed task generator emits ten candidates per batch for manual review. Closed-model experiments
+    run each task three times with environment reset; the Qwen2.5-14B-Instruct appendix baseline uses one run per domain.
+  temperature: unknown
+  rollout_count: 3 independent runs per task for the standard proprietary-model protocol; 1 per domain for the Qwen2.5-14B-Instruct
+    appendix baseline.
+  inference_budget: Turn limits, token budgets, seeds, API retries, and judge repetition counts are not disclosed in accessible
+    official sources.
+  search_or_scaffold: tau-bench-derived multi-turn orchestration with persona-driven user simulation, predeclared ordered
+    goal shifts, one-tool-per-turn execution, domain APIs, and post-hoc metric calculators.
+  filtering_rule: Manual review checks tool/parameter validity against domain databases, sufficiency of user `known_info`,
+    and that `communicate_info` contains only tool-derived factual/numeric/enum outputs. Appendix B additionally claims a
+    manual review of 10% of tasks.
+  selection_threshold: Ten generated candidates per batch are reviewed, but acceptance thresholds, batch count, rejection
+    reasons, and final yield are unknown.
+  optimizer_or_training_scaffold: null
+  user_simulator: Persona-conditioned LLM simulator following predeclared ordered goals and exposing only task `known_info`;
+    model identity, snapshot, prompt, temperature, and seed are unknown.
+audit:
+  source_mixture: 50 original banking tasks; 50 inherited tau-bench airline templates plus added airline scenarios; 114 inherited
+    tau-bench retail templates plus added retail scenarios; five personas; human and LLM-assisted authoring. Record-level
+    source and rights metadata are unavailable.
+  split: No train/dev/test split manifest is disclosed. Result tables distinguish old/new airline and retail subsets, but
+    these are provenance/evaluation subsets rather than a documented training split.
+  decontamination: unknown
+  benchmark_overlap: Substantial intentional lineage overlap with public tau-bench airline/retail templates is disclosed.
+    No model-pretraining overlap or public-benchmark contamination audit is reported.
+  lineage: The paper describes aggregate lineage from tau-bench/original scenarios through persona/goal-shift annotation,
+    rollout, and metrics; per-task source IDs, generator prompt/model, reviewer decisions, per-run model snapshots, and immutable
+    artifact hashes are unknown.
+  license: The arXiv paper is listed as CC BY 4.0, while the MTI-LLM OpenReview record displays CC BY-ND 4.0. No separately
+    inspected code/dataset license establishes rights for the supplementary task JSON, harness, inherited tau-bench material,
+    or generated trajectories.
+  release_version: arXiv:2510.18170v1 (2025-10-20) and MTI-LLM OpenReview note ZCi58UP9uR (published 2025-10-06, modified
+    2025-11-04). The supplementary attachment has no verified immutable version, checksum, or manifest.
+  version_drift: The full arXiv paper lists eight authors, while the official MTI virtual/OpenReview presentation lists five.
+    A parallel LAW @ NeurIPS 2025 OpenReview record uses another note ID and workshop footer. Paper arithmetic also leaves
+    the 315-task source mixture one record short, and Table 7 conflicts with its following persona-recovery prose.
+  verifier_or_judge_failure_modes:
+  - gpt-4o-mini communication judgments can change with prompt, model snapshot, style, verbosity, and calibration; the exact
+    judge configuration is undisclosed.
+  - Goal-shift recovery depends on post-hoc LLM detection and counts acknowledgment plus no human transfer as recovery even
+    if relevant tool use or the shifted outcome is missing.
+  - TCRR catches exact duplicate calls in a local window but may miss semantically redundant calls with changed arguments
+    or penalize justified retries after transient errors.
+  - Tool/API predicates and natural-language assertions can omit requirements, create false positives/negatives, or reward
+    benchmark-specific behavior.
+  - Predeclared and often explicitly signaled shifts, benign personas, and three customer-service domains limit ecological
+    validity.
+  - Closed-model endpoints, an unpinned tau-bench-derived harness/database, and unknown simulator/judge seeds prevent exact
+    replay.
+  - Public task/evaluator exposure and inherited tau-bench templates create contamination and benchmark-gaming risk.
+  - The 315-task source arithmetic, 2,835-sequence mapping, and inconsistent persona-recovery numbers require artifact-level
+    reconciliation.
+  successful_and_failed_sample_retention: unknown
+  privacy_or_consent: The benchmark is presented as simulated customer-service interaction, but source provenance, privacy
+    review, consent, and any human-reviewer recruitment/compensation details are undisclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Paper identity, full text, appendix, MTI-LLM venue, NeurIPS virtual page, and official supplementary listing were
+    verified. The supplementary ZIP itself was inaccessible, so no code/data inventory, license file, split, checksum, result
+    retention, or replay claim is marked verified.
+  remaining_unknowns:
+  - generator LLM identity, snapshot, prompt, temperature, batch count, rejection yield, and rejected candidates
+  - user-simulator model, prompt, seed, decoding settings, and failure audit
+  - goal-shift detector model/prompt and communication/natural-language judge calibration
+  - exact mapping from 315 task specifications to the claimed 2,835 task sequences
+  - reconciliation of the 315 total with stated inherited/new scenario counts
+  - authoritative resolution of Table 7 versus persona-analysis recovery values
+  - immutable supplement version, file manifest, checksums, source commit, dependency lock, and database snapshot
+  - dataset/code license and upstream tau-bench/model-output rights chain
+  - split manifest, decontamination procedure, and record-level provenance
+  - success/failure transcript retention and deterministic replay instructions
+inclusion_reason: AgentChangeBench makes mid-dialogue intent change an explicit environment state/trajectory object and exposes
+  a mixed feedback contract over tool execution, communication, redundancy, and adaptation latency, while also illustrating
+  why benchmark releases need pinned artifacts, judge calibration, and replay metadata.
+related:
+- tau2-bench-2025
+tags:
+- environment-agent-trajectory-data
+- agent-benchmark
+- conversational-agent
+- tool-use
+- goal-shift
+- user-simulator
+- llm-as-judge
+- trajectory-evaluation
+- replay-risk
+- version-drift
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: AgentChangeBench evaluates 315 banking, airline, and retail goal-shift tasks through simulated tool-use
+  episodes and mixed environment/LLM metrics, but its 2,835-sequence mapping and supplementary release remain insufficiently
+  pinned for replay or training reuse.
+why_it_matters: It separates final task progress, tool validity, repeated actions, and post-shift adaptation instead of collapsing
+  an agent episode into pass/fail, while exposing the audit burden created by LLM judges, closed-model simulators, inherited
+  public tasks, and unversioned environment artifacts.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  supplementary_listing_verified: true
+  artifact_verified: false
+  dataset_contents_verified: false
+  repository_files_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper, arXiv metadata/license, NeurIPS MTI-LLM venue page, OpenReview record, and the existence of a supplementary
+    ZIP listing were checked. The ZIP content could not be retrieved, and no separate GitHub/Hugging Face/project release
+    was confirmed.
+curation_level: L3_summary_ready
+needs:
+- 'needs_artifact_retrieval: inspect and pin the official supplementary ZIP, file manifest, checksums, source commit, dependency/environment
+  versions, and database snapshots'
+- 'needs_license: provide separate code/data/trajectory terms and reconcile inherited tau-bench and generated-model-output
+  rights'
+- 'needs_scale_reconciliation: map 315 task IDs to the claimed 2,835 sequences and reconcile the one-record source-mixture
+  arithmetic gap'
+- 'needs_metric_reconciliation: resolve Table 7 versus persona-analysis recovery values and release raw metric inputs'
+- 'needs_judge_metadata: disclose simulator, communication judge, shift detector, prompts, snapshots, calibration, seeds,
+  and decoding settings'
+- 'needs_split_and_decontamination: publish immutable old/new or train/dev/test manifests, record-level provenance, overlap
+  checks, and public-benchmark exposure policy'
+- 'needs_replay: pin the tau-bench-derived harness, APIs/databases, model endpoints, retry/turn budgets, seeds, and record/replay
+  fixtures'
+- 'needs_retention: state whether all successful, failed, transferred, timed-out, and judge-failed episodes are preserved'
+card: null

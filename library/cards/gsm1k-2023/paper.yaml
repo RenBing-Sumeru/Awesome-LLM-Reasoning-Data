@@ -1,0 +1,86 @@
+id: gsm1k-2023
+title: A Careful Examination of Large Language Model Performance on Grade School Arithmetic
+year: 2024
+venue: arXiv
+authors:
+- GSM1K authors
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- math
+- grade-school-math
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2405.00332
+  arxiv: https://arxiv.org/abs/2405.00332
+  doi: null
+  code: null
+  data: null
+  project: null
+data_object:
+  dataset_scale: grade-school math benchmark surface; exact source and size need audit.
+  prompt_source: arithmetic word problems.
+  trace_author: dataset authors and gold answer labels.
+  answer_format: word problem, final numeric answer, optional rationale, and score.
+  process_fields:
+  - problem
+  - model answer
+  - extracted final answer
+  - gold answer
+  environment_or_substrate: grade-school math QA.
+  verifier_or_reward: exact or normalized numeric answer match.
+  terminal_predicate: extracted answer equals gold answer.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark surface.
+  teacher: dataset authors and gold labels.
+  generator: math word-problem construction.
+  filtering_rule: distinguish GSM1K from GSM8K and other GSM variants.
+  sampling_protocol: Pin source, split, answer extractor, normalization, and contamination policy.
+  rollout_count: null
+  temperature: null
+  inference_budget: model-specific
+  optimizer_or_scaffold: math_answer_eval
+audit:
+  source_mixture: primary source needs audit.
+  split: needs_audit
+  decontamination: public math tasks can leak.
+  license: needs_audit
+  lineage: needs_audit
+  known_failure_modes:
+  - name can be confused with GSM8K variants
+  - answer extraction affects scores
+  - public contamination can inflate results
+  citation_status: partial
+  confidence: low
+  notes: Metadata shell added first; source disambiguation required.
+inclusion_reason: GSM1K was requested as a separate math benchmark gap.
+related:
+- gsm8k-2021
+tags:
+- benchmark
+- math
+one_line: GSM1K evaluates grade-school math word problems with answer-level checking.
+why_it_matters: It should be tracked separately from GSM8K when cited by model reports.
+status: verified
+needs:
+- 'needs_audit: pin GSM1K dataset release, answer checker, contamination-control protocol, split, and license'
+one_line_summary: GSM1K evaluates grade-school math word problems with answer-level checking.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: low
+  notes: Metadata shell added before source generation.
+category_ids:
+- benchmarks_evaluation_surfaces

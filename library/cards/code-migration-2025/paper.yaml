@@ -1,0 +1,93 @@
+id: code-migration-2025
+title: Code Migration Benchmark
+year: 2025
+venue: Vals AI benchmark page
+authors:
+- Vals AI
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- coding
+- code-migration
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://www.vals.ai/benchmarks/code-migration
+  arxiv: null
+  doi: null
+  code: null
+  data: null
+  project: https://www.vals.ai/benchmarks/code-migration
+data_object:
+  dataset_scale: Official page describes 30 source repositories migrated into non-source target languages; exact version should
+    be pinned from the page.
+  prompt_source: Repository-level source program plus target-language migration instructions.
+  trace_author: Evaluated model or coding agent producing the migrated implementation.
+  answer_format: Target-language repository/program submission.
+  process_fields:
+  - source repository
+  - target language
+  - generated migration
+  - hidden test result
+  - anti-cheat result
+  - score
+  environment_or_substrate: Offline coding sandbox with hidden tests.
+  verifier_or_reward: Hidden test suite plus anti-cheat checker; CLI score averages across target-language migrations.
+  terminal_predicate: Migrated program passes the hidden behavioral tests without suspicious shortcutting.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark/evaluation surface.
+  teacher: Official benchmark authors or platform maintainers.
+  generator: Official task construction and benchmark harness.
+  filtering_rule: See official release/version notes; do not infer unreleased filters.
+  sampling_protocol: Pin task version, scaffold, model settings, scorer, and leaderboard snapshot.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: evaluation harness or platform-specific scaffold
+audit:
+  source_mixture: Official benchmark page plus public repository/data artifact where available.
+  split: see official source; hidden/public policy may be partial
+  decontamination: public exposure and leaderboard reuse can create contamination risk
+  license: verify from official artifact before redistribution
+  lineage: tracked to official benchmark source
+  known_failure_modes: &id001
+  - pin target-language list, task version, license, and any public/held-out split policy
+  - do not read test pass as full semantic equivalence
+  citation_status: verified_official_source
+  confidence: high
+  notes: The official page establishes task shape, hidden testing, and anti-cheat policy; artifact availability may be partial
+    or private.
+inclusion_reason: Code Migration evaluates whether models can reimplement real-world programs in another language and pass
+  hidden behavioral tests in an offline sandbox.
+related: []
+tags:
+- benchmark
+- code-migration
+- coding
+- evaluation-surface
+why_it_matters: Code Migration evaluates whether models can reimplement real-world programs in another language and pass hidden
+  behavioral tests in an offline sandbox.
+status: verified
+needs: *id001
+one_line_summary: Code Migration evaluates whether models can reimplement real-world programs in another language and pass
+  hidden behavioral tests in an offline sandbox.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-17'
+  verified_by: codex_official_source_check
+  confidence: high
+  notes: The official page establishes task shape, hidden testing, and anti-cheat policy; artifact availability may be partial
+    or private.
+category_ids:
+- benchmarks_evaluation_surfaces

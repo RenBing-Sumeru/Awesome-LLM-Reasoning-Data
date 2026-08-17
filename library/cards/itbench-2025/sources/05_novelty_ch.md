@@ -1,0 +1,7 @@
+IT运维领域的既有基线通常是静态任务、incident description或无需完整agent-environment loop即可检查答案的benchmark。ITBench把数据/评测对象改为`M/E/T/D`四元组加已部署episode：部分观察、tool action与response、终态输出/状态、stop以及领域反馈。这样，环境transition与运维side effect成为推理数据契约本身，而不是外部实现细节。
+
+第二项具体变化是在同一生命周期中覆盖多个领域。SRE diagnosis/mitigation、CISO policy/compliance和FinOps insight/anomaly/alert任务共享runner层的provisioning、triggering、interaction、evaluation、cleanup与aggregation，同时保留领域特定工具和ground truth。论文还把智能体stop decision与success predicate分开；这对轨迹数据集是有用的设计信号，因为语法上已完成的episode仍可能把系统留在错误状态。
+
+后续官方artifact沿两条不同方向扩展论文，而不是构成同质单一数据集。ITBench-Lite把所选场景转换为65个静态诊断对象；ITBench-Trajectories序列化105个SRE session log，包含工具级ReAct交互和混合的结构化/语义episode反馈。发布保留0分与不完整session，对失败分析有价值；但缺少15对output/judge文件也说明必须在文件层核验release-scale声称。
+
+本文并未新发明Kubernetes testbed、observability tool、CrewAI/ReAct、程序化指标、LLM semantic judge或合成故障。102个场景的规模与多模型实验属于覆盖广度，不是独立质量证据。复用前必须核验跨发布场景映射、固定版本ground truth、完整文件manifest、judge配置、reset/replay性质、污染政策、隐私/secret处理及许可边界；这些检查决定对象适合评测、训练还是审计。

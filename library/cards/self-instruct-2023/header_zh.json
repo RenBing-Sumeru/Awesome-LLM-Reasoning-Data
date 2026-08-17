@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Self-Instruct 反复让 GPT-3 发明、过滤并回答新任务，把 175 条人写种子扩展为 82,439 条合成 SFT 实例。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "合成指令数据生成与发布",
+  "best_for_ch": "适合构建自生成 instruction SFT 数据，或审计任务多样性与 teacher 错误的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yizhong Wang, Yeganeh Kordi, Swaroop Mishra, Alisa Liu, Noah A. Smith, Daniel Khashabi, Hannaneh Hajishirzi",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

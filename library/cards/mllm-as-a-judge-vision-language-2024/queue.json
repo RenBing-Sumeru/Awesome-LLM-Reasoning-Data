@@ -1,0 +1,19 @@
+{
+  "title": "MLLM-as-a-Judge: Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark",
+  "candidate_links": {
+    "paper": "https://proceedings.mlr.press/v235/chen24aq.html",
+    "data": "https://github.com/Dongping-Chen/MLLM-Judge",
+    "code": "https://github.com/Dongping-Chen/MLLM-Judge",
+    "project": "https://mllm-judge.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T09:43:07Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建约 4,414 个图文评测实例，比较打分、两两比较和排序三种多模态裁判协议，影响力大",
+    "updated_at": "2026-07-25T09:43:07Z"
+  }
+}

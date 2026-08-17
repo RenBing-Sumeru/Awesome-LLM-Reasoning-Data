@@ -1,0 +1,16 @@
+{
+  "title": "Membership Inference Attacks on Tokenizers of Large Language Models",
+  "candidate_links": {
+    "paper": "https://github.com/mengtong0110/Tokenizer-MIA",
+    "data": "https://github.com/mengtong0110/Tokenizer-MIA"
+  },
+  "review_note": "Track 13 候选：已完成 L4 精读并核验官方论文、会议页与代码。",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "该文以可复现 tokenizer 信号审计预训练语料成员关系，实验、攻击脚本与防御代码完整公开，且明确限定归因边界，适合纳入 Track 13 正式池。"
+  },
+  "updated_at": "2026-07-18T00:00:00Z"
+}

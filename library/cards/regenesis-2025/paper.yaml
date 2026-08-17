@@ -1,0 +1,161 @@
+id: regenesis-2025
+title: 'ReGenesis: LLMs can Grow into Reasoning Generalists via Self-Improvement'
+year: 2025
+venue: ICLR 2025 Oral
+authors:
+- Xiangyu Peng
+- Congying Xia
+- Xinyi Yang
+- Caiming Xiong
+- Chien-Sheng Wu
+- Chen Xing
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- math
+- logic
+- commonsense
+- natural-language-inference
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/9c77f2ce42151b2c2e26d2cf47f99564-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2410.02108
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2410.02108
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/9c77f2ce42151b2c2e26d2cf47f99564-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=YUYJsHOf3c
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.iclr.cc/paper_files/paper/1268-/bibtex
+data_object:
+  prompt_source: Training-split instructions and reference answers from GSM8K, NumGLUE, ReClor, ARC-Challenge, and StrategyQA.
+    For GSM8K, the human rationales are excluded and only numerical answers are used as ground truth.
+  trace_author: The same target model being improved generates each task-adapted guideline, reasoning structure, concrete
+    step-by-step path, and predicted answer from one of 25 fixed human-written general reasoning guidelines.
+  answer_format: A reusable SFT record is an instruction q_i paired with one retained complete reasoning path r_path_i,j and
+    the dataset reference answer a_i. The adapted guideline and reasoning structure are construction intermediates, not stated
+    to be included in the final SFT target.
+  process_fields:
+  - source instruction and reference answer
+  - seed general reasoning guideline identifier or text
+  - task-adapted guideline
+  - reasoning structure that should not yet solve the task
+  - complete candidate reasoning path
+  - predicted final answer
+  - exact-match or majority-vote selection outcome
+  - whether failed free generation triggered an answer-hinted retry
+  - retained-path sampling outcome
+  environment_or_substrate: Offline self-synthesis over fixed answer-keyed datasets, followed by terminal selection and one
+    round of supervised fine-tuning; there is no interactive environment or learned process verifier.
+  verifier_or_reward: Main experiments use exact match between each predicted answer and the dataset reference answer. A separate
+    analysis replaces reference answers with self-consistency majority vote. Neither signal checks individual reasoning steps.
+  terminal_predicate: A candidate is eligible when its extracted answer passes the active terminal selector. Up to five eligible
+    paths per instruction are then retained at random; if none pass under ground-truth filtering, the reference answer is
+    used only in guideline adaptation and structure generation for a retry, not in final path generation.
+recipe_metadata:
+  base_model: Mistral-7B-Instruct-v0.3 in the main five-dataset experiments; Meta-Llama-3-8B-Instruct in the NumGLUE model-transfer
+    analysis.
+  teacher: No external reasoning teacher generates the paths. The target model self-generates them, while source-dataset reference
+    answers supply terminal selection and, only for initially unsolved instructions, upstream retry hints. The 25 general
+    reasoning guidelines are fixed human-written scaffolds.
+  generator: 'For each instruction and each of 25 general guidelines: adapt the guideline to the task, generate a non-solving
+    reasoning structure, then expand the structure into a complete reasoning path and predicted answer with the same model.'
+  filtering_rule: Exact-match reference-answer filtering in the main pipeline; self-consistency majority vote in a two-task
+    alternative. Randomly retain at most five passing paths per instruction. Failed instructions receive an upstream answer-hinted
+    retry.
+  sampling_protocol: Generate 25 candidates per instruction at temperature 0.85, one from each seed guideline, then randomly
+    retain p<=5 selected paths. At evaluation, CoT uses temperature 0.8; self-consistency samples 15 responses at temperature
+    0.8.
+  rollout_count: 25
+  temperature: 0.85
+  inference_budget: Generation uses 25 candidates per instruction, but token counts, retry counts, wall-clock cost, maximum
+    sequence lengths, and total corpus-generation compute are not disclosed.
+  optimizer_or_scaffold: Main Mistral SFT uses learning rate 1e-6, 3 epochs, batch size 16, weight decay 0.1, cosine scheduling,
+    warmup ratio 0.03, and an 8xA100-40GB node. The Llama analysis uses LoRA with learning rate 1e-4, 3 epochs, batch size
+    8, weight decay 0.1, cosine scheduling, and warmup ratio 0.1.
+audit:
+  source_mixture: Five answer-keyed training datasets spanning math, logic, and commonsense are synthesized and fine-tuned
+    separately in the main experiments. Appendix A.2 also constructs 7,000-example mixtures from two, three, or four datasets
+    using three random seeds. Exact source revisions and item identifiers are not disclosed.
+  split: Dataset training splits provide construction inputs and in-domain test splits provide evaluation. Six separate OOD
+    benchmarks are ASDiv, SVAMP, AQuA, BBH, ANLI, and OpenBookQA. Question-level overlap checks and immutable split snapshots
+    are not reported.
+  decontamination: unknown
+  license: The official OpenReview record is CC BY 4.0. No generated-path dataset, code, or trained model release was verified,
+    so there is no verified license for the constructed corpus or implementation; upstream dataset and model license compatibility
+    remains to be audited.
+  lineage: Source instruction/reference answer -> one of 25 general guidelines -> adapted guideline -> non-solving reasoning
+    structure -> candidate path/predicted answer -> terminal selection -> optional upstream answer-hinted retry -> random
+    retention of up to five paths -> instruction/path/answer SFT record -> fine-tuned model.
+  known_failure_modes:
+  - A reference-answer match can accept a path with invalid or irrelevant intermediate reasoning.
+  - Exact-match extraction can reject semantically equivalent answers or depend on formatting.
+  - Majority vote can amplify correlated errors and is not an independent correctness check.
+  - Upstream answer hints can leak answer-specific information into adapted guidelines and structures, enabling post-hoc rationalization
+    even though the answer is withheld from final path generation.
+  - Random retention among passing paths does not explicitly optimize validity, diversity, length, or coverage.
+  - The same model generates guidelines, structures, and paths, so model-specific biases and stylistic artifacts can propagate
+    through every stage.
+  - Appendix diversity analysis uses the same Mistral model to label and cluster generated strategies, so it is not independent
+    evidence of semantic diversity.
+  - Mixture experiments confound data-domain diversity with sample selection, and the main per-dataset experiments do not
+    isolate every construction choice.
+  - No official code, generated data, checkpoint, prompt snapshot, release version, or decontamination report was verified.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR proceedings, OpenReview final paper and appendix, arXiv v2, ICLR slide deck, and proceedings BibTeX
+    were checked on 2026-07-21. Official search found an author publication listing but no method-specific repository, dataset,
+    model, or project release. Benchmark gains are treated as training-utility evidence, not as proof that retained paths
+    are stepwise correct.
+inclusion_reason: 'ReGenesis is a concrete reasoning-data construction recipe: it turns answer-keyed tasks into self-generated
+  SFT trajectories through an explicit guideline-to-structure-to-path lineage, terminal selection, and answer-hinted recovery
+  whose benefits and audit risks can be separately examined.'
+related: []
+tags:
+- self-improvement
+- self-generated-reasoning
+- abstract-to-concrete
+- reasoning-guidelines
+- reasoning-structures
+- answer-filtering
+- ground-truth-hints
+- supervised-fine-tuning
+status: partial
+one_line_summary: ReGenesis transforms 25 general reasoning guidelines into task-specific structures and answer-selected paths,
+  retaining at most five trajectories per instruction for SFT.
+why_it_matters: For the Data Construction track, it makes pre-trace planning objects and retry lineage explicit, while also
+  showing why terminal-answer success, hidden upstream hints, and unreleased corpora require separate quality audits.
+card: null
+needs:
+- 'needs_code: locate an author-confirmed implementation if one is released'
+- 'needs_data: locate an official generated-path corpus and document its schema and version'
+- 'needs_license: establish rights for generated paths and compatibility with all source datasets and base models'
+- 'needs_snapshot: pin the 25 prompts, dataset revisions, extraction rules, and generation configuration'
+- 'needs_decontamination: document train/evaluation overlap and model pretraining contamination checks'
+- 'needs_process_audit: independently validate intermediate steps and compare freely generated versus answer-hinted paths'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, venue, OpenReview, arXiv, slides, affiliation, and BibTeX are verified. No official code, generated-data,
+    checkpoint, or method project release was verified.
+category_ids:
+- data_construction_open_release_recipes

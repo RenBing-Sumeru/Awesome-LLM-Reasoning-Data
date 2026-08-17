@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OmniThought 发布 708,009 个问题行及其嵌套的多教师数学、代码与科学 CoT，分别保留推理有效性、答案接收信号和 RV/CD 标注；但逐行题源、生成设置、可执行验证器资产与精确轨迹 lineage 仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多教师 CoT 数据发布、验证与元数据条件选择配方",
+  "best_for_ch": "构建或审计推理蒸馏数据、按模型能力选择轨迹、设计偏好对或 RV/CD 奖励的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Wenrui Cai、Chengyu Wang、Junbing Yan、Jun Huang、Xiangzhong Fang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

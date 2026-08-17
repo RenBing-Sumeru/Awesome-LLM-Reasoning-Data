@@ -1,0 +1,3 @@
+- 当训练 target 需要在同一条有序对话中保存编程请求、解释/代码回答、运行 observation、反馈与修订时，可使用 Code-Feedback。不能把每个 assistant turn 都当作经验证的正答案；重建数据时应保留构造分支与结果元数据。
+- 做 SFT 时，应使用消费模型的 chat template 编码有序 role/content message，并在同一 base model 和推理预算下比较只用单轮、执行反馈、合成反馈与混合数据。评测既要看首轮正确率，也要看收到真实且非 oracle 诊断后的改进。
+- 应保留源数据集、原查询 ID、构造分支、teacher revision、prompt、执行镜像、诊断、反馈类别、turn 顺序、停止原因和测试。必须使用人工反馈、形式化正确性、非代码领域或开箱即用安全 sandbox 的场景不适合直接采用本语料。

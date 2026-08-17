@@ -1,0 +1,1 @@
+LLM-as-a-Judge 通常在固定上下文中判断给定答案，既有 agent benchmark 则常用终点指标。Agent-as-a-Judge 将评测对象改为 requirement、与其有关的 workspace 产物，以及可选的产生轨迹。DevAI 用 requirement DAG 将该契约具体化，而非只给单一任务分数。它不是已普遍验证的过程奖励模型；论文的贡献是这套证据选择流程及其以人工共识校准的概念验证。

@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "best-of-n,数学题",
+    "updated_at": "2026-07-20T11:59:25Z"
+  },
+  "updated_at": "2026-07-20T11:59:25Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

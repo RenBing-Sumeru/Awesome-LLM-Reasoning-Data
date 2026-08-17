@@ -1,0 +1,134 @@
+id: qwen3-5-2026
+title: 'Qwen3.5: Towards Native Multimodal Agents'
+year: 2026
+venue: Qwen official release blog
+authors:
+- Qwen Team
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- multimodal
+- visual_reasoning
+- reasoning
+- agentic_tool_use
+training_use:
+- agent_training
+construction_layer:
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://qwen.ai/blog?id=qwen3.5
+  arxiv: null
+  code: null
+  data: null
+  project: https://qwen.ai/blog?id=qwen3.5
+  huggingface: https://huggingface.co/Qwen/Qwen3.5-397B-A17B
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/QwenLM/Qwen3.6#citation
+data_object:
+  prompt_source: The release reports a larger visual-text pretraining collection with Chinese/English, multilingual, STEM,
+    and reasoning enrichment under stricter filtering. Prompt/task identities, raw data, source inventories, counts, mixture
+    weights, filtering thresholds, provenance, rights, and RL-environment inputs are unknown.
+  trace_author: unknown
+  answer_format: No training-record, reasoning-trace, agent-trajectory, reward-record, or environment-state schema is disclosed.
+    The released model can accept text, image, and video inputs at deployment, but deployment input formats are not training-data
+    records.
+  process_fields: []
+  environment_or_substrate: Qwen describes an asynchronous RL framework for text, multimodal, and multi-turn settings, with
+    agentic-workflow support and claimed million-scale agent scaffolds/environments. Environment identities, task definitions,
+    states, tools, reset conditions, simulators, versions, access, and replay artifacts are unknown.
+  verifier_or_reward: unknown
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Qwen3.5-397B-A17B is reported as a native vision-language model with 397B total and 17B activated parameters.
+    Initial checkpoint and full pretraining-to-post-training lineage are unknown.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: The release states stricter pretraining filtering and RL scaling, but gives no filtering criteria, thresholds,
+    retention yields, stage mapping, or post-training selection rules.
+  sampling_protocol: The release describes RL scaling over increasingly difficult and generalizable tasks/environments, but
+    does not disclose task allocation, sampling, rollout counts, decoding, seeds, curricula, or schedules.
+  rollout_count: null
+  temperature: null
+  inference_budget: The checkpoint's native 262,144-token context length and deployment sampling guidance are inference details,
+    not a disclosed training rollout or thinking-budget contract.
+  optimizer_or_scaffold: Qwen reports a fully disaggregated asynchronous RL training-inference framework with dynamic load
+    balancing, fault recovery, rollout-router replay, speculative decoding, and multi-turn rollout locking. Algorithm, objective,
+    reward, optimizer, coefficients, gradient policy, and reproducible implementation are unknown.
+audit:
+  source_mixture: 'Only broad pretraining categories are named: visual-text, Chinese/English, multilingual, STEM, and reasoning
+    data. Source members, proportions, token counts, acquisition, filtering, rights, and agent/RL-task mixture are unknown.'
+  split: unknown
+  decontamination: unknown
+  license: The released Qwen3.5-397B-A17B checkpoint/configuration repository is Apache-2.0. Training data, task/environment
+    content, teacher outputs, tool integrations, and post-training artifacts have unknown rights.
+  lineage: The official blog and Qwen-owned model release identify Qwen3.5 and a post-trained checkpoint, but do not provide
+    a per-item path from sources through filters, RL tasks/environments, rollouts, rewards, and checkpoints.
+  known_failure_modes:
+  - A claim of million-scale agent scaffolds/environments is not a release of tasks, trajectories, state/action schemas, resets,
+    containers, or replay logs.
+  - The RL framework description omits reward/verifier contracts, objectives, calibration, terminal predicates, and reward-hacking
+    analysis.
+  - Broader visual-text scale and stricter filtering do not disclose source provenance, rights, mixture weights, retention,
+    or contamination controls.
+  - Checkpoint/configuration availability and deployment examples do not make post-training data or agent-training procedures
+    reproducible.
+  - Benchmark and demo results do not establish training-data provenance, environment validity, or feedback reliability.
+  citation_status: verified
+  confidence: medium
+  notes: Track-12 disclosure ledger only. Official release, model, and information-repository sources support high-level RL
+    and agent-environment scaling claims, but not an RLVR, trace-release, reward-release, training-code, or reusable-environment
+    classification.
+inclusion_reason: A 2026 Qwen frontier release that explicitly connects multimodal, multi-turn RL scaling with agent-oriented
+  environments and an open post-trained checkpoint, while leaving the post-training data and feedback contract materially
+  undisclosed.
+related:
+- qwen3-2025
+- qwen3-coder-2025
+- qwen3-5-omni-2026
+tags:
+- qwen3-5
+- qwen
+- frontier-report
+- data-disclosure-ledger
+- multimodal-agent
+- agent-training
+- asynchronous-rl
+- open-weights
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen3.5 reports scaled multimodal and multi-turn RL with agent-oriented environments and releases a post-trained
+  checkpoint, but not the tasks, traces, rewards, environment artifacts, or provenance needed to audit or reproduce that training.
+why_it_matters: 'It is a clear disclosure-boundary case: systems-level RL scaling and released weights provide useful ledger
+  evidence, but cannot be treated as an open agent-data, reward, or reproducible RL recipe release.'
+card: null
+needs:
+- 'needs_data: publish training prompts/tasks, multimodal records, rollouts, accepted/rejected outputs, and source manifests'
+- 'needs_environment: publish environment identities, task definitions, tool schemas, versions, reset/terminal rules, containers,
+  and replay artifacts'
+- 'needs_verifier: document reward/verifier contracts, objective terms, calibration, false-positive/negative analysis, and
+  reward-hacking controls'
+- 'needs_metadata: disclose teachers, generators, data/agent-task mixtures, filtering, curricula, decoding, rollout counts,
+  optimizer, and schedules'
+- 'needs_audit: publish split policy, decontamination, source rights, item-level lineage, and evaluation/training separation'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official Qwen release page, Qwen-owned Hugging Face checkpoint/configuration release, and QwenLM information repository
+    with official BibTeX were verified. No official paper, training data, RL training code, agent environment, trajectory,
+    reward, or verifier release was verified.

@@ -1,0 +1,1 @@
+可把 CRAB 作为多设备或多 app agent-environment record 的设计样例。应保留 task id、environment graph、action 定义、观察模态、evaluator graph 节点、通信设置、模型/脚手架、runtime image，以及最终和节点级结果。它尤其适合比较最终成功与中间 graph progress，也适合设计一个用户目标跨桌面和移动端上下文的 benchmark。

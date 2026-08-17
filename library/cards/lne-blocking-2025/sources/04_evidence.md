@@ -1,0 +1,3 @@
+Claim: adaptive blocking restores a contaminated model's greedy-decoding performance more stably than sampling-based mitigation. On HumanEval, the authors compare simulated mild, moderate, and heavy contamination across several models; LNE-Blocking has a smaller performance gap to each original uncontaminated model than TED, especially for heavily contaminated CodeLlama and Llama 3.1 (Table 1).
+
+This supports recovery in the paper's simulated contamination setting, not proof that all real pretraining leakage is removed. The authors also report a 25% gap for Phi-1 in one appendix setting, so the intervention can expose poor underlying generalization rather than preserve the original score.

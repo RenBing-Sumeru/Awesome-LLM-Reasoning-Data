@@ -1,0 +1,5 @@
+1. Inputs: task instructions, optional image/table background, downloaded and processed data files, an agent or model system, and task-specific evaluation scripts.
+2. Pipeline: obtain competition/source data, process it with the repository scripts or use provided processed archives, run the model/agent notebook for data-analysis or data-modeling tasks, save predictions, cost, time, and generated artifacts, then run the official scoring scripts.
+3. Outputs: predicted answers, modeling submissions or performance files, per-task correctness or competition-metric scores, aggregate solve rates, Relative Performance Gap, and saved execution records.
+4. Verifier/judge: data analysis uses `compute_answer.py` and `show_result.py` over saved predictions; data modeling uses `score4each_com.py` and task metrics. The analysis path requires an OpenAI key, so judge/model version is part of the feedback contract.
+5. Reproducibility notes: pin data archives, Kaggle/Eloquence source versions, evaluation notebooks, API model names, judge prompt/code, metric scripts, runtime budget, file access, and leaderboard date.

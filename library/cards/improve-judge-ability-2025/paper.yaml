@@ -1,0 +1,96 @@
+id: improve-judge-ability-2025
+title: Improve LLM-as-a-Judge Ability as a General Ability
+year: 2025
+venue: EMNLP 2025
+authors:
+- Jiachen Yu
+- Shaoning Sun
+- Xiaohui Hu
+- Jiaxu Yan
+- Kaidong Yu
+- Xuelong Li
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.712/
+  arxiv: https://arxiv.org/abs/2502.11689
+  code: null
+  data: https://huggingface.co/datasets/R-I-S-E/RISE-Judge-SFT-20K
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.712
+  venue: https://aclanthology.org/2025.emnlp-main.712/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper evaluation setting
+  trace_author: unknown
+  answer_format: model response and automated verdict
+  process_fields:
+  - input
+  - response
+  - judge or audit outcome
+  environment_or_substrate: paper-specific evaluation
+  verifier_or_reward: paper-specific judge, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see paper
+  teacher: see paper
+  generator: see paper
+  filtering_rule: see paper
+  sampling_protocol: see paper
+  rollout_count: null
+  temperature: null
+  inference_budget: see paper
+  optimizer_or_scaffold: see paper
+audit:
+  source_mixture: official paper page
+  split: see paper
+  decontamination: paper-specific
+  license: see paper
+  lineage: official paper page
+  known_failure_modes:
+  - Paper-page-backed curation; inspect the primary source before reusing results.
+  citation_status: verified
+  confidence: medium
+  notes: Presents judge-capability training and public model/training-data claims for evaluation research.
+  author_institution_metadata:
+    source: https://arxiv.org/pdf/2502.11689.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 公开的 judge 训练数据、权重与两阶段筛选流程可用于审计自动偏好信号的可靠性。
+related: []
+tags:
+- paper-page-backed
+- audit
+status: verified
+one_line_summary: Two-stage SFT-DPO training turns filtered pairwise judgments into an open generative judge and tests its
+  downstream preference signals.
+why_it_matters: It exposes the data filters and evaluation boundary behind an open generative judge used as an RLAIF signal.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary paper page recorded; artifact availability stated without inference.
+category_ids:
+- audit_failure_contamination_verifier_attacks
+- preference_reward_feedback_data

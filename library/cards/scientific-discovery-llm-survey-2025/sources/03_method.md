@@ -1,0 +1,3 @@
+This is a systematic field survey rather than one operational pipeline. It views existing work through the scientific method and uses the Tool–Analyst–Scientist taxonomy to organize roles and capabilities. The official abstract does not state a common dataset, codebase, reward model, verifier, robot interface, or experimental budget.
+
+That scope matters when interpreting the card. The organizing unit is a role in scientific work, not a shared implementation whose numbers can be directly compared. Readers should use the taxonomy to collect primary studies with comparable tasks, tools, and oversight, then consult those studies for data provenance, experimental procedures, and quantitative results.

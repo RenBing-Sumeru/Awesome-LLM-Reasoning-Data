@@ -1,0 +1,3 @@
+Primary source: https://arxiv.org/abs/2604.10988. Public status: arXiv preprint, 2026. Existing browser-agent benchmarks trade off realism, reproducibility, and scalability: live sites drift, hand-built sandboxes can be unrealistic, and manual curation is costly.
+
+The evaluation object is task instruction, website files, ground truth, answer type, solution steps, browser actions, observations, final answer, and judge result. The feedback contract is validation replay and final-state or submitted-answer comparison against ground truth. This belongs in the collection as an auditable benchmark or environment surface; it is not by itself proof of deployable reliability, and training use should be inferred only where the paper explicitly releases data for that purpose.

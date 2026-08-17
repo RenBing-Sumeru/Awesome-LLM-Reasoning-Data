@@ -1,0 +1,18 @@
+{
+  "title": "Search Arena: Analyzing Search-Augmented LLMs",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2506.05334",
+    "data": "https://huggingface.co/datasets/lmarena-ai/search-arena-24k",
+    "code": "https://github.com/lmarena/search-arena"
+  },
+  "review_note": "L4 材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T16:57:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建超2.4 万组成对多轮搜索交互和约1.2万个人类投票的SearchArena-24k，能用于搜索型模型评测和奖励建模",
+    "updated_at": "2026-07-14T16:57:52Z"
+  }
+}

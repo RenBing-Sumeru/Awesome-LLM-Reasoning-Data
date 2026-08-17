@@ -1,0 +1,1 @@
+MiniMax。《MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention》。arXiv:2506.13585，2025。[论文](https://arxiv.org/abs/2506.13585) · [官方 BibTeX](https://arxiv.org/bibtex/2506.13585) · [官方仓库](https://github.com/MiniMax-AI/MiniMax-M1) · [官方权重 collection](https://huggingface.co/collections/MiniMaxAI/minimax-m1)。已核验官方 40K/80K 权重和推理资产；尚未确认官方 M1 训练数据发布。

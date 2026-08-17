@@ -1,0 +1,1 @@
+W²Bench 评估 reward model 能否按明确写作需求排序回答；WEval 通过让生成器在删去一个或多个需求后作答，构成自然偏序。WRL 将完整指令回答视为 chosen，将删需求回答视为 rejected，以 Bradley--Terry loss 训练 Qwen2.5-7B-Instruct reward model，再用于 GRPO。论文公开代码和数据，但未证明这种合成偏序等同于普适的人类偏好真值。

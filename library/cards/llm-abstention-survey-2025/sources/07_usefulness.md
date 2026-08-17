@@ -1,0 +1,3 @@
+Use this paper when designing a system that should sometimes withhold an answer. It provides a checklist for asking whether a proposed policy matches the query, the model's actual support, and the values of the people affected.
+
+Before deploying a policy, use the framework to write down the decision it governs. Specify the kinds of queries involved, the model signal available, the alternative response, and the cost assigned to each outcome. This turns “be safer” into a testable design question. It also helps separate a system that openly acknowledges uncertainty from one that simply becomes less useful by declining too broadly.

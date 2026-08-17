@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "系统梳理大语言模型归纳推理的训练、探索、数据增强与评测方法。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "归纳推理综述",
+  "best_for_ch": "想理解模型如何从具体观察归纳出一般规则的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kedi Chen 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T00:00:00Z"
+}

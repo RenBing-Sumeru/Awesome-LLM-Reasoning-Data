@@ -1,0 +1,19 @@
+{
+  "title": "TritonBench: Benchmarking Large Language Model Capabilities for Generating Triton Operators",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.1183/",
+    "data": "https://github.com/thunlp/TritonBench",
+    "code": "https://github.com/thunlp/TritonBench",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T09:21:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 TritonBench，覆盖 184 个真实 Triton 算子",
+    "updated_at": "2026-07-18T09:21:29Z"
+  }
+}

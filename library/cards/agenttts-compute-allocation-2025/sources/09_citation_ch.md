@@ -1,0 +1,1 @@
+Wang, Fali、Hui Liu、Zhenwei Dai、Jingying Zeng、Zhiwei Zhang、Zongyu Wu、Chen Luo、Zhen Li、Xianfeng Tang、Qi He 和 Suhang Wang。2025。《AgentTTS：面向复杂任务测试时计算最优扩展策略的大语言模型智能体》。第三十九届神经信息处理系统大会（NeurIPS 2025）。论文：https://arxiv.org/abs/2508.00890。代码与数据：https://github.com/FairyFali/AgentTTS。

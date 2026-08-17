@@ -1,0 +1,3 @@
+Whole-answer preference learning gives one label to a long document even when its defects occur at a particular paragraph or transition. Long generations amplify factual contradiction, missing constraints, and local incoherence, while a terminal reward rarely says where the failure began. Selecting only a highest-reward final response can therefore hide poor intermediate decisions inside an apparently acceptable answer.
+
+LongDPO asks how long-form preference data can expose and repair those local decisions before optimization. It replaces one outcome-level pair with multiple step-level pairs, each conditioned on the already selected prefix. The intervention is in how records are constructed and consumed for training, not merely in how long outputs are decoded.

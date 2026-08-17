@@ -1,0 +1,1 @@
+已有 browser-agent benchmark 常评测宽泛网站流程或静态 UI 定位。FormFactory 缩窄到表单，但把终局状态做成结构化字段级比较。方向信号是 web-agent 环境可以暴露精确后端状态，而不只看视觉成功。浏览器自动化本身并不新。复用前要查字段归一化、隐藏默认值、validation scripts、profile generation 和 template-version drift。

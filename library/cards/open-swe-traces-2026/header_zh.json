@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "发布 207,489 条多语言软件工程 agent episode，来源为 20,000 个 SWE-rebench-V2 PR 任务、两类教师模型与两类 harness，并保留已解决、未解决和结果不可用三类 outcome。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多语言软件工程 agent 轨迹数据发布与双模式蒸馏配方",
+  "best_for_ch": "关注 repository-level agent、SWE-bench 类环境、工具交互轨迹、失败数据利用和可执行反馈审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Wasi Uddin Ahmad、Nikolai Ludwig、Somshubra Majumdar、Boris Ginsburg",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

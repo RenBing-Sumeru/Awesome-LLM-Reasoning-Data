@@ -1,0 +1,185 @@
+id: aimo2-openmathreasoning-2025
+title: 'AIMO-2 Winning Solution: Building State-of-the-Art Mathematical Reasoning Models with OpenMathReasoning dataset'
+year: 2025
+venue: arXiv report of the AIMO-2 winning submission; retitled poster at the 2nd AI for Math Workshop @ ICML 2025
+authors:
+- Ivan Moshkov
+- Darragh Hanley
+- Ivan Sorokin
+- Shubham Toshniwal
+- Christof Henkel
+- Benedikt Schifferer
+- Wei Du
+- Igor Gitman
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- mixed
+- judgment_required
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+- olympiad_mathematics
+- tool_integrated_reasoning
+training_use:
+- sft
+- distillation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.16891
+  arxiv: https://arxiv.org/abs/2504.16891
+  code: https://github.com/NVIDIA-NeMo/Skills/tree/main/recipes/openmathreasoning
+  data: https://huggingface.co/datasets/nvidia/OpenMathReasoning
+  project: https://nvidia-nemo.github.io/Skills/releases/openmathreasoning/
+  huggingface: https://huggingface.co/collections/nvidia/openmathreasoning
+  doi: https://doi.org/10.48550/arXiv.2504.16891
+  venue: https://icml.cc/virtual/2025/52427
+  openreview: https://openreview.net/forum?id=OM7ZN0PmSS
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/abs/2504.16891
+data_object:
+  prompt_source: AoPS forum discussions excluding Middle School Math are the paper's main source. The released rows also identify
+    a small MATH_training_set source. The official release corrects the paper's 540K pipeline-stage count to 306K unique solution-bearing
+    problems and adds 193,170 problem-only rows.
+  trace_author: DeepSeek-R1 and QwQ-32B author CoT traces; LIMO-Qwen-32B, a TIR-tuned QwQ-32B, and an intermediate 14B model
+    generate successive TIR stages; QwQ-32B authors GenSelect comparisons, with Qwen2.5-32B-Instruct used for preprocessing,
+    judging, and summary cleanup.
+  answer_format: 'One of four release modes: a natural-language CoT solution; reasoning interleaved with Python code and outputs
+    for TIR; a GenSelect comparison prompt and cleaned selection rationale; or an additional problem with no generated solution.
+    Every row uses the same nine-field schema.'
+  process_fields:
+  - expected_answer
+  - problem_type
+  - problem_source
+  - generation_model
+  - pass_rate_72b_tir
+  - problem
+  - generated_solution
+  - inference_mode
+  - used_in_kaggle
+  environment_or_substrate: Offline mathematics corpus. TIR strings interleave reasoning, Python calls, and returned outputs,
+    but the release does not normalize them into state/action/observation records or attach the sandbox version and per-call
+    status to each row.
+  verifier_or_reward: Qwen2.5-32B-Instruct judges final-answer equivalence against an extracted answer; when no answer was
+    extracted or a proof was converted, the majority candidate answer becomes the target. TIR additionally uses code-presence
+    and execution-count filters and, for the 15K stage-0 subset, LLM novelty/significance labels. GenSelect retains comparisons
+    that select an answer-correct candidate.
+  terminal_predicate: A solution is retained when its final answer is judged equivalent to the extracted or majority-induced
+    target and its mode-specific filters pass; a GenSelect trace is retained when it chooses a correct candidate. This does
+    not certify each reasoning step, proof validity, or code-to-prose consistency.
+recipe_metadata:
+  base_model: Qwen2.5 base models at 1.5B, 7B, 14B, and 32B for the main experiments; Qwen2.5-14B-Base for the winning Kaggle
+    submission.
+  teacher: DeepSeek-R1 and QwQ-32B; Qwen2.5-32B-Instruct serves as extractor, classifier, equivalence judge, and summarizer.
+  generator: CoT uses DeepSeek-R1 and QwQ-32B. TIR proceeds from LIMO-Qwen-32B to TIR-tuned QwQ-32B and then an intermediate
+    14B generator. QwQ-32B generates GenSelect comparison traces.
+  filtering_rule: Extract and normalize AoPS problems, remove multiple-choice/binary/invalid formats, convert proofs, run
+    LLM-based decontamination, and filter generations by final-answer equivalence. Stage-0 TIR also requires code, no more
+    than two code blocks, and LLM novelty/significance; later TIR disables the novelty/significance filter after a downstream
+    regression. GenSelect keeps only traces selecting an answer-correct candidate.
+  sampling_protocol: CoT samples with temperature 0.7, top-p 0.95, and a 16,384-token cap, allocating extra attempts to hard
+    known-answer problems. TIR uses the same stated sampling values and random one-to-eight code-call allowances. GenSelect
+    forms eight distinct groups per problem, each with 2–16 candidates and at least one correct and one incorrect candidate.
+  rollout_count: Up to 32 CoT candidates per problem; 1.2M stage-0 TIR attempts, then 700K QwQ TIR attempts, followed by generation
+    of the 1.7M final TIR set; eight GenSelect candidate groups per problem.
+  temperature: 0.7
+  inference_budget: Training-data generation uses up to 16,384 tokens for CoT/TIR; TIR prompts allow one to eight code executions.
+    GenSelect cleanup caps output at 2,048 tokens and input at 32,768. The winning competition sandbox allows six code calls
+    with a two-second timeout per call and shows the first 200 output characters.
+  optimizer_or_scaffold: Main SFT trains Qwen2.5 base models for six epochs on about 5.5M CoT/TIR/GenSelect rows with AdamW,
+    weight decay 0.01, cosine schedule, 10% warmup, global batch 1,024, size-specific learning rates, and four-checkpoint
+    averaging. A harder 2.2M subset supports a second SFT stage. The winning 14B model instead uses eight epochs on 2.2M DeepSeek-R1
+    CoT rows and 400 steps on the 15K stage-0 TIR subset.
+audit:
+  source_mixture: Primarily AoPS forum discussions after format filtering and decontamination; the released schema also names
+    a small MATH_training_set source. The current release has 306K unique solution-bearing problems plus 193,170 additional
+    problem-only rows.
+  split: The pinned release exposes `cot` (3,201,061 rows), `tir` (1,718,466), `genselect` (565,620), and `additional_problems`
+    (193,170), totaling 5,678,317 rows. These are data-object/mode splits, not an independently held-out train/validation/test
+    partition. Comp-Math-24-25 is a separate 256-problem validation suite in the paper.
+  decontamination: Qwen2.5-32B-Instruct performs LLM-based comparison against popular mathematical benchmarks after problem
+    normalization. Candidate matches, judge outputs, and final decision logs are not released.
+  license: The Hugging Face dataset is labeled CC BY 4.0 and the current NVIDIA-NeMo/Skills code is Apache-2.0. Row-level
+    source-post and platform rights provenance is not provided.
+  lineage: AoPS discussion or small MATH training source -> problem extraction/classification/conversion -> answer extraction
+    -> LLM decontamination -> multi-teacher CoT/TIR or GenSelect generation -> answer-level and mode-specific filtering ->
+    released nine-field row -> Qwen2.5 SFT or GenSelect inference. The exact original AoPS scraper and complete accepted/rejected
+    manifests are unavailable.
+  known_failure_modes:
+  - The paper's 540K problem count was taken near the beginning of the pipeline; the official data card corrects the released
+    solution-bearing pool to 306K unique problems.
+  - A pipeline bug lost 137K proof-based questions. Recovered data reportedly regressed SFT, and a released recovered-solution
+    manifest is unavailable.
+  - For no-answer and converted-proof questions, majority-generated answers can turn teacher consensus into an incorrect target.
+  - Qwen2.5-32B-Instruct equivalence and novelty/significance judgments are not proof verification; appendix examples contain
+    code/prose inconsistencies that the significance filter accepts.
+  - The released TIR string does not expose normalized tool-call records, sandbox hashes, execution statuses, or step-level
+    correctness.
+  - The decontamination candidate pairs, LLM judgments, and final decisions are not released.
+  - Current construction documentation points to a similar public AoPS input because the exact original raw-scraping scripts
+    were internal, so the first construction stage is not exactly reproducible.
+  - The hosted dataset and current recipe can drift; reuse should pin dataset revision d3d08664755704f422af97d43a7ff0ded4bd95df
+    and code commit 74b8649734a6ecc2d3beca89311e1a5e02da48fa.
+  - A release-level CC BY 4.0 label does not resolve row-level rights and platform-policy questions for scraped forum content.
+  - The paper reports public-leaderboard variance, limited transfer to smaller models, and roughly 10% longer outputs that
+    harmed time allocation.
+  citation_status: verified
+  confidence: high
+  notes: Verified on 2026-07-23 against the full 39-page arXiv paper, pinned Hugging Face dataset/card, official NVIDIA-NeMo/Skills
+    recipe/docs, NVIDIA competition account, and the retitled ICML workshop poster metadata. The workshop poster is not an
+    ICML main-conference publication.
+inclusion_reason: A central open mathematics-data recipe that documents problem sourcing, multi-teacher CoT, iterative tool-integrated
+  generation, GenSelect construction, answer-level filtering, SFT scaffolding, and a consequential paper-to-release count
+  correction for the Data Construction & Open Release Recipes track.
+related: []
+tags:
+- openmathreasoning
+- aimo-2
+- mathematical-reasoning
+- deepseek-r1-distillation
+- tool-integrated-reasoning
+- genselect
+- answer-level-verification
+- open-data-recipe
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- programmatically_verifiable_outcome_data
+- instruction_demonstration_rationale_data
+one_line_summary: OpenMathReasoning packages 5.68M rows across CoT, Python-interleaved TIR, GenSelect, and problem-only modes
+  for answer-level mathematical-reasoning SFT and selection, but the official release corrects the paper's 540K problem figure
+  to 306K unique solution-bearing problems.
+why_it_matters: It exposes a rare end-to-end recipe from forum problems through teacher rollouts, answer judging, tool-use
+  filtering, generative selection, and SFT. Its release correction and missing raw-scrape, rejection, verifier, and rights
+  manifests also show why dataset lineage and acceptance semantics must be audited rather than inferred from aggregate scale.
+card: null
+needs:
+- 'needs_metadata: publish the exact original AoPS scraping implementation, source-item manifest, and immutable input revision'
+- 'needs_audit: release accepted/rejected candidate manifests, equivalence-judge outputs, majority-answer provenance, and
+  decontamination decisions'
+- 'needs_audit: expose structured TIR tool calls, execution statuses, sandbox version, and code-to-prose consistency checks'
+- 'needs_metadata: clarify the release status and item manifest for the 137K proof questions lost by the pipeline bug'
+- 'needs_license: document row-level source-post provenance and rights beyond the release-level CC BY 4.0 label'
+- 'needs_version_pin: retain dataset revision d3d08664755704f422af97d43a7ff0ded4bd95df and code commit 74b8649734a6ecc2d3beca89311e1a5e02da48fa
+  in any downstream Card'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper, data, code, project docs, competition account, and workshop metadata verified; exact release and code revisions
+    recorded in audit.

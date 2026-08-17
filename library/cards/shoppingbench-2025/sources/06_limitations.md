@@ -1,0 +1,5 @@
+The strongest limitation is provenance and stability. The sandbox is built from real-world product documents, so redistribution rights, product freshness, duplicate products, stale attributes, and regional marketplace assumptions must be audited before reuse. The README documents a large compressed product file, but license and data-rights details are not resolved by the Card.
+
+The evaluation can also drift through tooling. Product search index construction, external web-search provider behavior, model API versions, action formatting, retry policy, and evaluator implementation can all change scores. Knowledge-intent performance is especially sensitive to whether web search is available and to the freshness of retrieved information.
+
+Known failure modes to preserve in Review: attribute mismatch, missing products, constraint-not-satisfied cases, metric issues, and knowledge errors. Split/version boundary: pin the 2,410/900 instruction split, test JSONL files, product archive, search index, evaluator code, and run scripts before comparing agents or training on trajectories.

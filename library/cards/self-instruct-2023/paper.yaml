@@ -1,0 +1,127 @@
+id: self-instruct-2023
+title: 'Self-Instruct: Aligning Language Models with Self-Generated Instructions'
+year: 2023
+venue: ACL 2023
+authors:
+- Yizhong Wang
+- Yeganeh Kordi
+- Swaroop Mishra
+- Alisa Liu
+- Noah A. Smith
+- Daniel Khashabi
+- Hannaneh Hajishirzi
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- large-language-models
+- synthetic-instruction-generation
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2212.10560
+  arxiv: https://arxiv.org/abs/2212.10560
+  code: https://github.com/yizhongw/self-instruct
+  data: https://github.com/yizhongw/self-instruct/tree/main/data
+  project: https://github.com/yizhongw/self-instruct
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 175 human-written seed tasks plus iteratively sampled machine-generated instructions.
+  trace_author: GPT-3 generates new instructions, optional inputs, and target outputs; humans write only the seed set and
+    evaluation tasks.
+  answer_format: An instruction with an optional input and one generated output, represented as task and instance records.
+  process_fields:
+  - instruction
+  - input
+  - output
+  - task classification flag
+  - generation and filtering provenance
+  environment_or_substrate: Static synthetic instruction instances consumed by supervised fine-tuning of GPT-3.
+  verifier_or_reward: Heuristic validity filters, ROUGE-L similarity filtering, and human quality evaluation; no universal
+    answer verifier is used.
+  terminal_predicate: Retain a new instruction below the similarity threshold, generate valid instances, and add them to the
+    pool for later bootstrapping and SFT.
+recipe_metadata:
+  base_model: GPT-3.
+  teacher: The same GPT-3 family used to bootstrap task instructions and instances.
+  generator: Prompt GPT-3 with seed and previously accepted tasks to generate new instructions, classify task form, and create
+    input-output instances.
+  filtering_rule: Remove malformed instructions and candidates whose maximum ROUGE-L similarity with the existing pool exceeds
+    0.7; apply instance-level heuristic filters.
+  sampling_protocol: Mix human seed tasks and accepted machine tasks in generation prompts and iterate until the target pool
+    is built.
+  rollout_count: null
+  temperature: null
+  inference_budget: API generation cost and exact reusable token budget are not reported as a single figure.
+  optimizer_or_scaffold: Supervised fine-tuning of GPT-3 on accepted synthetic instruction instances.
+audit:
+  source_mixture: 175 human seed tasks bootstrap 52,445 generated instructions and 82,439 instruction-input-output instances.
+  split: The official repository publishes seed tasks, generated instructions, instances, and evaluation resources as JSON/JSONL
+    files.
+  decontamination: ROUGE-L filtering limits lexical similarity within the pool but does not establish semantic novelty or
+    benchmark non-overlap.
+  license: The repository has a license file, but the checked README does not clearly establish redistribution terms for every
+    generated dataset record; verify before reuse.
+  lineage: 'synthetic instruction generation lineage; closest comparisons: human-written instruction tuning and later WizardLM-style
+    evolution.'
+  known_failure_modes:
+  - Teacher errors and biases propagate, heuristic filters miss semantic duplicates and invalid outputs, and long-tail task
+    coverage remains weak.
+  citation_status: verified
+  confidence: high
+  notes: ACL 2023 paper, author affiliations, official repository, record counts, construction stages, evaluation results,
+    and artifact structure checked.
+inclusion_reason: Self-Instruct turns a small human seed set into a reusable pipeline for generating, filtering, and consuming
+  synthetic instruction-target records.
+related:
+- wizardlm-2024
+- magpie-2024
+tags:
+- synthetic-instruction-generation
+- arxiv-2212.10560
+- primary-link-checked
+status: verified
+one_line_summary: Self-Instruct repeatedly asks GPT-3 to invent, filter, and answer new tasks, expanding 175 human seeds into
+  82,439 synthetic SFT instances.
+why_it_matters: It provides the canonical inspectable loop for bootstrapping instruction data while exposing the quality limits
+  of self-generated targets.
+reading_priority: must read
+paper_type: synthetic instruction-data generation and release
+best_for: Readers building self-generated instruction SFT data or auditing task diversity and teacher errors.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and GitHub code/data repository checked; per-record redistribution terms remain an audit item.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: synthetic instruction generation
+  selection_priority_score: 12
+  selection_score_breakdown:
+    recency: 2
+    impact: 5
+    venue: 3
+    institution: 2

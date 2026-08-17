@@ -1,0 +1,19 @@
+{
+  "title": "RottenReviews: Benchmarking Review Quality with Human and LLM-Based Judgments",
+  "candidate_links": {
+    "paper": "https://doi.org/10.1145/3746252.3761506",
+    "data": "https://huggingface.co/datasets/Reviewerly/RottenReviews",
+    "code": "https://github.com/Reviewerly-Inc/RottenReviews",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:24:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "汇集 1.5 万余投稿和评审、9,000 余审稿人档案及 753 条人工标注评论，比较审稿质量信号",
+    "updated_at": "2026-07-25T10:24:27Z"
+  }
+}

@@ -1,0 +1,150 @@
+id: nemotron-post-training-dataset-v2-2025
+title: Nemotron-Post-Training-Dataset-v2
+year: 2025
+venue: arXiv
+authors:
+- Dhruv Nathawani
+- Shuoyang Ding
+- Vitaly Lavrukhin
+- Igor Gitman
+- Somshubra Majumdar
+- Evelina Bakhturina
+- Boris Ginsburg
+- Jane Polak Scowcroft
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- math
+- code
+- science
+- chat
+- multilingual
+- instruction_following
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.14444
+  arxiv: https://arxiv.org/abs/2508.14444
+  code: null
+  data: https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2
+  project: null
+  huggingface: https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v2
+  doi: https://doi.org/10.48550/arXiv.2508.14444
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Public/open corpora or synthetic prompt generation. The dataset card does not expose an upstream source identifier
+    or revision for every released row.
+  trace_author: Synthetic responses from DeepSeek-R1-0528, Qwen2.5-14B-Instruct, Qwen2.5-32B-Instruct-AWQ, Qwen3-30B-A3B,
+    and Qwen3-235B-A22B. Generator totals overlap because more than one model may contribute to one record.
+  answer_format: A Parquet SFT row with uuid, license, generator, version, category, reasoning, and messages; messages is
+    a role/content sequence. Some prompts have reasoning-on and reasoning-off responses. For the five multilingual splits,
+    prompts and responses target the named language while reasoning traces remain English.
+  process_fields:
+  - uuid
+  - license
+  - generator
+  - version
+  - category
+  - reasoning_mode
+  - message_role_content_sequence
+  environment_or_substrate: A contact-gated Hugging Face dataset with an SFT configuration and nine category/language splits.
+    The linked Nemotron Nano 2 report describes broader SFT, IFEval RL, WorkBench DPO, and GRPO/RLHF stages, but the public
+    row schema does not map a record to any of those stages.
+  verifier_or_reward: At release level, prompts undergo quality/complexity and syntax filtering. The linked report separately
+    describes language identification, tool-call checks, safety guards, an IFEval rule verifier, WorkBench database-state
+    checks, and a Qwen-based reward model. Per-row verifier identity, version, input, output, threshold, and acceptance reason
+    are absent from the visible schema.
+  terminal_predicate: unknown at row level
+recipe_metadata:
+  base_model: The dataset card names NVIDIA-Nemotron-Nano-9B-v2-Base as the target model supported by the release.
+  teacher: DeepSeek-R1-0528 and four named Qwen2.5/Qwen3 models; no unique teacher can be inferred when a row lists or aggregates
+    multiple generators.
+  generator: Extract or synthesize prompts, filter for quality/complexity, generate synthetic responses with named open/public
+    models, and construct multilingual records by line-by-line translation with off-target-language filtering.
+  filtering_rule: The dataset card lists removal of inconsistent, easily guessed, or syntactically invalid prompts. The report
+    adds strict bracket extraction and language identification for translations, rule-based tool checks, and guards for particular
+    domains; the release does not attach these decisions to rows.
+  sampling_protocol: Dataset version 2.0, released 2025-08-20. Per-subset candidate counts, decoding settings, retries, seeds,
+    and accepted/rejected ledgers are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: The public object supports SFT. The linked report trains three SFT stages and then separate IFEval
+    RL, WorkBench DPO, and GRPO/RLHF branches, but released rows lack exact stage membership, sampling weights, and run identifiers.
+audit:
+  source_mixture: '6,341,414 rows: math 239,467; code 175,000; STEM 355,000; chat 627,720; Japanese 975,202; German 1,015,314;
+    Italian 1,016,503; Spanish 935,704; French 1,001,504.'
+  split: Nine category/language splits under the SFT configuration. Conventional train/dev/test partitions and immutable model-stage
+    manifests are unknown.
+  decontamination: unknown
+  license: The repository is labeled CC-BY-4.0 and rows include a license field. The card says most data are CC-BY-4.0, some
+    WildChat prompts are ODC-BY, some StackOverflow prompts are CC-BY-SA, and use may also implicate Qwen or DeepSeek terms.
+  lineage: Public/open or synthetic prompt -> quality/complexity and subset-specific filtering -> one or more named model
+    generations -> versioned Parquet row. Upstream source IDs/revisions, transformations, verifier decisions, rejected candidates,
+    and exact training-run membership are unavailable.
+  known_failure_modes:
+  - Contact-information gating prevents unauthenticated inspection of raw Parquet files and immutable file manifests.
+  - Overlapping generator counts cannot be summed into unique records or used to recover one teacher per row.
+  - English-only reasoning for target-language prompts and answers can introduce language mismatch and translation artifacts.
+  - Release-level RL, DPO, and RLHF descriptions do not establish row-level rewards, preferences, rollout groups, or stage
+    lineage.
+  - Per-sample license labels do not by themselves provide complete upstream attribution, source revisions, or generator-term
+    compatibility.
+  - Benchmark results for trained checkpoints do not certify row-level correctness, safety, provenance, decontamination, or
+    rights.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the official NVIDIA Hugging Face dataset card, its official software citation, arXiv 2508.14444
+    full text including Section 3 and the appendix, and the official NVIDIA-NeMo/Nemotron data catalogue on 2026-07-22. Raw
+    Parquet inspection remains blocked by the contact-sharing gate.
+inclusion_reason: A versioned multi-domain and multilingual post-training release that makes generator, license, reasoning-mode,
+  and message fields visible while exposing the audit gap between release-level training recipes and row-level selection lineage.
+related: []
+tags:
+- nemotron
+- post-training
+- multilingual
+- synthetic-data
+- sft
+- gated-release
+- license-lineage
+status: partial
+one_line_summary: Nemotron-Post-Training-Dataset-v2 releases 6,341,414 SFT-style records across technical reasoning, chat,
+  and five target languages, with generator and license metadata but without row-level selection or RL-stage lineage.
+why_it_matters: For the Data Construction & Open Release Recipes track, it is both a reusable SFT source and a concrete audit
+  case showing that detailed report-level verifiers and post-training stages do not substitute for record-level provenance,
+  decisions, and run mappings.
+card: null
+needs:
+- 'needs_access: pin an accessible immutable Parquet revision, file manifest, row counts, and checksums'
+- 'needs_provenance: publish per-row upstream source identifiers, revisions, transformations, and attribution'
+- 'needs_verifier: publish verifier identity/version, inputs, outputs, thresholds, failure codes, and rejected alternatives'
+- 'needs_stage_mapping: connect each row to its SFT/RL/DPO/RLHF use, sampling weight, and model run'
+- 'needs_decontamination: publish benchmark revisions, match rules, matched records, and removal ledgers'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper and dataset metadata are verified; raw Parquet contents remain contact-gated, so record-level artifact
+    verification is incomplete.
+category_ids:
+- data_construction_open_release_recipes

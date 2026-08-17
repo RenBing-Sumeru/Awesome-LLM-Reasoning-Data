@@ -1,0 +1,3 @@
+Both players use Llama-3.1-8B and train on MATH gold solution steps. The generator proposes a perturbed step; an algorithmic oracle compares it with the reference through cosine similarity, noun and number entities, and logical-operation order. The PRM labels the step correct or incorrect, while the generator and PRM receive asymmetric rewards based on whether an invalid perturbation fooled the PRM.
+
+Training alternates five PPO updates of one player while the other is frozen. The paper adds KL penalties and entropy bonuses to both policies and uses optimistic gradient descent-ascent for the general-sum game. The PRM's training mixture is half gold steps and half negatives from the current or earlier generators, then its scores guide matched-budget solver selection.

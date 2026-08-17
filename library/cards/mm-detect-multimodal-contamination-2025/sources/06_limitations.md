@@ -1,0 +1,1 @@
+Results depend on available source corpora and model access; black-box inference cannot establish exact training provenance. The evaluation covers 12 models and five benchmarks, not every modality or release. Before reuse, freeze benchmark versions and distinguish direct evidence from source-attribution hypotheses.

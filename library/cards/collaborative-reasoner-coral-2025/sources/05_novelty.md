@@ -1,0 +1,11 @@
+Coral makes the next conversational turn, rather than a whole dialogue or final answer alone, the preference-learning object. Sampling positive and negative siblings from the same prefix controls task, role instruction, and conversation history. The preference therefore targets which continuation should follow a shared state, a useful structure for collaborative-agent training.
+
+Its tree scaffold trades breadth for tractability. Five siblings expose alternative next turns, but only one randomly chosen branch continues. Repeating five trees broadens full-dialogue coverage without recursively expanding every sibling. This is distinct from MCTS, beam search over complete conversations, or a persistent online replay buffer.
+
+The feedback design combines an LLM belief extractor with known task answers. That permits turn-level labeling even when an utterance contains reasoning, questions, hedging, or no explicit answer in a fixed slot. It also exposes a central audit issue: the judge must infer what the agent believes before the rule-based matcher can operate. An extraction error changes the training label.
+
+Coral also distinguishes social analysis from data selection. Persuasion, assertiveness, persuasion quality, and agreement are measured through belief transitions, yet reported SFT/DPO filtering uses answer correctness rather than those social scores. This avoids claiming that the dataset directly supervises politeness, effective disagreement, or persuasion, even though those behaviors motivate the work.
+
+The recipe brings together symmetric same-model self-play, shallow conversation-tree sampling, belief extraction, same-prefix preference construction, DPO, and scalable Matrix serving. None of those components alone is new, and the paper does not demonstrate benefit from iterative DPO. The data contribution is their explicit integration into a collaborative-reasoning construction contract.
+
+For the open-release track, the novelty is paired with a clear boundary. The repository makes the intended pipeline inspectable and pins its Matrix dependency, but publishes none of the reported synthetic turns or trained weights. Open code supports reimplementation; it does not make the reported corpus or model lineage auditable.

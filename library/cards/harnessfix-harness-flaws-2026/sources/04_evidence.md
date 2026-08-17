@@ -1,0 +1,3 @@
+The official paper reports validation on four agent benchmarks and releases the repair workflow in the HarnessFix GitHub repository. The decisive evidence is instance-level: a failed trajectory is linked to a harness-flaw diagnosis, a repair is applied, and the affected case is checked again under the benchmark's own evaluator or execution environment.
+
+The evidence boundary is important. The reported flaw counts and repair effects are not universal rates for all agent benchmarks; they depend on the sampled failures, benchmark versions, environment state, tool/API availability, and the repair operators the authors implemented. Aggregate score changes should not be reused without the corresponding repaired artifact and evaluator revision.

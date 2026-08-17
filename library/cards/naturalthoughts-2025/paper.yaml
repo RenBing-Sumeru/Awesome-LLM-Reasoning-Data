@@ -1,0 +1,138 @@
+id: naturalthoughts-2025
+title: 'NaturalThoughts: Selecting and Distilling Reasoning Traces for General Reasoning Tasks'
+year: 2025
+venue: arXiv preprint (2025)
+authors:
+- Yang Li
+- Youssef Emad
+- Karthik Padthe
+- Jack Lanchantin
+- Weizhe Yuan
+- Thao Nguyen
+- Jason Weston
+- Shang-Wen Li
+- Dong Wang
+- Ilia Kulikov
+- Xian Li
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- reasoning-data
+- general-stem
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+artifacts:
+  paper: https://arxiv.org/abs/2507.01921
+  arxiv: https://arxiv.org/abs/2507.01921
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A 2.8-million-question NaturalReasoning pool spanning mathematics and general STEM reasoning.
+  trace_author: DeepSeek-R1 is the main reasoning teacher; auxiliary models provide disagreement-based difficulty signals.
+  answer_format: A task question paired with a complete teacher reasoning trace and final answer.
+  process_fields:
+  - question
+  - teacher reasoning response
+  - final answer
+  - selection strategy
+  - difficulty or diversity signal
+  environment_or_substrate: Static teacher traces consumed by SFT on Llama and Qwen student models.
+  verifier_or_reward: Selection uses random sampling, reasoning-strategy diversity, response length, and model disagreement;
+    evaluation uses benchmark answer metrics.
+  terminal_predicate: Retain a complete teacher response selected under the chosen scale or curation policy.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct and Qwen2.5-7B-Instruct students; an additional Llama-3.3-70B-Instruct scale study is
+    reported.
+  teacher: DeepSeek-R1.
+  generator: Generate complete reasoning traces for NaturalReasoning questions and select subsets by scale, difficulty, or
+    reasoning-strategy diversity.
+  filtering_rule: Prefer complete responses; compare random selection with long traces, model disagreement, and diverse reasoning
+    strategies.
+  sampling_protocol: Train on 1K, 10K, 100K, and 500K subsets under matched student-model recipes.
+  rollout_count: null
+  temperature: null
+  inference_budget: Training uses up to 500K traces in the main scale study; full generation cost is not published as a reusable
+    budget.
+  optimizer_or_scaffold: Supervised fine-tuning with matched evaluation across selection policies.
+audit:
+  source_mixture: NaturalReasoning supplies broad questions; DeepSeek-R1 supplies long reasoning responses.
+  split: The paper reports selected subsets but no official public NaturalThoughts release was confirmed.
+  decontamination: Benchmark and source overlap must be audited before reuse; the Card makes no stronger claim than the paper.
+  license: No official NaturalThoughts dataset or code license was confirmed.
+  lineage: 'instruction / demonstration / rationale data; closest comparisons: LIMO, s1K, OpenThoughts3, and DeepSeek-R1 distillation.'
+  known_failure_modes:
+  - Selection signals can favor verbosity, teacher errors propagate into targets, and reported gains depend on teacher-student
+    and domain mixtures.
+  citation_status: verified
+  confidence: high
+  notes: Author list and FAIR at Meta affiliation verified from the paper PDF; no official venue beyond arXiv or downloadable
+    NaturalThoughts artifact was confirmed. The 2026-07-13 selection audit found no official release, independent adoption,
+    reproduction, award, or follow-up evidence sufficient for the 2025 impact threshold.
+inclusion_reason: NaturalThoughts systematically compares scale, difficulty, and reasoning-strategy diversity when distilling
+  general STEM traces from a strong teacher.
+related: []
+tags:
+- instruction-demonstration-rationale
+- reasoning-trace-selection
+- arxiv-2507.01921
+- primary-link-checked
+status: verified
+one_line_summary: NaturalThoughts selects DeepSeek-R1 traces by scale, difficulty, and reasoning-strategy diversity to identify
+  which demonstrations best transfer general STEM reasoning to smaller students.
+why_it_matters: It separates several reasoning-trace selection variables instead of treating all teacher outputs as equally
+  useful.
+reading_priority: recommended
+paper_type: general reasoning trace selection and distillation study
+best_for: Readers selecting teacher traces for general STEM SFT or comparing data scale with curation.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Primary paper, author list, affiliations, methods, and experiments checked; no official downloadable dataset or code
+    release confirmed.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-b-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: reasoning demonstrations
+  selection_priority_score: 3
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 0
+    artifact: 0
+  selection_evidence:
+    institution: The paper PDF lists FAIR at Meta, a major industrial research laboratory with sustained work in language-model
+      post-training.
+    venue: Only the arXiv preprint was confirmed; no peer-reviewed venue or distinguished presentation was found.
+    impact: No independent adoption, reproduction, sustained use, award, or important follow-up was verified during the 2026-07-13
+      audit.
+    artifact: No official NaturalThoughts dataset, code, project page, or model release was confirmed.
+  selection_eligible: false
+  year_impact_threshold: 2
+  exclusion_reason: The 2025 candidate has impact score 0, below the mandatory threshold of 2, so it is not eligible for the
+    active L4 collection.

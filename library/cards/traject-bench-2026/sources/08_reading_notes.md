@@ -1,0 +1,5 @@
+- Start with Paper §§3.1–3.2, Figure 1, and Appendix Tables 8–9: the object is a query plus a fully parameterized parallel set or sequential chain over a 1,228-tool catalog, not merely an answer benchmark.
+- Keep the count contradiction explicit: §3.2 says 5,670, Table 9 sums to 5,870, current HF raw data lacks sequential Email, and the 28-configuration Viewer additionally lacks parallel Mapping.
+- Read Paper §4.1 together with `utils/metrics.py`: programmatic name/argument/order checks, an LLM trajectory judge, an LLM answer judge, and live ReAct execution are non-equivalent feedback contracts with different blind spots.
+- Treat Table 4's hard-query retrieval/EM gap and Figure 2's length degradation as diagnostics under the reported models and budgets, not as proof that the released trajectories are high-quality training examples.
+- Read alongside Toolathlon, $\tau^2$-Bench, and MCP-AgentBench; before any reuse, resolve version pinning, offline replay, judge calibration, failure retention, decontamination, and RapidAPI/provider rights. Reuse remains evaluation/audit only.

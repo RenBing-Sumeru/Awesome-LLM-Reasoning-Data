@@ -1,0 +1,1 @@
+Prior work proposes individual detectors or living benchmarks. This survey instead evaluates the benchmark-construction process itself, adding collision and complexity stability to familiar quality concerns. The mechanisms are not new; the contribution is a common audit vocabulary across them.

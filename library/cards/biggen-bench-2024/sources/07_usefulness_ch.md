@@ -1,0 +1,1 @@
+可把 BiGGen Bench 作为“带 rubric 的开放生成评测”模板。复用时应保留 capability、task、prompt、input、reference answer、rubric criteria、各分值描述、evaluator 身份、evaluator prompt、原始 judge 输出和解析分数。它适合审计 LLM-as-judge 流程、设计 reward-model 测试集，并检查广义生成能力声明是否能通过逐实例标准。人工一致性与模型 judge 分数要分字段保存。

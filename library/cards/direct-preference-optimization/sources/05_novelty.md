@@ -1,0 +1,1 @@
+Prior-work baseline and change: The key lineage shift is objective design: preference pairs can directly train the policy rather than only train an explicit reward model followed by reinforcement learning.

@@ -1,0 +1,3 @@
+The paper reports state-of-the-art instruction-following results among compared models of similar size and evaluates generalization to unseen constraints. The released data also exposes the checkers used to operationalize the training signal, allowing a reader to inspect whether a reported gain corresponds to the intended instruction property.
+
+These results support the hard-and-soft verification design in the paper’s tasks. They do not show that every natural-language constraint can be implemented faithfully, or that a verifier trained on one wording remains robust to adversarial phrasing and distribution shifts.

@@ -1,0 +1,109 @@
+id: r2e-gym-procedural-swe-environments-2025
+title: 'R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents'
+year: 2025
+venue: COLM 2025
+authors:
+- Naman Jain
+- Jaskirat Singh
+- Manish Shetty
+- Liang Zheng
+- Koushik Sen
+- Ion Stoica
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- code-generation
+- agent-evaluation
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.07164
+  arxiv: https://arxiv.org/abs/2504.07164
+  code: https://github.com/R2E-Gym/R2E-Gym
+  data: https://huggingface.co/datasets/R2E-Gym/R2E-Gym-V1
+  project: https://r2e-gym.github.io/
+  huggingface: https://huggingface.co/R2E-Gym
+  doi: https://doi.org/10.48550/arXiv.2504.07164
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Repository commits backtranslated into task descriptions.
+  trace_author: SWE-GEN and collected agent rollouts.
+  answer_format: Task description, repository environment, tests, ground-truth patch, execution reward, and optional trajectory.
+  process_fields:
+  - repository state
+  - task
+  - unit tests
+  - patch
+  - trajectory
+  - reward
+  environment_or_substrate: Dockerized repository gym environments.
+  verifier_or_reward: Execution-based tests plus an execution-free verifier for reported test-time selection.
+  terminal_predicate: The proposed patch receives the environment's automated unit-test reward.
+recipe_metadata:
+  base_model: Reported 14B/32B open-weight SWE agents.
+  teacher: Repository execution environments and tests.
+  generator: SWE-GEN commit-based procedural environment curation.
+  filtering_rule: Curate executable environments from commits with generated/collected tests and task descriptions.
+  sampling_protocol: Trajectory collection and test-time scaling; report model, maximum steps, and verifier budgets.
+  rollout_count: null
+  temperature: null
+  inference_budget: A key experimental variable; e.g., repository configs use up to 40 agent steps.
+  optimizer_or_scaffold: Hybrid execution-based and execution-free verifier selection.
+audit:
+  source_mixture: Official arXiv paper, R2E-Gym repository, project site, and Hugging Face releases.
+  split: Full, subset, lite, and trajectory releases are separately versioned.
+  decontamination: Audit repository overlap with SWE-Bench, commit provenance, Docker image version, and generated tests.
+  license: Official repository is Apache-2.0; check each Hugging Face release before redistribution.
+  lineage: https://arxiv.org/abs/2504.07164
+  known_failure_modes:
+  - Generated tests can be toxic or incomplete.
+  - Reward depends on the pinned execution environment.
+  - Reported gains also depend on test-time sampling and verifier allocation.
+  citation_status: verified
+  confidence: high
+  notes: Official repository verifies UC Berkeley/ANU affiliations, code, project and data releases; its about page identifies
+    COLM 2025.
+inclusion_reason: R2E-Gym releases executable repository environments in which candidate patches receive automated test outcomes,
+  making software-agent results replayable programmatic feedback.
+related: []
+tags:
+- software-engineering
+- environments
+- unit-tests
+- rlvr
+- '2025'
+one_line_summary: R2E-Gym procedurally turns repository commits into more than 8,000 executable SWE environments with test-based
+  rewards for training and evaluating open agents.
+why_it_matters: It releases the runnable environment and terminal test reward rather than only issue–patch text pairs.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official repository verifies UC Berkeley/ANU affiliations, code, project and data releases; its about page identifies
+    COLM 2025.
+category_ids:
+- programmatically_verifiable_outcome_data

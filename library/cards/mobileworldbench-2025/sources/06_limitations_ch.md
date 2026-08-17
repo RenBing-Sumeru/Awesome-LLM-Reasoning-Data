@@ -1,0 +1,9 @@
+- **对象边界：** 发布记录是离线单步transition。它们不能评测action execution、multi-step planning、recovery、environment drift、reset reliability或terminal task success，不能被描述为完整episode或可执行环境。
+- **judge依赖：** generation评分依赖proprietary VLM和prompt parsing，存在verbosity、hallucination、rubric drift、API drift与nondeterminism风险。论文使用`gpt-4o-2024-08-06`，脚本默认`gpt-4o-mini`；未固定配置会改变反馈契约。
+- **benchmark完整性：** 官方snapshot中250个generation row有一个缺失两张必要图片，只有249个图像完整。QA label为1,162个Yes对625个No，类别不平衡；若不报告per-class metric，aggregate accuracy可能掩盖answer-prior行为。
+- **split与污染：** 论文声明training-source与held-out/test-source分离，但QA row省略source/split字段，也未发布不可变transition ID、screenshot/text hash、deduplication report、evaluated-model exposure audit或post-release contamination政策。公开reference使泄漏容易发生。
+- **失败保留：** annotation prompt允许failed action或未观察到变化，但其占比、balance、candidate rejection和kept/discarded decision均未披露。没有episode-success label或发布的完整source trajectory，因此不能从row count推断failure retention。
+- **合成标注质量：** MobileWorld的90%使用Qwen3-VL-8B annotation，10%使用Qwen3-VL-235B-A22B；训练description/QA经VLM filtering但未经人工过滤。相关annotator error、judge preference与Qwen-family prior可能在selection后保留。
+- **发布透明度：** 184 MB训练tar含三个Parquet member，但没有dataset card、精确row manifest、完整schema、source ID或candidate/filter lineage。四舍五入组成543k + 942k约等于1.485M，因此“1.4M”headline不是精确发布计数。
+- **replay与复现：** 不存在emulator/device snapshot、app fixture、可执行action trace、reset routine或deterministic replay契约。精确learning rate、annotation decoding、token budget、seed、checkpoint selection、judge retry与API snapshot均为unknown。
+- **许可与隐私：** 只有论文CC BY 4.0许可已核验。code、dataset、screenshot、annotation与model weight均无已确认artifact license；源mobile screenshot也缺少MobileWorld-specific consent、PII/account-content filtering、takedown与redistribution-rights披露。

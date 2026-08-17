@@ -1,0 +1,3 @@
+Seed-Prover 1.5 makes theorem-agent “experience” concrete as a tool-interleaved trajectory rather than only a final proof or scalar reward. Its summary-conditioned restart and cached-lemma context connect failed attempts to future policy inputs, while agentic choice of Lean, retrieval, and Python interaction moves beyond a fixed proof-generation loop.
+
+The NL-proof-to-Lean-sketch bridge also separates decomposition from leaf proving and supports recursive proof-tree scaling. This is operationally novel, but it blends formal and learned judgments during sketch training and relies on a strong natural-language prior before formal verification.

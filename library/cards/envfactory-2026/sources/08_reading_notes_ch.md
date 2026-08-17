@@ -1,0 +1,5 @@
+- 必须区分单位：论文有 1,622 个 SFT conversation 与 953 个 RL conversation；HF 有 26,463 条 SFT-FILTERED、53,412 条 SFT-ALL 和 3,092 条 RL expanded row。没有 published mapping 闭合两者差距。
+- RL object 应读作 prompt、initial state、reference call、target final state 与 MCP config；scalar reward 由带版本的代码计算，trace matching 不关心顺序，state matching 使用 exact equality。
+- filtering 是 supervision 的一部分：pipeline 选择一个 solved candidate、删除 redundant interaction，并丢弃即时失败的 SFT call；rejected candidate 与 failure ID 则不可得。
+- 官方冲突必须保留：SFT dataset-card scale description 与 viewer 互换，model card 延续了冲突的 filtered count；SFT epoch 在论文中是 3、在当前 config/card 中是 1；license 陈述也不一致。
+- 复用前应固定两个 repository commit 与三个 HF revision，并补充 paper-run manifest、rejected ledger、immutable split、decontamination/overlap 结果、privacy/consent audit、source-rights resolution 与 adversarial reward test。

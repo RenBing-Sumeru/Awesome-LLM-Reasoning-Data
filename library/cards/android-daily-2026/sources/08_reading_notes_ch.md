@@ -1,0 +1,6 @@
+- 必须明确版本边界：本文研究 94 个应用上的 350 项任务与 GRADE；StepFun 官方 235-task 发布属于 2025 年前身论文，不是当前 artifact。
+- 优先阅读第 3.2-3.3 节与 Algorithm 1：核心对象是指令、三层 guideline、可观察轨迹及 Evidence/Verdict 输出，而不只是任务标题和成功分数。
+- 应把 GRADE 视为 fallible learned judge。它在 879 个 session 上报告的最佳准确率 87.37% 仍包含 86 个 FP 和 25 个 FN，且不同 backbone 的准确率跨度为 65.64-87.37%（Table 5）。
+- 用 Table 2 查看模型结果与复杂度 slice，用 Tables 3-5 检查 evaluator 可靠性，用 Figures 5-6 查看观察到的失败模式；这些结果都不能独立认证任务或轨迹质量。
+- 论文唯一实际展示的用途是 evaluation。RLVR reward、过程监督、SFT 与 recovery data 都只是可能的研究方向，不是已报告的训练用途。
+- 复用前应解决当前 release URL 与许可、split 与前身重合、app/device/account pin、evaluator prompt/backbone、原始轨迹访问、干预日志和不可变 session lineage。

@@ -1,0 +1,1 @@
+AMEX 可作为多层移动 GUI 监督的数据配方，也可作为 grounding、屏幕理解和动作链建模的评测面。复用记录应保留 app 身份、截图 id、元素框、元素类型或 affordance、屏幕描述、元素功能、指令、step id、动作、动作目标、split、可用的人工/GPT provenance 和评测器版本。对 atlas 来说，它是环境-智能体轨迹数据的强例子，但比较时要把 L1/L2/L3 任务分开，不能把元素 grounding 分数当成完整任务成功率。

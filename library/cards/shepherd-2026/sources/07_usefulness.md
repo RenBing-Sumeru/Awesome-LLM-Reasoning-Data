@@ -1,0 +1,7 @@
+Shepherd is most useful as a blueprint for collecting stateful agent supervision. A data builder can preserve typed intent/outcome pairs, environment mutations, commit ancestry, fork points, sibling suffixes, and terminal rewards in one lineage graph. That structure supports tree-based RL, counterfactual evaluation, failure localization, supervisor training, trajectory compression, and safety audits without flattening away environment state.
+
+For RLVR, the important lesson is to keep the verifier contract separate from the substrate. Shepherd provides rollback, branching, and grouping; the task supplies the terminal outcome reward. A reusable release would therefore need both: exact task/verifier versions and a manifest that links every root and sibling to environment images, seeds, rewards, and the policy/checkpoint that generated it.
+
+For safety work, intent interception and reversible scopes offer concrete hooks for pre-execution approval, sandbox isolation, and discard-on-failure. They are not a finished safety policy. Deployment still requires effect classification, compensation handlers, secret/PII controls, access rules, and explicit handling of irreversible external actions.
+
+The maintained framework can support new experiments, while the frozen `shepherd-experiments` snapshot is the relevant paper artifact. Researchers should pin the latter for reproduction and should not infer that current early-alpha APIs reproduce the reported runs without the paper's dependencies, task versions, and missing run manifests.

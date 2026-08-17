@@ -1,0 +1,3 @@
+CorVer-Training-Data contains questions, answer prefixes, current sentences or claims, retrieved evidence, entailment or contradiction results, and rewards. Claims are retrieved against a fixed corpus and labeled by lightweight entailment models and rules.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around questions, atomic claims, retrieved evidence, entailment results, and sentence-level rewards, making the verifier, judge, environment, or execution source traceable for factual question answering、RAG and sentence-level critic. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

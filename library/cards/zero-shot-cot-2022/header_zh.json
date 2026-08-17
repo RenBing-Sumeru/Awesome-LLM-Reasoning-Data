@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Zero-shot-CoT 用通用提示和第二次答案抽取，在没有示例时诱导可见的测试时理由。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "思维链提示 / 理由数据论文",
+  "best_for_ch": "适合希望系统理解思维链与理由目标、数据对象与反馈契约的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Takeshi Kojima, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, Yusuke Iwasawa",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-11T08:19:23Z"
+}

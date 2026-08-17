@@ -1,0 +1,1 @@
+Human agreement is 98.52% (Scott's pi 96.2). Only GPT-4 Turbo, Llama-3-70B and Llama-3.1-70B reach pi in the high 80s, still roughly eight points below humans; headline percentage agreement can conceal five-point evaluation-score errors. “contains” has rank correlation 0.99 and GPT-4/Mistral 0.98, showing ranking and calibrated instance labels differ.

@@ -1,0 +1,186 @@
+id: interactive-multimodal-tool-use-rl-2025
+title: Process-Supervised Reinforcement Learning for Interactive Multimodal Tool-Use Agents
+year: 2025
+venue: arXiv preprint; submitted to ICLR 2026
+authors:
+- Weiting Tan
+- Xinghua Qu
+- Ming Tu
+- Meng Ge
+- Andy T. Liu
+- Philipp Koehn
+- Lu Lu
+source_role:
+- agent_environment
+- process_supervision
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+- process_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- multimodal_speech
+- mathematics
+training_use:
+- process_supervision
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2509.14480
+  arxiv: https://arxiv.org/abs/2509.14480
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.14480
+  venue: null
+  openreview: https://openreview.net/forum?id=UtEY8lF8q2
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Approximately 3,000 retail tasks derived from APIGen-MT conversations: GPT-4.1 synthesizes a user instruction
+    and ground-truth tool calls; retail uses a 50/50 choice between the synthesized instruction and a harder rewrite. Mixed-task
+    RL also uses medium-difficulty, integer-answer DeepScaleR problems.'
+  trace_author: The policy is Qwen3-8B for text experiments or Qwen2.5-Omni-7B for multimodal experiments; a GPT-4 user simulator
+    emits text responses, SeedTTS converts them to speech when applicable, and MCP tools return execution observations.
+  answer_format: An online episode is an interleaving tau=(x1,e1,...,xT,eT) of agent reasoning/tool-call token sequences and
+    environment sequences containing user responses or tool results; speech episodes carry speech tokens or placeholders.
+  process_fields:
+  - policy
+  - user_task_instruction
+  - ground_truth_tool_calls
+  - conversation_history
+  - agent_reasoning
+  - agent_tool_call
+  - tool_execution_result
+  - simulated_user_response
+  - turn_index
+  - turn_judge_score
+  - terminal_verifier_reward
+  - aggregated_trajectory_reward
+  environment_or_substrate: A tau-bench-derived retail sandbox with a SQLite database (Products, Orders, Users), REST endpoints
+    registered as MCP tools, GPT-4 ReAct user simulation, and optional SeedTTS speech conversion.
+  verifier_or_reward: A rule-based verifier compares successful database-changing tool-call arguments with ground-truth annotations
+    and returns terminal reward 1 for a complete match and 0 otherwise. GPT-4.1 additionally sees the policy, hidden task
+    instruction, ground-truth calls, and full trajectory and assigns each turn -1, 0, or 1, with at most one -1. TARL weights
+    terminal success by 10, a major -1 by 5, and other turn scores by 1/T; the stable variants optimize the resulting trajectory
+    scalar.
+  terminal_predicate: 'Episode generation stops when the user simulator emits ##STOP## or after 30 interaction steps. Task
+    success is the rule-based complete-match predicate over required successful write operations; the expected natural-language
+    output check is excluded from primary training/evaluation.'
+  provenance: APIGen-MT trajectory -> GPT-4.1 task/ground-truth synthesis and optional rewrite -> online policy/user/tool
+    rollout in the tau-bench-derived sandbox -> rule terminal verification and GPT-4.1 turn adjudication -> trajectory reward
+    -> GRPO/PPO update.
+recipe_metadata:
+  base_model: Qwen3-8B for text; Qwen2.5-Omni-7B for multimodal speech-text training.
+  teacher: GPT-4.1 is the task synthesizer and TARL judge; GPT-4 is the simulated user; SeedTTS synthesizes user speech.
+  generator: Online policy rollouts interacting with a GPT-4 user simulator and MCP tool sandbox; tasks are synthesized from
+    APIGen-MT trajectories.
+  prompt_task_source: Approximately 3,000 retail tasks derived from APIGen-MT; tau-bench seed database; medium-difficulty
+    integer-answer DeepScaleR problems; simplified instruction variants for multimodal warm-up.
+  sampling_protocol: Text mixed-task training alternates retail and math tasks. Multimodal training alternates math, text-only
+    retail, and speech-user retail batches. Batch size is 128, comprising 32 distinct tasks with four rollouts each.
+  temperature: 0.7
+  top_p: 0.95
+  rollout_count: 4
+  inference_budget: Maximum 30 interaction turns, maximum prompt length 4096, maximum response length 1024; long conversations
+    may reach 32,768 tokens.
+  search_or_scaffold: Online multi-turn interaction; multimodal policy first receives a 30-step GRPO warm-up on simplified
+    tasks, then trains on the normal mixed-modality curriculum.
+  filtering_rule: Select medium-difficulty DeepScaleR problems with integer answers; for each retail task choose the original
+    synthesized instruction or a harder rewritten version with equal probability. Exact task IDs and retained counts are not
+    disclosed.
+  selection_threshold: unknown
+  optimizer_or_scaffold: verl plus RL-Factory; GRPO, PPO, and RLOO baselines, with TARL integrated into GRPO and PPO. Stable
+    PPO uses trajectory-level assignment of the aggregated reward. Actor LR 1e-6, critic LR 1e-5, clip ratio 0.2, one PPO
+    epoch, grad clip 1.0, KL coefficient 0.001, KL-loss coefficient 0.003; training normally plateaus after 200-300 steps.
+audit:
+  source_mixture: APIGen-MT-derived synthetic retail tasks, tau-bench seed data/environment semantics, DeepScaleR math problems,
+    GPT-4/GPT-4.1 synthetic user/task/judge outputs, SeedTTS speech, and online policy rollouts.
+  split: Training is retail-only; evaluation uses the tau-bench retail test set and an out-of-domain airline evaluation. Exact
+    train/validation/test manifests and task-level deduplication are not disclosed.
+  decontamination: unknown
+  benchmark_overlap: Training tasks are derived from APIGen-MT and the sandbox is pre-populated with tau-bench seed data,
+    while evaluation uses tau-bench retail. The paper does not disclose task-level overlap checks or a contamination audit.
+  license: The OpenReview submission page displays CC BY 4.0 for the paper. No paper-specific code, data, rollout, or checkpoint
+    release was verified, so their licenses are unknown.
+  lineage: APIGen-MT conversation trajectories -> GPT-4.1 user-specification and ground-truth-call synthesis -> optional 50%
+    hard rewrite -> online retail rollout; DeepScaleR integer-answer math tasks are interleaved during RL.
+  release_version: arXiv v1 (submitted 2025-09-17); OpenReview submission modified 2026-02-11. No official code/data/model
+    release version was verified.
+  verifier_or_judge_failure_modes:
+  - The terminal verifier checks database-changing calls against ground truth but omits the phrasing-sensitive expected-output
+    check, so conversationally wrong or incomplete responses can pass if writes match.
+  - GPT-4.1 judge scores depend on the hidden task, policy, and ground-truth trajectories; calibration, agreement, model snapshot,
+    and sampling settings are not disclosed.
+  - Only one turn may receive -1, potentially under-penalizing multiple major deviations, and subsequent turns may receive
+    weak penalties.
+  - Direct per-turn PPO reward placement was unstable; the reported best method collapses turn judgments back into a trajectory
+    scalar.
+  - The authors report that online intervention using the judge destabilizes training and does not improve performance.
+  - tau-bench covers only two domains, and retail-trained policies generalize poorly to airline as pass^k becomes stricter.
+  - Speech evaluation removes authentication and directly provides the user profile because TTS makes name_number IDs error-prone,
+    so it is not identical to the text task.
+  successful_and_failed_sample_retention: unknown
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: 'Method, appendix prompts, hyperparameters, and reported results were verified against the complete arXiv v1 source.
+    Artifact confidence is low: the paper calls the sandbox open-source and promises task release, but supplies no official
+    paper-specific repository/data/model URL; therefore README, license, release, config, training, and evaluation files could
+    not be inspected.'
+inclusion_reason: 'The paper exposes a concrete long-horizon agent data contract: online interleaved policy/environment trajectories,
+  executable MCP-backed state changes, a rule-based terminal predicate, GPT-4.1 turn adjudication, and an aggregated scalar
+  used for agentic RL. It is especially useful for distinguishing process-label provenance from the coarser trajectory-level
+  reward actually optimized.'
+related:
+- verltool-holistic-agentic-rl-with-tool-use-2025
+tags:
+- environment-agent-trajectory-data
+- process-supervision
+- turn-level-reward
+- tarl
+- agentic-rl
+- multimodal-tool-use
+- speech-text-rollouts
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Each 1-30-turn retail sandbox rollout carries interleaved agent/environment tokens, GPT-4.1 turn scores,
+  and a rule-verified terminal outcome, but the promised sandbox, tasks, rollouts, and checkpoints are not linked as released
+  artifacts.
+why_it_matters: 'It makes a subtle supervision boundary auditable: fine-grained judge labels are generated per turn, yet the
+  stable optimizer consumes a full-episode scalar. That distinction matters when comparing process supervision, reward shaping,
+  and replayable agent-trajectory data.'
+card: null
+needs:
+- 'needs_url: official paper-specific sandbox/code repository, project page, curated task release, rollout corpus, and checkpoints'
+- 'needs_metadata: code/data/model licenses, immutable release versions, README, configs, training scripts, and evaluation
+  scripts'
+- 'needs_replay: pinned SQLite seed/database state, API and MCP schemas, simulator/judge/TTS versions, seeds, and successful/failed
+  rollout manifests'
+- 'needs_split: exact task IDs, retail train/validation/test split, APIGen-MT/tau-bench overlap audit, deduplication, and
+  decontamination'
+- 'needs_review: verify the final ICLR 2026 decision before changing venue from submission/preprint'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv v1 full source and appendix plus the official OpenReview submission record were verified. No paper-specific
+    code/data/project/model release could be confirmed, so those links remain null and reuse remains blocked.

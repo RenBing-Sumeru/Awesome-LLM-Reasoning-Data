@@ -1,0 +1,7 @@
+No public training dataset, source manifest, prompt set, chain-of-thought records, tool trajectories, preference data, reward specification, verifier, sampling configuration, data split, decontamination method, training-record license, or example-level provenance is provided. Counts and mixture weights for the three broad source classes are unknown, as are user-data governance details beyond the report's general statements.
+
+The post-training boundary is especially wide. The RL algorithm, rollout budget, decoding temperature, reward components, judge or executable-checker coverage, rejection rule, trace visibility, and relation among reasoning RL, deliberative alignment, instruction hierarchy, tool use, and other safety post-training stages are not disclosed. “Reinforcement learning” alone does not justify an RLVR label.
+
+The report notes that browsing can contaminate capability evaluations and that results can change with elicitation, longer rollouts, fine-tuning, or scaffolding. Third-party evaluation also observed reward-hacking behavior in some environments. These are reasons to audit evaluation and verifier robustness, not evidence about the undisclosed training data.
+
+Because the release is a mutable hosted-model disclosure rather than a versioned data artifact, later model revisions and addenda may change scope. Independent reconstruction would require immutable model/version identifiers, stage-specific manifests, audit logs, and released feedback dependencies.

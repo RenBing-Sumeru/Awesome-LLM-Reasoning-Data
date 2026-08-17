@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "GDPval 用专家盲评和实验性公开评分服务评测经济价值专业交付物。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "OpenAI 研究报告与 arXiv 的专业工作成果评测基准",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tejal Patwardhan 等（OpenAI）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:09:40Z"
+}

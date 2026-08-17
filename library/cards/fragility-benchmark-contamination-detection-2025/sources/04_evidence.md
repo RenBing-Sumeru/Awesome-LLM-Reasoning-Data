@@ -1,0 +1,3 @@
+The central ablation holds the contaminated SFT model fixed and compares RL objectives after 64 steps (Table 3). The Loss detector averages 79.25 AUROC with RAFT, but 57.58 with clipped RAFT++ and 61.26 with GRPO; removing clipping restores 74.39 and 73.28. This directly supports clipping as the decisive component rather than RL alone.
+
+For late CoT SFT, contamination also raises average Pass@1 from 48.38 to 60.14 for DeepSeek-R1-Distill-Llama-8B (Table 4), while Table 5 reports most detector AUROCs near 50. The evidence covers selected math benchmarks and open models, not closed frontier training or all contamination types.

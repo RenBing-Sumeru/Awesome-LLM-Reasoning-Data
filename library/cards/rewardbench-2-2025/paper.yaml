@@ -1,0 +1,117 @@
+id: rewardbench-2-2025
+title: 'RewardBench 2: Advancing Reward Model Evaluation'
+year: 2025
+venue: ICLR 2026 / arXiv
+authors:
+- Saumya Malik
+- Valentina Pyatkin
+- Sander Land
+- Jacob Morrison
+- Noah A. Smith
+- Hannaneh Hajishirzi
+- Nathan Lambert
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- instruction-reasoning-safety
+- judge-reward-meta-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.01937
+  arxiv: https://arxiv.org/abs/2506.01937
+  doi: https://doi.org/10.48550/arXiv.2506.01937
+  code: https://github.com/allenai/reward-bench
+  data: https://huggingface.co/datasets/allenai/reward-bench-2
+  project: https://huggingface.co/collections/allenai/reward-bench-2
+  huggingface: https://huggingface.co/spaces/allenai/reward-bench
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 1,865 final prompts curated from about 3,000 high-quality prompts, using new human prompts for most subsets
+    and manual prompts for Ties after decontamination against twenty downstream evaluations.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: single-turn records with prompt, chosen response list, rejected response list, counts, total completions,
+    generating models, subset, and id.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: multi-skill reward-model accuracy tied to downstream utility
+  verifier_or_reward: five domains score whether a reward model ranks the chosen completion above three rejected completions;
+    Ties combines correct-over-incorrect accuracy with a reward-margin calibration condition.
+  terminal_predicate: per-domain accuracy with unweighted averaging across Factuality, Precise IF, Math, Safety, Focus, and
+    Ties.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: completions are generated from a 20-model/human pool with subset-specific pipelines, including LLM judges, verifier
+    functions, majority voting, rubrics, system-prompt variation, and manual checks.
+  filtering_rule: subset-specific verification keeps one chosen and three rejected completions for most domains; Math, Safety,
+    and Ties include manual verification, while Factuality uses two agreeing LLM judges plus spot checks.
+  sampling_protocol: pin dataset revision, leaderboard/results revision, reward-model inference template, score extraction
+    method, generative-judge prompt if used, and leaderboard date.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: judge_reward_meta_evaluation
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2506.01937;
+    https://arxiv.org/html/2506.01937; https://huggingface.co/collections/allenai/reward-bench-2; https://huggingface.co/datasets/allenai/reward-bench-2'
+  split: Public Hugging Face dataset has six subsets and 1K-10K size class; no hidden split is stated on the dataset card,
+    so pin dataset revision and result snapshot.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Dataset card states ODC-BY and research/educational intended use under Ai2 Responsible Use Guidelines; third-party
+    generated outputs retain separate model-provider terms.
+  lineage: 'Primary lead: https://arxiv.org/abs/2506.01937'
+  known_failure_modes:
+  - public release, dataset revision, judge/evaluator implementation, reward-model prompt format, scaffold settings, and output
+    licenses can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv/html and Hugging Face dataset/collection pages verify authors, AllenAI/UW/Cohere affiliations, ICLR
+    2026 status, dataset fields, subset counts, ODC-BY license, results collection, and leaderboard links.
+inclusion_reason: Promising newer reward benchmark, source/version needs confirmation.
+related: []
+tags:
+- benchmark
+- judge_reward_meta_evaluation
+- instruction-reasoning-safety
+one_line: RewardBench 2 exposes multi-skill reward-model accuracy tied to downstream utility as an auditable evaluation surface.
+why_it_matters: Promising newer reward benchmark, source/version needs confirmation.
+status: verified
+needs:
+- 'needs_audit: pin exact Hugging Face dataset and results revisions before leaderboard reuse'
+- 'needs_scoring_audit: inspect current evaluator code and reward-model prompting before comparing new scores'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: RewardBench 2 exposes multi-skill reward-model accuracy tied to downstream utility as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv and Hugging Face sources verify metadata, dataset card, ODC-BY license, collection, models, results,
+    and leaderboard links.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,1 @@
+Prometheus 已解决文本 rubric 评价，其他 VLM benchmark 也会用 GPT-4V 打分；Prometheus-Vision 的新意是发布专门面向视觉评价的 Perception Collection，并训练可本地运行、接受自定义 rubric 的开放 VLM judge。核心贡献是把评价条件和视觉 grounding 联合建模，而非提出新的视觉编码器。它为后续 MLLM judge 数据提供了“图像—回答—标准—反馈—分数”的标准记录形式。

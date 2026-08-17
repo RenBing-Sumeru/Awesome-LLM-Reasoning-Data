@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VisualWebInstruct 通过图像引导的网页搜索、答案一致性筛选与网页答案对齐，构造了 906,160 条多模态和纯文本问答示范。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态推理指令数据集与构造流程",
+  "best_for_ch": "适合构建或审计网页来源多模态 SFT 语料的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yiming Jia, Jiachen Li, Xiang Yue, Bo Li, Ping Nie, Kai Zou, Wenhu Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

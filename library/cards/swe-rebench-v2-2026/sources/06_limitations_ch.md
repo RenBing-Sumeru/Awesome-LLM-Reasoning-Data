@@ -1,0 +1,8 @@
+- 单一 linux/amd64 container 设计排除了需要多服务、数据库或外部基础设施的任务。即使在单容器内，官方 evaluator 也使用 Docker host networking，没有显式 subprocess timeout，并依赖可能漂移的外部资源。公开镜像模板还用 `|| true` 包裹单条安装命令，因此镜像成功构建本身不能认证 setup 成功。
+- 终态 reward 的可靠性取决于仓库测试与生成 parser。测试可能施加 issue 中没有的要求，P2P 可能把任务与无关行为耦合，parser 也可能遗漏、合并或改名测试。通过集合精确相等只能识别 parser 可见的 F2P/P2P 终态，不能证明语义等价、可维护性、安全性或未测试回归，因此 reward hacking 与 verifier gaming 仍可能发生。
+- 三个 LLM 一致通过的清晰度筛选在 SWE-bench Verified 校准中 precision 较高、recall 极低。它不是逐条人工审核，也可能偏向三位 judge 共同偏好的规格表达。论文 prompt 定义 B7，而主发布 schema 只暴露 B1–B6；PR 的 `meta` schema 还包含不规则 legacy 字段。
+- 两个 Hugging Face 发布都只有一个 `train` split。大范围去重、与已有 SWE benchmark 的重叠、模型预训练污染、issue/PR 泄漏，以及训练/评测隔离均为 unknown。对 PR-derived 任务文本，泄漏 detector、阈值、拒绝数量与实测残留率未披露。
+- 公开仓库发布了 prompts、builders、parsers 与评测工具，但未发布完整的 GitHub Archive mining/join/分布式 harvesting 实现，也缺少完整的生产 setup-agent orchestrator。项目没有 Git tag 或 GitHub Release；任务记录也不提供已核验 OCI digest、依赖 lock snapshot 或完整不可变镜像 manifest。
+- 构造漏斗只保留可执行成功且清晰度通过的任务；原始失败 setup、被拒候选、parser 失败、judge 分歧与七模型诊断轨迹均未发布。其内容与完整拒绝数量为 unknown，因而无法分析 selection bias 或利用失败 episode 学习。
+- 代码采用 MIT，两个 dataset card 声明 CC BY 4.0，但每条来源仓库的许可证仍然适用。依赖、测试、issue、PR 贡献及 contributor rights 的兼容性没有完整审计。公开 GitHub 来源也不能解决隐私问题：敏感信息规则、审计结果、同意机制、删除流程和保留 PII 评估均为 unknown。
+- 论文提出 SFT、test-reward RL/RL warm-up、curriculum selection 与 agent training，却没有报告训练消融；诊断评测不能建立训练数据价值。ICML、arXiv v2 与 Hugging Face 数量还存在差异，未固定版本的复用会让所称数据集静默变化。

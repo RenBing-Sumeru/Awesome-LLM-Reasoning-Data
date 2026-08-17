@@ -1,0 +1,3 @@
+Decisive downstream experiment: Fine-tuning Anole-7B on Zebra-CoT improves the paper's test accuracy by 12%, while Bagel-7B gains up to 13% on standard VLM benchmarks; gains vary substantially by domain. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 182,384 interleaved vision-language reasoning traces across 18 domains and more than 50 tasks and exposes actual fields question, text reasoning trace, final answer, problem image, and one or more intermediate reasoning images; on 2026-07-27 its page reported 5495 downloads. Usage is only an impact cross-check, not a causal experiment.

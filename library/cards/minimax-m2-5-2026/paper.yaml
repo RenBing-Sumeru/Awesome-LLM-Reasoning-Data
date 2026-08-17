@@ -1,0 +1,224 @@
+id: minimax-m2-5-2026
+title: MiniMax-M2.5
+year: 2026
+venue: MiniMax official model release
+authors:
+- MiniMax AI
+source_role:
+- model_report
+- construction_recipe
+- process_supervision
+- agent_environment
+- verifier_reward
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- state_action_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+- process_reward
+- trajectory_value
+domains:
+- agentic_reasoning
+- software_engineering
+- multilingual_code
+- tool_use
+- web_search
+- office_productivity
+- document_generation
+- spreadsheet_reasoning
+- long_context
+training_use:
+- process_supervision
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://github.com/MiniMax-AI/MiniMax-M2.5
+  arxiv: null
+  code: https://github.com/MiniMax-AI/MiniMax-M2.5
+  data: null
+  project: https://www.minimax.io/news/minimax-m25
+  huggingface: https://huggingface.co/MiniMaxAI/MiniMax-M2.5
+  doi: null
+  venue: https://www.minimax.io/news/minimax-m25
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MiniMax says hundreds of thousands of company tasks/workspaces became RL environments, including over 200,000
+    real-world software environments across at least 13 languages, Web/Android/iOS/Windows projects, search/tool tasks, and
+    office work. Finance, law, and social-science professionals designed office requirements and standards. Manifests, origins,
+    counts by domain, and public/private ratios are unknown.
+  trace_author: MiniMax-M2.5 or predecessor policies generate long trajectories through arbitrary agent scaffolds connected
+    to LLM, environment, and reward servers. Domain professionals contribute office requirements/feedback. Teacher models,
+    annotator population, task generators, base checkpoints, candidates per environment, and use of production traces are
+    undisclosed.
+  answer_format: Objects can contain prompt/response token IDs, reasoning, XML/JSON-schema tool calls, tool results, code
+    changes, testable software, browser search trajectories, and Word/PowerPoint/Excel deliverables. Forge stores outcome/process
+    rewards; CISPO combines performance and speed rewards into trajectory advantage. Serialized schema, hidden-reasoning retention,
+    packaging, scales, and per-step labels are unknown.
+  process_fields:
+  - environment_id
+  - task_or_requirement
+  - agent_scaffold
+  - tool_definitions
+  - prompt_ids
+  - response_ids
+  - optional_reasoning_trace
+  - optional_tool_call
+  - optional_tool_result
+  - optional_deliverable
+  - optional_test_or_task_success
+  - outcome_reward
+  - process_reward
+  - performance_reward
+  - speed_reward
+  - trajectory_time
+  - token_count
+  - optional_pairwise_deliverable_judgment
+  - optional_pairwise_trajectory_judgment
+  - optional_baseline
+  environment_or_substrate: Forge connects black-box APIs or white-box loops to LLM, environment, and reward servers through
+    gateway/data pool, rollout engine, and training engine. Software covers full-stack repositories and Web/Android/iOS/Windows;
+    search uses WebExplorer/Playwright; office uses Word, PowerPoint, Excel, and financial-modeling tools. Images, repositories,
+    dependencies, documents, credentials, network snapshots, versions, and reward servers are closed.
+  verifier_or_reward: Forge records outcome and process rewards. CISPO length-normalizes token log-probabilities; advantage
+    sums future performance and speed rewards minus a baseline. Public evaluations use repository tests, VIBE-Pro interaction/visual
+    checks, MEWC cell-value comparison, expert rubrics, and an LLM judge for deliverable-plus-trajectory comparisons. Training
+    verifier/process reward, weights, calibration, units, and relation to evaluation judges are unknown.
+  terminal_predicate: Episodes can end on task/test completion, final response, timeout, or interruption. Terminal Bench 2
+    uses 7,200 seconds and retries empty responses; BrowseComp drops history after 30% of maximum context. Office evaluation
+    ends with a complete deliverable/trajectory. RL predicates, retries, partial credit, validation, and truncation are undisclosed.
+recipe_metadata:
+  base_model: Released 229B-parameter MiniMaxM2ForCausalLM MoE with 62 layers, hidden size 3,072, 48 attention heads, 8 KV
+    heads, 256 local experts, 8 selected per token, vocabulary 200,064, maximum positions 196,608, multi-token prediction,
+    and block-FP8 metadata. Active parameters, pretraining, base/SFT checkpoints, and M2.1→M2.5 transition are unknown.
+  teacher: unknown
+  generator: Internal company tasks/workspaces are converted to RL environments; professionals provide office requirements;
+    policies generate trajectories through arbitrary scaffolds. Task generators, teachers, vendors, prompt synthesis, replay
+    sources, and record lineage are undisclosed.
+  filtering_rule: Forge asynchronously balances throughput and off-policyness and uses tree-structured sample merging. Task
+    quality/eligibility, failure retention, reward thresholds, deduplication, privacy/secret filters, rights checks, yields,
+    and merge-correctness constraints are unknown.
+  sampling_protocol: Forge supports black/white-box agents and tools. Asynchronous scheduling trades throughput against off-policyness;
+    tree merging is reported to yield about 40× training speedup. Environment sampling, group size, concurrency, replay, merge
+    topology, scaffold mixture, seeds, and policy lag are unknown.
+  rollout_count: Hundreds of thousands of RL environments and over 200,000 software environments are claimed, without defining
+    repository/task/state/episode units or disclosing episodes, candidates, success/failure counts, tokens, wall time, reward
+    calls, tree nodes, or generations.
+  temperature: Training unknown. Recommended inference uses temperature 1.0, top_p 0.95, and top_k 40.
+  inference_budget: Local inference supports at most 196K tokens. SWE-Bench Verified averages 3.52M consumed tokens and 22.8
+    minutes per task; BrowseComp drops history after 30% maximum context; Terminal Bench 2 allows 7,200 seconds. RL budgets,
+    truncation, parallel calls, and speed horizon are unknown.
+  optimizer_or_scaffold: 'M2.5 continues CISPO for MoE RL: length-normalized token terms, upper-clipped importance ratio,
+    and future performance-plus-speed reward minus baseline. Forge separates gateway/data pool, rollout, train engine, and
+    agent loop and stores completion plus outcome/process rewards. LR, epsilon, group size, baseline, KL, optimizer, batches,
+    weights, updates, and selection are unknown.'
+audit:
+  source_mixture: Only hundreds of thousands of RL environments, 200K+ software environments, company workspaces, 13+ languages,
+    platforms, and professional contributions are disclosed. Pretraining/SFT data, manifests, internal/public ratios, dates,
+    customer/employee policy, origins, rights, privacy review, and task weights are absent.
+  split: Droid/OpenCode are described as out-of-distribution scaffolds, but no RL split, repository/time/task-family holdout,
+    office/search split, evaluation IDs, contamination boundary, or environment hashes are released.
+  decontamination: No audit covers SWE-Bench, Multi-SWE-Bench, BrowseComp, AIME, GPQA, HLE, SciCode, GDPval, MEWC, WebExplorer,
+    company tasks, or internal VIBE-Pro/RISE/Finance Modeling. Real software/workspace use makes overlap material.
+  license: Repository code has modified MIT terms adding commercial UI attribution. Weights use a separate MiniMax Model License
+    with notice, lawful/prohibited-use, termination, and Singapore arbitration; HF's modified-mit label is incomplete. Neither
+    license grants rights to unreleased environments, workspaces, contributions, repositories, web/office content, benchmark
+    derivatives, rewards, or traces.
+  lineage: High-level lineage is workspaces/requirements → RL environments → Forge rollouts → token records with outcome/process
+    reward → CISPO performance/speed updates → services and released weights. Pretraining/SFT lineage, IDs, hashes, versions,
+    merge provenance, checkpoints, and final-weight mapping are absent.
+  known_failure_modes:
+  - No independent paper, arXiv, DOI, appendix, or complete algorithm specification exists; evidence is a short official release,
+    figures, model files, and deployment docs.
+  - Environment counts are not defined as unique repositories, tasks, states, containers, or episodes.
+  - Company workspace privacy, confidentiality, copyright, and third-party licensing are undisclosed.
+  - Performance/speed/process rewards omit scales, weights, units, attribution, baselines, calibration, and reward-hacking
+    tests.
+  - Tree merging's 40× claim lacks semantics, ablation, correctness checks, hardware, or reproduction.
+  - Asynchronous off-policy lag, stale limits, bias, and stability diagnostics are absent.
+  - Internal VIBE-Pro, RISE, GDPval-MM, Finance Modeling, prompts, judges, and trajectories are closed.
+  - README claims 80.2% SWE-Bench Verified while the official HF evaluation attachment records 75.80; harness, prompt, context,
+    run, and checkpoint differences are unreconciled.
+  - SWE uses an internal Claude Code harness with overridden model-level instruction and four-run averaging; raw patches/logs/seeds
+    are closed.
+  - Terminal Bench modifies Dockerfiles/retries empty responses, and BrowseComp's 76.3 depends on history dropping.
+  - GDPval-MM's LLM judge identity, prompt, randomization, tie handling, calibration, and human validation are unknown.
+  - Release dates differ by one day and artifacts evolved without an immutable launch tag.
+  - Public artifacts omit Forge/CISPO code, environments, reward systems, datasets, harnesses, and raw evaluations.
+  - Released FP8 weights enable inference, not reproduction of data construction or RL.
+  citation_status: verified
+  confidence: high
+  notes: Official news, GitHub README/figures/licenses/guides, HF model/config/weights/evaluation attachments, and release
+    links were inspected on 2026-07-24. No independent paper, public RL data, Forge repository, reward checkpoint, or benchmark
+    package was found.
+inclusion_reason: A frontier open-weight agent release disclosing work-derived RL environments, 200K+ software environments,
+  Forge tree-merged asynchronous rollouts, CISPO rewards, and deliverable evaluation, while leaving rights, reward calibration,
+  splits, and training reproducibility unresolved.
+related:
+- minimax-m2-2026
+tags:
+- minimax
+- minimax-m2-5
+- open-weights
+- mixture-of-experts
+- agentic-rl
+- forge
+- cispo
+- process-reward
+- speed-reward
+- software-environments
+- coding-agent
+- web-search
+- tool-calling
+- office-agent
+- deliverable-evaluation
+- llm-as-judge
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: MiniMax-M2.5 reports hundreds of thousands of work-derived RL environments, 200K+ software environments,
+  Forge tree-merged asynchronous rollouts, and CISPO rewards, but releases only 229B FP8 weights and inference materials—not
+  environments, reward systems, splits, or training lineage.
+why_it_matters: It expands the ledger from prompt-response alignment to testable software, search, and professional deliverables
+  while exposing unresolved rights, reward calibration, judge bias, internal evaluation, and reproducibility risks.
+card: null
+needs:
+- 'needs_data: environment/task manifests, workspace provenance, repositories/containers, office requirements, successful/failed
+  trajectories, token records, rewards, and lineage'
+- 'needs_verifier: performance/process/speed reward definitions, weights, calibration, servers, tests, GDPval-MM judge, expert
+  rubrics, and reward-hacking audits'
+- 'needs_metadata: pretraining/SFT/base checkpoint, active parameters, Forge/CISPO hyperparameters, group size, policy lag,
+  merge semantics, rollouts, optimizer/compute, versions, and selection'
+- 'needs_audit: splits, decontamination, internal benchmarks, 80.2-versus-75.8 reconciliation, harness artifacts, workspace
+  rights/privacy, failure retention, tags, and hashes'
+- 'needs_license: rights for workspaces, repositories, office documents, professional contributions, web content, benchmark
+  derivatives, trajectories, rewards, and evaluations'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: No exact duplicate found. Official GitHub, news, HF model/config/weights/eval files, RL figures, licenses, deployment
+    guides, and tool-call guide were verified. Paper/arXiv/DOI/data remain null.

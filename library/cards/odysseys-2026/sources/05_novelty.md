@@ -1,0 +1,5 @@
+Odysseys combines three elements that are often separate: long-horizon tasks grounded in browsing behavior, multi-site computer-use execution in a common VM, and checkpoint-level multimodal judging. The rubric contract can distinguish partial accomplishment from complete success without requiring one bespoke programmatic evaluator per live website.
+
+Its task construction also mixes 90 journey-composed tasks, 30 manually authored personal-query tasks, and 80 human-reviewed GPT-5.4 hard tasks. This creates broader intent than a purely templated benchmark, while retaining explicit requirements and verification descriptions for all 1,225 checkpoints.
+
+The contribution is an evaluation surface, not a released post-training trajectory dataset or a new verifier with guaranteed correctness. The native OSWorld evaluator is marked infeasible; Gemini judgments are model-mediated. Rubric decomposition improves audit granularity but does not remove live-web drift, incomplete observability, or judge calibration risk.

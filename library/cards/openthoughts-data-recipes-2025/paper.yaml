@@ -1,0 +1,230 @@
+id: openthoughts-data-recipes-2025
+title: 'OpenThoughts: Data Recipes for Reasoning Models'
+year: 2025
+venue: ICLR 2026 Oral
+authors:
+- Etash Guha
+- Ryan Marten
+- Sedrick Keh
+- Negin Raoof
+- Georgios Smyrnis
+- Hritik Bansal
+- Marianna Nezhurina
+- Jean Mercat
+- Trung Vu
+- Zayne Sprague
+- Ashima Suvarna
+- Benjamin Feuer
+- Leon Liangyu Chen
+- Zaid Khan
+- Eric Frankel
+- Sachin Grover
+- Caroline Choi
+- Niklas Muennighoff
+- Shiye Su
+- Wanjia Zhao
+- John Yang
+- Shreyas Pimpalgaonkar
+- Kartik Sharma
+- Charlie Cheng-Jie Ji
+- Yichuan Deng
+- Sarah Pratt
+- Vivek Ramanujan
+- Jon Saad-Falcon
+- Stutee Acharya
+- Jeffrey Li
+- Achal Dave
+- Alon Albalak
+- Kushal Arora
+- Blake Wulfe
+- Chinmay Hegde
+- Greg Durrett
+- Sewoong Oh
+- Mohit Bansal
+- Saadia Gabriel
+- Aditya Grover
+- Kai-Wei Chang
+- Vaishaal Shankar
+- Aaron Gokaslan
+- Mike A. Merrill
+- Tatsunori Hashimoto
+- Yejin Choi
+- Jenia Jitsev
+- Reinhard Heckel
+- Maheswaran Sathiamoorthy
+- Alexandros G. Dimakis
+- Ludwig Schmidt
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- math
+- code
+- science
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=mbqvBA12Dx
+  arxiv: https://arxiv.org/abs/2506.04178
+  code: https://github.com/open-thoughts/open-thoughts
+  data: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+  model: https://huggingface.co/open-thoughts/OpenThinker3-7B
+  project: https://www.open-thoughts.ai/
+  release_post: https://www.open-thoughts.ai/blog/ot3
+  huggingface: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+  evaluation_code: https://github.com/mlfoundations/evalchemy
+  doi: https://doi.org/10.48550/arXiv.2506.04178
+  venue: https://iclr.cc/virtual/2026/oral/10011247
+  openreview: https://openreview.net/forum?id=mbqvBA12Dx
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Final OpenThoughts3 prompts come from OpenMath-2-Math for math, StackExchange CodeGolf and OpenCodeReasoning
+    for code, and StackExchange Physics plus organic-chemistry PDFs for science.
+  trace_author: QwQ-32B generates 16 reasoning-and-answer responses per selected question.
+  answer_format: One released Parquet row has difficulty, source, domain, and conversations. conversations is normally a two-message
+    list with a human question and a GPT response containing the QwQ reasoning trace and final answer.
+  process_fields:
+  - difficulty
+  - source
+  - domain
+  - conversations
+  environment_or_substrate: Offline single-turn supervised-fine-tuning corpus; it is not an interactive environment and exposes
+    no tool observations or state transitions.
+  verifier_or_reward: Code prompts are selected with GPT-4o-mini difficulty judgments, math and science prompts with GPT-4.1-mini
+    response length, and benchmark overlap is removed programmatically. The final assistant answers have no correctness verifier,
+    unit-test result, reward, process label, or acceptance score.
+  terminal_predicate: A row is included after prompt sourcing/filtering, applicable question deduplication, decontamination,
+    random downsampling, and successful QwQ generation. Inclusion does not certify semantic correctness.
+  provenance: Released provenance is limited to coarse source, domain, and difficulty fields; upstream record IDs, revisions,
+    transformations, licenses, sampling seeds, and filter decisions are not attached to rows.
+recipe_metadata:
+  base_model: Qwen/Qwen2.5-7B-Instruct
+  teacher: Qwen/QwQ-32B
+  generator: QwQ-32B generates long reasoning responses. Official representative C1 annotation YAMLs use an OpenAI-compatible
+    Together backend, but an exact pinned manifest for the final 1.2M run is not published.
+  prompt_or_task_source: OpenMath-2-Math; StackExchange CodeGolf; OpenCodeReasoning; StackExchange Physics; and organic-chemistry
+    PDFs.
+  sampling_protocol: About 75,000 selected questions are each annotated 16 times. The paper holds decoding settings constant
+    across teacher comparisons; exact final-run decoding and random seeds are unknown.
+  temperature: unknown
+  rollout_count: 16 responses per selected question
+  inference_budget: Exact final-run token cap is unknown. Representative official C1 configs use max_tokens 32000; the paper
+    reports 22,000 H100 GPU-hours for annotation.
+  search_or_scaffold: null
+  filtering_rule: Select code questions by GPT-4o-mini difficulty; select math and science questions by GPT-4.1-mini response
+    length; exact-deduplicate math and science but not code; remove evaluation overlaps using normalized Indel similarity
+    >=75% or any shared tokenizer-level 13-gram; randomly downsample; do not filter final answers for correctness.
+  selection_threshold: The release card reports filtering to 180k math, 60k code, and 60k science prompts, then downsampling
+    to about 75k total questions before 16x teacher sampling. Exact immutable selection manifests are unavailable.
+  optimizer_or_scaffold: Full SFT with LLaMA-Factory and DeepSpeed ZeRO-3; Qwen2.5 template; packing; cutoff length 16,384;
+    global batch 512; learning rate 8e-5; 5 epochs; cosine schedule; warmup ratio 0.1; BF16.
+audit:
+  source_mixture: 1,200,000 released rows in one train split, approximately 850k math, 250k code, and 100k science. The final
+    prompt sources are one math source, two code sources, and two science source families.
+  split: One public default/train split with 1,200,000 rows across 120 Parquet shards; no released validation/test split or
+    immutable training-item manifest.
+  decontamination: A prompt is removed if normalized Indel similarity to an evaluation prompt is at least 75% or if the pair
+    shares a tokenizer-level 13-gram. On a manually constructed testbed of 3,092 contaminated and 3,000 clean prompts, the
+    paper reports 12 missed contaminated prompts and 42 rejected clean prompts. Match and removal logs are not released.
+  benchmark_overlap: Eight benchmarks guide most pipeline choices; AIME 2025, HMMT 02/25, HLE MCQ, and LiveCodeBench 06/24-01/25
+    are held out until final evaluation. String/token overlap checks do not rule out semantic contamination.
+  lineage: Named upstream prompt source -> domain-specific LLM filtering -> applicable deduplication -> evaluation decontamination
+    -> random downsampling -> 16 QwQ responses per question -> unverified answer retention -> answer-level SFT. Row-level
+    upstream IDs, transformations, decisions, and run membership are unavailable.
+  license: The HF dataset and GitHub code are labeled Apache-2.0, while Appendix Q lists upstream CC BY, CC BY-SA, OpenAI
+    Terms, educational-use, no-license, and multiple all-rights-reserved organic-chemistry books. No per-row rights manifest
+    reconciles those terms, so training reuse is blocked pending legal review and provenance repair.
+  release_version: HF dataset revision 61bcf9d4eb38b30295efc2021227a63cc5bb34c8; official GitHub main inspected at e86cf2dbbe69ae178aec302be33a3454a7183457.
+    The GitHub repository has no formal release tags for this artifact.
+  successful_and_failed_sample_retention: All successful QwQ answers are retained without correctness filtering. Removed prompts,
+    failed/content-filtered generations, dedup groups, decontamination matches, and rejected alternatives are not released.
+  privacy_or_consent: unknown
+  reuse_class: blocked pending license, provenance, and secret remediation
+  known_failure_modes:
+  - Unverified QwQ traces can contain incorrect reasoning, wrong answers, hallucinated facts, non-executable code, or formatting
+    artifacts.
+  - Coarse source/domain/difficulty fields cannot recover upstream identity, attribution, rights, or transformations.
+  - The dataset-level Apache-2.0 label may conflict with all-rights-reserved and no-license source material named in Appendix
+    Q.
+  - The current official repository contains a plaintext API credential in three QwQ annotation YAML files; the value is intentionally
+    redacted and requires removal and rotation.
+  - The final 1.2M job manifest, seeds, exact decoding settings, per-source selection manifests, accepted/failed yields, and
+    container hashes are not pinned.
+  - Decontamination is lexical and can miss paraphrases or semantic overlap; its decision log is unavailable.
+  - The no-answer-filter baseline is not compute-controlled because it trains on 63,200 rather than 31,600 examples.
+  - Pipeline choices optimize an average over eight recurring benchmarks, creating benchmark-selection pressure even though
+    four final benchmarks are held out.
+  - ArXiv v2 lists 50 authors, while the official accepted ICLR page lists 51 and adds Stutee Acharya.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv v2 and Appendices A-S, the official ICLR Oral page, OpenReview record, project/blog, HF dataset/model,
+    dataset API/schema, and official repository/configs were checked on 2026-07-23. Scores and ablations are author-reported
+    and were not independently reproduced.
+inclusion_reason: An anchor open reasoning-data recipe that exposes source selection, prompt-quality filters, deduplication,
+  16x teacher sampling, negative results for answer filtering, SFT scaling, code, data, and models, while also showing why
+  row-level provenance, license reconciliation, rejection logs, and secret hygiene are necessary for a genuinely reusable
+  release.
+related:
+- bespoke-stratos-17k-2025
+- opencodereasoning-advancing-data-distillation-for-competitive-coding-2025
+- advancing-math-data-synthesis-2025
+tags:
+- openthoughts
+- reasoning-data
+- open-data
+- teacher-distillation
+- question-filtering
+- repeated-sampling
+- sft
+- data-scaling
+- decontamination
+- license-risk
+- secret-hygiene
+status: partial
+one_line_summary: OpenThoughts releases a 1.2M-row math/code/science SFT corpus and a controlled recipe showing that source
+  choice, prompt filtering, repeated teacher sampling, and teacher selection matter more than the tested answer filters, while
+  leaving row-level correctness and rights unresolved.
+why_it_matters: It turns reasoning-data curation into an experimentally inspectable pipeline with unusually useful negative
+  results, but also demonstrates that open code, data, and model weights do not by themselves establish safe reuse without
+  source-level rights, provenance, rejection logs, and secret-safe configs.
+card: null
+needs:
+- 'needs_license: reconcile the Apache-2.0 release label with every upstream source, especially all-rights-reserved and no-license
+  organic-chemistry books, and publish row-level attribution and rights.'
+- 'needs_security: remove and rotate the plaintext API credential embedded in the three official QwQ annotation YAMLs, replace
+  it with environment-based secret injection, and publish a secret-scan result.'
+- 'needs_provenance: attach upstream item IDs, source revisions, URLs, transformations, dedup groups, and decontamination
+  decisions to each row.'
+- 'needs_verifier: expose explicit unverified flags or row-level correctness checks, verifier versions, outputs, and failure
+  codes where available.'
+- 'needs_reproducibility: publish the exact final 1.2M run manifest, decoding settings, random seeds, per-source sample counts,
+  accepted/failed yields, environment/container hashes, and checkpoint mapping.'
+- 'needs_rejections: release removed prompts, failed/content-filtered generations, and decontamination match/removal ledgers
+  where legally possible.'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Citation and official artifacts are verified, but the release remains partial for safe reuse because of unresolved
+    source rights, coarse provenance, absent rejection logs, and a plaintext credential in current official configs.
+category_ids:
+- data_construction_open_release_recipes
+- instruction_demonstration_rationale_data

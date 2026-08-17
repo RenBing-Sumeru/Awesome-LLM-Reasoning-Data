@@ -1,0 +1,95 @@
+id: step-dpo-step-wise-preference-optimization-for-long-chain-reasoning-of-llms-2024
+title: 'Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs'
+year: 2024
+venue: arXiv
+authors:
+- Xin Lai
+- Zhuotao Tian
+- Yukang Chen
+- Senqiao Yang
+- Xiangru Peng
+- Jiaya Jia
+source_role:
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- llm-post-training
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.18629
+  arxiv: https://arxiv.org/abs/2406.18629
+  code: https://github.com/dvlab-research/Step-DPO
+  data: https://huggingface.co/datasets/xinlai/Math-Step-DPO-10K
+  project: https://github.com/dvlab-research/Step-DPO
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See official paper.
+  trace_author: See official paper.
+  answer_format: Candidate output with feedback record.
+  process_fields:
+  - context
+  - candidate
+  - feedback
+  - provenance
+  environment_or_substrate: See official paper.
+  verifier_or_reward: Paper-specific label, judge, rubric, or reward contract.
+  terminal_predicate: Paper-specific evaluation acceptance or score.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: See official paper.
+audit:
+  source_mixture: Primary paper and official release reviewed; unavailable official artifact is explicitly null.
+  split: unknown; verify from primary source
+  decontamination: unknown; verify overlap and leakage controls
+  license: unknown; verify before reuse
+  lineage: 'Primary source: https://arxiv.org/abs/2406.18629'
+  known_failure_modes:
+  - Judge, rubric, or reward assumptions may not transfer.
+  - Artifact and license availability require verification.
+  citation_status: verified
+  confidence: high
+  notes: Authors and technical claims were checked against the primary paper.
+inclusion_reason: Candidate paper on step-wise preference optimization for long-chain reasoning with an official arXiv primary
+  link.
+related: []
+tags:
+- candidate-batch
+- post-training
+- reward-or-judgment
+one_line_summary: Introduces Step-DPO, an algorithm that applies preference optimization to individual reasoning steps rather
+  than only final answers.
+why_it_matters: It exposes a feedback, preference, reward, rubric, safety, or post-training data surface that must be audited
+  before reuse.
+status: verified
+needs: []
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper review
+  confidence: high
+  notes: Primary arXiv link supplied by curator; substantive review pending.
+category_ids:
+- preference_reward_feedback_data

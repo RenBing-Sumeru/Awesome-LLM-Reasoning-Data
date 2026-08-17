@@ -1,0 +1,5 @@
+- Positioning: Ferret's GRIT corpus serializes points, boxes, and free-form regions into about 1.1M grounded conversations.
+- Method handle: Ferret combines a hybrid region encoder with GRIT records that express points, boxes, and free-form regions in the same conversation, training both referring and grounding directions.
+- Data handle: about 1.1 million grounded refer-and-answer records; each record contains image, point/box/free-form region, referring phrase, instruction, and grounded response.
+- Evidence anchor: The same 7B/13B base gains on referring expression comprehension, referring generation, and region dialogue after GRIT training; 1.1M hierarchical records supply the controlled supervision surface.
+- Reuse decision: best for building an interface where a user circles an arbitrary region and asks for an explanation; first audit models may learn annotation conventions instead of robust spatial grounding.

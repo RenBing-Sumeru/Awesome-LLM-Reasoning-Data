@@ -1,0 +1,3 @@
+The ACL Anthology abstract describes a crowdsourced, adversarially created 55k-question benchmark and reports that prior best systems reached 38.4% F1 while expert humans reached 96%, with a proposed numerical-reasoning model reaching 51% F1. The arXiv v2 abstract describes a 96k-question benchmark and reports 32.7% prior-best F1, 96.0% human F1, and 47.0% for the paper's model.
+
+The evidence is benchmark evidence: aggregate EM/F1 over answer records, not row-level proof of a reasoning trace. The instance-level decisive object is whether the normalized prediction matches the gold answer set sufficiently under the scorer. Evidence is bounded by version, answer normalization, allowed aliases, split policy, and public-data contamination risk.

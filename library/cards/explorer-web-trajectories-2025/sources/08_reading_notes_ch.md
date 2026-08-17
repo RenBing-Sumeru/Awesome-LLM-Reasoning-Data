@@ -1,0 +1,6 @@
+- 联读 §3、Tables 3–4 与 Appendix B：175K 次原始尝试经筛选成为 94K 条 verifier 接受 episode；接受集平均 7.7 步、含 720K 张图像、830M tokens 与 33.3M 个元素，报告成本为每次尝试 0.15 美元、每条接受 episode 0.28 美元。
+- 将训练子集与接受池分开：作者从接受记录抽取 40K 条，删除滚动动作超过两次的 episode，最终约 30K 条用于训练 Phi-3.5-Vision 与 Qwen2-VL-7B 变体。
+- 把 Table 10 在 100 条人工审计轨迹上的 81% 一致率理解为 verifier 噪声证据；矩阵同时包含被 verifier 接受的人工失败样本和被拒绝的人工成功样本。
+- 引用 Mind2Web-Live 前先读 Appendix A：主表使用 83 条可访问任务，并取三次运行最大值；包含全部 104 条任务的附录结果显示两个 Explorer 模型的 full-task success 都是 16.4%。
+- 区分配方发布与数据发布：官方 MIT 代码存在，但没有核实到不可变 94K 语料、失败池、checksum、成员/split 清单、数据集许可或历史页面状态归档。
+- 将本卡与静态任务、教程引导和 sandbox 网页轨迹工作配合阅读，检验变化中的任务描述究竟增加了有效覆盖，还是引入 hindsight 与共享 judge 偏差。

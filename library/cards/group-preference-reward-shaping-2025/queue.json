@@ -1,0 +1,13 @@
+{
+  "title": "Reinforcement Learning for Large Language Models via Group Preference Reward Shaping",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.1085/",
+    "data": "https://aclanthology.org/2025.emnlp-main.1085.pdf"
+  },
+  "review_note": "已按 EMNLP 2025 原文完成双语精读卡片，并核对 GPRS 的偏好塑形及奖励鲁棒性实验。",
+  "manual_annotation": {"search_status": "promoted", "decision_reason": "GPRS 明确检验奖励模型质量变化下的稳定性，并为奖励信号失效审计提供可比较的训练对象。", "updated_at": "2026-07-24T03:30:00Z"},
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

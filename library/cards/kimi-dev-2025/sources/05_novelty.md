@@ -1,0 +1,7 @@
+Kimi-Dev's novelty is not simply applying reinforcement learning to code. It organizes repository intelligence into a staged data pathway: compressed issue-to-patch and simulated navigation records teach an Agentless prior; executable BugFixer/TestWriter tasks provide binary repository feedback; a comparatively small agent-trajectory layer then teaches interactive tool use.
+
+The paired BugFixer/TestWriter formulation gives two complementary verifier views. BugFixer asks whether a candidate patch satisfies all available task tests. TestWriter asks whether a generated regression test distinguishes the buggy revision from the known fix. Their common binary interface supports a single RL scaffold while preserving distinct output objects.
+
+The agent-bridge experiment makes a specific construction-relevant claim: environment-verified patch competence can reduce later agent-SFT demand and support longer interactions. The reported 200-trajectory degradation is equally important because it shows that adding a small adaptation set can harm a prior, so trajectory quantity alone is not a monotonic quality guarantee.
+
+The self-play evaluator also turns generated tests into a patch-ranking mechanism by cross-execution. That is useful as a test-time verifier construction, but because patch and test candidates are generated within the same model family, its gains require a correlated-error audit before being treated as independent validation.

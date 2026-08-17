@@ -1,0 +1,3 @@
+The key evidence is the official source lead and artifacts: paper: https://arxiv.org/abs/2602.12670. The decisive evidence at instance level is not the benchmark name; it is a concrete task record, a model response, and a scorer or rubric outcome that can be traced to the pinned release.
+
+The evidence boundary is narrow. Reported scores depend on source version, split, evaluator implementation, prompt/scaffold, model settings, hidden-set access, and contamination controls. Status in the current metadata is verified; unresolved audit items are: needs_audit: pin task/skill release, deterministic verifiers, trajectory schema, agent configurations, split, and license.

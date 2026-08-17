@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ComplexConstraints 用75个复杂指令和1,000个独立训练提示验证原子细则，能把开放式约束满足转成稳定的RL信号",
+    "updated_at": "2026-07-21T12:33:35Z"
+  },
+  "updated_at": "2026-07-21T12:33:35Z"
+}

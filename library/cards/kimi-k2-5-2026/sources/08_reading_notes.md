@@ -1,0 +1,5 @@
+- Citation is pinned to the official 2026 arXiv report, not only to the January 2026 product launch.
+- Separate the released checkpoint and modified-mit repository from unreleased SFT/RL data, teacher outputs, and agent-RL artifacts.
+- Track rule outcomes, budget reward, GRMs, visual metrics, and PARL rewards as distinct feedback contracts.
+- Treat the 100,000-concurrent-task environment claim as a reported internal system property, not an open environment release.
+- Keep this artifact in Track 12; its detailed RL disclosure does not make it a reusable Track 8 recipe.

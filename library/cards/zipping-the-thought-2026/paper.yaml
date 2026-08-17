@@ -1,0 +1,123 @@
+id: zipping-the-thought-2026
+title: 'Zipping the Thought: When and How Compressed Reasoning Data Works in LLM Post-Training'
+year: 2026
+venue: arXiv preprint; under review (2026)
+authors:
+- Kohsei Matsutani
+- Gouki Minegishi
+- Takeshi Kojima
+- Yusuke Iwasawa
+- Yutaka Matsuo
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+domains:
+- compositional-reasoning
+training_use:
+- sft
+- rlvr
+construction_layer:
+- trace_writing
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2605.28008
+  arxiv: https://arxiv.org/abs/2605.28008
+  code: https://github.com/kohseim/cot_compression
+  data: null
+  project: https://github.com/kohseim/cot_compression
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Synthetic modulo-23 arithmetic dependency chains with random operations, names, and distractors.
+  trace_author: Deterministic templates generate Explicit, Composed, and Implicit CoT targets.
+  answer_format: A dependency-chain question paired with a CoT at a controlled compression granularity and a final integer
+    answer.
+  process_fields:
+  - operation count and dependency chain
+  - distractor parameters
+  - CoT type and compression granularity
+  - intermediate values or omitted operations
+  - final answer modulo 23
+  environment_or_substrate: Synthetic sequential arithmetic with executable final-answer verification.
+  verifier_or_reward: Exact modulo-23 answer reward; OOD is defined by longer operation chains or unseen residue classes.
+  terminal_predicate: SFT consumes generated targets; RLVR receives outcome reward for the final integer.
+recipe_metadata:
+  base_model: Qwen2.5 0.5B-14B and Llama 3 1B-8B models.
+  teacher: Template-based generator; no external teacher model is required.
+  generator: Vary operation count, compression type/granularity, order, and data scale to isolate learning behavior.
+  filtering_rule: Remove train/evaluation duplicates and evaluate only exact verified answers.
+  sampling_protocol: Balanced examples across operation counts; experiments use up to 768K SFT records.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: RLVR uses response length 2048 and batch size 256; evaluation gives longer token budgets as operation
+    count grows.
+  optimizer_or_scaffold: LLaMA-Factory SFT and verl GRPO with KL coefficient 0.001.
+audit:
+  source_mixture: Fully synthetic arithmetic chains; no natural-domain data are used.
+  split: Short chains train SFT/RLVR and longer chains form OOD evaluations; repository provides generators rather than a
+    fixed released dataset.
+  decontamination: Generator removes exact train/evaluation duplicates.
+  license: Repository license was not confirmed from the inspected README.
+  lineage: Every target is generated from a known operation graph and a selected CoT compression template.
+  known_failure_modes:
+  - Findings may be specific to linear modulo arithmetic and length extrapolation.
+  - Branching, search, domain shift, and non-Transformer architectures are not tested.
+  citation_status: verified
+  confidence: high
+  notes: arXiv PDF and official GitHub README checked on 2026-07-13. The paper is marked under review and lists The University
+    of Tokyo; no acceptance record was found.
+inclusion_reason: Provides controlled evidence about when compressed reasoning traces help SFT and when RLVR can recover omitted
+  atomic steps.
+related: []
+tags:
+- cot-compression
+- controlled-synthetic-data
+- sft-rlvr
+status: verified
+one_line_summary: Zipping the Thought varies CoT compression in controlled synthetic data to show how data diversity, repetition,
+  and RLVR affect step decomposition and length generalization.
+why_it_matters: It separates trace granularity from data volume and optimization, giving concrete rules for designing compressed
+  reasoning supervision.
+reading_priority: recommended
+paper_type: controlled study of compressed reasoning data
+best_for: Researchers choosing CoT granularity and SFT/RLVR data budgets.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official repository provides generation, SFT, RLVR, and evaluation scripts; no fixed dataset release is claimed.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-a-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: Track 01
+  selection_priority_score: 4
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 0
+    artifact: 1
+  selection_evidence:
+    institution: The paper PDF confirms The University of Tokyo affiliation.
+    venue: The paper is an arXiv preprint marked under review; no official acceptance or distinguished presentation was found.
+    impact: GitHub API and repository search checked 2026-07-13; the official repository had 1 star, 0 forks, and no independent
+      implementation or follow-up was found.
+    artifact: The official repository provides generators and SFT/RLVR scripts, but no fixed dataset, confirmed repository
+      license, or external-use evidence was found.
+  selection_eligible: false
+  year_impact_threshold: 1
+  defer_reason: The 2026 candidate has impact score 0; the public code has not yet produced a verifiable actual-use signal.

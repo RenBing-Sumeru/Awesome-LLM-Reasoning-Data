@@ -1,0 +1,1 @@
+Use InterMT to train or evaluate a reward/judge model that receives a conversation prefix, interleaved visual context, and competing next turns or full trajectories. Preserve local/global labels and seed-disjoint splits; success is agreement on each level, not only one aggregate score. Do not use it as evidence for audio/video interaction alignment.

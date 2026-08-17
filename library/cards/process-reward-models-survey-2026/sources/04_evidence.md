@@ -1,0 +1,1 @@
+The ACL Anthology record confirms the authors, ACL 2026 Long Papers venue, DOI, pages, checklist, and abstract. Its abstract supports the survey's coverage of the full pipeline and applications in mathematics, code, text, multimodal reasoning, robotics, and agents. It does not show that any one PRM works as a universal evaluator.

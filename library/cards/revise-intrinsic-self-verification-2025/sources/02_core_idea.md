@@ -1,0 +1,5 @@
+ReVISE introduces `eos` and `refine` control actions and trains them with a two-stage SFT-plus-DPO curriculum. Stage 1 builds a verification preference: after an outcome-correct path, `eos` is chosen and `refine` is rejected; after an outcome-incorrect path, the order is reversed. This turns final correctness into supervision for a stop-or-continue decision, not for individual reasoning steps.
+
+Stage 2 starts from the Stage-1 model and builds a correction preference. After an incorrect path, the chosen continuation is `refine` followed by a gold reasoning target, while non-corrective alternatives are rejected. Both stages include chosen-sequence SFT in addition to DPO, so the recipe is offline preference learning rather than online RL.
+
+At inference, the model's probability of `eos` is treated as intrinsic confidence and can weight multiple sampled candidates. This is a learned selector correlated with the training outcome labels; it does not independently verify intermediate reasoning or certify the underlying preference data.

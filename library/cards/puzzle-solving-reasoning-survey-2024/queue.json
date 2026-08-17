@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T16:21:41Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "整理规则型谜题和非规则型谜题，把这与方法、评测资源统一考虑",
+    "updated_at": "2026-07-27T16:21:41Z"
+  }
+}

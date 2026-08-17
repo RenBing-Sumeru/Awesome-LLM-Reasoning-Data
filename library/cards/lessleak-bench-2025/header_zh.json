@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "测量并删除 83 个软件工程基准中经核验的预训练泄漏样本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "基准污染与数据泄漏审计研究",
+  "best_for_ch": "需要审计代码基准污染和评测偏差的研究者。",
+  "confidence_ch": "高：已核对全文、作者机构与官方公开数据；未找到正式中稿信息。",
+  "authors_ch": "Xin Zhou, Martin Weyssow, Ratnadira Widyasari, Ting Zhang, Junda He, Yunbo Lyu, Jianming Chang, Beiqi Zhang, Dan Huang, David Lo",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

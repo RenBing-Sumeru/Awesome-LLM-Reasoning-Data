@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "NVIDIA Nemotron Nano V2 VL 报告混合 Mamba-Transformer VLM、token reduction 和部分数据/配方/代码共享，但具体共享范围及反馈审计工件仍为 unknown。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态模型技术报告与数据披露账本",
+  "best_for_ch": "审计部分共享声明、视觉语言训练配方与公开 checkpoint 边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "NVIDIA",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

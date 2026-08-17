@@ -1,0 +1,8 @@
+# 引用
+
+Wang, K., Ren, H., Zhou, A., Lu, Z., Luo, S., Shi, W., Zhang, R., Song, L., Zhan, M., and Li, H.《MathCoder: Seamless Code Integration in LLMs for Enhanced Mathematical Reasoning》。The Twelfth International Conference on Learning Representations（ICLR），2024。OpenReview：z8TW0ttBPp。
+
+官方会议记录：https://openreview.net/forum?id=z8TW0ttBPp  
+官方 arXiv：https://arxiv.org/abs/2310.03731  
+官方代码仓库：https://github.com/mathllm/MathCoder  
+官方数据：https://huggingface.co/datasets/MathLLMs/MathCodeInstruct

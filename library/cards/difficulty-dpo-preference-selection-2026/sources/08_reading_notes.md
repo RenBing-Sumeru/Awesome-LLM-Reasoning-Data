@@ -1,0 +1,1 @@
+The important distinction is between a small positive gap and an inverted preference: the paper's gradient argument applies to aligned pairs near zero, not arbitrary negative gaps. Read the selection-ratio analysis with the task tables, because the method claims a data-selection benefit, not that difficult pairs eliminate the need to inspect noisy preference sources.

@@ -1,0 +1,3 @@
+- **Post-hoc rationalization.** A retry conditioned on the gold answer may produce a plausible explanation that the model would not find unaided; audit normal and rationalized traces separately.
+- **Terminal-only supervision.** A correct final answer can hide invalid intermediate steps, so tasks needing process correctness require a step verifier or manual audit.
+- **Selection feedback.** Keeping only successful traces can amplify early model and answer-parser biases; track per-round acceptance rates, source splits, and failure clusters.

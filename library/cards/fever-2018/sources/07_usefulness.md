@@ -1,0 +1,1 @@
+Use FEVER as a schema for evidence-grounded verification. Preserve claim id, label, evidence pages and sentence ids, predicted label, predicted evidence, scorer version, and split. It is useful for auditing whether a factuality system can supply provenance, not just a yes/no label.

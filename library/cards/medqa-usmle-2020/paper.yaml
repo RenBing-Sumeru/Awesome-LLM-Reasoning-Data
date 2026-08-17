@@ -1,0 +1,121 @@
+id: medqa-usmle-2020
+title: What Disease Does This Patient Have? A Large-scale Open Domain Question Answering Dataset from Medical Exams
+year: 2020
+venue: arXiv
+authors:
+- Di Jin
+- Eileen Pan
+- Nassim Oufattole
+- Wei-Hung Weng
+- Hanyi Fang
+- Peter Szolovits
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- medical-exams
+- domain-expert-benchmark
+- multiple-choice
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2009.13081
+  arxiv: https://arxiv.org/abs/2009.13081
+  code: https://github.com/jind11/MedQA
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2009.13081
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'medical exam question, answer options, correct answer, explanation or metadata depending on subset; Benchmark
+    size: 总量约 61K 医学考试 QA；常用 USMLE 英文子集约 12.7K 题。'
+  dataset_scale: MedQA contains 61,097 medical exam questions across English, simplified Chinese, and traditional Chinese;
+    the common MedQA-USMLE English benchmark has 12,723 questions, often split 10,178/1,272/1,273 train/dev/test.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'medical exam question, answer options, correct answer, explanation or metadata depending on subset;
+    Benchmark size: 总量约 61K 医学考试 QA；常用 USMLE 英文子集约 12.7K 题。'
+  verifier_or_reward: multiple-choice accuracy under official split
+  terminal_predicate: multiple-choice accuracy under official split
+  benchmark_size: 总量约 61K 医学考试 QA；常用 USMLE 英文子集约 12.7K 题。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: Official construction pipeline for What Disease Does This Patient Have? A Large-scale Open Domain Question Answering
+    Dataset from Medical Exams; exact curation details should be checked from the primary source.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: Primary source and official artifacts listed in artifacts for What Disease Does This Patient Have? A Large-scale
+    Open Domain Question Answering Dataset from Medical Exams.
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2009.13081'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Dataset scale recorded as 61,097 total multilingual questions and 12,723 English MedQA-USMLE questions; reviewer
+    should pin language subset, split files, and scorer details before L5/L6 promotion. Benchmark size: 总量约 61K 医学考试 QA；常用
+    USMLE 英文子集约 12.7K 题。'
+inclusion_reason: MedQA provides medical licensing-exam questions and the 12,723-question English USMLE subset became a standard
+  medical reasoning benchmark for LLMs.
+related: []
+tags:
+- benchmark
+- medical-exams
+- domain-expert-benchmark
+- multiple-choice
+why_it_matters: It supplies a reusable evaluation coordinate for medical-exams, domain-expert-benchmark work.
+status: verified
+needs:
+- 'needs_audit: pin benchmark size/split/version before score reuse'
+- 'needs_audit: pin MedQA language/subset, USMLE split counts, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MedQA-USMLE provides 12,723 English medical licensing-exam questions, with the full MedQA release spanning
+  61,097 multilingual questions.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

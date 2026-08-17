@@ -1,0 +1,3 @@
+Earlier weak process supervision commonly estimates each intermediate state's probability of reaching a correct answer through expensive continuations. FreePRM accepts a much weaker and noisier label source, then changes the classifier's output space and loss so the training record can represent uncertainty rather than pretending outcome correctness is a faithful step annotation.
+
+Its distinctive contribution is the coupling of pseudo-label lineage with buffer probability and final-step weighting. This is a data-consumption change: the same terminal label affects different steps differently, and the model learns when not to trust its inherited label. The novelty lies in that uncertainty-aware objective, not in a new answer verifier.

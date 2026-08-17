@@ -1,0 +1,3 @@
+Clarification-oriented methods such as CollabLLM assume that the user already has a fixed hidden requirement and train the assistant to uncover it through questions. They are less effective when the user cannot answer because the preference itself has not yet formed.
+
+DiscoverLLM changes the modeled object from a fixed hidden intent to a hierarchy that becomes concrete after the user observes candidate outcomes. It also replaces generic task-success rewards with newly discovered intent refinements and an efficiency penalty. User simulation, DPO, and GRPO are not new individually; the novelty is using them to supervise intent formation.

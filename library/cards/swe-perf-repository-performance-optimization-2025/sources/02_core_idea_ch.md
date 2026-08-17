@@ -1,0 +1,1 @@
+核心贡献是首个系统化的真实仓库性能优化 benchmark。作者从 9 个 Python 仓库的 102,241 个 PR 逐步筛到 140 个稳定实例；每条记录含 base/head commit、性能测试、目标函数、oracle 与 realistic 问题描述、专家 patch、基线/专家运行时间、环境版本及 `human_performance` 等字段。验证契约同时要求功能测试通过和性能测试运行时间下降，因而区别于只判正确性的 SWE-bench。数据公开于 Hugging Face，无单独 train split，默认全部作为 test；可用于性能 agent 评测、瓶颈定位研究和 correctness–efficiency 双 reward 设计。

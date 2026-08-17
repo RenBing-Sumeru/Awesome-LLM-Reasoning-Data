@@ -1,0 +1,5 @@
+The prior baseline is split between evaluation-only agent suites and training methods that explore a narrower or single environment. AgentGym changes the object by combining a unified interactive framework, a benchmark suite, released trajectories, and trainable checkpoints/methods in one system.
+
+The direction signal is the closed loop between environment feedback and data construction: the same platform can evaluate an agent, collect trajectories, and train or improve the agent using multi-turn feedback. The quality signal is the formal ACL 2025 publication, official project release, explicit task/environment counts, public code, and named artifacts for AgentEval and AgentTraj-L.
+
+What is not new includes ReAct prompting, behavioral cloning, reinforcement learning ideas, and many imported environments such as web, text-game, embodied, tool-use, programming, or database tasks. Reuse should inspect original environment licenses, data lineage, train/eval split boundaries, reward false positives, maximum-round policies, and public-task contamination.

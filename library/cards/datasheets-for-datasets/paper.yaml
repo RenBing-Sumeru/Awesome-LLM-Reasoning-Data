@@ -1,0 +1,115 @@
+id: datasheets-for-datasets
+title: Datasheets for Datasets
+year: 2021
+venue: Communications of the ACM
+authors:
+- Timnit Gebru
+- Jamie Morgenstern
+- Briana Vecchione
+- Jennifer Wortman Vaughan
+- Hanna Wallach
+- Hal Daumé III
+- Kate Crawford
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- data-documentation
+- data-governance
+- data-provenance
+- reasoning-data
+training_use:
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1803.09010
+  arxiv: https://arxiv.org/abs/1803.09010
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.1145/3458723
+  venue: https://dl.acm.org/doi/10.1145/3458723
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The dataset creator's documentation of motivation, composition, collection, and recommended use.
+  trace_author: Dataset creators and maintainers; the paper proposes a documentation practice rather than a trace corpus.
+  answer_format: A datasheet accompanying a dataset.
+  process_fields:
+  - motivation
+  - composition
+  - collection process
+  - recommended uses
+  - maintenance and distribution information
+  environment_or_substrate: Dataset creation, release, maintenance, and downstream use.
+  verifier_or_reward: No verifier or reward is introduced; the feedback surface is transparent documentation for dataset consumers.
+  terminal_predicate: Documentation is complete enough for a consumer to assess intended use, limitations, and accountability;
+    exact checklist completion remains release-specific.
+recipe_metadata:
+  base_model: Not applicable; this paper proposes a dataset-documentation framework.
+  teacher: Dataset creators and maintainers.
+  generator: Structured documentation authored alongside a dataset.
+  filtering_rule: Not a filtering recipe; the framework asks creators to record dataset facts and recommended uses.
+  sampling_protocol: Not applicable to the documentation framework.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Not applicable.
+audit:
+  source_mixture: Official arXiv record and publisher DOI/venue link.
+  split: The framework asks a dataset release to document its composition and use; it does not prescribe one common split.
+  decontamination: The 2021 paper predates modern LLM contamination practice; contamination evidence must be added by each
+    current release.
+  license: The paper is published in Communications of the ACM; no dataset license is supplied because the work is a documentation
+    proposal, not a dataset release.
+  lineage: 'Primary source: https://arxiv.org/abs/1803.09010'
+  known_failure_modes:
+  - A completed datasheet can still omit facts unknown to its creators.
+  - Documentation quality depends on truthful, maintained answers by dataset owners.
+  - Datasheets do not themselves demonstrate legal clearance, deduplication, or contamination testing.
+  citation_status: verified
+  confidence: high
+  notes: The official arXiv abstract proposes that every dataset be accompanied by documentation of motivation, composition,
+    collection process, recommended uses, and related information; arXiv notes CACM publication in December 2021.
+inclusion_reason: The canonical documentation primer for asking the recurring Track0 audit questions that make a reasoning-data
+  release more than a prompt-answer table.
+related: []
+tags:
+- foundations-and-primers
+- datasheets
+- data-documentation
+- provenance
+- audit
+one_line: The foundational proposal to ship every dataset with a structured record of why it exists, what it contains, how
+  it was made, and how it should be used.
+why_it_matters: It supplies the documentation habit behind provenance, labels, splits, licenses, maintenance, and limitation
+  fields throughout the reasoning-data atlas.
+one_line_summary: The foundational proposal to ship every dataset with a structured record of why it exists, what it contains,
+  how it was made, and how it should be used.
+paper_type: Dataset-documentation framework
+reading_priority: essential
+best_for: Every reader or contributor who must audit a dataset's motivation, composition, collection, recommended use, and
+  limitations.
+confidence: high
+status: verified
+needs:
+- 'unknown: which contemporary reasoning-data releases implement a full datasheet and which documentation fields they omit'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv metadata and abstract were reviewed; arXiv records CACM publication in December 2021.
+category_ids:
+- foundations_and_primers
+track0_subfield: 📦 Data documentation / datasheets

@@ -1,0 +1,115 @@
+id: multi-agent-pareto-tts-2026
+title: 'Multi-Agent Reasoning Improves Compute Efficiency: Pareto-Optimal Test-Time Scaling'
+year: 2026
+venue: ACL 2026 Student Research Workshop
+authors:
+- Florian Valentin Wunderlich
+- Lars Benedikt Kaesberg
+- Jan Philip Wahle
+- Terry Ruas
+- Bela Gipp
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematical-reasoning
+- general-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-srw.1/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-srw.1/
+  code: https://github.com/Multi-Agent-LLMs/lm-evaluation-harness
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-srw.1
+data_object:
+  prompt_source: A 1,000-question sample of MMLU-Pro and robustness experiments on BBH.
+  trace_author: Llama 3.1 70B and 8B generate zero-shot chain-of-thought, refinement, debate, and mixture-of-agents trajectories.
+  answer_format: Multiple-choice prompt, generated rationales, pipeline configuration, final option, accuracy, FLOP estimate,
+    memory-transfer estimate, and per-task runtime.
+  process_fields:
+  - prompt
+  - pipeline
+  - model_size
+  - sequences
+  - agents
+  - rounds
+  - proposer_models
+  - layers
+  - final_choice
+  - accuracy
+  - compute_time
+  environment_or_substrate: Offline multiple-choice benchmark evaluation with matched pipeline configurations.
+  verifier_or_reward: Exact multiple-choice accuracy and estimated inference time that includes operations and memory-transfer
+    costs.
+  terminal_predicate: The final selected option equals the benchmark answer key.
+recipe_metadata:
+  base_model: Llama 3.1 70B for main experiments and Llama 3.1 8B for model-size comparison.
+  teacher: Not applicable; all pipelines use the evaluated model under zero-shot prompting.
+  generator: Self-consistency samples independent chains; self-refinement revises a solution; debate exchanges agent answers;
+    mixture-of-agents aggregates proposer outputs.
+  filtering_rule: Configurations are compared by Pareto fronts under accuracy and estimated time; the study does not construct
+    training data.
+  sampling_protocol: Vary sequences, refinement steps, agents, rounds, proposer models, layers, and model size across 34 configurations
+    and more than 100 evaluations.
+  rollout_count: Configuration-specific; self-consistency reaches ten sequences and the largest reported budgets approach
+    20 times chain-of-thought compute.
+  temperature: 0.7 with top-p 0.95.
+  inference_budget: Approximately 1 to 20 times the chain-of-thought compute budget.
+  optimizer_or_scaffold: Pareto-front analysis over accuracy and estimated runtime, including FLOPs and memory transfer.
+audit:
+  source_mixture: Official ACL Anthology paper and official GitHub repository.
+  split: Primary MMLU-Pro evaluation uses 1,000 shuffled sampled tasks; BBH and Llama 3.1 8B provide robustness checks.
+  decontamination: The paper does not claim a pretraining-contamination audit.
+  license: Verify the code repository, MMLU-Pro, BBH, and model licenses before reuse.
+  lineage: https://aclanthology.org/2026.acl-srw.1/
+  known_failure_modes:
+  - runtime-estimation-assumption
+  - multiple-choice-limitation
+  - model-family-dependence
+  - configuration-search-cost
+  - context-overload
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF and linked code repository checked on 2026-07-20. All listed authors are affiliated with the University
+    of Göttingen.
+inclusion_reason: It explicitly compares how parallel and sequential inference-budget allocation changes the accuracy-time
+  Pareto frontier for single- and multi-agent reasoning pipelines.
+related: []
+tags:
+- test-time-scaling
+- multi-agent
+- pareto-efficiency
+- self-consistency
+- debate
+- mixture-of-agents
+status: verified
+one_line_summary: This study shows that mixture-of-agents can dominate matched-budget single-agent scaling and gives concrete
+  parallel-versus-sequential allocation rules.
+reading_priority: recommended
+paper_type: Comparative test-time scaling efficiency study
+best_for: Readers choosing a practical multi-agent inference configuration under a fixed accuracy, latency, or hardware budget.
+confidence: high
+why_it_matters: It compares scaling mechanisms at matched cost and demonstrates that the allocation of parallel agents and
+  sequential aggregation, not only total compute, determines efficiency.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and official code link checked.
+category_ids:
+- scaling_rlvr_test_time_compute

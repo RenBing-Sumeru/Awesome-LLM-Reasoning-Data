@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ScienceBoard 用 169 个六领域科学工作流任务、Ubuntu 科学软件 VM 和任务特定内部状态 evaluator 评测 computer-use agents，并公开环境、代码及部分轨迹压缩包。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "科学工作流 computer-use 环境、基准与轨迹发布",
+  "best_for_ch": "研究科学智能体、GUI/CLI 混合操作、环境反馈、状态验证与可重放性的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qiushi Sun、Zhoumianze Liu、Chang Ma、Zichen Ding、Fangzhi Xu、Zhangyue Yin、Haiteng Zhao、Zhenyu Wu、Kanzhi Cheng、Zhaoyang Liu、Jianing Wang、Qintong Li、Xiangru Tang、Tianbao Xie、Xiachong Feng、Xiang Li、Ben Kao、Wenhai Wang、Biqing Qi、Lingpeng Kong、Zhiyong Wu",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Sierra"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.12045",
+    "https://arxiv.org/pdf/2406.12045",
+    "https://github.com/sierra-research/tau-bench"
+  ],
+  "verification_note": "PDF shows all authors under Sierra; Shunyu Yao has a work-done-during-internship footnote with no other affiliation verified there."
+}

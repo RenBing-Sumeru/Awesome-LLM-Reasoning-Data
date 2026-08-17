@@ -1,0 +1,115 @@
+id: mc-search-multimodal-agentic-search-2026
+title: 'MC-Search: Evaluating and Enhancing Multimodal Agentic Search with Structured Long Reasoning Chains'
+year: 2026
+venue: ICLR 2026 Oral
+authors:
+- Xuying Ning
+- Dongqi Fu
+- Tianxin Wei
+- Mengting Ai
+- Jiaru Zou
+- Ting-Wei Li
+- Hanghang Tong
+- Yada Zhu
+- Hendrik Hamann
+- Jingrui He
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-agentic-search
+- retrieval-augmented-generation
+- process-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=JEGDp1E4OH
+  arxiv: https://arxiv.org/abs/2603.00873
+  code: null
+  project: https://mc-search-project.github.io/
+  data: https://huggingface.co/datasets/YennNing/MC-Search
+  huggingface: https://huggingface.co/datasets/YennNing/MC-Search
+  venue: https://openreview.net/forum?id=JEGDp1E4OH
+  doi: null
+  openreview: https://openreview.net/forum?id=JEGDp1E4OH
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real-world image and textual evidence in an offline knowledge base.
+  trace_author: Curated multi-hop agentic search chains verified by HAVE.
+  answer_format: Question, image titles/images/IDs, answer, graph topology, and a chain of subquestions with evidence and
+    intermediate answers.
+  process_fields:
+  - graph_type
+  - subqa_chain
+  - retrieval_modality
+  - supporting_facts
+  - intermediate_answer
+  environment_or_substrate: 389K images and 784K documents for multimodal retrieval.
+  verifier_or_reward: HAVE verifies hop-wise attribution and evidence; Search-Align uses the verified chains for process-supervised
+    fine-tuning.
+  terminal_predicate: The final answer is supported by the verified multimodal evidence chain.
+recipe_metadata:
+  base_model: The benchmark evaluates six MLLMs; Search-Align targets open-source MLLMs.
+  teacher: Human/curated evidence construction and HAVE hop-wise verification.
+  generator: Structured multimodal search trajectories.
+  filtering_rule: HAVE retains chains whose evidence attribution and intermediate support are verified.
+  sampling_protocol: Construct five reasoning topologies, annotate each hop's subquestion/modality/evidence/intermediate answer,
+    and evaluate final and process fidelity.
+  inference_budget: Average chain length is 3.7 hops; see the project for agent settings.
+  optimizer_or_scaffold: Search-Align process-supervised fine-tuning.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Image and text knowledge-base evidence plus verified multi-hop search annotations.
+  split: The official Hugging Face release provides a 3,333-row train split; use the project's evaluation protocol for benchmark
+    reporting.
+  decontamination: Do not train on test evidence chains when using MC-Search for held-out evaluation.
+  license: Consult the official project and Hugging Face release for data and knowledge-base terms.
+  lineage: ICLR 2026 Oral project, OpenReview paper, and YennNing Hugging Face release.
+  known_failure_modes:
+  - Retrieval errors compound over hops
+  - Modality switches can cause planning mismatch
+  - Knowledge-base coverage constrains answerability
+  citation_status: verified
+  confidence: high
+  notes: Verified the project’s ICLR 2026 Oral status, author affiliations, data size and schema, OpenReview paper, and official
+    dataset release. No standalone official code URL was resolved, so only the official project URL is recorded.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: MC-Search benchmarks multimodal agents on verified multi-hop image–text evidence chains and turns those
+  chains into process supervision for better retrieval planning.
+why_it_matters: It makes retrieval modality, supporting evidence, and intermediate answers explicit at every hop rather than
+  supervising only final QA.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the project’s ICLR 2026 Oral status, author affiliations, data size and schema, OpenReview paper, and official
+    dataset release. No standalone official code URL was resolved, so only the official project URL is recorded.
+category_ids:
+- process_trace_supervision_data

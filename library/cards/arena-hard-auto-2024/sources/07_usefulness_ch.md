@@ -1,0 +1,1 @@
+Arena-Hard 可作为构造困难开放式 judge benchmark 的参考，也适合审计基于 judge 的评测。复用时保留 prompt ID、来源、benchmark 版本、baseline answer、candidate answer、judge 模型、judge prompt、style control、随机种子或重试策略、pairwise label、置信区间和榜单日期。对 atlas 来说，它的价值在于把 benchmark 质量本身也变成可测对象：看 separability 和与人类偏好的 agreement。

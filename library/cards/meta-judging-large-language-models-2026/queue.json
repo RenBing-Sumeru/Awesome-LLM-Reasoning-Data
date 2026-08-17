@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-26T11:55:55Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "一共9页，概念性综述，讲了一个评估大语言模型的评价器的概念",
+    "updated_at": "2026-07-26T11:55:55Z"
+  }
+}

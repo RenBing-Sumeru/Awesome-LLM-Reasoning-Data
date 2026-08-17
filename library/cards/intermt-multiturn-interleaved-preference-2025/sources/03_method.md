@@ -1,0 +1,3 @@
+1. Harvest and refine seed questions from open datasets, web data, and human writing for multi-turn potential. 2. Use MLLMs plus editing, generation, and retrieval tools to expand each seed into candidate conversation trees. 3. Filter and prune candidates, retaining 52.6K QA instances. 4. Collect local score/pair judgments and global conversation judgments across nine helpfulness dimensions; low-consistency annotations are re-annotated and sampled records are audited.
+
+The release is CC BY-NC 4.0. Reproduction needs seed sources, agent/tool versions, pruning rules, annotation rubric, and the seed-disjoint 9:1 split.

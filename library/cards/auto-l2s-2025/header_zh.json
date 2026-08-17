@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AutoL2S 将长推理与短推理配对，保留正确且更短的答案，并以长度控制标记训练可在长短推理间切换的模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Feng Luo；Yu-Neng Chuang；Guanchu Wang；Hoang Anh Duy Le；Shaochen Zhong；Hongyi Liu；Jiayi Yuan；Yang Sui；Vladimir Braverman；Vipin Chaudhary；Xia Hu",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

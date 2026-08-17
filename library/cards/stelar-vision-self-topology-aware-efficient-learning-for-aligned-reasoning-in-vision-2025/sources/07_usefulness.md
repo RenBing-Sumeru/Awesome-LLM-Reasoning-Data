@@ -1,0 +1,3 @@
+Researchers with visual questions and verifiable answers can reuse TopoAug to generate chain, tree, and graph responses, label their outcomes, and construct topology-aware SFT or preference data. Success should be checked through accuracy, output length, and comparison with an equal-sized chain-only dataset.
+
+The released 123K preference data can also train topology-aware reward or policy models and support studies of reasoning efficiency. The method is less suitable when answers cannot be reliably verified, when reasoning topology has no meaningful textual representation, or when intermediate-step correctness matters more than the final answer.

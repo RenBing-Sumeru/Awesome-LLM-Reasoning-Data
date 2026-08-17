@@ -1,0 +1,3 @@
+HH-RLHF releases dialogue contexts, paired assistant responses, and direct human preferences for helpfulness or harmlessness, including red-team interactions. A record retains the context and chosen/rejected relation; it teaches which response is preferred for that conversation, not which text is universally good.
+
+The feedback contract is direct human comparison. The paper uses it to train reward models and optimize assistants with RLHF. This is preference and reward data, but the learned reward is not an independent verifier of factuality, policy compliance, or safety outside the annotated distribution.

@@ -1,0 +1,5 @@
+- ModeX sums unigram, bigram, and trigram Jaccard similarities; it does not use a correctness verifier during selection.
+- A conductance cut below tau=0.8 keeps the larger cluster, with total edge weight breaking equal-size ties; the final answer is the maximum-degree node.
+- Main experiments use N=4/8/16; ModeX-Lite prunes partial paths every 100 tokens by default, while generation temperature, top-p, and seeds are unknown.
+- The official MIT repository contains ModeX and ModeX-Lite code, but candidate, similarity-graph, pruning, and seed manifests were not verified as released.
+- Benchmark improvements evaluate a selector under specific task metrics; they do not prove modal correctness, trace quality, release completeness, or reuse rights.

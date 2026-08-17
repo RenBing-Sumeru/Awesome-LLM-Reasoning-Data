@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多语言软件工程 agent 轨迹数据发布与蒸馏配方，数据量充足",
+    "updated_at": "2026-07-14T08:04:22Z"
+  },
+  "updated_at": "2026-07-14T08:04:22Z"
+}

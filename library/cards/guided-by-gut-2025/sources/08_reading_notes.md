@@ -1,0 +1,5 @@
+- GRPO calibrates confidence on 817 LIMO prompts with eight generations per prompt and a correctness-conditioned nonlinear reward.
+- GG search scores each candidate step with token-probability confidence plus token-count novelty; neither component verifies correctness.
+- Main search uses N=32 or 64 total paths with M=2, step-level greedy retention, explicit stopping rules, and confidence-weighted final voting.
+- The appendix includes a high-confidence arithmetic error, which is an audit example rather than evidence of reliable process labels.
+- Code, recipes, and 1.5B/7B checkpoints are public; raw rollouts, score manifests, licenses, and decontamination details remain unresolved.

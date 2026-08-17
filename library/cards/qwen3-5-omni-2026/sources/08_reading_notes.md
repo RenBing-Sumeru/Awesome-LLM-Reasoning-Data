@@ -1,0 +1,6 @@
+- Read Sections 3 and 4 as separate ledgers: pretraining has encoder-alignment, 32K general, and 262K long-context stages; post-training then splits into three Thinker stages and four Talker stages.
+- Keep the headline 100M-plus audio-visual hours, AuT's 40M hours, Talker's 20M-plus hours, and the approximately 4T-token mixture separate; the report does not provide a non-overlapping item manifest.
+- OPD transfers a text-conditioned response to its paired audio query. Record the pairing and target direction; do not describe it only as generic distillation.
+- Interaction-aligned RL uses multi-turn objectives, while Talker uses human-preference DPO plus rule-reward GSPO. Exact reward and rollout contracts remain unknown.
+- Do not equate 256K/262K context, ten hours of audio, or 400 seconds of video with a reasoning-rollout budget.
+- Treat all benchmark tables as model evaluation, not corpus-quality, provenance, consent, or licensing evidence.

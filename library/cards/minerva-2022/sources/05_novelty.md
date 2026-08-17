@@ -1,0 +1,3 @@
+The prior baseline was broad language-model prompting on math benchmarks, often without domain-targeted continued training at this scale. Minerva changes the recipe by continuing training on math/science-heavy text and evaluating with step-by-step prompting plus repeated sampling over several quantitative reasoning surfaces.
+
+The direction signal is that final-answer math/science benchmarks can expose scaling and domain-training effects. What is not new: the benchmarks, answer keys, chain-of-thought-style prompting, and final-answer scoring are inherited components; reuse should inspect benchmark licenses, split provenance, answer normalizers, prompt examples, and contamination controls.

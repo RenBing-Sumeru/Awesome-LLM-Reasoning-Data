@@ -1,0 +1,5 @@
+- 带类型的 thought nodes 与转移模板约束 MCTS 搜索空间。
+- Qwen2.5-72B-Instruct 生成思考内容，Llama3.1-70B-Instruct 处理 Reflection 节点。
+- 规则检查答案提供终局 reward，中间文本仍由模型生成。
+- 长正确路径用于 SFT，短正确路径与共享近前缀的错误路径组成 DPO pair。
+- 已核实公开 artifact 不能证明完整逐行 v2 搜索树与偏好数据已经发布。

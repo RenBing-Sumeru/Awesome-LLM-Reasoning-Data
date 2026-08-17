@@ -1,0 +1,6 @@
+- AutoL2S 为每个合格问题配对 DeepSeek-R1 long trace 与 Qwen2.5-Math-7B 的 shortest correct short candidate。
+- 论文默认 rejection size k=8；被拒候选和最终 pair corpus 未确认为发布。
+- SFT 学习 EASY routing decision，clipped GRPO-style 阶段在无显式 length reward 下强化答案正确的路由 rollout。
+- 7B 结果相对 Bespoke-Stratos-7B 报告平均输出缩短 71.7%，平均准确率下降 1.7 点。
+- 官方代码和 Apache-2.0 模型权重已存在，但 model release 不能证明完整 training-data lineage。
+- 论文与实现 token 名称不同，精确 routing semantics 需要固定 revision 核对。

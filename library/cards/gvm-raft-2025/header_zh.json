@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GVM-RAFT 用 pilot rollout 估计逐提示 Math-Verify 接受率与被接受回答的梯度幅度，在固定总预算下重分配 RAFT++ 或 GRPO 采样，但论文运行缺少可审计的逐项 lineage 发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数学推理动态 rollout 分配与 RAFT/GRPO 训练配方",
+  "best_for_ch": "研究在线拒绝采样、RLVR、动态推理预算、梯度方差与训练数据 lineage 的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jiarui Yao、Yifan Hao、Hanning Zhang、Hanze Dong、Wei Xiong、Nan Jiang、Tong Zhang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

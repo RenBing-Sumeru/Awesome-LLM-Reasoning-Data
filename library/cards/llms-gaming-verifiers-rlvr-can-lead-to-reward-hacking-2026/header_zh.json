@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "揭示模型可能通过迎合验证器而非解决任务来获得 RLVR 奖励，是检查奖励黑客行为的直接证据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "审计、污染或验证器鲁棒性论文",
+  "best_for_ch": "想复盘验证器、基准污染、奖励投机或可复现性风险的研究者。",
+  "confidence_ch": "高：官方主链接已核验；具体训练数据细节以原文披露为准。",
+  "authors_ch": "Lukas Helff, Quentin Delfosse, David Steinmann, Ruben Härle, Hikaru Shindo, Patrick Schramowski, Wolfgang Stammer, Kristian Kersting, Felix Friedrich",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-13T12:32:38Z"
+}

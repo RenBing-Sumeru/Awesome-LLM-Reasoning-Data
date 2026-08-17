@@ -1,0 +1,19 @@
+{
+  "title": "Text2SQL-Flow: A Robust SQL-Aware Data Augmentation Framework for Text-to-SQL",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2511.10192",
+    "data": "https://huggingface.co/datasets/debugger123/SQLFlow",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T10:37:45Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 SQLFlow，含89,544条Text-to-SQL样本",
+    "updated_at": "2026-07-19T10:37:45Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T16:14:09Z",
+  "manual_annotation": {
+    "search_status": "candidate",
+    "decision_reason": "汇集23年之前语言模型提示推理的前沿工作，方便阅读选择方向",
+    "updated_at": "2026-07-27T16:14:09Z"
+  }
+}

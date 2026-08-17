@@ -1,0 +1,5 @@
+- Positioning: Eagle 2 studies each data strategy from scratch and releases the resulting capability-labeled conversation mixture with per-source licensing metadata.
+- Data object: record id, image, conversation turns, and provenance metadata.
+- Author and selector: source labels and synthetic conversations are reformatted and selectively rewritten; selection uses data-source quality studies, deduplication, task balancing, and fixed-model ablations.
+- Evidence anchor: Eagle2-9B matches or exceeds several compared VLMs with up to 70B parameters across the reported multimodal benchmark suite, supporting the data-centric recipe rather than parameter scale alone.
+- Reuse decision: suitable for frontier VLM post-training SFT; first audit source-level licensing and contamination remain heterogeneous, and benchmark-driven source selection may overfit the public evaluation suite.

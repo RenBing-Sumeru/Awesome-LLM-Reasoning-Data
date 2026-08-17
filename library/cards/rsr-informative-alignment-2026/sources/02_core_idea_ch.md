@@ -1,0 +1,5 @@
+Rank-Surprisal Ratio(RSR)在精确目标学生模型下计算。对每个assistant回答词元t_k,surprisal为-log p_theta(t_k | context);rank等于被模型赋予严格更高概率的词表词元数加1。论文把rank截断在r_max = 100,并将轨迹RSR定义为截断rank之和除以surprisal之和。它等价于按surprisal加权的词元级rank/surprisal比值平均;RSR越低越优先。
+
+两个分量表达论文的"informative alignment"假设。高surprisal提供绝对陌生性,使轨迹不只是重复学生已会预测的内容;低rank提供相对熟悉性,即便观察词元的绝对概率较低,它在学生候选中仍靠前。低比值旨在识别对该学生而言有新信息、但又非完全分布外的监督。
+
+RSR是适配性分数,不是数学verifier、安全judge、通用reward或与模型无关的质量标签。默认33选1轨迹selector在一个学生下为全部候选计算RSR并保留最小者,并不要求所选答案通过Math-Verify。正确性过滤只出现在消融中。更换学生checkpoint、tokenizer、chat template、回答区间或rank截断规则都会改变评分契约,必须重新计算。

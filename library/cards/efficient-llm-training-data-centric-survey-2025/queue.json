@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-27T10:27:25Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "按数据对后训练进行分类",
+    "updated_at": "2026-07-27T10:27:25Z"
+  }
+}

@@ -1,0 +1,1 @@
+Reducing benchmark contamination is not as simple as rewriting questions: the rewrite must still measure the original capability. Fidelity and contamination resistance are separate goals that must be balanced rather than traded for one another invisibly.

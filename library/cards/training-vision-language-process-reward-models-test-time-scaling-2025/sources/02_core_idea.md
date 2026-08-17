@@ -1,0 +1,3 @@
+VL-PRM300K contains about 300K multimodal step labels with images, questions, full trajectories, step boundaries, and correctness. Multiple visual-reasoning sources are combined, while answer checks, strong VLM judgments, and trajectory comparison locate errors.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around multi-source image problems, multi-model trajectories, first-error labels, and positive/negative step ratios, making the verifier, judge, environment, or execution source traceable for Best-of-N and tree search. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AndroidWorld 提供动态 Android 模拟器任务，用于自主智能体评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2025 / arXiv v5 的 Android agent environment",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Christopher Rawles 等（Google DeepMind）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T09:12:56Z"
+}

@@ -1,0 +1,1 @@
+成功标签只在任务 checker 覆盖的语义范围内成立。很多手机任务存在多条人类可接受路径，严格的最终状态谓词可能漏掉语义成功，也可能接受浅层状态操纵。app 更新、emulator 镜像、权限、语言环境、网络访问和账号状态都会改变任务。公开任务说明和 validator 也可能污染后续 agent。AndroidWorld 是官方 Google Research artifact，但它是活的软件环境，复用分数必须固定版本。

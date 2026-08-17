@@ -1,0 +1,1 @@
+官方来源报告共有 480 个任务，每个职业类别 160 个，分布在 33 个 worlds：10 个投行、11 个咨询、12 个法律。HF dataset card 写明平均每题 4.06 条二元 rubric，所有任务都有 gold output，并包含 world files 和 metadata，其中 58 个任务要求文件输出。arXiv 摘要和 HF leaderboard 中，Gemini 3 Flash 在发布设置下 Pass@1 为 24.0%，GPT-5.2、Claude Opus 4.5、Gemini 3 Pro 随后。逐样本证据是交付物和 artifact 是否满足 rubric criterion，而不是 Pass@1 总数本身。

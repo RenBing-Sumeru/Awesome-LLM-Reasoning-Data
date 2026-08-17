@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "数学证明相关，缺数据",
+    "updated_at": "2026-07-25T07:34:31Z"
+  },
+  "updated_at": "2026-07-25T07:34:31Z"
+}

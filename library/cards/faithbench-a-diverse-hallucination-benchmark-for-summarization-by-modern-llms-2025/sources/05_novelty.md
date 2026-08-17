@@ -1,0 +1,1 @@
+Most hallucination benchmarks emphasize a binary label, aggregate summary score, or a limited model set. FaithBench deliberately samples the detector-disagreement region, adds gray-area labels, and links disputed summary spans to passage evidence. This makes it a calibration set for difficult faithfulness judgments, not a population-representative leaderboard.

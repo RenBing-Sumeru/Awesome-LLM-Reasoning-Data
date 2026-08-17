@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Seed-Prover 1.5 将 Lean、Mathlib 搜索、Python 调用、缓存 lemma 与失败摘要组织为终止奖励的 agent 轨迹，再以 Rubric RL 的 NL-to-Lean sketch 和递归证明树扩展推理；公开的 11 个 Putnam 2025 证明并不等于训练经验数据发布。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "形式化证明 Agent 模型报告与数据披露账本",
+  "best_for_ch": "研究工具调用 RL、形式化经验轨迹、proof sketch、长程 TTS 与基准审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jiangjie Chen、Wenxiang Chen、Jiacheng Du 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

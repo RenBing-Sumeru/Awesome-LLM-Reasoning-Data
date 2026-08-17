@@ -1,0 +1,1 @@
+最终测试达到 89.37% TPR 与 90.89% TNR；相较原 CodeContests，TPR 提高 4.32 点，相较 CodeContests+ 的代表设置，TNR 提高 9.37 点。用该数据微调 Qwen2.5-7B 后，LiveCodeBench Pass@1 为 34.57%，原 CodeContests 配方为 27.10%，绝对提升 7.47 点（论文表述为相对提升 9.52%）。结果支持反馈迭代改善 verifier，但仍受已知程序池覆盖限制。

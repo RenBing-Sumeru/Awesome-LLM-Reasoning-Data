@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "《Claude Sonnet 4.6 System Card》披露了宽泛的专有训练数据类别、去重/分类、后训练、来自 AI 的强化反馈以及人工偏好和安全工作角色，但记录级数据、奖励契约和训练配方仍未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型系统卡与数据披露账本",
+  "best_for_ch": "审计闭源前沿模型报告中已披露与未披露的训练数据、反馈、审计和可复现性边界",
+  "confidence_ch": "高",
+  "authors_ch": "Anthropic",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,147 @@
+id: agentgym-2024
+title: 'AgentGym: Evaluating and Training Large Language Model-based Agents across Diverse Environments'
+year: 2025
+venue: ACL 2025 Long Papers
+authors:
+- Zhiheng Xi
+- Yiwen Ding
+- Wenxiang Chen
+- Boyang Hong
+- Honglin Guo
+- Junzhe Wang
+- Xin Guo
+- Dingwen Yang
+- Chenyang Liao
+- Wei He
+- Songyang Gao
+- Lu Chen
+- Rui Zheng
+- Yicheng Zou
+- Tao Gui
+- Qi Zhang
+- Xipeng Qiu
+- Xuanjing Huang
+- Zuxuan Wu
+- Yu-Gang Jiang
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1355/
+  arxiv: https://arxiv.org/abs/2406.04151
+  code: https://github.com/WooooDyy/AgentGym
+  data: https://huggingface.co/datasets/AgentGym/AgentTraj-L
+  project: https://agentgym.github.io
+  huggingface: https://huggingface.co/datasets/AgentGym/AgentEval
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1355
+  venue: https://aclanthology.org/2025.acl-long.1355/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1355/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ACL 2025 AgentGym suite with 7 real-world scenarios, 14 interactive environments, 89 tasks, AgentEval benchmark
+    items, and AgentTraj/AgentTraj-L trajectories.
+  trace_author: paper authors, synthetic generators, model agents, or human annotators as disclosed by the official source
+  answer_format: Environment id, task instruction, observation, thought/action pair, environment feedback, reward or success
+    signal, and trajectory metadata for AgentEval/AgentTraj.
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: AgentGym platform with 14 environment servers across 7 real-world scenarios, spanning web navigation,
+    text games, household and embodied tasks, tool use, digital games, programming, and database tasks.
+  verifier_or_reward: Environment-specific reward, success rate, correctness checker, or task score returned by the AgentGym
+    environment wrapper.
+  terminal_predicate: Episode ends when the environment task succeeds, fails, or reaches the configured maximum rounds for
+    that environment.
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: unknown or paper-specific generator; verify the official paper before reuse
+  generator: AgentGym combines 14 environment services, AgentEval benchmark tasks, AgentTraj/AgentTraj-L trajectories, AgentEvol-7B
+    checkpoint release, and the AgentEvol self-evolution method.
+  filtering_rule: Trajectories are kept or used according to environment reward/correctness, disclosed quality filtering,
+    and task-specific verification; exact per-environment filter code should be pinned before reuse.
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: ACL Anthology 2025.acl-long.1355, arXiv 2406.04151, official project page, GitHub, and Hugging Face artifact
+    links.
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: Official GitHub code is MIT-licensed; AgentTraj-L, AgentEval, model checkpoints, imported environments, and source
+    task data require artifact-level license review on Hugging Face and original repositories.
+  lineage: Primary source is the ACL Anthology version at https://aclanthology.org/2025.acl-long.1355/; arXiv 2406.04151 is
+    retained as an earlier preprint/artifact pointer.
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology verifies the formal ACL 2025 long-paper title, DOI, pages 27914-27961, author order, abstract claims
+    of 7 scenarios / 14 environments / 89 tasks, and release of code, dataset, benchmark, and checkpoints.
+inclusion_reason: 'AgentGym exposes an agent/tool environment or trajectory-like data object with a concrete feedback contract:
+  Agents interact with diverse environments and are evaluated against environment/task success signals while trajectories
+  seed training.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+why_it_matters: It exposes action schema, observation state, environment feedback, reward/success predicates, and train/eval
+  split risks for agent-data curation.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: AgentGym contributes a 14-environment agent platform with AgentEval, AgentTraj/AgentTraj-L, and AgentEvol
+  as linked evaluation, trajectory, and training artifacts.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: ACL Anthology, arXiv, project page, GitHub README, GitHub MIT license, and Hugging Face links for AgentTraj-L/AgentEval
+    were checked; ACL 2025 is the formal citation version, while HF artifact licenses and snapshot hashes still require artifact-level
+    review.
+category_ids:
+- benchmarks_evaluation_surfaces
+- process_trace_supervision_data
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 18
+  candidate_title: AgentGym
+  primary_category_id: benchmarks_evaluation_surfaces
+  processed_at: '2026-07-12'

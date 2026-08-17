@@ -1,0 +1,1 @@
+The bridge is not arbitrary LLM judging; it is a released record of reference, response, and judgement used to train a smaller reward model. Check judge calibration and leakage before interpreting downstream RL gains.

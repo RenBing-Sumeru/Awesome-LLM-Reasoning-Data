@@ -1,0 +1,1 @@
+Earlier peer-review research predicts scores, politeness, toxicity, or overall usefulness. LazyReview decomposes insufficient reasoning effort into observable linguistic and argumentative patterns and uses diagnoses for rewriting. The novelty is a taxonomy and feedback loop focused on cognitive effort rather than generic text quality.

@@ -1,0 +1,6 @@
+- Pin the data to revision `2e2790a962a3c099bfb5ea61389cbf98a5ea439b`: it exposes exactly 91,909 training rows and 17 columns; the paper's six domain counts are rounded and should not be summed as exact counts.
+- Read GURU as prompts plus references and verifier payloads, not as 91,909 stored policy reasoning trajectories.
+- The five construction stages are sourcing, substring deduplication, reward design, domain-specific heuristics, and weak-versus-strong difficulty filtering.
+- Difficulty scores come from 16 trials each with Qwen2.5-7B-Instruct and Qwen3-30B-A8B; both pass rates remain in the released rows.
+- Verifier families are rule or symbolic match, all-tests-pass Python execution, and 1.5B model-based science entailment; performance gains do not prove every row, reward, or license decision valid.
+- Highest-priority missing evidence: evaluation-overlap ledgers, record-level source and license lineage, rejected candidates, verifier calibration, paper-era code tag, and on-policy rollout/reward traces.

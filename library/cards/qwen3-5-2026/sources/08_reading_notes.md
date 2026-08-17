@@ -1,0 +1,5 @@
+- Separate pretraining categories, RL task distributions, environment episodes, and deployment inputs; they are different data objects.
+- Treat “million-agent environments” as an undefined systems-scale claim, not a released environment count or trajectory dataset.
+- The Hugging Face repository verifies weights, configuration, model shape, and Apache-2.0 licensing for the model artifacts only.
+- The official QwenLM repository now provides release information and BibTeX, but not RL training code or records.
+- Do not infer a verifier, reward, terminal predicate, rollout budget, or data-quality guarantee from benchmark gains or asynchronous-RL terminology.

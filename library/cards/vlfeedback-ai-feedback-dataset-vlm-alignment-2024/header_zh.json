@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VLFeedback 用 GPT-4V 按有帮助性、视觉忠实性和伦理考量为多模态回答打分并生成理由，支持 VLM 偏好训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "大规模多模态 AI 反馈数据集与 VLM 对齐研究",
+  "best_for_ch": "研究视觉语言奖励模型、DPO 或 AI 反馈审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Lei Li、Zhihui Xie、Mukai Li 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T11:50:59Z"
+}

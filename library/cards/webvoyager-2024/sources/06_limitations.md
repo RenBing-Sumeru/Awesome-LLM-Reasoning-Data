@@ -1,0 +1,3 @@
+Correctness is only relative to the stated contract: A GPT-4V-based automatic evaluator judges success from the task, responses, and recent screenshots, with optional human inspection and reported human-agreement calibration. Live sites drift, tasks can disappear, and GPT-4V-style judging inherits prompt/model bias. The 85.3% agreement figure does not guarantee reliability for every task category.
+
+The paper should not be read as unrestricted real-world reliability. Public artifacts can become training data, service-backed environments can drift, and judge/evaluator implementations can change across releases.

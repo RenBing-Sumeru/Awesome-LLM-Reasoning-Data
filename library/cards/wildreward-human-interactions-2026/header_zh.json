@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WildReward 从真实人类交互中学习奖励模型，提供面向开放场景的偏好反馈数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "真实人类交互奖励数据与奖励模型论文",
+  "best_for_ch": "研究偏好数据、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Hao Peng、Junjia Qi、Xiaozhi Wang、Yijun Yao、Lei Hou、Yuanzi Li",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T10:30:00Z"
+}

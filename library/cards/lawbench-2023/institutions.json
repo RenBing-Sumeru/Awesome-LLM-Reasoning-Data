@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "National Key Laboratory for Novel Software Technology, Nanjing University",
+    "Amazon Alexa AI",
+    "Saarland University",
+    "Shanghai AI Laboratory"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2309.16289",
+    "https://arxiv.org/pdf/2309.16289",
+    "https://github.com/open-compass/LawBench",
+    "https://lawbench.opencompass.org.cn/home"
+  ],
+  "verification_note": "Official arXiv/PDF and OpenCompass sources verify authors, Nanjing University/Amazon/Saarland/Shanghai AI Lab affiliations, and project/code/data artifacts. Xiaoyu Shen footnote says work was done outside Amazon."
+}

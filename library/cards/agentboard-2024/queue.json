@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-13T14:06:02Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "425star 168ref 仍可用 审计保留轨迹",
+    "updated_at": "2026-07-13T14:06:02Z"
+  }
+}

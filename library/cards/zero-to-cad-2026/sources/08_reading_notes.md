@@ -1,0 +1,5 @@
+- Positioning: Zero-to-CAD uses tool-using agents to synthesize, execute, repair, and validate nearly one million CadQuery construction programs without real trajectories.
+- Data object: uuid, CadQuery file, topology counts, operation sequence, latencies, eight renders, STL, and STEP files.
+- Author and selector: tool-using agents generate CadQuery code, inspect errors, consult documentation, and repair candidates; selection uses isolated code execution, topology checks, geometric validation, and export validation.
+- Evidence anchor: All 999,633 released sequences pass code-execution, geometric, and export validation; the paper evaluates generation validity and diversity rather than treating rendering alone as success.
+- Reuse decision: suitable for CAD program generation SFT and agent training; first audit validator-passing geometry may be functionally meaningless, and synthetic part descriptions underrepresent real designer constraints.

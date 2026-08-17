@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MCP-Atlas 将 MCP server/tool 选择、调用和结果整合做成 agent 工具使用评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的 agent benchmark / tool-use evaluation",
+  "best_for_ch": "关注 MCP 工具协议、agent 工具调用、执行反馈和 benchmark 版本漂移的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Aarush Ghosh 等",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T08:00:00Z"
+}

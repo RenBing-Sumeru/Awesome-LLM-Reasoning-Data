@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "一篇把奖励信号从反馈收集延伸到训练、推理与后处理的 2025 EMNLP Findings 综述。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "奖励模型与学习策略综述",
+  "best_for_ch": "关于偏好对、标量奖励、奖励模型和学习策略的综述。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaobao Wu",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

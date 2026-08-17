@@ -1,0 +1,3 @@
+Graph-reasoning training often supervises only final answers and permits shortcuts. GraphSilo stores executable graph-operation trajectories with positive and negative labels.
+
+This gap directly determines whether executable graph-reasoning process supervision can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on graph structures, operation traces, state transitions, first-error locations, and positive/negative labels and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in graph tasks and structural generalization.

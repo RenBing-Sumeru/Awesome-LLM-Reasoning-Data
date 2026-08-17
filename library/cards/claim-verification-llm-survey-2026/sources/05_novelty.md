@@ -1,0 +1,3 @@
+The contribution is a recent, LLM-centered map of claim verification that connects older automated verification work with retrieval-augmented approaches. It contributes organization and comparison criteria, not a new model, dataset, or common score.
+
+Its novelty is most useful as a change in reading posture. Earlier work can be described by its final prediction alone, whereas an LLM-centered account asks how retrieval, context construction, and model adaptation interact. That does not make every LLM system comparable or superior. It instead supplies terms for identifying where a claimed advance belongs and what must remain fixed before the comparison is meaningful.

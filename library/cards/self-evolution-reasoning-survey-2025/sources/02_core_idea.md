@@ -1,0 +1,1 @@
+The key contribution is a reader-friendly separation of three levers. Data evolution asks how new reasoning examples become more useful; model evolution asks how training increases capability; self-evolution asks what happens when these levers are iterated together. This separation prevents an observed gain from being attributed vaguely to “more self-improvement.”

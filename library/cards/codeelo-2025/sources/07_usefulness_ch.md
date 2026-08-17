@@ -1,0 +1,1 @@
+CodeElo 可作为 live external-judge benchmark 的设计参考。应保留 contest id、problem id、division、rating、tag、语言、prompt、模型解码、提交次数、verdict、时间戳和 Elo 计算版本。它对抗污染代码评测有价值，因为近期官方平台题减少了对复制 hidden tests 的依赖。若要转成训练 reward 流，必须先审查平台政策，并严格控制提交频率、来源和污染。

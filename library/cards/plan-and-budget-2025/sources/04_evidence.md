@@ -1,0 +1,5 @@
+The final paper is published at ICLR 2026 (OpenReview record) and arXiv v3 is dated 2 March 2026. The linked author repository is public and MIT licensed; it contains preprocessing, inference, task-evaluation code, pre-decomposed input directories, and commands for reproduction. At verification time, no tagged release or author-run results package was observed.
+
+The authors report, over five runs, that Plan-and-Budget outperforms Vanilla and Global Budget in E3 across their reported task/model comparisons, with a maximum reported E3 improvement of 193.8% (paper §5.2). For a concrete MATH-500 comparison in the paper, DeepSeek-R1-Distill-Llama-70B under Global Budget obtains E3 4.55 and Plan-and-Budget obtains 5.89 (+29.4%); o4-mini changes from 13.25 to 15.95 (+20.3%). These are author-reported aggregate results, not independent replications and not measurements of data quality.
+
+The evidence supports method availability and the stated evaluation protocol. It does not support claims that the planning credits are calibrated, that process guidance is faithful, that benchmark items are uncontaminated, or that released pre-decompositions are suitable for training.

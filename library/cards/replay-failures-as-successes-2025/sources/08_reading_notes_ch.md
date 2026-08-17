@@ -1,0 +1,6 @@
+- 将 HIR-16K、策略 rollout 流和被选 hindsight 样本视为三个不同对象；本卡片公开链接的只有 prompt/constraint 数据集。
+- 硬约束使用规则或代码，软约束使用学习型 judge；每次决定都应保留约束类型与 checker/judge 版本。
+- replay 改写指令，不修改回答；原 prompt、全部 criteria、逐项结果、改写 prompt 和未改回答之间的审计链不可缺失。
+- 伪指令下成功不等于原指令下成功，二者终止判据不同。
+- entropy 是 curriculum 特征，不是数据质量分数；应检查它对长度、解码和 checkpoint 的依赖。
+- 复用前审计 viewer/schema 故障、精确来源版本、上游许可、拒绝候选、rollout group 与 judge/checker 误差行为。

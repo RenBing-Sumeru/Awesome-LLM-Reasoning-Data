@@ -1,0 +1,3 @@
+The evidence is the benchmark scale and its cross-domain split: 10,181 questions, 5,693 unique complex SQL queries, 200 databases, and 138 domains. Instance-level evidence is the gold SQL query plus the database and official evaluator result, not a natural-language explanation.
+
+Spider became difficult because test databases are unseen and many queries require joins, nested queries, grouping, ordering, and set operations. Reported scores across papers are only comparable when the same Spider release, evaluator, database files, value-matching policy, and hidden test protocol are used. Public train/dev examples are now high-contamination risk for modern LLMs.

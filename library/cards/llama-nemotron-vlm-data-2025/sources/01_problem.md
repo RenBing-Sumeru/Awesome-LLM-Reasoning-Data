@@ -1,0 +1,5 @@
+Frontier VLM reports rarely disclose how raw multimodal sources are selected, reformatted, balanced, and filtered into a competitive post-training mixture.
+
+Eagle 2 studies each data strategy from scratch and releases the resulting capability-labeled conversation mixture with per-source licensing metadata. The decision boundary is whether a serialized training record survives data-source quality studies, deduplication, task balancing, and fixed-model ablations; the central artifact is data consumed by frontier VLM post-training SFT, not a model-only release.
+
+L4 facts: primary source arXiv:2501.14818; arXiv preprint; data object Llama-Nemotron-VLM-Dataset-v1 with millions of post-training conversations, including 1.92M VQA, 814K OCR, and 132K captioning records; evaluation surface Eagle2-9B matches or exceeds several compared VLMs with up to 70B parameters across the reported multimodal benchmark suite, supporting the data-centric recipe rather than parameter scale alone.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

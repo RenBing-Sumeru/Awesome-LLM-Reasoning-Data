@@ -1,0 +1,3 @@
+Token-level DPO work commonly estimates importance from probability, advantage, or optimization behavior. AAO changes a different property: semantic overlap between the two members of the stored preference pair. The same answer text can therefore receive less learning influence when it is a background statement repeated on both sides, even if its raw token probability is high.
+
+Its adaptive thresholds make the semantic partition part of the trained mechanism rather than a fixed preprocessing rule. The paper also keeps a deliberately neutral transitional group instead of forcing every token to be either discarded or emphasized. This isolates a concrete training-use claim: semantic redundancy inside a pair is a separate source of ambiguous supervision.

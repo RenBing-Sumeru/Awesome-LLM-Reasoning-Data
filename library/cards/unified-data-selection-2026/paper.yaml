@@ -1,0 +1,199 @@
+id: unified-data-selection-2026
+title: Unified Data Selection for LLM Reasoning
+year: 2026
+venue: ICLR 2026 submission / arXiv preprint
+authors:
+- Xiaoyuan Li
+- Yubo Ma
+- Chengpeng Li
+- Fengbin Zhu
+- Yiyao Yu
+- Keqin Bao
+- Wenjie Wang
+- Fuli Feng
+- Dayiheng Liu
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- trajectory_value
+domains:
+- mathematical_reasoning
+- code_generation
+- stem_reasoning
+training_use:
+- sft
+- rlvr
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.22389
+  arxiv: https://arxiv.org/abs/2605.22389
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.22389
+  venue: https://openreview.net/forum?id=heVn5cNfje
+  openreview: https://openreview.net/forum?id=heVn5cNfje
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2605.22389
+data_object:
+  prompt_source: SFT experiments draw mathematical, code and STEM prompts from a Mixture-of-Thoughts pool built from OpenR1-Math,
+    Open-Math-Reasoning, Codeforces-CoT and Llama-Nemotron STEM collections. RFT and RL experiments use DeepScaleR mathematical
+    prompts. Exact sampled record identifiers and immutable source revisions are not disclosed.
+  trace_author: Existing reasoning demonstrations supply the SFT candidate traces. DeepSeek-R1-Distill-Qwen-7B generates 32
+    RFT candidates per DeepScaleR prompt, while DeepSeek-R1-Distill-Qwen-1.5B generates 32 online GRPO rollouts per prompt
+    in the RL experiment.
+  answer_format: A candidate record consists of a reasoning response ending in an answer, plus token-level next-token distributions
+    used to compute entropy. RFT adds a correctness outcome before HES ranking; RL separates successful and failed rollout
+    trajectories and selects a composed positive/negative training batch.
+  process_fields:
+  - prompt and full reasoning response
+  - token-level predictive entropy along the response
+  - high-entropy token set selected by within-response percentile or an absolute threshold
+  - summed high-entropy score HES and optional average high entropy AvgHE
+  - answer correctness outcome for RFT and RL
+  - per-query or global selection rank for RFT
+  - successful or failed rollout group and positive/negative sampling strategy for RL
+  environment_or_substrate: Offline teacher-forced model scoring supplies token probabilities for SFT and RFT selection. Online
+    rollout logits already produced during GRPO generation supply RL entropy values. The exact tokenizer contract, entropy
+    implementation, score serialization format and correctness-verifier implementation are not disclosed.
+  verifier_or_reward: HES is an intrinsic uncertainty-based selection score, not a correctness verifier. RFT first filters
+    to correct trajectories and then ranks them by HES. RL uses rollout success/failure outcomes and obtains the strongest
+    reported result by combining high-HES successful trajectories with randomly sampled failed trajectories; the exact answer-checking
+    implementation is unknown.
+  terminal_predicate: SFT selects the top fraction of candidate demonstrations by HES. RFT keeps up to k highest-HES correct
+    responses per prompt or selects a global HES-ranked volume-matched pool. RL constructs a reduced GRPO batch from selected
+    successful and failed rollouts; benchmark answer correctness is used for reported evaluation.
+recipe_metadata:
+  base_model: Qwen3-8B-Base is the main SFT model. DeepSeek-R1-Distill-Qwen-7B is used for RFT, and DeepSeek-R1-Distill-Qwen-1.5B
+    is used for the GRPO experiment. A Qwen-family 0.6B proxy is also evaluated for lower-cost SFT selection.
+  teacher: No single external teacher contract is specified. SFT scores existing demonstrations, whereas the RFT and RL base
+    policies generate their own candidate trajectories. Upstream datasets can themselves contain synthetic teacher traces,
+    but exact teacher lineage is not unified or pinned by this paper.
+  generator: For each response token, compute predictive entropy over the model vocabulary. The primary relative HES sums
+    entropy at tokens in the top 0.5% of that response's entropy ranking; an absolute variant sums entropy above tau=1.6,
+    and AvgHE divides the sum by the number of selected high-entropy tokens.
+  filtering_rule: SFT ranks complete demonstrations by relative HES and retains the top rho, using rho=0.2 for efficiency
+    and rho=0.8 for denoising studies. RFT discards incorrect responses before selecting high-HES correct trajectories. RL
+    compares positive/negative rollout samplers and reports Pos-High plus Neg-Rand as strongest on average.
+  sampling_protocol: RFT samples 32 responses for each DeepScaleR prompt and evaluates per-query top-k settings k=2, 4 and
+    8; prompts with fewer than k correct responses contribute all correct responses. Global selection pools correct responses
+    across prompts and matches the per-query data volume. RL samples 32 rollouts per prompt at temperature 0.6 and selects
+    only 50% of the rollout data for the reduced batch.
+  rollout_count: 32
+  temperature: 0.6 for the reported GRPO rollout experiment; a complete decoding-temperature contract for every SFT/RFT scoring
+    or generation path is not disclosed.
+  inference_budget: Relative HES uses the top 0.5% entropy-ranked tokens in each trace. The paper argues that online RL scoring
+    needs no extra model forward pass because rollout logits are already available, but it does not report measured entropy-computation
+    latency, memory, hardware time or monetary cost.
+  optimizer_or_scaffold: SFT and RFT use AdamW with learning rate 4e-5, cosine scheduling, 0.1 warmup, global batch size 64
+    and three epochs. RL uses verl GRPO with maximum generation length 8192, 32 rollouts per prompt, temperature 0.6 and three
+    epochs over 628 steps.
+audit:
+  source_mixture: The SFT pool combines OpenR1-Math, Open-Math-Reasoning, Codeforces-CoT and Llama-Nemotron STEM through Mixture-of-Thoughts;
+    the paper describes sampling approximately 100,000 examples from the source collections for each of the Math, Code and
+    STEM domains. RFT and RL use DeepScaleR. Exact selected IDs, HES scores and rejected-record manifests are not released.
+  split: The exact SFT sample manifest, random seeds, dataset snapshots and train/evaluation overlap ledger are unknown. RFT
+    per-query selection preserves prompt coverage when correct candidates exist, whereas global selection can concentrate
+    trajectories on fewer prompts. Stage-wise candidate, correctness-filter and retention counts are not reported.
+  decontamination: unknown. No paper-specific exact, near-duplicate or semantic-overlap procedure is disclosed across the
+    mixed SFT sources, DeepScaleR prompts and evaluation suites. LiveCodeBench is described upstream as contamination-resistant,
+    but that does not constitute a unified audit for this paper's training mixture.
+  license: The arXiv and OpenReview paper records use CC BY 4.0. The paper lists upstream licenses including Apache-2.0 for
+    OpenR1-Math and Mixture-of-Thoughts, CC BY 4.0 for Open-Math-Reasoning and MIT for DeepScaleR. No paper-specific selected
+    dataset, code repository or artifact license is available because no such release was verified.
+  lineage: Candidate reasoning traces are scored by a model's token entropy, reduced to a response-level HES, and ranked for
+    downstream SFT, correctness-filtered RFT or online GRPO batch construction. The current paper does not publish record-level
+    source IDs, tokenizer/model revision, score files, accepted and rejected lists, correctness decisions or rollout lineage
+    needed to reconstruct these transformations exactly.
+  known_failure_modes:
+  - HES measures model uncertainty, not semantic correctness. The paper observes that incorrect trajectories can have higher
+    HES than correct trajectories, so high-HES selection without a separate correctness contract can prefer failures.
+  - The exact RFT/RL correctness verifier, answer normalization, tolerance and failure policy are not disclosed. Correctness-filtered
+    selection therefore cannot be reproduced or audited record by record.
+  - Relative HES depends on tokenization, vocabulary probabilities, special-token handling, percentile rounding and tie behavior,
+    none of which receive a tokenizer-sensitivity study or complete implementation contract.
+  - Summing the top within-trace entropy fraction still changes the number of contributing tokens with response length. Length-stratified
+    results support the method most clearly for medium and short traces, while the reported long-trace top-versus-bottom gap
+    is small.
+  - The paper sweeps high-entropy ratios 0.005, 0.05, 0.5 and 1.0 and compares an absolute threshold tau=1.6, but a best setting
+    on the reported mixtures does not establish transfer to different tokenizers, model calibrations or domains.
+  - Global RFT selection can sacrifice query coverage by selecting multiple high-HES traces from a smaller prompt subset;
+    per-query selection avoids this concentration but depends on how many correct samples each prompt produces.
+  - Random failed trajectories outperform low-HES failed trajectories in the reported RL composition. This shows that the
+    negative-data distribution materially affects results and that HES alone does not define a complete training-data recipe.
+  - The claim of no additional forward passes for online HES does not quantify the O(vocabulary) entropy operations, logit
+    retention, communication or memory overhead.
+  - The 0.6B proxy reduces selection inference cost according to the paper, but the reported 1/13 ratio is not accompanied
+    by measured hardware, wall-clock, energy or monetary accounting.
+  - No official paper-specific code, selected SFT/RFT data, rollout data, failed trajectories, HES score tables, tokenizer
+    configuration or checkpoints were verified, limiting independent reproduction and open-release auditability.
+  - OpenReview lists eight authors, while the later arXiv version lists nine authors, adds Fengbin Zhu and changes the order
+    of Keqin Bao and Yiyao Yu. Consumers should pin the cited version rather than assume identical authorship metadata.
+  citation_status: verified
+  confidence: medium
+  notes: The official OpenReview record identifies Submission 8937 as submitted to ICLR 2026 and does not provide a verified
+    acceptance decision; the later arXiv record says Under Review. Venue is therefore recorded conservatively as an ICLR 2026
+    submission / arXiv preprint. The current nine-author arXiv metadata is used, with the OpenReview authorship mismatch retained
+    as an audit note. Official paper links are verified, but release artifacts and several implementation details remain unavailable.
+inclusion_reason: Unified Data Selection makes token-entropy ranking an explicit cross-stage recipe for selecting supervised
+  demonstrations, correctness-filtered rejection-finetuning traces and online RL rollouts, while its missing tokenizer, verifier
+  and record-level release contracts expose exactly the audit risks central to reasoning-data construction.
+related:
+- openr1-math-220k-2025
+- open-math-reasoning-2025
+- deepscaler-2025
+tags:
+- high-entropy-tokens
+- data-selection
+- rejection-finetuning
+- supervised-finetuning
+- grpo
+- rollout-selection
+- correctness-filtering
+- length-sensitivity
+- tokenizer-sensitivity
+- release-audit
+status: partial
+one_line_summary: Unified Data Selection ranks reasoning trajectories by entropy concentrated at their highest-uncertainty
+  tokens and applies the score to SFT, correctness-filtered RFT and online GRPO rollout selection.
+why_it_matters: It exposes a unified selection signal across three post-training stages and provides useful threshold, length
+  and proxy-model ablations, but reuse still depends on undisclosed tokenizer details, correctness checks, record manifests
+  and selected-data releases.
+card: null
+needs:
+- 'needs_release: publish immutable selected SFT and RFT manifests, online RL rollouts, accepted and rejected records, HES
+  scores and source-record identifiers'
+- 'needs_implementation: release entropy computation and selection code with tokenizer/model revisions, vocabulary scope,
+  special-token policy, percentile rounding, tie handling and short-trace behavior'
+- 'needs_verifier: document and release the RFT/RL answer normalizer, correctness verifier, tolerance rules, failure handling
+  and per-candidate correctness decisions'
+- 'needs_lineage: pin upstream dataset revisions, exact sampled IDs, random seeds, stage-wise yields and prompt-coverage statistics'
+- 'needs_cost: report HES compute, logit-storage and communication overhead plus measured proxy-selection wall-clock, hardware,
+  energy and monetary cost'
+- 'needs_decontamination: publish exact, near-duplicate and semantic-overlap checks against all evaluation suites'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: medium
+  notes: arXiv and OpenReview identity are verified. No acceptance record, official code, paper-specific dataset, project
+    page or Hugging Face release was verified; tokenizer, verifier and record-level lineage contracts remain partial or unknown.
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives

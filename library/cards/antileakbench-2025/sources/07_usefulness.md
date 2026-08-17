@@ -1,0 +1,1 @@
+Use it to evaluate retrieval or long-context QA after a declared cutoff. Supply source snapshots, build items, and report gold and distractor performance with provenance checks. Do not use it to establish general reasoning quality beyond time-sensitive factual QA.

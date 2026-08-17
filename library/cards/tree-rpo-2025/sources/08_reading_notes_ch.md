@@ -1,0 +1,4 @@
+- 应核对的轨迹单元：Token-length-segmented reasoning-tree branches with leaf verifiable rewards, back-propagated intermediate step values, sibling-group advantages, and final answers.
+- 应验证的反馈契约：A verifiable reward function evaluates complete leaf paths. TreeRPO does not use a separate process reward model; it estimates step values from descendant leaf rewards.
+- 应比较的构建/筛选决策：A sibling group is retained only when its reward distribution passes the stated variance-threshold criterion. The reported default pruning coefficient is 0.1.
+- 依赖结果前的复用门槛：needs_tree_trace_release; needs_item_level_data_manifest; needs_decontamination

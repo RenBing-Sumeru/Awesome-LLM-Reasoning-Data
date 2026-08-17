@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SPA-Bench 发布 340 个中英双语 Android 任务、40 个跨应用 subtask JSON 与 OCR/GPT-4o evaluator 代码，但未发布人类截图 demonstration、论文实验轨迹/结果或可复现 AVD snapshot，且动态外部状态与 judge 偏差限制其用途为 evaluation 与 audit。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "双语智能手机 agent 基准、环境与混合验证器论文",
+  "best_for_ch": "研究移动 GUI agent、环境交互轨迹、OCR/MLLM verifier、动态状态重放、失败诊断与 benchmark 审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Jingxuan Chen、Derek Yuen、Bin Xie、Yuhao Yang、Gongwei Chen、Zhihao Wu、Yixing Li、Xurui Zhou、Weiwen Liu、Shuai Wang、Kaiwen Zhou、Rui Shao、Liqiang Nie、Yasheng Wang、Jianye Hao、Jun Wang、Kun Shao",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

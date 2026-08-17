@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "强化学习偏好对构建",
+    "updated_at": "2026-07-15T05:04:21Z"
+  },
+  "updated_at": "2026-07-15T05:04:21Z"
+}

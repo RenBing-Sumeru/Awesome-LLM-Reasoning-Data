@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Qwen3.5 报告了在面向智能体环境中扩展多模态和多轮 RL，并发布后训练检查点；但未发布审计或复现该训练所需的任务、轨迹、奖励、环境工件或溯源信息。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿多模态智能体发布报告与数据披露台账",
+  "best_for_ch": "需要审计多模态智能体 RL、环境披露与开放权重边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-15T08:45:06Z"
+}

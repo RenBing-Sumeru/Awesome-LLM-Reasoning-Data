@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenWebRL公开412条success-only SFT轨迹、2,198个RL task spec、hybrid trajectory reward与训练框架，但约54K online rollout未确认发布，2,102默认快照、live-web replay及Judge-13K权利仍需单独审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "视觉Web智能体在线多轮强化学习框架与轨迹/任务/judge数据发布",
+  "best_for_ch": "研究Web智能体SFT、online RL、全轨迹奖励、VLM judge与live-web复现审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Rui Yang, Qianhui Wu, Yuxi Chen, Hao Bai, Wenlin Yao, Hao Cheng, Baolin Peng, Huan Zhang, Tong Zhang, Jianfeng Gao",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

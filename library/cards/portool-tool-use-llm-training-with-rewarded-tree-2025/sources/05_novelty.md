@@ -1,0 +1,5 @@
+The central novelty is matched-prefix credit assignment. Instead of finding similar states across independently sampled episodes, PORTool constructs sibling alternatives under an identical query and executed history. This turns sparse outcome supervision into a local comparison without requiring a learned process reward model or canonical next-tool labels.
+
+The tree also prevents inconsistent credit for a shared step: all complete paths traversing one prefix node contribute to one importance value. Theorem 3.1 analyzes how uniform trajectory credit can reduce the probability of a necessary step; Theorem 3.2 motivates normalization-aware mixing of fork- and trajectory-level objectives.
+
+This is an algorithmic and construction contribution, not a dataset release. SFT supplies initialization, while online agentic RL supplies the main learning signal. The reusable insight is the reward/trajectory contract—shared prefix, sibling actions, descendant outcomes, auxiliary execution evidence, and terminal labels—provided a future release preserves all branches and their lineage.

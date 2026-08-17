@@ -1,0 +1,1 @@
+已有工作已经有移动截图、网页小环境、人类手机轨迹和 Android wrapper；AndroidWorld 的新意在于把评测对象改成可运行、参数会变化、由程序化 validator 验收的手机任务实例。质量信号来自官方 task list 和可执行检查器，而不是单纯的人工描述。Android emulator、accessibility tree、多模态 prompt 本身并不新。复用前要检查 validator 是否只接受狭窄 UI 路径、等价完成方式是否被拒绝、公开任务是否污染训练，以及 app 状态漂移是否改变难度。

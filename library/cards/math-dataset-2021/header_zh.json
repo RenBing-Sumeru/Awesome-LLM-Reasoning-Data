@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MATH 将竞赛级数学题系统化，覆盖代数、几何、数论、组合等方向，是硬数学评测的根节点之一。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要了解 benchmark 规模、scorer 契约、split/contamination 风险，并把评测结果用于 reasoning-data 审计的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dan Hendrycks 等（UC Berkeley, University of Chicago）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T12:00:02Z"
+}

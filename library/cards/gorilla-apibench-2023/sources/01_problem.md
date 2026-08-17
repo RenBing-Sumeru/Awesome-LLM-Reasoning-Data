@@ -1,0 +1,5 @@
+Gorilla / APIBench evaluates API-calling LLMs with documentation-grounded instructions and AST-based tool-call matching. The primary sources are the NeurIPS 2024 proceedings record, arXiv 2305.15334, the Gorilla project site, and the ShishirPatil/gorilla repository.
+
+The concrete problem is whether an LLM can select and call APIs correctly from large changing documentation collections instead of hallucinating tools. The decision boundary is API tool-use benchmark and data release, not a live multi-step environment benchmark.
+
+The data object or evaluation surface is APIBench records built from HuggingFace, TorchHub, and TensorHub/TensorFlow Hub documentation; the paper reports 1,645 filtered API calls with 10 synthetic instruction-API pairs per API and metadata such as API name, arguments, domain, framework, requirements, examples, and descriptions. This is useful for the atlas because it makes the feedback contract explicit: AST subtree matching of generated API calls and arguments, with hallucination counted when the call matches no API in the database.

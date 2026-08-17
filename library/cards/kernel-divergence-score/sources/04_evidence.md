@@ -1,0 +1,1 @@
+Evidence boundary: The ICML paper reports a strong correlation between its score and assigned contamination levels in controlled settings, with comparisons to the paper's evaluated baselines. This is evidence for the reported setting, not a substitute for an independent provenance or contamination audit of a later dataset.

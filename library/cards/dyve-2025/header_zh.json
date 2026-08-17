@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "这是一个开放的 process-supervision 配方：它过滤带噪 MCTS 轨迹，并把保留步骤转换成单 token 快速判决或带分析的慢速验证 target。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "生成式 process verifier、监督配方与开放发布",
+  "best_for_ch": "构造 process-reward data、训练 step verifier、过滤搜索轨迹，或研究验证精度与推理成本权衡的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Jianyuan Zhong, Zeju Li, Zhijian Xu, Xiangyu Wen, Qiang Xu",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-22T00:00:00Z"
+}

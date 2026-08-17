@@ -1,0 +1,6 @@
+- 区分三个规模分母：31,725 条轨迹、317,993 个步骤、428 个 domain；摘要中的 318K 是步骤数的舍入值。Triple Alignment 同步视觉、HTML/Accessibility 结构与 grounded action，但全页面截图只覆盖部分记录。
+- 保持 provenance 分层：任务文本由 LLM 根据网站功能 schema 合成，动作轨迹由人执行，Chain-of-Thought 风格解释由未具名 VLM 生成；“人工标注轨迹”不等于所有字段都由人创作。
+- step reward 结合动作类型与参考内容匹配；coordinate-in-box 与词汇覆盖不是通用终局验证。WebChainBench 有 1,200 个 held-out 步骤。
+- 3B 模型的 WCB-L 结果为：直接 LCRL 0.487、加入 CoT-SFT 0.603、加入 SGRL 0.629、两者同时加入 0.658。它们与 scaling 结果都是训练证据，不是数据质量证书。
+- HF artifact 需要人工审批并采用 WebChain Academic Research License v1.0。应固定 revision `ae99f420a646866fd3f6d70ca5984efa0eca5a77`；原始记录需自定义解析、modality 覆盖不一，且 quick-start namespace 与实际仓库不一致。
+- arXiv 链接的 GitHub 仓库在检查时只有说明材料。生成器/VLM 身份与 prompt、尝试/拒绝数量、标注与成功裁决协议、split/去污染 manifest、逐网站权利审查及逐记录隐私/重放元数据仍为 unknown。

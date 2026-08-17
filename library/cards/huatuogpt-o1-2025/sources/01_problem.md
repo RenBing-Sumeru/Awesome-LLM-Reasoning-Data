@@ -1,0 +1,5 @@
+Open medical chat data lacks hard, objectively checkable problems for teaching complex reasoning and supporting stable reinforcement learning.
+
+HuatuoGPT-o1 filters medical exams into 40K verifiable problems, distills complex traces for half, and uses the remaining half for answer-reward RL. The decision boundary is whether a serialized training record survives known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards; the central artifact is data consumed by medical CoT SFT followed by verifiable RL, not a model-only release.
+
+L4 facts: primary source arXiv:2412.18925; Findings of ACL 2025; data object medical-o1-reasoning-SFT with 40K verifiable medical problems, with 20K complex-CoT SFT examples and 20K RL problems; evaluation surface Using 40K verifiable problems, the 8B model gains 8.5 points on the paper's medical benchmark aggregate; the 70B model also exceeds the compared open medical and general models.; collection note: full paper, official README, license, schema, and an actual public record checked on 2026-07-27.

@@ -1,0 +1,19 @@
+{
+  "title": "Multimodal RewardBench 2: Evaluating Omni Reward Models for Interleaved Text and Image",
+  "candidate_links": {
+    "paper": "https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Multimodal_RewardBench_2_Evaluating_Omni_Reward_Models_for_Interleaved_Text_CVPR_2026_paper.html",
+    "data": "https://huggingface.co/datasets/rl-research/multimodal-rewardbench-2",
+    "code": "https://github.com/facebookresearch/MMRB2",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-17T06:47:30Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "4000个专家偏好对，图文交错与推理，适合统一多模态Judge研究",
+    "updated_at": "2026-07-17T06:47:30Z"
+  }
+}

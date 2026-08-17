@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI o3-mini System Card 披露了宽泛的预训练数据类别、过滤、大规模推理强化学习、deliberative alignment 与安全评测，但没有公开可复用记录、RL 奖励契约或可复现的后训练配方。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型系统卡与数据披露账本",
+  "best_for_ch": "审计闭源推理模型报告中已披露与未披露的后训练数据、反馈和复现边界",
+  "confidence_ch": "中",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

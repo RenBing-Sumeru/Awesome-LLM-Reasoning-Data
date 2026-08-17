@@ -1,0 +1,20 @@
+{
+  "institutions": [
+    "Peking University",
+    "The Hong Kong University of Science and Technology (Guangzhou)",
+    "Ocean University of China",
+    "Institute of Automation, Chinese Academy of Sciences",
+    "Harbin Institute of Technology, Shenzhen",
+    "Tsinghua University",
+    "Huawei Cloud BU"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-15T04:10:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2602.12876",
+    "https://arxiv.org/html/2602.12876",
+    "https://huggingface.co/datasets/Halcyon-Zhang/BrowseComp-V3/blob/main/README.md"
+  ],
+  "verification_note": "arXiv verifies title, authors, institutions, and preprint status. The Hugging Face BrowseComp-V3 dataset URL has been recorded from the curator-supplied README link; local network access could not independently verify the HF page during this update, so license, revision, split, and evaluator details still require artifact-level audit."
+}

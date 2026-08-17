@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Aider Polyglot 使用筛选后的 Exercism 题目，评测模型在 C++、Go、Java、JavaScript、Python 和 Rust 中完成代码编辑并通过测试的能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "关注多语言代码编辑、仓库级补丁生成和测试驱动代码评测的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Aider",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:21:49Z"
+}

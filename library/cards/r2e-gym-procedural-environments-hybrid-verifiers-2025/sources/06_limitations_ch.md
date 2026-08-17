@@ -1,0 +1,3 @@
+正确性只相对于 automated unit-test 奖励 inside R2E-Gym plus hybrid execution-based and execution-free 验证器s for reranking/scaling; SWE-Bench Verified final scores use the official SWE-Bench harness. 成立。通过分数不自动证明鲁棒推理、安全行为、解释忠实，或能迁移到 benchmark 分布之外。
+
+隐藏假设包括：Pin dataset name, train/test split, task version, 运行时镜像, 评测器版本, and SWE-Bench harness revision before comparing results.；Official GitHub repository is Apache-2.0; Hugging Face dataset/model card license details should be checked per artifact snapshot before redistribution or 训练 reuse.；依赖或运行时漂移；裁判或评测器版本漂移；以及污染风险：Public generated tasks, trajectories, models, and SWE-Bench 评测 surfaces can leak into future agent 训练 or 验证器 训练。除非发布版本暴露训练输入、过滤规则和优化用途，否则这张卡不能被读成训练配方证据。

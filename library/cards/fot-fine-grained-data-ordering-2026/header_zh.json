@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "FOT 按模型相对难度为样本打分，在第一轮按由易到难训练，之后恢复随机顺序。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "细粒度训练数据调度研究",
+  "best_for_ch": "为持续预训练或监督微调设计课程顺序、但不希望丢弃样本的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiaomeng Hu, Yixuan Tang, Haoze Li, Hao Chen, Qi Zhang, Zhanming Shen, Yiming Zhang, Haobo Wang, Junbo Zhao",
+  "category_ids": ["training_usage_optimization_objectives"],
+  "updated_at": "2026-07-16T12:00:00Z"
+}

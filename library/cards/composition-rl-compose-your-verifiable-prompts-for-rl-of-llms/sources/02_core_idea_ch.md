@@ -1,0 +1,1 @@
+官方 Polaris-Composition-1323K 含约 132.3 万条组合式可验证 prompt。单条记录由若干原始子题、组合指令、各子题参考答案和可判定的联合输出格式组成；最终 reward 要求模型按约定返回全部子答案，并由对应规则逐项核验。数据可从已饱和题库自动扩展，重点是 prompt composition 与 verifier composition，模型训练只用于证明这些新提示能继续提供梯度。

@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "OSWorld 2.0 增加长时程真实计算机使用任务和轨迹发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv/project release 的 long-horizon OS-agent benchmark",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mengqi Yuan 等（XLANG Lab, The University of Hong Kong）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T12:30:00Z"
+}

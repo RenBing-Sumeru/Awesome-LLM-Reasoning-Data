@@ -1,0 +1,5 @@
+1. Inputs: tool or agent schema, optional domain policy, task instruction, and a failed trajectory with step-indexed events. 
+2. Benchmark construction: the authors sample failed runs from three domains, mark all observed failure events, then work backward from the terminal failure to select the earliest unrecovered critical step. 
+3. Diagnostic pipeline: AgentRx normalizes logs, synthesizes global constraints from schema/policy, synthesizes dynamic constraints from each trajectory prefix, evaluates guarded assertions as SAT, VIOL, or SKIP, and stores step-indexed evidence for violations. 
+4. Outputs: a validation log, predicted critical failure step, and predicted taxonomy category. Programmatic predicates and LLM-based semantic checks provide constraint evidence; an LLM judge maps that evidence to the final step/category. 
+5. Reproducibility boundary: reuse must pin the source trajectories, domain policies, tool schemas, annotator taxonomy, LLM checker/judge model, prompts, sampling budget, and whether private Flash traces or public Magentic/tau-bench artifacts are available.

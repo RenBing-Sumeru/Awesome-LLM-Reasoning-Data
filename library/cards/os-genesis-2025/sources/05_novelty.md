@@ -1,0 +1,5 @@
+The novelty is not simply using an LLM to write GUI instructions. OS-Genesis changes the causal order of collection: an interaction that the current environment demonstrably supports is discovered first, and language tasks are synthesized afterward. This reduces the mismatch between imagined tasks and dynamic GUI state and can expose functions overlooked by initial-screen task proposal.
+
+Its second contribution is a graded utilization policy for failure. Prior binary labelers typically retain complete trajectories and discard incomplete ones. OS-Genesis treats partial episodes as potentially useful exploration evidence, scores completion and coherence on five levels, and uses the score as a sampling weight. The approach therefore couples environment-grounded task invention, model execution, and feedback-weighted SFT in one construction recipe.
+
+The method should not be read as a new deterministic verifier. TRM is an LLM judge with measured correlations, not an executable proof of task completion. Environment-native success predicates appear in downstream benchmarks, while construction-time supervision remains model based.

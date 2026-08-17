@@ -1,0 +1,4 @@
+For Qwen2.5-7B, the paper reports its strongest general-purpose-upweighted blend averaging 58.12 across seven benchmarks, versus 44.75 for the base model and 55.20 for ORZ-7B under the stated setup. It reports gains of 30.1 points on MATH-500, 27.5 on AMC23, 12.8 on MMLU-PRO, 11.3 on GPQA-Diamond, 15.1 on AGIEVAL, and 3.8 on SUPERGPQA, plus 28% fewer tokens among correct responses. Format ablations report unified open-ended questions ahead of mixed MCQ/open format by 1.21 average points and short answers ahead of long by 1.20.
+
+These are paper-reported training outcomes, not proof that every prompt, gold answer, blend decision, or exact-match reward is correct. The official dataset verifies artifact existence, split sizes, schema, CC BY 4.0 label, and sample rows. It does not independently reproduce the 588,645-prompt training mixture or expose online trajectories and rewards.
+

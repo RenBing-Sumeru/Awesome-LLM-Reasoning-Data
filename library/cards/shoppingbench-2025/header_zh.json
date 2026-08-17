@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ShoppingBench 用复杂购物意图和轨迹评测购物智能体。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "AAAI 2026 Oral / arXiv 的 shopping-agent benchmark",
+  "best_for_ch": "关注 Web/浏览器智能体、环境化评测、轨迹数据、验证器和污染风险的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiangyuan Wang 等（Alibaba International Digital Commercial Group）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T19:19:25Z"
+}

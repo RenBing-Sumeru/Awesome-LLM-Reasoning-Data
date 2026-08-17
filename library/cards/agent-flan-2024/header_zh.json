@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Agent-FLAN 把代理轨迹改写为按能力配比的自然对话，并加入不应调用工具的负例，共公开 24,703 条 SFT 记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代理训练数据重设计与工具使用监督研究",
+  "best_for_ch": "适合研究代理数据表达、能力混合权重、工具调用幻觉和负例监督的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zehui Chen, Kuikun Liu, Qiuchen Wang, Wenwei Zhang, Jiangning Liu, Dahua Lin, Kai Chen, Feng Zhao",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T12:00:00Z"
+}

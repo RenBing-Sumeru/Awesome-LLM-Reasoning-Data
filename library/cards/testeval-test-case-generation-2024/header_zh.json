@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "TESTEVAL 用 210 个 Python 程序评测测试用例生成，覆盖整体覆盖率、指定行/分支覆盖和指定路径覆盖三类任务。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NAACL 2025 Findings / arXiv 的评测面",
+  "best_for_ch": "关注测试用例生成、控制流理解、覆盖率目标和可执行测试反馈的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wenhan Wang 等（University of Alberta、University of Tokyo、UIUC、Huazhong University of Science and Technology）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T10:42:16Z"
+}

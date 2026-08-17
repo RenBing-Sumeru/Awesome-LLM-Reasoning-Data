@@ -1,0 +1,5 @@
+Compressed CoT reduces training and inference tokens, but shorter traces can mean two different things: several operations are composed into one explicit step, or intermediate operations are omitted entirely. Existing post-training studies rarely isolate how those choices interact with data scale, repetition, generalization length, and later RLVR.
+
+Zipping the Thought builds a fully controlled modulo-arithmetic task and renders each dependency chain as Explicit, Composed, or Implicit CoT at chosen granularities. It then varies only trace type, data budget, order, or SFT/RLVR stage to identify when compressed reasoning is learned, memorized, or decomposed again.
+
+L4 facts: official source arXiv:2605.28008, 2026; preprint marked under review with no confirmed acceptance; decision boundary is a controlled reasoning trace whose operations, compression, split, and answer are generator-known; Track-01 object is a synthetic question, selected CoT target, and exact answer; collected as an existing promoted Card.

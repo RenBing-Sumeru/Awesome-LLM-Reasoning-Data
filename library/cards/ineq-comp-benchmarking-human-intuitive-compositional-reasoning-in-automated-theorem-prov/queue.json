@@ -1,0 +1,19 @@
+{
+  "title": "Ineq-Comp: Benchmarking Human-Intuitive Compositional Reasoning in Automated Theorem Proving on Inequalities",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.12680",
+    "data": "https://huggingface.co/datasets/zzzzzhy/Ineq-Comp",
+    "code": "https://github.com/haoyuzhao123/LeanIneqComp",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T09:42:17Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "用变量改写和组合生成不等式证明题，官方 Parquet 数据含 375 个 Lean 不等式任务",
+    "updated_at": "2026-07-19T09:42:17Z"
+  }
+}

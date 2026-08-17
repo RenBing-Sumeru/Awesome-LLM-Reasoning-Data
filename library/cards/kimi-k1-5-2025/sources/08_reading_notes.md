@@ -1,0 +1,5 @@
+- Treat the 10-sample difficulty estimate and N=8 answer-guess filter as reported prompt-selection mechanisms, not as a released RL dataset.
+- Separate direct code-test feedback, final-answer rewards, classic RM, and CoT RM; each has a different error and reward-hacking surface.
+- Record the disclosed coding-test thresholds exactly, but keep the remaining verifier calibration and false-error rates unknown.
+- Do not equate the official report repository with a release of Kimi k1.5 weights, data, code, or reproducible infrastructure.
+- Keep this Card in Track 12: it audits partial disclosure and missing artifacts rather than attributing gains to Track 8 scaling.

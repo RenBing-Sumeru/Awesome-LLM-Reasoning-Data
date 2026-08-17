@@ -1,0 +1,6 @@
+- 先读论文第 2–3 节与表 2：数据对象是覆盖 32 个 MCP server/application 表面和 604 个 MCP 工具的 108 个可执行模糊任务，不是静态 prompt 集合。
+- 必须明确监督边界：日志包含 state-action-tool 事件，但正确性只是一个确定性终态 `pass`；论文未披露 step-level reward 或 process label。
+- 应把论文表 3 与第 5 节一起读：38.6% 是论文快照最高 mean Pass@1，而 15%–35% overlong-output incidence 表明 scaffold 行为也是测量的一部分。
+- 应把 Toolathlon-Verified（2026-06-30）视为实质修订的 release，而不是论文的静默替代；审计当前 artifact 时固定 repo `3b647e6` 与 HF `01deb37`。
+- 建议与 MCP-AgentBench、τ2-bench 和 TheAgentCompany 对读，以比较 MCP 工具广度、有状态交互与长程多应用评测契约。
+- 复用前应解决许可证，检查 gated archive 与 decontamination 文件，测试 evaluator false positive/negative，并遵守官方 do-not-train policy。

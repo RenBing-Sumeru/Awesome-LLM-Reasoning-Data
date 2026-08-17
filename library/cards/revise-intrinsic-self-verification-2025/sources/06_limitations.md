@@ -1,0 +1,5 @@
+Outcome labels can mark a path correct despite flawed intermediate reasoning, spurious computation, or lucky answer extraction; they can also miss valid alternative answer forms. Because supervision is path-level, calling the construction “process supervision” would overstate the evidence. The intrinsic `eos` probability is learned from these labels and inherits their errors.
+
+Stage 2 supplies supervised gold reasoning after the `refine` action rather than requiring the model to discover a repair. This can teach a correction format but does not show that the model's detected error causally led to the gold solution. MBPP additionally inherits external-model generation and unit-test-filter limitations, including incomplete tests and teacher artifacts.
+
+Exact dataset revisions, per-source prompt/path/pair counts, rejected samples, answer extractors, sampling budgets, seeds, contamination checks, train/evaluation overlap, pair release, checkpoints, and transformed-data license remain unknown. Confidence calibration under distribution shift and equal-budget comparisons with retry/search baselines are also required.

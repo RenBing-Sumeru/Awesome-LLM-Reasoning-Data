@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "GeoRC 以 500 个街景和 800 条冠军级玩家推理链，评测 VLM 的定位解释是否真正由视觉证据支撑。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "专家标注基准与 Judge 评测论文",
+  "best_for_ch": "关注多模态推理可审计性、专家参考答案和 LLM-as-a-Judge 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mohit Talreja、Joshua Diao、Jim Thannikary James、Radu Casapu、Tejas Santanam、Ethan Mendes、Alan Ritter、Wei Xu、James Hays",
+  "category_ids": ["judgment_rubric_domain_expert_data"],
+  "updated_at": "2026-07-25T00:00:00Z"
+}

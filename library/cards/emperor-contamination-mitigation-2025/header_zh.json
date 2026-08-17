@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以保真度和污染抵抗力审计基准更新策略。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基准污染缓解策略评测",
+  "best_for_ch": "需要选择或设计污染缓解方案的基准维护者。",
+  "confidence_ch": "高：已核对 ICML 正文、作者机构及官方代码仓库。",
+  "authors_ch": "Yifan Sun, Han Wang, Dongbai Li, Gang Wang, Huan Zhang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

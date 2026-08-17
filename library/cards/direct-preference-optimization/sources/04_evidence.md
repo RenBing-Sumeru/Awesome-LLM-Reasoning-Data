@@ -1,0 +1,1 @@
+Evidence boundary: The official paper presents the objective and reports experiments on the paper's evaluated preference-alignment settings. A generic DPO result does not validate a particular pair source or judge for reasoning. This is evidence for the reported setting, not a substitute for an independent provenance or contamination audit of a later dataset.

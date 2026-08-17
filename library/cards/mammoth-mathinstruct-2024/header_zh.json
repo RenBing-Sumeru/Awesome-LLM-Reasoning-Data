@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MAmmoTH 公开 MathInstruct，把 13 个来源的 26 万条自然语言 CoT 与可执行 PoT 示范用于混合数学 SFT。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "混合数学 rationale 数据集与 SFT 研究",
+  "best_for_ch": "适合设计自然语言与可执行程序混合数学示范语料的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Xiang Yue, Xingwei Qu, Ge Zhang, Yao Fu, Wenhao Huang, Huan Sun, Yu Su, Wenhu Chen",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

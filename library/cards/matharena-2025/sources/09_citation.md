@@ -1,0 +1,1 @@
+Mislav Balunovic, Jasper Dekoninck, Ivo Petrov, Nikola Jovanovic, and Martin Vechev. "MathArena: Evaluating LLMs on Uncontaminated Math Competitions." arXiv:2505.23281, 2025. Paper: https://arxiv.org/abs/2505.23281. Official platform: https://matharena.ai/. Official code: https://github.com/eth-sri/matharena. Official data/log organization: https://huggingface.co/MathArena.

@@ -1,0 +1,116 @@
+id: b-moca-2025
+title: Benchmarking Mobile Device Control Agents across Diverse Configurations
+year: 2024
+venue: CoLLAs 2025 / ICLR 2024 Workshop spotlight
+authors:
+- Juyong Lee
+- Taywon Min
+- Minyong An
+- Dongyoon Hahm
+- Haeone Lee
+- Changyeon Kim
+- Kimin Lee
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-gui-agents
+- interactive-agent-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- optimizer_scaffold
+- reward_verifier_layer
+artifacts:
+  project: https://b-moca.github.io/
+  venue: https://b-moca.github.io
+  paper: https://arxiv.org/abs/2404.16660
+  arxiv: https://arxiv.org/abs/2404.16660
+  code: https://github.com/jylee425/b-moca/tree/release/ver.3
+  data: https://github.com/jylee425/b-moca/tree/release/ver.3
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2404.16660
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct Android device-control tasks under varied configurations; exact split,
+    artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose Android device-control tasks under varied configurations, prompt/task metadata,
+    a model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: Android device-control tasks under varied configurations
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct Android device-control tasks under varied configurations; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: interactive_agent_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://b-moca.github.io/; https://arxiv.org/abs/2404.16660;
+    https://arxiv.org/pdf/2404.16660; https://github.com/jylee425/b-moca/tree/release/ver.3'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://b-moca.github.io'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: low
+  notes: Official project, arXiv, PDF, and repository sources verify KAIST/Yonsei affiliations, CoLLAs 2025 and ICLR 2024
+    workshop spotlight status, and the B-MoCA artifact. Project page spells the third author as Minyong Ahn, while arXiv/PDF/BibTeX
+    spell Minyong An; this Card follows arXiv/PDF. Artifact/license/split/scoring details remain review targets.
+inclusion_reason: Good generalization lead, source details need confirmation.
+related: []
+tags:
+- benchmark
+- interactive_agent_benchmark
+- mobile-gui-agents
+one_line: B-MoCA exposes Android device-control tasks under varied configurations as an auditable evaluation surface.
+why_it_matters: Good generalization lead, source details need confirmation.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: B-MoCA exposes Android device-control tasks under varied configurations as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: low
+  notes: Official project, arXiv, PDF, and repository sources verify KAIST/Yonsei affiliations, CoLLAs 2025 and ICLR 2024
+    workshop spotlight status, and the B-MoCA artifact. Project page spells the third author as Minyong Ahn, while arXiv/PDF/BibTeX
+    spell Minyong An; this Card follows arXiv/PDF.
+category_ids:
+- benchmarks_evaluation_surfaces

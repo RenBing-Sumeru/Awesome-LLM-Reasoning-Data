@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"Thought calibration 利用隐藏状态上的轻量探针与风险控制，在进一步思考不太可能带来新信息时终止推理轨迹。","reading_priority_ch":"必读","paper_type_ch":"面向测试时推理的校准早停研究（EMNLP 2025）","best_for_ch":"希望减少推理 token 成本并显式控制提前终止风险的读者。","confidence_ch":"高","authors_ch":"Menghua Wu、Cai Zhou、Stephen Bates、Tommi Jaakkola（机构：Massachusetts Institute of Technology）","category_ids":["scaling_rlvr_test_time_compute"]}

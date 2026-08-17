@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Fudan University, Shanghai, China"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2308.01861",
+    "https://arxiv.org/pdf/2308.01861",
+    "https://github.com/FudanSELab/ClassEval",
+    "https://huggingface.co/datasets/FudanSELab/ClassEval",
+    "https://fudanselab-classeval.github.io/"
+  ],
+  "verification_note": "Official PDF lists all authors under one Fudan University affiliation block; official GitHub, Hugging Face, and leaderboard sources verify ClassEval artifacts. No separate conference venue was verified."
+}

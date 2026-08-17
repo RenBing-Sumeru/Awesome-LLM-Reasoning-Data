@@ -1,0 +1,5 @@
+- 阅读时应分开维护四本账：已发布模型权重、已发布数据文件、有文档的生成/筛选配方，以及基准结果。一本账中的证据不能证明另一本账完整。
+- 论文表 2 的精确总数是 33,011,757，只能作为报告级合成样本数使用。当前 Hugging Face SFT viewer 估算约 3.91M 行，官方来源没有给出二者对照。
+- SFT 模式公开 input、output、category、license、reasoning mode、generator、used-in-training models、version 和 system-message instruction，审计价值较高。RL 指令遵循配置包含结构化任务参数，而不是完整策略 rollout。
+- 验证随领域和阶段变化，包括 Qwen 答案等价判断、多数投票、语法检查、Llama-Nemotron 奖励模型选择、Llama-3.3 答案判断、格式奖励和指令约束；不存在统一的“已验证”标签。
+- 模型卡确认 Nano、Super 和 Ultra 权重已发布。通用训练代码库也公开，但精确 NeMo-Aligner 开发分支、commit、配置、被拒数据和阶段到记录清单没有固定。

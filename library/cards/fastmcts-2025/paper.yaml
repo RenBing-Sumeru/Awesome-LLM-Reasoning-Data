@@ -1,0 +1,153 @@
+id: fastmcts-2025
+title: 'FastMCTS: A Simple Sampling Strategy for Data Synthesis'
+year: 2025
+venue: ACL 2025
+authors:
+- Peiji Li
+- Kai Lv
+- Yunfan Shao
+- Yichuan Ma
+- Linyang Li
+- Xiaoqing Zheng
+- Xipeng Qiu
+- Qipeng Guo
+source_role:
+- construction_recipe
+- process_supervision
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+- pairwise_preference
+- trajectory_value
+domains:
+- mathematics
+- english_math
+- chinese_math
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.1190/
+  arxiv: https://arxiv.org/abs/2502.11476
+  code: https://github.com/FlyingDutchman26/FastMCTS
+  data: null
+  project: https://github.com/FlyingDutchman26/FastMCTS
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.acl-long.1190
+  venue: https://aclanthology.org/2025.acl-long.1190/
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.1190/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 46,000 English math problems from NuminaMath, MetaMath, and InternLM-Math train; 50,000 internet-collected
+    Chinese high-school problems; smaller AIME and Chinese sets for efficiency tests
+  trace_author: Qwen2.5-72B-Instruct with randomly combined domain-diverse few-shot demonstrations
+  answer_format: Complete mathematical solutions segmented by generated Step 1, Step 2, and subsequent markers, with each
+    segment stored as a tree node
+  process_fields:
+  - query
+  - ground_truth
+  - reasoning_step
+  - parent_child_edges
+  - visit_count
+  - win_count
+  - node_score
+  - verifier_outcome
+  - complete_trajectory
+  - chosen_branch
+  - rejected_branch
+  - preference_granularity
+  environment_or_substrate: Asynchronous MCTS-style tree of partial solutions that retains each simulated continuation as
+    nodes
+  verifier_or_reward: Qwen2.5-72B-Instruct terminal answer judge; binary outcomes backed up as win_count divided by visit_count
+  terminal_predicate: All repeated judge samples agree that the final answer matches the standard answer and is not guessed
+    or vague
+recipe_metadata:
+  base_model: Qwen2.5-7B for main SFT and Branch-DPO; Llama-3.2-3B-base and Qwen2.5-3B-base for additional transfer checks
+  teacher: Qwen2.5-72B-Instruct for trajectory generation and terminal judgment; Qwen2.5-32B-Instruct for five-sample difficulty
+    screening
+  generator: Qwen2.5-72B-Instruct served with SGLang in the reported experiments
+  filtering_rule: Remove 100%-pass questions, proof/find-all/image/URL/malformed/incomplete/ambiguous cases, hash duplicates,
+    and stated evaluation overlaps; retain verifier-accepted paths and tree-derived pairs
+  sampling_protocol: Random few-shot combinations, temperature 1, adaptive-stay UCT, dynamic exploration, retained simulations,
+    and asynchronous expansion; main setting uses root degree 3, expansion degree 2, and 16 iterations
+  rollout_count: null
+  temperature: 1
+  inference_budget: Main synthesis uses 16 tree iterations; comparisons account for average generated tokens and use 30 English
+    or 24 Chinese RS samples
+  optimizer_or_scaffold: Qwen2.5-7B SFT for three epochs at 4096 tokens, batch 32 and LR 1e-5; Branch-DPO for three epochs,
+    batch 16, LR 1e-6, beta 0.4 and cosine scheduling
+audit:
+  source_mixture: English prompts mix NuminaMath, MetaMath, and InternLM-Math; Chinese prompts are internet-collected high-school
+    math with undisclosed item-level provenance and rights
+  split: Hash deduplication and stated test exclusion, but no released EN/CN Hard manifests, hashes, seeds, or train/validation/test
+    splits
+  decontamination: Hash duplicate removal and stated benchmark exclusion only; semantic near-duplicate and pretraining-corpus
+    audits are not reported
+  license: ACL paper is CC BY 4.0; official code and synthesized-data licenses are unknown
+  lineage: Prompt to difficulty screen and heuristic filters to Qwen-72B tree generation and terminal judging to Monte Carlo
+    backup to SFT paths and step/branch preference pairs
+  known_failure_modes:
+  - Verifier prompt emphasizes final-answer agreement rather than independent intermediate-step checking
+  - Correct terminal outcomes are assumed to validate every intermediate step for preference construction
+  - Zero node score can reflect sparse exploration rather than a semantically wrong step
+  - Generator and verifier use the same Qwen2.5-72B model family and may share errors
+  - Consensus verification repeats without a disclosed or implemented hard cap
+  - Tree prefix reuse may reduce trajectory diversity
+  - Headline 3.9-point average gain includes Branch-DPO; SFT-only gain is 2.9 points in that comparison
+  - Experimental trees, synthesized corpora, preference pairs, checkpoints, and split manifests are not released
+  - Repository example settings differ from the paper's main configuration and dependencies are unpinned
+  - Official repository declares no software or data license
+  citation_status: verified
+  confidence: high
+  notes: Official code was audited at tree SHA fe2c54de05be0503f78ac0cd01da01d3f7321f9e; it implements the recipe but is not
+    a pinned reproduction package for the reported experiments.
+inclusion_reason: Concrete tree-based recipe that converts terminally judged math rollouts into correct-path SFT records and
+  backed-value step/branch preference pairs under explicit token accounting.
+related: []
+tags:
+- synthetic-reasoning-data
+- monte-carlo-tree-search
+- tree-structured-data
+- rejection-sampling
+- step-level-preference
+- branch-dpo
+- mathematical-reasoning
+- llm-verifier
+- token-budget
+- code-release
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Reuses reasoning prefixes in an MCTS-inspired tree and backs up terminal LLM judgments to construct math
+  SFT paths and step/branch preference pairs under a token budget.
+why_it_matters: Connects search allocation, terminal verification, tree-derived process labels, SFT, and DPO while making
+  the label assumptions and missing experimental data auditable.
+card: null
+needs:
+- 'unknown: EN Math Hard and CN High School Math Hard manifests and splits'
+- 'unknown: full trees, failed branches, synthesized SFT data, and preference pairs'
+- 'unknown: software and synthesized-data licenses'
+- 'unknown: verifier consensus retry cap and judge error rates'
+- 'unknown: semantic decontamination and Chinese web-source provenance'
+- 'unknown: exact configuration and revision used for reported experiments'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Verified against the ACL camera-ready paper and appendix, arXiv v2 source, and the official GitHub tree and processors.

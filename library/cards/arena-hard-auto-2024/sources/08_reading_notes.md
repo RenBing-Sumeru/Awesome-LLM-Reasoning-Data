@@ -1,0 +1,1 @@
+Keep three labels separate: prompt difficulty, judge preference, and factual/task correctness. Arena-Hard is strong when the downstream question is model ranking under open-ended prompts; it is weak as row-level truth verification. Always read the repository version notes before citing scores, because the active benchmark has evolved beyond the 2024 paper configuration.

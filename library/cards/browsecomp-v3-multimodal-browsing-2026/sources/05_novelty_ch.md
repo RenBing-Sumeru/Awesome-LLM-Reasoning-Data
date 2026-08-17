@@ -1,0 +1,1 @@
+已有基线是文本 BrowseComp，或多模态搜索 benchmark 中跳数较浅、证据不可公开搜索、只看最终答案的任务。BrowseComp-V3 的变化是要求公开可搜索的跨模态证据、多层视觉推理、标注轨迹和 process score。质量信号是 arXiv 中较完整的 benchmark specification 以及人类/模型过程指标。并不新的是网页搜索工具、短答案成功率和 agent scaffold。复用前要检查 Hugging Face 数据 revision、license、图像权利、URL 稳定性、搜索 API 依赖、轨迹忠实度和 sub-goal 评分规则。

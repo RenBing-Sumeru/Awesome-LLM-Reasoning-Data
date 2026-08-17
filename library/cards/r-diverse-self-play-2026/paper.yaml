@@ -1,0 +1,157 @@
+id: r-diverse-self-play-2026
+title: 'R-Diverse: Mitigating Diversity Illusion in Self-Play LLM Training'
+year: 2026
+venue: ICML 2026 regular
+authors:
+- Gengsheng Li
+- Jinghan He
+- Shijie Wang
+- Ruiqi Liu
+- Renrui Zhang
+- Zijun Yao
+- Junfeng Fang
+- Haiyun Guo
+- Dan Zhang
+- Jinqiao Wang
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- general_reasoning
+training_use:
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=DZiuKVvrJW
+  arxiv: https://arxiv.org/abs/2602.13103
+  code: null
+  data: null
+  project: https://github.com/Gengsheng-Li/R-Diverse
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2602.13103
+  venue: https://openreview.net/forum?id=DZiuKVvrJW
+  openreview: https://openreview.net/forum?id=DZiuKVvrJW
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2602.13103
+data_object:
+  prompt_source: Self-generated competition-mathematics questions. The Challenger prompt is disclosed, but no seed training
+    corpus or fixed prompt pool is reported.
+  trace_author: Qwen3 Challenger and Solver roles co-evolve. Qwen2.5-Coder-7B and Jina-Code-Embeddings-1.5B create the skill-similarity
+    representation.
+  answer_format: A generated question, multiple Solver reasoning responses and extracted final answers, answer-equivalence
+    groups, consistency, a majority pseudo-label, canonical Python solver code, its embedding, historical similarities, memory
+    membership, and replay provenance.
+  process_fields:
+  - iteration
+  - question
+  - solver_responses
+  - extracted_answers
+  - answer_groups
+  - consistency
+  - pseudo_label
+  - canonical_code
+  - embedding
+  - max_historical_similarity
+  - mean_historical_similarity
+  - memory_membership
+  - replay_membership
+  environment_or_substrate: EasyR1 implementation of an R-Zero-style alternating Challenger-Solver GRPO loop with persistent
+    cross-iteration memory.
+  verifier_or_reward: Challenger reward combines Solver uncertainty with within-iteration and history-aware skill-similarity
+    penalties. Solver reward is a binary match to a self-generated majority pseudo-label. GPT-4o is used for paper analyses
+    and a disclosed answer-check prompt, but its exact training-time coverage is unknown.
+  terminal_predicate: The reported study stops after five evolution iterations. Each rollout receives its scalar reward within
+    the current optimization phase; valid questions may enter persistent memory, and 30 percent historical replay is mixed
+    into Solver training. A natural convergence or memory termination rule is not disclosed.
+recipe_metadata:
+  base_model: Qwen3-4B-Base and Qwen3-8B-Base
+  teacher: No external answer teacher is reported for the primary training loop; the previous Solver supplies majority pseudo-labels.
+    GPT-4o supplies analysis labels and judge-based checks.
+  generator: A competition-mathematics Challenger alternates with a Solver for five evolution iterations, with 5 Challenger
+    and 15 Solver optimization steps per iteration.
+  filtering_rule: Questions that satisfy the uncertainty criterion may enter memory; the paper illustrates the valid range
+    as consistency 0.3 to 0.8. Exact answer normalization, equivalence grouping, tie handling, and malformed-output policy
+    are unknown.
+  sampling_protocol: Challenger training uses 4 rollouts and Solver training uses 5, both at temperature 1.0 and top-p 0.99.
+    Canonical code generation uses temperature 0.
+  rollout_count: 'Challenger: 4; Solver: 5 per question'
+  temperature: 1.0
+  inference_budget: Eight NVIDIA H20 GPUs with BF16 and FlashAttention 2. One Qwen3-4B evolution iteration is reported at
+    about 6 hours; total token use, total run cost, and 8B timing are unknown.
+  optimizer_or_scaffold: GRPO with global batch size 128, learning rate 1e-6, weight decay 1e-2, KL coefficient 1e-2, MAP
+    weights alpha=1 and beta=1, max-mean mixing gamma=0.5, similarity thresholds 0.5 and 0.25, and replay ratio 0.3.
+audit:
+  source_mixture: Current self-generated competition-math questions plus historical replay. The paper does not publish per-iteration
+    record counts or memory snapshots.
+  split: Five evolution iterations with 30 percent historical replay. Unique counts, seeds, rejected-record counts, and train-evaluation
+    overlap are unknown.
+  decontamination: unknown
+  license: The arXiv record uses the arXiv non-exclusive distribution license. Code, data, model, generated-record, and repository
+    licensing are unknown because the official project repository has no LICENSE file.
+  lineage: Challenger question -> Solver rollouts -> extracted answer groups -> consistency and majority pseudo-label -> canonical
+    code and embedding -> novelty penalties and memory decision -> current or replay Solver update. No public record-level
+    ledger, generated records, memory snapshots, or checkpoints instantiate this lineage.
+  known_failure_modes:
+  - Majority pseudo-labels can be confidently wrong, and replay can preserve those errors.
+  - The SAM canonicalizer may change the intended task because its prompt tells the model to repair ambiguous or flawed inputs.
+  - Generated canonical code is not reported as being executed; code-embedding similarity is an uncalibrated proxy for reasoning-skill
+    equivalence.
+  - Answer normalization, equivalence grouping, memory correction and eviction, contamination controls, random seeds, and
+    repeated-run variance are undisclosed.
+  - The official repository contains a README and figures but no executable pipeline, weights, generated records, or tagged
+    release.
+  citation_status: verified
+  confidence: medium
+  notes: ICML 2026 acceptance, arXiv paper, official BibTeX, and author repository are verified. Implementation and data artifacts
+    remain unavailable.
+inclusion_reason: Makes persistent memory and a program-level similarity proxy explicit controls in self-play reasoning-data
+  construction while exposing pseudo-label and release risks.
+related:
+- r-zero-self-evolving-reasoning-llm-from-zero-data-2025
+tags:
+- self-play
+- persistent-memory
+- diversity-illusion
+- pseudo-labeling
+- grpo
+- release-gap
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Adds skill-aware historical diversity penalties and replay to Challenger-Solver self-play, but releases
+  no executable pipeline or generated records.
+why_it_matters: Shows how within-batch lexical novelty can hide repeated reasoning procedures and how persistent memory changes
+  both the generated curriculum and its audit surface.
+card: null
+needs:
+- missing code, weights, generated records, and memory snapshots
+- unknown answer-equivalence implementation and judge coverage
+- unknown decontamination, random seeds, and repeated-run variance
+- unknown memory capacity, correction, and eviction policy
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-18'
+  verified_by: curation
+  confidence: medium
+  notes: OpenReview, arXiv, official BibTeX, and the author repository were checked; the repository remains a non-executable
+    project page.

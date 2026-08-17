@@ -1,0 +1,1 @@
+1. 输入：编辑前仓库、变更请求或目标位置，以及对文件、类、方法、字段、import 和调用关系的静态分析。2. 规划：CodePlan 用依赖关系选择受影响代码区域，并让 LLM 生成编辑。3. 更新：合并生成代码，分类原子变化，并更新依赖图供后续步骤使用。4. 输出：编辑后的仓库状态，以及相对 target 的 diff/block 指标。5. 复现：使用 GitHub replication package、Python >=3.11、所需 metric 包、固定 repo id、approach name 和保存的 metrics JSON。

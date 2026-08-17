@@ -1,0 +1,5 @@
+- 每个 rollout step 从 DAPO-Math-17k 抽 512 个 prompt，每题生成 16 条答案。
+- NFT 通过同一个参数化 positive model 同时学习 verifier-positive 与 verifier-negative 答案。
+- 严格 on-policy 的 NFT/GRPO 梯度等价依赖二元 reward 与指定 prompt weighting。
+- 官方代码、DAPO-Math-17k 和 NFT-7B/NFT-32B 权重已发布，但许可证不同。
+- 完整 rollout、verifier 与 optimizer log 未证实发布。

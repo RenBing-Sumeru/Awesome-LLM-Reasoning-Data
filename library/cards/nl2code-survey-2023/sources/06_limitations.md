@@ -1,0 +1,1 @@
+The conclusions are bounded by the models and evaluations available at the time of the survey. Passing benchmark tests does not by itself establish maintainability, security, or full agreement with an underspecified request. The stated gap between models and humans remains a practical caution.

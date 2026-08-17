@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "benchmark数据及处理方法，verifier相关",
+    "updated_at": "2026-07-13T06:49:30Z"
+  },
+  "updated_at": "2026-07-13T06:49:30Z"
+}

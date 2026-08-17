@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "长链式轨迹数据6863个问题",
+    "updated_at": "2026-07-20T12:44:34Z"
+  },
+  "updated_at": "2026-07-20T12:44:34Z",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

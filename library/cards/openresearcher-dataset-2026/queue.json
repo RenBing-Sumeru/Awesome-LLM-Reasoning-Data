@@ -1,0 +1,17 @@
+{
+  "title": "OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.20278",
+    "data": "https://huggingface.co/datasets/OpenResearcher/OpenResearcher-Dataset"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:13:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "deep research 数据",
+    "updated_at": "2026-07-27T09:13:31Z"
+  }
+}

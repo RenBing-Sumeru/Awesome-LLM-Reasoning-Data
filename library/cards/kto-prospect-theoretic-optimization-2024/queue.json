@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "note": "L4 材料已准备，等待人工判决。",
+  "updated_at": "2026-07-17T12:36:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "证明独立的好/坏二元反馈即可直接驱动对齐，显著降低了构造成对偏好的需求",
+    "updated_at": "2026-07-17T12:36:31Z"
+  }
+}

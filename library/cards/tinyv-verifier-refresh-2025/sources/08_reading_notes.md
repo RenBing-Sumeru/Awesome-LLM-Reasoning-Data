@@ -1,0 +1,5 @@
+- Read the official venue record carefully: this is a poster at the 2nd AI for Math Workshop @ ICML 2025, not an ICML main-conference paper; the June 2026 TMLR publication is later version history.
+- Use Sections 3 and 5 to trace the recipe from four Big-Math responses through Prime rejection, Qwen/Grok agreement, synthetic equivalence, balanced SFT, and the Prime-then-TinyV reward gate.
+- Keep reported and released scales separate: a 638K precursor pool is reported, while the public balanced artifact has 159,136 rows, including 139,432 real and 19,704 synthetic records.
+- Distinguish the public 7,009-row hard-prompt candidate pool from the sampled 5,000 used in experiments; IDs and seed for the 5,000 are unavailable.
+- Audit the release boundary before reuse: there is no two-judge row ledger, held-out verifier calibration split, dataset license, paper-exact manifest, or resolved explanation for HardVerify's 115+10 versus 110+15 composition.

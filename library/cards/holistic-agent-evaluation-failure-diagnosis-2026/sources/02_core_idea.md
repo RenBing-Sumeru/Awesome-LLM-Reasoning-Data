@@ -1,0 +1,3 @@
+The contribution is a holistic framework that combines top-down agent-level metrics with bottom-up span-level evaluation. Bottom-up judges inspect focused spans and produce metric scores plus rationales; top-down metrics assess behavior that emerges across descendants, such as plan quality, tool coverage, or redundant calls.
+
+Compared with outcome-only benchmarks and monolithic LLM-as-judge protocols, the mechanism decomposes long traces before judging them. The data object is a trace span plus surrounding context, score, rationale, and mapped error category. The direction label is localized agent failure diagnosis over trajectory data.

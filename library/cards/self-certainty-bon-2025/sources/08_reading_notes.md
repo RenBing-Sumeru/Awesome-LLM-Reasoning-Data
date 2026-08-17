@@ -1,0 +1,5 @@
+- Self-certainty averages KL(U||p) over every token position and therefore requires full vocabulary distributions, not only sampled-token log probabilities.
+- Main experiments draw 64 candidates at temperature 0.6 and top-p 0.9, then evaluate N=4-64 subsets over five repetitions.
+- Pure self-certainty selects one response; fixed-answer Borda voting combines confidence rank with answer frequency using (N-r+1)^p.
+- High confidence can be wrong, p requires task-specific tuning, and self-consistency can outperform pure self-certainty on convergent answers.
+- The author code is public, but raw candidates, logits, score manifests, exact revisions, and repository license remain unavailable.

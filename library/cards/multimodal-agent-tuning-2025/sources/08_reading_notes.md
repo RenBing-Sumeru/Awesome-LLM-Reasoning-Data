@@ -1,0 +1,5 @@
+- Read Paper Sections 3.1–3.6 first: the key object is `{F_opt,Q,T,C,O,A}`, and the construction path is query/file synthesis -> GPT-4o-mini ReAct rollout -> executable-code gate -> query-file judge -> trajectory judge.
+- Keep the scale units separate: the paper's 23.5K candidates, about 20K tasks, and about 15K files do not equal the pinned 21,168 JSON rows or 19,307 ZIP files; no manifest reconciles them.
+- Treat Table 5 as a filtering ablation, not verifier certification: GTA moves 50.00 -> 52.56 and GAIA 13.33 -> 15.15, but no judge precision, recall, agreement, or independent correctness audit is reported.
+- Read Appendix A.1/Table 6 together: the prose and table give contradictory human scores. Also inspect the image-only verifier prompt and the repository's broken final prompt paths before claiming reproducibility.
+- The reuse blockers are the MIT versus CC-BY-NC-4.0 dataset conflict, separate CC-BY-NC-SA-4.0 model label, SA-1B/COCO upstream terms, broken HF schema, missing rejected ledger and lineage, and undisclosed privacy, sandbox, and contamination controls.

@@ -1,0 +1,121 @@
+id: pacore-parallel-coordinated-reasoning-2026
+title: 'PaCoRe: Learning to Scale Test-Time Compute with Parallel Coordinated Reasoning'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Jingcheng Hu
+- Yinmin Zhang
+- Shijie Shang
+- Xiaobo Yang
+- Yue Peng
+- Zhewei Huang
+- Hebin Zhou
+- Xin Wu
+- Jie Cheng
+- Fanqi Wan
+- Xiangwen Kong
+- Chengyuan Yao
+- Kaiwen Yan
+- Ailin Huang
+- Hongyu Zhou
+- Qi Han
+- Zheng Ge
+- Daxin Jiang
+- Xiangyu Zhang
+- Heung-Yeung Shum
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- mathematical-reasoning
+- code-generation
+- scientific-reasoning
+training_use:
+- rlvr
+- test_time_compute
+- sft
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.1253/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.1253/
+  code: https://github.com/stepfun-ai/PaCoRe
+  data: https://github.com/stepfun-ai/PaCoRe
+  project: https://github.com/stepfun-ai/PaCoRe
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.1253
+data_object:
+  prompt_source: AIME 2025, HMMT 2025, IMO-AnswerBench, LiveCodeBench, HLE text, MultiChallenge, and other reported benchmarks.
+  trace_author: PaCoRe model generates parallel reasoning trajectories and compact cross-trajectory messages.
+  answer_format: Problem, trajectory, compact message, round index, synthesis output, and final answer.
+  process_fields:
+  - prompt
+  - trajectory
+  - message
+  - round
+  - trajectory_count
+  - synthesis
+  - final_answer
+  environment_or_substrate: Multi-round parallel coordinated reasoning within a fixed context window.
+  verifier_or_reward: Outcome-based reinforcement learning trains message synthesis; benchmark-specific outcome evaluation
+    measures final answers.
+  terminal_predicate: The final coordinated round produces one answer evaluated by benchmark correctness.
+recipe_metadata:
+  base_model: PaCoRe-8B, with RLVR-8B baseline and additional smaller-backbone study.
+  teacher: null
+  generator: One model alternates parallel trajectory generation and message synthesis across rounds.
+  filtering_rule: Compress each trajectory into a context-bounded message before next-round coordination.
+  sampling_protocol: Low [4], medium [16], and high [32,4] coordinated configurations.
+  rollout_count: Up to two coordinated rounds and 32 first-round trajectories in highlighted high setting.
+  temperature: 1.0 with top-p 1.0 in the reported evaluation.
+  inference_budget: Total effective test-time tokens across all parallel trajectories and coordination rounds.
+  optimizer_or_scaffold: Large-scale outcome-based RL for coordination and synthesis.
+audit:
+  source_mixture: Official ACL PDF and official repository linked by the paper.
+  split: Benchmark protocols and coordinated configurations are specified in the paper.
+  decontamination: No formal pretraining-contamination audit is claimed.
+  license: Verify released checkpoint, training-data, code, and benchmark licenses before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.1253/
+  known_failure_modes:
+  - message-compression-loss
+  - coordination-failure
+  - context-overload
+  - high-compute-cost
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF checked on 2026-07-21. It lists Tsinghua University, StepFun, and Peking University; the paper states
+    that checkpoints, training data, and full inference pipeline are open-sourced.
+inclusion_reason: It directly studies how coordinated parallel breadth and message compression can scale effective test-time
+  computation beyond a fixed context window.
+related: []
+tags:
+- test-time-compute
+- parallel-reasoning
+- message-passing
+- rlvr
+- context-window
+status: verified
+one_line_summary: PaCoRe coordinates large parallel trajectory pools through compact messages, allowing multi-million-token
+  effective reasoning without exceeding a model’s context window.
+reading_priority: essential
+paper_type: Parallel coordinated test-time scaling and RL study
+best_for: Readers investigating high-budget reasoning beyond sequential context limits.
+confidence: high
+why_it_matters: It makes cross-trajectory synthesis a learned test-time capability and reports scaling curves at explicitly
+  stated token budgets.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and reported open-source resources verified.
+category_ids:
+- scaling_rlvr_test_time_compute

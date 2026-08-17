@@ -1,0 +1,4 @@
+Across the reported MATH500, AIME2024, AIME2025, HMMT, and AMC experiments, DORA generally improves accuracy or pass rate over temperature sampling, beam search, DVTS, and REBASE for the tested models and budgets. At MATH500 with Llama-3.2-1B-Instruct, Table 2 reports DORA at 64 rollouts scoring 68.7 with total 8.92e14 FLOPs and 124 seconds, versus REBASE at 256 rollouts scoring 67.4 with 3.11e15 FLOPs and 490 seconds. The same table reports equal 14.7 AIME24 accuracy for DORA-64 and REBASE-256, with lower DORA compute.
+
+These results show the behavior of one allocation method under a particular math PRM, embedding family, small policies, and evaluator. They do not prove that semantic affinities recover true strategies or that accepted traces are valid supervision. Sensitivity tests cover alternative similarity temperatures and retrievers, but raw records are absent, so allocation decisions and rejected branches cannot be independently audited.
+

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen3 技术报告部分披露了 36T 预训练、Long-CoT 过滤、3,995 个 GRPO query-verifier pairs、融合 SFT 与蒸馏，但未公开底层数据、verifier 细节或审计日志。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿模型技术报告与数据披露台账",
+  "best_for_ch": "需要核查前沿推理模型训练数据披露、Long-CoT、RL verifier 与可复现性缺口的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,3 @@
+The prior baseline is text-heavy browsing evaluation such as BrowseComp or general agent QA where evidence can often be retrieved from text pages. MM-BrowseComp changes the object by requiring visual or video evidence in the browsing loop and by using checklists to constrain answer judging.
+
+The direction signal is live multimodal web evaluation for agents. What is not new: web browsing tasks, short-answer grading, and LLM-as-judge scoring; reuse should inspect dataset version, encryption/plaintext policy, judge prompts, media source permissions, search-tool access, and date-sensitive web evidence.

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "三阶段构造具身数据",
+    "updated_at": "2026-07-14T12:12:14Z"
+  },
+  "updated_at": "2026-07-14T12:12:14Z"
+}

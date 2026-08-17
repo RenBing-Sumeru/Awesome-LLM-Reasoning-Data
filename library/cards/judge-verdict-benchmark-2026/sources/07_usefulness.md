@@ -1,0 +1,5 @@
+- Primary source: https://openreview.net/forum?id=jVyUlri4Rw
+- Venue/status: ICLR 2026 submission
+- Official public artifact: https://openreview.net/attachment?id=jVyUlri4Rw&name=supplementary_material
+- Track 13 decision boundary: Public submission materials define a benchmark for factual judge reliability.
+- Reuse boundary: consult the release for license, splits, and reproducibility details.

@@ -1,0 +1,6 @@
+The system card directly supports the broad source categories, crawler boundary, cleaning/filtering, post-training, and worker-role claims. Its page 67 alignment investigation says that automatic screening covered a significant fraction of reinforcement-learning training transcripts. Page 74 reports review of earlier training snapshots that found hallucinated tool results, ignored or misrepresented tool failures, over-eager behavior, answer thrashing, and rarer observations such as fabricated citations and unreported prompt-injection attempts.
+
+The report explicitly separates automated behavioral-audit scenarios from training: page 84 says the scenarios inform high-level training decisions, but are not used as training scenarios or environments specifically targeting those metrics. It also notes that online evaluation information may have appeared in training data and points to a general decontamination discussion for Claude Opus 4.5; a Sonnet-4.6-specific protocol or quantified outcome is not given.
+
+The card says evaluation informed deployment under ASL-3 and that no in-depth alignment-focused third-party assessment was arranged. These are release and assessment disclosures, not evidence of released training data, a reward contract, or a reproducible post-training pipeline.
+

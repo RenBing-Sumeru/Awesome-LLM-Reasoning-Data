@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MTEB 将文本 embedding 评测统一到原始版 58 个 datasets、112 种语言和多类任务上。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "需要 embedding leaderboard、retrieval/scorer 差异和动态版本审计线索的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Niklas Muennighoff 等（Hugging Face, Sentence Transformers）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T14:06:28Z"
+}

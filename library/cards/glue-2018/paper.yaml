@@ -1,0 +1,119 @@
+id: glue-2018
+title: 'GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding'
+year: 2018
+venue: ICLR 2019 / arXiv
+authors:
+- Alex Wang
+- Amanpreet Singh
+- Julian Michael
+- Felix Hill
+- Omer Levy
+- Samuel R. Bowman
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- nlu-benchmark
+- sentence-understanding
+- benchmark-infrastructure
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/1804.07461
+  arxiv: https://arxiv.org/abs/1804.07461
+  code: https://github.com/nyu-mll/GLUE-baselines
+  data: https://gluebenchmark.com/
+  project: https://gluebenchmark.com/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.1804.07461
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: nine English sentence or sentence-pair NLU tasks with labels, train/dev/test splits, leaderboard submissions,
+    and a 1,100-example diagnostic set
+  data_scale: paper table reports about 951k train examples and 424k test examples across the nine tasks, plus the diagnostic
+    set
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: GLUE multi-task NLU benchmark and leaderboard
+  verifier_or_reward: task-specific accuracy, F1, Matthews correlation, Pearson/Spearman, and macro aggregation
+  terminal_predicate: prediction matches the task label or regression target under the official scorer
+  benchmark_size: 9 个 NLU 任务；总样本量超过百万级，主要由 MNLI/QQP 等大任务贡献。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding;
+    exact curation details should be checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for GLUE: A Multi-Task Benchmark and Analysis
+    Platform for Natural Language Understanding.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/1804.07461'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: arXiv verifies ICLR 2019 status and GLUE site. Scale should be reported by subtask and split because aggregate counts
+    depend on what is included.
+inclusion_reason: GLUE is a foundational multi-task NLU benchmark that became the pretraining-era baseline before SuperGLUE
+  and modern reasoning suites.
+related: []
+tags:
+- benchmark
+- nlu-benchmark
+- sentence-understanding
+- benchmark-infrastructure
+why_it_matters: It is a foundational benchmark-suite coordinate for NLU evaluation and scorer aggregation.
+status: verified
+needs:
+- 'needs_audit: pin GLUE task versions and split counts because the aggregate scale depends on whether train/dev/test and
+  diagnostic sets are counted'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: GLUE is an ICLR 2019 multi-task NLU benchmark with nine English sentence and sentence-pair tasks plus a
+  diagnostic set.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

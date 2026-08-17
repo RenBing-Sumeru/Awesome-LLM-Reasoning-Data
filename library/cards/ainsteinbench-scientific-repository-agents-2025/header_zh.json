@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AInsteinBench 从科学软件仓库维护者的 PR 构建可执行任务，并以任务测试检验智能体的代码修改。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "科学计算软件仓库的可执行智能体评测基准",
+  "best_for_ch": "需要在真实科研软件环境中检验代码智能体正确性的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Titouan Duston, Shuo Xin, Yang Sun, Daoguang Zan, Aoyan Li, Shulin Xin, Kai Shen, Yixiao Chen, Qiming Sun, Ge Zhang, Jiashuo Liu, Huan Zhou, Jingkai Liu, Zhichen Pu, Yuanheng Wang, Bo-Xuan Ge, Xin Tong, Fei Ye, Zhi-Chao Zhao, Wen-Biao Han, Zhoujian Cao, Yueran Zhao, Weiluo Ren, Qingshen Long, Yuxiao Liu, Anni Huang, Yidi Du, Yuanyuan Rong, Jiahao Peng",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T08:08:22Z"
+}

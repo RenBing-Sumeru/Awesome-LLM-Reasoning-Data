@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以规则核验、受控破坏和困难负例构造移动 GUI 奖励数据，再用学习到的验证器在三轮探索中筛选步级 agent SFT 数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "移动 GUI 奖励数据与迭代式 agent 数据构造配方",
+  "best_for_ch": "关注多模态 GUI agent、奖励模型、轨迹筛选、自改进数据闭环及发布审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Han Xiao、Guozhi Wang、Yuxiang Chai、Zimu Lu、Weifeng Lin、Hao He、Lue Fan、Liuyang Bian、Rui Hu、Liang Liu、Shuai Ren、Yafei Wen、Xiaoxin Chen、Aojun Zhou、Hongsheng Li",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T10:49:54Z"
+}

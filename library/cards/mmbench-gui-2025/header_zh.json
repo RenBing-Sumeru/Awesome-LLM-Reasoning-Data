@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MMBench-GUI 定义跨移动端、桌面端和网页端的分层 GUI 智能体评测。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "arXiv 的 multi-platform GUI-agent benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Xuehui Wang 等（Shanghai AI Laboratory）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:14:31Z"
+}

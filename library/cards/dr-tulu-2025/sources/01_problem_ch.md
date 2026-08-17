@@ -1,0 +1,2 @@
+DR-Tulu 被纳入“前沿报告与数据披露账本”，因为它公开了长程研究智能体的记录对象，同时保留了重要的发布边界。单条记录可含问题、来源标识、来源、问题类型、对话或消息、think/tool/answer/cite 动作、工具观察、引用字段，以及 rubric 负载或 rollout 分数。SFT 混合经过筛选的 SearchArena/OpenScholar 信息检索问题与 HotpotQA、TaskCraft、WebWalker-Silver、MegaScience 和受 PopQA 启发的提示；RL 使用经筛选的长程 SearchArena/OpenScholar 与 RaR 提示。SFT 轨迹由 GPT-5 生成模拟推理、工具调用、输出和带引用的答案；RL 轨迹则是当前策略在真实工具调用下产生的 on-policy rollout。其底座为 dr-agent-lib，提供基于 MCP 的网页/论文检索与浏览、异步调用、缓存和限速管理。
+

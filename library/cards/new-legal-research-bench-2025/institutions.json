@@ -1,0 +1,12 @@
+{
+  "institutions": [
+    "Vals AI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-16T08:00:00Z",
+  "source_urls": [
+    "https://www.vals.ai/benchmarks/legal_research"
+  ],
+  "verification_note": "Official benchmark publisher is Vals AI; individual expert affiliations were not separately verified."
+}

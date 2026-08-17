@@ -1,0 +1,151 @@
+id: math-llava-2024
+title: 'Math-LLaVA: Bootstrapping Mathematical Reasoning for Multimodal Large Language Models'
+year: 2024
+venue: Findings of EMNLP 2024
+authors:
+- Wenhao Shi
+- Zhiqiang Hu
+- Yi Bin
+- Junhua Liu
+- Yang Yang
+- See-Kiong Ng
+- Lidong Bing
+- Roy Ka-Wei Lee
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning-data
+- mathematics
+- multimodal
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-emnlp.268/
+  arxiv: https://arxiv.org/abs/2406.17294
+  venue: https://aclanthology.org/2024.findings-emnlp.268/
+  code: https://github.com/HZQ950419/Math-LLaVA
+  data: https://huggingface.co/datasets/Zhiqiang007/MathV360K
+  project: https://github.com/HZQ950419/Math-LLaVA
+  huggingface: https://huggingface.co/datasets/Zhiqiang007/MathV360K
+  doi: https://doi.org/10.18653/v1/2024.findings-emnlp.268
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-emnlp.268/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-emnlp.268.bib
+data_object:
+  prompt_source: Forty thousand image-question-answer seeds selected from 24 public multimodal datasets spanning five task
+    families.
+  trace_author: GPT-4V writes 200k new image-grounded question-answer pairs and 120k complex, rephrased, or underspecified
+    variants; source datasets provide the 40k seed answers.
+  answer_format: An image path paired with a user question or multiple-choice prompt and a short assistant final answer in
+    LLaVA conversations format.
+  process_fields:
+  - id
+  - image
+  - conversations.from
+  - conversations.value
+  environment_or_substrate: Static image files and JSON image-question-answer conversations consumed by LLaVA-1.5 supervised
+    fine-tuning.
+  verifier_or_reward: GPT-4V labels image clarity and complexity, two trained ViT classifiers apply those labels at scale,
+    and source answers or GPT-4V generation provide terminal answers; synthetic answers have no independent correctness verifier.
+  terminal_predicate: Retain clear images under a 2:3:4:1 complexity allocation and accept generated pairs that follow the
+    requested question-and-short-answer format.
+recipe_metadata:
+  base_model: LLaVA-1.5-13B with Vicuna-v1.5 and a ViT image encoder.
+  teacher: GPT-4V labels images and generates or rewrites question-answer pairs.
+  generator: GPT-4V with task-specific few-shot demonstrations sampled from TF-IDF and K-Means question clusters.
+  filtering_rule: Reject images classified unclear, stratify clear images by learned comprehension complexity, then prompt
+    GPT-4V to avoid duplicate or uncertain questions and emit short definite answers.
+  sampling_protocol: Select 40k images from 24 sources at complexity ratio 2:3:4:1; add 200k image-mining pairs plus 40k each
+    of complex, rephrased, and underspecified variants.
+  rollout_count: 320000
+  temperature: null
+  inference_budget: GPT-4V labels 10k images and generates 320k pairs; the paper does not disclose tokens, retries, or API
+    cost.
+  optimizer_or_scaffold: Full fine-tuning of the LLaVA-1.5-13B language model and projection layer for two epochs at learning
+    rate 2e-5 and batch size 16 on A800 80GB GPUs.
+audit:
+  source_mixture: Twenty-four public FQA, geometry, math-word-problem, textbook-QA, and VQA datasets contribute 40k selected
+    images and seed pairs; GPT-4V adds 320k pairs.
+  split: The release exposes one 174.6 MB train_samples_all_tuning.json annotation file and separate source-organized image
+    directories; the paper reports about 360k training pairs over 40k images.
+  decontamination: The paper reports no semantic deduplication or train-evaluation overlap audit; its text-only probe itself
+    notes possible pretraining leakage in MathVista.
+  license: The code repository is Apache-2.0. MathV360K inherits mixed upstream terms, including Apache-2.0, MIT, BSD, GPL-3.0,
+    Creative Commons, and research-only access for named sources, so there is no single unrestricted dataset license.
+  lineage: 'instruction / demonstration data; closest comparisons: LLaVA-1.5 visual instruction data, G-LLaVA geometry pairs,
+    MathVista, and other single-question-per-image multimodal datasets.'
+  known_failure_modes:
+  - GPT-4V both creates synthetic questions and supplies answers without an independent answer checker, so fluent but image-inconsistent
+    labels can survive.
+  - Multiple records share each image and arise from closely related prompts, reducing effective diversity and making image-level
+    split control essential.
+  - The mixed upstream licenses and research-only sources can prevent uniform redistribution or commercial reuse.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL proceedings and arXiv PDF verified. The official repository, Apache-2.0 code license, Hugging Face 174.6
+    MB annotation JSON, actual image/conversations records, source-license statement, affiliations, and evaluation tables
+    were checked on 2026-07-14.
+inclusion_reason: Math-LLaVA centrally constructs and openly releases serialized multimodal question-answer demonstrations,
+  then isolates how selection and four synthesis operations affect an SFT consumer.
+related:
+- chartverse-reasoning-synthesis-2026
+tags:
+- instruction-demonstration-data
+- multimodal-mathematical-reasoning
+- synthetic-data
+- arxiv-2406.17294
+- primary-link-checked
+status: verified
+one_line_summary: Math-LLaVA turns 40k selected images into an open 360k-record multimodal mathematics instruction set and
+  measures the contribution of selection and four synthesis operations.
+why_it_matters: It exposes a compact, inspectable recipe for increasing questions per image and provides ablations that distinguish
+  selection from synthetic record expansion.
+reading_priority: must read
+paper_type: multimodal mathematical instruction-data construction study
+best_for: Readers building image-grounded reasoning SFT sets or auditing teacher-generated short-answer demonstrations.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: ACL proceedings, official paper, repository, code license, dataset file, actual records, scale, and mixed source-license
+    constraints checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: multimodal reasoning demonstrations
+  selection_priority_score: 10
+  selection_score_breakdown:
+    institution: 3
+    venue: 2
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The paper affiliation block confirms UESTC, SUTD, Tongji University, and NUS, including established institutions
+      with relevant multimodal and NLP research.
+    venue: ACL Anthology record 2024.findings-emnlp.268 confirms peer-reviewed publication in Findings of EMNLP 2024; no official
+      main-conference oral, spotlight, or award distinction was found.
+    impact: OpenAlex reported 24 citations on 2026-07-14, while the official GitHub repository reported 91 stars and 8 forks,
+      providing credible citation and open-source usage signals beyond author claims.
+    artifact: The official Apache-2.0 repository documents data preparation and training, and Hugging Face serves the complete
+      174.6 MB annotation JSON with directly readable image/conversation records; reuse remains subject to the disclosed mixed
+      upstream dataset terms.
+  selection_eligible: true
+  year_impact_threshold: 3

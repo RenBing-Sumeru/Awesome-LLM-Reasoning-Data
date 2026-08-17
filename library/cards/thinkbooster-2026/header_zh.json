@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ThinkBooster 是一个采用 MIT 许可证的测试时推理工具包，为九种策略统一记录候选轨迹、步骤分数、选择、token、理论 TFLOPs、延迟与配置；公开发布只有两个 Claude Sonnet 4 调试器示例，而没有论文运行的逐样本轨迹语料。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "测试时推理搜索基础设施、扩展研究与轨迹审计案例",
+  "best_for_ch": "研究测试时计算、候选轨迹、PRM 与不确定性选择器、搜索调试、推理预算归因和运行产物发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Vladislav Smirnov、Quang-Chieu Nguyen、Sergey Senichev、Minh Ngoc Ta、Ekaterina Fadeeva、Artem Vazhentsev、Daria Galimzianova、Nikolai Rozanov、Viktor Mazanov、Jingwei Ni、Tianyi Wu、Igor Kiselev、Mrinmaya Sachan、Iryna Gurevych、Preslav Nakov、Timothy Baldwin、Artem Shelmanov",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

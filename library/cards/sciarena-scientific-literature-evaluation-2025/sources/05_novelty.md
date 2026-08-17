@@ -1,0 +1,1 @@
+Traditional scientific benchmarks use fixed expert questions and rubrics and cannot evolve with models or research needs. SciArena runs continuous anonymous battles with pairwise researcher feedback and retains citations and query metadata. The novelty is in-the-wild scientific preference and a dynamic platform rather than a static answer set.

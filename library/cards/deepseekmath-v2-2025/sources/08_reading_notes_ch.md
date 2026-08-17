@@ -1,0 +1,6 @@
+- 明确 verifier 边界：`0`、`0.5` 和 `1` 是学习得到的自然语言判断；只有 format check 是 programmatic，方法不产生 Lean/Isabelle proof certificate。
+- 将 2.1–2.3 节连起来阅读：专家 proof label 训练 verifier，专家 analysis-quality label 训练 meta-verifier，最后两轮用符号化 `n/m/k` 多采样替代人工标签。
+- 将 analysis quality 从 0.85 到 0.96 的结果理解为在大小未知 validation split 上由 meta-verifier 评分，而非独立 proof-correctness 证据。
+- 将 headline 竞赛分数绑定 high-compute 条件：同一模型生成并验证，每题 64 份证明各接受 64 个 analysis，最多 refinement 16 轮，再由专家评价选定最高分证明。
+- “通过全部 64 次”是 LLM 一致性停止规则；Appendix A.3 的 no-defect 规则和共享模型 lineage 仍带来相关假阴性风险。
+- 模型权重、inference/evaluation 代码、部分输入和 prediction 是开放 artifact，但 AoPS crawl、专家标签、自动 hard-proof 记录、GRPO/RFT 流水线和训练数据许可均未发布。

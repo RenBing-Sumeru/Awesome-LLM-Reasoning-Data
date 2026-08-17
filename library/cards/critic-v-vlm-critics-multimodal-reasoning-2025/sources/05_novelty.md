@@ -1,0 +1,1 @@
+Prior multimodal self-reflection often uses one model to generate, score, and revise. Critic-V trains an independent Critic and changes the supervised object from answer preference to which critique better repairs reasoning, using rule-based reward to form critique-level DPO data.

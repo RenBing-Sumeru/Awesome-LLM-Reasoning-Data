@@ -1,0 +1,1 @@
+Track 5 contribution: An audit of how imperfect outcome and process verifiers fail when their scores drive larger reasoning searches. The relevant auditable object is Verifier-guided beam-search candidates, their outcome-verifier/process-reward scores, pruning decisions, and selected final solutions.

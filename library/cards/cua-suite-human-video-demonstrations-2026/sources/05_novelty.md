@@ -1,0 +1,1 @@
+Existing CUA datasets often reduce interaction to a few key screenshots and click coordinates. CUA-Suite preserves complete video with hierarchical semantic annotation, making mouse movement, waiting, interface response, and task stage learnable. The novelty is large-scale continuous demonstration with temporally aligned labels, not a new reward function or agent architecture.

@@ -1,0 +1,1 @@
+正确性只相对于作者定义的 critical failure 成立：最早且之后没有恢复的失败。这个标签可能不同于最早可见错误、终止错误或用户感知损害。taxonomy 来自三个域，未必覆盖其他工具生态或安全场景。约束证据可能弱、缺失或误报，LLM judge 也可能误读 violation log。公开复用受 dataset URL、license、生产 incident 轨迹隐私、prompt、judge 模型版本、运行时和工具 schema 版本约束；这些未固定时不能把分数当作稳定 benchmark 结论。

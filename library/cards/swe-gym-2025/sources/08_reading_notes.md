@@ -1,0 +1,5 @@
+- Use the official PMLR 21-page paper for claims; the repository's bundled PDF is an older 18-page version.
+- Keep 2,438 main tasks and the 230-task Lite subset separate; README's 234 is unresolved documentation drift.
+- Do not conflate the 491-row success-only SFT export with sampled trajectories containing 491 successes and 5,564 failures.
+- Verifier training uses an exactly balanced 1,318/1,318 mixture; outcome probability supports Best@k, not stepwise correctness.
+- Before reuse, reconcile artifact-specific licenses and pin every task to source, harness, trajectory, checkpoint, and Docker digest rather than mutable branches or `latest`.

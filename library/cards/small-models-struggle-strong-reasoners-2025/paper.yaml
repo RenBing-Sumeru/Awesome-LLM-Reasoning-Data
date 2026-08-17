@@ -1,0 +1,144 @@
+id: small-models-struggle-strong-reasoners-2025
+title: Small Models Struggle to Learn from Strong Reasoners
+year: 2025
+venue: Findings of ACL
+authors:
+- Yuetai Li
+- Xiang Yue
+- Zhangchen Xu
+- Fengqing Jiang
+- Luyao Niu
+- Bill Yuchen Lin
+- Bhaskar Ramasubramanian
+- Radha Poovendran
+source_role:
+- construction_recipe
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematics
+training_use:
+- sft
+- distillation
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1301/
+  arxiv: https://arxiv.org/abs/2502.12143
+  code: https://github.com/Small-Model-Gap/Small-Model-Learnability-Gap
+  data: null
+  project: https://small-model-gap.github.io/
+  huggingface: https://huggingface.co/UWNSL
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1301
+  venue: https://aclanthology.org/2025.findings-acl.1301/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1301/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-acl.1301.bib
+data_object:
+  prompt_source: The 7500-problem training split of MATH spanning seven mathematics topics.
+  trace_author: QwQ-32B-Preview generates long CoT and Qwen2.5-32B-Instruct generates short CoT; large-small teacher pairs
+    are Qwen2.5-72B/3B-Instruct, Llama-3.1-70B/8B-Instruct, and Gemma-2-27B/9B-it.
+  answer_format: A MATH problem paired with a teacher-generated chain-of-thought response and final answer.
+  process_fields:
+  - problem
+  - teacher_identity
+  - teacher_size
+  - cot_type
+  - reasoning_trace
+  - final_answer
+  - correctness
+  environment_or_substrate: Offline teacher generation, answer-based rejection sampling, controlled trace-mixture construction,
+    and student supervised fine-tuning.
+  verifier_or_reward: Teacher responses are retained through rejection sampling; paired comparisons use problems for which
+    both compared teachers produce correct answers. Evaluation first uses exact answer matching and then Qwen2.5-32B-Instruct
+    judgment for unmatched forms.
+  terminal_predicate: A generated response yields a final answer judged correct against the MATH solution.
+recipe_metadata:
+  base_model: Qwen2.5-0.5B/1.5B/3B/7B/14B/32B-Instruct and Llama-3.2-1B/3B, Llama-3.1-8B, and Llama-3.3-70B students; Mix
+    Distillation focuses on Qwen2.5-3B-Instruct and Llama-3.2-3B-Instruct.
+  teacher: QwQ-32B-Preview for long CoT, Qwen2.5-32B-Instruct for short CoT, plus size-controlled Qwen2.5, Llama, and Gemma
+    teacher pairs.
+  generator: Each teacher greedily generates a reasoning response for a MATH prompt; the response and problem form an SFT
+    pair after correctness filtering.
+  filtering_rule: Rejection sampling retains correct responses; pairwise teacher comparisons restrict training to problem-solution
+    pairs correct for both compared teachers.
+  sampling_protocol: Default teacher decoding is greedy. Mix-Long uses long and short CoT in a 1:4 ratio; Mix-Large uses strong-
+    and weak-teacher responses in the same 1:4 ratio.
+  rollout_count: null
+  temperature: null
+  inference_budget: Maximum SFT sequence length 16384; evaluation maximum generation length 16000 tokens.
+  optimizer_or_scaffold: LLaMA-Factory SFT for two epochs; students below 14B use full-parameter AdamW with maximum learning
+    rate 1e-5, while larger students use LoRA with learning rate 1e-4.
+audit:
+  source_mixture: MATH prompts combined with long/short traces and strong/weak teacher traces from QwQ, Qwen2.5, Llama, and
+    Gemma model families.
+  split: The 7500-example MATH training split is used for construction; exact retained row counts and released split manifests
+    are unavailable.
+  decontamination: unknown
+  license: The ACL paper is CC BY 4.0; licenses and redistribution terms for generated traces and upstream model outputs are
+    not reported as a unified data release.
+  lineage: MATH training prompt -> greedy teacher response -> answer-correctness rejection sampling -> matched correct teacher-pair
+    pool -> long/short or strong/weak 1:4 mixture -> student SFT -> multi-benchmark evaluation.
+  known_failure_modes:
+  - Correct final answers do not prove that intermediate reasoning is valid
+  - Qwen2.5-32B-Instruct judgment can introduce evaluator bias
+  - the 1:4 mixture is tuned on 3B students and may not transfer to other capacities
+  - conclusions are limited primarily to mathematical reasoning
+  - teacher model versions and immutable generation snapshots are not pinned
+  - exact paper-to-dataset and checkpoint mappings require release-level verification
+  - decontamination is unreported.
+  citation_status: verified
+  confidence: high
+  notes: Official Findings of ACL 2025 proceedings, DOI, arXiv, project page, MIT code repository, and UWNSL Hugging Face
+    organization were verified on 2026-07-11. Exact paper-matched trace datasets, checkpoints, and immutable revisions still
+    require artifact-level mapping.
+inclusion_reason: Controlled teacher-trace construction study showing that reasoning length and teacher capacity must be matched
+  to student learnability, with a concrete long-short and strong-weak mixing recipe.
+related: []
+tags:
+- reasoning-distillation
+- teacher-traces
+- mix-distillation
+- long-cot
+- student-capacity
+- rejection-sampling
+- learnability-gap
+status: partial
+one_line: The paper constructs matched long-short and strong-weak teacher-trace mixtures to show that small students often
+  learn better from simpler or smaller-teacher reasoning.
+one_line_summary: The paper constructs matched long-short and strong-weak teacher-trace mixtures to show that small students
+  often learn better from simpler or smaller-teacher reasoning.
+why_it_matters: It turns teacher identity, trace complexity, correctness matching, and student capacity into explicit data-selection
+  variables while documenting a failure of naive strongest-teacher distillation.
+card: cards/failures/small-models-struggle-strong-reasoners-2025.md
+needs:
+- 'needs_data_mapping: identify exact paper-matched trace datasets and retained row manifests in the UWNSL releases'
+- 'needs_snapshot: pin the code, dataset, and checkpoint revisions used for the paper'
+- 'needs_generation_metadata: pin teacher model revisions and complete decoding settings'
+- 'needs_lineage: publish per-row teacher and filter provenance'
+- 'needs_decontamination: document overlap checks'
+- 'needs_license: state redistribution terms for generated outputs'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, venue, DOI, arXiv, project page, MIT repository, and UWNSL Hugging Face organization verified; exact
+    paper-to-artifact mapping and immutable revisions remain partial.
+category_ids:
+- data_construction_open_release_recipes

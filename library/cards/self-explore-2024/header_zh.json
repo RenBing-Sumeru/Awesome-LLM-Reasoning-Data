@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Self-Explore 从被拒数学推理中搜索首个四次续写均无法恢复正确答案的步骤，并构造 prompt/chosen/错误步骤偏好对；代码已开放，但论文运行生成的数据对未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "拒绝采样、首个不可恢复步骤定位与细粒度偏好构造",
+  "best_for_ch": "研究如何将失败推理轨迹转化为程序化步骤监督、并审计有限搜索标签的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Hyeonbin Hwang、Doyoung Kim、Seungone Kim、Seonghyeon Ye、Minjoon Seo",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

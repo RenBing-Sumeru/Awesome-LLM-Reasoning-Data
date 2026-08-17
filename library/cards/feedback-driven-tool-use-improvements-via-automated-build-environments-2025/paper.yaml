@@ -1,0 +1,235 @@
+id: feedback-driven-tool-use-improvements-via-automated-build-environments-2025
+title: Feedback-Driven Tool-Use Improvements in Large Language Models via Automated Build Environments
+year: 2026
+venue: 'Findings of the Association for Computational Linguistics: ACL 2026'
+authors:
+- Junjie Ye
+- Changhao Jiang
+- Zhengyin Du
+- Yufei Xu
+- Xuesong Yao
+- Zhiheng Xi
+- Xiaoran Fan
+- Qi Zhang
+- Tao Gui
+- Xuanjing Huang
+- Jiecao Chen
+source_role:
+- data_release
+- agent_environment
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- tool_use
+- multi_step_question_answering
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.109/
+  arxiv: https://arxiv.org/abs/2508.08791
+  code: https://github.com/bytedance/FTRL
+  data: https://github.com/bytedance/FTRL/tree/7022ef0529bbff4901084f17e452eb49cad5fffc/Data/jsonl/raw
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.109
+  venue: https://aclanthology.org/2026.findings-acl.109/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.109/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Authors manually construct user inputs for four scenario families: single-hop, parallel single-hop, multi-hop,
+    and parallel multi-hop. GPT-4o assists construction of tool documents, integration, complexity scaling, and code. The
+    underlying fact/source corpus, annotator protocol, and item-level provenance are unknown.'
+  task_object: A released raw row contains an initial user message with the question, serialized JSON tool schemas, serialized
+    Python implementations, a mapping from tool names to still-unsolved golden subanswers, solve_rate, scenario source, split,
+    and final reference answer. The paper reports 2,215 train and 200 custom in-domain test environments.
+  trace_author: The current Qwen2.5 or Qwen3 policy samples multi-turn tool-call histories inside each local environment.
+    GPT-4o helps build environments but is not reported as the trajectory teacher.
+  trajectory_object: The sampler starts from the raw environment row, appends each assistant tool-calling response and its
+    tool observations to messages, updates unsolved_set and solve_rate, and saves every resulting history state. The official
+    repository does not include the generated trajectory files used for the paper runs.
+  answer_format: Assistant responses use the selected model family's tool-call syntax and eventually produce a natural- language
+    final answer. Tool observations are text strings tied to tool_call_id; failures are serialized as error text.
+  process_fields:
+  - messages
+  - tools
+  - codes
+  - unsolved_set
+  - solve_rate
+  - data_source
+  - split
+  - answer
+  - assistant_tool_calls
+  - tool_observations
+  - scalar_reward
+  observation: A locally executed Python function returns text, JSON stringification, or an error message. The observation
+    is appended to messages and checked against expected subanswers by case-folded substring containment.
+  reward_object: For a response with p tool calls and q newly solved subquestions, R=2q/(p+1). A blank response receives -0.5,
+    malformed tool markup -0.3, a response containing the reference answer 1/(1+t) for t remaining subquestions, a no-tool
+    response after all subquestions are solved 0.5, and other responses 0. The reward manager places this scalar on the last
+    valid response token.
+  environment_or_substrate: Each row embeds JSON tool documents and Python source code that is executed locally in-process.
+    The design avoids live external tool dependencies, but the implementation uses unrestricted exec and is not a security
+    sandbox.
+  verifier_or_reward: 'Programmatic/environmental feedback: execute the selected local Python function, test whether returned
+    text contains one expected subanswer, update remaining subquestions, and apply the deterministic scalar reward. It verifies
+    string-bearing environment progress, not semantic reasoning correctness.'
+  terminal_predicate: Task completeness is reached when no subquestions remain; final-answer validity is checked separately
+    by substring containment. The released sampler stops when the model emits no tool call or after 20 turns by default, and
+    does not save the terminal no-tool response itself.
+  provenance: Manually authored question/answer and subquestion plan -> GPT-4o-assisted tool document/integration/scaling/
+    implementation -> released local environment row -> current-policy tool interaction -> executable feedback and updated
+    unsolved set -> saved history state -> GRPO or Reinforce++ scalar-reward update.
+recipe_metadata:
+  base_model:
+  - Qwen2.5-7B-Instruct
+  - Qwen2.5-14B-Instruct
+  - Qwen3-8B non-reasoning
+  - Qwen3-8B reasoning
+  - Qwen3-14B non-reasoning
+  - Qwen3-14B reasoning
+  teacher: GPT-4o assists environment construction; no separate teacher model is reported for policy trajectories.
+  generator: GPT-4o generates/refines tool documents and Python implementations from manually created inputs; the current
+    trainable policy then generates tool-use trajectories in those environments.
+  prompt_task_source: Manually created user inputs across four scenario structures. Exact source datasets, source documents,
+    annotators, fact verification procedure, item identifiers, and source licenses are unknown.
+  sampling_protocol: The paper uses 16 rollouts per update and resamples trajectories from the current model at the start
+    of each of three epochs. The released preprocessing recipe samples with temperature 1.0 and up to 20 turns before converting
+    JSONL states to Parquet.
+  rollout_count: 16 rollouts per update; total generated, retained, successful, and failed rollout counts are unknown.
+  temperature: GPT-4o environment construction uses temperature 0 and max_tokens 2048. The repository's data-sampling command
+    uses temperature 1.0. The exact online RL decoding temperature for every paper run is unknown.
+  inference_budget: The sampler defaults to 20 turns. Training maximum response length per step is 1,024 tokens for non-reasoning
+    mode and 8,192 for reasoning mode; exact timeouts, retries, seeds, and total token/call budgets are unknown.
+  search_or_scaffold: Multi-turn policy interaction over locally executed row-specific Python tools, followed by Parquet conversion
+    and VeRL-based GRPO or Reinforce++ training.
+  filtering_rule: No sample-quality filtering rule beyond environment construction, state generation, parser behavior, and
+    reward computation is disclosed. The sampler saves the initial state and each tool-calling state regardless of success,
+    but omits the terminal no-tool response.
+  selection_threshold: unknown
+  optimizer_or_scaffold: VeRL with GRPO or Reinforce++; learning rate 1e-6, train batch size 512, mini-batch size 32, 16 rollouts
+    per update, KL loss coefficient 0.001, entropy coefficient 0.001, three paper-reported epochs with fresh trajectory resampling,
+    and eight NVIDIA A100 GPUs. Released shell scripts set one epoch per invocation and do not fully specify the paper's three-epoch
+    orchestration.
+  cold_start: unknown
+  undisclosed_training_fields:
+  - exact checkpoint identifiers and hashes
+  - random seeds
+  - complete rollout decoding configuration
+  - per-epoch generated trajectory manifests
+  - retained and dropped episode counts
+  - exact Python, CUDA, driver, and container versions
+audit:
+  source_mixture: Manually created questions and answers, GPT-4o-assisted synthetic tool schemas and Python implementations,
+    current-policy interaction histories, the authors' 200-item in-domain test set, and bundled ToolHop, tau-bench, RoTBench,
+    and general-capability evaluation data.
+  split: 2,215 train environments and 200 custom test environments, with 50 test rows per scenario. The authors state that
+    the custom test set does not overlap training. No item-level source manifest or released deduplication report was found.
+  decontamination: Only no-overlap between the authors' train and custom test sets is stated. Broader lexical/semantic duplicate
+    checks, source-corpus overlap, model-pretraining contamination, and overlap with public evaluation benchmarks are unknown.
+  benchmark_overlap: ToolHop, tau-bench, and RoTBench are explicitly used for out-of-domain evaluation and six public benchmarks
+    for general capabilities. No audit establishes that manually written training questions, GPT-4o construction outputs,
+    supporting models, or released rows are uncontaminated with these benchmarks.
+  lineage: Manual task/subanswers -> GPT-4o-assisted environment synthesis -> local executable raw row -> online policy interaction
+    -> substring-verified progress and scalar reward -> GRPO/Reinforce++ update. The release lacks immutable generated-trajectory
+    and checkpoint-to-result manifests.
+  license: The repository root LICENSE and source headers are Apache-2.0, and the README explicitly licenses the code. A dataset
+    card or statement clearly licensing the raw data, embedded implementations/facts, manually created questions, and bundled
+    upstream benchmark assets was not found; data and upstream rights remain unclear.
+  release_version: Final paper is ACL 2026; arXiv current version is v3 dated 2026-04-15. Repository main was audited at commit
+    7022ef0529bbff4901084f17e452eb49cad5fffc dated 2026-07-10. The repository has nine commits, no tags, and no GitHub releases,
+    and the paper does not pin a commit.
+  verifier_or_judge_failure_modes:
+  - '`answer_verify` accepts expected text as a substring of tool feedback after only lowercasing and comma removal, so leaked
+    answer strings or substring collisions can create false positives.'
+  - Semantically equivalent aliases, date formats, numbers, or structured outputs can create false negatives because the verifier
+    has no semantic normalization or calibrated equivalence check.
+  - Completion-only reward is shown by the paper to induce tool overuse; the final-answer substring branch also gives a positive
+    reward without requiring that every intended tool step be completed.
+  - Locally synthesized functions can encode incomplete, stale, or incorrect facts; executable consistency does not establish
+    real-world factual correctness or causal usefulness of a tool call.
+  - '`call_function` executes dataset-provided Python with unrestricted `exec` inside the training process. The ten-second
+    timeout is not a sandbox and does not control filesystem, network, subprocess, or other side effects.'
+  - Parser errors, malformed tool markup, missing functions, timeouts, and environment exceptions are collapsed into coarse
+    penalties/error strings, which can obscure whether failure comes from reasoning, serialization, or runtime.
+  successful_and_failed_sample_retention: The sampler preserves the initial state and every tool-calling state, including
+    calls that fail or solve no new subquestion, but stops without saving the terminal no-tool answer. The repository releases
+    only raw environment rows, not the generated paper-run trajectories, so success/failure counts, dropped states, terminal
+    outputs, and per-epoch retention are unknown.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: medium
+  remaining_unknowns:
+  - exact source and rights for every manually authored question, answer, embedded fact, and bundled benchmark asset
+  - complete five-stage construction code, GPT-4o outputs, human review protocol, and intermediate artifact lineage
+  - immutable paper-run trajectory files with success, failure, error, terminal, and dropped-sample manifests
+  - exact model checkpoints, seeds, rollout settings, paper-era VeRL revision, and checkpoint-to-table mapping
+  - container/image, Python, CUDA, driver, dependency, timeout, and resource-limit pins for replay
+  - semantic verifier calibration, false-positive/false-negative rates, adversarial tests, and reward-gaming analysis
+  - broader deduplication, decontamination, privacy, and consent audits
+  notes: Official citation, code, raw data paths, sampler, reward implementation, evaluation code, commit history, and license
+    files were inspected. Artifact verification does not imply that a sampled trajectory corpus, safely sandboxed execution,
+    paper-exact replay, or reusable data rights are available.
+inclusion_reason: 'FTRL makes the environment-to-feedback boundary unusually concrete: each released task carries tool schemas,
+  executable local functions, hidden subanswers, stateful interaction fields, and deterministic reward code consumed by agent
+  RL. It belongs in the environment/trajectory track as an environment and construction recipe, while the absence of released
+  paper-run trajectories and the substring/exec risks are essential audit findings.'
+related: []
+tags:
+- environment-agent-trajectory-data
+- tool-use
+- local-executable-environments
+- agentic-rl
+- rlvr
+- grpo
+- reinforce-plus-plus
+- environment-feedback
+- trajectory-release-incomplete
+- verifier-security-risk
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: FTRL turns 2,415 synthetic local tool environments into current-policy interaction states scored by executable
+  feedback for GRPO or Reinforce++, while leaving sampled trajectories, data rights, and secure paper-exact replay unresolved.
+why_it_matters: It exposes a concrete bridge from environment state and tool observations to scalar agent-training reward,
+  and it also shows why an official code/data release must be audited for trajectory completeness, verifier brittleness, executable-code
+  safety, licensing, and version replay before reuse.
+card: null
+needs:
+- 'needs_snapshot: immutable paper release/tag, checksums, exact data counts, and checkpoint-to-result manifest'
+- 'needs_data: released sampled trajectories with terminal outputs and success/failure/error/drop retention counts'
+- 'needs_replay: five-stage construction code, paper-era VeRL/configs, model hashes, seeds, dependencies, container and hardware/runtime
+  pins'
+- 'needs_license: explicit data license and source-by-source rights for questions, embedded functions/facts, and bundled benchmarks'
+- 'needs_security: sandbox row-provided Python and audit filesystem, network, subprocess, timeout, and resource-limit behavior'
+- 'needs_audit: verifier calibration, reward-gaming tests, broader deduplication/decontamination, privacy, and consent review'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  official_paper_version: ACL Anthology 2026.findings-acl.109; arXiv:2508.08791v3
+  repository_commit: 7022ef0529bbff4901084f17e452eb49cad5fffc
+  notes: The final ACL PDF including appendices, arXiv history, official repository tree, raw train/test schema, sampler,
+    reward/verifier code, training/evaluation scripts, commit history, tags/releases, and license files were checked. `artifact_verified`
+    does not assert trajectory completeness, paper-exact reproducibility, safe execution, or clear data rights.

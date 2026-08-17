@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Exploding Gradients",
+    "CardiffNLP, Cardiff University",
+    "AMPLYFI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T10:56:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2309.15217",
+    "https://arxiv.org/pdf/2309.15217",
+    "https://github.com/vibrantlabsai/ragas",
+    "https://docs.ragas.io/en/stable/"
+  ],
+  "verification_note": "Official arXiv/PDF verifies Exploding Gradients/CardiffNLP/AMPLYFI affiliations; official repository and docs verify Ragas project artifacts."
+}

@@ -1,0 +1,8 @@
+1. **Synthesize diverse questions.** Generate twelve subsets with prefilling, GPT-4o expansion of assessment seeds, code-to-question conversion, documentation prompts, seven-model Magpie generation, and prior synthetic sets.
+2. **Deduplicate and label.** Embed questions with all-mpnet-base-v2, remove close within-subset duplicates, classify Python task quality, and retain the targeted algorithm/function-generation records.
+3. **Generate executable triplets.** GPT-4o-0513 writes a solution and paired unit tests. Execute them with pytest and measure branch coverage; only passing pairs with 100% branch coverage are eligible.
+4. **Spend more attempts on hard tasks.** Regenerate both solution and tests from scratch up to ten times, never reusing a possibly faulty test. Keep questions with at least one passing pair, label difficulty from pass rate, and discard all-failure questions; 279K original-style triplets remain.
+5. **Convert style and build SFT.** Rewrite verified tasks into completion or online-judge forms, bringing paper V1 to 447K triplets. DeepSeek-R1 generates three responses for each question, and paired tests select passing CoT/code conversations while retaining incorrect and caution splits in the public release.
+6. **Train and evaluate.** SFT Qwen2.5-Coder-32B-Instruct on 50K or 18K hard records, and run GRPO on 10K triplets with binary all-tests-pass reward. Evaluate on HumanEval(+), MBPP(+), BigCodeBench, and LiveCodeBench.
+
+Reproduction should pin every seed/source revision, generator prompt and model, embedding threshold, execution image, coverage tool, trial result, style conversion, and benchmark-similarity score.

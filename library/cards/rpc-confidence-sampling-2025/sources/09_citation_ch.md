@@ -1,0 +1,1 @@
+Zhou, Zhi，Yuhao Tan，Zenan Li，Yuan Yao，Lan-Zhe Guo，Yu-Feng Li，Xiaoxing Ma。2025。《关于连接大语言模型推理中的内部概率与自一致性的理论研究》。载于《神经信息处理系统进展》第 38 卷。https://papers.nips.cc/paper_files/paper/2025/hash/7e9afa9a02857bce4515247842471444-Abstract-Conference.html

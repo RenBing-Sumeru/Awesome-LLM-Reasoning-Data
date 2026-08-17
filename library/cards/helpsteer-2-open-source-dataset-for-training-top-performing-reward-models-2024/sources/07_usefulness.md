@@ -1,0 +1,1 @@
+Use HelpSteer2 for reward-model ablations, studies of attribute-to-preference conversion, and small-scale preference tuning where data provenance matters. It is a poor sole source for multilingual alignment, medical/legal advice, or safety moderation.

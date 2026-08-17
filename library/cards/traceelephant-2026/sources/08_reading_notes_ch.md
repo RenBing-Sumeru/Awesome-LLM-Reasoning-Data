@@ -1,0 +1,5 @@
+- 不要混淆分母：220 条失败 benchmark episode 来自 380 次清洗后执行；当前 ZIP 包含 220 份 metadata 文件和 220 份 step-record 文件。
+- 分开理解三种信号：源任务的答案或测试失败、专家标注的负责 agent，以及专家标注的最早决定性 step。
+- 优先阅读 Table 1 的五个 system-task 数量、Tables 2-3 的归因与可观察性结果，以及 Appendix A.5 的三轮专家流程和一致性。
+- 固定 2026-06-02 HF revision 与 LFS SHA；修复后的 ZIP 不能与更早 archive 混用，GitHub 也没有 release 或 tag。
+- 回放或比较准确率前，审计环境替换与 `evaluate.py` 的 substring matching；不要从 benchmark 性能推断训练就绪度。

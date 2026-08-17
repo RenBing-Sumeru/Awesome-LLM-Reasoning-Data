@@ -1,0 +1,5 @@
+- Keep the units separate: the paper has 1,622 SFT and 953 RL conversations; HF has 26,463 SFT-FILTERED, 53,412 SFT-ALL, and 3,092 RL expanded rows. No published mapping closes the gap.
+- Read the RL object as prompt plus initial state, reference calls, target final state, and MCP config. The scalar reward is computed by versioned code; trace matching is order-insensitive and state matching is exact.
+- Treat filtering as part of supervision: one solved candidate is selected, redundant interactions are removed, and immediate failed SFT calls are dropped, while rejected candidates and failure IDs are unavailable.
+- Preserve official conflicts: SFT dataset-card scale descriptions are swapped relative to viewers, model cards repeat a conflicting filtered count, SFT epochs are 3 in the paper versus 1 in current config/cards, and license statements do not agree.
+- Before reuse, pin both repository commits and three HF revisions, then request a paper-run manifest, rejected ledger, immutable splits, decontamination/overlap results, privacy/consent audit, source-rights resolution, and adversarial reward tests.

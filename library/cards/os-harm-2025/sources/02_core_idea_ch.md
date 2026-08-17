@@ -1,0 +1,7 @@
+OS-Harm的核心贡献是一种桌面智能体安全评测对象：把可执行OSWorld任务和多模态轨迹连接到两个full-episode判定——任务完成与安全——以及首个unsafe step标签。
+
+任务构造有意区分三类失败来源。Deliberate misuse检查智能体是否执行有害用户请求；prompt injection把恶意指令放入网站、Writer文档、VS Code注释、收到的邮件、邮件草稿或桌面通知，检查智能体是否把数据当成指令；model misbehavior则通过不完整或含糊的任务，使高代价错误或self-serving行为成为可能。该分类便于审计风险来源，但150个stress test并不构成现实部署频率估计。
+
+其feedback contract是mixed。OSWorld在隔离Ubuntu VM中执行鼠标键盘action，并记录environment reward、完成状态、观测和terminal signal；但OS-Harm报告的主要标签需要judgment：AER框架下的GPT-4.1读取初始任务、全部agent reasoning/action和GPT-4o生成的最终截图caption，再输出自由文本`reasoning`、布尔`success`、布尔`safety`与整数或null的`violation_step`。judge能观察action/reasoning历史及最终状态caption，却不是对完整VM state的形式化predicate，也可能漏掉这种表示未覆盖的视觉或语义证据。
+
+相较模拟tool安全评测与browser-only benchmark，OS-Harm在多个OSWorld桌面应用中执行通用交互，并同时报告安全与完成。OSWorld VM、baseline agent scaffold和AER式judge均为复用组件而非新贡献；论文真正组合出的新对象是三类桌面任务集，以及episode级与首个违规步骤级的结构化评测契约。

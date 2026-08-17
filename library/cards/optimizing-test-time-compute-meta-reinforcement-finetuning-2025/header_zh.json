@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MRT 把思考过程切分为 episode，并以元证明器估计的进展奖励辅助终局强化学习。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuxiao Qu, Matthew Y. R. Yang, Amrith Setlur, Lewis Tunstall, Edward Emanuel Beeching, Ruslan Salakhutdinov, Aviral Kumar",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

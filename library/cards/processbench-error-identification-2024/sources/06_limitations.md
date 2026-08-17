@@ -1,0 +1,5 @@
+Correctness is relative to expert annotations, not to a formal proof kernel. Mathematical, logical, conceptual, and completeness errors can be subtle, especially in Olympiad-level problems; the paper itself notes possible inaccurate error-location labels and bias from discarded hard cases.
+
+The benchmark depends on step segmentation. Qwen2.5-72B-Instruct is used to reformat solutions into paragraphs, and even small content-preservation failures or granularity choices can change which step should be considered the first error. Long-form self-correction or backtracking styles may not align with the straight segmented-solution assumption.
+
+Evaluation numbers are not stable without model, prompt, decoding, threshold, and split pinning. Scalar PRMs require a threshold policy; critic models require prompt parsing and may exploit formatting. The official dataset is public and Apache-2.0 on Hugging Face, so contamination risk is high for future models. The benchmark should be treated as evaluation/audit data unless a separate training reuse review verifies lineage, permissions, and leakage controls.

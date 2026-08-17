@@ -1,0 +1,101 @@
+id: meta-judging-large-language-models-2026
+title: 'Meta-Judging with Large Language Models: Concepts, Methods, and Challenges'
+year: 2026
+venue: arXiv preprint
+authors:
+- Hugo Silva
+- Mateus Mendes
+- Hugo Gonçalo Oliveira
+source_role:
+- survey_background
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- llm-as-a-judge
+- meta-judging
+- evaluation-methodology
+- rubric-feedback
+training_use:
+- evaluation
+- reward_modeling
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2601.17312
+  arxiv: https://arxiv.org/abs/2601.17312
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2601.17312
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed evaluation prompts, candidate model outputs, judge assessments, and meta-judging methods.
+  trace_author: Surveyed systems; this paper does not release a new judge-trace dataset.
+  answer_format: A six-perspective framework for meta-judging literature.
+  process_fields:
+  - candidate output
+  - judge assessment
+  - meta-judge mechanism
+  - evaluation criterion
+  - failure mode
+  environment_or_substrate: Automated LLM evaluation and feedback pipelines.
+  verifier_or_reward: Surveys LLM-as-a-Judge and LLM-as-a-Meta-Judge; no new judge, reward model, or rubric is released.
+  terminal_predicate: A model output receives an automated quality assessment whose reliability must itself be evaluated.
+recipe_metadata:
+  base_model: Not a single model recipe; a literature survey.
+  teacher: Existing judge and meta-judge systems surveyed in the literature.
+  generator: Literature review and six-perspective framework construction.
+  filtering_rule: Literature is organized by foundations, mechanisms, alignment training, evaluation, failure modes, and future
+    directions.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Evaluation taxonomy; no new optimization scaffold is released.
+audit:
+  source_mixture: Official arXiv record and paper.
+  split: Not applicable to a survey.
+  decontamination: Judge evaluation can inherit benchmark leakage or shared-model bias; each underlying evaluator requires
+    its own contamination review.
+  license: An arXiv license is linked from the official record; a dataset license is not applicable.
+  lineage: 'Primary source: https://arxiv.org/abs/2601.17312'
+  known_failure_modes:
+  - Prompt sensitivity, systematic bias, verbosity effects, and hallucinated rationales are named vulnerabilities of LLM-as-a-Judge.
+  - Meta-judging can retain cost, prompt-sensitivity, and shared-model-bias risks.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract states the six perspectives and the named judge vulnerabilities.
+inclusion_reason: A 2026 evaluation primer that makes a judge output itself an auditable data object and explains why a meta-judge
+  does not automatically solve judge reliability.
+related: []
+tags:
+- llm-as-a-judge
+- meta-judging
+- evaluation-survey
+- judge-reliability
+- audit
+why_it_matters: It prevents rubric or judge outputs from being treated as ground truth when they are a learned, prompt-conditioned
+  feedback signal.
+status: verified
+needs:
+- 'needs_review: inspect each underlying judge dataset, rubric, and benchmark for model overlap and contamination evidence'
+one_line_summary: A 2026 map of how automated judges are evaluated, aligned, and still vulnerable to bias and prompt effects.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv abstract, author list, and submission history reviewed.
+category_ids:
+- foundations_and_primers
+track0_subfield: 🧯 Contamination / evaluation surveys

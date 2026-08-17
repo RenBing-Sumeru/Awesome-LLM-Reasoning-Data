@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "EVM-QuestBench 在分叉 EVM 链上以终局状态验证生成的自然语言交易脚本。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "带链状态验证器的自然语言交易代码生成基准",
+  "best_for_ch": "研究区块链交易代理、执行式评测或基于状态奖励训练的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Pei Yang, Wanyi Chen, Ke Wang, Lynn Ai, Eric Yang, Tianyu Shi",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

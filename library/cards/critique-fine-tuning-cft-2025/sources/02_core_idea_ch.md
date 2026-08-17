@@ -1,0 +1,1 @@
+论文的核心贡献是开放WebInstruct-CFT，规模为约65.4万条问题—噪声解—批评记录，主实验用50K，核心数据对象为query、noisy response与自然语言critique。其高层机制是：为题目生成错误或低质回答，再由GPT-4o定位错误并给出批评，从而把原本粗粒度、昂贵或不稳定的反馈转换为可训练、可评测的结构化记录。该数据主要用于六个数学基准及MetaMath、NuminaMath扩展，并通过用critique target进行Critique Fine-Tuning验证效用。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "EQ-Bench Creative Writing v3 用 LLM judge 和风格统计列评估模型创意写作输出。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Leaderboard / LLM-judge benchmark",
+  "best_for_ch": "需要审计主观生成评测、judge model、prompt snapshot、repetition/slop 风格代理指标的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "EQ-Bench",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-16T11:29:18Z"
+}

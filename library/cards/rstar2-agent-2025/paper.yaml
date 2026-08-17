@@ -1,0 +1,138 @@
+id: rstar2-agent-2025
+title: 'rStar2-Agent: Agentic Reasoning Technical Report'
+year: 2025
+venue: arXiv preprint
+authors:
+- Ning Shang
+- Yifei Liu
+- Yi Zhu
+- Li Lyna Zhang
+- Weijiang Xu
+- Xinyu Guan
+- Buze Zhang
+- Bingcheng Dong
+- Xudong Zhou
+- Bowen Zhang
+- Ying Xin
+- Ziming Miao
+- Scarlett Li
+- Fan Yang
+- Mao Yang
+source_role:
+- model_report
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- code
+- agentic_reasoning
+training_use:
+- sft
+- rlvr
+- agent_training
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2508.20722
+  arxiv: https://arxiv.org/abs/2508.20722
+  code: https://github.com/microsoft/rstar
+  data: null
+  project: https://github.com/microsoft/rstar
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The repository names AIME2024 and DAPO preprocessing entry points; the complete training task inventory,
+    sources, and splits are unknown.
+  trace_author: The agent generates reasoning and Python-tool trajectories during RL; exact model versions and per-trajectory
+    records are not released.
+  answer_format: Multi-turn reasoning with Python code/tool calls and execution feedback; a stable released training-trace
+    schema is not documented in the inspected repository.
+  process_fields: []
+  environment_or_substrate: A Python Code Judge server executes model-generated code. The repository warns that it executes
+    arbitrary code and should be deployed in an isolated environment, preferably Docker, without external-network exposure.
+  verifier_or_reward: GRPO-RoC uses Resample-on-Correct around a code-tool environment. The repository describes retaining
+    higher-quality positive trajectories while preserving failures; exact reward scoring and full acceptance ledger are unknown.
+  terminal_predicate: Resample-on-Correct and multi-stage RL are described, but item-level correctness criteria and trajectory
+    retention logs are not released.
+recipe_metadata:
+  base_model: Qwen3-14B-Base is specified in the official repository.
+  teacher: No separate teacher is disclosed for agentic RL; SFT provenance is unknown.
+  generator: Non-reasoning SFT followed by multi-stage agentic RL, with concise maximum response lengths per stage and increasing
+    dataset difficulty.
+  filtering_rule: The repository exposes optional downsampling/resampling controls, including retaining minimum positive/negative
+    traces; the paper-version complete filtering configuration is unknown.
+  sampling_protocol: The release framework documents resampling/downsampling controls, but it explicitly says the migrated
+    framework was not used to train a complete model; only the first 50 steps were compared with the original framework.
+  rollout_count: null
+  temperature: null
+  inference_budget: The report states 510 RL steps within one week on 64 MI300X GPUs. Token budget, rollout counts, and per-task
+    cost are unknown.
+  optimizer_or_scaffold: GRPO-RoC, a scalable tool-execution RL infrastructure, and multi-stage curriculum training.
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: The official microsoft/rStar repository declares MIT. Training data, model weights, generated traces, and Code
+    Judge dependencies need separate rights review.
+  lineage: Qwen3-14B-Base to non-reasoning SFT to multi-stage agentic RL with code execution and Resample-on-Correct. Released
+    code does not include an item-level task/trajectory/reward/selection ledger.
+  known_failure_modes:
+  - Code Judge executes arbitrary code and must be isolated; it is not safe to expose directly to external networks.
+  - The released framework was migrated from the original VERL v0.2 setup to VERL v0.5 and was not used to train a complete
+    model; a 50-step comparison is not full reproducibility.
+  - Training tasks, SFT data, execution sandbox policy, reward formula, rollout counts, and acceptance/rejection records remain
+    incomplete.
+  - Tool-environment noise is a stated motivation for GRPO-RoC, so correctness depends on an incompletely audited execution
+    environment.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv report and Microsoft repository, including its license, Code Judge warning, base-model instruction,
+    and migration note, were checked on 2026-07-14.
+inclusion_reason: Official agentic-RL report and code release that exposes an execution-feedback loop and a concrete reproducibility/security
+  caveat while leaving training data and trajectory audit records incomplete.
+related: []
+tags:
+- frontier-report
+- data-disclosure-ledger
+- agentic-rl
+- grpo-roc
+- code-judge
+- tool-use
+- environmental-verification
+- open-code
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: rStar2-Agent discloses agentic RL around a Python Code Judge and GRPO-RoC, but it does not release a complete
+  task, trace, reward, sandbox, or training-run ledger.
+why_it_matters: It makes an environmental-feedback pipeline visible while preserving the difference between released framework
+  code and a fully auditable/reproducible agent-training artifact.
+card: null
+needs:
+- 'needs_data: release task/SFT manifests and trajectory/reward/selection records'
+- 'needs_sandbox: document isolation, limits, tool versions, and environment determinism'
+- 'needs_reproducibility: original-framework configuration, seeds, rollouts, cost, and complete run evidence'
+- 'needs_audit: data rights, splits, decontamination, and feedback error analysis'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper and Microsoft code release verified; full training data/traces and original-run reproduction remain
+    partial.

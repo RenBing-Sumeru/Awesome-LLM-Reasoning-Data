@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RePanda 将表格断言编译为可执行的 pandas 查询，使事实核验可由重运行的表格操作决定。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "表格事实核验与可执行查询数据集",
+  "best_for_ch": "需要表格推理程序监督、可解释事实核验或 pandas 执行验证的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Atoosa Malemir Chegini, Keivan Rezaei, Hamid Eghbalzadeh, Soheil Feizi",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

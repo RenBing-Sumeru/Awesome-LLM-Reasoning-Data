@@ -1,0 +1,112 @@
+id: hotbugs-jar-time-critical-bugs-2025
+title: 'HotBugs.jar: A Benchmark of Hot Fixes for Time-Critical Bugs'
+year: 2025
+venue: arXiv preprint; paper reports SBSE Conference Challenge Track dataset status
+authors:
+- Carol Hanna
+- Federica Sarro
+- Mark Harman
+- Justyna Petke
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- bug-fixes
+- time-critical-software
+- program-repair
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2510.07529
+  arxiv: https://arxiv.org/abs/2510.07529
+  doi: null
+  code: https://github.com/carolhanna01/HotBugs-dot-jar
+  data: https://github.com/carolhanna01/HotBugs-dot-jar
+  project: https://solar.cs.ucl.ac.uk/os/hotfixbenchmark.html
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: HotBugs.jar paper, UCL project page, and GitHub repository
+  trace_author: HotBugs.jar authors and hot-fix benchmark construction
+  answer_format: hot-fix bug metadata, reproducible projects, patches, tests, build files, and benchmark records
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: time-critical hot-fix bug benchmark tasks
+  verifier_or_reward: project tests, build checks, and benchmark metadata validation
+  terminal_predicate: project tests, build checks, and benchmark metadata validation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: verified hot fixes and project metadata
+  generator: hot-fix collection and reproducibility packaging
+  filtering_rule: pin submodules, branches, Java/Maven/Gradle versions, and Google Sheet metadata snapshot
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2510.07529; https://solar.cs.ucl.ac.uk/os/hotfixbenchmark.html; https://github.com/carolhanna01/HotBugs-dot-jar
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2510.07529'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: pin submodules/branches, Java/Maven/Gradle versions, and metadata spreadsheet snapshot
+inclusion_reason: it contributes repair/evaluation environments for time-critical bugs
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- bug-fixes
+- time-critical-software
+- program-repair
+one_line: HotBugs.jar packages time-critical hot fixes as reproducible bug-fix benchmark data.
+why_it_matters: it contributes repair/evaluation environments for time-critical bugs
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: HotBugs.jar packages time-critical hot fixes as reproducible bug-fix benchmark data.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms UCL affiliation, arXiv status, project page, GitHub repository, and metadata sheet linkage.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 120
+  primary_category_id: benchmarks_evaluation_surfaces

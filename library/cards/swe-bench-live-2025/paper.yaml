@@ -1,0 +1,132 @@
+id: swe-bench-live-2025
+title: SWE-bench Goes Live!
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks / arXiv
+authors:
+- Linghao Zhang
+- Shilin He
+- Chaoyun Zhang
+- Yu Kang
+- Bowen Li
+- Chengxing Xie
+- Junhao Wang
+- Maoquan Wang
+- Yufan Huang
+- Shengyu Fu
+- Elsie Nallipogu
+- Qingwei Lin
+- Yingnong Dang
+- Saravan Rajmohan
+- Dongmei Zhang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- swe-agents
+- live-github-issues
+- repository-repair
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.23419
+  arxiv: https://arxiv.org/abs/2505.23419
+  doi: https://doi.org/10.48550/arXiv.2505.23419
+  code: https://github.com/microsoft/SWE-bench-Live
+  data: https://huggingface.co/datasets/SWE-bench-Live/SWE-bench-Live
+  project: https://swe-bench-live.github.io/
+  huggingface: https://huggingface.co/datasets/SWE-bench-Live/SWE-bench-Live
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official paper, project, Microsoft repository, and HF dataset
+  trace_author: Microsoft authors and live issue collection pipeline
+  answer_format: fresh GitHub issues, repository snapshots, Docker images, patches, tests, and evaluation logs
+  process_fields:
+  - task or issue
+  - environment state
+  - agent action
+  - execution feedback
+  - success predicate or score
+  environment_or_substrate: GitHub issues created since 2024 and Dockerized repository repair environments
+  verifier_or_reward: SWE-bench-Live Docker/test harness executes FAIL_TO_PASS and PASS_TO_PASS tests using task image_key,
+    test_cmds, and log_parser fields.
+  terminal_predicate: FAIL_TO_PASS tests pass and PASS_TO_PASS tests remain passing under the pinned Docker image and log
+    parser
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory/evaluation
+    surface.
+  teacher: fresh GitHub issue/test histories
+  generator: SWE-bench-Live live issue mining and environment construction
+  filtering_rule: pin collection cutoff, refresh policy, Docker namespace/version, and issue contamination boundary
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date of any live service
+    before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2505.23419; https://swe-bench-live.github.io/; https://github.com/microsoft/SWE-bench-Live;
+    https://huggingface.co/SWE-bench-Live
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2505.23419'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: Official sources verify NeurIPS 2025 Datasets and Benchmarks status, an initial 1,319-task release from 93 repositories,
+    dedicated Docker images, and a live-updated Hugging Face dataset. Current HF row counts should be labeled by snapshot
+    date.
+inclusion_reason: fresh issue collection reduces contamination and tests environment construction
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- swe-agents
+- live-github-issues
+- repository-repair
+why_it_matters: fresh issue collection reduces contamination and tests environment construction
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SWE-bench-Live refreshes repository repair evaluation with fresh GitHub issues.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official sources verify NeurIPS 2025 Datasets and Benchmarks status, an initial 1,319-task release from 93 repositories,
+    dedicated Docker images, and a live-updated Hugging Face dataset. Current HF row counts should be labeled by snapshot
+    date.
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+- programmatically_verifiable_outcome_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 81-100
+  candidate_index: 97
+  primary_category_id: environment_agent_trajectory_data

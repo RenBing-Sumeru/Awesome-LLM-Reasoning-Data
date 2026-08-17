@@ -1,0 +1,3 @@
+Most SFT selectors rank examples by surface quality, loss, or diversity. Those signals can preserve plausible-looking records without showing that they exercise the internal mechanism a particular model needs for a target task; a selector may therefore spend budget on examples that are fluent but do not strengthen reasoning, translation, or summarization behavior.
+
+IGDS asks whether an interpretable, causally useful model feature can become the criterion for choosing training records. It treats a candidate example as useful when it strongly activates a feature whose intervention has already improved held-out task performance, then uses the selected subset for supervised fine-tuning rather than changing decoding at inference time.

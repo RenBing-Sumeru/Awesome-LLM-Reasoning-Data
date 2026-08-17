@@ -1,0 +1,3 @@
+- The public statement release and 29,750-proof release do not equal the complete 800K-plus solved pool described for training. Reuse must state which subset is actually available and avoid claiming full-recipe reconstruction.
+- The faithfulness/completeness filter is an LLM judgment, so a statement can compile yet encode a different theorem. Reuse should manually audit aligned pairs and test with independent judges.
+- Distribution shifts are material: Mathlib4 helps ProofNet but hurts olympiad-style sets, while DPO/GRPO can overproduce `try`, lengthen proofs, and reduce inference-time diversity.

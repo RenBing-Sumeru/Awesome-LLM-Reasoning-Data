@@ -1,0 +1,19 @@
+{
+  "title": "Cross-Lingual Auto Evaluation for Assessing Multilingual LLMs",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.1419/",
+    "data": "https://huggingface.co/datasets/ai4bharat/recon",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T09:14:10Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "构建 RECON，含 500 条六语种人工评分样本，检验跨语言自动裁判是否与人类一致",
+    "updated_at": "2026-07-25T09:14:10Z"
+  }
+}

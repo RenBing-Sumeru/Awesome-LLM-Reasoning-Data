@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-15T07:14:17Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通用 Agent 经典指标 Agent必测",
+    "updated_at": "2026-07-15T07:14:17Z"
+  }
+}

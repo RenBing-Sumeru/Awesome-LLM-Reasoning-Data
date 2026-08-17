@@ -1,0 +1,3 @@
+# Evidence
+
+**Claim:** selection plus four augmentation operations, rather than model architecture alone, improve the MathVista consumer. **Controlled setup:** Table 5 always fine-tunes LLaVA-1.5-13B and changes only the 40k sampling/selection choice and which MathV360K augmentation components are included. **Result:** random 40k sampling scores 35.6, learned selection scores 38.2, selection plus image-mined QA scores 42.2, and the full mixture reaches 46.6 accuracy; Table 1 places the reproduced base at 27.7. **Boundary:** the comparison supports this mixture on MathVista, but synthetic-answer correctness is not independently measured and the full mixture also increases record count, so it does not isolate quality from scale.

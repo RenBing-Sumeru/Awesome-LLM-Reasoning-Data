@@ -1,0 +1,1 @@
+阅读时要分清三类标签：任意观察到的失败事件、终止失败、以及第一个不可恢复的 critical failure。validation log 的 violation 是证据，不是自动判决；最终 step 和 category 仍由 LLM judge 给出。先读 benchmark 构造再看结果表，否则容易把作者 taxonomy 下的 step accuracy 误读成通用 agent 可靠性指标。

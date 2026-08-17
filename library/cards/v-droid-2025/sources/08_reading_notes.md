@@ -1,0 +1,6 @@
+- Resolve identity first: `v-droid-2025` is the assigned stable ID, while arXiv v5 and the MobiCom record use the final 2026 title and ACM DOI; the arXiv abstract page still shows the old title.
+- Read §§4–5 before the benchmark tables: the core object is a step-level correct-versus-alternative P3 pair derived from an executed Android trace, not a 110K released episode dataset.
+- Keep the release boundary visible: the pinned GitHub preview has only five `{chosen, rejected}` records, so `data` is `null` and full training reuse is blocked.
+- Use v5 metrics only: 59.5/38.3/49.0 task success, 5.2-point AndroidWorld margin, 4.3 seconds per step, and about 0.7 seconds per decision; the 9.5-point and 0.7-second-per-step headlines are stale.
+- Inspect Table 1, Fig. 13, and §4.2 together: entropy triage is non-monotonic, and too much reverse-action data causes repeated-back collapse despite the positive self-correction ablation.
+- Before replay, pin GitHub/HF revisions and resolve HTML versus XML input, GPT-4 memory configuration, action-completion LLM, environment/app versions, complete splits, licenses, privacy, and failed-trace retention.

@@ -1,0 +1,5 @@
+- 明确版本边界：arXiv 只有五页 `2606.08275v1`；GitHub `v0.2.0` 加入后续 Who&When 工作，PyPI 则只提供 `0.0.1`。
+- 区分三种 replay 主张：基于 digest 的 message reconstruction、注入 recorded observation 后重复测量 action-signature match，以及可能再次调用 Environment 的 counterfactual forward replay。
+- 优先阅读 arXiv Sections 2-4，理解 SCM trajectory、五类 intervention、contrastive interval、point of commitment 与 Shapley coalition；再看 Section 5 的 planted synthetic test。
+- 把仅存在于仓库的 Who&When 结果视作负面的 surrogate-replay stress test：CI locus 仅在 22/121 上触发，且未发布的 JSONL 阻止逐 instance 核验。
+- 不要推断已有训练轨迹发布：目前没有 CAR dataset、split、LICENSE 文本、environment snapshot/reset/sandbox/rollback contract、privacy policy 或 decontamination audit。

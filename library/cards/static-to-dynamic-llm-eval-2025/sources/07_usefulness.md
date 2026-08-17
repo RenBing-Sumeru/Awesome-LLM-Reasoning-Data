@@ -1,0 +1,1 @@
+Use the six criteria as a release checklist: state seed and transformation, measure regeneration overlap, verify answers with an oracle, report complexity drift and costs, and publish transformation traces. The output is an auditable benchmark report. Do not use it as proof of contamination absence without model-specific exposure testing.

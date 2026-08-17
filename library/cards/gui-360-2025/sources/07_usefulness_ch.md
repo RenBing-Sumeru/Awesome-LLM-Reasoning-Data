@@ -1,0 +1,7 @@
+对 `environment_agent_trajectory_data` 而言，GUI-360° 提供了一个具体的 Windows Office episode schema，可用于研究 multimodal agent behavior：request/template provenance、screenshot、accessibility state、reasoning、GUI/API action argument 与 coordinate、status，以及 episode judgment。独立发布的 failure 可用于比较成功与失败 behavior，但使用者应先重建 attempt lineage 与 failure category，不能把所有失败运行当成同质 negative。
+
+对 `data_construction_open_release_recipes` 而言，论文给出一条可审计 baseline pipeline：获取 source query、实例化 template-bound task、应用 feasibility label、执行两个 model stage、对完整 trajectory 做 judgment、清洗不完整 step、切分成功数据、保留失败数据，再把日志转换成 task-specific training view。复现者应为官方仓库缺失的每个组件显式固定版本：query prompt、TrajAgent、EvaAgent prompt/rubric、VM/Office/MCP stack、reset/timeout policy 与 terminal predicate。
+
+四类 processed view 可支持 coordinate grounding、screen parsing、visual-only next-action prediction，以及带 accessibility context 的 next-action prediction 的 SFT baseline 与 ablation。发布 scorer 可用于静态 evaluation 和 verifier audit，包括 point-in-box label noise、IoU/text matching sensitivity、action parser error、alternative-action false negative、accessibility metadata drift，以及 logged step match 与 end-to-end task success 之间的差距。
+
+复用等级：在固定 file 并处理 license、privacy、split 与 provenance 约束后，可用于 `sft`、通过监督式 next-action/grounding objective 进行 GUI `agent_training`，以及静态 `evaluation`。faithful VM replay、executable environment training 与 RL reproduction 仍受阻。只有 abstract-level RL 表述和已发布 failure，不足以在缺少显式 reward、objective、rollout protocol、result 与 code 时加入 `rlvr`。

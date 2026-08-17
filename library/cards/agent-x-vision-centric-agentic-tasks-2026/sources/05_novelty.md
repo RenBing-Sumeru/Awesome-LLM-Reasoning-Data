@@ -1,0 +1,1 @@
+Existing multimodal agent benchmarks often score only the final answer or whether a tool call succeeds. Agent-X preserves visual evidence, plans, tool outputs, and failure locations and evaluates steps, chains, and outcomes separately. The novelty is an auditable trajectory combining deep multimodal reasoning with tool execution rather than another VQA question set.

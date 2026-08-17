@@ -1,0 +1,205 @@
+id: traceelephant-2026
+title: 'Seeing the Whole Elephant: A Benchmark for Failure Attribution in LLM-based Multi-Agent Systems'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Mengzhuo Chen
+- Junjie Wang
+- Fangwen Mu
+- Yawen Wang
+- Zhe Liu
+- Huanxiang Feng
+- Qing Wang
+source_role:
+- benchmark
+- data_release
+- agent_environment
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- step_level
+- full_episode
+domains:
+- agent_trajectories
+- multi_agent_systems
+- failure_attribution
+- web_and_tool_use
+- software_engineering
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.912/
+  paper_pdf: https://aclanthology.org/2026.acl-long.912.pdf
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2604.22708
+  code: https://github.com/TraceElephant/TraceElephant
+  data: https://huggingface.co/datasets/TraceElephant/TraceElephant
+  project: null
+  huggingface: https://huggingface.co/datasets/TraceElephant/TraceElephant
+  doi: https://doi.org/10.18653/v1/2026.acl-long.912
+  venue: https://aclanthology.org/2026.acl-long.912/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.912/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 220 failed executions retained from 380 runs of Captain-Agent and Magentic-One on GAIA/AssistantBench and
+    SWE-Agent on SWE-Bench Verified.
+  trace_author: Execution traces are produced by the three agent systems through an LLM API logging middleware; the complete
+    per-run backend-model/provider mixture is unknown. Three experienced human annotators supply the responsible-component
+    and decisive-step labels.
+  answer_format: 'Each released task directory pairs trace_metadata.json with step_records.json: trace metadata describes
+    the task/system/configuration and stores outcome and attribution labels, while an ordered step list stores agent inputs,
+    outputs, and optional tool logs.'
+  process_fields:
+  - task_id
+  - task_instruction
+  - system_name
+  - agent_configuration
+  - system_architecture
+  - ground_truth_or_tests_status
+  - step_id
+  - agent_id
+  - agent_name
+  - input_context
+  - output_content
+  - tool_logs
+  - mistake_agent
+  - mistake_step
+  observation: Full developer-visible LLM request context, inter-agent messages, responses, and observable tool/environment
+    results; the middleware cannot preserve interactions that are not observable at runtime.
+  action_space: System-specific natural-language agent actions and tool calls from Captain-Agent, Magentic-One, and SWE-Agent;
+    no single normalized executable action schema is documented for all three systems.
+  environment_or_substrate: Vendored runnable implementations of Captain-Agent, Magentic-One, and SWE-Agent plus an OpenAI-compatible
+    logging middleware and replay-oriented attribution scripts. Web, API, model, repository, and test environments are not
+    pinned as one immutable image.
+  verifier_or_reward: Task failure is determined from official GAIA/AssistantBench answer references or SWE-Bench Verified
+    test pass/fail. Responsible-agent and earliest-inevitable-step labels require three-round expert judgment and unanimous
+    consensus; no scalar reward is released.
+  terminal_predicate: The paper formalizes a binary task outcome. The benchmark retains runs that fail the source task's answer/test
+    criterion; attribution then labels the functional component and earliest step after which all feasible continuations are
+    judged to fail.
+  provenance: Public benchmark task -> fixed-configuration agent execution through middleware -> lightweight regex preprocessing
+    and privacy filtering -> success/failure determination -> failed-run retention -> three-round expert attribution -> paired
+    metadata/step JSON release.
+recipe_metadata:
+  base_model: unknown
+  teacher: Official task answers or SWE-Bench tests determine the failed outcome; three human MAS-debugging experts produce
+    agent/step attribution labels.
+  generator: Captain-Agent, Magentic-One, and SWE-Agent executions logged through the released OpenAI-compatible middleware.
+  prompt_task_source: GAIA, AssistantBench, and SWE-Bench Verified public benchmark tasks; exact sampled task-ID manifest
+    before execution is not separately documented.
+  filtering_rule: After cleaning 380 executions, retain the 220 failed runs. Regex preprocessing extracts agent names and
+    classifies plain-versus-tool outputs; automatic privacy filtering and manual inspection precede release. Exact cleaning
+    exclusions and redaction decisions are unknown.
+  sampling_protocol: Use a fixed configuration per system-task pair, temperature 0.3, and multiple trials. Counts are 126/21/119/30/84
+    total runs across the five system-task groups, with 73/12/74/17/44 failures retained.
+  rollout_count: 380 total executions; 220 failed benchmark episodes retained.
+  temperature: 0.3
+  inference_budget: unknown
+  optimizer_or_scaffold: No training optimizer is used. The construction scaffold is middleware capture, lightweight preprocessing,
+    failure selection, and three-round expert annotation; evaluation uses prompting or static/dynamic mini-SWE-agent-based
+    attribution.
+audit:
+  source_mixture: 73 Captain-Agent/GAIA, 12 Captain-Agent/AssistantBench, 74 Magentic-One/GAIA, 17 Magentic-One/AssistantBench,
+    and 44 SWE-Agent/SWE-Bench Verified failed traces.
+  split: No methodological train/dev/test split is disclosed for the 220 instances. Hugging Face exposes a single default/train
+    packaging split for the ZIP archive, which must not be interpreted as a training split.
+  decontamination: unknown
+  benchmark_overlap: All task sources are public benchmarks. No overlap or decontamination audit is reported; future training
+    on the released traces would contaminate evaluation on the same task IDs.
+  license: The paper, GitHub root, and HF card state CC BY 4.0 for traces/annotations/metadata. Third-party task sources and
+    vendored agent systems retain upstream terms. Code-specific reuse is not cleanly separated from the root CC BY 4.0 license,
+    so combined redistribution requires an upstream license audit.
+  lineage: GAIA/AssistantBench/SWE-Bench Verified task -> Captain-Agent/Magentic-One/SWE-Agent run -> middleware log -> regex
+    preprocessing/privacy review -> failed-run selection -> expert responsible-agent and decisive-step labels -> trace_metadata.json
+    plus step_records.json.
+  release_version: HF revision a78a57cdcdf74a080b1bec0f56f85228d86acbac; data.zip 596,610,649 bytes; LFS SHA-256 8e5df3e402abfa6666ae1b656a5d516395134163774b5da1a3abae99cb83a582.
+    GitHub main inspected at 0ce8abb2855de9f454f27f6b0795a4b7e6c8d5fc; no tag or release.
+  successful_and_failed_sample_retention: The paper reports 380 cleaned executions but releases the 220 failures as benchmark
+    instances. Successful-run release and exact rejected/cleaned-run manifests are not documented.
+  privacy_or_consent: Authors use controlled public-benchmark tasks, isolated browser profiles, automatic local-path/identifier
+    filtering, and manual trace inspection. The exact redaction rules and record-level decisions are not released.
+  known_failure_modes:
+  - Only three agentic systems are studied, limiting architectural and black-box generalization.
+  - Initial annotation agreement is 0.72 for agent labels and 0.64 for step labels; recoverability-aware decisive-step judgments
+    remain subjective even after consensus.
+  - The HF archive was replaced on 2026-06-02 to repair Captain/Magentic content and tool_calls, but no record-level migration
+    diff maps the January and June revisions.
+  - Captain-Agent and Magentic-One include documented search/browser substitutions, while model APIs, web state, upstream
+    commits, credentials, containers, and reset state are not pinned for deterministic replay.
+  - The released evaluator uses substring containment rather than strict equality for predicted agent and step labels, which
+    can create false-positive matches.
+  - Public task answers/tests and trace content create contamination risk if the benchmark is converted into training or reward
+    data.
+  - Full prompts and tool logs can expose sensitive or proprietary context despite the authors' filtering and manual review.
+  - The release is failure-only and does not establish a balanced successful/failed trajectory distribution for training.
+  - The paper demonstrates evaluation and diagnosis, not policy, reward-model, PRM, or RL training on TraceElephant.
+  citation_status: verified
+  confidence: high
+  notes: ACL paper/appendices, Anthology/arXiv records, GitHub README/tree/code/license/history, HF card/tree/commit history/LFS
+    metadata, and the ZIP central directory were checked. Current archive counts exactly reconcile to Table 1, but JSON content
+    was not exhaustively audited and replay was not executed.
+  remaining_unknowns:
+  - Per-run collection model/provider/version, prompt/config snapshot, seed, trial count, and inference budget.
+  - Pre-execution task manifest, cleaning exclusions, redaction log, and successful-run release status.
+  - Immutable upstream commits, containers, reset/web/API state, and per-trace replay recipe.
+  - Formal schema/datasheet, benchmark split manifest, record-level provenance, and January-to-June repair diff.
+  - Decontamination and task-overlap controls for any future training use.
+  - Code/data/upstream license compatibility for combined redistribution.
+inclusion_reason: 'TraceElephant exposes failed agent episodes as an auditable reasoning-data object: complete input/output/tool
+  traces are paired with task outcomes and expert component/step attribution, while the release also makes version drift,
+  replay dependence, and judgment uncertainty visible.'
+related:
+- who-when-pro-2026
+- agentdebug-failure-trajectories-2025
+- agentracer-2025
+tags:
+- traceelephant
+- agent-failure-attribution
+- multi-agent-systems
+- full-observability
+- failed-trajectories
+- replay
+- benchmark-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- process_trace_supervision_data
+one_line_summary: TraceElephant releases 220 fully observable failed Captain-Agent, Magentic-One, and SWE-Agent episodes with
+  expert component/step attribution and replay code, while archive repair history and environment drift remain material audit
+  limits.
+why_it_matters: 'It turns agent debugging into a concrete post-training data surface: task outcomes, inputs, tool observations,
+  agent actions, and step-level causal labels are co-located, enabling attribution evaluation without pretending that judgment
+  labels or mutable environments are deterministic training rewards.'
+card: null
+needs:
+- 'needs_release_manifest: publish schema, split/task IDs, record hashes, January-to-June repair diff, and a paper-to-code/data
+  release tag'
+- 'needs_replay: pin upstream commits, containers, model/API versions, credentials contract, reset state, web/task environments,
+  and per-trace replay commands'
+- 'needs_collection_metadata: disclose per-run model/provider, prompts/configs, seeds, trial counts, step/token/time budgets,
+  and cleaning exclusions'
+- 'needs_evaluator_fix: replace substring label matching with normalized exact matching and publish regression tests'
+- 'needs_decontamination: document task overlap and prohibit unreported train/evaluation reuse'
+- 'needs_license_audit: separate code and data terms and reconcile all vendored/upstream licenses'
+- 'needs_privacy_manifest: release filtering/redaction rules and record-level review provenance'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation, full ACL paper and appendices, arXiv identity, official repository/code/license/history, official HF dataset/current
+    revision/LFS object, archive membership and trace counts were verified. Replay and exhaustive record-level content audit
+    were not performed.

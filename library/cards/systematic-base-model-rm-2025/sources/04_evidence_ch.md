@@ -1,0 +1,1 @@
+主对照固定 HelpSteer2-Preference 的 RM 训练，将 40 个基座按尺寸分组并在 RewardBench 评估。Qwen2.5、Gemma-2 相比同尺寸 Llama-3.x 最高约提升 14%（图 2）。公开 Llama-3.1-8B checkpoint 中，Tulu-3 SFT 为 84.2，base 为 72.9（相对 +15.5%，表 1），后续 DPO/RLVR 降至 81.6/80.2。它支持配方条件下的选择，不是普适模型排名。

@@ -1,0 +1,28 @@
+id: mclm-multilingual-tts-2025
+title: 'Linguistic Generalizability of Test-Time Scaling in Mathematical Reasoning'
+year: 2025
+venue: ACL 2025
+authors: ['Guijin Son', 'Jiwoo Hong', 'Hyunwoo Ko', 'James Thorne']
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [answer_level, step_level]
+domains: [mathematical-reasoning, multilingual-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [scaling_report]
+artifacts: {paper: https://aclanthology.org/2025.acl-long.699/, arxiv: https://arxiv.org/abs/2502.17407, venue: https://aclanthology.org/2025.acl-long.699/, code: https://github.com/gauss5930/MCLM, data: https://github.com/gauss5930/MCLM, project: null, huggingface: null, doi: https://doi.org/10.18653/v1/2025.acl-long.699}
+data_object: {prompt_source: 'MCLM competition-level mathematics problems in 55 languages.', trace_author: 'Qwen2.5-Math, MR1-1.5B, and tested reward or verifier pipelines.', answer_format: 'Reasoning trajectories, sampled answers, step scores, and final mathematical answers.', process_fields: [problem, language, candidate, reasoning_tokens, inference_flops, reward_score, process_step, final_answer, consistency, task_outcome], environment_or_substrate: 'Multilingual mathematical-reasoning evaluation.', verifier_or_reward: 'Outcome reward model, process reward model, budget forcing, and benchmark answer evaluation.', terminal_predicate: 'Correct mathematical answer under a matched inference-FLOPs budget.'}
+recipe_metadata: {base_model: 'Qwen2.5-Math-1.5B and MR1-1.5B.', teacher: 'DeepSeek-R1 trajectories are used in reported supervised training for MR1-related configurations.', generator: 'Outcome-reward reranking, process-reward-guided search, or budget-forced reasoning.', filtering_rule: 'Compare methods under matched inference FLOPs.', sampling_protocol: 'Outcome reward modeling varies candidate count; process reward modeling varies generation steps and candidates per step; budget forcing varies generated-token limits.', rollout_count: 'Method-dependent.', temperature: null, inference_budget: 'Matched inference FLOPs and reasoning-token budgets.', optimizer_or_scaffold: 'Evaluation of ORM, PRM, and budget forcing; MR1 multilingual fine-tuning.'}
+audit: {source_mixture: 'Official ACL 2025 paper, official code repository, and paper-linked MCLM and MR1 artifacts.', split: 'MCLM spans 55 languages; inspect the official release for per-subset task and language splits.', decontamination: 'Not separately claimed in the checked source.', license: 'Verify repository, benchmark, translated data, and checkpoint terms before reuse.', lineage: 'Primary sources: https://aclanthology.org/2025.acl-long.699/ ; https://github.com/gauss5930/MCLM', known_failure_modes: ['Scaling gains are much weaker outside English.', 'Methods do not improve cross-language consistency or variance.', 'Results focus on mathematical tasks and smaller-scale models.', 'FLOPs matching does not capture all deployment costs.'], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. Affiliations: Yonsei University, OneLineAI, KAIST AI, and MODULABS.'}
+inclusion_reason: 'It directly measures whether reward-guided and token-budget test-time scaling remains beneficial when the reasoning language changes.'
+related: []
+tags: [test-time-compute, multilingual, mathematical-reasoning, reward-model, budget-forcing, evaluation]
+status: verified
+one_line_summary: 'MCLM tests outcome rewards, process rewards, and budget forcing at matched compute across 55 languages, exposing weak cross-lingual scaling gains.'
+reading_priority: essential
+paper_type: Multilingual test-time scaling benchmark and comparative study
+best_for: Readers evaluating whether a test-time scaling strategy transfers beyond English reasoning.
+confidence: high
+why_it_matters: It shows that a gain measured only in English can overstate the generality of an inference-time scaling method.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official ACL paper, authors, affiliations, repository, and reported released benchmark and model checked.'}
+category_ids: [scaling_rlvr_test_time_compute]

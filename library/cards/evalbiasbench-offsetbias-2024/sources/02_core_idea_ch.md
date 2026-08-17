@@ -1,0 +1,1 @@
+核心贡献是 EvalBiasBench 与 OffsetBias 式去偏 evaluator tuning：先构造会被非质量线索带偏的 judge case，再用去偏数据调整 evaluator。机制不是只收集偏好，而是把偏差类别、候选回答表面和目标判断显式绑定，检查 evaluator 是否跟随真实质量而不是 spurious offset。反馈契约依赖人工/模型 judge、rubric 和偏差标签。最近对比是 reward model benchmark、JudgeBench 类 judge 审计和普通 preference 数据集。方向标签是 reward/judge 构造中的 evaluator-bias audit data。

@@ -1,0 +1,1 @@
+它可作为可执行竞赛代码数据 schema：保留题目来源、题面、样例、已知的 hidden/public 测试区别、正确/错误人类提交、语言、split、编译/运行时、sandbox 参数和 accepted 结果。它适合研究采样、过滤、聚类和基于执行的候选选择。atlas 复用时要区分训练用途和评测用途；训练过 AlphaCode 的数据不能直接当作后续模型的干净 post-cutoff benchmark。

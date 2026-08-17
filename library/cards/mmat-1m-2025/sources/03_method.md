@@ -1,0 +1,2 @@
+Sources include Visual CoT, LLaVA-CoT, The Cauldron components, TabMWP, and Infoseek. GPT-4o produces rationales, inserts tool/retrieval evidence, checks logical consistency and answer accuracy, revises the dialogue, and optionally compresses it. Released rows expose messages and image paths, but a complete executable generation pipeline, teacher temperature, prompts, immutable tool endpoints, raw calls/results, and consistent source IDs are not verified.
+

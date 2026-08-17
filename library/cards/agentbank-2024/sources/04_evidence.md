@@ -1,0 +1,3 @@
+The decisive scaling study trains comparable agents while increasing either task diversity or trajectory count. Held-out performance rises with more tasks, while reducing the pool from 50k+ trajectories to 1k causes a marked generalization drop; gains begin to plateau for the 13B model. This supports scale and diversity under the stated SFT setup, not an unbounded scaling law.
+
+The construction-quality check asks five annotators to compare anonymous trajectories. On IC-SQL, answer forcing versus exploration yields 11 wins, 16 losses, and 73 ties over 100 cases; on WebShop, reformatting versus the earlier construction yields 12 wins, 10 losses, and 58 ties over 80. The high tie rate supports comparable perceived quality but does not prove rationale faithfulness.

@@ -1,0 +1,28 @@
+id: latent-recurrent-depth-tts-2025
+title: 'Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach'
+year: 2025
+venue: NeurIPS 2025
+authors: ['Jonas Geiping', 'Sean McLeish', 'Neel Jain', 'John Kirchenbauer', 'Siddharth Singh', 'Brian R. Bartoldson', 'Bhavya Kailkhura', 'Abhinav Bhatele', 'Tom Goldstein']
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [full_episode]
+domains: [mathematical-reasoning, software-engineering, general-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [scaling_report]
+artifacts: {paper: https://arxiv.org/abs/2502.05171, arxiv: https://arxiv.org/abs/2502.05171, venue: https://proceedings.neurips.cc/paper_files/paper/2025/file/3b01972cf31e6fa0fe29e4b8b5c2a0a1-Paper-Conference.pdf, code: https://github.com/seal-rg/recurrent-pretraining, data: null, project: null, huggingface: https://huggingface.co/tomg-group-umd/huginn-0125, doi: https://doi.org/10.48550/arXiv.2502.05171}
+data_object: {prompt_source: 'Standard language-model pretraining corpus and reported reasoning or coding benchmark prompts.', trace_author: 'Depth-recurrent language model.', answer_format: 'Hidden-state recurrence iterations followed by generated output tokens.', process_fields: [prompt, recurrent_depth, hidden_state, output_token, compute_budget, task_outcome], environment_or_substrate: 'Depth-recurrent transformer inference.', verifier_or_reward: 'Task-specific benchmark evaluation; no chain-of-thought verifier is central to the method.', terminal_predicate: 'Benchmark task outcome or language-model metric.'}
+recipe_metadata: {base_model: 'A 3.5B-parameter proof-of-concept depth-recurrent language model.', teacher: null, generator: 'Latent depth-recurrent block unrolled at inference time.', filtering_rule: 'Not a data-selection method.', sampling_protocol: 'Vary the number of recurrent iterations at test time.', rollout_count: 'Not applicable; compute is allocated as recurrent depth.', temperature: null, inference_budget: 'Number of latent recurrent iterations; paper reports up to a compute load equivalent to 50B parameters.', optimizer_or_scaffold: 'Latent depth-recurrent transformer architecture.'}
+audit: {source_mixture: 'Official NeurIPS 2025 paper PDF, arXiv record, official code repository, and linked Hugging Face model page.', split: 'See official paper for task-specific evaluation protocols.', decontamination: 'Not separately claimed in the checked source.', license: 'Official code repository reports Apache-2.0; verify model and source-data terms before reuse.', lineage: 'Primary sources: https://arxiv.org/abs/2502.05171 and https://github.com/seal-rg/recurrent-pretraining', known_failure_modes: ['The architecture must be trained for recurrent depth; this is not a drop-in prompt-time method for ordinary transformers.', 'Sequential recurrence can increase per-token latency.', 'Reported proof of concept is 3.5B parameters and may not predict frontier-scale behavior.'], citation_status: verified, confidence: high, notes: 'Official PDF checked on 2026-07-20. First-page affiliations: ELLIS Institute Tübingen; Max-Planck Institute for Intelligent Systems; Tübingen AI Center; University of Maryland, College Park; Lawrence Livermore National Laboratory.'}
+inclusion_reason: 'It directly varies inference computation through recurrent latent depth and measures the resulting reasoning behavior.'
+related: []
+tags: [test-time-compute, latent-reasoning, recurrence, adaptive-compute, architecture]
+status: verified
+one_line_summary: 'A depth-recurrent language model scales inference compute by iterating hidden-state reasoning rather than producing longer visible chains.'
+reading_priority: essential
+paper_type: Test-time compute architecture study
+best_for: Readers studying latent-space alternatives to token-based reasoning expansion.
+confidence: high
+why_it_matters: It treats recurrent depth as an explicit test-time budget independent of visible chain-of-thought length.
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: 'Official NeurIPS PDF, author affiliations, official code repository, and linked model page checked.'}
+category_ids: [scaling_rlvr_test_time_compute]

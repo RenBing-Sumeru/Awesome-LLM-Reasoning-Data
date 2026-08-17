@@ -1,0 +1,1 @@
+The survey classifies instruction-tuning data by provenance, including expert-authored examples, larger-model outputs used for distillation, and self-improvement traces. It relates those sources to different tuning methods and evaluation protocols. The paper does not treat instruction-response formatting alone as evidence of alignment quality.

@@ -1,0 +1,7 @@
+Treat Grok 4.1 as a partial disclosure ledger. The card states pretraining used publicly available Internet data, third-party-produced data, user/contractor data, and internally generated data; after filtering and targeted mid-training, post-training combined SFT and RL on human feedback, verifiable rewards, and model-based graders (card §3.1).
+
+The announcement adds a separate claim: frontier agentic reasoning models were used as reward models for non-verifiable signals while optimizing style, personality, helpfulness, and alignment. It does not identify those models or give a reward-record contract. For one internal refusal evaluation, the described record is a policy-violating single-turn prompt, model response, and a separate model's assist/refuse grade (card §2.1.2).
+
+Feedback therefore observes different things at different layers: final behavior on refusal, input-filter false negatives, benchmark answers, and model/human preference-style evaluations. None of the sources establishes step-level verification, the training reward specification, evaluator calibration, source-to-reward lineage, or a released corpus.
+
+The closest local comparison is the Grok 4 model card: both have broad source and feedback disclosure. Grok 4.1 newly makes production-traffic silent rollout and non-verifiable, agentic-reasoner reward-model claims salient, while still leaving their data governance and training contract unknown.

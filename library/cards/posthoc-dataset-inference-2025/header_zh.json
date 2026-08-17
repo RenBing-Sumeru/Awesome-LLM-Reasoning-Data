@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作通过同前缀合成后缀与校准配对检验，在缺少天然匹配留出集时进行事后集合级训练数据推断，但不能给出记录级或法律层面的证明。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "合成参考集与数据集推断配方",
+  "best_for_ch": "研究训练数据溯源、membership inference、统计校准和审计证据边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Bihe Zhao、Pratyush Maini、Franziska Boenisch、Adam Dziedzic",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-22T00:00:00Z"
+}

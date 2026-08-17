@@ -1,0 +1,5 @@
+- Read Sections 2.1-2.2 first to reconstruct the actual data unit: task, two-level memory, reasoning/action/observation steps, shared state, and environment lifecycle.
+- In Sections 2.3-2.5, keep three stages separate: source acquisition and CT annotation, on-policy interactive SFT correction, and RL task/reward construction. The paper's flywheel connects them but does not publish the routing ledger.
+- Treat the reward contract as three contracts, not one: deterministic game functions, reference-answer judging for GUI-Browsing, and UI-TARS-2 outcome scoring for GUI-General.
+- Pair the 300-trace reward-model result with its stated false-positive issue. It is evaluator evidence, not proof of training-data quality.
+- Check official artifacts by identity, not name similarity: UI-TARS-2B-SFT belongs to arXiv:2501.12326, while no verified checkpoint or dataset for arXiv:2509.02544 was found.

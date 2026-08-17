@@ -1,0 +1,1 @@
+Datasets, teachers, trace origin, preference or RL reward contract, rollout budget, filtering, source rights, and decontamination are not identified. Reported parameter sizes and release claims do not resolve those audit gaps.

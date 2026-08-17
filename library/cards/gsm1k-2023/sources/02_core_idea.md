@@ -1,0 +1,3 @@
+The contribution is to provide grade-school math benchmark surface; exact source and size need audit. for math, grade-school-math under a reusable evaluation surface. The core mechanism is the pairing of task inputs and model outputs with the following feedback contract: exact or normalized numeric answer match.
+
+The data object or environment is grade-school math QA. The closest comparisons are nearby benchmark and evaluation-surface datasets that share the same feedback contract. The direction label is benchmarks_evaluation_surfaces with a programmatic feedback contract. The main thing to preserve is not only the headline score, but the task object, evaluator, split/version, and artifact lineage.

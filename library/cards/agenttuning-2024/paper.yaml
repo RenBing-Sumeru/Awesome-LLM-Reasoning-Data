@@ -1,0 +1,149 @@
+id: agenttuning-2024
+title: 'AgentTuning: Enabling Generalized Agent Abilities for LLMs'
+year: 2024
+venue: Findings of ACL 2024
+authors:
+- Aohan Zeng
+- Mingdao Liu
+- Rui Lu
+- Bowen Wang
+- Xiao Liu
+- Yuxiao Dong
+- Jie Tang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent-reasoning
+- tool-use
+- web
+- embodied-ai
+- database
+- operating-systems
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-acl.181/
+  arxiv: https://arxiv.org/abs/2310.12823
+  code: https://github.com/THUDM/AgentTuning
+  data: https://huggingface.co/datasets/zai-org/AgentInstruct
+  project: https://thudm.github.io/AgentTuning/
+  huggingface: https://huggingface.co/datasets/zai-org/AgentInstruct
+  doi: https://doi.org/10.18653/v1/2024.findings-acl.181
+  venue: https://aclanthology.org/2024.findings-acl.181/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-acl.181/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2024.findings-acl.181.bib
+data_object:
+  prompt_source: Training splits from ALFWorld, WebShop, Mind2Web, and Knowledge Graph plus derived or self-instructed operating-system
+    and database tasks.
+  trace_author: GPT-4-0613 writes most ReAct trajectories; GPT-3.5-turbo-0613 supplies part of Mind2Web, and GPT-4 adds thoughts
+    to derived traces.
+  answer_format: A conversation record serializing instruction, Thought/Think, one environment action, observation, corrections,
+    and terminal answer or finish action.
+  process_fields:
+  - id
+  - conversations.from
+  - conversations.loss
+  - conversations.value
+  - thought
+  - action
+  - observation
+  environment_or_substrate: 'Six interactive substrates: household text worlds, shopping, web navigation, knowledge graphs,
+    Ubuntu shell, and databases.'
+  verifier_or_reward: Task-specific environment rewards score completion; most retained trajectories require reward 1, while
+    Mind2Web accepts reward at least two thirds.
+  terminal_predicate: Stop on success, token limit, or three identical consecutive outputs; retain records passing the task-specific
+    reward threshold.
+recipe_metadata:
+  base_model: Llama-2-chat 7B, 13B, and 70B
+  teacher: GPT-4-0613 and GPT-3.5-turbo-0613
+  generator: AgentBench-compatible environments record ReAct interactions; Task Derivation and Self-Instruct create tasks
+    where training instructions are absent.
+  filtering_rule: Keep full-success trajectories except Mind2Web at reward >= 2/3; reject repeated failures and supplement
+    derived traces with GPT-4 rationales.
+  sampling_protocol: Collect across 35,341 candidate instructions, then mix the 1,866 accepted agent trajectories with ShareGPT
+    general conversations for SFT.
+  rollout_count: 1866
+  temperature: null
+  inference_budget: The paper discloses teacher versions and the Mind2Web budget-driven teacher substitution but not total
+    calls, tokens, cost, or wall time.
+  optimizer_or_scaffold: Hybrid instruction tuning on AgentInstruct and sampled English ShareGPT conversations; exact mixture
+    ratio is selected by grid search.
+audit:
+  source_mixture: 336 ALFWorld, 351 WebShop, 122 Mind2Web, 324 Knowledge Graph, 195 operating-system, and 538 database trajectories,
+    totaling 1,866.
+  split: The public dataset exposes six named Parquet splits; the paper evaluates six held-in and six separately assembled
+    held-out tasks.
+  decontamination: The paper checks test leakage against task training sources, but GPT teachers and ShareGPT lineage are
+    not fully auditable.
+  license: The AgentInstruct dataset card does not declare a dataset license. Public access is governed by Hugging Face Terms,
+    and each derived task source retains its own terms; associated code likewise exposes no repository LICENSE.
+  lineage: Static ReAct demonstrations explicitly consumed by SFT; the environments generate feedback, but the released training
+    target is the serialized thought-action-observation conversation.
+  known_failure_modes:
+  - Task-level reward does not prove that every intermediate rationale is faithful or safe.
+  - GPT-generated thoughts, syntax, and errors can be distilled into AgentLM.
+  - Only six training tasks and proprietary teachers limit coverage and exact regeneration.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology paper, PDF affiliations, official project and repository, public Hugging Face split manifest, one OS
+    Parquet record, reward thresholds, counts, and current adoption signals were checked on 2026-07-14.
+inclusion_reason: AgentInstruct is an openly readable collection of serialized ReAct demonstrations with explicit teacher
+  authorship, environmental reward filtering, and a documented SFT consumer.
+related: []
+tags:
+- instruction-demonstration-rationale
+- agent-trajectories
+- react
+- tool-use
+- arxiv-2310.12823
+status: verified
+one_line_summary: AgentInstruct releases 1,866 reward-filtered, multi-turn ReAct demonstrations across six agent tasks for
+  hybrid instruction tuning.
+why_it_matters: It turns interactive thought-action-observation behavior into a small, inspectable SFT object and tests whether
+  that object transfers beyond its source environments.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings, dataset manifest, an actual Parquet record, project, code, access terms, and release boundaries
+    checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260714-round2
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: reward-filtered multi-environment agent demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 4
+    artifact: 1
+  selection_evidence:
+    institution: The official PDF confirms Tsinghua University and Zhipu AI affiliations, both established agent and language-model
+      research institutions.
+    venue: ACL Anthology confirms a regular Findings of ACL 2024 paper; no oral, spotlight, or award distinction is claimed.
+    impact: The official repository had 1,499 stars, while the public dataset reported 1,633 downloads and 235 likes on 2026-07-14,
+      with later agent-tuning papers using AgentInstruct as a baseline and source.
+    artifact: The official dataset is public, non-gated, split into six inspectable Parquet files, and documents 1,866 records;
+      no dataset license is declared, so artifact completeness is scored 1 rather than 2.
+  selection_eligible: true
+  year_impact_threshold: 3

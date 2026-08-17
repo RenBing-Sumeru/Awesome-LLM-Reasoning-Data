@@ -1,0 +1,8 @@
+- 已发布的训练单元是离线且基于参考答案打分的。论文更宽泛的 Thought/Action/Observation 形式化，不能被解读为已发布 live execution environment、replay protocol 或 environment-state success predicate 的证据。
+- 严格的 reference-AST 等价可能拒绝语义等价调用、不同参数序列化或替代 multi-tool plan。早期 overlap 可能奖励复制表面 token，format reward 也可在调用错误时奖励分隔符合规；这些机制带来 false negative、false positive 与 reward hacking 风险。
+- ToolACE 公开 subset 有 11,300 行，而表 2 报告保留 99,266 条 ToolACE 记录。论文专属处理语料的精确 record ID、source revision、split、filter/rejection manifest、augmentation seed 与权利均为 unknown。
+- 未核验到 Tool-Zero 专属代码、GG-GRPO reward 实现、config、dependency lock、model checkpoint、model card、evaluation script、逐例输出或 release license。上游 dataset 与 framework 的 license 不覆盖这些未发布工件。
+- MindSpeed-RL 仓库包含通用 GRPO 基础设施和设置明显不同的数学向 Qwen2.5 示例；它没有提供论文奖励，也不能复现该次实验。使用的 framework commit 与迁移影响均为 unknown。
+- ACL 终稿报告八个 rollout，而较早 OpenReview 版本报告四个。表 4/表 9、表 5/正文、headline/表 3 的数字也不一致；目前没有作者解释。
+- 论文没有报告 seed、独立 run 数、variance、error bar、checkpoint selection、ablation compute、不可变 evaluator commit 或逐样本 contamination check。表 8 的 candidate-tool-set overlap 不是 near-duplicate 或 benchmark contamination audit。
+- Malformed augmentation、失败 rollout、reward-hacked completion 和被拒绝源记录是否保留均为 unknown。合成 clarification/validation dialogue 也可能不符合真实用户或 environment dynamics。

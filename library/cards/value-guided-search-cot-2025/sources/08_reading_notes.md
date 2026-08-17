@@ -1,0 +1,5 @@
+- Read Paper §§2.1–2.3 together: the value target, 56-pair collection unit, and block-wise search consumer are one connected data contract.
+- Keep three scales separate: 44,509 released prompt groups, 56 pairs per group, and about 2.5 million post-filter pairs; inference budget \(N\) is a fourth, different quantity.
+- Inspect Appendix D for filtering/cut selection, Appendix E for the 128-H100 value-model run, Table 2 for budgeted comparisons, and Appendix C.7/H for failure and efficiency boundaries.
+- Remember that OpenR1-VM retains wrong and incomplete rollouts only within surviving prompt groups; all-failure groups, complete rejection manifests, and historical discarded search branches are not released.
+- Pair this Card with work on PRMs, best-of-N/majority voting, and search-generated trace data; verify generation settings, validation split identity, licenses, model packaging, and value calibration before reuse.

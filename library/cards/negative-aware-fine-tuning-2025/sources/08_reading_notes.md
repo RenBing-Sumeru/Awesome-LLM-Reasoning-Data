@@ -1,0 +1,5 @@
+- Each rollout step samples 512 DAPO-Math-17k prompts and 16 answers per prompt.
+- NFT trains on both verifier-positive and verifier-negative answers through one parameterized positive model.
+- Strict on-policy NFT/GRPO gradient equivalence depends on binary rewards and the stated prompt weighting.
+- Official code, DAPO-Math-17k, and NFT-7B/NFT-32B weights are available under different licenses.
+- Complete rollout, verifier, and optimizer logs are not established as released.

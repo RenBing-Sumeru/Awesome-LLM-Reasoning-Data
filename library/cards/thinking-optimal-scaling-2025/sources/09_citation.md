@@ -1,0 +1,1 @@
+Yang, Wenkai, Shuming Ma, Yankai Lin, and Furu Wei. 2025. “Towards Thinking-Optimal Scaling of Test-Time Compute for LLM Reasoning.” Thirty-ninth Conference on Neural Information Processing Systems (NeurIPS 2025). Paper: https://arxiv.org/abs/2502.18080. Code and data: https://github.com/RUCBM/TOPS.

@@ -1,0 +1,116 @@
+id: apex-productivity-index-2025
+title: The AI Productivity Index (APEX)
+year: 2025
+venue: arXiv
+authors:
+- Bertie Vidgen
+- Abby Fennelly
+- Evan Pinnix
+- Julien Benchek
+- Daniyal Khan
+- Zach Richards
+- Austin Bridges
+- Calix Huang
+- Kanishka Sahu
+- Abhishek Kottamasu
+- Bo Ma
+- Ben Hunsberger
+- Isaac Robinson
+- Akul Datta
+- Chirag Mahapatra
+- Dominic Barton
+- Cass R. Sunstein
+- Eric Topol
+- Brendan Foody
+- Osvald Nitski
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- finance
+- law
+- consulting
+- medicine
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.25721
+  arxiv: https://arxiv.org/abs/2509.25721
+  code: https://github.com/Mercor-Intelligence/apex-evals/tree/main/apex-evals-v1-extended
+  data: https://huggingface.co/datasets/mercor/APEX-v1-extended
+  project: https://www.mercor.com/apex/
+  huggingface: https://huggingface.co/datasets/mercor/APEX-v1-extended
+  doi: https://doi.org/10.48550/arXiv.2509.25721
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Professional work cases authored by experienced practitioners
+  trace_author: Investment banking, consulting, law, and medical experts
+  answer_format: Task prompt, source documents, rubric, response, judge score
+  process_fields:
+  - task
+  - source_document
+  - rubric
+  - response
+  - score
+  environment_or_substrate: Tool-free professional knowledge work
+  verifier_or_reward: LM binary rubric grading
+  terminal_predicate: Response meets the professional task rubric
+recipe_metadata:
+  base_model: Frontier language models
+  teacher: Experienced professionals
+  generator: Expert-authored cases and rubrics
+  filtering_rule: Held-out professional cases plus released examples
+  sampling_protocol: 400 held-out evaluation cases and 100 public example cases
+  rollout_count: 8 evaluation runs per task
+  temperature: null
+  inference_budget: Task prompt and source documents
+  optimizer_or_scaffold: Rubric-based LM judging
+audit:
+  source_mixture: Official arXiv paper, Mercor project, GitHub harness, and Hugging Face release
+  split: 400 held-out cases; 100 public examples
+  decontamination: Held-out cases are separate from public examples
+  license: Consult Hugging Face data card
+  lineage: https://huggingface.co/datasets/mercor/APEX-v1-extended
+  known_failure_modes:
+  - Judge scores do not establish real-world deployment readiness.
+  citation_status: verified
+  confidence: high
+  notes: Official paper and release links checked.
+inclusion_reason: APEX evaluates economically valuable professional work with expert-authored task rubrics.
+related: []
+tags:
+- professional_work
+- rubric
+- evaluation
+- productivity
+one_line_summary: APEX assesses professional finance, law, consulting, and medical work using expert-authored cases and rubric
+  grading.
+why_it_matters: It tests whether model outputs meet client-ready standards in high-value professional tasks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, project, code, and data checked.
+category_ids:
+- judgment_rubric_domain_expert_data

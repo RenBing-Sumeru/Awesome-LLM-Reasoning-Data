@@ -1,0 +1,16 @@
+{
+  "title": "Does Data Contamination Detection Work (Well) for LLMs? A Survey and Evaluation on Detection Assumptions",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-naacl.291/"
+  },
+  "review_note": "Track 13: official primary page and public artifact recorded.",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "系统审计 50 篇污染检测工作中的八类假设，并以跨训练阶段和跨领域实验揭示实例级 MIA 常接近随机猜测或受分布偏移主导。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  }
+}

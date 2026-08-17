@@ -1,0 +1,6 @@
+- 先读 §3.2–§3.3 再看 leaderboard：主要贡献是贯穿 GUI、user 与 MCP action 的 snapshot/backend/evaluator contract。
+- 数量必须对齐：201 = 116 GUI-only + 45 user-interaction + 40 MCP；62.2% 使用多个应用。
+- 27.8 step 是 GPT-5 + UI-Ins-7B 在 50-step budget 下的行为，不是最优路径标注。
+- 把 GPT-4.1 用户响应视作 environment policy，把 MCP output 视作可变外部 observation。
+- 当前仓库比论文公开更多且保留失败，但没有不可变 paper-era release；需固定 Docker、AVD/backend snapshot、evaluator 与外部服务。
+- 仍未解决：train/test split、decontamination、validator/retry log、组件级权利、fixture provenance/PII review，以及完整论文运行轨迹。

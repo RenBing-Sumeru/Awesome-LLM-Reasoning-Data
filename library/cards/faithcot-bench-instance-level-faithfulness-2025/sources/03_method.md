@@ -1,0 +1,5 @@
+1. **Sample trajectories:** Select tasks from four domains and ask four model families to generate answers and complete CoTs while preserving task evidence and outputs.
+2. **Define instance labels:** Experts judge whether the full CoT is faithful to model behavior rather than merely textually correct.
+3. **Annotate causes and evidence:** For unfaithful cases, record the cause, implicated steps, and local evidence supporting the judgment to form FINE-CoT.
+4. **Compare detectors uniformly:** Run counterfactual interventions, logit analyses, and LLM judges on the same examples and report performance by domain and model difficulty; The annotation process separates textual error from failure to reflect the model's actual computation; otherwise factual mistakes would be mistaken for faithfulness ground truth.
+5. **Reproducibility:** Reproducibility: fix the four domains, four generators, CoT prompts, expert protocol, and model-access level of each detector. Mark undisclosed counterfactual call counts or internal-signal settings as unknown.

@@ -1,0 +1,1 @@
+AIME 2024 是考试源 benchmark 卡，不是一篇独立论文。主来源是 Mathematical Association of America 的 American Invitational Mathematics Examination，模型评测常把它复用为 frontier mathematical reasoning 测试。一个样本是竞赛题，包含年份、考试编号、题面和整数答案；单套 AIME 有 15 题，许多 2024 模型报告把 AIME I 与 AIME II 合并为 30 题。反馈契约是归一化后与官方整数答案 exact match。它适合收录为高信号竞赛数学评测面，而不是过程数据或 proof-checked 数学数据。

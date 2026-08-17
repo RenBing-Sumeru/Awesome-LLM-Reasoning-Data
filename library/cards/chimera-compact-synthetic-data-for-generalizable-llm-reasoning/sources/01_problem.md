@@ -1,0 +1,3 @@
+Reasoning-data scaling usually targets hundreds of thousands or millions of trajectories, but expensive teacher sampling, topic repetition, and low-quality questions quickly reduce marginal value. Small datasets often focus only on mathematics, leaving open whether compact data can support cross-scientific generalization.
+
+CHIMERA pursues breadth with compactness: it automatically builds a hierarchical knowledge taxonomy, synthesizes difficult problems and long CoT across fine-grained topics, cross-validates problem validity and answers with multiple strong models, and retains only about 9K high-density examples.

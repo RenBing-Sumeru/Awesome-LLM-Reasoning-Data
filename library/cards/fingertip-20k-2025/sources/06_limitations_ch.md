@@ -1,0 +1,7 @@
+- **语料与划分边界：** 论文报告 21,437 个 episode、95 位用户和 506 个 app，但官方索引只有 20,000 行、83 位用户和 482 个 app 标识；缺失映射、validation index 与缩减原因均为 unknown。Suggestion test 有四行完全重复项，并与 execution 共享 172 个唯一键；把行数当成唯一任务数或把两个测试集当成互斥集合都会误报证据。
+- **反馈边界：** `SR1` 依赖 DeepSeek-V3 的 same-intent 判断，但公开 proactive 脚本没有实现该判断。`SR2` 依赖人工检查最终手机状态，公开 execution 脚本没有这个步骤，其 `success` 一直初始化/写为 0。Judge bias、裁决者不一致、表面相似度和 2.5× 长度限制，相对于真正有用的任务完成都可能造成 false positive 或 false negative。
+- **环境与回放边界：** episode 保存 screenshot、XML 与动作，却没有逐 episode 的 app/APK 版本、Android build、账号、初始状态、网络/服务状态、reset 流程或 deterministic replay manifest。Live UI drift 与 grounding failure 可以在个性化或推理质量不变时改变结果；因此该发布是离线语料加 live-evaluation code，不是 resettable environment。
+- **筛选与失败边界：** 人工检查删除低质量数据，少量人类噪声被保留，每条保留轨迹都添加 `finish` 标记。没有显式 success/failure 字段证明 intent 确实完成，拒绝数量与 rubric 未披露，失败模型 rollout/result 也未发布。过滤可能去除难例，`finish` 不能解释为独立成功验证。
+- **训练与实验边界：** 只有 Qwen-2.5-VL-7B 被微调，loss、optimizer、learning rate、batch size、epoch、seed、代码、配置与 checkpoint 均未披露。实验只支持 SFT 与 evaluation，不能外推到 RL/RLVR、preference/reward modeling、PRM，或广泛的跨模型、跨地域泛化。
+- **隐私、权利与发布边界：** 所有参与者来自中国大陆，主要使用中文第三方 app。纵向 screenshot、地点/场景、使用历史与详细画像即使经过人工/Qwen-VL-Max 过滤，仍会产生重识别与敏感内容风险。Kaggle version 2 为数据集声明 CC BY 4.0，但 code license 是 unknown，第三方 UI/content 权利未解决，consent 文本与发布后删除政策未披露，论文计划开放的 collection app 也不在仓库中。
+- **污染边界：** 主划分按用户内部时间划分，train 与两个 test 共享全部 83 位发布用户，也可能共享 app、intent class 与习惯模式。论文未披露 corpus-wide deduplication 或 benchmark decontamination。任何归因于个性化的收益都应通过 memorization、重复 intent 模板与 overlap-aware baseline 进一步检验。

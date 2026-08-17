@@ -1,0 +1,1 @@
+对 rollout/search/test-time trace track 而言，ModeX 给出了 evaluator-free 选择轨迹的具体 schema。可复用记录应保存 benchmark 与条目 revision、目标模型与解码参数、seed、候选数、每条候选 token 流、前缀快照、每对候选的 1/2/3-gram 重叠、邻接矩阵、Laplacian 与 Fiedler 向量、候选分区、conductance、簇大小与平局决定、剪枝时间、保留/拒绝 ID、最终加权度、中心 ID 和任务结果。这些轨迹可用于比较 reward-model Best-of-N、研究候选多样性与模态错误、校准阈值、审计在线剪枝并核算测试时计算。官方实现支持复现算法，但缺少已发布候选与图记录时，复用仍停留在代码和配方层，而不是现成推理数据语料。

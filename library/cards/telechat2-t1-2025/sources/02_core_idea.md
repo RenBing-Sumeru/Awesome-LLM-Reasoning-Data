@@ -1,0 +1,1 @@
+The report says TeleChat2 uses pretraining, SFT, and DPO, while TeleChat2.5 and T1 add domain-specific continual pretraining and RL. T1 is the long-CoT reasoning variant and TeleChat2.5 emphasizes speed.

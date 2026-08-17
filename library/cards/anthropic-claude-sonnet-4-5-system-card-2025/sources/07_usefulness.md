@@ -1,0 +1,4 @@
+For Track 12, Sonnet 4.5 is a useful disclosure comparison point precisely because it distinguishes training claims from evaluation practices. Readers can compare broad data-source and RLHF/RLAIF claims with the missing feedback artifacts; compare reward-hacking stress tests and monitoring with a released reward contract; and compare a white-box audit with a release of model internals or a reusable interpretability benchmark.
+
+Use this Card to evaluate whether frontier safety evidence identifies its data object, feedback mechanism, evaluation substrate, and audit limits. Do not use it to reconstruct Anthropic's safety pipeline, infer the actual training reward, estimate real-world reward-hacking rates, reproduce the white-box analyses, or turn evaluation-awareness findings into a quantified deployment-risk claim.
+

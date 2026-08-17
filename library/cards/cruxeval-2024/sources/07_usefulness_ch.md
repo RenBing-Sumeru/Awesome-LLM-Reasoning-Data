@@ -1,0 +1,1 @@
+需要答案级可执行反馈、但不想运行完整软件工程任务时，可用 CRUXEval 作为轻量 execution-reasoning surface。复用字段应包括函数文本、任务方向、参考输入、参考输出、候选答案、解析结果、执行结果和 timeout/error 状态。它适合测试模型是否能模拟代码行为、比较 prompt/CoT 策略，并把推理失败与写代码失败分开。对 atlas 来说，它是一个很清楚的 programmatic verifier 案例：对象不是模型生成的程序，而是关于程序行为的答案。

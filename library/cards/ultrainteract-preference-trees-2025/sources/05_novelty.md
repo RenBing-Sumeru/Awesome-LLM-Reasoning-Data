@@ -1,0 +1,3 @@
+# Novelty
+
+CodeAct-style datasets already recorded model actions and environment feedback, but typically treated a completed trajectory as one demonstration rather than organizing alternative actions around every instruction and turn. UltraInteract changes the auditable object to a preference tree whose objectively correct nodes or correct-ending paths can be consumed as SFT targets and whose correct/incorrect branches can also support preference learning. This makes failed attempts, critiques, parent relations, and selection decisions available at the same construction boundary. Tool execution, CoT prompting, and preference optimization themselves are not new; the change is their tree-structured data contract and dual export.

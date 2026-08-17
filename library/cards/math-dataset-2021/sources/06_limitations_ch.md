@@ -1,0 +1,1 @@
+MATH 的正确性契约弱于形式化验证：它评的是最终答案，不验证证明有效性，也不检查中间步骤语义忠实。等价数学表达式不一定能被稳定归一化；模型答案可能数学上正确但格式不符合 grader 预期。公开 train/test 带来污染风险。difficulty labels 和 subject tags 有用，但不是完整数学本体。若把 worked solutions 用作训练，就已经从 held-out evaluation 变成 supervised reasoning-data construction。

@@ -1,0 +1,1 @@
+Multi-stage model families can name training phases without making the transition data or feedback auditable. TeleChat2, TeleChat2.5, and T1 provide a reported progression from pretraining through preference and RL stages.

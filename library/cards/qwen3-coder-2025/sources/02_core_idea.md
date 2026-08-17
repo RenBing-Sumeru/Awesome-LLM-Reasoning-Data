@@ -1,0 +1,5 @@
+The release describes a coding-oriented post-training stack rather than an openly specified dataset. Qwen2.5-Coder cleans and rewrites noisy pretraining data. For Code RL, diverse coding tasks receive execution feedback through automatically scaled test cases. For Agent RL, multi-turn agent actions receive feedback from a Qwen-built cloud system that reportedly runs 20,000 independent environments in parallel.
+
+The disclosed supervision object can contain code edits or solutions, tool calls, multi-turn agent state, environment feedback, and execution or test outcomes. The reported terminal condition is code execution success or environment completion, but pass thresholds, timeouts, partial-completion policy, and the full reward formula are not supplied.
+
+For the disclosure ledger, the release provides a partial interface map: data cleaning, execution feedback, scalable environments, and long-horizon agent learning are named. It is not a public release of the tasks, tests, trajectories, cloud provisioners, or reward implementation.

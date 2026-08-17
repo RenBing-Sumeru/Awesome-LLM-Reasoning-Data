@@ -1,0 +1,130 @@
+id: mplug-docowl-15-2024
+title: 'mPLUG-DocOwl 1.5: Unified Structure Learning for OCR-free Document Understanding'
+year: 2024
+venue: Findings of EMNLP 2024
+authors:
+- Anwen Hu
+- Haiyang Xu
+- Jiabo Ye
+- Ming Yan
+- Liang Zhang
+- Bo Zhang
+- Chen Li
+- Ji Zhang
+- Qin Jin
+- Fei Huang
+- Jingren Zhou
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.findings-emnlp.175/
+  arxiv: https://arxiv.org/abs/2403.12895
+  code: https://github.com/X-PLUG/mPLUG-DocOwl/tree/main/DocOwl1.5
+  data: https://huggingface.co/datasets/mPLUG/DocReason25K
+  project: https://github.com/X-PLUG/mPLUG-DocOwl
+  huggingface: https://huggingface.co/datasets/mPLUG/DocReason25K
+  doi: https://doi.org/10.18653/v1/2024.findings-emnlp.175
+  venue: https://aclanthology.org/2024.findings-emnlp.175/
+  openreview: null
+  acl: https://aclanthology.org/2024.findings-emnlp.175/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: document, webpage, table, chart, OCR and VQA datasets
+  trace_author: GPT-3.5/GPT-4V explanations filtered against manually annotated short answers
+  answer_format: document image, question or structure instruction, concise answer or detailed reasoning response
+  process_fields:
+  - document image
+  - question or structure instruction
+  - concise answer or detailed reasoning response
+  environment_or_substrate: JSONL manifests with document images and text targets
+  verifier_or_reward: known short answers, structure targets, and document benchmark metrics
+  terminal_predicate: Retain a record only when known short answers, structure targets, and document benchmark metrics accepts
+    it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: GPT-3.5/GPT-4V explanations filtered against manually annotated short answers
+  generator: DocOwl 1.5 first trains on DocStruct4M for parsing and localization, then consumes DocReason25K explanations
+    and a 570K downstream mixture for document conversation tuning.
+  filtering_rule: known short answers, structure targets, and document benchmark metrics
+  sampling_protocol: document, webpage, table, chart, OCR and VQA datasets
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: structure alignment followed by document instruction SFT
+audit:
+  source_mixture: document, webpage, table, chart, OCR and VQA datasets
+  split: 'Official release scale: 25,000 rationale-bearing document QA records plus roughly 4 million structure-learning samples;
+    storage: JSONL manifests with document images and text targets.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository/data-card terms; ten upstream document datasets retain their licenses
+  lineage: document, webpage, table, chart, OCR and VQA datasets -> GPT-3.5/GPT-4V explanations filtered against manually
+    annotated short answers -> known short answers, structure targets, and document benchmark metrics -> structure alignment
+    followed by document instruction SFT.
+  known_failure_modes:
+  - Teacher explanations can rationalize a correct short answer incorrectly
+  - 311GB of images raises reproduction cost
+  - source documents and licenses are heterogeneous.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 38 citations; this is not a Google Scholar count.'
+inclusion_reason: 'DocReason25K and DocStruct4M is a public Track 01 training object: document image, question or structure
+  instruction, concise answer or detailed reasoning response; it is consumed by structure alignment followed by document instruction
+  SFT.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- structure-aware-document-reasoning-demonstrations
+status: verified
+one_line_summary: DocOwl 1.5 combines four million structure records with 25K answer-filtered document explanations.
+why_it_matters: linking document structure supervision to rationale-bearing downstream conversations
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: training an OCR-free assistant to answer and explain document questions
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: structure-aware document reasoning demonstrations
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Alibaba Group, Renmin University of China.
+    venue: 'The official venue URL confirms formal publication at Findings of EMNLP 2024: https://aclanthology.org/2024.findings-emnlp.175/'
+    impact: OpenAlex reported 38 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSONL manifests with document images and text targets records at https://huggingface.co/datasets/mPLUG/DocReason25K
+      with terms recorded as: official repository/data-card terms; ten upstream document datasets retain their licenses.'
+  selection_eligible: true
+  year_impact_threshold: 3

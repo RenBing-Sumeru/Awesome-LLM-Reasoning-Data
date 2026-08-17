@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ECP 在 ConstructiveBench 上把答案枚举与猜想生成连接到 Lean 证明，使竞赛构造题的候选答案可被形式化检验。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "面向数学构造题的 Lean 形式化基准与神经符号方法",
+  "best_for_ch": "需要生成并验证数学对象、而非仅完成既定定理证明的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jialiang Sun, Yuzhi Tang, Ao Li, Chris J. Maddison, Kuldeep S. Meel",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T08:04:40Z"
+}

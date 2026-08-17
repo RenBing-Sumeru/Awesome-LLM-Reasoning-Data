@@ -1,0 +1,3 @@
+Chronos represents a sampled reasoning trace as a time series of token-level probability statistics. It preserves the chronological order of those signals instead of applying uniform pooling. A learned multi-scale convolutional scorer can therefore detect short local anomalies as well as broad trends in the trajectory, producing one scalar estimate of its likely quality.
+
+That estimate controls aggregation. The system ranks sampled trajectories, retains a top fraction, and performs score-weighted majority voting over their extracted answers. Extra inference computation is thus not spent only on producing more traces: it is paired with a learned decision about which traces deserve to influence the final answer and by how much.

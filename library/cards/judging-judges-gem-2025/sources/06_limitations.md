@@ -1,0 +1,1 @@
+TriviaQA is intentionally short and high-agreement, so the findings do not establish behavior on open-ended or rubric-based evaluation. Only 400 questions are assessed and the prompt/model set is bounded. The results diagnose association with human labels, not robustness to adversarial answers, contamination, or a causal source of any model bias.

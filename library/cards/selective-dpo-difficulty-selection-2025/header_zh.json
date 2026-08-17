@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"Selective DPO 按模型容量筛除过难的偏好对，再执行直接偏好优化。","reading_priority_ch":"必读","paper_type_ch":"偏好样本难度选择与直接偏好优化研究","best_for_ch":"适合研究模型容量如何决定偏好记录可训练性的读者。","confidence_ch":"高","authors_ch":"Chengqian Gao、Haonan Li、Liu Liu、Zeke Xie、Peilin Zhao、Zhiqiang Xu","category_ids":["training_usage_optimization_objectives"],"updated_at":"2026-07-16T16:30:00Z"}

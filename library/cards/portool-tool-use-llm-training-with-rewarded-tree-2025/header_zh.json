@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "PORTool 将每个查询的 8 条共享前缀工具轨迹组织为奖励树，以终局正确性主导的步骤重要度训练策略；但 3,607 条生产查询、完整树、奖励、代码、模型与 21 工具后端均未公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "多工具智能体强化学习与奖励树方法",
+  "best_for_ch": "研究工具调用轨迹、树状探索、终局奖励信用分配、SFT 到 agentic RL 训练链与私有数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Feijie Wu, Weiwu Zhu, Yuxiang Zhang, Soumya Chatterjee, Jiarong Zhu, Fan Mo, Rong Luo, Jing Gao",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

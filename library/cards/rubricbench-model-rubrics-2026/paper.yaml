@@ -1,0 +1,103 @@
+id: rubricbench-model-rubrics-2026
+title: 'RubricBench: Aligning Model-Generated Rubrics with Human Standards'
+year: 2026
+venue: ACL 2026
+authors:
+- Qiyuan Zhang
+- Junyi Zhou
+- Yufei Wang
+- Fuyuan Lyu
+- Yidong Ming
+- Can Xu
+- Qingfeng Sun
+- Kai Zheng
+- Peng Kang
+- Xue Liu
+- Chen Ma
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+domains:
+- rubric_generation
+- alignment
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.01562
+  arxiv: https://arxiv.org/abs/2603.01562
+  code: https://github.com/planepig/rubricbench
+  data: https://huggingface.co/datasets/DonJoey/rubricbench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2603.01562
+  venue: https://aclanthology.org/2026.acl-long.1439/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.1439/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Hard pairwise alignment comparisons
+  trace_author: Expert rubric annotators
+  answer_format: Instruction, response pair, atomic rubric, preference label
+  process_fields:
+  - instruction
+  - response_a
+  - response_b
+  - criterion
+  - label
+  environment_or_substrate: Rubric generation and pairwise evaluation
+  verifier_or_reward: Human rubric standards
+  terminal_predicate: Generated rubric aligns with human atomic criteria
+recipe_metadata:
+  base_model: Rubric-generating models
+  teacher: Human rubric annotators
+  generator: Filter difficult surface-biased comparisons and annotate rubrics
+  filtering_rule: Multi-dimensional hard-sample filtering
+  sampling_protocol: 1,147 pairwise comparisons
+  rollout_count: null
+  temperature: null
+  inference_budget: Record release and rubric generator
+  optimizer_or_scaffold: Human-standard rubric comparison
+audit:
+  source_mixture: Official arXiv and GitHub release
+  split: Consult repository
+  decontamination: Model-generated rubrics can inherit generator bias
+  license: Consult repository
+  lineage: https://github.com/RubricBench/RubricBench
+  known_failure_modes:
+  - Model-generated criteria lag expert criteria.
+  citation_status: verified
+  confidence: medium
+  notes: Official paper and linked release checked.
+inclusion_reason: RubricBench makes the quality of generated rubrics directly measurable.
+related: []
+tags:
+- rubric
+- reward_model
+- alignment
+one_line_summary: RubricBench tests whether model-generated evaluation criteria align with expert atomic rubrics.
+why_it_matters: It evaluates the rubric itself, a key source of error in rubric-guided alignment.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: medium
+  notes: Official sources checked.
+category_ids:
+- judgment_rubric_domain_expert_data

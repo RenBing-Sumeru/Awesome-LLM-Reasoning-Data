@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以细粒度判定把自然语言数学证明的局部错误定位转化为可靠评测。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基准与评测论文",
+  "best_for_ch": "需要使用专家题目、评审或评分信号评测推理系统的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wenjie Ma、Andrei Cojocaru、Neel Kolhe、Haihan Zhang、Vincent Zhuang、Matei Zaharia、Sewon Min",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T13:01:37Z"
+}

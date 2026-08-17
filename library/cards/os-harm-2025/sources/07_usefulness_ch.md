@@ -1,0 +1,9 @@
+对指定的`environment_agent_trajectory_data` track而言，OS-Harm适合作为evaluation与audit参考：它明确了task→VM→multimodal episode→semantic judgment管线，并在full-episode与首个unsafe step两个粒度提供feedback。研究者可比较refusal、有害执行、部分完成与judge disagreement，同时保留observation/action history，以定位安全判定产生的位置。
+
+作为benchmark surface，它可用于受控比较计算机使用智能体在deliberate misuse、prompt injection与含糊任务misbehavior上的行为。报告时应同时给出unsafe与completion结果，按harm category和injection vector分层，固定交互budget，并加入人工抽查；单独的unsafe rate会混合能力、任务完成与judge error。
+
+作为judge-audit案例，150条人工标注o4-mini episode可用于复现precision、recall、F1和有条件的首个违规步骤一致率，再测试不同trajectory representation或judge。此类研究应保留原始AER prompt与模型版本，也不能把每类由一名作者给出的标签当作独立多标注者共识。
+
+作为release-audit案例，可对比论文50个注入case与固定commit `c0fa95e75bafb00ac05d2eb4ac5418b9913475ee`上的51个组合，枚举Drive inventory，并把每条episode绑定到task config、Ubuntu snapshot、模型设置、judge output、人工标签、retry history与checksum。这样可把version drift和保留元数据缺失转化为明确审计发现。
+
+复用范围仅限evaluation与audit。作者要求不要在这些样例上训练，accepted metadata也不支持SFT、RLVR、reward modeling、process supervision、agent training或safety-alignment复用。在作者指导、Drive专用条款、上游asset权利与污染影响解决之前，训练或再分发仍应视为blocked。

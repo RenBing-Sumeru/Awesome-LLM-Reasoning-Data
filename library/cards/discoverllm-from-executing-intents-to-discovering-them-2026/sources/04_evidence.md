@@ -1,0 +1,3 @@
+The main controlled experiment compares DiscoverLLM with the unmodified base model, prompted intent-discovery baselines, and CollabLLM under the same 8B model families and five-turn simulated conversations. The best Qwen3-8B variant improves the normalized Discovery score by 13.7% in creative writing and 14.3% in technical writing, while using 31.9% fewer tokens.
+
+A separate study with 75 participants reports higher satisfaction and interaction efficiency. Together, the simulated comparison and human study support the claim that the method improves open-ended intent discovery, although they do not establish effectiveness in high-stakes or long-term settings.

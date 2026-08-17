@@ -1,0 +1,3 @@
+Aggregate verifier accuracy hides two different errors: rejecting correct candidates and accepting incorrect ones. Both matter in test-time scaling, and both can change with task difficulty, generator capability, and verifier capability. This paper asks when reference-free generative verification actually improves a retained candidate pool instead of assuming that a larger generator or verifier is uniformly better.
+
+For this atlas, the relevant object is now public: generator prompts and CoT candidates can be joined to verifier CoTs and binary verdicts. It is an evaluation and audit release, not evidence that the traces form a high-quality training corpus.

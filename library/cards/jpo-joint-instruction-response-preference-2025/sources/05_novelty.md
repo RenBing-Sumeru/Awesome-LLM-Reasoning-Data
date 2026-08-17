@@ -1,0 +1,3 @@
+The novelty begins before the loss: JPO proposes a comparison protocol in which the context may differ on the two sides. This differs from scoring individual outputs as well as from DPO-style conditional rankings. It recognizes that preference can be expressed over the success of complete interactions, not only over response alternatives held under one fixed request.
+
+The objective then makes this acquisition protocol operational by comparing joint instruction-response probabilities. Its unification is useful: conventional preference pairs need not be discarded, because they are the identical-instruction subset of the same formulation. The contribution therefore links a broader human judgment surface to a directly trainable record format.

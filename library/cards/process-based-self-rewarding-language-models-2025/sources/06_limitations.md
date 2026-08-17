@@ -1,0 +1,1 @@
+Long traces can be persuasive but unfaithful; arbitrary segmentation shifts errors across boundaries; self-judges favour familiar wording; repeated training amplifies blind spots. Independent verification should audit step labels. Process scores support training or search but do not replace executable checks, human review, or domain expertise; transfer requires sample audits.

@@ -1,0 +1,3 @@
+Data-analysis agents can execute code without raising an exception while still using a wrong table, an invalid interpretation, or an unsupported scientific claim. Outcome rewards therefore miss silent errors, while generic process judges can punish useful exploration merely because an intermediate attempt failed.
+
+DataPRM asks how a process reward can distinguish grounded progress, correctable mistakes, and irrecoverable failures in an executable analysis environment. It treats interaction with the environment as part of judging a trajectory instead of reading an agent transcript in isolation.

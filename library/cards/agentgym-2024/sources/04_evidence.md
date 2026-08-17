@@ -1,0 +1,5 @@
+The ACL Anthology abstract states the released framework covers 7 real-world scenarios, 14 environments, and 89 tasks, and releases code, dataset, benchmark, and checkpoints. The official project page and repository expose the environment list and link AgentEval, AgentTraj-L, and AgentEvol-7B artifacts.
+
+The paper's experimental evidence compares trained agents against commercial or strong baseline models under the AgentGym setting and reports that trained agents can reach comparable results. Instance-level evidence is not a natural-language judge alone; it is environment feedback over a trajectory: action validity, reward, success rate, correctness, or task-specific score.
+
+The evidence boundary is that scores depend on environment versions, task split, max-round settings, action schema, trajectory filtering, model size, sampling budget, and imported environment behavior. Aggregate AgentEval results should not be reused as row-level verifier labels unless the exact run configuration and feedback implementation are pinned.

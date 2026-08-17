@@ -1,0 +1,3 @@
+The arXiv abstract reports 224 challenging questions and a large performance gap: top multimodal browsing agents remain far below full accuracy, with the official repository showing scores such as o3 with tools at about 29% on a reported table. This supports the claim that the benchmark stresses multimodal search and reasoning.
+
+Instance-level evidence is not an executable proof; it is the reference answer plus checklist/judge decision for that item. The evidence boundary is live-web drift, judge-model drift, answer ambiguity, visual-media accessibility, encrypted-release handling, and possible contamination once questions are public.

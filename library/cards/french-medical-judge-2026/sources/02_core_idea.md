@@ -1,0 +1,3 @@
+The contribution is a generator-aware audit of LLM judges for French medical OEQA and a small-model alignment experiment. Each evaluation record contains a question, reference answer, generated answer, and clinician equivalence label; the judge’s binary verdict is compared with that label.
+
+Rather than treating a single aggregate score as reliability, the study separates answer generators and compares proprietary, general, and medically adapted judges. It finds that generator identity changes agreement, then uses 184 aligned training instances to test whether SFT plus GRPO makes Phi-3.5-mini more discriminative. No official downloadable dataset, code, or model release was identified from the paper.

@@ -1,0 +1,3 @@
+引用：Seungone Kim, Jamin Shin, Yejin Cho, Joel Jang, Shayne Longpre, Hwaran Lee, Sangdoo Yun, Seongjin Shin, Sungdong Kim, James Thorne, Minjoon Seo，《Prometheus: Inducing Fine-grained Evaluation Capability in Language Models》，2023 / ICLR 2024。https://arxiv.org/abs/2310.08491
+
+官方产物：paper: https://arxiv.org/abs/2310.08491; project: https://prometheus-eval.github.io/prometheus/; code: https://github.com/prometheus-eval/prometheus; data: https://huggingface.co/datasets/prometheus-eval/Feedback-Collection; huggingface: https://huggingface.co/datasets/prometheus-eval/Feedback-Collection; doi: https://doi.org/10.48550/arXiv.2310.08491。

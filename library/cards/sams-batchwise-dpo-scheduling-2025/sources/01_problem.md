@@ -1,0 +1,3 @@
+Direct Preference Optimization depends on the quality of fixed preference pairs, yet most selection methods decide which pairs to keep before training begins. A pair that is useful early can become too easy, unhelpful, or misleading after the policy changes; noisy labels can make this mismatch worse. Static filtering therefore leaves the training stream detached from the model state that is actually consuming it.
+
+SamS asks how an offline DPO run can decide, batch by batch, which available preference pairs should update the current policy. It treats sample choice as a scheduling problem: the decision should follow current learning feedback, so a fixed dataset can be consumed in a sequence that is better aligned with the policy's evolving capacity.

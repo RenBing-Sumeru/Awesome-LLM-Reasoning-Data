@@ -1,0 +1,5 @@
+The official [arXiv record](https://arxiv.org/abs/2504.07491) identifies the work as *Kimi-VL Technical Report* (2025) and states that code and models are publicly accessible through the official repository. Its paper sections 2.4 and 3 describe the SFT, long-CoT, RL, and data-construction claims summarized here.
+
+The official [MoonshotAI/Kimi-VL repository](https://github.com/MoonshotAI/Kimi-VL) lists inference, deployment, and fine-tuning integration information and links official weights. It labels the repository MIT. The official [Kimi-VL-A3B-Instruct](https://huggingface.co/moonshotai/Kimi-VL-A3B-Instruct) and [Kimi-VL-A3B-Thinking-2506](https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking-2506) pages are published by Moonshot AI and label the weights MIT.
+
+These sources verify a report, repository, and model-weight release. They do not verify a release of the training corpora, prompt/trace manifests, reward models, verification rules, RL logs, agent environment, trajectories, split definition, or decontamination audit.

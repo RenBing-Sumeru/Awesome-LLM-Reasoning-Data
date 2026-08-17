@@ -1,0 +1,341 @@
+id: spa-bench-2025
+title: 'SPA-Bench: A Comprehensive Benchmark for SmartPhone Agent Evaluation'
+year: 2025
+venue: ICLR 2025 Spotlight
+authors:
+- Jingxuan Chen
+- Derek Yuen
+- Bin Xie
+- Yuhao Yang
+- Gongwei Chen
+- Zhihao Wu
+- Yixing Li
+- Xurui Zhou
+- Weiwen Liu
+- Shuai Wang
+- Kaiwen Zhou
+- Rui Shao
+- Liqiang Nie
+- Yasheng Wang
+- Jianye Hao
+- Jun Wang
+- Kun Shao
+source_role:
+- benchmark
+- agent_environment
+- verifier_reward
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- mobile_agents
+- android
+- gui
+- smartphone_control
+- multilingual
+- benchmark_evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/file/9a75f4dd9679aa4ff80a4e6f0a1dc700-Paper-Conference.pdf
+  paper_pdf: https://proceedings.iclr.cc/paper_files/paper/2025/file/9a75f4dd9679aa4ff80a4e6f0a1dc700-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2410.15164
+  code: https://github.com/ai-agents-2030/SPA-Bench
+  code_snapshot: https://github.com/ai-agents-2030/SPA-Bench/tree/4c292b6df37907768618669d5bcafcbd8a23bc19
+  data: https://github.com/ai-agents-2030/SPA-Bench/tree/4c292b6df37907768618669d5bcafcbd8a23bc19/data
+  project: https://ai-agents-2030.github.io/SPA-Bench/
+  huggingface: null
+  model: null
+  reward_model: null
+  doi: null
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/file/9a75f4dd9679aa4ff80a4e6f0a1dc700-Paper-Conference.pdf
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  license: https://github.com/ai-agents-2030/SPA-Bench/blob/4c292b6df37907768618669d5bcafcbd8a23bc19/LICENSE
+  replay_code: null
+data_object:
+  object_type: A bilingual Android task collection and evaluation harness. A task record specifies an English or Chinese smartphone
+    instruction, app scope, difficulty, human golden-step count, and, for single-app tasks, final-state text keys and ADB
+    package/activity. An executed episode adds screenshots, action/log records, termination/error metadata, cost/time statistics,
+    and mixed OCR-plus-GPT-4o success judgments. Public task tables and evaluator code are verified; human reference screenshot
+    trajectories, paper-run traces/results, and device snapshots are not released at the audited commit.
+  prompt_source: Human annotators select common system, Google, and third-party apps and author or standardize daily-use tasks.
+    Most English cross-app tasks are drawn from GUI Odyssey, with descriptions reformatted and trajectories recollected when
+    necessary. The public files contain 150 single-app and 20 cross-app tasks per language, but no record-level inspiration
+    or upstream-source attribution field.
+  task_record:
+  - task_identifier
+  - app_or_ordered_app_list
+  - language
+  - task_description
+  - difficulty
+  - human_golden_steps
+  - single_app_final_key_components
+  - single_app_adb_package_and_home_activity
+  - cross_app_category
+  - cross_app_subtasks_with_history_and_memory
+  trace_author: Human annotators execute one-action-between-screenshots reference trajectories to define golden steps and
+    validate tasks. Evaluated agents produce their own screenshot/action/log trajectories through ADB-connected devices. The
+    paper describes both, but the audited repository releases task rows and evaluator code rather than the human demonstrations
+    or paper-run agent trajectory corpus.
+  episode_fields:
+  - task_description
+  - ordered_screenshots
+  - executed_actions_when_agent_supports_logging
+  - log_or_error_json
+  - total_steps_and_golden_step_ratio
+  - finish_signal_and_exit_code
+  - execution_time_and_api_cost
+  - success_failure_or_evaluation_error
+  - evaluator_detail_and_reason
+  - termination_reason
+  - premature_or_overdue_termination_signal
+  answer_format: An interactive sequence of taps, swipes, text entry, back/navigation, or agent-specific combined actions
+    ending in self-reported completion, step-budget exhaustion, or error. Evaluation consumes the screenshot trajectory and
+    optional action data and emits binary success plus diagnostic/resource fields.
+  observation: At minimum, screenshots from the live Android UI. Depending on the integrated agent, observations can also
+    include XML, accessibility trees, OCR/icon-recognition output, or marked screenshots. This heterogeneity is part of the
+    evaluation design and complicates direct cross-agent trace comparison.
+  action_space:
+  - tap_or_click_coordinates
+  - long_press
+  - swipe_or_scroll
+  - type_or_input_text
+  - back_or_navigation
+  - agent_specific_composite_actions
+  - self_report_completion
+  environment_or_substrate: A multiprocessing harness connects agents to Android emulators or physical devices through ADB.
+    The paper describes restoring a snapshot at each experimental cycle, but some external app data requires manual cleanup
+    and most Chinese tasks plus selected English apps use physical devices without snapshots. Current code can clone a user-supplied
+    AVD; the audited repository contains no downloadable AVD/snapshot, APK bundle, account state, or immutable app manifest.
+  verifier_or_reward: Single-app evaluation first matches all final-state key strings using PaddleOCR over screenshots in
+    reverse order, then asks GPT-4o to judge the task description against screenshots and optional action information. Cross-app
+    evaluation uses GPT-4o to segment the trajectory by ordered apps and judge human-reviewed app-specific subtasks sequentially,
+    optionally propagating MLLM-extracted memory. This is an evaluation score, not a demonstrated training reward.
+  verifier_output:
+  - success_failure_or_error
+  - coarse_key_component_match_and_screenshot_count
+  - fine_detection_result_and_reason
+  - evaluator_token_time_and_api_cost
+  - cross_app_segmentation_and_subtask_details
+  - step_ratio_on_success
+  - termination_reason
+  - premature_and_overdue_termination
+  - execution_time_and_agent_api_cost
+  reward: The primary terminal evaluation signal is binary success, with `-1` used when a single-app trajectory has no screenshots.
+    Additional scalar diagnostics describe step efficiency, termination calibration, time, and cost. No Gym-style reward stream,
+    optimizer integration, RL objective, or SPA-Bench-trained checkpoint is reported.
+  terminal_predicate: Agent execution stops on self-reported completion, maximum steps, or execution error; paper experiments
+    cap actions at twice the human golden steps. Completion belief is independent of evaluator success, enabling premature
+    and overdue termination diagnostics. Unexpected infrastructure/network/Android/CAPTCHA errors are rerun in the paper protocol.
+  provenance: App/source-task selection -> human task description and reference screenshot execution -> golden steps and optional
+    key components -> cross-check and multi-device/version feasibility test -> released task CSV and cross-app subtask JSON
+    -> Android agent episode -> screenshot/action/log collection -> OCR/GPT-4o or sequential cross-app evaluation -> local
+    session results. Record-level source attribution, validation history, and paper-run file mapping are not released.
+  release_shape: At audited commit `4c292b6d...`, the official repository releases 340 task rows across four CSVs, 40 cross-app
+    subtask JSONs, framework/evaluator code, configs, and pinned Git submodule entries. It has no tags/releases and publishes
+    no AVD/snapshot, human reference screenshots, paper-run screenshot/log/result corpus, or human calibration labels.
+recipe_metadata:
+  base_model: The benchmark evaluates eleven heterogeneous agents. Seven workflow agents are standardized to GPT-4o, with
+    MobileAgentV2 using GPT-4o-mini for icon recognition; Auto-UI/DigiRL use Auto-UI-Base, CogAgent uses CogAgent-18B, and
+    OdysseyAgent uses fine-tuned Qwen-VL. The evaluator uses GPT-4o.
+  teacher: Human annotators supply task definitions, reference screenshot executions, golden-step counts, final-state key
+    components, cross-checking, and reviews of MLLM-generated cross-app subtasks. GPT-4o supplies success judgments rather
+    than a demonstrated policy-training target.
+  generator: Humans primarily construct the task set and trajectories. An MLLM generates cross-app app-specific subtasks with
+    history/memory fields, followed by human review. The exact construction model revision and annotation prompts beyond published
+    evaluator/subtask templates are not bound to a released generation ledger.
+  prompt_or_task_source: Common app features, related smartphone-agent benchmarks, and GUI Odyssey for most English cross-app
+    tasks. Released task records do not identify per-record inspiration/source IDs or preserve rejected candidate tasks.
+  filtering_rule: Annotators cross-check clarity, reference trajectory accuracy, final-state key-component quality, and feasibility
+    across device, Android, and app versions; the same validation is repeated before experiments. No record-level rejection
+    reasons, thresholds, annotator assignment, or disagreement ledger is released.
+  sampling_protocol: Paper experiments execute one reported benchmark run per agent-task setting and rerun unexpected infrastructure
+    failures. Agents are allowed up to twice the human golden-step count. The paper explicitly lists multiple-run robustness
+    as future work; attempt counts and seeds are not disclosed in a released run manifest.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Maximum actions equal twice each task's human golden-step count. Model token/context limits and per-task
+    dollar budgets vary by integrated agent and are not reported as a common benchmark contract.
+  search_or_scaffold: Plug-and-play ADB framework integrating agent-specific visual/text representations, action grounding,
+    optional reflection/history, physical/emulated devices, concurrent workers, screenshot logging, and separate execution/evaluation
+    modes. Exact paper-run agent commits are not published as one immutable manifest.
+  selection_threshold: No trajectory acceptance threshold for a training corpus. Paper outcome reporting includes success,
+    failure, errors, premature termination, and overdue termination; unexpected infrastructure failures are rerun rather than
+    scored.
+  optimizer_or_training_scaffold: null
+audit:
+  source_mixture: Human-authored or standardized single-app and cross-app tasks spanning 66 distinct system, Google, and third-party
+    apps in repository accounting. Most English cross-app tasks derive from GUI Odyssey. The released records omit per-task
+    upstream citation/source IDs, app versions, APK hashes, account states, content timestamps, and source-rights metadata.
+  split: The four public files partition evaluation tasks by language and single- versus cross-app form; they are not train/dev/test
+    splits. All 340 tasks are used as evaluation surfaces, and no supported post-training split or held-out reuse protocol
+    is published.
+  decontamination: Not disclosed. No semantic task-overlap check, GUI Odyssey deduplication report, evaluated-model pretraining/fine-tuning
+    exposure audit, public-web leakage analysis, or dynamic app-content snapshot contamination policy is provided.
+  benchmark_overlap: Task design draws on prior works, and most English cross-app tasks come from GUI Odyssey, but no record-level
+    overlap matrix is released. Several evaluated fine-tuned agents were trained on AITW or related mobile data, while direct
+    exposure to SPA-Bench task text/trajectories is not audited.
+  lineage: Aggregate lineage from task/app selection through human execution, validation, device run, screenshot/action logs,
+    and hybrid evaluation is documented. Missing are record-level inspiration, annotator/version history, app/account/device
+    manifests, rejected tasks, paper-run hashes, evaluator response files, corrections, and deletion/replacement records.
+  license: The official repository is MIT-licensed at the audited commit. That notice supports reuse of repository code and
+    distributed task files, but the project does not provide a rights matrix covering GUI Odyssey-derived material, third-party
+    apps/services and live UI content, accounts/credentials, screenshots, agent/model outputs, or future trajectory and AVD
+    releases. The project website separately uses CC BY-SA 4.0.
+  release_version:
+    final_paper: ICLR 2025 conference paper
+    arxiv: '2410.15164'
+    repository_commit: 4c292b6df37907768618669d5bcafcbd8a23bc19
+    repository_commit_date: '2025-07-11T16:10:26Z'
+    tags: 0
+    github_releases: 0
+  successful_and_failed_sample_retention: The framework locally writes screenshots, action/error logs, completion/exit fields,
+    and evaluator `S`/`F`/`E` plus details, and paper tables include failures and termination errors. The audited repository
+    contains no `results/` records or screenshot trajectory corpus, so public retention of successful/failed runs, reruns,
+    corrections, and deletions is unverified.
+  replayability: Partial at the framework level only. Task CSVs, evaluator code, and session schema are public, but deterministic
+    replay is blocked by absent AVD snapshots/APKs/accounts/paper-run traces, physical-device exceptions, manual external-state
+    cleanup, mutable apps/services, network/CAPTCHA behavior, GPT-4o drift, and missing paper-run agent/environment pins.
+  verifier_or_judge_failure_modes:
+  - OCR key matching can reject valid states because of recognition errors, localization/language variation, or changed UI
+    text, and can pass screens containing all strings without proving the required actions or state transition.
+  - GPT-4o decisions depend on model revision, screenshot selection, prompt/action presentation, app drift, and long-context
+    hallucination; the paper reports material differences across evaluator modes.
+  - Single-app evaluation scans backward and may accept a task completed mid-trajectory even if later actions alter state,
+    depending on whether the judge recognizes the invalidation.
+  - Cross-app segmentation assumes the expected app order and marks missing/out-of-order segments failed, potentially penalizing
+    valid alternative app sequences or workflows.
+  - Cross-app calibration is highly imbalanced with more than 90% true negatives, and aggregate F1 does not expose per-app
+    or rare-positive reliability.
+  - Unexpected errors are rerun, but without a public attempt ledger the boundary between environment instability and agent
+    failure cannot be independently audited.
+  - 'Golden-step ratios are not action-normalized: agent-defined composite actions and shortcuts can yield ratios below human
+    demonstrations without being directly comparable units.'
+  - Dynamic apps, recommendations, pop-ups, ads, accounts, physical devices, and external services make both terminal state
+    and evaluator inputs time-dependent.
+  privacy_or_consent: Tasks cover contacts, email, messaging, social posting/comments, shopping, travel/location, and health-related
+    apps; snapshot methodology can preserve login credentials and settings. No benchmark-wide PII/redaction scan, annotator
+    or account consent statement, credential provenance, retention period, deletion/takedown mechanism, or screenshot-sharing
+    policy is published. The audited repository does not release the snapshots or trajectories, reducing current exposure
+    but not resolving future-release rights.
+  security: The harness executes third-party agent/submodule code and shell/ADB commands, connects to live apps/services,
+    hosts local model endpoints, and sends screenshots/actions to OpenAI using environment secrets. No explicit sandbox/capability,
+    network-egress, secret-redaction, malicious-APK/dependency, supply-chain, CAPTCHA, purchase/post, rate-limit, or host/device
+    isolation policy is provided; users must treat evaluation as side-effecting untrusted automation.
+  experimental_evidence:
+    evaluator_validation: Best reported F1 against human decisions is 0.926 English / 0.884 Chinese for single-app and 0.833
+      / 0.857 for cross-app; no independent reproduction or row-level calibration-label audit was performed here.
+    agent_result: M3A is strongest in the reported table at 0.544 overall single-app success and 0.150 cross-app success;
+      all values are author-reported and environment/version sensitive.
+    failure_evidence: The paper reports premature completion, step-limit exhaustion, parsing/input errors, network/Android/CAPTCHA
+      issues, and severe cross-app memory/context failures, while current code preserves these fields only in local session
+      outputs.
+  known_failure_modes:
+  - Dynamic apps, accounts, recommendations, ads, pop-ups, and physical devices prevent stable state replay.
+  - OCR and GPT-4o judges have nontrivial false-positive/false-negative rates and revision drift.
+  - Cross-app ordered segmentation can penalize alternative valid workflows.
+  - Unexpected-failure reruns lack a public attempt/selection ledger.
+  - Human reference trajectories and successful/failed paper-run traces are described but not publicly released.
+  - No train/dev/test or decontamination policy supports use as agent-training data.
+  - Repository MIT licensing does not by itself clear third-party app/content/account/screenshot rights.
+  - Live mobile automation can send messages, post comments, change accounts/settings, or approach purchases.
+  citation_status: verified
+  confidence: high
+  notes: Audited the ICLR/arXiv paper and appendices, official project page, repository README/license/documentation, all
+    four task CSVs, cross-app JSON release shape, evaluator/reset/result code, full recursive Git tree, and GitHub commit/tag/release
+    metadata. Code/task artifact existence is verified; no benchmark execution or independent judge reproduction was performed.
+    Artifact verification does not imply public trajectories, snapshots, deterministic replay, or complete rights.
+  remaining_unknowns:
+  - Paper-bound repository tag, task/evaluator changelog, checksums, and paper-to-current-main drift ledger.
+  - Public human demonstrations, paper-run trajectories/results, calibration labels, and rerun attempt ledger.
+  - Pinned Android/AVD/APK/app/account/device/network/evaluator/agent manifests and replay tests.
+  - Record-level GUI Odyssey/prior-work provenance and semantic overlap/decontamination audit.
+  - Complete rights, PII/consent, account provenance, deletion/takedown, and side-effect safety policy.
+  - Judge revision, repeated-run variance, per-app confusion data, and robustness under UI/content drift.
+inclusion_reason: SPA-Bench makes bilingual mobile-agent tasks, Android observation/action episodes, termination behavior,
+  screenshot/action logs, and mixed OCR-plus-MLLM terminal feedback explicit in one framework. It is a core mobile environment
+  and verifier reference, while the missing trajectory/snapshot release, dynamic external state, judge error, rerun selection,
+  overlap, and privacy/security boundaries are essential for deciding whether its artifacts can support post-training reuse.
+related: []
+tags:
+- environment-agent-trajectory-data
+- spa-bench
+- smartphone-agent
+- android
+- mobile-ui
+- gui-agent
+- bilingual
+- human-reference-trajectory
+- screenshot-trajectory
+- ocr-verifier
+- gpt-4o-judge
+- dynamic-environment
+- partial-release
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line: SPA-Bench releases 340 bilingual Android task records and a mixed OCR/GPT-4o evaluation harness, but not the human
+  screenshot demonstrations, paper-run traces, emulator snapshots, or immutable environment needed for training reuse and
+  deterministic replay.
+one_line_summary: SPA-Bench releases 340 bilingual Android task records and a mixed OCR/GPT-4o evaluation harness, but not
+  the human screenshot demonstrations, paper-run traces, emulator snapshots, or immutable environment needed for training
+  reuse and deterministic replay.
+why_it_matters: It exposes how mobile-agent success depends on live app state, screenshots/actions, termination decisions,
+  human task references, OCR gates, and model-mediated judgments rather than a simple offline action match. Its partial release
+  also shows why task tables alone do not establish trajectory availability, safe agent training, stable replay, or cleared
+  rights for side-effecting third-party app interactions.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  code_verified: true
+  data_verified: true
+  task_environment_verified: false
+  trajectory_release_verified: false
+  failed_sample_retention_verified: false
+  replay_code_verified: false
+  license_file_verified: true
+  complete_rights_verified: false
+  evaluation_and_audit_use_verified: true
+  agent_training_verified: false
+  deterministic_replay_verified: false
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  official_paper_version: ICLR 2025 conference paper
+  repository_commit: 4c292b6df37907768618669d5bcafcbd8a23bc19
+  notes: Citation, final venue paper, task data, framework/evaluator code, session/result schema, repository versioning, and
+    root MIT license were verified. `artifact_verified` covers the released code/task artifact only; the paper's human trajectories,
+    experimental results, snapshots/APKs/accounts, physical-device states, and deterministic replay remain unverified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release: publish human demonstrations, paper-run trajectories/results, calibration labels, and successful/failed/rerun
+  ledgers'
+- 'needs_release_tag: create a paper-bound tag/release, checksums, changelog, schema, and correction/deletion policy'
+- 'needs_replay: pin and distribute legal AVD/APK/app/account/device/evaluator/agent state with reset and replay tests'
+- 'needs_split_audit: define evaluation versus any post-training split and prohibit unsupported agent-training reuse'
+- 'needs_decontamination: audit GUI Odyssey/prior-task overlap, public prompt leakage, and evaluated-model exposure'
+- 'needs_verifier_audit: release human labels, confusion matrices, repeated-judge variance, version pins, and drift tests'
+- 'needs_license_audit: reconcile upstream task, app/service, screenshot, trajectory, account, submodule, and model-output
+  rights'
+- 'needs_privacy_security: document PII/consent/account/takedown and sandbox/network/secret/side-effect controls'
+card: null

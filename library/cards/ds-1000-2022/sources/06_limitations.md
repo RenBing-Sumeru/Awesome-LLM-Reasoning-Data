@@ -1,0 +1,3 @@
+Correctness is bounded by the official tests and string constraints; passing does not prove semantic equivalence for all inputs. Some tasks are stateful, especially TensorFlow and Matplotlib, so sequential or shared-process evaluation can contaminate results.
+
+The simplified 2024 release changes packaging, removes the infilling mode, upgrades Python to 3.10, and reduces external file handling without changing content. Scores from the original paper format and simplified format should not be mixed without noting evaluator changes. Dataset license and redistribution constraints should be checked from the active artifact before reuse.

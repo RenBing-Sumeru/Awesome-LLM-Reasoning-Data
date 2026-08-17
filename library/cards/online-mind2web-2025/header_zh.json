@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Online-Mind2Web 发布 300 个会随真实网站变化的任务、评测代码、任务级标签与 WebJudge-7B，但未形成包含六类论文智能体全部截图/动作及网站快照的不可变轨迹语料。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "在线网页智能体基准、轨迹评测与奖励验证器",
+  "best_for_ch": "研究在线网页智能体、视觉轨迹评测、LLM judge、奖励模型、任务漂移与可回放性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Tianci Xue, Weijian Qi, Tianneng Shi, Chan Hee Song, Boyu Gou, Dawn Song, Huan Sun, Yu Su",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

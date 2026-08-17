@@ -1,0 +1,1 @@
+The paper supplies unified notation and organizes work by pre-trained model, prompt choice, and tuning strategy. This separates a claim about model knowledge from a claim about how the input exposes that knowledge. A reasoning prompt should therefore record its template and answer space alongside the task examples.

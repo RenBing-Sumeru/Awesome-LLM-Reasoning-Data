@@ -1,0 +1,4 @@
+Frontier model reports can disclose training-stage names or aggregate token counts while omitting the evidence required to audit their data objects. For a multimodal model, readers need to distinguish a category label such as “audio-text” or “mixed-modality conversation” from a source manifest, a released record, a filtering decision, and a rights or contamination audit.
+
+Qwen2.5-Omni is useful for this question because its technical report makes several concrete post-training disclosures: ChatML instruction data spans text, visual, audio, and mixed-modality conversations, and the Talker uses a DPO-style preference tuple ranked with WER- and punctuation-pause-associated scores. It does not release those records or the full construction and audit evidence, so this Card records a disclosure boundary rather than a reusable recipe.
+

@@ -1,0 +1,9 @@
+Inputs are user-like arXiv tasks and browser observations. The task pool begins with 100 candidate tasks per category, assisted by LLM-generated exemplars and reviewed by human experts. The authors remove redundant or overly similar prompts and keep 55 high-quality tasks in each of five categories, producing 275 total tasks.
+
+The pipeline is: define stable arXiv task categories, draft candidate tasks, run sentence-level similarity filtering with all-mpnet-base-v2, manually inspect diversity and overlap, verify final answers with three independent annotators, and evaluate web agents on all tasks. Each task is designed so the expected answer is temporally stable and can be checked without ad hoc manual judgment at scoring time.
+
+The output is a benchmark record containing the task instruction, interaction trajectory evidence, and verified final answer. During evaluation, agents run each task three times, and the paper reports averaged task success rate across categories. The paper also reports partial and failed outcomes in the reflection ablation.
+
+The verifier is a strict final-answer matching criterion against manually verified gold answers. The agent environment is an arXiv browser setting with screenshots, element texts, actions, and recent interaction history. The dynamic reflection method asks the model to select the most useful observation from the last three visual observations before generating the next action.
+
+Reproducibility checks should confirm the public code archive, the exact browser backend, action abstraction, snapshot or page-freezing policy, gold-answer files, evaluator matching rules, and prompt templates. The PDF states that code is released through an anonymous 4open Science repository, so authorship, license, and long-term artifact stability remain separate checks.

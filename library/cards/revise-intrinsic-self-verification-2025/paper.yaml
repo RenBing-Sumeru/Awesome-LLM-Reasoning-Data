@@ -1,0 +1,104 @@
+id: revise-intrinsic-self-verification-2025
+title: 'ReVISE: Learning to Refine at Test-Time via Intrinsic Self-Verification'
+year: 2025
+venue: ICML 2025
+authors:
+- Hyunseok Lee
+- Seunghyuk Oh
+- Jaehyung Kim
+- Jinwoo Shin
+- Jihoon Tack
+source_role:
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- pairwise_preference
+- full_episode
+domains:
+- reasoning
+training_use:
+- preference_learning
+- test_time_compute
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+artifacts:
+  paper: https://proceedings.mlr.press/v267/lee25ab.html
+  arxiv: https://arxiv.org/abs/2502.14565
+  code: https://github.com/seunghyukoh/revise
+  data: null
+  project: https://github.com/seunghyukoh/revise
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/lee25ab.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Supervised prompts and labels from GSM8K, MATH, a 50K MetaMath subset with 3K validation examples, and MBPP;
+    exact dataset revisions and combined source weights are unknown.
+  trace_author: Model reasoning paths including failed and successful paths.
+  answer_format: Reasoning trajectories forming preference pairs for verification and correction.
+  process_fields:
+  - candidate_trace
+  - self_verification
+  - correction_attempt
+  - preference_pair
+  - final_answer
+  environment_or_substrate: Test-time self-verification/refinement.
+  verifier_or_reward: Ground-truth outcome correctness partitions sampled paths for Stage-1 and Stage-2 preference construction.
+    The learned eos probability is used as intrinsic confidence at inference; it is not an external proof of correctness.
+  terminal_predicate: Stage 1 prefers eos after an outcome-correct path and refine after an outcome-incorrect path. Stage
+    2 prefers refine followed by the gold reasoning target after an error; inference may stop on eos or continue on refine.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Collects failed and successful reasoning paths.
+  filtering_rule: Structured curriculum; exact pair rule unknown.
+  sampling_protocol: Confidence-aware verification and correction at inference.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: Structured online preference-learning curriculum.
+audit:
+  source_mixture: Failed and successful model paths; task mixture unknown.
+  split: unknown
+  decontamination: unknown
+  license: Repository license exists but terms were not independently checked.
+  lineage: reasoning paths -> failed/successful collection -> preference pairs -> curriculum -> refinement
+  known_failure_modes:
+  - Intrinsic verification need not prove external correctness.
+  - Raw pairs, prompts, and scorer details are not released.
+  - Calibration of confidence decoding is unknown.
+  citation_status: verified
+  confidence: high
+  notes: Official PMLR paper and author repository checked.
+inclusion_reason: Uses successful and failed trajectories as preference-pair components for test-time refinement.
+related: []
+tags:
+- self-verification
+- self-correction
+- preference-learning
+- failed-traces
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: ReVISE converts failed and successful reasoning paths into preference pairs for intrinsic verification and
+  refinement.
+why_it_matters: It retains both successful and failed trajectories rather than only final answers.
+card: null
+needs:
+- needs_trace_release
+- needs_pair_construction_specification
+- needs_verifier_specification
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official PMLR paper and code checked.

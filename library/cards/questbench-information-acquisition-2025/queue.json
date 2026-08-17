@@ -1,0 +1,19 @@
+{
+  "title": "QuestBench: Can LLMs ask the right question to acquire information in reasoning tasks?",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.22674",
+    "data": "https://huggingface.co/datasets/belindazli/QuestBench",
+    "code": null,
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T12:12:43Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将四类CSP做成“一问式”信息获取benchmark",
+    "updated_at": "2026-07-19T12:12:43Z"
+  }
+}

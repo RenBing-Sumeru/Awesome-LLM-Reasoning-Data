@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DART-Math 按 DeepSeekMath-7B-RL 的低通过率向 MATH 与修正版 GSM8K 难题分配更多采样，再用正则与 SymPy 终局答案检查筛成 CoT SFT 对；该 verifier 不验证中间推理。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "难度感知拒绝采样与开放数学 SFT 数据配方",
+  "best_for_ch": "研究数学推理数据构造、拒绝采样预算、答案 verifier 与 SFT 分布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yuxuan Tong、Xiwen Zhang、Rui Wang、Ruidong Wu、Junxian He",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

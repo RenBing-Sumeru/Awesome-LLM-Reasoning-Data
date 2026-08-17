@@ -1,0 +1,17 @@
+{
+  "title": "FB-Bench: A Fine-Grained Multi-Task Benchmark for Evaluating LLMs’ Responsiveness to Human Feedback",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.471/",
+    "data": "https://github.com/PKU-Baichuan-MLSystemLab/FB-Bench"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:47:54Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "FB-Bench 收集 591 条真实中文反馈样本，检验模型能否理解纠错、追问和反驳后修正回答",
+    "updated_at": "2026-07-26T05:47:54Z"
+  }
+}

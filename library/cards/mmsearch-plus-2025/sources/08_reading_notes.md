@@ -1,0 +1,6 @@
+- Start with Sections 2.1-2.5 to separate Spatial-Temporal Extrapolation construction, the 311 released QA/image/source-reference rows, and the paper-defined but unreleased search episode.
+- Keep the release counts distinct: 311 rows in one HF split named `train`, 441 unique images, 279 unique questions, 306 unique answers, 94 easy and 217 hard tasks, and a derived 239-task lite subset.
+- Treat GPT-4o as an answer-level judge: it checks acceptable-answer agreement but not citation support, Gemini-summary fidelity, search actions, or step provenance.
+- Read Table 1 and Sections 4-5 for both gains and regressions: o3 improves with rollout/SoM, while Qwen falls under full rollout and emits 421 invalid image-search calls across 45 tasks.
+- Separate published data from runtime artifacts: SerpAPI results, Gemini summaries, cache, SoM boxes, framework/evaluator code, and complete successful/failed trajectories are not released at the audited revisions.
+- Before reuse, pin the HF revision rather than stale `state.json`, then audit dynamic-search drift, judge calibration, public-canary contamination, split policy, source/redaction lineage, and third-party rights.

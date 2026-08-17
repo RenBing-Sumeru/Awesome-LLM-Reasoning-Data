@@ -1,0 +1,212 @@
+id: mathsmith-2025
+title: 'MathSmith: Towards Extremely Hard Mathematical Reasoning by Forging Synthetic Problems with a Reinforced Policy'
+year: 2026
+venue: AAAI 2026
+authors:
+- Shaoxiong Zhan
+- Yanlin Lai
+- Ziyu Lu
+- Dahua Lin
+- Ziqing Yang
+- Fei Tan
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2508.05592
+  arxiv: https://arxiv.org/abs/2508.05592
+  code: https://github.com/Jasaxion/MathSmith
+  data: https://huggingface.co/datasets/Jasaxion/MathSmith-HC-Problems
+  data_hard: https://huggingface.co/datasets/Jasaxion/MathSmith-Hard-Problems
+  data_short_cot: https://huggingface.co/datasets/Jasaxion/MathSmith-HC-Solution-Generation-ShortCoT-Qwen3-30B-A3B
+  data_long_cot: https://huggingface.co/datasets/Jasaxion/MathSmith-HC-Solution-Generation-LongCoT-Qwen3-30B-A3B
+  model_hc: https://huggingface.co/Jasaxion/MathSmith-HC-Problem-Synthesizer-Qwen3-8B
+  model_hard: https://huggingface.co/Jasaxion/MathSmith-Hard-Problem-Synthesizer-Qwen3-8B
+  project: https://jasaxion.github.io/MathSmith_ProjectPage/
+  huggingface: https://huggingface.co/datasets/Jasaxion/MathSmith-HC-Problems
+  doi: https://doi.org/10.1609/aaai.v40i41.40760
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40760
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  unit_of_record: The problem releases store a sampled PlanetMath-derived concept set, a construction rationale, and one synthetic
+    mathematics problem. The solution releases pair a problem with a Qwen3-30B-A3B solution trace and may also carry answer_dict,
+    highest_freq, and sampled_concept fields.
+  prompt_source: Mathematics pages crawled from PlanetMath are filtered for concept content and summarized by GPT-4o into
+    about 11,000 concept-explanation-category records. Each generation input samples five records; the generator selects at
+    least two compatible concepts and applies at least two of nine difficulty strategies.
+  trace_author: GPT-4o writes about 8,000 cold-start problem-construction examples. Qwen3-8B policies generate five-step construction
+    rationales and problems. Qwen3-30B-A3B supplies reward-time solution traces and released short/long-CoT solutions; Qwen2.5-Math-7B
+    is used in the weakness-focused experiment.
+  context_or_state: Five sampled concept-explanation records, their broad categories, nine optional difficulty strategies,
+    and format constraints for one unified, non-proof question with a numeric, symbolic, expression, or equation answer.
+  trace_or_actions: Select a meaningful concept subset, explain the integration, embed difficulty features, and formulate
+    the final problem in an exactly five-step rationale.
+  answer_or_artifact: A `<rationale>`–`<problem>` pair for generation releases, optionally joined to a teacher-produced short-
+    or long-CoT solution record. Stable IDs and a complete cross-release join contract are not documented.
+  answer_format: Problem records expose sampled_concept, rationale, problem, and sometimes an output serialization. Solution
+    records expose problem, answer, optional answer_dict and highest_freq, and sampled_concept.
+  process_fields:
+  - sampled_concept
+  - rationale
+  - problem
+  - answer
+  - answer_dict
+  - highest_freq
+  - structural_reward
+  - complexity_reward
+  - consistency_reward
+  observation: Generator text, parser-visible `<rationale>` and `<problem>` spans, counted rationale steps, and K teacher
+    reasoning traces with extracted boxed answers.
+  verifier_output: Format/step scores are programmatic. Complexity is normalized mean teacher CoT length. Consistency is a
+    binary same-teacher majority signal. The downstream answer sampler extracts the final `\boxed{}` text and can retain majority
+    groups.
+  reward: Structural reward weights format 0.7 and five-step compliance 0.3. Reasoning reward weights normalized teacher-trace
+    length 0.7 and same-teacher answer consistency 0.3 for MathSmith-HC; MathSmith-Hard omits consistency. The total scalar
+    is used by GRPO and is not an independent proof of correctness.
+  terminal_predicate: Generation emits one focused problem in the required tags. The paper's Available Ratio counts correctly
+    formatted problems that the teacher can solve with a valid answer; exact normalization, invalid-answer handling, and independent
+    correctness adjudication are incomplete.
+  provenance: PlanetMath page -> GPT-4o concept summary -> five-concept prompt -> GPT-4o cold start -> Qwen3-8B SFT -> HC/Hard
+    GRPO -> released problem/rationale -> optional Qwen3-30B-A3B solution -> downstream SFT or concept-targeted improvement.
+  environment_or_substrate: Offline text generation with vLLM, Qwen3-8B policy training using GRPO in verl, Qwen3-30B-A3B
+    teacher inference, and downstream SFT with LLaMA-Factory. There is no proof assistant or independently executable mathematical
+    environment.
+  release_boundary: Official code, processed concept records, HC/Hard synthesizers, problem datasets, HC short/long-CoT solution
+    datasets, and downstream models are public. There is no single pinned release manifest connecting source pages, rejected
+    candidates, rewards, solutions, and training subsets.
+recipe_metadata:
+  base_model: Qwen3-8B is the problem-generator base. Evaluation students include Qwen2.5-7B-Instruct, Qwen3 models from 1.7B
+    to 32B, and DeepSeek-R1-Distill-Qwen-7B under short- or long-CoT settings.
+  teacher: GPT-4o summarizes PlanetMath pages and creates about 8,000 cold-start records. Qwen3-30B-A3B estimates reward-time
+    complexity and consistency, regenerates baseline solutions, and supplies released solution traces. Qwen2.5-32B appears
+    in a solver ablation; Qwen2.5-Math-7B supports weakness-focused improvement.
+  generator: A LoRA-SFT Qwen3-8B policy writes a five-step construction rationale and one answer-focused problem from five
+    sampled concept records and nine difficulty soft constraints. GRPO produces MathSmith-HC and MathSmith-Hard.
+  prompt_or_task_source: About 11,000 GPT-4o-extracted concept-explanation records from filtered PlanetMath mathematics pages;
+    original source-page URLs are not preserved in the released record schema.
+  sampling_protocol: Five concept records are sampled per generator input. The paper says reward estimation uses K=5 Qwen3-30B-A3B
+    solutions. The current code snapshot instead defaults to three teacher samples and a GRPO rollout group of six, so exact
+    published-run settings must be reconstructed with caution.
+  filtering_rule: Remove non-concept PlanetMath entries; require at least two sampled concepts, at least two difficulty strategies,
+    one unified non-proof problem, and a five-step construction rationale. HC optimizes structure, trace-length complexity,
+    and consistency; Hard omits consistency. Solution-generation and weakness pipelines apply teacher-answer filtering, but
+    full rejection logs are absent.
+  selection_threshold: Structure plus teacher-proxy scalar reward during GRPO; downstream solution retention uses extracted
+    boxed-answer frequency. Exact release thresholds vary by script and are not consolidated.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper uses K=5 teacher traces for both complexity and consistency. The inspected reward code has MAX_GEN_TOKEN=32768,
+    temperature 0.3, and three teacher samples, while published-run equivalence is unverified. Released short/long-CoT dataset
+    cards say each stored solution is sampled once (n=1).
+  search_or_scaffold: Nine prompt-level difficulty strategies, five-step construction rationales, teacher solution sampling,
+    GRPO, and a concept-tracing weakness-focused loop.
+  optimizer_or_scaffold: The paper reports LoRA rank 16 for five SFT epochs on 8 H100 GPUs, then GRPO in verl with 20 H100
+    GPUs and checkpoint selection at step 100. The current example scripts differ on GPU count and epoch count, so they are
+    not treated as exact run manifests. Baseline SFT uses LLaMA-Factory for five epochs at learning rate 1e-5.
+audit:
+  source_mixture: PlanetMath-derived pages summarized by GPT-4o, GPT-4o cold-start records, MathSmith-generated problems/rationales,
+    and Qwen-family solution traces. The release spans multiple datasets and model repositories without one pinned manifest
+    joining every stage.
+  split: Checked Hugging Face problem and solution pages expose one train split. No validation/test split policy, stable record
+    IDs, duplicate report, source-page membership list, or complete HC-problem-to-solution-to-training join is documented.
+  decontamination: Generating from sampled concepts rather than rewriting benchmark questions reduces direct template dependence,
+    but does not prove semantic independence. No released benchmark-level n-gram, embedding-similarity, or manually adjudicated
+    contamination audit was verified.
+  benchmark_overlap: No item-level overlap report was found for GSM8K, MATH-500, AIME 2024, AIME 2025, or OlympiadBench. PlanetMath
+    concepts can still overlap benchmark topics.
+  license: The official repository, checked HC/Hard datasets, checked HC short/long-CoT solution datasets, and synthesizer
+    model cards are marked Apache-2.0. These labels do not independently establish redistribution rights for all underlying
+    PlanetMath passages or GPT-4o outputs; upstream and per-artifact terms remain relevant.
+  lineage: Concept provenance remains as sampled_concept text, but original page URLs, immutable revisions, stable IDs, rejection
+    histories, reward logs, and item-to-checkpoint mappings are incomplete.
+  release_version: AAAI proceedings, arXiv v3, official project page and Hugging Face artifacts, plus GitHub commit 1b0201c092bb911c26dba1ccc6b82c9001,
+    were checked on 2026-07-22. The GitHub project showed no tagged release.
+  successful_and_failed_sample_retention: Public datasets primarily expose generated/retained problems and solutions. The
+    complete population of rejected generator outputs, invalid teacher answers, per-item reward components, and rejection
+    reasons is not released as a joined log.
+  verifier_or_judge_failure_modes:
+  - Longer teacher traces may measure verbosity, confusion, or failed search rather than intrinsic difficulty.
+  - A majority from one teacher is correlated self-consistency, not an independent correctness proof.
+  - MathSmith-Hard omits the consistency term entirely.
+  - Boxed-string extraction can miss equivalent answers or agree on the same wrong form.
+  - Available Ratio means formatted and teacher-solvable, not formally verified correctness.
+  environment_failure_modes:
+  - code and paper disagree on K, rollout group size, GPU count, and SFT epoch defaults
+  - API model aliases and GPT-4o snapshots are not pinned
+  - no proof-assistant or independent mathematical checker catches malformed premises
+  - large single-split files and inconsistent viewer row estimates complicate accounting
+  privacy_or_consent: The objects are public mathematics text and model-generated records; no personal data collection is
+    described. Source-content rights and API-provider handling are not documented item by item.
+  known_failure_modes:
+  - teacher-trace length is only a difficulty proxy
+  - same-teacher majority can consistently endorse an incorrect or ambiguous problem
+  - released solution previews include traces that notice inconsistencies yet still guess an answer
+  - concept sourcing does not establish semantic decontamination
+  - hard-problem specialization can hurt smaller models or easier word-problem performance
+  - record-count displays and schemas differ across release surfaces
+  - benchmark gains do not prove record correctness, licensing, diversity, or lineage completeness
+  citation_status: verified
+  confidence: high
+  notes: Verified against the official AAAI 2026 record and DOI, arXiv v3 with appendices, author project and GitHub repository,
+    HC/Hard synthesizer model cards, and the principal problem and solution datasets.
+  remaining_unknowns:
+  - exact GPT-4o and API model snapshots, request dates, and random seeds
+  - exact published GRPO group size, Tmax, decoding settings, and full run manifest
+  - stable source-page IDs and cross-release item identifiers
+  - rejected-output counts, per-item reward logs, and parser false-positive rates
+  - semantic contamination and duplicate audits
+  - explicit rights analysis for every upstream-derived and generated object
+inclusion_reason: An open concept-to-problem construction pipeline with generator code, HC/Hard synthesizers, problem/rationale
+  records, solution traces, and downstream models, plus explicit multi-objective rewards whose correctness and lineage limits
+  remain auditable.
+related: []
+tags:
+- synthetic-math-problems
+- reinforced-data-generation
+- difficulty-control
+- answer-consistency
+- long-cot
+- weakness-focused-generation
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Trains and releases Qwen3-8B problem synthesizers that turn PlanetMath-derived concepts into rationales
+  and hard math problems using structural, trace-length, and same-teacher consistency rewards.
+why_it_matters: It exposes a reusable generator-side SFT-to-GRPO pipeline and intermediate data objects while showing that
+  its difficulty and availability signals remain teacher-dependent proxies rather than independent mathematical verification.
+card: null
+needs:
+- 'needs_audit: semantic decontamination, duplicate accounting, stable source-page IDs, and pinned cross-release manifests'
+- 'needs_verifier: answer-equivalence rules, independent correctness checks, teacher-error analysis, and reward false-positive
+  rates'
+- 'needs_metadata: exact published GRPO group size, decoding settings, Tmax, seeds, full rejection yields, and immutable model
+  revisions'
+- 'needs_license: item-level upstream PlanetMath and GPT-4o-output rights analysis beyond artifact-level Apache-2.0 labels'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card_writer
+  confidence: high
+  notes: Official publication, full appendices, project, code, primary datasets, and synthesizer weights were verified. Remaining
+    gaps concern correctness, decontamination, reproducibility, lineage, and upstream rights.

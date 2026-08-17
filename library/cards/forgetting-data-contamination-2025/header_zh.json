@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "基准污染的影响取决于重复次数、模型与训练规模；大量后续新数据可使早期污染痕迹自然遗忘。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "基准污染与训练遗忘的受控实验研究",
+  "best_for_ch": "需要量化训练数据污染对基准评测影响的研究者。",
+  "confidence_ch": "高：ICML 2025 正式论文与公开代码已核验；作者单位待从原文首页补录。",
+  "authors_ch": "Sebastian Bordt, Suraj Srinivas, Valentyn Boreiko, Ulrike von Luxburg",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T12:49:36Z"
+}

@@ -1,0 +1,4 @@
+The report identifies gpt-oss-safeguard-120b and gpt-oss-safeguard-20b as text-only, open-weight reasoning models post-trained from their corresponding gpt-oss models. It states that they were trained without additional biological or cybersecurity data. The exact gpt-oss checkpoints, remaining source mixture, policy corpus, rights, record schema, filtering, and stage allocation are undisclosed.
+
+For internal multi-policy evaluation, multiple policies are supplied at inference time and a prediction is counted correct only when it exactly matches golden-set labels for every included policy. The report also says that production-benchmark completions are assessed with LLM-based graders using the `not_unsafe` metric under relevant OpenAI policy. Those evaluation contracts must not be conflated with the post-training reward: the reward implementation, human-label workflow, optimiser, rollouts, sampling, and training environment are not released.
+

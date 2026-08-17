@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该基准以 Schoenfeld 认知情节标注 DeepSeek-R1 数学轨迹，覆盖段落和句子两个层级。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "研究推理模型认知结构、轨迹标注与自动过程分析的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ming Li、Nan Zhang、Chenrui Fan、Hong Jiao、Yanbin Fu、Sydney Peters、Qingshu Xu、Robert Lissitz、Tianyi Zhou",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

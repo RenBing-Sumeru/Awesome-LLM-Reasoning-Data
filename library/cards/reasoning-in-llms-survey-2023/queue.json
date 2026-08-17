@@ -1,0 +1,25 @@
+{
+  "title": "Towards Reasoning in Large Language Models: A Survey",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2212.10403",
+    "arxiv": null,
+    "code": null,
+    "data": null,
+    "project": null,
+    "huggingface": null,
+    "doi": null
+  },
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "reason_to_include": "Reasoning LLM survey",
+  "decision_reason": "Reasoning LLM survey",
+  "search_status": "promoted",
+  "review_note": "",
+  "updated_at": "2026-07-11T09:11:27Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "Reasoning LLM survey",
+    "updated_at": "2026-07-11T09:11:27Z"
+  }
+}

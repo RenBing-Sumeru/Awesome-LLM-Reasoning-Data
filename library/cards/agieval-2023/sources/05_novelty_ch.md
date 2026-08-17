@@ -1,0 +1,1 @@
+已有基线包括广义多任务知识 benchmark 和零散考试子集，但不一定以“面向人类评价的官方考试”为核心收集规则。AGIEval 的变化是按高标准/高风险人类考试来选任务。质量信号来自真实考试题的答案键评分，而不是生成题；方向信号是一个 human-centric standardized-test reasoning 坐标。并不新的部分是 exact-match QA scoring、prompt-based evaluation 和选择题 benchmark。复用前要检查原始考试是否允许再分发、任务文件是否对应论文版本，以及分数比较是否使用相同 prompt 和答案抽取规则。

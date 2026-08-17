@@ -1,0 +1,3 @@
+Correctness is only correctness relative to expert-authored answer and official evaluator; exact v2 rubric and judge settings require page/version pinning. A passing score does not automatically prove robust reasoning, safe behavior, faithful explanations, or transfer outside the benchmark's task distribution.
+
+Hidden assumptions include public/private and v2 task split are needs_audit; needs_audit; dependency/runtime drift; judge or evaluator version drift; and contamination risk: SEC facts are public but questions, answers, and current leaderboard prompts can leak after release. The card should not be read as evidence of a training recipe unless released artifacts expose training inputs, filtering rules, and optimization use.

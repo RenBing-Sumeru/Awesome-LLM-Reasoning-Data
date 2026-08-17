@@ -1,0 +1,182 @@
+id: gemini-robotics-physical-world-2025
+title: 'Gemini Robotics: Bringing AI into the Physical World'
+year: 2025
+venue: arXiv preprint
+authors:
+- Gemini Robotics Team
+source_role:
+- model_report
+- benchmark
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- robotics
+- embodied_reasoning
+- vision_language_action
+- robot_manipulation
+- multimodal_reasoning
+- spatial_reasoning
+training_use:
+- sft
+- distillation
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.20020
+  arxiv: https://arxiv.org/abs/2503.20020
+  code: https://github.com/embodiedreasoning/ERQA
+  data: https://github.com/embodiedreasoning/ERQA
+  project: https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.20020
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: For Gemini Robotics, a training/inference record is grounded in expert-teleoperated ALOHA 2 task episodes
+    and uses current-scene images plus a natural-language task instruction. The wider mixture also contains web documents,
+    code, image/audio/video content, embodied-reasoning data, and VQA data. Exact sources, proportions, licenses, record counts,
+    and selection rules are unknown.
+  trace_author: Robot action traces are produced by expert teleoperators over 12 months. A reasoning-enhanced specialization
+    uses a re-labelled version of the robot action dataset with trajectory-understanding/generation intermediates, but the
+    relabeller and annotation procedure are unknown.
+  answer_format: Gemini Robotics outputs chunks of continuous low-level robot actions. The reasoning-enhanced variant additionally
+    predicts left- and right-arm trajectories for the next one second before a local decoder converts the intermediate into
+    actions. ERQA outputs one multiple-choice letter.
+  process_fields:
+  - current_scene_images
+  - natural_language_task_instruction
+  - expert_teleoperation_sequence
+  - robot_action_label_or_chunk
+  - optional_arm_trajectory_intermediate
+  - episode_horizon
+  - task_success
+  - task_progress_score
+  - robot_embodiment
+  environment_or_substrate: Primary demonstrations come from a fleet of ALOHA 2 robots. The VLA uses a cloud backbone and
+    an onboard local decoder; adaptation experiments use bi-arm Franka and Apptronik Apollo. Raw observations, robot-state/proprioception
+    fields, camera calibration, action dimensions, control interface versions, and replay packages are unknown.
+  verifier_or_reward: Robot evaluations define full completion as binary success and task-specific progress values from 0
+    to 1, use repeated real-world trials, random-order back-to-back A/B testing, and pairwise t-tests. ERQA uses a ground-truth
+    multiple-choice answer. The report does not state that success/progress is used as a training reward or identify the robot-trial
+    scorer.
+  terminal_predicate: Task-specific physical completion, such as completing all manipulation steps, inserting an object, or
+    reaching a defined partial-progress milestone. Each task has its own success/progress rubric; there is no single released
+    executable terminal checker.
+recipe_metadata:
+  base_model: Gemini Robotics is derived from Gemini Robotics-ER, which is built on Gemini 2.0. Exact checkpoints, parameter
+    counts, and pretraining-stage allocation are unknown.
+  teacher: Gemini Robotics-ER is distilled into the cloud VLA backbone; distillation targets, examples, teacher checkpoint,
+    and objective are unknown.
+  generator: Expert teleoperators generate ALOHA 2 demonstrations. The producer of reasoning trajectory relabels and the generators
+    of non-action multimodal data are unknown.
+  filtering_rule: The report says 2,000–5,000 high-quality demonstrations are curated per long-horizon specialization task,
+    but gives no quality rubric, rejection rule, failure retention policy, or yield.
+  sampling_protocol: The main action/non-action mixture sampling and augmentation are unknown. Fast adaptation explicitly
+    compares 5, 20, and 100 demonstration episodes for eight tasks.
+  rollout_count: Training rollout counts are unknown. Specialization uses 2,000–5,000 demonstration episodes per task; fast
+    adaptation uses 5/20/100 demonstrations. Evaluation uses repeated trials, generally 20 for long-horizon tasks and 10 per
+    fast-adaptation point.
+  temperature: unknown
+  inference_budget: Cloud-backbone latency is under 160 ms, end-to-end observation-to-action-chunk latency is about 250 ms,
+    and chunking yields an effective 50 Hz control rate. These are inference figures, not training compute.
+  optimizer_or_scaffold: The model is fine-tuned for direct action prediction using a distilled cloud VLA backbone and local
+    action decoder; specialization fine-tunes the generalist checkpoint. Gemini batch size, optimizer, loss, steps, schedule,
+    and checkpoint-selection rule are unknown. Appendix 1M/2M step counts apply only to diffusion baselines.
+audit:
+  source_mixture: The report names thousands of hours of expert ALOHA 2 demonstrations across thousands of tasks plus web,
+    code, image/audio/video, embodied-reasoning, and VQA data. Counts, proportions, source manifests, time ranges, rights,
+    privacy treatment, and licenses are unknown.
+  split: Generalization tasks are divided into in-distribution, visual, instruction, and action shifts, and fast-adaptation
+    experiments use demonstrations unseen by the Section-3 checkpoint. Item-level training/evaluation membership, scene/task/object
+    IDs, and a complete split are not released.
+  decontamination: No global decontamination, benchmark-overlap, duplicate-trajectory, near-duplicate scene, or memorization
+    audit is disclosed.
+  license: The manuscript and ERQA repository are CC BY 4.0. The proprietary ALOHA demonstrations, relabelled trajectory data,
+    non-action mixture, model weights, and training code are not released with verified reuse terms.
+  lineage: Stage-level lineage runs from Gemini 2.0 to Gemini Robotics-ER, distillation into a VLA backbone, action/multimodal
+    fine-tuning, optional task/reasoning/embodiment specialization, and real-world evaluation. Record-level prompt-image-action-feedback-checkpoint
+    lineage and version hashes are unknown.
+  known_failure_modes:
+  - The action corpus is described only as thousands of hours/tasks; its exact schema, mixture, split, rights, failures, and
+    provenance are unavailable.
+  - Success and progress rubrics are task-specific and may require human judgment; scorer identity, inter-rater agreement,
+    raw trials, and false-positive/false-negative audits are not disclosed.
+  - The reasoning-enhanced data is described as re-labelled, but the label generator, coordinate schema, coverage, and validation
+    are hidden, so the claimed interpretable intermediate cannot be reproduced.
+  - Robot experiments use limited trial counts and changing physical hardware; A/B randomization mitigates but cannot remove
+    wear, latency, lighting, and operator effects.
+  - Specialist performance entangles Gemini backbone capacity, distillation, diverse generalist data, and per-task demonstrations;
+    the report does not isolate every causal contribution.
+  - The reported 1M/2M training-step values belong to diffusion baselines, not Gemini Robotics; attributing them to the frontier
+    model would be a metadata error.
+  - ERQA is openly released, but it is an answer-level embodied-reasoning benchmark and must not be mistaken for the proprietary
+    robot-action training corpus.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv record, 64-page Google DeepMind PDF, full arXiv source/appendices, official DeepMind launch page, and official
+    ERQA repository were inspected on 2026-07-24. This entry separates released ERQA artifacts from unreleased VLA data and
+    weights.
+inclusion_reason: A major-lab frontier report that partially discloses the robot episode object, expert demonstration scale,
+  multimodal mixture, distillation, reasoning-trajectory relabelling, specialization data counts, and real-world success/progress
+  contracts while leaving the training corpus and optimizer unreleased.
+related: []
+tags:
+- google-deepmind
+- gemini-robotics
+- embodied-reasoning
+- vision-language-action
+- robot-demonstrations
+- teleoperation
+- action-chunks
+- trajectory-relabeling
+- specialization
+- erqa
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Gemini Robotics discloses thousands of hours of ALOHA 2 expert demonstrations, image-and-instruction inputs,
+  action-chunk outputs, trajectory-relabelled reasoning data, and 2,000–5,000-episode specialization sets, but not the robot
+  corpus, mixture, optimizer, or Gemini training-step count.
+why_it_matters: It provides an unusually concrete disclosure ledger for moving from internet-scale multimodal reasoning to
+  physical action, while showing that released ERQA evaluation records and proprietary action-training episodes have very
+  different reuse and audit status.
+card: null
+needs:
+- 'needs_data: robot episode schema, task/scene manifests, raw observations and actions, relabelled trajectories, failures,
+  counts, versions, and record lineage'
+- 'needs_verifier: scorer identity, complete success/progress rubrics, inter-rater reliability, executable terminal checks,
+  raw trials, and error audits'
+- 'needs_metadata: action/non-action mixture weights, collection dates/sites, operators, distillation targets, sampling, augmentations,
+  optimizer, loss, batch size, Gemini steps, schedules, and checkpoints'
+- 'needs_audit: global split, task/scene/object overlap, decontamination, memorization, privacy/consent, hardware drift, failure
+  retention, and causal ablations'
+- 'needs_license: rights and reuse terms for demonstrations, relabelled trajectories, multimodal training sources, weights,
+  and training code'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, ID, and arXiv-ID deduplication against the target V2 Card library found no match. The official paper,
+    project page, arXiv source/appendices, and ERQA repository were verified; no robot action dataset, Gemini checkpoint,
+    or training-code release is claimed.

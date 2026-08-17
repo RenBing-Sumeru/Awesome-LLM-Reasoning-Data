@@ -1,0 +1,1 @@
+Penghui Qi, Zichen Liu, Tianyu Pang, Chao Du, Wee Sun Lee, and Min Lin. Optimizing Anytime Reasoning via Budget Relative Policy Optimization. arXiv:2505.13438, 2025. https://arxiv.org/abs/2505.13438 · https://arxiv.org/bibtex/2505.13438 · https://github.com/sail-sg/AnytimeReasoner

@@ -1,0 +1,9 @@
+The contribution is a minimal-context, answer-level memory probe: ask two Claude Sonnet snapshots to predict gold-edited file paths across an established benchmark and newer comparison issue sets, then score their answers with transparent set coverage.
+
+The comparison surface contains all 500 SWE-Bench-Verified issues; 500 BeetleBox issues, retained as 100 manually judged non-vague issues from each of Ansible, Apache Airflow, PostHog, Localstack, and Langchain; and SWE-rebench splits from January 2025 (109 issues) and September 2025 (50 issues). Each item is evaluated under issue-only and issue-plus-file-structure conditions. The latter exposes only repository-relative file names and paths, never file contents.
+
+Claude 3.5 Sonnet (`claude-3-5-sonnet-20240620`) and Claude 3.7 Sonnet (`claude-3-7-sonnet-20250219`) produce one natural-language file-localization answer per item and condition. The released parser converts the answer into a deduplicated path list. `metric.py` then applies two answer-level predicates against gold `updated_files`: complete coverage is `gold ⊆ predicted`, while partial coverage is a non-empty intersection.
+
+This feedback contract observes path-set inclusion only. It cannot tell whether the model recalled an issue, inferred a likely module from filename semantics, used broad repository familiarity, or solved the underlying defect; it also does not penalize extra paths in the headline coverage metrics. No code is executed, no patch or tests are checked, and no LLM judge, reward model, or environment supplies feedback.
+
+Relative to ordinary SWE-Bench agent evaluation, the change is to strip away interaction and test-based success so that suspicious residual localization becomes measurable. Relative to BeetleBox and SWE-rebench, the fixed SWE-Bench-Verified set is the suspected exposure surface. The resulting evidence is consistent with benchmark memory, but it is not direct inspection of Claude training data.

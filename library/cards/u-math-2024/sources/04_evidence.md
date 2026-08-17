@@ -1,0 +1,5 @@
+The main evidence is descriptive and diagnostic rather than a claim that U-MATH trains better models. The abstract and experiments report that the benchmark has 1,100 tasks, roughly 20% visual content, and a mu-MATH judge-evaluation set with 1,084 tasks. The paper compares open and proprietary LLMs on text-only and visual math, finding that leading models can do much better on textual tasks than on visual ones.
+
+The paper also reports that judging free-form university math solutions is itself difficult. In the authors' experiments, the best judge models still fall short of perfect reliability, and the analysis separates problem-solving from solution judgment. This matters because any reuse of U-MATH scores as a feedback signal depends on whether the judge protocol is stable enough for the intended use.
+
+The evidence is strong enough for topic screening because it identifies the evaluation object, construction scale, official release path, and failure modes. It is not enough for a higher-confidence training-data claim without checking the exact released files, license, judge prompts, repository revision, and contamination policy.

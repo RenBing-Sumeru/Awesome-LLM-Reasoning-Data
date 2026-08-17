@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "Alibaba Group",
+    "Hong Kong University of Science and Technology",
+    "Peking University",
+    "Shenzhen Intelligent Strong Technology Co., Ltd"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:46:54Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2304.08244",
+    "https://arxiv.org/e-print/2304.08244",
+    "https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank",
+    "https://huggingface.co/datasets/liminghao1630/API-Bank"
+  ],
+  "verification_note": "Official arXiv source and repository verify EMNLP 2023 status, authors, Alibaba/HKUST/Peking/Shenzhen Intelligent Strong affiliations, and API-Bank artifacts. Existing card was updated in place."
+}

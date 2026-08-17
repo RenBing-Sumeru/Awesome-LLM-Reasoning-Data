@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "BrowseComp-Plus 将 BrowseComp 筛为 830 个可核验证据的查询，并配套 100,195 篇固定网页语料、人类 evidence/gold qrels、混合评测器与四组部分发布的完整 agent 轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "固定语料深度检索智能体评测基准与部分轨迹发布",
+  "best_for_ch": "研究 web/search agent、检索反馈、轨迹重放、judge 漂移与 benchmark 审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zijian Chen, Xueguang Ma, Shengyao Zhuang, Ping Nie, Kai Zou, Sahel Sharifymoghaddam, Andrew Liu, Joshua Green, Kshama Patel, Ruoxi Meng, Mingyi Su, Yanxi Li, Haoran Hong, Xinyu Shi, Xuye Liu, Hosna Oyarhoseini, Nandan Thakur, Crystina Zhang, Luyu Gao, Wenhu Chen, Jimmy Lin",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

@@ -1,0 +1,1 @@
+SQLFlow 含 89,544 条标注样本，覆盖 Spider、BIRD 与 EHRSQL 等来源/数据库；论文还定义只保留 `SELECT` 查询的 SQLFlow-Part 67,570 条，用于公平数据量比较。记录包含数据库/schema、自然语言问题、SQL、执行验证结果、推理轨迹及结构类别。模块化 Database Manager 负责跨数据库执行。其 verifier 是 SQL 在对应数据库运行并与期望语义一致，数据既可做 SFT，也可作结构化 few-shot 检索库。

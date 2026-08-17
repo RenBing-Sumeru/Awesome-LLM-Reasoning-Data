@@ -1,0 +1,148 @@
+id: alphamath-almost-zero-2024
+title: 'AlphaMath Almost Zero: Process Supervision without Process'
+year: 2024
+venue: NeurIPS 2024
+authors:
+- Guoxin Chen
+- Minpeng Liao
+- Chengxi Li
+- Kai Fan
+source_role:
+- construction_recipe
+- process_supervision
+- data_release
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+- trajectory_value
+- answer_level
+domains:
+- math
+training_use:
+- sft
+- process_supervision
+- reward_modeling
+- test_time_compute
+construction_layer:
+- search_substrate
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/30dfe47a3ccbee68cffa0c19ccb1bc00-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2405.03553
+  code: https://github.com/MARIO-Math-Reasoning/Super_MARIO
+  data: https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset
+  project: https://github.com/MARIO-Math-Reasoning/Super_MARIO
+  huggingface: https://huggingface.co/datasets/MARIO-Math-Reasoning/AlphaMath-Trainset
+  doi: https://doi.org/10.52202/079017-0870
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/30dfe47a3ccbee68cffa0c19ccb1bc00-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/2024/hash/30dfe47a3ccbee68cffa0c19ccb1bc00-Bibtex-Conference.bib
+data_object:
+  prompt_source: 'The GSM8K and MATH training splits: 7,473 and 7,500 question-final-answer pairs; human-written solution
+    analyses are omitted.'
+  trace_author: The current round policy/value model generates textual and Python-assisted solution paths while MCTS explores
+    alternatives.
+  answer_format: The public round-3 file has top-level fields `id`, `answer`, `instruction`, `input`, and `output`; `output`
+    is a serialized list of XML-like step records.
+  process_fields:
+  - source example ID
+  - reference final answer
+  - question instruction
+  - generated step text
+  - optional Python code and execution output
+  - policy prior P
+  - backed-up Q value
+  - tree depth
+  - terminal positive or negative outcome
+  environment_or_substrate: Offline MCTS over partial math solutions with a Python interpreter available for numerical and
+    symbolic computation.
+  verifier_or_reward: Nonterminal rewards are zero. A terminal path receives +1 or -1 from final-answer equivalence via the
+    MARIO Eval toolkit; MCTS backup turns terminal outcomes and value predictions into Q targets.
+  terminal_predicate: A path ends when the model emits a final answer or reaches the maximum depth; terminal correctness is
+    determined by equivalence to the known reference answer.
+recipe_metadata:
+  base_model: DeepSeekMath-Base-7B in the main experiments.
+  teacher: The policy model itself supplies solution steps; the seed supervision is the question and known final answer, with
+    no GPT-4 or human-written solution process.
+  generator: A shared causal language model with a tanh value head, used inside MCTS and updated after each round.
+  filtering_rule: Deduplicate paths, discard paths with code errors in every step, retain diverse incorrect paths, tier correct
+    paths by code-output/answer consistency and code correctness, then sample at most four correct and four incorrect paths
+    per question and round.
+  sampling_protocol: Three rounds for DeepSeekMath-Base-7B. Round 1 uses two ReAct demonstrations randomly chosen from a pool
+    of 20; later rounds use zero-shot XML prompts. Each round constructs ten trees per question-answer pair.
+  rollout_count: Ten trees per question per round, with at most 40 simulations per tree and up to five child expansions per
+    node.
+  temperature: MCTS generation uses values from 0.6 to 1.2; the exact per-round mapping is undisclosed.
+  inference_budget: Maximum depth 8. Reported inference defaults are 40 MCTS simulations, or step-level beam search with expansion
+    width B2=5 and retained width B1 in {1,3}.
+  optimizer_or_scaffold: Correct paths receive next-token likelihood loss; correct and incorrect paths receive step-value
+    mean-squared error. The paper reports AdamW, learning rate 4e-5, batch size 1,024, ten epochs, cosine schedule, 3% warmup,
+    and zero weight decay.
+audit:
+  source_mixture: GSM8K train (7,473 prompts) plus MATH train (7,500 prompts). The checked Hugging Face revision exposes one
+    115,551-row round-3 train split, but does not publish a source-by-label manifest.
+  split: Construction uses the official source training splits. The public artifact is only the round-3 training set; earlier-round
+    datasets and complete raw trees are not established as released.
+  decontamination: unknown
+  license: The GitHub code is MIT. The Hugging Face dataset card declares no license; rights inherited from GSM8K, MATH, generated
+    traces, and model outputs require separate review.
+  lineage: Source question and final answer -> round-specific policy/value checkpoint -> MCTS tree and Python execution ->
+    terminal answer check -> Q-value backup -> filtering and capped positive/negative path sampling -> joint policy/value
+    update -> next round; the public file contains selected round-3 paths generated by the round-2 checkpoint.
+  known_failure_modes:
+  - final-answer equivalence can accept invalid intermediate reasoning or reject a valid alternate rendering
+  - reference-answer errors can invert terminal labels
+  - Q values are policy-, value-model-, and search-budget-dependent estimates rather than independent process annotations
+  - the value model has documented false positives near +1 for incorrect solutions
+  - Python execution checks computation, not the validity of the surrounding mathematical argument
+  - numerical precision, generated-code, and logical errors dominate the paper's sampled error analysis
+  - no explicit decontamination or semantic deduplication study is reported
+  - the public training code is partial and the repository warns of differences from the internal codebase
+  - dataset licensing and immutable end-to-end environment snapshots are incomplete
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS paper and appendix, repository commit fe37279f67a4fd5a0c95f3eb2914a5c758aa9726, and Hugging Face
+    dataset revision 2dd10eb0afbbaf0f93a937dac6f04af956d1c29d were checked on 2026-07-21.
+inclusion_reason: AlphaMath is an auditable example of deriving selected positive and negative math traces plus step-value
+  targets from final-answer supervision, search, and execution rather than externally written rationales.
+related: []
+tags:
+- math-reasoning
+- mcts
+- search-generated-data
+- process-supervision
+- step-values
+- positive-negative-traces
+- open-release
+status: partial
+one_line_summary: AlphaMath converts answer-labeled GSM8K and MATH prompts into selected positive and negative MCTS paths
+  with backed-up step-value targets.
+why_it_matters: It makes search configuration, terminal checking, failed-path retention, and value backup explicit parts of
+  a process-supervision data recipe while exposing the limits of those constructed labels.
+card: cards/recipes/alphamath-almost-zero-2024.md
+needs:
+- 'needs_snapshot: pin all source, model, code, evaluator, and dataset revisions'
+- 'needs_license: establish dataset and upstream derivative-data rights'
+- 'needs_decontamination: publish train-evaluation and pretraining-overlap checks'
+- 'needs_raw_release: publish earlier rounds, raw trees, rejected paths, and a row-level manifest'
+- 'needs_value_audit: measure step-target and terminal-checker error rates'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Identity and accessible artifacts were verified; release completeness, licensing, decontamination, and internal/public
+    code parity remain partial.
+category_ids:
+- data_construction_open_release_recipes

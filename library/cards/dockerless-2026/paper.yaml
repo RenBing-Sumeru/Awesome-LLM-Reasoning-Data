@@ -1,0 +1,270 @@
+id: dockerless-2026
+title: 'Dockerless: Environment-Free Program Verifier for Coding Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Wenhao Zeng
+- Yuling Shi
+- Xiaodong Gu
+- Chao Hu
+- Chaofan Wang
+- Yuhao Cui
+- Hongting Zhou
+- Mengnan Qi
+- Jianqiao Wangni
+- Zhaojian Yu
+- Shuzheng Gao
+- Kai Cai
+- Shilin He
+source_role:
+- verifier_reward
+- construction_recipe
+verification_contract:
+- judgment_required
+- programmatic
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_level_code
+- code_agents
+- agent_trajectories
+- environment_interaction
+training_use:
+- sft
+- reward_modeling
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2606.28436v1
+  arxiv: https://arxiv.org/abs/2606.28436v1
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  model: null
+  source: https://export.arxiv.org/e-print/2606.28436v1
+  doi: https://doi.org/10.48550/arXiv.2606.28436
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: A verifier-training record containing issue, golden patch, candidate patch, execution label, and teacher-generated
+    question-answer-judge trajectories; downstream post-training also consumes complete environment-free SWE-agent rollouts
+    whose final patches receive a learned dense score.
+  prompt_source: Verifier training uses execution-labeled candidate patches from SWE-Gym and Multi-SWE-RL. Downstream SFT/RL
+    tasks come from SWE-Rebench-v2. Exact issue manifests and source-mixture weights are not disclosed.
+  task_or_prompt: Issue description x plus a repository checkout at its base commit; Dockerless scoring additionally requires
+    a golden/reference patch y_ref and a candidate final patch y.
+  context_or_state: For downstream OpenHands rollouts, the state is the minimal Ubuntu 22.04 LTS checkout plus prior real
+    shell/tool responses. For Dockerless, state is the static repository and accumulated evidence-backed Q&A context.
+  action_or_trace: The policy may issue arbitrary shell commands and edit the repository through OpenHands. Dockerless first
+    generates 2-4 diagnostic questions, then one parallel ReAct-style sub-agent per question runs read-only shell searches,
+    and a final judge emits a verdict.
+  observation: Downstream rollouts receive real feedback from shell tools and may obtain execution feedback from standard
+    developer utilities, but no repository-specific dependencies or test runner are installed. Verifier sub-agents return
+    file/range-grounded evidence from tests, code, documentation, and configuration.
+  answer_or_artifact: A final candidate code patch. A verifier-training target serializes one question-generation trajectory,
+    K sub-agent answer trajectories, and one final-judgment trajectory.
+  process_fields:
+  - issue_description
+  - repository_base_checkout
+  - golden_or_reference_patch
+  - candidate_patch
+  - verification_questions
+  - read_only_shell_actions
+  - evidence_backed_answers
+  - binary_execution_label
+  - predicted_binary_verdict
+  - dense_verifier_score
+  - agent_rollout
+  process_labels: No separately annotated state/action labels are reported. The complete retained Q+A+Judge sequence is trained
+    with next-token loss after its final verdict matches the execution label.
+  verifier_output: A binary token 0/1 from the final learned judge; softmax over the two verdict logits yields continuous
+    r_phi(x,y) in [0,1].
+  reward: For SFT, rank rollouts globally by the mean of up to two valid Dockerless scores and retain the top 4K of 16K. For
+    GRPO, average remaining scores from M=2 independent verifier passes and group-normalize across G=8 rollouts.
+  terminal_predicate: 'Training does not use an executable success predicate: the rollout ends by agent termination or the
+    150-turn cap and receives a learned final-patch score. Held-out tests in per-repository Docker supply ground-truth labels
+    for verifier construction/evaluation and the main downstream benchmark evaluation.'
+  provenance: SWE-Gym/Multi-SWE-RL execution-labeled issue-patch tuples -> GLM-5 Q+A+Judge trajectories -> verdict-match/length/integrity/class-ratio
+    filtering -> Qwen3.5-9B Dockerless verifier; SWE-Rebench-v2 task -> OpenHands env-free rollout -> Dockerless score ->
+    top-4K SFT or GRPO reward.
+  environment_or_substrate: Downstream agents use `ubuntu:jammy-20260109` with only the repository checkout at base commit,
+    no per-repository Docker, preinstalled repository dependencies, or test runner. Dockerless evidence agents are read-only,
+    but downstream OpenHands policy rollouts may execute arbitrary shell commands.
+  release_shape: Paper reports 3.7K unique verifier-training issues, a 16K downstream rollout pool filtered to 4K SFT trajectories,
+    and a private 776-example verifier evaluation benchmark. No paper-specific data, trajectories, verifier benchmark, model
+    weights, or implementation were verified as released.
+recipe_metadata:
+  base_model: Qwen3.5-9B is the backbone for Dockerless, Dockerless-SFT-9B, and Dockerless-RL-9B. Exact model revision/hash
+    is not disclosed.
+  teacher: GLM-5 generates verifier question-answer-judge trajectories. Exact model revision, decoding configuration, and
+    service snapshot are not disclosed.
+  generator: GLM-5 runs the same question generation, parallel repository evidence exploration, and final judging workflow
+    used at inference; OpenHands generates downstream SWE-Rebench-v2 rollouts.
+  prompt_task_source: SWE-Gym and Multi-SWE-RL for verifier construction; SWE-Rebench-v2 for downstream SFT and RL rollouts.
+  sampling_protocol: Verifier trajectories are rejection-sampled against execution labels. Downstream OpenHands produces 16K
+    SFT candidates at temperature 1.0; RL samples 8 responses per prompt at temperature 1.0.
+  temperature: 1.0 for downstream SFT/RL rollouts; unknown for GLM-5 verifier-trajectory generation and Dockerless evidence
+    generation.
+  rollout_count: 16K candidate rollouts for SFT, globally reduced to 4K. RL uses G=8 responses per issue per group and trains
+    50 steps. Exact unique task and total RL rollout counts are unknown.
+  inference_budget: Dockerless generates 2-4 questions with one parallel sub-agent each and uses M=2 independent scoring passes.
+    Agent rollouts allow at most 150 turns. Candidate-patch text and rendered Q+A context are each truncated to 10,000 characters.
+    Numeric hard timeout is unknown.
+  search_or_scaffold: OpenHands for downstream rollouts; read-only ReAct shell sub-agents for Dockerless evidence probing;
+    vLLM OpenAI-compatible serving for the verifier.
+  filtering_rule: Keep GLM-5 verifier trajectories only when predicted verdict equals held-out-test label; drop answer traces
+    outside 4-30 turns and malformed/interrupted exchanges; cap negative:positive at 4:1. For SFT, drop failed verifier passes,
+    average remaining scores, and keep the globally top-ranked 4K of 16K.
+  selection_threshold: Verifier training uses exact verdict agreement and a 4:1 negative cap. Downstream SFT uses a global
+    top-25% rank, not a disclosed calibrated score threshold.
+  optimizer_or_scaffold: 'Dockerless: next-token cross-entropy, AdamW, LR 1e-5 cosine to 1e-6, warmup 0.05, weight decay 0.01,
+    batch 256, max sequence 32,768, best checkpoint at 150 steps. SFT: same AdamW setup for 3 epochs. RL: GRPO, actor LR 2e-6,
+    batch/minibatch 64, clip [0.2,0.27], entropy 0, KL 0, 50 steps.'
+  reset_protocol: Repository checkout at base commit is stated; filesystem reset between rollouts, submodule state, package/cache
+    cleanup, and replay restoration are not disclosed.
+  dependency_policy: No repository-specific dependencies are preinstalled in the minimal image. Policy rollouts may use standard
+    developer utilities; package installation and dependency-resolution policy are not disclosed.
+  network_policy: unknown
+  cache_policy: unknown
+  timeout_policy: A hard timeout exists and creates a heavy latency tail, but its numeric value and timeout handling are not
+    disclosed.
+  final_release_scale: No paper-specific release verified. Reported internal scales are 3.7K unique verifier issues, 16K candidate
+    SFT rollouts, 4K selected SFT trajectories, and 776 verifier-evaluation records.
+audit:
+  source_mixture: Execution-labeled SWE-Gym and Multi-SWE-RL issue/reference-patch/candidate-patch tuples, GLM-5 teacher Q+A+Judge
+    traces, SWE-Rebench-v2 issue/repository tasks, OpenHands trajectories, and learned Dockerless scores.
+  split: Verifier training sources (SWE-Gym and Multi-SWE-RL) are stated to be disjoint from the verifier evaluation sources
+    (SWE-bench Verified and Multi-SWE-bench Flash). A held-out verifier validation split exists but its size/composition is
+    unknown. Downstream SFT and RL draw from the same SWE-Rebench-v2 task pool; their mutual split and evaluation overlap
+    are not reported.
+  decontamination: No model-pretraining contamination audit is reported. No instance/code-level overlap audit is given between
+    SWE-Rebench-v2 downstream training tasks and SWE-bench Verified/Multilingual/Pro evaluation. Source-name disjointness
+    for verifier training/evaluation does not establish semantic or repository-code decontamination.
+  benchmark_overlap: The 776-example verifier benchmark uses 500 SWE-bench Verified and 276 Multi-SWE-bench Flash trajectories.
+    Exact task IDs, repository commits, candidate models, duplicate/near-duplicate checks, and a public manifest are not disclosed.
+  lineage: Paper-level lineage is described, but no immutable record IDs connect source issue/repository commit, reference
+    patch, candidate rollout, execution label, GLM-5 trace, Dockerless score, selection decision, and SFT/RL checkpoint.
+  license: The paper is posted under the arXiv nonexclusive distribution license. No paper-specific code/data/model license
+    or source-rights manifest is disclosed; the arXiv license does not grant reuse rights for underlying repositories, issues,
+    patches, teacher traces, or rollouts.
+  release_version: 'Paper: arXiv:2606.28436v1, submitted 2026-06-26. No code, data, benchmark, model, or project release version/commit
+    was verified as of 2026-07-20.'
+  artifact_hashes:
+    arxiv_v1_pdf_sha256: d1e8f075ea6f925b49f3a8b01f48fd0192a09aa8a48999e89a38165548f41a2d
+    arxiv_v1_source_tar_sha256: 7bfb69cda529eda3695e971e653636dde126aa5eacd5aa7dfc66061cc4438d15
+    note: Curator-computed from official arXiv v1 downloads; not author-published checksums.
+  verifier_or_judge_failure_modes:
+  - Dockerless requires a golden/reference patch for both question generation and final scoring, so the reported method does
+    not directly cover new tasks lacking a known correct patch.
+  - The final learned judge can produce false positives or false negatives even when repository evidence is plausible; AUC
+    does not establish reward calibration or a safe operating threshold.
+  - The final judge sees the golden patch, creating a leakage/similarity channel despite repository grounding and making alternative-but-correct
+    solutions a key stress case.
+  - Increasing questions beyond four degrades or fluctuates in AUC because redundant/noisy evidence can mislead the judge.
+  - Candidate patches and rendered Q+A context are truncated to 10,000 characters, which can remove decisive long-repository
+    evidence.
+  - Compilation-heavy Rust and C show 7.0- and 13.3-point env-free SFT deficits, consistent with missing compiler diagnostics
+    and dependency state.
+  - Failed Dockerless passes are discarded before averaging; behavior when both M=2 passes fail is unknown and may introduce
+    selection/reward bias.
+  - Reward hacking and adversarial verifier gaming are not evaluated; a policy may optimize golden-patch/style cues or evidence-agent
+    blind spots rather than functional correctness.
+  successful_and_failed_sample_retention: Verifier training keeps correctly judged positives and negatives after a 4:1 negative
+    cap, but discards teacher misjudgments, malformed/interrupted exchanges, and answer traces outside 4-30 turns. SFT keeps
+    only top 4K of 16K and drops failed scoring passes; RL also drops failed scoring passes. No accepted, rejected, interrupted,
+    timeout, or all-failed trajectories and no drop manifest are released.
+  container_dependency_network_cache_timeout_replay: The paper pins `ubuntu:jammy-20260109` and conceptually uses repository
+    base commits. Image digest, installed-package list, package-index snapshot, repository/submodule commit manifest, dependency
+    installation policy, network/egress allowlist, cache behavior, filesystem reset, privilege/resource limits, numeric hard
+    timeout, seeds, command logs, and replay scripts are unknown.
+  security: Dockerless evidence sub-agents are prompt-restricted to read-only shell commands, but downstream OpenHands agents
+    may issue arbitrary shell commands and receive real tool feedback. No threat model, sandbox hardening, privilege boundary,
+    egress restriction, secret policy, package-supply-chain control, or malicious-repository defense is reported. Reproduction
+    should use disposable, network-restricted infrastructure.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: ArXiv v1 directly supports a verifier/reward and construction recipe using full-episode trajectories for SFT and
+    a learned final-patch score for GRPO. Headline env-based results are Dockerless-RL-9B 62.0/50.0/35.2 on SWE-bench Verified/Multilingual/Pro
+    versus 59.6/41.3/32.3 for Qwen3.5-9B and 62.4/51.3/35.7 for test-execution RL. These are author-reported and not independently
+    reproduced. No open training corpus or reusable verifier implementation was verified.
+  remaining_unknowns:
+  - Official code, Dockerless/Dockerless-SFT-9B/Dockerless-RL-9B weights, verifier data, 16K/4K rollout data, 776-sample benchmark,
+    and project page
+  - Exact verifier trajectory count, train/validation split, task IDs, source-mixture weights, and GLM-5/Qwen3.5 revisions
+  - SWE-Rebench-v2 task count, SFT/RL split, evaluation overlap, semantic deduplication, and pretraining-contamination audit
+  - All-failed M=2 handling, score calibration, threshold/FPR/FNR, adversarial gaming, and reward-clipping policy
+  - Image/repository/dependency/network/cache/reset/timeout/seed/replay manifest and sandbox security policy
+  - Licenses, provenance, privacy, and consent for repositories, issues, patches, teacher traces, and rollouts
+inclusion_reason: 'Dockerless makes the feedback boundary of environment-free SWE-agent post-training explicit: issue/repository
+  rollouts produce final patches, read-only evidence agents inspect the codebase, and a learned patch-level score filters
+  SFT trajectories and rewards GRPO. It is valuable as a verifier and trajectory-construction recipe, while its golden-patch
+  dependency, compiler-state blind spots, missing calibration, and absent code/data/replay/rights artifacts are central audit
+  constraints.'
+related:
+- swe-rebench-v2-2026
+tags:
+- environment-agent-trajectory-data
+- software-engineering-agent
+- repository-level-code
+- environment-free-rollouts
+- agentic-verifier
+- reward-modeling
+- sft-filtering
+- rlvr
+- golden-patch-dependency
+- verifier-gaming-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: Dockerless replaces per-repository test execution during SWE-agent post-training with a golden-patch-conditioned
+  verifier that asks 2-4 questions, gathers read-only repository evidence, and scores final patches for SFT filtering and
+  GRPO.
+why_it_matters: It exposes a concrete environment-free trajectory-to-reward recipe and strong controlled results, while showing
+  that learned patch rewards remain dependent on reference solutions, compiler/dependency signals, calibration, replay metadata,
+  and safety controls that are not released.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: false
+  artifact_verified: false
+  dataset_schema_verified: false
+  release_history_verified: true
+  duplicate_check_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified arXiv v1 metadata, full PDF, Appendices A-G, complete prompts, TeX source, DOI, and curator-computed PDF/source
+    hashes. No official peer-reviewed venue, code, data, model, benchmark, or project release was verified.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release: publish or identify paper-linked code, Dockerless/model checkpoints, verifier corpus, 16K/4K rollouts, and
+  776-sample evaluation benchmark'
+- 'needs_reference_free_contract: explain or evaluate operation when no golden/reference patch is available'
+- 'needs_replay: pin image digest, repository/submodule commits, packages/indexes, network/cache/reset/timeout settings, seeds,
+  commands, and scoring configs'
+- 'needs_split_audit: disclose verifier validation split, SWE-Rebench-v2 SFT/RL split, task IDs, evaluation overlap, deduplication,
+  and contamination checks'
+- 'needs_verifier_audit: report calibration, thresholds, FPR/FNR, all-failed scoring behavior, adversarial/gaming tests, and
+  truncation sensitivity'
+- 'needs_failure_release: preserve accepted, rejected, interrupted, timeout, failed-scoring, and compiler/dependency-failure
+  trajectories with lineage'
+- 'needs_license_privacy: document source rights, data/model licenses, privacy/consent, and redistribution terms'
+- 'needs_security: document sandbox, privilege, egress, secret, package-supply-chain, resource, and malicious-repository controls'
+card: null

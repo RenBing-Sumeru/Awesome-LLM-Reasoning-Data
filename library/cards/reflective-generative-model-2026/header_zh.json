@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"RGM 让策略模型与自监督过程评分器共享主干，在可控思考长度下选择高质量推理轨迹。","reading_priority_ch":"必读","paper_type_ch":"反思生成与过程验证器效率研究（ICLR 2026）","best_for_ch":"研究轨迹选择、过程奖励模型和推理预算分配的读者。","confidence_ch":"高","authors_ch":"Zixiao Wang 等（中国科学技术大学、MetaStone Technology）","category_ids":["scaling_rlvr_test_time_compute"]}

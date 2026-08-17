@@ -1,0 +1,5 @@
+RATIONALYST turns an ordinary language-modeling quantity into a weak process-supervision contract. Instead of asking a human or symbolic checker whether an intermediate step is valid, it asks whether a proposed latent explanation improves prediction of what follows. This allows rationale targets to be mined from both worked reasoning datasets and unlabeled text.
+
+The second contribution is object reuse across lifecycle stages. The mined rationale is not only a pre-training/SFT target; the trained generator later supplies trajectory-conditioned information for selecting the agent's next step. This creates a direct bridge from data construction to test-time search without training a separate outcome reward model.
+
+The novelty should not be described as verified reasoning-data generation. Predictive utility, logical validity, and downstream correctness are different properties. The paper is most valuable as a concrete example of a scalable weak verifier whose benefits and failure modes can be studied across construction, filtering, training, and inference.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeFlow 发布约 5.9 万代码偏好对，聚焦模型最易混淆的局部质量差异，适合代码推理 DPO 与奖励建模。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "代码偏好数据集与细粒度 DPO 方法",
+  "best_for_ch": "需要依据测试反馈训练代码纠错模型、代码 DPO 或奖励模型的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Jie Wu、Haoling Li、Xin Zhang、Xiao Liu、Yangyu Huang、Jianwen Luo、Yizhen Zhang、Zuchao Li、Ruihang Chu、Yujiu Yang、Scarlett Li",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:18:45Z"
+}

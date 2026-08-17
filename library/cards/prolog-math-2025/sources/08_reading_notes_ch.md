@@ -1,0 +1,6 @@
+- 把 Sections 2–3 与 Algorithm 1 连起来读：数据对象包含变化中的共享 predicate buffer、type-aware 程序生成、SWI-Prolog 执行和终态 verifier，不只是 problem–program pairs。
+- 将 Tables 1–3 视为特定设置下的构造与恢复证据；不要从 coverage 或 MATH-500 accuracy 推导公开规模或程序语义质量。
+- 对照阅读 Appendix E 与固定版本 reward code：论文的 0.5 partial credit 要求使用全部建议 predicates，而公开实现检测任意重叠。
+- 把 Appendix G 当作必要的负面证据。正确终态答案可以与错误假设或不完整的因子推理并存，人工逻辑通过率也低于自动接受率。
+- 固定 GitHub commit `d01ae636df27f5ae52b6d59616cb757555a7862c` 与 Hub revision `0aa6c9783d698ea3fbe5e71a76cfb01d2cd0d5af`；复用前先对齐论文、viewer 与数据集文字中的计数。
+- 区分论文 verifier 与 standalone pipeline script 的 substring check，并按 symbolic answer type 分层抽样独立执行。

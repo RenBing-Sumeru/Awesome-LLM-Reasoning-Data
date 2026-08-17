@@ -1,0 +1,150 @@
+id: every-rollout-counts-2025
+title: 'Every Rollout Counts: Optimal Resource Allocation for Efficient Test-Time Scaling'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Xinglin Wang
+- Yiwei Li
+- Shaoxiong Feng
+- Peiwen Yuan
+- Yueqi Zhang
+- Jiayi Shi
+- Chuyi Tan
+- Boyuan Pan
+- Yao Hu
+- Kan Li
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematics
+- test_time_search
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.15707
+  arxiv: https://arxiv.org/abs/2506.15707
+  code: https://github.com/WangXinglin/DORA
+  data: null
+  project: https://github.com/WangXinglin/DORA
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.15707
+  venue: https://papers.neurips.cc/paper_files/paper/2025/hash/940b66bcdb34fb9ae47d85de838c372d-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.15707
+data_object:
+  prompt_source: Evaluation prompts come from MATH500, AIME2024, AIME2025, HMMT24, HMMT25, AMC23, and AMC24; the method constructs
+    test-time search records rather than a training corpus.
+  trace_author: Llama-3.2-1B-Instruct, Llama-3.2-3B-Instruct, or Qwen2.5-1.5B-Instruct generates partial and completed mathematical
+    trajectories during parallel search.
+  answer_format: Stepwise mathematics reasoning trajectories, completed final answers, and a final answer chosen by PRM-weighted
+    majority voting.
+  process_fields:
+  - prompt
+  - active_partial_trajectory
+  - completed_trajectory
+  - step_PRM_score
+  - trajectory_embedding
+  - cosine_similarity_matrix
+  - soft_affinity_matrix
+  - semantic_uniqueness_weight
+  - quality_weight
+  - integer_rollout_allocation
+  - sampled_continuation
+  - completion_status
+  - weighted_vote
+  environment_or_substrate: Parallel stepwise test-time search under a fixed total rollout budget; active candidates are extended
+    in 256-token steps until completion or a 2,048-token solution limit.
+  verifier_or_reward: Qwen2.5-Math-PRM-7B supplies the final PRM score at each step as search reward. BGE-M3 embeddings estimate
+    semantic redundancy. Final responses are aggregated by PRM-weighted majority voting.
+  terminal_predicate: Completed trajectories are collected during search; after the budget is exhausted or paths finish, final
+    answers are grouped and selected by PRM-weighted majority vote. DORA's allocation decision is not itself a correctness
+    predicate.
+recipe_metadata:
+  base_model: Llama-3.2-1B-Instruct, Llama-3.2-3B-Instruct, and Qwen2.5-1.5B-Instruct policy models.
+  teacher: none; Qwen2.5-Math-PRM-7B provides learned process scores and BGE-M3 provides trajectory embeddings.
+  generator: The active policy model samples stepwise continuations at test time.
+  filtering_rule: Convert PRM scores to quality weights with softmax temperature T_b=0.1; compute row-wise soft affinities
+    from BGE-M3 cosine similarities with T_s=0.01; multiply each quality weight by diagonal affinity (semantic uniqueness),
+    renormalize, and round N times the resulting weight into integer rollout allocations.
+  sampling_protocol: Expand active candidates -> separate completed solutions -> score remaining candidates with PRM -> embed
+    candidates and compute soft uniqueness -> allocate the next fixed-budget rollout copies with DORA -> repeat -> PRM-weighted
+    majority vote.
+  rollout_count: Evaluated total budgets N are 16, 32, 64, 128, and 256.
+  temperature: 0.8
+  inference_budget: Temperature 0.8, top-p 1.0, 256 tokens per step, 2,048 tokens per complete solution; main evaluations
+    repeat MATH500 five times and AIME2024/AIME2025 ten times.
+  optimizer_or_scaffold: Direction-Oriented Resource Allocation (DORA), compared with temperature sampling, beam search, DVTS,
+    and REBASE.
+audit:
+  source_mixture: Benchmark prompts, policy-generated partial/completed traces, Qwen2.5-Math-PRM-7B scores, BGE-M3 embeddings,
+    allocation matrices, and final votes.
+  split: Evaluation-only test-time search on seven mathematics benchmarks; no training split or newly released trajectory
+    corpus is claimed.
+  decontamination: unknown
+  license: Official GitHub repository is Apache-2.0; upstream benchmark, model, and generated-output terms require separate
+    review.
+  lineage: Prompt -> active partial traces -> PRM scores and embeddings -> cosine/affinity matrices -> uniqueness-adjusted
+    weights -> integer allocations -> continuations/completions -> PRM-weighted final vote.
+  known_failure_modes:
+  - The independent-success assumption and equal-within-direction PRM-score condition are theoretical simplifications, so
+    the optimality statement is conditional.
+  - Soft semantic similarity need not correspond to a true reasoning direction; similar wording can hide decisive logical
+    differences and dissimilar wording can share the same error.
+  - PRM miscalibration and embedding errors can jointly redirect compute away from correct branches.
+  - Integer rounding may not preserve the exact budget without an implementation-specific correction; that detail should be
+    audited in code.
+  - Evaluation is mathematics-only with three small policy models and a math PRM.
+  - Final aggregation remains PRM-dependent and can disagree with actual correctness.
+  - The repository publishes code, recipes, and benchmark files but not the paper's raw generated trajectories, PRM/embedding
+    matrices, allocation logs, seeds, or immutable release tag.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS 2025 proceedings record, arXiv v2, and author repository were checked. Repository main is code/configuration
+    evidence; benchmark gains do not prove individual trajectory quality.
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: rollout directions and fixed-budget
+  allocations.'
+related: []
+tags:
+- track5
+- online_ttc_trace_reuse
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: DORA uses PRM quality and embedding-derived semantic uniqueness to allocate a fixed rollout budget across
+  soft reasoning directions during parallel test-time search.
+why_it_matters: For rollout_search_test_time_trace_data, DORA specifies which per-step scores, embeddings, affinities, allocations,
+  continuations, and final votes must be logged to audit how test-time trace reuse converts a fixed budget into search outcomes.
+card: null
+needs:
+- 'needs_trace_release: raw partial/completed trajectories, scores, embeddings, affinity matrices, allocations, votes, and
+  seeds'
+- 'needs_reproducibility: pinned model/benchmark revisions, rounding correction, hardware, and immutable code release'
+- 'needs_audit: PRM calibration, semantic-direction validity, contamination, and rejected-branch correctness'
+- 'needs_license: upstream benchmark/model/output terms'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

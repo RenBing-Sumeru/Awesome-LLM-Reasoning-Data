@@ -1,0 +1,18 @@
+{
+  "title": "Revisiting Self-Play Preference Optimization: On the Role of Prompt Difficulty",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.144/",
+    "code": null,
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T15:25:05Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "证明自博弈偏好优化应先筛选提示，保留高平均奖励的容易提示比混入困难提示更有效",
+    "updated_at": "2026-07-15T15:25:05Z"
+  }
+}

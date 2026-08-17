@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "VerlTool 以状态化 Tool Server 将六类异构任务转换为在线多轮 action-observation episode，并用领域标量奖励训练智能体；其价值在统一构造与反馈接口，但未发布论文版本固定的六域轨迹语料或 replay manifest。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "智能体强化学习基础设施与环境构造配方",
+  "best_for_ch": "研究工具使用智能体、环境反馈、RLVR 训练基础设施和轨迹可复现审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Dongfu Jiang, Yi Lu, Zhuofeng Li, Zhiheng Lyu, Ping Nie, Haozhe Wang, Alex Su, Hui Chen, Kai Zou, Chao Du, Tianyu Pang, Wenhu Chen",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

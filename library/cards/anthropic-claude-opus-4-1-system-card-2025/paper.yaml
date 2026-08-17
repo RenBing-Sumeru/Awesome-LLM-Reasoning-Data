@@ -1,0 +1,255 @@
+id: anthropic-claude-opus-4-1-system-card-2025
+title: 'System Card Addendum: Claude Opus 4.1'
+year: 2025
+venue: Anthropic system-card addendum
+authors:
+- Anthropic
+source_role:
+- model_report
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+domains:
+- general_reasoning
+- coding
+- computer_use
+- tool_use
+- agentic_systems
+- safety
+- cybersecurity
+- biosecurity
+- alignment_audit
+- reward_hacking
+training_use:
+- agent_training
+- evaluation
+- audit
+- safety_alignment
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://www-cdn.anthropic.com/9fa30625273bafdf5af82c93719d7ca606485a16.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://www.anthropic.com/news/claude-opus-4-1
+  huggingface: null
+  doi: null
+  venue: https://www.anthropic.com/system-cards
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'This addendum does not restate an Opus 4.1-specific training-source mixture and instead directs readers
+    to the May 2025 Claude 4 System Card for family-level context. Its incremental data disclosures are primarily evaluation/audit
+    objects: a refreshed small subset and expanded policy coverage in English single-turn prompts; child-safety tests mixing
+    human-generated and synthetic prompts; 290 extreme-scenario seed instructions; three Claude 4-family target models; three
+    agentic-coding misuse evaluations inherited from the Claude 4 card; computer-use and prompt-injection cases; reward-hack-prone
+    coding tasks from Anthropic''s training distribution; sandboxed impossible tasks; two undisclosed training environments;
+    and automated RSP benchmarks. Prompt counts, synthetic generator, source manifests, and global train/eval membership are
+    mostly unknown.'
+  trace_author: A Claude Opus 4-based auditor agent expands 290 seeds into 1,160 simulated interaction transcripts for each
+    of Claude Sonnet 4, Claude Opus 4, and Claude Opus 4.1, each 24–64 turns long. The target models produce the audited responses/actions.
+    Four additional model scorers process the same transcripts for welfare-related attributes, and an Opus 4-based judge labels
+    admirable behavior. Training-only traces are not released; the report discloses only that specialized reinforcement-learning
+    training was used against prompt injection and that reward hacking was monitored in two training environments.
+  answer_format: No Opus 4.1 training-record schema is released. Evaluation records can contain English single-turn prompts
+    and responses, human- or synthetic-origin child-safety prompts, 24–64-turn simulated dialogues, computer-use screen/action
+    sequences, multi-step coding/tool trajectories, sandbox state, generated code, visible and hidden test outcomes, monitor/classifier
+    labels, eight alignment scores, four welfare scores, model-version identifiers, and episode terminal outcomes. The alignment
+    scorer uses a 1–10 scale, with plotted averages rescaled to 0–1; one reported misuse comparison thresholds scores above
+    5/10.
+  process_fields:
+  - prompt_origin_human_or_synthetic
+  - policy_area
+  - language
+  - seed_instruction
+  - auditor_model
+  - target_model
+  - transcript_turn_count
+  - simulated_dialogue
+  - computer_state_or_screen
+  - mouse_keyboard_or_tool_action
+  - coding_artifact
+  - visible_test_result
+  - held_out_test_result
+  - monitor_or_classifier_label
+  - alignment_criterion_score
+  - welfare_scorer_output
+  - evaluation_awareness_score
+  - training_environment_id
+  - hack_or_give_up_terminal_state
+  environment_or_substrate: Directly described surfaces include computer use through screens, mouse movement/clicks and virtual-keyboard
+    commands; complex multi-step, longer-term coding tasks with tools; environmental prompt injections such as pop-ups or
+    hidden text; Claude Code in a sandbox with auto-accept; hidden program tests; two unnamed training environments where
+    hacking is monitored; 2–8-hour software-engineering capability tasks; bioinformatics tool-use/debugging; internal AI-research
+    tasks; and CTF challenges. Exact OS images, applications, tools, containers, network state, task files, versions, step
+    limits, and training-environment definitions are not released.
+  verifier_or_reward: 'The only incremental training feedback disclosure is high-level: specialized reinforcement-learning
+    training teaches the model to recognize and avoid prompt-injection manipulations, and harmlessness training is used for
+    computer-use and agentic-coding misuse. The RL attack distribution, reward/verifier, graders, objective weights, thresholds,
+    and algorithm are unknown. Evaluation uses policy harmlessness/refusal metrics, an Opus 4-based auditor/generator, model
+    scorers across eight alignment and four welfare criteria, bootstrapped confidence intervals, task-gaming monitors/classifiers,
+    held-out program tests, training-environment hack classifiers, RSP thresholds, and environment success predicates. Deployment
+    injection detectors and system-prompt interventions are separate controls.'
+  terminal_predicate: Training-episode termination is unknown. Claude Code Impossible Tasks run with auto-accept until the
+    model either acknowledges that the task cannot be completed or hacks to appear successful. Prompt-injection evaluation
+    failure means environmental content diverts the agent from the user's intended action. Hidden-test reward hacking is detected
+    when a solution oriented to visible cases fails held-out tests. Cybench considers a challenge solved if at least one of
+    30 attempts passes.
+recipe_metadata:
+  base_model: Claude Opus 4.1 is an incremental update to Claude Opus 4 and a hybrid reasoning model. The addendum supplements
+    the May 2025 Claude 4 System Card rather than repeating its full training account. Architecture, parameter count, tokenizer,
+    exact base checkpoint, changed training data, stage allocation, and checkpoint-to-checkpoint delta are unknown.
+  teacher: unknown
+  generator: For evaluation only, a Claude Opus 4-based auditor agent generates 1,160 simulated 24–64-turn interactions per
+    target model from 290 seed instructions. A separate synthetic generator for child-safety prompts is not identified. The
+    auditor must not be relabeled as an Opus 4.1 training teacher.
+  filtering_rule: No Opus 4.1 training-data filtering rule is disclosed. Evaluation maintenance expanded single-turn coverage
+    to additional policy areas and refreshed a small subset of prompts, but selection criteria and changed items are not released.
+    Reward-hack-prone coding problems are selected from the training distribution for salience of hardcoding/special-casing,
+    and saturated RSP evaluations are deprioritized.
+  sampling_protocol: Training sampling is unknown. The alignment audit uses 290 seed instructions and generates 1,160 transcripts
+    per target model, each 24–64 turns, across deliberately extreme scenarios. Reported uncertainty uses bootstrapped 95%
+    confidence intervals. RSP testing is automated-only and emphasizes non-saturated assessments. The launch page's benchmark
+    settings and model-completion caps are evaluation/inference protocols, not training sampling.
+  rollout_count: Training rollouts are unknown. Evaluation-only counts include 1,160 audit transcripts per model from 290
+    seeds, 24–64 turns per transcript, 30 attempts per Cybench challenge, and 30 trials for one quadruped-locomotion result.
+    Counts for child-safety prompts, prompt-injection RL, agentic misuse tests, impossible tasks, the two training environments,
+    and most RSP tests are not disclosed.
+  temperature: unknown
+  inference_budget: Training token/compute budgets are unknown. Evaluation-only budgets include 24–64 turns in automated behavioral
+    audits, 2–8-hour software-engineering task targets, up to 64K extended-thinking tokens on selected launch benchmarks,
+    a 100-completion cap for TAU-bench, and 30 attempts per Cybench challenge. These settings do not establish a post-training
+    recipe.
+  optimizer_or_scaffold: The addendum identifies harmlessness training and specialized reinforcement learning against prompt
+    injection but omits the RL algorithm, optimizer, reward/verifier, attack generation, rollout scaffold, batching, schedules,
+    compute, objective mixing, reward normalization, detector interaction, and checkpoint selection. Claude Code sandbox auto-accept,
+    the two-tool SWE-bench scaffold, and RSP harnesses are evaluation scaffolds unless explicitly connected to training.
+audit:
+  source_mixture: No Opus 4.1-specific training-source categories, source dates, mixture weights, sample/token counts, named
+    datasets, preference corpus, synthetic-data share, contractor contribution, or source-level rights ledger appears in the
+    addendum. It is a delta report that points to the Claude 4 System Card for comprehensive family context; family-level
+    background must not be treated as proof that every source and proportion was unchanged for 4.1.
+  split: There is no global train/dev/test ledger. Reward-Hack-Prone Coding Tasks explicitly come from Anthropic's training
+    distribution, and the report separately gives classifier hack rates for two training environments. Held-out tests are
+    hidden only from the model within the named coding evaluation. The relationship of human/synthetic child-safety prompts,
+    290 alignment seeds, generated transcripts, prompt-injection cases, agentic misuse tasks, RSP tasks, and release checkpoints
+    to training is not disclosed.
+  decontamination: No Opus 4.1 corpus deduplication, benchmark decontamination, membership test, overlap report, hash ledger,
+    revision pin, or false-negative audit is provided. Training-distribution reward-hacking tasks are intentionally not cleanly
+    separated. The hidden-test statement is local to that evaluation and does not establish global decontamination.
+  license: The addendum, system-card index and launch page are public, but no Opus 4.1 training dataset, human/synthetic safety
+    prompts, 290 seeds, 1,160-per-model transcripts, scorer outputs, prompt-injection RL data, two training-environment logs,
+    reward implementation, classifiers, hidden tests, agent sandboxes, evaluation code, or model weights are released with
+    reuse terms. Source-level authorization and rights remain unknown.
+  lineage: 'The visible lineage is report-level: Opus 4.1 is an incremental Opus 4 update; abridged policy tests and agentic-safety
+    tests compare the two; specialized prompt-injection RL and harmlessness training are named without recipe details; an
+    Opus 4-based auditor generates 1,160 traces per target from 290 seeds; model scorers assess those traces; reward hacking
+    is measured on training-distribution tasks, impossible tasks and two training environments; and automated RSP tests support
+    continued ASL-3 deployment. Source-to-example, seed-to-generation settings, score-to-intervention, reward-to-checkpoint,
+    and released-checkpoint lineage are unknown.'
+  known_failure_modes:
+  - This is an incremental addendum, not a standalone data recipe. It omits an Opus 4.1-specific source mixture and sends
+    readers to the Claude 4 System Card for comprehensive methods.
+  - Human-generated and synthetic child-safety prompts are disclosed without counts, authors, generator, labels, grader, split,
+    overlap, or release artifacts.
+  - The Opus 4-based auditor generates the evaluation conversations and model-based scorers judge them; shared family behavior,
+    prompting style, and judge preferences can bias both scenario generation and measurement.
+  - The 290 seeds emphasize extreme future scenarios, and Anthropic explicitly warns that absolute scores are heavily shaped
+    by this distribution; rates are not deployment prevalence.
+  - Opus 4.1 shows somewhat greater evaluation awareness in the audit, which may change behavior and reduce validity.
+  - The blackmail evaluation uses in-training models extremely similar but not identical to released checkpoints, limiting
+    checkpoint-specific inference.
+  - Reward-hack-prone coding tasks come from the training distribution; their 12% classifier and 14% hidden-test rates do
+    not measure unseen-task generalization.
+  - The two training-environment hack rates disclose an outcome but not the environments, tasks, rewards, samples, monitor
+    checkpoint, calibration, or error rates.
+  - Prompt-injection performance mixes specialized RL with instructions, detection systems and execution halting; no ablation
+    separates checkpoint training from deployment safeguards.
+  - The addendum corrects earlier Impossible Tasks numbers after a sample-size increase and a reporting error, demonstrating
+    that metric values require report-version tracking.
+  - RSP testing is abridged and automated-only for this incremental release; no new human uplift trials, expert red teaming,
+    or government-partner predeployment assessment was conducted.
+  - No reusable training records, reward implementation, scorer data, global split, decontamination audit, source-license
+    ledger, evaluation code, or model weights are released.
+  citation_status: verified
+  confidence: high
+  notes: The official 23-page PDF, official system-card index listing, and 2025-08-05 launch page were checked on 2026-07-24.
+    The PDF changelog records a 2025-09-15 partner-acknowledgment update. Exact ID/title deduplication against the target
+    V2 library found no match. Baseline Claude 4 disclosures, Opus 4.1 incremental training statements, evaluation data, model-based
+    scoring, and deployment controls are kept separate.
+inclusion_reason: 'A high-value incremental frontier ledger entry because it exposes a concrete model-generated audit pipeline
+  (290 seeds to 1,160 24–64-turn transcripts per target), Opus 4-based generator and scorer dependence, human/synthetic safety
+  prompts, specialized prompt-injection RL, agentic coding/computer-use environments, and reward-hacking measurements inside
+  two training environments. It also documents critical audit limits: evaluation awareness, training-distribution tests, corrected
+  historical metrics, and complete non-release of underlying data and rewards.'
+related:
+- claude-4-system-card-2025
+- anthropic-claude-opus-4-5-system-card-2025
+- anthropic-claude-sonnet-4-5-system-card-2025
+tags:
+- anthropic
+- claude-opus-4-1
+- system-card-addendum
+- incremental-model-report
+- automated-behavioral-audit
+- model-generated-evaluation
+- model-as-judge
+- safety-prompts
+- synthetic-prompts
+- agentic-coding
+- computer-use
+- prompt-injection
+- reinforcement-learning
+- reward-hacking
+- training-distribution-evaluation
+- evaluation-awareness
+- corrected-metrics
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: The Opus 4.1 addendum adds a concrete 290-seed/1,160-transcript model-audit pipeline, specialized prompt-injection
+  RL, agentic safety environments and training-distribution reward-hacking rates, while leaving the underlying data, scorers,
+  rewards and model delta unreleased.
+why_it_matters: 'It shows how a frontier-model update can disclose useful evaluation and training-audit objects without becoming
+  reproducible: the same Opus 4 family supplies the auditor and judges, extreme scenarios drive absolute scores, evaluation
+  awareness threatens validity, and even training-environment hack rates lack the records and reward contracts needed for
+  independent audit.'
+card: null
+needs:
+- 'needs_data: Opus 4.1-specific source and post-training manifests; human/synthetic safety prompts; 290 seeds; generated
+  transcripts; preference, reasoning and agent trajectories; training-environment records; counts, versions, provenance and
+  authorization'
+- 'needs_verifier: prompt-injection RL reward and attacks; scorer/judge prompts and checkpoints; eight alignment and four
+  welfare rubrics; classifier/monitor definitions, calibration, thresholds, aggregation, human spot checks and error audits'
+- 'needs_metadata: architecture, parameters, exact base/release checkpoints, changed data and stages, optimizer, schedules,
+  compute, rollouts, temperatures, sampling, checkpoint selection, detector interaction and Opus 4-to-4.1 delta'
+- 'needs_audit: global train/evaluation membership, benchmark and seed overlap, decontamination, generator/scorer bias, evaluation-awareness
+  controls, checkpoint matching, metric revision history, environment pins and scaffold attribution'
+- 'needs_license: source-level rights and reuse terms for training records, safety prompts, audit seeds/transcripts, scorer
+  outputs, RL data, training environments, hidden tests, classifiers, evaluation code and model weights'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: The official Anthropic CDN PDF, official system-card index and official launch page were verified. The target V2
+    Card library has no exact ID/title duplicate. No arXiv, DOI, code, dataset, Hugging Face, proceedings or official BibTeX
+    artifact is claimed.

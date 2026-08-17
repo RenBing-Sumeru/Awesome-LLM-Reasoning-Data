@@ -1,0 +1,1 @@
+MPBench can compare multimodal process judges on perception, knowledge, and reasoning earliest errors and test whether they truly use the image. New judges should keep MPBench as evaluation-only data and use image masking or text shuffling to detect shortcuts. If the target task lacks stable step boundaries, the annotation protocol must be rebuilt first.

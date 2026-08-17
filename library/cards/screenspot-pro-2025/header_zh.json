@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "ScreenSpot-Pro 在专业高分辨率计算机界面中评测 GUI grounding。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "arXiv 的 professional GUI grounding benchmark",
+  "best_for_ch": "关注终端、SWE、桌面、办公自动化和专业工作智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kaixin Li 等（National University of Singapore）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces",
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T13:20:00Z"
+}

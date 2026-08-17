@@ -1,0 +1,16 @@
+{
+  "title": "CROWD SELECT: Synthetic Instruction Data Selection with Multi-LLM Wisdom",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-eacl.79/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T12:28:07Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "通过多模型回复、奖励模型评估和多样性约束筛选合成指令数据，直接改变 SFT 所消费的数据子集",
+    "updated_at": "2026-07-15T12:28:07Z"
+  }
+}

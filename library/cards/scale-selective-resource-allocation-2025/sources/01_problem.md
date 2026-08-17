@@ -1,0 +1,5 @@
+SCALE addresses a finer-grained test-time-scaling question than a whole-problem token cap: within one mathematical problem, which sub-problems should receive deliberate reasoning and which should use a fast mode? The AAAI 2026 paper turns that choice into a four-stage prompted pipeline—decomposition, difficulty scoring, thresholded mode selection, and sequential context propagation.
+
+The released data object is a mathematical item joined to its selected decomposition, step scores, detailed and concise step solutions, final answer, and answer-match flag. The public release is therefore relevant to Rollout, Search, and Test-Time Trace Data and to SFT. It is not a complete allocation log: the release does not identify rejected outlines, actual route decisions, generated tokens, latency, or the exact model request that made a row.
+
+L4 evidence covers the final arXiv paper, author code, and author-linked Hugging Face data card. It does not establish that upstream problems are decontaminated, that step labels are correct, or that the public 3,112-row release equals the paper's 800-pair SFT subset.

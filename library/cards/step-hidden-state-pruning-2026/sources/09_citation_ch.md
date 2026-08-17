@@ -1,0 +1,1 @@
+Liang, Zhixiang、Beichen Huang、Zheng Wang 与 Minjia Zhang。2026。“Hidden States as Early Signals: Step-level Trace Evaluation and Pruning for Efficient Test-Time Scaling”。计算语言学协会发现论文集：ACL 2026，26800–26813 页。官方论文：https://aclanthology.org/2026.findings-acl.1336/。官方代码：https://github.com/Supercomputing-System-AI-Lab/STEP。

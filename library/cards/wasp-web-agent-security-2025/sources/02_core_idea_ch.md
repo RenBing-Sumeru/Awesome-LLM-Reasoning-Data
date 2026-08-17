@@ -1,0 +1,7 @@
+WASP的核心贡献是面向真实web-agent episode的两层安全评测契约：第一层判断轨迹是否已被注入指令带偏，第二层判断攻击者目标是否在环境中真正完成。
+
+评测对象不只是一个被注入的prompt。运行时任务绑定benign user goal、malicious goal及其安全类别、站点setup/parameters、action URL、两种task-related注入格式之一、agent scaffold，以及生成的observation–reasoning/message–action序列。发布提供setup与cleanup函数、base attack和utility记录、runner及evaluator，但没有论文模型运行的canonical rollout corpus。
+
+`ASR-intermediate`需要judgment。GPT-4o把每个action-level observation/reasoning/action单元分类为`compromised`、`not_compromised`或`outright_refusal`；发布实现只要任一action为positive，就把整个episode标为compromised。该judge能检查序列化轨迹单元及其与攻击指令的关系，却不能据此证明最终语义伤害，也无法恢复日志未记录的环境状态。`ASR-end-to-end`主要是environmental：按goal定制的DOM/final-state或action-log规则判断攻击目标是否成功。固定commit中的exfiltration evaluator在语义上是重要例外：它只在提取的action text中搜索预期URL substring，不验证攻击者服务器是否收到数据。
+
+最接近的底层substrate是VisualWebArena，WASP复用它并改造成隔离的GitLab/Postmill安全场景。相较论文所讨论的攻击者权限不现实、只看单步或不公开的prompt-injection评测，WASP把受限black-box threat model连接到端到端执行，并分开报告中间劫持与最终伤害。VisualWebArena、Claude Computer Use、browser tool calling、GPT-4o judgment和人工注入文本都是复用组件；真正的方向信号是显式区分trajectory compromise与terminal security outcome。

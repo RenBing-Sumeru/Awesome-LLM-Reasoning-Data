@@ -1,0 +1,5 @@
+The official arXiv record fixes the work as *Kimi K2.5: Visual Agentic Intelligence*, arXiv:2602.02276, submitted in February 2026; the official Kimi model page states a January 27, 2026 product release. The report and official repository identify approximately 15T mixed visual/text continual pretraining, zero-vision SFT, joint text-vision RL, Agent Swarm, and a released post-trained checkpoint.
+
+The report explicitly describes rule-based outcome rewards for verifiable tasks, a budget-control reward, GRMs for general tasks, visual F1/IoU/edit-distance/counting rewards, and a Kimi K2 verifier for synthesized visual puzzles. It also describes PARL's trainable orchestrator, frozen subagents, subtask-completion signals, and anti-spurious-parallelism reward design.
+
+The official Hugging Face page and repository release a checkpoint and associated repository under modified-mit terms. No official release was identified for post-training data, teacher outputs, Unified Agentic RL Environment artifacts, sandboxes, containers, rollout logs, GRM rubrics, or reward calibration. This supports a partial disclosure status.

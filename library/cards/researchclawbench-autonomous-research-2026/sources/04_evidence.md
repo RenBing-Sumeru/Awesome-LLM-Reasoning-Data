@@ -1,0 +1,1 @@
+Among seven autonomous agents and seventeen native LLMs, Claude Code averages only 21.5 and the best ResearchHarness model, Claude-Opus-4.7, scores 20.7. Failures centre on protocol mismatch, evidence–claim mismatch, and missing scientific core. Reliable rediscovery remains distant, although a 40-task average can hide domain and environment differences.

@@ -1,0 +1,2 @@
+1. **Primary limitation.** Format conversion can discard original scales and uncertainty. Calibration should be reported separately by language and paradigm.
+2. **Curator audit risk.** Low-resource languages may depend on translation or teacher synthesis, and aggregate results can conceal weak individual languages. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

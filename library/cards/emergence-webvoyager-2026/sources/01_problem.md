@@ -1,0 +1,5 @@
+Emergence WebVoyager: Building transparent and consistent Web Agents asks whether web and tool-using agents can be evaluated on WebVoyager-style tasks with transparency and consistency checks for web-agent evaluation with source-backed tasks rather than only static question answering. The primary source is https://arxiv.org/abs/2603.29020. The venue or status recorded here is arXiv preprint.
+
+The decision boundary is local Card inclusion for environment and agent-trajectory data. The concrete object to inspect is web task definitions, task instantiation rules, browsing traces, and failure handling records; this Card does not treat the paper as a generic model report. For atlas relevance, the work matters because it foregrounds transparency and consistency in wild web-agent evaluation.
+
+The L4 collection note is that author, institution, and venue/status metadata have been checked against primary or official sources. Remaining review work is: review task consistency protocol, failure taxonomy, license, and comparison setup.

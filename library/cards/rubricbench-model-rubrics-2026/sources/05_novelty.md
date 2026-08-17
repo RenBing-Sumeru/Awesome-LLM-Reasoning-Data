@@ -1,0 +1,1 @@
+Pairwise suites such as RewardBench mainly evaluate final winner prediction and do not reveal the standards used. RubricBench provides both gold atomic rubrics and hard response pairs, separating criterion generation from criterion-based scoring. The novelty is a diagnostic benchmark with human standards for rubric reward models.

@@ -1,0 +1,5 @@
+对于指定的 rollout/search/test-time trace track，MT-RewardTree 最适合作为 search-to-preference 构造配方来研究。data builder 可以复现其模块边界——source sampling、top-2 sibling expansion、每个 child 三次 rollout、COMETKiwi mean valuation、score-gap filtering 和 pair export——再对替代 rollout budget、selector、经人工校准的 metric 或 raw-tree retention 做对照实验。verifier 研究者可以利用 MT-PRMBench 的 prefixed 与 arbitrary 评测面，检验 PRM 是否能比无约束完整 sequence 更可靠地排序受控 token 分叉。
+
+公开的 8,652 组 pair 只有在核查上游权利、确切 revision、duplicate/split linkage、score 语义和缺失实现细节后，才适合用作 DPO/KTO 或 reward-modeling baseline。1,200 组 MT-PRMBench 可以支持 evaluation experiment，但应视为 COMETKiwi-conditioned benchmark，并通过显式 source-sentence manifest 与训练数据隔离。公开 PRM 可以作为 test-time decoding 与 greedy generation 的对照起点，前提是用独立评估或 human assessment 补充 COMET-family metric。
+
+当前安全的复用等级是 method and audit reference；训练或评测复用是有条件的，而非无条件安全。由于 tree、per-node rollout 和 rejection record 缺失，raw search-trace reuse 仍被阻断。一个特别实用的 audit checklist 是：凡是 search-generated pair release，都要求披露 search budget、selector version、node-value uncertainty、保留与失败 candidate、grouped split、license reconciliation 和 judge calibration。

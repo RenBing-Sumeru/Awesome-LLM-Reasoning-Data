@@ -1,0 +1,5 @@
+- 先读 §3.1 与 Figure 2：可复用机制是 top-2 sibling expansion、每个 child 三条 EOS rollout、COMETKiwi mean node value，以及沿更高 value 分支继续搜索。
+- 必须区分构造过程与发布物：论文使用 tree，但公开 schema 只有 chosen/rejected 翻译和两个语义未说明的标量 score。
+- 应合并阅读 Table 1、3、4：benchmark ranking、token-level 与 vanilla pair、preference 与 direct-value supervision 回答不同问题，都不能证明 data quality。
+- 应把 0.04–0.4 filter 和仅有的 `train` split 视为 audit decision；selection yield、按 source sentence 分组的 overlap、duplicate control 与 decontamination 仍未知。
+- 与其他 search-trace 条目联读时，应比较 retained failure、verifier independence 和等价 rollout budget，而不是只比较最终 metric score。

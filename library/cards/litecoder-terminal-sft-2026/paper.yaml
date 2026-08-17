@@ -1,0 +1,128 @@
+id: litecoder-terminal-sft-2026
+title: 'LiteCoder-Terminal: Scaling Long-Horizon Terminal Environments for Learning Language Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Peng, Xiaoxuan
+- Zhang, Kaiqi
+- Lu, Xinyu
+- Cao, Boxi
+- Lu, Yaojie
+- Lin, Hongyu
+- Han, Xianpei
+- Sun, Le
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- scaled-long-horizon-terminal-agent-SFT
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2605.29559
+  arxiv: https://arxiv.org/abs/2605.29559
+  venue: null
+  code: https://github.com/icip-cas/LiteCoder
+  data: https://huggingface.co/datasets/Lite-Coder/LiteCoder-Terminal-SFT
+  project: https://huggingface.co/blog/Lite-Coder/releasing-litecoder-terminal
+  huggingface: https://huggingface.co/datasets/Lite-Coder/LiteCoder-Terminal-SFT
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: scaled terminal environments and generated task instances
+  trace_author: strong agents execute tasks and serialize reasoning, commands, and tool observations
+  answer_format: trajectory id and ordered human/assistant/tool conversation turns
+  process_fields:
+  - trajectory id and ordered human/assistant/tool conversation turns
+  environment_or_substrate: terminal coding, shell operations, software engineering, and long-horizon tool use
+  verifier_or_reward: environment success, replay validation, difficulty filtering, and trajectory quality checks
+  terminal_predicate: environment success, replay validation, difficulty filtering, and trajectory quality checks
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: strong agents execute tasks and serialize reasoning, commands, and tool observations
+  generator: LiteCoder scales terminal environments and collects 11,255 verified conversations that preserve the entire instruction-reasoning-command-observation
+    sequence.
+  filtering_rule: environment success, replay validation, difficulty filtering, and trajectory quality checks
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: terminal-agent SFT from 4B to 32B
+audit:
+  source_mixture: scaled terminal environments and generated task instances
+  split: Official release at https://huggingface.co/datasets/Lite-Coder/LiteCoder-Terminal-SFT; exact configs are described
+    by the dataset card.
+  decontamination: environment success, replay validation, difficulty filtering, and trajectory quality checks
+  license: MIT
+  lineage: scaled terminal environments and generated task instances -> strong agents execute tasks and serialize reasoning,
+    commands, and tool observations -> environment success, replay validation, difficulty filtering, and trajectory quality
+    checks -> LiteCoder-SFT-Terminal -> terminal-agent SFT from 4B to 32B
+  known_failure_modes:
+  - successful trajectories omit many recovery failures
+  - and benchmark environments simplify permissions
+  - networking
+  - and persistent state
+  citation_status: verified
+  confidence: high
+  notes: Full 16 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for terminal-agent SFT from 4B to 32B; records
+  name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2605.29559
+- primary-link-checked
+status: verified
+one_line_summary: LiteCoder scales terminal environments and collects 11,255 verified conversations that preserve the entire
+  instruction-reasoning-command-observation sequence.
+why_it_matters: Small terminal datasets provide too few long-horizon successes to study how task diversity and environment
+  scale affect language agents.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: terminal-agent SFT from 4B to 32B
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: scaled long-horizon terminal-agent SFT
+  selection_priority_score: 5
+  selection_score_breakdown:
+    institution: 2
+    venue: 0
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as arXiv preprint; no higher presentation level is claimed.
+    impact: The official dataset reported 559 downloads and 9 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet conversation records records, field schema, scale, and MIT terms.
+  selection_eligible: true
+  year_impact_threshold: 1

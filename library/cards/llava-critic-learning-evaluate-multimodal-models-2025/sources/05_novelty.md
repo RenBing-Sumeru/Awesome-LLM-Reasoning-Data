@@ -1,0 +1,1 @@
+Earlier open multimodal evaluators were often benchmark-specific or scalar-only. LLaVA-Critic learns pointwise, pairwise, and rationale outputs across tasks in one critic-instruction format and uses the same model for automatic evaluation and preference learning.

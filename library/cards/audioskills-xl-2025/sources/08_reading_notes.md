@@ -1,0 +1,5 @@
+- Positioning: AudioSkills-XL expands multiple audio sources into 8M capability-labeled QA pairs and separates a 250K controlled-thought subset for reasoning-focused training.
+- Data object: record id, audio waveform, duration, and ordered conversation turns.
+- Author and selector: caption and QA generators expand source metadata into capability-specific conversations; selection uses language/audio filtering, source-specific checks, duration limits, and dataset ablations.
+- Evidence anchor: Removing AudioSkills-XL produces the paper's largest reported ablation drop on several audio benchmarks; the final recipe uses 8M QA pairs and evaluates both short and long audio capabilities.
+- Reuse decision: suitable for audio-language SFT and reasoning tuning; first audit synthetic questions can exploit source captions, and the aggregate license does not erase source-audio restrictions.

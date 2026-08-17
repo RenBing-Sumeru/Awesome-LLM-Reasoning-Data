@@ -1,0 +1,99 @@
+id: finance-agent-2025
+title: 'Finance Agent Benchmark: Benchmarking LLMs on Real-world Financial Research Tasks'
+year: 2025
+venue: arXiv preprint
+authors:
+- Antoine Bigeard
+- Langston Nashold
+- Rayan Krishnan
+- Shirley Wu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- full_episode
+domains:
+- finance-research
+- sec-filings
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2508.00828
+  arxiv: https://arxiv.org/abs/2508.00828
+  project: https://www.vals.ai/benchmarks/fabv2
+  code: null
+  data: null
+  doi: null
+  v2_surface: https://www.vals.ai/benchmarks/fabv2
+data_object:
+  prompt_source: expert-authored finance research questions grounded in recent SEC filings; v2 leaderboard surface is maintained
+    by Vals AI
+  trace_author: evaluated agent with search and EDGAR-style filing access
+  answer_format: finance question, relevant filing or retrieval context, agent tool trajectory, final answer, gold answer
+    or rubric-backed scoring result
+  process_fields:
+  - company, filing, or financial research target
+  - task category
+  - tool access assumptions
+  - final response
+  - official score
+  environment_or_substrate: agentic harness with web search and SEC filing access
+  verifier_or_reward: expert-authored answer and official evaluator; exact v2 rubric and judge settings require page/version
+    pinning
+  terminal_predicate: answer submitted or harness budget exhausted
+recipe_metadata:
+  base_model: not a training recipe
+  teacher: Vals AI authors and finance experts consulted for taxonomy and validation
+  generator: expert-authored questions with review
+  filtering_rule: use official benchmark tasks and keep v1 arXiv versus v2 leaderboard versions separate
+  sampling_protocol: pin benchmark version, tool access, retrieval date, model scaffold, cost budget, and evaluator revision
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: finance_tool_agent
+audit:
+  source_mixture: 'Official sources checked: https://arxiv.org/abs/2508.00828; https://www.vals.ai/benchmarks/fabv2'
+  split: public/private and v2 task split are needs_audit
+  decontamination: SEC facts are public but questions, answers, and current leaderboard prompts can leak after release
+  license: needs_audit
+  lineage: arXiv paper reports the original Finance Agent Benchmark; Vals page is treated as the current v2 surface.
+  known_failure_modes:
+  - financial filings change by date and retrieval tool behavior
+  - aggregate accuracy can hide partial-credit finance reasoning errors
+  - high-stakes domain answers require expert validation beyond model confidence
+  citation_status: verified
+  confidence: medium
+  notes: arXiv reports 537 expert-authored questions and o3 at 46.8 percent accuracy in the original benchmark; v2 surface
+    should be compared only after pinning the Vals page version.
+inclusion_reason: Real-world finance research benchmark with tool use, expert answers, and domain-specific audit risk.
+related: []
+tags:
+- benchmark
+- finance
+- tool-agent
+- sec-filings
+one_line: Finance Agent Benchmark evaluates tool-using agents on expert-authored SEC-filing finance research tasks.
+why_it_matters: It exposes a high-stakes domain where retrieval, calculation, and answer validation must be audited together.
+status: verified
+needs:
+- 'needs_audit: pin v2 task count, rubric, evaluator, split, license, and hidden/public policy'
+- 'needs_audit: verify whether official code or data are publicly downloadable'
+one_line_summary: Finance Agent Benchmark evaluates tool-using agents on expert-authored SEC-filing finance research tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv and Vals v2 benchmark page were checked.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,18 @@
+{
+  "title": "Entropy-Regularized Process Reward Model",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=cSxDH7N3x9",
+    "code": "https://github.com/hanningzhang/prm",
+    "data": "https://huggingface.co/datasets/HanningZhang/ER-PRM-Data"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:32:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将可验证补全轨迹转为与 KL 正则化一致的步骤奖励，并用于奖励模型训练与推理链筛选",
+    "updated_at": "2026-07-16T07:32:00Z"
+  }
+}

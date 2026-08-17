@@ -1,0 +1,1 @@
+Yifeng He, Ethan Wang, Jicheng Wang, Xuanxin Ouyang, and Hao Chen. Code Generation by Differential Test Time Scaling. arXiv:2605.20473, 2026. https://arxiv.org/abs/2605.20473 · https://arxiv.org/bibtex/2605.20473 · https://github.com/SecurityLab-UCD/DiffCodeGen

@@ -1,0 +1,1 @@
+Read for task schema, environment initialization, action space, trajectory logging, terminal predicates, and artifact release. If candidate names differ from formal titles, cite the formal title, authors, institutions, and venue/status recorded here.

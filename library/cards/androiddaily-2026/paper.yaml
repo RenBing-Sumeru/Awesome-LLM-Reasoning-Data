@@ -1,0 +1,126 @@
+id: androiddaily-2026
+title: 'AndroidDaily: A Verifiable Benchmark for Mobile GUI Agents on Real-World Closed-Source Applications'
+year: 2026
+venue: ACM Multimedia 2026 / arXiv
+authors:
+- Yifan Sui
+- Xin Huang
+- Hongbing Li
+- Fang Xu
+- Jiahe Lv
+- Haolong Yan
+- Yeqing Shen
+- Litao Liu
+- Zhimin Fan
+- Ziyang Meng
+- Jia Wang
+- Junbo Qi
+- Kaijun Tan
+- Zheng Ge
+- Xiangyu Zhang
+- Daxin Jiang
+- Osamu Yoshie
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- android
+- closed-source-apps
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.27761
+  arxiv: https://arxiv.org/abs/2605.27761
+  doi: https://doi.org/10.48550/arXiv.2605.27761
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: paper-described AndroidDaily benchmark
+  trace_author: AndroidDaily authors and mobile-agent runs
+  answer_format: Android app tasks, UI state, agent actions, verifier traces, and GRADE-style evaluation outputs
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: real-world closed-source Android applications and verifiable daily tasks
+  verifier_or_reward: paper-described verifiable task checks and GRADE evaluator
+  terminal_predicate: paper-described verifiable task checks and GRADE evaluator
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: AndroidDaily authors and evaluator definitions
+  generator: AndroidDaily task collection over closed-source apps
+  filtering_rule: verify app redistribution and evaluator release before reuse
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2605.27761; https://doi.org/10.48550/arXiv.2605.27761
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2605.27761'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: closed-source app redistribution, GRADE evaluator release, trajectory privacy, versioning, and task split need audit.
+inclusion_reason: it targets verifiable real-app Android tasks beyond toy environments
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- android
+- closed-source-apps
+one_line: AndroidDaily defines verifiable mobile GUI tasks on real closed-source Android apps.
+why_it_matters: it targets verifiable real-app Android tasks beyond toy environments
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AndroidDaily defines verifiable mobile GUI tasks on real closed-source Android apps.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv verifies title, authors, institutions, and ACM Multimedia 2026/arXiv status; no durable public artifact was
+    verified.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 52
+  primary_category_id: benchmarks_evaluation_surfaces

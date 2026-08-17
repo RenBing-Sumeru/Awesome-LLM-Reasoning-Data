@@ -1,0 +1,124 @@
+id: crab-cross-environment-agent-benchmark-2024
+title: 'CRAB: Cross-environment Agent Benchmark for Multimodal Language Model Agents'
+year: 2024
+venue: Findings of ACL 2025 / arXiv
+authors:
+- Tianqi Xu
+- Linyao Chen
+- Dai-Jie Wu
+- Yanjun Chen
+- Zecheng Zhang
+- Xiang Yao
+- Zhiqiang Xie
+- Yongchao Chen
+- Shilong Liu
+- Bochen Qian
+- Anjie Yang
+- Zhaoxuan Jin
+- Jianbo Deng
+- Philip Torr
+- Bernard Ghanem
+- Guohao Li
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- cross-environment-agents
+- os-agents
+- mobile-desktop
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2407.01511
+  arxiv: https://arxiv.org/abs/2407.01511
+  doi: https://doi.org/10.48550/arXiv.2407.01511
+  code: https://github.com/camel-ai/crab
+  data: https://github.com/camel-ai/crab
+  project: https://crab.camel-ai.org/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official CRAB paper, project, and repository
+  trace_author: CRAB authors and multimodal agent benchmark runs
+  answer_format: cross-environment tasks, environment graph, GUI/app states, actions, evaluator graph, and benchmark-v0 records
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: cross-environment desktop and mobile agent benchmark with graph evaluators
+  verifier_or_reward: CRAB graph evaluator and task-specific cross-environment checks
+  terminal_predicate: CRAB graph evaluator and task-specific cross-environment checks
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: CRAB benchmark task/evaluator graph authors
+  generator: CRAB cross-environment benchmark framework
+  filtering_rule: pin benchmark-v0 task/evaluator graph, repo citation version, and dependencies
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2407.01511; https://crab.camel-ai.org/; https://github.com/camel-ai/crab
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2407.01511'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: repo README citation author list differs from arXiv; benchmark-v0 task/evaluator graph version and dependencies need
+    audit.
+inclusion_reason: it supports cross-device and cross-environment workflow evaluation
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- cross-environment-agents
+- os-agents
+- mobile-desktop
+one_line: CRAB benchmarks multimodal agents across desktop and mobile environments using graph evaluators.
+why_it_matters: it supports cross-device and cross-environment workflow evaluation
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: CRAB benchmarks multimodal agents across desktop and mobile environments using graph evaluators.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, and CAMEL-AI repository verify authors, institutions, Findings of ACL 2025 status, and artifacts.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 80
+  primary_category_id: benchmarks_evaluation_surfaces

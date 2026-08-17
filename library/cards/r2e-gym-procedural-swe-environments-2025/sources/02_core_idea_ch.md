@@ -1,0 +1,1 @@
+核心贡献包含两个相连 artifact：AgentGym/R2E-Gym 的程序化 SWE 训练环境，以及混合 test-time verifier。论文版本报告超过 8.7K 个任务；公开 R2E-Gym-V1 当前约有 7,478 条记录，另有 4,578 条较小训练子集，规模口径应随版本记录。SYNGEN 从提交差异提取潜在修复，生成或收集能暴露旧版本问题的测试，再把 commit 回译成 issue。成功专家 agent 运行用于 SFT 7B/14B/32B 模型；推理时测试 verifier 与 execution-free verifier 分别排序候选并融合，适用于 SWE agent 训练、RL 和 best-of-N。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AgentQuest 提供可审计的工具使用或 agent 环境评测面，核心是 New metrics track agent progress while solving tasks, exposing failure points beyond aggregate success.",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Agent 环境 / 工具使用数据与评测",
+  "best_for_ch": "研究 tool-use、agent trajectory、环境反馈契约和可复现评测的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Luca Gioacchini、Giuseppe Siracusano、Davide Sanvito、Kiril Gashteovski、David Friede、Roberto Bifulco 等（NEC Laboratories Europe 等）",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T07:19:56Z"
+}

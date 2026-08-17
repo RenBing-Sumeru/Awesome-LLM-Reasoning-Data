@@ -1,0 +1,4 @@
+- Read §5.1 for the 1.5M-instance SFT mixture, expert-mediated R1 distillation, rejection sampling, and human-checked non-reasoning data.
+- Read §5.2 for rule versus model rewards, reward rationales, GRPO, and domain coverage.
+- Read §5.3.4 and §5.4.1 for majority-vote self-feedback and the accuracy-versus-length trade-off of R1 distillation.
+- Do not treat benchmark gains or released weights as evidence of corpus provenance or decontamination.

@@ -1,0 +1,97 @@
+id: multichallenge-multi-turn-conversations-2025
+title: 'MultiChallenge: A Realistic Multi-Turn Conversation Evaluation Benchmark Challenging to Frontier LLMs'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Ved Sirdeshmukh
+- Kaustubh Deshpande
+- Johannes Mols
+- Lifeng Jin
+- Ed-Yeremai Cardona
+- Dean Lee
+- Jeremy Kritz
+- Willow Primack
+- Summer Yue
+- Chen Xing
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm-evaluation
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.958/
+  arxiv: null
+  code: https://github.com/ekwinox117/multi-challenge
+  data: https://huggingface.co/datasets/ScaleAI/MultiChallenge
+  project: null
+  huggingface: https://huggingface.co/datasets/ScaleAI/MultiChallenge
+  doi: null
+  venue: https://aclanthology.org/2025.findings-acl.958/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.958/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Tasks and prompts documented by the paper and official release.
+  trace_author: Dataset authors, annotators, and evaluation pipeline as documented in the paper.
+  answer_format: Task input, candidate response, and task-specific judgment or rubric metadata.
+  process_fields:
+  - task
+  - response
+  - judgment or rubric
+  environment_or_substrate: The evaluation environment documented in the official release.
+  verifier_or_reward: Human/expert annotations, rubric-based judgment, or benchmark scoring documented by the paper.
+  terminal_predicate: A task-specific score or label under the released evaluation protocol.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: See the paper's documented construction procedure.
+  filtering_rule: See the paper and release documentation.
+  sampling_protocol: See the official release for splits and configurations.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official paper page and the linked official data, code, or project resource.
+  split: Consult the official release.
+  decontamination: Assess public-task exposure before using a release as held-out evaluation.
+  license: Consult the official resource terms before reuse.
+  lineage: https://aclanthology.org/2025.findings-acl.958/
+  known_failure_modes:
+  - Rubric or judge quality can constrain the validity of resulting scores.
+  citation_status: verified
+  confidence: high
+  notes: Official title, authors, affiliation block, venue status, and available resource links were checked.
+inclusion_reason: MultiChallenge 用实例级量表评估多轮对话中的指令保持、推断记忆、版本编辑与自洽性。
+related: []
+tags:
+- llm-judge
+- rubric
+- evaluation
+one_line_summary: MultiChallenge evaluates instruction retention, inference memory, versioned editing, and self-coherence
+  in multi-turn dialogue with instance-level rubrics.
+why_it_matters: MultiChallenge evaluates instruction retention, inference memory, versioned editing, and self-coherence in
+  multi-turn dialogue with instance-level rubrics.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official paper and available release links were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

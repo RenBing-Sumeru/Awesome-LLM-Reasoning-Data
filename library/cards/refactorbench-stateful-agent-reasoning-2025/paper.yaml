@@ -1,0 +1,96 @@
+id: refactorbench-stateful-agent-reasoning-2025
+title: 'RefactorBench: Evaluating Stateful Reasoning in Language Agents Through Code'
+year: 2025
+venue: ICLR 2025
+authors:
+- Dhruv Gautam
+- Spandan Garg
+- Jinu Jang
+- Neel Sundaresan
+- Roshanak Zilouchian Moghaddam
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- software-engineering
+- code-agents
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/6b44ee74539ea77d6a0d50d468724371-Abstract-Conference.html
+  arxiv: null
+  code: https://github.com/microsoft/RefactorBench
+  data: https://github.com/microsoft/RefactorBench
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/6b44ee74539ea77d6a0d50d468724371-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Software repositories and refactoring requests.
+  trace_author: Benchmark authors; agents produce code changes.
+  answer_format: Repository edits and execution results.
+  process_fields:
+  - repository state
+  - refactoring task
+  - patch
+  - test result
+  environment_or_substrate: Repository-specific build and test environments.
+  verifier_or_reward: Automated tests and task checks.
+  terminal_predicate: The modified repository passes the prescribed evaluation.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: null
+  sampling_protocol: See the official repository for benchmark setup.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official ICLR proceedings and Microsoft-maintained repository serving as code and data entry point.
+  split: Consult the repository.
+  decontamination: Repository provenance and public-code exposure should be audited for downstream claims.
+  license: Consult the repository license.
+  lineage: https://proceedings.iclr.cc/paper_files/paper/2025/hash/6b44ee74539ea77d6a0d50d468724371-Abstract-Conference.html
+  known_failure_modes:
+  - Tests may not capture every behavior-preservation requirement.
+  - Repository environments can be brittle.
+  citation_status: verified
+  confidence: high
+  notes: Official proceedings and Microsoft repository were checked; the repository is the stated code/data entry point.
+inclusion_reason: RefactorBench 以可执行重构任务测试语言代理对跨文件状态与代码变换的持续推理。
+related: []
+tags:
+- code-agents
+- refactoring
+- repository-tests
+- '2025'
+one_line_summary: RefactorBench tests language agents' persistent reasoning over cross-file state and code transformations
+  through executable refactoring tasks.
+why_it_matters: RefactorBench tests language agents' persistent reasoning over cross-file state and code transformations through
+  executable refactoring tasks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and Microsoft repository were checked; the repository is the stated code/data entry point.
+category_ids:
+- programmatically_verifiable_outcome_data

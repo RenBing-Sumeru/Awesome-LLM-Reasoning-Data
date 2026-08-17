@@ -1,0 +1,6 @@
+- Read §3.1, Figure 1, and Appendix A.1 together. The central decision is q=alpha*(1-p), not merely “select short traces”; p depends on 64 answer-checked rollouts.
+- Read §3.2 with Appendix B before interpreting “information preservation.” The gate is a one-trajectory, 512-token-window KL approximation over future token distributions, not a semantic or proof verifier.
+- Treat Tables 1-4 as conditional evidence: Table 1 shows the reported accuracy/length trade-off; Tables 2-4 isolate selection, refinement, and objective. None audits generated records.
+- Inspect repository Steps 1-6 and pin the commit. Named intermediate files are absent from the public tree; that is a release fact, not evidence about their contents.
+- Read alongside *Self-Training Elicits Concise Reasoning*: both amortize search into training, but TokenSqueeze adds adaptive multi-positive selection, longer-incorrect negatives, KL rewriting, and DPO-L.
+- Open questions: math14k lineage; merged_verify errors; prompt/pair retention; benchmark overlap; robustness to checkpoint/tokenizer revision.

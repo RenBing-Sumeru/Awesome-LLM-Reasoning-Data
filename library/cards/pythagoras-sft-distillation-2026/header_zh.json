@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Pythagoras 把题目变异、证明计划和 Lean 证明结合，公开 336596 条经编译器验证的形式证明监督记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "自回归与扩散式定理证明器监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Leang, Joshua Ong Jun、Zhao, Zheng、Stoian, Mihaela Catalina、Xu, Qiyuan、Li, Haonan、Li, Wenda、Cohen, Shay B.、Giunchiglia, Eleonora",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

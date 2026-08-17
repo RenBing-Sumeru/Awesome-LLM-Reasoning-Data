@@ -1,0 +1,1 @@
+Wunderlich, Florian Valentin、Lars Benedikt Kaesberg、Jan Philip Wahle、Terry Ruas 与 Bela Gipp。2026。“Multi-Agent Reasoning Improves Compute Efficiency: Pareto-Optimal Test-Time Scaling”。第 64 届计算语言学协会年会论文集，第 4 卷：学生研究工作坊，1–14 页。官方论文：https://aclanthology.org/2026.acl-srw.1/。官方代码：https://github.com/Multi-Agent-LLMs/lm-evaluation-harness。

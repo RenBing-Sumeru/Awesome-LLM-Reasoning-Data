@@ -1,0 +1,5 @@
+1. **Positioning:** GRACE evaluates whether every CoT step is faithful to the given context rather than only checking answers or whole-trace hallucination.
+2. **Method handle:** It generates traces from four datasets, uses multi-judge consensus for training, and sends disagreements to human testing.
+3. **Data handle:** It contains 6,915 training trajectories, 29,612 consensus steps, and 437 human test trajectories with eight error categories.
+4. **Evidence anchor:** The best model reaches 81.46 Step F1 but 72.08 category F1, leaving substantial room for diagnosis.
+5. **Reuse decision:** It fits contextual critics and RL process rewards; audit consensus bias and contamination first; evaluation should also be reported by Grounding versus Inference, source dataset, and generator so that an easy subset does not dominate the aggregate; Before reuse, verify agreement between judge consensus and humans in the target domain and stratify results by source dataset, generator, and evaluation track so easy subsets do not dominate.

@@ -1,0 +1,3 @@
+Existing Verilog benchmarks focus mainly on short RTL completion or specification-to-code generation, with narrow task coverage and some subsets approaching saturation. They rarely include testbenches, assertions, debugging, code improvement, module reuse, or agentic workflows requiring multiple tool interactions. Consequently, model capability across the broader hardware-design and verification lifecycle cannot be measured consistently.
+
+CVDP uses expert-authored tasks from multiple categories and provides repositories, tools, reference solutions, and executable validation infrastructure for both non-agentic and agentic settings.

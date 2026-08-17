@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MedSSR 用罕见病知识控制问题合成，再由策略模型产生伪标签，公开 4.3 万条医学推理记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "医学推理监督微调与半监督强化学习",
+  "confidence_ch": "高",
+  "authors_ch": "Haolin Li, Shuyang Jiang, Ruipeng Zhang, Jiangchao Yao, Ya Zhang, Yanfeng Wang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

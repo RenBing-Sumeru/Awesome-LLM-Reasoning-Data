@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CogCoM 公开由 GPT-4 规划、视觉工具执行并以金答案终止筛选的视觉操作链，用作带证据的多模态 SFT 目标。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "视觉操作链数据集与多模态模型报告",
+  "best_for_ch": "适合构建或审计视觉定位、OCR、计算与图形推理示范数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ji Qi, Ming Ding, Weihan Wang, Yushi Bai, Qingsong Lv, Wenyi Hong, Bin Xu, Lei Hou, Juanzi Li, Yuxiao Dong, Jie Tang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:58:00Z"
+}

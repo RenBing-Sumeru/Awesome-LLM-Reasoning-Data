@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ReST-EM 从当前 policy 采样数学解答或程序，只保留通过二元检查的输出，再重复 SFT，把经验证的自生成结果变成训练数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "经 verifier 过滤的迭代自训练",
+  "best_for_ch": "适合为数学或代码任务构建带可执行二元反馈的自训练循环的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Avi Singh, John D. Co-Reyes, Rishabh Agarwal, Ankesh Anand, Piyush Patil, Xavier Garcia, Peter J. Liu, James Harrison, Jaehoon Lee, Kelvin Xu, Aaron Parisi, Abhishek Kumar, Alex Alemi, Alex Rizkowsky, Azade Nova, Ben Adlam, Bernd Bohnet, Gamaleldin Elsayed, Hanie Sedghi, Igor Mordatch, Isabelle Simpson, Izzeddin Gur, Jasper Snoek, Jeffrey Pennington, Jiri Hron, Kathleen Kenealy, Kevin Swersky, Kshiteej Mahajan, Laura Culp, Lechao Xiao, Maxwell L. Bileschi, Noah Constant, Roman Novak, Rosanne Liu, Tris Warkentin, Yundi Qian, Yamini Bansal, Ethan Dyer, Behnam Neyshabur, Jascha Sohl-Dickstein, Noah Fiedel",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

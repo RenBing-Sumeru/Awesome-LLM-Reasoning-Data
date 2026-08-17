@@ -1,0 +1,1 @@
+正确性委托给 Codeforces；基准不公开 hidden tests 或 special judges，因此没有平台交互就不能完整离线复现。每题 8 次提交上限可能低估更多尝试能解出的系统，但可降低对平台的影响。CodeElo 只适合学术 virtual participation，不适合赛中使用。分数会随 Codeforces 政策、可用性、竞赛集合、语言、模型解码、API 默认值和作者自动提交服务访问而漂移。数据许可证仍需单独审计。

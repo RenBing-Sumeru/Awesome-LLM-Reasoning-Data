@@ -1,0 +1,3 @@
+Many adaptive-thinking methods estimate difficulty and then optimize an informal quality-cost trade-off. CATS changes the decision criterion by attaching conformal risk control to the selected effort. The novel object is therefore a calibrated effort-selection set with a user-defined failure constraint, not simply another learned stopping score.
+
+This does not make the controller immune to deployment shift: the guarantee relies on the calibration setup and the available effort levels. Its distinct value is that it makes the desired safety boundary explicit and auditable, allowing readers to ask whether a claimed compute saving occurred while preserving the promised error tolerance.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CURE 用代码与单元测试的执行矩阵共同训练生成器和测试器，并在测试时用生成测试选择代码。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时轨迹、反馈与选择机制的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Yinjie Wang, Ling Yang, Ye Tian, Ke Shen, Mengdi Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ],
+  "updated_at": "2026-07-20T12:16:08Z"
+}

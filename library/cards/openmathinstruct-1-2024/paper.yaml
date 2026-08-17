@@ -1,0 +1,147 @@
+id: openmathinstruct-1-2024
+title: 'OpenMathInstruct-1: A 1.8 Million Math Instruction Tuning Dataset'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Track
+authors:
+- Shubham Toshniwal
+- Ivan Moshkov
+- Sean Narenthiran
+- Daria Gitman
+- Fei Jia
+- Igor Gitman
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+domains:
+- mathematical-reasoning
+- grade-school-math
+- competition-math
+- code-interpreter
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/3d5aa9a7ce28cdc710fbd044fd3610f3-Abstract-Datasets_and_Benchmarks_Track.html
+  arxiv: https://arxiv.org/abs/2402.10176
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/3d5aa9a7ce28cdc710fbd044fd3610f3-Abstract-Datasets_and_Benchmarks_Track.html
+  code: https://github.com/NVIDIA-NeMo/Skills
+  data: https://huggingface.co/datasets/nvidia/OpenMathInstruct-1
+  project: https://huggingface.co/collections/nvidia/openmath-65c5619de2ba059be0775014
+  huggingface: https://huggingface.co/datasets/nvidia/OpenMathInstruct-1
+  doi: https://doi.org/10.52202/079017-1096
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/26874-/bibtex
+data_object:
+  prompt_source: GSM8K and MATH training questions, optionally paired with reference solutions whose intermediate computations
+    are symbolically masked.
+  trace_author: Mixtral-8x7B-base writes mixed natural-language and Python code-interpreter solutions under default, subject-specific,
+    and masked-reference prompts.
+  answer_format: A question paired with a generated solution containing prose, delimited Python code and outputs, a boxed
+    final answer, expected/predicted answers, execution error, correctness, source dataset, and generation type.
+  process_fields:
+  - GSM8K or MATH question
+  - generated text/code solution and execution output
+  - expected and extracted predicted answer
+  - execution error or timeout
+  - correctness and prompt-generation type
+  environment_or_substrate: Python interpreter with up to three code blocks, ten-second execution timeout, and a 4,096-token
+    input/output budget.
+  verifier_or_reward: Execute code blocks, extract the boxed final answer, and compare it with the benchmark ground-truth
+    answer using the released grading scripts.
+  terminal_predicate: Stop generation after an execution error or timeout; retain verified correct traces in the primary split
+    and publish incorrect traces separately.
+recipe_metadata:
+  base_model: Mistral-7B, CodeLlama 7B/13B/34B/70B, and Llama-2-70B are fine-tuned as data consumers.
+  teacher: Mixtral-8x7B-base under a permissive model license.
+  generator: Five-shot prompts elicit code-interpreter traces; default, MATH subject-specific, and masked-reference prompts
+    are merged and deduplicated after answer checking.
+  filtering_rule: Require the extracted boxed answer to match ground truth; remove multiple boxed answers, unmatched code
+    delimiters, and text after the final answer, while retaining incorrect records in separate files.
+  sampling_protocol: Sample 128 default and 128 masked-reference traces per GSM8K problem; combine several 224-sample default,
+    subject, and masked strategies for MATH, yielding 1.8M unique correct pairs.
+  rollout_count: null
+  temperature: 1.0
+  inference_budget: top_p 0.95, 4,096 total tokens, 512 new tokens after each code block, at most three code blocks, and hundreds
+    of candidates per source problem.
+  optimizer_or_scaffold: Final models train on about 512K fair-sampled GSM8K plus 511,677 any-code-filtered MATH records using
+    NeMo.
+audit:
+  source_mixture: 1.04M unique correct solutions for 7,469/7,473 GSM8K training problems and 787K for 6,978/7,500 MATH training
+    problems.
+  split: Correct and incorrect solutions each have train and validation JSONL files; the release reports 1.8M correct pairs
+    and 6.6M incorrect trajectories, while train plus validation cover the full source training sets.
+  decontamination: Synthesis starts from GSM8K and MATH training sets and evaluates on their test sets; no additional semantic
+    decontamination against the broader evaluation suite is reported.
+  license: The dataset uses the commercially permissive NVIDIA License; code is Apache-2.0, Mixtral is permissively licensed,
+    and GSM8K/MATH source terms still require lineage review.
+  lineage: Source question and optional masked reference lead to a prompt family, Mixtral trace, executed code outputs, extracted
+    answer, correctness decision, post-processing, and correct/incorrect release split.
+  known_failure_modes:
+  - A trace can reach the correct final answer through flawed reasoning, copied structure, or code shortcuts that outcome
+    grading cannot detect.
+  - Hundreds of accepted traces per easy problem create severe problem-frequency imbalance unless fair sampling is used.
+  - The corpus covers only GSM8K and MATH and can overfit their formats, subjects, and answer conventions.
+  citation_status: verified
+  confidence: high
+  notes: Official NeurIPS proceedings/PDF, dataset card and file tree, NVIDIA License, paper counts, affiliation, current
+    repository, and adoption counters checked on 2026-07-14.
+inclusion_reason: OpenMathInstruct-1 publicly releases Mixtral-written, execution-bearing math rationales with explicit correctness
+  labels and SFT consumers, rather than only reporting a model or inference prompt.
+related: []
+tags:
+- instruction-demonstration-rationale
+- math-reasoning
+- code-interpreter
+- open-distillation
+- arxiv-2402.10176
+- primary-link-checked
+status: verified
+one_line_summary: OpenMathInstruct-1 releases 1.8M verified GSM8K/MATH code-interpreter demonstrations plus 6.6M incorrect
+  traces under a commercially permissive license.
+why_it_matters: It demonstrates that prompt design, large sampling budgets, execution, and fair data selection can replace
+  a closed teacher for math SFT.
+reading_priority: must read
+paper_type: open mathematical reasoning demonstration dataset and SFT recipe
+best_for: Researchers synthesizing math CoT with open models or auditing answer-verified code-interpreter traces.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: NeurIPS acceptance, public JSONL correct/incorrect files, schema, license, code, models, scale, and generation contract
+    were checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-final5
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: open code-interpreter math demonstrations
+  selection_priority_score: 12
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 4
+    artifact: 2
+  selection_evidence:
+    institution: The official NeurIPS paper lists NVIDIA as the affiliation for all authors.
+    venue: The NeurIPS proceedings confirm a regular 2024 Datasets and Benchmarks Track paper; no oral, spotlight, or award
+      distinction is claimed.
+    impact: The public dataset had 2,314 downloads and 252 likes, while the maintained NVIDIA-NeMo/Skills repository had 1,005
+      stars and 193 forks on 2026-07-14; the OpenMathInstruct lineage also has a published successor.
+    artifact: The commercially permissive dataset publishes correct and incorrect JSONL records with schema, code, reproducibility
+      docs, and multiple released model consumers.
+  selection_eligible: true
+  year_impact_threshold: 3

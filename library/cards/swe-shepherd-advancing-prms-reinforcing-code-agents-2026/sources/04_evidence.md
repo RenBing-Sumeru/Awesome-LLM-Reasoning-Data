@@ -1,0 +1,3 @@
+The process reward improves trajectory selection and code-agent reinforcement over terminal-test rewards. Executable tests strongly supervise edits, while search, reading, and planning steps remain more weakly labeled.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of software-engineering agent process rewards in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

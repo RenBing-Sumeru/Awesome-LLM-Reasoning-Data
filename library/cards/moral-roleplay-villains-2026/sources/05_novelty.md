@@ -1,0 +1,2 @@
+Role-play benchmarks usually score character knowledge, speaking style, or overall consistency without controlling the moral spectrum, while safety benchmarks mainly test whether models refuse harmful requests. Moral RolePlay intersects the two and asks whether safety alignment damages characterization in explicitly fictional contexts. Its balanced four-level character set provides a continuous rather than binary moral axis, allowing researchers to observe how capability changes with morality instead of merely comparing “safe” and “unsafe” responses.
+

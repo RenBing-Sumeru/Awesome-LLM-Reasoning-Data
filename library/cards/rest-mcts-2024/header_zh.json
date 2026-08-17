@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ReST-MCTS* 用价值引导树搜索与终点答案核验生成正向策略轨迹和部分解标量目标，以联合迭代训练策略模型与过程价值模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基于树搜索的自训练与过程价值数据构造配方",
+  "best_for_ch": "研究 PRM 自举、搜索生成数据、轨迹筛选和迭代推理自训练的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Dan Zhang, Sining Zhoubian, Ziniu Hu, Yisong Yue, Yuxiao Dong, Jie Tang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

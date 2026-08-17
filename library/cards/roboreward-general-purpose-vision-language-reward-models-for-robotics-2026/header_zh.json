@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "RoboReward 将真实机器人视频转为五级进度奖励数据与人工核验基准，用于训练通用视觉语言奖励模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "机器人视觉语言奖励模型数据集与基准论文",
+  "best_for_ch": "训练或评测机器人视觉语言奖励模型，并研究可复用的轨迹奖励构造。",
+  "confidence_ch": "高",
+  "authors_ch": "Tony Lee、Andrew Wagenmaker、Karl Pertsch、Percy Liang、Sergey Levine、Chelsea Finn",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-15T11:57:28Z"
+}

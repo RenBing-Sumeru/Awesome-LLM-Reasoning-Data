@@ -1,0 +1,5 @@
+The one-sentence contribution is a harder successor to GLUE that packages difficult English NLU tasks, human baselines, diagnostic probes, software support, and leaderboard rules into one reusable evaluation surface.
+
+The core mechanism is selection plus controlled scoring. Candidate tasks were gathered through a public call and prior datasets, then screened with BERT-style machine baselines and human baselines; tasks that were too easy for machines or too difficult for humans were excluded. The final suite mixes yes/no QA, natural-language inference, causal multiple choice, multi-sentence reading comprehension, commonsense cloze-style reading comprehension, word-sense disambiguation, and coreference.
+
+The closest comparison is GLUE. SuperGLUE keeps the single-score leaderboard and private-test model, but changes the task distribution, adds broader task formats, tightens data-use rules, and retains diagnostics. The direction signal is evaluation-infrastructure design: the paper is most useful as a record of how a benchmark can respond to saturation while preserving automatic comparability.

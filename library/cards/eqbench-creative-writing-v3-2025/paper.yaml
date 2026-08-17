@@ -1,0 +1,102 @@
+id: eqbench-creative-writing-v3-2025
+title: EQ-Bench Creative Writing v3
+year: 2025
+venue: EQ-Bench leaderboard
+authors:
+- EQ-Bench
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+domains:
+- creative-writing
+- llm-judge
+- style-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://eqbench.com/creative_writing.html
+  arxiv: null
+  doi: null
+  code: null
+  data: null
+  project: https://eqbench.com/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: Public leaderboard surface; exact prompt set and judge records were not verified as a downloadable dataset.
+  prompt_source: EQ-Bench Creative Writing v3 prompts and leaderboard pipeline.
+  trace_author: EQ-Bench operators, model generations, and judge/scoring pipeline.
+  answer_format: model creative-writing outputs, score, repetition statistic, slop statistic, and leaderboard metadata.
+  process_fields:
+  - writing prompt
+  - model output
+  - judge score
+  - repetition metric
+  - slop metric
+  - model and leaderboard snapshot
+  environment_or_substrate: creative-writing generation judged by an LLM-based evaluation pipeline with auxiliary text-statistic
+    columns.
+  verifier_or_reward: LLM judge score plus repetition and overused-phrase statistics shown on the public leaderboard.
+  terminal_predicate: leaderboard rank and score under the current Creative Writing v3 methodology snapshot.
+recipe_metadata:
+  base_model: Not a training recipe; it is a subjective writing-quality evaluation surface.
+  teacher: EQ-Bench judge pipeline and prompt set define the scoring contract.
+  generator: model completions for creative-writing prompts.
+  filtering_rule: Treat leaderboard numbers as snapshot-specific and subjective; do not reuse as human preference labels without
+    judge audit.
+  sampling_protocol: Pin page version, prompt set, judge model, model outputs, temperature, repetition/slop computation, and
+    leaderboard date.
+  rollout_count: null
+  temperature: null
+  inference_budget: Prompt count and generation settings were not fully verified from public page HTML.
+  optimizer_or_scaffold: llm_judge_benchmark
+audit:
+  source_mixture: EQ-Bench Creative Writing v3 leaderboard page and about-page references where available.
+  split: Prompt set and row-level judge data were not verified as public downloadable artifacts.
+  decontamination: Public prompts and leaderboard outputs can influence model tuning and judge overfitting.
+  license: Public website terms and redistribution rights for prompts/outputs need audit.
+  lineage: 'Primary source: https://eqbench.com/creative_writing.html'
+  known_failure_modes:
+  - subjective writing quality depends on judge model and rubric
+  - leaderboard can change without versioned row-level data
+  - repetition and slop metrics can penalize style proxies rather than task success
+  - prompt leakage and style overfitting can inflate scores
+  citation_status: verified
+  confidence: medium
+  notes: Official page verifies Creative Writing v3, LLM-judged creative-writing benchmark, leaderboard, repetition column,
+    and slop column; prompt set, judge model, and row-level data were not verified.
+inclusion_reason: It is a visible LLM-judge creative-writing benchmark where subjectivity and style-proxy risks matter.
+related: []
+tags:
+- benchmark
+- llm_judge
+- creative-writing
+why_it_matters: It is a useful example of subjective generation evaluation that needs judge and prompt-snapshot audit.
+status: verified
+needs:
+- 'needs_audit: verify prompt set, judge model, scoring rubric, generation settings, and leaderboard snapshot'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: EQ-Bench Creative Writing v3 evaluates model creative-writing outputs with a judge-based leaderboard.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: primary_source_regeneration
+  confidence: medium
+  notes: Public leaderboard page verified; row-level prompt and judge artifacts were not verified.
+category_ids:
+- benchmarks_evaluation_surfaces

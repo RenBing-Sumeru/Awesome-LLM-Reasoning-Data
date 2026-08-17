@@ -1,0 +1,151 @@
+id: reasoning-evolves-chess-2026
+title: 'How Reasoning Evolves from Post-Training Data: An Empirical Study Using Chess'
+year: 2026
+venue: ICML 2026
+authors:
+- Lucas Dionisopoulos
+- Nicklas Majamaki
+- Prithviraj Ammanabrolu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- chess
+- reasoning
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2604.05134
+  arxiv: https://arxiv.org/abs/2604.05134
+  code: https://github.com/lucasdino/lang-chess
+  data: https://huggingface.co/datasets/lucasdino/chess-reasoning-data
+  project: null
+  huggingface: https://huggingface.co/collections/lucasdino/llm-chess
+  doi: https://doi.org/10.48550/arXiv.2604.05134
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2604.05134
+data_object:
+  prompt_source: Custom chess tasks represented with an ASCII chessboard and a FEN-board field. The checked sources do not
+    fully disclose the origin and split policy of every raw chess position.
+  trace_author: 'Mixed: Llama 4 Maverick produces the rejection-sampling responses; Guided Synthetic uses Llama 4 Maverick
+    and gpt-oss-120b; VABP, Factual Board Answering, Best Move, and Best Line are generated programmatically around chess-engine
+    outputs.'
+  answer_format: Parquet records contain general_instruction, question, response, fen_board, fullmove_count, data_type, and
+    data_subtype. Targets range from a direct UCI move to a 4–6-ply Best Line plus signed-centipawn value, or natural-language
+    reasoning about candidate chess moves.
+  process_fields:
+  - general_instruction
+  - question
+  - response
+  - fen_board
+  - fullmove_count
+  - data_type
+  - data_subtype
+  - generated_answer
+  - candidate_move
+  - value
+  environment_or_substrate: Chess board states and custom evaluation/RL tasks; chess engines provide board evaluations, move
+    ranking, and generated optimal lines. The repository contains data-generation, SFT/veRL-training, and evaluation code.
+  verifier_or_reward: Programmatic chess-engine checks. Rejection sampling keeps correct Best Move/Worst Move outputs, Predict
+    Move answers in the Stockfish top 30% by move rank, and Legal Moves responses above an IoU threshold. The exact complete
+    RL-reward composition is not established in the checked sources.
+  terminal_predicate: 'Task dependent: correct best/worst candidate, a sufficiently highly ranked predicted move, Legal-Moves
+    IoU above threshold, or a chess-engine-generated target move/line. Exact threshold values other than Predict Move top
+    30% are unknown.'
+recipe_metadata:
+  base_model: Qwen2.5 7B-Instruct
+  teacher: Llama 4 Maverick for rejection sampling; Llama 4 Maverick and gpt-oss-120b for Guided Synthetic data.
+  generator: Custom chess-engine and harness programs generate VABP, Factual Board Answering, Best Move, and Best Line; teacher
+    models generate the synthetic natural-language response types.
+  filtering_rule: 'For rejection sampling: Best Move/Worst Move retain correct outputs; Predict Move retains moves in the
+    Stockfish top 30% by rank; Legal Moves retains responses above an IoU threshold. The paper additionally balances retained
+    samples by move count and piece type.'
+  sampling_protocol: Teacher outputs are sampled on four custom evaluation-task formats and filtered as specified. VABP samples
+    and recursively expands engine-valued move trees with softmax-based candidate selection; its exact temperature and node/depth
+    settings are not pinned here.
+  rollout_count: Best Line targets contain 4–6 plies. The checked official sources do not disclose a single global rollout
+    count for teacher generation or VABP trees.
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: SFT uses LlamaFactory; RL uses veRL with Dr. GRPO, the Clip-Higher strategy, and no KL divergence.
+    The paper reports 8k RL samples in inclusion experiments and 16k in scaled runs.
+audit:
+  source_mixture: A released mixture of rejection-sampled, programmatically generated, and guided-synthetic chess data plus
+    general instruction following. The repository names Searchless Chess and Magpie as external datasets but the checked sources
+    do not fully pin raw-position provenance or every mixture proportion.
+  split: Repository documentation states 400 evaluation samples per task. The full train/evaluation split construction and
+    overlap controls are not fully disclosed in the checked sources.
+  decontamination: unknown
+  license: 'Dataset card: CC0-1.0. Code repository: MIT. Repository documentation also names Searchless Chess (Apache-2.0)
+    and Magpie (MIT) as external datasets; downstream reuse must respect their licenses.'
+  lineage: Chess positions and task prompts -> engine/harness or teacher-model generation -> task-specific correctness/threshold
+    filtering (where applicable) -> released parquet SFT records; exact raw-position lineage and all rejected teacher outputs
+    are not fully established.
+  known_failure_modes:
+  - The released rejection-sampling set contains retained outputs; the checked sources do not establish a release of rejected
+    generations or the complete pre-filter candidate pool.
+  - The paper reports that rejection-sampled teacher responses can hallucinate; it also identifies hallucinations and SAN/UCI-format
+    drift in Guided Synthetic teacher outputs.
+  - Rejection sampling shifts the retained board-state distribution toward cases the teacher handles well; the authors therefore
+    rebalance by move count and piece type, but full raw sampling distributions remain incomplete.
+  - The released data may contain multiple different responses for the same FEN board, and the checked sources do not establish
+    decontamination or train/evaluation overlap controls.
+  - Faithfulness evaluation uses gpt-oss-120b judging; it should not be conflated with the chess-engine programmatic contract.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2 verifies the bibliographic record and ICML 2026 acceptance; the author-linked GitHub repository
+    and Hugging Face dataset verify the code/data release. Unreported fields are retained as unknown.
+inclusion_reason: A public, author-linked chess reasoning-data release that makes both filtered multi-attempt teacher traces
+  and programmatically generated alpha-beta/optimal-line traces inspectable, while connecting them to SFT and chess-engine-verifiable
+  RL.
+related: []
+tags:
+- track5
+- chess
+- rejection-sampling
+- verbalized-alpha-beta
+- search-traces
+- stockfish
+- sft
+- rlvr
+status: verified
+one_line_summary: Releases a 120M-token chess SFT dataset and code spanning filtered Llama 4 Maverick responses, programmatic
+  alpha-beta-style search traces, and engine-derived best-move and best-line targets, then studies their downstream RL behavior.
+why_it_matters: It exposes concrete Track 5 data objects—accepted teacher responses and verbalized, engine-valued search paths—while
+  documenting the selection contract and the boundary that rejected pools, sampling parameters, and raw-position provenance
+  are still incomplete.
+card: null
+needs:
+- 'unknown: complete raw chess-position provenance, train/evaluation overlap controls, and decontamination procedure'
+- 'unknown: global teacher-generation rollout counts, decoding temperatures, and task-specific filtering thresholds beyond
+  Predict Move top 30%'
+- 'needs_audit: exact RL reward composition and the full rejected/pre-filter teacher candidate pool are not established in
+  the checked official artifacts'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: high
+  notes: arXiv v2, the author-linked GitHub implementation, and the author-linked Hugging Face dataset/collection were checked.
+    No official ICML proceedings URL was verified; artifacts.venue remains null.
+category_ids:
+- rollout_search_test_time_trace_data

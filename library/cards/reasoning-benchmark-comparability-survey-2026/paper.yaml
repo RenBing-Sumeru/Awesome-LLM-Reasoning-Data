@@ -1,0 +1,111 @@
+id: reasoning-benchmark-comparability-survey-2026
+title: 'Rethinking Benchmark Comparability: A Survey of Reasoning Benchmarks for Large Language Models'
+year: 2026
+venue: Preprints.org
+authors:
+- Chenyuan Zhang
+- Simin Liu
+- Hanjing Li
+- Te Gao
+- Yidi Wang
+- Qiguang Chen
+- Xiachong Feng
+- Li Cai
+- Mengnan Du
+- Zhuotao Tian
+- Libo Qin
+- Philip S. Yu
+- Min Zhang
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- reasoning-data
+- benchmarks
+- evaluation
+- data-quality
+training_use:
+- evaluation
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://www.preprints.org/manuscript/202605.0806
+  arxiv: null
+  code: https://github.com/chenyuanTKCY/Awesome-Benchmarks-for-LLM-Reasoning
+  data: null
+  project: https://github.com/chenyuanTKCY/Awesome-Benchmarks-for-LLM-Reasoning
+  huggingface: null
+  doi: https://doi.org/10.20944/preprints202605.0806.v1
+  venue: https://www.preprints.org/manuscript/202605.0806
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning benchmark instances.
+  trace_author: Benchmark creators and primary studies summarized by the survey.
+  answer_format: 'A three-part description of a benchmark: object, setting, and evaluation.'
+  process_fields:
+  - capability target
+  - input and environment setting
+  - evaluation protocol
+  - scoring semantics
+  - freshness and contamination considerations
+  environment_or_substrate: Static and interactive large-language-model reasoning benchmarks.
+  verifier_or_reward: Surveys answer metrics, evidence checks, environment outcomes, and other benchmark-specific criteria.
+  terminal_predicate: A benchmark-specific definition of success, made explicit through the evaluation dimension.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Not applicable.
+  generator: Literature synthesis and benchmark comparison framework.
+  filtering_rule: Benchmarks are compared through object, setting, and evaluation rather than title alone.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No training recipe is proposed.
+audit:
+  source_mixture: Official Preprints.org record and linked repository.
+  split: Not applicable to a survey.
+  decontamination: Discusses freshness and contamination as benchmark-design concerns.
+  license: Published under CC BY 4.0 according to the official preprint record.
+  lineage: 'Primary source: https://www.preprints.org/manuscript/202605.0806'
+  known_failure_modes:
+  - Similar benchmark names can hide different target capabilities and protocols.
+  - A single final-answer score can hide retrieval, grounding, or evidence failures.
+  citation_status: verified
+  confidence: high
+  notes: Official abstract calls it a survey of reasoning benchmarks and defines the Object, Setting, Evaluation framework.
+inclusion_reason: A 2026 survey focused directly on the data and measurement conditions behind reasoning benchmark scores.
+related: []
+tags:
+- foundations-and-primers
+- reasoning-benchmarks
+- evaluation
+- survey
+- 2026
+why_it_matters: It turns benchmark selection from leaderboard following into a concrete comparison of capability, conditions,
+  and metric.
+one_line_summary: A 2026 survey that explains why two “reasoning benchmark” scores are often not measuring the same thing.
+paper_type: Survey and benchmark framework
+reading_priority: strong
+best_for: Readers selecting, building, or interpreting reasoning benchmarks and their data.
+confidence: high
+status: verified
+needs:
+- 'unknown: shared reporting conventions for benchmark conditions and score semantics'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official title, abstract, publication date, DOI, and linked project were checked.
+category_ids:
+- foundations_and_primers

@@ -1,0 +1,28 @@
+id: certaindex-efficient-reasoning-2025
+title: "Efficiently Scaling LLM Reasoning Programs with Certaindex"
+year: 2025
+venue: NeurIPS 2025
+authors: [Yichao Fu, Junda Chen, Siqi Zhu, Zheyu Fu, Zhongdongming Dai, Yonghao Zhuang, Yian Ma, Aurick Qiao, Tajana Rosing, Ion Stoica, Hao Zhang]
+source_role: [scaling_study]
+verification_contract: [mixed]
+supervision_granularity: [step_level, full_episode]
+domains: [mathematical-reasoning, general-reasoning]
+training_use: [test_time_compute, evaluation]
+construction_layer: [optimizer_scaffold, scaling_report]
+artifacts: {paper: https://papers.nips.cc/paper_files/paper/2025/hash/d037fd021c9aace128b8ce25001cdb6c-Abstract-Conference.html, arxiv: https://arxiv.org/abs/2412.20993, venue: https://papers.nips.cc/paper_files/paper/2025/hash/d037fd021c9aace128b8ce25001cdb6c-Abstract-Conference.html, code: https://github.com/hao-ai-lab/Dynasor, data: null, project: null, huggingface: null, doi: null}
+data_object: {prompt_source: "Reasoning workloads evaluated by the paper.", trace_author: "Reasoning models and external reasoning algorithms.", answer_format: "Intermediate probes, stabilized answers, Certaindex values, token budgets, and final answers.", process_fields: [prompt, intermediate_answer, stability, certaindex, token_budget, final_answer], environment_or_substrate: "Dynasor reasoning-aware serving system.", verifier_or_reward: "Algorithm-agnostic answer-stability metric.", terminal_predicate: "Final answer accuracy with early-exit decision."}
+recipe_metadata: {base_model: "Models and reasoning algorithms reported in the paper.", teacher: null, generator: "Reasoning program being scheduled.", filtering_rule: "Stop or reallocate when answer stabilization yields high Certaindex.", sampling_protocol: "Probe intermediate answers during reasoning and schedule by stability.", rollout_count: null, temperature: null, inference_budget: "Tokens, compute, latency, and scheduling budget.", optimizer_or_scaffold: "Certaindex scheduler integrated into Dynasor."}
+audit: {source_mixture: "Official NeurIPS paper and Dynasor repository.", split: "See primary paper for workloads and protocols.", decontamination: "Not separately claimed.", license: "Verify repository and benchmark terms before reuse.", lineage: "https://papers.nips.cc/paper_files/paper/2025/hash/d037fd021c9aace128b8ce25001cdb6c-Abstract-Conference.html", known_failure_modes: [premature_stopping, unstable_probe, answer_lock_in, serving_overhead], citation_status: verified, confidence: high, notes: "Official proceedings and Dynasor repository checked on 2026-07-20."}
+inclusion_reason: "It converts answer stabilization into an early-exit and scheduling signal for test-time reasoning computation."
+related: []
+tags: [test-time-compute, early-exit, scheduling, reasoning-efficiency]
+status: verified
+one_line_summary: "Certaindex detects stabilized reasoning answers to stop or reallocate inference compute without lowering accuracy."
+reading_priority: essential
+paper_type: Test-time reasoning efficiency and serving-system study
+best_for: Readers deploying adaptive early exit and scheduling for reasoning workloads.
+confidence: high
+why_it_matters: "It connects a model-side stability signal to practical token allocation and serving throughput."
+curation_level: L4_carded
+verification: {link_verified: true, artifact_verified: true, verified_at: '2026-07-20', verified_by: curation, confidence: high, notes: "Official NeurIPS paper and public Dynasor repository checked."}
+category_ids: [scaling_rlvr_test_time_compute]

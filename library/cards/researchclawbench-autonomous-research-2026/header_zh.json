@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ResearchClawBench 以隐藏目标论文和专家加权产物准则，衡量 AI 的端到端科学复现与发现能力。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "端到端自主科学研究的环境与 rubric 基准",
+  "best_for_ch": "需要评估科研 Agent、实验轨迹或科学产物 Judge 的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wanghan Xu, Yuhao Zhou, Yifan Zhou, Qinglong Cao, Shuo Li 等",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-20T10:51:52Z"
+}

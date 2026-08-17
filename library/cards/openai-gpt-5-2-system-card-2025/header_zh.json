@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GPT-5.2 相对 GPT-5 没有增加训练来源或 reasoning RL 的可复现细节，但新增明确的 train/eval overlap、窄范围 non-overlap/held-out 声明、生产与 agent 评测契约及带日期的 CoT monitorability 审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿系统卡披露增量与安全审计",
+  "best_for_ch": "审计训练信号、评测 grader、Preparedness agent 环境、CoT monitor 与部署防护边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

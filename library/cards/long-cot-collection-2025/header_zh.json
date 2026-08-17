@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Long CoT Collection 以 o1 推理流与思考预算种子检索来引导 GPT-4o 分步生成并进行答案判断；论文声称构造 100K 条数据，但发布位置仍是字面量“LINK”，尚无可核验的论文配套制品。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长链推理轨迹构造与 RLVR 冷启动配方",
+  "best_for_ch": "研究长推理轨迹合成、思考预算控制、答案级过滤、SFT 冷启动与 RLVR 数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Hyungjoo Chae、Dongjin Kang、Jihyuk Kim、Beong-woo Kwak、Sunghyun Park、Haeju Park、Jinyoung Yeo、Moontae Lee、Kyungjae Lee",
+  "category_ids": [
+    "rollout_search_test_time_trace_data",
+    "data_construction_open_release_recipes"
+  ]
+}

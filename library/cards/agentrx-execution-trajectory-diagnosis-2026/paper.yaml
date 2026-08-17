@@ -1,0 +1,105 @@
+id: agentrx-execution-trajectory-diagnosis-2026
+title: 'AgentRx: Diagnosing AI Agent Failures from Execution Trajectories'
+year: 2026
+venue: arXiv preprint
+authors:
+- Shraddha Barke
+- Arnav Goyal
+- Alind Khare
+- Avaljot Singh
+- Suman Nath
+- Chetan Bansal
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- agent-diagnosis
+- first-error-localization
+- constraint-verification
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2602.02475
+  arxiv: https://arxiv.org/abs/2602.02475
+  code: https://github.com/microsoft/AgentRx
+  project: https://github.com/microsoft/AgentRx
+  data: https://huggingface.co/datasets/microsoft/AgentRx
+  huggingface: https://github.com/microsoft/AgentRx
+  venue: https://arxiv.org/abs/2602.02475
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Structured API workflows, incident-management tasks, and open-ended web/file tasks.
+  trace_author: AI agents execute tasks; human annotators identify critical failure steps and categories.
+  answer_format: Failed trajectory, domain policy, tool schema, critical failure step, failure category, and validation evidence.
+  process_fields:
+  - trajectory
+  - policy
+  - tool_schema
+  - critical_step
+  - failure_category
+  - validation_log
+  environment_or_substrate: Cross-domain agent workflows with APIs, incident-management systems, and web/file tools.
+  verifier_or_reward: Constraint synthesis and stepwise validation produce an auditable violation log for LLM judging.
+  terminal_predicate: Critical-step localization and cross-domain failure-category attribution.
+recipe_metadata:
+  base_model: See the official paper and released implementation for the generating and evaluated models.
+  teacher: Expert human annotators; the released labels are the supervision signal.
+  generator: Agent systems running the released benchmark tasks.
+  filtering_rule: Use the paper's trace-selection and annotation-adjudication protocol.
+  sampling_protocol: 115 manually annotated failed trajectories across three domains.
+  inference_budget: Use the official evaluation configuration.
+  optimizer_or_scaffold: Trace-level diagnosis and process-supervision evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Task instances, agent execution traces, human process annotations, and benchmark metadata.
+  split: 115 manually annotated failed trajectories across three domains.
+  decontamination: Do not train on released evaluation traces before reporting results on the same benchmark.
+  license: Consult the official Microsoft AgentRx repository for release terms.
+  lineage: arXiv paper, first-page affiliation block, and official Microsoft AgentRx code/data repository.
+  known_failure_modes:
+  - The benchmark has 115 failures only
+  - Constraint quality bounds diagnostic quality
+  - Categories may not transfer to new tool interfaces
+  citation_status: verified
+  confidence: high
+  notes: Verified the arXiv paper, first-page affiliation block, and official Microsoft AgentRx repository.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- agent-trajectories
+- reasoning
+one_line_summary: AgentRx provides 115 human-annotated failed executions with a critical step and cross-domain failure category,
+  plus auditable constraint-based diagnosis.
+why_it_matters: Its labels identify the key irreversible step and expose the diagnostic evidence used to justify that decision.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the arXiv paper, first-page affiliation block, and official Microsoft AgentRx repository.
+category_ids:
+- process_trace_supervision_data

@@ -1,0 +1,18 @@
+{
+  "title": "Debiasing Online Preference Learning via Preference Feature Preservation",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.1034/",
+    "code": "https://github.com/kingdy2002/PFP",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:34:11Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "关注在线偏好数据在迭代生成中的特征分布偏移，适合补足数据偏差控制视角",
+    "updated_at": "2026-07-16T07:34:11Z"
+  }
+}

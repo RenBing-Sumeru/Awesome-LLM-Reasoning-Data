@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MobileAgentBench 提供易用的移动 LLM 智能体评测 harness。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 mobile LLM-agent benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Luyuan Wang 等（Carnegie Mellon University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:06:39Z"
+}

@@ -1,0 +1,9 @@
+**源transition与benchmark构造。** current/action/next screenshot triplet从Android Control与AiTW的人类demonstration中抽样。generation选择250个transition，对action description进行人工检查，并保留全部250个。QA从500个source transition生成4,000个machine-generated candidate；经GPT-4o self-check/relevance filtering剩2,458个，再由合格Mechanical Turk worker按correctness、relevance与ambiguity过滤为1,787个。发布的`qa.csv`含1,162个Yes与625个No label，但省略source dataset、source split、next screenshot、annotator与filter-decision字段。
+
+**MobileWorld训练构造。** 训练transition来自AiTW与Android Control的source training portion。Qwen3-VL-8B-Instruct标注90%，Qwen3-VL-235B-A22B标注10%。每个transition使用before/action/after证据生成三个state-change description和八个QA candidate。VLM按accuracy/completeness/relevance选择最佳description；QA candidate经过self-check和relevance filtering。与benchmark QA不同，MobileWorld训练annotation未经人工过滤。报告的四舍五入总量约为543k QA pair加942k description，汇总称1.4M items。
+
+**SFT recipe。** Qwen3-VL-8B-Instruct用AdamW微调两个epoch，batch size 128、image 1280px、6% warmup与cosine schedule。渲染论文没有提供可用learning-rate值；training-annotation decoding parameter、token limit、random seed与checkpoint selection均为unknown。官方训练archive在`mobileworld.tar`内包含三个Parquet member，但没有dataset card或透明的精确1.4M-row manifest。
+
+**评测。** 每条记录需要一次model call。generation再增加一次proprietary judge call，输入current/next screenshot、reference description、prediction与rubric。论文指定**`gpt-4o-2024-08-06`**，而未提供judge配置时，`scripts/score_gpt4o.py`默认使用**`gpt-4o-mini`**；精确复现因此必须显式固定model/config。QA使用temperature 0.0和精确Yes/No accuracy；generation使用各模型默认sampling parameter。
+
+**发布与replay边界。** evaluation读取CSV row和静态screenshot。发布不含emulator snapshot、可执行action、app fixture、reset routine、完整source trajectory或deterministic replay接口。在benchmark-image revision `8a9e39c5f09cf63e9b16fd3ad47cf4eb23adaf13`上，一条`gen.csv`记录缺少两张预期图片，因此只有249/250个generation row可运行。复现应固定全部repository/data/model revision、image hash、judge prompt/parser/model/retry配置、模型decoding与split ID；其中多项仍为unknown。

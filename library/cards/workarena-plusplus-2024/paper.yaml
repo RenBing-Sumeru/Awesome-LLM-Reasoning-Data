@@ -1,0 +1,120 @@
+id: workarena-plusplus-2024
+title: 'WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks'
+year: 2024
+venue: arXiv; official WorkArena GitHub labels NeurIPS 2024
+authors:
+- Léo Boisvert
+- Megh Thakkar
+- Maxime Gasse
+- Massimo Caccia
+- Thibault Le Sellier De Chezelles
+- Quentin Cappart
+- Nicolas Chapados
+- Alexandre Lacoste
+- Alexandre Drouin
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-browser-agents
+- enterprise-workflows
+- compositional-planning
+training_use:
+- evaluation
+- audit
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2407.05291
+  arxiv: https://arxiv.org/abs/2407.05291
+  doi: https://doi.org/10.48550/arXiv.2407.05291
+  code: https://github.com/ServiceNow/WorkArena
+  data: https://huggingface.co/datasets/ServiceNow/WorkArena-Instances
+  project: https://servicenow.github.io/WorkArena/
+  huggingface: https://huggingface.co/datasets/ServiceNow/WorkArena-Instances
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors extend WorkArena with compositional planning and reasoning tasks
+  trace_author: official task authors and generated trajectory procedures
+  answer_format: composed workplace goal, action trajectory, intermediate observations, and terminal outcome
+  process_fields:
+  - task instruction or user goal
+  - browser, page, tool, simulator, or snapshot state
+  - agent action and observation records
+  - success predicate, evaluator output, or final answer
+  environment_or_substrate: compositional ServiceNow browser tasks and generated observation/action traces
+  verifier_or_reward: ServiceNow environment predicates over composed task state
+  terminal_predicate: ServiceNow environment predicates over composed task state
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: official WorkArena++ authors and validators
+  generator: WorkArena++ compositional task and trajectory generation pipeline
+  filtering_rule: check generated trajectory provenance and task predicate validity before training reuse
+  sampling_protocol: Pin release version, split, live-web or snapshot date, evaluator revision, prompt/scaffold, and browser
+    backend before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: browser_or_tool_agent_harness
+audit:
+  source_mixture: arXiv 2407.05291, WorkArena project page, ServiceNow/WorkArena repository, and WorkArena-Instances dataset
+  split: Pin public/hidden split, task version, snapshot date, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data; post-release or live-web claims require dated
+    evidence.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2407.05291'
+  known_failure_modes:
+  - Live websites, service state, or browser dependencies can drift after release.
+  - Prompt/scaffold choices, retries, vision settings, and action abstraction can change scores.
+  - Public trajectories or task configurations can become training contamination.
+  citation_status: verified
+  confidence: high
+  notes: arXiv verifies title and authors; official WorkArena GitHub labels the work NeurIPS 2024, but no separate proceedings
+    page was verified. The paper reports 682 tasks and a mechanism for generating thousands of ground-truth observation/action
+    traces.
+inclusion_reason: it makes compositional enterprise web tasks and trajectories explicit
+related: []
+tags:
+- benchmark
+- agent_environment
+- web-browser-agents
+- enterprise-workflows
+- compositional-planning
+why_it_matters: it makes compositional enterprise web tasks and trajectories explicit
+status: verified
+needs:
+- 'needs_audit: inspect evaluator implementation, split/version policy, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: WorkArena++ extends enterprise web-agent evaluation toward compositional planning trajectories.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv verifies title and authors; official WorkArena GitHub labels the work NeurIPS 2024, but no separate proceedings
+    page was verified. The paper reports 682 tasks and a mechanism for generating thousands of ground-truth observation/action
+    traces.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 21-40
+  candidate_index: 26
+  primary_category_id: environment_agent_trajectory_data

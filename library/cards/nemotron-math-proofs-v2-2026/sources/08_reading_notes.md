@@ -1,0 +1,5 @@
+- The release contains proof, verification, and meta-verification conversations rather than formal proof objects.
+- Boxed `0`, `0.5`, and `1` judgments are embedded in natural-language traces and require explicit parsing.
+- A model's verification statement is not a theorem-prover certificate.
+- Pin revision `7665d7f1d006fd89aa852a9dab8060c60b63f814` before counting or reusing records.
+- Independent proof-quality validation remains necessary.

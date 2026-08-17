@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Grok 4.1 的官方模型卡披露了宽泛数据类别、定向中期训练以及基于人类反馈、可验证奖励和模型评分器的 SFT/RL；发布公告补充模型奖励与生产流量评估，但二者均不构成可复用训练数据或奖励合约的证据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "闭源前沿模型卡与数据披露台账",
+  "best_for_ch": "需要区分模型安全评估、生产评估与可复用后训练数据证据的读者",
+  "confidence_ch": "中",
+  "authors_ch": "xAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ],
+  "updated_at": "2026-07-23T00:00:00Z"
+}

@@ -1,0 +1,3 @@
+Keep Qwen3-8B frozen and reuse the final-token hidden state at each reasoning-step boundary. A projection maps those vectors into a fully trained Qwen3-0.6B-Base process score model whose two-layer ReLU head predicts wrong, buffer, and right probabilities. The right-class probability is the step score; the arithmetic mean of all step scores is the trajectory score; the maximum-scoring trajectory wins Best-of-N.
+
+Training needs no manually labeled steps. Math-Verify compares the generated final answer with the ground truth, and that binary outcome is copied to every step as a pseudo-label. The buffer class is designed to absorb ambiguous cases created by this weak label transfer, but it does not convert the pseudo-labels into verified process annotations.

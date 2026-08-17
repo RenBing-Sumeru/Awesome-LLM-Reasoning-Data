@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Qwen 发布了 7B 和 72B 数学过程奖励模型：通过分段推理文本中 extra_0 分隔 token 的正类概率给出 0–1 步级奖励；但训练数据、标签、校准和构造/审计记录没有公开。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学过程奖励模型发布与验证器披露账本",
+  "best_for_ch": "需要区分可用 PRM 推理接口、过程监督证据和未公开训练配方的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qwen Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

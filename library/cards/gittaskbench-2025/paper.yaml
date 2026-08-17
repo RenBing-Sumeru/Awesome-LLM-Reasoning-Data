@@ -1,0 +1,217 @@
+id: gittaskbench-2025
+title: 'GitTaskBench: A Benchmark for Code Agents Solving Real-World Tasks Through Code Repository Leveraging'
+year: 2026
+venue: AAAI 2026
+authors:
+- Ziyi Ni
+- Huacan Wang
+- Shuo Zhang
+- Shuo Lu
+- Ziyang He
+- Wang You
+- Zhenheng Tang
+- Sen Hu
+- Bo Li
+- Chen Hu
+- Binxing Jiao
+- Daxin Jiang
+- Yuntao Du
+- Pin Lyu
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- programmatic
+- environmental
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_agents
+- multimodal_task_execution
+- image_processing
+- video_processing
+- speech_processing
+- physiological_signal_processing
+- security_privacy
+- web_scraping
+- office_document_processing
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/download/40533/44494
+  arxiv: https://arxiv.org/abs/2508.18993v2
+  code: https://github.com/QuantaAlpha/GitTaskBench
+  data: https://huggingface.co/datasets/Nicole-Yi/GitTaskBench
+  project: https://gittaskbench.github.io/
+  huggingface: https://huggingface.co/datasets/Nicole-Yi/GitTaskBench
+  doi: https://doi.org/10.1609/aaai.v40i38.40533
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40533
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 54 primarily hand-crafted real-world tasks across 7 domains and 24 subdomains, paired with 18 selected GitHub
+    repositories; domain/repository discovery used literature review, expert consultation, practical experience, and LLM-assisted
+    deep research.
+  trace_author: Evaluated Aider, OpenHands, and SWE-Agent systems generate interactions during execution, but no canonical
+    GitTaskBench action-observation rollout corpus is released; the arXiv appendix provides only selected narrative success/failure
+    cases.
+  answer_format: A task-specific final artifact (file, text, or visual output) plus a JSONL grader record with Process, Result,
+    TimePoint, and comments.
+  process_fields:
+  - task_id
+  - task_description
+  - prompt_file
+  - repository_name
+  - repository_path
+  - repository_url
+  - repository_understanding_guidelines
+  - working_sub_directory_name
+  - input_files
+  - output_dir
+  - test_script
+  - groundtruth_when_applicable
+  - grader_parameters
+  - Process
+  - Result
+  - TimePoint
+  - comments
+  action_observation_fields: unknown; benchmark-specific serialized action/observation trajectories are not part of the confirmed
+    release
+  environment_or_substrate: A sandbox containing the selected repository code and task inputs; the agent must inspect the
+    repository, create or modify code, install/resolve dependencies, execute the solution, and write the required output.
+    The audited GitHub commit snapshots the benchmark bundle, but task-level upstream repository commit SHAs and container
+    digests are not disclosed.
+  verifier_or_reward: Hand-crafted per-task Python graders first determine Process/ECR from output existence, non-emptiness,
+    and parseability, then determine Result/TPR from task-specific functional, completeness, similarity, or quality thresholds.
+    Alpha is a separate cost/quality aggregate using binary execution success, market value, API cost, and a five-rater human
+    quality score.
+  terminal_predicate: Episode success requires the last grader record to have Result=true; Process=true alone means only that
+    an acceptable-format output was produced. Failed tests, missing/invalid output, environment errors, or timeouts yield
+    false outcomes with comments.
+  provenance: task_id links a released query/input/prompt to repository URL or bundled repository path, task config, optional
+    ground truth, grader, output path, and result JSONL; exact upstream source-repository commits and complete run provenance
+    are unknown
+recipe_metadata:
+  base_model: not applicable; this is an evaluation benchmark
+  teacher: not applicable; experts create reference outputs and evaluation criteria rather than teacher-model demonstrations
+  generator: Tasks are primarily handcrafted and validated by five computer-science PhDs; some domain/repository discovery
+    is LLM-assisted. Experts execute each selected task and iteratively adjust repository parameters to create ground truth.
+  filtering_rule: Select non-trivial tasks and Python repositories with at least 50 stars, activity within five years, ready-to-use
+    weights and a simple setup; inspect stars, forks, license, commit history, and functionality; retain repositories/tasks
+    that experts can complete with outputs satisfying all requirements.
+  sampling_protocol: Choose seven real-life domains and 24 subdomains, search for suitable repositories, iteratively co-refine
+    repository capabilities and task formulations, perform completeness verification, then package prompts, inputs, repository
+    code, ground truth where applicable, task configs, and custom graders.
+  rollout_count: two independent runs per reported framework-model setting; a complete run manifest is not released
+  temperature: 0.5
+  top_p: 1.0
+  top_k: model default
+  response_length: 4096
+  inference_budget: OpenHands timeout 600 seconds with default max_iterations; SWE-Agent execution_timeout 150 seconds and
+    total_execution_timeout 3600 seconds; Aider defaults except retry_timeout 60 and request_timeout 600. Sensitivity experiments
+    vary OpenHands timeout and max_iterations.
+  optimizer_or_scaffold: Evaluation uses Aider v0.84.1.dev-21-gb2592267, OpenHands 0.33.0, and SWE-Agent v1.0.1-61-gaa4e8ea1;
+    no policy optimizer or training scaffold is part of the paper.
+audit:
+  source_mixture: 54 evaluation tasks across image processing (16), video processing (3), speech processing (8), physiological-signal
+    processing (3), security/privacy (9), web scraping (6), and office-document processing (9), paired with 18 copied open-source
+    repositories.
+  split: One 54-task evaluation set; no train/dev/test split or hidden/private test set is reported.
+  decontamination: unknown; no model-pretraining decontamination, benchmark-overlap audit, or leakage-control procedure is
+    reported, while prompts, inputs, graders, repository code, and GitHub ground truths are public.
+  benchmark_overlap: unknown; related benchmarks are compared, but task/source overlap is not formally audited.
+  license: The author-maintained Hugging Face dataset declares CC BY-NC-SA 4.0. The GitHub repository has no root license
+    or API-detected license, and bundled repositories, inputs, helper binaries, checkpoints, and tests have heterogeneous
+    or undisclosed rights; wholesale redistribution requires component-level review.
+  lineage: domain/subdomain selection -> LLM-assisted repository search plus expert review -> iterative task/repository pairing
+    -> expert completeness execution and ground truth -> prompt/input/repository snapshot -> agent execution -> task-specific
+    grader -> Process/Result/comments and optional alpha analysis
+  release_version: AAAI proceedings published 2026-03-14; arXiv extended version v2 dated 2025-09-14; audited GitHub main
+    commit df188a73013393d036442bfb0f323c4c995fa5e1; audited Hugging Face revision 22ca28cedaa927f8c65224df3c61a0ed4c0b93eb.
+    GitHub exposes no tag or Release.
+  successful_and_failed_sample_retention: The GitHub release contains 43 task-level example result JSONLs and demonstrably
+    retains both successes and failures. Full result coverage, the producing framework/model for each example, and successful/failed
+    action-observation rollout retention are unknown.
+  replay: The GitHub SHA pins the benchmark bundle, but replay remains incomplete without per-source upstream commits, container/image
+    digests, OS packages, network policy, checkpoint/data hashes, and full framework/model run manifests. The smaller Hugging
+    Face release omits code_base, configs, ground truths, results, and the benchmark runner.
+  privacy_consent: The Hugging Face card claims no personally identifiable information and exclusion of sensitive/private
+    data; item-level provenance, consent, and rights have not been independently verified.
+  security_boundary: Agents install packages, may download checkpoints, execute third-party repository code, and may access
+    external web resources. Reuse should isolate execution, pin dependencies and artifacts, restrict credentials/network access,
+    and treat graders and bundled binaries as untrusted until audited.
+  known_failure_modes:
+  - Environment setup accounts for 65.04% of analyzed failures, including dependency conflicts, missing wheels, and absent
+    system libraries.
+  - Workflow planning, repository comprehension, runtime timeout/freeze, and instruction non-compliance also terminate otherwise
+    plausible episodes.
+  - Process/ECR can be true for a non-empty parseable output that is substantively wrong; Result/TPR depends on task-specific
+    grader coverage.
+  - Public prompts, ground truth, and graders permit contamination and evaluator gaming; appendix cases show repository bypass,
+    mock output, and redirected debug output.
+  - OpenHands event counts can exceed configured max_iterations, so actual step counts and interaction budgets are difficult
+    to define from configuration alone.
+  - Live web resources, external weights, dependency indexes, hardware, and mutable upstream repositories can drift even when
+    the benchmark commit is pinned.
+  citation_status: venue_verified
+  confidence: high
+  notes: Formal AAAI metadata, the arXiv extended version, fixed GitHub/Hugging Face revisions, and representative task/grader/result
+    files were checked. The release is an evaluation task/harness package, not a confirmed trajectory-training corpus.
+inclusion_reason: GitTaskBench makes repository state, autonomous environment setup, task-specific final artifacts, and executable
+  terminal predicates first-class parts of a 54-task code-agent evaluation surface; it belongs in the environment/agent track
+  even though benchmark-specific step trajectories are not released.
+related:
+- paperbench-2025
+tags:
+- benchmark
+- code-agents
+- repository-agents
+- environment-interaction
+- multimodal
+- programmatic-grading
+- terminal-predicate
+- evaluation-only
+- official-data-release
+status: verified
+category_ids:
+- environment_agent_trajectory_data
+- programmatically_verifiable_outcome_data
+one_line_summary: GitTaskBench releases 54 repository-linked multimodal tasks with inputs and custom final-output graders
+  for autonomous repository understanding, environment setup, execution, and delivery, while withholding a canonical action-observation
+  rollout corpus.
+why_it_matters: It exposes the repository, dependency setup, final artifact, and task-specific terminal predicate as the evaluation
+  data object, and its 65.04% environment-setup failure share shows why environment state and replay metadata are central
+  to agent reasoning-data audits.
+card: null
+needs:
+- 'needs_replay: pin upstream repository commits, container/image digests, OS packages, network policy, model/checkpoint hashes,
+  and exact run manifests'
+- 'needs_trajectory_release: confirm or release benchmark-specific action-observation events for all successful and failed
+  runs'
+- 'needs_result_provenance: identify the framework, model, run, and configuration behind each public result JSONL'
+- 'needs_license_audit: resolve benchmark-level GitHub licensing and component-level rights for copied repositories, inputs,
+  tests, models, and helper binaries'
+- 'needs_contamination_audit: document benchmark overlap, public-test exposure, and model-pretraining contamination controls'
+- 'needs_privacy_provenance: verify item-level origin, consent, and redistribution rights for multimodal inputs and web-derived
+  material'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: AAAI proceedings/DOI, arXiv v2, the official project and GitHub repository, and the first-author Hugging Face release
+    were verified. Audit claims are pinned to GitHub df188a73013393d036442bfb0f323c4c995fa5e1 and HF 22ca28cedaa927f8c65224df3c61a0ed4c0b93eb.

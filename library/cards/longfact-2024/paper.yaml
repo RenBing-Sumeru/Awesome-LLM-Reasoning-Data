@@ -1,0 +1,95 @@
+id: longfact-2024
+title: Long-form factuality in large language models
+year: 2024
+venue: arXiv
+authors:
+- Google Research
+source_role:
+- benchmark
+- verifier_reward
+verification_contract:
+- judgment_required
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- factuality
+- long-form-generation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2403.18802
+  arxiv: https://arxiv.org/abs/2403.18802
+  doi: null
+  code: https://github.com/google-deepmind/long-form-factuality
+  data: null
+  project: null
+  huggingface: null
+data_object:
+  dataset_scale: long-form factuality prompt/evaluation surface; exact dataset size and release location need audit.
+  prompt_source: long-form factuality prompts used to elicit paragraph or essay-style answers.
+  trace_author: model long-form answers and factuality checker or judge pipeline.
+  answer_format: prompt, long-form answer, atomic or claim-level factuality labels, and aggregate factuality score.
+  process_fields:
+  - prompt
+  - generated long-form answer
+  - extracted claims or atomic facts
+  - evidence or judge output
+  - factuality score
+  environment_or_substrate: long-form open-domain factual generation.
+  verifier_or_reward: claim-level or judge-based factuality assessment.
+  terminal_predicate: score under pinned LongFact evaluator and evidence policy.
+recipe_metadata:
+  base_model: Not a training recipe; factuality benchmark surface.
+  teacher: factuality annotators, retrieval/evidence pipeline, or model judge depending on release version.
+  generator: benchmark prompt construction plus factuality scoring pipeline.
+  filtering_rule: separate LongFact from FActScore and SimpleQA; do not infer long-form factuality from short-answer QA.
+  sampling_protocol: Pin prompt set, answer generation settings, claim extractor, evidence source, judge/checker, and scoring
+    version.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and checker-specific
+  optimizer_or_scaffold: long_form_factuality_eval
+audit:
+  source_mixture: frontier-model report references and LongFact primary source to be pinned.
+  split: needs_audit
+  decontamination: public long-form prompts can leak into training data.
+  license: needs_audit
+  lineage: needs_audit
+  known_failure_modes:
+  - claim decomposition may be incomplete or ambiguous
+  - evidence source can be stale or missing
+  - aggregate factuality score can hide severe individual false claims
+  citation_status: partial
+  confidence: medium
+  notes: Metadata shell added first; primary source and artifact links need completion before L5.
+inclusion_reason: LongFact is a frontier-model long-form factuality benchmark distinct from FActScore and SimpleQA.
+related:
+- factscore-2023
+- simpleqa-2024
+tags:
+- benchmark
+- factuality
+- long-form
+one_line: LongFact evaluates factual precision in long-form generated answers.
+why_it_matters: It covers long-form factuality rather than short-answer correctness or atomic-fact scoring alone.
+status: verified
+needs:
+- 'needs_audit: pin LongFact prompt version, SAFE evaluator implementation, search backend, model/judge settings, data license,
+  and benchmark split'
+one_line_summary: LongFact evaluates factual precision in long-form generated answers.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Metadata shell added first to prevent partial-card failures.
+category_ids:
+- benchmarks_evaluation_surfaces

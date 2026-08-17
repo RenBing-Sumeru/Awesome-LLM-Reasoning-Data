@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "deepseek-v3的改进版本",
+    "updated_at": "2026-07-18T14:09:07Z"
+  },
+  "updated_at": "2026-07-18T14:09:07Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

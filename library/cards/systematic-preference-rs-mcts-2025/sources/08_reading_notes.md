@@ -1,0 +1,5 @@
+- Treat 48K as a rounded experimental count; Appendix Table 7 sums to exactly 47,198 prompts, but no official prompt dataset, pairs, verifier code, trees, logs, rejects, checkpoints, or immutable release manifest was confirmed.
+- RS samples 64 independent complete responses at temperature 1.0; MCTS constructs partial-response trees and selects sibling branches with a shared parent prefix.
+- Separate MCTS's blended search reward—80% rollout verifier score and 20% policy self-evaluation—from final pair eligibility, which uses only the programmatic verifier.
+- The verifier score is the fraction of prompt constraints satisfied. It is graded and deterministic for the 23 constraint types, but it is not a general semantic-quality or human-preference judgment.
+- Compare RS and MCTS only after matching training-pair and unique-prompt counts because search topology, yield, pair contrast, and compute differ; read the shared-prefix, response-contrast, prompt-difficulty, and scaling ablations separately, since MCTS gains are marginal and RS scaling saturates near N=32 in the reported setting.

@@ -1,0 +1,6 @@
+- 先读 §3.1–3.2，并区分两个 object：SailorFog-QA 的 question/answer，以及重构后的成功 ReAct trajectory。公开发布目前只暴露前者的 20 条示例。
+- §4.1 给出 cold-start contract：terminal answer 正确、少于 32k token、超过五次 tool call、observation 从 loss 中 mask，最终保留 2,000 余条。
+- §4.2 必须与 Equation 5 一起读。DUPO 的优化信号是 mixed——programmatic format 加未披露的 LLM answer judge；零方差 group 被移除，而不是从中学习。
+- 模型比较看 Table 1，SailorFog-QA 难度看 Table 2 与 Figure 3，cold start 对 direct RL 看 Figure 6，作者明确限制看 §5.4。不要把 abstract 的 proprietary-parity 表述改写成 BrowseComp-en 上的分数相等。
+- 分开记录论文规模、公开规模与模型可用性：论文有 2,000 余条 RFT trace；GitHub 有 20 行 QA；官方有 3B/7B/32B 模型页；未确认公开 72B checkpoint。
+- 与 WebDancer 一起阅读相邻 RFT/RL recipe，与 WebSailor-V2 一起阅读后续发展；没有明确 provenance 时，不能用后续 artifact 填补 v1 unknown。复用前还要检查 teacher/reconstructor/judge 身份与 prompt/seed、graph/URL lineage、split/decontamination、license、live-web replay，以及失败和被拒 trajectory 的保留情况。

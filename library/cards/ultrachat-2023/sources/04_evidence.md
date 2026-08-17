@@ -1,0 +1,3 @@
+**Corpus scale and structure (Table 1).** UltraChat contains `1,468,352` dialogues with `3.8` average turns and `1467.4` average tokens per dialogue, far larger and longer than the compared public chat corpora. This verifies construction scale and retained context, not correctness, safety, or real-user coverage.
+
+**Chat-model comparison (Table 7).** Under the paper's automatic chat evaluation, UltraLLaMA scores `9.023 ± 0.952` and Vicuna scores `8.961 ± 0.718`. Both are LLaMA-based chat models, but their training corpora and recipes differ, so the small gap supports the usability of the full UltraChat training setup rather than isolating the synthetic corpus as the sole cause.

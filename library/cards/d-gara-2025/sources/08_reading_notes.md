@@ -1,0 +1,1 @@
+Read D-GARA as a robustness benchmark, not only a new GUI task list. The key comparison is clean versus anomalous conditions. Keep task completion, anomaly handling, and trajectory quality separate; an agent may dismiss an anomaly but still fail the original task. Before reusing results, inspect whether app versions, anomaly templates, and predicates match the official release.

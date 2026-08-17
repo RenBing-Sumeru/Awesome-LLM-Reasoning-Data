@@ -1,0 +1,1 @@
+Output likelihood and entropy can change after RL post-training for reasons unrelated to memorization: reward shaping, decoding, and policy collapse all confound them. The paper asks whether contamination can instead be detected from how internal representations react to controlled semantic perturbations.

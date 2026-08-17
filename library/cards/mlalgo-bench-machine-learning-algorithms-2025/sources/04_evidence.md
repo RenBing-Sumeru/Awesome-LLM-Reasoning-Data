@@ -1,0 +1,3 @@
+In the public evaluation, Claude 3.5 Sonnet, the strongest system, completes 48.8% of algorithm-implementation tasks but only 21.6% of Kaggle practical tasks. The large gap shows that implementing an isolated algorithm does not imply successful coordination of data processing, training, tuning, prediction, and submission in an end-to-end solution.
+
+Automatic execution also records relative performance and time, preventing code that runs but predicts near random from being treated as fully successful. This supports the benchmark’s discriminative value for complex ML programming, although results depend on hardware, randomness, and API versions, so performance variance cannot be attributed entirely to model reasoning.

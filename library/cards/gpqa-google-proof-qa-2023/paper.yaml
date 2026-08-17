@@ -1,0 +1,111 @@
+id: gpqa-google-proof-qa-2023
+title: 'GPQA: A Graduate-Level Google-Proof Q&A Benchmark'
+year: 2023
+venue: COLM 2024 / arXiv
+authors:
+- David Rein
+- Betty Li Hou
+- Asa Cooper Stickland
+- Jackson Petty
+- Richard Yuanzhe Pang
+- Julien Dirani
+- Julian Michael
+- Samuel R. Bowman
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- science-reasoning
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2311.12022
+  project: null
+  code: https://github.com/idavidrein/gpqa
+  data: https://github.com/idavidrein/gpqa
+  arxiv: https://arxiv.org/abs/2311.12022
+  doi: https://doi.org/10.48550/arXiv.2311.12022
+  huggingface: https://huggingface.co/datasets/idavidrein/gpqa
+  venue: https://openreview.net/pdf?id=Ti67584b98
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: domain experts write questions and validators test difficulty despite web access.
+  trace_author: Benchmark authors or official task curators; reasoning traces are not the main release object unless explicitly
+    stated.
+  answer_format: 448 expert-written biology, physics, and chemistry multiple-choice questions with gold answers and validation
+    metadata
+  process_fields:
+  - prompt or task input
+  - reference answer, verifier, or evaluator
+  - metadata for split, domain, or benchmark version
+  - model output and score where evaluated
+  environment_or_substrate: graduate-level Google-proof science MCQ benchmark
+  verifier_or_reward: exact match against the gold multiple-choice answer
+  terminal_predicate: model-selected option equals the official gold option
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: domain experts write questions and validators test difficulty despite web access.
+  filtering_rule: Use only official source-backed task construction and keep unresolved artifact, license, split, and scoring
+    gaps in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: domain_expert_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2311.12022;
+    https://arxiv.org/pdf/2311.12022'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: Official repository is MIT licensed.
+  lineage: 'Primary source: https://arxiv.org/abs/2311.12022'
+  known_failure_modes:
+  - MCQ shortcuts, public contamination, expert disagreement, and prompt formatting can mislead scores.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv verifies 448 questions and validation results; official repo citation says First Conference on Language Modeling,
+    2024, and links MIT-licensed code/data plus HF dataset.
+inclusion_reason: 'medium-high: important expert-domain benchmark, but static MCQ and public release lower urgency than live/agent
+  surfaces.'
+related: []
+tags:
+- benchmark
+- domain_expert_benchmark
+- science-reasoning
+why_it_matters: It is a high-difficulty expert science benchmark for scalable oversight and contamination-sensitive evaluation.
+status: verified
+needs:
+- 'needs_metadata: verify license, subset definitions, and official dataset artifact'
+- 'needs_audit: inspect validation protocol, answer extraction, and prompt-format sensitivity'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: GPQA provides 448 expert-written Google-proof science multiple-choice questions for scalable oversight and
+  hard-domain reasoning evaluation.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official checked sources show no conference venue.
+category_ids:
+- benchmarks_evaluation_surfaces
+- judgment_rubric_domain_expert_data

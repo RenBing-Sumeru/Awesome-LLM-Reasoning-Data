@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AlphaMath 将带最终答案的 GSM8K 与 MATH 题目转化为经筛选的正负 MCTS 路径和回传步骤价值目标。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基于搜索的过程监督和自训练配方",
+  "best_for_ch": "研究由终局答案、树搜索和执行结果构造数学推理轨迹与价值目标的数据研究者",
+  "confidence_ch": "高",
+  "authors_ch": "陈国新、廖敏鹏、李成熙、范凯",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T11:25:11Z"
+}

@@ -1,0 +1,5 @@
+Correctness is only relative to the released reference answer and grader instructions. A CORRECT label does not prove that every extra statement in a verbose answer is true; an INCORRECT label can reflect contradiction, partial answering, ambiguity, source conflict, or grader error.
+
+The benchmark is public, so contamination risk increases over time. The questions are designed to be answerable as of December 31, 2023 and avoid answers that change, which means SimpleQA does not test live knowledge, browsing, retrieval grounding, or long-form factual precision. Supporting URLs can move, disappear, or disagree.
+
+The prompted grader is convenient but not a formal verifier. It can change with the grader model, prompt, output parser, and evaluator commit. F-score is also imperfect: the paper notes that when a model believes it has more than roughly a 50% chance of being correct, guessing can be favored over abstaining. Safety-sensitive reports should keep correct, incorrect, and not-attempted rates separate, or use an explicit wrong-answer penalty.

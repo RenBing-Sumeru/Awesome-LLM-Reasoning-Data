@@ -1,0 +1,5 @@
+实验使用按难度 2–4 分层抽取的 200 道 MATH 题和 200 道 GSM8K 题。MATH 上测试 DeepSeek-V3、GPT-4o-mini、Qwen2.5-7B，GSM8K 另测试 DeepSeek-V3，共四个 model-dataset setting。Temperature 为 0.7。论文在每个 setting 中对每题收集 48 个 response，而不是为每个 question-budget pair 独立收集 48 个。对预算 b，系统把这些响应划为 floor(48/b) 个不重叠窗口，在每个窗口内多数投票并平均正确率。附录据此计算每个 setting 为 200 乘 48，即 9,600 条响应，四个 setting 合计 38,400 条。
+
+对每个目标平均预算，系统用 lambda 的 binary search 把 utility matrix 转换为逐题 label。Feature vector 含 16 个问题文本统计量和一个归一化 entropy estimate。默认 XGBoost 使用 100 个 estimator、maximum depth 5、learning rate 0.1 与 multi-class log loss，按 80/20 划分并使用三个随机 seed。推理时按所选预算采样 response 并多数投票；ground-truth answer parser 构成实验 terminal predicate。
+
+官方仓库实现 response collection、feature extraction、oracle construction、GBM training、evaluation、图表及 MATH/GSM8K loader，并显示 MIT license。复现仍需要 provider credential 与当前 API。尚未确认发布固定的 model/API revision、精确抽题 ID、raw response table、prompt template、parser failure、逐窗口 outcome、stochastic-mixing seed、训练后 classifier file，或样本数之外的成本测量。论文说明每题的 48 个响应被所有预算复用，而不是为每个 question-budget pair 重新生成 48 个响应。

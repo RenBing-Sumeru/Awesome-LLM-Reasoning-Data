@@ -1,0 +1,3 @@
+1. **Teacher dependence:** Labels and critiques inherit the strong teacher’s preferences and blind spots, so the model may imitate a judging style rather than understand the criterion. Reuse should include calibration against independent human labels.
+2. **Criterion coverage:** The hierarchical guideline remains finite and may fail on unseen professional standards or conflicting criteria. Compositional generalization to new criteria should be tested.
+3. **Release boundary:** The repository provides model and dataset access, but the full generation cost, filtering ratios, and some licensing details are insufficiently transparent for exact reproduction.

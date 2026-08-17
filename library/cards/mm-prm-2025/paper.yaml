@@ -1,0 +1,170 @@
+id: mm-prm-2025
+title: 'MM-PRM: Enhancing Multimodal Mathematical Reasoning with Scalable Step-Level Supervision'
+year: 2025
+venue: arXiv
+authors:
+- Lingxiao Du
+- Fanqing Meng
+- Zongkai Liu
+- Zhixiang Zhou
+- Ping Luo
+- Qiaosheng Zhang
+- Wenqi Shao
+source_role:
+- process_supervision
+- verifier_reward
+- construction_recipe
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal
+- math
+training_use:
+- process_supervision
+- reward_modeling
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.13427
+  arxiv: https://arxiv.org/abs/2505.13427
+  code: https://github.com/ModalMinds/MM-PRM
+  data: https://huggingface.co/datasets/Cierra0506/MM-K12
+  project: null
+  huggingface: https://huggingface.co/Cierra0506/MM-PRM
+  doi: https://doi.org/10.48550/arXiv.2505.13427
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MM-K12 supplies 10,000 image-question-answer seed problems, reported as 5,000 fill-in-the-blank and 5,000
+    multiple-choice items; original problem and image provenance is undisclosed.
+  trace_author: MM-Policy, an InternVL2.5-8B model fine-tuned on cleaned and step-structured multimodal and textual math data,
+    generates the MCTS rollouts.
+  answer_format: Each annotation tree stores a multimodal problem, reference answer, image path, partial-solution nodes, Monte
+    Carlo values, visit counts, correct and incorrect completions, and child links; sampled PRM records retain a reasoning
+    process and one soft label per stored step.
+  process_fields:
+  - id
+  - question
+  - reference_answer
+  - image_path
+  - partial_solution
+  - mc_value
+  - visit_count
+  - correct_rollouts
+  - incorrect_rollouts
+  - children
+  - sampled_process
+  - step_labels
+  environment_or_substrate: Offline OmegaPRM-style MCTS over multimodal reasoning prefixes, with vLLM generation and binary-search
+    expansion of failed rollouts.
+  verifier_or_reward: A Qwen2.5-72B-Instruct final-answer judge in the released construction code supplies binary rollout
+    outcomes; their success fraction becomes a Monte Carlo soft label. The learned MM-PRM then emits a Yes-class probability
+    at each prm marker token. These are related but distinct feedback stages.
+  terminal_predicate: A completed rollout is successful when the text-only answer judge returns Yes for semantic agreement
+    with the reference answer; the public code queries at temperature 0.5 and does not pass the image to this judge.
+recipe_metadata:
+  base_model: MM-Policy and MM-PRM are initialized from InternVL2.5-8B; the public Hugging Face checkpoint identifies OpenGVLab/InternVL2_5-8B
+    as its base.
+  teacher: Qwen2.5-72B-Instruct restructures policy-training solutions in the paper and serves as the final-answer judge in
+    the released MCTS code. A separate Qwen2-VL-72B-Instruct local-step judging script exists but is not part of the documented
+    main tree-to-training-data path.
+  generator: MM-Policy generates structured chain-of-thought continuations from image-question prefixes; OmegaPRM-style search
+    selectively expands failed branches.
+  filtering_rule: The released traversal keeps only roots with Monte Carlo value strictly between 0 and 1, stops a path at
+    mc_value <= 0, removes paths of at most 10 words, deduplicates identical process strings, and downsamples positive leaves
+    to at most the number of negative paths.
+  sampling_protocol: Paper settings are temperature 1.0, top-k 50, top-p 0.9, c_puct 0.125, 16 rollouts per Monte Carlo estimate,
+    up to 200 search expansions, and at most 1,000 total rollouts per problem.
+  rollout_count: 16
+  temperature: 1.0
+  inference_budget: Up to 200 search expansions or 1,000 rollouts per seed problem are reported; total token count, GPU-hours,
+    and generation seeds are unknown.
+  optimizer_or_scaffold: The paper initializes the PRM from MM-Policy and reports one epoch, batch size 512, and learning
+    rate 4e-6; the public training shell instead specifies three epochs and learning rate 2e-6.
+audit:
+  source_mixture: The policy-data appendix totals 5,135,768 examples from 16 named datasets before the experiment section
+    describes approximately 4 million cleaned examples used for training. MM-K12 source websites, publishers, and image rights
+    are not documented.
+  split: The paper reports 10,000 MM-K12 construction seeds plus an independent 500-problem test set; the public Hugging Face
+    dataset exposes one 10,000-row train split, so the released rows cannot be mapped to the paper's seed/test partition from
+    the checked metadata.
+  decontamination: unknown
+  license: The GitHub repository, MM-K12 dataset card, and MM-PRM model card declare MIT; upstream dataset, problem, solution,
+    and image rights remain undisclosed.
+  lineage: Public math mixtures -> Qwen2.5-72B-Instruct step restructuring -> MM-Policy -> MM-K12 image/question/reference
+    seeds -> multimodal MCTS rollouts -> Qwen2.5-72B-Instruct final-answer judgments -> node Monte Carlo values -> sampled
+    and balanced process paths -> MM-PRM. The released checkpoint reports 747,779 training samples, but those records and
+    their trees are not released.
+  known_failure_modes:
+  - A Monte Carlo label estimates future success under one rollout policy and answer judge rather than directly labeling the
+    local step's logical validity
+  - the text-only final-answer judge may make semantic-equivalence errors and is sampled at temperature 0.5 without reported
+    calibration or repeatability
+  - visual evidence is not supplied to the final-answer judge
+  - roots with uniform success or failure and short paths are removed and positive paths are downsampled
+  - exact tree records and selected or rejected PRM paths are unavailable for audit
+  - the paper and public PRM training shell disagree on epochs and learning rate
+  - the command-line parser defaults to 20 searches and 200 rollouts unless the paper-aligned shell overrides them to 200
+    and 1000
+  - Best-of-N cannot recover an answer absent from the candidate set and ranking depends on the chosen step-score aggregation
+  - policy-corpus counts are reported as 5.14 million before cleaning but approximately 4 million in the experiment description
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv v2, GitHub code and license, MM-K12 dataset, MM-PRM checkpoint, model configuration, and training-result
+    metadata were checked. The release verifies the seed set, checkpoint, and recipe code, not a downloadable 747k annotation
+    corpus or exact paper-run trees.
+  metadata_status: partial
+inclusion_reason: Converts multimodal MCTS rollouts and answer-judged terminal outcomes into per-step Monte Carlo soft labels,
+  then uses a learned PRM to rank Best-of-N reasoning paths.
+related: []
+tags:
+- multimodal-math
+- process-reward-model
+- mcts
+- rollout-value
+- step-level-supervision
+- soft-labels
+- best-of-n
+- open-code
+- partial-release
+status: partial
+one_line_summary: An OmegaPRM-style multimodal pipeline that turns answer-judged rollout success rates into soft step labels
+  and trains an 8B PRM, while releasing the seed data and checkpoint but not the reported annotation trees.
+why_it_matters: It makes the chain from multimodal rollouts to step rewards explicit and shows why Monte Carlo value, final-answer
+  judgment, learned PRM score, and Best-of-N selection must be audited as separate contracts.
+card: null
+needs:
+- downloadable paper-run trees and sampled 747k PRM records
+- exact seed-to-test split mapping and MM-K12 source provenance
+- final-answer-judge calibration and repeated-run error analysis
+- immutable paper-run model revisions and random seeds
+- reconciliation of paper and public training-script hyperparameters
+- upstream license matrix and decontamination evidence
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper
+  repository: null
+  MM-K12 seed set: null
+  ? and MM-PRM checkpoint verified; the claimed process-annotation trees and sampled PRM training records are not available
+    in the checked releases.
+  : null
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data

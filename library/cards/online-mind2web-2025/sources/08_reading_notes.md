@@ -1,0 +1,6 @@
+- Read the task-construction section first: it quantifies why static Mind2Web trajectories no longer represent current site behavior.
+- Keep task validity separate from agent failure; human labels include a distinct not-executable outcome.
+- In trajectory analysis, treat per-action SUCCESS as an execution observation, never as the terminal reward.
+- Inspect the WebJudge stages independently; evidence selection errors and outcome-judgment errors require different audits.
+- Pin the official paper, code, dataset, model, schema, task revision, and evaluator outputs before comparing runs.
+- Do not claim replayability or policy-training readiness unless complete trajectories, environment state, lineage, rights, and safety controls are supplied.

@@ -1,0 +1,3 @@
+- For building a small task-targeted SFT subset from a large instruction pool, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of selection can overfit a tiny target validation set and erase coverage.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: gradient similarity estimates each record's influence on the target task. Do not reuse the release when its licensing or source provenance cannot be preserved.

@@ -1,0 +1,3 @@
+The central idea is to put a small scheduler beside, rather than inside, the DPO objective. For every incoming batch, the scheduler observes representations of the candidate preference pairs and of the policy state, then chooses a top-K subset for the DPO update. The original DPO loss is unchanged; what changes is the set of records to which that loss is applied.
+
+SamS frames this repeated choice as a contextual bandit. Its reward combines whether the policy's loss improves on subsequent batches with whether an individual pair has a clear preference margin and remains uncertain for the current model. A separate exploration network prevents the scheduler from repeatedly trusting only the samples that already look familiar.

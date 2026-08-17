@@ -1,0 +1,8 @@
+- **Private source and release:** The 3,607 queries, SFT data, rollout trees, rewards, model weights, code, and tool backend are not verified public; only the paper, appendix, examples, and Apple page are available.
+- **Split and contamination:** The 3,072/535 split lacks disclosed user grouping, temporal cutoff, stratification, duplicate handling, development selection, pretraining-overlap analysis, or paraphrase audit.
+- **Judge uncertainty:** GPT-4o reaches 94.37% agreement on 700 calibration pairs, but 5-vote majority cannot remove correlated bias; no domain confusion matrix or raw disagreement release is provided.
+- **Branch retention:** Training requires successful, failed, and unable-to-answer descendants, yet retry/drop accounting and persistent retention are undisclosed. The 8-branch trees cannot be independently audited.
+- **Replay limits:** Fixing Cupertino and second-level timestamps helps, but the private 21-tool backend, real-time data, model state, random seeds, 6-step episodes, tool errors, and judge calls remain necessary.
+- **Version drift:** Current arXiv v2 expands and revises the original paper record; artifact manifests must pin the revision rather than mix earlier and current tool counts or author metadata.
+- **Licensing and privacy:** CC BY 4.0 covers the manuscript, not private production queries or generated artifacts. The paper states anonymization and removal of user identifiers but omits consent, technique, retention, privacy review, and re-identification analysis.
+- **Safety:** A sandbox is reported, but there is no public threat model, unsafe-query policy, prompt-injection defense, tool-output trust policy, abuse filter, or evidence that all operations are side-effect-free.

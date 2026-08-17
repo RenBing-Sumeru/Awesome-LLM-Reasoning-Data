@@ -1,0 +1,262 @@
+id: seed-prover-2025
+title: 'Seed-Prover: Deep and Broad Reasoning for Automated Theorem Proving'
+year: 2025
+venue: arXiv preprint
+authors:
+- Luoxin Chen
+- Jinming Gu
+- Liankai Huang
+- Wenhao Huang
+- Zhicheng Jiang
+- Allan Jie
+- Xiaoran Jin
+- Xing Jin
+- Chenggang Li
+- Kaijing Ma
+- Cheng Ren
+- Jiawei Shen
+- Wenlei Shi
+- Tong Sun
+- He Sun
+- Jiahui Wang
+- Siran Wang
+- Zhihong Wang
+- Chenrui Wei
+- Shufa Wei
+- Yonghui Wu
+- Yuchen Wu
+- Yihang Xia
+- Huajian Xin
+- Fan Yang
+- Huaiyuan Ying
+- Hongyi Yuan
+- Zheng Yuan
+- Tianyang Zhan
+- Chi Zhang
+- Yue Zhang
+- Ge Zhang
+- Tianyun Zhao
+- Jianqiu Zhao
+- Yichi Zhou
+- Thomas Hanwen Zhu
+source_role:
+- model_report
+- verifier_reward
+- construction_recipe
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- formal_mathematics
+- lean_theorem_proving
+- olympiad_mathematics
+- geometry
+- algebra
+- number_theory
+- combinatorics
+training_use:
+- sft
+- rlvr
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.23726
+  arxiv: https://arxiv.org/abs/2507.23726
+  code: https://github.com/ByteDance-Seed/Seed-Prover
+  data: https://github.com/ByteDance-Seed/Seed-Prover/tree/main/SeedProver
+  project: https://github.com/ByteDance-Seed/Seed-Prover
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2507.23726
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: RL combines cited open formal-math sources—Big-Math, NuminaMath, CriticLean, Lean Workbook, and DAPO—with
+    undisclosed in-house formalizations. Problems above a 1/4 proof rate are excluded as too easy; a proposer creates easier
+    variants for problems too hard for single-pass proof. Prompts may include natural-language hints or proofs, similar/proved
+    lemmas, failed attempts, summaries, and Lean compiler feedback. Seed-Geometry separately generates over 230M unique auxiliary-requiring
+    problems (38B BPE tokens) from statistics spanning more than 20 years of olympiad geometry.
+  trace_author: Human/open-source formalizers provide statements and contexts; an undisclosed Seed-Prover checkpoint generates
+    lemma-first proofs, failures, summaries, and conjectures; Lean provides compiler feedback and terminal proof success;
+    an undisclosed LLM judges heavy-search semantic relevance. A programmatic geometry generator creates configurations, a
+    Seed-family policy proposes auxiliaries, and a symbolic engine checks consequences.
+  answer_format: A Lean 4 formal statement plus named `lemma` blocks preceding the main `theorem`. Lemma pools can store name,
+    statement, complete proof, difficulty, and dependencies; iterative records can include whole proofs, failed lemmas/attempts,
+    compiler errors, summaries, and proved lemmas. Geometry records pair canonicalized context with auxiliary constructions.
+  process_fields:
+  - formal_statement
+  - natural_language_problem
+  - natural_language_hint_or_proof
+  - lemma_name
+  - lemma_statement
+  - lemma_complete_proof
+  - lemma_dependency_relation
+  - lemma_proof_difficulty
+  - proved_lemma
+  - failed_lemma
+  - whole_proof_attempt
+  - failed_attempt
+  - lean_compiler_feedback
+  - previous_attempt_summary
+  - proposer_conjecture
+  - conjecture_proof_or_disproof_status
+  - proof_rate
+  - semantic_relevance_score
+  - proof_length
+  - binary_proof_reward
+  - formatting_penalty
+  - geometry_problem_context
+  - geometry_auxiliary_construction
+  - symbolic_forward_chain_result
+  environment_or_substrate: Seed-Prover uses the unreleased LooKeng Lean 4 REPL (`init_state`, `run_tac`, `verify_proof`)
+    for whole-proof or stepwise interaction, version switching, memory controls, native verification, and asynchronous concurrency.
+    Most evaluation uses Lean 4.14.0; MiniCTX-v2 uses 4.16.0. Seed-Geometry uses an unreleased C++/Pybind11 forward-chaining
+    backend with distributed GPU policy processes and asynchronous CPU pools.
+  verifier_or_reward: The principal RL signal is 1 when Lean proves the statement and 0 otherwise, plus an undisclosed formatting
+    penalty encouraging lemmas before the theorem. Heavy search keeps formally proved lemmas but ranks semantic relevance
+    with an undisclosed LLM judge alongside proof rate and length. Geometry terminates through symbolic forward chaining.
+    Reward aggregation, penalty weight, parser, judge calibration, and false-positive audits are unknown.
+  terminal_predicate: Theorem success requires a complete proof to verify in the selected Lean/Mathlib environment. Light
+    allows 8–16 refinements per candidate at Pass@8–16; medium gives each selected failed lemma an 8×8 light budget; heavy
+    expands conjectures and proved lemmas for days under undisclosed aggregate limits. Geometry succeeds when forward chaining
+    reaches the goal.
+recipe_metadata:
+  base_model: Seed-Prover size, base checkpoint, architecture, pretraining corpus, and context window are undisclosed. Seed-Geometry
+    initializes from an unspecified Seed-family model pretrained on code and mathematics; an explored value model was dropped
+    because estimation errors harmed wide search.
+  teacher: No external training proof teacher is disclosed. Human experts create in-house formalizations and IMO 2025 statements.
+    Seed1.6-Thinking supplies initial candidates only for fill-in-the-blank IMO 2025 evaluation formalization. Heavy-search
+    relevance is judged by an undisclosed LLM.
+  generator: Seed-Prover generates lemma-style proofs, failures/refinements, summaries, 10–50 conjectures per proposer call,
+    and easier training variants. Seed-Geometry programmatically generates over 230M problems and uses a policy to propose
+    auxiliary constructions. Checkpoints, prompts, temperatures, beam widths, deduplication, and logs are unknown.
+  filtering_rule: Exclude RL problems with proof rate above 1/4 and generate easier variants for single-pass failures. Heavy
+    search ranks formally proved lemmas by proof rate, LLM semantic relevance, and proof length, removes unrelated or short-proof
+    lemmas, and retains hundreds for final medium search. Geometry uniqueness and preprocessing are undisclosed.
+  sampling_protocol: Training randomly varies hints/proofs, related/proved lemmas, failures, summaries, and compiler feedback
+    while increasing difficulty, quality, and output length. Light uses Pass@8–16 with 8–16 refinements; medium gives selected
+    failed lemmas 8×8; heavy starts with 5,000 conjectures, expands from proved lemmas, and sends hundreds of ranked lemmas
+    to a final medium run.
+  rollout_count: Training trajectories are unknown. Light is approximately Pass@64–256 whole-proof samples; medium adds unknown
+    outer attempts and 8×8 inner budgets; heavy begins from 5,000 conjectures but omits total proof, disproof, and refinement
+    calls.
+  temperature: Unknown for RL, proposer, summarization, relevance judging, and light/medium/heavy inference. Geometry ranks
+    proposals by cumulative negative log likelihood, but temperature and beam width are unknown.
+  inference_budget: Light uses Pass@8–16 candidates with 8–16 refinements each, approximately Pass@64–256 and 1–2 hours. Medium
+    adds 8×8 light inference per failed lemma and can take hours to days. Heavy begins with 5,000 conjectures, accumulates
+    thousands of facts over days, retains hundreds, then runs medium; total tokens, calls, GPUs, concurrency, and normalized
+    wall time are unknown.
+  optimizer_or_scaffold: Multi-stage, multi-task RL based on VAPO uses binary Lean success plus a lemma-order format penalty
+    while difficulty, quality, and output length rise. Optimizer, learning rate, batches, rollout counts, KL, stages, hardware,
+    compute, and exact VAPO changes are undisclosed. Seed-Geometry policy optimization is also undisclosed.
+audit:
+  source_mixture: Five cited open ingredients, undisclosed in-house formalizations, proposer variants, and a separate 230M-problem/38B-token
+    geometry corpus are described without source-level counts, snapshots, mixture weights, or reconciliation.
+  split: No immutable train/validation/test or proposer-family split is released. Past-IMO mostly adapts Compfiles/MiniF2F;
+    MiniF2F is separately evaluated. MiniCTX-v2's post-November-2024 date lacks a disclosed model cutoff. Geometry has no
+    released split or overlap ledger.
+  decontamination: No statement, proof, repository, semantic, or generated-family decontamination is reported. Open formalizations,
+    in-house data, proposer variants, Compfiles/MiniF2F-derived evaluation, and olympiad-derived geometry can overlap directly
+    or structurally.
+  license: The official repository is Apache-2.0 and contains reports and successful proof artifacts. Training data, in-house
+    formalizations, variants, failed trajectories, 230M geometry problems, weights, LooKeng, and geometry engine are unreleased;
+    source-level rights remain unknown.
+  lineage: Stage-level lineage is described, but no immutable IDs join source statement, variant parent, prompt, attempt,
+    compiler output, summary, lemma dependency, reward/judge score, batch, checkpoint, and final proof.
+  known_failure_modes:
+  - Only successful proof artifacts are released; failed attempts, compiler traces, summaries, pools, judge scores, and search
+    logs cannot be audited.
+  - Lean correctness is relative to the exact formal statement, imports, axioms, versions, limits, and verifier implementation;
+    LooKeng and complete environments are unreleased.
+  - The undisclosed format penalty may reward surface lemma placement without useful decomposition.
+  - Generated easier variants can leak families across splits; parent-child lineage and near-duplicate audits are absent.
+  - Heavy search uses an opaque LLM relevance judge that may discard valid unconventional lemmas.
+  - Light, medium, and heavy results are not compute-normalized; aggregate samples, tokens, hardware, and stop rules are incomplete.
+  - Past-IMO/MiniF2F source reuse and open plus in-house training lack membership-level contamination auditing.
+  - IMO 2025 used human formalization and Seed1.6-Thinking candidates for fill-in-the-blank items; P1 finished after the deadline.
+  - Seed-Geometry's corpus, policy, DSL, generator, and engine are closed, so uniqueness, overlap, rights, and speed claims
+    are not independently auditable.
+  - The official repository also hosts Seed-Prover 1.5 and Delta-Prover; their claims must not be attributed to this report.
+  citation_status: verified
+  confidence: high
+  notes: The arXiv v2 paper, official ByteDance Seed repository, proof artifacts, IMO Lean project, MiniCTX-v2 README, and
+    Apache-2.0 metadata were inspected on 2026-07-24. Released Lean files were text-checked but not independently compiled.
+    No official Seed-Prover 1.0 weights, LooKeng, Seed-Geometry, or training-data release was found.
+inclusion_reason: A frontier formal-reasoning report exposing theorem/lemma/failure/compiler-feedback trajectories, binary
+  Lean RL, proposer curriculum, and three search scales, plus a large but unreleased synthetic geometry recipe.
+related:
+- deepseek-prover-v2-2025
+- goedel-prover-v2-2025
+- kimina-prover-preview-2025
+- dapo-2025
+tags:
+- seed-prover
+- bytedance-seed
+- lean4
+- formal-theorem-proving
+- lemma-style-proving
+- compiler-feedback
+- self-summarization
+- conjecture-pool
+- lemma-pool
+- vapo
+- rlvr
+- test-time-scaling
+- seed-geometry
+- synthetic-geometry
+- verifier-reward
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Seed-Prover trains a lemma-first Lean policy with binary proof rewards and feedback-rich prompts, then scales
+  from iterative repair to 5,000-conjecture search; Seed-Geometry adds a reported 230M-problem corpus, while only successful
+  proof artifacts are open.
+why_it_matters: It makes the reasoning-data object concrete—formal statements, lemmas, dependencies, failures, compiler feedback,
+  summaries, conjectures, and verified terminal reward—while exposing missing membership, failed trajectories, judge-assisted
+  selection, and search-compute accounting.
+card: null
+needs:
+- 'needs_data: source manifests, variant lineage, theorem/lemma/dependency records, successful and failed attempts, compiler
+  feedback, summaries, judge scores, rewards, geometry records, splits, and immutable lineage'
+- 'needs_metadata: checkpoints, context lengths, mixtures, stages, prompt probabilities, proposer/judge prompts, decoding,
+  geometry uniqueness definition, and formalizer provenance'
+- 'needs_verifier: LooKeng, exact Lean/Mathlib containers, binary/format reward code, axiom audits, compiler-feedback handling,
+  geometry DSL/engine, and certificates'
+- 'needs_compute: training hardware/tokens/rollouts and compute-normalized search budgets, tokens, GPUs, concurrency, wall
+  time, timeouts, and stopping rules'
+- 'needs_audit: theorem/proof/variant/repository contamination, train-evaluation overlap, formalization and Seed1.6 prior
+  sensitivity, LLM-judge bias, failed-trajectory coverage, and recompilation'
+- 'needs_license: source-level rights for open/in-house formalizations, olympiad statistics, variants, proofs, and geometry
+  derivatives'
+- 'needs_code: proposer, prompt assembly, VAPO training, pools, refinement, judge ranking, evaluation, geometry generation/search,
+  and provenance tooling'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, and arXiv-ID deduplication found no target-library match. Official paper, repository, successful
+    proof artifacts, IMO project, MiniCTX-v2 solutions, and license were verified; Lean files were not independently compiled.

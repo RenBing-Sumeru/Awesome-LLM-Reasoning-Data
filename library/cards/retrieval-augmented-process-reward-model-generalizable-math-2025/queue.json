@@ -1,0 +1,17 @@
+{
+  "title": "Retrieval-Augmented Process Reward Model for Generalizable Mathematical Reasoning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.444/",
+    "data": "https://huggingface.co/datasets/gebro13/RetrievalPRM_Dataset"
+  },
+  "review_note": "L4 材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:27:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布检索增强步骤监督，可帮助PRM处理陌生题型，规模大",
+    "updated_at": "2026-07-17T12:27:00Z"
+  }
+}

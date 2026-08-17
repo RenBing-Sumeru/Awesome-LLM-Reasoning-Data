@@ -1,0 +1,5 @@
+- Use MSR-TR-2026-10 and arXiv:2603.03975 as the primary citation; exclude the erroneous 2511.19663 entry in the official model card and repository README.
+- Treat the 200B-token statement and the three stage totals as aggregate recipe evidence, not as manifests or released training examples.
+- Separate reported manual review, GPT-4o/o4-mini repair, and occasional verification or majority voting from an auditable verifier or reward implementation.
+- Keep the disclosed public-source appendix separate from undisclosed internal, acquired, generated, corrected, and selected records.
+- Do not treat the model's 20/80 mode mix, mode-switch behavior, benchmark scores, or public weights as proof of a generally reusable training pipeline.

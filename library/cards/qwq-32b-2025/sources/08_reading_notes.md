@@ -1,0 +1,5 @@
+- Treat the cold-start and two-stage RL description as a stage-level disclosure, not as a released SFT or RL dataset recipe.
+- Keep the mathematics accuracy verifier and code-execution tests separate from their undisclosed parser, test suite, runtime, thresholds, and calibration.
+- Do not infer the identity, size, data source, or policy of the second-stage general reward model from its mention in the blog.
+- The Qwen2.5 Technical Report is base-model context only; QwQ-32B has no dedicated official arXiv record or DOI in the checked sources.
+- Record the public weights, evaluation repository, and API interface as release artifacts, not as substitutes for data lineage or audit evidence.

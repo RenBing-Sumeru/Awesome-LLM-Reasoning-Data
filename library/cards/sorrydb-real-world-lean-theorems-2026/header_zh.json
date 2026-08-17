@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SorryDB 从真实 Lean 项目持续抽取待证明命题，并以固定提交、Lean 版本和编译复现信息构成可更新的证明任务库。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "动态更新的真实 Lean 证明任务基准",
+  "best_for_ch": "需要评测或训练面向真实 Lean 项目的证明智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Austin Letson, Leopoldo Sarra, Auguste Poiroux, Oliver Dressler, Paul Lezeau, Dhyan Aranha, Frederick Pu, Aaron Hill, Miguel Corredera Hidalgo, Julian Berman, George Tsoukalas, Lenny Taelman",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:36:52Z"
+}

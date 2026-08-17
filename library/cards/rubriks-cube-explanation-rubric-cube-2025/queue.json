@@ -1,0 +1,20 @@
+{
+  "title": "Rubrik’s Cube: Testing a New Rubric for Evaluating Explanations on the CUBE dataset",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.1160/",
+    "data": "https://github.com/RubriksCube/rubriks_cube",
+    "code": "https://github.com/RubriksCube/rubriks_cube",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-18T12:29:38Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开2.6万条解释及人类和六类模型的量规质量标注",
+    "updated_at": "2026-07-18T12:29:38Z"
+  }
+}

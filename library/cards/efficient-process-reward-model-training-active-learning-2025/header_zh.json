@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ActPRM 主动挑选不确定的数学推理轨迹进行昂贵的逐步标注，并发布约 66.3 万条 PRM 数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "主动学习式过程奖励数据构建论文",
+  "best_for_ch": "以较低标注预算训练或研究数学过程奖励模型。",
+  "confidence_ch": "高",
+  "authors_ch": "Keyu Duan、Zichen Liu、Xin Mao、Tianyu Pang、Changyu Chen 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

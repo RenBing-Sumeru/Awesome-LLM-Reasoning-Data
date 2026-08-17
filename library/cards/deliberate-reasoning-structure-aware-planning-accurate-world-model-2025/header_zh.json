@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWAP 发布结构感知推理的轨迹与过程监督数据，在规划中更新并验证蕴含图。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "结构感知规划、蕴含图验证与过程监督数据论文",
+  "best_for_ch": "研究带状态图的多步推理、过程判别与可验证轨迹规划。",
+  "confidence_ch": "高",
+  "authors_ch": "Siheng Xiong、Ali Payani、Yuan Yang、Faramarz Fekri",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T12:12:46Z"
+}

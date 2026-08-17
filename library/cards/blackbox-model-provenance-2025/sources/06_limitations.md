@@ -1,0 +1,1 @@
+The owner needs an ordered training transcript, which may be commercially or legally sensitive. Tests require many tokens or retraining multiple models; the reshuffling observation result is approximate. Audit transcript disclosure and cost before using a result for enforcement.

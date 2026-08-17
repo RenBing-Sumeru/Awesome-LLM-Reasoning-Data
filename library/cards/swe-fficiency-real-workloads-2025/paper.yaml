@@ -1,0 +1,108 @@
+id: swe-fficiency-real-workloads-2025
+title: 'SWE-fficiency: Can Language Models Optimize Real-World Repositories on Real Workloads?'
+year: 2026
+venue: ICML 2026
+authors:
+- Jeffrey Jian Ma
+- Milad Hashemi
+- Amir Yazdanbakhsh
+- Kevin Swersky
+- Ofir Press
+- Enhui Li
+- Vijay Janapa Reddi
+- Parthasarathy Ranganathan
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- software-engineering
+- code-generation
+- performance-engineering
+training_use:
+- evaluation
+- agent_training
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.06090
+  arxiv: https://arxiv.org/abs/2511.06090
+  code: https://github.com/swefficiency/swefficiency
+  data: https://huggingface.co/datasets/swefficiency/swefficiency
+  project: https://swefficiency.com/
+  huggingface: https://huggingface.co/datasets/swefficiency/swefficiency
+  doi: https://doi.org/10.48550/arXiv.2511.06090
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real performance-improving pull requests from public software repositories.
+  trace_author: Original repository contributors and benchmark curators.
+  answer_format: Repository state, task instruction, executable workload or tests, and reference patch metadata.
+  process_fields:
+  - repository revision
+  - issue or workload
+  - patch
+  - unit tests
+  - runtime measurement
+  - environment metadata
+  environment_or_substrate: Reproducible repository and container execution environment.
+  verifier_or_reward: Correctness tests together with repeatable runtime measurement.
+  terminal_predicate: A patch passes the relevant tests and achieves the benchmark's required performance condition.
+recipe_metadata:
+  base_model: The release is a benchmark; reported models are evaluands rather than data teachers.
+  teacher: Human performance-improving patches and executable workloads.
+  generator: Pull-request mining followed by execution validation.
+  filtering_rule: Retain tasks with runnable environments, relevant tests, and reproducible performance evidence.
+  sampling_protocol: See the official paper and release for task-level selection and split details.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin repository revisions, image or dependency versions, hardware, and repetition protocol.
+  optimizer_or_scaffold: Agent edits are evaluated by applying patches and rerunning tests and workloads.
+audit:
+  source_mixture: Official paper, project documentation, code repository, and Hugging Face release.
+  split: Consult the official release for current splits and version pins.
+  decontamination: Audit public pull-request and repository exposure before treating this benchmark as a held-out capability
+    measure.
+  license: Verify benchmark, repository, and upstream-project terms before reuse.
+  lineage: https://arxiv.org/abs/2511.06090
+  known_failure_modes:
+  - Runtime measurements can vary across hardware and dependency versions.
+  - Passing tests may omit untested functional regressions.
+  - Public pull requests can be present in model training data.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, ICML OpenReview record, project, repository, dataset release, and affiliations were checked.
+inclusion_reason: Each record couples a repository modification with executable tests and a measured terminal performance
+  outcome.
+related: []
+tags:
+- performance-optimization
+- software-engineering
+- workloads
+- '2026'
+one_line_summary: SWE-fficiency tests performance engineering on 498 real repository workloads, requiring an agent to preserve
+  correctness while matching expert speedups.
+why_it_matters: It evaluates a patch through executable behavior and measured runtime rather than a text-only judgment.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, ICML OpenReview record, project, repository, dataset release, and affiliations were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

@@ -1,0 +1,3 @@
+Spider asks whether semantic parsers can generalize from natural-language questions to SQL over unseen database schemas. The primary source is the EMNLP 2018 paper and arXiv record https://arxiv.org/abs/1809.08887, with the Yale LILY project page and official GitHub repository as artifacts.
+
+The decision boundary is cross-domain text-to-SQL benchmark evaluation. A sample contains a natural-language question, database schema, database content, a gold SQL query, split/domain metadata, and evaluation under the official SQL matcher or execution metric. It is not an agent environment, a database QA corpus with fixed schemas, or a training recipe. It matters because the benchmark made schema generalization and complex SQL structure a central evaluation surface.

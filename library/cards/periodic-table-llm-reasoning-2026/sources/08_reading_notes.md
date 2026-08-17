@@ -1,0 +1,1 @@
+Reasoning paradigms are only an entry point. Their deeper differences lie in whether they operate on prompts, traces, answers, or feedback; putting those objects in one table makes clear why similar-sounding methods may solve different problems.

@@ -1,0 +1,20 @@
+{
+  "title": "Reward Under Attack: Analyzing the Robustness and Hackability of Process Reward Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.06621",
+    "data": "https://github.com/SqueezeAILab/reward-under-attack",
+    "code": "https://github.com/SqueezeAILab/reward-under-attack",
+    "project": "https://github.com/SqueezeAILab/reward-under-attack"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:47:01Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "受控扰动测试奖励偏差，适合补充PRM安全与鲁棒性评测",
+    "updated_at": "2026-07-16T12:47:01Z"
+  }
+}

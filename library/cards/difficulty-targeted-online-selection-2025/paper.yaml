@@ -1,0 +1,200 @@
+id: difficulty-targeted-online-selection-2025
+title: Improving Data Efficiency for LLM Reinforcement Fine-tuning Through Difficulty-targeted Online Data Selection and Rollout
+  Replay
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yifan Sun
+- Jingyan Shen
+- Yibin Wang
+- Tianyu Chen
+- Zhendong Wang
+- Mingyuan Zhou
+- Huan Zhang
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- trajectory_value
+domains:
+- mathematical_reasoning
+- science_reasoning
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.05316
+  arxiv: https://arxiv.org/abs/2506.05316
+  code: https://github.com/ASTRAL-Group/data-efficient-llm-rl
+  data: https://github.com/ASTRAL-Group/data-efficient-llm-rl/tree/main/adaptive_difficulty_prediction/datasets
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2506.05316
+  venue: https://neurips.cc/virtual/2025/loc/san-diego/poster/115452
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Main experiments use MATH Level 3每5, 10,240 sampled DeepScaleR problems, 8,192 sampled Open-Reasoner-Zero
+    problems, and 8,192 sampled DeepMath problems. A non-math extension uses SCP-25K. The repository releases a 10,240-row
+    DeepScaleR parquet for RL plus a one-column 10,240-question parquet and serialized predictor-training/reference objects
+    for the DeepScaleR setting.
+  trace_author: The current Qwen2.5 policy generates eight reasoning rollouts per selected question. Policy models are Qwen2.5-Math-1.5B,
+    Qwen2.5-3B, and Qwen2.5-Math-7B in six primary model每dataset combinations.
+  answer_format: A standard chain-of-thought prompt asks the policy to reason step by step and place the final answer in a
+    boxed expression. Released RL records contain the source label, chat prompt, math ability, rule-reward ground truth, and
+    extra source/index/question/split metadata.
+  process_fields:
+  - question
+  - reference answer
+  - cached question embedding
+  - reference-set difficulty
+  - predicted adaptive difficulty
+  - selection probability
+  - rollout tokens
+  - binary reward
+  - group average reward
+  - group-relative advantage
+  - behavior-policy token probabilities
+  - replay-buffer insertion order
+  environment_or_substrate: Online GRPO with programmatically verifiable math answers. Difficulty-targeted Online Data Selection
+    (DOTS) dynamically chooses questions whose current-policy failure rate is predicted near 0.5; Rollout Replay (RR) mixes
+    fresh groups with recent informative rollout groups from a bounded FIFO buffer.
+  verifier_or_reward: Math-Verify exact/reference-answer checking gives a binary reward of 1 for a correct answer and 0 otherwise,
+    without format rewards. Adaptive difficulty is the average failure rate over eight rollouts.
+  terminal_predicate: Each rollout receives a terminal binary answer-correctness reward. A rollout group is eligible for replay
+    only when its average reward is neither 0 nor 1, so the group has non-zero relative advantages.
+recipe_metadata:
+  base_model: Qwen2.5-Math-1.5B, Qwen2.5-3B, and Qwen2.5-Math-7B policies; a frozen Qwen2.5-Math-1.5B-Instruct backbone supplies
+    question embeddings for the difficulty predictor.
+  teacher: No teacher labels are needed during main DOTS training. The predictor is pretrained from adaptive-difficulty labels
+    collected with policy models disjoint from the evaluated policies, including several Qwen2.5 variants, Eurus-2-7B-PRIME,
+    Mathstral-7B-v0.1, DeepSeek-R1-Distill-Qwen-1.5B, DeepScaleR-1.5B-Preview, and Qwen2.5-7B-SimpleRL-Zoo. GPT-4o-mini labels
+    only the external-difficulty curriculum baseline.
+  generator: At every selection cycle, uniformly sample a reference set, run eight rollouts per reference question to obtain
+    current failure rates, predict all remaining difficulties with similarity attention plus calibration, sample questions
+    near target difficulty 0.5, generate fresh rollout groups for half the batch, fill the rest from a FIFO replay buffer,
+    and update with behavior-policy importance ratios.
+  filtering_rule: DOTS samples questions with probability proportional to exp(-|predicted_difficulty-0.5|/tau), with tau=1e-3.
+    RR stores only fresh rollout groups whose average binary reward is strictly between 0 and 1, retrieves eligible groups
+    randomly, and evicts oldest groups when capacity is exceeded.
+  sampling_protocol: Reference set K=256, selection every two training steps, target difficulty alpha=0.5, eight rollouts
+    per prompt, total batch 512, fresh fraction delta=0.5, and FIFO capacity 256 or 512. The paper also shows K=128 is comparable
+    to K=256 on two DeepScaleR settings.
+  rollout_count: 8
+  temperature: 0.6
+  inference_budget: Main runs use 60 training steps and 480 gradient steps, prompt length 1,024, rollout length 3,072 for
+    Qwen2.5-Math models or 4,096 for Qwen2.5-3B, top-p 0.95, eight L40S GPUs for 1.5B/3B and eight A100 GPUs for 7B. Reference
+    rollouts add overhead but are reused for training when their predicted difficulty is near 0.5.
+  optimizer_or_scaffold: Modified GRPO removes standard-deviation normalization and, in the reported training recipe, KL regularization.
+    Rollout replay replaces the on-policy ratio denominator with the stored behavior-policy probability. AdamW uses learning
+    rate 1e-6, constant schedule, weight decay 0, no warmup, total batch 512, and mini-batch 64.
+audit:
+  source_mixture: 'Six main combinations: Qwen2.5-Math-1.5B with MATH, DeepScaleR, and ORZ; Qwen2.5-3B with DeepScaleR and
+    DeepMath; Qwen2.5-Math-7B with DeepScaleR. The science extension trains Qwen2.5-3B on SCP-25K. Only the DeepScaleR 10,240
+    setting is packaged in the official repository.'
+  split: MATH train and test are merged before retaining Level 3每5 questions, with MATH500 excluded. DeepScaleR contributes
+    10,240 sampled problems; ORZ and DeepMath each contribute 8,192. The repository's two inspected DeepScaleR parquets each
+    contain 10,240 rows, but no immutable split/selection manifests for all six combinations are released.
+  decontamination: The paper relies on upstream DeepScaleR and DeepMath cleaning and states that MATH500 is excluded from
+    the merged MATH pool. No unified record-level contamination manifest covering GSM8K, Minerva Math, OlympiadBench, science
+    MMLU, and all sampled sources is released.
+  license: arXiv v4 is CC BY 4.0. The repository has no top-level LICENSE and GitHub reports no detected repository license.
+    A LICENSE exists only inside the vendored `rl_training/verl` subtree and does not license the paper-specific code, released
+    pickles/parquets, embeddings, or checkpoint; upstream datasets and models retain separate terms.
+  lineage: Source question/reference answer -> cached Qwen embedding -> sampled reference-set rollouts -> current adaptive-difficulty
+    labels -> similarity-attention/calibrated predictions -> near-0.5 question selection -> eight fresh policy rollouts ->
+    Math-Verify rewards and GRPO advantages -> optional FIFO replay with behavior-policy probabilities -> policy update. The
+    repository releases one DeepScaleR question/record snapshot, predictor serialized inputs, embeddings, a predictor checkpoint,
+    and implementation code, but not run-specific selections, replay buffers, rollout groups, rewards, probabilities, timing
+    logs, or checkpoints for the six reported runs.
+  known_failure_modes:
+  - Predicted difficulty quality depends on whether the random reference set covers the current training pool; the authors
+    identify reference selection as a limitation.
+  - Similarity attention can conflate topical similarity with current-policy difficulty, and off-the-shelf embeddings have
+    low correlation before adapter/calibration training.
+  - Very low data-sampling temperature tau=1e-3 makes selection sharply concentrated and sensitive to predictor calibration
+    or ties near 0.5.
+  - Replay makes updates off-policy; importance ratios and a recent FIFO buffer reduce but do not eliminate staleness or variance
+    risk.
+  - Only mixed-reward groups are replayed, so replay deliberately changes the training distribution toward already-informative
+    questions.
+  - The headline 23%每62% time reduction is time-to-match the original GRPO baseline's final average accuracy at step 60, not
+    a 23%每62% reduction for an equal-step or equal-final-checkpoint training run.
+  - The six exact total-time savings are 26.25%, 49.85%, 23.30%, 35.10%, 61.65%, and 48.03%; the repository README instead
+    says 25%每65%, which does not match the v4 paper or official NeurIPS page.
+  - The component ablation separates DOTS from RR on three 1.5B settings and reports roughly 20% additional time reduction
+    from RR, but no systematic replay-capacity, fresh-fraction, replay-age, or importance-weight ablation is reported.
+  - 'Released run script is not paper-matching out of the box: it references a predictor checkpoint filename absent from the
+    tree, uses 30 epochs rather than an explicit 60-step limit, and the predictor loader expects generic filenames/directories
+    that differ from released suffixed paths.'
+  - The README instructs installation from `rl_training/requirements.txt`, but that file was absent from the checked repository
+    tree; no release/tag or lockfile pins the full environment.
+  - No replay-buffer snapshots, rollout/reward logs, selection histories, behavior probabilities, timing traces, random seeds
+    for the three reported replicates, or trained RL checkpoints are released.
+  - Repository-level code/data licensing is unspecified despite a vendored verl license file.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv v4, the official NeurIPS 2025 poster page, paper-linked GitHub repository, repository tree, released DeepScaleR
+    parquets, predictor assets, and launch scripts were checked on 2026-07-13. Method and headline results are well documented,
+    but the release is only partially paper-matching and lacks licensing and run-level audit artifacts.
+inclusion_reason: DOTS and RR make online question selection and retained rollout groups explicit data objects in RLVR, offering
+  a concrete recipe for targeting current-policy difficulty and replaying recent informative trajectories to reduce both steps
+  and per-step cost.
+related: []
+tags:
+- dots
+- rollout-replay
+- online-data-selection
+- adaptive-difficulty
+- attention-similarity
+- grpo
+- rlvr
+- replay-buffer
+- math-reasoning
+- data-efficiency
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: DOTS predicts current-policy question difficulty from a small rollout-labeled reference set and combines
+  near-0.5 selection with FIFO replay of recent mixed-reward rollout groups.
+why_it_matters: It treats selection decisions and reusable rollout groups as first-class RL training data, while its partial
+  release shows why buffers, selection histories, behavior probabilities, timing logs, and licenses matter for auditing efficiency
+  claims.
+card: null
+needs:
+- 'needs_reproducibility: publish a tested 60-step paper-matching launcher, requirements/lockfile, correct predictor paths,
+  and immutable release tag'
+- 'needs_logs: release per-step selected question IDs, predicted/ground-truth difficulty, rollout rewards, advantages, behavior
+  probabilities, replay ages, buffer occupancy, and timing breakdowns'
+- 'needs_buffers: retain replay-buffer snapshots or deterministic reconstruction manifests for reported runs'
+- 'needs_checkpoints: publish the six DOTS+RR and GRPO checkpoints plus predictor checkpoints used for each dataset/domain'
+- 'needs_data: publish exact MATH/ORZ/DeepMath/SCP subset manifests and predictor-supervision schema with safe non-pickle
+  exports'
+- 'needs_ablation: vary delta, capacity, replay age/strategy, importance correction, selection temperature, and reference-rollout
+  reuse'
+- 'needs_license: add a top-level license covering paper-specific code/data/checkpoints and document vendored/upstream terms'
+- 'needs_claim_alignment: reconcile README 25%每65% with paper/NeurIPS 23%每62% and state the time-to-match protocol prominently'
+curation_level: L3_evidence
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Formal NeurIPS acceptance and official code/data assets are verified; no paper-level release/tag, root license, complete
+    six-setting data, buffers/logs, or fully paper-matching launch configuration was confirmed.

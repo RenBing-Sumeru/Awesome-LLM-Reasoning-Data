@@ -1,0 +1,1 @@
+核心贡献是 480 个专家创建的专业服务任务，以及用于执行和评测 agent 的 Archipelago 基础设施。机制上，任务被组织进 33 个 realistic worlds，每个 world 带文件、工具和 metadata；agent 执行后，judge 依据 prompt、输出和相关 artifact/change，对多个二元 rubric criterion 独立打分。相对 OSWorld、WorkArena、办公自动化 benchmark 和通用 tool-use 测试，APEX-Agents 更强调高价值专业交付物和跨应用 workflow。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "这篇综述把跨控制、机器人和 LLM 的 RLHF 拆成反馈采集、奖励学习与策略学习三阶段。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "跨领域 RLHF 综述与审计框架",
+  "best_for_ch": "适合在阅读或设计具体 RLHF 系统前定位反馈、reward model 和策略假设的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Timo Kaufmann, Paul Weng, Viktor Bengs, Eyke Hüllermeier",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-11T07:47:09Z"
+}

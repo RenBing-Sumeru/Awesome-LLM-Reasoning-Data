@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Michelangelo 的 MRCR 用合成长上下文评测模型能否恢复多轮共指结构，而不只是检索单个 needle。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / long-context evaluation surface",
+  "best_for_ch": "关注长上下文评测、synthetic benchmark、共指结构推理和自动评分边界的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Kiran Vodrahalli 等（Google DeepMind / Google Research）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

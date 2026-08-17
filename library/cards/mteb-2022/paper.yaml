@@ -1,0 +1,119 @@
+id: mteb-2022
+title: 'MTEB: Massive Text Embedding Benchmark'
+year: 2022
+venue: EACL 2023 / arXiv
+authors:
+- Niklas Muennighoff
+- Nouamane Tazi
+- Loic Magne
+- Nils Reimers
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- embedding-evaluation
+- retrieval
+- semantic-similarity
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2210.07316
+  arxiv: https://arxiv.org/abs/2210.07316
+  code: https://github.com/embeddings-benchmark/mteb
+  data: null
+  project: null
+  huggingface: https://huggingface.co/spaces/mteb/leaderboard
+  doi: https://doi.org/10.48550/arXiv.2210.07316
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official benchmark authors curate or define the benchmark task surface; inspect source artifacts before reuse.
+  trace_author: Official benchmark authors, annotators, validators, contest authors, or task curators as disclosed by the
+    source.
+  answer_format: 'dataset adapters, embedding model outputs, task-specific labels, and aggregate leaderboard metrics; Benchmark
+    size: 初版覆盖 8 类 embedding 任务、58 个数据集；后续 leaderboard 持续扩展。'
+  data_scale: original paper version reports 58 datasets across 112 languages and seven embedding task families; live MTEB
+    versions must be pinned.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: 'dataset adapters, embedding model outputs, task-specific labels, and aggregate leaderboard metrics;
+    Benchmark size: 初版覆盖 8 类 embedding 任务、58 个数据集；后续 leaderboard 持续扩展。'
+  verifier_or_reward: task-specific metrics such as nDCG, accuracy, F1, Spearman correlation, and clustering scores
+  terminal_predicate: task-specific metrics such as nDCG, accuracy, F1, Spearman correlation, and clustering scores
+  benchmark_size: 初版覆盖 8 类 embedding 任务、58 个数据集；后续 leaderboard 持续扩展。
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the paper.
+  generator: 'Official construction pipeline for MTEB: Massive Text Embedding Benchmark; exact curation details should be
+    checked from the primary source.'
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary source and official artifacts listed in artifacts for MTEB: Massive Text Embedding Benchmark.'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://arxiv.org/abs/2210.07316'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, scaffold, evaluator version, split, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: high
+  notes: 'Added as a missing benchmark coordinate for the local Card library; reviewer should pin exact artifact and scorer
+    details before L5/L6 promotion. Benchmark size: 初版覆盖 8 类 embedding 任务、58 个数据集；后续 leaderboard 持续扩展。'
+inclusion_reason: MTEB standardizes text-embedding evaluation across retrieval, classification, clustering, reranking, pair
+  classification, STS, and summarization.
+related: []
+tags:
+- benchmark
+- embedding-evaluation
+- retrieval
+- semantic-similarity
+one_line: MTEB standardizes text-embedding evaluation across retrieval, classification, clustering, reranking, pair classification,
+  STS, and summarization.
+why_it_matters: It supplies a reusable evaluation coordinate for embedding-evaluation, retrieval work.
+status: verified
+needs:
+- 'needs_audit: pin MTEB package/leaderboard date because task count, language coverage, and dataset adapters change over
+  time'
+- 'needs_audit: inspect split/version policy, evaluator implementation, prompt/scaffold settings, and license'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MTEB standardizes text-embedding evaluation across retrieval, classification, clustering, reranking, pair
+  classification, STS, and summarization.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Primary source link recorded; detailed artifact/license audit remains in needs.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-12'
+  primary_category_id: benchmarks_evaluation_surfaces

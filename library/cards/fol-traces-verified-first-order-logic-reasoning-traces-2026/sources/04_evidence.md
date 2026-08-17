@@ -1,0 +1,3 @@
+Complexity-aware trace pretraining improves first-order logic tasks, especially harder or structurally shifted examples. Traces and answers are replayable by a solver, although correctness is limited to the formal system.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of first-order logic reasoning trajectories in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "R-PRM 将逐步数学判定与生成式理由及偏好优化结合，提高过程评估的准确性和可用性。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "推理驱动的过程奖励建模与偏好数据论文",
+  "best_for_ch": "训练生成式过程评审器，或研究数学推理的步骤诊断。",
+  "confidence_ch": "高",
+  "authors_ch": "Shuaijie She、Junxiao Liu、Yifeng Liu、Jiajun Chen、Xin Huang、Shujian Huang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

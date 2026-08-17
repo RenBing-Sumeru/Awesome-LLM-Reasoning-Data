@@ -1,0 +1,101 @@
+id: sqale-real-schema-text-to-sql-2025
+title: 'SQaLe: A Large Text-to-SQL Corpus Grounded in Real Schemas'
+year: 2025
+venue: AI for Tabular Data Workshop at EurIPS 2025
+authors:
+- Cornelius Wolff
+- Daniel Gomm
+- Madelon Hulsebos
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- text-to-sql
+- databases
+- code-generation
+training_use:
+- sft
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2602.22223
+  arxiv: https://arxiv.org/abs/2602.22223
+  code: https://github.com/trl-lab/SQaLe-Library
+  data: https://huggingface.co/datasets/trl-lab/SQaLe-text-to-SQL-dataset
+  project: null
+  huggingface: https://huggingface.co/datasets/trl-lab/SQaLe-text-to-SQL-dataset
+  doi: https://doi.org/10.48550/arXiv.2602.22223
+  venue: https://openreview.net/forum?id=6PsKDjgoEy
+  openreview: https://openreview.net/forum?id=6PsKDjgoEy
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real database schemas from SchemaPile, expanded by the SQaLe pipeline.
+  trace_author: Question and SQL synthesis pipeline with execution validation.
+  answer_format: Schema, natural-language question, and executable SQL query.
+  process_fields:
+  - schema
+  - question
+  - query
+  - schema metadata
+  - validation result
+  environment_or_substrate: Materialized relational databases used to execute generated SQL.
+  verifier_or_reward: SQL execution validity against the associated schema and data.
+  terminal_predicate: The SQL query parses and executes successfully in the constructed database environment.
+recipe_metadata:
+  base_model: ReFoRCE is used for SQL construction in the reported pipeline.
+  teacher: Database execution engine.
+  generator: Schema expansion, question synthesis, and SQL-query construction.
+  filtering_rule: Retain generated triples that are execution-valid.
+  sampling_protocol: 135,875 extended schemas yield 517,676 validated triples; see the dataset card for exact split details.
+  rollout_count: null
+  temperature: null
+  inference_budget: Not fully disclosed in the release summary.
+  optimizer_or_scaffold: Semi-synthetic generation grounded in real schemas with execution checking.
+audit:
+  source_mixture: Official arXiv paper, CWI publication record, Hugging Face dataset card, and official repository.
+  split: 517,676 triples over 135,875 schemas; dataset card provides current release details.
+  decontamination: Audit overlap between SchemaPile, public SQL corpora, and evaluation databases before reporting generalization.
+  license: Verify the Hugging Face dataset card, repository, and SchemaPile terms before commercial reuse.
+  lineage: https://huggingface.co/datasets/trl-lab/SQaLe-text-to-SQL-dataset
+  known_failure_modes:
+  - Execution validity does not ensure that a query matches the natural-language intent.
+  - Real-world schemas can carry public-data and licensing contamination risks.
+  - Synthetic questions may underrepresent ambiguous user phrasing.
+  citation_status: verified
+  confidence: high
+  notes: Official paper, EurIPS workshop citation, affiliations, repository, and Hugging Face dataset were checked.
+inclusion_reason: SQaLe releases schema-question-SQL records with a deterministic execution check, yielding reusable programmatically
+  verifiable outcomes for text-to-SQL.
+related: []
+tags:
+- text-to-sql
+- databases
+- execution-verification
+- '2025'
+one_line_summary: SQaLe scales text-to-SQL to 517,676 execution-validated triples grounded in 135,875 real-derived database
+  schemas.
+why_it_matters: It exposes SQL execution as a reproducible terminal check over unusually large and structurally realistic
+  schemas.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, EurIPS workshop citation, affiliations, repository, and Hugging Face dataset were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

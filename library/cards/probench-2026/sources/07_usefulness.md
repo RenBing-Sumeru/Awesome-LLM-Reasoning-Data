@@ -1,0 +1,9 @@
+For `environment_agent_trajectory_data`, ProBench is a design reference for process-aware evaluation, not a downloadable trajectory source. A defensible episode record would preserve task/language/type, app/device/version/account state, screenshots, parsed actions, raw a11y tree, converter or summarizer output, completion signal, step/early-stop reason, final image, judge prompt/response/model, human validation, and reset evidence.
+
+For `benchmarks_evaluation_surfaces`, the 149 State and 68 Process tasks show how to compare final-state-only judgment with path-sensitive terminal judgment. Evaluator auditing should test positive/negative fixtures for sorting, filtering, location selection, repeated actions, missing a11y nodes, misleading resource IDs, screenshot changes, and alternative valid paths, then report false-positive/negative slices separately by language, task type, and app.
+
+The Process Provider mechanisms can guide new evaluator implementations. Structure Description Converter offers inspectable programmatic action evidence; MLLM-based Summarizer can cover operations poorly represented by a11y. Their outputs should be retained as evidence with provenance and uncertainty, not used as gold process labels unless separately human-validated.
+
+Reproduction requires creating a new implementation because no official package is confirmed. A future release should pin tasks, app/device snapshots, accounts, locale/network/time, parser, prompts, Gemini API snapshot, seeds/retries, automated reset, per-run outputs, and rights/privacy controls. Manual clearing of histories is insufficient as a reset guarantee.
+
+Current supported use is **evaluation only**. SFT, RLVR, agent training, reward-model training, process supervision, or trajectory reuse are not supported by the verified artifacts. Until code/tasks/trajectories and licenses exist, ProBench is best used as a benchmark-design and verifier-audit reference.

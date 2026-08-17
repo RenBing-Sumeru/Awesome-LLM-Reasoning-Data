@@ -1,0 +1,128 @@
+id: tulu-2-2023
+title: 'Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2'
+year: 2023
+venue: arXiv
+authors:
+- Hamish Ivison
+- Yizhong Wang
+- Valentina Pyatkin
+- Nathan Lambert
+- Matthew Peters
+- Pradeep Dasigi
+- Joel Jang
+- David Wadden
+- Noah A. Smith
+- Iz Beltagy
+- Hannaneh Hajishirzi
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- large-language-models
+- practical-alignment-and-data-quality-primers
+training_use:
+- sft
+- preference_learning
+- evaluation
+construction_layer:
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2311.10702
+  arxiv: https://arxiv.org/abs/2311.10702
+  code: https://github.com/allenai/open-instruct
+  data: https://huggingface.co/datasets/allenai/tulu-v2-sft-mixture
+  project: null
+  huggingface: https://huggingface.co/collections/allenai/tulu-v2-suite-6551b56e743e6349aab45101
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The 326,154-example Tulu V2 SFT mixture assembled from public instruction, dialogue, code, CoT, and science
+    sources.
+  trace_author: Humans and teacher models from the constituent SFT datasets; UltraFeedback supplies model responses and preferences
+    for DPO.
+  answer_format: Instruction-response or multi-turn conversation records for SFT; chosen-rejected response pairs for DPO.
+  process_fields:
+  - input or prompt
+  - target, trace, or evaluated output
+  - feedback or evaluation result
+  environment_or_substrate: Offline post-training of Llama 2 and Code Llama models, followed by a shared benchmark harness.
+  verifier_or_reward: Instruction targets supervise SFT, preference pairs supervise DPO, and a multi-benchmark harness measures
+    adapted models.
+  terminal_predicate: SFT fits target responses; DPO increases the chosen response relative to the rejected response; benchmarks
+    report final performance.
+recipe_metadata:
+  base_model: Llama 2 and Code Llama at 7B, 13B, and 70B.
+  teacher: Constituent datasets include human and model-written responses; UltraFeedback uses model outputs judged by GPT-4.
+  generator: Builds an improved high-quality instruction mixture, runs supervised fine-tuning, optionally applies DPO, and
+    evaluates general and code adaptation across sizes up to 70B.
+  filtering_rule: Instruction targets supervise SFT, preference pairs supervise DPO, and a multi-benchmark harness measures
+    adapted models.
+  sampling_protocol: Full supervised fine-tuning on Tulu V2 mixture, followed optionally by three DPO epochs on UltraFeedback.
+  rollout_count: null
+  temperature: null
+  inference_budget: Paper-specific benchmark decoding; exact per-task limits must be matched from the released evaluation
+    configs.
+  optimizer_or_scaffold: Builds an improved high-quality instruction mixture, runs supervised fine-tuning, optionally applies
+    DPO, and evaluates general and code adaptation across sizes up to 70B.
+audit:
+  source_mixture: The Tulu V2 instruction mixture, Llama 2 and Code Llama derivatives, preference pairs for DPO, checkpoints,
+    and evaluation outputs.
+  split: Use the official split or evaluation version; exact details must be checked before reuse.
+  decontamination: No stronger claim is made than the primary source supports; benchmark and source overlap require audit.
+  license: Check each official artifact before redistribution; the paper link alone does not establish data or code license.
+  lineage: 'practical alignment and data-quality primers lineage; closest comparisons: lima-2023, flan-collection-2023.'
+  known_failure_modes:
+  - Mixture provenance and licenses remain heterogeneous, benchmark gains combine data and optimization changes, and DPO preferences
+    add another hidden quality layer.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper, AllenAI Open Instruct repository, Hugging Face mixture, and Tulu V2 model collection checked.
+    No formal conference publication was confirmed.
+inclusion_reason: Tulu 2 is an open adaptation recipe that exposes instruction mixtures, SFT, DPO, checkpoints, and evaluation
+  code.
+related:
+- lima-2023
+- flan-collection-2023
+tags:
+- practical-alignment-and-data-quality-primers
+- arxiv-2311.10702
+- primary-link-checked
+status: verified
+one_line_summary: Tulu 2 connects a 326K instruction mixture, scalable DPO, open checkpoints, and common evaluation in one
+  reproducible adaptation suite.
+why_it_matters: It exposes which instruction records and preference pairs drive each stage of an open assistant recipe.
+reading_priority: recommended
+paper_type: Open instruction-tuning and preference-optimization recipe
+best_for: Researchers building or auditing open assistants across SFT data, DPO feedback, checkpoints, and evaluation.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-11'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper, AllenAI code repository, Hugging Face dataset, and checkpoint collection were checked.
+category_ids:
+- foundations_and_primers
+batch:
+  id: track00-01-balanced-40-20260711
+  primary_category_id: foundations_and_primers
+  direction_label: practical alignment and data-quality primers
+  selection_priority_score: 7
+  selection_score_breakdown:
+    recency: 2
+    impact: 3
+    venue: 0
+    institution: 2

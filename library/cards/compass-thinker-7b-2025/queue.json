@@ -1,0 +1,12 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "小模型不出名",
+    "updated_at": "2026-07-16T10:49:16Z"
+  },
+  "updated_at": "2026-07-16T10:49:16Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "programmatically_verifiable_outcome_data"
+  ]
+}

@@ -1,0 +1,5 @@
+1. Inputs: a subject-specific multiple-choice question, four answer options, optional few-shot examples from the same benchmark packaging, and a model completion policy.
+2. Pipeline: format the prompt, request or compute the model's selected option/log-likelihood choice, normalize the selected option, and compare it with the reference answer.
+3. Outputs: per-question correctness, subject-level accuracy, grouped scores for humanities/social sciences/STEM/other, and an overall average.
+4. Feedback contract: exact match against the answer key; no human judge, reward model, external tool, or execution environment adjudicates individual answers at evaluation time.
+5. Reproducibility notes: pin the official repository or data package revision, split choice, prompt format, few-shot count, answer extraction rule, model snapshot, and whether any harness adds auxiliary-training or derived packaging. Evaluation results should not be reused as training reward without separate contamination and license review.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用符号验证器或 LLM 判断器门控 Setter 难度奖励，报告详细筛选漏斗，但未发布生成数据或检查器。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "验证器支持的困难数学题生成配方",
+  "best_for_ch": "关注问题生成、验证器门控、RLVR 和奖励攻击的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Yuhang Lai、Jiazhan Feng、Yee Whye Teh、Ning Miao",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T05:49:23Z"
+}

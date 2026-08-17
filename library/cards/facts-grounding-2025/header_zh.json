@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FACTS Grounding 把带公开与私有划分、由评审集成打分的长文档依据核查做成可审计的评测面。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "arXiv preprint / Kaggle online benchmark 的 grounding evaluation surface",
+  "best_for_ch": "关注 benchmark、评分契约、污染风险、评测 harness 和后训练反馈可复用性的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Alon Jacovi 等（Google DeepMind、Google Research、Google Cloud、Kaggle）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T08:00:33Z"
+}

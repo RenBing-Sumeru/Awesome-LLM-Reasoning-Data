@@ -1,0 +1,6 @@
+- Read §3.1–3.2 first: one row starts as image/ID/prompt/answer, while an auditable selection record additionally needs policy and critic revisions, `K` or unsolved status, and the selected/rejected decision.
+- Keep the two feedback systems separate: Qwen2.5-7B-Instruct is the text-only construction critic; the exact GRPO reward and answer-normalization contract are not disclosed.
+- Table 3 is the key matched-policy ablation: the combined 11K set averages 64.18, above random 11K (60.89), self-consistency 23K (63.15), full 70K (63.13), and either component alone.
+- Table 5 is the key boundary: own-policy subsets outperform cross-scale subsets, so Hard-11K is not a universal difficulty set.
+- Appendix Table 9 reports 63.89 for Iter5+Unsolved, conflicting with 64.18 in Tables 2–4; preserve both until authors provide a correction.
+- Audit the artifacts before reuse: the public script drops unsolved rows, no 72B 7.5K dataset or full decision ledger was found, and upstream provenance, decontamination, and license mapping remain unknown.

@@ -1,0 +1,10 @@
+{
+  "one_line_summary_ch": "以规则型与非规则型谜题为主线，梳理语言模型解题的方法、数据集、基准与困难。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "谜题推理综述",
+  "best_for_ch": "需要选择谜题推理评测、比较提示与神经符号方法的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Panagiotis Giadikiaroglou 等",
+  "category_ids": ["foundations_and_primers"],
+  "updated_at": "2026-07-27T00:00:00Z"
+}

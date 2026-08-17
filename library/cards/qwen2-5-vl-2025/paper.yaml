@@ -1,0 +1,154 @@
+id: qwen2-5-vl-2025
+title: Qwen2.5-VL Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Qwen Team
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+- full_episode
+domains:
+- multimodal
+- visual_reasoning
+- document_understanding
+- OCR
+- video
+- agent
+- mathematics
+- code
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.13923
+  arxiv: https://arxiv.org/abs/2502.13923
+  code: https://github.com/QwenLM/Qwen2.5-VL
+  data: null
+  project: https://qwenlm.github.io/blog/qwen2.5-vl/
+  huggingface: https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Pre-training uses cleaned raw web data and synthesized multimodal data; SFT queries come primarily from open-source
+    repositories plus curated purchased and online query data. Named source inventories, proportions, licenses, and item-level
+    provenance are unknown.
+  trace_author: An intermediate Qwen2.5-VL produces rejection-sampling candidates. For agent trajectories, human and model
+    annotators write per-step reasoning after seeing a highlighted ground-truth operation and before/after screenshots. Annotator
+    identity, prompts, and coverage are unknown.
+  answer_format: Project-level objects include image/video/text or screenshot input; QA response, document HTML with bounding
+    boxes, grounding coordinate/point output, timestamp, function-call action, preference pair, or reasoning text. A released
+    unified record schema is unavailable.
+  process_fields:
+  - multimodal_input
+  - query
+  - ground_truth_answer_or_operation
+  - candidate_response
+  - reasoning_step
+  - preference_pair
+  - function_call
+  - filter_or_matching_outcome
+  environment_or_substrate: Agent training material includes mobile, web, and desktop screenshots plus annotated multi-step
+    trajectories from open-source data and an agent framework on virtual environments. Environment identities, versions, resets,
+    and replay artifacts are unknown.
+  verifier_or_reward: The report describes ground-truth answer matching for rejection sampling, rule/model-driven reasoning
+    filters, and Qwen2.5-VL reward-model scoring for SFT QA. Reward-model construction, weights, calibration, thresholds,
+    and error rates are undisclosed.
+  terminal_predicate: For rejection sampling, candidate output must match the expected answer; additional filters reject code-switching,
+    excessive length, repetition, and insufficient visual-text integration. Exact matching and filtering implementations are
+    unknown.
+recipe_metadata:
+  base_model: The language component is initialized from Qwen2.5 LLM; the redesigned ViT is trained from scratch. The report
+    gives 3B, 7B, and 72B configurations but not a complete checkpoint-to-data lineage.
+  teacher: Human and model annotators write agent-step reasoning; the identities, versions, prompts, and assignment policy
+    for model annotators are unknown.
+  generator: Cleaned raw web data, synthetic-data pipelines, an intermediate Qwen2.5-VL for rejection-sampling candidates,
+    and a synthetic agent-data engine are reported; configurations and per-source yields are unknown.
+  filtering_rule: Interleaved data receives standard cleaning then four internal-score dimensions; SFT applies Qwen2-VL-Instag
+    categorization plus rule- and Qwen2.5-VL-reward-model filtering; rejection sampling requires expected-answer matches and
+    adds rule/model checks. Thresholds and yields are unknown.
+  sampling_protocol: Three pre-training stages list 1.5T, 2T, and 0.6T token volumes and sequence lengths of 8,192, 8,192,
+    and 32,768. Rejection-sampling candidate counts and decoding settings are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Post-training uses SFT followed by DPO with ViT parameters frozen; DPO uses image-text and pure-text
+    preference data. Optimizer and hyperparameter details are unknown.
+audit:
+  source_mixture: The report describes cleaned raw web, synthetic, public, proprietary, open-source-repository, purchased,
+    and online-query sources across components, plus 4.1T trained tokens in Table 1. Source names, weights, licenses, and
+    manifests are incomplete or unknown.
+  split: Training/evaluation and per-source split membership are unknown.
+  decontamination: unknown
+  license: The official Qwen2.5-VL-72B-Instruct model card declares the qwen license. Training-corpus, synthetic-data, purchased-data,
+    and intermediate-artifact rights are unknown.
+  lineage: The report names data construction and filters at a stage level but does not provide released item-level source-to-checkpoint
+    lineage, rejected records, or training manifests.
+  known_failure_modes:
+  - The released model, code link, and agent benchmark scores do not release or identify the training trajectories, preferences,
+    reward models, or data mixtures.
+  - Reward-model filtering and expected-answer matching are described without calibration, thresholds, false-positive analysis,
+    or retained/rejected yields.
+  - Public, proprietary, purchased, web, and synthetic source categories do not identify source datasets, rights, splits,
+    or deduplication/decontamination controls.
+  - Agent data is described at the project level; environments, replay state, task success predicates, and annotator protocols
+    are incomplete.
+  - Evaluation scores cannot isolate contributions from architecture, data construction, filters, SFT, DPO, or inference configuration.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv report/PDF, Qwen release page, official model card, and the repository URL named in the report were
+    checked on 2026-07-15. This Card is a partial disclosure ledger, not a released-dataset record.
+inclusion_reason: A frontier multimodal report that unusually discloses aggregate scale, source categories, construction steps,
+  SFT/DPO use, rejection sampling, reward-model filtering, and partial agent-trajectory creation while leaving the reusable
+  data, reward, and audit artifacts unavailable.
+related: []
+tags:
+- qwen2-5-vl
+- frontier-report
+- data-disclosure-ledger
+- multimodal
+- synthetic-data
+- sft
+- dpo
+- rejection-sampling
+- agent-trajectories
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen2.5-VL partially discloses 4.1T-scale multimodal training, a roughly 2M-entry SFT mixture, filtering,
+  rejection-sampled reasoning, and SFT/DPO, while withholding reusable data, reward, lineage, and audit artifacts.
+why_it_matters: 'It is a concrete frontier disclosure case: source categories and pipeline interfaces are reported, but enough
+  prompt-, filter-, reward-, and provenance-level detail is absent that the model release and agent capability cannot be treated
+  as a reproducible reasoning-data recipe.'
+card: null
+needs:
+- 'needs_data: release or document record schemas, source inventories, retained/rejected examples, and dataset rights'
+- 'needs_metadata: disclose mixture weights, source counts, prompt/pair formats, synthetic generators, and per-stage yields'
+- 'needs_verifier: publish expected-answer matching and reward-model objectives, thresholds, calibration, and error analysis'
+- 'needs_audit: publish splits, deduplication/decontamination, environment replay data, and checkpoint lineage'
+- 'needs_license: clarify rights for web, proprietary, purchased, synthetic, and annotation-derived inputs'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: card_writer
+  confidence: medium
+  notes: Paper identity, title-page authorship, report-linked repository URL, official Qwen release page, and official 72B
+    model card are verified. Post-training data, reward-model, and comprehensive lineage artifacts are not released in the
+    inspected primary sources.

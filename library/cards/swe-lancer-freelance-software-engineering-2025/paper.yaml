@@ -1,0 +1,106 @@
+id: swe-lancer-freelance-software-engineering-2025
+title: 'SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?'
+year: 2025
+venue: ICML 2025
+authors:
+- Samuel Miserendino
+- Michele Wang
+- Tejal Patwardhan
+- Johannes Heidecke
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- software-engineering
+- agent-evaluation
+training_use:
+- evaluation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.12115
+  arxiv: https://arxiv.org/abs/2502.12115
+  code: https://github.com/openai/preparedness
+  data: https://github.com/openai/preparedness
+  project: https://openai.com/index/swe-lancer/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2502.12115
+  venue: https://openreview.net/forum?id=xZXhFg43EI
+  openreview: https://openreview.net/forum?id=xZXhFg43EI
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Freelance software-engineering tasks posted on Upwork.
+  trace_author: Original task requesters, hired engineering managers, and benchmark engineers.
+  answer_format: Independent task environment and tests, or managerial proposal-choice record.
+  process_fields:
+  - task description
+  - repository environment
+  - implementation proposals
+  - tests
+  - payout value
+  - evaluation outcome
+  environment_or_substrate: Unified Docker image for reproducible task execution.
+  verifier_or_reward: Triple-verified end-to-end tests for independent tasks; original managers' choices for managerial tasks.
+  terminal_predicate: An implementation passes the end-to-end tests, or a managerial decision matches the original hiring
+    choice.
+recipe_metadata:
+  base_model: Benchmark evaluation; no data teacher is released.
+  teacher: Experienced engineers, original engineering managers, and executable tests.
+  generator: Curation of real freelance software-engineering tasks.
+  filtering_rule: Independent-task tests are triple-verified by experienced software engineers.
+  sampling_protocol: Over 1,400 tasks; SWE-Lancer Diamond is the public evaluation split.
+  rollout_count: null
+  temperature: null
+  inference_budget: Use the official Docker image and updated prepared-data release.
+  optimizer_or_scaffold: Docker-based evaluation of independent and managerial work.
+audit:
+  source_mixture: Official OpenAI announcement, arXiv paper, OpenReview record, and OpenAI repository.
+  split: Public SWE-Lancer Diamond is released; the full benchmark has access restrictions.
+  decontamination: Upwork tasks and public repository context can be present in model training data; preserve the official
+    split.
+  license: Check the current OpenAI Preparedness repository and task terms before reuse.
+  lineage: https://github.com/openai/preparedness
+  known_failure_modes:
+  - Public evaluation coverage is smaller than the full task set.
+  - End-to-end tests may miss business requirements outside their assertions.
+  - Managerial judgments reflect historical hiring decisions rather than a universal optimum.
+  citation_status: verified
+  confidence: high
+  notes: Official OpenAI paper, project page, repository migration notice, author affiliations, and ICML OpenReview record
+    were checked.
+inclusion_reason: SWE-Lancer connects real software work to executable task outcomes and manager-choice supervision.
+related: []
+tags:
+- software-engineering
+- freelance-work
+- docker
+- agent-evaluation
+- '2025'
+one_line_summary: SWE-Lancer evaluates agents on more than 1,400 real freelance engineering tasks using triple-verified tests
+  or the original manager's hiring choice.
+why_it_matters: It evaluates practical engineering work through executable task contracts or the decisions that originally
+  allocated the work.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official OpenAI paper, project page, repository migration notice, author affiliations, and ICML OpenReview record
+    were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

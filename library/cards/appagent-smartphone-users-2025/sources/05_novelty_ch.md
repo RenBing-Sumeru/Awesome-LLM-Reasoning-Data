@@ -1,0 +1,1 @@
+已有移动端 agent 常依赖 accessibility API、app 后端、脚本环境或单次 GUI grounding。AppAgent 的变化是把 agent 明确当作 smartphone user，并把“学习 app 操作知识”和“执行任务”分开。方向信号是仅凭 GUI 的移动端自主操作和可复用操作记忆。不是新的部分包括多模态感知、LLM 规划和 UI 动作执行。复用前要检查 app 权限、隐私/账号状态、成功判据、任务漂移、prompt 预算和演示轨迹是否可再分发。

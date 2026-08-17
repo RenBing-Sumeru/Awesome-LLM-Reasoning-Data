@@ -1,0 +1,3 @@
+The paper primarily releases IMO-Steps. It supplies original complete Lean proofs for previously uncovered IMO problems in miniF2F and adds problems from 2022 and 2023. The final version contains 1,329 decomposed lemmas, more than 40,000 lines of Lean source, and roughly 5,880 lines of complete proof artifacts. Every lemma is compilable in the specified Lean 4 environment.
+
+The contribution is not a new prover model but the conversion of a small number of extremely hard problems into many local goal–context–proof tasks. The dataset page also reports lemma counts, per-model successes, and differences between natural-language and Lean proofs, supporting research on proof length, retrieval, and long-horizon composition.

@@ -1,0 +1,156 @@
+id: latency-aware-test-time-scaling-2025
+title: Faster and Better LLMs via Latency-Aware Test-Time Scaling
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: EMNLP 2025'
+authors:
+- Zili Wang
+- Tianyu Zhang
+- Haoli Bai
+- Lu Hou
+- Xianzhi Yu
+- Wulong Liu
+- Shiming Xiang
+- Lei Zhu
+source_role:
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+- scientific_question_answering
+- test_time_scaling
+- inference_systems
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.928/
+  arxiv: https://arxiv.org/abs/2505.19634
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.928
+  venue: https://aclanthology.org/2025.findings-emnlp.928/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.928/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.findings-emnlp.928.bib
+data_object:
+  prompt_source: The evaluation uses MATH-500 (500 problems), AIME24 (30), AIME25 (30), and GPQA-Diamond (198). No prompt-level
+    run manifest is released.
+  trace_author: The target model generates one or more response branches; a paired draft model proposes tokens for speculative
+    decoding. Raw candidate completions and draft-token acceptance traces are not released.
+  answer_format: Each evaluated configuration maps a benchmark prompt to multiple textual candidate solutions, an aggregation
+    decision (primarily majority voting), benchmark accuracy, and wall-clock latency. Version 4 also evaluates confidence-weighted
+    aggregation.
+  process_fields:
+  - benchmark problem and ground-truth answer
+  - target and draft model pairing
+  - output-length budget
+  - branch count
+  - speculative-decoding draft length and aggregate acceptance rate
+  - aggregation method
+  - final benchmark accuracy
+  - wall-clock latency
+  - three-run mean and standard deviation for Tables 1 and 3
+  environment_or_substrate: Experiments use the OpenR codebase with budget forcing, concurrent branches, and speculative decoding.
+    The study targets small- or medium-scale, low-request, memory-bound inference; accelerator type/count, host, serving stack,
+    model revisions, batch details, and raw timing logs are not disclosed.
+  verifier_or_reward: Candidate answers are selected primarily by majority voting; confidence min/average combined with max/vote
+    is ablated. Final outputs are scored against benchmark answers, but answer extraction, normalization, tie handling, and
+    per-candidate correctness records are not disclosed. There is no learned training reward.
+  terminal_predicate: This is an inference-only evaluation, not a training trajectory release. A configuration is compared
+    by accuracy achievable under a wall-clock latency budget; the prompt-level generation stop rule and machine-readable success
+    predicate are not released.
+recipe_metadata:
+  base_model: Target models are s1.1-32B, LLaMA-3.1-8B-Instruct, DeepSeek-R1-Distill-Qwen-32B, QwQ-32B, and s1.1-3B.
+  teacher: unknown; no teacher or training-data construction is part of the reported inference study.
+  generator: Target/draft pairs include s1.1-32B/s1.1-7B, LLaMA-3.1-8B-Instruct/EAGLE3, DeepSeek-R1-Distill-Qwen-32B/DeepSeek-R1-Distill-Qwen-7B,
+    QwQ-32B/DeepSeek-R1-Distill-Qwen-7B, and s1.1-3B/Qwen2.5-0.5B-Instruct.
+  filtering_rule: No training-data filter is used. At inference, candidate final answers are aggregated by majority voting
+    or one of four confidence-based strategies; greedy configuration search chooses between branch-wise and sequence-wise
+    expansions under the latency constraint.
+  sampling_protocol: Sequential output lengths are 1,024, 2,048, 4,096, and 8,192 tokens. Appendix A.2 analyzes draft lengths
+    {2, 4, 5} and branch counts {1, 4, 16, 64}; selected optima are task/model specific and include branch counts 8, 16, or
+    32 with draft lengths 3, 4, or 5. Temperature, top-p/top-k, random seeds, and retry policy are not disclosed.
+  rollout_count: null
+  temperature: null
+  inference_budget: Wall-clock latency is the primary budget. Highlighted operating points are one minute for s1.1-32B and
+    ten seconds for s1.1-3B, with an 8,192-token maximum output-length setting in the scaling sweep.
+  optimizer_or_scaffold: No training optimizer is used. The inference scaffold combines budget forcing, majority/confidence
+    aggregation, speculative decoding, and greedy search over branch-count and draft-length expansions; branch counts grow
+    in powers of two and draft length grows one step at a time.
+audit:
+  source_mixture: The paper reports aggregate accuracy-latency results for four public benchmarks, five target models, and
+    paired draft models. It does not release prompt-level outputs, configuration-to-item mappings, branch traces, per-run
+    timing logs, or immutable model/runtime revisions.
+  split: Evaluation benchmark sizes are stated, but no machine-readable manifest ties items, configurations, repeated trials,
+    candidates, and final scores together.
+  decontamination: unknown
+  license: The ACL Anthology paper is available under CC BY 4.0. Section 9 states that utilized datasets and the codebase
+    are MIT-licensed and model licenses are Apache-2.0 compatible, but the authors provide no immutable artifact manifest
+    or author-specific release; licenses for unreleased run records are unknown.
+  lineage: benchmark prompt -> target/draft model pair -> output-length, branch-count, and draft-length configuration -> candidate
+    responses -> majority/confidence aggregation -> final answer -> benchmark accuracy and wall-clock latency
+  known_failure_modes:
+  - The memory-bound premise is explicitly limited to small- and medium-scale workloads; Appendix A.4 shows latency grows
+    sharply as concurrent requests move the workload into a compute-bound regime.
+  - Too many branches or too long a draft can increase KV-cache/compute overhead and yield greater latency or worse performance,
+    so the selected configuration is not portable without system controls.
+  - Majority and confidence aggregation can share answer-extraction, tie, calibration, or correlated-error failures; the paper
+    reports no per-candidate audit.
+  - No author-specific implementation, raw candidate/acceptance trace, hardware specification, prompt manifest, or raw latency
+    log is linked, blocking independent replay of the reported timings.
+  - The paper reports no decontamination analysis and warns that TTS may degrade underrepresented domains and increase susceptibility
+    to adversarial prompts.
+  - Section 5.3 says greedy search takes 8-10 steps, while Table 2 reports 8, 9, 10, and 11 steps across the four models.
+  citation_status: verified
+  confidence: medium
+  notes: Citation metadata and results were checked against the official Findings of EMNLP 2025 ACL Anthology record and paper,
+    plus arXiv:2505.19634 v4. This is an evaluation/configuration-search record, not a public rollout-trace release.
+  metadata_status: partial
+inclusion_reason: The study makes a latency-aware test-time record explicit—candidate branch count, speculative draft length,
+  output-length budget, aggregation, accuracy, and latency—and evaluates greedy allocation of concurrency resources.
+related: []
+tags:
+- latency-aware-test-time-scaling
+- test-time-compute
+- branch-wise-parallelism
+- speculative-decoding
+- concurrency-allocation
+- greedy-search
+- majority-voting
+- latency-accuracy-tradeoff
+status: partial
+one_line_summary: The paper searches branch count and speculative-decoding draft length to maximize benchmark accuracy under
+  wall-clock latency, but releases neither raw candidate traces nor the hardware/runtime record needed to replay its timing
+  results.
+why_it_matters: For rollout and test-time trace research, it shows that token count alone misses the interaction among branch
+  multiplicity, output length, draft acceptance, aggregation, and system throughput. It also makes the missing raw traces
+  and system metadata central audit boundaries.
+card: null
+needs:
+- 'needs_release: author-specific code/configurations, raw branches, speculative-acceptance traces, prompt-to-output mappings,
+  and machine-readable timing/results'
+- 'needs_metadata: accelerator/host, serving stack, exact model and dataset revisions, request/batch conditions, decoding
+  parameters, seeds, retries, and scoring/extraction implementation'
+- 'needs_audit: equal-latency prompt-level repeats, tie/format handling, decontamination, and validation across hardware and
+  multi-request workloads'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: card-repair-curator
+  confidence: medium
+  notes: Official ACL Anthology venue record, DOI, BibTeX, paper, and arXiv v4 checked. No author-specific code, data, project,
+    or raw-run release is asserted.
+category_ids:
+- rollout_search_test_time_trace_data

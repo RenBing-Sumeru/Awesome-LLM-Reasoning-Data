@@ -1,0 +1,1 @@
+Lu, Yi、Deyang Kong、Jianing Wang、Linsen Guo、Xue Wang、Qi Guo、Tao Gui、Xuanjing Huang、Wei Ye、Shikun Zhang 与 Wei Wang。《Advancing Block Diffusion Language Models for Test-Time Scaling》。arXiv 预印本 arXiv:2602.09555，2026。https://arxiv.org/abs/2602.09555。官方代码：https://github.com/LuLuLuyi/TDAR。

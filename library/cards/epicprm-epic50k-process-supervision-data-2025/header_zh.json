@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "提出 EpicPRM 数据构建框架，并公开 Epic50K：通过贡献度标注和自适应二分首错定位生成 5 万条高质量过程监督样本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Li et al.",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-13T09:49:52Z"
+}

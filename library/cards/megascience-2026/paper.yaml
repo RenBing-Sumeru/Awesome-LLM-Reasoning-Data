@@ -1,0 +1,125 @@
+id: megascience-2026
+title: 'MegaScience: Pushing the Frontiers of Post-Training Datasets for Science Reasoning'
+year: 2026
+venue: COLM 2026
+authors:
+- Fan, Run-Ze
+- Wang, Zengzhi
+- Liu, Pengfei
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- reference-anchored-science-reasoning-mixture
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2507.16812
+  arxiv: https://arxiv.org/abs/2507.16812
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/MegaScience/MegaScience
+  project: null
+  huggingface: https://huggingface.co/datasets/MegaScience/MegaScience
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public scientific QA datasets plus university textbook questions
+  trace_author: language models annotate step-by-step solutions against extracted reference answers
+  answer_format: question, generated answer, subject, reference answer, and source
+  process_fields:
+  - question
+  - generated answer
+  - subject
+  - reference answer
+  - and source
+  environment_or_substrate: English physics, chemistry, biology, materials, astronomy, earth science, and general science
+  verifier_or_reward: reference-answer checks, difficulty filtering, minhash deduplication, and benchmark decontamination
+  terminal_predicate: reference-answer checks, difficulty filtering, minhash deduplication, and benchmark decontamination
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: language models annotate step-by-step solutions against extracted reference answers
+  generator: MegaScience combines verified textbook references with source-specific selection and solution annotation to release
+    a 1.25M seven-discipline reasoning mixture.
+  filtering_rule: reference-answer checks, difficulty filtering, minhash deduplication, and benchmark decontamination
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: science reasoning SFT
+audit:
+  source_mixture: public scientific QA datasets plus university textbook questions
+  split: Official release at https://huggingface.co/datasets/MegaScience/MegaScience; exact configs are described by the dataset
+    card.
+  decontamination: reference-answer checks, difficulty filtering, minhash deduplication, and benchmark decontamination
+  license: CC-BY-NC-SA-4.0
+  lineage: public scientific QA datasets plus university textbook questions -> language models annotate step-by-step solutions
+    against extracted reference answers -> reference-answer checks, difficulty filtering, minhash deduplication, and benchmark
+    decontamination -> MegaScience -> science reasoning SFT
+  known_failure_modes:
+  - textbook extraction can misalign questions and references
+  - and non-commercial share-alike terms limit some downstream uses
+  citation_status: verified
+  confidence: high
+  notes: Full 39 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for science reasoning SFT; records name the
+  authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2507.16812
+- primary-link-checked
+status: verified
+one_line_summary: MegaScience combines verified textbook references with source-specific selection and solution annotation
+  to release a 1.25M seven-discipline reasoning mixture.
+why_it_matters: Open post-training corpora emphasize math and code, while scientific questions often lack trustworthy references
+  and sufficiently detailed worked solutions.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: science reasoning SFT
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: reference-anchored science reasoning mixture
+  selection_priority_score: 7
+  selection_score_breakdown:
+    institution: 2
+    venue: 2
+    impact: 1
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as COLM 2026; no higher presentation level is claimed.
+    impact: The official dataset reported 2872 downloads and 133 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet question-answer records records, field schema, scale, and CC-BY-NC-SA-4.0
+      terms.
+  selection_eligible: true
+  year_impact_threshold: 1

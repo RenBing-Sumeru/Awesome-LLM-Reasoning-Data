@@ -1,0 +1,16 @@
+{
+  "title": "On the Step Length Confounding in LLM Reasoning Data Selection",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.findings-acl.918/"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T13:09:29Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "揭示推理轨迹长度会系统性干扰自然度筛选，并提供可复现的去偏选择方法",
+    "updated_at": "2026-07-15T13:09:29Z"
+  }
+}

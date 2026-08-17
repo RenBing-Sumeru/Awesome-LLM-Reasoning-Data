@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "DAPO 以 17K 整数答案数学题和每题 16 条在线 rollout 为对象，通过规则奖励、动态题组筛选、token-level loss 与长度塑形组织 RLVR；但当前公开 split 的重复块和来源谱系仍阻碍直接复用。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开源数学 RLVR 算法、系统与数据构造配方",
+  "best_for_ch": "设计、复现或审计数学 RLVR 数据流与反馈合同的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Qiying Yu 等",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

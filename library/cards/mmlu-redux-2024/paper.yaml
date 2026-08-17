@@ -1,0 +1,118 @@
+id: mmlu-redux-2024
+title: Are We Done with MMLU?
+year: 2024
+venue: arXiv preprint
+authors:
+- Aryo Pradipta Gema
+- Joshua Ong Jun Leang
+- Giwon Hong
+- Alessio Devoto
+- Alberto Carlo Maria Mancino
+- Rohit Saxena
+- Xuanli He
+- Yu Zhao
+- Xiaotang Du
+- Mohammad Reza Ghasemi Madani
+- Claire Barale
+- Robert McHardy
+- Joshua Harris
+- Jean Kaddour
+- Emile van Krieken
+- Pasquale Minervini
+source_role:
+- benchmark
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- benchmark-auditing
+- benchmark-quality-audit
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+- prompt_sourcing
+artifacts:
+  paper: https://arxiv.org/abs/2406.04127
+  arxiv: https://arxiv.org/abs/2406.04127
+  doi: https://doi.org/10.48550/arXiv.2406.04127
+  code: null
+  data: https://huggingface.co/datasets/edinburgh-dawg/mmlu-redux-2.0
+  project: null
+  huggingface: https://huggingface.co/datasets/edinburgh-dawg/mmlu-redux-2.0
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official authors curate a manual re-annotation and error-audit protocol for a 5,700-question MMLU subset.
+  trace_author: Expert or trained annotators inspect sampled MMLU items under the paper's annotation protocol.
+  answer_format: MMLU question, original answer key, re-annotated answer/decision, error category, and task metadata.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: manual re-annotation and error audit protocol for a sampled MMLU test subset
+  verifier_or_reward: human re-annotation and error-category adjudication over MMLU items
+  terminal_predicate: whether the sampled MMLU item is judged correct, wrong, ambiguous, or otherwise defective under the
+    protocol
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate manual re-annotation and error audit protocol for MMLU subset; exact artifact,
+    split, and license details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_quality_audit
+audit:
+  source_mixture: 'Official sources checked for author and artifact metadata: https://arxiv.org/abs/2406.04127; https://arxiv.org/html/2406.04127;
+    https://huggingface.co/datasets/edinburgh-dawg/mmlu-redux-2.0'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2406.04127'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv page verifies the corrected author list; Hugging Face dataset card verifies the public MMLU-Redux
+    2.0 artifact and CC-BY-4.0 license.
+inclusion_reason: Directly studies benchmark errors, useful as a QA template for candidate review.
+related: []
+tags:
+- benchmark
+- benchmark_quality_audit
+- benchmark-auditing
+one_line: MMLU-Redux exposes manual re-annotation and error auditing for a 5,700-question MMLU subset.
+why_it_matters: Directly studies benchmark errors, useful as a QA template for candidate review.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MMLU-Redux exposes manual re-annotation and error auditing for a 5,700-question MMLU subset.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv page verifies the corrected author list; Hugging Face dataset card verifies the public MMLU-Redux
+    2.0 artifact and CC-BY-4.0 license.
+category_ids:
+- benchmarks_evaluation_surfaces

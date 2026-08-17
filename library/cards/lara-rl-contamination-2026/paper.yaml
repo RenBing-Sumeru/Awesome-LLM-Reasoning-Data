@@ -1,0 +1,92 @@
+id: lara-rl-contamination-2026
+title: 'LaRA: Layer-wise Representation Analysis for Detecting Data Contamination in RL Post-Training'
+year: 2026
+venue: AI4GOOD Workshop 2026; arXiv:2605.29888
+authors:
+- Minju Gwak
+- Minseo Kwak
+- Dongseok Lee
+- Guijin Son
+- Alan Ritter
+- Jaehyung Kim
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.29888
+  arxiv: https://arxiv.org/abs/2605.29888
+  code: null
+  data: https://openreview.net/attachment?id=YfFRMts4R2&name=supplementary_material
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=YfFRMts4R2
+  openreview: https://openreview.net/forum?id=YfFRMts4R2
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official source
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: medium
+  notes: arXiv record, public workshop page, and public artifact URL were verified. Layer-wise metrics detect reward-driven memorization after RL post-training.
+inclusion_reason: 'Layer-wise representation auditing for contamination signals after RL post-training.'
+related: []
+tags:
+- rl-contamination
+- representation-geometry
+- audit
+status: verified
+one_line_summary: Layer-wise metrics detect reward-driven memorization after RL post-training.
+why_it_matters: It separates contamination signals from output-level confidence changes after RL.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: medium
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

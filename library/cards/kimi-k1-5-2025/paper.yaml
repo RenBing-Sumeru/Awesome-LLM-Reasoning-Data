@@ -1,0 +1,150 @@
+id: kimi-k1-5-2025
+title: 'Kimi k1.5: Scaling Reinforcement Learning with LLMs'
+year: 2025
+venue: arXiv preprint
+authors:
+- Kimi Team
+source_role:
+- model_report
+- construction_recipe
+- verifier_reward
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- pairwise_preference
+- scalar_reward
+domains:
+- mathematics
+- coding
+- general_reasoning
+- vision_language
+- long_context
+training_use:
+- sft
+- preference_learning
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2501.12599
+  arxiv: https://arxiv.org/abs/2501.12599
+  code: null
+  data: null
+  project: https://github.com/MoonshotAI/Kimi-k1.5
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2501.12599
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2501.12599
+data_object:
+  prompt_source: Filtered STEM, coding, competition, and general-reasoning problems, including text-only and image-text QA.
+    Exact source datasets, counts, and prompt manifests are unknown.
+  trace_author: Long-CoT warmup paths are generated through prompt engineering and verified. Vanilla SFT starts with human
+    seed data, then a seed model produces multiple responses that annotators rank and refine. Base Kimi k1.5 generates coding
+    test cases. Exact checkpoints, prompts, and annotator protocol are unknown.
+  answer_format: Problem, ground-truth answer, generated CoT, final answer, and scalar correctness reward; code records additionally
+    use generated test cases. Long2short DPO uses shortest correct chosen responses and longer rejected responses.
+  process_fields:
+  - problem
+  - ground_truth_answer
+  - generated_chain_of_thought
+  - final_answer
+  - difficulty_label
+  - verifier_or_reward_output
+  - code_test_cases
+  - chosen_response
+  - rejected_response
+  environment_or_substrate: Iterative RL with rollout workers, replay buffer, reward models, trainer workers, partial rollouts,
+    Megatron, vLLM, checkpoint-engine, and a Kubernetes code sandbox.
+  verifier_or_reward: Verifiable tasks use rules or code tests. Free-form math uses a classic scalar RM and a CoT RM that
+    reasons before emitting a JSON correctness judgment. Code tests are synthesized and validated against reference submissions.
+  terminal_predicate: Correctness is a binary reward relative to a ground-truth answer, rule, RM, or code-test set. Exact
+    acceptance thresholds are disclosed only for the reported coding test-generation procedure; the general RL retention contract
+    is unknown.
+recipe_metadata:
+  base_model: Proprietary Kimi k1.5 multimodal base model trained through vision-language pretraining, cooldown, and long-context
+    activation; parameter count and released checkpoint are unknown.
+  teacher: Human-annotated vanilla-SFT seeds, an unspecified seed model, Kimi k1.5 for coding test generation, and proprietary
+    internal models/annotators in specified pipelines; exact identities and versions are unknown.
+  generator: Prompt-engineered and verified long-CoT paths; seed-model responses; base-model generated coding test cases;
+    and long-CoT samples reused for shortest-rejection, DPO, and long2short RL.
+  filtering_rule: Automatic rich-reasoning/evaluability filters; 10 SFT-model samples per prompt for pass-rate difficulty
+    estimation; removal of multiple-choice, true/false, proof, and answer-easy-to-guess prompts; coding-test validation; curriculum
+    and prioritized sampling. Full rules and yields are unknown.
+  sampling_protocol: Curriculum sampling moves from easier to harder items; prioritized sampling weights problems by one minus
+    observed success rate. Partial rollouts reuse earlier response segments. Long2short shortest rejection sampling uses n=8.
+  rollout_count: n=8 for shortest rejection sampling; general RL rollout count is unknown.
+  temperature: null
+  inference_budget: Final RL context is reported as 128K and long-context activation reaches 131,072 tokens. Exact ordinary-RL
+    rollout cap and long2short cap are unknown.
+  optimizer_or_scaffold: Online policy mirror descent variant with a changing reference policy, regularization, optimizer
+    reset per iteration, length reward, curriculum and prioritized sampling, partial rollouts, then long2short rejection sampling,
+    DPO, or RL.
+audit:
+  source_mixture: High-level five-domain language and five-category multimodal descriptions are disclosed, alongside some
+    synthetic and in-house data use. Raw sources, proportions, token counts, manifests, and retention yields are unknown.
+  split: A global train/validation/test split and item-level release manifests are unknown.
+  decontamination: unknown
+  license: The model is explicitly proprietary and is not open-sourced. The official GitHub repository distributes the report
+    rather than code, data, or weights; licenses for model, data, derivatives, and repository contents are unknown.
+  lineage: High-level lineage is disclosed from pretraining to vanilla SFT, long-CoT SFT, RL, and long2short variants, but
+    source-level and sample-level lineage are unknown.
+  known_failure_modes:
+  - No released model weights, RL data, SFT data, reward-model data, or training code.
+  - Reward hacking can remain when final answers are guessable or verifiers are incomplete.
+  - CoT RM performance is reported from manual spot checks rather than an independent audit.
+  - Generated coding tests may miss incorrect programs despite submission-based filtering.
+  - Prompt sources, filtering yields, splits, licenses, and data lineage are not reproducible from the report.
+  - No disclosed decontamination protocol establishes benchmark-leakage boundaries.
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv v4 and MoonshotAI/Kimi-k1.5 were checked. The official repository contains report material only and
+    lists no releases. This V2 Card is the migration route for the pre-existing legacy canonical ID; it is a Track 12 partial-disclosure
+    record, not a Track 8 scaling classification.
+inclusion_reason: High-impact frontier report that discloses concrete RL prompt curation, warmup-SFT, reward-model, code-test,
+  long2short, and infrastructure mechanisms while withholding the underlying artifacts required for independent reuse.
+related: []
+tags:
+- kimi-k1-5
+- frontier-report
+- data-disclosure-ledger
+- long-cot
+- rlvr
+- reward-model
+- code-test-generation
+- long2short
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Kimi k1.5 discloses a multimodal RL pipeline with prompt filtering, verified long-CoT warmup, math reward
+  models, synthesized code tests, long2short preference/RL methods, and partial-rollout infrastructure, but releases no model,
+  training data, reward data, or executable training stack.
+why_it_matters: It lets Track 12 readers audit a frontier report at the level of data and feedback interfaces while making
+  clear that detailed methods do not replace source manifests, released validators, licenses, splits, decontamination, or
+  reproducible artifacts.
+card: null
+needs:
+- 'needs_data: released prompt/SFT/RL/RM/test-case/preference data with manifests'
+- 'needs_code: verifier, reward-model, partial-rollout, and training implementation'
+- 'needs_metadata: model/checkpoint identities, sample counts, prompts, temperatures, and retention yields'
+- 'needs_audit: split, contamination, validator-error, and reward-hacking analysis'
+- 'needs_license: model/data/source/derivative rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official arXiv, DOI, and Moonshot report repository were verified. The available official repository is report-only;
+    absent weights, data, and executable code are recorded as null or unknown.

@@ -1,0 +1,3 @@
+Tabular fact verification and question answering are often handled by black-box models that directly output labels or answers, leaving no executable account of which rows, filters, or aggregations were used. Fluent natural-language explanations can still disagree with the actual calculation. For structured data, such opaque reasoning is difficult to audit and cannot provide stable rewards.
+
+RePanda translates claims or questions into executable pandas programs and uses execution results as truth labels or answers. It constructs PanTabFact and PanWiki to turn table reasoning into a reproducible code-generation task.

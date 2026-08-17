@@ -1,0 +1,3 @@
+**Taxonomy coverage.** The paper systematically links feedback forms, query selection, reward estimation, policy optimization, applications, evaluation, and datasets, with a dedicated LLM appendix and deeper control/robotics treatment. This is evidence that the decomposition is broad enough to route primary work, not evidence that one RLHF algorithm wins.
+
+**Cross-stage failure analysis.** Its synthesis repeatedly distinguishes preference-label quality, reward-model generalization, and optimized-policy behavior, and catalogs risks such as annotator inconsistency, distribution shift, reward exploitation, and evaluation dependence. This supports the survey's audit value; every numerical or implementation claim still belongs to the cited experiment.

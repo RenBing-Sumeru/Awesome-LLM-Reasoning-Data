@@ -1,0 +1,3 @@
+Multimodal mathematical steps can fail through image misreading or later logic. GM-PRM constructs generative supervision containing visual-grounding judgments, logical checks, and corrections.
+
+This gap directly determines whether generative multimodal process supervision can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on image-evidence checks, logical judgments, error types, and correction suggestions and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in multimodal mathematical step assessment and correction.

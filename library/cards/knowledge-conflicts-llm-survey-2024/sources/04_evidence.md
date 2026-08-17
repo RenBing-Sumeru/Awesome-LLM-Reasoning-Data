@@ -1,0 +1,1 @@
+Its evidence is a structured account of existing studies rather than a new benchmark result. The official abstract explicitly identifies the three conflict categories and states that the paper reviews causes, behaviors, and available solutions; compare cited results only with their original settings in view.

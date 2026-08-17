@@ -1,0 +1,1 @@
+At release, the paper reports a model trained with its recipe reaching 92% on RewardBench. That figure is evidence that the data/recipe combination is useful on that benchmark, not that five scalar dimensions exhaust human preference. Check whether a reported RM uses the original labels, a binarized derivative, or additional data.

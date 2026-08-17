@@ -1,0 +1,3 @@
+Researchers building collaborative writing or design assistants can group candidate responses by conversation turn and convert higher- and lower-scored outputs into DPO pairs or reward-model records. Success should be evaluated through intent discovery, final satisfaction, interaction quality, and token cost.
+
+The intent-tree and simulator pipeline can also be adapted to another open-ended domain by extracting artifact requirements, constructing latent refinements, and generating multi-turn supervision. It is unsuitable when goals are fixed and externally verifiable, or when unintended steering could create legal, medical, or safety risks without direct human review.

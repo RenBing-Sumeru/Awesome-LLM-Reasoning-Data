@@ -1,0 +1,1 @@
+核心贡献是 ChemBench：一个用来评估 LLM 化学知识与推理能力、并与化学家表现对照的自动化 benchmark suite。机制是整理 2,700+ 个化学问答，按主题组织，用模型 prompter 跑评测，并保存 topic-level reports。反馈契约主要是 ChemBench package 中针对答案 key 或任务指标的程序化评分。最近对比对象是 MMLU 式通用考试里的化学子集，以及没有专家校准的零散化学 prompt。方向标签是 domain expert benchmark，重点是 answer-level feedback 与校准风险。

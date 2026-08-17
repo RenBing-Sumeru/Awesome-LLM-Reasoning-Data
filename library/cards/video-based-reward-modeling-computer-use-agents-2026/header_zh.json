@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ExeVR-53k 提供 5.3 万个指令—执行视频—奖励三元组及对抗式步骤标注，用可观测视频评判计算机使用轨迹。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基于执行视频的计算机使用智能体奖励建模与过程监督数据论文",
+  "best_for_ch": "训练或评测无需访问智能体内部动作与思维的轨迹成功判定器。",
+  "confidence_ch": "高",
+  "authors_ch": "Linxin Song、Jieyu Zhang、Huanxin Sheng 等",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

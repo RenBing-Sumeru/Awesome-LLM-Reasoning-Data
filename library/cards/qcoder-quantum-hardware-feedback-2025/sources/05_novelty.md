@@ -1,0 +1,2 @@
+Benchmarks such as HumanEval and APPS mainly rely on static unit tests, and domain coding datasets often check only software outputs. QCoder places quantum code in a simulated hardware loop, expanding the target from “does the code return the right value?” to “does it construct an executable circuit under device constraints?” It also includes real contest submissions as a human data baseline and returns structured errors for iterative refinement. The novelty lies in the environmental verifier and hardware metrics rather than a new general code-generation algorithm.
+

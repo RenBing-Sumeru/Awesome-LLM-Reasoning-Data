@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "D-GARA 评测 GUI 智能体面对真实动态异常的鲁棒性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "AAAI 2026 / arXiv 的 GUI-agent robustness benchmark",
+  "best_for_ch": "关注 Web、GUI、移动端、OS 智能体环境、轨迹数据和可复现评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Sen Chen 等（Tongji University）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T04:34:37Z"
+}

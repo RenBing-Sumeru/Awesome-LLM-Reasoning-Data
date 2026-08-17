@@ -1,0 +1,3 @@
+The authors state that the small annotation set cannot capture the full variation of medical reasoning or stabilize all F1 and correlation estimates. Reuse should expand clinician annotation and report uncertainty rather than treating the table as a calibrated clinical threshold.
+
+Binary equivalence misses incomplete, misleading, stylistic, and safety errors; the study also does not test multilingual or cross-domain transfer. Finally, no judge is shown neutral: missing bias tests for some judge–generator pairings are an untested assumption, and the paper explicitly rejects autonomous safety-critical deployment.

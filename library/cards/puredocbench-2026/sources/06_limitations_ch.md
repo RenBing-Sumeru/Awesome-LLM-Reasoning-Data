@@ -1,0 +1,3 @@
+正确性只相对于 official scoring CLI compares predictions with GT structures using TextEdit, FormulaCDM, TableTEDS, ROEdit, per-track Overall, and Avg3 across clean, digital-degraded, and real-degraded tracks. 成立。通过分数不自动证明鲁棒推理、安全行为、解释忠实，或能迁移到 benchmark 分布之外。
+
+隐藏假设包括：Pin release ID puredocbench-2026-06-14 or later, release manifest candidate_1475, GT correction version, image track, and whether the full HF image release or a sample repository checkout is being used.；Official GitHub README reports dataset assets under CC BY 4.0 and code under MIT; model weights are not redistributed.；依赖或运行时漂移；裁判或评测器版本漂移；以及污染风险：公开评测记录可能泄漏进未来训练数据；实时、隐藏或截断后分数声明需要版本化证据。除非发布版本暴露训练输入、过滤规则和优化用途，否则这张卡不能被读成训练配方证据。

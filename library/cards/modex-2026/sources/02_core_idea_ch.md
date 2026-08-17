@@ -1,0 +1,1 @@
+ModeX 把每个采样回答视为图节点，边权是 unigram、bigram 与 trigram Jaccard 相似度之和。它用图 Laplacian 的 Fiedler 向量提出二分；conductance 低于 tau 时保留较大分区，分区同样大时按总边权打破平局并继续递归，conductance 达到 tau 时停止。最终簇中加权度最大的回答被返回。ModeX-Lite 每隔 T 个 tokens 对部分路径执行一次这类划分，剪掉未保留组，并把中心选择延后到解码结束。“Evaluator-free”在操作上仅表示没有 reward model 或辅助 judge 参与答案选择；它并非 verifier-backed，因为词面共识与图连接性只是选择启发式，不能证明所选内容真实或功能正确。

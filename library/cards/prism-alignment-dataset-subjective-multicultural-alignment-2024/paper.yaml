@@ -1,0 +1,120 @@
+id: prism-alignment-dataset-subjective-multicultural-alignment-2024
+title: 'The PRISM Alignment Dataset: What Participatory, Representative and Individualised Human Feedback Reveals About the
+  Subjective and Multicultural Alignment of Large Language Models'
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Track
+authors:
+- Hannah Rose Kirk
+- Alexander Whitefield
+- Paul Röttger
+- Andrew Michael Bean
+- Katerina Margatina
+- Juan Manuel Ciro
+- Rafael Mosquera
+- Max Bartolo
+- Adina Williams
+- He He
+- Bertie Vidgen
+- Scott A. Hale
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+- pairwise_preference
+- full_episode
+domains:
+- multicultural-alignment
+- human-feedback
+- pluralism
+training_use:
+- preference_learning
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=DFr5hteojx
+  arxiv: https://arxiv.org/abs/2404.16019
+  code: https://github.com/HannahKirk/prism-alignment
+  data: https://huggingface.co/datasets/HannahRoseKirk/prism-alignment
+  project: https://hannahkirk.github.io/prism-alignment/
+  huggingface: https://huggingface.co/datasets/HannahRoseKirk/prism-alignment
+  doi: https://doi.org/10.48550/arXiv.2404.16019
+  venue: https://openreview.net/forum?id=DFr5hteojx
+  openreview: https://openreview.net/forum?id=DFr5hteojx
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Participant-authored opening prompts in unguided, values-guided, and controversy-guided conversations.
+  trace_author: 1,500 surveyed participants interact live with a backend of 21 LLMs.
+  answer_format: Conversation trees, 1–100 cardinal ratings, fine-grained feedback, participant survey profiles, and metadata
+    flags.
+  process_fields:
+  - user_id
+  - conversation_id
+  - conversation_history
+  - utterance_score
+  - survey_profile
+  - feedback
+  - metadata
+  environment_or_substrate: Live multi-turn participant–LLM conversations.
+  verifier_or_reward: Participant ratings and fine-grained feedback; four models are rated initially and highest-rated model
+    continues.
+  terminal_predicate: A released survey, conversation, utterance, or metadata record subject to terms of use.
+recipe_metadata:
+  base_model: 21 open-access and commercial LLMs in the PRISM interface
+  teacher: Participatory human raters
+  generator: Live participant prompts and LLM responses
+  filtering_rule: Ethics-approved collection, PII/moderation metadata, and documented release processing
+  sampling_protocol: 1,500 participants born in 75 countries; 1,396 reach conversation stage; 8,011 trees and 68,371 rated
+    utterances
+  rollout_count: 4
+  temperature: non-deterministic for post-first-turn A/B responses
+  inference_budget: 2–22 turns per conversation
+  optimizer_or_scaffold: Participatory, representative, and individualized human-feedback analysis
+audit:
+  source_mixture: Survey profiles and live ratings from global participants, UK/US representative samples, 21 LLM backends.
+  split: Survey, conversations, utterances, and metadata JSONL releases; inspect current HF revision.
+  decontamination: Audit conversation/utterance overlap and prevent re-identification through linked survey information.
+  license: Prompts CC-BY-4.0; model responses CC-BY-NC-4.0 and subject to original provider terms.
+  lineage: NeurIPS 2024 paper, official OpenReview, GitHub, project page, and Hugging Face dataset.
+  known_failure_modes:
+  - Representative samples do not encode every perspective
+  - Individualized feedback must not become a universal reward
+  - Linked profiles create privacy and re-identification risks
+  citation_status: verified
+  confidence: high
+  notes: Exact requested title, NeurIPS venue, data card, ethics/provenance, and official artifacts verified on 2026-07-14.
+inclusion_reason: Public participatory human-feedback data that preserves demographic, cultural, and individual variation
+  in alignment judgments.
+related: []
+tags:
+- human-feedback
+- multicultural
+- pluralism
+- participatory-alignment
+one_line_summary: PRISM links 1,500 participants’ stated preferences and profiles to fine-grained ratings in 8,011 live conversations
+  with 21 LLMs.
+why_it_matters: It makes the question of which humans provide alignment data empirically auditable rather than collapsing
+  disagreement into one reward.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: arXiv, NeurIPS OpenReview, official project/GitHub, and official dataset review
+  confidence: high
+  notes: Formal title corrected exactly as requested; official data, code, and project URLs verified.
+category_ids:
+- preference_reward_feedback_data

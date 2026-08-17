@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LiveBench 把带日期的任务版本、定期替换和客观评分组合起来，让模型结果能够对应一个明确的抗污染 benchmark 版本接受审计。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "抗污染 benchmark 与评测协议",
+  "best_for_ch": "适合设计版本化客观评测，或审计 benchmark 泄漏风险的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Colin White, Samuel Dooley, Manley Roberts, Arka Pal, Ben Feuer, Siddhartha Jain, Ravid Shwartz-Ziv, Neel Jain, Khalid Saifullah, Sreemanti Dey, Shubh-Agrawal, Sandeep Singh Sandha, Siddartha Naidu, Chinmay Hegde, Yann LeCun, Tom Goldstein, Willie Neiswanger, Micah Goldblum",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-13T00:00:00Z"
+}

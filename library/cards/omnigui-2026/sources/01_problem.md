@@ -1,0 +1,5 @@
+OmniGUI asks how to evaluate GUI agents when the correct smartphone action depends on interleaved image, audio, video, and action history at the exact decision step. The primary source is the 2026 arXiv report and the official project, GitHub, and Hugging Face releases.
+
+The decision boundary is a benchmark and environment-harness surface, not a model-training recipe and not an autonomous closed-loop rollout benchmark. A data object is an expert-demonstrated Android episode made of step-level observations: current screenshot, temporal video clip, synchronous device audio, prior action history, task goal, and a ground-truth action primitive with parameters such as normalized coordinates or strings.
+
+The feedback contract is deterministic matching against the expert trajectory. Type Match checks the action primitive; Exact Match additionally checks parameters; episode Success Rate requires EM on every step; Goal Progress reports the EM fraction within an episode. This matters for the atlas because many GUI-agent benchmarks are screenshot-only or use audio/video as pre-task context, while OmniGUI makes transient multimodal signals part of the action surface.

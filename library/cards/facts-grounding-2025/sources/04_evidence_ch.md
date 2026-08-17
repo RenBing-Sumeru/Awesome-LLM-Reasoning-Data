@@ -1,0 +1,1 @@
+论文报告 1,719 个样本，其中 860 个 public/open、859 个 private/blind，文档最长 32K tokens。模型分数的证据是官方两阶段 judge 对每个提交回答的结果，而不是可直接人工浏览的 claim 表。private split 有助于抗污染，但分数仍受 judge 可靠性、prompt、回答风格和 Kaggle leaderboard 政策约束。后续 FACTS suite 版本不能和这篇 2025 Grounding 论文混写。

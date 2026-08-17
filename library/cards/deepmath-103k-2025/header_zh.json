@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeepMath-103K 为 10.3 万道去污染难题各保留三条 R1 解题过程，并把答案、难度和主题写入记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "数学推理监督微调与强化学习题目准备",
+  "confidence_ch": "高",
+  "authors_ch": "He, Zhiwei、Liang, Tian、Xu, Jiahao、Liu, Qiuzhi、Chen, Xingyu、Wang, Yue、Song, Linfeng、Yu, Dian、Liang, Zhenwen、Wang, Wenxuan、Zhang, Zhuosheng、Wang, Rui、Tu, Zhaopeng、Mi, Haitao、Yu, Dong",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

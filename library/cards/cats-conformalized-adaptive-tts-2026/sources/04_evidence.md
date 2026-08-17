@@ -1,0 +1,3 @@
+The official abstract reports that CATS automatically selects a reasoning level while guaranteeing that the probability of an incorrect answer stays below a user-chosen tolerance. This directly supports the paper's primary claim: adaptation is evaluated as controlled risk, not only as a mean accuracy or latency improvement.
+
+The available primary record does not expose a public implementation or data bundle, so the evidence should be read at the level of the published experimental setting. A reviewer should inspect the full tables for the calibration distribution, tolerance values, and whether the reported guarantee is empirical or finite-sample conditional before converting it into a production service-level objective.

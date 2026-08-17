@@ -1,0 +1,153 @@
+id: wonda-invariant-curation-2026
+title: 'Not All Invariants Are Equal: Curating Training Data to Accelerate Program Verification with SLMs'
+year: 2026
+venue: ICML 2026
+authors:
+- Ido Pinto
+- Yizhak Yisrael Elboher
+- Haoze Wu
+- Nina Narodytska
+- Guy Katz
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- program-verification
+- loop-invariants
+- C-programs
+training_use:
+- sft
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.15510
+  arxiv: https://arxiv.org/abs/2603.15510
+  code: https://github.com/idopinto/wonda
+  data: https://huggingface.co/datasets/idopinto/Wonda-Training-Dataset-Full
+  project: null
+  huggingface: https://huggingface.co/collections/idopinto/wonda
+  doi: https://doi.org/10.48550/arXiv.2603.15510
+  venue: https://openreview.net/forum?id=fS28SOioQd
+  openreview: https://openreview.net/forum?id=fS28SOioQd
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Training programs and raw UAutomizer invariants released with InvBench; evaluation uses per-loop C verification
+    instances derived from 219 InvBench/SV-COMP programs.
+  trace_author: UAutomizer supplies raw invariants; deterministic AST rules normalize them; Kimi K2 Thinking proposes up to
+    four semantic simplifications for each verbose invariant; UAutomizer grades every retained target.
+  answer_format: An SFT target is one JSON object with a loop marker and one C Boolean invariant. The public curated row also
+    preserves the source program, raw and normalized invariants, optional simplified invariant and rationale, correctness/sufficiency/speedup
+    labels, quality grade, and verifier timings.
+  process_fields:
+  - source file and original C program
+  - baseline verifier decision and timing
+  - target loop marker
+  - raw UAutomizer invariant
+  - AST-normalized invariant
+  - LLM simplified candidate and rationale
+  - target invariant
+  - correctness and sufficiency outcomes
+  - speedup flag, factor, quality grade, and verification timings
+  environment_or_substrate: UAutomizer 0.3.0-dev-d790fec for SV-COMP 2025, Java 21, 32-bit unreach-call property, runlim,
+    16 GB verifier memory limit, and 600-second per-query timeout.
+  verifier_or_reward: A sound UAutomizer oracle separately checks induction/correctness and sufficiency; grade 0 is non-inductive,
+    1 is inductive but not sufficient, 2 is inductive and sufficient without verifier speedup, and 3 also beats the baseline
+    verifier time.
+  terminal_predicate: The paper's V2 SFT set keeps non-degenerate, syntactically valid candidates with grade at least 2 whose
+    chat-formatted prompt-completion sequence fits 1,024 tokens.
+recipe_metadata:
+  base_model: Qwen3-0.6B, Qwen3-4B-Instruct-2507, Qwen3-8B, Qwen3-14B, Llama-3.1-8B-Instruct, and Mistral-7B-Instruct-v0.3;
+    the paper uses non-thinking Qwen3 models and LoRA only for Qwen3-8B.
+  teacher: Kimi K2 Thinking is the semantic simplifier. Formal acceptance comes from UAutomizer rather than the teacher model.
+  generator: UAutomizer extracts raw proof invariants; AST normalization removes local syntactic noise; Kimi K2 Thinking generates
+    semantic simplifications for normalized invariants of at least 20 characters.
+  filtering_rule: Skip non-TRUE baselines, missing and degenerate invariants; exact-deduplicate LLM candidates; reject malformed
+    or side-effecting C expressions; grade with parallel correctness and sufficiency checks; for the reported V2 SFT set retain
+    grade >= 2 and sequence length <= 1,024 tokens.
+  sampling_protocol: For each of 2,995 verbose normalized invariants, Kimi K2 Thinking samples N=4 candidates. The checked
+    repository config sets temperature 1.0 and max_tokens 16,384. Non-verbose invariants are verified as-is, and a normalized
+    fallback is tried when all simplifications fail.
+  rollout_count: 4 candidates per verbose invariant; 11,980 candidates were generated from 2,995 verbose invariants.
+  temperature: 1.0 for semantic simplification in the checked official configuration; evaluation decoding differs by model
+    family and is reported in Appendix G/Table 8.
+  inference_budget: Semantic simplification allows 16,384 output tokens per API call in the checked configuration. Evaluation
+    permits 1,024 new tokens and runs three independent trials; verifier checks use a 600-second timeout and 16 GB limit.
+  optimizer_or_scaffold: SFT on an 80/20 sample split (5,827/1,457). Full-model SFT is reported for all families except Qwen3-8B
+    LoRA; epochs, learning rates, batch size, and Qwen3-8B LoRA settings are in Appendix F.
+audit:
+  source_mixture: The raw public release contains 3,516 program rows with UAutomizer outputs. The paper applies WONDA to 4,000
+    raw invariants and publishes a 7,763-row curated-full table plus model-family-specific SFT caches built on demand; evaluation
+    expands 219 InvBench programs to 362 loop instances.
+  split: The reported V2 targets are split 80/20 into 5,827 train and 1,457 validation samples. Whether variants from the
+    same source program are grouped before splitting is not disclosed. Evaluation uses 239 Easy and 123 Hard per-loop instances,
+    with the Hard boundary defined by a hardware-sensitive 15-second UAutomizer threshold.
+  decontamination: No item-level semantic decontamination, program-family overlap report, or train/evaluation provenance manifest
+    is disclosed. Training and evaluation both descend from InvBench/SV-COMP-related sources, so overlap must be checked before
+    reuse.
+  license: The official code repository is MIT. The Hugging Face dataset pages and repository do not provide a verified per-source
+    dataset-license manifest; upstream program, InvBench/SV-COMP, model, and generated-data rights remain to be checked.
+  lineage: Raw program/UAutomizer row -> per-loop raw invariant -> AST-normalized invariant -> zero or four Kimi K2 Thinking
+    candidates -> exact deduplication and syntax/degeneracy checks -> parallel UAutomizer correctness/sufficiency grading
+    -> curated-full row -> grade/length filtering -> model-family chat-formatted SFT cache.
+  known_failure_modes:
+  - A sound TRUE/FALSE decision does not make UAutomizer complete; timeout and UNKNOWN outcomes can reject useful candidates.
+  - Grade 2/3 certifies induction and sufficiency for the encoded query, not readability, semantic equivalence to the raw
+    invariant, or transfer beyond the source distribution.
+  - The speedup label depends on hardware, parallel execution, verifier version, and baseline timing; the Easy/Hard split
+    is not portable across machines.
+  - Exact-match deduplication does not remove semantically equivalent invariants or related programs.
+  - The public curated-full release includes grade-1 rows, while the paper's reported V2 SFT experiment uses grade >= 2; users
+    must not treat the full table as directly SFT-ready.
+  - Source programs, generated variants, and evaluation instances lack a released item-level license and overlap manifest.
+  - The checked master commit has no release tag, and current training-config defaults do not fully mirror the paper's stated
+    Qwen3-8B LoRA setup; reproduction should pin a commit and resolve configuration drift.
+  - Benchmark gains do not independently establish dataset correctness, licensing, diversity, or causal superiority over alternative
+    curation budgets.
+  citation_status: verified
+  confidence: high
+  notes: Paper v2, appendix, ICML/OpenReview citation, repository commit 678ab76b3db3ffb5cd21a726b9036cf4d8d5329b, code/data
+    documentation, Hugging Face collection, and raw Dataset Viewer schema were checked on 2026-07-21.
+inclusion_reason: WONDA exposes an end-to-end open recipe for turning symbolic verifier output into SFT targets whose induction,
+  sufficiency, and verifier-time utility are recorded separately.
+related: []
+tags:
+- programmatically-verifiable-outcome
+- loop-invariants
+- program-verification
+- data-curation
+- ICML-2026
+why_it_matters: It makes a formal verifier part of the data-construction contract while revealing that a verifier-valid invariant,
+  a useful invariant, and a faster invariant are distinct labels.
+status: verified
+needs:
+- 'needs_license: publish a per-source license and redistribution manifest for raw, curated, evaluation, and generated records'
+- 'needs_split: disclose program-grouped train/validation splitting and train/evaluation overlap checks'
+- 'needs_release: tag the paper-matching code/configuration and reconcile current Qwen3-8B/Qwen3-14B LoRA defaults with the
+  paper'
+- 'needs_audit: report semantic duplicate rates, rejected candidates, UNKNOWN/timeout retention, and independent reproduction'
+one_line_summary: WONDA turns raw verifier invariants into compact loop-invariant SFT targets, but reuse requires distinguishing
+  the 7,763-row curated table from the grade-filtered 7,284-sample experiment set and auditing lineage, licenses, and version
+  drift.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, code, dataset/model collection, dataset schema, configuration, and release boundaries verified; no
+    independent reproduction was performed.
+category_ids:
+- data_construction_open_release_recipes

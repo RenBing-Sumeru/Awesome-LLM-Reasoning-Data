@@ -1,0 +1,111 @@
+id: target-dpo-focal-preference-alignment-code-2025
+title: Teaching Your Models to Understand Code via Focal Preference Alignment
+year: 2025
+venue: EMNLP 2025
+authors:
+- Jie Wu
+- Haoling Li
+- Xin Zhang
+- Xiao Liu
+- Yangyu Huang
+- Jianwen Luo
+- Yizhen Zhang
+- Zuchao Li
+- Ruihang Chu
+- Yujiu Yang
+- Scarlett Li
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+supervision_granularity:
+- pairwise_preference
+- step_level
+domains:
+- code-generation
+- software-engineering
+training_use:
+- preference_learning
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.707/
+  arxiv: null
+  code: https://github.com/JieWu02/Target-DPO
+  data: https://github.com/JieWu02/Target-DPO
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.707
+  venue: https://aclanthology.org/2025.emnlp-main.707/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.707/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Programming tasks and generated tests used to create CodeFlow examples.
+  trace_author: Code LLM iterative debugging trajectories.
+  answer_format: Preferred corrected code, rejected earlier code, and marked error-resolving token differences.
+  process_fields:
+  - problem
+  - test cases
+  - rejected code
+  - chosen code
+  - critical-token differences
+  environment_or_substrate: Function-level code generation and testing.
+  verifier_or_reward: Test-case execution and token-difference alignment.
+  terminal_predicate: The iteratively refined code passes the associated tests.
+recipe_metadata:
+  base_model: Code LLMs reported in the EMNLP experiments.
+  teacher: Generated tests and the iterative debugging procedure.
+  generator: CodeFlow synthesis pipeline.
+  filtering_rule: Retain iterative refinements that reach passing tests and preserve error-resolving edits.
+  sampling_protocol: 59,000 preference pairs reported in the paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the official repository and paper.
+  optimizer_or_scaffold: Target-DPO focuses DPO loss on tokens associated with error correction.
+audit:
+  source_mixture: EMNLP proceedings paper and the author-maintained Target-DPO repository, which releases code, models, and
+    data.
+  split: Consult the repository for released CodeFlow files and training/evaluation splits.
+  decontamination: Audit public programming-task and test overlap before benchmark evaluation.
+  license: Check the GitHub repository terms and any upstream task licences before reuse.
+  lineage: https://aclanthology.org/2025.emnlp-main.707/
+  known_failure_modes:
+  - Passing generated tests does not establish correctness beyond the test suite.
+  - Token differences can miss semantically important but non-local code changes.
+  citation_status: verified
+  confidence: high
+  notes: The EMNLP proceedings PDF confirms author affiliations and that the official Target-DPO repository provides code,
+    models, and datasets.
+inclusion_reason: CodeFlow supplies code preference pairs whose preferred revision resolves a test-verified error, enabling
+  focal preference alignment at the token level.
+related: []
+tags:
+- code
+- dpo
+- iterative-debugging
+- preference-data
+- emnlp-2025
+one_line_summary: Target-DPO releases CodeFlow, 59,000 iterative-debugging code preference pairs that focus DPO on the tokens
+  resolving test-verified errors.
+why_it_matters: It turns an iterative code repair trajectory into a preference record that isolates the error-resolving part
+  of the edit.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: primary-paper and official artifact review
+  confidence: high
+  notes: The EMNLP proceedings PDF confirms author affiliations and that the official Target-DPO repository provides code,
+    models, and datasets.
+category_ids:
+- preference_reward_feedback_data

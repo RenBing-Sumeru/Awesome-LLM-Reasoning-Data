@@ -1,0 +1,1 @@
+Keep generation, critique, and correction separate. A model may generate well but critique poorly, or critique another model better than itself. Do not treat a critique as ground truth unless the task-specific scoring rule supports it. Read domain-wise results before aggregate GQC claims; logic-oriented correction behavior may not transfer to commonsense or open-ended tasks.

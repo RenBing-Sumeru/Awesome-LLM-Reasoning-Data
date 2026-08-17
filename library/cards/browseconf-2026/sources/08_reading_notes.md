@@ -1,0 +1,5 @@
+- Separate verbalized confidence, empirical correctness, and judge score; they are different signals.
+- Preserve every attempt and stop/retry decision, including low-confidence and context-overflow failures.
+- Record threshold-selection data and recalibrate by model, language, domain, prompt, and tool environment.
+- Audit summaries for lost citations and negative constraints for suppression of previously correct answers.
+- Compare policies using total model, tool, summary, latency, and API cost—not attempt count alone.

@@ -1,0 +1,12 @@
+{
+  "category_ids": [
+    "rollout_search_test_time_trace_data",
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "rollout领域，不相关",
+    "updated_at": "2026-07-14T08:25:22Z"
+  },
+  "updated_at": "2026-07-14T08:25:22Z"
+}

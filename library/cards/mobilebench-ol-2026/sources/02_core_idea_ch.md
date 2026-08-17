@@ -1,0 +1,9 @@
+本文贡献是一套在线中文移动智能体基准：在物理手机上，把五类能力切片、基于规则的full-episode evaluator和逆任务重置结合起来。MobileBench-OL不要求动作匹配唯一参考路径，而是检查轨迹是否达到任务特定GUI/动作条件，因此不同导航路径可以满足同一目标。
+
+评测对象连接四层。任务规格提供goal、应用起始页面、golden-step预算和成功规则材料；环境返回真实截图与XML hierarchy；被测智能体输出规范化click、type、scroll、导航、wait、long-press与finished动作；评测器随后给出完整成功、sub-condition进度、step ratio，以及early termination、overdue termination或failure之一。
+
+其反馈契约是environmental且作用于episode级。XPath式规则检查text、resource-id、package、selected状态等元素属性，以及动作坐标是否落入元素或父节点bounding box。完整成功必须同时满足全部条件并显式输出Complete/finished。verifier能观察已记录屏幕、XML node、动作与终止信息；它不能证明未观察到的服务器端语义、隐私安全、编码规则之外的用户意图，或规则遗漏状态的正确性。
+
+相较AndroidWorld、LlamaTouch、Mobile-Env与SPA-Bench，论文主张的方向变化是：在物理设备上覆盖更主流的中文应用，单设long-horizon与exploration子集，随机注入repeat/unexecuted/delay/pop-up噪声，并由智能体执行逆任务重置。这些组件本身并非全新：GUI动作、动态环境、XPath式检查、噪声测试和reset task均有先例；贡献在于把它们整合成同一评测面，并展示当前智能体的具体失败。
+
+该反馈同时也是公开攻击面。goal与key-node/规则材料已经发布，却没有hidden test split。用这些记录调优的模型可能记忆任务，或只优化可观察XPath条件而遗漏未编码语义。因此，MobileBench-OL应被理解为可检查的评测与verifier recipe，而不是隐藏reward数据或可直接安全用于agent training的来源。

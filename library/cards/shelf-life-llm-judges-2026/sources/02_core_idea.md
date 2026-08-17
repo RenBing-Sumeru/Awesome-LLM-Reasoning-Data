@@ -1,0 +1,1 @@
+The contribution is a dual-distribution shelf-life audit. Pairwise judges train on weak or strong generator responses and are evaluated across response and question shifts with SFT, DPO and SFT+DPO, including continual DPO. It uses DeepScaleR and MMLU-Pro with verifiable labels; official code/data are released through the project repository.

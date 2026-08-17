@@ -1,0 +1,1 @@
+Earlier professional benchmarks define a small set of researcher-selected tasks and score final answers or holistic quality. DoLoMiTes asks experts how work is performed and then collects model drafts and expert revisions, releasing both task specifications and revision signals. The novelty is expert-driven task discovery and before–after data rather than scale in one domain.

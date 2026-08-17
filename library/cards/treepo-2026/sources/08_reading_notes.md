@@ -1,0 +1,6 @@
+- Keep the three surfaces separate: public prompt/reward Parquets, runtime tree objects, and released model checkpoints.
+- Interpret the 3,120-row Hugging Face viewer split as benchmark-aligned prompt records, not a corpus of online rollout trees.
+- Read the hierarchical advantage as outcome-reward redistribution over shared-prefix subgroups, not as step correctness supervision.
+- Compare every efficiency number with its exact width, depth, segment length, rollout count, hardware, and statistic; averages and maxima are not interchangeable.
+- Treat the paper's two extra sampling batches and the script's maximum of 10 as unresolved configuration drift.
+- Before reuse, resolve dataset and model licenses, decontamination, seeds, and the missing complete branch/prune/fallback/rejection lineage.

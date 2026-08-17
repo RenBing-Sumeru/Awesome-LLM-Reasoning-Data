@@ -1,0 +1,263 @@
+id: mobilebench-ol-2026
+title: 'MobileBench-OL: A Comprehensive Chinese Benchmark for Evaluating Mobile GUI Agents in Real-World Environment'
+year: 2026
+venue: 'Findings of the Association for Computational Linguistics: ACL 2026'
+authors:
+- Qinzhuo Wu
+- Zhizhuo Yang
+- Hanhao Li
+- Pengzhi Gao
+- Wei Liu
+- Jian Luan
+source_role:
+- benchmark
+- agent_environment
+- verifier_reward
+- data_release
+verification_contract:
+- environmental
+supervision_granularity:
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- mobile_gui
+- chinese_apps
+- long_horizon_reasoning
+- gui_exploration
+- noise_robustness
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.668/
+  paper_pdf: https://aclanthology.org/2026.findings-acl.668.pdf
+  arxiv: https://arxiv.org/abs/2601.20335
+  code: https://github.com/xiaomi-research/mobilebench-ol
+  code_snapshot: https://github.com/xiaomi-research/mobilebench-ol/tree/edee34000767847085612c6ff8b806539233ca0d
+  data: https://github.com/xiaomi-research/mobilebench-ol/tree/main/data
+  project: null
+  huggingface: null
+  model: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.668
+  venue: https://aclanthology.org/2026.findings-acl.668/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.668/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: 'A public real-device mobile-GUI evaluation surface: task/rule CSV records drive complete screenshot/XML/action
+    episodes, which are scored by XPath-like environmental predicates and terminal-status rules.'
+  prompt_source: 'The paper defines 1,080 evaluation cases over 80 Chinese apps: Base 310, Long-Tail 340, Long-Horizon 60,
+    GUI-Reasoning 60, and Noise-Robust 310. Noise-Robust reuses Base tasks as seeds, so the released non-noise task files
+    represent 770 distinct task specifications before the Base-derived noise condition is counted again.'
+  trace_author: During benchmark execution, the evaluated GUI agent generates the episode. During construction, crowdworkers
+    created human golden trajectories and task experts wrote success conditions; UI-TARS-1.5 and annotators generated additional
+    successful and failed paths used to validate those conditions.
+  task_record:
+  - task_identifier
+  - goal
+  - adb_home_page
+  - golden_steps
+  - key_nodes
+  - reset_xpath_optional
+  - reset_query_optional
+  - subset
+  - app_and_apk_version_context
+  answer_format: The official harness writes result_list.txt with task-id/success pairs and one trajectory.json per attempted
+    task. README documentation lists per-trajectory action, image, response, summary, and success fields; the complete baseline
+    trajectories used in the paper are not released as a frozen corpus.
+  process_fields:
+  - task goal
+  - screenshot observation
+  - XML UI hierarchy
+  - action and decision or response
+  - action history
+  - image path or image
+  - summary
+  - success-condition matches
+  - termination reason
+  - binary success
+  - sub-condition success rate
+  - step ratio
+  observation: At each step the agent receives a physical Android device screenshot and, depending on the baseline scaffold,
+    an XML/UI-element representation containing text, resource-id, class, package, state attributes and bounds, plus its interaction
+    history.
+  action_space:
+  - click
+  - type
+  - scroll
+  - press_home
+  - press_back
+  - wait
+  - long_press
+  - finished_or_complete
+  environment_or_substrate: Three remotely controlled physical Android phones in the paper, each with 80 versioned Chinese
+    apps, real verified accounts, real network conditions and ADB access. The open-source harness uses uiautomator2 on a user-provided
+    physical Android device; exact paper phone models, OS images, account fixtures and server snapshots are not disclosed.
+  verifier_or_reward: Experts define normalized XPath-like conjunctions over GUI element attributes and critical action locations.
+    Full SR is a binary episode label requiring every task condition and an explicit Complete/finished action; Sub-SR reports
+    the fraction of matched subconditions; failure reason distinguishes early termination, overdue termination and failure.
+    No LLM judge is part of the primary success contract.
+  terminal_predicate: All conditions plus Complete => Success; all conditions but step limit reached => Overdue Termination;
+    Complete without all conditions => Early Termination; otherwise => Failure. The step limit is three times the human golden-step
+    count.
+  provenance: Manually written app task -> human execution and golden-step count -> expert XPath-like success conditions ->
+    UI-TARS-1.5 and human trajectory sampling (at least five samples per task) -> auto-eval -> expert discrepancy review and
+    rule update -> subset CSV and harness -> evaluated-agent episode and scalar/partial metrics.
+recipe_metadata:
+  base_model: Not applicable to benchmark construction as a single base model. The paper evaluates heterogeneous closed- and
+    open-source GUI agents; UI-TARS-1.5-7B is the strongest Table 5 baseline and is also used during rule-validation trajectory
+    sampling.
+  teacher: Human annotators provide golden trajectories; domain experts define and revise success conditions. Exact annotator-to-task
+    assignment, expert count and adjudication protocol are not disclosed.
+  generator: Tasks are manually authored; construction trajectories are generated by annotators and UI-TARS-1.5; benchmark
+    trajectories are generated by the model under evaluation.
+  prompt_task_source: Crowdworkers manually create tasks from scratch while operating 80 real Chinese apps. Base and Long-Tail
+    cover common and long-tail app functions; Long-Horizon composes ≥20-step tasks; GUI-Reasoning targets hidden functions/exploration;
+    Noise-Robust reuses Base tasks under injected disturbances.
+  filtering_rule: Experts compare auto-eval results with at least five sampled trajectories per task and update success conditions
+    when discrepancies occur. Authors also state that privacy-exposing benchmark data were removed. Exact rejection counts
+    and record-level reasons are unknown.
+  sampling_protocol: Annotators and UI-TARS-1.5 sample multiple completion paths, with at least five samples per task for
+    rule validation. Noise-Robust injects repeat, unexecuted, delay or pop-up events with 20% probability at each step. Generator
+    shares, random seeds and retry policy for construction are unknown.
+  rollout_count: At least five validation trajectories per task are reported, but the exact total and successful/failed composition
+    are unknown and the paper trajectory corpus is not released.
+  temperature: unknown
+  inference_budget: Evaluation uses at most 3× the task's human golden steps, waits three seconds after every action, and
+    starts at the app homepage. Open-source baselines ran on an 80GB NVIDIA A100; closed models used APIs. Token budgets and
+    decoding parameters are not disclosed.
+  optimizer_or_scaffold: No policy optimizer is used. The released scaffold translates heterogeneous agent outputs into a
+    unified mobile action space, controls a physical device with ADB/uiautomator2, records trajectories, runs XPath evaluation,
+    retries unfinished tasks, optionally injects noise, and invokes inverse-task resets.
+audit:
+  source_mixture: 'Five evaluation subsets: Base 310, Long-Tail 340, Long-Horizon 60, GUI-Reasoning 60 and Noise-Robust 310,
+    spanning 80 apps in 12 categories. Noise-Robust reuses Base tasks and Long-Horizon/GUI-Reasoning operate on the 12 Base
+    apps, so subset counts must not be interpreted as 1,080 independent prompts or apps.'
+  split: No train/dev/test split or hidden evaluation partition is defined. The official repository publishes task CSVs and
+    rule-bearing fields by subset. This is an evaluation-only surface; using its tasks, key nodes or rules for training invalidates
+    clean evaluation.
+  decontamination: Tasks were manually written from scratch to reduce direct LLM-data contamination, but no audit of evaluated-model
+    training corpora, public app screenshots, later benchmark exposure, deduplication, or benchmark-overlap detection is reported.
+  benchmark_overlap: Noise-Robust deliberately reuses the 310 Base tasks. Long-Horizon and GUI-Reasoning use the same 12 Base
+    apps. The public release exposes goals, golden-step counts and key-node/success-rule material, creating straightforward
+    evaluation contamination and verifier-gaming risk after release.
+  license: Official README states CC BY-NC-SA 4.0 for the dataset and Apache-2.0 for source code. The paper promises APK release,
+    but the inspected repository contains no APK artifacts or separate third-party app redistribution terms; app content,
+    account data and APK rights therefore require separate review.
+  lineage: Manual task and pinned APK-version context -> human golden execution -> expert success rule -> mixed human/UI-TARS
+    validation trajectories -> auto-eval/expert correction -> public task/rule CSV -> mutable real app/device execution ->
+    locally generated trajectory JSON and scores. Record-level links to the validation trajectories and discarded attempts
+    are absent.
+  release_version: 'Paper: ACL 2026 Findings and arXiv v2. Repository main inspected 2026-07-20 at latest visible commit edee34000767847085612c6ff8b806539233ca0d
+    (2026-04-08), with no GitHub Release or semantic dataset version. The data tree exposes seven CSVs; longtail.csv has an
+    official GitHub preview warning for illegal quoting at line 118.'
+  successful_and_failed_sample_retention: The paper says each task was validated with at least five human/UI-TARS-1.5 trajectory
+    samples, including diverse completion scenarios, but the official repository does not release a frozen set of those successful/failed
+    trajectories, non-failing noise attempts, rule-revision history or rejection counts. The harness preserves newly generated
+    local trajectories only.
+  privacy_or_consent: The paper says potential personal-privacy data were removed, crowdworkers received at least $0.50 per
+    annotated step and training, and IT experts performed human evaluation. It does not release the privacy-filter specification,
+    consent/adjudication materials, account-fixture policy, or audit of sensitive content generated by live apps and real
+    verified accounts.
+  known_failure_modes:
+  - XPath-like rules can become stale when app text, resource IDs, package names, hierarchy or layout changes; the paper observed
+    up to 5% performance fluctuation after app-version updates over a two-month check.
+  - 'Auto-Eval is not exact: Table 12 reports 5 false positives and 22 false negatives on 1,080 UI-TARS-1.5 episodes, despite
+    97.50% overall agreement with human judgment.'
+  - 'Requiring an explicit Complete action separates semantic completion from agent stopping behavior: a completed task can
+    be labeled overdue, and an early Complete is labeled early termination.'
+  - Inverse-task reset is above 90% rather than perfect; failed resets, server-side state, irreversible actions and infeasible
+    tasks can leak state across episodes or require widened success rules.
+  - Public goals and success-rule material make direct rule optimization, XPath gaming and benchmark contamination possible;
+    no hidden test or post-release refresh policy is supplied.
+  - The paper's remote platform, verified accounts and complete APK bundle are not bound to the public code release, so exact
+    physical-device replay is blocked by device, account, app-server and network drift.
+  - The released longtail.csv has illegal quoting according to GitHub's parser, which can cause loader-dependent record corruption
+    unless the exact parser behavior is audited.
+  - Noise injection probability is documented, but construction/evaluation seeds and a frozen event manifest are not, limiting
+    exact replay and paired-agent comparisons.
+  - Only within-app tasks are covered; the authors explicitly identify complex cross-app tasks as missing.
+  - Task licenses do not resolve rights to redistribute or automate third-party APKs and app content, and the dataset's noncommercial
+    ShareAlike terms constrain training reuse.
+  citation_status: verified
+  confidence: medium
+  notes: The complete ACL paper and appendices, ACL metadata/DOI, arXiv history, official Xiaomi Research repository, README,
+    task-data tree, licenses, commit history, output schema and evaluator description were checked. The benchmark was not
+    executed, CSV contents were not exhaustively parsed, and no official APK bundle, remote-platform snapshot, frozen paper
+    trajectory corpus or Hugging Face release was verified.
+  remaining_unknowns:
+  - Exact physical phone models, Android/OS images, device snapshots and dependency lock used for the paper.
+  - Public access terms and immutable snapshot for the three-phone remote platform.
+  - Official download, hashes, provenance and redistribution rights for all 80 promised APKs.
+  - Exact construction-trajectory count, human/UI-TARS mix, success/failure composition, seeds and rejected-attempt ledger.
+  - Record-level privacy filtering, annotator/expert counts, instructions, consent and adjudication records.
+  - Frozen account fixtures, credentials policy, server state and safe handling of messaging, finance, shopping and social-app
+    actions.
+  - Pinned baseline model/API revisions, decoding settings and all prompt/config versions.
+  - Formal hidden-split, benchmark refresh and evaluated-model contamination policy.
+inclusion_reason: 'MobileBench-OL makes real-device mobile-agent evaluation a concrete environment-and-verifier object: public
+  Chinese-app task records drive screenshot/XML/action episodes, XPath-like success predicates, partial-condition metrics,
+  noise injection and inverse-task resets, while its mutable apps, public rules and incomplete trajectory/APK release expose
+  the key audit boundary.'
+related:
+- spa-bench-2025
+tags:
+- mobile-gui-agent
+- real-device-benchmark
+- chinese-apps
+- agent-trajectories
+- xpath-verifier
+- environmental-reward
+- long-horizon
+- gui-exploration
+- noise-injection
+- reset-mechanism
+- app-version-drift
+- verifier-gaming
+- evaluation-contamination
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: MobileBench-OL publishes 1,080 real-device Chinese-app evaluation cases with XPath-like success rules, noise
+  injection and inverse-task resets, but not the paper's complete sampled trajectories or a frozen APK/device environment.
+why_it_matters: It shows how screenshots, XML state, actions, terminal signaling, partial predicates and reset episodes form
+  an auditable mobile-agent feedback contract, while demonstrating why public rules, app drift, imperfect resets and missing
+  failed-rollout lineage constrain reuse to evaluation rather than training.
+card: null
+needs:
+- 'needs_apk_release: verify and pin the promised 80-APK bundle, hashes, provenance and redistribution terms'
+- 'needs_environment_snapshot: publish phone/OS images, dependency lock, account/server fixtures, safe credentials policy
+  and remote-platform access terms'
+- 'needs_trajectory_release: publish the construction and paper-baseline successful/failed trajectories with record-level
+  task linkage, generator identity, seeds and rejection reasons'
+- 'needs_split_and_contamination_policy: define a hidden or refreshed test surface and document post-release training-overlap
+  controls'
+- 'needs_release_version: tag an immutable code/data version, fix or document longtail.csv quoting, and publish a manifest
+  with checksums'
+- 'needs_verifier_audit: release human labels, rule revisions, false-positive/false-negative cases and app-version calibration
+  results'
+- 'needs_privacy_and_rights: document privacy filtering, annotator consent/adjudication and third-party app/APK/content rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  repository_files_verified: true
+  trajectory_release_verified: false
+  apk_release_verified: false
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Citation, ACL acceptance, DOI, arXiv record, full paper/appendix, official code repository, task CSV inventory, output
+    schema and code/data licenses were verified. Artifact completeness remains partial because the complete APK bundle, paper
+    trajectories, account/device snapshots and immutable release manifest were not found.

@@ -1,0 +1,17 @@
+{
+  "title": "Agentic Reward Modeling: Integrating Human Preferences with Verifiable Correctness Signals for Reliable Reward Systems",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.acl-long.775/",
+    "data": "https://github.com/THU-KEG/Agentic-Reward-Modeling"
+  },
+  "review_note": "Track 13：官方论文和公开 artifact 已核验；待 L4 精读与人工筛选。",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "将偏好奖励与事实性、指令遵循的可验证信号合成奖励，并有 ACL 正文与公开实现支持复核。",
+    "updated_at": "2026-07-20T00:00:00Z"
+  },
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

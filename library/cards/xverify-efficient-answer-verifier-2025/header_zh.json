@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "约5.6万问答验证样本以参考答案给出对错标签，适用于训练轻量验证器与推理结果评测。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "答案验证器与带正确性反馈的数据集论文",
+  "best_for_ch": "需要训练轻量答案验证器，或审计复杂推理输出是否等价于参考答案的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ding Chen, Qingchen Yu, Pengyuan Wang, Wentao Zhang, Bo Tang, Feiyu Xiong, Xinchi Li, Minchuan Yang, Zhiyu Li",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:12:49Z"
+}

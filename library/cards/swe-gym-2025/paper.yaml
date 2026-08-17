@@ -1,0 +1,218 @@
+id: swe-gym-2025
+title: Training Software Engineering Agents and Verifiers with SWE-Gym
+year: 2025
+venue: ICML 2025
+authors:
+- Jiayi Pan
+- Xingyao Wang
+- Graham Neubig
+- Navdeep Jaitly
+- Heng Ji
+- Alane Suhr
+- Yizhe Zhang
+source_role:
+- data_release
+- agent_environment
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+- trajectory_value
+domains:
+- software_engineering
+- repository_level_code
+- agentic_reasoning
+training_use:
+- sft
+- reward_modeling
+- agent_training
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/pan25g.html
+  paper_pdf: https://raw.githubusercontent.com/mlresearch/v267/main/assets/pan25g/pan25g.pdf
+  arxiv: https://arxiv.org/abs/2412.21139
+  code: https://github.com/SWE-Gym/SWE-Gym
+  data: https://huggingface.co/datasets/SWE-Gym/SWE-Gym
+  data_lite: https://huggingface.co/datasets/SWE-Gym/SWE-Gym-Lite
+  data_raw: https://huggingface.co/datasets/SWE-Gym/SWE-Gym-Raw
+  trajectories_sft: https://huggingface.co/datasets/SWE-Gym/OpenHands-SFT-Trajectories
+  trajectories_sampled: https://huggingface.co/datasets/SWE-Gym/OpenHands-Sampled-Trajectories
+  trajectories_verifier: https://huggingface.co/datasets/SWE-Gym/OpenHands-Verifier-Trajectories
+  trajectories_moatless: https://huggingface.co/datasets/SWE-Gym/MoatlessTools-Sampled-Trajectories
+  moatless_train_data: https://huggingface.co/datasets/SWE-Gym/MoatlessTools-Agent-Verifier-Train-Data
+  models: https://huggingface.co/SWE-Gym
+  environment_code: https://github.com/SWE-Gym/SWE-Bench-Fork
+  openhands_fork: https://github.com/SWE-Gym/OpenHands
+  moatless_fork: https://github.com/SWE-Gym/Moatless-Agent-Fork
+  docker_images: https://hub.docker.com/search?q=xingyaoww%2Fsweb.eval.x86_64
+  project: https://machinelearning.apple.com/research/training-software
+  huggingface: https://huggingface.co/SWE-Gym
+  doi: https://doi.org/10.48550/arXiv.2412.21139
+  venue: https://proceedings.mlr.press/v267/pan25g.html
+  openreview: https://openreview.net/forum?id=Cq1BNvHx74
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/pan25g.html
+  cvf: null
+  bibtex: null
+data_object:
+  record_type: Repository-level executable tasks plus state-action trajectories and trajectory-level success labels.
+  prompt_source: Real GitHub issues and pull requests from 11 Python repositories selected from 358 candidates. Each task
+    binds issue text to repo, base_commit, version, gold patch, test patch, and executable tests.
+  trace_author: OpenHands trajectories come from gpt-4o-2024-08-06, claude-3-5-sonnet-20241022, and fine-tuned Qwen2.5-Coder
+    policies; MoatlessTools uses Qwen2.5-Coder-Instruct 7B/32B policies.
+  answer_format: Task rows include issue text, human patch/test patch, repository snapshot, and PASS_TO_PASS/FAIL_TO_PASS
+    tests. Sampled rollouts add messages, tools, generated patch, raw test output, evaluation flags, and resolved boolean.
+  process_fields:
+  - instance_id
+  - repo
+  - base_commit
+  - version
+  - problem_statement
+  - patch
+  - test_patch
+  - PASS_TO_PASS
+  - FAIL_TO_PASS
+  - run_id
+  - messages
+  - tools
+  - git_patch
+  - test_output
+  - resolved
+  - evaluation_error_flags
+  environment_or_substrate: Per-task repository snapshots with semi-manually configured dependencies, unit-test harnesses,
+    and Docker images. OpenHands exposes bash/file-editing actions; MoatlessTools uses a constrained multi-stage workflow.
+  verifier_or_reward: Expert-written unit tests produce binary task outcomes. Outcome reward models trained on balanced successful/failed
+    trajectories estimate success probability for Best@k selection.
+  terminal_predicate: A patch resolves a task when it applies and satisfies required fail-to-pass and pass-to-pass tests;
+    infrastructure/timeouts remain separate failures.
+  released_payload: 2,438 validated tasks, 230 Lite tasks, 64,689 Raw tasks, 491 success-only OpenHands SFT rows, 6,055 sampled
+    OpenHands trajectories with 491 successes and 5,564 failures, balanced verifier data, Moatless files, and weights.
+  failed_records: Sampled OpenHands retains 5,564 failures separately from the 491-row success-only SFT export. Environment-construction
+    failures and complete Moatless rejection decisions are not released as one ledger.
+  provenance: Main tasks preserve repo/base_commit/version/instance_id, but SFT and reformatted verifier rows drop explicit
+    task/run identifiers. Rows lack container digests, source licenses, and complete transformation manifests.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-Instruct 7B/14B/32B for OpenHands and 7B/32B for MoatlessTools.
+  teacher: gpt-4o-2024-08-06 and claude-3-5-sonnet-20241022
+  generator: OpenHands CodeActAgent 2.1 and the specialized MoatlessTools workflow; paper-run commit bindings are unknown.
+  prompt_or_task_source: SWE-Bench-style extraction from real issues/PRs; 64,689 Raw tasks narrow to 11 repositories with
+    executable environments.
+  filtering_rule: Retain environments whose gold patch improves test results. SFT retains test-passing rollouts. OpenHands
+    verifier data balances successes/failures. Moatless keeps successes, at most two per task, preferring fewer rounds.
+  sampling_protocol: OpenHands teacher sampling mixes GPT-4o temperatures and 30/50-turn budgets plus Claude temperature-0
+    runs. Moatless samples 30 trajectories per Lite task at temperature 1.0 in two iterations.
+  rollout_count: SFT has 491 successes; sampled OpenHands has 6,055 trajectories. Verifier mixture has 2,636 rows, 1,318 success
+    and 1,318 failure.
+  temperature: OpenHands uses multiple values from 0 to 1; Moatless uses 1.0; verifier-ranked evaluation uses 0.5 after an
+    initial temperature-0 candidate.
+  inference_budget: OpenHands 30/50-turn sampling and up to 100-turn or 32k-context evaluation; Best@k uses up to 16 OpenHands
+    or 8 Moatless candidates.
+  optimizer_or_scaffold: Rejection-sampling fine-tuning, not online RL. OpenHands policy uses full SFT; main verifier uses
+    two-epoch LoRA. Moatless uses full 7B tuning and rank-64 LoRA for 32B.
+  verifier_training: OpenHands ORM predicts YES/NO from issue, trajectory, and diff; normalized YES probability is the scalar
+    reward.
+  selection_rule: SFT accepts execution-verified successes; inference selects maximum predicted success among k candidates.
+audit:
+  source_mixture: 2,438 tasks from 11 Python repositories; Raw has 64,689 tasks from 358 repositories; rollouts mix proprietary
+    teachers and Qwen policies.
+  split: Main dataset is one 2,438-row train split; Lite is a 230-task subset, not validation/test; releases lack one immutable
+    membership manifest.
+  decontamination: Repositories are disjoint from SWE-Bench, but semantic issue/patch overlap and teacher-pretraining exposure
+    are unknown.
+  benchmark_overlap: Repository separation reduces direct overlap but does not address clones, semantic duplicates, or memorization.
+  license: Paper is CC BY 4.0; main code Apache-2.0; main dataset and OpenHands SFT MIT. Lite, Raw, sampled/verifier/Moatless
+    trajectories, checked models, and images lack license metadata. No per-record upstream-rights ledger exists.
+  lineage: GitHub issue/PR -> environment setup -> gold-patch test validation -> 2,438 tasks -> rollouts -> execution labels
+    -> success-only SFT or balanced verifier -> Best@k. Stable rollout mappings and image digests are incomplete.
+  release_version: Checked code/data/fork heads are pinned in the evidence ledger, but GitHub repositories expose no tags/releases.
+    Documentation points to branches.
+  successful_and_failed_sample_retention: SFT exposes 491 successes only; sampled data separately exposes the same 491 successes
+    and 5,564 failures. Verifier failures lose explicit task/run columns; environment and Moatless rejection ledgers are incomplete.
+  immutable_manifest: No manifest binds task rows, source commits, harness/scaffold revisions, subsets, trajectories, checkpoints,
+    and Docker digests. Images use mutable latest tags and lack a full digest/SBOM inventory.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Unit tests can be incomplete, flaky, or exploitable.
+  - Success-only SFT overweights solvable/easy tasks.
+  - OpenHands self-improvement reduced held-out performance.
+  - Learned verifiers can select false-positive patches; Best@k stays below Pass@k.
+  - Repository disjointness does not rule out semantic duplication or memorization.
+  - Code, datasets, trajectories, models, images, and upstream repositories have inconsistent licenses.
+  - Mutable branches and latest images permit runtime drift.
+  - Official surfaces disagree on Lite 230/234, on-policy 868/875, and failed rollouts 5,557/5,564.
+  - Repository paper is an older 18-page PDF; PMLR/arXiv v2 are 21-page final versions.
+  - Several model repositories lack cards, licenses, base metadata, or self-contained loading files.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the PMLR final paper, arXiv v2, code/forks, official HF datasets/models, statistics, and Docker
+    surfaces. Presence is verified; safe reuse and exact reproduction remain partial.
+  remaining_unknowns:
+  - Rejected-instance ledger for the 64,689-to-2,438 funnel
+  - Complete task-to-container digest/SBOM manifest
+  - Per-record source licenses and attribution
+  - Semantic overlap and teacher-memorization audits
+  - Unit-test and learned-verifier error/flakiness audits
+  - Reconciliation of count discrepancies and stable trajectory lineage
+inclusion_reason: SWE-Gym is an open repository-agent recipe covering task sourcing, executable environments, unit-test validation,
+  trajectory sampling, rejection-sampling SFT, balanced outcome-verifier training, and releases, with concrete lineage, license,
+  failure-retention, and image-pinning risks.
+related:
+- swe-dev-2025
+- swe-mirror-2025
+- long-context-swe-rl-2025
+- open-swe-traces-2026
+tags:
+- swe-gym
+- software-engineering-agents
+- repository-level-tasks
+- executable-environments
+- unit-test-verification
+- agent-trajectories
+- rejection-sampling
+- outcome-reward-model
+- best-of-n
+- open-data
+- failed-trajectories
+- immutable-manifest-risk
+- license-drift
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: SWE-Gym releases 2,438 unit-test-validated Python repository tasks plus OpenHands and Moatless trajectories,
+  policies, and outcome verifiers built through rejection sampling and Best@k selection.
+why_it_matters: It connects repository snapshots, tests, full agent episodes, success/failure selection, and learned trajectory
+  rewards while exposing provenance, license, failure-retention, and image-pinning risks.
+card: null
+needs:
+- 'needs_manifest: bind every task, source commit, harness, split, trajectory, checkpoint, dependency lock, test bundle, and
+  Docker digest/SBOM'
+- 'needs_license: declare licenses for all datasets, models, and images and reconcile upstream rights'
+- 'needs_rejections: release environment-construction and Moatless rejection ledgers'
+- 'needs_lineage: preserve instance_id/run_id and test provenance in SFT/verifier exports'
+- 'needs_contamination_audit: add semantic issue/patch, clone, and memorization checks'
+- 'needs_verifier_audit: report test/verifier false positives, false negatives, flakiness, and reward hacking'
+- 'needs_metadata: reconcile 230/234 Lite, 868/875 on-policy, and 5557/5564 failures'
+- 'needs_model_cards: add lineage, licenses, tokenizer/loading instructions, and experiment mappings'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Official citation, code, data, trajectories, models, forks, and image surfaces were checked; artifact presence does
+    not certify license completeness, model loadability, task replay, or immutable reproduction.

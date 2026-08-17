@@ -1,0 +1,1 @@
+LAGER needs white-box hidden states and therefore does not apply to closed APIs. Its calibrated weights depend on 1,000 human-labelled examples and compatible discrete score tokens. The experiments establish correlation on three scalar-rating suites, not robustness to prompt injection, reference manipulation, distribution shift, or a causal removal of evaluator bias.

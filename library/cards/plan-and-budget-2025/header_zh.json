@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Plan-and-Budget 用 LLM 生成子问题与 credits，并按调度规则分配测试时计算；其 E3 以任务分数和 token 成本汇总，但完整运行轨迹与来源元数据未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "测试时计算分配与推理轨迹评估研究",
+  "best_for_ch": "需要复现或审计子问题规划、token 分配、任务级 verifier 与测试时计算归因的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Junhong Lin、Xinyue Zeng、Jie Zhu、Song Wang、Julian Shun、Jun Wu、Dawei Zhou",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

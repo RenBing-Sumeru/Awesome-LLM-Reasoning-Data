@@ -1,0 +1,1 @@
+Prior personalization evaluations often mix user profiles, factual quality, and style differences. This benchmark makes the user rubric an explicit condition and constructs a high-quality-but-not-for-me hard negative, isolating personalization as the evaluated variable.

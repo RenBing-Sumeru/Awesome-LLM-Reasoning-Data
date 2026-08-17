@@ -1,0 +1,234 @@
+id: agenttrek-2025
+title: 'AgentTrek: Agent Trajectory Synthesis via Guiding Replay with Web Tutorials'
+year: 2025
+venue: ICLR 2025 Spotlight
+authors:
+- Yiheng Xu
+- Dunjie Lu
+- Zhennan Shen
+- Junli Wang
+- Zekun Wang
+- Yuchen Mao
+- Caiming Xiong
+- Tao Yu
+source_role:
+- construction_recipe
+- data_release
+- agent_environment
+verification_contract:
+- environmental
+- judgment_required
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- web_agents
+- gui_agents
+- browser_automation
+- multimodal_reasoning
+training_use:
+- sft
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/c681fb2bf1d785fbc766f3ea14758aab-Abstract-Conference.html
+  paper_pdf: https://proceedings.iclr.cc/paper_files/paper/2025/file/c681fb2bf1d785fbc766f3ea14758aab-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2412.09605
+  code: https://github.com/xlang-ai/AgentTrek
+  code_snapshot: https://github.com/xlang-ai/AgentTrek/tree/a8924dc31aabf797e25230f23a6b9b723149e513
+  data: https://huggingface.co/datasets/xlangai/AgentTrek
+  data_snapshot: https://huggingface.co/datasets/xlangai/AgentTrek/tree/32aabe6fb48d8e2e7dae1678e6ff05ba23725b2c
+  model: https://huggingface.co/xlangai/AgentTrek-1.0-32B
+  model_snapshot: https://huggingface.co/xlangai/AgentTrek-1.0-32B/tree/9bbc861a2901e63350f628676599f4434b74ed2b
+  project: https://agenttrek.github.io/
+  huggingface_collection: https://huggingface.co/collections/ranpox/agenttrek-browser-use-agent-data-synthesis-6794a7cebb90c5ccdb9a3068
+  doi: https://doi.org/10.48550/arXiv.2412.09605
+  venue: https://iclr.cc/virtual/2025/poster/30416
+  openreview: https://openreview.net/forum?id=EEgYUccwsV
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  record_type: 'A paper-level AgentTrek trajectory combines a standardized web tutorial task with a live-browser episode:
+    multimodal observations, intermediate reasoning, grounded actions, and native execution traces. The current public dataset
+    is narrower: turn-level text SFT records in a single `messages` column.'
+  prompt_source: GUI tutorials are mined from RedPajama. Rule-based prefiltering narrows 20.8 billion entries to 68.8 million,
+    GPT-4o-mini labels 90,000 samples, FastText identifies about 18.8 million deduplicated tutorial candidates, and GPT-4o-mini
+    standardizes selected tutorials.
+  trace_author: GPT-4o-2024-08-06 executes standardized tutorials through BrowserGym on live websites. The paper does not
+    bind this generation run to complete decoding, retry, browser-image, or code-commit settings.
+  task_fields:
+  - platform
+  - target_type
+  - target_object
+  - target_web_url
+  - task_description
+  - prerequisites
+  - instructions
+  - instructions_steps
+  - expected_result
+  paper_trajectory_fields:
+  - screenshots
+  - video
+  - dom_html
+  - axtree
+  - playwright_native_trace
+  - network_flow
+  - observations
+  - reasoning
+  - actions
+  released_fields:
+  - messages
+  answer_format: The paper describes task metadata, screenshots/video, DOM/HTML, AXTree, Playwright-native traces, reasoning,
+    and actions. A sampled HF row instead serializes system, user task/current AXTree/history/action-space, and assistant
+    think-memory-action messages.
+  environment_or_substrate: BrowserGym with Chromium and Playwright operating on 127 live websites. Replay observes screenshots
+    and AXTree and acts through browser APIs; the paper's collector records richer native traces than the HF release exposes.
+  verifier_or_reward: A prompted GPT-4o VLM judge reads the task description and complete reasoning/action history, analyzes
+    the episode and steps, identifies the earliest failure, and assigns success or failure. Reported evaluator accuracy is
+    84.0% against the human-reviewed validation surface.
+  terminal_predicate: Judgment-based effective completion rather than a deterministic site predicate. The published evaluator
+    prompt can accept most of a task, one of two subtasks, omission of final save/post actions, or more than eight correct
+    actions.
+  released_payload: The checked HF revision has one default configuration, one train split, 52,594 dialogue-turn rows, one
+    `messages` column, and one 1.81 GB original JSON file. It is text-only and provides no explicit trajectory identifiers,
+    source URLs, outcomes, failure records, multimodal assets, or native traces.
+  failed_records: The paper shows an expired-tutorial failed replay, but the current HF repository has no failed-trajectory
+    split, evaluator-decision field, rejection reason, earliest-failure record, or accepted/rejected ledger.
+  provenance: RedPajama page -> heuristic prefilter -> GPT-4o-mini label -> FastText classification/deduplication -> GPT-4o-mini
+    standardization -> live guided replay -> GPT-4o judgment -> successful-trajectory SFT. The public rows lack stable links
+    across these stages.
+recipe_metadata:
+  base_model: Vision experiments fine-tune Qwen2-VL; text experiments fine-tune Qwen2.5-Instruct at 7B and 32B. The released
+    32B model card names Qwen/Qwen2.5-32B-Instruct as its base.
+  teacher: GPT-4o-mini and GPT-4o-2024-08-06
+  generator: GPT-4o-2024-08-06 performs tutorial-guided browser replay with screenshot and AXTree observations and Playwright
+    actions.
+  prompt_or_task_source: RedPajama tutorial content transformed into platform, target, prerequisite, step-by-step instruction,
+    and expected-result fields.
+  filtering_rule: Rule-based GUI/tutorial prefilter, GPT-4o-mini tutorial labeling, FastText classification and deduplication,
+    structured tutorial standardization, live replay, and GPT-4o VLM success filtering.
+  sampling_protocol: The paper reports replaying 23,430 standardized tutorials and retaining 10,398 successful trajectories.
+    Exact membership, ordering, temperature, random seed, retries, concurrency, and site-specific handling are unknown.
+  rollout_count: The headline is 10,398 successes from 23,430 tutorials across 127 sites and 11 categories. This ratio is
+    44.38%, conflicting with the paper's separate 39.9% replay-success rate and its “nearly 5,000 verified trajectories” sentence.
+    Current HF publishes 52,594 turn rows.
+  temperature: unknown
+  inference_budget: Replay averages 8,027 tokens per interaction step, 86,114 tokens per task, and 12.1 steps per successful
+    trajectory. An exact maximum step/time budget is not disclosed.
+  optimizer_or_scaffold: Supervised fine-tuning uses 10,000 trajectories for Qwen2-VL and 6,000 trajectories for Qwen2.5 text
+    agents. The checked code repository leaves Data Preparation and Training sections empty and does not contain the collection
+    or training pipeline.
+  verifier_training: No verifier is trained. GPT-4o is prompted as an evaluator; 1,081 trajectories receive human review and
+    558 have detailed justifications for the reported evaluator validation.
+audit:
+  source_mixture: Internet tutorials from RedPajama transformed by proprietary GPT models and replayed across 127 live websites
+    and 11 task categories. Exact source membership, weights, and page-level rights metadata are not released.
+  split: Current HF has one 52,594-row train split. There is no validation/test, success/failure, text/vision, site/category,
+    trajectory-level, or 6,000/10,000 training-subset manifest.
+  decontamination: unknown
+  benchmark_overlap: WebArena is described as out-of-distribution and self-hosted, but no URL, task, semantic, screenshot,
+    or pretraining-overlap audit is released for WebArena, ScreenSpot, Mind2Web, RedPajama, or the trained models.
+  license: The manuscript is CC BY-NC-ND 4.0, the project footer says CC BY-SA 4.0, and the model is labeled Apache-2.0. The
+    code repository has no detected license and the dataset declares no license. None of those separate grants establishes
+    rights for tutorial text, website captures, or trajectories.
+  lineage: RedPajama -> prefilter -> GPT label -> FastText -> structured tutorial -> BrowserGym replay -> GPT evaluator ->
+    successful-trajectory SFT. Source page/tutorial/trajectory/turn IDs and mappings among 10,398 trajectories, 6,000/10,000
+    subsets, 52,594 HF turns, and the checkpoint are missing.
+  release_version: Code commit a8924dc31aabf797e25230f23a6b9b723149e513, dataset revision 32aabe6fb48d8e2e7dae1678e6ff05ba23725b2c,
+    and model revision 9bbc861a2901e63350f628676599f4434b74ed2b were checked. The code has three commits, no tags or GitHub
+    Releases, and no release-wide manifest binds these artifacts to the paper run.
+  successful_and_failed_sample_retention: The public text export has no outcome field or failed split. A paper appendix demonstrates
+    an expired-tutorial failed replay, but the failure corpus, evaluator decisions, earliest-failure records, and rejection
+    ledger are not released.
+  immutable_manifest: No signed manifest binds source hashes and rights, tutorial IDs, replay dates, website/browser/container
+    state, prompts/models, decisions, multimodal files, training subsets, code, checkpoints, and evaluations.
+  privacy_or_consent: unknown
+  known_failure_modes:
+  - Tutorials and live websites drift independently; the paper shows a replay failing because a tutorial date was no longer
+    executable.
+  - The evaluator is reported at 84.0% accuracy and uses permissive success rules, so accepted data can include partial completion
+    and both false accepts and false rejects.
+  - Success-only retention hides the rejected distribution and may favor easier, stable, or evaluator-preferred sites and
+    tasks.
+  - 10,398/23,430 equals 44.38%, not the reported 39.9%, and the paper also describes nearly 5,000 verified trajectories.
+  - The 52,594-row HF release has no trajectory mapping and omits the multimodal/native-trace object described by the paper.
+  - The code exposes evaluation scaffolding, while Data Preparation and Training are empty and collection/filtering/replay/serialization
+    code is absent.
+  - Missing code and dataset licenses plus absent per-source attribution leave copyright and terms-of-use questions unresolved.
+  - Website text, screenshots, DOM/AXTree, videos, native/network traces, and account flows can expose copyrighted, credential,
+    session, or personal information without a disclosed consent, PII scan, or redaction policy.
+  - Mutable sites, missing replay timestamps, lower-bounded dependencies, and absent browser/container digests prevent exact
+    environment replay.
+  citation_status: verified
+  confidence: high
+  notes: Official ICLR proceedings and Spotlight records, full paper and appendix, project page, code tree, author-linked
+    HF collection, dataset repository and viewer, and model card were checked on 2026-07-24. Citation and artifact existence
+    are verified; release completeness, reproducibility, safe reuse, and rights/privacy clearance remain partial.
+  remaining_unknowns:
+  - Exact source-page revision, source URLs, licenses, hashes, and deduplication keys
+  - Exact generation temperature, seed, retries, timeout, browser image, and paper-run code binding
+  - Trajectory/turn/subset/checkpoint mapping and failed-replay ledger
+  - Evaluator confusion matrix, agreement, site/category slices, and error examples
+  - Contamination, privacy, consent, redaction, retention, and takedown evidence
+inclusion_reason: AgentTrek is an explicit recipe for turning web tutorials into environment-grounded agent trajectories through
+  large-scale source filtering, task structuring, live replay, and VLM judgment. Its incomplete release also makes unit reconciliation,
+  failures, environment drift, licensing, privacy, and immutable lineage central audit questions.
+related:
+- learn-by-interact-2025
+tags:
+- agenttrek
+- web-agents
+- gui-agents
+- web-tutorials
+- redpajama
+- guided-replay
+- browsergym
+- playwright
+- vlm-judge
+- synthetic-trajectories
+- sft
+- environment-drift
+- count-reconciliation
+- copyright-risk
+- privacy-risk
+- release-completeness
+status: partial
+one_line_summary: AgentTrek mines and structures RedPajama tutorials, executes them through GPT-4o-guided BrowserGym replay
+  on 127 sites, and filters trajectories with a GPT-4o evaluator for GUI-agent SFT.
+why_it_matters: It demonstrates a scalable bridge from procedural web text to grounded agent behavior while exposing why judge
+  semantics, live-site drift, rejected data, source rights, privacy, unit mapping, and release manifests determine whether
+  an open trajectory dataset is auditable.
+card: null
+needs:
+- 'needs_count_reconciliation: reconcile 10,398 trajectories, 39.9%, 44.38%, nearly 5,000, the 6,000/10,000 subsets, and 52,594
+  turns'
+- 'needs_lineage: publish stable source, tutorial, trajectory, turn, subset, and checkpoint mappings'
+- 'needs_rejections: release failed trajectories, evaluator outputs, earliest failures, reasons, retries, and accepted/rejected
+  ledgers'
+- 'needs_release: publish multimodal and native traces or explicitly scope the artifact as a text-only turn export'
+- 'needs_code: release and pin tutorial mining, labeling, FastText, standardization, replay, evaluator, serialization, and
+  training code'
+- 'needs_license: declare code/data licenses and page-level attribution and rights for tutorials and website captures'
+- 'needs_privacy: document consent, account policy, credential/PII detection, redaction, retention, takedown, and deletion'
+- 'needs_manifest: bind sources, environments, prompts, decisions, subsets, artifacts, and checkpoints in one immutable manifest'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: card_writer
+  confidence: high
+  notes: Official acceptance, Spotlight status, paper, project, code, dataset, model, affiliations, release state, and current
+    public payload were checked. This verifies a paper and artifact surface, not complete trajectory release, reproducibility,
+    licensing, or privacy clearance.
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives

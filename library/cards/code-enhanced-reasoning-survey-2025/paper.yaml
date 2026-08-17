@@ -1,0 +1,113 @@
+id: code-enhanced-reasoning-survey-2025
+title: 'Code to Think, Think to Code: A Survey on Code-Enhanced Reasoning and Reasoning-Driven Code Intelligence in LLMs'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Dayu Yang
+- Tianyang Liu
+- Daoan Zhang
+- Antoine Simoulin
+- Xiaoyi Liu
+- Yuwei Cao
+- Zhaopu Teng
+- Xin Qian
+- Grey Yang
+- Jiebo Luo
+- Julian McAuley
+source_role:
+- survey_background
+verification_contract:
+- programmatic
+supervision_granularity:
+- unknown
+domains:
+- code-reasoning
+- programmatic-verification
+- agents
+training_use:
+- evaluation
+- test_time_compute
+construction_layer:
+- reward_verifier_layer
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.130/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.130
+  venue: https://aclanthology.org/2025.emnlp-main.130/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.130/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed code-enhanced reasoning and reasoning-driven code-intelligence studies.
+  trace_author: Surveyed primary works; no new trace collection is released.
+  answer_format: A survey of code as an intermediate, executable representation and reasoning as a driver of code intelligence.
+  process_fields:
+  - goal
+  - executable step
+  - code artifact
+  - runtime feedback
+  - final answer
+  environment_or_substrate: Code execution, validation, and software-engineering tasks for LLMs.
+  verifier_or_reward: Execution, compilation, and runtime validation appear in surveyed methods; no common verifier is released.
+  terminal_predicate: Task-specific executable correctness or software-task completion.
+recipe_metadata:
+  base_model: No single base model; this is a literature survey.
+  teacher: Surveyed works use varied code, execution environments, and feedback sources.
+  generator: Literature review and taxonomy construction.
+  filtering_rule: The official abstract treats code as a structured medium for reasoning and reasoning as a means to improve
+    code intelligence.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: Reviews primary methods rather than supplying one training recipe.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, PDF, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.emnlp-main.130/'
+  known_failure_modes:
+  - Executable code can pass a narrow test while failing the intended task.
+  - Reasoning can improve planning without guaranteeing correct execution.
+  - Results depend on task, execution environment, and feedback available to the model.
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly frames code and reasoning as mutually reinforcing and identifies execution paths,
+    decomposition, and runtime validation.
+inclusion_reason: An accepted EMNLP survey that explains how executable representations and runtime feedback can support reasoning
+  systems.
+related: []
+tags:
+- foundations-and-primers
+- code-reasoning
+- emnlp-2025
+- survey
+why_it_matters: It clarifies why code can supply decomposition, execution feedback, and validation that free-form text alone
+  does not provide.
+one_line_summary: An EMNLP 2025 survey of code as a structured, executable medium for reasoning and of reasoning as a driver
+  of code intelligence.
+paper_type: Code-enhanced reasoning survey
+reading_priority: strong
+best_for: Readers comparing natural-language reasoning, code intermediates, execution feedback, and code-agent workflows.
+confidence: high
+status: verified
+needs:
+- 'unknown: directly comparable environments, tests, and execution budgets across surveyed methods'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP metadata, abstract, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

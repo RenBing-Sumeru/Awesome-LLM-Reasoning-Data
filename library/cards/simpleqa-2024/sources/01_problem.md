@@ -1,0 +1,5 @@
+SimpleQA asks a deliberately narrow factuality question: can a language model answer short, fact-seeking questions correctly, and can it avoid answering when it lacks confidence? The primary source is the OpenAI paper "Measuring short-form factuality in large language models" released in 2024, with official evaluator code in `openai/simple-evals` and a public OpenAI-hosted CSV.
+
+The decision boundary is important. SimpleQA is not long-form factuality evaluation, retrieval grounding, multi-hop reasoning, or a training recipe. It reduces factuality to short questions with intended single, timeless, evidence-supported answers so that model outputs can be judged with a compact three-way contract.
+
+The evaluation object is one CSV row containing metadata, a question, and a reference answer. A run adds a model answer, then the evaluator labels it as CORRECT, INCORRECT, or NOT_ATTEMPTED. The value is that hallucination-like wrong answers and cautious abstentions remain separate signals instead of being hidden inside a single exact-match accuracy number.

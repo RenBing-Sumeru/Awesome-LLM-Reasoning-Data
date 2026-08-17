@@ -1,0 +1,105 @@
+id: dynamixsft-instruction-mixtures-2026
+title: 'DYNAMIX SFT: Dynamic Mixture Optimization of Instruction Tuning Collections'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Haebin Shin
+- Lei Ji
+- Xiao Liu
+- Zhiwei Yu
+- Hyunwoo Yoo
+- Qi Chen
+- Yeyun Gong
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- reasoning
+- mathematics
+- code
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1972/
+  arxiv: https://arxiv.org/abs/2508.12116
+  venue: https://aclanthology.org/2026.findings-acl.1972/
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1972
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1972/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: TÜLU-2 and TÜLU-3 instruction-tuning mixtures described in the paper.
+  trace_author: Upstream datasets in the TÜLU collections.
+  answer_format: Instruction-response example labeled by its source dataset.
+  process_fields:
+  - source_dataset
+  - instruction
+  - response
+  - source_reward
+  - sampling_probability
+  environment_or_substrate: Source-level sampling over 16 or 19 datasets during SFT.
+  verifier_or_reward: Normalized one-step look-ahead loss reduction per source dataset.
+  terminal_predicate: None; reward is a dynamic training signal, not a correctness verifier.
+recipe_metadata:
+  base_model: LLaMA3.2-1B and LLaMA3.1-8B.
+  teacher: None.
+  generator: Upstream TÜLU collections.
+  filtering_rule: Prior-scaled Boltzmann sampling using EMA-smoothed one-step look-ahead reward and a uniform floor.
+  sampling_protocol: Sample source by dynamic policy, then sample uniformly within source.
+  rollout_count: null
+  temperature: null
+  inference_budget: Two SFT epochs; batch size 128; per-source probe updates at stated intervals.
+  optimizer_or_scaffold: Multi-armed bandit scheduler integrated with SFT.
+audit:
+  source_mixture: TÜLU-2 has about 320K examples from 16 datasets; TÜLU-3 has about 930K examples from 19 datasets.
+  split: As reported by TÜLU training setup and evaluation suite.
+  decontamination: Not presented as a dedicated audit; check upstream source and benchmark overlap.
+  license: TÜLU collection is reported as ODC-BY; individual web-sourced subsets may have non-commercial or mixed-use restrictions.
+  lineage: 'Primary sources: https://aclanthology.org/2026.findings-acl.1972/; https://arxiv.org/abs/2508.12116'
+  known_failure_modes:
+  - Dataset-level policy cannot identify poor individual instances.
+  - Immediate loss reward may not represent long-term downstream value.
+  - Source prior can preserve inherited imbalance or bias.
+  - No official implementation or new data release declared in checked paper.
+  citation_status: verified
+  confidence: high
+  notes: Full ACL paper, venue metadata, affiliations, experiments, limitations, and artifact statements checked on 2026-07-15.
+inclusion_reason: It dynamically changes which instruction-data sources are sampled and consumed by SFT.
+related: []
+tags:
+- data-mixing
+- instruction-tuning
+- sft
+- dynamic-sampling
+status: verified
+one_line_summary: DYNAMIX SFT updates source-level instruction-data mixture weights from one-step learning progress while
+  preserving coverage with a prior and exploration floor.
+reading_priority: essential
+paper_type: Dynamic instruction-data mixture optimization study
+best_for: Readers designing adaptive source-level sampling for instruction fine-tuning.
+confidence: high
+why_it_matters: It makes the training-time decision over data-source allocation explicit and measurable.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and arXiv record checked; no dedicated code or new standalone data release declared in the paper.
+category_ids:
+- training_usage_optimization_objectives

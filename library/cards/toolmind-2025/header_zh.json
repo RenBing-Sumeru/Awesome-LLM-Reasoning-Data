@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ToolMind 用函数图驱动多代理交互，并在逐轮过滤后发布 16 万条合成与 20 万条增强工具记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "工具使用监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Chen Yang、Ran Le、Yun Xing、Zhenwei An、Zongchao Chen、Wayne Xin Zhao、Yang Song、Tao Zhang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

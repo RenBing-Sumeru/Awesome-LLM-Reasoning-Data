@@ -1,0 +1,3 @@
+Primary sources: arXiv:2211.11501, submitted 2022-11-18, the official DS-1000 project page, and the xlang-ai/DS-1000 repository. DS-1000 asks how to evaluate code generation for practical data-science tasks drawn from StackOverflow-like use cases, where library behavior and executable correctness matter.
+
+The data object is a Python data-science completion problem with a prompt, code context, metadata including the target library, reference solution logic, and executable/string tests. The benchmark covers 1,000 problems across seven libraries: Matplotlib, NumPy, Pandas, PyTorch, SciPy, scikit-learn, and TensorFlow. It belongs as an executable code benchmark, not as a general chatbot benchmark or a training recipe.

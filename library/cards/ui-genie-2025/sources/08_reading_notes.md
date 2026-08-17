@@ -1,0 +1,6 @@
+- Read “RM-517k” as a rounded paper/release label; the current Hub viewer reports 472,769 rows.
+- Read “Agent-16k” as step/example scale: Table 1 and the release layout indicate 2,208 trajectories and 16,693 screenshots.
+- Separate rule labels, controlled-corruption labels, RM-mined hard negatives, RM outcome judgments, and continuation-derived step labels; one RM controls search, acceptance, and later labels, so evaluate error amplification across generations.
+- “Without manual annotation” does not remove human source demonstrations or manually crafted long-horizon task prompts.
+- The published code covers agent SFT and AndroidControl evaluation, not the full data engine or RM training; treat benchmark gains as model evidence, not proof that every released datum is correct.
+- Audit the unexplained `AMEX_Agent_34K.jsonl`, privacy/redaction, upstream rights, split leakage, environment drift, and legal reusability before reuse.

@@ -1,0 +1,1 @@
+Parallel sampling improves code-solution coverage but still requires selecting one candidate, while purely sequential debugging explores one initial path. Selection is difficult because private tests are unavailable and LLMs are unreliable at predicting program behavior. S* combines parallel candidates, execution-guided revision, and adaptive pairwise discrimination.

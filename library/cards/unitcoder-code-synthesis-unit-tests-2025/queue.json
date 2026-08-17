@@ -1,0 +1,19 @@
+{
+  "title": "UnitCoder: Scalable Code Synthesis from Pre-training Corpora",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.emnlp-main.286/",
+    "data": "https://github.com/Entarochuan/UnitCoder",
+    "code": "https://github.com/Entarochuan/UnitCoder",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T09:22:14Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布 UnitCoder 数据集，含 50 万余可执行 Python 样本和 370 余类 API，以单元测试驱动修复筛选",
+    "updated_at": "2026-07-24T09:22:14Z"
+  }
+}

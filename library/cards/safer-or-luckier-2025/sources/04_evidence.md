@@ -1,0 +1,1 @@
+Across 11 judges, apology causes tie-detection preference shifts up to 98%; in win-rate tests, position shifts are 4–30% and apology affects 9/11 judges by over 2%. Human agreement is 62–71%, yet does not predict artifact robustness. Artifact-aware juries improve but do not remove sensitivity. This supports separate robustness audits, not a claim that no judge can assess safety.

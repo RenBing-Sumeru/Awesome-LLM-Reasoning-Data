@@ -1,0 +1,3 @@
+SWE-bench-style data derives one repair task from a human issue and final pull request, while synthetic tasks often begin with LLM-written requirements of uncertain realism. SWE-Flow changes both the source of requirements and the granularity of tasks by inferring functional dependencies directly from existing unit tests and splitting complete implementations into executable TDD stages.
+
+Its novelty is not merely using tests to filter patches. Dynamic execution creates an RDG that converts tests into a development schedule. Records therefore contain process states and stage-specific verifiers, enabling models to learn to implement dependencies, run tests, and continue development rather than imitate only the final diff.

@@ -1,0 +1,6 @@
+- 以 Findings of ACL 2026 作为正式 venue/year；entry ID 中的 2025 对应 arXiv 首次提交。
+- 连读 Sections 4.3–4.4：8-rollout p(1-p)、投影 GRPO gradients、n×n matrix、row means 与 top-N selection 共同定义一个依赖 policy 的数据对象。
+- 在声称达到全量数据表现前，对照 Tables 1、2、5 和 13；结果会随 subset size、model、metric 与 training-step budget 改变。
+- 效率核算必须包含全部 8h55m selection；最大报告成本是 gradient estimation，而不是 12.7 秒的 matrix multiplication。
+- 保持 unresolved：answer checker、projection dimension/seed、selected/rejected rows、DAPO 17K/14K 命名、training seeds、decontamination 与 license lineage。
+- 将 Nyström/cascade scaling 与未来代码发布视为未验证的 future work，而不是可用 artifact。

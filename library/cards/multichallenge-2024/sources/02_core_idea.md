@@ -1,0 +1,3 @@
+The contribution is to provide multi-skill challenge benchmark surface; exact primary source and size need audit. for instruction-following, reasoning under a reusable evaluation surface. The core mechanism is the pairing of task inputs and model outputs with the following feedback contract: mixed exact, rule, or judge scoring.
+
+The data object or environment is mixed reasoning/instruction tasks. The closest comparisons are nearby benchmark and evaluation-surface datasets that share the same feedback contract. The direction label is benchmarks_evaluation_surfaces with a mixed, judgment_required feedback contract. The main thing to preserve is not only the headline score, but the task object, evaluator, split/version, and artifact lineage.

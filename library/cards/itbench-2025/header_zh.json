@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "ITBench把真实IT运维问题组织为可部署环境中的工具调用episode，并发布静态场景与SRE轨迹；其价值在于明确stop与success契约，但跨版本映射、回放、污染、隐私和许可仍未解决。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "真实IT自动化智能体基准、环境框架与轨迹数据发布",
+  "best_for_ch": "研究环境交互数据、工具智能体评测、agent training与轨迹审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Saurabh Jha, Rohan R. Arora, Yuji Watanabe, Takumi Yanagawa, Yinfang Chen, Jackson Clark, Bhavya Bhavya, Mudit Verma, Harshit Kumar, Hirokuni Kitahara, Noah Zheutlin, Saki Takano, Divya Pathak, Felix George, Xinbo Wu, Bekir O Turkkan, Gerard Vanloo, Michael Nidd, Ting Dai, Oishik Chatterjee, Pranjal Gupta, Suranjana Samanta, Pooja Aggarwal, Rong Lee, Jae-Wook Ahn, Debanjana Kar, Amit Paradkar, Yu Deng, Pratibha Moogi, Prateeti Mohapatra, Naoki Abe, Chandrasekhar Narayanaswami, Tianyin Xu, Lav R. Varshney, Ruchi Mahindru, Anca Sailer, Laura Shwartz, Daby Sow, Nicholas C. M. Fuller, Ruchir Puri",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

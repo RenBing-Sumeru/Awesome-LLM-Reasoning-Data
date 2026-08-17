@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SuperGPQA 把横跨众多研究生学科的高难度问答做成可审计的评测面。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "arXiv preprint 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 benchmark、评分契约、污染风险、评测 harness 和后训练反馈可复用性的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "M-A-P Team 等（M-A-P、ByteDance Seed、2077.AI 等）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T08:20:16Z"
+}

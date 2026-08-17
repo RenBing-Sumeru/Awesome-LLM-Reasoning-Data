@@ -1,0 +1,3 @@
+- 识别轨迹字段：discussion, collaboration_trajectory, ceo_depth。
+- 核对反馈边界：Formal M500 verifier/reward not established.。
+- 将缺失的日志、清单和许可证视为未解决问题，而非已发布工件。

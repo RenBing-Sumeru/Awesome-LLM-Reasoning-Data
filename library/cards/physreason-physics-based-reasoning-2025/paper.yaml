@@ -1,0 +1,113 @@
+id: physreason-physics-based-reasoning-2025
+title: 'PhysReason: A Comprehensive Benchmark towards Physics-Based Reasoning'
+year: 2025
+venue: ACL 2025
+authors:
+- Xinyu Zhang
+- Yuxuan Dong
+- Yanrui Wu
+- Jiaxing Huang
+- Chengyou Jia
+- Basura Fernando
+- Mike Zheng Shou
+- Lingling Zhang
+- Jun Liu
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- physics-reasoning
+- multimodal-reasoning
+- process-evaluation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.811/
+  arxiv: https://arxiv.org/abs/2502.12054
+  code: https://github.com/wxxy0719/PhysReason
+  project: https://dxzxy12138.github.io/PhysReason/
+  data: https://huggingface.co/datasets/zhibei1204/PhysReason
+  huggingface: https://huggingface.co/datasets/zhibei1204/PhysReason
+  venue: https://aclanthology.org/2025.acl-long.811/
+  doi: https://doi.org/10.18653/v1/2025.acl-long.811
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.811/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Physics problems covering knowledge and multi-step reasoning, many with diagrams.
+  trace_author: Reference solutions curated for the PhysReason benchmark.
+  answer_format: Physics question, optional diagram, solution steps, final answer, and step-level error labels.
+  process_fields:
+  - question
+  - image
+  - solution_steps
+  - answer
+  - step_evaluation
+  - error_type
+  environment_or_substrate: Physics problem solving with text and diagrams.
+  verifier_or_reward: Physics Solution Auto Scoring evaluates answers and individual reasoning steps.
+  terminal_predicate: Answer correctness plus diagnosis of the earliest process failure.
+recipe_metadata:
+  base_model: The official benchmark evaluates multiple frontier and open models; reproduce with the project code.
+  teacher: Benchmark reference solutions and the Physics Solution Auto Scoring framework.
+  generator: Evaluated LLM and MLLM physics-reasoning outputs.
+  filtering_rule: Step-level scoring categorizes theorem application, process understanding, calculation, and condition-analysis
+    errors.
+  sampling_protocol: Use the official dataset and project evaluation configuration.
+  inference_budget: Follow the released project configuration.
+  optimizer_or_scaffold: Answer-level and step-level automated evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Physics problems, diagrams, reference solutions, and step-level error diagnoses.
+  split: '1,200 problems: 25% knowledge-based and 75% reasoning-based.'
+  decontamination: Keep the 1,200 benchmark problems and reference solutions out of training data when reporting PhysReason
+    evaluation.
+  license: MIT is stated on the official PhysReason dataset repository page.
+  lineage: ACL 2025 paper, author project page, official repository, and the supplied Hugging Face data link.
+  known_failure_modes:
+  - The benchmark is confined to physics
+  - Automated scoring may miss valid alternative derivations
+  - The dataset's reported difficulty and step counts are not a substitute for formal verification
+  citation_status: verified
+  confidence: high
+  notes: Verified ACL 2025 acceptance, official PDF affiliations, author project/repository, and PhysReason dataset page;
+    the supplied Hugging Face namespace should be checked against the author-linked mirror before redistribution.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: PhysReason evaluates 1,200 diagram-aware physics problems with answer and step-level scoring, exposing whether
+  errors arise from theorem use, process understanding, calculation, or conditions.
+why_it_matters: It extends process-level evaluation beyond mathematics to physics tasks with diagrams, formulas, and condition-sensitive
+  reasoning.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified ACL 2025 acceptance, official PDF affiliations, author project/repository, and PhysReason dataset page;
+    the supplied Hugging Face namespace should be checked against the author-linked mirror before redistribution.
+category_ids:
+- process_trace_supervision_data

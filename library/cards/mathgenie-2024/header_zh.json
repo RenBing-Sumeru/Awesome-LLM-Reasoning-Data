@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MathGenieData 汇集 81K 代码解答、30K 验证推理和 170K 解答回译题目，并保留文本、代码与执行结果。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "解答回译数学数据集与验证筛选研究",
+  "best_for_ch": "适合从解答合成数学题，或审计代码集成示范和模型生成的验证推理。",
+  "confidence_ch": "高",
+  "authors_ch": "Zimu Lu、Aojun Zhou、Houxing Ren、Ke Wang、Weikang Shi、Junting Pan、Mingjie Zhan、Hongsheng Li",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T16:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "论文以47,198个合成约束提示为控制平台，对比独立拒绝采样与共享前缀MCTS偏好对，分析对比度和提示难度对DPO的影响。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可验证偏好数据构造与消融研究",
+  "best_for_ch": "研究偏好数据、拒绝采样、MCTS与指令遵循验证的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Joongwon Kim、Anirudh Goyal、Aston Zhang、Bo Xiong、Rui Hou、Melanie Kambadur、Dhruv Mahajan、Hannaneh Hajishirzi、Liang Tan",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

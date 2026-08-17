@@ -1,0 +1,1 @@
+核心贡献既是数据集，也是 UI 控制的数据规模研究。AndroidControl 收集了 15,000+ 条人类演示，覆盖 833 个 Android app、40 个类别，并同时提供 high-level goal 与 low-level step instruction。反馈契约是离线动作预测和泛化评测：模型动作按数据 split 与解析规则和日志中的 JSON action 比较。最近对比是 AITW 和更小的 UI-control 数据；AndroidControl 的变化不是只问“能否模仿轨迹”，而是问“规模和 app/task OOD split 如何影响控制行为”。它是移动智能体数据策展方向信号，不是“规模足够即可解决实时 app 控制”的结论。

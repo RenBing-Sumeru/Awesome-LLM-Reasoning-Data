@@ -1,0 +1,11 @@
+**输入与工具整理。** 输入池是十个 domain 中的 RapidAPI 派生工具。作者在多种参数组合下执行工具，丢弃报错工具；利用 LLM summary 移除语义上过于简单的输出；根据观察到的 input/output 行为改写 description；用 LLM 辅助并结合人工核验去除功能相同的工具；最后保留具有实际参数复杂度的工具。输出是 1,228 个工具的 catalog。确切 endpoint version、parameter grid、淘汰数量、curation model 身份与 adjudication record 均未披露（论文第 3.1 节、Appendix Table 8）。
+
+**Parallel 构造。** 作者人工收集 50 个代表性 task type，每个 domain 五个。LLM 根据 task 与 tool description 合成彼此独立的 tool-call set，通常包含 3–10 个或更多 call。官方 README 描述的采样是：对每个 task type、每个 3–10 的 tool count 生成五条 trajectory，共得到 2,000 个 parallel reference。每个 reference 被转换成直接的 simple query 与更隐晦的 hard query。论文称随后进行 LLM automatic validation 与 human inspection；prompt、seed、rejection count、reviewer rubric 和生成正式发布的准确模型均为 unknown。
+
+**Sequential 构造。** tool output field 与 input parameter 构成有向 compatibility graph。作者人工设计 chain template 及相邻 output-to-input binding，再由 LLM 实例化具体 call 与 user query。reference 同时保存 dependency/order、工具名称和参数。已发布设计只覆盖 chain，更丰富的 dependency graph 留作未来工作。因此构造流程是 hybrid，而非完全合成或完全人工（论文第 3.2.2 节与 Figure 1）。
+
+**验证与发布输出。** 论文称生成 pair 经过 LLM-based automatic validation 和人工复核。公开的 `simple_traj_gen_v2.py` 只有在启用 `--enable_checking` 时才运行 checking/refinement；官方来源没有说明托管数据是否使用该 flag，也没有说明 checker 身份。当前 Hugging Face row 暴露 `query`、`tool_list`、`trajectory_type`、`final_answer`、`task_name`、`task_description` 与 `tool_count`；未核验到原始中间 API response snapshot 或 rejected-item ledger。托管字段 `tool_list` 还与部分代码期待的 `tool list` 不同，必须视为 schema/version 风险。
+
+**评测 pipeline。** 模型接收 query，以及 domain-restricted、all-tools、fixed 或 retrieved tool pool。retrieval 实验比较三种 retriever，默认 top-20；还评测 native tool-calling 与 ReAct，后者会执行 call 并纳入 live observation。prediction 由程序化 EM/Inclusion/Usage/retrieval metric、默认 Claude-4 的 Traj-Satisfy judge 与 LLM final-answer judge 评分。评测采用 provider 推荐/默认 temperature，并允许 reasoning model 使用 thinking；但多数确切 decoding setting、endpoint revision、judge prompt snapshot 与 run manifest 均未固定。
+
+**用途与复现边界。** 输出是 evaluation record 与 aggregate benchmark metric，不是筛选后的 training rollout。准确复现必须固定论文/PDF 版本、GitHub commit、HF revision 与 file hash、tool schema、API endpoint 及 credential/subscription state、dependency environment、retrieval config、model endpoint/decoding、judge revision/prompt 与 response fixture。目前没有一个 manifest 将这些对象统一绑定，且已核验的托管 split 只有 `test`。

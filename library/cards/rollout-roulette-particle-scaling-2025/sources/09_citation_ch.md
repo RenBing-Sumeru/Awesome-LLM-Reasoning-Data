@@ -1,0 +1,1 @@
+Puri, Isha，Shivchander Sudalairaj，Guangxuan Xu，Kai Xu，Akash Srivastava。2025。《Rollout Roulette：使用基于粒子的蒙特卡洛方法进行大语言模型推理时扩展的概率推断方法》。载于《神经信息处理系统进展》第 38 卷。https://papers.nips.cc/paper_files/paper/2025/hash/e55c675d3230dbc3bf24c986d6685632-Abstract-Conference.html

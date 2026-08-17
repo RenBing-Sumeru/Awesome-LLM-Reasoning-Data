@@ -1,0 +1,1 @@
+Read the analysis of the odds-ratio weight with the result tables rather than treating the objective as a parameter-free replacement for SFT. For reproduction, verify the preference-pair formatting, chat template, UltraFeedback revision, length handling, and the exact checkpoints used for comparisons; each changes what the negative response teaches the policy.

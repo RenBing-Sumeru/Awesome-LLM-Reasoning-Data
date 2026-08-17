@@ -1,0 +1,1 @@
+BFCL 要回答的是：LLM 是否能生成有效的 function/tool call，而不只是写出流畅聊天答案。一手来源是 Berkeley/Gorilla 官方 leaderboard、BFCL 官方 blog、Gorilla GitHub 实现，以及 Hugging Face 数据集/Space。一个样本包含用户请求、可用函数 schema 或 API、可选多轮上下文，以及期望调用或可执行结果。它属于工具使用评测面，因为反馈来自 AST、可执行检查和 agentic 场景；它不是单纯偏好榜或自由文本指令跟随测试。

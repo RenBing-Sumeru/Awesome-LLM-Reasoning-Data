@@ -1,0 +1,1 @@
+JudgeLM 关注开放式 LLM 输出怎样规模化评测，因为 exact-match 指标和固定答案 benchmark 很难覆盖回答质量。主要来源是 2023 年 arXiv 论文、BAAI/HUST 官方仓库、JudgeLM-100K 数据集，以及仓库指向的 ICLR 2025 Spotlight OpenReview 记录。数据对象由 task seed、一个或多个 LLM 回答、可选参考答案支持和 GPT-4 生成 judgment 组成，可用于监督或评测 judge。收录边界是 judge/reward 基础设施：它不是 JudgeBench 那样的客观正确性基准，也不是一般人类偏好数据。它的重要性在于公开了可扩展 teacher-judge feedback contract，并系统讨论了 judge bias。

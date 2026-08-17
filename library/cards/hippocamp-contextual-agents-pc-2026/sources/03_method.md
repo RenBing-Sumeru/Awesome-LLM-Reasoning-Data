@@ -1,0 +1,5 @@
+1. **Construct personal devices:** Organize more than 2,000 documents, images, spreadsheets, emails, and other files around realistic profiles, preserving directories, time, and cross-file relations.
+2. **Design contextual tasks:** Create 581 questions requiring personal-fact retrieval, visual-evidence understanding, or cross-file inference and mark target evidence.
+3. **Collect agent trajectories:** Run multiple MLLMs and agents in the complete file system and record every search, open, read, reasoning, state, and action.
+4. **Annotate densely:** Organize about 46.1K labels by retrieval, perception, grounding, and reasoning stages and evaluate both answers and process failures; Construction preserves cross-file references, time, and profile consistency so answers cannot rely only on filenames or directory locations as shortcuts.
+5. **Reproducibility:** Reproducibility: fix the file-system snapshot, operating system, indexer, search tools, agent model, access budget, and privacy settings. Mark undisclosed generation details or hardware unknown.

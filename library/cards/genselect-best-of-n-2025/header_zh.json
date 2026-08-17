@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "GenSelect 让推理模型联合比较带索引的数学解答摘要并生成所选索引，再用 N 叉淘汰赛扩展到 64 个候选；其论文实验轨迹未发布，565,620 条公开记录来自相关但不同的 OpenMathReasoning split。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "生成式 Best-of-N 选择与测试时扩展研究",
+  "best_for_ch": "研究 rollout 选择器、生成式 verifier、测试时算力核算与候选轨迹审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Shubham Toshniwal、Ivan Sorokin、Aleksander Ficek、Ivan Moshkov、Igor Gitman",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

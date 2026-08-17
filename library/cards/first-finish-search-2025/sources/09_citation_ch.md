@@ -1,0 +1,1 @@
+Aradhye Agarwal、Ayan Sengupta、Tanmoy Chakraborty。《First Finish Search: Efficient Test-Time Scaling in Large Language Models》。arXiv preprint arXiv:2505.18149，2025。https://arxiv.org/abs/2505.18149。论文声明的官方实现链接：https://github.com/Aradhye2002/reasoning_exps。

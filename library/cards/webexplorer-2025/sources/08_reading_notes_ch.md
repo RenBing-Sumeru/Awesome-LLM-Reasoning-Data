@@ -1,0 +1,6 @@
+- 先读 §§2.2–2.4 与附录 B：构造贡献是 model-based exploration 加 5 轮 long-to-short 线索删除，最终报告约 40K 条 QA。
+- 严格区分三种对象：约 40K 条演化 QA、约 13K 条用于 SFT 的正确 ReAct 轨迹，以及约 12K 条用于在线 GRPO 的 QA。
+- 结合 Eq. 4 阅读 §§3.1–3.2：SFT 丢弃错误轨迹；RL 使用 `0.2 * format + DeepSeek-V3 correctness` 的 mixed reward，而不是可执行环境 terminal predicate。
+- 比较长程行为前，固定 64K/50→96K/75→128K/100 的 progressive RL budget，以及每个 GRPO group 8 个 rollout。
+- 把 Table 1 的难度变化和 Figure 5 的长轨迹相关性视为依赖模型/scaffold 的证据；Table 2 使用 DeepSeek-V3 judge 的 Avg@4，尚未独立复现。
+- 复用前检查发布边界：当前仅公开 100 条 QA、模型权重和 inference/evaluation 代码；完整轨迹、reward log、合成/训练代码、split 与失败尝试均缺失。同时审计 BrowseComp-en exemplar 直接进入合成而 BrowseComp-en/zh 又用于评测的风险，并在版本化引用中保留 arXiv/GitHub/HF 15 位作者与 OpenReview 14 位作者的差异。

@@ -1,0 +1,1 @@
+Auto-J 解决的是 aligned chat model 的开放式评测缺口：真实用户 query 往往没有标准答案，而评测器既要支持 pairwise comparison，也要支持 single-response scoring，并给出解释。主要来源是 arXiv 论文、官方仓库中的 ICLR 2024 信息、GAIR-NLP 仓库和 Hugging Face 模型页。评测对象是 user query、一到两个模型回答、scenario/criteria、偏好或数值 rating，以及自然语言 critique。它应归入 generative judge 和 judge-data release，而不是普通指令微调语料或纯人工 benchmark。价值在于 58 个场景和两种评测协议下的显式 judge feedback contract。

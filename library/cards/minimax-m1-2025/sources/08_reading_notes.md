@@ -1,0 +1,6 @@
+- Keep five ledgers separate: continual pretraining, Long-CoT SFT, mixed-feedback RL, released weights/code, and evaluation. Evidence in one does not complete another.
+- SFT disclosure is thin: six domains and about 60 percent math/code are reported, but count, sources, teachers, filters, and rows are unknown.
+- RL disclosure is richer: nearly 50K math, approximately 53K logic, 30K coding, several thousand software-engineering, and 25K general prompts, each with different feedback contracts.
+- The official release verifies 40K/80K weights and inference/deployment code; no M1 training dataset, reward trace, sandbox bundle, or end-to-end training implementation was confirmed.
+- The 40K-to-80K schedule includes data reselection and downsampling, so the difference is not only an inference budget change.
+- Benchmark scores depend on sampling, judges, subsets, and scaffolds; they are not evidence of record-level quality, rights, lineage, or decontamination.

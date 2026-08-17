@@ -1,0 +1,1 @@
+Braverman, Alexander, Weitong Zhang, and Quanquan Gu. “Test-Time Scaling for Multistep Reasoning in Small Language Models via A* Search.” ICLR 2026 submission. https://openreview.net/forum?id=eJ1yDj6vtH.

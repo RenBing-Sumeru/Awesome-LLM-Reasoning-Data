@@ -1,0 +1,7 @@
+- **Missing run corpus.** The paper reports 646 runs, but complete logs, snapshots, submissions, executed artifacts, reproduction records, and leaf-level judge outputs are not released.
+- **Rubric imbalance.** Of 8,316 leaves, 3,674 cover Code Development, 4,076 Execution, and only 566 Result Match; direct result agreement has a low share.
+- **Judge bottlenecks.** JudgeEval has only 5 submissions and reports F1 0.83; over-context submissions are reduced to the top 10 ranked files, and both ranking and judgment can drift.
+- **Monitor gaps.** The blacklist check found 10 violations among 646 runs, but browser access, Python clients, mirrors, indirect downloads, missing logs, or memorized code can evade URL-pattern inspection.
+- **Split and contamination drift.** The ICML paper describes 2 development papers, while the current public dev split has 3; public papers, rubrics, and judge code also invite future tuning contamination.
+- **Replay limits.** Ubuntu 24.04 tags are not digest-pinned, and current fallback may use Python 3.11; dependencies, external services, credentials, hardware, seeds, and nondeterministic judges can change.
+- **Security and rights.** Unproxied network access and up to $1,000 in API credit expose credential and supply-chain risks. The MIT code license does not establish uniform rights for bundled papers, assets, upstream data or models, generated outputs, or all JudgeEval submissions.

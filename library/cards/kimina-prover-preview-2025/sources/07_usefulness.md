@@ -1,0 +1,3 @@
+Use this Card when comparing formal-proof RL systems or evaluating claims that a prover-backed reward makes a complete pipeline reliable. It supplies a practical audit checklist: identify whether the reward is whole-proof terminal or interactive; inspect theorem-statement semantics separately from proof compilation; require environment pins; and distinguish public proof artifacts or distills from released training prompts, traces, rewards, and lineage.
+
+The report is useful for conceptual study of SFT, cold starts, long informal reasoning, autoformalization, RL with verifiable outcomes, and distillation. It is not a drop-in release of the full RL data, reward interface, formalization validator, or reproducible Lean environment.

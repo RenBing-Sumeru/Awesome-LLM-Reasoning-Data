@@ -1,0 +1,1 @@
+Remember the record chain: demonstrations lead to candidate rules, consistency filters the rules, and rule-plus-query records train the student to both hypothesize and apply. The main evidence is not merely better ICL scores but the combination of supervised and preference data derived from an explicit rule test.

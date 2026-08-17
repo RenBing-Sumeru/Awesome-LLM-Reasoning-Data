@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "ReAgent 探索用于智能体的推理奖励模型，并发布相应的奖励训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "智能体推理奖励模型与偏好数据论文",
+  "best_for_ch": "研究偏好数据、奖励建模或对齐的读者。",
+  "confidence_ch": "中",
+  "authors_ch": "Baixuan Fan、Maituo Feng、Panyuan Zhang、Tianshuo Peng、Shixun Li、Filei Jiang、Shawn Chen、Feng Pei、Sunliang Cai、Xiangyu Yue",
+  "category_ids": [
+    "preference_reward_feedback_data",
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T09:50:43Z"
+}

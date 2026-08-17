@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Institute for AI Industry Research, Tsinghua University",
+    "University of Electronic Science and Technology of China",
+    "MiLM Plus, Xiaomi Inc."
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2605.25160",
+    "https://scalewob.github.io",
+    "https://github.com/ScaleWoB/ScaleWoB"
+  ],
+  "verification_note": "arXiv, project, and GitHub verify the corrected title ScaleWoB, authors, institutions, and public artifacts."
+}

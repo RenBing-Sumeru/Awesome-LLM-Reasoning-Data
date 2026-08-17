@@ -1,0 +1,18 @@
+{
+  "institutions": [
+    "MMLab, The Chinese University of Hong Kong",
+    "Shanghai Jiao Tong University",
+    "Shanghai AI Laboratory",
+    "vivo AI Lab"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.17490",
+    "https://www.yxchai.com/AMEX",
+    "https://github.com/YuxiangChai/AMEX-codebase",
+    "https://huggingface.co/datasets/Yuxiang007/AMEX"
+  ],
+  "verification_note": "arXiv, project, codebase, and HF verify authors, institutions, Findings of ACL 2025 status, and artifacts."
+}

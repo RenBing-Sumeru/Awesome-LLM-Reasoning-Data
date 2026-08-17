@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以语义等价代码变体为内部参照，无阈值检测 Code LLM 的逐题预训练泄漏。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "代码基准污染与成员推断审计论文",
+  "best_for_ch": "维护代码榜单或需要审计闭源 Code LLM 泄漏的研究者。",
+  "confidence_ch": "高：ACL 正式论文、作者机构与公开代码数据仓库均已核验。",
+  "authors_ch": "Shuaimin Li, Liyang Fan, Zeyang Li, Zhuoyue Wan, Yufang Lin, Shiwen Ni, Feiteng Fang, Hamid Alinejad-Rokny, Yuanfeng Song, Kun Jing, Chen Jason Zhang, Min Yang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

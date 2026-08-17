@@ -1,0 +1,1 @@
+引用：David Rein, Betty Li Hou, Asa Cooper Stickland, Jackson Petty, Richard Yuanzhe Pang, Julien Dirani, Julian Michael, Samuel R. Bowman. “GPQA: A Graduate-Level Google-Proof Q&A Benchmark.” COLM 2024 / arXiv, 2023. https://arxiv.org/abs/2311.12022 官方链接：https://github.com/idavidrein/gpqa 和 https://huggingface.co/datasets/idavidrein/gpqa 。

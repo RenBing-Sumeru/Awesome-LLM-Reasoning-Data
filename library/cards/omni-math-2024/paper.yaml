@@ -1,0 +1,122 @@
+id: omni-math-2024
+title: 'Omni-MATH: A Universal Olympiad Level Mathematic Benchmark for Large Language Models'
+year: 2024
+venue: arXiv preprint
+authors:
+- Bofei Gao
+- Feifan Song
+- Zhe Yang
+- Zefan Cai
+- Yibo Miao
+- Qingxiu Dong
+- Lei Li
+- Chenghao Ma
+- Liang Chen
+- Runxin Xu
+- Zhengyang Tang
+- Benyou Wang
+- Daoguang Zan
+- Shanghaoran Quan
+- Ge Zhang
+- Lei Sha
+- Yichang Zhang
+- Xuancheng Ren
+- Tianyu Liu
+- Baobao Chang
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- olympiad-math
+- domain-expert-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2410.07985
+  arxiv: https://arxiv.org/abs/2410.07985
+  doi: https://doi.org/10.48550/arXiv.2410.07985
+  code: https://github.com/KbsdJames/Omni-MATH
+  data: https://huggingface.co/datasets/KbsdJames/Omni-MATH/
+  project: https://omni-math.github.io/
+  huggingface: https://huggingface.co/KbsdJames/Omni-Judge
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors construct or curate olympiad-level math with subdomain and difficulty labels; exact artifact,
+    split, and license details require source review.
+  trace_author: Official benchmark authors or task curators; exact annotator/generator details require source review.
+  answer_format: benchmark records expose olympiad-level math with subdomain and difficulty labels, along with prompt/task
+    metadata and an evaluation target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: olympiad-level math with subdomain and difficulty labels
+  verifier_or_reward: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+  terminal_predicate: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate olympiad-level math with subdomain and difficulty labels; exact artifact,
+    split, and license details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: domain_expert_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/pdf/2410.07985;
+    https://omni-math.github.io/'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2410.07985'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: Official PDF gives numeric affiliation mapping for the listed institutions. Artifact/license/split/scoring details
+    remain review targets.
+inclusion_reason: Strong hard-math successor lead beyond MATH.
+related: []
+tags:
+- benchmark
+- domain_expert_benchmark
+- olympiad-math
+why_it_matters: Strong hard-math successor lead beyond MATH.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: Omni-MATH exposes olympiad-level math with subdomain and difficulty labels as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official PDF gives numeric affiliation mapping for the listed institutions.
+category_ids:
+- benchmarks_evaluation_surfaces

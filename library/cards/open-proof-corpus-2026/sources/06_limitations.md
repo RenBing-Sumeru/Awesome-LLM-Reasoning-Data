@@ -1,0 +1,15 @@
+- Is the exact Hugging Face revision pinned before analysis or training?
+- Does the selected subset exclude MathArena, PutnamBench, and test?
+- Are `best_of_n` records separated into fully graded eight-sample groups and selector-only graded groups?
+- Does each example have one judge or two, and are disagreements preserved?
+- Are adjudication outcomes available for conflicting labels?
+- Are uncertainty flags and sentence annotations missing at random, or concentrated on difficult proofs?
+- Are O4-MINI summaries visible to judges, and could they anchor the verdict or error localization?
+- Are positive and negative rates compared separately for each solver model and competition?
+- Are source URLs official, public, and still accessible?
+- Are competition-problem and official-solution redistribution rights known at item level?
+- Are translations distinguishable from original-language problem statements?
+- Is overlap with model pretraining, benchmark corpora, or other public proof datasets measured?
+- Is the 5,062-paper versus 4,934-public-row difference reconciled?
+- Are generation parameters, code revision, dataset revision, and model identifiers pinned?
+- Does downstream evaluation separate verifier quality from generator quality and best-of-N budget?

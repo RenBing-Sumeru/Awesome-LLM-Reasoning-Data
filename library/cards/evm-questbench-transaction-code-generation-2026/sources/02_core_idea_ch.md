@@ -1,0 +1,1 @@
+EVM-QuestBench 含 107 个任务，其中 62 个原子场景、45 个组合场景。任务由模板池定义，评测时从区间动态实例化数值和链上对象，减少硬编码与数据记忆；runner 为每次运行创建 EVM fork snapshot，执行生成脚本后调用 validator 比较目标状态。组合任务还按实际动作数相对最优步骤施加效率衰减。数据和代码提供模板、执行器与验证器，主要用于 benchmark 与 execution-grounded reward。

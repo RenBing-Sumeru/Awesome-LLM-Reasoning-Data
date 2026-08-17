@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-13T05:56:53Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "对 WebVoyager 的工程化修订，不具有什么意义",
+    "updated_at": "2026-07-13T05:56:53Z"
+  }
+}

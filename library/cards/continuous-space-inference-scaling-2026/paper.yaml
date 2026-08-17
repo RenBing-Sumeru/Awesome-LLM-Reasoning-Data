@@ -1,0 +1,110 @@
+id: continuous-space-inference-scaling-2026
+title: Towards Inference-time Scaling for Continuous Space Reasoning
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Minghan Wang
+- Thuy-Trang Vu
+- Ehsan Shareghi
+- Gholamreza Haffari
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- general-reasoning
+training_use:
+- test_time_compute
+- reinforcement_learning
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1338/
+  arxiv: null
+  venue: https://aclanthology.org/2026.findings-acl.1338/
+  code: https://github.com/yuriak/LatentITS
+  data: https://huggingface.co/datasets/peiyi9979/Math-Shepherd
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1338
+data_object:
+  prompt_source: GSM8K prompts; Math-Shepherd is adapted for automatic step supervision.
+  trace_author: COCONUT generates latent continuous reasoning trajectories with dropout-based sampling.
+  answer_format: Prompt, latent-thought trajectory, generated answer, trajectory correctness, PRM/ORM score, geometric metrics,
+    and reranking decision.
+  process_fields:
+  - prompt
+  - latent_trajectory
+  - answer
+  - correctness
+  - process_reward
+  - outcome_reward
+  - geometry
+  - rerank_score
+  environment_or_substrate: Continuous-space COCONUT reasoning model with dropout sampling and reward-model reranking.
+  verifier_or_reward: PRM hard/soft estimation and ORM trained from automatically annotated trajectories; post-training uses
+    answer-verifiable rollouts and geometric regularization.
+  terminal_predicate: GSM8K ground-truth answer matching.
+recipe_metadata:
+  base_model: COCONUT continuous-space reasoning model.
+  teacher: Not applicable; answer labels and automatic Monte-Carlo-style step annotations provide supervision.
+  generator: Dropout-based sampling produces diverse latent reasoning trajectories.
+  filtering_rule: Generated trajectories are deduplicated by final answer for training-data construction; reward models rerank
+    un-deduplicated evaluation candidates.
+  sampling_protocol: Evaluate Best-of-N at N=1, 2, 4, 8, 16, and 32; compare confidence, self-consistency, PRM, and ORM reranking.
+  rollout_count: Five paths per prompt for reward-model training and ten completions for Monte Carlo step annotation; evaluation
+    uses up to 32 candidates.
+  temperature: See official code and paper for decoding configuration.
+  inference_budget: Sampling budget N from 1 to 32.
+  optimizer_or_scaffold: PRM/ORM reranking plus an answer-verified geometric regularization post-training intervention.
+audit:
+  source_mixture: Official ACL paper, official GitHub repository, and cited public Math-Shepherd dataset.
+  split: GSM8K training and test trajectories; a dedicated 3,014-sample analysis set is constructed from the test prompts.
+  decontamination: No formal contamination audit is claimed.
+  license: Check COCONUT, Math-Shepherd, GSM8K, and repository licenses before reuse.
+  lineage: https://aclanthology.org/2026.findings-acl.1338/
+  known_failure_modes:
+  - latent-trajectory-nonseparability
+  - reward-model-miscalibration
+  - gsm8k-only-evaluation
+  - dropout-sampling-dependence
+  - limited-post-training-gains
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF and official GitHub link checked on 2026-07-21. Authors are affiliated with Monash University and
+    University College London.
+inclusion_reason: It tests whether multiple-sample verification and reranking actually scale latent continuous reasoning,
+  and identifies why conventional PRM/ORM recipes fail to allocate test-time compute effectively in that space.
+related: []
+tags:
+- inference-time-scaling
+- latent-reasoning
+- reward-model
+- reranking
+- continuous-space
+status: verified
+one_line_summary: This paper shows that latent reasoning has unused Pass@N potential but weak reward-model separability, then
+  tests geometric regularization to improve its test-time scaling.
+reading_priority: recommended
+paper_type: Continuous-space test-time scaling analysis
+best_for: Readers extending sampling and verifier-based scaling from textual chains of thought to latent or continuous reasoning
+  representations.
+confidence: high
+why_it_matters: It establishes that standard verifier recipes cannot simply be assumed to transfer from text traces to continuous
+  thoughts, a key boundary for generalizing test-time scaling.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper, code repository, and cited Math-Shepherd dataset checked.
+category_ids:
+- scaling_rlvr_test_time_compute

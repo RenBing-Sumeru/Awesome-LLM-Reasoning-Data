@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"该方法通过筛除无效动作、排序可行动作并逐状态分配验证预算来节约验证调用。","reading_priority_ch":"可读","paper_type_ch":"选择性验证与自适应测试时分配研究","best_for_ch":"优化结构化推理搜索中昂贵验证调用的读者。","confidence_ch":"高","authors_ch":"Shuhui Qu（机构：斯坦福大学）","category_ids":["scaling_rlvr_test_time_compute"]}

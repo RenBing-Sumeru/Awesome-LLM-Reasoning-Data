@@ -1,0 +1,219 @@
+id: setupagent-swee-swa-bench-2025
+title: Automated Benchmark Generation for Repository-Level Coding Tasks
+year: 2025
+venue: ICML 2025
+authors:
+- Konstantinos Vergopoulos
+- Mark Niklas Müller
+- Martin Vechev
+source_role:
+- benchmark
+- agent_environment
+- construction_recipe
+verification_contract:
+- programmatic
+- environmental
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software_engineering
+- repository_level_code
+- code_agents
+- python
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v267/vergopoulos25a.html
+  arxiv: https://arxiv.org/abs/2503.07701
+  code: https://github.com/logic-star-ai/SWEBench/tree/c11e96679247719201db83c06012adb3221b33be
+  data: https://huggingface.co/datasets/LogicStar/SWA-Bench
+  project: https://www.sri.inf.ethz.ch/publications/mueller2025automated
+  huggingface: https://huggingface.co/datasets/LogicStar/SWEE-Bench
+  dataset_swa: https://huggingface.co/datasets/LogicStar/SWA-Bench
+  dataset_swee: https://huggingface.co/datasets/LogicStar/SWEE-Bench
+  docker_swa: https://hub.docker.com/r/logicstarai/swa-bench
+  docker_swee: https://hub.docker.com/r/logicstarai/swee-bench
+  doi: https://doi.org/10.48550/arXiv.2503.07701
+  venue: https://proceedings.mlr.press/v267/vergopoulos25a.html
+  openreview: https://openreview.net/forum?id=qnE2m3pIAb
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/vergopoulos25a.html
+  cvf: null
+  bibtex: null
+data_object:
+  object_type: Repository-level issue-resolution benchmark instance with a pinned codebase, human reference patches, generated
+    historical setup commands, executable test partitions, and a Docker evaluation target.
+  prompt_source: GitHub issues linked to merged pull requests that modify a test file. SWA starts from application-focused
+    candidate lists; SWEE starts from popular-downloaded but comparatively less-starred PyPI projects. Repositories are deduplicated
+    and filtered for permissive licenses.
+  trace_author: No agent action/observation trajectory is released. Human contributors authored the issue, reference code
+    patch, and test patch; SetUpAgent generated the installation/testing configuration.
+  episode_fields:
+  - repo
+  - instance_id
+  - base_commit
+  - problem_statement
+  - hints_text
+  - patch
+  - test_patch
+  - created_at
+  - merged_at
+  - PASS_TO_PASS
+  - PASS_TO_FAIL
+  - FAIL_TO_PASS
+  - FAIL_TO_FAIL
+  - install
+  - test_framework
+  - test_commands
+  - version
+  - environment_setup_commit
+  - docker_image_root
+  context_or_state: Repository checkout at `base_commit` plus the original test suite; the benchmark prompt exposes the issue
+    and repository context to the evaluated code agent.
+  action_or_trace: The evaluated behavior is a submitted repository patch. Tool calls, intermediate observations, reasoning
+    traces, retry history, and per-step labels are not part of the released task rows.
+  answer_or_artifact: Candidate model patch for the repository; `patch` in the released row is the human reference code patch
+    and `test_patch` is the human test change.
+  process_labels:
+  - PASS_TO_PASS
+  - PASS_TO_FAIL
+  - FAIL_TO_PASS
+  - FAIL_TO_FAIL
+  observation: Test-command stdout/stderr is parsed into per-test statuses during construction/evaluation, but complete logs
+    are not stored in the public row schema.
+  verifier_output: The evaluator report records patch presence/application, parsed per-test status, and a boolean `resolved`;
+    public benchmark rows store gold behavior partitions rather than model-run reports.
+  reward: Binary resolved outcome for benchmark evaluation; no training reward is reported.
+  terminal_predicate: A model patch is fully resolved in the inspected harness only if all declared FAIL_TO_PASS and PASS_TO_PASS
+    tests pass. Patch-application failure, timeout, missing test-output markers, or parser failure is unsuccessful. During
+    dataset construction, an instance is retained only if pre/post reference executions succeed and at least one F2P test
+    exists.
+  provenance: GitHub repository and merged issue-resolving PR -> permissive-license and validity filters -> pinned pre-fix
+    base commit -> SetUpAgent historical environment and commands -> reference test/code patches -> pre/post test behavior
+    -> released test row and Docker target.
+  environment_or_substrate: Ubuntu 22.04-based Docker execution; historically constrained Python dependencies installed with
+    `uv`; row-specific install/test commands and LogicStar Docker image namespaces are consumed by a SWE-bench harness fork.
+  release_shape: The paper reports 535 SWA instances from 44 repositories and 885 SWEE instances from 366 repositories. Current
+    official Hub revisions instead expose one test split with 450 SWA rows and 798 SWEE rows, with no changelog reconciling
+    the difference.
+recipe_metadata:
+  base_model: unknown
+  teacher: GPT-4o-mini underlies SetUpAgent by the paper's default; exact reported model ID is `gpt-4o-mini-2024-07-18`.
+  generator: SetUpAgent with LLM-driven command extraction, iterative error diagnosis/command repair, and mixed LLM/programmatic
+    validation.
+  prompt_task_source: SWA combines 468 popular Python applications with 50 DyPyBench projects and deduplicates to 475 candidates.
+    SWEE begins with the 8,000 most-downloaded PyPI projects subject to the paper's download/star range.
+  sampling_protocol: Locate and deduplicate repositories; filter permissive licenses; scrape merged PRs that resolve issues
+    and modify tests; establish an environment on the most recent valid PR; process additional PRs in reverse chronological
+    order while reusing reference commands; split code/test patches; execute tests before and after the reference fix; retain
+    executable cases with at least one F2P test.
+  temperature: greedy decoding for SetUpAgent; numeric temperature is not disclosed.
+  rollout_count: unknown
+  inference_budget: Four iterative-improvement steps. Without reference commands SetUpAgent took 76 minutes for 154 SWA repositories,
+    about 30 seconds per repository on average; API token/cost budgets and retry limits are undisclosed.
+  search_or_scaffold: Repository text/README/contribution files, CI/CD configuration, relevant linked web pages, clean Docker
+    execution feedback, predefined test parsers, and a cross-version reference-command database. Web browsing was disabled
+    for SWEE construction.
+  filtering_rule: Keep permissively licensed repositories and merged issue-resolving PRs that modify tests; reject failed
+    pre/post executions and cases with no F2P test. SetUpAgent setup is accepted when an LLM judges the run successful and
+    at least 95% of parsed tests pass.
+  selection_threshold: At least 95% of tests passing for setup validation and at least one F2P test for a benchmark instance;
+    up to 50 valid PRs per SWA repository and 10 per SWEE repository.
+  optimizer_or_scaffold: Evaluation-only SWE-bench-compatible Docker harness; no training optimizer is reported.
+  final_release_scale: 'Paper snapshot: SWA 535/44 repositories; SWEE 885/366 repositories. Current Hub: SWA 450; SWEE 798.'
+audit:
+  source_mixture: SWA is application-focused and begins from two public project lists; SWEE begins from 8,000 PyPI projects
+    selected by download/star criteria. Both use real GitHub issues, PRs, code, and tests.
+  split: Both current Hub releases expose one `test` split. No train/dev split or hidden test partition is declared.
+  decontamination: The automated recipe permits recent tasks and the paper stratifies results around model knowledge cutoffs,
+    but it reports no direct model-training-corpus overlap audit. The knowledge-cutoff result is suggestive, not proof of
+    decontamination.
+  benchmark_overlap: The paper compares distributions with SWE-bench and publishes repository lists, but no complete instance-level
+    overlap/deduplication report against SWE-bench or other public SWE benchmarks is released.
+  lineage: High-level repository/PR-to-task lineage is disclosed and rows pin `repo` plus `base_commit`, but current rows
+    do not expose canonical issue/PR URLs; `version` and `environment_setup_commit` are null.
+  license: The evaluation fork inherits an MIT license and source repositories were filtered for permissive licenses. Both
+    official dataset repositories lack a dataset license declaration; issue/PR/test/dependency rights and attribution remain
+    unresolved.
+  release_version: 'SWA Hub revision checked: 9ce2651cf73f5cf691101ef5859ce3fccfc6cc24 (450 rows). SWEE Hub revision checked:
+    012045a7367884b1e694c5840c409a9147daf58e (798 rows). Harness support commit checked: c11e96679247719201db83c06012adb3221b33be.
+    No tagged paper release reconciles these artifacts with the 535/885 paper counts.'
+  verifier_or_judge_failure_modes:
+  - The 95% threshold can accept partially incorrect installations; the manual 30-instance SWA audit found only 22 fully correct
+    setups.
+  - Test parsers can miss or misclassify cases across heterogeneous frameworks; the inspected fallback treats XFAIL/XPASS
+    as passing and absent/error cases as failure.
+  - Generated environments can fail on linked multi-page instructions, Docker-based test procedures, multi-step makefiles,
+    or an incorrectly chosen requirements file.
+  - Public tests can be over-specific, incomplete, flaky, or exploitable; passing them does not prove semantic issue resolution.
+  - Mutable Docker tags and missing image-digest manifests can cause replay drift.
+  successful_and_failed_sample_retention: Only successful environment setups with executable pre/post reference runs and at
+    least one F2P test are released. Failed setup iterations, rejected PRs, parser failures, and no-F2P cases are not present
+    as reusable negative records.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: The arXiv v1 abstract reports up to 40% lower agent success, matching GPT-4o AutoCodeRover v2 at 10.2% SWA versus
+    16.6% SWE (38.6% relative). The ICML/PMLR final abstract reports up to 60% after adding 100-instance DeepSeek/Qwen rows;
+    the version difference must not be collapsed.
+  remaining_unknowns:
+  - SetUpAgent source code, reference-command database, full runtime config, seeds, retries, and token/cost budget
+  - exact uv/resolver/index snapshots, Ubuntu image digest, complete dependency manifests, and per-task Docker digests
+  - explanation and manifest for the paper-to-Hub count changes from 535/885 to 450/798
+  - dataset license and per-source rights/attribution manifest
+  - canonical per-row issue/PR URL and non-null environment setup revision
+  - complete rejected/failure logs and parser calibration across all frameworks
+  - broad benchmark overlap and model-pretraining contamination audit
+  - privacy, contributor consent, and governance treatment
+inclusion_reason: This paper makes repository-level agent evaluation data concrete as issue-plus-repository tasks coupled
+  to historically constrained executable environments, test-behavior partitions, and a terminal resolution predicate, while
+  its current releases expose consequential version, license, and replay gaps.
+related: []
+tags:
+- environment-agent-trajectory-data
+- software-engineering-agent
+- repository-level-benchmark
+- setupagent
+- SWA-Bench
+- SWEE-Bench
+- executable-tests
+- historical-environment
+- benchmark-generation
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: SetUpAgent turns issue-resolving GitHub pull requests into executable repository tasks by reconstructing
+  historical dependencies and parsing tests; paper-time SWA/SWEE scales are 535/885 tasks, while current Hub releases expose
+  450/798.
+why_it_matters: It shows how an agent benchmark's real data object includes pinned repository state, setup commands, tests,
+  parsers, containers, and a terminal predicate, and why release drift can undermine otherwise programmatic evaluation.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_schema_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: ICML/PMLR final paper, arXiv v1, OpenReview/ICML/SRI records, both official HF revisions and schemas, both Docker
+    namespaces, and the paper-linked SWE-bench fork/branches/license/evaluator code were inspected. SetUpAgent generation
+    source and a paper-count-matching release were not found.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release_reconciliation: explain and manifest paper counts 535/885 versus current Hub counts 450/798'
+- 'needs_code: release or identify the SetUpAgent generation implementation and reference-command database'
+- 'needs_license: declare dataset license and per-source code/issue/PR/test/dependency rights'
+- 'needs_replay: pin uv/index/base image, per-task Docker digests, test parser version, and complete commands/logs'
+- 'needs_lineage: add canonical issue/PR URLs and non-null environment setup revisions per row'
+- 'needs_failure_data: release rejected setups, parser failures, invalid PRs, and no-F2P cases'
+- 'needs_contamination_audit: report instance overlap and broader model-training-corpus contamination checks'
+card: null

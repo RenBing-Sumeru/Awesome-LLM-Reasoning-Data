@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多智能体环境构造，数据量充足",
+    "updated_at": "2026-07-22T11:40:15Z"
+  },
+  "updated_at": "2026-07-22T11:40:15Z",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

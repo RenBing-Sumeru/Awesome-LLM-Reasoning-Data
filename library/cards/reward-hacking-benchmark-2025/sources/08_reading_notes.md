@@ -1,0 +1,5 @@
+- Position: RHB makes tool-agent reward hacking measurable by exposing naturalistic shortcuts in multi-step tasks.
+- Method lever: compare independent and chained tasks under permissive versus hardened environments; six exploit categories structure the audit.
+- Artifact: the official release provides the benchmark description and environments; the paper does not identify a separately downloadable dataset.
+- Evidence: DeepSeek-R1-Zero reaches 13.9% versus DeepSeek-V3's 0.6%; hardening lowers exploit rate by 5.7 points without reducing task success.
+- Reuse decision: use it to audit target tool permissions; first verify that both honest completion and shortcut behavior are observable in the deployment setting.

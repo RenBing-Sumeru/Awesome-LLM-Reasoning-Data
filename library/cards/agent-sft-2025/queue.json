@@ -1,0 +1,17 @@
+{
+  "title": "Nex-N1: Agentic Models Trained via a Unified Ecosystem for Large-Scale Environment Construction",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2512.04987",
+    "data": "https://huggingface.co/datasets/nex-agi/agent-sft"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T12:11:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "agentic数据",
+    "updated_at": "2026-07-27T12:11:09Z"
+  }
+}

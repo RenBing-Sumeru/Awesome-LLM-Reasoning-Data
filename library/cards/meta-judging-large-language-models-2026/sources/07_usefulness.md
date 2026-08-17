@@ -1,0 +1,1 @@
+The survey examines LLM-as-a-Judge and LLM-as-a-Meta-Judge through concepts, methods, applications, reliability, and limitations. It treats automated scores and judgments as outputs of a prompt-conditioned evaluator whose behavior can depend on the model, rubric, task, and reference access. No new judge or reward model is released.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AM-Distilled 把 140 万条中英双语 R1 推理按数学答案、代码测试或奖励模型分别验证。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "推理监督微调和知识蒸馏",
+  "confidence_ch": "高",
+  "authors_ch": "Han Zhao、Haotian Wang、Yiping Peng、Sitong Zhao、Xiaoyu Tian、Shuaiting Chen、Yunjie Ji、Xiangang Li",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T08:00:00Z"
+}

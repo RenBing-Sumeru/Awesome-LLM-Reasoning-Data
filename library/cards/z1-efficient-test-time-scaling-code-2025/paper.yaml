@@ -1,0 +1,148 @@
+id: z1-efficient-test-time-scaling-code-2025
+title: 'Z1: Efficient Test-time Scaling with Code'
+year: 2025
+venue: EMNLP 2025 Industry Track
+authors:
+- Zhaojian Yu
+- Yinghao Wu
+- Yilun Zhao
+- Arman Cohan
+- Xiao-Ping Zhang
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- code
+- reasoning
+training_use:
+- sft
+- distillation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-industry.182/
+  arxiv: https://arxiv.org/abs/2504.00810
+  code: https://github.com/efficientscaling/Z1
+  data: https://huggingface.co/datasets/efficientscaling/Z1-Code-Reasoning-107K
+  project: null
+  huggingface: https://huggingface.co/efficientscaling/Z1-7B
+  doi: https://doi.org/10.18653/v1/2025.emnlp-industry.182
+  venue: https://aclanthology.org/2025.emnlp-industry.182/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-industry.182/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Code Evol-Instruct problems selected to span prompts evolved in depth and breadth; the exact upstream revision,
+    per-row source identifier, and difficulty label are not released.
+  trace_author: QwQ-32B-Preview.
+  answer_format: One unsegmented response containing reasoning and answer text without a dedicated <think>...</think> split;
+    no separate final-answer field is released.
+  process_fields:
+  - id
+  - question
+  - response
+  - token_num_qwen
+  environment_or_substrate: Offline teacher-trace distillation followed by decoder-only SFT. Shifted Thinking Window is an
+    inference scaffold that caps the first generation and, on length termination, appends a direct-answer hint before continuing.
+  verifier_or_reward: unknown; the paper and release disclose no execution checker, correctness verifier, judge score, reward,
+    or acceptance label. The documented curation removes approximately 3% repetitive trajectories and applies a length cap.
+  terminal_predicate: Dataset correctness termination is unknown. At inference, the first pass terminates naturally or at
+    max_tokens_for_thinking; length-truncated cases are continued after the “I overthought it, the final answer should be:”
+    hint.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-7B-Instruct.
+  teacher: QwQ-32B-Preview.
+  generator: QwQ-32B-Preview generates response trajectories for Code Evol-Instruct questions. The paper frames lower-complexity
+    prompts as yielding shorter trajectories and higher-complexity prompts as yielding longer ones, but the release has no
+    explicit short/long or complexity field.
+  filtering_rule: Cap generated trajectories at 8,192 tokens, remove approximately 3% of samples with repetitive reasoning,
+    and retain the remaining prompt-response pairs; fewer than 1% of retained rows are reported as truncated. The repetition
+    detector, thresholds, and rejected-row manifest are unknown.
+  sampling_protocol: The released dataset exposes one response per row. Teacher decoding parameters, candidate multiplicity,
+    seed, and any pre-filter rejection sampling are unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Teacher trajectories are capped at 8,192 tokens. Main Z1 evaluations use a maximum of about 4,096 thinking
+    tokens and report budget-performance curves; Shifted Thinking Window accepts max_tokens_for_thinking as a runtime knob.
+  optimizer_or_scaffold: SFT masks question tokens and trains on the response target for 2 epochs with learning rate 1e-5,
+    100 warmup steps, cosine decay, bfloat16, global batch size 128, and FSDP on 8 A100-80G GPUs. Shifted Thinking Window
+    removes rigid thinking delimiters, caps the initial reasoning pass, and prompts a direct answer when that pass ends by
+    length.
+audit:
+  source_mixture: Code Evol-Instruct is the stated prompt source and QwQ-32B-Preview is the sole stated trajectory teacher.
+    Per-row upstream provenance, the exact Code Evol-Instruct revision, and a source-mixture manifest are not released.
+  split: Official HF release has one train split with 107,173 examples in one Parquet shard; no validation or test split is
+    provided.
+  decontamination: unknown
+  license: unknown for the dataset and top-level Z1 code. The HF dataset card declares no license, the GitHub repository has
+    no top-level LICENSE and reports no detected license, and the ACL paper's CC BY 4.0 publication license does not license
+    the data or code.
+  lineage: Code Evol-Instruct prompts -> QwQ-32B-Preview trajectories -> 8,192-token cap plus approximate 3% repetition removal
+    -> Z1-Code-Reasoning-107K single-train-split release -> full-response SFT of Qwen2.5-Coder-7B-Instruct -> Z1-7B -> Shifted
+    Thinking Window at inference.
+  known_failure_modes:
+  - No correctness/execution verifier or per-record feedback is released, so a fluent trajectory is not evidence of a correct
+    program or answer.
+  - The release does not label trajectories as short/long, simple/complex, truncated, correct, or source-specific; only token_num_qwen
+    exposes length.
+  - Appendix D.3 shows a 2,048-token thinking cap truncating a reasoning path and producing the wrong answer 11 instead of
+    29.
+  - The repository includes training, evaluation, STW, and ablation-selection code but not the teacher-generation or repetitive-trace
+    filtering pipeline.
+  - Dataset/code licensing, benchmark decontamination, upstream source rights, and discarded-sample lineage are undisclosed.
+  - Table 3 reports LiveCodeBench 35.4 with STW while Tables 1 and 8 report 35.3, a minor reporting inconsistency.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL/arXiv records, the full 25-page paper and appendices, GitHub main commit 757af2ec743bb82167537039e90315b7975e00b7,
+    repository files, and HF dataset revision b1094ba6f6087a7d5764a2e42bd01d0dd5ab13f2 were checked. The dataset has 107,173
+    rows with fields id, question, response, and token_num_qwen. Z1-7B reports MATH500 76.4, GPQA Diamond 47.5, LiveCodeBench
+    35.3, and BigCodeBench-Hard 22.3; these are author-reported results, not an independent reproduction.
+inclusion_reason: Z1 is a strong Track 5 anchor because it releases 107K teacher-generated code trajectories spanning short
+  and long responses, connects training-trajectory length to test-time thinking budgets, and exposes a concrete shifted-window
+  inference scaffold with a documented truncation failure.
+related: []
+tags:
+- z1
+- code-reasoning
+- long-short-trajectories
+- teacher-distillation
+- shifted-thinking-window
+- test-time-compute
+- reasoning-efficiency
+- sft
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Z1 releases 107,173 Code Evol-Instruct-derived prompts with QwQ-32B-Preview response trajectories and pairs
+  their SFT use with a token-capped Shifted Thinking Window for efficient inference.
+why_it_matters: It makes the interaction between training-trace length and inference-time reasoning budget unusually concrete,
+  while its absent verifier, short/long labels, generation/filtering code, license, and decontamination record define clear
+  audit boundaries.
+card: null
+needs:
+- needs_license
+- needs_decontamination
+- needs_per_row_source_lineage
+- needs_generation_filtering_pipeline
+- needs_short_long_labels
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: ACL, arXiv, author-linked GitHub, official HF data/model links, repository files, and the released dataset schema
+    were checked. Artifact verification confirms official availability, not complete licensing, lineage, decontamination,
+    or generation reproducibility.

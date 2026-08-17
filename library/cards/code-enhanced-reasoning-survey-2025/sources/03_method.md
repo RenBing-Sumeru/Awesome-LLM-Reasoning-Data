@@ -1,0 +1,3 @@
+This is a literature synthesis rather than one implementation. Its recurring workflow is a goal, a set of executable steps or code artifacts, an execution environment, runtime feedback, and a revised result. The paper treats execution and validation as sources of information that can constrain or correct an otherwise text-only process.
+
+This outline is a reading device, not a prescribed algorithm. Different primary studies may execute full programs, partial snippets, or other artifacts, and they may use different feedback. Compare them by asking what is generated, where it runs, what observation returns, and whether the model can use that observation to revise its work. The survey does not supply one shared setup.

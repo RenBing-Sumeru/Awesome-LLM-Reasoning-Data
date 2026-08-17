@@ -1,0 +1,3 @@
+The authors take Math-Shepherd problems and answers but discard its process labels. Each trajectory is divided by a special delimiter; its terminal answer supplies one binary pseudo label for all steps. Qwen2.5-Math-7B-Instruct predicts wrong, buffer, and right probabilities, while a sampled Bernoulli buffer factor determines whether the buffer can soften the pseudo-label loss at that step.
+
+The final step is upweighted and has no buffer contribution. Training uses batch size 16, learning rate 1e-4, and two A40 GPUs. For best-of-N evaluation, candidate reasoning traces are step-scored and the last step score ranks whole responses; the paper uses up to 128 candidates on MATH-500.

@@ -1,0 +1,1 @@
+Safety judge work typically validates human agreement. This paper adds artifact robustness, repeated consistency and jury selection; agreement and robustness are distinct axes. Choosing jurors for opposing artifact biases is the practical change.

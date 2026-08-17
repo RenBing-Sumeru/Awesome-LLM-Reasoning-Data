@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以分层人工语境重校奖励信号，避免仇恨言论解释因必要的冒犯措辞而被错误降分。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "判断、rubric 或领域专家数据论文",
+  "best_for_ch": "需要构建或审计 LLM-as-a-judge、奖励模型与专家评测数据的研究者。",
+  "confidence_ch": "中到高：官方主链接已核验；缺少独立 artifact 链接的条目在复用前须继续核验。",
+  "authors_ch": "Lorenzo Puppi Vecchi, Alceu de Souza Britto Jr, Emerson Cabrera Paraiso, Rafael Menelau Cruz",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-19T12:58:49Z"
+}

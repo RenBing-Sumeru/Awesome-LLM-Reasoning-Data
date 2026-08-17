@@ -1,0 +1,106 @@
+id: mechanistic-lrm-survey-2026
+title: 'Towards a Mechanistic Understanding of Large Reasoning Models: A Survey of Training, Inference, and Failures'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Yi Hu
+- Jiaqi Gu
+- Ruxin Wang
+- Zijun Yao
+- Hao Peng
+- Xiaobao Wu
+- Jianhui Chen
+- Muhan Zhang
+- Liangming Pan
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- large-reasoning-models
+- mechanistic-interpretability
+- reasoning-data
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.889/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.889
+  venue: https://aclanthology.org/2026.acl-long.889/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.889/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed reasoning tasks, training trajectories, and intermediate model behavior.
+  trace_author: Primary studies synthesized by the survey; no new trace corpus is released.
+  answer_format: A three-part synthesis of training dynamics, reasoning mechanisms, and unintended behavior.
+  process_fields:
+  - training signal
+  - intermediate behavior
+  - reasoning trace
+  - model intervention
+  - task outcome
+  environment_or_substrate: Large reasoning models trained or improved with reinforcement learning.
+  verifier_or_reward: Reviews the rewards, probes, and behavioral evaluations used by primary studies.
+  terminal_predicate: A claimed mechanism must be supported by an observable intervention or prediction.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Reviewed work varies by study.
+  generator: Literature synthesis and mechanism-centered taxonomy.
+  filtering_rule: Groups evidence by training dynamics, reasoning mechanisms, and unintended behaviors.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new training system is introduced.
+audit:
+  source_mixture: Official ACL Anthology record and proceedings PDF.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion for reviewed benchmarks.
+  license: Consult each primary study before reusing an artifact.
+  lineage: 'Primary source: https://aclanthology.org/2026.acl-long.889/'
+  known_failure_modes:
+  - Mechanistic claims can rest on correlational probes
+  - Behaviors can differ across models and tasks
+  citation_status: verified
+  confidence: high
+  notes: The ACL abstract explicitly organizes the survey around training dynamics, reasoning mechanisms, and unintended behaviors.
+inclusion_reason: A 2026 ACL long paper that turns reasoning-model behavior into concrete questions about training signals,
+  intermediate computation, and failure evidence.
+related: []
+tags:
+- foundations-and-primers
+- large-reasoning-models
+- interpretability
+- acl-2026
+- survey
+why_it_matters: It helps readers distinguish an impressive answer from evidence about the process that produced it.
+one_line_summary: An ACL survey of what evidence explains how large reasoning models learn, reason, and fail.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers studying reasoning traces, reinforcement learning, or mechanistic evidence for model behavior.
+confidence: high
+status: verified
+needs:
+- 'unknown: a common experimental standard for causal claims about reasoning mechanisms'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL page, abstract, venue, authors, and DOI were checked.
+category_ids:
+- foundations_and_primers

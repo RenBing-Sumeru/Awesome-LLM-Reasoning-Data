@@ -1,0 +1,1 @@
+Mechanistic terminology can sound stronger than the available evidence. A probe may correlate with success without causing it, and an intervention may transfer poorly between architectures or tasks. The survey is also a snapshot of a young field, so readers should check the date, model family, and experimental scale of any result they intend to reuse.

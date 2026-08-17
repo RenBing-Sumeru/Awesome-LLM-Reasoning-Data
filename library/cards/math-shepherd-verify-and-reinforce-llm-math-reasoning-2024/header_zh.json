@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "提出 Math-Shepherd，用自动构造的步骤级监督训练数学过程验证器，并把逐步奖励用于候选重排和 PPO。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wang et al.",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-13T13:48:26Z"
+}

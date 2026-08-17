@@ -1,0 +1,138 @@
+id: folio-2022
+title: 'FOLIO: Natural Language Reasoning with First-Order Logic'
+year: 2024
+venue: EMNLP 2024 main
+authors:
+- Simeng Han
+- Hailey Schoelkopf
+- Yilun Zhao
+- Zhenting Qi
+- Martin Riddell
+- Wenfei Zhou
+- James Coady
+- David Peng
+- Yujie Qiao
+- Luke Benson
+- Lucy Sun
+- Alex Wardle-Solano
+- Hannah Szabó
+- Ekaterina Zubova
+- Matthew Burtell
+- Jonathan Fan
+- Yixin Liu
+- Brian Wong
+- Malcolm Sailor
+- Ansong Ni
+- Linyong Nan
+- Jungo Kasai
+- Tao Yu
+- Rui Zhang
+- Alexander R. Fabbri
+- Wojciech Kryściński
+- Semih Yavuz
+- Ye Liu
+- Xi Victoria Lin
+- Shafiq Joty
+- Yingbo Zhou
+- Caiming Xiong
+- Rex Ying
+- Arman Cohan
+- Dragomir Radev
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- logical-reasoning
+- static-reasoning-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2209.00840
+  arxiv: https://arxiv.org/abs/2209.00840
+  doi: https://doi.org/10.18653/v1/2024.emnlp-main.1229
+  code: null
+  data: https://aclanthology.org/attachments/2024.emnlp-main.1229.data.zip
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2024.emnlp-main.1229/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct first-order logic reasoning in natural language; exact split, artifact,
+    license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose first-order logic reasoning in natural language, prompt/task metadata, a model output
+    surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: first-order logic reasoning in natural language
+  verifier_or_reward: gold-label answer-level evaluation; first-order-logic inference engine used to verify dataset annotations
+  terminal_predicate: model prediction is correct when it matches the gold label; FOL checks support annotation consistency
+  dataset_scale: 1,430 examples from 487 premise sets.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct first-order logic reasoning in natural language; exact split, artifact,
+    license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: static_reasoning_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2209.00840;
+    https://arxiv.org/pdf/2209.00840; https://aclanthology.org/2024.emnlp-main.1229/'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2209.00840'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology verifies EMNLP 2024 main status and DOI; paper reports 1,430 examples from 487 premise sets. Model
+    scoring is answer-level gold-label evaluation, while FOL checking audits annotation consistency.
+inclusion_reason: Useful for formalizable reasoning surface and label consistency checks.
+related: []
+tags:
+- benchmark
+- static_reasoning_benchmark
+- logical-reasoning
+why_it_matters: Useful for formalizable reasoning surface and label consistency checks.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: FOLIO exposes first-order logic reasoning in natural language as an auditable evaluation surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: ACL Anthology verifies EMNLP 2024 main status and DOI; paper reports 1,430 examples from 487 premise sets. Model
+    scoring is answer-level gold-label evaluation, while FOL checking audits annotation consistency.
+category_ids:
+- benchmarks_evaluation_surfaces

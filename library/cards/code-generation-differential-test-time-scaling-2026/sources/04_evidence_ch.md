@@ -1,0 +1,1 @@
+论文在两个互不重叠的 LiveCodeBench 版本和多个开放权重或闭源模型上评估选择器。Pass@1 与成本对比只支持较窄的结论：相较论文所比较的方法，该流程能用更少的额外 LLM 推理改变最终选择。它们不能证明行为共识就是正确性 oracle，也不能证明 fuzz 输入是高质量可复用数据。论文链接官方仓库 https://github.com/SecurityLab-UCD/DiffCodeGen 并称存在复现实验材料，但 Card 元数据中的 code 和 data 仍为 null；候选、fuzz 输入、矩阵、拒绝记录和环境是否完整发布尚未确认。

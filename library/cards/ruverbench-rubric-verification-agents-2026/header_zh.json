@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以 2,458 条长报告或代码输出、rubric 和人工满足性标签检验 Agent 场景 Judge 的可靠性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Judge 元评测基准论文",
+  "best_for_ch": "审计深度研究或代码 Agent 的 rubric 评审可靠性的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yangda Peng、Yunjia Qi、Hao Peng、Haotian Xia、Guanzhong He、Xintong Shi、Richeng Xuan、Songyuanyi Lu、Yixian Liu、Zhichao Hu、Yuhong Liu、Lei Hou、Bin Xu、Juanzi Li",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:39:08Z"
+}

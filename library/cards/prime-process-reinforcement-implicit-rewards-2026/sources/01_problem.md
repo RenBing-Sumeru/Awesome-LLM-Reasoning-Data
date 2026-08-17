@@ -1,0 +1,3 @@
+When rewards depend only on the final answer, a mathematical or coding model receives feedback only after completing the entire reasoning chain. Correct early steps receive no timely credit, while an invalid process that accidentally reaches the right answer is still treated as positive, reducing online-RL sample efficiency and encouraging shortcut behavior.
+
+PRIME updates an implicit PRM online using terminal labels from current-policy rollouts, derives token-level rewards from language-model probability ratios, and combines them with outcome rewards to optimize the policy without human step annotation.

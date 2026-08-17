@@ -1,0 +1,3 @@
+Correctness only holds relative to the stated contract: RepoBench-R uses Accuracy@k for retrieval; RepoBench-C and RepoBench-P use Exact Match and Edit Similarity for code completion or pipeline evaluation. It has no environment execution, no patch validation, and no agent trajectory feedback. ICLR status is supported by the author GitHub README, while arXiv gives the paper record.
+
+The paper should not be read as unrestricted software-agent reliability. Public artifacts can become training data, Docker or dependency environments can drift, and evaluator implementations can change across releases.

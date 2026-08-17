@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "梳理反馈收集、奖励建模、奖励使用与评测边界的 2025 年奖励模型综述。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "奖励模型与偏好数据综述",
+  "best_for_ch": "需要厘清偏好对、标量奖励、奖励模型与裁判模型职责边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jialun Zhong 等",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Writing-RL: Advancing Long-form Writing via Adaptive Curriculum Reinforcement Learning",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.255/",
+    "code": "https://github.com/Tongyi-Zhiwen/Writing-RL"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-15T14:47:00Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把自适应课程直接用于长文生成的强化学习训练数据与奖励调度",
+    "updated_at": "2026-07-15T14:47:00Z"
+  }
+}

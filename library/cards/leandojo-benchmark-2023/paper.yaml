@@ -1,0 +1,113 @@
+id: leandojo-benchmark-2023
+title: 'LeanDojo: Theorem Proving with Retrieval-Augmented Language Models'
+year: 2023
+venue: NeurIPS 2023 / arXiv
+authors:
+- Kaiyu Yang
+- Aidan M. Swope
+- Alex Gu
+- Rahul Chalamala
+- Peiyang Song
+- Shixing Yu
+- Saad Godil
+- Ryan Prenger
+- Anima Anandkumar
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- formal-proof-agents
+- code-executable-benchmark
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2306.15626
+  project: https://leandojo.org/
+  arxiv: https://arxiv.org/abs/2306.15626
+  code: https://github.com/lean-dojo/LeanDojo
+  data: https://doi.org/10.5281/zenodo.8016385
+  huggingface: null
+  doi: https://doi.org/10.5281/zenodo.8016385
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors construct or curate Lean theorem proving with retrieval/tracing environment; exact artifact,
+    split, and license details require source review.
+  trace_author: Official benchmark authors or task curators; exact annotator/generator details require source review.
+  answer_format: benchmark records expose Lean theorem proving with retrieval/tracing environment, along with prompt/task
+    metadata and an evaluation target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: Lean theorem proving with retrieval/tracing environment
+  verifier_or_reward: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+  terminal_predicate: scoring is defined by the official benchmark evaluator, judge, answer key, environment predicate, or
+    task-specific metric.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors construct or curate Lean theorem proving with retrieval/tracing environment; exact artifact,
+    split, and license details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: code_executable_benchmark
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://leandojo.org/; https://arxiv.org/abs/2306.15626;
+    https://arxiv.org/pdf/2306.15626; https://github.com/lean-dojo/LeanDojo'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://leandojo.org/'
+  known_failure_modes:
+  - public release, hidden/public split, evaluator implementation, prompt/scaffold settings, and license can affect reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: high
+  notes: Official paper/project verify NeurIPS 2023 and the listed institutions; Saad Godil's work was conducted while at
+    NVIDIA. Artifact/license/split/scoring details remain review targets.
+inclusion_reason: Strong infrastructure lead for interactive Lean proof search.
+related: []
+tags:
+- benchmark
+- code_executable_benchmark
+- formal-proof-agents
+why_it_matters: Strong infrastructure lead for interactive Lean proof search.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: LeanDojo Benchmark exposes Lean theorem proving with retrieval/tracing environment as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official paper/project verify NeurIPS 2023 and the listed institutions; Saad Godil's work was conducted while at
+    NVIDIA.
+category_ids:
+- benchmarks_evaluation_surfaces

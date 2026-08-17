@@ -1,0 +1,1 @@
+Read the explicit-versus-latent distinction first. For each method, keep a row for quality, visible trace, hidden compute, memory, latency, and failure case. The practical lesson is that efficient reasoning is a multi-objective design problem: one favorable number cannot stand in for all the other columns.

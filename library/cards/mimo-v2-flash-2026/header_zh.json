@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MiMo-V2-Flash 描述了结合 teacher-KL、程序化检查、judge 与多模态反馈的 MOPD 和 agentic RL，但未发布数据、环境、教师和 reward 实现。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型技术报告与 agentic RL 数据披露账本",
+  "best_for_ch": "需要审计多教师后训练、agent 环境、MOPD 反馈契约和 reward-hacking 风险的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Xiaomi LLM-Core Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

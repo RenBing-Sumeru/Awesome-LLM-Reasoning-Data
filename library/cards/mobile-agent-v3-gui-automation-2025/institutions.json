@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Tongyi Lab, Alibaba Group"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T12:30:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2508.15144",
+    "https://arxiv.org/html/2508.15144",
+    "https://github.com/X-PLUG/MobileAgent"
+  ],
+  "verification_note": "arXiv and X-PLUG repository verify title, authors, Tongyi Lab institution, and code/model entry."
+}

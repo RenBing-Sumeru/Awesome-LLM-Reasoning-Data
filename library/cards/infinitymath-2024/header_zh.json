@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "InfinityMath 公开 101,380 条程序化数学示范，用数值无关模板、执行检查和低成本替换实现可扩展训练。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "开放程序化数学推理数据集与扩展研究",
+  "best_for_ch": "适合研究可执行数学监督、数值扰动稳健性和低成本模板扩展。",
+  "confidence_ch": "高",
+  "authors_ch": "Bo-Wen Zhang、Yan Yan、Lin Li、Guang Liu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T15:20:00Z"
+}

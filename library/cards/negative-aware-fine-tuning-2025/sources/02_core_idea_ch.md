@@ -1,0 +1,3 @@
+对问题 q，当前 generation policy 在概念上被拆成以 reward 1 为条件的 positive policy 和以 reward 0 为条件的 negative policy；二者按该题经验成功率加权后重构 old policy。NFT 用同一个可训练 positive model 和冻结的 old-policy likelihood 参数化 implicit negative policy，因此在负答案上做 maximum-likelihood training 就能更新 positive model，无需保存第二个网络。正答案使用常规 likelihood-ratio term，负答案使用由混合关系推导的 negative likelihood ratio。
+
+实际 token-level objective 保存旧 token 概率，从 16 个二元标签估计成功率，过滤没有同时出现正负 reward 的 group，用 straight-through maximum 截断 negative likelihood ratio 以避免无效对数，并提高困难 prompt 权重。默认 negative clip 为 1.0。在严格 on-policy 条件和指定 prompt weighting 下，论文证明 NFT 与 GRPO 梯度相同；进入 off-policy 后，两者 clipping 行为不同。相较 RFT，贡献是把错误生成保留为监督优化信号；相较 GRPO/DAPO，它提供 maximum-likelihood 解释，而不是新的 verifier。

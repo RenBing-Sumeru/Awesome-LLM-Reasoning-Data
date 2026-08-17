@@ -1,0 +1,172 @@
+id: grip-2025
+title: 'GRIP: A Graph-Based Reasoning Instruction Producer'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jiankang Wang
+- Jianjun Xu
+- Xiaorui Wang
+- Yuxin Wang
+- Mengting Xing
+- Shancheng Fang
+- Hongtao Xie
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6f1989abe9562c5cd306e070725fe0a3-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2412.08864
+  code: null
+  data: https://proceedings.neurips.cc/paper_files/paper/2025/file/6f1989abe9562c5cd306e070725fe0a3-Supplemental-Conference.zip
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/6f1989abe9562c5cd306e070725fe0a3-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=36TBVGwzAY
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.neurips.cc/paper_files/paper/27582-/bibtex
+data_object:
+  prompt_source: The 7,500 question-solution pairs in the MATH training set supply seed problems and up to five extracted
+    key concepts per problem. The seed question itself is omitted from the later problem-generation prompt.
+  trace_author: Qwen2.5-32B extracts concepts and generates new problems; Qwen2.5-Math-7B writes solutions for low- and medium-difficulty
+    problems, while Qwen2.5-Math-72B handles high-difficulty problems.
+  answer_format: The paper reports 2,123,345 generated mathematical question-solution pairs. The official NeurIPS supplemental
+    release contains 24,957 rows with exactly four string fields—KC1, KC2, question, and solution—rather than the full corpus
+    or internal construction records.
+  process_fields:
+  - KC1
+  - KC2
+  - question
+  - solution
+  environment_or_substrate: A Key Concepts Relationship Graph connects co-occurring concepts with weighted explicit edges
+    and derives one-hop, two-hop, hub-centered three-hop, and three- or four-concept community combinations for generation.
+    vLLM on eight NVIDIA A100 80GB GPUs is reported for synthesis and scoring.
+  verifier_or_reward: DeepSeek-R1-Distill-Qwen-7B, Qwen2.5-Math-Instruct-7B, and DeepSeek-Math-RL score each candidate. A
+    weighted problem-quality score must be at least 0.85, and all three judges must give the solution a binary score of 1.
+    The exact problem-score weights are undisclosed.
+  terminal_predicate: A pair is retained when its weighted problem score is at least 0.85 and every evaluation model accepts
+    the solution as mathematically correct and complete. This is model judgment, not executable or formal proof checking.
+recipe_metadata:
+  base_model: Qwen1.5-7B, Mistral-7B, LLaMA3-8B, LLaMA3.1-8B, Qwen2-1.5B, and Qwen2-7B are separately fine-tuned on GRIP-MATH
+    for evaluation.
+  teacher: Qwen2.5-32B extracts concepts and synthesizes problems; Qwen2.5-7B plus BGE-M3 filter and consolidate concepts;
+    Qwen2.5-Math-7B and Qwen2.5-Math-72B generate solutions; three open mathematical models judge candidates.
+  generator: Qwen2.5-32B generates problems from one-hop, two-hop, hub-centered three-hop, or fully connected community concept
+    combinations. An unnamed rating model assigns difficulty before solution generation is routed to a 7B or 72B Qwen2.5-Math
+    model.
+  filtering_rule: Remove vague, mathematically incorrect, or over-detailed concepts. BGE-M3 similarities of 0.90-1.00 are
+    grouped directly, 0.70-0.90 receive an LLM synonym check, and values below 0.70 remain distinct. Low-weight three-hop
+    relations are filtered. Candidate problems below 0.85 and any solution rejected by one judge are discarded.
+  sampling_protocol: The paper supplies the concept-extraction and two-concept problem-generation prompts, graph relationship
+    definitions, and selection thresholds. It does not disclose generation temperature, top-p, token caps, random seeds, raw
+    candidate counts, branch-specific rejection counts, exact judge weights, or the identity of the difficulty-rating model.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper reports eight NVIDIA A100 80GB GPUs for 36 hours with vLLM to construct and score 2,123,345
+    pairs, and estimates 0.000057 USD per retained pair under a quoted rental rate. Failed-run compute and labor are not included.
+  optimizer_or_scaffold: Downstream SFT uses LLaMAFactory for two epochs with learning rate 5e-6, global batch size 128, maximum
+    sequence length 4,096, cosine scheduling, 3% warm-up, DeepSpeed ZeRO Stage 3, and FlashAttention 2. The optimizer, seeds,
+    checkpoint revisions, and per-model hardware are not reported.
+audit:
+  source_mixture: All seeds come from the 7,500-example MATH training split. The reported full output is synthetic mathematical
+    question-solution data generated from concept combinations derived from those seeds; the official supplemental artifact
+    is a randomly selected approximately 25K subset.
+  split: The full 2,123,345-row corpus, train-validation split, graph, rejected pool, and record-level lineage manifest are
+    not released. The NeurIPS supplemental JSON contains 24,957 rows, all with KC1, KC2, question, and solution, but no relationship
+    type, difficulty, judge scores, source seed, or split label.
+  decontamination: Appendix E.2 compares GRIP-MATH with the official MATH test set after lowercasing and punctuation removal,
+    reporting 8-, 10-, 13-, and 15-gram overlap rates of 1.94%, 0.63%, 0.06%, and below 0.01%. It does not report equivalent
+    checks for the other mathematical, scientific, general, or code benchmarks.
+  license: unknown
+  lineage: MATH train problem and solution -> Qwen2.5-32B extraction of up to five concepts -> Qwen2.5-7B and BGE-M3 dual
+    filtering -> roughly 10K-concept KCRG -> graph-derived concept combinations -> Qwen2.5-32B problem generation -> unnamed
+    difficulty rating -> Qwen2.5-Math solution generation -> three-model problem scoring and unanimous solution voting ->
+    reported 2,123,345-pair GRIP-MATH corpus -> 24,957-row official supplemental sample.
+  known_failure_modes:
+  - Every concept is derived from MATH train, so graph recombination can enlarge combinations while retaining the seed corpus's
+    domain, language, and style biases.
+  - Graph distance and community membership are heuristics for compatibility; the paper's hop ablation shows quality scores
+    fall from 0.94 at one hop to 0.62 at three hops and 0.21 at four hops without hub constraints.
+  - Concept extraction, synonym clustering, and representative-label synthesis can merge distinct ideas or preserve duplicates;
+    exact intermediate graph artifacts are unavailable.
+  - The three judges are related mathematical language models rather than independent formal verifiers. Shared errors or preferences
+    can survive unanimous voting, and the problem-score weights are not published.
+  - The official subset omits relation type, difficulty, scores, model versions, source seed, rejection reason, and split.
+    A structural audit found 24,954 unique question strings among 24,957 rows, including three duplicate-question groups with
+    different concept labels.
+  - Reverse concept-adherence evaluation reuses Qwen2.5-32B-Instruct, the extraction model family used by the pipeline, and
+    does not disclose its sample size; it is not independent validation.
+  - The 500-item judge comparison reports accuracy against human labels but does not disclose annotator count, instructions,
+    agreement, sampling frame, or confidence intervals. The paper reports no statistical-significance analysis.
+  - Only MATH-test n-gram overlap is reported. Other evaluation sets, semantic leakage, model pretraining contamination, and
+    solution-level overlap remain unaudited.
+  - The official supplemental README attributes the partial release to company IP restrictions and promises later release,
+    but no verified official code, full corpus, model checkpoint, immutable construction manifest, or dataset license was
+    found as of 2026-07-21.
+  citation_status: verified
+  confidence: medium
+  notes: The NeurIPS proceedings page, 26-page final paper and appendices, official BibTeX, NeurIPS supplemental ZIP, arXiv
+    v4 record, and OpenReview identifier were checked. The supplemental JSON SHA-256 is 4e7a7919cc7785c0da15638076f62909fba8e3dcd2522d6cfcb4cc438c56199b
+    and contains 24,957 four-field rows with no empty fields.
+inclusion_reason: GRIP is a concrete graph-based construction recipe that turns a small mathematical seed set into concept-conditioned
+  problem-solution data, exposes model-judge thresholds, and supplies an official audit subset even though the full release
+  and construction machinery remain unavailable.
+related: []
+tags:
+- grip
+- grip-math
+- synthetic-data
+- concept-graph
+- mathematical-reasoning
+- multi-model-filtering
+- instruction-tuning
+- partial-release
+status: partial
+one_line_summary: GRIP reports expanding 7.5K MATH seeds into 2,123,345 graph-conditioned question-solution pairs and officially
+  releases 24,957 four-field rows, while code, the full corpus, judge weights, lineage, and licenses remain unavailable.
+why_it_matters: The work makes graph relationship type, difficulty-routed generation, and separate question/solution gates
+  explicit construction variables; its partial release also exposes the difference between a documented recipe, an inspectable
+  sample, and an audit-ready corpus.
+needs:
+- 'needs_code: release graph construction, generation, difficulty routing, judge weighting, filtering, training, and evaluation
+  code'
+- 'needs_data: release the complete 2,123,345-row corpus, graph, raw candidates, rejected items, and immutable revision'
+- 'needs_lineage: attach seed ID, relation type, graph path, difficulty, generator revision, judge scores, and rejection state
+  to every row'
+- 'needs_metadata: disclose raw and retained counts per graph branch, exact judge weights, rating-model identity, decoding
+  settings, seeds, and optimizer'
+- 'needs_license: state licenses and redistribution terms for the MATH-derived concepts, supplemental sample, full corpus,
+  code, and checkpoints'
+- 'needs_decontamination: extend overlap analysis beyond MATH test to every evaluation benchmark and semantic/solution-level
+  leakage'
+- 'needs_verification: independently audit samples with symbolic checks and a documented human protocol, including false-positive
+  rates'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Citation, venue, final paper, appendices, BibTeX, affiliations, and the official 24,957-row supplemental sample are
+    verified. The complete corpus, code, models, license, graph, rejected pool, and record-level provenance are not released
+    through a verified official source.
+category_ids:
+- data_construction_open_release_recipes

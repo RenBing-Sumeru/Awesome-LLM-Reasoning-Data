@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该研究在六个医学/临床基准的 6,803 个问题上逐步标注 deep-research 轨迹中的基准 metadata、问题上下文与显式答案泄漏，表明 web observation 会抬高准确率并加快预测收敛。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Deep-research 搜索轨迹、污染检测与评测审计",
+  "best_for_ch": "研究联网智能体证据 provenance、搜索轨迹、benchmark contamination、verifier 与可重放评测的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Yongjie Wang, Xinyue Zhang, Kunhong Yao, Zhiwei Zeng, Kaisong Song, Jun Lin, Zhiqi Shen",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

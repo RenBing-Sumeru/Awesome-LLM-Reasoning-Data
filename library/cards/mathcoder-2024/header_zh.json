@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MathCoder 将数学题转成开放轨迹，让自然语言推理、可执行 Python、执行反馈和后续推理交替出现，并用这一契约训练模型。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "可执行数学推理数据构造研究",
+  "best_for_ch": "适合构建工具交错数学 SFT 数据，或审计代码执行、自一致性与轨迹来源的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ke Wang, Houxing Ren, Aojun Zhou, Zimu Lu, Sichun Luo, Weikang Shi, Renrui Zhang, Linqi Song, Mingjie Zhan, Hongsheng Li",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

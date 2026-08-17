@@ -1,0 +1,1 @@
+当前公开集含 11,683 个问题，train/valid/test 分别约 11.4K/114/162；每题平均 40.19 个测试，并在约 1,100 万份正确或错误方案上执行验证。字段包括 name、description、corner_cases、commands、C++ testlib generator、checker、约束摘要和逐轮 results；Parquet 总体积约 325GB，Apache-2.0。核心贡献不是新的代码题，而是把测试生成过程及其误判反馈完整数据化，使 verifier 本身可训练、审计和复现。

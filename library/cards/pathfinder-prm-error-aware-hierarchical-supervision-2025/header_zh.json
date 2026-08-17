@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "提出 PathFinder-PRM：先区分数学错误与一致性错误，再估计步骤正确性，并用三维标签构建 40 万条分层过程监督数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "过程/轨迹监督数据与过程奖励研究",
+  "best_for_ch": "构建、审计或复用步骤级推理反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Pala et al.",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-13T06:11:16Z"
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CHEEMS 构建人工监督的中文奖励模型基准与偏好数据，揭示并改善中文偏好建模缺口。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "中文奖励模型数据集与评测论文",
+  "best_for_ch": "需要构建、评测或审计中文奖励模型的研究者。",
+  "confidence_ch": "高：已全文核验官方论文与公开代码。",
+  "authors_ch": "Xueru Wen, Jie Lou, Zichao Li, Yaojie Lu, Xing Yu, Yuqiu Ji, Guohai Xu, Hongyu Lin, Ben He, Xianpei Han, Le Sun, Debing Zhang",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-24T12:00:00Z"
+}

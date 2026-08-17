@@ -1,0 +1,5 @@
+- Distinguish raw reasoning states, clustered hyper-nodes, and selected trajectories; they are different data objects.
+- Audit state-pair labels and false merges, especially changes to numbers, operators, or assumptions that remain textually similar.
+- Keep Monte Carlo targets, adjusted TD(λ) targets, individual verifier scores, and ensemble scores as separate fields.
+- Compare search methods under matched expansion, token, verifier, embedding, and wall-clock budgets.
+- Treat the repository's toy JSONL and benchmark gains as implementation/system evidence, not proof of a complete high-quality rollout release.

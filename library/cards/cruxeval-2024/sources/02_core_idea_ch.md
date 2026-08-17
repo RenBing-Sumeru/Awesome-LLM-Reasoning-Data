@@ -1,0 +1,1 @@
+一句话贡献：CRUXEval 用 800 个短 Python 函数和对应输入输出对，构造 input prediction 与 output prediction 两种代码执行推理任务。核心机制是生成或筛选紧凑函数，用执行得到的参考 I/O 过滤，再让模型补全 I/O 关系中缺失的一侧。数据对象是单函数执行谜题。反馈契约是答案级的执行一致性，而不是主观 judge 评分。最近对比对象是 HumanEval/MBPP 这类代码生成题和 APPS 式编程题；CRUXEval 把评测面收窄到理解和执行。方向标签是可执行代码推理 benchmark。

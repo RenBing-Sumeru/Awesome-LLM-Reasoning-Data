@@ -1,0 +1,3 @@
+- Identify the trace fields: discussion, collaboration_trajectory, ceo_depth.
+- Check the feedback boundary: Formal M500 verifier/reward not established..
+- Treat missing logs, manifests, and licences as unresolved rather than released.

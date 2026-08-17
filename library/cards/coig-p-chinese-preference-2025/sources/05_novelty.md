@@ -1,0 +1,3 @@
+The closest contrast is Chinese preference data collected at smaller scale, narrower coverage, or with direct human annotation as the sole route to validation. COIG-P changes the construction boundary by combining multi-LLM generation, judging, and quality control without human intervention to create 1M Chinese pairs from 92k queries. Its quality signal is not simply volume: it makes synthetic Chinese comparison supervision and its model-based provenance explicit.
+
+The work does not make synthetic labels human judgments, and it does not remove the need for human evaluation. Its contribution is a released pipeline and data object for Chinese preference learning, plus the separate CRBench evaluation described by the paper; those two artifacts must not be conflated.

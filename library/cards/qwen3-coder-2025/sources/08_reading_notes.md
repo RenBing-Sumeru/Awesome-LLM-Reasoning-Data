@@ -1,0 +1,5 @@
+- Keep 7.5T tokens and the 70-percent-code share separate from unreleased task and trajectory counts.
+- Treat the 20,000 parallel environments as a reported infrastructure scale, not a released agent benchmark.
+- Distinguish execution-driven Code RL from multi-turn Agent RL and retain the unknown reward and verifier details.
+- Do not infer source rights, task manifests, test validity, splits, or contamination controls from released weights and code.
+- Keep the separate Qwen3 Technical Report at arXiv:2505.09388 out of this Coder-specific evidence record.

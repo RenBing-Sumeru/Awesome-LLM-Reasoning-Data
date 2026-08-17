@@ -1,0 +1,7 @@
+首要论文记录为 arXiv:2511.04307v2，修订日期是 2025 年 11 月 10 日。OpenReview 将其标为 ICLR 2026 submission；本卡未核验到 acceptance decision。Card 还核验了官方 GitHub 仓库 commit `a9f9d2e6f125c8cbc176b46a74aeef76ed16f0f6`，以及 2026 年 7 月 20 日检查的官方 Hugging Face 数据集。
+
+GUI-360° 针对 computer-using agent 的一个具体数据缺口：把来源异构的 Office 请求转化为真实执行的 Windows 多模态 episode，并保留 SFT 与 evaluation 所需的 state、reasoning、action、environment response 和 outcome 边界。其范围限定为 Word、Excel、PowerPoint 生产力任务；cross-application、version-management 以及 privacy/security/safety-risk task 会被过滤，因此它不能证明通用 desktop deployment 的安全性或有效性。
+
+规范的原始对象是由 JSON step record 组成的 Office episode。同一 episode 的 step 共享 `execution_id`、`app_domain`、`request` 与 `template`；每一步记录 `step_id/total_steps`、EvaAgent 的 evaluation reason/evidence/sub-score/completeness、同步 screenshot、Windows UI Automation state、application/control metadata、`subtask`、`observation`、`thought`，以及已经执行的 GUI 或 MCP-backed Office API action，包括 function、argument、spatial target 和 `CONTINUE`、`FINISH` 或 `OVERALL_FINISH` status。因此，该对象不只是 screenshot-action pair；但已发布 artifact 尚不足以在固定 VM 中 replay。
+
+论文报告的 release 包含 17,189 条成功轨迹与 62,170 条独立发布的失败轨迹，合计 79,359 条 trajectory、1,225,177 个 step；Hugging Face 显示体量约 574 GB。它因此是 `environment_agent_trajectory_data` 的核心材料，而 query-to-template、collection、filtering、sanitization、split 与 packaging 管线也对应 `data_construction_open_release_recipes`。论文、appendix、repository、evaluator/converter code 与 dataset tree 支撑 L4 正文深度，但规范 curation level 仍保持 `L3_summary_ready`，replay、verifier、split、rights 和 privacy 未知项均明确保留。

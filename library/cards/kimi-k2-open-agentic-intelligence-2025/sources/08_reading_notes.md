@@ -1,0 +1,5 @@
+- Treat the 3,000+ real MCP and 20,000+ synthetic-tool counts as aggregate disclosures, not released tool manifests or license inventories.
+- Separate simulator feedback, real sandbox execution, and LLM rubric judgment; they have different verification and transfer risks.
+- Record the named RLVR and self-critique interfaces, but do not infer critic calibration, prompt text, reward weights, or resistance to reward hacking.
+- Check GitHub PR/issue, unit-test, and pre-training-derived materials for provenance, privacy, license, and contamination evidence before reuse claims.
+- Keep optimizer, training-scale, token-budget, and benchmark statements outside this Track 12 disclosure assessment.

@@ -1,0 +1,3 @@
+Contaminated benchmarks can make a model reproduce memorized answers under greedy decoding, so the reported score no longer measures generalization. Rebuilding a clean benchmark is difficult, while sampling-based mitigation needs many stochastic samples and becomes unreliable when memorized outputs dominate.
+
+The paper proposes an evaluation-time contamination-mitigation framework rather than a new benchmark or training dataset. It estimates contamination from length-normalized entropy (LNE), then adaptively suppresses high-probability tokens during decoding to elicit an alternative response before scoring it. The output is a contamination-adjusted performance estimate for each prompt-model pair.

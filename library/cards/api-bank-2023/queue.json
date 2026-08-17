@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-14T08:09:24Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "ref600+ 早期少数真正执行 API 并覆盖检索与多步规划的工具基准，有历史意义，但是数据集较小",
+    "updated_at": "2026-07-14T08:09:24Z"
+  }
+}

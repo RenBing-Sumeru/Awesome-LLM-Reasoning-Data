@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "MAmmoTH-VL 用开源模型把 153 个公开多模态来源改写并过滤为 1200 万条带 rationale 的 instruction-response 记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "大规模多模态 rationale 数据集与构造配方",
+  "best_for_ch": "适合用开放教师构建或审计大规模多模态推理 SFT 混合数据的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jarvis Guo, Tuney Zheng, Yuelin Bai, Bo Li, Yubo Wang, King Zhu, Yizhi Li, Graham Neubig, Wenhu Chen, Xiang Yue",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T09:20:00Z"
+}

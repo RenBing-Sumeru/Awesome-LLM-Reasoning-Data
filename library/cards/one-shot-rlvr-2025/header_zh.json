@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "论文在报告的 RLVR 设置下表明：将一个经选择并重复到批大小的数学题-答案对与最终答案匹配的二值奖励结合，可显著提升多种推理模型；该结论仍受样本、模型和验证实现边界约束。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "单样本数学 RLVR 数据选择、训练配方与开源工件",
+  "best_for_ch": "关注 RLVR 数据效率、答案级可验证奖励、提示词选择、探索正则化与数据谱系审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Yiping Wang、Qing Yang、Zhiyuan Zeng、Liliang Ren、Liyuan Liu、Baolin Peng、Hao Cheng、Xuehai He、Kuan Wang、Jianfeng Gao、Weizhu Chen、Shuohang Wang、Simon Shaolei Du、Yelong Shen",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger",
+    "scaling_rlvr_test_time_compute"
+  ]
+}

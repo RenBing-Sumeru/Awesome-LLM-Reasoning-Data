@@ -1,0 +1,109 @@
+id: critic-cot-chain-of-thought-critic-2025
+title: 'Critic-CoT: Boosting the Reasoning Abilities of Large Language Model via Chain-of-Thought Critic'
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Xin Zheng
+- Jie Lou
+- Boxi Cao
+- Xueru Wen
+- Yuqiu Ji
+- Hongyu Lin
+- Yaojie Lu
+- Xianpei Han
+- Debing Zhang
+- Le Sun
+source_role:
+- data_release
+- construction_recipe
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- self-critique
+- weak-supervision
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.89/
+  arxiv: https://arxiv.org/abs/2408.16326
+  code: null
+  data: https://huggingface.co/datasets/ExpectoZX/critic_cot
+  project: null
+  huggingface: https://huggingface.co/datasets/ExpectoZX/critic_cot
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.89
+  venue: https://aclanthology.org/2025.findings-acl.89/
+  openreview: https://openreview.net/forum?id=JEehcb48Vp
+  acl: https://aclanthology.org/2025.findings-acl.89/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GSM8K and MATH-style mathematical problems with candidate solutions.
+  trace_author: Automatic distant-supervision construction and critic/refinement models.
+  answer_format: Step-wise critique or revised solution paired with a candidate reasoning chain.
+  process_fields:
+  - problem
+  - candidate_solution
+  - stepwise_critique
+  - revision
+  - label
+  environment_or_substrate: Mathematical chain-of-thought reasoning.
+  verifier_or_reward: Distant-supervision labels and step-wise critic reasoning.
+  terminal_predicate: The critic identifies invalid reasoning and supports filtering or refinement.
+recipe_metadata:
+  base_model: Llama-family and other experimental configurations reported by the paper.
+  teacher: Distant supervision; the paper reports automatic construction without human annotations.
+  generator: Step-wise Chain-of-Thought critic and refinement procedure.
+  filtering_rule: Use the critic to filter invalid solutions or guide iterative refinement.
+  sampling_protocol: Pin the official dataset revision and paper settings.
+  inference_budget: The critic chain length and refinement iterations affect use cost.
+  optimizer_or_scaffold: Two-stage critic training and iterative solution refinement.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematical problems, candidate solution chains, automatic weak-supervision critique signals, and revisions.
+  split: Use the official dataset revision selected for training.
+  decontamination: Not fully specified on the public dataset page.
+  license: Confirm from the current official dataset card before redistribution.
+  lineage: Findings of ACL 2025 paper, ACL affiliation block, ICLR submission record, and ExpectoZX dataset release.
+  known_failure_modes:
+  - Weak supervision can misidentify the first error or reward superficial critique style.
+  - Evaluation is centered on the reported mathematical reasoning distributions.
+  citation_status: verified
+  confidence: high
+  notes: Verified the final Findings of ACL 2025 paper and affiliation block, the earlier OpenReview submission, and the official
+    candidate dataset release.
+inclusion_reason: The release exposes reusable preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: Critic-CoT releases weakly supervised step-wise critiques and revisions so models can reject or repair flawed
+  mathematical reasoning chains.
+why_it_matters: It treats critique as a structured feedback process that can be used both to select solutions and to refine
+  them.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the final Findings of ACL 2025 paper and affiliation block, the earlier OpenReview submission, and the official
+    candidate dataset release.
+category_ids:
+- preference_reward_feedback_data

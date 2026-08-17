@@ -1,0 +1,13 @@
+Source mixture and authorization remain non-auditable. The five classes have no proportions, sample or token counts, named datasets, versions, language/domain distributions, synthetic share, opt-in volume, contractor allocation, or filtering yields. Following robots.txt and avoiding access controls are crawler-policy facts, not item-level copyright, license, consent, or jurisdictional authorization.
+
+The RLHF/RLAIF reward contract is absent. The report does not identify the AI-feedback model, reward model, constitution, preference schema, aggregation, objective weights, normalization, calibration, rejection rule, RL algorithm, or human-versus-AI mixture. “Preference selection” alone does not establish pairwise layout, adjudication, or rater reliability.
+
+Deduplication is named but not auditable. No dedup key, algorithm, threshold, revision pin, benchmark exclusion list, near-duplicate analysis, false-negative audit, or retained/rejected ledger is provided. This is especially important because reward-hack-prone coding tasks are explicitly selected from the training distribution.
+
+There is no global train/development/evaluation split. Held-out fuzzed tests are held out only within one reward-hacking suite. Their status cannot be generalized to policy prompts, prompt injection, SHADE-Arena, dangerous-capability evaluations, or the base and post-training corpora.
+
+Training and evaluation interfaces are partly entangled. Safety evaluation ran throughout training and could trigger intervention, but this does not prove that its rubrics, classifiers, VM/MCP tasks, SHADE monitor, or hidden tests were optimization rewards. Prompt-injection results combine checkpoint behavior with model-level instructions, FileRead changes, and real-time classifiers; mitigation scores cannot be assigned to model training alone.
+
+Extended-thinking boundaries are incomplete. Current faithfulness metrics are acknowledged as unreliable, and the absence of an unambiguous failure is not proof of faithful reasoning. Rare long user-visible thoughts may be summarized by a second Haiku 4.5 instance at inference, so the displayed trace can differ from the generated trace. That second instance is not evidence of a training teacher. Product benchmark thinking budgets are inference settings, not training budgets.
+
+Finally, neither prior-model reasoning traces nor recursive audit artifacts are released. Teacher checkpoints, trace generation, editing and selection are unknown; raw RL transcripts, summaries, Claude Sonnet 4 judge prompts, scores, counts, and checkpoint IDs are unavailable. Coarse stage lineage cannot connect an individual source item, preference, reward, update, and released checkpoint.

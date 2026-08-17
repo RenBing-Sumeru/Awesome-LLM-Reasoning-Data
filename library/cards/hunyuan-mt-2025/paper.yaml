@@ -1,0 +1,235 @@
+id: hunyuan-mt-2025
+title: Hunyuan-MT Technical Report
+year: 2025
+venue: arXiv preprint
+authors:
+- Mao Zheng
+- Zheng Li
+- Bingxin Qu
+- Mingyang Song
+- Yang Du
+- Mingrui Sun
+- Di Wang
+source_role:
+- model_report
+- verifier_reward
+- process_supervision
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+- process_reward
+domains:
+- machine_translation
+- multilingual_translation
+- low_resource_languages
+- minority_languages
+- dialects
+- terminology
+- chinese_translation
+training_use:
+- sft
+- distillation
+- process_supervision
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2509.05209
+  arxiv: https://arxiv.org/abs/2509.05209
+  code: https://github.com/Tencent-Hunyuan/Hunyuan-MT
+  data: null
+  project: https://hunyuan.tencent.com/
+  huggingface: https://huggingface.co/collections/tencent/hunyuan-mt-68b42f76d473f82798882597
+  doi: https://doi.org/10.48550/arXiv.2509.05209
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The lifecycle starts from Chinese/English and a reported 1.3T-token component covering 112 other languages
+    and dialects. MT continued pretraining uses mC4/OSCAR monolingual text and public parallel corpora such as OPUS and ParaCrawl.
+    Stage-one SFT draws about 3M pairs from FLORES-200 dev, past WMT test sets, human Mandarin-minority data, DeepSeek-V3-0324
+    synthetic translations, and a reported 20% instruction component; stage two retains about 268K higher-fidelity pairs.
+  trace_author: Web and parallel-corpus authors supply pretraining text. Human annotators supply minority-language pairs and
+    verification. DeepSeek-V3-0324 generates synthetic translations and serves as a GEMBA-style evaluator. Hunyuan-MT-7B generates
+    Chimera candidates, and Chimera fuses them. A separate study trains model-generated chain-of-thought with process and
+    final-answer rewards.
+  answer_format: Most records map a source segment and target-language instruction to a translation. RL records add reference-conditioned
+    learned scores, terminology overlap, and repetition penalties. Chimera records contain one source, multiple candidate
+    translations, and a refined output; the public prompt has exactly six numbered candidate slots.
+  process_fields:
+  - source_dataset_or_corpus
+  - source_language
+  - target_language
+  - source_segment
+  - reference_translation
+  - synthetic_teacher
+  - candidate_translation
+  - candidate_index
+  - fused_translation
+  - quality_model_scores
+  - provenance_weighted_score
+  - disciplinary_tag
+  - industry_tag
+  - content_theme_tag
+  - fasttext_language_id
+  - minlsh_deduplication
+  - kenlm_perplexity
+  - cometkiwi_score
+  - gemba_score
+  - xcomet_xxl_reward
+  - terminology_alignment_overlap
+  - repetition_penalty
+  - human_verification
+  - chain_of_thought
+  - process_reward
+  - final_answer_reward
+  environment_or_substrate: The substrate is multilingual text translation, not an interactive environment. It combines public
+    and human corpora, proprietary quality scoring, learned translation metrics, a DeepSeek-V3-0324 judge, word alignment,
+    and GRPO. Public code supports inference and generic finetuning but not the paper-specific acquisition, filtering, reward,
+    rollout, or training system.
+  verifier_or_reward: Stage-one SFT is filtered by CometKiwi and DeepSeek-V3-0324 under a GEMBA-style rubric. Translation
+    GRPO combines XCOMET-XXL, DeepSeek GEMBA scoring, TAT-R1-inspired terminology overlap, and repetition penalty. Chimera
+    GRPO explicitly lists XCOMET-XXL, DeepSeek scoring, and repetition penalty. Exact prompts, weights, normalization, thresholds,
+    and logs are unknown.
+  terminal_predicate: No deterministic success predicate is disclosed. Outputs receive learned-judge and heuristic scalar
+    feedback against references; human evaluation later uses expert 0-4 ratings. Acceptance thresholds, ties, clipping, invalid-output
+    treatment, and early stopping are unknown.
+recipe_metadata:
+  base_model: Hunyuan-7B-Base is produced by general multilingual pretraining; Hunyuan-7B-Base* denotes MT-oriented continued
+    pretraining. Two-stage SFT and translation GRPO produce Hunyuan-MT-7B, and weak-to-strong GRPO produces Hunyuan-MT-Chimera-7B.
+    Official surfaces brand them 7B while Hugging Face metadata labels the main checkpoints 8B.
+  teacher: DeepSeek-V3-0324 generates some stage-one SFT data and scores SFT/RL outputs via GEMBA-adapted prompts. XCOMET-XXL
+    and CometKiwi are learned evaluators; terminology feedback uses word alignment. Hunyuan-MT-7B generates Chimera candidates.
+    Exact revisions, prompts, and decoding are unknown.
+  generator: Proprietary scoring plus language-ID, deduplication, perplexity, and QE pipelines assemble corpora. DeepSeek-V3-0324
+    generates synthetic pairs. Hunyuan-MT-7B produces translations under varied undisclosed settings, and Chimera fuses six
+    candidate slots into one answer.
+  filtering_rule: General pretraining uses provenance-weighted 0/1/2 Knowledge Value, Authenticity, and Writing Style scores
+    plus discipline, 24-way industry, and 24-way theme controls. MT data use fastText, minLSH, KenLM, CometKiwi, and GEMBA.
+    Stage two applies many-shot vetting and human review for inconsistent repeated scores. Thresholds, yields, and exclusions
+    are unknown.
+  sampling_protocol: A RegMix-inspired small-model study fits sampling ratio to loss and selects the predicted minimum MT
+    mixture; continued pretraining adds 20% original-data replay. Stage-one SFT adds a reported 20% instruction component,
+    but both denominators are unclear. The Chimera prompt accepts six candidates; generation policies and RL record counts
+    are unknown.
+  rollout_count: Translation GRPO and weak-to-strong GRPO disclose no rollout count, group size, optimizer-step count, attempted/retained
+    candidate totals, or prompt count. The public Chimera interface contains six candidates per fusion request.
+  temperature: The model card recommends temperature 0.7, top-k 20, top-p 0.6, and repetition penalty 1.05 for ordinary inference.
+    These are not confirmed as Chimera training or candidate-generation settings, which remain unknown.
+  inference_budget: The documented Chimera path requires six base translations and one fusion generation. Token caps, context,
+    latency, batching, retries, memory, and total test-time compute are unknown.
+  optimizer_or_scaffold: Continued pretraining warms to the original peak learning rate and decays to its minimum. Translation
+    alignment and weak-to-strong fusion use GRPO. Optimizer, learning rates, batches/groups, KL, loss equations, steps, hardware,
+    compute, seeds, and reward aggregation are undisclosed.
+audit:
+  source_mixture: Disclosed components include a reported 1.3T tokens across 112 non-Chinese/non-English languages and dialects
+    in general pretraining; an unquantified mC4/OSCAR plus OPUS/ParaCrawl-style continued-pretraining mixture with 20% replay;
+    about 3M stage-one SFT pairs plus a reported 20% instruction component; and about 268K stage-two pairs. RL/Chimera sizes
+    and per-language/source counts are unknown.
+  split: No immutable split manifest exists. SFT explicitly includes FLORES-200 dev and past WMT test sets, while evaluation
+    uses FLORES-derived pairs and WMT24pp/WMT25 development material. Exact WMT years, rows, pair membership, minority-language
+    split, Challenge Testset split, and model-selection protocol are unknown.
+  decontamination: minLSH deduplicates MT monolingual documents, but no benchmark decontamination ledger covers exact, near,
+    semantic, translated-copy, source-target, public-test, or base-model exposure. Because public benchmark dev/test material
+    enters SFT and related surfaces enter evaluation, contamination and benchmark-guided selection cannot be excluded.
+  license: 'Code and weights use the restrictive Tencent Hunyuan Community License: it excludes the EU, UK, and South Korea,
+    requires a separate license above 100M monthly active users, and restricts using the model or outputs to improve non-Hunyuan
+    AI models. No record-level rights ledger covers public corpora, teacher outputs, human/minority-language or dialect data,
+    consent, compensation, privacy, attribution, cultural governance, or takedown.'
+  lineage: The stage graph is described, but joins among source revision/row, filter decision, teacher prompt/output, human
+    verification, reward components, rollout, optimizer batch, checkpoint hash, and evaluation output are not released.
+  known_failure_modes:
+  - Section 2.1 assigns the 1.3T low-resource component to general pretraining, while the Table 6 discussion later credits
+    MT-oriented pretraining with incorporating it.
+  - The report/README say 33 languages, Table 2 and the base model card enumerate 38 language or dialect/script entries, and
+    the Chimera header says 36.
+  - Models are branded 7B while official Hugging Face metadata labels both main checkpoints 8B.
+  - FLORES-200 dev and past WMT tests enter SFT while FLORES-derived and WMT development surfaces are reused for evaluation.
+  - DeepSeek-V3-0324 is both synthetic-data generator and GEMBA evaluator, creating correlated teacher/judge errors.
+  - Learned metrics dominate reward while prompts, weights, normalization, checkpoints, and reward-hacking audits remain closed.
+  - Terminology alignment and repetition detection are unreleased and therefore not independently reproducible.
+  - The six Chimera candidate settings, selection policy, rollout budget, and fusion records are unknown.
+  - Minority-language and dialect records lack provenance, licenses, consent, compensation, privacy review, attribution, community
+    governance, and takedown.
+  - WMT automatic rank claims do not imply uniform first-place human evaluation.
+  - The Section 5.2 process-plus-final CoT reward experiment lacks numerical tables, reward definitions, configuration, data,
+    and released-checkpoint linkage.
+  - Generic finetuning examples do not reproduce the proprietary data, RegMix, GRPO, reward, or lineage pipeline.
+  citation_status: verified
+  confidence: high
+  notes: Verified from arXiv v2, official Tencent repository/license, official base/MT/Chimera model surfaces, and official
+    WMT25 findings. No training-data release, reward implementation, immutable split, or paper-run output release is claimed.
+inclusion_reason: A rare end-to-end translation recipe from a reported 1.3T multilingual foundation and RegMix-style continued
+  pretraining through a 3M-to-268K SFT funnel, judge-based GRPO, CoT reward study, and six-candidate fusion, with material
+  contamination, rights, metric-coupling, and release gaps.
+related:
+- hunyuan-a13b-technical-report-2025
+tags:
+- hunyuan-mt
+- tencent-hunyuan
+- machine-translation
+- multilingual
+- low-resource-languages
+- minority-languages
+- synthetic-translation
+- deepseek-v3-teacher
+- gemba
+- xcomet
+- cometkiwi
+- terminology-reward
+- grpo
+- weak-to-strong
+- chimera
+- six-candidate-fusion
+- test-time-scaling
+- process-reward
+- benchmark-contamination-risk
+- restrictive-open-weight-license
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Hunyuan-MT maps a reported 1.3T multilingual foundation through RegMix-style CPT, a 3M-to-268K SFT funnel,
+  judge-based GRPO, and six-candidate Chimera fusion, but releases no training manifests, rewards, rollouts, splits, or paper-run
+  lineage.
+why_it_matters: It exposes a concrete translation lifecycle while making public-test reuse, correlated teacher/judge feedback,
+  minority-language rights, test-time budgets, and restrictive licensing auditable.
+card: null
+needs:
+- 'needs_data: source manifests, per-language counts, 3M/268K SFT rows, human/synthetic labels, accepts/rejects, RL/Chimera
+  records, and evaluation outputs'
+- 'needs_code: scoring, taxonomy, fastText/minLSH/KenLM/QE configs, RegMix trials, SFT selection, GRPO rewards, candidate
+  generation, and paper-run commands'
+- 'needs_verifier: exact XCOMET/CometKiwi/DeepSeek revisions, GEMBA prompts, reward weights/normalization/clipping, aligner,
+  repetition detector, and reward-hacking audit'
+- 'needs_split: immutable FLORES/WMT/minority/Challenge manifests with exact years, rows, pair membership, and overlap exclusions'
+- 'needs_audit: benchmark contamination, teacher/judge correlation, language-ID/QE errors, reward hacking, minority-language
+  quality, and automatic-versus-human WMT ranks'
+- 'needs_license: record-level licenses, attribution, privacy, community consent/compensation, cultural governance, teacher-output
+  rights, and takedown'
+- 'needs_metadata_consistency: reconcile 1.3T stage attribution, 33/36/38 language counts, 7B/8B labels, 20% denominators,
+  candidate/GRPO budgets, and checkpoint hashes'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official paper, repository, restrictive license, model releases, and official WMT cross-check are confirmed. Training
+    data, reward implementation, splits, rollouts, and evaluation outputs remain unverified.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WeaveBench 将 114 个需交错使用 GUI 与 CLI/代码的 Ubuntu 桌面任务封装为长时程评测，并用会主动取证的轨迹感知 judge 对完整 episode、交付物与捷径行为给出标量分数。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "长时程混合接口计算机使用基准",
+  "best_for_ch": "研究环境与智能体轨迹数据、computer-use agent 评测、轨迹感知 judge 和版本审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Wanli Li；Bowen Zhou；Yunyao Yu；Zhou Xu；Yifan Yang；Dongsheng Li；Caihua Shan",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

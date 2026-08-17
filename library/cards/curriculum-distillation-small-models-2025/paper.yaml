@@ -1,0 +1,149 @@
+id: curriculum-distillation-small-models-2025
+title: Teach Small Models to Reason by Curriculum Distillation
+year: 2025
+venue: EMNLP
+authors:
+- Wangyi Jiang
+- Yaojie Lu
+- Hongyu Lin
+- Xianpei Han
+- Le Sun
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.376/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.376
+  venue: https://aclanthology.org/2025.emnlp-main.376/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.376/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.376.bib
+data_object:
+  prompt_source: All 7,500 problems in the MATH training set, carrying the dataset's five difficulty levels.
+  trace_author: Qwen2.5-32B-Instruct supplies Instruct solutions; DeepSeek-R1-Distill-Qwen-32B supplies Think, NoRethink,
+    and NoThink solutions, with the condensed final solution from Think retained as an additional comparison target.
+  answer_format: Each retained problem has a Math-Verify-accepted response for Instruct, Think, NoRethink, and NoThink, plus
+    the Think response's condensed final solution. The paper does not release a serialized row schema.
+  process_fields:
+  - MATH problem
+  - MATH difficulty level
+  - teacher identity
+  - reasoning paradigm
+  - sampling attempt
+  - generated response or reasoning trace
+  - final answer
+  - Math-Verify outcome
+  - curriculum stage assignment
+  environment_or_substrate: Offline teacher generation over MATH, final-answer checking with Math-Verify, an intersection
+    filter across four teacher/mode conditions, difficulty-conditioned two-stage mixture assembly, and offline student SFT.
+  verifier_or_reward: Math-Verify checks extracted final-answer correctness. It neither labels nor validates individual reasoning
+    steps, and no learned reward or online environment supplies student-training feedback.
+  terminal_predicate: A MATH problem is retained when at least one of up to four samples is Math-Verify-correct in each of
+    the Instruct, Think, NoRethink, and NoThink conditions; 6,445 problems satisfy this intersection.
+recipe_metadata:
+  base_model: Qwen2.5-3B and Qwen2.5-3B-Instruct students; the probing study also uses 7B, 14B, and 32B Qwen-derived LLM/LRM
+    pairs.
+  teacher: Qwen2.5-32B-Instruct and DeepSeek-R1-Distill-Qwen-32B.
+  generator: Qwen2.5-32B-Instruct runs in standard Instruct mode; DeepSeek-R1-Distill-Qwen-32B runs in Think, NoRethink, and
+    NoThink modes. Think's final condensed solution is also extracted for comparison.
+  filtering_rule: Use rejection sampling with Math-Verify and retain only prompts for which every one of the four teacher/mode
+    conditions yields a correct solution within the sampling budget.
+  sampling_protocol: Temperature 0.6, top-p 0.95, maximum sequence length 16,384, and up to four attempts per problem for
+    teacher-data construction. Seeds, full prompts, and model revisions are not disclosed.
+  rollout_count: Up to four samples per problem per teacher/mode condition.
+  temperature: 0.6
+  inference_budget: Maximum sequence length 16,384 tokens. Evaluation uses 32 samples per problem for AIME 2024, AIME 2025,
+    and AMC 2023, and 8 samples per problem for the other benchmarks.
+  optimizer_or_scaffold: Stage 1 uses Instruct outputs on MATH Levels 1-4 and NoThink on Level 5; Stage 2 uses NoThink on
+    Levels 1-4 and NoRethink on Level 5. The reported protocol uses LlamaFactory, two epochs, cosine learning-rate scheduling,
+    and a maximum learning rate of 1e-5; stage-specific step counts and hardware are not disclosed in the paper text.
+audit:
+  source_mixture: MATH training prompts plus Qwen2.5-32B-Instruct solutions and three DeepSeek-R1-Distill-Qwen-32B response
+    modes, stratified by MATH difficulty.
+  split: 6,445 of 7,500 MATH training problems survive the all-mode intersection filter. The paper does not release retained
+    indices, per-mode attempts, rejected outputs, or an immutable curriculum manifest.
+  decontamination: unknown
+  license: The ACL paper is distributed under CC BY 4.0. The paper and official checklist do not establish redistribution
+    terms for the constructed multi-mode trace corpus.
+  lineage: MATH problem and difficulty -> two teachers under four mode conditions -> up to four samples per condition -> Math-Verify
+    final-answer filter -> 6,445-problem intersection -> difficulty-conditioned Stage 1 mixture -> difficulty-conditioned
+    Stage 2 mixture -> 3B student SFT.
+  known_failure_modes:
+  - Math-Verify acceptance establishes final-answer correctness but not intermediate-step validity, faithfulness, or absence
+    of post-hoc rationalization.
+  - Requiring all four conditions to succeed removes 1,055 problems and can select prompts that are unusually easy or robust
+    across teacher behaviors.
+  - NoRethink and NoThink are prompt/decoding interventions, not verified separations of internal reasoning mechanisms.
+  - Only successful selected solutions are described; failed attempts, rejection causes, and counterfactual traces are not
+    released.
+  - The curriculum depends on MATH's five difficulty labels, English mathematical tasks, Qwen-derived teachers/students, and
+    fixed Level 5 boundaries.
+  - Full prompts, seeds, model revisions, hardware, GPU hours, retained indices, decontamination checks, and generated-data
+    terms are undisclosed.
+  - The official checklist marks computational-budget and infrastructure reporting as complete, but the 11-page paper does
+    not identify hardware or GPU hours.
+  citation_status: verified
+  confidence: high
+  notes: The official ACL Anthology record, proceedings PDF, DOI, BibTeX, affiliations, and Responsible NLP Checklist were
+    verified. No appendix, supplementary methods, official code, generated dataset, project page, or released student checkpoint
+    was identified in those official materials.
+inclusion_reason: A concrete two-stage reasoning-data construction recipe that conditions teacher identity and trace style
+  on both MATH difficulty and curriculum stage, with an explicit final-answer intersection filter and measurable single-stage
+  controls.
+related:
+- small-models-struggle-strong-reasoners-2025
+tags:
+- curriculum-distillation
+- teacher-traces
+- difficulty-curriculum
+- long-cot
+- math-verify
+- multi-mode-generation
+status: partial
+one_line_summary: Curriculum Distillation filters a 6,445-problem matched teacher pool with Math-Verify and changes trace
+  style across two difficulty-aware SFT stages, but releases neither the pool nor its construction artifacts.
+why_it_matters: It turns teacher mode, answer verification, difficulty, and training order into explicit data-construction
+  variables; the unreleased examples, indices, prompts, and lineage keep it at recipe/audit-reference status rather than a
+  reusable data release.
+needs:
+- 'needs_data: release the 6,445-problem multi-mode corpus, retained indices, and rejected attempts'
+- 'needs_code: release generation, Math-Verify parsing, filtering, curriculum assembly, and evaluation scripts'
+- 'needs_prompts: publish complete mode prompts, answer extractors, seeds, and teacher checkpoint revisions'
+- 'needs_lineage: preserve per-row source, mode, attempt, verifier output, and curriculum-stage fields'
+- 'needs_decontamination: document overlap checks for all evaluation benchmarks'
+- 'needs_license: state generated-data and upstream redistribution terms'
+- 'needs_compute: report hardware, GPU hours, and stage-specific training steps'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-11'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official EMNLP paper, ACL Anthology metadata, PDF, DOI, BibTeX, and checklist are verified; reusable code, generated
+    data, models, and immutable lineage artifacts remain unavailable.
+category_ids:
+- data_construction_open_release_recipes

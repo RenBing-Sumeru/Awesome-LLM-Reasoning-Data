@@ -1,0 +1,5 @@
+A distinctive disclosed data operation is modality-conditioned distillation: an audio query and its text counterpart share semantics, and the stronger text-conditioned response becomes the supervision target for audio. This makes the cross-modal transfer object more concrete than a generic claim that audio and text are mixed.
+
+Interaction-aligned RL likewise converts code-switching, persona drift, and long-conversation instruction decay into trajectory-level feedback goals. Talker separately stages acoustic scaling, quality stratification, captioner augmentation, human preference pairs, rule feedback, and speaker adaptation. The stage separation is useful for an audit even though the records and feedback implementations are closed.
+
+ARIA and long-context architecture affect how text and speech tokens are aligned and served, but they should not be mistaken for a disclosed reasoning-data selection rule. The report's useful contribution to the disclosure ledger is the stage map and record-type hints, not its benchmark position.

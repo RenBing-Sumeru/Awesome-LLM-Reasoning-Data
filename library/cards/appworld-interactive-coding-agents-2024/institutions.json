@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Stony Brook University",
+    "Allen Institute for AI",
+    "Saarland University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T08:00:33Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2407.18901",
+    "https://arxiv.org/pdf/2407.18901",
+    "https://appworld.dev/"
+  ],
+  "verification_note": "arXiv comments say ACL'24 Camera Ready."
+}

@@ -1,0 +1,1 @@
+Earlier hallucination benchmarks focus on one task or use a common LLM judge. HALoGEN designs a separate atomisation method, authoritative source, and automatic verifier for each scenario while comparing models in one framework. The novelty is task-specific verification infrastructure and source taxonomy, not a new detector model.

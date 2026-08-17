@@ -1,0 +1,3 @@
+引用：Tianbao Xie, Danyang Zhang, Jixuan Chen, Xiaochuan Li, Siheng Zhao, Ruisheng Cao, Toh Jing Hua, Zhoujun Cheng, Dongchan Shin, Fangyu Lei, Yitao Liu, Yiheng Xu, Shuyan Zhou, Silvio Savarese, Caiming Xiong, Victor Zhong, Tao Yu，《OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments》，2024 / NeurIPS 2024 / arXiv。https://arxiv.org/abs/2404.07972
+
+官方产物：paper: https://arxiv.org/abs/2404.07972; project: https://os-world.github.io/; code: https://github.com/xlang-ai/OSWorld; data: https://github.com/xlang-ai/OSWorld; doi: https://doi.org/10.48550/arXiv.2404.07972。

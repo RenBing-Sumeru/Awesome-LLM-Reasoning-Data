@@ -1,0 +1,3 @@
+SIMA 2 integrates four data regimes that are often studied separately: embodied human demonstrations, model-generated process labels, online environment-grounded RL, and state-conditioned self-generated curricula. The ordinary RGB-plus-keyboard/mouse interface makes the policy substrate broadly comparable across games without privileged APIs.
+
+The task-generator/actor/reward-model/experience-bank loop is a concrete recipe for scalable self-improvement. Its novelty is tempered by role concentration: Gemini-family models supply labels, reasoning, tasks, hierarchical guidance, and rewards, so task distribution and judge preference may reinforce each other.

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "包含构建数据流程，MCTS轨迹数据，数据集数量多",
+    "updated_at": "2026-07-14T07:15:12Z"
+  },
+  "updated_at": "2026-07-14T07:15:12Z"
+}

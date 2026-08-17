@@ -1,0 +1,6 @@
+- **环境与回放：** 复现依赖AWS专用Mac硬件、付费凭据、可变的语言AMI、macOS Sequoia 15.2、应用版本和模型API。仓库没有把这些依赖与报告结果绑定到同一不可变回放包的GitHub Release/tag。
+- **反馈保真度：** 二值终态脚本丢弃部分进度；文件路径、窗口标题、应用版本或UI状态漂移时可能产生false positive或false negative。evaluator错误率未被独立测量，公开grader也允许针对性gaming。
+- **发布数据边界：** task JSON、harness代码和结果写入逻辑已发布，但完整观察、action、conversation/tool output、失败和报告模型轨迹的不可变语料为unknown；保留episode的`rollout_count`同样为unknown。
+- **安全解释：** “未处理”可能表示智能体从未与注入对话交互，而不是识别并抵抗欺骗。29项英文安全任务与主集合重叠，因此安全结果不是来自独立split的证据。
+- **语言与覆盖：** GPT-4o翻译加Google Translate回译检查不等同于已披露的母语者验证。Xcode仅支持英文，iMovie缺少阿拉伯文，right-to-left UI镜像还混合了语言、grounding与planning效应。
+- **lineage、污染与权利：** 论文未披露train/dev/test split、模型训练重叠分析或decontamination流程。仓库采用CC BY-NC 4.0，但Apple模板、应用内容、任务资产和AMI内容的逐记录权利为unknown；在AWS上遵守Apple EULA也不是再分发许可。缺少这些发布信息时，不能安全地直接用于训练复用。

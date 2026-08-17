@@ -1,0 +1,4 @@
+World-model post-training needs transition data and feedback that reflect what changes after an action. In language, web, robot, and simulated settings, a plausible-looking prediction is not enough: the training signal must identify whether a state difference, accessibility-tree change, or future frame agrees with ground truth. At the same time, a paper-level description of upstream trajectories does not by itself establish their provenance, rights, train/evaluation separation, or deployment validity.
+
+RLVR-World addresses the modeling side by applying supervised fine-tuning and reinforcement learning with verifiable rewards to world-transition prediction across these modalities. Its audit-relevant question is separate: which data and checkpoints are actually released, and which source, verifier, and environment facts remain only paper-reported or unknown.
+

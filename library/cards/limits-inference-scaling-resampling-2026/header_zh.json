@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该研究用原始单元测试作为弱验收器、用 EvalPlus 扩展测试进行追溯审计，表明增加重采样次数仍会保留错误代码，并可能使有限预算乃至零预算最优。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "不完美 verifier 与重采样上限研究",
+  "best_for_ch": "研究 rejection sampling、verifier 误接受、测试时计算扩展与推理数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Benedikt Stroebl、Sayash Kapoor、Arvind Narayanan",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

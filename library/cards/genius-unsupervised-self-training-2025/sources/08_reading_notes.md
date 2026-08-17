@@ -1,0 +1,5 @@
+- Read §2.2 before the score tables: the foresight signal is length-normalized same-policy continuation log probability, not an external correctness verifier.
+- Keep the units separate: 25K/32K source queries, four pairs per query, 100K/128K reported preferences, two beams, four rollouts per beam, and four foresight steps.
+- Use Tables 3–4 for mechanism evidence: removing foresight costs 3.17/3.25 average points, greedy sampling costs 4.10/3.10, and ACO exceeds the tested DPO and ROPO objectives under fixed foresight data.
+- Do not confuse the HF collection’s two source-query datasets and two checkpoints with a release of the exact generated preference snapshots.
+- Before reproduction, inspect the official sampler/constructor length guard, verify that `prompt` conditions ACO training, pin revisions and manifests, and read Appendix C as embedding analysis rather than decontamination proof.

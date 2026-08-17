@@ -1,0 +1,3 @@
+FocalPO multiplies the DPO loss by a focal probability factor. When the preferred answer already has a high implicit preference probability, the resulting gradient gives that correctly ranked pair greater relative weight; when the pair is misranked, its contribution is suppressed. This reverses the usual focal-loss intuition because the goal is to prioritize reliable preference signal rather than difficult classification cases.
+
+The method requires no extra label, reward model, or sample generation. A fixed focusing parameter controls the strength of the reweighting, and the reported experiments set it to 0.05 for both model families. Thus the same binary record changes influence as the evolving model changes its implicit ranking.

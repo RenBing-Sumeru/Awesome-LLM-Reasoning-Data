@@ -1,0 +1,1 @@
+The contribution is the collaborative framing of causal inference and LLMs from both perspectives. It does not make a new causal estimator or LLM the centerpiece; instead, it connects several application areas under explicit causal questions. That framing is valuable when distinguishing correlation-based performance from causal claims.

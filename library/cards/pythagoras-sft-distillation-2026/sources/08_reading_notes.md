@@ -1,0 +1,5 @@
+- Positioning: Augmented Lean Formalisation mutates seed problems, writes reasoning plans and Lean artifacts, and retains only compiler-verified proofs in a 336K-record SFT set.
+- Data object: original question, mutated question, source, Lean statement, Lean proof, problem type, reasoning chain, and difficulty.
+- Author and selector: an augmented formalization pipeline mutates problems and generates proof plans and Lean proofs; selection uses Lean compilation, formal proof checking, mutation validation, and difficulty assignment.
+- Evidence anchor: Pythagoras-Prover-32B reaches 93.0% on MiniF2F-Test and solves 93 of 672 tested problems in the paper's harder suite; the 4B model is compared with much larger provers.
+- Reuse decision: suitable for autoregressive and diffusion-based theorem-prover SFT; first audit compiler success does not ensure natural or pedagogically useful proofs, and mutation can preserve hidden near-duplicates.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LiteCoder 把终端监督数据从不足千条扩展到 11255 条完整轨迹，保留指令、推理、命令和工具观察。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "开放后训练数据集与构造研究",
+  "best_for_ch": "覆盖 4B 到 32B 的终端代理监督微调",
+  "confidence_ch": "高",
+  "authors_ch": "Peng, Xiaoxuan、Zhang, Kaiqi、Lu, Xinyu、Cao, Boxi、Lu, Yaojie、Lin, Hongyu、Han, Xianpei、Sun, Le",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-27T09:00:00Z"
+}

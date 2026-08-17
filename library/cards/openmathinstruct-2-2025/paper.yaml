@@ -1,0 +1,178 @@
+id: openmathinstruct-2-2025
+title: 'OpenMathInstruct-2: Accelerating AI for Math with Massive Open-Source Instruction Data'
+year: 2025
+venue: ICLR 2025
+authors:
+- Shubham Toshniwal
+- Wei Du
+- Ivan Moshkov
+- Branislav Kisacanin
+- Alexan Ayrapetyan
+- Igor Gitman
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- mathematics
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/file/302ce0673c00aee2cf84bb43d0117553-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2410.01560
+  code: https://github.com/NVIDIA-NeMo/Skills
+  data: https://huggingface.co/datasets/nvidia/OpenMathInstruct-2
+  project: https://nvidia-nemo.github.io/Skills/openmathinstruct2/
+  huggingface: https://huggingface.co/datasets/nvidia/OpenMathInstruct-2
+  models: https://huggingface.co/collections/nvidia/openmath-2-66fb142317d86400783d2c7b
+  doi: null
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/302ce0673c00aee2cf84bb43d0117553-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://proceedings.iclr.cc/paper_files/paper/2025/file/302ce0673c00aee2cf84bb43d0117553-Bibtex-Conference.bib
+data_object:
+  prompt_source: A problem is either an original training-set item from GSM8K or MATH or a Llama-3.1-405B-Instruct augmentation
+    derived from one of those training sets. The public `problem_source` value distinguishes `gsm8k`, `math`, `augmented_gsm8k`,
+    and `augmented_math`, but does not expose the upstream seed ID or revision.
+  trace_author: Llama-3.1-405B-Instruct generates the released worked solutions and the augmented questions. Exact teacher
+    checkpoint revision and per-row generation run IDs are not released.
+  answer_format: 'Each released row contains four strings: `problem`, `generated_solution`, `expected_answer`, and `problem_source`.
+    For an original GSM8K/MATH problem, `expected_answer` is the source ground-truth answer; for an augmented problem it is
+    the most frequent extracted answer among 32 teacher generations.'
+  process_fields:
+  - problem
+  - generated_solution
+  - expected_answer
+  - problem_source
+  environment_or_substrate: Offline synthetic generation and filtering followed by supervised fine-tuning; there is no interactive
+    environment or state-action episode.
+  verifier_or_reward: Original-problem solutions are selected against known final answers. Augmented problems use surface-form
+    majority voting over 32 extracted answers as a proxy answer, with the paper selecting a minimum-vote threshold of zero.
+    A separate embedding-plus-Llama-3.1-405B-Instruct filter removes candidate questions judged to paraphrase four evaluation
+    test sets. No verifier validates each intermediate reasoning step.
+  terminal_predicate: Retention combines parseable/format and length checks, final-answer agreement for original questions,
+    a top-voted proxy answer for augmented questions, and a negative contamination judgment. The released row does not include
+    vote count, candidate set, parser outcome, filter reason, or contamination score.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Base is fine-tuned on the full and 1M/2M/5M subsets; Llama-3.1-70B-Base is fine-tuned on the 5M
+    subset.
+  teacher: Llama-3.1-405B-Instruct. The paper's matched-coverage ablation reports that its data outperforms on-policy data
+    from Llama-3.1-8B-Base.
+  generator: 'Two branches are merged: solution augmentation samples alternative OpenMath CoT solutions for original GSM8K/MATH
+    questions; question-solution augmentation first uses five-shot prompts to create related questions and then samples 32
+    solutions for each new question.'
+  filtering_rule: Paper post-processing removes multiple-boxed outputs, trims the "My Solution:" prefix, truncates after the
+    first boxed-answer sentence, repairs or removes arithmetic patterns, removes solutions over 1024 Llama-3.1 tokens, and
+    removes solutions under 200 characters. New questions are syntax-filtered and decontaminated against GSM8K, MATH, AMC
+    2023, and AIME 2024 using top-5 embedding retrieval plus bidirectional Llama-3.1-405B paraphrase judgments. The released
+    data retained 564 overlong questions, whereas current reproduction commands remove them.
+  sampling_protocol: The current official recipe requests 512 solution samples per original MATH item and 64 per original
+    GSM8K item; it requests 80 new problems per MATH seed and 10 per GSM8K seed, followed by 32 solutions per new problem.
+    Section 2 ablations use temperature 1.0/top-p 0.95 and the new-question solution stage uses temperature 0.7. Exact historical
+    decoding settings for every released stage, retries, and random seeds are not pinned.
+  rollout_count: 512 per original MATH problem and 64 per original GSM8K problem in the current solution-augmentation recipe;
+    32 solutions per augmented problem.
+  temperature: 0.7 is explicitly reported for 32-solution generation on augmented questions; 1.0 with top-p 0.95 is reported
+    for Section 2 ablations. Other released-run stages are unknown.
+  inference_budget: The current recipe hosts Llama-3.1-405B-Instruct on two nodes with eight GPUs each for the documented
+    generation commands. Total GPU-hours, retries, and accepted/rejected yield by stage are unknown.
+  optimizer_or_scaffold: The paper trains for two epochs with batch size 512, AdamW, weight decay 1e-2, learning rate 2e-5
+    for 8B and 1e-5 for 70B, saving six equally spaced checkpoints and averaging them. The current repository provides NeMo-RL
+    commands, but its 2026 main revision is not an immutable manifest of the original 2024 data build.
+audit:
+  source_mixture: 'The exact public `train` split has 13,972,791 rows. Appendix Table 5 reports rounded component counts:
+    GSM8K solution augmentation 7.4K unique questions/0.46M pairs; GSM8K question-solution augmentation 73.6K/2.11M; MATH
+    solution augmentation 7.4K/2.46M; MATH question-solution augmentation 519.1K/8.94M; total 607.3K unique questions/13.97M
+    pairs. Exact integer unique-question counts are not disclosed by the paper or dataset card.'
+  split: '`train` contains 13,972,791 rows. `train_1M`, `train_2M`, and `train_5M` are overlapping fair-downsampled subsets
+    with exactly 1,000,000, 2,000,000, and 5,000,000 rows; they are not independent validation/test splits. The paper uses
+    a held-out 1K MATH-training validation subset for ablations.'
+  decontamination: New questions are compared with GSM8K, MATH, AMC 2023, and AIME 2024 test sets using top-5 `multi-qa-MiniLM-L6-cos-v1`
+    retrieval and both pair orders judged by Llama-3.1-405B-Instruct; any positive paraphrase judgment removes the question.
+    About 50K of 569K MATH-derived candidates are removed, leaving about 519K. Omni-MATH arrived later and was not filtered;
+    the authors report about 1.4% of its test questions in the training data.
+  license: The Hugging Face dataset repository declares CC BY 4.0 and the NVIDIA-NeMo/Skills repository declares Apache-2.0.
+    The four-field release does not attach per-row upstream licenses, seed revisions, attribution, or teacher-model terms,
+    so dataset-level licensing is not a complete lineage ledger.
+  lineage: GSM8K/MATH train seed -> Llama-3.1-405B-Instruct solution generation or five-shot problem augmentation -> 32 solutions
+    for each new problem -> source-answer matching or majority proxy answer -> syntax/length and contamination filtering ->
+    four-field SFT row -> full or fair-downsampled SFT mixture. Seed IDs, candidate IDs, votes, rejected generations, filter
+    decisions, run IDs, and exact teacher revision are absent from public rows.
+  known_failure_modes:
+  - Minimum majority threshold zero permits low-consensus augmented questions; surface-form voting can split equivalent answers
+    or select a confidently repeated wrong answer.
+  - Final-answer agreement does not detect invalid intermediate reasoning; the paper gives examples of wrong reasoning that
+    reaches the correct answer.
+  - Released rows omit vote margins, candidate sets, parser diagnostics, filter reasons, rejected samples, and decontamination
+    judgments, blocking row-level selection audits.
+  - LLM paraphrase decontamination can produce false positives or false negatives and originally covers only four named benchmarks.
+  - Omni-MATH was outside the original decontamination set and later showed about 1.4% overlap with training data.
+  - The released dataset retained 564 questions over 1024 Llama tokens even though current reproduction instructions remove
+    overlong questions, demonstrating recipe/release drift.
+  - Current Skills main is a 2026 revision and no immutable historical OpenMathInstruct-2 run manifest or release tag was
+    confirmed.
+  - Dataset-level CC BY 4.0 and code Apache-2.0 do not replace per-row source, attribution, teacher-term, and transformation
+    provenance.
+  - Model benchmark gains do not certify row-level correctness, rationale validity, contamination absence, or rights completeness.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the full 33-page ICLR paper and appendices, official ICLR and arXiv records, HF dataset card and
+    exact size manifest, public row schema, NVIDIA model collection, and the official Skills reproduction documentation/code.
+    Release completeness remains partial because historical pinning and row-level lineage/selection evidence are unavailable.
+inclusion_reason: Releases a 13,972,791-row math SFT dataset and an operational recipe that exposes teacher selection, solution
+  and question augmentation, majority-answer construction, decontamination, fair downsampling, and scale ablations, while
+  making its missing vote, rejection, provenance, and historical-version records concrete audit targets.
+related: []
+tags:
+- openmathinstruct-2
+- math-sft
+- synthetic-instruction-data
+- llama-3-1-405b
+- solution-augmentation
+- problem-augmentation
+- majority-vote
+- decontamination
+- data-scaling
+status: partial
+one_line_summary: OpenMathInstruct-2 packages original and augmented GSM8K/MATH problems with teacher-written solutions and
+  source-or-majority proxy answers, alongside reproducible generation, decontamination, downsampling, and SFT recipes.
+why_it_matters: It is a high-scale worked example of how open reasoning demonstrations are sourced, expanded, answer-filtered,
+  and trained, and it shows why majority answers and dataset-level licenses still need vote, rejection, contamination, and
+  provenance ledgers for trustworthy reuse.
+card: null
+needs:
+- 'needs_manifest: pin the exact historical Skills commit, configs, container images, source revisions, and generation run
+  IDs used for the released train split'
+- 'needs_counts: publish exact integer unique-problem and per-component accepted/rejected counts rather than only rounded
+  Table 5 values'
+- 'needs_lineage: add per-row seed ID/revision, teacher revision, prompt/config version, candidate-set ID, and transformation
+  history'
+- 'needs_verifier: release extracted candidate answers, vote counts/margins, parser diagnostics, and tie/no-valid-answer handling
+  for augmented questions'
+- 'needs_filtering: release syntax, length, final-answer, quality, and decontamination decisions plus rejected candidates'
+- 'needs_license: attach per-row upstream source/license/attribution and document compatibility with teacher-model terms'
+- 'needs_contamination: version benchmark sets and publish matches/removals, including post-release Omni-MATH overlap handling'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-23'
+  verified_by: card_writer
+  confidence: high
+  notes: Exact citation, public data schema and row counts, model collection, code, construction docs, majority implementation,
+    and licenses are verified. Artifact verification does not resolve absent historical pins or row-level lineage and selection
+    records.
+category_ids:
+- data_construction_open_release_recipes

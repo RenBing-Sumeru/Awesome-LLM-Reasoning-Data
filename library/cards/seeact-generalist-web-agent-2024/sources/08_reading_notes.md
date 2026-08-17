@@ -1,0 +1,5 @@
+Remember the split between "can plan" and "can ground." The paper's most reusable lesson is that a strong multimodal model may know what should happen on a webpage while still failing to click or type in the right place. For card review, that means the action target and success predicate are not minor implementation details; they are the data object.
+
+Read the paper together with the official repository and HF dataset, because the practical value lies in the released environment and multimodal records. When comparing to later web agents, ask whether they improve the planner, improve grounding, change the browser scaffold, use more tool calls, or evaluate on easier live states.
+
+For reuse, keep the evaluation surface explicit: screenshot/HTML context, candidate element generation, action normalization, browser runtime, and success predicate should be versioned together. Otherwise a later score may reflect scaffold drift or website drift rather than a real improvement in web-agent grounding.

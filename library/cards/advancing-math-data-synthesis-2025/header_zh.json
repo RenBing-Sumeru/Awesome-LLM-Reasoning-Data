@@ -1,0 +1,13 @@
+{
+  "one_line_summary_ch": "比较 response diversification、query expansion、retrospective enhancement 与 tutorship amplification 四种数学数据变换，并系统对照相同问题求解数据在 CPT 与 SFT 阶段的作用。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数学数据合成算子与训练阶段对照研究",
+  "best_for_ch": "关注数学推理数据合成、教师蒸馏、CPT/SFT 选择、污染与发布审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Zui Chen、Tianqiao Liu、Mi Tian、Qing Tong、Weiqi Luo、Zitao Liu",
+  "category_ids": [
+    "instruction_demonstration_rationale_data",
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-15T04:49:05Z"
+}

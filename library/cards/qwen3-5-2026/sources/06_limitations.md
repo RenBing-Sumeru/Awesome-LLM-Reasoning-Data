@@ -1,0 +1,7 @@
+- Broad source categories and stricter filtering do not disclose source members, provenance, rights, mixture weights, counts, thresholds, retention, splits, or contamination controls.
+- No prompts, task definitions, multimodal training records, reasoning traces, tool trajectories, observations, actions, environment responses, accepted or rejected rollouts, replay logs, or terminal rules are released.
+- The asynchronous RL description omits the optimization algorithm, objective, reward/verifier contract, calibration, false-positive analysis, reward-hacking controls, rollout counts, decoding, optimizer, coefficients, schedules, and seeds.
+- “Million-agent environments” does not identify environments, tools, simulators, versions, access conditions, reset rules, containers, determinism, or replayability; the unit counted by “million” is also not defined.
+- The Apache-2.0 license applies to the released model repository. Rights for training data, environment/task content, teacher outputs, third-party tools, and post-training records remain unknown.
+- Open weights, an official information repository, benchmark results, and deployment examples do not establish a released post-training dataset, a reproducible agent-training procedure, or valid training/evaluation separation.
+- No public paper or training artifacts support independent attribution of reported gains to data composition, RL feedback, infrastructure, model architecture, or inference settings.

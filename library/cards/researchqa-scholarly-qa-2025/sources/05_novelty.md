@@ -1,0 +1,1 @@
+Earlier scholarly QA relies on small expert-authored sets or answer matching and does not scale across many fields. ResearchQA treats surveys as sources of both questions and evaluation standards, giving each query literature, explanation, and limitation criteria. The novelty is survey-mined expert-style evaluation rather than simply more QA pairs.

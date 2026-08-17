@@ -1,0 +1,1 @@
+For Track 5, the contribution is to make simulated retrieval documents and curriculum rollouts and its feedback/selection boundary explicit rather than treating a final benchmark score as trace evidence.

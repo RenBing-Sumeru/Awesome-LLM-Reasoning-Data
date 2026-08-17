@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SPC 先用 PRM800K 与教师模型初始化步骤批评器和错误生成器，再通过求解器影响筛选与两轮对抗自博弈生成批评轨迹和二元奖励。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "对抗自博弈过程批评器与数据构造方法",
+  "best_for_ch": "研究过程监督、验证器奖励、自博弈数据生成或步骤级测试时搜索的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jiaqi Chen、Bang Zhang、Ruotian Ma、Peisong Wang、Xiaodan Liang、Zhaopeng Tu、Xiaolong Li、Kwan-Yee K. Wong",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-21T00:00:00Z"
+}

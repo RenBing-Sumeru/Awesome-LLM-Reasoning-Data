@@ -1,0 +1,1 @@
+项目页证据是 20 个 web forms、1,250 个 task instances 和 13,800+ field-value pairs；仓库证据包括可运行 templates 与 evaluator/test artifacts，并有后续 40+ template 说法。逐样本证据是 evaluator 将提交字段状态与 gold target 比较的结果。分数受 template 版本、字段归一化、浏览器渲染，以及表单是否存在多个语义等价有效填写约束。

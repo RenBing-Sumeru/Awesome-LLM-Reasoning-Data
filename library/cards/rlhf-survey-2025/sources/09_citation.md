@@ -1,0 +1,1 @@
+Timo Kaufmann, Paul Weng, Viktor Bengs, and Eyke Hüllermeier. “A Survey of Reinforcement Learning from Human Feedback.” *Transactions on Machine Learning Research*, 2025. https://openreview.net/forum?id=f7OkIurx4b

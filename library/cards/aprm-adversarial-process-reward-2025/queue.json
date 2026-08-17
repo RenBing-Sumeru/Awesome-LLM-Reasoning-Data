@@ -1,0 +1,18 @@
+{
+  "title": "Adversarial Training for Process Reward Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2511.22888",
+    "code": "https://github.com/gurusha01/PRM_NIPS",
+    "data": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "training_usage_optimization_objectives"
+  ],
+  "updated_at": "2026-07-16T07:35:10Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "以对抗生成的难负样本持续更新过程奖励模型的训练分布，直接解决静态步骤标签对新型错误泛化不足的问题",
+    "updated_at": "2026-07-16T07:35:10Z"
+  }
+}

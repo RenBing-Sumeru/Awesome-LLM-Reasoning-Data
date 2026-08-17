@@ -1,0 +1,114 @@
+id: swt-bench-real-world-bug-fix-tests-2024
+title: 'SWT-Bench: Testing and Validating Real-World Bug-Fixes with Code Agents'
+year: 2024
+venue: NeurIPS 2024 / arXiv v3 / OpenReview
+authors:
+- Niels Mündler
+- Mark Niklas Müller
+- Jingxuan He
+- Martin Vechev
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- swe-agents
+- test-generation
+- bug-fix-validation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2406.12952
+  arxiv: https://arxiv.org/abs/2406.12952
+  doi: https://doi.org/10.48550/arXiv.2406.12952
+  code: https://github.com/logic-star-ai/swt-bench
+  data: https://huggingface.co/datasets/eth-sri/SWT-bench_bm25_27k_zsb
+  project: https://swtbench.com/
+  huggingface: null
+  venue: null
+  openreview: https://openreview.net/forum?id=9Y8zUO11EQ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: SWT-Bench paper, OpenReview entry, and LogicStar repository
+  trace_author: SWT-Bench authors and bug-fix test generation pipeline
+  answer_format: bug-fix issues, generated tests, repository states, agent patches, and validation outcomes
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: real-world bug-fix testing and validation tasks for code agents
+  verifier_or_reward: unit-test mode runs generated tests against original and patched code; success requires at least one
+    fail-to-pass test and no failing tests after the fix, with changed-line coverage as a diagnostic.
+  terminal_predicate: generated tests fail on original code and pass after the fix without post-fix failures
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: real bug-fix histories and generated validation tests
+  generator: SWT-Bench test-generation and validation pipeline
+  filtering_rule: pin benchmark commit, generated golden tests, and relation to repair benchmark scoring
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2406.12952; https://github.com/logic-star-ai/SWT-Bench; https://openreview.net/forum?id=9Y8zUO11EQ
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2406.12952'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: Official project and repository sources cite NeurIPS 2024, Full 2,294, Lite 276, and Verified 433 instances. OpenReview
+    URL is from official citation metadata; data is available through HF SWT-Bench variants.
+inclusion_reason: it makes tests themselves part of the agent feedback and validation surface
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- swe-agents
+- test-generation
+- bug-fix-validation
+why_it_matters: it makes tests themselves part of the agent feedback and validation surface
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: SWT-Bench tests whether code agents can generate and validate tests for real-world bug fixes.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Official project and repository sources cite NeurIPS 2024, Full 2,294, Lite 276, and Verified 433 instances. OpenReview
+    URL is from official citation metadata; data is available through HF SWT-Bench variants.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 107
+  primary_category_id: benchmarks_evaluation_surfaces

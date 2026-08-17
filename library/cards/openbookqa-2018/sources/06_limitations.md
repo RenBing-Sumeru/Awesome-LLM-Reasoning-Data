@@ -1,0 +1,3 @@
+Correctness is only correctness relative to exact multiple-choice answer match. A passing score does not automatically prove robust reasoning, safe behavior, faithful explanations, or transfer outside the benchmark's task distribution.
+
+Hidden assumptions include train/dev/test split needs exact source revision.; needs_audit from AI2 data page.; dependency/runtime drift; judge or evaluator version drift; and contamination risk: public classic benchmark likely appears in pretraining corpora. The card should not be read as evidence of a training recipe unless released artifacts expose training inputs, filtering rules, and optimization use.

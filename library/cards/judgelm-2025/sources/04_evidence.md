@@ -1,0 +1,3 @@
+On the author-reannotated 5K validation set, the 33B JudgeLM with reference attains 89.32% agreement with GPT-4 and 92.37% swap consistency (Table 1). The decisive comparison uses the same judge dataset and reports agreement with the teacher, so it supports teacher alignment and order stability, not independent human correctness.
+
+For the bias mechanism, a 7B model trained on 3.5K samples improves swap consistency from 73.45% to 78.89% after swap augmentation (Table 5). This supports the intervention under that small-data configuration; it does not prove immunity to position bias in unseen domains.

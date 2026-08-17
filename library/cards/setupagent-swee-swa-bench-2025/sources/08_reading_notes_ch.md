@@ -1,0 +1,6 @@
+- 首先记住发布对象：仓库任务行、setup/test 元数据和 Docker targets；没有发布 agent action/observation trajectory 或 reasoning trace。
+- 阅读 §3.3 与 Figures 1–4 了解 SetUpAgent 的提取、迭代修复和验证三阶段；Appendix B 给出 prompt templates。
+- 区分两个阈值：接受 setup 需要至少 95% 的已解析测试通过，而模型补丁被判 resolved 则需要全部 F2P 与 P2P 测试通过。
+- 不要合并版本：arXiv v1 报告成功率最多下降 40%，ICML/PMLR 最终版在加入 100-instance 结果后报告最多下降 60%。
+- 打分前审计 release drift：论文报告 SWA 535/44、SWEE 885/366，而当前 Hub revisions 公开 450 和 798 行。
+- 公开 fork 只在非默认分支支持评测；SetUpAgent 生成源码、dataset licenses、不可变 image manifests 和被拒 setup 记录仍不可用或为 unknown。

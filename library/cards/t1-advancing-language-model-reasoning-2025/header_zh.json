@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "T1 将公开数学题构造成含试错与自我核查的推理链，用答案核验的 64-rollout RLOO 研究训练和推理时扩展；但公开数据的语义、谱系与可复现性仍不完整。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "数学推理数据构造、答案核验强化学习与推理时扩展研究",
+  "best_for_ch": "需要设计 RLVR、长推理轨迹、rollout 多样性或推理预算实验，并希望审计公开训练数据边界的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Zhenyu Hou、Xin Lv、Rui Lu、Jiajie Zhang、Yujiang Li、Zijun Yao、Juanzi Li、Jie Tang、Yuxiao Dong",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,5 @@
+- 应把发布规模记为 32,736 条仅含 train split 的记录和 523,776 个抽取后的答案级尝试；不要把这些尝试写成原始 completion 或思维链。
+- 三个阶段分别包含 3,360 条感知、13,181 条文本推理和 16,195 条视觉推理记录；图像只在两个多模态阶段保留。
+- 必须保留论文与发布差异：论文为 Stage 3 列出 DocVQA，但托管的 16,195 条源清单只含 Math PUMA、GeoQA170K、CLEVR-Math 和 ArxivQA。
+- 要区分离线难度计算的 16-sample 预算与 on-policy GRPO 的五 response 训练组，并把 pass rate 视为依赖模型和采样策略的测量值。
+- 复用前需审计上游许可、仅 train split、缺失的去污染与原始 rollout 日志；benchmark 提升不能解决这些问题。

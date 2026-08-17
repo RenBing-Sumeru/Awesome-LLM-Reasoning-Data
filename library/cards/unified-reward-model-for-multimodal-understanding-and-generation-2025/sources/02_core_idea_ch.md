@@ -1,0 +1,3 @@
+UnifiedReward基于大规模人工偏好数据统一评价图像与视频理解/生成，同时支持pairwiseranking和pointwisescoring；再自动筛选模型输出构造DPO对。
+
+先汇总多任务人工偏好训练统一RM；用pairranking与pointsifting选择高低质量候选，形成新的chosen/rejected数据，并对对应视觉模型执行DPO。

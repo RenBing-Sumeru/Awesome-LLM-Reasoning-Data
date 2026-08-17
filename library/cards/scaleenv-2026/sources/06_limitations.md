@@ -1,0 +1,8 @@
+- **No reusable release:** The 16 environments, 2,560 tasks, tests, states, rollouts, rewards, checkpoints, and framework were not verified public; only paper/source and excerpts are available.
+- **Incomplete split audit:** Training and the 7 benchmark evaluation domains are disjoint, but there is no generated task-level dev/test split, item mapping, template deduplication, pretraining-overlap, or memorization audit.
+- **Success/failure retention:** Procedural failures drive debugging and GRPO needs mixed-reward groups, yet candidate/rollout drop counts, retries, and durable successful/failed trace retention are undisclosed.
+- **Reset and replay:** Initial/final database states suggest resettable tasks, but no reset API, snapshot format, dependency lock, isolation test, seeds, user-simulator settings, or runtime image is released.
+- **Parallelism gap:** Rollout batch sizes are 1,024 and 2,048, while actual concurrency, worker scheduling, hardware, throughput, failure recovery, and cost are unknown.
+- **Verifier limits:** The 3 column policies can miss invalid intermediate behavior, hidden side effects, unnecessary mutations, serialization equivalence, or incorrect fuzzy matches.
+- **License and privacy:** CC BY-NC-SA 4.0 covers the manuscript, not generated artifacts. Data is synthetic, but no PII-pattern filtering, memorization audit, provenance check, or privacy review is described.
+- **Safety:** The paper calls the sandbox safer than real APIs and warns of harmful-domain synthesis. It does not implement or report a malicious-domain filter, capability boundary, prompt-injection defense, or containment audit.

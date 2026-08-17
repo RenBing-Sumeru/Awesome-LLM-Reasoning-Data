@@ -1,0 +1,3 @@
+**Claim.** Alignment reduces optimism bias in an open science-Q&A judge. **Setup.** The paper evaluates four generators/judges on 348 ORKGSyn and 73 BioASQ questions, each with benign, subtle, and extreme variants across nine rubrics; this yields 37,584 ORKGSyn and 7,884 BioASQ scores. LLaMA-3.1-8B is compared before and after SFT+CPO.
+
+**Result and boundary.** The adversarial construction makes intended degradation observable without using human labels for every score, and the paper reports more appropriate score separation after alignment. This supports robustness on these synthetic, rubric-targeted edits, not equivalence to expert scientific judgment or reliability under natural distribution shift.

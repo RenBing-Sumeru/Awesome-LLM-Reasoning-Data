@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ARC-AGI-2 用少样例彩色网格转换任务评测抽象规则归纳，并以输出网格 exact match 验收。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Benchmark / evaluation surface",
+  "best_for_ch": "关注抽象推理、少样例规则归纳、exact verifier 和 public/private benchmark 泄漏边界的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Francois Chollet 等（ARC Prize）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T00:00:00Z"
+}

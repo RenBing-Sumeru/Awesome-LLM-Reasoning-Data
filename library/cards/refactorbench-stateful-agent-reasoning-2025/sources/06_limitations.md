@@ -1,0 +1,3 @@
+1. **Scale and representativeness:** One hundred handcrafted tasks from selected open-source repositories do not cover enterprise refactoring, build systems, or long migrations. Conclusions should be stratified by language, repository, and task type.  
+2. **Test proxy:** AST assertions capture structural changes but may miss runtime behavior, performance, and style regressions. Functional tests and human patch review should be added.  
+3. **Human comparison:** The 87% result comes from a proficient developer under a five-minute limit with tools and interfaces that differ from the agent. It indicates task feasibility rather than a strictly fair capability ratio.

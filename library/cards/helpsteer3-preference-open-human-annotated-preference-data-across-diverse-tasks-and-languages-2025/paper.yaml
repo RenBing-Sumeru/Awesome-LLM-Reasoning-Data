@@ -1,0 +1,116 @@
+id: helpsteer3-preference-open-human-annotated-preference-data-across-diverse-tasks-and-languages-2025
+title: 'HelpSteer3-Preference: Open Human-Annotated Preference Data across Diverse Tasks and Languages'
+year: 2025
+venue: arXiv
+authors:
+- Zhilin Wang
+- Jiaqi Zeng
+- Olivier Delalleau
+- Hoo-Chang Shin
+- Felipe Soares
+- Alexander Bukharin
+- Ellie Evans
+- Yi Dong
+- Oleksii Kuchaiev
+source_role:
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- pairwise_preference
+- scalar_reward
+domains:
+- llm-post-training
+training_use:
+- preference_learning
+- reward_modeling
+- safety_alignment
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.11475
+  arxiv: https://arxiv.org/abs/2505.11475
+  code: null
+  data: https://huggingface.co/datasets/nvidia/HelpSteer3#preference
+  project: https://research.nvidia.com/labs/adlr/HelpSteer/
+  huggingface: https://huggingface.co/datasets/nvidia/HelpSteer3#preference
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: General/STEM prompts from WildChat-1M; code and multilingual prompts from ShareGPT, sampled by topic, complexity,
+    and language.
+  trace_author: 17 commercially permissible LLMs generate two responses; specialist human annotators compare the final assistant
+    turn.
+  answer_format: Multi-turn context, response 1, response 2, 7-way preference strength (-3 to +3 plus neither valid), and
+    short annotator justification.
+  process_fields:
+  - context
+  - two model responses
+  - task/language subset
+  - 3-5 ratings
+  - justifications
+  - agreement
+  - overall preference
+  environment_or_substrate: General, STEM, code, and multilingual dialogue contexts capped at 2,000 words.
+  verifier_or_reward: Independent specialist human preferences; overall score is the rounded mean of the three most agreeing
+    ratings.
+  terminal_predicate: A retained pair has valid responses and three sufficiently agreeing annotations; ties are released but
+    excluded from RM training.
+recipe_metadata:
+  base_model: Llama-3.3-70B-Instruct reward-model backbone.
+  teacher: Specialist annotators managed by Scale AI (General/STEM/Code) and Translated (Multilingual).
+  generator: 17 released/permissively usable models generate paired responses.
+  filtering_rule: Remove neither-valid cases and outliers; exclude cases with disagreement greater than 2 among three most
+    agreeing ratings.
+  sampling_protocol: 40,476 samples; 3-5 independent annotations; 6,400+ annotators across 77 countries/regions.
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Scaled Bradley-Terry reward modeling, generative reward models, and RLHF policy alignment.
+audit:
+  source_mixture: WildChat-1M and ShareGPT prompts with outputs from 17 models; unsafe/PII/bias content is filtered.
+  split: Verify dataset card splits before training/evaluation use.
+  decontamination: WildChat/ShareGPT provenance and downstream RM-Bench/JudgeBench overlap require audit.
+  license: Dataset is CC-BY-4.0; upstream prompt/source licenses are separately documented and must be respected.
+  lineage: 'Primary source: https://arxiv.org/abs/2505.11475'
+  known_failure_modes:
+  - Preference is subjective despite high agreement.
+  - Vendor and specialist selection may shift values across domains/languages.
+  - Filtered unsafe cases limit direct safety coverage.
+  citation_status: verified
+  confidence: high
+  notes: Primary paper HTML and official dataset/project links reviewed.
+inclusion_reason: Candidate paper on human-annotated multilingual preference data with an official arXiv primary link.
+related: []
+tags:
+- candidate-batch
+- post-training
+- reward-or-judgment
+one_line_summary: HelpSteer3-Preference is a CC-BY-4.0 human-annotated, multilingual and specialist preference dataset for
+  reward modeling and RLHF.
+why_it_matters: It specifies specialist recruitment, multi-annotator preference strength, disagreement filtering, multilingual
+  coverage, and the release boundary needed to reuse preference data responsibly.
+status: verified
+needs:
+- 'needs_review: human curator should assess L5 promotion'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper review
+  confidence: high
+  notes: Authors, NVIDIA affiliation, data release, annotation protocol, filtering, and RM usage reviewed.
+category_ids:
+- preference_reward_feedback_data

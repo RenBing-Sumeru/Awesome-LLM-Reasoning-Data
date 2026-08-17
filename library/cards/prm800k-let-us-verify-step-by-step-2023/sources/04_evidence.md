@@ -1,0 +1,5 @@
+# 04 Evidence
+
+The construction evidence is the public PRM800K repository, which releases approximately 800,000 step-level labels over about 75,000 solutions to about 12,000 MATH problems, along with annotation instructions, grading code, split files, and scored samples. The OpenAI publication states that process supervision produced better reward-model selection than outcome supervision in their setting.
+
+The main result reported by the paper is that a process-supervised model solves 78 percent of problems from a representative MATH test subset. The paper also reports that PRM best-of-N scales better than outcome reward models and majority vote as the number of generated solutions increases. Row-level evidence is the human step label and the final-answer grading result; aggregate success rates alone do not certify that each reasoning step is semantically correct. Score reuse is bounded by MATH split changes, sampling budget, generator model, answer grader behavior, and possible public-data contamination.

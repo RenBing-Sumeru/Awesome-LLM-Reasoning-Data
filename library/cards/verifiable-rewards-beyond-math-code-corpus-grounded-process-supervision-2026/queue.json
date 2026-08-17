@@ -1,0 +1,17 @@
+{
+  "title": "Verifiable Rewards Beyond Math and Code: Lightweight Corpus-Grounded Process Supervision for Factual Question Answering",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.29648",
+    "data": "https://huggingface.co/datasets/Shichengf/CorVer-training-data"
+  },
+  "review_note": "L4 材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-18T13:59:19Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布6.25万条语料库依据的句子级奖励记录",
+    "updated_at": "2026-07-18T13:59:19Z"
+  }
+}

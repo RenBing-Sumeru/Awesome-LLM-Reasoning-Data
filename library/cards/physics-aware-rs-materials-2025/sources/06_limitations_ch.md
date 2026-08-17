@@ -1,0 +1,5 @@
+- 内部配方、湿实验目标、轨迹文本、选中/拒绝候选、gate values、代码、prompts 和 checkpoints 均不可得。
+- 连续误差和 PLQY gates 继承目标测量不确定性和来源风险；阈值及答案提取方式未披露。
+- 最终数值接受不能证明 rationale 中的机理主张物理正确。
+- 约 20% prompts 被丢弃，但发布物未揭示哪些配方区间失败，或这如何改变训练分布。
+- curator inference：没有逐项日志时，较低候选数无法与更容易 prompts、更强教师行为或 gate 引入的选择偏差区分。

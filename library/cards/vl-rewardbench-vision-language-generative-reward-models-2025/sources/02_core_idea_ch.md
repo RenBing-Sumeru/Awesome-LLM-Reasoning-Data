@@ -1,0 +1,1 @@
+VL-RewardBench 通过 AI 辅助难例筛选与人工复核构造 1,250 个高质量图文偏好实例，覆盖通用多模态、视觉幻觉和复杂推理，用统一 pairwise accuracy 检验视觉语言生成式奖励模型。VL-RewardBench 含 1,250 个经人工核验的偏好样本，覆盖 general multimodal、hallucination 和 complex reasoning 三大域；每条记录关联图像、问题、两个候选回答及偏好标签，部分样本还保留错误类型或来源信息。官方数据集用于 evaluation，不是大规模训练语料。

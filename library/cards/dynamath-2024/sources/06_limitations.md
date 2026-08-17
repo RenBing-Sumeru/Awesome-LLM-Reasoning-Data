@@ -1,0 +1,3 @@
+Correctness is only as strong as the seed program and answer-matching rule. A generated variant may be visually ambiguous, have rendering differences, or accept mathematically equivalent answers that a strict parser misses. Worst-case accuracy is sensitive to the number and distribution of sampled variants.
+
+The release includes code under an MIT-labeled repository badge, but the seed questions include material from existing datasets and public resources, so downstream reuse must audit the data-level licenses separately. Public sample data can contaminate future VLM training, and generated variants are not automatically hidden unless the generation seed and program set are controlled.

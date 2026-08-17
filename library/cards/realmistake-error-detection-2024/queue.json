@@ -1,0 +1,19 @@
+{
+  "title": "Evaluating LLMs at Detecting Errors in LLM Responses",
+  "candidate_links": {
+    "paper": "https://openreview.net/forum?id=dnwRScljXr",
+    "data": "https://huggingface.co/datasets/ryokamoi/realmistake",
+    "code": "https://github.com/psunlpgroup/ReaLMistake",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-25T10:21:53Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布 ReaLMistake，含 900 条经专家核验的真实错误回答及解释",
+    "updated_at": "2026-07-25T10:21:53Z"
+  }
+}

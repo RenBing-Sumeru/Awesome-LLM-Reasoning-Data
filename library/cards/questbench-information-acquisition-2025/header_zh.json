@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "QuestBench 将澄清提问变为可由求解器验证的选择：找出唯一能消除题目剩余解歧义的缺失变量。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可验证的主动信息获取推理基准",
+  "best_for_ch": "研究澄清提问、主动推理或信息获取策略的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Belinda Z. Li, Been Kim, Zi Wang",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

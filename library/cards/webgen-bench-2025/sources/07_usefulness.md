@@ -1,0 +1,5 @@
+Use this work as a reference for executable evaluation of website-generation agents. A faithful reuse should preserve instruction text, requirement provenance, test-case operation, expected result, generated code artifact, startup result, UI-agent label, PARTIAL handling, appearance score, framework/model identity, runtime version, timeout, and evaluator prompt.
+
+It is useful as a recipe for turning open-ended UI generation into auditable instances: decompose the user request into atomic browser operations, run them in a controlled environment, record action traces and screenshots, and keep functional success separate from visual preference. It is also useful as a warning that aggregate accuracy is not enough; per-test evidence, startup failures, and evaluator reliability must be retained.
+
+For training use, WebGen-Instruct and the 600 retained trajectories show one supervised fine-tuning path, but training claims require split/decontamination checks and reproduction of the appearance filter. For evaluation use, the public benchmark should be treated as a versioned, potentially contaminable test set rather than a hidden live exam.

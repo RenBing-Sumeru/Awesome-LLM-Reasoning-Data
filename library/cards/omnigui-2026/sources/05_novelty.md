@@ -1,0 +1,5 @@
+The prior-work baseline is screenshot-centric GUI evaluation, web/desktop/mobile task completion, or benchmarks where audio/video is used as reference content rather than a synchronous decision signal. OmniGUI is not novel because it invents tapping, coordinate grounding, or teacher-forced action matching; those ingredients already exist in GUI-agent evaluation.
+
+What changes is the observation contract. Each step can require static screenshot, temporal video, synchronous audio, task instruction, and action history to determine the next executable action. The dependency labels provide a quality signal because they are based on physical information availability rather than post-hoc model performance.
+
+Before reuse, inspect the filtered-release mismatch, media licensing and app-content redistribution rights, whether traces include personal or copyrighted app content, whether the model interface truly accepts interleaved raw audio/video, and whether coordinate tolerance, bounding boxes, task language, and prompt JSON schema match the official evaluator.

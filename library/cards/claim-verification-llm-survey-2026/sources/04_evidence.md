@@ -1,0 +1,3 @@
+The paper provides a structured account of published frameworks and datasets rather than a new experimental leaderboard. Its official abstract explicitly names retrieval, prompting, fine-tuning, and publicly available English datasets as the parts covered.
+
+The support for the survey is consequently bibliographic and organizational. It tells readers which dimensions of published work must be kept visible, but it does not establish one new score that settles the field. When using its dataset discussion, check whether a dataset supplies evidence, only labels, or both; that distinction affects whether a reported result measures retrieval, decision making, or a mixture of the two.

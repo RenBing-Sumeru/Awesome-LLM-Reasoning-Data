@@ -1,0 +1,3 @@
+The survey spans studies with different models, prompts, tasks, and measurements, so its summaries do not make every result directly interchangeable. A stronger reported score can reflect a changed task setup as well as a changed reasoning method. Use the taxonomy to narrow a comparison and then read the underlying experiment for its exact conditions.
+
+An intermediate chain can also be readable without reliably explaining why an answer was produced. The survey reports heterogeneous evidence, not a universal test of reasoning faithfulness. If a use case depends on dependable intermediate reasoning, the primary study's checks and failure cases matter more than the mere presence of a chain in its outputs.

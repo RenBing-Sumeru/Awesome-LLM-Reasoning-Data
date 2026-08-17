@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "RLT 以冻结学生的答案似然和解释 KL 反馈训练 Qwen2.5-7B-Instruct 教师，让其基于已知问题—答案对生成供蒸馏的原始解释，但未发布轨迹数据或明确的教师权重。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据构建方案与强化学习教师研究",
+  "best_for_ch": "设计教师轨迹、学生条件奖励、推理蒸馏或强化学习冷启动流程的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Edoardo Cetin, Tianyu Zhao, Yujin Tang",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

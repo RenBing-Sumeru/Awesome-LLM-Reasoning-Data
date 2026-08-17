@@ -1,0 +1,3 @@
+The paper compares direct RL with InT followed by RL on the same 4B base model; the main difference is whether local intervention data is used for initialization. After full training, InT improves nearly 14 percentage points over the base model on IMO-AnswerBench and surpasses larger open models such as gpt-oss-20b. The result supports targeted intervention for mathematical credit assignment but covers only tasks with reference solutions and deterministic answers.
+
+The comparison therefore centers on training efficiency and final performance for the same model on verifiable competition mathematics.

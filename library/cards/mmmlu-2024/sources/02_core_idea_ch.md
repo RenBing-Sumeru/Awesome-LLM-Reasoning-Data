@@ -1,0 +1,3 @@
+核心贡献是在 multilingual-评测, broad-academic, multiple-choice 上提供 14 locales covering Arabic, Bengali, German, Latin American Spanish, French, Hindi, Indonesian, Italian, Japanese, Korean, Brazilian Portuguese, Swahili, Yoruba, and Simplified Chinese; test split only in the OpenAI dataset card.，并把它组织成可复用评测面。核心机制是把任务输入、模型输出和反馈契约绑定起来；这里的反馈契约是：the selected option is compared with the inherited MMLU answer key under the 评测 harness。
+
+数据对象或环境是：static multilingual multiple-choice academic benchmark derived from MMLU test records。最接近的对比对象是 nearby benchmark and 评测-surface datasets that share the same feedback contract。方向标签是 benchmarks_evaluation_surfaces，反馈方式是 程序化。复用时要保留的不只是概览分数，还包括任务对象、评测器、数据切分/版本和 产物谱系。

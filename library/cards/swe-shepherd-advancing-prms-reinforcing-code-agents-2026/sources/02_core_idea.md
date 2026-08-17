@@ -1,0 +1,3 @@
+The SWE-PRM Collection contains issues, repository-state summaries, histories, tool calls or patches, test evidence, and step rewards. Multiple code agents generate trajectories, and labels combine executable tests, patch applicability, progress, and judging.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around issue、repository state, tool actions, patches, test evidence, and step rewards, making the verifier, judge, environment, or execution source traceable for SWE-Bench trajectory selection and code-agent reinforcement. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

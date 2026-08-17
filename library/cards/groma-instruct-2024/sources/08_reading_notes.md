@@ -1,0 +1,5 @@
+- Positioning: Groma releases about 30K GPT-4V conversations that bind dialogue turns to localized visual tokens and boxes.
+- Method handle: Groma first represents selected regions as localized visual tokens, then uses roughly 30K GPT-4V conversations that refer to those tokens so the model learns recognition, description, and grounded dialogue in one format.
+- Data handle: about 30,000 GPT-4V-generated grounded conversations; each record contains image, region tokens or boxes, grounded user dialogue, and assistant response.
+- Evidence anchor: Under comparable multimodal backbones, Groma improves referring-expression and region-captioning tasks while retaining general VQA ability; the region-token ablation supports the link between localized records and grounding gains.
+- Reuse decision: best for training a multimodal assistant that can discuss user-selected image regions; first audit box-token alignment errors can be learned as confident grounded statements.

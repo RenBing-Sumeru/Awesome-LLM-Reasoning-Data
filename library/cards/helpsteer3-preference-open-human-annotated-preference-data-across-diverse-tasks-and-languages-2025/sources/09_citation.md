@@ -1,0 +1,1 @@
+Wang et al. (2025), “HelpSteer3-Preference: Open Human-Annotated Preference Data across Diverse Tasks and Languages,” arXiv:2505.11475. Paper: https://arxiv.org/abs/2505.11475. Data: https://huggingface.co/datasets/nvidia/HelpSteer3.

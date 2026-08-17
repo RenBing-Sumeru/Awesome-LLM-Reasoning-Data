@@ -1,0 +1,6 @@
+- Separate the deployed self-generated `[VERIFY]` label from the training-time ToRA/SymPy correctness oracle.
+- Treat 31,990 rows with `gt` and three-message `conversations` as the final public IFT object, not as all candidates or RL data.
+- Do not derive rejection counts from 50K, 40K, 16.3K, and 31,990; the official artifacts lack a reconciliation manifest.
+- Track DPO's 40%-60% prompt utilization and the much lower wrong-answer recognition than correct-answer recognition.
+- Read the modified-PPO reward-hacking result as a warning that multi-turn correctness bonuses can create deliberate first-step failure.
+- Keep rollout count, construction decoding, decontamination, licenses, checkpoint mapping, and end-to-end lineage as unknown; treat the official repository as a partial recipe rather than a turnkey build because the checked first prompt-preparation script has a syntax error and later scripts require path substitution.

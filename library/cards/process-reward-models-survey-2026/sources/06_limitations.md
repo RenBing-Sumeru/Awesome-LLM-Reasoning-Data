@@ -1,0 +1,1 @@
+The survey does not release a shared process dataset or define universal process labels. A label may reward fluent-looking reasoning rather than real progress, and comparisons across papers can blur differences in feedback source, search budget, or final-answer verification.

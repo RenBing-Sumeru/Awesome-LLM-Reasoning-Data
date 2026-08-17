@@ -1,0 +1,104 @@
+id: fb-bench-human-feedback-2025
+title: 'FB-Bench: A Fine-Grained Multi-Task Benchmark for Evaluating LLMs’ Responsiveness to Human Feedback'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Youquan Li
+- Miao Zheng
+- Fan Yang
+- Guosheng Dong
+- Bin Cui
+- Weipeng Chen
+- Zenan Zhou
+- Wentao Zhang
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- scalar_reward
+- answer_level
+domains:
+- human_feedback
+- chinese
+- dialogue
+training_use:
+- evaluation
+- audit
+construction_layer:
+- filtering_curation
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.471/
+  arxiv: https://arxiv.org/abs/2410.09412
+  code: https://github.com/PKU-Baichuan-MLSystemLab/FB-Bench
+  data: https://github.com/PKU-Baichuan-MLSystemLab/FB-Bench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.471
+  venue: https://aclanthology.org/2025.emnlp-main.471/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.471/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Curated Chinese real-world feedback scenarios in two interaction settings.
+  trace_author: Official curation pipeline with human feedback and original deficient model responses.
+  answer_format: Task, original response, deficiency type, user feedback, and revised response evaluated by a weighted checklist.
+  process_fields:
+  - task
+  - original_response
+  - deficiency
+  - human_feedback
+  - revised_response
+  - checklist
+  environment_or_substrate: Multi-turn Chinese interaction where a user corrects or redirects an LLM.
+  verifier_or_reward: GPT-4o applies an instance-level weighted checklist assembled from task and feedback requirements.
+  terminal_predicate: The revision satisfies applicable checklist items.
+recipe_metadata:
+  base_model: Broad LLM evaluation reported in the paper.
+  teacher: Curators and user-feedback records.
+  generator: Official sample construction and evaluation prompts.
+  filtering_rule: Fine-grained scenario taxonomy controls task, feedback, and prior-response deficiency.
+  sampling_protocol: 591 samples, eight task types, five deficiency types, and nine feedback types.
+  rollout_count: null
+  temperature: null
+  inference_budget: One feedback-conditioned response per benchmark item.
+  optimizer_or_scaffold: Evaluation benchmark; no claim of a released post-training objective.
+audit:
+  source_mixture: Official EMNLP paper, arXiv record, and authors' GitHub release.
+  split: See the repository for released benchmark files.
+  decontamination: The benchmark tests feedback response, but public examples should be held out from training evaluation.
+  license: See the repository.
+  lineage: Curated tasks plus defective responses and human feedback.
+  known_failure_modes:
+  - Chinese-only coverage
+  - GPT-4o checklist scoring can inherit judge-prompt and model bias.
+  citation_status: verified
+  confidence: high
+  notes: Official PDF gives Peking University and Baichuan Inc. affiliations.
+inclusion_reason: It makes human feedback responsiveness concrete through feedback-conditioned revisions and a task-specific
+  judgment rubric.
+related: []
+tags:
+- human_feedback
+- checklist
+- llm_judge
+- chinese
+one_line_summary: FB-Bench tests whether an LLM can use Chinese user feedback to repair a deficient prior response, rather
+  than merely answer a new turn.
+why_it_matters: It isolates an operational feedback contract that ordinary single-turn benchmarks miss.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: curation
+  confidence: high
+  notes: Official EMNLP PDF, DOI, arXiv, and repository were checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "该工作把带额度预算的 ICPC 风格编程评测做成可审计的评测面，让智能体为每一次决策付出成本。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "ICLR 2026 / arXiv 的 benchmark / evaluation surface",
+  "best_for_ch": "关注 benchmark、评分契约、污染风险、评测 harness 和后训练反馈可复用性的研究者。",
+  "confidence_ch": "低",
+  "authors_ch": "Lingfeng Zhou 等（Shanghai Jiao Tong University、Shanghai Innovation Institute）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-12T09:33:42Z"
+}

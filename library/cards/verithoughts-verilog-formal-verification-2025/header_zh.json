@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VeriThoughts 用形式验证反馈筛选 Verilog 推理与代码轨迹，面向可综合 RTL 生成。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "Verilog 推理与形式验证训练数据集",
+  "best_for_ch": "研究硬件代码生成、形式验证反馈或 RTL 对齐的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yubo Wang、Yash Sharma、Hao Luo、Yingcong Chen、Prithviraj Sen、Sanjay Shakkottai、Swarup Bhunia",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-24T09:20:50Z"
+}

@@ -1,0 +1,1 @@
+Existing long-form evaluation uses holistic scores or direct reference comparison. ExpertLongBench lets expert rubrics determine information extraction and converts both model and reference outputs into checklists, separating mentioning an aspect from completing it correctly. The novelty lies in the evaluation representation and grounded comparison, not a new generator.

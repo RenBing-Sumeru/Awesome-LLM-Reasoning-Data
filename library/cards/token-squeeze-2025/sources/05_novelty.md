@@ -1,0 +1,7 @@
+The baseline is not merely “make outputs shorter.” Shortest-correct selection, prompt/decode compression, token penalties, SFT, DPO, and external-model rewriting already address pieces of the problem. The paper compares shortest/fixed-quantile/Q-DYN selection, GPT-4o-mini and TokenSkip rewriting, DPO, SFT, and combined objectives (Tables 2-4).
+
+Its change is a layered data/feedback interface: positive depth follows per-prompt correctness rate rather than a global shortest rule; rejected candidates are explicitly longer and incorrect; steps can be shortened only if a local continuation-distribution KL proxy passes; and DPO-L scales the preference margin by chosen/rejected length while SFT stabilizes positives. The contribution is the combination, not one isolated component (paper §§3.1-3.3).
+
+For the rollout-trace category, this shows that selector, verifier behavior, candidate length, and objective are coupled. Changing sample count or the merged_verify comparator changes p, positives, and pair distribution, so compare with search-distillation recipes under matched rollouts and generation budgets.
+
+Not new: answer checking, self-sampling, DPO, SFT, KL regularization, length penalties, and rewriting all predate the work. KL does not formally prove semantic preservation, and benchmark gains alone do not establish data quality. Reuse needs complete generated records, comparator audit, selection distributions, exclusions, source license, overlap checks, and a fixed revision.

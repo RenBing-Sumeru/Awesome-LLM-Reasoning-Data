@@ -1,0 +1,3 @@
+在线数学后训练可以由当前 policy 生成答案，再用二元正确性 verifier 打标签。Rejection Fine-Tuning（RFT）只保留正确答案做 supervised learning，因此成本高昂的错误 rollout 被丢弃；GRPO 等 policy-gradient 方法会利用正负 reward，但需要 RL 优化形式。NFT 研究的问题是：supervised maximum-likelihood training 能否也直接从模型自身失败中学习。
+
+这项 ICLR 2026 工作使用 DAPO-Math-17k 问题，每个 rollout step 抽取 512 个 prompt，并为每题生成 16 条答案。数据对象是在线 prompt group，其中包含每条答案轨迹、二元正确性、逐题成功率和 old-policy token likelihood；它用于正向与 implicit-negative likelihood term，而不是静态成对偏好数据。已确认官方论文、NVIDIA 项目页、Apache-2.0 的 NVlabs/NFT 代码仓库、DAPO-Math-17k 数据集以及 NFT-7B/NFT-32B 权重。仓库提高了复现性，但没有证明 320 个 rollout step 的全部被拒轨迹、verifier 决策和 optimizer lineage 已完整发布。

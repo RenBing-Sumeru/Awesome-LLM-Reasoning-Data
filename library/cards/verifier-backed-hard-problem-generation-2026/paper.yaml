@@ -1,0 +1,122 @@
+id: verifier-backed-hard-problem-generation-2026
+title: Verifier-Backed Hard Problem Generation for Mathematical Reasoning
+year: 2026
+venue: arXiv preprint
+authors:
+- Yuhang Lai
+- Jiazhan Feng
+- Yee Whye Teh
+- Ning Miao
+source_role:
+- construction_recipe
+- verifier_reward
+- scaling_study
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- mathematical_reasoning
+- symbolic_mathematics
+training_use:
+- sft
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.06660
+  arxiv: https://arxiv.org/abs/2605.06660
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2605.06660
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Textbook integral seeds and competition-math/MATH seeds without item-level manifests.
+  trace_author: Qwen3-4B Setter writes problem-reference pairs; Qwen3-4B Solver estimates difficulty.
+  answer_format: Seed, generated problem/solution, verifier decision, Solver rollouts/accuracy, gated hardness reward and
+    disposition.
+  process_fields:
+  - seed
+  - problem
+  - reference
+  - verifier_bit
+  - solver_rollouts
+  - accuracy
+  - reward
+  - filter_state
+  - split
+  environment_or_substrate: SymPy derivative checker for integrals or rule filters plus GPT-5.4 judge for general math.
+  verifier_or_reward: Setter reward is verifier acceptance times one minus Solver accuracy.
+  terminal_predicate: Rejected pairs get zero reward and do not train the Solver; accepted filtered pairs enter pools.
+recipe_metadata:
+  base_model: Qwen3-4B-Base
+  teacher: Unnamed frontier model for 400 integral cold-SFT items; GPT-5.4 is the soft judge.
+  generator: Cold SFT then GRPO-style Setter/Solver training.
+  filtering_rule: Parsing, derivative equality or structural filters plus all-true GPT-5.4 rubric, then difficulty and deduplication.
+  sampling_protocol: Eight Setter/Solver rollouts; ten local-difficulty samples; temperatures vary by stage.
+  rollout_count: 8
+  temperature: 1.0
+  inference_budget: Responses up to 8,192 tokens; a full round takes about 60 hours on eight unspecified GPUs.
+  optimizer_or_scaffold: Setter SFT then Setter/Solver GRPO-style RL at LR 2e-6.
+audit:
+  source_mixture: Hard and soft regimes report aggregate funnels but no records.
+  split: Integral 18,663 to 4,076 retained; general math 400,000 to 20,670 accepted and 16,536/4,134 train/validation.
+  decontamination: Partial only; benchmark-wide overlap unknown.
+  license: Paper is CC BY 4.0; no artifact or source-rights license is available.
+  lineage: No seeds, outputs, rejects, verifier logs, challenge pools or checkpoints are released.
+  known_failure_modes:
+  - Verifier gating shifts reward hacking to acceptance boundaries
+  - SymPy correctness is backend-scoped
+  - GPT-5.4 is a fallible soft judge
+  - local failure is model-dependent
+  - a large funnel step from 107398 to 46080 is unexplained
+  citation_status: verified
+  confidence: medium
+  notes: Only paper is verified; hard and soft claims remain separate.
+inclusion_reason: Makes validity and difficulty separate signals with detailed construction funnels.
+related:
+- r-zero-self-evolving-reasoning-llm-from-zero-data-2025
+tags:
+- hard-problem-generation
+- setter-solver-verifier
+- sympy
+- llm-as-a-judge
+- grpo
+- rejection-funnel
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Gates Setter difficulty reward with a symbolic or LLM verifier, reporting detailed funnels but releasing
+  no generated data or checker.
+why_it_matters: Provides a clear validity-before-difficulty recipe and shows how failure risk moves to the verifier boundary.
+card: null
+needs:
+- missing code/data/checker
+- unknown record provenance and rejects
+- incomplete contamination
+- unknown source rights
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv paper verified; artifacts unavailable.

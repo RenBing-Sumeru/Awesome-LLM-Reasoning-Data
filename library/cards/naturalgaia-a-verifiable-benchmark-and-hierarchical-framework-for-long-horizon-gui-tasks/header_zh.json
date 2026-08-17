@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "将真实 GUI 意图拆成可验证因果路径，并发布长程任务与人工核验轨迹。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序化验证的推理数据或基准",
+  "best_for_ch": "需要可复现结果验证的推理数据研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Zihan Zheng, Tianle Cui, Taoran Wang, Fengtao Wang, Jiahui Pan, Lewei He, Qianglong Chen",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T00:00:00Z"
+}

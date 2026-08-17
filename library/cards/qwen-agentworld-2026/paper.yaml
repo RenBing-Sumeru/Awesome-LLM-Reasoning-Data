@@ -1,0 +1,205 @@
+id: qwen-agentworld-2026
+title: 'Qwen-AgentWorld: Language World Models for General Agents'
+year: 2026
+venue: arXiv preprint
+authors:
+- Yuxin Zuo
+- Zikai Xiao
+- Li Sheng
+- Fei Huang
+- Jianhong Tu
+- Yuxuan Liu
+- Tianyi Tang
+- Xiaomeng Hu
+- Yang Su
+- Qingfeng Lan
+- Yantao Liu
+- Qin Zhu
+- Yinger Zhang
+- Bowen Yu
+- Haiquan Zhao
+- Haiyang Xu
+- Jianxin Yang
+- Jiayang Cheng
+- Junyang Wang
+- Lianghao Deng
+- Mingfeng Xue
+- Tianyi Bai
+- Yang Fan
+- Yubo Ma
+- Yucheng Li
+- Zeyu Cui
+- Zhihai Wang
+- Zhihui Xie
+- Zhuorui Ye
+- An Yang
+- Dayiheng Liu
+- Jingren Zhou
+- Ning Ding
+source_role:
+- model_report
+- agent_environment
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agentic-environments
+- tool-use
+- software-engineering
+- web
+- operating-systems
+training_use:
+- sft
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.24597
+  arxiv: https://arxiv.org/abs/2606.24597
+  code: https://github.com/QwenLM/Qwen-AgentWorld
+  data: https://huggingface.co/datasets/Qwen/AgentWorldBench
+  project: https://qwen.ai/blog?id=qwen-agentworld
+  huggingface: https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
+  doi: https://doi.org/10.48550/arXiv.2606.24597
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Training uses more than 10M environment-interaction trajectories from dedicated agent infrastructure, open
+    interaction traces, and in-house agentic SFT trajectories; CPT additionally uses specialized-domain world-knowledge corpora.
+    The released AgentWorldBench is a separate 2,170-sample test set, not the reported training corpus.
+  trace_author: 'Dedicated-infrastructure agent systems and in-house foundation-model agents produce two training sources;
+    authors of open traces vary and item-level attribution is undisclosed. An unnamed general-purpose reasoning model generates
+    SFT candidates. AgentWorldBench uses frontier-agent trajectories: the report names Claude Sonnet 4.5 and Claude Opus 4.6
+    for text-domain collection and says three Qwen-family models augment GUI collection, without naming all three.'
+  answer_format: A sample contains a system-level instruction, prior alternating user turns carrying agent actions and assistant
+    turns carrying environment observations, the current action, and one next-observation target. The released AgentWorldBench
+    test rows expose task, id, prompt, response, current_prompt, system_str, turn_idx, and total_turns.
+  process_fields:
+  - system_prompt
+  - action
+  - environment_observation
+  - interaction_history
+  - current_turn
+  - rubric_score
+  - rule_verifier_signal
+  environment_or_substrate: 'Seven text-serialized environments: MCP, Search, Terminal, SWE, Android, Web, and OS. Android,
+    Web, and OS use accessibility trees or UI view hierarchies rather than pixel observations.'
+  verifier_or_reward: LWM RL uses an LLM judge scoring Format, Factuality, Consistency, Realism, and Quality from 1 to 5,
+    plus a binary executable rule verifier for a subset; the two rewards are mixed 9:1 (rubric:rule). AgentWorldBench separately
+    uses reference-grounded judging against released real-environment observations and targeted rule checks.
+  terminal_predicate: The training objective is next-environment-observation fidelity; a subset has executable 0/1 verification,
+    but its coverage is undisclosed. Benchmark evaluation compares a prediction with its real observation using the five-dimension
+    rubric and selected deterministic checks.
+recipe_metadata:
+  base_model: The released Qwen-AgentWorld-35B-A3B checkpoint is based on Qwen3.5-35B-A3B-Base. The report also studies Qwen-AgentWorld-397B-A17B,
+    but the checked official release does not provide its checkpoint or starting lineage.
+  teacher: SFT candidates come from an unnamed general-purpose reasoning model and are scored by an unnamed independent judge;
+    identities, versions, licenses, and calibration are unknown.
+  generator: Dedicated infrastructure synthesizes domain tasks and lets agent systems execute them end to end; open and in-house
+    trajectories are normalized into the same schema. SFT generates three reasoning rollouts per query.
+  filtering_rule: Trajectory filters remove records with fewer than two turns, undeclared MCP/SWE tools, broken GUI environments,
+    empty actions, retry cycles, and GUI no-change turns. CPT applies information-theoretic loss masking from token-overlap
+    statistics. SFT applies best-of-three judge rejection sampling, but its score threshold is undisclosed.
+  sampling_protocol: Training randomly samples one target turn from each trajectory. SFT uniformly samples one of templates
+    v2-v11, truncates samples above 256K tokens, and retains the best of three judged rollouts only above a minimum threshold.
+    RL uses one turn per trajectory and filters histories above 128K tokens.
+  rollout_count: 3
+  temperature: null
+  inference_budget: SFT uses a 256K-token context window; RL history is capped at 128K tokens. Generation limits, decoding
+    parameters, and the RL on-policy rollout count are unknown.
+  optimizer_or_scaffold: 'Three stages: continual pre-training, supervised fine-tuning, and GSPO reinforcement learning. The
+    report gives 7,094 SFT trajectories after rejection sampling and a 92,308-trajectory RL train pool; RL invokes the judge
+    asynchronously and combines rubric and rule rewards.'
+audit:
+  source_mixture: The report states more than 10M trajectories and names three trajectory channels plus specialized CPT corpora,
+    but publishes no item inventory, mixture weights, per-source counts, collection dates, or public-trace license manifest.
+    The official model card states that external API-service outputs were not included in the training pipeline; this does
+    not resolve item-level provenance.
+  split: CPT, SFT, and RL pools are stated to be strictly disjoint. AgentWorldBench is a distinct 2,170-row test set built
+    from five frontier agents on nine established benchmark suites. No train-pool manifest, source-level overlap report, or
+    released mapping establishes the claimed separation independently.
+  decontamination: AgentWorldBench is described as out of distribution because training and benchmark queries are partitioned
+    at the source level. The checked artifacts do not provide a complete contamination, source-overlap, or memorization audit.
+  license: The official repository, released 35B weights, and AgentWorldBench are Apache-2.0. Rights and redistribution terms
+    for the more-than-10M training trajectories, open traces, specialized corpora, in-house data, and frontier-agent interaction
+    records are unknown.
+  lineage: The report gives stage-level sources, transformations, and the released 35B base model. It does not release item-level
+    source-to-sample lineage, generator and judge versions, collection timestamps, training manifests, or the 397B checkpoint
+    lineage.
+  known_failure_modes:
+  - The more-than-10M figure describes unreleased training trajectories; AgentWorldBench contains 2,170 evaluation samples
+    and must not be counted as released training data.
+  - The RL reward is weighted mostly toward an LLM-judge rubric (9:1 rubric:rule), while the judge identity, version, calibration,
+    and error analysis are not released.
+  - Executable rule verification covers only a subset; coverage, verifier mapping, and complete verifier code are unavailable.
+  - The report observes self-praise reward hacking and describes rule anchoring, content-type classification, and tag extraction
+    as mitigations, but provides no independent robustness audit.
+  - Claims that the stage pools are disjoint and the benchmark is out of distribution are not backed by public split manifests
+    or a full contamination study.
+  - Benchmark results measure model simulation performance; they do not establish completeness, legality, or quality of the
+    unreleased training trajectories.
+  citation_status: verified
+  confidence: medium
+  notes: Checked the official arXiv report, Qwen project page and repository, released 35B model card, and AgentWorldBench
+    dataset. The data URL is evaluation-only. No release of the training trajectories, SFT/RL pools, judge, complete verifier
+    layer, or 397B checkpoint was found.
+inclusion_reason: A frontier model report with unusually concrete disclosure of the next-state data object, trajectory filtering,
+  CPT/SFT/GSPO stages, and hybrid judge/rule feedback, while the training records and core audit artifacts remain unreleased.
+related: []
+tags:
+- qwen
+- frontier-report
+- data-disclosure-ledger
+- language-world-model
+- agent-environment
+- agentworldbench
+- cpt
+- sft
+- rl
+- gspo
+- rubric-reward
+- rule-verifier
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Qwen-AgentWorld reports CPT, SFT, and GSPO RL over more than 10M seven-domain environment trajectories,
+  releases 35B weights and the separate 2,170-sample AgentWorldBench test set, and leaves the training corpus and reward stack
+  only partially auditable.
+why_it_matters: It exposes enough of a frontier agent-world-model pipeline to distinguish trajectory sources, next-state targets,
+  SFT curation, and RL feedback, while showing why an open benchmark and checkpoint do not make the underlying training data
+  reproducible.
+card: null
+needs:
+- 'needs_data: training-trajectory manifests, source inventories, stage-specific record accounting, public-trace provenance,
+  and in-house-data governance'
+- 'needs_metadata: SFT generator/judge identities and versions, rejection threshold, decoding settings, and 397B checkpoint
+  lineage'
+- 'needs_reward: RL judge implementation and calibration, executable-verifier coverage/code, reward aggregation details, and
+  on-policy rollout settings'
+- 'needs_audit: public split manifests, training-versus-AgentWorldBench overlap analysis, contamination checks, and independent
+  reward-hacking evaluation'
+- 'needs_license: rights for training trajectories, open traces, specialized corpora, in-house records, and frontier-agent
+  interaction data'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official paper, project/repository, 35B model, AgentWorldBench release, and evaluation materials were checked. Training
+    trajectories and material reward dependencies remain unreleased.

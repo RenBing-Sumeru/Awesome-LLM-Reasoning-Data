@@ -1,0 +1,267 @@
+id: traject-bench-2026
+title: 'TRAJECT-Bench: A Trajectory-Aware Benchmark for Evaluating Agentic Tool Use'
+year: 2026
+venue: ICLR 2026
+authors:
+- Pengfei He
+- Zhenwei Dai
+- Bing He
+- Hui Liu
+- Xianfeng Tang
+- Hanqing Lu
+- Juanhui Li
+- Jiayuan Ding
+- Subhabrata Mukherjee
+- Suhang Wang
+- Yue Xing
+- Jiliang Tang
+- Benoit Dumoulin
+source_role:
+- benchmark
+- data_release
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- trajectory_value
+domains:
+- agent_trajectories
+- tool_use
+- environment_interaction
+- multi_tool_orchestration
+- api_tools
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://openreview.net/pdf?id=TZWnWvsQ0X
+  paper_pdf: https://openreview.net/pdf?id=TZWnWvsQ0X
+  arxiv: https://arxiv.org/abs/2510.04550
+  code: https://github.com/PengfeiHePower/TRAJECT-Bench
+  data: https://huggingface.co/datasets/bigboss24/TRAJECT-Bench
+  project: null
+  huggingface: https://huggingface.co/datasets/bigboss24/TRAJECT-Bench
+  doi: https://doi.org/10.48550/arXiv.2510.04550
+  venue: https://iclr.cc/virtual/2026/poster/10009304
+  openreview: https://openreview.net/forum?id=TZWnWvsQ0X
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  release: null
+  leaderboard: null
+  license: https://github.com/PengfeiHePower/TRAJECT-Bench/blob/master/LICENSE
+data_object:
+  object_type: A synthetic benchmark record pairing a natural-language tool-use task with a complete reference trajectory
+    of parameterized API calls, trajectory structure metadata, task metadata, and a reference final answer over a curated
+    production-style tool catalog.
+  prompt_source: Fifty manually collected representative task types, five per domain across travel, mapping, finance, weather,
+    e-commerce, news/media, gaming, email, education, and music, instantiated against RapidAPI-derived tools. Record-level
+    real-world source URLs are not disclosed.
+  trace_author: Parallel reference trajectories are synthesized by an LLM from a task type and available tools. Sequential
+    chains begin from a directed output-to-input tool graph and manually authored chain templates with explicit bindings,
+    then an LLM instantiates calls and queries. The paper says automatic validation and human review follow; exact generator/checker
+    runs are undisclosed.
+  task_record:
+  - query
+  - tool_list
+  - trajectory_type
+  - final_answer
+  - task_name
+  - task_description
+  - tool_count
+  tool_call_fields:
+  - tool name
+  - tool description
+  - required parameter names and values
+  - optional parameter names and values
+  - parent tool name
+  - API name
+  - domain name
+  - sequential output-to-input binding or placeholder where applicable
+  answer_format: A reference parallel set or ordered sequential chain of fully parameterized tool calls paired with the query
+    and a final natural-language answer. Parallel order is not semantically scored; sequential order is.
+  process_fields:
+  - reference tool identity
+  - reference arguments
+  - trajectory structure
+  - sequential dependency/order
+  - task type and domain
+  - final answer
+  - tool count
+  observation: Tool specifications include descriptions and empirically observed output information, and the hosted rows expose
+    a final answer. Intermediate raw API response snapshots are not part of the verified row schema and no immutable observation
+    replay bundle was found.
+  action_space: Function/API calls over 1,228 curated RapidAPI-derived tools; paper experiments expose the full, domain-restricted,
+    fixed, or retrieved tool pool depending on the evaluation condition.
+  environment_or_substrate: Live production-style APIs reached through the released tool-execution scaffold, plus static released
+    tool schemas and reference trajectories. Endpoint versions, credentials/subscriptions, response snapshots, and reset semantics
+    are not pinned.
+  verifier_or_reward: Programmatic Exact Match on reference tool names, Inclusion recall, exact normalized argument comparison
+    for common tools, and retrieval rate; sequential EM is order-sensitive. Claude-4-by-default judges trajectory satisfaction,
+    and an LLM judge compares final answers.
+  verifier_output: Per-query trajectory exact match, inclusion, tool-usage results, optional retrieval rate, trajectory-satisfaction
+    score, and final-answer accuracy. The public model-evaluation script directly computes only EM, Inclusion, Usage, and
+    retrieval rate; exact post-processing for the reported judge metrics is not tied to an immutable run.
+  reward: No training reward or step-level process reward is attached. The paper reports evaluation metrics and an LLM-judge
+    trajectory score rather than a post-training objective.
+  terminal_predicate: Benchmark correctness is determined by agreement with the reference tool trajectory/arguments/order
+    and by LLM-judged final-answer equivalence; ReAct execution termination alone does not establish success.
+  provenance: RapidAPI tool -> execution/description/overlap/complexity curation -> manually collected task type -> LLM-generated
+    parallel reference or manual sequential template plus LLM instantiation -> automatic validation and human review -> hosted
+    query/reference/final-answer row -> evaluated model trajectory -> programmatic, judge, and final-answer metrics.
+  release_shape: Paper Section 3.2 says 5,670 queries, while Appendix Table 9 reports 2,000 simple parallel, 2,000 hard parallel,
+    and 1,870 sequential rows, which sum to 5,870. The current HF raw tree shows all ten parallel domains but only nine sequential
+    domains (Email absent); its Viewer lists 28 configurations and also omits parallel Mapping.
+recipe_metadata:
+  base_model: Not a training recipe. The benchmark evaluates multiple proprietary and open models under direct, retrieval,
+    native tool-calling, and ReAct conditions.
+  teacher: unknown
+  generator: The paper does not name the construction LLMs. The released `simple_traj_gen_v2.py` defaults to Gemini 2.5 Pro
+    for trajectory generation; the released parallel query conversion script defaults to Claude 3.7 and names a Gemini-2.5-Pro
+    trajectory input. These defaults do not prove the exact published run configuration.
+  prompt_task_source: Fifty manually curated task-type descriptions over ten RapidAPI-derived domains and the corresponding
+    curated tool specifications.
+  sampling_protocol: For parallel data, the official README describes five trajectories per tool count from 3 through 10 for
+    each of five task types in each of ten domains, yielding 2,000 references, each paired with simple and hard queries. Sequential
+    templates are controlled by chain length and instantiated multiple times; exact seeds and final per-template rejection
+    counts are unknown.
+  temperature: unknown
+  rollout_count: unknown
+  inference_budget: unknown
+  search_or_scaffold: Parallel trajectories are generated as independent call sets. Sequential trajectories use a directed
+    tool compatibility graph, manually designed chain templates, and explicit adjacent-call bindings. Evaluation compares
+    domain/all/retrieval pools and ReAct with static or dynamic retrieval.
+  filtering_rule: Tools are executed across parameter combinations; erroring or semantically trivial tools are removed; descriptions
+    are refined from observed I/O; identical functions are deduplicated with LLM assistance and manual verification; parameter-complex
+    tools are favored. Generated query/trajectory pairs receive LLM-based automatic validation and human inspection, but the
+    exact run manifest and rejection ledger are undisclosed.
+  selection_threshold: unknown
+  optimizer_or_training_scaffold: null
+  construction_code_notes: The released trajectory generator's validation/refinement path is optional behind `--enable_checking`;
+    official sources do not disclose whether that flag, which checker model, or which random seed produced the hosted data.
+audit:
+  source_mixture: Synthetic queries and reference trajectories grounded in manually collected task types, RapidAPI-derived
+    tool specifications and empirical I/O, manual sequential templates, LLM generation/checking, human inspection, and generated
+    final answers.
+  split: The hosted dataset exposes one public `test` split. No train/dev/hidden-test partition or separation policy is documented.
+  decontamination: unknown
+  benchmark_overlap: No systematic overlap or near-duplicate audit against ToolBench, other public tool-use benchmarks, model
+    pretraining corpora, or future training data is disclosed. Public queries, references, tools, and evaluators create contamination
+    and benchmark-gaming risk.
+  lineage: High-level construction lineage is described and code is public, but record-level source/tool rights, exact generation/checker
+    endpoints, prompts, seeds, rejections, reviewer decisions, file hashes, and a paper-to-release manifest are missing.
+  license: The official GitHub repository presents an MIT license and the HF dataset card declares MIT. The paper says data
+    are synthetic or public under appropriate licenses. No per-API license/provenance manifest verifies that all RapidAPI
+    schemas, outputs, third-party content, or generated provider responses can be redistributed and reused under MIT.
+  release_version: arXiv v2 is dated 2025-10-11. GitHub master history currently ends at short commit 2723fd8 (2025-11-17),
+    but no immutable paper-era tag or GitHub release was verified. The HF artifact is a separate living repository with independently
+    updated data/tool subtrees.
+  version_drift: 'The paper has an internal count mismatch: Section 3.2 says 5,670, while Table 9 sums to 5,870. The current
+    HF tree omits sequential Email, and the Viewer additionally omits parallel Mapping. GitHub `public_data/README.md` says
+    the dataset will be updated and an updated version will be released. Schema spelling also differs between hosted `tool_list`
+    and code expecting `tool list`.'
+  verifier_or_judge_failure_modes:
+  - Inclusion is recall-only and does not penalize redundant extra calls.
+  - The released Usage function compares parameters only for tools present in both prediction and reference, so the submetric
+    alone does not penalize missing tools.
+  - Exact Match checks tool names rather than semantic equivalence; parallel EM ignores order and sequential EM requires exact
+    order.
+  - Trajectory satisfaction and final-answer accuracy depend on an unpinned Claude-4/default judge setup with no reported
+    calibration, agreement, or adversarial audit.
+  - Mutable API responses and failures can change final answers and ReAct observations without a change in agent capability.
+  - Similar tools, parameter-blind selection, redundant calls, and indirect-query intent errors are documented failure patterns.
+  - Public references and metric code permit direct benchmark optimization and future contamination.
+  successful_and_failed_sample_retention: The HF Viewer exposes some rows whose `final_answer` reports API failures or JSON-generation
+    errors, so the hosted reference set is not visibly success-only. No rejected/dropped-sample ledger, failure-retention
+    policy, or complete archive of evaluated-model trajectories/logs was verified.
+  privacy_or_consent: The paper states that it involves no human subjects or personal/sensitive data and uses synthetic or
+    public data. A record-level PII scan, API-output privacy audit, consent review, and third-party terms audit are undisclosed.
+  citation_status: verified
+  confidence: medium
+  notes: Citation, 13 authors, ICLR 2026 poster status, arXiv v2, full paper and appendices, official GitHub/HF links, dataset
+    fields/tree/viewer, construction scripts, evaluation scripts, and metric implementation were inspected. Count reconciliation,
+    immutable release identity, raw replay, provider/tool rights, and exact construction/judge runs remain unresolved.
+  remaining_unknowns:
+  - canonical row count and intended availability of sequential Email and parallel Mapping viewer configurations
+  - paper-era GitHub commit, HF revision, file hashes, schema version, and tagged release manifest
+  - exact generator/checker/judge endpoints, prompts, temperatures, seeds, command lines, and optional validation settings
+  - automatic and human rejection counts, rubric, reviewer identities, agreement, and adjudication logs
+  - per-tool RapidAPI terms, output redistribution rights, and generated-model-output provider terms
+  - train/dev/hidden-test, benchmark-overlap, and decontamination policy
+  - judge calibration, false-positive/false-negative rates, and robustness to semantic-equivalent trajectories
+  - API response snapshots, endpoint versions, credentials/subscriptions, reset semantics, and deterministic replay procedure
+  - evaluated-model log completeness and successful/failed/dropped episode accounting
+  - record-level privacy/PII scan and consent/terms documentation for returned third-party content
+inclusion_reason: 'TRAJECT-Bench makes multi-tool behavior a concrete reasoning-data object: queries are paired with parameterized
+  parallel or sequential reference trajectories, and evaluation attaches tool-selection, argument, order/dependency, judge,
+  and final-answer signals. It belongs in the environment/agent-trajectory track, while its living API substrate and unreconciled
+  releases make it an evaluation/audit reference rather than a verified training corpus.'
+related:
+- toolathlon-2025
+- tau2-bench-2025
+- mcp-agentbench-evaluating-real-world-language-agent-performance-2025
+tags:
+- environment-agent-trajectory-data
+- traject-bench
+- agent-trajectories
+- tool-use
+- multi-tool
+- api-benchmark
+- trajectory-verification
+- llm-judge
+- version-drift
+- replay-risk
+category_ids:
+- environment_agent_trajectory_data
+one_line: TRAJECT-Bench releases synthetic query/reference-call pairs over 1,228 RapidAPI-derived tools and scores selection,
+  arguments, sequential order, and final answers, but its unpinned artifacts do not reconcile row counts or preserve immutable
+  API replay.
+one_line_summary: TRAJECT-Bench releases synthetic query/reference-call pairs over 1,228 RapidAPI-derived tools and scores
+  selection, arguments, sequential order, and final answers, but its unpinned artifacts do not reconcile row counts or preserve
+  immutable API replay.
+why_it_matters: It exposes the trajectory-level feedback contract that answer-only tool benchmarks miss, while showing why
+  tool schema, API state, judge version, release manifest, and upstream rights must be frozen before public agent trajectories
+  can be treated as reusable post-training data.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  repository_files_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Verified the ICLR poster/OpenReview conference record, arXiv metadata and complete HTML text/appendices, official
+    GitHub/HF artifacts, current release trees/viewer fields, query-generation code, evaluation scripts, metric implementation,
+    and declared licenses. The accepted PDF endpoint was access-gated for direct download in this environment; its published-conference
+    header and identity were verified through official indexed records.
+curation_level: L3_summary_ready
+needs:
+- 'needs_count_reconciliation: reconcile Section 3.2''s 5,670 with Table 9''s 5,870 and document the intended sequential Email
+  and HF Viewer parallel Mapping configurations'
+- 'needs_release_manifest: tag and hash the paper-era code, data, tool schemas, judge prompts, dependencies, and HF files
+  under one immutable release'
+- 'needs_replay: publish versioned API fixtures/response snapshots, endpoint versions, reset rules, credentials/subscription
+  requirements, and deterministic offline replay'
+- 'needs_license: publish per-tool provenance and rights for RapidAPI schemas/outputs, third-party content, and generated
+  provider outputs'
+- 'needs_construction_lineage: disclose exact generator/checker endpoints, prompts, temperatures, seeds, commands, validation
+  flag, rejected counts, and human-review protocol'
+- 'needs_split_decontamination: document train/dev/hidden-test policy, benchmark-overlap checks, and future contamination
+  controls'
+- 'needs_judge_audit: pin the Claude judge revision/config and report calibration, agreement, semantic-equivalence, and adversarial
+  false-positive/false-negative tests'
+- 'needs_retention_audit: account for successful, failed, rejected, dropped, and malformed reference rows and release evaluated-model
+  trajectory logs if claimed reproducible'
+card: null

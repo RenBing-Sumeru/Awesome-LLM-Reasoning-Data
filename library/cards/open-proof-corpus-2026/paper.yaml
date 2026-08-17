@@ -1,0 +1,179 @@
+id: open-proof-corpus-2026
+title: 'The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs'
+year: 2026
+venue: ICLR 2026
+authors:
+- Jasper Dekoninck
+- Ivo Petrov
+- Kristian Minchev
+- Mislav Balunović
+- Martin Vechev
+- Miroslav Marinov
+- Maria Drencheva
+- Lyuba Konova
+- Milen Shumanov
+- Kaloyan Tsvetkov
+- Nikolay Drenchev
+- Lazar Todorov
+- Kalina Nikolova
+- Nikolay Georgiev
+- Vanesa Kalinkova
+- Margulan Ismoldayev
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+- process_supervision
+- construction_recipe
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- step_level
+- scalar_reward
+domains:
+- mathematical-proofs
+- olympiad-mathematics
+- high-school-mathematics
+- undergraduate-mathematics
+training_use:
+- reward_modeling
+- process_supervision
+- rlvr
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=a2XmC7rHIU
+  arxiv: https://arxiv.org/abs/2506.21621
+  code: https://github.com/insait-institute/open-proof-corpus
+  data: https://huggingface.co/datasets/INSAIT-Institute/OPC
+  project: https://proofcorpus.ai/
+  huggingface: https://huggingface.co/datasets/INSAIT-Institute/OPC
+  doi: https://doi.org/10.48550/arXiv.2506.21621
+  venue: https://openreview.net/forum?id=a2XmC7rHIU
+  openreview: https://openreview.net/forum?id=a2XmC7rHIU
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Problems are drawn from official materials for more than 20 national and international mathematics competitions;
+    selected benchmark subsets come from MathArena and PutnamBench.
+  trace_author: Six frontier LLMs generate natural-language proofs; human expert judges evaluate the resulting proofs and
+    optionally annotate specific erroneous passages.
+  answer_format: Full natural-language mathematical proof paired with one or two binary correctness labels, written feedback,
+    uncertainty flags, optional span-level annotations, and problem/source metadata.
+  process_fields:
+  - problem identifier and statement
+  - generated proof
+  - solver model identifier
+  - human correctness score
+  - written grading feedback
+  - uncertainty flag
+  - optional sentence-level annotations
+  - one or two judge identifiers
+  - competition, level, source, URL, and year
+  - optional official ground-truth solution and issue notes
+  - optional model thinking
+  - token counts, generation cost, and timestamp
+  - O4-MINI proof summary and issue suggestions
+  - best-of-N selector metadata
+  environment_or_substrate: Competition-proof generation followed by a custom expert-grading interface, duplicate grading
+    for quality control, split-specific evaluation protocols, and optional best-of-N selection.
+  verifier_or_reward: One or two qualified human judges assign binary proof-validity labels and written feedback; optional
+    sentence annotations identify local errors.
+  terminal_predicate: A judge determines whether the complete generated proof is mathematically correct under the corpus grading
+    guidelines.
+recipe_metadata:
+  base_model: OPC-R1-8B is initialized from the 8B DeepSeek-R1-Qwen3 family model described in the paper; proof generators
+    are six frontier models rather than one shared base.
+  teacher: Thirteen expert human judges provide correctness supervision; official competition solutions are supplied as references
+    when available, and O4-MINI supplies non-verdict issue summaries.
+  generator: O4-MINI, O3, Gemini-2.5-Pro, Grok-3-Mini, Qwen3-235B-A22B, and DeepSeek-R1 generate the released proofs.
+  filtering_rule: Remove malformed problems or solutions flagged by judges; retain MathArena proofs only when the final answer
+    is correct; separate training-capable, benchmark, test, and best-of-N subsets.
+  sampling_protocol: Most problems receive proofs from about five models. Best-of-N uses repeated O4-MINI generations; all
+    eight generations are human-graded for 60 problems, while other problems grade only selected outputs.
+  rollout_count: null
+  temperature: null
+  inference_budget: Proof generators use model-default parameters with a 64,000-token maximum generation length.
+  optimizer_or_scaffold: Custom proof-generation and human-grading pipeline; OPC-R1-8B verification training adapts verl and
+    GRPO with train/validation model selection.
+audit:
+  source_mixture: Problems come from more than 20 competitions plus MathArena and PutnamBench; most have competition/source/year
+    metadata, but some source URLs are unavailable or private.
+  split: Current public release has generic 3039, test 292, putnambench 564, matharena 310, best_of_n 252, and pass_at_n 477
+    rows. MathArena, PutnamBench, and test must remain outside training.
+  decontamination: Split boundaries are documented, but broader overlap with model pretraining or other mathematical corpora
+    is unknown.
+  license: Dataset release is CC BY-NC-SA 4.0 and code is Apache-2.0. Item-level competition-problem and official-solution
+    licenses are not recorded.
+  lineage: Official competition problem to optional GPT-4.1 translation and manual verification to frontier-model proof generation
+    to expert human grading, optional duplicate grading and sentence annotations, split assignment, and public HF export.
+  known_failure_modes:
+  - Approximately 10% double grading leaves most proofs with a single human judgment.
+  - The reported 90.4% agreement still implies nonzero label noise; the paper's 5% judge-error estimate depends on independence
+    assumptions.
+  - Fewer than 3% of proofs are marked uncertain, but subtle near-correct errors can remain difficult to classify.
+  - O4-MINI-generated issue summaries may anchor judges even though the authors found no significant agreement shift.
+  - Best-of-N coverage is selective: only 60 problems have all eight generations human graded, while many other candidates
+      are judged only after selection.
+  - Some best-of-N records use a V1 ranking judge whose methodology is described by the dataset card as suboptimal.
+  - The public HF snapshot has 4934 rows versus 5062 proofs reported in the paper; SMT withholding is documented, but the
+    complete row-count difference is not reconciled.
+  - Problem source URLs may be private or missing, and no item-level license field establishes reuse rights.
+  - MathArena and PutnamBench are analytical benchmark subsets and should not be treated as proof-training data.
+  - Positive and negative proofs support verifier training and audit, but do not provide formal proof checking or executable
+    correctness guarantees.
+  citation_status: verified
+  confidence: medium
+  notes: ICLR/OpenReview, arXiv, project page, GitHub, HF schema/card/splits/history, grading methodology, and best-of-N protocol
+    were checked on 2026-07-10. Citation and artifacts are verified, but release completeness is partial because the public
+    row count differs from the paper, some SMT problems remain withheld, and item-level licensing is unresolved.
+  metadata_status: partial
+inclusion_reason: The Open Proof Corpus is a core expert-feedback release for reasoning-data research because it pairs frontier-model
+  proofs with positive and negative human correctness labels, written feedback, optional span annotations, source metadata,
+  and split-specific best-of-N and verifier-training protocols.
+related: []
+tags:
+- mathematical-proofs
+- human-feedback
+- positive-negative-proofs
+- expert-judgment
+- verifier-training
+- best-of-n
+- competition-math
+- open-release
+status: partial
+one_line: Open Proof Corpus releases thousands of frontier-model competition proofs with expert correctness labels, written
+  feedback, optional error spans, provenance metadata, and best-of-N analysis splits.
+one_line_summary: Open Proof Corpus releases thousands of frontier-model competition proofs with expert correctness labels,
+  written feedback, optional error spans, provenance metadata, and best-of-N analysis splits.
+why_it_matters: It provides unusually rich positive and negative proof supervision for training and auditing proof judges
+  while exposing the limits of final-answer verification, selective best-of-N labeling, and single-judge proof assessment.
+card: cards/releases/open-proof-corpus.md
+needs:
+- 'needs_release_reconciliation: explain the 5062-paper versus 4934-public-row difference and document future SMT additions'
+- 'needs_snapshot: pin HF commit dcc3b4804e2d126ea34b13e3e0cd998c3302644b and the corresponding code revision'
+- 'needs_license: audit item-level competition-problem and official-solution licenses or redistribution terms'
+- 'needs_split_safety: enforce exclusion of MathArena, PutnamBench, and test from training'
+- 'needs_label_audit: publish disagreement adjudication outcomes and judge-level calibration where privacy permits'
+- 'needs_best_of_n_audit: distinguish fully graded eight-sample groups from selector-only graded candidates'
+- 'needs_provenance: replace Private or missing source URLs where official public sources become available'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-10'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Exact-title, proposed-ID, arXiv-ID, OpenReview-ID, code, data, and project URL duplicate checks passed. Current public
+    HF snapshot contains 4934 rows and six documented splits.
+category_ids:
+- data_construction_open_release_recipes

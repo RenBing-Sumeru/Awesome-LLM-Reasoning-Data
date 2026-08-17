@@ -1,0 +1,6 @@
+- 将 §3.2–§3.3 与附录 B.2 对照阅读：`k_u=40`、`k_p=192`、temperature 1.6 与 `1-pass_rate` 比摘要更准确地界定构造语义。
+- 区分三种预算：原始试验数、已接受响应数和唯一 prompt 覆盖；最终同为约 590k 不代表合成计算量相同。
+- Table 2 显示 Mistral-7B/Llama3-8B 增益较大，但 DeepSeekMath-7B/Llama3-70B 平均只提升约 1 分，并且多个 GSM8K 结果下降。
+- 最终数据集只有 `query`/`response`；沿袭与采样元数据要查看 pool 和 query-info 发布，同时注意完整被拒响应文本尚不能确认已发布。
+- 不要把正则/SymPy 终局答案接受误读成 process supervision；论文自己说明答案正确不必然意味着中间推理正确。
+- 比较复现实现之前，应先解决附录 fail-rate 不一致和仓库中 Prop2Diff 仍需手工步骤的问题。

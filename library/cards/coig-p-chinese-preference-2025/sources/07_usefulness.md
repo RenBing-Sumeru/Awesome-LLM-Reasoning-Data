@@ -1,0 +1,3 @@
+Use COIG-P for Chinese DPO experiments, reward-model training, or audits of synthetic preference pipelines. Preserve the query, both candidates, chosen/rejected relation, domain, and quality-control fields; do not flatten the data to isolated “good answers.” Split evaluation by the six reported domains and compare gains with a human-evaluated set such as CRBench when the task permits.
+
+Before training, deduplicate against local Chinese instruction data and benchmarks, identify the release revision, and inspect samples for licensing and domain fit. The release is not suitable as sole evidence for sensitive human-value decisions, minority-language coverage, or factual accuracy claims, because its construction contract is model-generated.

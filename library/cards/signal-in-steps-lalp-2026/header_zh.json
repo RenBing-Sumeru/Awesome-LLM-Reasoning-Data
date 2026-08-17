@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LALP 在 817 个 LIMO prompt 上用 GLM-4.5-Air 切分候选完整 response，再按目标 student 的局部 step likelihood 排序并保留每题一条完整轨迹；它是 student-specific 的离线数据选择器，不是 step correctness/process supervision，且当前匿名仓库没有可用实现或数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据选择 recipe 与全局似然失效分析",
+  "best_for_ch": "研究 reasoning distillation、mixed-teacher response selection、step-local likelihood 或数据选择审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Hoang Anh Just、Myeongseob Ko、Ruoxi Jia",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

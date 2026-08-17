@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Alt-test 将“语言模型可替代人工标注者”的主张转为任务特定的统计检验。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "ACL 2025 语言模型裁判可靠性评测方法",
+  "best_for_ch": "考察语言模型能否作为裁判、标注者或量表评分器的统计替代检验。",
+  "confidence_ch": "高",
+  "authors_ch": "Nitay Calderon、Roi Reichart、Rotem Dror",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

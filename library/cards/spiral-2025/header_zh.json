@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "在规则可评分的零和游戏中让同一策略扮演双方，在线生成多轮推理与动作轨迹；其价值是把环境反馈变成数据构造循环，但并未冻结可审计的在线 rollout 数据。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多智能体自博弈环境与在线轨迹构建方法",
+  "best_for_ch": "关注环境式 reasoning data、在线课程、多智能体 RL、RLVR 与 rollout 审计的研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Bo Liu、Simon Yu、Zichen Liu、Leon Guertler、Penghui Qi、Daniel Balcells、Mickel Liu、Cheston Tan、Weiyan Shi、Min Lin、Wee Sun Lee、Natasha Jaques",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

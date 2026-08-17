@@ -1,0 +1,3 @@
+For this atlas, the distinctive feature is not a claim of fully open training. It is the unusual amount of recipe-level disclosure in a frontier VLM report: it names data categories, describes human/model trace construction, identifies Kimi k1.5 as the long-CoT generator, specifies reward and length signals for RL, and outlines computer-use trajectory collection.
+
+At the same time, the report leaves the operational objects behind those claims unavailable. That contrast makes it useful as a disclosure-ledger entry: readers can distinguish a described pipeline from a reusable release instead of treating model-weight availability as complete reproducibility.

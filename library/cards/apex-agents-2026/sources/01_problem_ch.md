@@ -1,0 +1,1 @@
+APEX-Agents 是 Mercor 在 2026 年发布的长程、跨应用专业工作 agent benchmark。它针对的缺口不是短网页点击或桌面 toy task，而是投行、咨询和法律工作中需要同时操作文件、表格、文档、邮件、聊天、日历、PDF 和专业交付物的任务。这里收录它是因为每个任务有 prompt、world context、文件和工具、gold output、metadata，以及按二元 rubric 判定的交付质量。它是 evaluation surface，不是可拿来训练的公开语料。

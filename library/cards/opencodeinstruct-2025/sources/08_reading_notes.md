@@ -1,0 +1,5 @@
+- Positioning: OpenCodeInstruct scales multiple generation algorithms to five million pairs and stores unit tests, execution status, and model judgments beside each solution.
+- Data object: 5 million code instruction-response pairs; each record exposes id, input, output, domain, generation algorithm, LLM judgment, unit tests, and execution status.
+- Author and selector: large language models generate instructions, solutions, tests, and quality judgments; retention uses unit-test execution, execution-status fields, LLM quality judgments, and seed curation.
+- Evidence anchor: Across 1B+, 3B+, and 7B+ Llama and Qwen backbones, the paper reports substantial gains on HumanEval, MBPP, LiveCodeBench, and BigCodeBench; both generation scale and filtering contribute.
+- Reuse decision: suitable for code SFT for Llama and Qwen families; first audit generated unit tests may be weak or share assumptions with the generated solution and LLM judgments can reward style and verbosity rather than semantic correctness.

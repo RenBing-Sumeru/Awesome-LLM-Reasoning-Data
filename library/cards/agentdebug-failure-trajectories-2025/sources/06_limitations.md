@@ -1,0 +1,4 @@
+The 200 failures cover only three environments and were selected for representativeness, so label frequencies are not population estimates. Root-cause annotation is counterfactual and causal: different prompts, models, tools, resets, or admissible actions may change which step is deemed decisive. Kappa 0.55 indicates material disagreement despite training and adjudication.
+
+The paper's algorithm labels critical detection as an LLM operation without rollouts/counterfactuals, while nearby prose describes stepwise counterfactual substitution; the exact implementation boundary should be audited. The official Drive release is verified, but dataset-specific licence, immutable revision, checksums, split manifest, provider/model lineage, environment pins, and complete recovery histories remain unknown. Recovery gains are not annotation-quality proof.
+

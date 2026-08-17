@@ -1,0 +1,22 @@
+{
+  "title": "R1-Onevision: Advancing Generalized Multimodal Reasoning through Cross-Modal Formalization",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2503.10615",
+    "arxiv": "https://arxiv.org/abs/2503.10615",
+    "code": "https://github.com/Fancy-MLLM/R1-onevision",
+    "data": "https://huggingface.co/datasets/Fancy-MLLM/R1-onevision",
+    "project": "https://github.com/Fancy-MLLM/R1-onevision",
+    "huggingface": "https://huggingface.co/datasets/Fancy-MLLM/R1-onevision",
+    "doi": null
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T11:54:03Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "图像先转化为文字再做解答 以此来构建多模态sft数据。有开源数据。",
+    "updated_at": "2026-07-14T11:54:03Z"
+  }
+}

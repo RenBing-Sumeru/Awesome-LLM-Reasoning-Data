@@ -1,0 +1,3 @@
+Language models can follow instructions and apply known rules, yet it remains difficult to tell whether they can form useful new hypotheses. This TMLR 2025 survey examines hypothesis discovery and rule learning with LLMs through generation, application, and validation. It synthesizes prior research rather than releasing a new hypothesis dataset or discovery system.
+
+The boundary matters because producing a plausible explanation is not the same as learning a rule that can be tested. A discovery claim should connect observations to a candidate explanation and then to evidence that can support or challenge it. Use this survey to define that full problem, not as evidence that any fluent proposal is a new scientific finding.

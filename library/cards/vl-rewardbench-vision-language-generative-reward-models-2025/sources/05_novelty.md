@@ -1,0 +1,1 @@
+Prior visual reward benchmarks largely reuse ordinary tasks and AI labels. This work explicitly selects cases that expose perception, hallucination, and reasoning weaknesses of VL-GenRMs, and checks both label reliability through human verification and evaluation validity through downstream BoN correlation.

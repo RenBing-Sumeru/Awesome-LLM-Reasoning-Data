@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Northwestern Polytechnical University",
+    "Tsinghua University",
+    "Peking University",
+    "Beijing Institute of Mathematical Sciences and Applications"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2603.29318",
+    "https://anonymous.4open.science/status/PSPA-Bench"
+  ],
+  "verification_note": "arXiv verifies title, authors, institutions, and preprint status; anonymous code-status page is not a durable artifact release."
+}

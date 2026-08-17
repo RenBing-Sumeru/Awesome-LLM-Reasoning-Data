@@ -1,0 +1,1 @@
+The method depends on generated tests and ranking quality, so incorrect tests can misidentify the decisive segment. It is evaluated on Python and reported benchmarks, while real repositories can contain interacting errors that do not reduce to one shared-prefix pair. The data-generation and execution pipeline is also more expensive than ordinary offline DPO.

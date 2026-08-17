@@ -1,0 +1,3 @@
+The prior baseline is broad math/science QA where theorem use is implicit, or formal theorem proving where the output is a proof artifact. TheoremQA changes the surface by asking theorem-grounded closed-form questions and making the relevant theorem part of the benchmark record.
+
+The direction signal is explicit theorem application with automatic answer-level scoring. The quality signal is expert mediation, public artifacts, EMNLP publication, and a controlled set of answer formats. What is not new is closed-form QA or exact-answer scoring. Before reuse, inspect answer normalization, source-question provenance, licensing, contamination from public questions/theorems, diagram handling, and whether theorem labels are used as hints in a prompt.

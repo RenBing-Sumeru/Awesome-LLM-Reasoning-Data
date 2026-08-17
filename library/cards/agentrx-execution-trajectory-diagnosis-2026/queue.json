@@ -1,0 +1,19 @@
+{
+  "title": "AgentRx: Diagnosing AI Agent Failures from Execution Trajectories",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.02475",
+    "data": "https://github.com/microsoft/AgentRx",
+    "code": "https://github.com/microsoft/AgentRx",
+    "project": "https://github.com/microsoft/AgentRx"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:17:45Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "人工关键失败步与跨域类别清晰，数据集下载量大",
+    "updated_at": "2026-07-16T12:17:45Z"
+  }
+}

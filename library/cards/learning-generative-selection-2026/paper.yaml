@@ -1,0 +1,140 @@
+id: learning-generative-selection-2026
+title: Learning Generative Selection for Best-of-N
+year: 2026
+venue: arXiv preprint
+authors:
+- Shubham Toshniwal
+- Aleksander Ficek
+- Siddhartha Jain
+- Wei Du
+- Vahid Noroozi
+- Sadegh Mahdavi
+- Somshubra Majumdar
+- Igor Gitman
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+training_use:
+- rlvr
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2602.02143
+  arxiv: https://arxiv.org/abs/2602.02143
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2602.02143
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2602.02143
+data_object:
+  prompt_source: OpenMathReasoning problems for mathematics and OpenCodeReasoning problems with provided tests for code; no
+    constructed GenSelect dataset release was verified.
+  trace_author: Qwen3-1.7B generates candidate math and code solutions, and an on-policy Qwen3-1.7B selector generates comparative
+    reasoning followed by a selected candidate index.
+  answer_format: A problem plus an enumerated list of two to sixteen candidate solutions; the selector must end with exactly
+    `Judgment [IDX]`.
+  process_fields:
+  - problem
+  - candidate_index
+  - candidate_solution
+  - automatic_correctness_label
+  - selector_reasoning
+  - selected_candidate_index
+  - format_validity
+  - selection_reward
+  environment_or_substrate: Offline Best-of-N selection over pre-generated math or code candidates; symbolic checking and
+    provided unit tests precompute candidate correctness labels.
+  verifier_or_reward: Math-Verify-based symbolic checking for math and provided unit tests for code assign binary candidate
+    labels; selecting any candidate labeled correct yields the RL correctness reward.
+  terminal_predicate: The selector emits a parseable `Judgment [IDX]` for an in-range candidate index; reward success additionally
+    requires that the indexed candidate carry a positive precomputed correctness label.
+recipe_metadata:
+  base_model: Qwen3-1.7B
+  teacher: unknown
+  generator: Qwen3-1.7B generates the candidate solutions used to construct training selection prompts; the selector is trained
+    with on-policy Qwen3-1.7B generations.
+  filtering_rule: Retain problems and candidate sets with at least one correct candidate and no more than 50% correct candidates;
+    discard prompts over 16K tokens and, for code, candidate responses over 12K tokens.
+  sampling_protocol: Assemble two to sixteen candidates per prompt and resample up to four math prompts per source problem;
+    selector RL uses temperature 1.5 and top-p 1.0, while candidate-generation sampling parameters are unknown.
+  rollout_count: 16 on-policy selector rollouts per math prompt and 8 per code prompt
+  temperature: 1.5 for selector RL; candidate-generation temperature unknown
+  inference_budget: Two to sixteen candidates per selection prompt; 16K-token prompt filter, 12K-token code candidate-response
+    filter, and 16,384-token maximum selector output.
+  optimizer_or_scaffold: Separate math and code Qwen3-1.7B selectors trained with VeRL and DAPO on NVIDIA H100 GPUs using
+    batch size 128, AdamW, and learning rate 1e-6.
+audit:
+  source_mixture: 37K OpenMathReasoning problems on which Qwen3-1.7B has below-50% verified pass rate, plus OpenCodeReasoning
+    problems and provided tests; the number of code problems and the final number of constructed selection prompts are unknown.
+  split: Evaluation uses AIME24, AIME25, HMMT25, and LiveCodeBench v6 (August 2024–May 2025); train/evaluation overlap controls
+    and the constructed training manifest are unknown.
+  decontamination: unknown
+  license: unknown for the constructed GenSelect selection tasks, candidate generations, and trained selectors.
+  lineage: OpenMathReasoning/OpenCodeReasoning problem -> Qwen3-1.7B candidate solutions -> Math-Verify or unit-test labels
+    -> difficulty and length filtering -> GenSelect prompt -> on-policy DAPO selector reasoning and index -> binary selection
+    reward.
+  known_failure_modes:
+  - Training prompts always contain at least one verified-correct candidate, so all-wrong Best-of-N sets are outside the construction
+    contract.
+  - Symbolic checking can reject equivalent forms or accept malformed edge cases, and code unit tests can produce false positives
+    or false negatives.
+  - The 50% correctness cap and below-50% source-problem filter deliberately reshape the candidate distribution and may not
+    match deployment pools.
+  - Code rewards are noisier and the reported code gains are smaller and less stable than the math gains.
+  - Candidate-generation parameters, final prompt counts, seeds, manifests, checkpoints, and item-level selector rollouts
+    were not verified as released.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1 full text checked. The PDF states NVIDIA copyright but does not disclose an author affiliation, so no institution
+    is claimed.
+inclusion_reason: It turns automatically labeled candidate sets and selector reasoning into an RLVR construction recipe for
+  Best-of-N test-time aggregation.
+related: []
+tags:
+- generative-selection
+- best-of-n
+- genselect
+- dapo
+- rlvr
+- test-time-compute
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Automatically verified math and code candidate sets train a 1.7B DAPO policy to reason over Best-of-N solutions
+  and return the index of a verified-correct candidate.
+why_it_matters: It exposes candidate-pool composition, verifier labels, selector rollouts, and selection reward as distinct
+  data objects for the rollout/search/test-time trace track.
+card: null
+needs:
+- needs_code
+- needs_data
+- needs_models
+- needs_license
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv record and full text checked; no official code, constructed selection dataset, trained selector, or
+    rollout release was verified.

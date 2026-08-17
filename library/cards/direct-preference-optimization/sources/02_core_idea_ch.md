@@ -1,0 +1,1 @@
+一句话贡献：Direct Preference Optimization 把 chosen/rejected 响应对转为直接策略目标，无需在标准 RLHF 流程中单独拟合并优化 奖励模型。 核心机制：DPO 在论文的 奖励模型参数化下，推导出使用 偏好对 与 reference policy 直接优化语言模型的闭式目标。 对本 atlas 的关键区分是：论文的概念贡献不等于具体下游发布；后者仍须披露来源、标签、切分和许可。

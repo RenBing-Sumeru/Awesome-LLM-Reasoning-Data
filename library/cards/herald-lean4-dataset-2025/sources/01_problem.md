@@ -1,0 +1,18 @@
+The authoritative publication is the 43-page accepted **ICLR 2025** proceedings paper, published on 2025-05-01, together with its official supplement and OpenReview record. The Card uses that proceedings version for final results because arXiv:2410.10878v2 retains earlier score values. Official Herald statement/proof datasets, translator model, code/evaluation repository, and Lean 4.11.0 test environment provide the release evidence.
+
+Herald addresses the scarcity of parallel natural-language/formal-language data for Lean 4. Its source is Mathlib4, whose declarations and proofs are already formal, but useful autoformalization supervision also needs readable natural-language counterparts. The construction problem is therefore to extract formal objects, supply enough library context for an LLM to interpret them, and retain the distinction between what Lean can check and what still requires mathematical judgment.
+
+The public release contains two separate train-only datasets:
+
+| Released object | Exact rows | Public fields |
+|---|---:|---|
+| `Herald_statements` | 579,883 | `id`, `informal_statement`, `formal_statement` |
+| `Herald_proofs` | 44,553 | `id`, `name`, `formal_theorem`, `informal_theorem`, `formal_proof`, `informal_proof`, `commented_proof`, `header` |
+
+Statement rows are paired propositions, not proof traces. Public formal examples can include imports or context and a theorem declaration ending in `:= sorry`; compiling such a declaration checks elaboration but does not establish the proposition. Proof rows are richer: they retain a complete tactic proof, theorem texts, an informal proof, a commented proof, name, and header. The paper often rounds these quantities to 580K statements and 44K or 45K proofs; the exact release counts above should be used for the artifacts.
+
+The central feedback contract is mixed. Lean can check formal syntax, elaboration, types, and complete formal proofs in a pinned environment. It cannot determine whether an informal sentence means the same thing as a compiled formal declaration. Herald’s evaluation pipeline adds learned back-translation and natural-language inference for this semantic layer, but Table 4 shows that this judgment layer is imperfect: 151 Herald outputs passed the validation pipeline on the ProofNet audit, while human experts marked only 101 fully correct, 24 as minor errors, and 26 as major errors.
+
+This Card belongs only to **Data Construction and Open Release Recipes** because the main contribution is a pipeline and release surface: dependency-aware Mathlib extraction, retrieval from manual examples, LLM informalization, tactic-state and language augmentation, proof annotation, sampling, and supervised translator training. It is not classified as programmatically verifiable outcome data: statement rows can elaborate with `sorry`, and natural-language/formal equivalence remains judgment-dependent. Nor is it a benchmark Card; the released supplement's evaluation JSONL files are secondary to the construction corpora. Compiler acceptance or benchmark Pass@128 alone does not certify data quality.
+
+The L4 evidence boundary combines the accepted paper and appendices, official supplement, exact HF schemas and counts, pinned dataset/model/code heads, and the linked Lean runtime. It does not cover an end-to-end corpus rebuild: the informalizer identity, complete prompts, exact Mathlib source revision, per-row branch and rejection history, and construction implementation are missing. The paper-linked Lean-Jixia URL returned 404 on 2026-07-23, and no unverified successor is substituted. L4 therefore records a bilingual, evidence-complete review surface while preserving incomplete semantic validation, lineage, contamination, and reproducibility.

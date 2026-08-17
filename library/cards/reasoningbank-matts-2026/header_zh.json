@@ -1,0 +1,2 @@
+{"one_line_summary_ch":"持续运行的代理会反复丢弃成功和失败交互中的洞见，因此更多测试时探索可能重复同样错误，而不是积累有用经验。","reading_priority_ch":"必读","paper_type_ch":"测试时扩展研究（ICLR 2026）","best_for_ch":"研究推理预算分配与测试时扩展的读者。","confidence_ch":"高","authors_ch":"Siru Ouyang、Jun Yan、I-Hung Hsu、Yanfei Chen、Ke Jiang、Zifeng Wang、Rujun Han、Long T. Le、Samira Daruki、Xiangru Tang、Vishy Tirumalashetty、George Lee、Mahsan Rofouei、Hangfei Lin、Jiawei Han、Chen-Yu Lee、Tomas Pfister（机构以官方论文为准）","category_ids":["scaling_rlvr_test_time_compute"]}
+

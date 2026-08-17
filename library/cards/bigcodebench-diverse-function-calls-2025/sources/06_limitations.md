@@ -1,0 +1,3 @@
+1. **Python/API boundary:** Tasks focus on Python library calls and do not represent large multi-file development, concurrent systems, or other languages. Scores should be interpreted as function-level practical programming ability.  
+2. **Dependency drift:** Third-party APIs, network behavior, and library versions can invalidate tests. Official containers or pinned requirements are necessary, and environment failures must be separated from model failures.  
+3. **Tests and contamination:** Ninety-nine percent branch coverage may still miss semantics, and a public benchmark may enter model training. Contamination checks, hidden tests, and later live splits should be used to validate conclusions.

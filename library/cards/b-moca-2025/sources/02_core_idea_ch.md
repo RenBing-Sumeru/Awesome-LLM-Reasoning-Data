@@ -1,0 +1,1 @@
+核心贡献是 B-MoCA：131 个日常 Android 任务和 45 个随机化环境，其中 35 个训练配置、10 个测试配置。机制是把设备控制表述为 sequential decision-making：agent 接收任务指令和 observation，输出连续/离散/文本动作，环境根据 ADB/Appium 可访问的 app state 与 UI 属性检测是否成功。反馈契约是环境式的：success detector 满足时为 +1，否则为 0。接近对比包括 Android emulator benchmark、OS/mobile control agent 和 demonstration-trained policy。方向标签是“跨配置泛化的移动控制评测”。

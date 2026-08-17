@@ -1,0 +1,1 @@
+AndroidDaily 适合作为不透明真实移动应用评测的 checklist。复用记录应保留 task id、app id 与版本、类别、起始状态、账号/地区假设、目标文本、guideline tiers、视觉轨迹帧、动作、评测器 prompt/model/version、步骤级诊断、最终成功标签、人类审计样本和隐私脱敏信息。对 atlas 来说，它是用可观察过程义务替代隐藏状态成功谓词的强例子，但必须显式保留 judge 和 app-version 边界。

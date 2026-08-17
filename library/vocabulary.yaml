@@ -1,0 +1,137 @@
+# Controlled vocabulary for the five classification facets.
+#
+# This is the single source of truth for what a card may put in `source_role`,
+# `verification_contract`, `supervision_granularity`, `training_use`, and
+# `construction_layer`. Track owners arrived with slightly different wordings, so
+# each facet lists its canonical values with bilingual labels plus the synonyms
+# that map onto them.
+#
+# `scripts/normalize_library.py` rewrites cards onto the canonical values.
+# `scripts/build_site.py` fails when a card uses a value that is neither canonical
+# nor a listed synonym, so a new batch cannot quietly widen the vocabulary.
+
+facets:
+  source_role:
+    label: [Source role, 论文角色]
+    values:
+      construction_recipe: [Construction recipe, 构造配方]
+      data_release: [Data release, 数据发布]
+      scaling_study: [Scaling study, 规模化研究]
+      verifier_reward: [Verifier / reward, 验证器与奖励]
+      model_report: [Model report, 模型报告]
+      agent_environment: [Agent environment, 智能体环境]
+      benchmark: [Benchmark, 评测基准]
+      audit_failure: [Audit / failure, 审计与失效]
+      process_supervision: [Process supervision, 过程监督]
+      survey_background: [Survey / background, 综述与背景]
+      infrastructure: [Infrastructure, 基础设施]
+    synonyms:
+      # A curated list is background reading, not a primary release.
+      related_awesome_list: survey_background
+
+  # Deliberately small: this facet is the atlas's central question, so a card has to
+  # commit to who checks the answer rather than describe the reward's shape.
+  verification_contract:
+    label: [Verification contract, 验证契约]
+    values:
+      programmatic: [Programmatic, 程序化]
+      environmental: [Environmental, 环境判定]
+      judgment_required: [Judgment required, 需评审]
+      mixed: [Mixed, 混合]
+      unknown: [Unknown, 未知]
+    synonyms:
+      exact_match: programmatic
+      verifiable_outcome: programmatic
+      environment: environmental
+      environment_feedback: environmental
+      model_judged: judgment_required
+      learned_verifier: judgment_required
+      learned_value: judgment_required
+      human_annotation: judgment_required
+      self_critique: judgment_required
+      hybrid_rubric: judgment_required
+      trait_rubric: judgment_required
+      checklist: judgment_required
+      expert_reference: judgment_required
+      domain_expert_reference: judgment_required
+      process: mixed
+      process_reward: mixed
+      continuous_reward: mixed
+      self_curated_memory: unknown
+
+  supervision_granularity:
+    label: [Supervision granularity, 监督粒度]
+    values:
+      token_level: [Token level, 词元级]
+      answer_level: [Answer level, 答案级]
+      step_level: [Step level, 步骤级]
+      state_action_level: [State / action level, 状态-动作级]
+      full_episode: [Full episode, 完整轨迹]
+      trajectory_value: [Trajectory value, 轨迹价值]
+      process_reward: [Process reward, 过程奖励]
+      scalar_reward: [Scalar reward, 标量奖励]
+      pairwise_preference: [Pairwise preference, 成对偏好]
+      unknown: [Unknown, 未知]
+    synonyms:
+      step: step_level
+      process_step: step_level
+      process_level: step_level
+      rubric_score: scalar_reward
+      categorical_label: answer_level
+      long_rationale: answer_level
+      evidence_grounding: answer_level
+      execution_feedback: answer_level
+      feedback_response: answer_level
+
+  training_use:
+    label: [Training use, 训练用途]
+    values:
+      sft: [SFT, 监督微调]
+      distillation: [Distillation, 蒸馏]
+      preference_learning: [Preference learning, 偏好学习]
+      reward_modeling: [Reward modeling, 奖励建模]
+      process_supervision: [Process supervision, 过程监督]
+      rlvr: [RLVR, 可验证奖励强化学习]
+      reinforcement_learning: [Reinforcement learning, 强化学习（非验证式）]
+      agent_training: [Agent training, 智能体训练]
+      test_time_compute: [Test-time compute, 推理时计算]
+      safety_alignment: [Safety alignment, 安全对齐]
+      evaluation: [Evaluation, 评测]
+      audit: [Audit, 审计]
+      unknown: [Unknown, 未知]
+    synonyms:
+      supervised_finetuning: sft
+      process_reward_modeling: process_supervision
+      iterative_refinement: test_time_compute
+
+  construction_layer:
+    label: [Construction layer, 构造环节]
+    values:
+      prompt_sourcing: [Prompt sourcing, 题目来源]
+      trace_writing: [Trace writing, 轨迹生成]
+      search_substrate: [Search substrate, 搜索基座]
+      reward_verifier_layer: [Reward / verifier layer, 奖励与验证层]
+      filtering_curation: [Filtering / curation, 过滤与策展]
+      optimizer_scaffold: [Optimizer / scaffold, 优化与脚手架]
+      self_play_anchor: [Self-play anchor, 自博弈锚点]
+      frontier_pipeline: [Frontier pipeline, 前沿流水线]
+      scaling_report: [Scaling report, 规模化报告]
+      release_audit: [Release audit, 发布审计]
+    synonyms:
+      web_crawling: prompt_sourcing
+      contest_data: prompt_sourcing
+      retrieval_augmented_search: prompt_sourcing
+      bootstrapped_generation: trace_writing
+      narrative_reconstruction: trace_writing
+      expert_annotation: trace_writing
+      human_annotation: trace_writing
+      llm_annotation: trace_writing
+      memory_scaffold: optimizer_scaffold
+      simulator_evaluation: reward_verifier_layer
+      verifier: reward_verifier_layer
+      verifier_training: reward_verifier_layer
+      llm_judge: reward_verifier_layer
+      dataset_curation: filtering_curation
+      human_curation: filtering_curation
+      filtering: filtering_curation
+      balancing: filtering_curation

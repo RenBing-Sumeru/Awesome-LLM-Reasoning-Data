@@ -1,0 +1,136 @@
+id: baichuan-m2-2025
+title: 'Baichuan-M2: Scaling Medical Capability with Large Verifier System'
+year: 2025
+venue: arXiv preprint
+authors:
+- Baichuan-M2 Team
+source_role:
+- model_report
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- medical
+training_use:
+- sft
+- distillation
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2509.02208
+  arxiv: https://arxiv.org/abs/2509.02208
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2509.02208
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Three reported prompt families are medical-record-driven, knowledge-base-driven, and synthetic scenarios.
+    LLM prompt generation plus internal clustering/deduplication, core-dimension scoring, and filtering/selection are reported;
+    manifests, thresholds, records, and yields are unknown.
+  trace_author: DeepSeek-R1 is the reported primary CoT generator for the 4M+ SFT candidate pool. LLMs generate candidate
+    and expanded rubrics. Versions, prompts, transformations, and record-level mappings are unknown.
+  answer_format: Medical prompts, response/CoT, multi-turn doctor-patient dialogue fragments, rubric criteria/weights, and
+    scalar scores are reported; complete schemas and released records are unknown.
+  process_fields:
+  - prompt
+  - response
+  - chain_of_thought
+  - dialogue_fragment
+  - rubric
+  - reward
+  environment_or_substrate: Patient Simulator uses de-identified/desensitized medical and doctor-patient conversation records,
+    with Termination Gate, Affective Unit, and Fact Unit. Access, de-identification implementation, simulator weights, and
+    rollout logs are unknown.
+  verifier_or_reward: Clinical Rubrics Generator creates multi-dimensional rubrics. Rubric RL uses an unspecified LLM evaluator
+    and R_rubric plus conditional length reward; rule-based RL uses specialized verifiers and multi-model consensus. Identities,
+    calibration, thresholds, and full reward settings are unknown.
+  terminal_predicate: Termination Gate uses predefined triggers such as physician diagnosis; definitions and records are unknown.
+recipe_metadata:
+  base_model: Qwen2.5-32B-Base.
+  teacher: DeepSeek-R1 is primary CoT generator; other LLM identities/versions are unknown.
+  generator: Record/knowledge/synthetic prompts, LLM candidate rubrics, internal clinical-expert selection/customization,
+    LLM expansion, and patient-simulator dialogues are reported.
+  filtering_rule: Clustering/deduplication, scoring, selection, verifier rejection sampling, consensus for ambiguity, and
+    fragment filtering are reported; thresholds/yields unknown.
+  sampling_protocol: 4M+ candidate pool and final 2M SFT set (about 20% medical) are reported; allocations/splits/seeds unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: 32K SFT context and two epochs are reported; teacher/RL budgets unknown.
+  optimizer_or_scaffold: Medical adaptation, rejection-sampled SFT, and rule-based/rubric-based/multi-turn enhanced-GRPO RL
+    are reported; optimizer/hyperparameters/checkpoint selection unknown.
+audit:
+  source_mixture: Public textbooks, monographs, drug knowledge bases, guidelines, and de-identified medical-record reports
+    are named; 4M+ candidates come from in-house Baichuan-M1 and external open-source datasets. Identities, weights, licences,
+    and item-level provenance are unknown.
+  split: unknown
+  decontamination: unknown
+  license: No direct official artifact URL or licence for weights, code, records, traces, rubrics, simulator, or underlying
+    medical sources is linked in the inspected paper.
+  lineage: Stage-level lineage from Qwen2.5-32B-Base through 4M+ pool, DeepSeek-R1 CoT, 2M SFT, and dynamic RL is reported;
+    item-level lineage unknown.
+  known_failure_modes:
+  - Medical-record providers, consent/ethics governance, de-identification method, data controls, and release status are undisclosed.
+  - No data, trace, rubric, simulator, manifest, split, decontamination procedure, or direct official release artifact is
+    linked.
+  - Evaluator identity, calibration, reward thresholds, GRPO settings, rollouts, and filtering yields are undisclosed.
+  - The paper notes hallucination and insufficient edge-case reasoning stability; tool calling and external knowledge retrieval
+    are not fully optimized.
+  citation_status: verified
+  confidence: high
+  notes: Evidence is limited to official arXiv:2509.02208 and its directly linked source archive; no model/data/code release
+    is inferred.
+inclusion_reason: A medical post-training report with unusually specific patient-simulator, clinical-rubric, SFT-volume, and
+  GRPO disclosure, but unavailable clinical records, artifacts, rights, and audit controls.
+related:
+- baichuan-m1-2025
+- deepseek-r1-2025
+tags:
+- baichuan
+- baichuan-m2
+- medical
+- verifier
+- patient-simulator
+- clinical-rubrics
+- grpo
+- rlvr
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Baichuan-M2 reports a de-identified-record-backed patient simulator and dynamic clinical rubrics for SFT
+  plus multi-stage GRPO, but not released records, traces, rubrics, source-level rights, splits, or a directly linked official
+  release.
+why_it_matters: It makes dynamic clinical feedback construction auditable at a report level while leaving essential data,
+  privacy, provenance, calibration, and reproducibility details unknown.
+card: null
+needs:
+- 'needs_data: records, schemas, manifests, examples and IDs'
+- 'needs_metadata: teachers, prompts, filters, GRPO settings and checkpoints'
+- 'needs_verifier: executable rubrics/reward and calibration'
+- 'needs_audit: consent/de-identification, splits, decontamination and lineage'
+- 'needs_license: source-level rights for data, traces, rubrics, simulator, weights and code'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv primary paper and source archive were read; no ancillary release URL is recorded.

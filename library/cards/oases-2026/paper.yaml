@@ -1,0 +1,116 @@
+id: oases-2026
+title: 'OASES: Outcome-Aligned Search-Evaluation Co-Training for Agentic Search'
+year: 2026
+venue: arXiv preprint
+authors:
+- Erhan Zhang
+- Yiqun Chen
+- Zechun Niu
+- Wei Yang
+- Xiaochi Wei
+- Yan Gao
+- Yi Wu
+- Yao Hu
+- Jiaxin Mao
+source_role:
+- construction_recipe
+- process_supervision
+- agent_environment
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- process_reward
+- full_episode
+domains:
+- multi_hop_question_answering
+- information_retrieval
+training_use:
+- rlvr
+- process_supervision
+- agent_training
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2604.03675
+  arxiv: https://arxiv.org/abs/2604.03675
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2604.03675
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2604.03675
+data_object:
+  prompt_source: HotpotQA and 2WikiMultihopQA train; named QA sets evaluate.
+  trace_author: Current policy creates main search and one evaluation trace per prefix state.
+  answer_format: Main <think>/<search>/<result>/<answer>; state <eval> answers.
+  process_fields:
+  - search_prefix
+  - query
+  - retrieval
+  - state_answer
+  - state_score
+  - reward_delta
+  - outcome_reward
+  environment_or_substrate: E5 retrieval over Wikipedia; snapshot/index/cache unknown.
+  verifier_or_reward: Final EM/F1 scorer also produces answerability deltas as dense process reward.
+  terminal_predicate: Final answer outcome score.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct default.
+  teacher: Shared policy acts as searcher/evaluator.
+  generator: Extracts each search prefix and generates state-evaluation answer.
+  filtering_rule: No accepted/rejected filter established.
+  sampling_protocol: One main rollout plus variable prefix evaluations; 2.76 average after convergence reported.
+  rollout_count: 1 main plus variable evaluations.
+  temperature: unknown
+  inference_budget: Search limit and retrieval cache settings unknown.
+  optimizer_or_scaffold: Joint PPO buffer with GAE and format penalty.
+audit:
+  source_mixture: Named data, Wikipedia/E5 but no immutable manifest or raw trajectories.
+  split: Dataset revisions, state sampling, index/cache unknown.
+  decontamination: unknown
+  license: No current author-attributed code/data release confirmed.
+  lineage: QA/retriever -> search rollout -> prefix states -> evaluation rollouts -> outcome/delta rewards -> PPO
+  known_failure_modes:
+  - Outcome noise contaminates process reward.
+  - Shared evaluator can be wrong.
+  - Unpinned retrieval prevents replay.
+  - v1 was PRAISE; v3 canonical title OASES.
+  citation_status: verified
+  confidence: high
+  notes: Official current arXiv v3 checked.
+inclusion_reason: Reuses agentic-search prefix states for dense credit assignment.
+related: []
+tags:
+- oases
+- praise-prior-title
+- agentic-search
+- prefix-states
+- process-reward
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: OASES reuses search-prefix states to co-train search/evaluation with EM/F1-aligned rewards.
+why_it_matters: It converts costly search rollouts into additional evaluation traces with explicit retrieval/replay risks.
+card: null
+needs:
+- needs_code
+- needs_data
+- needs_environment
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Current canonical arXiv v3 verified; code/data unconfirmed.

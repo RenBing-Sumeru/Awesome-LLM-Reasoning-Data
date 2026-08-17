@@ -1,0 +1,182 @@
+id: kimina-prover-preview-2025
+title: 'Kimina-Prover Preview: Towards Large Formal Reasoning Models with Reinforcement Learning'
+year: 2025
+venue: arXiv preprint
+authors:
+- Haiming Wang
+- Mert Unsal
+- Xiaohan Lin
+- Mantas Baksys
+- Junqi Liu
+- Marco Dos Santos
+- Flood Sung
+- Marina Vinyes
+- Zhenzhe Ying
+- Zekai Zhu
+- Jianqiao Lu
+- Hugues de Saxce
+- Bolton Bailey
+- Chendong Song
+- Chenjun Xiao
+- Dehao Zhang
+- Ebony Zhang
+- Frederick Pu
+- Han Zhu
+- Jiawei Liu
+- Jonas Bayer
+- Julien Michel
+- Longhui Yu
+- Leo Dreyfus-Schmidt
+- Lewis Tunstall
+- Luigi Pagani
+- Moreira Machado
+- Pauline Bourigault
+- Ran Wang
+- Stanislas Polu
+- Thibaut Barroyer
+- Wen-Ding Li
+- Yazhe Niu
+- Yann Fleureau
+- Yangyang Hu
+- Zhouliang Yu
+- Zihan Wang
+- Zhilin Yang
+- Zhengying Liu
+- Jia Li
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- mathematics
+- formal_theorem_proving
+- lean4
+- autoformalization
+training_use:
+- sft
+- distillation
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.11354
+  arxiv: https://arxiv.org/abs/2504.11354
+  code: https://github.com/MoonshotAI/Kimina-Prover-Preview
+  data: https://github.com/MoonshotAI/Kimina-Prover-Preview/blob/master/minif2f_test_solved_filtered_0710.zip
+  project: null
+  huggingface: https://huggingface.co/AI-MO/Kimina-Prover-Preview-Distill-7B
+  doi: https://doi.org/10.48550/arXiv.2504.11354
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2504.11354
+data_object:
+  prompt_source: Filtered NuminaMath 1.5 competition problems autoformalized to Lean4 and human-annotated statements. The
+    report describes about 100K autoformalized and 10K annotated statements resampled to 200K prompts; source records and
+    membership are unknown.
+  trace_author: Claude 3.7 Sonnet creates about 20K cold-start informal/formal traces; Kimi k1.5 supplies informal thinking;
+    the Qwen2.5-72B policy creates RL rollouts; experts author or refine selected statements and proofs. Full trace lineage
+    is unavailable.
+  answer_format: Lean4 theorem context/imports, a think block with informal reasoning and Lean snippets, and a final Lean4
+    proof.
+  process_fields:
+  - informal_problem
+  - lean4_statement
+  - thinking_block
+  - lean4_code_snippets
+  - final_lean4_proof
+  - compiler_result
+  - binary_terminal_reward
+  environment_or_substrate: Lean4 compilation using Numina/Kimina Lean Server and LeanREPL. Training server version, mathlib
+    snapshot, imports, and execution images are unknown.
+  verifier_or_reward: Completed RL proofs compile to receive a binary terminal reward. Autoformalization is filtered through
+    compilation, QwQ-32B unanimous semantic judging, Lean4 expert monitoring, and contradiction, negation, and triviality
+    filters.
+  terminal_predicate: A completed Lean4 proof compiles in the configured environment. This is whole-proof terminal feedback;
+    the README's no-prover-feedback wording means no interactive feedback during proof generation, not absence of terminal
+    rollout verification.
+recipe_metadata:
+  base_model: Qwen2.5-72B for RL; public 1.5B and 7B distills initialize from Qwen2.5-Math Instruct models.
+  teacher: Claude 3.7 Sonnet for cold-start traces; the 72B Kimina policy for public distills; QwQ-32B is an autoformalization
+    judge rather than the proof-RL teacher.
+  generator: A Qwen2.5-Coder-7B-Instruct-derived autoformalizer generates Lean statements; the current policy generates whole
+    proofs.
+  filtering_rule: RL samples require at least one tactic block and tactic blocks must cover 60 percent of final Lean code.
+    Autoformalizations compile and pass QwQ voting, expert monitoring, and contradiction, negation, and triviality filters;
+    complete thresholds and yields are unknown.
+  sampling_protocol: Batches from established prompts with candidate whole-proof rollouts; reported batch size is 1000, while
+    rollout count and decoding settings are unknown.
+  rollout_count: null
+  temperature: null
+  inference_budget: RL and evaluation context is reported up to 32K. Pass@1 through pass@8192 are reported, but full training
+    compute and rollout budget are unavailable.
+  optimizer_or_scaffold: Minimal SFT and an informal-math mix precede KL-constrained RL based on the Kimi k1.5 pipeline; constant
+    learning rate and fixed KL are disclosed without values or full configuration.
+audit:
+  source_mixture: NuminaMath 1.5, PutnamBench, miniF2F, ProofNet, Compfiles, Claude cold starts, Kimi k1.5 thinking, autoformalized
+    statements, and human statements/proofs are described. Source manifests, licenses, and weights are unknown.
+  split: A roughly 1,000-item human-curated autoformalization test and miniF2F evaluation are reported; prompt membership
+    and train/validation partitions are unknown.
+  decontamination: The report describes 13-gram decontamination and removal of AMC12/AIME/IMO overlap from NuminaMath against
+    miniF2F; overlap lists and residual analysis are unknown.
+  license: Public distills are Apache-2.0 and the corrected miniF2F archive is public. Rights for sources, annotations, Claude/Kimi
+    traces, RL rollouts, and the prompt corpus are unknown.
+  lineage: High-level autoformalization, SFT, terminal-RL, and distillation lineage is disclosed; item-level ancestry and
+    exact model/environment mappings are incomplete.
+  known_failure_modes:
+  - A Lean-compiling autoformalization can still formalize the wrong mathematical statement.
+  - QwQ semantic judging and expert monitoring can miss autoformalization errors.
+  - Whole-proof compilation is terminal verification, not interactive step-level prover feedback during generation.
+  - The 72B prompt set, RL rollouts, rewards, rejection records, and retention yields are not public.
+  - Lean, mathlib, import, and server pins are incomplete, so compilation behavior may not be reproducible.
+  - Released proof files and a corrected miniF2F artifact do not establish full training-data lineage.
+  citation_status: verified
+  confidence: high
+  notes: Track 12 frontier disclosure record, not a Track 8 recipe. Terminal programmatic proof validation remains distinct
+    from LLM-judge and human-monitored autoformalization.
+inclusion_reason: Moonshot/Numina formal-reasoning report with concrete Lean terminal RL, autoformalization validation, SFT/distillation,
+  limited public artifacts, and material reproducibility boundaries.
+related: []
+tags:
+- kimina-prover
+- formal-reasoning
+- lean4
+- terminal-verification
+- rlvr
+- autoformalization
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Kimina-Prover discloses a 200K Lean prompt construction, about 20K cold starts, whole-proof compiler-terminal
+  RL, and public distills/tooling, but not core prompts, rollouts, rewards, environment pins, or full lineage.
+why_it_matters: It distinguishes whole-proof terminal programmatic feedback from imperfect LLM/human-reviewed autoformalization
+  and from interactive step feedback, showing why released artifacts do not reproduce the full pipeline.
+card: null
+needs:
+- 'needs_data: prompt set, cold starts, Kimi mix, annotations, RL rollouts, accepted/rejected proofs, and distillation samples'
+- 'needs_metadata: sources, checkpoints, judge prompts, thresholds, sampling, temperatures, optimizer, KL, and yields'
+- 'needs_audit: environment pins, splits, decontamination, judge errors, and benchmark provenance'
+- 'needs_license: source, annotation, synthetic-trace, and training-data rights'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official arXiv, Moonshot repository, corrected miniF2F archive, official distill page, and Lean Server were checked;
+    public artifacts are limited and not the full training or feedback corpus.

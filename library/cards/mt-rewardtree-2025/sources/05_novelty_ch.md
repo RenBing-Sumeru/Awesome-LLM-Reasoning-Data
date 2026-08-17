@@ -1,0 +1,5 @@
+论文内部的 prior-work baseline 是普通 sequence-level 或“vanilla”preference construction：采样完整翻译并进行排序，但不要求两条结果在某个下一 token 处形成受控分叉。approximate MCTS、Monte Carlo completion scoring、COMETKiwi、DPO 和 KTO 都是已有组件。MT-RewardTree 的具体变化是围绕同一前缀下的 sibling intervention 组合这些组件：top-2 candidate token 定义局部对照，三个后续 rollout 估计每个 sibling 的 value，筛选出的对照同时成为训练 supervision 和 benchmark instance。
+
+由此得到的数据对象比一般 chosen/rejected 翻译对更具体。prefixed pair 试图在保持已生成 history 不变的条件下隔离一个 token decision，训练后的 policy/reference log-ratio 则给出可用于后续 scoring 或 decoding 的 implicit process reward。作者还引入 MT-PRMBench 作为 MT 专用 reward-model benchmark，并发布 prefixed/arbitrary 的 training 与 benchmark variant 以及两个 PRM checkpoint。“首个 MT 专用 reward-model benchmark”是作者主张，本 Card 不独立确认其优先权。
+
+对 rollout/search trace 研究而言，具有方向意义的贡献是把 search budget 与 trajectory-value estimate 明确连接到 pairwise process supervision。它也暴露出一个重要的负面边界：发布 artifact 是搜索过程的压缩投影，而不是搜索 trace 本身。在把该工作视为可复用 tree-data recipe 之前，仍需获得 tree/node ID、全部 rollout 与 value、selector yield、score 语义、固定的 judge 版本以及 split/lineage manifest。

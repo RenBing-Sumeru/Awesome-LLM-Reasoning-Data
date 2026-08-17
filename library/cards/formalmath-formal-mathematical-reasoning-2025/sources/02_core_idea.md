@@ -1,0 +1,3 @@
+FormalMATH’s central contribution is a collection of 5,560 Lean 4-verified mathematical problems covering algebra, applied mathematics, calculus, number theory, and discrete mathematics, roughly 22.8 times the size of miniF2F. Each instance aligns an informal problem with a Lean statement for evaluating machine-checkable proof generation.
+
+The data-construction contribution is a layered filtering process. Specialized LLMs generate statements, multiple LLMs assess semantic consistency, and off-the-shelf provers attempt to prove negated candidates to reject refutable or suspicious formalizations before final human review. The pipeline retains 72.09% of candidates before expert verification, reducing the burden of fully manual formalization.

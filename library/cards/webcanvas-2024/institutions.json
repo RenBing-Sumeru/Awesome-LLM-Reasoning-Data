@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "iMean AI",
+    "Carnegie Mellon University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-17T07:17:48Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2406.12373",
+    "https://www.imean.ai/web-canvas",
+    "https://github.com/iMeanAI/WebCanvas",
+    "https://huggingface.co/datasets/iMeanAI/Mind2Web-Live"
+  ],
+  "verification_note": "Institution list follows official paper/card-local verified source metadata; long affiliation details should be checked from the PDF for publication-grade citation."
+}

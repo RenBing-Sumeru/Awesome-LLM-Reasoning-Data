@@ -1,0 +1,1 @@
+使用 SETA-Env 对 Qwen3-8B 进行 GRPO 后，Terminal-Bench 2.0 pass rate 达到 12%，为论文所称 8B RL 模型最佳结果。相同 agent harness 下，DeepSeek-V4-Flash 的 pass@1 从 40% 提升到 43%，pass@5 从 54% 提升到 58%。结果支持环境质量与规模，但新论文尚缺长期复现和跨平台稳定性证据。

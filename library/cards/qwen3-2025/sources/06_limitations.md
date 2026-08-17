@@ -1,0 +1,5 @@
+The underlying pre-training, cold-start, SFT, RL, query-verifier, and rejected-output datasets are not released. Raw source names, mixture weights, per-stage sample counts, prompts, decoding settings, filtering thresholds, retention yields, exact teacher-to-student mapping, and optimizer configuration remain incomplete or unknown.
+
+The verifier and reward contract cannot be independently audited: the report identifies reference answers/code tests and query-verifier pairs, but does not disclose the complete verifier implementation, reward formula, calibration, or false-accept and false-reject measurements. It mentions a validation query set and filters suspected validation-item similarity, but does not publish split membership, a full contamination protocol, or measured leakage results. Human assessment is mentioned only for a repeated QwQ-32B failure condition; rater guidance, volume, agreement, and adjudication are undisclosed.
+
+Apache-2.0 model availability and official code/model pages do not establish rights to, or reproducibility of, mixed and synthetic training data. These gaps limit this Card to a partial, report-level disclosure record.

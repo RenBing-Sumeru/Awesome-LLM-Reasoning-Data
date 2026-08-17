@@ -1,0 +1,5 @@
+This paper is useful as a recipe for auditing LLM judges before using them as scalable evaluators. A reusable schema should preserve prompt text, turn index, category, candidate model IDs, full candidate answers, answer order, judge prompt, judge model/version, raw judgment text, parsed label or score, tie handling, human vote source, and dataset snapshot.
+
+For benchmark design, MT-Bench offers a compact multi-turn challenge set; for preference collection, Chatbot Arena offers a deployment pattern for anonymous pairwise battles; for judge safety, the bias tests give a checklist for position swaps, verbose answers, self-comparison, adversarial distractors, and math-reference checks.
+
+The reusable value is a feedback-contract template: scalable judge scores are credible only when accompanied by agreement evidence and failure-mode probes. The same pattern can guide evaluation-only benchmark design, reward-model data audits, and leaderboard provenance checks, but the released judgments should not be copied into training use without a separate consent, license, contamination, and label-quality review.

@@ -1,0 +1,95 @@
+id: answer-convergence-early-stopping-2025
+title: Answer Convergence as a Signal for Early Stopping in Reasoning
+year: 2025
+venue: EMNLP 2025
+authors:
+- Xin Liu
+- Lu Wang
+source_role:
+- scaling_study
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- step_level
+domains:
+- mathematics
+- question_answering
+- science
+training_use:
+- test_time_compute
+construction_layer:
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.904/
+  arxiv: https://arxiv.org/abs/2506.02536
+  code: null
+  data: null
+  project: https://huggingface.co/spaces/launch/reasoning_earlystop
+  huggingface: https://huggingface.co/spaces/launch/reasoning_earlystop
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.904
+  venue: https://aclanthology.org/2025.emnlp-main.904/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.904/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.904.bib
+data_object:
+  prompt_source: NaturalQuestions, GSM8K, MATH-500, GPQA-Diamond, and AIME 2024 evaluations.
+  trace_author: Evaluated reasoning models generate CoT; chunks and labels are unreleased.
+  answer_format: Sentence CoT prefixes followed by </think> and partial answers.
+  process_fields:
+  - sentence_chunk
+  - partial_answer
+  - consistency_sequence
+  - stopping_point
+  environment_or_substrate: Inference-time early stopping.
+  verifier_or_reward: Self-consistency signal, not an external verifier.
+  terminal_predicate: Stable identical partial answers or a learned stop decision.
+recipe_metadata:
+  base_model: Five open-weight LLMs; named variants include QwQ and R1 Qwen/Llama.
+  teacher: unknown
+  generator: Chunks model CoT and asks for intermediate answers.
+  filtering_rule: Earliest answer-stability point; thresholds not released.
+  sampling_protocol: Greedy partial answers in preliminary analysis.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Variable; measures savings against full decoding.
+  optimizer_or_scaffold: Two training-free methods and one activation-based stop predictor.
+audit:
+  source_mixture: No trace/chunk/label/activation release.
+  split: Benchmark native; derived stopper splits unknown.
+  decontamination: unknown
+  license: No official code/data license confirmed; linked space was sleeping.
+  lineage: CoT -> chunks -> partial answers -> stability labels/stop
+  known_failure_modes:
+  - Stability may be wrong, especially on difficult tasks.
+  - Truncation may be unfaithful.
+  - Code, labels, and stopper weights unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL, arXiv, and cited space checked.
+inclusion_reason: Makes partial-trace stabilization a measurable stop signal with explicit correctness limits.
+related: []
+tags:
+- answer-convergence
+- early-stopping
+- self-consistency
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: Stops CoT when partial-chain answers stabilize, optionally using logit adjustment or a learned stop predictor.
+why_it_matters: It separates answer stability from verified correctness when selecting trace prefixes.
+card: null
+needs:
+- needs_code
+- needs_data
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation official; no code/data confirmed.

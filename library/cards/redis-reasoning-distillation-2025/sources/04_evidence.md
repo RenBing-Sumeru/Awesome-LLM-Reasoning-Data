@@ -1,0 +1,3 @@
+For a LLaMA-3 ReDis model, the paper reports relative gains over GPT-4o of 23.2% on 1D-ARC, 2.8% on ACRE, and 66.6% on MiniSCAN within a similar hypothesis search space. It also reports token-efficiency gains of 87%, 53%, and 25% on MiniSCAN, 1D-ARC, and ACRE.
+
+These results support the method on the stated synthetic and inductive tasks, and the ablations connect filtering and preference alignment to the outcome. They do not establish that teacher-generated rules are equally reliable for open-ended natural-language tasks or that the same preference recipe transfers without an explicit rule-consistency check.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SWiRL 将离线搜索/计算器完整轨迹拆为动作结束的前缀子轨迹，以 Gemini 1.5 Pro 过程筛选和逐动作生成式奖励训练 Gemma 2；方法与提示公开，但轨迹、奖励日志、代码和模型未发布。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "工具使用轨迹构造与离线逐步强化学习方法",
+  "best_for_ch": "研究智能体轨迹、过程筛选、逐步奖励和离线 RL 的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Anna Goldie, Azalia Mirhoseini, Hao Zhou, Irene Cai, Christopher D. Manning",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "training_usage_optimization_objectives"
+  ]
+}

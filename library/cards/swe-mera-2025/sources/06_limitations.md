@@ -1,0 +1,11 @@
+The most immediate validity issue is verifier mismatch. At the pinned revision, `solved` requires only that PASS_TO_PASS tests remain in the passed set. It does not require FAIL_TO_PASS tests to pass after the candidate patch. A patch can therefore preserve regressions while failing to implement the requested repair and still satisfy the public predicate.
+
+Release evolution is incompletely documented. Paper-era counts of 528/728 differ from the current 6.82k-row, four-split release; overlap among `dev`, `lite`, `full`, and `multilang`, derivation rules, language composition, corrections, and deletions are not fully reconciled. No formal train/dev/test usage policy or cross-split deduplication is supplied.
+
+Fresh collection reduces but does not eliminate contamination. Source issues, PRs, patches, and tests are public; no guaranteed cutoff, pretraining exposure test, overlap audit, or post-release leakage policy exists. Reference tests may yield false negatives for equivalent solutions and miss readability, maintainability, performance, security, and collaboration quality.
+
+Replay remains conditional. Base commits, commands, images, and timeouts are available, but image tags and dependencies can move; repository deletion, network behavior, external packages, caches, and platform differences can change outcomes. No immutable OCI digest/dependency-lock manifest or systematic multi-run replay rate is published.
+
+MIT is declared for HF and repotest, but upstream repository, issue/comment, patch, and test rights differ. The paper says it avoids proprietary, copyrighted, or sensitive information, yet no row-level rights matrix, PII scan, attribution ledger, consent, or takedown process is released. Running mined repositories is security-sensitive: the authors scanned 668 repositories and found two with virus signatures. Network, secrets, Docker capabilities, supply-chain defenses, and host isolation need explicit controls.
+
+Success/failure trajectory retention is optional. Submitters are encouraged to link traces; otherwise the platform shows a GitHub PR. This does not provide a complete, uniform corpus of successful and failed agent episodes or intermediate artifacts.

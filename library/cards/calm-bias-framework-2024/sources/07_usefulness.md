@@ -1,0 +1,3 @@
+Use CALM as an audit checklist before adopting LLM-as-a-Judge labels for benchmarks, reward models, rerankers, or regression tests. Preserve task id, original prompt, perturbed prompt, targeted bias type, perturbation method, judge model/version, raw judge output, parsed score or preference, bias metric, and semantic-preservation checks.
+
+For atlas work, it is useful as a benchmark-quality audit card and as a warning against treating AI feedback as neutral ground truth. It can guide recipe metadata for judge-based datasets by requiring perturbation provenance and versioned judge configuration.

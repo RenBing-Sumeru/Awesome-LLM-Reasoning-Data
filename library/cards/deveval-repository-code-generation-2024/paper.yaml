@@ -1,0 +1,126 @@
+id: deveval-repository-code-generation-2024
+title: 'DevEval: A Manually-Annotated Code Generation Benchmark Aligned with Real-World Code Repositories'
+year: 2024
+venue: arXiv preprint
+authors:
+- Jia Li
+- Ge Li
+- Yunfei Zhao
+- Yongmin Li
+- Huanyu Liu
+- Hao Zhu
+- Lecheng Wang
+- Kaibo Liu
+- Zheng Fang
+- Lanshen Wang
+- Jiazheng Ding
+- Xuanming Zhang
+- Yuqi Zhu
+- Yihong Dong
+- Zhi Jin
+- Binhua Li
+- Fei Huang
+- Yongbin Li
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- repository-code-generation
+- manual-annotation
+- swe-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2405.19856
+  arxiv: https://arxiv.org/abs/2405.19856
+  doi: null
+  code: https://github.com/seketeam/DevEval
+  data: https://github.com/seketeam/DevEval
+  project: null
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: DevEval paper and official GitHub repository
+  trace_author: DevEval authors and manual annotation process
+  answer_format: repository contexts, manually annotated generation tasks, tests, dependencies, and evaluation outcomes
+  process_fields:
+  - task_or_issue
+  - environment_state
+  - agent_action_or_output
+  - execution_feedback
+  - terminal_score_or_diagnosis
+  environment_or_substrate: manually annotated repository-aligned code-generation tasks
+  verifier_or_reward: repository tests and DevEval evaluation scripts
+  terminal_predicate: repository tests and DevEval evaluation scripts
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, trajectory, diagnostic, or
+    evaluation surface.
+  teacher: manual annotations and repository test signals
+  generator: manual task annotation aligned with real repositories
+  filtering_rule: check repository data license, dependencies, and test reproducibility
+  sampling_protocol: Pin release, split, environment image, evaluator revision, runtime platform, and date before score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2405.19856; https://github.com/seketeam/DevEval
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and trajectories can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2405.19856'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - held-out split mismatch
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: check data license and reproducibility of dependencies/tests across 117 repositories
+inclusion_reason: it supplies repository-context tasks with manual task design and executable checks
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- repository-code-generation
+- manual-annotation
+- swe-agents
+one_line: DevEval provides manually annotated repository-aligned code generation tasks.
+why_it_matters: it supplies repository-context tasks with manual task design and executable checks
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: DevEval provides manually annotated repository-aligned code generation tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: Agent verification confirms authors, PKU/Alibaba affiliations, arXiv status, and official GitHub artifact.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 101-126
+  candidate_index: 112
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "发布 PKU-SafeRLHF 安全偏好数据集，分离有用性与无害性偏好，并加入 19 类风险和三级严重度标签。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "偏好与奖励反馈数据集或数据构建研究",
+  "best_for_ch": "需要构建、审计或复用偏好与奖励反馈数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiaming Ji、Donghai Hong、Borong Zhang、Boyuan Chen 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-12T09:54:41Z"
+}

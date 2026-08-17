@@ -1,0 +1,5 @@
+- 应把 Definition 1、Definition 4 与第 II-B–II-F 节对照阅读：数据对象是 thought-action-result episode，而 tool observation、terminal success、action category 与 semantic relation 是四种不同信号。
+- 规模必须写准：3 个 agent × 每个 40 条轨迹 = 120 个 episode、2,822 次迭代；发布对每个 agent 列出约 10 条 resolved 和 30 条 unresolved case。
+- 分类必须写准：八类 action、五类相邻组件关系、action 4-gram，以及被排除在后续动作分析之外的 8.3% uncategorized action。
+- 行为发现只能解释为关联，不能当成因果证明或训练数据质量证据；agent 架构、模型、任务、terminal predicate 与预算均不同。
+- 复用前应解决 RepairAgent 清单不一致，并验证 tagged snapshot、raw-log replay 路径、annotation agreement、数据/上游权利与 decontamination。

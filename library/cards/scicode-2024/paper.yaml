@@ -1,0 +1,87 @@
+id: scicode-2024
+title: 'SciCode: A Research Coding Benchmark Curated by Scientists'
+year: 2024
+venue: arXiv
+authors:
+- SciCode authors
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- scientific-coding
+- code-generation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2407.13168
+  arxiv: https://arxiv.org/abs/2407.13168
+  doi: null
+  code: null
+  data: null
+  project: null
+data_object:
+  dataset_scale: scientific coding benchmark with subproblems; exact count and release need audit.
+  prompt_source: scientific programming problems and background context.
+  trace_author: benchmark authors and evaluated models.
+  answer_format: scientific problem, required function/code, generated solution, tests, and pass/fail score.
+  process_fields:
+  - scientific background
+  - subproblem
+  - generated code
+  - unit tests
+  - score
+  environment_or_substrate: Python scientific coding environment.
+  verifier_or_reward: unit tests or official scientific-code judge.
+  terminal_predicate: generated code passes pinned tests.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark surface.
+  teacher: scientist-authored problems and tests.
+  generator: SciCode benchmark construction.
+  filtering_rule: separate scientific reasoning context from generic coding accuracy.
+  sampling_protocol: Pin task split, Python version, dependencies, tests, background prompt policy, and timeout.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: scientific_code_eval
+audit:
+  source_mixture: SciCode primary source and model-report references need pinning.
+  split: needs_audit
+  decontamination: public scientific tasks and tests can leak into training.
+  license: needs_audit
+  lineage: needs_audit
+  known_failure_modes:
+  - dependency versions can change results
+  - tests can under-specify scientific correctness
+  - background prompting policy affects scores
+  citation_status: partial
+  confidence: medium
+  notes: Metadata shell added first; primary links need completion.
+inclusion_reason: SciCode is used as a scientific coding benchmark in frontier model reports.
+related: []
+tags:
+- benchmark
+- coding
+- science
+one_line: SciCode evaluates scientific programming tasks with code execution checks.
+why_it_matters: It joins code generation with scientific reasoning and dependency-sensitive execution.
+status: verified
+needs:
+- 'needs_audit: pin official repository/data release, scientist-authored tests, dependency environment, split, and license'
+one_line_summary: SciCode evaluates scientific programming tasks with code execution checks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: Metadata shell added before source generation.
+category_ids:
+- benchmarks_evaluation_surfaces

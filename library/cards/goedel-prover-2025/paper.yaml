@@ -1,0 +1,161 @@
+id: goedel-prover-2025
+title: 'Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving'
+year: 2025
+venue: arXiv technical report
+authors:
+- Yong Lin
+- Shange Tang
+- Bohan Lyu
+- Jiayun Wu
+- Hongzhou Lin
+- Kaiyu Yang
+- Jia Li
+- Mengzhou Xia
+- Danqi Chen
+- Sanjeev Arora
+- Chi Jin
+source_role:
+- data_release
+- construction_recipe
+- model_report
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- formal-mathematics
+- lean4
+- automated-theorem-proving
+training_use:
+- sft
+- preference_learning
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2502.07640
+  arxiv: https://arxiv.org/abs/2502.07640
+  venue: null
+  code: https://github.com/Goedel-LM/Goedel-Prover
+  data: https://huggingface.co/datasets/Goedel-LM/Goedel-Pset-v1
+  project: https://goedel-lm.github.io/
+  huggingface: https://huggingface.co/datasets/Goedel-LM/Lean-workbook-proofs
+  doi: https://doi.org/10.48550/arXiv.2502.07640
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/Goedel-LM/Goedel-Prover#8-citation
+data_object:
+  prompt_source: Numina informal math problems plus Lean Workbook statements; the paper also uses a private 68K AOPS collection
+    during formalization.
+  trace_author: Two Qwen2.5-Coder-32B formalizers create Lean statements, then DeepSeek-Prover-V1.5-RL and eight generations
+    of SFT provers write whole proofs.
+  answer_format: Goedel-Pset-v1 stores problem_id, formal_statement, and informal_statement; Lean-workbook-proofs stores problem_id
+    and a complete Lean 4 full_proof.
+  process_fields:
+  - informal statement
+  - Lean 4 statement
+  - stable problem identifier
+  - compiler-verified whole proof
+  environment_or_substrate: Lean 4.9.0 with Mathlib4, whole-proof sampling, compiler replay, and cumulative expert iteration.
+  verifier_or_reward: Lean compilation checks syntax and proofs; a Qwen2.5-72B-Instruct faithfulness/completeness judge filters
+    autoformalized statements after compilation.
+  terminal_predicate: A proof is positive only when Lean compiles the complete theorem; a formalized statement must also pass
+    compilation and the faithfulness threshold.
+recipe_metadata:
+  base_model: DeepSeek-Prover-V1.5-Base for each SFT prover; Qwen2.5-Coder-32B for both formalizers.
+  teacher: Claude-3.5-Sonnet supplies 170K compiled training pairs for one formalizer; Qwen2.5-72B-Instruct judges faithfulness;
+    successive provers supply proofs.
+  generator: Two formalization styles generate Lean statements, and each expert-iteration prover samples whole proofs for
+    the growing statement pool.
+  filtering_rule: Require Lean statement compilation and faithfulness/completeness score at least 0.5, then retain one randomly
+    selected compiler-valid proof per solved statement.
+  sampling_protocol: Generate 16 proofs per statement in each expert iteration; accumulate solved statements across eight
+    rounds.
+  rollout_count: 16
+  temperature: null
+  inference_budget: Each 1.78M-statement Pass@16 sweep uses 64 H100 GPUs for about six hours plus about ten hours of verification
+    on 8,000 CPUs.
+  optimizer_or_scaffold: SFT from the same base each round, with learning rates 1e-4 or 5e-5, one or two epochs, packing,
+    and batch size 8; DPO and GRPO are secondary explorations.
+audit:
+  source_mixture: The paper derives 1.64M formalizations from 860K public Numina problems using two styles, combines them
+    with Lean Workbook and some private AOPS material for a 1.78M training pool, and releases 29,750 newly solved Lean Workbook
+    proofs.
+  split: The two official datasets expose train Parquet files. The first Goedel-Pset shard has 433,149 rows; Lean-workbook-proofs
+    has 29,750 rows in one file.
+  decontamination: NuminaTest is held out after formalization, but no broad text-level decontamination against every benchmark
+    is documented. Lean Workbook is explicitly both training and monitored in-domain data.
+  license: No dataset license tag was present in either official Hugging Face record on 2026-07-14; the code repository is
+    MIT, which does not settle dataset, source-problem, or teacher-output rights.
+  lineage: informal problem -> dual autoformalization -> Lean compile and faithfulness checks -> 16 proof samples -> compiler
+    validation -> one retained proof -> cumulative expert iteration -> public statement/proof Parquet.
+  known_failure_modes:
+  - A Lean-compiling formal statement can be unfaithful to the original informal problem despite the model-based judge.
+  - ProofNet and Mathlib4 have different distributions from olympiad-style data, and adding Mathlib4 helps one while hurting
+    miniF2F.
+  - DPO and GRPO improve Pass@32 but lengthen proofs, overproduce shortcut tactics, and yield less benefit at high inference
+    budgets.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v3, official repository, two anonymous Parquet releases, their complete schemas and actual rows, scale, compiler
+    contract, adoption metrics, and license absence were checked on 2026-07-14.
+inclusion_reason: The paper releases compiler-verifiable statement and whole-proof supervision and documents how dual formalization
+  plus expert iteration produces it.
+related: []
+tags:
+- instruction-demonstration-rationale
+- formal-math
+- lean4
+- expert-iteration
+- arxiv-2502.07640
+- primary-link-checked
+status: verified
+one_line_summary: Goedel-Prover releases large-scale informal/formal Lean statements and 29,750 complete proofs produced through
+  compiler-verified expert iteration.
+why_it_matters: It exposes statement style, faithfulness checks, proof search, compiler verification, and cumulative SFT as
+  distinct data-quality decisions.
+reading_priority: must read
+paper_type: open formal-mathematics dataset, construction recipe, and prover report
+best_for: Researchers building Lean whole-proof corpora, autoformalization pipelines, or verifier-backed expert iteration.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Both official datasets are anonymous and ungated; Parquet metadata, schemas, row counts, and sample records were
+    inspected with range reads.
+category_ids:
+- instruction_demonstration_rationale_data
+- programmatically_verifiable_outcome_data
+batch:
+  id: batch-l4-20260714-round2-math
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: compiler-verified Lean whole-proof demonstrations
+  selection_priority_score: 8
+  selection_score_breakdown:
+    institution: 3
+    venue: 0
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: The work is led by Princeton Language and Intelligence with Princeton, Tsinghua, Meta FAIR, and Numina affiliations;
+      Amazon is explicitly marked as outside-work affiliation.
+    venue: The checked primary source is an arXiv technical report, so no peer-reviewed venue, oral, spotlight, or award credit
+      is assigned.
+    impact: On 2026-07-14 OpenAlex reported 1 citation, the official repository had 238 stars and 36 forks, Goedel-Pset-v1
+      had 334 downloads/14 likes, and Lean-workbook-proofs had 420 downloads/16 likes.
+    artifact: Both official datasets are ungated and anonymously readable; Parquet schemas and actual records were checked
+      for a 433,149-row statement shard and the complete 29,750-row proof release.
+  selection_eligible: true
+  year_impact_threshold: 2

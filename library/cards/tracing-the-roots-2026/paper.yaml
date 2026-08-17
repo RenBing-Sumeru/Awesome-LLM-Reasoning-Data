@@ -1,0 +1,190 @@
+id: tracing-the-roots-2026
+title: 'Tracing the Roots: A Multi-Agent Framework for Uncovering Data Lineage in Post-Training LLMs'
+year: 2026
+venue: ACL 2026
+authors:
+- Yu Li
+- Xiaoran Shang
+- Qizhi Pei
+- Yun Zhu
+- Xin Gao
+- Honglin Lin
+- Zhanping Zhong
+- Zhuoshi Pan
+- Zheng Liu
+- Xiaoyang Wang
+- Conghui He
+- Dahua Lin
+- Feng Zhao
+- Lijun Wu
+source_role:
+- construction_recipe
+- audit_failure
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- mathematics
+- code
+- science
+training_use:
+- sft
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2604.10480
+  arxiv: https://arxiv.org/abs/2604.10480
+  code: https://github.com/Leey21/data-lineage
+  data: https://github.com/Leey21/data-lineage/tree/main/output
+  project: https://arena.opendatalab.org.cn/data-lineage/website/index.html
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.435
+  venue: https://aclanthology.org/2026.acl-long.435/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.435/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.435.bib
+data_object:
+  prompt_source: 83 high-impact textual post-training datasets on Hugging Face, selected using downloads, community engagement,
+    and reported downstream-model performance across General, Math, Code, and Science; recursive tracing expands this seed
+    set to 430 dataset nodes
+  trace_author: GPT-5.1 sourcing and tracing agents identify entry points and source-target relations; Gemini-2.5-Flash extracting
+    agents summarize retrieved material; a Gemini-2.5-Pro aggregation agent canonicalizes names and merges sources; low-confidence
+    extractions are described as routed to human experts
+  answer_format: Two distinct objects are reported. The lineage artifact is a directed dataset graph whose edges encode source
+    dataset, target dataset, one of five derivation relations, confidence, and supporting evidence. The construction experiment
+    normalizes records from 31 selected upstream leaf datasets into Alpaca-style instruction/input/output records and deduplicates
+    them to a reported 570K-instruction corpus, but that corpus was not found in the official repository.
+  process_fields:
+  - target_dataset_id
+  - source_dataset_id
+  - derivation_relation
+  - confidence
+  - supporting_evidence
+  - canonical_huggingface_id
+  - effective_release_date
+  - domain_profile
+  - construction_method_profile
+  - instruction
+  - input
+  - output
+  environment_or_substrate: A LangChain-orchestrated target-to-source queue retrieves Hugging Face READMEs, GitHub and blog
+    pages, and arXiv papers; parallel agents extract evidence, an aggregation/canonicalization stage resolves aliases, and
+    DFS recursively expands the graph. The paper's reported analysis is text-only, while the later repository also exposes
+    a multimodal mode.
+  verifier_or_reward: Hugging Face availability and canonical-ID checks, source-versus-target release-time consistency, agent-assigned
+    evidence confidence, exclusion of evaluation/baseline mentions, and expert review of low-confidence extractions govern
+    graph edges. Exact triplet matching audits source intersections; exact instruction/input matching audits benchmark contamination;
+    exact-Q plus MinHash deduplicate the construction corpus. No calibrated gold verifier or inter-expert agreement result
+    is reported.
+  terminal_predicate: Graph recursion stops when no upstream ancestor is identified or the effective release date predates
+    2020. Corpus candidates must come from used leaf nodes, survive domain/QA-format and English/length filtering, and pass
+    exact-Q and MinHash deduplication.
+recipe_metadata:
+  base_model: not applicable; this is a provenance-extraction and data-curation pipeline, not a reported model-training recipe
+  teacher: not applicable to target-answer generation; the paper uses GPT-5.1-2025-11-13, Gemini-2.5-Flash, and Gemini-2.5-Pro
+    as task-specific lineage agents
+  generator: GPT-5.1 sourcing and tracing agents, Gemini-2.5-Flash extracting agents, and a Gemini-2.5-Pro aggregation agent
+    coordinated through LangChain
+  filtering_rule: Skip already processed or unavailable Hugging Face IDs; reject anachronistic source edges and unsupported
+    low-confidence extractions; exclude evaluation benchmarks, baselines, and incidental mentions from ancestry; for corpus
+    construction exclude zero-out-degree leaves, niche or non-QA sources, non-English records, and length outliers, then apply
+    exact-Q and MinHash deduplication
+  sampling_protocol: Extract 212 unique leaf datasets from the graph, rank them by out-degree, exclude leaves with no downstream
+    use, retain 31 post-training QA sources after domain/format filtering, normalize about 8.7M records to Alpaca format,
+    and deduplicate to 570K instructions
+  rollout_count: null
+  temperature: unknown for the paper run; current repository code sets ChatOpenAI temperature to 0, but the repository revision
+    is later than the accepted-paper experiment and is not a paper-run snapshot
+  inference_budget: unknown
+  optimizer_or_scaffold: Central processing queue, multi-source retrieval, parallel extraction and tracing, canonical-ID resolution,
+    confidence/temporal validation, recursive DFS, and provenance-based leaf sampling
+audit:
+  source_mixture: The graph begins from 83 textual datasets and covers 430 nodes in four domains. The reported construction
+    pool contains 31 named leaf QA datasets selected from 212 unique graph leaves; Appendix Table 11 lists them, but no immutable
+    row-level source manifest for the 570K corpus was verified.
+  split: unknown; the paper and official repository do not specify train/validation/test partitions for the reported 570K
+    corpus
+  decontamination: Source intersections are measured by exact (instruction, input, output) matching, and five benchmark audits
+    use exact (instruction, input) matching. The corpus uses exact-Q and MinHash deduplication with 128 permutations, threshold
+    0.7, and 8-grams. These procedures miss paraphrased or semantically transformed overlap, and the release does not verify
+    that all detected benchmark matches were removed from the 570K corpus.
+  license: unknown; no LICENSE, COPYING, or NOTICE file was found at official repository revision 681db3ab13eaa4391025d6c4b86ed5b58b73988e,
+    and no separate license for the reported 570K corpus was verified
+  lineage: The released graph records dataset-level source-target edges and dataset metadata. It does not establish per-record
+    ancestry after the 31 sources are normalized and deduplicated, and the reported 570K records are not present in the inspected
+    repository output directory.
+  known_failure_modes:
+  - Dataset cards, papers, repositories, and blogs may omit, misname, or inaccurately describe upstream sources; the method
+    cannot recover concealed dependencies.
+  - LLM agents can hallucinate sources or relation types. Appendix A.3 says vague relations may be inferred from context or
+    defaulted to Direct Inclusion/Subset, while the expert-routing threshold, reviewer count, adjudication rule, and agreement
+    are undisclosed.
+  - A leaf node means no ancestor was found within the observed graph or the recursion cutoff; it is not proof that a dataset
+    is independently created.
+  - Exact matching undercounts paraphrased, reformatted, translated, or semantically evolved redundancy and contamination.
+  - Vendi Score and Centroid Distance measure embedding dispersion, not answer correctness, instructional value, safety, or
+    downstream training benefit; the paper reports no training ablation using the 570K corpus.
+  - The 31-source normalization does not expose per-record source IDs, transformation logs, rejection reasons, or a split,
+    so rights and contamination cannot be audited row by row.
+  - The official repository is a living artifact with no tags or releases. Its current CLI defaults to gpt-5.4 rather than
+    the paper's task-specific GPT-5.1/Gemini configuration, and its checked-in text-only and multimodal JSONL outputs do not
+    constitute a pinned 430-node/971-edge paper snapshot.
+  - The repository code/output license and the licenses of the 31 upstream sources are not consolidated into a reusable corpus
+    license.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology proceedings record, DOI, accepted PDF, arXiv v1, project page, and author repository were checked on
+    2026-07-21. The inspected repository revision was 681db3ab13eaa4391025d6c4b86ed5b58b73988e (2026-05-27); it has four commits,
+    no tags or releases, and no repository license file. Citation identity is high-confidence, but graph reliability and corpus
+    reuse remain partial.
+inclusion_reason: Makes dataset ancestry an explicit construction and audit object, then demonstrates how graph topology can
+  guide root-source sampling, redundancy checks, and contamination tracing for post-training data.
+related:
+- bridging-provenance-gap-2025
+- posthoc-dataset-inference-2025
+tags:
+- data-lineage
+- provenance
+- multi-agent-curation
+- decontamination
+- root-source-sampling
+- dataset-diversity
+- release-versioning
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Reconstructs a 430-node, 971-edge post-training dataset lineage graph and uses 31 upstream QA sources plus
+  exact/MinHash deduplication to report a 570K diversity-oriented corpus that is not included in the verified release.
+why_it_matters: For the construction/open-release track, it turns upstream ancestry into a selection and audit layer, while
+  showing why dataset-level edges, record-level provenance, benchmark overlap, and release licensing must be checked separately.
+card: null
+needs:
+- 'needs_release: publish an immutable paper-time graph and the reported 570K corpus with file manifests, checksums, and a
+  tagged revision'
+- 'needs_license: state code/output licensing and the redistribution and training terms for the normalized 31-source corpus'
+- 'needs_record_lineage: retain source dataset IDs, source record IDs, transformations, deduplication decisions, and rejection
+  reasons for every released instruction'
+- 'needs_agent_protocol: disclose paper-run prompts, temperatures, token and concurrency budgets, confidence thresholds, expert
+  assignment, adjudication, and agreement/error rates'
+- 'needs_split: document corpus partitions, random seeds, stage-wise yields, and exact benchmark-removal policy'
+- 'needs_validation: independently evaluate edge precision/recall and downstream training utility, not only graph examples
+  and embedding-diversity metrics'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official ACL/arXiv identity, author repository, checked-in JSONL graph outputs, and project page are verified. artifact_verified
+    does not imply that the reported 570K corpus, a paper-time graph snapshot, source licenses, or record-level provenance
+    are available.

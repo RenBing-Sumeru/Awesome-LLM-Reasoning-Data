@@ -1,0 +1,106 @@
+id: swe-sharp-bench-csharp-software-engineering-2025
+title: 'SWE-Sharp-Bench: A Reproducible Benchmark for C# Software Engineering Tasks'
+year: 2025
+venue: IEEE/ACM AIware 2025
+authors:
+- Sanket Mhatre
+- Yasharth Bajpai
+- Sumit Gulwani
+- Emerson Murphy-Hill
+- Gustavo Soares
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- full_episode
+- answer_level
+domains:
+- software-engineering
+- code-generation
+- performance-engineering
+training_use:
+- evaluation
+- agent_training
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2511.02352
+  arxiv: https://arxiv.org/abs/2511.02352
+  code: https://github.com/microsoft/prose/tree/main/misc/SWE-Sharp-Bench
+  data: https://huggingface.co/datasets/microsoft/SWE-Sharp-Bench
+  project: https://aka.ms/swesharparxiv
+  huggingface: https://huggingface.co/datasets/microsoft/SWE-Sharp-Bench
+  doi: https://doi.org/10.48550/arXiv.2511.02352
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real performance-improving pull requests from public software repositories.
+  trace_author: Original repository contributors and benchmark curators.
+  answer_format: Repository state, task instruction, executable workload or tests, and reference patch metadata.
+  process_fields:
+  - repository revision
+  - issue or workload
+  - patch
+  - unit tests
+  - runtime measurement
+  - environment metadata
+  environment_or_substrate: Reproducible repository and container execution environment.
+  verifier_or_reward: Correctness tests together with repeatable runtime measurement.
+  terminal_predicate: A patch passes the relevant tests and achieves the benchmark's required performance condition.
+recipe_metadata:
+  base_model: The release is a benchmark; reported models are evaluands rather than data teachers.
+  teacher: Human performance-improving patches and executable workloads.
+  generator: Pull-request mining followed by execution validation.
+  filtering_rule: Retain tasks with runnable environments, relevant tests, and reproducible performance evidence.
+  sampling_protocol: See the official paper and release for task-level selection and split details.
+  rollout_count: null
+  temperature: null
+  inference_budget: Pin repository revisions, image or dependency versions, hardware, and repetition protocol.
+  optimizer_or_scaffold: Agent edits are evaluated by applying patches and rerunning tests and workloads.
+audit:
+  source_mixture: Official paper, project documentation, code repository, and Hugging Face release.
+  split: Consult the official release for current splits and version pins.
+  decontamination: Audit public pull-request and repository exposure before treating this benchmark as a held-out capability
+    measure.
+  license: Verify benchmark, repository, and upstream-project terms before reuse.
+  lineage: https://arxiv.org/abs/2511.02352
+  known_failure_modes:
+  - Runtime measurements can vary across hardware and dependency versions.
+  - Passing tests may omit untested functional regressions.
+  - Public pull requests can be present in model training data.
+  citation_status: verified
+  confidence: high
+  notes: Microsoft's publication page, paper, Hugging Face dataset, and Microsoft repository were checked.
+inclusion_reason: Each record couples a repository modification with executable tests and a measured terminal performance
+  outcome.
+related: []
+tags:
+- csharp
+- dotnet
+- software-engineering
+- unit-tests
+- '2025'
+one_line_summary: SWE-Sharp-Bench brings reproducible, test-verified software-engineering tasks to 150 C#/.NET instances across
+  17 repositories.
+why_it_matters: It evaluates a patch through executable behavior and measured runtime rather than a text-only judgment.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Microsoft's publication page, paper, Hugging Face dataset, and Microsoft repository were checked.
+category_ids:
+- programmatically_verifiable_outcome_data

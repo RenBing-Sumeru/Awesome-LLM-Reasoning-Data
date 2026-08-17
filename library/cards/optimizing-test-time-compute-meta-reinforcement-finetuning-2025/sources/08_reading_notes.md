@@ -1,0 +1,5 @@
+- Read MRT as both a formalization and a reward-construction recipe.
+- Cumulative regret is the analysis target; the practical signal is a surrogate progress bonus.
+- NuminaMath and AIME provide source problems, while episodes and bonuses are generated during training.
+- Progress is estimated by a meta-prover and is not ground-truth process quality.
+- Exact trace artifacts and their revisions remain unknown unless separately verified.

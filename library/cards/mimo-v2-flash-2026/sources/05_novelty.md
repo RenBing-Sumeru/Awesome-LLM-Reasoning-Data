@@ -1,0 +1,3 @@
+MiMo-V2-Flash is unusual as a frontier report because it names several feedback surfaces within one post-training account: specialized teachers, reverse-KL, ORM advantages, programmatic checking, LLM judges, multimodal verification, and agent environments. The MOPD description makes the teacher-and-student feedback interface more visible than a generic statement that reinforcement learning was used.
+
+For this atlas, the important novelty is the disclosure pattern rather than a claim of open reproducibility. The report is a useful example of a partially specified multi-teacher and multi-environment pipeline that exposes enough structure for audit questions while withholding the data and implementation artifacts needed to answer them.

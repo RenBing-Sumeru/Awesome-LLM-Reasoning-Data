@@ -1,0 +1,5 @@
+- 必须区分日期：slug 记录 2025 年 arXiv 首发，canonical paper 则是 Findings of ACL 2026，DOI 为 `10.18653/v1/2026.findings-acl.109`。
+- 先看 released object：2,215 个 train item 加 200 个 custom test item 是本地 executable environment definition，不是完整 trajectory corpus。sampler 会生成 history state，但 paper-run file 缺失，而且 terminal no-tool response 不被保存。
+- 阅读顺序：Sections 3.1–3.2 与 Figure 2 看五阶段 environment/reward pipeline，Table 1 看 scenario count，Table 2 看 trained/base comparison，Figure 4 看 reward ablation，Appendix D 看 construction prompt，再结合 repository 的 sampler/verifier/reward file 检查 implementation behavior。
+- feedback contract 必须保持准确：tool output 与 final answer 都以 normalization 后的 substring containment 检查；`2q/(p+1)` 是附着在最后一个 token 的 response-level tool-call reward，不是 semantic process label。unrestricted Python `exec` 是最直接的复用风险。
+- 可将本 Card 与公开完整 episode 或更强 terminal verifier 的 environment-agent 工作对读；任何 training reuse 前都要审计五阶段 script、generated trajectory、checkpoint、replay pin、license、contamination、semantic calibration 与 sandbox。benchmark gain 不能回答这些问题。

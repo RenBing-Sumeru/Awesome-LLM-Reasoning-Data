@@ -1,0 +1,6 @@
+- Read Sections 3.3–3.6 together: the contribution is the feedback loop across Solver, Attacker, Arbiter, global test memory, and final reranking, not any component alone.
+- Keep the three signals separate: public-test pass rate is Solver reward, output divergence is Attacker reward, and the Arbiter supplies test validity plus expected output. None is equivalent to hidden-test correctness.
+- Table 1 establishes task-level gains; Table 3 and Figure 7 are more informative for verifier-data quality because they directly measure label validity and discrimination errors.
+- Appendix C.1 is an oracle diagnostic showing the cost of weak verification; Appendix C.3 shows that more Attacker compute can worsen results. Neither supports the idea that more generated tests are automatically better.
+- Appendices D and E give the role prompts and clarify the hard gate/global memory, but numeric values for every symbolic threshold or capacity are not fully specified in the paper. Reproduction should also capture command-line settings because repository class fallbacks differ.
+- The official release is code-only. Its runtime guards are reliability controls rather than a security boundary, and no stable generated counterexample corpus or record-level lineage was found; canonical status remains `partial` and curation level `L3_summary_ready`.

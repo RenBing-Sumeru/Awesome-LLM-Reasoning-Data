@@ -1,0 +1,5 @@
+SWE-MERA's central idea is a rolling, executable GitHub-task pipeline. Each task begins from a repository state before a merged fix, adds future tests from the pull request, and asks an agent to create a patch. PASS_TO_PASS tests should preserve existing behavior; FAIL_TO_PASS tests should fail before and pass after the intended repair.
+
+Construction and evaluation use different feedback layers. Repository build and end-to-end execution are programmatic. Qwen3-32B supplies 1–10 scores, confidence, and explanations for task correctness, test correctness, test completeness, and complexity; tasks in the bottom quartile of any of the first three dimensions are filtered. Complexity is retained for analysis rather than filtering.
+
+The public checker creates or resets the repository at `base_commit`, builds it, applies `test_patch` and the candidate patch, then runs `command_test_small`. At pinned revision `c1079ff`, `solved` is set only when every PASS_TO_PASS identifier is in the passed set. FAIL_TO_PASS is serialized and released but not checked in the terminal predicate. This implementation gap is a central audit finding, not a minor schema detail.

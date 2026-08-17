@@ -1,0 +1,1 @@
+已核验出版信息：Bing Wang 等，《On the Step Length Confounding in LLM Reasoning Data Selection》，Findings of ACL 2026，第18443–18457页。DOI：https://doi.org/10.18653/v1/2026.findings-acl.918。官方BibTeX：https://aclanthology.org/2026.findings-acl.918.bib

@@ -1,0 +1,5 @@
+1. **Generate original drafts:** Ask six large reasoning models to solve complex tasks and preserve complete thinking drafts and final answers.
+2. **Intervene within drafts:** Insert semantically related or conflicting content at selected steps, continue the draft, and observe changes in future steps and the draft conclusion.
+3. **Perturb conclusion links:** Modify or replace the ending logic of the draft and request the final answer again to test answer dependence.
+4. **Compute faithfulness:** Measure Intra-Draft and Draft-to-Answer faithfulness from step changes, trajectory rollback, and answer flips and compare across models; The six configurations vary intervention location, method, and continuation strategy to separate local sensitivity from stable causal dependence.
+5. **Reproducibility:** Reproducibility: fix versions of the six models, intervention generation, position sampling, temperature, continuation count, and answer judgment. Mark undisclosed per-position budgets or prompts unknown.

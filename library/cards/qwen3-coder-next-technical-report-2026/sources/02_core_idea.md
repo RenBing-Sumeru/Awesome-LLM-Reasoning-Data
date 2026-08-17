@@ -1,0 +1,5 @@
+The report builds executable software-engineering supervision from pull requests and synthetic repository changes. A task can include a buggy repository state, a fix, a test patch, a Docker environment, a verification script, and eventually a multi-turn tool trajectory. This turns code-agent training from static answer prediction into interaction with a task-specific execution substrate.
+
+The feedback contract is mixed. It includes execution scripts, majority-consensus synthesized unit tests, Mini-SWE-agent verification, a multidimensional pairwise judge, terminal completion reward, and penalties for unfinished rollouts or invalid tool format. The report then describes staged mid-training, SFT, domain-expert training, distillation, single-turn execution RL, and multi-turn agentic RL.
+
+For the disclosure ledger, the key value is a visible construction and verification outline together with explicit non-release boundaries. It is not a publication of the underlying task corpus, container images, verification logs, reward implementation, or the full production training schedule.

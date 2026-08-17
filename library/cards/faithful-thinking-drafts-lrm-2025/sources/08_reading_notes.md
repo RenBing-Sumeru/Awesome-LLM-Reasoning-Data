@@ -1,0 +1,5 @@
+1. **Positioning:** The work uses counterfactual intervention to test whether draft steps and conclusions genuinely influence model outputs.
+2. **Method handle:** It stores original drafts, intervenes at intermediate steps and conclusions, continues generation, and measures trajectory and answer changes.
+3. **Data handle:** Six configurations provide tens of thousands of interventions with positions, continuation or rollback modes, and outcomes.
+4. **Evidence anchor:** Models depend causally on only some steps and often fail to follow their draft conclusions faithfully.
+5. **Reuse decision:** It fits causal step-value research; control intervention naturalness, temperature, and rollout variance; reports should separate changes to intermediate trajectories, draft conclusions, and final answers; It is best for causal step value, monitor selection, and draft-faithfulness auditing. The main risk is artificial effects from out-of-distribution interventions, so naturalness and rollout variance must be calibrated.

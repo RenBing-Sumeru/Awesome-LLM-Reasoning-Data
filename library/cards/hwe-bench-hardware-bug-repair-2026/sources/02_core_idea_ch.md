@@ -1,0 +1,1 @@
+HWE-Bench 含 417 个任务，来自六个大型开源硬件项目，覆盖 Verilog/SystemVerilog 与 Chisel、RISC-V 核、SoC 和安全 root-of-trust。每条 JSONL 记录含仓库/PR、问题描述、ground-truth patch、测试补丁、修改文件、bug 类别、容器准备脚本和隐藏 fail-to-pass 测试；部分还记录 pass-to-pass 等结果。构建者确认错误基线在原生仿真中失败、参考修复通过，再封装容器。

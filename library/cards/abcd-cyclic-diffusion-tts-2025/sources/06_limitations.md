@@ -1,0 +1,1 @@
+ABCD is sensitive to controller calibration, diffusion schedule choices, and the cost of cycling backward through noisy states. Its results concern diffusion inference rather than ordinary autoregressive reasoning, and applications should measure wall-clock latency, memory use, and failure cases before transferring the allocation policy to another model or task.

@@ -1,0 +1,113 @@
+id: a-star-thought-2025
+title: 'A*-Thought: Efficient Reasoning via Bidirectional Compression for Low-Resource Settings'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Xiaoang Xu
+- Shuo Wang
+- Xu Han
+- Zhenghao Liu
+- Huijia Wu
+- Peipei Li
+- Zhiyuan Liu
+- Maosong Sun
+- Zhaofeng He
+source_role:
+- data_release
+- construction_recipe
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- mathematics
+training_use:
+- sft
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9ac5238b5c033fc49c2932a50df2bd47-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.24550
+  code: https://github.com/AI9Stars/AStar-Thought
+  data: https://huggingface.co/datasets/xxang/AStar-Thought-1k
+  project: null
+  huggingface: https://huggingface.co/collections/xxang/astar-thought
+  doi: https://doi.org/10.48550/arXiv.2505.24550
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/9ac5238b5c033fc49c2932a50df2bd47-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Long-CoT examples inherited from s1K-1.1; upstream prompt provenance was not audited here.
+  trace_author: unknown; compressed traces derive from s1K-1.1 long CoTs.
+  answer_format: System prompt plus two-message conversations containing tagged thought and solution sections.
+  process_fields:
+  - system
+  - conversations
+  - search_steps
+  environment_or_substrate: Offline long-CoT compression over s1K-1.1 mathematical reasoning data.
+  verifier_or_reward: s1.1-32B validation model decides whether a candidate thought path can lead to the target solution.
+  terminal_predicate: Validator acceptance after minimum search depth or return at configured maximum search depth; evaluation
+    uses answer accuracy.
+recipe_metadata:
+  base_model: QwQ-32B, DeepSeek-R1-Distill-Qwen-32B, and s1.1-32B.
+  teacher: unknown
+  generator: BIS-guided A* search compresses s1K-1.1 long-CoT trajectories into compact thought paths.
+  filtering_rule: Candidate paths are selected through BIS-guided A* search with s1.1-32B validation; complete rejection manifest
+    unavailable.
+  sampling_protocol: Official compression script sets alpha 0.5, beta 0.1, minimum depth 5, and maximum depth 20; generation
+    sampling details unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Compression search depth 5 to 20; reported output budgets 512, 1024, 2048, and 4096 tokens.
+  optimizer_or_scaffold: LLaMA-Factory full SFT; paper reports three training epochs.
+audit:
+  source_mixture: s1K-1.1 is the stated source; its broader mixture and rights are not audited by this work.
+  split: Released AStar-Thought-1k exposes one 1,000-row train split; construction split and source/evaluation overlap unknown.
+  decontamination: unknown
+  license: unknown
+  lineage: s1K-1.1 long CoT -> BIS-scored spans and A* path search with s1.1-32B validation -> AStar-Thought-1k compressed
+    traces -> SFT models.
+  known_failure_modes:
+  - Validator judgments can select paths that look solution-directed without proving semantic correctness.
+  - Compression can remove reasoning needed for difficult items.
+  - Upstream provenance, contamination controls, and release licensing remain unresolved.
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS, arXiv, author-linked code, directly linked dataset, and grouped model releases were checked.
+inclusion_reason: Releases a search-and-validator recipe and one-thousand-record compressed long-CoT dataset for SFT reasoning-token
+  reduction.
+related: []
+tags:
+- a-star-thought
+- chain-of-thought-compression
+- bidirectional-importance
+- a-star-search
+- efficient-reasoning
+- sft
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A*-Thought compresses s1K-1.1 long-CoT traces with BIS-guided A* search and s1.1-32B validation, releasing
+  a one-thousand-record SFT dataset and model checkpoints.
+why_it_matters: It makes reasoning-token reduction a reusable trace-construction problem while preserving model-based path
+  validation and upstream provenance as audit boundaries.
+card: null
+needs:
+- needs_source_provenance
+- needs_license
+- needs_decontamination
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official NeurIPS/arXiv records and author-linked code were checked; code directly links the dataset and model collection.

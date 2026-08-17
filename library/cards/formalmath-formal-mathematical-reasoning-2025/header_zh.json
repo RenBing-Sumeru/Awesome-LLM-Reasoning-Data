@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FormalMATH 以 5,560 道经 Lean4 验证的问题覆盖从奥赛到本科数学，并提供自动形式化与语义筛选流程。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "大规模 Lean4 形式数学推理基准",
+  "best_for_ch": "需要评测 Lean4 定理证明、形式化陈述或可验证数学训练数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhouliang Yu, Ruotian Peng, Keyi Ding, Yizhe Li, Zhongyuan Peng, Minghao Liu, Yifan Zhang, Zheng Yuan, Huajian Xin, Wenhao Huang, Yandong Wen, Ge Zhang, Weiyang Liu",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T11:38:00Z"
+}

@@ -1,0 +1,5 @@
+- CoT-Valve 通过缩放参数更新控制推理链长度，而非只在提示中写长度。
+- MixChain 为同一问题组织多条不同长度的解。
+- 官方 collection 以 Apache-2.0 标记发布 GSM8K、PRM12K 和 LIMO 变体。
+- PRM12K 保留错误解并提供答案正确性标记，不是完全过滤后的语料。
+- token 与 benchmark 改善不能证明步骤忠实或发布配方可复现。

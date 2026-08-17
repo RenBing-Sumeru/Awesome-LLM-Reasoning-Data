@@ -1,0 +1,99 @@
+id: deepresearch-bench-agents-2025
+title: 'DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents'
+year: 2025
+venue: ICLR 2026
+authors:
+- Mingxuan Du
+- Benfeng Xu
+- Chiwei Zhu
+- Xiaorui Wang
+- Zhendong Mao
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- deep_research
+- web
+- cross_domain
+training_use:
+- evaluation
+- reward_modeling
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.11763
+  arxiv: https://arxiv.org/abs/2506.11763
+  code: https://github.com/Ayanami0730/deep_research_bench
+  data: https://huggingface.co/datasets/muset-ai/DeepResearch-Bench-Dataset
+  project: https://github.com/Ayanami0730/deep_research_bench
+  huggingface: https://huggingface.co/datasets/muset-ai/DeepResearch-Bench-Dataset
+  doi: https://doi.org/10.48550/arXiv.2506.11763
+  venue: https://openreview.net/forum?id=hQ0K2Hhq7H
+  openreview: https://openreview.net/forum?id=hQ0K2Hhq7H
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: PhD-level cross-domain research tasks
+  trace_author: Domain experts
+  answer_format: Task, reference report, adaptive criteria, citations, score
+  process_fields:
+  - task
+  - reference
+  - criterion
+  - citation
+  - score
+  environment_or_substrate: Open-web deep research
+  verifier_or_reward: Reference-based adaptive criteria and citation evaluation
+  terminal_predicate: Report satisfies adaptive criteria and citations are accurate
+recipe_metadata:
+  base_model: Deep research agents
+  teacher: Domain experts
+  generator: Expert-crafted tasks and evaluation frameworks
+  filtering_rule: 100 PhD-level tasks across 22 fields
+  sampling_protocol: 100 tasks
+  rollout_count: null
+  temperature: null
+  inference_budget: Open-web evidence
+  optimizer_or_scaffold: Adaptive report and citation evaluation
+audit:
+  source_mixture: Official arXiv, GitHub, and Hugging Face release
+  split: Consult release
+  decontamination: Web sources may overlap with model training data
+  license: Consult data card and repository
+  lineage: https://huggingface.co/datasets/muset-ai/DeepResearch-Bench-Dataset
+  known_failure_modes:
+  - Adaptive criteria can vary with the evaluator.
+  citation_status: verified
+  confidence: high
+  notes: Official sources checked.
+inclusion_reason: DeepResearch Bench makes long-form web research quality inspectable through adaptive expert-oriented criteria.
+related: []
+tags:
+- deep_research
+- web
+- rubric
+one_line_summary: DeepResearch Bench evaluates PhD-level web research reports with adaptive criteria and citation-quality
+  assessments.
+why_it_matters: It separates report-quality and retrieval-citation evaluation for deep-research agents.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, code, and data checked.
+category_ids:
+- judgment_rubric_domain_expert_data

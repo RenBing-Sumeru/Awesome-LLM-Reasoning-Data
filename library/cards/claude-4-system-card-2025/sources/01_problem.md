@@ -1,0 +1,3 @@
+The Claude 4 System Card introduces Claude Opus 4 and Claude Sonnet 4 as hybrid reasoning models and primarily documents pre-deployment safety testing, alignment assessment, reward-hacking evaluation, and Responsible Scaling Policy decisions. It also contains a short but concrete training-data disclosure.
+
+The curation problem is to preserve both sides of that asymmetry. Anthropic identifies source classes, cleaning methods, human feedback, Constitutional AI, selected character-trait training, and crowd-worker roles, but does not release the records or feedback contracts that implement them. Evaluation transcripts and benchmark results provide safety evidence; they are not automatically post-training data.

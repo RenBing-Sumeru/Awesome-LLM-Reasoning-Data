@@ -1,0 +1,3 @@
+Correctness only holds relative to the stated contract: The SWE-bench Multimodal/SWE-bench harness evaluates patches with repository tests while preserving image-bearing issue or test context; test split evaluation remains private. Scale numbers differ across project, paper, and HF viewer; use paper 617 as the paper claim and pin public split rows separately. Image licenses, private test policy, and harness version matter.
+
+The paper should not be read as unrestricted software-agent reliability. Public artifacts can become training data, Docker or dependency environments can drift, and evaluator implementations can change across releases.

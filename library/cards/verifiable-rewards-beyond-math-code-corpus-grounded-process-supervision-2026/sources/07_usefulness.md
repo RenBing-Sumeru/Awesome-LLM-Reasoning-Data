@@ -1,0 +1,3 @@
+The data fit corpus-grounded QA, RAG supervision, factual critics, and auditable rewards. Open-world or rapidly changing tasks require a different verifier.
+
+Practical reuse requires the task context and process state expected by the paper. Users can reuse questions, atomic claims, retrieved evidence, entailment results, and sentence-level rewards or reconstruct local data under the same protocol, producing a step-level training set, trajectory ranking, or process reward model. Success should be checked with step F1, first-error localization, preference accuracy, or verifier replay rather than final-task score alone. Direct transfer is inappropriate when feedback sources, replay conditions, licensing, or error distributions differ materially.

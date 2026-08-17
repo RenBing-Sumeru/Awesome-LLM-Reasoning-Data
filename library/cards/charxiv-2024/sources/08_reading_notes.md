@@ -1,0 +1,1 @@
+Keep three layers separate: chart-image realism, question-answer correctness, and LLM-judge reliability. Read the dataset construction and evaluation sections before comparing leaderboard rows. Aggregate accuracy is not a row-level certificate; the reusable object is the chart-question-answer-evaluator tuple.

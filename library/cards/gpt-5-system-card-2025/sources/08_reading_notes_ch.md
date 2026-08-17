@@ -1,0 +1,6 @@
+- 将三类宽泛训练来源和过滤陈述保持在类别层；来源清单、混合比例、数量、时间范围、权利映射和条目谱系均不可得。
+- 把强化学习推理、router switches、response-preference rates、measured correctness、safe-completions 和 sycophancy reward signal 记录为已披露机制，同时把样例、graders、奖励函数、校准和优化过程保留为 unknown。
+- 将标准评测、代表生产对话的评测、公开 benchmark、red-team、chain-of-thought 和 Preparedness 评测与训练数据分开；报告分数是行为证据，不是数据质量证据。
+- 将 model training 与 deployment safeguards 分开，后者包括生物风险 system-level protections、account enforcement、API controls、connector 调用后的 cached browsing 和 access programs。
+- 将 gpt-5-thinking 结果视为 gpt-5-thinking-pro 常规安全评测的代理证据；这些评测没有在并行测试时计算设置下重跑。
+- 将首发 system card 与后续 GPT-5 addenda 和继任模型 system cards 分开。

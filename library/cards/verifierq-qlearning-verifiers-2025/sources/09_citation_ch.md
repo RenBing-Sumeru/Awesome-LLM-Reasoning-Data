@@ -1,0 +1,1 @@
+Qi, Jianing、Hao Tang 与 Zhigang Zhu。《VerifierQ: Enhancing LLM Test Time Compute with Q-Learning-based Verifiers》。ICML 2025 AI4Math Workshop，Poster。arXiv:2410.08048。https://arxiv.org/abs/2410.08048。Workshop 记录：https://openreview.net/forum?id=qhOT0MisId。

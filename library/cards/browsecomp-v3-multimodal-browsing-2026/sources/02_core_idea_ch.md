@@ -1,0 +1,1 @@
+核心贡献是一个 visual、vertical、verifiable 的多模态浏览 benchmark：300 个手工构造问题，要求公开可搜索证据，并加入过程级评测。关键机制是要求跨模态多跳搜索，标注关键 sub-goals 与轨迹，同时用最终成功率和 sub-goal 完成率评分。最近对比对象包括 BrowseComp、BrowseComp-VL、MM-BrowseComp 和 MMSearch-Plus；BrowseComp-V3 增加视觉证据、公开搜索可答性、人工验证轨迹和 progress metrics。方向标签是“带过程反馈的多模态智能体环境评测”。

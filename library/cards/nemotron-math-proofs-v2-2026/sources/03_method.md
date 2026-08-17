@@ -1,0 +1,1 @@
+Verification is natural-language teacher judgment using DeepSeekMath-V2-style prompts, with boxed `0`, `0.5`, or `1` signals embedded in text. There is no formal checker, calibration study, false-positive/false-negative analysis, or disclosed terminal predicate. A natural-language verification trace must not be treated as a theorem-prover certificate.

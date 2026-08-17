@@ -1,0 +1,1 @@
+You, Runyang、Yongqi Li、Meng Liu、Wenjie Wang、Liqiang Nie 与 Wenjie Li。2026。“Parallel Test-Time Scaling for Latent Reasoning Models”。第 64 届计算语言学协会年会论文集，第 1 卷：长论文，44703–44717 页。官方论文：https://aclanthology.org/2026.acl-long.2069/。官方代码：https://github.com/ModalityDance/LatentTTS。

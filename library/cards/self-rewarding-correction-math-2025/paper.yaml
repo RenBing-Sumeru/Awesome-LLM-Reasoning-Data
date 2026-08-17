@@ -1,0 +1,177 @@
+id: self-rewarding-correction-math-2025
+title: Self-rewarding correction for mathematical reasoning
+year: 2025
+venue: arXiv
+authors:
+- Wei Xiong
+- Hanning Zhang
+- Chenlu Ye
+- Lichang Chen
+- Nan Jiang
+- Tong Zhang
+source_role:
+- construction_recipe
+- data_release
+- verifier_reward
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- full_episode
+- answer_level
+- scalar_reward
+- pairwise_preference
+domains:
+- math
+- reasoning
+- self_correction
+training_use:
+- sft
+- preference_learning
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.19613
+  arxiv: https://arxiv.org/abs/2502.19613
+  code: https://github.com/RLHFlow/Self-rewarding-reasoning-LLM
+  data: https://huggingface.co/datasets/RLHFlow/self_rewarding_ift_example
+  project: https://github.com/RLHFlow/Self-rewarding-reasoning-LLM
+  huggingface: https://huggingface.co/datasets/RLHFlow/self_rewarding_ift_example
+  doi: https://doi.org/10.48550/arXiv.2502.19613
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: NuminaMath-CoT. The paper reports a 50K IFT subset, a 10K validation subset, and remaining prompts for RL;
+    the public SFT-prompt repository has 40K rows, and no manifest reconciles these partitions.
+  trace_author: Qwen2.5-Math-7B-base generates the main released initial answers, self-evaluations, and revisions. Separate
+    Llama experiments and a Llama-3.1-70B-it distillation ablation are reported but are not identified as the source of the
+    31,990-row release.
+  answer_format: The final Hugging Face release has 31,990 train rows. Each row exposes gt and a three-message conversations
+    list containing a system-message instruction, a user mathematics problem, and one assistant field that serializes the
+    selected answer/evaluation/correction trajectory.
+  process_fields:
+  - gt
+  - conversations[].role
+  - conversations[].content
+  environment_or_substrate: vLLM 0.5.4 generates completions; the ToRA answer checker backed by SymPy supplies correctness;
+    Axolotl trains SFT; the paper delegates iterative M-DPO to a separate implementation and PPO to veRL v0.1.
+  verifier_or_reward: 'During construction and RL, external ground-truth answer correctness is the oracle: it filters generated
+    components, forms DPO preferences, and supplies PPO rewards. During deployment, the model instead samples its own generative
+    [VERIFY] label and uses that label to stop or revise; no external checker is required for that inference loop.'
+  terminal_predicate: The deployed loop stops when the model emits [VERIFY] correct; otherwise it revises. The reported construction
+    limits the horizon to two iterations and retains at most one trajectory per base sample among three paper-defined correct-ending
+    control patterns.
+recipe_metadata:
+  base_model: Qwen2.5-Math-7B-base for the main 32K IFT experiment and public example release; additional experiments use
+    Llama-3-8B-it and a separately pretrained Llama-3-SFT.
+  teacher: none for the main on-policy release; Llama-3.1-70B-it appears only in a reported distillation ablation.
+  generator: Sequentially generate an initial solution, sample an evaluation that can be checked against oracle correctness,
+    and, where the construction branch calls for revision, generate a corrected solution. Components are then composed into
+    a long-CoT training trajectory.
+  filtering_rule: Use ToRA/SymPy answer correctness to retain evaluations and revisions that satisfy the desired control path.
+    The paper keeps incorrect-initial/wrong-label/correct-revision, correct-initial/wrong-feedback/correct-revision, and correct-initial/correct-label/stop
+    patterns, with at most one final trajectory per base sample.
+  sampling_protocol: A reported 50K NuminaMath-CoT IFT pool yields about 32K trajectories, roughly balancing correct and incorrect
+    initial attempts. The total generated candidates, stage-wise accept/reject counts, seeds, and a deterministic join from
+    public intermediates to final rows are unknown.
+  rollout_count: unknown
+  temperature: unknown for sequential rejection sampling. The paper separately reports greedy decoding for the main Qwen evaluation
+    and temperatures 1.0 and 0.7 for Llama evaluation, which must not be treated as construction settings.
+  inference_budget: Up to 4,096 generated tokens per reported completion; total construction compute, candidate-token volume,
+    and monetary cost are unknown.
+  optimizer_or_scaffold: Qwen IFT packs samples into 8,192-token blocks, uses learning rate 1e-5, cosine decay, warm-up ratio
+    0.05, global batch size 32, trains three epochs, and selects the epoch-one checkpoint. Iterative DPO uses 20K prompts
+    per iteration and correctness-ranked pairs; PPO follows a veRL example with correctness reward.
+audit:
+  source_mixture: The paper describes a 50K IFT pool, 10K validation set, and remaining NuminaMath-CoT prompts for RL. Official
+    RLHFlow releases separately expose a 40K SFT-prompt set, a 16.3K-row raw example, the 31,990-row final IFT example, an
+    RL-prompt repository, and turn-level intermediate examples; they are not packaged as one versioned dataset.
+  split: The final 31,990-row release exposes one train split. It has no validation/test split, upstream record ID, construction-stage
+    ID, or deterministic join key to the raw and turn-level companion repositories.
+  decontamination: unknown
+  license: 'The arXiv manuscript is available under CC BY-NC-SA 4.0. A repository license and dataset license are unknown:
+    the GitHub tree shows no LICENSE file, and the Hugging Face dataset card is empty and supplies no license metadata. Upstream
+    NuminaMath-CoT record-level license provenance is also unknown.'
+  lineage: The documented path is NuminaMath-CoT prompt to Qwen2.5-Math-7B-base candidates to ToRA/SymPy correctness checks
+    to sequential component selection to a packed IFT conversation. Public final rows preserve only gt and conversations;
+    they omit upstream IDs, candidate IDs, verifier outputs, branch labels, rejection reasons, seeds, and links to PPO or
+    DPO rollouts.
+  known_failure_modes:
+  - The final trajectories are verifier-selected and component-wise assembled; they are not an unfiltered record of autonomous
+    self-correction.
+  - A boxed-answer parser and symbolic equivalence checker can reject valid formats or accept unintended equivalences, but
+    no released verifier-error audit quantifies these cases.
+  - The paper and public repositories expose 50K, 40K, 16.3K, and 31,990 counts without a reconciliation manifest, so stage-wise
+    yield and rejection rates cannot be reconstructed.
+  - DPO forms comparison pairs for only 40% to 60% of 20K prompts per iteration because prompts with all-correct or no-correct
+    samples are skipped.
+  - Class-conditional self-evaluation accuracy is imbalanced; on the three Qwen benchmarks, wrong-answer recognition remains
+    substantially below correct-answer recognition.
+  - 'A modified PPO reward is shown to be hackable: the model can deliberately make an incorrect first attempt and then repair
+    it to collect the intended bonus.'
+  - Changing the prompt template, answer parser, base checkpoint, or horizon changes the feedback contract; the release does
+    not provide a pinned, end-to-end immutable build.
+  - At official repository commit 372bea99fec02ea7602b2c984537cb0b53262437, infer_math/process_prompt_turn1.py has an unterminated
+    string literal on line 24, while later preparation and PPO scripts retain unresolved user-supplied path sentinels; the
+    checked pipeline therefore cannot run end to end without edits.
+  - Checkpoint-to-experiment mapping, decontamination, total candidate counts, construction cost, and code/data licenses remain
+    unknown.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1, the official RLHFlow repository at commit 372bea99fec02ea7602b2c984537cb0b53262437, its sequential-rejection-sampling
+    instructions, and the official Hugging Face final and intermediate releases were checked on 2026-07-22. Citation and artifact
+    existence are verified; release lineage and reproducibility remain partial.
+inclusion_reason: The work exposes a concrete sequential-rejection-sampling recipe for answer/evaluation/correction/termination
+  trajectories, releases a 31,990-row IFT example plus public intermediates, and connects the data object to SFT, correctness-reward
+  PPO, and correctness-ranked DPO.
+related: []
+tags:
+- self-rewarding
+- self-correction
+- sequential-rejection-sampling
+- mathematical-reasoning
+- generative-verifier
+- ppo
+- multi-turn-dpo
+- open-release
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Sequential rejection sampling builds verifier-selected answer/evaluation/correction trajectories for SFT
+  before correctness-reward PPO or DPO; the 31,990-row final release lacks complete construction lineage.
+why_it_matters: For construction-recipe readers, it makes the control tokens, ground-truth filter, SFT object, and downstream
+  RL contracts separable, while showing why accepted traces and benchmark gains do not substitute for candidate, rejection,
+  license, and contamination records.
+card: null
+needs:
+- 'needs_lineage: publish upstream prompt IDs, raw candidate IDs, stage labels, verifier outputs, rejection reasons, seeds,
+  and deterministic joins across every public intermediate'
+- 'needs_partition_manifest: reconcile the paper''s 50K IFT and 10K validation partitions with the public 40K prompt, 16.3K
+  raw, and 31,990 final artifacts'
+- 'needs_reproducibility: fix the checked syntax error and unresolved path sentinels, then disclose sequential-sampling rollout
+  counts, decoding settings, total candidate volume, compute, and immutable software/model revisions'
+- 'needs_decontamination: release exact, near-duplicate, and semantic overlap checks against MATH500, OlympiadBench, and Minerva
+  Math'
+- 'needs_license_audit: document repository, dataset, upstream-prompt, and generated-output licensing and compatibility'
+- 'needs_checkpoint_map: map every public checkpoint and intermediate dataset to the paper table, base model, training stage,
+  and selection criterion'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: curation
+  confidence: high
+  notes: The paper, arXiv DOI, official code repository, final 31,990-row Hugging Face release, and named intermediate repositories
+    are verified. Formal venue acceptance, end-to-end lineage, decontamination, licenses, and checkpoint mapping remain unknown
+    or partial.

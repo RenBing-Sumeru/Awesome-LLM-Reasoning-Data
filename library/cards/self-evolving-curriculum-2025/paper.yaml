@@ -1,0 +1,124 @@
+id: self-evolving-curriculum-2025
+title: Self-Evolving Curriculum for LLM Reasoning
+year: 2025
+venue: arXiv
+authors:
+- Xiaoyin Chen
+- Jiarui Lu
+- Minsu Kim
+- Dinghuai Zhang
+- Jian Tang
+- Alexandre Piché
+- Nicolas Gontier
+- Yoshua Bengio
+- Ehsan Kamalloo
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- planning
+- inductive_reasoning
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2505.14970
+  arxiv: https://arxiv.org/abs/2505.14970
+  code: https://github.com/ServiceNow/sec
+  data: https://github.com/ServiceNow/sec/tree/main/data
+  project: https://github.com/ServiceNow/sec
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.14970
+  venue: null
+  openreview: https://openreview.net/forum?id=lNgSdqKFmU
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Categorized Countdown, Zebra, ARC-1D, MATH, and mixed-domain problems
+  trace_author: Current Qwen2.5 policy produces on-policy rollouts
+  answer_format: Task-specific reasoning trajectory and verifiable final answer or state
+  process_fields:
+  - problem
+  - category
+  - rollout
+  - task_reward
+  - advantage
+  - absolute_advantage
+  - category_value
+  - sampling_probability
+  environment_or_substrate: Non-stationary category-bandit curriculum coupled to online GRPO
+  verifier_or_reward: Task-specific outcome reward; mean absolute policy advantage per category drives curriculum
+  terminal_predicate: Task-dependent correct answer, valid plan, puzzle assignment, or ARC transformation
+recipe_metadata:
+  base_model: Qwen2.5-3B and Qwen2.5-7B
+  teacher: unknown
+  generator: Current policy under GRPO
+  filtering_rule: No static item filter; Boltzmann-sample categories from TD(0)-updated expected learning gains, then sample
+    uniformly within category
+  sampling_protocol: Partition by difficulty/type/domain, initialize values, softmax-sample category, sample problem, roll
+    out and score, update policy, average absolute advantages, TD(0)-update category
+  rollout_count: null
+  temperature: null
+  inference_budget: pass@1 uses eight generations; training rollout count configuration-specific
+  optimizer_or_scaffold: SEC scheduler integrated with GRPO/verl
+audit:
+  source_mixture: Synthetic planning and inductive puzzles, MATH-style problems, labels, and on-policy Qwen rollouts
+  split: Task-specific in-distribution categories and harder OOD evaluations
+  decontamination: unknown
+  license: MIT code repository; component data and generated-rollout licenses task-dependent or unknown
+  lineage: Problem/category to bandit sampling, rollout, reward/advantage, category update, and next distribution
+  known_failure_modes:
+  - Absolute advantage can prioritize noisy high-variance categories
+  - Results depend on curator-defined category boundaries
+  - Distribution is seed- and checkpoint-dependent
+  - Heterogeneous outcome verifiers do not validate traces
+  - No tagged release or frozen curriculum/rollout logs
+  - ICLR 2026 submission was withdrawn and is not accepted
+  citation_status: verified
+  confidence: high
+  notes: arXiv v4, official MIT repository, and withdrawn OpenReview status verified.
+inclusion_reason: Makes the changing category-level sampling distribution an explicit learned component of RLVR data construction.
+related: []
+tags:
+- sec
+- curriculum-learning
+- multi-armed-bandit
+- td0
+- grpo
+- online-data-selection
+- withdrawn
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Learns an online category-sampling curriculum from per-category absolute policy advantages during reasoning
+  RL.
+why_it_matters: Exposes curriculum order as a dynamic data artifact that changes with the policy rather than a fixed preprocessing
+  choice.
+card: null
+needs:
+- 'needs_snapshot: tagged code/data and exact configurations'
+- 'needs_logs: category values, sampled manifests, rewards, and seeds'
+- 'needs_audit: validate learning-gain proxy and verifier errors'
+- 'needs_license: task data and trajectory obligations'
+- 'needs_status: preserve withdrawn ICLR status'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper and implementation verified; no frozen run artifacts; ICLR submission withdrawn.

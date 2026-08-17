@@ -1,0 +1,5 @@
+- **Data identity:** distinguish the E-step's five-candidate RM-ranked DPO pair from the M-step's updated-versus-previous policy pseudo-pair; the main RM update mixes policy-comparison and self-training records.
+- **Feedback dependency:** the current RM ranks candidates, selects checkpoints, computes margins, and filters the data used to refresh itself; no independent human or task oracle validates those gates.
+- **Settings to retain:** UltraFeedback three-way allocation, fixed 2,000-prompt selection set, `M=5`, temperature 0.8, top-p 0.95, DPO beta 0.01, 50-step checkpoints, `tau=60%`, LQF, and base-RM reinitialization.
+- **Evidence boundary:** Table 1 reports 54.1% AlpacaEval-2 LC and 38.4% Arena-Hard at Iter2, but GSM8K/MMLU decline and iteration 4 degrades before early stopping; benchmark gains are not a pseudo-label-quality audit.
+- **Release boundary:** the ACL/DOI/arXiv records and affiliations are verified, but the paper-linked GitHub default branch is an Alignment Handbook snapshot with no Mutual-Taught-specific code, configs, data, models, tags, or releases.

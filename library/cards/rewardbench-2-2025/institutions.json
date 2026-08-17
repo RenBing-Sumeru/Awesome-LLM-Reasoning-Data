@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "Allen Institute for Artificial Intelligence",
+    "University of Washington",
+    "Cohere"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:17:07Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2506.01937",
+    "https://arxiv.org/html/2506.01937",
+    "https://huggingface.co/collections/allenai/reward-bench-2",
+    "https://huggingface.co/datasets/allenai/reward-bench-2"
+  ],
+  "verification_note": "Official arXiv and Hugging Face sources verify authors, AllenAI/UW/Cohere affiliations, ICLR 2026 status, dataset, results collection, and leaderboard links."
+}

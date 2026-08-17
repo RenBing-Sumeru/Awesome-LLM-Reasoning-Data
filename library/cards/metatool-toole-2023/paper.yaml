@@ -1,0 +1,131 @@
+id: metatool-toole-2023
+title: 'MetaTool Benchmark for Large Language Models: Deciding Whether to Use Tools and Which to Use'
+year: 2023
+venue: ICLR 2024 / arXiv
+authors:
+- Yue Huang
+- Jiawen Shi
+- Yuan Li
+- Chenrui Fan
+- Siyuan Wu
+- Qihui Zhang
+- Yixin Liu
+- Pan Zhou
+- Yao Wan
+- Neil Zhenqiang Gong
+- Lichao Sun
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- answer_level
+- state_action_level
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2310.03128
+  arxiv: https://arxiv.org/abs/2310.03128
+  code: https://github.com/HowieHwong/MetaTool
+  data: https://github.com/HowieHwong/MetaTool
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2310.03128
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Separates whether an agent should call tools from final score reporting.
+  trace_author: paper authors, synthetic generators, model agents, or human annotators as disclosed by the official source
+  answer_format: Tool-use awareness prompts, single-tool and multi-tool selection examples, and reliability-issue cases.
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: Tool-use awareness prompts, single-tool and multi-tool selection examples, and reliability-issue
+    cases.
+  verifier_or_reward: Tasks score whether a model should use tools and whether it selects appropriate tools under the specified
+    scenario.
+  terminal_predicate: Tasks score whether a model should use tools and whether it selects appropriate tools under the specified
+    scenario.
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: unknown or paper-specific generator; verify the official paper before reuse
+  generator: ToolE is built around user queries that trigger or do not trigger tool use, then split into tool-awareness and
+    tool-selection subtasks.
+  filtering_rule: Tasks score whether a model should use tools and whether it selects appropriate tools under the specified
+    scenario.
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: arXiv 2310.03128, candidate source lead, and official artifact links when disclosed in the abstract or arXiv
+    comment.
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: license for questions, traces, code, data, and generated tool records is unknown unless the linked artifact states
+    it
+  lineage: 'Primary source: https://arxiv.org/abs/2310.03128'
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: Affiliations verified from arXiv HTML/e-print; official repo labels the work ICLR 2024.
+inclusion_reason: 'MetaTool / ToolE exposes an agent/tool environment or trajectory-like data object with a concrete feedback
+  contract: Tasks score whether a model should use tools and whether it selects appropriate tools under the specified scenario.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+one_line: MetaTool / ToolE is a tool-use or agent-environment source centered on Tool-use awareness prompts, single-tool and
+  multi-tool selection examples, and reliability-issue cases.
+why_it_matters: It makes the action schema, environment state, and success predicate visible enough for reasoning-data curation
+  and audit.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: MetaTool / ToolE contributes a tool-use or agent-environment surface with an explicit evaluation or verification
+  contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Primary arXiv link verified through arXiv API; artifact links are included only when found in official abstract,
+    comment, or source lead.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 6
+  candidate_title: MetaTool Benchmark / ToolE
+  primary_category_id: environment_agent_trajectory_data
+  processed_at: '2026-07-12'

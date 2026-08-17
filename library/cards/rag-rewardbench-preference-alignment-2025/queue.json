@@ -1,0 +1,19 @@
+{
+  "title": "RAG-RewardBench: Benchmarking Reward Models in Retrieval Augmented Generation for Preference Alignment",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2025.findings-acl.877/",
+    "data": "https://huggingface.co/datasets/jinzhuoran/RAG-RewardBench",
+    "code": "https://github.com/jinzhuoran/RAG-RewardBench",
+    "project": "https://github.com/jinzhuoran/RAG-RewardBench"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:15:46Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "多跳检索偏好对覆盖引用冲突，适合RAG奖励模型评测",
+    "updated_at": "2026-07-16T13:15:46Z"
+  }
+}

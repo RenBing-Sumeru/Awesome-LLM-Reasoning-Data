@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Mercor"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T13:20:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2601.14242",
+    "https://github.com/Mercor-Intelligence/archipelago",
+    "https://huggingface.co/datasets/mercor/apex-agents"
+  ],
+  "verification_note": "arXiv, HF dataset, and Archipelago repository verify authors, Mercor institution, and artifacts."
+}

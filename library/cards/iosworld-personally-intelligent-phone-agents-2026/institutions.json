@@ -1,0 +1,15 @@
+{
+  "institutions": [
+    "Carnegie Mellon University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T11:40:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2606.09764",
+    "https://arxiv.org/html/2606.09764",
+    "https://iosworld.io/",
+    "https://github.com/ljang0/iOSWorld"
+  ],
+  "verification_note": "arXiv, project, and GitHub verify authors, CMU institution, title, and code/task artifacts."
+}

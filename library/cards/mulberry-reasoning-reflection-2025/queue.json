@@ -1,0 +1,18 @@
+{
+  "title": "Mulberry: Empowering MLLM with o1-like Reasoning and Reflection via Collective Monte Carlo Tree Search",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2412.18319",
+    "venue": "https://papers.nips.cc/paper_files/paper/2025/hash/2b0c4fc1bd52329279c51ad2ddec9ace-Abstract-Conference.html",
+    "data": "https://huggingface.co/datasets/HuanjinYao/Mulberry-SFT"
+  },
+  "review_note": "L4 材料已准备，等待人工判决。",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T13:44:50Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "reasoning sft数据，用MCTS增强",
+    "updated_at": "2026-07-14T13:44:50Z"
+  }
+}

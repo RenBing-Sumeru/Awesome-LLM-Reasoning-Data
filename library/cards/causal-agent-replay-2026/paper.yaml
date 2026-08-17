@@ -1,0 +1,240 @@
+id: causal-agent-replay-2026
+title: 'Causal Agent Replay: Counterfactual Attribution for LLM-Agent Failures'
+year: 2026
+venue: arXiv preprint
+authors:
+- Jaineet Shah
+source_role:
+- agent_environment
+- verifier_reward
+- infrastructure
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- trajectory_value
+domains:
+- agent_trajectories
+- tool_use
+- failure_attribution
+- causal_inference
+training_use:
+- evaluation
+- audit
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.08275
+  paper_pdf: https://arxiv.org/pdf/2606.08275
+  supplementary: null
+  arxiv: https://arxiv.org/abs/2606.08275
+  code: https://github.com/jaineet17/causal-agent-replay
+  data: null
+  project: https://github.com/jaineet17/causal-agent-replay
+  huggingface: null
+  pypi: https://pypi.org/project/causal-agent-replay/
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A caller-supplied agent task and initial user message. arXiv v1 demonstrates a synthetic support-agent prompt-injection
+    failure; it does not define or release a canonical task corpus. Repository HEAD additionally evaluates external Who&When
+    static failure logs through a surrogate world-model.
+  trace_author: The factual trajectory is produced by the caller's stochastic Policy against an Environment. Counterfactual
+    child trajectories resample the same supplied policy or apply a forced action/observation/context/policy intervention;
+    repository HEAD's Who&When extension instead uses a local llama3.2 3B surrogate because the original agents are unavailable.
+  answer_format: A root Trajectory plus counterfactual child trajectories. Each child records parent_id, branched_at_step,
+    intervention_id, an ordered state-action-observation sequence, final_output, and an optional outcome label/score.
+  process_fields:
+  - trajectory_id
+  - parent_id
+  - branched_at_step
+  - intervention_id
+  - step_index
+  - state_before_system_prompt
+  - state_before_tool_schemas
+  - state_before_model
+  - state_before_provider
+  - state_before_sampling
+  - state_before_messages
+  - action_kind
+  - action_text
+  - tool_name
+  - tool_args
+  - raw_provider_response
+  - observation_result
+  - observation_source
+  - final_output
+  - outcome_label
+  - outcome_score
+  - outcome_detail
+  observation: Tool/environment return text with provenance tagged real, recorded, or mocked. Deterministic replay injects
+    recorded observations; counterfactual forward replay requests fresh observations from the supplied live or mocked Environment.
+  action_space: One action per step, typed as tool_call or final. Current native/adapted implementations require one tool
+    call per turn; parallel tool calls and several non-linear/streaming framework paths are rejected or left unrecorded.
+  environment_or_substrate: Python Policy, Environment, and MessageCodec protocols; a JSON-plus-SQLite trajectory store; native
+    Anthropic/OpenAI-compatible recording; and LangGraph/LangChain, OpenAI Agents SDK, and CrewAI adapters at repository v0.2.0.
+    Counterfactual branches re-execute caller tools live unless a mocked environment is supplied; no environment snapshot/rollback
+    contract is implemented.
+  verifier_or_reward: A user-supplied OutcomeFunction maps a complete trajectory to a label and score in [0,1]. RuleOutcome
+    is deterministic and preferred; JudgeOutcome uses an OpenAI-compatible LLM rubric and is explicitly treated as noisy.
+    Contrastive effects are differences in bad-label probability with bootstrap intervals; Shapley assigns trajectory-level
+    marginal contributions with normal-approximation intervals.
+  terminal_predicate: The agent loop terminates when the policy emits action.kind=final; otherwise max_steps (20 by default
+    in the core recorder) raises ReplayError instead of saving a truncated episode. Task failure or success is a separate
+    caller-defined outcome predicate, not a universal CAR terminal rule.
+  provenance: Caller task/configuration -> factual root trajectory with exact state_before snapshots and raw actions -> optional
+    reconstruction/action-match audit -> intervention with a held factual prefix -> K counterfactual child trajectories ->
+    outcome labels/scores -> per-step contrastive effects or Shapley values.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: A caller-provided Policy and Environment. The core paper validates with seeded synthetic policies and mocked
+    tools; repository HEAD's later Who&When experiment uses llama3.2 3B for agent surrogate, environment simulator, and extract-then-compare
+    judge.
+  prompt_task_source: Caller supplied. The paper's core examples are synthetic support-agent tasks; the repository-only benchmark
+    extension consumes the external Who&When Algorithm-Generated subset.
+  filtering_rule: No fixed CAR training corpus or paper-defined sample filter exists. The repository-only Who&When run completed
+    121 of 126 instances and excludes five local-infrastructure casualties; those result rows are not released in the repository.
+  sampling_protocol: Contrastive attribution holds steps [0,k) factual, resamples k and every downstream step K times, and
+    chooses the latest step whose rescue-effect interval excludes zero. Shapley samples step permutations with antithetic
+    reverse pairs and freshly evaluates every coalition without cross-permutation caching.
+  rollout_count: User configurable. Core-code defaults are 16 samples per contrastive step and 64 Shapley permutations with
+    one rollout per coalition evaluation; paper Figure 1 shows 48 counterfactual rollouts per step. Repository HEAD's Who&When
+    extension uses K<=8 with CI-aware early stopping and a five-step horizon.
+  temperature: unknown
+  inference_budget: Shapley and coalition sampling support hard sample and estimated-USD caps, but the arXiv v1 validation
+    budget and provider-call cost are not disclosed.
+  optimizer_or_scaffold: No model optimizer or policy-training scaffold is reported. The scaffold records and replays episodes,
+    applies five interventions (do_resample, do_action, do_observation, do_context, do_policy), scores outcomes, and estimates
+    contrastive or Shapley attribution.
+audit:
+  source_mixture: No canonical CAR dataset is released. arXiv v1 uses a three-step pivotal synthetic SCM, a three-step two-factor
+    AND-interaction SCM, and a mocked support-agent injection demo. Repository HEAD later applies a surrogate replay harness
+    to the external Who&When Algorithm-Generated failure-log subset.
+  split: No train/dev/test split applies to the on-demand core trajectories, and no CAR trajectory corpus is released. The
+    repository-only Who&When evaluation reports 121 completed of 126 evaluation instances, not a methodological training split.
+  decontamination: unknown
+  benchmark_overlap: The current repository evaluates public Who&When failure logs with a local llama3.2 3B surrogate and
+    known answers, but reports no model-contamination or benchmark-overlap audit. Post-hoc gate analysis is performed on the
+    same 121 evaluation instances and is disclosed as exploratory in RESEARCH/phase_6_benchmark.md.
+  license: README.md, pyproject.toml, and PyPI metadata declare Apache-2.0, but repository HEAD contains no LICENSE text and
+    the GitHub API reports no detected license. The bundled/fetched Who&When material is separately described by the repository
+    as having no published license, so redistribution rights remain incomplete.
+  lineage: Root and branch relationships are explicit through trajectory_id, parent_id, branched_at_step, and intervention_id.
+    State request payloads and raw provider actions are retained, but no immutable record manifest, environment-state snapshot,
+    dependency image, or cryptographic per-trajectory hash is released.
+  release_version: arXiv v1 was submitted 2026-06-06; inspected PDF SHA-256 477f92f0ebe56eff5ec4e795e974ab797d651e606dc707eae64f5153d2bf6085
+    and source-tar SHA-256 28c9e83bf6ed56942aa1154b9fcb923e9b73845a5cc08e3757e5e9b468998870. GitHub main and tag v0.2.0 were
+    inspected at db90fa28b97164c35e7c524e4597b8cbdb3035af (2026-07-09); GitHub has no formal Release. PyPI exposes only 0.0.1,
+    while repository pyproject.toml is 0.2.0. Repository paper/main.tex is a seven-page post-arXiv manuscript containing Who&When
+    results absent from arXiv v1.
+  successful_and_failed_sample_retention: The core store can save caller-selected successful or failed roots and branches,
+    but the paper releases no trajectory corpus or retention manifest. The repository-only benchmark consumes failure-only
+    Who&When logs and excludes five infrastructure casualties; its complete results JSONL is gitignored and absent from HEAD.
+  privacy_or_consent: unknown. State snapshots and JSON traces can contain full system-level instructions, message histories,
+    tool schemas, raw provider responses, tool arguments, and tool outputs. The repository provides no PII/secret redaction,
+    consent, retention, or access-control policy.
+  security: Counterfactual branches may rerun caller tools live without sandboxing, approval, rollback, or side-effect suppression;
+    the paper explicitly scopes real side-effecting tools out. TrajectoryStore derives a JSON filename directly from caller-controlled
+    trajectory_id without a documented path-sanitization check.
+  known_failure_modes:
+  - Resampling step k also rerolls every downstream stochastic decision, so the contrastive score is a through-continuation
+    total effect rather than an isolated direct effect; common random numbers are left for future work.
+  - The point-of-commitment rule assumes the latest significant rescue marks commitment. Multiple per-step intervals are not
+    adjusted in the core implementation, and the rule can abstain when K is too small or the policy/surrogate is noisy.
+  - A rule-based outcome can encode an incomplete terminal predicate, while JudgeOutcome adds model noise and rubric bias
+    directly to the causal estimate.
+  - Shapley is expensive, uses forced factual actions even when a resampled context differs, and relies on normal-approximation
+    intervals. Heavy budget truncation can leave too few marginals for calibrated uncertainty.
+  - Deterministic replay verifies message reconstruction and reports action-signature match rates, but action signatures ignore
+    token identity and environment replay injects recorded observations rather than proving full-world reproduction.
+  - Counterfactual forward replay uses fresh live environment outputs; there is no state snapshot, reset, clock/randomness
+    capture, idempotency check, timeout in the core provider wrappers, or rollback for side effects.
+  - Current adapters are restricted to single-agent linear tool loops, one tool call per turn, and string-returning tools;
+    parallel calls, streaming, fan-out, and non-linear/multi-agent paths are unsupported or refused.
+  - Hosted-provider nondeterminism remains even at temperature zero; local exactness depends on a fixed model build, seed,
+    context size, runtime, and single-stream execution, none of which is stored as an immutable environment image.
+  - 'Repository-only Who&When results use a 3B surrogate rather than the original policies: 76% of annotated mistake steps
+    are never rescued at K<=8, and the CI-gated locus fires on only 22/121 instances, so point-estimate heuristics carry the
+    reported benchmark accuracy.'
+  - 'Paper/code/package version drift is material: arXiv v1 lacks the later benchmark section, repository v0.2.0 lacks released
+    result rows, and PyPI remains at 0.0.1.'
+  - The absence of a LICENSE file, result manifest, data card, privacy policy, and decontamination report blocks treating
+    generated traces as a reusable training dataset.
+  citation_status: verified
+  confidence: high
+  notes: arXiv v1 metadata, PDF, source, and rendered pages; GitHub source/history/tags/code/tests; and PyPI release metadata/hashes
+    were checked. The repository test suite was not executed successfully because uv and required dependencies were unavailable
+    in the audit environment; code paths and tests were inspected, but live provider/tool replay and the missing Who&When
+    results JSONL were not independently reproduced.
+  remaining_unknowns:
+  - Exact model/provider/API/runtime versions, seeds, sampling configuration, tool versions, wall-clock state, and environment
+    snapshot for any real factual run.
+  - A paper-linked immutable code release and reconciliation among arXiv v1, GitHub v0.2.0, and PyPI 0.0.1.
+  - Complete Who&When result rows, per-instance seeds/K, five excluded IDs and error causes, and an independent reproduction
+    of the repository-only results.
+  - Dataset/dependency licensing, PII/secret filtering, consent, retention, access control, and incident handling for stored
+    production traces.
+  - Decontamination or overlap checks for the local surrogate/judge and any future downstream training use.
+  - Environment reset/rollback, timeout/retry, nondeterministic-input capture, record hashes, and replay-integrity guarantees
+    for live tools.
+inclusion_reason: 'CAR makes the counterfactual branch itself a concrete agent-trajectory data object: exact decision state,
+  action, observation, branch lineage, outcome distribution, and per-step causal effect are co-located, while the paper and
+  code expose why stochasticity, environment state, and outcome predicates limit causal reuse.'
+related:
+- who-when-pro-2026
+- agentracer-2025
+- traceelephant-2026
+tags:
+- causal-agent-replay
+- counterfactual-replay
+- agent-failure-attribution
+- trajectory-branching
+- structural-causal-model
+- stochastic-environments
+- replay-audit
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+one_line: CAR records exact agent decision states and branches them under step interventions to estimate failure-causing effects,
+  but live-tool state, provider randomness, and release-version drift prevent deterministic end-to-end replay.
+one_line_summary: Causal Agent Replay turns a recorded agent episode into paired counterfactual branches with outcome distributions
+  and step-level causal attribution, while leaving live-tool rollback and cross-version replay completeness unresolved.
+why_it_matters: 'It shows how full agent episodes can supply audit supervision beyond terminal pass/fail: replayed interventions
+  attach uncertainty-aware causal effects to decisions, but only when state capture, environment semantics, and the outcome
+  function are trustworthy.'
+card: null
+card_recommendation: Upgrade the existing causal-agent-replay-2026 Card to L4_chinese_review_ready from this ledger, explicitly
+  separating arXiv v1 from the repository-only Who&When extension and keeping reuse evaluation/audit-only; do not change review.json
+  from state new.
+needs:
+- 'needs_version_alignment: publish an arXiv revision and immutable code/package release that map to the same paper, tests,
+  and results'
+- 'needs_results_release: publish the Who&When result JSONL, exclusions, seeds, realized K, logs, and checksums'
+- 'needs_replay_contract: pin model/provider/runtime/tool versions and capture environment snapshots, resets, timeouts, retries,
+  random state, and rollback semantics'
+- 'needs_integrity_manifest: add per-trajectory hashes, dependency/container lock, and a paper-to-artifact manifest'
+- 'needs_security_privacy: add path sanitization, tool-execution sandbox/approval, secret and PII redaction, consent, retention,
+  and access-control policies'
+- 'needs_license: add the Apache-2.0 LICENSE text and audit third-party benchmark/data terms'
+- 'needs_decontamination: document benchmark overlap and prohibit unreported training/evaluation reuse'
+- 'needs_reproduction: rerun the official tests and live replay under a pinned Python 3.12 environment'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Citation identity, arXiv v1 full text/source, official GitHub repository and tag/commit, code-level schema/replay/attribution
+    behavior, and PyPI 0.0.1 hashes were verified. No CAR dataset exists; live provider replay and repository-only benchmark
+    results were not reproduced.

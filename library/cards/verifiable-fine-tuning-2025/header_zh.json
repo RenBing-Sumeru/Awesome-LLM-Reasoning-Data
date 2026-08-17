@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VFT 递归证明 LoRA/AdamW 训练遵守已提交的数据、采样与配额政策，但不能证明 manifest 中来源、许可或质量声明真实。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "可验证训练与溯源发布协议",
+  "best_for_ch": "研究训练可验证性、数据 manifest、零知识证明与合规审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Hasan Akgul、Daniel Borg、Arta Berisha、Amina Rahimova、Andrej Novak、Mila Petrov",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T05:52:40Z"
+}

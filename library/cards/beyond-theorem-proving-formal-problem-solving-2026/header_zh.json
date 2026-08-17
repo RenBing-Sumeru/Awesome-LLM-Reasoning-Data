@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FPS 将未知答案的数学求解建模为 Lean 中可重放的状态转移，并用 RPE 验证完成答案与目标的等价性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可执行验证的形式问题求解基准",
+  "best_for_ch": "研究 Lean 推理、形式强化学习或答案等价验证的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Qi Liu, Xinhao Zheng, Renqiu Xia, Xingzhi Qi, Qinxiang Cao, Junchi Yan",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

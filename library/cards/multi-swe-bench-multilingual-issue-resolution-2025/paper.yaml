@@ -1,0 +1,125 @@
+id: multi-swe-bench-multilingual-issue-resolution-2025
+title: 'Multi-SWE-bench: A Multilingual Benchmark for Issue Resolving'
+year: 2025
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Daoguang Zan
+- Zhirong Huang
+- Wei Liu
+- Hanwu Chen
+- Linhao Zhang
+- Shulin Xin
+- Lu Chen
+- Qi Liu
+- Xiaojian Zhong
+- Aoyan Li
+- Siyao Liu
+- Yongsheng Xiao
+- Liangqiang Chen
+- Yuyu Zhang
+- Jing Su
+- Tianyu Liu
+- Rui Long
+- Kai Shen
+- Liang Xiang
+source_role:
+- benchmark
+- data_release
+- agent_environment
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- software-engineering
+- code-generation
+- agent-evaluation
+training_use:
+- rlvr
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2504.02605
+  arxiv: https://arxiv.org/abs/2504.02605
+  code: https://github.com/multi-swe-bench/multi-swe-bench
+  data: https://huggingface.co/datasets/ByteDance-Seed/Multi-SWE-bench
+  project: https://multi-swe-bench.github.io/
+  huggingface: https://huggingface.co/datasets/ByteDance-Seed/Multi-SWE-bench
+  doi: https://doi.org/10.48550/arXiv.2504.02605
+  venue: https://github.com/multi-swe-bench/multi-swe-bench
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Real issue and pull-request candidates collected from multilingual repositories.
+  trace_author: Repository contributors, expert annotators, and benchmark constructors.
+  answer_format: Issue, repository revision, gold patch, test patch, runnable Docker environment, and execution result.
+  process_fields:
+  - issue
+  - base commit
+  - fix patch
+  - test patch
+  - Docker environment
+  - evaluation log
+  environment_or_substrate: Dockerized multilingual repository environments.
+  verifier_or_reward: Containerized execution of task tests.
+  terminal_predicate: The generated patch satisfies the benchmark's test contract.
+recipe_metadata:
+  base_model: Not applicable to benchmark construction.
+  teacher: Expert annotation and executable tests.
+  generator: Five-phase collection and curation pipeline.
+  filtering_rule: Expert annotators curate candidate tasks for reliable issue-resolution evaluation.
+  sampling_protocol: Benchmark collection rather than stochastic generation.
+  rollout_count: null
+  temperature: null
+  inference_budget: Execution cost and agent budget must be reported in comparisons.
+  optimizer_or_scaffold: Evaluation harness and the Multi-SWE-RL community release.
+audit:
+  source_mixture: Official arXiv paper, ByteDance Seed project site, GitHub repository, and Hugging Face release.
+  split: The benchmark and related RL release have separately versioned subsets; pin the dataset revision before use.
+  decontamination: Audit public issue/PR exposure, Docker image versions, test leakage, and changes in task counts across
+    releases.
+  license: Official GitHub repository is Apache-2.0; verify dataset and per-repository licenses before reuse.
+  lineage: https://arxiv.org/abs/2504.02605
+  known_failure_modes:
+  - Public issue and patch histories create contamination risk.
+  - Test suites can underspecify intended behavior.
+  - Task versions and language coverage have changed across releases.
+  citation_status: verified
+  confidence: high
+  notes: Official repository confirms NeurIPS 2025 Datasets and Benchmarks acceptance, data and code; ByteDance Seed is shown
+    as the author affiliation in the official submission.
+inclusion_reason: Multi-SWE-bench packages multilingual repository issue-resolution tasks with runnable verification environments,
+  so patch outcomes can be programmatically evaluated.
+related: []
+tags:
+- software-engineering
+- multilingual
+- docker
+- issue-resolution
+- '2025'
+one_line_summary: Multi-SWE-bench releases expert-curated multilingual repository issues with Dockerized tests that programmatically
+  score proposed patches.
+why_it_matters: It exposes a multilingual, executable patch-verification surface instead of treating Python-only benchmark
+  scores as general coding ability.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Official repository confirms NeurIPS 2025 Datasets and Benchmarks acceptance, data and code; ByteDance Seed is shown
+    as the author affiliation in the official submission.
+category_ids:
+- programmatically_verifiable_outcome_data
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces

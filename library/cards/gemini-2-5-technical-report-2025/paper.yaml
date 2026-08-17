@@ -1,0 +1,143 @@
+id: gemini-2-5-technical-report-2025
+title: 'Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic
+  Capabilities'
+year: 2025
+venue: Google Technical Report
+authors:
+- Gemini Team
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- reasoning
+- code
+- mathematics
+- multimodal
+- long_context
+- agentic_systems
+training_use:
+- sft
+- distillation
+- preference_learning
+- reward_modeling
+- rlvr
+- agent_training
+- safety_alignment
+- test_time_compute
+- audit
+construction_layer:
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Post-training uses carefully collected and vetted multimodal instruction-response data; individual source
+    datasets and prompt provenance are unknown.
+  trace_author: The report says the model assists quality control; instruction/response, preference, and tool-use record authorship
+    and synthetic proportions are unknown.
+  answer_format: Multimodal paired instructions and responses, plus human-preference and tool-use data; released record schema
+    is unknown.
+  process_fields:
+  - instruction
+  - response
+  - human_preference
+  - tool_use
+  environment_or_substrate: SFT, reward modeling, RL, and RL environments requiring multi-step actions and tool use; environment
+    implementations are undisclosed.
+  verifier_or_reward: Verifiable rewards and model-based generative rewards are named; reward equations, verifiers, calibration,
+    and error rates are unknown.
+  terminal_predicate: Quality, safety, and deduplication filtering are reported, but acceptance predicates and retention yields
+    are unknown.
+recipe_metadata:
+  base_model: Gemini 2.5 Pro and Flash are sparse MoE transformers with native text, vision, and audio inputs; parameter counts
+    are undisclosed.
+  teacher: Flash-size and smaller models use distillation; teacher identities, checkpoints, and mapping are unknown.
+  generator: The model assists post-training quality control; generators for instruction, preference, and tool-use records
+    are unknown.
+  filtering_rule: Quality filtering, safety filtering, and deduplication are reported; rules, thresholds, and per-stage yields
+    are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: Thinking is trained with RL to use additional inference compute; it can self-determine or receive a user-set
+    budget, while default caps and configuration are unknown.
+  optimizer_or_scaffold: SFT, reward modeling, and RL with increased RL compute are reported; algorithmic details are withheld.
+audit:
+  source_mixture: Public web documents, code, images, audio, and video, with a January 2025 cutoff for Gemini 2.5; mixture
+    proportions, source manifests, and rights are unknown.
+  split: Training, post-training, and evaluation memberships and sizes are undisclosed.
+  decontamination: N-gram, semantic-similarity, and model-based decontamination are reported; thresholds, adjudication, and
+    full results are unknown.
+  license: No released weights, training data, or code link is provided in the official report or model card; licenses and
+    underlying data rights are unknown.
+  lineage: Stage-level data and post-training categories are disclosed, but item-level lineage and per-stage record counts
+    are unavailable.
+  known_failure_modes:
+  - Raw pretraining and post-training data, manifests, proportions, and source rights are unavailable.
+  - Reward formulas, verifier implementation and calibration, preference protocol, tool environments, and rollout settings
+    are undisclosed.
+  - Gemini 2.5 Pro remains less resilient to indirect prompt injection than Gemini 2.5 Flash.
+  - The model card records hallucination plus causal, logical-deduction, and counterfactual-reasoning limitations.
+  - Reported decontamination and memorization audits cannot be independently reproduced from released artifacts.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the official Gemini 2.5 report and Gemini 2.5 Pro model card; this is Track 12 disclosure and audit
+    coverage, not a Track 8 scaling entry.
+inclusion_reason: High-impact frontier technical report that discloses multimodal data categories, SFT/RM/RL, verifiable and
+  model-generated rewards, tool-use RL environments, distillation, decontamination, and safety/privacy audits while preserving
+  consequential unknowns.
+related: []
+tags:
+- gemini-2-5
+- gemini
+- frontier-report
+- data-disclosure-ledger
+- multimodal
+- thinking
+- sft
+- reward-modeling
+- rl
+- tool-use
+- safety-audit
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: Gemini 2.5 partially discloses multimodal pre/post-training categories, SFT/RM/RL, verifiable and model-generated
+  rewards, tool-use RL, and safety audits, but withholds datasets, reward implementations, and reproducibility-critical construction
+  detail.
+why_it_matters: It is a high-value Track 12 ledger item because it exposes real frontier post-training interfaces and the
+  specific artifacts still unavailable for independent data, reward, and audit verification.
+card: null
+needs:
+- 'needs_data: pretraining/post-training/instruction/preference/tool-use records and manifests'
+- 'needs_metadata: mixture proportions, sources, filters, teachers, rollouts, and optimizer details'
+- 'needs_verifier: reward/verifier implementation, calibration, and error audit'
+- 'needs_audit: reproducible decontamination, splits, and memorization artifacts'
+- 'needs_license: source-level rights and model/data release terms'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: card_writer
+  confidence: high
+  notes: Official Google technical report, Google DeepMind model card, and Google launch blog checked; no code, weights, or
+    training-data artifact was claimed.

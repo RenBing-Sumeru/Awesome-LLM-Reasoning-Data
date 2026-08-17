@@ -1,0 +1,6 @@
+- Keep HIR-16K, the policy rollout stream, and the selected hindsight samples as three different objects. Only the prompt-and-constraint dataset is publicly linked here.
+- Hard constraints use rules or code; soft constraints use a learned judge. Preserve the constraint type and checker/judge version per decision.
+- Replay changes the instruction, not the response. The audit link among original prompt, all criteria, per-criterion outcomes, rewritten prompt, and unchanged response is essential.
+- Success under a pseudo-instruction is not success under the original instruction; each has a different terminal predicate.
+- Entropy is a curriculum feature, not a data-quality score. Check its dependence on length, decoding, and checkpoint.
+- Audit the viewer/schema failure, exact source revisions, upstream licenses, rejected candidates, rollout groups, and judge/checker error behavior before reuse.

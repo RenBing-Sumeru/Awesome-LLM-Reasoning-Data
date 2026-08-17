@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Safe 将数学推理的每一步回溯性地形式化为 Lean 4 验证问题，并以 FormalStep 提供可检查的逐步正确性信号。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要用形式证明替代不透明打分来评测数学推理步骤，并研究可解释过程监督的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Chengwu Liu、Ye Yuan、Yichun Yin、Yan Xu、Xin Xu、Zaoyu Chen、Yasheng Wang、Lifeng Shang、Qun Liu、Ming Zhang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

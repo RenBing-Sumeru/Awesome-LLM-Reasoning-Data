@@ -1,0 +1,115 @@
+id: adaptivestep-model-confidence-segmentation-2025
+title: 'AdaptiveStep: Automatically Dividing Reasoning Step through Model Confidence'
+year: 2025
+venue: ICML 2025
+authors:
+- Yuliang Liu
+- Junjie Lu
+- Zhaoling Chen
+- Chaofeng Qu
+- Jason Klein Liu
+- Chonghan Liu
+- Zefan Cai
+- Yunhui Xia
+- Li Zhao
+- Jiang Bian
+- Chuheng Zhang
+- Wei Shen
+- Zhouhan Lin
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- code-generation
+- process-reward-modeling
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2502.13943
+  arxiv: https://arxiv.org/abs/2502.13943
+  code: https://github.com/Lux0926/ASPRM
+  project: https://github.com/Lux0926/ASPRM
+  data: https://huggingface.co/datasets/Lux0926/ASPRM-MATHCODE-DeepSeek-Training-Dataset
+  huggingface: https://huggingface.co/datasets/Lux0926/ASPRM-MATHCODE-DeepSeek-Training-Dataset
+  venue: https://icml.cc/virtual/2025/poster/45053
+  doi: null
+  openreview: https://openreview.net/forum?id=ViRFgwVjk0
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/liu25a.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematical-reasoning and code-generation prompts.
+  trace_author: Model-generated solution trajectories segmented at adaptive confidence-based boundaries.
+  answer_format: Prompt, reasoning or code trace, adaptive step boundaries, and process-reward annotations.
+  process_fields:
+  - prompt
+  - response
+  - adaptive_steps
+  - confidence
+  - step_rewards
+  environment_or_substrate: Mathematical reasoning and code generation.
+  verifier_or_reward: A PRM trained on confidence-defined reasoning-step segments.
+  terminal_predicate: Outcome correctness of rollouts used to derive process-reward signals.
+recipe_metadata:
+  base_model: Use the ASPRM repository configuration and released Math/Code training dataset.
+  teacher: Model confidence and outcome evaluation rather than manually placed delimiters.
+  generator: Model-generated reasoning and code solutions.
+  filtering_rule: Segment at confidence-defined decision points, then associate process rewards with the resulting adaptive
+    steps.
+  sampling_protocol: Use the official ASPRM data release and repository preprocessing.
+  inference_budget: The release reports approximately 21.5M rollout outcomes; follow its code for per-prompt settings.
+  optimizer_or_scaffold: Adaptive segmentation followed by process-reward modeling and best-of-N evaluation.
+  rollout_count: About 21.5M released rollout outcomes.
+  temperature: null
+audit:
+  source_mixture: Math and code prompts, generated traces, confidence-derived boundaries, and rollout-based reward outcomes.
+  split: The official training release reports roughly 200K records and 21.5M rollout results.
+  decontamination: Keep held-out mathematics and code benchmarks outside construction and PRM evaluation.
+  license: Refer to the official ASPRM repository and Hugging Face dataset page for terms.
+  lineage: ICML 2025 paper, official ASPRM GitHub repository, and official Hugging Face training-data page.
+  known_failure_modes:
+  - Confidence can be miscalibrated
+  - Step boundaries depend on the chosen model
+  - Reported construction is tailored to math and code
+  citation_status: verified
+  confidence: high
+  notes: Verified ICML 2025 publication, official author affiliations on the proceedings PDF, and the ASPRM repository and
+    data release.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: AdaptiveStep replaces hand-written step delimiters with model-confidence boundaries, producing process-reward
+  supervision that targets actual decision points in math and code traces.
+why_it_matters: It makes the granularity of process supervision a learned, inspectable construction decision rather than a
+  formatting artifact.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified ICML 2025 publication, official author affiliations on the proceedings PDF, and the ASPRM repository and
+    data release.
+category_ids:
+- process_trace_supervision_data

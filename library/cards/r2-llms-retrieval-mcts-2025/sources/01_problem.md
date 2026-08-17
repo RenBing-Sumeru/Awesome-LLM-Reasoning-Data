@@ -1,0 +1,3 @@
+Most test-time tree search generates many candidate chains but evaluates them using only the model’s learned knowledge and a local process scorer. On difficult mathematics, that setup can repeatedly deepen an unpromising branch when the tree lacks a useful high-level strategy or an analogous intermediate step.
+
+R2-LLMs asks how extra inference compute can consult external reasoning evidence without turning the system into a fixed retrieval prompt. It treats retrieval as part of the live search loop: the search should obtain an abstract solution pattern for the whole problem and relevant worked steps for the node currently being expanded.

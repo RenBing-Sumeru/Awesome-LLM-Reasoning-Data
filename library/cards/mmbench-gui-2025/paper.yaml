@@ -1,0 +1,138 @@
+id: mmbench-gui-2025
+title: 'MMBench-GUI: Hierarchical Multi-Platform Evaluation Framework for GUI Agents'
+year: 2025
+venue: arXiv preprint
+authors:
+- Xuehui Wang
+- Zhenyu Wu
+- JingJing Xie
+- Zichen Ding
+- Bowen Yang
+- Zehao Li
+- Zhaoyang Liu
+- Qingyun Li
+- Xuan Dong
+- Zhe Chen
+- Weiyun Wang
+- Xiangyu Zhao
+- Jixuan Chen
+- Haodong Duan
+- Tianbao Xie
+- Chenyu Yang
+- Shiqian Su
+- Yue Yu
+- Yuan Huang
+- Yiqian Liu
+- Xiao Zhang
+- Yanting Zhang
+- Xiangyu Yue
+- Weijie Su
+- Xizhou Zhu
+- Wei Shen
+- Jifeng Dai
+- Wenhai Wang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- gui-agents
+- mobile-desktop-web
+- hierarchical-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2507.19478
+  arxiv: https://arxiv.org/abs/2507.19478
+  doi: https://doi.org/10.48550/arXiv.2507.19478
+  code: https://github.com/open-compass/MMBench-GUI
+  data: https://huggingface.co/datasets/OpenGVLab/MMBench-GUI
+  project: https://github.com/open-compass/MMBench-GUI
+  huggingface: https://huggingface.co/datasets/OpenGVLab/MMBench-GUI
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official MMBench-GUI task set
+  trace_author: official authors and GUI-agent benchmark rollouts
+  answer_format: GUI tasks, screenshots, action records, platform metadata, and multi-level evaluation outputs
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: hierarchical GUI tasks across mobile, desktop, and web platforms
+  verifier_or_reward: hierarchical task evaluator and GUI-agent scoring scripts
+  terminal_predicate: hierarchical task evaluator and GUI-agent scoring scripts
+recipe_metadata:
+  base_model: Not a model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: OpenCompass/OpenGVLab benchmark authors
+  generator: MMBench-GUI task curation and platform runners
+  filtering_rule: pin L1-L4 task versions, Docker/runtime, HF dataset revision, and evaluator scripts
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2507.19478; https://arxiv.org/html/2507.19478; https://github.com/open-compass/MMBench-GUI;
+    https://huggingface.co/datasets/OpenGVLab/MMBench-GUI
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2507.19478'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: L3/L4 Docker automation, HF schema issue, dataset split, license, and evaluator version need pinning.
+inclusion_reason: it gives a broad multi-platform GUI-agent evaluation surface
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- gui-agents
+- mobile-desktop-web
+- hierarchical-evaluation
+one_line: MMBench-GUI defines hierarchical GUI-agent evaluation across mobile, desktop, and web.
+why_it_matters: it gives a broad multi-platform GUI-agent evaluation surface
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: MMBench-GUI defines hierarchical GUI-agent evaluation across mobile, desktop, and web.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv, GitHub, and HF verify title, authors, institutions, and public artifact entries; HF schema/runtime details
+    still need audit.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 46
+  primary_category_id: benchmarks_evaluation_surfaces

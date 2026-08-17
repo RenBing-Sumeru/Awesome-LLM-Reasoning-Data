@@ -1,0 +1,19 @@
+{
+  "title": "Beyond Final Answers: CRYSTAL Benchmark for Transparent Multimodal Reasoning Evaluation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2603.13099",
+    "data": "https://huggingface.co/datasets/waybarrios/CRYSTAL",
+    "code": "https://github.com/waybarrios/crystal",
+    "project": "https://github.com/waybarrios/crystal"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T12:47:36Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "人工核验参考步骤链，可用于透明多模态推理评测补充",
+    "updated_at": "2026-07-16T12:47:36Z"
+  }
+}

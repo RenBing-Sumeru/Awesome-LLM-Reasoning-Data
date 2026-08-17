@@ -1,0 +1,218 @@
+id: bridging-provenance-gap-2025
+title: Bridging the Data Provenance Gap Across Text, Speech, and Video
+year: 2025
+venue: ICLR
+authors:
+- Shayne Longpre
+- Nikhil Singh
+- Manuel Cherep
+- Kushagra Tiwary
+- Joanna Materzynska
+- William Brannon
+- Robert Mahari
+- Naana Obeng-Marnu
+- Manan Dey
+- Mohammed Hamdy
+- Nayan Saxena
+- Ahmad Mustafa Anis
+- Emad A. Alghamdi
+- Vu Minh Chien
+- Da Yin
+- Kun Qian
+- Yizhi Li
+- Minnie Liang
+- An Dinh
+- Shrestha Mohanty
+- Deividas Mataciunas
+- Tobin South
+- Jianguo Zhang
+- Ariel N. Lee
+- Campbell S. Lund
+- Christopher Klamm
+- Damien Sileo
+- Diganta Misra
+- Enrico Shippole
+- Kevin Klyman
+- Lester JV Miranda
+- Niklas Muennighoff
+- Seonghyeon Ye
+- Seungone Kim
+- Vipul Gupta
+- Vivek Sharma
+- Xuhui Zhou
+- Caiming Xiong
+- Luis Villa
+- Stella Biderman
+- Alex Pentland
+- Sara Hooker
+- Jad Kabbara
+source_role:
+- audit_failure
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- multimodal
+training_use:
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+- frontier_pipeline
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/97b983c974551153d20ddfabb62a5203-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2412.17847
+  code: https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection
+  data: https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection
+  project: https://www.dataprovenance.org/
+  huggingface: https://huggingface.co/DataProvenanceInitiative/datasets
+  doi: https://doi.org/10.48550/arXiv.2412.17847
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/97b983c974551153d20ddfabb62a5203-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=G5DziesYxL
+  bibtex: https://proceedings.iclr.cc/paper_files/paper/2025/file/97b983c974551153d20ddfabb62a5203-Bibtex-Conference.bib
+data_object:
+  prompt_source: Publicly available text, speech, and video datasets selected through modality-specific combinations of Hugging
+    Face task/download listings, surveys, repositories, workshop proceedings, citation/download thresholds, open-model SFT/DPO
+    releases, multilingual catalogues, and domain-expert additions
+  trace_author: Human domain experts trace dataset documentation through papers, websites, repositories, marketplaces, source
+    terms, and derivation chains; repository scripts add inferred platform metadata and support download/filter/normalization
+  answer_format: Collection-, dataset-, or separable-variant-level JSON metadata plus aggregate plots and an Attribution Card;
+    it is not a record-level mapping from each training example to an original source
+  process_fields:
+  - unique_dataset_identifier
+  - dataset_name
+  - collection_and_collection_url
+  - dataset_paper_repository_and_huggingface_urls
+  - languages_and_language_families
+  - task_categories
+  - source_categories_and_source_urls_or_names
+  - model_generated
+  - human_annotation
+  - derived_from_datasets
+  - creators_and_creator_geography
+  - dataset_license_and_license_url
+  - source_terms_category
+  - license_notes_and_verifier_when_present
+  - modality_specific_size_and_process_fields
+  - inferred_platform_metadata
+  - dataset_filter_ids
+  - bibtex
+  environment_or_substrate: A manual audit over mutable public documentation and terms, backed by modality-specific JSON schemas,
+    constants, analysis plots, downloader/filter/normalization code, a JavaScript explorer, and a 38-page supplemental Attribution
+    Card
+  verifier_or_reward: Human legal/ML and modality expertise plus cross-checking of public source documents. Dataset licenses
+    are grouped as Commercial, NC/Acad, or Unspecified; source terms as Model Closed, Source Closed, Unspecified, or Unrestricted,
+    with strictest-source aggregation. No model reward or independent gold verifier is provided.
+  terminal_predicate: An item falls within modality-specific scope and its selected metadata is encoded for the audit; exact
+    field-completeness thresholds, disagreement resolution, and per-entry acceptance logs are unknown
+recipe_metadata:
+  base_model: not applicable; the release is a human-audited metadata catalogue rather than model-generated training data
+  teacher: Human modality experts and legal/ML reviewers; exact reviewer assignment and training materials are unknown
+  generator: Human research teams create the audit JSON and legal/source labels; repository scripts retrieve platform metadata,
+    normalize selected underlying datasets, filter by audit attributes, and generate attribution output
+  filtering_rule: Text prioritizes public post-training SFT/preference datasets and popular/recent collections; speech retains
+    datasets where ASR is a primary task and excludes unlabeled hours; video uses specified task tags, publication/citation
+    or Hugging Face download criteria, workshops, survey repositories, and expert review. Semantically or legally distinct
+    versions can remain separate.
+  sampling_protocol: Define a modality-specific scope -> compile candidates from public catalogues and expert sources -> trace
+    dataset and derivation documentation back to source terms -> annotate identity, source, creator, representation, license,
+    and restriction fields -> apply strictest-source/collection aggregation for analysis -> publish JSON, plots, tools, and
+    Attribution Card
+  rollout_count: Table 1 reports 3916 audited datasets, comprising 3717 text, 95 speech, and 104 video entries; §2.1 separately
+    states 3713 text datasets, an unresolved internal discrepancy
+  temperature: not applicable
+  inference_budget: Human audit time, number of reviewers per field, and adjudication budget are unknown; this is not an inference-time
+    generation recipe
+  optimizer_or_scaffold: Modality-specific taxonomies and JSON schemas, strictest-source restriction aggregation, dataset
+    download/filter/normalization functions, analysis notebooks/plots, a public explorer, and a contribution workflow
+audit:
+  source_mixture: Table 1 reports 3916 public datasets spanning 798 sources, 659 creator organizations, 67 countries, 608
+    languages, 443 tasks, and 55 licenses; text covers 108 collections and 2.1T tokens, while speech/video cover about 1.9M
+    hours. Selection intentionally differs by modality and excludes proprietary datasets.
+  split: Not a train/dev/test corpus. Text, speech, and video have distinct candidate-selection and version-handling rules;
+    a frozen paper-time inclusion/exclusion manifest mapping every paper statistic to one repository commit is unavailable.
+  decontamination: No sample-level decontamination is performed. Derived-from and source annotations can expose dataset-level
+    reuse, but they do not prove record overlap or benchmark contamination.
+  license: The official repository is Apache-2.0, covering repository code and metadata. Every audited dataset, model output,
+    source work, platform term, and downstream download remains governed independently. The exact paper license was not verified
+    from an accessible ICLR/OpenReview metadata field; arXiv uses its non-exclusive distribution license.
+  lineage: Modality-specific public candidate sources -> human tracing across dataset cards, papers, repositories, and original
+    source terms -> dataset/separable-variant JSON -> strictest-source and collection aggregation -> ecosystem statistics,
+    Attribution Card, explorer, and filter/normalization tooling; no per-record lineage graph is released
+  known_failure_modes:
+  - Popularity, public availability, task tags, citation/download thresholds, workshop lists, and expert additions create
+    selection bias; private and proprietary training data are outside the observed ecosystem.
+  - The three modalities use different scopes, counting units, schemas, version rules, and size measures, limiting direct
+    cross-modal comparisons.
+  - Public dataset cards, repositories, licenses, and Terms of Service can be missing, stale, ambiguous, changed, or wrong;
+    the release does not preserve a complete evidence snapshot for every judgment.
+  - Commercial/NC/Unspecified and Model Closed/Source Closed/Unspecified/Unrestricted categories compress legally complex,
+    jurisdiction-dependent terms and are not legal determinations.
+  - Dataset- or collection-level labels can conceal incompatible record-level sources, consent states, transformations, and
+    licenses; strictest-source aggregation is conservative but does not provide per-example clearance.
+  - Creator organizations mean affiliations associated with the ML dataset release, not owners or creators of upstream source
+    content; headquarters-based geography and partial identities limit representation inference.
+  - Field-level annotation coverage, reviewer assignment, disagreement resolution, and inter-annotator agreement are not reported,
+    so human-label error cannot be quantified from the paper.
+  - The accepted paper internally reports both 3717 and 3713 text datasets; these figures must not be silently reconciled.
+  - The repository is a living resource. Its only GitHub release, v1.1.0, predates the paper, while current main contains
+    post-release multimodal changes and no immutable paper-time manifest.
+  - The repository README still describes the earlier 44-collection/1800+ text audit and cites the 2023 paper, creating scope
+    and version confusion for users of the 2025 multimodal analysis.
+  - The official Hugging Face organization hosts multiple filtered/normalized artifacts but no single identified repository
+    is the complete 2025 multimodal audit; the organization page must not be treated as a unified paper snapshot.
+  - Apache-2.0 on audit metadata and tools does not transfer permissions for underlying training records or settle whether
+    platform terms, dataset licenses, copyright, privacy, or consent obligations are enforceable or compatible.
+  citation_status: verified
+  confidence: medium
+  notes: ICLR paper and 38-page supplemental attribution card, arXiv v2, official repository/project, current GitHub API tree,
+    v1.1.0 release, and HF organization checked 2026-07-21. Current repository revision is ce6662deccf011574427b6f112df479d261960b8.
+    Citation and artifact identity are high-confidence; paper-time snapshot and field-level annotation reliability are not.
+inclusion_reason: Supplies a human-audited, cross-modal provenance and restriction layer for selecting and documenting upstream
+  post-training sources, while demonstrating why dataset-level licenses, source terms, versioning, and record-level lineage
+  must remain separate audit objects.
+related: []
+tags:
+- data-provenance
+- dataset-licensing
+- source-terms
+- multimodal-audit
+- derivation-lineage
+- human-metadata-audit
+- release-versioning
+- data-governance
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Releases a human-audited dataset-level catalogue covering 3,916 reported text, speech, and video datasets,
+  with source, derivation, creator, representation, license, and source-terms metadata but no per-record provenance.
+why_it_matters: For the construction/open-release track, it provides an operational rights and lineage review layer before
+  composing reasoning-data mixtures, and shows that permissive dataset labels can conflict with upstream source restrictions.
+card: null
+needs:
+- 'needs_snapshot: immutable paper-time JSON export, file manifest, checksums, and mapping from every Table 1 entry to a repository
+  revision'
+- 'needs_reconciliation: authoritative explanation of the 3713 versus 3717 text-dataset counts and resulting total scope'
+- 'needs_annotation_protocol: field-level instructions, annotator training, reviewer assignment, completion rules, adjudication,
+  and agreement/error statistics'
+- 'needs_evidence: timestamped source-document snapshots and machine-readable evidence links for each license/source-terms
+  judgment'
+- 'needs_versioning: field-level changelog, correction provenance, schema version, and stable IDs across living updates'
+- 'needs_record_lineage: per-example source, creator, consent, transformation, license, and derivation mappings where legally
+  possible'
+- 'needs_release_docs: README and explorer documentation synchronized to the 2025 multimodal scope and a dedicated HF audit
+  artifact if HF distribution is intended'
+- 'needs_legal_scope: explicit reminder in downstream exports that taxonomy labels are informational and not legal clearance'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official ICLR/arXiv citation and Data Provenance Initiative artifacts are verified. artifact_verified covers the
+    GitHub metadata/code release, project, supplemental Attribution Card, and HF organization identity; it does not establish
+    an immutable paper-time snapshot or rights to underlying datasets.

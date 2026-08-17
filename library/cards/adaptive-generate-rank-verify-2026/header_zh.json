@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"ADAP 根据廉价排序分数逐步扩大候选池，并只为高分候选支付昂贵验证成本，在单调假设下接近最优开销。","reading_priority_ch":"必读","paper_type_ch":"带昂贵验证器的自适应测试时搜索研究","best_for_ch":"研究验证器调用预算、代码隐藏测试或可判定推理搜索的读者。","confidence_ch":"高","authors_ch":"Shaddin Dughmi、Yusuf Hakan Kalayci（南加州大学）；Mahdi Haghifam（芝加哥丰田理工学院）","category_ids":["scaling_rlvr_test_time_compute"]}

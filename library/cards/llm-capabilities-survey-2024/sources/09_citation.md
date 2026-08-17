@@ -1,0 +1,1 @@
+Jiawei Li et al. 2024. Fundamental Capabilities of Large Language Models and their Applications in Domain Scenarios: A Survey. Proceedings of ACL 2024, pages 11116–11141. https://aclanthology.org/2024.acl-long.599/

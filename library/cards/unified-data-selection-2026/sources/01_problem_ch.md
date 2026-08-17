@@ -1,0 +1,5 @@
+本卡以2026年五月21日发布的官方arXiv v1以及ICLR 2026 Submission 8937的OpenReview记录为主要来源。OpenReview仍将其标为投稿,较晚的arXiv版本则是审稿中的预印本;未核验到接收记录。
+
+推理数据选择通常针对单一训练阶段分别设计:SFT使用离线示范过滤器,RFT使用正确性门控与采样器,RL则使用rollout或批次选择策略。论文研究能否用同一个模型内生不确定性统计量,在不另行训练reward model或judge的情况下,对这三个阶段的完整回答轨迹排序。
+
+其数据对象不是新发布的数据集,而是SFT中的既有提示-回答示范、RFT中的模型生成候选解,以及GRPO中的在线成功/失败rollout。每条回答在概念上附带词元分布熵和回答级High-Entropy Sum(HES);RFT与RL还需要外部答案正确性结果。因此该工作适合归入`data_construction_open_release_recipes`:它给出了面向推理轨迹的选择配方,但缺少记录清单、实现、verifier契约和接受/拒绝数据发布,故本卡保留L3,不能把它视为可开放复现的数据发布。

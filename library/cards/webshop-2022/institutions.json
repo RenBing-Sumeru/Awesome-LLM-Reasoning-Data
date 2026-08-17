@@ -1,0 +1,14 @@
+{
+  "institutions": [
+    "Princeton University"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:45:00Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2207.01206",
+    "https://webshop-pnlp.github.io/",
+    "https://github.com/princeton-nlp/WebShop"
+  ],
+  "verification_note": "arXiv, project, and repository sources verify authors, Princeton affiliation, NeurIPS 2022 status, and artifact links."
+}

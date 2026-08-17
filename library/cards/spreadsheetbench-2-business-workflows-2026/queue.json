@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-17T07:19:30Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "新兴 测试完整商业工作流，而不只是修改几个单元格。包含生成财务模型、修复工作簿和制作可视化 6月底发布",
+    "updated_at": "2026-07-17T07:19:30Z"
+  }
+}

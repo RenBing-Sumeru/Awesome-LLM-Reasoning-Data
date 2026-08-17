@@ -1,0 +1,6 @@
+- 先读 §3，并把演化中的数据对象与最终 benchmark 分数分开：问题、rollout、伪标签、代码 embedding、记忆判定和 replay link 才是构造记录。
+- 区分三种反馈角色：uncertainty 选择难度，SAM/MAP 塑造新颖性，多数投票伪标签训练 Solver。
+- SAM canonical code 只是相似度表示，不是执行证明；其 prompt 还可能把有缺陷的问题修复成另一个任务。
+- Table 2 是最直接的组件核验：完整 4B 方法 Math AVG 为 52.59，去除 MAP、replay、SAM 后分别为 49.62、51.18、50.50。
+- Table 1 增益与 GPT-4o 分析只支持论文报告的设置，不能证明单条记录正确或已经发布。
+- 复用前检查官方仓库：截至 2026-07-22，它仍是带未来发布计划的非可执行项目页。

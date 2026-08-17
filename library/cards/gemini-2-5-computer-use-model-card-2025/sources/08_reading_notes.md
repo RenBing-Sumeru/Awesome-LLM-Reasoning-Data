@@ -1,0 +1,5 @@
+- Remember the deployed transition: goal, screenshot, and recent actions lead to a function call; client execution returns function_result, URL, and the next screenshot.
+- Keep Online-Mind2Web/WebVoyager temperature 1, include_thoughts, autoregressive pass@1, and three-person whole-trajectory majority vote attached to the reported scores.
+- Preserve WebVoyager's reduction from 643 to 559 date-edited feasible tasks and separate official/self-reported from Browserbase results.
+- Preserve AndroidWorld's Pixel 6, Android 13/API 33, screenshot-only, no-accessibility-tree condition; other environment pins remain unknown.
+- Do not infer a training reward from benchmark votes or per-step safety gating; audit prompt injection, confirmations, mutable environments, and missing training rollouts.

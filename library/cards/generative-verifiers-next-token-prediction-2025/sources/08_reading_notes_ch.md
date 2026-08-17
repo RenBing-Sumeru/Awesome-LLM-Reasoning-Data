@@ -1,0 +1,5 @@
+- 优先阅读 Sections 3.1–3.3：标量奖励是下一 token `Yes` 概率，CoT 版本则让该概率以自生成验证理由为条件。
+- Appendix A 是数据 recipe：其中给出算法候选数量、GSM8K 划分与每题 50 份解的采样、reference-guided prompt、16 正确/16 错误上限及判决过滤器。
+- 不要因为理由文本会逐步评分就把该发布标成 process supervision；被保留的正确性契约与部署 reward 都是答案级。
+- Figure 1 与 Table C.1 报告较强的 Best-of-N 与迁移结果；Figure C.2 则提供一个重要负结果：正确解生成混合过多会损害验证。
+- 官方 GSM8K 发布同时暴露 direct target 与 rationale target，但代码、checkpoint、生成 critique 的许可证范围、去污染、被拒理由日志及不可变 tagged snapshot 仍未解决。

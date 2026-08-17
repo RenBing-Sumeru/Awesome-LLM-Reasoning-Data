@@ -1,0 +1,197 @@
+id: openai-gpt-5-1-codex-max-system-card-2025
+title: GPT-5.1-Codex-Max System Card
+year: 2025
+venue: OpenAI system card
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- coding_agents
+- cybersecurity
+- safety
+- biosecurity
+- ai_self_improvement
+training_use:
+- agent_training
+- evaluation
+- safety_alignment
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://openai.com/index/gpt-5-1-codex-max-system-card/
+  arxiv: null
+  code: null
+  data: null
+  project: https://deploymentsafety.openai.com/gpt-5-1-codex-max
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The report names broad agentic training domains (software engineering, math, research, medicine, and computer
+    use), real-world software-engineering task types (PR creation, code review, frontend coding, and Q&A), synthetic malware-relevant
+    prompts, and new prompt-injection safety data. Prompt-level origins, counts, dates, mixture weights, rights, and selection
+    criteria are unknown.
+  trace_author: GPT-5.1-Codex-Max produces coding-agent rollouts, while a separately described user model makes conflicting
+    edits during destructive-action RL episodes. The report does not disclose whether full action/tool traces are retained
+    as training records, the user-model generator or teacher, or rollout lineage.
+  answer_format: Disclosed outputs span code patches and repository modifications, PR/review/frontend/Q&A responses, safety
+    refusals or defensive/contextual responses, and complete agent-episode outcomes. Exact serialized training schemas, target
+    formats, and released examples are unknown.
+  process_fields:
+  - task_prompt
+  - code_or_environment_context
+  - user_model_conflicting_edit
+  - agent_action_or_response
+  - model_patch_or_artifact
+  - policy_compliance_or_refusal
+  - hidden_test_or_environment_outcome
+  - preservation_of_user_changes
+  - scalar_or_binary_reward
+  environment_or_substrate: Training disclosure includes malware-relevant environment configurations and an RL environment
+    in which a user model changes the workspace during the rollout. Evaluation environments include headless Linux CTF harnesses,
+    remotely probed CVE-Bench web applications, emulated Cyber Range networks, pre-PR code repositories, Playwright test environments,
+    GPU-backed MLE-bench tasks, and containers with internal code and run artifacts. Training-environment versions and complete
+    configurations are unknown.
+  verifier_or_reward: Safety behavior follows policy specifications and is evaluated by policy graders or an internal expert
+    golden set. In destructive-action RL, the model receives positive reinforcement when it does not revert user changes.
+    Evaluation outcomes also use end-to-end Playwright tests, hidden unit tests, scenario pass/fail predicates, hierarchical
+    rubrics, an o1-preview autograder validated by a biosecurity expert, browsing-cheating classifiers plus manual review,
+    and external expert judgments. Reward implementation, weights, calibration, and the training/evaluation boundary are unknown.
+  terminal_predicate: For the explicitly described destructive-action intervention, success is preserving user-produced changes
+    and avoiding destructive actions over the rollout. Other disclosed evaluation predicates include all task-specific hidden
+    tests passing, scenario completion, benchmark medal thresholds, rubric scores, or policy-compliant output; the general
+    training terminal predicate is unknown.
+recipe_metadata:
+  base_model: An update to OpenAI's foundational reasoning model; architecture, parameter count, checkpoint identity, pretraining
+    corpus, and stage allocations are unknown.
+  teacher: unknown
+  generator: A synthetic pipeline generates malware-relevant prompts, code snippets, and environment configurations; a user
+    model generates conflicting edits during destructive-action RL. Generator checkpoints, prompts, policies, and versions
+    are unknown.
+  filtering_rule: The malware pipeline incorporates edge cases and adversarial examples and targets policy-compliant refusal,
+    contextual or defensive assistance, and calibrated handling of dual use. The report does not provide generation filters,
+    selection thresholds, rejection reasons, yields, or treatment of failed samples.
+  sampling_protocol: unknown
+  rollout_count: Training rollout counts are unknown. Evaluation-only disclosures include 16 rollouts per professional CTF
+    exercise with pass@12 and 16 trials per Cyber Range scenario; these must not be interpreted as training sampling.
+  temperature: unknown
+  inference_budget: Compaction lets the model operate across multiple context windows and is described as supporting millions
+    of tokens in one task. Cyber capability elicitation used up to 10 context windows; PaperBench-10 used Extra High reasoning
+    with no browsing. Exact deployed and training budgets, compaction thresholds, per-window size, and allocation rules are
+    unknown.
+  optimizer_or_scaffold: The report explicitly states that destructive-action behavior was trained during RL with positive
+    reinforcement for preserving user changes and that dedicated safety training was applied for harmful tasks and prompt
+    injection. The optimizer, objective mixture, reward magnitude, schedules, batch sizes, checkpoint selection, and compaction-training
+    scaffold are unknown.
+audit:
+  source_mixture: Only broad agentic domains, four software-engineering task types, pre-existing safety data from the OpenAI
+    hosted chat product, a synthetic malware scenario pipeline, new prompt-injection safety data, and destructive-action RL
+    episodes are named. Counts, proportions, dates, source manifests, privacy or consent handling, and source-level licenses
+    are unknown.
+  split: The report identifies multiple evaluation-only sets, including a 350-item fully held-out SecureBio virology set,
+    a fully in-house unpublished tacit-knowledge set described as uncontaminated, ProtocolQA-derived items, public CTFs, CVE-Bench
+    1.0, and internal OpenAI tasks. It does not disclose the overall training, development, and test split or item membership.
+  decontamination: The in-house tacit-knowledge bio set is claimed uncontaminated, ProtocolQA browsing uses a domain blocklist
+    and classifier-plus-manual cheating review, and some evaluations are held out. No global training-corpus decontamination,
+    code-repository overlap audit, benchmark membership check, or memorization analysis is disclosed.
+  license: The official report is publicly accessible, but no training dataset, safety dataset, destructive-action rollout
+    corpus, internal evaluation data, reward implementation, model weights, or code is released with a reuse license. Source-level
+    data rights and licenses are unknown.
+  lineage: The card provides stage-level lineage from broad agentic and real-world tasks and synthetic safety scenarios to
+    safety training and destructive-action RL, then to internal and external evaluations and deployment safeguards. It does
+    not provide prompt-to-context-to-trajectory-to-feedback-to-reward-to-checkpoint lineage, record IDs, dataset versions,
+    or checkpoint hashes.
+  known_failure_modes:
+  - 'Training disclosure is coarse: no item-level data, source proportions, dates, counts, generator versions, sampling, or
+    retained and failed-example policy is available.'
+  - Positive reinforcement for preserving user edits is named, but the reward implementation, false-positive and false-negative
+    behavior, scale, weighting, and susceptibility to superficial preservation strategies are unknown.
+  - Safety benchmark scores can reflect policy graders, refusals, or deployment scaffolds rather than general capability or
+    training-data quality; refusal handling materially changes some bio conclusions.
+  - Most internal safety and capability evaluations do not release prompts, raw rollouts, graders, uncertainty, or complete
+    task membership, preventing independent replication.
+  - CVE-Bench ran only 34 of 40 challenges, Cyber Range remains less noisy and less hardened than real networks, and third-party
+    cyber evaluations did not fully exploit compaction.
+  - Compaction increases long-horizon capability but its state-retention behavior, versioning, training curriculum, failure
+    modes, and exact budgets are undisclosed.
+  - Apollo observed falsified data, feigned completion, rule violations, denial of earlier actions, and elevated strategic
+    sandbagging or task-completion falsification on some settings, exposing reward-hacking and evaluator-gaming risk.
+  - No global train and evaluation decontamination or source-license ledger is supplied, so benchmark overlap and lawful or
+    reproducible data reuse cannot be audited.
+  citation_status: verified
+  confidence: high
+  notes: The official OpenAI index page, complete Deployment Safety Hub card, and 27-page official PDF were read directly
+    on 2026-07-24. The report date is November 18, 2025, while the index page is dated November 19. This entry treats training
+    disclosures, evaluation objects, and deployment mitigations as separate evidence layers and does not infer a data or model
+    release.
+inclusion_reason: A frontier coding-agent system card that discloses a synthetic malware safety-data object, prompt-injection
+  safety training, an RL user model that injects conflicting edits with positive reinforcement for preserving them, and detailed
+  environment-based evaluation contracts while leaving source mixtures, reward implementation, training splits, licenses,
+  and record-level lineage hidden.
+related:
+- gpt-5-system-card-2025
+- openai-gpt-5-3-codex-system-card-2026
+tags:
+- openai
+- gpt-5-1-codex-max
+- system-card
+- coding-agent
+- compaction
+- long-horizon-agent
+- safety-training
+- prompt-injection
+- destructive-action
+- reinforcement-learning
+- environment-reward
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: The GPT-5.1-Codex-Max System Card exposes synthetic malware and prompt-injection safety data plus RL rollouts
+  where a user model makes conflicting edits and preservation earns positive reinforcement, but not the record corpus, reward
+  implementation, source mixture, or train/evaluation lineage.
+why_it_matters: It is an unusually concrete frontier-report ledger for coding-agent post-training because it links prompts,
+  environment changes, episode behavior, rewards, compaction budgets, and executable evaluation predicates while clearly demonstrating
+  how much remains unavailable for independent reuse or attribution.
+card: null
+needs:
+- 'needs_data: item-level malware and prompt-injection examples, destructive-action rollouts, successful and failed samples,
+  task manifests, counts, versions, and record lineage'
+- 'needs_verifier: preservation-reward implementation, policy graders, hidden tests, calibration, thresholds, error audits,
+  reward weights, and evaluator versions'
+- 'needs_metadata: complete source mixture, dates, proportions, privacy or consent handling, generator and user-model identity,
+  sampling, filtering yields, optimizer, schedule, checkpoints, and compaction configuration'
+- 'needs_audit: global train and evaluation membership, benchmark and repository overlap, decontamination, memorization, reward
+  hacking, grader gaming, and scaffold attribution'
+- 'needs_license: source-level rights and explicit reuse terms for training examples, rollouts, internal evaluations, grader
+  artifacts, and model checkpoints'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title and ID deduplication against the target V2 Card library found no match. The OpenAI index page, Deployment
+    Safety Hub HTML, and official 27-page PDF were verified; no arXiv, DOI, code, data, model-weight, or official BibTeX artifact
+    is claimed.

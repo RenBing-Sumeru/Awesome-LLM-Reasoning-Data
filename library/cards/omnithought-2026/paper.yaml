@@ -1,0 +1,204 @@
+id: omnithought-2026
+title: 'Reasoning with OmniThought: A Large CoT Dataset with Verbosity and Cognitive Difficulty Annotations'
+year: 2026
+venue: ACL 2026
+authors:
+- Wenrui Cai
+- Chengyu Wang
+- Junbing Yan
+- Jun Huang
+- Xiangzhong Fang
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- math
+- code
+- science
+- reasoning
+training_use:
+- sft
+- distillation
+- preference_learning
+- rlvr
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.382/
+  arxiv: https://arxiv.org/abs/2505.10937
+  code: https://github.com/modelscope/easydistill
+  data: https://huggingface.co/datasets/alibaba-pai/OmniThought
+  project: https://huggingface.co/collections/alibaba-pai/distilqwen
+  huggingface: https://huggingface.co/datasets/alibaba-pai/OmniThought
+  doi: https://doi.org/10.18653/v1/2026.acl-long.382
+  venue: https://aclanthology.org/2026.acl-long.382/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.382/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.382.bib
+data_object:
+  prompt_source: Mathematics problems come from OpenMathReasoning, MathInstruct, DeepMath-103K, NuminaMath-1.5, and OpenThoughts2-1M;
+    code problems come from TACO, APPS, OpenThoughts2-1M, and OpenCodeReasoning; science problems come from StackExchange
+    Physics, StackExchange Biology, camel-ai/chemistry, and OpenThoughts2-1M. The released row schema does not retain a prompt-source
+    or domain field, so row-level source attribution is unavailable.
+  trace_author: The ACL version names DeepSeek-R1, DeepSeek-R1-0528, and QwQ-32B as teacher models for candidate generation.
+    Each released nested record has a teacher field, but aggregate teacher proportions, generation job identifiers, and rejected
+    candidates are not released. QwQ-32B also serves as the main score calculator for RV/CD.
+  answer_format: The outer unit is one question row. Its reasoning field is a list of candidate records with thought, solution,
+    full_response, teacher, thought_correctness_verify, Reasoning_Verbosity, and Cognitive_Difficulty. The two score objects
+    contain judge and integer level fields. The paper states that each retained problem has at least two accepted candidates;
+    the current viewer shows list lengths from 2 to 11 in its visible slice.
+  process_fields:
+  - question
+  - reasoning
+  - thought
+  - solution
+  - full_response
+  - teacher
+  - thought_correctness_verify
+  - Reasoning_Verbosity.level
+  - Reasoning_Verbosity.judge
+  - Cognitive_Difficulty.level
+  - Cognitive_Difficulty.judge
+  environment_or_substrate: Offline math, code, and science problems. Code solutions are executed against test cases. Math
+    and science candidates use rule-based answer checks combined with LLM judgment. The code runner, test versions, answer
+    normalizers, exact rules, model-serving stack, timeouts, and sandbox image are not specified in the paper or checked release.
+  verifier_or_reward: The CoT Validator separately returns reasoning_valid and solution_valid. Candidates with incorrect final
+    answers are removed, while answer-correct traces may remain even when their reasoning is judged invalid; thought_correctness_verify
+    stores the reasoning judgment. RV is a 0-9 whole-trace score that the paper defines by blending a QwQ-32B judgment with
+    normalized token length at alpha=0.5. CD is a QwQ-32B 0-9 whole-trace difficulty judgment. Downstream experiments derive
+    DPO pairs and learned RV/CD reward-model signals from these annotations.
+  terminal_predicate: Release retention requires the final solution to pass the applicable code execution or hybrid math/science
+    answer validation. Logical-process validity is recorded separately and is not a mandatory retention condition. Exact executable
+    predicates and per-check evidence are unavailable.
+recipe_metadata:
+  base_model: No single base model defines the released dataset. Student experiments use Qwen2.5-Instruct and Qwen3 models
+    at multiple sizes. The underlying base checkpoints and training-set manifests for every released ThoughtX/ThoughtY model
+    are not fully pinned in the dataset artifact.
+  teacher: DeepSeek-R1, DeepSeek-R1-0528, and QwQ-32B in the final ACL paper; QwQ-32B is also the principal RV/CD judge.
+  generator: Multiple teacher LRMs generate multiple CoTs per collected problem. The exact teacher allocation, requests per
+    problem, sampling temperature, top-p, maximum generation length, random seeds, and failure/retry policy are unknown.
+  filtering_rule: Problems are deduplicated and screened against AIME24, MATH500, LiveCodeBench V2, and GPQA-Diamond using
+    normalized Indel similarity and 10-gram similarity. Some candidates below 3,000 CoT tokens are randomly filtered to reduce
+    the dominance of simple problems. The validator removes candidates with incorrect final answers but retains answer-correct
+    traces even if their reasoning-quality judgment is negative. Each retained problem is reported to have at least two accepted
+    candidates.
+  sampling_protocol: For training-set selection, the paper defines per-problem probabilities from target model capacity mu_CD
+    and the gap between CD and RV; the two normalized components are mixed with beta=0.5 by default. The number selected per
+    problem is adjustable. Main generation multiplicities and a frozen selected-row manifest for each reported model are unknown.
+  rollout_count: unknown
+  temperature: Candidate-generation temperature is unknown. Figure 4 evaluation uses temperature 0.6, top-p 0.95, and 32 responses
+    per query; these evaluation settings must not be treated as generation settings for the dataset.
+  inference_budget: Candidate-generation and construction budgets are unknown. Reported training and evaluation token budgets
+    are not sufficient to reconstruct the data-generation run.
+  optimizer_or_scaffold: The paper evaluates matched 10K-problem SFT subsets, a 10K-pair DPO set, and GRPO with learned RV/CD
+    reward terms. Appendix D reports SFT batch 96, learning rate 1e-5, 3 epochs; DPO batch 96, learning rate 5e-7, beta 0.1,
+    1 epoch; and GRPO batch 512, learning rate 1e-6, 15 epochs, each on 8 A800-80GB GPUs for the RQ experiments. Strong-model
+    SFT uses mu_CD=5 for 7B/8B and 7 for 32B, batch 512, 5 epochs, and 64 A800-80GB GPUs, with learning rates 8e-5 and 3e-5
+    respectively. GRPO rollout settings and several optimizer details remain unknown.
+audit:
+  source_mixture: The paper names five math, four code, and four science source families, with OpenThoughts2-1M reused across
+    all three domains. The released schema contains no row-level prompt-source or domain field, and the aggregate source mixture
+    is undisclosed. Teacher identity is present per nested trace, but aggregate teacher proportions have not been published.
+  split: At official dataset revision 274ec6417efb435421fb222319d1bb47291ea69b, README metadata declares one train split with
+    708,009 outer question rows, 135 Parquet shards, a 24,222,194,104-byte download, and 67,398,587,788 uncompressed bytes.
+    The datasets-server processes only the first 47,277 rows and estimates 552,229, explicitly marking its result partial;
+    that estimate is not a complete count. The exact number of nested CoTs in the snapshot has not been independently counted.
+  decontamination: Normalized Indel and 10-gram similarity are applied against AIME24, MATH500, LiveCodeBench V2, and GPQA-Diamond.
+    Thresholds, normalization details, removed pairs, source-specific yields, decision logs, generated-output overlap checks,
+    and residual-contamination results are not reported.
+  license: The official OmniThought dataset repository declares Apache-2.0. That aggregate declaration does not establish
+    that every upstream StackExchange, benchmark, math, code, or science source is compatible with all intended redistribution
+    and training uses; row-level source fields and a license manifest are absent. The EasyDistill code repository is also
+    Apache-2.0, with a NOTICE for incorporated code.
+  lineage: Named public problem sources -> deduplication and benchmark-overlap filtering -> multi-teacher CoT generation ->
+    code execution or hybrid answer validation -> retention of answer-correct candidates -> QwQ-32B RV/CD annotation plus
+    length-derived RV adjustment -> metadata-conditioned SFT/DPO/RL subsets -> ThoughtX/ThoughtY models. Row-to-source, rejected-candidate,
+    filter-decision, selected-subset, and checkpoint lineage are unavailable. OmniThought-0528 is a separate supplement and
+    must not be silently merged.
+  known_failure_modes:
+  - The public schema omits prompt source and domain, preventing row-level upstream provenance and license reconciliation.
+  - Final-answer validity controls retention, so an answer-correct trace with invalid intermediate reasoning can remain; thought_correctness_verify
+    is not a step-level proof.
+  - Code tests can be incomplete or environment-dependent, and the runner, test versions, sandbox, and per-row execution evidence
+    are not released.
+  - Math/science rule checks and LLM judgment can produce false accepts or false rejects; the exact combination and measured
+    error rates are unavailable.
+  - RV and CD are holistic, judge-dependent scores. RV partly encodes token length, and neither score localizes errors or
+    establishes process correctness.
+  - Randomly filtering some sub-3,000-token traces can underrepresent concise or easy problems; the sampling fraction and
+    seed are unknown.
+  - Teacher proportions, generation settings, rejected generations, and construction manifests are missing, limiting bias
+    and selection audits.
+  - The 708,009-row release metadata and partial viewer estimate must not be conflated; the exact nested CoT count still requires
+    a full snapshot audit.
+  - DPO pairs encode a chosen verbosity range versus maximum verbosity, not a human correctness preference.
+  - The paper's mean absolute judge differences do not establish exact agreement, calibration, or transfer to every domain
+    and target model.
+  - Dataset-level Apache-2.0 metadata does not replace per-source rights review.
+  - The current EasyDistill ThoughtX recipe is a useful scaffold but its example 1.5B/4K configuration is not the frozen 7B/32B
+    paper run or the full construction pipeline.
+  citation_status: verified
+  confidence: medium
+  metadata_status: partial
+  notes: 'Verified against the ACL 2026 paper and appendices, ACL BibTeX/DOI, arXiv v1, official OmniThought and OmniThought-0528
+    repositories, Hugging Face dataset-server metadata, the DistilQwen collection, and EasyDistill repository commit acbe49b5d9b16b3beb874528056e11dfdfac6d1c.
+    Main dataset revision checked: 274ec6417efb435421fb222319d1bb47291ea69b; OmniThought-0528 revision checked: eceb3b26ec576024fab0fe874e689765c4cc1b4b.
+    The ACL version extends arXiv v1 with DeepSeek-R1-0528/Qwen3 material.'
+inclusion_reason: A large official multi-teacher reasoning release that exposes a nested trace object, separate answer and
+  process judgments, RV/CD metadata, capacity-conditioned selection, and SFT/DPO/GRPO studies, while leaving important provenance,
+  verifier, generation, and snapshot-audit fields unresolved for the Data Construction & Open Release Recipes track.
+related: []
+tags:
+- omnithought
+- chain-of-thought
+- synthetic-reasoning-data
+- multi-teacher-distillation
+- reasoning-verbosity
+- cognitive-difficulty
+- llm-as-a-judge
+- metadata-selection
+- math
+- code
+- science
+status: partial
+one_line_summary: OmniThought releases nested multi-teacher math, code, and science traces with separate reasoning-validity
+  and answer acceptance signals plus RV/CD annotations, while row-level prompt provenance, generation settings, executable
+  verifier assets, and exact nested-trace lineage remain incomplete.
+why_it_matters: It turns trace length, judged cognitive difficulty, teacher identity, and final-answer validity into inspectable
+  construction variables for SFT, preference data, and RL rewards, making it a useful open-recipe case with clear audit boundaries.
+card: null
+needs:
+- 'needs_data: release a row-level prompt-source/domain/license manifest, exact nested-CoT counts, teacher proportions, all
+  generated candidates, and accepted/rejected lineage'
+- 'needs_metadata: disclose generation temperature, top-p, maximum length, requests per problem, random seeds, retry policy,
+  short-trace filtering fraction, and selected-subset manifests'
+- 'needs_verifier: release code tests and runner image, math/science rules, judge configuration, per-candidate solution/reasoning
+  decisions, and false-positive/negative measurements'
+- 'needs_audit: publish decontamination thresholds, normalization, removal counts, decision logs, residual overlap, duplicate
+  analysis, and per-source rights reconciliation'
+- 'needs_code: freeze the exact construction and 7B/32B training configurations; the current EasyDistill repository provides
+  a framework and partial ThoughtX scaffold rather than a complete run manifest'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: medium
+  notes: Official ACL publication, DOI/BibTeX, arXiv record, pinned main and 0528 dataset revisions, schemas, sizes, release
+    collection, and EasyDistill repository/recipe files were checked. Artifact existence is verified; exact generation, nested-CoT,
+    verifier, rights, and selected-training-subset completeness remains partial.
+category_ids:
+- data_construction_open_release_recipes

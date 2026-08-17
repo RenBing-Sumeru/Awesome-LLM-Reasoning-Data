@@ -1,0 +1,5 @@
+The paper gives dataset-scale evidence in Table 1: 38,431 total questions, 37,644 different tables, 23,259 titled tables, an average of 12.9 cells per table, and solutions averaging 49.5 words. The split counts are explicitly reported as 23,059 train, 7,686 development, and 7,686 test examples.
+
+Evaluation evidence shows that the task is not solved by ordinary text-only QA. Fine-tuned UnifiedQA-large reaches 57.35 average accuracy, fine-tuned TAPEX-large reaches 58.52, zero-shot GPT-3 reaches 56.96, and two-shot CoT GPT-3 reaches 62.92. PromptPG with two CoT examples selected by policy gradient reaches 68.23, a 5.31-point improvement over the best baseline in the paper.
+
+The blind study supports the table-grounding claim. Removing either table context or question text drops zero-shot GPT-3 performance sharply: table-only and question-only variants achieve 6.10 and 7.00 average accuracy, while the full input reaches 59.50 on the 1,000-example development study. Human performance is reported as 90.22, leaving a large gap above the best paper baseline.

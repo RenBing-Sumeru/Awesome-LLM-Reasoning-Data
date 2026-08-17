@@ -1,0 +1,5 @@
+The survey's contribution is a boundary-aware taxonomy that separates **training reasoning**, **eliciting reasoning at inference time**, **self-improving with generated traces**, **measuring task performance**, and **interpreting model behavior**. Chain-of-thought prompting and STaR therefore occupy different causal locations even if both produce rationales. Compared with method lists, this organization forces every result to name its data object, intervention point, feedback, and evaluation surface, which makes it a foundations card rather than evidence for one method.
+
+Google Scholar citations: 1569（checked 2026-07-27；https://scholar.google.com/scholar_lookup?title=Towards+Reasoning+in+Large+Language+Models%3A+A+Survey&author=Jie+Huang&hl=en）
+
+Open dataset: no. The survey releases no new training or evaluation dataset. Its companion repository at https://github.com/jeffhj/LM-reasoning is a curated literature/resource list; sizes, schemas, formats, licenses, and intended uses of cited datasets remain those of their primary releases.

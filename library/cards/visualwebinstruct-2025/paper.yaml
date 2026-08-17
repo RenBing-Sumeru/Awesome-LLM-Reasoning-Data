@@ -1,0 +1,146 @@
+id: visualwebinstruct-2025
+title: 'VisualWebInstruct: Scaling up Multimodal Instruction Data through Web Search'
+year: 2025
+venue: EMNLP 2025 Main
+authors:
+- Yiming Jia
+- Jiachen Li
+- Xiang Yue
+- Bo Li
+- Ping Nie
+- Kai Zou
+- Wenhu Chen
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- mathematics
+- science
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.10582
+  arxiv: https://arxiv.org/abs/2503.10582
+  code: https://github.com/TIGER-AI-Lab/VisualWebInstruct
+  data: https://huggingface.co/datasets/TIGER-Lab/VisualWebInstruct
+  project: https://tiger-ai-lab.github.io/VisualWebInstruct/
+  huggingface: https://huggingface.co/datasets/TIGER-Lab/VisualWebInstruct
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.72
+  venue: https://aclanthology.org/2025.emnlp-main.72/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.72/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.72.bib
+data_object:
+  prompt_source: Educational web pages found by Google Lens from about 30,000 scientific seed images across mathematics, physics,
+    finance, chemistry, engineering, and other subjects.
+  trace_author: Gemini 1.5 Flash extracts questions and source solutions; GPT-4o generates four candidate solutions per question;
+    Gemini 2.0 Flash aligns synthetic and web answers.
+  answer_format: A complete question, optional question-relevant image references, and a worked answer preserving notation
+    and step-by-step explanation.
+  process_fields:
+  - source webpage and accessibility-tree context
+  - complete question text and relevant image references
+  - extracted or synthesized worked answer
+  - consistency and answer-alignment decisions
+  environment_or_substrate: Static web-derived text and images packaged as supervised multimodal instruction records.
+  verifier_or_reward: Gemini validity/image-relevance filtering, majority consistency over four GPT-4o solutions, and Gemini
+    answer-to-source alignment.
+  terminal_predicate: Retain a record after validity filtering, majority-consistent candidate answers, and source-answer alignment;
+    no online environment reward is used.
+recipe_metadata:
+  base_model: LLaVA-OneVision-mid and MAmmoTH-VL 7B variants.
+  teacher: Gemini 1.5 Flash for extraction/filtering, GPT-4o for candidate solutions and consistency judging, and Gemini 2.0
+    Flash for answer alignment.
+  generator: Search with seed images, build accessibility trees, extract QA pairs, synthesize multiple solutions, check consistency,
+    and align against available web answers.
+  filtering_rule: Remove invalid or image-irrelevant pairs; keep questions when more than half of four GPT-4o solutions agree;
+    prefer the original web answer when alignment fails.
+  sampling_protocol: About 60 search results per seed image before URL deduplication; four GPT-4o answer candidates per retained
+    question.
+  rollout_count: 4
+  temperature: null
+  inference_budget: The paper reports 1,747,634 collected URLs, 758,490 unique URLs after filtering, and multiple commercial-model
+    passes; total token and monetary cost are not disclosed.
+  optimizer_or_scaffold: One epoch of supervised fine-tuning with batch size 256; VisualWebInstruct and modified LLaVA-CoT
+    are mixed 9:1 for the best model.
+audit:
+  source_mixture: Final 906,160 QA pairs are 62.5% mathematics, 14.5% physics, 7.25% finance, 4.8% chemistry, 4.35% engineering,
+    and 6.6% other domains.
+  split: The final set contains 347,313 image-associated QA pairs, 257,201 unique questions, 475,099 image occurrences, and
+    163,743 unique images; a reusable train/validation split policy is not documented in the paper.
+  decontamination: The paper states that evaluation-benchmark overlap was checked but does not disclose the matching algorithm,
+    thresholds, or per-benchmark counts.
+  license: The official code repository is MIT licensed and public dataset access is governed by the Hugging Face platform
+    terms. No dataset-specific content license was confirmed, so platform access does not grant redistribution rights for
+    the underlying webpages or images and record-level review remains required.
+  lineage: Educational web pages are discovered from Stemez seed images; answers combine extracted source material with GPT-4o
+    synthesis and Gemini filtering.
+  known_failure_modes:
+  - Majority agreement among one teacher model's samples can preserve shared reasoning errors rather than establish correctness.
+  - Search-engine retrieval and source availability can bias subject, language, copyright, and difficulty coverage.
+  - The best training result mixes another dataset, so its gain is not attributable only to VisualWebInstruct.
+  citation_status: verified
+  confidence: high
+  notes: Full arXiv v2 PDF, official project/repository, official EMNLP 2025 Anthology DOI, and release links were checked
+    on 2026-07-14. The repository had 39 stars and 2 forks via public badges; the dataset-specific license was not independently
+    confirmed.
+inclusion_reason: Releases a large web-mined collection of multimodal questions and worked answers and exposes the extraction,
+  synthesis, filtering, and SFT consumption path.
+related: []
+tags:
+- multimodal-instruction-data
+- visual-reasoning
+- web-mining
+- synthetic-solutions
+status: verified
+one_line_summary: VisualWebInstruct turns image-guided web search into 906,160 multimodal and text QA demonstrations through
+  extraction, consistency filtering, and source-answer alignment.
+why_it_matters: It provides a concrete large-scale recipe for obtaining visual reasoning supervision beyond narrow synthetic
+  diagrams or small academic datasets.
+reading_priority: recommended
+paper_type: multimodal reasoning instruction dataset and construction recipe
+best_for: Researchers building or auditing web-derived multimodal SFT corpora.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-14'
+  verified_by: curation
+  confidence: high
+  notes: Official paper, EMNLP Anthology record, project, repository, and Hugging Face dataset release are linked; dataset-specific
+    reuse terms remain an audit item.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260714-agent7
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: web-mined multimodal reasoning demonstrations
+  selection_priority_score: 9
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 2
+    artifact: 1
+  selection_evidence:
+    institution: The paper affiliation block lists University of Waterloo, University of Toronto, UC Santa Barbara, Carnegie
+      Mellon University, Nanyang Technological University, and Netmind.ai.
+    venue: The official ACL Anthology record and DOI identify the paper as an EMNLP 2025 Main paper; no oral, spotlight, or
+      award distinction was claimed.
+    impact: Public repository badges checked 2026-07-14 showed 39 stars and 2 forks, providing multiple concrete early open-source
+      use signals for a 2025 paper.
+    artifact: The official project exposes code, data, verified-data variants, models, and download instructions; code is
+      MIT, but the dataset-specific license was not confirmed, so artifact completeness scores 1 rather than 2.
+  selection_eligible: true
+  year_impact_threshold: 2

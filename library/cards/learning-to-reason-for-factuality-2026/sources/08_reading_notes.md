@@ -1,0 +1,5 @@
+- **Released unit:** `sft/train.jsonl` has 3,000 rows with `src` and `tgt`; `dpo/train.jsonl` has 3,706 rows with chosen/rejected responses, a pairwise flag, VeriScore margin, and response lengths.
+- **Selection unit:** ten candidate responses are generated per prompt; the highest-precision response becomes the SFT target, while DPO retains the maximum-margin, length-matched pair.
+- **Online boundary:** the paper's 4,000-prompt RL split and GRPO trajectories are not present in the data repository. The preparation script's DPO-derived GRPO prompt file is a reconstruction convenience, not the original rollout release.
+- **Feedback unit:** ScalableVeriScore supplies claim support statistics using web retrieval; a separate LLM comparison supplies relevance/quality. The released main GRPO config uses four rollouts, temperature 1.0, max_tokens 2048, detail weight 0.0, and judge weight 0.1.
+- **Audit priorities:** pin code/data revisions, verifier and judge models, prompts, Serper/Google Search state, and exact launch overrides; reconcile paper-versus-config schedules; review CC-BY-NC, Llama, and third-party obligations before reuse.

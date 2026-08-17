@@ -1,0 +1,3 @@
+The dataset provides 1,210 file pairs and 68,647 human-written tests across 11 real projects. Human suites achieve a median target-code coverage of 60.4%, indicating that the benchmark contains more than toy assertions. In the central model experiment, even the strongest system, GPT-4o, reaches only 35.2% average coverage for generated tests, and execution, coverage, and mutation metrics produce different rankings.
+
+This supports the claim that the benchmark exposes real test-generation bottlenecks rather than being saturated. The results are primarily limited to Python/pytest repositories. Low coverage does not necessarily mean a test is useless, and high coverage alone does not prove that semantic faults can be detected.

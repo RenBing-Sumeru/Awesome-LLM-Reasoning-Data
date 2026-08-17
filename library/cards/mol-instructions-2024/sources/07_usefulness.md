@@ -1,0 +1,3 @@
+- For training one model to answer molecule, protein, and biomedical text instructions, use the official manifest and schema to build a controlled SFT mixture. The output should be a versioned dataset and a fixed-backbone comparison; success requires the paper's task metrics plus an audit of sequence similarity leakage can inflate apparent cross-task generalization.
+
+- For data auditing, sample records across sources and reproduce the stated selection contract: chemical/biological labels, exact structured targets, and task-specific metrics. Do not reuse the release when its licensing or source provenance cannot be preserved.

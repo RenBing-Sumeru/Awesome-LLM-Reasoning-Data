@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Kimi-VL 报告了从人工和模型生成 SFT、Kimi k1.5 长 CoT 筛选到以真值为中心的 RL 的混合多模态管线；其公开了权重和推理材料，但未公开训练数据、奖励工件、agent 环境或审计记录。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "前沿多模态模型技术报告与数据披露账本",
+  "best_for_ch": "需要审计前沿多模态模型的数据来源、长 CoT、奖励反馈、agent 轨迹及发布边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Kimi Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

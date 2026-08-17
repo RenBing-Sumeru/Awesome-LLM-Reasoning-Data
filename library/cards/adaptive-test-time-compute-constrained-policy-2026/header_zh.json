@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "AdaCompute-LLM 为问题—预算组合收集 48 个响应，以受约束目标的拉格朗日标签训练分类器，从而按问题分配推理计算量。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "Rollout、搜索或测试时推理轨迹研究",
+  "best_for_ch": "需要审计测试时 rollout、选择器、反馈信号和计算预算的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Zhiyuan Zhai；Bingcong Li；Bingnan Xiao；Ming Li；Xin Wang",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,120 @@
+id: codecriticbench-holistic-code-critique-2025
+title: 'CodeCriticBench: A Holistic Code Critique Benchmark for Large Language Models'
+year: 2025
+venue: arXiv 2025
+authors:
+- Alexander Zhang
+- Marcus Dong
+- Jiaheng Liu
+- Wei Zhang
+- Yejie Wang
+- Jian Yang
+- Ge Zhang
+- Tianyu Liu
+- Zhongyuan Peng
+- Yingshui Tan
+- Yuanxing Zhang
+- Zhexu Wang
+- Weixun Wang
+- Yancheng He
+- Ken Deng
+- Wangchunshu Zhou
+- Wenhao Huang
+- Zhaoxiang Zhang
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- pairwise_preference
+domains:
+- code-reasoning
+- critique
+- evaluation
+training_use:
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2502.16614
+  arxiv: https://arxiv.org/abs/2502.16614
+  code: https://github.com/multimodal-art-projection/CodeCriticBench
+  data: https://huggingface.co/datasets/m-a-p/CodeCriticBench
+  project: https://xxzcc.github.io/CodeCriticBench.github.io/
+  huggingface: https://huggingface.co/datasets/m-a-p/CodeCriticBench
+  doi: https://doi.org/10.48550/arXiv.2502.16614
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Code generation problems and Code QA requirements from sources documented in the paper.
+  trace_author: Benchmark curators, code generators, and expert/human checking in the construction pipeline.
+  answer_format: Code task, candidate answer, critique target, checklists, labels, scores, and difficulty metadata.
+  process_fields:
+  - question
+  - answer
+  - checklists
+  - correctness_label
+  - dimension_scores
+  - final_score
+  - difficulty
+  environment_or_substrate: Code generation and code question-answering tasks.
+  verifier_or_reward: Execution tests, reference comparison, and fine-grained critique checklists.
+  terminal_predicate: A critique correctly identifies and evaluates relevant code issues.
+recipe_metadata:
+  base_model: The released benchmark evaluates a range of LLM code critics.
+  teacher: Execution tests, reference comparison, and human/expert validation as documented in the paper.
+  generator: Collected tasks plus generated and curated code responses.
+  filtering_rule: Rule-based, execution, and human checks remove or correct unreliable examples.
+  sampling_protocol: Use the official dataset split and basic/advanced critique protocols.
+  inference_budget: Prompting protocol and model configuration affect basic and advanced critique scores.
+  optimizer_or_scaffold: Official evaluation code implements basic critique evaluation and checklist-based advanced critique
+    evaluation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Code tasks, generated or curated answers, execution outcomes, reference comparisons, and checklists.
+  split: The official release documents benchmark configurations; pin the chosen dataset revision.
+  decontamination: Public coding problems and solutions may overlap with model training corpora.
+  license: Check the dataset card, repository LICENSE, and upstream task-source terms before reuse.
+  lineage: arXiv paper, CodeCriticBench project website, M-A-P repository, and m-a-p dataset release.
+  known_failure_modes:
+  - Tests and checklists may not cover every semantic or security defect.
+  - Benchmark scores depend on the prompt and on interpretation of the critique criteria.
+  citation_status: verified
+  confidence: high
+  notes: Verified the primary arXiv record, the project page with affiliations, the M-A-P code repository, and the m-a-p dataset
+    release.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: CodeCriticBench evaluates code critics with code-generation and code-QA records, execution checks, and fine-grained
+  critique checklists.
+why_it_matters: It exposes the concrete feedback dimensions needed to assess code-reasoning critique rather than relying solely
+  on final code correctness.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the primary arXiv record, the project page with affiliations, the M-A-P code repository, and the m-a-p dataset
+    release.
+category_ids:
+- preference_reward_feedback_data
+- judgment_rubric_domain_expert_data

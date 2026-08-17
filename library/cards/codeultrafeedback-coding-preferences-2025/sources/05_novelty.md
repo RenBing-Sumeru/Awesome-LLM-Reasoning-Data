@@ -1,0 +1,3 @@
+Earlier code-alignment evaluations commonly rely on automated metrics or static analysis, while generic preference datasets often omit programming-specific criteria. CodeUltraFeedback changes the feedback object by attaching five named coding-preference dimensions, GPT-3.5 ratings, and rationales to four answers for each instruction. That permits a learner or auditor to identify which preference produced a comparison.
+
+The work is not a replacement for compilation, tests, security review, or human software engineering assessment. Its distinctive contribution is a released, multi-candidate LLM-judge record for coding preferences, not a new formal verifier or a proof that any preferred response executes correctly.

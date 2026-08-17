@@ -1,0 +1,5 @@
+- Pin the JSONL revision `7665d7f1d006fd89aa852a9dab8060c60b63f814` and independently enumerate its records.
+- Reconcile the card's 82,737-record claim with the Dataset Server's partial 23,799-record conversion.
+- Audit score parsing, score distribution, verifier prompt, teacher configuration, and agreement with an external checker or experts.
+- Establish AoPS source provenance, redistribution rights, train/evaluation overlap, and decontamination.
+- Determine filtering/retention logic and whether failed or low-score traces are represented.

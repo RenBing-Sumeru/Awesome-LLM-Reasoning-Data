@@ -1,0 +1,3 @@
+Targeted selectors such as LESS associate a training record with target response-generation gradients. ProDS changes the selected record's criterion from helping produce a reference answer to aligning with a bidirectional preference representation: a useful record should support movement to a preferred response and not support movement away from it.
+
+DPO, influence-style selection, and simulated annealing are established ingredients. The new decision is to synthesize positive and negative target-preference consistency before choosing SFT examples. Inspect how the target pairs were judged, which validation samples supplied gradients, and whether the selected subset still helps when the evaluator, target distribution, or response-length preference changes.

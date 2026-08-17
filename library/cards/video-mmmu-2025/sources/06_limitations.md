@@ -1,0 +1,5 @@
+The first limitation is artifact stability. Video-based benchmarks depend on source video availability, possible takedowns, transcript extraction, frame sampling, and audio support. A model run with full video, sampled frames, transcript-only input, or audio-aware input can measure different capabilities.
+
+The second limitation is contamination and overlap. Some Adaptation questions are sourced from MMMU and MMMU-Pro for several disciplines, so users should track overlap with those benchmarks and with public training corpora. The videos and project materials are public, which also creates post-release contamination risk.
+
+The third limitation is evaluation granularity. Answer-level correctness is practical for benchmarking, but it does not expose whether the model learned from the video, retrieved prior knowledge, guessed from options, or relied on transcript shortcuts. The performance-gain metric helps, but it should be interpreted together with prompt settings and pre-video baselines.

@@ -1,0 +1,2 @@
+1. **Training or data construction.** The resources can train multilingual judges and study cross-lingual transfer and curriculum design. Success should be checked with the paper’s main held-out metric under a fixed base model and data budget.
+2. **Evaluation or auditing.** Each language needs separate human auditing, calibration, and cultural review. Do not use the method unchanged when its verifier, rubric, modality, or annotation assumptions do not hold.

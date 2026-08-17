@@ -1,0 +1,5 @@
+- Read this beside `gpt-5-system-card-2025`: the three source classes and family-level reasoning RL are repetition, not a GPT-5.2 recipe.
+- Preserve the local boundaries: prompt-injection evals overlap training; cyber-safety is non-overlapping; selected biology sets have narrow held-out/uncontaminated claims.
+- Keep policy/LLM graders, CoT monitors, hidden tests, rubrics, and pass metrics in the evaluation layer; keep product safeguards in deployment.
+- Attach every Preparedness result to its section-specific tool, environment, attempt count, time limit, and terminal predicate.
+- Date the CoT monitorability evidence April 24, 2026; it is absent from the immutable December 11, 2025 PDF.

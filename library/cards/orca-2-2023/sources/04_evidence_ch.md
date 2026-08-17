@@ -1,0 +1,1 @@
+核心同规模对比让 Orca-2-13B 与 LLaMA-2-Chat-13B 在同一套 zero-shot 推理 benchmark 上评测，包括 AGIEval、BBH、DROP、CRASS、RACE 和 GSM8K；两者的推理宏平均分别为 66.92 和 43.71。论文还报告 Orca-2-7B 在这些任务上达到或超过 LLaMA-2-Chat-70B。结果支持这套面向 LLaMA-2 student 的完整渐进数据与训练配方，但不能把 Prompt Erasing 的影响与新增 817K 条 GPT-4 记录、早期 Orca/FLAN 阶段分开。

@@ -1,0 +1,2 @@
+GPT-4o proposes sentence-level triples over a public multi-document QA corpus. Three annotators screen format, fluency, safety, indices, and tag completeness; three experts validate evidence sufficiency and relation correctness. Qwen3-8B is reported for full-parameter SFT and GRPO. Content reward uses sentence-embedding gates (0.45) and ROUGE-L; provenance reward aligns sentences with a 0.50 gate and scores exact triple F1. The reward weights and GRPO group size are unknown.
+

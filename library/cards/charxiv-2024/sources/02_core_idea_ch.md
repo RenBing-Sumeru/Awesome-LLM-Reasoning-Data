@@ -1,0 +1,1 @@
+核心贡献是把 2,323 个来自 arXiv 论文的真实图表整理成人工核验的问答基准，任务分为基础图表描述和跨视觉元素推理。它相对旧基准的变化在于数据分布：不再主要依赖干净模板图，而是面向论文图中的坐标、图例、子图、趋势和数值关系。反馈契约是官方评测流程下的 answer-level accuracy，其中开放式回答依赖 GPT-4o 风格的语义判分。最近对比对象是 ChartQA 等较规则图表问答集和作者展示的 chart/question stress tests。方向标签是 realistic multimodal evaluation surface。

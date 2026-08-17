@@ -1,0 +1,1 @@
+Reasoning research mixes changes made during training with changes made while answering, and it mixes a single model with systems that use tools or other agents. This survey makes those differences explicit. It studies prompts, traces, feedback, tools, and benchmarks as parts of a system rather than as interchangeable improvements.

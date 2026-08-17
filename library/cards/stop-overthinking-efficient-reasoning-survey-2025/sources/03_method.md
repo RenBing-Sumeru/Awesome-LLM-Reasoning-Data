@@ -1,0 +1,1 @@
+This is a literature taxonomy rather than a new training pipeline. For each method, record the input difficulty signal, trace representation, budget rule, model and decoding setup, final metric, and cost metric. That record reveals whether a claimed gain comes from better learned behavior, early stopping, or a changed test condition.

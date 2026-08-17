@@ -1,0 +1,17 @@
+{
+  "title": "KnowMe-Bench: Benchmarking Person Understanding for Lifelong Digital Companions",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.1394/",
+    "data": "https://huggingface.co/datasets/realty2333/knowMe-Bench"
+  },
+  "review_note": "L4 双语材料已准备，等待人工判决。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-26T05:46:31Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "KnowMe-Bench 用 470 万 token 长程记忆和 2,580 个问题，借助专家 rubric 判断人物、动机与因果理解",
+    "updated_at": "2026-07-26T05:46:31Z"
+  }
+}

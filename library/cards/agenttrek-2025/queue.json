@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "完整agent轨迹数据构造流程，数据量充足",
+    "updated_at": "2026-07-25T05:34:50Z"
+  },
+  "updated_at": "2026-07-25T05:34:50Z"
+}

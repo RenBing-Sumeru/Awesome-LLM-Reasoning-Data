@@ -1,0 +1,1 @@
+Prior vision-to-code rewards rely mainly on code rules or a single global image-similarity score. Visual-ERM changes the reward object to interpretable local discrepancies between two renderings and uses the same feedback for policy training and test-time reflection and revision.

@@ -1,0 +1,1 @@
+For reasoning-data curation, the main contribution is an executable trace schema in which retrieval is an environment transition inside the policy rollout. The loss boundary distinguishes policy actions from externally supplied observations, while the terminal reward separates outcome supervision from unobserved step quality.

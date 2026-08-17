@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "ProJudge 以 2,400 个专家标注样例评测多模态过程裁判，并发布 17.3 万条训练记录强化逐步错误诊断。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要训练或评测理化生和数学场景中多模态过程裁判的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Jiaxin Ai, Pengfei Zhou, Zhaopan Xu, Ming Li, Fanrui Zhang, Zizhen Li, Jianwen Sun, Yukang Feng, Baojin Huang, Zhongyuan Wang, Kaipeng Zhang",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-16T00:00:00Z"
+}

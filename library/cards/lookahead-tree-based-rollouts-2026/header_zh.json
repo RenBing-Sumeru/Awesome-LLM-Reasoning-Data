@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "LATR 在在线 RLVR 中以概率门控分支、前瞻模拟和相似度剪枝构造八路 rollout 组；其 ICLR 2026 配方可用于研究轨迹级探索，但公开数据只有 Countdown 与数学任务的预处理 prompt/reward 行，不含原始搜索树、被拒绝分支或逐样本奖励判定。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "在线 RLVR 树式 rollout 构造配方与预处理数据发布",
+  "best_for_ch": "研究搜索生成推理轨迹、分支与剪枝策略、rollout 预算归因、终点验证及公开数据审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Shangyu Xing、Siyuan Wang、Chenyuan Yang、Xinyu Dai、Xiang Ren",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

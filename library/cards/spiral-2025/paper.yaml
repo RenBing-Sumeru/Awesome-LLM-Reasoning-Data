@@ -1,0 +1,176 @@
+id: spiral-2025
+title: 'SPIRAL: Self-Play on Zero-Sum Games Incentivizes Reasoning via Multi-Agent Multi-Turn Reinforcement Learning'
+year: 2026
+venue: ICLR 2026
+authors:
+- Bo Liu
+- Simon Yu
+- Zichen Liu
+- Leon Guertler
+- Penghui Qi
+- Daniel Balcells
+- Mickel Liu
+- Cheston Tan
+- Weiyan Shi
+- Min Lin
+- Wee Sun Lee
+- Natasha Jaques
+source_role:
+- construction_recipe
+- agent_environment
+- data_release
+verification_contract:
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- games
+- strategic_reasoning
+- mathematics
+- general_reasoning
+training_use:
+- agent_training
+- rlvr
+construction_layer:
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+- frontier_pipeline
+artifacts:
+  paper: https://arxiv.org/abs/2506.24119
+  arxiv: https://arxiv.org/abs/2506.24119
+  code: https://github.com/spiral-rl/spiral
+  data: https://huggingface.co/datasets/spiral-rl/Spiral-Kuhn-Poker-Qwen3-32B-SFT
+  project: https://github.com/spiral-rl/spiral
+  huggingface: https://huggingface.co/collections/spiral-rl/spiral
+  doi: https://doi.org/10.48550/arXiv.2506.24119
+  venue: https://openreview.net/forum?id=7Yayy5fNLg
+  openreview: https://openreview.net/forum?id=7Yayy5fNLg
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Structured natural-language observations produced by TextArena for TicTacToe, Kuhn Poker, and Simple Negotiation;
+    for partially observable games the paper concatenates action history into the current observation.
+  trace_author: One shared current policy plays both roles under role- and game-conditioned prompts; no external teacher generates
+    the online self-play stream.
+  answer_format: Each turn is a complete multi-token response with explicit reasoning and an executable action. A conceptual
+    training episode contains the game identity, initial state, alternating role-conditioned observations and responses, parsed
+    actions, transitions, terminal outcome, role return, role baseline, and role advantage. The paper does not publish an
+    immutable row schema for the reported online streams.
+  process_fields:
+  - game_id_and_version
+  - initial_state_and_seed
+  - role
+  - role_conditioned_prompt
+  - state_or_observation
+  - turn
+  - full_reasoning_action_response
+  - parsed_action
+  - action_validity
+  - next_state_or_observation
+  - terminal_outcome
+  - role_return
+  - role_baseline
+  - role_advantage
+  - policy_checkpoint
+  environment_or_substrate: Vectorized two-player turn-based TextArena games, with vLLM actors and a centralized Oat learner
+    in the released distributed online actor-learner implementation.
+  verifier_or_reward: Game transition rules parse actions and supply sparse terminal feedback. For normal terminal outcomes
+    the paper defines opposite returns in {-1, 0, 1}; the current repository additionally terminates invalid actions with
+    -1.5 for the acting player and 0.5 for the other player, and uses 0/0 on max-turn truncation. RAE subtracts a separate
+    per-game, per-role EMA baseline from each role return.
+  terminal_predicate: Termination is controlled by the selected TextArena game, an invalid parsed action, or the implementation's
+    maximum-turn truncation. Only the normal game outcome is the paper's zero-sum {-1, 0, 1} contract.
+recipe_metadata:
+  base_model: Main results cover Qwen3-4B-Base, Qwen3-8B-Base, Octothinker-8B-Base, Llama-3.1-8B-Instruct, and DeepSeek-R1-Distill-Qwen-7B;
+    the released runnable example targets Qwen/Qwen3-4B-Base.
+  teacher: No teacher is used for online SPIRAL rollouts. The SFT comparison uses winning self-play trajectories generated
+    by Qwen3-32B.
+  generator: One shared on-policy model produces complete reasoning-and-action responses for both players; each update changes
+    the future rollout distribution and opponent.
+  filtering_rule: 'The online loop has no static correctness filter: played turns are retained for policy updates after environment
+    outcomes and RAE. The implementation filters zero-advantage trajectories by default. The separate SFT baseline selects
+    approximately 25,000 winning Qwen3-32B trajectories.'
+  sampling_protocol: Sample a game and initial state, alternate role-conditioned responses until termination, parse and execute
+    each action, assign role returns, update per-game/per-role EMA baselines, compute RAE advantages, update the shared policy,
+    synchronize weights, and repeat with the new policy.
+  rollout_count: The paper reports 400 policy-iteration steps and 128 samples per step (51,200 samples by arithmetic). It
+    does not report an immutable count of unique games, turns, or released online episodes for each run.
+  temperature: Training sampling temperature 1.0, top-p 1.0, top-k -1; evaluation temperature 0.6 and top-p 0.95.
+  inference_budget: Paper Appendix D Table 6 reports an 8,192-token maximum training response. The current released run.sh
+    example instead sets generate_max_length=4,096, max_context_length=32,768, and max_model_len=12,800. Reported compute
+    is about 25 h for Qwen3-4B, 28 h for Qwen3-8B, and 16 h for Llama-3.1-8B-Instruct and Octothinker-8B, each on 8 H100 GPUs.
+  optimizer_or_scaffold: Full-parameter online REINFORCE-style policy-gradient training with RAE. Table 6 reports AdamW, constant
+    1e-6 learning rate, batch size 128, discount 1.0, EMA decay 0.95, two proximal update epochs, clipping 0.2, gradient clipping
+    1.0, weight decay 0.0, and zero KL loss and penalty coefficients.
+audit:
+  source_mixture: Online, policy-dependent trajectories from three procedural games. A separate static Hugging Face artifact
+    contains winning Kuhn Poker expert trajectories for the SFT comparison and is not the online SPIRAL stream.
+  split: Training uses one or all of TicTacToe, Kuhn Poker, and Simple Negotiation; evaluation covers held-out games, higher-complexity
+    variants, and eight academic reasoning benchmarks. Immutable per-run split and seed manifests are not released.
+  decontamination: The paper states that training uses game states rather than benchmark-related problems or mathematics data.
+    No independent item-level overlap audit or frozen source manifest is released.
+  license: The repository root carries an MIT license, while run.sh and train_spiral.py contain Apache-2.0 file headers. Dataset,
+    model, generated-output, TextArena, and base-model obligations require artifact-specific review; the checked official
+    sources do not resolve the mixed code notices into one release-wide statement.
+  lineage: TextArena rule and initial state -> role-conditioned shared-policy response -> parsed action and transition ->
+    terminal or invalid/truncation outcome -> per-game/per-role EMA baseline and advantage -> shared-policy update -> changed
+    future opponent and trajectory distribution.
+  known_failure_modes:
+  - Terminal game success validates outcome and executable play, not the truth or causal faithfulness of intermediate reasoning
+    text.
+  - Invalid-action probability compounds across turns; the released implementation uses a special non-zero-sum-looking -1.5/0.5
+    termination reward that should be audited against the paper's normal zero-sum contract.
+  - Without RAE, the reported policy collapses toward near-empty reasoning, math performance crashes, and gradients approach
+    zero.
+  - Fixed opponents are exploitable; shared-policy self-play can also exploit environment rules, parser behavior, or protocol
+    artifacts not measured by benchmark accuracy.
+  - The reported online streams are stochastic and not frozen with complete rollouts, invalid actions, rewards, seeds, checkpoints,
+    optimizer states, and environment revisions.
+  - The static SFT dataset is a comparison artifact, not a frozen copy of the online SPIRAL training stream.
+  - GPT-4.1 pattern classification is judge-mediated post-hoc analysis rather than process supervision or causal evidence.
+  citation_status: verified
+  confidence: high
+  notes: ICLR 2026 camera-ready arXiv v3, OpenReview venue URL, official repository at commit 068b06f6afce2e45ae3eb5d8bf677e9d69c83642,
+    root license, run.sh, train_spiral.py, Hugging Face collection URL, and SFT dataset URL were checked. The Hugging Face
+    Dataset Viewer API was unavailable during this pass, so row count, schema, split, and license are not promoted beyond
+    the paper's disclosure.
+inclusion_reason: Provides an open environment-driven construction recipe in which a shared policy creates a changing stream
+  of multi-turn reasoning-and-action trajectories and receives rule-grounded terminal feedback through zero-sum self-play.
+related: []
+tags:
+- spiral
+- self-play
+- multi-agent
+- multi-turn
+- zero-sum-games
+- rae
+- iclr-2026
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: Generates an evolving online stream of multi-turn reasoning and action trajectories through shared-policy
+  self-play in rule-scored zero-sum games.
+why_it_matters: It turns game rules, transitions, and terminal outcomes into a post-training data construction loop while
+  exposing the difference between an open recipe and a frozen, auditable rollout release.
+card: null
+needs:
+- 'needs_snapshot: tagged code, environment, model, and dataset revisions with checksums'
+- 'needs_rollouts: complete run-level episodes, invalid actions, rewards, seeds, checkpoints, optimizer states, and rejected
+  or truncated records'
+- 'needs_audit: environment and parser exploitation, reasoning faithfulness, stochastic variance, and benchmark overlap'
+- 'needs_license: reconcile root MIT license, Apache-2.0 file headers, and artifact-specific model/data obligations'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: high
+  notes: Paper, ICLR venue, repository, runnable configuration, model collection, and SFT comparison dataset URLs are official.
+    Complete online rollout streams and immutable run manifests are not released.

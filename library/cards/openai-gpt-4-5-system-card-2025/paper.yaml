@@ -1,0 +1,132 @@
+id: openai-gpt-4-5-system-card-2025
+title: OpenAI GPT-4.5 System Card
+year: 2025
+venue: OpenAI system card
+authors:
+- OpenAI
+source_role:
+- model_report
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- safety
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- evaluation
+construction_layer:
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://cdn.openai.com/gpt-4-5-system-card-2272025.pdf
+  arxiv: null
+  code: null
+  data: null
+  project: https://openai.com/index/gpt-4-5-system-card/
+  huggingface: null
+  doi: null
+  venue: https://openai.com/index/gpt-4-5-system-card/
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: GPT-4.5 is pre-trained and post-trained on diverse datasets spanning publicly available data, proprietary
+    data from partnerships, and custom in-house datasets; dataset names, records, proportions, versions, and source-level
+    rights are unknown.
+  trace_author: The report says scalable alignment uses data derived from smaller models. It does not identify the smaller
+    models, whether records are traces, the human/model proportion, annotators, prompts, selection, or item-level provenance.
+  answer_format: Training-example, SFT, preference, safety-training, and rationale/trace record schemas are unknown. The report
+    describes some evaluation prompts, completions, autograding, and agent rollouts, but these do not establish the post-training
+    record format.
+  process_fields: []
+  environment_or_substrate: No post-training environment is disclosed. Selected evaluation environments are described, including
+    a Kali Linux CTF harness and agentic code environments, but they are evaluation infrastructure rather than evidence of
+    a training environment.
+  verifier_or_reward: RLHF and new supervision techniques are named, but feedback units, preference protocol, rater instructions,
+    reward model, calibration, aggregation, verifier implementation, and acceptance predicates are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: The report says GPT-4.5 builds on GPT-4o and scales pre-training further; architecture, parameter count, exact
+    base checkpoint, and checkpoint lineage are unknown.
+  teacher: Data derived from smaller models is reported for scalable alignment, but model identities, versions, roles, prompts,
+    and mapping to final records are unknown.
+  generator: unknown
+  filtering_rule: Rigorous filtering, reduced processing of personal information, Moderation API use, and safety classifiers
+    are reported. Filter rules, thresholds, error rates, stage placement, rejection reasons, and yields are unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: The report names SFT, RLHF, and new supervision techniques without disclosing objectives, reward
+    optimization, optimizers, schedules, batch/rollout budgets, or post-training allocation.
+audit:
+  source_mixture: 'Only broad source categories are disclosed: public data, proprietary partnership data, and custom in-house
+    datasets. Mixture proportions, dataset manifests, dates, revisions, record counts, and source-level rights are unknown.'
+  split: Train, validation, and evaluation membership, counts, versions, and overlap controls are unknown.
+  decontamination: No decontamination method, threshold, benchmark-overlap audit, or reproducible result is disclosed. The
+    stated quality/privacy/safety filtering must not be treated as decontamination evidence.
+  license: No training, post-training, feedback, safety-training, or evaluation-data license and no source-level rights map
+    are released.
+  lineage: The system card establishes report-level lineage to GPT-4.5 only. There is no released source-to-record-to-feedback/reward-to-checkpoint
+    lineage.
+  known_failure_modes:
+  - Broad source categories cannot establish data provenance, mixture, rights, benchmark overlap, or reuse conditions.
+  - SFT, RLHF, new supervision, and data derived from smaller models do not specify a reproducible data or feedback contract.
+  - Filter, moderation, and safety-classifier descriptions omit rules, thresholds, errors, rejected examples, and per-stage
+    yields.
+  - The report's disclosed evaluation harnesses and autograders do not establish a post-training verifier or reward implementation.
+  - Reported safety scores are contingent on model/system configuration; Preparedness evaluations are described as lower bounds
+    and their bootstrap intervals may understate uncertainty on small datasets.
+  - In multimodal refusal evaluation, GPT-4.5 is reported as more likely to overrefuse than the comparison models (not_overrefuse
+    0.31).
+  citation_status: verified
+  confidence: high
+  notes: Official OpenAI landing page and linked 31-page GPT-4.5 system card checked. This is a conservative Track 12 disclosure
+    ledger, not a claim that the report releases a reusable post-training recipe.
+inclusion_reason: A high-impact frontier system card that names public, partnership, and in-house data categories plus smaller-model-derived
+  alignment data, SFT, RLHF, filtering, and selected evaluation contracts while leaving record-level data, feedback, reward,
+  and recipe details undisclosed.
+related: []
+tags:
+- openai
+- gpt-4-5
+- frontier-report
+- data-disclosure-ledger
+- system-card
+- sft
+- rlhf
+- safety-evaluation
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: OpenAI's GPT-4.5 system card discloses broad public/partnership/in-house data categories, smaller-model-derived
+  alignment data, SFT, RLHF, filtering, and selected safety evaluation protocols, but not reproducible data or feedback contracts.
+why_it_matters: 'It is a central Track 12 comparison point: the report offers meaningful stage-level and safety-evaluation
+  disclosure, yet makes visible which missing artifacts prevent independent audit of source provenance, post-training feedback,
+  reward mechanisms, filtering, and lineage.'
+card: null
+needs:
+- 'needs_data: training and post-training dataset manifests, counts, versions, mixture, source rights, and item-level lineage'
+- 'needs_feedback: SFT/new-supervision/RLHF record schemas, human/model provenance, rater protocol, preferences, and feedback
+  coverage'
+- 'needs_verifier: reward/verifier models, calibration, acceptance predicates, error analysis, and linkage to retained examples'
+- 'needs_metadata: teacher checkpoints, prompts, filters, thresholds, rejection yields, sampling, rollout budgets, optimizer,
+  objectives, schedules, and checkpoint lineage'
+- 'needs_audit: reproducible decontamination, benchmark overlap, split memberships, environment versions, and evaluation release
+  artifacts'
+- 'needs_license: source-level data and generated-output rights, partnership terms, and release terms'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against OpenAI's official GPT-4.5 system-card landing page and its linked canonical PDF only; no unverified
+    or third-party artifacts are claimed.

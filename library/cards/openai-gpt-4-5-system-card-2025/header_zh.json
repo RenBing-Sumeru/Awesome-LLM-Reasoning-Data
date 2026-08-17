@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenAI 的 GPT-4.5 系统卡披露了宽泛的公开/合作/内部数据类别、来自小模型的对齐数据、SFT、RLHF、过滤及部分安全评测协议，但没有公开可复现的数据或反馈契约。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "闭源前沿模型系统卡与数据披露账本",
+  "best_for_ch": "审计前沿模型报告中的阶段级披露，以及阻碍独立复核训练数据、反馈、奖励和谱系的缺失工件",
+  "confidence_ch": "高",
+  "authors_ch": "OpenAI",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "VeriCoder: Enhancing LLM-Based RTL Code Generation through Functional Correctness Validation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2504.15659",
+    "data": "https://huggingface.co/datasets/LLM4Code/expanded_origen_126k",
+    "code": "https://github.com/Anjiang-Wei/VeriCoder",
+    "project": "https://anjiang-wei.github.io/VeriCoder-Website/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-19T11:53:36Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "收录12.6万条自然语言、RTL和通过测试样本",
+    "updated_at": "2026-07-19T11:53:36Z"
+  }
+}

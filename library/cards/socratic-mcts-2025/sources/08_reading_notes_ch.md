@@ -1,0 +1,5 @@
+- Action 是 subquestion，node state 将每个 subquestion 与独立 subanswer 配对。
+- Value estimation 使用八个受 wrap-up phrase 条件化的 completion 和启发式加权内部一致性。
+- 报告设置为 temperature 0.6、UCT constant 1.4、置信 gate 0.9。
+- 评测为单次运行：MMMU-PRO 40 次 iteration，MMStar 与 MathVista 20 次。
+- 未确认官方树日志或代码；benchmark 增益不能验证推理忠实性。

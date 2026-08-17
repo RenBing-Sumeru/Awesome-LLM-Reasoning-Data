@@ -1,0 +1,5 @@
+既有驾驶语言数据通常侧重caption、近距离交互、感知问答或更小规模的数据。WOMD-Reasoning把构造目标转向交通规则与驾驶意图引发的交互,这类交互即使在agent初始距离较远时也可能存在,并把该目标扩展到63,000个真实WOMD场景。
+
+其具体贡献是组合规则式motion-to-text translator、结构化五类问答链、使用未来信息的交互/意图生成,以及与同一运动场景对齐的可选模拟视觉数据。事实问题与交互推理的划分还为Motion-LLaVA训练和推理提供了明确scaffold。
+
+必须明确哪些并非新贡献:WOMD-Reasoning没有提出WOMD、通用对话模型prompting、规则式场景翻译、LLaVA、MultiPath++、ScenarioNet、MetaDrive、SFT或参考文本语言评估。规模和benchmark结果本身不能建立逐记录正确性。复用判断应基于lineage完整性、因果输入可获得性、verifier覆盖与发布可复现性,而不是只看数据规模。

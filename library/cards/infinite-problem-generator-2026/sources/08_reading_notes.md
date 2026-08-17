@@ -1,0 +1,5 @@
+- **Position:** replace unverifiable free-form physics generation with executable problem-solution records.
+- **Method handle:** encode formulas, plan a chain, generate a scenario and solver, execute, deduplicate, then audit.
+- **Data/artifact handle:** ClassicalMechanicsV1 releases 1,335 records; official code, data, and evaluation report are linked.
+- **Evidence anchor:** 1,415 candidates become 1,335 records, while complex-stratum audits still expose 4-15% issues.
+- **Reuse decision:** useful where formulas are codifiable, provided semantic review and source/license audits remain separate gates.

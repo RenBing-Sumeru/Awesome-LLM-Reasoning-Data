@@ -1,0 +1,4 @@
+Word-level F1 for short answers does not verify evidence, citations, intermediate reasoning, or long-form synthesis; format -1 can dominate malformed outputs without saying why research failed. Live search results, pages, rate limits, anti-crawl behavior, retries, and a seven-day cache weaken replay and can couple nominally separate rollouts.
+
+The 80,000 Parquet records are prompt data, not the on-policy episode stream. Original accepted/rejected rollouts, page snapshots, prompt-level source identifiers, total training steps, policy revisions, temperature, seeds, and reward logs are not verified as released. The pass@10 screen tests parametric answerability under one model/sampling setup, not broad contamination. Apache-2.0 code/model terms do not confer redistribution rights for benchmark questions or web content.
+

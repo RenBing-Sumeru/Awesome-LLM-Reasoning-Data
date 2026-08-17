@@ -1,0 +1,5 @@
+- Positioning: Superfiltering releases scored Alpaca-family records and tiny subsets selected by GPT-2 instruction-following difficulty.
+- Method handle: Superfiltering uses GPT-2 loss ratios to score how much each response depends on its instruction, ranks the full pool cheaply, and publishes the scored records together with 5 percent and 2 percent subsets.
+- Data handle: scored Alpaca and Alpaca-GPT4 pools with public 5 percent and 2 percent selected subsets; each record contains instruction, optional input, output, GPT-2 instruction-following difficulty score, and selection membership.
+- Evidence anchor: Across matched instruction-tuning settings, the top 5 percent selected by GPT-2 outperforms training on the complete baseline pool on the reported evaluation suite, while filtering is roughly 20 times faster than strong-model scoring.
+- Reuse decision: best for selecting a small instruction subset when scoring and training budgets are limited; first audit the score may reward easy instruction-output lexical dependence and discard rare capabilities.

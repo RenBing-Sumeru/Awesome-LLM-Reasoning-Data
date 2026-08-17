@@ -1,0 +1,5 @@
+- Keep the counting units separate: 312 executed human episodes contain 4,503 screenshots and are flattened, after nine-way branching, into about 27K action-level SFT samples.
+- Read Sections 3.2–3.5 with `postprocess/refinement.py`, `boost.py`, and `prepare.py`; this is where `finish` rewriting, unexecuted branches, and sample serialization become visible.
+- Interpret Table 3's 141% only as 14.9→36.0 relative to Qwen2.5-VL-72B on 141 feasible WindowsAgentArena-V2 tasks at the default 30-step cap—not as a gain over Claude or a data-quality certificate.
+- Pair Figure 7's human-only and direct-distillation ablations with Appendix E, Table 8: branch augmentation helps in the reported setting, yet longer interaction exposes weak termination behavior.
+- Before reuse, verify screenshot consent and rights, per-record task lineage, Claude decoding and rejection logs, branch executability, semantic decontamination code, and immutable data/benchmark versions.

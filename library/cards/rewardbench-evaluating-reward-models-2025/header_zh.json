@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "2,985组偏好对含推理与代码子集，提供 chosen/rejected 监督，是通用奖励模型的基础对照。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "通用奖励模型评测基准与偏好数据论文",
+  "best_for_ch": "需要用覆盖对话、推理和安全的成对偏好记录对比奖励模型，或复现 RewardBench 评测协议的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Nathan Lambert, Valentina Pyatkin, Jacob Morrison, LJ Miranda, Bill Yuchen Lin, Khyathi Chandu, Nouha Dziri, Sachin Kumar, Tom Zick, Yejin Choi, Noah A. Smith, Hannaneh Hajishirzi",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-16T13:19:07Z"
+}

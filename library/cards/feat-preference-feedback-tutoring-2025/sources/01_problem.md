@@ -1,0 +1,3 @@
+English AI tutors need feedback that explains how to improve a student-facing response, yet teacher feedback is expensive to collect at scale. FEAT studies the trade-off between feedback quality and collection cost. Its boundary is pedagogical feedback for English tutoring, not a universal ranking of answers or a proof that a response teaches every learner effectively.
+
+The relevant object is a tutoring context, candidate instructional feedback, and a preference or quality signal about that feedback. The paper asks how generated and human-assisted feedback can be combined without discarding the explanatory content that makes a preference useful for tutoring. It does not equate a preferred feedback sentence with validated learning gain in a classroom.

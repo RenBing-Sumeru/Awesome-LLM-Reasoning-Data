@@ -1,0 +1,102 @@
+id: pathfinder-prm-error-aware-hierarchical-supervision-2025
+title: 'Error Typing for Smarter Rewards: Improving Process Reward Models with Error-Aware Hierarchical Supervision'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Tej Deep Pala
+- Panshul Sharma
+- Amir Zadeh et al.
+source_role:
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- llm-post-training
+training_use:
+- preference_learning
+- reward_modeling
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2505.19706
+  arxiv: https://arxiv.org/abs/2505.19706
+  code: https://github.com/declare-lab/PathFinder-PRM
+  data: https://huggingface.co/datasets/declare-lab/PathFinder-600K
+  project: https://github.com/declare-lab/PathFinder-PRM
+  huggingface: https://huggingface.co/declare-lab/PathFinder-PRM-7B
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: See primary paper.
+  trace_author: Human, model, or hybrid process source described in the primary paper.
+  answer_format: Stepwise reasoning trace with process feedback.
+  process_fields:
+  - prompt
+  - steps
+  - step_label_or_reward
+  - provenance
+  - split
+  environment_or_substrate: Reasoning, code, or tool-use process environment.
+  verifier_or_reward: Paper-specific step-level verifier or reward.
+  terminal_predicate: Paper-specific terminal correctness or acceptance predicate.
+recipe_metadata:
+  base_model: See primary paper.
+  teacher: See primary paper.
+  generator: See primary paper.
+  filtering_rule: See L4 source sections.
+  sampling_protocol: See primary paper.
+  rollout_count: null
+  temperature: null
+  inference_budget: See primary paper.
+  optimizer_or_scaffold: See primary paper.
+audit:
+  source_mixture: Primary source reviewed.
+  split: Verify train/evaluation separation.
+  decontamination: Verify overlap controls.
+  license: Verify official artifact before reuse.
+  lineage: 'Primary source: https://arxiv.org/abs/2505.19706'
+  known_failure_modes:
+  - Step segmentation and verifier assumptions may not transfer.
+  citation_status: verified
+  confidence: high
+  notes: Official release links rechecked on 2026-07-12 and added where the primary paper, official project, or author-maintained
+    release identifies them. Official release links rechecked on 2026-07-12 and added where the primary paper, official project,
+    or author-maintained release identifies them. Official release links rechecked on 2026-07-12 and added where the primary
+    paper, official project, or author-maintained release identifies them. Official release links rechecked on 2026-07-12
+    and added where the primary paper, official project, or author-maintained release identifies them. Primary paper and official
+    release were checked on 2026-07-12. No independent official code/project was found on the primary release page. No independent
+    official dataset release was found on the primary release page.
+  artifact_verification:
+    checked_at: '2026-07-12'
+    scope: primary paper, official project/repository, author-maintained GitHub and Hugging Face releases
+    conclusion: Official implementation and model weights are public. The 400K training construction is described as derived
+      from PRM800K and RLHFlow traces; no separately packaged PathFinder dataset is linked.
+inclusion_reason: Process/trace supervision data release or data-construction method.
+related: []
+tags:
+- process-trace-batch-2026
+- process-supervision
+one_line_summary: 'Error Typing for Smarter Rewards: Improving Process Reward Models with Error-Aware Hierarchical Supervision
+  exposes process or trace supervision data.'
+why_it_matters: It makes intermediate reasoning feedback auditable before reuse.
+status: verified
+needs: []
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: primary-paper review
+  confidence: high
+  notes: Primary source reviewed.
+category_ids:
+- process_trace_supervision_data

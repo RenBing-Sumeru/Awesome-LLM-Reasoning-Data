@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "构造真实且客观的 LLM 回答错误，揭示强模型检测错误的低召回与提示敏感性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Ryo Kamoi、Sarkar Snigdha Sarathi Das、Renze Lou、Jihyun Janice Ahn、Yilun Zhao、Xiaoxin Lu、Nan Zhang、Yusen Zhang、Ranran Haoran Zhang、Sujeeth Reddy Vummanthala、Salika Dave、Shaobo Qin、Arman Cohan、Wenpeng Yin、Rui Zhang",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

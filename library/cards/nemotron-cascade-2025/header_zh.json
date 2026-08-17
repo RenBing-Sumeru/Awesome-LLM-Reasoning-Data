@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Nemotron-Cascade 报告了 SFT 和 RLHF 之后按领域顺序开展的 RL，并提供 NVIDIA 的模型/数据工件，但逐领域反馈合约与端到端审计谱系仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "级联强化学习技术报告与工件发布",
+  "best_for_ch": "审计按领域 RLVR 课程、公开工件与训练谱系边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Boxin Wang 等",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

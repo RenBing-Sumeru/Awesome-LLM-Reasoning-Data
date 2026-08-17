@@ -1,0 +1,19 @@
+{
+  "title": "VeriContest: A Competitive-Programming Benchmark for Verifiable Code Generation",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2605.08553",
+    "data": "https://huggingface.co/datasets/Gax-c/VeriContest",
+    "code": "https://github.com/HIPREL-Group/VeriContest",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T14:14:55Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布946道竞赛编程题、Verus规格与正负测试，用于评测端到端可验证代码生成",
+    "updated_at": "2026-07-18T14:14:55Z"
+  }
+}

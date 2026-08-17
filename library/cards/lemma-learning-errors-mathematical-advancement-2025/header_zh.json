@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "LEMMA 将多样化模型错误组织为错误到正确解的反思连接，使数学模型无需外部批评器也能在生成中自主纠错。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要构造错误—修正过程监督、训练数学推理自纠错能力的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Zhuoshi Pan、Yu Li、Honglin Lin、Qizhi Pei、Zinan Tang、Wei Wu、Chenlin Ming、H. Vicky Zhao、Conghui He、Lijun Wu",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

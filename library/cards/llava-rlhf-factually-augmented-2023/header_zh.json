@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "图文问答的人类偏好比较结合图像事实信息，可用于降低多模态奖励模型的幻觉。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数据集论文",
+  "best_for_ch": "偏好学习、奖励建模与反馈审计研究者",
+  "confidence_ch": "高",
+  "authors_ch": "Zhuqing Jiang、Yue Zhang",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ]
+}

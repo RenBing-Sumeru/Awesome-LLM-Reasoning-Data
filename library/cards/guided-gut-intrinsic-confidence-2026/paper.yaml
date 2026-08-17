@@ -1,0 +1,111 @@
+id: guided-gut-intrinsic-confidence-2026
+title: 'Guided by Gut: Efficient Test-Time Scaling with Reinforced Intrinsic Confidence'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Amirhosein Ghasemabadi
+- Keith G. Mills
+- Baochun Li
+- Di Niu
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+- mixed
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+- code-generation
+training_use:
+- test_time_compute
+- reinforcement_learning
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.739/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.739/
+  code: null
+  data: https://huggingface.co/datasets/GAIR/LIMO
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.739
+data_object:
+  prompt_source: AIME 2024/2025, AMC 2023, MATH500, and LiveCodeBench prompts; LIMO is used only for confidence-calibration
+    training.
+  trace_author: DeepSeek-R1-Distill-Qwen and Qwen2.5-Math models generate step-delimited reasoning branches.
+  answer_format: Prompt, step candidates, token-probability-derived confidence, novelty score, retained branch, final answer,
+    and benchmark correctness.
+  process_fields:
+  - prompt
+  - reasoning_step
+  - intrinsic_confidence
+  - novelty
+  - branch_score
+  - final_answer
+  - correctness
+  environment_or_substrate: Lightweight DVTS-style tree search over local reasoning models.
+  verifier_or_reward: No external verifier is used at inference; GRPO calibrates intrinsic confidence with correctness- and
+    confidence-aware reward terms.
+  terminal_predicate: Benchmark-specific exact answer matching or code benchmark scoring determines final correctness.
+recipe_metadata:
+  base_model: DeepSeek-R1-Distill-Qwen-1.5B and 7B; Qwen2.5-Math-1.5B-Instruct for verifier comparison.
+  teacher: Not applicable; the model internalizes a confidence signal rather than consulting a separate PRM.
+  generator: A confidence- and novelty-guided diverse verifier tree search expands reasoning steps.
+  filtering_rule: Search ranking prefers high intrinsic confidence while retaining novelty; termination follows depth, length,
+    degeneration, or final-answer conditions.
+  sampling_protocol: Compare chain-of-thought, Best-of-N, PRM-guided DVTS, and Guided by Gut at matched search budgets.
+  rollout_count: 32 or 64 total paths in the primary comparison; model- and benchmark-specific settings are reported in the
+    paper.
+  temperature: 0.6 during GRPO generation; see the paper for inference configuration.
+  inference_budget: 16K token budget for tree search in primary comparisons, with up to 200 reasoning steps for R1 models.
+  optimizer_or_scaffold: GRPO confidence calibration followed by intrinsic-confidence and novelty-guided DVTS.
+audit:
+  source_mixture: Official ACL paper and the official LIMO dataset page cited by the paper.
+  split: Math benchmarks cover AIME 2024/2025, AMC 2023, and MATH500; LiveCodeBench tests transfer.
+  decontamination: No formal contamination audit is claimed.
+  license: Check the licenses of LIMO, base models, benchmarks, and reused open-source components before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.739/
+  known_failure_modes:
+  - miscalibrated-intrinsic-confidence
+  - search-budget-sensitivity
+  - math-heavy-calibration
+  - branch-novelty-mismatch
+  - untested-domain-transfer
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF checked on 2026-07-21. Authors are affiliated with the University of Alberta, Louisiana State University,
+    and the University of Toronto. The paper cites training data but does not release a distinct project code repository.
+inclusion_reason: It directly redistributes test-time search budget using an internally calibrated step signal, replacing
+  external verifier inference with a lower-memory confidence-guided search policy.
+related: []
+tags:
+- test-time-scaling
+- intrinsic-confidence
+- tree-search
+- grpo
+- efficient-reasoning
+status: verified
+one_line_summary: Guided by Gut calibrates a model’s own step confidence with GRPO and uses it to guide lightweight tree search
+  without a process reward model.
+reading_priority: essential
+paper_type: Efficient confidence-guided test-time scaling study
+best_for: Readers designing low-memory reasoning search who need to decide whether a model’s internal uncertainty can replace
+  a separately served verifier.
+confidence: high
+why_it_matters: 'It makes confidence calibration a deployment decision: a smaller model can spend inference compute on promising
+  branches instead of paying to score every branch with an external model.'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper and its cited public LIMO dataset page checked.
+category_ids:
+- scaling_rlvr_test_time_compute

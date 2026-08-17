@@ -1,0 +1,1 @@
+Multi-SWE-bench 扩大语言覆盖，但主要关注 issue 是否解决；SWE-bench 的常用指标也以 resolve rate 为主。SWE-PolyBench 的变化是同时增加任务类型和结构化诊断面：除 bug，还收集 feature/refactoring，并从 gold patch 抽取文件、函数、类和 CST 节点，衡量 agent 找到正确位置的程度。它并未改变测试作为终局 oracle 的基本契约，而是在相同执行评测上加入 PB500 成本控制和定位指标，使“失败在哪里”成为 benchmark 的正式输出。

@@ -1,0 +1,3 @@
+The framework samples a response and then constructs progressively deeper self-reflection attempts from prior reasoning. These attempts are organized as iterative deepening rather than flat repeated sampling, with the purpose of systematically activating correction behavior on difficult problems.
+
+The method is evaluated as an inference procedure, not a new fine-tuning objective. Its records include the initial trace, reflection context, revised trace, depth level, sample budget, and final answer; these permit analysis of whether extra computation produced a distinct correction rather than another correlated completion.

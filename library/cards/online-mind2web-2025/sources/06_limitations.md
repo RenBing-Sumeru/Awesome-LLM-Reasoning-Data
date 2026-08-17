@@ -1,0 +1,8 @@
+- **Mutable targets:** Live pages, availability, content, CAPTCHA, region, session state, and task definitions change. Task replacements improve current validity but break longitudinal equivalence unless revisions are pinned.
+- **Incomplete trajectory retention:** Official artifacts include labels, evaluator outputs, examples, and a submission schema, but a complete raw corpus of all successful, failed, and not-executable paper episodes was not verified.
+- **No exact replay:** There are no immutable page snapshots or uniform account, cookie, locale, viewport, and remote-browser fixtures. Operator also runs in a distinct remote environment.
+- **Judge failure modes:** Screenshot selection can omit decisive evidence; visible state may not reveal server-side completion; alternate valid paths may be misread; judge choice changes precision and recall.
+- **Split and contamination risk:** The 300 tasks lack a canonical train/dev/test split or hidden holdout. Many derive from public Mind2Web data, and no model-overlap or cross-benchmark deduplication audit is reported.
+- **Schema drift:** The current v2 format detects missing step components, but v1 parallel arrays could silently desynchronize, and the later schema does not repair historical records.
+- **Licensing, privacy, and safety gaps:** Data is CC BY 4.0, code MIT, and WebJudge-7B Apache-2.0, but third-party page/screenshot rights are not itemized. Gating, a research-use disclaimer, and a no-PII instruction do not replace consent, redaction, credential, purchase, submission, or irreversible-action policies.
+- **Heterogeneous execution:** Agents use different browsers, viewports, capture modes, step budgets, and access products, so model quality is entangled with the interaction substrate.

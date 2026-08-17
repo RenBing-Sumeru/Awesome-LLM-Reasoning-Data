@@ -1,0 +1,144 @@
+id: exaone-deep-2025
+title: 'EXAONE Deep: Reasoning Enhanced Language Models'
+year: 2025
+venue: arXiv preprint
+authors:
+- LG AI Research
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- unknown
+supervision_granularity:
+- full_episode
+- pairwise_preference
+domains:
+- math
+- science
+- code
+- general
+training_use:
+- sft
+- preference_learning
+construction_layer:
+- trace_writing
+- optimizer_scaffold
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2503.12524
+  arxiv: https://arxiv.org/abs/2503.12524
+  code: https://github.com/LG-AI-EXAONE/EXAONE-Deep
+  data: null
+  project: https://www.lgresearch.ai/blog/view?seq=543
+  huggingface: https://huggingface.co/collections/LGAI-EXAONE/exaone-deep
+  doi: https://doi.org/10.48550/arXiv.2503.12524
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: 'Undisclosed beyond broad SFT group labels visible in the report: Math, Code, Science, and Others. No source
+    datasets, task inventory, language mixture, or per-source counts are published.'
+  trace_author: Unknown. The SFT and DPO records contain structured thought processes, but the report does not identify teachers,
+    generators, annotators, preference labelers, or item-level authorship.
+  answer_format: Each disclosed SFT/DPO training example is formatted as a query followed by a thought-tag structured reasoning
+    process and then a self-contained final answer. The record schema and records themselves are not released.
+  process_fields:
+  - prompt
+  - thought_process
+  - final_answer
+  - preference
+  environment_or_substrate: unknown
+  verifier_or_reward: Online RL with a designed GRPO variant is reported. Reward source, verifier, judge, task environment,
+    calibration, aggregation, and executable-check coverage are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: EXAONE Deep 2.4B, 7.8B, and 32B are fine-tuned from the corresponding EXAONE 3.5 Instruct models. Official model
+    cards expose the released checkpoint lineage.
+  teacher: unknown
+  generator: Unknown. The paper shows the process-formatted output pattern but does not state how SFT traces, DPO candidates,
+    or Online-RL responses were generated.
+  filtering_rule: unknown
+  sampling_protocol: The report gives aggregate stage sizes—1.6M SFT instances, 20K DPO preference instances, 10K Online-RL
+    instances, and about 12B SFT tokens—but no source allocation, curriculum, sampling policy, split, retention rate, or per-domain
+    stage counts.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Training-generation budgets are unknown. The paper's 32K maximum generation length, temperature 0.6, top_p
+    0.95, and repeated sampling counts belong to benchmark evaluation and are not evidence of training-data generation settings.
+  optimizer_or_scaffold: The report names SFT, DPO using SimPER, and Online RL using a designed GRPO variant. It does not
+    publish the exact stage schedule or branching, optimizer hyperparameters, reward design, rollout configuration, checkpoint
+    selection, or training code.
+audit:
+  source_mixture: No corpus manifest, dataset names, source proportions, language distribution, teacher mapping, record rights,
+    or trace provenance is disclosed. Broad domain labels and total counts do not identify the underlying records.
+  split: unknown
+  decontamination: No training-versus-evaluation overlap analysis, benchmark decontamination procedure, exact-match audit,
+    or public split manifest is disclosed in the checked official artifacts.
+  license: 'Released model material is governed by EXAONE AI Model License Agreement 1.1 - NC: a limited, non-exclusive, non-transferable,
+    worldwide, revocable license for research purposes, with commercial use prohibited and further restrictions stated in
+    the agreement. This model license does not establish access to or rights for the undisclosed training corpus, traces,
+    preferences, or RL feedback records.'
+  lineage: Official model cards and the report support EXAONE 3.5 Instruct to EXAONE Deep lineage at 2.4B, 7.8B, and 32B scales
+    and identify SFT, SimPER DPO, and Online RL. Dataset-to-stage, teacher-to-trace, preference-label, reward, and sample-to-checkpoint
+    lineage remain unknown.
+  known_failure_modes:
+  - Research-purpose weight availability is not a release of the 1.6M SFT, 20K DPO, or 10K Online-RL records.
+  - The model license is non-commercial and revocable and must not be described as an unrestricted open-source or permissive
+    data license.
+  - Online RL lacks a disclosed reward, verifier, judge, environment, calibration, rollout protocol, or terminal predicate,
+    so the feedback contract is not reproducible.
+  - No source inventory, trace authorship, preference-label provenance, filtering, split, decontamination, or training-data
+    rights mapping is available.
+  - LG warns that outputs may be inappropriate, biased, incorrect, stale, false, or contradictory; the paper also says the
+    reasoning-specialized models are not optimized for the full range of practical applications.
+  - Benchmark performance is evidence about evaluated model behavior, not proof of training-data quality, legality, coverage,
+    or reproducibility.
+  citation_status: verified
+  confidence: high
+  notes: Checked the official arXiv report, LG AI Research repository and blog, and official Hugging Face model collection/model
+    card. Model weights and inference materials are available for research under the EXAONE 1.1 - NC terms; no official training-data
+    release was found.
+inclusion_reason: An official research-use reasoning-model weight release that discloses exact aggregate SFT, DPO, and Online-RL
+  counts plus a thought-tag format, while leaving the records, provenance, selection rules, and feedback contract unavailable.
+related: []
+tags:
+- lg-ai-research
+- exaone-deep
+- reasoning-model
+- chain-of-thought
+- sft
+- dpo
+- online-rl
+- grpo
+- open-weight
+- frontier-report
+- data-disclosure-ledger
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: LG released EXAONE Deep 2.4B, 7.8B, and 32B weights for research and reports 1.6M SFT, 20K DPO, and 10K
+  Online-RL instances, but does not release the records or disclose their provenance, filtering, splits, rights, or RL feedback
+  contract.
+why_it_matters: It is a clear test case for separating downloadable reasoning-model weights and aggregate training statistics
+  from an auditable post-training dataset and reproducible reward pipeline.
+card: null
+needs:
+- 'needs_data: SFT, DPO, and Online-RL manifests or records, source/teacher mapping, per-domain counts, and language distribution'
+- 'needs_metadata: generators, prompts, filtering, sampling, curricula, stage order, and training hyperparameters'
+- 'needs_verifier: Online-RL reward, verifier or judge, environment, calibration, rollout protocol, and terminal predicate'
+- 'needs_audit: split manifests, benchmark decontamination, item-level lineage, preference-label provenance, and independent
+  data-quality analysis'
+- 'needs_license: rights and redistribution terms for source corpora, generated traces, preference records, and RL interactions'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official sources only; the Hugging Face collection and model cards are linked by LG's official repository. No training-data
+    artifact is listed.

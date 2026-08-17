@@ -1,0 +1,1 @@
+Difficulty-targeted Online Data Selection (DOTS) samples questions whose predicted failure rate is near 0.5. Rollout Replay (RR) stores only groups with mixed binary outcomes and reuses them with behavior-policy probabilities, preserving non-zero GRPO advantages.

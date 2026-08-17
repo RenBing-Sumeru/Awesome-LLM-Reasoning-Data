@@ -1,0 +1,110 @@
+id: self-evolution-reasoning-survey-2025
+title: Breaking the Reasoning Barrier A Survey on LLM Complex Reasoning through the Lens of Self-Evolution
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Tao He
+- Hao Li
+- Jingchang Chen
+- Runxuan Liu
+- Yixin Cao
+- Lizi Liao
+- Zihao Zheng
+- Zheng Chu
+- Jiafeng Liang
+- Ming Liu
+- Bing Qin
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning
+- reasoning-data
+- self-evolution
+- reinforcement-learning
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.386/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.386
+  venue: https://aclanthology.org/2025.findings-acl.386/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.386/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Complex reasoning tasks used to create or improve reasoning examples.
+  trace_author: Primary studies summarized by the survey; no new trace corpus is released.
+  answer_format: A survey of data evolution, model evolution, and their iterative combination.
+  process_fields:
+  - seed task
+  - generated trace
+  - quality filter
+  - model update
+  - next-round data
+  - task score
+  environment_or_substrate: Large language models that improve reasoning through repeated data and model updates.
+  verifier_or_reward: Reviews primary-study verifiers, reward signals, and quality controls.
+  terminal_predicate: Improved reasoning quality under a stated task and comparison setting.
+recipe_metadata:
+  base_model: No single model; this is a survey.
+  teacher: Reviewed work varies by study.
+  generator: Literature synthesis from the self-evolution perspective.
+  filtering_rule: Separates data evolution, model evolution, and cycles that combine both.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new optimizer or iterative system is introduced.
+audit:
+  source_mixture: Official ACL Anthology record and proceedings PDF.
+  split: Not applicable to a survey.
+  decontamination: No universal conclusion for reviewed benchmarks.
+  license: Consult primary resources before reuse.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-acl.386/'
+  known_failure_modes:
+  - Synthetic traces can reinforce mistakes
+  - Iterative gains can depend on task leakage or weak comparisons
+  citation_status: verified
+  confidence: high
+  notes: The official abstract explicitly structures the survey as data evolution, model evolution, and self-evolution.
+inclusion_reason: A 2025 ACL Findings survey directly focused on how reasoning data is generated, filtered, used for training,
+  and improved in repeated cycles.
+related: []
+tags:
+- foundations-and-primers
+- reasoning-data
+- self-evolution
+- acl-2025
+- survey
+why_it_matters: It gives readers a compact way to reason about where iterative reasoning systems obtain data, quality signals,
+  and real improvements.
+one_line_summary: An ACL survey of growing reasoning ability by jointly improving training data and models.
+paper_type: Survey and taxonomy
+reading_priority: strong
+best_for: Readers designing synthetic reasoning data pipelines or studying iterative model improvement.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable reporting for data quality, training cost, and improvement across iteration rounds'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-28'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL page, abstract, venue, authors, and DOI were checked.
+category_ids:
+- foundations_and_primers

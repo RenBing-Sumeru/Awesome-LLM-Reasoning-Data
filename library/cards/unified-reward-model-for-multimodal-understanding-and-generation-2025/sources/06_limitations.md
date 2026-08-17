@@ -1,0 +1,2 @@
+1. **Primary limitation.** Different tasks may have conflicting criteria that a shared scalar hides. It should be calibrated separately by task and compared with human and task-specific rewards.
+2. **Curator audit risk.** Automatically generated preference pairs can feed reward-model bias back into the trained vision models. Replication should separate dataset artifacts from the claimed mechanism and report failures by task or subgroup.

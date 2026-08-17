@@ -1,0 +1,6 @@
+- **方法边界：** DAPO 只提供答案级 outcome supervision。整数答案匹配的 rollout 仍可能包含无效中间推理，等价答案也可能被提取或归一化规则拒绝。论文只给出 `is_equivalent` 接口，没有披露论文运行所用训练实现、校准集和误接收或误拒绝率。
+- **改写风险：** 一个身份未披露的 LLM 把非整数答案问题改写为整数目标任务。附录 A 只展示一个成功案例，并称多数输出令人满意，却没有给出生成器版本、验收阈值、通过率、复核流程或语义错误率。RL 开始前，题意或目标就可能已经改变。
+- **筛选与奖励风险：** Dynamic Sampling 从更新中移除全对和全错题组。作为 curator inference，这能增加有效梯度，但也形成依赖当前策略的 curriculum，并让最容易的成功与最困难的失败离开优化 batch。Soft Overlong Punishment 还把回答长度写入 reward，可能抑制正确但较长的解法。
+- **发布风险：** 论文称数据有 17K 个 prompt，但 Hub revision `6587709` 的单一 train split 显示 1,791,700 行并出现重复块。官方没有固定去重 manifest，也没有逐行来源 URL、原题、改写 trace、被拒改写或在线 rollout 发布。发布页的 Apache-2.0 标记不能解决底层网页与竞赛内容的权利问题。
+- **评估与污染风险：** 主要结果仅覆盖 AIME 2024。没有公开的去污染、来源重叠分析、替代 benchmark、随机种子方差或逐记录审计，因而无法把数据作用与 benchmark 重叠、优化器交互和运行方差分离。
+- **复现风险：** 论文、当前 DAPO 仓库、当前 verl-recipe、复现 commit 和 W&B 记录是多个独立版本面。DAPO README 目前仍链接已删除的训练代码 branch，后续官方复现的配置和硬件也未与论文运行完全绑定。版本漂移可能改变采样、reward、loss aggregation 和最终结果。

@@ -1,0 +1,1 @@
+Use this card when a deployment constraint forces you to make a quality-versus-cost decision. It helps readers form a comparison table that includes model size and computation together with the task metrics that matter to their users.

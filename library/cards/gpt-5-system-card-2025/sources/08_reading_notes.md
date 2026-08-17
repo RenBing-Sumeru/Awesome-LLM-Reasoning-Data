@@ -1,0 +1,6 @@
+- Keep the three broad training-source classes and filtering claims at category level; no source manifest, mixture, count, date range, rights map, or item lineage is available.
+- Record reinforcement-learning reasoning, router switches, response-preference rates, measured correctness, safe-completions, and the sycophancy reward signal as disclosed mechanisms, while preserving their examples, graders, reward functions, calibration, and optimization as unknown.
+- Separate standard, production-representative, public-benchmark, red-team, chain-of-thought, and Preparedness evaluations from training data; reported scores are behavioral evidence, not data-quality evidence.
+- Separate model training from deployment safeguards, including system-level biological protections, account enforcement, API controls, cached browsing after connector calls, and access programs.
+- Treat gpt-5-thinking results as proxy evidence for ordinary gpt-5-thinking-pro safety evaluations; those evaluations were not rerun under parallel test-time compute.
+- Keep the launch card separate from later GPT-5 addenda and successor system cards.

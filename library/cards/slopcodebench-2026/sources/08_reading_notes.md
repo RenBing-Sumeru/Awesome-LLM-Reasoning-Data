@@ -1,0 +1,6 @@
+- Data object: 36 public black-box problems form 196 ordered checkpoints, with 3-8 checkpoints per problem and only the prior workspace carried forward.
+- Feedback contract: strict includes regressions, isolated excludes them, and core keeps only core tests; erosion and verbosity are separate deterministic source metrics.
+- Missing-data boundary: crash or failure zeros remaining correctness, while checkpoints without workspaces are excluded from quality averages.
+- Main evidence: best strict is 14.8%, no configuration fully solves 1 of 36 problems, and erosion/verbosity rise in 77%/75.5% of trajectories.
+- Release boundary: runner v0.3 is MIT and problem set v1.0 is Apache-2.0; tests/reference solutions are public, but complete paper-run trajectories are not.
+- Reuse decision: evaluation and audit only; before rerunning, pin versions, retain all outcomes, isolate credentials/networking, and audit contamination, rights, privacy, and metric validity.

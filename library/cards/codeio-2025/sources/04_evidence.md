@@ -1,0 +1,3 @@
+1. On Qwen2.5-Coder-7B, the general-instruction-only baseline averages 54.8 across the reported measurements; CODE I/O reaches 57.2 and CODE I/O++ 57.7. The corresponding Llama-3.1-8B averages are 49.3, 51.2, and 52.1. Because stage two and evaluation stay fixed, these comparisons support the value of the executable I/O traces and feedback-bearing revisions.
+
+2. The source and objective ablations bound that claim. A roughly 50% CODE I/O subset averages 56.7 on Qwen2.5-Coder-7B versus 57.2 for the full set, while removing CodeMix falls to 56.3 and removing PyEdu-R reaches 57.0. Rejecting wrong responses is also weaker than keeping feedback-bearing records, so scale, source diversity, and explicit correction context all contribute; no single component explains every gain.

@@ -1,0 +1,94 @@
+id: webdevjudge-2026
+title: 'WebDevJudge: Evaluating (M)LLMs as Critiques for Web Development Quality'
+year: 2026
+venue: ICLR 2026 Oral
+authors:
+- Chunyang Li
+- Yilun Zheng
+- Xinting Huang
+- Tianqing Fang
+- Jiahao Xu
+- Lihui Chen
+- Yangqiu Song
+- Han Hu
+source_role:
+- benchmark
+verification_contract:
+- judgment_required
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- agents
+training_use:
+- evaluation
+- reward_modeling
+construction_layer:
+- reward_verifier_layer
+artifacts:
+  paper: https://openreview.net/forum?id=CCSPm6V5EF
+  arxiv: null
+  code: https://github.com/lcy2723/WebDevJudge
+  data: https://github.com/lcy2723/WebDevJudge
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://openreview.net/forum?id=CCSPm6V5EF
+  openreview: https://openreview.net/forum?id=CCSPm6V5EF
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official web-development evaluation release
+  trace_author: unknown
+  answer_format: web artifact, critique, and quality judgment
+  process_fields:
+  - task
+  - web artifact
+  - critique
+  - judge outcome
+  environment_or_substrate: web development evaluation setting
+  verifier_or_reward: paper-specific critique evaluator
+  terminal_predicate: web-quality judgment
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official release
+  split: see official artifact
+  decontamination: see official artifact
+  license: see official artifact
+  lineage: official paper and release
+  known_failure_modes:
+  - Inspect the original release before using critic scores as training labels.
+  citation_status: verified
+  confidence: high
+  notes: Restored as the ICLR 2026 Oral version; it is distinct from the removed arXiv-only duplicate.
+inclusion_reason: 'Track 07: evaluator and rubric reliability for web-development artifacts.'
+related: []
+tags:
+- track07
+- judge
+- web-development
+status: verified
+one_line_summary: An ICLR 2026 oral benchmark for evaluating model critiques of web-development quality.
+why_it_matters: It provides a domain-specific judgment surface for studying evaluator reliability.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official OpenReview venue page recorded.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,104 @@
+id: unprm-uncertainty-process-reward-data-2026
+title: Uncertainty-Based Methods for Automated Process Reward Data Construction and Output Aggregation in Mathematical Reasoning
+year: 2026
+venue: AAAI 2026
+authors:
+- Jiuzhou Han
+- Wray Buntine
+- Ehsan Shareghi
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- mathematical-reasoning
+- process-reward-modeling
+- uncertainty-estimation
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/40351
+  arxiv: https://arxiv.org/abs/2508.01773
+  code: https://github.com/Jiuzhouh/UnPRM
+  project: null
+  data: https://github.com/Jiuzhouh/UnPRM/blob/main/data.zip
+  huggingface: null
+  venue: https://ojs.aaai.org/index.php/AAAI/article/view/40351
+  doi: https://doi.org/10.1609/aaai.v40i37.40351
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Mathematics problems and solution traces used to construct automated process-reward supervision.
+  trace_author: Model-generated solution trajectories filtered and labeled by uncertainty-based procedures.
+  answer_format: Mathematical solution traces paired with process-level reward labels for training and aggregation.
+  process_fields:
+  - solution_trace
+  - step_label
+  - uncertainty_signal
+  - process_reward
+  environment_or_substrate: Mathematical reasoning with verifiable final answers.
+  verifier_or_reward: Automated process-reward annotation informed by uncertainty estimates and answer verification.
+  terminal_predicate: The final mathematical answer is verified against the task answer.
+recipe_metadata:
+  base_model: See the official paper and repository for model configurations.
+  teacher: Automated uncertainty-based annotation rather than a separately released human teacher.
+  generator: Model-generated mathematical reasoning traces.
+  filtering_rule: Uncertainty estimates guide the selection and automated labeling of process-reward data.
+  sampling_protocol: The release constructs process-reward data from mathematical reasoning trajectories and uses the resulting
+    rewards for output aggregation.
+  inference_budget: See the official paper for task-specific sampling and aggregation settings.
+  optimizer_or_scaffold: Process reward model training and uncertainty-aware output aggregation.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Mathematical problems, model-generated reasoning traces, automated uncertainty signals, and verified answers.
+  split: Consult the official repository and data archive for released split definitions.
+  decontamination: Keep benchmark evaluation problems separate from any traces used to train the process reward model.
+  license: Refer to the official GitHub repository and data archive for release-specific terms.
+  lineage: AAAI 2026 proceedings paper, arXiv preprint, and the authors' official UnPRM repository.
+  known_failure_modes:
+  - Uncertainty is only a proxy for step correctness and can be miscalibrated
+  - Automated labels inherit errors from the underlying verifier or answer key
+  - Evidence is focused on mathematical reasoning with checkable final answers
+  citation_status: verified
+  confidence: high
+  notes: Verified the formal AAAI 2026 title, author list, affiliations, DOI, arXiv record, and author-maintained GitHub code
+    and data archive.
+inclusion_reason: The official release provides reusable step-level supervision for training or evaluating reasoning reward
+  models and verifiers.
+related: []
+tags:
+- process-supervision
+- reasoning
+- reward-modeling
+one_line_summary: UnPRM uses uncertainty-guided sampling and automated step annotation to build mathematical process-reward
+  data, then combines reward scores and answer frequencies for output aggregation.
+why_it_matters: It couples a scalable recipe for process-reward data construction with the downstream answer-aggregation rule
+  that consumes those rewards.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the formal AAAI 2026 title, author list, affiliations, DOI, arXiv record, and author-maintained GitHub code
+    and data archive.
+category_ids:
+- process_trace_supervision_data

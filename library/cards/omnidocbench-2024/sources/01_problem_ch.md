@@ -1,0 +1,3 @@
+OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations 定义了 document-ai, multimodal-reasoning-benchmark 的评测面：模型输出或智能体轨迹必须满足任务特定的反馈契约。主来源与产物是 paper: https://arxiv.org/abs/2412.07626; project: https://opendatalab.com/omnidocbench; code: https://github.com/opendatalab/OmniDocBench; data: https://huggingface.co/datasets/opendatalab/OmniDocBench; doi: https://doi.org/10.48550/arXiv.2412.07626；本地元数据记录的年份/来源为 2024 / CVPR 2025 / arXiv。
+
+收录边界是 benchmarks_evaluation_surfaces，来源角色为 benchmark，验证契约为 混合。一个评测实例 里包含：官方记录 expose PDF parsing, layout, OCR, table, and formula recognition, prompt/task 元数据, a model output surface, and a score or success target。除非官方产物另有训练数据说明，否则这张卡把它视为评测、审计，不是训练配方。它对 atlas 的价值在于把任务对象、输出和验证器/裁判/奖励/环境谓词 绑定起来，而不是只记录抽象能力结论。

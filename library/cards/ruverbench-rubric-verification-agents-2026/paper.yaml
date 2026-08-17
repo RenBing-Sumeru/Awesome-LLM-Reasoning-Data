@@ -1,0 +1,104 @@
+id: ruverbench-rubric-verification-agents-2026
+title: Can LLM-as-a-Judge Reliably Verify Rubrics in Agentic Scenarios?
+year: 2026
+venue: arXiv 2026
+authors:
+- Yangda Peng
+- Yunjia Qi
+- Hao Peng
+- Haotian Xia
+- Guanzhong He
+- Xintong Shi
+- Richeng Xuan
+- Songyuanyi Lu
+- Yixian Liu
+- Zhichao Hu
+- Yuhong Liu
+- Lei Hou
+- Bin Xu
+- Juanzi Li
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- llm_judge
+- rubric_evaluation
+training_use:
+- evaluation
+- sft
+- reward_modeling
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.29920
+  arxiv: https://arxiv.org/abs/2606.29920
+  code: https://github.com/THU-KEG/RuVerBench
+  data: https://github.com/THU-KEG/RuVerBench
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2606.29920
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Official release; see the linked primary paper or data card.
+  trace_author: Human experts, annotators, or the official release pipeline.
+  answer_format: Model-generated report or code output, task rubric, and a human compliance label.
+  process_fields:
+  - prompt
+  - rubric
+  - response
+  - label_or_verdict
+  environment_or_substrate: Rubric-based LLM evaluation
+  verifier_or_reward: Human annotators provide compliance labels; frontier LLM judges are evaluated.
+  terminal_predicate: The released judgment label or rubric verdict is available for evaluation or training.
+recipe_metadata:
+  base_model: See official release.
+  teacher: Human experts or official annotators.
+  generator: Official release pipeline.
+  filtering_rule: See official paper or data card.
+  sampling_protocol: See official paper or data card.
+  rollout_count: null
+  temperature: null
+  inference_budget: See official paper or data card.
+  optimizer_or_scaffold: Evaluation or post-training use described in the official release.
+audit:
+  source_mixture: Official primary paper/data release and linked official artifacts.
+  split: See official release.
+  decontamination: Public benchmark or training records should be held out where applicable.
+  license: See official artifact page.
+  lineage: https://github.com/THU-KEG/RuVerBench
+  known_failure_modes:
+  - Judge agreement can be sensitive to prompt formulation, batching, and voting policy.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv paper and the authors' THU-KEG GitHub release were checked; no accepted venue was verified.
+inclusion_reason: The release provides rubric- or judgment-grounded records that can train, evaluate, or audit LLM-based evaluators.
+related: []
+tags:
+- rubric
+- llm_judge
+- evaluation
+one_line_summary: RuVerBench tests whether LLM judges can verify rubric compliance for long agentic reports and code against
+  human labels.
+why_it_matters: It exposes rubric-grounded evaluation signals and their audit boundary.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official arXiv paper and the authors' THU-KEG GitHub release were checked; no accepted venue was verified.
+category_ids:
+- judgment_rubric_domain_expert_data

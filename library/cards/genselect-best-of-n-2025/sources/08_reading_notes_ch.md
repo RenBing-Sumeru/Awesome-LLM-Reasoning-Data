@@ -1,0 +1,5 @@
+- 应把 Section 3.2、4.3 与 Table 2–5 连读：64 个候选的 pool size、淘汰赛分支数 \(N\) 和 selector 重复次数是不同预算。
+- Figure 2 定义了实际 feedback interface：先生成比较式推理，再输出零基文本字段 `Judgment: [IDX]`。
+- 73.4% 与 87.1% 是特定 QwQ 和 DeepSeek 设置下由作者报告的 selector 结果，不能作为 selector trace 是高质量训练数据的证明。
+- 必须区分目标论文对象与 OpenMathReasoning：前者的 Comp-Math 候选池未发布；后者包含 565,620 条打包、按正确性过滤的训练记录，但没有独立 chosen index 或逐候选标签。
+- 复现时应优先核查目标候选池与 seed、完整轨迹和摘要轨迹的差异、prompt 与 parser 版本、HMMT judge output、逐排列日志，以及按 token/latency 归一化的预算。

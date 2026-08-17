@@ -1,0 +1,3 @@
+The atlas value is the disclosure boundary created by placing model-development controls and deployment controls side by side. Nova 2 Lite's card names source classes, SFT/RLHF, prompt augmentation, input/output filtering, hidden extended thinking, automated assessment, human judgment, and red teaming, while leaving the record-level pipeline closed.
+
+This is not evidence of a new reusable dataset, a disclosed preference-learning algorithm, or transparent chain-of-thought supervision. The useful comparison is with other frontier reports: Nova 2 Lite exposes a relatively detailed service interface and evaluation stack, yet its training mixture, reward contract, and audit lineage remain unknown.

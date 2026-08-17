@@ -1,0 +1,5 @@
+Mind2Web: Towards a Generalist Agent for the Web asks how model capability should be measured through offline real-website action traces with HTML snapshots across many sites. The primary source is https://arxiv.org/abs/2306.06070; the verified venue or status recorded in this Card is NeurIPS 2023 Datasets and Benchmarks Track Spotlight / arXiv (2023).
+
+The decision boundary is benchmark and evaluation-surface curation. This Card treats the work as a scoring, verifier, judge, environment, or benchmark surface rather than as a generic model result. The concrete object to inspect is task description, website context, HTML snapshot, action target, and step sequence.
+
+L4 collection note: author, institution, venue/status, and public artifact metadata have been checked against official sources where available. The main audit boundary is: OpenReview/proceedings, arXiv, project, GitHub, and Hugging Face sources verify The Ohio State University affiliation, NeurIPS 2023 Datasets and Benchmarks Track Spotlight status, and public artifacts; test splits and raw dumps have access caveats.

@@ -1,0 +1,5 @@
+- SPCT 将 Rejective Fine-Tuning 与针对生成原则、critique 和分数的 rule-based GRPO 结合。
+- 27B 配方报告 1,256K 条 RFT 数据和 237K 条 RL 数据，其中包含较大内部数据部分。
+- 推理时 scaling 对重复 pointwise score 求和；Meta RM guided voting 会评估采样的判断轨迹。
+- 官方列出 16B、27B 与 MetaRM checkpoint，但原始数据、critique 和代码未确认。
+- 奖励 benchmark scaling 评测的是 judge pipeline，不是轨迹或来源混合质量证明。

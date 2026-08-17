@@ -1,0 +1,5 @@
+Post-training reasoning-data papers often report gains without a shared language for the supervised object, its verifier, the model for which it is difficult, or how records were reused. As a result, apparently conflicting claims may describe different prompts, traces, rewards, training stages, or scale regimes rather than a real scientific disagreement.
+
+This primer synthesizes more than 150 public studies and system reports around four practical questions: what reasoning data is, what makes it useful, how it is constructed, and how it scales. It turns scattered results into a decision framework that keeps data, model, verifier, trajectory, and lineage context attached to each claim.
+
+L4 facts: Primary source arXiv:2606.02113 (2026); status: arXiv preprint; decision boundary: accept a claim only within its documented data and evidence contract; evaluation surface: source study, data object, construction path, utility signal, and caveat; collection note: directly defines the post-training reasoning-data field.

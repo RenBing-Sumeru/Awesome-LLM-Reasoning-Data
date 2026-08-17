@@ -1,0 +1,3 @@
+Training records contain tasks, page states, histories, candidate actions, checklist judgments, and preferences. Agent trajectories provide comparable alternatives through downstream page changes. Training data and WebRewardBench must remain strictly separated.
+
+Each record should reconstruct the input, process state, judgment evidence, and acceptance result. The work organizes records around page observations, same-state actions, checklists, process preferences, and terminal outcomes, making the verifier, judge, environment, or execution source traceable for WebRewardBench and web-agent RL. Undisclosed licensing, audit coverage, format, and decontamination should remain unconfirmed.

@@ -1,0 +1,157 @@
+id: learnalign-data-selection-2025
+title: 'LearnAlign: Data Selection for LLM Reinforcement Learning with Improved Gradient Alignment'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Shipeng Li
+- Zhiqin Yang
+- Shikun Li
+- Xiaobo Xia
+- Hengyu Liu
+- Xinghua Zhang
+- Gaode Chen
+- Dong Fang
+- Ying Tai
+- Zhe Peng
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+- code
+- reasoning_data_selection
+training_use:
+- rlvr
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.2009/
+  arxiv: https://arxiv.org/abs/2506.11480
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.2009
+  venue: https://aclanthology.org/2026.findings-acl.2009/
+  acl: https://aclanthology.org/2026.findings-acl.2009/
+  bibtex: https://aclanthology.org/2026.findings-acl.2009.bib
+data_object:
+  prompt_source: GSM8K train contributes 7,473 question-answer pairs; DAPO-MATH-17K supplies the larger mathematical prompt
+    pool. LearnAlign selects policy-specific prompt subsets and does not publish a new reasoning-trace dataset.
+  trace_author: The exact target Qwen2.5 policy after random-subset GRPO warmup generates eight exploration rollouts per prompt.
+    The efficient DAPO setting estimates each prompt gradient from one correct rollout.
+  answer_format: GSM8K prompts request separate <think> and <answer> fields. DAPO-MATH-17K prompts request step-by-step reasoning
+    with the final answer in a boxed form.
+  process_fields:
+  - upstream_prompt_id_and_revision
+  - question
+  - ground_truth_answer
+  - warmup_membership
+  - policy_checkpoint
+  - eight_rollouts
+  - binary_correctness
+  - success_rate
+  - learnability_p_times_one_minus_p
+  - projected_GRPO_gradient
+  - pairwise_LearnAlign_scores
+  - row_average_score
+  - top_N_rank_and_decision
+  environment_or_substrate: Offline scoring at one warmed-up policy checkpoint, followed by GRPO/RLVR training on the selected
+    prompt subset.
+  verifier_or_reward: A rule-based binary final-answer judgment supplies rollout success. The paper does not specify the exact
+    extractor or equivalence implementation. Learnability V=p(1-p) weights cosine alignment between projected per-prompt GRPO
+    gradients; this is a selection score, not a process verifier.
+  terminal_predicate: Average each prompt's pairwise LearnAlign scores over all n candidates, including itself, sort row means
+    in descending order, and retain the top N prompts for subsequent RLVR.
+recipe_metadata:
+  base_model: Qwen2.5-1.5B-Instruct for GSM8K; Qwen2.5-3B and Qwen2.5-7B for DAPO-MATH-17K.
+  teacher: none reported; ground-truth final answers and the warmed-up target policy provide correctness feedback and rollouts.
+  generator: The target Qwen2.5 policy after GRPO warmup on a random subset generates the eight rollouts used for learnability
+    estimation.
+  filtering_rule: Normalize each per-prompt GRPO gradient, multiply by p(1-p), apply a random projection, compute the n-by-n
+    cosine-alignment matrix, average each row, and select the highest-scoring N prompts.
+  sampling_protocol: Random warmup subset to GRPO warmup to eight rollouts per prompt at temperature 1.0 to binary success
+    and p(1-p) to projected GRPO gradient to pairwise score matrix to row mean to top-N subset to downstream GRPO.
+  rollout_count: 8
+  temperature: 1.0 for selection rollouts and training generation; evaluation uses 0 for GSM8K and 0.8 with top-p 0.95 for
+    the five-benchmark DAPO setting.
+  inference_budget: Warmup uses 300 GSM8K or 1,000 DAPO-MATH-17K prompts. GSM8K selection sizes are 100, 500, 1,000, and 2,000;
+    DAPO selection uses 1,000 prompts. The nominal score computation costs O(n^2 d) time and O(n^2) space; random-projection
+    dimension, projection seed, and training seeds are unknown.
+  optimizer_or_scaffold: GRPO with AdamW, learning rate 1e-6, beta1 0.9, beta2 0.999, epsilon 1e-8, KL coefficient 0.04, clip
+    ratio 0.2, cosine warmup ratio 0.1, and two epochs. Batch size is 48 for GSM8K and 64 for DAPO-MATH-17K; maximum response
+    lengths are 1,024 and 2,048 respectively.
+audit:
+  source_mixture: Public GSM8K or DAPO-MATH-17K prompt-answer pairs, a random warmup subset, target-policy rollouts, binary
+    final-answer labels, and projected GRPO gradients.
+  split: Selection uses training pools. Evaluation uses GSM8K and MATH500 pass@1, AMC2023 avg@8, AIME2024 pass@8, and CRUX
+    pass@1. Appendix captions unexpectedly call some DAPO experiments DAPO-MATH-14K rather than DAPO-MATH-17K, with no mapping
+    or explanation.
+  decontamination: unknown
+  license: The ACL paper is CC BY 4.0, but no LearnAlign code or selected-data artifact is released. Upstream GSM8K, DAPO-MATH-17K,
+    generated rollouts, and any future implementation require separate rights checks.
+  lineage: Upstream prompt and gold answer to random warmup membership to exact warmed-up checkpoint to eight rollouts and
+    binary judgments to p(1-p) to projected GRPO gradient to pairwise matrix and row mean to top-N prompt ID to downstream
+    GRPO run.
+  known_failure_modes:
+  - Scores are policy-, checkpoint-, tokenizer-, prompt-template-, warmup-, pool-, parser-, projection-, and seed-specific
+    and become stale as the policy changes.
+  - Eight rollouts discretize success rate in increments of one eighth; no confidence interval or adaptive rollout rule is
+    supplied per prompt.
+  - Binary final-answer feedback does not validate intermediate reasoning, and the exact answer extractor and equivalence
+    checker are undisclosed.
+  - The efficient one-correct-rollout gradient drops failure-gradient information and leaves handling of prompts with no correct
+    rollout unspecified.
+  - Random-projection dimension, random seed, selected prompt IDs, scores, rollouts, gradients, rejected records, and downstream
+    run bindings are not released.
+  - The n-by-n matrix is quadratic before proposed Nyström or cascade approximations; those ultra-large-scale paths are suggestions
+    rather than reported LearnAlign runs.
+  - Main text uses DAPO-MATH-17K while Appendix F/H captions use DAPO-MATH-14K, so the effective candidate-pool manifest is
+    unresolved.
+  - Results are limited to Qwen2.5 models from 1.5B to 7B and primarily mathematical selection pools; CRUX is evaluation-only.
+  - Training-seed variance is not reported. Three warmup subsets produce visible but bounded metric differences, and no complete
+    immutable run manifest is available.
+  - The Responsible NLP checklist says no explicit identifying/offensive-content check was conducted, relying instead on the
+    assertion that the datasets are widely used and contain no personal information.
+  citation_status: verified
+  confidence: high
+  notes: Verified against the complete Findings of ACL 2026 paper and appendices, ACL metadata and BibTeX, arXiv v4 history,
+    and the official Responsible NLP checklist. ACL and arXiv expose no official code or selected-data link as of 2026-07-21;
+    repository searches found no attributable release.
+inclusion_reason: LearnAlign provides a policy-aware recipe for constructing smaller RLVR prompt subsets from rollout success
+  and projected gradient alignment while making selection compute and score lineage central audit objects.
+related: []
+tags:
+- learnalign
+- data-selection
+- gradient-alignment
+- learnability
+- rlvr
+- grpo
+status: partial
+category_ids:
+- data_construction_open_release_recipes
+- training_usage_optimization_objectives
+one_line_summary: LearnAlign ranks prompts for one warmed-up RLVR policy by combining p(1-p) learnability with average cosine
+  alignment among projected GRPO gradients, then trains on the top-N subset; no selected subset or implementation is released.
+why_it_matters: For data construction and open releases, it turns prompt selection into a checkpoint-relative data stage whose
+  rollouts, verifier decisions, gradients, projection, ranking, and run bindings must be preserved for audit.
+needs:
+- 'needs_code: official implementation, exact answer checker, projection configuration, and scalable matrix path'
+- 'needs_data: selected and rejected prompt IDs, scores, eight rollouts, correctness judgments, gradients, warmup membership,
+  and immutable upstream revisions'
+- 'needs_metadata: reconcile DAPO-MATH-17K with Appendix DAPO-MATH-14K captions and publish the effective candidate-pool manifest'
+- 'needs_audit: training-seed stability, score staleness, no-correct-rollout handling, parser errors, and contamination'
+- 'needs_license: upstream dataset, generated-rollout, selected-subset, and future code terms'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-21'
+  verified_by: card_writer
+  confidence: high
+  notes: Publication artifacts are verified; implementation and selected-data artifacts remain absent.

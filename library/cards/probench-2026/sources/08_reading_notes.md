@@ -1,0 +1,6 @@
+- Keep the arithmetic fixed: **217 = 149 State + 68 Process**; **75 English + 142 Chinese** tasks span 34 applications.
+- Process Provider creates evaluator-facing action evidence from a11y nodes or screenshot changes; it is not gold process supervision, agent-visible feedback, or a second reward.
+- Main experiments use Structure Description Converter plus Gemini 2.5 Pro terminal judging; Gemini 2.5 Pro summarization appears in the validation comparison.
+- Success requires `COMPLETE` plus a satisfied judge; 15 steps without completion is Uncompleted, and five repeated identical operations trigger early failure.
+- Manual clearing of app histories does not guarantee device, account, server, cookie, locale, network, or content equivalence across runs.
+- No official code, task manifest, environment, trajectory/results corpus, split, or artifact license is confirmed; AAAI paper rights cannot be projected onto unavailable data.

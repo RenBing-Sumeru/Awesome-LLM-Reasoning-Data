@@ -1,0 +1,7 @@
+AndroidWorld、AndroidLab、SPA-Bench、B-MoCA、GUI Odyssey等移动智能体基准已经提供截图/动作评测、accessibility信息、多步任务或程序化检查。iOSWorld的具体变化，是把原生iOS作为substrate，并通过一个持续存在的合成persona连接26个应用，使multi-app与memory任务依赖共享个人状态，而不只依赖局部界面转移。
+
+第二项变化是已发布的评测对象：含133条记录、1,123条criterion的任务manifest，与确定性应用数据reseed、丰富的trajectory capture和GPT-5.4 Mini full-episode rubric judge相耦合。反馈接口同时给出criterion满足比例与“全部criterion通过”的严格pass。它属于judgment-based contract，而不是AndroidWorld式程序化end-state contract；这扩大了语义覆盖，也使judge calibration、API固定、rubric完整性及false positive/false negative分析成为数据规范的一部分。
+
+可选MCP层提供另一种可检查的接口变化：保持任务与judge不变，以逐应用typed operation替代部分screen-level action。Qwen消融说明接口会实质影响结果，但MCP、Appium、XCUITest、LLM judging和模拟器重置都不是新组件。同样，26个应用与133项任务体现规模和工程整合，不能独立证明record-level quality。
+
+对推理数据研究而言，方向信号来自一条可执行链：合成状态与任务provenance、reset、observation/action episode、rubric judgment及failure analysis。复用前仍需核实不可变的环境/结果bundle、完整成功与失败轨迹、judge prompt/API snapshot、逐记录构造lineage、明确的评测split与contamination政策，以及完整第三方归因。在这些检查完成前，该发布应被视为benchmark recipe，而非开放训练轨迹语料。

@@ -1,0 +1,110 @@
+id: fs-researcher-2026
+title: 'FS-Researcher: Test-Time Scaling for Long-Horizon Research Tasks with File-System-Based Agents'
+year: 2026
+venue: ACL 2026
+authors:
+- Chiwei Zhu
+- Benfeng Xu
+- Mingxuan Du
+- Shaohan Wang
+- Xiaorui Wang
+- Zhendong Mao
+- Yongdong Zhang
+source_role:
+- agent_environment
+- construction_recipe
+- scaling_study
+verification_contract:
+- environmental
+- judgment_required
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- deep_research
+- web_agents
+- long_horizon_reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.288/
+  arxiv: null
+  code: https://github.com/Ignoramus0817/FS-Researcher
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.288
+  venue: https://aclanthology.org/2026.acl-long.288/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.288/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: DeepResearch Bench and DeepConsult; full manifests unverified.
+  trace_author: Context Builder creates notes/raw archives; Report Writer reads workspace.
+  answer_format: Persistent hierarchical files and report sections.
+  process_fields:
+  - web_source
+  - raw_archive
+  - structured_note
+  - file_path
+  - report_section
+  - handoff
+  environment_or_substrate: Shared filesystem external memory and agent coordination.
+  verifier_or_reward: No per-action verifier established.
+  terminal_predicate: Report completion; detailed quality predicate unknown.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: Context Builder collects/writes; Report Writer synthesizes.
+  filtering_rule: Source selection thresholds unknown.
+  sampling_protocol: Context Builder compute analysed; exact budgets unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: Workspace growth beyond context window.
+  optimizer_or_scaffold: Dual-agent persistent-memory scaffold.
+audit:
+  source_mixture: No task/page/workspace/report lineage release.
+  split: Named benchmarks, manifests unverified.
+  decontamination: unknown
+  license: Repo/web/benchmark rights require review.
+  lineage: task -> web collection -> raw archive/notes -> workspace -> report
+  known_failure_modes:
+  - Web sources drift.
+  - Workspace snapshots/provenance unavailable.
+  - Tool/filesystem/API affect reproducibility.
+  - No per-action verifier/rubric.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL and code checked.
+inclusion_reason: Persistent workspace state is an inspectable long-horizon trace substrate.
+related: []
+tags:
+- deep-research
+- file-system
+- external-memory
+- long-horizon
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: FS-Researcher preserves source archives and notes in a shared file-system workspace for long-horizon research.
+why_it_matters: It elevates durable workspace state to a Track 5 trace object.
+card: null
+needs:
+- needs_data
+- needs_metadata
+- needs_verifier
+- needs_audit
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official ACL and code checked.

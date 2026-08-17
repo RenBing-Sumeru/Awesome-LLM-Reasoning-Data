@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Explorer 从 175K 次实时网页尝试中保留 94K 条 GPT-4o verifier 接受的多模态轨迹，用于网页智能体 SFT；但官方未提供该语料的不可变快照、清单或专属许可。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "多模态网页轨迹合成与筛选配方",
+  "best_for_ch": "研究网页智能体训练、实时环境轨迹构造、学习型 verifier 与数据发布审计的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Vardaan Pahuja、Yadong Lu、Corby Rosset、Boyu Gou、Arindam Mitra、Spencer Whitehead、Yu Su、Ahmed Hassan Awadallah",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

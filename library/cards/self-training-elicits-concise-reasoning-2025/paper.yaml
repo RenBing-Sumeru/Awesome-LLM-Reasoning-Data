@@ -1,0 +1,118 @@
+id: self-training-elicits-concise-reasoning-2025
+title: Self-Training Elicits Concise Reasoning in Large Language Models
+year: 2025
+venue: 'Findings of the Association for Computational Linguistics: ACL 2025'
+authors:
+- Tergel Munkhbat
+- Namgyu Ho
+- Seo Hyun Kim
+- Yongjin Yang
+- Yujin Kim
+- Se-Young Yun
+source_role:
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- mathematical_reasoning
+training_use:
+- sft
+- evaluation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.1289/
+  arxiv: https://arxiv.org/abs/2502.20122
+  code: https://github.com/TergelMunkhbat/concise-reasoning
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-acl.1289
+  venue: https://aclanthology.org/2025.findings-acl.1289/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.1289/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Original GSM8K (7,473 train/1,319 test) and MATH (7,500 train/MATH-500 evaluation) splits.
+  trace_author: Each target model generates its own candidates; optional few-shot exemplars are human, GPT-4o, or target-model
+    generated.
+  answer_format: Question plus reasoning path ending in an extractable final answer; a Python parser normalizes and compares
+    the answer with the oracle.
+  environment_or_substrate: Offline vLLM generation, per-question shortest-correct selection, one-epoch HuggingFace Trainer
+    SFT, and greedy evaluation.
+  verifier_or_reward: Programmatic final-answer parser; FS-Self additionally uses GPT-4o ACCEPT/REJECT judgment for eight
+    exemplars.
+  terminal_predicate: Select the shortest parser-correct candidate for each question; exclude questions with no correct candidate.
+    FS-Self exemplars must also pass GPT-4o.
+recipe_metadata:
+  base_model: 'Main: Llama-3.2-3B, Gemma-2-2B, Qwen2.5-3B, Qwen2.5-Math-1.5B, DeepSeekMath-7B; scaling adds Llama-3.2-1B and
+    Llama-3.1-8B.'
+  teacher: No external teacher for naive BoN; few-shot variants use human, GPT-4o, or self-generated exemplars. GPT-4o revision
+    is unknown.
+  generator: Target-model stochastic candidates from default and/or few-shot-conditioned distributions.
+  filtering_rule: Per question, parser-filter correct answers and select the shortest token sequence; FS-Self adds GPT-4o
+    exemplar judgment.
+  sampling_protocol: 'Naive BoN: 16 paths/question. FS-BoN: 16 conditioned + 16 default, plus matched 8+8. FS-Self: 128 paths
+    for each of 128 random training questions, then select eight exemplars. T=0.7; caps 512 GSM8K/1,024 MATH.'
+  rollout_count: 16 primary; 16+16 or 8+8 FS-BoN; 128 per selected question for FS-Self exemplar search.
+  temperature: 0.7 for data generation; greedy evaluation.
+  inference_budget: Search cost is paid during data construction so the fine-tuned model is evaluated greedily.
+  optimizer_or_scaffold: HuggingFace Trainer, one epoch, batch 16, learning rate 1e-5, BF16; vLLM generation; main experiments
+    approximately 1,000 H100 GPU-hours.
+audit:
+  source_mixture: GSM8K/MATH question+oracle -> target-model candidates under default/few-shot prompts -> parser correctness
+    -> per-question shortest selection -> SFT; FS-Self adds GPT-4o exemplar judgment.
+  split: Original dataset splits are used; no immutable retained/rejected trace manifest is verified.
+  decontamination: unknown
+  license: Paper reports original GSM8K and MATH licenses as MIT and repository code as MIT; generated trace corpus license
+    is unknown because no complete corpus is released.
+  lineage: Recipe is public, but per-row source ID, all candidates, parser outputs, selected ID, prompt/model revision and
+    run seed are not released together.
+  known_failure_modes:
+  - Final-answer parser acceptance does not prove rationale validity or faithfulness.
+  - Shortest-correct selection can favor terse shortcuts and parser exploits.
+  - Questions without any correct candidate disappear, shifting difficulty coverage.
+  - GPT-4o/manual exemplar filtering lacks a complete decision ledger.
+  - Training-time search dominates fine-tuning time in the paper's timing example.
+  - Evidence is task-specific mathematics; scaling beyond 8B and broader tasks remains limited.
+inclusion_reason: 'A direct Track 5 construction recipe: it samples multiple target-model reasoning paths per math question,
+  selects the shortest answer-verified path, and distills that search-selected trace behavior into SFT for lower-cost greedy
+  inference.'
+related: []
+tags:
+- best-of-n
+- self-training
+- concise-reasoning
+- shortest-correct-selection
+- few-shot-conditioning
+- gsm8k
+- math
+- sft
+- test-time-compute
+status: partial
+one_line_summary: Per-question self-training selects the shortest parser-correct target-model rollout—optionally from few-shot-conditioned
+  candidates—and distills it with one-epoch SFT for shorter greedy math reasoning.
+why_it_matters: It converts best-of-N search into concise SFT traces for the rollout-search track, while exposing the need
+  to audit training-time compute, parser errors, dropped hard questions, and the unreleased accepted/rejected trajectory ledger.
+card: null
+needs:
+- 'needs_data: complete generated candidates, selected traces, parser outputs, source-row IDs and immutable splits'
+- 'needs_generation: checkpoint/tokenizer/chat-template revisions, prompts, seeds, retries and run logs'
+- 'needs_judge: GPT-4o revision, manual-filter records and agreement/error analysis'
+- 'needs_audit: dropped-question distribution, parser exploits, decontamination and total compute accounting'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: paper_curator
+  confidence: high
+  notes: Verified against ACL Anthology record/PDF, arXiv:2502.20122, and the paper-linked author repository. Code and model
+    links are verified; no complete reusable generated-trace data artifact is verified.
+category_ids:
+- rollout_search_test_time_trace_data

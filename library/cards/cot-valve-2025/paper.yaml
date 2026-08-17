@@ -1,0 +1,117 @@
+id: cot-valve-2025
+title: 'CoT-Valve: Length-Compressible Chain-of-Thought Tuning'
+year: 2025
+venue: ACL 2025
+authors:
+- Xinyin Ma
+- Guangnian Wan
+- Runpeng Yu
+- Gongfan Fang
+- Xinchao Wang
+source_role:
+- construction_recipe
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- process_reward
+domains:
+- mathematics
+- reasoning
+training_use:
+- sft
+- distillation
+construction_layer:
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.acl-long.300/
+  arxiv: https://arxiv.org/abs/2502.09601
+  code: null
+  data: null
+  project: null
+  huggingface: https://huggingface.co/collections/horseee/cot-valve
+  doi: null
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2025.acl-long.300/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: MixChain uses math/reasoning questions and mixed-length CoT outputs; official HF collections list MixChain
+    GSM8K/PRM12K/LIMO subsets.
+  trace_author: unknown
+  answer_format: Long and compressed chain-of-thought traces plus length-control signals; PRM12K filtering flags and the paper's
+    filtering description are not fully aligned.
+  process_fields:
+  - prompt
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: Test-time rollout, search, or allocation substrate described in the official paper; executable
+    environment availability is recorded per artifact.
+  verifier_or_reward: Correctness/process filtering is programmatic in the stated construction, but exact PRM configuration
+    and source subset provenance require the released records.
+  terminal_predicate: Method-specific final selection/stopping rule is described in the paper; exact implementation is unknown
+    unless an official artifact is linked.
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: CoT-Valve tunes a length-controllable reasoning model from a mixture of reasoning chains, selecting or compressing
+    traces to trade off length and performance.
+  filtering_rule: Correctness/process filtering is programmatic in the stated construction, but exact PRM configuration and
+    source subset provenance require the released records.
+  sampling_protocol: Official HF collection horseee/cot-valve lists MixChain assets (Apache license indicators). No official
+    training code or model release was confirmed.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: CoT-Valve tunes a length-controllable reasoning model from a mixture of reasoning chains, selecting
+    or compressing traces to trade off length and performance.
+audit:
+  source_mixture: Only sources described in the official paper; complete raw source mixture is unknown unless the Card links
+    an official data artifact.
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: MixChain uses math/reasoning questions and mixed-length CoT outputs; official HF collections list MixChain GSM8K/PRM12K/LIMO
+    subsets. -> Long and compressed chain-of-thought traces plus length-control signals; PRM12K filtering flags and the paper's
+    filtering description are not fully aligned. -> Correctness/process filtering is programmatic in the stated construction,
+    but exact PRM configuration and source subset provenance require the released records. -> reported final selection or
+    training use. Raw lineage records are not established as released.
+  known_failure_modes:
+  - Paper/release filtering descriptions may conflict; compression can remove essential steps, and exact raw-trace lineage
+    and verifier evidence are incomplete.
+  citation_status: verified
+  confidence: medium
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.
+inclusion_reason: 'It highlights that a short trace is not automatically auditable: filtering flags, source lineage, and compression
+  decisions must accompany the text.'
+related: []
+tags:
+- chain-of-thought
+- compression
+- length-control
+- mixchain
+- process-reward-model
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: A released mixed-length CoT resource and tuning recipe for controllable reasoning compression.
+why_it_matters: 'It highlights that a short trace is not automatically auditable: filtering flags, source lineage, and compression
+  decisions must accompany the text.'
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official primary source was read; unavailable release details are retained as unknown or null.

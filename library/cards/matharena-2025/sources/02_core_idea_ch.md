@@ -1,0 +1,1 @@
+核心贡献是一个以数学竞赛为支撑的评测平台，用新近发布的竞赛刷新 benchmark surface，并公开模型输出/日志用于审计。机制是收集当前竞赛题，在受控评测设置下运行多个模型，抽取或评审输出，再发布 leaderboard artifacts。最接近的对照是静态 MATH/MATH-500 风格 benchmark 和其他数学榜单。反馈契约是 mixed：final-answer tasks 用答案键检查，proof-style tasks 依赖 judge 或专家评审。方向标签是 live contamination audit 加 benchmark / evaluation surface。

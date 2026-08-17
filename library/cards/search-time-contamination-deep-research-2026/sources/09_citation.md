@@ -1,0 +1,3 @@
+Wang, Yongjie, Xinyue Zhang, Kunhong Yao, Zhiwei Zeng, Kaisong Song, Jun Lin, and Zhiqi Shen. “Search-Time Contamination in Deep Research Agents: Measuring Performance Inflation in Public Benchmark Evaluation.” arXiv:2606.05241, version 1, 3 June 2026.
+
+Primary artifact checked: arXiv v1, including methodology, Tables 1–7, agent/search configuration, judge prompt, URL patterns, human agreement, costs, limitations, and ethics statement. The paper-linked anonymous 4open.science result repository redirected to an HTTP 401 file endpoint on 2026-07-20, so code/data contents and license were not verified.

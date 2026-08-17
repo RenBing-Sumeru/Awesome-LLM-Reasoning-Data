@@ -1,0 +1,1 @@
+Human-labeled judge benchmarks measure agreement. Sage changes the target to rational-choice consistency without labels, using agreement benchmarks only for external validation. Its novelty is the label-free local/global contract, not transitivity itself.

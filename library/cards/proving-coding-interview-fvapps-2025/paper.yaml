@@ -1,0 +1,102 @@
+id: proving-coding-interview-fvapps-2025
+title: 'Proving the Coding Interview: A Benchmark for Formally Verified Code Generation'
+year: 2025
+venue: LLM4Code at ICSE 2025
+authors:
+- Quinn Dougherty
+- Ronak Mehta
+source_role:
+- data_release
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- formal-mathematics
+- lean4
+training_use:
+- evaluation
+- sft
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2502.05714
+  arxiv: https://arxiv.org/abs/2502.05714
+  code: null
+  data: https://huggingface.co/datasets/quinn-dougherty/fvapps
+  project: null
+  huggingface: https://huggingface.co/datasets/quinn-dougherty/fvapps
+  doi: https://doi.org/10.1109/LLM4CODE66737.2025.00014
+  venue: https://doi.org/10.1109/LLM4CODE66737.2025.00014
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: APPS-style programming problems converted into Lean 4 programming-and-proof tasks.
+  trace_author: Dataset authors and curated-quality-control contributors.
+  answer_format: A Lean 4 program, executable evaluation statements, and a theorem that requires a proof.
+  process_fields:
+  - problem statement
+  - Lean code
+  - '#eval checks'
+  - theorem statement
+  - proof hole
+  - curation metadata
+  environment_or_substrate: Lean 4 compiler and theorem prover.
+  verifier_or_reward: Lean compilation and kernel checking.
+  terminal_predicate: The implementation compiles and the specified Lean theorem is accepted without an unresolved proof.
+recipe_metadata:
+  base_model: Qwen2.5-Coder-32B-Instruct is reported for data-generation experiments.
+  teacher: Lean 4 compiler and proof kernel.
+  generator: Formalization pipeline extending APPS-style tasks with Lean specifications.
+  filtering_rule: Keep instances that compile and whose formal specification is valid in the pinned Lean environment.
+  sampling_protocol: The release contains 4,715 examples, including 1,083 curated quality-controlled examples; see the dataset
+    card for splits.
+  rollout_count: null
+  temperature: null
+  inference_budget: Report Lean version and proof-search budget when reproducing results.
+  optimizer_or_scaffold: Benchmark evaluation of code generation jointly with formal proof construction.
+audit:
+  source_mixture: Official arXiv paper, IEEE/ACM LLM4Code proceedings record, and author Hugging Face dataset.
+  split: 4,715 total examples with a 1,083-example curated subset; consult the release for split assignments.
+  decontamination: Audit APPS provenance, Lean library versions, and public benchmark exposure before using the corpus for
+    held-out evaluation.
+  license: Verify the Hugging Face dataset card and APPS upstream terms before redistribution.
+  lineage: https://arxiv.org/abs/2502.05714
+  known_failure_modes:
+  - Compilation and proof acceptance only establish correctness of the encoded specification.
+  - Natural-language task descriptions can remain ambiguous relative to their Lean formalizations.
+  - Public programming problems may overlap with model pretraining data.
+  citation_status: verified
+  confidence: high
+  notes: Paper, proceedings DOI, author affiliations, and the author-maintained Hugging Face release were checked; no official
+    code or project page was identified.
+inclusion_reason: FVAPPS pairs program synthesis with a Lean theorem whose acceptance is a deterministic final-outcome signal.
+related: []
+tags:
+- lean4
+- formal-verification
+- code-generation
+- program-synthesis
+- '2025'
+one_line_summary: FVAPPS reformulates coding-interview problems as Lean 4 programming-and-proof tasks, with compilation and
+  theorem checking as the final verifier.
+why_it_matters: It requires an agent to satisfy a machine-checked specification rather than only pass conventional unit tests.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: high
+  notes: Paper, proceedings DOI, author affiliations, and the author-maintained Hugging Face release were checked; no official
+    code or project page was identified.
+category_ids:
+- programmatically_verifiable_outcome_data

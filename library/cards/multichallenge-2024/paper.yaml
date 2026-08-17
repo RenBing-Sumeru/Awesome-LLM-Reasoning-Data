@@ -1,0 +1,86 @@
+id: multichallenge-2024
+title: 'MultiChallenge: A Realistic Multi-Turn Conversation Evaluation Benchmark Challenging to Frontier LLMs'
+year: 2025
+venue: arXiv
+authors:
+- MultiChallenge authors
+source_role:
+- benchmark
+verification_contract:
+- mixed
+- judgment_required
+supervision_granularity:
+- answer_level
+domains:
+- instruction-following
+- reasoning
+training_use:
+- evaluation
+- audit
+construction_layer:
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2501.17399
+  arxiv: https://arxiv.org/abs/2501.17399
+  doi: null
+  code: null
+  data: null
+  project: null
+data_object:
+  dataset_scale: multi-skill challenge benchmark surface; exact primary source and size need audit.
+  prompt_source: mixed challenge tasks.
+  trace_author: benchmark authors and evaluated models.
+  answer_format: task prompt, model answer, judge/checker output, and score.
+  process_fields:
+  - prompt
+  - model response
+  - expected answer or rubric
+  - score
+  environment_or_substrate: mixed reasoning/instruction tasks.
+  verifier_or_reward: mixed exact, rule, or judge scoring.
+  terminal_predicate: response satisfies pinned scoring contract.
+recipe_metadata:
+  base_model: Not a training recipe; benchmark surface.
+  teacher: task authors and judges/checkers.
+  generator: mixed benchmark construction.
+  filtering_rule: disambiguate benchmark version before comparing scores.
+  sampling_protocol: Pin source, task categories, scoring rules, judge/checker, and date.
+  rollout_count: null
+  temperature: null
+  inference_budget: model-specific
+  optimizer_or_scaffold: mixed_benchmark_eval
+audit:
+  source_mixture: primary source needs audit.
+  split: needs_audit
+  decontamination: public prompts can leak.
+  license: needs_audit
+  lineage: needs_audit
+  known_failure_modes:
+  - mixed tasks can hide category-specific failures
+  - judge version can move scores
+  - benchmark name may be ambiguous
+  citation_status: partial
+  confidence: low
+  notes: Metadata shell added first; source disambiguation required.
+inclusion_reason: MultiChallenge was requested as a separate benchmark gap.
+related: []
+tags:
+- benchmark
+- mixed-reasoning
+one_line: MultiChallenge tracks mixed reasoning or instruction-following tasks under a combined scoring contract.
+why_it_matters: Mixed suites need component-level audit before aggregate score reuse.
+status: verified
+needs:
+- 'needs_audit: pin dataset release, instance-level rubrics, judge model/prompt, human agreement protocol, split, and license'
+one_line_summary: MultiChallenge tracks mixed reasoning or instruction-following tasks under a combined scoring contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: low
+  notes: Metadata shell added before source generation.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,1 @@
+arXiv 摘要报告 300 个 curated questions，并称最高模型 accuracy 为 36%。HTML 论文给出 383 张图、5 个一级类别、24 个二级类别，以及 easy 45、medium 139、hard 86、expert 30 的难度分布。表格结果包括人类浏览 68.03% SR/82.93% PS、GPT-5.2-Thinking 39.13% SR、OmniSeeker+GPT-5.2 36.00% SR。现在已记录 Hugging Face 数据集链接；复用分数前仍需固定数据 revision、split、evaluator 和 license。

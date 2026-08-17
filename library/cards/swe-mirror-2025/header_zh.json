@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-Mirror 将真实 GitHub issue 的语义重建到 40 个可复用仓库 Gym 中，形成 60,671 个可执行修复任务和 12,456 条成功轨迹的 SFT 混合，但官方数据与代码发布入口尚未核实。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "软件工程环境与智能体轨迹构造方法",
+  "best_for_ch": "研究可执行 SWE 任务生成、OpenHands 轨迹 SFT、测试 verifier 与数据污染审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Junhao Wang、Daoguang Zan、Shulin Xin、Siyao Liu、Yurong Wu、Kai Shen",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

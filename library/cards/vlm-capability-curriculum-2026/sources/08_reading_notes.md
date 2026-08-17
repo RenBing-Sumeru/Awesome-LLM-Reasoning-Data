@@ -1,0 +1,5 @@
+- Count the release as 32,736 train-only rows and 523,776 extracted answer-level attempts; do not describe those attempts as raw completions or chains of thought.
+- Read the three stage datasets as 3,360 perception, 13,181 text-reasoning, and 16,195 visual-reasoning rows; images are retained only for the two multimodal stages.
+- Keep the paper/release mismatch visible: the paper names DocVQA for Stage 3, while the hosted 16,195-row source list contains Math PUMA, GeoQA170K, CLEVR-Math, and ArxivQA.
+- Distinguish the 16-sample offline difficulty budget from the five-response on-policy GRPO group, and treat pass rate as model- and sampling-dependent.
+- Audit upstream licenses, train-only splits, absent decontamination, and missing raw rollout logs before reuse; benchmark gains do not resolve these issues.

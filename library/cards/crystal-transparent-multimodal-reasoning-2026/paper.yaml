@@ -1,0 +1,104 @@
+id: crystal-transparent-multimodal-reasoning-2026
+title: 'Beyond Final Answers: CRYSTAL Benchmark for Transparent Multimodal Reasoning Evaluation'
+year: 2026
+venue: ECCV 2026
+authors:
+- Wayner Barrios
+- SouYoung Jin
+source_role:
+- data_release
+- benchmark
+- process_supervision
+- verifier_reward
+verification_contract:
+- judgment_required
+supervision_granularity:
+- step_level
+- process_reward
+domains:
+- multimodal-reasoning
+- process-reward-modeling
+- benchmarking
+training_use:
+- process_supervision
+- reward_modeling
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2603.13099
+  arxiv: https://arxiv.org/abs/2603.13099
+  code: https://github.com/waybarrios/crystal
+  project: https://github.com/waybarrios/crystal
+  data: https://huggingface.co/datasets/waybarrios/CRYSTAL
+  huggingface: https://huggingface.co/datasets/waybarrios/CRYSTAL
+  venue: null
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Multimodal questions from established vision-language reasoning benchmarks.
+  trace_author: Four independent MLLM generators, then a fifth-model and human quality-gated aggregation process.
+  answer_format: Image, question, answer, and an ordered reference sequence of atomic reasoning steps.
+  process_fields:
+  - image
+  - question
+  - answer
+  - reference_steps
+  - complexity
+  environment_or_substrate: Multimodal question answering and visual reasoning.
+  verifier_or_reward: Match F1 and Ordered Match F1 compare generated steps to validated reference sequences.
+  terminal_predicate: Correct answer together with aligned, ordered reasoning steps.
+recipe_metadata:
+  base_model: Four diverse MLLM families generate references; Qwen2.5-VL-3B-Instruct is used in the reported GRPO experiment.
+  teacher: Four independent MLLM generators followed by a fifth model and trained human reviewers.
+  generator: MLLM step generators under the Delphi-inspired reference-construction pipeline.
+  filtering_rule: Semantic clustering selects representative steps; model validation and human review reject weak sequences.
+  sampling_protocol: Use the official CRYSTAL dataset and repository metric implementation.
+  inference_budget: Four generators produce candidate steps; exact per-instance budget is documented in the paper appendix.
+  optimizer_or_scaffold: Match-F1-based causal process reward and curriculum for GRPO.
+  rollout_count: null
+  temperature: 1.0 for the reference generators.
+audit:
+  source_mixture: Multimodal benchmark items, MLLM-generated reasoning steps, model validation, and human quality gates.
+  split: CRYSTAL contains 6,372 diagnostic instances.
+  decontamination: The paper evaluates models not used in construction; keep CRYSTAL test items outside process-reward training.
+  license: MIT for the official crystal-metrics package; confirm data-release terms on the Hugging Face dataset page before
+    redistribution.
+  lineage: arXiv paper, author project/repository, author academic page reporting ECCV 2026, and official Hugging Face dataset.
+  known_failure_modes:
+  - References may omit valid alternative reasoning paths
+  - Ordered Match F1 does not model causal step dependencies
+  - Reported GRPO uses one primary base model
+  citation_status: verified
+  confidence: high
+  notes: Verified the paper, Dartmouth affiliation, official repository and dataset, and the author academic page listing
+    the work as ECCV 2026.
+inclusion_reason: The official release provides reusable step- or trace-level supervision for training or evaluating reasoning
+  verifiers and reward models.
+related: []
+tags:
+- process-supervision
+- reward-modeling
+- reasoning
+one_line_summary: CRYSTAL supplies 6,372 quality-gated multimodal reference chains and order-sensitive metrics that expose
+  correct answers reached through incomplete or disordered reasoning.
+why_it_matters: It makes step coverage and ordering observable in multimodal evaluation instead of treating a correct final
+  answer as sufficient evidence of reasoning.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the paper, Dartmouth affiliation, official repository and dataset, and the author academic page listing
+    the work as ECCV 2026.
+category_ids:
+- process_trace_supervision_data

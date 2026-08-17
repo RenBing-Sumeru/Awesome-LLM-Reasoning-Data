@@ -1,0 +1,6 @@
+- Stage 1 constructs `D_verify` and trains `eos` versus `refine`; Stage 2 constructs `D_correct` and trains the continuation after `refine`. Do not collapse the pair schemas.
+- Both stages combine chosen-sequence SFT with DPO. This is offline preference learning, not online RL.
+- Outcome correctness supervises a path-level control decision. It does not validate each reasoning step and should not be relabeled as process supervision.
+- Confidence-aware voting uses learned `eos` probability at inference. Treat it as a selector requiring calibration, not as data-quality evidence.
+- Read MBPP separately because it adds external-model reasoning generation and unit-test filtering to the lineage.
+- Code is public; transformed pairs, rejected paths, generation logs, checkpoints, exact source revisions, and transformed-data license remain unknown.

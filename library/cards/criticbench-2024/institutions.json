@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    "Tsinghua University",
+    "University of Hong Kong"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://aclanthology.org/2024.findings-acl.91/",
+    "https://arxiv.org/abs/2402.14809",
+    "https://criticbench.github.io/",
+    "https://github.com/CriticBench/CriticBench"
+  ],
+  "verification_note": "ACL Anthology and arXiv verify authors, Tsinghua/HKU affiliations, Findings of ACL 2024 status, DOI, project, and code/data release."
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "SciInstruct 通过分阶段生成、自我反思、结果核验和质量分类，把仅有答案的科学问题转成开放的分步解答记录。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "科学推理过程数据构造与过滤研究",
+  "best_for_ch": "适合构建跨学科科学 SFT 数据，或审计自我反思教师轨迹的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Dan Zhang, Ziniu Hu, Sining Zhoubian, Zhengxiao Du, Kaiyu Yang, Zihan Wang, Yisong Yue, Yuxiao Dong, Jie Tang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-14T00:00:00Z"
+}

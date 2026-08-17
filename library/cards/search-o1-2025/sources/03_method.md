@@ -1,0 +1,4 @@
+The reported backbone is QwQ-32B-Preview. Generation uses a 32,768-token maximum, temperature 0.7, top-p 0.8, top-k 20, and repetition penalty 1.05. Retrieval calls Bing Web Search in US-EN with top 10 results; Jina Reader fetches readable page content. Batch inference advances each sequence until EOS or a search delimiter, batches pending retrieval/refinement work, inserts the refined result, and continues. If no final answer is produced, evaluation backs off to direct reasoning.
+
+A reusable record should separate instruction, question, reasoning prefix, query, ranked result IDs, raw snippets/pages, Reason-in-Documents analysis, refined knowledge, resumed reasoning, terminal answer, and fallback/tool-error state. The paper does not report a maximum search-call count, seeds, retained rollout count, page snapshots, or a corpus-level selection rule.
+

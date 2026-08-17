@@ -1,0 +1,5 @@
+Within the frontier reports and data-disclosure ledger track, this Card supports branch-aware auditing. A curator can separately record pretraining sources and totals, mid-training, Maverick's hard-example SFT-online-RL-DPO pipeline, Behemoth-to-Maverick teacher targets, Behemoth's own post-training curriculum, safety data, released weights, and evaluation-only evidence.
+
+For post-training reasoning-data work, the disclosed difficulty filters are useful design signals: judge-labeled easy-example removal and continuous medium-to-hard prompt selection show where data selection enters optimization. They are not reusable recipes without the prompts, judge, thresholds, rewards, and rollout settings. The codistillation description likewise establishes a teacher relationship and target-generation path but not an open trace dataset.
+
+The Card can therefore be used to compare Llama 4 with reports that release training records, verifiers, preferences, or reward code. It should not be used to label the Llama 4 corpus as open, the online RL as reproducible RLVR, Behemoth methods as Scout/Maverick methods, or benchmark performance as data-quality evidence.

@@ -1,0 +1,1 @@
+Seonghyeon Ye, Doyoung Kim, Sungdong Kim, Hyeonbin Hwang, Seungone Kim, Yongrae Jo, James Thorne, Juho Kim, and Minjoon Seo. "FLASK: Fine-grained Language Model Evaluation based on Alignment Skill Sets." ICLR 2024 Spotlight / arXiv:2307.10928. Paper: https://arxiv.org/abs/2307.10928. Official project/code: https://kaistai.github.io/FLASK and https://github.com/kaistAI/FLASK.

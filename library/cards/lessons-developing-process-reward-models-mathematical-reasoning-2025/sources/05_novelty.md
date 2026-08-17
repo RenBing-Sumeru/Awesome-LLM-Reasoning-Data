@@ -1,0 +1,3 @@
+The contribution for this atlas is not simply another released reward model. The paper makes the process-label contract visible enough to distinguish two different quantities: a deterministic judgment about the current step and an MC estimate of whether a continuation can later reach a correct answer. It also exposes the disagreement relation used by its consensus filter.
+
+The report further treats evaluation design as part of the disclosure boundary. By showing how Best-of-N can reward answer correctness over process verification, it identifies a concrete audit risk in using a response-level score as sole evidence that a PRM is a reliable verifier.

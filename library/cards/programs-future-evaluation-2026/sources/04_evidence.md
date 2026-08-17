@@ -1,0 +1,1 @@
+Against a Qwen2.5-14B direct judge, PAJAMA improves judgment consistency by 15.83% and reduces biased responses by 23.7% on average. On RewardBench CHAT-HARD after distillation, it exceeds Prometheus by 2.19% and JudgeLM by 8.67%, at three orders of magnitude lower cost. These results support the method in the reported setup, not universal superiority of synthesized programs.

@@ -1,0 +1,3 @@
+BadJudge treats automatic evaluation as a two-model supply chain: poison the candidate to emit a trigger and poison the judge to map that trigger to a desired verdict. It audits three increasing access regimes and attacks pointwise, pairwise, guardrail, and reranking judges. The central mitigation is linear model merging with a clean related judge, intended to erase the malicious association while retaining evaluation ability. The official repository releases code and experiment tools, not a new dataset contribution.
+
+The attack is evaluated as a mismatch between triggered verdicts and normal evaluation, rather than as a generic degradation of model quality.

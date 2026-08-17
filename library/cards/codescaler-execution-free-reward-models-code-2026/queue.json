@@ -1,0 +1,19 @@
+{
+  "title": "CodeScaler: Scaling Code LLM Training and Test-Time Inference via Execution-Free Reward Models",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2602.17684",
+    "data": "https://huggingface.co/datasets/LARK-Lab/CodeScalerPair-51K",
+    "code": "https://github.com/LARK-AI-Lab/CodeScaler",
+    "project": "https://lark-ai-lab.github.io/codescaler.github.io/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判断。",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-18T12:18:23Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "公开 CodeScalerPair-51K，含51,107个英文代码偏好对",
+    "updated_at": "2026-07-18T12:18:23Z"
+  }
+}

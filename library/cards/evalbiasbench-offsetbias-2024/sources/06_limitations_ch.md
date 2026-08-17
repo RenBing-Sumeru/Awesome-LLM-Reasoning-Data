@@ -1,0 +1,1 @@
+正确性只相对于列出的偏差类别、目标标签和 judge prompt 成立。去偏 evaluator 仍可能在未覆盖偏差、专业 rubric、多语言、安全场景或对抗格式下失败。公开 case 也可能进入后续 evaluator 训练。数据许可、split 和 checkpoint 条款需要逐工件核验。OffsetBias 不应被理解成 evaluator 全局公平性的证明；它是诊断和调试特定 judge bias 的受控表面。

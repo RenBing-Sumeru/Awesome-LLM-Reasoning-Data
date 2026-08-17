@@ -1,0 +1,2 @@
+实验使用 GPQA Diamond，以及由 AIME 2024 与 AIME 2025 合并得到的 benchmark。Gemini 1.5 Flash 和 Gemini 2.5 Pro 的 temperature 均为 0.6，最大输出长度分别为 8,192 和 32,768 tokens；Gemini 2.5 Pro 开启 thinking mode。Algorithm 1 先为每个查询分配一个 `B_unit=8` 的集成采样单元。Algorithm 2 生成 `B/2` 条初始回复，再把 `k=4` 条随机选择的初始回复拼接为每个合成 thought segment，并生成 `B/2` 条条件回复。分配器以默认 `c=1/4` 计算 `a_i = u_i + c sqrt(log(B_used)/B_i)`，选择排名较高的一组查询，以八个样本为增量重复分配，直到用完 `B_total`。系统用 pattern matching 提取答案，由多数投票返回最终答案；与 ground truth 的严格等价只用于 benchmark 评估。论文未报告训练、teacher、回复质量筛选、代码或轨迹发布，也未披露被选查询子集的大小和并列处理规则。
+

@@ -1,0 +1,5 @@
+- 使用 arXiv v4 metadata：六位作者并包含 Ilia Kulikov；2025 workshop 页面保留较早的五作者标题/版本。
+- 构建对象：103,280 条去重 prompt、候选代码、生成 input/expected output、execution score、SFT positive 和 Solver/Verifier DPO pair；该语料均未发布。
+- 默认反馈契约：至少一个 solution 必须通过全部生成 test；Iter 1 只有 45% 样本形成这种一致 pair。
+- 摘要中的 17.49% test-generation 数字对应 Table 1 的平均 false-positive-rate 相对下降；引用时必须注明指标。
+- Temperature 0.6 与 top-p 0.9 仅用于评估错误代码生成。复用时应优先阅读 Sections 3.1-3.2 与 Tables 1、2、5，再审计共同盲点、反向偏好、sandbox、decontamination、lineage、license 与 rejected-example 保留。

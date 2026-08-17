@@ -1,0 +1,1 @@
+CodeTraceBench can evaluate coding-agent critics, step reward models, and recovery policies, with separate reporting for error localization, useless-action detection, and task recovery. Its state schema can also annotate proprietary repository logs. If complete environment states are unavailable or tasks cannot be replayed, causal step labels cannot be established reliably.

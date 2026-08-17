@@ -1,0 +1,98 @@
+id: complexconstraints-rlvr-2026
+title: 'ComplexConstraints and Beyond: Expert Rubrics for RLVR'
+year: 2026
+venue: GEM Workshop at ACL 2026
+authors:
+- Sushant Mehta
+- Liudas Panavas
+- Suhaas Garre
+- Edwin Chen
+source_role:
+- benchmark
+- data_release
+- verifier_reward
+- process_supervision
+verification_contract:
+- judgment_required
+supervision_granularity:
+- process_reward
+domains:
+- instruction_following
+- agent_workflows
+training_use:
+- evaluation
+- reward_modeling
+- rlvr
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- optimizer_scaffold
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2606.09118
+  arxiv: https://arxiv.org/abs/2606.09118
+  code: null
+  data: https://huggingface.co/datasets/surgeai/ComplexConstraints
+  project: null
+  huggingface: https://huggingface.co/datasets/surgeai/ComplexConstraints
+  doi: https://doi.org/10.48550/arXiv.2606.09118
+  venue: https://aclanthology.org/2026.gem-main.61/
+  openreview: null
+  acl: https://aclanthology.org/2026.gem-main.61/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert-curated complex instruction and enterprise-agent tasks
+  trace_author: Expert rubric authors
+  answer_format: Prompt, atomic criteria, criterion judgment, reward
+  process_fields:
+  - prompt
+  - criterion
+  - verdict
+  - reward
+  environment_or_substrate: Instruction following and CoreCraft agents
+  verifier_or_reward: Calibrated LLM rubric judge
+  terminal_predicate: Response satisfies atomic expert criteria
+recipe_metadata:
+  base_model: 4B and larger language models
+  teacher: Domain experts
+  generator: Write atomic intent-aware rubrics
+  filtering_rule: Public and disjoint training splits
+  sampling_protocol: 75 public prompts, 1,559 criteria, and 1,000 training prompts
+  rollout_count: null
+  temperature: null
+  inference_budget: Record release, judge, and RL protocol
+  optimizer_or_scaffold: Rubric-reward RL
+audit:
+  source_mixture: Official arXiv paper and Hugging Face data
+  split: 75 benchmark and 1,000 disjoint training prompts
+  decontamination: Keep benchmark and training prompts disjoint
+  license: Consult the official data card
+  lineage: https://huggingface.co/datasets/surgeai/ComplexConstraints
+  known_failure_modes:
+  - Judge calibration and atomicity affect reward quality.
+  citation_status: verified
+  confidence: high
+  notes: Accepted ACL 2026 GEM workshop; official release checked.
+inclusion_reason: ComplexConstraints supplies expert atomic rubrics usable as RL rewards.
+related: []
+tags:
+- rubric
+- rlvr
+- instruction_following
+one_line_summary: ComplexConstraints shows expert atomic rubrics can train and evaluate complex instruction following.
+why_it_matters: It connects interpretable rubric judgments to RL across static and stateful tasks.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: curation
+  confidence: high
+  notes: Official sources checked.
+category_ids:
+- judgment_rubric_domain_expert_data

@@ -1,0 +1,5 @@
+- Keep the stage counts separate: 16T base pre-training tokens; 300B annealing tokens; 30B and 20B context-extension tokens; 3M SFT samples; about 200K GRM preference labels; more than 800K executable code samples; 300K Stage I RL records; and 160K Stage II instructions. They are not one additive corpus.
+- Adaptive supervision uses Hunyuan-Base short attempts and Hunyuan-T1 continuation after failures. Exact checkpoints, generation instructions, candidate counts, stopping caps, and correctness checks are unknown.
+- The General Reward System spans 16 subtopics and more than 30 services, including GRM, Answer Consistency Model, critics, sandbox execution, classifiers, rules, and score fusion. Checkpoints and calibration are not released.
+- The official GitHub repository is a report repository. The official Hugging Face Space is a hosted API demo. Neither is evidence of downloadable Hunyuan-TurboS weights or a released training corpus.
+- Treat benchmark and token-efficiency results as model-behavior evidence only; they do not validate provenance, rights, reasoning quality, verifier reliability, or decontamination.

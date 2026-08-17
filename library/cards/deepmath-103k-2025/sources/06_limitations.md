@@ -1,0 +1,3 @@
+1. When final-answer agreement does not certify every intermediate step in three long traces, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because difficulty scoring and public benchmark matching can favor competition-style mathematics, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve MIT and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

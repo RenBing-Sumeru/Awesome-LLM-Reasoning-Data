@@ -1,0 +1,1 @@
+Elliot Glazer et al. "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI." arXiv:2411.04872, 2024. Paper: https://arxiv.org/abs/2411.04872. Official project: https://epoch.ai/frontiermath.

@@ -1,0 +1,1 @@
+Geiping, Jonas、Sean McLeish、Neel Jain、John Kirchenbauer、Siddharth Singh、Brian R. Bartoldson、Bhavya Kailkhura、Abhinav Bhatele 和 Tom Goldstein。2025。《通过隐空间推理扩展测试时计算：循环深度方法》。第三十九届神经信息处理系统大会（NeurIPS 2025）。论文：https://arxiv.org/abs/2502.05171。代码：https://github.com/seal-rg/recurrent-pretraining。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WindowsAgentArena 在 Windows 环境中规模化评测多模态 OS 智能体。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "Microsoft project / arXiv 的 Windows OS-agent benchmark",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Rogerio Bonatti 等（Microsoft）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:34:13Z"
+}

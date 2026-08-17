@@ -1,0 +1,3 @@
+Self-Principled Critique Tuning（SPCT）把原则移入奖励生成过程：pointwise generative reward model 针对输入自适应生成原则，依据这些原则 critique 候选 response，并以统一语言模型格式为单个、成对或多个 response 输出分数。Rejective Fine-Tuning 提供 cold start；rule-based online RL 再奖励那些提取后分数排序与现有 ground-truth preference 或正确性标签一致的输出。
+
+推理时，DeepSeek-GRM 在打乱 response 顺序后采样多条“原则—critique—分数”轨迹。普通 voting 对 pointwise score 求和，从而扩大聚合分数空间；Meta RM guided voting 还学习判断一条原则/critique 轨迹是否可能正确，并在聚合前保留 Meta RM 分数最高的 kmeta 条轨迹。反馈契约是 mixed：SPCT 和 Meta RM 训练使用相对于标签的规则式准确性，但部署时判断仍由模型生成。相较 scalar RM、semi-scalar critique model 与普通 LLM-as-a-Judge，贡献在于把自生成标准、online RL 和显式推理时奖励扩展结合起来。

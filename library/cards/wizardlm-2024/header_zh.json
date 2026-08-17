@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "WizardLM 用显式深度和广度操作把 52K 条种子指令扩展成 250K 候选，再生成教师回答。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "演化式指令—回答数据构造",
+  "best_for_ch": "适合把简单种子扩展成更难 SFT 任务、并要求来源链可审计的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Can Xu, Qingfeng Sun, Kai Zheng, Xiubo Geng, Pu Zhao, Jiazhan Feng, Chongyang Tao, Qingwei Lin, Daxin Jiang",
+  "category_ids": [
+    "instruction_demonstration_rationale_data"
+  ],
+  "updated_at": "2026-07-11T07:47:09Z"
+}

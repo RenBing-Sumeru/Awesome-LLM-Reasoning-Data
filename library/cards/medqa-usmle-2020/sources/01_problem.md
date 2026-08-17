@@ -1,0 +1,3 @@
+MedQA asks whether models can answer open-domain medical exam questions that require biomedical and clinical knowledge. The primary paper is arXiv:2009.13081, submitted in September 2020, with an official GitHub release at jind11/MedQA.
+
+The collection boundary is a benchmark/evaluation surface, not a clinical decision-support system and not a source of patient-care labels. A sample is a medical exam question with multiple-choice options and an official answer; some released files also include explanations or textbook/context resources depending on subset. The feedback contract is exact-choice accuracy against the released answer key, so reuse must pin language subset, split files, prompt format, scorer, and contamination date.

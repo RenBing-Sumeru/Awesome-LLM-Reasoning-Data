@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "审计微调判别模型能否跨越原训练评测格式；结果显示其常退化为任务特定分类器。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "微调判别模型可靠性审计",
+  "best_for_ch": "需要选择、微调或审计 LLM-as-a-Judge 的评测、对齐与安全研究者。",
+  "confidence_ch": "高：已核对 ACL 正文、官方作者机构信息与公开代码仓库；未把仓库中的测试集误作本文新数据集。",
+  "authors_ch": "Hui Huang, Xingyuan Bu, Hongli Zhou, Yingqi Qu, Jing Liu, Muyun Yang, Bing Xu, Tiejun Zhao",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-20T00:00:00Z"
+}

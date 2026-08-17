@@ -1,0 +1,1 @@
+Lin, Weizhe, Xing Li, Zhiyuan Yang, Xiaojin Fu, Hui-Ling Zhen, Yaoyuan Wang, Xianzhi Yu, Wulong Liu, Xiaosong Li, and Mingxuan Yuan. 2026. TrimR: Verifier-based Training-Free Thinking Trimming for Efficient Test-Time Scaling. In International Conference on Learning Representations. https://iclr.cc/virtual/2026/poster/10007390

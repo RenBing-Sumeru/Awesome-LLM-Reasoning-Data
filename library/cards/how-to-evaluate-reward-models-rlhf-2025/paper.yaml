@@ -1,0 +1,109 @@
+id: how-to-evaluate-reward-models-rlhf-2025
+title: How to Evaluate Reward Models for RLHF
+year: 2025
+venue: ICLR 2025
+authors:
+- Evan Frick
+- Tianle Li
+- Connor Chen
+- Wei-Lin Chiang
+- Anastasios N. Angelopoulos
+- Jiantao Jiao
+- Banghua Zhu
+- Joseph E. Gonzalez
+- Ion Stoica
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+domains:
+- reward-modeling
+- rlhf
+- evaluation
+training_use:
+- reward_modeling
+- process_supervision
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/2e01083b381b4865919b4915ef32e3d2-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2410.14872
+  code: https://github.com/lmarena/PPE
+  data: https://github.com/lmarena/PPE
+  project: https://github.com/lmarena/PPE
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2410.14872
+  venue: https://openreview.net/forum?id=h1gFkkWiJn
+  openreview: https://openreview.net/forum?id=h1gFkkWiJn
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Chatbot Arena human preferences and verifiable correctness tasks such as MMLU-Pro and MATH.
+  trace_author: Crowdsourced preference data and benchmark-derived correctness pairs.
+  answer_format: Prompt, response comparison, preference/correctness signal, domain, and proxy metric.
+  process_fields:
+  - prompt
+  - response_pair
+  - preference
+  - domain
+  - metric
+  environment_or_substrate: Reward-model and LLM-judge evaluation for RLHF.
+  verifier_or_reward: Twelve proxy metrics across twelve domains predict downstream post-RLHF preference outcomes.
+  terminal_predicate: A proxy score predicts a reward model's downstream RLHF utility.
+recipe_metadata:
+  base_model: Nine reward models evaluated in an end-to-end RLHF study.
+  teacher: Crowdsourced human preferences and verifiable task correctness.
+  generator: PPE data packaging and end-to-end RLHF outcome collection.
+  filtering_rule: Proxy-task metrics are tested against downstream human-preference outcomes.
+  sampling_protocol: Use the repository downloader and document selected PPE subsets and model revisions.
+  inference_budget: Full RLHF is the gold standard; PPE serves as the lower-cost proxy.
+  optimizer_or_scaffold: Reward-model evaluation code and statistical correlation analysis.
+  rollout_count: null
+  temperature: null
+audit:
+  source_mixture: Human preferences, verifiable correctness benchmarks, proxy metrics, and downstream RLHF outcomes.
+  split: The repository provides downloadable PPE subsets; pin each data revision used.
+  decontamination: PPE is intended for evaluation, not training; preserve test separation.
+  license: Dataset cards state Apache-2.0 for user prompts and provider terms for model outputs.
+  lineage: ICLR 2025 paper, lmarena PPE repository, and PPE dataset releases.
+  known_failure_modes:
+  - Predictive correlations are measured under the paper's RLHF base model and algorithm.
+  - Proxy performance does not guarantee downstream utility for every post-training method.
+  citation_status: verified
+  confidence: high
+  notes: Verified the ICLR 2025 proceedings/OpenReview record, UC Berkeley affiliation, official lmarena PPE repository, and
+    official PPE dataset licensing note.
+inclusion_reason: The release provides public preference, reward, or feedback records for training or evaluating reasoning
+  systems.
+related: []
+tags:
+- preference-data
+- reward-modeling
+- reasoning
+one_line_summary: PPE evaluates reward models on human-preference and correctness proxies calibrated against real post-RLHF
+  preference outcomes.
+why_it_matters: 'It provides an evidence-backed way to test whether an offline reward-model score predicts the effect that
+  matters: downstream RLHF quality.'
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: primary paper and official artifact pages
+  confidence: high
+  notes: Verified the ICLR 2025 proceedings/OpenReview record, UC Berkeley affiliation, official lmarena PPE repository, and
+    official PPE dataset licensing note.
+category_ids:
+- preference_reward_feedback_data
+- audit_failure_contamination_verifier_attacks

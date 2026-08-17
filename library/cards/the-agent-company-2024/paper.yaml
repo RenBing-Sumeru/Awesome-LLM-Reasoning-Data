@@ -1,0 +1,217 @@
+id: the-agent-company-2024
+title: 'TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks'
+year: 2024
+venue: NeurIPS 2025 Datasets and Benchmarks Track
+authors:
+- Frank (Fangzheng) Xu
+- Yufan Song
+- Boxuan Li
+- Yuxuan Tang
+- Kritanjali Jain
+- Mengxue Bao
+- Zora Wang
+- Xuhui Zhou
+- Zhitong Guo
+- Murong Cao
+- Mingyang Yang
+- Hao Yang Lu
+- Amaad Martin
+- Zhe Su
+- Leander Maben
+- Raj Mehta
+- Wayne Chi
+- Lawrence Jang
+- Yiqing Xie
+- Shuyan Zhou
+- Graham Neubig
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- project_management
+- data_science
+- administration
+- human_resources
+- finance
+- workplace_agent_interaction
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/0d744742f6fac4d1134c019b7cef3c8a-Paper-Datasets_and_Benchmarks_Track.pdf
+  arxiv: https://arxiv.org/abs/2412.14161
+  code: https://github.com/TheAgentCompany/TheAgentCompany
+  data: https://github.com/TheAgentCompany/experiments
+  project: https://the-agent-company.com/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2412.14161
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/0d744742f6fac4d1134c019b7cef3c8a-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: https://openreview.net/forum?id=LZnKNApvhG
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+  experiments: https://github.com/TheAgentCompany/experiments
+  environment_backup: https://github.com/TheAgentCompany/the-agent-company-backup-data
+  release: https://github.com/TheAgentCompany/TheAgentCompany/releases/tag/1.0.0
+data_object:
+  object_type: Versioned interactive workplace benchmark tasks plus model-generated evaluation episodes and checkpoint outcomes.
+  prompt_source: Task ideas draw on O*NET 29.1 job-task lists, U.S. labor statistics, contributor domain experience, and undisclosed
+    LLM brainstorming; authors manually turn them into benchmark tasks.
+  trace_author: Evaluated model backbones acting through an agent harness; released trajectories are evaluation logs, not
+    human demonstrations.
+  task_record:
+  - English task intent in `task.md`
+  - weighted checkpoint specification in `checkpoints.md`
+  - task-specific evaluator
+  - initialization and finalization logic
+  - dependency and container configuration
+  episode_fields:
+  - task id
+  - ordered agent steps and observations
+  - optional system thoughts or comments emitted by the harness
+  - per-step screenshots
+  - evaluator records and checkpoint scores
+  - terminal result
+  answer_format: A multi-step computer-use episode that may browse internal web apps, edit files/code, run terminal commands,
+    and communicate with simulated colleagues before terminating.
+  process_fields:
+  - observation
+  - action
+  - environment transition
+  - communication event
+  - checkpoint outcome
+  - screenshot
+  observation: Browser/UI, terminal, code/workspace, and RocketChat-mediated colleague observations in a sandboxed local workspace
+    and self-hosted intranet.
+  verifier_or_reward: Mostly deterministic Python evaluators inspect final/intermediate environment state or trajectory; 51
+    tasks (29%) use an LLM judge for complex or unstructured outputs, with rubrics/reference outputs.
+  reward: Weighted checkpoint partial-completion score plus a binary full-completion indicator when every checkpoint passes.
+  terminal_predicate: Task-specific evaluators determine checkpoint success; full completion requires all checkpoints. Agent
+    exit or budget exhaustion ends an episode without implying success.
+  provenance: 175 manually curated version-1.0.0 tasks; intranet content mixes manually curated mock-company material with
+    real-world software-project data. Official experiment runs publish model/harness-specific episodes.
+  environment_or_substrate: Dockerized local Linux workspace plus self-hosted GitLab, ownCloud, Plane, and RocketChat, with
+    Sotopia-based simulated colleagues.
+  release_shape: Official experiment runs under `evaluation/1.0.0/<run>/` contain a run README, per-task result JSON, per-step
+    screenshots, and compressed trajectory JSON.
+recipe_metadata:
+  base_model: Multiple closed and open model backbones; the archival paper evaluates twelve models.
+  teacher: unknown
+  generator: Evaluated agents generate trajectories in the benchmark environment; paper baselines use OpenHands CodeAct +
+    Browsing, with an additional OWL RolePlay comparison.
+  prompt_task_source: O*NET 29.1 and labor-statistics motivation, contributor/domain-expert experience, and undisclosed LLM
+    brainstorming, followed by manual task/evaluator implementation.
+  sampling_protocol: One model-task execution yields one episode record in an official run; no repeated-rollout sampling protocol
+    is disclosed for the primary paper tables.
+  temperature: unknown
+  rollout_count: One released trajectory per task instance in an experiment run; aggregate runs cover 175 tasks, but repeat
+    seeds are not specified as a standard protocol.
+  inference_budget: Steps are measured as LLM calls and costs use API token prices without prompt caching; a single uniform
+    step/token cap across all reported harness/model configurations is unknown.
+  search_or_scaffold: OpenHands CodeAct + Browsing versions 0.14.2 and 0.28.1 in the main baselines; environment access combines
+    browser, terminal, code, files, and RocketChat.
+  filtering_rule: No trajectory-quality filter is reported for the official baseline release; inspected results retain successful,
+    partial, and zero-score episodes. Task construction includes manual review, evaluator tests, screenshot evidence, lead-author
+    code review, and final double-checks.
+  selection_threshold: Full success requires every checkpoint; partial score uses weighted checkpoint completion. No threshold
+    selects released episodes for training.
+  optimizer_or_training_scaffold: null
+  environment_llm: Claude-3-5-Sonnet-20241022 for simulated colleagues and LLM-based evaluators in the paper baselines.
+  construction_effort: Twenty CS students, software engineers, and project managers over two months, about 3,000 person-hours;
+    some tasks required more than ten hours.
+audit:
+  source_mixture: Task prompts combine O*NET/labor-market motivation, contributor expertise, undisclosed LLM brainstorming,
+    manual implementation, manually curated mock-company material, and real-world software-project data. Released episodes
+    come from evaluated models and harnesses.
+  split: No train/validation/test partition is disclosed; version 1.0.0 is presented as one 175-task evaluation set.
+  decontamination: unknown
+  benchmark_overlap: The paper compares with existing agent benchmarks, but no systematic prompt/code overlap or model-pretraining
+    contamination audit is disclosed. Public prompts and evaluator sources create future benchmark-exposure risk.
+  lineage: Paper/project -> benchmark release 1.0.0 -> task image and service backups -> model/harness run -> results, screenshots,
+    and trajectory files. Per-record source ancestry and immutable image/run manifests are incomplete.
+  license: Current arXiv manuscript is CC BY 4.0. Main benchmark code and environment-backup repositories declare MIT. The
+    official experiments repository exposes no license; third-party services, seeded content, and screenshots require separate
+    rights review.
+  release_version: Benchmark release 1.0.0 was published 2024-12-20. Paper results span arXiv v1 (2024) through archival NeurIPS
+    2025, while the experiments repository is a living leaderboard and should be pinned by commit/run path.
+  version_drift: The 2024 v1 headline was 24.0% full success for OpenHands 0.14.2 + Claude 3.5 Sonnet; the archival paper
+    reports 30.3% for OpenHands 0.28.1 + Gemini 2.5 Pro. The task count remains 175, but the evaluated model/harness set changed.
+  verifier_or_judge_failure_modes:
+  - LLM-judged outputs can vary with evaluator-model behavior; no independent judge-calibration corpus is released.
+  - Environment/evaluator predicates may reward unintended state changes or shortcuts.
+  - Published task/evaluator source can enable benchmark-specific gaming or contamination despite runtime evaluator encryption.
+  - Forty-one tasks use model-simulated colleagues; the paper reports repairing an earlier ambiguous role-play behavior.
+  - Service images, backups, NPC models, and judge models are additional reproducibility dependencies beyond task code.
+  successful_and_failed_sample_retention: The inspected official 2024-12-17 baseline run retains trajectories/results for
+    successful, partial, and zero-score tasks. Leaderboard submission instructions require trajectories, results, screenshots,
+    and a README; completeness of every historical third-party run is not independently established.
+  privacy_or_consent: unknown
+  citation_status: verified
+  confidence: high
+  notes: Use 2024 as first-publication year and NeurIPS 2025 as archival venue. Do not read the living leaderboard's latest
+    score as the paper's fixed result or infer labor-market automation from this non-representative task set.
+  remaining_unknowns:
+  - experiment-repository license and rights for trajectories/screenshots
+  - immutable container and service-image digests for each published run
+  - task-level source lineage and rights for real-world software-project data
+  - LLM brainstorming model, prompt, rejection rate, and random seeds
+  - train/dev/test split and decontamination protocol
+  - independent calibration and variance of LLM-based evaluators
+  - consent/redaction documentation for seeded and captured content
+inclusion_reason: 'TheAgentCompany exposes an unusually complete environment-feedback boundary for long-horizon workplace
+  agents: 175 task prompts, a self-hosted multi-service state space, checkpoint evaluators, terminal scores, and official
+  successful/failed episode logs.'
+related:
+- tau2-bench-2025
+- osworld-mcp-2025
+tags:
+- environment-agent-trajectory-data
+- agent-benchmark
+- workplace-agent
+- long-horizon
+- tool-use
+- checkpoint-evaluation
+- simulated-colleagues
+- trajectory-release
+category_ids:
+- environment_agent_trajectory_data
+- benchmarks_evaluation_surfaces
+one_line_summary: TheAgentCompany pairs 175 simulated-company tasks with mixed checkpoint evaluators and releases model-generated
+  results, screenshots, and full evaluation trajectories.
+why_it_matters: It makes the full agent-data loop inspectable—prompt, environment state, action history, checkpoint feedback,
+  and terminal outcome—while also exposing version drift, judge dependence, and release-rights gaps that matter before trajectories
+  are reused.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  venue_verified: true
+  artifact_verified: true
+  dataset_contents_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: Archival NeurIPS PDF/proceedings, arXiv version history/license, OpenReview forum, project page, benchmark code/release/docs,
+    environment backups, and official experiment run structure were inspected.
+curation_level: L3_summary_ready
+needs:
+- 'needs_license: official experiments repository has no confirmed license'
+- 'needs_version_pin: pin benchmark commit, task-image digests, service backups, and experiment-run commit'
+- 'needs_decontamination: no task/code exposure audit or split protocol is disclosed'
+- 'needs_lineage: per-task source ancestry and rights for real-world project data are incomplete'
+- 'needs_judge_audit: independent calibration and variance for the 51 LLM-evaluated tasks are unavailable'
+- 'needs_privacy_review: consent/redaction and screenshot-content rights are undisclosed'
+card: null

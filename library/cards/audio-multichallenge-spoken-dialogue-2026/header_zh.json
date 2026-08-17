@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "以自然人声中的记忆、约束保持、自洽与语音编辑检验端到端语音对话系统。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Advait Gosai、Tyler Vuong、Utkarsh Tyagi、Steven Li、Wenjia You、Miheer Bavare、Arda Uçar、Zhongwang Fang、Brian Jang、Bing Liu、Yunzhong He",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

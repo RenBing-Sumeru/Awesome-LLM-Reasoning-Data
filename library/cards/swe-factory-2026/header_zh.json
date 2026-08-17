@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-Factory 以四代理生成 Dockerfile 与评测脚本，并用 gold-patch fail-to-pass 退出码契约验证 issue-resolution 环境；它公开 671 条任务、2,809 条 messages-only 轨迹和 430 条 Gym 记录，但三者缺少逐行谱系与不可变环境绑定。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程任务与 agent 轨迹自动构建、环境验证及开放发布",
+  "best_for_ch": "研究 GitHub issue 数据构建、repository-agent SFT、程序化环境 verifier，以及容器、谱系、污染和权利审计",
+  "confidence_ch": "高",
+  "authors_ch": "Lianghong Guo、Yanlin Wang、Caihua Li、Wei Tao、Pengyu Yang、Jiachi Chen、Haoyu Song、Duyu Tang、Zibin Zheng",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

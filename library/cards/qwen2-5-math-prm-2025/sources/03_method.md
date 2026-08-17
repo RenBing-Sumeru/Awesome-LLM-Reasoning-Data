@@ -1,0 +1,4 @@
+The official 7B model card's quick-start example supplies a system-level instruction, a mathematical query, and a reasoning response. It recommends double-newline step boundaries, inserts the extra_0 separator after each step, and reads the probability of the positive class at those positions. The card presents this as an inference procedure over reasoning text. Its precise training-record schema is not disclosed.
+
+The announcement reports Best-of-N evaluation using eight samples from Qwen2.5-Math-7B-Instruct and a response score formed as the product of individual step scores. It also introduces ProcessBench as an evaluation resource with 3,400 human-expert error-location-annotated test cases. Those statements are evaluation context, not a disclosure of the PRM training pool, label source, sampling protocol, filtering, optimizer, reward calibration, threshold, aggregation rule for all uses, or training rollout count.
+

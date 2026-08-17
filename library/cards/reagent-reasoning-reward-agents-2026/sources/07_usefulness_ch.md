@@ -1,0 +1,1 @@
+开放的“轨迹—critique—分数”记录可用于训练 agent critic、生成式 verifier 或过程奖励模型。Reagent-C 适合能够进行第二次尝试的系统，Reagent-R 适合训练需要紧凑标量信号的场景，Reagent-U 则用于两种通道均可获得时。研究者可在同一 agent 基础上比较结果、过程和文本反馈。当 critique 无法验证且错误可能触发不可逆真实操作时，不宜直接采用该方法。

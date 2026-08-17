@@ -1,0 +1,1 @@
+Akhondzadeh, Mohammad Sadegh、Soroush H. Zargarbashi、Simone Antonelli 与 Aleksandar Bojchevski。《CATS: Conformalized Adaptive Test-Time Scaling》。ICLR 2026 CAO Workshop，Oral。https://openreview.net/forum?id=mXuUomGc0I。

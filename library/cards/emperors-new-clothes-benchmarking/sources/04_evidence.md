@@ -1,0 +1,1 @@
+Evidence boundary: The ICML paper reports that none of its evaluated strategies jointly improves contamination resistance across all tested benchmarks while balancing fidelity; the repository supplies a reproduction workflow. This is evidence for the reported setting, not a substitute for an independent provenance or contamination audit of a later dataset.

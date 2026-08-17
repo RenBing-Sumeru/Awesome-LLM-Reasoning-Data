@@ -1,0 +1,5 @@
+The strongest artifact evidence is the explicit dataset construction: 1,000 real iOS screens, 36 element classes, 27,367 annotated elements, a reported 14% correction rate during review, and a public data availability statement for the dataset plus annotation tool. These facts support treating MUIAnno as a concrete evaluation surface rather than only a conceptual proposal.
+
+The reported benchmark evidence is that five multimodal models are evaluated under the same UI element extraction protocol. The paper reports GPT-5.4 at precision 0.65, recall 0.75, F1 0.70; Claude Opus 4.6 at 0.65/0.69/0.67; Gemini 3.1 Pro Preview at 0.53/0.58/0.55; Llama-4-Scout at 0.435/0.456/0.445; and Gemma-4-31B-IT at 0.411/0.420/0.416.
+
+The decisive row-level evidence for any prediction is not the aggregate F1 but whether a generated JSON element matches an expert element by both IoU threshold and class label. The evidence boundary is narrow: results are tied to the authors' prompt, schema, full-screen evaluation, API endpoints, and 2026 model names as reported. The paper does not prove real task completion, multi-step UI control, or cross-device robustness.

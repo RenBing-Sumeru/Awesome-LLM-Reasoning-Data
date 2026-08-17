@@ -1,0 +1,149 @@
+id: demystifying-multi-agent-debate-2026
+title: 'Demystifying Multi-Agent Debate: The Role of Confidence and Diversity'
+year: 2026
+venue: Findings of ACL 2026
+authors:
+- Xiaochen Zhu
+- Caiqi Zhang
+- Yizhou Chi
+- Tom Stafford
+- Nigel Collier
+- Andreas Vlachos
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- reasoning
+- question_answering
+- multi_agent
+training_use:
+- rlvr
+- test_time_compute
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2026.findings-acl.1694/
+  arxiv: https://arxiv.org/abs/2601.19921
+  code: https://github.com/SpaceHunterInf/DMAD
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.findings-acl.1694
+  venue: https://aclanthology.org/2026.findings-acl.1694/
+  openreview: null
+  acl: https://aclanthology.org/2026.findings-acl.1694/
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2601.19921
+data_object:
+  prompt_source: In-domain confidence training/evaluation uses GSM8K, CommonsenseQA, HellaSwag, and MMLU; GPQA-Main and ARC-Challenge
+    are out-of-domain evaluation sets. Complete sampled pools and dialogue corpora are not released.
+  trace_author: Homogeneous Llama-3.1-8B-Instruct or Qwen-2.5-7B-Instruct agents generate initial candidates and five-turn
+    debate responses.
+  answer_format: Each agent emits reasoning, a final answer, and an integer confidence from 0 to 10; each later turn sees
+    all agents' previous answers and confidence values.
+  process_fields:
+  - question
+  - dataset
+  - split
+  - model
+  - initial_candidate_pool
+  - candidate_answer
+  - unique_answer
+  - diversity_selection
+  - round
+  - visible_peer_responses
+  - reasoning
+  - answer
+  - confidence_0_10
+  - correctness
+  - confidence_reward
+  - engagement_reward
+  - format_reward
+  - final_vote
+  environment_or_substrate: Five homogeneous agents, five debate turns, fully connected previous-round context, and majority
+    vote over terminal responses; diversity initialization samples 10 candidates and selects five.
+  verifier_or_reward: Programmatic answer correctness, log-based confidence-calibration reward, discourse-cue engagement heuristic,
+    and format penalty. Stage-2 scales are Correct 10, Confidence 3, Engage 5, with -30 for wrong format.
+  terminal_predicate: After five turns, majority vote over the five terminal answers is evaluated with benchmark-specific
+    answer matching.
+recipe_metadata:
+  base_model: Llama-3.1-8B-Instruct and Qwen-2.5-7B-Instruct
+  teacher: Self-consistency supplies numerical confidence targets for the 5,000-example format/calibration SFT subset; no
+    human confidence labels are used.
+  generator: Homogeneous agents sample candidate answers and debate responses; diversity selection and two GRPO+LoRA stages
+    construct confidence-aware behavior.
+  filtering_rule: Diversity-aware initialization samples Ncand=10 and greedily selects five answers to maximize distinct final-answer
+    coverage. A manually curated hard subset near 50% model accuracy is used for confidence GRPO.
+  sampling_protocol: Debate uses five agents and five turns. Inference uses temperature 1.0 and top-p 0.9; diversity uses
+    10 initial candidates. Confidence GRPO uses 8 generations per prompt.
+  rollout_count: unknown total; 5,000 SFT confidence examples and 10,000 hard GRPO examples are reported
+  temperature: 1.0; top-p 0.9 for initialization/inference, top-p 0.9 for confidence calibration, and top-p 1.0 for multi-agent
+    GRPO
+  inference_budget: Five agents x five turns, with 10 candidates sampled for diversity-aware initialization; exact token totals
+    depend on task and completion limits.
+  optimizer_or_scaffold: 'Two LoRA rank-64 GRPO stages. Confidence calibration: one epoch, sequence length 2,048, learning
+    rate 5e-6, beta 0.01. Debate training: one epoch, learning rate 5e-5, beta 0.01, maximum completion 1,024.'
+audit:
+  source_mixture: Public QA datasets are named, but sampled item IDs, the 5K/10K manifests, ten-candidate pools, and generated
+    debate records are not released as a complete corpus.
+  split: In-domain versus OOD roles are reported; exact sampled manifests and immutable split hashes are unknown.
+  decontamination: The paper argues similar post-training accuracy reduces concern that new knowledge was introduced, but
+    no corpus-wide contamination ledger is released.
+  license: The paper states dataset/software licences were checked. The official repository exposes loaders and one example
+    dialogue record, but no repository licence file or dialogue-dataset licence was verified.
+  lineage: QA item -> 10 sampled candidates -> greedy distinct-answer selection of 5 -> five-turn homogeneous debate with
+    0-10 confidence -> correctness/confidence/engagement/format rewards -> terminal majority vote
+  known_failure_modes:
+  - The paper's diversity objective counts distinct final answers; the repository README describes embedding distance, so
+    paper and implementation documentation should not be silently conflated.
+  - Distinct answers can still be superficial or wrong and do not guarantee distinct valid hypotheses.
+  - Self-consistency confidence targets inherit model and sampling errors and are not human probabilities.
+  - Confidence communication can amplify confidently wrong agents or strategic reporting.
+  - The discourse-cue engagement reward was added after reward hacking and can itself be gamed by lexical imitation.
+  - Homogeneous agents, fully connected graphs, English QA, and five-by-five debate limit generalization.
+  - Complete pools, rejected candidates, per-example targets/rewards, adapters, and debate traces are not verified as released.
+  - Higher benchmark accuracy does not establish dialogue quality, provenance, or calibration of every record.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper and official DMAD repository checked. The repository provides code, public-dataset loaders, configuration,
+    and an example record, not a complete training/debate corpus.
+inclusion_reason: Makes candidate diversity and confidence explicit multi-agent trace fields.
+related: []
+tags:
+- multi-agent-debate
+- confidence
+- diversity
+- grpo
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: DMAD samples 10 candidates, selects five distinct answers, and trains five-turn homogeneous debate to express
+  and use 0-10 confidence with correctness, calibration, engagement, and format rewards, while releasing code but not full
+  traces.
+why_it_matters: It makes candidate coverage, confidence communication, reward components, and belief updates explicit trace
+  fields for auditing multi-agent test-time search.
+card: null
+needs:
+- 'needs_data: versioned 5K/10K manifests, all ten-candidate pools, selected/rejected candidates, and complete five-turn dialogues'
+- 'needs_metadata: item IDs, seeds, answer normalizers, embeddings if implementation uses them, and exact training/evaluation
+  splits'
+- 'needs_rewards: per-turn correctness, confidence, engagement, format components and aggregate rewards'
+- 'needs_models: released LoRA adapters and exact base/tokenizer revisions'
+- 'needs_audit: calibration by dataset/round, reward-hacking logs, sycophancy, position bias, and correct-minority survival'
+- 'needs_license: repository and generated-dialogue reuse terms'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official sources checked.

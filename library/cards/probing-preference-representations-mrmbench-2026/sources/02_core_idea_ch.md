@@ -1,0 +1,1 @@
+论文提出多维 probing 框架和 MRMBench，把偏好能力拆为 harmlessness、helpfulness、correctness、coherence、complexity 与 verbosity 六维，并用容易的二元 probe 与更难的三元判断诊断 reward representation。MRMBench 官方集约 167K 个实例，按六个偏好维度组织，来源包括现有安全与质量反馈数据及派生的对照样本；每条记录关联 prompt、一个或多个响应、目标维度与 probe 标签。数据采用 Apache-2.0，但 Hugging Face 页面要求申请访问，复用需遵守 gated 条件。

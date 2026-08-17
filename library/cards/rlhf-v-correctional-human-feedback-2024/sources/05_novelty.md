@@ -1,0 +1,1 @@
+Whole-answer pairwise preference discards where an otherwise useful response becomes ungrounded. RLHF-V keeps human correction at the segment level and optimizes dense behavioral preferences. The novelty is the granularity of supervision; it does not replace image evidence with an external factual database.

@@ -1,0 +1,118 @@
+id: latent-parallel-tts-2026
+title: Parallel Test-Time Scaling for Latent Reasoning Models
+year: 2026
+venue: ACL 2026
+authors:
+- Runyang You
+- Yongqi Li
+- Meng Liu
+- Wenjie Wang
+- Liqiang Nie
+- Wenjie Li
+source_role:
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- step_level
+- full_episode
+domains:
+- mathematical-reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.2069/
+  arxiv: null
+  venue: https://aclanthology.org/2026.acl-long.2069/
+  code: https://github.com/ModalityDance/LatentTTS
+  data: https://huggingface.co/datasets/gsm8k
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.2069
+data_object:
+  prompt_source: GSM8K-Test, GSM8K-Hard, MultiArith, and MATH500 prompts.
+  trace_author: Latent reasoning backbones generate continuous hidden-state thought trajectories under stochastic dropout
+    or injected Gaussian noise.
+  answer_format: Question, latent thought sequence, stochastic perturbation setting, step scores, trajectory score, final
+    decoded answer, and correctness label.
+  process_fields:
+  - question
+  - latent_thoughts
+  - dropout_mask
+  - gaussian_noise
+  - trajectory
+  - step_scores
+  - latent_reward
+  - final_answer
+  - correctness
+  environment_or_substrate: Autoregressive reasoning in continuous hidden-vector space, followed by explicit final-answer
+    decoding.
+  verifier_or_reward: LatentRM assigns step-wise contrastive scores to latent thoughts; benchmark exact-match answers label
+    rollouts.
+  terminal_predicate: The decoded final answer matches the benchmark answer.
+recipe_metadata:
+  base_model: COCONUT and CODI with GPT-2 124M backbones, CoLaR and Latent-SFT with Llama-3.2-1B, and Render-of-Thought with
+    Qwen3-VL 2B and 4B.
+  teacher: Not applicable; LatentRM labels intermediate thoughts through stochastic completion outcomes.
+  generator: MC Dropout samples different weight masks; additive Gaussian noise perturbs latent thoughts at every step.
+  filtering_rule: LatentRM scores candidate thoughts with step-wise contrastive supervision and ranks trajectories by cumulative
+    logits.
+  sampling_protocol: Vary parallel samples N from 1 to 64; compare MC dropout and Gaussian noise; use best-of-N, beam search,
+    and majority vote under matched budgets.
+  rollout_count: N ranges from 1 to 64 for coverage curves; M stochastic completions estimate intermediate thought quality
+    for LatentRM data.
+  temperature: Not applicable to continuous latent sampling; control uses dropout rate p and Gaussian noise scale sigma.
+  inference_budget: Parallel latent trajectories; beam size sqrt(N) is used for matched-cost beam-search comparisons.
+  optimizer_or_scaffold: LatentRM scoring head trained by a step-wise contrastive objective over rollout-derived thought-quality
+    labels.
+audit:
+  source_mixture: Official ACL Anthology paper, official GitHub repository, and official benchmark dataset pages.
+  split: GSM8K Test has 1,319 examples, GSM8K-Hard has 1,319 examples, and MultiArith has 600 examples; MATH500 is an additional
+    generalization evaluation.
+  decontamination: No formal pretraining-contamination audit is claimed.
+  license: Verify each model checkpoint, repository, and benchmark license before reuse.
+  lineage: https://aclanthology.org/2026.acl-long.2069/
+  known_failure_modes:
+  - latent-perturbation-instability
+  - reward-model-miscalibration
+  - rollout-label-cost
+  - hidden-space-opacity
+  - sampling-saturation
+  citation_status: verified
+  confidence: high
+  notes: Official ACL PDF and linked GitHub repository checked on 2026-07-21. The paper lists The Hong Kong Polytechnic University,
+    Shandong Jianzhu University, University of Science and Technology of China, and Harbin Institute of Technology Shenzhen
+    affiliations.
+inclusion_reason: It directly adapts parallel test-time sampling and trajectory aggregation to continuous latent reasoning,
+  making the number of sampled latent paths an explicit inference-compute budget.
+related: []
+tags:
+- test-time-scaling
+- latent-reasoning
+- parallel-sampling
+- latent-reward-model
+- uncertainty
+status: verified
+one_line_summary: This work brings parallel sampling and reward-guided selection to latent reasoning by using dropout or noise
+  for exploration and a step-level latent reward model for aggregation.
+reading_priority: recommended
+paper_type: Latent-reasoning test-time scaling study
+best_for: Readers extending pass@k-style inference scaling to continuous reasoning models that have neither token probabilities
+  nor textual process-reward inputs.
+confidence: high
+why_it_matters: It shows that inference scaling is not tied to textual chain-of-thought and supplies the sampling and scoring
+  primitives needed to allocate compute in latent space.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-21'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL paper, official GitHub project, and cited benchmark pages checked.
+category_ids:
+- scaling_rlvr_test_time_compute

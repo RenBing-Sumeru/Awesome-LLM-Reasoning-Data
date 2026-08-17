@@ -1,0 +1,5 @@
+- Start with Figure 1, paper §§3.1-3.3, and Table 2: together they separate the policy/PPM round loop, the executable MCTS node, the two exported supervision products, and the changing solved-problem coverage most relevant to this track.
+- Treat Q-values as policy-, tree-, checker-, and budget-dependent trajectory values, not as intrinsic labels that each local step is mathematically correct.
+- Compare the Hugging Face schemas with the repository extractors: the final tables retain usable SFT and preference text but omit the tree evidence and provenance used for selection.
+- Keep two bootstrap facts beside the “no superior-model solution distillation” claim: GPT-4 expands the problem pool, and DeepSeek-Coder-V2-Instruct (236B) generates round-1 traces.
+- Before reuse, resolve paper-versus-config differences, upstream licenses, decontamination, source mappings, raw trees, and checkpoint identities.

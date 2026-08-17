@@ -1,0 +1,2 @@
+The paper reports up to 11.1 points improvement in a controlled IFEval-style instruction-following setting. It also reports that naive shared-model training can collapse as the verifier becomes more permissive, motivating gold/replay co-training and the partition penalty. These results support mitigation of one controlled failure mode; they do not prove verifier calibration or transfer to math, code, or open-ended tasks. No official code, dataset, buffer, logs, or immutable checkpoint was identified.
+

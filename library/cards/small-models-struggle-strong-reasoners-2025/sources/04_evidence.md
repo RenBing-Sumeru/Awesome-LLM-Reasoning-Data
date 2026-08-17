@@ -1,0 +1,5 @@
+Across the studied model families and sizes, the reported long-CoT and large-teacher gaps are often negative for the smallest students and become more favorable as student capacity grows. The paper also reports higher student perplexity on complex or large-teacher traces and uses similarity analyses as evidence of teacher-student distribution mismatch.
+
+In the main 7,500-example experiments, Mix-Long and Mix-Large outperform the corresponding single-source baselines across most reported metrics for 3B students. A weight ablation reports the best average performance near 0.2 for long or large-teacher data. Case analysis suggests that long-only training can induce repetitive overthinking, while short-only training can omit needed reasoning; the mixture can produce intermediate-length behavior.
+
+These results demonstrate a recurring failure under the paper's mathematics setup. They do not prove that 20% is universally optimal, that trace length alone causes the gap, or that every intermediate step in the retained responses is correct.

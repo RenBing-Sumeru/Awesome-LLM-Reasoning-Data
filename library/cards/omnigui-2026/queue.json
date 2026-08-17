@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-14T10:12:36Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "收集带同步截图、音频和视频的手机操作示范，测试模型在每一步是否能依据瞬时声音与动态画面预测正确动作。测试范围较小，没有通用性",
+    "updated_at": "2026-07-14T10:12:36Z"
+  }
+}

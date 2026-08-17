@@ -1,0 +1,203 @@
+id: android-control-2024
+title: On the Effects of Data Scale on UI Control Agents
+year: 2024
+venue: NeurIPS 2024 Datasets and Benchmarks Track (Spotlight)
+authors:
+- Wei Li
+- William Bishop
+- Alice Li
+- Chris Rawles
+- Folawiyo Campbell-Ajala
+- Divya Tyamagundlu
+- Oriana Riva
+source_role:
+- data_release
+- benchmark
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- agent_trajectories
+- mobile_ui
+- android
+- ui_control
+training_use:
+- sft
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/a79f3ef3b445fd4659f44648f7ea8ffd-Abstract-Datasets_and_Benchmarks_Track.html
+  paper_pdf: https://proceedings.neurips.cc/paper_files/paper/2024/file/a79f3ef3b445fd4659f44648f7ea8ffd-Paper-Datasets_and_Benchmarks_Track.pdf
+  supplementary: https://proceedings.neurips.cc/paper_files/paper/2024/file/a79f3ef3b445fd4659f44648f7ea8ffd-Supplemental-Datasets_and_Benchmarks_Track.pdf
+  arxiv: https://arxiv.org/abs/2406.03679
+  code: null
+  data: https://console.cloud.google.com/storage/browser/gresearch/android_control
+  project: https://github.com/google-research/google-research/tree/master/android_control
+  huggingface: null
+  doi: https://doi.org/10.52202/079017-2925
+  venue: https://proceedings.neurips.cc/paper_files/paper/2024/hash/a79f3ef3b445fd4659f44648f7ea8ffd-Abstract-Datasets_and_Benchmarks_Track.html
+  openreview: https://openreview.net/forum?id=yUEBXN3cvX
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: LLM-generated generic feature descriptions for 40 app categories were instantiated by human annotators into
+    14,548 unique Android tasks; every episode has a human high-level goal and per-action low-level instructions.
+  trace_author: Twenty trained paid contractors collected demonstrations on physical Google Pixel devices from April 2023
+    through April 2024; the last four months used 20 LLM-generated personas to diversify tasks.
+  answer_format: One GZIP TFRecord episode contains episode_id, goal, PNG screenshot observations, serialized Android accessibility
+    trees, screenshot widths/heights, JSON action dictionaries, and step_instructions. Actions occur between consecutive screenshots,
+    and repeated step instructions preserve a one-to-one list alignment with actions.
+  process_fields:
+  - episode_id
+  - goal
+  - screenshots
+  - accessibility_trees
+  - screenshot_widths
+  - screenshot_heights
+  - actions
+  - step_instructions
+  - action_type
+  - action_arguments
+  observation: Each state includes a full-resolution screenshot and Android accessibility tree. The evaluated agent flattens
+    the tree into textual UI elements and does not consume screenshots.
+  action_space:
+  - click
+  - long_press
+  - input_text
+  - scroll
+  - navigate_home
+  - navigate_back
+  - open_app
+  - wait
+  environment_or_substrate: Physical Android phones (Google Pixel, Android 8.0 or higher) operated through a companion app,
+    Chrome web app, WebUSB, and ADB. The public release is an offline trajectory corpus, not a pinned replay environment.
+  verifier_or_reward: Offline step-wise action matching against the human demonstration. Exact action type/arguments count
+    as correct; relaxed matches include coordinates inside the target element bounds, navigate_back versus clicking an on-screen
+    Back element, and open_app versus clicking text matching the app name. No scalar reward or live environment success verifier
+    is released.
+  terminal_predicate: Collection labels traces successful, infeasible, or failed. Failed/error episodes are removed. SeqIO
+    preprocessing inserts a training-only terminate action with successful or infeasible, but the README does not document
+    a released status field or an executable terminal predicate.
+  provenance: Generic feature description -> human task/high-level instruction -> physical-device state-action demonstration
+    with per-step instruction -> TFRecord episode -> HL/LL SeqIO state-action examples. Record-level annotator/persona IDs
+    and immutable environment versions are unknown.
+recipe_metadata:
+  base_model: PaLM-2S for all fine-tuning experiments.
+  teacher: Human annotators provide goals, low-level instructions, and demonstrated actions; no model teacher supplies target
+    actions.
+  generator: An undisclosed LLM generates generic feature descriptions and later persona profiles; humans instantiate tasks
+    and execute demonstrations.
+  prompt_task_source: Generic feature descriptions across 40 app categories, instantiated by annotators in apps of their choice.
+    Exact prompts and LLM snapshots are unknown.
+  filtering_rule: Annotators mark demonstrations successful, infeasible, or failed; failed/error episodes are removed, while
+    typos and grammatical errors are retained. Scroll gestures are reduced to four directions. SeqIO drops element-based target
+    steps lacking a matched accessibility node and drops LL targets missing low-level instructions.
+  sampling_protocol: 15,283 released episodes, 14,548 unique tasks, and 833 apps. Scaling experiments randomly sample 5, 10,
+    100, 1k, 10k, or all paper-reported 13,604 training episodes; the released splits.json contains 13,603 train IDs.
+  rollout_count: unknown
+  temperature: 0
+  inference_budget: Few-shot Gemini 1.5 Pro uses up to 100 in-context step examples; some zero/few-shot evaluations use Random-500.
+    Total training/inference compute is not disclosed.
+  optimizer_or_scaffold: PaLM-2S is LoRA-tuned on a mixture of HL and LL SeqIO tasks; rank 4 is used below 1k episodes and
+    rank 64 at 1k or more in the scaling curves; best checkpoints are selected on the validation split. Optimizer, learning
+    rate, batch size, and seed are unknown.
+audit:
+  source_mixture: Human demonstrations across 833 first- and third-party Android apps, seeded by LLM-generated feature descriptions
+    and, during the final four months, LLM-generated personas.
+  split: Paper Table 3 reports train=13,604 and val=137, with overlapping test subsets IDD=721, app-unseen=631, task-unseen=803,
+    and category-unseen=700. Official splits.json instead contains train=13,603, validation=137, and test=1,543 IDs; test_subsplits.json
+    matches the four paper subset counts.
+  decontamination: unknown
+  benchmark_overlap: No near-duplicate, task-template, train/downstream-benchmark overlap, or contamination-control procedure
+    is disclosed.
+  license: 'Unresolved official-source conflict: the repository README, root LICENSE, and paper checklist state Apache-2.0,
+    while the supplementary datasheet says distribution is limited to non-commercial use and also says Apache-2.0. Author
+    clarification is required before unrestricted reuse.'
+  lineage: LLM-generated feature seed -> human-authored task and step instructions -> physical Android observations/actions
+    -> 20 TFRecord shards -> official split manifests -> HL/LL SeqIO examples for PaLM-2S SFT and offline evaluation.
+  release_version: No semantic version, GitHub tag, or GitHub Release. The public bucket exposes 20 TFRecord shards plus splits.json
+    and test_subsplits.json with object MD5 metadata; no author-published immutable manifest ties them to a repository commit
+    and paper version.
+  successful_and_failed_sample_retention: Failed/error episodes, raw logged events, and discarded episodes are not released;
+    infeasible episodes are used to construct terminate targets. Exact retained counts by status are unknown.
+  privacy_or_consent: Authors state contractors were informed, signed a data-usage agreement, used non-personal devices, and
+    entered no private information. Wage amount, total compensation, and record-level audit are undisclosed; third-party app/UI-content
+    rights remain unclear.
+  known_failure_modes:
+  - Offline single-reference matching can reject alternate valid routes and corrective actions; it is not environment task
+    completion.
+  - 'The artificial terminate target is difficult: reported action-type accuracy is 38.6% for HL and 67.5% for LL, and it
+    is not a released executable terminal predicate.'
+  - 'Long-horizon errors compound: fine-tuned episode accuracy falls from 21.3% at five steps to 7.6% at six despite 64-71%
+    step accuracy.'
+  - 'Third-party-app generalization is weaker: LT-all-r64 reports 82.5% HL step accuracy on Google first-party apps versus
+    58.7% on third-party apps.'
+  - App versions, APKs, account/reset state, service/network state, and collection/evaluation code are not pinned, so episodes
+    cannot be immutably replayed.
+  - Only successful/infeasible retained demonstrations are visible; failed and discarded traces cannot be audited.
+  - The train split differs by one episode between Table 3 and the official release manifest.
+  - Scaling targets in the millions are extrapolations from log-linear fits, not observed training runs.
+  citation_status: verified
+  confidence: medium
+  notes: Official NeurIPS paper, appendices, separate datasheet, arXiv/DOI/OpenReview records, Google Research page, repository
+    README/license/history/release state, GCS inventory, and split manifests were checked. Full TFRecord shards were not exhaustively
+    decoded.
+  remaining_unknowns:
+  - Exact LLM snapshots/prompts/decoding used for feature descriptions and personas.
+  - Record-level annotator/persona provenance and quality-adjudication ledger.
+  - Serialized status field and exact successful/infeasible counts.
+  - Cause of the 13,604 versus 13,603 train-count discrepancy.
+  - Full optimizer, compute, seed, and checkpoint-selection details.
+  - Decontamination and downstream evaluation-separation checks.
+  - Clear dataset reuse terms resolving the license conflict.
+inclusion_reason: AndroidControl is a directly released state-action trajectory corpus whose paired high-/low-level human
+  instructions, broad app coverage, controlled ID/OOD splits, and data-scale experiments expose how trajectory supervision
+  and offline action matching shape mobile-agent SFT and evaluation.
+related:
+- android-control-curated-2025
+tags:
+- android-control
+- mobile-ui
+- human-demonstrations
+- state-action-trajectories
+- imitation-learning
+- offline-evaluation
+- data-scaling
+- out-of-domain-generalization
+status: partial
+category_ids:
+- environment_agent_trajectory_data
+- data_construction_open_release_recipes
+one_line_summary: AndroidControl releases 15,283 human Android demonstrations with paired high-/low-level instructions and
+  uses offline next-action matching to show that in-domain SFT scales much faster than out-of-domain high-level control.
+why_it_matters: 'It is both a reusable offline mobile-agent trajectory object and a warning about feedback boundaries: reported
+  scores measure agreement with one demonstrated next action, while replay state, discarded failures, release versioning,
+  and licensing remain incompletely specified.'
+card: null
+needs:
+- 'needs_license: resolve Apache-2.0 versus non-commercial-only statements in official sources'
+- 'needs_release_manifest: pin all shard hashes, both split files, repository commit, and paper version'
+- 'needs_split_reconciliation: explain the 13,604 paper versus 13,603 manifest train count'
+- 'needs_replay: publish app/APK versions, reset/account/network state, collection code, preprocessing code, and evaluation
+  scripts'
+- 'needs_failure_ledger: publish failed/discarded episode counts and reasons plus record-level status provenance'
+- 'needs_decontamination: document duplicate/task-template and downstream benchmark overlap checks'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Citation, venue, main paper, appendices, separate datasheet, official repository, data inventory, split manifests,
+    license text, and absence of code/releases were verified. Raw TFRecord contents were not exhaustively inspected. Existing
+    review.json must remain state=new.

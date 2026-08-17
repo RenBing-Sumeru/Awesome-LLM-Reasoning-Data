@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "思维链提示将自然语言中间步骤作为引导推理的一类示范对象。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "基础方法与数据/评测路线图",
+  "best_for_ch": "研究少样本示范中自然语言推理步骤作用的基础论文。",
+  "confidence_ch": "高",
+  "authors_ch": "Jason Wei、Xuezhi Wang、Dale Schuurmans、Maarten Bosma、Brian Ichter、Fei Xia、Ed Chi、Quoc V. Le、Denny Zhou",
+  "category_ids": [
+    "foundations_and_primers"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

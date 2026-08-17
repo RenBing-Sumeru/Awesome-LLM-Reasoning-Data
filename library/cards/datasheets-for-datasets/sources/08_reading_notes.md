@@ -1,0 +1,1 @@
+A dataset is more than a file: it needs an account of why it exists, how it was assembled, what it supports, and where it falls short. For reasoning data, that account naturally extends to trace authorship, verification, reward provenance, and benchmark reuse.

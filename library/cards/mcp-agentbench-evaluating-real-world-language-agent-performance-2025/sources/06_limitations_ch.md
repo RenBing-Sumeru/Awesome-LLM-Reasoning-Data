@@ -1,0 +1,11 @@
+- **只能看答案。** MCP-Eval 看到 query、reference answer 与 final answer，看不到 tool call、argument、observation、error、retry 或 external state。它无法确认是否使用 MCP、有效路径是否安全，也不能提供 step-/transition-level supervision。
+- **“具体数据”带来的 false positive。** 公开 rubric 把貌似来自外部的具体数据当作工具使用证据，并要求 judge 在出现此类数据时假定使用了工具。模型可能捏造可信细节而在没有有效 action 时获分。这是基于 prompt 的 curator inference，不是已测 attack rate。
+- **校准并非完美。** 在作者的 60-item study 中，judge 与 majority 的 disagreement 为 8.33%，Cohen's kappa 为 0.734，expert Fleiss' kappa 为 0.671。样本较小且只使用 Claude 3.7 Sonnet output；没有独立 adversarial、跨模型、temporal-drift 或 false-positive/false-negative study。
+- **Reference 漂移。** 时间敏感 reference 保存标注时刻结果，但 replay 没有固定 system time 或捕获外部 response。日后正确的新答案可能与旧 reference 冲突，旧答案也可能在现实变化后继续获分。
+- **没有核实到 executable release。** AAAI/arXiv 官方页面没有作者维护的 dataset、code、server bundle、逐题 tool manifest、原始 judge record 或完整 rollout archive。被引用的 `chatmcp/mcprouter` 是第三方 dependency，并非该 benchmark 的官方实现仓库。
+- **版本与 replay 缺口。** 33 个 server、188 个 schema、package/API version、MCP revision、router commit、credential、random seed、provider request、timeout 与 environment image 均未知。stateless 只降低 reset 复杂度，不能冻结动态外部 API 或 model/judge drift。
+- **Trajectory 留存不完整。** 流程中每题有五条 construction trajectory，也会产生 evaluated model episode，但没有发布成功、失败、retry、invalid 与 truncated history。aggregate pass rate 无法支持 action-level failure audit 或 trajectory training。
+- **Split 与 contamination 未知。** 六组只是类别 strata，不是 train/dev/test partition。论文没有 public/private split、deduplication、existing-benchmark overlap 或 evaluated-model pretraining contamination 分析。若未来公开 query/reference，可能出现针对已知 judge 的 answer shaping。
+- **Rights 与治理缺口。** arXiv manuscript 为 CC BY 4.0，AAAI 论文有 publisher copyright，但二者都不能证明未发布 task record、server configuration、API/tool output 或 model trajectory 的 rights。标注者 recruitment、qualification、compensation、consent 与外部数据 privacy handling 未披露。
+- **Security 范围有限。** 排除 stateful 与非文本 server，不能解决 malicious MCP response、prompt injection、credential leakage、过宽 permission、network isolation 或 data exfiltration。论文没有 threat model 或 security slice。
+- **证据仅支持 evaluation。** 论文未测试 SFT、preference optimization、reward-model training、RLVR、process supervision 或 agent RL；benchmark performance 不能证明 training-data quality 或复用安全性。

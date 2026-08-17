@@ -1,0 +1,3 @@
+Code-generation benchmarks usually check only functional tests. A model can return runnable code while introducing buffer overflows, injection, path traversal, or other vulnerabilities. Existing security evaluations either rely on pattern-matching tools such as CodeQL, with substantial false positives and false negatives, or use expensive human construction and cover only a small set of common CWEs.
+
+AutoSUIT Bench asks how to construct a dynamic security benchmark that checks both preserved functionality and absence of the target vulnerability. Each task receives independent functional and security test suites, model code is compiled or interpreted in a real execution environment, and four generation and repair scenarios are evaluated.

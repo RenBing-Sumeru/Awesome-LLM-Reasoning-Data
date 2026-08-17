@@ -1,0 +1,3 @@
+The paper's core contribution is a detailed taxonomy that puts safety risks, attacks, and defense strategies into one reader-facing structure. This makes it possible to ask a precise question about a result: what risk is involved, what attack exposes it, and what defense is proposed? The intended benefit is a clearer picture of security and reliability for reasoning-enhanced models.
+
+These categories describe different parts of a safety claim. A risk states what can go wrong, an attack states how a weakness is exercised, and a defense states what intervention is proposed. Keeping them separate prevents an observed attack from being mistaken for a general risk measurement or a defense from being assumed effective outside the setting in which it was evaluated.

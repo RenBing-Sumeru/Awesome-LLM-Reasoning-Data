@@ -1,0 +1,5 @@
+- Keep the public 366,154 rows separate from the paper's 490,520-trajectory mixture; the missing difference is 124,366 seed-based trajectories.
+- Read `conversations` as embedded action-observation text, not as a normalized outcome schema; `task_complete` is self-declared.
+- Treat verification as mixed: checked synthetic tasks use pytest-based end-state checks, while adapter tasks have no tests.
+- Interpret the no-filter ablation as evidence for the paper's SFT recipe, not as a label-verifiable failure breakdown of the public release.
+- Before replay or reuse, pin images, dependencies, harness revisions, row manifests, verifier logs, decontamination rules, and component licenses.

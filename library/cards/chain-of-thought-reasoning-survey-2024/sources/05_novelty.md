@@ -1,0 +1,3 @@
+Its novelty is a detailed taxonomy and a unified discussion of advances, frontiers, challenges, and unresolved questions. It does not present a single new chain-of-thought technique. The paper is most valuable as a shared vocabulary for locating an individual result within the broader research landscape.
+
+The contribution changes how papers can be compared rather than changing a model's behavior directly. It lets readers place a proposed method beside related prompt-based work, identify shared assumptions, and notice whether apparent novelty is mainly a change in presentation or task setup. This distinction is useful when deciding what is worth reproducing or extending.

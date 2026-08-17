@@ -1,0 +1,1 @@
+使用约 10K 条数据微调 Qwen2.5-14B 后，VeriThoughts-14B 在标准 VerilogEval 的 pass@1 达 43.7%，高于表中其他开源 14B 基线，包括 DeepSeek-R1-Distill-Qwen-14B 的 38.7%；在 VeriThoughts 测试集上达到 78.5%。受控分析也发现，自一致数据在部分设置上有效，但并非所有 benchmark 都更好；某些不一致样本以生成的 `V*` 为目标反而取得更高成绩。证据说明形式标签有分析价值，却不能简单等同于数据效用排序。

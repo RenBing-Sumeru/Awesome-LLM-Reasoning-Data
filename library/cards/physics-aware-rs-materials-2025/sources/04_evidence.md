@@ -1,0 +1,3 @@
+The authoritative source is arXiv v2, whose HTML gives the authors, Samsung affiliations, full prompt shape, gates, halting rules, and experimental design. It reports that PaRS generates 6.4 teacher candidates per prompt on average under the 12-candidate comparison budget and discards about 20% of prompts without a passing candidate (Table 1 discussion).
+
+The authors compare methods under matched teacher budgets and report teacher-side MAE/judge metrics plus student-side MAE, calibration/correlation, and violation rate. These outcomes are author-reported and combine the teacher, selection gates, halting, training, and internal-data split; they do not validate the unreleased trace collection or wet-lab labels.

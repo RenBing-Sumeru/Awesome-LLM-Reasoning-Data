@@ -1,0 +1,1 @@
+The report builds a 30K-prompt mathematics pool with verifiable ground truth, removes noisy or unverifiable items, and uses Llama-8B accuracy percentiles to assign difficulty levels 1–5. Stage-specific difficulty distributions train Qwen2.5-Math-7B with a GRPO variant whose reward comes from a custom final-answer verifier.

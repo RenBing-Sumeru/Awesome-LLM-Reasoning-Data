@@ -1,0 +1,1 @@
+Arena-Hard 的正确性是偏好相对的。judge 胜出不证明事实正确、安全或任务真正完成，只说明在某个 prompt-answer pair 下配置好的 judge 更偏好一方。judge 模型、prompt 格式、回答长度、markdown 风格、baseline answer 和 endpoint 版本都会移动分数。公开 prompts 和 judgments 也会进入训练。当前仓库已有 v2.0 配置和 GPT-4.1/Gemini-2.5 judge，不能把论文时期分数和当前榜单混用。

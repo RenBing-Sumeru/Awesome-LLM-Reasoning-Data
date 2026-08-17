@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CRAB 用图评估器在桌面和移动跨环境任务中评测多模态智能体。",
+  "reading_priority_ch": "暂缓",
+  "paper_type_ch": "Findings of ACL 2025 / arXiv 的 cross-environment agent benchmark",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Tianqi Xu 等（KAUST）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T04:19:48Z"
+}

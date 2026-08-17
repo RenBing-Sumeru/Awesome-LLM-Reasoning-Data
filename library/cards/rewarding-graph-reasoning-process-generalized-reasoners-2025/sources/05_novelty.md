@@ -1,0 +1,3 @@
+Unlike free-form CoT, every GraphSilo step is an executable graph operation. The novelty is verifiable state-transition supervision with both natural and controlled errors.
+
+The substantive change is therefore not a generic SFT, DPO, BCE, or RL objective, but the construction of graph structures, operation traces, state transitions, first-error locations, and positive/negative labels as a learnable and auditable data object. By storing feedback evidence that would otherwise remain hidden in scripts or environment execution, the work allows later studies to replace labelers, filters, or negative-example sources independently.

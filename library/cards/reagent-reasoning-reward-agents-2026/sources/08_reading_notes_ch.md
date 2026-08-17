@@ -1,0 +1,1 @@
+Agent-RRM 输出分析、聚焦 critique 和分数三种反馈表面；Reagent-C 消费文本，Reagent-R 消费奖励，Reagent-U 统一两者。评测覆盖十二个 benchmark，Reagent-U 在 GAIA 达到 43.7%，在 WebWalkerQA 达到 46.2%，这是两类反馈互补的主要证据。最大风险是 critique 与分数共享 judge 错误。复用时应保留独立环境成功检查，并先测量 critique 正确性再将其作为训练目标。

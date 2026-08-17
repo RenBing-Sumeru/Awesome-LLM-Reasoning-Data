@@ -1,0 +1,360 @@
+id: swe-ci-2026
+title: 'SWE-CI: Evaluating Agent Capabilities in Maintaining Codebases via Continuous Integration'
+year: 2026
+venue: arXiv preprint
+authors:
+- Jialong Chen
+- Xander Xu
+- Hu Wei
+- Chuan Chen
+- Bing Zhao
+source_role:
+- benchmark
+- agent_environment
+- data_release
+verification_contract:
+- programmatic
+- environmental
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- agent_trajectories
+- environment_interaction
+- software_engineering
+- code_agents
+- long_horizon_tasks
+- continuous_integration
+- benchmark_evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2603.03823
+  paper_pdf: https://arxiv.org/pdf/2603.03823
+  arxiv: https://arxiv.org/abs/2603.03823
+  code: https://github.com/SKYLENAGE-AI/SWE-CI
+  data: https://huggingface.co/datasets/skylenage-ai/SWE-CI
+  project: null
+  huggingface: https://huggingface.co/datasets/skylenage-ai/SWE-CI
+  trajectories: https://huggingface.co/datasets/skylenage-ai/SWE-CI-trajectory
+  model: null
+  model_results: null
+  doi: https://doi.org/10.48550/arXiv.2603.03823
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/SKYLENAGE-AI/SWE-CI#citation
+  arxiv_revision: https://arxiv.org/abs/2603.03823v4
+  code_revision: https://github.com/SKYLENAGE-AI/SWE-CI/tree/b2a0620f0168a5a89681be7919a98d9a49ab22af
+  data_revision: https://huggingface.co/datasets/skylenage-ai/SWE-CI/tree/766e41b3a2606f220d30b9ae27f3bb68b262c611
+  trajectory_revision: https://huggingface.co/datasets/skylenage-ai/SWE-CI-trajectory/tree/8069ce71b2b39bcdc89b57449602bee6b0461277
+data_object:
+  unit_of_record: A benchmark task is a chronologically ordered base-commit/target-commit pair from one public Python repository,
+    with a task ID, repository identity, two commit hashes, test gap, source archive, pre-built Docker image, and archive
+    hashes where present in the manifest. An evaluation episode adds the initial and per-iteration repository states, generated
+    requirement document, architect and programmer outputs, pytest process and JSON reports, non-passing test context, iteration
+    record, task/main logs, terminal state, and derived metrics.
+  prompt_source: Requirements are generated dynamically from the difference between target tests and the agent's current code,
+    not copied from GitHub issues. The Architect sees failing-test evidence and current source, then writes at most five urgent
+    high-level requirements for the Programmer.
+  trace_author: An Architect Agent and Programmer Agent, normally sharing the same evaluated base model, alternate inside
+    the CI loop. The paper uses iFlow CLI as the default harness; the current code also supports OpenCode. Official trajectory
+    archives cover named benchmark-version, harness, mode, and model combinations.
+  task_record:
+  - task_id
+  - repo_name_or_derived_repository_identity
+  - upstream_url_when_manifested
+  - upstream_license_when_manifested
+  - current_sha
+  - target_sha
+  - test_gap
+  - code_archive
+  - environment_image_archive
+  - code_and_image_hashes_when_manifested
+  context_or_state: The current state is a copy of base code with Git metadata and tests removed for task-driven development
+    mode, plus generated non-passing-test context. The target state and target tests remain evaluator-side. In requirement-driven
+    mode, the Programmer's tests directory is hidden during editing and restored before evaluation.
+  trace_or_actions: Each epoch records an Architect analysis that summarizes, locates, and designs requirements; a Programmer
+    pass that comprehends, plans, and edits code; and a pytest execution. Timestamped directories preserve accepted code/test
+    states, while iteration.jsonl records test counts, remaining gap, token/time summaries, and architect/programmer results.
+  observation: Architect observations include failing-test descriptions and source context; Programmer observations include
+    the natural-language requirement and repository. The harness also retains stdout/stderr summaries, pytest-json reports,
+    task.log, main.log, non-passing-test files, timeout/errors, and per-epoch repository state.
+  answer_format: The answer is a modified repository state produced over a sequence of CI epochs rather than a standalone
+    text response. Evaluation reads pytest test outcomes and the time-ordered state sequence.
+  answer_or_artifact: A terminal or capped repository snapshot accompanied by the archived intermediate states, requirement
+    documents, test reports, iteration ledger, task logs, and aggregate metrics.
+  process_labels:
+  - requirement_document
+  - architect_usage_and_status
+  - programmer_usage_and_status
+  - pytest_return_code
+  - pytest_json_counts
+  - remaining_test_gap
+  - iteration_index
+  - initialization_or_evolution_failure
+  - resolved
+  - zero_regression
+  verifier_output: pytest and pytest-json-report yield return codes and per-test outcomes. The harness converts passed-test
+    counts relative to base and target into normalized change, averages the sequence as EvoScore with gamma 1 in current summarization,
+    and also reports Resolved, Zero_regression, and ZRR. Runner success/failure counters describe orchestration completion,
+    not whether all target tests pass.
+  reward: The principal scalar is EvoScore, based on normalized changes in passed-test counts over the fixed iteration horizon.
+    Positive progress is normalized by the base-to-target gap and regression below the base by the base pass count. A fully
+    resolved episode reaches the target pass count; no learned reward model or human preference label is used.
+  terminal_predicate: Evolution ends when the remaining target-test gap reaches zero or after 20 epochs. Architect, Programmer,
+    and pytest calls each default to 3,600-second timeouts; failed calls are retried up to ten times for each agent. An epoch
+    without a valid pytest report is archived with gap -1 rather than counted as a semantically successful solution.
+  provenance: Public GitHub Python repositories -> repository filters -> linear main-branch commit spans with stable dependencies
+    -> base/target candidates -> generated and self-repaired Docker environments -> executable-test filtering -> ranked benchmark
+    split -> dual-agent CI rollouts -> pytest verification -> released task and trajectory archives.
+  environment_or_substrate: Linux host orchestration loads each task's image.tar.gz, builds an agent layer, starts separate
+    Docker containers for Architect, Programmer, and pytest work, copies the current repository state between stages, and
+    removes containers and the derived image afterward. The published default resource guidance is 32 CPU cores, 64 GB RAM,
+    about 1 GB/s disk I/O, and 16 workers.
+  release_boundary: The official benchmark repository releases runner, prompts, Dockerfiles, and configuration. The benchmark
+    dataset releases manifests, code.zip archives, and image.tar.gz environments. A separate 115 GB trajectory repository
+    states that it publishes all raw experimental trajectories after light sanitization, grouped into SWE-CI v1/v2, iFlow/OpenCode,
+    and TDD/RDD model archives. It does not publish a machine-readable coverage manifest, archive schema, per-task success/failure
+    index, sanitization specification, or immutable paper-to-run ledger.
+recipe_metadata:
+  base_model: The paper evaluates 20 models from eight providers and normally uses the same model for Architect and Programmer.
+    Exact API snapshots and a complete paper-result manifest are not supplied in the paper; current trajectory archive filenames
+    expose additional model/version combinations beyond the paper.
+  teacher: null
+  generator: The target tests programmatically expose the current functional gap; the evaluated Architect model converts that
+    evidence into an incremental high-level requirement document, and the evaluated Programmer model edits the repository.
+    pytest supplies outcome labels after every epoch.
+  prompt_or_task_source: Public Python repositories and two chronologically ordered commits on the main branch. The task is
+    defined from future target tests and current code rather than a human-written issue.
+  filtering_rule: Repositories must have at least three years of activity, over 500 GitHub stars, dependency/configuration
+    files, unit tests, and a permissive license. Candidate spans retain unchanged dependencies and initially require at least
+    1,000 modified lines. Environments must build and run target tests; base execution must launch under the same environment;
+    the target must pass at least five tests that the base fails. Final ranking favors longer time spans and more intervening
+    commits.
+  selection_threshold:
+    repositories_after_initial_filter: 4923
+    commit_pair_candidates: 8311
+    environment_valid_candidates: 1458
+    post_test_filter_candidates: 137
+    paper_v1_tasks: 100
+    paper_v1_repositories: 68
+    minimum_test_gap: 5
+    average_days_between_commits: 233
+    average_intervening_commits: 71
+    minimum_final_source_lines_changed_excluding_tests: 500
+  sampling_protocol: The paper selects the top 100 of 137 surviving candidates after ranking by time span and intervening
+    commits; this is not a random split. The current release later adds 126 tasks and a more diverse default_v2 split.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: The paper reports more than 10 billion consumed tokens. The default evaluator permits 20 epochs, 3,600
+    seconds per Architect, Programmer, and pytest call, ten retries for each agent call, and 16 concurrent workers. The repository
+    estimates about 48 hours for the default split on the recommended host.
+  search_or_scaffold: An Architect-Programmer dual-agent CI loop implemented around iFlow CLI in the paper, with current OpenCode
+    support and TDD/RDD modes. The Architect writes no more than five urgent requirements, then the Programmer edits code
+    before pytest verification.
+  optimizer_or_training_scaffold: No policy-training or optimizer stage is demonstrated. SWE-CI is an evaluation benchmark
+    with released trajectories; using those trajectories for SFT, RL, or reward-model training would require a new protocol,
+    split isolation, rights review, and contamination controls.
+audit:
+  source_mixture: Public Python repositories, historical commits, upstream tests, generated Docker environments, target-test
+    gaps, Architect requirement documents, Programmer repository edits, pytest reports, agent usage records, and local execution
+    logs. Repository rights, dependency licenses, and model/API terms remain heterogeneous.
+  split: 'The paper evaluates SWE-CI v1: 100 tasks from 68 repositories. The current benchmark repository additionally exposes
+    lite with 50 tasks, default with 100, default_v2 with 100 tasks from distinct repositories, and full with 226 tasks. The
+    dataset card still describes SWE-CI-full as 137 tasks even though the live full.csv contains 226; the 2026-04-20 notice
+    explains that v2 added 126 tasks.'
+  decontamination: No train/dev/test decontamination protocol, model-pretraining overlap measure, repository memorization
+    probe, or hidden refresh policy is reported. Tasks are derived from public GitHub history, and current manifests disclose
+    base and target hashes, tests, and archives, so post-release evaluation contamination is a material risk.
+  benchmark_overlap: SWE-CI uses its own base/target commit-pair construction rather than importing SWE-bench instances. No
+    released instance-, repository-, commit-, or test-level overlap audit against SWE-bench, SWE-evo, SWE-bench-CL, or other
+    coding benchmarks was found.
+  lineage: The paper reports 4,923 repositories after initial filtering, 8,311 candidate commit pairs, 1,458 executable environments,
+    137 candidates after automated test filtering, and the top 100 v1 tasks. The release lacks the rejected-item ledger, exact
+    search snapshot, construction seeds, self-repair change log, immutable candidate-to-v2 mapping, and paper-to-trajectory
+    coverage manifest.
+  license: The SWE-CI runner is Apache-2.0. Benchmark metadata is CC BY 4.0; redistributed code remains under each upstream
+    repository license; environment curation is Apache-2.0 while included operating-system and package components retain their
+    own terms. The trajectory repository declares Apache-2.0, but that label does not automatically clear embedded upstream
+    code, model outputs, test logs, or third-party dependencies for unrestricted training reuse.
+  release_version:
+    arxiv: 2603.03823v4
+    arxiv_date: '2026-04-01'
+    github_commit: b2a0620f0168a5a89681be7919a98d9a49ab22af
+    github_commit_date: '2026-06-10'
+    benchmark_dataset_commit: 766e41b3a2606f220d30b9ae27f3bb68b262c611
+    benchmark_dataset_date: '2026-04-20'
+    trajectory_dataset_commit: 8069ce71b2b39bcdc89b57449602bee6b0461277
+    trajectory_dataset_date: '2026-06-04'
+    github_release_tag: null
+  artifact_release_state: Code, task manifests, packaged repository states, pre-built environments, and large trajectory archives
+    are public. The release is mutable and versioned by repository commits rather than a paper-bound tag; trajectory archives
+    are opaque compressed files without a public schema or checksummed mapping from every paper result to task, model, success
+    state, and expected file inventory.
+  released_objects:
+    paper_v1_tasks: 100
+    paper_v1_repositories: 68
+    current_lite_tasks: 50
+    current_default_tasks: 100
+    current_default_v2_tasks: 100
+    current_full_tasks: 226
+    benchmark_dataset_size_gb: 129
+    trajectory_dataset_size_gb: 115
+    trajectory_archive_groups: 4
+  environment_versioning:
+    host_os: Linux
+    task_environment: pre-built Docker image.tar.gz per task
+    code_archive: code.zip per task
+    code_and_image_hashes: present in v1 manifests; absent from current compact v2/full manifests
+    agent_layer: rebuilt from current Dockerfile with apt and npm downloads
+    python_version: 3.11 recommended for harness setup
+    default_memory_limit: 8192 MB hard, 4096 MB reservation
+    default_io_limit: 128 MB/s read and write
+    reset_semantics: Architect, Programmer, and pytest use newly started containers derived from the same task image; the
+      accepted code directory is copied forward, while temporary state is cleared and containers are removed. A full clean
+      replay still depends on the task archive, agent-layer build, external API, and runner version.
+  successful_and_failed_sample_retention: The harness writes main.log and task.log, an initialization record, per-epoch iteration.jsonl
+    entries, timestamped current/tmp archives, requirement.xml, code snapshots, test_result.json, pytest JSON, and non-passing-test
+    context. Orchestration exceptions increment a failed counter and can be retried by the outer loop; completed max-epoch
+    tasks increment runner success even when not resolved. The trajectory release claims all raw experiment trajectories were
+    published after light sanitization, but no per-task coverage/success manifest or retention policy proves that every successful,
+    failed, timed-out, retried, or corrupted run is represented.
+  replayability: Partial. Commit hashes, source/image archive hashes in v1 manifests, packaged task environments, and archived
+    intermediate states help. However the official repositories have no paper-bound release tag; v2/full omit repository/license
+    and archive-hash columns; the derived agent image runs unpinned apt/npm steps; API model behavior, dependencies, hardware,
+    concurrency, retries, and timeouts can drift. A 115 GB archive is evidence of release, not proof of deterministic record-and-replay.
+  verifier_or_reward_failure_modes:
+  - 'Passing target tests is a narrow proxy: incomplete or weak tests create false positives, while flaky, order-dependent,
+    platform-sensitive, or timeout-prone tests create false negatives.'
+  - Agents can overfit visible tests in TDD mode. RDD hides the tests from the Programmer, but the Architect still derives
+    requirements from test failures, so benchmark-specific behavior may replace general maintainability.
+  - Current EvoScore summarization uses gamma 1 and pads a short trajectory with its last available pass count to the 20-epoch
+    horizon. Early failure, voluntary termination, and missing later evidence therefore require separate health reporting
+    rather than interpretation from the scalar alone.
+  - Runner success means that the task process returned without an orchestration exception; it includes unresolved episodes
+    that simply reached the epoch cap. It must not be confused with Resolved or all target tests passing.
+  - A pytest run with return code above 1, no JSON report, or timeout is archived with an invalid gap rather than normal test
+    evidence. Dependency and container failures can therefore mix with agent capability failures.
+  - Public target commits, tests, manifests, benchmark code, and trajectory archives permit direct benchmark-specific tuning
+    and answer reconstruction.
+  privacy_or_consent: Tasks originate from public repositories rather than a disclosed collection of private users. Nevertheless,
+    source history, test logs, agent prompts, paths, URLs, and model outputs can contain author identities, credentials, or
+    other incidental data. The trajectory release says it is lightly sanitized for desensitization but does not document the
+    detector, redaction fields, review coverage, retention period, opt-out procedure, or privacy takedown policy.
+  security: The evaluator executes third-party repository code and tests in Docker and writes model API credentials into agent
+    configuration files inside containers. iFlow configuration disables its own sandbox, OpenCode grants allow permission,
+    and documented container arguments focus on CPU, memory, and I/O limits rather than a network allowlist. Reuse therefore
+    needs secret rotation, egress control, non-root and capability restrictions, malicious-test/package defenses, archive
+    scanning, and verification that released logs do not retain secrets.
+  experimental_evidence:
+    evaluated_models: 20 models from 8 providers.
+    token_consumption: More than 10 billion tokens.
+    zero_regression: Most models are below 0.25; only two Claude Opus models exceed 0.5.
+    regression_rate_trend: 12 of 20 models show positive correlation with iteration count.
+    regression_magnitude_trend: 11 of 20 models show negative correlation with iteration count.
+    style_comparison: 15 of 20 models beat human oracle code on Pylint, while all 20 lose on MI.
+    solved_rate: Most models resolve fewer than 50% of tasks.
+    early_gain: Largest gains usually occur in iterations 1-4.
+  known_failure_modes:
+  - Most models resolve fewer than half of tasks despite the long interaction budget.
+  - Regression frequency rises with iteration count for many models.
+  - Surface-level Pylint quality can improve while deeper maintainability measured by MI remains worse than human code.
+  - Initialization, API concurrency, agent timeout, pytest timeout, dependency, and Docker failures can prevent comparable
+    evaluation.
+  - Runner-complete, semantically resolved, zero-regression, and archive-present are distinct success states.
+  - Live benchmark manifests and trajectory archives drift beyond the paper's v1 protocol.
+  citation_status: verified
+  confidence: high
+  notes: Audited arXiv v4, the official GitHub repository at b2a0620f..., the benchmark Hugging Face dataset at 766e41b...,
+    and the trajectory dataset at 8069ce7... on 2026-07-20. The original sparse Card was materially outdated because it omitted
+    the later official trajectory release and v2 split, and it treated release, replay, and licensing details as wholly unknown
+    despite primary documentation now being available.
+  remaining_unknowns:
+  - Exact paper-result matrix and immutable mapping from every reported run to a released trajectory archive and per-task
+    record.
+  - Machine-readable trajectory archive schema, required-file inventory, success/failure/timeout/retry labels, and completeness
+    checks.
+  - Exact light-sanitization procedure, secret/PII scanner, false-negative audit, retention, and takedown policy.
+  - Full rejected-candidate ledger, repository search snapshot, self-repair edits, ranking tie-breaks, and v1-to-v2 deduplication
+    lineage.
+  - Pinned OCI or agent-layer digests, apt/npm snapshots, model API snapshots, concurrency schedule, random seeds, and deterministic
+    replay tests.
+  - Repository-, commit-, and test-level overlap with other coding benchmarks and model-pretraining contamination.
+  - Item-level rights validation for every redistributed source archive, environment component, test log, and model-generated
+    trajectory.
+inclusion_reason: SWE-CI exposes a long-horizon repository-maintenance environment where Architect and Programmer agents receive
+  test-derived feedback, produce state-action trajectories, and are scored by executable target tests over time. Its public
+  tasks, environments, code, and later trajectory archives make it a high-value evaluation and audit source, while release
+  drift, public-test contamination, pytest coverage, success semantics, rights, replay, privacy, and credential-bearing execution
+  remain central reuse boundaries.
+related:
+- swe-bench-2023
+- swe-evo-2025
+tags:
+- environment-agent-trajectory-data
+- software-engineering-agents
+- continuous-integration
+- long-horizon-maintenance
+- architect-programmer
+- pytest-verifier
+- executable-feedback
+- trajectory-release
+- docker-environment
+- replay-risk
+- contamination
+- security
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: SWE-CI evaluates 100 long-horizon repository evolutions from 68 public Python repositories through a 20-epoch
+  Architect-Programmer CI loop and now releases tasks, Docker environments, code, and 115 GB of trajectories, with material
+  split-version, verifier, completeness, replay, rights, privacy, and secret risks.
+why_it_matters: It turns future-test feedback into iterative requirements, repository edits, executable outcomes, and a trajectory-level
+  maintainability score rather than a one-shot patch verdict. The official trajectory release makes process analysis possible,
+  but users must distinguish paper v1 from the moving v2 release and audit test quality, run health, archive coverage, licensing,
+  sanitization, replay, and credential isolation before reuse.
+status: partial
+verification:
+  link_verified: true
+  full_text_verified: true
+  appendix_verified: true
+  code_verified: true
+  task_data_verified: true
+  trajectory_release_verified: true
+  evaluation_code_verified: true
+  license_verified: true
+  split_verified: true
+  replay_verified: false
+  complete_rights_verified: false
+  privacy_sanitization_verified: false
+  verified_at: '2026-07-20'
+  verified_by: card_writer
+  confidence: high
+  notes: Official paper, code, benchmark data, live manifests, licenses, runner, Docker/config paths, and trajectory release
+    were verified. Verification does not establish archive completeness, deterministic replay, uniform rights, decontamination,
+    or secret-safe sanitization.
+curation_level: L3_summary_ready
+needs:
+- 'needs_release_manifest: bind paper results to immutable benchmark, split, runner, model, trajectory archive, task, and
+  success-state records'
+- 'needs_trajectory_schema: document archive layout, required fields, complete/failed/timed-out/retried cases, checksums,
+  and validation tooling'
+- 'needs_replay: pin OCI and agent-layer digests, apt/npm/model/API versions, seeds, concurrency, retries, and record/replay
+  tests'
+- 'needs_split_contamination: freeze v1/v2 splits, reconcile 137-versus-226 full counts, audit benchmark overlap and memorization,
+  and define refresh policy'
+- 'needs_verifier_audit: measure flaky/incomplete tests, TDD leakage, reward gaming, environment failures, and scalar sensitivity'
+- 'needs_rights: verify upstream source, tests, dependencies, environment components, logs, and model-output rights item by
+  item'
+- 'needs_privacy_security: specify sanitization, secret/PII scanning, retention/takedown, network egress, credential isolation,
+  and sandbox controls'
+card: null

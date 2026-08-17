@@ -1,0 +1,6 @@
+- SCS rewards option agreement across resampled suffixes of one truncated multimodal trajectory.
+- The feedback combines accuracy, format, and consistency; agreement is a stability proxy, not step verification.
+- The paper reports about 16.1k filtered training prompts, while the inspected Qwen release contains 16,180 JSONL rows.
+- RLOO uses 16 policy samples plus four SCS continuations at truncation ratio 0.8 in the reported 7B setup.
+- Official prompt data and code exist, but complete perturbation, rollout, and per-reward logs were not verified as released.
+- Benchmark gains and the sampled faithfulness audit do not prove prompt-data or trace-record quality.

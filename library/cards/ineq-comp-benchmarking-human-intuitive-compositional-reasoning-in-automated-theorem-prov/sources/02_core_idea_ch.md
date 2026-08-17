@@ -1,0 +1,1 @@
+官方 Parquet 数据含 375 个 Lean 不等式任务：seed、type1、type2 各 75，mix 100，real 50，采用 Apache-2.0。type1 主要复制与重参数化变量，type2 进行代数改写，mix 组合多条基础不等式；仓库另提供 seed proof 和评测脚本。每条任务以 formal statement 和 Lean proof success 为核心，适合 benchmark 与 verifier-guided search，不是大规模 SFT 语料。

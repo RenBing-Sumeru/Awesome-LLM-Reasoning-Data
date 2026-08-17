@@ -1,0 +1,100 @@
+id: mmsearch-r1-2025
+title: 'MMSearch-R1: Incentivizing LMMs to Search'
+year: 2026
+venue: ACL 2026 (Long Papers)
+authors:
+- Jinming Wu
+- Zihao Deng
+- Wei Li
+- Yiding Liu
+- Bo You
+- Bo Li
+- Zejun Ma
+- Ziwei Liu
+source_role:
+- construction_recipe
+- agent_environment
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- agent_training
+- test_time_compute
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.114/
+  arxiv: https://arxiv.org/abs/2506.20670
+  code: https://github.com/EvolvingLMMs-Lab/multimodal-search-r1
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2026.acl-long.114
+  venue: https://aclanthology.org/2026.acl-long.114/
+  openreview: null
+  acl: https://aclanthology.org/2026.acl-long.114/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2026.acl-long.114.bib
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: multi-round text/image search traces and cached image-search results
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: outcome reward plus search penalty
+  terminal_predicate: RL decides multiround search actions
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: multi-round text/image search traces and cached image-search results'
+  known_failure_modes:
+  - live web dependencies and absent reward logs
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2506.20670'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: multi-round text/image search traces
+  and cached image-search results.'
+related: []
+tags:
+- track5
+- raw_search_rollouts
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: 'MMSearch-R1: Incentivizing LMMs to Search records multi-round text/image search traces and cached image-search
+  results under outcome reward plus search penalty.'
+why_it_matters: It makes RL decides multiround search actions and its audit boundary visible for reasoning-data curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

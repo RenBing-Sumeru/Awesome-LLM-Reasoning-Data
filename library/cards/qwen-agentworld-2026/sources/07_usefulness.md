@@ -1,0 +1,6 @@
+Within the frontier reports and data-disclosure ledger track, this Card is a comparison instrument for agent-environment pipelines. It lets curators ask the same questions across reports: What is one data record? Which actor produced the action trace? Which environment produced the observation? How is a target turn selected? Which filters alter the record? Is feedback executable, judge-based, or mixed? Can the released artifacts replay training, or only evaluate a checkpoint?
+
+Qwen-AgentWorld supports a precise classification. The report describes SFT reasoning-trace curation and GSPO RL over environment trajectories, with a mixed reward that is mostly LLM-judge rubric feedback and partly executable verification. It also releases a useful evaluation set with real-observation references. It does not justify labels such as open training trajectories, fully reproducible RLVR, released judge, complete verifier coverage, or replayable training environment.
+
+The training-versus-evaluation distinction is reusable beyond this paper: a benchmark can expose rich trajectory-shaped rows while remaining an evaluation artifact. Curators should count AgentWorldBench’s 2,170 rows as released test data and keep the more-than-10M training corpus at `unknown` availability until a separate official release is verified.
+

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "生成器验证器的变体，自博弈，强化学习轨迹",
+    "updated_at": "2026-07-15T04:59:09Z"
+  },
+  "updated_at": "2026-07-15T04:59:09Z"
+}

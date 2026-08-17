@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "提出 PathFinder-PRM数据集，数据量大，但引用量一般",
+    "updated_at": "2026-07-13T13:47:00Z"
+  },
+  "updated_at": "2026-07-13T13:47:00Z"
+}

@@ -1,0 +1,17 @@
+The source ledger is incomplete. The report describes broad pre-training and SFT source classes, but not source names for most material, collection dates, proportions, record identifiers, procurement terms, or a machine-readable rights matrix. URL-level and semantic deduplication do not establish benchmark decontamination, and no match or removal ledger is released.
+
+The count ledger contains distinct, potentially overlapping objects. The 16T base pre-training tokens, 300B annealing tokens, 30B and 20B context-extension tokens, 3M SFT samples, about 200K preference labels, more than 800K executable code samples, 300K reasoning-RL records, and 160K general-RL instructions must not be summed. Their exact intersections, unique-record totals, mixture weights, repetitions, and checkpoint membership are unknown.
+
+The adaptive-teacher path is not replayable. Exact Hunyuan-Base and Hunyuan-T1 checkpoints, generation instructions, candidate counts, temperatures, stopping caps, correctness verifier, compression transformation, and retained failed-attempt histories are unavailable. Reaching a correct final answer does not establish that every intermediate step is valid.
+
+The deliberation and preference contracts are only partially specified. Judge models are said to be based on Hunyuan-TurboS and calibrated with experts, but versions, dimension prompts, consensus weights, calibration examples, disagreement rates, iteration counts, and weakness-profile records are not released. Agreement above 93 percent for about 200K preference labels is informative but cannot replace the annotation rubric, sampling frame, adjudication, and class distribution.
+
+The reward system is broad but opaque. Checkpoints, training data, prompts, thresholds, weights, score distributions, calibration, false-accept rates, and per-record reward vectors for the GRM, GRM-CoT, Answer Consistency Model, critics, classifiers, and more than 30 services are unavailable. Reference errors, position bias, judge bias, score fusion, and reward hacking remain material risks.
+
+The sandbox is not reproducible from the report. Thirty-six languages, distributed CPU execution, more than 1,000 concurrent runs, and file and network isolation are disclosed, but container images, compilers, packages, versions, resource limits, timeouts, unit-test sources, seeds, logs, and failure classifications are unknown. The more than 800K code samples are not released.
+
+The RL runs cannot be replayed. Stage-level counts, mixture ratios, temperature 1.0, K3 clipping, positive-advantage Best-of-N loss, dynamic filtering, zero-advantage removal, and group adjustment are documented. Full prompt pools, rollout groups, sampled outputs, rewards, advantages, policy and reference revisions, optimizer state, learning rates, group sizes, and exact schedules are not.
+
+The release surface is narrow. The official GitHub repository contains a report and figures rather than training code; the official Hugging Face Space is a hosted API demo rather than open weights. No official data files, reward checkpoints, sandbox package, Angel-RL implementation, or Hunyuan-TurboS weight shards were located on the checked official surfaces.
+
+Finally, the reported benchmark and token-efficiency results are model evidence. They cannot establish data quality, provenance, rights compliance, process correctness, contamination absence, safety coverage, or verifier reliability.

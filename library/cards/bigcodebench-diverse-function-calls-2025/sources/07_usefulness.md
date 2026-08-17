@@ -1,0 +1,3 @@
+1. **Practical code-generation evaluation:** Report pass@1 separately on Complete and Instruct to measure degradation when structured specifications are removed.  
+2. **API-composition testing:** Use the 139-library coverage and failure branches to determine whether models select, order, and combine calls correctly rather than only produce syntax.  
+3. **Verified-data construction:** Package similar private functions with high-coverage tests for rejection sampling or RLVR. The official 1,140 tasks should remain evaluation data and must not be mixed into training while still claiming zero-shot results.

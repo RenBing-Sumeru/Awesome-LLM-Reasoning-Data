@@ -1,0 +1,1 @@
+B-MoCA 解决的是移动设备控制 agent 在不同 Android 设备配置下的评测问题。主要来源是 CoLLAs 2025 论文/arXiv PDF、官方项目页和 release 仓库。评测对象是一条 Android emulator episode：任务指令、来自屏幕图像或 Android view hierarchy 的 observation、action、环境转移和 rule-based success signal。它应归入交互式 mobile-agent benchmark，而不是静态截图数据集或单纯训练 recipe。价值在于随机化设备设置、语言、图标位置、壁纸和设备形态，用来测试泛化而不只是任务记忆。

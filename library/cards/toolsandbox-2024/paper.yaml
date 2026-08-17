@@ -1,0 +1,133 @@
+id: toolsandbox-2024
+title: 'ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities'
+year: 2024
+venue: arXiv preprint
+authors:
+- Jiarui Lu
+- Thomas Holleis
+- Yizhe Zhang
+- Bernhard Aumayer
+- Feng Nan
+- Felix Bai
+- Shuang Ma
+- Shen Ma
+- Mengyu Li
+- Guoli Yin
+- Zirui Wang
+- Ruoming Pang
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2408.04682
+  arxiv: https://arxiv.org/abs/2408.04682
+  code: https://github.com/apple/ToolSandbox
+  data: https://github.com/apple/ToolSandbox
+  project: https://github.com/apple/ToolSandbox
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2408.04682
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  dataset_scale: The arXiv page verifies the benchmark and released framework; exact scenario count/version should be pinned
+    from the repository release used for evaluation.
+  prompt_source: stateful tool-use scenarios with user instructions and simulated follow-up conversation
+  trace_author: evaluated model interacts with a built-in user simulator and tool environment
+  answer_format: conversation turns, tool calls, tool state changes, user-simulator responses, intermediate milestones, final
+    milestones, and score
+  process_fields:
+  - user instruction
+  - tool schema
+  - conversation turn
+  - tool call
+  - tool response
+  - environment state
+  - milestone check
+  - final score
+  environment_or_substrate: stateful tool sandbox with implicit dependencies among tools and a user simulator
+  verifier_or_reward: dynamic evaluation strategy over intermediate and final milestones along an arbitrary trajectory
+  terminal_predicate: conversation and tool state satisfy the required intermediate and final milestones
+recipe_metadata:
+  base_model: Not a single base-model recipe unless stated in the paper; use only the disclosed training/evaluation role.
+  teacher: Official task authors, generator, tracer, simulator, or judge described by the paper.
+  generator: stateful tool-use scenarios with user instructions and simulated follow-up conversation
+  filtering_rule: Use only source-backed construction and validation claims; do not infer hidden filters.
+  sampling_protocol: Pin release revision, split, runtime, prompt/scaffold, judge/verifier, and evaluation budget before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: stateful tool sandbox with implicit dependencies among tools and a user simulator
+audit:
+  source_mixture: https://arxiv.org/abs/2408.04682; https://github.com/apple/ToolSandbox; https://github.com/apple/ToolSandbox;
+    https://github.com/apple/ToolSandbox
+  split: pin exact public/hidden split or train/test revision before score reuse
+  decontamination: public tasks, traces, APIs, repositories, or generated environments can enter future training data
+  license: Official repository uses an Apple license; downstream redistribution and packaging should be reviewed against the
+    repository license rather than assumed permissive.
+  lineage: 'Primary source: https://arxiv.org/abs/2408.04682'
+  known_failure_modes:
+  - runtime, tool, website, API, or dependency drift
+  - prompt/scaffold and budget sensitivity
+  - public-artifact contamination
+  - judge, tracer, verifier, or evaluator version drift
+  citation_status: verified
+  confidence: medium
+  notes: Source facts were regenerated from official paper/page artifacts; score reuse still requires pinned artifacts and
+    evaluator versions.
+inclusion_reason: ToolSandbox evaluates tool-use models in stateful conversations with simulated users, implicit tool-state
+  dependencies, and milestone-based checks.
+related: []
+tags:
+- agent-environment
+- benchmark
+- evaluation-surface
+- tool-use
+- trajectory-data
+one_line: ToolSandbox evaluates tool-use models in stateful conversations with simulated users, implicit tool-state dependencies,
+  and milestone-based checks.
+why_it_matters: ToolSandbox evaluates tool-use models in stateful conversations with simulated users, implicit tool-state
+  dependencies, and milestone-based checks.
+status: verified
+needs:
+- 'needs_version_pin: pin repository/data revision, split, runtime, prompt/scaffold, and evaluator version before score reuse'
+- 'needs_license_audit: verify artifact-level license before redistribution or training reuse'
+one_line_summary: ToolSandbox evaluates tool-use models in stateful conversations with simulated users, implicit tool-state
+  dependencies, and milestone-based checks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: curation
+  confidence: medium
+  notes: Official source links and card-local artifacts were verified for L4 source regeneration.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 7
+  candidate_title: ToolSandbox
+  primary_category_id: benchmarks_evaluation_surfaces
+  processed_at: '2026-07-12'

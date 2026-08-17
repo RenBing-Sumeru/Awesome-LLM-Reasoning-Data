@@ -1,0 +1,217 @@
+id: swe-world-2026
+title: 'SWE-World: Building Software Engineering Agents in Docker-Free Environments'
+year: 2026
+venue: arXiv preprint
+authors:
+- Shuang Sun
+- Huatong Song
+- Lisheng Huang
+- Jinhao Jiang
+- Ran Le
+- Zhihao Lv
+- Zongchao Chen
+- Yiwen Hu
+- Wenyang Luo
+- Wayne Xin Zhao
+- Yang Song
+- Hongteng Xu
+- Tao Zhang
+- Ji-Rong Wen
+source_role:
+- agent_environment
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- full_episode
+- scalar_reward
+domains:
+- software_engineering
+- repository_level_code
+- agentic_reasoning
+training_use:
+- sft
+- distillation
+- reward_modeling
+- agent_training
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2602.03419
+  arxiv: https://arxiv.org/abs/2602.03419
+  code: https://github.com/RUCAIBox/SWE-World
+  data: null
+  project: null
+  huggingface: https://huggingface.co/collections/RUC-AIBOX/swe-agent-series
+  doi: https://doi.org/10.48550/arXiv.2602.03419
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Environment-model and RL task pools combine R2E-Gym, SWE-Gym, and SWE-rebench. Policy SFT additionally uses
+    a paper-reported SWE-World Dataset of 16,550 Python GitHub Issue-PR instances from 2010-2025 across 3,763 repositories;
+    the complete new dataset was not located as a public release.
+  context_or_state: A task instance carries repo, instance_id, base_commit, problem_statement, optional hints, FAIL_TO_PASS
+    and PASS_TO_PASS tests, gold_patch, and test_patch. During an episode, a deterministic sandbox maintains the mutable repository
+    and the current agent patch.
+  trace_author: GLM-4.6 and MinMax-M2 generate real-Docker rollouts for SWT/SWR supervision and SWE-World rollouts for policy
+    SFT; policy RL rollouts come from the current SFT-initialized policy.
+  trace_or_action: A full episode is a sequence of thought, tool action, and observation records ending in submit and output_patch.
+    SWT supervision is attached to individual code-execution actions; navigation and editing remain deterministic.
+  observation: Sandbox observations expose file/navigation/edit results. SWT predicts structured stdout, stderr, and exit_code
+    for repository-specific execution commands.
+  answer_format: The episode artifact is a submitted repository patch. Official demos also store exit_reason, test outputs,
+    reward, budgets, environment/agent arguments, and source-instance metadata.
+  process_fields:
+  - trajectory_steps
+  - thought
+  - action
+  - observation
+  - current_agent_patch
+  - command_to_simulate
+  - execution_code
+  - exit_reason
+  - output_patch
+  - token_and_time_metadata
+  verifier_output: SWR generates a structured test_report followed by a binary reward; its context includes the final agent
+    patch, hidden gold patch, test command/content, FAIL_TO_PASS, and PASS_TO_PASS tests.
+  verifier_or_reward: The learned SWR is the in-loop verifier and virtual test runner; it predicts a test report and binary
+    terminal reward. Real Docker test execution provides collection labels and final benchmark ground truth.
+  reward: SWR reward is 1 only when all required F2P and P2P tests are predicted to pass, otherwise 0. Docker execution supplies
+    ground-truth labels for world-model collection and all final SWE-bench Verified correctness judgments.
+  terminal_predicate: The normal episode terminates on submit; success requires every designated F2P and P2P test to pass.
+    For RL, a non-submit rollout receives alpha times the predicted reward with alpha=0.5 according to Appendix D.
+  provenance: Source dataset or GitHub Issue-PR -> pinned repository/base commit and tests -> Docker rollout for SWT/SWR ground
+    truth or SWE-World rollout for policy data -> filtering -> world-model/policy training or TTS selection.
+  environment_or_substrate: R2E-Gym ReAct-style scaffold with str_replace_editor, execute_bash, and submit; a deterministic
+    filesystem sandbox is combined with learned SWT step feedback and SWR terminal evaluation. Docker remains the collection
+    and benchmark oracle.
+recipe_metadata:
+  base_model: SWT/SWR use Qwen2.5-Instruct-32B and Qwen2.5-Instruct-72B. Policy models use Qwen2.5-Coder-32B-Instruct and
+    Qwen3-4B-Instruct-2507.
+  teacher: GLM-4.6 generates initial analyses; Qwen3-235B-A22B-Thinking generates reverse-reasoning CoT using Docker ground-truth
+    outputs. The LLM-as-a-judge model used to filter CoT is unknown.
+  generator: GLM-4.6 and MinMax-M2 generate trajectories in R2E-Gym. Docker produces real execution/test targets for SWT/SWR;
+    SWE-World produces policy-SFT and RL interactions.
+  prompt_task_source: R2E-Gym, SWE-Gym, SWE-rebench, and a GitHub Archive 2010-2025 Python Issue-PR crawl filtered to 16,550
+    tasks.
+  sampling_protocol: World-model collection uses agents at temperature 0.7 with at most 100 turns. Policy-SFT rollout uses
+    SWT/SWR at temperature 0, 128K context, and agents at temperature 0.7. RL samples four rollouts per problem at policy
+    temperature 1.0 while SWT/SWR remain deterministic.
+  temperature: 0.7 for GLM-4.6/MinMax-M2 trajectory generators; 0 for SWT/SWR in policy-SFT, RL and evaluation; 1.0 for the
+    RL policy; 0.7 for SWE-agent evaluation.
+  rollout_count: 'Reported retained policy-SFT set: 5.7K SWE-World trajectories. World-model supervision: SWT 26K non-CoT
+    plus 26K CoT; SWR 21K non-CoT plus 21K CoT. RL uses four rollouts per problem per update; total RL rollouts are unknown.'
+  inference_budget: TTS@8 samples eight candidate trajectories and queries SWR three times per candidate. Agent evaluation
+    allows 150 turns and 128K context. RL allows 150 turns, 108K context, and 5,400 seconds per trajectory.
+  search_or_scaffold: R2E-Gym scaffold adapted from OpenHands; the official repository supplies sandbox/SWT/SWR inference,
+    SFT, GRPO++ RL, and TTS scripts.
+  filtering_rule: World-model data drops corrupted Docker environments/logs and balances SWR reward-0/reward-1 labels 1:1.
+    CoT is judged for invalid or ground-truth-leaking reasoning. Policy SFT drops invalid tools, timeouts, overlong/over-turn/no-submit
+    episodes and retains only SWR reward=1 trajectories under 80K tokens and 100 turns.
+  selection_threshold: Policy SFT requires predicted reward=1. TTS selects the candidate with maximum mean binary SWR reward
+    over three queries; tie handling is not disclosed in the paper.
+  optimizer_or_scaffold: SWT/SWR SFT uses AdamW, DeepSpeed ZeRO-3, BF16, FlashAttention, ring attention and gradient checkpointing.
+    Policy SFT runs five epochs with batch 256 and cosine LR 5e-5 to 5e-6. Agent RL uses GRPO++ at LR 1e-6 with 32 problems/update.
+audit:
+  source_mixture: Three public SWE task sources plus 16,550 newly crawled GitHub Issue-PR tasks. Exact mixture weights, immutable
+    source manifests and the new dataset release are unknown.
+  split: SWE-bench Verified is the 500-instance evaluation benchmark and SWR is evaluated on a described held-out trajectory
+    set. Train/validation/held-out sizes, repository/time isolation, and a conventional released split manifest are unknown.
+  decontamination: The paper says the new GitHub crawl is deduplicated against existing open SWE datasets and disables solution-revealing
+    git commands at evaluation. Exact deduplication code/thresholds and broader model-pretraining or benchmark contamination
+    audits are unknown.
+  benchmark_overlap: Training uses R2E-Gym, SWE-Gym, SWE-rebench and the new crawl; evaluation uses SWE-bench Verified. No
+    complete task, repository, patch, test or temporal overlap report was found.
+  license: The code repository declares MIT. Inspected Hugging Face model repositories have no model-card license metadata,
+    and the complete datasets have no verified release/license. Rights for GitHub issues, PRs, patches, comments and dependencies
+    are unknown.
+  lineage: Instance metadata -> real Docker agent rollout -> per-action SWT and per-episode SWR examples -> optional reverse-CoT
+    augmentation/filtering -> SWT/SWR SFT; separately, task instance -> SWE-World policy rollout -> success filtering -> policy
+    SFT -> GRPO++ RL -> SWR-ranked TTS. Public demos do not provide complete immutable lineage for the reported corpora.
+  release_version: 'Paper: arXiv v1 dated 2026-02-03. Code inspected at commit 818b4e95313cd8e0cbbe69a2f7a1c49664511843 dated
+    2026-03-06. Official HF model revisions are separately pinned in the evidence ledger; 72B SWT/SWR releases dated 2026-03-23
+    postdate the paper and inspected code snapshot.'
+  known_failure_modes:
+  - SWR-72B reports accuracy 0.770, precision 0.780, recall 0.807 and F1 0.794 against Docker, so both false rewards and missed
+    successes remain material.
+  - 'The paper demonstrates reward hacking with a non-CoT SWR: short invalid submissions are mistakenly rewarded and trajectory
+    length collapses.'
+  - SWT/SWR receive the hidden gold patch and initial analysis; shortcut learning or unintended solution leakage into simulated
+    feedback is a curator-identified risk.
+  - A learned simulator may hallucinate plausible stdout/test reports and drift on repositories, commands or tests outside
+    its training distribution.
+  successful_and_failed_sample_retention: SWT uses valid samples from successful and failed Docker rollouts; SWR is balanced
+    1:1 after filtering. Policy SFT keeps only predicted-success trajectories, dropping failures and near misses from supervised
+    policy training.
+  privacy_or_consent: The new dataset is sourced from GitHub Archive issues, PRs and community comments. Consent, handle redaction,
+    deletion, privacy review and takedown procedures are not disclosed.
+  result_consistency: Qwen2.5-Coder-32B RL is 55.0 in the abstract, Table 2 and repository README but 54.8 in Section 6.2
+    prose; the draft treats 55.0 as the table value and flags reconciliation as needed.
+  citation_status: verified
+  confidence: high
+  notes: Official paper identity, code, demos and model weights were verified. Overall reuse remains partial because complete
+    data, licenses, split/contamination records, immutable manifests and full experiment-to-checkpoint mapping are missing.
+  remaining_unknowns:
+  - Full URLs and immutable revisions for the 16,550 task dataset, 26K/21K world-model corpora, and 5.7K policy-SFT set
+  - Dataset/model licenses and upstream GitHub content rights
+  - Exact crawl query, regexes, keyword lists, dedup algorithm and per-row source manifest
+  - Split sizes, repository/time isolation and benchmark-overlap audit
+  - CoT judge identity, acceptance threshold and rejection statistics
+  - Total RL rollouts/steps, seeds, hardware, compute and checkpoint mapping
+  - Privacy, consent, redaction, deletion and takedown policy
+inclusion_reason: SWE-World makes a repository agent's state-action-observation episode and its terminal test contract explicit,
+  then uses Docker-derived execution records to train learned transition and reward simulators for SFT, RL and test-time selection.
+related:
+- swe-dev-2025
+- swe-mirror-2025
+tags:
+- swe-world
+- software-engineering-agents
+- learned-environment
+- world-model
+- transition-model
+- reward-model
+- docker-free
+- agent-trajectories
+- reward-hacking
+- swe-bench-verified
+category_ids:
+- environment_agent_trajectory_data
+one_line_summary: SWE-World trains a step-feedback simulator and a virtual test runner from Docker rollouts, then uses them
+  to generate and reward repository-agent episodes without Docker, while the complete task and trajectory corpora remain unreleased.
+why_it_matters: 'It exposes a concrete alternative feedback contract for SWE-agent post-training and shows both its scaling
+  value and its audit hazard: learned execution can support SFT, RL and TTS, but imperfect rewards, gold-patch conditioning
+  and missing release lineage can change what behavior is actually reinforced.'
+status: partial
+card: null
+needs:
+- 'needs_data_url: full SWE-World task, SWT/SWR supervision and policy-trajectory releases'
+- 'needs_snapshot: pin all code, model, task-source and evaluation-harness revisions'
+- 'needs_license: model, dataset and upstream GitHub-content rights'
+- 'needs_lineage: per-row issue/PR URLs, commits, tests, transformations and filter decisions'
+- 'needs_split: train/validation/held-out definitions and repository/time isolation'
+- 'needs_contamination_audit: overlap with SWE-bench Verified and source/pretraining corpora'
+- 'needs_verifier_audit: calibration, distribution shift, reward hacking and gold-patch shortcut tests'
+- 'needs_reproducibility: RL totals, seeds, hardware, compute and checkpoint-to-result mapping'
+- 'needs_result_reconciliation: 55.0 versus 54.8 Qwen2.5-Coder-32B RL score'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-20'
+  verified_by: paper_curator
+  confidence: high
+  notes: arXiv v1, DOI, official code repository/commit, MIT repository license, demo trajectory/SFT/RL files, HF collection
+    and eight SWE-World model repositories were checked. Artifact verification does not imply full-data release completeness.

@@ -1,0 +1,3 @@
+Prior GUI benchmarks often focused on one platform or one capability such as grounding, mobile automation, desktop OS tasks, or web navigation. MMBench-GUI changes the scope by organizing multiple GUI platforms and task types into one hierarchy with level-specific feedback contracts.
+
+The direction signal is benchmark design for GUI agents where perception and action are evaluated separately but can be connected through traces. What is not new: screenshots, UI grounding, browser/mobile/desktop tasks, and success predicates; reuse should inspect platform coverage, annotation schema, evaluator scripts, environment images, dataset license, and unreleased or changing levels.

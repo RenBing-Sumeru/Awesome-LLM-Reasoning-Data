@@ -1,0 +1,3 @@
+The method combines two decisions. First, it generates several reasoning paths for a claim and lets a process verifier score the plausibility of each path together with its verdict. This replaces a simple majority over labels with a selection rule that can prefer a minority answer supported by a more coherent evidence analysis.
+
+Second, it predicts whether a claim is complex enough to merit the multi-path procedure. Complexity is estimated from layer-wise latent representations and corresponds to whether decomposition is needed to verify the claim. The intended result is selective test-time scaling: simple claims receive a cheaper path, while multi-aspect numerical claims receive a larger exploration-and-verification budget.

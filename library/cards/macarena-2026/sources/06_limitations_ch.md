@@ -1,0 +1,9 @@
+- **verifier有效性：** final-state script可能在application、filesystem、accessibility、shell、window-title或version漂移下产生false positive/false negative。已发布Contacts/Session任务错配是确认的语义缺陷，不是假设风险。论文未报告evaluator错误率研究或完整unit-test ledger。
+- **reset差异：** 论文称每个episode都使用干净copy-on-use VM。检查到的two-run helper只完整重置run 1；run 2关闭应用后以`reset_env=False`运行。残留文件、设置、后台process、cache或external-service状态可能影响第二次分数与maximum-of-two聚合。
+- **构造provenance：** 论文称任务由人工创建并审核，但49个custom JSON全都写着`source: synth_generation`。未披露model、prompt、sampling protocol、annotator workflow、rejection count、agreement measure或adjudication来解释差异。不能仅凭该标签推断LLM generator。
+- **发布边界：** runner能在本地生成丰富的screenshot/action/reward/result/video记录，但尚未确认规范化公开的success/failure/timeout rollout corpus或报告实验的不可变manifest。任务与VM可用不等于trajectory可用，也不等于deterministic replay。
+- **split与污染：** 未披露train/dev/test split、hidden-test政策、duplicate audit或正式model-exposure/decontamination流程。全部prompt/evaluator公开，且372项任务继承OSWorld/macOSWorld lineage，存在泄漏与grader gaming风险。观察到的排名反转不是污染审计。
+- **隐私与安全：** annotator demographics、compensation、consent和privacy/redaction audit均为unknown。本地输出包含桌面screenshot、response history、log与video；121 GB VM bundle未被穷尽检查是否含嵌入状态或credential。部分setup script访问live URL，带来side effect、内容漂移与sandboxing风险。
+- **回放与系统成本：** 复现需要Apple Silicon、UTM、合法macOS、大体积VM下载、第三方application与可变external resource；一台host最多支持两个guest VM。seed、精确model/API snapshot、decoding setting、paper-bound VM/task hash与deterministic replay ledger均为unknown。
+- **许可：** MacPaw code/framework/custom task声明为MIT，OSWorld task为Apache-2.0，macOSWorld task为CC BY-NC 4.0；Apple EULA与第三方application条款另行适用。被引用component path/license与检查到的仓库树未完全对齐，因此再分发与commercial-use权利需要逐记录/组件审查。
+- **评测范围：** 论文没有报告human-performance baseline。四个智能体的benchmark分数不能证明生产可靠性、evaluator正确性、安全性或训练数据适用性。因此accepted `training_use`仅为evaluation与audit。

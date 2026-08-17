@@ -1,0 +1,130 @@
+id: huatuogpt-o1-2025
+title: Towards Medical Complex Reasoning with LLMs through Medical Verifiable Problems
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Junying Chen
+- Zhenyang Cai
+- Ke Ji
+- Xidong Wang
+- Wanlong Liu
+- Rongsheng Wang
+- Jianye Hou
+- Benyou Wang
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- programmatic
+- judgment_required
+- mixed
+supervision_granularity:
+- step_level
+- answer_level
+domains:
+- verifiable-complex-medical-reasoning-data
+training_use:
+- sft
+- distillation
+- agent_training
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2412.18925
+  arxiv: https://arxiv.org/abs/2412.18925
+  venue: null
+  code: null
+  data: https://huggingface.co/datasets/FreedomIntelligence/medical-o1-reasoning-SFT
+  project: null
+  huggingface: https://huggingface.co/datasets/FreedomIntelligence/medical-o1-reasoning-SFT
+  doi: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: hard filtered questions from MedQA, MedMCQA, and Chinese medical exams
+  trace_author: GPT-4o searches and writes complex reasoning for the SFT half
+  answer_format: medical problem, complex reasoning trace, final response, language, and source split
+  process_fields:
+  - medical problem
+  - complex reasoning trace
+  - final response
+  - language
+  - and source split
+  environment_or_substrate: English and Chinese medical examination reasoning
+  verifier_or_reward: known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards
+  terminal_predicate: known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards
+recipe_metadata:
+  base_model: See the primary paper's controlled experiments.
+  teacher: GPT-4o searches and writes complex reasoning for the SFT half
+  generator: HuatuoGPT-o1 filters medical exams into 40K verifiable problems, distills complex traces for half, and uses the
+    remaining half for answer-reward RL.
+  filtering_rule: known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards
+  sampling_protocol: Use the paper and pinned release; do not infer undisclosed settings.
+  rollout_count: null
+  temperature: null
+  inference_budget: See the primary paper; pin teacher, prompts, tools, and sampling budget.
+  optimizer_or_scaffold: medical CoT SFT followed by verifiable RL
+audit:
+  source_mixture: hard filtered questions from MedQA, MedMCQA, and Chinese medical exams
+  split: Official release at https://huggingface.co/datasets/FreedomIntelligence/medical-o1-reasoning-SFT; exact configs are
+    described by the dataset card.
+  decontamination: known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards
+  license: Apache-2.0
+  lineage: hard filtered questions from MedQA, MedMCQA, and Chinese medical exams -> GPT-4o searches and writes complex reasoning
+    for the SFT half -> known multiple-choice answers, contamination filtering, failed-attempt limits, and rule rewards ->
+    medical-o1-reasoning-SFT -> medical CoT SFT followed by verifiable RL
+  known_failure_modes:
+  - multiple-choice correctness does not validate diagnostic reasoning
+  - and exam distributions differ from real clinical decision making
+  citation_status: verified
+  confidence: high
+  notes: Full 23 page paper, official dataset README, license, schema, and an actual record were checked on 2026-07-27.
+inclusion_reason: The central contribution releases reusable serialized targets for medical CoT SFT followed by verifiable
+  RL; records name the authoring mechanism and the selection signal.
+related: []
+tags:
+- instruction-demonstration-rationale
+- arxiv-2412.18925
+- primary-link-checked
+status: verified
+one_line_summary: HuatuoGPT-o1 filters medical exams into 40K verifiable problems, distills complex traces for half, and uses
+  the remaining half for answer-reward RL.
+why_it_matters: Open medical chat data lacks hard, objectively checkable problems for teaching complex reasoning and supporting
+  stable reinforcement learning.
+reading_priority: must read
+paper_type: open post-training dataset and construction study
+best_for: medical CoT SFT followed by verifiable RL
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Full paper, official dataset records, schema, scale, and terms checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-l4-20260727-track01-60
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: verifiable complex medical reasoning data
+  selection_priority_score: 8
+  selection_score_breakdown:
+    institution: 2
+    venue: 2
+    impact: 2
+    artifact: 2
+  selection_evidence:
+    institution: Affiliations were read from the primary paper; no institution was inferred from a model name.
+    venue: Recorded as Findings of ACL 2025; no higher presentation level is claimed.
+    impact: The official dataset reported 13857 downloads and 1156 likes on 2026-07-27, alongside the paper's downstream experiment.
+    artifact: The official release exposes actual Parquet records in English and Chinese configs records, field schema, scale,
+      and Apache-2.0 terms.
+  selection_eligible: true
+  year_impact_threshold: 2

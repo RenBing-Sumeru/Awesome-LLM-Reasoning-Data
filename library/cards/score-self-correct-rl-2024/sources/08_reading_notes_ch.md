@@ -1,0 +1,5 @@
+- 数据对象是 on-policy 两轮 episode，包含两次作答、固定纠错指令、`r1`、`r2` 和 Stage II progress bonus。
+- Stage I 在用 KL 约束第一轮接近基座模型的同时提高第二轮；Stage II 联合优化两轮。
+- 反馈是二元、答案级、程序化信号：MATH 使用 ground-truth matching，代码使用 all-tests-pass，不是过程监督。
+- MATH 结果使用 MATH train 加 4,500 道原 test 题训练，并在剩余 MATH500 上评估。
+- Benchmark 增益检验优化配方；官方代码、原始轨迹、checkpoint、精确 split manifest、license 和 decontamination 均未确认发布。

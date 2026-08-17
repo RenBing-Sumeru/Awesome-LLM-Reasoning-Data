@@ -1,0 +1,5 @@
+- Read Paper §§3.2-3.5 together: Dynamic Sampling, token weighting, length reward, and integer-target transformation define one connected data-and-feedback pipeline.
+- Use Table 1 as a cumulative progression under one AIME 2024 setup, not as independent proof for each component; compare it with the later official reproduction table.
+- Inspect Appendix A before reusing DAPO-Math-17K: the released task may be an LLM rewrite of an original problem, but neither the original nor the rewrite trace is retained.
+- Pin Hub revision `6587709` and audit the 1,791,700-row train split before loading it; visible repeated blocks mean row count is not unique-prompt count.
+- Read the rule reward as outcome supervision only, and verify the exact extractor, equivalence rule, length adjustment, and rejected groups before treating it as a training contract.

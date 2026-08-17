@@ -1,0 +1,175 @@
+id: gvm-raft-2025
+title: Optimizing Chain-of-Thought Reasoners via Gradient Variance Minimization in Rejection Sampling and RL
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jiarui Yao
+- Yifan Hao
+- Hanning Zhang
+- Hanze Dong
+- Wei Xiong
+- Nan Jiang
+- Tong Zhang
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- mathematics
+training_use:
+- sft
+- rlvr
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://papers.nips.cc/paper_files/paper/2025/hash/eef6cb60fd59b32d35718e176b4b08d6-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2505.02391
+  code: https://github.com/RLHFlow/GVM
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://papers.nips.cc/paper_files/paper/2025/hash/eef6cb60fd59b32d35718e176b4b08d6-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=tA0l08qS5N
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: A mathematical prompt x and oracle final answer z from Numina-Math. The paper does not pin an immutable dataset
+    revision, item manifest, train split, or decontamination record.
+  trace_author: The current policy checkpoint generates online chain-of-thought responses; no external teacher is used for
+    the reported GVM sampling loop.
+  answer_format: One online acquisition record comprises prompt and oracle answer; policy checkpoint and iteration; N' pilot
+    rationales with extracted final answers and Math-Verify outcomes; per-prompt acceptance estimate p_i; accepted-response
+    log-likelihood gradient norms summarized as G_i; allocated count n_i under the global budget N; additional rationales
+    and outcomes; and the accepted responses or group rewards consumed by RAFT++ or GRPO.
+  process_fields:
+  - prompt_and_oracle_answer
+  - policy_checkpoint_and_iteration
+  - pilot_rollouts_and_final_answers
+  - math_verify_binary_outcomes
+  - acceptance_rate_estimate
+  - accepted_sample_gradient_norm_estimate
+  - prompt_specific_allocation
+  - additional_rollouts_and_outcomes
+  - selection_or_group_reward
+  - replay_buffer_or_optimizer_membership
+  environment_or_substrate: A two-stage online sampler coupled to verl-based RAFT++ or GRPO. The substrate has no interactive
+    world state beyond model generation and programmatic final-answer checking.
+  verifier_or_reward: Math-Verify provides binary final-answer correctness. RAFT++ trains on accepted responses through a
+    clipped importance-weighted objective; GRPO uses final rewards to form group-normalized advantages. GVM changes where
+    rollouts are acquired by using p_i and G_i, but does not replace the verifier.
+  terminal_predicate: For rejection sampling, a rollout is accepted when Math-Verify matches its extracted final answer to
+    the oracle. This predicate does not validate intermediate reasoning.
+recipe_metadata:
+  base_model: Primary experiments use Qwen2.5-Math-1.5B and Qwen2.5-Math-7B; Table 1 also reports Llama-3.2-1B-Instruct and
+    Llama-3.2-3B-Instruct.
+  teacher: unknown; reported rollouts are generated on-policy by the current checkpoint rather than by a separately identified
+    teacher.
+  generator: For each prompt, the current policy first generates N' pilot responses, then generates a prompt-specific additional
+    count derived from pilot acceptance and gradient statistics.
+  prompt_task_source: Numina-Math according to Appendix C; the official repository contains several Numina preprocessing/data
+    paths, but does not identify an immutable manifest for every reported run.
+  filtering_rule: Math-Verify binary final-answer acceptance. RAFT++ retains accepted responses for its update; GRPO keeps
+    sampled groups and uses their final rewards in group-relative advantages.
+  sampling_protocol: Prompt batch 1,024; mini-batch 256; maximum prompt length 1,024; maximum response length 3,072 within
+    a 4,096-token context; constant learning rate 1e-6 with no warmup; KL coefficient 0.001; GVM alpha 0.001 and beta 2; allocation/posterior
+    refresh every 10 optimization steps.
+  rollout_count: Prompt-specific. Main matched-budget settings include N'=8 with N=8n and N'=32 with N=32n; Appendix C also
+    studies N'=8,N=4n and N'=16,N=16n. For GVM-GRPO, the implementation divides n_i into prompt copies and uses four rollouts
+    per copy.
+  temperature: The official sampling scripts set temperature 1.0 for stage-1 and stage-2 generation. Paper evaluation uses
+    temperature 1.0 for Qwen2.5-Math-1.5B and 0.7 for Qwen2.5-Math-7B in Table 1; the paper prose does not separately pin
+    every training run to a repository commit.
+  inference_budget: A fixed global budget N is normalized across prompts using n_i proportional to G_i divided by sqrt(p_i
+    + alpha / p_i^(beta-1)), followed by integer adjustment to make the total exactly N.
+  optimizer_or_scaffold: verl-based RAFT++ with PPO-style importance ratios and clipping, or GRPO with group-relative advantages
+    and KL regularization. The paper computes gradients for allocation, reuses each allocation for approximately ten M-steps,
+    and reports nine realized update steps per GVM iteration in Appendix C.
+audit:
+  source_mixture: Training uses Numina-Math. Evaluation covers Math500, Minerva Math, Olympiad Bench, AIME24, and AMC23; the
+    five-benchmark average in Table 1 is Average@8.
+  split: unknown; neither the paper nor a released run manifest fixes the exact Numina items used by each experiment. Repository
+    preprocessing exposes index ranges and numbered ScaleML-RLHF/numina_math shards, while another sampling default references
+    FlippyDora/raft1_train_numia_prompt_0-10000.
+  decontamination: unknown
+  benchmark_overlap: unknown
+  license: The official GVM code repository is Apache-2.0. Rights and licenses for Numina-Math derivatives, base models, generated
+    rollouts, and evaluation datasets remain governed separately; no packaged rollout dataset license is provided.
+  lineage: Numina prompt/oracle -> policy checkpoint -> N' pilot rollouts -> Math-Verify outcomes -> p_i and accepted-sample
+    G_i -> prompt allocation n_i -> additional rollouts -> RAFT++ accepted-response update or GRPO group-reward update ->
+    next checkpoint. The repository implements local JSON/parquet intermediates, but does not publish the reported runs' item-level
+    ledger.
+  release_version: Official repository master branch inspected on 2026-07-22; GitHub reports no tagged releases. No paper-run
+    commit, checkpoint package, rollout archive, or allocation-log release is identified.
+  successful_and_failed_sample_retention: The released stage-1 script writes all pilot outputs locally and separately constructs
+    accepted subsets. No immutable public package of successful and failed pilot/additional outputs for the paper's runs is
+    released.
+  privacy_or_consent: not discussed; the paper uses mathematical problem data, but source-specific collection and consent
+    metadata are not audited here.
+  verifier_failure_modes:
+  - Math-Verify can fail through answer extraction, normalization, parser behavior, or equivalent-form handling.
+  - A correct final answer can accompany an invalid or unfaithful rationale.
+  - Prompts with zero accepted pilot samples receive zero G_i in the released allocation code and can be assigned zero weight.
+  known_failure_modes:
+  - Pilot p_i and G_i estimates are noisy when success is rare or N' is small.
+  - Integer adjustment, alpha/beta smoothing, gradient layer, reduction rule, precision, and sequence length can change n_i.
+  - Hard prompts can absorb large budgets, while underestimated or zero-accept prompts can be starved.
+  - Figure 7 reports deteriorating large-n pass@n for Qwen2.5-Math-7B across training; GVM does not fix the underlying RAFT++/GRPO
+    distribution-collapse behavior.
+  - The convergence theory is stated for the EM/RAFT formulation under smoothness and related assumptions; transfer to GRPO
+    is empirical.
+  - A speedup in plotted update steps is not automatically a wall-clock or total-compute reduction because pilot sampling
+    and gradient estimation add work.
+  - Exact source revision, item split, semantic decontamination, seeds for every reported run, and paper-to-code commit mapping
+    are unknown.
+  citation_status: verified
+  confidence: high
+  notes: NeurIPS proceedings, the 40-page paper including appendices, arXiv metadata, and the official RLHFlow/GVM repository
+    were checked. Citation and code are verified; the training-run data lineage is not released as an immutable artifact.
+inclusion_reason: Makes per-prompt rollout acquisition a measurable data-construction decision by combining programmatic acceptance
+  with accepted-sample gradient magnitude under a fixed global budget.
+related: []
+tags:
+- gvm-raft
+- rejection-sampling
+- dynamic-sample-allocation
+- gradient-variance
+- adaptive-rollouts
+- grpo
+status: verified
+category_ids:
+- data_construction_open_release_recipes
+one_line_summary: GVM-RAFT estimates per-prompt Math-Verify acceptance and accepted-response gradient magnitude from pilot
+  rollouts, then reallocates a fixed online sampling budget before RAFT++ or GRPO updates.
+why_it_matters: It turns rollout allocation into an auditable construction layer rather than a uniform default, while also
+  showing why reproducing the result requires prompt, verifier, gradient, allocation, accepted/rejected trace, and checkpoint
+  lineage that the code release does not package.
+card: null
+needs:
+- 'needs_manifest: pin the exact Numina-Math source revisions, preprocessing, item split, and benchmark-overlap/decontamination
+  checks for each reported run'
+- 'needs_run_version: identify the repository commit, configuration, seeds, model checkpoints, and hardware mapping for every
+  Table 1 and figure run'
+- 'needs_rollouts: publish pilot and additional accepted/rejected responses with extracted answers and Math-Verify outputs'
+- 'needs_allocation: publish p_i, G_i, gradient layer/reduction, integer n_i, replay/group membership, and per-iteration update
+  logs'
+- 'needs_cost: report matched wall-clock, verifier calls, backward passes, tokens, and total compute rather than only update-step
+  convergence'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official NeurIPS, arXiv, OpenReview URL, and RLHFlow/GVM code links were checked; no separate data, model, project,
+    DOI, or tagged release link is claimed.

@@ -1,0 +1,93 @@
+id: s-star-test-time-scaling-code-generation-2025
+title: 'S*: Test Time Scaling for Code Generation'
+year: 2025
+venue: arXiv preprint
+authors: []
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2502.14382
+  arxiv: https://arxiv.org/abs/2502.14382
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2502.14382
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: candidate programs executions and generated distinguishing inputs
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: execution information forms pairwise selection feedback
+  terminal_predicate: parallel sampling followed by serial extension
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: candidate programs executions and generated distinguishing inputs'
+  known_failure_modes:
+  - generated tests and dynamic inputs determine selector validity
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://arxiv.org/abs/2502.14382'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: candidate programs executions and
+  generated distinguishing inputs.'
+related: []
+tags:
+- track5
+- programmatic_code_formal
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: 'S*: Test Time Scaling for Code Generation records candidate programs executions and generated distinguishing
+  inputs under execution information forms pairwise selection feedback.'
+why_it_matters: It makes parallel sampling followed by serial extension and its audit boundary visible for reasoning-data
+  curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

@@ -1,0 +1,132 @@
+id: weaver-weak-verifiers-2025
+title: 'Weaver: Shrinking the Generation-Verification Gap by Scaling Compute for Verification'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Jon Saad-Falcon
+- E. Kelly Buchanan
+- Mayee F. Chen
+- Tzu-Heng Huang
+- Brendan McLaughlin
+- Tanvir Bhathal
+- Shang Zhu
+- Ben Athiwaratkun
+- Frederic Sala
+- Scott Linderman
+- Azalia Mirhoseini
+- Christopher Ré
+source_role:
+- verifier_reward
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- audit
+construction_layer:
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://arxiv.org/abs/2506.18203
+  arxiv: https://arxiv.org/abs/2506.18203
+  code: https://github.com/HazyResearch/scaling-verification
+  data: https://huggingface.co/collections/hazyresearch/weaver
+  project: https://hazyresearch.stanford.edu/blog/2025-06-18-weaver
+  huggingface: https://huggingface.co/collections/hazyresearch/weaver
+  doi: null
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/715f48023c26ad210321a4c0da67f27c-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=dRjt4vlYVQ
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2506.18203
+data_object:
+  prompt_source: MATH500, GPQA Diamond, MMLU College, and MMLU-Pro benchmark questions; appendix experiments additionally
+    cover BBH and AIMO
+  trace_author: Llama 3.1 8B/70B Instruct and Llama 3.3 70B Instruct, depending on the experiment
+  answer_format: query-response candidates with heterogeneous verifier scores or binary votes, posterior correctness scores,
+    and a selected response
+  process_fields:
+  - benchmark_query
+  - candidate_response
+  - extracted_answer_or_correctness_label
+  - per_verifier_score_or_vote
+  - verifier_threshold_and_filter_state
+  - estimated_verifier_tpr_tnr
+  - posterior_correctness_score
+  - selected_response
+  environment_or_substrate: repeated-sampling inference over fixed reasoning benchmarks, followed by reward-model and LM-judge
+    scoring
+  verifier_or_reward: weak-supervision aggregation of reward models, process reward models, and binary LM judges
+  terminal_predicate: select the candidate with the highest Weaver posterior correctness score; benchmark ground truth is
+    reserved for development or evaluation
+recipe_metadata:
+  base_model: Llama 3.1 8B/70B Instruct and Llama 3.3 70B Instruct as candidate generators; ModernBERT-Large (396M) for the
+    distilled verifier
+  teacher: Weaver ensemble posterior scores provide soft supervision for verifier distillation
+  generator: Llama instruction models sampled repeatedly per benchmark query
+  filtering_rule: normalize reward scores by robust 5th/95th percentiles, binarize them, and remove verifiers with extreme
+    positive marginals conditioned on estimated class balance
+  sampling_protocol: up to 100 candidate responses per query in the main repeated-sampling comparisons
+  rollout_count: 100
+  temperature: unknown
+  inference_budget: generation count is scaled from 1 to 100; full verifier count and total FLOPs vary by experiment
+  optimizer_or_scaffold: moment matching under conditional independence with gradient optimization; Naive-Bayes-style posterior
+    inference; optional difficulty clustering is an oracle exploration
+audit:
+  source_mixture: MATH500, GPQA Diamond, MMLU College, MMLU-Pro, with appendix analyses on BBH and AIMO
+  split: about 1% labeled development data estimates class balance, thresholds, and the correctness prior; test candidates
+    remain unlabeled for Weaver fitting; verifier distillation uses an 80:20 split
+  decontamination: unknown
+  license: code is MIT; a single license and record-level lineage for the heterogeneous released datasets, benchmark prompts,
+    generations, verifier outputs, and model artifacts is unknown
+  lineage: official GitHub code covers generation, selection, and distillation; the official Hugging Face collection publishes
+    benchmark generations with verifier scores and distilled verifier models
+  known_failure_modes:
+  - correlated verifiers violate the conditional-independence model and can produce overconfident posteriors
+  - threshold, marginal-filter, and class-prior choices may shift across datasets or verifier revisions
+  - selection cannot recover a correct answer when no correct candidate was generated
+  - Weaver pseudo-label errors can be inherited by the distilled verifier
+  - oracle difficulty clustering and ground-truth-based analyses must not be presented as deployable unlabeled selection
+  - benchmark overlap, record-level license lineage, and complete release-to-table provenance are not disclosed
+  citation_status: verified
+  confidence: high
+  notes: The NeurIPS proceedings title and abstract supersede the earlier arXiv-facing title. The official NeurIPS abstract
+    reports 86.2% average accuracy, whereas the accessible arXiv version reports 87.7%; card evidence keeps these version-bound
+    rather than merging them.
+inclusion_reason: 'The work exposes a concrete Track 5 object: repeated candidate responses, heterogeneous verifier score
+  vectors, fitted weak-supervision parameters, posterior selection scores, and selected answers under a scaled test-time-compute
+  budget.'
+related: []
+tags:
+- track5
+- verifier_selection_audit
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- audit_failure_contamination_verifier_attacks
+- scaling_rlvr_test_time_compute
+one_line_summary: Weaver converts reward-model and LM-judge outputs over repeated candidates into posterior correctness scores
+  for response selection, then distills those ensemble scores into compact verifiers.
+why_it_matters: It makes verifier aggregation a separate test-time scaling axis and identifies the score, threshold, prior,
+  filtering, candidate-pool, and lineage records needed to audit selected reasoning traces.
+card: null
+needs:
+- needs_decontamination
+- needs_record_level_lineage
+- needs_version_matched_reproduction
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official arXiv, NeurIPS proceedings, OpenReview, author project page, HazyResearch code repository, and Hugging Face
+    collection checked; undisclosed fields remain unknown.

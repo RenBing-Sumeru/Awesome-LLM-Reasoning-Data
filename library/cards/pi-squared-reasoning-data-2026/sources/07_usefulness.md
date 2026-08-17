@@ -1,0 +1,3 @@
+- Use π² to generate long-context QA when structured tables can define ground truth but deployment inputs should look like ordinary documents.
+- Keep independent SQL/Python solvers and evidence-retention checks separate from teacher trace generation; never let the teacher define the answer.
+- Before reuse, pin web snapshots, audit rights and license, verify train/evaluation lineage, and manually sample for ambiguity after compaction.

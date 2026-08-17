@@ -1,0 +1,3 @@
+DeepSeek-R1 makes a multi-stage reasoning post-training narrative unusually explicit: direct rule-reward RL, a readability-oriented cold start, rejection-sampled reasoning data, general alignment data, all-scenarios RL, and dense distillation. It also distinguishes R1-Zero's rule rewards from later language, generative-judgment, and general-reward components.
+
+For this atlas, the novelty is the disclosure structure rather than an open-data claim. The work is a strong example of how weights and an influential stage sequence can be public while the primary training records, reward implementations, and audit trail remain unavailable.

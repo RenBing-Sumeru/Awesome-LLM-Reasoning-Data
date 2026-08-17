@@ -1,0 +1,5 @@
+Primary source: Findings of EMNLP 2024, published 12--16 November 2024. The decision boundary is whether a release contains trainable multi-step reasoning and interaction demonstrations rather than only tasks or scalar outcomes. AGENT BANK qualifies because its unit is a rationale-bearing action trajectory validated against a task environment and used directly for supervised trajectory tuning.
+
+The concrete problem is that successful GPT exploration is expensive and preferentially retains easy prompts. AGENT BANK combines answer forcing, heuristic search, and reformatting across reasoning, mathematics, programming, web, and embodied tasks; the evaluation surface is held-in and held-out agent performance. Atlas relevance is the explicit construction and consumption contract for a 50k-scale reasoning-action corpus.
+
+L4 facts: ACL Anthology acceptance, 51,287 paper-reported trajectories over 16 tasks, public Apache-2.0 data, action-level rationales, environment validation, masked-response SFT, and the current hosted-count discrepancy were verified.

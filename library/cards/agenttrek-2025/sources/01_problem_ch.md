@@ -1,0 +1,5 @@
+ICLR 官方 proceedings 与 virtual program 将 AgentTrek 标为 ICLR 2025 Spotlight。论文处理一个具体 data bottleneck：GUI agent 需要多步 episode，把 instruction 与持续变化的 interface observation、reasoning、grounded action 和 outcome 对齐，但人工采集成本很高。Web tutorial 虽然是丰富的 procedural description，却不直接记录 agent 在 live environment 中实际观察和执行了什么。
+
+AgentTrek 研究能否把 tutorial 作为可扩展 plan 来采集 grounded behavior。这同时是 construction 与 audit 问题：tutorial page 可能过期，website 持续变化，而且 replay 是否成功由 model judge 而非 deterministic site predicate 决定。它属于 Data Construction and Open Release Recipes，因为核心是 source-to-task-to-replay-to-filter pipeline；它不是主要研究 benchmark、preference dataset 或 RL method。
+
+论文的 data object 是 rich multimodal trajectory：structured task metadata、screenshot/video、DOM/HTML 与 AXTree state、Playwright-native trace、intermediate reasoning 和 action。当前公开 dataset 只暴露更窄的对象——单一 `messages` 列中的 52,594 个 dialogue turn。这里的 L4 表示 full paper、appendix、project、code、HF dataset/model surface、affiliation 与 release boundary 足以支持双语审计；不表示完整 trajectory corpus、failure、construction code、license 或 immutable run manifest 已可用。

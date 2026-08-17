@@ -1,0 +1,3 @@
+Frontier open-ended mathematics lacks short answer checkers: proof validity depends on whether every step is correct, sufficiently justified, and supported by prior reasoning. PRMs trained on closed GSM8K/MATH-style tasks may mistake fluent wording or a correct conclusion for a valid proof. As reasoning models generate longer and harder proofs, detecting missing justification becomes as important as generation itself.
+
+Hard2Verify collects recent difficult open mathematical problems and proofs produced by frontier models. More than 500 hours of expert labor annotate step correctness, sufficiency, and earliest errors for evaluating generative critics and PRMs at the frontier of proof verification.

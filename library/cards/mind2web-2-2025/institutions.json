@@ -1,0 +1,17 @@
+{
+  "institutions": [
+    "The Ohio State University",
+    "Amazon AGI"
+  ],
+  "has_more": false,
+  "no_institution": false,
+  "updated_at": "2026-07-12T09:33:42Z",
+  "source_urls": [
+    "https://arxiv.org/abs/2506.21506",
+    "https://osu-nlp-group.github.io/Mind2Web-2/",
+    "https://github.com/OSU-NLP-Group/Mind2Web-2",
+    "https://huggingface.co/datasets/osunlp/Mind2Web-2",
+    "https://openreview.net/forum?id=AUaW6DS9si"
+  ],
+  "verification_note": "arXiv, project, OpenReview, GitHub, and Hugging Face sources verify authors, OSU/Amazon AGI affiliations, NeurIPS Datasets and Benchmarks status, and artifacts."
+}

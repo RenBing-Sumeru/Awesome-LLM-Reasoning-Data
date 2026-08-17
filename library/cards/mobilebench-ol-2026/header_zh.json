@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MobileBench-OL公开覆盖80款中文应用的1,080个真实设备评测项，以XPath式成功规则、噪声注入和逆任务重置评分，但没有发布论文所用的完整成败轨迹或冻结APK/设备环境。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "真实设备移动GUI智能体基准与自动评测环境",
+  "best_for_ch": "研究移动GUI智能体、环境交互轨迹、环境型verifier、噪声鲁棒性、状态重置与评测污染的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Qinzhuo Wu, Zhizhuo Yang, Hanhao Li, Pengzhi Gao, Wei Liu, Jian Luan",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

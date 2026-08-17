@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "OpenMathReasoning 发布 5,678,317 条 CoT、Python-TIR、GenSelect 与 problem-only 记录；官方数据卡把论文早期 540K 题目口径更正为 306K 个有 solution 的唯一题目，另含 193,170 条仅题目记录，且仍缺原始 AoPS 抓取与逐条 verifier lineage。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "数学推理数据构造、工具交互轨迹、生成式选择与开放发布",
+  "best_for_ch": "构建数学 SFT/TIR/GenSelect 数据、审计 answer-level filtering，或研究论坛抓取、发布计数和版本漂移风险的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Ivan Moshkov、Darragh Hanley、Ivan Sorokin、Shubham Toshniwal、Christof Henkel、Benedikt Schifferer、Wei Du、Igor Gitman",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ]
+}

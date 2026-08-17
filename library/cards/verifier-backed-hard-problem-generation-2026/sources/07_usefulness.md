@@ -1,0 +1,1 @@
+The reward equation and funnels are useful for designing validity-before-difficulty generators and auditing where selection fails. Reuse requires releasing the verifier, logging every gate, independently estimating false accepts/rejects, preserving seed rights and lineage, and checking benchmark overlap.

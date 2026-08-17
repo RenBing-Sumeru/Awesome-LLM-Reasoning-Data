@@ -1,0 +1,1 @@
+Singhi, Nishad, Hritik Bansal, Arian Hosseini, Aditya Grover, Kai-Wei Chang, Marcus Rohrbach, and Anna Rohrbach. 2025. When To Solve, When To Verify: Compute-Optimal Problem Solving and Generative Verification for LLM Reasoning. Published as a conference paper at COLM 2025. https://arxiv.org/abs/2504.01005

@@ -1,0 +1,1 @@
+Yuntao Bai et al. 2022. “Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback.” arXiv:2204.05862. Paper: https://arxiv.org/abs/2204.05862 . Dataset: https://huggingface.co/datasets/Anthropic/hh-rlhf .

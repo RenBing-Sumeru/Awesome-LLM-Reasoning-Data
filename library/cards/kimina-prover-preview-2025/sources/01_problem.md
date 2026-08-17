@@ -1,0 +1,3 @@
+Kimina-Prover Preview addresses large-scale formal mathematical reasoning in Lean4. Its pipeline turns informal competition-style mathematics into Lean statements and trains a proof policy with reinforcement learning (RL). For this atlas, the important question is exactly what Lean compilation verifies and what it does not.
+
+A proof that compiles establishes that a submitted Lean term is accepted for the supplied formal theorem in the configured environment. It does not establish that an automatically formalized Lean theorem preserves the intended informal mathematics. It also does not provide interactive correctness feedback for intermediate proof steps while the model is generating a proof.

@@ -1,0 +1,6 @@
+- Keep the public SFT unit straight: **3,085 turn-level examples = 412 successful complete trajectories**; every top-level reward is 1 and failed demonstrations are absent.
+- Keep RL tasks separate from rollouts: the official JSONL has **2,198 tasks**, while default code uses a **2,102-task** parquet; neither file contains policy trajectories.
+- The paper reports approximately **54K online RL trajectories**, but no canonical public corpus or complete success/failure/abort/mask manifest was confirmed.
+- Read reward code with §4.3: deterministic format/status rules gate a full-trajectory VLM judge, and judge/infrastructure failures can be loss-masked rather than treated as negative policy examples.
+- Judge-13K has train and 500-example test files, but its full count, class balance, privacy audit, and license are unknown; Apache-2.0 applies only to confirmed code/SFT/RL-task artifacts.
+- Live websites and paid browser infrastructure make exact replay unavailable; pin site/date/region/cookies, browser image/service, judge, step budget, reward config, seeds, and masking before comparison.

@@ -1,0 +1,1 @@
+BarrierBench 含 100 个动力系统安全证书任务，覆盖 linear/nonlinear、discrete-time/continuous-time 设置。每题描述动力学、初始集合、不安全集合和变量域，目标是生成 barrier function，部分任务还要求 controller co-synthesis。候选证书经 SMT solver 检查初始条件、安全分离和沿动力学的不变性；记录可包含系统定义、候选函数、solver result 与修正过程。官方项目开放 benchmark 和工具链，数据许可需在下载页进一步核验。

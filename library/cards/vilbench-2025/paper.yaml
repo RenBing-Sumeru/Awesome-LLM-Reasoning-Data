@@ -1,0 +1,142 @@
+id: vilbench-2025
+title: 'ViLBench: A Suite for Vision-Language Process Reward Modeling'
+year: 2025
+venue: EMNLP 2025
+authors:
+- Haoqin Tu
+- Weitao Feng
+- Hardy Chen
+- Hui Liu
+- Xianfeng Tang
+- Cihang Xie
+source_role:
+- data_release
+- benchmark
+- verifier_reward
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- scalar_reward
+- trajectory_value
+domains:
+- multimodal_reasoning
+- visual_reasoning
+- mathematics
+- science
+training_use:
+- reward_modeling
+- test_time_compute
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+- search_substrate
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.344/
+  arxiv: https://arxiv.org/abs/2503.20271
+  code: https://github.com/UCSC-VLAA/ViLBench
+  data: https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K
+  project: https://ucsc-vlaa.github.io/ViLBench/
+  huggingface: https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.344
+  venue: https://aclanthology.org/2025.emnlp-main.344/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.344/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.emnlp-main.344.bib
+data_object:
+  prompt_source: ViLBench is a 600-example evaluation set filtered from MMStar, MathVista, MathVerse, MMMU Pro, and RealWorldQA.
+    ViLReward-73K starts from 16,926 prompts sampled from MAVIS-Geometry, GeoQA170K, CLEVR-Math, A-OKVQA, and ScienceQA.
+  trace_author: An enhanced visual ReST-MCTS policy generates partial reasoning trajectories. The paper does not identify
+    the exact policy checkpoint or provide a run manifest for the released 73,560 rows.
+  answer_format: 'The released Hugging Face train split has six fields: index, question, image_path, process, value, and source.
+    It does not expose a reference answer, terminal judgment, full tree, parent/child relation, or rejected alternatives per
+    row.'
+  process_fields:
+  - index
+  - question
+  - image_path
+  - process
+  - value
+  - source
+  environment_or_substrate: Offline image-conditioned Monte Carlo Tree Search over partial natural-language solutions. The
+    paper describes selection, expansion, simulation, and value backpropagation; full released tree topology is unknown.
+  verifier_or_reward: GPT-4o judges completed tree-search answers. The MCTS procedure assigns each partial solution a continuous
+    quality value in [0,1] using simulated outcomes and a process-reward term; the public row exposes only the resulting value.
+  terminal_predicate: A completed tree-search output is evaluated by GPT-4o against the task answer. The exact prompt, answer-normalization
+    rule, and judge calibration are unknown from the checked official artifacts.
+recipe_metadata:
+  base_model: ViLPRM is built from Qwen2.5-VL-3B with a scalar linear head after the language head. The exact checkpoint used
+    to generate the released MCTS corpus is unknown.
+  teacher: GPT-4o supplies terminal-answer judgments; it is not a human annotation process.
+  generator: A vision-enabled adaptation of ReST-MCTS expands image-conditioned reasoning paths and backpropagates continuous
+    node values.
+  filtering_rule: For ViLBench, six open-weight VLLMs rank examples by a PRM-preference indicator using 16 candidate responses;
+    the paper samples 600 examples across five source benchmarks. For ViLReward-73K, the stated selection principles are unique
+    image content, challenging reasoning questions, and source diversity.
+  sampling_protocol: The paper reports ten MCTS iterations for data collection and uses 16 candidate responses for Best-of-N
+    evaluation except four for o1. Random seeds, decoding parameters, and the released corpus's per-prompt search budget are
+    unknown.
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: ViLPRM regresses the continuous labels with mean squared error. The paper's detailed optimizer schedule
+    and a training run manifest are not disclosed in the checked official artifacts.
+audit:
+  source_mixture: ViLReward-73K contains 25,829 MAVIS-Geometry, 31,406 GeoQA170K, 1,425 CLEVR-Math, 9,241 A-OKVQA, and 5,659
+    ScienceQA process-reward instances.
+  split: The public dataset exposes one default/train split with 73,560 rows. Its undisclosed prompt-level split, train/validation
+    partition, and relation to the reported ViLPRM training split are unknown.
+  decontamination: unknown
+  license: The Hugging Face dataset card declares MIT. Licenses, consent, and redistribution terms for the five upstream prompt/image
+    sources are not consolidated in the checked release.
+  lineage: Five upstream vision-language datasets -> selected prompts -> visual ReST-MCTS partial trajectories -> GPT-4o terminal
+    judgments plus MCTS value backpropagation -> one process/value row per released instance.
+  known_failure_modes:
+  - Continuous node values are derived from sampled future trajectories and a GPT-4o terminal judge; they are not direct human
+    labels of the local validity of a reasoning step.
+  - The released rows omit reference answers, terminal judgments, full trees, rejected branches, and judge prompts, preventing
+    independent reconstruction of individual labels.
+  - Image and question provenance inherits the source datasets' licensing, bias, and potential contamination concerns; decontamination
+    is not disclosed.
+  - The paper reports that PRM gains are task dependent and that visual-dominant MathVerse examples can lose accuracy, so
+    a positive benchmark average does not establish general reward quality.
+  - Exact generation checkpoint, seeds, decoding settings, judge agreement, and the per-prompt search budget are not disclosed
+    in the checked official artifacts.
+  citation_status: verified
+  confidence: high
+  notes: ACL Anthology, arXiv full text, the official GitHub repository, the project page, and the released Hugging Face dataset
+    were checked on 2026-07-23. Release existence and row schema/count are verified; unexposed construction details remain
+    unknown.
+  metadata_status: partial
+inclusion_reason: ViLBench is assigned to rollout, search, and test-time trace data because its released multimodal process-reward
+  corpus turns image-conditioned MCTS partial solutions into scalar labels, and the paper uses the resulting PRM for Best-of-N
+  test-time selection.
+related: []
+tags:
+- multimodal-reasoning
+- process-reward-model
+- mcts
+- test-time-selection
+- vision-language
+category_ids:
+- rollout_search_test_time_trace_data
+- process_trace_supervision_data
+status: partial
+curation_level: L4_chinese_review_ready
+verification:
+  verified_by: Codex
+  verified_at: '2026-07-23'
+  source_links_checked:
+  - https://aclanthology.org/2025.emnlp-main.344/
+  - https://arxiv.org/abs/2503.20271
+  - https://github.com/UCSC-VLAA/ViLBench
+  - https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K
+  confidence: high
+one_line_summary: A multimodal PRM benchmark and a released 73,560-row MCTS-derived process/value dataset, where terminal
+  GPT-4o judgments are propagated into continuous partial-solution scores.

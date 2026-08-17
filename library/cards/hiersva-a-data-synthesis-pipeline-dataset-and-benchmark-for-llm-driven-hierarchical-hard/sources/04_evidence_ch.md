@@ -1,0 +1,1 @@
+对 12 个模型的评测中，module-level compile rate 为 67.1%；可评测运行中的断言有 82.1% 非空证明，但只检测 70.2% 的 eligible injected faults，并覆盖 36.2% formal core。深层子集 211 个可评测 model–module 条目中，bug recall 为 0.87，但 precision 仅 0.60，意味着 40% 的预测 bug 在正确 RTL 上是假阳性。结果证明“可证明”远不等于“有验证强度”。

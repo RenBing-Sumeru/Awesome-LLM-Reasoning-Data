@@ -1,0 +1,3 @@
+Agentic RAG includes query reformulation, retrieval, evidence selection, and answer generation, so terminal rewards cannot localize errors. RAG_ProGuide turns these stages into step preferences and enables process-versus-outcome comparisons.
+
+This gap directly determines whether Agentic RAG dual reward types can be scaled: outcome-only labels cannot reveal the first failure or separate weak supervision from weak verification. The paper therefore centers its data on queries, retrieval actions, evidence, process preferences, and outcome rewards and uses that feedback for step-level training or trajectory selection. Its claims remain bounded by the task distributions represented in RAG reinforcement learning and reward-type comparison.

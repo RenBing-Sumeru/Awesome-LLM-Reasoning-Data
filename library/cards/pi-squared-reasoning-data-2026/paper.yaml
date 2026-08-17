@@ -1,0 +1,129 @@
+id: pi-squared-reasoning-data-2026
+title: '$π^2$: Structure-Originated Reasoning Data Improves Long-Context Reasoning Ability of Large Language Models'
+year: 2026
+venue: arXiv preprint; under review (2026)
+authors:
+- Quyet V. Do
+- Thinh Pham
+- Nguyen Nguyen
+- Sha Li
+- Pratibha Zunjare
+- Tu Vu
+source_role:
+- construction_recipe
+- data_release
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- step_level
+domains:
+- long-context-reasoning
+training_use:
+- sft
+- distillation
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2604.05114
+  arxiv: https://arxiv.org/abs/2604.05114
+  code: https://github.com/vtpss/pi-squared
+  data: https://drive.google.com/drive/folders/1ISRgLijDFvwFpHzV4tmHix6MIwIGG2gd?usp=sharing
+  project: https://github.com/vtpss/pi-squared
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: High-view and recent Wikipedia pages, their tables, linked pages, and web-search evidence.
+  trace_author: GPT-OSS-120B or Qwen3.5-35B-A3B-FP8 back-translates reasoning according to the target student family.
+  answer_format: Long unstructured context, multi-hop analytical question, structured reasoning trace, and short verified
+    answer.
+  process_fields:
+  - Wikipedia table and metadata
+  - generated question and SQL query
+  - independent Python answer and consensus result
+  - compacted web context
+  - back-translated reasoning trace and final answer
+  environment_or_substrate: SQL and Python execution over tables plus web-search context compacted to at most 96K tokens.
+  verifier_or_reward: LLM quality ratings, SQL/Python dual execution, LLM consensus, and human review for π2-Bench.
+  terminal_predicate: Retain QA only when SQL and Python answers agree; regenerate low-quality questions up to three times.
+recipe_metadata:
+  base_model: GPT-OSS-20B and Qwen3-4B-Instruct-2507.
+  teacher: GPT-OSS-120B or Qwen3.5-35B-A3B-FP8.
+  generator: Expand Wikipedia tables, generate executable QA, gather realistic documents, then back-translate reasoning from
+    context and answer.
+  filtering_rule: Table-size filters, Likert quality checks, SQL/Python consensus, evidence-retention checks, and benchmark
+    human review.
+  sampling_protocol: 6,614 pages yield 2,834 tables and 1,174 validated QA traces; 922 records form the training set.
+  rollout_count: null
+  temperature: null
+  inference_budget: LoRA SFT takes about 2.5 hours on four H200 GPUs per model.
+  optimizer_or_scaffold: LoRA rank 8 SFT on 922 examples.
+audit:
+  source_mixture: Wikipedia tables and pages plus ten web-search articles per validated QA context.
+  split: 922 training records; π2-Bench has 228 human-validated items split into 178 test and 50 validation examples.
+  decontamination: Training and π2-Bench are disjoint; broader benchmark-overlap checks are not reported.
+  license: Official repository and Google Drive release do not state a dataset license in the inspected README.
+  lineage: Questions originate from table structure, while traces are generated without exposing the table to the teacher.
+  known_failure_modes:
+  - Seventeen percent of selected benchmark candidates required human revision, showing residual automatic-quality errors.
+  - Results cover context-provided QA up to 128K and small-model LoRA SFT, not million-token or free-form tasks.
+  citation_status: verified
+  confidence: high
+  notes: arXiv PDF and official GitHub README were checked on 2026-07-13. The PDF says under review and lists Virginia Tech;
+    no acceptance record was found.
+inclusion_reason: Provides open long-context QA and reasoning traces whose answers are grounded by independent SQL and Python
+  execution.
+related: []
+tags:
+- long-context-data
+- dual-execution-verification
+- reasoning-traces
+status: verified
+one_line_summary: π2 turns Wikipedia tables into long-context QA with SQL/Python-agreed answers and back-translated reasoning
+  traces for data-efficient SFT.
+why_it_matters: It combines realistic unstructured contexts with an executable ground-truth path and releases the resulting
+  training records.
+reading_priority: recommended
+paper_type: long-context reasoning dataset, generator, and benchmark
+best_for: Researchers constructing verifiable multi-document reasoning data for SFT.
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-13'
+  verified_by: curation
+  confidence: high
+  notes: Official repository links the downloadable JSONL training traces; venue remains under review.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: batch-b-20260712
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: reasoning demonstrations
+  selection_priority_score: 3
+  selection_score_breakdown:
+    institution: 2
+    venue: 0
+    impact: 0
+    artifact: 1
+  selection_evidence:
+    institution: The paper PDF confirms Virginia Tech; it is a regular research university with relevant technical capacity.
+    venue: The paper is an arXiv preprint marked under review; no official acceptance or distinguished presentation was found.
+    impact: GitHub API and repository search checked 2026-07-13; the canonical official repository had 3 stars, 0 forks, and
+      no independent implementation or follow-up was found.
+    artifact: The Apache-2.0 official repository links downloadable JSONL traces, but no external-use evidence was verified.
+  selection_eligible: false
+  year_impact_threshold: 1
+  defer_reason: The 2026 candidate has impact score 0; an official release and paper-reported gains are not independent adoption
+    evidence.

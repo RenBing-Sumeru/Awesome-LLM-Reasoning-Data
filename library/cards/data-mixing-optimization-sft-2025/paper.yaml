@@ -1,0 +1,104 @@
+id: data-mixing-optimization-sft-2025
+title: Data Mixing Optimization for Supervised Fine-Tuning of Large Language Models
+year: 2025
+venue: ICML 2025
+authors:
+- Yuan Li
+- Zhengzhong Liu
+- Eric Xing
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- unknown
+supervision_granularity:
+- answer_level
+domains:
+- instruction-tuning
+- mathematics
+- code
+training_use:
+- sft
+construction_layer:
+- optimizer_scaffold
+- scaling_report
+artifacts:
+  paper: https://proceedings.mlr.press/v267/li25bh.html
+  arxiv: null
+  venue: https://proceedings.mlr.press/v267/li25bh.html
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  openreview: https://openreview.net/forum?id=19kqoNoc2N
+  acl: null
+  pmlr: https://proceedings.mlr.press/v267/li25bh.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Domain-partitioned instruction data, including controlled IF, math, and code sources and reweighted Tulu3/Orca
+    collections.
+  trace_author: Upstream instruction datasets.
+  answer_format: Instruction-response example with a domain or source label.
+  process_fields:
+  - domain
+  - instruction
+  - response
+  - token_budget
+  - validation_loss
+  environment_or_substrate: Fixed-budget supervised fine-tuning.
+  verifier_or_reward: Per-domain held-out validation loss.
+  terminal_predicate: None; validation loss is optimized as a proxy for downstream capability.
+recipe_metadata:
+  base_model: Llama3.2-3B controlled study; Llama3.1-8B, Llama3.1-70B, and Qwen2.5-32B reweighting studies.
+  teacher: None.
+  generator: Upstream instruction data.
+  filtering_rule: Fit transfer-and-scaling validation-loss curves from domain perturbation runs, then optimize weights by
+    SLSQP.
+  sampling_protocol: Sample each domain according to optimized token weights; repeat samples when an optimized domain exceeds
+    available data.
+  rollout_count: null
+  temperature: null
+  inference_budget: Fixed token budget; controlled unit size 660,000 tokens per domain.
+  optimizer_or_scaffold: Huber-loss parameter fitting with constrained trust-region procedure and SLSQP mixture optimization.
+audit:
+  source_mixture: Controlled IF, math, and code domains; Tulu3 skills; and source-defined Orca domains.
+  split: Held-out domain validation sets; downstream task evaluations reported in paper.
+  decontamination: Not presented as a dedicated audit; inspect upstream data and evaluation overlap.
+  license: Upstream data terms must be verified separately.
+  lineage: 'Primary sources: https://proceedings.mlr.press/v267/li25bh.html; https://openreview.net/forum?id=19kqoNoc2N'
+  known_failure_modes:
+  - Validation loss may not align with downstream tasks.
+  - Coarse source domains can hide heterogeneity.
+  - Repeated sampling of a small favored domain can overfit.
+  - No official implementation or standalone data release declared in checked sources.
+  citation_status: verified
+  confidence: high
+  notes: Full ICML/PMLR paper, affiliations, method, experiments, discussion, and artifact statements checked on 2026-07-15.
+inclusion_reason: It optimizes how source-labeled instruction records are allocated to supervised fine-tuning under a fixed
+  budget.
+related: []
+tags:
+- data-mixing
+- supervised-fine-tuning
+- validation-loss
+- scaling-laws
+status: verified
+one_line_summary: A fitted transfer-and-scaling loss model selects SFT domain weights for a fixed token budget.
+reading_priority: essential
+paper_type: Supervised fine-tuning data-mixture optimization study
+best_for: Readers selecting domain proportions for expensive multi-domain SFT.
+confidence: high
+why_it_matters: It turns data-source allocation into an explicit, auditable optimization decision.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: Official PMLR paper and OpenReview record checked; no dedicated code or standalone data release declared in checked
+    sources.
+category_ids:
+- training_usage_optimization_objectives

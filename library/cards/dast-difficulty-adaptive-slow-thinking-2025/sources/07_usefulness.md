@@ -1,0 +1,3 @@
+For post-training research, DAST is a concrete audit target for converting a fixed rollout budget into pairwise supervision. It exposes the prompt source, rollout count, response cap, reward ingredients, pair taxonomy, filtering scheme, retained counts, and SimPO hyperparameters—enough to analyze the intended feedback contract.
+
+For test-time-compute work, it illustrates a preference-learning route to difficulty-dependent response length rather than an online search controller. For data reuse or benchmarking, it should be treated as a documented recipe and result claim, not as an available trace dataset: reproductions need to rebuild the rollout collection and checker and should report the currently unknown settings.

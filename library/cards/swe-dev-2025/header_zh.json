@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "SWE-Dev 从仓库修复任务构造 fail-to-pass 测试并发布 20,147 条 SFT/RFT 格式的 OpenHands 记录，用于研究训练与迭代扩展；但逐条来源、环境重放和污染审计仍不完整。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "软件工程智能体训练数据、可执行测试构造与扩展研究",
+  "best_for_ch": "研究仓库级代码智能体后训练、fail-to-pass 验证、轨迹筛选、训练/推理扩展以及数据可审计性的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Haoran Wang、Zhenyu Hou、Yao Wei、Jie Tang、Yuxiao Dong",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

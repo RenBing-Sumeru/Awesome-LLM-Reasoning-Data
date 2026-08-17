@@ -1,0 +1,19 @@
+{
+  "title": "Mediocrity is the key for LLM as a Judge Anchor Selection",
+  "candidate_links": {
+    "paper": "https://aclanthology.org/2026.acl-long.706/",
+    "data": "https://huggingface.co/datasets/ibm-research/900K-Judgements",
+    "code": "https://github.com/IBM/Anchor-Selection",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判定。",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-21T12:58:52Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "900K-Judgements 保存93.9万条回答比较及多个Judge结论，专门研究选择中等锚点怎样让成对评判更可靠",
+    "updated_at": "2026-07-21T12:58:52Z"
+  }
+}

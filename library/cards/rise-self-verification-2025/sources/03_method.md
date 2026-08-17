@@ -1,0 +1,6 @@
+The paper uses MATH-Hard Levels 3–5, reporting 8,523 training problems. In each iteration, a Qwen2.5 policy generates solution rollouts with chain-of-thought and a boxed final answer. The stated outcome rule checks mathematical identity to the ground truth and the required boxed format.
+
+A fixed verification template supplies the original problem and a generated solution, asks for a critique, and asks for a boxed rating. The original solution outcome supplies the target score; reward for the verification response depends on the extracted rating matching that target. The paper reports PPO with Qwen2.5 1.5B, 3B, and 7B models, batch 1,024, mini-batch 128, temperature 1.0, eight solution rollouts per problem, default verification batch 128, a 3,000-token response limit, and 12 RL epochs.
+
+The author-linked repository provides training scripts and preprocessing utilities. Its checked preprocessor expects local `MATH_Hard.jsonl` and `MATH_val.jsonl`; it does not by itself establish that the paper-run data, generated trajectories, or checkpoints are released. Complete reward-parser behavior, verification coverage, full hyperparameters, versioned prompts-to-code mapping, split manifests, and leakage procedures remain unknown.
+

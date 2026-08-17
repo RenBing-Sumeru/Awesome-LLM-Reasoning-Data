@@ -1,0 +1,1 @@
+Agreement is not correctness: judges can agree on a wrong verdict. Uncovered languages, translations, prompts and newer judge versions may differ. Reuse should pair consistency reporting with human-reference checks and disclose translation provenance.

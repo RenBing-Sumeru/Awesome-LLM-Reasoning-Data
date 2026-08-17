@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "未披露后训练数据、奖励/verifier、rollout 或审计细节。",
+    "updated_at": "2026-07-16T14:03:05Z"
+  },
+  "updated_at": "2026-07-16T14:03:05Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

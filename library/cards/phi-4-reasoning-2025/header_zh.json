@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Phi-4-reasoning 报告了经筛选的可教问题、o3-mini 推理示范和简短结果 RL，但未发布 prompt、示范、奖励或 rollout 审计工件。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "紧凑推理模型技术报告与数据披露账本",
+  "best_for_ch": "审计小型开放推理模型蒸馏与结果 RL 证据边界的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Microsoft Research",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

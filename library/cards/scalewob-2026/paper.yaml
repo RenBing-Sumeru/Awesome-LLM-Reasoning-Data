@@ -1,0 +1,124 @@
+id: scalewob-2026
+title: 'ScaleWoB: Guiding GUI Agents with Coding Agents via Large-Scale Environmental Synthesis'
+year: 2026
+venue: arXiv preprint
+authors:
+- Guohong Liu
+- Jialei Ye
+- Pengzhi Gao
+- Wei Liu
+- Jian Luan
+- Yunxin Liu
+- Yuanchun Li
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web-gui-agents
+- environment-synthesis
+- coding-agent-generated-environments
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2605.25160
+  arxiv: https://arxiv.org/abs/2605.25160
+  doi: https://doi.org/10.48550/arXiv.2605.25160
+  code: https://github.com/ScaleWoB/ScaleWoB
+  data: https://github.com/ScaleWoB/ScaleWoB
+  project: https://scalewob.github.io
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2605.25160
+  pypi: https://pypi.org/project/scalewob/
+  registry: https://niumascript.com/scalewob-env/environments.json
+data_object:
+  prompt_source: official ScaleWoB project and repository
+  trace_author: ScaleWoB authors, coding agents, and GUI-agent rollouts
+  answer_format: generated environments, UI tasks, code artifacts, agent trajectories, and success predicates
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: large-scale synthesized web/GUI environments generated with coding agents
+  verifier_or_reward: environment-specific web/GUI task checks and generated test predicates
+  terminal_predicate: environment-specific web/GUI task checks and generated test predicates
+recipe_metadata:
+  base_model: Not a model-training recipe; the work is an environment, benchmark, and trajectory evaluation surface.
+  teacher: ScaleWoB authors and coding-agent environment synthesis
+  generator: coding-agent generated web environments
+  filtering_rule: pin package versions, generated environment registry, license, and task predicate code
+  sampling_protocol: Pin release version, split, evaluator revision, runtime platform, and date of any live service before
+    score reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2605.25160; https://scalewob.github.io; https://github.com/ScaleWoB/ScaleWoB; https://pypi.org/project/scalewob/;
+    https://niumascript.com/scalewob-env/environments.json
+  split: Pin public/private split, task version, registry snapshot, browser platform, and evaluator version before comparing
+    results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: README, pyproject.toml, LICENSES/MIT.txt, and PyPI metadata support MIT for the SDK; generated-environment assets
+    and redistribution terms still require artifact-level checking.
+  lineage: 'Primary lead: https://arxiv.org/abs/2605.25160'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - scaffold sensitivity
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: arXiv v2 verifies title, authors, dates, and project URL; GitHub and PyPI verify SDK 0.12.1, Python 3.12+, and MIT
+    SDK metadata. Project-site source still contains some SimuWoB wording, and the observed public registry lists 101 environments
+    and 710 task entries, so task-count claims require artifact-date pinning.
+inclusion_reason: it uses coding agents to synthesize reusable GUI-agent environments at scale
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- web-gui-agents
+- environment-synthesis
+- coding-agent-generated-environments
+one_line: ScaleWoB uses coding agents to synthesize large numbers of GUI-agent environments.
+why_it_matters: it uses coding agents to synthesize reusable GUI-agent environments at scale
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: artifact drift and split policy should be reviewed before score reuse'
+one_line_summary: ScaleWoB uses coding agents to synthesize large numbers of GUI-agent environments.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: curation
+  confidence: high
+  notes: arXiv v2, project site, GitHub, PyPI, and the public registry verify title, authors, institutions, public SDK, project
+    URL, SDK license metadata, and current registry availability; generated-environment asset licensing and split policy still
+    need artifact-level review.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 41-60
+  candidate_index: 59
+  primary_category_id: environment_agent_trajectory_data

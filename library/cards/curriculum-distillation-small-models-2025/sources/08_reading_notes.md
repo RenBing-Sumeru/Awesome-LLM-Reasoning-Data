@@ -1,0 +1,5 @@
+- Read Section 3.1.1 before accepting the System-1/System-2 language: NoRethink and NoThink are concrete elicitation interventions, not direct observations of internal reasoning.
+- In Section 4.1, distinguish the 7,500 source problems, the 6,445 all-mode intersection, up to four attempts per condition, and the unreleased per-attempt records.
+- Read Tables 1 and 2 together: direct Think distillation is the weakest average single-stage condition, while the best two-stage schedule ends with NoRethink only on Level 5.
+- Treat Math-Verify as an answer-level selector; no reported process verifier establishes that the retained reasoning steps are valid or faithful.
+- Cross-check the Limitations section and official checklist: the paper discloses optimizer settings but not hardware/GPU hours, and supplies neither an appendix nor reusable construction artifacts.

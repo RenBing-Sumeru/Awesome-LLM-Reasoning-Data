@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "本 Card 记录《TrajSelector: Harnessing Latent Representations for Efficient and Effective Best-of-N in Large Reasoning Model》的可审计 rollout、搜索或测试时选择对象，并保留论文未披露的边界。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "推理数据、搜索或测试时扩展研究",
+  "best_for_ch": "需要核查推理轨迹、反馈契约、发布边界和复用风险的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Bin Yu、Xinming Wang、Shijie Lian、Haotian Li、Changti Wu、Ruina Hu、Bailing Wang、Yuliang Wei、Kai Chen",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "AndroidControl 用大规模 Android 演示和跨应用 split 评测 UI 控制智能体。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "NeurIPS 2024 Datasets and Benchmarks 的 UI-control dataset paper",
+  "best_for_ch": "关注移动端、GUI、OS、跨环境智能体环境与轨迹数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Wei Li 等（Google DeepMind）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-14T10:23:03Z"
+}

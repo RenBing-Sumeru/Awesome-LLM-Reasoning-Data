@@ -1,0 +1,148 @@
+id: go-browse-2025
+title: 'Go-Browse: Training Web Agents with Structured Exploration'
+year: 2026
+venue: ICLR 2026
+authors:
+- Apurva Gandhi
+- Graham Neubig
+source_role:
+- construction_recipe
+- data_release
+- agent_environment
+verification_contract:
+- judgment_required
+- environmental
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- web_navigation
+- gui_agents
+- transactional_web_tasks
+training_use:
+- sft
+- agent_training
+- evaluation
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2506.03533
+  arxiv: https://arxiv.org/abs/2506.03533
+  code: https://github.com/ApGa/Go-Browse
+  data: https://huggingface.co/datasets/apurvaga/go-browse-wa
+  project: null
+  huggingface: https://huggingface.co/apurvaga/go-browse-wa-qwen-7B
+  doi: https://doi.org/10.48550/arXiv.2506.03533
+  venue: https://iclr.cc/virtual/2026/poster/10010264
+  openreview: https://openreview.net/forum?id=IpzRWE52yw
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://github.com/ApGa/Go-Browse#citation
+data_object:
+  prompt_source: Tasks proposed from interactive exploration of 100 URLs across five self-hosted WebArena clone domains.
+  trace_author: Claude-3.7-Sonnet feasibility trajectories and GPT-4o-mini/Qwen-2.5-7B-Instruct solver trajectories, with
+    navigation prefixes recovered from the explored URL graph.
+  answer_format: ReAct browser trajectories whose actions contain a thought and one BrowserGym action; the processed release
+    stores per-step prompt/completion examples and the raw release stores trajectory, graph, page, action, observation, and
+    screenshot data.
+  process_fields:
+  - graph_data
+  - node_data
+  - step_data
+  - traj_data
+  - png
+  - step_idx
+  - prompt
+  - completion
+  - traj_reward
+  - next_step_idx
+  - traj_length
+  - step_number
+  environment_or_substrate: BrowserGym over self-hosted WebArena clones of Shopping Admin, Shopping, Reddit, GitLab, and Map.
+  verifier_or_reward: A GPT-4o VLM-as-a-judge evaluates Claude-3.7-Sonnet feasibility attempts; WebArena task-specific rewards
+    evaluate benchmark episodes.
+  terminal_predicate: A trajectory ends on a terminal browser action or its horizon; feasibility and solver attempts use at
+    most 10 steps.
+recipe_metadata:
+  base_model: Qwen-2.5-7B-Instruct for supervised fine-tuning; GPT-4o-mini and Qwen-2.5-7B-Instruct as additional solvers.
+  teacher: Claude-3.7-Sonnet for NavExplorer and feasibility checking, GPT-4o and Claude-3.7-Sonnet for PageExplorer, and
+    GPT-4o as VLM judge.
+  generator: An outer URL-graph frontier selects pages; NavExplorer and PageExplorer propose tasks; FeasibilityChecker filters
+    them; Solvers collect prefixed and unprefixed trajectories.
+  filtering_rule: A proposed task is feasible when at least one of up to three Claude-3.7-Sonnet attempts is accepted by the
+    GPT-4o judge; at most 30 feasible tasks are kept per URL; SFT uses successful trajectories although the releases include
+    failures.
+  sampling_protocol: For each feasible task, Solvers sample two trajectories from the current page and two from the website
+    root; the feasibility stage contributes its first accepted attempt.
+  rollout_count: Up to three feasibility attempts per proposed task and four solver trajectories per feasible task.
+  temperature: 0.7 during data collection; 0 during WebArena evaluation
+  inference_budget: NavExplorer 15 steps; GPT-4o PageExplorer 20 steps; Claude-3.7-Sonnet PageExplorer 10 steps; feasibility
+    and solver trajectories 10 steps each.
+  optimizer_or_scaffold: Supervised fine-tuning of Qwen-2.5-7B-Instruct on successful Go-Browse-WA trajectories.
+audit:
+  source_mixture: Five WebArena clone domains with 20 explored URLs per domain; tasks and trajectories are synthetic outputs
+    conditioned on the clone state and closed-model components.
+  split: The paper reports 26,749 trajectories and 196,462 steps (9,504 successful trajectories/39,339 steps; 17,245 unsuccessful
+    trajectories/157,123 steps). The current raw Hugging Face train split has 196,462 rows, while the processed train split
+    has 164,533 rows; neither release exposes a versioned manifest or checksum in its card.
+  decontamination: unknown
+  license: The GitHub code repository is MIT-licensed; dataset, screenshot/HTML/accessibility-tree, and model-repository license
+    terms are undisclosed.
+  lineage: WebArena clone page -> graph-frontier selection -> interactive task proposal -> feasibility attempts and GPT-4o
+    judgment -> prefixed/unprefixed solver trajectories -> raw and processed Hugging Face releases -> successful-only Qwen
+    supervised fine-tuning.
+  known_failure_modes:
+  - GPT-4o VLM judgments can create false acceptance or rejection.
+  - Closed-model and prompt biases can propagate into tasks and traces.
+  - Coverage is limited to five WebArena clone domains and prefixed traces partially bypass navigation.
+  - Successful-only SFT omits the released failure signal.
+  - Mutable web state and absent release manifests limit exact reproduction.
+  - Raw screenshots HTML and accessibility trees lack documented rights and privacy review.
+  - The paper conclusion conflicts with Table 1 on unsuccessful-trajectory count and requires table-level interpretation.
+  citation_status: verified
+  confidence: medium
+  notes: Official ICLR 2026 page, arXiv v2, author repository README and code, raw/processed Hugging Face datasets, and Qwen
+    checkpoint were checked. Artifact licensing, provenance, privacy, decontamination, and immutable release manifests remain
+    unresolved.
+inclusion_reason: Go-Browse exposes a graph-frontier recipe, judgment-filtered browser rollouts, raw and processed releases,
+  and an SFT checkpoint for studying how interactive environments become agent-training data.
+related: []
+tags:
+- go-browse
+- web-agent
+- webarena
+- structured-exploration
+- graph-search
+- browsergym
+- trajectory-synthesis
+- vlm-judge
+- sft
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- environment_agent_trajectory_data
+one_line_summary: Go-Browse releases raw and processed WebArena-clone trajectories plus a Qwen checkpoint from graph-frontier
+  task discovery, VLM feasibility judgment, and prefixed/unprefixed browser rollouts.
+why_it_matters: It connects task sourcing, search-state reuse, environment interaction, judge-based filtering, and supervised
+  agent training while leaving material release-rights and reproducibility gaps visible.
+card: null
+needs:
+- needs_versioned_dataset_manifest
+- needs_license
+- needs_source_provenance
+- needs_decontamination
+- needs_privacy
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-18'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official ICLR/OpenReview record, arXiv v2, repository, raw and processed datasets, and model checkpoint checked;
+    license, provenance, privacy, decontamination, and count reconciliation remain open.

@@ -1,0 +1,19 @@
+{
+  "title": "Enumerate-Conjecture-Prove: Formally Solving Answer-Construction Problems in Math Competitions",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2505.18492",
+    "data": "https://huggingface.co/datasets/sunjia72/ConstructiveBench",
+    "code": "https://github.com/JackSun200312/ECP",
+    "project": null
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T14:22:58Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "把候选枚举、答案猜测和 Lean 证明连接起来，并发布 ConstructiveBench，含3640道竞赛构造题",
+    "updated_at": "2026-07-18T14:22:58Z"
+  }
+}

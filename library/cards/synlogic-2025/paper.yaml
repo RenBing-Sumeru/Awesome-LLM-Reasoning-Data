@@ -1,0 +1,196 @@
+id: synlogic-2025
+title: 'SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond'
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Junteng Liu
+- Yuanxiang Fan
+- Zhuo Jiang
+- Han Ding
+- Yongyi Hu
+- Chi Zhang
+- Yiqi Shi
+- Shitong Weng
+- Aili Chen
+- Shiqi Chen
+- Yunan Huang
+- Mozhi Zhang
+- Pengyu Zhao
+- Junjie Yan
+- Junxian He
+source_role:
+- data_release
+- construction_recipe
+- verifier_reward
+- scaling_study
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- logical-reasoning
+- synthetic-puzzles
+- rlvr
+training_use:
+- rlvr
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- optimizer_scaffold
+- scaling_report
+- release_audit
+artifacts:
+  paper: https://openreview.net/forum?id=XtNiw8OQsy
+  arxiv: https://arxiv.org/abs/2505.19641
+  code: https://github.com/MiniMax-AI/SynLogic
+  data: https://huggingface.co/datasets/MiniMaxAI/SynLogic
+  project: null
+  huggingface: https://huggingface.co/datasets/MiniMaxAI/SynLogic
+  doi: https://doi.org/10.48550/arXiv.2505.19641
+  venue: https://openreview.net/forum?id=XtNiw8OQsy
+  openreview: https://openreview.net/forum?id=XtNiw8OQsy
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: The paper selects 35 logical-reasoning tasks from community puzzles and benchmark task concepts. The authors
+    independently implement and generate 33 task families; Zebra Puzzle and ARC-AGI use existing open resources.
+  trace_author: Online Qwen2.5 policy responses are sampled during RL. The public Hugging Face release contains prompts and
+    verifier state, not accepted or rejected policy reasoning trajectories.
+  answer_format: Each released row contains a data_source identifier, one user-role prompt message, an ability label, reward_model
+    answer/solution/style fields, and extra_info. The embedded instruction requests think and answer tags, while individual
+    tasks may impose additional output formats.
+  process_fields:
+  - data_source task identifier
+  - prompt role and content
+  - ability label
+  - reward_model answer, solution, and style fields
+  - extra_info.game_data_str serialized verifier state
+  - extra_info.index
+  - Easy or Hard configuration
+  - train or validation split
+  environment_or_substrate: Task-specific rule-based generators and verifiers provide the data and reward substrate. DAPO-adapted
+    GRPO generates online policy responses against Easy or Hard prompts during training.
+  verifier_or_reward: The paper defines a binary reward that is 1 only when the response satisfies the required think/answer
+    format and the extracted final answer passes the selected task verifier. The repository reference implementation multiplies
+    a strict format check by the task-verifier result and loads verifier state from extra_info.game_data_str.
+  terminal_predicate: A response receives final reward 1 only if it starts and ends with the prescribed tagged structure,
+    contains each required tag exactly once under the reference implementation, and its extracted answer is accepted by the
+    task-specific verifier; otherwise the reward is 0.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Base is trained on SynLogic-Easy; Qwen2.5-32B-Base is trained on SynLogic-Hard and in the large mixed-domain
+    experiment.
+  teacher: DeepSeek R1 and OpenAI-o3-mini are used to set difficulty upper bounds, while unspecified chat models set lower
+    bounds. These models calibrate solvability and are not disclosed as response-trace teachers.
+  generator: Manually implemented rule-based generators produce 33 task families, while Zebra Puzzle and ARC-AGI data are
+    adopted from existing open resources. The current official repository exposes task verifiers for all released data sources,
+    but an open issue reports that the Cipher question-generation script is absent.
+  filtering_rule: Generated instances undergo automatic correctness and solvability checks. Difficulty parameters are bounded
+    by model pass behavior; eight tasks with zero 7B training accuracy after difficulty reduction are excluded from SynLogic-Easy.
+  sampling_protocol: The current Hugging Face revision contains 15,837 Easy training rows plus 270 validation rows and 32,840
+    Hard training rows plus 350 validation rows. Paper experiments use prompt batches of 128 and generate 16 online rollouts
+    per prompt; those rollouts are not part of the public dataset.
+  rollout_count: 16
+  temperature: unknown
+  inference_budget: Difficulty upper bounds require DeepSeek R1 or OpenAI-o3-mini pass@10 greater than zero. Main RL response
+    limits are 16,384 tokens for 7B and 28,672 for 32B; the large 32B mixed run uses 12,288. Evaluation uses task-dependent
+    pass@1, avg@4, or avg@8.
+  optimizer_or_scaffold: DAPO-adapted GRPO. The paper reports learning rates of 1e-6 for 7B and 2e-6 for 32B, GRPO group size
+    16, maximum prompt length 2,048, clip-high 0.28, and clip-low 0.2; the repository supplies Verl integration guidance rather
+    than a pinned end-to-end training environment.
+audit:
+  source_mixture: Thirty-three independently implemented logical-task families plus Zebra Puzzle and ARC-AGI records adopted
+    from existing open resources. Difficulty-control parameters and answer representations differ by task.
+  split: SynLogic-Easy has 27 tasks because Arrow Maze, Goods Exchange, Kukurasu, Minesweeper, Norinori, Object Counting,
+    Space Reasoning Tree, and Wordscapes are removed; its current release has 15,837 train and 270 validation rows. SynLogic-Hard
+    covers all 35 tasks with 32,840 train and 350 validation rows. Each validation split has 10 rows per included task.
+  decontamination: The authors report no identical samples between generated datasets and benchmark test sets. Near-duplicate,
+    semantic, template, and adopted-resource overlap checks are unknown, and no match/removal ledger is released.
+  license: The current GitHub repository and Hugging Face dataset metadata state MIT, while the OpenReview paper record states
+    CC BY 4.0. Record-level upstream source, attribution, and redistribution compatibility for adopted or benchmark-inspired
+    tasks are not fully documented.
+  lineage: The audited GitHub main revision is d8c527fd17edb739172619efb9b681805fc74b8d and has no tagged release. The audited
+    Hugging Face revision is bb4297b82b9c28ef39249f48386cefd5e856618a. Dataset commits document Easy duplicate removal, ARC-AGI
+    duplicate-prompt removal, and a Boolean Expressions fix after initial publication.
+  known_failure_modes:
+  - Easy and Hard are different task surfaces: Easy exposes 27 task identifiers and Hard exposes 35. Reporting only the framework-wide
+      number can misdescribe the released configuration used for 7B training.
+  - Public rows expose prompts and verifier state but not online policy responses, format/accuracy rewards, accepted/rejected
+    rollouts, or per-step training decisions; the RL dataset cannot be reconstructed from prompts alone.
+  - reward_model.answer, reward_model.solution, and reward_model.style exist in the public schema but can be empty. Official
+    guidance says reward computation should load extra_info.game_data_str, whose task-specific answer and metadata layout
+    must be inspected.
+  - The paper reward description and repository reference implementation differ in strictness: the code requires exact boundary
+      placement and exactly one occurrence of each tag before invoking the task verifier.
+  - Parser and verifier bugs can create false positive or false negative rewards. The release does not publish task-level
+    verifier accuracy, adversarial tests, ambiguity sets, or calibrated error rates.
+  - Hugging Face history records post-release duplicate and Boolean Expressions repairs, so mutable main can change row content.
+    GitHub also has no tagged release.
+  - In an official Dataset Server sample of the first 100 SynLogic-Hard train rows at the pinned revision, all rows are Campsite
+    and 48 contain visibly mojibaked Chinese in both prompt content and serialized verifier state; prevalence elsewhere and
+    impact on training or verification are unknown.
+  - The official repository contains a Cipher verifier but an open issue reports that the corresponding question-generation
+    script is missing, preventing full regeneration of that task from the repository alone.
+  - Exact-match comparison does not rule out semantic or template contamination, especially where task concepts overlap KOR-Bench,
+    BBH, or BBEH or where ARC-AGI and Zebra Puzzle resources are adopted.
+  - Difficulty thresholds depend on named frontier models and unspecified chat models, but endpoint/checkpoint versions, complete
+    prompts, seeds, and all decoding settings are unknown.
+  - Benchmark improvements measure downstream trained models, not record correctness, verifier robustness, release completeness,
+    license compatibility, or data quality.
+  citation_status: verified
+  confidence: medium
+  notes: Official NeurIPS 2025/OpenReview acceptance, arXiv v4, paper source, GitHub repository and issues, training guidance,
+    reward reference, Hugging Face metadata, schema, statistics, row samples, and commit history were checked on 2026-07-22.
+    Citation and artifact identity are verified; release completeness remains partial because online rollouts, verifier calibration,
+    complete regeneration, provenance, broader decontamination, encoding integrity, and several exact calibration settings
+    are unresolved.
+  metadata_status: partial
+inclusion_reason: SynLogic operationalizes non-mathematical RLVR data construction through configurable logical-task generators,
+  task-specific programmatic verifiers, separate 27-task Easy and 35-task Hard releases, and a documented DAPO-style reward
+  interface.
+related:
+- dapo-2025
+tags:
+- logical-reasoning
+- synthetic-data
+- rule-based-verifier
+- rlvr
+- open-release
+- difficulty-control
+- release-versioning
+status: partial
+one_line_summary: SynLogic releases verifier-ready prompts and generator/verifier code for 35 logical tasks, with a 27-task
+  Easy configuration and a 35-task Hard configuration, while online RL rollouts remain unreleased.
+why_it_matters: It connects task sourcing, rule-based synthesis, model-calibrated difficulty, executable binary rewards, and
+  DAPO-style RL beyond mathematics and code, while its release history illustrates why configuration identity, verifier behavior,
+  and immutable revisions must be audited separately from benchmark gains.
+card: null
+needs:
+- 'needs_rollout_release: publish accepted and rejected online policy responses with prompt ID, policy checkpoint, sampling
+  settings, format reward, verifier reward, final reward, and training-step context'
+- 'needs_verifier_audit: release per-task parser/verifier tests, ambiguity cases, false-positive and false-negative analysis,
+  and pinned verifier versions'
+- 'needs_reproducibility: pin an end-to-end code, data, dependency, generator, verifier, and training revision with seeds
+  and complete decoding settings'
+- 'needs_generator: release or explicitly scope the missing Cipher question-generation script reported in official issue 6'
+- 'needs_encoding_audit: identify and repair mojibaked multilingual rows, report affected configurations and tasks, and validate
+  prompt and verifier-state round trips at the pinned revision'
+- 'needs_provenance: document record-level source identity, upstream licenses, and redistribution terms for adopted and benchmark-inspired
+  tasks'
+- 'needs_decontamination: release exact, near-duplicate, semantic, and template-overlap results against every evaluation version'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-22'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Exact title, arXiv identifier, NeurIPS/OpenReview venue record, official GitHub repository, current commit, Hugging
+    Face dataset revision, public schema, configuration statistics, sampled encoding integrity, and issue history were checked.
+    Artifact availability is verified, but completeness and record-level auditability remain partial.
+category_ids:
+- programmatically_verifiable_outcome_data
+- data_construction_open_release_recipes

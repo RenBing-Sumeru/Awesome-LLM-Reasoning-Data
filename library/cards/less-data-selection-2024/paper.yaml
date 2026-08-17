@@ -1,0 +1,127 @@
+id: less-data-selection-2024
+title: 'LESS: Selecting Influential Data for Targeted Instruction Tuning'
+year: 2024
+venue: ICML 2024
+authors:
+- Mengzhou Xia
+- Sadhika Malladi
+- Suchin Gururangan
+- Sanjeev Arora
+- Danqi Chen
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v235/xia24c.html
+  arxiv: https://arxiv.org/abs/2402.04333
+  code: https://github.com/princeton-nlp/LESS
+  data: https://huggingface.co/datasets/princeton-nlp/less_data
+  project: https://github.com/princeton-nlp/LESS
+  huggingface: https://huggingface.co/datasets/princeton-nlp/less_data
+  doi: null
+  venue: https://proceedings.mlr.press/v235/xia24c.html
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v235/xia24c.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: public general instruction pools and small target-task validation examples
+  trace_author: a warmup model supplies per-example gradients rather than generating new responses
+  answer_format: instruction-response record, gradient or influence score, target task, and selected split
+  process_fields:
+  - instruction-response record
+  - gradient or influence score
+  - target task
+  - and selected split
+  environment_or_substrate: JSON and serialized gradient or score artifacts in the official release
+  verifier_or_reward: gradient similarity estimates each record's influence on the target task
+  terminal_predicate: Retain a record only when gradient similarity estimates each record's influence on the target task accepts
+    it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: a warmup model supplies per-example gradients rather than generating new responses
+  generator: LESS trains a lightweight warmup model, embeds source and target examples by their gradients, ranks source records
+    by estimated target influence, and releases the scores and task-specific subsets used for tuning.
+  filtering_rule: gradient similarity estimates each record's influence on the target task
+  sampling_protocol: public general instruction pools and small target-task validation examples
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: targeted instruction SFT on a selected five-percent subset
+audit:
+  source_mixture: public general instruction pools and small target-task validation examples
+  split: 'Official release scale: public instruction pools, gradient features, influence scores, and task-specific selected
+    subsets; storage: JSON and serialized gradient or score artifacts in the official release.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository license and the licenses of the underlying instruction datasets
+  lineage: public general instruction pools and small target-task validation examples -> a warmup model supplies per-example
+    gradients rather than generating new responses -> gradient similarity estimates each record's influence on the target
+    task -> targeted instruction SFT on a selected five-percent subset.
+  known_failure_modes:
+  - Scores depend on the warmup checkpoint and target examples
+  - gradient storage is expensive for large models
+  - a narrow target set can remove broadly useful or minority-domain records.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 14 citations; this is not a Google Scholar count.'
+inclusion_reason: 'LESS selected instruction data is a public Track 01 training object: instruction-response record, gradient
+  or influence score, target task, and selected split; it is consumed by targeted instruction SFT on a selected five-percent
+  subset.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- gradient-influence-instruction-selection
+status: verified
+one_line_summary: LESS releases gradient influence scores and task-specific instruction subsets selected from larger public
+  pools.
+why_it_matters: ranking instruction records by training-gradient influence on an explicit target task
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: building a small task-targeted SFT subset from a large instruction pool
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: gradient-influence instruction selection
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include Princeton University, University of Washington.
+    venue: 'The official venue URL confirms formal publication at ICML 2024: https://proceedings.mlr.press/v235/xia24c.html'
+    impact: OpenAlex reported 14 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON and serialized gradient or score artifacts in the official release
+      records at https://huggingface.co/datasets/princeton-nlp/less_data with terms recorded as: official repository license
+      and the licenses of the underlying instruction datasets.'
+  selection_eligible: true
+  year_impact_threshold: 3

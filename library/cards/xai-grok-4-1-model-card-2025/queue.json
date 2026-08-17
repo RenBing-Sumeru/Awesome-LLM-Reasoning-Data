@@ -1,0 +1,11 @@
+{
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "grok4",
+    "updated_at": "2026-07-15T09:16:48Z"
+  },
+  "updated_at": "2026-07-15T09:16:48Z",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

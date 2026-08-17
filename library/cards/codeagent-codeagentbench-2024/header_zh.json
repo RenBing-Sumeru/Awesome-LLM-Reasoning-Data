@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "CodeAgentBench 在真实仓库级编码挑战中评测工具集成智能体。",
+  "reading_priority_ch": "不推荐",
+  "paper_type_ch": "arXiv 的 repo-level coding agent benchmark",
+  "best_for_ch": "关注软件工程智能体、环境轨迹数据、执行反馈和评测 harness 的研究者。",
+  "confidence_ch": "中",
+  "authors_ch": "Kechi Zhang 等（Key Lab of High Confidence Software Technology (PKU), Ministry of Education）",
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T03:59:29Z"
+}

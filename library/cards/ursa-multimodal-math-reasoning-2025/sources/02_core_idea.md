@@ -1,0 +1,5 @@
+URSA combines two distinct process-label routes. Binary Error Locating (BEL) samples continuations from a solution prefix and labels its potential by the fraction that reach a correct answer; binary search identifies the first likely error. Misinterpretation Insertion (MIE) first extracts mathematical information from an image, alters a confusable visual condition in a correct solution, continues from that insertion, and marks later steps negative.
+
+The union is DualMath-1.1M, used to train URSA-8B-RM as a binary per-step classifier. PS-GRPO deliberately does not add PRM scalar values to the RL objective. It uses final outcome correctness, but penalizes a correct rollout when its PRM sequence has a relative adjacent-step drop at least rho. With gamma=0.5 and rho=0.3, the main setting assigns 1, 1-gamma, or 0 depending on outcome correctness and drop detection.
+
+The closest alternatives are scalar process-reward GRPO variants, outcome-only GRPO, self-consistency, and an outcome reward model for Best-of-N. URSA's contribution is their multimodal combination, not proof that a sampled continuation value or a PRM drop equals logical truth.

@@ -1,0 +1,106 @@
+id: safety-large-reasoning-models-survey-2025
+title: 'Safety in Large Reasoning Models: A Survey'
+year: 2025
+venue: Findings of EMNLP 2025
+authors:
+- Cheng Wang
+- Yue Liu
+- Baolong Bi
+- Duzhen Zhang
+- Zhong-Zhi Li
+- Yingwei Ma
+- Yufei He
+- Shengju Yu
+- Xinfeng Li
+- Junfeng Fang
+- Jiaheng Zhang
+- Bryan Hooi
+source_role:
+- survey_background
+verification_contract:
+- unknown
+supervision_granularity:
+- unknown
+domains:
+- reasoning-safety
+- large-reasoning-models
+training_use:
+- evaluation
+construction_layer:
+- trace_writing
+artifacts:
+  paper: https://aclanthology.org/2025.findings-emnlp.185/
+  arxiv: null
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.findings-emnlp.185
+  venue: https://aclanthology.org/2025.findings-emnlp.185/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-emnlp.185/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Surveyed safety risks, attacks, and defenses for large reasoning models.
+  trace_author: The surveyed primary works; no new trace collection is released.
+  answer_format: A taxonomy of risks, attacks, and defense strategies.
+  process_fields:
+  - risk
+  - attack
+  - defense
+  - reasoning capability
+  environment_or_substrate: Large reasoning models used in real-world settings.
+  verifier_or_reward: The survey introduces no common verifier or reward.
+  terminal_predicate: Safety outcome is setting-specific; no universal predicate is supplied.
+recipe_metadata:
+  base_model: No single base model; literature survey.
+  teacher: Surveyed works use varied supervision and feedback.
+  generator: Literature synthesis and taxonomy construction.
+  filtering_rule: The official abstract organizes newly emerged risks, attacks, and defenses.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: No new training recipe is introduced.
+audit:
+  source_mixture: Official ACL Anthology metadata, abstract, and DOI record.
+  split: Not applicable to a survey.
+  decontamination: No survey-wide conclusion is reported.
+  license: No dataset is released by this survey.
+  lineage: 'Primary source: https://aclanthology.org/2025.findings-emnlp.185/'
+  known_failure_modes:
+  - Vulnerabilities can affect real-world deployment
+  - Risks and defenses differ by setting
+  - Underlying studies are heterogeneous
+  citation_status: verified
+  confidence: high
+  notes: The official abstract calls this the first comprehensive survey of LRMs safety.
+inclusion_reason: A peer-reviewed survey that organizes safety risks, attacks, and defenses specific to reasoning-enhanced
+  models.
+related: []
+tags:
+- foundations-and-primers
+- reasoning-safety
+- emnlp-2025
+- survey
+why_it_matters: It makes the safety implications of stronger reasoning capabilities explicit for readers evaluating deployment.
+one_line_summary: A Findings EMNLP 2025 survey of safety risks, attacks, and defenses for large reasoning models.
+paper_type: Survey
+reading_priority: strong
+best_for: Readers studying safety concerns that arise specifically in powerful reasoning models.
+confidence: high
+status: verified
+needs:
+- 'unknown: comparable evaluation conditions across safety studies'
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official ACL metadata, abstract, venue, pages, and DOI were reviewed.
+category_ids:
+- foundations_and_primers

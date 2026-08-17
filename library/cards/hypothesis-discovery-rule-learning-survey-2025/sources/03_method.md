@@ -1,0 +1,3 @@
+This is a literature synthesis. The survey follows a cycle from observations to a hypothesis, from the hypothesis to predicted consequences, and from new evidence to validation. It organizes existing work on hypothesis generation, application, and validation, while comparing formal and natural-language representations where the literature makes that distinction.
+
+For each primary work, record the observations supplied, the representation of the candidate hypothesis, the consequences it must yield, and the evidence used for evaluation. This converts the framework into a comparable reading record. It also separates the survey's conceptual cycle from study-specific choices about models, data, prompts, search procedures, and checking mechanisms.

@@ -1,0 +1,5 @@
+- Positioning: Mol-Instructions unifies more than two million molecule, protein, and biomedical-text targets under one instruction schema.
+- Method handle: Mol-Instructions maps 17 biomolecular task families into a common instruction-input-output schema and publishes more than two million examples spanning molecule design, property prediction, protein understanding, and text tasks.
+- Data handle: more than 2 million biomolecular instruction records; each record contains task instruction, molecular/protein representation or text input, and structured or natural-language target.
+- Evidence anchor: Instruction-tuned models improve across held-in and cross-domain molecular/protein tasks relative to base and single-task baselines; the same model consumes the common two-million-record mixture.
+- Reuse decision: best for training one model to answer molecule, protein, and biomedical text instructions; first audit sequence similarity leakage can inflate apparent cross-task generalization.

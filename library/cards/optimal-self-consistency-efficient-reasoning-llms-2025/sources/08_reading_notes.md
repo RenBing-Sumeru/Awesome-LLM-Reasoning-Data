@@ -1,0 +1,5 @@
+- SC estimates the modal answer; it does not verify correctness.
+- Blend-ASC allocates a global budget using a time-varying blend of ASC and PPR-1v1 ranks.
+- Experiments simulate allocations from 100 generations per question and focus on aligned questions.
+- The arXiv v2 headline is 4.8 times fewer samples on average, with substantial variation across settings.
+- No official code, generations, or allocation logs were confirmed.

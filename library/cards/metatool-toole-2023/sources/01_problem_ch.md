@@ -1,0 +1,3 @@
+MetaTool Benchmark for Large Language Models: Deciding Whether to Use Tools and Which to Use 定义了 tool-use, agent-environments, interactive-评测 的评测面：模型输出或智能体轨迹必须满足任务特定的反馈契约。主来源与产物是 paper: https://arxiv.org/abs/2310.03128; code: https://github.com/HowieHwong/MetaTool; data: https://github.com/HowieHwong/MetaTool; doi: https://doi.org/10.48550/arXiv.2310.03128；本地元数据记录的年份/来源为 2023 / ICLR 2024 / arXiv。
+
+收录边界是 environment_agent_trajectory_data，来源角色为 benchmark, agent_environment，验证契约为 environmental, 程序化。一个评测实例 里包含：Tool-use awareness prompts, single-tool and multi-tool selection examples, and reliability-issue cases。除非官方产物另有训练数据说明，否则这张卡把它视为评测、审计，不是训练配方。它对 atlas 的价值在于把任务对象、输出和验证器/裁判/奖励/环境谓词 绑定起来，而不是只记录抽象能力结论。

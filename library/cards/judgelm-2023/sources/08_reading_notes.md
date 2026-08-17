@@ -1,0 +1,1 @@
+Separate teacher agreement from truth. Also separate the training data release, judge model weights, bias-analysis experiments, and downstream evaluation claims. Read the bias sections before treating a judge score as a clean reward signal.

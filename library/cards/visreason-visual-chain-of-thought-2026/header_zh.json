@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "VisReason 提供大规模区域定位的视觉 CoT 轨迹，训练模型按“全局观察、定位、放大、核验”的流程作答。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "过程与轨迹监督数据论文",
+  "best_for_ch": "需要区域级视觉过程监督、可核验视觉 CoT 或多轮视觉定位推理的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Lingxiao Li、Yifan Wang、Xinyan Gao、Chen Tang、Xiangyu Yue、Chenyu You",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ],
+  "updated_at": "2026-07-12T12:36:07Z",
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "旧 新的有Web Arena",
+    "updated_at": "2026-07-12T12:36:07Z"
+  }
+}

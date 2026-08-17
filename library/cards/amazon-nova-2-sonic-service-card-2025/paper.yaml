@@ -1,0 +1,118 @@
+id: amazon-nova-2-sonic-service-card-2025
+title: Amazon Nova 2 Sonic - AWS AI Service Cards
+year: 2025
+venue: AWS AI Service Card
+authors:
+- Amazon Web Services
+source_role:
+- model_report
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- unknown
+domains:
+- general_reasoning
+- multimodal
+- agentic_tool_use
+- safety
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- frontier_pipeline
+- release_audit
+artifacts:
+  paper: https://docs.aws.amazon.com/ai/responsible-ai/nova-2-sonic/overview.html
+  arxiv: null
+  code: null
+  data: null
+  project: https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-sonic.html
+  huggingface: null
+  doi: null
+  venue: https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-sonic.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Multilingual and multimodal licensed, proprietary, and public source categories; records, rights, quantities,
+    and procedures are unknown.
+  trace_author: unknown
+  answer_format: Speech/text inputs and speech/text outputs; post-training schemas and traces are unknown.
+  process_fields:
+  - instruction
+  - speech_input
+  - text_input
+  - speech_output
+  - text_output
+  environment_or_substrate: Runtime input/output filters; training environments and rollouts are unknown.
+  verifier_or_reward: SFT, reinforcement learning, and RLHF are high-level disclosures; rewards, verifiers, preferences, and
+    calibration are unknown.
+  terminal_predicate: unknown
+recipe_metadata:
+  base_model: Proprietary core multimodal transformer with speech encoder and renderer; details unknown.
+  teacher: unknown
+  generator: unknown
+  filtering_rule: Curation and runtime safety filters are named; rules, thresholds, and yields unknown.
+  sampling_protocol: unknown
+  rollout_count: null
+  temperature: null
+  inference_budget: unknown
+  optimizer_or_scaffold: Pretraining, SFT, RL, and RLHF are named; objectives and optimization details unknown.
+audit:
+  source_mixture: Broad categories only; no manifests, counts, or rights map.
+  split: Public/proprietary datasets, human evaluation, and red teaming named; instances and splits unknown.
+  decontamination: unknown
+  license: unknown
+  lineage: Stage-level only; no item-level lineage.
+  known_failure_modes:
+  - Records and reward contracts are unavailable.
+  - Safety filters are high-level and cannot be configured or disabled.
+  - Evaluation artifacts and decontamination evidence are unavailable.
+  citation_status: verified
+  confidence: high
+  notes: Official AWS sources only; partial disclosure ledger, not a reusable release.
+inclusion_reason: Cloud-provider speech-model service card that names source categories, SFT/RL/RLHF, filtering, and evaluation
+  while withholding audit-critical data and reward artifacts.
+related: []
+tags:
+- amazon
+- aws
+- nova-2-sonic
+- service-card
+- frontier-report
+- data-disclosure-ledger
+- sft
+- rlhf
+- safety-evaluation
+- multimodal
+- speech
+status: partial
+category_ids:
+- frontier_reports_data_disclosure_ledger
+one_line_summary: AWS's Nova 2 Sonic card discloses high-level multimodal sources, SFT/RL/RLHF, runtime filters, and evaluation
+  layers but not records, rights, rewards, or reproducibility artifacts.
+why_it_matters: A speech-model disclosure baseline separating high-level safety and alignment claims from unavailable audit
+  evidence.
+card: null
+needs:
+- 'needs_data: manifests, records, quantities, and rights'
+- 'needs_verifier: feedback, rewards, and calibration'
+- 'needs_metadata: filtering, sampling, rollouts, optimizer, and checkpoints'
+- 'needs_audit: datasets, rubrics, splits, decontamination, and logs'
+- 'needs_license: source-level rights and licenses'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: paper_curator
+  confidence: high
+  notes: Official AWS Service Card and Bedrock model-card page checked.

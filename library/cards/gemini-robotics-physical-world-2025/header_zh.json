@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "Gemini Robotics 披露了 ALOHA 2 专家示范、图像加自然语言指令到 action chunks 的 VLA 对象、未来约 1 秒双臂轨迹中间量以及每任务 2,000–5,000 条 specialization demos，但未开放专有机器人语料、训练步数或 optimizer。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿机器人 VLA 技术报告与数据披露台账",
+  "best_for_ch": "研究机器人示范数据、embodied reasoning、VLA specialization 与真实环境评测契约的读者",
+  "confidence_ch": "高",
+  "authors_ch": "Gemini Robotics Team",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

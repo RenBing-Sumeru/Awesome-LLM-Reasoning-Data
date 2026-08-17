@@ -1,0 +1,179 @@
+id: logic-orm-test-time-scaling-2025
+title: Logical Reasoning with Outcome Reward Models for Test-Time Scaling
+year: 2025
+venue: EMNLP 2025
+authors:
+- Ramya Keerthy Thatikonda
+- Wray Buntine
+- Ehsan Shareghi
+source_role:
+- data_release
+- verifier_reward
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- scalar_reward
+domains:
+- deductive-logic
+- natural-language-reasoning
+- logical-reasoning
+training_use:
+- reward_modeling
+- evaluation
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://aclanthology.org/2025.emnlp-main.1326/
+  arxiv: https://arxiv.org/abs/2508.19903
+  code: https://github.com/RamyaKeerthy/LogicORM
+  data: https://github.com/RamyaKeerthy/LogicORM/tree/main/data
+  project: null
+  huggingface: https://huggingface.co/collections/ramyakeerthyt/qwen25-logic-orm
+  doi: https://doi.org/10.18653/v1/2025.emnlp-main.1326
+  venue: https://aclanthology.org/2025.emnlp-main.1326/
+  openreview: null
+  acl: https://aclanthology.org/2025.emnlp-main.1326/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: ProverQA train (5,000 questions), JustLogic train (4,900 questions), and FOLIO train (about 1,000 questions);
+    the public repository releases only two FOLIO-derived JSON arrays covering 1,001 unique input strings.
+  trace_author: GPT-4o generates the main CoT and Echo traces for FOLIO, ProverQA, and JustLogic; Qwen2.5-7B-Instruct generates
+    preliminary ProverQA variants.
+  answer_format: Each public row contains a natural-language logic input, gold A/B/C label, full reasoning text, parsed A/B/C
+    prediction, and integer binary reward; system and reasoning_label are present but empty.
+  process_fields:
+  - input
+  - label
+  - reasons
+  - predicted_answer
+  - reward
+  - system
+  - reasoning_label
+  environment_or_substrate: Offline multi-sample natural-language deductive reasoning over FOLIO, ProverQA, and JustLogic,
+    followed by outcome-reward reranking of independently sampled candidates at test time.
+  verifier_or_reward: A parsed boxed A/B/C answer receives reward 1 when it equals the gold label and 0 otherwise; Echo negatives
+    are additionally filtered by a GPT-4o judgment prompt, and a Qwen2.5-7B ORM learns the probability of the final '+' versus
+    '-' token after the complete trace.
+  terminal_predicate: A trace is programmatically positive when its boxed True/False/Uncertain label matches the benchmark
+    gold label; test-time selection keeps the candidate with the highest learned ORM score.
+recipe_metadata:
+  base_model: Qwen2.5-7B-Instruct initializes the LoRA-trained ORMs; the official HF collection releases full-weight CoT and
+    Echo variants for FOLIO, ProverQA, and JustLogic.
+  teacher: GPT-4o is the main trace generator and second-level Echo judge; Qwen2.5-7B-Instruct is used as a preliminary generator
+    on ProverQA.
+  generator: Standard prompts request step-by-step reasoning with a boxed answer. Echo prompts assert one of A/True, B/False,
+    or C/Uncertain before requesting a rationale, deliberately eliciting answer-aligned errors.
+  filtering_rule: Keep generations with parseable A/B/C boxed answers and label them by exact agreement with gold. For Echo,
+    discard wrong rationales the LLM judge recognizes as incorrect and retain judge-blind wrong traces. JustLogic applies
+    BLEU-diversity and inverse-frequency weighted resampling with alpha 0.8 and beta 0.2.
+  sampling_protocol: ProverQA and JustLogic use 8 candidates per input and FOLIO uses 10; the GPT helper discloses generation
+    temperature 0.6 and judge temperature 0.1/max 4 tokens. Random seeds and the exact GPT-4o API snapshot are unknown.
+  rollout_count: 'Paper construction budgets: ProverQA 8, JustLogic 8, and FOLIO 10 CoT candidates per input, plus three forced-label
+    Echo sets. Released FOLIO CoT: 10,009 rows; released combined Echo-CoT: 19,105 rows, consisting of all 10,009 CoT rows
+    plus 9,096 additional reward-zero Echo rows.'
+  temperature: 'Training-data generation: 0.6 in released GPT code. Echo judge: 0.1. Test-time reasoner: 0.6.'
+  inference_budget: The reasoner samples N candidates and selects the maximum ORM score; exact plotted N grids are not enumerated
+    in prose. Released inference code defaults to N=32 and 2,048 new tokens.
+  optimizer_or_scaffold: Paper reports Qwen2.5-7B-Instruct LoRA training on one A100 for 3 epochs, total batch 64, and learning
+    rate 5e-4. The released shell passes 3 epochs, but finetune_orm.py hard-codes 2 epochs and internally reserves 100 shuffled
+    rows with seed 42 for validation.
+audit:
+  source_mixture: FOLIO is human-annotated, JustLogic is synthetic across seven reasoning depths, and ProverQA includes three
+    difficulty levels plus noisy-premise variations. Only FOLIO-derived training traces are released, so the ProverQA/JustLogic
+    mixtures cannot be inspected at record level.
+  split: The two public JSON arrays have no split or stable-ID field. Training code loads either file as one train split and
+    creates an internal 100-row validation partition with shuffle seed 42; no released split manifest maps model weights to
+    row IDs.
+  decontamination: No decontamination, prompt-level deduplication, train/test-overlap, or source-version audit is disclosed.
+    Direct inspection finds one exact duplicate record occurring twice in each public FOLIO file.
+  license: The ACL paper is CC BY 4.0, the GitHub repository is MIT, and all six HF model cards declare MIT. No dataset-specific
+    license or upstream-derived- data rights statement is provided for the FOLIO JSONs; ProverQA/JustLogic/GPT-4o-output reuse
+    terms remain unknown.
+  lineage: FOLIO/ProverQA/JustLogic train prompts -> GPT-4o or Qwen multi-sample CoT -> boxed-label parsing and binary outcome
+    labels -> forced-answer Echo generation -> GPT-4o obvious-error filter -> optional JustLogic BLEU/frequency resampling
+    -> Qwen2.5-7B LoRA ORM -> N sampled test candidates -> learned score -> best-of-N selection.
+  known_failure_modes:
+  - Outcome equality can reward invalid or unfaithful intermediate reasoning that happens to end at the correct A/B/C label,
+    as the paper explicitly acknowledges.
+  - Echo filtering selects errors that the same LLM judge fails to recognize, so judge blind spots and generator artifacts
+    can become the ORM's hard-negative curriculum.
+  - The combined public file does not identify which rows are CoT versus Echo and omits judge verdicts, raw Echo candidates,
+    discarded obvious errors, and filter decisions.
+  - Historical ORM scores, selected candidate indices, full scored candidate sets, and rejected best-of-N candidates are not
+    released; inference main writes only unscored generations.
+  - Only FOLIO trace data is public despite six ORM variants across three benchmarks, preventing record-level audit of ProverQA
+    and JustLogic models.
+  - 'Appendix Table 4 is internally inconsistent for JustLogic: printed total 49,197 conflicts with correct/incorrect counts
+    summing to 69,197 and with the Appendix B sampling description.'
+  - Released GPT generation defaults to 8 candidates although the FOLIO experiment uses 10, and the Qwen generator hard-codes
+    only the Uncertain/C Echo prompt.
+  - The paper reports three ORM epochs and the shell passes 3, but the checked-in trainer hard-codes two epochs.
+  - Model cards disclose little beyond base model, language, license, and dataset name; score calibration, data snapshot hashes,
+    evaluation details, and known failures are absent.
+  - Dataset-specific licensing, upstream snapshot versions, GPT-4o API snapshot, generation seeds, and decontamination are
+    undisclosed.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL/arXiv citation, full paper and appendix, complete GitHub tree/code, both public JSON blobs, six-model
+    HF collection, model file lists, cards, and licenses were checked. Citation and available artifacts are verified, but
+    release completeness and end-to-end reproducibility are partial.
+inclusion_reason: 'This work provides an auditable example of outcome-reward best-of-N data for deductive logic: public positive
+  and negative CoT traces, a hard-negative Echo augmentation, six released ORMs, and an explicit selector contract connect
+  trace construction to test-time scaling.'
+related:
+- bon-coverage-optimality-2025
+- deepseek-grm-inference-time-scaling-2025
+- generative-verifiers-next-token-prediction-2025
+tags:
+- outcome-reward-model
+- best-of-n
+- test-time-scaling
+- echo-cot
+- hard-negative-mining
+- deductive-logic
+- folio
+- proverqa
+- justlogic
+- qwen2.5
+- gpt-4o
+- rejected-candidates
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: LogicORM releases 10,009 FOLIO CoT traces and a 19,105-row Echo-augmented set with binary outcome labels,
+  then trains Qwen2.5 ORMs to rerank sampled deductive-logic solutions at test time.
+why_it_matters: It ties candidate-generation budgets, positive and negative trace distributions, echo-based hard-negative
+  mining, scalar ORM supervision, and best-of-N selection into one pipeline while exposing consequential gaps in provenance,
+  rejected traces, score logs, splits, and verifier validity.
+card: null
+needs:
+- needs_proverqa_justlogic_data
+- needs_raw_echo_release
+- needs_rejected_candidate_manifest
+- needs_orm_score_logs
+- needs_split_manifest
+- needs_dataset_license
+- needs_generation_snapshot
+- needs_table4_clarification
+- needs_epoch_reconciliation
+- needs_decontamination
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, proposed-ID, arXiv-ID, and ACL-ID/URL searches found no duplicate in the source or V2 target. A core
+    V2 Card is recommended because the public labeled traces, six ORMs, best-of-N contract, and concrete release/reproducibility
+    failures are sufficiently evidenced. A complete V2 artifact accompanies this staged record; card remains null because
+    no shared repository path is written in draft mode.

@@ -1,0 +1,1 @@
+论文提出了以能力为中心的 agent 评测常常隐去的系统问题：当动态推理反复调用 LLM 并与工具交互时，究竟消耗多少时延、GPU 计算、显存、能耗和 serving capacity。研究在 HotpotQA、WebShop、MATH 与 HumanEval 上比较 CoT、ReAct、Reflexion、LATS 和 LLMCompiler，并以 ShareGPT 作为非 agent 的单轮基线。对本 track 而言，核心数据对象不是新的训练语料，而是把每个 benchmark query 与 agent 配置连接到推理/工具轨迹、准确率或任务得分、时延、token 使用、GPU 行为和能耗的执行记录。论文公开的是汇总刻画与外推结果；用于审计或复用这些测量的完整逐请求记录集未确认为发布。

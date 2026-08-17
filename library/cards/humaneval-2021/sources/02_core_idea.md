@@ -1,0 +1,3 @@
+The contribution is a compact benchmark that measures functional correctness of generated Python functions through execution. The core mechanism is to prompt a model with a function stub, sample one or more completions, run the completions against tests, and report pass@k.
+
+The data object is a problem record with prompt, canonical solution, and tests; the feedback contract is pass/fail under the benchmark harness and aggregate pass@k over samples. Closest comparisons are MBPP-style programming tasks and older program-synthesis benchmarks; HumanEval's direction label is executable unit-test evaluation for code LMs.

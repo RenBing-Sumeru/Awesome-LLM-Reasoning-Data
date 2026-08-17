@@ -1,0 +1,10 @@
+- 官方仓库没有与论文绑定的 tag 或 release。本卡所有 code/data 审计结论都针对 current-main commit `617e963bd838bee5793a39e6b34165b79535828f`，不能视为已经证明的 ICML 实验 snapshot。论文关于最难任务“超过 60 次”调用的陈述与当前表中低于该阈值的最大参考计数，仍是未解决的版本或计数口径差异。
+- 精确 replay 不可用。runner 不持久化完整 evaluated rollout、trial ID、model-sampling seed、environment hash、result manifest 或导出的 fault schedule；provider revision 与默认 temperature/top-p 也未知。带 seed 的进程内 session 不能固定外部模型行为或全部瞬时故障。
+- release 只包含 47 条通过验收的成功参考轨迹，不包含每个被评测模型在 3 次运行中的完整成功与失败 rollout。失败的 authoring attempt、拒绝数量，以及可见 yes/no prompt 之外的详细 acceptance rubric 也没有发布。
+- current evaluator 的 `content` 分支接受 exact match、substring match，或 Levenshtein similarity 高于 0.7 的匹配。这可能接受语义错误的近似项，也可能拒绝可接受的改写，但 release 没有独立 calibration set 或实测 false-positive/false-negative rate。这是实现风险，不是已经观测到的错误率主张。
+- 在已检查的 current evaluator 中，exclusion-key literal 疑似在 `rid` 与 `oid` 之间缺少逗号，从而把两个字符串拼接，并可能没有按预期排除这些 generated ID。这是代码审计发现与潜在 collateral-change accounting 风险；现有证据没有量化其影响 benchmark outcome 的频率。
+- seeded network failure 可能返回状态 `internel error`，而 current runner aggregation 只识别 `ok`、`error` 和 `failed`，因此这类事件可能未计入 failure-status count。这是 implementation-level accounting 风险，不是实测 benchmark error rate 的证据，也不必然意味着 final-state score 错误。
+- 合成 LightTalk history 可按每个 contact 10% 的概率采样包含 prompt-injection instruction 的 `attacks` corpus，但论文没有报告专门的 prompt-injection metric 或 robustness calibration。若产生的状态仍满足已编码检查，final-state verifier 可能无法反映 agent 是否服从了恶意文本。
+- synthetic knowledge-base generator model、prompt、upstream source provenance、标注者身份与人数、agreement process、recruitment、compensation 和 consent 均未披露。release 没有 train/dev/test split，也没有系统的 model-pretraining overlap/decontamination audit；公开 task、target、trace 与 evaluator code 会带来未来暴露风险。
+- 仓库根目录采用 MIT，arXiv 论文采用 CC BY 4.0，但没有独立声明确认 benchmark row、synthetic entity 或 model-generated text/tool output 的 rights。权利链缺失使这些 trajectory 不能被视为可普遍复用的训练数据。
+- 论文只评测 agent，没有建立 SFT、preference optimization、process supervision、reward-model 或 agent-RL 用途；benchmark score 也不能证明 trajectory quality 或对 47 个合成任务之外场景的泛化。

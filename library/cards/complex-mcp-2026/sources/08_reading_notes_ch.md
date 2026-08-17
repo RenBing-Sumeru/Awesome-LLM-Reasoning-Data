@@ -1,0 +1,5 @@
+- 应把规模与数据对象一起记住：47 个任务、15 个 MCP server、315 个工具；每个任务对应一条 7 字段 parquet 记录，把 seed/query/application 连接到通过验收的参考轨迹和目标最终状态。
+- 必须区分两类 trajectory。release 有 47 条成功人工 gold/reference demonstration，但没有发布 3 次独立运行中的全部模型成功与失败记录；Appendix C 只展示 3 个正确和 2 个错误例子。
+- 应把 verifier 当作代码而不是 oracle：completion 与 collateral-change accounting 很具体，但 fuzzy content matching、疑似 `rid`/`oid` 逗号遗漏，以及未被识别的 `internel error` 状态都需要校准测试。
+- Table 2 必须在其契约内解释：Gemini-3-Flash success 为 `55.31 ± 0.00%`，human 为 `93.61 ± 1.74%`，但 benchmark performance 不是 training-data quality 的证据。
+- 仅用于固定版本的 evaluation 与 audit；paper-era code identity、完整 replay manifest、独立 data/output rights、decontamination 与 prompt-injection calibration 仍为 unknown。

@@ -1,0 +1,293 @@
+id: vlm-self-improve-reflection-2025
+title: Vision-Language Models Can Self-Improve Reasoning via Reflection
+year: 2025
+venue: NAACL 2025
+authors:
+- Kanzhi Cheng
+- Yantao Li
+- Fangzhi Xu
+- Jianbing Zhang
+- Hao Zhou
+- Yang Liu
+source_role:
+- construction_recipe
+- scaling_study
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+- full_episode
+domains:
+- multimodal-reasoning
+- visual-mathematics
+- chart-reasoning
+- geometry
+- visual-question-answering
+- web-navigation
+- science-reasoning
+- commonsense-reasoning
+training_use:
+- sft
+- test_time_compute
+construction_layer:
+- trace_writing
+- search_substrate
+- self_play_anchor
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://aclanthology.org/2025.naacl-long.447/
+  arxiv: https://arxiv.org/abs/2411.00855
+  code: https://github.com/njucckevin/MM-Self-Improve
+  data: https://github.com/njucckevin/MM-Self-Improve/tree/master/data/data_self_train
+  project: https://github.com/njucckevin/MM-Self-Improve
+  huggingface: null
+  doi: https://doi.org/10.18653/v1/2025.naacl-long.447
+  venue: https://aclanthology.org/2025.naacl-long.447/
+  openreview: null
+  acl: https://aclanthology.org/2025.naacl-long.447/
+  pmlr: null
+  cvf: null
+  bibtex: https://aclanthology.org/2025.naacl-long.447.bib
+data_object:
+  prompt_source: 'R3V uses the training portions of six image-grounded tasks: TabMWP, ChartQA''s human-written split, CLEVR-Math,
+    MiniWob, the English GeoQA translation from UniGeo, and M3CoT. Paper Table 5 reports train/test counts of 23,059/7,686,
+    7,398/1,250, 10,000/7,955, unknown/unknown, 3,499/754, and 7,973/2,359 respectively. The main repository publishes prepared
+    direct-QA and GPT-CoT warm-up JSON only for TabMWP, ChartQA and CLEVR-Math.'
+  task_object: A source task contains an image, a question and optional choices or other structured context, plus a reference
+    final answer. MiniWob additionally supplies HTML and asks the model to generate Python action code for a simulated browser
+    task.
+  trace_author: GPT-4o supplies a small warm-up CoT subset in the main Qwen-VL and LLaVA-1.5 experiments. After warm-up, the
+    current MLLM checkpoint samples three complete rationale-answer solutions per source item per sampling iteration. The
+    Qwen2-VL GeoQA experiment is reported without GPT-distilled warm-up.
+  trajectory_object: A raw candidate is (source item ID, image, question/context, full generated rationale, parsed final answer,
+    terminal correctness, model/iteration/sample identity). Derived SFT records pair the task with one answer-correct full
+    solution. Self-refine records put one answer-incorrect full solution in the user context and use an answer-correct full
+    solution as the assistant target. Self-select records place exactly three full candidate solutions in the context and
+    train the assistant to emit the correct final answer.
+  answer_format: Most tasks use free-form step-by-step CoT ending in a task-specific final answer; TabMWP may end in an option
+    letter or short value, ChartQA in a number, Yes/No, or short phrase, CLEVR-Math in an integer from 0 to 10, and MiniWob
+    in Python code representing keyboard or mouse actions. The released prepared rows use image plus a two-turn user/assistant
+    conversation.
+  process_fields:
+  - source_dataset
+  - source_item_id
+  - image
+  - question_or_task
+  - choices_or_structured_context
+  - reference_answer
+  - generator_model
+  - self_training_iteration
+  - sample_index
+  - generated_rationale
+  - generated_final_answer
+  - parsed_answer
+  - terminal_correctness
+  - positive_or_negative_pool
+  - derived_task_type
+  - candidate_set
+  - candidate_order
+  - assistant_target
+  observation: For self-refine, the MLLM observes the original image/question and one negative full solution but no localized
+    error label. For self-select, it observes the image/question and three full candidate solutions but not their correctness
+    labels; the target is only the final answer. No released step-validity annotations identify where a rationale first becomes
+    wrong.
+  reward_object: Construction feedback is a binary terminal outcome obtained from the dataset reference answer or, for MiniWob,
+    the simulated environment's 0/1 reward. This outcome partitions complete solutions into positive and negative pools. Test-time
+    self-selection emits an answer rather than a calibrated reward score.
+  environment_or_substrate: Offline repeated generation and multi-task LoRA SFT are used for most datasets. MiniWob adds a
+    simulated web environment whose terminal reward labels the generated action program. The released main controller implements
+    TabMWP, ChartQA and CLEVR-Math; the officially linked companion repository separately implements Qwen2-VL on GeoQA.
+  verifier_or_reward: Mixed contract. TabMWP uses answer extraction and normalized equality; ChartQA accepts numeric answers
+    within 5 percent of the reference or case-insensitive exact text; CLEVR-Math extracts an integer after "Answer:" and compares
+    equality; MiniWob uses environmental success. GeoQA and M3CoT use their stated benchmark evaluators. The same MLLM is
+    trained as a candidate-conditioned answer selector, but there is no separate verifier head, process label or calibrated
+    score.
+  terminal_predicate: A candidate is positive exactly when its task-specific parsed final answer passes the benchmark checker,
+    or when MiniWob returns reward 1. A training self-select set is emitted only when it contains both positive and negative
+    outcomes and at least one positive. At test time the final answer is the selector model's greedy response to the sampled
+    candidate set; no score threshold or abstention rule is disclosed.
+  provenance: Upstream image/question/reference answer -> optional GPT-4o CoT warm-up -> current MLLM -> three sampled full
+    solutions per item/iteration -> terminal-answer or environment labels -> accumulated positive/negative local pools ->
+    latest-positive SFT, latest-negative-to-latest-positive refinement, and shuffled three-candidate selection records ->
+    multi-task SFT -> next-iteration generator and candidate-conditioned test-time selection.
+recipe_metadata:
+  base_model: Main experiments use Qwen-VL and LLaVA-1.5; the stronger-backbone study uses Qwen2-VL-7B-Instruct on GeoQA.
+    Exact checkpoint and tokenizer revisions are not disclosed or pinned in the paper-time artifacts.
+  teacher: GPT-4o generates warm-up CoT for 1,000 TabMWP, 800 ChartQA, 1,000 CLEVR-Math, 550 MiniWob, 936 M3CoT and 536 GeoQA
+    items in the main experiments. Subsequent R3V candidates come from the current MLLM itself; GPT-4o-mini is used only to
+    evaluate free-form zero-shot outputs.
+  generator: At each sampling stage, the current task-specific MLLM generates complete rationale-answer candidates. The newly
+    trained checkpoint changes the candidate distribution at the next stage; there is no external rationale generator after
+    warm-up.
+  prompt_task_source: Dataset image/question/context with a task-specific instruction to generate a step-by-step solution
+    and final answer. Appendix E shows the direct, refine and select prompt families. Exact immutable prompt templates for
+    all six paper tasks and every model variant are not released together.
+  sampling_protocol: The paper defaults to three solutions per item per sampling iteration and runs four or five task-dependent
+    iterations until performance saturates. The main controller's default five loops train loop 0 on QA plus GPT warm-up,
+    then sample three files from every completed checkpoint for later loops, accumulating candidates from prior iterations.
+    The released generation helper uses top-k 50, top-p 0.95, temperature 0.9 and at most 384 new tokens when sampling. Generation
+    and shuffle seeds are not disclosed.
+  rollout_count: Three new candidates per source item per completed sampling iteration. In the default five-loop main implementation,
+    the final reconstructed pool can contain up to 12 generated candidates per item from four completed checkpoints; realized
+    counts and parser failures are not released.
+  temperature: 0.9
+  inference_budget: Main test-time selection compares three sampled full solutions and generates one selector response. The
+    paper scales candidate count on TabMWP and CLEVR-Math until input-length/model limits cause a plateau, but does not tabulate
+    exact per-point token, latency, FLOP or hardware budgets. The Qwen2-VL companion README exposes a configurable maximum
+    and gives 6 as an example.
+  search_or_scaffold: Independent stochastic full-solution sampling followed by outcome partitioning; no tree search. Training
+    candidates are converted into three SFT task families, and test-time compute is allocated to independent completions plus
+    one candidate-conditioned self-selection call.
+  filtering_rule: 'Any terminally correct candidate can supply direct SFT. Refinement requires at least one positive and one
+    negative and uses the latest of each. Self-selection uses candidate pools containing both labels: one record from the
+    latest two positives plus latest negative when available, and one from the latest positive plus latest two negatives when
+    available. Candidate order is randomly shuffled. No rationale-faithfulness filter is applied.'
+  selection_threshold: Binary task-level outcome only. Self-select construction requires at least one positive among three
+    candidates; there is no learned-score threshold, confidence calibration, tie rule or abstention mechanism.
+  optimizer_or_scaffold: Multi-task causal SFT optimizes direct solution, self-refine and self-select records together. Table
+    6 reports global batch 64, learning rate 3e-5, three epochs, constant schedule with warm-up ratio 0.1, weight decay 0
+    and AdamW. LoRA uses rank/alpha 64/16 for Qwen-VL and 128/256 for LLaVA-1.5, with dropout 0.05 and DeepSpeed ZeRO-2.
+  release_scale: The main repository publishes 40,457 direct-QA rows and 2,800 GPT-CoT warm-up rows per base-model variant
+    across TabMWP, ChartQA and CLEVR-Math. It does not publish the paper's generated candidate pools, per-iteration labels,
+    derived SFT/refine/select corpora, final mixed training files, checkpoints or logs.
+audit:
+  source_mixture: The six task datasets are trained separately for the main in-domain results. For OOD evaluation, the paper
+    aggregates self-generated CoT from the in-domain benchmarks and constructs positive/negative pairs for continued Qwen-VL
+    training. Exact mixture weights, row IDs and per-source realized derived counts are not released.
+  split: Paper Table 5 reports TabMWP 23,059/7,686, CLEVR-Math 10,000/7,955, ChartQA 7,398/1,250, M3CoT 7,973/2,359 and GeoQA
+    3,499/754 train/test counts; MiniWob is undisclosed. TabMWP and M3CoT use stated official splits, CLEVR-Math uses 10,000
+    randomly sampled training instances and the original test set, ChartQA uses the human-written training subset, and GeoQA
+    uses UniGeo's English version. Immutable row manifests are not published.
+  decontamination: unknown
+  benchmark_overlap: Named train and test splits are separated in the paper, but no exact, near-duplicate or semantic-overlap
+    audit, cross-dataset image/question matching, or pretraining-contamination analysis is reported.
+  lineage: The paper and code define source -> generated candidate -> terminal label -> derived task -> next checkpoint lineage,
+    but the release lacks upstream item hashes, exact candidate IDs, model/tokenizer revisions, seeds, per-iteration outcome
+    ledgers, selection decisions, final training-row manifests and checkpoint hashes. The released warm-up records contain
+    only image and two-turn conversations.
+  license: The ACL/arXiv paper is CC BY 4.0. The main and companion code repositories declare Apache-2.0. No record-level
+    license and attribution manifest covers the six upstream datasets, their images, GPT-4o annotations or generated R3V traces;
+    the repository license must not be generalized to those upstream/derived objects.
+  release_version: NAACL 2025 proceedings version and arXiv:2411.00855v1 were read. Main repository master commit 9bb4ae5820eca4f2cb3b4f6ee7e0cce4abbad6c0,
+    dated 2025-01-23, was inspected. The main and Qwen2-VL companion repositories have no GitHub releases or tags, so there
+    is no immutable packaged paper artifact.
+  experimental_evidence:
+    main: Table 1 reports Qwen-VL average 64.37 for R3V versus 59.28 STaR and 48.47 GPT-distilled, and LLaVA-1.5 average 59.03
+      versus 55.81 STaR and 45.24 GPT-distilled, over the six in-domain tasks.
+    ablation: Table 3 reports Qwen-VL average 64.37 full, 62.50 without self-refine, 60.78 without self-select and 60.64 without
+      iterative training. These are model-training outcomes, not direct measurements of individual trace quality.
+    test_time: Table 2 reports Qwen-VL R3V to R3V+TTS changes of 35.63 to 38.48 on MMMU, 35.10 to 35.80 on MathVista and 50.23
+      to 51.78 on VCR using three-sample selection. Figures 4 and 5 compare selection with Test@1 and majority voting.
+    negative_result: Table 4 reports LLaVA STaR+DPO average 55.90 versus STaR 55.81 and R3V 59.03. This is evidence for the
+      tested noisy-CoT DPO setup, not a universal result about preference learning.
+    rationale_fidelity: The authors manually classify 100 answer-correct Qwen-VL samples per task; Figure 6 reports only 8
+      to 70 percent fully correct CoT across multimodal tasks. The rubric, annotator count, agreement, adjudication and sampled
+      record IDs are not disclosed.
+  known_failure_modes:
+  - 'Final-answer correctness produces rationale-level false positives: the paper directly documents answer-correct samples
+    with perception, symbol, calculation and reasoning errors.'
+  - Self-refine targets are answer-correct peer completions, not independently verified edits of the supplied negative rationale;
+    they can replace one flawed path with another lucky-answer path.
+  - Self-select training guarantees at least one positive candidate, whereas an inference-time candidate set can be entirely
+    wrong.
+  - The learned selector may exploit answer frequency, formatting or generator-specific style rather than faithfully compare
+    reasoning paths; no adversarial or cross-generator audit is reported.
+  - '"Latest" positive/negative selection tracks iteration/order rather than an independent rationale-quality score, and processing
+    scripts shuffle without released seeds.'
+  - TabMWP parsing/normalization, ChartQA's 5-percent numeric tolerance, CLEVR regex extraction and benchmark-specific formatting
+    can introduce outcome false positives or false negatives.
+  - Only selected negatives survive inside refine/select prompts; rejected raw candidates, malformed outputs, parser failures
+    and selection decisions are not released for audit.
+  - Main reproduction code/data covers only TabMWP, ChartQA and CLEVR-Math, while the paper evaluates six in-domain tasks.
+    GeoQA Qwen2-VL is in a separate companion repository.
+  - No frozen generated corpus, checkpoint, exact configuration bundle, run log or immutable release tag supports exact replay.
+  - No decontamination report or row-level license/provenance matrix supports unrestricted training-data redistribution.
+  verifier_or_judge_failure_modes:
+  - Outcome false positives include lucky correct answers attached to invalid CoT; Figure 6 establishes this as observed,
+    not hypothetical.
+  - Outcome false negatives can arise from equivalent answers outside a parser's expected form, tolerance boundaries, malformed
+    formatting or incomplete environment execution.
+  - The self-selector emits an answer rather than a calibrated correctness score and has no threshold, abstention, uncertainty
+    estimate or independent reference access at inference.
+  - Candidate generation and selection use closely related checkpoints, so correlated visual/OCR/reasoning blind spots can
+    survive every stage.
+  successful_and_failed_sample_retention: Direct SFT keeps the latest available positive full solution. Self-refine embeds
+    the latest negative and targets the latest positive. Self-select embeds up to the latest two examples of each class in
+    two three-candidate patterns. Other raw positive and negative samples remain only in local sampling files during construction
+    and are not published; it is unknown how malformed, timed-out, duplicate or parser-error cases are retained.
+  safety_boundary: Evidence is limited to the named multimodal reasoning benchmarks and one simulated web environment. R3V
+    is not validated as a correctness mechanism for open-ended factual, safety-critical or adversarial multimodal reasoning,
+    and answer-level success must not be read as faithful process supervision.
+  citation_status: verified
+  confidence: high
+  remaining_unknowns:
+  - exact_base_model_checkpoint_and_tokenizer_revisions
+  - generation_data_shuffle_and_candidate_order_seeds
+  - per_task_model_iteration_positive_negative_and_derived_record_counts
+  - malformed_timeout_parser_failure_and_duplicate_disposition
+  - immutable_upstream_and_gpt_warmup_record_manifests
+  - frozen_generated_rollouts_labels_training_files_checkpoints_and_logs
+  - exact_four_versus_five_iteration_stopping_rule
+  - fidelity_rubric_annotators_agreement_adjudication_and_sample_ids
+  - decontamination_overlap_and_pretraining_contamination_audits
+  - record_level_upstream_and_generated_trace_license_lineage
+  - selector_calibration_abstention_all_wrong_behavior_and_adversarial_robustness
+  notes: Verified on 2026-07-25 against the complete NAACL paper and appendices, ACL metadata/BibTeX/DOI, arXiv v1, the complete
+    main-repository tree at commit 9bb4ae5820eca4f2cb3b4f6ee7e0cce4abbad6c0, all released warm-up/QA JSON files, construction/evaluation/training
+    scripts, licenses, release/tag endpoints, and the officially linked Qwen2-VL companion repository. Citation and code/data-link
+    verification are high confidence; reusable derived-data completeness remains partial.
+inclusion_reason: R3V is an auditable multimodal rollout recipe that refreshes self-generated positive and negative full solutions
+  across iterations, turns selected failures into refinement and three-candidate comparison contexts, and reuses the learned
+  selector for test-time compute. Its own fidelity audit makes the gap between gold-answer verification and faithful rationale
+  supervision a first-class Atlas risk.
+related:
+- crest-consistency-rationale-self-training-2025
+- v-star-training-verifiers-self-taught-reasoners-2024
+- enhancing-outcome-reward-based-rl-training-mllms-self-consistency-sampling-2025
+tags:
+- r3v
+- multimodal-reasoning
+- iterative-self-training
+- positive-negative-rollouts
+- self-reflection
+- rationale-refinement
+- candidate-selection
+- test-time-selection
+- answer-level-verification
+- noisy-cot
+- missing-derived-data
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+one_line_summary: R3V repeatedly samples answer-labelled multimodal CoT, trains on a latest positive, a negative-to-positive
+  refinement, and three-candidate answer selection, then reuses the selector for test-time compute.
+why_it_matters: It connects iterative rollout refresh, negative-context SFT and candidate-conditioned inference in one inspectable
+  recipe, while showing directly that gold-answer correctness can retain unfaithful multimodal rationales and that missing
+  frozen rollout/decision ledgers limit reuse.
+card: null
+card_recommendation: recommended
+needs:
+- 'needs_release: publish immutable raw candidates, parsed answers, terminal labels, iteration/sample IDs, derived SFT/refine/select
+  rows, final mixtures, checkpoints and run logs'
+- 'needs_counts: report per-task/model/iteration positive, negative, malformed, filtered and derived-record yields'
+- 'needs_lineage: pin upstream item IDs, prompts, model/tokenizer revisions, evaluator versions, seeds and stage-to-stage
+  record IDs'
+- 'needs_faithfulness_audit: release the manual rubric/sample/adjudication ledger and add independent step-validity checks'
+- 'needs_selector_audit: test all-wrong candidate sets, calibration, abstention, answer-frequency/style shortcuts, adversarial
+  candidates and cross-generator transfer'
+- 'needs_decontamination: publish exact, near-duplicate, semantic-overlap and pretraining-contamination checks'
+- 'needs_license: provide source- and row-level attribution and redistribution terms for upstream data, GPT annotations and
+  generated traces'
+- 'needs_reproducibility: consolidate six-task code/configs, disclose stopping criteria and publish an immutable tagged release'
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: NAACL publication, DOI, ACL BibTeX, arXiv v1, main code/data/license, released JSON contents, construction/evaluation
+    settings and the linked Qwen2-VL companion were verified. Artifact verification means the official repositories were inspected;
+    it does not mean the generated R3V corpus, checkpoints, decision ledger, decontamination or dataset-license lineage are
+    available.

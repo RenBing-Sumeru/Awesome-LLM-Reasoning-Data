@@ -1,0 +1,12 @@
+{
+  "manual_annotation": {
+    "search_status": "rejected",
+    "decision_reason": "benchmark",
+    "updated_at": "2026-07-21T10:29:49Z"
+  },
+  "updated_at": "2026-07-21T10:29:49Z",
+  "category_ids": [
+    "environment_agent_trajectory_data",
+    "benchmarks_evaluation_surfaces"
+  ]
+}

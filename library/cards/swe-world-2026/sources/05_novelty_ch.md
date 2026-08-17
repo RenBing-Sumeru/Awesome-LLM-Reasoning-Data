@@ -1,0 +1,5 @@
+既有基线是在 R2E-Gym、SWE-Gym、SWE-rebench 等 Docker-backed SWE environment 中执行 repository command 与 test。SWE-World 改变了 feedback substrate：它从真实执行中学习 action-level transition model 与 episode-level reward model，再与确定性文件系统操作组合，使 policy data generation、RL 与 candidate selection 不必为每个 episode 启动 Docker。它还把该环境 recipe 与筛得的 16,550 个 GitHub task 及 simulator 的 reverse-CoT supervision 连接起来。
+
+具体的方向信号是把 environment feedback 拆成可观察的 contract：确定性 edit state、SWT-predicted command response、SWR-predicted terminal test outcome，以及在学习循环之外提供真值的 Docker。这样可以测量哪个 proxy 替代了哪项昂贵操作，以及错误反馈在 agent trajectory 的何处进入。论文的 reward-hacking analysis 也是贡献的一部分，因为它表明较便宜的学习式环境改变了优化目标，而不只是降低运行成本。
+
+各个组件本身并非全新：SWE task mining、Docker execution、teacher rollout、SFT、learned reward model、GRPO-style RL 与 best-of-N selection 均早于本工作。规模与工程整合本身不能证明数据更好。复用前必须检查 gold-patch conditioning 是否产生 shortcut、SWT/SWR calibration 能否迁移到新 repository/command、各阶段保留了哪些 failure，以及未发布 task/trajectory record 是否可许可、可划分且可追溯。因此，新意是具体的 learned environment/feedback architecture 及其被测 failure surface，而不是“Docker-free trajectory 天生质量更高”的主张。

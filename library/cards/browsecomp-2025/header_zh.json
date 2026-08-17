@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "BrowseComp 发布 1,266 道经可逆混淆的高难度网页事实问答题，以答案级 LLM judge 评分；它不发布浏览轨迹、引用或可回放网页状态，且当前官方参考 scorer 存在标签解析缺陷。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "网页智能体基准与数据发布",
+  "best_for_ch": "研究实时网页智能体评测、答案级 judge、测试时计算与污染审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Jason Wei, Zhiqing Sun, Spencer Papay, Scott McKinney, Jeffrey Han, Isa Fulford, Hyung Won Chung, Alex Tachard Passos, William Fedus, Amelia Glaese",
+  "category_ids": [
+    "environment_agent_trajectory_data"
+  ]
+}

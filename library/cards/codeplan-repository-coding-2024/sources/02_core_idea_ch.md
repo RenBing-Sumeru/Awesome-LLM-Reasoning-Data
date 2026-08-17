@@ -1,0 +1,1 @@
+核心贡献是仓库编辑规划循环：构建并更新依赖图，让 LLM 生成局部修改，分类原子编辑，再把计划扩展到受影响代码。评测面是 predicted repo 与 target repo 的编辑相似度和 block 覆盖，不是 hidden unit-test acceptance。最接近的参照是直接 prompting、检索/编辑 baseline，以及后来的 SWE-bench 类 issue-resolution benchmark。公开包中的反馈契约是对 source/target/pred 仓库计算指标，包括 DiffBLEU、Levenshtein distance 和 matched/missed/spurious blocks。

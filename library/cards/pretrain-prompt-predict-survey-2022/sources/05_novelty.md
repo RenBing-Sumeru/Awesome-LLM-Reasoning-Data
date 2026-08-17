@@ -1,0 +1,1 @@
+Its novelty was to treat prompting as a coherent learning paradigm with shared notation, rather than a collection of tricks. That framing became foundational for later chain-of-thought and reasoning prompting work. It does not itself establish that an explicit explanation is faithful or that a prompt transfer will generalize.

@@ -1,0 +1,2 @@
+The official DeepfakeJudge release contains five major components: 2,000 DFJ-Detect records, 924 DFJ-Reason records with reference justifications, 20,625 pointwise and 20,625 pairwise judge-training records, 1,000/2,000 corresponding test records, and 155 human-annotated pointwise/pairwise meta-evaluation records. In total, it contains 47,329 records and 5,101 image references. Labels include real/fake/edited status, suspicious regions, 1–5 scores, pairwise preferences, and judge rationales.
+

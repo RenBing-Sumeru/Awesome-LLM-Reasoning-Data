@@ -1,0 +1,3 @@
+R-PRM exceeds strong baselines by 11.9 and 8.5 F1 points on ProcessBench and PRMBench and improves answer selection by more than 8.5 points across six datasets. Removing rationales or preference optimization hurts performance.
+
+The most credible comparison holds the backbone, candidate trajectories, and inference budget fixed while changing only the data or feedback construction. The reported results support the utility of mathematical step-evaluation reasoning in the tested setting, but do not establish equal label accuracy for new models, domains, or longer trajectories. Reproduction should report data volume, label balance, verifier versions, and sampling budgets.

@@ -1,0 +1,3 @@
+数学数据从 37K 条 OpenMathReasoning 问题开始，这些问题上 Qwen3-1.7B 经 Math-Verify 式符号 verifier 检查后的通过率低于 50%。每个提示采样二至十六个 Qwen3-1.7B 候选解，只保留至少一个正确候选且正确候选不超过 50% 的集合，并可为每个问题重新采样至多四组。代码数据使用 OpenCodeReasoning 问题及其测试，执行 Qwen3-1.7B 候选以得到二元标签，再采用相同的“至少一个正确、正确比例至多 50%”规则。超过 16K tokens 的提示会被删除，超过 12K tokens 的代码候选回复也会被删除。论文未报告代码问题数、最终构造提示数、候选生成温度、manifest、随机种子或被拒条目日志。
+
+数学与代码 selector 分别以 Qwen3-1.7B 为基座，在 NVIDIA H100 上使用 VeRL 和 on-policy DAPO 训练。报告配置为 batch size 128、学习率 1e-6、AdamW 优化器。每个数学提示生成 16 条 selector rollout，每个代码提示生成 8 条；selector 采样使用 temperature 1.5、top-p 1.0，最大输出长度 16,384 tokens。这些 rollout 数表示每个提示的 on-policy 选择尝试数，并非候选池大小。评测沿用同一 GenSelect 提示，并在 AIME24、AIME25、HMMT25 和 LiveCodeBench v6 上对八次运行取平均。

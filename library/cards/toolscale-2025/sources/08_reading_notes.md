@@ -1,0 +1,5 @@
+- Positioning: ToolScale serializes difficult tool-routing scenarios with initial state and evaluation actions, supplying the task substrate for ToolOrchestra training.
+- Data object: 4,063 synthetic tool-orchestration tasks; each record exposes id, task description, user scenario, initial state, and evaluation criteria.
+- Author and selector: a task-generation pipeline writes scenarios, initial states, and executable evaluation criteria; retention uses environment evaluation criteria plus outcome, efficiency, and user-preference rewards.
+- Evidence anchor: On HLE, the 8B Orchestrator reports 37.1% versus GPT-5 at 35.1% while being 2.5x more efficient; the result couples ToolScale with the paper's multi-objective RL recipe.
+- Reuse decision: suitable for reinforcement learning and task-conditioned orchestration training; first audit evaluation criteria can reward benchmark-specific tool routing rather than general planning and tool prices, APIs, and model capabilities drift after data release.

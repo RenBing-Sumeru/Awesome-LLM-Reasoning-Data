@@ -1,0 +1,1 @@
+Yu Xia, Rui Wang, Xu Liu, Mingyan Li, Tong Yu, Xiang Chen, Julian McAuley, and Shuai Li. 2025. Beyond Chain-of-Thought: A Survey of Chain-of-X Paradigms for LLMs. Proceedings of COLING 2025, pages 10795–10809. Official paper and venue record: https://aclanthology.org/2025.coling-main.719/

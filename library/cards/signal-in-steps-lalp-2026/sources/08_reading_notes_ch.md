@@ -1,0 +1,6 @@
+- Venue 中性记录为 **ICML 2026**。ICML poster landing page 链接 Oral presentation page，而 OpenReview 作者档案写有 `ICML 2026 spotlight`；这些官方 surface 不支持对 presentation label 作排他断言。
+- 主 artifact 是 **817 条完整 selected response**，对应每个 GAIR/LIMO prompt 一条。使用 8,890 个 MATH prompt、每题 16 个 candidate 的实验是独立 within-teacher sanity check。
+- 对照阅读公式 1–3：GALP 对 full prefix 打分；LocalLP 只在之前 `k` 个 step 下为每个 step 打分；LALP 平均这些 step score 并选择完整 response。
+- 不要把 LALP 称为 step correctness 或 process supervision。Final-answer matching 接收 candidate，GLM-4.5-Air 提供 boundary，student likelihood 对已经接收的完整 response 排序。
+- 表 3 中，7B student 的 LALP 与 GALP 为 `.440` 对 `.412`，32B student 为 `.726` 对 `.632`；但没有独立 seed 或 selected/candidate ledger 支持逐条 attribution。
+- 复用前仍需解决不可用匿名仓库、answer checker、segmentation/parser 细节、准确 run-to-`k` 与 hyperparameter mapping、embedding model、污染、seed、output license，以及未发布的 817-response corpus。

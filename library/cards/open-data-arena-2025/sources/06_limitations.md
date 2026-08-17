@@ -1,0 +1,6 @@
+The exact paper snapshot is not frozen by a formal release. The toolkit repository, Hugging Face collections, project frontend, scores, and model artifacts are continuously updated, and the original project URL now redirects. Without pinned commits, revisions, configurations, raw outputs, and checksums, “reproducing OpenDataArena” can silently mean reproducing a later platform state.
+
+Verification is heterogeneous: execution-based code metrics, learned answer extractors, xVerify, Omni-Judge, specialized scoring models, LLM judges, and heuristics have different error modes and may be correlated or version-sensitive. Fixed hyperparameters can favor particular datasets or model families. Lineage visualization does not provide a complete semantic record-level contamination guarantee and does not prove derivation for every inferred edge.
+
+Licensing is artifact-specific. MIT applies to OpenDataArena-Tool, not automatically to the more than 120 upstream datasets, released scored records, checkpoints, models, benchmarks, or their combinations. Upstream teacher provenance, licenses, decontamination practices, and redistribution terms remain heterogeneous. A reusable release needs an artifact-level rights matrix rather than a blanket “open” label.
+

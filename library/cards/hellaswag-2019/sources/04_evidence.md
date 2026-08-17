@@ -1,0 +1,3 @@
+The official paper reports that models strong on earlier commonsense benchmarks still lag human performance on HellaSwag after adversarial filtering. The project page reports a human performance reference near 95.6% and lists leaderboard history, while noting the leaderboard is now closed.
+
+The decisive evidence for a row is simple: the selected option either matches the gold ending or not. The evidence boundary is also simple: aggregate accuracy depends on the split, prompt/scaffold, answer ordering, and whether the test labels are public or hidden. Public train/validation records are high contamination risk for modern LLMs.

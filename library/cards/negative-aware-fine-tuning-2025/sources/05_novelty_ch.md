@@ -1,0 +1,3 @@
+RFT 只在 verifier 接受的答案上执行 supervised maximum likelihood；GRPO 与 DAPO 通过 policy-gradient objective 为两种结果赋予 group-relative advantage；preference 方法则需要成对或排序响应。NFT 从 old policy、成功率和可训练 positive policy 推导 negative conditional policy，再用 token-level supervised objective 同时优化被接受与被拒生成。由于缓存 old-policy probability，它只需一个可训练模型。
+
+与 GRPO 的理论联系说明：在二元 on-policy 数据条件下，supervised/RL 的差别部分来自 objective parameterization。对本 Track 的方向信号是明确保留被拒轨迹、逐题 reward mixture 与 old-policy likelihood，并把它们视为有价值的构造记录。NFT 并未提出 DAPO-Math-17k、VeRL、二元答案验证、dynamic sampling 或 Qwen 模型；新意是 implicit-negative likelihood 及相应 clipping/weighting。benchmark 提升是 optimizer 证据，不证明负例在语义上有效、多样、无污染或可安全复用。

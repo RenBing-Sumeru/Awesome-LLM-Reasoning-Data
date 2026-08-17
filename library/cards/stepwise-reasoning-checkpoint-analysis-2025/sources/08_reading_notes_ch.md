@@ -1,0 +1,5 @@
+- 在把 checkpoint 当作推理步骤标签前先读 §3.1：它是由额外 cue 诱发、随后回滚的答案 completion，而不是模型未经修改的下一个 token。
+- 必须区分三个对象：持续的路径、它的临时 checkpoint completion，以及重构的“前缀加 checkpoint”候选。只有后两个暴露可能的早期答案终点。
+- 表 1 是 policy、PRM 与 search 共同的结果。DeepSeek 和 Skywork PRM 两行的差异说明 verifier 选择是主要混杂因素，不是实现细节。
+- 将表 3/图 5 与表 2 一起阅读：CCA 可以在后续推理错误前恢复答案，但也会保留不完整解释。这是对答案选择的 fault tolerance，而不是证明修复。
+- 采用方法前应取得分隔符检测、KV 恢复、精确答案 normalization、PRM formatting、簇 tie、seed 和 benchmark item ID 的代码与日志；论文未提供它们。

@@ -1,0 +1,5 @@
+- **Position:** synthesize difficulty by composing reusable transformations extracted from verified solutions.
+- **Method handle:** partial-success references, reverse engineering, learned retrieval, scarcity-aware composition, rollout judging, provenance filtering.
+- **Data/artifact handle:** 58,526 references become 9,230 SFT records; the official GitHub is described as code and dataset release.
+- **Evidence anchor:** Qwen3.5-9B MedQA pass@1 rises 78.71 to 86.80; removing rollout filtering falls to 70.38.
+- **Reuse decision:** useful for provenance-aware STEM synthesis after checking mode coverage, source balance, judge reliability, and license.

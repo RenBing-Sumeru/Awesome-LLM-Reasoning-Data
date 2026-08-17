@@ -1,0 +1,100 @@
+id: solve-detect-verify-2025
+title: 'Solve-Detect-Verify: Inference-Time Scaling with Flexible Generative Verifier'
+year: 2026
+venue: ACL 2026 Long Papers
+authors:
+- Jianyuan Zhong
+- Zeju Li
+- Zhijian Xu
+- Xiangyu Wen
+- Kezhi Li
+- Qiang Xu
+source_role:
+- verifier_reward
+- scaling_study
+verification_contract:
+- judgment_required
+supervision_granularity:
+- answer_level
+- full_episode
+- scalar_reward
+domains:
+- reasoning
+training_use:
+- test_time_compute
+- audit
+construction_layer:
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://aclanthology.org/2026.acl-long.2190/
+  arxiv: https://arxiv.org/abs/2505.11966
+  code: null
+  data: null
+  project: null
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2505.11966
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: https://arxiv.org/bibtex/2505.11966
+data_object:
+  prompt_source: unknown
+  trace_author: unknown
+  answer_format: reasoning traces completion probes and verification feedback
+  process_fields:
+  - candidate_trace
+  - selection_or_feedback_signal
+  - final_answer
+  environment_or_substrate: unknown
+  verifier_or_reward: fast/slow generative verification
+  terminal_predicate: completion-triggered verification and targeted correction
+recipe_metadata:
+  base_model: unknown
+  teacher: unknown
+  generator: unknown
+  filtering_rule: unknown
+  sampling_protocol: unknown
+  rollout_count: unknown
+  temperature: unknown
+  inference_budget: unknown
+  optimizer_or_scaffold: unknown
+audit:
+  source_mixture: unknown
+  split: unknown
+  decontamination: unknown
+  license: unknown
+  lineage: 'Officially described object: reasoning traces completion probes and verification feedback'
+  known_failure_modes:
+  - training labels and trace release unknown
+  citation_status: verified
+  confidence: medium
+  notes: 'Primary official source verified: https://aclanthology.org/2026.acl-long.2190/'
+inclusion_reason: 'Approved Track 5 candidate with a concrete feedback/selection object: reasoning traces completion probes
+  and verification feedback.'
+related: []
+tags:
+- track5
+- verifier_selection_audit
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: 'Solve-Detect-Verify: Inference-Time Scaling with Flexible Generative Verifier records reasoning traces
+  completion probes and verification feedback under fast/slow generative verification.'
+why_it_matters: It makes completion-triggered verification and targeted correction and its audit boundary visible for reasoning-data
+  curation.
+card: null
+needs:
+- needs_trace_release
+- needs_reproducibility_protocol
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-15'
+  verified_by: paper_curator
+  confidence: medium
+  notes: Official primary source checked; undisclosed fields remain unknown.

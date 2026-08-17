@@ -1,0 +1,1 @@
+核心贡献是把多个既有来源整理成统一 API call sequence 格式：语义解析、对话、数字助手、ToolQA、ToolBench、API-Bank、ToolLLM 和 ToolAlpaca 等数据被转成包含 API、参数和顺序的样本。机制包括用 FLAN-T5-XXL 辅助转换部分对话数据，用 grammar/heuristic 转换 intent/slot 标注，以及直接使用已有 API-form 数据做 OOD 测试。相对 ToolLLM、Gorilla、ToolAlpaca 和 API-Bank，它的方向标签是“多来源监督 API sequencing + 统一 API-F1、Parameter-F1、LCS-F1 评测”。

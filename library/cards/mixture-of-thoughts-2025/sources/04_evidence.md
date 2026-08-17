@@ -1,0 +1,3 @@
+Decisive downstream experiment: Phi-4-reasoning, a 14B model trained on the curated demonstrations, outperforms substantially larger open-weight models across the paper's reasoning suite and approaches full DeepSeek-R1; model and data choices remain coupled. This is evidence for the complete data intervention under the reported training setup, not proof that every released record is correct.
+
+Artifact check: the official release contains 349,317 reasoning traces across mathematics, code, and science and exposes actual fields messages, token count, and source; on 2026-07-27 its page reported 9396 downloads. Usage is only an impact cross-check, not a causal experiment.

@@ -1,0 +1,3 @@
+For Track 12, the notable feature is a disclosed interface between informal decomposition and formal terminal verification. The paper separates a large-model planner from a smaller recursive prover, uses solved subgoals both as cold-start material and curriculum variants, and adds a reward that encourages the generated final proof to preserve the planned lemma structure.
+
+The disclosure remains recipe-level. It specifies several operational counts and model roles, but does not release the prompt corpus, decomposition trees, proof attempts, reward records, or the environment needed to reproduce a Lean verdict. That makes the work a frontier-report disclosure record rather than a reproducible training release.

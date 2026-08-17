@@ -1,0 +1,3 @@
+The paper reports 61,097 medical-exam questions across English, simplified Chinese, and traditional Chinese, with 12,723 English questions. It also reports baseline results for IR, neural, and pretrained-language-model systems; the abstract cites best accuracies of 36.7%, 42.0%, and 70.1% on the three languages.
+
+The evidence unit is answer-key agreement for a released multiple-choice item. Aggregate accuracy supports benchmark comparison only under the same subset, split, prompt, and scorer. It is not evidence that a model's explanation is medically sound, nor that the benchmark is uncontaminated in later model training.

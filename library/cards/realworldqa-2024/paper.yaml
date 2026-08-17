@@ -1,0 +1,114 @@
+id: realworldqa-2024
+title: 'RealWorldQA: Real-World Spatial Understanding Benchmark'
+year: 2024
+venue: xAI Grok-1.5 Vision Preview dataset release
+authors:
+- xAI
+source_role:
+- benchmark
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-qa
+- spatial-understanding
+- real-world-images
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://x.ai/news/grok-1.5v
+  arxiv: null
+  code: null
+  data: https://data.x.ai/realworldqa.zip
+  project: https://x.ai/news/grok-1.5v
+  huggingface: null
+  doi: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: xAI release describes anonymized vehicle images plus other real-world images selected for spatial understanding
+    questions.
+  trace_author: Official authors, annotators, validators, or dataset curators disclosed by the primary source.
+  answer_format: real-world image, natural-language multiple-choice question, answer choices, and easily verifiable gold answer.
+  dataset_scale: initial release contains over 700 images, each with a question and easily verifiable answer; release page
+    reports RealWorldQA benchmark scores for frontier multimodal models.
+  process_fields:
+  - task input or prompt
+  - reference answer, label, scorer, or evaluator
+  - split/domain/version metadata
+  - model output and score where evaluated
+  environment_or_substrate: static multimodal multiple-choice benchmark over real-world photographs
+  verifier_or_reward: answer-key matching for the selected multiple-choice option.
+  terminal_predicate: model selects the gold answer for the image-question pair.
+  benchmark_size: initial release contains over 700 images, each with a question and easily verifiable answer; release page
+    reports RealWorldQA benchmark scores for frontier multimodal models.
+recipe_metadata:
+  base_model: Not a training recipe; this entry treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, or judge/verifier sources described by the primary source.
+  generator: xAI release describes anonymized vehicle images plus other real-world images selected for spatial understanding
+    questions.
+  filtering_rule: Use official source-backed task construction and keep unresolved artifact, license, split, and scoring gaps
+    in audit notes.
+  sampling_protocol: Pin source version, benchmark split, evaluator revision, prompt/scaffold policy, and leaderboard date
+    before comparing scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: benchmark_evaluation_surface
+audit:
+  source_mixture: 'Primary sources checked: https://x.ai/news/grok-1.5v'
+  split: Exact split, hidden/public policy, live-refresh policy, and subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; post-release score claims require versioned
+    contamination evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary source: https://x.ai/news/grok-1.5v'
+  known_failure_modes:
+  - public release can become training contamination
+  - scores can change with prompt format, evaluator version, split, model version, or dependency environment
+  - evaluation-only evidence should not be reused as training reward without separate feedback-contract audit
+  citation_status: verified
+  confidence: medium
+  notes: xAI release page verifies RealWorldQA name, purpose, over-700-image initial release, anonymized vehicle and other
+    real-world images, CC BY-ND 4.0 statement, download link, and reported zero-shot benchmark numbers.
+inclusion_reason: It adds a practical spatial-reasoning surface where image interpretation, relative size, direction, lane
+  affordances, and physical scene layout matter.
+related: []
+tags:
+- benchmark
+- multimodal-qa
+- spatial-understanding
+- real-world-images
+one_line: RealWorldQA evaluates basic real-world spatial understanding from photographs and vehicle-view images.
+why_it_matters: It adds a practical spatial-reasoning surface where image interpretation, relative size, direction, lane affordances,
+  and physical scene layout matter.
+status: verified
+needs:
+- 'needs_audit: download and inspect the dataset manifest, exact item count, split policy, and file hashes'
+- 'needs_audit: verify license terms beyond the release-page CC BY-ND 4.0 statement'
+- 'needs_review: compare with later maintained mirrors or benchmark harnesses if any'
+one_line_summary: RealWorldQA evaluates basic real-world spatial understanding from photographs and vehicle-view images.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: xAI release page verifies RealWorldQA name, purpose, over-700-image initial release, anonymized vehicle and other
+    real-world images, CC BY-ND 4.0 statement, download link, and reported zero-shot benchmark numbers.
+category_ids:
+- benchmarks_evaluation_surfaces
+batch:
+  source: manual benchmark gap fill
+  processed_at: '2026-07-16'
+  primary_category_id: benchmarks_evaluation_surfaces

@@ -1,0 +1,118 @@
+id: longbench-2023
+title: 'LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding'
+year: 2023
+venue: ACL 2024 long paper
+authors:
+- Yushi Bai
+- Xin Lv
+- Jiajie Zhang
+- Hongchang Lyu
+- Jiankai Tang
+- Zhidian Huang
+- Zhengxiao Du
+- Xiao Liu
+- Aohan Zeng
+- Lei Hou
+- Yuxiao Dong
+- Jie Tang
+- Juanzi Li
+source_role:
+- benchmark
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- long-context
+- long-context-grounding
+training_use:
+- evaluation
+- audit
+construction_layer:
+- prompt_sourcing
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2024.acl-long.172/
+  arxiv: https://arxiv.org/abs/2308.14508
+  doi: https://doi.org/10.18653/v1/2024.acl-long.172
+  code: https://github.com/THUDM/LongBench
+  data: https://huggingface.co/datasets/THUDM/LongBench
+  project: null
+  huggingface: https://huggingface.co/datasets/THUDM/LongBench
+  venue: null
+  openreview: null
+  acl: https://aclanthology.org/2024.acl-long.172/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official authors curate or construct bilingual long-document QA, summarization, few-shot, and code tasks;
+    exact split, artifact, license, and evaluator details require source review.
+  trace_author: Official benchmark authors, annotators, validators, or task curators as disclosed by the source.
+  answer_format: benchmark records expose bilingual long-document QA, summarization, few-shot, and code tasks, prompt/task
+    metadata, a model output surface, and a score or success target.
+  process_fields:
+  - prompt or task input
+  - reference answer/evaluator/environment state
+  - metadata for split/domain/version
+  - model output and score
+  environment_or_substrate: bilingual long-document QA, summarization, few-shot, and code tasks
+  verifier_or_reward: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+  terminal_predicate: the official evaluator, answer key, judge, hidden test, metric, or environment predicate determines
+    success.
+recipe_metadata:
+  base_model: Not a training recipe; this Card treats the work as an evaluation or audit surface.
+  teacher: Official authors, annotators, validators, tests, judges, or verifier sources described by the paper.
+  generator: official authors curate or construct bilingual long-document QA, summarization, few-shot, and code tasks; exact
+    split, artifact, license, and evaluator details require source review.
+  filtering_rule: Use only source-backed construction claims and keep artifact/license/split/scoring gaps in audit notes.
+  sampling_protocol: Pin source version, split, evaluator revision, prompt/scaffold policy, and leaderboard date before comparing
+    scores.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific; do not infer a training-time budget from benchmark scores.
+  optimizer_or_scaffold: long_context_grounding
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://aclanthology.org/2024.acl-long.172/;
+    https://arxiv.org/abs/2308.14508; https://github.com/THUDM/LongBench; https://huggingface.co/datasets/THUDM/LongBench'
+  split: Exact split, hidden/public policy, live-refresh policy, or subset version should be pinned from current official
+    artifacts before score reuse.
+  decontamination: Public benchmark records can leak into future training data; live, hidden, or post-cutoff claims require
+    versioned evidence.
+  license: License and redistribution terms require artifact-level review unless explicitly recorded in official sources.
+  lineage: 'Primary lead: https://arxiv.org/abs/2308.14508'
+  known_failure_modes:
+  - public release, hidden/public split, judge/evaluator implementation, prompt/scaffold settings, and license can affect
+    reuse.
+  - Scores can change with prompt format, scaffold, evaluator version, hidden/public split, or dependency environment.
+  - Evaluation-only evidence should not be reused as training reward without a separate feedback-contract audit.
+  citation_status: verified
+  confidence: medium
+  notes: ACL Anthology verifies final venue and DOI; arXiv/PDF verify the Tsinghua/Zhipu.AI/CAS affiliation mapping, and project
+    artifacts verify code and data. Artifact/license/split/scoring details remain review targets.
+inclusion_reason: Standard long-context suite; include as baseline.
+related: []
+tags:
+- benchmark
+- long_context_grounding
+- long-context
+why_it_matters: Standard long-context suite; include as baseline.
+status: verified
+needs:
+- 'needs_metadata: verify exact author, institution, venue, artifact, and license metadata'
+- 'needs_audit: inspect split/version policy, evaluator implementation, and scoring settings'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: LongBench exposes bilingual long-document QA, summarization, few-shot, and code tasks as an auditable evaluation
+  surface.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: false
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: ACL Anthology verifies final venue and DOI; arXiv/PDF verify the Tsinghua/Zhipu.AI/CAS affiliation mapping, and project
+    artifacts verify code and data.
+category_ids:
+- benchmarks_evaluation_surfaces

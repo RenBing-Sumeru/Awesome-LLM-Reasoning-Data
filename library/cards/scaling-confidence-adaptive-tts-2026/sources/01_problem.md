@@ -1,0 +1,3 @@
+Reasoning systems often spend a fixed number of samples on every query. This wastes inference on questions whose answer is already stable, while an uncalibrated model may also stop too early on difficult questions because a confident-looking response is wrong. Ordinary correctness rewards can improve answer accuracy without teaching a model whether its own expressed confidence deserves trust.
+
+The paper asks whether confidence can be trained as a usable control signal and then used to allocate test-time computation. Its target is not merely a better uncertainty score: it is an inference policy that gives easy prompts fewer samples, gives uncertain prompts more chances, and retains a measurable quality boundary when compared with a fixed-budget majority vote.

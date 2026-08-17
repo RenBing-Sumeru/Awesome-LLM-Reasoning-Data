@@ -1,0 +1,3 @@
+Amazon Nova 2 Sonic is a managed speech-to-speech and speech/text service whose official Service Card describes how the deployed system is intended to be used and tested. For reasoning-data curation, the central question is narrower: what training records, feedback objects, filters, and evaluation artifacts are actually disclosed?
+
+The card names multilingual and multimodal source classes, pretraining, SFT, reinforcement learning, RLHF, runtime filters, and several evaluation layers. It does not release the source records, rights map, preference examples, rewards, model checkpoints, rollout logs, or test sets. This entry therefore treats the report as a bounded frontier data-disclosure ledger, not as a reusable speech-model dataset or training recipe.

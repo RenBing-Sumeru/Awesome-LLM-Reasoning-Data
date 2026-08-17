@@ -1,0 +1,1 @@
+可把 BrowseComp-V3 当作多模态浏览评测 checklist：记录图像输入、source URLs、evidence snippets、sub-goals、trajectory actions/observations、最终答案、SR、PS、工具预算和搜索日期。它适合设计面向视觉 Web agent 的过程感知 reward 或诊断。复用到 atlas 时，要把 benchmark specification、已发布数据、agent scaffold 和论文报告模型结果分开。

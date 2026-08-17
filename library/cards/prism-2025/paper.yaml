@@ -1,0 +1,170 @@
+id: prism-2025
+title: 'PRISM: Robust VLM Alignment with Principled Reasoning for Integrated Safety in Multimodality'
+year: 2025
+venue: arXiv preprint
+authors:
+- Nanxi Li
+- Zhengyue Zhao
+- G. Edward Suh
+- Marco Pavone
+- Chaowei Xiao
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- step_level
+- pairwise_preference
+- scalar_reward
+domains:
+- multimodal_safety
+- vision_language_models
+- post_training
+training_use:
+- sft
+- preference_learning
+- safety_alignment
+- test_time_compute
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- search_substrate
+- reward_verifier_layer
+- optimizer_scaffold
+artifacts:
+  paper: https://arxiv.org/abs/2508.18649
+  arxiv: https://arxiv.org/abs/2508.18649
+  code: https://github.com/SaFo-Lab/PRISM
+  data: https://huggingface.co/datasets/andyc03/PRISM-DPO
+  project: null
+  huggingface: https://huggingface.co/datasets/andyc03/PRISM-DPO
+  doi: https://doi.org/10.48550/arXiv.2508.18649
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: For MCTS the paper uses 500 benign and 1,500 malicious image-text pairs; the safety mixture is curated from
+    BeaverTails-V, VLGuard, and SPA-VL, while benign PRISM-CoT examples are adapted from LLaVA-CoT.
+  trace_author: 'The PRISM-CoT fine-tuned VLM samples candidate continuations at each of four stages: PROBLEM, CAPTION, REASONING,
+    and OUTPUT.'
+  answer_format: A published PRISM-DPO record exposes a `messages` conversation containing the prompt and an assistant structured
+    reasoning trace, a paired `rejected_response`, and `images`; the paper defines the underlying object as a higher- versus
+    lower-cumulative-reward path at the same reasoning level.
+  process_fields:
+  - image-text prompt
+  - four-stage structured reasoning trace
+  - preferred assistant trace in messages
+  - rejected_response
+  - associated images
+  environment_or_substrate: Offline MCTS over structured VLM reasoning steps, plus a separately released test-time scaling
+    implementation using self-rewarded beam search and Best-of-N.
+  verifier_or_reward: MCTS selects children with UCB (C=1.5). Safety reward is a GPT-4o assessment of malicious-intent detection
+    conditioned on the source human safety category and policy; helpfulness reward compares a node with an LLaVA-CoT reference
+    and is back-propagated. Same-level paths form a DPO pair when the chosen cumulative reward exceeds the rejected one by
+    epsilon and meets theta.
+  terminal_predicate: A DPO preference is admitted only when a same-level path has Q(chosen) > Q(rejected) + epsilon and Q(chosen)
+    >= theta; the paper reports epsilon=0.4 and theta=0.8. Pairs may be non-terminal because collection spans all four reasoning
+    levels.
+recipe_metadata:
+  base_model: The MCTS generator is the PRISM-CoT fine-tuned model; the released repository supplies SFT and DPO scripts for
+    Qwen2-VL and LLaVA-1.6 variants, and published Qwen2-VL PRISM SFT/DPO checkpoints.
+  teacher: GPT-4o is reported as the safety evaluator, not as the candidate-trace generator; no separate trace-writing teacher
+    is disclosed.
+  generator: At each MCTS node, PRISM-CoT samples k candidate next reasoning steps conditional on the partial structured trace,
+    image, and query.
+  filtering_rule: Form same-level DPO pairs from paths whose cumulative rewards differ by more than epsilon and whose chosen
+    path reaches theta. The official generation code implements chosen/rejected records with scores, terminal flags, and visit
+    counts, but the released HF DPO schema exposes only messages, rejected_response, and images.
+  sampling_protocol: 'Paper Appendix F: 500 benign + 1,500 malicious image-text pairs; k=3 children/node; at most 200 iterations/tree;
+    epsilon=0.4; theta=0.8. The released MCTS config additionally sets temperature 0.8, top_p 0.9, top_k 50, max_tokens 2048,
+    max_depth 5, seed 42, and UCB c=1.5; these are code defaults, not asserted as a complete immutable reproduction manifest.'
+  rollout_count: 200
+  temperature: 0.8
+  inference_budget: For the training MCTS, maximum 200 iterations per tree and three candidate children per node. For test-time
+    scaling, the paper measures a relative candidate-comparison budget; the released TTS configuration defaults to beam_width
+    5 and num_candidates 8, but these settings are distinct from the MCTS data-generation budget.
+  optimizer_or_scaffold: The paper first SFTs on PRISM-CoT for five epochs with a 90/10 train/validation split, then applies
+    LoRA DPO (rank 16, alpha 64) to PRISM-DPO for three epochs. The public repository provides the MCTS generator, data-conversion
+    utility, SFT/DPO scripts, and test-time beam-search implementation.
+audit:
+  source_mixture: Safety sources are BeaverTails-V, VLGuard, and SPA-VL; paper curation adds approximately 3k problem-image-combination
+    instances, filters to 3k safety reasoning traces, and adds 3k benign LLaVA-CoT-formatted examples. MCTS uses the paper-reported
+    500 benign and 1,500 malicious image-text pairs. The HF PRISM-DPO release is a public `DPO.jsonl` plus `images.zip` at
+    revision a0d4acabc4f7dad6d0cf2a63f14007e76fc271ba.
+  split: The paper reports a 90/10 PRISM-CoT train/validation split. The public PRISM-DPO dataset page exposes one `train`
+    split; no public row-level mapping from released DPO pairs to source dataset split, MCTS seed, or generated-tree file
+    was verified.
+  decontamination: unknown
+  license: The public GitHub repository is MIT licensed, and the official PRISM-DPO and PRISM-CoT dataset pages label their
+    releases MIT. The arXiv manuscript is CC BY 4.0. Upstream-source redistribution and generated-trace provenance terms require
+    source-level review.
+  lineage: BeaverTails-V/VLGuard/SPA-VL and LLaVA-CoT inputs -> structured PRISM-CoT traces -> PRISM-CoT SFT model -> four-stage
+    MCTS candidate branches -> UCB/reward comparison -> chosen/rejected same-level DPO pair -> released messages/rejected_response/images
+    record. Complete intermediate tree branches and per-node values are not in the released DPO artifact tree.
+  known_failure_modes:
+  - The public PRISM-DPO release contains `DPO.jsonl` and `images.zip`, but no full MCTS-tree JSON, parent/child topology,
+    rejected sibling sets, per-node Q values, visit counts, or evaluator outputs; a consumer cannot audit the original search
+    distribution from the released pairs alone.
+  - Safety rewards depend on GPT-4o judgment conditioned on source safety categories and policies; helpfulness rewards depend
+    on LLaVA-CoT references. Those evaluator dependencies can shape pairwise preferences even though the paper reports cross-judge
+    agreement analysis.
+  - The paper reports approximately 6k PRISM-CoT instances, whereas the currently public PRISM-CoT page displays a 10k-row
+    train split; the reviewed official sources do not map this release-count difference to a versioned construction change.
+  - The official release does not provide a row-level provenance manifest tying each DPO pair to an upstream source ID, MCTS
+    seed, exact model revision, reward values, or source split; decontamination and evaluation-overlap details remain undisclosed.
+  - Test-time beam-search/Best-of-N gains use a distinct candidate-comparison budget from MCTS training generation, so those
+    effects should not be attributed solely to the released preference data.
+  citation_status: verified
+  confidence: high
+  notes: Official arXiv, public author-linked repository, both HF datasets, and both listed Qwen2-VL checkpoints were verified.
+    This draft deliberately treats pairwise DPO data as released but the full underlying MCTS search process as only partially
+    auditable.
+inclusion_reason: 'PRISM is a directly released multimodal safety trace pipeline: structured four-stage VLM reasoning is searched
+  with MCTS, UCB and safety/helpfulness feedback turn selected and rejected paths into DPO pairs, and the same framework also
+  exposes test-time beam-search/Best-of-N scaling.'
+related: []
+tags:
+- mcts
+- search-tree
+- dpo
+- chosen-rejected-traces
+- multimodal-safety
+- ucb
+- gpt-4o-judge
+- test-time-scaling
+- beam-search
+- best-of-n
+- partial-tree-release
+status: verified
+one_line_summary: PRISM releases multimodal DPO pairs derived from four-stage MCTS reasoning paths selected with UCB and safety/helpfulness
+  feedback, while releasing code and test-time search tooling but not the full search trees or node values.
+why_it_matters: 'It makes the path from VLM search to pairwise safety alignment concrete: candidate traces are generated at
+  several reasoning stages, selection depends on stage-sensitive rewards, and DPO consumes only the selected/rejected outputs.
+  The missing trees, scores, visits, and source mappings show why a pairwise release is not a complete rollout-trace release.'
+card: null
+needs:
+- 'needs_metadata: release the original MCTS-tree files with node IDs, parent/child links, all candidate branches, Q/value
+  sums, visit counts, raw safety/helpfulness rewards, evaluator prompts and outputs, seeds, and exact generation model/checkpoint
+  revisions.'
+- 'needs_metadata: provide a row-level provenance and split manifest linking every released DPO pair and image to its upstream
+  safety/benign source, source license, source partition, and any decontamination or evaluation-overlap checks.'
+- 'needs_metadata: reconcile the paper''s approximately 6k PRISM-CoT construction count with the official HF page''s 10k-row
+  train display, and state whether the public release supersedes the paper-described data version.'
+- 'needs_validation: independently assess robustness to evaluator/model changes and report whether the GPT-4o-conditioned
+  safety rankings remain stable under alternative policy-aware judges.'
+curation_level: L3_summary_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-17'
+  verified_by: track5-paper-curator
+  confidence: high
+  notes: 'Verified official arXiv v2, the author-linked SaFo-Lab GitHub repository, public PRISM-DPO and PRISM-CoT HF datasets,
+    and the Qwen2-VL PRISM SFT/DPO checkpoint pages. Public DPO release revision: a0d4acabc4f7dad6d0cf2a63f14007e76fc271ba;
+    it is public and ungated but does not include full MCTS-tree artifacts.'
+category_ids:
+- rollout_search_test_time_trace_data

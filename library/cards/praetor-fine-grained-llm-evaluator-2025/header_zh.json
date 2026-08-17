@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Praetor 训练可在点式和成对评测中使用可选或实例化标准的中英双语评判模型。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "评测、裁判或量规数据论文",
+  "best_for_ch": "需要构建、校准或审计开放式模型评测的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Yongqi Leng、Renren Jin、Yue Chen、Zhuowen Han、Ling Shi、Jianxiang Peng、Lei Yang、Juesi Xiao、Deyi Xiong",
+  "category_ids": [
+    "judgment_rubric_domain_expert_data"
+  ],
+  "updated_at": "2026-07-24T00:00:00Z"
+}

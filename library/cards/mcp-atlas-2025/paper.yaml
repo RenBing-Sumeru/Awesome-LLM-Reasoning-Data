@@ -1,0 +1,103 @@
+id: mcp-atlas-2025
+title: 'MCP-Atlas: An Agentic Benchmark for Evaluating Tool Use in Large Language Models'
+year: 2026
+venue: arXiv preprint
+authors:
+- Aarush Ghosh
+- Haolin Dai
+- Jatin Nainani
+- Harsh Pal
+- Yixuan Li
+- Aditya Roy
+- Arindam Mitra
+- Pradeep Dasigi
+- Archiki Prasad
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mcp-tool-use
+- multi-tool-agents
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+artifacts:
+  paper: https://arxiv.org/abs/2602.00933
+  arxiv: https://arxiv.org/abs/2602.00933
+  code: https://github.com/lastmile-ai/mcp-atlas
+  project: null
+  protocol_context: https://www.anthropic.com/news/model-context-protocol
+  data: null
+  doi: null
+data_object:
+  prompt_source: task prompts over MCP server capabilities; exact prompt lineage and final public split need version audit.
+  trace_author: evaluated model agent using MCP tools in benchmark episodes
+  answer_format: natural-language user goal, available MCP servers and tools, model tool-selection or tool-execution trajectory,
+    final answer, and benchmark score
+  process_fields:
+  - task instruction
+  - server and tool registry
+  - tool-call arguments and observations
+  - final response
+  - evaluator result
+  environment_or_substrate: Model Context Protocol servers and their exposed tools
+  verifier_or_reward: official harness scoring; exact per-task mix of deterministic checks, execution checks, and judge logic
+    should be pinned from the repository revision
+  terminal_predicate: task ends when the agent submits an answer, reaches the harness limit, or fails the tool-use contract
+recipe_metadata:
+  base_model: not a training recipe
+  teacher: official benchmark authors and task construction pipeline
+  generator: benchmark task generation over MCP servers; exact generator prompts and filtering are needs_audit
+  filtering_rule: keep only official source-backed tasks and pin paper versus repository version before score comparison
+  sampling_protocol: pin repository commit, MCP server versions, task set, execution budget, judge model if any, and date
+  rollout_count: null
+  temperature: null
+  inference_budget: model- and harness-specific
+  optimizer_or_scaffold: mcp_tool_agent_harness
+audit:
+  source_mixture: 'Official sources checked: https://arxiv.org/abs/2602.00933; https://github.com/lastmile-ai/mcp-atlas; https://www.anthropic.com/news/model-context-protocol'
+  split: public split and any hidden/private split are needs_audit
+  decontamination: public MCP task definitions and tool schemas can become training data after release
+  license: needs_audit
+  lineage: arXiv page lists the paper as submitted on 2026-02-02; the requested directory name uses 2025 but the public paper
+    record is 2026.
+  known_failure_modes:
+  - repository and paper may describe different benchmark surface sizes, so scores require a pinned commit
+  - external MCP servers can change behavior, authentication, rate limits, or output format
+  - aggregate tool-use scores may hide failures in argument construction, recovery, or final-answer grounding
+  citation_status: verified
+  confidence: medium
+  notes: Anthropic is cited only as the official source for the Model Context Protocol background, not as the benchmark publisher.
+inclusion_reason: Agentic benchmark over real MCP tool surfaces with full-episode tool-use evidence.
+related: []
+tags:
+- benchmark
+- mcp
+- tool-use
+- agent-environment
+one_line: MCP-Atlas evaluates whether model agents can select and use MCP-exposed tools across multi-tool tasks.
+why_it_matters: It turns MCP server interoperability into an auditable tool-use evaluation surface.
+status: verified
+needs:
+- 'needs_audit: pin repository commit, task split, server versions, license, scoring rules, and judge model if used'
+- 'needs_metadata: confirm institution affiliations from the PDF or author pages'
+one_line_summary: MCP-Atlas evaluates whether model agents can select and use MCP-exposed tools across multi-tool tasks.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-16'
+  verified_by: curation
+  confidence: medium
+  notes: arXiv and GitHub were checked; surface size should be treated as versioned.
+category_ids:
+- benchmarks_evaluation_surfaces

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "用优化得到的注入后缀劫持 LLM 裁判的候选选择，并审计换位与常见检测防御。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "LLM 裁判的提示注入攻击与防御失效审计",
+  "best_for_ch": "部署 LLM 裁判、RLAIF、检索排序或工具选择的安全与评测团队。",
+  "confidence_ch": "高：已全文核对 CCS 2024 正式论文和官方代码；结论限于白盒开源裁判与构造的攻击设置。",
+  "authors_ch": "Jiawen Shi, Zenghui Yuan, Yinuo Liu, Yue Huang, Pan Zhou, Lichao Sun, Neil Zhenqiang Gong",
+  "category_ids": [
+    "audit_failure_contamination_verifier_attacks"
+  ],
+  "updated_at": "2026-07-19T00:00:00Z"
+}

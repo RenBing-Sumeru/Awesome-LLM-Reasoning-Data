@@ -1,0 +1,7 @@
+CURE turns code/test interaction into two coupled reward channels. Given a task, one shared policy produces 16 code rollouts and 16 task-derived unit-test rollouts. Cross-execution yields a binary code-by-test matrix. Additional private gold-test columns identify code candidates that pass all available gold tests.
+
+The coder reward is straightforward: it increases with the number of private gold tests passed. The tester reward is not simply “does a correct program pass this test?” because that rule favors trivial tests. Instead, the paper derives an individual test reward from a reward-precision objective. A useful test should pass code candidates labeled correct by gold tests while rejecting candidates labeled incorrect; tests that reject a gold-test-passing candidate or accept many gold-test-failing candidates are penalized.
+
+The policy alternates coder and tester updates, so improved code samples provide harder negative cases for the tester, while improved tests can support better selection among code candidates. For long-CoT Qwen3-4B, the tester reward is additionally transformed using response length to retain reward polarity while discouraging very long test-generation traces.
+
+At inference, generated tests are reused across candidate programs: Best-of-N selects the program that passes the most generated tests. This test-time selector is downstream of the co-evolution training process and should be recorded separately from the training episode and from final gold-test evaluation.

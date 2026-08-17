@@ -1,0 +1,1 @@
+LongBench 关注的是：如何评测短问答和 synthetic needle retrieval 之外的长上下文理解。主要来源是 2023 年 arXiv 论文、ACL 2024 long paper 记录、THUDM GitHub 仓库和 Hugging Face 数据集。它的边界是 long-context evaluation，不是训练语料，也不是任意长推理的 verifier。一个实例是双语长上下文记录，包含长输入 context、任务 prompt/问题、参考答案或标签、任务/数据集元数据和自动指标。对 atlas 的价值在于把 context length、任务类型、语言和评分指标都变成复用时的显式字段。

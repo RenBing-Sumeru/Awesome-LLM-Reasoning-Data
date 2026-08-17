@@ -1,0 +1,3 @@
+The central idea is a small persistent cheatsheet rather than a growing transcript or a weight update. Before answering, the model retrieves relevant prior lessons; after answering, it decides whether a solution pattern, code fragment, or correction is useful enough to store, revise, merge, or remove.
+
+The memory is deliberately self-curated and concise. It makes the output of one inference episode an input to a later episode, so the unit of test-time scaling becomes a stream of tasks: early computation is an investment whose value is measured by improved future decisions, not only by the first answer.

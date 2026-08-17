@@ -1,0 +1,3 @@
+As a survey, it synthesizes prior methods rather than training a new model. Its unit of analysis is an answer-or-abstain decision, and it groups literature on methods, benchmarks, and metrics using the query-model-values framework.
+
+This means the paper does not prescribe one threshold or one output format. It gathers ways earlier work produces, evaluates, or governs an answer-or-abstain choice and places them beside the assumptions that choice depends on. When following a cited technique, recover from the primary source what information it uses, whether refusal is explicit, and how correct answers, unsupported answers, and unnecessary refusals are scored.

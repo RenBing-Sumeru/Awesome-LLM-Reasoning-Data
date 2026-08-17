@@ -1,0 +1,1 @@
+The contribution is an explicitly layer-wise, perturbation-based audit for RL contamination. RSM, DC, and RSI distinguish shift magnitude, directionality, and stability instead of collapsing the question into one output-confidence number.

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "先用约 9K 个提示词扩展代码 RLVR 的探索熵，再逐阶段保留低通过率难题进行 Pre-GRPO；论文对第二阶段每题 64 或 80 条 rollout 的描述存在未解决冲突。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "竞争编程 RLVR 数据筛选与课程学习配方",
+  "best_for_ch": "关注代码 RLVR、难例挖掘、可执行奖励、课程设计及数据泄漏审计的研究者",
+  "confidence_ch": "中",
+  "authors_ch": "Speed Zhu、Jianwei Cai、Guang Chen、Lulu Wu、Saiyong Yang、Wiggin Zhou",
+  "category_ids": [
+    "data_construction_open_release_recipes"
+  ],
+  "updated_at": "2026-07-14T12:19:13Z"
+}

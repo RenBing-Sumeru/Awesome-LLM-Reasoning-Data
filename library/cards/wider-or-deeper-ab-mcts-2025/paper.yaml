@@ -1,0 +1,161 @@
+id: wider-or-deeper-ab-mcts-2025
+title: Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search
+year: 2025
+venue: NeurIPS 2025
+authors:
+- Yuichi Inoue
+- Kou Misaki
+- Yuki Imajuku
+- So Kuroki
+- Taishi Nakamura
+- Takuya Akiba
+source_role:
+- construction_recipe
+- scaling_study
+- infrastructure
+verification_contract:
+- mixed
+supervision_granularity:
+- state_action_level
+- scalar_reward
+- trajectory_value
+domains:
+- coding
+- software_engineering
+- abstract_reasoning
+- machine_learning_engineering
+- reasoning
+training_use:
+- test_time_compute
+- evaluation
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- scaling_report
+artifacts:
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/file/32dff2e27b0da1fb5f4209216a948544-Paper-Conference.pdf
+  arxiv: https://arxiv.org/abs/2503.04412
+  code: https://github.com/SakanaAI/treequest
+  data: null
+  project: https://sakana.ai/ab-mcts/
+  huggingface: null
+  doi: https://doi.org/10.48550/arXiv.2503.04412
+  venue: https://proceedings.neurips.cc/paper_files/paper/2025/hash/32dff2e27b0da1fb5f4209216a948544-Abstract-Conference.html
+  openreview: https://openreview.net/forum?id=jAsr5GHt3P
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: CodeContest; LiveCodeBench release-v4 problems dated August-November 2024; 100 public ARC-AGI evaluation
+    problems and prompts used by prior work; three low-complexity MLE-Bench Kaggle-derived tasks; and, in the extended study,
+    the 120-task ARC-AGI-2 public evaluation set.
+  trace_author: GPT-4o, DeepSeek-V3, and, in the ARC-AGI-2 extension, Gemini 2.5 Pro, o4-mini, and DeepSeek-R1-0528.
+  answer_format: Each non-root search node holds a complete generated Python solution or ML-engineering program; a deep child
+    is a feedback-conditioned revision of its parent response, while a wide child is a new sample.
+  process_fields:
+  - prompt
+  - parent_response
+  - candidate_response_or_revision
+  - parent_child_edge
+  - generation_order
+  - model_identity
+  - external_feedback
+  - node_score
+  - widen_or_deepen_selection
+  - final_selected_answer
+  - generation_budget
+  environment_or_substrate: Python code execution against public tests, ARC demonstration examples, or MLE validation splits
+    supplies search-time feedback; hidden tests or held-out ARC outputs provide final evaluation.
+  verifier_or_reward: CodeContest and LiveCodeBench use the fraction of public tests passed; ARC uses the fraction of demonstration
+    transformations solved; MLE-Bench uses task-specific validation metrics. These are search surrogates, not guaranteed hidden-test
+    correctness.
+  terminal_predicate: Search stops at the configured generation-call budget and selects a top-scoring valid node for final
+    hidden evaluation; ARC-AGI-2 additionally reports Pass@k over whether any branch finds an exact solution.
+recipe_metadata:
+  base_model: GPT-4o (gpt-4o-2024-08-06) and DeepSeek-V3 (deepseek-chat) in the main experiments; Gemini 2.5 Pro (gemini-2.5-pro-preview-05-06),
+    o4-mini (o4-mini-2025-04-16), and DeepSeek-R1-0528 (deepseek-r1-0528) in the multi-LLM ARC-AGI-2 extension.
+  teacher: unknown
+  generator: AB-MCTS adds one answer node per expansion and uses Thompson sampling over Bayesian posterior predictives to
+    decide between a new GEN branch and traversal toward a feedback-conditioned refinement. AB-MCTS-M uses mixed models; AB-MCTS-A
+    uses aggregated Gaussian or Beta node models.
+  filtering_rule: No generation-time branch is explicitly pruned in the checked implementation. All nodes remain in the local
+    tree; final submission code ranks nodes and chooses the highest-ranked response with valid Python code, while hidden tests
+    are reserved for evaluation.
+  sampling_protocol: Main experiments run at non-zero temperature with five repetitions for LiveCodeBench, three for CodeContest
+    and ARC-AGI, and one for MLE-Bench. Public feedback is appended to the parent response before a deep revision call.
+  rollout_count: One generated response per non-root search node; maximum 128 generation/API calls per task in the main experiments
+    and 250 calls for the ARC-AGI-2 extension. Realized paper-run trees are not released.
+  temperature: 0.6 for GPT-4o and 1.0 for DeepSeek-V3 in the main experiments; 0.6 for all ARC-AGI-2 extension models.
+  inference_budget: Main maximum is 128 LLM generation/API calls per task; standard MCTS uses five children per expansion
+    and a final three-child expansion to hit 128 exactly. Appendix analyses reach 512 nodes for extended ARC-AGI, and ARC-AGI-2
+    uses 250 calls.
+  optimizer_or_scaffold: AB-MCTS-M mixed-model Thompson sampling, AB-MCTS-A Gaussian/Beta node-aggregation Thompson sampling,
+    and AIDE for MLE-Bench. This is an inference scaffold, not a post-training optimizer.
+audit:
+  source_mixture: Four main benchmark families are combined only for evaluation, not as a training mixture. Prompt and task
+    rights remain governed by CodeContest, LiveCodeBench, ARC-AGI, MLE-Bench, Kaggle, and provider terms; the work does not
+    release a consolidated prompt corpus.
+  split: Code benchmarks use public tests for search feedback and hidden tests for final evaluation. MLE-Bench randomly splits
+    training data 80/20 for training/validation and evaluates the chosen node on hidden test data. ARC uses demonstration
+    examples for search feedback and held-out test outputs for exact-match evaluation.
+  decontamination: LiveCodeBench is restricted to August-November 2024 problems as a stated contamination precaution; broader
+    cross-benchmark, model-training, and generated-trace decontamination is unknown.
+  license: TreeQuest and the separate ARC-AGI-2 experiment repository are Apache-2.0. No root license was found for the NeurIPS
+    supplemental experiment bundle, and upstream benchmark/data licenses remain separate.
+  lineage: Benchmark task and public feedback surface -> fresh response or feedback-conditioned parent revision -> programmatic/environment
+    score -> Bayesian widen/deepen selection and score backup -> full local MCTS tree -> top-node or Pass@k evaluation. The
+    released code can persist tree pickles and per-call logs, but the realized paper-run trees and logs are not public.
+  known_failure_modes:
+  - Public-test, demonstration, or validation feedback can overfit the search and disagree with hidden-test correctness.
+  - The main DeepSeek-V3 endpoint is recorded only as the mutable deepseek-chat alias, so the exact served model revision
+    is not reproducible.
+  - API-call/node count ignores token volume, wall-clock time, evaluator execution cost, retries, and task-specific GPU use.
+  - Pass@k on ARC-AGI-2 measures whether any branch discovers a solution and does not solve the final-answer selection problem.
+  - TreeQuest notes that large asynchronous batches can bias the tree toward wider shapes.
+  - Realized raw trees, all responses, unselected branches, and paper-run API logs are not released, preventing direct trace-level
+    audit or reuse.
+  citation_status: verified
+  confidence: high
+  notes: The official NeurIPS record, 37-page paper/appendix, official supplemental ZIP, arXiv record, Sakana AI project page,
+    TreeQuest repository, and ARC-AGI-2 experiment repository were checked. Code and licenses are verified; trace-data release
+    completeness is partial.
+inclusion_reason: AB-MCTS makes inference-time scaling an explicit response/revision-tree construction problem with budgeted
+  widen/deepen actions and external environment feedback, while clearly exposing the audit gap between a released search recipe
+  and unreleased realized search traces.
+related:
+- constrained-mcts-long-cot-2025
+tags:
+- ab-mcts
+- adaptive-branching
+- monte-carlo-tree-search
+- response-revision-trees
+- external-feedback
+- test-time-compute
+- treequest
+- coding
+status: partial
+category_ids:
+- rollout_search_test_time_trace_data
+- scaling_rlvr_test_time_compute
+one_line_summary: AB-MCTS allocates a fixed inference budget between fresh response branches and feedback-conditioned revisions,
+  producing scored answer trees that released code can persist even though the paper's realized trees are not public.
+why_it_matters: It turns test-time compute into an auditable trace schema—prompts, candidate answers, revisions, scores, tree
+  edges, and budgets—while showing why open algorithms alone are insufficient without raw trees, rejected branches, evaluator
+  context, and stable API revisions.
+card: null
+needs:
+- needs_raw_search_trees
+- needs_rejected_branch_release
+- needs_api_revision_pin
+- needs_supplemental_license
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-25'
+  verified_by: paper_curator
+  confidence: high
+  notes: Exact-title, ID, and NeurIPS-hash dedup checks found no target Card. Official paper, appendix, supplemental code,
+    TreeQuest, ARC-AGI-2 code, and Apache-2.0 repository licenses were inspected; no official dataset or realized trace corpus
+    was found.

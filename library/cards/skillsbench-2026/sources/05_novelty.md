@@ -1,0 +1,3 @@
+The prior-work baseline is the closest earlier evaluation in the same domain, where comparability is often limited by older task sources, simpler scoring, weaker hidden-set policy, or less explicit evaluator metadata.
+
+What changes here is the named surface and its feedback contract: mixed checker or judge scoring. The direction signal is useful only if provenance, split, evaluator version, and scoring budget are pinned. What is not new is the general idea of evaluating model outputs against a benchmark. Before reuse, inspect artifact availability, license, answer normalization, judge/rubric prompts, contamination risk, and whether aggregate metrics hide instance-level failures.

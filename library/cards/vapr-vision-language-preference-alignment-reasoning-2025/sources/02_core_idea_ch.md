@@ -1,0 +1,1 @@
+VaPR 从高质量 SFT 真值回答出发，让文本 LLM 只改动任务相关片段，注入定向视觉或推理错误，同时保持长度和语言风格接近，形成难负例偏好对。VaPR-30K 官方集有约 29.9K 条、Apache-2.0 许可，源自 LLaVA-665K 的筛选子集；每条包含 image 路径、10 类 task type、chosen conversations 和 rejected_conversations。主集用 GPT-4o 编辑，另有 Qwen3-32B 生成的 VaPR-OS 用于验证开源编辑器可行性。

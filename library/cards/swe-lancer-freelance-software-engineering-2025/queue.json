@@ -1,0 +1,19 @@
+{
+  "title": "SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?",
+  "candidate_links": {
+    "paper": "https://arxiv.org/abs/2502.12115",
+    "data": "https://github.com/openai/preparedness",
+    "code": "https://github.com/openai/preparedness",
+    "project": "https://openai.com/index/swe-lancer/"
+  },
+  "review_note": "L4 卡片材料已准备，等待人工判决。",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T08:10:39Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "发布1,400余真实自由职业工程任务，经工程师三重核验，现实性和可信度高",
+    "updated_at": "2026-07-18T08:10:39Z"
+  }
+}

@@ -1,0 +1,6 @@
+- Read Section 2 first. It supports three broad source classes, general personal-information and safety filtering, reasoning-through-RL, and deliberative-alignment claims; it does not provide a data manifest or record-level recipe.
+- Keep filtering language at the level disclosed. Filter stages, thresholds, classifier versions, yields, false-positive rates, and source-specific effects are unknown.
+- Separate instruction-hierarchy supervision from the much less specified reasoning-RL pipeline. The report gives examples of conflicting message types but no stage counts, sampling procedure, or released training records.
+- Treat autograded refusal metrics, Preparedness tests, and external assessments as evaluation evidence. The report does not identify their graders as training rewards or an RLVR contract.
+- Tool availability at deployment does not reveal the training environment, tool-trajectory schema, terminal predicates, or rollout selection process.
+- Keep this Card in the frontier disclosure ledger. It is not a reusable construction recipe, and its benchmark tables are not data-quality evidence.

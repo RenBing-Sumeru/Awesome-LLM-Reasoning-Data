@@ -1,0 +1,5 @@
+IFEval is a Google Research arXiv preprint submitted on 2023-11-14 for evaluating instruction following without human preference judging. The concrete gap is that broad instruction-following claims were often measured by slow human review or by another LLM judge, both of which make row-level reproduction difficult.
+
+The data object is a prompt plus one or more verifiable instruction constraints, such as length, keyword, language, casing, or format requirements, with checker metadata attached to each constraint. The local card records the public benchmark as 541 prompts and 25 instruction types; the paper describes "around 500 prompts" and 25 verifiable instruction types, so reuse should pin the exact repository revision.
+
+The decision boundary is narrow: this is an evaluation surface for rule-checkable instruction compliance, not a general helpfulness benchmark, semantic truthfulness benchmark, or training recipe. It is valuable for the atlas because every accepted score is tied to a programmatic feedback contract rather than an opaque preference label.

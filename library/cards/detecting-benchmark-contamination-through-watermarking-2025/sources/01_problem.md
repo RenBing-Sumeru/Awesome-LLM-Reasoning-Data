@@ -1,0 +1,3 @@
+Benchmark scores can be inflated when test questions enter pre-training data, yet post-hoc membership tests require an uncontaminated reference set and cannot reliably establish that training occurred. The result is that an observed score may conflate capability with memorization.
+
+The paper proposes a proactive audit surface: before release, a provider rephrases benchmark questions with a secret text watermark. A white-box statistical test then looks for the watermark's learned “radioactivity” in a suspect model. Its unit of evaluation is a watermarked question and the model's next-token predictions, not a newly released training dataset.

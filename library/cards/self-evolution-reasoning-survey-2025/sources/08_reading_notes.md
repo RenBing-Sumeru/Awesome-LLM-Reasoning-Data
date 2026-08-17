@@ -1,0 +1,1 @@
+For each surveyed system, draw a loop with five boxes: task source, trace generator, filter, trainer, and evaluator. Label the information that moves across each arrow. If an arrow has no quality check, write that down as an open question. This exercise turns a broad survey into an actionable design review for a student project.

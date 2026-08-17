@@ -1,0 +1,126 @@
+id: spin-self-play-2024
+title: Self-Play Fine-Tuning Converts Weak Language Models to Strong Language Models
+year: 2024
+venue: ICML 2024
+authors:
+- Zixiang Chen
+- Yihe Deng
+- Huizhuo Yuan
+- Kaixuan Ji
+- Quanquan Gu
+source_role:
+- data_release
+- construction_recipe
+verification_contract:
+- mixed
+supervision_granularity:
+- answer_level
+domains:
+- multimodal-reasoning
+- instruction-tuning
+training_use:
+- sft
+construction_layer:
+- prompt_sourcing
+- trace_writing
+- release_audit
+artifacts:
+  paper: https://proceedings.mlr.press/v235/chen24j.html
+  arxiv: https://arxiv.org/abs/2401.01335
+  code: https://github.com/uclaml/SPIN
+  data: https://huggingface.co/collections/UCLA-AGI/datasets-spin-65c3624e98d4b589bbc76f3a
+  project: https://github.com/uclaml/SPIN
+  huggingface: https://huggingface.co/collections/UCLA-AGI/datasets-spin-65c3624e98d4b589bbc76f3a
+  doi: null
+  venue: https://proceedings.mlr.press/v235/chen24j.html
+  openreview: null
+  acl: null
+  pmlr: https://proceedings.mlr.press/v235/chen24j.html
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: a fixed human dialogue set used as positive responses and prompts for current-policy generation
+  trace_author: the current policy generates competing responses at each iteration
+  answer_format: prompt, human response, current-policy response, and self-play iteration
+  process_fields:
+  - prompt
+  - human response
+  - current-policy response
+  - and self-play iteration
+  environment_or_substrate: JSON conversation records released as a Hugging Face dataset collection
+  verifier_or_reward: a preference-style objective separates human responses from current-policy responses
+  terminal_predicate: Retain a record only when a preference-style objective separates human responses from current-policy
+    responses accepts it and required schema fields are present.
+recipe_metadata:
+  base_model: See the official paper for the exact backbone and stage-specific checkpoint.
+  teacher: the current policy generates competing responses at each iteration
+  generator: SPIN repeatedly samples responses from the current policy, pairs them with human responses to form iteration-specific
+    training records, and updates the same model to distinguish and improve over its previous behavior.
+  filtering_rule: a preference-style objective separates human responses from current-policy responses
+  sampling_protocol: a fixed human dialogue set used as positive responses and prompts for current-policy generation
+  rollout_count: null
+  temperature: null
+  inference_budget: The release does not disclose one complete end-to-end generation budget.
+  optimizer_or_scaffold: iterative self-play fine-tuning that consumes the generated responses
+audit:
+  source_mixture: a fixed human dialogue set used as positive responses and prompts for current-policy generation
+  split: 'Official release scale: about 50,000 base dialogues plus generated response datasets for iterations 0 through 3;
+    storage: JSON conversation records released as a Hugging Face dataset collection.'
+  decontamination: No release-wide semantic decontamination guarantee is treated as established; benchmark overlap must be
+    re-audited before reuse.
+  license: official repository and dataset-card terms; the base dialogue dataset terms remain applicable
+  lineage: a fixed human dialogue set used as positive responses and prompts for current-policy generation -> the current
+    policy generates competing responses at each iteration -> a preference-style objective separates human responses from
+    current-policy responses -> iterative self-play fine-tuning that consumes the generated responses.
+  known_failure_modes:
+  - Human responses remain the fixed quality anchor
+  - self-generated errors can become repetitive shortcuts
+  - gains and stability depend on stopping before iteration collapse.
+  citation_status: verified
+  confidence: high
+  notes: 'Official 2024 venue page, paper, public data records, schema, release terms, and impact evidence were checked on
+    2026-07-27. OpenAlex snapshot: 11 citations; this is not a Google Scholar count.'
+inclusion_reason: 'SPIN iteration datasets is a public Track 01 training object: prompt, human response, current-policy response,
+  and self-play iteration; it is consumed by iterative self-play fine-tuning that consumes the generated responses.'
+related: []
+tags:
+- instruction-demonstration-rationale
+- iterative-self-play-response-data
+status: verified
+one_line_summary: SPIN releases base dialogues and iteration 0-3 policy responses that support repeated self-play fine-tuning.
+why_it_matters: turning the model's previous responses into an explicit, versioned negative side of an iterative training
+  dataset
+reading_priority: must read
+paper_type: open instruction-data release and construction study
+best_for: bootstrapping an instruction model when a fixed human dialogue set is available
+confidence: high
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-27'
+  verified_by: curation
+  confidence: high
+  notes: Official proceedings and public data records checked.
+category_ids:
+- instruction_demonstration_rationale_data
+batch:
+  id: paper-card-l4-pipeline-20260727-2024-batch
+  primary_category_id: instruction_demonstration_rationale_data
+  direction_label: iterative self-play response data
+  selection_priority_score: 11
+  selection_score_breakdown:
+    institution: 3
+    venue: 3
+    impact: 3
+    artifact: 2
+  selection_evidence:
+    institution: Official paper affiliations include University of California, Los Angeles.
+    venue: 'The official venue URL confirms formal publication at ICML 2024: https://proceedings.mlr.press/v235/chen24j.html'
+    impact: OpenAlex reported 11 citations on 2026-07-27 and the public dataset has independent downstream use, satisfying
+      the 2024 impact-3 gate.
+    artifact: 'The official release exposes actual JSON conversation records released as a Hugging Face dataset collection
+      records at https://huggingface.co/collections/UCLA-AGI/datasets-spin-65c3624e98d4b589bbc76f3a with terms recorded as:
+      official repository and dataset-card terms; the base dialogue dataset terms remain applicable.'
+  selection_eligible: true
+  year_impact_threshold: 3

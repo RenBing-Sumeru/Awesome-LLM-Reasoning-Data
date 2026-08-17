@@ -1,0 +1,1 @@
+Eric Zelikman、Yuhuai Wu、Jesse Mu、Noah D. Goodman，《STaR: Bootstrapping Reasoning With Reasoning》，*Advances in Neural Information Processing Systems 35（NeurIPS 2022）*。https://arxiv.org/abs/2203.14465

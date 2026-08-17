@@ -1,0 +1,133 @@
+id: api-bank-2023
+title: 'API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs'
+year: 2023
+venue: EMNLP 2023
+authors:
+- Minghao Li
+- Yingxiu Zhao
+- Bowen Yu
+- Feifan Song
+- Hangyu Li
+- Haiyang Yu
+- Zhoujun Li
+- Fei Huang
+- Yongbin Li
+source_role:
+- data_release
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- programmatic
+supervision_granularity:
+- state_action_level
+- full_episode
+domains:
+- tool-use
+- agent-environments
+- interactive-evaluation
+training_use:
+- sft
+- agent_training
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2304.08244
+  arxiv: https://arxiv.org/abs/2304.08244
+  code: https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank
+  data: https://huggingface.co/datasets/liminghao1630/API-Bank
+  project: null
+  huggingface: https://huggingface.co/datasets/liminghao1630/API-Bank
+  doi: https://doi.org/10.48550/arXiv.2304.08244
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Early tool-call dialogue benchmark with planning, retrieval, and API calls.
+  trace_author: paper authors, synthetic generators, model agents, or human annotators as disclosed by the official source
+  answer_format: Runnable API system, tool-use dialogues, API calls, and a larger training set over many domains.
+  process_fields:
+  - task or user instruction
+  - available tool/API schema
+  - agent action or tool call
+  - environment response
+  - success, score, or verifier outcome
+  environment_or_substrate: Runnable API system, tool-use dialogues, API calls, and a larger training set over many domains.
+  verifier_or_reward: Planning, retrieval, and API-call execution are evaluated against annotated tool-use dialogues and runnable
+    API behavior.
+  terminal_predicate: Planning, retrieval, and API-call execution are evaluated against annotated tool-use dialogues and runnable
+    API behavior.
+recipe_metadata:
+  base_model: varies by experiment; not a single released training base for the Card
+  teacher: unknown or paper-specific generator; verify the official paper before reuse
+  generator: The release combines annotated evaluation dialogues with a larger constructed training set of tool-use dialogues
+    spanning many APIs and domains.
+  filtering_rule: Planning, retrieval, and API-call execution are evaluated against annotated tool-use dialogues and runnable
+    API behavior.
+  sampling_protocol: Record environment version, tool/API schema, task split, evaluator revision, and trajectory budget before
+    comparing results.
+  rollout_count: null
+  temperature: null
+  inference_budget: model and scaffold budgets vary by experiment and should be pinned per run
+  optimizer_or_scaffold: tool-use or agent-evaluation scaffold described in the official paper
+audit:
+  source_mixture: 'Official sources checked for author, institution, and venue metadata: https://arxiv.org/abs/2304.08244;
+    https://arxiv.org/e-print/2304.08244; https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank; https://huggingface.co/datasets/liminghao1630/API-Bank'
+  split: public/private split, hidden tests, and benchmark versioning require per-release verification before score reuse
+  decontamination: tool/API tasks and public benchmark releases can leak into later training data; pin release date and exact
+    split
+  license: license for questions, traces, code, data, and generated tool records is unknown unless the linked artifact states
+    it
+  lineage: 'Primary source: https://arxiv.org/abs/2304.08244'
+  known_failure_modes:
+  - tool/API behavior can drift or be simulated differently from the live service
+  - automatic judges can reward format compliance instead of real task completion
+  - hidden scaffolds and retry budgets can change the meaning of a score
+  - public trajectories or tasks may become future training data
+  citation_status: verified
+  confidence: medium
+  notes: Official arXiv source and repository verify EMNLP 2023 status, authors, Alibaba/HKUST/Peking/Shenzhen Intelligent
+    Strong affiliations, and API-Bank artifacts. Existing card was updated in place. Artifact/license/split/scoring details
+    remain review targets.
+inclusion_reason: 'API-Bank exposes an agent/tool environment or trajectory-like data object with a concrete feedback contract:
+  Planning, retrieval, and API-call execution are evaluated against annotated tool-use dialogues and runnable API behavior.'
+related: []
+tags:
+- tool-use
+- agent-environment
+- trajectory-data
+one_line: API-Bank is a tool-use or agent-environment source centered on Runnable API system, tool-use dialogues, API calls,
+  and a larger training set over many domains.
+why_it_matters: It makes the action schema, environment state, and success predicate visible enough for reasoning-data curation
+  and audit.
+status: verified
+needs:
+- 'needs_artifact_audit: verify exact current code/data license and release tag'
+- 'needs_replay_audit: pin environment version, evaluator implementation, split, and scaffold budget'
+- 'needs_review: human curator should decide promotion after reading the source card'
+one_line_summary: API-Bank contributes a tool-use or agent-environment surface with an explicit evaluation or verification
+  contract.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: medium
+  notes: Official arXiv source and repository verify EMNLP 2023 status, authors, Alibaba/HKUST/Peking/Shenzhen Intelligent
+    Strong affiliations, and API-Bank artifacts. Existing card was updated in place.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  candidate_file: mine_sop/06_candidate/candidates.yaml
+  candidate_index: 3
+  candidate_title: API-Bank
+  primary_category_id: environment_agent_trajectory_data
+  processed_at: '2026-07-12'

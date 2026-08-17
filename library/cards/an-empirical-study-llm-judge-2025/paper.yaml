@@ -1,0 +1,98 @@
+id: an-empirical-study-llm-judge-2025
+title: An Empirical Study of LLM-as-a-Judge for LLM Evaluation
+year: 2025
+venue: Findings of ACL 2025
+authors:
+- Hui Huang
+- Xingyuan Bu
+- Hongli Zhou
+- Yingqi Qu
+- Jing Liu
+- Muyun Yang
+- Bing Xu
+- Tiejun Zhao
+source_role:
+- audit_failure
+verification_contract:
+- mixed
+supervision_granularity:
+- trajectory_value
+domains:
+- reasoning
+- evaluation
+- alignment
+training_use:
+- evaluation
+- audit
+construction_layer:
+- release_audit
+artifacts:
+  paper: https://aclanthology.org/2025.findings-acl.306/
+  arxiv: null
+  code: https://github.com/HuihuiChyan/UnlimitedJudge
+  data: null
+  project: null
+  huggingface: null
+  doi: null
+  venue: https://aclanthology.org/2025.findings-acl.306/
+  openreview: null
+  acl: https://aclanthology.org/2025.findings-acl.306/
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official audit or benchmark release
+  trace_author: unknown
+  answer_format: task item, model output, and audit or judge outcome
+  process_fields:
+  - item
+  - model response
+  - audit signal
+  - outcome
+  environment_or_substrate: released benchmark or controlled evaluation
+  verifier_or_reward: paper-specific judge, detector, rubric, or reward
+  terminal_predicate: paper-specific audited outcome
+recipe_metadata:
+  base_model: see release
+  teacher: see release
+  generator: official release
+  filtering_rule: see release
+  sampling_protocol: see release
+  rollout_count: null
+  temperature: null
+  inference_budget: see release
+  optimizer_or_scaffold: see release
+audit:
+  source_mixture: official ACL paper and official code repository
+  split: see official artifact
+  decontamination: paper-specific
+  license: see official artifact
+  lineage: official paper and public artifact
+  known_failure_modes:
+  - Curation-level metadata only; inspect the original paper before reusing scores or examples.
+  citation_status: verified
+  confidence: high
+  notes: Official ACL paper and official repository verified; the repository provides code and benchmark test-set preparation, not a newly released dataset contribution.
+  author_institution_metadata:
+    source: https://aclanthology.org/2025.findings-acl.306.pdf
+    checked_on: '2026-07-19'
+    method: official PDF first-page author block
+inclusion_reason: 'Audits failure modes and reliability boundaries of fine-tuned LLM judges.'
+related: []
+tags:
+- track13
+- audit
+- round3
+status: verified
+one_line_summary: Audits whether fine-tuned LLM judges generalize beyond their training evaluation format, and finds they often behave as task-specific classifiers.
+why_it_matters: It shows why strong in-domain judge scores can conceal failures in transfer, fairness, and prompt adaptability.
+curation_level: L4_chinese_review_ready
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-19'
+  verified_by: curation
+  confidence: high
+  notes: Official primary page plus public artifact recorded; venue status is explicit.
+category_ids:
+- audit_failure_contamination_verifier_attacks

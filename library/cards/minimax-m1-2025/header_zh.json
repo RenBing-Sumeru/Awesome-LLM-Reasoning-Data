@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "MiniMax-M1 披露混合注意力推理模型、面向含沙盒软件工程问题的大规模 RL 与 CISPO，但未公开训练数据、奖励或 rollout 审计工件。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "前沿推理模型技术报告与数据披露账本",
+  "best_for_ch": "审计长上下文推理模型的 RL、沙盒任务与开放权重边界的读者",
+  "confidence_ch": "中",
+  "authors_ch": "MiniMax",
+  "category_ids": [
+    "frontier_reports_data_disclosure_ledger"
+  ]
+}

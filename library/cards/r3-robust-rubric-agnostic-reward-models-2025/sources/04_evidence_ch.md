@@ -1,0 +1,3 @@
+论文在多个rewardbenchmark与未见rubric场景比较，并通过数据、rubric输入和reasoning消融证明泛化与稳健性。
+
+自行推导rubric可能与用户真实标准不一致；合成reasoning与评分由teacher决定，20K覆盖仍有限。

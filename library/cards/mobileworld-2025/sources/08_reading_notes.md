@@ -1,0 +1,6 @@
+- Read §§3.2–3.3 before the leaderboard: the main contribution is the snapshot/backend/evaluator contract across GUI, user, and MCP actions.
+- Keep the task counts aligned: 201 total = 116 GUI-only + 45 user-interaction + 40 MCP; 62.2% use multiple apps.
+- Interpret 27.8 steps as GPT-5 + UI-Ins-7B behavior under a 50-step budget, not an optimal path annotation.
+- Treat GPT-4.1 user responses as part of the environment policy, and MCP outputs as mutable external observations.
+- The current repository is richer than the paper and retains failures, but has no immutable paper-era release; pin Docker, AVD/backend snapshots, evaluators, and external services.
+- Still unresolved: train/test split, decontamination, validator/retry logs, component-level rights, fixture provenance/PII review, and complete paper-run trajectories.

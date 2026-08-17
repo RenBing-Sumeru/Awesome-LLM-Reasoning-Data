@@ -1,0 +1,1 @@
+{"one_line_summary_ch":"THROW 利用早期过程奖励模型分数，让简单提示少花搜索预算，并为困难提示选择性扩展有前景的分支。","reading_priority_ch":"必读","paper_type_ch":"自适应混合测试时计算研究","best_for_ch":"服务批量大小为一的推理负载、且必须平衡并行采样吞吐与束搜索顺序评分成本的读者。","confidence_ch":"高","authors_ch":"Hyewon Suh、Chaojian Li、Cheng-Jhih Shih、Zheng Wang、Kejing Xia、Yonggan Fu、Yingyan Celine Lin（机构：佐治亚理工学院）","category_ids":["scaling_rlvr_test_time_compute"]}

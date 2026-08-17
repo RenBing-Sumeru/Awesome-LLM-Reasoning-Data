@@ -1,0 +1,6 @@
+- Read PDF page 1 and the launch page together: the addendum establishes real-world coding RL and desired behavior, while the launch page supplies the project-building, feature/test, debugging, refactor, and review task taxonomy.
+- Keep code-review training distinct from evaluation on recent open-source commits judged by engineers for correctness and importance; no hidden-test contract is disclosed for this evaluation.
+- Treat all tests, SWE-bench tasks, refactor tasks, mobile preferences, golden sets, prompt injections, traffic telemetry, CTFs, and Cyber Range results as evaluation or observation unless explicitly linked to training.
+- Compare disclosure deltas: GPT-5 gives broad source and router context; o3/o4-mini Codex gives the unexpected-state reward; GPT-5-Codex adds task and review specificity; GPT-5.1/5.2-Codex later add conflicting-edit preservation rewards and internal PR hidden tests.
+- Attach every number to its condition: Tables 3–4 are safety evaluations, 500 SWE-bench tasks follow an infrastructure fix, seven-hour runs are testing observations, and token-decile results are employee telemetry.
+- Before reuse, request task and commit manifests, trajectory records, preference and review labels, reward or test mapping, failed episodes, global split, decontamination, licenses, and checkpoint lineage.

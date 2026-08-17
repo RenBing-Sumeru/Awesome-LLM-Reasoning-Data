@@ -1,0 +1,1 @@
+BBH 是筛选出的公开子集，适合压力测试，但作为长期 leaderboard 较弱。正确性绑定到 target-answer scoring，不验证推理链。CoT prompt 可能改善答案抽取，或激发表面记忆模式，并不证明忠实逐步推理。BBH 聚合分混合了输出格式和错误模式不同的任务。复用时不能把它当成所有 hard reasoning 或当前前沿模型的代表，除非审计污染和 prompt 政策。

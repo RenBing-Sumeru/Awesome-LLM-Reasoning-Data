@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-15T07:17:15Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "别名 gsm8k 历史利用率极高，目前趋于饱和",
+    "updated_at": "2026-07-15T07:17:15Z"
+  }
+}

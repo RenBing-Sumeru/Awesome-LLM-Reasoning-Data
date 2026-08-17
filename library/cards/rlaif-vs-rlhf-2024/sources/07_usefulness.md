@@ -1,0 +1,1 @@
+Use this work when deciding how an AI judge should enter an alignment system: as an offline preference annotator, as a teacher for a reward model, or as an online reward provider. It is especially useful for designing the provenance log needed to make AI feedback inspectable across labeler versions and policy iterations.

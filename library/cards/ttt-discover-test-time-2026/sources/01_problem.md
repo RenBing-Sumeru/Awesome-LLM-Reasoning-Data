@@ -1,0 +1,3 @@
+Most test-time scaling holds model parameters fixed and spends more computation on prompting, sampling, or search. That is often inadequate for a scientific or engineering problem where the objective is one exceptional solution, the reward is continuous, and the useful experience is specific to the current instance rather than transferable across a benchmark distribution.
+
+TTT-Discover asks whether a model can keep learning at test time for the active problem. It treats each problem as its own optimization environment and allocates compute to generate candidates, receive task reward, update the policy, and focus future search on the most promising solutions.

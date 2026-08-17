@@ -1,0 +1,126 @@
+id: bigcodebench-diverse-function-calls-2025
+title: 'BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions'
+year: 2025
+venue: ICLR 2025
+authors:
+- Terry Yue Zhuo
+- Minh Chien Vu
+- Jenny Chim
+- Han Hu
+- Wenhao Yu
+- Ratnadira Widyasari
+- Imam Nur Bani Yusuf
+- Haolan Zhan
+- Junda He
+- Indraneil Paul
+- Simon Brunner
+- Chen Gong
+- Thong Hoang
+- Armel Zebaze
+- Xiaoheng Hong
+- Wen-Ding Li
+- Jean Kaddour
+- Ming Xu
+- Zhihan Zhang
+- Prateek Yadav
+- Naman Jain
+- Alex Gu
+- Zhoujun Cheng
+- Jiawei Liu
+- Qian Liu
+- Zijian Wang
+- Binyuan Hui
+- Niklas Muennighoff
+- David Lo
+- Daniel Fried
+- Xiaoning Du
+- Harm de Vries
+- Leandro von Werra
+source_role:
+- benchmark
+- data_release
+verification_contract:
+- programmatic
+supervision_granularity:
+- answer_level
+domains:
+- code-generation
+- python
+- library-use
+training_use:
+- evaluation
+construction_layer:
+- prompt_sourcing
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6a90bcc2aa470c3871b2d39a67d26e8-Abstract-Conference.html
+  arxiv: https://arxiv.org/abs/2406.15877
+  code: https://github.com/bigcode-project/bigcodebench
+  data: https://huggingface.co/datasets/bigcode/bigcodebench
+  project: https://bigcode-bench.github.io/
+  huggingface: https://huggingface.co/datasets/bigcode/bigcodebench
+  doi: https://doi.org/10.48550/arXiv.2406.15877
+  venue: https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6a90bcc2aa470c3871b2d39a67d26e8-Abstract-Conference.html
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: Expert-authored Python programming tasks with library-use requirements.
+  trace_author: Benchmark authors; models generate programs.
+  answer_format: Function implementation plus execution tests.
+  process_fields:
+  - docstring or instruction
+  - function signature
+  - test cases
+  - coverage metadata
+  environment_or_substrate: Python with the benchmark's library environment.
+  verifier_or_reward: Unit tests and branch coverage.
+  terminal_predicate: The generated program passes the prescribed tests.
+recipe_metadata:
+  base_model: null
+  teacher: null
+  generator: null
+  filtering_rule: null
+  sampling_protocol: The paper reports 1,140 tasks over 139 libraries and seven domains.
+  rollout_count: null
+  temperature: null
+  inference_budget: null
+  optimizer_or_scaffold: null
+audit:
+  source_mixture: Official ICLR proceedings, BigCode project site, GitHub repository, and Hugging Face dataset.
+  split: Consult the official release.
+  decontamination: Audit public-code exposure and package-version effects before interpreting results.
+  license: Consult the dataset card and repository license.
+  lineage: https://proceedings.iclr.cc/paper_files/paper/2025/hash/a6a90bcc2aa470c3871b2d39a67d26e8-Abstract-Conference.html
+  known_failure_modes:
+  - Tests do not prove all intended program behavior.
+  - Dependency versions can affect execution.
+  citation_status: verified
+  confidence: high
+  notes: ICLR paper first page was used for the final title, authors, affiliations, project, and publication status.
+inclusion_reason: BigCodeBench 用高覆盖单元测试考察模型在多库函数调用与复杂指令下生成可执行 Python 程序的能力。
+related: []
+tags:
+- code-generation
+- function-calls
+- unit-tests
+- '2025'
+one_line_summary: BigCodeBench uses high-coverage tests to assess executable Python generation under diverse library calls
+  and complex instructions.
+why_it_matters: BigCodeBench uses high-coverage tests to assess executable Python generation under diverse library calls and
+  complex instructions.
+status: verified
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-24'
+  verified_by: curation
+  confidence: high
+  notes: ICLR paper first page was used for the final title, authors, affiliations, project, and publication status.
+category_ids:
+- programmatically_verifiable_outcome_data
+- benchmarks_evaluation_surfaces

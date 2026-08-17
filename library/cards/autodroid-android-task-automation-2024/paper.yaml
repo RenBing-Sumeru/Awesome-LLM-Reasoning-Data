@@ -1,0 +1,117 @@
+id: autodroid-android-task-automation-2024
+title: 'AutoDroid: LLM-powered Task Automation in Android'
+year: 2024
+venue: ACM MobiCom 2024 / arXiv
+authors:
+- Hao Wen
+- Yuanchun Li
+- Guohong Liu
+- Shanhui Zhao
+- Tao Yu
+- Toby Jia-Jun Li
+- Shiqi Jiang
+- Yunhao Liu
+- Yaqin Zhang
+- Yunxin Liu
+source_role:
+- benchmark
+- agent_environment
+verification_contract:
+- environmental
+- mixed
+supervision_granularity:
+- full_episode
+- state_action_level
+domains:
+- mobile-agents
+- android
+- task-automation
+training_use:
+- evaluation
+- audit
+construction_layer:
+- search_substrate
+- reward_verifier_layer
+- release_audit
+artifacts:
+  paper: https://arxiv.org/abs/2308.15272
+  arxiv: https://arxiv.org/abs/2308.15272
+  doi: https://doi.org/10.48550/arXiv.2308.15272
+  code: https://github.com/MobileLLM/AutoDroid
+  data: https://github.com/MobileLLM/AutoDroid
+  project: https://autodroid-sys.github.io/
+  huggingface: null
+  venue: null
+  openreview: null
+  acl: null
+  pmlr: null
+  cvf: null
+  bibtex: null
+data_object:
+  prompt_source: official AutoDroid paper, project, and repository
+  trace_author: AutoDroid authors and Android task automation runs
+  answer_format: Android tasks, UI states, dynamic analysis outputs, memory records, actions, and DroidTask data
+  process_fields:
+  - task or instruction
+  - environment state
+  - agent action
+  - observation
+  - success predicate or score
+  environment_or_substrate: Android task automation with dynamic app analysis and app-specific memory
+  verifier_or_reward: Android automation success checks and task-specific validation
+  terminal_predicate: Android automation success checks and task-specific validation
+recipe_metadata:
+  base_model: Not a single model-training recipe; this Card treats the work as an environment, benchmark, or trajectory surface.
+  teacher: AutoDroid task design, dynamic analysis, and DroidTask curation
+  generator: AutoDroid LLM-powered task automation framework
+  filtering_rule: pin DroidTask download, app versions, dynamic-analysis outputs, and repository commit
+  sampling_protocol: Pin release, split, evaluator revision, runtime platform, and date of any live/cloud service before score
+    reuse.
+  rollout_count: null
+  temperature: null
+  inference_budget: Evaluation budget is model- and harness-specific.
+  optimizer_or_scaffold: agent_environment_harness
+audit:
+  source_mixture: https://arxiv.org/abs/2308.15272; https://arxiv.org/html/2308.15272; https://autodroid-sys.github.io/; https://github.com/MobileLLM/AutoDroid
+  split: Pin public/private split, task version, runtime image, and evaluator version before comparing results.
+  decontamination: Public tasks and traces can leak into future training data.
+  license: Artifact-level license and redistribution terms must be checked before reuse.
+  lineage: 'Primary lead: https://arxiv.org/abs/2308.15272'
+  known_failure_modes:
+  - environment drift
+  - runtime dependency mismatch
+  - public-task contamination
+  - judge or evaluator version drift
+  citation_status: verified
+  confidence: high
+  notes: DroidTask Google Drive access, license, app versions, and dynamic-analysis reproducibility need audit.
+inclusion_reason: it exposes Android task automation with app analysis and memory as reusable environment data
+related: []
+tags:
+- agent_environment
+- trajectory_data
+- mobile-agents
+- android
+- task-automation
+one_line: AutoDroid automates Android tasks with LLMs, dynamic app analysis, and app-specific memory.
+why_it_matters: it exposes Android task automation with app analysis and memory as reusable environment data
+status: verified
+needs:
+- 'needs_audit: pin license, split, evaluator, runtime, and artifact version'
+- 'needs_review: human curator should assess L5 promotion'
+one_line_summary: AutoDroid automates Android tasks with LLMs, dynamic app analysis, and app-specific memory.
+curation_level: L4_carded
+verification:
+  link_verified: true
+  artifact_verified: true
+  verified_at: '2026-07-12'
+  verified_by: curation
+  confidence: high
+  notes: arXiv, project, and GitHub verify authors, institutions, MobiCom 2024 status, and code/data entry.
+category_ids:
+- environment_agent_trajectory_data
+batch:
+  source: mine_sop/06_candidate/candidates.yaml
+  range: 61-80
+  candidate_index: 66
+  primary_category_id: environment_agent_trajectory_data

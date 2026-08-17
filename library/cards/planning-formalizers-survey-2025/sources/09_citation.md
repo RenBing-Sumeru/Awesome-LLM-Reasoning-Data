@@ -1,0 +1,3 @@
+Marcus Tantakoun, Christian Muise, and Xiaodan Zhu. 2025. LLMs as Planning Formalizers: A Survey for Leveraging Large Language Models to Construct Automated Planning Models. Findings of ACL 2025, pages 25167–25188. https://aclanthology.org/2025.findings-acl.1291/
+
+Use the ACL Anthology record for the official title, authors, venue, pages, and DOI. Cite this survey for its synthesis of language-model formalization and automated planning. When discussing a specific formal language, planner, task domain, system design, or measured result, cite the primary work as well, because this survey does not introduce a shared implementation or experiment.

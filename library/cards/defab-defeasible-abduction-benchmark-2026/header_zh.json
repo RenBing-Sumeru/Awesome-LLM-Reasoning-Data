@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "DeFAb 将公开知识库转化为 37 万余个可判定溯因任务，并以规则求解器检查假设的推导性、保守性与最小性。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "可程序验证的逻辑推理基准与数据构建方法",
+  "best_for_ch": "需要精确逻辑奖励、溯因推理评测或可验证推理训练数据的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Patrick Cooper, Alvaro Velasquez",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-18T07:41:52Z"
+}

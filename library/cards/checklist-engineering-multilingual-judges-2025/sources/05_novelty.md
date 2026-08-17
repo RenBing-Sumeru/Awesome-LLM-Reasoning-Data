@@ -1,0 +1,3 @@
+Checklist methods already create criteria, and multilingual judges already translate or fine-tune evaluators. CE-Judge combines them by generating broad, descriptive, dynamic, answer-mentioning checklists in two directions, then uses their union for both pointwise and direct pairwise judgment. This differs from selecting the better response by comparing two independent grades. The contribution is a prompt architecture for an open multilingual judge, not a trained multilingual reward model.
+
+The checklists are broad and descriptive rather than fixed binary tests, which is intended to preserve task context while making the reasoning inspectable.

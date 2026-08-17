@@ -1,0 +1,1 @@
+一手来源是 2023-10-25 提交的 arXiv:2310.16253 和官方 ConDefects 仓库。论文要解决的是 LLM fault localization / program repair 评测里的数据泄漏：常用 benchmark 代码可能早于 LLM 爆发并进入训练语料。数据对象是 AtCoder 来源的 faulty program，配套 fault location、修复版本、测试用例、日期元数据和难度元数据。它适合作为可执行修复/定位评测面和污染控制样例收录，本身不是 agent 轨迹数据。证据边界在版本化数据构造和测试执行；README 的 2024/6 更新扩展了论文原始时间窗。

@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "FVAPPS 将编程面试题改写为 Lean 4 的程序与证明任务，以编译和定理检查共同验证最终结果。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "形式化验证代码生成基准与 Lean 4 数据集",
+  "best_for_ch": "需要联合评测程序实现、形式规格与 Lean 证明生成的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Quinn Dougherty, Ronak Mehta",
+  "category_ids": [
+    "programmatically_verifiable_outcome_data"
+  ],
+  "updated_at": "2026-07-17T00:00:00Z"
+}

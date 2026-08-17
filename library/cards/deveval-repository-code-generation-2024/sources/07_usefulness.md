@@ -1,0 +1,3 @@
+Use DevEval as a schema for repository-code evaluation: preserve target namespace, type, project path, completion path, signature/body positions, requirement, reference dependency fields, tests, prompt condition, completion, execution log, and Pass@k outcome. It is also a useful checklist for coding-agent harnesses that mutate a working tree before scoring.
+
+For atlas work, DevEval supplies a concrete environment-feedback example where the feedback contract is not a language judge but repository test execution. It is useful for comparing context retrieval, dependency selection, and code-generation scaffolds, provided artifact version and environment are pinned.

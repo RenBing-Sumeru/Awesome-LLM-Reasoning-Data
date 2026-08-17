@@ -1,0 +1,1 @@
+Use this work to compare adaptive stopping and branching policies with fixed test-time schedules. It is a useful boundary case for Track10 because it shows that scalable inference need not mean longer text generation: the controlled resource can be denoising cycles and particle exploration.

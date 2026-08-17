@@ -1,0 +1,9 @@
+For `data_construction_open_release_recipes`, FLAMES is most useful as a controlled experimental template and audit reference.
+
+A builder can reproduce the factor table and vary one dimension at a time: seed source, agent, problem generator, solution teacher, quality-control rule, mixture, student, or checkpoint-selection criterion. The six quality-control variants form a direct baseline for plotting retained-problem count against independently measured problem validity, solution correctness, difficulty, diversity, SFT accuracy, and total generation cost. The MATH500 solvability test should be retained as a mandatory false-rejection audit.
+
+A release modeled on FLAMES should store stable record and seed IDs; exact dataset/model revisions; agent and prompt versions; every intermediate object; all candidate problems and solutions; extracted/normalized answers; deduplication and overlap matches; solvability, self-consistency, and reward-model outputs; acceptance/rejection reasons; mixture component; SFT subset; and checkpoint/run IDs. It should publish the rejected records needed to measure selection bias and provide semantic contamination checks for every reported benchmark.
+
+The mixture offers concrete training baselines: compare one-agent scaling against the 50/20/20/10 blend, test Distraction Insertion outside GSMPlus-style perturbations, and measure whether taxonomy-derived gains persist under held-out taxonomies and stronger independent verifiers. These are proposed reuse experiments, not claims already demonstrated by an open artifact.
+
+Reuse class: **reading/audit reference and recipe-reimplementation starting point**. Direct training reuse is blocked because no official FLAMES dataset, license, immutable manifest, or construction code was verified. Evaluation reuse is also inappropriate: FLAMES is a training-data recipe, and its selection procedure already consumes GSM8K/MATH performance.

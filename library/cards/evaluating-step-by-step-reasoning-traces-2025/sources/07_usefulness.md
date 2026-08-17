@@ -1,0 +1,1 @@
+The survey distinguishes four targets for reasoning-trace evaluation: factuality, validity, coherence, and utility. It relates these targets to datasets and evaluator implementations, showing why a final-answer score cannot substitute for every claim about intermediate reasoning quality.

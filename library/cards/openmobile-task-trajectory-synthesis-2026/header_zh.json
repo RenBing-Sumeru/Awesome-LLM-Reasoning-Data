@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "OpenMobile 以环境记忆合成移动端任务，并用强弱策略切换保留错误恢复过程，公开任务与轨迹联合训练数据。",
+  "reading_priority_ch": "必读",
+  "paper_type_ch": "移动端 GUI 智能体任务合成、错误恢复轨迹与训练数据论文",
+  "best_for_ch": "需要开放移动端任务、执行轨迹和错误恢复监督来训练或研究手机智能体的研究者。",
+  "confidence_ch": "高",
+  "authors_ch": "Kanzhi Cheng, Zehao Li, Zheng Ma, Nuo Chen, Jialin Cao, Qiushi Sun, Zichen Ding, Fangzhi Xu, Hang Yan, Jiajun Chen, Luu Anh Tuan, Jianbing Zhang, Lewei Lu, Dahua Lin",
+  "category_ids": [
+    "process_trace_supervision_data"
+  ],
+  "updated_at": "2026-07-15T17:54:11Z"
+}

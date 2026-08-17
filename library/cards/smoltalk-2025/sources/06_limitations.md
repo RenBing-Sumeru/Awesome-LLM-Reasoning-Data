@@ -1,0 +1,3 @@
+1. When the end-to-end comparison changes several data stages, so SmolTalk's isolated effect is limited, the most serious consequence is training on a trace whose apparent correctness does not match its reasoning; reproduce a stratified record-level audit before reuse.
+2. Because inherited subsets carry heterogeneous licenses and contamination risks, downstream gains may not transfer to a new domain or deployment; run source- and domain-specific evaluations rather than relying on the aggregate score.
+3. Reuse must preserve new subsets are Apache-2.0; inherited subsets retain their upstream licenses and every upstream source or media term; exclude records whose provenance or redistribution right cannot be reconstructed.

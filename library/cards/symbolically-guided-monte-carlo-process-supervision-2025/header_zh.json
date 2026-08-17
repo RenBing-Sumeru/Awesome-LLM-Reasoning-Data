@@ -1,0 +1,11 @@
+{
+  "one_line_summary_ch": "该工作用答案可达性的 Monte Carlo 伪标签训练 PRM，将 Symbolic ReAct rollout 筛成 15,412 条 SFT 轨迹和 21,472 个 DPO 对；主要价值是公开了数据转换链，关键边界是步骤形式有效性与完整候选池仍不可审计。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "符号推理 rollout、过程监督数据与筛选配方",
+  "best_for_ch": "研究 Monte Carlo 过程标签、PRM 筛选、SFT/DPO 数据构造及发布审计的读者",
+  "confidence_ch": "中",
+  "authors_ch": "Xingwei Tan、Marco Valentino、Mahmud Elahi Akhter、Maria Liakata、Nikolaos Aletras",
+  "category_ids": [
+    "rollout_search_test_time_trace_data"
+  ]
+}

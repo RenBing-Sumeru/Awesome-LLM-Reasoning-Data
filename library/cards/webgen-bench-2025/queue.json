@@ -1,0 +1,11 @@
+{
+  "category_ids": [
+    "benchmarks_evaluation_surfaces"
+  ],
+  "updated_at": "2026-07-18T11:09:09Z",
+  "manual_annotation": {
+    "search_status": "promoted",
+    "decision_reason": "ref67 但感觉还挺新颖的一个bench",
+    "updated_at": "2026-07-18T11:09:09Z"
+  }
+}

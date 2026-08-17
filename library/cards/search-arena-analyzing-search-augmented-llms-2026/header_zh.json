@@ -1,0 +1,12 @@
+{
+  "one_line_summary_ch": "Search Arena 发布真实搜索增强模型对话、用户偏好票和检索轨迹，可检验偏好与引用支撑是否一致。",
+  "reading_priority_ch": "可读",
+  "paper_type_ch": "搜索增强语言模型的人类偏好数据集与分析论文",
+  "best_for_ch": "研究检索增强生成、搜索对话偏好或引用可靠性的读者。",
+  "confidence_ch": "高",
+  "authors_ch": "Mihran Miroyan 等",
+  "category_ids": [
+    "preference_reward_feedback_data"
+  ],
+  "updated_at": "2026-07-14T20:00:00Z"
+}
